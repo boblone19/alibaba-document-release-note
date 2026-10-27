@@ -5,7 +5,7 @@ doc_version: "20241105"
 pdf_pages: 184
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Server Load Balancer Developer Guide 20241105.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Server%20Load%20Balancer%20Developer%20Guide%2020241105.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Server Load Balancer Developer Guide 20241105
@@ -298,7 +298,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 > <yourRoleArn>: Replace it with your RAM role.
 > "sts.aliyuns.com": Replace it with the endpoint of STS.
 
-```java
+```
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -316,6 +316,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of the STS. In most cases, endpoint is in the following format: s
@@ -343,9 +348,15 @@ ts-vpc.${global:region}.${global:internet-domain}.
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. The following sample code shows how to use STS credentials to call the DescribeLoadBalancers operation of the Server Load
 Balancer (SLB) API:
 
@@ -395,6 +406,8 @@ STS.
         System.out.println(e.getErrMsg());
 ```
 
+`}` `}`
+
 ### 2.5 Obtain the values of common header parameters
 
 **parameters**
@@ -433,6 +446,9 @@ You can obtain the ID of an instance in the cloud service console of the Apsara 
 2. In the top navigation bar, choose **ProductsNetworkingServer Load Balancer**.
 3. In the left-side navigation pane, choose **Instances & Images > Instances**.
 4. View the **instance ID** in the instance list.
+
+**Response parameters**
+
 The following response parameters are returned by default when you call operations to query the instances of cloud services.
 
 | Parameter | Description |
@@ -549,11 +565,16 @@ package com.aliyuns.client.pop.ecs; import com.aliyuncs.DefaultAcsClient; import
             for (DescribeInstancesResponse.Instance instance: instances) {
                 System.out.println(instance.getInstanceId());
                 System.out.println(instance.getInstanceName());
+```
+
+`}`
+
+```
         } catch (Exception e) {
             e.printStackTrace();
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code: e API calls
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code: e API calls
 
 ```java
 package com.aliyuns.client.pop.cr; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceListTest {
@@ -605,6 +626,8 @@ package com.aliyuns.client.pop.cr; import com.aliyuncs.CommonRequest; import com
             e.printStackTrace();
 ```
 
+`}` `}` `}`
+
 > **Important:** If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
 ### 3.3 SDK for Go
@@ -644,6 +667,11 @@ func getSdkConfig() *sdk.Config {
   WithMaxTaskQueueSize(10000).
   WithDebug(false).
   WithScheme("HTTP")
+```
+
+`}`
+
+```
 func main(){
  ak := "<The AccessKey ID of your Apsara Stack tenant account.>"
  sk := "<The AccessKey secret of your Apsara Stack tenant account.>"
@@ -668,8 +696,15 @@ with a certification type-bearer token must be specified.
   err = client.DoAction(request, &resp)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
  fmt.Print(endpoint)
 ```
+
+`}`
 
 **Configure proxies**
 
@@ -688,7 +723,7 @@ func main(){
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -855,6 +890,8 @@ ements.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 4.2 Work with SLB SDK for Java
 
 #### 4.2.1 Install SLB SDK for Java
@@ -945,7 +982,7 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-r Python to make API calls
+`}` r Python to make API calls
 
 ## 5 Use SLB SDK for Python to make API calls
 
@@ -1244,10 +1281,16 @@ r Go to make API calls
   if err != nil {
     fmt.Println(err)
     return
+```
+
+`}`
+
+```
   // Print response parameters. In this example, the RequestId parameter is printed.
   fmt.Println(response.RequestId)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -1371,6 +1414,8 @@ When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is ret
     return
 ```
 
+`}`
+
 **ClientError**
 
 When you make a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to identify and obtain the error message in the `ClientError` :
@@ -1389,6 +1434,8 @@ response, err := client.DescribeLoadBalancers(request) if clientError, ok := err
     clientError.OriginError()
 ```
 
+`}`
+
 **ServerError**
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to identify and obtain the error message in ServerError and Response:
@@ -1406,6 +1453,8 @@ response, err := client.DescribeLoadBalancers(request) if serverError, ok := err
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 ## 7 API Reference
 
@@ -1568,13 +1617,15 @@ Common request parameters are request parameters that you must use when you call
 | SignatureVersion | String | Yes | The signature algorithm version. Valid value: 1.0 |
 | SignatureNonce | String | Yes | A unique random number that is used to prevent network replay attacks. You must use different random numbers for different requests. |
 
+**Example**
+
 ```
 http://slb.example.com/?Action=DescribeLoadBalancers &TimeStamp=2014-05-19T10%3A33%3A56Z &Format=xml &AccessKeyId=testid &Action=DescribeLoadBalancerAttribute &SignatureMethod=Hmac-SHA1 &LoadBalancerId=loadBalancerID &SignatureNonce=NwDAxvLU6tFE0DVb &Version=2014-05-15 &SignatureVersion=1.0 &Signature=Signature
 ```
 
 **Common response parameters**
 
-API responses use a unified format. The 2xx HTTP status code indicates a successful invocation. The 4xx or 5xx HTTP status code indicates a failed invocation. The responses can be returned in JSON or XML format. The XML format is used by default. You can specify the format when calling an API. Each time a request is sent to call an API, the system returns a unique identifier **RequestId**, regardless of whether the invocation is successful.
+API responses use a unified format. The 2xx HTTP status code indicates a successful invocation. The 4xx or 5xx HTTP status code indicates a failed invocation. The responses can be returned in JSON or XML format. The XML format is used by default. You can specify the format when calling an API. Each time a request is sent to call an API, the system returns a unique identifier **RequestId**, regardless of whether the invocation is successful. XML format
 
 ```xml
 <? xml version="1.0" encoding="utf-8"? >
@@ -1586,7 +1637,7 @@ API responses use a unified format. The 2xx HTTP status code indicates a success
     </API name+Response>
 ```
 
-`{`
+JSON format `{`
 
 ```json
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
@@ -1599,6 +1650,8 @@ API responses use a unified format. The 2xx HTTP status code indicates a success
 
 Creates a Server Load Balancer (SLB) instance. Before you call this operation, take note of the following items: Before you create an SLB instance, call the DescribeAvailableResource operation to query the resources available for purchase in the zone where you want to create the SLB instance. You are charged for the SLB instances that you create. For more information, see Create an SLB instance. If you do not set **LoadBalancerSpec**, a shared-resource SLB instance is created. We recommend that you set the
 **LoadBalancerSpec** parameter to specify the specification of the SLB instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1621,6 +1674,8 @@ Creates a Server Load Balancer (SLB) instance. Before you call this operation, t
 | LoadBalancerSpec | String | No | slb.s2.small | Apsara Stack provides two types of SLB instance: shared-resource SLB instances and high-performance SLB instances. You can create high-performance SLB instances of different specifications. Valid values: slb.s1.small slb.s2.small slb.s3.small slb.s2.medium For more information about the specifications of high- performance SLB instances, see High-performance SLB instances. |
 | AddressIPVersion | String | No | ipv4 | The IP version that is used by the SLB instance. Valid values: ipv4 and ipv6. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LoadBalancerId | String | lb-hddhfjg******* | The ID of the SLB instance. |
@@ -1633,7 +1688,7 @@ Creates a Server Load Balancer (SLB) instance. Before you call this operation, t
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
 ```
-http(s)://[Endpoint]/?Action=CreateLoadBalancer &RegionId=cn-east-hangzhou-01
+http(s)://[Endpoint]/?Action=CreateLoadBalancer &RegionId=cn-east-hangzhou-01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -1652,16 +1707,20 @@ Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
 
 > **Note:** After you delete an SLB instance, the listeners configured for the SLB instance and the tags added to the SLB instance are deleted.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteLoadBalancer | The operation that you want to perform. Set the value to DeleteLoadBalancer. |
 | LoadBalancerId | String | Yes | lb-bp1h66tp5uat8**** | The ID of the SLB instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-If the SLB instance that you want to delete has deletion protection enabled, the system reports an error in the following formats: `{`
+If the SLB instance that you want to delete has deletion protection enabled, the system reports an error in the following formats: JSON format `{`
 
 ```json
  "RequestId": "7B7AB375-1EA6-4A18-9D1C-F258F2D57638",
@@ -1669,6 +1728,8 @@ If the SLB instance that you want to delete has deletion protection enabled, the
  "Code": "OperationDenied.DeleteProtectionIsOn",
  "Message": "The loadbalancer can't be deleted due to DeleteProtection is enabled."
 ```
+
+`}`
 
 ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
@@ -1678,7 +1739,14 @@ If the SLB instance that you want to delete has deletion protection enabled, the
  <Code>OperationDenied.DeleteProtectionIsOn</Code>
  <Message>The loadbalancer can't be deleted due to DeleteProtection is enabled.</Message>
        </DeleteLoadBabalancerResponse>
-http(s)://[Endpoint]/?Action=DeleteLoadBalancer &LoadBalancerId=lb-bp1h66tp5uat8********
+```
+
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteLoadBalancer &LoadBalancerId=lb-bp1h66tp5uat8******** &<Common request parameters>
 ```
 
 Sample success responses
@@ -1695,18 +1763,22 @@ Sample success responses
 
 Modifies the specification of a Server Load Balancer (SLB) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyLoadBalancerInsta nceSpec | The operation that you want to perform. Set the value to ModifyLoadBalancerInstanceSpec. |
 | LoadBalancerId | String | Yes | lb-bp1b6c719df**** | The ID of the SLB instance. |
 | LoadBalancerSpec | String | Yes | slb.s1.small | The specification of the SLB instance. Valid values: slb.s1.small slb.s2.small slb.s2.medium slb.s3.small slb.s3.medium slb.s3.large The supported specifications vary by region. For more information, see Instance types . Note When you change a shared-resource SLB instance to a high-performance SLB instance, your service may be temporarily interrupted for 10 to 30 seconds. Therefore, we recommend that you modify the specification during off-peak hours. In addition, you can use Alibaba Cloud DNS (DNS) to schedule your workloads to another SLB instance before you modify the specification. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
 ```
-http(s)://[Endpoint]/?Action=ModifyLoadBalancerInstanceSpec &LoadBalancerId=lb-bp1b6c719df**** &LoadBalancerSpec=slb.s2.small
+http(s)://[Endpoint]/?Action=ModifyLoadBalancerInstanceSpec &LoadBalancerId=lb-bp1b6c719df**** &LoadBalancerSpec=slb.s2.small &<Common request parameters>
 ```
 
 Sample success responses
@@ -1723,18 +1795,26 @@ Sample success responses
 
 Modifies the billing method of an Internet-facing Server Load Balancer (SLB) instance. You can modify the billing method of an Internet-facing SLB instance in the following ways: Change the bandwidth limit of a pay-by-bandwidth SLB instance. The new bandwidth limit immediately takes effect. Change the billing method of an SLB instance from pay-by-data-transfer to pay-by-bandwidth. The new billing method takes effect at 00:00 the following day. Change the billing method of an SLB instance from pay-by-bandwidth to pay-by-data-transfer. The new billing method takes effect at 00:00 the following day.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyLoadBalancerInter netSpec | The operation that you want to perform. Set the value to ModifyLoadBalancerInternetSpec. |
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa08ex**** | The ID of the SLB instance. |
 | Bandwidth | Integer | No | 10 | The bandwidth limit of the Internet-facing SLB instance that is billed on a pay-by-bandwidth basis. Unit: Mbit/s. Valid values: 1 to 5000. The bandwidth limit varies based on the region where the SLB instance is created. Note You do not need to set this parameter for pay-by-data-transfer SLB instances. In this case, the value of InternetChargeType is paybytraffic. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifyLoadBalancerInternetSpec &LoadBalancerId=lb-bp1b6c719dfa08ex****
+http(s)://[Endpoint]/?Action=ModifyLoadBalancerInternetSpec &LoadBalancerId=lb-bp1b6c719dfa08ex**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -1753,18 +1833,26 @@ Sample success responses
 
 Modifies the name of a Server Load Balancer (SLB) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetLoadBalancerName | The operation that you want to perform. Set the value to SetLoadBalancerName. |
 | LoadBalancerId | String | Yes | lb-bp1b6c719dfa08e**** | The ID of the SLB instance. |
 | LoadBalancerName | String | Yes | lb-instance-test | The name of the SLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (), _ and hyphens (-). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerName &LoadBalancerId=lb-bp1b6c719dfa08e**** &LoadBalancerName=abc1
+http(s)://[Endpoint]/?Action=SetLoadBalancerName &LoadBalancerId=lb-bp1b6c719dfa08e**** &LoadBalancerName=abc1 &<Common request parameters>
 ```
 
 Sample success responses
@@ -1781,6 +1869,8 @@ Sample success responses
 
 Sets the state of a Server Load Balancer (SLB) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetLoadBalancerStatus | The operation that you want to perform. Set the value to SetLoadBalancerStatus. |
@@ -1791,12 +1881,18 @@ Sets the state of a Server Load Balancer (SLB) instance.
 | accesskeyid _ _ | String | No | acc- hp34s2h0xx1ht4nwo**** | The AccessKey ID. |
 | Tags | String | No | {"tagKey":"Key1","tagVal ue":"Value1"} | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerStatus &LoadBalancerId=lb-bp1b6c719dfa08e****** &LoadBalancerStatus=active
+http(s)://[Endpoint]/?Action=SetLoadBalancerStatus &LoadBalancerId=lb-bp1b6c719dfa08e****** &LoadBalancerStatus=active &<Common request parameters>
 ```
 
 Sample success responses
@@ -1813,10 +1909,14 @@ Sample success responses
 
 Queries detailed information about a specified Server Load Balancer (SLB) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeLoadBalancerAtt ribute | The operation that you want to perform. Set the value to DescribeLoadBalancerAttribute. |
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa08ex**** | The ID of the SLB instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1862,11 +1962,15 @@ Queries detailed information about a specified Server Load Balancer (SLB) instan
 | SlaveZoneId | String | cn-hangzhou-d | The ID of the secondary zone to which the SLB instance belongs. |
 | VSwitchId | String | vsw-255ecrwq5**** | The ID of the vSwitch to which the internal-facing SLB instance belongs. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeLoadBalancerAttribute &LoadBalancerId=lb-bp1b6c719dfa08ex****
+http(s)://[Endpoint]/?Action=DescribeLoadBalancerAttribute &LoadBalancerId=lb-bp1b6c719dfa08ex**** &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeLoadBalancerAttributeResponse>
@@ -1907,7 +2011,7 @@ Sample success responses
 </DescribeLoadBalancerAttributeResponse>
 ```
 
-`{`
+`JSON` format `{`
 
 ```json
     "CreateTimeStamp": 1541679713000,
@@ -1924,7 +2028,7 @@ Sample success responses
                 "Type": "ecs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "HasReservedInfo": "false",
@@ -1972,9 +2076,13 @@ Sample success responses
     "LoadBalancerStatus": "active"
 ```
 
+`}`
+
 #### 7.4.8 DescribeLoadBalancers
 
 Queries Server Load Balancer (SLB) instances.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1999,6 +2107,8 @@ Queries Server Load Balancer (SLB) instances.
 
 | AddressIPVersion | String | No | ipv4 | The IP version. Valid values: ipv4 and ipv6. Note You can create high-performance IPv6 SLB instances only in the following zones: Hangzhou Zone E and Hangzhou Zone F in the China (Hangzhou) region, Beijing Zone F and Beijing Zone G in the China (Beijing) region, Nantong Zone D and Nantong Zone E in the China (Nantong) region, Zhangjiakou Zone A and Zhangjiakou Zone B in the China (Zhangjiakou) region, and Shenzhen Zone D and Shenzhen Zone E in the China (Shenzhen) region. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2025,8 +2135,12 @@ Queries Server Load Balancer (SLB) instances.
 | PayType | String | PrePay | The billing method of the SLB instance. Valid values: PayOnDemand and PrePay. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeLoadBalancers &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeLoadBalancers &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -2035,7 +2149,7 @@ Sample success responses
 |---|---|
 | <DescribeLoadBalancersResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>50</PageSize> <LoadBalancers> <LoadBalancer> <CreateTimeStamp>1541679713000</CreateTimeStamp> <LoadBalancerName>abc1</LoadBalancerName> <RegionIdAlias>cn-hangzhou</RegionIdAlias> <ResourceGroupId>rg-acfmxaz*******y</ResourceGroupId> <AddressIPVersion>ipv4</AddressIPVersion> <LoadBalancerId>lb-bp1b6c********fuca5</LoadBalancerId> <VSwitchId>vsw-bp12mw1f********bmlj</VSwitchId> <InternetChargeType>4</InternetChargeType> <VpcId>vpc-bp1aevy8*********5cm</VpcId> <SlaveZoneId>cn-hangzhou-d</SlaveZoneId> <NetworkType>vpc</NetworkType> <MasterZoneId>cn-hangzhou-b</MasterZoneId> <CreateTime>2018-11-08T20:21Z</CreateTime> <Address>192.168.0.**</Address> <RegionId>cn-hangzhou</RegionId> <AddressType>intranet</AddressType> <PayType>PayOnDemand</PayType> <LoadBalancerStatus>active</LoadBalancerStatus> </LoadBalancer> </LoadBalancers> <RequestId>1C7445CB-C21C-4C19-9A3C-65C3190D1944</RequestId> </DescribeLoadBalancersResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "DescribeLoadBalancersResponse": {
@@ -2064,19 +2178,25 @@ Sample success responses
                 "LoadBalancerStatus": "active"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "RequestId": "1C7445CB-C21C-4C19-9A3C-65C3190D1944"
 ```
 
+`}` `}`
+
 #### 7.4.9 DescribeRegions
 
 Queries regions.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2086,11 +2206,15 @@ Queries regions.
 | LocalName | String | China (Qingdao) | The name of the region. |
 | RequestId | String | 1651FBB6-4FBF-49FF-A9F5- DF5D696C7EC6 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeRegions
+http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <RequestId>1651FBB6-4FBF-49FF-A9F5-DF5D696C7EC6</RequestId> <Regions>
@@ -2113,10 +2237,14 @@ Sample success responses
 
 Queries zones in a specified region.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeZones | The operation that you want to perform. Set the value to DescribeZones. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2178,14 +2306,14 @@ Sample success responses
                             "LocalName": "Hangzhou Zone G"
 ```
 
-`},`
+`}` `},`
 
 ```json
                     "ZoneId": "cn-hangzhou-h",
                     "LocalName": "Hangzhou Zone H"
 ```
 
-`]`
+`}` `]` `}` `}` `}`
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2200,6 +2328,8 @@ Sample success responses
 Creates a TCP listener.
 
 > **Note:** Newly created listeners are in the Stopped state. After a listener is created, you can call the `StartLoadBalancerListener` operation to enable the listener to forward traffic.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2228,12 +2358,18 @@ Creates a TCP listener.
 | EstablishedTimeout | Integer | No | 500 | The timeout period of a connection. Valid values: 10 to 900. Unit: seconds. |
 | Description | String | No | CreateListeners. | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (). It can also _ contain Chinese characters. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateLoadBalancerTCPListener &Bandwidth=-1 &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex******
+http(s)://[Endpoint]/?Action=CreateLoadBalancerTCPListener &Bandwidth=-1 &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex****** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2255,6 +2391,8 @@ Sample success responses
 ##### 7.5.1.2 SetLoadBalancerTCPListenerAttribute
 
 Modifes the configurations of a TCP listener.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2287,12 +2425,18 @@ Modifes the configurations of a TCP listener.
 | EstablishedTimeout | Integer | No | 500 | The timeout period of connections. Valid values: 10 to 900. Unit: seconds. |
 | Description | String | No | test | The description of the TCP listener. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerTCPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y****
+http(s)://[Endpoint]/?Action=SetLoadBalancerTCPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2308,6 +2452,8 @@ Sample success responses
 ##### 7.5.1.3 DescribeLoadBalancerTCPListenerAttribute
 
 Queries the configurations of a TCP listener.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2346,8 +2492,12 @@ Queries the configurations of a TCP listener.
 |   | MaxConnection | Integer |   | 10 | The maximum number of connections. |   |   |
 |   | RequestId | String |   | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |   |   |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeLoadBalancerTCPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y******
+http(s)://[Endpoint]/?Action=DescribeLoadBalancerTCPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y****** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2356,7 +2506,7 @@ Sample success responses
 |---|---|
 | <DescribeLoadBalancerTCPListenerAttributeResponse> <HealthCheckHttpCode>http_2xx,http_3xx</HealthCheckHttpCode> <PersistenceTimeout>0</PersistenceTimeout> <HealthCheckType>tcp</HealthCheckType> <HealthyThreshold>3</HealthyThreshold> <Scheduler>wrr</Scheduler> <UnhealthyThreshold>3</UnhealthyThreshold> <Bandwidth>-1</Bandwidth> <Description>tcp_80</Description> <AclStatus>off</AclStatus> <HealthCheckURI>/</HealthCheckURI> <HealthCheck>on</HealthCheck> <HealthCheckConnectTimeout>5</HealthCheckConnectTimeout> <ListenerPort>80</ListenerPort> <Status>running</Status> <EstablishedTimeout>900</EstablishedTimeout> <HealthCheckDomain></HealthCheckDomain> <HealthCheckInterval>2</HealthCheckInterval> <RequestId>9A113A8C-BB8F-475E-9533-7819ECA2FFC1</RequestId> <BackendServerPort>80</BackendServerPort> </DescribeLoadBalancerTCPListenerAttributeResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "HealthCheckHttpCode": "http_2xx,http_3xx",
@@ -2380,6 +2530,8 @@ Sample success responses
     "BackendServerPort": 80
 ```
 
+`}`
+
 #### 7.5.2 UDP listeners
 
 ##### 7.5.2.1 CreateLoadBalancerUDPListener
@@ -2387,6 +2539,8 @@ Sample success responses
 Creates a UDP listener.
 
 > **Note:** You cannot view the source IP addresses of network traffic if you create UDP listeners for a Server Load Balancer (SLB) instance that is deployed in a classic network. In addition, newly created listeners are in the **stopped** state. After a listener is created, you must call the StartLoadBalancerListener operation to enable the listener. This way, the listener can forward network traffic.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2411,12 +2565,18 @@ Creates a UDP listener.
 | Description | String | No | test | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (). It can also _ contain Chinese characters. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateLoadBalancerUDPListener &Bandwidth=34 &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y7******
+http(s)://[Endpoint]/?Action=CreateLoadBalancerUDPListener &Bandwidth=34 &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y7****** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2436,6 +2596,8 @@ Sample success responses
 ##### 7.5.2.2 SetLoadBalancerUDPListenerAttribute
 
 Modifies the configurations of a UDP listener.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2463,12 +2625,18 @@ Modifies the configurations of a UDP listener.
 | MasterSlaveServerGroup | String | No | on | Specifies whether to use a primary/secondary server group. Valid values: on and off. You cannot set both VserverGroup and MasterSlaveServerGroup to on. |
 | Description | String | No | test | The description of the listener. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerUDPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1rtfnodmywb43ecu4sf-c****
+http(s)://[Endpoint]/?Action=SetLoadBalancerUDPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1rtfnodmywb43ecu4sf-c**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2490,6 +2658,8 @@ Queries the configurations of a UDP listener.
 | Action | String | Yes | DescribeLoadBalancerUD PListenerAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerUDPListenerAttribute. |
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb- bp1rtfnodmywb43e**** | The ID of the SLB instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2515,8 +2685,12 @@ Queries the configurations of a UDP listener.
 | PersistenceTimeout | Integer | 0 | The timeout period of session persistence. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeLoadBalancerUDPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1rtfnodmywb43e****
+http(s)://[Endpoint]/?Action=DescribeLoadBalancerUDPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1rtfnodmywb43e**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2538,6 +2712,8 @@ Creates an HTTP listener.
 > **Note:** Newly created listeners are in the **stopped** state.
 
 After a listener is created, you can call the `StartLoadBalancerListener` operation to enable the listener to forward traffic.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2581,12 +2757,18 @@ After a listener is created, you can call the `StartLoadBalancerListener` operat
 | ForwardPort | Integer | No | 443 | The listening port that is used to redirect HTTP requests to HTTPS. |
 | Description | String | No | ListenerDescription | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (). It can also _ contain Chinese characters. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPListener &HealthCheck=off &ListenerPort=80 &LoadBalancerId=lb-bp1c9vixxjh92q83tw***** &StickySession=off &BackendServerPort=80
+http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPListener &HealthCheck=off &ListenerPort=80 &LoadBalancerId=lb-bp1c9vixxjh92q83tw***** &StickySession=off &BackendServerPort=80 &<Common request parameters>
 ```
 
 Sample success responses
@@ -2602,6 +2784,8 @@ Sample success responses
 ##### 7.5.3.2 SetLoadBalancerHTTPListenerAttribute
 
 Modifies the configurations of an HTTP listener.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2642,9 +2826,15 @@ Modifies the configurations of an HTTP listener.
 | RequestTimeout | Integer | No | 3 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the specified timeout period, SLB sends an HTTP 504 error code to the client. |
 | Description | String | No | test | The description of the listener. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=SetLoadBalancerHTTPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1qjwo61pqz3ah****
@@ -2652,15 +2842,25 @@ http(s)://[Endpoint]/?Action=SetLoadBalancerHTTPListenerAttribute &ListenerPort=
 
 Sample success responses
 
-```json
+```xml
 <SetLoadBalancerHTTPListenerAttributeResponse>
       <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
-</SetLoadBalancerHTTPListenerAttributeResponse> {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+</SetLoadBalancerHTTPListenerAttributeResponse>
 ```
+
+`JSON` format
+
+```json
+{"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+```
+
+`}`
 
 ##### 7.5.3.3 DescribeLoadBalancerHTTPListenerAttribute
 
 Queries the configurations of an HTTP listener.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2668,6 +2868,8 @@ Queries the configurations of an HTTP listener.
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb-bp1o94dp5**** | The ID of the SLB instance. |
 | RegionId | String | Yes | cn-east-hangzhou-01 | The ID of the region where the SLB instance is deployed. You can call the DescribeRegions operation to query the most recent region list. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2719,11 +2921,15 @@ Queries the configurations of an HTTP listener.
 | XForwardedForSLBIP _ | String | on | Indicates whether the SLB-IP header is used to retrieve the IP address of the SLB instance. |
 | XForwardedForproto _ | String | on | Indicates whether the X-Forwarded-Proto header is used to retrieve the listening protocol. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeLoadBalancerHTTPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1o94dp5*********
+http(s)://[Endpoint]/?Action=DescribeLoadBalancerHTTPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1o94dp5********* &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeLoadBalancerHTTPListenerAttributeResponse>
@@ -2746,6 +2952,8 @@ Sample success responses
 Creates an HTTPS listener.
 
 > **Note:** Newly created listeners are in the stopped state. After a listener is created, call the `StartLoadBalancerListener` operation to enable the listener to forward network traffic.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2797,12 +3005,18 @@ Creates an HTTPS listener.
 | AclStatus | String | No | off | Specifies whether to enable access control. Valid values: Valid values: on and off. Default value: off. |
 | EnableHttp2 | String | No | off | Specifies whether to enable HTTP/2. Valid values: on and off. Default value: off. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPSListener &Bandwidth=-1 &HealthCheck=on &ListenerPort=80 &LoadBalancerId=lb-bp1o94dp5i6earr***** &StickySession=on
+http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPSListener &Bandwidth=-1 &HealthCheck=on &ListenerPort=80 &LoadBalancerId=lb-bp1o94dp5i6earr***** &StickySession=on &<Common request parameters>
 ```
 
 Sample responses
@@ -2863,6 +3077,8 @@ Sample responses
 
 Modifies the configurations of an HTTPS listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetLoadBalancerHTTPSLi stenerAttribute | The operation that you want to perform. Set the value to SetLoadBalancerHTTPSListenerAttribute. |
@@ -2910,12 +3126,18 @@ Modifies the configurations of an HTTPS listener.
 |   | [\w.,;/@-]){2,256}$ |
 |---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerHTTPSListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-sjhfdji****************
+http(s)://[Endpoint]/?Action=SetLoadBalancerHTTPSListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-sjhfdji**************** &<Common request parameters>
 ```
 
 Sample success responses
@@ -2934,11 +3156,15 @@ Sample success responses
 
 Queries the configurations of an HTTPS listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeLoadBalancerHT TPSListenerAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerHTTPSListenerAttribute. |
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb-bp1mxu5r8lau**** | The ID of the SLB instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2982,8 +3208,12 @@ Queries the configurations of an HTTPS listener.
 | XForwardedForSLBIP _ | String | on | Indicates whether the SLB-IP header is used to obtain the real IP address of the client. Valid values: on and off. |
 | XForwardedForproto _ | String | on | Indicates whether the X-Forwarded-Proto header is used to obtain the listener protocol of the SLB instance. Valid values: on and off. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeLoadBalancerHTTPSListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1mxu5r8lau*******
+http(s)://[Endpoint]/?Action=DescribeLoadBalancerHTTPSListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1mxu5r8lau******* &<Common request parameters>
 ```
 
 Sample success responses
@@ -2992,7 +3222,7 @@ Sample success responses
 |---|---|
 | <DescribeLoadBalancerHTTPSListenerAttributeResponse> <RequestId>11F52428-64ED-40F7-98C2-DBB6D0BB0AD7</RequestId> <HealthCheckHttpCode>http_2xx,http_3xx</HealthCheckHttpCode> <HealthCheckTimeout>5</HealthCheckTimeout> <ServerCertificateId>1231579xxxxxxxx_15dbf6ff26f_1991415478_2054196746</ServerCertificateId> <XForwardedFor_SLBID>off</XForwardedFor_SLBID> <Gzip>on</Gzip> <HealthyThreshold>3</HealthyThreshold> <Scheduler>wrr</Scheduler> <StickySession>off</StickySession> <UnhealthyThreshold>3</UnhealthyThreshold> <XForwardedFor_SLBIP>off</XForwardedFor_SLBIP> <XForwardedFor_proto>off</XForwardedFor_proto> <Bandwidth>-1</Bandwidth> <HealthCheckURI>/</HealthCheckURI> <VServerGroupId>rsp-0xiju72x******</VServerGroupId> <HealthCheck>on</HealthCheck> <ListenerPort>443</ListenerPort> <Status>running</Status> <XForwardedFor>on</XForwardedFor> <HealthCheckDomain></HealthCheckDomain> <HealthCheckInterval>2</HealthCheckInterval> <BackendServerPort>443</BackendServerPort> </DescribeLoadBalancerHTTPSListenerAttributeResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "RequestId": "11F52428-64ED-40F7-98C2-DBB6D0BB0AD7",
@@ -3019,9 +3249,13 @@ Sample success responses
     "BackendServerPort": 443
 ```
 
+`}`
+
 ##### 7.5.4.4 DescribeHealthStatus
 
 Queries the health status of backend servers.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3029,6 +3263,8 @@ Queries the health status of backend servers.
 | LoadBalancerId | String | Yes | lb-bp1qjwo61pqz3ah**** | The ID of the Server Load Balancer (SLB) instance. |
 | ListenerPort | Integer | No | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. Note If you do not specify this parameter, the health status of all ports is returned. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the SLB instance is deployed. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3042,8 +3278,10 @@ Queries the health status of backend servers.
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 |---|---|---|---|
 
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeHealthStatus &LoadBalancerId=lb-bp1qjwo61pqz3ah****
+http(s)://[Endpoint]/?Action=DescribeHealthStatus &LoadBalancerId=lb-bp1qjwo61pqz3ah**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3062,6 +3300,8 @@ Sample success responses
 
 Enables or disables the whitelist of a specified listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 
@@ -3073,12 +3313,18 @@ Enables or disables the whitelist of a specified listener.
 | accesskeyid _ _ | String | No | acc- hp34s2h0xx1ht4nwo**** | The AccessKey ID. |
 | Tags | String | No | {"tagKey":"Key1","tagVal ue":"Value1"} | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetListenerAccessControlStatus &AccessControlStatus=open_white_list &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex****
+http(s)://[Endpoint]/?Action=SetListenerAccessControlStatus &AccessControlStatus=open_white_list &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3095,6 +3341,8 @@ Sample success responses
 
 Queries the whitelist configurations of a listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeListenerAccessC ontrolAttribute | The operation that you want to perform. Set the value to DescribeListenerAccessControlAttribute. |
@@ -3104,14 +3352,20 @@ Queries the whitelist configurations of a listener.
 |---|---|---|---|---|
 | Tags | String | No | listeneraccesscontrolslb* *** | The tags. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AccessControlStatus | String | openwhitelist _ _ | Indicates whether the whitelist is enabled. Valid values: openwhitelist: the whitelist is enabled. _ _ close: the whitelist is disabled. |
 | SourceItems | String | 192.168.0.1 | The IP addresses or CIDR blocks that are added to the whitelist. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeListenerAccessControlAttribute &ListenerPort=80 &LoadBalancerId=lb-8vb86hxixo8*******6jaz
+http(s)://[Endpoint]/?Action=DescribeListenerAccessControlAttribute &ListenerPort=80 &LoadBalancerId=lb-8vb86hxixo8*******6jaz &<Common request parameters>
 ```
 
 Sample success responses
@@ -3128,6 +3382,8 @@ Sample success responses
 
 Adds IP addresses to the whitelist of a listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AddListenerWhiteListIte m | The operation that you want to perform. Set the value to AddListenerWhiteListItem. |
@@ -3137,12 +3393,18 @@ Adds IP addresses to the whitelist of a listener.
 | SourceItems | String | Yes | 1.XX.XX.1,1.XX.XX.0/21 | The IP addresses or CIDR blocks that you want to add to the whitelist. This parameter takes effect only when AccessControlStatus of the listener is set to openwhitelist. _ _ Separate multiple IP addresses or CIDR blocks with commas (,). You cannot enter 0.0.0.0 or 0.0.0.0/0. You can call the SetListenerAccessControlStatus operation to set the value of the AccessControlStatus parameter to close. This indicates that access control is disabled. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddListenerWhiteListItem &ListenerPort=80 &LoadBalancerId=139a00604ad-cn-east-hangzhou-01 &SourceItems=1.XX.XX.1,XX.XX.1.0/21
+http(s)://[Endpoint]/?Action=AddListenerWhiteListItem &ListenerPort=80 &LoadBalancerId=139a00604ad-cn-east-hangzhou-01 &SourceItems=1.XX.XX.1,XX.XX.1.0/21 &<Common request parameters>
 ```
 
 Sample success responses
@@ -3159,6 +3421,8 @@ Sample success responses
 
 Removes IP addresses from the whitelist of a listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RemoveListenerWhiteList Item | The operation that you want to perform. Set the value to RemoveListenerWhiteListItem. |
@@ -3168,12 +3432,18 @@ Removes IP addresses from the whitelist of a listener.
 | SourceItems | String | Yes | 192.168.0.1/24 | The IP addresses or CIDR blocks to be removed. Separate multiple IP addresses or CIDR blocks with commas (,). Note If all IP addresses are removed from the whitelist, the listener does not forward requests. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=RemoveListenerWhiteListItem &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex**** &SourceItems=192.168.0.1
+http(s)://[Endpoint]/?Action=RemoveListenerWhiteListItem &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex**** &SourceItems=192.168.0.1 &<Common request parameters>
 ```
 
 Sample success responses
@@ -3190,6 +3460,8 @@ Sample success responses
 
 Creates an access control list (ACL). You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits: Each Apsara Stack tenant account can create at most 50 ACLs in a region. The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL is 50. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is 300. The maximum number of ACLs that can be associated with a listener is 50.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateAccessControlList | The operation that you want to perform. Set the value to CreateAccessControlList. |
@@ -3205,8 +3477,12 @@ Creates an access control list (ACL). You can create multiple ACLs. Each ACL can
 | AclId | String | acl-rj9xpxzcwxrukois**** | The ID of the ACL. |
 | RequestId | String | 988CB45E-1643-48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateAccessControlList &AclName=rule1 &RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=CreateAccessControlList &AclName=rule1 &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3230,6 +3506,8 @@ Sample responses
 
 Deletes an access control list (ACL). You can delete an ACL only if it is not associated with a listener.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteAccessControlList | The operation that you want to perform. Set the value to DeleteAccessControlList. |
@@ -3240,8 +3518,12 @@ Deletes an access control list (ACL). You can delete an ACL only if it is not as
 |---|---|---|---|
 | RequestId | String | 988CB45E-1643-48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteAccessControlList &AclId=acl-bp1l0kk4gxce43kz****** &RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=DeleteAccessControlList &AclId=acl-bp1l0kk4gxce43kz****** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3261,6 +3543,8 @@ Sample responses
 ##### 7.5.5.7 DescribeAccessControlLists
 
 Queries network access control lists (ACLs).
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3286,8 +3570,12 @@ Queries network access control lists (ACLs).
 | RequestId | String | 3CB646EF-6147-4566-A9D9- CE8FBE86F971 | The ID of the request. |
 | TotalCount | Integer | 3 | The number of network ACLs. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeAccessControlLists &RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=DescribeAccessControlLists &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3296,7 +3584,7 @@ Sample responses
 |---|---|
 | <DescribeAccessControlListsResponse> <RequestId>3CB646EF-6147-4566-A9D9-CE8FBE86F971</RequestId> <Acls> <Acl> <AclId>acl-bp1j9vn2g7wm9wn0*****</AclId> <AclName>test</AclName> <AddressIPVersion>ipv4</AddressIPVersion> </Acl> <Acl> <AclId>acl-bp1l0kk4gxce43*****</AclId> <AclName>doctest</AclName> <AddressIPVersion>ipv4</AddressIPVersion> </Acl> </Acls> </DescribeAccessControlListsResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "RequestId": "3CB646EF-6147-4566-A9D9-CE8FBE86F971",
@@ -3320,7 +3608,7 @@ Sample responses
                 "AddressIPVersion": "ipv4"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3330,12 +3618,16 @@ Sample responses
 
 Queries the configurations of a network access control list (ACL).
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAccessControlLis tAttribute | The operation that you want to perform. Set the value to DescribeAccessControlListAttribute. |
 | AclId | String | Yes | acl- bp1l0kk4gxce43kzet04s | The ID of the network ACL that you want to query. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the network ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 | AclEntryComment | String | No | test | The description of the network ACL entry. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3357,8 +3649,12 @@ Queries the configurations of a network access control list (ACL).
 | RequestId | String | C9906A1D-86F7-4C9C-A369- 54DA42EF206A | The ID of the request. |
 | ResourceGroupId | String | rg-atstuj3rtop**** | The ID of the resource group. |
 
+**Examples**
+
+Sample requests
+
 ```
-/?Action=DescribeAccessControlListAttribute &AclId=acl-bp1l0kk4gxce43kzet04s &RegionId=cn-hangzhou
+/?Action=DescribeAccessControlListAttribute &AclId=acl-bp1l0kk4gxce43kzet04s &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3375,6 +3671,8 @@ Sample responses
 
 Changes the name of a network access control list (ACL).
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetAccessControlListAttri bute | The operation that you want to perform. Set the value to SetAccessControlListAttribute. |
@@ -3384,13 +3682,19 @@ Changes the name of a network access control list (ACL).
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the network ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclId | String | acl-bp1l0kk4gxce43kzet04s | The ID of the network ACL. |
 | RequestId | String | 988CB45E-1643-48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetAccessControlListAttribute &AclId=acl-bp1l0kk4gxce43kzet04s &AclName=test1 &RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=SetAccessControlListAttribute &AclId=acl-bp1l0kk4gxce43kzet04s &AclName=test1 &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3407,6 +3711,8 @@ Sample responses
 
 Adds IP addresses to an access control list (ACL). Each ACL can contain one or more IP addresses or CIDR blocks. The limits on ACLs are: The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL in each call is **50**. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is **300**.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AddAccessControlListEntr y | The operation that you want to perform. Set the value to AddAccessControlListEntry. |
@@ -3416,12 +3722,18 @@ Adds IP addresses to an access control list (ACL). Each ACL can contain one or m
 | AclEntrys | String | No | [{"entry":"10.0.**.**/24"," comment":"privaterule1" }, {"entry":"192.168.**.**/1 6","comment":"privaterul e2"}] | The IP addresses that you want to add to the ACL. entry: the IP addresses or CIDR blocks that you want to add to the ACL. Separate multiple IP addresses or CIDR blocks with commas (,). comment: the comment on the ACL. Note You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 988CB45E-1643-48C0-87B4- 928DDF77EA4 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddAccessControlListEntry &AclId=acl-bp1l0kk4gxce43kze***** &RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=AddAccessControlListEntry &AclId=acl-bp1l0kk4gxce43kze***** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3447,6 +3759,8 @@ Sample responses
 
 Removes IP addresses from an access control list (ACL).
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 
@@ -3456,12 +3770,18 @@ Removes IP addresses from an access control list (ACL).
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 | AclEntrys | String | No | [{"entry":"10.0.**.**/24"," comment":"privaterule1" }] | The IP addresses that you want to remove from the ACL. entry: the IP address or CIDR block that you want to remove from the ACL. Separate multiple IP addresses or CIDR blocks with commas (,). comment: the comment of the ACL. Note If the ACL is associated with a listener, you cannot remove all IP addresses from the ACL. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 988CB45E-1643-48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=RemoveAccessControlListEntry &AclId=acl-bp1l0kk4gxce43k****** &RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=RemoveAccessControlListEntry &AclId=acl-bp1l0kk4gxce43k****** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses
@@ -3480,6 +3800,8 @@ Deletes a listener.
 
 > **Note:** You can delete only listeners that are in the **stopped** or **running** state.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteLoadBalancerListe ner | The operation that you want to perform. Set the value to DeleteLoadBalancerListener. |
@@ -3492,8 +3814,12 @@ Deletes a listener.
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteLoadBalancerListener &ListenerPort=80 &LoadBalancerId=lb-bp13jaf5qli5xm****
+http(s)://[Endpoint]/?Action=DeleteLoadBalancerListener &ListenerPort=80 &LoadBalancerId=lb-bp13jaf5qli5xm**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3512,12 +3838,16 @@ Disables a listener. When you call this operation, take note of the following it
 
 > **Note:** After a listener is disabled, it stops forwarding requests to the associated backend servers. This may cause service interruptions. Proceed with caution.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StopLoadBalancerListene r | The operation that you want to perform. Set the value to StopLoadBalancerListener. |
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb-bp13jaf5qli5xmgl**** | The ID of the SLB instance. |
 | Tags | String | No | null | The key and value of the tag. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3541,6 +3871,8 @@ Sample success responses
 
 Enables a listener. When you call this operation, take note of the following items: You can call the operation only when the listener is in the Stopped state. If the operation is successful, the state of the listener changes to Starting. You cannot call the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StartLoadBalancerListene r | The operation that you want to perform. Set the value to StartLoadBalancerListener. |
@@ -3548,12 +3880,18 @@ Enables a listener. When you call this operation, take note of the following ite
 | LoadBalancerId | String | Yes | lb-bp13jaf5qli5**** | The ID of the SLB instance. |
 | Tags | String | No | {"tagKey":"Key1","tagVal ue":"Value1"} | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=StartLoadBalancerListener &ListenerPort=80 &LoadBalancerId=lb-bp13jaf5qli5****
+http(s)://[Endpoint]/?Action=StartLoadBalancerListener &ListenerPort=80 &LoadBalancerId=lb-bp13jaf5qli5**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3578,6 +3916,8 @@ Sample success responses
 
 Uploads a server certificate. You can upload only one server certificate and its private key in each request. The request is successful only when the server certificate and its private key are both uploaded. If the server certificate or its private key is not uploaded, the request fails. After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your account are returned.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UploadServerCertificate | The operation that you want to perform. Set the value to UploadServerCertificate. |
@@ -3589,6 +3929,8 @@ Uploads a server certificate. You can upload only one server certificate and its
 | ServerCertificateName | String | No | mycert01 | The name of the server certificate that you want to upload. The name must be 1 to 80 characters in length and can contain digits, periods (.), underscores (), and _ hyphens (-). It must start with a letter. |
 | Tags | String | No | ServerCertificate**** | The tag that you want to add to the server certificate. |
 | StandardType | String | No | ServerCertificate | The type of the server certificate. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3604,8 +3946,12 @@ Uploads a server certificate. You can upload only one server certificate and its
 | RegionIdAlias | String | hangzhou | The name of the region where the server certificate is created. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UploadServerCertificate &RegionId=cn-east-hangzhou-01
+http(s)://[Endpoint]/?Action=UploadServerCertificate &RegionId=cn-east-hangzhou-01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -3630,12 +3976,18 @@ Deletes a server certificate.
 | ServerCertificateId | String | Yes | 123157****166f820468 _ 917147634087099**** _ _ | The ID of the server certificate. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. You can call the DescribeRegions operation to query region IDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteServerCertificate &ServerCertificateId=123157****_166f8204689_1714763408_7099****
+http(s)://[Endpoint]/?Action=DeleteServerCertificate &ServerCertificateId=123157****_166f8204689_1714763408_7099**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3653,6 +4005,8 @@ Sample success responses
 Queries server certificates in a specified region.
 
 > **Note:** For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3675,11 +4029,15 @@ Queries server certificates in a specified region.
 | StandardType | String | ServerCertificate | The type of the server certificate. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeServerCertificates
+http(s)://[Endpoint]/?Action=DescribeServerCertificates &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeServerCertificatesResponse>
@@ -3720,7 +4078,7 @@ Sample success responses
 </DescribeServerCertificatesResponse>
 ```
 
-`{`
+`JSON` format `{`
 
 ```json
     "DescribeServerCertificatesResponse": {
@@ -3766,11 +4124,13 @@ Sample success responses
                     "AliCloudCertificateName": ""
 ```
 
-`]`
+`}` `]` `}` `}` `}`
 
 #### 7.8.4 SetServerCertificateName
 
 Sets the name of a server certificate.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3779,12 +4139,14 @@ Sets the name of a server certificate.
 | ServerCertificateId | String | Yes | 139a****-cn-qingdao- env17-d01 | The ID of the server certificate. |
 | ServerCertificateName | String | Yes | slb-servercertificate-cn- east-hangzhou**** | The name of the server certificate. The name must be 1 to 80 characters in length and can contain digits, periods (.), underscores (), and hyphens (-). It must _ start with a letter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FE7BA984 | The ID of the request. |
 
 ```
-http(s)://[Endpoint]/?Action=SetServerCertificateName &RegionId=cn-east-hangzhou-01 &ServerCertificateId=139a****-cn-east-hangzhou-01 &ServerCertificateName=slb-servercertificate-cn-east-hangzhou****
+http(s)://[Endpoint]/?Action=SetServerCertificateName &RegionId=cn-east-hangzhou-01 &ServerCertificateId=139a****-cn-east-hangzhou-01 &ServerCertificateName=slb-servercertificate-cn-east-hangzhou**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3801,6 +4163,8 @@ Sample success responses
 
 Uploads a CA certificate. You can upload only one CA certificate in each call. After a CA certificate is uploaded, the ID, name, and fingerprint of the certificate are returned.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UploadCACertificate | The operation that you want to perform. Set the value to UploadCACertificate. |
@@ -3808,12 +4172,18 @@ Uploads a CA certificate. You can upload only one CA certificate in each call. A
 | CACertificate | String | Yes | test | The content of the CA certificate that you want to upload. |
 | CACertificateName | String | No | mycacert01 | The name of the CA certificate. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CACertificateId | String | 139a00604ad-cn-east- hangzh**** | The ID of the CA certificate. |
 | CACertificateName | String | mycacert01 | The name of the CA certificate. |
 | Fingerprint | String | 02:DF:AB:ED | The fingerprint of the CA certificate. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=UploadCACertificate &RegionId=cn-qingdao-env17-d01 &CACertificate=test
@@ -3835,18 +4205,26 @@ Deletes a CA certificate.
 
 > **Note:** You cannot delete a CA certificate that is in use.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteCACertificate | The operation that you want to perform. Set the value to DeleteCACertificate. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is created. You can call the DescribeRegions operation to query region IDs. |
 | CACertificateId | String | Yes | 123157908****15c73d7 _ 7203-986300114- _ _ 2110544**** | The ID of the CA certificate. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FF7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteCACertificate &RegionId=cn-east-hangzhou-01 &CACertificateId=123157908****_15c73d77203_-986300114_-211054****
+http(s)://[Endpoint]/?Action=DeleteCACertificate &RegionId=cn-east-hangzhou-01 &CACertificateId=123157908****_15c73d77203_-986300114_-211054**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3855,12 +4233,14 @@ Sample success responses
 |---|---|
 | <DeleteCACertificateResponse> <RequestId>CEFxxxxx72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId> </DeleteCACertificateResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "DeleteCACertificateResponse": {
         "RequestId": "CEFxxxxx72CEB-54B6-4AE8-B225-F876FF7BA984"
 ```
+
+`}`
 
 #### 7.8.7 DescribeCACertificates
 
@@ -3868,11 +4248,15 @@ Queries CA certificates.
 
 > **Note:** For security reasons, only fingerprints and names of the CA certificates are returned, the content of the CA certificates is not returned.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeCACertificates | The operation that you want to perform. Set the value to DescribeCACertificates. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the CA certificate is created. You can call the DescribeRegions operation to query region IDs. |
 | CACertificateId | String | No | 139a006****-cn-qingdao- env17-d01 | The ID of the CA certificate. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3884,8 +4268,12 @@ Queries CA certificates.
 | Fingerprint | String | AC:BE:FD | The fingerprint of the CA certificate. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeCACertificates &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeCACertificates &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -3902,6 +4290,8 @@ Sample success responses
 
 Sets the name of a CA certificate.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetCACertificateName | The operation that you want to perform. Set the value to SetCACertificateName. |
@@ -3910,12 +4300,18 @@ Sets the name of a CA certificate.
 | CACertificateName | String | Yes | mycacert02 | The name of the CA certificate. The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (), and hyphens (-). It must start with _ a letter. |
 | accesskeyid _ _ | String | No | acc- hp34s2h0xx1ht4nwo**** | The AccessKey ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6-4AE8-B225- F876FE7BA984 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetCACertificateName &RegionId=cn-qingdao-env17-d01 &CACertificateId=139a0****-cn-qingdao-env17-d01 &CACertificateName=mycacert02
+http(s)://[Endpoint]/?Action=SetCACertificateName &RegionId=cn-qingdao-env17-d01 &CACertificateId=139a0****-cn-qingdao-env17-d01 &CACertificateName=mycacert02 &<Common request parameters>
 ```
 
 Sample success responses
@@ -3935,6 +4331,8 @@ Sample success responses
 Adds backend servers.
 
 > **Note:** If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
+
+**Request parameters**
 
 |   | Parameter |   |   | Type | Required |   |   | Example |   | Description |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3967,8 +4365,12 @@ Adds backend servers.
 | Description | String | BackendServer | The description of the backend server. |
 | RequestId | String | 34B82C81-F13B-4EEB-99F6- A048C67CC830 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddBackendServers &LoadBalancerId=lb-2ze7o5h52g02kkzz****
+http(s)://[Endpoint]/?Action=AddBackendServers &LoadBalancerId=lb-2ze7o5h52g02kkzz**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -3977,7 +4379,7 @@ Sample success responses
 |---|---|
 | <AddBackendServersResponse> <BackendServers> <BackendServer> <ServerId>i-2zej4lxhjoq1icu*****</ServerId> <Weight>100</Weight> <Type>ecs</Type> </BackendServer> <BackendServer> <ServerId>i-2ze1u9ywulp5pbv*****</ServerId> <Weight>100</Weight> <Type>ecs</Type> </BackendServer> </BackendServers> <RequestId>34B82C81-F13B-4EEB-99F6-A048C67CC830</RequestId> <LoadBalancerId>lb-2ze7o5h52g02kkzz*****</LoadBalancerId> </AddBackendServersResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "AddBackendServersResponse": {
@@ -4001,18 +4403,22 @@ Sample success responses
                     "Type": "ecs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "RequestId": "34B82C81-F13B-4EEB-99F6-A048C67CC830",
         "LoadBalancerId": "lb-2ze7o5h52g02kkzz*****"
 ```
 
+`}` `}`
+
 #### 7.9.2 RemoveBackendServers
 
 Removes backend servers.
 
 > **Note:** If the backend server that you want to remove does not belong to the specified Server Load Balancer (SLB) instance, the request fails. However, the system does not report an error.
+
+**Request parameters**
 
 | Parameter | Type | Required |   |   | Example | Description |   |   |
 |---|---|---|---|---|---|---|---|---|
@@ -4023,6 +4429,8 @@ Removes backend servers.
 |   |   |   |   |   |   | ENI: | [{"ServerId":"eni- 2ze 1sdp |   |
 |   |   |   |   |   |   | 5***","Type": "eni","Weight":"100"}] |   |   |
 | LoadBalancerId | String | Yes |   |   | lb-bp1qjwo61pqz3ahl**** | The ID of the SLB instance. |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4035,8 +4443,12 @@ Removes backend servers.
 | Weight | Integer | 100 | The weight of the backend server. Valid values: 0 to 100. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=RemoveBackendServers &BackendServers=[{"ServerId":"i-2zej4lxhjoq****", "Type": "ecs","Weight":"100"}] &LoadBalancerId=lb-bp1qjwo61pqz3ahl****
+http(s)://[Endpoint]/?Action=RemoveBackendServers &BackendServers=[{"ServerId":"i-2zej4lxhjoq****", "Type": "ecs","Weight":"100"}] &LoadBalancerId=lb-bp1qjwo61pqz3ahl**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4052,6 +4464,8 @@ Sample success responses
 #### 7.9.3 SetBackendServers
 
 Sets the weights of backend servers.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4076,6 +4490,8 @@ Sets the weights of backend servers.
 |   |   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   | "Port":"80","Description":"test-113" }] |   |   |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LoadBalancerId | String | lb-bp1qjwo61pqz3a**** | The ID of the SLB instance. |
@@ -4089,8 +4505,12 @@ Sets the weights of backend servers.
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetBackendServers &LoadBalancerId=lb-bp1qjwo61pqz3a****
+http(s)://[Endpoint]/?Action=SetBackendServers &LoadBalancerId=lb-bp1qjwo61pqz3a**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4108,6 +4528,8 @@ Sample success responses
 #### 7.10.1 CreateVServerGroup
 
 Creates a vServer group and adds backend servers to the vServer group.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4134,6 +4556,8 @@ Creates a vServer group and adds backend servers to the vServer group.
 |   |   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   | "Port":"80","Description":"test-113" }] |   |   |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupId | String | rsp-cige6**** | The ID of the vServer group. |
@@ -4149,8 +4573,12 @@ Creates a vServer group and adds backend servers to the vServer group.
 | Type | String | Type | The type of backend server. Valid values: ecs (default): an ECS instance eni: an ENI |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateVServerGroup &LoadBalancerId=lb-bp1qjwo61pqz3ahl**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=CreateVServerGroup &LoadBalancerId=lb-bp1qjwo61pqz3ahl**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -4172,6 +4600,8 @@ Modifies the configurations of a vServer group. You can call the operation to mo
 | AddVServerGroupBackendServers |   | operation. |
 
 If you want to add backend servers, call the `AddVServerGroupBackendServers` operation.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4198,6 +4628,8 @@ If you want to add backend servers, call the `AddVServerGroupBackendServers` ope
 |   |   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   | "Port":"80","Description":"test-113" }] |   |   |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupId | String | rsp-cige6**** | The ID of the vServer group. |
@@ -4213,8 +4645,12 @@ If you want to add backend servers, call the `AddVServerGroupBackendServers` ope
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetVServerGroupAttribute &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6****
+http(s)://[Endpoint]/?Action=SetVServerGroupAttribute &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4230,6 +4666,8 @@ Sample success responses
 #### 7.10.3 AddVServerGroupBackendServers
 
 Adds backend servers to a specified vServer group.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4255,6 +4693,8 @@ Adds backend servers to a specified vServer group.
 |   | RegionId |   |   | String | Yes |   |   | cn-qingdao-env17-d01 |   | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |   |   |   |   |
 |   | VServerGroupId |   |   | String | Yes |   |   | rsp-cige6**** |   | The ID of the vServer group. |   |   |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupId | String | rsp-cige6j**** | The ID of the vServer group. |
@@ -4269,8 +4709,12 @@ Adds backend servers to a specified vServer group.
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```json
-http(s)://[Endpoint]/?Action=AddVServerGroupBackendServers &BackendServers=[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Description":"test-113" }] &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6****
+http(s)://[Endpoint]/?Action=AddVServerGroupBackendServers &BackendServers=[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Description":"test-113" }] &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4289,6 +4733,8 @@ Removes a backend server from a specified vServer group.
 
 > **Note:** If one or more backend servers specified by **BackendServers** do not exist in the vServer group, the backend servers are ignored and no error message is returned.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RemoveVServerGroupBa ckendServers | The operation that you want to perform. Set the value to RemoveVServerGroupBackendServers. |
@@ -4297,6 +4743,8 @@ Removes a backend server from a specified vServer group.
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6**** | The ID of the vServer group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4308,8 +4756,12 @@ Removes a backend server from a specified vServer group.
 | Weight | Integer | 100 | The weight of the backend server. |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```json
-http(s)://[Endpoint]/?Action=RemoveVServerGroupBackendServers &BackendServers=[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Description":"test-113" }] &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6****
+http(s)://[Endpoint]/?Action=RemoveVServerGroupBackendServers &BackendServers=[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Description":"test-113" }] &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4336,6 +4788,8 @@ Sample success responses
 #### 7.10.5 ModifyVServerGroupBackendServers
 
 Replaces backend servers in a specified vServer group. You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the `SetVServerGroupAttribute` operation.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4379,6 +4833,8 @@ Replaces backend servers in a specified vServer group. You can call this operati
 |   |   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   | "Port":"80","Description":"test-113" }] |   |   |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupId | String | rsp-cige6j**** | The ID of the vServer group. |
@@ -4388,6 +4844,10 @@ Replaces backend servers in a specified vServer group. You can call this operati
 | Port | Integer | 70 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ModifyVServerGroupBackendServers &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6j****
@@ -4407,18 +4867,26 @@ Sample success responses
 
 Deletes a vServer group.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteVServerGroup | The operation that you want to perform. Set the value to DeleteVServerGroup. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6j**** | The ID of the vServer group. Note You cannot delete a vServer group that is in use. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteVServerGroup &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6j****
+http(s)://[Endpoint]/?Action=DeleteVServerGroup &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6j**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4437,11 +4905,15 @@ Sample success responses
 
 Queries the vServer groups of a Server Load Balancer (SLB) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeVServerGroups | The operation that you want to perform. Set the value to DescribeVServerGroups. |
 | LoadBalancerId | String | Yes | lb-bp1o94dp5i6ea**** | The ID of the SLB instance. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the SLB instance is deployed. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4451,11 +4923,15 @@ Queries the vServer groups of a Server Load Balancer (SLB) instance.
 | VServerGroupName | String | k8s/31065/nginx-ingress- lb/kube-system/clust****" | The name of the vServer group. |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVServerGroups &LoadBalancerId=lb-bp1o94dp5i6ea**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeVServerGroups &LoadBalancerId=lb-bp1o94dp5i6ea**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeVServerGroupsResponse>
@@ -4495,7 +4971,7 @@ Sample success responses
 </DescribeVServerGroupsResponse>
 ```
 
-`{`
+`JSON` format `{`
 
 ```json
  "VServerGroups": {
@@ -4519,7 +4995,7 @@ Sample success responses
       "Rule": []
 ```
 
-`},` `{`
+`}` `}` `},` `{`
 
 ```json
     "VServerGroupId": "rsp-bp1i6sn******",
@@ -4536,7 +5012,7 @@ Sample success responses
       "Rule": []
 ```
 
-`},` `{`
+`}` `}` `},` `{`
 
 ```json
     "VServerGroupId": "rsp-bp1f85n******",
@@ -4553,21 +5029,27 @@ Sample success responses
       "Rule": []
 ```
 
-`]` `},`
+`}` `}` `}` `]` `},`
 
 ```json
  "RequestId": "31ADDBCD-275F-4C37-B0A3-5DFC8564E686"
 ```
 
+`}`
+
 #### 7.10.8 DescribeVServerGroupAttribute
 
 Queries detailed information about a vServer group.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeVServerGroupAtt ribute | The operation that you want to perform. Set the value to DescribeVServerGroupAttribute. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6**** | The ID of the vServer group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4585,8 +5067,12 @@ Queries detailed information about a vServer group.
 | Type | String | ecs | The type of backend server. Valid values: ecs (default): an Elastic Compute Service (ECS) instance eni: an elastic network interface (ENI) |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVServerGroupAttribute &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6****
+http(s)://[Endpoint]/?Action=DescribeVServerGroupAttribute &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
 ```
 
 Sample success responses
@@ -4604,6 +5090,8 @@ Sample success responses
 #### 7.11.1 CreateMasterSlaveServerGroup
 
 Creates a primary/secondary server group. A primary/secondary server group contains only two Elastic Compute Service (ECS) instances. One of the ECS instances serves as the primary server. The other ECS instance serves as the secondary server.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4650,6 +5138,8 @@ Creates a primary/secondary server group. A primary/secondary server group conta
 |   |   |   |   |   |   |   |   |   |   | "Port":"80","ServerType":"Slave","Description" |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   | :"test-112" }] |   |   |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | MasterSlaveServerGro upId | String | rsp-cige6j**** | The ID of the primary/secondary server group. |
@@ -4665,8 +5155,12 @@ Creates a primary/secondary server group. A primary/secondary server group conta
 | Type | String | ecs | The type of backend server. Valid values: ecs (default): an ECS instance eni: an ENI |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateMasterSlaveServerGroup &LoadBalancerId=lb-bp1hv944r69al4j**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=CreateMasterSlaveServerGroup &LoadBalancerId=lb-bp1hv944r69al4j**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -4675,7 +5169,7 @@ Sample success responses
 |---|---|
 | <CreateMasterSlaveServerGroupResponse> <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId> <MasterSlaveServerGroupId>rsp-cige******</MasterSlaveServerGroupId> <MasterSlaveBackendServers> <MasterSlaveBackendServers> <ServerId>vm-gtgt***</ServerId> <Port>80</Port> <Weight>100</Weight> <ServerType>Master</ServerType> </MasterSlaveBackendServers> <MasterSlaveBackendServers> <ServerId>vm-tygtyg****</ServerId> <Port>90</Port> <Weight>100</Weight> <ServerType>Slave</ServerType> </MasterSlaveBackendServers> </MasterSlaveBackendServers> </CreateMasterSlaveServerGroupResponse> |   |
 
-`{`
+`JSON` format `{`
 
 ```json
     "CreateMasterSlaveServerGroupResponse": {
@@ -4703,7 +5197,7 @@ Sample success responses
                     "ServerType": "Slave"
 ```
 
-`]`
+`}` `]` `}` `}` `}`
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4719,6 +5213,8 @@ Sample success responses
 
 Deletes a specified primary/secondary server group.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteMasterSlaveServer Group | The operation that you want to perform. Set the value to DeleteMasterSlaveServerGroup. |
@@ -4731,8 +5227,10 @@ Deletes a specified primary/secondary server group.
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 |---|---|---|---|
 
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteMasterSlaveServerGroup &MasterSlaveServerGroupId=rsp-cige6**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DeleteMasterSlaveServerGroup &MasterSlaveServerGroupId=rsp-cige6**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -4749,11 +5247,15 @@ Sample success responses
 
 Queries backend servers in a primary/secondary server group.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeMasterSlaveServ erGroups | The operation that you want to perform. Set the value to DescribeMasterSlaveServerGroups. |
 | LoadBalancerId | String | Yes | lb-bp14zi0n66zpg6o**** | The ID of the Server Load Balancer (SLB) instance. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the SLB instance is deployed. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4762,6 +5264,10 @@ Queries backend servers in a primary/secondary server group.
 | MasterSlaveServerGro upId | String | rsp-0bfuc**** | The ID of the primary/secondary server group. |
 | MasterSlaveServerGro upName | String | Group3 | The name of the primary/secondary server group. |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeMasterSlaveServerGroups &LoadBalancerId=lb-bp14zi0n66zpg6o**** &RegionId=cn-qingdao-env17-d01
@@ -4781,11 +5287,15 @@ Sample success responses
 
 Queries detailed information about a primary/secondary server group.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeMasterSlaveServ erGroupAttribute | The operation that you want to perform. Set the value to DescribeMasterSlaveServerGroupAttribute. |
 | MasterSlaveServerGroupI d | String | Yes | rsp-cige6j**** | The ID of the primary/secondary server group. |
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is created. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4803,8 +5313,12 @@ Queries detailed information about a primary/secondary server group.
 | Type | String | ecs | The type of backend server. Valid values: ecs: an ECS instance. This is the default value. eni: an ENI. |
 | RequestId | String | 9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeMasterSlaveServerGroupAttribute &MasterSlaveServerGroupId=rsp-cige6j**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeMasterSlaveServerGroupAttribute &MasterSlaveServerGroupId=rsp-cige6j**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses
@@ -4823,6 +5337,8 @@ Sample success responses
 
 Adds tags to a Server Load Balancer (SLB) instance. When you call this operation, take note of the following items: You can add at most 10 tags to an SLB instance. You can specify at most five tags in each request. All tags and keys added to an SLB instance must be unique. If you add a tag that has the same key as an existing tag but with a different value, the new tag overwrites the existing tag.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AddTags | The operation that you want to perform. Set the value to AddTags. |
@@ -4830,12 +5346,18 @@ Adds tags to a Server Load Balancer (SLB) instance. When you call this operation
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the SLB instance is deployed. |
 | Tags | String | Yes | [{"TagKey":"Key1","TagV alue":"Value1"}, {"TagKey":"Key2","TagV alue":"Value2"}] | The list of tags to be added. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddTags &LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}]
+http(s)://[Endpoint]/?Action=AddTags &LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}] &<Common request parameters>
 ```
 
 Sample success responses
@@ -4862,6 +5384,8 @@ Queries a list of tags. When you call this operation, take note of the following
 | PageSize | Integer | No | 50 | The number of entries to return on each page. Default value: 50. Maximum value: 100. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Minimum value: 1. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TagSets | Array of TagSet |   | The list of tags. |
@@ -4874,11 +5398,15 @@ Queries a list of tags. When you call this operation, take note of the following
 | TotalCount | Integer | 1 | The total number of instances that are returned after the tags are matched against the specified conditions. |
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeTags &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeTags &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeTagsResponse>
@@ -4903,6 +5431,8 @@ Sample success responses
 
 Removes tags from a Server Load Balancer (SLB) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RemoveTags | The operation that you want to perform. Set the value to RemoveTags. |
@@ -4910,12 +5440,18 @@ Removes tags from a Server Load Balancer (SLB) instance.
 | RegionId | String | Yes | cn-qingdao-env17-d01 | The ID of the region where the SLB instance is deployed. |
 | Tags | String | Yes | [{"TagKey":"Key1","TagV alue":"Value1"}, {"TagKey":"Key2","TagV alue":"Value2"}] | The list of tags that you want to remove. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=RemoveTags &LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}]
+http(s)://[Endpoint]/?Action=RemoveTags &LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}] &<Common request parameters>
 ```
 
 Sample success responses
@@ -5291,12 +5827,16 @@ STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long
 
 Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
 | RoleArn | String | Yes | acs:ram::123456789012** **:role/adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
 | RoleSessionName | String | Yes | alice | The custom name of the role session. Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the API caller. For example, you can specify a username. You can specify RoleSessionName to identify API callers that assume the same RAM role in ActionTrail logs. This allows you to track the users that perform the operations. The value must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"} | The policy that specifies the permissions of the returned STS token. This allows you to implement more fine- grained access control. Limits: The policy must be 1 to 1,024 characters in length. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5312,6 +5852,8 @@ Obtains a Security Token Service (STS) token to assume a Resource Access Managem
 | AssumedRoleUser | N/A | N/A | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::123456789012****:r ole/adminrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495****:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Example**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -5371,6 +5913,8 @@ format: sts-vpc.${global:region}.${global:internet-domain}.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Sample code**
 
 In this example, the `DescribeZones` operation is called to query the zones of Elastic Compute Service (ECS).
@@ -5414,6 +5958,8 @@ obtained in the preceding step. The AccessKey ID and the AccessKey secret are as
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidParameter | The parameter RoleArn is wrongly formed. | The error message returned because the ARN format of the RAM role is invalid. |
@@ -5447,6 +5993,8 @@ For more information about common request parameters, see `Common parameters` of
 
 This operation uses only common request headers. For more information, see the "Common headers" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Query | No | cn-hangzhou | The ID of the region where the SLB instance is created. You can call the DescribeRegions operation to query the most recent region list. If the endpoint of the region is slb.aliyuncs.com, you must specify RegionId . |
@@ -5464,6 +6012,8 @@ Developer ners
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | LoadBalancerId | RepeatLis t | Query | No | LoadBalancerId.1=lb- uf6so8u4g35prnvsw****,LoadBalanc erId.2=lb-uf6s1l1kukqv4u5nt**** | The SLB instance IDs. You can specify up to 10 IDs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5625,6 +6175,10 @@ Developer ners
 | RequestId | String | 365F4154-92F6-4AE4-92F8- 7FF34B540710 | The request ID. |
 | TotalCount | Integer | 10 | The total number of entries returned. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerListeners &Common request parameters
 ```
@@ -5762,6 +6316,8 @@ Developer ners
  "MaxResults":50
 ```
 
+`}`
+
 | XML | format |
 |---|---|
 | <Listeners> <Status>running</Status> <ListenerPort>80</ListenerPort> <VServerGroupId>rsp-cige6j****</VServerGroupId> <Description>test</Description> <Scheduler>wrr</Scheduler> <AclId>nacl-a2do9e413e0spzasx****</AclId> <-HTTPListenerConfig> <CookieTimeout>500</CookieTimeout> <UnhealthyThreshold>4</UnhealthyThreshold> <HealthCheckURI>/test/index.html</HealthCheckURI> <HealthCheck>on</HealthCheck> <IdleTimeout>15</IdleTimeout> <XForwardedFor_SLBID>on</XForwardedFor_SLBID> <HealthCheckConnectPort>8080</HealthCheckConnectPort> <XForwardedFor_SLBPORT>on</XForwardedFor_SLBPORT> <HealthCheckMethod>get</HealthCheckMethod> <Gzip>on</Gzip> <StickySessionType>insert</StickySessionType> <XForwardedFor_SLBIP>on</XForwardedFor_SLBIP> <HealthCheckHttpCode>http_2xx,http_3xx</HealthCheckHttpCode> <Cookie>B490B5EBF6F3CD402E515D22BCDA****</Cookie> <RequestTimeout>60</RequestTimeout> <HealthCheckInterval>5</HealthCheckInterval> <HealthCheckHttpVersion>HTTP 1.0</HealthCheckHttpVersion> <HealthCheckTimeout>3</HealthCheckTimeout> <ListenerForward>on</ListenerForward> <StickySession>on</StickySession> <ForwardPort>80</ForwardPort> <HealthyThreshold>4</HealthyThreshold> <XForwardedFor>on</XForwardedFor> <XForwardedFor_ClientSrcPort>on</XForwardedFor_ClientSrcPort> <HealthCheckDomain>www.example.com</HealthCheckDomain> <XForwardedFor_proto>on</XForwardedFor_proto> <HealthCheckType>tcp</HealthCheckType> </-HTTPListenerConfig> <-UDPListenerConfig> <ConnectionDrainTimeout>300</ConnectionDrainTimeout> <HealthCheckInterval>5</HealthCheckInterval> <HealthCheckConnectPort>8080</HealthCheckConnectPort> <HealthCheckReq>hello</HealthCheckReq> <UnhealthyThreshold>4</UnhealthyThreshold> <HealthCheckExp>ok</HealthCheckExp> <HealthyThreshold>4</HealthyThreshold> <HealthCheck>on</HealthCheck> <HealthCheckConnectTimeout>100</HealthCheckConnectTimeout> <MasterSlaveServerGroupId>rsp-0bfucw****</MasterSlaveServerGroupId> <ConnectionDrain>off</ConnectionDrain> </-UDPListenerConfig> <LoadBalancerId>lb-bp1b6c719dfa****</LoadBalancerId> <BackendServerPort>80</BackendServerPort> <ListenerProtocol>http</ListenerProtocol> |   |
@@ -5845,6 +6401,8 @@ Enables or disables the configuration read-only mode for a Classic Load Balancer
 
 v3.16.2r-slb-hotfeature-SP006 is installed.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetLoadBalancerModifica tionProtection | Set the value to SetLoadBalancerModifyProtection. |
@@ -5855,12 +6413,18 @@ v3.16.2r-slb-hotfeature-SP006 is installed.
 | Tags | String | No | [{"tagKey":"Key1","tagVa lue":"Value1"}] | The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary. You can specify up to 10 tags in each call. |
 | ModificationProtectionRe ason | String | No | Modify configurations | The reason for enabling the configuration read-only mode. The value must be 1 to 80 characters in length. It must start with a letter and can contain digits, periods (.), underscores (), and hyphens (-). _ Note This parameter takes effect only if you set ModificationProtectionStatus to ConsoleProtection. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Details |
 |---|---|---|---|
 | RequestId | String | 791D8B68-AE0F-4174-AF54- 088C8B3C5D54 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerModificationProtection &LoadBalancerId=lb-bp1b6c719dfa08e***** &ModificationProtectionStatus=ConsoleProtection
+http(s)://[Endpoint]/?Action=SetLoadBalancerModificationProtection &LoadBalancerId=lb-bp1b6c719dfa08e***** &ModificationProtectionStatus=ConsoleProtection &<Common request parameters>
 ```
 
 Sample success responses
@@ -5893,6 +6457,8 @@ Enables or disables deletion protection for a Classic Load Balancer (CLB) instan
 
 v3.16.2r-slb-hotfeature-SP006 is installed.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetLoadBalancerDeletePr otection | The operation that you want to perform. Set the value to SetLoadBalancerDeleteProtection. |
@@ -5902,12 +6468,18 @@ v3.16.2r-slb-hotfeature-SP006 is installed.
 | accesskeyid _ _ | String | No | acc- hp34s2h0xx1ht4nwo**** | The AccessKey ID. |
 | Tags | String | No | [{"tagKey":"Key1","tagVa lue":"Value1"}] | The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary. You can specify up to 10 tags in each call. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 791D8B68-AE0F-4174-AF54- 088C8B3C5D54 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=SetLoadBalancerDeleteProtection &DeleteProtection=off &LoadBalancerId=lb-bp1b6c719dfa08e*****
+http(s)://[Endpoint]/?Action=SetLoadBalancerDeleteProtection &DeleteProtection=off &LoadBalancerId=lb-bp1b6c719dfa08e***** &<Common request parameters>
 ```
 
 Sample success responses

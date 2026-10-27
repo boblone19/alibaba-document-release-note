@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 467
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Apsara Uni-manager Management Console User Guide 20251106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/ASCM/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Apsara%20Uni-manager%20Management%20Console%20User%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Apsara Uni-manager Management Console User Guide 20251106
@@ -2569,6 +2569,8 @@ panel appears. In this example, Elastic Compute Service (ECS) is used. In the **
 6. In the **Resource Pool Details** panel, click **Configure Quota**.
 7. In the **Configure Quota** dialog box, add or remove quotas.
 
+**Note**
+
 > also allows you to configure quotas based on specifications. The specifications must be in the **Enabled** state.
 
 **Add a quota**: In the **Available Quotas** section on the left side, select a quota and click
@@ -2962,7 +2964,11 @@ ons i. In the **Specification Synchronization Settings** section, configure the 
 
 a. Click **Edit**. Select **Maintain Current Specifications** or **Synchronize Specifications**.
 **Maintain Current Specifications**: New specifications are not synchronized after
-version updates. Select this option when you want to retain the existing configurations after version updates.
+version updates.
+
+**Note**
+
+Select this option when you want to retain the existing configurations after version updates.
 **Synchronize Specifications**: New specifications are synchronized after version
 updates.
 
@@ -3412,6 +3418,9 @@ ons
 redirected to the details panel of the IdP.
 3. In the details panel, view the basic information and associated organizations of the IdP.
 **Basic Information**: The basic information about the local IdP is displayed on this tab.
+
+**Note**
+
 If the protocol type of the IdP is **SAML 2.0**, you can click**Download Metadata File** in the Basic Information section to download the metadata file.
 **Associated Organization**: The information about organizations associated with the
 local IdP is displayed on this tab. The information includes **Organization ID/Name**,
@@ -3870,6 +3879,9 @@ the number in the **Associated Tasks** column.
 with the process.
 3. Find the task that you want to disassociate from the process and click **Disassociate** in the
 **Actions** column.
+
+**Note**
+
 Before you disassociate a task from the process, make sure that the task is in the Ineffective state.
 4. In the message that appears, click **OK**.
 
@@ -4440,7 +4452,11 @@ This topic describes the quotas that you can configure for KVStore for Redis, ca
 
 **Standard (Master-replica) Edition**
 
-Memory usage = instanceClass.mem × Number of replicas The preceding formula is used to calculate the memory usage of a standard instance.
+Memory usage = instanceClass.mem × Number of replicas
+
+**Note**
+
+The preceding formula is used to calculate the memory usage of a standard instance.
 
 > instanceClass.mem indicates the memory size that is defined in the instance type.
 > The number of replicas is fixed as 2.
@@ -5432,6 +5448,9 @@ the **Cloud Service** drop-down list, complete the billing configuration, and th
 **Instance Type Configuration Ratio**: the proportion of specifications in the current
 cloud service whose prices have been set to a number greater than 0.
 **Price Verification**: indicates whether the configuration ratio is 100%.
+
+**Note**
+
 If the configuration ratio of a service is smaller than 100%, Rejected is displayed. The parameter value is for reference only. You can create the billing configuration even if the configuration ratios of some services are smaller than 100%.
 
 **View a rule configuration**
@@ -6131,8 +6150,15 @@ You can install the CloudMonitor agent on Elastic Compute Service (ECS) instance
 2. In the top navigation bar, choose **Products** > **Monitoring and O&M** > **Cloud Monitor**.
 3. In the left-side navigation pane, click **Host Monitoring**.
 4. On the **Host Monitoring** page, select the check boxes of the ECS instances for which you
-want to install or upgrade the agent, and then click **Batch Install** in the lower-left corner of the instance list. You can only install the plug-in of CloudMonitor for ECS instances that run the **Linux** and **Windows** operating systems.
+want to install or upgrade the agent, and then click **Batch Install** in the lower-left corner of the instance list.
+
+**Note**
+
+You can only install the plug-in of CloudMonitor for ECS instances that run the **Linux** and **Windows** operating systems.
 5. In the message that appears, click **OK**.
+
+**Note**
+
 The installation or upgrade process takes approximately five minutes. After the agent status changes from **Installing** to **Running**, the CloudMonitor agent is installed or upgraded.
 
 #### 11.3.2 Process monitoring
@@ -8242,6 +8268,9 @@ or Service
 1. On the **Event alarm rules** tab, find the alert rule that you want to modify and click
 **Modification** in the **Operation** column.
 2. In the **Modify Event Alarm rules** panel, configure parameters to modify the alert rule.
+
+**Note**
+
 The name of the custom event cannot be modified. or Service
 3. Click **OK**.
 
@@ -8356,6 +8385,8 @@ or Service
 CloudMonitor provides the availability monitoring feature to help you check whether a local service or cloud server responds as expected. You can specify the path and port for the local service or cloud server. If the local service or cloud server times out or returns an error code, CloudMonitor sends an alert notification for you to troubleshoot the issue at the earliest opportunity.
 
 **Procedure**
+
+**Note**
 
 You can create availability monitoring tasks for only Elastic Compute Service (ECS) instances.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -9083,7 +9114,11 @@ Click **Enable** or **Disable** in the Actions column to enable or disable a use
 
 > **Note:** You cannot disable the user that you currently use to log on to the multi-cloud management platform. To disable this user, you must use another administrator account to log on to the multi-cloud management platform.
 
-Click **Role Authorization** in the Operation column to view the roles of a user. In the Role Authorization panel, you can remove roles from the user. You can also assign roles to the user and specify the permission scope of roles. After a role is added to the user, the user is granted the permissions of the role. You can assign only the available roles to the user. For more information, see Role management.
+Click **Role Authorization** in the Operation column to view the roles of a user. In the Role Authorization panel, you can remove roles from the user. You can also assign roles to the user and specify the permission scope of roles. After a role is added to the user, the user is granted the permissions of the role.
+
+**Note**
+
+You can assign only the available roles to the user. For more information, see Role management.
 
 > If the permission scope of the role that you want to add is project, you must also specify the project.
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 114
 source_pdf: "7703c5b6813f39c3_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Developer Guide 20251212.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Firewall%20Developer%20Guide%2020251212.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Security Firewall Developer Guide 20251212
@@ -672,7 +672,11 @@ Responses are returned in the HTTP response format: A 2xx HTTP status code indic
 
 #### 4.1.1 Request structure
 
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests.
+
+**Description**
+
+You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -685,7 +689,11 @@ where:
 | [RegionId].example.com |   |   |   |
 |   | Action | : the name of t |   |
 
-`endpoint` : The endpoint of the Web Application Firewall (WAF) API is `semawaf.` `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
+`endpoint` : The endpoint of the Web Application Firewall (WAF) API is `semawaf.` `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description.
+
+**Example**
+
+The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
 
 ```
 https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-t est&Format=JSON&SecureTransport=true&SignatureMethod=HMAC- SHA1&SignatureNonce=15215528852396&SignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018- 03-02Txxxxxxx&Version=2018-01-16&Signature=xxxx%xxxx%3D

@@ -5,7 +5,7 @@ doc_version: "20230302"
 pdf_pages: 203
 source_pdf: "7cfdebb273c7c59f_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service User Guide 20230302.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230221/1/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20Compute%20Service%20User%20Guide%2020230302.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service User Guide 20230302
@@ -258,7 +258,7 @@ This topic describes how to create and connect to an Elastic Compute Service (EC
 
 ### 3.2 Log on to the ECS console
 
-This topic describes how to log on to the ECS console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+This topic describes how to log on to the ECS console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
@@ -274,7 +274,7 @@ Obtain the username and password that you can use to log on to the console from 
 
 ### 3.3 Create a security group
 
-Security groups are an important means for network security isolation. They implement network access control for one or more ECS instances. Prerequisites A virtual compute cloud (VPC) is created. For more information, see VPC User Guide. Context Security groups determine whether the instances in the same account that are deployed within the same VPC and region can communicate with each other. By default, if the instances belong to the same security group, they can communicate with each other over the internal network. If the instances belong to different security groups, you can authorize mutual access between the security groups to allow the instances to communicate with each other over the internal network.
+Security groups are an important means for network security isolation. They implement network access control for one or more ECS instances. Prerequisites A virtual compute cloud (VPC) is created. For more information, see VPC User Guide. Context Security groups determine whether the instances in the same account that are deployed within the same VPC and region can communicate with each other. By default, if the instances belong to the same security group, they can communicate with each other over the internal network. If the instances belong to different security groups, you can authorize mutual access between the security groups to allow the instances to communicate with each other over the internal network. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -299,7 +299,7 @@ Security groups are an important means for network security isolation. They impl
 
 ### 3.4 Create an instance
 
-An Elastic Compute Service (ECS) instance is a virtual machine that contains the basic computing components of a server, such as CPU, memory, operating system, network settings, and disks. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see the "Create a VPC" and "Create a vSwitch" topics in Apsara Stack VPC User Guide. If you want to assign an IPv6 address to the instance that you want to create, make sure that the VPC and vSwitch are associated with IPv6 CIDR blocks. For more information, see the "Enable an IPv6 CIDR block for a VPC" and "Enable an IPv6 CIDR block for a vSwitch" topics in Apsara Stack VPC User Gui de. One or more security groups are available. If no security groups are available, create one. For more information, see Create a security group. Context Some limits apply when you create GPU-accelerated instances. For more information, see Limits.
+An Elastic Compute Service (ECS) instance is a virtual machine that contains the basic computing components of a server, such as CPU, memory, operating system, network settings, and disks. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see the "Create a VPC" and "Create a vSwitch" topics in Apsara Stack VPC User Guide. If you want to assign an IPv6 address to the instance that you want to create, make sure that the VPC and vSwitch are associated with IPv6 CIDR blocks. For more information, see the "Enable an IPv6 CIDR block for a VPC" and "Enable an IPv6 CIDR block for a vSwitch" topics in Apsara Stack VPC User Gui de. One or more security groups are available. If no security groups are available, create one. For more information, see Create a security group. Context Some limits apply when you create GPU-accelerated instances. For more information, see Limits. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -392,6 +392,7 @@ commands in Linux or Mac OS X This topic describes how to use SSH commands to co
 |---|---|---|---|---|---|---|
 | Inbound | Accept | TCP | 22/22 | 1 | IPv4 CIDR block | 0.0.0.0/0 |
 
+Procedure
 1. Enter the following command and press the Enter key.
 
 ```
@@ -402,7 +403,7 @@ ssh root@instance IP
 
 #### 3.5.3 Connect to a Linux-based instance by using remote connection tools in Windows
 
-remote connection tools in Windows This topic describes how to connect to an instance by using the PuTTY tool. Prerequisites Remote connection tools are designed with similar logics. In this example, PuTTY is used to connect to an instance. Download PuTTY at the following URL: .
+remote connection tools in Windows This topic describes how to connect to an instance by using the PuTTY tool. Prerequisites Remote connection tools are designed with similar logics. In this example, PuTTY is used to connect to an instance. Download PuTTY at the following URL: . Procedure
 1. Download and install PuTTY for Windows.
 2. Start the PuTTY client and complete the following settings:
 Host Name (or IP Address): Enter the EIP of the instance to be connected. Port: Select the default port 22. Connection Type: Select SSH. Saved Session: Enter the name of the session. Click Save. After the settings are saved, PuTTY remembers the name and IP address of the instance. This eliminates the need to enter them every time you connect to the instance.
@@ -424,6 +425,7 @@ RDC This topic describes how to connect to a Windows instance by using Remote De
 |---|---|---|---|---|---|---|
 | Inbound | Allow | tcp | 3389/3389 | 1 | IPv4 addresses | 0.0.0.0/0 |
 
+Procedure
 1. Use one of the following methods to enable RDC:
 Click St art , enter mstsc in the search box, and click mst sc in the search result. Press the Windows logo key+R. In the Run dialog box that appears, enter mstsc and click OK.
 2. In the Remot e Deskt op Connect ion dialog box, enter the Elastic IP address of the instance and
@@ -452,6 +454,7 @@ management terminal If other remote connection tools such as PuTTy, Xshell, and 
 | The firewall of the operating system is enabled by mistake. | Disable the firewall. |
 | Abnormal processes appear and consume large amounts of CPU or bandwidth resources. | Troubleshoot and terminate the abnormal processes. |
 
+Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -474,7 +477,7 @@ An Elastic Compute Service (ECS) instance is a virtual server that includes basi
 
 ### 4.2 Create an instance
 
-An Elastic Compute Service (ECS) instance is a virtual machine that contains the basic computing components of a server, such as CPU, memory, operating system, network settings, and disks. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see the "Create a VPC" and "Create a vSwitch" topics in Apsara Stack VPC User Guide. If you want to assign an IPv6 address to the instance that you want to create, make sure that the VPC and vSwitch are associated with IPv6 CIDR blocks. For more information, see the "Enable an IPv6 CIDR block for a VPC" and "Enable an IPv6 CIDR block for a vSwitch" topics in Apsara Stack VPC User Gui de. One or more security groups are available. If no security groups are available, create one. For more information, see Create a security group. Context Some limits apply when you create GPU-accelerated instances. For more information, see Limits.
+An Elastic Compute Service (ECS) instance is a virtual machine that contains the basic computing components of a server, such as CPU, memory, operating system, network settings, and disks. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see the "Create a VPC" and "Create a vSwitch" topics in Apsara Stack VPC User Guide. If you want to assign an IPv6 address to the instance that you want to create, make sure that the VPC and vSwitch are associated with IPv6 CIDR blocks. For more information, see the "Enable an IPv6 CIDR block for a VPC" and "Enable an IPv6 CIDR block for a vSwitch" topics in Apsara Stack VPC User Gui de. One or more security groups are available. If no security groups are available, create one. For more information, see Create a security group. Context Some limits apply when you create GPU-accelerated instances. For more information, see Limits. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -567,6 +570,7 @@ commands in Linux or Mac OS X This topic describes how to use SSH commands to co
 |---|---|---|---|---|---|---|
 | Inbound | Accept | TCP | 22/22 | 1 | IPv4 CIDR block | 0.0.0.0/0 |
 
+Procedure
 1. Enter the following command and press the Enter key.
 
 ```
@@ -577,7 +581,7 @@ ssh root@instance IP
 
 #### 4.3.3 Connect to a Linux-based instance by using remote connection tools in Windows
 
-remote connection tools in Windows This topic describes how to connect to an instance by using the PuTTY tool. Prerequisites Remote connection tools are designed with similar logics. In this example, PuTTY is used to connect to an instance. Download PuTTY at the following URL: .
+remote connection tools in Windows This topic describes how to connect to an instance by using the PuTTY tool. Prerequisites Remote connection tools are designed with similar logics. In this example, PuTTY is used to connect to an instance. Download PuTTY at the following URL: . Procedure
 1. Download and install PuTTY for Windows.
 2. Start the PuTTY client and complete the following settings:
 Host Name (or IP Address): Enter the EIP of the instance to be connected. Port: Select the default port 22. Connection Type: Select SSH. Saved Session: Enter the name of the session. Click Save. After the settings are saved, PuTTY remembers the name and IP address of the instance. This eliminates the need to enter them every time you connect to the instance.
@@ -599,6 +603,7 @@ RDC This topic describes how to connect to a Windows instance by using Remote De
 |---|---|---|---|---|---|---|
 | Inbound | Allow | tcp | 3389/3389 | 1 | IPv4 addresses | 0.0.0.0/0 |
 
+Procedure
 1. Use one of the following methods to enable RDC:
 Click St art , enter mstsc in the search box, and click mst sc in the search result. Press the Windows logo key+R. In the Run dialog box that appears, enter mstsc and click OK.
 2. In the Remot e Deskt op Connect ion dialog box, enter the Elastic IP address of the instance and
@@ -637,6 +642,7 @@ management terminal If other remote connection tools such as PuTTy, Xshell, and 
 | The firewall of the operating system is enabled by mistake. | Disable the firewall. |
 | Abnormal processes appear and consume large amounts of CPU or bandwidth resources. | Troubleshoot and terminate the abnormal processes. |
 
+Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -655,7 +661,7 @@ For a Windows instance, to use a key combination such as Ctrl+Alt+Delete, click 
 
 #### 4.4.1 Stop an instance
 
-You can stop instances that are not in use. The stop operation interrupts the services that are running on the instances. Exercise caution when you perform this operation. Prerequisites The instance that you want to stop is in the Running state.
+You can stop instances that are not in use. The stop operation interrupts the services that are running on the instances. Exercise caution when you perform this operation. Prerequisites The instance that you want to stop is in the Running state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -666,7 +672,7 @@ Result When the instance is being stopped, its status in the St at us column cha
 
 #### 4.4.2 Start an instance
 
-You can start stopped instances. Prerequisites The instance that you want to start is in the St opped state.
+You can start stopped instances. Prerequisites The instance that you want to start is in the St opped state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -677,7 +683,7 @@ Result When the instance is being started, its status in the St at us column cha
 
 #### 4.4.3 Restart an instance
 
-You must restart instances after you change their logon passwords or install system updates for the instances. The restart operation stops the instances for a period of time. This causes the services that are running on the instances to be interrupted. Exercise caution when you perform this operation. Prerequisites The instance that you want to restart is in the Running state.
+You must restart instances after you change their logon passwords or install system updates for the instances. The restart operation stops the instances for a period of time. This causes the services that are running on the instances to be interrupted. Exercise caution when you perform this operation. Prerequisites The instance that you want to restart is in the Running state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -689,7 +695,7 @@ Rest art : restarts the instances normally. Force Rest art : forcibly restarts t
 
 #### 4.4.4 Delete an instance
 
-You can delete instances that are no longer needed to release their resources. Deleted instances cannot be recovered. We recommend that you back up data before you delete instances. If data disks are released along with instances, the data on the disks cannot be recovered. Prerequisites The instance to be deleted is in the St opped state.
+You can delete instances that are no longer needed to release their resources. Deleted instances cannot be recovered. We recommend that you back up data before you delete instances. If data disks are released along with instances, the data on the disks cannot be recovered. Prerequisites The instance to be deleted is in the St opped state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -701,7 +707,7 @@ Instances page.
 
 #### 4.5.1 View instances
 
-You can view the list of instances and the details of individual instances. The details of an instance include basic configurations, disks, snapshots, security groups, and elastic network interfaces (ENIs).
+You can view the list of instances and the details of individual instances. The details of an instance include basic configurations, disks, snapshots, security groups, and elastic network interfaces (ENIs). Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -724,7 +730,7 @@ In the Inst ance ID/Name column, click the instance ID. Click Manage in the Act 
 
 #### 4.5.2 Modify an instance
 
-You can modify the names, descriptions, and user data of created instances.
+You can modify the names, descriptions, and user data of created instances. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -749,7 +755,7 @@ take effect. For more information, see Restart an instance or the "RebootInstanc
 
 #### 4.5.4 Change the VNC password
 
-If you use Virtual Network Console (VNC) to connect to an Elastic Compute Service (ECS) instance for the first time or if you forget the VNC password, you can reset the VNC password.
+If you use Virtual Network Console (VNC) to connect to an Elastic Compute Service (ECS) instance for the first time or if you forget the VNC password, you can reset the VNC password. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -854,7 +860,7 @@ Invoke-RestMethod http://100.100.100.200/latest/user-data/
 
 #### 4.6.1 Set the retention period
 
-When you put Elastic Compute Service (ECS) instances into the recycle bin, the instances enter a retention period. This topic describes how to set the retention period. Prerequisites Only the admin account can set the retention period. Context When an instance enters a retention period, its computing resources (CPU and memory) are released, its elastic IP address is disassociated, and its storage resources are retained. When the retention period expires, the ECS instance and its storage resources are completely destroyed and cannot be recovered. The default retention period is three days. You can set an appropriate retention period of up to 30 days and 23 hours based on your business needs.
+When you put Elastic Compute Service (ECS) instances into the recycle bin, the instances enter a retention period. This topic describes how to set the retention period. Prerequisites Only the admin account can set the retention period. Context When an instance enters a retention period, its computing resources (CPU and memory) are released, its elastic IP address is disassociated, and its storage resources are retained. When the retention period expires, the ECS instance and its storage resources are completely destroyed and cannot be recovered. The default retention period is three days. You can set an appropriate retention period of up to 30 days and 23 hours based on your business needs. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Recycle Bin.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -875,7 +881,7 @@ Use one of the following methods to restore the instance from the recycle bin: T
 
 #### 4.6.3 Permanently delete instances
 
-You can permanently delete the instances that you no longer need from the recycle bin. This topic describes how to permanently delete instances. Context The instances that are permanently deleted cannot be restored. Make sure that your business is not interrupted before you permanently delete instances.
+You can permanently delete the instances that you no longer need from the recycle bin. This topic describes how to permanently delete instances. Context The instances that are permanently deleted cannot be restored. Make sure that your business is not interrupted before you permanently delete instances. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Recycle Bin.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -915,7 +921,7 @@ instance to change the instance type If the instance type of your Elastic Comput
 
 > Not e Instance types that support hot configuration changes are displayed in the ECS console.
 
-Context Compared with the instance type change feature, the hot configuration change feature can be used to change instance types without stopping the instances. When you perform a hot configuration change on an instance to change the instance type, the following limits apply: Windows instances do not support hot configuration changes. When you specify a new instance type for the instance, the vCPU, memory, and internal bandwidth specifications of the instance are changed together. These specifications cannot be separately changed. You must wait at least 10 minutes between two consecutive hot configuration changes to the instance type of a single instance. You can perform a maximum of five consecutive hot configuration changes to the instance type of an instance. After the instance is restarted, stopped, or started, the change times are cleared and recalculated. If a hot configuration change on the instance fails, hot configuration changes cannot be performed on the instance.
+Context Compared with the instance type change feature, the hot configuration change feature can be used to change instance types without stopping the instances. When you perform a hot configuration change on an instance to change the instance type, the following limits apply: Windows instances do not support hot configuration changes. When you specify a new instance type for the instance, the vCPU, memory, and internal bandwidth specifications of the instance are changed together. These specifications cannot be separately changed. You must wait at least 10 minutes between two consecutive hot configuration changes to the instance type of a single instance. You can perform a maximum of five consecutive hot configuration changes to the instance type of an instance. After the instance is restarted, stopped, or started, the change times are cleared and recalculated. If a hot configuration change on the instance fails, hot configuration changes cannot be performed on the instance. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -925,7 +931,7 @@ icon in the Act ions column, and then click Hot Conf igurat ion Change.
 
 ### 4.8 View the monitoring information of an instance
 
-of an instance You can view monitoring charts in the CloudMonitor console to learn about the running conditions of Elastic Compute Service (ECS) instances. This topic describes how to go to the CloudMonitor console to view the monitoring information of an ECS instance. Context CloudMonitor provides real-time monitoring, alerting, and notification services for resources to protect your services and business. For more information, see CloudMonit or overview in Apsara Uni-manager Management Console User Guide.
+of an instance You can view monitoring charts in the CloudMonitor console to learn about the running conditions of Elastic Compute Service (ECS) instances. This topic describes how to go to the CloudMonitor console to view the monitoring information of an ECS instance. Context CloudMonitor provides real-time monitoring, alerting, and notification services for resources to protect your services and business. For more information, see CloudMonit or overview in Apsara Uni-manager Management Console User Guide. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -935,7 +941,7 @@ Monitoring column.
 
 ### 4.9 Add an instance to a security group
 
-group You can add created instanced to security groups and use security group rules to control network access for the instances. Context Security groups act as virtual firewalls to provide security isolation and implement network access control for instances. Security groups determine whether the instances in the same account that are deployed within the same VPC and region can communicate with each other. By default, if the instances belong to the same security group, they can communicate with each other over the internal network. If the instances belong to different security groups, you can authorize mutual access between the security groups to allow the instances to communicate with each other over the internal network.
+group You can add created instanced to security groups and use security group rules to control network access for the instances. Context Security groups act as virtual firewalls to provide security isolation and implement network access control for instances. Security groups determine whether the instances in the same account that are deployed within the same VPC and region can communicate with each other. By default, if the instances belong to the same security group, they can communicate with each other over the internal network. If the instances belong to different security groups, you can authorize mutual access between the security groups to allow the instances to communicate with each other over the internal network. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -947,7 +953,7 @@ An instance can belong to up to five security groups. After an instance is added
 
 ### 4.10 Change the private IP address of an instance
 
-an instance Each instance is assigned a private NIC and associated with a private IP address. You can change the private IP address of an instance. The new private IP address must be within the CIDR block of the vSwitch to which the instance is connected and must not be in use by another instance. Prerequisites The instance whose private IP address you want to change is in the St opped state.
+an instance Each instance is assigned a private NIC and associated with a private IP address. You can change the private IP address of an instance. The new private IP address must be within the CIDR block of the vSwitch to which the instance is connected and must not be in use by another instance. Prerequisites The instance whose private IP address you want to change is in the St opped state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -959,7 +965,7 @@ The new private IP address must be within the CIDR block of the vSwitch to which
 
 ### 4.11 Enable IPv6
 
-Compared with IPv4 addresses, IPv6 addresses are more sufficient and allow more types of devices to access the Internet. If your network environment supports IPv6, you can assign IPv6 addresses for exiting Elastic Compute Service (ECS) instances. Prerequisites The virtual private cloud (VPC) of the ECS instance to which you want to assign an IPv6 address is associated with an IPv6 CIDR block. For more information, see the "Enable an IPv6 CIDR block for a VPC" topic in Apsara Stack VPC User Guide. The vSwitch connected to the ECS instance to which you want to assign an IPv6 address is associated with an IPv6 CIDR block. For more information, see the "Enable an IPv6 CIDR block for a vSwitch" topic in Apsara Stack VPC User Guide. The instance family of the ECS instance supports IPv6.
+Compared with IPv4 addresses, IPv6 addresses are more sufficient and allow more types of devices to access the Internet. If your network environment supports IPv6, you can assign IPv6 addresses for exiting Elastic Compute Service (ECS) instances. Prerequisites The virtual private cloud (VPC) of the ECS instance to which you want to assign an IPv6 address is associated with an IPv6 CIDR block. For more information, see the "Enable an IPv6 CIDR block for a VPC" topic in Apsara Stack VPC User Guide. The vSwitch connected to the ECS instance to which you want to assign an IPv6 address is associated with an IPv6 CIDR block. For more information, see the "Enable an IPv6 CIDR block for a vSwitch" topic in Apsara Stack VPC User Guide. The instance family of the ECS instance supports IPv6. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -977,7 +983,7 @@ Result After the configuration is complete, you can click the instance ID and ch
 
 ### 4.12 Install the CUDA and GPU drivers for a Linux instance
 
-for a Linux instance You must install a GPU driver on GPU instances to use the GPU. If the image you use does not contain a pre-installed GPU driver, you must manually install the CUDA and GPU drivers for the instance. Prerequisites If your instance cannot connect to the Internet, the installation file cannot be downloaded. You can install an FTP client on the instance to transfer the installation file to the instance. Context When installing NVIDIA drivers, you must install the kernel package that contains the kernel header file before you install the CUDA and GPU drivers on the instance.
+for a Linux instance You must install a GPU driver on GPU instances to use the GPU. If the image you use does not contain a pre-installed GPU driver, you must manually install the CUDA and GPU drivers for the instance. Prerequisites If your instance cannot connect to the Internet, the installation file cannot be downloaded. You can install an FTP client on the instance to transfer the installation file to the instance. Context When installing NVIDIA drivers, you must install the kernel package that contains the kernel header file before you install the CUDA and GPU drivers on the instance. Procedure
 1. Install the kernel package.
 i. Run the uname -r command to view the current kernel version. A similar output is displayed: CentOS: `3.10.0-862.14.4.el7.x86_64` Ubuntu: `4.4.0-117-generic` ii. Copy the kernel package of the corresponding version to the instance and install the package. CentOS: Copy the RPM package of the `kernel-devel` component and run the rpm -ivh 3.10.0-862.14.4.el7.x86_64.rpm command to install the package. 3.10.0-862.14.4.el7.x86_64. rpm is used as an example. Replace it with the actual package name. Ubuntu: Copy the DEB package of the `linux-headers` component and run the dpkg -i 4.4.0- 117-generic.deb command to install the package. 4.4.0-117-generic.deb is used as an example. Replace it with the actual package name.
 2. Download the CUDA Toolkit.
@@ -1052,7 +1058,7 @@ Purpose-based classif icat ion Disks can be classified into system disks and dat
 
 ### 5.2 Create a disk
 
-You can create standalone data disks and then attach them to ECS instances to increase the storage space of the instances. This topic describes how to create an empty data disk. You cannot create standalone system disks. Context We recommend that you determine the number and sizes of data disks before you create them. The following limits apply to data disks: A maximum of 16 data disks can be attached to an instance. Disks and Shared Block Storage devices share this quota. Each Shared Block Storage device can be attached to up to four ECS instances at the same time. Each ultra disk, standard SSD, Ultra Shared Block Storage device, or SSD Shared Block Storage device can have a maximum capacity of 32 TiB. Disks cannot be combined in ECS. They are independent of each other. You cannot combine multiple disks into one by formatting them. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across multiple disks, because a snapshot can back up data only of a single disk. If you create a logical volume across several disks, data discrepancies may occur when you restore these disks.
+You can create standalone data disks and then attach them to ECS instances to increase the storage space of the instances. This topic describes how to create an empty data disk. You cannot create standalone system disks. Context We recommend that you determine the number and sizes of data disks before you create them. The following limits apply to data disks: A maximum of 16 data disks can be attached to an instance. Disks and Shared Block Storage devices share this quota. Each Shared Block Storage device can be attached to up to four ECS instances at the same time. Each ultra disk, standard SSD, Ultra Shared Block Storage device, or SSD Shared Block Storage device can have a maximum capacity of 32 TiB. Disks cannot be combined in ECS. They are independent of each other. You cannot combine multiple disks into one by formatting them. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across multiple disks, because a snapshot can back up data only of a single disk. If you create a logical volume across several disks, data discrepancies may occur when you restore these disks. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1103,7 +1109,7 @@ If you select Release Disk wit h Inst ance, the disk will be released when its a
 
 #### 5.4.1 Format a data disk for a Linux instance
 
-Data disks created separately are not partitioned or formatted. This topic describes how to partition and format a data disk of a Linux instance. Prerequisites The disk has been attached to the instance.
+Data disks created separately are not partitioned or formatted. This topic describes how to partition and format a data disk of a Linux instance. Prerequisites The disk has been attached to the instance. Procedure
 1. Connect to the instance.
 2. Run the f disk -l command to view all data disks attached to the ECS instance.
 If /dev/vdb is not displayed in the command output, the ECS instance does not have a data disk. Check whether the data disk is attached to the instance.
@@ -1183,7 +1189,7 @@ b and run the df -h command to view the result. If the following information is 
 
 #### 5.4.2 Format a data disk of a Windows instance
 
-Data disks created separately are not partitioned or formatted. This topic describes how to partition and format a data disk of a Windows instance. This example uses Windows Server 2008. Prerequisites The disk has been attached to an instance.
+Data disks created separately are not partitioned or formatted. This topic describes how to partition and format a data disk of a Windows instance. This example uses Windows Server 2008. Prerequisites The disk has been attached to an instance. Procedure
 1. In the lower-left corner of the screen, click the Server Manager icon.
 2. In the left-side navigation pane of the Server Manager window, choose St orage > Disk
 Management .
@@ -1199,7 +1205,7 @@ We recommend that you format the partition with the default settings provided by
 
 ### 5.5 View disks
 
-You can view the list of disks and the details of individual disks.
+You can view the list of disks and the details of individual disks. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1221,7 +1227,7 @@ The properties and mount information of the disk are displayed on the Disk Detai
 
 ### 5.6 Restore a disk
 
-If you have created snapshots for a disk, you can use one of the snapshots to restore the disk to the state when the snapshot was created. The disk restore operation is irreversible. After the disk is restored, the data stored on the disk before the restore operation is performed cannot be recovered. Exercise caution when you perform this operation. Prerequisites Snapshots are created for the disk that you want to restore. The disk is not released. The instance to which the disk is attached is in the St opped state.
+If you have created snapshots for a disk, you can use one of the snapshots to restore the disk to the state when the snapshot was created. The disk restore operation is irreversible. After the disk is restored, the data stored on the disk before the restore operation is performed cannot be recovered. Exercise caution when you perform this operation. Prerequisites Snapshots are created for the disk that you want to restore. The disk is not released. The instance to which the disk is attached is in the St opped state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1243,7 +1249,7 @@ Act ions column.
 
 ### 5.7 Modify the attributes of a disk
 
-You can modify the attributes of created disks, such as the settings of the Release Disk with Instance and Release Automatic Snapshots with Disk options.
+You can modify the attributes of created disks, such as the settings of the Release Disk with Instance and Release Automatic Snapshots with Disk options. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1255,7 +1261,7 @@ Release Disk wit h Inst ance: If this option is selected, the disk will be relea
 
 ### 5.8 Modify the description of a disk
 
-You can modify the names and descriptions of created disks.
+You can modify the names and descriptions of created disks. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1278,6 +1284,7 @@ You can expand system disks or data disks online. After a disk is expanded, you 
 | Maximum capacity | Ultra disk and standard SSD: 32,768 GiB SSD Shared Block Storage device and Ultra Shared Block Storage device: 32,768 GiB |
 | Related operations | When you expand disks, only the capacity of the disks is expanded. The sizes of partitions and file systems do not change. You must manually re-allocate the storage space on a disk after the disk is expanded. You cannot shrink an expanded disk by any means, such as by rolling it back. |
 
+Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1325,7 +1332,7 @@ The performance of premium performance disks is limited. When a premium performa
 | Disk resizing | Only offline resizing is supported for disks. For more information, see Resize disks. |
 | Snapshot-consistent group | Not supported. |
 
-Perform the following steps to use the multi-attach feature:
+Procedure Perform the following steps to use the multi-attach feature:
 1. Create a premium performance disk for which the multi-attach feature is enabled. For more
 information, see Step 1: Create a premium performance disk for which the multi-attach feature is enabled.
 2. Attach the disk to multiple ECS instances that support the NVMe protocol. For more information, see
@@ -1437,7 +1444,7 @@ In scenarios that require data security and regulatory compliance, you can encry
 
 > Not e System disks cannot be created separately.
 
-The maximum number of data disks that can be attached to a single instance varies based on the instance type. A single premium performance disk that has the multi-attach feature enabled can be attached to up to 16 ECS instances at the same time. Each ultra disk, shared ultra disk, standard SSD, shared SSD, premium performance disk, or standard performance disk can be up to 32 TiB in size. Disks cannot be combined in ECS. They are independent of each other. You cannot combine multiple disks into one by formatting them. A snapshot can back up data only of a single disk. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across disks. If you use LVM to create a logical volume across multiple existing disks, data discrepancy may occur when you restore disks from snapshots.
+The maximum number of data disks that can be attached to a single instance varies based on the instance type. A single premium performance disk that has the multi-attach feature enabled can be attached to up to 16 ECS instances at the same time. Each ultra disk, shared ultra disk, standard SSD, shared SSD, premium performance disk, or standard performance disk can be up to 32 TiB in size. Disks cannot be combined in ECS. They are independent of each other. You cannot combine multiple disks into one by formatting them. A snapshot can back up data only of a single disk. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across disks. If you use LVM to create a logical volume across multiple existing disks, data discrepancy may occur when you restore disks from snapshots. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1450,7 +1457,7 @@ When you encrypt the disk, take note of the following parameters: Encrypt ion: S
 
 #### 5.12.1 Re-initialize a disk
 
-You can re-initialize disks to restore them to their initial states. Prerequisites The disk to be re-initialized is in the Running state. The instance to which the disk is attached is in the St opped state. After a disk is re-initialized, the data stored on the disk is lost and cannot be recovered. Exercise caution when you perform this operation. We recommend that you back up disk data or create snapshots before you re-initialize a disk. For more information, see Create a snapshot. Context The result of disk re-initialization depends on the disk type and how the disk was created. System disk: The disk is restored to the initial state of the image from which the disk was created. If the corresponding image has been deleted, the disk cannot be re-initialized. Data disk: If the disk is empty when created, the disk is restored to an empty disk. If the disk was created from a snapshot, the disk is restored to the state of the snapshot. If the snapshot from which a disk was created has been deleted, the disk cannot be re-initialized.
+You can re-initialize disks to restore them to their initial states. Prerequisites The disk to be re-initialized is in the Running state. The instance to which the disk is attached is in the St opped state. After a disk is re-initialized, the data stored on the disk is lost and cannot be recovered. Exercise caution when you perform this operation. We recommend that you back up disk data or create snapshots before you re-initialize a disk. For more information, see Create a snapshot. Context The result of disk re-initialization depends on the disk type and how the disk was created. System disk: The disk is restored to the initial state of the image from which the disk was created. If the corresponding image has been deleted, the disk cannot be re-initialized. Data disk: If the disk is empty when created, the disk is restored to an empty disk. If the disk was created from a snapshot, the disk is restored to the state of the snapshot. If the snapshot from which a disk was created has been deleted, the disk cannot be re-initialized. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1468,7 +1475,7 @@ When a data disk is attached to an Elastic Compute Service (ECS) instance, you c
 
 > Not e In this example, /dev/vdb1 is a partition and /InitTest is a mount point. You can modify the command based on your business requirements.
 
-v. Press the `Esc` key to exit the edit mode, and enter :wq to save the file and exit. Context The state of a data disk after it is re-initialized varies based on its original state when it was created and the operating system that the instance runs: The data disk is restored to the initial state when it was created: The data disk becomes an empty disk if it was originally an empty disk. The data disk stores the data recorded in the source snapshot if the data disk was created from a snapshot. For a Windows instance, after you re-initialize a data disk, the data disk is ready for use without the need for additional operations regardless of its original state. For a Linux instance: If a data disk was created from a snapshot, the data disk stores only the data recorded in the source snapshot after the data disk is re-initialized. You do not need to re-mount the partitions, but all the data generated after the disk was created is lost. If a data disk was created as an empty disk, all the data and file systems on the disk are lost after the data disk is re-initialized. You must reformat and partition the disk, and then re-mount the partitions.
+v. Press the `Esc` key to exit the edit mode, and enter :wq to save the file and exit. Context The state of a data disk after it is re-initialized varies based on its original state when it was created and the operating system that the instance runs: The data disk is restored to the initial state when it was created: The data disk becomes an empty disk if it was originally an empty disk. The data disk stores the data recorded in the source snapshot if the data disk was created from a snapshot. For a Windows instance, after you re-initialize a data disk, the data disk is ready for use without the need for additional operations regardless of its original state. For a Linux instance: If a data disk was created from a snapshot, the data disk stores only the data recorded in the source snapshot after the data disk is re-initialized. You do not need to re-mount the partitions, but all the data generated after the disk was created is lost. If a data disk was created as an empty disk, all the data and file systems on the disk are lost after the data disk is re-initialized. You must reformat and partition the disk, and then re-mount the partitions. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1486,7 +1493,7 @@ Before you can detach a data disk from a Linux instance, you must connect to the
 
 > Not e If you have added an entry in the /etc/fstab file for the disk partitions to be automatically mounted on instance startup, you must delete the entry from the /etc/fstab file before you detach the disk. Otherwise, you are unable to connect to the instance after the instance is restarted.
 
-The data disk that you want to detach is in the Running state.
+The data disk that you want to detach is in the Running state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1495,7 +1502,7 @@ The data disk that you want to detach is in the Running state.
 
 ### 5.14 Release a data disk
 
-You can release data disks that are no longer needed. Released disks cannot be recovered. Exercise caution when you release data disks. Prerequisites The data disk to be released is in the Pending state. If the data disk is attached to an instance, you must detach the disk from the instance before you can release the disk.
+You can release data disks that are no longer needed. Released disks cannot be recovered. Exercise caution when you release data disks. Prerequisites The data disk to be released is in the Pending state. If the data disk is attached to an instance, you must detach the disk from the instance before you can release the disk. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1622,7 +1629,7 @@ click Search. You can select multiple filter options to narrow down search resul
 
 ### 6.4 View instances related to an image
 
-image You can view the instances that use a specified image.
+image You can view the instances that use a specified image. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Images.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1645,7 +1652,7 @@ The description must be 2 to 256 characters in length and cannot start with http
 
 ### 6.6 Share a custom image
 
-You can share a created custom image to the organizations that you manage. Then, the organizations can use the shared image to create multiple instances that have identical environments. Context Only custom images can be shared. Shared images do not count against the image quotas of the organizations to which the images are shared. The organizations to which images are shared can use the shared images to create instances or replace the system disks of existing instances. You can delete shared images. After a shared image is deleted, the image is no longer visible to the organizations to which the image was shared and the system disks of the instances created from this image can no longer be re-initialized.
+You can share a created custom image to the organizations that you manage. Then, the organizations can use the shared image to create multiple instances that have identical environments. Context Only custom images can be shared. Shared images do not count against the image quotas of the organizations to which the images are shared. The organizations to which images are shared can use the shared images to create instances or replace the system disks of existing instances. You can delete shared images. After a shared image is deleted, the image is no longer visible to the organizations to which the image was shared and the system disks of the instances created from this image can no longer be re-initialized. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Images.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1758,6 +1765,7 @@ After you upload a local image to an Object Storage Service (OSS) bucket, you ca
 
 > Not e Make sure that the bucket resides in the region to which you want to import the image as a custom image.
 
+Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Images.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1808,7 +1816,7 @@ You can export custom images to OSS buckets and then download the images to your
 
 ### 6.10 Delete a custom image
 
-You can delete custom images that are no longer needed. Custom images can be deleted but public images cannot.
+You can delete custom images that are no longer needed. Custom images can be deleted but public images cannot. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Images.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1830,7 +1838,7 @@ You can manually create snapshots for disks to back up disk data. Prerequisites 
 
 > Not e If you want to use a snapshot immediately after it is created, you can enable the instant access feature.
 
-We recommend that you create snapshots during off-peak hours.
+We recommend that you create snapshots during off-peak hours. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1848,7 +1856,7 @@ You can go to the Snapshots page to check the creation progress of the snapshot.
 
 ### 7.3 View snapshots
 
-You can view the list of snapshots.
+You can view the list of snapshots. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1869,7 +1877,7 @@ click Search. You can select multiple filter options to narrow down search resul
 
 ### 7.4 Restore a disk
 
-If you have created snapshots for a disk, you can use one of the snapshots to restore the disk to the state when the snapshot was created. The disk restore operation is irreversible. After the disk is restored, the data stored on the disk before the restore operation is performed cannot be recovered. Exercise caution when you perform this operation. Prerequisites Snapshots are created for the disk that you want to restore. The disk is not released. The instance to which the disk is attached is in the St opped state.
+If you have created snapshots for a disk, you can use one of the snapshots to restore the disk to the state when the snapshot was created. The disk restore operation is irreversible. After the disk is restored, the data stored on the disk before the restore operation is performed cannot be recovered. Exercise caution when you perform this operation. Prerequisites Snapshots are created for the disk that you want to restore. The disk is not released. The instance to which the disk is attached is in the St opped state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1893,7 +1901,7 @@ Act ions column.
 
 ### 7.5 Create a custom image from a snapshot
 
-snapshot You can create a custom image from a snapshot that contains the operating system and data of an Elastic Compute Service (ECS) instance. Then, you can use the custom image to create multiple identical instances. Prerequisites A system disk snapshot is created. For more information about how to create a system disk snapshot, see Create a snapshot. Context Before you create custom images from snapshots, take note of the following items: Notes on snapshots used to create custom images: A custom image can be created from a system disk snapshot and one or more data disk snapshots. You cannot use only data disk snapshots to create custom images. Both encrypted and unencrypted snapshots can be used to create custom images. Custom images cannot be used across regions.
+snapshot You can create a custom image from a snapshot that contains the operating system and data of an Elastic Compute Service (ECS) instance. Then, you can use the custom image to create multiple identical instances. Prerequisites A system disk snapshot is created. For more information about how to create a system disk snapshot, see Create a snapshot. Context Before you create custom images from snapshots, take note of the following items: Notes on snapshots used to create custom images: A custom image can be created from a system disk snapshot and one or more data disk snapshots. You cannot use only data disk snapshots to create custom images. Both encrypted and unencrypted snapshots can be used to create custom images. Custom images cannot be used across regions. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1912,7 +1920,7 @@ click Creat e Cust om Image in the Act ions column.
 
 ### 7.6 Delete a snapshot
 
-You can delete snapshots that are no longer needed. Deleted snapshots cannot be recovered. You cannot delete system disk snapshots that have been used to create custom images.
+You can delete snapshots that are no longer needed. Deleted snapshots cannot be recovered. You cannot delete system disk snapshots that have been used to create custom images. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1925,7 +1933,7 @@ ups
 
 ### 8.1 Create a snapshot-consistent group
 
-group You can create a snapshot-consistent group to simultaneously create snapshots for one or more disks attached to an Elastic Compute Service (ECS) instance. When a business system spans multiple disks, you can create a snapshot-consistent group to ensure a consistent write order and crash consistency of business system data. Context You can create a snapshot-consistent group to simultaneously create snapshots for multiple disks attached to an ECS instance. Snapshot-consistent groups are applicable to cluster services. Example scenarios that snapshot-consistent groups support: A business system is deployed on multiple disks attached to an ECS instance, and point-in-time consistency and crash-consistency are required across databases or enterprise-level applications. For example, a MySQL cluster is built on ECS instances, a single Logical Volume Manager (LVM) logical volume is created across multiple volumes, or Oracle or SAP HANA clusters are migrated to the cloud. Snapshots need to be created simultaneously for multiple nodes of a distributed application system such as a large-scale website or a multi-application collaborative system. Disks on an ECS instance need to be batch backed up with high point-in-time consistency. Precautions Before you use the snapshot-consistent group feature, take note of the following items: When you create a snapshot-consistent group based on an instance, take note of the following items: To ensure that services are not affected, we recommend that you create the snapshot-consistent group during off-peak hours. The instance must be in the Running or St opped state. The disks for which to create a snapshot-consistent group can only be standard performance disks and premium performance disks and must be in the Running state. If the instance has disks of other categories attached, you can select only standard performance disks and premium performance disks on the instance to create a snapshot-consistent group. A single snapshot-consistent group can contain snapshots of up to 16 disks including the system disk and data disks and cannot exceed 32 TiB in size. Snapshots that you created are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to prevent snapshot capacity from exceeding the limit. For more information, see Delete a snapshot. For the amount of time required to create a snapshot-consistent group, take note of the following items: ups The amount of time required to create a snapshot-consistent group depends on the sizes of the selected disks for which to create snapshots. The first snapshot of each disk is a full snapshot and takes longer to create than subsequent snapshots. Subsequent snapshots are incremental snapshots and do not take as long to be created as the first snapshot. The amount of time required varies based on the amount of data changed since the previous snapshot. If you want to use a snapshot while it is being created, you can enable the instant access feature.
+group You can create a snapshot-consistent group to simultaneously create snapshots for one or more disks attached to an Elastic Compute Service (ECS) instance. When a business system spans multiple disks, you can create a snapshot-consistent group to ensure a consistent write order and crash consistency of business system data. Context You can create a snapshot-consistent group to simultaneously create snapshots for multiple disks attached to an ECS instance. Snapshot-consistent groups are applicable to cluster services. Example scenarios that snapshot-consistent groups support: A business system is deployed on multiple disks attached to an ECS instance, and point-in-time consistency and crash-consistency are required across databases or enterprise-level applications. For example, a MySQL cluster is built on ECS instances, a single Logical Volume Manager (LVM) logical volume is created across multiple volumes, or Oracle or SAP HANA clusters are migrated to the cloud. Snapshots need to be created simultaneously for multiple nodes of a distributed application system such as a large-scale website or a multi-application collaborative system. Disks on an ECS instance need to be batch backed up with high point-in-time consistency. Precautions Before you use the snapshot-consistent group feature, take note of the following items: When you create a snapshot-consistent group based on an instance, take note of the following items: To ensure that services are not affected, we recommend that you create the snapshot-consistent group during off-peak hours. The instance must be in the Running or St opped state. The disks for which to create a snapshot-consistent group can only be standard performance disks and premium performance disks and must be in the Running state. If the instance has disks of other categories attached, you can select only standard performance disks and premium performance disks on the instance to create a snapshot-consistent group. A single snapshot-consistent group can contain snapshots of up to 16 disks including the system disk and data disks and cannot exceed 32 TiB in size. Snapshots that you created are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to prevent snapshot capacity from exceeding the limit. For more information, see Delete a snapshot. For the amount of time required to create a snapshot-consistent group, take note of the following items: ups The amount of time required to create a snapshot-consistent group depends on the sizes of the selected disks for which to create snapshots. The first snapshot of each disk is a full snapshot and takes longer to create than subsequent snapshots. Subsequent snapshots are incremental snapshots and do not take as long to be created as the first snapshot. The amount of time required varies based on the amount of data changed since the previous snapshot. If you want to use a snapshot while it is being created, you can enable the instant access feature. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1950,7 +1958,7 @@ snapshot-consistent group After a snapshot-consistent group is created, you can 
 
 > Import ant The rollback operation cannot be reversed. If data changes were made to the disk from the time the snapshot-consistent group was created until the disk is rolled back, all these data changes are lost. To prevent data loss caused by accidental operations, we recommend that you create a snapshot-consistent group to back up disk data before you roll back disks.
 
-The instance to which the disks to be rolled back are attached is in the St opped state. For more information, see Stop an instance. The disks that correspond to the snapshots contained in the snapshot-consistent group have not been released or detached or do not have snapshots being created. The operating system of the instance has not been replaced since the snapshot-consistent group was created. The snapshots of the disks have not been deleted from the snapshot-consistent group. If the snapshot of a disk has been deleted from the snapshot-consistent group, the disk cannot be rolled back by using the snapshot-consistent group. The snapshot-consistent group can be used to roll back only other disks whose snapshots are contained in the group.
+The instance to which the disks to be rolled back are attached is in the St opped state. For more information, see Stop an instance. The disks that correspond to the snapshots contained in the snapshot-consistent group have not been released or detached or do not have snapshots being created. The operating system of the instance has not been replaced since the snapshot-consistent group was created. The snapshots of the disks have not been deleted from the snapshot-consistent group. If the snapshot of a disk has been deleted from the snapshot-consistent group, the disk cannot be rolled back by using the snapshot-consistent group. The snapshot-consistent group can be used to roll back only other disks whose snapshots are contained in the group. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1961,7 +1969,7 @@ i. Read the precautions about the rollback operation. Select St art Inst ance Im
 
 ### 8.3 Delete a snapshot-consistent group
 
-group You can delete snapshot-consistent groups that are no longer needed.
+group You can delete snapshot-consistent groups that are no longer needed. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage & Snapshot s > Snapshot s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1974,7 +1982,7 @@ cies
 
 ### 9.1 Create an automatic snapshot policy
 
-policy Automatic snapshot policies can be applied to system disks and data disks to create periodical snapshots of the disks. You can use automatic snapshot policies to improve data security and tolerance against operation faults. Context Automatic snapshot policies can effectively eliminate the following risks associated with manual snapshots: When applications such as personal websites or databases deployed on an ECS instance encounter attacks or system vulnerabilities, you may be unable to manually create snapshots. In this case, you can use the latest automatic snapshots to roll back the affected disks to restore your data and reduce loss. You can also specify an automatic snapshot policy to create snapshots before regular system maintenance tasks are performed. This eliminates the need to manually create snapshots and ensures that snapshots are always created before maintenance. You can retain up to 64 snapshots for each disk. If the maximum number of snapshots for a disk is reached while a new snapshot is being created, the system deletes the oldest automatic snapshot.
+policy Automatic snapshot policies can be applied to system disks and data disks to create periodical snapshots of the disks. You can use automatic snapshot policies to improve data security and tolerance against operation faults. Context Automatic snapshot policies can effectively eliminate the following risks associated with manual snapshots: When applications such as personal websites or databases deployed on an ECS instance encounter attacks or system vulnerabilities, you may be unable to manually create snapshots. In this case, you can use the latest automatic snapshots to roll back the affected disks to restore your data and reduce loss. You can also specify an automatic snapshot policy to create snapshots before regular system maintenance tasks are performed. This eliminates the need to manually create snapshots and ensures that snapshots are always created before maintenance. You can retain up to 64 snapshots for each disk. If the maximum number of snapshots for a disk is reached while a new snapshot is being created, the system deletes the oldest automatic snapshot. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Aut omat ic Snapshot Policies.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2009,7 +2017,7 @@ cies You can view the list of automatic snapshot policies.
 
 ### 9.3 Modify an automatic snapshot policy
 
-policy You can modify the attributes of automatic snapshot policies. The attributes of each automatic snapshot policy that can be modified include the name, creation time, frequency, and retention policy.
+policy You can modify the attributes of automatic snapshot policies. The attributes of each automatic snapshot policy that can be modified include the name, creation time, frequency, and retention policy. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Aut omat ic Snapshot Policies.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2021,7 +2029,7 @@ Changes made to the retention policy do not affect existing snapshots but take e
 
 ### 9.4 Configure an automatic snapshot policy
 
-policy After you apply an automatic snapshot policy to a disk, snapshots will be created automatically for the disk based on the policy settings. You can cancel an applied automatic snapshot policy at any time. Context We recommend that you configure the automatic snapshot policy to create automatic snapshots during off-peak hours. You can also manually create a snapshot for the disk that already has an automatic snapshot policy applied. When an automatic snapshot is being created, you must wait until the snapshot is complete before you can create a manual snapshot. The automatic snapshot is named in the following format: auto_yyyyMMdd_1, such as auto_20140418_1.
+policy After you apply an automatic snapshot policy to a disk, snapshots will be created automatically for the disk based on the policy settings. You can cancel an applied automatic snapshot policy at any time. Context We recommend that you configure the automatic snapshot policy to create automatic snapshots during off-peak hours. You can also manually create a snapshot for the disk that already has an automatic snapshot policy applied. When an automatic snapshot is being created, you must wait until the snapshot is complete before you can create a manual snapshot. The automatic snapshot is named in the following format: auto_yyyyMMdd_1, such as auto_20140418_1. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose St orage > Disks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2032,7 +2040,7 @@ To apply an automatic snapshot policy, turn on Aut omat ic Snapshot Policy, sele
 
 ### 9.5 Delete an automatic snapshot policy
 
-policy You can delete automatic snapshot policies that are no longer needed. After you delete an automatic snapshot policy, the policy is automatically canceled for the disks that have it applied.
+policy You can delete automatic snapshot policies that are no longer needed. After you delete an automatic snapshot policy, the policy is automatically canceled for the disks that have it applied. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Snapshot s and Images > Aut omat ic Snapshot Policies.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2064,7 +2072,7 @@ Operations in the ECS console The following table describes the operations that 
 
 ### 10.2 Create a security group
 
-Security groups are an important means for network security isolation. They implement network access control for one or more ECS instances. Prerequisites A virtual compute cloud (VPC) is created. For more information, see VPC User Guide. Context Security groups determine whether the instances in the same account that are deployed within the same VPC and region can communicate with each other. By default, if the instances belong to the same security group, they can communicate with each other over the internal network. If the instances belong to different security groups, you can authorize mutual access between the security groups to allow the instances to communicate with each other over the internal network.
+Security groups are an important means for network security isolation. They implement network access control for one or more ECS instances. Prerequisites A virtual compute cloud (VPC) is created. For more information, see VPC User Guide. Context Security groups determine whether the instances in the same account that are deployed within the same VPC and region can communicate with each other. By default, if the instances belong to the same security group, they can communicate with each other over the internal network. If the instances belong to different security groups, you can authorize mutual access between the security groups to allow the instances to communicate with each other over the internal network. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2085,7 +2093,7 @@ Security groups are an important means for network security isolation. They impl
 
 ### 10.3 Add a security group rule
 
-You can use security group rules to control access to and from the ECS instances in a security group over the Internet and the internal network.
+You can use security group rules to control access to and from the ECS instances in a security group over the Internet and the internal network. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2115,7 +2123,7 @@ You can use security group rules to control access to and from the ECS instances
 
 ### 10.4 Add an instance to a security group
 
-group You can add an existing instance to a security group in the same region. After the instance is added, the rules of the security group automatically apply to the instance.
+group You can add an existing instance to a security group in the same region. After the instance is added, the rules of the security group automatically apply to the instance. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2128,7 +2136,7 @@ Act ions column.
 
 #### 10.5.1 View security groups
 
-You can view the list of security groups.
+You can view the list of security groups. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2143,7 +2151,7 @@ click Search. You can select multiple filter options to narrow down search resul
 
 #### 10.5.2 Modify a security group
 
-You can modify the names and descriptions of created security groups.
+You can modify the names and descriptions of created security groups. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2153,7 +2161,7 @@ You can modify the names and descriptions of created security groups.
 
 #### 10.5.3 Remove instances from a security group
 
-You can remove instances from security groups, but each of the instances must always belong to at least one security group. Prerequisites The instances to be removed belong to two or more security groups. Context After an instance is removed from a security group, the instance is isolated from the other instances in the security group. We recommend that you perform all tests in advance to ensure that services can continue to run properly after you remove the instance from the security group.
+You can remove instances from security groups, but each of the instances must always belong to at least one security group. Prerequisites The instances to be removed belong to two or more security groups. Context After an instance is removed from a security group, the instance is isolated from the other instances in the security group. We recommend that you perform all tests in advance to ensure that services can continue to run properly after you remove the instance from the security group. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2164,7 +2172,7 @@ Act ions column.
 
 #### 10.5.4 Delete a security group
 
-You can delete security groups that are no longer needed. Prerequisites No instances exist in the security group that you want to delete.
+You can delete security groups that are no longer needed. Prerequisites No instances exist in the security group that you want to delete. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2176,7 +2184,7 @@ To delete a single security group, find the security group and click Delet e in 
 
 #### 10.6.1 Modify a security group rule
 
-You can modify improper rules in a security group to ensure the security of ECS instances in the security group.
+You can modify improper rules in a security group to ensure the security of ECS instances in the security group. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2189,7 +2197,7 @@ For more information about the attributes of security group rules, see Add a sec
 
 #### 10.6.2 Clone a security group rule
 
-You can clone a security group rule to quickly create a similar rule.
+You can clone a security group rule to quickly create a similar rule. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2202,7 +2210,7 @@ For more information about the attributes of security group rules, see Add a sec
 
 #### 10.6.3 Export security group rules
 
-You can export security group rules of a security group to a local device for backup.
+You can export security group rules of a security group to a local device for backup. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2224,7 +2232,7 @@ Rules in the Act ions column.
 
 #### 10.6.5 Delete a security group rule
 
-You can delete security group rules that are no longer needed from a security group.
+You can delete security group rules that are no longer needed from a security group. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > Securit y Groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2243,6 +2251,7 @@ an ECS instance This topic describes how to attach an instance RAM role to an El
 
 > Not e An instance RAM role can be attached to a single instance at a time.
 
+Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2253,7 +2262,7 @@ and click OK.
 
 ### 11.2 Replace the instance RAM role of an ECS instance
 
-an ECS instance After you attach an instance RAM role to an Elastic Compute Service (ECS) instance, you can replace the role at anytime.
+an ECS instance After you attach an instance RAM role to an Elastic Compute Service (ECS) instance, you can replace the role at anytime. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2264,7 +2273,7 @@ list and click OK to replace the role.
 
 ### 11.3 Detach an instance RAM role from an ECS instance
 
-from an ECS instance After you attach an instance RAM role to an Elastic Compute Service (ECS) instance, you can detach the role from the instance at anytime.
+from an ECS instance After you attach an instance RAM role to an Elastic Compute Service (ECS) instance, you can detach the role from the instance at anytime. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2295,7 +2304,7 @@ Features An ENI is an independent virtual NIC that can be migrated between multi
 
 ### 12.2 Create an ENI
 
-You can bind elastic network interfaces (ENIs) to instances to create high-availability clusters and implement fine-grained network management. You can also unbind an ENI from an instance and then bind the ENI to another instance to implement a low-cost failover solution. Prerequisites A virtual private cloud (VPC) and a VSwitch are created. For more information, see Create a VPC and Create a VSwitch in Apsara Stack VPC User Guide . A security group is available in the VPC. If no security group is available in the VPC, create a security group. For more information, see Create a security group. Context ENIs are classified into primary and secondary ENIs. A primary ENI is created by default when an instance is created in a VPC. This primary ENI has the same lifecycle as the instance and cannot be unbound from the instance. ENIs created separately are secondary ENIs. You can bind secondary ENIs to or unbind them from instances. This topic describes how to create a secondary ENI.
+You can bind elastic network interfaces (ENIs) to instances to create high-availability clusters and implement fine-grained network management. You can also unbind an ENI from an instance and then bind the ENI to another instance to implement a low-cost failover solution. Prerequisites A virtual private cloud (VPC) and a VSwitch are created. For more information, see Create a VPC and Create a VSwitch in Apsara Stack VPC User Guide . A security group is available in the VPC. If no security group is available in the VPC, create a security group. For more information, see Create a security group. Context ENIs are classified into primary and secondary ENIs. A primary ENI is created by default when an instance is created in a VPC. This primary ENI has the same lifecycle as the instance and cannot be unbound from the instance. ENIs created separately are secondary ENIs. You can bind secondary ENIs to or unbind them from instances. This topic describes how to create a secondary ENI. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > ENIs.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2350,7 +2359,7 @@ es In the St at us/Creat ion T ime column, the state of the secondary ENI change
 
 ### 12.4 Configure a secondary ENI
 
-After secondary elastic network interfaces (ENIs) are bound to Elastic Compute Service (ECS) instances, some images used by these instances may not recognize the IP addresses of these ENIs or configure routes for the ENIs. If this occurs, the secondary ENIs cannot be used on the instances. This topic describes how to configure secondary ENIs from within instances to have their IP addresses recognizable and how to configure routes for the secondary ENIs. Prerequisites A secondary ENI is bound to an ECS instance. For information about how to bind a secondary ENI to an ECS instance, see Bind a secondary ENI to an instance. You are connected to the ECS instance. For information about how to connect to an ECS instance, see Instance connecting overview. Context If automatic configuration tools are pre-installed on the images that are used by instances, secondary ENIs that are bound to the instances can be automatically configured by the tools. You can use these secondary ENIs without the need to manually configure them. Skip the topic if your instance uses an image of one of the following versions: Alibaba Cloud Linux 3.2104 64-bit CentOS 8.0 64-bit, CentOS 8.1 64-bit, and CentOS 8.2 64-bit CentOS 7.3 64-bit, CentOS 7.4 64-bit, and CentOS 7.5 64-bit CentOS 6.8 64-bit and CentOS 6.9 64-bit Debian 10.5 64-bit and Debian 10.6 64-bit Windows Server 2008 R2 and later
+After secondary elastic network interfaces (ENIs) are bound to Elastic Compute Service (ECS) instances, some images used by these instances may not recognize the IP addresses of these ENIs or configure routes for the ENIs. If this occurs, the secondary ENIs cannot be used on the instances. This topic describes how to configure secondary ENIs from within instances to have their IP addresses recognizable and how to configure routes for the secondary ENIs. Prerequisites A secondary ENI is bound to an ECS instance. For information about how to bind a secondary ENI to an ECS instance, see Bind a secondary ENI to an instance. You are connected to the ECS instance. For information about how to connect to an ECS instance, see Instance connecting overview. Context If automatic configuration tools are pre-installed on the images that are used by instances, secondary ENIs that are bound to the instances can be automatically configured by the tools. You can use these secondary ENIs without the need to manually configure them. Skip the topic if your instance uses an image of one of the following versions: Alibaba Cloud Linux 3.2104 64-bit CentOS 8.0 64-bit, CentOS 8.1 64-bit, and CentOS 8.2 64-bit CentOS 7.3 64-bit, CentOS 7.4 64-bit, and CentOS 7.5 64-bit CentOS 6.8 64-bit and CentOS 6.9 64-bit Debian 10.5 64-bit and Debian 10.6 64-bit Windows Server 2008 R2 and later Procedure
 1. Check whether the IP addresses of a secondary ENI bound to an instance are recognized.
 For more information, see Check whether the IP addresses of ENIs are recognized. If yes, skip the following steps. If not, proceed with the following steps to configure the secondary ENI.
 2. Obtain the information of the secondary ENI.
@@ -2757,7 +2766,7 @@ chmod +x /etc/rc.local
 
 ### 12.5 View ENIs
 
-You can view the list of ENIs.
+You can view the list of ENIs. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > ENIs.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2785,7 +2794,7 @@ ENI.
 
 ### 12.7 Unbind a secondary ENI from an instance
 
-instance You can unbind a secondary elastic network interface (ENI) from an instance. After the secondary ENI is unbound from the instance, the instance no longer processes the traffic on the ENI. Prerequisites The secondary ENI is in the Bound state. The instance is in the Running or St opped state. Context Only secondary ENIs can be unbound. Primary ENIs share the same lifecycle as instances and cannot be unbound.
+instance You can unbind a secondary elastic network interface (ENI) from an instance. After the secondary ENI is unbound from the instance, the instance no longer processes the traffic on the ENI. Prerequisites The secondary ENI is in the Bound state. The instance is in the Running or St opped state. Context Only secondary ENIs can be unbound. Primary ENIs share the same lifecycle as instances and cannot be unbound. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net works and Securit y > ENIs.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2814,7 +2823,7 @@ Create a key pair by using a key pair generator and then import the key pair to 
 
 ### 13.2 Create a key pair
 
-This topic describes how to create a key pair in the Apsara Uni-manager Management Console. After a key pair is created, its private key is automatically downloaded. You must securely store the private key and ensure its confidentiality. To log on to an Elastic Compute Service (ECS) instance to which a key pair is bound, you must provide the private key. This topic describes how to create a key pair in the Apsara Uni-manager Management Console.
+This topic describes how to create a key pair in the Apsara Uni-manager Management Console. After a key pair is created, its private key is automatically downloaded. You must securely store the private key and ensure its confidentiality. To log on to an Elastic Compute Service (ECS) instance to which a key pair is bound, you must provide the private key. This topic describes how to create a key pair in the Apsara Uni-manager Management Console. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net work & Securit y > SSH Key Pairs.
 3. Click Creat e Key Pair.
@@ -2856,7 +2865,7 @@ restart the instance to make the binding operation take effect: i. In the left-s
 
 ### 13.4 Unbind SSH key pairs
 
-This topic describes how to unbind an SSH key pair in the Elastic Compute Service (ECS) console.
+This topic describes how to unbind an SSH key pair in the Elastic Compute Service (ECS) console. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Net work & Securit y > SSH Key Pairs.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2901,7 +2910,7 @@ Example The following figure shows a typical scenario where business reliability
 
 ### 14.2 Create a deployment set
 
-You can use deployment sets to distribute or aggregate instances involved in your business. You can select hosts, racks, or network switches to improve service availability or network performance.
+You can use deployment sets to distribute or aggregate instances involved in your business. You can select hosts, racks, or network switches to improve service availability or network performance. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Deployment Set s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2928,7 +2937,7 @@ You can use deployment sets to distribute or aggregate instances involved in you
 
 ### 14.3 View deployment sets
 
-You can view the list of deployment sets.
+You can view the list of deployment sets. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Deployment Set s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2942,7 +2951,7 @@ then click Search. You can select multiple filter options to narrow down search 
 
 ### 14.4 Change the deployment set of an instance
 
-an instance This topic describes how to add an Elastic Compute Service (ECS) instance to a deployment set or migrate an instance from one deployment set to another. Prerequisites The instance is in the St opped or Running state.
+an instance This topic describes how to add an Elastic Compute Service (ECS) instance to a deployment set or migrate an instance from one deployment set to another. Prerequisites The instance is in the St opped or Running state. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose Inst ances & Images > Inst ances.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2954,7 +2963,7 @@ Force Change parameter. Valid values of Forced Change: Yes: allows the instance 
 
 ### 14.5 Modify a deployment set
 
-You can modify the name and description of a deployment set.
+You can modify the name and description of a deployment set. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Deployment Set s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2964,7 +2973,7 @@ You can modify the name and description of a deployment set.
 
 ### 14.6 Delete a deployment set
 
-You can delete a deployment set that is no longer needed. Prerequisites No instances exist in the deployment set.
+You can delete a deployment set that is no longer needed. Prerequisites No instances exist in the deployment set. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Deployment Set s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -2976,7 +2985,7 @@ e
 
 ### 15.1 Configure monitoring thresholds for organizations
 
-for organizations You can specify a monitoring period and configure thresholds for a selection of metrics to monitor resource utilization in your organization. Then, you can improve resource utilization efficiency based on monitoring results and optimization suggestions. Limits Monitoring thresholds can be configured only for organizations that use an admin account.
+for organizations You can specify a monitoring period and configure thresholds for a selection of metrics to monitor resource utilization in your organization. Then, you can improve resource utilization efficiency based on monitoring results and optimization suggestions. Limits Monitoring thresholds can be configured only for organizations that use an admin account. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Monit oring & Maint enance.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3003,7 +3012,7 @@ Result The specified monitoring period and metric thresholds are displayed above
 
 ### 15.2 View the list of monitored organizations
 
-organizations You can view the organizations that meet the monitoring criteria, specified thresholds, and optimization suggestions within the monitoring period.
+organizations You can view the organizations that meet the monitoring criteria, specified thresholds, and optimization suggestions within the monitoring period. Procedure
 1. Log on to the ECS console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Use one of the following methods to go to the Monit oring & Maint enance page:
@@ -3013,7 +3022,7 @@ High Quot a Usage: displays organizations whose quota usage reaches or exceeds t
 
 ### 15.3 Configure monitoring metric thresholds for instances
 
-thresholds for instances You can configure the monitoring period and multiple monitoring metric thresholds for instances to improve resource utilization based on the monitoring results and optimization suggestions. Limits You can configure monitoring metric thresholds only as as an operations administrator.
+thresholds for instances You can configure the monitoring period and multiple monitoring metric thresholds for instances to improve resource utilization based on the monitoring results and optimization suggestions. Limits You can configure monitoring metric thresholds only as as an operations administrator. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Monit oring & Maint enance.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3042,7 +3051,7 @@ Result The specified monitoring period and metric thresholds are displayed on th
 
 ## instances
 
-You can view the instances that meet the monitoring criteria, specified thresholds, and optimization suggestions within the monitoring period.
+You can view the instances that meet the monitoring criteria, specified thresholds, and optimization suggestions within the monitoring period. Procedure
 1. Log on to the ECS console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Use one of the following methods to go to the Monit oring & Maint enance page:
@@ -3052,7 +3061,7 @@ High Resource Usage: displays instances whose resource usage reaches or exceeds 
 
 ### 15.5 Reclaim instance resources
 
-You can optimize your business layout by reclaiming under-used instance resources based on the monitoring results of metrics that you set thresholds for. Limits Only instance resources with low usage can be reclaimed. After an Elastic Compute Service (ECS) instance is moved to the recycle bin, the storage resources of the instance are retained, but its computing resources such as vCPUs and memory are released. After an ECS instance is moved to the recycle bin, the instance is retained here for a specified period of time. During the retention period, the instance can be recovered. After the retention period, the instance is automatically deleted.
+You can optimize your business layout by reclaiming under-used instance resources based on the monitoring results of metrics that you set thresholds for. Limits Only instance resources with low usage can be reclaimed. After an Elastic Compute Service (ECS) instance is moved to the recycle bin, the storage resources of the instance are retained, but its computing resources such as vCPUs and memory are released. After an ECS instance is moved to the recycle bin, the instance is retained here for a specified period of time. During the retention period, the instance can be recovered. After the retention period, the instance is automatically deleted. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Monit oring & Maint enance.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3260,7 +3269,7 @@ instances within the current region.
 
 #### 16.2.2 Configure DNS resolution for Cloud Assistant
 
-Assistant This topic describes how to configure Domain Name System (DNS) resolution for Cloud Assistant. During the configuration procedure, you must obtain the IP addresses that correspond to the Cloud Assistant endpoints and then modify the hosts file. Context When you use features such as Cloud Assistant on an Elastic Compute Service (ECS) instance, the instance must have access to the endpoints required to perform actions that you specify, such as running a Cloud Assistant command. The default DNS Nameserver is installed on each ECS instance to resolve domain names. You can run the cat /et c/resolv.conf command to view the DNS Nameserver settings. Example command output: If you modify the configuration file to override the default DNS Nameserver settings, domain names may fail to resolve or resolve slowly when you use features such as Cloud Assistant. This may cause the features to be unavailable. For example, Cloud Assistant commands cannot be run. In this case, you can perform the following procedure to configure DNS resolution for Cloud Assistant.
+Assistant This topic describes how to configure Domain Name System (DNS) resolution for Cloud Assistant. During the configuration procedure, you must obtain the IP addresses that correspond to the Cloud Assistant endpoints and then modify the hosts file. Context When you use features such as Cloud Assistant on an Elastic Compute Service (ECS) instance, the instance must have access to the endpoints required to perform actions that you specify, such as running a Cloud Assistant command. The default DNS Nameserver is installed on each ECS instance to resolve domain names. You can run the cat /et c/resolv.conf command to view the DNS Nameserver settings. Example command output: If you modify the configuration file to override the default DNS Nameserver settings, domain names may fail to resolve or resolve slowly when you use features such as Cloud Assistant. This may cause the features to be unavailable. For example, Cloud Assistant commands cannot be run. In this case, you can perform the following procedure to configure DNS resolution for Cloud Assistant. Procedure
 1. Connect to an ECS instance. For more information, see Instance connecting overview.
 2. Obtain the IP addresses that correspond to the Cloud Assistant endpoints.
 The following Cloud Assistant endpoints are available: Endpoint used to run Cloud Assistant commands, in the format of <region-id>`.axt.aliyun.com` Endpoint used to obtain the Cloud Assistant plug-in and update packages, in the format of `aliy` `un-client-assist-`<region-id>`.oss-`<region-id>`-internal.aliyuncs.com`
@@ -3609,7 +3618,7 @@ You can perform the following operations in the Actions column corresponding to 
 
 #### 16.3.4 Clone a command
 
-You can clone an existing Cloud Assistant command to create another command. You can retain all the information of the original command (cloned command), or you can modify information such as the name, description, type, content, execution path, or timeout period in the new command (command clone).
+You can clone an existing Cloud Assistant command to create another command. You can retain all the information of the original command (cloned command), or you can modify information such as the name, description, type, content, execution path, or timeout period in the new command (command clone). Procedure
 
 > Import ant Only operations administrators, organization administrators, and resource set administrators can clone commands.
 
@@ -3639,7 +3648,7 @@ You can clone an existing Cloud Assistant command to create another command. You
 
 #### 16.3.5 Delete a command
 
-The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed.
+The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed. Procedure
 
 > Import ant Only operations administrators, organization administrators, and resource set administrators can delete commands.
 
@@ -3708,7 +3717,7 @@ Examples The following table describes some example values of cron expressions.
 
 ### 17.1 Create a dedicated host
 
-A dedicated host is a cloud host whose physical resources are reserved for the exclusive use of a single tenant. Elastic Compute Service (ECS) instances created on a dedicated host are physically isolated from those created on other hosts. This topic describes how to create a dedicated host.
+A dedicated host is a cloud host whose physical resources are reserved for the exclusive use of a single tenant. Elastic Compute Service (ECS) instances created on a dedicated host are physically isolated from those created on other hosts. This topic describes how to create a dedicated host. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Dedicat ed Host s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3736,7 +3745,7 @@ Result After the dedicated host is created, you can view it in the Dedicated Hos
 
 ### 17.2 Create a host group
 
-You can group dedicated hosts into host groups for easy management. This topic describes how to create a host group.
+You can group dedicated hosts into host groups for easy management. This topic describes how to create a host group. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Dedicat ed Host s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3757,7 +3766,7 @@ Result After the host group is created, you can view it in the host group list.
 
 ### 17.3 Add dedicated hosts to a host group
 
-group After you create a host group, you can add dedicated hosts to the host group for easy management. This topic describes how to add dedicated hosts to a host group.
+group After you create a host group, you can add dedicated hosts to the host group for easy management. This topic describes how to add dedicated hosts to a host group. Procedure
 1. Log on to the ECS console.
 2. In the left-side navigation pane, click Dedicat ed Host s.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -3775,7 +3784,7 @@ File Transfer Protocol (FTP) transfers files between a client and a server by es
 
 ### 18.2 Install and configure vsftp in CentOS
 
-CentOS This topic describes how to install and configure vsftp in CentOS to transfer files.
+CentOS This topic describes how to install and configure vsftp in CentOS to transfer files. Procedure
 1. Install vsftp.
 
 ```bash
@@ -3836,7 +3845,7 @@ ii. Use the account pwftp to perform an FTP logon test. This example uses the di
 
 ### 18.3 Install vsftp in Ubuntu or Debian
 
-This topic describes how to install and configure vsftp in an instance running Ubuntu or Debian to transfer files.
+This topic describes how to install and configure vsftp in an instance running Ubuntu or Debian to transfer files. Procedure
 1. Update the software source.
 
 ```
@@ -3905,7 +3914,7 @@ ii. Use the account pwftp to perform an FTP logon test. This example uses the di
 
 ### 18.4 Build an FTP site in Windows Server 2008
 
-Server 2008 This topic describes how to build an FTP site on an instance running Windows Server 2008. Prerequisites You have added the Web Server (IIS) role and installed FTP on an instance.
+Server 2008 This topic describes how to build an FTP site on an instance running Windows Server 2008. Prerequisites You have added the Web Server (IIS) role and installed FTP on an instance. Procedure
 1. Connect to an instance.
 2. Choose St art > Adminst rat ive T ools > Int ernet Inf ormat ion Services (IIS) Manager.
 3. Right-click the server name and select Add FT P Sit e from the shortcut menu.
@@ -3916,7 +3925,7 @@ and click Finish. Result Then you can use the administrator account and password
 
 ### 18.5 Build an FTP site in Windows Server 2012
 
-Server 2012 This topic describes how to build an FTP site on an instance running Windows Server 2012. Prerequisites You have added the Web Server (IIS) role and installed FTP on an instance.
+Server 2012 This topic describes how to build an FTP site on an instance running Windows Server 2012. Prerequisites You have added the Web Server (IIS) role and installed FTP on an instance. Procedure
 1. Connect to an instance.
 2. Click the Server Manager icon.
 3. In the left-side navigation pane, click IIS.

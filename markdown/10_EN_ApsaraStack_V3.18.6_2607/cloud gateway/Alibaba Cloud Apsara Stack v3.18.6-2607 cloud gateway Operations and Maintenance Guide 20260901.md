@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 131
 source_pdf: "ee833e12c0007cd0_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Operations and Maintenance Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Operations and Maintenance Guide 20260901
@@ -54,7 +54,7 @@ ager Operations Console
 
 **manager Operations Console**
 
-This topic describes how users such as O&M engineers log on to the Apsara Uni-manager
+This topic describes how users such as O&M engineers log on to the Apsara Uni-manager Operations Console.
 
 **Prerequisites**
 
@@ -91,6 +91,7 @@ If you enter an invalid password for three consecutive times, the system enables
 ## 1 Log on to the Apsara Uni-manager Operations Console.
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **HPN**
 **Network Elements**.
 4. On the HPN Network Element page, configure the **Select IDC** parameter and specify the
@@ -118,6 +119,7 @@ processing during network transmission. RDMA directly sends data to the storage 
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **RDMA**
 **Card O&M**.
 4. In the upper-right corner of the RDMA Card O&M page, select a data source from the **Data**
@@ -246,6 +248,7 @@ The Computing Platform Network (CPN) diagnosis feature checks the nodes in CPN a
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Diagnostics**.
 4. On the CPN Quick Diagnostics page, click **Create Diagnostics Task**.
@@ -266,6 +269,7 @@ In the Create Diagnostics Task dialog box, configure the parameters that are des
 **View diagnostic results**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Diagnostics**.
 4. On the CPN Quick Diagnostics page, find the diagnostic task that you want to manage and
@@ -302,6 +306,7 @@ You can perform a Computing Platform Network (CPN) performance analysis task to 
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Performance Analysis**.
 4. On the CPN Performance Analysis page, click **Create Test**. On the Create Analysis Task
@@ -370,6 +375,7 @@ The CPN Alarm Center module displays alerts, including real-time alerts that are
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Alarm Center**.
 4. On the **CPN Alerts** page, click the **Alert Distribution Overview** tab to view the statistics
@@ -379,6 +385,7 @@ of various types of CPN alerts. By default, the statistics of **Not Closed** ale
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Alarm Center**.
 4. On the **CPN Alerts** page, click the **Host Alert** tab to view real-time CPN alerts on the
@@ -394,6 +401,7 @@ Click an alert item ID in the **Alert Item ID** column to go to the **Alert Deta
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Alarm Center**.
 4. On the **CPN Alerts** page, click the **Switch Alert** tab to view real-time CPN alerts on the
@@ -416,6 +424,7 @@ This topic describes how to manage Remote Direct Memory Access (RDMA) devices, i
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Select the **RDMA Device Management** tab.
@@ -431,6 +440,7 @@ This topic describes how to configure policies for Remote Direct Memory Access (
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Click the **RDMA device policy management** tab.
@@ -468,6 +478,7 @@ This topic describes how to manage interface policies, such as policy configurat
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Click the **RDMA device interface policy management** tab.
@@ -515,6 +526,7 @@ side data processing in network transmission. RDMA transfers data directly into 
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > RDMA**
 **Card O&M**.
 4. In the upper-right corner of the page, select **Data Source** and **Cluster**. You can set Data
@@ -572,6 +584,7 @@ This topic describes how to query the topology information about clusters and no
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Topology**.
 4. In the upper-left corner of the page, select **Cluster** and **Nodes**.
@@ -596,6 +609,7 @@ After the topology is displayed, you can perform the following operations:
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Network Element**.
 4. Select a data center from the drop-down list and enter a network element name in the
@@ -630,6 +644,7 @@ You can use this feature to monitor the key metrics of remote direct memory acce
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Host Monitoring**.
 4. In the upper-right corner of the CPN host monitoring dashboard page, click **Variable**
@@ -649,6 +664,7 @@ You can use this feature to monitor the running status metrics of vSwitches. The
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Switcher**.
 4. In the upper-right corner of the CPN switch dashboard page, click **Variable Filtering**. In
@@ -681,6 +697,7 @@ The high-precision monitoring dashboard of Computing Platform Network (CPN) allo
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > High Precision Monitoring Dashboard** .
 4. In the upper part of the page, select a cluster from the **High Precision Monitoring**
@@ -704,6 +721,7 @@ The high-precision vSwitch monitoring dashboard of Computing Platform Network (C
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > Switch High Precision Monitoring Dashboard** .
 4. In the upper part of the High-precision vSwitch Monitoring page, configure the required
@@ -739,6 +757,7 @@ The related tasks are created in the task modeling module of AI Studio.
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > Job Monitoring**.
 4. In the upper part of the **Job Monitoring** page, click **Expand more** and configure the **idc**,
@@ -763,6 +782,7 @@ After the database is enabled, you must restart the service.
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Dashboard > CPN Flow Monitor**.
 4. On the **Host** tab, view the traffic monitoring data by cluster.
@@ -794,6 +814,7 @@ On the Instance Management page, you can manage the added CGW instances in a cen
 **Display devices**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Instance Management** tab. On the **Display**
 **Devices** tab, view the instance details.
@@ -810,6 +831,7 @@ On the Instance Management page, you can manage the added CGW instances in a cen
 **Scan new devices**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Instance Management** tab. Then, click the **Scan**
 **for New Devices** tab.
@@ -838,6 +860,7 @@ neighbor and does not provide server access.
 
 You can view records and results of CGW API operations that are called by the bare metal controller or Apsara Uni-manager Operations Console based on your O&M requirements.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Operation Logs** tab.
 5. Optional. Select **Start/End Time** and configure the start time and end time.
@@ -966,6 +989,7 @@ In O&M emergency scenarios, you can use this feature to add the physical port of
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Apply for Bare Metal in VPC** from the drop-down list in the upper-left corner of the
@@ -1003,6 +1027,7 @@ In O&M emergency scenarios, you can use this feature to disconnect the physical 
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Release Bare Metal in VPC** from the drop-down list in the upper-left corner of the
@@ -1033,6 +1058,7 @@ In O&M emergency scenarios, you can use this feature to delete route entries tha
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete Route Table Entry** from the drop-down list in the upper-left corner of the
@@ -1068,6 +1094,7 @@ In O&M emergency scenarios, you can use this feature to delete a VPC router inte
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete Router Interface** from the drop-down list in the upper-left corner of the tab.
@@ -1100,6 +1127,7 @@ In O&M emergency scenarios, you can use this feature to delete a VBR.
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete VBR** from the drop-down list in the upper-left corner of the tab.
@@ -1134,6 +1162,7 @@ In O&M emergency scenarios, you can use this feature to delete an Express Connec
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete Express Connect Circuit** from the drop-down list in the upper-left corner of
@@ -1204,6 +1233,7 @@ You can view the bandwidth of the Express Connect circuit to which a router inte
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View Express Connect Circuit Bandwidth** from the drop-down list in the upper-
@@ -1251,6 +1281,7 @@ This operation may affect your business. Unauthorized operations are prohibited.
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Change Express Connect Circuit Bandwidth** from the drop-down list in the
@@ -1275,6 +1306,7 @@ You can view trunk usage to obtain up-to-date information about the usage of har
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View Trunk Usage** from the drop-down list in the upper-left corner of the tab.
@@ -1291,6 +1323,7 @@ You can view the VPN usage of a bare metal instance, and the VPN is assigned to 
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View BM VPN Usage** from the drop-down list in the upper-left corner of the tab.
@@ -1304,6 +1337,7 @@ You can view BD usage to learn about the BD configuration distribution in a time
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View BD Usage** from the drop-down list in the upper-left corner of the tab.
@@ -1320,6 +1354,7 @@ In O&M emergency scenarios, you can use this feature to check whether the initia
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Check the Initialization Configuration** from the drop-down list in the upper-left
@@ -1347,6 +1382,7 @@ You can use this operation to locate the exception and scan the HSW after a bare
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Check the Route Configuration** from the drop-down list in the upper-left corner of
@@ -1376,6 +1412,7 @@ This operation is only for emergency scenarios in which the bare metal network i
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Display the Information of Bare Metal Network Gateways** from the drop-down
@@ -1408,6 +1445,7 @@ On the Instance Management tab, you can view information about computing access 
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Networking > Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > Computing Access Gateway**.
 4. On the **Computing Access Gateway** page, click the **Instance Management** tab.
 5. On the **Display Devices** tab, view the information about computing access gateways.
@@ -1429,6 +1467,7 @@ On the Instance Management tab, you can view information about computing access 
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Networking > Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > Computing Access Gateway**.
 4. On the **Computing Access Gateway** page, click the **Instance Management** tab.
 5. Click the **Scan for New Devices** tab.
@@ -1485,6 +1524,7 @@ reflective route of the IBGP peer and cannot be used for server access.
 To meet O&M requirements, you can view the records and results of API operations that are managed by bare metal instances and called by the Apsara Uni-manager Operations Console. The API records and results are provided by the computing access gateways.
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Networking > Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > Computing Access Gateway**.
 4. On the **Computing Access Gateway** page, click the **Operation History** tab to view the
 operation logs. Click **Advanced Filter** and filter operation logs by **Start/End Time**, **Bare Metal Name**,
@@ -1597,6 +1637,7 @@ Find the bare metal IP address that you want to manage and click **Release** in 
 On the Private Line Management tab, you can view the bare metal networks associated with Express Connect Routers (ECRs).
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Networking > Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > Computing Access Gateway**.
 4. On the **Computing Access Gateway** page, click the **Private Line Management** tab to
 view the Express Connect circuit information about bare metal instances. Click **Advanced Filter** and filter bare metal instances by **vSwitch ID**, **VPC ID**, **Private**
@@ -1989,6 +2030,7 @@ iii. Check whether the parameter configurations are valid. If yes, click **Confi
 **Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Services** > **CGW O&M** > **CGW Cluster**
 **Management**.
 4. On the CGW Cluster Management page, select a region from the **Region** drop-down list.

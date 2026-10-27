@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 149
 source_pdf: "cc94affd969b82c2_Alibaba Cloud Apsara Stack V3.18.6 Tenant-side Bastionhost User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%A7%9F%E6%88%B7%E4%BE%A7%E5%A0%A1%E5%9E%92%E6%9C%BA%EF%BC%88A%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tenant-side%C2%A0Bastionhost%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Tenant-side Bastionhost User Guide 20260701
@@ -544,6 +544,7 @@ This topic describes how to create, search for, and delete a department. This to
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > User Management**.
 4. On the **Department** tab, manage a department.
 
@@ -580,6 +581,7 @@ This topic describes how to create one or more users.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > User Management**.
 4. On the left side of the User Management page, click the **Department** tab. Then, create one
 or more users.
@@ -654,6 +656,7 @@ conditions, and then click **Search**. Click **Reset** to clear the search condi
 This topic describes how to export user information to your computer.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > User Management**.
 4. In the User section of the **Department** or **User Group** tab, click the
 icon.
@@ -668,6 +671,7 @@ This topic describes how to create and manage a user group.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > User Management**.
 4. On the **User Group** tab, manage a user group.
 
@@ -714,6 +718,7 @@ On the **User Group** tab, select a user and click **Remove from Group** in the 
 Bastionhost allows you to flexibly configure the fields that are displayed in the user list.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > User Management**.
 4. Click the **Department** or **User Group** tab on the left side of the page. In the User section,
 click the icon. Select the fields that you want to display and click **Confirm**.
@@ -728,6 +733,7 @@ This topic describes how to import a token file.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > OTP Management**.
 4. Click **Import Token** to select and upload a token file from your computer.
 
@@ -742,6 +748,7 @@ Unbind a token: Select the token that you want to manage and click **Unbind** ab
 This topic describes how to search for a token that meets the search conditions.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > OTP Management**.
 4. Enter or select a search condition in a search field and click **Search**.
 
@@ -750,6 +757,7 @@ This topic describes how to search for a token that meets the search conditions.
 After you create a token, you must authorize the token file to the user.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > OTP Management**.
 4. Find the token that you want to manage and click **Bind User** in the **Actions** column.
 5. In the **Select User** panel, select a user and click **Confirm**.
@@ -759,6 +767,7 @@ After you create a token, you must authorize the token file to the user.
 If a time difference exists between Bastionhost and your one-time password (OTP) device and you cannot obtain a password in real time, you can synchronize a token.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > OTP Management**.
 4. Find the token that you want to manage and click **Synchronize Token** in the **Actions**
 column.
@@ -783,6 +792,7 @@ The **third-party OTP SERVER** is configured in the **Detailed Configuration** s
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > Third OTP Token Management**.
 4. In the upper-left corner of the page, click **Import Token**.
 5. In the **Import Token** panel, select the serial number of the token to be imported and click
@@ -802,6 +812,7 @@ The third-party OTP SERVER is set to JN TASS. For more information, see **Config
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > Third OTP Token Management**.
 4. Find the token that you want to manage and click **Bind User** in the **Actions** column.
 5. On the **Select User** tab, select the user to which you want to bind the token and click **OK**.
@@ -815,6 +826,7 @@ This topic describes how to unbind a token from a user. After the token is unbou
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > Third OTP Token Management**.
 4. In the token list, select the token that you want to unbind and click **Unbind** above the list.
 5. In the **Unbind** dialog box, confirm the settings and click **OK**.
@@ -827,6 +839,7 @@ This topic describes how to report the loss of a token. After a token is reporte
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > Third OTP Token Management**.
 4. In the token list, select the token that you want to report as lost and click **Report Loss**
 above the list.
@@ -840,6 +853,7 @@ This topic describes how to enable or disable a token.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > Third OTP Token Management**.
 4. In the token list, select a token that you want to manage and click **Enable** or **Disable**
 above the list.
@@ -853,6 +867,7 @@ This topic describes how to delete a token.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **User > Third OTP Token Management**.
 4. In the token list, select the token that you want to delete and click **Delete** above the list.
 5. In the **Delete** message, confirm the settings and click **OK**.
@@ -880,6 +895,7 @@ icon on the right to create the child node. To change the level of a node, move 
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Asset > Asset Management**.
 4. In the **Assets** section, click **Create**. In the **Create Asset** panel, select an asset template
 and click **Next**.
@@ -1037,6 +1053,7 @@ This topic describes how to create an asset diagnostics task and how to manage i
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Assets > Asset Diagnosis**.
 4. Click the
 icon. In the **Create Asset Health Check Task** panel, configure the basic task information and click **Next**.
@@ -1059,6 +1076,7 @@ You can synchronize remote assets to Bastionhost to manage the assets in a centr
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Assets > Asset Discovery**.
 4. Click the
 icon. In the **Create Asset Source** panel, configure the parameters and click
@@ -1105,6 +1123,7 @@ This topic describes how to create and manage a tag.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Assets > Asset Management**.
 4. Click **Create**. In the **Create new tag** panel, enter a tag name, select the object to be
 bound to the tag, and then click **Confirm**. You can select assets or asset accounts as the object.
@@ -1153,6 +1172,7 @@ If the client tools or protocols, such as HTTPS, are not supported by Bastionhos
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Asset > Remote Client**.
 4. On the **Remote Client** tab, click **Create**.
 5. In the **Create Remote Client** panel, configure the parameters and click **Confirm**.
@@ -1166,6 +1186,7 @@ To delete a remote client, find the remote client that you want to manage on the
 You must enable RDP for the asset that is used as application server.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Asset > Remote Client**.
 4. On the **Application Server** tab, click **Create**.
 5. In the **Create Application Server** panel, select the type of the application server, select
@@ -1197,6 +1218,7 @@ This topic describes how to create a local account.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Management**.
 4. Click **Create**. In the **Create Account** panel, select the asset that you want to manage and
 click **Next**.
@@ -1230,6 +1252,7 @@ You can manage accounts of remote assets on Bastionhost.
 If you create an account for an asset on Bastionhost, the same account can be created on the asset. You can create accounts for assets that support the following protocols: SSH, RDP, MySQL, Oracle, and SQL Server. Make sure that you create a privileged account on Bastionhost whose protocol is the same as the protocol of the asset.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Management**.
 4. Select a local account and choose **More > Create Remote Account**.
 5. In the message that appears, click **Confirm**.
@@ -1248,6 +1271,7 @@ You can delete a remote account by using Bastionhost. You can create accounts fo
 This topic describes how to view asset accounts by category.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Management**.
 4. In the left-side section of the Account Management page, click the category that you want
 to manage to view the account list or protocol list and the number of accounts. Click an account or a protocol to view the account information.
@@ -1257,6 +1281,7 @@ to manage to view the account list or protocol list and the number of accounts. 
 This topic describes how to view account logs.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Management**.
 4. Find the account that you want to manage and click **Edit** in the **Actions** column.
 5. On the **Logs** tab, view the operation logs of the account.
@@ -1288,6 +1313,7 @@ Bastionhost supports regular and manual check of account status. Bastionhost can
 This topic describes how to configure a custom policy for diagnostic tasks.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Diagnostics**.
 4. Click the
 icon. In the **Default Configuration of Diagnostics Tasks** panel, configure the parameters and click **Confirm**.
@@ -1308,6 +1334,7 @@ icon. In the **Default Configuration of Diagnostics Tasks** panel, configure the
 This topic describes how to create a diagnostic task.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Diagnostics**.
 4. Click the
 icon. In the **Create Diagnostics Task** panel, configure the Task Name and First Executed At parameters, and then click **Next**. The following table describes the parameters.
@@ -1336,6 +1363,7 @@ icon. In the **Create Diagnostics Task** panel, configure the Task Name and Firs
 This topic describes how to execute a diagnostic task.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Diagnostics**.
 4. Move the pointer over the task and click **Immediately Execute**. In the message that
 appears, click Confirm to execute the task. Move the pointer over the task that is being executed and click **Stop**. In the message that appears, click Confirm to stop the task. If the Execution Method parameter is set to **Automatic**, the system automatically executes the task at the specified time.
@@ -1354,6 +1382,7 @@ the most recent diagnostic result of the task, including the scanning status, au
 This topic describes how to configure an account diagnostic scope.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Diagnostics**.
 4. Click an account diagnostic task. On the **Diagnostics Scope** tab, click **Add Account**.
 5. In the **Select Account** panel, select an account and click **Confirm**.
@@ -1372,6 +1401,7 @@ The asset account has a privileged account that uses the same protocol as the as
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Discovery**.
 4. Click the
 icon. In the **Create Discovery Task** panel, configure the parameters and click
@@ -1412,6 +1442,7 @@ If you set the Execution Method parameter to Automatic when you create a task, t
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Discovery**.
 4. Execute one or more tasks.
 To execute a task, move the pointer over the task and click **Immediately Execute**. In the Immediately Execute message, click Confirm. To execute multiple tasks at a time, select the tasks and click **Immediately Execute**. In the Batch Immediately Execute message, click Confirm.
@@ -1425,6 +1456,7 @@ Move the pointer over the task that you want to manage and click **Stop**. You c
 If automatic management is not enabled for a discovery task, you must manually add the discovered accounts to Bastionhost.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Account Discovery**.
 4. Click the task that you want to manage. On the **Discovery Result** tab, select the
 unmanaged accounts and click **Manage**.
@@ -1438,6 +1470,7 @@ unmanaged accounts and click **Manage**.
 Bastionhost allows you to manage accounts that are associated with password change tasks. This topic describes how to view accounts that are associated with password change tasks.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Account for Password Change** tab, view accounts that are associated with
 password change tasks from different dimensions in the All Accounts section. You can also view accounts that are associated with password change tasks by status in the Account section.
@@ -1461,6 +1494,7 @@ This topic describes how to change the password of an account.
 If an account is associated with multiple password change tasks and the password of the account is changed at least once, and you do not want to change the passwords of other accounts that are associated with the password change tasks, you can retry the password change tasks for accounts whose passwords you want to change.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Account for Password Change** tab, select the account that you want to manage
 and choose **Immediately Change Password** > **Retry**.
@@ -1490,6 +1524,7 @@ task is in the **Pending** state and click **Stop**.
 This topic describes how to verify the password of an account.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Account for Password Change** tab, find the account that you want to manage
 and choose **More > Verify Password** in the **Actions** column.
@@ -1511,6 +1546,7 @@ The encryption password is used to decrypt the ZIP file. This ensures the securi
 This topic describes how to export the password change history for an account.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Account for Password Change** tab, find the account that you want to manage
 and choose **More > Download password change history** in the **Actions** column.
@@ -1522,6 +1558,7 @@ and click **Export**. The encryption password is used to decrypt the ZIP file wh
 This topic describes how to restore a password.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Account for Password Change** tab, find the account that you want to manage
 and choose **More > Restore Password** in the **Actions** column.
@@ -1533,6 +1570,7 @@ If the password is lost due to repeated power outages and network failures durin
 This topic describes how to export the password of an account to your computer.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Account for Password Change** tab, select the account that you want to manage
 and click **Export Password** above the account list.
@@ -1546,6 +1584,7 @@ The encryption password is used to decrypt the ZIP file. This ensures the securi
 You can use the default password policy, backup policy, and backup mode.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Password Change Plan** tab, click the
 icon.
@@ -1590,6 +1629,7 @@ This topic describes how to create and manage complex password-change accounts.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Password Management**.
 4. On the **Complex Password Change Account** tab, click **Create**.
 5. In the **Basic Settings** step, configure the parameters described in the following table and
@@ -1647,6 +1687,7 @@ You can manage all SSH keys in a centralized manner.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Account > Key Management**.
 4. Click **Create**. In the **Create Key** panel, configure the parameters and click **Confirm**. The
 following table describes the parameters.
@@ -1700,6 +1741,7 @@ You can create an authorization rule to grant permissions to users on the accoun
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Authorize > Authorization Rule**.
 4. On the **Rule View** tab, click **Create**.
 5. In the **Create Rule** panel, configure the parameters and click **Confirm**. The following table
@@ -1759,6 +1801,7 @@ On the **Rule View** tab, select the rule that you want to manage and click **De
 You can view authorized assets by user.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Authorize > Authorization Rule**.
 4. On the **Member View** tab, click a user. All assets and asset accounts on which the user
 has permissions are displayed in the right-side section. You can click **Export** below the user list to export all users and the assets and asset accounts on which the users have permissions. You can click the icon in the asset list to export the assets and asset accounts on which the selected user has permissions. You can enter the username or name of a user and press the Enter key in the user list to search for the user. You can enter an asset name, IP address, account name, or authorization rule, or select a protocol in the asset list, and click **Search** to search for an asset or asset account. You can click an authorization rule to modify the rule.
@@ -1768,6 +1811,7 @@ has permissions are displayed in the right-side section. You can click **Export*
 You can view the authorized users, asset accounts, and authorization rules by asset.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Authorize > Authorization Rule**.
 4. On the **Asset View** tab, click an asset. All users and asset accounts that have permissions
 on the asset are displayed in the right-side section. You can click **Export** in the asset list to export all assets, and the users and asset accounts that have permissions on the asset. You can click the icon in the user list to export the users and asset accounts that have permissions on the asset. You can enter an asset name or IP address and press the Enter key in the asset list to search for the required asset. You can enter the username, name, account, and authorization rule, or select a protocol in the user list, and then click **Search** to search for a user or an asset account. You can click an authorization rule to modify the rule.
@@ -1784,6 +1828,7 @@ You can create pre-authorization rules to limit the assets that can be applied f
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Authorize > Authorization Rules**.
 4. On the Pre-authorization Rule page, click **Create**. On the Create Pre-authorization Rule
 page, configure the parameters that are described in the following table and click **Confirm**.
@@ -1860,6 +1905,7 @@ If you select the Automatically create authorization rules option on the **Confi
 unauthorized logons and creates O&M rules. If you want to review unauthorized logons, do not select this option.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Authorize > Unauthorized Logon**.
 4. Select an unauthorized logon review record and click **Authorize** to complete the
 authorization.
@@ -1877,6 +1923,7 @@ After you specify matching conditions for a dynamic object, the dynamic object c
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. Choose **Authorize > Dynamic Objects**.
 4. On the **Dynamic Account Group** tab, click **Create**. On the Create Dynamic Account Group
 page, configure parameters and click **Confirm**. The following table describes the parameters.
@@ -1919,6 +1966,7 @@ You can configure an access control policy to restrict access authentication, te
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Policy > Access Control**.
 4. Click **Create**. In the **Create Policy** panel, configure the parameters and click **Confirm**. The
 following table describes the parameters.
@@ -1957,6 +2005,7 @@ You can configure a host command control policy to configure host commands.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Policy > Host Command Control**.
 4. Click **Create**. In the **Create Policy** panel, configure the parameters and click **Confirm**. The
 following table describes the parameters.
@@ -2004,6 +2053,7 @@ You can configure a database command control policy to control database commands
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Policy > Database Command Control**.
 4. Click **Create**. In the **Create Policy** panel, configure the parameters and click **Confirm**. The
 following table describes the parameters.
@@ -2050,6 +2100,7 @@ You can classify online sessions by O&M user, O&M asset, and protocol. You can a
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Audit > Online Sessions**.
 
 **Common search conditions**
@@ -2100,6 +2151,7 @@ You can review, play back, search for, and download historical sessions.
 If a green dot is displayed in the Review Status column, the session is **reviewed**. If a gray dot is displayed in the Review Status column, the session is **not reviewed**.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Audit > Historical Sessions**.
 4. The following table describes different review methods for historical sessions.
 
@@ -2118,6 +2170,7 @@ Click the icon in the upper-left corner of the page to download the historical s
 You can classify sessions into various events for quick query. Search for and view an event
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Audit > Event Retrieval**.
 4. Select an event type based on your business requirements.
 You can search for events of the Character Command, Graphic Text, File Transfer, and Database Command types.
@@ -2151,6 +2204,7 @@ If the built-in O&M reports and system reports do not meet your requirements, yo
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Reports > Custom Reports**.
 4. Click **Create**. In the Select Data Source step, enter a template name, select a data source,
 configure the Filter Conditions parameter, and then click **Next**.
@@ -2182,6 +2236,7 @@ Select the template that you want to delete, and click **Delete** above the temp
 You can view O&M reports from different dimensions.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Reports > O&M Reports**.
 4. On the O&M Report page, view the O&M status.
 Overview: View the total numbers and distributions of different items. O&M Duration: View the O&M duration of each protocol in different time periods. O&M Times: View the number of O&M sessions of each protocol in different time periods. Session Size: View the size of O&M sessions for each protocol in different time periods. Source IP Address: View the number of source IP addresses in different time periods. Transferred Files: View the number of transferred files in different time periods. Character Commands: View the number of SSH, Telnet, and Rlogin commands in different time periods. Activity Duration: View the duration of O&M operations over different protocols in different time periods.
@@ -2194,6 +2249,7 @@ Bastionhost provides a system report to visualize O&M trends from various perspe
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Reports > System Reports**.
 4. View various data statistics in the system report.
 
@@ -2209,6 +2265,7 @@ You can create a report subscription to send O&M reports, system reports, global
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Reports > Report Subscription**.
 4. Click **Create Subscription**. In the Create Report Subscription panel, turn on Status,
 configure the Subscription Name, Subscription content, Sending Period, and Notification Method parameters, click **Add** to add users as recipients, and then click **Confirm**.
@@ -2235,6 +2292,7 @@ After you install Bastionhost, a project named default is automatically created.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Project Management**.
 4. On the Project Management page, view the default project.
 
@@ -2260,6 +2318,7 @@ You can configure authentication security settings and multi-factor authenticati
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > User Configuration**.
 
 **Configure authentication security settings**
@@ -2455,6 +2514,7 @@ You can configure custom attributes for users. On the **Custom Attribute** tab, 
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Role Configuration**.
 4. Click **Create**. In the **Create Role** panel, enter a name and description for the role, select
 the required permissions, and then click **Confirm**.
@@ -2479,6 +2539,7 @@ column.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Asset Configuration**.
 4. On the Asset Directory tab, find the root directory and click **Create Child Directory** in the
 **Actions** column.
@@ -2605,6 +2666,7 @@ the **Actions** column.
 On the O&M Configuration tab, you can configure the O&M logon, O&M duration, and number of sessions.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Asset Configuration**.
 4. On the **O&M Configuration** tab, configure the parameters and click **Save**. The following
 table describes the parameters.
@@ -2636,6 +2698,7 @@ table describes the parameters.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Asset Configuration**.
 4. On the **Custom Asset Attribute** tab, click **Create**. In the **Create Attribute** panel,
 configure the parameters and click **Confirm**. The following table describes the parameters.
@@ -2668,6 +2731,7 @@ and click **Delete** in the **Actions** column.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Asset Configuration**.
 4. On the **Custom Account Attribute** tab, click **Create**. In the **Create Attribute** panel,
 configure the parameters and click **Confirm**. The following table describes the parameters.
@@ -2702,6 +2766,7 @@ You can add and manage operating systems and view the number of assets and asset
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > Asset Configuration**.
 4. On the **Operating System** tab, click **Create**. In the Create operating system dialog box,
 select a platform, enter a name, and then click **Confirm**.
@@ -2721,6 +2786,7 @@ A third-party application system can call API operations to connect to Bastionho
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Configure > System Connection**.
 4. On the **Access Token** section, click **Create**. In the **Create Access Token** panel, configure
 the parameters described in the following table and click **Confirm**.
@@ -2757,6 +2823,7 @@ You can view network interface information.
 You can view the information about network interface controllers (NICs).
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Network Management**.
 4. In the **NIC Configuration** section of the **Network Settings** tab, view the NIC information.
 
@@ -2766,6 +2833,7 @@ You can view the information about network interface controllers (NICs).
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. On the **Port Configuration** tab, enable or disable a port, or change a port number, and
 then click **Save**.
@@ -2778,6 +2846,7 @@ If you select High Security in the TLS Security Configuration section, only TLS 
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. On the **Security Configuration** tab, select or deselect High Security and click **Save**.
 
@@ -2787,6 +2856,7 @@ If you select High Security in the TLS Security Configuration section, only TLS 
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. On the **Communication Configuration** tab, configure the parameters and click **Save**. The
 following table describes the parameters.
@@ -2803,6 +2873,7 @@ Bastionhost allows you to upload an SM or RSA certificate, which helps to preven
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Network Management**.
 4. In the **Custom Web Certificate** section of the **Web Certificate Configuration** tab,
 upload an SM or RSA certificate and click **Save**. The following table describes the related parameters.
@@ -2828,6 +2899,7 @@ upload an SM or RSA certificate and click **Save**. The following table describe
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Network Management**.
 4. On the **Firewall** tab, click **Change** to set the Protection Mode parameter to Whitelist Mode
 or Blacklist Mode, and click **Confirm**. If the Protection Mode parameter is set to Disable, the firewall feature is disabled, and no IP address whitelist or blacklist needs to be maintained. If the Protection Mode parameter is set to Blacklist Mode, click the Blacklist tab, and then click **Add Blacklist**. In the Add Blacklist panel, configure the blacklist by adding or updating IP addresses and CIDR blocks, and click **Confirm**. If the Protection Mode parameter is set to Whitelist Mode, click the Whitelist tab, and then click **Add Whitelist**. In the Add Whitelist panel, configure the whitelist by adding or updating IP addresses and CIDR blocks, and click **Confirm**.
@@ -2837,6 +2909,7 @@ or Blacklist Mode, and click **Confirm**. If the Protection Mode parameter is se
 You can view the information about cluster nodes.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > HA or Cluster**.
 4. In the Cluster Node List section, view the information about cluster nodes.
 
@@ -2848,6 +2921,7 @@ You can configure one or more Syslog servers.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. On the **Log Shipping** tab, change the Status switch, configure the parameters, and then
 click **Send Test Data**. After the test succeeds, click **Save**. The following table describes the parameters.
@@ -2866,6 +2940,7 @@ click **Send Test Data**. After the test succeeds, click **Save**. The following
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Data Management**.
 4. On the **Data Management** tab, view the storage status of Object Storage Service (OSS).
 
@@ -2912,6 +2987,7 @@ You can back up the current configurations and data of the system. If an error o
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Data Management**.
 4. On the **Configuration Backup** tab, perform the related operations.
 
@@ -2945,6 +3021,7 @@ In the **Upload and Restore System Configuration** section, click **Upload** and
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Data Management**.
 4. On the **Log Backup** tab, click **Create**.
 5. In the **Create Backup Log** panel, specify the backup time period, description, and log
@@ -2964,6 +3041,7 @@ On the **Log Backup** tab, select the log backup file that you want to manage an
 You can use a configuration backup file of V3.8222.x or earlier to restore data. After the restoration, the backup data overwrites the current system data.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Data Management**.
 4. On the **Data Upgrade and Restore** tab, upload a configuration backup file.
 5. After the file is uploaded, click **Restore**.
@@ -2974,6 +3052,7 @@ You can use a configuration backup file of V3.8222.x or earlier to restore data.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Monitor or Alert**.
 4. On the **Resource Monitoring** tab, view the status of system resources, such as the CPU
 utilization, memory usage, network speed, and disk read and write speed.
@@ -2983,6 +3062,7 @@ utilization, memory usage, network speed, and disk read and write speed.
 When the resource usage exceeds the specified thresholds, the system sends an alert log by internal message, email, or text message, or to a Syslog server.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Monitor or Alert**.
 4. On the **Alert Configuration** tab, configure the thresholds and click **Save**.
 
@@ -2994,6 +3074,7 @@ You can configure the notification methods and recipients.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. On the **Notifications** tab, configure the notification methods and recipients.
 Select the Internal Message, Email, or SMS notification method based on your business requirements. Add notification recipients a. Find a message that you want to manage and click **Add** in the Actions column or select a message and click **Batch Add Recipients**. b. In the **Select User** panel, search for users or select users by department, and then click **Confirm**. Remove notification recipients Click the icon next to a recipient to remove the recipient, or perform the following operations to remove multiple recipients at a time: a. Select the messages that you want to manage and click **Batch Remove Recipients**. b. In the **Select User** panel, select the users that you want to manage and click **Confirm** to remove the selected users at a time.
@@ -3005,6 +3086,7 @@ Select the Internal Message, Email, or SMS notification method based on your bus
 You can configure an email server.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. In the **Email Configuration** section of the **Notification Configuration** tab, turn on the
 switch, configure an email server, and then click **Test**. After the test succeeds, click **Save**.
@@ -3030,6 +3112,7 @@ You can configure levels, and export and view operation logs.
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **Audit > Operation Logs**.
 4. On the Operation Logs page, search for an operation log and view the log details by time
 range, level, and username.
@@ -3049,6 +3132,7 @@ In the upper-left corner of the operation log list, click **Export Records**.
 You can view, confirm, and export alert logs.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Monitor or Alert**.
 4. On the **Alert Logs** tab, view historical alert logs, log confirmation time, and users who
 confirm the alert logs. Select the alert log that you want to manage and click **Confirm Alert** to confirm the alert log. If you confirm the alert log, you acknowledge the alert log. Click the icon. In the **Export** dialog box, enter the encryption password of the file to be exported. The encryption password is used to decrypt the exported ZIP package. We recommend you configure an encryption password to ensure the security of the file.
@@ -3063,6 +3147,7 @@ confirm the alert logs. Select the alert log that you want to manage and click *
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Service Management**.
 4. In the **System Time** and **Configuration of System Time Synchronization** sections of
 the **Country or Region** tab, configure the system time based on your business requirements. To configure the time server, enter the address of the time server and click **Save**. You can configure the address of the time server. The default address is time.windows.com. To manually synchronize the system time, click **Synchronize Server Time** to synchronize the time of the time server, or click **Synchronize Browser Time** to synchronize the time of the current browser. To automatically synchronize the system time, turn on Automatic Synchronization and configure the Synchronization Period parameter. The value can be accurate to minutes. Then, click **Save**. The system automatically synchronizes the time from the configured time server based on the specified period.
@@ -3075,6 +3160,7 @@ You can change the time zone only in standalone mode. If the time zone is differ
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Local Machine Maintenance**.
 4. On the **Language-specific UI** tab, configure settings described in the following table.
 
@@ -3095,6 +3181,7 @@ You can configure system announcements. After you customize the content of an an
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Local Machine Maintenance**.
 4. On the **Announcement settings** tab, click **Create**. In the Create Announcement panel,
 enter the title and content of the announcement, click **Upload Image** to upload images, specify whether to send a notification after the announcement is published and whether to pin the announcement to the top, and then click **Confirm**.
@@ -3123,6 +3210,7 @@ icon and click **Workbench**.
 You can test the connectivity of a host address.
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Local Machine Maintenance**.
 4. In the **Test Connectivity** section of the **Diagnostics Tool** tab, set the operation type to
 **PING**, enter the host address, and then click **Execute Test**.
@@ -3162,6 +3250,7 @@ the health check. Wait a few minutes and refresh the page to view the health che
 
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost.
 2. In the console switch section, click the
+icon and click **Management Console**.
 3. In the left-side navigation pane, choose **System > Local Machine Maintenance**.
 4. Click the **Health check** tab. In the **Health check** section, click **Export health report** to
 download the health check report to your on-premises computer.

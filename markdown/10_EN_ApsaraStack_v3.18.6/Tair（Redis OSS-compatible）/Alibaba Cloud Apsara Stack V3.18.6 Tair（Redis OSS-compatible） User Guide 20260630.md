@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 172
 source_pdf: "3dd8d12484d17e66_Alibaba Cloud Apsara Stack V3.18.6 Tair（Redis OSS-compatible） User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tair%EF%BC%88Redis%20OSS-compatible%EF%BC%89%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Tair（Redis OSS-compatible） User Guide 20260630
@@ -170,6 +170,8 @@ The following conditions must be met for TairHash commands to take effect: The i
 
 > **Note:** You can manage Redis strings and TairStrings on a performance-enhanced instance. However, CAS and CAD commands are applicable only to Redis strings.
 
+**Supported commands**
+
 Table 1. Commands that enhance string functionality
 
 | Command | Syntax | Description |
@@ -240,6 +242,8 @@ The commands for TairHashes take effect only if the following conditions are met
 
 > **Note:** You can manage Redis-native strings and TairStrings on a performance- enhanced instance. However, Redis-native strings do not support the commands that are described in this topic.
 
+**Supported commands**
+
 Table 1. TairString commands
 
 | Command | Syntax | Overview |
@@ -257,7 +261,7 @@ Table 1. TairString commands
 
 **EXSET**
 
-Syntax EXSET <key> <value> [EX time] [PX time] [EXAT time] [EXAT time] [PXAT time] [NX | XX] [VER version | ABS version] Time complexity O(1) This command is used to write a value to a key. Parameters and options
+Syntax EXSET <key> <value> [EX time] [PX time] [EXAT time] [EXAT time] [PXAT time] [NX | XX] [VER version | ABS version] Time complexity O(1) Description This command is used to write a value to a key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -308,7 +312,7 @@ Returned values If the operation is successful, OK is returned. Otherwise, an er
 
 **EXGET**
 
-Syntax EXGET <key> Time complexity O(1) This command is used to retrieve the value and version number of a TairString. Parameters and options key: the key of the TairString that you want to manage. Returned values If the operation is successful, the value and version number of the TairString are returned. Otherwise, an error message is returned. Example
+Syntax EXGET <key> Time complexity O(1) Description This command is used to retrieve the value and version number of a TairString. Parameters and options key: the key of the TairString that you want to manage. Returned values If the operation is successful, the value and version number of the TairString are returned. Otherwise, an error message is returned. Example
 
 ```
 127.0.0.1:6379> EXSET foo bar ABS 100
@@ -325,7 +329,7 @@ Syntax EXGET <key> Time complexity O(1) This command is used to retrieve the val
 
 **EXSETVER**
 
-Syntax EXSETVER <key> <version> Time complexity O(1) This command is used to specify the version number of a key. Parameters and options
+Syntax EXSETVER <key> <version> Time complexity O(1) Description This command is used to specify the version number of a key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -352,7 +356,7 @@ Returned values 1: the operation is successful. 0: the specified key does not ex
 
 **EXINCRBY**
 
-Syntax EXINCRBY |EXINCRBY <key> <num> [EX time] [PX time] [EXAT time] [EXAT time] [PXAT time] [NX | XX] [VER version | ABS version] [MIN minval] [MAX maxval] Time complexity O(1) This command is used to increase or decrease the value of a TairString. The value of the num parameter must be of the long type. Parameters and options
+Syntax EXINCRBY |EXINCRBY <key> <num> [EX time] [PX time] [EXAT time] [EXAT time] [PXAT time] [NX | XX] [VER version | ABS version] [MIN minval] [MAX maxval] Time complexity O(1) Description This command is used to increase or decrease the value of a TairString. The value of the num parameter must be of the long type. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -418,7 +422,7 @@ Returned values If the operation is successful, the current value of the TairStr
 
 **EXCAS**
 
-Syntax EXCAS <key> <newvalue> <version> Time complexity O(1) This command is used to change the version number of a specified key. The version number is changed only if the current version number of the key matches the specified version number. Parameters and options
+Syntax EXCAS <key> <newvalue> <version> Time complexity O(1) Description This command is used to change the version number of a specified key. The version number is changed only if the current version number of the key matches the specified version number. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -454,7 +458,7 @@ Returned values If the operation is successful, ["OK", "", version] is returned.
 
 **EXCAD**
 
-Syntax EXCAD <key> <version> Time complexity O(1) This command is used to delete a key when the current version number of the key matches the specified version number. Parameters and options
+Syntax EXCAD <key> <version> Time complexity O(1) Description This command is used to delete a key when the current version number of the key matches the specified version number. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -535,7 +539,7 @@ Table 1. TairHash commands
 
 **EXHSET**
 
-Syntax EXHSET <key> <field> <value> [EX time] [EXAT time] [PX time] [PXAT time] [NX | XX] [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to add a field to the TairHash that matches a specified key. If the key does not exist, a key for the TairHash is created. If the field has an existing value, this command overwrites the value of the field. Parameters and options
+Syntax EXHSET <key> <field> <value> [EX time] [EXAT time] [PX time] [PXAT time] [NX | XX] [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to add a field to the TairHash that matches a specified key. If the key does not exist, a key for the TairHash is created. If the field has an existing value, this command overwrites the value of the field. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -558,7 +562,7 @@ Return values 1: a new field is created and a value is set. 0: the field has a v
 
 **EXHGET**
 
-Syntax EXHGET <key> <field> Time complexity O(1) This command is used to retrieve a value associated with the specified field in a TairHash that matches a specified key. Parameters and options
+Syntax EXHGET <key> <field> Time complexity O(1) Description This command is used to retrieve a value associated with the specified field in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -571,7 +575,7 @@ Return values If the field exists and the operation is successful, the value of 
 
 **EXHMSET**
 
-Syntax EXHMSET <key> <field> <value> [field value...] Time complexity O(1) This command is used to set specified fields to values in a TairHash that matches a specified key. If the key does not exist, a key for the TairHash is created. If the field has an existing value, this command overwrites the value of the field. Parameters and options
+Syntax EXHMSET <key> <field> <value> [field value...] Time complexity O(1) Description This command is used to set specified fields to values in a TairHash that matches a specified key. If the key does not exist, a key for the TairHash is created. If the field has an existing value, this command overwrites the value of the field. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -583,7 +587,7 @@ Return values If the operation is successful, OK is returned. Otherwise, an exce
 
 **EXHPEXPIREAT**
 
-Syntax EXHPEXPIREAT <key> <field> <milliseconds-timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
+Syntax EXHPEXPIREAT <key> <field> <milliseconds-timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -600,7 +604,7 @@ Return values 1: the field exists and a value is set. 0: the field does not exis
 
 **EXHPEXPIRE**
 
-Syntax EXHPEXPIRE <key> <field> <milliseconds> [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
+Syntax EXHPEXPIRE <key> <field> <milliseconds> [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -617,7 +621,7 @@ Return values 1: the field exists and a value is set. 0: the field does not exis
 
 **EXHEXPIREAT**
 
-Syntax EXHEXPIREAT <key> <field> <timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
+Syntax EXHEXPIREAT <key> <field> <timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -634,7 +638,7 @@ Return values 1: the field exists and a value is set. 0: the field does not exis
 
 **EXHEXPIRE**
 
-Syntax EXHEXPIRE <key> <field> <seconds> Time complexity O(1) This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
+Syntax EXHEXPIRE <key> <field> <seconds> Time complexity O(1) Description This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -651,7 +655,7 @@ Return values 1: the field exists and a value is set. 0: the field does not exis
 
 **EXHPTTL**
 
-Syntax EXHPTTL <key> <field> Time complexity O(1) This command is used to retrieve the remaining expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
+Syntax EXHPTTL <key> <field> Time complexity O(1) Description This command is used to retrieve the remaining expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -673,7 +677,7 @@ Return values -2: the specified key or field does not exist. -1: the specified f
 
 **EXHVER**
 
-Syntax EXHVER <key> <field> Time complexity O(1) This command is used to retrieve the current version number of a field in a TairHash that matches a specified key. Parameters and options
+Syntax EXHVER <key> <field> Time complexity O(1) Description This command is used to retrieve the current version number of a field in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -695,7 +699,7 @@ Return values 0: the specified TairHash or field does not exist. 1: the version 
 
 **EXHINCRBY**
 
-Syntax EXHINCRBY <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) This command is used to increase the value of a field by num in a TairHash that matches a specified key. The value of the num parameter must be an integer. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
+Syntax EXHINCRBY <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) Description This command is used to increase the value of a field by num in a TairHash that matches a specified key. The value of the num parameter must be an integer. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -720,7 +724,7 @@ Return values The value increased by num is returned if the operation is success
 
 **EXHINCRBYFLOAT**
 
-Syntax EXHINCRBYFLOAT <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) This command is used to increase a specified field value by num in a TairHash that matches a specified key. The value of the num parameter must be a floating-point number. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
+Syntax EXHINCRBYFLOAT <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) Description This command is used to increase a specified field value by num in a TairHash that matches a specified key. The value of the num parameter must be a floating-point number. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -756,7 +760,7 @@ Return values The value and version number of the field are returned if the fiel
 
 **EXHMGET**
 
-Syntax EXHMGET <key> <field> [field ...] Time complexity O(1) This command is used to retrieve multiple field values in a TairHash that matches a specified key. Parameters and options
+Syntax EXHMGET <key> <field> [field ...] Time complexity O(1) Description This command is used to retrieve multiple field values in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -778,7 +782,7 @@ Return values nil: the key does not exist. An array is returned if the specified
 
 **EXHDEL**
 
-Syntax EXHDEL <key> <field> <field> <field> ... Time complexity O(1) This command is used to delete a field from a TairHash that matches a specified key. Parameters and options
+Syntax EXHDEL <key> <field> <field> <field> ... Time complexity O(1) Description This command is used to delete a field from a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -800,7 +804,7 @@ Return values 0: the specified key or field does not exist. The number of fields
 
 **EXHEXISTS**
 
-Syntax EXHEXISTS <key> <field> Time complexity O(1) This command is used to check whether a field exists in a TairHash that matches a specified key. Parameters and options
+Syntax EXHEXISTS <key> <field> Time complexity O(1) Description This command is used to check whether a field exists in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -811,7 +815,7 @@ Return values 0: the specified key or field does not exist. 1: the specified fie
 
 **EXHSTRLEN**
 
-Syntax EXHSTRLEN <key> <field> Time complexity O(1) This command is used to retrieve the length of a field value in a TairHash that matches a specified key. Parameters and options
+Syntax EXHSTRLEN <key> <field> Time complexity O(1) Description This command is used to retrieve the length of a field value in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -822,7 +826,7 @@ Return values 0: the specified key or field does not exist. The length of the sp
 
 **EXHKEYS**
 
-Syntax EXHKEYS <key> Time complexity O(1) This command is used to retrieve all fields in a TairHash that matches a specified key. Parameters and options
+Syntax EXHKEYS <key> Time complexity O(1) Description This command is used to retrieve all fields in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -842,7 +846,7 @@ Return values If the specified key does not exist, an empty array is returned. I
 
 **EXHGETALL**
 
-Syntax EXHGETALL <key> Time complexity O(1) This command is used to retrieve all fields and their values in a TairHash that matches a specified key. Parameters and options
+Syntax EXHGETALL <key> Time complexity O(1) Description This command is used to retrieve all fields and their values in a TairHash that matches a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -852,7 +856,7 @@ Return values If the specified key does not exist, an empty array is returned. I
 
 **EXHSCAN**
 
-Syntax EXHSCAN <key> <op> <subkey> [MATCH pattern] [COUNT count] Time complexity O(1) and O(N) This command is used to scan TairHashes that match a specified key. Parameters and options
+Syntax EXHSCAN <key> <op> <subkey> [MATCH pattern] [COUNT count] Time complexity O(1) and O(N) Description This command is used to scan TairHashes that match a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -875,7 +879,11 @@ Performance-enhanced instances of Tair (Enterprise Edition) are used. The TairGI
 
 **Main features**
 
-R-tree indexes for query and storage. Line and polygon queries, including queries for the intersection of sets. Supports Redis-native GEO commands. Table 1. TairGIS commands
+R-tree indexes for query and storage. Line and polygon queries, including queries for the intersection of sets. Supports Redis-native GEO commands.
+
+**Supported commands**
+
+Table 1. TairGIS commands
 
 | Command | Syntax | Description |
 |---|---|---|
@@ -1165,7 +1173,7 @@ Table 1. TairBloom commands
 
 **BF.RESERVE**
 
-Syntax BF.RESERVE <key> <error_rate> <capacity> Time complexity O(1) This command is used to create an empty TairBloom filter with a specific capacity. The error_rate parameter specifies the false positive rate of the TairBloom filter. Parameters and options
+Syntax BF.RESERVE <key> <error_rate> <capacity> Time complexity O(1) Description This command is used to create an empty TairBloom filter with a specific capacity. The error_rate parameter specifies the false positive rate of the TairBloom filter. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1179,7 +1187,7 @@ Returned values If the operation is successful, OK is returned. If the operation
 
 **BF.ADD**
 
-Syntax BF.ADD <key> <item> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. This command is used to add an item to a specified TairBloom filter. Parameters and options
+Syntax BF.ADD <key> <item> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. Description This command is used to add an item to a specified TairBloom filter. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1190,7 +1198,7 @@ Returned values 1: The item does not exist in the filter. 0: The item may exist 
 
 **BF.MADD**
 
-Syntax BF.MADD <key> <item> [item...] Time complexity O(log N). N specifies the number of layers of the TairBloom filter. This command is used to add multiple items to a specified TairBloom filter. Parameters and options
+Syntax BF.MADD <key> <item> [item...] Time complexity O(log N). N specifies the number of layers of the TairBloom filter. Description This command is used to add multiple items to a specified TairBloom filter. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1203,7 +1211,7 @@ Returned values If the operation is successful, an array is returned. The values
 
 **BF.EXISTS**
 
-Syntax BF.EXISTS <key> <item> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. This command is used to check whether an item exists in a specified TairBloom filter. Parameters and options
+Syntax BF.EXISTS <key> <item> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. Description This command is used to check whether an item exists in a specified TairBloom filter. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1214,7 +1222,7 @@ Returned values 0: The specified item does not exist in the filter. 1: The speci
 
 **BF.MEXISTS**
 
-Syntax BF.MEXISTS <key> <item> [item...] Time complexity O(log N). N specifies the number of layers of the TairBloom filter. This command is used to check whether multiple items exist in a specified TairBloom filter. Parameters and options
+Syntax BF.MEXISTS <key> <item> [item...] Time complexity O(log N). N specifies the number of layers of the TairBloom filter. Description This command is used to check whether multiple items exist in a specified TairBloom filter. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1225,7 +1233,7 @@ Returned values If the operation is successful, an array is returned. The values
 
 **BF.INSERT**
 
-Syntax BF.INSERT <key> [CAPACITY cap] [ERROR error] [NOCREATE] ITEMS <item...> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. This command is used to add multiple items to a specified TairBloom filter. If the TairBloom filter does not exist, you can specify whether to create a TairBloom filter. You can also specify the capacity and false positive rate of the new TairBloom filter. Parameters and options
+Syntax BF.INSERT <key> [CAPACITY cap] [ERROR error] [NOCREATE] ITEMS <item...> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. Description This command is used to add multiple items to a specified TairBloom filter. If the TairBloom filter does not exist, you can specify whether to create a TairBloom filter. You can also specify the capacity and false positive rate of the new TairBloom filter. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1239,7 +1247,7 @@ Returned values If the operation is successful, an array is returned. The values
 
 **BF.DEBUG**
 
-Syntax BF.DEBUG <key> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. This command is used to retrieve the information about a specific TairBloom filter. The information includes the number of layers, the number of items at each layer, and the false positive rate. Parameters and options
+Syntax BF.DEBUG <key> Time complexity O(log N). N specifies the number of layers of the TairBloom filter. Description This command is used to retrieve the information about a specific TairBloom filter. The information includes the number of layers, the number of items at each layer, and the false positive rate. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1291,7 +1299,7 @@ Table 1. TairDoc commands
 
 **JSON.SET**
 
-Syntax JSON.SET <key> <path> <json> [NX | XX] Time complexity O(N) This command is used to write a JSON value to the path of a specified key. If the specified key does not exist, the path must be the root directory. If the specified key and path exist, the specified JSON value overwrites the current JSON value in the path. Parameters and options
+Syntax JSON.SET <key> <path> <json> [NX | XX] Time complexity O(N) Description This command is used to write a JSON value to the path of a specified key. If the specified key does not exist, the path must be the root directory. If the specified key and path exist, the specified JSON value overwrites the current JSON value in the path. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1327,7 +1335,7 @@ Returned values OK: the operation is successful. null: The operation fails. This
 
 **JSON.GET**
 
-Syntax JSON.GET <key> <path> [FORMAT <XML | YAML>] [ROOTNAME <root>] [ARRNAME <arr>] Time complexity O(N) This command is used to retrieve JSON data from a TairDoc path of a specified key. Parameters and options
+Syntax JSON.GET <key> <path> [FORMAT <XML | YAML>] [ROOTNAME <root>] [ARRNAME <arr>] Time complexity O(N) Description This command is used to retrieve JSON data from a TairDoc path of a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1372,7 +1380,7 @@ Returned values 1: the operation is successful. 0: the operation fails. Otherwis
 
 **JSON.TYPE**
 
-Syntax JSON.TYPE <key> [path] Time complexity O(N) This command is used to retrieve the type of JSON data from a TairDoc path of a specified key. Parameters and options
+Syntax JSON.TYPE <key> [path] Time complexity O(N) Description This command is used to retrieve the type of JSON data from a TairDoc path of a specified key. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1393,7 +1401,7 @@ Returned values The type of JSON data is returned if the operation is successful
 
 **JSON.NUMINCRBY**
 
-Syntax JSON.NUMINCRBY <key> [path] <value> Time complexity O(N) This command is used to increase JSON data in a TairDoc path by a specified value. The path must exist, and the JSON data and increased value must be both of the type of int or double. Parameters and options
+Syntax JSON.NUMINCRBY <key> [path] <value> Time complexity O(N) Description This command is used to increase JSON data in a TairDoc path by a specified value. The path must exist, and the JSON data and increased value must be both of the type of int or double. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1415,7 +1423,7 @@ Returned values The increased value in the specified path is returned if the ope
 
 **JSON.STRAPPEND**
 
-Syntax JSON.STRAPPEND <key> [path] <json-string> Time complexity O(N) This command is used to append a string specified in json-string to the end of the string in a TairDoc path. If you do not specify the path, the root directory is used. Parameters and options
+Syntax JSON.STRAPPEND <key> [path] <json-string> Time complexity O(N) Description This command is used to append a string specified in json-string to the end of the string in a TairDoc path. If you do not specify the path, the root directory is used. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1437,7 +1445,7 @@ Returned values The length of the increased value in the path is returned if the
 
 **JSON.STRLEN**
 
-Syntax JSON.STRLEN <key> [path] Time complexity O(N) This command is used to retrieve the JSON value length in a TairDoc path. If you do not specify the path, the root directory is used. Parameters and options
+Syntax JSON.STRLEN <key> [path] Time complexity O(N) Description This command is used to retrieve the JSON value length in a TairDoc path. If you do not specify the path, the root directory is used. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1458,7 +1466,7 @@ Returned values The length of the value in the path is returned if the operation
 
 **JSON.ARRAPPEND**
 
-Syntax JSON.ARRAPPEND <key> <path> <json> [<json> ...] Time complexity O(M×N). M specifies the number of JSON elements to be appended and N specifies the number of elements in the array. This command is used to append one or more JSON values to the end of an array in a TairDoc path. Parameters and options
+Syntax JSON.ARRAPPEND <key> <path> <json> [<json> ...] Time complexity O(M×N). M specifies the number of JSON elements to be appended and N specifies the number of elements in the array. Description This command is used to append one or more JSON values to the end of an array in a TairDoc path. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1482,7 +1490,7 @@ Returned values The number of elements in the array is returned if the operation
 
 **JSON.ARRPOP**
 
-Syntax JSON.ARRPOP <key> <path> [index] Time complexity O(M×N). M specifies the child elements that the specified key contains and N specifies the number of elements in the array. This command is used to remove an element specified by an index from an array in a specified TairDoc path and return the removed element. Parameters and options
+Syntax JSON.ARRPOP <key> <path> [index] Time complexity O(M×N). M specifies the child elements that the specified key contains and N specifies the number of elements in the array. Description This command is used to remove an element specified by an index from an array in a specified TairDoc path and return the removed element. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1504,7 +1512,7 @@ Returned values The removed element is returned if the operation is successful. 
 
 **JSON.ARRINSERT**
 
-Syntax JSON.ARRINSERT <key> <path> <index> <json> [<json> ...] Time complexity O(M×N). M specifies the number of JSON elements to be appended and N specifies the number of elements in the array. This command is used to add one or more JSON elements to an array in a TairDoc path. The index parameter specifies the position to which the JSON elements are added. Parameters and options
+Syntax JSON.ARRINSERT <key> <path> <index> <json> [<json> ...] Time complexity O(M×N). M specifies the number of JSON elements to be appended and N specifies the number of elements in the array. Description This command is used to add one or more JSON elements to an array in a TairDoc path. The index parameter specifies the position to which the JSON elements are added. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -1527,7 +1535,7 @@ Returned values The number of elements in the array is returned if the operation
 
 **JSON.ARRLEN**
 
-Syntax JSON.ARRLEN <key> [path] Time complexity O(N) This command is used to retrieve the length of the array in a TairDoc path. Parameters and options
+Syntax JSON.ARRLEN <key> [path] Time complexity O(N) Description This command is used to retrieve the length of the array in a TairDoc path. Parameters and options
 
 | Parameter/o ption | Description |
 |---|---|
@@ -3202,7 +3210,11 @@ b. Enter the following code in the project to add the related applications:
 import org.apache.commons.pool2.PooledObject; import org.apache.commons.pool2.PooledObjectFactory; import org.apache.commons.pool2.impl.DefaultPooledObject; import org.apache.commons.pool2.impl.GenericObjectPoolConfig; import redis.clients.jedis.HostAndPort; import redis.clients.jedis.Jedis; import redis.clients.jedis.JedisPool; import redis.clients.jedis.JedisPoolConfig;
 ```
 
-c. Enter the following code in the project based on the Jedis client version and modify the code based on the comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information. Jedis 2.7.2
+c. Enter the following code in the project based on the Jedis client version and modify the code based on the comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information. Jedis 2.7.2
 
 ```
 JedisPoolConfig config = new JedisPoolConfig(); // The maximum number of idle connections. You can set this parameter based on your requirements. Make sure that the specified maximum number of idle connecti ons does not exceed the maximum number of connections that the instance support
@@ -3255,7 +3267,11 @@ catch(Exception e)
      pool.returnResource(jedis);
 ```
 
-`}` `}` Single Jedis connection (not recommended because a client cannot automatically reconnect to the instance after a connection times out) Launch the Eclipse client, create a project, enter the following code, and then modify the code based on the comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+`}` `}` Single Jedis connection (not recommended because a client cannot automatically reconnect to the instance after a connection times out) Launch the Eclipse client, create a project, enter the following code, and then modify the code based on the comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```java
 import redis.clients.jedis.Jedis; public class jedistest { public static void main(String[] args) { try {
@@ -3298,6 +3314,9 @@ Set Key redis Value aliyun-redis Get Key redis ReturnValue aliyun-redis
 
 1. Download and install the PhpRedis client. For more information, see PhpRedis.
 2. Enter the following code in the PHP editor and modify the code based on the comments.
+
+**Note**
+
 For information about how to obtain the endpoint, account, and password of an instance, see Obtain connection information.
 
 ```
@@ -3354,6 +3373,9 @@ For more information, see PhpRedis.
 
 1. Download and install the redis-py client. For more information, see redis-py.
 2. Enter the following code in the Python editor and modify the code based on the comments.
+
+**Note**
+
 For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```java
@@ -3379,7 +3401,11 @@ git clone https://github.com/redis/hiredis.git cd hiredis make sudo make install
 ```
 
 2. Enter the following code in the C or C++ editor and modify the code based on the
-comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```
 #include <stdio.h>
@@ -3468,7 +3494,11 @@ Parameter configuration.
 3. Add a reference. The referenced file is stored in the library file directory
 ServiceStack.Redis/lib/tests.
 4. Enter the following code in the .NET project and modify the code based on the comments.
-For more information, see ServiceStack.Redis. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+For more information, see ServiceStack.Redis.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```
 using System;
@@ -3590,7 +3620,11 @@ npm install hiredis redis
 ```
 
 2. Enter the following code in the node-redis client and modify the code based on the
-comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```
  var redis = require("redis"),
@@ -3874,7 +3908,11 @@ You can create alert rules for cloud services that are connected to Cloud Monito
 
 **Background information**
 
-During the validity period of an alert rule, Cloud Monitor checks whether the metric values of cloud services exceed the specified thresholds at the default monitoring frequency. If a metric value exceeds the threshold, Cloud Monitor sends alert notifications to the specified contacts or alert processing platforms. The minimum monitoring frequency is once per minute.
+During the validity period of an alert rule, Cloud Monitor checks whether the metric values of cloud services exceed the specified thresholds at the default monitoring frequency. If a metric value exceeds the threshold, Cloud Monitor sends alert notifications to the specified contacts or alert processing platforms.
+
+**Note**
+
+The minimum monitoring frequency is once per minute.
 
 **Procedure**
 
@@ -4115,6 +4153,9 @@ column.
 
 5. In the message that appears, click **OK**.
 6. On the Restore Instance page, configure the parameters and click Submit.
+
+**Note**
+
 For more information about the configurations of the new instance, see Create an instance.
 
 ## 12 CloudDBA

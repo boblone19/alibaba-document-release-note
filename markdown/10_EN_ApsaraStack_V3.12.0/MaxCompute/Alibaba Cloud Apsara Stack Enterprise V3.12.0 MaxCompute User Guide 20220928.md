@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 705
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 MaxCompute User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%A4%A7%E6%95%B0%E6%8D%AE/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20MaxCompute%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 MaxCompute User Guide 20220928
@@ -884,7 +884,7 @@ You can selectively read topics in this document based on your requirements. Thi
 This topic describes how to log on to the Apsara Stack Cloud Management (ASCM) console. Prerequisites The IP address or domain name of the ASCM console is obtained from deployment personnel. The URL used to log on to the ASCM console is in the following format: https://IP address or domain name of the ASCM console. A browser is available. We recommend that you use Google Chrome. Procedure
 1. In the address bar, enter the URL used to log on to the ASCM console. Press Enter.
 2. Enter the correct username and password.
-Obtain the username and password used to log on to the console from the operations administrator. When you log on to the ASCM console for the first time, you must change the password as prompted. For security purposes, your password must meet the complexity requirements. Specifically, the password must be 8 to 20 characters in length and must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters such as ! @ # $ %
+Obtain the username and password used to log on to the console from the operations administrator. Not e When you log on to the ASCM console for the first time, you must change the password as prompted. For security purposes, your password must meet the complexity requirements. Specifically, the password must be 8 to 20 characters in length and must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters such as ! @ # $ %
 3. Click Login to go to the homepage of the ASCM console.
 
 ### 3.2 Create an Apsara Stack tenant account
@@ -974,7 +974,7 @@ Use UDFs. After you install the MaxCompute client, you can try to use UDFs. MaxC
 
 ### 4.2 Configure the MaxCompute client
 
-The MaxCompute client allows you to access MaxCompute projects and use MaxCompute features. This topic describes how to install, configure, and run the client. Context The client is developed in Java. Make sure that you have JRE 1.8 installed on your local PC. In addition, make sure that you have an Apsara Stack tenant account and have obtained the AccessKey ID and AccessKey secret. Before you configure the client, make sure that a project is created and the AccessKey ID and AccessKey secret are obtained. Procedure
+The MaxCompute client allows you to access MaxCompute projects and use MaxCompute features. This topic describes how to install, configure, and run the client. Context The client is developed in Java. Make sure that you have JRE 1.8 installed on your local PC. In addition, make sure that you have an Apsara Stack tenant account and have obtained the AccessKey ID and AccessKey secret. Not e Before you configure the client, make sure that a project is created and the AccessKey ID and AccessKey secret are obtained. Procedure
 1. Download the client package to your computer.
 2. Decompress the package. The package contains the following four folders:
 
@@ -996,7 +996,7 @@ Windows system in the bin directory to execute SQL statements. Example:
 create table tbl1(id bigint); insert overwrite table tbl1 select count(*) from tbl1; select 'welcome to MaxCompute!' from tbl1;
 ```
 
-For more information about SQL statements, see MaxCompute SQL.
+Not e For more information about SQL statements, see MaxCompute SQL.
 
 ### 4.3 Add and delete users
 
@@ -1030,7 +1030,7 @@ Run the following command on the client to delete a user from a project:
 remove user b***@aliyun.com;
 ```
 
-Before you delete a user, make sure that you have revoked all the permissions of the user. If you delete a user without revoking the permissions of the user, the permissions are retained. If the user is added to the project again, the user will have the permissions that were granted previously. For more information about how to add or delete users, see Manage users in a project.
+Not e Before you delete a user, make sure that you have revoked all the permissions of the user. If you delete a user without revoking the permissions of the user, the permissions are retained. If the user is added to the project again, the user will have the permissions that were granted previously. For more information about how to add or delete users, see Manage users in a project.
 
 ### 4.4 Grant and view permissions
 
@@ -1046,7 +1046,7 @@ This topic describes the commands for ACL authorization and provides examples. A
 GRANT privileges ON project_object TO project_subject REVOKE privileges ON project_object FROM project_subject privileges ::= action_item1, action_item2, ... project_object ::= PROJECT project_name | TABLE schema_name | INSTANCE inst_name | FUNCTION func_name | RESOURCE res_name | JOB job_name project_subject ::= USER full_username | ROLE role_name
 ```
 
-You can skip the ROLE clause in the preceding command. It is described in the topics after this. Example:
+Not e You can skip the ROLE clause in the preceding command. It is described in the topics after this. Example:
 
 ```
 grant CreateTable on PROJECT $user_project_name to USER ALIYUN$b***@aliyun.com; -- Grant b***@aliyun.com the permissions to create tables in the project named $user_project _name. grant Describe on Table $user_table_name to USER ALIYUN$b***@aliyun.com; -- Grant b***@aliyun.com the permissions to obtain information (Describe permission) in the table named $$user_table_name. grant Execute on Function $user_function_name to USER ALIYUN$b***@aliyun.com; -- Grant b***@aliyun.com the permissions to run the function named $user_function_name.
@@ -1105,7 +1105,7 @@ Example: `{`
                  "SQL"
 ```
 
-`]` `}` `}` `}` `]` `}` The preceding example disables the Tunnel feature of $user_project_name, and grants a user the permissions to perform list, read, describe, and select operations on the project and table a in the project.
+`]` `}` `}` `}` `]` `}` Not e The preceding example disables the Tunnel feature of $user_project_name, and grants a user the permissions to perform list, read, describe, and select operations on the project and table a in the project.
 
 #### 4.4.4 View permissions
 
@@ -1155,7 +1155,7 @@ Example:
 drop role player;
 ```
 
-Before you delete a role, make sure that all users have been removed from the role. Grant permissions to a role The command for granting permissions to a role is similar to the command for granting permissions to a user. For more information about how to grant permissions to a user, see Grant and view permissions. For more information about role authorization, see Role management.
+Not e Before you delete a role, make sure that all users have been removed from the role. Grant permissions to a role The command for granting permissions to a role is similar to the command for granting permissions to a user. For more information about how to grant permissions to a user, see Grant and view permissions. For more information about role authorization, see Role management.
 
 ### 4.6 Create or delete a table
 
@@ -1203,7 +1203,7 @@ Example:
 drop table test2;
 ```
 
-For more information, see Delete a table.
+Not e For more information, see Delete a table.
 
 ### 4.7 Import or export data
 
@@ -1225,13 +1225,13 @@ select substr(col2, 2) from tbl group by substr(col2, 2);
 le. select col2 from tbl group by substr(col2, 2); -- Not allowed: The key of the GROUP BY statement is not included in columns of the SELEC T statement. select substr(col2, 2) as c from tbl group by c; -- Not allowed: The key of the GROUP BY statement is the alias of a column, or output col umn of the SELECT statement.
 ```
 
-For SQL parsing, the GROUP BY operation is conducted before the SELECT operation, which means the GROUP BY statement can only use the column or expression of the input table as the key. DISTRIBUTE BY must be added in front of SORT BY. The key of ORDER BY/SORT BY/DISTRIBUTE BY must be the output column of SELECT statement, or the column alias.
+Not e For SQL parsing, the GROUP BY operation is conducted before the SELECT operation, which means the GROUP BY statement can only use the column or expression of the input table as the key. DISTRIBUTE BY must be added in front of SORT BY. The key of ORDER BY/SORT BY/DISTRIBUTE BY must be the output column of SELECT statement, or the column alias.
 
 ```
 select col2 as c from tbl order by col2 limit 100 -- Not allowed: The key of the ORDER BY statement is not the output column of the SELECT statement, or the column alias. select col2 from tbl order by col2 limit 100; -- Allowed: If an output column of the SELECT statement does not have an alias, the colum n name is used as the alias.
 ```
 
-For SQL parsing, the ORDER BY, SORT BY, and DISTRIBUTE BY operations come after the SELECT operation. Therefore, they can only accept the output columns of the SELECT statement as the key. For more information about the SELECT statement, see SELECT statement.
+Not e For SQL parsing, the ORDER BY, SORT BY, and DISTRIBUTE BY operations come after the SELECT operation. Therefore, they can only accept the output columns of the SELECT statement as the key. For more information about the SELECT statement, see SELECT statement.
 
 #### 4.8.3 INSERT statement
 
@@ -1261,7 +1261,7 @@ This topic describes the other application limits of MaxCompute SQL. MaxCompute 
 
 #### 4.9.1 Overview
 
-This topic provides examples on how to compile and use MaxCompute UDFs. MaxCompute provides three types of UDFs: UDFs, UDAFs, and UDTFs. These functions are collectively known as UDFs. UDFs only support Java APIs. To compile a UDF program, you can upload UDF code to your project by adding resources, and run the CREATE FUNCTION statement to create a UDF. This topic provides examples of UDF, UDAF, and UDTF code.
+This topic provides examples on how to compile and use MaxCompute UDFs. MaxCompute provides three types of UDFs: UDFs, UDAFs, and UDTFs. These functions are collectively known as UDFs. Not e UDFs only support Java APIs. To compile a UDF program, you can upload UDF code to your project by adding resources, and run the CREATE FUNCTION statement to create a UDF. This topic provides examples of UDF, UDAF, and UDTF code.
 
 #### 4.9.2 UDF example
 
@@ -1281,7 +1281,7 @@ Specify the referenced UDF code before running UDF. User code must be added to M
 add jar my_lower.jar;
 ```
 
-If multiple resources have the same name, rename the JAR package and modify the name of relevant JAR packages in the example command below. You can also use the "f" option to override the existing JAR resources.
+Not e If multiple resources have the same name, rename the JAR package and modify the name of relevant JAR packages in the example command below. You can also use the "f" option to override the existing JAR resources.
 3. Register the UDF.
 When your JAR package is uploaded, MaxCompute does not have any information about this UDF. Therefore, you must register a unique function name in MaxCompute, and specify to which function and under which JAR resources this function name corresponding. An example of using commands to register the UDF is as follows:
 
@@ -1349,7 +1349,7 @@ Example:
 create table wc_in (key string, value string); create table wc_out (key string, cnt bigint);
 ```
 
-For more information about the table creation statement, see Create a table.
+Not e For more information about the table creation statement, see Create a table.
 2. Use the data transfer tool to upload data.
 Example:
 
@@ -1358,7 +1358,7 @@ odpscmd -e "tunnel upload kv.txt wc_in"
 ```
 
 3. Compile a MaxCompute program and debug it.
-MaxCompute provides the Eclipse plug-in to help you quickly develop MapReduce programs and debug them on your local machine. You need to create a MaxCompute project in Eclipse, and then compile a MapReduce program in this project. After successful local debugging, upload the compiled program to MaxCompute for base testing. If the Java program requires the use of resources, you must use the -resources parameter to specify the resources.
+MaxCompute provides the Eclipse plug-in to help you quickly develop MapReduce programs and debug them on your local machine. You need to create a MaxCompute project in Eclipse, and then compile a MapReduce program in this project. After successful local debugging, upload the compiled program to MaxCompute for base testing. Not e If the Java program requires the use of resources, you must use the -resources parameter to specify the resources.
 
 ### 4.11 Compile and run a Graph job
 
@@ -1370,7 +1370,7 @@ Example:
 create table sssp_in (v bigint, es string); create table sssp_out (v bigint, l bigint);
 ```
 
-For more information about the table creation statement, see Create a table.
+Not e For more information about the table creation statement, see Create a table.
 2. Use the data transfer tool to upload data.
 Example:
 
@@ -1379,7 +1379,7 @@ tunnel u -fd " " sssp.txt sssp_in;
 ```
 
 3. Compile an SSSP.
-During the Graph development process, you can locally compile and debug SSSP algorithm examples. You only need to package the SSSP code. You do not need to package the SDK into odps-graph-example-sssp.jar.
+Not e During the Graph development process, you can locally compile and debug SSSP algorithm examples. You only need to package the SSSP code. You do not need to package the SDK into odps-graph-example-sssp.jar.
 4. Add JAR resources.
 Example:
 
@@ -1387,7 +1387,7 @@ Example:
 add jar $LOCAL_JAR_PATH/odps-graph-example-sssp.jar odps-graph-example-sssp.jar
 ```
 
-For more information about how to add resources, see Add resources.
+Not e For more information about how to add resources, see Add resources.
 5. Run the SSSP.
 Example:
 
@@ -1405,7 +1405,7 @@ Graph Input/Output Total input bytes=211 Total input records=5 Total output byte
 
 ### 4.12 View job running information
 
-This topic describes how to use the LogView tool to query job running information. LogView is a tool used to view and debug tasks after a job is submitted to MaxCompute. You can use LogView to view the following content of a job: Running status of tasks Running results of tasks Details of each task and the progress of each step After a job is submitted to MaxCompute, a link to LogView is generated. You can open the link in a browser to view the job running information. The LogView page of each job is valid for seven days. Features This section describes components on the LogView Web UI. The LogView page is composed of two parts: Instance information Task information Inst ance inf ormat ion The upper pane of the LogView page displays information about the MaxCompute instance corresponding to the SQL tasks that you submit, such as URL, Project, InstanceID, Owner, StartTime, EndTime, and Status. If the value of Status is one of the following states, you can click the value to view the queue information: Wait ing: The job is being processed in MaxCompute and has not been submitted to Job Scheduler. Wait ing List : n: The job has been submitted to Job Scheduler and is waiting to run in the queue with n-1 other jobs ahead of it. Running: The job is running in Job Scheduler. If the value of Status is Terminated, the job has been terminated and has no queue information. After you click the value of Status, the following queue information is displayed: Sub St at us: the current sub-status information. Wait Pos: the position in the queue. If the value is 0, the job is running. If the value is -, the job has not been submitted to Job Scheduler. QueueLengt h: the total queue length in Job Scheduler. T ot al Priorit y: the running priority assigned by the system. SubSt at us Hist ory: You can click the icon in this column to view a detailed status history, such as the status code, status description, start time, and duration of a state. This information is unavailable in some versions. T ask inf ormat ion The lower pane of the LogView page displays the task information corresponding to the instance, such as Name, Type, Status, Result, Detail, StartTime, EndTime, Latency (s), and TimeLine. Like on other pages, latency indicates the total running duration. Result : You can click the icon in this column to view the task running results after the job is finished. The following figure shows the execution results of a SELECT statement. Det ail: You can click the icon in the Det ail column to view the task running details regardless of whether the job is running or finished. The details about a MaxCompute task are displayed in the detail dialog box. Pay attention to the following points: A MaxCompute task consists of one or more Fuxi jobs. For example, if an SQL task that you submit is complex, MaxCompute automatically submits multiple Fuxi jobs to Job Scheduler. Each Fuxi job consists of one or more Fuxi tasks. For example, a simple MapReduce task generates two Fuxi tasks: Map Task (M1) and Reduce Task (R2). A complex SQL task may also generate multiple Fuxi tasks. The name of a Fuxi task is composed of a letter that indicates the task type and one or more numbers that indicate the task number and its dependencies. For example, in the preceding figure, M1, M2, and M3 are Map tasks, J4_1_2_3 is a Join task that is started after M1, M2, and M3 are finished, and R5_4 is a Reduce task that is started after J4_1_2_3 is finished. I/O Records indicates the numbers of input and output records of a Fuxi task. To view the information about the corresponding instances, you can click the icon in the Show Detail column corresponding to a Fuxi task or double-click the Fuxi task. Each Fuxi task consists of one or more Fuxi instances. As the number of input records of a Fuxi task increases, MaxCompute automatically starts more nodes to help the task process data. Each node corresponds to a Fuxi instance. In the lower pane of the dialog box, information about the Fuxi instances is displayed in groups. For example, you can click the Failed tab to view the nodes where errors occurred. You can click the icon in the StdOut column to view the standard output information, or click the icon in the StdErr column to view the standard error information. Printed information written in the submitted MaxCompute task is also displayed in the standard output information and standard error information. Use LogView for troubleshooting T asks wit h errors If an error occurs during a task, you can click the icon in the Result column corresponding to the task in the lower pane of the LogView page to view the error information. Alternatively, you can click the icon in the StdErr column corresponding to a Fuxi instance in the detail dialog box to view the error information about the instance. Dat a skew The long tail of one or more Fuxi instances may slow down the corresponding Fuxi task. The long tail is caused by uneven data distribution in the task. After the task is completed, you can view the running results on the Summary tab of the detail dialog box. The following output provides an example of the running results.
+This topic describes how to use the LogView tool to query job running information. LogView is a tool used to view and debug tasks after a job is submitted to MaxCompute. You can use LogView to view the following content of a job: Running status of tasks Running results of tasks Details of each task and the progress of each step After a job is submitted to MaxCompute, a link to LogView is generated. You can open the link in a browser to view the job running information. Not e The LogView page of each job is valid for seven days. Features This section describes components on the LogView Web UI. The LogView page is composed of two parts: Instance information Task information Inst ance inf ormat ion The upper pane of the LogView page displays information about the MaxCompute instance corresponding to the SQL tasks that you submit, such as URL, Project, InstanceID, Owner, StartTime, EndTime, and Status. If the value of Status is one of the following states, you can click the value to view the queue information: Wait ing: The job is being processed in MaxCompute and has not been submitted to Job Scheduler. Wait ing List : n: The job has been submitted to Job Scheduler and is waiting to run in the queue with n-1 other jobs ahead of it. Running: The job is running in Job Scheduler. If the value of Status is Terminated, the job has been terminated and has no queue information. After you click the value of Status, the following queue information is displayed: Sub St at us: the current sub-status information. Wait Pos: the position in the queue. If the value is 0, the job is running. If the value is -, the job has not been submitted to Job Scheduler. QueueLengt h: the total queue length in Job Scheduler. T ot al Priorit y: the running priority assigned by the system. SubSt at us Hist ory: You can click the icon in this column to view a detailed status history, such as the status code, status description, start time, and duration of a state. This information is unavailable in some versions. T ask inf ormat ion The lower pane of the LogView page displays the task information corresponding to the instance, such as Name, Type, Status, Result, Detail, StartTime, EndTime, Latency (s), and TimeLine. Like on other pages, latency indicates the total running duration. Result : You can click the icon in this column to view the task running results after the job is finished. The following figure shows the execution results of a SELECT statement. Det ail: You can click the icon in the Det ail column to view the task running details regardless of whether the job is running or finished. The details about a MaxCompute task are displayed in the detail dialog box. Pay attention to the following points: A MaxCompute task consists of one or more Fuxi jobs. For example, if an SQL task that you submit is complex, MaxCompute automatically submits multiple Fuxi jobs to Job Scheduler. Each Fuxi job consists of one or more Fuxi tasks. For example, a simple MapReduce task generates two Fuxi tasks: Map Task (M1) and Reduce Task (R2). A complex SQL task may also generate multiple Fuxi tasks. The name of a Fuxi task is composed of a letter that indicates the task type and one or more numbers that indicate the task number and its dependencies. For example, in the preceding figure, M1, M2, and M3 are Map tasks, J4_1_2_3 is a Join task that is started after M1, M2, and M3 are finished, and R5_4 is a Reduce task that is started after J4_1_2_3 is finished. I/O Records indicates the numbers of input and output records of a Fuxi task. To view the information about the corresponding instances, you can click the icon in the Show Detail column corresponding to a Fuxi task or double-click the Fuxi task. Not e Each Fuxi task consists of one or more Fuxi instances. As the number of input records of a Fuxi task increases, MaxCompute automatically starts more nodes to help the task process data. Each node corresponds to a Fuxi instance. In the lower pane of the dialog box, information about the Fuxi instances is displayed in groups. For example, you can click the Failed tab to view the nodes where errors occurred. You can click the icon in the StdOut column to view the standard output information, or click the icon in the StdErr column to view the standard error information. Not e Printed information written in the submitted MaxCompute task is also displayed in the standard output information and standard error information. Use LogView for troubleshooting T asks wit h errors If an error occurs during a task, you can click the icon in the Result column corresponding to the task in the lower pane of the LogView page to view the error information. Alternatively, you can click the icon in the StdErr column corresponding to a Fuxi instance in the detail dialog box to view the error information about the instance. Dat a skew The long tail of one or more Fuxi instances may slow down the corresponding Fuxi task. The long tail is caused by uneven data distribution in the task. After the task is completed, you can view the running results on the Summary tab of the detail dialog box. The following output provides an example of the running results.
 
 ```
 output records: R2_1_Stg1: 199998999 (min: 22552459, max: 177446540, avg: 99999499)
@@ -1425,7 +1425,7 @@ This topic describes the basic terms of MaxCompute. Project A basic organization
 use my_project -- Access a project named my_project.
 ```
 
-After you run the preceding command, you are navigated to a project named my_project and gain permissions to manage objects in this project. You are then able to manage objects that belong to this project, regardless of which project you are currently in. The Use Project command is provided by the MaxCompute client. For more information, see Common commands. Table A data storage unit of MaxCompute. Logically, a table is a two-dimensional structure consisting of rows and columns, in which each row represents a record and each column represents a field of the same data type. One record can contain one or more columns. The column names and types constitute the schema of this table. All data in MaxCompute is stored in tables. Data in table columns can be any of the data types supported by MaxCompute. Tables are the input and output objects of all MaxCompute computing tasks. You can create and delete tables, or import data to tables. Partitions of a table can be defined to process data more efficiently. You can specify some fields in the table as partition columns. Partitions within a table are similar to directories within a file system. Each value of a partition column is called a partition in MaxCompute. You can group multiple fields of a table to a single partition to create a multi-level partition. Multi-level partitions are similar to multi-level directories. If you specify the name of the partition that you want to access, MaxCompute only scans the specified partition. This improves processing efficiency and reduces cost. For more information, see Column and partition operations. Data type Columns of a MaxCompute table must be of a certain data type. MaxCompute supports the following data types: Basic data types mon commands
+Not e After you run the preceding command, you are navigated to a project named my_project and gain permissions to manage objects in this project. You are then able to manage objects that belong to this project, regardless of which project you are currently in. The Use Project command is provided by the MaxCompute client. For more information, see Common commands. Table A data storage unit of MaxCompute. Logically, a table is a two-dimensional structure consisting of rows and columns, in which each row represents a record and each column represents a field of the same data type. One record can contain one or more columns. The column names and types constitute the schema of this table. All data in MaxCompute is stored in tables. Data in table columns can be any of the data types supported by MaxCompute. Tables are the input and output objects of all MaxCompute computing tasks. You can create and delete tables, or import data to tables. Partitions of a table can be defined to process data more efficiently. You can specify some fields in the table as partition columns. Partitions within a table are similar to directories within a file system. Each value of a partition column is called a partition in MaxCompute. You can group multiple fields of a table to a single partition to create a multi-level partition. Multi-level partitions are similar to multi-level directories. If you specify the name of the partition that you want to access, MaxCompute only scans the specified partition. This improves processing efficiency and reduces cost. For more information, see Column and partition operations. Data type Columns of a MaxCompute table must be of a certain data type. MaxCompute supports the following data types: Basic data types mon commands
 
 | Type | New in MaxCompute 2.0? | Constant | Description | Value range |
 |---|---|---|---|---|
@@ -1455,7 +1455,7 @@ Note that if you want to use the new data types in MaxCompute 2.0, you must firs
 | setproject odps.sql.type.system.odps2=true; |   |   |
 | may occur: | xxxx type is not enabled in current mode |   |
 
-the preceding table can be NULL. Only lowercase letters can be used in the preceding statements. Not ice Note the following points when you use the new data types in MaxCompute 2.0: After you execute the set odps.sql.type.system.odps2=true; statement, it results in the following major impacts: The semantics of the INT keyword change. INT in an SQL statement indicates a 32-bit integer. The semantics of an integer constant change. Take the SELECT 1 + a; statement as an example. If the new data type flag is not enabled, the integer constant is processed as BIGINT. If the length of the constant exceeds the range for a BIGINT value, the integer constant is processed as DOUBLE. If the new data type flag is enabled, the integer constant is 1 of the 32-bit INT type. Possible compatibility issues: The INT type may lead to inconsistencies in function prototypes during subsequent operations. For example, the actions of peripheral tools and subsequent operations might be changed by new type tables generated after data is written to a disk. Implicit type conversion rules change. If the new data type flag is enabled, some implicit types may not be converted. For example, errors may occur or precision may be reduced when the data type is converted from STRING to BIGINT, from STRING to DATETIME, from DOUBLE to BIGINT, from DECIMAL to DOUBLE, or from DECIMAL to BIGINT. In these cases you can use the CAST function to convert the data type. Implicit type conversion greatly affects functions and INSERT statements. For example, an INSERT statement can be executed when the new data type flag is disabled, but returns an error when the flag is enabled. mon commands
+the preceding table can be NULL. Not e Only lowercase letters can be used in the preceding statements. Not ice Note the following points when you use the new data types in MaxCompute 2.0: After you execute the set odps.sql.type.system.odps2=true; statement, it results in the following major impacts: The semantics of the INT keyword change. INT in an SQL statement indicates a 32-bit integer. The semantics of an integer constant change. Take the SELECT 1 + a; statement as an example. If the new data type flag is not enabled, the integer constant is processed as BIGINT. If the length of the constant exceeds the range for a BIGINT value, the integer constant is processed as DOUBLE. If the new data type flag is enabled, the integer constant is 1 of the 32-bit INT type. Possible compatibility issues: The INT type may lead to inconsistencies in function prototypes during subsequent operations. For example, the actions of peripheral tools and subsequent operations might be changed by new type tables generated after data is written to a disk. Implicit type conversion rules change. If the new data type flag is enabled, some implicit types may not be converted. For example, errors may occur or precision may be reduced when the data type is converted from STRING to BIGINT, from STRING to DATETIME, from DOUBLE to BIGINT, from DECIMAL to DOUBLE, or from DECIMAL to BIGINT. In these cases you can use the CAST function to convert the data type. Implicit type conversion greatly affects functions and INSERT statements. For example, an INSERT statement can be executed when the new data type flag is disabled, but returns an error when the flag is enabled. mon commands
 
 |   | When the new data type flag is disabled, some operations and built-in functions that use new data types as parameters and response values are ignored. When the new data type flag is enabled, they become valid. Some built-in functions can only be used after the new data type flag is enabled. This includes most functions that use INT type parameters and subsequently suffer from BIGINT overload, such as YEAR, QUARTER, MONTH, DAY, HOUR, MINUTE, SECOND, MILLISECOND, NANOSECOND, DAYOFMONTH, and WEEKOFYEAR. These functions can be implemented by using the DATEPART function. UDF resolution changes. The resolution of the BIGINT keyword changes. The partition column types change. If the new data type flag is disabled, the partition column type can only be STRING. If the new data type flag is enabled, the partition column type can be STRING, VARCHAR, CHAR, TINYINT, SMALLINT, INT, or BIGINT. If the new data type flag is disabled, partition fields in INSERT operations are processed as STRING. The behavior of the LIMIT statement changes. Take the SELECT * FROM t1 UNION ALL SELECT * FROM t2 limit 10; statement as an example. If the new data type flag is disabled, it is SELECT * FROM t1 UNION ALL SELEC |   |   |
 |---|---|---|---|
@@ -1474,7 +1474,7 @@ mon commands command to specify the time display format in milliseconds. MaxComp
 | Map | map< string, string >; map< smallint, array< string>> | map("k1", "v1","k2", "v2"); map(1S, array('a', 'b'), 2S, array('x', 'y')) |
 | St ruct | struct< x:int, y:int>; struct< field1:bigint, field2:array< int>, field3:map< int, int>> | named struct('x', 1, 'y', 2); _ named struct('field1', 100L, _ 'field2', array(1, 2), 'field3', map(1, 100, 2, 200) |
 
-If PyODPS is used, you can use the following methods to enable the new data type flag: You can execute o.execute_ SQL ('set ODPS. SQL .type.system.odps2=true;query_ SQL ', hints= `{" ODPS. SQL .submit.mode": "script"})` to enable the new data type flag. You can enable the new data type flag by using DataFrame. For example, use an immediately executed action, such as persist, execute, or to_pandas, by setting the hints parameter. The setting in the following figure is valid only for a single job. To enable the new data type flag by using DataFrame and have the setting take effect globally, you need to execute `options.sql.use_odps2_extension = True` . Resource A concept used in MaxCompute. To accomplish tasks by using user-defined functions (UDFs) or MapReduce, you must use resources. MaxCompute SQL UDF: After you write a UDF, you must compile it as a JAR package and upload the package to MaxCompute as a resource. When you run the UDF, MaxCompute automatically downloads the JAR package and obtains the code to run this UDF. JAR packages are a type of MaxCompute resource. When you upload a JAR package, a resource is created in MaxCompute. MaxCompute MapReduce: After you write a MapReduce program, you must compile it as a JAR package and upload the package to MaxCompute as a resource. When you run a MapReduce job, the MapReduce framework automatically downloads the JAR package and obtains the code to run this mon commands MapReduce job. There are some limits on how MaxCompute UDFs and MapReduce access resources. For more information, see Limits. You can also upload tables or text files to MaxCompute as different types of resources. You can read or use these resources when you run UDFs or MapReduce jobs. MaxCompute provides APIs for you to read and use resources. For more information, see the examples for resource use and UDTF instructions. MaxCompute supports the following resource types: File Table: tables in MaxCompute. JAR: compiled JAR packages. Archive: compressed files identified by the resource name extension. Supported file types include .zip, .tgz, .tar.gz, .tar, and .jar. Py: Python scripts used by Python UDFs. For more information about resource operations, see Resource operations. UDF MaxCompute provides SQL computing capabilities. You can use the built-in functions in MaxCompute SQL statements to implement certain computing or counting functions. If these built-in functions do not meet your requirements, you can use the Java APIs provided by MaxCompute to develop UDFs. UDFs are classified into user-defined scalar functions (UDSFs), user-defined aggregate functions (UDAFs), and user-defined table-valued functions (UDTFs). After you write the UDF code, you need to compile the code into a JAR package, upload it to MaxCompute as a resource, and register this UDF in MaxCompute. To use a UDF in MaxCompute, you only need to specify its name and parameters in an SQL statement as you do when you use the built-in functions of MaxCompute. For more information about UDF operations, see Function operations. Task A basic computing unit of MaxCompute. Both SQL and MapReduce features are implemented as tasks. MaxCompute parses most of the tasks that you submit, such as SQL DML statements and MapReduce tasks. MaxCompute generates a task execution plan based on the parsing results. An execution plan consists of several mutually dependent stages. An execution plan can be logically defined as a directed graph. Vertices of the graph represent stages, and edges of the graph represent dependencies between stages. MaxCompute executes stages based on the dependencies in the graph (execution plan). A stage has multiple processes, also known as workers. The workers in each stage cooperate to complete computations for the stage. Different workers in a stage process different data, but they all use the same execution logic. A computing task converts to an instance when it is executed. You can perform operations on this instance, such as obtaining status information and killing the instance. mon commands Some MaxCompute tasks, such as SQL DDL statements, are not computing tasks. These tasks only need to read and modify metadata in MaxCompute. MaxCompute does not generate execution plans for these tasks. Not ice MaxCompute does not convert all requests to tasks. For example, project, resource, UDF, and instance operations are not executed as tasks. Task instance Some MaxCompute tasks are converted to instances during the execution process. An instance has two stages: Running and Terminated. Instances that are in the Running stage are also in the Running state, while instances that are in the Terminated stage can be in the Success, Failed, or Canceled state. You can query or modify the status of a running task by using the instance ID provided by MaxCompute. Example:
+If PyODPS is used, you can use the following methods to enable the new data type flag: You can execute o.execute_ SQL ('set ODPS. SQL .type.system.odps2=true;query_ SQL ', hints= `{" ODPS. SQL .submit.mode": "script"})` to enable the new data type flag. You can enable the new data type flag by using DataFrame. For example, use an immediately executed action, such as persist, execute, or to_pandas, by setting the hints parameter. The setting in the following figure is valid only for a single job. To enable the new data type flag by using DataFrame and have the setting take effect globally, you need to execute `options.sql.use_odps2_extension = True` . Resource A concept used in MaxCompute. To accomplish tasks by using user-defined functions (UDFs) or MapReduce, you must use resources. MaxCompute SQL UDF: After you write a UDF, you must compile it as a JAR package and upload the package to MaxCompute as a resource. When you run the UDF, MaxCompute automatically downloads the JAR package and obtains the code to run this UDF. JAR packages are a type of MaxCompute resource. When you upload a JAR package, a resource is created in MaxCompute. MaxCompute MapReduce: After you write a MapReduce program, you must compile it as a JAR package and upload the package to MaxCompute as a resource. When you run a MapReduce job, the MapReduce framework automatically downloads the JAR package and obtains the code to run this mon commands MapReduce job. There are some limits on how MaxCompute UDFs and MapReduce access resources. For more information, see Limits. You can also upload tables or text files to MaxCompute as different types of resources. You can read or use these resources when you run UDFs or MapReduce jobs. MaxCompute provides APIs for you to read and use resources. For more information, see the examples for resource use and UDTF instructions. MaxCompute supports the following resource types: File Table: tables in MaxCompute. JAR: compiled JAR packages. Archive: compressed files identified by the resource name extension. Supported file types include .zip, .tgz, .tar.gz, .tar, and .jar. Py: Python scripts used by Python UDFs. Not e For more information about resource operations, see Resource operations. UDF MaxCompute provides SQL computing capabilities. You can use the built-in functions in MaxCompute SQL statements to implement certain computing or counting functions. If these built-in functions do not meet your requirements, you can use the Java APIs provided by MaxCompute to develop UDFs. UDFs are classified into user-defined scalar functions (UDSFs), user-defined aggregate functions (UDAFs), and user-defined table-valued functions (UDTFs). After you write the UDF code, you need to compile the code into a JAR package, upload it to MaxCompute as a resource, and register this UDF in MaxCompute. To use a UDF in MaxCompute, you only need to specify its name and parameters in an SQL statement as you do when you use the built-in functions of MaxCompute. Not e For more information about UDF operations, see Function operations. Task A basic computing unit of MaxCompute. Both SQL and MapReduce features are implemented as tasks. MaxCompute parses most of the tasks that you submit, such as SQL DML statements and MapReduce tasks. MaxCompute generates a task execution plan based on the parsing results. An execution plan consists of several mutually dependent stages. An execution plan can be logically defined as a directed graph. Vertices of the graph represent stages, and edges of the graph represent dependencies between stages. MaxCompute executes stages based on the dependencies in the graph (execution plan). A stage has multiple processes, also known as workers. The workers in each stage cooperate to complete computations for the stage. Different workers in a stage process different data, but they all use the same execution logic. A computing task converts to an instance when it is executed. You can perform operations on this instance, such as obtaining status information and killing the instance. mon commands Some MaxCompute tasks, such as SQL DDL statements, are not computing tasks. These tasks only need to read and modify metadata in MaxCompute. MaxCompute does not generate execution plans for these tasks. Not ice MaxCompute does not convert all requests to tasks. For example, project, resource, UDF, and instance operations are not executed as tasks. Task instance Some MaxCompute tasks are converted to instances during the execution process. An instance has two stages: Running and Terminated. Instances that are in the Running stage are also in the Running state, while instances that are in the Terminated stage can be in the Success, Failed, or Canceled state. You can query or modify the status of a running task by using the instance ID provided by MaxCompute. Example:
 
 ```
 status <instance_id>; -- Query the status of an instance. kill <instance_id>; -- Terminate an instance and change its status to Canceled.
@@ -1486,7 +1486,7 @@ Resource quota There are two types of resource quota: storage and computing. The
 
 #### 5.2.1 Introduction
 
-MaxCompute allows you to perform operations on objects, such as projects, tables, resources, and instances. You can use client commands or the SDK to perform operations on these objects. This topic describes how to run these commands in the MaxCompute client. For more information about how to install and configure the client, see Configure the client. For more information about the SDK, see SDK introduction.
+MaxCompute allows you to perform operations on objects, such as projects, tables, resources, and instances. You can use client commands or the SDK to perform operations on these objects. This topic describes how to run these commands in the MaxCompute client. Not e For more information about how to install and configure the client, see Configure the client. For more information about the SDK, see SDK introduction.
 
 #### 5.2.2 Project operations
 
@@ -1496,13 +1496,13 @@ This topic describes common project commands. Create or delete a project MaxComp
 use <project_name>;
 ```
 
-Purpose: It is used to access the specified project. After you enter a project, you can directly operate all objects in the project. If the specified project does not exist or you have not been added to the project, the system returns an exception and exits. Example:
+Purpose: It is used to access the specified project. After you enter a project, you can directly operate all objects in the project. Not e If the specified project does not exist or you have not been added to the project, the system returns an exception and exits. Example:
 
 ```
 odps@ myproject> use my_project; -- my_project is a project that you have permission to access.
 ```
 
-The preceding command runs in the client. All command keywords, project names, table names, and column names in MaxCompute are case-insensitive. After you run the command, you can directly access objects in this project. Example: Run the following command to access the test_src table in the my_project project (assume test_src exists in my_project):
+Not e The preceding command runs in the client. All command keywords, project names, table names, and column names in MaxCompute are case-insensitive. After you run the command, you can directly access objects in this project. Example: Run the following command to access the test_src table in the my_project project (assume test_src exists in my_project):
 
 ```
 odps@ myproject>select * from test_src;
@@ -1532,13 +1532,13 @@ mon commands Purpose: It is used to list all objects in the project recycle bin.
 purge all;
 ```
 
-Purpose: It is used to clear all objects from the project recycle bin to release storage space. Only the project owner can run this command. Run the following command to clear a table:
+Purpose: It is used to clear all objects from the project recycle bin to release storage space. Not e Only the project owner can run this command. Run the following command to clear a table:
 
 ```
 purge table tblname;
 ```
 
-Purpose: It is used to clear all objects in a specified table from the recycle bin to release the storage space. If the specified table exists, the project owner and users who have write permissions on the table can run this command. If the table has been deleted using a DROP command, only the project owner can run this command.
+Purpose: It is used to clear all objects in a specified table from the recycle bin to release the storage space. Not e If the specified table exists, the project owner and users who have write permissions on the table can run this command. If the table has been deleted using a DROP command, only the project owner can run this command.
 
 #### 5.2.3 Table operations
 
@@ -1572,7 +1572,7 @@ Delete a table (DROP TABLE)
 DROP TABLE [IF EXISTS] table_name;
 ```
 
-Description: Deletes a table. If a command without the IF EXISTS option is executed and the table does not exist, an exception is returned. If a command with this option is executed, a success is returned regardless of whether the table exists. Parameters t able_name: the name of the table you want to delete.
+Description: Deletes a table. Not e If a command without the IF EXISTS option is executed and the table does not exist, an exception is returned. If a command with this option is executed, a success is returned regardless of whether the table exists. Parameters t able_name: the name of the table you want to delete.
 
 ```
 DROP TABLE sale_detail; -- If the sale_detail table exists, a success is returned. DROP TABLE IF EXISTS sale_detail; -- A success is returned regardless of whether the sale_detail table exists.
@@ -1654,7 +1654,7 @@ Description: Lists all partitions of a table. Parameters t able_name: the name o
 SHOW PARTITIONS table_name; partition_col1=col1_value1/partition_col2=col2_value1 partition_col1=col1_value2/partition_col2=col2_value2
 ```
 
-The preceding command is executed in the MaxCompute client. partition_col1 and partition_col2 indicate the partition columns of the table. col1_value1, col2_value1, col1_value2, and col2_value2 indicate the values in the matching columns.
+Not e The preceding command is executed in the MaxCompute client. partition_col1 and partition_col2 indicate the partition columns of the table. col1_value1, col2_value1, col1_value2, and col2_value2 indicate the values in the matching columns.
 
 #### 5.2.4 Instance operations
 
@@ -1676,25 +1676,25 @@ An instance can be in any of the following states: Running Success Wait ing Fail
 STATUS <instance_id>;
 ```
 
-Description: Views the status of a specified instance, which can be Success, Failed, Running, or Canceled. If the instance was not created by you, an exception is returned. Parameters inst ance_id: the unique identifier of an instance. It specifies the instance whose status is queried. mon commands
+Description: Views the status of a specified instance, which can be Success, Failed, Running, or Canceled. Not e If the instance was not created by you, an exception is returned. Parameters inst ance_id: the unique identifier of an instance. It specifies the instance whose status is queried. mon commands
 
 ```
 odps@ $project_name>status 20131225123xxxxxxxxxxxxxxx; Success -- Query the status of the instance whose ID is 20131225123xxxxxxxxxxxxxxx. The query resul t is Success.
 ```
 
-The preceding command is run in the MaxCompute client. Show running jobs (TOP INSTANCE)
+Not e The preceding command is run in the MaxCompute client. Show running jobs (TOP INSTANCE)
 
 ```
 top instance; top instance -all;
 ```
 
-Only the project owner and administrator can use the command. Description t op inst ance: obtains information about running jobs that you submit in the current project. The output fields include InstanceID, Owner, Type, StartTime, Progress, Status, Priority, RuntimeUsage (CPU/MEM), TotalUsage (CPU/MEM), and QueueingInfo (POS/LEN). t op inst ance -all: obtains information about all running jobs in the current project. By default, a maximum of 50 jobs are returned. To return more records, use the -limit number option.
+Not e Only the project owner and administrator can use the command. Description t op inst ance: obtains information about running jobs that you submit in the current project. The output fields include InstanceID, Owner, Type, StartTime, Progress, Status, Priority, RuntimeUsage (CPU/MEM), TotalUsage (CPU/MEM), and QueueingInfo (POS/LEN). t op inst ance -all: obtains information about all running jobs in the current project. By default, a maximum of 50 jobs are returned. To return more records, use the -limit number option.
 
 ```
 odps@ $project_name>top instance;
 ```
 
-The preceding command is run in the MaxCompute client. Stop an instance (KILL)
+Not e The preceding command is run in the MaxCompute client. Stop an instance (KILL)
 
 ```
 kill <instance_id>;
@@ -1718,7 +1718,7 @@ Description: Obtains information about the job corresponding to an instance. The
 odps@ $project_name> desc instance 20150715xxxxxxxxxxxxxxx; ID 20150715xxxxxxxxxxxxxxx Owner ALIYUN$XXXXXX@alibaba-inc.com StartTime 2015-07-15 18:34:41 EndTime 2015-07-15 18:34:42 Status Terminated console_select_query_task_1436956481295 Success Query select * from mj_test; -- Query information about the job corresponding to the instance whose ID is 20150715xxxxxx xxxxxxxxxx.
 ```
 
-The preceding command is run in the MaxCompute client. Obtain task operation log information (WAIT)
+Not e The preceding command is run in the MaxCompute client. Obtain task operation log information (WAIT)
 
 ```
 wait instance_id;
@@ -1757,7 +1757,7 @@ R2_1:
 -- Query the task operation logs of the instance whose ID is 20170925161122379gxxxxxx.
 ```
 
-The preceding command is run in the MaxCompute client.
+Not e The preceding command is run in the MaxCompute client.
 
 #### 5.2.5 Resource operations
 
@@ -1783,7 +1783,7 @@ mon commands Description: Adds resources to MaxCompute. The following table list
 odps@ odps_public_dev>add table sale_detail partition (ds='20170602') as sale.res comment ' sale detail on 201706 02' -f; OK: Resource 'sale.res' have been updated. -- Add a table resource with alias sale.res to MaxCompute.
 ```
 
-The size of each resource file cannot exceed 500 MB. The total size of resources referenced by a single SQL or MapReduce task cannot exceed 2,048 MB. Delete a resource (DROP RESOURCE)
+Not e The size of each resource file cannot exceed 500 MB. The total size of resources referenced by a single SQL or MapReduce task cannot exceed 2,048 MB. Delete a resource (DROP RESOURCE)
 
 ```
 DROP RESOURCE <resource_name>;
@@ -1854,7 +1854,7 @@ Assume that Java UDF class com.aliyun.odps.examples.udf.UDTFResource is in udtfe
 create function test_udtf as 'com.aliyun.odps.examples.udf.UDTFResource' using 'udtfexample1.jar, file_resource.txt, table_resource1,test_archive.zip';
 ```
 
-Similar to resource file names, function names must be unique. Only the project owner has the permission to use UDFs to overwrite built-in functions. If you use a UDF that overwrites a built-in function, warning information is included in Summary after the SQL statement is executed. Delete a function (DROP FUNCTION)
+Not e Similar to resource file names, function names must be unique. Only the project owner has the permission to use UDFs to overwrite built-in functions. If you use a UDF that overwrites a built-in function, warning information is included in Summary after the SQL statement is executed. Delete a function (DROP FUNCTION)
 
 ```
 DROP FUNCTION <function_name>;
@@ -1884,7 +1884,7 @@ set odps.sql.timezone=Asia/Tokyo; -- Set the time zone to Asia/Tokyo. select get
 +------------+
 ```
 
-Project level: Execute the setProject odps.sql.timezone=<timezoneid>; statement. Only the project owner has the permission to execute this statement. Not ice After the time zone is set at the project level, it is used in all computing tasks that are time related. The data of existing tasks are also affected. Therefore, set the time zone only when it is absolutely necessary. We recommend that you only set time zones for new projects. Limits and precautions SQL built-in date functions, UDFs, UDTs, UDJs, and the SELECT TRANSFORM statement all support time zone configuration at the project level. A time zone must be configured in the format such as Asia/Shanghai, which supports daylight saving mon commands time. Do not configure it in the GMT+9 format. If the time zone of the SDK differs from that of the project, you must configure the GMT time zone to convert the data type from DATETIME to STRING. After you configure the time zone, the output time may be different from the real time when you run the related SQL statements by using DataWorks. For data that is between the years 1900 and 1928, the time difference is 352 seconds. For data that is before the year 1900, the time difference is 9 seconds. New versions of MaxCompute, Java SDK, and the related console are provided to ensure that the DATETIME data stored in MaxCompute is correct in multiple time zones. The target Java SDK and console versions have the -oversea suffix. The upgrade may affect the display of the DATETIME data that is before January 1, 1928 in MaxCompute. If the local time zone is not UTC+8, we recommend that you upgrade the Java SDK and console to ensure that the SQL-based computing results and data transferred using Tunnel after January 1, 1900 are accurate and consistent. After the upgrade, for the DATETIME data before January 1, 1900, the SQL-based computing results and data transferred using Tunnel may still have a difference of 343 seconds. For the DATETIME data between January 1, 1900 and January 1, 1928 uploaded before the upgrade, the time in the new version is 352 seconds earlier. If you do not upgrade the Java SDK and console to the version with the -oversea suffix, the SQLbased computing results and data transferred using Tunnel will have differences. For data before January 1, 1900, the time difference is 9 seconds. For data between January 1, 1900 and January 1, 1928, the time difference is 352 seconds. The time zone of the upgraded Java SDK or console version does not affect the time zone configuration in DataWorks. Therefore, the time zones may vary. You must evaluate the impact on scheduled tasks in DataWorks. If you use a third-party client that is connected to MaxCompute by using JDBC, you must set the time zone on the client to ensure the time consistency between the client and the server. MapReduce supports time zone configuration. Spark supports time zone configuration. If tasks are submitted to the MaxCompute computing cluster, the time zone of the project can be automatically obtained. If tasks are submitted from spark-shell, spark-sql, or pyspark in yarn-client mode, you must configure the spark-defaults.conf parameter of the driver and add the spark.driver.extraJavaOptions -Duser.timezone=America/Los_Angeles statement. The timezone parameter in the preceding statement indicates the time zone to be used. PAI supports time zone configuration. Graph supports time zone configuration.
+Project level: Execute the setProject odps.sql.timezone=<timezoneid>; statement. Only the project owner has the permission to execute this statement. Not ice After the time zone is set at the project level, it is used in all computing tasks that are time related. The data of existing tasks are also affected. Therefore, set the time zone only when it is absolutely necessary. We recommend that you only set time zones for new projects. Limits and precautions SQL built-in date functions, UDFs, UDTs, UDJs, and the SELECT TRANSFORM statement all support time zone configuration at the project level. A time zone must be configured in the format such as Asia/Shanghai, which supports daylight saving mon commands time. Do not configure it in the GMT+9 format. If the time zone of the SDK differs from that of the project, you must configure the GMT time zone to convert the data type from DATETIME to STRING. After you configure the time zone, the output time may be different from the real time when you run the related SQL statements by using DataWorks. For data that is between the years 1900 and 1928, the time difference is 352 seconds. For data that is before the year 1900, the time difference is 9 seconds. New versions of MaxCompute, Java SDK, and the related console are provided to ensure that the DATETIME data stored in MaxCompute is correct in multiple time zones. The target Java SDK and console versions have the -oversea suffix. The upgrade may affect the display of the DATETIME data that is before January 1, 1928 in MaxCompute. If the local time zone is not UTC+8, we recommend that you upgrade the Java SDK and console to ensure that the SQL-based computing results and data transferred using Tunnel after January 1, 1900 are accurate and consistent. After the upgrade, for the DATETIME data before January 1, 1900, the SQL-based computing results and data transferred using Tunnel may still have a difference of 343 seconds. For the DATETIME data between January 1, 1900 and January 1, 1928 uploaded before the upgrade, the time in the new version is 352 seconds earlier. If you do not upgrade the Java SDK and console to the version with the -oversea suffix, the SQLbased computing results and data transferred using Tunnel will have differences. For data before January 1, 1900, the time difference is 9 seconds. For data between January 1, 1900 and January 1, 1928, the time difference is 352 seconds. Not e The time zone of the upgraded Java SDK or console version does not affect the time zone configuration in DataWorks. Therefore, the time zones may vary. You must evaluate the impact on scheduled tasks in DataWorks. If you use a third-party client that is connected to MaxCompute by using JDBC, you must set the time zone on the client to ensure the time consistency between the client and the server. MapReduce supports time zone configuration. Spark supports time zone configuration. If tasks are submitted to the MaxCompute computing cluster, the time zone of the project can be automatically obtained. If tasks are submitted from spark-shell, spark-sql, or pyspark in yarn-client mode, you must configure the spark-defaults.conf parameter of the driver and add the spark.driver.extraJavaOptions -Duser.timezone=America/Los_Angeles statement. The timezone parameter in the preceding statement indicates the time zone to be used. PAI supports time zone configuration. Graph supports time zone configuration.
 
 #### 5.2.8 Tunnel operations
 
@@ -2156,7 +2156,7 @@ Description: Creates an alias for a resource. Parameters alias: the alias of a r
 ADD TABLE src_part PARTITION (ds='20171208') AS res_20171208; ADD TABLE src_part PARTITION (ds='20171209') AS res_20171209; -- Add resources res_20171208 and res_20171209. ALIAS resName=res_20171208; jar -resources resName -libjars work.jar -classpath ./work.jar com.company.MainClass args . ..; -- Set the alias of resource res_20171208 to resName and call this resource. ALIAS resName=res_20171209; jar -resources resName -libjars work.jar -classpath ./work.jar com.company.MainClass args . ..; -- Set the alias of resource res_20171209 to resName and call this resource.
 ```
 
-In the preceding example, different resource tables are referenced by the same resource alias resName in two jobs. Different data is read with the same code. SET
+Not e In the preceding example, different resource tables are referenced by the same resource alias resName in two jobs. Different data is read with the same code. SET
 
 ```
 set <KEY>=<VALUE>
@@ -2230,7 +2230,7 @@ Description: Exports the meta of a project to a local file. Meta is represented 
 show flags;
 ```
 
-Description: Displays parameters configured by using the SET command. This command takes effect only at the project level. COST SQL mon commands
+Description: Displays parameters configured by using the SET command. Not e This command takes effect only at the project level. COST SQL mon commands
 
 ```
 cost sql <SQL Sentence>;
@@ -2332,7 +2332,7 @@ T indicates that the type conversion can be performed, while F indicates that th
 | BOOLEAN | N | N | N | N | – | N |
 | DECIMAL | DECIMAL | DECIMAL | DECIMAL | N | N | – |
 
-If implicit type conversion is not supported between two values to be compared, the relational operation cannot be completed and an error is returned. For more information about relational operators, see Relational operators. Implicit conversion wit h special relat ional operat ors Special relational operators are LIKE, RLIKE, and IN. LIKE and RLIKE are used as follows:
+Not e If implicit type conversion is not supported between two values to be compared, the relational operation cannot be completed and an error is returned. For more information about relational operators, see Relational operators. Implicit conversion wit h special relat ional operat ors Special relational operators are LIKE, RLIKE, and IN. LIKE and RLIKE are used as follows:
 
 ```
 source like pattern; source rlike pattern;
@@ -2344,7 +2344,7 @@ Note the following points for the two relational operators in implicit type conv
 key in (value1, value2,...)
 ```
 
-The implicit conversion rules of IN are as follows: The data types in the value list specified by IN must be consistent. If keys and values are compared, the BIGINT, DOUBLE, and STRING types compared are converted to DOUBLE, whereas the DATETIME and STRING types compared are converted to DATETIME. Conversion between other types is not allowed. Note the following points for the IN operator: The memory used by the compiler increases with the number of parameters used by the IN operation. An IN operation with 5,000 parameters consumes 17 GB of memory with the GCC compiler. We recommend that you limit the number of parameters to around 1,024. In this case, memory consumption will peak at 1 GB and compilation will only take 39 seconds. Implicit t ype conversion wit h arit hmet ic operat ors Arithmetic operators include plus (+), minus (-), multiplier (*), divider (/), and percent (%). The implicit conversion rules are as follows: Only the STRING, BIGINT, DECIMAL, and DOUBLE types can be used in arithmetic operations. Before an arithmetic operation, STRING values are implicitly converted to DOUBLE values. When an arithmetic operation involves values of both the BIGINT and DOUBLE types, BIGINT values are implicitly converted to DOUBLE values. The DATETIME and BOOLEAN types cannot be used in arithmetic operations. For more information about arithmetic operators, see Arithmetic operators. Implicit conversion wit h logical operat ors Logical operators include AND, OR, and NOT. The implicit conversion rules are as follows: Only the BOOLEAN type can be used in logic operations. The other types are not supported by logical operations or implicit type conversions. For more information about logical operators, see Logical operators.
+The implicit conversion rules of IN are as follows: The data types in the value list specified by IN must be consistent. If keys and values are compared, the BIGINT, DOUBLE, and STRING types compared are converted to DOUBLE, whereas the DATETIME and STRING types compared are converted to DATETIME. Conversion between other types is not allowed. Note the following points for the IN operator: The memory used by the compiler increases with the number of parameters used by the IN operation. An IN operation with 5,000 parameters consumes 17 GB of memory with the GCC compiler. We recommend that you limit the number of parameters to around 1,024. In this case, memory consumption will peak at 1 GB and compilation will only take 39 seconds. Implicit t ype conversion wit h arit hmet ic operat ors Arithmetic operators include plus (+), minus (-), multiplier (*), divider (/), and percent (%). The implicit conversion rules are as follows: Only the STRING, BIGINT, DECIMAL, and DOUBLE types can be used in arithmetic operations. Before an arithmetic operation, STRING values are implicitly converted to DOUBLE values. When an arithmetic operation involves values of both the BIGINT and DOUBLE types, BIGINT values are implicitly converted to DOUBLE values. The DATETIME and BOOLEAN types cannot be used in arithmetic operations. Not e For more information about arithmetic operators, see Arithmetic operators. Implicit conversion wit h logical operat ors Logical operators include AND, OR, and NOT. The implicit conversion rules are as follows: Only the BOOLEAN type can be used in logic operations. The other types are not supported by logical operations or implicit type conversions. Not e For more information about logical operators, see Logical operators.
 
 ##### 6.1.4.3 SQL built-in functions
 
@@ -2413,7 +2413,7 @@ Double type values have variable precision. We recommend that you do not use the
 abs(0.9999999999 - 1.0000000000) < 0.000000001 -- 0.9999999999 and 1.0000000000 have 10 decimal digits, while 0.000000001 has 9 decimal di gits. -- 0.9999999999 is considered equal to 1.0000000000.
 ```
 
-ABS is a built-in function provided by MaxCompute to take the absolute value of its input. For more information, see ABS. A value of the double type in MaxCompute can retain 16 valid digits.
+Not e ABS is a built-in function provided by MaxCompute to take the absolute value of its input. For more information, see ABS. A value of the double type in MaxCompute can retain 16 valid digits.
 
 #### 6.2.2 Arithmetic operators
 
@@ -2429,7 +2429,7 @@ This topic describes arithmetic operators in MaxCompute SQL operators. Arithmeti
 | + A | A is returned. |
 | –A | If A is NULL, NULL is returned. Otherwise, –A is returned. |
 
-Only values of the string, bigint, double, and decimal types can be used in arithmetic operations. Values of the datatime and boolean types are not allowed in these operations. Before the operation, values of the string type are converted to the double type by implicit type conversion. When values of the bigint and double types are involved in an operation, values of the bigint type are converted to the double type by implicit type conversion first. The returned result is a value of the double type. When both A and B are of the bigint type, the returned result of A / B is a value of the double type. The returned results of the other arithmetic operations are values of the bigint type.
+Not e Only values of the string, bigint, double, and decimal types can be used in arithmetic operations. Values of the datatime and boolean types are not allowed in these operations. Before the operation, values of the string type are converted to the double type by implicit type conversion. When values of the bigint and double types are involved in an operation, values of the bigint type are converted to the double type by implicit type conversion first. The returned result is a value of the double type. When both A and B are of the bigint type, the returned result of A / B is a value of the double type. The returned results of the other arithmetic operations are values of the bigint type.
 
 #### 6.2.3 Bitwise operators
 
@@ -2469,7 +2469,7 @@ This topic describes logical operators in MaxCompute SQL operators. Logical oper
 |   | If expression A is TRUE, FALSE is returned. |
 |   | If expression A is FALSE, TRUE is returned. |
 
-Only data of the boolean type can be involved in logic operations. These operations do not support implicit type conversion.
+Not e Only data of the boolean type can be involved in logic operations. These operations do not support implicit type conversion.
 
 ### 6.3 DDL statements
 
@@ -2510,7 +2510,7 @@ In the `create table...as select...` statement, if you use constants as column v
 create table sale_detail_ctas2 as select shop_name, customer_id, total_price, '2017' as sale_date, 'China' as region from sale_detail;
 ```
 
-If you do not specify column aliases, the fourth and fifth columns of sale_detail_ctas3 created in the following example are automatically named _c3 and _c4.
+Not e If you do not specify column aliases, the fourth and fifth columns of sale_detail_ctas3 created in the following example are automatically named _c3 and _c4.
 
 ```
 create table sale_detail_ctas3 as select shop_name, customer_id, total_price, '2017', 'China' from sale_detail;
@@ -2548,7 +2548,7 @@ This topic describes how to run a DDL statement to delete a table. Command synt 
 drop table [if exists] table_name;
 ```
 
-If the command is run without the IF EXISTS option and the table does not exist, an exception is returned. With this option, a success is returned regardless of whether the table exists. Example:
+Not e If the command is run without the IF EXISTS option and the table does not exist, an exception is returned. With this option, a success is returned regardless of whether the table exists. Example:
 
 ```
 create table sale_detail_drop like sale_detail; drop table sale_detail_drop; -- If the table exists, a success is returned. If not, an exception is returned. drop table if exists sale_detail_drop2; -- A success is returned regardless of whether sale_detail_drop2 exists.
@@ -2562,7 +2562,7 @@ This topic describes how to run a DDL statement to rename a table. Command synt 
 alter table table_name rename to new_table_name;
 ```
 
-The rename operation only changes the table name, not the table data. If the table specified by new_table_name already exists, an error is returned. If the table specified by table_name does not exist, an error is returned. Example:
+Not e The rename operation only changes the table name, not the table data. If the table specified by new_table_name already exists, an error is returned. If the table specified by table_name does not exist, an error is returned. Example:
 
 ```
 create table sale_detail_rename1 like sale_detail; alter table sale_detail_rename1 rename to sale_detail_rename2;
@@ -2576,7 +2576,7 @@ This topic describes how to run a DDL statement to modify the comment of a table
 alter table table_name set comment 'tbl comment';
 ```
 
-table_name must be an existing table. A comment can contain a maximum of 1,024 bytes. Example:
+Not e table_name must be an existing table. A comment can contain a maximum of 1,024 bytes. Example:
 
 ```
 alter table sale_detail set comment 'new coments for table sale_detail';
@@ -2620,7 +2620,7 @@ table MaxCompute SQL supports the TOUCH operation, which allows you to modify th
 alter table table_name touch;
 ```
 
-If the specified table_name does not exist, an error is returned. This operation modifies the LastDataModifiedTime value of the table. In this case, MaxCompute considers a change to the table data, and recalculates the lifecycle. For more information about how to modify the LastDataModifiedTime value of a partition, see Modify the LastDataModifiedTime value of a partition.
+Not e If the specified table_name does not exist, an error is returned. This operation modifies the LastDataModifiedTime value of the table. In this case, MaxCompute considers a change to the table data, and recalculates the lifecycle. For more information about how to modify the LastDataModifiedTime value of a partition, see Modify the LastDataModifiedTime value of a partition.
 
 ##### 6.3.1.8 Clear data from a non-partitioned table
 
@@ -2630,7 +2630,7 @@ This topic describes how to run a DDL statement to clear data from a non-partiti
 TRUNCATE TABLE table_name;
 ```
 
-This statement is used to clear data from a specified non-partitioned table. To clear data from a partitioned table, run the `ALTER TABLE table_name DROP PARTITION` `(partition_spec)` statement.
+Not e This statement is used to clear data from a specified non-partitioned table. To clear data from a partitioned table, run the `ALTER TABLE table_name DROP PARTITION` `(partition_spec)` statement.
 
 ##### 6.3.1.9 Archive table data
 
@@ -2696,7 +2696,7 @@ This topic describes how to run a DDL statement to delete a view. Command synt a
 drop view [if exists] view_name;
 ```
 
-If the command is run without the IF EXISTS option and the view does not exist, an error is returned. Example:
+Not e If the command is run without the IF EXISTS option and the view does not exist, an error is returned. Example:
 
 ```
 drop view if exists sale_detail_view;
@@ -2726,7 +2726,7 @@ This topic describes how to use a DDL statement to add a partition. Synt ax
 alter table table_name add [if not exists] partition partition_spec;-- Add a partition. alter table table_name add [if not exists] partition partition_spec [PARTITION partition_sp ec PARTITION partition_spec...];-- Add multiple partitions at a time. partition_spec:(partition_col1 = partition_col_value1, partition_col2 = partiton_col_value2 , ...)
 ```
 
-If you do not specify the IF NOT EXISTS option and another partition with the same name exists, an error is returned. A MaxCompute table can contain a maximum of 60,000 partitions. To add a partition to a table that has multi-level partitions, you must specify all partitioning column values. The following examples show how to add partitions to the sale_detail table:
+Not e If you do not specify the IF NOT EXISTS option and another partition with the same name exists, an error is returned. A MaxCompute table can contain a maximum of 60,000 partitions. To add a partition to a table that has multi-level partitions, you must specify all partitioning column values. The following examples show how to add partitions to the sale_detail table:
 
 ```
 alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou')
@@ -2752,7 +2752,7 @@ This topic describes how to use a DDL statement to delete a partition. Synt ax
 alter table table_name drop [if exists] PARTITION partition_spec; -- Delete a partition. alter table table_name drop [if exists] PARTITION partition_spec,PARTITION partition_spec,[ PARTITION partition_spec....] ;-- Delete multiple partitions at a time. partition_spec:: (partition_col1 = partition_col_value1, partition_col2 = partiton_col_valu e2, ...)
 ```
 
-If you do not specify the IF EXISTS option and the partition you want to delete does not exist, an error is returned. Execute the following statement to delete a partition from the sale_detail table:
+Not e If you do not specify the IF EXISTS option and the partition you want to delete does not exist, an error is returned. Execute the following statement to delete a partition from the sale_detail table:
 
 ```
 alter table sale_detail drop partition(sale_date='201712',region='hangzhou'); -- The sales records of the China (Hangzhou) region for December 2017 are deleted.
@@ -2766,7 +2766,7 @@ This topic describes how to add a column by using a DDL statement. Command synt 
 alter table table_name add columns (col_name1 type1, col_name2 type2...)
 ```
 
-A column can only be one of the following types: bigint, double, boolean, datetime, decimal, string, tinyint, smallint, int, float, varchar, binary, timestamp, array, map, or struct. You can create up to 1,200 columns in a single table in MaxCompute.
+Not e A column can only be one of the following types: bigint, double, boolean, datetime, decimal, string, tinyint, smallint, int, float, varchar, binary, timestamp, array, map, or struct. You can create up to 1,200 columns in a single table in MaxCompute.
 
 ##### 6.3.3.4 Change a column name
 
@@ -2786,7 +2786,7 @@ This topic describes how to run a DDL statement to modify the comment of a colum
 alter table table_name change column col_name comment 'comment';
 ```
 
-The comment cannot exceed 1,024 bytes. The data type and position of a column cannot be changed.
+Not e The comment cannot exceed 1,024 bytes. The data type and position of a column cannot be changed.
 
 ##### 6.3.3.6 Modify the LastDataModifiedTime value of a partition
 
@@ -2798,7 +2798,7 @@ MaxCompute SQL supports the TOUCH operation, which allows you to modify the Last
 alter table table_name touch partition(partition_col='partition_col_value', ...);
 ```
 
-If the specified table_name or partition_col does not exist, an error is returned. If the specified partition_col_value does not exist, an error is returned. This operation modifies the LastDataModifiedTime value of the table. In this case, MaxCompute considers a change to the table or partition value, and recalculates the lifecycle. For more information about how to modify the LastDataModifiedTime value of a table, see Modify the LastDataModifiedTime value of a table.
+Not e If the specified table_name or partition_col does not exist, an error is returned. If the specified partition_col_value does not exist, an error is returned. This operation modifies the LastDataModifiedTime value of the table. In this case, MaxCompute considers a change to the table or partition value, and recalculates the lifecycle. For more information about how to modify the LastDataModifiedTime value of a table, see Modify the LastDataModifiedTime value of a table.
 
 ##### 6.3.3.7 Modify partition values
 
@@ -2808,7 +2808,7 @@ MaxCompute SQL provides the RENAME operation, which allows you to modify partiti
 ALTER TABLE table_name PARTITION (partition_col1 = partition_col_value1, partition_col2 = p artiton_col_value2, . ..) RENAME TO PARTITION (partition_col1 = partition_col_newvalue1, partition_col2 = partiton_co l_newvalue2, ...);
 ```
 
-This command cannot modify the names of partition columns. It can only modify the values of the columns. To modify the values in one or more partitions in the case of multi-level partitions, you must specify values of partitions at each level.
+Not e This command cannot modify the names of partition columns. It can only modify the values of the columns. To modify the values in one or more partitions in the case of multi-level partitions, you must specify values of partitions at each level.
 
 ##### 6.3.3.8 Merge partitions
 
@@ -2818,7 +2818,7 @@ MaxCompute allows you to merge multiple partitions in a table into one partition
 ALTER TABLE <tableName> MERGE [IF EXISTS] PARTITION(<predicate>) [, PARTITION(<predicate2>) ...] OVERWRITE PARTITION(<fullPartitionSpec>) [PURGE];
 ```
 
-If you do not specify the IF EXISTS option and the partition you want to merge does not exist, an error is returned. If you specify the IF EXISTS option but no partitions meet the merge conditions, no new partitions are generated. If source data is concurrently modified by operations such as INSERT, RENAME, or DROP when you execute the preceding statement, an error is returned even though you have specified the IF EXISTS option. If the PURGE attribute is specified, merged partitions cannot be restored by using the Kunlunjing. Limit s and t roubleshoot ing External tables, shard tables, and tables with extreme storage are not supported. Xlib or Algo tables that depend on the file order are not supported. If you merge partitions of a clustered table, the clustered attribute is removed from the partitions. Hash operations are performed by CatalogServer on tables to merge partitions. A capacity limit is imposed on merged partitions. A hard link in the Apsara Distributed File System can have a maximum of seven replicas. You can merge a maximum of 4,000 partitions at a time. The number of partitions that can wait on CatalogServer to be merged is 10 million. If an error that indicates CatalogServer is busy occurs, try again later. If a hard link in the Apsara Distributed File System is faulty, purge the recycle bin and then try again. The following code shows the partitions and data of the tb_test table:
+Not e If you do not specify the IF EXISTS option and the partition you want to merge does not exist, an error is returned. If you specify the IF EXISTS option but no partitions meet the merge conditions, no new partitions are generated. If source data is concurrently modified by operations such as INSERT, RENAME, or DROP when you execute the preceding statement, an error is returned even though you have specified the IF EXISTS option. If the PURGE attribute is specified, merged partitions cannot be restored by using the Kunlunjing. Limit s and t roubleshoot ing External tables, shard tables, and tables with extreme storage are not supported. Xlib or Algo tables that depend on the file order are not supported. If you merge partitions of a clustered table, the clustered attribute is removed from the partitions. Hash operations are performed by CatalogServer on tables to merge partitions. A capacity limit is imposed on merged partitions. A hard link in the Apsara Distributed File System can have a maximum of seven replicas. You can merge a maximum of 4,000 partitions at a time. The number of partitions that can wait on CatalogServer to be merged is 10 million. If an error that indicates CatalogServer is busy occurs, try again later. If a hard link in the Apsara Distributed File System is faulty, purge the recycle bin and then try again. The following code shows the partitions and data of the tb_test table:
 
 ```
 odps@ jet_zwz>list partitions tb_test; ds=20181101/hh=00/mm=00 ds=20181101/hh=00/mm=10 ds=20181101/hh=10/mm=00 ds=20181101/hh=10/mm=10
@@ -2888,13 +2888,13 @@ This topic describes how to run an INSERT statement to update the data of a tabl
 insert overwrite|into table tablename [partition (partcol1=val1, partcol2=val2 ...)] select _statement from from_statement;
 ```
 
-The INSERT syntax in MaxCompute is different from that in MySQL or Oracle. In MaxCompute, INSERT OVERWRITE or INSERT INTO must be followed by the keyword TABLE, not directly by the table name. Example: The following example calculates the sales of different regions in the sale_detail table.
+Not e The INSERT syntax in MaxCompute is different from that in MySQL or Oracle. In MaxCompute, INSERT OVERWRITE or INSERT INTO must be followed by the keyword TABLE, not directly by the table name. Example: The following example calculates the sales of different regions in the sale_detail table.
 
 ```
 create table sale_detail_insert like sale_detail; alter table sale_detail_insert add partition(sale_date='2017', region='china'); insert overwrite table sale_detail_insert partition (sale_date='2017', region='china') sele ct shop_name, customer_id, total_price from sale_detail;
 ```
 
-When data is updated using an INSERT operation, the mapping between the source and target tables depends on the column sequence in the SELECT clause, instead of the mapping of column names between both tables. The following statement is also valid:
+Not e When data is updated using an INSERT operation, the mapping between the source and target tables depends on the column sequence in the SELECT clause, instead of the mapping of column names between both tables. The following statement is also valid:
 
 ```
 insert overwrite table sale_detail_insert partition (sale_date='2017', region='china') select customer_id, shop_name, total_price from sale_detail; -- When the sale_detail_insert table is created, the column sequence is shop_name string, c ustomer_id string, and total_price bigint. -- When data in sale_detail is inserted to sale_detail_insert, the insertion sequence is cu stomer_id, shop_name, and total_price. -- In this case, data in sale_detail.customer_id is inserted into sale_detail_insert.shop_n ame. -- Data in sale_detail.shop_name is inserted into sale_detail_insert.customer_id.
@@ -2914,7 +2914,7 @@ This topic describes how to run the INSERT statement to output data to multiple 
 from from_statement insert overwrite | into table tablename1 [partition (partcol1=val1, partcol2=val2 ...)] sel ect_statement1 [insert overwrite | into table tablename2 [partition ...] select_statement2]
 ```
 
-A SQL statement typically supports up to 256 outputs. A syntax error is returned if more than 256 outputs are specified. In a MULTI INSERT statement, you can specify a target partition in a partitioned table or specify a non-partitioned table only once. The INSERT OVERWRITE and INSERT INTO operations cannot be performed simultaneously on different partitions in a partitioned table. Otherwise, an error is returned. Example:
+Not e A SQL statement typically supports up to 256 outputs. A syntax error is returned if more than 256 outputs are specified. In a MULTI INSERT statement, you can specify a target partition in a partitioned table or specify a non-partitioned table only once. The INSERT OVERWRITE and INSERT INTO operations cannot be performed simultaneously on different partitions in a partitioned table. Otherwise, an error is returned. Example:
 
 ```
 create table sale_detail_multi like sale_detail; from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2016', region='china' ) sele ct shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2017', region='china' ) sele ct shop_name, customer_id, total_price; -- A success is returned. Data of the sale_detail table is inserted into the sale records o f the China region in 2016 and 2017 in the sales table. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2017', region='china' ) sele ct shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2017', region='china' ) sele ct shop_name, customer_id, total_price; -- An error is returned. The same partition appears more than once. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2016', region='china' ) select shop_name, customer_id, total_price insert into table sale_detail_multi partition (sale_date='2017', region='china' ) select sh op_name, customer_id, total_price; -- An error is returned. The INSERT OVERWRITE and INSERT INTO operations cannot be performe d simultaneously on different partitions in a partitioned table.
@@ -2928,13 +2928,13 @@ This topic describes how to use the INSERT statement to output data to a dynamic
 insert overwrite table tablename partition (partcol1, partcol2 ...) select_statement from f rom_statement;
 ```
 
-When you run a SQL dynamic partition statement in a distributed environment, a single process can output up to 512 dynamic partitions. If the number of dynamic partitions exceeds this limit, an exception is returned. Currently, a SQL dynamic partition statement can generate up to 2,000 dynamic partitions. If the number of dynamic partitions exceeds this limit, an exception is returned. The dynamic partition values cannot be NULL. Otherwise, an exception is returned. If a target table has multi-level partitions, you can specify some partitions as static partitions in an INSERT statement. However, the static partitions must be high-level partitions. Example:
+Not e When you run a SQL dynamic partition statement in a distributed environment, a single process can output up to 512 dynamic partitions. If the number of dynamic partitions exceeds this limit, an exception is returned. Currently, a SQL dynamic partition statement can generate up to 2,000 dynamic partitions. If the number of dynamic partitions exceeds this limit, an exception is returned. The dynamic partition values cannot be NULL. Otherwise, an exception is returned. If a target table has multi-level partitions, you can specify some partitions as static partitions in an INSERT statement. However, the static partitions must be high-level partitions. Example:
 
 ```
 create table total_revenues (revenue bigint) partitioned by (region string); insert overwri te table total_revenues partition(region) select total_price as revenue, region from sale_detail;
 ```
 
-In the preceding example, you do not know which partitions are generated before running the SQL statement. The partitions generated are determined by the value of the region field after the execution of the SELECT statement. This is why the partitions are called dynamic partitions. Ot her examples:
+Not e In the preceding example, you do not know which partitions are generated before running the SQL statement. The partitions generated are determined by the value of the region field after the execution of the SELECT statement. This is why the partitions are called dynamic partitions. Ot her examples:
 
 ```
 create table sale_detail_dypart like sale_detail; insert overwrite table sale_detail_dypart partition (sale_date, region) select * from sale_ detail; -- A success is returned. insert overwrite table sale_detail_dypart partition (sale_date='2017', region) select shop_ name,customer_id,total_price,region from sale_detail; -- A success is returned. The table has multi-level partitions. Specify a primary partition
@@ -2988,13 +2988,13 @@ Not ice To check whether partition pruning takes effect, execute the `EXPLAIN SE
 @com.aliyun.odps.udf.annotation.UdfProperty(isDeterministic=true)
 ```
 
-Not ice com.aliyun.odps.udf.annotation.UdfProperty defines that the version of referenced odps-sdk-udf must be 0.30.x or later in odps-sdk-udf.jar. Add the set odps.sql.udf.ppr.deterministic = true; flag before SQL statements. Then, all UDFs in the SQL statements are considered deterministic. This method is used with limits. This method backfills partitions with execution results. A maximum of 1,000 partitions can be backfilled. If an annotation is added to the UDF class, an error that indicates more than 1,000 partitions are backfilled may be returned. If you want to ignore the error, add the set odps.sql.udf.ppr.to.subquery = false; flag to disable this feature globally. After this feature is disabled, UDF-based partition pruning becomes invalid. The WHERE clause in an SQL statement can include the BETWEEN...AND condition. Example:
+Not ice com.aliyun.odps.udf.annotation.UdfProperty defines that the version of referenced odps-sdk-udf must be 0.30.x or later in odps-sdk-udf.jar. Add the set odps.sql.udf.ppr.deterministic = true; flag before SQL statements. Then, all UDFs in the SQL statements are considered deterministic. Not e This method is used with limits. This method backfills partitions with execution results. A maximum of 1,000 partitions can be backfilled. If an annotation is added to the UDF class, an error that indicates more than 1,000 partitions are backfilled may be returned. If you want to ignore the error, add the set odps.sql.udf.ppr.to.subquery = false; flag to disable this feature globally. After this feature is disabled, UDF-based partition pruning becomes invalid. The WHERE clause in an SQL statement can include the BETWEEN...AND condition. Example:
 
 ```
 SELECT sale_detail. * FROM sale_detail WHERE sale_detail.sale_date between '2017' and '2019';
 ```
 
-The number of conditions that can be specified in the WHERE clause cannot exceed 256. Nested subqueries are supported in table_reference.
+Not e The number of conditions that can be specified in the WHERE clause cannot exceed 256. Nested subqueries are supported in table_reference.
 
 ```
 select * from (select region from sale_detail) t where region = 'shanghai';
@@ -3006,7 +3006,7 @@ DISTINCT: If duplicate rows exist, add DISTINCT before the field to remove dupli
 select distinct region from sale_detail; select distinct region, sale_date from sale_detail; -- The DISTINCT option applies to multiple columns. The option takes effect on all column s of the SELECT statement, instead of a single column.
 ```
 
-GROUP BY: This clause is used to perform group-based queries. In most cases, this clause is used with aggregate functions. If a SELECT statement includes aggregate functions, the key of the GROUP BY clause can be the names of columns in the input table or an expression composed of input table columns. The key cannot be the aliases of the columns in the output table of the SELECT operation. If the set hive.groupby.position.alias=true; flag is added before SQL statements, integer constants in the GROUP BY clause are considered column numbers in a SELECT operation. Example:
+GROUP BY: This clause is used to perform group-based queries. In most cases, this clause is used with aggregate functions. If a SELECT statement includes aggregate functions, the key of the GROUP BY clause can be the names of columns in the input table or an expression composed of input table columns. The key cannot be the aliases of the columns in the output table of the SELECT operation. Not e If the set hive.groupby.position.alias=true; flag is added before SQL statements, integer constants in the GROUP BY clause are considered column numbers in a SELECT operation. Example:
 
 ```
 -- The columns in the sale_detail table are in the format of key-value pairs. select region, sum(total_price) from sale_detail group by 1; -- Equivalent to the following statement: select region, sum(total_price) from sale_detail group by region;
@@ -3016,7 +3016,7 @@ GROUP BY: This clause is used to perform group-based queries. In most cases, thi
 select region from sale_detail group by region; -- The statement is successfully executed because the name of a column in the input table is used as the column in the GROUP BY clause. select sum(total_price) from sale_detail group by region; -- The statement is successfully executed because the values in the region column are use d to group the table and to return the total sales of each group. select region, sum(total_price) from sale_detail group by region; -- The statement is successfully executed because the values in the region column are use d to group the table and to return the unique region value and the total sales of each gr oup. select region as r from sale_detail group by r; -- An error is returned because the alias of the column in the SELECT operation is used a s the column in the GROUP BY clause. select 'China-' + region as r from sale_detail group by 'China-' + region; -- A complete expression of the column is required. select region, total_price from sale_detail group by region; -- An error is returned because all the columns that do not include aggregate functions i n the SELECT operation must exist in the GROUP BY clause. select region, total_price from sale_detail group by region, total_price; -- The statement can be successfully executed.
 ```
 
-The GROUP BY operation is performed before the SELECT operation during the parsing of SQL statements. Therefore, GROUP BY uses only the column names or expressions of the input table as keys. For more information about aggregate functions, see Aggregate functions. ORDER BY: This clause is used for global sorting based on specific columns. To sort records in descending order, use the DESC keyword. The ORDER BY clause must be used with the LIMIT clause because records are globally sorted. In an ORDER BY operation, NULL is considered the lowest of all values. This rule is consistent with MySQL, but is different from Oracle. Different from the GROUP BY clause, the columns in the ORDER BY clause must be the aliases of the columns in the SELECT operation. If you want to query a column but the column alias is not specified in the SELECT operation, the column name is used as the column alias. If the set hive.orderby.position.alias=true; flag is added before SQL statements, integer constants in the ORDER BY clause are considered column numbers in a SELECT operation. Example:
+Not e The GROUP BY operation is performed before the SELECT operation during the parsing of SQL statements. Therefore, GROUP BY uses only the column names or expressions of the input table as keys. For more information about aggregate functions, see Aggregate functions. ORDER BY: This clause is used for global sorting based on specific columns. To sort records in descending order, use the DESC keyword. The ORDER BY clause must be used with the LIMIT clause because records are globally sorted. In an ORDER BY operation, NULL is considered the lowest of all values. This rule is consistent with MySQL, but is different from Oracle. Different from the GROUP BY clause, the columns in the ORDER BY clause must be the aliases of the columns in the SELECT operation. If you want to query a column but the column alias is not specified in the SELECT operation, the column name is used as the column alias. Not e If the set hive.orderby.position.alias=true; flag is added before SQL statements, integer constants in the ORDER BY clause are considered column numbers in a SELECT operation. Example:
 
 ```
 -- The columns in the sale_detail table are in the format of key-value pairs. select region, sum(total_price) from sale_detail order by 2 limit 100; -- Equivalent to the following statement: select region, sum(total_price) from sale_detail order by sum(total_price) limit 100; select * from sale_detail order by region; -- An error is returned because the ORDER BY clause is not used with the LIMIT clause. select * from sale_detail order by region limit 100; select region as r from sale_detail order by region; -- An error is returned because the ORDER BY clause is not followed by a column alias. select region as r from sale_detail order by r;
@@ -3046,7 +3046,7 @@ SORT BY: This clause is used for partial sorting. The DISTRIBUTE BY clause must 
 select region from sale_detail distribute by region sort by region; select region as r fr om sale_detail sort by region; -- An error is returned because the SORT BY clause does not follow a DISTRIBUTE BY clause
 ```
 
-`.` The ORDER BY and GROUP BY clauses cannot be used with the DISTRIBUTE BY and SORT BY clauses. The ORDER BY and GROUP BY clauses must be followed by the alias of an output column from the SELECT operation. The key of the ORDER BY, SORT BY, or DISTRIBUTE BY clause must be the alias of an output column from the SELECT operation. The SELECT operation is performed before the ORDER BY, SORT BY, and DISTRIBUTE BY clauses during the parsing of SQL statements. Therefore, only the aliases of output columns from the SELECT operation can be used as keys.
+`.` The ORDER BY and GROUP BY clauses cannot be used with the DISTRIBUTE BY and SORT BY clauses. The ORDER BY and GROUP BY clauses must be followed by the alias of an output column from the SELECT operation. Not e The key of the ORDER BY, SORT BY, or DISTRIBUTE BY clause must be the alias of an output column from the SELECT operation. The SELECT operation is performed before the ORDER BY, SORT BY, and DISTRIBUTE BY clauses during the parsing of SQL statements. Therefore, only the aliases of output columns from the SELECT operation can be used as keys.
 
 ##### 6.4.2.2 Subquery
 
@@ -3062,7 +3062,7 @@ Not ice A subquery must have an alias. Example:
 create table shop as select * from sale_detail; select a.shop_name, a.customer_id, a.total_price from (select * from shop) a join sale_detail on a.shop_name = sale_detail.shop_name;
 ```
 
-In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries.
+Not e In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries.
 
 #### 6.4.3 UNION statements
 
@@ -3074,7 +3074,7 @@ This topic describes how to execute the SELECT statement to perform the UNION AL
 select_statement union all select_statement
 ```
 
-The UNION ALL clause is used to combine two or more datasets returned from a SELECT operation into one dataset. If duplicate rows exist in the results, all rows that meet the condition are returned, with duplicate rows retained. MaxCompute SQL does not support the combination of two top-level query results. To combine them, rewrite them into a subquery. Format example bef ore rewrit ing
+Not e The UNION ALL clause is used to combine two or more datasets returned from a SELECT operation into one dataset. If duplicate rows exist in the results, all rows that meet the condition are returned, with duplicate rows retained. MaxCompute SQL does not support the combination of two top-level query results. To combine them, rewrite them into a subquery. Format example bef ore rewrit ing
 
 ```
 select * from sale_detail where region = 'hangzhou' select * from sale_detail where region = 'shanghai';
@@ -3106,7 +3106,7 @@ join_table: table_reference join table_factor [join_condition]
 tion table_reference: table_factor join_table table_factor: tbl_name [alias] table_subquery alias ( table_references ) join_condition: on equality_expression ( and equality_expression )*
 ```
 
-equality_expression indicates an equality expression. Take note of the following points when you perform a JOIN operation: LEFT OUTER JOIN: returns all rows in the left table, such as shop in the following example. The returned rows include the rows that do not match any rows in the right table, such as sale_detail in the following example.
+Not e equality_expression indicates an equality expression. Take note of the following points when you perform a JOIN operation: LEFT OUTER JOIN: returns all rows in the left table, such as shop in the following example. The returned rows include the rows that do not match any rows in the right table, such as sale_detail in the following example.
 
 ```
 select a.shop_name as ashop, b.shop_name as bshop from shop a left outer join sale_detail b on a.shop_name=b.shop_name; -- Both the shop and sale_detail tables have the shop_name column. You must use aliases t o distinguish the columns in the SELECT operation.
@@ -3170,7 +3170,7 @@ This topic describes the EXPLAIN statement in DML statements of MaxCompute SQL. 
 EXPLAIN <DMLquery>;
 ```
 
-The execution result of an EXPLAIN statement includes the following: Dependencies between all the jobs of this DML statement. Dependencies between all the tasks of each job. All operator dependency structures in a task. Example:
+Not e The execution result of an EXPLAIN statement includes the following: Dependencies between all the jobs of this DML statement. Dependencies between all the tasks of each job. All operator dependency structures in a task. Example:
 
 ```
 EXPLAIN SELECT abs(a.key), b.value FROM src a JOIN src1 b ON a.value = b.value;
@@ -3182,13 +3182,13 @@ The EXPLAIN statement output includes the following: The first part is the depen
 job0 is root job
 ```
 
-Because this query only needs one job (job0), only one line of information is needed. The second part is the dependency between tasks. Command out put :
+Not e Because this query only needs one job (job0), only one line of information is needed. The second part is the dependency between tasks. Command out put :
 
 ```
 In Job job0: root Tasks: M1_Stg1, M2_Stg1 J3_1_2_Stg1 depends on: M1_Stg1, M2_Stg1
 ```
 
-Job0 contains three tasks, among which M1_Stg1 and M2_Stg1 are executed first, and J3_1_2_Stg1 is executed after the first two tasks are finished. Naming rules for tasks: MaxCompute provides four task types: MapTask, ReduceTask, JoinTask, and LocalWork. The first letter of a task name indicates the type of the current task (for example, M2Stg1 is a MapTask). The number immediately following the first letter represents the current Task ID, which is unique among all tasks in the current query. The numbers separated by underscores (_) represent the immediate dependencies of the current task. For example, J3_1_2_Stg1 means that the current task (ID 3) is dependent on tasks with ID 1 and ID 2. The third part is the operator structure in the tasks, where each operator string describes the execution semantics of a task. Command out put :
+Not e Job0 contains three tasks, among which M1_Stg1 and M2_Stg1 are executed first, and J3_1_2_Stg1 is executed after the first two tasks are finished. Naming rules for tasks: MaxCompute provides four task types: MapTask, ReduceTask, JoinTask, and LocalWork. The first letter of a task name indicates the type of the current task (for example, M2Stg1 is a MapTask). The number immediately following the first letter represents the current Task ID, which is unique among all tasks in the current query. The numbers separated by underscores (_) represent the immediate dependencies of the current task. For example, J3_1_2_Stg1 means that the current task (ID 3) is dependent on tasks with ID 1 and ID 2. The third part is the operator structure in the tasks, where each operator string describes the execution semantics of a task. Command out put :
 
 ```
 In Task M1_Stg1: Data source: yudi_2.src #### "Data source" describes the input content of the current tas k TS: alias: a #### TableScanOperator RS: order: + #### ReduceSinkOperator keys: a.value values: a.key partitions: a.value In Task J3_1_2_Stg1: JOIN: a INNER JOIN b #### JoinOperator SEL: Abs(UDFToDouble(a._col0)), b._col5 #### SelectOperator FS: output: None #### FileSin kOperator In Task M2_Stg1: Data source: yudi_2.src1 TS: alias: b RS: order: + keys: b.value values: b.value partitions: b.value
@@ -3211,7 +3211,7 @@ The meanings of the operators are shown as below. Operators
 | Limit Operat or | Describes the logic of LIMIT statement blocks in a query statement. The limit value is displayed in the EXPLAIN results. |
 | MapjoinOperat or | Describes JOIN operations in large tables, similar to JoinOperator. |
 
-If a query is complex and has too many EXPLAIN results, the API restriction is triggered, and incomplete results are displayed. In this case, the query can be split, and the EXPLAIN operation can be performed on each part to show the structure of the job. The maximum number of partitions in a query is 10,000. Inputting too many partitions leads to over-length Data source content. To circumvent this limit, you can filter out most partitions by adding a query filter.
+Not e If a query is complex and has too many EXPLAIN results, the API restriction is triggered, and incomplete results are displayed. In this case, the query can be split, and the EXPLAIN operation can be performed on each part to show the structure of the job. The maximum number of partitions in a query is 10,000. Inputting too many partitions leads to over-length Data source content. To circumvent this limit, you can filter out most partitions by adding a query filter.
 
 #### 6.4.6 GROUPING SETS
 
@@ -3242,7 +3242,7 @@ as t(id, os, device, city);
 SELECT os,device, city ,COUNT(*) FROM requests GROUP BY os, device, city GROUPING SETS((os, device), (city), ());
 ```
 
-A similar output is displayed. Command output You can also execute multiple SELECT statements to obtain the same result.
+A similar output is displayed. Command output Not e You can also execute multiple SELECT statements to obtain the same result.
 
 ```
 SELECT NULL, NULL, NULL, COUNT(*) FROM requests SELECT os, device, NULL, COUNT(*) FROM requests GROUP BY os, device SELECT null, null, city, COUNT(*) FROM requests GROUP BY city;
@@ -3320,7 +3320,7 @@ END ELSE BEGIN
 END
 ```
 
-The BEGIN and END conditional clause can be omitted because it contains only one statement, similar to '{ }' in Java. The IF statement can contain two types of conditions: expressions and scalar subqueries. Both of them are of the BOOLEAN type. Expressions: A BOOLEAN-type expression in the IF-ELSE statement determines which branch is executed at the compiling stage. Example:
+Not e The BEGIN and END conditional clause can be omitted because it contains only one statement, similar to '{ }' in Java. The IF statement can contain two types of conditions: expressions and scalar subqueries. Both of them are of the BOOLEAN type. Expressions: A BOOLEAN-type expression in the IF-ELSE statement determines which branch is executed at the compiling stage. Example:
 
 ```
 @date := '20190101'; @row TABLE(id STRING); -- Declare the row variable. The type of the row is Table and sche ma is STRING. IF ( cast(@date as bigint) % 2 == 0 ) BEGIN @row := SELECT id from src1; END ELSE BEGIN @row := SELECT id from src2; END INSERT OVERWRITE TABLE dest SELECT * FROM @row;
@@ -3342,7 +3342,7 @@ SELECT TRANSFORM implements features that MaxCompute SQL does not provide. SELEC
 SELECT TRANSFORM(arg1, arg2 ...) (ROW FORMAT DELIMITED (FIELDS TERMINATED BY field_delimiter (ESCAPED BY character_escape)?) ? (LINES SEPARATED BY line_separator)? (NULL DEFINED AS null_value)?)? USING 'unix_command_line' (RESOURCES 'res_name' （',' 'res_name'）*)? ( AS col1, col2 ...)? (ROW FORMAT DELIMITED (FIELDS TERMINATED BY field_delimiter (ESCAPED BY character_escape)?) ? (LINES SEPARATED BY line_separator)? (NULL DEFINED AS null_value)?)?
 ```
 
-Description: SELECT TRANSFORM: The SELECT T RANSFORM keyword can be replaced with the MAP or REDUCE keyword while maintaining the same semantic meaning. However, we recommend that you useSELECT T RANSFORM because its syntax is simpler. (arg1, arg2 ...): arguments in the TRANSFORM clause. Their format is similar to those of items in the SELECT clause. In the default format, the results of expressions for each argument are combined by using \t after they are implicitly converted into strings. The arguments are then entered into the specified child process. The default format is configurable. For more information, see ROW FORMAT . USING: specifies the command used to start a child process. Note the following points about the USING clause. In most MaxCompute SQL statements, the USING clause can only specify resources. However, in the SELECT TRANSFORM statement, the USING clause can specify commands to ensure compatibility with Hive syntax. The format of the USING clause is similar to the syntax of a Shell script. However, a Shell script is not actually expected to start the child process. The child process is created based on the command input. Because of this, a number of Shell functions, such as input and output redirection, pipe, and loop, are unavailable. A Shell script can be used as to start a child process if necessary. RESOURCES: specifies the resources that the specified child process can access. You can use one of the following methods to specify resources: Use the RESOURCES clause. Example: using ‘sh foo.sh bar.txt’ Resources ‘foo.sh’,’bar.txt’ . Add the set odps.sql.session.resources=foo.sh,bar.txt; clause before SQL statements. Not ice This clause takes effect globally once it is specified. All SELECT TRANSFORM statements will be able to access the resources specified by this clause. ROW FORMAT: specifies the input or output format. Two ROW FORMAT clauses are used in the syntax: the first one specifies the input format, and the second one specifies the output format. \t is used to separate columns, \n is used to separate rows, and NULL is represented by \N . Not ice For field_delimiter, character_escape, and line_separator, only one character can be accepted. If you specify a string, the first character in the string takes priority over the others. There are a variety of Hive syntaxes to specify formats. MaxCompute supports syntaxes such as inputRecordReader, outputRecordReader, and Serdeinput. To use these formats, you must enable Hive compatibility by adding the set odps.sql.hive.compatible=true; clause before SQL statements. If you specify a syntax such as inputRecordReader or outputRecordReader supported by Hive, statements may be executed at lower speeds. AS: specifies output columns. You can specify data types in the AS clause, as in as(col1:bigint, col2:boolean). By default, strings are returned if you do not specify data types, as in as(col1, col2). The output is obtained by parsing the stdout of the child process. If the specified data types do not include STRING, the system implicitly calls the CAST function. Runtime exceptions may occur when the CAST function is called. You cannot specify data types for only some of the columns, as in as(col1, col2:bigint). If you skip the AS clause, the field preceding the first \t in the stdout is a key, and all the following parts are a value. This is equivalent to as(key, value).
+Description: SELECT TRANSFORM: The SELECT T RANSFORM keyword can be replaced with the MAP or REDUCE keyword while maintaining the same semantic meaning. However, we recommend that you useSELECT T RANSFORM because its syntax is simpler. (arg1, arg2 ...): arguments in the TRANSFORM clause. Their format is similar to those of items in the SELECT clause. In the default format, the results of expressions for each argument are combined by using \t after they are implicitly converted into strings. The arguments are then entered into the specified child process. Not e The default format is configurable. For more information, see ROW FORMAT . USING: specifies the command used to start a child process. Note the following points about the USING clause. In most MaxCompute SQL statements, the USING clause can only specify resources. However, in the SELECT TRANSFORM statement, the USING clause can specify commands to ensure compatibility with Hive syntax. The format of the USING clause is similar to the syntax of a Shell script. However, a Shell script is not actually expected to start the child process. The child process is created based on the command input. Because of this, a number of Shell functions, such as input and output redirection, pipe, and loop, are unavailable. A Shell script can be used as to start a child process if necessary. RESOURCES: specifies the resources that the specified child process can access. You can use one of the following methods to specify resources: Use the RESOURCES clause. Example: using ‘sh foo.sh bar.txt’ Resources ‘foo.sh’,’bar.txt’ . Add the set odps.sql.session.resources=foo.sh,bar.txt; clause before SQL statements. Not ice This clause takes effect globally once it is specified. All SELECT TRANSFORM statements will be able to access the resources specified by this clause. ROW FORMAT: specifies the input or output format. Two ROW FORMAT clauses are used in the syntax: the first one specifies the input format, and the second one specifies the output format. \t is used to separate columns, \n is used to separate rows, and NULL is represented by \N . Not ice For field_delimiter, character_escape, and line_separator, only one character can be accepted. If you specify a string, the first character in the string takes priority over the others. There are a variety of Hive syntaxes to specify formats. MaxCompute supports syntaxes such as inputRecordReader, outputRecordReader, and Serdeinput. To use these formats, you must enable Hive compatibility by adding the set odps.sql.hive.compatible=true; clause before SQL statements. If you specify a syntax such as inputRecordReader or outputRecordReader supported by Hive, statements may be executed at lower speeds. AS: specifies output columns. You can specify data types in the AS clause, as in as(col1:bigint, col2:boolean). By default, strings are returned if you do not specify data types, as in as(col1, col2). The output is obtained by parsing the stdout of the child process. If the specified data types do not include STRING, the system implicitly calls the CAST function. Runtime exceptions may occur when the CAST function is called. You cannot specify data types for only some of the columns, as in as(col1, col2:bigint). If you skip the AS clause, the field preceding the first \t in the stdout is a key, and all the following parts are a value. This is equivalent to as(key, value).
 
 #### 6.5.2 SELECT TRANSFORM examples
 
@@ -3356,7 +3356,7 @@ SELECT TRANSFORM(script) USING 'sh' AS (data) FROM (
         ) t
 ```
 
-; The Shell commands are used as the input of the TRANSFORM clause. In addition to language extensions, SELECT TRANSFORM also provides simple features of AWK, Python, Perl, and Shell to compile scripts in commands. You do not need to compile script files or upload resources separately. You can upload script files for complex cases, as in the following example Python script call.
+; The Shell commands are used as the input of the TRANSFORM clause. Not e In addition to language extensions, SELECT TRANSFORM also provides simple features of AWK, Python, Perl, and Shell to compile scripts in commands. You do not need to compile script files or upload resources separately. You can upload script files for complex cases, as in the following example Python script call.
 
 ##### 6.5.2.2 Call Python scripts
 
@@ -3648,7 +3648,7 @@ This topic describes the ABS function. Funct ion declarat ion:
 double abs(double number) bigint abs(bigint number) decimal abs(decimal number)
 ```
 
-Purpose: It is used to return absolute values. Descript ion: number: double, bigint or decimal type. When the input is of the bigint type, a value of the bigint type is returned; when the input is of the double type, a value of the double type is returned. If the input is of the string type, it is implicitly converted into a value of the double type before this computation. If the input is of another type, an error is returned. Ret urned value: double, bigint, or decimal type, depending on the type of the input. If the input is NULL, NULL is returned. When the input is of the bigint type and is out of the maximum range of the bigint type, the returned value is of the double type. In this case, the precision may be diminished. Example:
+Purpose: It is used to return absolute values. Descript ion: number: double, bigint or decimal type. When the input is of the bigint type, a value of the bigint type is returned; when the input is of the double type, a value of the double type is returned. If the input is of the string type, it is implicitly converted into a value of the double type before this computation. If the input is of another type, an error is returned. Ret urned value: double, bigint, or decimal type, depending on the type of the input. If the input is NULL, NULL is returned. Not e When the input is of the bigint type and is out of the maximum range of the bigint type, the returned value is of the double type. In this case, the precision may be diminished. Example:
 
 ```
 abs(null) = null abs(-1) = 1 abs(-1.2) = 1.2 abs("-2") = 2.0 abs(122320837456298376592387456923748) = 1.2232083745629837e32
@@ -3904,7 +3904,7 @@ Funct ion declarat ion:
 double trunc(double number[, bigint decimal_places]) decimal trunc(decimal number[, bigint decimal_places])
 ```
 
-Purpose: It is used to truncate 'number' to the specified decimal place. Descript ion: number: double or decimal type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before this computation. For all other types of inputs, an error is returned. decimal_places: a constant of the bigint type. It indicates the decimal place to which a number is to be truncated. Numbers of other types are implicitly converted into values of the bigint type. If it is omitted, the result is truncated to the ones place by default. Ret urned value: double or decimal type. If number or decimal_places is NULL, NULL is returned. The truncated part is supplemented with 0. decimal_places can be negative. Negative numbers are truncated from the decimal point to the left and the decimal part is left out. If the value of decimal_places is greater than the length of the integer part, 0 is returned. Example:
+Purpose: It is used to truncate 'number' to the specified decimal place. Descript ion: number: double or decimal type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before this computation. For all other types of inputs, an error is returned. decimal_places: a constant of the bigint type. It indicates the decimal place to which a number is to be truncated. Numbers of other types are implicitly converted into values of the bigint type. If it is omitted, the result is truncated to the ones place by default. Ret urned value: double or decimal type. If number or decimal_places is NULL, NULL is returned. Not e The truncated part is supplemented with 0. decimal_places can be negative. Negative numbers are truncated from the decimal point to the left and the decimal part is left out. If the value of decimal_places is greater than the length of the integer part, 0 is returned. Example:
 
 ```
 trunc(125.815) = 125.0 trunc(125.815, 0) =125.0 trunc(125.815, 1) = 125.80000000000001 trunc(125.815, 2) = 125.81 trunc(125.815, 3) = 125.815 trunc(-125.815, 2) = -125.81 trunc(125.815, -1) = 120.0 trunc(125.815, -2) = 100.0 trunc(125.815, -3) = 0.0 trunc(123.345, 4) = 123.345 trunc(123.345, -4) = 0.0
@@ -3918,7 +3918,7 @@ MaxCompute 2.0 provides additional mathematical functions. You must add the foll
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. The mathematical functions described in subsequent topics are new in MaxCompute 2.0.
+Not e You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. The mathematical functions described in subsequent topics are new in MaxCompute 2.0.
 
 ##### 6.7.1.24 LOG2
 
@@ -4332,7 +4332,7 @@ Funct ion declarat ion:
 string split_part(string str, string delimiter, bigint start[, bigint end])
 ```
 
-Purpose: It is used to split a string with the specified delimiter, and return the string between the specified start segment and end segment (inclusive). Descript ion: str: string type. It indicates a string to be split. If the input is of the bigint, decimal, double, or datetime type, it is implicitly converted into a value of the string type before this computation. If the input is of any other type, an error is returned. delimiter: a constant of the string type. It indicates the delimiter used to split a string. It can be a character or a string. If it is neither a character nor a string, an error is returned. start: a constant of the bigint type. It must be greater than 0. If it is not a constant or is of a different type, an error is returned. It indicates the start number (starting from 1) of the segment to be returned. If end is not specified, the segment specified by start is returned. end: a constant of the bigint type. It must be greater than or equal to the value of start; otherwise, an error is returned. It indicates the end number of the segment to be returned. If it is not a constant or is of a different type, an error is returned. If end is not specified, the last segment is returned. Ret urned value: string type. If any input is NULL, NULL is returned. If delimiter is NULL, the original string is returned. If delimiter does not exist in str, and start is set to 1, the entire str is returned. If the input is NULL, NULL is returned. If start is set to a value greater than the number of segments (for example, the string has 6 segments but the start value is greater than 6), NULL is returned. If end is set to a value greater than the number of segments, the string between start and the last segment is returned. Example:
+Purpose: It is used to split a string with the specified delimiter, and return the string between the specified start segment and end segment (inclusive). Descript ion: str: string type. It indicates a string to be split. If the input is of the bigint, decimal, double, or datetime type, it is implicitly converted into a value of the string type before this computation. If the input is of any other type, an error is returned. delimiter: a constant of the string type. It indicates the delimiter used to split a string. It can be a character or a string. If it is neither a character nor a string, an error is returned. start: a constant of the bigint type. It must be greater than 0. If it is not a constant or is of a different type, an error is returned. It indicates the start number (starting from 1) of the segment to be returned. If end is not specified, the segment specified by start is returned. end: a constant of the bigint type. It must be greater than or equal to the value of start; otherwise, an error is returned. It indicates the end number of the segment to be returned. If it is not a constant or is of a different type, an error is returned. If end is not specified, the last segment is returned. Ret urned value: string type. If any input is NULL, NULL is returned. If delimiter is NULL, the original string is returned. Not e If delimiter does not exist in str, and start is set to 1, the entire str is returned. If the input is NULL, NULL is returned. If start is set to a value greater than the number of segments (for example, the string has 6 segments but the start value is greater than 6), NULL is returned. If end is set to a value greater than the number of segments, the string between start and the last segment is returned. Example:
 
 ```
 split_part('a,b,c,d', ',', 1) = 'a' split_part('a,b,c,d', ',', 1, 2) = 'a,b' split_part('a,b,c,d', ',', 10) = ''
@@ -4346,7 +4346,7 @@ Funct ion declarat ion:
 string regexp_replace(string source, string pattern, string replace_string[, bigint occurre nce])
 ```
 
-Purpose: It is used to search a source string for substrings that match a given pattern, replace them with the specified replace_string, and return the result. Descript ion: source: string type. It indicates a string to be replaced. pattern: a constant of the string type. It indicates a pattern to be matched. If pattern is null, an error is returned. replace_string: string type. It is used to replace the matched pattern. occurrence: a constant of the bigint type. It must be greater than or equal to 0. This parameter indicates the number of times at which the substring matches the pattern for replacement with replace_string. If the input value is 0, all matched substrings are replaced. If it is of another type or less than 0, an error is returned. It can be omitted. The default value is 0. Ret urned value: string type. When the referenced group does not exist, the replace operation is not performed. When the input parameters source, pattern, and occurrence are NULL, NULL is returned. If replace_string is NULL and the pattern is matched, NULL is returned. If replace_string is NULL but the pattern is not matched, the original string is returned. When the referenced group does not exist, the action is not defined. Example:
+Purpose: It is used to search a source string for substrings that match a given pattern, replace them with the specified replace_string, and return the result. Descript ion: source: string type. It indicates a string to be replaced. pattern: a constant of the string type. It indicates a pattern to be matched. If pattern is null, an error is returned. replace_string: string type. It is used to replace the matched pattern. occurrence: a constant of the bigint type. It must be greater than or equal to 0. This parameter indicates the number of times at which the substring matches the pattern for replacement with replace_string. If the input value is 0, all matched substrings are replaced. If it is of another type or less than 0, an error is returned. It can be omitted. The default value is 0. Ret urned value: string type. When the referenced group does not exist, the replace operation is not performed. When the input parameters source, pattern, and occurrence are NULL, NULL is returned. If replace_string is NULL and the pattern is matched, NULL is returned. If replace_string is NULL but the pattern is not matched, the original string is returned. Not e When the referenced group does not exist, the action is not defined. Example:
 
 ```
 regexp_replace("123.456.7890", "([[:digit:]]{3})\\.([[:digit:]]{3})\\.([[:digit:]]{4})", "( \\1)\\2-\\3", 0) = "(123)456-7890" regexp_replace("abcd", "(.)", "\\1 ", 0) = "a b c d " regexp_replace("abcd", "(.)", "\\1 ", 1) = "a bcd" regexp_replace("abcd", "(.)", "\\2", 1) = "abcd" -- Only a group is defined in pattern and the referenced second group is not existent. -- Please avoid this. The result to reference nonexistent group is not defined. regexp_replace("abcd", "(. *)(.)$", "\\2", 0) = "d" regexp_replace("abcd", "a", "\\1", 0) = "bcd" -- No group definition is in pattern, so '\1' references a nonexistent group. -- Try to avoid this. The result of referencing a nonexistent group is not defined.
@@ -4360,7 +4360,7 @@ Funct ion declarat ion:
 string substr(string str, bigint start_position[, bigint length])
 ```
 
-Purpose: It is used to return a substring of 'length' from 'str' starting from 'start_position'. Descript ion: str: string type. If the input is of the bigint, decimal, double, or datetime type, it is implicitly converted into a value of the string type before this computation. For all other types of inputs, an error is returned. start_position: bigint type. The start position is 1. If start_position is a negative value, the counting starts from the end to the start of the string and the last character is –1. If the input is of another type, an error is returned. length: bigint type. It indicates the length of the substring, which is greater than 0. If it is of another type or less than or equal to 0, an error is returned. Ret urned value: string type. If any input is NULL, NULL is returned. If the length is omitted, the substring from start to end is returned. Example:
+Purpose: It is used to return a substring of 'length' from 'str' starting from 'start_position'. Descript ion: str: string type. If the input is of the bigint, decimal, double, or datetime type, it is implicitly converted into a value of the string type before this computation. For all other types of inputs, an error is returned. start_position: bigint type. The start position is 1. If start_position is a negative value, the counting starts from the end to the start of the string and the last character is –1. If the input is of another type, an error is returned. length: bigint type. It indicates the length of the substring, which is greater than 0. If it is of another type or less than or equal to 0, an error is returned. Ret urned value: string type. If any input is NULL, NULL is returned. Not e If the length is omitted, the substring from start to end is returned. Example:
 
 ```
 substr("abc", 2) = "bc" substr("abc", 2, 1) = "b" substr("abc",-2,2) = "bc" substr("abc",-3) = "abc"
@@ -4550,7 +4550,7 @@ MaxCompute 2.0 provides additional string processing functions. You must add the
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. The string processing functions described in subsequent topics are new in MaxCompute 2.0.
+Not e You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. The string processing functions described in subsequent topics are new in MaxCompute 2.0.
 
 ##### 6.7.2.31 CONCAT_WS
 
@@ -4658,7 +4658,7 @@ Funct ion declarat ion:
 string json_tuple(string json,string key1,string key2,...)
 ```
 
-Descript ion: This function extracts specific strings from a standard JSON string based on a set of input keys, such as key1 and key2. Paramet ers: json: a value of the STRING type, which indicates a standard JSON string. key: a value of the STRING type, which is used to describe the JSON path. You can enter multiple keys at a time. A key cannot start with a dollar sign ($). Ret urn value: A value of the STRING type is returned. If the json parameter is empty or invalid, NULL is returned. If the key parameter is empty or invalid, NULL is returned. If the key parameter does not exist in the JSON string, it is considered invalid. If the json parameter is valid and the key parameter exists, the required string is returned. This function parses a JSON string the same way as the GET_JSON_OBJECT function for which set odps.sql.udf.getjsonobj.new=true; is added. To parse a JSON string multiple times, you must call the GET_JSON_OBJECT function multiple times. However, the JSON_TUPLE function allows you to enter multiple keys at a time and parse the JSON string only once. This improves parsing efficiency. JSON_TUPLE is a user-defined table-valued function (UDTF). To select other columns, use JSON_TUPLE with LATERAL VIEW. Example: The school table contains the following data:
+Descript ion: This function extracts specific strings from a standard JSON string based on a set of input keys, such as key1 and key2. Paramet ers: json: a value of the STRING type, which indicates a standard JSON string. key: a value of the STRING type, which is used to describe the JSON path. You can enter multiple keys at a time. A key cannot start with a dollar sign ($). Ret urn value: A value of the STRING type is returned. Not e If the json parameter is empty or invalid, NULL is returned. If the key parameter is empty or invalid, NULL is returned. If the key parameter does not exist in the JSON string, it is considered invalid. If the json parameter is valid and the key parameter exists, the required string is returned. This function parses a JSON string the same way as the GET_JSON_OBJECT function for which set odps.sql.udf.getjsonobj.new=true; is added. To parse a JSON string multiple times, you must call the GET_JSON_OBJECT function multiple times. However, the JSON_TUPLE function allows you to enter multiple keys at a time and parse the JSON string only once. This improves parsing efficiency. JSON_TUPLE is a user-defined table-valued function (UDTF). To select other columns, use JSON_TUPLE with LATERAL VIEW. Example: The school table contains the following data:
 
 ```
 Table: school +------------+------------+
@@ -4764,7 +4764,7 @@ Funct ion declarat ion:
 bigint datediff(datetime date1, datetime date2, string datepart)
 ```
 
-Purpose: It is used to calculate the difference between date1 and date2 based on the specified datepart. Descript ion: date1 and date2: minuend and subtrahend of the datetime type respectively. If the input is a string, it is implicitly converted into a value of the datetime type before this computation. For all other input types, an error is returned. datapart: A constant of the string type. It supports the extended date format. If datepart is not in the specified format or is of another type, an error is returned. Ret urned value: bigint type. If any input is NULL, NULL is returned. If date1 is less than date2, the returned value may be negative. The lower unit part is truncated based on 'datepart' in the computation process and then the result is calcualted. Example:
+Purpose: It is used to calculate the difference between date1 and date2 based on the specified datepart. Descript ion: date1 and date2: minuend and subtrahend of the datetime type respectively. If the input is a string, it is implicitly converted into a value of the datetime type before this computation. For all other input types, an error is returned. datapart: A constant of the string type. It supports the extended date format. If datepart is not in the specified format or is of another type, an error is returned. Ret urned value: bigint type. If any input is NULL, NULL is returned. If date1 is less than date2, the returned value may be negative. Not e The lower unit part is truncated based on 'datepart' in the computation process and then the result is calcualted. Example:
 
 ```
 If start = 2017-12-31 23:59:59 and end = 2018-01-01 00:00:00: datediff(end, start, 'dd') = 1 datediff(end, start, 'mm') = 1 datediff(end, start, 'yyyy') = 1 datediff(end, start, 'hh') = 1 datediff(end, start, 'mi') = 1 datediff(end, start, 'ss') = 1 datediff('2017-05-31 13:00:00', '2017-05-31 12:30:00', 'ss') = 1800 datediff('2017-05-31 13:00:00', '2017-05-31 12:30:00', 'mi') = 30
@@ -4806,7 +4806,7 @@ Funct ion declarat ion:
 datetime getdate()
 ```
 
-Purpose: It is used to obtain the current system time. Use UTC+8 as the standard time of MaxCompute. Ret urned value: the current date and time of the datetime type. In a MaxCompute SQL task (executed in a distributed manner), 'getdate' always returns a fixed value. The returned result is any time in MaxCompute. The time returned is precise to the second. In later versions, the time will be precise to the milisecond.
+Purpose: It is used to obtain the current system time. Use UTC+8 as the standard time of MaxCompute. Ret urned value: the current date and time of the datetime type. Not e In a MaxCompute SQL task (executed in a distributed manner), 'getdate' always returns a fixed value. The returned result is any time in MaxCompute. The time returned is precise to the second. In later versions, the time will be precise to the milisecond.
 
 ##### 6.7.3.6 ISDATE
 
@@ -4856,7 +4856,7 @@ Purpose: It is used to convert a value of the date type into a string based on t
 to_char('2017-12-03 00:00:00', 'Alibabayyyy-mm*dd') = 'Alibaba2017-12*03' to_char('2017-07-18 00:00:00', 'yyyymmdd') = '20170718' to_char('Alibaba 2017-12*3', 'Alibaba yyyy-mm*dd') -- Null is returned. to_char('2017-24-01', 'yyyy') -- Null is returned. to_char('2017718', 'yyyymmdd') -- Null is returned.
 ```
 
-For more information about conversion from other types into the string type, see String functions — TO_CHAR.
+Not e For more information about conversion from other types into the string type, see String functions — TO_CHAR.
 
 ##### 6.7.3.10 UNIX_TIMESTAMP
 
@@ -4900,7 +4900,7 @@ Funct ion declarat ion:
 bigint weekofyear(datetime date)
 ```
 
-Purpose: It is used to return the calendar week of the year that the specified date falls in. The system uses Monday as the first day of the week. If a week extends into the next year, the week belongs to the year containing four days or more. If more days fall in the first year, the week is considered as the last week of the first year. If more days fall in the second year, the week is considered as the first week of the second year. Descript ion: date: the date of the datetime type. If the input is of the string type, it is implicitly converted to a value of the datetime type before this computation. For all other input types, an error is returned. Ret urned value: bigint type. If the input is NULL, NULL is returned. Example:
+Purpose: It is used to return the calendar week of the year that the specified date falls in. The system uses Monday as the first day of the week. Not e If a week extends into the next year, the week belongs to the year containing four days or more. If more days fall in the first year, the week is considered as the last week of the first year. If more days fall in the second year, the week is considered as the first week of the second year. Descript ion: date: the date of the datetime type. If the input is of the string type, it is implicitly converted to a value of the datetime type before this computation. For all other input types, an error is returned. Ret urned value: bigint type. If the input is NULL, NULL is returned. Example:
 
 ```
 select weekofyear(to_date("20171229", "yyyymmdd")) from dual; Returned value: +------------+
@@ -4918,7 +4918,7 @@ MaxCompute 2.0 provides additional date functions. You must add the following SE
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. Example:
+Not e You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. Example:
 
 ```
 set odps.sql.type.system.odps2=true; select year('2017-01-01 12:30:00') = 2017 from dual;
@@ -5167,7 +5167,7 @@ In MaxCompute SQL statements, you can use the window function to analyze and pro
 window_func() over (partition by col1, [col2...] [order by col1 [asc|desc][, col2[asc|desc]...]] windowing_clause)
 ```
 
-Descript ion: PARTITION BY specifies partition columns. The rows on which the partition column values are the same are considered to be in the same window. A window can contain up to 100 million rows of data (we recommend that the number of rows does not exceed 5 million). Otherwise, an error is returned. Use ORDER BY to specify the rule for sorting data in a window. You can use ROWS in windowing_clause to specify the partitioning method. There are two methods: rows between x preceding|following and y preceding|following indicates a window range from the xth row preceding or following the current row to the yth row preceding or following the current row. rows x preceding|following indicates a window range from the xth row preceding or following the current row to the current row. x and y must be integer constants greater than or equal to 0. Their values range from 0 to 10,000. 0 indicates the current row. You must specify ORDER BY before using ROWS to specify a window range. Not all window functions open windows using the method specified by ROWS. The method is only supported by the following functions: AVG, COUNT, MAX, MIN, STDDEV, and SUM.
+Descript ion: PARTITION BY specifies partition columns. The rows on which the partition column values are the same are considered to be in the same window. A window can contain up to 100 million rows of data (we recommend that the number of rows does not exceed 5 million). Otherwise, an error is returned. Use ORDER BY to specify the rule for sorting data in a window. You can use ROWS in windowing_clause to specify the partitioning method. There are two methods: rows between x preceding|following and y preceding|following indicates a window range from the xth row preceding or following the current row to the yth row preceding or following the current row. rows x preceding|following indicates a window range from the xth row preceding or following the current row to the current row. Not e x and y must be integer constants greater than or equal to 0. Their values range from 0 to 10,000. 0 indicates the current row. You must specify ORDER BY before using ROWS to specify a window range. Not all window functions open windows using the method specified by ROWS. The method is only supported by the following functions: AVG, COUNT, MAX, MIN, STDDEV, and SUM.
 
 ##### 6.7.4.2 COUNT
 
@@ -5177,7 +5177,7 @@ Command synt ax:
 bigint count([distinct] expr) over(partition by col1[, col2…] [order by col1 [asc|desc][, col2[asc|desc]…]] [windowing_clause])
 ```
 
-Purpose: It is used to return the number of values on the expr column. Descript ion: expr: any type. When it is NULL, this row is not involved in computation. If the distinct keyword is specified, this parameter indicates that only distinct values are counted. partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc],col2[asc|desc]: The count value of expr in the current window is returned if ORDER BY is not set. The returned results are sorted in the specified order if ORDER BY is specified, and the value is the count value from the start row to the current row in the current window. Ret urned value: bigint. If the distinct keyword is specified, ORDER BY cannot be used. Example: The user_id column of the bigint type exists in the test_src table.
+Purpose: It is used to return the number of values on the expr column. Descript ion: expr: any type. When it is NULL, this row is not involved in computation. If the distinct keyword is specified, this parameter indicates that only distinct values are counted. partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc],col2[asc|desc]: The count value of expr in the current window is returned if ORDER BY is not set. The returned results are sorted in the specified order if ORDER BY is specified, and the value is the count value from the start row to the current row in the current window. Ret urned value: bigint. Not e If the distinct keyword is specified, ORDER BY cannot be used. Example: The user_id column of the bigint type exists in the test_src table.
 
 ```
 select user_id,count(user_id) over (partition by user_id) as count from test_src; +---------+------------+
@@ -5207,7 +5207,7 @@ Funct ion declarat ion:
 avg([distinct] expr) over(partition by col1[, col2…] [order by col1 [asc|desc] [, col2[asc|desc]…]] [windowing_clause])
 ```
 
-Purpose: It is used to calculate the average value. Descript ion: distinct: If the distinct keyword is specified, this parameter indicates that the average value of distinct values is calculated. expr: double type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before computation. If the input is of another type, an error is returned. If the input is NULL, this row is not used in computation. The input cannot be of the boolean type. partition by col1[, col2]…: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The count value of expr in the current window is returned if ORDER BY is not set. The returned results are sorted in the specified order if ORDER BY is specified, and the value is the count value from the start row to the current row in the current window. Ret urned value: double type. If the distinct keyword is specified, ORDER BY cannot be set.
+Purpose: It is used to calculate the average value. Descript ion: distinct: If the distinct keyword is specified, this parameter indicates that the average value of distinct values is calculated. expr: double type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before computation. If the input is of another type, an error is returned. If the input is NULL, this row is not used in computation. The input cannot be of the boolean type. partition by col1[, col2]…: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The count value of expr in the current window is returned if ORDER BY is not set. The returned results are sorted in the specified order if ORDER BY is specified, and the value is the count value from the start row to the current row in the current window. Ret urned value: double type. Not e If the distinct keyword is specified, ORDER BY cannot be set.
 
 ##### 6.7.4.4 MAX
 
@@ -5217,7 +5217,7 @@ Funct ion declarat ion:
 max([distinct] expr) over(partition by col1[, col2…] [order by col1 [asc|desc][, col2[asc|desc]…]] [windowing_clause])
 ```
 
-Purpose: It is used to return the maximum value. Descript ion: expr: any types except the boolean type. If the value is NULL, the corresponding row is not involved in the operation. If the distinct keyword is specified, this parameter indicates that the maximum value of the distinct values is taken (whether this parameter is set or not does not affect the result). partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The maximum value in the current window is returned if ORDER BY is not set. If ORDER BY is set, the returned results are sorted in the specified order, and the values are the maximum values from the start row to the current row in the current window. Ret urned value: The type is the same as that of expr. If the distinct keyword is specified, ORDER BY cannot be set.
+Purpose: It is used to return the maximum value. Descript ion: expr: any types except the boolean type. If the value is NULL, the corresponding row is not involved in the operation. If the distinct keyword is specified, this parameter indicates that the maximum value of the distinct values is taken (whether this parameter is set or not does not affect the result). partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The maximum value in the current window is returned if ORDER BY is not set. If ORDER BY is set, the returned results are sorted in the specified order, and the values are the maximum values from the start row to the current row in the current window. Ret urned value: The type is the same as that of expr. Not e If the distinct keyword is specified, ORDER BY cannot be set.
 
 ##### 6.7.4.5 MIN
 
@@ -5247,7 +5247,7 @@ Funct ion declarat ion:
 double stddev([distinct] expr) over(partition by col1[, col2…] [order by col1 [asc|desc][, col2[asc|desc]…]] [windowing_clause]) decimal stddev([distinct] expr) over(partition by col1[,col2…] [order by col1 [asc|desc][, col2[asc|desc]…]] [windowi ng_clause])
 ```
 
-Purpose: It is used to calculate the population standard deviation. Descript ion: expr: double or decimal type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before this computation. For all other types of inputs, an error is returned. If the input value is NULL, then NULL is returned. If the distinct keyword is specified, this parameter indicates that the population standard deviation of distinct values is calculated. partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The population standard deviation of the current window is returned if ORDER BY is not set. If ORDER BY is set, the returned results are sorted in the specified order, and the values are the population standard deviation of the start row to the current row in the current window. Ret urned value: When the input is of the decimal type, a value of the decimal type is returned. Otherwise, a value of the double type is returned. If the distinct keyword is specified, ORDER BY cannot be set.
+Purpose: It is used to calculate the population standard deviation. Descript ion: expr: double or decimal type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before this computation. For all other types of inputs, an error is returned. If the input value is NULL, then NULL is returned. If the distinct keyword is specified, this parameter indicates that the population standard deviation of distinct values is calculated. partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The population standard deviation of the current window is returned if ORDER BY is not set. If ORDER BY is set, the returned results are sorted in the specified order, and the values are the population standard deviation of the start row to the current row in the current window. Ret urned value: When the input is of the decimal type, a value of the decimal type is returned. Otherwise, a value of the double type is returned. Not e If the distinct keyword is specified, ORDER BY cannot be set.
 
 ##### 6.7.4.8 STDDEV_SAMP
 
@@ -5257,7 +5257,7 @@ Funct ion declarat ion:
 double stddev_samp([distinct] expr) over(partition by col1[, col2…] [order by col1 [asc|des c][, col2[asc|desc]…]] [windowing_clause]) decimal stddev_samp([distinct] expr) over(partition by col1[,col2…] [order by col1 [asc|des c][, col2[asc|desc]…]] [windowing_clause])
 ```
 
-Purpose: It is used to calculate the sample standard deviation. Descript ion: expr: double or decimal type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before this computation. For all other types of inputs, an error is returned. If the input is NULL, NULL is returned. If the distinct keyword is specified, this parameter indicates that the sample standard deviation of distinct values is calculated. partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The sample standard deviation of the current window is returned if ORDER BY is not set. If ORDER BY is set, the returned results are sorted in the specified order, and the values are the sample standard deviation of the start row to the current row in the current window. Ret urned value: When the input is of the decimal type, a value of the decimal type is returned. Otherwise, a value of the double type is returned. If the distinct keyword is specified, ORDER BY cannot be set.
+Purpose: It is used to calculate the sample standard deviation. Descript ion: expr: double or decimal type. If the input is of the string or bigint type, it is implicitly converted into a value of the double type before this computation. For all other types of inputs, an error is returned. If the input is NULL, NULL is returned. If the distinct keyword is specified, this parameter indicates that the sample standard deviation of distinct values is calculated. partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: The sample standard deviation of the current window is returned if ORDER BY is not set. If ORDER BY is set, the returned results are sorted in the specified order, and the values are the sample standard deviation of the start row to the current row in the current window. Ret urned value: When the input is of the decimal type, a value of the decimal type is returned. Otherwise, a value of the double type is returned. Not e If the distinct keyword is specified, ORDER BY cannot be set.
 
 ##### 6.7.4.9 SUM
 
@@ -5395,7 +5395,7 @@ Funct ion declarat ion:
 percent_rank() over(partition by col1[, col2…] order by col1 [asc|desc][, col2[asc|desc]…])
 ```
 
-Purpose: It is used to return the relative ranking of a row in a group of data. Descript ion: partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: specifies the value for the ranking. Ret urned value: double type. Value range: 0 to 1. The relative ranking is calculated using the following formula: (rank-1)/(number of rows -1). The number of rows in a window cannot exceed 10,000,000.
+Purpose: It is used to return the relative ranking of a row in a group of data. Descript ion: partition by col1[, col2…]: specifies the partitions used in the computation. order by col1 [asc|desc], col2[asc|desc]: specifies the value for the ranking. Ret urned value: double type. Value range: 0 to 1. The relative ranking is calculated using the following formula: (rank-1)/(number of rows -1). Not e The number of rows in a window cannot exceed 10,000,000.
 
 ##### 6.7.4.15 ROW_NUMBER
 
@@ -5543,7 +5543,7 @@ Funct ion declarat ion:
 nth_value(expr, bigint n [, boolean skipNulls]) over(partition by col1[, col2…] order by co l1 [asc|desc][, col2[asc|desc]…]])
 ```
 
-Purpose: It is used to return the nth value in partitions used in the computation. Descript ion: expr: required. Any type. n: returns the nth value. It starts from 1 and is of the BIGINT type. skipNulls: specifies whether to ignore the rows whose values are NULL. This parameter is of the BOOLEAN type. The default value is false. Ret urned value: the nth value in partitions used in the computation. If skipNulls is set to true, the nth non-NULL value is returned. If the nth non-NULL value does not exist, NULL is returned. Example:
+Purpose: It is used to return the nth value in partitions used in the computation. Descript ion: expr: required. Any type. n: returns the nth value. It starts from 1 and is of the BIGINT type. skipNulls: specifies whether to ignore the rows whose values are NULL. This parameter is of the BOOLEAN type. The default value is false. Ret urned value: the nth value in partitions used in the computation. Not e If skipNulls is set to true, the nth non-NULL value is returned. If the nth non-NULL value does not exist, NULL is returned. Example:
 
 ```
 select a, nth_value(a + 1, 1) over (partition by a order by a) from values (3), (1), (2) as t(a); -- If n is 1, NTH_VALUE is equivalent to FIRST_VALUE. -- Returned results: -- 1 2 -- 2 3 -- 3 4
@@ -5557,7 +5557,7 @@ Funct ion declarat ion:
 cume_dist() over(partition by col1[, col2…] order by col1 [asc|desc][, col2[asc|desc]…]])
 ```
 
-Purpose: It is used to return the cumulative distribution. The cumulative distribution is the ratio between the number of rows whose values are less than or equal to the current value of the group and the total number of rows in the group. Descript ion: None. The order by column specifies values to be compared. Ret urned value: the ratio of the number of rows whose values are equal to or less than the current value in the group to the total number of rows in the group. Example: Table emp has the following data:
+Purpose: It is used to return the cumulative distribution. The cumulative distribution is the ratio between the number of rows whose values are less than or equal to the current value of the group and the total number of rows in the group. Descript ion: None. Not e The order by column specifies values to be compared. Ret urned value: the ratio of the number of rows whose values are equal to or less than the current value in the group to the total number of rows in the group. Example: Table emp has the following data:
 
 ```
 | empno | ename | job | mgr | hiredate| sal| comm | deptno |
@@ -5881,7 +5881,7 @@ Funct ion declarat ion:
 string wm_concat(string separator, string str)
 ```
 
-Purpose: It is used to use the specified separator as the delimiter to link values in a string. Descript ion: separator: the delimiter, which is a constant of the string type. If it is of another type or is not a constant, an error is returned. str: string type. If the input is of the bigint, double, or datetime type, it is implicitly converted to a value of the string type before this computation. For all other input types, an error is returned. Ret urned value: string type. If test_src in the select wm_concat(',', name) from > test_src; statement is an empty set, NULL is returned.
+Purpose: It is used to use the specified separator as the delimiter to link values in a string. Descript ion: separator: the delimiter, which is a constant of the string type. If it is of another type or is not a constant, an error is returned. str: string type. If the input is of the bigint, double, or datetime type, it is implicitly converted to a value of the string type before this computation. For all other input types, an error is returned. Ret urned value: string type. Not e If test_src in the select wm_concat(',', name) from > test_src; statement is an empty set, NULL is returned.
 
 ##### 6.7.5.11 PERCENTILE
 
@@ -5926,7 +5926,7 @@ MaxCompute 2.0 provides additional aggregate functions. You must add the followi
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. The aggregate functions described in subsequent topics are new in MaxCompute 2.0.
+Not e You must submit and execute the SET statement and the SQL statements of the new functions simultaneously. The aggregate functions described in subsequent topics are new in MaxCompute 2.0.
 
 ##### 6.7.5.13 COLLECT_LIST
 
@@ -6110,7 +6110,7 @@ Command synt ax:
 cast(expr as <type>)
 ```
 
-Purpose: It is used to convert an expression of one data type to another. For example, cast ('1' as bigint) converts 1 of the string type to the integer type. If the conversion fails, an error is returned. cast(double as bigint) converts a value of the double type into a value of the bigint type. cast(string as bigint) converts a value of the string type into a value of the bigint type. If the string is composed of numerals expressed in integer form, it is directly converted into a value of the bigint type. If the string is comprised of numerals expressed in the 'float' or 'exponent' form, it is converted to 'double' type first and then to 'bigint' type. For cast(string as datetime) or cast(datetime as > string), the datatime format is yyyy-mmdd hh:mi:ss by default.
+Purpose: It is used to convert an expression of one data type to another. For example, cast ('1' as bigint) converts 1 of the string type to the integer type. If the conversion fails, an error is returned. Not e cast(double as bigint) converts a value of the double type into a value of the bigint type. cast(string as bigint) converts a value of the string type into a value of the bigint type. If the string is composed of numerals expressed in integer form, it is directly converted into a value of the bigint type. If the string is comprised of numerals expressed in the 'float' or 'exponent' form, it is converted to 'double' type first and then to 'bigint' type. For cast(string as datetime) or cast(datetime as > string), the datatime format is yyyy-mmdd hh:mi:ss by default.
 
 ##### 6.7.6.4 COALESCE
 
@@ -6120,7 +6120,7 @@ Command synt ax:
 coalesce(expr1, expr2, ...)
 ```
 
-Purpose: It is used to return the first non-NULL value in the list. If all values in the list are NULL, NULL is returned. Descript ion: expr: a value to be tested. All these values must be of the same type or be NULL. Otherwise, an error is returned. Ret urned value: The type is the same as that of the input. At least one parameter is provided. Otherwise, an error is returned.
+Purpose: It is used to return the first non-NULL value in the list. If all values in the list are NULL, NULL is returned. Descript ion: expr: a value to be tested. All these values must be of the same type or be NULL. Otherwise, an error is returned. Ret urned value: The type is the same as that of the input. Not e At least one parameter is provided. Otherwise, an error is returned.
 
 ##### 6.7.6.5 DECODE
 
@@ -6130,7 +6130,7 @@ Funct ion declarat ion:
 decode(expression, search, result[, search, result]...[, default])
 ```
 
-Purpose: It is used to implement the if-then-else conditional branching feature. Descript ion: expression: expression to be compared. search: search string to be compared with the expression. result: the value returned when the value of search matches the expression. default: optional. If no search string matches the expression, the default value is returned. If it is not specified, NULL is returned. Ret urned value: The matched search is returned. If there are no matches, the default value is returned. If default is not specified, NULL is returned. At least three parameters are specified. All results must share the same type or be NULL. Inconsistent data types will cause an error. All values of search and expression must be of the same type. Otherwise, an error is returned. If the search option in decode has repeated records and matches the expression, the first search value is returned. Example:
+Purpose: It is used to implement the if-then-else conditional branching feature. Descript ion: expression: expression to be compared. search: search string to be compared with the expression. result: the value returned when the value of search matches the expression. default: optional. If no search string matches the expression, the default value is returned. If it is not specified, NULL is returned. Ret urned value: The matched search is returned. If there are no matches, the default value is returned. If default is not specified, NULL is returned. Not e At least three parameters are specified. All results must share the same type or be NULL. Inconsistent data types will cause an error. All values of search and expression must be of the same type. Otherwise, an error is returned. If the search option in decode has repeated records and matches the expression, the first search value is returned. Example:
 
 ```
 select decode(customer_id, 1, 'Taobao', 2, 'Alipay', 3, 'Aliyun', NULL, 'N/A', 'Others') as result from sale_detail;
@@ -6345,7 +6345,7 @@ Funct ion declarat ion:
 boolean sample(x, y, column_name)
 ```
 
-Purpose: It is used to sample all values read from the specified column based on the given settings, and filters out the rows that do not meet the sampling condition. Descript ion: x, y: bigint type. It indicates that data is hashed to x portions and the yth portion is taken. y can be omitted. If y is omitted, the first portion is taken and column_name must also be omitted. x and y are constants of the integer type and are greater than 0. If they are of another type or if they are less than or equal to 0, an error is returned. If y is greater than x, an error is returned. If either x or y is NULL, NULL is returned. column_name: target column of sampling. column_name can be omitted. If column_name is omitted, random sampling is performed based on values of x and y. It can be of any type, and the column value can be NULL. No implicit conversion is performed. If column_name is the constant NULL, an error is reported. Ret urned value: boolean type. To avoid data skew resulting from the NULL value, a uniform hash of x is made for a value of NULL in column_name. If column_name is not added, the output is not necessarily uniform since the data size is smaller. So column_name is suggested to be added to get better output. Example: Table tbla contains a column named cola.
+Purpose: It is used to sample all values read from the specified column based on the given settings, and filters out the rows that do not meet the sampling condition. Descript ion: x, y: bigint type. It indicates that data is hashed to x portions and the yth portion is taken. y can be omitted. If y is omitted, the first portion is taken and column_name must also be omitted. x and y are constants of the integer type and are greater than 0. If they are of another type or if they are less than or equal to 0, an error is returned. If y is greater than x, an error is returned. If either x or y is NULL, NULL is returned. column_name: target column of sampling. column_name can be omitted. If column_name is omitted, random sampling is performed based on values of x and y. It can be of any type, and the column value can be NULL. No implicit conversion is performed. If column_name is the constant NULL, an error is reported. Ret urned value: boolean type. Not e To avoid data skew resulting from the NULL value, a uniform hash of x is made for a value of NULL in column_name. If column_name is not added, the output is not necessarily uniform since the data size is smaller. So column_name is suggested to be added to get better output. Example: Table tbla contains a column named cola.
 
 ```
 select * from tbla where sample (4, 1 , cola) = true; -- The values are hashed to four portions based on cola, and the first portion is used. select * from tbla where sample (4, 2) = true; -- The values in each row are randomly hashed to four portions, and the second portion is u sed.
@@ -6616,11 +6616,11 @@ UDF is short for user defined function. MaxCompute provides a variety of built-i
 | UDT F | User defined table valued functions are commonly referred to as UDTFs. Each time a UDTF is called, it outputs multiple rows of data. UDTFs are the only category that returns multiple fields. A UDF only returns one value each time. |
 | UDAF | User defined aggregation functions are commonly referred to as UDAFs. A UDAF aggregates multiple input records into one output record. There is a many-to-one mapping between input and output. A UDAF can be used together with the GROUP BY clause (SQL) at the same time. For more information about the syntax, see aggregation functions. |
 
-In general, UDFs refer to all user defined functions: UDFs, UDAFs, and UDTFs. In a narrow sense, UDFs only refer to user defined scalar functions. This term is used interchangeably in this document. You will have to determine the exact meaning based on the context.
+Not e In general, UDFs refer to all user defined functions: UDFs, UDAFs, and UDTFs. In a narrow sense, UDFs only refer to user defined scalar functions. This term is used interchangeably in this document. You will have to determine the exact meaning based on the context.
 
 #### 6.8.2 Types of parameters and returned values
 
-UDFs support the following MaxCompute SQL data types: Basic data types: BIGINT, DOUBLE, BOOLEAN, DATETIME, DECIMAL, STRING, TINYINT, SMALLINT, INT, FLOAT, VARCHAR, BINARY, and TIMESTAMP. Complex data types: ARRAY, MAP, and STRUCT. In UDFs, you can define the writable attribute of parameters. The usage of some basic data types (such as TINYINT, SMALLINT, INT, FLOAT, VARCHAR, BINARY, and TIMESTAMP) in Java UDFs is as follows: UDAFs and UDTFs use the @Resolve annotation to obtain signatures. Example: `@Resolve("smallint`
+UDFs support the following MaxCompute SQL data types: Basic data types: BIGINT, DOUBLE, BOOLEAN, DATETIME, DECIMAL, STRING, TINYINT, SMALLINT, INT, FLOAT, VARCHAR, BINARY, and TIMESTAMP. Complex data types: ARRAY, MAP, and STRUCT. Not e In UDFs, you can define the writable attribute of parameters. The usage of some basic data types (such as TINYINT, SMALLINT, INT, FLOAT, VARCHAR, BINARY, and TIMESTAMP) in Java UDFs is as follows: UDAFs and UDTFs use the @Resolve annotation to obtain signatures. Example: `@Resolve("smallint`
 
 ```
 ->varchar(10)") .
@@ -6665,7 +6665,7 @@ Not ice You can use `type,*` to add any number of parameters. Example: @resolve(
 | MAP | java.util.Map |
 | ST RUCT | com.aliyun.odps.data.Struct |
 
-Java data types and the data types of returned values are objects, and must start with a capitalized letter. The NULL value in SQL is represented by a NULL reference in Java. The Java primitive type is not allowed because it cannot represent a NULL value in SQL. The ARRAY type in MaxCompute corresponds to a list, not an array, in Java. The following table compares the API features of two languages. API feature comparison
+Not e Java data types and the data types of returned values are objects, and must start with a capitalized letter. The NULL value in SQL is represented by a NULL reference in Java. The Java primitive type is not allowed because it cannot represent a NULL value in SQL. The ARRAY type in MaxCompute corresponds to a list, not an array, in Java. The following table compares the API features of two languages. API feature comparison
 
 | Supported language | UDF | UDAF | UDTF | DATETIME type | Read resource file | Read resource table |
 |---|---|---|---|---|---|---|
@@ -6680,7 +6680,7 @@ A UDF must inherit the com.aliyun.odps.udf.UDF class and implement the EVALUATE 
 package org.alidata.odps.udf.examples; import com.aliyun.odps.udf.UDF; public final class Lower extends UDF { public String evaluate(String s) { if (s == null) { return null; } return s.toLowerCase();
 ```
 
-`}` `}` You can implement `void setup(ExecutionContext ctx)` and `void close()` to implement UDF initialization and termination code, respectively. UDFs are used in the same way as built-in functions in MaxCompute SQL. For more information, see Builtin functions.
+`}` `}` Not e You can implement `void setup(ExecutionContext ctx)` and `void close()` to implement UDF initialization and termination code, respectively. UDFs are used in the same way as built-in functions in MaxCompute SQL. For more information, see Builtin functions.
 
 #### 6.8.4 UDAFs
 
@@ -6910,7 +6910,7 @@ t=0 |
 e2RecordCount=0 | +-------+------------+-------+
 ```
 
-You can also use the same method to obtain resources. For more information, see MapReduce examples. UDT F examples — Complex dat a t ypes The code in the following example defines a UDF with three overloads. The first overload uses array as the parameter; the second uses map as the parameter; and the third uses struct as the parameter. The third overload uses a struct type as the parameter or returned value, the UDF class must be supplemented with a @Resolve annotation to specify the specific type of struct.
+Not e You can also use the same method to obtain resources. For more information, see MapReduce examples. UDT F examples — Complex dat a t ypes The code in the following example defines a UDF with three overloads. The first overload uses array as the parameter; the second uses map as the parameter; and the third uses struct as the parameter. The third overload uses a struct type as the parameter or returned value, the UDF class must be supplemented with a @Resolve annotation to specify the specific type of struct.
 
 ```java
 @Resolve("struct<a:bigint>,string->string") public class UdfArray extends UDF {
@@ -6971,7 +6971,7 @@ Python UDFs support the following MaxCompute SQL data types: bigint, string, dou
 arg_type_list '->' type_list arg_type_list: type_list | '*' | '' type_list: [type_list ','] type type: 'bigint' | 'string' | 'double' | 'boolean' | 'datetime'
 ```
 
-The part to the left of the arrow indicates the type of parameter. The part to the right of the arrow indicates the type of returned value. The returned value of a UDTF can contain multiple columns. The returned value of a UDF or UDAF can contain only one column.
+Not e The part to the left of the arrow indicates the type of parameter. The part to the right of the arrow indicates the type of returned value. The returned value of a UDTF can contain multiple columns. The returned value of a UDF or UDAF can contain only one column.
 * represents a variable argument. If a variable argument is specified, the UDF, UDTF, or UDAF
 can match any type of parameter. Examples of valid signature:
 
@@ -7061,7 +7061,7 @@ You can reference file and table resources in Python UDF through the odps.distca
 odps.distcache.get_cache_file(resource_name)
 ```
 
-Description: returns the content of the specified resource. resource_name is a string that corresponds to the name of an existing resource in the current project. If the resource name is invalid or does not exist, an error is returned. Returned value: returns file-like object. After this object is used, the caller must call the CLOSE method to release the resource file that is opened. Example:
+Not e Description: returns the content of the specified resource. resource_name is a string that corresponds to the name of an existing resource in the current project. If the resource name is invalid or does not exist, an error is returned. Returned value: returns file-like object. After this object is used, the caller must call the CLOSE method to release the resource file that is opened. Example:
 
 ```python
 from odps.udf import annotate from odps.distcache import get_cache_file @annotate('bigint->string') class DistCacheExample(object): def __init__(self):
@@ -7085,7 +7085,7 @@ Command syntax:
 odps.distcache.get_cache_table(resource_name)
 ```
 
-Description: returns the content of the specified resource table. resource_name is a string that corresponds to the name of an existing resource table in the current project. If the resource table name is invalid or does not exist, an error is returned. Returned value: returns a value of the generator type. The caller traverses the table to obtain the content. Each time the caller traverses the table, a record is obtained in the form of a tuple. Example:
+Not e Description: returns the content of the specified resource table. resource_name is a string that corresponds to the name of an existing resource table in the current project. If the resource table name is invalid or does not exist, an error is returned. Returned value: returns a value of the generator type. The caller traverses the table to obtain the content. Each time the caller traverses the table, a record is obtained in the form of a tuple. Example:
 
 ```python
 from odps.udf import annotate from odps.distcache import get_cache_table @annotate('->string') class DistCacheTableExample(object):
@@ -7156,7 +7156,7 @@ The example described in the Feature overview topic demonstrates how to use user
 100000000000000000100
 ```
 
-This example also shows how to use subqueries with UDT columns. User-defined functions (UDFs) cannot be used in such subqueries. Variable a in the x column is of the java.math.BigInteger class, not a built-in class. You can pass UDT data to another operator and then call the required method. You can also use UDT data in data shuffling. UDT execution The preceding figure shows the three stages of a UDT: M1, R2, and J3. Only the new java.math.BigInteger(x) method is called at the M1 stage. The java.math.BigInteger.valueOf(y) and x.add(y).toString() methods are called at the J3 stage. If a JOIN clause is used in MapReduce, data must be reshuffled. As a result, data is processed at multiple stages. Data is processed at different stages or even by different processes or physical machines. The UDT encapsulates these stages and functions as a JVM. Description UDTs support only Java. UDTs also allow you to upload JAR packages and directly reference these packages. Some flags are provided for UDTs. set odps.sql.session.resources: specifies the resource that you want to reference. Separate multiple resources with commas (,). For example, you can set this flag to `foo.sh,bar.txt` . Example:
+Not e This example also shows how to use subqueries with UDT columns. User-defined functions (UDFs) cannot be used in such subqueries. Variable a in the x column is of the java.math.BigInteger class, not a built-in class. You can pass UDT data to another operator and then call the required method. You can also use UDT data in data shuffling. UDT execution The preceding figure shows the three stages of a UDT: M1, R2, and J3. Only the new java.math.BigInteger(x) method is called at the M1 stage. The java.math.BigInteger.valueOf(y) and x.add(y).toString() methods are called at the J3 stage. If a JOIN clause is used in MapReduce, data must be reshuffled. As a result, data is processed at multiple stages. Data is processed at different stages or even by different processes or physical machines. The UDT encapsulates these stages and functions as a JVM. Description UDTs support only Java. UDTs also allow you to upload JAR packages and directly reference these packages. Some flags are provided for UDTs. set odps.sql.session.resources: specifies the resource that you want to reference. Separate multiple resources with commas (,). For example, you can set this flag to `foo.sh,bar.txt` . Example:
 
 ```
 set odps.sql.type.system.odps2=true; set odps.sql.session.resources=odps-test.jar; -- Specify the JAR package that you want to reference. Before you reference the JAR package, upload the package to your project. select new com.aliyun.odps.test.IntegerMaxValue().evaluate();
@@ -7174,7 +7174,7 @@ UDTs allow you to: Create objects by using the new method. Create arrays by usin
 { 1, 2, 3 } .
 ```
 
-Call methods, including static methods. You can create objects in the factory method pattern. Access fields, including static fields. Not ice Identifiers in UDTs contain package names, class names, method names, and field names. All identifiers are case-sensitive. UDTs support SQL type conversions, such as cast(1 as java.lang.Object). UDTs do not support Java type conversions, such as (Object)1. Anonymous classes and lambda expressions are not supported. Functions that do not return values cannot be called in UDTs. UDTs are used in expressions. Functions that do not return values cannot be called in expressions. All SDK for Java classes can be referenced by UDTs. The JDK runtime environment is JDK 1.8. Later versions may not be supported. All operators use the semantic of MaxCompute SQL. The result of `String.valueOf(1) + String.val` `ueOf(2)` is 3. The two strings are implicitly converted to DOUBLE-type values and summed. If you use Java string concatenation to combine the strings, the result is 12. You may be confused about the role of the `=` operator. The `=` operator in SQL statements is used as a comparison operator. It is used to compare one expression with another expression. You must call the equals method in Java to compare whether two objects are equivalent. The = operator cannot be used to verify the equivalence of two objects. Java data types are mapped to built-in data types. The mapping can be applied to UDTs. You can directly call the method of the Java type to which the built-in type is mapped. Example:
+Call methods, including static methods. You can create objects in the factory method pattern. Access fields, including static fields. Not ice Identifiers in UDTs contain package names, class names, method names, and field names. All identifiers are case-sensitive. UDTs support SQL type conversions, such as cast(1 as java.lang.Object). UDTs do not support Java type conversions, such as (Object)1. Anonymous classes and lambda expressions are not supported. Functions that do not return values cannot be called in UDTs. Not e UDTs are used in expressions. Functions that do not return values cannot be called in expressions. All SDK for Java classes can be referenced by UDTs. The JDK runtime environment is JDK 1.8. Later versions may not be supported. All operators use the semantic of MaxCompute SQL. The result of `String.valueOf(1) + String.val` `ueOf(2)` is 3. The two strings are implicitly converted to DOUBLE-type values and summed. If you use Java string concatenation to combine the strings, the result is 12. You may be confused about the role of the `=` operator. The `=` operator in SQL statements is used as a comparison operator. It is used to compare one expression with another expression. You must call the equals method in Java to compare whether two objects are equivalent. The = operator cannot be used to verify the equivalence of two objects. Java data types are mapped to built-in data types. The mapping can be applied to UDTs. You can directly call the method of the Java type to which the built-in type is mapped. Example:
 
 ```
 '123'.length() , 1L.hashCode() .
@@ -7199,7 +7199,7 @@ Not ice You must specify the type parameter in a constructor function or use jav
 |   | of | new java.util.ArrayList<String>(java.util.Arrays.asList('1', '2')) |
 |   | til.ArrayList<String> |   |
 
-UDTs do not have a clear definition of object equalit y. This is caused by data reshuffling. The JOIN example shows that objects may be transmitted between different processes or physical machines. During transmission, an object may be referenced as two different objects. For example, an object may be shuffled to two machines and then reshuffled. Therefore, when you use UDTs, you must use the equals method instead of the = operator to equate two objects. Objects in the same row or column are correlated in some way. However, a correlation between objects in different rows or columns cannot be ensured. UDTs cannot be used as shuffle keys in clauses, such as JOIN, GROUP BY, DISTRIBUTE BY, SORT BY, ORDER BY, or CLUSTER BY. UDTs can be used at the stages in expressions, but cannot be used as outputs. For example, you
+UDTs do not have a clear definition of object equalit y. This is caused by data reshuffling. The JOIN example shows that objects may be transmitted between different processes or physical machines. During transmission, an object may be referenced as two different objects. For example, an object may be shuffled to two machines and then reshuffled. Therefore, when you use UDTs, you must use the equals method instead of the = operator to equate two objects. Not e Objects in the same row or column are correlated in some way. However, a correlation between objects in different rows or columns cannot be ensured. UDTs cannot be used as shuffle keys in clauses, such as JOIN, GROUP BY, DISTRIBUTE BY, SORT BY, ORDER BY, or CLUSTER BY. UDTs can be used at the stages in expressions, but cannot be used as outputs. For example, you
 
 | cannot call the | group by new java.math.BigInteger('123') |   |
 |---|---|---|
@@ -7211,7 +7211,7 @@ by hashCode is an int.class type, which can be used as the built-in INT type. Th
 |---|---|---|
 | T data to strings by calling the | java.util.Objects.toString(...) |   |
 
-for debugging. This flag is typically used for debugging because it can be applied only to PRINT statements. It cannot be applied to INSERT statements. BINARY is a built-in type and supports automatic serialization. You can save the byte[] arrays. The saved byte[] arrays can be deserialized to the BINARY type. Some classes may have their own serialization and deserialization methods, such as protobuffer. To save UDTs, you must call serialization and deserialization methods to convert the data type to BINARY. You can use UDTs to achieve the feature provided by the SCALAR function. You can use the COLLECT_LIST and EXPLODE built-in functions with UDTs to achieve the features provided by aggregate and table-valued functions. UDTs support resource access. You can call the `com.aliyun.odps.udf.impl.UDTExecutionContext.ge` `t()` static method to obtain the ExecutionContext object. Then, use the object to access the current execution context and then to access resources, such as files and tables.
+for debugging. Not e This flag is typically used for debugging because it can be applied only to PRINT statements. It cannot be applied to INSERT statements. BINARY is a built-in type and supports automatic serialization. You can save the byte[] arrays. The saved byte[] arrays can be deserialized to the BINARY type. Some classes may have their own serialization and deserialization methods, such as protobuffer. To save UDTs, you must call serialization and deserialization methods to convert the data type to BINARY. You can use UDTs to achieve the feature provided by the SCALAR function. You can use the COLLECT_LIST and EXPLODE built-in functions with UDTs to achieve the features provided by aggregate and table-valued functions. UDTs support resource access. You can call the `com.aliyun.odps.udf.impl.UDTExecutionContext.ge` `t()` static method to obtain the ExecutionContext object. Then, use the object to access the current execution context and then to access resources, such as files and tables.
 
 #### 6.9.4 More examples
 
@@ -7505,7 +7505,7 @@ SELECT r.user_id, from_unixtime(time/1000) as time, content FROM ( SELECT user_i
 AS (user_id, time, content)
 ```
 
-; The syntax of UDJ is similar to that of the standard JOIN statement. The only difference is that the USING clause is added to UDJ. Description: pay_user_log_merge_join is the name of the UDJ function in SQL. (p.t ime, p.pay_inf o, u.t ime, u.cont ent ) are the columns used in these two tables. r is the alias of the result returned by the UDJ function. You can reference this alias in other SQL statements. (user_id, t ime, cont ent ) are the columns returned by the UDJ function.
+; Not e The syntax of UDJ is similar to that of the standard JOIN statement. The only difference is that the USING clause is added to UDJ. Description: pay_user_log_merge_join is the name of the UDJ function in SQL. (p.t ime, p.pay_inf o, u.t ime, u.cont ent ) are the columns used in these two tables. r is the alias of the result returned by the UDJ function. You can reference this alias in other SQL statements. (user_id, t ime, cont ent ) are the columns returned by the UDJ function.
 4. Execute this SQL statement. A similar output is displayed:
 
 ```
@@ -7614,7 +7614,7 @@ AS (user_id, time, content) SORT BY p.time, u.time
 
 #### 6.10.3 Performance advantages
 
-Without UDJ, you must use MapReduce to handle complex cross-table computing tasks in a distributed system. The following example uses an online MapReduce job to test the UDJ performance. This MapReduce job uses a complex algorithm to join two tables. This example uses UDJ to rewrite the SQL statements of the MapReduce job and checks the execution results. Under the same programming concurrency, the comparison of performance is as follows. Performance comparison As shown in the figure, UDJ helps describe the complex logic of handling multiple tables, and greatly improves the query performance. The code is only executed inside UDJ. The entire logic of the code is executed by the high-performance MaxCompute native runtime. UDJ optimizes the MaxCompute runtime engine and the data exchange between interfaces. The join logic of UDJ is more efficient than that of the reduce stage.
+Without UDJ, you must use MapReduce to handle complex cross-table computing tasks in a distributed system. The following example uses an online MapReduce job to test the UDJ performance. This MapReduce job uses a complex algorithm to join two tables. This example uses UDJ to rewrite the SQL statements of the MapReduce job and checks the execution results. Under the same programming concurrency, the comparison of performance is as follows. Performance comparison As shown in the figure, UDJ helps describe the complex logic of handling multiple tables, and greatly improves the query performance. Not e The code is only executed inside UDJ. The entire logic of the code is executed by the high-performance MaxCompute native runtime. UDJ optimizes the MaxCompute runtime engine and the data exchange between interfaces. The join logic of UDJ is more efficient than that of the reduce stage.
 
 ### 6.11 Parameterized view
 
@@ -7654,7 +7654,7 @@ a; In the table specified by the TABLE parameter, data in the first column is of
 @a := select * from src where value >0; --call view with table varable an scalar @b := select * from pv1(@a,'20170101'); @another_day := '20170102'; --call view with table name and scalar variable @c := select * from pv1(src2, @another_day); @d := select * from @c union all select * from @b; with t as(select * from src3) select * from @c select * from @d select * from pv1(t,@another_day);
 ```
 
-You can use different parameters to call the pv1 view. The value of the table parameter can be a physical table, view, table variable, or table alias in common table expressions (CTEs). Common parameters can be variables or constants. Additional instructions A parameterized view can contain multiple SQL statements, similar to a script.
+Not e You can use different parameters to call the pv1 view. The value of the table parameter can be a physical table, view, table variable, or table alias in common table expressions (CTEs). Common parameters can be variables or constants. Additional instructions A parameterized view can contain multiple SQL statements, similar to a script.
 
 ```
 --view with parameters -- param @a -a table parameter -- param @b -a string parmeter --returns a table with schema (key string,value string) create view if not exists pv2(@a table (k string,v bigint), @b string) as BEGIN @srcp := select * from srcp where p=@b; @pv2 := select srcp.key,srcp.value from @srcp join @a on srcp.key=a.k; end;
@@ -7675,7 +7675,7 @@ begin
 end;
 ```
 
-RETURNS @ret TABLE (x string, y string) defines the following information: The return type is TABLE (x string, y string), which indicates the type returned to the caller. You can use this parameter to customize the table schema. The response parameter is @ret. A value is assigned to the parameter in the view script. You can regard a view that does not contain the BEGIN and END keywords or that does not return variables as a simplified view.
+Not e RETURNS @ret TABLE (x string, y string) defines the following information: The return type is TABLE (x string, y string), which indicates the type returned to the caller. You can use this parameter to customize the table schema. The response parameter is @ret. A value is assigned to the parameter in the view script. You can regard a view that does not contain the BEGIN and END keywords or that does not return variables as a simplified view.
 
 ### 6.12 Geographic functions
 
@@ -9329,7 +9329,7 @@ MaxCompute supports the CLONE TABLE statement. You can execute this statement to
 CLONE TABLE <[src_project_name.]src_table_name> [PARTITION(spec), ...] TO <[dest_project_n ame.]desc_table_name> [IF EXISTS (OVERWRITE | IGNORE)] ;
 ```
 
-If the destination table is not created before data is cloned, a table is created by using the CREATE TABLE LIKE statement when you execute the CLONE TABLE statement. If the destination table is created before data is cloned and IF EXISTS OVERWRITE is specified, data in the specified partitions of the destination table is overwritten. If the destination table is created before data is cloned and IF EXISTS IGNORE is specified, existing partitions in the destination table are skipped and data in these partitions is not overwritten. Limit s and t roubleshoot ing The schema of a destination table must be compatible with that of the source table. The CLONE TABLE statement supports both partitioned and non-partitioned tables. Tables that have special data organization structures are not supported. These tables include clustered tables, shard tables, Xlib or Algo tables, and tables with extreme storage. Make sure that the configuration of the cluster for the source table intersects with that for the destination table and the data that you want to process is in the same cluster. If any of the conditions is not met, an error is returned. If the destination table already exists before data is cloned, you can clone data from a maximum of 10,000 partitions at a time. If the destination table does not exist before data is cloned, the number of partitions that you can clone at a time is not limited, which ensures atomicity. If a hard link in the Apsara Distributed File System is faulty, purge the recycle bin and try again. The user who submits the command must have the Create Table and Update Table permissions on the target project. The following code shows the partitions and data of the source tables:
+Not e If the destination table is not created before data is cloned, a table is created by using the CREATE TABLE LIKE statement when you execute the CLONE TABLE statement. If the destination table is created before data is cloned and IF EXISTS OVERWRITE is specified, data in the specified partitions of the destination table is overwritten. If the destination table is created before data is cloned and IF EXISTS IGNORE is specified, existing partitions in the destination table are skipped and data in these partitions is not overwritten. Limit s and t roubleshoot ing The schema of a destination table must be compatible with that of the source table. The CLONE TABLE statement supports both partitioned and non-partitioned tables. Tables that have special data organization structures are not supported. These tables include clustered tables, shard tables, Xlib or Algo tables, and tables with extreme storage. Make sure that the configuration of the cluster for the source table intersects with that for the destination table and the data that you want to process is in the same cluster. If any of the conditions is not met, an error is returned. If the destination table already exists before data is cloned, you can clone data from a maximum of 10,000 partitions at a time. If the destination table does not exist before data is cloned, the number of partitions that you can clone at a time is not limited, which ensures atomicity. If a hard link in the Apsara Distributed File System is faulty, purge the recycle bin and try again. The user who submits the command must have the Create Table and Update Table permissions on the target project. The following code shows the partitions and data of the source tables:
 
 ```
 odps@ multi>read srcpart_copy; +------------+------------+------------+------------+
@@ -9432,7 +9432,7 @@ The Hash Clustering feature is available and enabled by default. If you want to 
 set odps.sql.cfile2.enable.read.write.index.flag=true;
 ```
 
-After the flag is set to true, the system automatically creates indexes for the sorted hash buckets to improve query efficiency. To use clustered indexes, you must add this flag during table creation and subsequent queries. If you want to use clustered indexes in your project all the time, contact the MaxCompute team. Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. However, you can still experience the superior performance provided by Hash Clustering although you do not add this flag.
+After the flag is set to true, the system automatically creates indexes for the sorted hash buckets to improve query efficiency. To use clustered indexes, you must add this flag during table creation and subsequent queries. If you want to use clustered indexes in your project all the time, contact the MaxCompute team. Not e Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. However, you can still experience the superior performance provided by Hash Clustering although you do not add this flag.
 
 ##### 6.15.2.2 Create a hash clustering table
 
@@ -9876,7 +9876,7 @@ Possible cause: The unbalanced distribution of GROUP BY keys causes data skew in
 set odps.sql.groupby.skewindata=true
 ```
 
-If this parameter is set to true, the system adds random factors to the shuffle hash algorithm and adds a new task to prevent data skew.
+Not e If this parameter is set to true, the system adds random factors to the shuffle hash algorithm and adds a new task to prevent data skew.
 
 ##### 6.20.1.3 DISTRIBUTE BY skew
 
@@ -9991,7 +9991,7 @@ select 'a\ab',length('a\ab') from dual; -- The result is 'aab', with a length of
 
 #### 6.21.2 LIKE matching
 
-In LIKE matching, "%" indicates matching any number of characters; "_" indicates matching a single character. If the character "%" or "_" needs to be matched, escape conversion is required. "\%" indicates matching "%", and "\_" indicates matching "_". For the character set of strings, MaxCompute SQL currently supports the UTF-8 character set. Data that is encoded in a different format may result in incorrect calculations.
+In LIKE matching, "%" indicates matching any number of characters; "_" indicates matching a single character. If the character "%" or "_" needs to be matched, escape conversion is required. "\%" indicates matching "%", and "\_" indicates matching "_". Not e For the character set of strings, MaxCompute SQL currently supports the UTF-8 character set. Data that is encoded in a different format may result in incorrect calculations.
 
 #### 6.21.3 Regular expressions
 
@@ -10007,7 +10007,7 @@ In extreme cases, to match the character "\", which is a special character in th
 select 'a\\b', 'a\\b' rlike 'a\\\\b' from test_dual; +-----+------+ _c0 | _c1 | +-----+------+ a\b | true | +-----+------+
 ```
 
-If a MaxCompute SQL statement contains "a\b", 'a\b' is displayed in the output because MaxCompute escapes the expression. If a string contains a tab or tab character, the system reads '\t' and stores it as one character. Therefore, it is a common character in the regular expression mode.
+Not e If a MaxCompute SQL statement contains "a\b", 'a\b' is displayed in the output because MaxCompute escapes the expression. If a string contains a tab or tab character, the system reads '\t' and stores it as one character. Therefore, it is a common character in the regular expression mode.
 
 ```
 select 'a\tb', 'a\tb' rlike 'a\tb' from test_dual; +---------+------+ _c0 | _c1 | +---------+------+ a b | true | +---------+------+
@@ -10029,7 +10029,7 @@ If you want to read a table that includes new data types, you are not required t
 
 ### 7.1 Overview
 
-MaxCompute provides two types of channels for data uploads and downloads: Dat aHub: This channel is used to upload or download data in real time. It includes the OGG, Flume, Logstash, and Fluentd plug-ins. T unnel: This channel is used to upload or download large amounts of data at a time. It includes the MaxCompute client, DataWorks, DTS, Sqoop, Kettle plug-in, and MaxCompute Migration Assist (MMA). DataHub and Tunnel provide their own SDKs. The data upload and download tools derived from these SDKs meet the requirements of the most common scenarios in which data is migrated to the cloud. The tools also enable you to upload or download data in a variety of other scenarios. Limits Limits on Tunnel-based data uploads: You cannot run Tunnel commands to upload or download data of the ARRAY, MAP, or STRUCT types. No limits are specified for the upload speed. The upload speed depends on the network bandwidth and server performance. The number of retries is limited. If the number of retries exceeds the limit, the next block is uploaded. After data is uploaded, you can execute the select count(*) from table_name statement to check whether any data is lost. By default, a project supports a maximum of 2,000 concurrent Tunnel connections. On the server, the lifecycle of a session is 24 hours. A session can be shared among processes and threads on the server, but you must make sure that each block ID is unique. MaxCompute ensures the validity of concurrent writes based on atomicity, consistency, isolation, durability (ACID). Limits on DataHub-based data uploads: The size of each field cannot exceed its upper limit. The size of a string cannot exceed 8 MB. During an upload, multiple data records are packaged. Limits on TableTunnel SDK interfaces: A block ID must be greater than or equal to 0 but less than 20,000. The size of the data that you want to upload in a block cannot exceed 100 GB. The lifecycle of a session is 24 hours. If you want to transfer large amounts of data, more than 24 hours are required. In this case, we recommend that you transfer the data in multiple sessions. The lifecycle of an HTTP request that corresponds to a RecordWriter is 120 seconds. If no data flows over an HTTP connection within 120 seconds, the server closes the connection.
+MaxCompute provides two types of channels for data uploads and downloads: Dat aHub: This channel is used to upload or download data in real time. It includes the OGG, Flume, Logstash, and Fluentd plug-ins. T unnel: This channel is used to upload or download large amounts of data at a time. It includes the MaxCompute client, DataWorks, DTS, Sqoop, Kettle plug-in, and MaxCompute Migration Assist (MMA). DataHub and Tunnel provide their own SDKs. The data upload and download tools derived from these SDKs meet the requirements of the most common scenarios in which data is migrated to the cloud. The tools also enable you to upload or download data in a variety of other scenarios. Limits Limits on Tunnel-based data uploads: You cannot run Tunnel commands to upload or download data of the ARRAY, MAP, or STRUCT types. No limits are specified for the upload speed. The upload speed depends on the network bandwidth and server performance. The number of retries is limited. If the number of retries exceeds the limit, the next block is uploaded. After data is uploaded, you can execute the select count(*) from table_name statement to check whether any data is lost. By default, a project supports a maximum of 2,000 concurrent Tunnel connections. On the server, the lifecycle of a session is 24 hours. A session can be shared among processes and threads on the server, but you must make sure that each block ID is unique. MaxCompute ensures the validity of concurrent writes based on atomicity, consistency, isolation, durability (ACID). Limits on DataHub-based data uploads: The size of each field cannot exceed its upper limit. Not e The size of a string cannot exceed 8 MB. During an upload, multiple data records are packaged. Limits on TableTunnel SDK interfaces: A block ID must be greater than or equal to 0 but less than 20,000. The size of the data that you want to upload in a block cannot exceed 100 GB. The lifecycle of a session is 24 hours. If you want to transfer large amounts of data, more than 24 hours are required. In this case, we recommend that you transfer the data in multiple sessions. The lifecycle of an HTTP request that corresponds to a RecordWriter is 120 seconds. If no data flows over an HTTP connection within 120 seconds, the server closes the connection.
 
 ### 7.2 Tunnel service connections
 
@@ -10057,7 +10057,7 @@ Data upload and download tools provided by MaxCompute are compiled based on the 
 | Inst anceT unnel | An entry class of the MaxCompute Tunnel service. |
 | Inst anceT unnel.Downl oadSession | A session that downloads data from a MaxCompute instance. This session applies only to SQL instances that start with the SELECT keyword and are used to query data. |
 
-The tunnel endpoint supports automatic routing based on the MaxCompute endpoint settings.
+Not e The tunnel endpoint supports automatic routing based on the MaxCompute endpoint settings.
 
 #### 7.5.2 TableTunnel
 
@@ -10072,7 +10072,7 @@ public class TableTunnel { public DownloadSession createDownloadSession(String p
 2. The RecordWriter.close() function moves the files from the temporary directory to the Data
 directory.
 3. The session.commit() function moves each file in the Data directory to the directory where the
-corresponding table is located and updates the table metadata. This way, data moved into a table by the current task will be visible to the other MaxCompute tasks such as SQL and MapReduce. API limits The value of a block ID must be greater than or equal to 0 and less than 20000. The size of data to be uploaded in a block cannot exceed 100 GB. A session is uniquely identified by its session ID. The lifecycle of a session is 24 hours. If your session times out due to the transfer of large volumes of data, you must transfer your data in multiple sessions. The lifecycle of an HTTP request corresponding to a RecordWriter is 120 seconds. If no data flows over an HTTP connection within 120 seconds, the server closes the connection. HTTP has an 8 KB buffer. When you call the RecordWriter.write() function, your data may be saved to the buffer and no inbound traffic flows over the corresponding HTTP connection. In this case, you can call the TunnelRecordWriter.flush() function to forcibly flush data from the buffer. When you use a RecordWriter to write logs to MaxCompute, the RecordWriter may time out due to unexpected traffic fluctuations. Therefore, we recommend that you: Do not use a RecordWriter for each data record. Otherwise, a large number of small files are generated, because each RecordWriter corresponds to a file. This affects the performance of MaxCompute. Do not use a RecordWriter to write data until the size of cached code reaches 64 MB. The lifecycle of a RecordReader is 300 seconds.
+corresponding table is located and updates the table metadata. This way, data moved into a table by the current task will be visible to the other MaxCompute tasks such as SQL and MapReduce. API limits The value of a block ID must be greater than or equal to 0 and less than 20000. The size of data to be uploaded in a block cannot exceed 100 GB. A session is uniquely identified by its session ID. The lifecycle of a session is 24 hours. If your session times out due to the transfer of large volumes of data, you must transfer your data in multiple sessions. The lifecycle of an HTTP request corresponding to a RecordWriter is 120 seconds. If no data flows over an HTTP connection within 120 seconds, the server closes the connection. Not e HTTP has an 8 KB buffer. When you call the RecordWriter.write() function, your data may be saved to the buffer and no inbound traffic flows over the corresponding HTTP connection. In this case, you can call the TunnelRecordWriter.flush() function to forcibly flush data from the buffer. When you use a RecordWriter to write logs to MaxCompute, the RecordWriter may time out due to unexpected traffic fluctuations. Therefore, we recommend that you: Do not use a RecordWriter for each data record. Otherwise, a large number of small files are generated, because each RecordWriter corresponds to a file. This affects the performance of MaxCompute. Do not use a RecordWriter to write data until the size of cached code reaches 64 MB. The lifecycle of a RecordReader is 300 seconds.
 
 #### 7.5.3 InstanceTunnel
 
@@ -10156,7 +10156,7 @@ RetryStrategy retry
 writer = (TunnelBufferedWriter) uploadSession.openBufferedWriter(); writer.setRetryStrategy(retry);
 ```
 
-We recommend that you do not adjust the preceding settings.
+Not e We recommend that you do not adjust the preceding settings.
 
 ### 7.6 Tunnel SDK example
 
@@ -10831,11 +10831,11 @@ MaxCompute provides a MapReduce programming API. You can use the API to write Ma
 1. Before you formally start Map, ensure that partition is set for input data. The input data is divided
 into equal-sized blocks, which are partitions. Each partition is processed as the input of a single Map worker so that multiple Map workers can work together.
 2. After partitioning, multiple Map Workers start working simultaneously. Each Map Worker reads its
-respective shard, computes the shard, and works out the result to Reduce. During data output, each Map worker needs to specify one key for each output data. The key decides the Reduce worker for which the data is targeted. Multiple keys may correspond to a single Reduce worker. Data of the same key is sent to the same Reduce worker, and a single Reduce worker may receive data with different keys.
+respective shard, computes the shard, and works out the result to Reduce. Not e During data output, each Map worker needs to specify one key for each output data. The key decides the Reduce worker for which the data is targeted. Multiple keys may correspond to a single Reduce worker. Data of the same key is sent to the same Reduce worker, and a single Reduce worker may receive data with different keys.
 3. Before entering the Reduce stage, the MapReduce framework will sort the data Key values to make
-data with the same Key values adjacent. If you specify Combiner, the framework will call Combiner and aggregate data with the same Key. You can customize the Combiner logic. Unlike the typical MapReduce framework protocol, MaxCompute requires the input and output parameters be consistent with those of Reduce. This process is generally called Shuffle.
+data with the same Key values adjacent. If you specify Combiner, the framework will call Combiner and aggregate data with the same Key. Not e You can customize the Combiner logic. Unlike the typical MapReduce framework protocol, MaxCompute requires the input and output parameters be consistent with those of Reduce. This process is generally called Shuffle.
 4. When entering the Reduce stage, data with the same Key will be in the same Reduce Worker. A
-single Reduce Worker may receive data from multiple Map Workers. Each Reduce worker performs the Reduce operation on multiple values with the same key. Finally, the multiple data entries with 1 Key will become 1 Value after the Reduce operation. The preceding section is only a brief introduction to MapReduce. For more details, see related documentation. The following uses WordCount as an example to explain the related concepts of MaxCompute MapReduce in different stages. e Assume there is a file a.txt, and in each line in the text is a digit. You need to count the number of times each digit appears. Each number is called a Word, and the number of its occurrences is called the Count. To use MaxCompute MapReduce for this purpose, perform the steps shown in the following figure.
+single Reduce Worker may receive data from multiple Map Workers. Each Reduce worker performs the Reduce operation on multiple values with the same key. Finally, the multiple data entries with 1 Key will become 1 Value after the Reduce operation. Not e The preceding section is only a brief introduction to MapReduce. For more details, see related documentation. The following uses WordCount as an example to explain the related concepts of MaxCompute MapReduce in different stages. e Assume there is a file a.txt, and in each line in the text is a digit. You need to count the number of times each digit appears. Each number is called a Word, and the number of its occurrences is called the Count. To use MaxCompute MapReduce for this purpose, perform the steps shown in the following figure.
 1. Partition a.txt data and use data in each partition as input of a single Map worker.
 2. For the Map processing input, the Count parameter is set to 1 for each obtained number. The
 Word|Count pair is output as a Word data key.
@@ -10844,7 +10844,7 @@ value). MapReduce performs the COMBINER operation on the sorted outputs, combini
 4. Later in the Shuffle stage, data is sent to the Reduce side. The Reduce Worker sorts the received
 data again depending on Key value.
 5. During the Reduce stage, each Reduce Worker uses the same logic as Combiner while processing
-data, and adds the Count with the same Key value (Word value) to obtain the output result. Because all the MaxCompute data is saved in the table, the input and output of MaxCompute MapReduce can only be a table. Customizing the output format is not permitted, and similar file system APIs are not provided.
+data, and adds the Count with the same Key value (Word value) to obtain the output result. Not e Because all the MaxCompute data is saved in the table, the input and output of MaxCompute MapReduce can only be a table. Customizing the output format is not permitted, and similar file system APIs are not provided.
 
 #### 8.1.2 Extended MapReduce
 
@@ -10852,7 +10852,7 @@ In a traditional MapReduce model, data must be stored in a distributed file syst
 
 #### 8.1.3 Open-source compatibility with MapReduce
 
-MaxCompute offers a set of native MapReduce programming models and interfaces. The inputs and outputs for these interfaces are MaxCompute tables, and the data is organized to be processed in the record format. However, MaxCompute MapReduce APIs differ from Hadoop MapReduce APIs. Traditionally, to migrate your Hadoop MapReduce jobs to MaxCompute, you need to rewrite the MapReduce code, compile and debug the code by using MaxCompute APIs, compress the final code into a JAR package, and upload the package to the MaxCompute platform. This process is tedious and labor-intensive for development and testing. It was expected that the original Hadoop MapReduce code can be used on the MaxCompute platform with little or no modification at all. To achieve this purpose, the MaxCompute platform provides a plug-in to adapt Hadoop MapReduce to MaxCompute MapReduce. With this plug-in, Hadoop MapReduce jobs are compatible with MaxCompute at the binary level to a certain extent. You can specify some configurations without modifying the code and then run the original Hadoop MapReduce JAR packages on MaxCompute. Click here to download the plug-in. This plug-in is in the testing stage and does not support custom comparators or key types. In the following section, a WordCount program is used as an example to introduce the basic usage of this plug-in. For more information about open-source compatibility, see Compatibility with Hadoop MapReduce. For more information about the Hadoop MapReduce SDK, see the MapReduce official documentation. The code in the example is for reference only. You need to modify it based on your business needs. Download the plug-in Click here to download the plug-in. The package name is openmr_hadoop2openmr-1.0.jar. This JAR package contains the dependencies with Hadoop 2.7.2. To avoid version conflicts, you must not include Hadoop dependencies in the JAR packages of your jobs. Prepare a JAR package Compile and export the WordCount JAR package (wordcount_test.jar). The source code of the WordCount program is as follows:
+MaxCompute offers a set of native MapReduce programming models and interfaces. The inputs and outputs for these interfaces are MaxCompute tables, and the data is organized to be processed in the record format. However, MaxCompute MapReduce APIs differ from Hadoop MapReduce APIs. Traditionally, to migrate your Hadoop MapReduce jobs to MaxCompute, you need to rewrite the MapReduce code, compile and debug the code by using MaxCompute APIs, compress the final code into a JAR package, and upload the package to the MaxCompute platform. This process is tedious and labor-intensive for development and testing. It was expected that the original Hadoop MapReduce code can be used on the MaxCompute platform with little or no modification at all. To achieve this purpose, the MaxCompute platform provides a plug-in to adapt Hadoop MapReduce to MaxCompute MapReduce. With this plug-in, Hadoop MapReduce jobs are compatible with MaxCompute at the binary level to a certain extent. You can specify some configurations without modifying the code and then run the original Hadoop MapReduce JAR packages on MaxCompute. Click here to download the plug-in. This plug-in is in the testing stage and does not support custom comparators or key types. In the following section, a WordCount program is used as an example to introduce the basic usage of this plug-in. Not e For more information about open-source compatibility, see Compatibility with Hadoop MapReduce. For more information about the Hadoop MapReduce SDK, see the MapReduce official documentation. The code in the example is for reference only. You need to modify it based on your business needs. Download the plug-in Click here to download the plug-in. The package name is openmr_hadoop2openmr-1.0.jar. Not e This JAR package contains the dependencies with Hadoop 2.7.2. To avoid version conflicts, you must not include Hadoop dependencies in the JAR packages of your jobs. Prepare a JAR package Compile and export the WordCount JAR package (wordcount_test.jar). The source code of the WordCount program is as follows:
 
 ```java
 package com.aliyun.odps.mapred.example.hadoop; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.fs.Path; import org.apache.hadoop.io.IntWritable; import org.apache.hadoop.io.Text; importorgapachehadoopmapreduceJob;
@@ -11002,7 +11002,7 @@ Configure the mapping between HDFS file paths and MaxCompute tables The configur
 jar -DODPS_HADOOPMR_TABLE_RES_CONF=./wordcount-table-res.conf -classpath hadoop2openmr-1.0. jar,wordcount_test.jar com.aliyun.odps.mapred.example.hadoop.WordCount /foo/bar;
 ```
 
-wordcount -t able-res.conf : the mapped configuration file configured with /foo/bar. wordcount _t est .jar: the JAR package of your Hadoop MapReduce program. com.aliyun.odps.mapred.example.hadoop.WordCount : the class name of the job that you want to run. /f oo/bar: the path on HDFS, which is mapped to wc_in and wc_out in the JSON configuration file. After you configure the mapping, you must import the Hadoop HDFS input file to wc_in for MapReduce computing by using the data integration function of DataX or DataWorks, and export the result table wc_out to your HDFS output directory /bar. Before you run the preceding command, make sure that hadoop2openmr-1.0.jar, wordcount_test.jar, and wordcount-table-res.conf have been stored in the current directory of odpscmd. Otherwise, you must make the relevant changes when you specify the configuration and -classpath. e The following figure shows the running process. After the job running process is complete, you can view the result table wc_out to check whether the job is successful and whether the results meet expectations.
+Not e wordcount -t able-res.conf : the mapped configuration file configured with /foo/bar. wordcount _t est .jar: the JAR package of your Hadoop MapReduce program. com.aliyun.odps.mapred.example.hadoop.WordCount : the class name of the job that you want to run. /f oo/bar: the path on HDFS, which is mapped to wc_in and wc_out in the JSON configuration file. After you configure the mapping, you must import the Hadoop HDFS input file to wc_in for MapReduce computing by using the data integration function of DataX or DataWorks, and export the result table wc_out to your HDFS output directory /bar. Before you run the preceding command, make sure that hadoop2openmr-1.0.jar, wordcount_test.jar, and wordcount-table-res.conf have been stored in the current directory of odpscmd. Otherwise, you must make the relevant changes when you specify the configuration and -classpath. e The following figure shows the running process. After the job running process is complete, you can view the result table wc_out to check whether the job is successful and whether the results meet expectations.
 
 ### 8.2 Features
 
@@ -11024,7 +11024,7 @@ The following table describes the parameters. Parameters e
 | -local | Indicates that the MapReduce job is run locally. It is mainly used for program debugging. |
 | -resources < resource name list > _ _ | Declares the resources used by a MapReduce job. Typically, you must specify the name of the resource where the Map or Reduce function is located in resource name list. _ _ Not ice If the Map or Reduce function reads from other MaxCompute resources, you must add the names of these resource to resource name list. Multiple resources are _ _ separated by commas. If you want to use resources in another project, you must append PROJECT NAME/resources/ before the resource name, such _ as -resources otherproject/resources/resfile. |
 
-The preceding optional parameters are included in <GENERIC_OPTIONS>. You can use the -conf option to specify the JobConf file. This file can affect the settings of JobConf in the SDK. For more information about JobConf, see the introduction of MapReduce core interfaces. The following is an example of a JobConf file. Example:
+Not e The preceding optional parameters are included in <GENERIC_OPTIONS>. You can use the -conf option to specify the JobConf file. This file can affect the settings of JobConf in the SDK. For more information about JobConf, see the introduction of MapReduce core interfaces. The following is an example of a JobConf file. Example:
 
 ```xml
 <configuration> <property> <name>import.filename</name> <value>resource.txt</value> </property> </configuration>
@@ -11040,11 +11040,11 @@ jar -resources mapreduce-examples.jar -classpath mapreduce-examples.jar org.alid
 
 ##### 8.2.2.1 MapReduce
 
-Map and Reduce functions support setup and cleanup methods for their corresponding map() and reduce() methods. A setup method is called prior to the Map() or Reduce() method. Each worker calls it once. A cleanup method is called after the Map() or Reduce() method. Each worker calls it once. For more information about the usage example, see Example program.
+Map and Reduce functions support setup and cleanup methods for their corresponding map() and reduce() methods. A setup method is called prior to the Map() or Reduce() method. Each worker calls it once. A cleanup method is called after the Map() or Reduce() method. Each worker calls it once. Not e For more information about the usage example, see Example program.
 
 ##### 8.2.2.2 Sorting
 
-Columns in the key records output by map can be set as sort columns. Custom comparators are not supported. You can select a few sort columns as group columns. Custom group comparators are not supported. Sort columns are generally used to sort user data, while group columns are used for secondary sorting. For detailed examples, see Secondary sorting source code.
+Columns in the key records output by map can be set as sort columns. Custom comparators are not supported. You can select a few sort columns as group columns. Custom group comparators are not supported. Sort columns are generally used to sort user data, while group columns are used for secondary sorting. Not e For detailed examples, see Secondary sorting source code.
 
 ##### 8.2.2.3 Partition
 
@@ -11075,7 +11075,7 @@ Example:
 jar -conf \home\admin\myconf -resources a.txt,example.jar -classpath ..\lib\example.jar:.\o ther_lib.jar -D java.library.path=.\native;
 ```
 
-<GENERIC_OPTIONS> includes the following options, which are all optional: -conf <conf igurat ion f ile>: specifies the JobConf file. This file can affect the settings of JobConf in the SDK. -resources <resource_name_list >: declares the resources used for running the MapReduce job. You must specify the names of the resources in which the Map or Reduce function is located in resource_name_list. If the Map or Reduce function reads from other MaxCompute resources, you must add the names of these resources to resource_name_list. Separate multiple resources with commas (,). If you want to use resources in another project, you must append PROJECT/resources/ to the beginning of the resource name, such as -resources otherproject/resources/resfile. -classpat h <local_f ile_list >: specifies the classpath for local execution. It is used to specify the local paths (including relative and absolute paths) of the JAR package where the main function is located. Package names are separated with default file delimiters of the system. In most cases, semicolons (;) are used in Windows, and commas (,) are used in Linux. If you run a MapReduce job on a cloud server, separate package names with commas (,). The main function and Map/Reduce function are usually written in the same package. In this case, the -resources and -classpath options both contain information such as mapreduce-examples.jar. However, -resources references the Map or Reduce function and is executed in a distributed environment, while -classpath references the main function and is executed locally with the specified JAR package saved in a local directory. -D <name>=<value>: specifies the Java attribute of <mainClass> during local execution. You can define multiple attributes. -l specifies that the MapReduce job is run locally. It is mainly used for program debugging. The following code is an example of the JobConf file:
+<GENERIC_OPTIONS> includes the following options, which are all optional: -conf <conf igurat ion f ile>: specifies the JobConf file. This file can affect the settings of JobConf in the SDK. -resources <resource_name_list >: declares the resources used for running the MapReduce job. You must specify the names of the resources in which the Map or Reduce function is located in resource_name_list. Not e If the Map or Reduce function reads from other MaxCompute resources, you must add the names of these resources to resource_name_list. Separate multiple resources with commas (,). If you want to use resources in another project, you must append PROJECT/resources/ to the beginning of the resource name, such as -resources otherproject/resources/resfile. -classpat h <local_f ile_list >: specifies the classpath for local execution. It is used to specify the local paths (including relative and absolute paths) of the JAR package where the main function is located. Package names are separated with default file delimiters of the system. In most cases, semicolons (;) are used in Windows, and commas (,) are used in Linux. If you run a MapReduce job on a cloud server, separate package names with commas (,). Not e The main function and Map/Reduce function are usually written in the same package. In this case, the -resources and -classpath options both contain information such as mapreduce-examples.jar. However, -resources references the Map or Reduce function and is executed in a distributed environment, while -classpath references the main function and is executed locally with the specified JAR package saved in a local directory. -D <name>=<value>: specifies the Java attribute of <mainClass> during local execution. You can define multiple attributes. -l specifies that the MapReduce job is run locally. It is mainly used for program debugging. The following code is an example of the JobConf file:
 
 ```xml
 <configuration>
@@ -11106,11 +11106,11 @@ add jar data\mapreduce-examples.jar;
 
 ##### 8.2.2.6 Input and output
 
-MaxCompute MapReduce supports the following build-in data types: Bigint, Double, String, Datetime, Boolean, Decimal, Tinyint, Smallint, Int, Float, Varchar, Timestamp, Binary, Array, Map, and Struct. MapReduce does not support custom data types. MapReduce supports input from multiple tables with different schemas. You can use the map function to obtain the table information corresponding to the current record. MapReduce supports NULL as input, but does not support views as input. Reduce can write output to different tables or different partitions of a table. The target tables can have different schemas. Each output is identified by a label. An output is not labeled by default. At least one output is generated. For examples, see Example programs.
+MaxCompute MapReduce supports the following build-in data types: Bigint, Double, String, Datetime, Boolean, Decimal, Tinyint, Smallint, Int, Float, Varchar, Timestamp, Binary, Array, Map, and Struct. MapReduce does not support custom data types. MapReduce supports input from multiple tables with different schemas. You can use the map function to obtain the table information corresponding to the current record. MapReduce supports NULL as input, but does not support views as input. Reduce can write output to different tables or different partitions of a table. The target tables can have different schemas. Each output is identified by a label. An output is not labeled by default. At least one output is generated. Not e For examples, see Example programs.
 
 ##### 8.2.2.7 Read data from resources
 
-You can use the Map or Reduce function to read data from MaxCompute resources. Any Map or Reduce worker loads resources to the memory for you to write code. For a detailed example, see Resource utilization example.
+You can use the Map or Reduce function to read data from MaxCompute resources. Any Map or Reduce worker loads resources to the memory for you to write code. Not e For a detailed example, see Resource utilization example.
 
 ##### 8.2.2.8 Run MapReduce tasks locally
 
@@ -11122,13 +11122,13 @@ odps@my_project> jar -l com.aliyun.odps.mapred.example.WordCount wc_in wc_out;
 counters: 10 map-reduce framework combine_input_groups=2 combine_output_records=2 map_input_bytes=4 map_ input_records=1 map_output_records=2 map_output_[wc_out]_bytes=0 map_output_[wc_out]_record s=0 reduce_input_groups=2 reduce_output_[wc_out]_bytes=8 reduce_output_[wc_out]_records=2
 ```
 
-`OK` For a WordCount example, see WordCount example. e If you run the local debugging command for the first time, a directory named warehouse is created in the current path after the command is complete. The following figure shows the directory structure of warehouse. Directories of the same level as my_project are projects. wc_in and wc_out are data tables. The table file data that you read or write using the jar command is downloaded to directories of this level. The schema file contains the metadata of a table in the following format:
+`OK` Not e For a WordCount example, see WordCount example. e If you run the local debugging command for the first time, a directory named warehouse is created in the current path after the command is complete. The following figure shows the directory structure of warehouse. Directories of the same level as my_project are projects. wc_in and wc_out are data tables. The table file data that you read or write using the jar command is downloaded to directories of this level. The schema file contains the metadata of a table in the following format:
 
 ```
 project=local_project_name table=local_table_name columns=col1_name:col1_type,col2_name:col2_type partitions=p1:STRING,p2:BIGINT -- This field is not required in this example.
 ```
 
-Separate the name and type of a column with a colon (:), and separate columns with commas (,). You need to declare the project name and table name at the top of the schema files as projectname.tablename. Separate the declaration from column definition with a comma (,). The data file stores table data. The number of columns and data values must match the definition in the schema file. Separate columns with commas (,). Example of wc_in schema file:
+Not e Separate the name and type of a column with a colon (:), and separate columns with commas (,). You need to declare the project name and table name at the top of the schema files as projectname.tablename. Separate the declaration from column definition with a comma (,). The data file stores table data. The number of columns and data values must match the definition in the schema file. Separate columns with commas (,). Example of wc_in schema file:
 
 ```
 my_project.wc_in,key:STRING,value:STRING
@@ -11152,7 +11152,7 @@ Example of the corresponding data file:
 0,1 2,1
 ```
 
-The client downloads the metadata of we_out from MaxCompute, and saves the data to the schema file. The data file is generated to store the local running results. You can also compile schema and data files, and save them in the corresponding table directory. Then, when you run MapReduce locally, the client detects these files in the table directory, and will not download data from MaxCompute. The local table directory does not have to correspond to an actual table in MaxCompute. The following table compares the features of Hadoop MapReduce with MaxCompute MapReduce. Feature comparison
+Not e The client downloads the metadata of we_out from MaxCompute, and saves the data to the schema file. The data file is generated to store the local running results. You can also compile schema and data files, and save them in the corresponding table directory. Then, when you run MapReduce locally, the client detects these files in the table directory, and will not download data from MaxCompute. The local table directory does not have to correspond to an actual table in MaxCompute. The following table compares the features of Hadoop MapReduce with MaxCompute MapReduce. Feature comparison
 
 | Feature | Hadoop MapReduce | MaxCompute MapReduce |
 |---|---|---|
@@ -11232,7 +11232,7 @@ The following table lists the major function APIs. Major APIs
 | Count er get Count er(St ring group, St ring name) | Get Counter object of given group name and name. |
 | void progress() | Report heartbeat information to the MapReduce framework. If the processing time of your method is extended, and you have not called the framework during the current process, call it to avoid a task timeout period. 600 seconds is set as the timeout period by default. |
 
-TaskContext API has a progress function which prevents it from being forced out due to time-out if a worker runs for a long time. This API sends heartbeats to the framework rather than reporting the Worker progress. The default worker timeout period for MaxCompute MapReduce is 10 minutes (which cannot be modified by the user). If the worker does not send a heartbeat (calling the progress API) in 10 minutes, the framework terminates the worker and the MapReudce task fails. We recommend that you let the worker call the progress API periodically in the Mapper/Reducer function to prevent the framework from terminating the task unexpectedly.
+Not e TaskContext API has a progress function which prevents it from being forced out due to time-out if a worker runs for a long time. This API sends heartbeats to the framework rather than reporting the Worker progress. The default worker timeout period for MaxCompute MapReduce is 10 minutes (which cannot be modified by the user). If the worker does not send a heartbeat (calling the progress API) in 10 minutes, the framework terminates the worker and the MapReudce task fails. We recommend that you let the worker call the progress API periodically in the Mapper/Reducer function to prevent the framework from terminating the task unexpectedly.
 
 ##### 8.3.2.4 JobConf
 
@@ -11263,7 +11263,7 @@ e
 | void set MemoryForReduceT ask(int mem) | Set memory size of single Worker in Reduce tasks, unit: MB, default value: 2048. |
 | void set Out put Schema(Column[] schema, St ring label) | Set output attribute of designated label. While multiplexed output, each output corresponds to 1 label. |
 
-Normally, GroupingColumns is included in KeySortColumns, and KeySortColumns is included in Key. At the Map side, the Record output from Mapper calculates Hash value and then, based on the set PartitionColumns, determines which Reducer to distribute to for sorting Records based on KeySortColumns. At the Reduce side, after sorting input Records based on KeySortColumns, Records are grouped based on columns designated by GroupingColumns, and are input in traversal sequence. The use of the same Records in columns designated by GroupingColumns as 1 input called by reduce function.
+Not e Normally, GroupingColumns is included in KeySortColumns, and KeySortColumns is included in Key. At the Map side, the Record output from Mapper calculates Hash value and then, based on the set PartitionColumns, determines which Reducer to distribute to for sorting Records based on KeySortColumns. At the Reduce side, after sorting input Records based on KeySortColumns, Records are grouped based on columns designated by GroupingColumns, and are input in traversal sequence. The use of the same Records in columns designated by GroupingColumns as 1 input called by reduce function.
 
 ##### 8.3.2.5 JobClient
 
@@ -12242,7 +12242,7 @@ public static void main(String[] args) throws Exception { if (args.length ! = 2)
 JobConf job = new JobConf(); job.setMapperClass(UploadMapper.class); job.set("import.filename", args[0]); job.setNumReduceTasks(0); job.setMapOutputKeySchema(SchemaUtils.fromString("key:bigint")); job.setMapOutputValueSchema(SchemaUtils.fromString("value:string")); InputUtils.addTable(TableInfo.builder().tableName("mr_empty").build(), job); OutputUtils.addTable(TableInfo.builder().tableName(args[1]).build(), job); JobClient.runJob(job);
 ```
 
-`}` `}` You can use the following methods to configure JobConf: Use the JobConf API in the SDK. This method has the highest priority. Use the -conf parameter in a jar command to specify a new JobConf file. This method has the lowest priority. For how to use -Conf, refer to the relevant command.
+`}` `}` Not e You can use the following methods to configure JobConf: Use the JobConf API in the SDK. This method has the highest priority. Use the -conf parameter in a jar command to specify a new JobConf file. This method has the lowest priority. For how to use -Conf, refer to the relevant command.
 
 #### 8.6.7 Example for using counters
 
@@ -12910,7 +12910,7 @@ Pipeline pipeline = Pipeline.builder() .addMapper(TokenizerMapper.class) .setOut
 
 #### 9.1.1 Graph overview
 
-MaxCompute Graph is a processing framework designed for iterative graph computing. Graph computing jobs use graphs to build models. Graphs are composed of vertices and edges with values. MaxCompute Graph supports the following operations to edit a graph: Editing the value of vertex or edge. Adding/deleting vertex. Adding/deleting edge. When editing the vertex or edge, you must maintain the relationship between the two items. After performing iterative graph editing and evolution, you can get the final result. Typical applications include PageRank, SSSP algorithm, and K-Means algorithm. Furthermore, you can use the Java SDK provided by MaxCompute Graph to compile computing programs.
+MaxCompute Graph is a processing framework designed for iterative graph computing. Graph computing jobs use graphs to build models. Graphs are composed of vertices and edges with values. MaxCompute Graph supports the following operations to edit a graph: Editing the value of vertex or edge. Adding/deleting vertex. Adding/deleting edge. Not e When editing the vertex or edge, you must maintain the relationship between the two items. After performing iterative graph editing and evolution, you can get the final result. Typical applications include PageRank, SSSP algorithm, and K-Means algorithm. Furthermore, you can use the Java SDK provided by MaxCompute Graph to compile computing programs.
 
 #### 9.1.2 Graph data structure
 
@@ -12980,7 +12980,7 @@ WorkerComputer.cleanup();
 
 #### 9.1.4 Aggregator overview
 
-Aggregator is a common feature in MaxCompute Graph jobs and is especially suited for solving machine learning issues. In MaxCompute Graph, Aggregator is used to summarize and process global information. This topic describes the implementation mechanism and related API operations of Aggregator and uses Kmeans Clustering as an example to demonstrate how to use Aggregator. Implementation mechanism The logic of Aggregator is divided into two parts: One part is implemented on all Workers in distributed mode. The other part is only implemented on the Worker where Aggregator Owner is located in single vertex mode. Initial values are created and partially aggregated on each Worker, and then the partial aggregation results of all Workers are sent to the Worker where Aggregator Owner is located. This Worker then aggregates the received partial aggregation objects into a global aggregation result and determines whether to end the iteration. The global aggregation result is distributed to all Workers in the next superstep for iteration. API operations Aggregator provides five API operations. The following parts describe when to call these API operations and for what purposes. creat eSt art upValue(cont ext ) This API operation is performed once on all Workers before all supersteps start. It is used to initialize AggregatorValue. In the first superstep iteration (superstep 0), WorkerContext.getLastAggregatedValue() or ComputeContext.getLastAggregatedValue() is called to obtain the initialized AggregatorValue object. creat eInit ialValue(cont ext ) This API operation is performed once on all Workers when each superstep starts. It is used to initialize AggregatorValue for the current iteration. Generally, WorkerContext.getLastAggregatedValue() is called to obtain the result of the previous iteration, and then partial initialization is implemented. aggregat e(value, it em) This API operation is also performed on all Workers. It is triggered by an explicit call to ComputeContext#aggregate(item), while the preceding two API operations are automatically called by the framework. This API operation is used to implement partial aggregation. The first parameter value indicates the aggregation result of the Worker in the current superstep. The initial value is the object returned by createInitialValue. The second parameter is passed in when ComputeContext#aggregate(item) is called by using user code. In this API operation, item is typically used to update value for aggregation. After all the aggregate operations are performed, the obtained value is the partial aggregation result of the Worker. The result is then sent by the framework to the Worker where Aggregator Owner is located. merge(value, part ial) This API operation is performed on the Worker where Aggregator Owner is located. It is used to merge partial aggregation results of Workers to obtain the global aggregation object. Similar to aggregate, value in this API operation indicates the aggregated results, while partial indicates objects to be aggregated. partial is used to update value. Assume that there are three Workers w0, w1, and w2, and the corresponding partial aggregation results are p0, p1, and p2. If p1, p0, and p2 are sent to the Worker where Aggregator Owner is located in sequence, the following merge operations are performed: i. merge(p1, p0) is executed first to aggregate p1 and p0 as p1. ii. Then, merge(p1, p2) is executed to aggregate p1 and p2 as p1. p1 is the global aggregation result in this superstep. Therefore, when only one Worker exists, the merge method is not required. In this case, merge() is not called. t erminat e(cont ext , value) After the Worker where Aggregator Owner is located executes merge(), the framework calls terminate(context, value) to perform the final processing. The second parameter value indicates the global aggregation result obtained by calling merge(). The global aggregation result can be further modified in this API operation. After terminate() is executed, the framework distributes the global aggregation object to all Workers for the next superstep. If true is returned for terminate(), iteration is ended for the entire job. Otherwise, the iteration continues. In machine learning scenarios, jobs end generally when true is returned after convergence. Kmeans Clustering example This section uses typical Kmeans Clustering as an example to demonstrate how to use Aggregator. If you need the complete code, see Kmeans. In this section, the code is resolved and is for reference only. GraphLoader is used to load an input table and convert it to vertices or edges of a graph. In this example, each row of data in the input table is a sample, each sample constructs a vertex, and vertex values are used to store samples. A Writable class KmeansValue is defined as the value type of a vertex.
+Aggregator is a common feature in MaxCompute Graph jobs and is especially suited for solving machine learning issues. In MaxCompute Graph, Aggregator is used to summarize and process global information. This topic describes the implementation mechanism and related API operations of Aggregator and uses Kmeans Clustering as an example to demonstrate how to use Aggregator. Implementation mechanism The logic of Aggregator is divided into two parts: One part is implemented on all Workers in distributed mode. The other part is only implemented on the Worker where Aggregator Owner is located in single vertex mode. Initial values are created and partially aggregated on each Worker, and then the partial aggregation results of all Workers are sent to the Worker where Aggregator Owner is located. This Worker then aggregates the received partial aggregation objects into a global aggregation result and determines whether to end the iteration. The global aggregation result is distributed to all Workers in the next superstep for iteration. API operations Aggregator provides five API operations. The following parts describe when to call these API operations and for what purposes. creat eSt art upValue(cont ext ) This API operation is performed once on all Workers before all supersteps start. It is used to initialize AggregatorValue. In the first superstep iteration (superstep 0), WorkerContext.getLastAggregatedValue() or ComputeContext.getLastAggregatedValue() is called to obtain the initialized AggregatorValue object. creat eInit ialValue(cont ext ) This API operation is performed once on all Workers when each superstep starts. It is used to initialize AggregatorValue for the current iteration. Generally, WorkerContext.getLastAggregatedValue() is called to obtain the result of the previous iteration, and then partial initialization is implemented. aggregat e(value, it em) This API operation is also performed on all Workers. It is triggered by an explicit call to ComputeContext#aggregate(item), while the preceding two API operations are automatically called by the framework. This API operation is used to implement partial aggregation. The first parameter value indicates the aggregation result of the Worker in the current superstep. The initial value is the object returned by createInitialValue. The second parameter is passed in when ComputeContext#aggregate(item) is called by using user code. In this API operation, item is typically used to update value for aggregation. After all the aggregate operations are performed, the obtained value is the partial aggregation result of the Worker. The result is then sent by the framework to the Worker where Aggregator Owner is located. merge(value, part ial) This API operation is performed on the Worker where Aggregator Owner is located. It is used to merge partial aggregation results of Workers to obtain the global aggregation object. Similar to aggregate, value in this API operation indicates the aggregated results, while partial indicates objects to be aggregated. partial is used to update value. Assume that there are three Workers w0, w1, and w2, and the corresponding partial aggregation results are p0, p1, and p2. If p1, p0, and p2 are sent to the Worker where Aggregator Owner is located in sequence, the following merge operations are performed: i. merge(p1, p0) is executed first to aggregate p1 and p0 as p1. ii. Then, merge(p1, p2) is executed to aggregate p1 and p2 as p1. p1 is the global aggregation result in this superstep. Therefore, when only one Worker exists, the merge method is not required. In this case, merge() is not called. t erminat e(cont ext , value) After the Worker where Aggregator Owner is located executes merge(), the framework calls terminate(context, value) to perform the final processing. The second parameter value indicates the global aggregation result obtained by calling merge(). The global aggregation result can be further modified in this API operation. After terminate() is executed, the framework distributes the global aggregation object to all Workers for the next superstep. If true is returned for terminate(), iteration is ended for the entire job. Otherwise, the iteration continues. In machine learning scenarios, jobs end generally when true is returned after convergence. Kmeans Clustering example This section uses typical Kmeans Clustering as an example to demonstrate how to use Aggregator. Not e If you need the complete code, see Kmeans. In this section, the code is resolved and is for reference only. GraphLoader is used to load an input table and convert it to vertices or edges of a graph. In this example, each row of data in the input table is a sample, each sample constructs a vertex, and vertex values are used to store samples. A Writable class KmeansValue is defined as the value type of a vertex.
 
 ```
 public static class KmeansValue implements Writable {
@@ -13214,7 +13214,7 @@ public static void main(String[] args) throws IOException {
                        + (System.currentTimeMillis() - start) / 1000.0 + " seconds");
 ```
 
-`}` If job.setRuntimePartitioning(false) is set to false, data loaded by each Worker is not partitioned based on Partitioner. Data is maintained by the Worker that loads it. Summary The basic steps of Aggregator are as follows:
+`}` Not e If job.setRuntimePartitioning(false) is set to false, data loaded by each Worker is not partitioned based on Partitioner. Data is maintained by the Worker that loads it. Summary The basic steps of Aggregator are as follows:
 1. When each Worker starts, it executes createStartupValue to create AggregatorValue.
 2. Before each iteration starts, each Worker executes createInitialValue to initialize AggregatorValue
 for the iteration.
@@ -13246,7 +13246,7 @@ The following table describes the parameters. Parameters
 | -local | Runs the MapReduce job locally, mainly for program debugging. |
 | -resources < resource name list > _ _ | Declares the resources used for running the Graph job. You typically need to specify the name of the resource where the Graph job is located in resource name list. _ _ Not ice If you read other MaxCompute resources while running the Graph job, you also need to add those resource names to resource name list. Multiple resources _ _ must be separated by commas (,). If you need to use resources of another project, add the prefix PROJECT NAME/resources/, for example, -resources _ otherproject/resources/resfile. |
 
-The preceding optional parameters are included in <GENERIC_OPTIONS>. You can directly run the main function in the Graph job to submit the job to MaxCompute, instead of submitting the job through the MaxCompute client. Take the PageRank algorithm as an example. Example:
+Not e The preceding optional parameters are included in <GENERIC_OPTIONS>. You can directly run the main function in the Graph job to submit the job to MaxCompute, instead of submitting the job through the MaxCompute client. Take the PageRank algorithm as an example. Example:
 
 ```java
 public static void main(String[] args) throws IOException { if (args.length < 2) printUsage(); GraphJob job = new GraphJob(); job.setGraphLoaderClass(PageRankVertexReader.class); job.setVertexClass(PageRankVertex.class); job.addInput(TableInfo.builder().tableName(args[0]).build()); job.addOutput(TableInfo.builder().tableName(args[1]).build()); // Add the resources used in the job to cache resource. These resources correspond to those specified by -resources and libjars in the jar command. job.addCacheResource("mapreduce-examples.jar"); // Add the used JAR file and other files to the class cache resource. These resources corre spond to those specified by -libjars in the jar command. job.addCacheResourceToClassPath("mapreduce-examples.jar"); // Set the configuration item corresponding to odps_config.ini in the client. Replace it wi th the actual one in your configuration file. Account account = new AliyunAccount(accessId, accessKey); Odps odps = new Odps(account); odps.setDefaultProject(project); odps.setEndpoint(endpoint); SessionState.get().setOdps(odps); SessionState.get().setLocalRun(false); // default max iteration is 30 job.setMaxIteration(30); if (args.length >= 3) job.setMaxIteration(Integer.parseInt(args[2])); long startTime = System.currentTimeMillis(); job.run(); System.out.println("Job Finished in " + (System.currentTimeMillis() - startTime) / 1000.0 + " seconds");
@@ -13274,7 +13274,7 @@ GraphJob job = new GraphJob(); job.addOutput(TableInfo.builder().tableName("tabl
 job.addOutput(TableInfo.builder().tableName("table_name").partSpec("pt1=a/pt2=b").lable("ou tput1").build(), true); // True indicates that the code will overwrite partitions specified in tableinfo, which is similar to the INSERT OVERWRITE operation. False is similar to the INSERT INTO operation.
 ```
 
-Multiple outputs are supported, and each output is identified by a label. A Graph job can use the Write method of WorkContext to write data to an output table during runtime. Multiple outputs must be labeled. For more information about job output definition, see the addOutput method description in GraphJob.
+Not e Multiple outputs are supported, and each output is identified by a label. A Graph job can use the Write method of WorkContext to write data to an output table during runtime. Multiple outputs must be labeled. For more information about job output definition, see the addOutput method description in GraphJob.
 
 #### 9.2.3 Read data from resources
 
@@ -13294,7 +13294,7 @@ In Graph, you can use the following methods of the corresponding context object 
 public byte[] readCacheFile(String resourceName) throws IOException; public Iterable<byte[]> readCacheArchive(String resourceName) throws IOException; public Iterable<byte[]> readCacheArchive(String resourceName, String relativePath)throws IO Exception; public Iterable<WritableRecord> readResourceTable(String resourceName); public BufferedInputStream readCacheFileAsStream(String resourceName) throws IOException; public Iterable<BufferedInputStream> readCacheArchiveAsStream(String resourceName) throws I OException; public Iterable<BufferedInputStream> readCacheArchiveAsStream(String resourceName, String r elativePath) throws IOException;
 ```
 
-Normally, resources are read in the setup of WorkerComputer, saved in WorkerValue, and obtained through getWorkerValue. The preceding stream API is recommended while reading and processing to reduce memory consumption. For more information about limits, see Application limits.
+Not e Normally, resources are read in the setup of WorkerComputer, saved in WorkerValue, and obtained through getWorkerValue. The preceding stream API is recommended while reading and processing to reduce memory consumption. For more information about limits, see Application limits.
 
 ### 9.3 Graph SDK introduction
 
@@ -13348,7 +13348,7 @@ program: Program arguments: 1 sssp_in sssp_out. VM arguments: Dodps.runner.mode=
 1,"2:2,3:1,4:4" 2,"1:2,3:2,4:1" 3,"1:1,2:2,5:1" 4,"1:4,2:1,5:1" 5,"3:1,4:1"
 ```
 
-For more information about the warehouse, see Run MapReduce tasks locally.
+Not e For more information about the warehouse, see Run MapReduce tasks locally.
 3. Click Run to run SSSP on the local machine.
 Refer to conf/odps_config.ini in the MaxCompute client for the settings of common parameters. The other parameters are described as follows: odps.runner.mode: The value is local. It is required for the local debugging feature. odps.project.name: specifies the current project, which is required. odps.end.point: specifies the current MaxCompute service address, which is optional. If this parameter is not specified, SSSP only reads metadata and data from the tables or resources in the warehouse. If the data does not exist, an error is returned. If this parameter is specified, SSSP first reads data from the warehouse. If the data does not exist, it reads data from the remote MaxCompute service. odps.access.id: specifies the AccessKey ID for accessing the MaxCompute service. It is valid only if odps.end.point is specified. odps.access.key: specifies the AccessKey secret for accessing the MaxCompute service. It is effective only if odps.end.point is specified. odps.cache.resources: specifies the resource list to be used. This parameter is the same as resources of the jar command. odps.local.warehouse: specifies the local warehouse path. It is ./warehouse by default. The output is as follows:
 
@@ -13422,7 +13422,7 @@ Each job can reference up to 256 resources. Each table or archive is considered 
 
 #### 9.6.1 SSSP
 
-Dijkstra's algorithm is a typical algorithm for calculating the Single Source Shortest Path (SSSP) in a directed graph. Shortest path: For a weighted directed graph G = (V, E), many paths are available from source vertex s to sink vertex v. The path with the smallest sum of edge weights is called the shortest path from s to v. The algorithm is implemented as follows: Initialization: The distance from s to s is 0 (d[s] = 0), and the distance from u to s is infinite (d[u] = ∞). Iteration: If an edge from u to v exists, the shortest distance from s to v is updated to d[v] = min(d[v], d[u] + weight(u, v)). The iteration ends until the distance from all vertices to s does not change. The implementation process determines that the algorithm is applicable to the MaxCompute Graph program. Each vertex maintains the current shortest distance to the source vertex. If the value changes, a message containing the new value and the edge weight is sent to the adjacent vertices. In the next iteration, the adjacent vertices update the current shortest distance based on the received message. The iteration ends when the current shortest distance values of all vertices do not change. Example:
+Dijkstra's algorithm is a typical algorithm for calculating the Single Source Shortest Path (SSSP) in a directed graph. Shortest path: For a weighted directed graph G = (V, E), many paths are available from source vertex s to sink vertex v. The path with the smallest sum of edge weights is called the shortest path from s to v. The algorithm is implemented as follows: Initialization: The distance from s to s is 0 (d[s] = 0), and the distance from u to s is infinite (d[u] = ∞). Iteration: If an edge from u to v exists, the shortest distance from s to v is updated to d[v] = min(d[v], d[u] + weight(u, v)). The iteration ends until the distance from all vertices to s does not change. Not e The implementation process determines that the algorithm is applicable to the MaxCompute Graph program. Each vertex maintains the current shortest distance to the source vertex. If the value changes, a message containing the new value and the edge weight is sent to the adjacent vertices. In the next iteration, the adjacent vertices update the current shortest distance based on the received message. The iteration ends when the current shortest distance values of all vertices do not change. Example:
 
 ```java
 import java.io.IOException; import com.aliyun.odps.io.WritableRecord; import com.aliyun.odps.graph.Combiner; import com.aliyun.odps.graph.ComputeContext; import com.aliyun.odps.graph.Edge; import com.aliyun.odps.graph.GraphJob; import com.aliyun.odps.graph.GraphLoader; import com.aliyun.odps.graph.MutationContext; import com.aliyun.odps.graph.Vertex; import com.aliyun.odps.graph.WorkerContext; import com.aliyun.odps.io.LongWritable; import com.aliyun.odps.data.TableInfo; public class SSSP { public static final String START_VERTEX = "sssp.start.vertex.id"; /**Define SSSPVertex, where:
@@ -15265,7 +15265,7 @@ Installation suggestions We recommend that you install the following tools to sp
 pip install greenlet>=0.4.10 # Optional. It accelerates Tunnel upload. pip install cython>=0.19.0 # Optional. It is not recommended if you use a Windows operatin g system.
 ```
 
-If you use a Windows operating system, make sure that you have installed Visual C++ and Cython of correct versions. Otherwise, you cannot speed up Tunnel upload. Installation procedure Run the following command to install PyODPS:
+Not e If you use a Windows operating system, make sure that you have installed Visual C++ and Cython of correct versions. Otherwise, you cannot speed up Tunnel upload. Installation procedure Run the following command to install PyODPS:
 
 ```
 pip install pyodps
@@ -15297,7 +15297,7 @@ If you need to debug PyODPS locally or the resources on the platform where PyODP
 print("\nfrom odps import ODPS\no = ODPS(%r, '<access-key>', %r, '<endpoint>')\n" % (o.acco unt.access_id, o.project))
 ```
 
-You need to replace access-key and endpoint with valid values. For information about how to obtain the values, see the corresponding topics in MaxCompute Developer Guide. Then, place the modified code at the beginning of all code.
+Not e You need to replace access-key and endpoint with valid values. For information about how to obtain the values, see the corresponding topics in MaxCompute Developer Guide. Then, place the modified code at the beginning of all code.
 
 #### 11.4.3 Use PyODPS in DataWorks
 
@@ -15307,7 +15307,7 @@ Create a workflow node Set Node Type to PYODPS. MaxCompute entry The PyODPS node
 print(o.exist_table('pyodps_iris'))
 ```
 
-Execute SQL statements For more information, see SQL. By default, InstanceTunnel is disabled in DataWorks, and instance.open_reader is executed by using the Result interface. In this case, a maximum of 10,000 data records can be read. After InstanceTunnel is enabled, you can execute reader.count to obtain the number of data records. If you need to obtain all data iteratively, you must disable the limit on the data volume. You can execute the following statements to enable InstanceTunnel and disable the limit:
+Execute SQL statements For more information, see SQL. Not e By default, InstanceTunnel is disabled in DataWorks, and instance.open_reader is executed by using the Result interface. In this case, a maximum of 10,000 data records can be read. After InstanceTunnel is enabled, you can execute reader.count to obtain the number of data records. If you need to obtain all data iteratively, you must disable the limit on the data volume. You can execute the following statements to enable InstanceTunnel and disable the limit:
 
 ```bash
 options.tunnel.use_instance_tunnel = True options.tunnel.limit_instance_tunnel = False # Disable the limit on the data volume. with instance.open_reader() as reader:
@@ -15322,7 +15322,7 @@ with instance.open_reader(tunnel=True, limit=False) as reader:
 read.
 ```
 
-If you do not enable InstanceTunnel, the format of the obtained data may be incorrect. DataFrame Execute DataFrame. To execute DataFrame in DataWorks, you must explicitly call automatically executed methods, such as execute and head.
+Not e If you do not enable InstanceTunnel, the format of the obtained data may be incorrect. DataFrame Execute DataFrame. To execute DataFrame in DataWorks, you must explicitly call automatically executed methods, such as execute and head.
 
 ```
 from odps.df import DataFrame iris = DataFrame(o.get_table('pyodps_iris')) for record in iris[iris.sepal_width < 3].execute(): # Call an automatically executed met hod to process each record.
@@ -15560,7 +15560,7 @@ records = [[111, 'aaa', True], # A list can be used.
 o.write_table('test_table', records, partition='pt=test', create_partition=True)
 ```
 
-Each time you call write_table, MaxCompute generates a file on the server. This operation is time-consuming. If too many files are generated, the efficiency of subsequent queries will be reduced. Therefore, we recommend that you write multiple records at a time or provide a Generator object when you use the write_table method. When you use `write_table` , new data will be appended to existing data. PyODPS does not provide options to overwrite existing data. You need to manually remove the data that you want to overwrite. For a non-partitioned table, you must call `table.truncate()` . For a partitioned table, you need to delete partitions first. Delete a table
+Not e Each time you call write_table, MaxCompute generates a file on the server. This operation is time-consuming. If too many files are generated, the efficiency of subsequent queries will be reduced. Therefore, we recommend that you write multiple records at a time or provide a Generator object when you use the write_table method. When you use `write_table` , new data will be appended to existing data. PyODPS does not provide options to overwrite existing data. You need to manually remove the data that you want to overwrite. For a non-partitioned table, you must call `table.truncate()` . For a partitioned table, you need to delete partitions first. Delete a table
 
 ```
 o.delete_table('my_table_name', if_exists=True) # Delete a table if the table exists.
@@ -15617,7 +15617,7 @@ Delete a partition.
 t.delete_partition('pt=test', if_exists=True) # Delete the partition if it exists. partition.drop() # Use the drop method to delete the partition object if it exists.
 ```
 
-Data upload and download channels MaxCompute Tunnel is the data channel of MaxCompute. You can use it to upload data to or download data from MaxCompute. We recommend that you use the write and read interfaces of tables instead of the Tunnel interface. In a Cython environment, PyODPS compiles C programs during installation to accelerate the Tunnel upload and download. Upload example:
+Data upload and download channels MaxCompute Tunnel is the data channel of MaxCompute. You can use it to upload data to or download data from MaxCompute. Not e We recommend that you use the write and read interfaces of tables instead of the Tunnel interface. In a Cython environment, PyODPS compiles C programs during installation to accelerate the Tunnel upload and download. Upload example:
 
 ```
 from odps.tunnel import TableTunnel table = o.get_table('my_table') tunnel = TableTunnel(odps) upload_session = tunnel.create_upload_session(table.name, partition_spec='pt=test') with upload_session.open_record_writer(0) as writer:
@@ -15638,11 +15638,11 @@ from odps.tunnel import TableTunnel tunnel = TableTunnel(odps) download_session 
 # Process each record.
 ```
 
-PyODPS currently does not allow you to upload external tables.
+Not e PyODPS currently does not allow you to upload external tables.
 
 #### 11.5.4 SQL
 
-PyODPS supports MaxCompute SQL queries and provides methods to read execution results. You can use the `execute_sql` and `run_sql` methods to create task instances. The commands that are executable in the MaxCompute console may not be executed as SQL statements in MaxCompute. Use other methods to execute non-DDL/DML statements. For
+PyODPS supports MaxCompute SQL queries and provides methods to read execution results. You can use the `execute_sql` and `run_sql` methods to create task instances. Not e The commands that are executable in the MaxCompute console may not be executed as SQL statements in MaxCompute. Use other methods to execute non-DDL/DML statements. For
 
 |   | run security query _ _ |
 |---|---|
@@ -15905,7 +15905,7 @@ function = o.get_function('test_function') new_resource = o.get_resource('my_udf
 
 ### 11.6 DataFrame
 
-PyODPS provides an interface similar to pandas called PyODPS DataFrame. This interface operates on MaxCompute tables and makes full use of the capabilities of MaxCompute. You can also change the data source from MaxCompute tables to pandas DataFrame, so that the same code can be executed on pandas. This topic describes how to create and perform operations on DataFrame objects and how to use DataFrame to process data. For the complete DataFrame document, see DataFrame. DataFrame object operations The following example demonstrates how to create a DataFrame object. It is for reference only. The data used in the example is downloaded from movielens 100K. You can download the data as needed. Assume that the following three tables already exist: pyodps_ml_100k_movies (movie-related data), pyodps_ml_100k_users (user-related data), and pyodps_ml_100k_ratings (rating-related data).
+PyODPS provides an interface similar to pandas called PyODPS DataFrame. This interface operates on MaxCompute tables and makes full use of the capabilities of MaxCompute. You can also change the data source from MaxCompute tables to pandas DataFrame, so that the same code can be executed on pandas. This topic describes how to create and perform operations on DataFrame objects and how to use DataFrame to process data. For the complete DataFrame document, see DataFrame. DataFrame object operations The following example demonstrates how to create a DataFrame object. It is for reference only. Not e The data used in the example is downloaded from movielens 100K. You can download the data as needed. Assume that the following three tables already exist: pyodps_ml_100k_movies (movie-related data), pyodps_ml_100k_users (user-related data), and pyodps_ml_100k_ratings (rating-related data).
 1. If no MaxCompute object is provided in the runtime environment, you must create an object.
 
 ```python
@@ -16057,7 +16057,7 @@ cut_lens.groupby('age_group').agg(cut_lens.rating.count().rename('total_rating')
 0 0-9 3.767442 43 1 10-19 3.486126 8181 2 20-29 3.467333 39535 3 30-39 3.554444 25696 4 40-49 3.591772 15021 5 50-59 3.635800 8704 6 60-69 3.648875 2623 7 70-79 3.649746 197
 ```
 
-DataFrame data processing The following example demonstrates how to process DataFrame data. It is for reference only. The data used in the example is downloaded from Iris dataset. You can download the data as needed.
+DataFrame data processing The following example demonstrates how to process DataFrame data. It is for reference only. Not e The data used in the example is downloaded from Iris dataset. You can download the data as needed.
 1. Create a test data table.
 Use the table management feature of DataWorks to create a table, and then click DDL mode. Enter the CREATE TABLE statement and submit the table. Example:
 
@@ -16107,7 +16107,7 @@ from odps.inter import setup, enter, teardown
 setup('**your-access_id**', '**your-access-key**', '**your-project**', endpoint='**your -endpoint**')
 ```
 
-If you do not specify the room parameter, the default room is used. After you have configured an account, you do not need to enter the account information again upon the next logon.
+Not e If you do not specify the room parameter, the default room is used. After you have configured an account, you do not need to enter the account information again upon the next logon.
 3. You can then call the enter method to create a Room object in any Python interactive interface.
 
 ```
@@ -16126,7 +16126,7 @@ room = enter() o = room.odps o.get_table('dual') odps.Table
     c_datetime_b            : datetime
 ```
 
-The MaxCompute object is not automatically updated when you change the setup of the room. You need to call `enter()` again to retrieve the new Room object. After you have configured an account and called objects, you can store, retrieve, or delete objects in the room or delete the entire room. You can store commonly used MaxCompute tables or resources in the room. Example:
+Not e The MaxCompute object is not automatically updated when you change the setup of the room. You need to call `enter()` again to retrieve the new Room object. After you have configured an account and called objects, you can store, retrieve, or delete objects in the room or delete the entire room. You can store commonly used MaxCompute tables or resources in the room. Example:
 
 ```
 room.store('stored-table', o.get_table('dual'), desc='Simple stored table example')
@@ -16307,7 +16307,7 @@ pie chart, line chart, or scatter chart. The following figure shows a scatter ch
 3. You can click the settings icon in the upper-right corner of a graph to modify the settings. For
 example, set Groups to name, X Axis to pet allengt h, and Y Axis to pet alwidt h. The result is shown in the following graph. The pet allengt h-pet alwidt h setting displays the data in a manner that is easy to understand. For bar charts and pie charts, you can select an aggregate function for the value fields. The default aggregate function for column charts is `sum` , and that for pie charts is `count` . You can click the function name next to the value field name to select another function. For line charts, ensure that the values on the x-axis are not null. Otherwise, the graph may not display correctly.
 4. After you finish drawing the graph, click the Download icon to save it.
-Before you use this feature, ensure that you have installed pandas and ipywidgets. Progress display The execution of large jobs takes extended periods of time. PyODPS provides progress bars to show the execution progress. When DataFrame jobs, machine learning jobs, or SQL statements that start with %sql are executed in Jupyter Notebook, a list of these jobs and their overall progress are displayed. When you click a job name, a dialog box that displays the progress of each task in the job appears. After the execution has been completed, a message that indicates whether the job is successful appears.
+Not e Before you use this feature, ensure that you have installed pandas and ipywidgets. Progress display The execution of large jobs takes extended periods of time. PyODPS provides progress bars to show the execution progress. When DataFrame jobs, machine learning jobs, or SQL statements that start with %sql are executed in Jupyter Notebook, a list of these jobs and their overall progress are displayed. When you click a job name, a dialog box that displays the progress of each task in the job appears. After the execution has been completed, a message that indicates whether the job is successful appears.
 
 ### 11.8 Configuration
 
@@ -16545,7 +16545,7 @@ release package Download the latest version of the Spark on MaxComput e release 
 
 #### 14.3.2 Set environment variables
 
-Set required environment variables. The main environment variables are JAVA_HOME and SPARK_HOME. Set JAVA_HOME
+Set required environment variables. Not e The main environment variables are JAVA_HOME and SPARK_HOME. Set JAVA_HOME
 
 ```
 export JAVA_HOME=/path/to/jdk export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar export PATH=$JAVA_HOME/bin:$PATH
@@ -16668,7 +16668,7 @@ Decompress the Spark package, go to the conf directory, and modify the following
 spark.hadoop.odps.project.name=xxxx spark.hadoop.odps.access.id=xxxx spark.hadoop.odps.access.key=xxxx spark.hadoop.odps.end.point=http://service.xxxx.xxxx.xxxxx.qd-inc.com:80/api spark.hadoop.odps.cupid.distributedcache.mincopy=3 spark.hadoop.odps.cupid.distributedcache.maxcopy=3 spark.hadoop.odps.cupid.proxy.domain.name=jobview.xxxx.xxxx.xxxx.com spark.hadoop.odps.cupid.history.server.address=10.xx.xx.xx:18080
 ```
 
-You can obtain the first four configuration items from the web_component.conf file in the /cloud/app/odps-service-console/CupidFrontendServer#/cupid_web_proxy/curren t/conf.local/ directory. spark.hadoop.odps.cupid.proxy.domain.name: specifies the domain name of odps_jobview_server_dns. Remove sparkui at the beginning of the domain name. spark.hadoop.odps.cupid.history.server.address: specifies the IP address of the AG machine. Add the port number 18080 to the end of the IP address.
+Not e You can obtain the first four configuration items from the web_component.conf file in the /cloud/app/odps-service-console/CupidFrontendServer#/cupid_web_proxy/curren t/conf.local/ directory. spark.hadoop.odps.cupid.proxy.domain.name: specifies the domain name of odps_jobview_server_dns. Remove sparkui at the beginning of the domain name. spark.hadoop.odps.cupid.history.server.address: specifies the IP address of the AG machine. Add the port number 18080 to the end of the IP address.
 2. Start the program.
 Go to the directory where the Spark package is decompressed and run the following commands:
 
@@ -16683,7 +16683,7 @@ LogView SparkUI Spark History
 
 #### 14.6.1 WordCount example
 
-Spark runs simple WordCount. You must download the GitHub project and compile the project before running the corresponding demos.
+Spark runs simple WordCount. Not e You must download the GitHub project and compile the project before running the corresponding demos.
 
 ```
 git clone https://github.com/aliyun/aliyun-cupid-sdk.git -- Download a GitHub project. cd aliyun-cupid-sdk mvn -T 1C clean install -DskipTests -- Compile the GitHub project.
@@ -17409,7 +17409,7 @@ Example:
 
 ### 14.10 Spark dynamic resource allocation
 
-allocation Background Spark provides a large number of configuration items to implement a wide array of semantics. You can use the default values for most configuration items, but there are some items require manual configurations. Of these items, spark.execut or.inst ances is the most complicated. A value that is too small will cause operations to run slowly or fail, while a value that is too large will waste resources. Even the optimal value based on full understanding of the data and logic is not reliable. For complex jobs, the number of executors required at different stages is different and different resources are required during the job execution process. Fixed configurations of resources will cause a waste. When long tail latency occurs, idle resources will be occupied by other executors even for simple jobs. Solution The best solution is to allocate resources as needed. Dynamic Resource Allocation (DRA) is such a solution. The CupidService developed by the Cupid team supports native DRA. Its implementation process is as shown in the following figure. For more information about the community native DRA and related configurations, see Dynamic Resource Allocat ion in Job Scheduling and Dynamic Allocat ion in Spark Configuration. Implementation process Enable DRA You must add the following settings to enable DRA. You do not need to modify the code.
+allocation Background Spark provides a large number of configuration items to implement a wide array of semantics. You can use the default values for most configuration items, but there are some items require manual configurations. Of these items, spark.execut or.inst ances is the most complicated. A value that is too small will cause operations to run slowly or fail, while a value that is too large will waste resources. Even the optimal value based on full understanding of the data and logic is not reliable. For complex jobs, the number of executors required at different stages is different and different resources are required during the job execution process. Fixed configurations of resources will cause a waste. When long tail latency occurs, idle resources will be occupied by other executors even for simple jobs. Solution The best solution is to allocate resources as needed. Dynamic Resource Allocation (DRA) is such a solution. The CupidService developed by the Cupid team supports native DRA. Its implementation process is as shown in the following figure. Not e For more information about the community native DRA and related configurations, see Dynamic Resource Allocat ion in Job Scheduling and Dynamic Allocat ion in Spark Configuration. Implementation process Enable DRA You must add the following settings to enable DRA. You do not need to modify the code.
 
 ```
 spark.hadoop.odps.cupid.shuffleservice.enable=true // Required, the flag at the Cupid end. spark.hadoop.odps.cupid.disk.driver.enable=true // Required, the dependent item. spark.dynamicAllocation.enabled=true // Required, the flag at the Spark end. spark.shuffle.service.enabled=true // Required, the dependent item. spark.shuffle.service.port=7338 // Required, the shuffle service port. spark.authenticate=true // Required, authentication. spark.dynamicAllocation.maxExecutors=128 // Optional, the maximum number of executors. spark.dynamicAllocation.minExecutors=1 // Optional, the minimum number of executors. spark.dynamicAllocation.initialExecutors=1 // Optional, the initial number of executors. spark.dynamicAllocation.executorIdleTimeout=60s // Optional, the waiting period before idle executors are released.
@@ -17498,7 +17498,7 @@ can search for or operate data in the index library only after passing the authe
 
 ### 15.3 Quick start
 
-mpute Before you start an Elasticsearch cluster, make sure that you have determined the following information: Node planning: Determine the number of nodes that are required for each role in an Elasticsearch cluster. By default, an Elasticsearch cluster has two roles, master and data. Each role is deployed on three nodes. You can add nodes to the cluster at any time. Resource planning: Determine the vCPU, memory, and disk space resources that are required for each node. The resources configured for each node cannot be changed. By default, 8 GiB of memory and 20 GiB of disk space are allocated to each node. Only 50% of the memory allocated to a data node is used for the JVM heap. Elast icsearch conf igurat ion: Determine the running configurations of nodes in an Elasticsearch cluster, such as the queue size of bulk requests, and support for cross-domain HTTP requests. After you determine the preceding information, you can start your Elasticsearch cluster in the MaxCompute client. The following example shows how to quickly start a small Elasticsearch cluster based on the default configurations. The name of the Elasticsearch cluster is es_first_cluster.
+mpute Before you start an Elasticsearch cluster, make sure that you have determined the following information: Node planning: Determine the number of nodes that are required for each role in an Elasticsearch cluster. By default, an Elasticsearch cluster has two roles, master and data. Each role is deployed on three nodes. You can add nodes to the cluster at any time. Resource planning: Determine the vCPU, memory, and disk space resources that are required for each node. The resources configured for each node cannot be changed. By default, 8 GiB of memory and 20 GiB of disk space are allocated to each node. Not e Only 50% of the memory allocated to a data node is used for the JVM heap. Elast icsearch conf igurat ion: Determine the running configurations of nodes in an Elasticsearch cluster, such as the queue size of bulk requests, and support for cross-domain HTTP requests. After you determine the preceding information, you can start your Elasticsearch cluster in the MaxCompute client. The following example shows how to quickly start a small Elasticsearch cluster based on the default configurations. The name of the Elasticsearch cluster is es_first_cluster.
 1. Download the MaxCompute client that supports Elasticsearch. Configure the AccessKey pair,
 project, and endpoint.
 2. Start the client (odpscmd) and run the following command:
@@ -17522,7 +17522,7 @@ access the Elasticsearch cluster. Run the following command to return informatio
 curl -u admin:123456 http://search.aliyun.com:9200/prj1.es_first_cluster
 ```
 
-To delete the Elasticsearch cluster, run the `server delete es_first_cluster` command. If you run this command, the Elasticsearch cluster is permanent ly delet ed, and dat a cannot be recovered.
+Not e To delete the Elasticsearch cluster, run the `server delete es_first_cluster` command. If you run this command, the Elasticsearch cluster is permanent ly delet ed, and dat a cannot be recovered.
 
 ### 15.4 Support for Elasticsearch applications
 
@@ -17608,7 +17608,7 @@ project_name: xxxx access_id: xxxx access_key: xxxx end_point: xxxx odps.cupid.d
 cupid_v2
 ```
 
-The first four configuration items can be obtained from the odps_config.ini file under the /home/admin/odps/odps_tools/clt/conf/ directory. odps.cupid.proxy.domain.name specifies the domain name of odps_jobview_server_dns. The value is the domain name without sparkui.
+Not e The first four configuration items can be obtained from the odps_config.ini file under the /home/admin/odps/odps_tools/clt/conf/ directory. odps.cupid.proxy.domain.name specifies the domain name of odps_jobview_server_dns. The value is the domain name without sparkui.
 2. Start the program.
 Save flink-java-project-0.1.jar to the decompressed directory of Flink and run the following commands:
 
@@ -17617,7 +17617,7 @@ Save flink-java-project-0.1.jar to the decompressed directory of Flink and run t
 ```
 
 3. Log on to Logview and Flink.
-Logview Flink MaxCompute is compatible with Flink in terms of the following aspects: Group windows of Flink: The TUMBLE, HOP, and SESSION built-in functions are supported. Flink UDFs, UDAFs, and UDTFs: MaxCompute supports UDFs that run in Flink. You can use the `odps.sql.enable.flink.udf` flag to enable this feature. SQL syntax in Flink: The || operator is supported to connect strings. extract(dateunit from datetime) and substring(str from startIndex to endIndex) are supported. Flink HistoryServer: You can use Flink HistoryServer to view information about completed tasks. ess and processing (integrated com puting scenarios)
+Logview Flink Not e MaxCompute is compatible with Flink in terms of the following aspects: Group windows of Flink: The TUMBLE, HOP, and SESSION built-in functions are supported. Flink UDFs, UDAFs, and UDTFs: MaxCompute supports UDFs that run in Flink. You can use the `odps.sql.enable.flink.udf` flag to enable this feature. SQL syntax in Flink: The || operator is supported to connect strings. extract(dateunit from datetime) and substring(str from startIndex to endIndex) are supported. Flink HistoryServer: You can use Flink HistoryServer to view information about completed tasks. ess and processing (integrated com puting scenarios)
 
 ## 17 Non-structured data access and processing (integrated computing scenarios)
 
@@ -17625,7 +17625,7 @@ and processing (integrated computing scenarios)
 
 ### 17.1 Overview
 
-MaxCompute SQL cannot directly process external data, such as non-structured data from Object Storage Service (OSS). This type of data must be imported to MaxCompute tables by using the relevant tools, which involves complex operations. The MaxCompute team introduced the non-structured data processing framework to the MaxCompute system architecture to simplify the processing of external data. You can execute a DDL statement to create an external table in MaxCompute and associate the table with external data sources. This table can then act as an interface between MaxCompute and external data sources. External tables can be accessed like standard MaxCompute tables. You can fully use the computing capabilities of MaxCompute SQL to process external data. MaxCompute allows you to create external tables to process data from the following data sources: Internal data sources: OSS, Tablestore, AnalyticDB, ApsaraDB for RDS, Alibaba Cloud HDFS, and TDDL External data sources: open source HDFS, MongoDB, and HBase The subsequent topics describe various data sources. MaxCompute V2.0 supports multiple new data types. To use the new data types, you must add set odps.sql.type.system.odps2=true; before the SQL statement and commit them to enable the new data types. For ease of reading, sample code in subsequent topics uses new data types by default.
+MaxCompute SQL cannot directly process external data, such as non-structured data from Object Storage Service (OSS). This type of data must be imported to MaxCompute tables by using the relevant tools, which involves complex operations. The MaxCompute team introduced the non-structured data processing framework to the MaxCompute system architecture to simplify the processing of external data. You can execute a DDL statement to create an external table in MaxCompute and associate the table with external data sources. This table can then act as an interface between MaxCompute and external data sources. External tables can be accessed like standard MaxCompute tables. You can fully use the computing capabilities of MaxCompute SQL to process external data. MaxCompute allows you to create external tables to process data from the following data sources: Internal data sources: OSS, Tablestore, AnalyticDB, ApsaraDB for RDS, Alibaba Cloud HDFS, and TDDL External data sources: open source HDFS, MongoDB, and HBase The subsequent topics describe various data sources. Not e MaxCompute V2.0 supports multiple new data types. To use the new data types, you must add set odps.sql.type.system.odps2=true; before the SQL statement and commit them to enable the new data types. For ease of reading, sample code in subsequent topics uses new data types by default.
 
 ### 17.2 Internal data sources
 
@@ -17661,7 +17661,7 @@ vehicleId bigint, recordId bigint, patientId bigint, calls bigint, locationLatit
 STORED BY 'com.aliyun.odps.CsvStorageHandler' LOCATION 'oss://<*your-id*>:<*your-secret-key*>@oss-cn-shanghai-internal.aliyuncs.com/oss-o dps-test/Demo/SampleData/CSV/AmbulanceData/';
 ```
 
-com.aliyun.odps.CsvStorageHandler is a built-in storage handler that is used to process CSV files. It defines how to read and write CSV files. You only need to specify this parameter. The logic is implemented by the system. To read and write TSV files, use com.aliyun.odps.TsvStorageHandler. LOCATION specifies an OSS directory. The system reads all files in the directory by default. An external table contains only related OSS directories. If you delete this table, the data in the directory specified by LOCATION is not deleted.
+Not e com.aliyun.odps.CsvStorageHandler is a built-in storage handler that is used to process CSV files. It defines how to read and write CSV files. You only need to specify this parameter. The logic is implemented by the system. To read and write TSV files, use com.aliyun.odps.TsvStorageHandler. LOCATION specifies an OSS directory. The system reads all files in the directory by default. An external table contains only related OSS directories. If you delete this table, the data in the directory specified by LOCATION is not deleted.
 
 ###### 17.2.1.2.3 Query an external table
 
@@ -17677,7 +17677,7 @@ ess and processing (integrated com puting scenarios) Execute the following state
 SELECT recordId, patientId, direction FROM ambulance_data_csv_external WHERE patientId > 25;
 ```
 
-An external table can only be managed by using MaxCompute SQL, not MaxCompute MapReduce. To obtain data over HTTPS at the underlying layer, add the `set odps.sql.unstructured.da` ta.oss.use.https=true; flag before an SQL statement. Then, commit them for execution. The following result is returned:
+Not e An external table can only be managed by using MaxCompute SQL, not MaxCompute MapReduce. To obtain data over HTTPS at the underlying layer, add the `set odps.sql.unstructured.da` ta.oss.use.https=true; flag before an SQL statement. Then, commit them for execution. The following result is returned:
 
 ```
 +------------+------------+-----------+
@@ -17693,7 +17693,7 @@ An external table can only be managed by using MaxCompute SQL, not MaxCompute Ma
 +------------+------------+-----------+
 ```
 
-The system provides built-in CsvStorageHandler, TsvStorageHandler, and TextStorageHandler.
+Not e The system provides built-in CsvStorageHandler, TsvStorageHandler, and TextStorageHandler.
 
 ###### 17.2.1.2.4 MSCK REPAIR TABLE
 
@@ -17756,7 +17756,7 @@ package com.aliyun.odps.udf.example.text; public class SpeicalTextStorageHandler
 @Override public Class&lt;? extends Outputer> getOutputerClass() { return TextOutputer.class;
 ```
 
-`}` `}` Note that TextStorageHandler that is built in MaxCompute can process the data format in the preceding example (text separated by vertical bars (|)). This example is provided only to show you how to use the SDK to customize a StorageHandler (especially extractor) for processing uncommonly structured data.
+`}` `}` Not e Note that TextStorageHandler that is built in MaxCompute can process the data format in the preceding example (text separated by vertical bars (|)). This example is provided only to show you how to use the SDK to customize a StorageHandler (especially extractor) for processing uncommonly structured data.
 
 ###### 17.2.1.3.3 Define an extractor
 
@@ -17910,7 +17910,7 @@ private void loadMlfLabelsFromResource(BufferedInputStream fileInputStream) thro
 // compute the snr of the speech sentence, assuming the input buffer contains the entire content of a wav file private double computeSnr(String id, byte[] buffer, int validBufferLen){ // computing the snr value for the wav file (supplied as byte buffer array), skipped here
 ```
 
-`}` The Extractor() API implements the reading and processing logic of audio files. It calculates the signal-to-noise ratio (SNR) of the read data based on the audio processing model and writes the result to a record in [snr, id] format.
+`}` Not e The Extractor() API implements the reading and processing logic of audio files. It calculates the signal-to-noise ratio (SNR) of the read data based on the audio processing model and writes the result to a record in [snr, id] format.
 2. Run the following commands to create an external table:
 ess and processing (integrated com puting scenarios)
 
@@ -17960,7 +17960,7 @@ SELECT sentence_snr, id FROM speech_sentence_snr_external WHERE sentence_snr > 1
 --------------------------------------------------------------
 ```
 
-By using the UDF extractor, you can run SQL statements to process multiple audio files in OSS in a distributed manner. Similarly, you can use the large-scale computation capabilities of MaxCompute to process unstructured data such as images and videos.
+Not e By using the UDF extractor, you can run SQL statements to process multiple audio files in OSS in a distributed manner. Similarly, you can use the large-scale computation capabilities of MaxCompute to process unstructured data such as images and videos.
 
 ##### 17.2.1.5 Data partitions
 
@@ -17996,7 +17996,7 @@ PARTITIONED BY ( year STRING, month STRING, day STRING
 STORED BY 'com.aliyun.odps.CsvStorageHandler' LOCATION 'oss://<ak_id>:<ak_key>@oss-cn-shanghai-internal.aliyuncs.com/oss-odps-test/lo g_data/';
 ```
 
-In the preceding example, the PARTITIONED BY clause is used to specify a partitioned external table. The partition keys are year, month, and day.
+Not e In the preceding example, the PARTITIONED BY clause is used to specify a partitioned external table. The partition keys are year, month, and day.
 2. For the partitions to take effect, you must specify the OSS storage directory in the format shown in
 the preceding example. An example of a valid directory layout is as follows:
 
@@ -18019,13 +18019,13 @@ execute SQL statements to operate the partitions in the external table in OSS. E
 SELECT count(distinct(ip)) FROM log_table_external WHERE year = '2017' AND month = '06' AND day = '01';
 ```
 
-In the log_table_external directory that corresponds to an external table, only files in the log_data/year=2017/month=06/day=01 subdirectory (logfile and To prevents unnecessary I/O operations, a full scan of the log_data/ directory is not performed. Similarly, you can execute the following statement to analyze data for the second half of 2017:
+Not e In the log_table_external directory that corresponds to an external table, only files in the log_data/year=2017/month=06/day=01 subdirectory (logfile and To prevents unnecessary I/O operations, a full scan of the log_data/ directory is not performed. Similarly, you can execute the following statement to analyze data for the second half of 2017:
 
 ```
 SELECT count(distinct(ip)) FROM log_table_external WHERE year = '2017' AND month > '06';
 ```
 
-In this case, only the logs for the second half of 2017 stored in OSS are accessed.
+Not e In this case, only the logs for the second half of 2017 stored in OSS are accessed.
 
 ###### 17.2.1.5.3 Custom path of partition data in OSS
 
@@ -18043,7 +18043,7 @@ osscmd ls oss://oss-odps-test/log_data_customized/ 2017-09-14 08:03:35 128MB Sta
 ALTER TABLE log_table_external ADD PARTITION (year = '2017', month = '06', day = '01') LOCATION 'oss://<ak_id>:<ak_key>@oss-cn-shanghai-internal.aliyuncs.com/oss-odps-test/lo g_data_customized/2017/06/01/';
 ```
 
-The ADD PARTITION and LOCATION clauses are specified in the preceding example to bind the partitions to data paths. Even if the data storage path is not in the partitionKey1=value1\partitionKey2=value2\... format, you can still access the partition data in the subdirectory.
+Not e The ADD PARTITION and LOCATION clauses are specified in the preceding example to bind the partitions to data paths. Even if the data storage path is not in the partitionKey1=value1\partitionKey2=value2\... format, you can still access the partition data in the subdirectory.
 
 ###### 17.2.1.5.4 Access fully-customized non-partitioned data subsets
 
@@ -18071,11 +18071,11 @@ orderkey BIGINT, suppkey BIGINT, discount DOUBLE, tax DOUBLE, shipdate STRING, l
 STORED BY 'com.aliyun.odps.TsvStorageHandler' LOCATION 'oss://<AK_id>:<AK_secret>@oss-cn-hangzhou-zmf.aliyuncs.com/oss-odps-test/tsv_outp ut_folder/';
 ```
 
-The preceding DDL statement creates an external table named tpch_lineitem_tsv_external, and associates two external data dimensions with this external table. Data storage medium: LOCATION associates an OSS address with the external table. This address will be used to read or write data from or to the external table. Data storage format: StorageHandler is used to define the data access mode. In this example, MaxCompute built-in com.aliyun.odps.TsvStorageHandler is used to read or write data from or to TSV files. You can also use the MaxCompute SDK to define StorageHandlers.
+Not e The preceding DDL statement creates an external table named tpch_lineitem_tsv_external, and associates two external data dimensions with this external table. Data storage medium: LOCATION associates an OSS address with the external table. This address will be used to read or write data from or to the external table. Data storage format: StorageHandler is used to define the data access mode. In this example, MaxCompute built-in com.aliyun.odps.TsvStorageHandler is used to read or write data from or to TSV files. You can also use the MaxCompute SDK to define StorageHandlers.
 
 ###### 17.2.1.6.2 Write data to a TSV text file by using an INSERT statement on an external table
 
-INSERT statement on an external table After you associate a file in OSS with an external table, you can run a standard SQL INSERT OVERWRITE/INSERT INTO statement on the external table to write data to the OSS file. The source data can be either data stored in a MaxCompute internal table or external data that is imported to MaxCompute through an external table. MaxCompute internal table: You can run an INSERT statement on an external table to write data from a MaxCompute internal table to an external storage medium. External data imported to MaxCompute through an external table: You can import external data to MaxCompute through an external table, use the data for computations, and then export the results to an external address or storage medium. For example, import Table Store data to MaxCompute and then export the data to OSS. The following example assumes that you have a MaxCompute internal table named tpch_lineitem and want to export some of the data to OSS in the TSV format. After you create an external table, run the following INSERT OVERWRITE statements to export data: ess and processing (integrated com puting scenarios)
+INSERT statement on an external table After you associate a file in OSS with an external table, you can run a standard SQL INSERT OVERWRITE/INSERT INTO statement on the external table to write data to the OSS file. The source data can be either data stored in a MaxCompute internal table or external data that is imported to MaxCompute through an external table. Not e MaxCompute internal table: You can run an INSERT statement on an external table to write data from a MaxCompute internal table to an external storage medium. External data imported to MaxCompute through an external table: You can import external data to MaxCompute through an external table, use the data for computations, and then export the results to an external address or storage medium. For example, import Table Store data to MaxCompute and then export the data to OSS. The following example assumes that you have a MaxCompute internal table named tpch_lineitem and want to export some of the data to OSS in the TSV format. After you create an external table, run the following INSERT OVERWRITE statements to export data: ess and processing (integrated com puting scenarios)
 
 ```
 INSERT OVERWRITE TABLE tpch_lineitem_tsv_external SELECT l_orderkey, l_suppkey, l_discount, l_tax, l_shipdate, l_linestatus, l_shipmode, l_comment FROM tpch_lineitem WHERE l_discount = 0.07 and l_tax = 0.01;
@@ -18093,7 +18093,7 @@ media with MaxCompute External tables act as an interface between MaxCompute and
 1. MaxCompute reads the OSS data associated with External Table A, and performs complicated
 computations. MaxCompute then outputs the results to the OSS address associated with External Table B. ess and processing (integrated com puting scenarios)
 2. MaxCompute reads the Table Store data associated with External Table A, and performs
-complicated computations. MaxCompute then outputs the results to the OSS address associated with External Table B. The preceding examples and data sources are scenarios with MaxCompute tables. The only difference is that the SELECT statement originates from an external table instead of a MaxCompute table. Example: By using MaxCompute as a central computing platform, you can import data from an OSS instance, and export that data to a different OSS instance (in a different location, or a different OSS account), as shown in the following figure. From a data flow and processing logic standpoint, the unstructured data processing framework can be considered as a coupled data ingress and egress at both ends of the MaxCompute platform.
+complicated computations. MaxCompute then outputs the results to the OSS address associated with External Table B. Not e The preceding examples and data sources are scenarios with MaxCompute tables. The only difference is that the SELECT statement originates from an external table instead of a MaxCompute table. Example: By using MaxCompute as a central computing platform, you can import data from an OSS instance, and export that data to a different OSS instance (in a different location, or a different OSS account), as shown in the following figure. From a data flow and processing logic standpoint, the unstructured data processing framework can be considered as a coupled data ingress and egress at both ends of the MaxCompute platform.
 1. The external data (from an OSS instance) is converted based on the unstructured framework, and
 provided to the UDF API in the form of a Java InputStream class. The UDF extract logic is only required to read, parse, transform, and compute the data from the InputStream class, and return the data in the Record format used by MaxCompute.
 2. Part of the returned records are used in the SQL logical operations on MaxCompute. These
@@ -18192,7 +18192,7 @@ om"
 --You can also add other permissions as required.
 ```
 
-iii. Grant the AliyunODPSRolePolicy permission to the role. After authorization is complete, view the role details to obtain the RAM information of this role. You need to specify the RAM information when you create an OSS external table later.
+iii. Grant the AliyunODPSRolePolicy permission to the role. Not e After authorization is complete, view the role details to obtain the RAM information of this role. You need to specify the RAM information when you create an OSS external table later.
 
 #### 17.2.2 Table Store data source
 
@@ -18234,7 +18234,7 @@ STORED BY 'com.aliyun.odps.TableStoreStorageHandler' -- com.aliyun.odps.TableSto
 LOCATION 'tablestore://<*your AK id*>:<*your AK secret key*>@odps-ots-dev.cnhangzhou.ots.aliyuncs.com'; -- The LOCATION clause specifies the Table Store information, including the instance name a nd endpoint.
 ```
 
-The preceding example maps a Table Store table to a MaxCompute external table. The subsequent operations on the Table Store table can be performed through the external table.
+Not e The preceding example maps a Table Store table to a MaxCompute external table. The subsequent operations on the Table Store table can be performed through the external table.
 
 ###### 17.2.2.2.3 Access Table Store data through an external table
 
@@ -18244,17 +18244,17 @@ table After you follow the preceding example to create an external table, Table 
 SELECT odps_orderkey, odps_orderdate, SUM(odps_totalprice) AS totalprice FROM ots_table_external WHERE odps_orderkey > 5000 AND odps_orderdate >20170725 AND odps_orderdate <20170910 GROUP BY odps_orderkey, odps_orderdate HAVING totalprice> 2000;
 ```
 
-This example uses common MaxCompute SQL statements. Table Store access details are processed internally by MaxCompute. If you need to use a copy of data for multiple computations, you can import the data from Table Store to a MaxCompute table (internal). This is more efficient than reading the data from Table Store every time. Example:
+Not e This example uses common MaxCompute SQL statements. Table Store access details are processed internally by MaxCompute. If you need to use a copy of data for multiple computations, you can import the data from Table Store to a MaxCompute table (internal). This is more efficient than reading the data from Table Store every time. Example:
 
 ```
 CREATE TABLE internal_orders AS SELECT odps_orderkey, odps_orderdate, odps_custkey, odps_totalprice FROM ots_table_external WHERE odps_orderkey > 5000 ;
 ```
 
-internal_orders is a common MaxCompute table that has all the features of a MaxCompute internal table. These features include efficient compressed column storage and complete meta. This table is stored in MaxCompute, so it can be accessed faster than an external table in Table Store. This feature is particularly suitable for hot data that is used for multiple computations.
+Not e internal_orders is a common MaxCompute table that has all the features of a MaxCompute internal table. These features include efficient compressed column storage and complete meta. This table is stored in MaxCompute, so it can be accessed faster than an external table in Table Store. This feature is particularly suitable for hot data that is used for multiple computations.
 
 ##### 17.2.2.3 Export data from MaxCompute to Tablestore
 
-Data interaction between MaxCompute and Tablestore includes importing data from Tablestore to MaxCompute for batch processing and exporting data processing results from MaxCompute to Tablestore. Tablestore features, such as real-time update and single-row overwriting, allow you to quickly upload offline computing results to online applications. The INSERT OVERWRITE statement is used to export data processing results from MaxCompute to Tablestore. MaxCompute does not create external tables in Tablestore. Before you export data to a table in Tablestore, make sure that the table exists in Tablestore. Otherwise, an error is reported. Assume that a user creates the ots_table_external table in MaxCompute to access data of the ots_tpch_orders table in Tablestore. A data record named internal_orders is stored in MaxCompute. To process the internal_orders data record and write the processing result to Tablestore, execute the INSERT OVERWRITE TABLE statement. Example:
+Data interaction between MaxCompute and Tablestore includes importing data from Tablestore to MaxCompute for batch processing and exporting data processing results from MaxCompute to Tablestore. Tablestore features, such as real-time update and single-row overwriting, allow you to quickly upload offline computing results to online applications. The INSERT OVERWRITE statement is used to export data processing results from MaxCompute to Tablestore. Not e MaxCompute does not create external tables in Tablestore. Before you export data to a table in Tablestore, make sure that the table exists in Tablestore. Otherwise, an error is reported. Assume that a user creates the ots_table_external table in MaxCompute to access data of the ots_tpch_orders table in Tablestore. A data record named internal_orders is stored in MaxCompute. To process the internal_orders data record and write the processing result to Tablestore, execute the INSERT OVERWRITE TABLE statement. Example:
 
 ```
 INSERT OVERWRITE TABLE ots_table_external SELECT odps_orderkey, odps_orderdate, odps_custkey, CONCAT(odps_custkey, 'SHIPPED'), CEIL(odps_totalprice) FROM internal_orders;
@@ -18352,7 +18352,7 @@ set odps.sql.hive.compatible=true; drop table if exists ads_read_external;
 -- Create an external table. select * from ads_read; -- Query and read data.
 ```
 
-The preceding commands are for reference only.
+Not e The preceding commands are for reference only.
 
 #### 17.2.4 RDS data source
 
@@ -18389,7 +18389,7 @@ set odps.sql.hive.compatible=true; drop table if exists rds_table_external;
    'mcfed.mapreduce.jdbc.input.orderby'='c_int'
 ```
 
-`)` ; The preceding command is for reference only.
+`)` ; Not e The preceding command is for reference only.
 
 ###### 17.2.4.2.2 Write and query data
 
@@ -18428,7 +18428,7 @@ set odps.sql.hive.compatible=true; drop table if exists rds_read_external;
 -- Create an external table. select * from rds_read; -- Query and read data.
 ```
 
-The preceding commands are for reference only.
+Not e The preceding commands are for reference only.
 
 #### 17.2.5 HDFS data source (Alibaba Cloud)
 
@@ -18475,7 +18475,7 @@ set odps.sql.hive.compatible=true; drop table if exists textfile_external; CREAT
     "mcfed.fs.dfs.impl"="com.alibaba.dfs.DistributedFileSystem"
 ```
 
-); The preceding command is for reference only.
+); Not e The preceding command is for reference only.
 
 ###### 17.2.5.2.1.2 Write and query data
 
@@ -18522,7 +18522,7 @@ set odps.sql.hive.compatible=true; drop table if exists textfile_external_read; 
 -- Create an external table. select * from textfile_external_read; select count(*) from textfile_external_read; select a.c_int,a.c_boolean,a.c_string,b.value from textfile_external_read a join dfstest b on a.c_int=b.id; -- Query and read data.
 ```
 
-The preceding command is for reference only.
+Not e The preceding command is for reference only.
 
 ##### 17.2.5.3 Data processing for partitioned tables
 
@@ -18558,7 +18558,7 @@ set odps.sql.hive.compatible=true; drop table if exists textfile_partition; CREA
 -- Create an external table. alter table textfile_partition add partition (date='20190218'); alter table textfile_partition add partition (date='20190219'); -- Add partitions. insert into table textfile_partition partition(date='20190218')select '1','cd' from (select count(*) from textfile_partition)a; insert into table textfile_partition partition(date='20190219')select '2','gh' from (select count(*) from textfile_partition)a; -- Write data to HDFS. select * from textfile_partition; select count(*) from textfile_partition; select a.id,a.name,b.value from textfile_partition a join dfstest b on a.id=b.id; -- Query and read data.
 ```
 
-The preceding commands are for reference only.
+Not e The preceding commands are for reference only.
 
 #### 17.2.6 TDDL data source
 
@@ -18829,7 +18829,7 @@ set odps.sql.hive.compatible=true; drop table if exists testfile_read;
 -- File path /user/wbyy/ is for reference only. Replace it with the path to actually be acc essed. -- Create an external table. select * from testfile_read; -- Query and read data.
 ```
 
-The preceding command is for reference only.
+Not e The preceding command is for reference only.
 
 #### 17.3.2 MongoDB data source
 
@@ -18949,7 +18949,7 @@ e}"
 -- Create an external table. select * from mongo_external; -- Query and read data.
 ```
 
-The preceding command is for reference only.
+Not e The preceding command is for reference only.
 
 #### 17.3.3 HBase data source
 
@@ -18981,7 +18981,7 @@ id string, cfa string
 STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' WITH SERDEPROPERTIES ('mcfed.hbase.table.name'='${table.name}','mcfed.hbase.columns.mapping '=':key,cf:a') -- cf is the column family in the HBase table. location 'hbase://host:port' TBLPROPERTIES('hbase.table.name'='${table.name}','hbase.columns.mapping'=':key,cf:a', 'mcfe d.zookeeper.session.timeout'='30', 'mcfed.hbase.client.retries.number'='1', "mcfed.hbase.zo okeeper.quorum"="${host}", "mcfed.hbase.zookeeper.property.clientPort"="${port}"); -- The values of the zookeeper.session.timeout and hbase.client.retries.number parameters a re for reference only. Replace them with the values to actually be used.
 ```
 
-The preceding command is for reference only.
+Not e The preceding command is for reference only.
 
 ###### 17.3.3.2.2 Write and query data
 
@@ -19007,7 +19007,7 @@ id string, name string, a string
 STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' WITH SERDEPROPERTIES ('mcfed.hbase.table.name'='${table.name}','mcfed.hbase.columns.mapping '=':key,f1:name,f1:a') -- f1 is the column family in the HBase table. location 'hbase://host:port' TBLPROPERTIES('hbase.table.name'='${table.name}','hbase.columns.mapping'=':key,f1:name,f1:a ', 'mcfed.zookeeper.session.timeout'='30', 'mcfed.hbase.client.retries.number'='1', "mcfed. hbase.zookeeper.quorum"="${host}", "mcfed.hbase.zookeeper.property.clientPort"="${port}"); -- The values of the zookeeper.session.timeout and hbase.client.retries.number parameters a re for reference only. Replace them with the values to actually be used. -- Create an external table. select * from hbase_read_external; select count(*) from hbase_read_external; select a.id,a.name from hbase_read_external a join hbase_test b on a.id=b.id; -- Query and read data.
 ```
 
-The preceding commands are for reference only. ss and processing (inside MaxCompu te)
+Not e The preceding commands are for reference only. ss and processing (inside MaxCompu te)
 
 ## 18 Unstructured data access and processing (inside MaxCompute)
 
@@ -19157,11 +19157,11 @@ MaxCompute supports multi-region cluster deployment. The control clusters is dep
 
 ### 19.2 Characteristics of multi-region deployment
 
-deployment This topic describes the characteristics of multi-region deployment. The multi-region deployment on MaxCompute has the following features: One MaxCompute service instance can manage multiple clusters that are located in different cities. Cross-cluster data interaction is implemented within the MaxCompute service, and cross-cluster data replication and synchronization are managed based on the actual configuration. Metadata is stored in a centralized manner. Therefore, the infrastructure requirements, such as network connections between different data centers, are relatively high. A unified account system is required. Big data application development systems, such as DataWorks, are used in all regions and clusters. You must change the mode of the current MaxCompute cluster to cross-cluster for multi-region deployment. The conditions and limits on changing the cluster mode are as follows: The network bandwidth must be sufficient for multi-region data synchronization and link redundancy. The central-region control cluster has a relatively high latency for basic services such as DNS and TableStore. We recommend that you deploy basic services in the same data center to keep the network latency within 5 ms. The network latency between the central-region control cluster and computing clusters in other regions must must be kept within 20 ms. Clocks must be synchronized between clusters in different cities and between machines in the same cluster. The network bandwidth must be sufficient for data replication among clusters. DNS is required. In order for cross-cluster servers to communicate on the same network, the clusters must have similar network bandwidth conditions, such as GE or 10GE. The operations, maintenance, deployment, and upgrade for multi-region deployment are different from those for a single cluster deployment. Multi-region deployment requires higher onsite oyment on MaxCompute operations and maintenance capabilities.
+deployment This topic describes the characteristics of multi-region deployment. The multi-region deployment on MaxCompute has the following features: One MaxCompute service instance can manage multiple clusters that are located in different cities. Cross-cluster data interaction is implemented within the MaxCompute service, and cross-cluster data replication and synchronization are managed based on the actual configuration. Metadata is stored in a centralized manner. Therefore, the infrastructure requirements, such as network connections between different data centers, are relatively high. A unified account system is required. Big data application development systems, such as DataWorks, are used in all regions and clusters. You must change the mode of the current MaxCompute cluster to cross-cluster for multi-region deployment. Not e The conditions and limits on changing the cluster mode are as follows: The network bandwidth must be sufficient for multi-region data synchronization and link redundancy. The central-region control cluster has a relatively high latency for basic services such as DNS and TableStore. We recommend that you deploy basic services in the same data center to keep the network latency within 5 ms. The network latency between the central-region control cluster and computing clusters in other regions must must be kept within 20 ms. Clocks must be synchronized between clusters in different cities and between machines in the same cluster. The network bandwidth must be sufficient for data replication among clusters. DNS is required. In order for cross-cluster servers to communicate on the same network, the clusters must have similar network bandwidth conditions, such as GE or 10GE. The operations, maintenance, deployment, and upgrade for multi-region deployment are different from those for a single cluster deployment. Multi-region deployment requires higher onsite oyment on MaxCompute operations and maintenance capabilities.
 
 ### 19.3 Instructions on multi-region deployment
 
-deployment This topic describes multi-region deployment. The instructions to implement multi-region deployment are as follows: Computing tasks on MaxCompute are implemented in a cluster based on data distribution within the service. Cross-cluster replication and direct reads are performed based on the cluster configuration and distribution of data. Data replication and synchronization can be performed between different clusters by table or partition based on the actual cluster configuration. You must plan the relationship between the MaxCompute project and the cluster at the business layer. You can select one or multiple clusters for a single project. If you select multiple clusters for a project, data replication is carried out among these clusters. If the project contains business that cannot implement cross-cluster computing, you can distribute data to different clusters and divide the computing tasks based on their distribution. Cross-cluster data replication and management requires management policies. The bandwidth between clusters in different remote data centers must be sufficient for data replication or read-only operations. Replication and read-only operations across clusters in MaxCompute involving large amounts of data will consume all of the bandwidth between the two clusters, as the two data centers share bandwidth. A cluster failure in the primary data center will affect the entire service because the primary data center stores information such as metadata and accounts. When the secondary data center fails, the project where data is stored on the cluster and the O&M of services are affected. If project data is independently stored in the primary data center, the failure of the secondary data center will not affect computing tasks of the project. In general scenarios, data is partitioned and replicated based on business characteristics, and computing tasks are performed based on data types in different clusters. The combined results of different MaxCompute tasks are applied.
+deployment This topic describes multi-region deployment. The instructions to implement multi-region deployment are as follows: Computing tasks on MaxCompute are implemented in a cluster based on data distribution within the service. Cross-cluster replication and direct reads are performed based on the cluster configuration and distribution of data. Data replication and synchronization can be performed between different clusters by table or partition based on the actual cluster configuration. You must plan the relationship between the MaxCompute project and the cluster at the business layer. You can select one or multiple clusters for a single project. Not e If you select multiple clusters for a project, data replication is carried out among these clusters. If the project contains business that cannot implement cross-cluster computing, you can distribute data to different clusters and divide the computing tasks based on their distribution. Not e Cross-cluster data replication and management requires management policies. The bandwidth between clusters in different remote data centers must be sufficient for data replication or read-only operations. Replication and read-only operations across clusters in MaxCompute involving large amounts of data will consume all of the bandwidth between the two clusters, as the two data centers share bandwidth. A cluster failure in the primary data center will affect the entire service because the primary data center stores information such as metadata and accounts. When the secondary data center fails, the project where data is stored on the cluster and the O&M of services are affected. Not e If project data is independently stored in the primary data center, the failure of the secondary data center will not affect computing tasks of the project. In general scenarios, data is partitioned and replicated based on business characteristics, and computing tasks are performed based on data types in different clusters. The combined results of different MaxCompute tasks are applied.
 
 ### 19.4 Multi-region deployment examples
 
@@ -19171,7 +19171,7 @@ oyment on MaxCompute
 
 #### 19.4.1 Synchronize table data among multiple clusters
 
-clusters This topic provides an example on how to synchronize table data among multiple clusters in multiregion deployment scenarios. Prerequisites When you create a project in the AdminConsole, you have selected two clusters and set one as the default cluster. The following figure shows an example. In this example, the project is multiregion, and AT-MDU-TEST and AT-5KN are selected for it, with AT-MDU-TEST as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the project is MaxComput e Conf igurat ion > Project Management > Creat e Project . You have configured cross-cluster replication for the project. The following example demonstrates how to configure it. i. Choose MaxComput e Conf igurat ion > Global Cross-clust er Replicat ion Conf igurat ion to go to the Global Cross-clust er Replicat ion Conf igurat ion page. ii. In the Add Item part of the Inf oBet weenClust ers section, set key to AT -5KN# AT -MDU-T EST , set both availableBandwith and totalBandwith to 2000, and click add. iii. Choose MaxComput e Conf igurat ion > Project Management . Find multiregion and click Cross-clust er Replicat ion Conf igurat ion. iv. In the dialog box that appears, configure the parameters, as shown in the following figure. v. Click Save and then click St art Replicat ion. Procedure Example:
+clusters This topic provides an example on how to synchronize table data among multiple clusters in multiregion deployment scenarios. Prerequisites When you create a project in the AdminConsole, you have selected two clusters and set one as the default cluster. The following figure shows an example. Not e In this example, the project is multiregion, and AT-MDU-TEST and AT-5KN are selected for it, with AT-MDU-TEST as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the project is MaxComput e Conf igurat ion > Project Management > Creat e Project . You have configured cross-cluster replication for the project. The following example demonstrates how to configure it. i. Choose MaxComput e Conf igurat ion > Global Cross-clust er Replicat ion Conf igurat ion to go to the Global Cross-clust er Replicat ion Conf igurat ion page. ii. In the Add Item part of the Inf oBet weenClust ers section, set key to AT -5KN# AT -MDU-T EST , set both availableBandwith and totalBandwith to 2000, and click add. iii. Choose MaxComput e Conf igurat ion > Project Management . Find multiregion and click Cross-clust er Replicat ion Conf igurat ion. iv. In the dialog box that appears, configure the parameters, as shown in the following figure. v. Click Save and then click St art Replicat ion. Procedure Example:
 1. In the AG of the default cluster AT-MDU-TEST, construct an upload tunnel data file in the directory
 of the same level as console, such as `echo "testtest" > uploaddata` .
 2. Go to the console command line and run the following commands to create a table and insert data
@@ -19206,7 +19206,7 @@ operation is successful.
 
 #### 19.4.2 Query the status of data synchronization between primary and secondary clusters
 
-between primary and secondary clusters This topic provides an example on how to query the status of data synchronization between the primary and secondary clusters in multi-region deployment scenarios. Prerequisites When you create a project in the AdminConsole, you have selected two clusters and set one as the default cluster. The following figure shows an example. In this example, the project is multiregion, and AT-MDU-TEST and AT-5KN are selected for it, with AT-MDU-TEST as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the project is MaxComput e Conf igurat ion > Project Management > Creat e Project . You have configured cross-cluster replication for the project. The following example demonstrates how to configure it. i. Choose MaxComput e Conf igurat ion > Global Cross-clust er Replicat ion Conf igurat ion to go to the Global Cross-clust er Replicat ion Conf igurat ion page. ii. In the Add Item part of the Inf oBet weenClust ers section, set key to AT -5KN# AT -MDU-T EST , set both availableBandwith and totalBandwith to 2000, and click add. iii. Choose MaxComput e Conf igurat ion > Project Management . Find multiregion and click Cross-clust er Replicat ion Conf igurat ion. iv. In the dialog box that appears, configure the parameters, as shown in the following figure. v. Click Save and then click St art Replicat ion. Procedure Example:
+between primary and secondary clusters This topic provides an example on how to query the status of data synchronization between the primary and secondary clusters in multi-region deployment scenarios. Prerequisites When you create a project in the AdminConsole, you have selected two clusters and set one as the default cluster. The following figure shows an example. Not e In this example, the project is multiregion, and AT-MDU-TEST and AT-5KN are selected for it, with AT-MDU-TEST as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the project is MaxComput e Conf igurat ion > Project Management > Creat e Project . You have configured cross-cluster replication for the project. The following example demonstrates how to configure it. i. Choose MaxComput e Conf igurat ion > Global Cross-clust er Replicat ion Conf igurat ion to go to the Global Cross-clust er Replicat ion Conf igurat ion page. ii. In the Add Item part of the Inf oBet weenClust ers section, set key to AT -5KN# AT -MDU-T EST , set both availableBandwith and totalBandwith to 2000, and click add. iii. Choose MaxComput e Conf igurat ion > Project Management . Find multiregion and click Cross-clust er Replicat ion Conf igurat ion. iv. In the dialog box that appears, configure the parameters, as shown in the following figure. v. Click Save and then click St art Replicat ion. Procedure Example:
 1. Compile the bodychecksync configuration file, which is used to send admintask.
 oyment on MaxCompute
 
@@ -19267,7 +19267,7 @@ and secondary clusters is displayed.
 
 This topic provides examples of cross-region direct read operations in multi-region deployment scenarios. Cross-region direct read can be implemented with or without cross-cluster access. oyment on MaxCompute When cross-cluster access is not configured and the data volume is large, cross-region direct read takes a long period of time. Direct read when cross-cluster access is not configured Example:
 1. In the AdminConsole, create two projects: testmdu and testcross5kn.
-In this example, AT-MDU-TEST and AT-5KN are selected for testmdu, with AT-MDU- TEST as the default cluster. AT-5KN is selected for testcross5kn and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the projects is MaxComput e Conf igurat ion > Project Management > Creat e Project .
+Not e In this example, AT-MDU-TEST and AT-5KN are selected for testmdu, with AT-MDU- TEST as the default cluster. AT-5KN is selected for testcross5kn and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the projects is MaxComput e Conf igurat ion > Project Management > Creat e Project .
 2. Create tables for testmdu and testcross5kn.
 
 ```
@@ -19281,9 +19281,9 @@ create table testrep(s string ); create table tablecross5kn (s string );
 use testcross5kn; select * from testmdu.testrep;
 ```
 
-If the specified data is returned, the cross-region direct read operation is successful. Direct read when cross-cluster access is configured Example:
+Not e If the specified data is returned, the cross-region direct read operation is successful. Direct read when cross-cluster access is configured Example:
 1. In the AdminConsole, create two projects: testmdu and testcross5kn.
-In this example, AT-MDU-TEST and AT-5KN are selected for testmdu, with AT-MDU- TEST as the default cluster. AT-5KN is selected for testcross5kn and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the projects is MaxComput e Conf igurat ion > Project Management > Creat e Project .
+Not e In this example, AT-MDU-TEST and AT-5KN are selected for testmdu, with AT-MDU- TEST as the default cluster. AT-5KN is selected for testcross5kn and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the projects is MaxComput e Conf igurat ion > Project Management > Creat e Project .
 2. Create tables for testmdu and testcross5kn.
 oyment on MaxCompute
 
@@ -19293,22 +19293,22 @@ create table testrep(s string ); create table tablecross5kn (s string );
 
 3. Construct some data for tables testrep and tablecross5kn.
 4. Configure cross-cluster replication for testmdu.
-Choose MaxComput e Conf igurat ion > Project Management . Find testmdu and click Cross-clust er Replicat ion Conf igurat ion.
+Not e Choose MaxComput e Conf igurat ion > Project Management . Find testmdu and click Cross-clust er Replicat ion Conf igurat ion.
 5. Run the following commands to read the table data in testmdu directly from testcross5kn:
 
 ```
 use testcross5kn; select * from testmdu.testrep;
 ```
 
-If the specified data is returned, the cross-region direct read operation is successful.
+Not e If the specified data is returned, the cross-region direct read operation is successful.
 
 #### 19.4.4 Cross-region JOIN
 
 This topic provides an example of cross-region JOIN in multi-region deployment scenarios. Example:
 1. In the AdminConsole, create two projects: crosssregion and crossregion02.
-In this example, AT-MDU-TEST and AT-70N are selected for crosssregion, with AT-MDU- TEST as the default cluster. AT-70N is selected for crossregion02 and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the projects is MaxComput e Conf igurat ion > Project Management > Creat e Project .
+Not e In this example, AT-MDU-TEST and AT-70N are selected for crosssregion, with AT-MDU- TEST as the default cluster. AT-70N is selected for crossregion02 and serves as the default cluster. The URL of Apsara Stack MaxCompute AdminConsole is ht t p://{odps_ag}:9090, which is port 9090 of MaxCompute AG. The operation entry to create the projects is MaxComput e Conf igurat ion > Project Management > Creat e Project .
 2. Configure cross-cluster replication for crosssregion.
-Choose MaxComput e Conf igurat ion > Project Management . Find crosssregion and click Cross-clust er Replicat ion Conf igurat ion.
+Not e Choose MaxComput e Conf igurat ion > Project Management . Find crosssregion and click Cross-clust er Replicat ion Conf igurat ion.
 3. Create a table named business for crosssregion.
 
 ```
@@ -19343,7 +19343,7 @@ tunnel upload product product;
 select pro.pid,pro.name,pro.type,pro.color,bus.name,bus.phone from crossregion02.produc t pro join crosssregion.business bus on pro.bid=bus.bid where bus.region='Shanghai';
 ```
 
-If the specified data is returned, the cross-region JOIN operation is successful.
+Not e If the specified data is returned, the cross-region JOIN operation is successful.
 
 ## 20 Security solution
 
@@ -19405,7 +19405,7 @@ export t1 from prj1 using a SQL task. The policy is defined as follows: `{`
 use prj1 -- Enable project protection and configure an exception policy. set ProjectProtection=true with exception /tmp/exception_policy.txt
 ```
 
-When you configure the exception policy, ensure that the principal cannot update the data resources or recreate an object with the same name (using DROP TABLE and CREATE TABLE). This prevents data leakage due to time-of-check to time-of-use (TOC2TOU). Method 2: Configure trusted projects. Configure prj2 as a trusted project of prj1 to enable data flow from prj1 to prj2. For more information, see Data export methods when project protection is enabled.
+Not e When you configure the exception policy, ensure that the principal cannot update the data resources or recreate an object with the same name (using DROP TABLE and CREATE TABLE). This prevents data leakage due to time-of-check to time-of-use (TOC2TOU). Method 2: Configure trusted projects. Configure prj2 as a trusted project of prj1 to enable data flow from prj1 to prj2. For more information, see Data export methods when project protection is enabled.
 
 ```
 use prj1
@@ -19440,7 +19440,7 @@ Remove a user When a user leaves the project team, Alice needs to remove the use
 remove user <full_username> -- Remove a user from a project.
 ```
 
-After a user is removed, the user no longer has any access permissions on project resources. Before you remove a user who has been assigned a role, you must first revoke the role. For information about roles, see Role management. After a user is removed, the ACL authorization related to the user is retained. However, the policy authorization at the role level is revoked, and the policy authorization at the project level is retained. If the user is added to the project again, the previous ACL authorization of the user is re-activated. MaxCompute does not support complete removal of a user and the relevant authorization data.
+Not e After a user is removed, the user no longer has any access permissions on project resources. Before you remove a user who has been assigned a role, you must first revoke the role. For information about roles, see Role management. After a user is removed, the ACL authorization related to the user is retained. However, the policy authorization at the role level is revoked, and the policy authorization at the project level is retained. If the user is added to the project again, the previous ACL authorization of the user is re-activated. MaxCompute does not support complete removal of a user and the relevant authorization data.
 
 #### 20.4.3 Role management
 
@@ -19450,7 +19450,7 @@ A role is a collection of access permissions. A role can be used to assign the s
 create role <rolename> -- Create a role. drop role <rolename> -- Delete a role. grant <rolename> to <username> -- Assign a role to a user. revoke <rolename> from <username> -- Revoke the role of a user.
 ```
 
-When you delete a role, MaxCompute checks whether there are users assigned with this role. If the role is assigned to users, the role fails to be deleted. To delete the role, you must revoke this role from all users.
+Not e When you delete a role, MaxCompute checks whether there are users assigned with this role. If the role is assigned to users, the role fails to be deleted. To delete the role, you must revoke this role from all users.
 
 #### 20.4.4 ACL authorization actions
 
@@ -19489,13 +19489,13 @@ Authorization usually involves three elements: subject, object, and action. In M
 | Resource, inst ance, job, volume | Delet e | Delete permissions. |
 | Resource, inst ance, job, volume | All | All the preceding permissions. |
 
-In the preceding permissions, the CreateTable action of project objects, as well as the Select, Alter, Update, and Drop actions of table objects, must be used together with the CreateInstance action of project objects. Before using the preceding permissions to complete actions, you must assign the CreateInstance permission. After adding users or creating roles, these users or roles should be authorized. The ACL authorization mechanism of MaxCompute is object-based. Authorization data (the access control list, or ACL) is considered as a sub-resource of an object). Therefore, ACL authorization can be performed only when the objects exist. When the objects are deleted, authorized permission data is automatically deleted. The ACL of MaxCompute supports authorization using commands like SQL92-defined GRANT/REVOKE commands. Use the corresponding authorization commands to authorize existing project objects or revoke their authorization. Command synt ax:
+Not e In the preceding permissions, the CreateTable action of project objects, as well as the Select, Alter, Update, and Drop actions of table objects, must be used together with the CreateInstance action of project objects. Before using the preceding permissions to complete actions, you must assign the CreateInstance permission. After adding users or creating roles, these users or roles should be authorized. The ACL authorization mechanism of MaxCompute is object-based. Authorization data (the access control list, or ACL) is considered as a sub-resource of an object). Therefore, ACL authorization can be performed only when the objects exist. When the objects are deleted, authorized permission data is automatically deleted. The ACL of MaxCompute supports authorization using commands like SQL92-defined GRANT/REVOKE commands. Use the corresponding authorization commands to authorize existing project objects or revoke their authorization. Command synt ax:
 
 ```
 grant actions on object to subject revoke actions on object from subject actions ::= action_item1, action_item2, ... object ::= project project_name | table schema_name | instance inst_name | function func_na me | resource res_name subject ::= user full_username | role role_name
 ```
 
-The ACL authorization commands of MaxCompute do not support the [WITH GRANT OPTION] parameter. That is, when user A authorizes user B to access an object, user B cannot authorize user C to access the same object. Therefore, all authorization actions must be completed by users with at least one of the following identities: Project owner Users with the admin role in the project Object creators in the project ACL authorization example: Scenario: Users a***@aliyun.com and b***@aliyun.com are new members of test_project. In test_project, they must submit jobs, create data tables, and view existing objects of the project. The administrator then takes the following authorization actions:
+Not e The ACL authorization commands of MaxCompute do not support the [WITH GRANT OPTION] parameter. That is, when user A authorizes user B to access an object, user B cannot authorize user C to access the same object. Therefore, all authorization actions must be completed by users with at least one of the following identities: Project owner Users with the admin role in the project Object creators in the project ACL authorization example: Scenario: Users a***@aliyun.com and b***@aliyun.com are new members of test_project. In test_project, they must submit jobs, create data tables, and view existing objects of the project. The administrator then takes the following authorization actions:
 
 ```
 use test_project -- Open a project. security add user aliyun$a***@aliyun.com -- Add a user. add user aliyun$b***@aliyun.com -- Add a user. create role worker -- Create a role. grant worker TO aliyun$a***@aliyun.com -- Assign a role. grant worker TO aliyun$b***@aliyun.com -- Assign a role. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test_pro ject TO ROLE worke r -- Authorize a role.
@@ -19521,7 +19521,7 @@ View t he aut horizat ion list of an object
 show acl for <objectName> [on type <objectType>] -- View the authorization list of a specified object.
 ```
 
-If [on type <objectType>] is not specified, the default type is table. MaxCompute uses characters A, C, D, and G to indicate the permissions of users or roles. The characters are described as follows: A: allow. Access is allowed. D: deny. Access is denied. C: condition. This is a conditional authorization. This character appears only in the policy authorization system. For more information, see Condition block structure. G: grant. You can grant permissions to this object. Example:
+Not e If [on type <objectType>] is not specified, the default type is table. MaxCompute uses characters A, C, D, and G to indicate the permissions of users or roles. The characters are described as follows: A: allow. Access is allowed. D: deny. Access is denied. C: condition. This is a conditional authorization. This character appears only in the policy authorization system. For more information, see Condition block structure. G: grant. You can grant permissions to this object. Example:
 
 ```
 odps@test_project> show grants for aliyun$o***@aliyun.com [roles] dev Authorization Type: ACL [role/dev] A projects/test_project/tables/t1: Select [user/o***@aliyun.com] A projects/test_project: CreateTable | CreateInstance | CreateFunction | List A projects/test_project/tables/t1: Describe | Select Authorization Type: Policy [role/dev] AC projects/test_project/tables/test_*: Describe DC projects/test_project/tables/alifinance_*: Select [user/o***@aliyun.com] A projects/test_project: Create* | List AC projects/test_project/tables/alipay_*: Describe | Select Authorization Type: ObjectCreator AG projects/test_project/tables/t6: All AG projects/test_project/tables/t7: All
@@ -19555,7 +19555,7 @@ Add a resource to be shared to the package Run the following commands to add a r
 add project_object to package package_name [with privileges <privileges>] remove project_object from package package_name project_object ::= table table_name | instance inst_name | function func_name | resource re s_name privileges ::= action_item1, action_item2, ...
 ```
 
-The types of supported objects exclude projects, so you cannot use a package to create objects in other projects. In addition to the objects, the operation permissions on the objects are also added to the package. When not passed [with privileges Privileges] When you specify an action permission, the default is read-only, that is, read/describe/select. An object (resource) and its permissions are considered as a whole. You can delete resources in a package. The permissions are revoked when resources are deleted. Allow other projects to use a package Run the following commands to allow other projects to use a package:
+Not e The types of supported objects exclude projects, so you cannot use a package to create objects in other projects. In addition to the objects, the operation permissions on the objects are also added to the package. When not passed [with privileges Privileges] When you specify an action permission, the default is read-only, that is, read/describe/select. An object (resource) and its permissions are considered as a whole. You can delete resources in a package. The permissions are revoked when resources are deleted. Allow other projects to use a package Run the following commands to allow other projects to use a package:
 
 ```
 allow project <prjname> to install package <pkgname> [using label <number>]
@@ -19605,13 +19605,13 @@ The contents of /tmp/policy.txt are as follow: `{`
 install package <pkgname>;
 ```
 
-The pkgName of a package to be installed must be in the format of <projectName>. <packageName>. Uninstall package Run the following commands to uninstall a package:
+Not e The pkgName of a package to be installed must be in the format of <projectName>. <packageName>. Uninstall package Run the following commands to uninstall a package:
 
 ```
 uninstall package <pkgname>;
 ```
 
-The pkgName of a package to be uninstalled must be in the format of <projectName>. <packageName>. View packages Run the following commands to view packages:
+Not e The pkgName of a package to be uninstalled must be in the format of <projectName>. <packageName>. View packages Run the following commands to view packages:
 
 ```
 show packages -- View the list of packages already created and installed. describe package <pkgname> -- View details of a package.
@@ -19641,7 +19641,7 @@ protection is enabled After you enable project protection, you may soon encounte
 SET ProjectProtection=true WITH EXCEPTION <policyFile>
 ```
 
-This policy mechanism is different from the policy-based authorization mechanism (though the command syntax is the same). This policy describes exceptions of the project protection mechanism. All access requests matching the policy are not subject to the project protection rules. Example: The following policy allows the user A***@aliyun.com to export data out of the alipay project when performing the SELECT operation on the alipay.table_test table in a SQL task: `{`
+Not e This policy mechanism is different from the policy-based authorization mechanism (though the command syntax is the same). This policy describes exceptions of the project protection mechanism. All access requests matching the policy are not subject to the project protection rules. Example: The following policy allows the user A***@aliyun.com to export data out of the alipay project when performing the SELECT operation on the alipay.table_test table in a SQL task: `{`
 
 ```json
 "Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$A***@aliyun.com", "Action":["odps:Select"], "Resource":"acs:odps:*:projects/alipay/tables/table_test", "Condition":{ "StringEquals": { "odps:TaskType":["DT", "SQL"]
@@ -19677,7 +19677,7 @@ Policy authorization is a principal-based authorization. Permission data authori
 GET POLICY; -- Read the project policy. PUT POLICY <policyFile>; -- Set (overwrite) the project policy. GET POLICY ON ROLE <roleName>; -- Read the policy of a role in the project. PUT POLICY <policyFile> ON ROLE <roleName>; -- Set (overwrite) the policy of a role in the project.
 ```
 
-MaxCompute currently supports project policies and role policies. A project policy applies to all users of the project, while a role policy applies only to users to whom the role is assigned. You must specify a principal (user) for project policies, but you cannot specify a principal for role policies, because the role will be assigned to users. An example of project policy authorization is as follows: Scenario: Authorized user a***@aliyun.com can only submit a request before 23:59:59 2017-11-11 from an IP address in the subnet 10.32.180.0–23, and can only perform the CreateInstance, CreateTable, and List operations in test_project. No tables in test_project can be dropped. The policy is as follows: `{`
+Not e MaxCompute currently supports project policies and role policies. A project policy applies to all users of the project, while a role policy applies only to users to whom the role is assigned. You must specify a principal (user) for project policies, but you cannot specify a principal for role policies, because the role will be assigned to users. An example of project policy authorization is as follows: Scenario: Authorized user a***@aliyun.com can only submit a request before 23:59:59 2017-11-11 from an IP address in the subnet 10.32.180.0–23, and can only perform the CreateInstance, CreateTable, and List operations in test_project. No tables in test_project can be dropped. The policy is as follows: `{`
 
 ```json
 "Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$a***@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
@@ -19741,7 +19741,7 @@ MaxCompute currently supports project policies and role policies. A project poli
 "Effect":"Deny", "Principal":"ALIYUN$a***@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/test_project/tables/*"
 ```
 
-`}]` `}` Currently, only role policies and project policies are supported, and user policies are not. Every policy only supports one policy file. Since put policies override existing policies, you must follow the sequence below to modify a policy: i. Get Policy. ii. Merge policy statements. iii. Put policies.
+`}]` `}` Not e Currently, only role policies and project policies are supported, and user policies are not. Every policy only supports one policy file. Since put policies override existing policies, you must follow the sequence below to modify a policy: i. Get Policy. ii. Merge policy statements. iii. Put policies.
 
 #### 20.8.2 Policy-related terms
 
@@ -19805,7 +19805,7 @@ MaxCompute supports the conditional keywords reserved by Alibaba Cloud Service (
 | acs:UserAgent | String | The UserAgent of the client that sent the request. |
 | acs:Ref erer | String | The HTTP referer that sent the request. |
 
-acs:SourceIp refers to the remote_ip of the HTTP connection, not the (leftmost) client IP address in the x-forwarded-for HTTP header field. For example, if 10.230.205.105 is a LAN IP address, acs:SourceIp is the egress gateway IP address of this LAN. If the network egress uses a proxy server, acs:SourceIp is the IP address of the proxy server. If the request traverses across multiple proxy servers, acs:SourceIp is the IP address of the final proxy server. The value of acs:SourceIp may vary depending on the rules configured on the proxy server.
+Not e acs:SourceIp refers to the remote_ip of the HTTP connection, not the (leftmost) client IP address in the x-forwarded-for HTTP header field. For example, if 10.230.205.105 is a LAN IP address, acs:SourceIp is the egress gateway IP address of this LAN. If the network egress uses a proxy server, acs:SourceIp is the IP address of the proxy server. If the request traverses across multiple proxy servers, acs:SourceIp is the IP address of the final proxy server. The value of acs:SourceIp may vary depending on the rules configured on the proxy server.
 
 #### 20.8.4 Access policy norm
 
@@ -20059,7 +20059,7 @@ bin/ conf/ lib/ plugins/
 project_name= access_id=******************* access_key=********************* end_point= <MaxCompute service address>
 ```
 
-Set access_id and access_key to the AccessKey ID and AccessKey Secret of your cloud account. If you frequently use a project, enter the project name after project_name=. Then, you do not need to run the use project_name; command each time you log on to the client.
+Not e Set access_id and access_key to the AccessKey ID and AccessKey Secret of your cloud account. If you frequently use a project, enter the project name after project_name=. Then, you do not need to run the use project_name; command each time you log on to the client.
 4. After the modifications, run the odps file in the bin directory (./bin/odpscmd in a Linux system or ./
 bin/odpscmd.bat in a Windows system). Then, you are ready to run SQL statements. An example is as follows:
 
@@ -20075,7 +20075,7 @@ This topic describes some configurations and corresponding parameters of the Max
 odps@ >./bin/odpscmd -h;
 ```
 
-You can also enter h; or help; (case insensitive) in the interaction mode. Startup parameters Run the following command to specify a number of startup parameters:
+Not e You can also enter h; or help; (case insensitive) in the interaction mode. Startup parameters Run the following command to specify a number of startup parameters:
 
 ```
 Usage: odpscmd [OPTION]... where options include:
@@ -20127,7 +20127,7 @@ ID = 20170528122440389g98cmlmf Log view: http://webconsole.odps.aliyun-inc.com:8
 [admin: ~]$odpscmd Aliyun ODPS Command Line Tool Version 1.0 @Copyright 2012 Alibaba Cloud Computing Co., Ltd. All rights reserved. XXX@ XXX> INSERT OVERWRITE TABLE DUAL SELECT * FROM DUAL;
 ```
 
-The first XXX indicates the identifier of MaxCompute, and the second XXX indicates the project to which you belong. Enter a command at the cursor (terminated by a semicolon), and press Enter to run it. Command output The output of a SQL statement is in either HumanReadable (default) or MachineReadable format. If you use the -M parameter when running odpscmd, the output format is CSV. This function currently applies only to SELECT and READ statements, and takes effect when reading data. Continue run When you run odpscmd in -e or -f mode and want to start with an intermediate statement among a few statements, you can use the -k parameter. This parameter indicates that the execution starts from the specified statement while the preceding statements are skipped. If the parameter value is equal to or smaller than 0, execution starts from the first statement. A statement terminated by a semi-colon is considered a valid statement. At runtime, the process indicates the specific statement that is running successfully or fails. For example, the /tmp/dual.sql file includes the following three SQL statements:
+Not e The first XXX indicates the identifier of MaxCompute, and the second XXX indicates the project to which you belong. Enter a command at the cursor (terminated by a semicolon), and press Enter to run it. Command output The output of a SQL statement is in either HumanReadable (default) or MachineReadable format. If you use the -M parameter when running odpscmd, the output format is CSV. Not e This function currently applies only to SELECT and READ statements, and takes effect when reading data. Continue run When you run odpscmd in -e or -f mode and want to start with an intermediate statement among a few statements, you can use the -k parameter. This parameter indicates that the execution starts from the specified statement while the preceding statements are skipped. If the parameter value is equal to or smaller than 0, execution starts from the first statement. A statement terminated by a semi-colon is considered a valid statement. At runtime, the process indicates the specific statement that is running successfully or fails. For example, the /tmp/dual.sql file includes the following three SQL statements:
 
 ```
 drop table dual; create table dual (dummy string); insert overwrite table dual select count(*) from dual;
@@ -20185,7 +20185,7 @@ ODPS- 0110999: Critical! Internal error happened in commit operation and rollbac
 
 #### 21.2.1 Install Eclipse
 
-This topic describes how to install the Eclipse plug-in. Context MaxCompute provides the Eclipse plug-in to help you easily use the Java SDKs for MapReduce and UDFs in your development work. This plug-in can simulate the running process of MapReduce or UDFs. It provides local debugging methods and simple template generation features. You can download the software package from Eclipse. Unlike the local running mode of MapReduce, the Eclipse plug-in cannot synchronize data with MaxCompute. You need to manually copy the required data to the warehouse directory of Eclipse. Procedure
+This topic describes how to install the Eclipse plug-in. Context MaxCompute provides the Eclipse plug-in to help you easily use the Java SDKs for MapReduce and UDFs in your development work. This plug-in can simulate the running process of MapReduce or UDFs. It provides local debugging methods and simple template generation features. You can download the software package from Eclipse. Not e Unlike the local running mode of MapReduce, the Eclipse plug-in cannot synchronize data with MaxCompute. You need to manually copy the required data to the warehouse directory of Eclipse. Procedure
 1. Decompress the Eclipse package to obtain the following JAR file:
 odps-eclipse-plugin-bundle-0.15.0.jar
 2. Place the JAR file in the plugins folder under the Eclipse installation directory.
@@ -20204,9 +20204,9 @@ upper-right corner, as shown in the following figure. The icon indicates that th
 
 This topic describes the first method to create a project in the Eclipse development plugin. Procedure
 1. Start Eclipse. Choose File > New > Project > ODPS > ODPS Project in the upper-left corner to
-create a project, as shown in the following figure. Step 1 In this example, the project name is ODPS.
+create a project, as shown in the following figure. Step 1 Not e In this example, the project name is ODPS.
 2. After the ODPS project is created, a dialog box is displayed, as shown in the following figure. Set
-Project name, select the path of the MaxCompute client, and then click Finish. Step 2 The client must be installed in advance.
+Project name, select the path of the MaxCompute client, and then click Finish. Step 2 Not e The client must be installed in advance.
 3. After creating a project, you can see the directory structure on the left-side Package Explorer
 pane, as shown in the following figure. Step 3
 
@@ -20216,7 +20216,7 @@ This topic describes the second method to create a project in the Eclipse develo
 1. Start Eclipse. Click New in the upper-left corner, as shown in the following figure.
 Step 1
 2. In the dialog box that appears, select ODPS Project and click Next , as shown in the following
-figure. Step 2 In this example, the project name is ODPS.
+figure. Step 2 Not e In this example, the project name is ODPS.
 3. The subsequent steps are the same as those in method 1. After installing the Eclipse plugin, you
 can use it to compile MapReduce or UDF programs. For a MapReduce running example, see MapReduce running example. For a UDF development and running example, see UDF development and running example.
 
@@ -20269,7 +20269,7 @@ for (int i = 0; i < record.getColumnCount(); i++) { String[] words = record.get(
 4. In Eclipse, right-click the src directory, and choose New > Reduce from the shortcut menu, as
 shown in the following figure. Reducer
 5. In the dialog box that appears, enter the name of the Reduce class and click Finish.
-This example uses UserReducer.
+Not e This example uses UserReducer.
 6. On the left-side Package Explorer, the UserReducer.java file is generated in the src directory. The
 file contains a Reduce class template. The package name is odps by default. The template content is as follows:
 
@@ -20313,9 +20313,9 @@ from the shortcut menu. In the dialog box that appears, click OK. A dialog box i
 11. Select example_project as the MaxCompute project. Click Finish to start running the MapReduce
 program locally. If the output is as shown in the following figure, the local running is successful. Console
 12. The execution result is stored in the warehouse directory. Refresh the ODPS project, as shown in the
-following figure. Output wc_out is the output directory, and R_000000 is the result file. After confirming that the result is correct through local debugging, you can use the export function of Eclipse to package the MapReduce program for subsequent use in the distributed environment.
+following figure. Output Not e wc_out is the output directory, and R_000000 is the result file. After confirming that the result is correct through local debugging, you can use the export function of Eclipse to package the MapReduce program for subsequent use in the distributed environment.
 13. The export procedure is as follows:
-i. Right-click the src directory and select Export from the shortcut menu, as shown in the following figure. Step 1 ii. Select JAR file as the export destination, as shown in the following figure. Step 2 iii. You only need to export the package (com.aliyun.odps.mapred.open.example) in the src directory. Set JAR file to mr- examples.jar, as shown in the following figure. Step 3 In this example, the program package is named mr-examples.jar. You can name the package based on your actual requirements. iv. Click OK. The export process is complete.
+i. Right-click the src directory and select Export from the shortcut menu, as shown in the following figure. Step 1 ii. Select JAR file as the export destination, as shown in the following figure. Step 2 iii. You only need to export the package (com.aliyun.odps.mapred.open.example) in the src directory. Set JAR file to mr- examples.jar, as shown in the following figure. Step 3 Not e In this example, the program package is named mr-examples.jar. You can name the package based on your actual requirements. iv. Click OK. The export process is complete.
 14. If you want to create a new project locally, you can create a new subdirectory (at the same level as
 example_project) under warehouse. The following figure shows the directory structure. An example of t he schema f ile: Non-part it ioned t able:
 
@@ -20341,7 +20341,7 @@ This topic describes how to quickly run a UDF from the menu bar of the Eclipse p
 1. Choose Run > Run Conf igurat ions from the menu bar. A dialog box is displayed, as shown in the
 following figure. Run Configurations 1
 2. To create a run configuration, select the UDF class and type to be run, select an ODPS project, and
-fill in the input table information, as shown in the following figure. Run Configurations 2 There are three parameters in the Input Table area: Enter the input table of the UDF in Table. Enter the partitions from which data is read in Partitions. Separate multiple partitions by commas (,). Enter the columns in which data is transmitted as UDF parameters in Columns. Separate multiple columns by commas (,).
+fill in the input table information, as shown in the following figure. Run Configurations 2 Not e There are three parameters in the Input Table area: Enter the input table of the UDF in Table. Enter the partitions from which data is read in Partitions. Separate multiple partitions by commas (,). Enter the columns in which data is transmitted as UDF parameters in Columns. Separate multiple columns by commas (,).
 3. Click Run. The running result is displayed in the console, as shown in the following figure.
 Console
 
@@ -20351,7 +20351,7 @@ run a UDF This topic describes how to use the right-click shortcut menu to quick
 1. Right-click a udf.java file (such as UDFExample.java) and choose Run As > Run UDF|UDAF|UDT F
 from the shortcut menu, as shown in the following figure. Step 1
 2. In the dialog box that appears, configure the relevant parameters, as shown in the following
-figure. Step 2 Table indicates the input table of the UDF. Partitions indicate the partitions from which data is read. Multiple partitions are separated by commas. Columns indicate the columns from which data is read. Multiple columns are separated by commas. These parameters are imported to the UDF as parameters.
+figure. Step 2 Not e Table indicates the input table of the UDF. Partitions indicate the partitions from which data is read. Multiple partitions are separated by commas. Columns indicate the columns from which data is read. Multiple columns are separated by commas. These parameters are imported to the UDF as parameters.
 3. Click Finish to run the UDF and obtain the result.
 
 ##### 21.2.4.2 Run a UDF program
@@ -20384,7 +20384,7 @@ figure. Step 3-1
 ss2s:A1,A2 ss2s:A1,A2 ss2s:A1,A2 ss2s:A1,A2
 ```
 
-This example shows how to run a UDF program. You can use the same method to run a UDTF program.
+Not e This example shows how to run a UDF program. You can use the same method to run a UDTF program.
 
 #### 21.2.5 Graph running example
 
@@ -20396,7 +20396,7 @@ PageRank.java code 2
 3. In the pop-up dialog box, enter the information as shown below.
 Configuration Drawings
 4. Click Finish. Check the running result, as shown in the following figure.
-Running Result Check the local computing result as shown below: Local computing result After passing the debugging, you can package the program, upload it to MaxCompute in the form of JAR resource, and submit the Graph job. For more information about the packaging process, see MapReduce running example. For more information about the directory structure of local results, see MapReduce running example. For more information about uploading JAR resources, see Compile and run a Graph job.
+Running Result Check the local computing result as shown below: Local computing result After passing the debugging, you can package the program, upload it to MaxCompute in the form of JAR resource, and submit the Graph job. Not e For more information about the packaging process, see MapReduce running example. For more information about the directory structure of local results, see MapReduce running example. For more information about uploading JAR resources, see Compile and run a Graph job.
 
 ## 22 MaxCompute FAQ
 
@@ -20432,7 +20432,7 @@ to the quota list on MaxCompute in Big Data Manager. How do I modify quota group
 sh/apsara/deploy/rpc_wrapper/rpc.sh setquota -i $QUOTAID -a $QUOTANAME -t fair -s$max_c pu_quota $max_mem_quota -m $min_cpu_quota $min_mem_quota
 ```
 
-If $QUOTAID already exists, that quota is modified. Otherwise, a quota with that ID is created.
+Not e If $QUOTAID already exists, that quota is modified. Otherwise, a quota with that ID is created.
 2. Log on to MaxCompute in Big Data Manager and configure relevant settings.
 How do I perform simple operations on the metadata warehouse?
 1. Log on to the MaxCompute AG.
@@ -20454,7 +20454,7 @@ show tables;
 desc <table>;
 ```
 
-How do I use the smart metadata warehouse (package+view)? You need to install the metadata warehouse enhancement package package+view first. Before you install the package, ensure that you are the owner of a project that is granted the package installation permission. After you have installed the package, you can follow the instructions provided in Package usage to use the smart metadata warehouse. The following is a brief description on how to use the smart metadata warehouse: Inst allat ion package+view is a metadata warehouse enhancement package that depends on the metadata warehouse. You can install it by running the `odpscmd --config=odps_config.ini -f init.sql` command in the system metadata warehouse directory. If the system asks you to re-install the package, remove the create package comment in the first line of init.sql and then run the preceding command again. odps_conf ig.ini: This configuration file contains the configuration of the account used to access the metadata warehouse, which is also the project owner of the metadata warehouse. Aut horizat ion Run the following command to allow a project, such as p1, to install the package+view package:
+How do I use the smart metadata warehouse (package+view)? You need to install the metadata warehouse enhancement package package+view first. Before you install the package, ensure that you are the owner of a project that is granted the package installation permission. After you have installed the package, you can follow the instructions provided in Package usage to use the smart metadata warehouse. The following is a brief description on how to use the smart metadata warehouse: Inst allat ion package+view is a metadata warehouse enhancement package that depends on the metadata warehouse. You can install it by running the `odpscmd --config=odps_config.ini -f init.sql` command in the system metadata warehouse directory. Not e If the system asks you to re-install the package, remove the create package comment in the first line of init.sql and then run the preceding command again. odps_conf ig.ini: This configuration file contains the configuration of the account used to access the metadata warehouse, which is also the project owner of the metadata warehouse. Aut horizat ion Run the following command to allow a project, such as p1, to install the package+view package:
 
 ```
 odpscmd --config=odps_config.ini -e "allow project p1 to install package systables;"
@@ -20478,7 +20478,7 @@ After the installation is complete, you can run the following command to see the
 desc package meta.systables;
 ```
 
-After you have completed the preceding operations, you can start to use the smart metadata warehouse. Views To learn the definition of table schema, refer to the relevant content in the view description, which is available after you run the following command:
+After you have completed the preceding operations, you can start to use the smart metadata warehouse. Views Not e To learn the definition of table schema, refer to the relevant content in the view description, which is available after you run the following command:
 
 ```
 desc viewname
@@ -20515,7 +20515,7 @@ Not es By default, the smart metadata warehouse allows you to query data from th
 1. Log on to the AdminConsole and choose MaxComput e Conf igurat ion > Project Management .
 Select the project to which you want to grant Java sandbox permissions and double-click it to open the property dialog box.
 2. In the ODPS Sandbox Set t ing area, enter the method or class you want to use in Sandbox Java
-Permissions. Make sure that your input is in the correct format. The following example is for demonstration only. Enter each item in a single line and end it with a semicolon (;).
+Permissions. Not e Make sure that your input is in the correct format. The following example is for demonstration only. Enter each item in a single line and end it with a semicolon (;).
 
 ```
 permission java.lang.RuntimePermission "readSystemProperty"; permission java.lang.Runti mePermission "modifyThreadGroup"; permission java.security.AllPermission;

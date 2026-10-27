@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 15
 source_pdf: "295b10655274d970_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Sc"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Scanner%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner Operations and Maintenance Guide 20260828
@@ -49,7 +49,16 @@ Click Deploy in the continuous integration and continuous deployment (CI/CD) env
 
 **environment fails to be deployed**
 
-The continuous integration and continuous deployment (CI/CD) environment fails to be deployed. An error occurs in the environment. An error occurs in the image package of Cloud Security Scanner.
+**Problem description**
+
+The continuous integration and continuous deployment (CI/CD) environment fails to be deployed.
+
+**Possible causes**
+
+An error occurs in the environment. An error occurs in the image package of Cloud Security Scanner.
+
+**Troubleshooting**
+
 1. Apply for another environment for the deployment. If the deployment is successful in the
 new environment, an error may occur in the old environment.
 2. If the deployment fails in multiple environments, an error may occur in the image package.
@@ -61,7 +70,16 @@ In this case, contact the developers of Cloud Security Scanner to obtain a new p
 
 **page of Cloud Security Scanner**
 
-After I complete the deployment and log on to the control side, error codes such as Error and SystemError appear on the web page. The request timed out. The service on the control side is abnormal. An error occurs in the service on the control side.
+**Problem description**
+
+After I complete the deployment and log on to the control side, error codes such as Error and SystemError appear on the web page.
+
+**Possible causes**
+
+The request timed out. The service on the control side is abnormal. An error occurs in the service on the control side.
+
+**Troubleshooting**
+
 1. Open the browser developer tool, view the network request of the corresponding operation,
 view and copy the request ID in the response body, and then query the specific error message in the Original Equipment Manufacturer (OEM) log. m O&M
 2. Refer to the topics in the Appendix to query the IP addresses and passwords of the jump
@@ -75,7 +93,12 @@ of the server. The logs are stored in the `/home/moresec/logs/` directory. Check
 
 **is abnormal**
 
+**Possible causes**
+
 The machine time of the Internet engine used by Cloud Security Scanner is inconsistent with the machine time of the control side. The environment in which the Internet engine runs is abnormal. Other causes.
+
+**Troubleshooting**
+
 1. Refer to the topics in the Appendix to query the IP address and password of the Internet
 engine. Use the queried information to log on to the machine on which the Internet engine runs. Then, view the system time and check whether the system time is consistent with the system time of the control side. If the system times are different, the issue is caused by the time inconsistency. Wait for up to 5 minutes until the scheduled script synchronizes time.
 2. If the system times are the same, the issue may be caused by the abnormal environment in
@@ -88,6 +111,8 @@ type of the abnormal engine in cluster.log.
 **engine of Cloud Security Scanner**
 
 **is abnormal**
+
+**Possible causes**
 
 The machine time of the private engine used by Cloud Security Scanner is inconsistent with the machine time of the control side. The environment in which the private engine runs is abnormal. m O&M Other causes.
 1. Go to the web page in the control side and restart the private engine. If the error persists,
@@ -103,7 +128,16 @@ type of the abnormal engine in cluster.log. ess troubleshooting
 
 **imported**
 
-Assets fail to be imported on the control-side web page. The Internet scan engine is abnormal. The private scan engine is abnormal. The request timed out. The quota for asset import is insufficient.
+**Problem description**
+
+Assets fail to be imported on the control-side web page.
+
+**Possible causes**
+
+The Internet scan engine is abnormal. The private scan engine is abnormal. The request timed out. The quota for asset import is insufficient.
+
+**Troubleshooting**
+
 1. To view the status of the Internet DPI engine, go to the management console page and
 choose Configuration Management > DPI Engine Management > Public Assets. You can also log on to the OEM database and execute the following SQL statement to query the cluster status of the Internet DPI engine:
 
@@ -130,7 +164,14 @@ the response body, and then use the ID to query the specific failure cause in th
 
 **assets**
 
-ess troubleshooting When I import assets on the control-side web page, the progress bar is not updated on the import details page. The Internet scan engine is abnormal. The private scan engine is abnormal. A large number of tasks run at the same time on the engine side, and the current import task is not started.
+ess troubleshooting When I import assets on the control-side web page, the progress bar is not updated on the import details page.
+
+**Possible causes**
+
+The Internet scan engine is abnormal. The private scan engine is abnormal. A large number of tasks run at the same time on the engine side, and the current import task is not started.
+
+**Troubleshooting**
+
 1. Check the status of the Internet scan engine by using the method described in the Scenario
 1: Assets fail to be imported topic.
 2. Check the status of the private scan engine by using the method described in the Scenario
@@ -146,7 +187,16 @@ complete. After the current task is scheduled on the engine side, check whether 
 
 **Initialization**
 
-When I create an asset custom update detection task on the web page of the control side, the status of the task is always displayed as Initialization. The Internet scan engine is abnormal. The private scan engine is abnormal. A large number of tasks run at the same time on the engine side, and the current import task is not started.
+**Problem description**
+
+When I create an asset custom update detection task on the web page of the control side, the status of the task is always displayed as Initialization.
+
+**Possible causes**
+
+The Internet scan engine is abnormal. The private scan engine is abnormal. A large number of tasks run at the same time on the engine side, and the current import task is not started.
+
+**Troubleshooting**
+
 1. Check whether the Internet scan engine is normal. If the engine is abnormal, restart the
 engine.
 2. Check whether the private scan engine is normal. If the engine is abnormal, restart the
@@ -158,7 +208,16 @@ running but the task status is still Initialization, the scan engine may be abno
 
 **be downloaded**
 
-When I go to the control-side web page and click Download for a report, I cannot download the report as an Excel file. An Object Storage Service (OSS) issue occurs.
+**Problem description**
+
+When I go to the control-side web page and click Download for a report, I cannot download the report as an Excel file.
+
+**Possible causes**
+
+An Object Storage Service (OSS) issue occurs.
+
+**Troubleshooting**
+
 1. If the request operation is valid, contact the OSS team to troubleshoot the issue.
 
 ## 4 Appendix

@@ -5,7 +5,7 @@ doc_version: "20231024"
 pdf_pages: 228
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Auto Scaling Developer Guide 20231024.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/ESS%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Auto%20Scaling%20Developer%20Guide%2020231024.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Auto Scaling Developer Guide 20231024
@@ -297,7 +297,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the upper-right c
 > <yourRoleArn>: Replace the variable parameter with the ARN of your RAM role.
 > "sts.aliyuns.com": Replace the variable parameter with the endpoint of STS.
 
-```java
+```
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -315,6 +315,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpoint is sts-vpc.${global:region}.${global:internet-domain}.
@@ -337,9 +342,15 @@ private static String callAssumeRole(IAcsClient client) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample code provides an example on how to call the
 CreateScalingGroup operation of Auto Scaling.
 
@@ -388,6 +399,8 @@ n the previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}`
 
 ### 2.5 Obtain the values of common header parameters
 
@@ -558,11 +571,18 @@ g Auto Scaling SDK for Java
         DescribeScalingGroupsResponse response;
         try {
             response = client.getAcsResponse(request);
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 ### 3.2 Work with Auto Scaling SDK for Java
 
@@ -657,6 +677,8 @@ CreateScalingGroupRequest request = new CreateScalingGroupRequest(); request.set
     e.printStackTrace();
 ```
 
+`}`
+
 | In most cases, all response fields are deserialized into the response. You can call | response.getXXX() | to obtain the values of the response fields. |
 |---|---|---|
 | System.out.println(response.getScalingGroups()); |   |   |
@@ -693,6 +715,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 #### 3.2.6 Use CommonRequest to call API operations
 
@@ -782,7 +806,7 @@ uery the details of an instance, this parameter is required.
             e.printStackTrace();
 ```
 
-Auto Scaling SDK for Python
+`}` `}` `}` Auto Scaling SDK for Python
 
 ## 4 Call examples of Auto Scaling SDK for Python
 
@@ -1099,6 +1123,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create a request and configure the required parameters.
     request := ess.CreateDescribeScalingGroupsRequest()
     // Specify the endpoint of Auto Scaling.
@@ -1110,9 +1139,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. (Optional) Switch to HTTP or HTTPS.
 
 ```
@@ -1190,6 +1225,8 @@ response,err := essClient.DescribeScalingGroups(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 If an error occurs in the SDK when you initiate a request and the error cannot be automatically handled, the SDK returns a `ClientError` . In the following sample example, the **DescribeScalingGroups** operation is used to describe how to determine and obtain the error information in a `ClientError` that is returned by Auto Scaling SDK for Go. g Auto Scaling SDK for Go
@@ -1217,6 +1254,8 @@ response, err := essClient.DescribeScalingGroups(request) if clientError, ok := 
     clientError.OriginError()
 ```
 
+`}`
+
 **ServerError**
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from Response. In the following sample example, the **DescribeScalingGroups** operation is used to describe how to determine and obtain the error information in a ServerError and a Response that are returned by Auto Scaling SDK for Go.
@@ -1243,6 +1282,8 @@ response, err := essClient.DescribeScalingGroups(request) if serverError, ok := 
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 #### 5.2.5 Use CommonRequest to call API operations
 
@@ -1291,6 +1332,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace the variable parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<ess.aliyuncs.com>" // Replace the variable parameter with the endpoint of your service.
@@ -1325,8 +1371,15 @@ ance, you must configure this parameter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 6 API Reference
 
@@ -1408,6 +1461,8 @@ JSON format `{`
     /* Return Result Data */
 ```
 
+`}`
+
 #### 6.5.2 Sample error responses
 
 When an error occurs during an API call, no result data is returned. You can locate the cause of an error based on the error codes defined by each API operation, the error code table in the appendix Client errors, and Server errors. When an error occurs on an HTTP request for an API operation, a 4xx or 5xx HTTP status code is returned. The response body includes the error code and error message. The response body also contains a globally unique request ID (RequestId) and the ID of the site you accessed with this request (HostId). XML format
@@ -1429,6 +1484,8 @@ JSON format `{`
     "Code": "UnsupportedOperation",
     "Message": "The specified action is not supported."
 ```
+
+`}`
 
 ### 6.6 Request signatures
 
@@ -1707,7 +1764,11 @@ Sample success responses
 
 #### 6.7.3 EnableScalingGroup
 
-Enables a scaling group. You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group.
+Enables a scaling group.
+
+**Description**
+
+You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group.
 
 > **Note:** A scaling group can have only one active instance configuration source at a time. When you call this operation to enable a scaling group, you can specify a scaling configuration or a launch template for the scaling group. If an instance configuration source is configured for the scaling group before you call this operation, the scaling configuration or launch template that you specify in the request overwrites the original scaling configuration or launch template.
 
@@ -1789,7 +1850,11 @@ Sample success responses
 
 #### 6.7.4 DisableScalingGroup
 
-Disables a scaling group. The scaling activity that is being executed before this operation is called continues until the scaling activity is complete. Scaling activity requests that are issued after this operation is called are rejected. You can call this operation only if the scaling group is in the Active state.
+Disables a scaling group.
+
+**Description**
+
+The scaling activity that is being executed before this operation is called continues until the scaling activity is complete. Scaling activity requests that are issued after this operation is called are rejected. You can call this operation only if the scaling group is in the Active state.
 
 **Request parameters**
 
@@ -1828,7 +1893,11 @@ Sample success responses
 
 #### 6.7.5 DeleteScalingGroup
 
-Deletes a scaling group. When a scaling group is deleted, the scaling configurations, rules, activities, and scaling requests that are associated with the scaling group are also deleted. The following tasks and instances are not deleted after a scaling group is deleted: scheduled tasks, event-triggered tasks, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances.
+Deletes a scaling group.
+
+**Description**
+
+When a scaling group is deleted, the scaling configurations, rules, activities, and scaling requests that are associated with the scaling group are also deleted. The following tasks and instances are not deleted after a scaling group is deleted: scheduled tasks, event-triggered tasks, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances.
 
 **Request parameters**
 
@@ -2058,7 +2127,7 @@ Sample success responses
                         "OldestInstance"
 ```
 
-`]` `]`
+`]` `}` `}` `]` `}` `}`
 
 #### 6.7.7 DescribeScalingInstances
 
@@ -2195,7 +2264,11 @@ Sample success responses
 
 #### 6.7.9 DescribeScalingActivities
 
-Queries one or more scaling activities. You can specify a scaling group ID to query all scaling activities in the scaling group. You can filter query results based on the status of scaling activities. You can query scaling activities that are executed in the previous 30 days.
+Queries one or more scaling activities.
+
+**Description**
+
+You can specify a scaling group ID to query all scaling activities in the scaling group. You can filter query results based on the status of scaling activities. You can query scaling activities that are executed in the previous 30 days.
 
 **Request parameters**
 
@@ -3264,6 +3337,8 @@ Sample success responses
             "SystemDisk.BurstingEnabled": false
 ```
 
+`}` `}` `}`
+
 #### 6.8.3 ModifyScalingConfiguration
 
 Modifies a scaling configuration.
@@ -3399,7 +3474,11 @@ Sample success responses
 
 #### 6.8.4 DeleteScalingConfiguration
 
-Deletes a scaling configuration. You cannot delete a scaling configuration in one of the following scenarios: The scaling configuration in your scaling group is in the Active state. Your scaling group contains Elastic Compute Service (ECS) instances that are created based on the scaling configuration.
+Deletes a scaling configuration.
+
+**Description**
+
+You cannot delete a scaling configuration in one of the following scenarios: The scaling configuration in your scaling group is in the Active state. Your scaling group contains Elastic Compute Service (ECS) instances that are created based on the scaling configuration.
 
 **Request parameters**
 
@@ -4080,7 +4159,7 @@ Sample success responses
                 "Mode": 644
 ```
 
-`},`
+`}` `},`
 
 ```json
         "SecurityContextSysCtls": {
@@ -4191,6 +4270,8 @@ Sample success responses
         "DnsConfigSearches": "svc.local.kubenetes",
         "NtpServers": "ntp.cloud.aliyuncs.com"
 ```
+
+`}` `}`
 
 #### 6.8.7 ModifyEciScalingConfiguration
 
@@ -4436,7 +4517,11 @@ Sample success responses
 
 #### 6.9.1 CreateScalingRule
 
-Creates a scaling rule. A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances. This way, the number of ECS instances is still within the specified range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. You can create scaling rules based on input parameters. If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0. If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group. If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that must be scaled: Value of TotalCapacity × Value of AdjustmentValue/100. If the cooldown time (Cooldown) is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group. A scaling group can have up to 10 scaling rules. The following API operations use the unique identifier that is indicated by the ScalingRuleAri parameter of a scaling rule returned by this operation: ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier. CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier.
+Creates a scaling rule.
+
+**Description**
+
+A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances. This way, the number of ECS instances is still within the specified range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. You can create scaling rules based on input parameters. If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0. If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group. If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that must be scaled: Value of TotalCapacity × Value of AdjustmentValue/100. If the cooldown time (Cooldown) is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group. A scaling group can have up to 10 scaling rules. The following API operations use the unique identifier that is indicated by the ScalingRuleAri parameter of a scaling rule returned by this operation: ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier. CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier.
 
 **Request parameters**
 
@@ -4741,7 +4826,11 @@ Sample success responses
 
 #### 6.10.1 ExecuteScalingRule
 
-Executes a scaling rule. Before you call this operation, make sure that the following conditions are met: The scaling group is in the Active state. No scaling activities are in progress in the scaling group. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities without the need to wait for the cooldown time to expire. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can check the returned ScalingActivityId parameter to obtain the status of the scaling activity. If the number of Elastic Compute Service (ECS) instances that you want to add causes the number of instances in the scaling group to exceed the MaxSize value, the rule Total Capacity = MaxSize takes effect. If the number of ECS instances that you want to remove causes the number of instances in the scaling group to be less than the MinSize value, the rule Total Capacity = MinSize takes effect.
+Executes a scaling rule.
+
+**Description**
+
+Before you call this operation, make sure that the following conditions are met: The scaling group is in the Active state. No scaling activities are in progress in the scaling group. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities without the need to wait for the cooldown time to expire. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can check the returned ScalingActivityId parameter to obtain the status of the scaling activity. If the number of Elastic Compute Service (ECS) instances that you want to add causes the number of instances in the scaling group to exceed the MaxSize value, the rule Total Capacity = MaxSize takes effect. If the number of ECS instances that you want to remove causes the number of instances in the scaling group to be less than the MinSize value, the rule Total Capacity = MinSize takes effect.
 
 **Request parameters**
 
@@ -4855,7 +4944,11 @@ Sample success responses
 
 #### 6.10.3 AttachInstances
 
-Adds Elastic Compute Service (ECS) instances to a scaling group. Before you add ECS instances to a scaling group, take note of the following items: The ECS instances and the scaling group must reside in the same region. The ECS instances must be in the Running state. The ECS instances are not added to other scaling groups. The ECS instances use the subscription or pay-as-you-go billing method. If the VswitchID parameter is specified for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group. If the VswitchID parameter is not specified for the scaling group, the ECS instances must not reside in VPCs. You can call this operation to add ECS instances to a scaling group only if the scaling group is in the Active state. You can call this operation only if no scaling activities are in progress in the scaling group. If no scaling activities are in progress in the scaling group, the operation can trigger scaling activities even before the cooldown period ends. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the ScalingActivityId parameter in the response. If the total number of ECS instances in the scaling group is greater than the value that you specify for the MaxSize parameter after you add a specific number of ECS instances to the scaling group, the call fails. ECS instances that you manually add to the scaling group are not associated with the active scaling configuration in the scaling group.
+Adds Elastic Compute Service (ECS) instances to a scaling group.
+
+**Description**
+
+Before you add ECS instances to a scaling group, take note of the following items: The ECS instances and the scaling group must reside in the same region. The ECS instances must be in the Running state. The ECS instances are not added to other scaling groups. The ECS instances use the subscription or pay-as-you-go billing method. If the VswitchID parameter is specified for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group. If the VswitchID parameter is not specified for the scaling group, the ECS instances must not reside in VPCs. You can call this operation to add ECS instances to a scaling group only if the scaling group is in the Active state. You can call this operation only if no scaling activities are in progress in the scaling group. If no scaling activities are in progress in the scaling group, the operation can trigger scaling activities even before the cooldown period ends. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the ScalingActivityId parameter in the response. If the total number of ECS instances in the scaling group is greater than the value that you specify for the MaxSize parameter after you add a specific number of ECS instances to the scaling group, the call fails. ECS instances that you manually add to the scaling group are not associated with the active scaling configuration in the scaling group.
 
 **Request parameters**
 
@@ -4918,7 +5011,11 @@ Sample success responses
 
 #### 6.10.4 RemoveInstances
 
-Removes Elastic Compute Service (ECS) instances from a scaling group. Before you call this operation, make sure that the following requirements are met: The scaling group is in the Active state. No scaling activity is in progress in the scaling group. If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires. The cooldown time is specified by the DefaultCooldown parameter. When an automatically created ECS instance is removed from a scaling group, the instance is stopped and released. When a manually added ECS instance is removed from a scaling group, the ECS instance is not stopped or released. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can use the value of the ScalingActivityId parameter in the response to check the status of the scaling activity. If the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter, the call fails.
+Removes Elastic Compute Service (ECS) instances from a scaling group.
+
+**Description**
+
+Before you call this operation, make sure that the following requirements are met: The scaling group is in the Active state. No scaling activity is in progress in the scaling group. If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires. The cooldown time is specified by the DefaultCooldown parameter. When an automatically created ECS instance is removed from a scaling group, the instance is stopped and released. When a manually added ECS instance is removed from a scaling group, the ECS instance is not stopped or released. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can use the value of the ScalingActivityId parameter in the response to check the status of the scaling activity. If the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter, the call fails.
 
 **Request parameters**
 
@@ -4973,7 +5070,11 @@ Sample success responses
 
 #### 6.10.5 DetachInstances
 
-Removes one or more Elastic Compute Service (ECS) instances from a scaling group. After ECS instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances that are removed from the scaling group to other scaling groups. After you remove an ECS instance by calling the DetachInstances operation, the ECS instance is not stopped or released. Before you call the DetachInstances operation, make sure that the following conditions are met: The specified scaling group is enabled. The specified scaling group cannot have a scaling activity in progress. If no scaling activities in the scaling group are in progress, the DetachInstances operation can trigger scaling activities without the need to wait for the cooldown period to end. A successful call to the DetachInstances operation indicates only that the request for the call is accepted. The scaling activity can be triggered, but may fail to be executed. You can use the ScalingActivityId parameter in the response to query the status of the scaling activity. The difference between the number of existing ECS instances in the specified scaling group and the number of ECS instances that you want to remove must be greater than or equal to the value of the MinSize parameter. Otherwise, an error message is returned.
+Removes one or more Elastic Compute Service (ECS) instances from a scaling group.
+
+**Description**
+
+After ECS instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances that are removed from the scaling group to other scaling groups. After you remove an ECS instance by calling the DetachInstances operation, the ECS instance is not stopped or released. Before you call the DetachInstances operation, make sure that the following conditions are met: The specified scaling group is enabled. The specified scaling group cannot have a scaling activity in progress. If no scaling activities in the scaling group are in progress, the DetachInstances operation can trigger scaling activities without the need to wait for the cooldown period to end. A successful call to the DetachInstances operation indicates only that the request for the call is accepted. The scaling activity can be triggered, but may fail to be executed. You can use the ScalingActivityId parameter in the response to query the status of the scaling activity. The difference between the number of existing ECS instances in the specified scaling group and the number of ECS instances that you want to remove must be greater than or equal to the value of the MinSize parameter. Otherwise, an error message is returned.
 
 **Request parameters**
 
@@ -5029,7 +5130,11 @@ Sample success responses
 
 #### 6.11.1 CreateScheduledTask
 
-Creates a scheduled task. You can create up to 20 scheduled tasks within an Apsara Stack tenant account. If a scheduled task fails to trigger a scaling rule due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling rule after the period ends, the task is automatically skipped. If multiple tasks are scheduled at similar points in time to execute scaling rules in the same scaling group, the earliest task executes the scaling activity first. Other tasks may attempt to execute their scaling rules during their launch expiration time, but only one scaling activity can be triggered in a scaling group at a time. If the previous scaling activity is complete and another scheduled task executes the scaling rule during the period that is specified by the LaunchExpirationTime parameter, the scaling rule in the scheduled task is executed, and a new scaling activity is triggered. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
+Creates a scheduled task.
+
+**Description**
+
+You can create up to 20 scheduled tasks within an Apsara Stack tenant account. If a scheduled task fails to trigger a scaling rule due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling rule after the period ends, the task is automatically skipped. If multiple tasks are scheduled at similar points in time to execute scaling rules in the same scaling group, the earliest task executes the scaling activity first. Other tasks may attempt to execute their scaling rules during their launch expiration time, but only one scaling activity can be triggered in a scaling group at a time. If the previous scaling activity is complete and another scheduled task executes the scaling rule during the period that is specified by the LaunchExpirationTime parameter, the scaling rule in the scheduled task is executed, and a new scaling activity is triggered. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
 
 **Request parameters**
 
@@ -5157,7 +5262,11 @@ Sample success responses `XML` format
 
 #### 6.11.3 DescribeScheduledTasks
 
-Queries scheduled tasks. You can query scheduled tasks based on scaling rule, task ID, and task name.
+Queries scheduled tasks.
+
+**Description**
+
+You can query scheduled tasks based on scaling rule, task ID, and task name.
 
 **Request parameters**
 
@@ -5915,6 +6024,8 @@ Sample success responses
         "LifecycleHookId": "ash-bp19d1032y9kij96****"
 ```
 
+`}` `}`
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidParamter | The specified value of parameter is not valid. | The value of a parameter is invalid. |
@@ -5984,6 +6095,8 @@ Sample success responses
         "LifecycleHookId": "ash-bp18uoft0deax0f7****",
         "InstanceIds": "[\"i-bp11m3fzlqrgk5vh****\",\"i-bp11m3fzlqrgk5vh****\"]"
 ```
+
+`}` `}`
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -6905,6 +7018,8 @@ Sample success responses
     "Values": "Doc"
 ```
 
+`}`
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidResourceType.NotFound | The ResourceType provided does not exist in our records. | The value of ResourceType is invalid. |
@@ -7019,6 +7134,8 @@ directory.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
 
+`}`
+
 ### 7.2 Use the ASAPI gateway to make API calls
 
 #### 7.2.1 Obtain the endpoint of ASAPI
@@ -7063,6 +7180,8 @@ You can concatenate strings to generate an endpoint in the following format:
 ```
 https://public.asapi.<region>.<internet-domain>/asapi/v3
 ```
+
+**Note**
 
 1. Replace <region> with your actual region ID.
 2. Replace <internet-
@@ -7271,6 +7390,8 @@ package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.ali
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -7312,6 +7433,8 @@ ding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|

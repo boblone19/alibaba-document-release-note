@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 72
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 Server Load Balancer User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20Server%20Load%20Balancer%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 Server Load Balancer User Guide 20220928
@@ -72,21 +72,21 @@ This topic provides an overview of Server Load Balancer (SLB). SLB distributes i
 
 ## 2 Log on to the SLB console
 
-This topic describes how to go to the Server Load Balancer (SLB) console after you log on to the Apsara Uni-manager Management Console by using the Chrome browser. Prerequisites The domain name of the Apsara Uni-manager Management Console is obtained from the engineer that deploys the service before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
+This topic describes how to go to the Server Load Balancer (SLB) console after you log on to the Apsara Uni-manager Management Console by using the Chrome browser. Prerequisites The domain name of the Apsara Uni-manager Management Console is obtained from the engineer that deploys the service before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click Login.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
-in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
+in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Net working > Server Load Balancer.
 
 ## 3 Quick start
 
 ### 3.1 Overview
 
-This topic describes how to create an Internet SLB instance and forward client requests to two ECS instances that act as backend servers. Before you create an SLB instance, you must plan its configurations such as the instance type, region, and billing method. Perform the following operations:
+This topic describes how to create an Internet SLB instance and forward client requests to two ECS instances that act as backend servers. Not e Before you create an SLB instance, you must plan its configurations such as the instance type, region, and billing method. Perform the following operations:
 1. 创建实例
 Create an SLB instance. An SLB instance is an entity running the SLB service.
 2. Add listeners and backend servers
@@ -128,7 +128,7 @@ What's next
 
 ### 3.4 Configure an SLB instance
 
-This topic describes how to configure a Server Load Balancer (SLB) instance. Before an SLB instance can forward traffic, you must add at least one listener and one group of backend servers to the SLB instance. The following example shows how to add a TCP listener and Elastic Compute Service (ECS) instances to an SLB instance. The ECS instances are ECS 01 and ECS 02. These ECS instances function as backend servers that host static web pages.
+This topic describes how to configure a Server Load Balancer (SLB) instance. Before an SLB instance can forward traffic, you must add at least one listener and one group of backend servers to the SLB instance. The following example shows how to add a TCP listener and Elastic Compute Service (ECS) instances to an SLB instance. The ECS instances are ECS 01 and ECS 02. These ECS instances function as backend servers that host static web pages. Procedure
 1. Log on to the SLB console.
 2. On the Inst ances page, find the SLB instance that you want to manage and click Conf igure
 List ener in the Actions column.
@@ -146,17 +146,17 @@ services of the instance. ECS01 ECS02
 
 ### 3.5 Release an SLB instance
 
-If an SLB instance is no longer needed, you can release the instance to save costs. The backend ECS instances will not be deleted or affected after you delete an SLB instance.
+If an SLB instance is no longer needed, you can release the instance to save costs. The backend ECS instances will not be deleted or affected after you delete an SLB instance. Procedure
 1. Log on to the SLB console.
 2. On the Inst ances page, find the instance and click
 > Release in the Actions column, or select
 
 the instance and click Release at the lower part of the page.
 3. In the Release dialog box, select Release Now.
-The system performs release operations at 30-minute and hour marks. However, billing for the SLB instance is stopped at the specified release time.
+Not e The system performs release operations at 30-minute and hour marks. However, billing for the SLB instance is stopped at the specified release time.
 4. Click Next .
 5. Click OK to release the SLB instance.
-Pay-as-you-go SLB instances cannot be restored once deleted. We recommend that you exercise caution when you release SLB instances.
+Not e Pay-as-you-go SLB instances cannot be restored once deleted. We recommend that you exercise caution when you release SLB instances.
 
 ## 4 SLB instances
 
@@ -206,17 +206,17 @@ The following table describes the differences between shared-performance SLB ins
 
 ### 4.2 Create an SLB instance
 
-This topic describes how to create a Server Load Balancer (SLB) instance. An SLB instance is a running entity of the SLB service. You can add multiple listeners and backend servers to an SLB instance. Prerequisites Elastic Compute Service (ECS) instances are created and applications are deployed on the ECS instances. The ECS instances and the SLB instance belong to the same organization. In addition, the security group rules of the ECS instances allow access from port 80 (HTTP) and port 443 (HTTPS).
+This topic describes how to create a Server Load Balancer (SLB) instance. An SLB instance is a running entity of the SLB service. You can add multiple listeners and backend servers to an SLB instance. Prerequisites Elastic Compute Service (ECS) instances are created and applications are deployed on the ECS instances. The ECS instances and the SLB instance belong to the same organization. In addition, the security group rules of the ECS instances allow access from port 80 (HTTP) and port 443 (HTTPS). Procedure
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose Inst ances > Inst ances.
 3. On the Inst ances page, click Creat e Inst ance.
-Organizat ion: Select an organization for the SLB instance from the drop-down list. Make sure that the organization of the SLB instance is the same as the organization of its backend servers. Resource Set : Select a resource set for the SLB instance from the drop-down list. Region: Select the region where you want to deploy the SLB instance. Zone: Select a zone for the SLB instance from the drop-down list. Inst ance Name: Enter a name for the SLB instance in the Instance Name field. The name must be 2 to 128 characters in length, and can contain letters, digits, full-width characters, hyphens (-), colons (:), periods (.), and underscores (_). Line breaks and spaces are supported. It must start with a letter and cannot start with `http://` or `https://` . Inst ance Edit ion: Select one of the following options: shared-performance and guaranteedperformance. Shared-performance SLB instances share resources with each other. The performance of shared-performance SLB instances is not guaranteed. The performance of guaranteed-performance SLB instances varies by type. Inst ance T ype: Select the type of network traffic that you want to distribute. Valid values: Internal Network and Internet. Net work T ype: Select the network type of the SLB instance. Valid values: Classic Network and VPC. IP Version: Select an IP version. IP Address: Enter a service IP address for the SLB instance. Make sure that the service IP address is valid. Otherwise, the SLB instance cannot be created. If you do not set this parameter, the system automatically allocates an IP address to the SLB instance. The private IP address that you specify must belong to the destination CIDR block of the vSwitch.
+Organizat ion: Select an organization for the SLB instance from the drop-down list. Not e Make sure that the organization of the SLB instance is the same as the organization of its backend servers. Resource Set : Select a resource set for the SLB instance from the drop-down list. Region: Select the region where you want to deploy the SLB instance. Zone: Select a zone for the SLB instance from the drop-down list. Inst ance Name: Enter a name for the SLB instance in the Instance Name field. The name must be 2 to 128 characters in length, and can contain letters, digits, full-width characters, hyphens (-), colons (:), periods (.), and underscores (_). Line breaks and spaces are supported. It must start with a letter and cannot start with `http://` or `https://` . Inst ance Edit ion: Select one of the following options: shared-performance and guaranteedperformance. Shared-performance SLB instances share resources with each other. The performance of shared-performance SLB instances is not guaranteed. The performance of guaranteed-performance SLB instances varies by type. Inst ance T ype: Select the type of network traffic that you want to distribute. Valid values: Internal Network and Internet. Net work T ype: Select the network type of the SLB instance. Valid values: Classic Network and VPC. IP Version: Select an IP version. IP Address: Enter a service IP address for the SLB instance. Make sure that the service IP address is valid. Otherwise, the SLB instance cannot be created. If you do not set this parameter, the system automatically allocates an IP address to the SLB instance. Not e The private IP address that you specify must belong to the destination CIDR block of the vSwitch.
 4. Click Submit .
 What's next Configure a CLB instance
 
 ### 4.3 Start and stop an SLB instance
 
-This topic describes how to start and stop an SLB instance. SLB instances can be started or stopped at any time. A stopped SLB instance does not receive or forward client traffic.
+This topic describes how to start and stop an SLB instance. SLB instances can be started or stopped at any time. A stopped SLB instance does not receive or forward client traffic. Procedure
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose Inst ances > Server Load Balancers.
 3. Find the target SLB instance. In the Act ions column, choose
@@ -247,26 +247,26 @@ To add a tag, perform the following operations: To add an existing tag, click Sa
 
 #### 4.4.3 Query SLB instances by tag
 
-This topic describes how to use tags to query SLB instances.
+This topic describes how to use tags to query SLB instances. Procedure
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose Inst ances > Server Load Balancers.
 3. Select a data from the Select a t ag drip-down list to filter instances.
-To clear the search condition, move the pointer over the selected tag and click the displayed deletion icon next to it.
+Not e To clear the search condition, move the pointer over the selected tag and click the displayed deletion icon next to it.
 
 #### 4.4.4 Remove a tag
 
-This topic describes how to remove tags from a CLB instance. You can only remove tags for one CLB instance at a time.
+This topic describes how to remove tags from a CLB instance. You can only remove tags for one CLB instance at a time. Procedure
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose Inst ances > Server Load Balancers.
 3. In the Act ions column, choose
 > Edit T ags.
 
 4. In the Edit T ags dialog box, click the deletion icon next to the tags to be removed, and then click
-OK. If a tag is removed from a CLB instance and is not added to other instances, the tag is deleted from the system.
+OK. Not e If a tag is removed from a CLB instance and is not added to other instances, the tag is deleted from the system.
 
 ### 4.5 Release an SLB instance
 
-This topic describes how to release an SLB instance. You can release SLB instances immediately.
+This topic describes how to release an SLB instance. You can release SLB instances immediately. Procedure
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose Inst ances > Server Load Balancers.
 3. Find the target SLB instance and choose
@@ -318,7 +318,7 @@ Step 3: Add backend servers After you configure the listener, you must add backe
 2. In the My Servers panel, select the ECS instances that you want to add as backend servers and
 click Next .
 3. On the Conf igure Port s and Weight s wizard page, specify the weights of the backend servers
-that you want to add. A backend server with a higher weight receives more requests. If the weight of a backend server is set to 0, no request is distributed to the backend server.
+that you want to add. A backend server with a higher weight receives more requests. Not e If the weight of a backend server is set to 0, no request is distributed to the backend server.
 4. Click Add. On the Default Server Group tab, specify the ports that you want to open on the
 backend servers to receive requests. The backend servers are the ECS instances that you selected. Valid values: 1 to 65535. You can specify the same port on different backend servers that are added to an SLB instance.
 5. Click Next .
@@ -353,7 +353,7 @@ Step 3: Add backend servers After you configure the listener, you must add backe
 2. In the Available Servers panel, select the Elastic Compute Service (ECS) instances that you want
 to add as backend servers and click Next .
 3. Set weights for the backend servers that you add.
-An ECS instance with a higher weight receives more requests. If the weight of a backend server is set to 0, no request is distributed to the backend server.
+An ECS instance with a higher weight receives more requests. Not e If the weight of a backend server is set to 0, no request is distributed to the backend server.
 4. Click Add. On the Default Server Group tab, specify the ports that you want to open on the
 backend servers to receive requests. The backend servers are the ECS instances that you selected. Valid values: 1 to 65535. You can specify the same port on different backend servers that are added to an SLB instance.
 5. Click Next .
@@ -473,7 +473,7 @@ certificate. Step 3: Add backend servers After you configure the listener, you m
 2. In the My Servers panel, select the Elastic Compute Service (ECS) instances that you want to add
 as backend servers and click Next .
 3. Set weights for the selected ECS instances in the Weight column.
-An ECS instance with a higher weight receives more requests. The default weight is 100. You can click Reset to set Weight to the default value. If you set the weight of a server to 0, the server does not receive requests.
+Not e An ECS instance with a higher weight receives more requests. The default weight is 100. You can click Reset to set Weight to the default value. If you set the weight of a server to 0, the server does not receive requests.
 4. Click Add. Specify the ports for backend servers to receive requests. Valid values: 1 to 65535. Click
 Next . You can specify the same port for backend servers that are added to a CLB instance. Step 4: Configure health checks CLB checks the availability of backend ECS instances by performing health checks. The health check feature improves service availability and prevents service interruptions caused by single points of failure. Step 5: Submit the configurations
 1. On the Conf irm Conf igurat ions wizard page, confirm the configurations. You can click Modif y to
@@ -499,12 +499,12 @@ Configure a domain name-based forwarding rule When you configure a domain name-b
 | Wildcard match | market.aliyun.com | x | x | x |
 |   | info.market.aliyun.co m | x | x | √ |
 
-Configure a URL-based forwarding rule When you configure a URL-based forwarding rule, leave the Domain Name field empty. The URL can contain only letters, digits, and hyphens (-)./%?#& The URL must start with a forward slash (/). If you enter only a forward slash (/) in the URL field, the URL-based forwarding rule is invalid. URL-based forwarding rules support string matching and adopt sequential matching. Examples: `/admin` , `/bbs_` , and `/ino_test` . Configure both domain name-based and URL-based forwarding rules You can configure both domain name-based and URL-based forwarding rules to forward traffic destined for different URLs of the same domain name. We recommend that you configure a default forwarding rule with the URL field left empty in case errors are returned when the URLs of requests are not matched. For example, the domain name of a website is `www.aaa.com` . You are required to forward requests destined for `www.aaa.com/index.html` to Server Group 1 and forward requests destined for other URLs of the domain name to Server Group 2. To meet the preceding requirements, you must configure two forwarding rules, as shown in the following figure. Otherwise, a 404 error code is returned when a request destined for the `www.aaa.com` domain name does not match all forwarding rules.
+Configure a URL-based forwarding rule When you configure a URL-based forwarding rule, leave the Domain Name field empty. The URL can contain only letters, digits, and hyphens (-)./%?#& The URL must start with a forward slash (/). Not e If you enter only a forward slash (/) in the URL field, the URL-based forwarding rule is invalid. URL-based forwarding rules support string matching and adopt sequential matching. Examples: `/admin` , `/bbs_` , and `/ino_test` . Configure both domain name-based and URL-based forwarding rules You can configure both domain name-based and URL-based forwarding rules to forward traffic destined for different URLs of the same domain name. We recommend that you configure a default forwarding rule with the URL field left empty in case errors are returned when the URLs of requests are not matched. For example, the domain name of a website is `www.aaa.com` . You are required to forward requests destined for `www.aaa.com/index.html` to Server Group 1 and forward requests destined for other URLs of the domain name to Server Group 2. To meet the preceding requirements, you must configure two forwarding rules, as shown in the following figure. Otherwise, a 404 error code is returned when a request destined for the `www.aaa.com` domain name does not match all forwarding rules.
 5. Click Save.
 
 ### 5.7 Enable access control
 
-This topic describes how to enable access control for a listener. You can enable access control for each listener of a Classic Load Balancer (CLB). You can set whitelists for different listeners to regulate network access control.
+This topic describes how to enable access control for a listener. You can enable access control for each listener of a Classic Load Balancer (CLB). You can set whitelists for different listeners to regulate network access control. Procedure
 1. Log on to the SLB console.
 2. Click the ID of the CLB instance.
 3. Click the List ener tab, find the listener that you want to manage, and then choose
@@ -524,7 +524,7 @@ Access Cont rol in the Act ions column.
 
 ### 5.8 Disable access control
 
-This topic describes how to disable access control for a listener.
+This topic describes how to disable access control for a listener. Procedure
 1. Log on to the SLB console.
 2. Find an SLB instance and click its instance ID.
 3. Click the List ener tab next to the Inst ance Det ails tab.
@@ -538,7 +538,7 @@ Cont rol in the Actions column.
 
 ### 6.1 Backend server overview
 
-Before you use the Server Load Balancer (SLB) service, you must add Elastic Compute Service (ECS) instances as backend servers to an SLB instance to process client requests. Backend server overview You can set virtual IP addresses for an SLB instance. This way, the added ECS instances in the same region can be virtualized into an application service pool that provides high performance and availability. You can manage backend servers by using vServer groups. A listener of an SLB instance can be associated with a specific vServer group so that different listeners can forward requests to their associated backend servers that use different ports. If you associate a vServer group with a listener, the listener distributes requests to backend servers in the associated vServer group instead of those in the default server group. Limits You can increase or decrease the number of backend ECS instances at any time and switch ECS instances to receive client requests. When you perform the operations, make sure that the health check feature is enabled and at least one ECS instance is running as expected to maintain service stability. When you add backend ECS instances, take note of the following items: You can add ECS instances of different operating systems to an SLB instance. However, the applications deployed on the ECS instances must be the same and have consistent data. We recommend that you use ECS instances of the same operating system to facilitate management and maintenance. Up to 50 listeners can be added to a single SLB instance. Each listener corresponds to an application deployed on backend ECS instances. Listening ports of an SLB instance correspond to application service ports that are opened on backend ECS instances. You can specify a weight for each ECS instance in the application service pool. An ECS instance with a higher weight receives more requests. If session persistence is enabled, requests may not be evenly distributed to backend ECS instances. To solve this problem, we recommend that you disable session persistence and check whether the problem persists. If requests are not evenly distributed, troubleshoot the issue in the following way: i. Collect statistics on the access logs of the web service on backend ECS instances for a specified period. ii. Check whether the numbers of access logs of backend ECS instances match SLB configurations. If session persistence is enabled, you must differentiate the access logs for the same IP address. If different weights are configured for backend ECS instances, you must check whether the percentage of access logs is normal based on the percentage of weights. When an ECS instance is undergoing hot migration, persistent connections to SLB may be interrupted. You can solve this problem by reestablishing the connections. Default server groups A default server group contains ECS instances that are used to receive requests. If a listener is not associated with a vServer group or a primary/secondary server group, the listener forwards requests to ECS instances in the default server group. Before you use the SLB service, you must add at least one default backend server to receive client requests forwarded by SLB. For more information, see Add an ECS instance to the default server group. vServer groups You can use a vServer group if you want to distribute different requests to different backend servers or configure forwarding rules based on domain names and URLs. For more information, see Create and manage a vServer group. Primary/secondary server groups A primary/secondary server group contains only two ECS instances. One ECS instance acts as the primary server and the other acts as the secondary server. Health checks are not performed on the secondary server. If the primary server is detected unhealthy, traffic is redirected to the secondary server. After the primary server recovers and is considered healthy, traffic is switched back to the primary server. For more information, see Create and manage a primary/secondary server group. You can add primary/secondary server groups only for TCP and UDP listeners. Related information Add an ECS instance to the default server group Create and manage a vServer group Create and manage a primary/secondary server group
+Before you use the Server Load Balancer (SLB) service, you must add Elastic Compute Service (ECS) instances as backend servers to an SLB instance to process client requests. Backend server overview You can set virtual IP addresses for an SLB instance. This way, the added ECS instances in the same region can be virtualized into an application service pool that provides high performance and availability. You can manage backend servers by using vServer groups. A listener of an SLB instance can be associated with a specific vServer group so that different listeners can forward requests to their associated backend servers that use different ports. Not e If you associate a vServer group with a listener, the listener distributes requests to backend servers in the associated vServer group instead of those in the default server group. Limits You can increase or decrease the number of backend ECS instances at any time and switch ECS instances to receive client requests. When you perform the operations, make sure that the health check feature is enabled and at least one ECS instance is running as expected to maintain service stability. When you add backend ECS instances, take note of the following items: You can add ECS instances of different operating systems to an SLB instance. However, the applications deployed on the ECS instances must be the same and have consistent data. We recommend that you use ECS instances of the same operating system to facilitate management and maintenance. Up to 50 listeners can be added to a single SLB instance. Each listener corresponds to an application deployed on backend ECS instances. Listening ports of an SLB instance correspond to application service ports that are opened on backend ECS instances. You can specify a weight for each ECS instance in the application service pool. An ECS instance with a higher weight receives more requests. If session persistence is enabled, requests may not be evenly distributed to backend ECS instances. To solve this problem, we recommend that you disable session persistence and check whether the problem persists. If requests are not evenly distributed, troubleshoot the issue in the following way: i. Collect statistics on the access logs of the web service on backend ECS instances for a specified period. ii. Check whether the numbers of access logs of backend ECS instances match SLB configurations. If session persistence is enabled, you must differentiate the access logs for the same IP address. If different weights are configured for backend ECS instances, you must check whether the percentage of access logs is normal based on the percentage of weights. When an ECS instance is undergoing hot migration, persistent connections to SLB may be interrupted. You can solve this problem by reestablishing the connections. Default server groups A default server group contains ECS instances that are used to receive requests. If a listener is not associated with a vServer group or a primary/secondary server group, the listener forwards requests to ECS instances in the default server group. Before you use the SLB service, you must add at least one default backend server to receive client requests forwarded by SLB. For more information, see Add an ECS instance to the default server group. vServer groups You can use a vServer group if you want to distribute different requests to different backend servers or configure forwarding rules based on domain names and URLs. For more information, see Create and manage a vServer group. Primary/secondary server groups A primary/secondary server group contains only two ECS instances. One ECS instance acts as the primary server and the other acts as the secondary server. Health checks are not performed on the secondary server. If the primary server is detected unhealthy, traffic is redirected to the secondary server. After the primary server recovers and is considered healthy, traffic is switched back to the primary server. For more information, see Create and manage a primary/secondary server group. Not e You can add primary/secondary server groups only for TCP and UDP listeners. Related information Add an ECS instance to the default server group Create and manage a vServer group Create and manage a primary/secondary server group
 
 ### 6.2 Default server groups
 
@@ -572,7 +572,7 @@ A backend server (ECS instance or IDC server) with a higher weight receives more
 
 #### 6.2.2 Add IDC servers to the default server group
 
-This topic describes how to add servers in on-premises Internet Data Centers (IDCs) as default backend servers to the default server group of an SLB instance. Before you use the SLB service, you must add at least one default backend server to receive client requests forwarded by SLB. Prerequisites Applications are deployed on the IDC servers, and the IDC servers are ready to receive distributed requests.
+This topic describes how to add servers in on-premises Internet Data Centers (IDCs) as default backend servers to the default server group of an SLB instance. Before you use the SLB service, you must add at least one default backend server to receive client requests forwarded by SLB. Prerequisites Applications are deployed on the IDC servers, and the IDC servers are ready to receive distributed requests. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the Def ault Server Group tab.
@@ -599,7 +599,7 @@ A backend server (ECS instance or IDC server) with a higher weight receives more
 
 #### 6.2.4 Remove a backend server
 
-This topic describes how to remove a backend server that is no longer needed.
+This topic describes how to remove a backend server that is no longer needed. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the Def ault Server Group tab.
@@ -621,7 +621,7 @@ i. In the VServer Group Name field, enter a name for the VServer group. ii. Clic
 
 #### 6.3.2 Add IDC servers to a VServer group
 
-This topic describes how to create a VServer group and then add IDC servers to the VServer group. You can add ECS instances and IDC servers as backend servers to a VServer group. If you associate a VServer group with a listener, the listener distributes requests only to the backend servers in the VServer group instead of other backend servers. Prerequisites Before you create a VServer group, make sure that applications are deployed on the IDC servers and the IDC servers are ready to receive distributed requests. Context Note the following items before you create a VServer group: An IDC server can be added to multiple VServer groups. A VServer group can be associated with multiple listeners of an SLB instance. The settings of the VServer group include the settings of IDC servers and application ports.
+This topic describes how to create a VServer group and then add IDC servers to the VServer group. You can add ECS instances and IDC servers as backend servers to a VServer group. If you associate a VServer group with a listener, the listener distributes requests only to the backend servers in the VServer group instead of other backend servers. Prerequisites Before you create a VServer group, make sure that applications are deployed on the IDC servers and the IDC servers are ready to receive distributed requests. Context Note the following items before you create a VServer group: An IDC server can be added to multiple VServer groups. A VServer group can be associated with multiple listeners of an SLB instance. The settings of the VServer group include the settings of IDC servers and application ports. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the VServer Groups tab.
@@ -632,7 +632,7 @@ i. In the VServer Group Name field, enter a name for the VServer group. ii. Clic
 
 #### 6.3.3 Modify a VServer group
 
-This topic describes how to modify the settings of ECS instances or IDC servers in a VServer group.
+This topic describes how to modify the settings of ECS instances or IDC servers in a VServer group. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the VServer Groups tab.
@@ -641,7 +641,7 @@ This topic describes how to modify the settings of ECS instances or IDC servers 
 
 #### 6.3.4 Delete a VServer group
 
-This topic describes how to delete a VServer group that is no longer needed for traffic distribution.
+This topic describes how to delete a VServer group that is no longer needed for traffic distribution. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the VServer Groups tab.
@@ -652,7 +652,7 @@ This topic describes how to delete a VServer group that is no longer needed for 
 
 #### 6.4.1 Add ECS instances to a primary/secondary server group
 
-server group This topic describes how to create a primary/secondary server group and then add ECS instances to the primary/secondary server group. You can use a primary/secondary server group to implement failover between a primary server and a secondary server. By default, the primary server handles all distributed requests. When the primary server fails, traffic is redirected to the secondary server. Prerequisites Before you create a primary/secondary server group, make sure that the following conditions are met: An SLB instance is created. For more information, see Create an SLB instance. You have created ECS instances and deployed applications on these ECS instances to process requests.
+server group This topic describes how to create a primary/secondary server group and then add ECS instances to the primary/secondary server group. You can use a primary/secondary server group to implement failover between a primary server and a secondary server. By default, the primary server handles all distributed requests. When the primary server fails, traffic is redirected to the secondary server. Prerequisites Before you create a primary/secondary server group, make sure that the following conditions are met: An SLB instance is created. For more information, see Create an SLB instance. You have created ECS instances and deployed applications on these ECS instances to process requests. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the Primary/Secondary Server Groups tab.
@@ -662,7 +662,7 @@ group. i. In the Primary/Secondary Server Group Name field, enter a name for the
 
 #### 6.4.2 Add IDC servers to a primary/secondary server group
 
-server group This topic describes how to create a primary/secondary server group and then add IDC servers to the primary/secondary server group. You can use a primary/secondary server group to implement failover between a primary server and a secondary server. By default, the primary server handles all distributed requests. When the primary server fails, traffic is redirected to the secondary server. Prerequisites The IDC servers are created, configured to deploy applications, and ready to receive distributed requests.
+server group This topic describes how to create a primary/secondary server group and then add IDC servers to the primary/secondary server group. You can use a primary/secondary server group to implement failover between a primary server and a secondary server. By default, the primary server handles all distributed requests. When the primary server fails, traffic is redirected to the secondary server. Prerequisites The IDC servers are created, configured to deploy applications, and ready to receive distributed requests. Procedure
 1. Log on to the SLB console.
 2. Find the target SLB instance and click its instance ID.
 3. Click the Primary/Secondary Server Groups tab.
@@ -672,7 +672,7 @@ group. i. In the Primary/Secondary Server Group Name field, enter a name for the
 
 #### 6.4.3 Delete a primary/secondary server group
 
-This topic describes how to delete a primary/secondary server group of a Server Load Balancer (SLB) instance. If a primary/secondary server group is no longer needed to forward traffic, you can delete the primary/secondary server group.
+This topic describes how to delete a primary/secondary server group of a Server Load Balancer (SLB) instance. If a primary/secondary server group is no longer needed to forward traffic, you can delete the primary/secondary server group. Procedure
 1. Log on to the SLB console.
 2. Find the SLB instance and click its instance ID.
 3. Click the Primary/Secondary Server Groups tab.
@@ -700,7 +700,7 @@ the corresponding port is listening normally.
 3. If the LVS node server does not receive a packet from the backend ECS instance within the
 specified response timeout period, the backend ECS instance is declared unhealthy. Then, the node server sends an RST packet to the backend ECS instance to terminate the TCP connection.
 4. If the LVS node server receives a packet from the backend ECS instance within the specified
-response timeout period, the node server determines that the service runs properly and the health check succeeds. Then, the node server sends an RST packet to the backend ECS instance to terminate the TCP connection. A TCP three-way handshake is conducted to establish a TCP connection. After the LVS node server receives the SYN+ACK packet from the backend ECS instance, the node server sends an ACK packet, and then immediately sends an RST packet to terminate the TCP connection. This process may cause backend ECS instances to think that an error such as an abnormal exit occurred in the TCP connection. Then, these instances may report a corresponding error message, such as `Connection reset by peer` , in logs such as Java connection pool logs. Solution: You can implement HTTP health checks. If you have enabled the feature of obtaining actual client IP addresses on backend ECS instances, you can ignore connection errors caused by the access of the SLB CIDR block. Health checks of UDP listeners For UDP listeners, SLB checks the status of backend ECS instances by sending UDP packets. The following figure shows the process. The following section describes the health check process of a UDP listener:
+response timeout period, the node server determines that the service runs properly and the health check succeeds. Then, the node server sends an RST packet to the backend ECS instance to terminate the TCP connection. Not e A TCP three-way handshake is conducted to establish a TCP connection. After the LVS node server receives the SYN+ACK packet from the backend ECS instance, the node server sends an ACK packet, and then immediately sends an RST packet to terminate the TCP connection. This process may cause backend ECS instances to think that an error such as an abnormal exit occurred in the TCP connection. Then, these instances may report a corresponding error message, such as `Connection reset by peer` , in logs such as Java connection pool logs. Solution: You can implement HTTP health checks. If you have enabled the feature of obtaining actual client IP addresses on backend ECS instances, you can ignore connection errors caused by the access of the SLB CIDR block. Health checks of UDP listeners For UDP listeners, SLB checks the status of backend ECS instances by sending UDP packets. The following figure shows the process. The following section describes the health check process of a UDP listener:
 1. An LVS node server sends a UDP packet to the internal IP address and health check port of an ECS
 instance based on health check configurations.
 2. If the corresponding port of the ECS instance is not listening normally, the system returns an ICMP
@@ -708,11 +708,11 @@ error message, such as `port XX unreachable` . Otherwise, no message is returned
 3. If the LVS node server receives the ICMP error message within the response timeout period, the
 backend ECS instance is declared unhealthy.
 4. If the LVS node server does not receive any messages from the backend ECS instance within the
-response timeout period, the ECS instance is declared healthy. For UDP health checks, the health check result may not reflect the real status of a backend ECS instance in the following situation: If the backend ECS instance uses a Linux operating system, the speed at which ICMP messages in high concurrency scenarios are sent is limited due to the ICMP attack prevention feature of Linux. In this case, even if a service exception occurs, SLB may declare the backend ECS instance healthy because the error message `port XX unreachable` is not returned. Consequently, the health check result deviates from the actual service status. Solution: You can specify a request and a response for UDP health checks. The ECS instance is considered healthy only when the specified response is returned. However, the client must be configured accordingly to return responses. Health check time window The health check feature effectively improves the availability of your services. However, to avoid impacts on system availability caused by frequent switching after failed health checks, the health check status switches only when health checks successively succeed or fail for a specified number of times within a certain time window. The health check time window is determined by the following factors: Health check interval: how often health checks are performed Response timeout: the length of time to wait for a response Health check threshold: the number of consecutive successes or failures of health checks The health check time window is calculated based on the following formula: Time window for health check failures = Response timeout × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1) Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1) The response time of a successful health check is the duration from the time when the health check request is sent to the time when the response is received. When TCP health checks are used, the response time is short and almost negligible because only whether the specific port is alive is checked. For HTTP health checks, the response time depends on the performance and load of the application server and is typically within a few seconds. The health check result has the following impacts on request forwarding: If the health check of the backend ECS instance fails, new requests are distributed to other backend ECS instances. This does not affect client access. If the health check of the backend ECS instance succeeds, new requests are distributed to this instance. The client access is normal. If an exception occurs on the backend ECS instance and a request arrives during a time window for health check failures, the request is still sent to the backend ECS instance. This is because the number of failed health checks has not reached the unhealthy threshold (3 times by default). In this case, the client access fails. Examples of health check response timeout and health check interval The following health check settings are used in these examples: Response T imeout Period: 5 Seconds Healt h Check Int erval: 2 Seconds Healt hy T hreshold: 3 T imes Unhealt hy T hreshold: 3 T imes Time window for health check failures = Response timeout × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1). That is, 5 × 3 + 2 × (3 - 1) = 19 seconds. If the response time of a health check exceeds 19 seconds, the health check fails. The following figure shows the time window from a healthy status to an unhealthy status. Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1). That is, (1 × 3) + 2 × (3 - 1) = 7 seconds. If the response time of a successful health check is less than seven seconds, the health check succeeds. The response time of a successful health check is the duration from the time when the health check request is sent to the time when the response is received. When TCP health checks are used, the response time is short and almost negligible because only whether the specific port is alive is checked. For HTTP health checks, the response time depends on the performance and load of the application server and is typically within a few seconds. The following figure shows the time window from an unhealthy status to a healthy status (assume that it takes 1 second for the server to respond to a health check request). Domain name setting in HTTP health checks When HTTP health checks are used, you can set a domain name for health checks. The setting is optional. Some application servers verify the host field in requests. In this case, the request header must contain the host field. If a domain name is configured in health check setting, SLB adds the domain name to the host field when SLB forwards a request to an application server. If no domain name is configured, the health check request is denied by the application server because it does not contain a host field and the health check may fail. If your application server verifies the host field in requests, you must configure a domain name to make sure that the health check feature works.
+response timeout period, the ECS instance is declared healthy. Not e For UDP health checks, the health check result may not reflect the real status of a backend ECS instance in the following situation: If the backend ECS instance uses a Linux operating system, the speed at which ICMP messages in high concurrency scenarios are sent is limited due to the ICMP attack prevention feature of Linux. In this case, even if a service exception occurs, SLB may declare the backend ECS instance healthy because the error message `port XX unreachable` is not returned. Consequently, the health check result deviates from the actual service status. Solution: You can specify a request and a response for UDP health checks. The ECS instance is considered healthy only when the specified response is returned. However, the client must be configured accordingly to return responses. Health check time window The health check feature effectively improves the availability of your services. However, to avoid impacts on system availability caused by frequent switching after failed health checks, the health check status switches only when health checks successively succeed or fail for a specified number of times within a certain time window. The health check time window is determined by the following factors: Health check interval: how often health checks are performed Response timeout: the length of time to wait for a response Health check threshold: the number of consecutive successes or failures of health checks The health check time window is calculated based on the following formula: Time window for health check failures = Response timeout × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1) Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1) Not e The response time of a successful health check is the duration from the time when the health check request is sent to the time when the response is received. When TCP health checks are used, the response time is short and almost negligible because only whether the specific port is alive is checked. For HTTP health checks, the response time depends on the performance and load of the application server and is typically within a few seconds. The health check result has the following impacts on request forwarding: If the health check of the backend ECS instance fails, new requests are distributed to other backend ECS instances. This does not affect client access. If the health check of the backend ECS instance succeeds, new requests are distributed to this instance. The client access is normal. If an exception occurs on the backend ECS instance and a request arrives during a time window for health check failures, the request is still sent to the backend ECS instance. This is because the number of failed health checks has not reached the unhealthy threshold (3 times by default). In this case, the client access fails. Examples of health check response timeout and health check interval The following health check settings are used in these examples: Response T imeout Period: 5 Seconds Healt h Check Int erval: 2 Seconds Healt hy T hreshold: 3 T imes Unhealt hy T hreshold: 3 T imes Time window for health check failures = Response timeout × Unhealthy threshold + Health check interval × (Unhealthy threshold - 1). That is, 5 × 3 + 2 × (3 - 1) = 19 seconds. If the response time of a health check exceeds 19 seconds, the health check fails. The following figure shows the time window from a healthy status to an unhealthy status. Time window for health check successes = Response time of a successful health check × Healthy threshold + Health check interval × (Healthy threshold - 1). That is, (1 × 3) + 2 × (3 - 1) = 7 seconds. If the response time of a successful health check is less than seven seconds, the health check succeeds. Not e The response time of a successful health check is the duration from the time when the health check request is sent to the time when the response is received. When TCP health checks are used, the response time is short and almost negligible because only whether the specific port is alive is checked. For HTTP health checks, the response time depends on the performance and load of the application server and is typically within a few seconds. The following figure shows the time window from an unhealthy status to a healthy status (assume that it takes 1 second for the server to respond to a health check request). Domain name setting in HTTP health checks When HTTP health checks are used, you can set a domain name for health checks. The setting is optional. Some application servers verify the host field in requests. In this case, the request header must contain the host field. If a domain name is configured in health check setting, SLB adds the domain name to the host field when SLB forwards a request to an application server. If no domain name is configured, the health check request is denied by the application server because it does not contain a host field and the health check may fail. If your application server verifies the host field in requests, you must configure a domain name to make sure that the health check feature works.
 
 ### 7.2 Disable the health check feature
 
-This topic describes how to disable the health check feature. If you disable the health check feature, requests may be distributed to unhealthy ECS instances and cause impacts on your business. We recommend that you enable the health check feature. Context You can only disable the health check feature for HTTP and HTTPS listeners. The health check feature for UDP and TCP listeners cannot be disabled.
+This topic describes how to disable the health check feature. If you disable the health check feature, requests may be distributed to unhealthy ECS instances and cause impacts on your business. We recommend that you enable the health check feature. Context Not e You can only disable the health check feature for HTTP and HTTPS listeners. The health check feature for UDP and TCP listeners cannot be disabled. Procedure
 1. Log on to the SLB console.
 2. On the Server Load Balancer page, find the target SLB instance and click its instance ID.
 3. On the List eners tab, find the target listener and click Conf igure in the Act ions column.
@@ -818,7 +818,7 @@ Enter to generate a csr file.
 sudo openssl req -new -key private/ca.key -out private/ca.csr
 ```
 
-Common Name is the domain name of the SLB instance.
+Not e Common Name is the domain name of the SLB instance.
 5. Run the following command to generate a crt file:
 
 ```python
@@ -865,14 +865,14 @@ sudo mkdir users
 sudo openssl genrsa -des3 -out /root/ca/users/client.key 1024
 ```
 
-Enter a pass phrase when creating the Key. It is the password to protect the private Key from unauthorized access. Enter the same password twice.
+Not e Enter a pass phrase when creating the Key. It is the password to protect the private Key from unauthorized access. Enter the same password twice.
 3. Run the following command to create a csr file for the client Key.
 
 ```python
 sudo openssl req -new -key /root/ca/users/client.key -out /root/ca/users/client.csr
 ```
 
-Enter the pass phrase set in the previous step and other required information when prompted. A challenge password is the password of the client certificate. Note that it is not the password of the client Key.
+Enter the pass phrase set in the previous step and other required information when prompted. Not e A challenge password is the password of the client certificate. Note that it is not the password of the client Key.
 4. Run the following command to sign the client Key.
 
 ```python

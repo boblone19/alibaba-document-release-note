@@ -5,16 +5,223 @@ doc_version: "20260729"
 pdf_pages: 258
 source_pdf: "06_开发指南_enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/vpc/zh/enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 专有网络VPC 开发指南
 
-专有网络VPC
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取公共Header参数
+  - 2.6 获取VPC的Endpoint
+  - 2.7 获取VPC的SDK包
+- 3 Java SDK调用
+  - 3.1 快速开始
+  - 3.2 使用手册
+    - 3.2.1 安装Java SDK
+    - 3.2.2 设置身份验证凭证
+    - 3.2.3 请求连接配置
+    - 3.2.4 发起调用
+    - 3.2.5 错误处理
+    - 3.2.6 使用CommonRequest进行调用
+- 4 Python SDK调用
+  - 4.1 快速开始
+  - 4.2 使用手册
+    - 4.2.1 安装Python SDK
+    - 4.2.2 设置身份验证凭证
+    - 4.2.3 设置HTTPS请求
+    - 4.2.4 发起调用
+    - 4.2.5 错误处理
+    - 4.2.6 使用CommonRequest进行调用
+- 5 Go SDK调用
+  - 5.1 快速开始
+  - 5.2 使用手册
+    - 5.2.1 安装Go SDK核心包
+    - 5.2.2 设置身份验证凭证
+    - 5.2.3 发起调用
+    - 5.2.4 错误处理
+    - 5.2.5 使用CommonRequest进行调用
+- 6 API参考
+  - 6.1 API概览
+  - 6.2 调用API
+    - 6.2.1 请求结构
+    - 6.2.2 API授权
+    - 6.2.3 API签名
+  - 6.3 RAM鉴权
+  - 6.4 公共参数
+  - 6.5 VPC
+    - 6.5.1 CreateVpc
+    - 6.5.2 DeleteVpc
+    - 6.5.3 ModifyVpcAttribute
+    - 6.5.4 DescribeVpcAttribute
+    - 6.5.5 AssociateVpcCidrBlock
+    - 6.5.6 UnassociateVpcCidrBlock
+    - 6.5.7 MoveResourceGroup
+    - 6.5.8 ListVpcIpv6Isps
+    - 6.5.9 DescribeVSwitchGatewayIpService
+    - 6.5.10 CreateVpcPrefixList
+    - 6.5.11 ModifyVpcPrefixList
+    - 6.5.12 DeleteVpcPrefixList
+    - 6.5.13 GetVpcPrefixListEntries
+    - 6.5.14 ListPrefixLists
+    - 6.5.15 DetailVpc
+    - 6.5.16 DeleteNqa
+    - 6.5.17 DeleteExpressCloudConnection
+  - 6.6 路由表
+    - 6.6.1 ModifyRouteTableAttributes
+    - 6.6.2 CreateRouteTable
+    - 6.6.3 CreateRouteEntry
+    - 6.6.4 DeleteRouteEntry
+    - 6.6.5 DescribeRouteEntryList
+    - 6.6.6 ModifyRouteEntry
+    - 6.6.7 AssociateRouteTable
+    - 6.6.8 DeleteRouteTable
+    - 6.6.9 DescribeRouteTableList
+    - 6.6.10 UnassociateRouteTable
+  - 6.7 交换机
+    - 6.7.1 CreateVSwitch
+    - 6.7.2 DeleteVSwitch
+    - 6.7.3 ModifyVSwitchAttribute
+    - 6.7.4 DescribeVSwitchAttributes
+  - 6.8 网络ACL
+    - 6.8.1 CreateNetworkAcl
+    - 6.8.2 AssociateNetworkAcl
+    - 6.8.3 ModifyNetworkAclAttributes
+    - 6.8.4 UpdateNetworkAclEntries
+    - 6.8.5 UnassociateNetworkAcl
+    - 6.8.6 CopyNetworkAclEntries
+    - 6.8.7 DeleteNetworkAcl
+    - 6.8.8 DescribeNetworkAcls
+    - 6.8.9 DescribeNetworkAclAttributes
+    - 6.8.10 UpdateNetworkAclEntriesEnable
+  - 6.9 弹性公网IP
+    - 6.9.1 ListEipIsps
+    - 6.9.2 AllocateEipAddress
+    - 6.9.3 AllocateEipAddressPro
+    - 6.9.4 AssociateEipAddress
+    - 6.9.5 ModifyEipAddressAttribute
+    - 6.9.6 DescribeEipAddresses
+    - 6.9.7 UnassociateEipAddress
+    - 6.9.8 ReleaseEipAddress
+    - 6.9.9 DescribeEipGatewayInfo
+    - 6.9.10 DescribeHighDefinitionMonitorLogAttribute
+  - 6.10 NAT网关
+    - 6.10.1 CreateNatGateway
+    - 6.10.2 ModifyNatGatewayAttribute
+    - 6.10.3 ModifyNatGatewaySpec
+    - 6.10.4 DeleteNatGateway
+    - 6.10.5 DescribeNatGateways
+    - 6.10.6 CreateForwardEntry
+    - 6.10.7 DescribeForwardTableEntries
+    - 6.10.8 ModifyForwardEntry
+    - 6.10.9 DeleteForwardEntry
+    - 6.10.10 CreateSnatEntry
+    - 6.10.11 DescribeSnatTableEntries
+    - 6.10.12 ModifySnatEntry
+    - 6.10.13 DeleteSnatEntry
+    - 6.10.14 ModifyBandwidthPackageSpec
+    - 6.10.15 DeleteBandwidthPackage
+    - 6.10.16 CreateBandwidthPackage
+    - 6.10.17 DescribeBandwidthPackages
+    - 6.10.18 ModifyBandwidthPackageAttribute
+    - 6.10.19 AddBandwidthPackageIps
+  - 6.11 IPv6网关
+    - 6.11.1 CreateIpv6Gateway
+    - 6.11.2 DeleteIpv6Gateway
+    - 6.11.3 DescribeIpv6Gateways
+    - 6.11.4 ModifyIpv6GatewaySpec
+    - 6.11.5 DescribeIpv6EgressOnlyRules
+    - 6.11.6 CreateIpv6EgressOnlyRule
+    - 6.11.7 DeleteIpv6EgressOnlyRule
+    - 6.11.8 DeleteIpv6InternetBandwidth
+    - 6.11.9 DescribeIpv6GatewayAttribute
+    - 6.11.10 DescribeIpv6Addresses
+    - 6.11.11 ModifyIpv6InternetBandwidth
+    - 6.11.12 AllocateIpv6InternetBandwidth
+    - 6.11.13 ModifyIpv6AddressAttribute
+    - 6.11.14 ModifyIpv6GatewayAttribute
+  - 6.12 高可用虚拟IP
+    - 6.12.1 CreateHaVip
+    - 6.12.2 DescribeHaVips
+    - 6.12.3 ModifyHaVipAttribute
+    - 6.12.4 AssociateHaVip
+    - 6.12.5 UnassociateHaVip
+    - 6.12.6 DeleteHaVip
+  - 6.13 DHCP选项集
+    - 6.13.1 CreateDhcpOptionsSet
+    - 6.13.2 AttachDhcpOptionsSetToVpc
+    - 6.13.3 DetachDhcpOptionsSetFromVpc
+    - 6.13.4 ReplaceVpcDhcpOptionsSet
+    - 6.13.5 GetDhcpOptionsSet
+    - 6.13.6 ListDhcpOptionsSets
+    - 6.13.7 UpdateDhcpOptionsSetAttribute
+    - 6.13.8 DeleteDhcpOptionsSet
+  - 6.14 路由器
+    - 6.14.1 ModifyVRouterAttribute
+    - 6.14.2 DescribeVRouters
+    - 6.15.1 ListGWAzone
+    - 6.15.2 DescribeRegions
+    - 6.15.3 DescribeZones
+    - 6.16.1 TagResources
+    - 6.16.2 ListTagResources
+    - 6.16.3 UnTagResources
+  - 6.17 VPN网关
+    - 6.17.1 VPN网关
+      - 6.17.1.1 CreateVpnGateway
+      - 6.17.1.2 DescribeVpnGateways
+      - 6.17.1.3 DescribeVpnGateway
+      - 6.17.1.4 DeleteVpnGateway
+      - 6.17.1.5 ModifyVpnGatewayAttribute
+      - 6.17.1.6 CreateVbrHa
+    - 6.17.2 用户网关
+      - 6.17.2.1 CreateCustomerGateway
+      - 6.17.2.2 DescribeCustomerGateways
+      - 6.17.2.3 DescribeCustomerGateway
+      - 6.17.2.4 DeleteCustomerGateway
+      - 6.17.2.5 ModifyCustomerGatewayAttribute
+    - 6.17.3 VPN网关路由
+      - 6.17.3.1 DeleteVpnPbrRouteEntry
+      - 6.17.3.2 DeleteVpnRouteEntry
+      - 6.17.3.3 DescribeVpnRouteEntries
+      - 6.17.3.4 ModifyVpnRouteEntryWeight
+      - 6.17.3.5 CreateVpnRouteEntry
+      - 6.17.3.6 ModifyVpnPbrRouteEntryWeight
+      - 6.17.3.7 DescribeVpnPbrRouteEntries
+      - 6.17.3.8 PublishVpnRouteEntry
+      - 6.17.3.9 CreateVpnPbrRouteEntry
+    - 6.17.4 IPsec-VPN
+      - 6.17.4.1 DescribeVpnConnection
+      - 6.17.4.2 DeleteVpnConnection
+      - 6.17.4.3 DownloadVpnConnectionConfig
+      - 6.17.4.4 CreateVpnConnection
+      - 6.17.4.5 DescribeVpnConnections
+      - 6.17.4.6 ModifyVpnConnectionAttribute
+    - 6.17.5 SSL-VPN
+      - 6.17.5.1 CreateSslVpnServer
+      - 6.17.5.2 DeleteSslVpnServer
+      - 6.17.5.3 ModifySslVpnServer
+      - 6.17.5.4 DeleteSslVpnClientCert
+      - 6.17.5.5 ModifySslVpnClientCert
+      - 6.17.5.6 CreateSslVpnClientCert
+      - 6.17.5.7 DescribeSslVpnClientCerts
+      - 6.17.5.8 DescribeSslVpnClientCert
+      - 6.17.5.9 DescribeSslVpnServers
+      - 6.17.5.10 DescribeVpnSslServerLogs
+  - 7.1 STS概要
+    - 7.1.1 什么是STS
+    - 7.1.2 AssumeRole
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,12 +238,11 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-专有网络VPC
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
@@ -45,27 +251,29 @@ converter: line-classifier (PyMuPDF)
 **调用步骤**
 
 1. 获取AccessKey。
-获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。 专有网络VPC
+获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrganizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup章节。
 
-**说明**
+> **说明：** 调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。
+> 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。
+> 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
 
-调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
 4. 获取对应的API参考文档。
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-专有网络VPC
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户
+### 2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -75,31 +283,29 @@ converter: line-classifier (PyMuPDF)
 
 1. 在浏览器地址栏中，输入Apsara Uni-manager运营控制台的服务域名地址，按回车键。
 
-**说明**
+> **说明：** 单击页面右上角的当前语言可以切换其它语言。
 
-单击页面右上角的当前语言可以切换其它语言。 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Uni-manager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Uni-manager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. 输入正确的用户名及密码。
 
-**说明**
+> **说明：** 请向运营管理员获取登录控制台的用户名和密码。
+> 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 
-请向运营管理员获取登录控制台的用户名和密码。 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 3. 勾选**我已阅读并同意产品服务协议、隐私协议、用户协议**。
 
 **说明**
 
 登录页展示的链接文字为文档标题，单击链接文字，可查看协议的详细内容。
-**产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布，则不需要执行该操作。
+
+> **产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布，则不需要执行该操作。
+
 4. 单击**账号登录**/**授权登录**。
-专有网络VPC
 
-**说明**
+> **说明：** “授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 
-“授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 5. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 
-**说明**
-
-公网场景下，登录入口默认强制开启多因素认证。
+> **说明：** 公网场景下，登录入口默认强制开启多因素认证。
 
 **开启MFA后的首次登录**
 
@@ -110,7 +316,7 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 输入6位MFA码后单击**认证**。
 6. 在页面上方的菜单栏，选择**产品** > **开发工具** > **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 通过POP网关调用API需要您了解产品开放API接口的相关信息，本文为您介绍获取云产品的Endpoint的两种方式。
 
@@ -118,9 +324,7 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 
 为了使专有云保持与公共云相同的使用方式，使您拥有更方便，更一致的体验，建议通过POP网关调用专有云API。
 
-**说明**
-
-Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
+> **说明：** Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
 
 **操作步骤**
 
@@ -138,7 +342,6 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。 您也可以自行获取Endpoint，本文以API网关为例为您介绍获取云产品业务域Endpoint的方法。
 1. 登录Apsara Uni-manager运维控制台。
-专有网络VPC
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在服务注册变量大盘页面，单击**高级筛选**。
@@ -147,17 +350,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 图标。
 7. 单击 `apigateway` 服务**Service Registration**列的文本信息，在弹出的**注册变量**对话框中，查看apigateway.openapi.endpoint值，即 `Endpoint` 。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。具体操作，请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号 AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。具体操作，请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号 AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -172,22 +373,20 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-**说明**
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
-专有网络VPC
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -201,16 +400,19 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 获取STS Accesskey三元组。
 
-| 说明以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourRoleSessionName>，请替换为您当前实际的会话名称。 <yourRoleArn>，请替换为您实际的RAM Role。 "sts.aliyuns.com" ，请替换为实际的STS Endpoint。 |  |  |
+| 说明以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourRoleSessionName>，请替换为您当前实际的会话名称。 <yourRoleArn>，请替换为您实际的RAM Role。 "sts.aliyuns.com" ，请替换为实际的STS Endpoint。 |   |   |
 |---|---|---|
-| public static void main(String[] args) { // 创建DefaultAcsClient实例并初始化。 // 请替换为您实际的地域ID、AccessKey ID、AccessKey Secret DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", "<yourAccessKeySecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); String assumeRole = callAssumeRole(client); if (StringUtils.isEmpty(assumeRole)) return; JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole); JSONObject credentials = assumeRoleJson.getJSONObject("Credentials"); // 获取到STS三元组 String stsAK = credentials.getString("AccessKeyId"); String stsSK = credentials.getString("AccessKeySecret"); String stsToken = credentials.getString("SecurityToken"); } private static String callAssumeRole(IAcsClient client) { CommonRequest request = new CommonRequest(); // "sts.aliyuns.com" 请替换为实际的STS Endpoint，一般格式为sts-vpc.${global:region}.${global:internet-domain} request.setSysDomain("sts.aliyuns.com"); request.setSysProduct("Sts"); request.setSysAction("AssumeRole"); request.setSysVersion("2015-04-01"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // 业务参数，设置本次调用Session的别名，"<yourRoleSessionName>"请您替换为实际值 request.putQueryParameter("RoleSessionName", "<yourRoleSessionName>"); // 扮演的Role角色ARN，"<yourRoleArn>"请替换为上一步获取到的实际Ram Role ARN request.putQueryParameter("RoleArn", "<yourRoleArn>"); try { CommonResponse response = client.getCommonResponse(request); return response.getData(); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } return null; } |  |  |
+| public static void main(String[] args) { // 创建DefaultAcsClient实例并初始化。 // 请替换为您实际的地域ID、AccessKey ID、AccessKey Secret DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", "<yourAccessKeySecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); String assumeRole = callAssumeRole(client); if (StringUtils.isEmpty(assumeRole)) return; JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole); JSONObject credentials = assumeRoleJson.getJSONObject("Credentials"); // 获取到STS三元组 String stsAK = credentials.getString("AccessKeyId"); String stsSK = credentials.getString("AccessKeySecret"); String stsToken = credentials.getString("SecurityToken"); } private static String callAssumeRole(IAcsClient client) { CommonRequest request = new CommonRequest(); // "sts.aliyuns.com" 请替换为实际的STS Endpoint，一般格式为sts-vpc.${global:region}.${global:internet-domain} request.setSysDomain("sts.aliyuns.com"); request.setSysProduct("Sts"); request.setSysAction("AssumeRole"); request.setSysVersion("2015-04-01"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // 业务参数，设置本次调用Session的别名，"<yourRoleSessionName>"请您替换为实际值 request.putQueryParameter("RoleSessionName", "<yourRoleSessionName>"); // 扮演的Role角色ARN，"<yourRoleArn>"请替换为上一步获取到的实际Ram Role ARN request.putQueryParameter("RoleArn", "<yourRoleArn>"); try { CommonResponse response = client.getCommonResponse(request); return response.getData(); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } return null; } |   |   |
 | 通过STS AccessKey三元组调用云产品的接口，下列代码以VPC的 | DescribeVpcs | 接口为示例。 |
 
-专有网络VPC
-
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourStsAccesskeyID>,请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>，请替换为您实际的STS Accesskey Secret。 <yourStsToken>，请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourStsAccesskeyID>,请替换为您实际的STS Accesskey ID。
+> <yourStsAccessKeySecret>，请替换为您实际的STS Accesskey Secret。
+> <yourStsToken>，请替换为实际STS三元组中的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -246,13 +448,13 @@ public static void main(String[] args) {
     request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,请替换为您实际的资源集`ID`
+`//` 非必填`,`请替换为您实际的资源集`ID`
 
 ```
     // request.putHeaderParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,请替换为您实际的组织`ID`
+`//` 必填`,`请替换为您实际的组织`ID`
 
 ```java
     request.putHeaderParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -265,11 +467,11 @@ public static void main(String[] args) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取公共Header参数
+`}` `}`
+
+### 2.5 获取公共Header参数
 
 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
 
@@ -296,7 +498,7 @@ public static void main(String[] args) {
 
 **获取资源集ID**
 
-资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup章节。 专有网络VPC
+资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup章节。
 
 **获取实例ID**
 
@@ -317,7 +519,9 @@ public static void main(String[] args) {
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取VPC的Endpoint
+### 2.6 获取VPC的Endpoint
+
+本文介绍了如何获取VPC的Endpoint。
 
 **背景信息**
 
@@ -334,7 +538,7 @@ i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏选择**产�
 5. 在 `vpc-yaochi` 服务的**Service Registration**列中，单击鼠标右键，选择**显示更多**。
 在**详情**页面，查看**vpc-internal.openapi.endpoint**值，即 `Endpoint` 。
 
-### 获取VPC的SDK包
+### 2.7 获取VPC的SDK包
 
 通过POP网关调用专有云API时，需使用相应云产品的SDK。本文为您介绍如何获取阿里云开发工具包（SDK）。
 
@@ -346,11 +550,9 @@ i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏选择**产�
 
 目前SDK的语言支持：Java、Python、Go，您可以前往阿里云开发工具包（SDK）中进行选择。
 
-**说明**
+> **说明：** 推荐使用 Java、Python、Go三种语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。
 
-推荐使用 Java、Python、Go三种语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。 专有网络VPC
-
-## Java SDK调用
+## 3 Java SDK调用
 
 安装阿里云Java SDK后，您可以编写代码使用阿里云Java SDK访问阿里云POP网关，调用统一云管平台的API接口。
 
@@ -366,13 +568,13 @@ i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏选择**产�
 </dependency>
 ```
 
-**说明**
+> **说明：** 建议您前往**开发者门户** > **API****集成** > **API****调试**页面获取SDK包最新版本依赖，详细操作请参见获取统一云管平台的SDK包。
 
-建议您前往**开发者门户** > **API****集成** > **API****调试**页面获取SDK包最新版本依赖，详细操作请参见获取统一云管平台的SDK包。 使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。Java SDK支持通过AccessKey或STS AccessKey进行身份验证。
+**设置身份验证**
 
-**重要**
+使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。Java SDK支持通过AccessKey或STS AccessKey进行身份验证。
 
-确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -384,15 +586,9 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourSecurityToken>"
 ```
 
-`//`在使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。 `//`在使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`null`。
+`//`在使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。 `//`在使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`null`。 );
 
-```
-);
-```
-
-**说明**
-
-以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号 （<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号 （<>）在最终代码中不保留。
 
 **创建并配置请求连接**
 
@@ -432,13 +628,11 @@ clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>"); clientConfig.setHttpsP
 profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile);
 ```
 
-**说明**
-
-以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
 
 **创建请求CommonRequest**
 
-使用CommonRequest调用方式可实现任意Open API接口的调用。 专有网络VPC `//` 创建`API`请求并设置参数。
+使用CommonRequest调用方式可实现任意Open API接口的调用。 `//` 创建`API`请求并设置参数。
 
 ```
 CommonRequest request = new CommonRequest();
@@ -480,9 +674,7 @@ request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>");
 request.setHttpContentType(FormatType.JSON);
 ```
 
-**说明**
-
-以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **设置阿里云核心库SDK参数**
 
@@ -497,7 +689,7 @@ request.setHttpContentType(FormatType.JSON);
 
 **发起调用并处理应答**
 
-专有网络VPC 可参考以下代码发起请求并处理返回结果。
+可参考以下代码发起请求并处理返回结果。
 
 ```
 try {
@@ -514,12 +706,9 @@ try {
     System.out.println("ErrCode:" + e.getErrCode());
     System.out.println("ErrMsg:" + e.getErrMsg());
     System.out.println("RequestId:" + e.getRequestId());
-}
 ```
 
-#### 错误处理
-
-在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Java SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
+`}` 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Java SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
@@ -558,20 +747,20 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
+
+`}`
 
 **完整调用示例**
 
-以下代码为通过统一云管平台的 `GetOrganizationList` 接口获取组织列表的调用示例。 专有网络VPC
+以下代码为通过统一云管平台的 `GetOrganizationList` 接口获取组织列表的调用示例。
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Demo {
     /**
 ```
 
-* 本文提供的`API`调用样例仅供参考，更多详细`API`调用方法可参照开发文档中的“快速入门”。
-`*/`
+`*` 本文提供的`API`调用样例仅供参考，更多详细`API`调用方法可参照开发文档中的“快速入门”。 `*/`
 
 ```
     public static void main(String[] args) {
@@ -644,7 +833,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>");
 ```
 
-`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参 `//` 接口业务参数设置。
+`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参照开发指南中的“获取公共`Header`参数`"`。 `//` 接口业务参数设置。
 
 ```
         request.putBodyParameter("id","1");
@@ -663,28 +852,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-**说明**
+`}` `}` `}`
 
-以上代码示例
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<http://192.168.XX.XX:33XX>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
-```
-中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 、 <http://192.168.XX.XX:33XX> 、 <ascmEndpoint> 、 <yourCallerSdkSource> 均
-```
-
-为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
-
-### 快速开始
+### 3.1 快速开始
 
 本节介绍如何获取VPC Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 阿里云专有云Java SDK需要1.8及以上的JDK。 专有网络VPC
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取VPC的Endpoint。具体操作，请参见获取VPC的Endpoint。 阿里云专有云Java SDK需要1.8及以上的JDK。
 
 **安装阿里云专有云 Java SDK**
 
@@ -712,9 +892,18 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <Product>，请替换为您实际的产品名称。 <Endpoint>，请替换为您当前产品实际的Endpoint。 <readTimeout>，请您根据实际情况设置读取超时时间，单位为毫秒。 <connectionTimeout>，请您根据实际情况设置连接超时时间，单位为毫秒。 <maxRequestsPerHost>，请您根据实际情况设置每个主机的最大请求数。 <maxRequests>，请您根据实际情况设置最大请求数。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 专有网络VPC
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <Product>，请替换为您实际的产品名称。
+> <Endpoint>，请替换为您当前产品实际的Endpoint。
+> <readTimeout>，请您根据实际情况设置读取超时时间，单位为毫秒。
+> <connectionTimeout>，请您根据实际情况设置连接超时时间，单位为毫秒。
+> <maxRequestsPerHost>，请您根据实际情况设置每个主机的最大请求数。
+> <maxRequests>，请您根据实际情况设置最大请求数。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
 ```java
 import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.vpc.model.v20160428.*; import com.google.gson.Gson; public class Main {
@@ -740,7 +929,7 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
         clientConfig.setIgnoreSSLCerts(true);// 忽略证书
 ```
 
-clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选）,单位为毫秒（`ms`） clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);// 连接超时时间（可选）,单位为毫秒（`ms`） clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// 设置每个主机的最大请求数（可选） clientConfig.setMaxRequests(<maxRequests>);// 设置最大请求数（可选） clientConfig.setProtocolType(ProtocolType.HTTP); // 设置请求协议,默认`HTTP`（可选） `/*` 设置代理(可选`),`替换为代理`IP+Port`
+clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选）`,`单位为毫秒（`ms`） clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);// 连接超时时间（可选）`,`单位为毫秒（`ms`） clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// 设置每个主机的最大请求数（可选） clientConfig.setMaxRequests(<maxRequests>);// 设置最大请求数（可选） clientConfig.setProtocolType(ProtocolType.HTTP); // 设置请求协议`,`默认`HTTP`（可选） `/*` 设置代理`(`可选`),`替换为代理`IP+Port`
 
 ```
         clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -772,7 +961,7 @@ clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选�
         request.setPageNumber(1);
 ```
 
-`//` 特殊`Header`参数,设置组织`ID`和资源集`ID,`资源隔离使用
+`//` 特殊`Header`参数`,`设置组织`ID`和资源集`ID,`资源隔离使用
 
 ```
         request.putHeaderParameter("x-acs-organizationid", "1");
@@ -792,14 +981,13 @@ clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选�
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-     }
- }
 ```
 
-### 使用手册
+`}` `}` `}`
 
-#### 3.2.1. 安装Java SDK
+### 3.2 使用手册
+
+#### 3.2.1 安装Java SDK
 
 本文介绍如何安装及调用VPC Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包（SDK）的方式安装专有云Java SDK。 要使用VPC的开发工具包，必须安装阿里云Java SDK核心库以及VPC的Java SDK。SDK核心库推荐使用4.5.17及以上版本，Java SDK的版本为3.2.0。 以使用VPC的Java SDK为例，您需要安装阿里云Java SDK核心库和VPC Java SDK，并在pom.xml文件中添加以下依赖即可。准确的SDK版本号，请参见阿里云开发工具包 （SDK）。
 
@@ -818,13 +1006,11 @@ clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选�
 </dependencies>
 ```
 
-#### 3.2.2. 设置身份验证凭证
+#### 3.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。 专有网络VPC 目前，Java SDK支持通过AccessKey进行身份验证，关于如何获取AccessKey，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。 目前，Java SDK支持通过AccessKey进行身份验证，关于如何获取AccessKey，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**说明**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **说明：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -832,17 +1018,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 `"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret`
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
-
-#### 3.2.3. 请求连接配置
+#### 3.2.3 请求连接配置
 
 本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒（ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒（ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 `//` 获取`HttpClientConfig`对象
+`//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -854,31 +1044,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -902,7 +1092,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### 3.2.4. 发起调用
+#### 3.2.4 发起调用
 
 本文介绍如何使用VPC Java SDK发起请求。
 
@@ -927,23 +1117,22 @@ DescribeVpcsRequest request = new DescribeVpcsRequest();
 request.setPageSize(10); request.setPageNumber(1);
 ```
 
-`//` 特殊`Header`参数,设置组织`ID`和资源集`ID,`资源隔离使用
+`//` 特殊`Header`参数`,`设置组织`ID`和资源集`ID,`资源隔离使用
 
 ```
 request.putHeaderParameter("x-acs-organizationid", "1"); request.putHeaderParameter("x-acs-resourcegroupid", "");
 ```
 
 3. 发起调用并处理应答。
-专有网络VPC
 
-| DescribeVpcsResponse response; try { DescribeVpcsResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response)); } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { e.printStackTrace(); } |  |  |  |  |
+| DescribeVpcsResponse response; try { DescribeVpcsResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response)); } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { e.printStackTrace(); } |   |   |   |   |
 |---|---|---|---|---|
-| 正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 |  | response.getXXX() |  | 来获得应答中的字段。 |
-| instanceStatus := response.getStatus() |  |  |  |  |
-| 如果出现了异常，或您需要原始HTTP应答的情况下，您可以通过以使用 | doAction() |  | 来获取原始应答。 |  |
-| HttpResponse response = client.doAction(request); |  |  |  |  |
+| 正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 |   | response.getXXX() |   | 来获得应答中的字段。 |
+| instanceStatus := response.getStatus() |   |   |   |   |
+| 如果出现了异常，或您需要原始HTTP应答的情况下，您可以通过以使用 | doAction() |   | 来获取原始应答。 |   |
+| HttpResponse response = client.doAction(request); |   |   |   |   |
 
-#### 3.2.5. 错误处理
+#### 3.2.5 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -984,10 +1173,11 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-#### 3.2.6. 使用CommonRequest进行调用
+`}`
+
+#### 3.2.6 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式 （CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -997,6 +1187,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。
 
 | request.setSysAction("<Action>") | 的方式来指定API名称。 |
@@ -1005,11 +1198,18 @@ CommonRequest的特点如下：
 
 **示例：调用RPC风格的API**
 
-以下代码为VPC的 `DescribeVpcs` 接口获取实例状态列表的调用示例（VPC属于RPC的调用风格)。 专有网络VPC
+以下代码为VPC的 `DescribeVpcs` 接口获取实例状态列表的调用示例（VPC属于RPC的调用风格)。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; public class Sample {
@@ -1066,7 +1266,7 @@ request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");// �
         request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");// 必填，请替换为您实际的组织ID
 ```
 
-request.putHeadParameter("x-acs-regionid", "<yourRegionID>");// 非必填(企业版`V3.15.0`及之前历史版本需要`),`请替换为您实际的地域`ID` // request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// 非必填（修改、删除、查询单实例详情时需要）,请替换为您实际的实例`ID`
+request.putHeadParameter("x-acs-regionid", "<yourRegionID>");// 非必填`(`企业版`V3.15.0`及之前历史版本需要`),`请替换为您实际的地域`ID` // request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// 非必填（修改、删除、查询单实例详情时需要）`,`请替换为您实际的实例`ID`
 
 ```
         /**
@@ -1090,32 +1290,31 @@ request.putHeadParameter("x-acs-regionid", "<yourRegionID>");// 非必填(企业
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-专有网络VPC
+`}` `}` `}`
 
-## Python SDK调用
+## 4 Python SDK调用
 
 安装阿里云Python SDK，您就可以编写代码使用阿里云Python SDK访问专有云POP网关，调用统一云管平台的API接口。
 
 **前提条件**
 
-已获取AccessKey或STS AccessKey，获取方式请参见获取AccessKey或STS AccessKey。 已获取统一云管平台的Endpoint，获取方式请参见获取统一云管平台的Endpoint。 阿里云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装阿里云Python SDK。
+已获取AccessKey或STS AccessKey，获取方式请参见获取AccessKey或STS AccessKey。 已获取统一云管平台的Endpoint，获取方式请参见获取统一云管平台的Endpoint。
 
-**说明**
+**安装Python SDK及依赖包**
 
-推荐使用python3.x。 Python 3.x执行：
-#安装阿里云`SDK`核心库。
+阿里云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装阿里云Python SDK。
+
+> **说明：** 推荐使用python3.x。
+
+Python 3.x执行： `#`安装阿里云`SDK`核心库。
 
 ```
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-Python 2.x执行：
-#安装阿里云`SDK`核心库。
+Python 2.x执行： `#`安装阿里云`SDK`核心库。
 
 ```
 pip install aliyun-python-sdk-core
@@ -1129,11 +1328,11 @@ pip install aliyun-python-sdk-core
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential
 ```
 
+**设置身份验证**
+
 Python SDK支持通过AccessKey或STS AccessKey进行身份验证。
 
-**重要**
-
-确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 credentials = StsTokenCredential(
@@ -1145,13 +1344,9 @@ credentials = StsTokenCredential(
     '<yourSecurityToken>'
 ```
 
-#使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。
-#使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`None`。
-)
+`#`使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。 `#`使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`None`。 `)`
 
-**说明**
-
-以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **创建并配置请求连接**
 
@@ -1162,19 +1357,19 @@ client = AcsClient(region_id='<your-region-id>',
                    credential=credentials,
 ```
 
-# （可选）设置创建连接超时时间，单位毫秒（`ms`）。
+`#` （可选）设置创建连接超时时间，单位毫秒（`ms`）。
 
 ```
                    connect_timeout=<connectionTimeout>,
 ```
 
-# （可选）设置读取超时时间，单位毫秒（`ms`）。
+`#` （可选）设置读取超时时间，单位毫秒（`ms`）。
 
 ```
                    read_timeout=<readTimeout>,
 ```
 
-# （可选）请根据实际情况判断是否设置代理，设置方法如下：
+`#` （可选）请根据实际情况判断是否设置代理，设置方法如下：
 
 ```bash
                    # proxy={
@@ -1183,67 +1378,61 @@ client = AcsClient(region_id='<your-region-id>',
                    # }
 ```
 
-)
+`)`
 
-**说明**
-
-以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **创建请求CommonRequest**
 
-使用CommonRequest调用方式可实现任意Open API接口的调用。 专有网络VPC
-# 创建`API`请求并设置参数。
+使用CommonRequest调用方式可实现任意Open API接口的调用。 `#` 创建`API`请求并设置参数。
 
 ```
 request = CommonRequest()
 ```
 
-# 产品接口信息参数。
+`#` 产品接口信息参数。
 
 ```
 request.set_product("ascm") request.set_version('2019-05-10') request.set_uri_pattern("<yourCallUriPattern>")
 ```
 
-# 统一云管平台的`Endpoint`地址。
+`#` 统一云管平台的`Endpoint`地址。
 
 ```
 request.set_domain('<ascmEndpoint>')
 ```
 
-# 设置请求方式。
+`#` 设置请求方式。
 
 ```
 request.set_method('POST')
 ```
 
-# 设置请求协议类型：`HTTP/HTTPS`。
+`#` 设置请求协议类型：`HTTP/HTTPS`。
 
 ```
 request.set_protocol_type('https')
 ```
 
-# 设置`Headers`。
-# 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。
+`#` 设置`Headers`。 `#` 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。
 
 ```
 request.add_header("x-acs-caller-sdk-source", "<yourCallerSdkSource>")
 ```
 
-# 接口业务参数设置。
+`#` 接口业务参数设置。
 
 ```
 ...
 ```
 
-# 设置`Content-Type`。
+`#` 设置`Content-Type`。
 
 ```
 request.set_content_type('application/json')
 ```
 
-**说明**
-
-以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **设置阿里云核心库SDK参数**
 
@@ -1258,17 +1447,13 @@ request.set_content_type('application/json')
 
 **发起调用并处理返回**
 
-# 发起请求，并获取返回。
+`#` 发起请求，并获取返回。
 
 ```python
 response = client.do_action_with_exception(request)
 # python2:  print(response)
 print(str(response, encoding='utf-8'))
 ```
-
-专有网络VPC
-
-#### 错误处理
 
 在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -1284,8 +1469,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑。
-# 例如，打印具体的错误信息。
+`#` 这里可以添加您自己的错误处理逻辑。 `#` 例如，打印具体的错误信息。
 
 ```
     print e.get_http_status()
@@ -1297,19 +1481,17 @@ except ServerException as e:
 
 | 以下代码为通过ASCM的 | GetOrganizationList | 接口获取组织列表的调用示例。 |
 |---|---|---|
-| # coding=utf-8 # 导入依赖包。 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential # 本文提供的API调用样例仅供参考，更多详细API调用方法可参照开发文档中的“快速入门”。 credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) # 创建API请求并设置参数。 request = CommonRequest() # 统一云管平台的接口信息参数。 request.set_product("ascm") request.set_version('2019-05-10') request.set_uri_pattern("/ascm/auth/organization/queryList") # 统一云管平台的Endpoint地址。 request.set_domain('<ascmEndpoint>') # 设置请求方式。 request.set_method('POST') # 设置请求协议类型。 request.set_protocol_type('http') # 设置Headers # 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。 request.add_header("x-acs-caller-sdk-source", "<yourCallerSdkSource>") # 调用专有云API时，一般需要提供多个公共Header参数，包括：x-acs-regionid、x-acs-organizationid、x-acs-resourcegroupid、x-acs-instanceid。详情可参照开发指南中的“获取公共Header参数"。 # 接口业务参数设置。 request.add_body_params("id", "1") request.set_content_type('application/json') # 发起请求，并获取返回。 response = client.do_action_with_exception(request) # python2: print(response) print(str(response, encoding='utf-8')) |  |  |
+| # coding=utf-8 # 导入依赖包。 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential # 本文提供的API调用样例仅供参考，更多详细API调用方法可参照开发文档中的“快速入门”。 credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) # 创建API请求并设置参数。 request = CommonRequest() # 统一云管平台的接口信息参数。 request.set_product("ascm") request.set_version('2019-05-10') request.set_uri_pattern("/ascm/auth/organization/queryList") # 统一云管平台的Endpoint地址。 request.set_domain('<ascmEndpoint>') # 设置请求方式。 request.set_method('POST') # 设置请求协议类型。 request.set_protocol_type('http') # 设置Headers # 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。 request.add_header("x-acs-caller-sdk-source", "<yourCallerSdkSource>") # 调用专有云API时，一般需要提供多个公共Header参数，包括：x-acs-regionid、x-acs-organizationid、x-acs-resourcegroupid、x-acs-instanceid。详情可参照开发指南中的“获取公共Header参数"。 # 接口业务参数设置。 request.add_body_params("id", "1") request.set_content_type('application/json') # 发起请求，并获取返回。 response = client.do_action_with_exception(request) # python2: print(response) print(str(response, encoding='utf-8')) |   |   |
 
-**说明**
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
-
-### 快速开始
+### 4.1 快速开始
 
 本节介绍如何获取VPC Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取VPC的Endpoint。具体操作，请参见获取VPC的Endpoint。
 1. 安装SDK核心库。
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -1317,7 +1499,7 @@ except ServerException as e:
 pip install aliyun-python-sdk-core
 ```
 
-专有网络VPC 如果您使用的是Python 3.x，执行以下命令，安装阿里云SDK核心库：
+如果您使用的是Python 3.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip3 install aliyun-python-sdk-core-v3
@@ -1342,11 +1524,13 @@ pip3 install aliyun-python-sdk-vpc
 1. 创建Client实例。在创建Client实例时，您需要获取Region ID、AccessKey ID和AccessKey Secret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <vpc.aliyuns.com>，请替换为您实际的产品访问地址。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <vpc.aliyuns.com>，请替换为您实际的产品访问地址。
 
 ```python
 #!/usr/bin/env python
@@ -1362,7 +1546,7 @@ acces_secret = '<yourAccessKeySecret>' # 请替换为您实际的AccessKey Secre
 # product config
 ```
 
-`product_name = 'Vpc' #` 填写产品名称 `endpoint = '<vpc.aliyuns.com>' #` 产品访问域名,当前为示例值,请替换为您实际的产品访问地址
+`product_name = 'Vpc' #` 填写产品名称 `endpoint = '<vpc.aliyuns.com>' #` 产品访问域名`,`当前为示例值`,`请替换为您实际的产品访问地址
 
 ```bash
 # create client
@@ -1380,15 +1564,15 @@ response = clt.do_action_with_exception(request)
 
 `print response #` 如果您使用的`Python 3.x`，此处为`print (response)`
 
-### 使用手册
+### 4.2 使用手册
 
-#### 4.2.1. 安装Python SDK
+#### 4.2.1 安装Python SDK
 
 本文档介绍如何安装及调用VPC Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用VPC的Python SDK，您需要安装阿里云Python SDK核心库和VPC的 Python SDK。
 
-使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用VPC的Python SDK，您需要安装阿里云Python SDK核心库和VPC的 Python SDK。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -1412,33 +1596,27 @@ pip install aliyun-python-sdk-vpc
 pip3 install aliyun-python-sdk-vpc
 ```
 
-#### 4.2.2. 设置身份验证凭证
+#### 4.2.2 设置身份验证凭证
 
-当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。 专有网络VPC
+当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### 4.2.3. 设置HTTPS请求
+#### 4.2.3 设置HTTPS请求
 
 Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
-**说明**
-
-产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
 Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通过HTTPS协议发送请求，您需要在Python中添加OpenSSL 支持。Open SSL支持TLS1.2及以上版本。 运行 `python -c "import ssl"` 检查Python环境是否支持OpenSSL。运行后，如果没有出现 `ImportError: No module named ssl` 的错误信息，说明已经支持 OpenSSL。 若没有OpenSSL，运行以下命令安装： `pip install pyopenssl # Python 2`使用此命令。
 
-**说明**
-
-若本地环境为Python 3，则运行 `pip3 install pyopenssl` 命令。
+> **说明：** 若本地环境为Python 3，则运行 `pip3 install pyopenssl` 命令。
 
 **设置单个请求的HTTP/HTTPS协议**
 
@@ -1448,7 +1626,7 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 import DescribeInstancesRequest request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -1458,9 +1636,9 @@ import DescribeInstancesRequest request = DescribeInstancesRequest() request.set
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-#### 4.2.4. 发起调用
+#### 4.2.4 发起调用
 
 本节介绍如何使用VPC Python SDK发起请求。
 
@@ -1492,9 +1670,9 @@ response = clt.do_action_with_exception(request)
 
 `print response #` 如果您使用的`Python 3.x`，此处为`print (response)`
 
-#### 4.2.5. 错误处理
+#### 4.2.5 错误处理
 
-在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。 专有网络VPC
+在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
 ```
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
@@ -1508,8 +1686,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -1517,7 +1694,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### 4.2.6. 使用CommonRequest进行调用
+#### 4.2.6 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式 （CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -1527,31 +1704,32 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 RPC风格的API：
 
-| request.set_action_name('Action') |  | 的方式来指定API名称。 |
+| request.set_action_name('Action') |   | 的方式来指定API名称。 |
 |---|---|---|
-| 起CommonRequest请求时，需要使用 | request.set_action_name('DescribeVpcs') |  |
+| 起CommonRequest请求时，需要使用 | request.set_action_name('DescribeVpcs') |   |
 
 **示例：调用RPC风格的API**
 
 | 以下代码为VPC的 | DescribeVpcs | 接口，获取实例状态列表的调用示例。 |
 |---|---|---|
-| 说明以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <vpc.aliyuncs.com>，请替换为您实际的产品访问地址。 |  |  |
-
-专有网络VPC
+| 说明以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <vpc.aliyuncs.com>，请替换为您实际的产品访问地址。 |   |   |
 
 ```
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
 ```
 
-# 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
+`#` 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
 
 ```
 client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('Vpc') request.set_action_name('DescribeVpcs') request.set_version('2016-04-28')
 ```
 
-`request.set_domain('<vpc.aliyuncs.com>') #`产品访问域名,当前为示例值,请替换为您实际的产品访问地址
+`request.set_domain('<vpc.aliyuncs.com>') #`产品访问域名`,`当前为示例值`,`请替换为您实际的产品访问地址
 
 ```bash
 # or:
@@ -1559,8 +1737,7 @@ client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegi
 ######
 ```
 
-# 设置请求协议类型,支持`https`或`http,`默认为`http`
-# 设置`https`方法如下：
+`#` 设置请求协议类型`,`支持`https`或`http,`默认为`http` `#` 设置`https`方法如下：
 
 ```bash
 # request.set_protocol_type('https')
@@ -1569,53 +1746,54 @@ request.set_accept_format('json') request.set_method('POST') request.add_query_p
 ######
 ```
 
-# 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段
-# 调用方法如下：
+`#` 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段 `#` 调用方法如下：
 
 ```bash
 # request.add_query_param("SecurityToken", "<yourSecurityToken>");
 ```
 
-# 请替换为您实际的`SecurityToken`
+`#` 请替换为您实际的`SecurityToken`
 
 ```
 ######
 ```
 
-# 非必填，请替换为您实际的资源集`ID`
+`#` 非必填，请替换为您实际的资源集`ID`
 
 ```
 request.add_header("x-acs-resourcegroupid", "<yourResourceGroupID>")
 ```
 
-# 必填，请替换为您实际的组织`ID`
+`#` 必填，请替换为您实际的组织`ID`
 
 ```
 request.add_header("x-acs-caller-sdk-source","ApiTestDemo")
 ```
 
-# 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
+`#` 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
 
 ```
 request.add_header("x-acs-regionid", "<yourRegionID>")
 ```
 
-# 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
+`#` 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
 
 ```python
 # request.add_header("x-acs-instanceid", "<yourInstanceID>")
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-专有网络VPC
-
-## Go SDK调用
+## 5 Go SDK调用
 
 安装阿里云Go SDK后，您可以编写代码使用阿里云Go SDK访问阿里云POP网关，调用统一云管平台的API接口。
 
 **前提条件**
 
-已获取AccessKey或STS AccessKey，获取方式请参见获取AccessKey或STS AccessKey。 已获取统一云管平台的Endpoint，获取方式请参见获取统一云管平台的Endpoint。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令下载安装Go SDK核心库。
+已获取AccessKey或STS AccessKey，获取方式请参见获取AccessKey或STS AccessKey。 已获取统一云管平台的Endpoint，获取方式请参见获取统一云管平台的Endpoint。
+
+**安装Go SDK**
+
+阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令下载安装Go SDK核心库。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
@@ -1633,11 +1811,11 @@ GOPROXY=https://goproxy.cn,direct go get -u github.com/aliyun/alibaba-cloud-sdk-
 go env -W GOPROXY='https://goproxy.cn,direct'
 ```
 
+**设置身份验证**
+
 Go SDK支持通过AccessKey或STS AccessKey进行身份验证。
 
-**重要**
-
-确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 credential := credentials.NewStsTokenCredential(
@@ -1649,11 +1827,9 @@ credential := credentials.NewStsTokenCredential(
     "<yourStsToken>",
 ```
 
-`//` 在使用`STS AccessKey`进行身份验证时，`<yourStsToken>`需替换为您实际的`Security Token`。 `//` 在使用`AccessKey`进行身份验证时，`<yourStsToken>`为`""`。 )
+`//` 在使用`STS AccessKey`进行身份验证时，`<yourStsToken>`需替换为您实际的`Security Token`。 `//` 在使用`AccessKey`进行身份验证时，`<yourStsToken>`为`""`。 `)`
 
-**说明**
-
-以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **创建并配置请求连接**
 
@@ -1662,22 +1838,21 @@ credential := credentials.NewStsTokenCredential(
 ```
 client, err := sdk.NewClientWithOptions("<your-region-id>", sdk.NewConfig(), credential) if err != nil {
     panic(err)
-}
 ```
 
-`//` 设置是否忽略证书。`true`：忽略；`false`：不忽略。
+`}` `//` 设置是否忽略证书。`true`：忽略；`false`：不忽略。
 
 ```
 client.SetHTTPSInsecure(true)
 ```
 
-`//`（可选）设置创建连接超时时间，单位纳秒。计算公式为：X秒`*time.Second=X*1000000000`纳秒
+`//`（可选）设置创建连接超时时间，单位纳秒。计算公式为：`X`秒`*time.Second=X*1000000000`纳秒
 
 ```
 client.SetConnectTimeout(1 * time.Second)
 ```
 
-`//` （可选）设置读取超时时间，单位纳秒。计算公式为：X秒`*time.Second=X*1000000000`纳秒
+`//` （可选）设置读取超时时间，单位纳秒。计算公式为：`X`秒`*time.Second=X*1000000000`纳秒
 
 ```
 client.SetReadTimeout(10 * time.Second)
@@ -1691,13 +1866,11 @@ client.SetHttpProxy("<http://192.168.XX.XX:33XX>") client.SetHttpsProxy("<https:
 
 `*/`
 
-**说明**
-
-以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
 
 **创建请求CommonRequest**
 
-使用CommonRequest调用方式可实现任意Open API接口的调用。 专有网络VPC `//` 创建`API`请求并设置参数。
+使用CommonRequest调用方式可实现任意Open API接口的调用。 `//` 创建`API`请求并设置参数。
 
 ```
 request := requests.NewCommonRequest()
@@ -1751,9 +1924,7 @@ request.Headers["x-acs-caller-sdk-source"] = "<yourCallerSdkSource>"
 request.SetContentType("application/json")
 ```
 
-**说明**
-
-以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **设置阿里云核心库SDK参数**
 
@@ -1768,15 +1939,13 @@ request.SetContentType("application/json")
 
 **发起调用并处理返回**
 
-可参考以下代码发起请求并处理返回结果。 专有网络VPC
+可参考以下代码发起请求并处理返回结果。
 
 ```
 response, err := client.ProcessCommonRequest(request) if err != nil {
    panic(err)
-} fmt.Print(response.GetHttpContentString())
+fmt.Print(response.GetHttpContentString())
 ```
-
-#### 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即sdk.errors包下的ClientError和ServerError。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
@@ -1792,16 +1961,15 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
-当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个ClientError，您可以通过以下代码来判断并获取ClientError中的错误信息。
+当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个ClientError**，**您可以通过以下代码来判断并获取ClientError中的错误信息。
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
 
 ```java
 package main import (
@@ -1815,7 +1983,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1837,16 +2005,15 @@ response, err := client.ProcessCommonRequest(request) if clientError, ok := err.
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
 当服务端返回错误的应答时，SDK会将该应答封装成ServerError返回。在这种情况下，您依然可以从Response中获得原始的HTTP应答，，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息。
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
 
 ```java
 package main import (
@@ -1860,7 +2027,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1882,12 +2049,13 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
+
+`}`
 
 **完整调用示例**
 
-以下代码为通过ASCM的 `GetOrganizationList` 接口获取组织列表的调用示例。 专有网络VPC
+以下代码为通过ASCM的 `GetOrganizationList` 接口获取组织列表的调用示例。
 
 ```java
 package main import (
@@ -1899,23 +2067,22 @@ package main import (
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
  credential := credentials.NewStsTokenCredential(
 ```
 
-`"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID`。 `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKey Secret`。 `"<yourStsToken>", //` 请替换为您实际的`Security Token`（非`STS`调用时为`""`）。 )
+`"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID`。 `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKey Secret`。 `"<yourStsToken>", //` 请替换为您实际的`Security Token`（非`STS`调用时为`""`）。 `)`
 
 ```
  client, err := sdk.NewClientWithOptions("<yourRegionID>", sdk.NewConfig(), credential)
  if err != nil {
   panic(err)
- }
 ```
 
-`//` 设置是否忽略证书。
+`}` `//` 设置是否忽略证书。
 
 ```
  client.SetHTTPSInsecure(true)
@@ -2005,29 +2172,25 @@ func main() {
   } else {
    fmt.Println(err.Error())
    return
-  }
- }
+```
+
+`}` `}`
+
+```
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
-**说明**
+`}`
 
-以上代码示例
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<http://192.168.XX.XX:33XX>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
-```
-中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 、 <http://192.168.XX.XX:33XX> 、 <ascmEndpoint> 、 <yourCallerSdkSource> 均
-```
-
-为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
-
-### 快速开始
+### 5.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本操作介绍如何获取阿里云VPC Go SDK并开始调用。
 
 **环境准备**
 
-使用Go SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 专有网络VPC
+使用Go SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取VPC的Endpoint。具体操作，请参见获取VPC的Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -2043,11 +2206,13 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化Client实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <Endpoint>，请替换为您实际的Endpoint。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <Endpoint>，请替换为您实际的Endpoint。
 
 ```java
 package main import (
@@ -2056,7 +2221,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -2079,10 +2244,9 @@ func main() {
 
 ```
         panic(err)
-    }
 ```
 
-`//` 创建`API`请求并设置参数
+`}` `//` 创建`API`请求并设置参数
 
 ```
     request := vpc.CreateDescribeVpcsRequest()
@@ -2107,32 +2271,36 @@ func main() {
 
 ```
         panic(err)
-    }
-    fmt.Println(response)
-}
 ```
 
+`}`
+
+```
+    fmt.Println(response)
+```
+
+`}`
 4. （可选）切换HTTP/HTTPS协议。
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### 使用手册
+### 5.2 使用手册
 
-#### 5.2.1. 安装Go SDK核心包
+#### 5.2.1 安装Go SDK核心包
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### 5.2.2. 设置身份验证凭证
+#### 5.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。
 
-**重要**
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
 
 以下代码以VPC为例，展示初始化vpcClient实例。 `//` 初始化`vpcClient`实例
 
@@ -2146,13 +2314,9 @@ vpcClient, err := vpc.NewClientWithAccessKey(
         "<yourAccessKeySecret>")        // 请替换为您实际的AccessKey Secret
 ```
 
-专有网络VPC
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
-
-#### 5.2.3. 发起调用
+#### 5.2.3 发起调用
 
 本文介绍如何使用阿里云VPC Go SDK发起调用。 以下步骤以VPC为例，展示使用VPC Go SDK发起调用。
 1. 导入VPC SDK。
@@ -2163,9 +2327,9 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/vpc
 
 2. 新建一个VPC Client，该client中包含VPC的所有API。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 `vpcClient,err := <vpc>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `vpcClient.Domain = "vpc.aliyuns.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
+`vpcClient,err := <vpc>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `vpcClient.Domain = "vpc.aliyuns.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
 3. 使用 `xxx.CreateXXXRequest` 方法创建一个请求。
 该方法的命名规范为 ${service}.Create${apiName}Request ，其中：
 **${service}**为产品名称(小写)。例如vpc。
@@ -2181,7 +2345,7 @@ request := vpc.CreateDescribeVpcsRequest() request.InstanceId = ""
 response, err := vpcClient.DescribeVpcs(request)
 ```
 
-#### 5.2.4. 错误处理
+#### 5.2.4 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
@@ -2197,8 +2361,9 @@ response,err := vpcClient.DescribeVpcs(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
@@ -2206,7 +2371,7 @@ response,err := vpcClient.DescribeVpcs(request) if err != nil {
 
 | 以下以VPC为例，您可以通过以下代码来判断并获取 | ClientError | 中的错误信息： |
 |---|---|---|
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/vpc" //vpc请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/vpc" //vpc请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 
 ```
 response, err := vpcClient.DescribeVpcs(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -2224,20 +2389,19 @@ response, err := vpcClient.DescribeVpcs(request) if clientError, ok := err.(*err
     clientError.Message()
 ```
 
-`//` 获取原始错误(可能为`nil)`
+`//` 获取原始错误`(`可能为`nil)`
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
-当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从Response中获得原始的HTTP应答。 以下以VPC为例，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息： 专有网络VPC
+当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从Response中获得原始的HTTP应答。 以下以VPC为例，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息：
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法请参考：
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法请参考：
 
 ```java
 package main import (
@@ -2256,7 +2420,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -2278,10 +2442,11 @@ response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*err
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
 
-#### 5.2.5. 使用CommonRequest进行调用
+`}`
+
+#### 5.2.5 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式 （CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -2289,9 +2454,7 @@ response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*err
 
 | 以下代码为云产品VPC的 | DescribeVpcs | 接口，获取实例状态列表的调用示例（VPC属于RPC的调用风格）： |
 |---|---|---|
-| 说明以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <vpc.aliyuncs.com>，请替换为您实际的产品访问请求地址。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 |  |  |
-
-专有网络VPC
+| 说明以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <vpc.aliyuncs.com>，请替换为您实际的产品访问请求地址。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 |   |   |
 
 ```java
 package main import (
@@ -2300,7 +2463,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -2312,12 +2475,16 @@ func main() {
 ```
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
 ```
 
-`request.Domain = "<vpc.aliyuncs.com>" //` 请求访问地址,当前为示例值,请根据实际请求地址替换
+`request.Domain = "<vpc.aliyuncs.com>" //` 请求访问地址`,`当前为示例值`,`请根据实际请求地址替换
 
 ```
     request.Product = "Vpc"
@@ -2355,16 +2522,19 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-专有网络VPC
+`}`
 
-## API参考
+```
+    fmt.Print(response.GetHttpContentString())
+```
 
-### API概览
+`}`
+
+## 6 API参考
+
+### 6.1 API概览
 
 专有网络提供以下接口供您使用。
 
@@ -2406,8 +2576,6 @@ func main() {
 | ModifyVRouterAttribute | 修改路由器的名称和描述信息。 |
 | DescribeVRouters | 查询指定地域的路由器列表。 |
 
-专有网络VPC
-
 **路由表 API**
 
 | API | 描述 |
@@ -2437,6 +2605,8 @@ func main() {
 | ListTagResources | 查询实例已经绑定的标签列表。 |
 | UnTagResources | 为指定的资源列表统一解绑标签。 |
 
+**VPN网关 API**
+
 | API | 描述 |
 |---|---|
 | CreateVpnGateway | 创建VPN网关。 |
@@ -2449,8 +2619,6 @@ func main() {
 | DescribeCustomerGateways | 查询已创建的用户网关。 |
 | DescribeCustomerGateway | 查询已创建的用户网关的详细信息。 |
 | DeleteCustomerGateway | 删除指定的用户网关。 |
-
-专有网络VPC
 
 | ModifyCustomerGatewayAttribute | 修改用户网关的名称和描述信息。 |
 |---|---|
@@ -2480,13 +2648,13 @@ func main() {
 | DescribeSslVpnServers | 查询已创建的SSL-VPN服务端。 |
 | DescribeVpnSslServerLogs | 查看SSL服务端的日志。 |
 
+**NAT网关 API**
+
 | API | 描述 |
 |---|---|
 | CreateNatGateway | 创建一个NAT网关。 |
 | ModifyNatGatewayAttribute | 修改NAT网关配置。 |
 | ModifyNatGatewaySpec | 修改NAT网关的规格。 |
-
-专有网络VPC
 
 | DeleteNatGateway | 删除指定的NAT网关。 |
 |---|---|
@@ -2506,6 +2674,8 @@ func main() {
 | ModifyBandwidthPackageAttribute | 修改指定NAT带宽包的名称和描述。 |
 | AddBandwidthPackageIps | 在NAT带宽包中增加公网IP。 |
 
+**弹性公网IP API**
+
 | API | 描述 |
 |---|---|
 | AllocateEipAddress | 申请EIP。 |
@@ -2522,10 +2692,10 @@ func main() {
 | DescribeEipMonitorData | 查看EIP的监控信息。 |
 | MoveResourceGroup | 修改云资源所属的资源组。 |
 
-专有网络VPC
-
 | DescribeHighDefinitionMonitorLogAttribute | 查询EIP高精度秒级监控的配置信息。 |
 |---|---|
+
+**高可用虚拟IP API**
 
 | API | 描述 |
 |---|---|
@@ -2535,6 +2705,8 @@ func main() {
 | AssociateHaVip | 将HaVip绑定到专有网络ECS实例上。 |
 | UnassociateHaVip | 将HaVip与专有网络ECS实例解绑。 |
 | DeleteHaVip | 删除HaVip。 |
+
+**网络ACL API**
 
 | API | 描述 |
 |---|---|
@@ -2548,6 +2720,8 @@ func main() {
 | DescribeNetworkAcls | 查看网络ACL列表。 |
 | DescribeNetworkAclAttributes | 查询网络ACL的详细信息。 |
 
+**IPv6网关 API**
+
 | API | 描述 |
 |---|---|
 | CreateIpv6Gateway | 创建IPv6网关。 |
@@ -2560,8 +2734,6 @@ func main() {
 | DeleteIpv6InternetBandwidth | 删除公网带宽。 |
 | DescribeIpv6GatewayAttribute | 查询指定IPV6网关的详细信息。 |
 
-专有网络VPC
-
 | DescribeIpv6Addresses | 查询IPv6地址列表。 |
 |---|---|
 | ModifyIpv6InternetBandwidth | 修改IPv6地址的公网带宽。 |
@@ -2569,9 +2741,9 @@ func main() {
 | ModifyIpv6AddressAttribute | 修改IPv6地址的名称和描述。 |
 | ModifyIpv6GatewayAttribute | 修改IPv6网关的信息。 |
 
-### 调用API
+### 6.2 调用API
 
-#### 6.2.1. 请求结构
+#### 6.2.1 请求结构
 
 专有网络接口调用是向专有网络API的服务端地址发送HTTP GET请求。您需要按照接口描述在请求中加入相应请求参数，调用后系统会返回处理结果。请求及返回结果都使用UTF-8字符集进行编码。 专有网络的API是RPC风格，您可以通过发送HTTP GET请求调用专有网络API。 其请求结构如下：
 
@@ -2583,35 +2755,33 @@ http://Endpoint/?Action=xx&Parameters
 
 | Endpoint：专有网络API的服务接入地址为 | vpc.example.com | 。 |
 |---|---|---|
-| 说明 example.com 是项目自定义的访问域名。 |  |  |
+| 说明 example.com 是项目自定义的访问域名。 |   |   |
 
 **Action**：要执行的操作，如使用DescribeVpcs查询已创建的专有网络实例。
 **Version**：要使用的API版本，专有网络的API版本是2016-04-28。
 **Parameters**：请求参数，每个参数之间用and（&）符号分隔。
 请求参数由公共请求参数和API自定义参数组成。公共参数中包含API版本号、身份验证等信息，关于公共参数的更多信息，请参见公共参数。 下面是一个调用DescribeVpcs接口查询已创建的专有网络的示例：
 
-**说明**
-
-为了便于用户查看，本文中的示例都做了格式化处理。
+> **说明：** 为了便于用户查看，本文中的示例都做了格式化处理。
 
 ```
 https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2021-06-01T12:00:00Z
 ```
 
-#### 6.2.2. API授权
+#### 6.2.2 API授权
 
-为了确保您的账号安全，建议您使用子账号的身份凭证调用API。如果您使用RAM账号调用专有网络API，您需要为该RAM账号创建、附加相应的授权策略。
+为了确保您的账号安全，建议您使用子账号的身份凭证调用API。如果您使用RAM账号调用专有网络API，您需要为该RAM账号创建、附加相应的授权策略。 专有网络中可授权的资源和接口列表，参见RAM鉴权。
 
-#### 6.2.3. API签名
+#### 6.2.3 API签名
 
-专有网络服务会对每个API请求进行身份验证，无论使用HTTP还是HTTPS协议提交请求，都需要在请求中包含签名（Signature）信息。 专有网络通过使用AccessKey ID和AccessKey Secret进行对称加密的方法来验证请求的发送者身份。AccessKey是为阿里云账号和RAM用户发布的一种身份凭证(类似于用户的登录密码)，其中AccessKey ID 用于标识访问者的身份，AccessKey Secret是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密。关于如何创建 RPC API需按如下格式在请求中增加签名（Signature）：
+专有网络服务会对每个API请求进行身份验证，无论使用HTTP还是HTTPS协议提交请求，都需要在请求中包含签名（Signature）信息。 专有网络通过使用AccessKey ID和AccessKey Secret进行对称加密的方法来验证请求的发送者身份。AccessKey是为阿里云账号和RAM用户发布的一种身份凭证(类似于用户的登录密码)，其中AccessKey ID 用于标识访问者的身份，AccessKey Secret是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密。关于如何创建 AccessKey，请参见获取AccessKey。 RPC API需按如下格式在请求中增加签名（Signature）：
 
-| https://endpoint/?SignatureVersion=1.0&SignatureMethod=HMAC-SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf |  |  |  |
+| https://endpoint/?SignatureVersion=1.0&SignatureMethod=HMAC-SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf |   |   |   |
 |---|---|---|---|
 | 以DescribeVpcs为例，假设AccessKey ID是 | testid | ， AccessKey Secret是 | testsecret |
-| http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 |  |  |  |
+| http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 |   |   |   |
 
-完成以下步骤计算签名： 专有网络VPC
+完成以下步骤计算签名：
 1. 使用请求参数创建待签名字符串：
 
 ```
@@ -2622,7 +2792,7 @@ GET&%2F&AccessKeyId%3Dtestid&Action%3DDescribeVpcs&Format%3DXML&SignatureMethod%
 
 | 在AccessKey Secret后添加一个“&”作为计算HMAC值的key。本示例中的key为 | testsecret& | 。 |
 |---|---|---|
-| CT9X0VtwR86fNWSnsc6v8YGOjuE= |  |  |
+| CT9X0VtwR86fNWSnsc6v8YGOjuE= |   |   |
 
 3. 将签名加到请求参数中：
 
@@ -2630,7 +2800,7 @@ GET&%2F&AccessKeyId%3Dtestid&Action%3DDescribeVpcs&Format%3DXML&SignatureMethod%
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM鉴权
+### 6.3 RAM鉴权
 
 在使用RAM账号调用VPC API前，需要主账号通过创建授权策略对RAM账号进行授权。在授权策略中，使用资源描述符（Alibaba Cloud Resource Name, ARN）指定授权资源。
 
@@ -2641,40 +2811,38 @@ http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &For
 | 资源类型 | 授权策略中的资源描述方法 |
 |---|---|
 | 专有网络（VPC） | acs:vpc:$regionid:$accountid:vpc/$vpcid |
-|  | acs:vpc:$regionid:$accountid:vpc/* |
-|  | acs:vpc:*:$accountid:vpc/* |
+|   | acs:vpc:$regionid:$accountid:vpc/* |
+|   | acs:vpc:*:$accountid:vpc/* |
 | 路由器（VRouter） | acs:vpc:$regionid:$accountid:vrouter/$vrouterid |
-|  | acs:vpc:$regionid:$accountid:vrouter/* |
-|  | acs:vpc:*:$accountid:vrouter/* |
+|   | acs:vpc:$regionid:$accountid:vrouter/* |
+|   | acs:vpc:*:$accountid:vrouter/* |
 | 交换机（VSwitch） | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |
-|  | acs:vpc:$regionid:$accountid:vswitch/* |
-|  | acs:vpc:*:$accountid:vswitch/* |
+|   | acs:vpc:$regionid:$accountid:vswitch/* |
+|   | acs:vpc:*:$accountid:vswitch/* |
 | 路由表（Route Table） | acs:vpc:$regionid:$accountid:routetable/$routetableid |
-|  | acs:vpc:$regionid:$accountid:routetable/* |
-|  | acs:vpc:*:$accountid:routetable/* |
+|   | acs:vpc:$regionid:$accountid:routetable/* |
+|   | acs:vpc:*:$accountid:routetable/* |
 | 弹性公网IP（EIP） | acs:vpc:$regionid:$accountid:eip/$allocationid |
-|  | acs:vpc:$regionid:$accountid:eip/* |
-|  | acs:vpc:*:$accountid:eip/* |
+|   | acs:vpc:$regionid:$accountid:eip/* |
+|   | acs:vpc:*:$accountid:eip/* |
 | NAT网关（NAT Gateway） | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |
-|  | acs:vpc:$regionid:$accountid:natgateway/* |
-|  | acs:vpc*:$accountid:vpc/* |
+|   | acs:vpc:$regionid:$accountid:natgateway/* |
+|   | acs:vpc*:$accountid:vpc/* |
 | NAT网关带宽包（NAT Gateway Bandwidth Package） | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/* |
-|  | aacs:vpc:*:$accountid:vpc/* |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/* |
+|   | aacs:vpc:*:$accountid:vpc/* |
 | 端口转发表（Forward Table） | acs:vpc:$regionid:$accountid:forwardtable/$forwardtableid |
-|  | acs:vpc:$regionid:$accountid:forwardtable/* |
-|  | acs:vpc:*:$accountid:vpc/* |
+|   | acs:vpc:$regionid:$accountid:forwardtable/* |
+|   | acs:vpc:*:$accountid:vpc/* |
 | SNAT表（SNAT Table） | acs:vpc:$regionid:$accountid:snattable/$snattableid |
-|  | acs:vpc:$regionid:$accountid:snattable/* |
-|  | acs:vpc:*:$accountid:vpc/* |
-
-专有网络VPC
+|   | acs:vpc:$regionid:$accountid:snattable/* |
+|   | acs:vpc:*:$accountid:vpc/* |
 
 | 通用资源 | acs:vpc:$regionid:$accountid:* |
 |---|---|
-|  | acs:vpc:*:$accountid:* |
+|   | acs:vpc:*:$accountid:* |
 
-其中 $regionid/accoutid/vrouterid 为具体的资源ID， * 代表对应的所有资源。
+其中 $regionid/accoutid/vrouterid 为具体的资源ID， `*` 代表对应的所有资源。
 
 **可授权的VPC接口**
 
@@ -2687,42 +2855,40 @@ http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &For
 | vpc:DescribeVpcs | vpc:$regionid:$accountid:vpc/* |
 | vpc:ModifyVpcAttribute | acs:vpc:$regionid:$accountid:vpc/$vpcid |
 | vpc:DescribeVRouters | acs:vpc:$regionid:$accountid:vrouter/* |
-|  | 指定要查询的VRouterId： "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |
-|  | 未指定要查询的VRouterId： "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/*" |
+|   | 指定要查询的VRouterId： "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |
+|   | 未指定要查询的VRouterId： "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/*" |
 | vpc:ModifyVRouterAttribute | acs:vpc:$regionid:$accountid:vrouter/$vrouterid |
 | vpc:CreateVSwitch | acs:vpc:$regionid:$accountid:vswitch/* |
-|  | acs:vpc:$regionid:$accountid:vpc/$vpcid |
+|   | acs:vpc:$regionid:$accountid:vpc/$vpcid |
 | vpc:DeleteVSwitch | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |
 | vpc:DescribeVSwitches | acs:vpc:$regionid:$accountid:vswitch/* |
-|  | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |
+|   | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |
 | vpc:ModifyVSwitchAttribute | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |
 | vpc:CreateRouteEntry | acs:vpc:$regionid:$accountid:routetable/$routetableid |
 | vpc:DeleteRouteEntry | acs:vpc:$regionid:$accountid:routetable/$routetableid |
 | vpc:DescribeRouteTables | acs:vpc:$regionid:$accountid:routetable/* |
-|  | "vpc:VRouter":"acs:vpc$regionid:$accountid:vrouter/$vrouterid" |
+|   | "vpc:VRouter":"acs:vpc$regionid:$accountid:vrouter/$vrouterid" |
 | vpc:AllocateEipAddress | acs:vpc:$regionid:$accountid:eip/* |
 | vpc:AssociateEipAddres | acs:vpc:$regionid:$accountid:eip/* |
-|  | 绑定ECS实例 acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |
+|   | 绑定ECS实例 acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |
 | vpc:DescribeEipAddresses | acs:vpc:$regionid:$accountid:eip/* |
 | vpc:UnassociateEipAddress | 绑定ECS实例 acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |
 | vpc:ReleaseEipAddress | acs:vpc:$regionid:$accountid:eip/$allocationid |
 | vpc:DescribeEipMonitorData | acs:vpc:$regionid:$accountid:eip/$allocationid |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |
 | vpc:CreateNatGateway | acs:vpc:$regionid:$accountid:natgateway/* |
 | vpc:DescribeNatGateways | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |
-|  | acs:vpc:$regionid:$accountid:natgateway/* |
+|   | acs:vpc:$regionid:$accountid:natgateway/* |
 | vpc:ModifyNatGatewaySpec | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |
 | vpc:ModifyNatGatewayAttribute | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |
 | vpc:DeleteNatGateway | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |
-
-专有网络VPC
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |
 
 | vpc:CreateBandwidthPackage | acs:vpc:$regionid:$accountid:bandwidthpackage/* |
 |---|---|
 | vpc:DescribeBandwidthPackages | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/* |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/* |
 | vpc:ModifyBandwidthPackageSpec | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
 | vpc:ModifyBandwidthPackageAttribute | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
 | vpc:AddBandwidthPackageIps | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
@@ -2737,7 +2903,7 @@ http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &For
 | vpc:DescribeSnatTableEntries | acs:vpc:$regionid:$accountid:snattable/$snattableid |
 | vpc:DeleteSnatEntry | acs:vpc:$regionid:$accountid:snattable/$snattableid |
 
-### 公共参数
+### 6.4 公共参数
 
 **公共请求参数**
 
@@ -2762,34 +2928,29 @@ http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &For
 
 **公共返回参数**
 
-API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；返回4xx或5xx HTTP状态码代表调用失败。调用成功返回的数据格式有XML和JSON两种，可以在发送请求时指定返回的数据格式，默认为XML格式。 每次接口调用，无论成功与否，系统都会返回一个唯一识别码**RequestId**。 XML格式专有网络VPC
+API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；返回4xx或5xx HTTP状态码代表调用失败。调用成功返回的数据格式有XML和JSON两种，可以在发送请求时指定返回的数据格式，默认为XML格式。 每次接口调用，无论成功与否，系统都会返回一个唯一识别码**RequestId**。 XML格式
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+<!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
       <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
 ```
 
-<!—返回结果数据`-->` `</`接口名称`+Response>` JSON格式
+<!—返回结果数据`-->` `</`接口名称`+Response>` JSON格式 `{`
 
 ```json
-{
       "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
 ```
 
-`/*`返回结果数据`*/`
+`/*`返回结果数据`*/` `}`
 
-```
-  }
-```
+### 6.5 VPC
 
-### VPC
-
-#### 6.5.1. CreateVpc
+#### 6.5.1 CreateVpc
 
 调用CreateVpc接口创建一个专有网络VPC（Virtual Private Cloud）。
 
@@ -2813,10 +2974,6 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 | ClientToken | String | 否 | 123e4567-e89b-12d3-a456- 426655440000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。 |
 | UserCidr | String | 否 | 189.XX.XX.0/12 | 用户网段，如需定义多个网段请使用半角逗号（,）隔开，最多支持3个网段。 |
 
-专有网络VPC
-
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | VpcId | String | vpc-bp15zckdt37pq72zv**** | 创建的VPC的ID。 |
@@ -2830,18 +2987,18 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=CreateVpc &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateVpcResponse> <ResourceGroupId>rg-acfmxazb4ph****</ResourceGroupId> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> <RouteTableId>vtb-bp1krxxzp0c2****</RouteTableId> <VRouterId>vrt-bp1jcg5cmxjbl9xgc****</VRouterId> <VpcId>vpc-bp1qpo0kug3a20qqe****</VpcId> </CreateVpcResponse> |  |
+| <CreateVpcResponse> <ResourceGroupId>rg-acfmxazb4ph****</ResourceGroupId> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> <RouteTableId>vtb-bp1krxxzp0c2****</RouteTableId> <VRouterId>vrt-bp1jcg5cmxjbl9xgc****</VRouterId> <VpcId>vpc-bp1qpo0kug3a20qqe****</VpcId> </CreateVpcResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "CreateVpcResponse": { "ResourceGroupId": "rg-acfmxazb4ph****", "RequestId": "8B2F5262-6B57-43F2-97C4-971425462DFE", "RouteTableId": "vtb-bp1krxxzp0c2****", "VRouterId": "vrt-bp1jcg5cmxjbl9xgc****", "VpcId": "vpc-bp1qpo0kug3a20qqe****" } } |  |
+| { "CreateVpcResponse": { "ResourceGroupId": "rg-acfmxazb4ph****", "RequestId": "8B2F5262-6B57-43F2-97C4-971425462DFE", "RouteTableId": "vtb-bp1krxxzp0c2****", "VRouterId": "vrt-bp1jcg5cmxjbl9xgc****", "VpcId": "vpc-bp1qpo0kug3a20qqe****" } } |   |
 
 **错误码**
 
@@ -2862,12 +3019,10 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 | 500 | InternalError | The request processing has failed due to some unknown error. | 请求处理由于某些未知错误失败。 |
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | 资源组ID不存在。 |
 
-专有网络VPC
-
 | 400 | OperationUnsupported.Resource GroupId | ResourceGroup is not supported in this region. | 资源组功能未打开。 |
 |---|---|---|---|
 
-#### 6.5.2. DeleteVpc
+#### 6.5.2 DeleteVpc
 
 调用DeleteVpc接口删除一个专有网络VPC（Virtual Private Cloud）。
 
@@ -2894,18 +3049,18 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 请求示例
 
 ```
-&VpcId=vpc-bp1m7v25emi1h5mtc****
+http(s)://[Endpoint]/?Action=DeleteVpc &VpcId=vpc-bp1m7v25emi1h5mtc****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteVpcResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteVpcResponse> |  |
+| <DeleteVpcResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteVpcResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -2924,8 +3079,6 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 | 500 | InternalError | The request processing has failed due to some unknown error. | 请求处理由于某些未知错误失败。 |
 | 400 | DependencyViolation.NatGatewa y | Specified object has dependent resources NatGateway. | VPC 中还有 NAT 网关，不能被删除，请先删除该 VPC 中的 NAT 网关再删除 VPC。 |
 
-专有网络VPC
-
 | 400 | DependencyViolation.RouterInterf ace | Specified object has dependent resources RouterInterface. | 该对象有关联的路由器接口。 |
 |---|---|---|---|
 | 400 | DependencyViolation.SecurityGro up | Specified object has dependent resources SecurityGroup. | 当前VPC还存在未删除的安全组，VPC删除失败，请先删除该VPC下的安全组后再删除VPC。 |
@@ -2933,7 +3086,9 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 | 400 | Forbbiden | Active custom route in vpc. | 您需要在VPC中添加自定义路由条目。 |
 | 400 | DependencyViolation.DhcpOption sSet | The VPC cannot be deleted when it is associated with dhcpOptionsSet. | 当前VPC还存在未删除的DHCP选项集实例，不允许删除 |
 
-#### 6.5.3. ModifyVpcAttribute
+#### 6.5.3 ModifyVpcAttribute
+
+调用ModifyVpcAttribute接口修改指定VPC的名称和描述信息。
 
 **使用说明**
 
@@ -2960,8 +3115,6 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 | OwnerAccount | String | Query | 否 | test | 资源拥有者账户，即登录用户名。 |
 | Ipv6CidrBlock | String | Query | 否 | 2408:XXXX:0:6a::/56 | VPC的IPv6网段。 |
 
-专有网络VPC
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Ipv6Isp | String | Query | 否 | BGP | VPC的IPv6地址段类型，取值： BGP （默认值）：阿里云BGP IPv6。 ChinaMobile ：中国移动（单线）。 ChinaUnicom ：中国联通（单线）。 ChinaTelecom ：中国电信（单线）。 如果是开通了单线带宽白名单的用户，该字段可以设置为ChinaTelecom （中国电信）、ChinaUnicom （中国联通） 和ChinaMobile （中国移动）。 |
@@ -2980,11 +3133,11 @@ API返回结果采用统一格式，返回2xx HTTP状态码代表调用成功；
 http(s)://[Endpoint]/?Action=ModifyVpcAttribute &VpcId=vpc-bp1qtbach57ywecf****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"43B72D30-25E1-4FA3-96A8-89374A521D1A" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"43B72D30-25E1-4FA3-96A8-89374A521D1A" } |   |
 
 **错误码**
 
@@ -3012,14 +3165,16 @@ http(s)://[Endpoint]/?Action=ModifyVpcAttribute &VpcId=vpc-bp1qtbach57ywecf****
 | 400 | PARAMETERILLEGAL _ | ParamExclusive.EnableIpv6AndCidrBlock | EnableIpv6 and CidrBlock is mutually exclusive. |
 | 400 | -1013281 | OperationFailed.ClassicLinkEnabled | Operation failed because classicLink is enabled. |
 
-| 开发指南·API参 | 考 |  | 专有网络VPC |
+| 开发指南·API参 | 考 |   | 专有网络VPC |
 |---|---|---|---|
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | OperationFailed.IpV6VSwitchInus e | OperationFailed.IpV6VSwitchInuse | %s |
 
-#### 6.5.4. DescribeVpcAttribute
+#### 6.5.4 DescribeVpcAttribute
+
+调用DescribeVpcAttribute接口查询指定VPC的配置信息。
 
 **请求参数**
 
@@ -3035,22 +3190,20 @@ http(s)://[Endpoint]/?Action=ModifyVpcAttribute &VpcId=vpc-bp1qtbach57ywecf****
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| AssociatedCens | Array of AssociatedCen |  | 绑定的云企业网列表。 如果VPC未绑定云企业网，则不返回该参数。 |
-| AssociatedCen |  |  |  |
+| AssociatedCens | Array of AssociatedCen |   | 绑定的云企业网列表。 如果VPC未绑定云企业网，则不返回该参数。 |
+| AssociatedCen |   |   |   |
 | CenId | String | cen-7qthudw0ll6jmc**** | VPC绑定的云企业网实例ID。 |
 | CenOwnerId | Long | 111111111111 | 云企业网所属账号的ID。 |
 | CenStatus | String | Attached | VPC绑定云企业网的状态。 仅VPC绑定了云企业网时返回Attached。 |
 | CidrBlock | String | 192.168.0.0/16 | VPC的IPv4网段。 |
 | ClassicLinkEnabled | Boolean | false | 是否开启了ClassicLink功能。 true：已开启。 false：未开启。 |
-| CloudResources | Array of CloudResourceSetType |  | VPC下的资源列表。 |
-| CloudResourceSetType |  |  |  |
+| CloudResources | Array of CloudResourceSetType |   | VPC下的资源列表。 |
+| CloudResourceSetType |   |   |   |
 | ResourceCount | Integer | 1 | VPC下的资源数量。 |
 | ResourceType | String | VSwitch | VPC下的资源类型。 VSwitch：交换机。 VRouter：路由器。 RouteTable：路由表。 |
 | CreationTime | String | 2018-10-16T07:31:09Z | VPC的创建时间。 |
 | Description | String | VPC | VPC的描述。 |
 | DhcpOptionsSetId | String | dopt-o6w0df4epg9zo8isy**** | DHCP选项集的ID。 |
-
-专有网络VPC
 
 | DhcpOptionsSetStatus | String | Available | DHCP选项集的状态。 Available：可用。 InUse：使用中。 Deleted：已删除。 Pending：配置中。 |
 |---|---|---|---|
@@ -3076,9 +3229,10 @@ http(s)://[Endpoint]/?Action=ModifyVpcAttribute &VpcId=vpc-bp1qtbach57ywecf****
 http(s)://[Endpoint]/?Action=DescribeVpcAttribute &RegionId=cn-qingdao-env17-d01 &VpcId=vpc-bp18sth14qii3pnv****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeVpcAttributeResponse>
       <VpcName>doctest2</VpcName>
       <Description></Description>
       <IsDefault>false</IsDefault>
@@ -3116,15 +3270,12 @@ http(s)://[Endpoint]/?Action=DescribeVpcAttribute &RegionId=cn-qingdao-env17-d01
                   <ResourceCount>1</ResourceCount>
             </CloudResourceSetType>
       </CloudResources>
+</DescribeVpcAttributeResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "DescribeVpcAttributeResponse": { "VpcName": "doctest2", "Description": "", "IsDefault": false, "ResourceGroupId": "rg-acfmxazb4ph****", "UserCidrs": "", "ClassicLinkEnabled": false, "AssociatedCens": { "AssociatedCen": { "CenStatus": "Attached", "CenOwnerId": "12315790855****", "CenId": "cen-7qthudw0ll6jmc****" } }, "VRouterId": "vrt-bp1jso6ng1at0ajs****", "VpcId": "vpc-bp18sth14qii3pnvo****", "CreationTime": "2018-10-16T07:31:09Z", "CidrBlock": "192.168.0.0/16", "Status": "Available", "VSwitchIds": { "VSwitchId": "vsw-bp14cagpfysr29fe****" }, "RequestId": "7486AE4A-129D-43DB-A714-2432C074BA04", "RegionId": "cn-hangzhou", "CloudResources": { "CloudResourceSetType": [ { "ResourceType": "VSwitch", "ResourceCount": 1 }, { "ResourceType": "VRouter", "ResourceCount": 1 }, { "ResourceType": "RouteTable", "ResourceCount": 1 } ] } } } |  |
-
-专有网络VPC
-
-**错误码**
+| { "DescribeVpcAttributeResponse": { "VpcName": "doctest2", "Description": "", "IsDefault": false, "ResourceGroupId": "rg-acfmxazb4ph****", "UserCidrs": "", "ClassicLinkEnabled": false, "AssociatedCens": { "AssociatedCen": { "CenStatus": "Attached", "CenOwnerId": "12315790855****", "CenId": "cen-7qthudw0ll6jmc****" } }, "VRouterId": "vrt-bp1jso6ng1at0ajs****", "VpcId": "vpc-bp18sth14qii3pnvo****", "CreationTime": "2018-10-16T07:31:09Z", "CidrBlock": "192.168.0.0/16", "Status": "Available", "VSwitchIds": { "VSwitchId": "vsw-bp14cagpfysr29fe****" }, "RequestId": "7486AE4A-129D-43DB-A714-2432C074BA04", "RegionId": "cn-hangzhou", "CloudResources": { "CloudResourceSetType": [ { "ResourceType": "VSwitch", "ResourceCount": 1 }, { "ResourceType": "VRouter", "ResourceCount": 1 }, { "ResourceType": "RouteTable", "ResourceCount": 1 } ] } } } |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -3132,9 +3283,9 @@ http(s)://[Endpoint]/?Action=DescribeVpcAttribute &RegionId=cn-qingdao-env17-d01
 | 400 | IncorrectVpcStatus | Current VPC status does not support this operation. | 当前VPC的状态无法支持这个操作。 |
 | 404 | InvalidVpcId.NotFound | Specified VPC does not exist. | 该VPC不存在。 |
 
-#### 6.5.5. AssociateVpcCidrBlock
+#### 6.5.5 AssociateVpcCidrBlock
 
-在调用该API前，请确保： VpcId有效且状态正常； SecondaryCidrBlock符合规范：必须属于192.168.0.0/16、172.16.0.0/12或10.0.0.0/8及其子网，掩码长度为8~24位，不能与主网段或其他已添加的附加网段重叠； 至少指定SecondaryCidrBlock或Ipv6CidrBlock中的一个参数； 当前账号具备操作该VPC的权限。
+调用AssociateVpcCidrBlock为VPC添加附加IPv4网段。 在调用该API前，请确保： 已获取目标VPC所在的地域ID（可通过DescribeRegions接口查询）； VpcId有效且状态正常； SecondaryCidrBlock符合规范：必须属于192.168.0.0/16、172.16.0.0/12或10.0.0.0/8及其子网，掩码长度为8~24位，不能与主网段或其他已添加的附加网段重叠； 至少指定SecondaryCidrBlock或Ipv6CidrBlock中的一个参数； 当前账号具备操作该VPC的权限。
 
 **请求头**
 
@@ -3164,19 +3315,15 @@ http(s)://[Endpoint]/?Action=DescribeVpcAttribute &RegionId=cn-qingdao-env17-d01
 |---|---|---|---|
 | RequestId | String | C1221A1F-2ACD-4592-8F27- 474E02883159 | 请求ID。 |
 
-**示例**
-
-请求示例专有网络VPC
-
 ```
 http(s)://[Endpoint]/?Action=AssociateVpcCidrBlock &RegionId=ch-qingdao-env17-d01 &VpcId=vpc-o6wrloqsdqc9io3mg****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159" } |   |
 
 **错误码**
 
@@ -3212,15 +3359,13 @@ http(s)://[Endpoint]/?Action=AssociateVpcCidrBlock &RegionId=ch-qingdao-env17-d0
 
 该API为VPC服务提供的系统级能力，用于扩展VPC地址空间。成功调用后，新增的附加IPv4网段将可用于创建交换机、分配ECS私网IP等资源部署场景。请务必遵守CIDR规划原则，避免网络冲突。
 
-#### 6.5.6. UnassociateVpcCidrBlock
+#### 6.5.6 UnassociateVpcCidrBlock
+
+调用UnassociateVpcCidrBlock删除VPC的附加IPv4网段。
 
 **API描述**
 
 删除VPC的附加IPv4网段前，请先删除以附加IPv4网段创建的交换机。具体操作，请参见 `DeleteVSwitch` 。
-
-**请求参数**
-
-专有网络VPC
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -3243,17 +3388,19 @@ http(s)://[Endpoint]/?Action=AssociateVpcCidrBlock &RegionId=ch-qingdao-env17-d0
 http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-d01 &VpcId=vpc-o6wrloqsdqc9io3mg****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UnassociateVpcCidrBlockResponse> <RequestId>C1221A1F-2ACD-4592-8F27-474E02883159</RequestId> </UnassociateVpcCidrBlockResponse> |  |
+| <UnassociateVpcCidrBlockResponse> <RequestId>C1221A1F-2ACD-4592-8F27-474E02883159</RequestId> </UnassociateVpcCidrBlockResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159" } |  |
+| { "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159" } |   |
 
-#### 6.5.7. MoveResourceGroup
+#### 6.5.7 MoveResourceGroup
+
+调用MoveResourceGroup接口修改云资源所属的资源组。
 
 **请求参数**
 
@@ -3271,23 +3418,19 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 |---|---|---|---|
 | RequestId | String | F84A05B3-7275-4C8B-8AEE- 9088C639C271 | 请求ID。 |
 
-**示例**
-
-请求示例专有网络VPC
-
 ```
-&NewResourceGroupId=rg-acfm3peow3k**** &RegionId=cn-qingdao-env17-d01 &ResourceId=vpc-hp31psbg8ec3023s6**** &ResourceType=vpc
+http(s)://[Endpoint]/?Action=MoveResourceGroup &NewResourceGroupId=rg-acfm3peow3k**** &RegionId=cn-qingdao-env17-d01 &ResourceId=vpc-hp31psbg8ec3023s6**** &ResourceType=vpc
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <MoveResourceGroup> <RequestId>F84A05B3-7275-4C8B-8AEE-9088C639C271</RequestId> </MoveResourceGroup> |  |
+| <MoveResourceGroup> <RequestId>F84A05B3-7275-4C8B-8AEE-9088C639C271</RequestId> </MoveResourceGroup> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "F84A05B3-7275-4C8B-8AEE-9088C639C271" } |  |
+| { "RequestId": "F84A05B3-7275-4C8B-8AEE-9088C639C271" } |   |
 
 **错误码**
 
@@ -3295,7 +3438,9 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 |---|---|---|---|
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | 资源组ID不存在。 |
 
-#### 6.5.8. ListVpcIpv6Isps
+#### 6.5.8 ListVpcIpv6Isps
+
+调用接口ListVpcIpv6Isps查询vpc的ipv6线路类型。
 
 **请求头**
 
@@ -3307,26 +3452,26 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 |---|---|---|---|---|---|
 | RegionId | String | Query | 是 | cn-hangzhou | 资源所在的地域ID。 您可以通过调用DescribeRegions接口获取地域ID。 |
 | AvailableZoneId | String | Query | 否 | cn-wulan-envxx-amtestxxxxxx-a | 可用区。 |
-| Type | String | Query | 否 |  |  |
+| Type | String | Query | 否 |   |   |
 | Action | String | Query | 否 | ListVpcIpv6Isps | 要执行的操作。 |
-| OwnerId | Long | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| ResourceOwnerAcc ount | String | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| ResourceOwnerId | Long | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| OwnerAccount | String | Query | 否 |  | 鉴权相关的系统参数，不填。 |
+| OwnerId | Long | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| ResourceOwnerAcc ount | String | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| ResourceOwnerId | Long | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| OwnerAccount | String | Query | 否 |   | 鉴权相关的系统参数，不填。 |
 | ClientToken | String | Query | 否 | 123e4567-e89b-12d3-a456- 426655440000 | 客户端 Token，用于保证请求的幂等性。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| VpcIpv6Isps | Array |  |  |
+| VpcIpv6Isps | Array |   |   |
 | -ServiceProvider | String | BGP | 地址池类型。 |
 | -AvailableZoneId | String | cn-wulan-envxx-amtestxxxxxx-a | 可用区。 |
 | -Type | String | vpc | 产品类型。 |
 | -CidrBlock | String | xx.xxx.x.x/xx | 地址网段。 |
 | -AvailableCount | String | 10 | 可用总数。 |
 
-| 专有网络VPC |  |  | 开发指南·API参考 |
+| 专有网络VPC |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3334,9 +3479,9 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 | -InUseCount | String | 10 | 使用中的总数。 |
 | -TotalCount | String | 100 | 总数。 |
 | -LockStatus | String | unlocked | lock状态。 |
-| -NeedDeclare | String |  |  |
-| -PoolId | String | ispv6-xxxxxxxxxxxxx |  |
-| -Ula | Boolean | false |  |
+| -NeedDeclare | String |   |   |
+| -PoolId | String | ispv6-xxxxxxxxxxxxx |   |
+| -Ula | Boolean | false |   |
 | RequestId | String | 079874CD-AEC1-43E6-AC03- ADD96B6E4907 | 请求id。 |
 
 **错误码**
@@ -3346,7 +3491,7 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 | 404 | -1000003 | InvalidType.NotCorrect | Specified value of Type is not correct. |
 | 404 | RAMFORBIDDEN _ | RAMFORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### 6.5.9. DescribeVSwitchGatewayIpService
+#### 6.5.9 DescribeVSwitchGatewayIpService
 
 查询指定交换机的网关IP服务信息
 
@@ -3378,7 +3523,7 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 | SecondaryZoneId | String | cn-hangzhou-i | 容灾站点可用区ID。 |
 | CidrBlock | String | 47.0.XX.XX/24 | VPC 的 IPv4 网段。 |
 
-| 开发指南·API参考 |  |  | 专有网络VPC |
+| 开发指南·API参考 |   |   | 专有网络VPC |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3410,10 +3555,10 @@ http(s)://[Endpoint]/?Action=UnassociateVpcCidrBlock &RegionId=ch-qingdao-env17-
 http(s)://[Endpoint]/?Action=DescribeVSwitchGatewayIpService &VSwitchInstanceId=vsw-2ze36seq79n992**** &RegionId=cn-qingdao-env66-d01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有网络VPC
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "IsDefault":true,
  "Status":"BINDED",
  "Description":"NAT",
@@ -3435,8 +3580,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "Bid":"26842",
  "AliUid":1250123456123456,
  "ShareType":"Shared"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3446,7 +3592,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | CONTROLLERVSWITCHNOTEXI _ _ _ ST | CONTROLLERVSWITCHNOTEXIST _ _ _ | controller vSwitch not exists. |
 | 404 | RAMFORBIDDEN _ | RAMFORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### 6.5.10. CreateVpcPrefixList
+#### 6.5.10 CreateVpcPrefixList
+
+调用CreateVpcPrefixList接口创建前缀列表。
 
 **请求头**
 
@@ -3463,13 +3611,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DryRun | Boolean | Query | 否 | false | 是否只预检此次请求。取值： true ：发送检查请求，不会创建前缀列表。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码 DryRunOperation 。 false （默认值）：发送正常请求，通过检查后返回HTTP 2xx状态码并直接创建前缀列表。 |
 | MaxEntries | Integer | Query | 否 | 50 | 前缀列表中CIDR地址块的最大条目数。默认值为50条。 |
 
-| 开发指南·API参 | 考 |  |  |  | 专有网络VPC |
+| 开发指南·API参 | 考 |   |   |   | 专有网络VPC |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | IpVersion | String | Query | 否 | IPv4 | IP版本类型。取值： IPv4 （默认值）：IPv4类型。 IPv6 ：IPv6类型。 |
 | PrefixListEntries | RepeatList | Query | 否 | ["10.0.0.0/16", "192.168.1.0/24"] | 前缀列表的CIDR地址块信息。 |
-| -Cidr | String |  | 否 | 192.168.0.0/16 | 前缀列表的CIDR地址块。 |
-| -Description | String |  | 否 | CIDR | 前缀列表CIDR地址块的描述信息。 描述长度为1～256个字符，不能以 http:// 或 https:// 开头。 |
+| -Cidr | String |   | 否 | 192.168.0.0/16 | 前缀列表的CIDR地址块。 |
+| -Description | String |   | 否 | CIDR | 前缀列表CIDR地址块的描述信息。 描述长度为1～256个字符，不能以 http:// 或 https:// 开头。 |
 | RegionId | String | Query | 是 | cn-hangzhou | 要创建的前缀列表所在的地域ID。 您可以通过调用DescribeRegions接口获取地域 ID。 |
 
 **返回数据**
@@ -3488,11 +3636,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=CreateVpcPrefixList &RegionId=cn-hangzhou
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B45", "ResourceGroupId":"rg-bp67acfmxazb4ph****", "PrefixListId":"pl-0b700s2ee3***" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B45", "ResourceGroupId":"rg-bp67acfmxazb4ph****", "PrefixListId":"pl-0b700s2ee3***" } |   |
 
 **错误码**
 
@@ -3506,15 +3654,13 @@ http(s)://[Endpoint]/?Action=CreateVpcPrefixList &RegionId=cn-hangzhou
 | 400 | DuplicatedParam.CidrBlock | DuplicatedParam.CidrBlock | The param of cidrBlock is duplicated. |
 | 400 | QuotaExceeded.PrefixListCount | QuotaExceeded.PrefixListCount | The quota of prefixList count is exceeded. |
 
-#### 6.5.11. ModifyVpcPrefixList
+#### 6.5.11 ModifyVpcPrefixList
+
+调用ModifyVpcPrefixList接口修改前缀列表的配置信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有网络VPC
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3523,11 +3669,11 @@ http(s)://[Endpoint]/?Action=CreateVpcPrefixList &RegionId=cn-hangzhou
 | ClientToken | String | Query | 否 | 123e4567-e89b-12d3-a456- 426655440000 | 客户端Token，用于保证请求的幂等性。 从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。 若您未指定，则系统自动使用API请求的RequestId 作为ClientToken 标识。每次API请求的RequestId 可能不一样。 |
 | DryRun | Boolean | Query | 否 | false | 是否只预检此次请求。取值： true ：发送检查请求，不会修改前缀列表的配置信息。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过， 则返回对应错误。如果检查通过，则返回错误码 DryRunOperation 。 false （默认值）：发送正常请求，通过检查后返回HTTP 2xx状态码并直接修改前缀列表的配置信息。 |
 | AddPrefixListEntry | RepeatList | Query | 否 | 示例值： {"Cidr":"192.168.1.0/24","Description":"T est CIDR"} | 要添加的前缀列表实例的CIDR地址块列表信息。 |
-| -Cidr | String |  | 否 | 172.16.0.0/12 | 要添加的前缀列表实例的CIDR地址块。 如果要添加的CIDR地址块已经在前缀列表中存在，则只修改AddPrefixListEntry.N.Descriptio n 的值，即只修改该CIDR地址块的描述信息。 |
-| -Description | String |  | 否 | newcidr | 要添加的前缀列表实例的CIDR地址块描述信息。 描述长度为1～256个字符，不能以 http:// 或 https:// 开头。 |
+| -Cidr | String |   | 否 | 172.16.0.0/12 | 要添加的前缀列表实例的CIDR地址块。 如果要添加的CIDR地址块已经在前缀列表中存在，则只修改AddPrefixListEntry.N.Descriptio n 的值，即只修改该CIDR地址块的描述信息。 |
+| -Description | String |   | 否 | newcidr | 要添加的前缀列表实例的CIDR地址块描述信息。 描述长度为1～256个字符，不能以 http:// 或 https:// 开头。 |
 | RemovePrefixListE ntry | RepeatList | Query | 否 | 示例值： {"Cidr":"192.168.1.0/24","Description":"T est network"} | 要删除的前缀列表实例的CIDR地址块列表信息。 |
-| -Cidr | String |  | 否 | 192.168.0.0/16 | 要删除的前缀列表实例的CIDR地址块。 |
-| -Description | String |  | 否 | cidr | 要删除的前缀列表的CIDR地址块的描述信息。 |
+| -Cidr | String |   | 否 | 192.168.0.0/16 | 要删除的前缀列表实例的CIDR地址块。 |
+| -Description | String |   | 否 | cidr | 要删除的前缀列表的CIDR地址块的描述信息。 |
 | RegionId | String | Query | 是 | cn-hangzhou | 要修改配置信息的前缀列表实例所在的地域ID。 |
 | PrefixListDescriptio n | String | Query | 否 | newdescription | 修改后的前缀列表实例的描述信息。 描述长度为1～256个字符，不能以 http:// 或 https:// 开头。 |
 | MaxEntries | Integer | Query | 否 | 20 | 修改后的前缀列表实例的最大CIDR地址块条目数。 |
@@ -3547,11 +3693,11 @@ http(s)://[Endpoint]/?Action=CreateVpcPrefixList &RegionId=cn-hangzhou
 http(s)://[Endpoint]/?Action=ModifyVpcPrefixList &PrefixListId=pl-0b7hwu67**** &RegionId=cn-hangzhou
 ```
 
-&公共请求参数专有网络VPC 正常返回示例
+`&`公共请求参数
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B45", "PrefixListId":"pl-0b7hwu67****" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B45", "PrefixListId":"pl-0b7hwu67****" } |   |
 
 **错误码**
 
@@ -3569,7 +3715,9 @@ http(s)://[Endpoint]/?Action=ModifyVpcPrefixList &PrefixListId=pl-0b7hwu67**** &
 | 400 | QuotaExceeded.PrefixListCidrCou nt | QuotaExceeded.PrefixListCidrCount | The quota of prefixList entry maxEntry count is exceeded. |
 | 400 | VPCRULEQUOTACHECKERRO _ _ _ _ R | QuotaExceeded | Route entry quota exceeded in associated route table. |
 
-#### 6.5.12. DeleteVpcPrefixList
+#### 6.5.12 DeleteVpcPrefixList
+
+调用DeleteVpcPrefixList接口删除前缀列表。
 
 **请求头**
 
@@ -3590,21 +3738,15 @@ http(s)://[Endpoint]/?Action=ModifyVpcPrefixList &PrefixListId=pl-0b7hwu67**** &
 |---|---|---|---|
 | RequestId | String | 64B48E3D-DF70-471B-AA93- 08E683A1B45 | 请求ID。 |
 
-专有网络VPC
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=DeleteVpcPrefixList &PrefixListId=pl-0b78hw45f**** &RegionId=cn-hangzhou
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"64B48E3D-DF70-471B-AA93-08E683A1B45" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"64B48E3D-DF70-471B-AA93-08E683A1B45" } |   |
 
 **错误码**
 
@@ -3617,7 +3759,9 @@ http(s)://[Endpoint]/?Action=DeleteVpcPrefixList &PrefixListId=pl-0b78hw45f**** 
 | 400 | DependencyViolation.PrefixListRe lation | DependencyViolation.PrefixListRelation | The specified resource of prefixList depends on prefixList relation, so the operation cannot be completed. |
 | 400 | DependencyViolation.ShareResou rce | DependencyViolation.ShareResource | The specified resource of prefixList depends on share resource, so the operation cannot be completed. |
 
-#### 6.5.13. GetVpcPrefixListEntries
+#### 6.5.13 GetVpcPrefixListEntries
+
+调用GetVpcPrefixListEntries接口查询指定前缀列表的信息。
 
 **请求头**
 
@@ -3636,28 +3780,22 @@ http(s)://[Endpoint]/?Action=DeleteVpcPrefixList &PrefixListId=pl-0b78hw45f**** 
 |---|---|---|---|
 | TotalCount | Long | 1 | 查询的列表条目数。 |
 | RequestId | String | 4EC47282-1B74-4534-BD0E- 403F3EE64CAF | 请求ID。 |
-| PrefixListEntry | Array |  | 查询的前缀列表的信息。 |
+| PrefixListEntry | Array |   | 查询的前缀列表的信息。 |
 | -PrefixListId | String | pl-0b7hwu67**** | 前缀列表的实例ID。 |
 | -Cidr | String | 192.168.0.0/16 | 前缀列表的CIDR地址块。 |
 | -Description | String | description | 前缀列表的描述信息。 |
 | -RegionId | String | cn-hangzhou | 前缀列表所属的地域ID。 |
 | Count | int | 1 | 条目数。 |
 
-专有网络VPC
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**** &RegionId=cn-hangzhou
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "TotalCount":1, "RequestId":"4EC47282-1B74-4534-BD0E-403F3EE64CAF", "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "PrefixListEntry":[ { "Description":"description", "Cidr":"192.168.0.0/16", "PrefixListId":"pl-0b7hwu67****", "RegionId":"cn-hangzhou" } ], "Count":1 } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "TotalCount":1, "RequestId":"4EC47282-1B74-4534-BD0E-403F3EE64CAF", "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "PrefixListEntry":[ { "Description":"description", "Cidr":"192.168.0.0/16", "PrefixListId":"pl-0b7hwu67****", "RegionId":"cn-hangzhou" } ], "Count":1 } |   |
 
 **错误码**
 
@@ -3666,7 +3804,9 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | 400 | IllegalParam.NextToken | IllegalParam.NextToken | The specified NextToken is invalid. |
 | 400 | ResourceNotFound.PrefixList | ResourceNotFound.PrefixList | The specified resource of prefixList is not found. |
 
-#### 6.5.14. ListPrefixLists
+#### 6.5.14 ListPrefixLists
+
+调用ListPrefixLists接口查询前缀列表的列表信息。
 
 **请求头**
 
@@ -3681,10 +3821,8 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | RegionId | String | Query | 是 | cn-hangzhou | 要查询前缀列表的信息的地域ID。 您可以通过调用DescribeRegions接口获取地域 ID。 |
 | PrefixListName | String | Query | 否 | name | 要查询的前缀列表的名称。 名称长度为1～128个字符，不能以 http:// 或 https:// 开头。 |
 | ClientToken | String | Query | 否 | 123e4567-e89b-12d3-a456-426655440000 | 客户端Token，用于保证请求的幂等性。 从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII字符。若您未指定，则系统自动使用API请求的RequestId作为 ClientToken标识。每次API请求的RequestId不一样。 |
-| PrefixListDescriptio n | String | Query | 否 |  | 要查询的前缀列表的名称。 名称长度为1～128个字符，不能以 http:// 或 https:// 开头。 |
+| PrefixListDescriptio n | String | Query | 否 |   | 要查询的前缀列表的名称。 名称长度为1～128个字符，不能以 http:// 或 https:// 开头。 |
 | MaxEntries | int | Query | 否 | 50 | 显示的最大条目数。默认值为50。 |
-
-专有网络VPC
 
 | DryRun | Boolean | Query | 否 | false | 是否只预检此次请求。取值： true：发送检查请求，不会修改前缀列表的配置信息。检查项包括是否填写了必需参数、请求格式、业务限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码DryRunOperation。false（默认值）： 发送正常请求，通过检查后返回HTTP 2xx状态码并直接修改前缀列表的配置信息。 |
 |---|---|---|---|---|---|
@@ -3710,28 +3848,24 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | -RegionId | String | cn-hangzhou | 查询到的前缀列表信息的地域ID。 |
 | -ResourceGroupId | String | rg-bp67acfmxazb4ph**** | 前缀列表所属的资源组ID。 |
 | -PrefixListType | String | Custom | 前缀列表类型 |
-| -Tags | Array |  | 标签列表。 |
-| --Key | String |  |  |
-| --Value | String |  |  |
+| -Tags | Array |   | 标签列表。 |
+| --Key | String |   |   |
+| --Value | String |   |   |
 
-专有网络VPC
-
-| -CidrBlocks | String |  |  |
+| -CidrBlocks | String |   |   |
 |---|---|---|---|
-
-**示例**
 
 请求示例
 
 ```
-&RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=ListPrefixLists &RegionId=cn-hangzhou
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "TotalCount":1, "RequestId":"DF72F7BB-5DFA-529C-887E-B0BB70D89C4F", "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "MaxResults":20, "PrefixLists":[ { "Status":"Created", "MaxEntries":10, "ResourceGroupId":"rg-bp67acfmxazb4ph****", "PrefixListId":"pl-m5estsqsdqwg88hjf****", "IpVersion":"IPV4", "PrefixListName":"test", "Tags":[ { "Value":"", "Key":"" } ], "PrefixListType":"Custom", "CidrBlocks":"", "PrefixListDescription":"Created with oss service by system.", "OwnerId":"1210123456123456", "CreationTime":"2022-07-12T14:22:32Z", "RegionId":"cn-hangzhou", "PrefixListStatus":"Created", "ShareType":"Shared" } ] } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "TotalCount":1, "RequestId":"DF72F7BB-5DFA-529C-887E-B0BB70D89C4F", "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "MaxResults":20, "PrefixLists":[ { "Status":"Created", "MaxEntries":10, "ResourceGroupId":"rg-bp67acfmxazb4ph****", "PrefixListId":"pl-m5estsqsdqwg88hjf****", "IpVersion":"IPV4", "PrefixListName":"test", "Tags":[ { "Value":"", "Key":"" } ], "PrefixListType":"Custom", "CidrBlocks":"", "PrefixListDescription":"Created with oss service by system.", "OwnerId":"1210123456123456", "CreationTime":"2022-07-12T14:22:32Z", "RegionId":"cn-hangzhou", "PrefixListStatus":"Created", "ShareType":"Shared" } ] } |   |
 
 **错误码**
 
@@ -3739,7 +3873,7 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 |---|---|---|---|
 | 400 | IllegalParam.NextToken | IllegalParam.NextToken | The specified NextToken is invalid. |
 
-#### 6.5.15. DetailVpc
+#### 6.5.15 DetailVpc
 
 查询指定vpc的详细信息
 
@@ -3757,10 +3891,6 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | ResourceOwnerId | Long | Query | 否 | 1000000**** | 发生事件的资源归属的阿里云账号ID。 |
 | OwnerId | Long | Query | 否 | 123456**** | VPC所属的账号ID。 |
 | OwnerAccount | String | Query | 否 | test | 资源拥有者账户，即登录用户名。 |
-
-专有网络VPC
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3783,7 +3913,7 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | 400 | ResourceNotFound.Vpc | ResourceNotFound.Vpc | The specified resource of vpc instance is not found. |
 | 400 | VPCIDISNULL _ _ _ | VPCIDISNULL _ _ _ | Vpc id can not be null. |
 
-#### 6.5.16. DeleteNqa
+#### 6.5.16 DeleteNqa
 
 删除指定的NQA实例。
 
@@ -3804,10 +3934,6 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | ClientToken | String | Query | 否 | 02fb3da4-130e-11e9-8e44-0016e04115b | 客户端Token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一。 若您未指定，则系统自动使用API请求的 RequestId作为ClientToken标识。每次 API请求的RequestId可能不一样。 |
 | OwnerAccount | String | Query | 否 | test | 鉴权相关的系统参数，不填。 |
 
-**返回数据**
-
-专有网络VPC
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | 请求 ID。 |
@@ -3817,14 +3943,14 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 请求示例
 
 ```
-&RegionId=cn-qingdao-env66-d01 &NqaId=nqa-xxxxxxxxxxx
+http(s)://[Endpoint]/?Action=DeleteNqa &RegionId=cn-qingdao-env66-d01 &NqaId=nqa-xxxxxxxxxxx
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE" } |   |
 
 **错误码**
 
@@ -3852,17 +3978,13 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 | 400 | BGPPEERIPADDRESSALREADY _ _ _ _ USEDCANNOTCREATEBGPPE _ _ _ _ _ ER | InvalidParams.PeerIpAddressInUse | peer ip address in use ,cannot create bgp peer. |
 | 404 | REGIONNOTFOUND _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. |
 
-#### 6.5.17. DeleteExpressCloudConnection
+#### 6.5.17 DeleteExpressCloudConnection
 
 删除指定的专有云连接实例。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有网络VPC
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3888,11 +4010,11 @@ http(s)://[Endpoint]/?Action=GetVpcPrefixListEntries &PrefixListId=pl-0b7hwu67**
 http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-env66-d01 &EccId=ecc-xxxxxxxxx
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE" } |   |
 
 **错误码**
 
@@ -3908,19 +4030,15 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 | 400 | IncorrectStatus.EccApplication | IncorrectStatus.EccApplication | %s |
 | 400 | OperationFailed.ReleaseVirtualBo rderRouter | OperationFailed.ReleaseVirtualBorderRouter | %s |
 
-### 路由表
+### 6.6 路由表
 
-#### 6.6.1. ModifyRouteTableAttributes
+#### 6.6.1 ModifyRouteTableAttributes
 
 修改路由表属性
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有网络VPC
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3957,15 +4075,15 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 | 400 | VPCROUTERTABLENOTEXIST _ _ _ _ | Abs.InvalidRouteTableId.NotExist | The route table id is not exist. |
 | 400 | Abs.Vpc.InvalidDescription.Malfor med | InvalidDescription.Malformed | Description format is invalid. |
 
-#### 6.6.2. CreateRouteTable
+#### 6.6.2 CreateRouteTable
+
+调用CreateRouteTable接口创建自定义路由表。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateRouteTable | 要执行的操作，取值：CreateRouteTable。 |
-
-专有网络VPC
 
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 路由表所属的VPC的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 |---|---|---|---|---|
@@ -3986,18 +4104,18 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &VpcId=vpc-bp1qpo0kug3a20qqe****
+http(s)://[Endpoint]/?Action=CreateRouteTable &RegionId=cn-qingdao-env17-d01 &VpcId=vpc-bp1qpo0kug3a20qqe****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateRouteTableResponse> <RequestId>62172DD5-6BAC-45DF-8D44-E11ED28DCAC0</RequestId> <RouteTableId>vtb-bp145q7glnuzdvzu2****</RouteTableId> </CreateRouteTableResponse> |  |
+| <CreateRouteTableResponse> <RequestId>62172DD5-6BAC-45DF-8D44-E11ED28DCAC0</RequestId> <RouteTableId>vtb-bp145q7glnuzdvzu2****</RouteTableId> </CreateRouteTableResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "62172DD5-6BAC-45DF-8D44-E11ED28DCAC0", "RouteTableId": "vtb-bp145q7glnuzdvzu2****" } |  |
+| { "RequestId": "62172DD5-6BAC-45DF-8D44-E11ED28DCAC0", "RouteTableId": "vtb-bp145q7glnuzdvzu2****" } |   |
 
 **错误码**
 
@@ -4006,7 +4124,7 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 | 400 | InvalidParameter.Description.Malf ormed | The specified Description is not valid. | 该描述不合法。 |
 | 404 | InvalidVpcId.NotFound | Specified VPC does not exist. | 该VPC不存在。 |
 
-#### 6.6.3. CreateRouteEntry
+#### 6.6.3 CreateRouteEntry
 
 调用CreateRouteEntry接口在VPC路由器或边界路由器上创建自定义路由条目。
 
@@ -4014,7 +4132,7 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 
 **使用该接口为VPC路由器的路由表添加自定义路由条目时，请注意：**
 
-同一个路由表中自定义路由条目不能超过48条。 自定义路由条目的目标网段（**DestinationCidrBlock**）不能和VPC内的交换机的网段相同，也不能包含交换机的网段或者被交换机的网段包含。 自定义路由条目的目标网段（**DestinationCidrBlock**）不能指向100.64.0.0/10，也不能被100.64.0.0/10包含。 同一路由表下的路由条目的目标网段（**DestinationCidrBlock**）不允许相同。 如果指定的目标网段（**DestinationCidrBlock**）是一个IP地址，会按照32位掩码来处理。 多条自定义路由条目可以指向同一个下一跳（**NextHopId**）。 自定义路由条目的下一跳（**NextHopId**）必须和路由表在同一个VPC。 支持通过**NextHopList**参数配置ECMP路由： 添加普通（非 ECMP ）自定义路由时，需指定**DestinationCidrBlock**、**NextHopType**和**NextHopId**参数，且不能指定**NextHopList**参数。 添加ECMP路由时，需指定**DestinationCidrBlock**和**NextHopList**参数，且不能指定**NextHopType** 和**NextHopId**参数。 专有网络VPC
+同一个路由表中自定义路由条目不能超过48条。 自定义路由条目的目标网段（**DestinationCidrBlock**）不能和VPC内的交换机的网段相同，也不能包含交换机的网段或者被交换机的网段包含。 自定义路由条目的目标网段（**DestinationCidrBlock**）不能指向100.64.0.0/10，也不能被100.64.0.0/10包含。 同一路由表下的路由条目的目标网段（**DestinationCidrBlock**）不允许相同。 如果指定的目标网段（**DestinationCidrBlock**）是一个IP地址，会按照32位掩码来处理。 多条自定义路由条目可以指向同一个下一跳（**NextHopId**）。 自定义路由条目的下一跳（**NextHopId**）必须和路由表在同一个VPC。 支持通过**NextHopList**参数配置ECMP路由： 添加普通（非 ECMP ）自定义路由时，需指定**DestinationCidrBlock**、**NextHopType**和**NextHopId**参数，且不能指定**NextHopList**参数。 添加ECMP路由时，需指定**DestinationCidrBlock**和**NextHopList**参数，且不能指定**NextHopType** 和**NextHopId**参数。
 
 **使用该接口为边界路由器的路由表创建自定义路由条目时，请注意：**
 
@@ -4048,18 +4166,18 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 请求示例
 
 ```
-&DestinationCidrBlock=192.168.0.0/24 &RouteTableId=vtb-bp145q7glnuzd****
+http(s)://[Endpoint]/?Action=CreateRouteEntry &DestinationCidrBlock=192.168.0.0/24 &RouteTableId=vtb-bp145q7glnuzd****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>`
 
 ```xml
-<RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
+<CreateRouteEntryResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <CreateRouteEntryResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -4098,8 +4216,6 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 | 400 | IncorrectRouteEntryStatus | VBR has NotStable route entry. | 无法执行该操作，边界路由表中有路由条目的状态为 pending或modifying。 |
 | 400 | InvalidParam | The Ecmp routerEntry with router interfaces local vgw vip not match. | 路由条目与路由器接口本地视频网关VIP不匹配。 |
 
-专有网络VPC
-
 | 400 | INVALIDWEIGHTPARAM _ _ | Specified value of weight invalid | 该权重不合法。 |
 |---|---|---|---|
 | 400 | FORBIDDENUSEVPCASINTERN _ _ _ _ ETGATEWAY _ | The Specified CIDR must be in vpc CIDR. | 该网段必须是VPC网段的子集。 |
@@ -4107,7 +4223,9 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 | 400 | InvalidRouteEntrySize | The Specified routerEntry size not legal. | 等价路由需要选择2~4个路由器接口作为路由下一跳。 |
 | 400 | InvalidRouteEntry | Specified routeEntry not exist. | 该路由条目不存在。 |
 
-#### 6.6.4. DeleteRouteEntry
+#### 6.6.4 DeleteRouteEntry
+
+调用DeleteRouteEntry接口删除自定义路由条目。
 
 **API描述**
 
@@ -4131,7 +4249,7 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 | DestinationCidrBlo ck | String | Query | 是 | 10.0.0.0/16 | 路由条目的目标网段，支持IPv4和IPv6网段。 |
 | NextHopId | String | Query | 否 | ngw-bp1vpo4l2vd7zef8o**** | 下一跳实例的ID。 |
 | OwnerAccount | String | Query | 否 | test | 资源拥有者账户，即登录用户名。 |
-| NextHopList | RepeatList | Query | 否 |  | 下一跳实例列表。 |
+| NextHopList | RepeatList | Query | 否 |   | 下一跳实例列表。 |
 
 **返回数据**
 
@@ -4144,15 +4262,14 @@ http(s)://[Endpoint]/?Action=DeleteExpressCloudConnection &RegionId=cn-qingdao-e
 请求示例
 
 ```
-&RouteTableId=vtb-hp37isva36oj7839j**** &DestinationCidrBlock=10.0.0.0/16
+http(s)://[Endpoint]/?Action=DeleteRouteEntry &RouteTableId=vtb-hp37isva36oj7839j**** &DestinationCidrBlock=10.0.0.0/16
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有网络VPC
+`&`公共请求参数正常返回示例
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
-}
 ```
 
 **错误码**
@@ -4189,7 +4306,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -1013611 | OperationFailed.DeleteMultiScopeEntry | Multi or ecmp scope must delete with force. |
 | 400 | -1000006 | OperationFailed.DistibuteLock | Distibute lock fail. |
 
-#### 6.6.5. DescribeRouteEntryList
+#### 6.6.5 DescribeRouteEntryList
+
+调用DescribeRouteEntryList查询路由条目列表。
 
 **请求参数**
 
@@ -4197,8 +4316,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | Action | String | 是 | DescribeRouteEntryList | 要执行的操作，取值：DescribeRouteEntryList。 |
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 路由条目所在路由表的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
-
-专有网络VPC
 
 | RouteTableId | String | 是 | vtb-bp1r9pvl4xen8s9ju**** | 要查询的路由表的ID。 |
 |---|---|---|---|---|
@@ -4218,19 +4335,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | NextToken | String | caeba0bbb2be03f84eb48b699f0a 4**** | 下一个查询开始Token。 |
 | RequestId | String | 14A07460-EBE7-47CA-9757- 12CC4761D47A | 请求ID。 |
-| RouteEntrys | Array of RouteEntry |  | 路由条目信息。 |
-| RouteEntry |  |  |  |
+| RouteEntrys | Array of RouteEntry |   | 路由条目信息。 |
+| RouteEntry |   |   |   |
 | Description | String | RouteEntryDescription | 路由条目的描述信息。 |
 | DestinationCidrBlock | String | 10.0.0.0/24 | 路由条目的目标网段。 |
 | IpVersion | String | IPv4 | IP协议的版本。 IPv4：IPv4协议。 IPv6：IPv6协议。 |
-| NextHops | Array of NextHop |  | 下一跳信息。 |
-| NextHop |  |  |  |
+| NextHops | Array of NextHop |   | 下一跳信息。 |
+| NextHop |   |   |   |
 | Enabled | Integer | 0 | 路由是否可用。 0：不可用。 1：可用。 |
 | NextHopId | String | vpn-bp10zyaph5cc8b7c7**** | 下一跳实例ID。 |
 | NextHopRegionId | String | cn-qingdao-env17-d01 | 下一跳实例所在的地域ID。 |
-| NextHopRelatedInfo | Struct |  | 下一跳相关信息。 |
-
-专有网络VPC
+| NextHopRelatedInfo | Struct |   | 下一跳相关信息。 |
 
 | InstanceId | String | vpc-bp1t36rn9l53iwbsf**** | 下一跳相关联实例的实例ID。 |
 |---|---|---|---|
@@ -4252,17 +4367,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeRouteEntryList &RegionId=cn-qingdao-env17-d01 &RouteTableId=vtb-bp1r9pvl4xen8s9ju****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeRouteEntryListResponse> <NextToken>caeba0bbb2be03f84eb48b699f0a4****</NextToken> <RequestId>14A07460-EBE7-47CA-9757-12CC4761D47A </RequestId> <RouteEntrys> <Status>Available</Status> <RouteEntryId>rte-bp1mnnr2al0naomnp****</RouteEntryId> <Type>Custom</Type> <Description>RouteEntryDescription</Description> <RouteTableId>vtb-bp15w5q90d2rk3bww****</RouteTableId> <IpVersion>IPv4</IpVersion> <RouteEntryName>aaa</RouteEntryName> <DestinationCidrBlock>10.0.0.0/24</DestinationCidrBlock> <NextHops> <NextHopRegionId>cn-qingdao-env17-d01</NextHopRegionId> <NextHopType>Instance</NextHopType> <NextHopId>vpn-bp10zyaph5cc8b7c7****</NextHopId> <Enabled>0</Enabled> <Weight>100</Weight> <NextHopRelatedInfo> <InstanceId>vpc-bp1t36rn9l53iwbsf****</InstanceId> <RegionId>ch-qingdao-env17-d01</RegionId> <InstanceType>VPC</InstanceType> </NextHopRelatedInfo> </NextHops> </RouteEntrys> </DescribeRouteEntryListResponse> |  |
-
-专有网络VPC
+| <DescribeRouteEntryListResponse> <NextToken>caeba0bbb2be03f84eb48b699f0a4****</NextToken> <RequestId>14A07460-EBE7-47CA-9757-12CC4761D47A </RequestId> <RouteEntrys> <Status>Available</Status> <RouteEntryId>rte-bp1mnnr2al0naomnp****</RouteEntryId> <Type>Custom</Type> <Description>RouteEntryDescription</Description> <RouteTableId>vtb-bp15w5q90d2rk3bww****</RouteTableId> <IpVersion>IPv4</IpVersion> <RouteEntryName>aaa</RouteEntryName> <DestinationCidrBlock>10.0.0.0/24</DestinationCidrBlock> <NextHops> <NextHopRegionId>cn-qingdao-env17-d01</NextHopRegionId> <NextHopType>Instance</NextHopType> <NextHopId>vpn-bp10zyaph5cc8b7c7****</NextHopId> <Enabled>0</Enabled> <Weight>100</Weight> <NextHopRelatedInfo> <InstanceId>vpc-bp1t36rn9l53iwbsf****</InstanceId> <RegionId>ch-qingdao-env17-d01</RegionId> <InstanceType>VPC</InstanceType> </NextHopRelatedInfo> </NextHops> </RouteEntrys> </DescribeRouteEntryListResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "NextToken": "caeba0bbb2be03f84eb48b699f0a4****", "RequestId": "14A07460-EBE7-47CA-9757-12CC4761D47A", "RouteEntrys": { "Status": "Available", "RouteEntryId": "rte-bp1mnnr2al0naomnp****", "Type": "Custom", "Description": "RouteEntryDescription", "RouteTableId": "vtb-bp15w5q90d2rk3bww****", "IpVersion": "IPv4", "RouteEntryName": "aaa", "DestinationCidrBlock": "10.0.0.0/24", "NextHops": { "NextHopRegionId": "cn-qingdao-env17-d01", "NextHopType": "Instance", "NextHopId": "vpn-bp10zyaph5cc8b7c7****", "Enabled": 0, "Weight": 100, "NextHopRelatedInfo": { "InstanceId": "vpc-bp1t36rn9l53iwbsf****", "RegionId": "ch-qingdao-env17-d01", "InstanceType": "VPC" } } } } |  |
+| { "NextToken": "caeba0bbb2be03f84eb48b699f0a4****", "RequestId": "14A07460-EBE7-47CA-9757-12CC4761D47A", "RouteEntrys": { "Status": "Available", "RouteEntryId": "rte-bp1mnnr2al0naomnp****", "Type": "Custom", "Description": "RouteEntryDescription", "RouteTableId": "vtb-bp15w5q90d2rk3bww****", "IpVersion": "IPv4", "RouteEntryName": "aaa", "DestinationCidrBlock": "10.0.0.0/24", "NextHops": { "NextHopRegionId": "cn-qingdao-env17-d01", "NextHopType": "Instance", "NextHopId": "vpn-bp10zyaph5cc8b7c7****", "Enabled": 0, "Weight": 100, "NextHopRelatedInfo": { "InstanceId": "vpc-bp1t36rn9l53iwbsf****", "RegionId": "ch-qingdao-env17-d01", "InstanceType": "VPC" } } } } |   |
 
 **错误码**
 
@@ -4270,7 +4383,9 @@ http(s)://[Endpoint]/?Action=DescribeRouteEntryList &RegionId=cn-qingdao-env17-d
 |---|---|---|---|
 | 400 | OperationFailed.QueryCenEntry | Operation is denied because getting CEN route entry has failed. | 由于暂时无法获取云企业网路由导致查询失败。 |
 
-#### 6.6.6. ModifyRouteEntry
+#### 6.6.6 ModifyRouteEntry
+
+调用ModifyRouteEntry修改自定义路由条目的名称和描述。
 
 **请求参数**
 
@@ -4293,18 +4408,20 @@ http(s)://[Endpoint]/?Action=DescribeRouteEntryList &RegionId=cn-qingdao-env17-d
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &RouteEntryId=rte-acfvgfsghfdd****
+http(s)://[Endpoint]/?Action=ModifyRouteEntry &RegionId=cn-qingdao-env17-d01 &RouteEntryId=rte-acfvgfsghfdd****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>`
 
 ```xml
+<ModifyRouteEntryResponse>
     <RequestId>861E6630-AEC0-4B2D-B214-6CB5E44B7F04</RequestId>
+</ModifyRouteEntryResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "861E6630-AEC0-4B2D-B214-6CB5E44B7F04" } |  |
+| { "RequestId": "861E6630-AEC0-4B2D-B214-6CB5E44B7F04" } |   |
 
 **错误码**
 
@@ -4313,7 +4430,7 @@ http(s)://[Endpoint]/?Action=DescribeRouteEntryList &RegionId=cn-qingdao-env17-d
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 400 | InvalidRouteEntryId.NotFound | The specified routeEntry does not exist. | 指定的路由条目不存在。 |
 
-#### 6.6.7. AssociateRouteTable
+#### 6.6.7 AssociateRouteTable
 
 调用AssociateRouteTable接口将创建的自定义路由表和同一VPC内的交换机绑定。
 
@@ -4341,15 +4458,15 @@ http(s)://[Endpoint]/?Action=DescribeRouteEntryList &RegionId=cn-qingdao-env17-d
 http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 &RouteTableId=vtb-bp145q7glnuzdvzu2**** &VSwitchId=vsw-25ncdvfaue4****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <AssociateRouteTableResponse> <RequestId>DC668356-BCB4-42FD-9BC3-FA2B2E04B634</RequestId> </AssociateRouteTableResponse> |  |
+| <AssociateRouteTableResponse> <RequestId>DC668356-BCB4-42FD-9BC3-FA2B2E04B634</RequestId> </AssociateRouteTableResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| {"RequestId":"DC668356-BCB4-42FD-9BC3-FA2B2E04B634"} |  |
+| {"RequestId":"DC668356-BCB4-42FD-9BC3-FA2B2E04B634"} |   |
 
 **错误码**
 
@@ -4357,13 +4474,13 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 |---|---|---|---|
 | 404 | InvalidRouteTableId.NotFound | Specified route table does not exist. | 该路由表不存在。 |
 
-#### 6.6.8. DeleteRouteTable
+#### 6.6.8 DeleteRouteTable
+
+调用DeleteRouteTable接口删除自定义路由表。
 
 **API描述**
 
-专有网络VPC 删除自定义路由表前，请先将自定义路由表与绑定的交换机解绑。
-
-**请求参数**
+删除自定义路由表前，请先将自定义路由表与绑定的交换机解绑。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4382,18 +4499,18 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &RouteTableId=vtb-bp145q7glnuzdvzu2****
+http(s)://[Endpoint]/?Action=DeleteRouteTable &RegionId=cn-qingdao-env17-d01 &RouteTableId=vtb-bp145q7glnuzdvzu2****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteRouteTableResponse> <RequestId>DC668356-BCB4-42FD-9BC3-FA2B2E04B634</RequestId> </DeleteRouteTableResponse> |  |
+| <DeleteRouteTableResponse> <RequestId>DC668356-BCB4-42FD-9BC3-FA2B2E04B634</RequestId> </DeleteRouteTableResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "DC668356-BCB4-42FD-9BC3-FA2B2E04B634" } |  |
+| { "RequestId": "DC668356-BCB4-42FD-9BC3-FA2B2E04B634" } |   |
 
 **错误码**
 
@@ -4401,7 +4518,9 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 |---|---|---|---|
 | 400 | IncorrectVSwitchStatus | The current virtual switch status does not support this operation. | 该交换机处于配置中状态，无法删除。 |
 
-#### 6.6.9. DescribeRouteTableList
+#### 6.6.9 DescribeRouteTableList
+
+调用DescribeRouteTableList接口查询路由表列表。
 
 **请求参数**
 
@@ -4415,8 +4534,6 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 | RouteTableId | String | 否 | vtb-bp145q7glnuzdvzu2**** | 要查询的路由表的ID。 |
 | RouteTableName | String | 否 | doctest | 要查询的路由表的名称。 |
 | PageNumber | Integer | 否 | 1 | 列表的页码，默认值为1。 |
-
-专有网络VPC
 
 | PageSize | Integer | 否 | 10 | 分页查询时每页的行数，最大值为50，默认值为10。 |
 |---|---|---|---|---|
@@ -4433,8 +4550,8 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 10 | 每页包含的条目数。 |
 | RequestId | String | DC668356-BCB4-42FD-9BC3- FA2B2E04B634 | 请求ID。 |
-| RouterTableList | Array of RouterTableListType |  | 路由表列表。 |
-| RouterTableListType |  |  |  |
+| RouterTableList | Array of RouterTableListType |   | 路由表列表。 |
+| RouterTableListType |   |   |   |
 | CreationTime | String | 2017-08-22T10:40:25Z | 路由表的创建时间。 |
 | Description | String | This is Route Table. | 路由表的描述。 |
 | OwnerId | Long | 12345678 | 路由表所属账号ID。 |
@@ -4445,14 +4562,12 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 | RouterId | String | vrt-bp1lhl0taikrteen8**** | 路由表所属的路由器ID。 |
 | RouterType | String | VBR | 路由表所属路由器的类型。 VRouter：VPC路由器。 VBR：边界路由器。 |
 | Status | String | Available | 路由表状态。 Pending：配置中。 Available：可用。 |
-| Tags | Array of Tag |  | 路由表的标签。 |
-| Tag |  |  |  |
+| Tags | Array of Tag |   | 路由表的标签。 |
+| Tag |   |   |   |
 | Key | String | type | 路由表绑定的标签键。 |
 | Value | String | ingress | 路由表绑定的标签键对应的值。 |
 | VSwitchIds | List | vsw-bp12mw1f8k3jgygk9**** | VPC下的交换机列表。 |
 | VpcId | String | vpc-bp15zckdt37pq72**** | 路由表所属的VPC的ID。 |
-
-专有网络VPC
 
 | Success | Boolean | true | 操作是否成功。取值： true：成功。 false：失败。 |
 |---|---|---|---|
@@ -4466,15 +4581,15 @@ http(s)://[Endpoint]/?Action=AssociateRouteTable &RegionId=cn-qingdao-env17-d01 
 http(s)://[Endpoint]/?Action=DescribeRouteTableList &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeRouteTableListResponse> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <Message>successful</Message> <RequestId>DC668356-BCB4-42FD-9BC3-FA2B2E04B634</RequestId> <PageNumber>1</PageNumber> <RouterTableList> <Status>Available</Status> <Description>This is Route Table.</Description> <RouteTableId>vtb-bp145q7glnuzdvzu2****</RouteTableId> <OwnerId>12345678</OwnerId> <ResourceGroupId>rg-acfmxazb4ph****</ResourceGroupId> <VpcId>vpc-bp15zckdt37pq72****</VpcId> <RouterType>VBR</RouterType> <CreationTime>2017-08-22T10:40:25Z</CreationTime> <RouterId>vrt-bp1lhl0taikrteen8****</RouterId> <RouteTableType>System</RouteTableType> <RouteTableName>doctest</RouteTableName> <Tags> <Value>ingress</Value> <Key>type</Key> </Tags> <VSwitchIds>vsw-bp12mw1f8k3jgygk9****</VSwitchIds> </RouterTableList> <Code>200</Code> <Success>true</Success> </DescribeRouteTableListResponse> |  |
+| <DescribeRouteTableListResponse> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <Message>successful</Message> <RequestId>DC668356-BCB4-42FD-9BC3-FA2B2E04B634</RequestId> <PageNumber>1</PageNumber> <RouterTableList> <Status>Available</Status> <Description>This is Route Table.</Description> <RouteTableId>vtb-bp145q7glnuzdvzu2****</RouteTableId> <OwnerId>12345678</OwnerId> <ResourceGroupId>rg-acfmxazb4ph****</ResourceGroupId> <VpcId>vpc-bp15zckdt37pq72****</VpcId> <RouterType>VBR</RouterType> <CreationTime>2017-08-22T10:40:25Z</CreationTime> <RouterId>vrt-bp1lhl0taikrteen8****</RouterId> <RouteTableType>System</RouteTableType> <RouteTableName>doctest</RouteTableName> <Tags> <Value>ingress</Value> <Key>type</Key> </Tags> <VSwitchIds>vsw-bp12mw1f8k3jgygk9****</VSwitchIds> </RouterTableList> <Code>200</Code> <Success>true</Success> </DescribeRouteTableListResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount": 1, "PageSize": 10, "Message": "successful", "RequestId": "DC668356-BCB4-42FD-9BC3-FA2B2E04B634", "PageNumber": 1, "RouterTableList": { "Status": "Available", "Description": "This is Route Table.", "RouteTableId": "vtb-bp145q7glnuzdvzu2****", "OwnerId": 12345678, "ResourceGroupId": "rg-acfmxazb4ph****", "VpcId": "vpc-bp15zckdt37pq72****", "RouterType": "VBR", "CreationTime": "2017-08-22T10:40:25Z", "RouterId": "vrt-bp1lhl0taikrteen8****", "RouteTableType": "System", "RouteTableName": "doctest", "Tags": { "Value": "ingress", "Key": "type" }, "VSwitchIds": "vsw-bp12mw1f8k3jgygk9****" }, "Code": 200, "Success": true } |  |
+| { "TotalCount": 1, "PageSize": 10, "Message": "successful", "RequestId": "DC668356-BCB4-42FD-9BC3-FA2B2E04B634", "PageNumber": 1, "RouterTableList": { "Status": "Available", "Description": "This is Route Table.", "RouteTableId": "vtb-bp145q7glnuzdvzu2****", "OwnerId": 12345678, "ResourceGroupId": "rg-acfmxazb4ph****", "VpcId": "vpc-bp15zckdt37pq72****", "RouterType": "VBR", "CreationTime": "2017-08-22T10:40:25Z", "RouterId": "vrt-bp1lhl0taikrteen8****", "RouteTableType": "System", "RouteTableName": "doctest", "Tags": { "Value": "ingress", "Key": "type" }, "VSwitchIds": "vsw-bp12mw1f8k3jgygk9****" }, "Code": 200, "Success": true } |   |
 
 **错误码**
 
@@ -4482,11 +4597,9 @@ http(s)://[Endpoint]/?Action=DescribeRouteTableList &RegionId=cn-qingdao-env17-d
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 
-专有网络VPC
+#### 6.6.10 UnassociateRouteTable
 
-#### 6.6.10. UnassociateRouteTable
-
-**请求参数**
+调用UnassociateRouteTable接口将路由表和交换机解绑。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4510,15 +4623,15 @@ http(s)://[Endpoint]/?Action=DescribeRouteTableList &RegionId=cn-qingdao-env17-d
 http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d01 &RouteTableId=vtb-bp145q7glnuzdvzu2**** &VSwitchId=vsw-25naucfvfbgte4****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UnassociateRouteTableResponse> <RequestId>62172DD5-6BAC-45DF-8D44-62172DD5</RequestId> </UnassociateRouteTableResponse> |  |
+| <UnassociateRouteTableResponse> <RequestId>62172DD5-6BAC-45DF-8D44-62172DD5</RequestId> </UnassociateRouteTableResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "62172DD5-6BAC-45DF-8D44-62172DD5" } |  |
+| { "RequestId": "62172DD5-6BAC-45DF-8D44-62172DD5" } |   |
 
 **错误码**
 
@@ -4526,9 +4639,9 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 |---|---|---|---|
 | 404 | InvalidRouteTableId.NotFound | Specified route table does not exist. | 该路由表不存在。 |
 
-### 交换机
+### 6.7 交换机
 
-#### 6.7.1. CreateVSwitch
+#### 6.7.1 CreateVSwitch
 
 创建虚拟交换机（VSwitch）。 该接口用于在指定的VPC中创建虚拟交换机。需要确保VPC和可用区存在，并且CIDR块符合要求。 ：
 
@@ -4575,22 +4688,18 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 请求示例
 
 ```
-&ZoneId=cn-hangzhou-b &CidrBlock=192.168.0.0/16 &VpcId=vpc-1234567890abcdef
+http(s)://[Endpoint]/?Action=CreateVSwitch &ZoneId=cn-hangzhou-b &CidrBlock=192.168.0.0/16 &VpcId=vpc-1234567890abcdef
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"ABCDE-12345-FGHIJ", "VSwitchId":"vsw-1234567890abcdef" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"ABCDE-12345-FGHIJ", "VSwitchId":"vsw-1234567890abcdef" } |   |
 
 | XML | 格式 |
 |---|---|
-| <RequestId>861E6630-AEC0-4B2D-B214-6CB5E44B7F04</RequestId> <VSwitchId>vsw-25navfgbue4g****</VSwitchId> |  |
-
-**错误码**
-
-专有网络VPC
+| <RequestId>861E6630-AEC0-4B2D-B214-6CB5E44B7F04</RequestId> <VSwitchId>vsw-25navfgbue4g****</VSwitchId> |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -4636,7 +4745,7 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 | 400 | CREATECGWIPV4SWITCHFAIL _ _ | CREATECGWIPV4SWITCHFAIL _ _ | the cgw switchs must ipv6 in vpc |
 | 400 | CREATECGWSWITCHFAIL _ _ | CREATECGWSWITCHFAIL _ _ | the cgw switchs are both ipv4 and ipv6 in vpc,please close ipv6 cgw switch |
 
-| 开发指南·API参 | 考 |  | 专有网络VPC |
+| 开发指南·API参 | 考 |   | 专有网络VPC |
 |---|---|---|---|
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
@@ -4648,7 +4757,9 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 | 404 | VPCROUTEENTRYSTATUSERR _ _ _ _ OR | InvalidStatus.RouteEntry | 路由条目状态异常，请检查相关配置。 |
 | 404 | REGIONNOTFOUND _ _ | InvalidRegionId.NotFound | 指定的地域 ID 不被支持，请确认输入是否正确。 |
 
-#### 6.7.2. DeleteVSwitch
+#### 6.7.2 DeleteVSwitch
+
+调用DeleteVSwitch接口删除交换机。
 
 **API描述**
 
@@ -4673,18 +4784,18 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 请求示例
 
 ```
-&VSwitchId=vsw-asdfjcdvflna****
+http(s)://vpc.aliyuncs.com/?Action=DeleteVSwitch &VSwitchId=vsw-asdfjcdvflna****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteVSwitchResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteVSwitchResponse> |  |
+| <DeleteVSwitchResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteVSwitchResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -4695,15 +4806,13 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 | 400 | DependencyViolation | Some route entry status blocked this operation. | 无法执行该操作，当前路由表中有路由条目的状态为 pending或modifying。 |
 | 400 | IncorrectRouteEntryStatus | Some route entry status blocked this operation. | 无法执行该操作，当前路由表中有路由条目的状态为 pending或modifying。 |
 
-专有网络VPC
-
 | 400 | DependencyViolation.HaVip | VSwitch cannot be deleted when there are some HaVip dependent with it. | 无法删除交换机，该交换机下有关联的HAVIP。 |
 |---|---|---|---|
 | 400 | MissingParameter | Miss mandatory parameter. | 缺少必要参数，请您检查必填参数是否都已填后再进行操作。 |
 | 404 | InvalidVSwitchId.NotFound | VSwitch not exist. | 该交换机不存在，请您检查输入的交换机是否正确。 |
 | 404 | IncorrectStatus | Vswtich status not stable. | 当前交换机的状态为pending或modifying，请您稍后再试。 |
 
-#### 6.7.3. ModifyVSwitchAttribute
+#### 6.7.3 ModifyVSwitchAttribute
 
 调用ModifyVSwitchAttribute接口修改指定交换机的名称和描述信息。
 
@@ -4732,15 +4841,15 @@ http(s)://[Endpoint]/?Action=UnassociateRouteTable &RegionId=cn-qingdao-env17-d0
 http(s)://[Endpoint]/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25nacdfvue4****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyVSwitchAttributeResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </ModifyVSwitchAttributeResponse> |  |
+| <ModifyVSwitchAttributeResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </ModifyVSwitchAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -4751,11 +4860,9 @@ http(s)://[Endpoint]/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25nacdfvue4**
 | 400 | InvalidVSwitchDiscription.Malfor med | Specified virtual switch description is not valid. | 该 VSwitch 描述信息格式不正确。 |
 | 400 | InvalidVSwitchDiscription.Malfor med | Specified virtual switch description is not valid. | 交换机描述不合法。 |
 
-专有网络VPC
+#### 6.7.4 DescribeVSwitchAttributes
 
-#### 6.7.4. DescribeVSwitchAttributes
-
-**请求参数**
+调用DescribeVSwitchAttributes接口查询交换机的配置信息。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4770,8 +4877,8 @@ http(s)://[Endpoint]/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25nacdfvue4**
 |---|---|---|---|
 | AvailableIpAddressCount | Long | 12 | 可用IP数量。 |
 | CidrBlock | String | 192.168.0.1/24 | 交换机的IPv4网段。 |
-| CloudResources | Array of CloudResourceSetType |  | VPC下的资源列表。 |
-| CloudResourceSetType |  |  |  |
+| CloudResources | Array of CloudResourceSetType |   | VPC下的资源列表。 |
+| CloudResourceSetType |   |   |   |
 | ResourceCount | Integer | 1 | VPC下的资源数量。 |
 | ResourceType | String | VSwitch | VPC下的资源类型。 VSwitch：交换机。 VRouter：路由器。 RouteTable：路由表。 |
 | CreationTime | String | 2017-08-22T10:40:25Z | 交换机的创建时间。 |
@@ -4783,10 +4890,8 @@ http(s)://[Endpoint]/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25nacdfvue4**
 | OwnerId | Long | 12345678 | 交换机所属账号的ID。 |
 | RequestId | String | 7B48B4B9-1EAD-469F-B488- 594DAB4B6A1A | 请求ID。 |
 | ResourceGroupId | String | rg-acfmxazb4pbgfh**** | 资源组ID。 |
-| RouteTable | Struct |  | 交换机的路由表信息。 |
+| RouteTable | Struct |   | 交换机的路由表信息。 |
 | RouteTableId | String | vtb-bp145q7glnuzdv**** | 交换机关联的路由表的ID。 |
-
-专有网络VPC
 
 | RouteTableType | String | System | 交换机关联的路由表的类型： System：系统路由表。 Custom：自定义路由表。 |
 |---|---|---|---|
@@ -4804,16 +4909,15 @@ http(s)://[Endpoint]/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25nacdfvue4**
 http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeVSwitchAttributesResponse> <IsDefault>false</IsDefault> <Status>Pending</Status> <Description>abc</Description> <NetworkAclId>nacl-2zesich96aa37rl29****</NetworkAclId> <ResourceGroupId>rg-acfmxazb4pbgfh****</ResourceGroupId> <ZoneId>cn-qingdao-env17-amtest11001-a</ZoneId> <RequestId>7B48B4B9-1EAD-469F-B488-594DAB4B6A1A</RequestId> <AvailableIpAddressCount>12</AvailableIpAddressCount> <VSwitchId>vsw-25b7pcdfvv15t****</VSwitchId> <CidrBlock>192.168.0.1/24</CidrBlock> <RouteTable> <RouteTableId>vtb-bp145q7glnuzdv****</RouteTableId> <RouteTableType>System</RouteTableType> </RouteTable> <IsCgw>false</IsCgw> <OwnerId>12345678</OwnerId> <VpcId>vpc-257gqcfv642n****</VpcId> <CreationTime>2017-08-22T10:40:25Z</CreationTime> <VSwitchName>test</VSwitchName> <Ipv6CidrBlock>2408:XXXX:0:2900::/64</Ipv6CidrBlock> <CloudResources> <ResourceCount>1</ResourceCount> <ResourceType>VSwitch</ResourceType> </CloudResources> </DescribeVSwitchAttributesResponse> |  |
+| <DescribeVSwitchAttributesResponse> <IsDefault>false</IsDefault> <Status>Pending</Status> <Description>abc</Description> <NetworkAclId>nacl-2zesich96aa37rl29****</NetworkAclId> <ResourceGroupId>rg-acfmxazb4pbgfh****</ResourceGroupId> <ZoneId>cn-qingdao-env17-amtest11001-a</ZoneId> <RequestId>7B48B4B9-1EAD-469F-B488-594DAB4B6A1A</RequestId> <AvailableIpAddressCount>12</AvailableIpAddressCount> <VSwitchId>vsw-25b7pcdfvv15t****</VSwitchId> <CidrBlock>192.168.0.1/24</CidrBlock> <RouteTable> <RouteTableId>vtb-bp145q7glnuzdv****</RouteTableId> <RouteTableType>System</RouteTableType> </RouteTable> <IsCgw>false</IsCgw> <OwnerId>12345678</OwnerId> <VpcId>vpc-257gqcfv642n****</VpcId> <CreationTime>2017-08-22T10:40:25Z</CreationTime> <VSwitchName>test</VSwitchName> <Ipv6CidrBlock>2408:XXXX:0:2900::/64</Ipv6CidrBlock> <CloudResources> <ResourceCount>1</ResourceCount> <ResourceType>VSwitch</ResourceType> </CloudResources> </DescribeVSwitchAttributesResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "IsDefault": false,
     "Status": "Pending",
     "Description": "abc",
@@ -4827,7 +4931,11 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
     "RouteTable": {
         "RouteTableId": "vtb-bp145q7glnuzdv****",
         "RouteTableType": "System"
-    },
+```
+
+`},`
+
+```json
     "IsCgw": false,
     "OwnerId": 12345678,
     "VpcId": "vpc-257gqcfv642n****",
@@ -4837,13 +4945,15 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
     "CloudResources": {
         "ResourceCount": 1,
         "ResourceType": "VSwitch"
-    }
-}
 ```
 
-### 网络ACL
+`}` `}`
 
-#### 6.8.1. CreateNetworkAcl
+### 6.8 网络ACL
+
+#### 6.8.1 CreateNetworkAcl
+
+调用CreateNetworkAcl接口创建网络ACL。
 
 **请求参数**
 
@@ -4860,15 +4970,13 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| NetworkAclAttribute | Struct |  | 网络ACL的属性。 |
+| NetworkAclAttribute | Struct |   | 网络ACL的属性。 |
 | CreationTime | String | 2019-04-25 11:33:27 | 网络ACL创建的时间。 |
 | Description | String | This is my NetworkAcl. | 网络ACL的描述信息。 |
-| EgressAclEntries | Array of EgressAclEntry |  | 出方向规则。 |
-| EgressAclEntry |  |  |  |
+| EgressAclEntries | Array of EgressAclEntry |   | 出方向规则。 |
+| EgressAclEntry |   |   |   |
 | Description | String | This is EgressAclEntries. | 出方向规则的描述信息。 |
 | DestinationCidrIp | String | 10.0.0.0/24 | 目标地址段。 |
-
-专有网络VPC
 
 | EntryType | String | custom | 规则类型，取值： custom：自定义。 system：系统。 |
 |---|---|---|---|
@@ -4877,8 +4985,8 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
 | Policy | String | accept | 授权策略，取值： accept：允许。 drop：拒绝。 |
 | Port | String | -1/-1 | 目的端口范围。 |
 | Protocol | String | all | 传输层协议，取值： icmp gre tcp udp all：支持所有协议 |
-| IngressAclEntries | Array of IngressAclEntry |  | 入方向规则。 |
-| IngressAclEntry |  |  |  |
+| IngressAclEntries | Array of IngressAclEntry |   | 入方向规则。 |
+| IngressAclEntry |   |   |   |
 | Description | String | This is IngressAclEntries. | 入方向规则的描述信息。 |
 | EntryType | String | custom | 规则类型，取值： custom：自定义。 system：系统。 |
 | NetworkAclEntryId | String | nae-a2dk86arlydmexscd**** | 入方向规则条目的ID。 |
@@ -4890,12 +4998,10 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
 | NetworkAclId | String | nacl-a2do9e413e0spdefr**** | 网络ACL的ID。 |
 | NetworkAclName | String | acl-1 | 网络ACL的名称。 |
 | RegionId | String | cn-qingdao-env17-d01 | 网络ACL所属的地域ID。 |
-| Resources | Array of Resource |  | 关联的资源。 |
-| Resource |  |  |  |
+| Resources | Array of Resource |   | 关联的资源。 |
+| Resource |   |   |   |
 | ResourceId | String | vsw-bp1de348lntdwgthy**** | 关联资源的实例ID。 |
 | ResourceType | String | VSwitch | 关联资源的类型。 |
-
-专有网络VPC
 
 | Status | String | BINDED | 关联资源的状态。 BINDED：已绑定。 BINDING：绑定中。 UNBINDING：已解绑。 |
 |---|---|---|---|
@@ -4909,19 +5015,18 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &VpcId=vpc-dsfd34356vdf****
+http(s)://[Endpoint]/?Action=CreateNetworkAcl &RegionId=cn-qingdao-env17-d01 &VpcId=vpc-dsfd34356vdf****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateNetworkAclResponse> <NetworkAclId>nacl-a2do9e413e0spzasx****</NetworkAclId> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <NetworkAclAttribute> <Status>Modifying</Status> <Description>This is my NetworkAcl.</Description> <VpcId>vpc-a2d33rfpl72k5xsscd****</VpcId> <NetworkAclId>nacl-a2do9e413e0spdefr****</NetworkAclId> <CreationTime>2019-04-25 11:33:27</CreationTime> <NetworkAclName>acl-1 </NetworkAclName> <RegionId>cn-qingdao-env17-d01</RegionId> <IngressAclEntries> <Policy>accept</Policy> <Description>This is IngressAclEntries. </Description> <EntryType>custom</EntryType> <Port>-1/-1 </Port> <SourceCidrIp>10.0.0.0/24 </SourceCidrIp> <NetworkAclEntryName>acl-3 </NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2dk86arlydmexscd****</NetworkAclEntryId> </IngressAclEntries> <EgressAclEntries> <Policy>accept</Policy> <Description>This is EgressAclEntries.</Description> <EntryType>custom</EntryType> <DestinationCidrIp>10.0.0.0/24</DestinationCidrIp> <Port>-1/-1 </Port> <NetworkAclEntryName>acl-2</NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2d447uw4tillxsdc****</NetworkAclEntryId> </EgressAclEntries> <Resources> <Status>BINDED</Status> <ResourceId>vsw-bp1de348lntdwgthy****</ResourceId> <ResourceType>VSwitch</ResourceType> </Resources> </NetworkAclAttribute> </CreateNetworkAclResponse> |  |
+| <CreateNetworkAclResponse> <NetworkAclId>nacl-a2do9e413e0spzasx****</NetworkAclId> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <NetworkAclAttribute> <Status>Modifying</Status> <Description>This is my NetworkAcl.</Description> <VpcId>vpc-a2d33rfpl72k5xsscd****</VpcId> <NetworkAclId>nacl-a2do9e413e0spdefr****</NetworkAclId> <CreationTime>2019-04-25 11:33:27</CreationTime> <NetworkAclName>acl-1 </NetworkAclName> <RegionId>cn-qingdao-env17-d01</RegionId> <IngressAclEntries> <Policy>accept</Policy> <Description>This is IngressAclEntries. </Description> <EntryType>custom</EntryType> <Port>-1/-1 </Port> <SourceCidrIp>10.0.0.0/24 </SourceCidrIp> <NetworkAclEntryName>acl-3 </NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2dk86arlydmexscd****</NetworkAclEntryId> </IngressAclEntries> <EgressAclEntries> <Policy>accept</Policy> <Description>This is EgressAclEntries.</Description> <EntryType>custom</EntryType> <DestinationCidrIp>10.0.0.0/24</DestinationCidrIp> <Port>-1/-1 </Port> <NetworkAclEntryName>acl-2</NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2d447uw4tillxsdc****</NetworkAclEntryId> </EgressAclEntries> <Resources> <Status>BINDED</Status> <ResourceId>vsw-bp1de348lntdwgthy****</ResourceId> <ResourceType>VSwitch</ResourceType> </Resources> </NetworkAclAttribute> </CreateNetworkAclResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "NetworkAclId": "nacl-a2do9e413e0spzasx****",
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
     "NetworkAclAttribute": {
@@ -4941,7 +5046,11 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
             "NetworkAclEntryName": "acl-3",
             "Protocol": "all",
             "NetworkAclEntryId": "nae-a2dk86arlydmexscd****"
-        },
+```
+
+`},`
+
+```json
         "EgressAclEntries": {
             "Policy": "accept",
             "Description": "This is EgressAclEntries.",
@@ -4951,17 +5060,22 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
             "NetworkAclEntryName": "acl-2",
             "Protocol": "all",
             "NetworkAclEntryId": "nae-a2d447uw4tillxsdc****"
-        },
+```
+
+`},`
+
+```json
         "Resources": {
             "Status": "BINDED",
             "ResourceId": "vsw-bp1de348lntdwgthy****",
             "ResourceType": "VSwitch"
-        }
-    }
-}
 ```
 
-#### 6.8.2. AssociateNetworkAcl
+`}` `}` `}`
+
+#### 6.8.2 AssociateNetworkAcl
+
+调用AssociateNetworkAcl接口，绑定网络ACL到交换机。
 
 **请求参数**
 
@@ -4988,17 +5102,17 @@ http(s)://[Endpoint]/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**
 http(s)://[Endpoint]/?Action=AssociateNetworkAcl &NetworkAclId=nacl-a2do9e413e0spxscd**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
-
 ```xml
+<AssociateNetworkAclResponse>
      <RequestId>4CF20CC7-D1FC-425B-A15B-DF7C8E2131A7</RequestId>
+</AssociateNetworkAclResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"4CF20CC7-D1FC-425B-A15B-DF7C8E2131A7" } |  |
+| { "RequestId":"4CF20CC7-D1FC-425B-A15B-DF7C8E2131A7" } |   |
 
-#### 6.8.3. ModifyNetworkAclAttributes
+#### 6.8.3 ModifyNetworkAclAttributes
 
 调用ModifyNetworkAclAttributes接口修改网络ACL的属性。
 
@@ -5027,25 +5141,25 @@ http(s)://[Endpoint]/?Action=AssociateNetworkAcl &NetworkAclId=nacl-a2do9e413e0s
 http(s)://[Endpoint]/?Action=ModifyNetworkAclAttributes &NetworkAclId=acl-bp1lhl0taik**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyNetworkAclAttributesResponse> <RequestId>8F76C3E4-B39F-465D-B8B3-50BAF03CA833</RequestId> </ModifyNetworkAclAttributesResponse> |  |
+| <ModifyNetworkAclAttributesResponse> <RequestId>8F76C3E4-B39F-465D-B8B3-50BAF03CA833</RequestId> </ModifyNetworkAclAttributesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "8F76C3E4-B39F-465D-B8B3-50BAF03CA833" } |  |
+| { "RequestId": "8F76C3E4-B39F-465D-B8B3-50BAF03CA833" } |   |
 
-#### 6.8.4. UpdateNetworkAclEntries
+#### 6.8.4 UpdateNetworkAclEntries
+
+调用UpdateNetworkAclEntries接口更新网络ACL规则。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | UpdateNetworkAclEntries | 要执行的操作，取值： UpdateNetworkAclEntries。 |
-
-专有网络VPC
 
 | NetworkAclId | String | 是 | nacl-bp1lhl0taikrzxsc**** | 网络ACL的ID。 |
 |---|---|---|---|---|
@@ -5070,10 +5184,6 @@ http(s)://[Endpoint]/?Action=ModifyNetworkAclAttributes &NetworkAclId=acl-bp1lhl
 | UpdateEgressAclEntries | Boolean | 否 | false | 是否更新出方向规则，取值： true：更新。 false（默认）：不更新。 |
 | ClientToken | String | 否 | 0c593ea1-3bea-11e9-b96b- 88e9fe637760 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken 只支持ASCII字符，且不能超过64个字符。 |
 
-**返回数据**
-
-专有网络VPC
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 1170A5A0-E760-4331-9133- A7D38D973215 | 请求ID。 |
@@ -5086,17 +5196,17 @@ http(s)://[Endpoint]/?Action=ModifyNetworkAclAttributes &NetworkAclId=acl-bp1lhl
 http(s)://[Endpoint]/?Action=UpdateNetworkAclEntries &NetworkAclId=nacl-bp1lhl0taikrzxsc**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UpdateNetworkAclEntriesResponse> <RequestId>1170A5A0-E760-4331-9133-A7D38D973215</RequestId> </UpdateNetworkAclEntriesResponse> |  |
+| <UpdateNetworkAclEntriesResponse> <RequestId>1170A5A0-E760-4331-9133-A7D38D973215</RequestId> </UpdateNetworkAclEntriesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "1170A5A0-E760-4331-9133-A7D38D973215" } |  |
+| { "RequestId": "1170A5A0-E760-4331-9133-A7D38D973215" } |   |
 
-#### 6.8.5. UnassociateNetworkAcl
+#### 6.8.5 UnassociateNetworkAcl
 
 调用UnassociateNetworkAcl接口，解除网络ACL与交换机的绑定。
 
@@ -5125,21 +5235,19 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntries &NetworkAclId=nacl-bp1lhl0t
 http(s)://[Endpoint]/?Action=UnassociateNetworkAcl &NetworkAclId=nacl-a2do9e413e0sp**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UnassociateNetworkAclResponse> <RequestId>AD024BAA-2D91-48FD-810B-8FB7489B6EE6</RequestId> </UnassociateNetworkAclResponse> |  |
+| <UnassociateNetworkAclResponse> <RequestId>AD024BAA-2D91-48FD-810B-8FB7489B6EE6</RequestId> </UnassociateNetworkAclResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "AD024BAA-2D91-48FD-810B-8FB7489B6EE6" } |  |
+| { "RequestId": "AD024BAA-2D91-48FD-810B-8FB7489B6EE6" } |   |
 
-专有网络VPC
+#### 6.8.6 CopyNetworkAclEntries
 
-#### 6.8.6. CopyNetworkAclEntries
-
-**请求参数**
+调用CopyNetworkAclEntries接口复制网络ACL规则。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -5162,17 +5270,19 @@ http(s)://[Endpoint]/?Action=UnassociateNetworkAcl &NetworkAclId=nacl-a2do9e413e
 http(s)://[Endpoint]/?Action=CopyNetworkAclEntries &NetworkAclId=nacl-a2do9e413e0sp**** &RegionId=cn-qingdao-env17-d01 &SourceNetworkAclId=nacl-ghuo9ehg3e0sp****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CopyNetworkAclEntriesResponse> <RequestId>6608E72F-F276-440F-ABEF-419971CEC4D1</RequestId> </CopyNetworkAclEntriesResponse> |  |
+| <CopyNetworkAclEntriesResponse> <RequestId>6608E72F-F276-440F-ABEF-419971CEC4D1</RequestId> </CopyNetworkAclEntriesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "6608E72F-F276-440F-ABEF-419971CEC4D1" } |  |
+| { "RequestId": "6608E72F-F276-440F-ABEF-419971CEC4D1" } |   |
 
-#### 6.8.7. DeleteNetworkAcl
+#### 6.8.7 DeleteNetworkAcl
+
+调用DeleteNetworkAcl接口删除网络ACL。
 
 **请求参数**
 
@@ -5189,25 +5299,23 @@ http(s)://[Endpoint]/?Action=CopyNetworkAclEntries &NetworkAclId=nacl-a2do9e413e
 |---|---|---|---|
 | RequestId | String | 34F1206D-04B0-4A05-9D8A- 80521E288BD1 | 请求ID。 |
 
-**示例**
-
-请求示例专有网络VPC
-
 ```
-&NetworkAclId=nacl-bp1q8bgx4xnkm**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DeleteNetworkAcl &NetworkAclId=nacl-bp1q8bgx4xnkm**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteNetworkAclResponse> <RequestId>34F1206D-04B0-4A05-9D8A-80521E288BD1</RequestId> </DeleteNetworkAclResponse> |  |
+| <DeleteNetworkAclResponse> <RequestId>34F1206D-04B0-4A05-9D8A-80521E288BD1</RequestId> </DeleteNetworkAclResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "34F1206D-04B0-4A05-9D8A-80521E288BD1" } |  |
+| { "RequestId": "34F1206D-04B0-4A05-9D8A-80521E288BD1" } |   |
 
-#### 6.8.8. DescribeNetworkAcls
+#### 6.8.8 DescribeNetworkAcls
+
+调用DescribeNetworkAcls接口查看网络ACL列表。
 
 **请求参数**
 
@@ -5228,15 +5336,13 @@ http(s)://[Endpoint]/?Action=CopyNetworkAclEntries &NetworkAclId=nacl-a2do9e413e
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| NetworkAcls | Array of NetworkAcl |  | 网络ACL的详细信息。 |
-| NetworkAcl |  |  |  |
+| NetworkAcls | Array of NetworkAcl |   | 网络ACL的详细信息。 |
+| NetworkAcl |   |   |   |
 | CreationTime | String | 2019-04-25 11:44:17 | 网络ACL的创建时间。 |
 | Description | String | This is my NetworkAcl. | 网络ACL的描述信息。 |
-| EgressAclEntries | Array of EgressAclEntry |  | 出方向规则信息。 |
-| EgressAclEntry |  |  |  |
+| EgressAclEntries | Array of EgressAclEntry |   | 出方向规则信息。 |
+| EgressAclEntry |   |   |   |
 | Description | String | This is EgressAclEntries. | 出方向规则的描述信息。 |
-
-专有网络VPC
 
 | DestinationCidrIp | String | 10.0.0.0/24 | 目的地址段。 |
 |---|---|---|---|
@@ -5246,8 +5352,8 @@ http(s)://[Endpoint]/?Action=CopyNetworkAclEntries &NetworkAclId=nacl-a2do9e413e
 | Policy | String | accept | 授权策略，取值： accept：允许。 drop：拒绝。 |
 | Port | String | -1/-1 | 目的端口范围。 |
 | Protocol | String | all | 传输层协议，取值： icmp：网络控制报文协议。 gre：通用路由封装协议。 tcp：传输控制协议。 udp：用户数据报协议。 all：支持所有协议。 |
-| IngressAclEntries | Array of IngressAclEntry |  | 入方向规则信息。 |
-| IngressAclEntry |  |  |  |
+| IngressAclEntries | Array of IngressAclEntry |   | 入方向规则信息。 |
+| IngressAclEntry |   |   |   |
 | Description | String | This is IngressAclEntries. | 入方向规则的描述信息。 |
 | EntryType | String | custom | 规则类型，取值： custom：自定义。 system：系统。 |
 | NetworkAclEntryId | String | nae-a2dk86arlydmezasw**** | 入方向规则条目的ID。 |
@@ -5260,11 +5366,9 @@ http(s)://[Endpoint]/?Action=CopyNetworkAclEntries &NetworkAclId=nacl-a2do9e413e
 | NetworkAclName | String | acl-8 | 网络ACL的名称。 |
 | OwnerId | Long | 12345678 | 网络ACL所属账号ID。 |
 | RegionId | String | cn-qingdao-env17-d01 | 网络ACL所属的地域ID。 |
-| Resources | Array of Resource |  | 关联的资源。 |
-| Resource |  |  |  |
+| Resources | Array of Resource |   | 关联的资源。 |
+| Resource |   |   |   |
 | ResourceId | String | vsw-bp1de348lntdwcdf**** | 关联资源的ID。 |
-
-专有网络VPC
 
 | ResourceType | String | VSwitch | 关联资源的类型。 |
 |---|---|---|---|
@@ -5284,16 +5388,13 @@ http(s)://[Endpoint]/?Action=CopyNetworkAclEntries &NetworkAclId=nacl-a2do9e413e
 http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeNetworkAclsResponse> <TotalCount>2</TotalCount> <NetworkAcls> <Status>Available</Status> <Description>This is my NetworkAcl.</Description> <OwnerId>12345678</OwnerId> <VpcId>vpc-a2d33rfpl72k5defr****</VpcId> <NetworkAclId>nacl-a2do9e413e0spxscd****</NetworkAclId> <CreationTime>2019-04-25 11:44:17</CreationTime> <NetworkAclName>acl-8</NetworkAclName> <RegionId>cn-qingdao-env17-d01</RegionId> <IngressAclEntries> <Policy>accept</Policy> <Description>This is IngressAclEntries. </Description> <EntryType>custom</EntryType> <Port>-1/-1 </Port> <SourceCidrIp>10.0.0.0/24 </SourceCidrIp> <NetworkAclEntryName>acl-3 </NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2dk86arlydmezasw****</NetworkAclEntryId> </IngressAclEntries> <EgressAclEntries> <Policy>accept</Policy> <Description>This is EgressAclEntries. </Description> <EntryType>custom</EntryType> <DestinationCidrIp>10.0.0.0/24 </DestinationCidrIp> <Port>-1/-1 </Port> <NetworkAclEntryName>acl-2 </NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2d447uw4tillfvgb****</NetworkAclEntryId> </EgressAclEntries> <Resources> <Status>BINDED</Status> <ResourceId>vsw-bp1de348lntdwcdf****</ResourceId> <ResourceType>VSwitch</ResourceType> </Resources> </NetworkAcls> <PageSize>10</PageSize> <RequestId>F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1</RequestId> <PageNumber>1</PageNumber> </DescribeNetworkAclsResponse> |  |
-
-`JSON` 格式专有网络VPC
+| <DescribeNetworkAclsResponse> <TotalCount>2</TotalCount> <NetworkAcls> <Status>Available</Status> <Description>This is my NetworkAcl.</Description> <OwnerId>12345678</OwnerId> <VpcId>vpc-a2d33rfpl72k5defr****</VpcId> <NetworkAclId>nacl-a2do9e413e0spxscd****</NetworkAclId> <CreationTime>2019-04-25 11:44:17</CreationTime> <NetworkAclName>acl-8</NetworkAclName> <RegionId>cn-qingdao-env17-d01</RegionId> <IngressAclEntries> <Policy>accept</Policy> <Description>This is IngressAclEntries. </Description> <EntryType>custom</EntryType> <Port>-1/-1 </Port> <SourceCidrIp>10.0.0.0/24 </SourceCidrIp> <NetworkAclEntryName>acl-3 </NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2dk86arlydmezasw****</NetworkAclEntryId> </IngressAclEntries> <EgressAclEntries> <Policy>accept</Policy> <Description>This is EgressAclEntries. </Description> <EntryType>custom</EntryType> <DestinationCidrIp>10.0.0.0/24 </DestinationCidrIp> <Port>-1/-1 </Port> <NetworkAclEntryName>acl-2 </NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2d447uw4tillfvgb****</NetworkAclEntryId> </EgressAclEntries> <Resources> <Status>BINDED</Status> <ResourceId>vsw-bp1de348lntdwcdf****</ResourceId> <ResourceType>VSwitch</ResourceType> </Resources> </NetworkAcls> <PageSize>10</PageSize> <RequestId>F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1</RequestId> <PageNumber>1</PageNumber> </DescribeNetworkAclsResponse> |   |
 
 ```json
-{
     "TotalCount": 2,
     "NetworkAcls": {
         "Status": "Available",
@@ -5313,7 +5414,11 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
             "NetworkAclEntryName": "acl-3",
             "Protocol": "all",
             "NetworkAclEntryId": "nae-a2dk86arlydmezasw****"
-        },
+```
+
+`},`
+
+```json
         "EgressAclEntries": {
             "Policy": "accept",
             "Description": "This is EgressAclEntries.",
@@ -5323,20 +5428,28 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
             "NetworkAclEntryName": "acl-2",
             "Protocol": "all",
             "NetworkAclEntryId": "nae-a2d447uw4tillfvgb****"
-        },
+```
+
+`},`
+
+```json
         "Resources": {
             "Status": "BINDED",
             "ResourceId": "vsw-bp1de348lntdwcdf****",
             "ResourceType": "VSwitch"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "PageSize": 10,
     "RequestId": "F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1",
     "PageNumber": 1
-}
 ```
 
-#### 6.8.9. DescribeNetworkAclAttributes
+`}`
+
+#### 6.8.9 DescribeNetworkAclAttributes
 
 调用DescribeNetworkAclAttributes接口查询网络ACL的详细信息。
 
@@ -5353,15 +5466,13 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| NetworkAclAttribute | Struct |  | 网络ACL的详细信息。 |
+| NetworkAclAttribute | Struct |   | 网络ACL的详细信息。 |
 | CreationTime | String | 2019-04-25 11:33:27 | 网络ACL创建的时间。 |
 | Description | String | This is my NetworkAcl. | 网络ACL的描述信息。 |
-| EgressAclEntries | Array of EgressAclEntry |  | 网络ACL出方向规则信息。 |
-| EgressAclEntry |  |  |  |
+| EgressAclEntries | Array of EgressAclEntry |   | 网络ACL出方向规则信息。 |
+| EgressAclEntry |   |   |   |
 | Description | String | This is EgressAclEntries. | 出方向规则的描述信息。 |
 | DestinationCidrIp | String | 10.0.0.0/24 | 目的地址段。 |
-
-专有网络VPC
 
 | EntryType | String | custom | 规则类型，取值： custom：自定义。 system：系统。 |
 |---|---|---|---|
@@ -5370,8 +5481,8 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
 | Policy | String | accept | 授权策略，取值： accept：允许。 drop：拒绝。 |
 | Port | String | -1/-1 | 目的端口范围。 |
 | Protocol | String | all | 传输层协议，取值： icmp：网络控制报文协议。 gre：通用路由封装协议。 tcp：传输控制协议。 udp：用户数据报协议。 all：支持所有协议。 |
-| IngressAclEntries | Array of IngressAclEntry |  | 网络ACL入方向规则信息。 |
-| IngressAclEntry |  |  |  |
+| IngressAclEntries | Array of IngressAclEntry |   | 网络ACL入方向规则信息。 |
+| IngressAclEntry |   |   |   |
 | Description | String | This is IngressAclEntries. | 入方向规则的描述信息。 |
 | EntryType | String | custom | 规则类型，取值： custom：自定义。 system：系统。 |
 | NetworkAclEntryId | String | nae-a2dk86arlydmevfbg**** | 入方向规则条目的ID。 |
@@ -5384,12 +5495,10 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
 | NetworkAclName | String | acl-1 | 网络ACL的名称。 |
 | OwnerId | Long | 12345678 | 网络ACL所属的用户账号ID。 |
 | RegionId | String | cn-qingdao-env17-d01 | 网络ACL所属的地域ID。 |
-| Resources | Array of Resource |  | 关联的资源。 |
-| Resource |  |  |  |
+| Resources | Array of Resource |   | 关联的资源。 |
+| Resource |   |   |   |
 | ResourceId | String | vsw-bp1de348lntdwxscd**** | 关联资源的实例ID。 |
 | ResourceType | String | VSwitch | 关联资源的类型。 |
-
-专有网络VPC
 
 | Status | String | BINDED | 关联资源的状态。 BINDED：已绑定。 BINDING：绑定中。 UNBINDING：已解绑。 |
 |---|---|---|---|
@@ -5405,16 +5514,15 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAcls &RegionId=cn-qingdao-env17-d01
 http(s)://[Endpoint]/?Action=DescribeNetworkAclAttributes &NetworkAclId=nacl-a2do9e413e0spzasx**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeNetworkAclAttributesResponse> <RequestId>F5905F9C-0161-4E72-9CB1-1F3F3CF6268A</RequestId> <NetworkAclAttribute> <Status>Available</Status> <Description>This is my NetworkAcl.</Description> <OwnerId>12345678</OwnerId> <VpcId>vpc-a2d33rfpl72k5defr****</VpcId> <NetworkAclId>nacl-a2do9e413e0spnhmj****</NetworkAclId> <CreationTime>2019-04-25 11:33:27</CreationTime> <NetworkAclName>acl-1</NetworkAclName> <RegionId>cn-qingdao-env17-d01</RegionId> <IngressAclEntries> <Policy>accept</Policy> <Description>This is IngressAclEntries.</Description> <EntryType>custom</EntryType> <Port>-1/-1</Port> <SourceCidrIp>10.0.0.0/24</SourceCidrIp> <NetworkAclEntryName>acl-3</NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2dk86arlydmevfbg****</NetworkAclEntryId> </IngressAclEntries> <EgressAclEntries> <Policy>accept</Policy> <Description>This is EgressAclEntries.</Description> <EntryType>custom</EntryType> <DestinationCidrIp>10.0.0.0/24</DestinationCidrIp> <Port>-1/-1</Port> <NetworkAclEntryName>acl-2</NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2d447uw4tillxdcv****</NetworkAclEntryId> </EgressAclEntries> <Resources> <Status>BINDED</Status> <ResourceId>vsw-bp1de348lntdwxscd****</ResourceId> <ResourceType>VSwitch</ResourceType> </Resources> </NetworkAclAttribute> </DescribeNetworkAclAttributesResponse> |  |
+| <DescribeNetworkAclAttributesResponse> <RequestId>F5905F9C-0161-4E72-9CB1-1F3F3CF6268A</RequestId> <NetworkAclAttribute> <Status>Available</Status> <Description>This is my NetworkAcl.</Description> <OwnerId>12345678</OwnerId> <VpcId>vpc-a2d33rfpl72k5defr****</VpcId> <NetworkAclId>nacl-a2do9e413e0spnhmj****</NetworkAclId> <CreationTime>2019-04-25 11:33:27</CreationTime> <NetworkAclName>acl-1</NetworkAclName> <RegionId>cn-qingdao-env17-d01</RegionId> <IngressAclEntries> <Policy>accept</Policy> <Description>This is IngressAclEntries.</Description> <EntryType>custom</EntryType> <Port>-1/-1</Port> <SourceCidrIp>10.0.0.0/24</SourceCidrIp> <NetworkAclEntryName>acl-3</NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2dk86arlydmevfbg****</NetworkAclEntryId> </IngressAclEntries> <EgressAclEntries> <Policy>accept</Policy> <Description>This is EgressAclEntries.</Description> <EntryType>custom</EntryType> <DestinationCidrIp>10.0.0.0/24</DestinationCidrIp> <Port>-1/-1</Port> <NetworkAclEntryName>acl-2</NetworkAclEntryName> <Protocol>all</Protocol> <NetworkAclEntryId>nae-a2d447uw4tillxdcv****</NetworkAclEntryId> </EgressAclEntries> <Resources> <Status>BINDED</Status> <ResourceId>vsw-bp1de348lntdwxscd****</ResourceId> <ResourceType>VSwitch</ResourceType> </Resources> </NetworkAclAttribute> </DescribeNetworkAclAttributesResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "RequestId": "F5905F9C-0161-4E72-9CB1-1F3F3CF6268A",
     "NetworkAclAttribute": {
         "Status": "Available",
@@ -5434,7 +5542,11 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAclAttributes &NetworkAclId=nacl-a2d
             "NetworkAclEntryName": "acl-3",
             "Protocol": "all",
             "NetworkAclEntryId": "nae-a2dk86arlydmevfbg****"
-        },
+```
+
+`},`
+
+```json
         "EgressAclEntries": {
             "Policy": "accept",
             "Description": "This is EgressAclEntries.",
@@ -5444,15 +5556,18 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAclAttributes &NetworkAclId=nacl-a2d
             "NetworkAclEntryName": "acl-2",
             "Protocol": "all",
             "NetworkAclEntryId": "nae-a2d447uw4tillxdcv****"
-        },
+```
+
+`},`
+
+```json
         "Resources": {
             "Status": "BINDED",
             "ResourceId": "vsw-bp1de348lntdwxscd****",
             "ResourceType": "VSwitch"
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -5460,7 +5575,7 @@ http(s)://[Endpoint]/?Action=DescribeNetworkAclAttributes &NetworkAclId=nacl-a2d
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | 请求处理由于某些未知错误失败。 |
 
-#### 6.8.10. UpdateNetworkAclEntriesEnable
+#### 6.8.10 UpdateNetworkAclEntriesEnable
 
 ACL规则支持禁用、启用操作
 
@@ -5481,10 +5596,6 @@ ACL规则支持禁用、启用操作
 | ResourceOwnerId | Long | Query | 否 | 123456**** | 鉴权相关的系统参数，不填。 |
 | OwnerAccount | String | Query | 否 | test | 鉴权相关的系统参数，不填。 |
 
-**返回数据**
-
-专有网络VPC
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23-88ED- E11ED28DCAC0 | 返回的请求id。 |
@@ -5501,7 +5612,7 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntriesEnable
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json {} |  |
+| HTTP/1.1 200 OK Content-Type:application/json {} |   |
 
 **错误码**
 
@@ -5515,11 +5626,13 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntriesEnable
 | 400 | NACLINMODIFYING _ _ | NetworkStatus.Modifying | The special Network Acl is in modifying. |
 | 400 | BINDINGSTATUSERROR _ _ | ResourceStatus.Error | The binding instance is in middle status. |
 | 400 | NETWORKACLUNDERTEST _ _ _ | NotSupport.NetworkAcl | Network acl is not support now. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-### 弹性公网IP
+### 6.9 弹性公网IP
 
-#### 6.9.1. ListEipIsps
+#### 6.9.1 ListEipIsps
+
+调用ListEipIsps接口查询eip地址池
 
 **请求头**
 
@@ -5532,20 +5645,16 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntriesEnable
 | RegionId | String | Query | 是 | cn-hangzhou | VPC所在的地域ID。 您可以通过调用DescribeRegions接口获取地域ID。 |
 | AvailableZoneId | String | Query | 否 | cn-wulan-envxx-amtestxxxxxx-a | 可用区。 |
 | IpType | String | Query | 否 | publicIp | ip类型。 |
-| Action | String | Query | 否 |  | 要执行的操作。取值：ListEipIsps。 |
-| OwnerId | Long | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| ResourceOwnerAcc ount | String | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| ResourceOwnerId | Long | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| OwnerAccount | String | Query | 否 |  | 鉴权相关的系统参数，不填。 |
+| Action | String | Query | 否 |   | 要执行的操作。取值：ListEipIsps。 |
+| OwnerId | Long | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| ResourceOwnerAcc ount | String | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| ResourceOwnerId | Long | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| OwnerAccount | String | Query | 否 |   | 鉴权相关的系统参数，不填。 |
 | ClientToken | String | Query | 否 | 123e4567-e89b-12d3-a456- 426655440000 | 客户端 Token，用于保证请求的幂等性。 |
-
-**返回数据**
-
-专有网络VPC
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| EipIsps | Array |  |  |
+| EipIsps | Array |   |   |
 | -ServiceProvider | String | BGP | 地址池类型。 |
 | -AvailableZoneId | String | cn-wulan-envxx-amtestxxxxxx-a | 可用区。 |
 | -IpType | String | publicIp | ip类型。 |
@@ -5562,7 +5671,7 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntriesEnable
 | 404 | -1000003 | InvalidIpType.NotCorrect | Specified value of IpType is not correct. |
 | 404 | RAMFORBIDDEN _ | RAMFORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### 6.9.2. AllocateEipAddress
+#### 6.9.2 AllocateEipAddress
 
 调用AllocateEipAddress接口申请弹性公网IP EIP（Elastic IP Address）。
 
@@ -5581,8 +5690,6 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntriesEnable
 | ISP | String | 否 | BGP | 线路类型，默认值为BGP。 如果是开通了单线带宽白名单的用户，ISP字段可以设置为ChinaTelecom（中国电信）、ChinaUnicom（中国联通） 和ChinaMobile（中国移动）。 如果是杭州金融云用户，该字段必填，取值：BGP _FinanceCloud。 |
 | ActivityId | Long | 否 | 111111 | 特殊活动ID，无需配置此参数。 |
 | Netmode | String | 否 | public | 网络类型，取值为public（公网）。 |
-
-专有网络VPC
 
 | AutoPay | Boolean | 否 | false | 是否自动付费，取值： false：不开启自动付费，生成订单后需要到订单中心完成支付。 true：开启自动付费，自动支付订单。 当InstanceChargeType参数的值为PrePaid时，该参数必选； 当InstanceChargeType参数的值为PostPaid时，该参数可不填。 说明国际站不支持配置该参数。 |
 |---|---|---|---|---|
@@ -5610,17 +5717,15 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAclEntriesEnable
 http(s)://[Endpoint]/?Action=AllocateEipAddress &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <AllocateEipAddressrResponse> <ResourceGroupId>rg-acfmxazfdgdg****</ResourceGroupId> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> <AllocationId>eip-25877c70gddh****</AllocationId> <EipAddress>10.XX.XX.78</EipAddress> <OrderId>10</OrderId> </AllocateEipAddressrResponse> |  |
-
-专有网络VPC
+| <AllocateEipAddressrResponse> <ResourceGroupId>rg-acfmxazfdgdg****</ResourceGroupId> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> <AllocationId>eip-25877c70gddh****</AllocationId> <EipAddress>10.XX.XX.78</EipAddress> <OrderId>10</OrderId> </AllocateEipAddressrResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "AllocateEipAddressrResponse": { "ResourceGroupId": "rg-acfmxazfdgdg****", "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "AllocationId": "eip-25877c70gddh****", "EipAddress": "10.XX.XX.78", "OrderId": 10 } } |  |
+| { "AllocateEipAddressrResponse": { "ResourceGroupId": "rg-acfmxazfdgdg****", "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "AllocationId": "eip-25877c70gddh****", "EipAddress": "10.XX.XX.78", "OrderId": 10 } } |   |
 
 **错误码**
 
@@ -5637,7 +5742,9 @@ http(s)://[Endpoint]/?Action=AllocateEipAddress &RegionId=cn-qingdao-env17-d01
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | 资源组ID不存在。 |
 | 409 | OperationConflict | Request was denied due to conflict with a previos request. | 请求冲突，稍等一段时间重试，或者提交工单反馈。 |
 
-#### 6.9.3. AllocateEipAddressPro
+#### 6.9.3 AllocateEipAddressPro
+
+调用AllocateEipAddressPro申请指定的EIP。
 
 **请求参数**
 
@@ -5650,8 +5757,6 @@ http(s)://[Endpoint]/?Action=AllocateEipAddress &RegionId=cn-qingdao-env17-d01
 | Bandwidth | String | 否 | 5 | 要指定申请的EIP的带宽峰值，单位为Mbps。 默认为1Mbps。 |
 | Period | Integer | 否 | 1 | 购买时长。 当PricingCycle取值Month时，Period取值范围为1~9。 当PricingCycle取值Year时，Period取值范围为1~3。 如果InstanceChargeType参数的值为PrePaid时，该参数必选。 如果InstanceChargeType参数的值为PostPaid时，该参数不填。 |
 | ISP | String | 否 | BGP | 线路类型，默认值为BGP。 如果是开通了单线带宽白名单的用户，ISP字段可以设置为ChinaTelecom（中国电信）、ChinaUnicom（中国联通） 和ChinaMobile（中国移动）。 如果是杭州金融云用户，该字段必填，取值：BGP _FinanceCloud。 |
-
-专有网络VPC
 
 | Netmode | String | 否 | public | 网络类型，仅取值为public（公网）。 默认值为public（公网）。 |
 |---|---|---|---|---|
@@ -5682,15 +5787,13 @@ http(s)://[Endpoint]/?Action=AllocateEipAddress &RegionId=cn-qingdao-env17-d01
 http(s)://[Endpoint]/?Action=AllocateEipAddressPro &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例专有网络VPC
-
 | XML | 格式 |
 |---|---|
-| <AllocateEipAddressProResponse> <ResourceGroupId>rg-resourcegroup****</ResourceGroupId> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> <AllocationId>eip-25877c70gddh****</AllocationId> <EipAddress>12.XX.XX.23</EipAddress> <OrderId>20190000</OrderId> </AllocateEipAddressProResponse> |  |
+| <AllocateEipAddressProResponse> <ResourceGroupId>rg-resourcegroup****</ResourceGroupId> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> <AllocationId>eip-25877c70gddh****</AllocationId> <EipAddress>12.XX.XX.23</EipAddress> <OrderId>20190000</OrderId> </AllocateEipAddressProResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "ResourceGroupId": "rg-resourcegroup****", "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "AllocationId": "eip-25877c70gddh****", "EipAddress": "12.XX.XX.23", "OrderId": 20190000 } |  |
+| { "ResourceGroupId": "rg-resourcegroup****", "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "AllocationId": "eip-25877c70gddh****", "EipAddress": "12.XX.XX.23", "OrderId": 20190000 } |   |
 
 **错误码**
 
@@ -5706,7 +5809,7 @@ http(s)://[Endpoint]/?Action=AllocateEipAddressPro &RegionId=cn-qingdao-env17-d0
 | 400 | InvalidRegion.NotSupport | The specified region does not support. | 该 RegionId 不支持此操作。 |
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | 资源组ID不存在。 |
 
-#### 6.9.4. AssociateEipAddress
+#### 6.9.4 AssociateEipAddress
 
 调用AssociateEipAddress接口将弹性公网IP（Elastic IP Address，简称EIP）绑定到同地域的云产品实例上。
 
@@ -5724,8 +5827,6 @@ http(s)://[Endpoint]/?Action=AllocateEipAddressPro &RegionId=cn-qingdao-env17-d0
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 要绑定云产品实例的EIP所属的地域ID。 |
 | InstanceType | String | 否 | EcsInstance | 要绑定EIP的实例的类型，取值： Nat：NAT网关。 SlbInstance：负载均衡SLB。 EcsInstance：云服务器ECS。 NetworkInterface：辅助弹性网卡。 HaVip：高可用虚拟IP。 |
 | InstanceRegionId | String | 否 | cn-hangzhou | 要绑定EIP的实例所属地域的ID。 说明仅在EIP加入到带宽共享性全球加速实例后，才需要填写该参数。 |
-
-专有网络VPC
 
 | PrivateIpAddress | String | 否 | 192.1.XX.XX | 交换机网段内的一个IP地址。 如果不输入该参数，系统根据VPC ID和交换机ID自动分配一个私网IP地址。 |
 |---|---|---|---|---|
@@ -5746,15 +5847,15 @@ http(s)://[Endpoint]/?Action=AllocateEipAddressPro &RegionId=cn-qingdao-env17-d0
 http(s)://[Endpoint]/?Action=AssociateEipAddress &AllocationId=eip-2zeerraiwb7ujsxdc**** &InstanceId=i-2zebb08phyczzawe****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <AssociateEipAddressResponse> <RequestId>C0FD0EED-F90D-4479-803D-DD62335357E5</RequestId> </AssociateEipAddressResponse> |  |
+| <AssociateEipAddressResponse> <RequestId>C0FD0EED-F90D-4479-803D-DD62335357E5</RequestId> </AssociateEipAddressResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "C0FD0EED-F90D-4479-803D-DD62335357E5" } |  |
+| { "RequestId": "C0FD0EED-F90D-4479-803D-DD62335357E5" } |   |
 
 **错误码**
 
@@ -5776,13 +5877,11 @@ http(s)://[Endpoint]/?Action=AssociateEipAddress &AllocationId=eip-2zeerraiwb7uj
 | 400 | BINDINSTANCEOWENERERROR _ _ _ | Cannot operate the eip. | 不能操作这个EIP。 |
 | 404 | InvalidAllocationId.NotFound | Specified allocation ID is not found | 指定的公网 IP 不存在，请您检查您填写的参数是否正确。 |
 
-专有网络VPC
-
 | 400 | InvalidParams.NotFound | instance not found | 实例不存在。 |
 |---|---|---|---|
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | 请求失败，因为临时服务器故障。 |
 
-#### 6.9.5. ModifyEipAddressAttribute
+#### 6.9.5 ModifyEipAddressAttribute
 
 调用ModifyEipAddressAttribute接口修改指定EIP的名称、描述信息和带宽峰值。
 
@@ -5811,15 +5910,15 @@ http(s)://[Endpoint]/?Action=AssociateEipAddress &AllocationId=eip-2zeerraiwb7uj
 http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerraiwb7uj6i0d****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyEipAddressAttributeResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </ModifyEipAddressAttributeResponse> |  |
+| <ModifyEipAddressAttributeResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </ModifyEipAddressAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "ModifyEipAddressAttributeResponse": { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } } |  |
+| { "ModifyEipAddressAttributeResponse": { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } } |   |
 
 **错误码**
 
@@ -5833,12 +5932,12 @@ http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerra
 | 404 | InvalidAllocationId.NotFound | Specified allocation ID is not found.. | 指定的公网 IP 不存在，请您检查填写的公网 IP 是否正确。 |
 | 400 | InvalidParameter | The parameter is invalid. | 该参数值不合法。 |
 
-专有网络VPC
-
 | 404 | Forbidden.RegionNotFound | Specified region is not found during access authentication. | 指定 Region 不存在，请您检查该 Region 是否正确。 |
 |---|---|---|---|
 
-#### 6.9.6. DescribeEipAddresses
+#### 6.9.6 DescribeEipAddresses
+
+调用DescribeEipAddresses接口查询指定地域已创建的EIP。
 
 **请求参数**
 
@@ -5863,13 +5962,13 @@ http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerra
 | Filter.2.Value | String | 否 | 2018-01-22T09:15Z | 查询资源时的筛选值。使用UTC时间，格式为： YYYY-MM- DDThh:mmZ 。 |
 | LockReason | String | 否 | financial | 锁定类型，取值： financial：因欠费被锁定。 security：因安全原因被锁定。 |
 
-|  | DDThh:mmZ |
+|   | DDThh:mmZ |
 |---|---|
 
-|  | DDThh:mmZ |
+|   | DDThh:mmZ |
 |---|---|
 
-| 开发指南·API参考 |  |  |  | 专有网络VPC |
+| 开发指南·API参考 |   |   |   | 专有网络VPC |
 |---|---|---|---|---|
 
 | AssociatedInstanceType | String | 否 | EcsInstance | 要绑定的云产品实例的类型，取值： EcsInstance（默认值）：VPC类型的ECS实例。 SlbInstance：VPC类型的SLB实例。 Nat：NAT网关。 HaVip：高可用虚拟IP。 NetworkInterface：辅助弹性网卡。 每个ECS实例、负载均衡实例和HAVIP同时只能绑定一个EIP，NAT网关可以绑定多个EIP。辅助弹性网卡可以绑定EIP的个数受EIP绑定模式影响。 |
@@ -5880,29 +5979,27 @@ http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerra
 
 **返回数据**
 
-| 名称 | 类型 | 示例值 | 描述 |  |  |
+| 名称 | 类型 | 示例值 | 描述 |   |   |
 |---|---|---|---|---|---|
-| EipAddresses | Array of EipAddress |  | EIP的详细信息。 |  |  |
-| EipAddress |  |  |  |  |  |
-| AllocationId | String | eip-2zeerraiwb7ujcdvf**** | EIP实例的ID。 |  |  |
-| AllocationTime | String | 2019-04-23T01:37:38Z | EIP的创建时间。 |  |  |
-| AvailableRegions | List | cn-east-hangzhou-01 | EIP的地域ID。 |  |  |
-| Bandwidth | String | 5 | EIP的带宽峰值，单位为Mbps。 |  |  |
-| BandwidthPackageBandwi dth | String | 50 | EIP加入的共享带宽的带宽值，单位为Mbps。 |  |  |
-| BandwidthPackageId | String | cbwp-bp1ego3i4j07ccdvf**** | 加入的共享带宽ID。 |  |  |
-| BandwidthPackageType | String | CommonBandwidthPackage | 带宽的类型，仅支持返回CommonBandwidthPackage（共享带宽）。 |  |  |
-| ChargeType | String | PostPaid | 弹性公网IP的计费模式。 PrePaid：包年包月。 PostPaid：按量计费。 |  |  |
-| DeletionProtection | Boolean | true | 是否开启了删除保护功能。 true：已开启。 false：未开启。 |  |  |
-| Descritpion | String | abc | 弹性公网IP的描述信息。 |  |  |
-| EipBandwidth | String | 101 | EIP加入共享带宽之前或退出共享带宽之后的带宽。 |  |  |
-| ExpiredTime | String | 2019-04-29T02:00Z | 到期时间，按照ISO8601标准表示，并需要使用UTC时间。格式为： YYYY- MM-DDThh:mmZ 。 |  |  |
-|  |  |  |  | YYYY- |  |
-| HDMonitorStatus | String | false | EIP是否开启了秒级监控。 false：未开启。 true：已开启。 |  |  |
+| EipAddresses | Array of EipAddress |   | EIP的详细信息。 |   |   |
+| EipAddress |   |   |   |   |   |
+| AllocationId | String | eip-2zeerraiwb7ujcdvf**** | EIP实例的ID。 |   |   |
+| AllocationTime | String | 2019-04-23T01:37:38Z | EIP的创建时间。 |   |   |
+| AvailableRegions | List | cn-east-hangzhou-01 | EIP的地域ID。 |   |   |
+| Bandwidth | String | 5 | EIP的带宽峰值，单位为Mbps。 |   |   |
+| BandwidthPackageBandwi dth | String | 50 | EIP加入的共享带宽的带宽值，单位为Mbps。 |   |   |
+| BandwidthPackageId | String | cbwp-bp1ego3i4j07ccdvf**** | 加入的共享带宽ID。 |   |   |
+| BandwidthPackageType | String | CommonBandwidthPackage | 带宽的类型，仅支持返回CommonBandwidthPackage（共享带宽）。 |   |   |
+| ChargeType | String | PostPaid | 弹性公网IP的计费模式。 PrePaid：包年包月。 PostPaid：按量计费。 |   |   |
+| DeletionProtection | Boolean | true | 是否开启了删除保护功能。 true：已开启。 false：未开启。 |   |   |
+| Descritpion | String | abc | 弹性公网IP的描述信息。 |   |   |
+| EipBandwidth | String | 101 | EIP加入共享带宽之前或退出共享带宽之后的带宽。 |   |   |
+| ExpiredTime | String | 2019-04-29T02:00Z | 到期时间，按照ISO8601标准表示，并需要使用UTC时间。格式为： YYYY- MM-DDThh:mmZ 。 |   |   |
+|   |   |   |   | YYYY- |   |
+| HDMonitorStatus | String | false | EIP是否开启了秒级监控。 false：未开启。 true：已开启。 |   |   |
 
-|  | MM-DDThh:mmZ |
+|   | MM-DDThh:mmZ |
 |---|---|
-
-专有网络VPC
 
 | HasReservationData | String | false | 是否有续费数据。 只有在入参IncludeReservationData为true，且有未生效订购数据时才会为true。 |
 |---|---|---|---|
@@ -5915,8 +6012,8 @@ http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerra
 | Mode | String | NAT | 绑定模式，取值： NAT（默认值）：NAT模式（普通模式）。 MULTI _BINDED：多EIP网卡可见模式。 BINDED：EIP网卡可见模式。 仅InstanceType配置为NetworkInterface时，才返回该参数。 |
 | Name | String | test | 弹性公网IP的名称。 |
 | Netmode | String | public | 网络类型，取值为public（公网）。 |
-| OperationLocks | Array of LockReason |  | 锁定详情。 |
-| LockReason |  |  |  |
+| OperationLocks | Array of LockReason |   | 锁定详情。 |
+| LockReason |   |   |   |
 | LockReason | String | financial | 锁定类型。 financial：因欠费被锁定。 security：因安全原因被锁定。 |
 | PrivateIpAddress | String | 192.1.XX.XX | 交换机网段内的一个IP地址。 |
 | RegionId | String | cn-east-hangzhou-01 | EIP所在的地域。 |
@@ -5928,12 +6025,10 @@ http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerra
 | SecondLimited | Boolean | false | 是否配置了二级限速。 true：已配置。 false：未配置。 |
 | SegmentInstanceId | String | eipsg-t4nr90yik5oy38xdyjth8 | 连续EIP的实例ID。 仅EIP属于连续EIP时才会返回该参数值。 |
 
-专有网络VPC
-
 | Status | String | Associating | EIP的状态。 Associating：绑定中。 Unassociating：解绑中。 InUse：已分配。 Available：可用。 |
 |---|---|---|---|
-| Tags | Array of Tag |  | 查询资源时的标签。 |
-| Tag |  |  |  |
+| Tags | Array of Tag |   | 查询资源时的标签。 |
+| Tag |   |   |   |
 | Key | String | testX | 查询资源时的筛选键。 |
 | Value | String | testY | 查询资源时的筛选值。 |
 | TotalCount | Integer | 10 | 列表条目数。 |
@@ -5949,9 +6044,10 @@ http(s)://[Endpoint]/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerra
 http(s)://[Endpoint]/?Action=DescribeEipAddresses &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeEipAddressesResponse>
   <TotalCount>10</TotalCount>
   <PageSize>10</PageSize>
   <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId>
@@ -5998,12 +6094,12 @@ http(s)://[Endpoint]/?Action=DescribeEipAddresses &RegionId=cn-qingdao-env17-d01
         <AvailableRegions>cn-east-hangzhou-01</AvailableRegions>
   </EipAddresses>
   <PageNumber>10</PageNumber>
+</DescribeEipAddressesResponse>
 ```
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "TotalCount": 10,
     "PageSize": 10,
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF",
@@ -6042,16 +6138,29 @@ http(s)://[Endpoint]/?Action=DescribeEipAddresses &RegionId=cn-qingdao-env17-d01
         "RegionId": "cn-east-hangzhou-01",
         "OperationLocks": {
             "LockReason": "financial"
-        },
+```
+
+`},`
+
+```json
         "Tags": {
             "Value": "testY",
             "Key": "testX"
-        },
-        "AvailableRegions": "cn-east-hangzhou-01"
-    },
-    "PageNumber": 10
-}
 ```
+
+`},`
+
+```json
+        "AvailableRegions": "cn-east-hangzhou-01"
+```
+
+`},`
+
+```json
+    "PageNumber": 10
+```
+
+`}`
 
 **错误码**
 
@@ -6064,7 +6173,7 @@ http(s)://[Endpoint]/?Action=DescribeEipAddresses &RegionId=cn-qingdao-env17-d01
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | 资源组ID不存在。 |
 | 400 | OperationUnsupported.Resource GroupId | ResourceGroup is not supported in this region. | 资源组功能未打开。 |
 
-#### 6.9.7. UnassociateEipAddress
+#### 6.9.7 UnassociateEipAddress
 
 调用UnassociateEipAddress将弹性公网IP EIP（Elastic IP Address）从绑定的云产品上解绑。
 
@@ -6075,8 +6184,6 @@ http(s)://[Endpoint]/?Action=DescribeEipAddresses &RegionId=cn-qingdao-env17-d01
 | Action | String | 是 | UnassociateEipAddress | 要执行的操作，取值：UnassociateEipAddress。 |
 | AllocationId | String | 是 | eip-2zeerraiwb7uj6i0d**** | 要解绑的EIP的ID。 |
 | InstanceId | String | 是 | i-hp3akk9irtd69jad**** | 要解绑EIP的云产品实例的ID。 |
-
-专有网络VPC
 
 | Force | Boolean | 否 | false | 当EIP绑定了NAT网关，且NAT网关添加了DNAT或SNAT条目时，是否强制解绑EIP，取值： false（默认值）：不强制解绑EIP。 true：强制解绑EIP。 |
 |---|---|---|---|---|
@@ -6099,15 +6206,15 @@ http(s)://[Endpoint]/?Action=DescribeEipAddresses &RegionId=cn-qingdao-env17-d01
 http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7uj6i0d**** &InstanceId=i-hp3akk9irtd69jad****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UnassociateEipAddressResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </UnassociateEipAddressResponse> |  |
+| <UnassociateEipAddressResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </UnassociateEipAddressResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -6125,9 +6232,9 @@ http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7
 | 400 | Forbbiden | The eip instance owener error | EIP 不属于当前调用者，请您检查该 EIP 是否可被您调用。 |
 | 400 | InvalidBindingStatus | The eip binding status invalid. | EIP绑定状态不正确。 |
 
-#### 6.9.8. ReleaseEipAddress
+#### 6.9.8 ReleaseEipAddress
 
-调用ReleaseEipAddress接口释放指定的弹性公网IP EIP（Elastic IP Address）。 专有网络VPC
+调用ReleaseEipAddress接口释放指定的弹性公网IP EIP（Elastic IP Address）。
 
 **API描述**
 
@@ -6152,18 +6259,18 @@ http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7
 请求示例
 
 ```
-&AllocationId=eip-2zeerraiwb7uj6i0d****
+http(s)://[Endpoint]/?Action=ReleaseEipAddress &AllocationId=eip-2zeerraiwb7uj6i0d****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ReleaseEipAddressResponse> <RequestId>748C38F6-9A3D-482E-83FB-DB6C39C68AEA</RequestId> </ReleaseEipAddressResponse> |  |
+| <ReleaseEipAddressResponse> <RequestId>748C38F6-9A3D-482E-83FB-DB6C39C68AEA</RequestId> </ReleaseEipAddressResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "748C38F6-9A3D-482E-83FB-DB6C39C68AEA" } |  |
+| { "RequestId": "748C38F6-9A3D-482E-83FB-DB6C39C68AEA" } |   |
 
 **错误码**
 
@@ -6177,7 +6284,9 @@ http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7
 | 400 | Forbbiden | The eip instance owener error | EIP 不属于当前调用者，请您检查该 EIP 是否可被您调用。 |
 | 400 | TaskConflict.AssociateGlobalAcce lerationInstance | Operate too frequent. | 操作过于频繁。 |
 
-#### 6.9.9. DescribeEipGatewayInfo
+#### 6.9.9 DescribeEipGatewayInfo
+
+调用DescribeEipGatewayInfo接口查询EIP的网关和掩码信息。
 
 **API描述**
 
@@ -6190,18 +6299,14 @@ http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7
 | Action | String | 是 | DescribeEipGatewayInfo | 要执行的操作，取值：DescribeEipGatewayInfo。 |
 | InstanceId | String | 是 | eni-bp1d66qjxb3qoin3**** | 要查询的EIP绑定的辅助弹性网卡的ID。 |
 
-专有网络VPC
-
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 要查询的EIP所属的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 |---|---|---|---|---|
-
-**返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | Code | String | 200 | 操作状态码。 |
-| EipInfos | Array of EipInfo |  | EIP详细信息。 |
-| EipInfo |  |  |  |
+| EipInfos | Array of EipInfo |   | EIP详细信息。 |
+| EipInfo |   |   |   |
 | Ip | String | 47.XX.XX.236 | EIP的IP地址。 |
 | IpGw | String | 47.XX.XX.1 | EIP的网关地址。 |
 | IpMask | String | 255.255.255.0 | EIP的子网掩码。 |
@@ -6216,15 +6321,15 @@ http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7
 http(s)://[Endpoint]/?Action=DescribeEipGatewayInfo &InstanceId=eni-bp1d66qjxb3qoin3**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeEipGatewayInfoResponse> <Message>successful</Message> <RequestId>C0FD0EED-F90D-4479-803D-DD62335357E5 </RequestId> <Code>200</Code> <EipInfos> <IpMask>255.255.255.0</IpMask> <IpGw>47.XX.XX.1</IpGw> <Ip>47.XX.XX.236</Ip> </EipInfos> </DescribeEipGatewayInfoResponse> |  |
+| <DescribeEipGatewayInfoResponse> <Message>successful</Message> <RequestId>C0FD0EED-F90D-4479-803D-DD62335357E5 </RequestId> <Code>200</Code> <EipInfos> <IpMask>255.255.255.0</IpMask> <IpGw>47.XX.XX.1</IpGw> <Ip>47.XX.XX.236</Ip> </EipInfos> </DescribeEipGatewayInfoResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "Message": "successful", "RequestId": "C0FD0EED-F90D-4479-803D-DD62335357E5", "Code": 200, "EipInfos": { "IpMask": "255.255.255.0", "IpGw": "47.XX.XX.1", "Ip": "47.XX.XX.236" } } |  |
+| { "Message": "successful", "RequestId": "C0FD0EED-F90D-4479-803D-DD62335357E5", "Code": 200, "EipInfos": { "IpMask": "255.255.255.0", "IpGw": "47.XX.XX.1", "Ip": "47.XX.XX.236" } } |   |
 
 **错误码**
 
@@ -6232,7 +6337,7 @@ http(s)://[Endpoint]/?Action=DescribeEipGatewayInfo &InstanceId=eni-bp1d66qjxb3q
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 
-#### 6.9.10. DescribeHighDefinitionMonitorLogAttribute
+#### 6.9.10 DescribeHighDefinitionMonitorLogAttribute
 
 调用DescribeHighDefinitionMonitorLogAttribute接口查询EIP高精度秒级监控的配置信息。
 
@@ -6241,8 +6346,6 @@ http(s)://[Endpoint]/?Action=DescribeEipGatewayInfo &InstanceId=eni-bp1d66qjxb3q
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeHighDefinitionMonit orLogAttribute | 要执行的操作，取值：DescribeHighDefinitionMonitorLogAttribute。 |
-
-专有网络VPC
 
 | InstanceId | String | 是 | eip-wz9fi6qboho9fwgx7**** | 查询高精度秒级监控的实例ID。 |
 |---|---|---|---|---|
@@ -6268,27 +6371,25 @@ http(s)://[Endpoint]/?Action=DescribeEipGatewayInfo &InstanceId=eni-bp1d66qjxb3q
 http(s)://[Endpoint]/?Action=DescribeHighDefinitionMonitorLogAttribute &InstanceId=eip-wz9fi6qboho9fwgx7**** &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeHighDefinitionMonitorLogAttribute> <RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457</RequestId> <LogStore>hdmonitor</LogStore> <InstanceId>eip-wz9fi6qboho9fwgx7****</InstanceId> <InstanceType>EIP</InstanceType> <LogProject>hdmonitor-cn-qingdao-165820696****</LogProject> <Success>true</Success> </DescribeHighDefinitionMonitorLogAttribute> |  |
+| <DescribeHighDefinitionMonitorLogAttribute> <RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457</RequestId> <LogStore>hdmonitor</LogStore> <InstanceId>eip-wz9fi6qboho9fwgx7****</InstanceId> <InstanceType>EIP</InstanceType> <LogProject>hdmonitor-cn-qingdao-165820696****</LogProject> <Success>true</Success> </DescribeHighDefinitionMonitorLogAttribute> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "DescribeHighDefinitionMonitorLogAttribute": { "RequestId": "54B48E3D-DF70-471B-AA93-08E683A1B457", "LogStore": "hdmonitor", "InstanceId": "eip-wz9fi6qboho9fwgx7****", "InstanceType": "EIP", "LogProject": "hdmonitor-cn-qingdao-165820696****", "Success": true } } |  |
+| { "DescribeHighDefinitionMonitorLogAttribute": { "RequestId": "54B48E3D-DF70-471B-AA93-08E683A1B457", "LogStore": "hdmonitor", "InstanceId": "eip-wz9fi6qboho9fwgx7****", "InstanceType": "EIP", "LogProject": "hdmonitor-cn-qingdao-165820696****", "Success": true } } |   |
 
-### NAT网关
+### 6.10 NAT网关
 
-#### 6.10.1. CreateNatGateway
+#### 6.10.1 CreateNatGateway
+
+调用CreateNatGateway接口创建一个NAT网关。
 
 **API描述**
 
-目前不支持NAT网关与自建SNAT网关（使用一台ECS作为SNAT网关）在VPC中并存。 NAT网关创建后，系统会在VPC的路由表中自动添加一条目标网段为0.0.0.0/0，下一跳为NAT网关的路由条目，用于将流量路由到NAT网关。 如果在创建NAT网关前，VPC的路由表中已经存在一条目标网段为0.0.0.0/0的路由条目，请先删除该路由条目。否则，无法创建NAT网关。
-
-**请求参数**
-
-专有网络VPC
+在调用本接口创建NAT网关时，请注意： 目前不支持NAT网关与自建SNAT网关（使用一台ECS作为SNAT网关）在VPC中并存。 NAT网关创建后，系统会在VPC的路由表中自动添加一条目标网段为0.0.0.0/0，下一跳为NAT网关的路由条目，用于将流量路由到NAT网关。 如果在创建NAT网关前，VPC的路由表中已经存在一条目标网段为0.0.0.0/0的路由条目，请先删除该路由条目。否则，无法创建NAT网关。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -6311,12 +6412,8 @@ http(s)://[Endpoint]/?Action=DescribeHighDefinitionMonitorLogAttribute &Instance
 | VSwitchId | String | 否 | vsw-n2yf2tj1k2bfey5pq**** | 交换机的实例ID。 |
 | NatType | String | 否 | Normal | NAT网关的类型。 |
 
-专有网络VPC
-
 | InternetChargeType | String | 否 | PayByLcu | NAT网关的计费类型。 |
 |---|---|---|---|---|
-
-**返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -6334,15 +6431,15 @@ http(s)://[Endpoint]/?Action=DescribeHighDefinitionMonitorLogAttribute &Instance
 https://vpc.aliyuncs.com/?Action=CreateNatGateway &RegionId=cn-hangzhou &VpcId= vpc-bp1di7uewzmtvfuq8****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateNatGatewayResponse> <BandwidthPackageIds> </BandwidthPackageIds> <RequestId>7C01CA72-73FD-4056-B16A-42E392D47625</RequestId> <SnatTableIds> <SnatTableId>stb-wz9aq9mec6f843j45****</SnatTableId> </SnatTableIds> <ForwardTableIds> <ForwardTableId>ftb-wz9sl3znmxhy605f8****</ForwardTableId> </ForwardTableIds> <NatGatewayId>ngw-wz95lh0c2wj9b6r1z****</NatGatewayId> </CreateNatGatewayResponse> |  |
+| <CreateNatGatewayResponse> <BandwidthPackageIds> </BandwidthPackageIds> <RequestId>7C01CA72-73FD-4056-B16A-42E392D47625</RequestId> <SnatTableIds> <SnatTableId>stb-wz9aq9mec6f843j45****</SnatTableId> </SnatTableIds> <ForwardTableIds> <ForwardTableId>ftb-wz9sl3znmxhy605f8****</ForwardTableId> </ForwardTableIds> <NatGatewayId>ngw-wz95lh0c2wj9b6r1z****</NatGatewayId> </CreateNatGatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "BandwidthPackageIds": { "BandwidthPackageId": [] }, "RequestId": "7C01CA72-73FD-4056-B16A-42E392D47625", "SnatTableIds": { "SnatTableId": [ "stb-wz9aq9mec6f843j45****" ] }, "ForwardTableIds": { "ForwardTableId": [ "ftb-wz9sl3znmxhy605f8****" ] }, "NatGatewayId": "ngw-wz95lh0c2wj9b6r1z****" } |  |
+| { "BandwidthPackageIds": { "BandwidthPackageId": [] }, "RequestId": "7C01CA72-73FD-4056-B16A-42E392D47625", "SnatTableIds": { "SnatTableId": [ "stb-wz9aq9mec6f843j45****" ] }, "ForwardTableIds": { "ForwardTableId": [ "ftb-wz9sl3znmxhy605f8****" ] }, "NatGatewayId": "ngw-wz95lh0c2wj9b6r1z****" } |   |
 
 **错误码**
 
@@ -6354,8 +6451,6 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway &RegionId=cn-hangzhou &VpcId= 
 | 400 | InvalidNatGatewayDescription.Ma lFormed | NatGateway description is not valid. | 网关描述不合法。 |
 | 400 | MissingParameter.BandwidthPack age | only support one BandwidthPackage be created with NatGateway. | 必须指定一个共享带宽包。 |
 | 404 | InvalidVpcId.NotFound | Specified value of VpcId is not found in our record. | 该 VPC 不存在，请您检查输入的 VPC 是否正确。 |
-
-专有网络VPC
 
 | 400 | MissingParameter | Miss mandatory parameter. | 缺少必要参数，请您检查必填参数是否都已填后再进行操作。 |
 |---|---|---|---|
@@ -6372,7 +6467,7 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway &RegionId=cn-hangzhou &VpcId= 
 | 400 | InvalidParameter.Spec.ValueNotS upported | The specified Spec is not valid. | 该规格不合法。 |
 | 400 | Forbidden.CheckEntryRuleQuota | Route entry quota rule check error. | 检查路由条目配额时发生了错误。 |
 
-#### 6.10.2. ModifyNatGatewayAttribute
+#### 6.10.2 ModifyNatGatewayAttribute
 
 调用deModifyNatGatewayAttribute接口修改NAT网关的名称和描述。
 
@@ -6400,15 +6495,17 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway &RegionId=cn-hangzhou &VpcId= 
 http(s)://[Endpoint]/?Action=ModifyNatGatewayAttribute &NatGatewayId=ngw-2ze0dcn4mq31qx2jc**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例
 
 ```xml
+<ModifyNatGatewayAttributeResponse>
   <RequestId>AB5F62CF-2B60-4458-A756-42C9DFE108D1</RequestId>
+</ModifyNatGatewayAttributeResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| {"RequestId":"AB5F62CF-2B60-4458-A756-42C9DFE108D1"} |  |
+| {"RequestId":"AB5F62CF-2B60-4458-A756-42C9DFE108D1"} |   |
 
 **错误码**
 
@@ -6419,11 +6516,13 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewayAttribute &NatGatewayId=ngw-2ze0dcn
 | 400 | InvalidParameter.Name.Malforme d | The specified Name is not valid. | 该名称不合法，请您按照正确的格式书写名称。 |
 | 400 | InvalidParameter.Description.Malf ormed | The specified Description is not valid. | 该描述不合法。 |
 
-#### 6.10.3. ModifyNatGatewaySpec
+#### 6.10.3 ModifyNatGatewaySpec
+
+使用ModifyNatGatewaySpec接口修改NAT网关的规格。
 
 **API描述**
 
-NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大连接数和每秒新建连接数，但不会影响数据吞吐量。
+NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大连接数和每秒新建连接数，但不会影响数据吞吐量。 NAT网关规格与SNAT性能的关系如下表所示。
 
 | 规格 | 最大连接数 | 每秒新建连接数 |
 |---|---|---|
@@ -6450,21 +6549,19 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 
 **示例**
 
-请求示例专有网络VPC
-
 ```
 http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4iy5770**** &RegionId=cn-qingdao-env17-d01 &Spec=Small
 ```
 
-`&<`公共请求参数> 正常返回示例
+正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyNatGatewaySpecResponse> <RequestId>DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D</RequestId> </ModifyNatGatewaySpecResponse> |  |
+| <ModifyNatGatewaySpecResponse> <RequestId>DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D</RequestId> </ModifyNatGatewaySpecResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D" } |  |
+| { "RequestId":"DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D" } |   |
 
 **错误码**
 
@@ -6475,9 +6572,11 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 | 400 | NATGWMODIFYSPECSAME _ _ _ | The specified Spec is same with now. | 该规格和当前规格一样。 |
 | 400 | InvalidParameter.Spec.ValueNotS upported | The specified Spec is not valid. | 该规格不合法。 |
 
-#### 6.10.4. DeleteNatGateway
+#### 6.10.4 DeleteNatGateway
 
-**说明**
+调用DeleteNatGateway接口删除指定的NAT网关。
+
+> **说明：** 如果NAT网关尚有未删除的共享带宽包，需要先删除共享带宽包。
 
 **请求参数**
 
@@ -6499,24 +6598,18 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 请求示例
 
 ```
-&NatGatewayId=ngw-bp1uewa15k4iy5770**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DeleteNatGateway &NatGatewayId=ngw-bp1uewa15k4iy5770**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteNatGatewayResponse> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> </DeleteNatGatewayResponse> |  |
-
-`JSON` 格式专有网络VPC
+| <DeleteNatGatewayResponse> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> </DeleteNatGatewayResponse> |   |
 
 ```json
-{
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
-}
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -6524,7 +6617,9 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 | 404 | InvalidNatGatewayId.NotFound | The specified NatGatewayId does not exist in our records. | 指定的 NatGatewayId 不存在，请您检查填写的 NatGatewayId 是否正确。 |
 | 400 | DependencyViolation.BandwidthP ackages | There are BandwidthPackages on specified NatGateway not deleted. | NAT网关上有尚未删除的带宽包，请删除NAT网关下的所有带宽包后再重新操作。 |
 
-#### 6.10.5. DescribeNatGateways
+#### 6.10.5 DescribeNatGateways
+
+调用DescribeNatGateways查询已创建的NAT网关。
 
 **请求参数**
 
@@ -6547,11 +6642,9 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| NatGateways | Array of NatGateway |  | NAT网关的详细信息。 |
-| NatGateway |  |  |  |
+| NatGateways | Array of NatGateway |   | NAT网关的详细信息。 |
+| NatGateway |   |   |   |
 | AutoPay | Boolean | true | 是否自动付费。 false：不开启自动付费，生成订单后需要到订单中心完成支付。 true：开启自动付费，自动支付订单。 |
-
-专有网络VPC
 
 | BandwidthPackageIds | List | bwp-s6lmotmkk**** | NAT网关绑定的带宽包ID。 |
 |---|---|---|---|
@@ -6564,8 +6657,8 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 | ForwardTableIds | List | ftb-uf6gj3mhsg94qsqst**** | DNAT列表。 |
 | InstanceChargeType | String | PostPaid | 实例的付费方式。 PostPaid：按量计费。 PrePaid：预付费。 |
 | InternetChargeType | String | PayBySpec | NAT网关的计费类型。仅返回PayBySpec（按规格计费）。 |
-| IpLists | Array of IpList |  | NAT网关绑定的弹性公网IP详细信息。 |
-| IpList |  |  |  |
+| IpLists | Array of IpList |   | NAT网关绑定的弹性公网IP详细信息。 |
+| IpList |   |   |   |
 | AllocationId | String | eip-n2y6nbm9z7t1l3xfz**** | NAT网关绑定的弹性公网IP的实例ID。 |
 | ApAccessEnabled | Boolean | false | 是否接入Ap。取值： true：接入AP。 false：未接入AP。 |
 | IpAddress | String | 116.62.XX.XX | 弹性公网IP的地址。 |
@@ -6573,15 +6666,13 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 | UsingStatus | String | UsedBySnatTable | 弹性公网IP的使用状态。 |
 | Name | String | abc | NAT网关实例名称。 |
 | NatGatewayId | String | ngw-bp1047e2d4z7kf2ki**** | NAT网关的ID。 |
-| NatGatewayPrivateInfo | Struct |  | NAT网关的私有信息。 NatType取值为Normal时，该列表中返回的参数均为空值。 |
+| NatGatewayPrivateInfo | Struct |   | NAT网关的私有信息。 NatType取值为Normal时，该列表中返回的参数均为空值。 |
 | EniInstanceId | String | 10 | 弹性网卡实例ID。 |
 | IzNo | String | cn-hangzhou-b | 可用区。 |
 | MaxBandwidth | Integer | 5120 | 最大带宽值，单位为Mbps。 |
 | PrivateIpAddress | String | 192.168.1.xx | 私网IP地址。 |
 | VswitchId | String | vsw-bp1s2laxhdf9ayjbo**** | 交换机ID。 |
 | NatType | String | Normal | NAT网关的类型。 |
-
-专有网络VPC
 
 | RegionId | String | cn-qingdao-env17-d01 | NAT网关的所在地域ID。 |
 |---|---|---|---|
@@ -6603,17 +6694,15 @@ http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4i
 http(s)://[Endpoint]/?Action=DescribeNatGateways &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeNatGatewaysResponse> <TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF </RequestId> <PageNumber>10</PageNumber> <NatGateways> <Status>Initiating</Status> <Description>NAT</Description> <ResourceGroupId>rg-bp67acfmxazb4ph****</ResourceGroupId> <InstanceChargeType>PostPaid</InstanceChargeType> <DeletionProtection>true</DeletionProtection> <AutoPay>true</AutoPay> <NatType>Normal</NatType> <BusinessStatus>Normal</BusinessStatus> <InternetChargeType>PayBySpec</InternetChargeType> <Name>abc</Name> <EcsMetricEnabled>true</EcsMetricEnabled> <VpcId>vpc-bp15zckdt37pq72z****</VpcId> <ExpiredTime>2017-08-26T16:00Z</ExpiredTime> <CreationTime>2017-06-08T12:20:55</CreationTime> <RegionId>cn-qingdao-env17-d01</RegionId> <Spec>Small</Spec> <NatGatewayId>ngw-bp1047e2d4z7kf2ki****</NatGatewayId> <IpLists> <UsingStatus>UsedBySnatTable</UsingStatus> <ApAccessEnabled>false</ApAccessEnabled> <SnatEntryEnabled>false</SnatEntryEnabled> <AllocationId>eip-n2y6nbm9z7t1l3xfz****</AllocationId> <IpAddress>116.62.XX.XX</IpAddress> </IpLists> <ForwardTableIds>ftb-uf6gj3mhsg94qsqst****</ForwardTableIds> <SnatTableIds>stb-uf6dalcdu0krz423p****</SnatTableIds> <BandwidthPackageIds>bwp-s6lmotmkk****</BandwidthPackageIds> <NatGatewayPrivateInfo> <IzNo>cn-hangzhou-b</IzNo> <PrivateIpAddress>192.168.1.xx</PrivateIpAddress> <MaxBandwidth>5120</MaxBandwidth> <EniInstanceId>10</EniInstanceId> <VswitchId>vsw-bp1s2laxhdf9ayjbo****</VswitchId> </NatGatewayPrivateInfo> </NatGateways> </DescribeNatGatewaysResponse> |  |
-
-专有网络VPC
+| <DescribeNatGatewaysResponse> <TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF </RequestId> <PageNumber>10</PageNumber> <NatGateways> <Status>Initiating</Status> <Description>NAT</Description> <ResourceGroupId>rg-bp67acfmxazb4ph****</ResourceGroupId> <InstanceChargeType>PostPaid</InstanceChargeType> <DeletionProtection>true</DeletionProtection> <AutoPay>true</AutoPay> <NatType>Normal</NatType> <BusinessStatus>Normal</BusinessStatus> <InternetChargeType>PayBySpec</InternetChargeType> <Name>abc</Name> <EcsMetricEnabled>true</EcsMetricEnabled> <VpcId>vpc-bp15zckdt37pq72z****</VpcId> <ExpiredTime>2017-08-26T16:00Z</ExpiredTime> <CreationTime>2017-06-08T12:20:55</CreationTime> <RegionId>cn-qingdao-env17-d01</RegionId> <Spec>Small</Spec> <NatGatewayId>ngw-bp1047e2d4z7kf2ki****</NatGatewayId> <IpLists> <UsingStatus>UsedBySnatTable</UsingStatus> <ApAccessEnabled>false</ApAccessEnabled> <SnatEntryEnabled>false</SnatEntryEnabled> <AllocationId>eip-n2y6nbm9z7t1l3xfz****</AllocationId> <IpAddress>116.62.XX.XX</IpAddress> </IpLists> <ForwardTableIds>ftb-uf6gj3mhsg94qsqst****</ForwardTableIds> <SnatTableIds>stb-uf6dalcdu0krz423p****</SnatTableIds> <BandwidthPackageIds>bwp-s6lmotmkk****</BandwidthPackageIds> <NatGatewayPrivateInfo> <IzNo>cn-hangzhou-b</IzNo> <PrivateIpAddress>192.168.1.xx</PrivateIpAddress> <MaxBandwidth>5120</MaxBandwidth> <EniInstanceId>10</EniInstanceId> <VswitchId>vsw-bp1s2laxhdf9ayjbo****</VswitchId> </NatGatewayPrivateInfo> </NatGateways> </DescribeNatGatewaysResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount": 10, "PageSize": 10, "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "PageNumber": 10, "NatGateways": { "Status": "Initiating", "Description": "NAT", "ResourceGroupId": "rg-bp67acfmxazb4ph****", "InstanceChargeType": "PostPaid", "DeletionProtection": true, "AutoPay": true, "NatType": "Normal", "BusinessStatus": "Normal", "InternetChargeType": "PayBySpec", "Name": "abc", "EcsMetricEnabled": true, "VpcId": "vpc-bp15zckdt37pq72z****", "ExpiredTime": "2017-08-26T16:00Z", "CreationTime": "2017-06-08T12:20:55", "RegionId": "cn-qingdao-env17-d01", "Spec": "Small", "NatGatewayId": "ngw-bp1047e2d4z7kf2ki****", "IpLists": { "UsingStatus": "UsedBySnatTable", "ApAccessEnabled": false, "SnatEntryEnabled": false, "AllocationId": "eip-n2y6nbm9z7t1l3xfz****", "IpAddress": "116.62.XX.XX" }, "ForwardTableIds": "ftb-uf6gj3mhsg94qsqst****", "SnatTableIds": "stb-uf6dalcdu0krz423p****", "BandwidthPackageIds": "bwp-s6lmotmkk****", "NatGatewayPrivateInfo": { "IzNo": "cn-hangzhou-b", "PrivateIpAddress": "192.168.1.xx", "MaxBandwidth": 5120, "EniInstanceId": 10, "VswitchId": "vsw-bp1s2laxhdf9ayjbo****" } } } |  |
+| { "TotalCount": 10, "PageSize": 10, "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "PageNumber": 10, "NatGateways": { "Status": "Initiating", "Description": "NAT", "ResourceGroupId": "rg-bp67acfmxazb4ph****", "InstanceChargeType": "PostPaid", "DeletionProtection": true, "AutoPay": true, "NatType": "Normal", "BusinessStatus": "Normal", "InternetChargeType": "PayBySpec", "Name": "abc", "EcsMetricEnabled": true, "VpcId": "vpc-bp15zckdt37pq72z****", "ExpiredTime": "2017-08-26T16:00Z", "CreationTime": "2017-06-08T12:20:55", "RegionId": "cn-qingdao-env17-d01", "Spec": "Small", "NatGatewayId": "ngw-bp1047e2d4z7kf2ki****", "IpLists": { "UsingStatus": "UsedBySnatTable", "ApAccessEnabled": false, "SnatEntryEnabled": false, "AllocationId": "eip-n2y6nbm9z7t1l3xfz****", "IpAddress": "116.62.XX.XX" }, "ForwardTableIds": "ftb-uf6gj3mhsg94qsqst****", "SnatTableIds": "stb-uf6dalcdu0krz423p****", "BandwidthPackageIds": "bwp-s6lmotmkk****", "NatGatewayPrivateInfo": { "IzNo": "cn-hangzhou-b", "PrivateIpAddress": "192.168.1.xx", "MaxBandwidth": 5120, "EniInstanceId": 10, "VswitchId": "vsw-bp1s2laxhdf9ayjbo****" } } } |   |
 
 **错误码**
 
@@ -6621,19 +6710,19 @@ http(s)://[Endpoint]/?Action=DescribeNatGateways &RegionId=cn-qingdao-env17-d01
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.10.6. CreateForwardEntry
+#### 6.10.6 CreateForwardEntry
+
+使用CreateForwardEntry在DNAT列表中添加DNAT条目。
 
 **API描述**
 
-每条DNAT条目由五部分组成，包括ExternalIp、ExternalPort、protocol、InternalIp和InternalPort。添加DNAT条目后，NAT网关会将ExternalIp：ExternalPort上收到的指定协议的报文转发给InternalIp:InternalPort，并将回复消息原路返回。 调用本接口添加DNAT条目时，请注意： 所有DNAT条目的ExternalIp、ExternalPort和Protocol三个字段组成的组合必须互不重复。即不允许将同一个源IP、同一个端口、同一个协议的消息转发到多个目标。 所有DNAT条目的Protocol、InternalIp和InternalPort三个字段组成的组合也必须互不重复。 当DNAT表中有DNAT条目的状态处于Pending或Modifying状态时，无法添加DNAT条目。 DNAT条目中的公网IP（ExternalIp）需满足以下条件： 对于2017年11月03日之前账户下存在NAT带宽包的用户，ExternalIp必须是该NAT网关的NAT带宽包中的公网IP地址。 对于2017年11月03日之前账户下不存在NAT带宽包的用户，ExternalIp必须是绑定了该NAT网关的弹性公网IP。 一个公网IP不能同时用于DNAT条目和SNAT条目。 DNAT条目中的内网IP（InternalIp）需满足以下条件： 只有当InternalIp被一个ECS实例使用且该实例没有绑定EIP时，DNAT条目才生效。若该InternalIp被HAVIP、SLB或RDS等非ECS资源使用，DNAT条目无效，公网流量无法转发到该IP上。 一个公网IP不能同时用于DNAT条目和SNAT条目。 一个DNAT表最多可添加100条DNAT条目。
+每条DNAT条目由五部分组成，包括ExternalIp、ExternalPort、protocol、InternalIp和InternalPort。添加DNAT条目后，NAT网关会将ExternalIp：ExternalPort上收到的指定协议的报文转发给InternalIp:InternalPort，并将回复消息原路返回。 调用本接口添加DNAT条目时，请注意： 所有DNAT条目的ExternalIp、ExternalPort和Protocol三个字段组成的组合必须互不重复。即不允许将同一个源IP、同一个端口、同一个协议的消息转发到多个目标。 所有DNAT条目的Protocol、InternalIp和InternalPort三个字段组成的组合也必须互不重复。 当DNAT表中有DNAT条目的状态处于Pending或Modifying状态时，无法添加DNAT条目。 DNAT条目中的公网IP（ExternalIp）需满足以下条件： 对于2017年11月03日之前账户下存在NAT带宽包的用户，ExternalIp必须是该NAT网关的NAT带宽包中的公网IP地址。 对于2017年11月03日之前账户下不存在NAT带宽包的用户，ExternalIp必须是绑定了该NAT网关的弹性公网IP。 一个公网IP不能同时用于DNAT条目和SNAT条目。 DNAT条目中的内网IP（InternalIp）需满足以下条件： InternalIp必需属于NAT网关所在的VPC的网段。 只有当InternalIp被一个ECS实例使用且该实例没有绑定EIP时，DNAT条目才生效。若该InternalIp被HAVIP、SLB或RDS等非ECS资源使用，DNAT条目无效，公网流量无法转发到该IP上。 一个公网IP不能同时用于DNAT条目和SNAT条目。 一个DNAT表最多可添加100条DNAT条目。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateForwardEntry | 要执行的操作，取值： CreateForwardEntry。 |
-
-专有网络VPC
 
 | ExternalIp | String | 是 | 116.XX.XX.28 | 公网IP地址。 |
 |---|---|---|---|---|
@@ -6662,22 +6751,18 @@ http(s)://[Endpoint]/?Action=DescribeNatGateways &RegionId=cn-qingdao-env17-d01
 http(s)://[Endpoint]/?Action=CreateForwardEntry &ExternalIp=116.XX.XX.28 &ExternalPort=8080 &ForwardTableId=ftb-bp1mbjubq34hlcqpa**** &InternalIp=192.XX.XX.1 &InternalPort=80 &IpProtocol=TCP &RegionId=cn-qingdao-env17-d0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateForwardEntryResponse> <RequestId>A4AEE536-A97A-40EB-9EBE-53A6948A6928</RequestId> <ForwardEntryId>fwd-119smw5tkasdf****</ForwardEntryId> </CreateForwardEntryResponse> |  |
+| <CreateForwardEntryResponse> <RequestId>A4AEE536-A97A-40EB-9EBE-53A6948A6928</RequestId> <ForwardEntryId>fwd-119smw5tkasdf****</ForwardEntryId> </CreateForwardEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "CreateForwardEntryResponse": { "RequestId": "A4AEE536-A97A-40EB-9EBE-53A6948A6928", "ForwardEntryId": "fwd-119smw5tkasdf****" } } |  |
-
-**错误码**
+| { "CreateForwardEntryResponse": { "RequestId": "A4AEE536-A97A-40EB-9EBE-53A6948A6928", "ForwardEntryId": "fwd-119smw5tkasdf****" } } |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-专有网络VPC
 
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 |---|---|---|---|
@@ -6699,7 +6784,7 @@ http(s)://[Endpoint]/?Action=CreateForwardEntry &ExternalIp=116.XX.XX.28 &Extern
 | 500 | InternalError | The request processing has failed due to some unknown error. | 请求处理由于某些未知错误失败。 |
 | 400 | InvalidParameter.Name.Malforme d | The specified Name is not valid. | 该名称不合法，请您按照正确的格式书写名称。 |
 
-#### 6.10.7. DescribeForwardTableEntries
+#### 6.10.7 DescribeForwardTableEntries
 
 调用DescribeForwardTableEntries接口查询已创建的DNAT条目。
 
@@ -6719,17 +6804,13 @@ http(s)://[Endpoint]/?Action=CreateForwardEntry &ExternalIp=116.XX.XX.28 &Extern
 | ForwardEntryName | String | 否 | ForwardEntry-1 | DNAT规则的名称。长度为2-128个字符，必须以字母或中文开头，但不能以 http:// 或 https:// 开头。 |
 | PageNumber | Integer | 否 | 1 | 列表的页码，默认值为1。 |
 
-专有网络VPC
-
 | PageSize | Integer | 否 | 10 | 分页查询时每页的行数，最大值为50，默认值为10。 |
 |---|---|---|---|---|
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ForwardTableEntries | Array of ForwardTableEntry |  | DNAT列表的详细信息。 |
-| ForwardTableEntry |  |  |  |
+| ForwardTableEntries | Array of ForwardTableEntry |   | DNAT列表的详细信息。 |
+| ForwardTableEntry |   |   |   |
 | ExternalIp | String | 116.XXX.XX.28 | 公网IP地址。 |
 | ExternalPort | String | 80 | 公网端口。 |
 | ForwardEntryId | String | fwd-119smw5tk**** | DNAT条目的ID。 |
@@ -6752,16 +6833,15 @@ http(s)://[Endpoint]/?Action=CreateForwardEntry &ExternalIp=116.XX.XX.28 &Extern
 http(s)://[Endpoint]/?Action=DescribeForwardTableEntries &ForwardTableId=ftb-bp1mbjubq34hlcqpa**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeForwardTableEntriesResponse> <TotalCount>5</TotalCount> <PageSize>10</PageSize> <RequestId>A6C4A8B1-7561-4509-949C-20DEB40D71E6</RequestId> <PageNumber>1</PageNumber> <ForwardTableEntries> <Status>Available</Status> <ExternalPort>80</ExternalPort> <ExternalIp>116.XXX.XX.28</ExternalIp> <ForwardEntryId>fwd-119smw5tk****</ForwardEntryId> <IpProtocol>TCP</IpProtocol> <InternalPort>25</InternalPort> <ForwardEntryName>ForwardEntry-1</ForwardEntryName> <InternalIp>192.XX.XX.1</InternalIp> <ForwardTableId>ftb-11tc6xgmv****</ForwardTableId> </ForwardTableEntries> </DescribeForwardTableEntriesResponse> |  |
+| <DescribeForwardTableEntriesResponse> <TotalCount>5</TotalCount> <PageSize>10</PageSize> <RequestId>A6C4A8B1-7561-4509-949C-20DEB40D71E6</RequestId> <PageNumber>1</PageNumber> <ForwardTableEntries> <Status>Available</Status> <ExternalPort>80</ExternalPort> <ExternalIp>116.XXX.XX.28</ExternalIp> <ForwardEntryId>fwd-119smw5tk****</ForwardEntryId> <IpProtocol>TCP</IpProtocol> <InternalPort>25</InternalPort> <ForwardEntryName>ForwardEntry-1</ForwardEntryName> <InternalIp>192.XX.XX.1</InternalIp> <ForwardTableId>ftb-11tc6xgmv****</ForwardTableId> </ForwardTableEntries> </DescribeForwardTableEntriesResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "TotalCount": 5,
     "PageSize": 10,
     "RequestId": "A6C4A8B1-7561-4509-949C-20DEB40D71E6",
@@ -6776,9 +6856,9 @@ http(s)://[Endpoint]/?Action=DescribeForwardTableEntries &ForwardTableId=ftb-bp1
         "ForwardEntryName": "ForwardEntry-1",
         "InternalIp": "192.XX.XX.1",
         "ForwardTableId": "ftb-11tc6xgmv****"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -6788,7 +6868,9 @@ http(s)://[Endpoint]/?Action=DescribeForwardTableEntries &ForwardTableId=ftb-bp1
 | 400 | IncorretForwardEntryStatus | Some Forward entry status blocked this operation.. | 无法执行该操作。DNAT表中有DNAT条目的状态处于 Pending或Modifying状态。 |
 | 404 | InvalidForwardTableId.NotFound | Specified forwardTableId does not exist | 指定的 DNAT 表不存在，请您检查输入参数是否正确。 |
 
-#### 6.10.8. ModifyForwardEntry
+#### 6.10.8 ModifyForwardEntry
+
+调用ModifyForwardEntry接口修改指定的DNAT条目。
 
 **使用说明**
 
@@ -6810,10 +6892,6 @@ DNAT表中DNAT条目的状态为**Pending**或**Modifying**时，无法修改DNA
 | ForwardEntryName | String | 否 | ForwardEntry-1 | DNAT条目的名称。 长度为2~128个字符，必须以字母或中文开头，但不能以 http:// 或 https:// 开头。 |
 | ClientToken | String | 否 | 123e4567-e89b-12d3-a456- 426655440000 | 客户端Token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个 ASCII字符。 说明若您未指定，则系统自动使用API请求的RequestId作为ClientToken标识。每次API请求的RequestId可能不一样。 |
 
-专有网络VPC
-
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 24CC85DC-7700-4F09-9624- 99E988C7DD03 | 请求ID。 |
@@ -6826,15 +6904,15 @@ DNAT表中DNAT条目的状态为**Pending**或**Modifying**时，无法修改DNA
 http(s)://[Endpoint]/?Action=ModifyForwardEntry &ForwardEntryId=fwd-8vbn3bc8roygjp0gy**** &ForwardTableId=ftb-8vbx8xu2lqj9qb334**** &RegionId= cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyForwardEntryResponse> <RequestId>24CC85DC-7700-4F09-9624-99E988C7DD03</RequestId> </ModifyForwardEntryResponse> |  |
+| <ModifyForwardEntryResponse> <RequestId>24CC85DC-7700-4F09-9624-99E988C7DD03</RequestId> </ModifyForwardEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "24CC85DC-7700-4F09-9624-99E988C7DD03" } |  |
+| { "RequestId": "24CC85DC-7700-4F09-9624-99E988C7DD03" } |   |
 
 **错误码**
 
@@ -6856,11 +6934,11 @@ http(s)://[Endpoint]/?Action=ModifyForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 | 400 | Forbidden.Already.Bounded | The specified instance already bounded | 实例已经被绑定，请不要重复绑定。 |
 | 400 | InvalidParameter.Name.Malforme d | The specified Name is not valid. | 该名称不合法，请您按照正确的格式书写名称。 |
 
-#### 6.10.9. DeleteForwardEntry
+#### 6.10.9 DeleteForwardEntry
 
-当DNAT表中有DNAT条目的状态为**Pending**或**Modifying**时，无法删除DNAT条目。
+调用DeleteForwardEntry接口删除指定的DNAT条目。
 
-**说明**
+> **说明：** 当DNAT表中有DNAT条目的状态为**Pending**或**Modifying**时，无法删除DNAT条目。
 
 **请求参数**
 
@@ -6868,8 +6946,6 @@ http(s)://[Endpoint]/?Action=ModifyForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 |---|---|---|---|---|
 | Action | String | 是 | DeleteForwardEntry | 要执行的操作，取值：DeleteForwardEntry。 |
 | ForwardEntryId | String | 是 | fwd-8vbn3bc8roygjp0g**** | DNAT条目ID。 |
-
-专有网络VPC
 
 | ForwardTableId | String | 是 | ftb-8vbx8xu2lqj9qb334**** | DNAT列表ID。 |
 |---|---|---|---|---|
@@ -6890,15 +6966,15 @@ http(s)://[Endpoint]/?Action=ModifyForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8roygjp0g**** &ForwardTableId=ftb-8vbx8xu2lqj9qb334**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteForwardEntryResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteForwardEntryResponse> |  |
+| <DeleteForwardEntryResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteForwardEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| {"RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0"} |  |
+| {"RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0"} |   |
 
 **错误码**
 
@@ -6911,11 +6987,13 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 | 400 | IncorretForwardEntryStatus | The Specified forwardEntry is not exist | 该DNAT条目不存在。 |
 | 400 | MissingParameter | Missing mandatory parameter | 缺少必要参数，请您检查必填参数是否都已填后再进行操作。 |
 
-#### 6.10.10. CreateSnatEntry
+#### 6.10.10 CreateSnatEntry
+
+调用CreateSnatEntry接口在SNAT列表中添加SNAT条目。
 
 **API描述**
 
-调用本接口添加SNAT条目时，请注意： 每个交换机和ECS实例只能属于一个SNAT条目。 如果交换机中存在HAVIP实例，则无法添加SNAT条目。 一个公网IP不能同时用于DNAT条目和SNAT条目。
+调用本接口添加SNAT条目时，请注意： SNAT条目中指定的交换机和ECS实例必须在NAT网关所属的VPC内。 每个交换机和ECS实例只能属于一个SNAT条目。 如果交换机中存在HAVIP实例，则无法添加SNAT条目。 一个公网IP不能同时用于DNAT条目和SNAT条目。
 
 **请求参数**
 
@@ -6925,8 +7003,6 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 | RegionId | String | 是 | cn-qingdao-env17-d01 | NAT网关所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | SnatIp | String | 是 | 47.XX.XX.98 | 公网IP地址，多个IP之间用逗号隔开。 |
 | SnatTableId | String | 是 | stb-bp190wu8io1vgev**** | SNAT表ID。 |
-
-专有网络VPC
 
 | SourceVSwitchId | String | 否 | vsw-bp1nhx2s9ui5o**** | 需要公网访问的交换机的ID。 |
 |---|---|---|---|---|
@@ -6946,18 +7022,18 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &SnatIp=47.XX.XX.98 &SnatTableId=stb-bp190wu8io1vgev****
+http(s)://[Endpoint]/?Action=CreateSnatEntry &RegionId=cn-qingdao-env17-d01 &SnatIp=47.XX.XX.98 &SnatTableId=stb-bp190wu8io1vgev****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateSnatEntryResponse> <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId> <SnatEntryId>snat-119smw5tkx****</SnatEntryId> </CreateSnatEntryResponse> |  |
+| <CreateSnatEntryResponse> <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId> <SnatEntryId>snat-119smw5tkx****</SnatEntryId> </CreateSnatEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "SnatEntryId": "snat-kmd6nv8fyx****", "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3" } |  |
+| { "SnatEntryId": "snat-kmd6nv8fyx****", "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3" } |   |
 
 **错误码**
 
@@ -6973,8 +7049,6 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 | 404 | InvalidVSwitchId.NotFound | The specified virtual switch does not exists. | 该交换机不存在，请您检查输入的交换机是否正确。 |
 | 400 | INVALIDPARAMETER _ | The parameter invalid. | 参数不合法。 |
 
-专有网络VPC
-
 | 400 | Forbidden.SourceVSwitchId.Dupli cated | The specified SourceCIDRis duplicated. | 该交换机已配置了 SNAT 规则，请您不要重复设置。 |
 |---|---|---|---|
 | 404 | InvalidSnatIp.NotFound | Specified SnatIp does not found on the NAT Gateway | 该公网IP不在NAT网关中。 |
@@ -6983,7 +7057,7 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 | 400 | OperationUnsupported.CidrConfli ct | The specified CIDR block conflicts with an existing SNAT entry. | 您指定的CIDR的网段与已有的SNAT条目冲突。 |
 | 400 | InvalidParameter.Name.Malforme d | The specified Name is not valid. | 该名称不合法，请您按照正确的格式书写名称。 |
 
-#### 6.10.11. DescribeSnatTableEntries
+#### 6.10.11 DescribeSnatTableEntries
 
 调用DescribeSnatTableEntries接口查询已创建的SNAT条目。
 
@@ -7006,8 +7080,8 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| SnatTableEntries | Array of SnatTableEntry |  | SNAT列表的详细信息。 |
-| SnatTableEntry |  |  |  |
+| SnatTableEntries | Array of SnatTableEntry |   | SNAT列表的详细信息。 |
+| SnatTableEntry |   |   |   |
 | SnatEntryId | String | snat-8vbae8uqh7rjpk7d2**** | SNAT条目的ID。 |
 | SnatEntryName | String | SnatEntry-1 | SNAT条目的名称。 |
 | SnatIp | String | 116.XX.XX.28 | SNAT条目的公网IP。 |
@@ -7016,8 +7090,6 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 | SourceVSwitchId | String | vsw-3xb**** | 通过SNAT功能进行公网访问的交换机ID。 |
 | Status | String | Pending | SNAT条目状态。 |
 | TotalCount | Integer | 1 | 列表条条目数。 |
-
-专有网络VPC
 
 | PageNumber | Integer | 1 | 当前页码。 |
 |---|---|---|---|
@@ -7032,15 +7104,15 @@ http(s)://[Endpoint]/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8royg
 http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17-d01 &SnatTableId=stb-8vbczigrhop8x5u3t****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeSnatTableEntriesResponse> <TotalCount>1</TotalCount> <PageSize>5</PageSize> <RequestId>6D7E89B1-1C5B-412B-8585-4908E222EED5</RequestId> <PageNumber>1</PageNumber> <SnatTableEntries> <Status>Pending</Status> <SourceVSwitchId>vsw-3xb****</SourceVSwitchId> <SnatEntryName>SnatEntry-1</SnatEntryName> <SourceCIDR>116.XX.XX.0/28</SourceCIDR> <SnatEntryId>snat-8vbae8uqh7rjpk7d2****</SnatEntryId> <SnatIp>116.XX.XX.28</SnatIp> <SnatTableId>stb-8vbczigrhop8x5u3t****</SnatTableId> </SnatTableEntries> </DescribeSnatTableEntriesResponse> |  |
+| <DescribeSnatTableEntriesResponse> <TotalCount>1</TotalCount> <PageSize>5</PageSize> <RequestId>6D7E89B1-1C5B-412B-8585-4908E222EED5</RequestId> <PageNumber>1</PageNumber> <SnatTableEntries> <Status>Pending</Status> <SourceVSwitchId>vsw-3xb****</SourceVSwitchId> <SnatEntryName>SnatEntry-1</SnatEntryName> <SourceCIDR>116.XX.XX.0/28</SourceCIDR> <SnatEntryId>snat-8vbae8uqh7rjpk7d2****</SnatEntryId> <SnatIp>116.XX.XX.28</SnatIp> <SnatTableId>stb-8vbczigrhop8x5u3t****</SnatTableId> </SnatTableEntries> </DescribeSnatTableEntriesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount": 1, "PageSize": 5, "RequestId": "6D7E89B1-1C5B-412B-8585-4908E222EED5", "PageNumber": 1, "SnatTableEntries": { "Status": "Pending", "SourceVSwitchId": "vsw-3xb****", "SnatEntryName": "SnatEntry-1", "SourceCIDR": "116.XX.XX.0/28", "SnatEntryId": "snat-8vbae8uqh7rjpk7d2****", "SnatIp": "116.XX.XX.28", "SnatTableId": "stb-8vbczigrhop8x5u3t****" } } |  |
+| { "TotalCount": 1, "PageSize": 5, "RequestId": "6D7E89B1-1C5B-412B-8585-4908E222EED5", "PageNumber": 1, "SnatTableEntries": { "Status": "Pending", "SourceVSwitchId": "vsw-3xb****", "SnatEntryName": "SnatEntry-1", "SourceCIDR": "116.XX.XX.0/28", "SnatEntryId": "snat-8vbae8uqh7rjpk7d2****", "SnatIp": "116.XX.XX.28", "SnatTableId": "stb-8vbczigrhop8x5u3t****" } } |   |
 
 **错误码**
 
@@ -7049,11 +7121,11 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 | 404 | InvalidSnatTableId.NotFound | Specified SNAT table does not exist. | 指定的 SNAT 表不存在，请您检查输入参数是否正确。 |
 
-#### 6.10.12. ModifySnatEntry
+#### 6.10.12 ModifySnatEntry
 
-**说明**
+调用ModifySnatEntry接口修改指定的SNAT条目。
 
-当SNAT表中有SNAT条目的状态为**Pending**或**Modifying**时，无法修改SNAT条目。
+> **说明：** 当SNAT表中有SNAT条目的状态为**Pending**或**Modifying**时，无法修改SNAT条目。
 
 **请求参数**
 
@@ -7063,8 +7135,6 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 | RegionId | String | 是 | cn-qingdao-env17-d0 | NAT网关所在的地域ID。 |
 | SnatEntryId | String | 是 | snat-bp1vcgcf8tm0plqcg**** | 要修改的SNAT条目的ID。 |
 | SnatTableId | String | 是 | stb-8vbczigrhop8x5u3t**** | SNAT条目所在的SNAT表的ID。 |
-
-专有网络VPC
 
 | SnatIp | String | 是 | 47.XX.XX.98 | SNAT条目中的公网IP地址。多个IP之间用半角逗号（,）隔开。 |
 |---|---|---|---|---|
@@ -7082,18 +7152,18 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d0 &SnatEntryId=snat-bp1vcgcf8tm0plqcg**** &SnatTableId=stb-8vbczigrhop8x5u3t**** &SnatIp=47.XX.XX.98
+http(s)://[Endpoint]/?Action=ModifySnatEntry &RegionId=cn-qingdao-env17-d0 &SnatEntryId=snat-bp1vcgcf8tm0plqcg**** &SnatTableId=stb-8vbczigrhop8x5u3t**** &SnatIp=47.XX.XX.98
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifySnatEntryResponse> <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId> </ModifySnatEntryResponse> |  |
+| <ModifySnatEntryResponse> <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId> </ModifySnatEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3" } |  |
+| { "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3" } |   |
 
 **错误码**
 
@@ -7108,19 +7178,17 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 | 400 | Forbidden.IpUsedInForwardTable | The specified SnatIp already used in forward table | 该公网IP已经被DNAT使用，请更换其他公网IP地址或将当前公网IP的DNAT规则删除。 |
 | 400 | InvalidParameter.Name.Malforme d | The specified Name is not valid. | 该名称不合法，请您按照正确的格式书写名称。 |
 
-#### 6.10.13. DeleteSnatEntry
+#### 6.10.13 DeleteSnatEntry
 
-**说明**
+调用DeleteSnatEntry接口删除指定的SNAT条目。
 
-当SNAT表中有SNAT条目的状态为**Pending**或**Modifying**时，无法删除SNAT条目。
+> **说明：** 当SNAT表中有SNAT条目的状态为**Pending**或**Modifying**时，无法删除SNAT条目。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DeleteSnatEntry | 要执行的操作。 取值：DeleteSnatEntry。 |
-
-专有网络VPC
 
 | RegionId | String | 是 | cn-qingdao-env17-d01 | NAT网关所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 |---|---|---|---|---|
@@ -7139,18 +7207,18 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &SnatEntryId=snat-bp1vcgcf8tm0plqc**** &SnatTableId=stb-bp190wu8io1vgev80****
+http(s)://[Endpoint]/?Action=DeleteSnatEntry &RegionId=cn-qingdao-env17-d01 &SnatEntryId=snat-bp1vcgcf8tm0plqc**** &SnatTableId=stb-bp190wu8io1vgev80****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteSnatEntryResponse> <RequestId>47B80B6A-759A-479C-A565-76D04BDA29F3</RequestId> </DeleteSnatEntryResponse> |  |
+| <DeleteSnatEntryResponse> <RequestId>47B80B6A-759A-479C-A565-76D04BDA29F3</RequestId> </DeleteSnatEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| {"RequestId":"47B80B6A-759A-479C-A565-76D04BDA29F3"} |  |
+| {"RequestId":"47B80B6A-759A-479C-A565-76D04BDA29F3"} |   |
 
 **错误码**
 
@@ -7162,7 +7230,7 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 | 404 | InvalidSnatTableId.NotFound | Specified SNAT table does not exist. | 指定的 SNAT 表不存在，请您检查输入参数是否正确。 |
 | 404 | InvalidSnatEntryId.NotFound | Specified SNAT entry does not exist. | 指定的 SNAT 条目不存在，请您检查填写的 SNAT 条目是否正确。 |
 
-#### 6.10.14. ModifyBandwidthPackageSpec
+#### 6.10.14 ModifyBandwidthPackageSpec
 
 使用ModifyBandwidthPackageSpec接口修改指定NAT带宽包的带宽。
 
@@ -7175,17 +7243,11 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 | BandwidthPackageId | String | 是 | bwp-s6lmotmkk**** | NAT带宽包的ID。 |
 | RegionId | String | 是 | cn-qingdao-env17-d01 | NAT带宽包所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-专有网络VPC
-
 | RequestId | String | 079874CD-AEC1-43E6-AC03- ADD96B6E4907 | 请求ID。 |
 |---|---|---|---|
-
-**示例**
 
 请求示例
 
@@ -7193,15 +7255,15 @@ http(s)://[Endpoint]/?Action=DescribeSnatTableEntries &RegionId=cn-qingdao-env17
 http(s)://[Endpoint]/?Action=ModifyBandwidthPackageSpec &Bandwidth=5 &BandwidthPackageId=bwp-s6lmotmkk**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyBandwidthPackageSpecResponse> <RequestId>079874CD-AEC1-43E6-AC03-ADD96B6E4907</RequestId> </ModifyBandwidthPackageSpecResponse> |  |
+| <ModifyBandwidthPackageSpecResponse> <RequestId>079874CD-AEC1-43E6-AC03-ADD96B6E4907</RequestId> </ModifyBandwidthPackageSpecResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907" } |  |
+| { "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907" } |   |
 
 **错误码**
 
@@ -7211,7 +7273,9 @@ http(s)://[Endpoint]/?Action=ModifyBandwidthPackageSpec &Bandwidth=5 &BandwidthP
 | 404 | InvalidBandwidth.ValueNotSuppo rted | The specified value of Bandwidth not supported. | 指定的带宽峰值不支持。 |
 | 404 | BandwidthPackage.FinancialLock ed | The specified BandwidthPackage has been Financail Lock. | 该带宽包被欠费锁定。 |
 
-#### 6.10.15. DeleteBandwidthPackage
+#### 6.10.15 DeleteBandwidthPackage
+
+使用DeleteBandwidthPackage接口删除指定的NAT带宽包。
 
 **请求参数**
 
@@ -7236,17 +7300,15 @@ http(s)://[Endpoint]/?Action=ModifyBandwidthPackageSpec &Bandwidth=5 &BandwidthP
 http(s)://[Endpoint]/?Action=DeleteBandwidthPackage &BandwidthPackageId=bwp-bp1arsrmca9kp**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteBandwidthPackageResponse> <RequestId>7D275A59-1EB0-4775-8A20-2A47055EAC5C</RequestId> </DeleteBandwidthPackageResponse> |  |
-
-专有网络VPC
+| <DeleteBandwidthPackageResponse> <RequestId>7D275A59-1EB0-4775-8A20-2A47055EAC5C</RequestId> </DeleteBandwidthPackageResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "7D275A59-1EB0-4775-8A20-2A47055EAC5C" } |  |
+| { "RequestId": "7D275A59-1EB0-4775-8A20-2A47055EAC5C" } |   |
 
 **错误码**
 
@@ -7256,7 +7318,9 @@ http(s)://[Endpoint]/?Action=DeleteBandwidthPackage &BandwidthPackageId=bwp-bp1a
 | 400 | DependencyViolation.ForwardEnt ry | The specified BandwidthPackageId has dependent resource. | 该共享带宽包有未删除的SNAT或DNAT表项，请您先删除 SNAT或DNAT表项再进行操作。 |
 | 400 | DependencyViolation.SnatEntry | The specified BandwidthPackageId has dependent resource. | 该共享带宽包有未删除的SNAT或DNAT表项，请您先删除 SNAT或DNAT表项再进行操作。 |
 
-#### 6.10.16. CreateBandwidthPackage
+#### 6.10.16 CreateBandwidthPackage
+
+使用CreateBandwidthPackage接口创建NAT带宽包。
 
 **使用说明**
 
@@ -7278,12 +7342,8 @@ NAT网关上的公网IP和带宽，被封装为NAT带宽包。一个NAT网关最
 | Zone | String | 否 | cn-qingdao-env17- amtest11001-a | NAT带宽包位于的可用区。 不指定该参数时，系统将随机分配一个可用区。 说明 NAT带宽包上的IP与后端ECS不处于同一个可用区， 并不影响其连通性；但是位于相同可用区时，可减小延迟。 |
 | InternetChargeType | String | 否 | PayByBandwidth | 网络计费类型，取值： PayByTraffic：按流量计费。 PayByBandwidth：按带宽计费。 |
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-专有网络VPC
 
 | BandwidthPackageId | String | bwp-s6lmotmkk**** | NAT带宽包的ID。 |
 |---|---|---|---|
@@ -7297,15 +7357,15 @@ NAT网关上的公网IP和带宽，被封装为NAT带宽包。一个NAT网关最
 http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &NatGatewayId=ngw-7mwb327j1**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateBandwidthPackageResponse> <RequestId>54ED4074-3F89-4F11-B166-837DD3E20FE3</RequestId> <BandwidthPackageId>bwp-s6lmotmkk****</BandwidthPackageId> </CreateBandwidthPackageResponse> |  |
+| <CreateBandwidthPackageResponse> <RequestId>54ED4074-3F89-4F11-B166-837DD3E20FE3</RequestId> <BandwidthPackageId>bwp-s6lmotmkk****</BandwidthPackageId> </CreateBandwidthPackageResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "54ED4074-3F89-4F11-B166-837DD3E20FE3", "BandwidthPackageId": "bwp-s6lmotmkk****" } |  |
+| { "RequestId": "54ED4074-3F89-4F11-B166-837DD3E20FE3", "BandwidthPackageId": "bwp-s6lmotmkk****" } |   |
 
 **错误码**
 
@@ -7323,7 +7383,7 @@ http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &Nat
 | 400 | InvalidParameter.BandwidthPack age.n.ISP.ValueNotSupport | The specified ISP of BandwidthPackage is not valid. | 该共享带宽包的ISP不合法。 |
 | 400 | ZONENOAVAILABLEIP _ _ _ | The Zone have no available ip. | 该可用区没有可用IP。 |
 
-#### 6.10.17. DescribeBandwidthPackages
+#### 6.10.17 DescribeBandwidthPackages
 
 使用DescribeBandwidthPackages接口查询指定地域的NAT带宽包。
 
@@ -7337,17 +7397,13 @@ http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &Nat
 | NatGatewayId | String | 否 | ngw-bp1uewa15k4iydfre**** | NAT网关的ID。 |
 | PageNumber | Integer | 否 | 10 | 列表的页码，默认值为1。 |
 
-专有网络VPC
-
 | PageSize | Integer | 否 | 10 | 分页查询时每页的行数，最大值为50，默认值为10。 |
 |---|---|---|---|---|
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| BandwidthPackages | Array of BandwidthPackage |  | NAT带宽包的详细信息。 |
-| BandwidthPackage |  |  |  |
+| BandwidthPackages | Array of BandwidthPackage |   | NAT带宽包的详细信息。 |
+| BandwidthPackage |   |   |   |
 | Bandwidth | String | 5 | 带宽值，取值范围：5~5000，单位为Mbps。 |
 | BandwidthPackageId | String | bwp-xxoo123sfwr**** | NAT带宽包的ID。 |
 | BusinessStatus | String | Normal | 带宽包的状态。取值： Normal：正常。 FinancialLocked：欠费锁定状态。 SecurityLocked：安全风控锁定状态。 |
@@ -7359,8 +7415,8 @@ http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &Nat
 | IpCount | String | 1 | NAT带宽包中的公网IP数量。 取值范围：1~50。 |
 | Name | String | abc | NAT带宽包的名称。 |
 | NatGatewayId | String | ngw-xxoo123ggtf**** | NAT网关ID。 |
-| PublicIpAddresses | Array of PublicIpAddresse |  | 带宽包中的IP。 |
-| PublicIpAddresse |  |  |  |
+| PublicIpAddresses | Array of PublicIpAddresse |   | 带宽包中的IP。 |
+| PublicIpAddresse |   |   |   |
 | AllocationId | String | eip-2zeerraiwb7ujdeds**** | 分配ID。 |
 | ApAccessEnabled | Boolean | true | 是否开启Ap接入。 |
 | IpAddress | String | 116.52.XX.XX | IP地址。 |
@@ -7372,12 +7428,8 @@ http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &Nat
 | PageNumber | Integer | 10 | 当前页码。 |
 | PageSize | Integer | 10 | 每页包含的条目数。 |
 
-专有网络VPC
-
 | RequestId | String | 4EC47282-1B74-4534-BD0E- 403F3EE64CAF | 请求ID。 |
 |---|---|---|---|
-
-**示例**
 
 请求示例
 
@@ -7385,15 +7437,15 @@ http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &Nat
 http(s)://[Endpoint]/?Action=DescribeBandwidthPackages &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeBandwidthPackagesResponse> <TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> <PageNumber>10</PageNumber> <BandwidthPackages> <Status>Available</Status> <IpCount>1</IpCount> <Description>test123</Description> <ZoneId>cn-qingdao-env17-amtest11001-a</ZoneId> <InstanceChargeType>PostPaid</InstanceChargeType> <ISP>BGP</ISP> <BusinessStatus>Normal</BusinessStatus> <InternetChargeType>PayByBandwidth</InternetChargeType> <Name>abc</Name> <Bandwidth>5</Bandwidth> <CreationTime>2017-06-08T12:20:55</CreationTime> <BandwidthPackageId>bwp-xxoo123sfwr****</BandwidthPackageId> <RegionId>cn-qingdao-env17-d01</RegionId> <NatGatewayId> ngw-xxoo123ggtf****</NatGatewayId> <PublicIpAddresses> <UsingStatus>Available</UsingStatus> <ApAccessEnabled>true</ApAccessEnabled> <AllocationId>eip-2zeerraiwb7ujdeds****</AllocationId> <IpAddress>116.52.XX.XX</IpAddress> </PublicIpAddresses> </BandwidthPackages> </DescribeBandwidthPackagesResponse> |  |
+| <DescribeBandwidthPackagesResponse> <TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId> <PageNumber>10</PageNumber> <BandwidthPackages> <Status>Available</Status> <IpCount>1</IpCount> <Description>test123</Description> <ZoneId>cn-qingdao-env17-amtest11001-a</ZoneId> <InstanceChargeType>PostPaid</InstanceChargeType> <ISP>BGP</ISP> <BusinessStatus>Normal</BusinessStatus> <InternetChargeType>PayByBandwidth</InternetChargeType> <Name>abc</Name> <Bandwidth>5</Bandwidth> <CreationTime>2017-06-08T12:20:55</CreationTime> <BandwidthPackageId>bwp-xxoo123sfwr****</BandwidthPackageId> <RegionId>cn-qingdao-env17-d01</RegionId> <NatGatewayId> ngw-xxoo123ggtf****</NatGatewayId> <PublicIpAddresses> <UsingStatus>Available</UsingStatus> <ApAccessEnabled>true</ApAccessEnabled> <AllocationId>eip-2zeerraiwb7ujdeds****</AllocationId> <IpAddress>116.52.XX.XX</IpAddress> </PublicIpAddresses> </BandwidthPackages> </DescribeBandwidthPackagesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount": 10, "PageSize": 10, "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "PageNumber": 10, "BandwidthPackages": { "Status": "Available", "IpCount": 1, "Description": "test123", "ZoneId": "cn-qingdao-env17-amtest11001-a", "InstanceChargeType": "PostPaid", "ISP": "BGP", "BusinessStatus": "Normal", "InternetChargeType": "PayByBandwidth", "Name": "abc", "Bandwidth": 5, "CreationTime": "2017-06-08T12:20:55", "BandwidthPackageId": "bwp-xxoo123sfwr****", "RegionId": "cn-qingdao-env17-d01", "NatGatewayId": "ngw-xxoo123ggtf****", "PublicIpAddresses": { "UsingStatus": "Available", "ApAccessEnabled": true, "AllocationId": "eip-2zeerraiwb7ujdeds****", "IpAddress": "116.52.XX.XX" } } } |  |
+| { "TotalCount": 10, "PageSize": 10, "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF", "PageNumber": 10, "BandwidthPackages": { "Status": "Available", "IpCount": 1, "Description": "test123", "ZoneId": "cn-qingdao-env17-amtest11001-a", "InstanceChargeType": "PostPaid", "ISP": "BGP", "BusinessStatus": "Normal", "InternetChargeType": "PayByBandwidth", "Name": "abc", "Bandwidth": 5, "CreationTime": "2017-06-08T12:20:55", "BandwidthPackageId": "bwp-xxoo123sfwr****", "RegionId": "cn-qingdao-env17-d01", "NatGatewayId": "ngw-xxoo123ggtf****", "PublicIpAddresses": { "UsingStatus": "Available", "ApAccessEnabled": true, "AllocationId": "eip-2zeerraiwb7ujdeds****", "IpAddress": "116.52.XX.XX" } } } |   |
 
 **错误码**
 
@@ -7401,11 +7453,9 @@ http(s)://[Endpoint]/?Action=DescribeBandwidthPackages &RegionId=cn-qingdao-env1
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的RegionId不存在。 |
 
-#### 6.10.18. ModifyBandwidthPackageAttribute
+#### 6.10.18 ModifyBandwidthPackageAttribute
 
-使用ModifyBandwidthPackageAttribute接口修改指定NAT带宽包的名称和描述。 专有网络VPC
-
-**请求参数**
+使用ModifyBandwidthPackageAttribute接口修改指定NAT带宽包的名称和描述。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -7429,15 +7479,15 @@ http(s)://[Endpoint]/?Action=DescribeBandwidthPackages &RegionId=cn-qingdao-env1
 http(s)://[Endpoint]/?Action=ModifyBandwidthPackageAttribute &BandwidthPackageId=bwp-s6lmotmkk**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyBandwidthPackageAttributeResponse> <RequestId>DFDDD35D-3F29-4E15-AA28-53F5341F9599</RequestId> </ModifyBandwidthPackageAttributeResponse> |  |
+| <ModifyBandwidthPackageAttributeResponse> <RequestId>DFDDD35D-3F29-4E15-AA28-53F5341F9599</RequestId> </ModifyBandwidthPackageAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "DFDDD35D-3F29-4E15-AA28-53F5341F9599" } |  |
+| { "RequestId": "DFDDD35D-3F29-4E15-AA28-53F5341F9599" } |   |
 
 **错误码**
 
@@ -7448,7 +7498,7 @@ http(s)://[Endpoint]/?Action=ModifyBandwidthPackageAttribute &BandwidthPackageId
 | 400 | InvalidParameter.Name.Malforme d | The specified Name is not valid. | 该名称不合法，请您按照正确的格式书写名称。 |
 | 400 | InvalidParameter.Description.Malf ormed | The specified Description is not valid. | 该描述不合法。 |
 
-#### 6.10.19. AddBandwidthPackageIps
+#### 6.10.19 AddBandwidthPackageIps
 
 调用AddBandwidthPackageIps接口在NAT带宽包中增加公网IP。
 
@@ -7458,8 +7508,6 @@ http(s)://[Endpoint]/?Action=ModifyBandwidthPackageAttribute &BandwidthPackageId
 |---|---|---|---|---|
 | Action | String | 是 | AddBandwidthPackageIps | 要执行的操作。 取值： AddBandwidthPackageIps。 |
 | RegionId | String | 是 | cn-qingdao-env17-d01 | NAT带宽包所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
-
-专有网络VPC
 
 | IpCount | String | 是 | 2 | NAT带宽包中的公网IP数量，取值范围：1~50。 |
 |---|---|---|---|---|
@@ -7480,15 +7528,15 @@ http(s)://[Endpoint]/?Action=ModifyBandwidthPackageAttribute &BandwidthPackageId
 http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d01 &IpCount=2 &BandwidthPackageId=bwp-s6lmotmkk****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <AddBandwidthPackageIpsResponse> <RequestId>EC0B5C51-7F40-44D6-A642-1DE764B547EC</RequestId> </AddBandwidthPackageIpsResponse> |  |
+| <AddBandwidthPackageIpsResponse> <RequestId>EC0B5C51-7F40-44D6-A642-1DE764B547EC</RequestId> </AddBandwidthPackageIpsResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "EC0B5C51-7F40-44D6-A642-1DE764B547EC" } |  |
+| { "RequestId": "EC0B5C51-7F40-44D6-A642-1DE764B547EC" } |   |
 
 **错误码**
 
@@ -7499,9 +7547,11 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 | 400 | QuotaExceeded.BandwidthPacka geIps | The specified ipCount exceeded quota. | IP数量超过上限，可以在配额管理页面申请增加配额。 |
 | 404 | BandwidthPackage.FinancialLock ed | The specified BandwidthPackage has been Financail Lock. | 该带宽包被欠费锁定。 |
 
-### IPv6网关
+### 6.11 IPv6网关
 
-#### 6.11.1. CreateIpv6Gateway
+#### 6.11.1 CreateIpv6Gateway
+
+调用CreateIpv6Gateway接口创建IPv6网关。
 
 **请求参数**
 
@@ -7510,8 +7560,6 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 | Action | String | 是 | CreateIpv6Gateway | 要执行的操作，取值：CreateIpv6Gateway。 |
 | RegionId | String | 是 | cn-neimeng-env133-d01 | IPv6网关的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | VpcId | String | 是 | vpc-123sedrfswd23**** | 要开通IPv6网关的VPC ID。 |
-
-专有网络VPC
 
 | Spec | String | 否 | Small | IPv6网关的规格，取值： Small（默认值）：免费版。 Medium：企业版。 Large：企业增强版。 不同规格的IPv6网关的转发能力不同。 |
 |---|---|---|---|---|
@@ -7531,18 +7579,18 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 请求示例
 
 ```
-&RegionId=cn-neimeng-env133-d01 &VpcId=vpc-123sedrfswd23****
+http(s)://[Endpoint]/?Action=CreateIpv6Gateway &RegionId=cn-neimeng-env133-d01 &VpcId=vpc-123sedrfswd23****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateIpv6GatewayResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <Ipv6GatewayId>ipv6gw-hp3y0l3ln89j8cdvf****</Ipv6GatewayId> </CreateIpv6GatewayResponse> |  |
+| <CreateIpv6GatewayResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <Ipv6GatewayId>ipv6gw-hp3y0l3ln89j8cdvf****</Ipv6GatewayId> </CreateIpv6GatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0", "Ipv6GatewayId": "ipv6gw-hp3y0l3ln89j8cdvf****" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0", "Ipv6GatewayId": "ipv6gw-hp3y0l3ln89j8cdvf****" } |   |
 
 **错误码**
 
@@ -7551,7 +7599,9 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 | 404 | InvalidVpcId.NotFound | Specified VPC does not exist. | 该VPC不存在。 |
 
-#### 6.11.2. DeleteIpv6Gateway
+#### 6.11.2 DeleteIpv6Gateway
+
+调用DeleteIpv6Gateway接口删除IPv6网关。 删除企业版和企业增强版IPv6网关前，请先删除仅主动出规则。
 
 **请求参数**
 
@@ -7560,10 +7610,6 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 | Action | String | 是 | DeleteIpv6Gateway | 要执行的操作，取值：DeleteIpv6Gateway。 |
 | Ipv6GatewayId | String | 是 | ipv6gw-hp3y0l3ln89j8**** | 要删除的IPv6网关实例ID。 |
 | RegionId | String | 是 | cn-neimeng-env133-d01 | IPv6网关所属的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
-
-**返回数据**
-
-专有网络VPC
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -7574,18 +7620,18 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 请求示例
 
 ```
-&Ipv6GatewayId=ipv6gw-hp3y0l3ln89j8**** &RegionId=cn-neimeng-env133-d01
+http(s)://[Endpoint]/?Action=DeleteIpv6Gateway &Ipv6GatewayId=ipv6gw-hp3y0l3ln89j8**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteIpv6GatewayResponse> <RequestId>E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE</RequestId> </DeleteIpv6GatewayResponse> |  |
+| <DeleteIpv6GatewayResponse> <RequestId>E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE</RequestId> </DeleteIpv6GatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE" } |  |
+| { "RequestId": "E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE" } |   |
 
 **错误码**
 
@@ -7593,7 +7639,9 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.3. DescribeIpv6Gateways
+#### 6.11.3 DescribeIpv6Gateways
+
+调用DescribeIpv6Gateways接口查询已创建的IPv6网关。
 
 **请求参数**
 
@@ -7611,14 +7659,12 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Ipv6Gateways | Array of Ipv6Gateway |  | IPv6网关的详细信息。 |
-| Ipv6Gateway |  |  |  |
+| Ipv6Gateways | Array of Ipv6Gateway |   | IPv6网关的详细信息。 |
+| Ipv6Gateway |   |   |   |
 | BusinessStatus | String | Normal | IPv6网关的状态，取值： Normal：正常。 FinancialLocked：欠费锁定。 |
 | CreationTime | String | 2020-12-20T14:51:23Z | IPv6网关的创建时间。 |
 | Description | String | descriptionforIPv6GW | IPv6网关的描述信息。 |
 | ExpiredTime | String | 2020-12-21T14:51:23Z | IPv6网关的过期时间。 |
-
-专有网络VPC
 
 | InstanceChargeType | String | PostPaid | IPv6网关的计费方式。 |
 |---|---|---|---|
@@ -7641,20 +7687,16 @@ http(s)://[Endpoint]/?Action=AddBandwidthPackageIps &RegionId=cn-qingdao-env17-d
 http(s)://[Endpoint]/?Action=DescribeIpv6Gateways &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeIpv6GatewaysResponse> <PageNumber>1</PageNumber> <Ipv6Gateways> <Ipv6Gateway> <Name></Name> <CreationTime>2018-12-20T14:51:23Z</CreationTime> <Status>Available</Status> <Description></Description> <BusinessStatus>Normal</BusinessStatus> <Spec>Medium</Spec> <RegionId>cn-huhehaote</RegionId> <InstanceChargeType>PostPaid</InstanceChargeType> <ExpiredTime></ExpiredTime> <VpcId>vpc-hp3ag7ydchedxxxxxxxxx</VpcId> <Ipv6GatewayId>ipv6gw-hp33of4uz4k4kxxxxxxxx</Ipv6GatewayId> </Ipv6Gateway> <Ipv6Gateway> <CreationTime>2018-12-05T09:21:35Z</CreationTime> <Name>IPv6网关</Name> <Status>Available</Status> <Description></Description> <BusinessStatus>Normal</BusinessStatus> <Spec>Medium</Spec> <RegionId>cn-huhehaote</RegionId> <InstanceChargeType>PostPaid</InstanceChargeType> <ExpiredTime></ExpiredTime> <VpcId>vpc-hp3kzilwd9yflxxxxxxxx</VpcId> <Ipv6GatewayId>ipv6gw-hp33p10bdbt77xxxxxxxx</Ipv6GatewayId> </Ipv6Gateway> </Ipv6Gateways> <TotalCount>2</TotalCount> <PageSize>10</PageSize> <RequestId>E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD</RequestId> </DescribeIpv6GatewaysResponse> |  |
-
-`JSON` 格式专有网络VPC
+| <DescribeIpv6GatewaysResponse> <PageNumber>1</PageNumber> <Ipv6Gateways> <Ipv6Gateway> <Name></Name> <CreationTime>2018-12-20T14:51:23Z</CreationTime> <Status>Available</Status> <Description></Description> <BusinessStatus>Normal</BusinessStatus> <Spec>Medium</Spec> <RegionId>cn-huhehaote</RegionId> <InstanceChargeType>PostPaid</InstanceChargeType> <ExpiredTime></ExpiredTime> <VpcId>vpc-hp3ag7ydchedxxxxxxxxx</VpcId> <Ipv6GatewayId>ipv6gw-hp33of4uz4k4kxxxxxxxx</Ipv6GatewayId> </Ipv6Gateway> <Ipv6Gateway> <CreationTime>2018-12-05T09:21:35Z</CreationTime> <Name>IPv6网关</Name> <Status>Available</Status> <Description></Description> <BusinessStatus>Normal</BusinessStatus> <Spec>Medium</Spec> <RegionId>cn-huhehaote</RegionId> <InstanceChargeType>PostPaid</InstanceChargeType> <ExpiredTime></ExpiredTime> <VpcId>vpc-hp3kzilwd9yflxxxxxxxx</VpcId> <Ipv6GatewayId>ipv6gw-hp33p10bdbt77xxxxxxxx</Ipv6GatewayId> </Ipv6Gateway> </Ipv6Gateways> <TotalCount>2</TotalCount> <PageSize>10</PageSize> <RequestId>E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD</RequestId> </DescribeIpv6GatewaysResponse> |   |
 
 ```json
-{
     "PageNumber": 1,
     "Ipv6Gateways": {
         "Ipv6Gateway": [
-            {
                 "Name": "",
                 "CreationTime": "2018-12-20T14:51:23Z",
                 "Status": "Available",
@@ -7666,8 +7708,11 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Gateways &RegionId=cn-neimeng-env133-d0
                 "ExpiredTime": "",
                 "VpcId": "vpc-hp3ag7ydchedxxxxxxxxx",
                 "Ipv6GatewayId": "ipv6gw-hp33of4uz4k4kxxxxxxxx"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "CreationTime": "2018-12-05T09:21:35Z",
                 "Name": "IPv6网关",
                 "Status": "Available",
@@ -7679,20 +7724,19 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Gateways &RegionId=cn-neimeng-env133-d0
                 "ExpiredTime": "",
                 "VpcId": "vpc-hp3kzilwd9yflxxxxxxxx",
                 "Ipv6GatewayId": "ipv6gw-hp33p10bdbt77xxxxxxxx"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "TotalCount": 2,
     "PageSize": 10,
     "RequestId": "E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
-}
 ```
 
-#### 6.11.4. ModifyIpv6GatewaySpec
+`}`
+
+#### 6.11.4 ModifyIpv6GatewaySpec
 
 调用ModifyIpv6GatewaySpec接口修改IPv6网关的规格。不同的规格的转发能力和带宽都不同。
 
@@ -7720,15 +7764,15 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Gateways &RegionId=cn-neimeng-env133-d0
 http(s)://[Endpoint]/?Action=ModifyIpv6GatewaySpec &Ipv6GatewayId=ipv6gw-123456**** &RegionId=cn-neimeng-env133-d01 &Spec=Small
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
-
 ```xml
+<ModifyIpv6GatewaySpecResponse>
    <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId>
+</ModifyIpv6GatewaySpecResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75" } |  |
+| { "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75" } |   |
 
 **错误码**
 
@@ -7736,7 +7780,7 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewaySpec &Ipv6GatewayId=ipv6gw-123456*
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.5. DescribeIpv6EgressOnlyRules
+#### 6.11.5 DescribeIpv6EgressOnlyRules
 
 调用DescribeIpv6EgressOnlyRules接口查询创建的仅主动出规则。
 
@@ -7758,8 +7802,8 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewaySpec &Ipv6GatewayId=ipv6gw-123456*
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Ipv6EgressOnlyRules | Array of Ipv6EgressOnlyRule |  | 仅主动出规则的详细信息。 |
-| Ipv6EgressOnlyRule |  |  |  |
+| Ipv6EgressOnlyRules | Array of Ipv6EgressOnlyRule |   | 仅主动出规则的详细信息。 |
+| Ipv6EgressOnlyRule |   |   |   |
 | Description | String | ruledescription | 仅主动出规则的描述信息。 |
 | InstanceId | String | i-123456**** | 配置了仅主动出规则的实例ID。 |
 | InstanceType | String | Ipv6Address | 配置了仅主动出规则的实例类型。 |
@@ -7770,12 +7814,8 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewaySpec &Ipv6GatewayId=ipv6gw-123456*
 | PageSize | Integer | 10 | 分页查询时每页的行数，最大值为50，默认值为10。 |
 | RequestId | String | E16671B7-DEA6-48E0-8E9C- 41913DAD44DD | 请求ID。 |
 
-专有网络VPC
-
 | TotalCount | Integer | 1 | 列表条目数。 |
 |---|---|---|---|
-
-**示例**
 
 请求示例
 
@@ -7783,17 +7823,17 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewaySpec &Ipv6GatewayId=ipv6gw-123456*
 http(s)://[Endpoint]/?Action=DescribeIpv6EgressOnlyRules &Ipv6GatewayId=ipv6gw-123456**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeIpv6EgressOnlyRulesResponse> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>E16671B7-DEA6-48E0-8E9C-41913DAD44DD</RequestId> <PageNumber>1</PageNumber> <Ipv6EgressOnlyRules> <Status>Available</Status> <Ipv6EgressOnlyRuleId>ipv6gwpy-123456****</Ipv6EgressOnlyRuleId> <Description>ruledescription</Description> <InstanceId>i-123456****</InstanceId> <InstanceType>Ipv6Address</InstanceType> <Name>rulename</Name> </Ipv6EgressOnlyRules> </DescribeIpv6EgressOnlyRulesResponse> |  |
+| <DescribeIpv6EgressOnlyRulesResponse> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>E16671B7-DEA6-48E0-8E9C-41913DAD44DD</RequestId> <PageNumber>1</PageNumber> <Ipv6EgressOnlyRules> <Status>Available</Status> <Ipv6EgressOnlyRuleId>ipv6gwpy-123456****</Ipv6EgressOnlyRuleId> <Description>ruledescription</Description> <InstanceId>i-123456****</InstanceId> <InstanceType>Ipv6Address</InstanceType> <Name>rulename</Name> </Ipv6EgressOnlyRules> </DescribeIpv6EgressOnlyRulesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount": 1, "PageSize": 10, "RequestId": "E16671B7-DEA6-48E0-8E9C-41913DAD44DD", "PageNumber": 1, "Ipv6EgressOnlyRules": { "Status": "Available", "Ipv6EgressOnlyRuleId": "ipv6gwpy-123456****", "Description": "ruledescription", "InstanceId": "i-123456****", "InstanceType": "Ipv6Address", "Name": "rulename" } } |  |
+| { "TotalCount": 1, "PageSize": 10, "RequestId": "E16671B7-DEA6-48E0-8E9C-41913DAD44DD", "PageNumber": 1, "Ipv6EgressOnlyRules": { "Status": "Available", "Ipv6EgressOnlyRuleId": "ipv6gwpy-123456****", "Description": "ruledescription", "InstanceId": "i-123456****", "InstanceType": "Ipv6Address", "Name": "rulename" } } |   |
 
-#### 6.11.6. CreateIpv6EgressOnlyRule
+#### 6.11.6 CreateIpv6EgressOnlyRule
 
 调用CreateIpv6EgressOnlyRule为IPv6地址添加仅主动出规则。
 
@@ -7810,10 +7850,6 @@ http(s)://[Endpoint]/?Action=DescribeIpv6EgressOnlyRules &Ipv6GatewayId=ipv6gw-1
 | Description | String | 否 | ruledescription | 仅主动出规则的描述。 长度为2~256个字符，不能以 http:// 或 https:// 开头。 |
 | ClientToken | String | 否 | 0c593ea1-3bea-11e9-b96b- 88e9fe637760 | 客户端Token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个 ASCII字符。 |
 
-专有网络VPC
-
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | Ipv6EgressRuleId | String | ipv6py-hp3w98rmlbqp01245**** | 仅主动出规则的ID。 |
@@ -7827,15 +7863,15 @@ http(s)://[Endpoint]/?Action=DescribeIpv6EgressOnlyRules &Ipv6GatewayId=ipv6gw-1
 http(s)://[Endpoint]/?Action=CreateIpv6EgressOnlyRule &InstanceId=ipv6-hp3nxjkfxn5pnhgl5**** &Ipv6GatewayId=ipv6gw-hp3c2paq0ywauasza**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateIpv6EgressOnlyRuleResponse> <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId> <Ipv6EgressRuleId>ipv6py-hp3w98rmlbqp01245****</Ipv6EgressRuleId> </CreateIpv6EgressOnlyRuleResponse> |  |
+| <CreateIpv6EgressOnlyRuleResponse> <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId> <Ipv6EgressRuleId>ipv6py-hp3w98rmlbqp01245****</Ipv6EgressRuleId> </CreateIpv6EgressOnlyRuleResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "Ipv6EgressRuleId": "ipv6py-hp3w98rmlbqp01245****", "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75" } |  |
+| { "Ipv6EgressRuleId": "ipv6py-hp3w98rmlbqp01245****", "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75" } |   |
 
 **错误码**
 
@@ -7843,7 +7879,9 @@ http(s)://[Endpoint]/?Action=CreateIpv6EgressOnlyRule &InstanceId=ipv6-hp3nxjkfx
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.7. DeleteIpv6EgressOnlyRule
+#### 6.11.7 DeleteIpv6EgressOnlyRule
+
+调用DeleteIpv6EgressOnlyRule接口删除仅主动出规则。
 
 **请求参数**
 
@@ -7868,17 +7906,21 @@ http(s)://[Endpoint]/?Action=CreateIpv6EgressOnlyRule &InstanceId=ipv6-hp3nxjkfx
 http(s)://[Endpoint]/?Action=DeleteIpv6EgressOnlyRule &Ipv6EgressOnlyRuleId=ipv6py-hp3w98rmlbqp0**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例
 
 ```xml
+<DeleteIpv6EgressOnlyRuleResponse>
    <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId>
+</DeleteIpv6EgressOnlyRuleResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "4E40EAF1-783D-4C05-948D-DA0426C398C1" } |  |
+| { "RequestId": "4E40EAF1-783D-4C05-948D-DA0426C398C1" } |   |
 
-#### 6.11.8. DeleteIpv6InternetBandwidth
+#### 6.11.8 DeleteIpv6InternetBandwidth
+
+调用DeleteIpv6InternetBandwidth接口删除公网带宽。
 
 **请求参数**
 
@@ -7903,15 +7945,15 @@ http(s)://[Endpoint]/?Action=DeleteIpv6EgressOnlyRule &Ipv6EgressOnlyRuleId=ipv6
 http(s)://[Endpoint]/?Action=DeleteIpv6InternetBandwidth &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteIpv6InternetBandwidthResponse> <RequestId>6972A26E-99B1-4367-9890-FBDEBB0F5E7D</RequestId> </DeleteIpv6InternetBandwidthResponse> |  |
+| <DeleteIpv6InternetBandwidthResponse> <RequestId>6972A26E-99B1-4367-9890-FBDEBB0F5E7D</RequestId> </DeleteIpv6InternetBandwidthResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "E07E0FE6-5C21-405F-AF82-7613AA81EF92" } |  |
+| { "RequestId": "E07E0FE6-5C21-405F-AF82-7613AA81EF92" } |   |
 
 **错误码**
 
@@ -7919,7 +7961,7 @@ http(s)://[Endpoint]/?Action=DeleteIpv6InternetBandwidth &RegionId=cn-neimeng-en
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.9. DescribeIpv6GatewayAttribute
+#### 6.11.9 DescribeIpv6GatewayAttribute
 
 调用DescribeIpv6GatewayAttribute接口查询指定IPv6网关的详细信息。
 
@@ -7930,10 +7972,6 @@ http(s)://[Endpoint]/?Action=DeleteIpv6InternetBandwidth &RegionId=cn-neimeng-en
 | Action | String | 是 | DescribeIpv6GatewayAttribut e | 要执行的操作，取值：DescribeIpv6GatewayAttribute。 |
 | Ipv6GatewayId | String | 是 | ipv6gw-123456**** | 要查询的IPv6网关实例ID。 |
 | RegionId | String | 是 | cn-neimeng-env133-d01 | IPv6网关的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
-
-专有网络VPC
-
-**返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -7958,16 +7996,15 @@ http(s)://[Endpoint]/?Action=DeleteIpv6InternetBandwidth &RegionId=cn-neimeng-en
 http(s)://[Endpoint]/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-123456**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeIpv6GatewayAttributeResponse> <Status>Available</Status> <Description>test</Description> <RequestId>E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD</RequestId> <InstanceChargeType>PostPaid</InstanceChargeType> <Ipv6GatewayId>ipv6gw-123456****</Ipv6GatewayId> <BusinessStatus>Normal</BusinessStatus> <Name>test</Name> <VpcId>vpc-123456****</VpcId> <ExpiredTime>2020-12-06T09:21:35Z</ExpiredTime> <CreationTime>2020-12-05T09:21:35Z</CreationTime> <RegionId>cn-neimeng-env133-d01</RegionId> <Spec>Small</Spec> </DescribeIpv6GatewayAttributeResponse> |  |
+| <DescribeIpv6GatewayAttributeResponse> <Status>Available</Status> <Description>test</Description> <RequestId>E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD</RequestId> <InstanceChargeType>PostPaid</InstanceChargeType> <Ipv6GatewayId>ipv6gw-123456****</Ipv6GatewayId> <BusinessStatus>Normal</BusinessStatus> <Name>test</Name> <VpcId>vpc-123456****</VpcId> <ExpiredTime>2020-12-06T09:21:35Z</ExpiredTime> <CreationTime>2020-12-05T09:21:35Z</CreationTime> <RegionId>cn-neimeng-env133-d01</RegionId> <Spec>Small</Spec> </DescribeIpv6GatewayAttributeResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "Status": "Available",
     "Description": "test",
     "RequestId": "E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD",
@@ -7980,8 +8017,9 @@ http(s)://[Endpoint]/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-
     "CreationTime": "2020-12-05T09:21:35Z",
     "RegionId": "cn-neimeng-env133-d01",
     "Spec": "Small"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7989,7 +8027,9 @@ http(s)://[Endpoint]/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.10. DescribeIpv6Addresses
+#### 6.11.10 DescribeIpv6Addresses
+
+调用DescribeIpv6Addresses接口查询IPv6地址列表。
 
 **请求参数**
 
@@ -8013,12 +8053,10 @@ http(s)://[Endpoint]/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Ipv6Addresses | Array of Ipv6Address |  | IPv6地址的详细信息。 |
-| Ipv6Address |  |  |  |
+| Ipv6Addresses | Array of Ipv6Address |   | IPv6地址的详细信息。 |
+| Ipv6Address |   |   |   |
 | AllocationTime | String | 2020-12-20T14:56:09Z | IPv6地址的创建时间。 |
 | AssociatedInstanceId | String | i-hp325kt6307**** | IPv6地址关联的实例ID。 |
-
-专有网络VPC
 
 | AssociatedInstanceType | String | EcsInstance | IPv6地址关联的实例类型，取值： EcsInstance：VPC类型的ECS实例。 |
 |---|---|---|---|
@@ -8026,7 +8064,7 @@ http(s)://[Endpoint]/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-
 | Ipv6AddressId | String | ipv6-n2yrzmwjz2uj3s7j5**** | IPv6地址ID。 |
 | Ipv6AddressName | String | test | IPv6地址的实例名称。 |
 | Ipv6GatewayId | String | ipv6gw-hp38x2x0fz7**** | IPv6地址的所属IPv6网关实例ID。 |
-| Ipv6InternetBandwidth | Struct |  | IPv6地址的公网带宽信息。 |
+| Ipv6InternetBandwidth | Struct |   | IPv6地址的公网带宽信息。 |
 | Bandwidth | Integer | 2 | IPv6地址的独享公网带宽，单位Mbps。 |
 | BusinessStatus | String | Normal | IPv6地址的独享带宽的状态，取值： Normal：正常。 FinacialLocked：欠费锁定。 SecurityLocked：安全锁定。 |
 | InstanceChargeType | String | PostPaid | IPv6网关的付费方式，取值： PostPaid：后付费。 |
@@ -8050,9 +8088,10 @@ http(s)://[Endpoint]/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-
 http(s)://[Endpoint]/?Action=DescribeIpv6Addresses &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeIpv6AddressesResponse>
   <TotalCount>2</TotalCount>
   <PageSize>10</PageSize>
   <RequestId>AA4486A8-B6AE-469E-AB09-820EF8ECFA2B</RequestId>
@@ -8078,11 +8117,12 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Addresses &RegionId=cn-neimeng-env133-d
               <InternetChargeType>PayByTraffic</InternetChargeType>
         </Ipv6InternetBandwidth>
   </Ipv6Addresses>
+</DescribeIpv6AddressesResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount": 2, "PageSize": 10, "RequestId": "AA4486A8-B6AE-469E-AB09-820EF8ECFA2B", "PageNumber": 1, "Ipv6Addresses": { "AllocationTime": "2020-12-20T14:56:09Z", "Status": "Available", "AssociatedInstanceId": "i-hp325kt6307****", "VpcId": "vpc-hp325kt6307****", "NetworkType": "Public", "VSwitchId": "vsw-123456****", "Ipv6AddressId": "ipv6-n2yrzmwjz2uj3s7j5****", "Ipv6GatewayId": "ipv6gw-hp38x2x0fz7****", "RealBandwidth": 2, "AssociatedInstanceType": "EcsInstance", "Ipv6Address": "2408:XXXX:180:1701:94c7:bc38:3bfa:d2c", "Ipv6AddressName": "test", "Ipv6InternetBandwidth": { "InstanceChargeType": "PostPaid", "Bandwidth": 2, "Ipv6InternetBandwidthId": "ipv6bw-hp3b35oq1fj50kb****", "BusinessStatus": "Normal", "InternetChargeType": "PayByTraffic" } } } |  |
+| { "TotalCount": 2, "PageSize": 10, "RequestId": "AA4486A8-B6AE-469E-AB09-820EF8ECFA2B", "PageNumber": 1, "Ipv6Addresses": { "AllocationTime": "2020-12-20T14:56:09Z", "Status": "Available", "AssociatedInstanceId": "i-hp325kt6307****", "VpcId": "vpc-hp325kt6307****", "NetworkType": "Public", "VSwitchId": "vsw-123456****", "Ipv6AddressId": "ipv6-n2yrzmwjz2uj3s7j5****", "Ipv6GatewayId": "ipv6gw-hp38x2x0fz7****", "RealBandwidth": 2, "AssociatedInstanceType": "EcsInstance", "Ipv6Address": "2408:XXXX:180:1701:94c7:bc38:3bfa:d2c", "Ipv6AddressName": "test", "Ipv6InternetBandwidth": { "InstanceChargeType": "PostPaid", "Bandwidth": 2, "Ipv6InternetBandwidthId": "ipv6bw-hp3b35oq1fj50kb****", "BusinessStatus": "Normal", "InternetChargeType": "PayByTraffic" } } } |   |
 
 **错误码**
 
@@ -8090,7 +8130,7 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Addresses &RegionId=cn-neimeng-env133-d
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.11. ModifyIpv6InternetBandwidth
+#### 6.11.11 ModifyIpv6InternetBandwidth
 
 调用ModifyIpv6InternetBandwidth接口修改IPv6地址的公网带宽。
 
@@ -8099,8 +8139,6 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Addresses &RegionId=cn-neimeng-env133-d
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ModifyIpv6InternetBandwidth | 要执行的操作，取值：ModifyIpv6InternetBandwidth。 |
-
-专有网络VPC
 
 | Bandwidth | Long | 是 | 4 | IPv6地址的公网带宽，单位：Mbps，取值范围：1~5000。 当InternetChargeType为PayByBandwidth，IPv6地址的公网带宽为1~5000。 当InternetChargeType为PayByTraffic，IPv6地址的公网带宽范围同时受到IPv6网关规格的制约。 Small（默认免费版），公网带宽范围为1~500。 Medium（企业版），公网带宽范围为1~1000。 Large（企业增强版），公网带宽范围为1~2000。 |
 |---|---|---|---|---|
@@ -8123,15 +8161,15 @@ http(s)://[Endpoint]/?Action=DescribeIpv6Addresses &RegionId=cn-neimeng-env133-d
 http(s)://[Endpoint]/?Action=ModifyIpv6InternetBandwidth &Bandwidth=4 &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyIpv6InternetBandwidthResponse> <RequestId>D560AF68-4CE8-4A5C-B3FE-469F558094D0</RequestId> </ModifyIpv6InternetBandwidthResponse> |  |
+| <ModifyIpv6InternetBandwidthResponse> <RequestId>D560AF68-4CE8-4A5C-B3FE-469F558094D0</RequestId> </ModifyIpv6InternetBandwidthResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| {"RequestId":"D560AF68-4CE8-4A5C-B3FE-469F558094D0"} |  |
+| {"RequestId":"D560AF68-4CE8-4A5C-B3FE-469F558094D0"} |   |
 
 **错误码**
 
@@ -8139,7 +8177,7 @@ http(s)://[Endpoint]/?Action=ModifyIpv6InternetBandwidth &Bandwidth=4 &RegionId=
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的RegionId不存在。 |
 
-#### 6.11.12. AllocateIpv6InternetBandwidth
+#### 6.11.12 AllocateIpv6InternetBandwidth
 
 调用AllocateIpv6InternetBandwidth接口为IPv6地址购买公网带宽。
 
@@ -8148,8 +8186,6 @@ http(s)://[Endpoint]/?Action=ModifyIpv6InternetBandwidth &Bandwidth=4 &RegionId=
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | AllocateIpv6InternetBandwidt h | 要执行的操作，取值：AllocateIpv6InternetBandwidth。 |
-
-专有网络VPC
 
 | Bandwidth | Integer | 是 | 2 | IPv6地址的公网带宽，单位：Mbps，取值范围：1~5000。 当InternetChargeType为PayByBandwidth，IPv6地址的公网带宽为1~5000。 当InternetChargeType为PayByTraffic，IPv6地址的公网带宽范围同时受到IPv6网关规格的制约。 Small（默认免费版），公网带宽范围为1~500。 Medium（企业版），公网带宽范围为1~1000。 Large（企业增强版），公网带宽范围为1~2000。 |
 |---|---|---|---|---|
@@ -8175,15 +8211,15 @@ http(s)://[Endpoint]/?Action=ModifyIpv6InternetBandwidth &Bandwidth=4 &RegionId=
 http(s)://[Endpoint]/?Action=AllocateIpv6InternetBandwidth &Bandwidth=2 &Ipv6AddressId=ipv6-123456**** &Ipv6GatewayId=ipv6gw-123456**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <AllocateIpv6InternetBandwidthResponse> <RequestId>6972A26E-99B1-4367-9890-FBDEBB0F5E7D</RequestId> <InternetBandwidthId>2</InternetBandwidthId> <Ipv6AddressId>ipv6-123456****</Ipv6AddressId> </AllocateIpv6InternetBandwidthResponse> |  |
+| <AllocateIpv6InternetBandwidthResponse> <RequestId>6972A26E-99B1-4367-9890-FBDEBB0F5E7D</RequestId> <InternetBandwidthId>2</InternetBandwidthId> <Ipv6AddressId>ipv6-123456****</Ipv6AddressId> </AllocateIpv6InternetBandwidthResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "6972A26E-99B1-4367-9890-FBDEBB0F5E7D", "InternetBandwidthId": 2, "Ipv6AddressId": "ipv6-123456****" } |  |
+| { "RequestId": "6972A26E-99B1-4367-9890-FBDEBB0F5E7D", "InternetBandwidthId": 2, "Ipv6AddressId": "ipv6-123456****" } |   |
 
 **错误码**
 
@@ -8191,16 +8227,12 @@ http(s)://[Endpoint]/?Action=AllocateIpv6InternetBandwidth &Bandwidth=2 &Ipv6Add
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.13. ModifyIpv6AddressAttribute
+#### 6.11.13 ModifyIpv6AddressAttribute
 
 调用ModifyIpv6AddressAttribute接口修改IPv6地址的名称和描述。
 
-**请求参数**
-
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-专有网络VPC
 
 | Action | String | 是 | ModifyIpv6AddressAttribute | 要执行的操作，取值：ModifyIpv6AddressAttribute。 |
 |---|---|---|---|---|
@@ -8223,15 +8255,15 @@ http(s)://[Endpoint]/?Action=AllocateIpv6InternetBandwidth &Bandwidth=2 &Ipv6Add
 http(s)://[Endpoint]/?Action=ModifyIpv6AddressAttribute &Ipv6AddressId=ipv6-hp32vv2klzw4yerdf**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyIpv6AddressAttributeResponse> <RequestId>D560AF68-4CE8-4A5C-B3FE-469F558094D0</RequestId> </ModifyIpv6AddressAttributeResponse> |  |
+| <ModifyIpv6AddressAttributeResponse> <RequestId>D560AF68-4CE8-4A5C-B3FE-469F558094D0</RequestId> </ModifyIpv6AddressAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0" } |  |
+| { "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0" } |   |
 
 **错误码**
 
@@ -8239,7 +8271,9 @@ http(s)://[Endpoint]/?Action=ModifyIpv6AddressAttribute &Ipv6AddressId=ipv6-hp32
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-#### 6.11.14. ModifyIpv6GatewayAttribute
+#### 6.11.14 ModifyIpv6GatewayAttribute
+
+调用ModifyIpv6GatewayAttribute修改IPv6网关的信息。
 
 **请求参数**
 
@@ -8257,25 +8291,19 @@ http(s)://[Endpoint]/?Action=ModifyIpv6AddressAttribute &Ipv6AddressId=ipv6-hp32
 |---|---|---|---|
 | RequestId | String | 9DFEDBEE-E5AB-49E8-A2DC- CC114C67AF75 | 请求ID。 |
 
-专有网络VPC
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp39kh1ya51yzp2lu**** &RegionId=cn-neimeng-env133-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyIpv6GatewayAttributeResponse> <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId> </ModifyIpv6GatewayAttributeResponse> |  |
+| <ModifyIpv6GatewayAttributeResponse> <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId> </ModifyIpv6GatewayAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75" } |  |
+| { "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75" } |   |
 
 **错误码**
 
@@ -8283,9 +8311,9 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | 指定的regionid不存在。 |
 
-### 高可用虚拟IP
+### 6.12 高可用虚拟IP
 
-#### 6.12.1. CreateHaVip
+#### 6.12.1 CreateHaVip
 
 创建高可用虚拟IP HaVip（High-Availability Virtual IP Address）。
 
@@ -8313,25 +8341,19 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 | IpAddress | String | 192.XX.XX.10 | HaVip实例的IP地址。 |
 | RequestId | String | C44F62BE-9CE7-4277-B117- 69243F3988BF | 请求ID。 |
 
-专有网络VPC
-
-**示例**
-
-请求示例
-
 ```
-&RegionId=cn-qingdao-env17-d01 &VSwitchId=vsw-asdfjlnau****
+http(s)://[Endpoint]/?Action=CreateHaVip &RegionId=cn-qingdao-env17-d01 &VSwitchId=vsw-asdfjlnau****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> <IpAddress>192.XX.XX.10</IpAddress> <HaVipId>havip-2zeo05qre24nhrqp****</HaVipId> </CreateHaVipResponse> |  |
+| <CreateHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> <IpAddress>192.XX.XX.10</IpAddress> <HaVipId>havip-2zeo05qre24nhrqp****</HaVipId> </CreateHaVipResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF", "IpAddress": "192.XX.XX.10", "HaVipId": "havip-2zeo05qre24nhrqp****" } |  |
+| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF", "IpAddress": "192.XX.XX.10", "HaVipId": "havip-2zeo05qre24nhrqp****" } |   |
 
 **错误码**
 
@@ -8346,9 +8368,9 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 | 400 | InvalidIPAddress.NotAvailable | The specified IPAddress is not available because it is a system reserved IPAddress. | 该IP不可用，该IP是系统预留IP。 |
 | 400 | InvalidIPAddress.AlreadyUsed | The specified IPAddress is already used by other resource. | 该IP已经被占用。 |
 
-#### 6.12.2. DescribeHaVips
+#### 6.12.2 DescribeHaVips
 
-在调用本接口前，请确保已获取目标地域ID（RegionId），可通过调用 DescribeRegions 接口获取。支持通过 Filter 参数进行多条件组合过滤，各 Filter 之间为逻辑与 （AND）关系，每个 Filter 内的多个 Value 之间为逻辑或（OR）关系。
+查询指定地域内的高可用虚拟IP实例。 在调用本接口前，请确保已获取目标地域ID（RegionId），可通过调用 DescribeRegions 接口获取。支持通过 Filter 参数进行多条件组合过滤，各 Filter 之间为逻辑与 （AND）关系，每个 Filter 内的多个 Value 之间为逻辑或（OR）关系。
 
 **请求头**
 
@@ -8366,15 +8388,15 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 | RegionId | String | Query | 是 | cn-qingdao-env17-d01 | HaVip实例所在的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | PageNumber | Integer | Query | 否 | 1 | 列表的页码，默认值为1。 默认值：1 |
 
-| 专有网络VPC |  |  |  |  | 开发指南·API参考 |
+| 专有网络VPC |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | PageSize | Integer | Query | 否 | 10 | 分页查询时每页的行数，最大值为50，默认值为 10。 默认值：10 取值范围：<1, 50> |
 | Filter | RepeatList | Query | 否 | - | 过滤条件详细信息。 |
-| -Key | String |  | 否 | HaVipId | 过滤条件，最多可支持 5 个过滤条件。N 的取值范围为1~5,支持的过滤条件如下： VpcId：专有网络 ID。 VSwitchId：交换机 ID。 Status：HaVip 的状态。 HaVipId：HaVip 的 ID。 HaVipAddress：HaVip 的 IP 地址。 每个过滤条件（Filter Key）可以过滤多个值， 每个值之间为“或”关系，只要有其中一个值符合则视为符合参数的过滤条件。 各个过滤条件（Filter Key）之间为“与”关系， 必须符合所有参数的过滤条件，才能被查询出来。 |
-| -Value | RepeatList |  | 否 | havip-bp19o63nequs01i8d**** | 指定的过滤条件对应的值。N 的取值范围为 1~5。 |
+| -Key | String |   | 否 | HaVipId | 过滤条件，最多可支持 5 个过滤条件。N 的取值范围为1~5,支持的过滤条件如下： VpcId：专有网络 ID。 VSwitchId：交换机 ID。 Status：HaVip 的状态。 HaVipId：HaVip 的 ID。 HaVipAddress：HaVip 的 IP 地址。 每个过滤条件（Filter Key）可以过滤多个值， 每个值之间为“或”关系，只要有其中一个值符合则视为符合参数的过滤条件。 各个过滤条件（Filter Key）之间为“与”关系， 必须符合所有参数的过滤条件，才能被查询出来。 |
+| -Value | RepeatList |   | 否 | havip-bp19o63nequs01i8d**** | 指定的过滤条件对应的值。N 的取值范围为 1~5。 |
 
 每个 Filter.N.Key 可对应多个 Filter.N.Value.N（即一个 Key 可配置多个 Value），多个 Value 之间是 OR 关系；不同 Filter 之间是 AND 关系。
 
@@ -8402,9 +8424,7 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 10 | 每页包含的条目数。 |
 
-专有网络VPC 返回结果中 HaVips 是一个数组，每个元素代表一个 HaVip 实例；AssociatedEipAddresses 和 AssociatedInstances 字段均为 List 类型，但在实际返回中可能以字符串形式呈现（单值场景），建议按 List 解析。
-
-**错误码**
+返回结果中 HaVips 是一个数组，每个元素代表一个 HaVip 实例；AssociatedEipAddresses 和 AssociatedInstances 字段均为 List 类型，但在实际返回中可能以字符串形式呈现（单值场景），建议按 List 解析。
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -8415,7 +8435,9 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 
 本接口为 VPC 服务提供的系统级 API，适用于查询高可用虚拟 IP（HaVip）资源。HaVip 是一种可在专有网络内实现高可用的私网 IP 资源，常用于 ECS 实例双机热备等场景。
 
-#### 6.12.3. ModifyHaVipAttribute
+#### 6.12.3 ModifyHaVipAttribute
+
+调用ModifyHaVipAttribute接口修改HaVip实例的描述。
 
 **请求参数**
 
@@ -8442,15 +8464,15 @@ http(s)://[Endpoint]/?Action=ModifyIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp
 http(s)://[Endpoint]/?Action=ModifyHaVipAttribute &HaVipId=havip-2zeo05qre24nhrqp**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyHaVipAttributeResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </ModifyHaVipAttributeResponse> |  |
+| <ModifyHaVipAttributeResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </ModifyHaVipAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |  |
+| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |   |
 
 **错误码**
 
@@ -8459,18 +8481,16 @@ http(s)://[Endpoint]/?Action=ModifyHaVipAttribute &HaVipId=havip-2zeo05qre24nhrq
 | 404 | InvalidHaVipId.NotFound | The specified HaVip does not exist in the specified region. | 指定的 HaVip 不在指定的地域中，请您检查选择的地域是否正确。 |
 | 400 | IncorrectStatus | HaVip can be deleted only when it's status is Available or InUse. | 删除HAVIP失败，HAVIP的状态不支持。 |
 
-专有网络VPC
-
 | 400 | InvalidDescription.Malformed | The specified Description is wrongly formed. | 指定的资源描述格式不合法。长度为2-256个字符，不能以 http:// 和 https:// 开头。 |
 |---|---|---|---|
 
-#### 6.12.4. AssociateHaVip
+#### 6.12.4 AssociateHaVip
 
 将HaVip绑定到专有网络ECS实例或弹性网卡上。
 
 **使用说明**
 
-HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到ECS实例的弹性网卡上。 HaVip和要绑定的ECS实例必须同属于一个交换机。 一个HaVip最多可绑定两个ECS实例。 要绑定的ECS实例的状态必须为**运行中**或**停止**。 HaVip实例的状态必须为**Available**或**InUse**。
+在调用本接口绑定高可用虚拟IP时，请注意： HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到ECS实例的弹性网卡上。 HaVip和要绑定的ECS实例必须同属于一个交换机。 一个HaVip最多可绑定两个ECS实例。 要绑定的ECS实例的状态必须为**运行中**或**停止**。 HaVip实例的状态必须为**Available**或**InUse**。
 
 **请求参数**
 
@@ -8494,22 +8514,18 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 请求示例
 
 ```
-&HaVipId=havip-2zeo05qre24nhrqpyf*** &InstanceId=i-faf344422ffsfa**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=AssociateHaVip &HaVipId=havip-2zeo05qre24nhrqpyf*** &InstanceId=i-faf344422ffsfa**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <AssociateHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </AssociateHaVipResponse> |  |
+| <AssociateHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </AssociateHaVipResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |  |
-
-**错误码**
-
-专有网络VPC
+| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -8519,13 +8535,13 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 | 400 | CountLimitExceeded.HaVipOnECS Instance | The amount of Instance associated with the specified HaVip reach its limits. | 超过HaVip的实例配额。 |
 | 400 | InvalidNetworkInterfaceId.NotFou nd | The network interface is not found. | 网卡不存在。 |
 
-#### 6.12.5. UnassociateHaVip
+#### 6.12.5 UnassociateHaVip
 
 将HaVip与专有网络ECS实例解绑。
 
 **API描述**
 
-要解绑的ECS实例的状态必须为运行中或停止。 HaVip实例的状态必须为**Available**或**InUse**。
+在调用本接口创建高可用虚拟IP时，请注意： 要解绑的ECS实例的状态必须为运行中或停止。 HaVip实例的状态必须为**Available**或**InUse**。
 
 **请求参数**
 
@@ -8550,22 +8566,18 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 请求示例
 
 ```
-&HaVipId=havip-2zeo05qre24nhrqpyf**** &InstanceId=i-faf344422ffsfa**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=UnassociateHaVip &HaVipId=havip-2zeo05qre24nhrqpyf**** &InstanceId=i-faf344422ffsfa**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UnassociateHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </UnassociateHaVipResponse> |  |
+| <UnassociateHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </UnassociateHaVipResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |  |
-
-专有网络VPC
-
-**错误码**
+| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -8578,9 +8590,9 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 | 500 | InternalError | The request processing has failed due to some unknown error. | 请求处理由于某些未知错误失败。 |
 | 400 | InvalidNetworkInterfaceId.NotFou nd | The network interface is not found. | 网卡不存在。 |
 
-#### 6.12.6. DeleteHaVip
+#### 6.12.6 DeleteHaVip
 
-删除高可用虚拟IP HaVip（High-Availability Virtual IP Address）。 HaVip必须是**Available**状态才可以删除。 确保没有任何路由指向要删除的HaVip。 确保要删除的HaVip没有绑定任何EIP。
+删除高可用虚拟IP HaVip（High-Availability Virtual IP Address）。 在调用本接口删除高可用虚拟IP时，请注意： HaVip必须是**Available**状态才可以删除。 确保没有任何路由指向要删除的HaVip。 确保要删除的HaVip没有绑定任何EIP。
 
 **请求参数**
 
@@ -8602,25 +8614,21 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 请求示例
 
 ```
-&HaVipId=havip-2zeo05qre24nhrqpyf**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DeleteHaVip &HaVipId=havip-2zeo05qre24nhrqpyf**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </DeleteHaVipResponse> |  |
+| <DeleteHaVipResponse> <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId> </DeleteHaVipResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |  |
-
-**错误码**
+| { "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF" } |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-专有网络VPC
 
 | 404 | InvalidHaVipId.NotFound | The specified HaVip does not exist in the specified region. | 指定的 HaVip 不在指定的地域中，请您检查选择的地域是否正确。 |
 |---|---|---|---|
@@ -8628,9 +8636,11 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 | 400 | DependencyViolation.HaVipRefer edByRouteEntry | HaVip cannot be deleted when it is refered by a route table entry as next hop. | 作为路由条目下一跳 HaVip 不能被删除，请先删除指向该 HaVip 的路由条目后再进行删除。 |
 | 400 | DependencyViolation.HaVipAssoc iatedWithEIP | HaVip cannot be deleted when it is associated with EIP. | 无法删除HAVIP，该HAVIP绑定了EIP。 |
 
-### DHCP选项集
+### 6.13 DHCP选项集
 
-#### 6.13.1. CreateDhcpOptionsSet
+#### 6.13.1 CreateDhcpOptionsSet
+
+调用CreateDhcpOptionsSet接口创建DHCP选项集。
 
 **请求参数**
 
@@ -8660,17 +8670,15 @@ HaVip绑定后立即生效，无需重启ECS实例。但需要将HaVip配置到E
 http(s)://[Endpoint]/?Action=CreateDhcpOptionsSet &DomainNameServers=192.XX.XX.123 &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateDhcpOptionsSetResponse> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> <DhcpOptionsSetId>dopt-o6w0df4epg9zo8isy****</DhcpOptionsSetId> </CreateDhcpOptionsSetResponse> |  |
-
-专有网络VPC
+| <CreateDhcpOptionsSetResponse> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> <DhcpOptionsSetId>dopt-o6w0df4epg9zo8isy****</DhcpOptionsSetId> </CreateDhcpOptionsSetResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "DhcpOptionsSetId": "dopt-o6w0df4epg9zo8isy****", "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "DhcpOptionsSetId": "dopt-o6w0df4epg9zo8isy****", "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -8685,7 +8693,7 @@ http(s)://[Endpoint]/?Action=CreateDhcpOptionsSet &DomainNameServers=192.XX.XX.1
 | 400 | IllegalParam.DhcpOptionsSetDes cription | The specified DhcpOptionsSetDescription is invalid. | 指定的DhcpOptionsSetDescription参数不合法，请检查该参数是否正确。 |
 | 400 | QuotaExceeded.RegionDhcpOptio nsSet | The quota of dhcpOptionsSet in the region is exceeded. | 单用户允许创建DHCP选项集实例数量超过配额。 |
 
-#### 6.13.2. AttachDhcpOptionsSetToVpc
+#### 6.13.2 AttachDhcpOptionsSetToVpc
 
 调用AttachDhcpOptionsSetToVpc接口将DHCP选项集关联到VPC。
 
@@ -8714,15 +8722,17 @@ http(s)://[Endpoint]/?Action=CreateDhcpOptionsSet &DomainNameServers=192.XX.XX.1
 http(s)://[Endpoint]/?Action=AttachDhcpOptionsSetToVpc &DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01 &VpcId=vpc-sfdkfdjkdf****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>`
 
 ```xml
+<AttachDhcpOptionsSetToVpcResponse>
         <RequestId>4DAD3F76-2DB8-4336-B847-D7C0446C7952</RequestId>
+</AttachDhcpOptionsSetToVpcResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "4DAD3F76-2DB8-4336-B847-D7C0446C7952" } |  |
+| { "RequestId": "4DAD3F76-2DB8-4336-B847-D7C0446C7952" } |   |
 
 **错误码**
 
@@ -8738,7 +8748,7 @@ http(s)://[Endpoint]/?Action=AttachDhcpOptionsSetToVpc &DhcpOptionsSetId=dopt-o6
 | 400 | TaskConflict | The operation is too frequent. Please wait a moment and try again. | 当前操作太频繁，请稍后重试。 |
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist. | 指定的RegionId不存在。请检查该参数是否正确。 |
 
-#### 6.13.3. DetachDhcpOptionsSetFromVpc
+#### 6.13.3 DetachDhcpOptionsSetFromVpc
 
 调用DetachDhcpOptionsSetFromVpc接口将DHCP选项集与VPC取消关联。
 
@@ -8761,21 +8771,21 @@ http(s)://[Endpoint]/?Action=AttachDhcpOptionsSetToVpc &DhcpOptionsSetId=dopt-o6
 
 **示例**
 
-请求示例专有网络VPC
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DetachDhcpOptionsSetFromVpc &DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01 &VpcId=vpc-dfdgrgthhy****
 ```
 
-`&<`公共请求参数> 正常返回示例
+正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DetachDhcpOptionsSetFromVpcResponse> <RequestId>4DAD3F76-2DB8-4336-B847-D7C0446C7952</RequestId> </DetachDhcpOptionsSetFromVpcResponse> |  |
+| <DetachDhcpOptionsSetFromVpcResponse> <RequestId>4DAD3F76-2DB8-4336-B847-D7C0446C7952</RequestId> </DetachDhcpOptionsSetFromVpcResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "4DAD3F76-2DB8-4336-B847-D7C0446C7952" } |  |
+| { "RequestId": "4DAD3F76-2DB8-4336-B847-D7C0446C7952" } |   |
 
 **错误码**
 
@@ -8789,7 +8799,7 @@ http(s)://[Endpoint]/?Action=DetachDhcpOptionsSetFromVpc &DhcpOptionsSetId=dopt-
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist. | 指定的RegionId不存在。请检查该参数是否正确。 |
 | 400 | IncorrectStatus.DhcpOptionsSet | The DhcpOptionsSet status does not support this operation. | DHCP选项集实例处于中间状态不允许操作，请等待实例状态达到稳态后在操作。 |
 
-#### 6.13.4. ReplaceVpcDhcpOptionsSet
+#### 6.13.4 ReplaceVpcDhcpOptionsSet
 
 调用ReplaceVpcDhcpOptionsSet接口更改DHCP选项集与VPC的关联。
 
@@ -8810,23 +8820,19 @@ http(s)://[Endpoint]/?Action=DetachDhcpOptionsSetFromVpc &DhcpOptionsSetId=dopt-
 |---|---|---|---|
 | RequestId | String | 4DAD3F76-2DB8-4336-B847- D7C0446C7952 | 请求ID。 |
 
-**示例**
-
-请求示例专有网络VPC
-
 ```
 http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01 &VpcId=vpc-dsferghthth****
 ```
 
-`&<`公共请求参数> 正常返回示例
+正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ReplaceVpcDhcpOptionsSetResponse> <RequestId>4DAD3F76-2DB8-4336-B847-D7C0446C7952</RequestId> </ReplaceVpcDhcpOptionsSetResponse> |  |
+| <ReplaceVpcDhcpOptionsSetResponse> <RequestId>4DAD3F76-2DB8-4336-B847-D7C0446C7952</RequestId> </ReplaceVpcDhcpOptionsSetResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "4DAD3F76-2DB8-4336-B847-D7C0446C7952" } |  |
+| { "RequestId": "4DAD3F76-2DB8-4336-B847-D7C0446C7952" } |   |
 
 **错误码**
 
@@ -8840,7 +8846,9 @@ http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist. | 指定的RegionId不存在。请检查该参数是否正确。 |
 | 400 | InvalidDhcpOptionsSetId.NotFoun d | The specified dhcpOptionsSetId does not exist. | DHCP选项集实例不存在，请检查该参数是否正确。 |
 
-#### 6.13.5. GetDhcpOptionsSet
+#### 6.13.5 GetDhcpOptionsSet
+
+调用GetDhcpOptionsSet接口查询已创建的DHCP选项集。
 
 **请求参数**
 
@@ -8854,15 +8862,13 @@ http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| AssociateVpcs | Array of AssociateVpc |  | DHCP选项集关联的VPC的信息。 |
+| AssociateVpcs | Array of AssociateVpc |   | DHCP选项集关联的VPC的信息。 |
 | AssociateStatus | String | InUse | DHCP选项集关联的VPC的状态。 InUse：使用中。 Pending：配置中。 |
 | VpcId | String | vpc-eb3b54r6otues4tjj**** | DHCP选项集关联的VPC的ID。 |
-| DhcpOptions | Struct |  | DHCP选项配置信息。 |
+| DhcpOptions | Struct |   | DHCP选项配置信息。 |
 | DomainName | String | example.com | 主机名后缀。 |
 | DomainNameServers | String | 192.XX.XX.123 | DNS服务器IP。 |
 | DhcpOptionsSetDescriptio n | String | test | DHCP选项集的描述。 |
-
-专有网络VPC
 
 | DhcpOptionsSetId | String | dopt-o6w0df4epg9zo8isy**** | DHCP选项集的ID。 |
 |---|---|---|---|
@@ -8876,18 +8882,18 @@ http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w
 请求示例
 
 ```
-&DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=GetDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <GetDhcpOptionsSetResponse> <Status>Available</Status> <DhcpOptionsSetId>dopt-o6w0df4epg9zo8isy****</DhcpOptionsSetId> <DhcpOptions> <DomainName>example.com</DomainName> <DomainNameServers>192.XX.XX.123</DomainNameServers> </DhcpOptions> <OwnerId>12345678</OwnerId> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <DhcpOptionsSetName>test</DhcpOptionsSetName> <AssociateVpcs> <VpcId>vpc-eb3b54r6otues4tjj****</VpcId> <AssociateStatus>InUse</AssociateStatus> </AssociateVpcs> <DhcpOptionsSetDescription>test</DhcpOptionsSetDescription> </GetDhcpOptionsSetResponse> |  |
+| <GetDhcpOptionsSetResponse> <Status>Available</Status> <DhcpOptionsSetId>dopt-o6w0df4epg9zo8isy****</DhcpOptionsSetId> <DhcpOptions> <DomainName>example.com</DomainName> <DomainNameServers>192.XX.XX.123</DomainNameServers> </DhcpOptions> <OwnerId>12345678</OwnerId> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> <DhcpOptionsSetName>test</DhcpOptionsSetName> <AssociateVpcs> <VpcId>vpc-eb3b54r6otues4tjj****</VpcId> <AssociateStatus>InUse</AssociateStatus> </AssociateVpcs> <DhcpOptionsSetDescription>test</DhcpOptionsSetDescription> </GetDhcpOptionsSetResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "Status": "Available", "DhcpOptionsSetId": "dopt-o6w0df4epg9zo8isy****", "DhcpOptions": { "DomainName": "example.com", "DomainNameServers": "192.XX.XX.123" }, "OwnerId": 12345678, "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0", "DhcpOptionsSetName": "test", "AssociateVpcs": { "VpcId": "vpc-eb3b54r6otues4tjj****", "AssociateStatus": "InUse" }, "DhcpOptionsSetDescription": "test" } |  |
+| { "Status": "Available", "DhcpOptionsSetId": "dopt-o6w0df4epg9zo8isy****", "DhcpOptions": { "DomainName": "example.com", "DomainNameServers": "192.XX.XX.123" }, "OwnerId": 12345678, "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0", "DhcpOptionsSetName": "test", "AssociateVpcs": { "VpcId": "vpc-eb3b54r6otues4tjj****", "AssociateStatus": "InUse" }, "DhcpOptionsSetDescription": "test" } |   |
 
 **错误码**
 
@@ -8895,15 +8901,15 @@ http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist. | 指定的RegionId不存在。请检查该参数是否正确。 |
 
-#### 6.13.6. ListDhcpOptionsSets
+#### 6.13.6 ListDhcpOptionsSets
+
+调用ListDhcpOptionsSets接口查询已创建的DHCP选项集列表。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ListDhcpOptionsSets | 要执行的操作，取值：ListDhcpOptionsSets。 |
-
-专有网络VPC
 
 | NextToken | String | 是 | caeba0bbb2be03f84eb48b69 9f0a4883 | 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。如果没有下一个查询，请不传。 |
 |---|---|---|---|---|
@@ -8917,9 +8923,9 @@ http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DhcpOptionsSets | Array of DhcpOptionsSet |  | DHCP选项集列表。 |
+| DhcpOptionsSets | Array of DhcpOptionsSet |   | DHCP选项集列表。 |
 | AssociateVpcCount | Integer | 2 | DHCP选项集绑定的VPC的数量。 |
-| DhcpOptions | Struct |  | DHCP选项配置信息。 |
+| DhcpOptions | Struct |   | DHCP选项配置信息。 |
 | DomainName | String | example.comv | 主机名后缀。 |
 | DomainNameServers | String | 192.XX.XX.123 | DNS服务器IP。 |
 | DhcpOptionsSetDescriptio n | String | test | DHCP选项集的描述。 |
@@ -8938,9 +8944,10 @@ http(s)://[Endpoint]/?Action=ReplaceVpcDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w
 http(s)://[Endpoint]/?Action=ListDhcpOptionsSets &NextToken=caeba0bbb2be03f84eb48b699f0a4883 &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListDhcpOptionsSetsResponse>
   <DhcpOptionsSets>
         <Status>Available</Status>
         <DhcpOptionsSetId>dopt-o6w0df4epg9zo8isy****</DhcpOptionsSetId>
@@ -8955,11 +8962,12 @@ http(s)://[Endpoint]/?Action=ListDhcpOptionsSets &NextToken=caeba0bbb2be03f84eb4
   </DhcpOptionsSets>
   <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
   <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
+</ListDhcpOptionsSetsResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "DhcpOptionsSets": { "Status": "Available", "DhcpOptionsSetId": "dopt-o6w0df4epg9zo8isy****", "OwnerId": 12345678, "DhcpOptionsSetName": "test", "DhcpOptionsSetDescription": "test", "AssociateVpcCount": 2, "DhcpOptions": { "DomainName": "example.comv", "DomainNameServers": "192.XX.XX.123" } }, "NextToken": "caeba0bbb2be03f84eb48b699f0a4883", "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "DhcpOptionsSets": { "Status": "Available", "DhcpOptionsSetId": "dopt-o6w0df4epg9zo8isy****", "OwnerId": 12345678, "DhcpOptionsSetName": "test", "DhcpOptionsSetDescription": "test", "AssociateVpcCount": 2, "DhcpOptions": { "DomainName": "example.comv", "DomainNameServers": "192.XX.XX.123" } }, "NextToken": "caeba0bbb2be03f84eb48b699f0a4883", "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -8968,7 +8976,7 @@ http(s)://[Endpoint]/?Action=ListDhcpOptionsSets &NextToken=caeba0bbb2be03f84eb4
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist. | 指定的RegionId不存在。请检查该参数是否正确。 |
 | 400 | IllegalParam.NextToken | The specified NextToken is invalid. | 参数NextToken非法. |
 
-#### 6.13.7. UpdateDhcpOptionsSetAttribute
+#### 6.13.7 UpdateDhcpOptionsSetAttribute
 
 调用UpdateDhcpOptionsSetAttribute接口修改DHCP选项集配置信息。
 
@@ -8984,8 +8992,6 @@ http(s)://[Endpoint]/?Action=ListDhcpOptionsSets &NextToken=caeba0bbb2be03f84eb4
 | DhcpOptionsSetName | String | 否 | test | DHCP选项集的名称。 名称长度为2~128个字符，以英文大小写字母或中文开头，可包含数字、下划线（_）和短划线（-）。 |
 | DhcpOptionsSetDescription | String | 否 | test | 输入DHCP选项集的描述。 描述长度为2~256个字符，不能以 http:// 和 https:// 开头。 |
 | ClientToken | String | 否 | 0c593ea1-3bea-11e9-b96b- 88e9fe637760 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken 只支持ASCII字符，且不能超过64个字符。 |
-
-专有网络VPC
 
 | DryRun | Boolean | 否 | false | 是否只预检此次请求，取值： true：发送检查请求，不会修改DHCP选项集的配置信息。检查项包括是否填写了必需参数、请求格式和限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码 DryRunOperation 。 false（默认值）：发送正常请求，通过检查后直接修改DHCP选项集配置信息。 |
 |---|---|---|---|---|
@@ -9004,15 +9010,15 @@ http(s)://[Endpoint]/?Action=ListDhcpOptionsSets &NextToken=caeba0bbb2be03f84eb4
 http(s)://[Endpoint]/?Action=UpdateDhcpOptionsSetAttribute &DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UpdateDhcpOptionsSetAttributeResponse> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> </UpdateDhcpOptionsSetAttributeResponse> |  |
+| <UpdateDhcpOptionsSetAttributeResponse> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> </UpdateDhcpOptionsSetAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "8B2F5262-6B57-43F2-97C4-971425462DFE" } |  |
+| { "RequestId": "8B2F5262-6B57-43F2-97C4-971425462DFE" } |   |
 
 **错误码**
 
@@ -9025,7 +9031,9 @@ http(s)://[Endpoint]/?Action=UpdateDhcpOptionsSetAttribute &DhcpOptionsSetId=dop
 | 400 | IllegalParam.DhcpOptionsSetNam e | The specified DhcpOptionsSetName is invalid. | 指定的DhcpOptionsSetName参数不合法，请检查该参数是否正确。 |
 | 400 | IllegalParam.DhcpOptionsSetDes cription | The specified DhcpOptionsSetDescription is invalid. | 指定的DhcpOptionsSetDescription参数不合法，请检查该参数是否正确。 |
 
-#### 6.13.8. DeleteDhcpOptionsSet
+#### 6.13.8 DeleteDhcpOptionsSet
+
+调用DeleteDhcpOptionsSet接口删除DHCP选项集。
 
 **请求参数**
 
@@ -9035,8 +9043,6 @@ http(s)://[Endpoint]/?Action=UpdateDhcpOptionsSetAttribute &DhcpOptionsSetId=dop
 | DhcpOptionsSetId | String | 是 | dopt-o6w0df4epg9zo8isy**** | 要删除的DHCP选项集的ID。 |
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 要删除的DHCP选项集所在的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | ClientToken | String | 否 | 0c593ea1-3bea-11e9-b96b- 88e9fe637760 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken 只支持ASCII字符，且不能超过64个字符。 |
-
-专有网络VPC
 
 | DryRun | Boolean | 否 | false | 是否只预检此次请求，取值： true：发送检查请求，不会删除DHCP选项集。检查项包括是否填写了必需参数、请求格式和限制。如果检查不通过，则返回对应错误。如果检查通过，则返回错误码 DryRunOperation 。 false（默认值）：发送正常请求，通过检查后直接删除DHCP选项集。 |
 |---|---|---|---|---|
@@ -9055,15 +9061,15 @@ http(s)://[Endpoint]/?Action=UpdateDhcpOptionsSetAttribute &DhcpOptionsSetId=dop
 http(s)://[Endpoint]/?Action=DeleteDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w0df4epg9zo8isy**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteDhcpOptionsSetResponse> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> </DeleteDhcpOptionsSetResponse> |  |
+| <DeleteDhcpOptionsSetResponse> <RequestId>8B2F5262-6B57-43F2-97C4-971425462DFE</RequestId> </DeleteDhcpOptionsSetResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "8B2F5262-6B57-43F2-97C4-971425462DFE" } |  |
+| { "RequestId": "8B2F5262-6B57-43F2-97C4-971425462DFE" } |   |
 
 **错误码**
 
@@ -9075,9 +9081,11 @@ http(s)://[Endpoint]/?Action=DeleteDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w0df4
 | 400 | DependencyViolation.VpcAttach ment | DhcpOptionsSet cannot be deleted when it is attached to VPC. | DHCP选项集已绑定VPC，不允许删除。 |
 | 400 | InvalidDhcpOptionsSetId.NotFoun d | The specified dhcpOptionsSetId does not exist. | DHCP选项集实例不存在，请检查该参数是否正确。 |
 
-### 路由器
+### 6.14 路由器
 
-#### 6.14.1. ModifyVRouterAttribute
+#### 6.14.1 ModifyVRouterAttribute
+
+调用ModifyVRouterAttribute接口修改路由器的名称和描述信息。
 
 **请求参数**
 
@@ -9087,8 +9095,6 @@ http(s)://[Endpoint]/?Action=DeleteDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w0df4
 | VRouterId | String | 是 | vrt-bp1lhl0taikrteen8**** | 路由器的ID。 |
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 要修改的路由器所属的地域ID。 |
 | VRouterName | String | 否 | VRouter-1 | 要修改的路由器名称。 名称长度为2~128个字符，必须以字母或中文开头，可包含数字、半角句号（.）、下划线（_）和短划线（-）。但不能以 http:// 或 https:// 开头。 |
-
-专有网络VPC
 
 | Description | String | 否 | My VRouter | 要修改的路由器的描述信息。 描述长度为2~256个字符，必须以字母或中文开头，但不能以 http:// 或 https:// 开头。 |
 |---|---|---|---|---|
@@ -9107,15 +9113,15 @@ http(s)://[Endpoint]/?Action=DeleteDhcpOptionsSet &DhcpOptionsSetId=dopt-o6w0df4
 https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0taikrteen8****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyVRouterAttributeResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </ModifyVRouterAttributeResponse> |  |
+| <ModifyVRouterAttributeResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </ModifyVRouterAttributeResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "ModifyVRouterAttributeResponse": { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } } |  |
+| { "ModifyVRouterAttributeResponse": { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } } |   |
 
 **错误码**
 
@@ -9126,7 +9132,9 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 | 400 | InvalidVRouterDiscription.Malfor med | Specified virtual router description is not valid. | 该路由器描述信息格式不正确。 |
 | 400 | MissingParameter | Miss mandatory parameter. | 缺少必要参数，请您检查必填参数是否都已填后再进行操作。 |
 
-#### 6.14.2. DescribeVRouters
+#### 6.14.2 DescribeVRouters
+
+调用DescribeVRouters接口查询指定地域的路由器列表。
 
 **请求参数**
 
@@ -9142,11 +9150,9 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| VRouters | Array of VRouter |  | 路由器的详细信息。 |
-| VRouter |  |  |  |
+| VRouters | Array of VRouter |   | 路由器的详细信息。 |
+| VRouter |   |   |   |
 | CreationTime | String | 2018-03-22T07:46:20Z | 路由器的创建时间。 |
-
-专有网络VPC
 
 | Description | String | abc | 路由器的描述信息。 |
 |---|---|---|---|
@@ -9165,54 +9171,57 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeVRouters &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeVRoutersResponse> <PageNumber>1</PageNumber> <TotalCount>2</TotalCount> <VRouters> <VRouter> <VRouterName></VRouterName> <RouteTableIds> <RouteTableId>vtb-bp1krxxzp0c29fmo****</RouteTableId> </RouteTableIds> <CreationTime>2018-12-06T06:11:55Z</CreationTime> <Description></Description> <RegionId>cn-hangzhou</RegionId> <VRouterId>vrt-bp1jcg5cmxjbl9xgc****</VRouterId> <VpcId>vpc-bp1qpo0kug3a20qqe****</VpcId> </VRouter> <VRouter> <VRouterName></VRouterName> <RouteTableIds> <RouteTableId>vtb-bp1blq1oh0ybfnpm****</RouteTableId> </RouteTableIds> <CreationTime>2018-11-08T08:54:03Z</CreationTime> <Description></Description> <RegionId>cn-hangzhou</RegionId> <VRouterId>vrt-bp149ve7yeyvio4nc****</VRouterId> <VpcId>vpc-bp1aevy8sofi8mh1q****</VpcId> </VRouter> </VRouters> <PageSize>10</PageSize> <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId> </DescribeVRoutersResponse> |  |
+| <DescribeVRoutersResponse> <PageNumber>1</PageNumber> <TotalCount>2</TotalCount> <VRouters> <VRouter> <VRouterName></VRouterName> <RouteTableIds> <RouteTableId>vtb-bp1krxxzp0c29fmo****</RouteTableId> </RouteTableIds> <CreationTime>2018-12-06T06:11:55Z</CreationTime> <Description></Description> <RegionId>cn-hangzhou</RegionId> <VRouterId>vrt-bp1jcg5cmxjbl9xgc****</VRouterId> <VpcId>vpc-bp1qpo0kug3a20qqe****</VpcId> </VRouter> <VRouter> <VRouterName></VRouterName> <RouteTableIds> <RouteTableId>vtb-bp1blq1oh0ybfnpm****</RouteTableId> </RouteTableIds> <CreationTime>2018-11-08T08:54:03Z</CreationTime> <Description></Description> <RegionId>cn-hangzhou</RegionId> <VRouterId>vrt-bp149ve7yeyvio4nc****</VRouterId> <VpcId>vpc-bp1aevy8sofi8mh1q****</VpcId> </VRouter> </VRouters> <PageSize>10</PageSize> <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId> </DescribeVRoutersResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "PageNumber": 1,
     "TotalCount": 1,
     "VRouters": {
         "VRouter": [
-            {
+```
+
+`{`
+
+```json
                 "VRouterName": "",
                 "RouteTableIds": {
                     "RouteTableId": [
                         "vtb-rj9ybe3y0u41mmjsp****"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "CreationTime": "2018-03-22T07:46:20Z",
                 "Description": "",
                 "RegionId": "us-west-1",
                 "VRouterId": "vrt-rj98khsezfqpjrxmv****",
                 "VpcId": "vpc-rj905wotv6y030t1z****"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "PageSize": 10,
     "RequestId": "CB2793A8-845F-444C-8E93-76F1BBDF9C78"
-}
 ```
 
-### 地域
+`}`
 
-#### 6.15.1. ListGWAzone
+### 6.15 地域
+
+#### 6.15.1 ListGWAzone
+
+调用接口ListGWAzone查询az。
 
 **请求头**
 
@@ -9224,36 +9233,34 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 |---|---|---|---|---|---|
 | RegionId | String | Query | 是 | cn-hangzhou | 资源所在的地域ID。 您可以通过调用DescribeRegions接口获取地域ID。 |
 | AvailableZoneId | String | Query | 否 | cn-wulan-envxx-amtestxxxxxx-a | 可用区。 |
-| Type | String | Query | 否 |  | 非业务字段，可不填。 |
+| Type | String | Query | 否 |   | 非业务字段，可不填。 |
 | Action | String | Query | 否 | ListGWAzone | 要执行的操作。 |
-| OwnerId | Long | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| ResourceOwnerAcc ount | String | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| ResourceOwnerId | Long | Query | 否 |  | 鉴权相关的系统参数，不填。 |
-| OwnerAccount | String | Query | 否 |  | 鉴权相关的系统参数，不填。 |
+| OwnerId | Long | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| ResourceOwnerAcc ount | String | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| ResourceOwnerId | Long | Query | 否 |   | 鉴权相关的系统参数，不填。 |
+| OwnerAccount | String | Query | 否 |   | 鉴权相关的系统参数，不填。 |
 | ClientToken | String | Query | 否 | 123e4567-e89b-12d3-a456- 426655440000 | 客户端 Token，用于保证请求的幂等性。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| CgwAzs | Array |  |  |
-| -AvailableZoneId | String |  |  |
-| -LocationAvailableZoneId | String |  |  |
-| -Tag | String |  |  |
+| CgwAzs | Array |   |   |
+| -AvailableZoneId | String |   |   |
+| -LocationAvailableZoneId | String |   |   |
+| -Tag | String |   |   |
 | RequestId | String | 079874CD-AEC1-43E6-AC03- ADD96B6E4907 | 请求id。 |
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-专有网络VPC
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | RAMFORBIDDEN _ | RAMFORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### 6.15.2. DescribeRegions
+#### 6.15.2 DescribeRegions
+
+调用DescribeRegions接口查询可用的地域。
 
 **请求参数**
 
@@ -9267,8 +9274,8 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Regions | Array of Region |  | 可用地域的集合。 |
-| Region |  |  |  |
+| Regions | Array of Region |   | 可用地域的集合。 |
+| Region |   |   |   |
 | LocalName | String | 华北 1 | 地域名称。 |
 | RegionEndpoint | String | vpc.aliyuncs.com | 地域服务的Endpoint。 |
 | RegionId | String | cn-qingdao-env17-d01 | 地域ID。 |
@@ -9276,17 +9283,25 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeRegions
+```
+
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeRegionsResponse> <RequestId>611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F</RequestId> <Regions> <RegionId>cn-qingdao-env17-d01</RegionId> <RegionEndpoint>vpc.aliyuncs.com</RegionEndpoint> <LocalName>华北 1</LocalName> </Regions> </DescribeRegionsResponse> |  |
+| <DescribeRegionsResponse> <RequestId>611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F</RequestId> <Regions> <RegionId>cn-qingdao-env17-d01</RegionId> <RegionEndpoint>vpc.aliyuncs.com</RegionEndpoint> <LocalName>华北 1</LocalName> </Regions> </DescribeRegionsResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F", "Regions": { "RegionId": "cn-qingdao-env17-d01", "RegionEndpoint": "vpc.aliyuncs.com", "LocalName": "华北 1" } } |  |
+| { "RequestId": "611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F", "Regions": { "RegionId": "cn-qingdao-env17-d01", "RegionEndpoint": "vpc.aliyuncs.com", "LocalName": "华北 1" } } |   |
 
-#### 6.15.3. DescribeZones
+#### 6.15.3 DescribeZones
+
+调用DescribeZones接口查询指定地域中可用区的列表。
 
 **请求参数**
 
@@ -9294,17 +9309,13 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 |---|---|---|---|---|
 | Action | String | 是 | DescribeZones | 要执行的操作，取值：DescribeZones。 |
 
-专有网络VPC
-
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 可用区所在的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 |---|---|---|---|---|
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Zones | Array of Zone |  | 可用区的集合。 |
-| Zone |  |  |  |
+| Zones | Array of Zone |   | 可用区的集合。 |
+| Zone |   |   |   |
 | LocalName | String | 华东 1 可用区 | 可用区名称。 |
 | ZoneId | String | cn-cn-qingdao-env17- amtest11001-a | 可用区ID。 |
 | RequestId | String | 6FEA0CF3-D3B9-43E5-A304- D217037876A8 | 请求ID。 |
@@ -9314,26 +9325,28 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeZonesResponse> <RequestId>6FEA0CF3-D3B9-43E5-A304-D217037876A8</RequestId> <Zones> <ZoneId>cn-cn-qingdao-env17-amtest11001-a</ZoneId> <LocalName>华东 1 可用区 B</LocalName> </Zones> </DescribeZonesResponse> |  |
+| <DescribeZonesResponse> <RequestId>6FEA0CF3-D3B9-43E5-A304-D217037876A8</RequestId> <Zones> <ZoneId>cn-cn-qingdao-env17-amtest11001-a</ZoneId> <LocalName>华东 1 可用区 B</LocalName> </Zones> </DescribeZonesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "6FEA0CF3-D3B9-43E5-A304-D217037876A8", "Zones": { "ZoneId": "cn-cn-qingdao-env17-amtest11001-a", "LocalName": "华东 1 可用区 B" } } |  |
+| { "RequestId": "6FEA0CF3-D3B9-43E5-A304-D217037876A8", "Zones": { "ZoneId": "cn-cn-qingdao-env17-amtest11001-a", "LocalName": "华东 1 可用区 B" } } |   |
 
-### 标签
+### 6.16 标签
 
-#### 6.16.1. TagResources
+#### 6.16.1 TagResources
+
+调用TagResources为指定的资源统一创建并绑定标签。
 
 **API描述**
 
-标签是您为实例分配的标记，每个标签都由一对键值对（Key-Value）组成。标签的使用说明如下： 一个实例上的每条标签的标签键（Key）必须唯一。 不支持未绑定实例的空标签存在，标签必须绑定在实例上。 不同地域下的标签信息不互通。 例如在同账号同地域下，专有网络绑定了某个标签，那么您可以在交换机、路由表或弹性公网IP的编辑标签页面，直接选择将该标签绑定到实例上，而无需手动输入标签的键值信息。您可以修改标签的键和值，也可以随时删除实例的标签。如果删除实例，绑定实例的所有标签也会被删除。 单个实例最多可绑定20条标签。绑定标签前，阿里云会校验资源已有标签数量。超过限制值后返回报错信息。
+标签是您为实例分配的标记，每个标签都由一对键值对（Key-Value）组成。标签的使用说明如下： 一个实例上的每条标签的标签键（Key）必须唯一。 不支持未绑定实例的空标签存在，标签必须绑定在实例上。 不同地域下的标签信息不互通。 同账号同地域下，专有网络、路由表、交换机和弹性公网IP的标签信息互通。 例如在同账号同地域下，专有网络绑定了某个标签，那么您可以在交换机、路由表或弹性公网IP的编辑标签页面，直接选择将该标签绑定到实例上，而无需手动输入标签的键值信息。您可以修改标签的键和值，也可以随时删除实例的标签。如果删除实例，绑定实例的所有标签也会被删除。 单个实例最多可绑定20条标签。绑定标签前，阿里云会校验资源已有标签数量。超过限制值后返回报错信息。
 
 **请求参数**
 
@@ -9343,8 +9356,6 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 资源所属的地域ID。 |
 | ResourceId.N | RepeatList | 是 | vpc-bp16qjewdsunr41m1**** | 资源ID，N的取值范围为1~20。 |
 
-专有网络VPC
-
 | ResourceType | String | 是 | VPC | 资源类型定义，取值： VPC：VPC实例。 VSWITCH：交换机实例。 ROUTETABLE：路由表实例。 EIP：弹性公网IP实例。 |
 |---|---|---|---|---|
 | Tag.N.Key | String | 否 | FinanceDept | 资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，必须以字母或中文开头，可包含数字、半角句号（.）、下划线（_）和短划线（-），不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |
@@ -9352,11 +9363,11 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 
 | aliyun | _ acs: |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 | aliyun | _ acs: |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 **返回数据**
 
@@ -9369,18 +9380,18 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &ResourceId.1=vpc-bp16qjewdsunr41m1**** &ResourceType=VPC
+http(s)://[Endpoint]/?Action=TagResources &RegionId=cn-qingdao-env17-d01 &ResourceId.1=vpc-bp16qjewdsunr41m1**** &ResourceType=VPC
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <TagResourcesResponse> <RequestId>C46FF5A8-C5F0-4024-8262-B16B639225A0</RequestId> </TagResourcesResponse> |  |
+| <TagResourcesResponse> <RequestId>C46FF5A8-C5F0-4024-8262-B16B639225A0</RequestId> </TagResourcesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"C46FF5A8-C5F0-4024-8262-B16B639225A0" } |  |
+| { "RequestId":"C46FF5A8-C5F0-4024-8262-B16B639225A0" } |   |
 
 **错误码**
 
@@ -9388,11 +9399,13 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-#### 6.16.2. ListTagResources
+#### 6.16.2 ListTagResources
+
+调用ListTagResources查询实例已经绑定的标签列表。
 
 **使用说明**
 
-请求中至少指定参数**ResourceId.N**或**Tag.N**（**Tag.N.Key**与**Tag.N.Value**），以确定检索对象。
+请求中至少指定参数**ResourceId.N**或**Tag.N****（****Tag.N.Key****与****Tag.N.Value****）**，以确定检索对象。
 **Tag.N**是资源的标签，由一个键值对组成。仅指定**Tag.N.Key**时，则返回该标签键关联的所有标签值。仅指定**Tag.N.Value**会报错。
 如果您同时指定**Tag.N**和**ResourceId.N**筛选标签，则**ResourceId.N**必须满足所有输入的标签键值对。 如果您同时指定多个标签键值对，返回结果为同时包含被指定的多个键值对的资源。
 
@@ -9404,8 +9417,6 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 | RegionId | String | 是 | cn-qingdao-env17-d01 | 资源所属的地域ID。 |
 | ResourceType | String | 是 | VPC | 资源类型定义，取值： VPC：VPC实例。 VSWITCH：交换机实例。 ROUTETABLE：路由表实例。 EIP：弹性公网IP实例。 |
 
-专有网络VPC
-
 | ResourceId.N | RepeatList | 否 | vpc-bp16qjewdsunr41m1**** | 资源ID， N的取值范围：1~20。 |
 |---|---|---|---|---|
 | Tag.N.Key | String | 否 | FinanceDept | 资源的标签键。N的取值范围：1~20。一旦配置该值，则不允许为空字符串。最多支持64个字符，必须以字母或中文开头，可包含数字、半角句号（.）、下划线（_）和短划线（-），不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |
@@ -9415,11 +9426,11 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 
 | aliyun | _ acs: |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 | aliyun | _ acs: |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 **返回数据**
 
@@ -9427,8 +9438,8 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 |---|---|---|---|
 | NextToken | String | FFmyTO70tTpLG6I3FmYAXGKPd* *** | 是否拥有下一次查询的令牌（Token）。取值： 如果NextToken为空表示没有下一次查询。 如果NextToken有返回值，该取值表示下一次查询开始的令牌。 |
 | RequestId | String | DE65F6B7-7566-4802-9007- 96F2494AC512 | 请求ID。 |
-| TagResources | Array of TagResource |  | 绑定标签的资源信息。 |
-| TagResource |  |  |  |
+| TagResources | Array of TagResource |   | 绑定标签的资源信息。 |
+| TagResource |   |   |   |
 | ResourcId | String | None | 该返回参数无效。 |
 | ResourceId | String | vpc-bp16qjewdsunr41m1**** | 资源ID。 |
 | ResourceType | String | VPC | 资源类型。 |
@@ -9440,29 +9451,29 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &ResourceType=VPC
+http(s)://[Endpoint]/?Action=ListTagResources &RegionId=cn-qingdao-env17-d01 &ResourceType=VPC
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ListTagResourcesResponse> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>DE65F6B7-7566-4802-9007-96F2494AC512</RequestId> <TagResources> <ResourceId>vpc-bp16qjewdsunr41m1****</ResourceId> <TagKey>FinanceDept</TagKey> <ResourceType>VPC</ResourceType> <ResourcId>None</ResourcId> <TagValue>FinanceJoshua</TagValue> </TagResources> </ListTagResourcesResponse> |  |
+| <ListTagResourcesResponse> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>DE65F6B7-7566-4802-9007-96F2494AC512</RequestId> <TagResources> <ResourceId>vpc-bp16qjewdsunr41m1****</ResourceId> <TagKey>FinanceDept</TagKey> <ResourceType>VPC</ResourceType> <ResourcId>None</ResourcId> <TagValue>FinanceJoshua</TagValue> </TagResources> </ListTagResourcesResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "NextToken": "FFmyTO70tTpLG6I3FmYAXGKPd****",
     "RequestId": "DE65F6B7-7566-4802-9007-96F2494AC512",
+    "TagResources": {
         "ResourceId": "vpc-bp16qjewdsunr41m1****",
         "TagKey": "FinanceDept",
         "ResourceType": "VPC",
         "ResourcId": "None",
         "TagValue": "FinanceJoshua"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -9470,7 +9481,9 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请申请权限后再操作。 |
 
-#### 6.16.3. UnTagResources
+#### 6.16.3 UnTagResources
+
+调用UntagResources为指定的资源列表统一解绑标签。
 
 **请求参数**
 
@@ -9485,7 +9498,7 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 
 | aliyun | _ acs: |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 **返回数据**
 
@@ -9498,32 +9511,30 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &ResourceId.1=vpc-bp16qjewdsunr41m1**** &ResourceType=VPC
+http(s)://[Endpoint]/?Action=UnTagResources &RegionId=cn-qingdao-env17-d01 &ResourceId.1=vpc-bp16qjewdsunr41m1**** &ResourceType=VPC
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <UntagResourcesResponse> <RequestId>C46FF5A8-C5F0-4024-8262-B16B639225A0</RequestId> </UntagResourcesResponse> |  |
+| <UntagResourcesResponse> <RequestId>C46FF5A8-C5F0-4024-8262-B16B639225A0</RequestId> </UntagResourcesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"C46FF5A8-C5F0-4024-8262-B16B639225A0" } |  |
-
-专有网络VPC
-
-**错误码**
+| { "RequestId":"C46FF5A8-C5F0-4024-8262-B16B639225A0" } |   |
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-### VPN网关
+### 6.17 VPN网关
 
-### 6.17.1. VPN网关
+#### 6.17.1 VPN网关
 
-##### 6.17.1.1. CreateVpnGateway
+##### 6.17.1.1 CreateVpnGateway
+
+调用CreateVpnGateway接口创建VPN网关。
 
 **请求参数**
 
@@ -9555,19 +9566,23 @@ https://vpc.aliyuncs.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0ta
 http(s)://vpc.example.com/?Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-qingdao-env66-d01 &VpcId=vpc-bp1ub1yt9cvakoelj****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例
 
 ```xml
+<CreateVpnGatewayResponse>
       <Name>myVpn</Name>
       <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId>
       <RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457</RequestId>
+</CreateVpnGatewayResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "CreateVpnGatewayResponse":{ "Name":"myVpn", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B457" } } |  |
+| { "CreateVpnGatewayResponse":{ "Name":"myVpn", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B457" } } |   |
 
-##### 6.17.1.2. DescribeVpnGateways
+##### 6.17.1.2 DescribeVpnGateways
+
+调用DescribeVpnGateways接口查询已创建的VPN网关。
 
 **请求参数**
 
@@ -9586,8 +9601,8 @@ http(s)://vpc.example.com/?Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-qin
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| VpnGateways | Array of VpnGateway |  | VPN网关的详细信息。 |
-| VpnGateway |  |  |  |
+| VpnGateways | Array of VpnGateway |   | VPN网关的详细信息。 |
+| VpnGateway |   |   |   |
 | VpnGatewayId | String | vpn-bp1q8bgx4xnkm2ogj**** | VPN网关的ID。 |
 | VpcId | String | vpc-bp1ub1yt9cvakoelj**** | VPN网关所属VPC的ID。 |
 | VSwitchId | String | vsw-bp1y9ovl1cu9ou4tv**** | VPN网关所属交换机的ID。 |
@@ -9595,8 +9610,6 @@ http(s)://vpc.example.com/?Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-qin
 | CreateTime | Long | 1515383700000 | VPN网关的创建时间戳。 |
 | EndTime | Long | 1518105600000 | VPN网关的到期时间戳。 |
 | Spec | String | 5 Mbps | VPN网关的带宽峰值。 |
-
-专有网络VPC
 
 | Name | String | test | VPN网关的名称。 |
 |---|---|---|---|
@@ -9621,21 +9634,24 @@ http(s)://vpc.example.com/?Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-qin
 http(s)://[Endpoint]/?Action=DescribeVpnGateways &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeVpnGatewaysResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <VpnGateways> <VpnGateway> <Status>active</Status> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <BusinessStatus>Normal</BusinessStatus> <Spec>5M</Spec> <CreateTime>1492753580000</CreateTime> <InternetIp>116.XX.XX.69</InternetIp> <EndTime>1495382400000</EndTime> <VSwitchId>vsw-bp1y9ovl1cu9ou4tv****</VSwitchId> <VpcId>vpc-bp1ub1yt9cvakoelj****</VpcId> </VpnGateway> </VpnGateways> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </DescribeVpnGatewaysResponse> |  |
+| <DescribeVpnGatewaysResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <VpnGateways> <VpnGateway> <Status>active</Status> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <BusinessStatus>Normal</BusinessStatus> <Spec>5M</Spec> <CreateTime>1492753580000</CreateTime> <InternetIp>116.XX.XX.69</InternetIp> <EndTime>1495382400000</EndTime> <VSwitchId>vsw-bp1y9ovl1cu9ou4tv****</VSwitchId> <VpcId>vpc-bp1ub1yt9cvakoelj****</VpcId> </VpnGateway> </VpnGateways> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </DescribeVpnGatewaysResponse> |   |
 
-`JSON` 格式专有网络VPC
+`JSON` 格式
 
 ```json
-{
     "PageNumber": 1,
     "TotalCount": 1,
     "VpnGateways": {
         "VpnGateway": [
-            {
+```
+
+`{`
+
+```json
                 "Status": "active",
                 "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****",
                 "BusinessStatus": "Normal",
@@ -9645,17 +9661,16 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateways &RegionId=cn-qingdao-env66-d01
                 "EndTime": 1495382400000,
                 "VSwitchId": "vsw-bp1y9ovl1cu9ou4tv****",
                 "VpcId": "vpc-bp1ub1yt9cvakoelj****"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "PageSize": 10,
     "RequestId": "B2CD1315-CA2B-47B1-9DA5-8F1D69C48E82"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9664,7 +9679,9 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateways &RegionId=cn-qingdao-env66-d01
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-##### 6.17.1.3. DescribeVpnGateway
+##### 6.17.1.3 DescribeVpnGateway
+
+调用DescribeVpnGateway接口查询指定VPN网关的详细信息。
 
 **请求参数**
 
@@ -9688,8 +9705,6 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateways &RegionId=cn-qingdao-env66-d01
 | Name | String | vpngatewayname | VPN网关的名称。 |
 | Description | String | vpngatewaydescription | VPN网关的描述信息。 |
 
-专有网络VPC
-
 | Status | String | init | VPN网关的状态。 init ：初始化。 provisioning ：准备中。 active ：正常。 updating ：更新中。 deleting ：删除中。 |
 |---|---|---|---|
 | BusinessStatus | String | Normal | VPN网关的付费状态。 Normal：正常。 FinancialLocked：欠费锁定。 |
@@ -9708,15 +9723,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateways &RegionId=cn-qingdao-env66-d01
 http(s)://[Endpoint]/?Action=DescribeVpnGateway &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeVpnGatewayResponse> <Status>active</Status> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Spec>5M</Spec> <BusinessStatus>Normal</BusinessStatus> <RequestId>E98A9651-7098-40C7-8F85-C818D1EBBA85</RequestId> <CreateTime>1492753580000</CreateTime> <InternetIp>116.XX.XX.222</InternetIp> <EndTime>1495382400000</EndTime> <VSwitchId>vsw-bp1y9ovl1cu9ou4tv****</VSwitchId> <VpcId>vpc-bp1ub1yt9cvakoelj****</VpcId> </DescribeVpnGatewayResponse> |  |
+| <DescribeVpnGatewayResponse> <Status>active</Status> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Spec>5M</Spec> <BusinessStatus>Normal</BusinessStatus> <RequestId>E98A9651-7098-40C7-8F85-C818D1EBBA85</RequestId> <CreateTime>1492753580000</CreateTime> <InternetIp>116.XX.XX.222</InternetIp> <EndTime>1495382400000</EndTime> <VSwitchId>vsw-bp1y9ovl1cu9ou4tv****</VSwitchId> <VpcId>vpc-bp1ub1yt9cvakoelj****</VpcId> </DescribeVpnGatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "Status": "active", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "BusinessStatus": "Normal", "Spec": "5M", "CreateTime": 1492753580000, "RequestId": "E98A9651-7098-40C7-8F85-C818D1EBBA85", "InternetIp": "116.XX.XX.222", "EndTime": 1495382400000, "VSwitchId": "vsw-bp1y9ovl1cu9ou4tv****", "VpcId": "vpc-bp1ub1yt9cvakoelj****" } |  |
+| { "Status": "active", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "BusinessStatus": "Normal", "Spec": "5M", "CreateTime": 1492753580000, "RequestId": "E98A9651-7098-40C7-8F85-C818D1EBBA85", "InternetIp": "116.XX.XX.222", "EndTime": 1495382400000, "VSwitchId": "vsw-bp1y9ovl1cu9ou4tv****", "VpcId": "vpc-bp1ub1yt9cvakoelj****" } |   |
 
 **错误码**
 
@@ -9725,14 +9740,14 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &RegionId=cn-qingdao-env66-d01 &
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-专有网络VPC
-
 | 404 | InvalidVpnGatewayInstanceId.Not Found | The specified vpn gateway instance id does not exist. | 指定的 VPN 网关不存在，请您检查 VPN 网关是否正确。 |
 |---|---|---|---|
 
-##### 6.17.1.4. DeleteVpnGateway
+##### 6.17.1.4 DeleteVpnGateway
 
-**说明**
+调用DeleteVpnGateway接口删除指定的VPN网关。
+
+> **说明：** 无法删除已有IPsec连接的VPN网关。
 
 **请求参数**
 
@@ -9754,18 +9769,18 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &RegionId=cn-qingdao-env66-d01 &
 请求示例
 
 ```
-&RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
+http(s)://[Endpoint]/?Action=DeleteVpnGateway &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteNatGatewayResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteNatGatewayResponse> |  |
+| <DeleteNatGatewayResponse> <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId> </DeleteNatGatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |  |
+| { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
 
 **错误码**
 
@@ -9778,13 +9793,9 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &RegionId=cn-qingdao-env66-d01 &
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.Configuring | The specified VPN gateway is being configured. | VPN网关正在配置中。 |
 
-##### 6.17.1.5. ModifyVpnGatewayAttribute
+##### 6.17.1.5 ModifyVpnGatewayAttribute
 
 调用ModifyVpnGatewayAttribute接口修改VPN网关的名称和描述信息。
-
-**请求参数**
-
-专有网络VPC
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9820,9 +9831,10 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &RegionId=cn-qingdao-env66-d01 &
 https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyVpnGatewayAttributeResponse>
       <Name>aaa</Name>
       <Status>active</Status>
       <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId>
@@ -9834,13 +9846,14 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
       <EndTime>1495382400000</EndTime>
       <VSwitchId>vsw-bp1y9ovl1cu9ou4tv****</VSwitchId>
       <VpcId>vpc-bp1ub1yt9cvakoelj****</VpcId>
+</ModifyVpnGatewayAttributeResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "Name":"aaa", "Status":"active", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "Spec":"5M", "RequestId":"BA56EAF8-E3A9-4BE6-8511-8F03512153E2", "IntranetIp":"172.XX.XX.104", "CreateTime":1492753580000, "InternetIp":"116.XX.XX.69", "EndTime":1495382400000, "VSwitchId":"vsw-bp1y9ovl1cu9ou4tv****", "VpcId":"vpc-bp1ub1yt9cvakoelj****" } |  |
+| { "Name":"aaa", "Status":"active", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "Spec":"5M", "RequestId":"BA56EAF8-E3A9-4BE6-8511-8F03512153E2", "IntranetIp":"172.XX.XX.104", "CreateTime":1492753580000, "InternetIp":"116.XX.XX.69", "EndTime":1495382400000, "VSwitchId":"vsw-bp1y9ovl1cu9ou4tv****", "VpcId":"vpc-bp1ub1yt9cvakoelj****" } |   |
 
-##### 6.17.1.6. CreateVbrHa
+##### 6.17.1.6 CreateVbrHa
 
 创建VBR倒换组
 
@@ -9879,14 +9892,14 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
 请求示例
 
 ```
-&VbrId=vbr-bp1lhl0taikrte**** &PeerVbrId=vbr-bp12mw1f8k3jgygk9**** &RegionId=cn-qingdao-env66-d01
+http(s)://[Endpoint]/?Action=CreateVbrHa &VbrId=vbr-bp1lhl0taikrte**** &PeerVbrId=vbr-bp12mw1f8k3jgygk9**** &RegionId=cn-qingdao-env66-d01
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| HTTP/1.1 200 OK Content-Type:application/json { "VbrHaId":"vbrha-sa1sxheuxtd98****", "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE" } |  |
+| HTTP/1.1 200 OK Content-Type:application/json { "VbrHaId":"vbrha-sa1sxheuxtd98****", "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE" } |   |
 
 **错误码**
 
@@ -9901,9 +9914,11 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
 | 400 | OperationFailed.VbrCenNotRelati on | OperationFailed.VbrCenNotRelation | The VBR is not attached to any CEN. |
 | 404 | ResourceNotFound.Vbr | ResourceNotFound.Vbr | The VBR resource is not found. |
 
-#### 6.17.2. 用户网关
+#### 6.17.2 用户网关
 
-##### 6.17.2.1. CreateCustomerGateway
+##### 6.17.2.1 CreateCustomerGateway
+
+调用CreateCustomerGateway接口创建用户网关。
 
 **请求参数**
 
@@ -9912,8 +9927,6 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
 | Action | String | 是 | CreateCustomerGateway | 要执行的操作。 取值：CreateCustomerGateway。 |
 | IpAddress | String | 是 | 116.XX.XX.222 | 用户网关的IP地址。 |
 | RegionId | String | 是 | cn-qingdao-env66-d01 | 用户网关所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
-
-专有网络VPC
 
 | ClientToken | String | 否 | 02fb3da4-130e-11e9-8e44- 0016e04115b | 用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个 ASCII字符。 |
 |---|---|---|---|---|
@@ -9939,15 +9952,15 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
 http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222 &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateCustomerGatewayResponse> <CustomerGatewayId>cgw-bp1aw0a5nfff03xp****</CustomerGatewayId> <RequestId>185E81B1-3916-4667-B48F-C52409B33F2B</RequestId> <CreateTime>1493363486000</CreateTime> <IpAddress>100.XX.XX.1</IpAddress> </CreateCustomerGatewayResponse> |  |
+| <CreateCustomerGatewayResponse> <CustomerGatewayId>cgw-bp1aw0a5nfff03xp****</CustomerGatewayId> <RequestId>185E81B1-3916-4667-B48F-C52409B33F2B</RequestId> <CreateTime>1493363486000</CreateTime> <IpAddress>100.XX.XX.1</IpAddress> </CreateCustomerGatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "CustomerGatewayId": "cgw-bp1jrawp82av6bws9****", "CreateTime": 1493363599000, "RequestId": "D32B3C26-6C6C-4988-93E9-D2A6444CE6AE", "IpAddress": "100.XX.XX.1" } |  |
+| { "CustomerGatewayId": "cgw-bp1jrawp82av6bws9****", "CreateTime": 1493363599000, "RequestId": "D32B3C26-6C6C-4988-93E9-D2A6444CE6AE", "IpAddress": "100.XX.XX.1" } |   |
 
 **错误码**
 
@@ -9961,11 +9974,9 @@ http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222 &Reg
 | 400 | InvalidDescription | The description is not valid | 描述格式不合法。 |
 | 400 | Resource.QuotaFull | The quota of resource is full | 资源配额已达上限。 |
 
-专有网络VPC
+##### 6.17.2.2 DescribeCustomerGateways
 
-##### 6.17.2.2. DescribeCustomerGateways
-
-**请求参数**
+调用DescribeCustomerGateways接口查询已创建的用户网关。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9979,8 +9990,8 @@ http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222 &Reg
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| CustomerGateways | Array of CustomerGateway |  | 用户网关的详细信息。 |
-| CustomerGateway |  |  |  |
+| CustomerGateways | Array of CustomerGateway |   | 用户网关的详细信息。 |
+| CustomerGateway |   |   |   |
 | CustomerGatewayId | String | cgw-bp1pvpl9r9adju6l5**** | 用户网关的ID。 |
 | Name | String | test | 用户网关的名称。 |
 | Description | String | test | 用户网关的描述信息。 |
@@ -9999,36 +10010,31 @@ http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222 &Reg
 http(s)://[Endpoint]/?Action=DescribeCustomerGateways &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeCustomerGatewaysResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> <CustomerGateways> <CustomerGateway> <Name>test</Name> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <CreateTime>1492747187000</CreateTime> <IpAddress>139.XX.XX.55</IpAddress> </CustomerGateway> </CustomerGateways> </DescribeCustomerGatewaysResponse> |  |
-
-`JSON` 格式专有网络VPC
+| <DescribeCustomerGatewaysResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> <CustomerGateways> <CustomerGateway> <Name>test</Name> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <CreateTime>1492747187000</CreateTime> <IpAddress>139.XX.XX.55</IpAddress> </CustomerGateway> </CustomerGateways> </DescribeCustomerGatewaysResponse> |   |
 
 ```json
-{
     "PageNumber": 1,
     "TotalCount": 1,
     "PageSize": 10,
     "RequestId": "E82612A9-CB90-4D7E-B394-1DB7F6509B29",
     "CustomerGateways": {
         "CustomerGateway": [
-            {
+```
+
+`{`
+
+```json
                 "Name": "test",
                 "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****",
                 "CreateTime": 1492747187000,
                 "IpAddress": "139.XX.XX.55"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
+`}` `]` `}` `}`
 
 **错误码**
 
@@ -10037,7 +10043,7 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateways &RegionId=cn-qingdao-env66
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请申请权限后再操作。 |
 
-##### 6.17.2.3. DescribeCustomerGateway
+##### 6.17.2.3 DescribeCustomerGateway
 
 调用DescribeCustomerGateway接口查询已创建的用户网关的详细信息。
 
@@ -10068,17 +10074,15 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateways &RegionId=cn-qingdao-env66
 http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeCustomerGatewayResponse> <Name>test</Name> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <CreateTime>1492747187000</CreateTime> <RequestId>99506ECB-218F-45A5-AE8E-79518451F615</RequestId> <IpAddress>139.XX.XX.32</IpAddress> </DescribeCustomerGatewayResponse> |  |
-
-专有网络VPC
+| <DescribeCustomerGatewayResponse> <Name>test</Name> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <CreateTime>1492747187000</CreateTime> <RequestId>99506ECB-218F-45A5-AE8E-79518451F615</RequestId> <IpAddress>139.XX.XX.32</IpAddress> </DescribeCustomerGatewayResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****", "Name": "test", "RequestId": "A0457BC9-6C0F-4437-AB9D-FB2EABC1D6A2", "CreateTime": 1492747187000, "IpAddress": "139.XX.XX.32" } |  |
+| { "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****", "Name": "test", "RequestId": "A0457BC9-6C0F-4437-AB9D-FB2EABC1D6A2", "CreateTime": 1492747187000, "IpAddress": "139.XX.XX.32" } |   |
 
 **错误码**
 
@@ -10088,7 +10092,9 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请申请权限后再操作。 |
 | 404 | InvalidCustomerGatewayInstance Id.NotFound | The specified customer gateway instance id does not exist. | 指定的用户网关实例不存在，请您检查用户网关实例ID是否正确。 |
 
-##### 6.17.2.4. DeleteCustomerGateway
+##### 6.17.2.4 DeleteCustomerGateway
+
+调用DeleteCustomerGateway接口删除指定的用户网关。
 
 **请求参数**
 
@@ -10113,15 +10119,15 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q
 http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteCustomerGatewayResesponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteCustomerGatewayResesponse> |  |
+| <DeleteCustomerGatewayResesponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteCustomerGatewayResesponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |  |
+| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
 **错误码**
 
@@ -10130,12 +10136,10 @@ http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8b
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-专有网络VPC
-
 | 404 | InvalidCustomerGatewayInstance Id.NotFound | The specified customer gateway instance id does not exist. | 指定的 Instance 不存在，请您检查 Instance 是否正确。 |
 |---|---|---|---|
 
-##### 6.17.2.5. ModifyCustomerGatewayAttribute
+##### 6.17.2.5 ModifyCustomerGatewayAttribute
 
 调用ModifyCustomerGatewayAttribute接口修改用户网关的名称和描述信息。
 
@@ -10169,23 +10173,21 @@ http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8b
 http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyCustomerGatewayAttributeResponse> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <RequestId>E61293C8-AF07-4E87-A272-542680038F93</RequestId> <CreateTime>1492747187000</CreateTime> <IpAddress>139.XX.XX.55</IpAddress> <Description>modify</Description> </ModifyCustomerGatewayAttributeResponse> |  |
-
-`JSON` 格式专有网络VPC
+| <ModifyCustomerGatewayAttributeResponse> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <RequestId>E61293C8-AF07-4E87-A272-542680038F93</RequestId> <CreateTime>1492747187000</CreateTime> <IpAddress>139.XX.XX.55</IpAddress> <Description>modify</Description> </ModifyCustomerGatewayAttributeResponse> |   |
 
 ```json
-{
     "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****",
     "RequestId": "8AA5CE21-2E6A-4530-BDF5-F055849476E6",
     "CreateTime": 1492747187000,
     "IpAddress": "139.XX.XX.55",
     "Description": "modify"
-    }
 ```
+
+`}`
 
 **错误码**
 
@@ -10197,9 +10199,11 @@ http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=v
 | 400 | InvalidName | The name is not valid | 该名称格式不合法。 |
 | 400 | InvalidDescription | The description is not valid | 描述格式不合法。 |
 
-#### 6.17.3. VPN网关路由
+#### 6.17.3 VPN网关路由
 
-##### 6.17.3.1. DeleteVpnPbrRouteEntry
+##### 6.17.3.1 DeleteVpnPbrRouteEntry
+
+调用DeleteVpnPbrRouteEntry删除VPN策略路由。
 
 **请求参数**
 
@@ -10223,21 +10227,21 @@ http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=v
 
 **示例**
 
-请求示例专有网络VPC
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteVpnPbrRouteEntryResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </DeleteVpnPbrRouteEntryResponse> |  |
+| <DeleteVpnPbrRouteEntryResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </DeleteVpnPbrRouteEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |  |
+| { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
 
 **错误码**
 
@@ -10250,7 +10254,9 @@ http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.3.2. DeleteVpnRouteEntry
+##### 6.17.3.2 DeleteVpnRouteEntry
+
+调用DeleteVpnRouteEntry删除VPN目的路由。
 
 **请求参数**
 
@@ -10265,17 +10271,11 @@ http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | ClientToken | String | 否 | d7d24a21-f4ba-4454-9173- b3828dae492b | 客户端token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个 ASCII字符。 |
 | OverlayMode | String | 否 | Ipsec | 覆盖模式，取值：Ipsec（IPsec隧道协议）。 |
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-专有网络VPC
-
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | 请求ID。 |
 |---|---|---|---|
-
-**示例**
 
 请求示例
 
@@ -10283,15 +10283,15 @@ http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteVpnRouteEntryResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </DeleteVpnRouteEntryResponse> |  |
+| <DeleteVpnRouteEntryResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </DeleteVpnRouteEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |  |
+| { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
 
 **错误码**
 
@@ -10304,7 +10304,9 @@ http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.3.3. DescribeVpnRouteEntries
+##### 6.17.3.3 DescribeVpnRouteEntries
+
+调用DescribeVpnRouteEntries查询VPN目的路由。
 
 **请求参数**
 
@@ -10325,11 +10327,9 @@ http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 | RequestId | String | 0ED8D006-F706-4D23-88ED- E11ED28DCAC0 | 请求ID。 |
 | TotalCount | Integer | 10 | 列表条目数。 |
 
-专有网络VPC
-
-| VpnRouteEntries | Array of VpnRouteEntry |  | VPN目的路由的详细信息。 |
+| VpnRouteEntries | Array of VpnRouteEntry |   | VPN目的路由的详细信息。 |
 |---|---|---|---|
-| VpnRouteEntry |  |  |  |
+| VpnRouteEntry |   |   |   |
 | CreateTime | Long | 1492747187000 | 创建VPN目的路由的时间戳。 |
 | NextHop | String | vco-bp15oes1py4i66rmd**** | 目的路由的下一跳。 |
 | RouteDest | String | 10.0.0.0/24 | 目的路由的目标网段。 |
@@ -10345,15 +10345,15 @@ http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeVpnRouteEntriesResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <VpnRouteEntries> <VpnRouteEntry> <RouteDest>10.0.0.0/24</RouteDest> <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId> <State>normal</State> <Weight>100</Weight> <CreateTime>1563874074000</CreateTime> <NextHop>vco-bp1tui07ob10fmuro****</NextHop> </VpnRouteEntry> </VpnRouteEntries> <PageSize>10</PageSize> <RequestId>BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5</RequestId> </DescribeVpnRouteEntriesResponse> |  |
+| <DescribeVpnRouteEntriesResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <VpnRouteEntries> <VpnRouteEntry> <RouteDest>10.0.0.0/24</RouteDest> <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId> <State>normal</State> <Weight>100</Weight> <CreateTime>1563874074000</CreateTime> <NextHop>vco-bp1tui07ob10fmuro****</NextHop> </VpnRouteEntry> </VpnRouteEntries> <PageSize>10</PageSize> <RequestId>BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5</RequestId> </DescribeVpnRouteEntriesResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "PageNumber": 1, "TotalCount": 1, "VpnRouteEntries": { "VpnRouteEntry": [ { "RouteDest": "10.0.0.0/24", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "State": "normal", "Weight": 100, "CreateTime": 1563874074000, "NextHop": "vco-bp1tui07ob10fmuro****" } ] }, "PageSize": 10, "RequestId": "BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5" } |  |
+| { "PageNumber": 1, "TotalCount": 1, "VpnRouteEntries": { "VpnRouteEntry": [ { "RouteDest": "10.0.0.0/24", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "State": "normal", "Weight": 100, "CreateTime": 1563874074000, "NextHop": "vco-bp1tui07ob10fmuro****" } ] }, "PageSize": 10, "RequestId": "BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5" } |   |
 
 **错误码**
 
@@ -10362,13 +10362,9 @@ http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &RegionId=cn-qingdao-env66-
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-专有网络VPC
-
-##### 6.17.3.4. ModifyVpnRouteEntryWeight
+##### 6.17.3.4 ModifyVpnRouteEntryWeight
 
 调用ModifyVpnRouteEntryWeight修改VPN目的路由的权重值。
-
-**请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -10396,15 +10392,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &RegionId=cn-qingdao-env66-
 http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyVpnRouteEntryWeightResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </ModifyVpnRouteEntryWeightResponse> |  |
+| <ModifyVpnRouteEntryWeightResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </ModifyVpnRouteEntryWeightResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |  |
+| { "RequestId": "E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
 
 **错误码**
 
@@ -10413,15 +10409,15 @@ http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=v
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-专有网络VPC
-
 | 400 | Resource.QuotaFull | The quota of resource is full | 资源配额已达上限。 |
 |---|---|---|---|
 | 404 | InvalidVpnGatewayInstanceId.Not Found | The specified vpn gateway instance id does not exist. | 指定的 VPN 网关不存在，请您检查 VPN 网关是否正确。 |
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.3.5. CreateVpnRouteEntry
+##### 6.17.3.5 CreateVpnRouteEntry
+
+调用CreateVpnRouteEntry创建VPN目的路由。
 
 **请求参数**
 
@@ -10452,25 +10448,19 @@ http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=v
 | VpnInstanceId | String | vpn-bp1cmw7jh1nfe43m9**** | VPN网关的ID。 |
 | Weight | Integer | 0 | 目的路由的权重值，取值：0或100。 |
 
-专有网络VPC
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateVpnRouteEntryResponse> <RouteDest>10.0.0.0/24</RouteDest> <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId> <OverlayMode>Ipsec</OverlayMode> <State>published</State> <Weight>100</Weight> <CreateTime>1563873294331</CreateTime> <NextHop>vco-bp1tui07ob10fmuro****</NextHop> <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId> </CreateVpnRouteEntryResponse> |  |
+| <CreateVpnRouteEntryResponse> <RouteDest>10.0.0.0/24</RouteDest> <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId> <OverlayMode>Ipsec</OverlayMode> <State>published</State> <Weight>100</Weight> <CreateTime>1563873294331</CreateTime> <NextHop>vco-bp1tui07ob10fmuro****</NextHop> <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId> </CreateVpnRouteEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RouteDest": "10.0.0.0/24", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "OverlayMode": "Ipsec", "State": "published", "Weight": 100, "CreateTime": 1563873294331, "NextHop": "vco-bp1tui07ob10fmuro****", "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78" } |  |
+| { "RouteDest": "10.0.0.0/24", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "OverlayMode": "Ipsec", "State": "published", "Weight": 100, "CreateTime": 1563873294331, "NextHop": "vco-bp1tui07ob10fmuro****", "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78" } |   |
 
 **错误码**
 
@@ -10483,7 +10473,7 @@ http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.3.6. ModifyVpnPbrRouteEntryWeight
+##### 6.17.3.6 ModifyVpnPbrRouteEntryWeight
 
 调用ModifyVpnPbrRouteEntryWeight接口修改VPN策略路由的权重值。
 
@@ -10495,8 +10485,6 @@ http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 | NewWeight | Integer | 是 | 100 | 要设置的权重值，取值： 0：低优先级。 100：高优先级。 说明相同目标网段的策略路由，不支持同时设置权重值为 100。 |
 | NextHop | String | 是 | vco-bp15oes1py4i66rmd**** | 策略路由的下一跳。 |
 | RegionId | String | 是 | cn-qingdao-env66-d01 | VPN策略路由所在的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
-
-专有网络VPC
 
 | RouteDest | String | 是 | 10.0.0.0/24 | 策略路由的目标网段。 |
 |---|---|---|---|---|
@@ -10520,15 +10508,15 @@ http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifyVpnPbrRouteEntryWeightResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </ModifyVpnPbrRouteEntryWeightResponse> |  |
+| <ModifyVpnPbrRouteEntryWeightResponse> <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId> </ModifyVpnPbrRouteEntryWeightResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |  |
+| { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
 
 **错误码**
 
@@ -10541,15 +10529,15 @@ http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHo
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.3.7. DescribeVpnPbrRouteEntries
+##### 6.17.3.7 DescribeVpnPbrRouteEntries
+
+调用DescribeVpnPbrRouteEntries查询VPN策略路由。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeVpnPbrRouteEntries | 要执行的操作，取值：DescribeVpnPbrRouteEntries。 |
-
-专有网络VPC
 
 | RegionId | String | 是 | cn-qingdao-env66-d01 | VPN策略路由所在的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 |---|---|---|---|---|
@@ -10565,8 +10553,8 @@ http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHo
 | PageSize | Integer | 10 | 每页包含的条目数。 |
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | 请求ID。 |
 | TotalCount | Integer | 12 | 列表条目数。 |
-| VpnPbrRouteEntries | Array of VpnPbrRouteEntry |  | VPN策略路由的详细信息。 |
-| VpnPbrRouteEntry |  |  |  |
+| VpnPbrRouteEntries | Array of VpnPbrRouteEntry |   | VPN策略路由的详细信息。 |
+| VpnPbrRouteEntry |   |   |   |
 | CreateTime | Long | 1492747187000 | 创建VPN策略路由的时间戳。 |
 | NextHop | String | vco-bp15oes1py4i66rmd**** | 策略路由的下一跳。 |
 | RouteDest | String | 10.0.0.0/24 | 策略路由的目标网段。 |
@@ -10583,9 +10571,10 @@ http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHo
 http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeVpnPbrRouteEntriesResponse>
    <PageNumber>1</PageNumber>
    <TotalCount>1</TotalCount>
    <RequestId>E5D94DC7-AEC7-4E73-A203-61B04D1F1160</RequestId>
@@ -10601,11 +10590,12 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &RegionId=cn-qingdao-env
          <RouteSource>11.0.0.0/32</RouteSource>
       </VpnPbrRouteEntry>
    </VpnPbrRouteEntries>
+</DescribeVpnPbrRouteEntriesResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "PageNumber": 1, "TotalCount": 1, "RequestId": "E5D94DC7-AEC7-4E73-A203-61B04D1F1160", "PageSize": 10, "VpnPbrRouteEntries": { "VpnPbrRouteEntry": [ { "RouteDest": "10.0.0.0/32", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "State": "published", "Weight": 100, "CreateTime": 1563881012000, "NextHop": "vco-bp1tui07ob10fmuro****", "RouteSource": "11.0.0.0/32" } ] } } |  |
+| { "PageNumber": 1, "TotalCount": 1, "RequestId": "E5D94DC7-AEC7-4E73-A203-61B04D1F1160", "PageSize": 10, "VpnPbrRouteEntries": { "VpnPbrRouteEntry": [ { "RouteDest": "10.0.0.0/32", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "State": "published", "Weight": 100, "CreateTime": 1563881012000, "NextHop": "vco-bp1tui07ob10fmuro****", "RouteSource": "11.0.0.0/32" } ] } } |   |
 
 **错误码**
 
@@ -10614,7 +10604,9 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &RegionId=cn-qingdao-env
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-##### 6.17.3.8. PublishVpnRouteEntry
+##### 6.17.3.8 PublishVpnRouteEntry
+
+调用PublishVpnRouteEntry发布VPN路由到VPC。
 
 **请求参数**
 
@@ -10627,8 +10619,6 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &RegionId=cn-qingdao-env
 | RouteDest | String | 是 | 10.0.0.0/24 | VPN路由的目标网段。 |
 | RouteType | String | 是 | pbr | VPN路由类型，取值： pbr：策略路由。 dbr：目的路由。 |
 | VpnGatewayId | String | 是 | vpn-bp1a3kqjiiq9legfx**** | VPN网关的ID。 |
-
-专有网络VPC
 
 | ClientToken | String | 否 | d7d24a21-f4ba-4454-9173- b3828dae492b | 客户端token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个 ASCII字符。 |
 |---|---|---|---|---|
@@ -10647,15 +10637,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &RegionId=cn-qingdao-env
 http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteType=pbr &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <PublishVpnRouteEntryResponse> <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId> </PublishVpnRouteEntryResponse> |  |
+| <PublishVpnRouteEntryResponse> <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId> </PublishVpnRouteEntryResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78" } |  |
+| { "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78" } |   |
 
 **错误码**
 
@@ -10668,7 +10658,9 @@ http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.3.9. CreateVpnPbrRouteEntry
+##### 6.17.3.9 CreateVpnPbrRouteEntry
+
+调用CreateVpnPbrRouteEntry创建VPN策略路由。
 
 **请求参数**
 
@@ -10680,8 +10672,6 @@ http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd
 | RegionId | String | 是 | cn-qingdao-env66-d01 | VPN策略路由所在的地域ID。您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | RouteDest | String | 是 | 10.0.0.0/24 | 策略路由的目标网段。 |
 | RouteSource | String | 是 | 192.168.1.0/24 | 策略路由的源网段。 |
-
-专有网络VPC
 
 | VpnGatewayId | String | 是 | vpn-bp1a3kqjiiq9legfx**** | VPN网关的ID。 |
 |---|---|---|---|---|
@@ -10713,16 +10703,13 @@ http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd
 http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateVpnPbrRouteEntryResponse> <RouteDest>10.0.0.0/24</RouteDest> <RouteSource>192.168.1.0/24</RouteSource> <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId> <OverlayMode>Ipsec</OverlayMode> <State>published</State> <Weight>100</Weight> <CreateTime>1563873294331</CreateTime> <NextHop>vco-bp1tui07ob10fmuro****</NextHop> </CreateVpnPbrRouteEntryResponse> |  |
-
-`JSON` 格式专有网络VPC
+| <CreateVpnPbrRouteEntryResponse> <RouteDest>10.0.0.0/24</RouteDest> <RouteSource>192.168.1.0/24</RouteSource> <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId> <OverlayMode>Ipsec</OverlayMode> <State>published</State> <Weight>100</Weight> <CreateTime>1563873294331</CreateTime> <NextHop>vco-bp1tui07ob10fmuro****</NextHop> </CreateVpnPbrRouteEntryResponse> |   |
 
 ```json
-{
     "RouteDest": "10.0.0.0/24",
     "RouteSource": "192.168.1.0/24",
     "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****",
@@ -10731,8 +10718,9 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
     "Weight": 100,
     "CreateTime": 1563873294331,
     "NextHop": "vco-bp1tui07ob10fmuro****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -10745,9 +10733,9 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-#### 6.17.4. IPsec-VPN
+#### 6.17.4 IPsec-VPN
 
-##### 6.17.4.1. DescribeVpnConnection
+##### 6.17.4.1 DescribeVpnConnection
 
 调用DescribeVpnConnection接口查询已创建的IPsec连接的详细信息。
 
@@ -10773,9 +10761,7 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | Status | String | ikesanotestablished _ _ _ | 连接状态。 ike _sa _not _established表示第一阶段协商失败。 ike _sa _established表示第一阶段协商成功。 ipsec _sa _not _established表示第二阶段协商失败。 ipsec _sa _established表示第二阶段协商成功。 |
 | EffectImmediately | Boolean | true | IPsec连接是否立即生效。 true：配置变更时触发重连。 false：有流量时触发重连。重连有可能导致流量闪断。 |
 
-专有网络VPC
-
-| IkeConfig | Struct |  | 第一阶段协商的配置。 |
+| IkeConfig | Struct |   | 第一阶段协商的配置。 |
 |---|---|---|---|
 | IkeAuthAlg | String | sha1 | IKE认证算法。 |
 | IkeEncAlg | String | aes | IKE加密算法。 |
@@ -10786,13 +10772,13 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | LocalId | String | 116.XX.XX.69 | 本端ID，支持FQDN和IP格式，默认为当前选取的VPN网关IP地址。 |
 | Psk | String | pgw6dy7d1i8in7x5 | 预共享密钥。 |
 | RemoteId | String | 139.XX.XX.32 | 对端ID，支持FQDN和IP格式，默认为当前选取的用户网关IP地址。 |
-| IpsecConfig | Struct |  | 第二阶段协商的配置。 |
+| IpsecConfig | Struct |   | 第二阶段协商的配置。 |
 | IpsecAuthAlg | String | sha1 | IPsec认证算法。 |
 | IpsecEncAlg | String | aes | IPsec加密算法。 |
 | IpsecLifetime | Long | 86400 | IPsec生存时间。 |
 | IpsecPfs | String | group2 | DH分组。 |
 | RequestId | String | F2310D45-BCF6-4E2E-9082- B4503844BA4C | 请求ID。 |
-| VcoHealthCheck | Struct |  | 健康检查信息。 |
+| VcoHealthCheck | Struct |   | 健康检查信息。 |
 | Dip | String | 10.XX.XX.1 | 目标IP。 |
 | Enable | String | true | 是否已开启健康检查。 false：未开启。 true：已开启。 |
 | Interval | Integer | 3 | 健康检查的重试间隔时间，单位是秒。 |
@@ -10808,9 +10794,10 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 http(s)://[Endpoint]/?Action=DescribeVpnConnection &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeVpnConnectionResponse>
       <PageNumber>1</PageNumber>
       <VpnConnections>
             <VpnConnection>
@@ -10845,11 +10832,12 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnection &RegionId=cn-qingdao-env66-d0
       <TotalCount>1</TotalCount>
       <PageSize>10</PageSize>
       <RequestId>7D598A10-26EF-44F2-9F47-E417842F3CEA</RequestId>
+</DescribeVpnConnectionResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "PageNumber": 1, "VpnConnections": { "VpnConnection": [ { "Name": "c2", "CustomerGatewayId": "cgw-bp1wl8dtz3auwlavw****", "Status": "ike_sa_not_established", "RemoteSubnet": "192.168.0.0/16", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "md5", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "EffectImmediately": false, "VpnGatewayId": "vpn-bp1yfrjxn4d5t63t****", "CreateTime": 1519391420000, "VpnConnectionId": "vco-bp1w3m1p23iftycv****", "LocalSubnet": "172.16.0.0/12", "IkeConfig": { "IkeEncAlg": "aes", "RemoteId": "47.XX.XX.176", "IkePfs": "group2", "IkeAuthAlg": "sha1", "Psk": "1234567", "IkeMode": "aggressive", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "116.XX.XX.119" } } ] }, "TotalCount": 1, "PageSize": 10, "RequestId": "7D598A10-26EF-44F2-9F47-E417842F3CEA" } |  |
+| { "PageNumber": 1, "VpnConnections": { "VpnConnection": [ { "Name": "c2", "CustomerGatewayId": "cgw-bp1wl8dtz3auwlavw****", "Status": "ike_sa_not_established", "RemoteSubnet": "192.168.0.0/16", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "md5", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "EffectImmediately": false, "VpnGatewayId": "vpn-bp1yfrjxn4d5t63t****", "CreateTime": 1519391420000, "VpnConnectionId": "vco-bp1w3m1p23iftycv****", "LocalSubnet": "172.16.0.0/12", "IkeConfig": { "IkeEncAlg": "aes", "RemoteId": "47.XX.XX.176", "IkePfs": "group2", "IkeAuthAlg": "sha1", "Psk": "1234567", "IkeMode": "aggressive", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "116.XX.XX.119" } } ] }, "TotalCount": 1, "PageSize": 10, "RequestId": "7D598A10-26EF-44F2-9F47-E417842F3CEA" } |   |
 
 **错误码**
 
@@ -10857,17 +10845,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnection &RegionId=cn-qingdao-env66-d0
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 
-专有网络VPC
-
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 |---|---|---|---|
 | 404 | InvalidVpnConnectionInstanceId. NotFound | The specified vpn connection instance id does not exist. | 指定的 VPN 连接不存在，请您检查该 VPN 链接是否正确。 |
 
-##### 6.17.4.2. DeleteVpnConnection
+##### 6.17.4.2 DeleteVpnConnection
 
-**说明**
+调用DeleteVpnConnection接口删除指定的IPsec连接。
 
-删除IPSec连接后，VPC与本地IDC之间的连接将中断。
+> **说明：** 删除IPSec连接后，VPC与本地IDC之间的连接将中断。
 
 **请求参数**
 
@@ -10892,15 +10878,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnection &RegionId=cn-qingdao-env66-d0
 http(s)://[Endpoint]/?Action=DeleteVpnConnection &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteVpnConnectionResponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteVpnConnectionResponse> |  |
+| <DeleteVpnConnectionResponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteVpnConnectionResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |  |
+| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
 **错误码**
 
@@ -10911,16 +10897,12 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &RegionId=cn-qingdao-env66-d01 
 | 404 | InvalidVpnConnectionInstanceId. NotFound | The specified vpn connection instance id does not exist. | 指定的 VPN 连接不存在，请您检查该 VPN 链接是否正确。 |
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 
-##### 6.17.4.3. DownloadVpnConnectionConfig
+##### 6.17.4.3 DownloadVpnConnectionConfig
 
 调用DownloadVpnConnectionConfig接口获取IPsec连接的配置信息。
 
-**请求参数**
-
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-专有网络VPC
 
 | Action | String | 是 | DownloadVpnConnectionConf ig | 要执行的操作，取值： DownloadVpnConnectionConfig。 |
 |---|---|---|---|---|
@@ -10932,8 +10914,8 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &RegionId=cn-qingdao-env66-d01 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 0C68048B-0F70-40DA-B8AE- 1B79B5CF62E3 | 请求ID。 |
-| VpnConnectionConfig | Struct |  | IPsec连接的配置信息。 |
-| IkeConfig | Struct |  | IKE配置相关配置信息。 |
+| VpnConnectionConfig | Struct |   | IPsec连接的配置信息。 |
+| IkeConfig | Struct |   | IKE配置相关配置信息。 |
 | IkeAuthAlg | String | sha1 | IKE认证算法，支持sha1和md5。 |
 | IkeEncAlg | String | aes | IKE加密算法。 |
 | IkeLifetime | Long | 86400 | IKE生存时间。单位为秒。 |
@@ -10943,7 +10925,7 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &RegionId=cn-qingdao-env66-d01 
 | LocalId | String | 116.XX.XX.69 | 本端ID，支持FQDN和IP格式，默认为当前选取的VPN网关IP地址。 |
 | Psk | String | pgw6dy7d1i8i**** | 预共享密钥。 |
 | RemoteId | String | 139.XX.XX.32 | 对端ID，支持FQDN和IP格式，默认为当前选取的用户网关IP地址。 |
-| IpsecConfig | Struct |  | IPsec配置信息。 |
+| IpsecConfig | Struct |   | IPsec配置信息。 |
 | IpsecAuthAlg | String | sha1 | IPsec认证算法，支持sha1和md5。 |
 | IpsecEncAlg | String | aes | IPsec加密算法。 |
 | IpsecLifetime | Long | 86400 | IPsec生存时间。单位为秒。 |
@@ -10961,9 +10943,10 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &RegionId=cn-qingdao-env66-d01 
 http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>`
 
 ```xml
+<DownloadVpnConnectionConfigResponse>
       <RequestId>0C68048B-0F70-40DA-B8AE-1B79B5CF62E3</RequestId>
       <VpnConnectionConfig>
             <RemoteSubnet>10.10.1.0/24,10.10.2.0/24</RemoteSubnet>
@@ -10988,11 +10971,12 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-en
                   <LocalId>139.XX.XX.32</LocalId>
             </IkeConfig>
       </VpnConnectionConfig>
+</DownloadVpnConnectionConfigResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "0C68048B-0F70-40DA-B8AE-1B79B5CF62E3", "VpnConnectionConfig": { "RemoteSubnet": "10.10.1.0/24,10.10.2.0/24", "Local": "139.XX.XX.32", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "sha1", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "Remote": "116.XX.XX.69", "LocalSubnet": "172.16.2.0/24", "IkeConfig": { "IkeEncAlg": "aes", "IkePfs": "group2", "RemoteId": "116.XX.XX.69", "IkeAuthAlg": "sha1", "Psk": "pgw6dy7d1i8i****", "IkeMode": "main", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "139.XX.XX.32" } } } |  |
+| { "RequestId": "0C68048B-0F70-40DA-B8AE-1B79B5CF62E3", "VpnConnectionConfig": { "RemoteSubnet": "10.10.1.0/24,10.10.2.0/24", "Local": "139.XX.XX.32", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "sha1", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "Remote": "116.XX.XX.69", "LocalSubnet": "172.16.2.0/24", "IkeConfig": { "IkeEncAlg": "aes", "IkePfs": "group2", "RemoteId": "116.XX.XX.69", "IkeAuthAlg": "sha1", "Psk": "pgw6dy7d1i8i****", "IkeMode": "main", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "139.XX.XX.32" } } } |   |
 
 **错误码**
 
@@ -11002,7 +10986,9 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-en
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 | 404 | InvalidVpnConnectionInstanceId. NotFound | The specified vpn connection instance id does not exist. | 指定的 VPN 连接不存在，请您检查该 VPN 链接是否正确。 |
 
-##### 6.17.4.4. CreateVpnConnection
+##### 6.17.4.4 CreateVpnConnection
+
+调用CreateVpnConnection接口创建IPsec连接。
 
 **请求参数**
 
@@ -11010,8 +10996,6 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-en
 |---|---|---|---|---|
 | Action | String | 是 | CreateVpnConnection | 要执行的操作，取值：CreateVpnConnection。 |
 | CustomerGatewayId | String | 是 | vpn-bp1q8bgx4xnk**** | 用户网关的ID。 |
-
-专有网络VPC
 
 | LocalSubnet | String | 是 | 10.1.1.0/24,10.1.2.0/24 | 需要和本地IDC互连的VPC侧的网段，用于第二阶段协商。 多个网段之间用逗号（,）分隔，例如： 192.168.1.0/24,192.168.2.0/24。 |
 |---|---|---|---|---|
@@ -11026,12 +11010,8 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-en
 | HealthCheckConfig | String | 否 | {"enable":"true","dip":"192.1 68.xx.2","sip":"192.168.xx.2", "interval":"3","retry":"3"} | 健康检查配置信息： HealthCheckConfig.enable：是否开启健康检查，取值：true 或false（默认值）。 HealthCheckConfig.dip：健康检查的目的IP地址。 HealthCheckConfig.sip：健康检查的源IP地址。 HealthCheckConfig.interval：健康检查的重试间隔时间，单位是秒。 HealthCheckConfig.retry：健康检查的重试发包次数。 |
 | AutoConfigRoute | Boolean | 否 | true | 是否自动配置路由，取值： true：自动配置路由。 false（默认值）：不自动配置路由。 |
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-专有网络VPC
 
 | VpnConnectionId | String | vco-bp15oes1py4i6**** | IPsec连接的ID。 |
 |---|---|---|---|
@@ -11047,15 +11027,15 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-en
 http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx4xnk**** &LocalSubnet=10.1.1.0/24,10.1.2.0/24 &RegionId=cn-qingdao-env66-d01 &RemoteSubnet=10.10.1.0/24,10.10.2.0/24 &VpnGatewayId=vpn-bp1q8bgx4xnkm****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateVpnConnectionResponse> <VpnConnectionId>vco-bp1bbi27hojx8****</VpnConnectionId> <CreateTime>1493363928000</CreateTime> </CreateVpnConnectionResponse> |  |
+| <CreateVpnConnectionResponse> <VpnConnectionId>vco-bp1bbi27hojx8****</VpnConnectionId> <CreateTime>1493363928000</CreateTime> </CreateVpnConnectionResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "CreateTime": 1544666102000, "VpnConnectionId": "vco-bp15oes1py4i6****" } |  |
+| { "CreateTime": 1544666102000, "VpnConnectionId": "vco-bp15oes1py4i6****" } |   |
 
 **错误码**
 
@@ -11070,7 +11050,9 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.4.5. DescribeVpnConnections
+##### 6.17.4.5 DescribeVpnConnections
+
+调用DescribeVpnConnections接口查询已创建的IPsec连接。
 
 **请求参数**
 
@@ -11082,8 +11064,6 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 | CustomerGatewayId | String | 否 | cgw-bp1mvj4g9kogw**** | 用户网关的ID。 |
 | PageNumber | Integer | 否 | 1 | 列表的页码，默认值为1。 |
 
-专有网络VPC
-
 | PageSize | Integer | 否 | 10 | 分页查询时每页的行数，最大值为50，默认值为10。 |
 |---|---|---|---|---|
 | VpnConnectionId | String | 否 | vco-bp15oes1py4i6**** | IPsec连接的ID。 |
@@ -11092,9 +11072,9 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| VpnConnections | Array of VpnConnection |  | IPsec连接列表的详细信息。 |
-| VpnConnection |  |  |  |
-| IkeConfig | Struct |  | 第一阶段协商的配置。 |
+| VpnConnections | Array of VpnConnection |   | IPsec连接列表的详细信息。 |
+| VpnConnection |   |   |   |
+| IkeConfig | Struct |   | 第一阶段协商的配置。 |
 | IkeAuthAlg | String | sha1 | IKE认证算法，取值：sha1和MD5。 |
 | IkeEncAlg | String | aes | IKE加密算法。 |
 | IkeLifetime | Long | 86400 | IKE生存时间。单位：秒。 |
@@ -11104,7 +11084,7 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 | LocalId | String | 116.XX.XX.64 | 本端ID，支持FQDN和IP格式，默认为当前选取的VPN网关IP地址。 |
 | Psk | String | pgw6dy7d**** | 预共享密钥。 |
 | RemoteId | String | 139.XX.XX.167 | 对端ID，支持FQDN和IP格式，默认为当前选取的用户网关IP地址。 |
-| IpsecConfig | Struct |  | 第二阶段协商的配置。 |
+| IpsecConfig | Struct |   | 第二阶段协商的配置。 |
 | IpsecAuthAlg | String | sha1 | IPsec认证算法，取值：sha1和md5。 |
 | IpsecEncAlg | String | aes | IPsec加密算法。 |
 | IpsecLifetime | Long | 86400 | IPsec生存时间。 |
@@ -11118,11 +11098,9 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 | CreateTime | Long | 1492753817000 | IPsec连接的创建时间戳。 |
 | Status | String | ipsecsaestablished _ _ | 连接状态。分别为： ike _sa _not _established表示第一阶段协商失败。 ike _sa _established表示第一阶段协商成功。 ipsec _sa _not _established表示第二阶段协商失败。 ipsec _sa _established表示第二阶段协商成功。 |
 
-专有网络VPC
-
 | EffectImmediately | Boolean | true | 是否立即生效： true：配置变更时触发重连。 false：有流量时触发重连。重连有可能导致流量闪断。 |
 |---|---|---|---|
-| VcoHealthCheck | Struct |  | 健康检查。 |
+| VcoHealthCheck | Struct |   | 健康检查。 |
 | Dip | String | 8.XX.XX.8 | 目的IP地址。 |
 | Enable | String | true | 健康检查的开启状态。 true：已开启。 false：未开启。 |
 | Interval | Integer | 2 | 健康检查的时间间隔。单位：秒。 |
@@ -11142,9 +11120,10 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeVpnConnections>
    <PageNumber>1</PageNumber>
    <VpnConnections>
       <VpnConnection>
@@ -11183,11 +11162,12 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d
    <TotalCount>1</TotalCount>
    <PageSize>10</PageSize>
    <RequestId>54A4B3D0-DF4D-4C54-B8DC-5DC8DD49C939</RequestId>
+</DescribeVpnConnections>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "PageNumber": 1, "VpnConnections": { "VpnConnection": [ { "Name": "vpn连接测试", "CustomerGatewayId": "cgw-bp1pvpl9r9adjxxxxxxxx", "RemoteSubnet": "172.16.2.0/24", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "sha1", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "EffectImmediately": true, "VpnGatewayId": "vpn-bp1q8bgx4xnkmxxxxxxxx", "CreateTime": 1492753817000, "VpnConnectionId": "vco-bp10lz7aejumdxxxxxxxx", "status": "ipsec_sa_established", "LocalSubnet": "10.1.1.0/24,10.1.2.0/24", "IkeConfig": { "IkeEncAlg": "aes", "RemoteId": "139.XX.XX.167", "IkePfs": "group2", "IkeAuthAlg": "sha1", "Psk": "pgw6dy****", "IkeMode": "main", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "116.XX.XX.64" } } ] }, "TotalCount": 1, "PageSize": 10, "RequestId": "54A4B3D0-DF4D-4C54-B8DC-5DC8DD49C939" } |  |
+| { "PageNumber": 1, "VpnConnections": { "VpnConnection": [ { "Name": "vpn连接测试", "CustomerGatewayId": "cgw-bp1pvpl9r9adjxxxxxxxx", "RemoteSubnet": "172.16.2.0/24", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "sha1", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "EffectImmediately": true, "VpnGatewayId": "vpn-bp1q8bgx4xnkmxxxxxxxx", "CreateTime": 1492753817000, "VpnConnectionId": "vco-bp10lz7aejumdxxxxxxxx", "status": "ipsec_sa_established", "LocalSubnet": "10.1.1.0/24,10.1.2.0/24", "IkeConfig": { "IkeEncAlg": "aes", "RemoteId": "139.XX.XX.167", "IkePfs": "group2", "IkeAuthAlg": "sha1", "Psk": "pgw6dy****", "IkeMode": "main", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "116.XX.XX.64" } } ] }, "TotalCount": 1, "PageSize": 10, "RequestId": "54A4B3D0-DF4D-4C54-B8DC-5DC8DD49C939" } |   |
 
 **错误码**
 
@@ -11195,12 +11175,10 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 
-专有网络VPC
-
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 |---|---|---|---|
 
-##### 6.17.4.6. ModifyVpnConnectionAttribute
+##### 6.17.4.6 ModifyVpnConnectionAttribute
 
 调用ModifyVpnConnectionAttribute接口修改IPsec连接的配置信息。
 
@@ -11225,16 +11203,12 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d
 | RemoteSubnet | String | Query | 否 | 10.2.1.0/24,10.2.2.0/24 | 本地数据中心侧的网段，用于第二阶段协商。 多个网段之间用半角逗号（,）分隔，例如： 192.168.3.0/24,192.168.4.0/24。 |
 | EffectImmediately | Boolean | Query | 否 | false | 选择IPsec连接的配置是否立即生效。取值： true ：是，配置完成后系统立即进行IPsec 协议协商。 false ：否，当有流量进入时系统才进行 IPsec协议协商。 默认值：false |
 
-专有网络VPC
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | IkeConfig | String | Query | 否 | {"Psk":"pgw6dy7d1i8i****","IkeVersion":"i kev1","IkeMode":"main","IkeEncAlg":"aes" ,"IkeAuthAlg":"sha1","IkePfs":"group2","Ik eLifetime":86400,"LocalId":"116.64.XX.XX ","RemoteId":"139.18.XX.XX"} | 第一阶段协商的配置信息： IkeConfig.Psk ：预共享密钥，用于 IPsec VPN网关与用户网关之间的身份认证。 默认情况下会随机生成，也可以手动指定密钥。长度限制为100个字符。 IPsec连接侧的预共享密钥需和本地数据中心侧的认证密钥一致，否则本地数据中心和VPN网关之间无法建立连接。 IkeConfig.IkeVersion ：IKE协议的版本。取值：ikev1 或ikev2 。 相对于IKEv1版本，IKEv2版本简化了SA的协商过程并且对于多网段的场景提供了更好的支持。 IkeConfig.IkeMode ：IKE版本的协商模式。取值：main 或aggressive 。 main ：主模式，协商过程安全性高。 aggressive ：野蛮模式，协商快速且协商成功率高。 IkeConfig.IkeEncAlg ：第一阶段协商的加密算法。 取值：aes 、aes192 、aes256 、de s 或3des 。 IkeConfig.IkeAuthAlg ：第一阶段协商的认证算法。 取值：md5 、sha1 。 IkeConfig.IkePfs ：第一阶段协商使用的Diffie-Hellman密钥交换算法。取值：group1 、group2 、group5 、group14 。 IkeConfig.IkeLifetime ：第一阶段协商出的SA的生存周期。单位：秒。取值范围：0~86400 。 IkeConfig.LocalId ：VPN网关的标识。 长度限制为100个字符。默认值为VPN网关的 IP地址。 IkeConfig.RemoteId ：用户网关的标识。长度限制为100个字符。默认值为用户网关的IP地址。 |
 | IpsecConfig | String | Query | 否 | {"IpsecEncAlg":"aes","IpsecAuthAlg":"sha 1","IpsecPfs":"group2","IpsecLifetime":864 00} | 第二阶段协商的配置信息： IpsecConfig.IpsecEncAlg ：第二阶段协商的加密算法。 取值：aes 、aes192 、aes256 、de s 或3des 。 IpsecConfig. IpsecAuthAlg ：第二阶段协商的认证算法。 取值：md5 、sha1 。 IpsecConfig. IpsecPfs ：转发所有协议的报文，第一阶段协商使用的Diffie-Hellman 密钥交换算法。取值：disabled 、group1 、group2 、group5 、group14 。 IpsecConfig. IpsecLifetime ：第二阶段协商出的SA的生存周期。单位：秒。取值范围：0~86400 。 |
 | HealthCheckConfig | String | Query | 否 | {"enable":"true","dip":"192.168.1.1","sip": "10.1.1.1","interval":"3","retry":"3"} | 健康检查配置信息： HealthCheckConfig.enable ：是否开启健康检查。取值：true 或false 。 HealthCheckConfig.dip ：健康检查的目的IP地址。 HealthCheckConfig.sip ：健康检查的源IP地址。 HealthCheckConfig.interval ：健康检查的重试间隔时间，单位：秒。 HealthCheckConfig.retry ：健康检查的重试发包次数。 |
 | AutoConfigRoute | Boolean | Query | 否 | true | 是否自动发布路由。取值： true ：自动发布。 false ：不自动发布。 |
-
-专有网络VPC
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11266,7 +11240,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d
 | -LocalId | String | 116.XX.XX.64 | 本端ID，支持FQDN和IP格式，默认为当前选取的VPN网关IP地址。 |
 | -RemoteId | String | 139.XX.XX.167 | 对端ID，支持FQDN和IP格式，默认为当前选取的用户网关IP地址。 |
 
-| 开发指南·API参考 |  |  | 专有网络VPC |
+| 开发指南·API参考 |   |   | 专有网络VPC |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11291,10 +11265,10 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d
 http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有网络VPC
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "LocalSubnet":"10.1.1.0/24,10.1.2.0/24",
  "Description":"description",
  "RequestId":"7DB79D0C-5F27-4AB5-995B-79BE55102F90",
@@ -11309,14 +11283,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "Sip":"2.XX.XX.2",
   "Retry":1,
   "Interval":3
- },
+```
+
+`},`
+
+```json
  "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****",
  "IpsecConfig":{
   "IpsecPfs":"group2",
   "IpsecEncAlg":"aes",
   "IpsecAuthAlg":"sha1",
   "IpsecLifetime":86400
- },
+```
+
+`},`
+
+```json
  "VpnConnectionId":"vco-bp1bbi27hojx80nck****",
  "IkeConfig":{
   "IkeAuthAlg":"sha1",
@@ -11328,13 +11310,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "Psk":"pgw6dy7d1i8i****",
   "RemoteId":"139.XX.XX.167",
   "IkePfs":"group2"
- }
-}
 ```
+
+`}` `}`
 
 | XML | 格式 |
 |---|---|
-| <LocalSubnet>10.1.1.0/24,10.1.2.0/24</LocalSubnet> <Description>description</Description> <RequestId>7DB79D0C-5F27-4AB5-995B-79BE55102F90</RequestId> <CustomerGatewayId>cgw-p0w2jemrcj5u61un8****</CustomerGatewayId> <CreateTime>1492753817000</CreateTime> <Name>nametest</Name> <EffectImmediately>false</EffectImmediately> <RemoteSubnet>10.2.1.0/24,10.2.2.0/24</RemoteSubnet> <VcoHealthCheck> <Enable>true</Enable> <Dip>1.XX.XX.1</Dip> <Sip>2.XX.XX.2</Sip> <Retry>1</Retry> <Interval>3</Interval> </VcoHealthCheck> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <IpsecConfig> <IpsecPfs>group2</IpsecPfs> <IpsecEncAlg>aes</IpsecEncAlg> <IpsecAuthAlg>sha1</IpsecAuthAlg> <IpsecLifetime>86400</IpsecLifetime> </IpsecConfig> <VpnConnectionId>vco-bp1bbi27hojx80nck****</VpnConnectionId> <IkeConfig> <IkeAuthAlg>sha1</IkeAuthAlg> <LocalId>116.XX.XX.64</LocalId> <IkeEncAlg>aes</IkeEncAlg> <IkeVersion>ikev1</IkeVersion> <IkeMode>main</IkeMode> <IkeLifetime>86400</IkeLifetime> <Psk>pgw6dy7d1i8i****</Psk> <RemoteId>139.XX.XX.167</RemoteId> <IkePfs>group2</IkePfs> </IkeConfig> |  |
+| <LocalSubnet>10.1.1.0/24,10.1.2.0/24</LocalSubnet> <Description>description</Description> <RequestId>7DB79D0C-5F27-4AB5-995B-79BE55102F90</RequestId> <CustomerGatewayId>cgw-p0w2jemrcj5u61un8****</CustomerGatewayId> <CreateTime>1492753817000</CreateTime> <Name>nametest</Name> <EffectImmediately>false</EffectImmediately> <RemoteSubnet>10.2.1.0/24,10.2.2.0/24</RemoteSubnet> <VcoHealthCheck> <Enable>true</Enable> <Dip>1.XX.XX.1</Dip> <Sip>2.XX.XX.2</Sip> <Retry>1</Retry> <Interval>3</Interval> </VcoHealthCheck> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <IpsecConfig> <IpsecPfs>group2</IpsecPfs> <IpsecEncAlg>aes</IpsecEncAlg> <IpsecAuthAlg>sha1</IpsecAuthAlg> <IpsecLifetime>86400</IpsecLifetime> </IpsecConfig> <VpnConnectionId>vco-bp1bbi27hojx80nck****</VpnConnectionId> <IkeConfig> <IkeAuthAlg>sha1</IkeAuthAlg> <LocalId>116.XX.XX.64</LocalId> <IkeEncAlg>aes</IkeEncAlg> <IkeVersion>ikev1</IkeVersion> <IkeMode>main</IkeMode> <IkeLifetime>86400</IkeLifetime> <Psk>pgw6dy7d1i8i****</Psk> <RemoteId>139.XX.XX.167</RemoteId> <IkePfs>group2</IkePfs> </IkeConfig> |   |
 
 **错误码**
 
@@ -11358,9 +11340,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | VpnRouteEntry.InvalidWeight | VpnRouteEntry.InvalidWeight | Invalid route entry weight value. |
 | 400 | QuotaExceeded.PolicyBasedRout e | QuotaExceeded.PolicyBasedRoute | The maximum number of policy-based routes is exceeded. Existing routes: %s. Routes to be created: %s. Maximum routes: %s. |
 
-#### 6.17.5. SSL-VPN
+#### 6.17.5 SSL-VPN
 
-##### 6.17.5.1. CreateSslVpnServer
+##### 6.17.5.1 CreateSslVpnServer
+
+调用CreateSslVpnServer接口创建SSL-VPN服务端。
 
 **请求参数**
 
@@ -11375,8 +11359,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Name | String | 否 | sslvpnname | SSL-VPN服务端的名称。 长度为2~128个字符，必须以字母或中文开头，可包含数字、半角句号 （.）、下划线（_）和短划线（-）。但不能以 http:// 或 https:// 开头。 |
 | Proto | String | 否 | UDP | SSL-VPN服务端所使用的协议，取值： TCP：TCP协议。 UDP（默认值）：UDP协议。 |
 | Cipher | String | 否 | AES-128-CBC | SSL-VPN使用的加密算法，取值： AES-128-CBC（默认值）：AES-128-CBC算法。 AES-192-CBC：AES-192-CBC算法。 AES-256-CBC：AES-256-CBC算法。 none：不使用加密算法。 |
-
-专有网络VPC
 
 | Port | Integer | 否 | 1194 | SSL-VPN服务端所使用的端口，默认值为1194。 不能用使用以下端口： 22、2222、22222、9000、9001、9002、7505、80、443、 53、68、123、4510、4560、500、4500。 |
 |---|---|---|---|---|
@@ -11398,15 +11380,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &LocalSubnet=10.0.0.0/8 &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1hgim8by0kc9nga****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateSslVpnServerResponse> <RequestId>E98A9651-7098-40C7-8F85-C818D1EBBA85</RequestId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <Name>test</Name> </CreateSslVpnServerResponse> |  |
+| <CreateSslVpnServerResponse> <RequestId>E98A9651-7098-40C7-8F85-C818D1EBBA85</RequestId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <Name>test</Name> </CreateSslVpnServerResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId": "E98A9651-7098-40C7-8F85-C818D1EBBA85", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "Name": "test" } |  |
+| { "RequestId": "E98A9651-7098-40C7-8F85-C818D1EBBA85", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "Name": "test" } |   |
 
 **错误码**
 
@@ -11420,15 +11402,15 @@ http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &Lo
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.5.2. DeleteSslVpnServer
+##### 6.17.5.2 DeleteSslVpnServer
+
+调用DeleteSslVpnServer接口删除SSL-VPN服务端实例。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DeleteSslVpnServer | 要执行的操作。 取值： DeleteSslVpnServer。 |
-
-专有网络VPC
 
 | RegionId | String | 是 | cn-qingdao-env66-d01 | SSL-VPN服务端所在的地域。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 |---|---|---|---|---|
@@ -11446,18 +11428,18 @@ http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &Lo
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DeleteSslVpnServer &RegionId=cn-qingdao-env66-d01
+http(s)://[Endpoint]/?Action=DeleteSslVpnServer &RegionId=cn-qingdao-env66-d01 &SslVpnServerId=vss-bp18q7hzj6largv4v****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteSslVpnServerResponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteSslVpnServerResponse> |  |
+| <DeleteSslVpnServerResponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteSslVpnServerResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |  |
+| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
 **错误码**
 
@@ -11468,7 +11450,9 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnServer &RegionId=cn-qingdao-env66-d01
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.5.3. ModifySslVpnServer
+##### 6.17.5.3 ModifySslVpnServer
+
+调用ModifySslVpnServer接口修改SSL-VPN服务端的配置信息。
 
 **请求参数**
 
@@ -11478,8 +11462,6 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnServer &RegionId=cn-qingdao-env66-d01
 | RegionId | String | 是 | cn-qingdao-env66-d01 | VPN网关所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | SslVpnServerId | String | 是 | vss-bp18q7hzj6largv4v**** | SSL-VPN服务端实例ID。 |
 | ClientToken | String | 否 | 02fb3da4-130e-11e9-8e44- 0016e04115b | 客户端token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大不值过64个 ASCII字符。 |
-
-专有网络VPC
 
 | Name | String | 否 | test | SSL-VPN服务端的名称。 长度为2~128个字符，必须以字母或中文开头，可包含数字、半角句号 （.）、下划线（_）和短划线（-）。但不能以 http:// 或 https:// 开头。 |
 |---|---|---|---|---|
@@ -11510,23 +11492,19 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnServer &RegionId=cn-qingdao-env66-d01
 | SslVpnServerId | String | vss-bp18q7hzj6largv4v**** | SSL-VPN服务端的ID。 |
 | VpnGatewayId | String | vpn-bp1q8bgx4xnkm2ogj**** | VPN网关实例ID。 |
 
-**示例**
-
-请求示例专有网络VPC
-
 ```
-http(s)://[Endpoint]/?Action=ModifySslVpnServer &RegionId=cn-qingdao-env66-d01
+http(s)://[Endpoint]/?Action=ModifySslVpnServer &RegionId=cn-qingdao-env66-d01 &SslVpnServerId=vss-bp18q7hzj6largv4v****
 ```
 
-`&<`公共请求参数> 正常返回示例
+正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifySslVpnServerResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <SslVpnServers> <SslVpnServer> <RegionId>cn-qingdao-env66-d01</RegionId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Name>test</Name> <CLientIpPool>10.30.30.0/24</CLientIpPool> <LocalSubnet>10.20.20.0/24</LocalSubnet> <Proto>UDP</Proto> <Port>1194</Port> <Cipher>AES-128-CBC</Cipher> <Compress>true</Compress> <CreateTime>1492753580000</CreateTime> <Connections>0</Connections> <MaxConnections>5</MaxConnections> <InternetIp>47.XX.XX.98</InternetIp> </SslVpnServer> </SslVpnServers> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </ModifySslVpnServerResponse> |  |
+| <ModifySslVpnServerResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <SslVpnServers> <SslVpnServer> <RegionId>cn-qingdao-env66-d01</RegionId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Name>test</Name> <CLientIpPool>10.30.30.0/24</CLientIpPool> <LocalSubnet>10.20.20.0/24</LocalSubnet> <Proto>UDP</Proto> <Port>1194</Port> <Cipher>AES-128-CBC</Cipher> <Compress>true</Compress> <CreateTime>1492753580000</CreateTime> <Connections>0</Connections> <MaxConnections>5</MaxConnections> <InternetIp>47.XX.XX.98</InternetIp> </SslVpnServer> </SslVpnServers> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </ModifySslVpnServerResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.30.30.0/24", "LocalSubnet": "10.20.20.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.98" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } |  |
+| { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.30.30.0/24", "LocalSubnet": "10.20.20.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.98" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } |   |
 
 **错误码**
 
@@ -11538,14 +11516,12 @@ http(s)://[Endpoint]/?Action=ModifySslVpnServer &RegionId=cn-qingdao-env66-d01
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 
-##### 6.17.5.4. DeleteSslVpnClientCert
+##### 6.17.5.4 DeleteSslVpnClientCert
 
-**请求参数**
+调用DeleteSslVpnClientCert接口删除SSL-VPN客户端证书。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-专有网络VPC
 
 | Action | String | 是 | DeleteSslVpnClientCert | 要执行的操作。 取值： DeleteSslVpnClientCert。 |
 |---|---|---|---|---|
@@ -11567,15 +11543,15 @@ http(s)://[Endpoint]/?Action=ModifySslVpnServer &RegionId=cn-qingdao-env66-d01
 http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DeleteSslVpnClientCertResponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteSslVpnClientCertResponse> |  |
+| <DeleteSslVpnClientCertResponse> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </DeleteSslVpnClientCertResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |  |
+| { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
 **错误码**
 
@@ -11585,7 +11561,7 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &RegionId=cn-qingdao-env66-d
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 | 400 | VpnGateway.Configuring | The specified service is configuring. | 服务正在配置中，请您稍后再试。 |
 
-##### 6.17.5.5. ModifySslVpnClientCert
+##### 6.17.5.5 ModifySslVpnClientCert
 
 调用ModifySslVpnClientCert接口修改SSL-VPN客户端证书的名称。
 
@@ -11597,8 +11573,6 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &RegionId=cn-qingdao-env66-d
 | RegionId | String | 是 | cn-qingdao-env66-d01 | SSL-VPN客户端证书所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | SslVpnClientCertId | String | 是 | vsc-bp1n8wcf134yl0osrc**** | SSL-VPN客户端证书的ID。 |
 | ClientToken | String | 否 | 02fb3da4-130e-11e9-8e44- 0016e04115b | 客户端token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大不值过64个 ASCII 字符。 |
-
-专有网络VPC
 
 | Name | String | 否 | cert2 | SSL-VPN客户端证书的名称。 长度为2~128个字符，必须以字母或中文开头，可包含数字、半角句号 （.）、下划线（_）和短划线（-）。但不能以 http:// 或 https:// 开头。 |
 |---|---|---|---|---|
@@ -11619,15 +11593,15 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &RegionId=cn-qingdao-env66-d
 http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnClientCertId=vsc-bp1n8wcf134yl0osrc****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ModifySslVpnClientCertResponse> <SslVpnClientCertId>vsc-bp1n8wcf134yl0osr****</SslVpnClientCertId> <Name>cert2</Name> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </ModifySslVpnClientCertResponse> |  |
+| <ModifySslVpnClientCertResponse> <SslVpnClientCertId>vsc-bp1n8wcf134yl0osr****</SslVpnClientCertId> <Name>cert2</Name> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </ModifySslVpnClientCertResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "SslVpnClientCertId": "vsc-bp1n8wcf134yl0osr****", "Name": "cert2", "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA" } |  |
+| { "SslVpnClientCertId": "vsc-bp1n8wcf134yl0osr****", "Name": "cert2", "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
 **错误码**
 
@@ -11637,7 +11611,9 @@ http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &RegionId=cn-qingdao-env66-d
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 | 400 | InvalidName | The name is not valid | 该名称格式不合法。 |
 
-##### 6.17.5.6. CreateSslVpnClientCert
+##### 6.17.5.6 CreateSslVpnClientCert
+
+调用CreateSslVpnClientCert接口创建SSL-VPN客户端证书。
 
 **请求参数**
 
@@ -11647,8 +11623,6 @@ http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &RegionId=cn-qingdao-env66-d
 | RegionId | String | 是 | cn-qingdao-env66-d01 | VPN网关所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | SslVpnServerId | String | 是 | vss-m5et0q3iy1qex328w**** | SSL-VPN服务端的ID。 |
 | ClientToken | String | 否 | 02fb3da4-130e-11e9-8e44- 0016e04115b | 客户端token，用于保证请求的幂等性。 由客户端生成该参数值，要保证在不同请求间唯一，最大不值过64个 ASCII字符。 |
-
-专有网络VPC
 
 | Name | String | 否 | SslVpnClientCert1 | 客户端证书的名称。 长度为2~128个字符，必须以字母或中文开头，可包含数字、半角句号 （.）、下划线（_）和短划线（-）。但不能以 http:// 或 https:// 开头。 |
 |---|---|---|---|---|
@@ -11666,18 +11640,18 @@ http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &RegionId=cn-qingdao-env66-d
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &RegionId=cn-qingdao-env66-d01
+http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnServerId=vss-m5et0q3iy1qex328w****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <CreateSslVpnClientCertResponse> <SslVpnClientCertId>vsc-bp1n8wcf134yl0osr****</SslVpnClientCertId> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </CreateSslVpnClientCertResponse> |  |
+| <CreateSslVpnClientCertResponse> <SslVpnClientCertId>vsc-bp1n8wcf134yl0osr****</SslVpnClientCertId> <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId> </CreateSslVpnClientCertResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "SslVpnClientCertId": "vsc-bp1n8wcf134yl0osr****", "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA" } |  |
+| { "SslVpnClientCertId": "vsc-bp1n8wcf134yl0osr****", "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
 **错误码**
 
@@ -11690,7 +11664,7 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &RegionId=cn-qingdao-env66-d
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | 该服务已欠费，请您先充值再操作。 |
 | 400 | InvalidName | The name is not valid | 该名称格式不合法。 |
 
-##### 6.17.5.7. DescribeSslVpnClientCerts
+##### 6.17.5.7 DescribeSslVpnClientCerts
 
 调用DescribeSslVpnClientCerts接口查询已创建的SSL客户端证书。
 
@@ -11704,8 +11678,6 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &RegionId=cn-qingdao-env66-d
 | SslVpnClientCertId | String | 否 | vsc-bp1n8wcf134yl0osr**** | SSL客户端证书ID。 |
 | Name | String | 否 | cert1 | SSL客户端证书的名称。 |
 
-专有网络VPC
-
 | PageNumber | Integer | 否 | 1 | 列表的页码，默认值为1。 |
 |---|---|---|---|---|
 | PageSize | Integer | 否 | 10 | 分页查询时每页的行数，最大值为50，默认值为10。 |
@@ -11717,8 +11689,8 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &RegionId=cn-qingdao-env66-d
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 10 | 每页包含的条目数。 |
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | 请求ID。 |
-| SslVpnClientCertKeys | Array of SslVpnClientCertKey |  | SSL客户端证书的详细信息。 |
-| SslVpnClientCertKey |  |  |  |
+| SslVpnClientCertKeys | Array of SslVpnClientCertKey |   | SSL客户端证书的详细信息。 |
+| SslVpnClientCertKey |   |   |   |
 | CreateTime | Long | 1492747187000 | SSL客户端证书的创建时间戳。 |
 | EndTime | Long | 1494966335000 | SSL客户端证书的到期时间戳。 |
 | Name | String | cert1 | SSL客户端证书的名称。 |
@@ -11736,17 +11708,15 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &RegionId=cn-qingdao-env66-d
 http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeSslVpnServersResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <SslVpnServers> <SslVpnServer> <RegionId>cn-qingdao-env66-d01</RegionId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Name>test</Name> <CLientIpPool>10.10.20.0/24</CLientIpPool> <LocalSubnet>10.10.10.0/24</LocalSubnet> <Proto>UDP</Proto> <Port>1194</Port> <Cipher>AES-128-CBC</Cipher> <Compress>true</Compress> <CreateTime>1492753580000</CreateTime> <Connections>0</Connections> <MaxConnections>5</MaxConnections> <InternetIp>47.XX.XX.98</InternetIp> </SslVpnServer> </SslVpnServers> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </DescribeSslVpnServersResponse> |  |
-
-专有网络VPC
+| <DescribeSslVpnServersResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <SslVpnServers> <SslVpnServer> <RegionId>cn-qingdao-env66-d01</RegionId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Name>test</Name> <CLientIpPool>10.10.20.0/24</CLientIpPool> <LocalSubnet>10.10.10.0/24</LocalSubnet> <Proto>UDP</Proto> <Port>1194</Port> <Cipher>AES-128-CBC</Cipher> <Compress>true</Compress> <CreateTime>1492753580000</CreateTime> <Connections>0</Connections> <MaxConnections>5</MaxConnections> <InternetIp>47.XX.XX.98</InternetIp> </SslVpnServer> </SslVpnServers> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </DescribeSslVpnServersResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "DescribeSslVpnServersResponse": { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.10.20.0/24", "LocalSubnet": "10.10.10.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.98" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } } |  |
+| { "DescribeSslVpnServersResponse": { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.10.20.0/24", "LocalSubnet": "10.10.10.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.98" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } } |   |
 
 **错误码**
 
@@ -11755,7 +11725,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts &RegionId=cn-qingdao-env6
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-##### 6.17.5.8. DescribeSslVpnClientCert
+##### 6.17.5.8 DescribeSslVpnClientCert
 
 调用DescribeSslVpnClientCert接口查询指定的的SSL客户端证书信息。
 
@@ -11781,8 +11751,6 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts &RegionId=cn-qingdao-env6
 | RegionId | String | cn-qingdao-env66-d01 | SSL客户端证书所在的地域ID。 |
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | 请求ID。 |
 
-专有网络VPC
-
 | SslVpnClientCertId | String | vsc-bp13k5mp4tg8v3z9b**** | SSL客户端证书的ID。 |
 |---|---|---|---|
 | SslVpnServerId | String | vss-bp155e9yclsg1xgq4**** | SSL服务端ID。 |
@@ -11796,15 +11764,15 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts &RegionId=cn-qingdao-env6
 http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnClientCertId=vsc-bp17r58rjf5r1gjyr****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeSslVpnServersResponse> <Name>df</Name> <Status>normal</Status> <ClientConfig>****</ClientConfig> <ClientCert>****</ClientCert> <CreateTime>1552550980000</CreateTime> <RegionId>cn-qingdao-env66-d01</RegionId> <RequestId>49D54005-6E0E-4132-B305-F3A24DEDDDC9</RequestId> <EndTime>1647158980000</EndTime> <SslVpnClientCertId>vsc-bp13k5mp4tg8v3z9b****</SslVpnClientCertId> <ClientKey>****</ClientKey> <CaCert>****</CaCert> <SslVpnServerId>vss-bp155e9yclsg1xgq4****</SslVpnServerId> </DescribeSslVpnServersResponse> |  |
+| <DescribeSslVpnServersResponse> <Name>df</Name> <Status>normal</Status> <ClientConfig>****</ClientConfig> <ClientCert>****</ClientCert> <CreateTime>1552550980000</CreateTime> <RegionId>cn-qingdao-env66-d01</RegionId> <RequestId>49D54005-6E0E-4132-B305-F3A24DEDDDC9</RequestId> <EndTime>1647158980000</EndTime> <SslVpnClientCertId>vsc-bp13k5mp4tg8v3z9b****</SslVpnClientCertId> <ClientKey>****</ClientKey> <CaCert>****</CaCert> <SslVpnServerId>vss-bp155e9yclsg1xgq4****</SslVpnServerId> </DescribeSslVpnServersResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "Name": "df", "Status": "normal", "ClientConfig": "****", "ClientCert": "****", "CreateTime": 1552550980000, "RegionId": "cn-qingdao-env66-d01", "RequestId": "49D54005-6E0E-4132-B305-F3A24DEDDDC9", "EndTime": 1647158980000, "SslVpnClientCertId": "vsc-bp13k5mp4tg8v3z9b****", "ClientKey": "****", "CaCert": "****", "SslVpnServerId": "vss-bp155e9yclsg1xgq4****" } |  |
+| { "Name": "df", "Status": "normal", "ClientConfig": "****", "ClientCert": "****", "CreateTime": 1552550980000, "RegionId": "cn-qingdao-env66-d01", "RequestId": "49D54005-6E0E-4132-B305-F3A24DEDDDC9", "EndTime": 1647158980000, "SslVpnClientCertId": "vsc-bp13k5mp4tg8v3z9b****", "ClientKey": "****", "CaCert": "****", "SslVpnServerId": "vss-bp155e9yclsg1xgq4****" } |   |
 
 **错误码**
 
@@ -11813,7 +11781,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &RegionId=cn-qingdao-env66
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-##### 6.17.5.9. DescribeSslVpnServers
+##### 6.17.5.9 DescribeSslVpnServers
 
 调用DescribeSslVpnServers接口查询已创建的SSL-VPN服务端。
 
@@ -11824,8 +11792,6 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &RegionId=cn-qingdao-env66
 | Action | String | 是 | DescribeSslVpnServers | 要执行的操作。 取值： DescribeSslVpnServers。 |
 | RegionId | String | 是 | cn-qingdao-env66-d01 | SSL-VPN服务端所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | SslVpnServerId | String | 否 | vss-bp15j3du13gq1dgey**** | SSL-VPN服务端的ID。 |
-
-专有网络VPC
 
 | VpnGatewayId | String | 否 | vpn-bp1on0xae9d771ggi**** | VPN网关的ID。 |
 |---|---|---|---|---|
@@ -11840,8 +11806,8 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &RegionId=cn-qingdao-env66
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 10 | 每页包含多少条目。 |
 | RequestId | String | 085CA5EA-1E76-43A8-981B- E0208DECA0CB | 请求ID。 |
-| SslVpnServers | Array of SslVpnServer |  | SSL-VPN服务端的详细信息。 |
-| SslVpnServer |  |  |  |
+| SslVpnServers | Array of SslVpnServer |   | SSL-VPN服务端的详细信息。 |
+| SslVpnServer |   |   |   |
 | Cipher | String | AES-128-CBC | 使用的加密算法。 |
 | ClientIpPool | String | 10.10.1.0/24 | 客户端IP地址池。 |
 | Compress | Boolean | false | 是否压缩。 |
@@ -11866,12 +11832,15 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &RegionId=cn-qingdao-env66
 http(s)://[Endpoint]/?Action=DescribeSslVpnServers &RegionId=cn-qingdao-env66-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式专有网络VPC
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeSslVpnServersResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
       <PageSize>10</PageSize>
+      <SslVpnServers>
+            <SslVpnServer>
                   <RegionId>cn-qingdao-env66-d01</RegionId>
                   <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId>
                   <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId>
@@ -11886,12 +11855,15 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers &RegionId=cn-qingdao-env66-d0
                   <Connections>0</Connections>
                   <MaxConnections>5</MaxConnections>
                   <InternetIp>47.XX.XX.167</InternetIp>
+            </SslVpnServer>
+      </SslVpnServers>
       <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId>
+</DescribeSslVpnServersResponse>
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.10.10.0/24", "LocalSubnet": "10.10.20.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.167" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } |  |
+| { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.10.10.0/24", "LocalSubnet": "10.10.20.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.167" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } |   |
 
 **错误码**
 
@@ -11900,7 +11872,9 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers &RegionId=cn-qingdao-env66-d0
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-##### 6.17.5.10. DescribeVpnSslServerLogs
+##### 6.17.5.10 DescribeVpnSslServerLogs
+
+调用DescribeVpnSslServerLogs查看SSL服务端的日志。
 
 **请求参数**
 
@@ -11910,8 +11884,6 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers &RegionId=cn-qingdao-env66-d0
 | RegionId | String | 是 | cn-qingdao-env66-d01 | SSL服务端所在的地域ID。 您可以通过调用 DescribeRegions 接口获取地域ID。 |
 | VpnSslServerId | String | 是 | vss-bp155e9yclsg1xgq4**** | SSL服务端的ID。 |
 | From | Integer | 否 | 2018020201 | 日志起始时间，时间格式为yyyymmddhh。 如果指定From，则必须指定To或MinutePeriod。 |
-
-专有网络VPC
 
 | To | Integer | 否 | 2018020206 | 日志结束时间，时间格式为yyyymmddhh。 如果指定To，则必须指定From或MinutePeriod。 |
 |---|---|---|---|---|
@@ -11938,15 +11910,15 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers &RegionId=cn-qingdao-env66-d0
 http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &RegionId=cn-qingdao-env66-d01 &VpnSslServerId=vss-bp155e9yclsg1xgq4****
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <DescribeVpnSslServerLogsResponse> <Data></Data> <PageNumber>1</PageNumber> <Count>0</Count> <PageSize>10</PageSize> <IsCompleted>true</IsCompleted> <RequestId>26641E42-66C7-4942-9FEC-F99213914F8F</RequestId> </DescribeVpnSslServerLogsResponse> |  |
+| <DescribeVpnSslServerLogsResponse> <Data></Data> <PageNumber>1</PageNumber> <Count>0</Count> <PageSize>10</PageSize> <IsCompleted>true</IsCompleted> <RequestId>26641E42-66C7-4942-9FEC-F99213914F8F</RequestId> </DescribeVpnSslServerLogsResponse> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "Data": { "Logs": [] }, "PageNumber": 1, "Count": 0, "PageSize": 10, "IsCompleted": true, "RequestId": "26641E42-66C7-4942-9FEC-F99213914F8F" } |  |
+| { "Data": { "Logs": [] }, "PageNumber": 1, "Count": 0, "PageSize": 10, "IsCompleted": true, "RequestId": "26641E42-66C7-4942-9FEC-F99213914F8F" } |   |
 
 **错误码**
 
@@ -11955,13 +11927,11 @@ http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &RegionId=cn-qingdao-env66
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | 您没有权限操作该资源，请您申请操作权限后再试。 |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | 您没有权限操作指定资源，请提交工单咨询。 |
 
-专有网络VPC
+## 7 附录
 
-## 附录
+### 7.1 STS概要
 
-### STS概要
-
-#### 7.1.1. 什么是STS
+#### 7.1.1 什么是STS
 
 阿里云STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。RAM提供RAM用户和RAM角色两种身份。其中，RAM角色不具备永久身份凭证，而只能通过STS获取可以自定义时效和访问权限的临时身份凭证，即安全令牌（STS Token）。
 
@@ -11973,7 +11943,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &RegionId=cn-qingdao-env66
 
 使用STS Token，减少长期访问密钥（Accesskey）泄露的风险。 STS Token具有时效性，可以自定义有效期，到期后将自动失效，无需定期轮换。 可以为STS Token绑定自定义权限策略，提供更加灵活和精细的云资源授权。
 
-#### 7.1.2. AssumeRole
+#### 7.1.2 AssumeRole
 
 RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证STS Token。该接口中RAM用户扮演的是可信实体为阿里云账号类型的RAM角色。
 
@@ -12000,10 +11970,6 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | Arn | String | acs:ram::123456789012****:role/ adminrole/alice | 临时身份的ARN。 |
 | AssumedRoleId | String | 34458433936495****:alice | 临时身份的ID。 |
 
-专有网络VPC
-
-**示例**
-
 **引入Pom依赖**
 
 操作需要依赖阿里云核心库来实现，在Pom中引入阿里云核心库包的操作如下：
@@ -12016,16 +11982,18 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
     </dependency>
 ```
 
+**调用API获取STS AccessKey三元组**
+
 | 以下代码示例为通过调用 | Sts::AssumeRole::2015-04-01 | 获取STS AccessKey三元组信息。 |
 |---|---|---|
-| package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; import org.apache.commons.lang3.StringUtils; public class STSAccessKeyDemo { public static void main(String[] args) { // 创建DefaultAcsClient实例并初始化。 DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", "<yourAccessKeySecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); CommonRequest request = new CommonRequest(); // "sts.aliyuns.com"要替换为实际的STS Endpoint，一般格式为sts-vpc.${global:region}.${global:internet-domain} request.setSysDomain("sts.aliyuns.com"); request.setSysProduct("Sts"); request.setSysAction("AssumeRole"); request.setSysVersion("2015-04-01"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // 业务参数，设置本次调用Session的别名，"<yourRoleSessionName>"请替换为实际值 request.putQueryParameter("RoleSessionName", "<yourRoleSessionName>"); // 扮演的Role角色ARN，"<yourRoleArn>"请替换为上一步获取到的实际Ram Role ARN request.putQueryParameter("RoleArn", "<yourRoleArn>"); try { CommonResponse response = client.getCommonResponse(request); String assumeRole = response.getData(); if (StringUtils.isEmpty(assumeRole)) return; JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole); JSONObject credentials = assumeRoleJson.getJSONObject("Credentials"); // 获取到STS三元组 String stsAK = credentials.getString("AccessKeyId"); String stsSK = credentials.getString("AccessKeySecret"); String stsToken = credentials.getString("SecurityToken"); System.out.println("stsAk: " + stsAK +"\nstsSk: " + stsSK + "\nstsToken: " + stsToken); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } } } |  |  |
+| package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; import org.apache.commons.lang3.StringUtils; public class STSAccessKeyDemo { public static void main(String[] args) { // 创建DefaultAcsClient实例并初始化。 DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", "<yourAccessKeySecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); CommonRequest request = new CommonRequest(); // "sts.aliyuns.com"要替换为实际的STS Endpoint，一般格式为sts-vpc.${global:region}.${global:internet-domain} request.setSysDomain("sts.aliyuns.com"); request.setSysProduct("Sts"); request.setSysAction("AssumeRole"); request.setSysVersion("2015-04-01"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // 业务参数，设置本次调用Session的别名，"<yourRoleSessionName>"请替换为实际值 request.putQueryParameter("RoleSessionName", "<yourRoleSessionName>"); // 扮演的Role角色ARN，"<yourRoleArn>"请替换为上一步获取到的实际Ram Role ARN request.putQueryParameter("RoleArn", "<yourRoleArn>"); try { CommonResponse response = client.getCommonResponse(request); String assumeRole = response.getData(); if (StringUtils.isEmpty(assumeRole)) return; JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole); JSONObject credentials = assumeRoleJson.getJSONObject("Credentials"); // 获取到STS三元组 String stsAK = credentials.getString("AccessKeyId"); String stsSK = credentials.getString("AccessKeySecret"); String stsToken = credentials.getString("SecurityToken"); System.out.println("stsAk: " + stsAK +"\nstsSk: " + stsSK + "\nstsToken: " + stsToken); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } } } |   |   |
 
 **调用示例**
 
-专有网络VPC
+下列代码以调用ECS的 `DescribeZones` 接口为示例。
 
 ```java
-package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile;
+package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
     public static void main(String[] args) {
 ```
 
@@ -12059,13 +12027,13 @@ package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs
         request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,资源集`id`
+`//` 非必填`,`资源集`id`
 
 ```
         // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,组织`id`
+`//` 必填`,`组织`id`
 
 ```java
         request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -12078,10 +12046,9 @@ package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -12094,8 +12061,6 @@ package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs
 | 400 | InvalidParameter.PolicyGrammar | The parameter Policy has not passed grammar check. | 权限策略语法错误。 |
 | 400 | InvalidParameter.PolicySize | The size of Policy must be smaller than 1024 bytes. | 权限策略长度超限，最大不超过1024字符。 |
 | 403 | NoPermission | You are not authorized to do this action. You should be authorized by RAM. | STS Token没有权限。 |
-
-专有网络VPC
 
 | 404 | EntityNotExist.Role | The specified Role not exists. | 指定的RAM角色不存在。 |
 |---|---|---|---|

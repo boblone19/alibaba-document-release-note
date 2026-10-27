@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 13
 source_pdf: "196ad3890ce7f961_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience Cloud Platform Backup User Guide 20260701"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%B9%B3%E5%8F%B0%E5%A4%87%E4%BB%BD/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20Cloud%20Platform%20Backup%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Resilience Cloud Platform Backup User Guide 20260701
@@ -29,7 +29,14 @@ agement page
 
 **management page**
 
-This topic describes how to go to the platform backup management page in the Apsara Unimanager Operations Console. The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+This topic describes how to go to the platform backup management page in the Apsara Unimanager Operations Console.
+
+**Prerequisites**
+
+The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. agement page
@@ -63,6 +70,9 @@ e
 **archive storage**
 
 This topic describes how to create a storage for cloud platform backups.
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 **Backup Storage**.
@@ -90,7 +100,14 @@ e
 
 **archive storage**
 
-This topic describes how to view the details of, modify, and delete a platform backup archive storage. A platform backup archive storage is created.
+This topic describes how to view the details of, modify, and delete a platform backup archive storage.
+
+**Prerequisites**
+
+A platform backup archive storage is created.
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 **Backup Storage**.
@@ -105,9 +122,21 @@ Click **OK**. Delete a storage: Find the platform backup archive storage that yo
 
 ### 3.1 Configure miniRDS backup
 
-This topic describes how to configure a backup policy for miniRDS. A backup archive storage is created. For more information, see . A database instance is created. By default, the dbaas_db, perf_db, dukang_db, bak_db, robot_db, kmsdata, kmsdata_tiangong, idccrypto_data, os_meta, oss_chiji, ummak, account, location, diamond, schedulerx, ram_slave_proxy, subaccount, ram_master, and hsmidcdatabase instances can be backed up.
+This topic describes how to configure a backup policy for miniRDS.
+
+**Prerequisites**
+
+A backup archive storage is created. For more information, see . A database instance is created.
+
+**Note**
+
+By default, the dbaas_db, perf_db, dukang_db, bak_db, robot_db, kmsdata, kmsdata_tiangong, idccrypto_data, os_meta, oss_chiji, ummak, account, location, diamond, schedulerx, ram_slave_proxy, subaccount, ram_master, and hsmidcdatabase instances can be backed up.
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
+**Backup Config**.
 3. Click the **MiniRDS Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
 
@@ -127,8 +156,12 @@ This topic describes how to configure a backup policy for miniRDS. A backup arch
 **backup**
 
 This topic describes how to configure a backup policy for the PANGU master. A backup archive storage is created. For more information, see . A PANGU cluster is deployed.
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
+**Backup Config**.
 3. Click the **PANGU Master Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
 
@@ -143,9 +176,17 @@ This topic describes how to configure a backup policy for the PANGU master. A ba
 
 ### 3.3 Configure opsDNS backup
 
-This topic describes how to configure a backup policy for opsDNS. A backup archive storage is created. For more information, see .
+This topic describes how to configure a backup policy for opsDNS.
+
+**Prerequisites**
+
+A backup archive storage is created. For more information, see .
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
+**Backup Config**.
 3. Click the **opsDns** tab.
 4. Configure the backup policy. The following table describes the parameters.
 
@@ -165,9 +206,17 @@ This topic describes how to configure a backup policy for opsDNS. A backup archi
 
 ### 3.4 Configure DNS product backup
 
-This topic describes how to configure a backup policy for the DNS product. A backup archive storage is created. For more information, see .
+This topic describes how to configure a backup policy for the DNS product.
+
+**Prerequisites**
+
+A backup archive storage is created. For more information, see .
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
+**Backup Config**.
 3. Click the **DNS Product Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
 
@@ -187,9 +236,17 @@ This topic describes how to configure a backup policy for the DNS product. A bac
 
 **backup**
 
-This topic describes how to configure a backup policy for in-cloud Object Storage Service (OSS) buckets. A backup archive storage is created. For more information, see .
+This topic describes how to configure a backup policy for in-cloud Object Storage Service (OSS) buckets.
+
+**Prerequisites**
+
+A backup archive storage is created. For more information, see .
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
+**Backup Config**.
 3. Click the **In-cloud OSS Bucket Backup** tab.
 4. Configure the backup policy. The following table describes the parameters.
 
@@ -207,7 +264,14 @@ records
 
 **archiving records**
 
-This topic describes how to view the archive details after the backup is archived. Platform backup is archived.
+This topic describes how to view the archive details after the backup is archived.
+
+**Prerequisites**
+
+Platform backup is archived.
+
+**Procedure**
+
 1. Go to the platform backup management page. For more information, see .
 2. In the left-side navigation pane, choose **Platform Backup Management > Platform**
 **Backup Records**.

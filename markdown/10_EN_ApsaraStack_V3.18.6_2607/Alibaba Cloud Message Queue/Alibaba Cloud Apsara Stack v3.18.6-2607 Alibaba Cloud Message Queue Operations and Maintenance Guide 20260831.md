@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 63
 source_pdf: "2d2ed928dc4f6580_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide 20260831

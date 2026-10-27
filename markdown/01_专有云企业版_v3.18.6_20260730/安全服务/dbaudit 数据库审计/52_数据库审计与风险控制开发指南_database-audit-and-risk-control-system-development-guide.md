@@ -5,18 +5,141 @@ doc_version: "20260729"
 pdf_pages: 222
 source_pdf: "52_数据库审计与风险控制开发指南_database-audit-and-risk-control-system-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/dbaudit/zh/database-audit-and-risk-control-system-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 数据库审计 数据库审计与风险控制开发指南
 
+## 目录
+
+- 1 快速入门
+  - 1.1 API调用流程说明
+  - 1.2 开发文档使用说明
+- 2 准备工作
+  - 2.1 登录开发者门户控制台
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取公共Header参数
+- 3 调用示例
+  - 3.1 Java SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Java SDK
+      - 3.1.2.2 设置身份验证凭证
+      - 3.1.2.3 请求连接配置
+      - 3.1.2.4 发起调用
+      - 3.1.2.5 错误处理
+      - 3.1.2.6 使用CommonRequest进行调用
+  - 3.2 Python SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Python SDK
+      - 3.2.2.2 安装Python SDK
+      - 3.2.2.3 设置身份验证凭证
+      - 3.2.2.4 设置HTTPS请求
+      - 3.2.2.5 发起调用
+      - 3.2.2.6 错误处理
+      - 3.2.2.7 使用CommonRequest进行调用
+  - 3.3 Go SDK调用示例
+    - 3.3.1 快速开始
+    - 3.3.2 使用手册
+      - 3.3.2.1 安装Go SDK核心包
+      - 3.3.2.2 设置身份验证凭证
+      - 3.3.2.3 发起调用
+      - 3.3.2.4 错误处理
+      - 3.3.2.5 使用CommonRequest进行调用
+- 4 API公共参数
+- 5 数据库审计与风险控制系统
+  - 5.1 审计代理
+    - 5.1.1 agent代理
+      - 5.1.1.1 获取agent列表
+      - 5.1.1.2 下载agent
+      - 5.1.1.3 添加agent安装任务
+      - 5.1.1.4 添加agent卸载任务
+      - 5.1.1.5 修改agent配置
+      - 5.1.1.6 修改agent状态
+      - 5.1.1.7 获取agent日志
+      - 5.1.1.8 删除agent
+      - 5.1.1.9 获取agent版本号
+      - 5.1.1.10 agent状态诊断
+      - 5.1.1.11 下载agent
+      - 5.1.1.12 查询agent标签列表
+      - 5.1.1.13 更新单个agent的标签列表
+      - 5.1.1.14 批量操作agent和标签关联
+      - 5.1.1.15 新增agent标签
+      - 5.1.1.16 修改agent标签
+      - 5.1.1.17 删除agent标签
+      - 5.1.1.18 卸载agent
+  - 5.2 数审数据库管理
+    - 5.2.1 资产类型
+      - 5.2.1.1 获取资产类型
+    - 5.2.2 数据库管理
+      - 5.2.2.1 获取数据库列表信息
+      - 5.2.2.2 添加数据库
+      - 5.2.2.3 更改数据库
+      - 5.2.2.4 删除数据库
+      - 5.2.2.5 导入数据库
+      - 5.2.2.6 导出数据库
+      - 5.2.2.7 下载资产信息模板
+      - 5.2.2.8 修改数据库状态
+      - 5.2.2.9 查询资产最后活跃时间
+      - 5.2.2.10 查询资产离线阈值配置
+      - 5.2.2.11 修改资产离线阈值配置
+    - 5.2.3 资产组管理
+      - 5.2.3.1 获取资产组列表
+      - 5.2.3.2 编辑资产组
+      - 5.2.3.3 创建资产组
+      - 5.2.3.4 删除资产组
+      - 5.2.3.5 设置资产组下的资产
+      - 5.2.3.6 更新单个资产组中的规则列表
+      - 5.2.3.7 更新多个资产组中的规则列表
+      - 5.2.3.8 批量启禁用资产组中的资产
+    - 5.2.4 关注资产
+      - 5.2.4.1 添加关注资产
+      - 5.2.4.2 删除关注资产
+  - 5.3 安全规则
+    - 5.3.1 规则的启用禁用
+      - 5.3.1.1 启用满足条件的规则
+      - 5.3.1.2 禁用满足条件的规则
+      - 5.3.1.3 设置使用规则的资产
+    - 5.3.2 规则组管理
+      - 5.3.2.1 添加规则组
+      - 5.3.2.2 更改规则目录
+      - 5.3.2.3 删除规则目录
+      - 5.3.2.4 获取所有规则组
+    - 5.3.3 内置规则组管理
+      - 5.3.3.1 获取内置规则组列表信息
+    - 5.3.4 内置规则管理
+      - 5.3.4.1 获取内置规则列表
+  - 5.4 数审日志查询
+    - 5.4.1 日志分析
+      - 5.4.1.1 查询TOP SQL列表
+      - 5.4.1.2 导出TOP SQL分析
+    - 5.4.2 审计日志查询
+      - 5.4.2.1 审计日志查询
+      - 5.4.2.2 审计日志导出
+    - 5.4.3 告警分析
+      - 5.4.3.1 查询告警分析列表
+    - 5.4.4 告警日志查询
+      - 5.4.4.1 告警日志查询
+      - 5.4.4.2 告警日志导出
+    - 5.4.5 会话日志查询
+      - 5.4.5.1 会话日志查询
+      - 5.4.5.2 会话日志导出
+    - 5.4.6 SQL模板
+      - 5.4.6.1 获取SQL模板列表
+      - 5.4.6.2 获取SQL模板详情
+      - 5.4.6.3 获取SQL模板配置信息
+- 6 错误代码表
+
 入门
 
-## 快速入门
+## 1 快速入门
 
 本文介绍功能的接口调用信息。
 
-### API调用流程说明
+### 1.1 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍如何通过POP网关调用专有云API。
 
@@ -27,23 +150,22 @@ converter: line-classifier (PyMuPDF)
 1. 获取AccessKey。
 获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。 入门
 
-|  | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |  |  |
+|   | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |   |   |
 |---|---|---|---|
-|  |  | <x-acs- |  |
+|   |   | <x-acs- |   |
 
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-### 开发文档使用说明
+### 1.2 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -66,9 +188,11 @@ converter: line-classifier (PyMuPDF)
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 工作
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户控制台
+### 2.1 登录开发者门户控制台
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户控制台。
 
 **前提条件**
 
@@ -80,20 +204,20 @@ converter: line-classifier (PyMuPDF)
 2. 输入正确的用户名及密码。
 请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 管理员强制开启MFA后的首次登录： a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b. 按照步骤2重新输入账号和密码，单击**登录**。 c. 输入6位MFA码后单击**认证**。 您已开启并绑定MFA： 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开** **启虚拟****MFA****设备》**章节。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
-**启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 通过POP网关调用API需要您了解产品开放API接口的相关信息，本文为您介绍获取云产品的Endpoint的两种方式。
 
@@ -101,9 +225,7 @@ converter: line-classifier (PyMuPDF)
 
 工作为了使专有云保持与公共云相同的使用方式，使您拥有更方便，更一致的体验，建议通过POP网关调用专有云API。
 
-**说明**
-
-Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
+> **说明：** Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
 
 **操作步骤**
 
@@ -131,17 +253,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 7. 单击 `apigateway` 服务**Service Registration**列的文本信息，在弹出的**注册变量**对话框中，查看
 apigateway.openapi.endpoint值，即 `Endpoint` 。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey。使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey。使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -159,11 +279,9 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
-
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -178,9 +296,17 @@ i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户
 2. 获取STS Accesskey三元组。
 工作
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <yourRoleSessionName>：请替换为您当前实际的会话名称。
+> 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。
+> <yourRoleArn>：请替换为您实际的RAM Role。
+> "sts.aliyuns.com" ：请替换为实际的STS Endpoint。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <yourRoleSessionName>：请替换为您当前实际的会话名称。 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。 <yourRoleArn>：请替换为您实际的RAM Role。 "sts.aliyuns.com" ：请替换为实际的STS Endpoint。 工作
+工作
 
 ```
 public static void main(String[] args) {
@@ -204,11 +330,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -243,17 +374,26 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
 工作
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。
+> <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。
+> <yourStsToken>：请替换为实际STS三元组中的SecurityToken。
+> <yourResourceGroupID>：请替换为您实际的资源集ID。
+> <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -310,13 +450,11 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-工作
+`}` `}` 工作
 
-### 获取公共Header参数
+### 2.5 获取公共Header参数
 
 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
 
@@ -366,11 +504,11 @@ AccessKeyID、AccessKeySecret。
 
 示例
 
-## 调用示例
+## 3 调用示例
 
-### Java SDK调用示例
+### 3.1 Java SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取产品名Java SDK并开始调用。
 
@@ -389,9 +527,16 @@ AccessKeyID、AccessKeySecret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your-region-id>，请替换为您实际的地域ID。
+> <your-access-key-id>，请替换为您实际的AccessKey ID。
+> <your-access-key-secret>>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您当前产品实际的Endpoint。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your-region-id>，请替换为您实际的地域ID。 <your-access-key-id>，请替换为您实际的AccessKey ID。 <your-access-key-secret>>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您当前产品实际的Endpoint。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。 示例
+示例
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -430,14 +575,13 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### 使用手册
+`}` `}` `}`
 
-##### 安装Java SDK
+#### 3.1.2 使用手册
+
+##### 3.1.2.1 安装Java SDK
 
 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。 示例
 
@@ -449,13 +593,11 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 </dependency>
 ```
 
-##### 设置身份验证凭证
+##### 3.1.2.2 设置身份验证凭证
 
 目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**说明**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **说明：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -463,17 +605,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 `"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret`
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留
-
-##### 请求连接配置
+##### 3.1.2.3 请求连接配置
 
 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 示例 `//` 获取`HttpClientConfig`对象
+示例 `//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -485,31 +631,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -533,7 +679,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-##### 发起调用
+##### 3.1.2.4 发起调用
 
 本文介绍如何使用产品名Java SDK发起请求。
 
@@ -558,7 +704,7 @@ DescribeInstancesRequest request = new DescribeInstancesRequest();
 request.setPageSize(10); request.setPageNumber(1);
 ```
 
-`//` 特殊`Header`参数,设置组织`ID`和资源集`ID,`资源隔离使用
+`//` 特殊`Header`参数`,`设置组织`ID`和资源集`ID,`资源隔离使用
 
 ```
 request.putHeadParameter("x-acs-organizationid", "1"); request.putHeadParameter("x-acs-resourcegroupid", "");
@@ -572,15 +718,18 @@ DescribeInstancesResponse response; try {
     response = client.getAcsResponse(request);
     for (DescribeInstancesResponse.Instance instance:response.getInstances()) {
         System.out.println(instance.getPublicIpAddress());
-    }
+```
+
+`}`
+
+```
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
-}
 ```
 
-正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
+`}` 正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
 
 ```
 instanceStatus := response.getStatus()
@@ -592,7 +741,7 @@ instanceStatus := response.getStatus()
 HttpResponse response = client.doAction(request);
 ```
 
-##### 错误处理
+##### 3.1.2.5 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -633,10 +782,11 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-##### 使用CommonRequest进行调用
+`}`
+
+##### 3.1.2.6 使用CommonRequest进行调用
 
 **前提条件**
 
@@ -747,13 +897,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -771,12 +921,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-示例 ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` `}` `}` 示例 ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -867,10 +1014,10 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID` t `tH` `dP` t
+`//` 非必填`,`资源集`ID` `t` `tH` `dP` `t` `("`
 
 ```
-(" id"
+id"
 ```
 
 `"<`
@@ -885,13 +1032,13 @@ id>")
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -915,20 +1062,23 @@ id>")
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### Python SDK调用示例
+`}` `}` `}`
 
-#### 快速开始
+### 3.2 Python SDK调用示例
+
+#### 3.2.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 获取到Endpoint。具体操作，请参见获取Endpoint。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -949,12 +1099,17 @@ pip3 install aliyun-python-sdk-core-v3
 示例
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your_region_id>，请替换为您实际的地域ID。
+> <your_access_key_id>，请替换为您实际的AccessKey ID。
+> <your_access_key_secret>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您实际的产品访问地址。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
 ```
 
 `request.set_domain('<your-endpoint>')//` 当前产品的服务地址
@@ -966,15 +1121,15 @@ request.set_version('<API-version>')// 接口的版本 request.set_action_name('
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.2.2 使用手册
 
-##### 安装Python SDK
+##### 3.2.2.1 安装Python SDK
 
 本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用ECS的Python SDK，您需要安装阿里云Python SDK核心库和ECS的Python SDK。
 
-使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用ECS的Python SDK，您需要安装阿里云Python SDK核心库和ECS的Python SDK。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -998,13 +1153,13 @@ pip install aliyun-python-sdk-ecs
 pip3 install aliyun-python-sdk-ecs
 ```
 
-##### 安装Python SDK
+##### 3.2.2.2 安装Python SDK
 
 本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
 
-使用产品的开发工具包，都必须安装阿里云Python SDK核心库。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -1016,25 +1171,21 @@ pip install aliyun-python-sdk-core
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### 设置身份验证凭证
+##### 3.2.2.3 设置身份验证凭证
 
 当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-##### 设置HTTPS请求
+##### 3.2.2.4 设置HTTPS请求
 
 Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。 示例
 
-**说明**
-
-产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
@@ -1052,7 +1203,7 @@ pip install pyopenssl
 request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -1062,9 +1213,9 @@ request = DescribeInstancesRequest() request.set_protocol_type("https")
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-##### 发起调用
+##### 3.2.2.5 发起调用
 
 本节介绍如何使用Python SDK发起请求。
 
@@ -1095,7 +1246,7 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-##### 错误处理
+##### 3.2.2.6 错误处理
 
 在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -1111,8 +1262,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -1120,7 +1270,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.7 使用CommonRequest进行调用
 
 **前提条件**
 
@@ -1149,7 +1299,7 @@ from aliyunsdkcore.client import AcsClient import os
 from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -1158,13 +1308,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -1173,13 +1317,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -1189,35 +1333,39 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -1226,7 +1374,7 @@ SecurityToken>"};
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -1240,14 +1388,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -1266,7 +1413,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
@@ -1274,16 +1421,15 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用
 
 **忽略证书**
 
-**重要**
-
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -1295,11 +1441,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-)
+`)`
 
-### Go SDK调用示例
+### 3.3 Go SDK调用示例
 
-#### 快速开始
+#### 3.3.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
@@ -1322,41 +1468,59 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your_region_id>，请替换为您实际的地域ID。
+> <your_access_key_id>，请替换为您实际的AccessKey ID。
+> <your_access_key_secret>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您实际的产品访问地址。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。 示例
+示例
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 使用手册
+
+##### 3.3.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 设置身份验证凭证
+##### 3.3.2.2 设置身份验证凭证
 
 当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。
 
-**重要**
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
 
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。 以下代码以ECS为例，展示初始化ecsClient实例。 示例 `//` 初始化`ecsClient`实例
+以下代码以ECS为例，展示初始化ecsClient实例。 示例 `//` 初始化`ecsClient`实例
 
 ```
 ecsClient, err := ecs.NewClientWithAccessKey(
@@ -1368,11 +1532,9 @@ ecsClient, err := ecs.NewClientWithAccessKey(
         "<yourAccessKeySecret>")        // 请替换为您实际的AccessKey Secret
 ```
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
-
-##### 发起调用
+##### 3.3.2.3 发起调用
 
 本文介绍如何使用阿里云产品名Go SDK发起调用。 以下步骤以ECS为例，展示使用ECS Go SDK发起调用。
 1. 导入云产品SDK。
@@ -1383,9 +1545,9 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ecs
 
 2. 新建一个产品名Client，该client中包含产品名的所有API。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 `ecsClient,err := <ecs>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `ecsClient.Domain = "ecs.aliyuns.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
+`ecsClient,err := <ecs>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `ecsClient.Domain = "ecs.aliyuns.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
 3. 使用 `xxx.CreateXXXRequest` 方法创建一个请求。
 该方法的命名规范为 ${service}.Create${apiName}Request ，其中：
 **${service}**为产品名称(小写)。例如ecs。
@@ -1401,7 +1563,7 @@ request := ecs.CreateDescribeInstanceAttributeRequest() request.InstanceId = ""
 response, err := ecsClient.DescribeInstanceAttribute(request)
 ```
 
-##### 错误处理
+##### 3.3.2.4 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
@@ -1417,16 +1579,16 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
 当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个 `ClientError` 。 以下以ECS为例，您可以通过以下代码来判断并获取 `ClientError` 中的错误信息：
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-` `go/sdk/errors` ，引入方法请参考：
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-`
+> `go/sdk/errors` ，引入方法请参考：
 
 ```java
 package main import (
@@ -1445,7 +1607,7 @@ package main import (
     "fmt"
 ```
 
-)
+> `)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1463,39 +1625,33 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
     clientError.Message()
 ```
 
-`//` 获取原始错误(可能为`nil)`
+`//` 获取原始错误`(`可能为`nil)`
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
 当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从 Response中获得原始的HTTP应答。 以下以ECS为例，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息： 示例
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-` `go/sdk/errors` ，引入方法请参考：
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-`
+> `go/sdk/errors` ，引入方法请参考：
 
 ```java
 package main import (
 ```
 
-`"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" //ecs`请替换为您实际的产品名称
+> `"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" //ecs`请替换为您实际的产品名称 `"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"`
+> `//` 新增的错误包 `"github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors"`
 
 ```
-    "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
-```
-
-`//` 新增的错误包
-
-```
-    "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1517,10 +1673,11 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
 
-##### 使用CommonRequest进行调用
+`}`
+
+##### 3.3.2.5 使用CommonRequest进行调用
 
 **前提条件**
 
@@ -1546,7 +1703,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1590,19 +1747,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 示例
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 示例
 
 ```java
 package main import (
@@ -1612,7 +1772,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -1657,17 +1817,22 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
@@ -1678,16 +1843,15 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -1705,9 +1869,9 @@ client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpPro
 
 **设置**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。 `//` 设置请求 `HTTPSInsecure`（只影响当前）
+`//` 设置请求 `HTTPSInsecure`（只影响当前）
 
 ```
 request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure := request.GetHTTPSInsecure() // 获取请求 HTTPSInsecure
@@ -1721,7 +1885,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 
 公共参数
 
-## API公共参数
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -1745,13 +1909,15 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 
 API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
 
-## 数据库审计与风险控制系统
+## 5 数据库审计与风险控制系统
 
-### 审计代理
+### 5.1 审计代理
 
-#### agent代理
+#### 5.1.1 agent代理
 
-##### 获取agent列表
+##### 5.1.1.1 获取agent列表
+
+本文介绍获取agent列表功能的接口调用信息。
 
 **基本信息**
 
@@ -1822,7 +1988,9 @@ Dir字段的枚举值
 | AgentAssetIdList | String | agent的关联资产 |
 | TotalCount | Integer | agent的总数 |
 
-##### 下载agent
+##### 5.1.1.2 下载agent
+
+本文介绍下载agent功能的接口调用信息。
 
 **基本信息**
 
@@ -1852,7 +2020,9 @@ platform字段的枚举值
 |---|---|---|
 | Url | String | agent下载链接 |
 
-##### 添加agent安装任务
+##### 5.1.1.3 添加agent安装任务
+
+本文介绍添加agent安装任务功能的接口调用信息。
 
 **基本信息**
 
@@ -1888,10 +2058,9 @@ ID：CreateAgentInstallTask URL：/CreateAgentInstallTask.json Method：POST
 curl -X POST '{{host}}/dbaudit/agents/installTasks' -d 'requestId= {{requestId}}&version={{version}}&clusterKey={{clusterKey}}&clusterTime= {{clusterTime}}&clusterUuid={{clusterUuid}}&clusterSign={{clusterSign}}'
 ```
 
-返回
+返回 `{`
 
 ```json
-{
  "code": "appErr.agent.package",
  "success": false,
 ```
@@ -1901,8 +2070,9 @@ curl -X POST '{{host}}/dbaudit/agents/installTasks' -d 'requestId= {{requestId}}
 ```json
  "requestId": "704f63c8-38d8-4907-a4d7-a761a8986b34",
  "requestTotalCost": 22
-}
 ```
+
+`}`
 
 **成功返回示例**
 
@@ -1912,19 +2082,21 @@ curl -X POST '{{host}}/dbaudit/agents/installTasks' -d 'requestId= {{requestId}}
 curl -X POST '{{host}}/dbaudit/agents/installTasks' -d 'requestId= {{requestId}}&version={{version}}&clusterKey={{clusterKey}}&clusterTime= {{clusterTime}}&clusterUuid={{clusterUuid}}&clusterSign={{clusterSign}}'
 ```
 
-返回
+返回 `{`
 
 ```json
-{
  "code": "200",
  "message": "success",
  "success": true,
  "requestId": "3d77a658-3626-4a79-bd60-1ddb85722b47",
  "requestTotalCost": 493
-}
 ```
 
-##### 添加agent卸载任务
+`}`
+
+##### 5.1.1.4 添加agent卸载任务
+
+本文介绍添加agent卸载任务功能的接口调用信息。
 
 **基本信息**
 
@@ -1945,7 +2117,9 @@ ID：CreateAgentUninstallTask URL：/CreateAgentUninstallTask.json Method：POST
 
 无返回数据
 
-##### 修改agent配置
+##### 5.1.1.5 修改agent配置
+
+本文介绍修改agent配置功能的接口调用信息。
 
 **基本信息**
 
@@ -1987,9 +2161,11 @@ ID：ModifyAgentConfig URL：/ModifyAgentConfig.json Method：POST
 | SysWriteIO | String | 系统IO写速度 |
 | AgentReadIO | String | agent的IO读速度 |
 | AgentWriteIO | String | agent的IO写速度 |
-| SupportFrontEndStart | null |  |
+| SupportFrontEndStart | null |   |
 
-##### 修改agent状态
+##### 5.1.1.6 修改agent状态
+
+本文介绍修改agent状态功能的接口调用信息。
 
 **基本信息**
 
@@ -2031,9 +2207,11 @@ ID：ModifyAgentState URL：/ModifyAgentState.json Method：POST
 | SysWriteIO | String | 系统IO写速度 |
 | AgentReadIO | String | agent的IO读速度 |
 | AgentWriteIO | String | agent的IO写速度 |
-| SupportFrontEndStart | null |  |
+| SupportFrontEndStart | null |   |
 
-##### 获取agent日志
+##### 5.1.1.7 获取agent日志
+
+本文介绍获取agent日志功能的接口调用方法。
 
 **基本信息**
 
@@ -2057,7 +2235,9 @@ ID：DescribeAgentsLog Method：GET URL：/DescribeAgentsLog.json
 |---|---|
 | appErr.agent.noLogFile | 无此agent的日志 |
 
-##### 删除agent
+##### 5.1.1.8 删除agent
+
+本文介绍删除agent功能的接口调用信息。
 
 **基本信息**
 
@@ -2096,9 +2276,11 @@ ID：DeleteAgents Method：POST URL：/DeleteAgents.json
 | SysWriteIO | String | 系统IO写速度 |
 | AgentReadIO | String | agent的IO读速度 |
 | AgentWriteIO | String | agent的IO写速度 |
-| SupportFrontEndStart | null |  |
+| SupportFrontEndStart | null |   |
 
-##### 获取agent版本号
+##### 5.1.1.9 获取agent版本号
+
+本文介绍获取agent版本号功能的接口调用信息。
 
 **基本信息**
 
@@ -2114,7 +2296,9 @@ ID：DescribeAgentVersion Method：GET URL：/DescribeAgentVersion.json
 |---|---|---|
 | AgentVersion | String | agent版本号 |
 
-##### agent状态诊断
+##### 5.1.1.10 agent状态诊断
+
+本文介绍agent状态诊断功能的接口调用信息。
 
 **基本信息**
 
@@ -2136,7 +2320,9 @@ ID：DescribeAgentStat Method：GET URL：/DescribeAgentStat.json
 | SelfCheckState | Integer | 诊断状态 |
 |---|---|---|
 
-##### 下载agent
+##### 5.1.1.11 下载agent
+
+本文介绍下载agent功能的接口调用信息。
 
 **基本信息**
 
@@ -2152,7 +2338,9 @@ ID：DownloadAgent URL：/dbagent/:filename Method：GET
 
 无返回数据
 
-##### 查询agent标签列表
+##### 5.1.1.12 查询agent标签列表
+
+本文介绍查询agent标签列表功能的接口调用信息。
 
 **基本信息**
 
@@ -2168,7 +2356,7 @@ ID：DescribeAgentTag Method：GET URL：/DescribeAgentTag.json
 
 **返回数据**
 
-| 0 |  | > 文档版本：2026072 |
+| 0 |   | > 文档版本：2026072 |
 |---|---|---|
 
 | key | 类型 | 描述 |
@@ -2178,10 +2366,12 @@ ID：DescribeAgentTag Method：GET URL：/DescribeAgentTag.json
 | TagName | String | 标签名称 |
 | CreateTime | String | 创建时间 |
 | UpdateTime | String | 更新时间 |
-| Deleted | Integer |  |
+| Deleted | Integer |   |
 | TotalCount | Integer | 标签总数 |
 
-##### 更新单个agent的标签列表
+##### 5.1.1.13 更新单个agent的标签列表
+
+本文介绍更新单个agent的标签列表功能的接口调用信息。
 
 **基本信息**
 
@@ -2198,7 +2388,9 @@ ID：UpdateTagRelate Method：POST URL：/UpdateTagRelate.json
 
 无返回数据
 
-##### 批量操作agent和标签关联
+##### 5.1.1.14 批量操作agent和标签关联
+
+本文介绍批量操作agent和标签关联功能的接口调用信息。
 
 **基本信息**
 
@@ -2216,7 +2408,9 @@ ID：UpdateBatchOperateTag Method：POST URL：/UpdateBatchOperateTag.json
 
 无返回数据
 
-##### 新增agent标签
+##### 5.1.1.15 新增agent标签
+
+本文介绍新增agent标签功能的接口调用信息。
 
 **基本信息**
 
@@ -2234,13 +2428,15 @@ ID：CreateAgentTag URL：/CreateAgentTag.json Method：POST
 |---|---|---|
 | TagId | String | 标签ID |
 | TagName | String | 标签名称 |
-| CreateTime | String |  |
+| CreateTime | String |   |
 
-| UpdateTime | String |  |
+| UpdateTime | String |   |
 |---|---|---|
-| Deleted | null |  |
+| Deleted | null |   |
 
-##### 修改agent标签
+##### 5.1.1.16 修改agent标签
+
+本文介绍修改agent标签的API接口参数。
 
 **基本信息**
 
@@ -2259,11 +2455,13 @@ ID：UpdateAgentTag Method：POST URL：/UpdateAgentTag.json
 |---|---|---|
 | Id | String | 标签ID值 |
 | TagName | String | 标签的名称 |
-| CreateTime | null |  |
+| CreateTime | null |   |
 | UpdateTime | String | 更新时间 |
-| Deleted | null |  |
+| Deleted | null |   |
 
-##### 删除agent标签
+##### 5.1.1.17 删除agent标签
+
+本文介绍删除agent标签功能的接口调用信息。
 
 **基本信息**
 
@@ -2282,11 +2480,13 @@ ID：DeleteAgentTag Method：POST URL：/DeleteAgentTag.json
 | Data | array | 删除标签列表 |
 | Id | String | 标签ID |
 | TagName | String | 标签名称 |
-| CreateTime | String |  |
-| UpdateTime | String |  |
-| Deleted | Integer |  |
+| CreateTime | String |   |
+| UpdateTime | String |   |
+| Deleted | Integer |   |
 
-##### 卸载agent
+##### 5.1.1.18 卸载agent
+
+本文介绍卸载agent功能的接口调用信息。
 
 **基本信息**
 
@@ -2302,11 +2502,13 @@ ID：DeleteNormalAgent URL：/DeleteNormalAgent.json Method：POST
 
 无返回数据
 
-### 数审数据库管理
+### 5.2 数审数据库管理
 
-#### 资产类型
+#### 5.2.1 资产类型
 
-##### 获取资产类型
+##### 5.2.1.1 获取资产类型
+
+本文介绍获取资产类型功能的接口调用信息。
 
 **基本信息**
 
@@ -2335,9 +2537,11 @@ ID：DescribeAppTypes Method：GET URL：/DescribeAppTypes.json
 | Encodes | array | 支持的编码 |
 |---|---|---|
 
-#### 数据库管理
+#### 5.2.2 数据库管理
 
-##### 获取数据库列表信息
+##### 5.2.2.1 获取数据库列表信息
+
+本文介绍获取数据库列表信息功能的接口调用信息。
 
 **基本信息**
 
@@ -2460,12 +2664,12 @@ DbType字段的枚举值该参数可设多个枚举值，多个值之间用英�
 | Twoway | String | 是否双向审计 |
 | IsAudit | String | 是否启用审计 |
 | SaveLine | String | 返回结果保存行数 |
-| IpFilter | String |  |
+| IpFilter | String |   |
 | IpPort | String | 服务的IP和端口信息 |
-| Internet | String |  |
+| Internet | String |   |
 | ConnInfo | Password | 连接数据库的账号密码信息 |
 | CertInfo | Password | 加密证书信息 |
-| ExtendInfo | String |  |
+| ExtendInfo | String |   |
 | CreateTime | String | 创建时间 |
 | UpdateTime | String | 最后变更时间 |
 | SaveSize | String | 最大保存长度 |
@@ -2483,7 +2687,9 @@ DbType字段的枚举值该参数可设多个枚举值，多个值之间用英�
 | ConfigId | String | 日志采集配置ID |
 | TotalCount | Integer | 总数 |
 
-##### 添加数据库
+##### 5.2.2.2 添加数据库
+
+本文介绍添加数据库功能的接口调用信息。
 
 **基本信息**
 
@@ -2504,8 +2710,8 @@ ID：CreateDatabase Method：POST URL：/CreateDatabase.json
 | IsAudit | Enum | 状态 | 是 | 是否审计，默认值：1 |
 |---|---|---|---|---|
 | IpPorts | Array<Object> | IP与端口 | 否 | 数据库的IP和端口 |
-| ip | Ipdomain |  | 是 |  |
-| port | Portx |  | 是 |  |
+| ip | Ipdomain |   | 是 |   |
+| port | Portx |   | 是 |   |
 | RdsInstanceId | Noxss | 实例ID | 否 | 实例ID信息 |
 | Region | String | 地域(Region) | 否 | 地域信息 |
 | TypeGroup | String | 资产类型分组 | 否 | 资产类型分组 |
@@ -2634,7 +2840,9 @@ auditType的枚举值
 | NodeIp | String | 日志采集配置所属节点IP |
 | ConfigId | String | 日志采集配置ID |
 
-##### 更改数据库
+##### 5.2.2.3 更改数据库
+
+本文介绍更改数据库功能的接口调用信息。
 
 **基本信息**
 
@@ -2656,8 +2864,8 @@ ID：ModifyDatabase Method：PUT URL：/ModifyDatabase.json
 | Twoway | Enum | 流量方向 | 否 | 默认值：0 |
 | IsAudit | Enum | 状态 | 是 | 是否审计，默认值：1 |
 | ipPorts | Array<Object> | IP与端口 | 否 | 数据库的IP和端口 |
-| ip | Ipdomain |  | 是 |  |
-| port | Portx |  | 是 |  |
+| ip | Ipdomain |   | 是 |   |
+| port | Portx |   | 是 |   |
 | Instance | Noxss | 实例ID | 否 | 默认值：空字符串 |
 | Region | String | 地域(Region) | 否 | 地域 |
 | TypeGroup | String | 资产类型分组 | 否 | 资产类型分组 |
@@ -2796,10 +3004,9 @@ Audittype字段的枚举值
 curl -X POST '{{host}}/dbaudit/databases' -d 'requestId={{requestId}}&version={{version }}&clusterKey={{clusterKey}}&clusterTime={{clusterTime}}&clusterUuid= {{clusterUuid}}&clusterSign={{clusterSign}}'
 ```
 
-返回
+返回 `{`
 
 ```json
-{
   "code": "200",
   "message": "success",
   "success": true,
@@ -2824,13 +3031,20 @@ curl -X POST '{{host}}/dbaudit/databases' -d 'requestId={{requestId}}&version={{
     "updateTime": "2020-04-21 02:00:02",
     "departmentIds": "",
     "isFocused": null
-  },
-  "requestId": "9a06d139-5c05-41db-88d5-65635e5b5f57",
-  "requestTotalCost": 266
-}
 ```
 
-##### 删除数据库
+`},`
+
+```json
+  "requestId": "9a06d139-5c05-41db-88d5-65635e5b5f57",
+  "requestTotalCost": 266
+```
+
+`}`
+
+##### 5.2.2.4 删除数据库
+
+本文介绍删除数据库功能的接口调用信息。
 
 **基本信息**
 
@@ -2857,9 +3071,9 @@ ID：DeleteDatabase Method：POST URL：/DeleteDatabase.json
 | IsAudit | String | 是否启用审计 |
 | SaveLine | String | 返回结果保存行数 |
 | SaveSize | String | 最大保存长度 |
-| IpFilter | String |  |
+| IpFilter | String |   |
 | IpPort | String | 服务的IP和端口信息 |
-| Internet | String |  |
+| Internet | String |   |
 | ConnInfo | Password | 连接数据库的账号密码信息 |
 | CertInfo | Password | 加密证书信息 |
 | CreateTime | String | 创建时间 |
@@ -2871,9 +3085,11 @@ ID：DeleteDatabase Method：POST URL：/DeleteDatabase.json
 | IsFocused | null | 是否关注 |
 | NodeIp | String | 日志采集配置所属节点IP |
 | ConfigId | String | 日志采集配置ID |
-| Total | Integer |  |
+| Total | Integer |   |
 
-##### 导入数据库
+##### 5.2.2.5 导入数据库
+
+本文介绍导入数据库功能的接口调用信息。
 
 **基本信息**
 
@@ -2889,7 +3105,9 @@ ID：CreateImportAssets Method：POST URL：/CreateImportAssets.json
 
 无返回数据
 
-##### 导出数据库
+##### 5.2.2.6 导出数据库
+
+本文介绍导出数据库功能的接口调用信息。
 
 **基本信息**
 
@@ -2905,7 +3123,9 @@ ID：DescribeExportAssets Method：GET URL：/DescribeExportAssets.json
 |---|---|---|
 | DownLoadUrl | String | 下载URL |
 
-##### 下载资产信息模板
+##### 5.2.2.7 下载资产信息模板
+
+本文介绍下载资产信息模板功能的接口调用信息。
 
 **基本信息**
 
@@ -2921,7 +3141,9 @@ ID：DescribeAssetsTemplate Method：GET URL：/DescribeAssetsTemplate.json
 |---|---|---|
 | DownLoadUrl | String | 下载URL |
 
-##### 修改数据库状态
+##### 5.2.2.8 修改数据库状态
+
+本文介绍修改数据库状态功能的接口调用信息。
 
 **基本信息**
 
@@ -3018,7 +3240,9 @@ IsAudit字段的枚举值
 
 无返回数据
 
-##### 查询资产最后活跃时间
+##### 5.2.2.9 查询资产最后活跃时间
+
+本文介绍查询资产最后活跃时间功能的接口调用信息。
 
 **基本信息**
 
@@ -3037,32 +3261,34 @@ ID：DescribeLastActiveTime Method：GET URL：/DescribeLastActiveTime.json
 | AssetId | String | 资产ID |
 | Name | String | 资产名称 |
 
-| Type | String |  |
+| Type | String |   |
 |---|---|---|
-| Version | String |  |
-| Charset | String |  |
-| Environment | String |  |
-| Twoway | String |  |
-| IsAudit | String |  |
-| SaveLine | String |  |
-| IpFilter | String |  |
-| IpPort | String |  |
-| Internet | String |  |
-| ConnInfo | String |  |
-| CertInfo | String |  |
-| ExtendInfo | String |  |
-| CreateTime | String |  |
-| UpdateTime | String |  |
-| SaveSize | String |  |
-| DepartmentIds | String |  |
-| IsFocused | null |  |
-| Active | Integer |  |
+| Version | String |   |
+| Charset | String |   |
+| Environment | String |   |
+| Twoway | String |   |
+| IsAudit | String |   |
+| SaveLine | String |   |
+| IpFilter | String |   |
+| IpPort | String |   |
+| Internet | String |   |
+| ConnInfo | String |   |
+| CertInfo | String |   |
+| ExtendInfo | String |   |
+| CreateTime | String |   |
+| UpdateTime | String |   |
+| SaveSize | String |   |
+| DepartmentIds | String |   |
+| IsFocused | null |   |
+| Active | Integer |   |
 
 | LastActiveTime | String | 最后活跃名称 |
 |---|---|---|
-| NodeName | String |  |
+| NodeName | String |   |
 
-##### 查询资产离线阈值配置
+##### 5.2.2.10 查询资产离线阈值配置
+
+本文介绍查询资产离线阈值配置功能的接口调用信息。
 
 **基本信息**
 
@@ -3078,7 +3304,9 @@ ID：DescribeAssetActiveConfig Method：GET URL：/DescribeAssetActiveConfig.jso
 |---|---|---|
 | AssetActiveTime | Integer | 资产活跃阈值 |
 
-##### 修改资产离线阈值配置
+##### 5.2.2.11 修改资产离线阈值配置
+
+本文介绍修改资产离线阈值配置功能的接口调用信息。
 
 **基本信息**
 
@@ -3096,9 +3324,11 @@ ID：UpdateAssetActiveConfig Method：POST URL：/UpdateAssetActiveConfig.json
 |---|---|---|
 | AssetActiveTime | Integer | 资产活跃阈值 |
 
-#### 资产组管理
+#### 5.2.3 资产组管理
 
-##### 获取资产组列表
+##### 5.2.3.1 获取资产组列表
+
+本文介绍获取资产组列表功能的接口调用信息。
 
 **基本信息**
 
@@ -3142,16 +3372,18 @@ Dir字段的枚举值
 | DepartmentId | String | 资产组ID |
 | DepartmentName | String | 资产组名称 |
 | Desc | String | 描述 |
-| ParentId | String |  |
-| Path | null |  |
+| ParentId | String |   |
+| Path | null |   |
 | CreateTime | Integer | 创建时间 |
-| AssetIds | String |  |
-| Assets | null |  |
-| RuleIds | null |  |
-| Priority | null |  |
+| AssetIds | String |   |
+| Assets | null |   |
+| RuleIds | null |   |
+| Priority | null |   |
 | TotalCount | Integer | 资产组总数 |
 
-##### 编辑资产组
+##### 5.2.3.2 编辑资产组
+
+本文介绍编辑资产组功能的接口调用信息。
 
 **基本信息**
 
@@ -3161,8 +3393,8 @@ ID：ModifyDepartment Method：POST URL：/ModifyDepartment.json
 
 | key | 类型 | 名称 | 必须 | 描述 |
 |---|---|---|---|---|
-| DepartmentId | Noxss | 资产组ID | 是 |  |
-| DepartmentNam e | ChsName | 资产组名称 | 是 |  |
+| DepartmentId | Noxss | 资产组ID | 是 |   |
+| DepartmentNam e | ChsName | 资产组名称 | 是 |   |
 | Desc | String | 资产组描述 | 否 | 默认值：空字符串 |
 
 **返回数据**
@@ -3171,12 +3403,14 @@ ID：ModifyDepartment Method：POST URL：/ModifyDepartment.json
 |---|---|---|
 | DepartmentId | String | 资产组ID |
 | DepartmentName | String | 资产组名称 |
-| ParentId | String |  |
-| Path | null |  |
+| ParentId | String |   |
+| Path | null |   |
 | CreateTime | Integer | 创建时间 |
-| AssetIds | String |  |
+| AssetIds | String |   |
 
-##### 创建资产组
+##### 5.2.3.3 创建资产组
+
+本文介绍创建资产组功能的接口调用信息。
 
 **基本信息**
 
@@ -3195,12 +3429,14 @@ ID：CreateDepartment Method：POST URL：/CreateDepartment.json
 |---|---|---|
 | DepartmentId | String | 资产组ID |
 | DepartmentName | String | 资产组名称 |
-| ParentId | String |  |
-| Path | null |  |
+| ParentId | String |   |
+| Path | null |   |
 | CreateTime | Integer | 创建时间 |
-| AssetIds | String |  |
+| AssetIds | String |   |
 
-##### 删除资产组
+##### 5.2.3.4 删除资产组
+
+本文介绍删除资产组功能的接口调用信息。
 
 **基本信息**
 
@@ -3220,13 +3456,15 @@ ID：DeleteDepartment Method：POST URL：/DeleteDepartment.json
 | DepartmentId | String | 资产组ID |
 | DepartmentName | String | 资产组名称 |
 | Desc | String | 描述 |
-| ParentId | String |  |
-| Path | null |  |
+| ParentId | String |   |
+| Path | null |   |
 | CreateTime | Integer | 创建时间 |
-| AssetIds | String |  |
+| AssetIds | String |   |
 | Total | Integer | 返回数据总数 |
 
-##### 设置资产组下的资产
+##### 5.2.3.5 设置资产组下的资产
+
+本文介绍设置资产组下的资产功能的接口调用信息。
 
 **基本信息**
 
@@ -3243,7 +3481,9 @@ ID：ModifyAssetOfDepartment Method：POST URL：/ModifyAssetOfDepartment.json
 
 无返回数据
 
-##### 更新单个资产组中的规则列表
+##### 5.2.3.6 更新单个资产组中的规则列表
+
+本文介绍更新单个资产组中的规则列表功能的接口调用信息。
 
 **基本信息**
 
@@ -3260,7 +3500,9 @@ ID：ModifyRulesToDepartment Method：POST URL：/ModifyRulesToDepartment.json
 
 无返回数据
 
-##### 更新多个资产组中的规则列表
+##### 5.2.3.7 更新多个资产组中的规则列表
+
+本文介绍更新多个资产组中的规则列表功能的接口调用信息。
 
 **基本信息**
 
@@ -3278,7 +3520,9 @@ ID：ModifyRulesToDepartments Method：POST URL：/ModifyRulesToDepartments.json
 
 无返回数据
 
-##### 批量启禁用资产组中的资产
+##### 5.2.3.8 批量启禁用资产组中的资产
+
+本文介绍批量启禁用资产组中的资产功能的接口调用信息。
 
 **基本信息**
 
@@ -3296,9 +3540,11 @@ ID：ModifyAssetToDepartment Method：POST URL：/ModifyAssetToDepartment.json
 
 无返回数据
 
-#### 关注资产
+#### 5.2.4 关注资产
 
-##### 添加关注资产
+##### 5.2.4.1 添加关注资产
+
+本文介绍添加关注资产功能的接口调用信息。
 
 **基本信息**
 
@@ -3314,7 +3560,9 @@ ID：CreateFocusedDatabase Method：POST URL：/CreateFocusedDatabase.json
 
 无返回数据
 
-##### 删除关注资产
+##### 5.2.4.2 删除关注资产
+
+本文介绍删除关注资产功能的接口调用信息。
 
 **基本信息**
 
@@ -3330,11 +3578,13 @@ ID：DeleteFocusedDatabase Method：POST URL：/DeleteFocusedDatabase.json
 
 无返回数据
 
-### 安全规则
+### 5.3 安全规则
 
-#### 规则的启用禁用
+#### 5.3.1 规则的启用禁用
 
-##### 启用满足条件的规则
+##### 5.3.1.1 启用满足条件的规则
+
+本文介绍启用满足条件的规则功能的接口调用信息。
 
 **基本信息**
 
@@ -3360,7 +3610,9 @@ ID：CreateEnabledRule Method：POST URL：/CreateEnabledRule.json
 
 无返回数据
 
-##### 禁用满足条件的规则
+##### 5.3.1.2 禁用满足条件的规则
+
+本文介绍禁用满足条件的规则功能的接口调用信息。
 
 **基本信息**
 
@@ -3386,7 +3638,9 @@ ID：DeleteEnabledRule Method：POST URL：/DeleteEnabledRule.json
 
 无返回数据
 
-##### 设置使用规则的资产
+##### 5.3.1.3 设置使用规则的资产
+
+本文介绍设置使用规则的资产功能的接口调用信息。
 
 **基本信息**
 
@@ -3404,12 +3658,14 @@ ID：setEnableRule Method：POST URL：/UpdateAssetsToRule.json
 
 | key | 类型 | 描述 |
 |---|---|---|
-| Data | array |  |
-| Total | Integer |  |
+| Data | array |   |
+| Total | Integer |   |
 
-#### 规则组管理
+#### 5.3.2 规则组管理
 
-##### 添加规则组
+##### 5.3.2.1 添加规则组
+
+本文介绍添加规则组功能的接口调用信息。
 
 **基本信息**
 
@@ -3441,10 +3697,9 @@ ID：CreateRuleGroup Method：POST URL：/CreateRuleGroup.json
 curl -X POST '{{host}}/公共参数/CreateRuleGroup.json' -d 'requestId= {{requestId}}&version={{version}}&clusterKey={{clusterKey}}&clusterTime= {{clusterTime}}&clusterUuid={{clusterUuid}}&clusterSign={{clusterSign}}'
 ```
 
-返回
+返回 `{`
 
 ```json
-{
   "code": "200",
   "message": "success",
   "success": true,
@@ -3453,13 +3708,20 @@ curl -X POST '{{host}}/公共参数/CreateRuleGroup.json' -d 'requestId= {{reque
     "rulegroupName": "22222",
     "parentGroupId": "default",
     "rulegroupType": 1
-  },
-  "requestId": "63c6f02a-d949-4f35-9ae9-20f891a8fed3",
-  "requestTotalCost": 35
-}
 ```
 
-##### 更改规则目录
+`},`
+
+```json
+  "requestId": "63c6f02a-d949-4f35-9ae9-20f891a8fed3",
+  "requestTotalCost": 35
+```
+
+`}`
+
+##### 5.3.2.2 更改规则目录
+
+本文介绍更改规则目录功能的接口调用信息。
 
 **基本信息**
 
@@ -3482,7 +3744,9 @@ ID：ModifyRuleGroup Method：PUT URL：/ModifyRuleGroup.json
 | ParentGroupId | String | 上级规则组ID |
 | RuleGroupType | Integer | 规则类型 |
 
-##### 删除规则目录
+##### 5.3.2.3 删除规则目录
+
+本文介绍删除规则目录功能的接口调用信息。
 
 **基本信息**
 
@@ -3505,7 +3769,9 @@ ID：DeleteRuleGroup Method：POST URL：/DeleteRuleGroup.json
 | RuleGroupType | Integer | 规则类型 |
 | Total | Integer | 耗时 |
 
-##### 获取所有规则组
+##### 5.3.2.4 获取所有规则组
+
+本文介绍获取所有规则组功能的接口调用信息。
 
 **基本信息**
 
@@ -3531,9 +3797,11 @@ ID：DescribeRuleGroups Method：GET URL：/DescribeRuleGroups.json
 | GroupType | Integer | 规则组类型 |
 | TotalCount | Integer | 规则组总数 |
 
-#### 内置规则组管理
+#### 5.3.3 内置规则组管理
 
-##### 获取内置规则组列表信息
+##### 5.3.3.1 获取内置规则组列表信息
+
+本文介绍获取内置规则组列表信息功能的接口调用信息。
 
 **基本信息**
 
@@ -3578,9 +3846,11 @@ Dir字段的枚举值
 | GroupType | Integer | 规则组类型 |
 | TotalCount | Integer | 规则组总数 |
 
-#### 内置规则管理
+#### 5.3.4 内置规则管理
 
-##### 获取内置规则列表
+##### 5.3.4.1 获取内置规则列表
+
+本文介绍获取内置规则列表功能的接口调用信息。
 
 **基本信息**
 
@@ -3639,11 +3909,11 @@ level字段的枚举值
 | assetIds | String | 资产ID |
 | totalCount | Integer | 规则总数 |
 
-### 数审日志查询
+### 5.4 数审日志查询
 
-#### 日志分析
+#### 5.4.1 日志分析
 
-##### 查询TOP SQL列表
+##### 5.4.1.1 查询TOP SQL列表
 
 **基本信息**
 
@@ -3702,7 +3972,9 @@ TopType字段的枚举值
 | AuditCount | String | 审计数 |
 | TotalCount | Integer | 总数 |
 
-##### 导出TOP SQL分析
+##### 5.4.1.2 导出TOP SQL分析
+
+本文介绍导出TOP SQL分析功能的接口调用信息。
 
 **基本信息**
 
@@ -3739,9 +4011,11 @@ TopType字段的枚举值
 
 无返回数据
 
-#### 审计日志查询
+#### 5.4.2 审计日志查询
 
-##### 审计日志查询
+##### 5.4.2.1 审计日志查询
+
+本文介绍审计日志查询功能的接口调用信息。
 
 **基本信息**
 
@@ -4063,8 +4337,10 @@ curl '{{host}}/公共参数/DescribeAuditLogs.json?accessKey={{accessKey}}&acces
 
 **返回**
 
+`{`
+
 ```json
-{ "code":string"200" "message":string"success" "success":booltrue "data":{ "List":[ 0:{ "Id":string"5305357806451621925" "DateTime":string"2020-06-12 13:18:36" "SqlLen":string"375" "ClientUser":string"" "HostName":string"" "Dmac":string"00:0c:29:86:de:bc" "OpType":string"2" "DbName":string"" "Smac":string"70:57:bf:d8:c8:01" "Dip":string"192.168.75.51" "Sessionid":string"5305357743815327791" "AlarmFlag":string"0" "Result":string"1" "Dport":string"3306" "LoginUser":string"aaa" "RelateIp":string"" "Payload":string"INSERT INTO `opeAccess` (`id`,`ol_time`,`ol_from`,`ol_user`,`ol_name`,`ol_desc`,`ol_result`) VALUES (DEFAULT,15
+"code":string"200" "message":string"success" "success":booltrue "data":{ "List":[ 0:{ "Id":string"5305357806451621925" "DateTime":string"2020-06-12 13:18:36" "SqlLen":string"375" "ClientUser":string"" "HostName":string"" "Dmac":string"00:0c:29:86:de:bc" "OpType":string"2" "DbName":string"" "Smac":string"70:57:bf:d8:c8:01" "Dip":string"192.168.75.51" "Sessionid":string"5305357743815327791" "AlarmFlag":string"0" "Result":string"1" "Dport":string"3306" "LoginUser":string"aaa" "RelateIp":string"" "Payload":string"INSERT INTO `opeAccess` (`id`,`ol_time`,`ol_from`,`ol_user`,`ol_name`,`ol_desc`,`ol_result`) VALUES (DEFAULT,15
 ```
 
 `91939070,'127.0.0.1','admin','`审计日志查询`','`起始时间：`2020-06-12 00:00:00`，结束时间：`2020-` `06-12 23:59:59`，每页显示的条数：`10`，排序列的名称：`id`，排序方式：降序，最大返回条数：`100000`，最大查询时间：10','1');"
@@ -4074,16 +4350,26 @@ curl '{{host}}/公共参数/DescribeAuditLogs.json?accessKey={{accessKey}}&acces
 ```
 
 ```json
-"DbType":string"MYSQL" "AlarmName":string"" "ResultDesc":string"success" "C1":string"" "C2":string"" "Accessid":string"5305357806451621925" "C3":string"" "C4":string"" "C5":string"" "RelateInfo":string"" "EffectRow":string"1" "PickIp":string"" "Sport":string"55195" "SipName":string"" }
+"DbType":string"MYSQL" "AlarmName":string"" "ResultDesc":string"success" "C1":string"" "C2":string"" "Accessid":string"5305357806451621925" "C3":string"" "C4":string"" "C5":string"" "RelateInfo":string"" "EffectRow":string"1" "PickIp":string"" "Sport":string"55195" "SipName":string""
 ```
 
-]
+`}` `]`
 
 ```json
-"TotalCount":int18 } "requestId":string"2ca4711a-d8b6-4bdc-aa62-f1f86c8bab88" "requestTotalCost":int917 }
+"TotalCount":int18
 ```
 
-##### 审计日志导出
+`}`
+
+```json
+"requestId":string"2ca4711a-d8b6-4bdc-aa62-f1f86c8bab88" "requestTotalCost":int917
+```
+
+`}`
+
+##### 5.4.2.2 审计日志导出
+
+本文介绍审计日志导出功能的接口调用信息。
 
 **基本信息**
 
@@ -4344,13 +4630,25 @@ curl '{{host}}/公共参数/DescribeExportAuditLog.json?accessKey={{accessKey}}&
 
 **返回**
 
+`{`
+
 ```json
-{ "code":string"200" "message":string"success" "success":booltrue "data":{ "FileUrl":string"/data/download/auditLog_20200612131839.xlsx? file=_MlEtgoFl6gwrtoiSLAYmRSdS.WmPvQjjQHk0zMigMUEtdLNioop4R8oHrF8utLxP.GZpr2kB7f.eVKZwCqV 0gYwzE54_IvxvFwkehqkStx9FrIXfDLjUZzETj0gzW8rXxk2t3jqVoEXNiHWrVJIZyAoda0l8C" } "requestId":string"4c492f32-f5a6-4e35-82ef-c6e656cc897d" "requestTotalCost":int4369 }
+"code":string"200" "message":string"success" "success":booltrue "data":{ "FileUrl":string"/data/download/auditLog_20200612131839.xlsx? file=_MlEtgoFl6gwrtoiSLAYmRSdS.WmPvQjjQHk0zMigMUEtdLNioop4R8oHrF8utLxP.GZpr2kB7f.eVKZwCqV 0gYwzE54_IvxvFwkehqkStx9FrIXfDLjUZzETj0gzW8rXxk2t3jqVoEXNiHWrVJIZyAoda0l8C"
 ```
 
-#### 告警分析
+`}`
 
-##### 查询告警分析列表
+```json
+"requestId":string"4c492f32-f5a6-4e35-82ef-c6e656cc897d" "requestTotalCost":int4369
+```
+
+`}`
+
+#### 5.4.3 告警分析
+
+##### 5.4.3.1 查询告警分析列表
+
+本文介绍查询告警分析列表功能的接口调用方法。
 
 **基本信息**
 
@@ -4403,9 +4701,11 @@ Dir字段的枚举值
 | SipList | String | 客户端IP列表 |
 | TotalCount | Integer | 告警列表总数 |
 
-#### 告警日志查询
+#### 5.4.4 告警日志查询
 
-##### 告警日志查询
+##### 5.4.4.1 告警日志查询
+
+本文介绍告警日志查询功能的接口调用信息。
 
 **基本信息**
 
@@ -4714,21 +5014,21 @@ SearchAllNode字段的枚举值
 | RelateUser | String | 关联用户 |
 | RelateIp | String | 关联IP |
 | RelateInfo | String | 关联信息 |
-| C1 | String |  |
-| C2 | String |  |
-| C3 | String |  |
-| C4 | String |  |
-| C5 | String |  |
+| C1 | String |   |
+| C2 | String |   |
+| C3 | String |   |
+| C4 | String |   |
+| C5 | String |   |
 | RuleId | String | 规则ID |
 | GroupId | String | 规则组ID |
 
 | IsStatistics | String | 是否为统计规则 |
 |---|---|---|
-| A1 | String |  |
-| A2 | String |  |
-| A3 | String |  |
-| A4 | String |  |
-| A5 | String |  |
+| A1 | String |   |
+| A2 | String |   |
+| A3 | String |   |
+| A4 | String |   |
+| A5 | String |   |
 | TableName | String | 表对象 |
 | AssetId | String | 资产ID |
 | AssetName | String | 资产名称 |
@@ -4751,25 +5051,33 @@ curl '{{host}}/公共参数/DescribeEventLogs.json?accessKey={{accessKey}}&acces
 
 **返回**
 
-```
-{
-```
+`{`
 
 ```json
 "code":string"200" "message":string"success" "success":booltrue "data":{ "EventLogs":[ 0:{ "LoginUser":string"aaa" "EventName":string"select_高风险" "EventLevel":string"3" "Accessid":string"5305413797265211433" "Sessionid":string"5305404758543368227" "Sqlid":string"3971616368224711388" "OpType":string"1" "Sip":string"192.168.84.36" "Dip":string"192.168.75.51" "Sport":string"56819" "Dport":string"3306" "Smac":string"70:57:bf:d8:c8:01" "Dmac":string"00:0c:29:86:de:bc" "DbName":string"" "ClientPrg":string"" "HostName":string"" "ClientUser":string"" "SqlLen":string"112" "EffectRow":string"1" "Cost":string"2" "ResultDesc":string"success" "DataSet":string"value ~ expire |E$L| {"userId":"00000000000000000000000000000001","username":"admin","loginType":"passwd","org ":"","currentOrgId":"","role":"superAdmin","maxAge":300000000,"pwdExpire":false,"pwdExpir ime":"","isFirstLogin":false,"expire":1592225032} ~ 1592239752 |E$L| " "Result":string"1" "DbType":string"MYSQL" "Id":string"5305413797265211433" "DateTime":string"2020-06-12 13:32:11" "Payload":string"SELECT `value`, `expire` FROM `session` AS `session` WHERE `session`.` key` = 'd4e61bc70d22472387ff75e9d26171dc';" "ErrorInfo":string"success" "DataSetSize":string"252" "RelateUser":string"" "RelateIp":string"" "PickUser":string"" "PickIp":string"" "RelateInfo":string"" "C1":string"" "C2":string"" "C3":string"" "C4":string"" "C5":string"" "RuleId":string"1271311369458679808" "GroupId":string"default" "IsStatistics":string"0" "A1":string"0" "A2":string"" "A3":string""
 ```
 
 ```json
-"A3":string"" "A4":string"" "A5":string"" "SipName":string"" }
+"A3":string"" "A4":string"" "A5":string"" "SipName":string""
 ```
 
-]
+`}` `]`
 
 ```json
-"TotalCount":int13 } "requestId":string"dce0162b-5282-4dee-8d7d-d6c42029711f" "requestTotalCost":int974 }
+"TotalCount":int13
 ```
 
-##### 告警日志导出
+`}`
+
+```json
+"requestId":string"dce0162b-5282-4dee-8d7d-d6c42029711f" "requestTotalCost":int974
+```
+
+`}`
+
+##### 5.4.4.2 告警日志导出
+
+本文介绍告警日志导出功能的接口调用信息。
 
 **基本信息**
 
@@ -5016,13 +5324,25 @@ curl '{{host}}/公共参数/DescribeExportEventLog.json?accessKey={{accessKey}}&
 
 **返回**
 
+`{`
+
 ```json
-{ "code":string"200" "message":string"success" "success":booltrue "data":{ "FileUrl":string"/data/download/eventLog_20200612133222.xlsx? file=_MlEtgoFl6gwrtoiSLAYmRSdS.WmPvQjS4J92DrHAcQEtdLNioop4dfQDKCP1Q3pVItd3mnU727.eVKZwCqV 4X7GUz3sFHPSbr1qAqA5Wtx9FrIXfDLuL0dVcAsdzS8rXxk2t3jqVoEXNiHWrVJIZyAoda0l8C" } "requestId":string"6dde888f-b9fc-4fbb-8926-0441b2f6bd37" "requestTotalCost":int1348 }
+"code":string"200" "message":string"success" "success":booltrue "data":{ "FileUrl":string"/data/download/eventLog_20200612133222.xlsx? file=_MlEtgoFl6gwrtoiSLAYmRSdS.WmPvQjS4J92DrHAcQEtdLNioop4dfQDKCP1Q3pVItd3mnU727.eVKZwCqV 4X7GUz3sFHPSbr1qAqA5Wtx9FrIXfDLuL0dVcAsdzS8rXxk2t3jqVoEXNiHWrVJIZyAoda0l8C"
 ```
 
-#### 会话日志查询
+`}`
 
-##### 会话日志查询
+```json
+"requestId":string"6dde888f-b9fc-4fbb-8926-0441b2f6bd37" "requestTotalCost":int1348
+```
+
+`}`
+
+#### 5.4.5 会话日志查询
+
+##### 5.4.5.1 会话日志查询
+
+本文介绍会话日志查询功能的接口调用信息。
 
 **基本信息**
 
@@ -5136,7 +5456,7 @@ SessionState字段的枚举值
 | 枚举值 | 值描述 |
 |---|---|
 
-|  | 数据库审计与风险控制开发指南·数据库审计与风险控制系统 |
+|   | 数据库审计与风险控制开发指南·数据库审计与风险控制系统 |
 |---|---|
 
 | 0 | 登入失败 |
@@ -5193,12 +5513,12 @@ SearchAllNode字段的枚举值
 | ResponseFlow | String | 会话返回总流量 |
 | SessionState | String | 会话状态标识 |
 
-| StrInfo | String |  |
+| StrInfo | String |   |
 |---|---|---|
-| Encode | String |  |
-| ProtocolConnection | String |  |
-| NormalEnd | String |  |
-| FilterSqlCount | String |  |
+| Encode | String |   |
+| ProtocolConnection | String |   |
+| NormalEnd | String |   |
+| FilterSqlCount | String |   |
 | AssetId | String | 资产ID |
 | AssetName | String | 资产名称 |
 | LoginUserAliasName | String | 数据库账号别名 |
@@ -5218,17 +5538,29 @@ curl '{{host}}/公共参数/DescribeSessionLogs.json?accessKey={{accessKey}}&acc
 
 **返回**
 
-```json
-{ "code":string"200" "message":string"success" "success":booltrue "data":{ "SessionLogs":[ 0:{26 items "StartTime":string"2020-06-12 13:33:26" "EndTime":string"2020-06-12 13:33:26" "LogId":string"5305419291123777576" "LoginUser":string"aaa" "Sip":string"192.168.84.36" "Dip":string"192.168.75.51" "Sessionid":string"5305418945180336169" "DbType":string"MYSQL" "Sport":string"57412" "Dport":string"3306" "Smac":string"70:57:bf:d8:c8:01" "Dmac":string"00:0c:29:86:de:bc" "DbName":string"" "ClientPrg":string"" "HostName":string"" "ClientUser":string"" "SqlCount":string"4" "RequestFlow":string"353" "ResponseFlow":string"399" "SessionState":string"1" "StrInfo":string"" "Encode":string"" "ProtocolConnection":string"0" "NormalEnd":string"1" "FilterSqlCount":string"0" "SipName":string"" }
-```
-
-]
+`{`
 
 ```json
-"TotalCount":int2 } "requestId":string"ff79e2a4-a3cf-4ab4-af22-3d7597ae11e6" "requestTotalCost":int908 }
+"code":string"200" "message":string"success" "success":booltrue "data":{ "SessionLogs":[ 0:{26 items "StartTime":string"2020-06-12 13:33:26" "EndTime":string"2020-06-12 13:33:26" "LogId":string"5305419291123777576" "LoginUser":string"aaa" "Sip":string"192.168.84.36" "Dip":string"192.168.75.51" "Sessionid":string"5305418945180336169" "DbType":string"MYSQL" "Sport":string"57412" "Dport":string"3306" "Smac":string"70:57:bf:d8:c8:01" "Dmac":string"00:0c:29:86:de:bc" "DbName":string"" "ClientPrg":string"" "HostName":string"" "ClientUser":string"" "SqlCount":string"4" "RequestFlow":string"353" "ResponseFlow":string"399" "SessionState":string"1" "StrInfo":string"" "Encode":string"" "ProtocolConnection":string"0" "NormalEnd":string"1" "FilterSqlCount":string"0" "SipName":string""
 ```
 
-##### 会话日志导出
+`}` `]`
+
+```json
+"TotalCount":int2
+```
+
+`}`
+
+```json
+"requestId":string"ff79e2a4-a3cf-4ab4-af22-3d7597ae11e6" "requestTotalCost":int908
+```
+
+`}`
+
+##### 5.4.5.2 会话日志导出
+
+本文介绍会话日志导出功能的接口调用信息
 
 **基本信息**
 
@@ -5368,13 +5700,25 @@ curl '{{host}}/公共参数/DescribeExportSessionLog.json?accessKey= {{accessKey
 
 **返回**
 
+`{`
+
 ```json
-{ "code":string"200" "message":string"success" "success":booltrue "data":{ "FileUrl":string"/data/download/sessionLog_20200612133323.xlsx? file=_MlEtgoFl6gwrtoiSLAYmU6KpsLUtXNhJJssynTv4Tc9Wqy8JF4kg41GdBe364MiQEWVb8InmKMXws0GjYCH YF_xsADxCKx4nvEjxntKjf0dG2yLp6G9xgS6wWizZs8F.yRrBoYAkkRgQJwhown5L51vstkXSKWjfmaJ1UAlM" } "requestId":string"77c4ef66-c9f4-4ef9-a94d-2b9877701d3a" "requestTotalCost":int1079 }
+"code":string"200" "message":string"success" "success":booltrue "data":{ "FileUrl":string"/data/download/sessionLog_20200612133323.xlsx? file=_MlEtgoFl6gwrtoiSLAYmU6KpsLUtXNhJJssynTv4Tc9Wqy8JF4kg41GdBe364MiQEWVb8InmKMXws0GjYCH YF_xsADxCKx4nvEjxntKjf0dG2yLp6G9xgS6wWizZs8F.yRrBoYAkkRgQJwhown5L51vstkXSKWjfmaJ1UAlM"
 ```
 
-#### SQL模板
+`}`
 
-##### 获取SQL模板列表
+```json
+"requestId":string"77c4ef66-c9f4-4ef9-a94d-2b9877701d3a" "requestTotalCost":int1079
+```
+
+`}`
+
+#### 5.4.6 SQL模板
+
+##### 5.4.6.1 获取SQL模板列表
+
+本文介绍获取SQL模板列表功能的接口调用信息。
 
 **基本信息**
 
@@ -5505,8 +5849,9 @@ curl '{{host}}/sqlTemplates?requestId={{requestId}}&version={{version}}&clusterK
 
 **返回**
 
+`{`
+
 ```json
-{
   "code": "200",
   "message": "success",
   "success": true,
@@ -5514,8 +5859,9 @@ curl '{{host}}/sqlTemplates?requestId={{requestId}}&version={{version}}&clusterK
     "list": [
 ```
 
+`{`
+
 ```json
-      {
         "id": 5106,
         "sqlId": 0,
         "dip": "192.168.50.89",
@@ -5524,8 +5870,11 @@ curl '{{host}}/sqlTemplates?requestId={{requestId}}&version={{version}}&clusterK
         "sqlTemplate": "",
         "dateTime": "2020-01-03 15:21:34",
         "payload": "-"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 5079,
         "sqlId": "1367040878257519143",
         "dip": "10.2.5.33",
@@ -5536,8 +5885,11 @@ curl '{{host}}/sqlTemplates?requestId={{requestId}}&version={{version}}&clusterK
         "dateTime": "2020-01-03 15:21:34",
         "payload": "SELECT * FROM cltj_tb168 WHERE
 (sys_unitguid='0000012977F691083C4291887314B8E0') AND (sys_datayear='2011' AND sys_data time=1 AND sys_timetype='N')"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 5078,
         "sqlId": "4182849518253780682",
         "dip": "10.2.5.33",
@@ -5548,8 +5900,11 @@ curl '{{host}}/sqlTemplates?requestId={{requestId}}&version={{version}}&clusterK
         "dateTime": "2020-01-03 15:21:34",
         "payload": "SELECT * FROM cltj_tb163 WHERE
 (sys_unitguid='0000012977F691083C4291887314B8E0') AND (sys_datayear='2011' AND sys_data time=1 AND sys_timetype='N')"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 5064,
         "sqlId": "552135666239538229",
         "dip": "10.2.5.33",
@@ -5568,9 +5923,9 @@ curl '{{host}}/sqlTemplates?requestId={{requestId}}&version={{version}}&clusterK
 所' ,'2' ,2 ,2 ,9 , ,'118.525778' ,'28.89918' ,16 ,'726615610' ,'县天马镇文峰东路113－1号' ,'324200' ,'5890236' ,'李军，5890208' ,'1995-10-20 00:00:00' ,'5' ,'2' ,'000001569B6331BF88CA2236A87DE08E' ,'00000001' )"
 ```
 
+`},` `{`
+
 ```json
-      },
-      {
         "id": 4901,
         "sqlId": "2179030142124202523",
         "dip": "10.2.5.33",
@@ -5581,8 +5936,11 @@ evt_guid,tsk_prefix,evt_time,evt_type,evt_catalog,evt_module,evt_user,evt_host,e
         "dateTime": "2020-01-03 15:21:24",
         "payload": "select
 evt_guid,tsk_prefix,evt_time,evt_type,evt_catalog,evt_module,evt_user,evt_host,evt_info,e _data from sys_event where evt_guid = '0000015017100CE389524F014C3F8442' "
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 4750,
         "sqlId": "262654979860189396",
         "dip": "192.168.50.75",
@@ -5593,8 +5951,11 @@ se\n sys.dbms_output.enable( :3 );\n end if;\nend;\n",
         "dateTime": "2020-01-03 15:21:21",
         "payload": "begin\n  if 1 = 0 then\n    sys.dbms_output.disable;\n  else\n
 sys.dbms_output.enable(10000);\n end if;\nend;\n"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 4749,
         "sqlId": "20170795767163474",
         "dip": "192.168.50.75",
@@ -5605,8 +5966,11 @@ sys.dbms_output.enable(10000);\n end if;\nend;\n"
         "dateTime": "2020-01-03 15:21:21",
         "payload": "begin\n  sys.dbms_output.get_line(line => 'NULL', status =>
 'NULL');\nend;\n"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 4748,
         "sqlId": "254851615248227696",
         "dip": "192.168.50.75",
@@ -5616,8 +5980,11 @@ sys.dbms_output.enable(10000);\n end if;\nend;\n"
 end;\n",
         "dateTime": "2020-01-03 15:21:21",
         "payload": "begin 'NULL' := sys.dbms_transaction.local_transaction_id; end;\n"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 4744,
         "sqlId": "1743068826118189730",
         "dip": "192.168.50.75",
@@ -5629,8 +5996,11 @@ end;\n",
         "sqlTemplate": "select lengthb(nchr( :1 )), nchr( :2 ) from dual\n",
         "dateTime": "2020-01-03 15:21:21",
         "payload": "select lengthb(nchr(20)), nchr(20) from dual\n"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "id": 4743,
         "sqlId": "58962124245471750",
         "dip": "192.168.50.75",
@@ -5641,20 +6011,26 @@ end;\n",
         "dateTime": "2020-01-03 15:21:21",
         "payload": "select length(chr(2000000000)) l4, length(chr(2000000)) l3,
 length(chr(20000)) l2, 'c' c1 from dual\n"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "totalCount": 3255
-  },
-  "requestId": "dda75dab-1080-4b27-9a1d-a58a8655c053",
-  "requestTotalCost": 22
-}
 ```
 
-##### 获取SQL模板详情
+`},`
+
+```json
+  "requestId": "dda75dab-1080-4b27-9a1d-a58a8655c053",
+  "requestTotalCost": 22
+```
+
+`}`
+
+##### 5.4.6.2 获取SQL模板详情
+
+本文介绍获取SQL模板详情功能的接口调用信息。
 
 **基本信息**
 
@@ -5676,7 +6052,9 @@ ID：DescribeSqlTemplateDetail Method：GET URL：/DescribeSqlTemplateDetail.jso
 |---|---|---|
 | Timestamp | String | 执行时间 |
 
-##### 获取SQL模板配置信息
+##### 5.4.6.3 获取SQL模板配置信息
+
+本文介绍获取SQL模板配置信息功能的接口调用信息。
 
 **基本信息**
 
@@ -5695,7 +6073,7 @@ ID：DescribeSqlTemplateConfig Method：GET URL：/DescribeSqlTemplateConfig.jso
 
 代码表
 
-## 错误代码表
+## 6 错误代码表
 
 本文介绍云盾API返回的错误代码信息。 表 1. 云盾通用错误代码
 

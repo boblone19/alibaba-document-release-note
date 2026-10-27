@@ -5,7 +5,7 @@ doc_version: "20240301"
 pdf_pages: 1132
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 DataWorks User Guide 20240301.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Dataworks/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20DataWorks%20User%20Guide%2020240301.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 DataWorks User Guide 20240301
@@ -2306,7 +2306,11 @@ parameters.
 
 **Configure a source**
 
-After you create a batch synchronization node, you must select a data source and a table in the Source section on the configuration tab of the batch synchronization node. For more information about how to configure the parameters in the Source section, see Configure DRDS Reader.
+After you create a batch synchronization node, you must select a data source and a table in the Source section on the configuration tab of the batch synchronization node.
+
+**Note**
+
+For more information about how to configure the parameters in the Source section, see Configure DRDS Reader.
 
 > By default, the Table drop-down list displays a maximum of 25 tables. If the selected data source contains more than 25 tables and the table that you want to select is not displayed in the Table drop-down list, enter the name of the table in the Table field. Alternatively, configure the batch synchronization node by using the code editor.
 > Some synchronization nodes may need to synchronize incremental data. In this case, you can use the scheduling parameters of DataWorks to specify the date and time for incremental data synchronization. For more information, see Scheduling parameters.
@@ -2444,6 +2448,9 @@ writing data to a socket, in milliseconds.
 `r.` `},` The parameters are described as follows:
 **type**: the type of the sync node. You must set the value to job.
 **version**: the version number of the sync node. You can set the value to 1.0 or 2.0.
+
+**Note**
+
 For more information about how to configure the source connection in the code editor, see Configure the reader.
 
 > Incremental data synchronization is required when you configure the source connection for some sync nodes. In this case, you can use the parameter configuration feature of DataWorks to obtain the date and time required by incremental data synchronization.
@@ -2476,7 +2483,11 @@ data when a write operation is performed again after failure. Set the value to t
      "category": "writer" // Indicates that these settings are related to the writer.
 ```
 
-`}` `],` For more information about how to configure the destination connection in the code editor, see Configure the writer.
+`}` `],`
+
+**Note**
+
+For more information about how to configure the destination connection in the code editor, see Configure the writer.
 
 > You can select the writing method for most nodes. For example, the writing method can be overwriting or appending. Supported writing methods vary with the connection type.
 
@@ -15208,7 +15219,11 @@ This topic describes how to create, reference, and download JAR and Python resou
 
 **Background information**
 
-If your code or function requires resource files such as**.jar** files, you can upload resources to your workspace and reference them. If the existing built-in functions do not meet your requirements, DataWorks allows you to create user-defined functions (UDFs) and customize processing logic. You can upload the required JAR packages to your workspace so that you can reference them when you create UDFs. You can view built-in functions on the **Built-In Functions** tab. For more information, see View built-in functions.
+If your code or function requires resource files such as**.jar** files, you can upload resources to your workspace and reference them. If the existing built-in functions do not meet your requirements, DataWorks allows you to create user-defined functions (UDFs) and customize processing logic. You can upload the required JAR packages to your workspace so that you can reference them when you create UDFs.
+
+**Note**
+
+You can view built-in functions on the **Built-In Functions** tab. For more information, see View built-in functions.
 
 > You can view the UDFs that you have committed or deployed on the **MaxCompute** **Functions** tab.
 
@@ -19265,6 +19280,9 @@ In Hologres, a foreign table does not store data but maps the table from the ext
 **Create a foreign table**
 
 On the left-side navigation submenu, click **PG management**. On the PG management tab, move the pointer over the Create icon and select **External Table**. On the tab that appears, set parameters for creating a foreign table and click **Commit**. An existing MaxCompute table is used in the following example. After you search for a MaxCompute table by entering its name, HoloStudio automatically generates a foreign table based on the fields of the MaxCompute table after you click Commit.
+
+**Note**
+
 1. Before you create a foreign table in Hologres, make sure that its source table exists in a
 MaxCompute project.
 2. The fields of a foreign table in Hologres have a one-to-one mapping with those of the
@@ -24773,7 +24791,11 @@ On the Directory Management page, you can create custom asset directories and ma
 
 **Create and edit asset directories**
 
-Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory. If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
+Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory.
+
+**Note**
+
+If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
 
 > You must be a member of the current workspace before you can be an asset owner. An asset owner must be a member of the current workspace. For more information about how to add a workspace member, see Manage members and roles.
 
@@ -27228,6 +27250,8 @@ When you join the dimension table to another table, you can view metrics such as
 | cacheHitQPS | Queries the number of cache hits (in QPS) against the dimension table. The metric name is blink.projectName.jobName.dimJoin.cacheHitQPS . |
 | dimJoin.fetchHit | Queries the correlation degree of the dimension table and the table to which the dimension table is joined. The metric name is blink.projectName.jobName.dimJoin.fetchHit . |
 | dimJoin.cacheHit | Queries the cache hit ratio of the dimension table. The metric name is blink.projectName.jobName.dimJoin.cacheHit . |
+
+**Note**
 
 We recommend that you use Realtime Compute V2.1.1 and later. To use a MaxCompute dimension table, you must grant the read permission to the account for accessing MaxCompute. When you declare a dimension table, you must specify the primary key. When you join a dimension table with another table, the ON condition must contain an equivalent condition that includes the primary key of either table. The primary key value for each row of a MaxCompute dimension table must be unique. Otherwise, the duplicate records are removed. If the dimension table is a partitioned table, Realtime Compute does not currently support writing the partition key column to the schema. When the cache policy is set to ALL, Realtime Compute reloads data asynchronously. Therefore, you must increase the memory of the JOIN operator. The size of the increased memory is twice the data size of the remote table. The following failover message may appear when you run a node:
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 31
 source_pdf: "5c8978d91d62cfe5_Alibaba Cloud Apsara Stack V3.18.6 Application Hybrid Marketplace User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83AHM/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Hybrid%20Marketplace%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Application Hybrid Marketplace User Guide 20260630
@@ -42,6 +42,9 @@ Hybrid Cloud Application Center serves as the third product R&D and delivery pip
 **Application Center console**
 
 You can log on to the Hybrid Cloud Application Center console from the Apsara Uni-manager Management Console. The homepage of the Hybrid Cloud Application Center console displays the current system resource usage and monitoring status of each region in charts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products > Application > Hybrid Cloud Application**
 **Center**.
@@ -71,6 +74,9 @@ Before you deploy an application, make the following preparations: Account: Crea
 > The bound wildcard domain name must be specified in the environment variables of the cluster when you deploy the application.
 
 Image repository in Container Registry: Create an image repository in Container Registry and push the required application images to the image repository.
+
+**Procedure**
+
 1. Log on to the Hybrid Cloud Application Center console.
 2. In the left-side navigation pane, choose **System Management** > **Image Repositories**.
 On the page that appears, make sure that the Repository URL, Read/Write Account, and Account Password of the image repository are the same as those of the image repository created in Container Registry.
@@ -260,6 +266,9 @@ iv. **Confirmation** Confirm parameter settings in this step. v. Click **Start N
 ### 2.4 Deploy the ONSP
 
 This topic describes how to use the Hybrid Cloud Application Center console to deploy Open Network Service Platform (ONSP).
+
+**Procedure**
+
 1. Log on to the Hybrid Cloud Application Center console.
 2. In the left-side navigation pane, choose **Plug-in Center** > **Plug-in Store**. On the page
 that appears, click **Import Plug-in**. In the Import Plug-in dialog box, click Upload JAR File for Remote Plugins to select the plug-in package of ONSP, and then click **OK** to import the ONSP plug-in package.
@@ -296,6 +305,9 @@ iii. Click **Copy command** and go to the operations machine to run the copied c
 ### 3.2 Deploy an application
 
 This topic describes how to deploy an application. The WordPress application is used in the example. Before application deployment, you need to prepare the relevant network resources, account, and Container Service for Kubernetes (ACK) cluster in Apsara Stack.
+
+**Procedure**
+
 1. Log on to the Hybrid Cloud Application Center console.
 2. On the **App Store** page, find the application that you want to deploy, such as WordPress,
 and go to the application details page.
@@ -308,6 +320,8 @@ that appears, follow on-screen instructions to configure the basic information f
 After an application is deployed, you can view all purchased and trial applications in the Hybrid Cloud Application Center console. You can also unpublish applications that have been deployed.
 
 > **Note:** You must have the necessary permissions to manage applications. Applications that you are not authorized to manage are not displayed on the My Applications page.
+
+**Procedure**
 
 1. Log on to the Hybrid Cloud Application Center console.
 2. On the **My Applications** page, click the card of the application that you want to view. In
@@ -326,6 +340,9 @@ i. On the application details page, click **Configure** in the upper-right corne
 ## 5 Task management
 
 On the Task Management page of Hybrid Cloud Application Center, you can view application deployment tasks. If a task fails to be executed, you can manually retry or skip the steps.
+
+**Procedure**
+
 1. Log on to the Hybrid Cloud Application Center console.
 2. On the **Task Management** page, you can view the following information about an
 application deployment task: **Ticket ID**, **Application Name**, **Version**, **Change Type**,
@@ -415,6 +432,9 @@ On the My Plugins page, find the plug-in that you want to uninstall, move the po
 ### 7.1 Image repository management
 
 An image repository is a Docker image repository. It provides images for specified clusters. You can configure an image repository for a specified cluster. When you deploy an application in the specified cluster, the system reads the configurations of the corresponding image repository to obtain the Docker image of the application. You can also configure a default image repository. If no image repository is configured for a cluster, the system obtains images from the default image repository.
+
+**Procedure**
+
 1. Log on to the Hybrid Cloud Application Center console.
 2. In the left-side navigation pane, choose **System Management** > **Image Repositories**.
 On the page that appears, click **Add Image Repository**, configure the related parameters, and then click **OK**.
@@ -443,6 +463,9 @@ business requirement and then click **OK**. To delete an image repository, click
 #### 7.2.1 Manage global variables
 
 A global variable is a global configuration in the key-value form. The effective scope of global variables is system-wide. Global variables maintain consistent values across all applications and clusters.
+
+**Procedure**
+
 1. Log on to the Hybrid Cloud Application Center console.
 2. In the left-side navigation pane, choose **System Management** > **Variables**. On the page
 that appears, click the **Global Variables** tab, click **Add Variable**, configure the variable information, and then click **OK**.

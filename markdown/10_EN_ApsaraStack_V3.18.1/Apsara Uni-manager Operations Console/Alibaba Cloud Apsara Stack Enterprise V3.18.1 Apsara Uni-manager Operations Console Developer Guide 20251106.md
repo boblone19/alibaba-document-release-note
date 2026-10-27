@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 383
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Apsara Uni-manager Operations Console Developer Guide 20251106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Apsara Uni-manager Operations Console Developer Guide 20251106
@@ -890,6 +890,8 @@ kend servers.
 
 `}`
 
+**Example**
+
 ```java
 import com.aliyun.apsarabase.unisdk.SdkManager; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.asoops.model.v20220118.GetMachineListDetailRequest; import com.aliyuncs.asoops.model.v20220118.GetMachineListDetailResponse; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.profile.DefaultProfile; public class Example { pblicstatic oidmain(String[]args){
 ```
@@ -1144,6 +1146,8 @@ describeProductStatusResponse = client.do_action_with_exception(describeProductS
 # Configure the required parameters.
 describeProductStatusRequest.set_project("ASO") print(str(describeProductStatusResponse, encoding="utf-8"))
 ```
+
+**Example**
 
 ## 7 API Reference
 

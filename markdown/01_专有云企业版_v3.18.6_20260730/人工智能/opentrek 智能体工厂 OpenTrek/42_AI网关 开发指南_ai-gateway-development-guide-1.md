@@ -5,16 +5,163 @@ doc_version: "20260729"
 pdf_pages: 413
 source_pdf: "42_AI网关 开发指南_ai-gateway-development-guide-1.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/opentrek/zh/ai-gateway-development-guide-1.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 智能体工厂 OpenTrek AI网关 开发指南
 
-智能体工厂 OpenTrek
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+  - 2.5 获取用户和角色信息
+  - 2.6 获取地域ID和组织ID
+- 3 通过POP网关调用专有云API
+  - 3.1 Java版本
+  - 3.2 常用接口调用方式
+    - 3.2.1 API 调用-集群管理
+    - 3.2.2 API 调用-实例管理
+- 4 API参考
+  - 4.1 AI服务
+    - 4.1.1 batchDeletesServices
+    - 4.1.2 createMicroservice
+    - 4.1.3 deleteService
+    - 4.1.4 getAllService
+    - 4.1.5 getService
+    - 4.1.6 listServices
+    - 4.1.7 listServicesBySource
+    - 4.1.8 modifyMicroservice
+    - 4.1.9 modifyNode
+  - 4.2 AI网关实例管理
+    - 4.2.1 addInstance
+    - 4.2.2 ascmCreateInstance
+    - 4.2.3 createDeployConfig
+    - 4.2.4 getCapacity
+    - 4.2.5 getCustomDeployConfig
+    - 4.2.6 getDeployConfig
+    - 4.2.7 getInstanceImageUrl
+    - 4.2.8 getInstanceInfo
+    - 4.2.9 getK8sMsg
+    - 4.2.10 getK8sServiceConfigContent
+    - 4.2.11 getPortTemplates
+    - 4.2.12 importHigressInstance
+    - 4.2.13 listAllGatewayInstances
+    - 4.2.14 listGatewayInstances
+    - 4.2.15 modifyCapacity
+    - 4.2.16 modifyInstance
+    - 4.2.17 modifyInstanceImageUrl
+    - 4.2.18 refresh
+    - 4.2.19 removeGwInstance
+    - 4.2.20 restart
+    - 4.2.21 stopInstance
+    - 4.2.22 upgradeInstance
+  - 4.3 MCP管理
+    - 4.3.1 addConsumers
+    - 4.3.2 createMcpServer
+    - 4.3.3 deleteConsumers
+    - 4.3.4 deleteMcpServer
+    - 4.3.5 getMcpServer
+    - 4.3.6 getSsePathSuffix
+    - 4.3.7 listConsumers
+    - 4.3.8 listMcpServers
+    - 4.3.9 swaggerToMcpConfig
+    - 4.3.10 updateMcpServer
+  - 4.4 代理服务器
+    - 4.4.1 createProxyServer
+    - 4.4.2 deleteProxyServer
+    - 4.4.3 getProxyServer
+    - 4.4.4 ListProxyServers
+    - 4.4.5 updateProxyServer
+  - 4.5 服务来源
+    - 4.5.1 batchDeleteSource
+    - 4.5.2 createSource
+    - 4.5.3 deleteSource
+    - 4.5.4 getSource
+    - 4.5.5 listAllNamespaces
+    - 4.5.6 listAllSources
+    - 4.5.7 listSources
+    - 4.5.8 modifySource
+    - 4.6.1 createCustomWasmPlugin
+    - 4.6.2 deleteCustomWasmPlugin
+    - 4.6.3 getCustomWasmPlugin
+    - 4.6.4 modifyCustomWasmPlugin
+  - 4.7 消费者
+    - 4.7.1 batchCreateAppAuthByRoute
+    - 4.7.2 batchDeleteApp
+    - 4.7.3 createAppAuthByRoute
+    - 4.7.4 createConsumer
+    - 4.7.5 deleteApp
+    - 4.7.6 deleteAppAuth
+    - 4.7.7 getApp
+    - 4.7.8 getAppAuth
+    - 4.7.9 listApps
+    - 4.7.10 listAppsByGwInstanceId
+    - 4.7.11 listMcpServersByAppId
+    - 4.7.12 listModelApisByAppId
+    - 4.7.13 listRoutesByAppId
+    - 4.7.14 listRoutesByGwInstanceId
+    - 4.7.15 modifyApp
+    - 4.7.16 refreshToken
+    - 4.8.1 createDomain
+    - 4.8.2 deleteDomain
+    - 4.8.3 getDomain
+    - 4.8.4 listAllDomains
+    - 4.8.5 listDomains
+    - 4.8.6 updateDomain
+  - 4.9 模型API
+    - 4.9.1 batchGrantModelApi
+    - 4.9.2 changeModelApiAuthStatus
+    - 4.9.3 createModelApi
+    - 4.9.4 createModelApiStrategyConfig
+    - 4.9.5 deleteModelApi
+    - 4.9.6 deleteModelApiStrategyConfig
+    - 4.9.7 getModelApiById
+    - 4.9.8 getModelApiPolicies
+    - 4.9.9 getModelApiStrategyConfig
+    - 4.9.10 listModelApiConsumers
+    - 4.9.11 listModelApiRoutes
+    - 4.9.12 listModelApis
+    - 4.9.13 listModelApiStrategyConfig
+    - 4.9.14 modifyModelApiPolicy
+    - 4.9.15 modifyModelApiStrategyConfig
+    - 4.9.16 revokeModelApiGrant
+    - 4.9.17 updateModelApi
+    - 4.10.1 createCertificate
+    - 4.10.2 deleteCertificate
+    - 4.10.3 getCertificate
+    - 4.10.4 listAllCACertificates
+    - 4.10.5 listAllServerCertificates
+    - 4.10.6 listCertificates
+    - 4.10.7 updateCertificate
+    - 4.11.1 batchDeletesRoutes
+    - 4.11.2 createRoute
+    - 4.11.3 deleteRoute
+    - 4.11.4 getAll
+    - 4.11.5 getProtocolByRoute
+    - 4.11.6 getRoute
+    - 4.11.7 getRoutePolicies
+    - 4.11.8 listRoutes
+    - 4.11.9 modifyRoute
+    - 4.11.10 modifyRoutePolicy
+  - 4.12 集群管理
+    - 4.12.1 cancelImportCluster
+    - 4.12.2 checkConnect
+    - 4.12.3 createK8s
+    - 4.12.4 getK8sClusterName
+    - 4.12.5 getK8sInfoByGwInstanceId
+    - 4.12.6 listCluster
+    - 4.12.7 pageK8s
+    - 4.12.8 updateK8s
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,34 +178,35 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-智能体工厂 OpenTrek
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
 
-智能体工厂 OpenTrek
-
-| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |  |
+| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |   |
 |---|---|
-| 获取AI网关的Endpoint 获取AI网关的SDK包调用API |  |
+| 获取AI网关的Endpoint 获取AI网关的SDK包调用API |   |
 
-准备工正式调
+> 准备工
+> 正式调
 
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
 **说明**
 
 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
 **说明**
 
@@ -67,11 +215,10 @@ converter: line-classifier (PyMuPDF)
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，查找开发指南的方式请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-智能体工厂 OpenTrek
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -89,7 +236,7 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
@@ -104,8 +251,6 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 | 参数名称 | 描述 |
 |---|---|
 | x-acs-regionid | 地域，如：cn-hangzhou-*。 |
-
-智能体工厂 OpenTrek
 
 | x-acs-organizationid | Apsara Uni-manager运营控制台中对应的组织ID。获取方法可参见《Apsara Uni-manager运营控制台开发指南》中的《GetOrganizationList》文档。 |
 |---|---|
@@ -128,12 +273,12 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -143,7 +288,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 2. 在顶部菜单栏中，单击**企业**。
 3. 在左侧导航栏中，选择**资源管理**>**地域管理**。
 4. 单击目标组织名称。
-智能体工厂 OpenTrek
 5. 在右侧**Region****列表**中查看**Region****名称**，即为Region ID。
 
 **获取组织ID**
@@ -187,9 +331,7 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-智能体工厂 OpenTrek
-
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -202,7 +344,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-智能体工厂 OpenTrek
 
 ```
 public static void main(String[] args) {
@@ -229,7 +370,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -251,11 +397,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，示例如下。
-智能体工厂 OpenTrek
 
 ```java
 import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Config;
@@ -289,48 +434,49 @@ public class DemoStsTest {
         Client credentialClient = new Client(credentialConfig);
 ```
 
-`//` 继续调用`API`，完整参考的`API`文档
+`//` 继续调用`API`，完整参考的`API`文档 `}` `}`
 
-```
-    }
-}
-```
+### 2.5 获取用户和角色信息
 
-### 获取用户和角色信息
+本文介绍如何获取用户和角色信息。
 
 **操作步骤**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 创建用户。
-i. 在顶部菜单栏，选择**企业**。 ii. 在左侧导航栏，选择**人员管理** > **用户管理**。 iii. 在**系统用户**页签，单击**创建用户。** iv. 在**创建用户**对话框，配置用户信息后，单击**确定**。 更多配置信息请参考**《统一云管平台****用户指南》** > **创建用户**章节。
+i. 在顶部菜单栏，选择**企业**。 ii. 在左侧导航栏，选择**人员管理** **>** **用户管理**。 iii. 在**系统用户**页签，单击**创建用户。** iv. 在**创建用户**对话框，配置用户信息后，单击**确定**。 更多配置信息请参考**《统一云管平台****用户指南》** **>** **创建用户**章节。
 3. 创建角色。
-i. 在左侧导航栏，选择**权限管理**> **角色授权**。 ii. 在角色列表上方，单击**创建自定义角色**。 iii. 设置**基础配置**，单击**下一步**。
+i. 在左侧导航栏，选择**权限管理****>** **角色授权**。 ii. 在角色列表上方，单击**创建自定义角色**。 iii. 设置**基础配置**，单击**下一步**。
 **管理范围**：选择**资源集**。
 iv. 设置**管理权限**，在权限列表勾选**查看****RAM****服务角色**和**创建****RAM****服务角色**权限后，单击**下一步**。 v. 设置**应用权限**，在权限列表勾选**API****网关**的**只读权限**和**读写权限**后，单击**下一步**。 vi. 设置**菜单权限**，在列表勾选**API****网关**后，单击**下一步**或**创建**。
 4. 为用户添加角色。
-i. 在左侧导航栏，选择**人员管理** > **用户管理**。 ii. 在**系统用户**页签，找到新创建的用户，单击用户**操作**列的 ，选择**角色授权**。 iii. 在**角色授权**对话框，添加新创建的用户角色后，单击**确定**。
+i. 在左侧导航栏，选择**人员管理** **>** **用户管理**。 ii. 在**系统用户**页签，找到新创建的用户，单击用户**操作**列的 ，选择**角色授权**。 iii. 在**角色授权**对话框，添加新创建的用户角色后，单击**确定**。
 5. 将用户添加到资源集。
-i. 在**系统用户**页签，找到新创建的用户，单击用户名。 ii. 在**所属资源集**页签下，单击列表上方的**加入资源集**。 智能体工厂 OpenTrek iii. 在**加入资源集**对话框中，**选择角色类型**下拉列表选择用户的角色，**选择资源集**列表勾选需要加入的资源集，单击**确定**。
+i. 在**系统用户**页签，找到新创建的用户，单击用户名。 ii. 在**所属资源集**页签下，单击列表上方的**加入资源集**。 iii. 在**加入资源集**对话框中，**选择角色类型**下拉列表选择用户的角色，**选择资源集**列表勾选需要加入的资源集，单击**确定**。
 
-### 获取地域ID和组织ID
+### 2.6 获取地域ID和组织ID
+
+本文介绍如何获取地域ID和组织ID。
+
+**获取地域ID**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏选择**企业**。
-3. 在左侧导航栏，选择**资源管理** > **地域管理**。
+3. 在左侧导航栏，选择**资源管理** **>** **地域管理**。
 4. 在左侧组织架构，单击目标组织，在右侧的**Region****列表**中，获取Region ID。
 
 **获取组织ID**
 
 1. 登录Apsara Uni-manager运营控制台。
-2. 在顶部菜单栏选择**产品** > **中间件** > **应用集成** **> API** **网关**。
-3. 在左侧导航栏，选择**API****网关** > **实例列表**或**AI****网关**。
+2. 在顶部菜单栏选择**产品** **>** **中间件** **>** **应用集成** **> API** **网关**。
+3. 在左侧导航栏，选择**API****网关** **>** **实例列表**或**AI****网关**。
 4. 在**网关实例**页面，打开开发者工具，单击Network页签，然后刷新页面。
 5. 在搜索框输入**ListResourceGroupByOrgId**，单击接口名称，在右侧的Preview页签获取组织ID。
-智能体工厂 OpenTrek
+调用专有云API
 
-## 通过POP网关调用专有云API
+## 3 通过POP网关调用专有云API
 
-### Java版本
+### 3.1 Java版本
 
 **环境要求**
 
@@ -372,7 +518,7 @@ i. 在**系统用户**页签，找到新创建的用户，单击用户名。 ii.
 
 **代码示例**
 
-智能体工厂 OpenTrek 以下示例展示如何使用 common request 方式调用 API 网关控制台接口：
+调用专有云API 以下示例展示如何使用 common request 方式调用 API 网关控制台接口：
 
 ```java
 package com.aliyun.apsarastack; import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONArray; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.AcsResponse; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.HttpResponse; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.HashMap; import java.util.Map; /**
@@ -391,12 +537,15 @@ public class Sample {
     private static final String LIST_ROUTES = "/route/listRoutes";
     public static void main(String[] args) throws ClientException {
         listRoutes();
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询路由列表示例
-`*/`
+`*` 查询路由列表示例 `*/`
 
 ```java
     private static void listRoutes() throws ClientException {
@@ -416,21 +565,21 @@ public class Sample {
                     records.forEach(record -> {
                         System.out.println(JSON.toJSONString(record));
                     });
-                }
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```java
-            }
             System.out.println(jsonObject);
-        }
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 通用请求方法
-* `* @param param` 请求参数
+`*` 通用请求方法 `*` `* @param param` 请求参数
 
 ```
      * @param path API路径
@@ -447,7 +596,11 @@ methodType) throws ClientException {
         request.setHttpContent(JSONObject.toJSONBytes(param), "UTF-8", FormatType.JSON);
         initDefaultHeader(request, methodType);
         return client.getCommonResponse(request);
-    }
+```
+
+`}`
+
+```
     static {
 ```
 
@@ -467,12 +620,15 @@ methodType) throws ClientException {
         httpClientConfig.setHttpProxy("http://127.0.0.1:9898");
         profile.setHttpClientConfig(httpClientConfig);
         client = new DefaultAcsClient(profile);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 设置请求`Header`
-* `* @param request` 请求对象
+`*` 设置请求`Header` `*` `* @param request` 请求对象
 
 ```
      * @param methodType HTTP方法类型
@@ -509,7 +665,7 @@ MethodType methodType) {
         // request.putHeadParameter("x-acs-roleId", "<your-roleId>");
 ```
 
-智能体工厂 OpenTrek `//` 设置请求方式
+调用专有云API `//` 设置请求方式
 
 ```
         request.setSysMethod(methodType);
@@ -527,9 +683,9 @@ MethodType methodType) {
 
 ```
         request.setSysVersion("2023-02-06");
-    }
-}
 ```
+
+`}` `}`
 
 **步骤示例**
 
@@ -564,7 +720,7 @@ CommonRequest request = new CommonRequest(); request.setSysUriPattern("/route/li
 ```
 
 4. .** **设置请求** **Header**
-设置必要的 Header 信息： 智能体工厂 OpenTrek
+设置必要的 Header 信息： 调用专有云API
 
 ```
 request.putHeadParameter("x-acs-caller-sdk-source", "your-app-name"); request.putHeadParameter("x-acs-organizationid", "<your-organizationid>"); request.setSysMethod(MethodType.POST); request.setSysDomain("<your-endpoint>"); request.setSysProduct("csb-cop"); request.setSysVersion("2023-02-06");
@@ -583,10 +739,9 @@ CommonResponse response = client.getCommonResponse(request); HttpResponse httpRe
 
 ```java
         System.out.println(JSON.toJSONString(data));
-    }
-}
 ```
 
+`}` `}`
 6. .** **异常处理**
 
 ```
@@ -605,8 +760,9 @@ try {
 ```java
     System.out.println("ErrorCode: " + e.getErrCode());
     System.out.println("ErrorMessage: " + e.getErrMsg());
-}
 ```
+
+`}`
 
 **自建 ACK 环境调用方式**
 
@@ -618,7 +774,7 @@ try {
 
 **代码示例**
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```
 static {
@@ -626,13 +782,18 @@ static {
 
 `//` 创建`DefaultAcsClient`实例并初始化
 
-```java
+```
     DefaultProfile profile = DefaultProfile.getProfile(
             "-",  // regionId 不需要
             "-",  // AccessKey ID 不需要
             "-"); // AccessKey Secret 不需要
     client = new DefaultAcsClient(profile);
-} private static <T extends AcsResponse> void initDefaultHeader(CommonRequest request, MethodType methodType) {
+```
+
+`}`
+
+```java
+private static <T extends AcsResponse> void initDefaultHeader(CommonRequest request, MethodType methodType) {
 ```
 
 `//` 自建`ACK`环境特有的认证`Header`
@@ -644,8 +805,9 @@ static {
     request.setSysDomain("<控制台服务IP>");
     request.setSysProduct("csb-cop");
     request.setSysVersion("2023-02-06");
-}
 ```
+
+`}`
 
 **常见 API 路径**
 
@@ -657,7 +819,7 @@ static {
 | 创建路由 | /route/createRoute |
 | 查询域名列表 | /domain/listDomains |
 
-### 常用接口调用方式
+### 3.2 常用接口调用方式
 
 **概述**
 
@@ -669,7 +831,7 @@ static {
 |---|---|
 | 接口协议 | HTTP/HTTPS |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | 请求方式 | POST（主要）、GET |
 |---|---|
@@ -689,18 +851,13 @@ static {
 
 **请求体**
 
-所有接口采用JSON格式请求体，基本结构如下：
+所有接口采用JSON格式请求体，基本结构如下： `{`
 
 ```json
-{
   "gwInstanceId": "xxx",
 ```
 
-`... //` 其他业务参数
-
-```
-}
-```
+`... //` 其他业务参数 `}`
 
 **说明**
 
@@ -716,7 +873,7 @@ static {
 | code | Integer | 响应状态码。 |
 | msg | String | 响应消息（错误时返回错误信息）。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | data | Object | 响应数据（业务数据）。 |
 |---|---|---|
@@ -732,35 +889,37 @@ static {
 
 **成功响应示例**
 
+`{`
+
 ```json
-{
   "requestId": "abc****456",
   "code": 200,
   "msg": null,
   "data": {
     "routeId": "route-001",
     "routeName": "test-route"
-  }
-}
 ```
+
+`}` `}`
 
 **失败响应示例**
 
+`{`
+
 ```json
-{
   "requestId": "ab****f456",
   "code": 500,
   "msg": "Route not found",
   "data": null
-}
 ```
+
+`}`
 
 **分页响应示例**
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```json
-{
   "requestId": "ab****456",
   "code": 200,
   "msg": null,
@@ -773,12 +932,7 @@ static {
       { "id": "2", "name": "item-2" }
 ```
 
-]
-
-```
-  }
-}
-```
+`]` `}` `}`
 
 **认证方式**
 
@@ -796,15 +950,15 @@ Authorization: Bearer <token>
 
 调用网关API时，消费者通过以下方式传递API Key：
 
-| 方式 | 说明 |  |  |
+| 方式 | 说明 |   |   |
 |---|---|---|---|
-| 请求头 | Authorization: Bearer <api-key> 或 x-api- key: <api-key> 。 |  |  |
-|  |  | x-api- |  |
-| 查询参数 | ?api key=<api-key> 。 _ |  |  |
+| 请求头 | Authorization: Bearer <api-key> 或 x-api- key: <api-key> 。 |   |   |
+|   |   | x-api- |   |
+| 查询参数 | ?api key=<api-key> 。 _ |   |   |
 
-|  |  | Authorization: Bearer <api-key> |
+|   |   | Authorization: Bearer <api-key> |
 |---|---|---|
-|  | key: <api-key> |  |
+|   | key: <api-key> |   |
 
 具体认证方式由网关实例的认证配置决定。
 
@@ -823,7 +977,7 @@ Authorization: Bearer <token>
 | current | Integer | 1 | 当前页码。 |
 | size | Integer | 10 | 每页条数。 |
 
-| AI Gateway 开发指南·通过P 调用专有云API | OP网关 |  | 智能体工厂 OpenTre |
+| AI Gateway 开发指南·通过P 调用专有云API | OP网关 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 **搜索参数**
@@ -857,7 +1011,7 @@ Authorization: Bearer <token>
 |---|---|---|
 | 插件管理 | /plugin | Wasm插件管理。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | 全局插件 | /globalPlugin | 全局插件配置。 |
 |---|---|---|
@@ -873,10 +1027,9 @@ AI网关的路由、服务、域名、消费者、证书管理与API网关共用
 
 **业务异常**
 
-当业务逻辑出现异常时，返回：
+当业务逻辑出现异常时，返回： `{`
 
 ```json
-{
   "code": 500,
 ```
 
@@ -884,10 +1037,9 @@ AI网关的路由、服务、域名、消费者、证书管理与API网关共用
 
 ```json
   "data": null
-}
 ```
 
-常见业务异常：
+`}` 常见业务异常：
 
 | 错误信息 | 说明 |
 |---|---|
@@ -898,31 +1050,29 @@ AI网关的路由、服务、域名、消费者、证书管理与API网关共用
 
 **参数校验异常**
 
-当请求参数校验失败时，返回：
+当请求参数校验失败时，返回： `{`
 
 ```json
-{
   "code": 500,
   "msg": "<field> <error message>",
   "data": null
-}
 ```
 
-示例： 智能体工厂 OpenTrek
+`}` 示例： 调用专有云API
 
 ```json
-{
   "code": 500,
   "msg": "gwInstanceId must not be blank",
   "data": null
-}
 ```
+
+`}`
 
 **请求示例**
 
 **cURL示例**
 
-# 创建路由
+`#` 创建路由
 
 ```json
 curl -X POST 'http://localhost:8080/route/createRoute' \
@@ -933,19 +1083,26 @@ curl -X POST 'http://localhost:8080/route/createRoute' \
     "routeName": "test-route",
     "path": "/api/test",
     "serviceId": "service-001"
-  }'
 ```
+
+`}'`
 
 **HTTP请求示例**
 
+```
+POST /route/createRoute HTTP/1.1 Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token>
+```
+
+`{`
+
 ```json
-Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token> {
   "gwInstanceId": "instance-001",
   "routeName": "test-route",
   "path": "/api/test",
   "serviceId": "service-001"
-}
 ```
+
+`}`
 
 **最佳实践**
 
@@ -956,9 +1113,9 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 3. .** **分页查询**
 列表接口使用分页参数避免数据量过大。 通过 `total` 字段获取总记录数。 通过 `records` 字段获取当前页数据。
 4. .** **实例区分**
-智能体工厂 OpenTrek 操作前确认 `gwInstanceId` 对应的网关类型。 API网关和AI网关部分接口共用路径但行为不同。 通过 `/gatewayInstance/getInstance` 查询实例详情确认类型。
+调用专有云API 操作前确认 `gwInstanceId` 对应的网关类型。 API网关和AI网关部分接口共用路径但行为不同。 通过 `/gatewayInstance/getInstance` 查询实例详情确认类型。
 
-#### API 调用-集群管理
+#### 3.2.1 API 调用-集群管理
 
 **概述**
 
@@ -993,7 +1150,7 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 | k8sClusterName | String | 是 | 集群名称，长度为2-128字符，以英文字母开头。 |
 | k8sClusterType | String | 否 | 集群类型： self-built：自建K8s container-service：容器服务K8s |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | configContent | String | 条件必填 | KubeConfig配置内容。 说明自建集群时必填。 |
 |---|---|---|---|
@@ -1005,9 +1162,9 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 |---|---|---|---|
 | csClusterId | String | 条件必填 | 容器服务集群ID。 说明 container- service 类型时必填。 |
 
-|  |  |  | container- |  |
+|   |   |   | container- |   |
 |---|---|---|---|---|
-|  |  | service |  |  |
+|   |   | service |   |   |
 
 **查询集群列表**
 
@@ -1029,7 +1186,7 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 |---|---|---|---|
 | current | Integer | 是 | 当前页码，从1开始。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | size | Integer | 是 | 每页条数。 |
 |---|---|---|---|
@@ -1067,12 +1224,14 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 UpdateK8sClusterRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | clusterCode | String | 是 | 集群编码。 |
 | k8sClusterAttribute | String | 是 | 集群扩展属性（JSON字符串）。 |
 
-| AI Gateway 开发指南·通过P 调用专有云API | OP网关 |  | 智能体工厂 OpenTre |
+| AI Gateway 开发指南·通过P 调用专有云API | OP网关 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 **取消导入集群**
@@ -1115,7 +1274,7 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 |---|---|---|---|
 | clusterCode | String | 是 | 集群编码。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 **查询集群名称**
 
@@ -1130,6 +1289,8 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 | URL | /k8s/getK8sClusterName |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 GetK8sClusterNameRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -1163,18 +1324,21 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 importcomalibabafastjsonJSON;
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
-|  | import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.HashMap; import java.util.Map; public class ClusterApiDemo { // ========== 环境配置（根据实际环境修改） ========== private static final boolean IS SELF HOSTED = true; _ _ private static final String SELF HOSTED ENDPOINT = "127.0.0.1:8080"; _ _ private static final String ENTERPRISE ENDPOINT = "csb.cn-****.aliyuncs.com"; _ private static final String ACCESS KEY ID = "your-access-key-id"; _ _ private static final String ACCESS KEY SECRET = "your-access-key-secret"; _ _ private static final String ORGANIZATION ID = "your-org-id"; _ public static void main(String[] args) throws Exception { IAcsClient client = createClient(); // ========== 导入自建K8s集群 ========== String clusterCode = importSelfBuiltCluster(client); // ========== 导入容器服务K8s集群 ========== // String csClusterCode = importContainerServiceCluster(client); // ========== 测试集群连接 ========== checkConnect(client, clusterCode); // ========== 查询集群列表 ========== listClusters(client); // ========== 查询全部集群 ========== getClusterList(client); // ========== 查询集群名称 ========== getK8sClusterName(client, clusterCode); // ========== 取消导入集群 ========== // cancelImportCluster(client, clusterCode); } private static IAcsClient createClient() { if (IS SELF HOSTED) { _ _ DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-"); return new DefaultAcsClient(profile); } else { DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ACCESS KEY ID, AC _ _ CESS KEY SECRET); _ _ return new DefaultAcsClient(profile); } |  |
+|   | import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.HashMap; import java.util.Map; public class ClusterApiDemo { // ========== 环境配置（根据实际环境修改） ========== private static final boolean IS SELF HOSTED = true; _ _ private static final String SELF HOSTED ENDPOINT = "127.0.0.1:8080"; _ _ private static final String ENTERPRISE ENDPOINT = "csb.cn-****.aliyuncs.com"; _ private static final String ACCESS KEY ID = "your-access-key-id"; _ _ private static final String ACCESS KEY SECRET = "your-access-key-secret"; _ _ private static final String ORGANIZATION ID = "your-org-id"; _ public static void main(String[] args) throws Exception { IAcsClient client = createClient(); // ========== 导入自建K8s集群 ========== String clusterCode = importSelfBuiltCluster(client); // ========== 导入容器服务K8s集群 ========== // String csClusterCode = importContainerServiceCluster(client); // ========== 测试集群连接 ========== checkConnect(client, clusterCode); // ========== 查询集群列表 ========== listClusters(client); // ========== 查询全部集群 ========== getClusterList(client); // ========== 查询集群名称 ========== getK8sClusterName(client, clusterCode); // ========== 取消导入集群 ========== // cancelImportCluster(client, clusterCode); } private static IAcsClient createClient() { if (IS SELF HOSTED) { _ _ DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-"); return new DefaultAcsClient(profile); } else { DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ACCESS KEY ID, AC _ _ CESS KEY SECRET); _ _ return new DefaultAcsClient(profile); } |   |
 |---|---|---|
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```java
-    }
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -1182,8 +1346,11 @@ importcomalibabafastjsonJSON;
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -1193,12 +1360,15 @@ importcomalibabafastjsonJSON;
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 导入自建`Kubernetes`集群（基于 `ImportK8sClusterRequest`）
-`*/`
+`*` 导入自建`Kubernetes`集群（基于 `ImportK8sClusterRequest`） `*/`
 
 ```java
     private static String importSelfBuiltCluster(IAcsClient client) throws Exception {
@@ -1220,19 +1390,21 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("importSelfBuiltCluster failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 导入容器服务`Kubernetes`集群（基于 `ImportK8sClusterRequest`）
-`*/`
+`*` 导入容器服务`Kubernetes`集群（基于 `ImportK8sClusterRequest`） `*/`
 
 ```
 privatestaticStringimportContainerServiceCluster(IAcsClientclient)throwsException{
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```java
     private static String importContainerServiceCluster(IAcsClient client) throws Exception {
@@ -1258,13 +1430,15 @@ Code);
             System.out.println("importContainerServiceCluster failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询集群列表（基于 `ListK8sClusterRequest`）
-`*/`
+`*` 查询集群列表（基于 `ListK8sClusterRequest`） `*/`
 
 ```java
     private static void listClusters(IAcsClient client) throws Exception {
@@ -1276,18 +1450,22 @@ result.getString("msg"));
 
 糊搜索）
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/k8s/listClusters");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listClusters: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询全部集群
-`*/`
+`*` 查询全部集群 `*/`
 
 ```java
     private static void getClusterList(IAcsClient client) throws Exception {
@@ -1298,15 +1476,13 @@ response.getHttpResponse().getHttpContentString());
 response.getHttpResponse().getHttpContentString());
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```
-    }
     /**
 ```
 
-* 测试集群连接（基于 `CheckK8sClusterConnectRequest`）
-`*/`
+`*` 测试集群连接（基于 `CheckK8sClusterConnectRequest`） `*/`
 
 ```java
     private static void checkConnect(IAcsClient client, String clusterCode) throws Exception {
@@ -1316,12 +1492,17 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("checkConnectCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询集群名称（基于 `GetK8sClusterNameRequest`） `*/`
 
 ```java
     private static void getK8sClusterName(IAcsClient client, String clusterCode) throws Excepti
@@ -1332,13 +1513,17 @@ on {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getK8sClusterName: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询实例关联集群信息（基于 `GetK8sClusterInfoRequest`）
-`*/`
+`*` 查询实例关联集群信息（基于 `GetK8sClusterInfoRequest`） `*/`
 
 ```java
     private static void getK8sClusterInfoByGwInstanceId(IAcsClient client, String gwInstanceId)
@@ -1352,19 +1537,22 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("getK8sClusterInfoByGwInstanceId: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 更新集群（基于 `UpdateK8sClusterRequest`） `*/`
 
 ```java
     private static void updateCluster(IAcsClient client, String clusterCode) throws Exception
-{
         Map<String, Object> request = new HashMap<>();
 ```
 
-智能体工厂 OpenTrek p `g,` j q p
+调用专有云API `p` `g,` `j` `q` `p`
 
 ```
 ();
@@ -1381,12 +1569,15 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("updateCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 取消导入集群（基于 `CancelImportK8sClusterRequest`）
-`*/`
+`*` 取消导入集群（基于 `CancelImportK8sClusterRequest`） `*/`
 
 ```java
     private static void cancelImportCluster(IAcsClient client, String clusterCode) throws Excep
@@ -1397,10 +1588,11 @@ tion {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("cancelImportCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **集群类型说明**
 
@@ -1418,9 +1610,9 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误. |
 
-智能体工厂 OpenTrek
+调用专有云API
 
-#### API 调用-实例管理
+#### 3.2.2 API 调用-实例管理
 
 **概述**
 
@@ -1457,7 +1649,7 @@ response.getHttpResponse().getHttpContentString());
 | namespace | String | 是 | Kubernetes命名空间。 |
 | brokerEngineType | String | 否 | 引擎类型： SCG HIGRESS SHARED SCG _ CLOUD NATIVE GATE _ _ WAY |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | deployMode | String | 否 | 部署模式：adp、edas、 tiangong、custom、k8s 等。 |
 |---|---|---|---|
@@ -1491,7 +1683,7 @@ response.getHttpResponse().getHttpContentString());
 | size | Integer | 是 | 每页条数。 |
 | name | String | 否 | 实例名称（模糊搜索）。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | gwInstanceId | String | 否 | 实例ID筛选。 |
 |---|---|---|---|
@@ -1531,10 +1723,12 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 GetInstanceInfoRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | gwInstanceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -1552,6 +1746,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /gatewayInstance/modifyInstance |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 ModifyInstanceRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -1577,7 +1773,7 @@ response.getHttpResponse().getHttpContentString());
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | gwInstanceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -1595,6 +1791,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /gatewayInstance/restartInstance |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 RestartGwInstanceRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -1614,13 +1812,15 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 StopInstanceRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 实例ID。 |
 
 **升级实例**
 
-智能体工厂 OpenTrek
+调用专有云API
 
 **接口说明**
 
@@ -1654,13 +1854,15 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 ModifyInstanceResourceRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 实例ID。 |
 | instanceClass | String | 否 | 实例规格。 |
 | instanceNumber | Integer | 否 | 实例节点数。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | specificationTemplate | Integer | 否 | 规格模板。 |
 |---|---|---|---|
@@ -1704,7 +1906,7 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
     private static final String ORGANIZATIONID = "your-org-id";
 ```
 
-智能体工厂 OpenTrek p g _ y g
+调用专有云API `p` `g` `_` `y` `g`
 
 ```
     public static void main(String[] args) throws Exception {
@@ -1733,11 +1935,15 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 
 `// ==========` 查询实例资源 `==========`
 
-```java
+```
         getResource(client, instanceId);
         // ========== 删除实例 ==========
         // deleteInstance(client, instanceId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -1746,11 +1952,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ACCESS_KEY_ID, AC
 CESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -1758,8 +1971,11 @@ CESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -1769,17 +1985,15 @@ CESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```
     /**
 ```
 
-* 创建实例（基于 `CreateGwInstanceRequest`）
-`*/`
+`*` 创建实例（基于 `CreateGwInstanceRequest`） `*/`
 
 ```java
     private static String createInstance(IAcsClient client) throws Exception {
@@ -1788,6 +2002,7 @@ CESS_KEY_SECRET);
         request.put("clusterCode", "cluster-code-xxx");                  // 【必填】集群编码
         request.put("namespace", "default");                             // 【必填】K8s命名空间
         request.put("brokerEngineType", "SCG");                          // 【可选】引擎类型：SCG/H
+IGRESS
         // request.put("deployMode", "adp");                                // 【可选】部署模式
         // request.put("instanceClass", "standard");                        // 【可选】实例规格
         // request.put("instanceNumber", "2");                              // 【可选】节点数
@@ -1804,13 +2019,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createInstance failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询实例列表（基于 `ListGwInstancesRequest`）
-`*/`
+`*` 查询实例列表（基于 `ListGwInstancesRequest`） `*/`
 
 ```java
     private static void listInstances(IAcsClient client) throws Exception {
@@ -1832,19 +2049,23 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("listInstances: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询实例详情（基于 `GetInstanceInfoRequest`） `*/`
 
 ```java
     private static void getInstanceInfo(IAcsClient client, String gwInstanceId) throws
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
-```
+```java
 Exception {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【必填】实例ID
@@ -1852,16 +2073,25 @@ Exception {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getInstanceInfo: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 修改实例名称（基于 `ModifyInstanceRequest`） `*/`
 
 ```java
     private static void modifyInstance(IAcsClient client, String gwInstanceId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【必填】实例ID
         request.put("instanceName", "modified-instance-name");           // 【必填】新实例名称
@@ -1869,13 +2099,17 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询实例资源（基于 `GetInstanceResourceRequest`）
-`*/`
+`*` 查询实例资源（基于 `GetInstanceResourceRequest`） `*/`
 
 ```java
     private static void getResource(IAcsClient client, String gwInstanceId) throws Exception {
@@ -1887,15 +2121,23 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("getResource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 修改实例资源（基于 `ModifyInstanceResourceRequest`） `*/`
 
 ```java
     private static void modifyResource(IAcsClient client, String gwInstanceId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【必填】实例ID
         request.put("instanceClass", "large");                           // 【可选】实例规格
@@ -1904,7 +2146,7 @@ response.getHttpResponse().getHttpContentString());
 commonRequestsetHttpContent(JSONObjecttoJSONBytes(request) "UTF-8"
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
 ```java
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), UTF-8,
@@ -1912,11 +2154,15 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("modifyResource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 重启实例（基于 `RestartGwInstanceRequest`） `*/`
 
 ```java
     private static void restartInstance(IAcsClient client, String gwInstanceId) throws
@@ -1927,12 +2173,17 @@ Exception {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("restartInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 停止实例（基于 `StopInstanceRequest`） `*/`
 
 ```java
     private static void stopInstance(IAcsClient client, String gwInstanceId) throws Exception {
@@ -1942,17 +2193,25 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("stopInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除实例（基于 `DeleteGwInstanceRequest`）
-`*/`
+`*` 删除实例（基于 `DeleteGwInstanceRequest`） `*/`
 
 ```java
     private static void deleteInstance(IAcsClient client, String gwInstanceId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【必填】实例ID
         CommonRequest commonRequest = createBaseRequest("/gatewayInstance/deleteInstance");
@@ -1961,11 +2220,9 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("deleteInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
 
-智能体工厂 OpenTrek
+调用专有云API
 
 **实例状态说明**
 
@@ -1997,41 +2254,45 @@ response.getHttpResponse().getHttpContentString());
 | 400 | 参数错误。 |
 | 403 | 权限不足。 |
 
-智能体工厂 OpenTrek
+调用专有云API
 
 | 500 | 服务器内部错误。 |
 |---|---|
 
-智能体工厂 OpenTrek
+## 4 API参考
 
-## API参考
+### 4.1 AI服务
 
-### AI服务
-
-#### batchDeletesServices
+#### 4.1.1 batchDeletesServices
 
 **API 接口概述**
 
 **中文名称：**批量删除服务
+**英文名称：** batchDeletesServices
 **功能概述：**服务管理 - 批量删除服务。
+
+```
+请求路径： /microservice/batchDeleteService
+```
+
 **请求方式：** `POST`
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|
-| gwInstanceId | string | body |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
-| serviceIds | string[] | body |  |  |  | ["service- |  |  |  |
-|  |  |  |  |  |  |  | ["service- |  |  |
-|  |  |  |  |  |  | 001", |  |  |  |
-|  |  |  |  |  |  |  |  | 服务ID |  |
-|  |  |  |  | 是 |  |  |  |  |  |
-|  |  |  |  |  |  | "service- |  |  |  |
-|  |  |  |  |  |  | 002"] |  |  |  |
+| gwInstanceId | string | body |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
+| serviceIds | string[] | body |   |   |   | ["service- |   |   |   |
+|   |   |   |   |   |   |   | ["service- |   |   |
+|   |   |   |   |   |   | 001", |   |   |   |
+|   |   |   |   |   |   |   |   | 服务ID |   |
+|   |   |   |   | 是 |   |   |   |   |   |
+|   |   |   |   |   |   | "service- |   |   |   |
+|   |   |   |   |   |   | 002"] |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -2044,8 +2305,6 @@ response.getHttpResponse().getHttpContentString());
 | data | object | - | 响应数据。 |
 | data.successIds | string[] | ["service-001"] | 成功删除的服务ID列表。 |
 
-智能体工厂 OpenTrek
-
 | data.failedIds | string[] | ["service-002"] | 删除失败的服务ID列表。 |
 |---|---|---|---|
 
@@ -2053,88 +2312,96 @@ response.getHttpResponse().getHttpContentString());
 
 **请求示例**
 
+```
+POST /microservice/batchDeleteService HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "serviceIds": []
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": {
         "successIds": [],
         "failedIds": []
-    }
-}
 ```
 
-#### createMicroservice
+`}` `}`
+
+#### 4.1.2 createMicroservice
 
 **API 接口概述**
 
 **中文名称：**创建服务
+**英文名称：** createMicroservice
 **功能概述：**服务管理 - 创建服务。
 **请求路径：** `/microservice/createService`
 **请求方式：** `POST`
 **区分说明**：此接口同时用于创建 AI服务和普通服务，通过参数区分：
 
-| serviceSourceType: 9 传其他类型值，支持： 1 ( |  |  |
+| serviceSourceType: 9 传其他类型值，支持： 1 ( |   |   |
 |---|---|---|
-|  | 1 | ( |
+|   | 1 | ( |
 
-名)
+创建**普通服务**：传其他类型值，支持： `1` (Nacos服务发现)、 `4` (K8s集群)、 `7` (固定地址)、 `8` (DNS域名)
 
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| gwInstanceId | string |  |  | body |  |  |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
+| gwInstanceId | string |   |   | body |   |   |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| description | string |  |  | body |  |  |  | 否 |  | 通义千问AI服务 |  | 服务描述，长度不超过200字符。 |  |
-| serviceType | integer |  |  | body |  |  |  | 否 |  | 1 |  | 服务类型。 |  |
-| name | string |  |  | body |  |  |  | 是 |  | qwen- service |  | 服务名称。AI服务命名规则：小写字母、数字、 点(.)和减号(-)， 长度不超过50， 不能以减号开头或结尾。 |  |
-| upstreamType | integer |  |  | body |  |  |  | 否 |  | 1 |  | 上游类型。 |  |
-| serviceSourceT ype | integer |  |  | body |  |  |  | 否 |  | 9 |  | 服务来源类型。AI服务传 9 ；普通服务可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)。 |  |
-| serviceName | string |  |  | body |  |  |  | 否 |  | qwen- service |  | 服务名称。 |  |
-| loadBalanceTy pe | integer |  |  | body |  |  |  | 否 |  | 1 |  | 负载均衡算法类型。 |  |
-| serviceStruct | object |  |  | body |  |  |  |  |  | {"provider": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | {"provider": |  |  |
-|  |  |  |  |  |  |  |  |  |  | "qwen","aiPro |  |  |  |
-|  |  | object |  |  | body |  |  |  |  |  |  | 服务配置结构。 |  |
-|  |  |  |  |  |  |  |  | 否 |  |  |  | 服 |  |
-|  |  |  |  |  |  |  |  |  |  | tocol":"opena |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | i"} |  |  |  |
-| isOpenHealthC heck | boolean |  |  | body |  |  |  | 否 |  | false |  | 是否开启健康检查。 |  |
-| healthCheckStr uct | object |  |  | body |  |  |  | 否 |  | {"type":1,"t |  | 健康检查配置。 |  |
-|  |  |  |  |  |  |  |  |  |  |  | {"type":1,"t |  |  |
-|  |  |  |  |  |  |  |  |  |  | imeout":5} |  |  |  |
+| description | string |   |   | body |   |   |   | 否 |   | 通义千问AI服务 |   | 服务描述，长度不超过200字符。 |   |
+| serviceType | integer |   |   | body |   |   |   | 否 |   | 1 |   | 服务类型。 |   |
+| name | string |   |   | body |   |   |   | 是 |   | qwen- service |   | 服务名称。AI服务命名规则：小写字母、数字、 点(.)和减号(-)， 长度不超过50， 不能以减号开头或结尾。 |   |
+| upstreamType | integer |   |   | body |   |   |   | 否 |   | 1 |   | 上游类型。 |   |
+| serviceSourceT ype | integer |   |   | body |   |   |   | 否 |   | 9 |   | 服务来源类型。AI服务传 9 ；普通服务可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)。 |   |
+| serviceName | string |   |   | body |   |   |   | 否 |   | qwen- service |   | 服务名称。 |   |
+| loadBalanceTy pe | integer |   |   | body |   |   |   | 否 |   | 1 |   | 负载均衡算法类型。 |   |
+| serviceStruct | object |   |   | body |   |   |   |   |   | {"provider": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | {"provider": |   |   |
+|   |   |   |   |   |   |   |   |   |   | "qwen","aiPro |   |   |   |
+|   |   | object |   |   | body |   |   |   |   |   |   | 服务配置结构。 |   |
+|   |   |   |   |   |   |   |   | 否 |   |   |   | 服 |   |
+|   |   |   |   |   |   |   |   |   |   | tocol":"opena |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | i"} |   |   |   |
+| isOpenHealthC heck | boolean |   |   | body |   |   |   | 否 |   | false |   | 是否开启健康检查。 |   |
+| healthCheckStr uct | object |   |   | body |   |   |   | 否 |   | {"type":1,"t |   | 健康检查配置。 |   |
+|   |   |   |   |   |   |   |   |   |   |   | {"type":1,"t |   |   |
+|   |   |   |   |   |   |   |   |   |   | imeout":5} |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | 通义千问AI服 |
+|   |   | 通义千问AI服 |
 |---|---|---|
-|  | 务 |  |
+|   | 务 |   |
 
-|  |  | qwen- |
+|   |   | qwen- |
 |---|---|---|
-|  | service |  |
+|   | service |   |
 
-|  |  | qwen- |
+|   |   | qwen- |
 |---|---|---|
-|  | service |  |
-
-智能体工厂 OpenTrek
+|   | service |   |
 
 | activeHealthCh eckStruct | object | body | 否 | {"enable":fa lse} | 主动健康检查配置。 |
 |---|---|---|---|---|---|
@@ -2143,13 +2410,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 | proxyServerNa me | string | body | 否 | proxy-001 | 代理服务器名称。 |
 
-|  |  | {"enable":fa | 主动 |
+|   |   | {"enable":fa | 主动 |
 |---|---|---|---|
-|  | lse} |  |  |
+|   | lse} |   |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **healthCheckStruct 对象结构**
 
@@ -2164,15 +2431,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | httpSuccesses | integer | body | 否 | 3 | HTTP成功次数阈值。 |
 | httpFailures | integer | body | 否 | 3 | HTTP失败次数阈值。 |
 
-|  |  | 200,301,302 |
+|   |   | 200,301,302 |
 |---|---|---|
 
 **activeHealthCheckStruct 对象结构**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | enable | boolean | body | 否 | false | 是否启用。 |
 |---|---|---|---|---|---|
@@ -2194,65 +2459,61 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| provider | string | body | 是 | qwen | AI提供商类型。 可选值： selfbuil d (自建)、 qwen ( 通义千问)、 deepsee k 、 openai 、 azure 、 gemini 、 bedrock 、 c laude 、 moo nshot (月之暗面)、 baichua n (百川)、 yi (零一万物)、 zhipuai (智谱)、 hunyuan (混元)、 stepfun (阶跃)、 spark ( 讯飞星火)、 doubao (豆包)、 minimax 、 vertex ( Vertex AI)。 |  |  |  |  |
+| provider | string | body | 是 | qwen | AI提供商类型。 可选值： selfbuil d (自建)、 qwen ( 通义千问)、 deepsee k 、 openai 、 azure 、 gemini 、 bedrock 、 c laude 、 moo nshot (月之暗面)、 baichua n (百川)、 yi (零一万物)、 zhipuai (智谱)、 hunyuan (混元)、 stepfun (阶跃)、 spark ( 讯飞星火)、 doubao (豆包)、 minimax 、 vertex ( Vertex AI)。 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | azure |  |  |  |
-|  |  |  |  |  |  |  | 、 、 |  |  |
-|  |  |  |  |  |  |  |  | c |  |
-|  |  |  |  |  |  |  | moo |  |  |
-| aiProtocol | string | body | 是 | openai | AI协议类型。可选值： openai ( OpenAI/V1标准协议)、 origina l (原始协议)。 |  |  |  |  |
+|   |   |   |   |   |   | azure |   |   |   |
+|   |   |   |   |   |   |   | 、 、 |   |   |
+|   |   |   |   |   |   |   |   | c |   |
+|   |   |   |   |   |   |   | moo |   |   |
+| aiProtocol | string | body | 是 | openai | AI协议类型。可选值： openai ( OpenAI/V1标准协议)、 origina l (原始协议)。 |   |   |   |   |
 
-|  | d |
+|   | d |
 |---|---|
 
-|  |  |  |  | k |  |  |
+|   |   |   |   | k |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | bedrock |  |  |
-|  |  |  |  | laude |  |  |
-|  |  |  |  | nshot |  |  |
+|   |   |   |   | bedrock |   |   |
+|   |   |   |   | laude |   |   |
+|   |   |   |   | nshot |   |   |
 
-|  | n |
+|   | n |
 |---|---|
 
-|  | l |
+|   | l |
 |---|---|
 
-智能体工厂 OpenTrek
-
-| baseUrl | string | body |  |  | 否 |  |  | https://api. |  |  |  | AI服务基础URL 地址。部分提供商有默认值，如 qwen 默认为 |  |  |  |
+| baseUrl | string | body |   |   | 否 |   |   | https://api. |   |   |   | AI服务基础URL 地址。部分提供商有默认值，如 qwen 默认为 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | https://api. |  |  |  | https:/ | /dash |  |
-|  |  |  |  |  |  |  |  | ope |  | nai.com |  | scope.aliyunc |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | s.com/compati |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | ble- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | mode/v1 |  |  |  |
-| apiKeyList | string[] | body |  |  | 否 |  |  | ['sk- xxx'] |  |  |  | API Key列表。支持配置多个 API Key 实现负载均衡和容灾。自建 LLM时可省略。 |  |  |  |
+|   |   |   |   |   |   |   |   |   | https://api. |   |   |   | https:/ | /dash |   |
+|   |   |   |   |   |   |   |   | ope |   | nai.com |   | scope.aliyunc |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | s.com/compati |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | ble- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | mode/v1 |   |   |   |
+| apiKeyList | string[] | body |   |   | 否 |   |   | ['sk- xxx'] |   |   |   | API Key列表。支持配置多个 API Key 实现负载均衡和容灾。自建 LLM时可省略。 |   |   |   |
 
 **当 serviceSourceType 为其他值（普通服务）时：**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|
-| nodes | object[] | body | 否 |  | [{"ip":"192. |  | 服务节点列表。 当 |  |
-|  |  |  |  |  |  | [{"ip":"192. | serviceSourceT ype=7( |  |
-|  |  |  |  |  | 168.1.1","por |  | ype=7( |  |
-|  |  |  |  |  |  |  | 固址)或 |  |
-|  |  |  |  |  | t":8080}] |  |  |  |
-| sourceGroup | string | body | 否 |  | DEFAULT GROU _ P |  | Nacos分组名。 当 serviceSourceT ype=1(NACOS) 时使用，默认值为 DEFAULT GROU _ P 。 |  |
-| sourceNamesp aceId | string | body | 否 |  | namespace- 001 |  | Nacos命名空间 ID。当 serviceSourceT ype=1(NACOS) 时使用。 |  |
+| nodes | object[] | body | 否 |   | [{"ip":"192. |   | 服务节点列表。 当 |   |
+|   |   |   |   |   |   | [{"ip":"192. | serviceSourceT ype=7( |   |
+|   |   |   |   |   | 168.1.1","por |   | ype=7( |   |
+|   |   |   |   |   |   |   | 固址)或 |   |
+|   |   |   |   |   | t":8080}] |   |   |   |
+| sourceGroup | string | body | 否 |   | DEFAULT GROU _ P |   | Nacos分组名。 当 serviceSourceT ype=1(NACOS) 时使用，默认值为 DEFAULT GROU _ P 。 |   |
+| sourceNamesp aceId | string | body | 否 |   | namespace- 001 |   | Nacos命名空间 ID。当 serviceSourceT ype=1(NACOS) 时使用。 |   |
 
-|  |  | DEFAULT GROU _ |  |
+|   |   | DEFAULT GROU _ |   |
 |---|---|---|---|
-|  | P |  |  |
+|   | P |   |   |
 
-|  |  | DEFAULT GROU _ |  |
+|   |   | DEFAULT GROU _ |   |
 |---|---|---|---|
-|  | P |  |  |
+|   | P |   |   |
 
-|  |  | namespace- |  |
+|   |   | namespace- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **nodes 对象结构**
 
@@ -2261,10 +2522,8 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | ip | string | body | 是 | 192.168.1.1 | 节点IP地址。 |
 | port | integer | body | 是 | 8080 | 节点端口。 |
 
-|  |  | 192.168.1.1 |
+|   |   | 192.168.1.1 |
 |---|---|---|
-
-智能体工厂 OpenTrek
 
 | weight | integer | body | 否 | 1 | 节点权重，用于负载均衡。默认值为 1。 |
 |---|---|---|---|---|---|
@@ -2273,9 +2532,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | vpcMappingIp | string | body | 否 | 10.0.0.1 | VPC映射IP。 |
 | vpcMappingPor t | integer | body | 否 | 8080 | VPC映射端口。 |
 
-|  |  | vpc-xxx- |
+|   |   | vpc-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 **返回数据**
 
@@ -2291,10 +2550,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /microservice/createService HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /microservice/createService HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "description": "description_value",
   "serviceType": 0,
@@ -2311,10 +2573,9 @@ POST /microservice/createService HTTP/1.1 Host: localhost:80 Content-Type: appli
       "sk-xxxxx"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "isOpenHealthCheck": true,
   "healthCheckStruct": {
     "type": 0,
@@ -2325,7 +2586,11 @@ POST /microservice/createService HTTP/1.1 Host: localhost:80 Content-Type: appli
     "unHealthInterval": 0,
     "httpSuccesses": 0,
     "httpFailures": 0
-  },
+```
+
+`},`
+
+```json
   "activeHealthCheckStruct": {
     "enable": true,
     "protocol": "protocol_value",
@@ -2336,33 +2601,44 @@ POST /microservice/createService HTTP/1.1 Host: localhost:80 Content-Type: appli
     "httpPath": "httpPath_value",
     "httpHost": "httpHost_value",
     "expectedStatuses": []
-  },
+```
+
+`},`
+
+```json
   "protocol": "protocol_value",
   "serviceId": "serviceId_value",
   "isDisasterRecovery": true,
   "proxyServerName": "proxyServerName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteService
+`}`
+
+#### 4.1.3 deleteService
 
 **API 接口概述**
 
 **中文名称：**删除服务
+**英文名称：** deleteService
 **功能概述：**服务管理 - 删除服务。
+**请求路径：** `/microservice/deleteService`
 **请求方式：** `POST`
 
 **请求参数**
@@ -2372,13 +2648,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | serviceId | string | body | 是 | service- 001 | 服务ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -2390,35 +2666,44 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | service-001 | 响应数据。 |
 
-**示例**
-
-智能体工厂 OpenTrek
-
 **请求示例**
 
+```
+POST /microservice/deleteService HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "serviceId": "serviceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getAllService
+`}`
+
+#### 4.1.4 getAllService
 
 **API 接口概述**
 
 **中文名称：**查询所有服务
+**英文名称：** getAllService
 **功能概述：**服务管理 - 查询所有服务列表。
 
 ```
@@ -2435,16 +2720,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-| 智能体工厂 OpenTrek |  | AI | Gateway 开发指南·API参考 |
+| 智能体工厂 OpenTrek |   | AI | Gateway 开发指南·API参考 |
 |---|---|---|---|
 
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
@@ -2457,56 +2742,69 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.serviceName | string | my-service | 服务名称。 |
 | data.protocol | string | HTTP | 协议类型。 |
 
-|  |  | ServiceInfoResponse[ |  |
+|   |   | ServiceInfoResponse[ |   |
 |---|---|---|---|
-| a | ] |  |  |
+| a | ] |   |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /microservice/listAllServices HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /microservice/listAllServices HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": [
-        {
+```
+
+`{`
+
+```json
             "serviceId": "service-001",
             "serviceName": "demo-service",
             "protocol": "HTTP"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "serviceId": "service-002",
             "serviceName": "another-service",
             "protocol": "gRPC"
-        }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-#### getService
+#### 4.1.5 getService
 
 **API 接口概述**
 
 **中文名称：**查询服务详情
+**英文名称：** getService
 **功能概述：**服务管理 - 根据ID查询服务。
+**请求路径：** `/microservice/getService`
 **请求方式：** `POST`
 **区分说明**：此接口同时支持查询 AI服务和普通服务的详情，根据 serviceId 查询，返回数据中 `sourceType=9` 表
 示 AI服务。
@@ -2518,21 +2816,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | serviceId | string | body | 是 | service- 001 | 服务ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -2554,36 +2850,32 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.loadBalanceType | integer | 1 | 负载均衡算法类型。 |
 | data.loadBalanceTypeNa me | string | 轮询 | loadBalanceTypeName字段。 |
 
-智能体工厂 OpenTrek
-
-| data.routeList |  | GetServiceInfoByIdRe sponse$RouteInfo[] |  |  |  | [] |  | routeList字段。 |
+| data.routeList |   | GetServiceInfoByIdRe sponse$RouteInfo[] |   |   |   | [] |   | routeList字段。 |
 |---|---|---|---|---|---|---|---|---|
-| data.routeList.routeId |  | string |  |  |  | route-001 |  | 路由ID。 |
-| data.routeList.routeNam e |  | string |  |  |  | my-route |  | 路由名称。 |
-| data.routeList.routePath |  | string[] |  |  |  | ["/api/v1/*"] |  | 路由路径。 |
-| data.sourceType |  | integer |  |  |  | 9 |  | 来源类型。 9 表示AI服务；其他值表示普通服务： 1 (Nacos)、 4 (K 8s集群)、 7 (固定地址)、 8 (DNS域名)。 |
-| data.serviceSourceType |  | integer |  |  |  | 9 |  | 服务来源类型。同 sourceType。 |
-| data.serviceAddress |  | string |  |  |  | qwen- service.example.com |  | 服务地址。 |
-| data.port |  | integer |  |  |  | 8080 |  | 端口。 |
-| data.serviceStruct |  | object |  |  |  | {"provider":"qwen"," |  | 服务配置结构。 |
-|  |  |  |  |  |  |  | {"provider":"qwen"," |  |
-|  |  |  | o | bject |  | aiProtocol":"openai"} |  |  |
-| data.isOpenHealthCheck |  | boolean |  |  |  | false |  | 是否开启健康检查。 |
-| data.healthCheckStruct |  | object |  |  |  | {} |  | 健康检查配置。 |
-| data.healthCheckStruct.t ype |  | integer |  |  |  | 1 |  | 类型。 |
-| data.healthCheckStruct. healthPath |  | string |  |  |  | /health |  | 健康检查路径。 |
-| data.healthCheckStruct. httpStatuses |  | string |  |  |  | 200,301,302 |  | HTTP状态码。 |
-| data.healthCheckStruct.t imeout |  | integer |  |  |  | 5 |  | 超时时间（秒）。 |
+| data.routeList.routeId |   | string |   |   |   | route-001 |   | 路由ID。 |
+| data.routeList.routeNam e |   | string |   |   |   | my-route |   | 路由名称。 |
+| data.routeList.routePath |   | string[] |   |   |   | ["/api/v1/*"] |   | 路由路径。 |
+| data.sourceType |   | integer |   |   |   | 9 |   | 来源类型。 9 表示AI服务；其他值表示普通服务： 1 (Nacos)、 4 (K 8s集群)、 7 (固定地址)、 8 (DNS域名)。 |
+| data.serviceSourceType |   | integer |   |   |   | 9 |   | 服务来源类型。同 sourceType。 |
+| data.serviceAddress |   | string |   |   |   | qwen- service.example.com |   | 服务地址。 |
+| data.port |   | integer |   |   |   | 8080 |   | 端口。 |
+| data.serviceStruct |   | object |   |   |   | {"provider":"qwen"," |   | 服务配置结构。 |
+|   |   |   |   |   |   |   | {"provider":"qwen"," |   |
+|   |   |   | o | bject |   | aiProtocol":"openai"} |   |   |
+| data.isOpenHealthCheck |   | boolean |   |   |   | false |   | 是否开启健康检查。 |
+| data.healthCheckStruct |   | object |   |   |   | {} |   | 健康检查配置。 |
+| data.healthCheckStruct.t ype |   | integer |   |   |   | 1 |   | 类型。 |
+| data.healthCheckStruct. healthPath |   | string |   |   |   | /health |   | 健康检查路径。 |
+| data.healthCheckStruct. httpStatuses |   | string |   |   |   | 200,301,302 |   | HTTP状态码。 |
+| data.healthCheckStruct.t imeout |   | integer |   |   |   | 5 |   | 超时时间（秒）。 |
 
-|  |  | GetServiceInfoByIdRe |  |
+|   |   | GetServiceInfoByIdRe |   |
 |---|---|---|---|
-| a.routeList | sponse$RouteInfo[] |  |  |
+| a.routeList | sponse$RouteInfo[] |   |   |
 
-|  |  | qwen- | 服务 |
+|   |   | qwen- | 服务 |
 |---|---|---|---|
-|  | service.example.com |  |  |
-
-智能体工厂 OpenTrek
+|   | service.example.com |   |   |
 
 | data.healthCheckStruct. healthInterval | integer | 10 | 健康检查间隔。 |
 |---|---|---|---|
@@ -2603,8 +2895,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.activeHealthCheckS tatusStruct | object | {} | activeHealthCheckStatus Struct字段。 |
 | data.activeHealthCheckS tatusStruct.healthStatus | string | healthy | healthStatus字段。 |
 
-智能体工厂 OpenTrek
-
 | data.activeHealthCheckS tatusStruct.unhealthyEn dpoints | string[] | [] | unhealthyEndpoints字段。 |
 |---|---|---|---|
 | data.zones | string[] | ["cn-hangzhou-a"] | zones字段。 |
@@ -2622,20 +2912,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe.serviceInfos.name | string | qwen-service | 名称。 |
 | data.strategyConfigs.sco pe.serviceInfos.id | string | service-001 | ID标识。 |
 
-|  |  | StrategyConfigRelati | [ |  |
+|   |   | StrategyConfigRelati | [ |   |
 |---|---|---|---|---|
-|  |  |  |  | [ |
-| a.strategyConfigs | on[] |  |  |  |
+|   |   |   |   | [ |
+| a.strategyConfigs | on[] |   |   |   |
 
-|  |  | StrategyConfigScopeD | [] |
+|   |   | StrategyConfigScopeD | [] |
 |---|---|---|---|
-| routeInfos | TO$ScopeTargetDTO[] |  |  |
+| routeInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD |  |
+|   |   | StrategyConfigScopeD |   |
 |---|---|---|---|
-| a.strategyConfigs.sco serviceInfos | TO$ScopeTargetDTO[] |  |  |
-
-智能体工厂 OpenTrek
+| a.strategyConfigs.sco serviceInfos | TO$ScopeTargetDTO[] |   |   |
 
 | data.strategyConfigs.sco pe.appInfos | StrategyConfigScopeD TO$ScopeTargetDTO[] | [] | appInfos字段。 |
 |---|---|---|---|
@@ -2652,35 +2940,44 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.upd ateTime | string | 2024-01-01 12:00:00 | 更新时间。 |
 | data.proxyServerName | string | proxy-001 | 代理服务器名称。 |
 
-|  |  | StrategyConfigScopeD | [] |
+|   |   | StrategyConfigScopeD | [] |
 |---|---|---|---|
-| appInfos | TO$ScopeTargetDTO[] |  |  |
+| appInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | [] |
+|   |   | StrategyConfigScopeD | [] |
 |---|---|---|---|
-| domainInfos | TO$ScopeTargetDTO[] |  |  |
+| domainInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | [] |
+|   |   | StrategyConfigScopeD | [] |
 |---|---|---|---|
-| mcpServerInfos | TO$ScopeTargetDTO[] |  |  |
+| mcpServerInfos | TO$ScopeTargetDTO[] |   |   |
 
 **示例**
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /microservice/getService HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "serviceId": "serviceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -2703,7 +3000,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "routeId": "routeId_value",
             "routeName": "routeName_value",
             "routePath": []
-        },
+```
+
+`},`
+
+```json
         "sourceType": 0,
         "serviceSourceType": 0,
         "serviceAddress": "serviceAddress_value",
@@ -2719,12 +3020,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "unHealthInterval": 0,
             "httpSuccesses": 0,
             "httpFailures": 0
-        },
+```
+
+`},`
+
+```json
         "activeHealthCheckStruct": {
 "enable":true,
 ```
-
-智能体工厂 OpenTrek
 
 ```json
             enable: true,
@@ -2736,11 +3039,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "httpPath": "httpPath_value",
             "httpHost": "httpHost_value",
             "expectedStatuses": []
-        },
+```
+
+`},`
+
+```json
         "activeHealthCheckStatusStruct": {
             "healthStatus": "healthStatus_value",
             "unhealthyEndpoints": []
-        },
+```
+
+`},`
+
+```json
         "zones": [],
         "strategyConfigs": {
             "strategyConfigId": "strategyConfigId_value",
@@ -2752,106 +3063,131 @@ HTTP/1.1 200 OK Content-Type: application/json {
                 "routeInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "serviceInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "appInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "domainInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "mcpServerInfos": {
                     "name": {},
                     "id": {}
-                },
-                "scopes": []
-            },
-            "createTime": "createTime_value",
-            "updateTime": "updateTime_value"
-        },
-        "proxyServerName": "proxyServerName_value"
-    }
-}
 ```
 
-#### listServices
+`},`
+
+```json
+                "scopes": []
+```
+
+`},`
+
+```json
+            "createTime": "createTime_value",
+            "updateTime": "updateTime_value"
+```
+
+`},`
+
+```json
+        "proxyServerName": "proxyServerName_value"
+```
+
+`}` `}`
+
+#### 4.1.6 listServices
 
 **API 接口概述**
 
 **中文名称：**查询服务列表
-智能体工厂 OpenTrek
+**英文名称：** listServices
 **功能概述：**服务管理 - 查询服务列表。
+**请求路径：** `/microservice/listServices`
 **请求方式：** `POST`
 **区分说明**：此接口同时用于查询 AI服务和普通服务，通过参数区分：
 查询**AI****服务**：传 `sourceTypeList: ["ai"]` 或 `sourceTypeList: ["9"]` 查询**普通服务**：不传此参数或传其他类型值
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |   |   |
 |---|---|---|---|---|---|---|---|
-| size | integer | body | 是 | 10 | 每页大小。 |  |  |
-| current | integer | body | 是 | 1 | 当前页码。 |  |  |
-| gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |  |  |
-| serviceName | string | body | 否 | qwen- service | 服务名称。 |  |  |
-| serviceId | string | body | 否 | service- 001 | 服务ID。 |  |  |
-| sourceName | string | body | 否 | qwen- provider | 来源名称。 |  |  |
-| isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |  |  |
-| sourceTypeList | string[] | body | 否 | ["ai"] | 服务来源类型列表。AI服务传 ["ai"] 或 ["9"] ；普通服务可选值： nacos ( Nacos服务发现)、 kuberne tes (K8s集群)、 static (固定地址)、 dns (D NS域名)。 |  |  |
-|  |  |  |  |  |  | kuberne |  |
-| provider | string | body | 否 | qwen | provider参数。 |  |  |
+| size | integer | body | 是 | 10 | 每页大小。 |   |   |
+| current | integer | body | 是 | 1 | 当前页码。 |   |   |
+| gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |   |   |
+| serviceName | string | body | 否 | qwen- service | 服务名称。 |   |   |
+| serviceId | string | body | 否 | service- 001 | 服务ID。 |   |   |
+| sourceName | string | body | 否 | qwen- provider | 来源名称。 |   |   |
+| isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |   |   |
+| sourceTypeList | string[] | body | 否 | ["ai"] | 服务来源类型列表。AI服务传 ["ai"] 或 ["9"] ；普通服务可选值： nacos ( Nacos服务发现)、 kuberne tes (K8s集群)、 static (固定地址)、 dns (D NS域名)。 |   |   |
+|   |   |   |   |   |   | kuberne |   |
+| provider | string | body | 否 | qwen | provider参数。 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | qwen- |
+|   |   | qwen- |
 |---|---|---|
-|  | service |  |
+|   | service |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | qwen- |  |
+|   |   | qwen- |   |
 |---|---|---|---|
-|  | provider |  |  |
+|   | provider |   |   |
 
-|  | tes |
+|   | tes |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | sourceTypeLab elValue | string | body | 否 | ai | sourceTypeLab elValue参数。 |
 |---|---|---|---|---|---|
 
 **返回数据**
 
-| 参数名称 |  | 类型 |  | 示例 | 说明 |
+| 参数名称 |   | 类型 |   | 示例 | 说明 |
 |---|---|---|---|---|---|
-| requestId |  | string |  | uuid-xxx-xxx | 请求ID。 |
-| code |  | integer |  | 200 | 响应码。 |
-| msg |  | string |  | success | 响应消息。 |
-| message |  | string |  | success | 响应消息。 |
-| data |  | object |  | {} | 响应数据。 |
-| data.size |  | integer |  | 10 | 每页大小。 |
-| data.total |  | integer |  | 100 | 总数。 |
-| data.current |  | integer |  | 1 | 当前页码。 |
-| data.records |  | GatewayServiceListBy PageResponseRecord[] |  | [] | 记录列表。 |
-|  |  |  | GatewayServiceListBy |  |  |
-|  | a.records | PageResponseRecord[] |  |  |  |
-| data.records.serviceId |  | string |  | service-001 | 服务ID。 |
-| data.records.name |  | string |  | qwen-service | 名称。 |
-| data.records.upstreamTy pe |  | integer |  | 1 | 上游类型。 |
-| data.records.serviceType |  | integer |  | 1 | 服务类型。 |
-| data.records.upstreamTy peName |  | string |  | AI服务 | upstreamTypeName字段。 |
-| data.records.serviceProt ocol |  | string |  | HTTP | serviceProtocol字段。 |
-
-智能体工厂 OpenTrek
+| requestId |   | string |   | uuid-xxx-xxx | 请求ID。 |
+| code |   | integer |   | 200 | 响应码。 |
+| msg |   | string |   | success | 响应消息。 |
+| message |   | string |   | success | 响应消息。 |
+| data |   | object |   | {} | 响应数据。 |
+| data.size |   | integer |   | 10 | 每页大小。 |
+| data.total |   | integer |   | 100 | 总数。 |
+| data.current |   | integer |   | 1 | 当前页码。 |
+| data.records |   | GatewayServiceListBy PageResponseRecord[] |   | [] | 记录列表。 |
+|   |   |   | GatewayServiceListBy |   |   |
+|   | a.records | PageResponseRecord[] |   |   |   |
+| data.records.serviceId |   | string |   | service-001 | 服务ID。 |
+| data.records.name |   | string |   | qwen-service | 名称。 |
+| data.records.upstreamTy pe |   | integer |   | 1 | 上游类型。 |
+| data.records.serviceType |   | integer |   | 1 | 服务类型。 |
+| data.records.upstreamTy peName |   | string |   | AI服务 | upstreamTypeName字段。 |
+| data.records.serviceProt ocol |   | string |   | HTTP | serviceProtocol字段。 |
 
 | data.records.sourceId | string | source-001 | 来源ID。 |
 |---|---|---|---|
@@ -2872,19 +3208,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.nodes.vpcM appingPort | integer | 8080 | vpcMappingPort字段。 |
 | data.records.proxyServe rName | string | proxy-001 | 代理服务器名称。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 12:00:00 |  |
+|   | 12:00:00 |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 12:00:00 |  |
+|   | 12:00:00 |   |
 
-|  |  | FixedNodesDTO$Node[] |
+|   |   | FixedNodesDTO$Node[] |
 |---|---|---|
-| a.records.nodes |  |  |
-
-智能体工厂 OpenTrek
+| a.records.nodes |   |   |
 
 | data.records.serviceAddr ess | string | qwen- service.example.com | 服务地址。 |
 |---|---|---|---|
@@ -2903,11 +3237,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.activeHealt hCheckStatusStruct.unhe althyEndpoints | string[] | [] | unhealthyEndpoints字段。 |
 | data.records.aiServiceCo nfig | object | {} | aiServiceConfig字段。 |
 
-|  |  | qwen- | 服务 |
+|   |   | qwen- | 服务 |
 |---|---|---|---|
-|  | service.example.com |  |  |
-
-智能体工厂 OpenTrek
+|   | service.example.com |   |   |
 
 | data.records.aiServiceCo nfig.provider | string | qwen | provider字段。 |
 |---|---|---|---|
@@ -2915,16 +3247,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.aiServiceCo nfig.baseUrl | string | https://dashscope.al iyuncs.com | baseUrl字段。 |
 | data.records.aiServiceCo nfig.apiKeyList | string[] | ["sk-xxx"] | apiKeyList字段。 |
 
-|  | https://dashscope.al | baseUrl字 |
+|   | https://dashscope.al | baseUrl字 |
 |---|---|---|
-| iyuncs.com |  |  |
+| iyuncs.com |   |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /microservice/listServices HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "size": 0,
   "current": 0,
   "gwInstanceId": "gwInstanceId_value",
@@ -2941,13 +3278,19 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
 ```json
   "provider": "provider_value",
   "sourceTypeLabelValue": "sourceTypeLabelValue_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -2961,8 +3304,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "upstreamType": 0,
 "serviceType":0
 ```
-
-智能体工厂 OpenTrek
 
 ```json
             serviceType: 0,
@@ -2984,7 +3325,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
                 "vpcId": "vpcId_value",
                 "vpcMappingIp": "vpcMappingIp_value",
                 "vpcMappingPort": 0
-            },
+```
+
+`},`
+
+```json
             "proxyServerName": "proxyServerName_value",
             "serviceAddress": "serviceAddress_value",
             "activeHealthCheckStruct": {
@@ -2997,29 +3342,40 @@ HTTP/1.1 200 OK Content-Type: application/json {
                 "httpPath": "httpPath_value",
                 "httpHost": "httpHost_value",
                 "expectedStatuses": []
-            },
+```
+
+`},`
+
+```json
             "activeHealthCheckStatusStruct": {
                 "healthStatus": "healthStatus_value",
                 "unhealthyEndpoints": []
-            },
+```
+
+`},`
+
+```json
             "aiServiceConfig": {
                 "provider": "provider_value",
                 "aiProtocol": "aiProtocol_value",
                 "baseUrl": "baseUrl_value",
                 "apiKeyList": []
-            }
-        }
-    }
-}
 ```
 
-#### listServicesBySource
+`}` `}` `}` `}`
+
+#### 4.1.7 listServicesBySource
 
 **API 接口概述**
 
 **中文名称：**按来源查询服务
+**英文名称：** listServicesBySource
 **功能概述：**服务管理 - 根据来源查询服务。
-智能体工厂 OpenTrek
+
+```
+请求路径： /microservice/listServicesBySource
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -3033,25 +3389,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | sourceType | integer | body | 是 | 1 | 来源类型。可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)、 9 (AI 服务)。 |
 | keyword | string | body | 否 | my- service | 服务名称关键字。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | namespace- |  |
+|   |   | namespace- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | DEFAULT GROU _ |  |
+|   |   | DEFAULT GROU _ |   |
 |---|---|---|---|
-|  | P |  |  |
+|   | P |   |   |
 
-|  |  | my- |
+|   |   | my- |
 |---|---|---|
-|  | service |  |
+|   | service |   |
 
 **返回数据**
 
@@ -3063,96 +3419,103 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | object | - | 响应数据。 |
 
-智能体工厂 OpenTrek
-
 | data.importServiceList | string[] | ["service-001", "service-002"] | 已导入的服务列表。 |
 |---|---|---|---|
 | data.notImportServiceLis t | string[] | ["service-003"] | 未导入的服务列表。 |
 
-|  | ["service-001", |  |
+|   | ["service-001", |   |
 |---|---|---|
-| "service-002"] |  |  |
+| "service-002"] |   |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /microservice/listServicesBySource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /microservice/listServicesBySource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "sourceId": "sourceId_value",
   "sourceNamespaceId": "sourceNamespaceId_value",
   "groupName": "groupName_value",
   "sourceType": 0,
   "keyword": "keyword_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": {
         "importServiceList": [],
         "notImportServiceList": []
-    }
-}
 ```
 
-#### modifyMicroservice
+`}` `}`
+
+#### 4.1.8 modifyMicroservice
 
 **API 接口概述**
 
 **中文名称：**修改服务
+**英文名称：** modifyMicroservice
 **功能概述：**服务管理 - 修改服务。
 **请求路径：** `/microservice/modifyService`
 **请求方式：** `POST`
 **区分说明**：此接口同时用于修改 AI服务和普通服务，通过参数区分（同 createMicroservice）。
-智能体工厂 OpenTrek
 
 **请求参数**
 
-| 参数名称 | 类型 |  | 位置 |  |  |  | 是否必选 |  |  |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 |   | 位置 |   |   |   | 是否必选 |   |   |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| serviceId | string |  | body |  |  |  | 是 |  |  |  | service- 001 |  | 服务ID，修改时必填。 |  |
-| gwInstanceId | string |  | body |  |  |  | 是 |  |  |  | higress- 001 |  | 网关实例ID。 |  |
-| name | string |  | body |  |  |  | 是 |  |  |  | qwen- |  | 名称。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | qwen- |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | service- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | updated |  |  |  |
-| serviceName | string |  | body |  |  |  | 否 |  |  |  | qwen- service |  | 服务名称。 |  |
-| description | string |  | body |  |  |  | 否 |  |  |  | 更新后的通义千问AI服务 |  | 描述信息。 |  |
-| upstreamType | integer |  | body |  |  |  | 否 |  |  |  | 1 |  | 上游类型。 |  |
-| serviceSourceT ype | integer |  | body |  |  |  | 否 |  |  |  | 9 |  | 服务来源类型。AI服务传 9 ；普通服务可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)。 |  |
-| serviceType | integer |  | body |  |  |  | 否 |  |  |  | 1 |  | 服务类型。 |  |
-| loadBalanceTy pe | integer |  | body |  |  |  | 否 |  |  |  | 1 |  | 负载均衡算法类型。 |  |
-| serviceStruct | object |  |  |  |  |  |  |  |  |  | {"provider": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | {"provider": |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | "qwen","aiPro |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | tocol":"opena |  |  |  |
-|  |  |  | body |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | body |  |  | 否 |  |  |  | i"} |  |  |  |
+| serviceId | string |   | body |   |   |   | 是 |   |   |   | service- 001 |   | 服务ID，修改时必填。 |   |
+| gwInstanceId | string |   | body |   |   |   | 是 |   |   |   | higress- 001 |   | 网关实例ID。 |   |
+| name | string |   | body |   |   |   | 是 |   |   |   | qwen- |   | 名称。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | qwen- |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | service- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | updated |   |   |   |
+| serviceName | string |   | body |   |   |   | 否 |   |   |   | qwen- service |   | 服务名称。 |   |
+| description | string |   | body |   |   |   | 否 |   |   |   | 更新后的通义千问AI服务 |   | 描述信息。 |   |
+| upstreamType | integer |   | body |   |   |   | 否 |   |   |   | 1 |   | 上游类型。 |   |
+| serviceSourceT ype | integer |   | body |   |   |   | 否 |   |   |   | 9 |   | 服务来源类型。AI服务传 9 ；普通服务可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)。 |   |
+| serviceType | integer |   | body |   |   |   | 否 |   |   |   | 1 |   | 服务类型。 |   |
+| loadBalanceTy pe | integer |   | body |   |   |   | 否 |   |   |   | 1 |   | 负载均衡算法类型。 |   |
+| serviceStruct | object |   |   |   |   |   |   |   |   |   | {"provider": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | {"provider": |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | "qwen","aiPro |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | tocol":"opena |   |   |   |
+|   |   |   | body |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | body |   |   | 否 |   |   |   | i"} |   |   |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | qwen- |
+|   |   | qwen- |
 |---|---|---|
-|  | service |  |
+|   | service |   |
 
-|  |  | 更新后的通义 | 描述信 |
+|   |   | 更新后的通义 | 描述信 |
 |---|---|---|---|
-|  | 千问AI服务 |  |  |
-
-智能体工厂 OpenTrek
+|   | 千问AI服务 |   |   |
 
 | isOpenHealthC heck | boolean | body | 否 | false | 是否开启健康检查。 |
 |---|---|---|---|---|---|
@@ -3165,9 +3528,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | {"type":1,"t | 健康检查配 |
 |---|---|
 
-|  |  | {"enable":fa | 主动 |
+|   |   | {"enable":fa | 主动 |
 |---|---|---|---|
-|  | lse} |  |  |
+|   | lse} |   |   |
 
 **healthCheckStruct 对象结构**
 
@@ -3182,12 +3545,10 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | httpSuccesses | integer | body | 否 | 3 | HTTP成功次数阈值。 |
 | httpFailures | integer | body | 否 | 3 | HTTP失败次数阈值。 |
 
-|  |  | 200,301,302 |
+|   |   | 200,301,302 |
 |---|---|---|
 
 **activeHealthCheckStruct 对象结构**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3210,65 +3571,61 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| provider | string | body | 是 | qwen | AI提供商类型。 可选值： selfbuil d (自建)、 qwen ( 通义千问)、 deepsee k 、 openai 、 azure 、 gemini 、 bedrock 、 c laude 、 moo nshot (月之暗面)、 baichua n (百川)、 yi (零一万物)、 zhipuai (智谱)、 hunyuan (混元)、 stepfun (阶跃)、 spark ( 讯飞星火)、 doubao (豆包)、 minimax 、 vertex ( Vertex AI)。 |  |  |  |  |
+| provider | string | body | 是 | qwen | AI提供商类型。 可选值： selfbuil d (自建)、 qwen ( 通义千问)、 deepsee k 、 openai 、 azure 、 gemini 、 bedrock 、 c laude 、 moo nshot (月之暗面)、 baichua n (百川)、 yi (零一万物)、 zhipuai (智谱)、 hunyuan (混元)、 stepfun (阶跃)、 spark ( 讯飞星火)、 doubao (豆包)、 minimax 、 vertex ( Vertex AI)。 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | azure |  |  |  |
-|  |  |  |  |  |  |  | 、 、 |  |  |
-|  |  |  |  |  |  |  |  | c |  |
-|  |  |  |  |  |  |  | moo |  |  |
-| aiProtocol | string | body | 是 | openai | AI协议类型。可选值： openai ( OpenAI/V1标准协议)、 origina l (原始协议)。 |  |  |  |  |
+|   |   |   |   |   |   | azure |   |   |   |
+|   |   |   |   |   |   |   | 、 、 |   |   |
+|   |   |   |   |   |   |   |   | c |   |
+|   |   |   |   |   |   |   | moo |   |   |
+| aiProtocol | string | body | 是 | openai | AI协议类型。可选值： openai ( OpenAI/V1标准协议)、 origina l (原始协议)。 |   |   |   |   |
 
-|  | d |
+|   | d |
 |---|---|
 
-|  |  |  |  | k |  |  |
+|   |   |   |   | k |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | bedrock |  |  |
-|  |  |  |  | laude |  |  |
-|  |  |  |  | nshot |  |  |
+|   |   |   |   | bedrock |   |   |
+|   |   |   |   | laude |   |   |
+|   |   |   |   | nshot |   |   |
 
-|  | n |
+|   | n |
 |---|---|
 
-|  | l |
+|   | l |
 |---|---|
 
-智能体工厂 OpenTrek
-
-| baseUrl | string | body |  |  | 否 |  |  | https://api. |  |  |  | AI服务基础URL 地址。部分提供商有默认值，如 qwen 默认为 |  |  |  |
+| baseUrl | string | body |   |   | 否 |   |   | https://api. |   |   |   | AI服务基础URL 地址。部分提供商有默认值，如 qwen 默认为 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | https://api. |  |  |  | https:/ | /dash |  |
-|  |  |  |  |  |  |  |  | ope |  | nai.com |  | scope.aliyunc |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | s.com/compati |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | ble- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | mode/v1 |  |  |  |
-| apiKeyList | string[] | body |  |  | 否 |  |  | ['sk- xxx'] |  |  |  | API Key列表。支持配置多个 API Key 实现负载均衡和容灾。自建 LLM时可省略。 |  |  |  |
+|   |   |   |   |   |   |   |   |   | https://api. |   |   |   | https:/ | /dash |   |
+|   |   |   |   |   |   |   |   | ope |   | nai.com |   | scope.aliyunc |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | s.com/compati |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | ble- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | mode/v1 |   |   |   |
+| apiKeyList | string[] | body |   |   | 否 |   |   | ['sk- xxx'] |   |   |   | API Key列表。支持配置多个 API Key 实现负载均衡和容灾。自建 LLM时可省略。 |   |   |   |
 
 **当 serviceSourceType 为其他值（普通服务）时：**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|
-| nodes | object[] | body | 否 |  | [{"ip":"192. |  | 服务节点列表。 当 |  |
-|  |  |  |  |  |  | [{"ip":"192. | serviceSourceT ype=7( |  |
-|  |  |  |  |  | 168.1.1","por |  | ype=7( |  |
-|  |  |  |  |  |  |  | 固址)或 |  |
-|  |  |  |  |  | t":8080}] |  |  |  |
-| sourceGroup | string | body | 否 |  | DEFAULT GROU _ P |  | Nacos分组名。 当 serviceSourceT ype=1(NACOS) 时使用，默认值为 DEFAULT GROU _ P 。 |  |
-| sourceNamesp aceId | string | body | 否 |  | namespace- 001 |  | Nacos命名空间 ID。当 serviceSourceT ype=1(NACOS) 时使用。 |  |
+| nodes | object[] | body | 否 |   | [{"ip":"192. |   | 服务节点列表。 当 |   |
+|   |   |   |   |   |   | [{"ip":"192. | serviceSourceT ype=7( |   |
+|   |   |   |   |   | 168.1.1","por |   | ype=7( |   |
+|   |   |   |   |   |   |   | 固址)或 |   |
+|   |   |   |   |   | t":8080}] |   |   |   |
+| sourceGroup | string | body | 否 |   | DEFAULT GROU _ P |   | Nacos分组名。 当 serviceSourceT ype=1(NACOS) 时使用，默认值为 DEFAULT GROU _ P 。 |   |
+| sourceNamesp aceId | string | body | 否 |   | namespace- 001 |   | Nacos命名空间 ID。当 serviceSourceT ype=1(NACOS) 时使用。 |   |
 
-|  |  | DEFAULT GROU _ |  |
+|   |   | DEFAULT GROU _ |   |
 |---|---|---|---|
-|  | P |  |  |
+|   | P |   |   |
 
-|  |  | DEFAULT GROU _ |  |
+|   |   | DEFAULT GROU _ |   |
 |---|---|---|---|
-|  | P |  |  |
+|   | P |   |   |
 
-|  |  | namespace- |  |
+|   |   | namespace- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **nodes 对象结构**
 
@@ -3277,10 +3634,8 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | ip | string | body | 是 | 192.168.1.1 | 节点IP地址。 |
 | port | integer | body | 是 | 8080 | 节点端口。 |
 
-|  |  | 192.168.1.1 |
+|   |   | 192.168.1.1 |
 |---|---|---|
-
-智能体工厂 OpenTrek
 
 | weight | integer | body | 否 | 1 | 节点权重，用于负载均衡。默认值为 1。 |
 |---|---|---|---|---|---|
@@ -3289,9 +3644,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | vpcMappingIp | string | body | 否 | 10.0.0.1 | VPC映射IP。 |
 | vpcMappingPor t | integer | body | 否 | 8080 | VPC映射端口。 |
 
-|  |  | vpc-xxx- |
+|   |   | vpc-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 **返回数据**
 
@@ -3307,10 +3662,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /microservice/modifyService HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-POST /microservice/modifyService HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "serviceId": "serviceId_value",
   "gwInstanceId": "gwInstanceId_value",
   "name": "name_value",
@@ -3328,10 +3686,9 @@ POST /microservice/modifyService HTTP/1.1 Host: localhost:80 Content-Type: appli
       "sk-xxxxx"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "isOpenHealthCheck": true,
   "healthCheckStruct": {
     "type": 0,
@@ -3342,7 +3699,11 @@ POST /microservice/modifyService HTTP/1.1 Host: localhost:80 Content-Type: appli
     "unHealthInterval": 0,
     "httpSuccesses": 0,
     "httpFailures": 0
-  },
+```
+
+`},`
+
+```json
   "activeHealthCheckStruct": {
     "enable": true,
     "protocol": "protocol_value",
@@ -3353,59 +3714,68 @@ POST /microservice/modifyService HTTP/1.1 Host: localhost:80 Content-Type: appli
     "httpPath": "httpPath_value",
     "httpHost": "httpHost_value",
     "expectedStatuses": []
-  },
+```
+
+`},`
+
+```json
   "protocol": "protocol_value",
   "proxyServerName": "proxyServerName_value",
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### modifyNode
+`}`
+
+#### 4.1.9 modifyNode
 
 **API 接口概述**
 
 **中文名称：**修改服务节点
+**英文名称：** modifyNode
 **功能概述：**服务管理 - 修改节点。
+**请求路径：** `/microservice/modifyNode`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  |  |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   |   |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| gwInstanceId | string | body |  |  |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
-| serviceId | string | body |  |  |  | 是 |  | service- 001 |  | 服务ID。 |  |
-| serviceSourceT ype | integer | body |  |  |  | 否 |  | 9 |  | 服务来源类型。 可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)、 9 (AI 服务)。 |  |
-| serviceStruct | object |  |  |  |  |  |  | {"nodes": |  |  |  |
-|  |  |  |  |  |  |  |  |  | {"nodes": |  |  |
-|  |  |  |  |  |  |  |  | [{"ip": |  |  |  |
-|  |  |  |  |  |  |  |  | "192.168.1.1" |  |  |  |
-|  |  |  |  |  |  |  |  | , "port": |  |  |  |
-|  |  | body |  |  |  |  |  |  |  |  |  |
-|  |  |  | body |  |  | 否 |  | 8080}]} |  |  |  |
+| gwInstanceId | string | body |   |   |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
+| serviceId | string | body |   |   |   | 是 |   | service- 001 |   | 服务ID。 |   |
+| serviceSourceT ype | integer | body |   |   |   | 否 |   | 9 |   | 服务来源类型。 可选值： 1 (Naco s服务发现)、 4 (K8s 集群)、 7 (固定地址)、 8 (DNS 域名)、 9 (AI 服务)。 |   |
+| serviceStruct | object |   |   |   |   |   |   | {"nodes": |   |   |   |
+|   |   |   |   |   |   |   |   |   | {"nodes": |   |   |
+|   |   |   |   |   |   |   |   | [{"ip": |   |   |   |
+|   |   |   |   |   |   |   |   | "192.168.1.1" |   |   |   |
+|   |   |   |   |   |   |   |   | , "port": |   |   |   |
+|   |   | body |   |   |   |   |   |   |   |   |   |
+|   |   |   | body |   |   | 否 |   | 8080}]} |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 **返回数据**
 
@@ -3421,8 +3791,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /microservice/modifyNode HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "serviceId": "service-001",
   "serviceSourceType": 7,
@@ -3431,33 +3806,33 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
       {"ip": "192.168.1.1", "port": 8080, "weight": 1, "enable": true}
 ```
 
-]
-
-```
-  }
-}
-```
+`]` `}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "service-001"
-}
 ```
 
-### AI网关实例管理
+`}`
 
-智能体工厂 OpenTrek
+### 4.2 AI网关实例管理
 
-#### addInstance
+#### 4.2.1 addInstance
 
 **API 接口概述**
 
 **中文名称：**创建实例
+**英文名称：** addInstance
 **功能概述：**创建网关实例。
 
 ```
@@ -3468,38 +3843,34 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-| 参数名称 | 类型 | 是否必选 | 示例 |  | 说明 |  |  |
+| 参数名称 | 类型 | 是否必选 | 示例 |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|
-| gwInstanceName | string | 是 | my-gateway |  | 网关实例名称，长度限制2-128字符。 |  |  |
-| clusterCode | string | 是 | cluster-001 |  | 集群编码。 |  |  |
-| namespace | string | 是 | default |  | K8s命名空间。 |  |  |
-| deployConfigConte nt | string | 否 | {} |  | 部署配置内容（JSON 格式）。 |  |  |
-| accessModeConfig Content | string | 否 | {} |  | 访问模式配置内容 （JSON格式）。 |  |  |
-| vpcId | string | 否 | vpc-xxx |  | VPC ID。 |  |  |
-| vswId | string | 否 | vsw-xxx |  | vSwitch ID。 |  |  |
-| ingressName | string | 否 | my-ingress |  | Ingress名称。 |  |  |
-| brokerEngineType | string | 否 | HIGRESS |  | 引擎类型。可选值： HIGRESS (AI 网关)、 SCG (API 网关)、 SHARED SCG _ (共享型API网关)、 CLOUD NATIV _ E GATEWAY (云原生 _ 网关)。 |  |  |
-|  |  |  |  |  |  | CLOUD NATIV _ |  |
-|  |  |  |  |  | E GATEWAY _ |  |  |
+| gwInstanceName | string | 是 | my-gateway |   | 网关实例名称，长度限制2-128字符。 |   |   |
+| clusterCode | string | 是 | cluster-001 |   | 集群编码。 |   |   |
+| namespace | string | 是 | default |   | K8s命名空间。 |   |   |
+| deployConfigConte nt | string | 否 | {} |   | 部署配置内容（JSON 格式）。 |   |   |
+| accessModeConfig Content | string | 否 | {} |   | 访问模式配置内容 （JSON格式）。 |   |   |
+| vpcId | string | 否 | vpc-xxx |   | VPC ID。 |   |   |
+| vswId | string | 否 | vsw-xxx |   | vSwitch ID。 |   |   |
+| ingressName | string | 否 | my-ingress |   | Ingress名称。 |   |   |
+| brokerEngineType | string | 否 | HIGRESS |   | 引擎类型。可选值： HIGRESS (AI 网关)、 SCG (API 网关)、 SHARED SCG _ (共享型API网关)、 CLOUD NATIV _ E GATEWAY (云原生 _ 网关)。 |   |   |
+|   |   |   |   |   |   | CLOUD NATIV _ |   |
+|   |   |   |   |   | E GATEWAY _ |   |   |
 
-智能体工厂 OpenTrek
-
-| deployMode | string | 否 | k8s | 部署模式。可选值： edas (EDAS K8s部署，SCG引擎)、 custom (自定义部署，SCG引擎)、 adp (ADP部署，SCG引擎)、 apig k8s ( _ APIG K8s部署，SCG 引擎)、 onpaas (共享PaaS部署，SHARED SCG _ 引擎)、 k8s (K8s 部署，Higress引擎)、 acs k8s (A _ CS K8s部署，Higress引擎)。 |  |  |
+| deployMode | string | 否 | k8s | 部署模式。可选值： edas (EDAS K8s部署，SCG引擎)、 custom (自定义部署，SCG引擎)、 adp (ADP部署，SCG引擎)、 apig k8s ( _ APIG K8s部署，SCG 引擎)、 onpaas (共享PaaS部署，SHARED SCG _ 引擎)、 k8s (K8s 部署，Higress引擎)、 acs k8s (A _ CS K8s部署，Higress引擎)。 |   |   |
 |---|---|---|---|---|---|---|
-| instanceClass | string | 否 | standard | 实例规格类型（支持 K8s部署模式）。 |  |  |
-| instanceNumber | string | 否 | 2 | 实例数量。 |  |  |
-| o11y | object | 否 | {} | 可观测配置对象，详见下方二级参数表。 |  |  |
-| imagePullSecretNa me | string | 否 | my-secret | 镜像拉取Secret名称，用于拉取私有镜像。 |  |  |
-| gatewayServiceTyp e | string | 否 | LoadBalancer | 网关Service类型。可选值： ClusterIP ( 集群内部访问)、 NodePort ( 通过节点端口暴露)、 LoadBalance r (通过负载均衡器暴露)。 |  |  |
-|  |  |  |  |  | LoadBalance |  |
-| gatewayNodePort | integer | 否 | 30080 | NodePort端口，当 gatewayServiceTy pe为NodePort时使用，端口范围30000- 32767。 |  |  |
-| replicas | integer | 否 | 2 | 实例副本数（发现/导入实例时填充）。 |  |  |
-| higressVersion | string | 否 | 1.4.0 | Higress版本（发现/ 导入实例时填充）。 |  |  |
+| instanceClass | string | 否 | standard | 实例规格类型（支持 K8s部署模式）。 |   |   |
+| instanceNumber | string | 否 | 2 | 实例数量。 |   |   |
+| o11y | object | 否 | {} | 可观测配置对象，详见下方二级参数表。 |   |   |
+| imagePullSecretNa me | string | 否 | my-secret | 镜像拉取Secret名称，用于拉取私有镜像。 |   |   |
+| gatewayServiceTyp e | string | 否 | LoadBalancer | 网关Service类型。可选值： ClusterIP ( 集群内部访问)、 NodePort ( 通过节点端口暴露)、 LoadBalance r (通过负载均衡器暴露)。 |   |   |
+|   |   |   |   |   | LoadBalance |   |
+| gatewayNodePort | integer | 否 | 30080 | NodePort端口，当 gatewayServiceTy pe为NodePort时使用，端口范围30000- 32767。 |   |   |
+| replicas | integer | 否 | 2 | 实例副本数（发现/导入实例时填充）。 |   |   |
+| higressVersion | string | 否 | 1.4.0 | Higress版本（发现/ 导入实例时填充）。 |   |   |
 
-|  | r |
+|   | r |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | deploymentUid | string | 否 | uid-xxx | Deployment UID（发现/导入实例时填充）。 |
 |---|---|---|---|---|
@@ -3525,10 +3896,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /gatewayInstance/createInstance HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /gatewayInstance/createInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceName": "my-higress-gateway",
   "clusterCode": "k8s-cluster-001",
   "namespace": "apigateway-system",
@@ -3540,28 +3914,40 @@ POST /gatewayInstance/createInstance HTTP/1.1 Host: localhost:80 Content-Type: a
   "o11y": {
     "slsEnabled": true,
     "prometheusEnabled": true
-  }
-}
 ```
+
+`}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "msg": "success",
   "message": "success",
   "requestId": "req-xxx-xxx-xxx",
   "data": "gw-instance-001"
-}
 ```
 
-#### ascmCreateInstance
+`}`
+
+#### 4.2.2 ascmCreateInstance
 
 **API 接口概述**
 
 **中文名称：** ASCM创建实例
+**英文名称：** ascmCreateInstance
 **功能概述：** ASCM创建实例。
+
+```
+请求路径： /gatewayInstance/ascmCreateInstance
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -3570,11 +3956,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceNa me | string | body | 是 | higress- 001 | 网关实例名称。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 | clusterCode | string | body | 否 | k8s- cluster-001 | Kubernetes集群编码。 |
 |---|---|---|---|---|---|
@@ -3588,31 +3972,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | zoneType | string | body | 否 | multizone | zoneType参数。 |
 | uid | string | body | 否 | user-001 | uid参数。 |
 
-|  |  | k8s- | Ku |
+|   |   | k8s- | Ku |
 |---|---|---|---|
-|  | cluster-001 |  |  |
+|   | cluster-001 |   |   |
 
-|  |  | vpc-xxx- |
+|   |   | vpc-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | cn- |  |
+|   |   | cn- |   |
 |---|---|---|---|
-|  | hangzhou-b |  |  |
+|   | hangzhou-b |   |   |
 
-|  |  | vsw-xxx- |
+|   |   | vsw-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | cn- |  |
+|   |   | cn- |   |
 |---|---|---|---|
-|  | hangzhou-c |  |  |
+|   | hangzhou-c |   |   |
 
-|  |  | vsw-xxx- |
+|   |   | vsw-xxx- |
 |---|---|---|
-|  | xxx |  |
-
-智能体工厂 OpenTrek
+|   | xxx |   |
 
 | deployMode | string | body | 否 | k8s | 部署模式。可选值： edas (E DAS K8s部署，SCG引擎)、 custom (自定义部署，SCG引擎)、 adp (A DP部署，SCG引擎)、 apig k8 _ s (APIG K8s部署，SCG引擎)、 onpaas (共享PaaS部署，SHARED S _ CG引擎)、 k8s (K8 s部署，Higress 引擎)、 acs k8s _ (ACS K8s部署，Higress引擎)。 |
 |---|---|---|---|---|---|
@@ -3621,47 +4003,45 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | accessModeCo nfigContent | string | body | 否 | yaml配置内容 | 访问模式配置内容。 |
 | namespace | string | body | 否 | apigateway- system | Kubernetes命名空间。 |
 
-|  | s |
+|   | s |
 |---|---|
 
-|  |  | EdasAppInfo[ |  |
+|   |   | EdasAppInfo[ |   |
 |---|---|---|---|
-| sAppInfos | ] |  |  |
+| sAppInfos | ] |   |   |
 
-|  |  | [{"appId": | edasAppIn |
+|   |   | [{"appId": | edasAppIn |
 |---|---|---|---|
-|  | "app-001"}] |  |  |
+|   | "app-001"}] |   |   |
 
-|  |  | yaml配置内 |
+|   |   | yaml配置内 |
 |---|---|---|
-|  | 容 |  |
+|   | 容 |   |
 
-|  |  | yaml配置内 |
+|   |   | yaml配置内 |
 |---|---|---|
-|  | 容 |  |
+|   | 容 |   |
 
-|  |  | apigateway- | Kube |
+|   |   | apigateway- | Kube |
 |---|---|---|---|
-|  | system |  |  |
+|   | system |   |   |
 
-智能体工厂 OpenTrek
-
-| brokerEngineTy pe | string | body | 否 |  | HIGRESS |  | 引擎类型。可选值： HIGRESS （AI网关）、 SCG （ API网关）、 SHARED SCG （共享型 _ API网关）、 CLOUD _ |  |  |
+| brokerEngineTy pe | string | body | 否 |   | HIGRESS |   | 引擎类型。可选值： HIGRESS （AI网关）、 SCG （ API网关）、 SHARED SCG （共享型 _ API网关）、 CLOUD _ |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | CLOUD _ |  |
-|  |  |  |  |  |  |  | NATIVE GATEWA _ |  |  |
-|  |  |  |  |  |  |  | Y |  |  |
-| ingressClassNa me | string | body | 否 |  | higress |  | ingressClassNa me参数。 |  |  |
-| o11y | object | body | 否 |  | {"slsEnabled ": true} |  | o11y参数。 |  |  |
-| imagePullSecre tName | string | body | 否 |  | registry- secret |  | 镜像拉取Secret 名称。 |  |  |
-| gatewayServic eType | string | body | 否 |  | LoadBalancer |  | 网关服务类型。 可选值： ClusterI P （集群内部服务）、 NodePo rt （NodePort 暴露）、 LoadBa lancer （负载均衡器暴露）。 |  |  |
-| gatewayNodeP ort | integer | body | 否 |  | 30080 |  | 网关NodePort端口。 |  |  |
-| replicas | integer | body | 否 |  | 2 |  | 副本数。 |  |  |
-| higressVersion | string | body | 否 |  | 1.4.0 |  | Higress版本。 |  |  |
-| deploymentUid | string | body | 否 |  | deploy-uid- 001 |  | Deployment UID。 |  |  |
-| enableIpv6 | boolean | body | 否 |  | false |  | enableIpv6参数。 |  |  |
+|   |   |   |   |   |   |   |   | CLOUD _ |   |
+|   |   |   |   |   |   |   | NATIVE GATEWA _ |   |   |
+|   |   |   |   |   |   |   | Y |   |   |
+| ingressClassNa me | string | body | 否 |   | higress |   | ingressClassNa me参数。 |   |   |
+| o11y | object | body | 否 |   | {"slsEnabled ": true} |   | o11y参数。 |   |   |
+| imagePullSecre tName | string | body | 否 |   | registry- secret |   | 镜像拉取Secret 名称。 |   |   |
+| gatewayServic eType | string | body | 否 |   | LoadBalancer |   | 网关服务类型。 可选值： ClusterI P （集群内部服务）、 NodePo rt （NodePort 暴露）、 LoadBa lancer （负载均衡器暴露）。 |   |   |
+| gatewayNodeP ort | integer | body | 否 |   | 30080 |   | 网关NodePort端口。 |   |   |
+| replicas | integer | body | 否 |   | 2 |   | 副本数。 |   |   |
+| higressVersion | string | body | 否 |   | 1.4.0 |   | Higress版本。 |   |   |
+| deploymentUid | string | body | 否 |   | deploy-uid- 001 |   | Deployment UID。 |   |   |
+| enableIpv6 | boolean | body | 否 |   | false |   | enableIpv6参数。 |   |   |
 
-| SHARED |  |
+| SHARED |   |
 |---|---|
 
 | {"slsEnabled | o11y参数 |
@@ -3670,28 +4050,26 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | registry- | 镜 |
 |---|---|
 
-| ClusterI |  |
+| ClusterI |   |
 |---|---|
 
-|  | P |
+|   | P |
 |---|---|
 
-| NodePo |  |
+| NodePo |   |
 |---|---|
 
-|  |  |  |  | rt |
+|   |   |   |   | rt |
 |---|---|---|---|---|
-|  |  | LoadBalancer | ancer |  |
+|   |   | LoadBalancer | ancer |   |
 
-|  |  | LoadBa |  |
+|   |   | LoadBa |   |
 |---|---|---|---|
-|  | lancer |  |  |
+|   | lancer |   |   |
 
-|  |  | deploy-uid- | D |
+|   |   | deploy-uid- | D |
 |---|---|---|---|
-|  | 001 |  |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |   |
 
 | Department | string | body | 否 | IT部门 | Department参数。 |
 |---|---|---|---|---|---|
@@ -3700,17 +4078,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | ZoneId | string | body | 否 | cn- hangzhou-a | ZoneId参数。 |
 | vSwitchId | string | body | 否 | vsw-xxx- xxx | vSwitchId参数。 |
 
-|  |  | cn- |
+|   |   | cn- |
 |---|---|---|
-|  | hangzhou |  |
+|   | hangzhou |   |
 
-|  |  | cn- |  |
+|   |   | cn- |   |
 |---|---|---|---|
-|  | hangzhou-a |  |  |
+|   | hangzhou-a |   |   |
 
-|  |  | vsw-xxx- |
+|   |   | vsw-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 **edasAppInfos 对象结构**
 
@@ -3721,13 +4099,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | k8sClusterId | string | body | 否 | k8s- cluster-001 | Kubernetes集群 ID。 |
 | k8sNamespace | string | body | 否 | default | k8sNamespace 参数。 |
 
-|  |  | edas-ns- |
+|   |   | edas-ns- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | k8s- | Ku |
+|   |   | k8s- | Ku |
 |---|---|---|---|
-|  | cluster-001 |  |  |
+|   | cluster-001 |   |   |
 
 **o11y 对象结构**
 
@@ -3741,8 +4119,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 |---|---|---|---|
 | code | integer | 200 | 响应码。 |
@@ -3754,10 +4130,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /gatewayInstance/ascmCreateInstance HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-POST /gatewayInstance/ascmCreateInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceName": "gwInstanceName_value",
   "clusterCode": "clusterCode_value",
   "instanceNumber": "instanceNumber_value",
@@ -3771,15 +4150,18 @@ POST /gatewayInstance/ascmCreateInstance HTTP/1.1 Host: localhost:80 Content-Typ
   "uid": "uid_value",
   "deployMode": "k8s",
   "edasAppInfos": [
-    {
+```
+
+`{`
+
+```json
       "appId": "appId_value",
       "edasNamespaceId": "edasNamespaceId_value",
       "k8sClusterId": "k8sClusterId_value",
       "k8sNamespace": "k8sNamespace_value"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "deployConfigContent": "deployConfigContent_value",
@@ -3790,7 +4172,11 @@ POST /gatewayInstance/ascmCreateInstance HTTP/1.1 Host: localhost:80 Content-Typ
   "o11y": {
     "slsEnabled": true,
     "prometheusEnabled": true
-  },
+```
+
+`},`
+
+```json
   "imagePullSecretName": "imagePullSecretName_value",
   "gatewayServiceType": "gatewayServiceType_value",
   "gatewayNodePort": 0,
@@ -3803,27 +4189,33 @@ POST /gatewayInstance/ascmCreateInstance HTTP/1.1 Host: localhost:80 Content-Typ
   "RegionId": "RegionId_value",
   "ZoneId": "ZoneId_value",
   "vSwitchId": "vSwitchId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### createDeployConfig
+`}`
+
+#### 4.2.3 createDeployConfig
 
 **API 接口概述**
 
 **中文名称：**创建部署配置
+**英文名称：** createDeployConfig
 **功能概述：**创建部署配置。
 
 ```
@@ -3845,48 +4237,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceNa me | string | body | 是 | higress- 001 | 网关实例名称。 |
 | accessModeTy pe | string | body | 是 | LoadBalancer | accessModeTy pe参数。 |
 
-|  |  | -Xmx512m - | jvmA |
+|   |   | -Xmx512m - | jvmA |
 |---|---|---|---|
-|  | Xms256m |  |  |
+|   | Xms256m |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | LoadBalancer |
+|   |   | LoadBalancer |
 |---|---|---|
 
-智能体工厂 OpenTrek
-
-|  |  |  | CreateInstan |  |  |  |  |  |  |  |  |  | [{"port":80, |  |  |  |  |
+|   |   |   | CreateInstan |   |   |   |   |   |   |   |   |   | [{"port":80, |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  | CreateInstan |  |  |  |  |  |  |  |  | [{"por |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"por | t":80, |  |  |
-|  |  |  | ceDeployConfi |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "targetPort": |  |  |  |  |
-|  | ports |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ports参数。 |  |
-|  |  |  | gRequest$Acce |  |  |  | body |  |  | 否 |  |  |  |  |  | ports参 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "80","name":" |  |  |  |  |
-|  |  |  | ssModePor |  | tInf |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | http"}] |  |  |  |  |
-|  |  |  | o[] |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  | namespace |  | string |  |  | body |  |  |  | 否 |  |  | apigateway- system |  |  | Kubernetes命名空间。 |  |
-|  | externalTraffic Policy |  | string |  |  | body |  |  |  | 否 |  |  | Local |  |  | externalTraffic Policy参数。 |  |
-|  | ipType |  | string |  |  | body |  |  |  | 是 |  |  | intranet |  |  | ipType参数。 |  |
-|  | vpcId |  | string |  |  | body |  |  |  | 否 |  |  | vpc-xxx- xxx |  |  | VPC ID。 |  |
-|  | vswId |  | string |  |  | body |  |  |  | 否 |  |  | vsw-xxx- xxx |  |  | 交换机ID。 |  |
-|  | uid |  | string |  |  | body |  |  |  | 否 |  |  | user-001 |  |  | uid参数。 |  |
+|   |   |   |   | CreateInstan |   |   |   |   |   |   |   |   | [{"por |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"por | t":80, |   |   |
+|   |   |   | ceDeployConfi |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "targetPort": |   |   |   |   |
+|   | ports |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ports参数。 |   |
+|   |   |   | gRequest$Acce |   |   |   | body |   |   | 否 |   |   |   |   |   | ports参 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "80","name":" |   |   |   |   |
+|   |   |   | ssModePor |   | tInf |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | http"}] |   |   |   |   |
+|   |   |   | o[] |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   | namespace |   | string |   |   | body |   |   |   | 否 |   |   | apigateway- system |   |   | Kubernetes命名空间。 |   |
+|   | externalTraffic Policy |   | string |   |   | body |   |   |   | 否 |   |   | Local |   |   | externalTraffic Policy参数。 |   |
+|   | ipType |   | string |   |   | body |   |   |   | 是 |   |   | intranet |   |   | ipType参数。 |   |
+|   | vpcId |   | string |   |   | body |   |   |   | 否 |   |   | vpc-xxx- xxx |   |   | VPC ID。 |   |
+|   | vswId |   | string |   |   | body |   |   |   | 否 |   |   | vsw-xxx- xxx |   |   | 交换机ID。 |   |
+|   | uid |   | string |   |   | body |   |   |   | 否 |   |   | user-001 |   |   | uid参数。 |   |
 
 | apigateway- | Kube |
 |---|---|
 
-|  |  | vpc-xxx- |
+|   |   | vpc-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | vsw-xxx- |
+|   |   | vsw-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 **ports 对象结构**
 
@@ -3904,8 +4294,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 
-智能体工厂 OpenTrek
-
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
 | msg | string | success | 响应消息。 |
@@ -3918,8 +4306,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /gatewayInstance/createInstanceDeployConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /gatewayInstance/createInstanceDeployConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "cpuRequest": "cpuRequest_value",
   "cpuLimit": "cpuLimit_value",
   "memoryRequest": "memoryRequest_value",
@@ -3929,16 +4322,19 @@ POST /gatewayInstance/createInstanceDeployConfig HTTP/1.1 Host: localhost:80 Con
   "gwInstanceName": "gwInstanceName_value",
   "accessModeType": "accessModeType_value",
   "ports": [
-    {
+```
+
+`{`
+
+```json
       "port": 0,
       "targetPort": "targetPort_value",
       "nodePort": 0,
       "name": "name_value",
       "protocol": "protocol_value"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "namespace": "namespace_value",
@@ -3947,30 +4343,35 @@ POST /gatewayInstance/createInstanceDeployConfig HTTP/1.1 Host: localhost:80 Con
   "vpcId": "vpcId_value",
   "vswId": "vswId_value",
   "uid": "uid_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": {
         "deployConfigYamlStr": "deployConfigYamlStr_value",
         "accessModeConfigYamlStr": "accessModeConfigYamlStr_value"
-    }
-}
 ```
 
-#### getCapacity
+`}` `}`
+
+#### 4.2.4 getCapacity
 
 **API 接口概述**
 
 **中文名称：**查询资源容量
+**英文名称：** getCapacity
 **功能概述：**查询资源容量。
 **请求路径：** `/gatewayInstance/getResource`
 **请求方式：** `POST`
@@ -3981,9 +4382,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -3995,8 +4396,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | object | {} | 响应数据。 |
 | data.replicas | integer | 2 | 副本数。 |
-
-智能体工厂 OpenTrek
 
 | data.cpuRequest | object | {} | cpuRequest 字段。 |
 |---|---|---|---|
@@ -4018,8 +4417,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.regionId | string | cn-hangzhou | regionId 字段。 |
 | data.zoneId | string | cn-hangzhou-a | zoneId 字段。 |
 
-智能体工厂 OpenTrek
-
 | data.backupZoneId | string | cn-hangzhou-b | backupZoneId 字段。 |
 |---|---|---|---|
 | data.backupVSwitchId | string | vsw-002 | backupVSwitchId 字段。 |
@@ -4032,18 +4429,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-POST /gatewayInstance/getResource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/getResource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -4052,19 +4458,35 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "cpuRequest": {
             "amount": "amount_value",
             "unit": "unit_value"
-        },
+```
+
+`},`
+
+```json
         "memoryRequest": {
             "amount": "amount_value",
             "unit": "unit_value"
-        },
+```
+
+`},`
+
+```json
         "cpuLimit": {
             "amount": "amount_value",
             "unit": "unit_value"
-        },
+```
+
+`},`
+
+```json
         "memoryLimit": {
             "amount": "amount_value",
             "unit": "unit_value"
-        },
+```
+
+`},`
+
+```json
         "jvmArgs": "jvmArgs_value",
         "instanceName": "instanceName_value",
         "engineSpecification": "engineSpecification_value",
@@ -4077,15 +4499,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "thirdVSwitchId": "thirdVSwitchId_value",
         "zoneType": "zoneType_value",
         "vSwitchId": "vSwitchId_value"
-    }
-}
 ```
 
-#### getCustomDeployConfig
+`}` `}`
+
+#### 4.2.5 getCustomDeployConfig
 
 **API 接口概述**
 
 **中文名称：**查询自定义部署配置
+**英文名称：** getCustomDeployConfig
 **功能概述：**查询自定义部署配置。
 
 ```
@@ -4099,57 +4522,64 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 |---|---|---|---|---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
-| 参数名称 | 类型 |  | 示例 |  | 说明 |
+| 参数名称 | 类型 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|
-| requestId | string |  | uuid-xxx-xxx |  | 请求 ID。 |
-| code | integer |  | 200 |  | 响应码。 |
-| msg | string |  | success |  | 响应消息。 |
-| message | string |  | success |  | 响应消息。 |
-| data | object |  | {} |  | 响应数据。 |
-| data.deploymentYamlStr | string |  | apiVersion: apps/v1... |  | deploymentYamlStr 字段。 |
-| data.serviceYamlStr | string |  | apiVersion: v1... |  | serviceYamlStr 字段。 |
-| data.jarStr | string |  | /app/gateway- admin.jar |  | jarStr 字段。 |
-| data.wgetStr | string |  | wget |  | wgetStr 字段。 |
-|  |  |  |  | wget |  |
-|  |  |  | http://xxx/gateway- |  |  |
-|  |  |  |  |  | wgetS |
-|  |  |  | admin.jar |  |  |
+| requestId | string |   | uuid-xxx-xxx |   | 请求 ID。 |
+| code | integer |   | 200 |   | 响应码。 |
+| msg | string |   | success |   | 响应消息。 |
+| message | string |   | success |   | 响应消息。 |
+| data | object |   | {} |   | 响应数据。 |
+| data.deploymentYamlStr | string |   | apiVersion: apps/v1... |   | deploymentYamlStr 字段。 |
+| data.serviceYamlStr | string |   | apiVersion: v1... |   | serviceYamlStr 字段。 |
+| data.jarStr | string |   | /app/gateway- admin.jar |   | jarStr 字段。 |
+| data.wgetStr | string |   | wget |   | wgetStr 字段。 |
+|   |   |   |   | wget |   |
+|   |   |   | http://xxx/gateway- |   |   |
+|   |   |   |   |   | wgetS |
+|   |   |   | admin.jar |   |   |
 
-|  |  | apiVersion: | d |
+|   |   | apiVersion: | d |
 |---|---|---|---|
-|  | apps/v1... |  |  |
+|   | apps/v1... |   |   |
 
-|  |  | /app/gateway- | j |
+|   |   | /app/gateway- | j |
 |---|---|---|---|
-|  | admin.jar |  |  |
+|   | admin.jar |   |   |
 
 **示例**
 
 **请求示例**
 
-```json
-POST /gatewayInstance/getCustomDeployConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/getCustomDeployConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -4158,15 +4588,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "serviceYamlStr": "serviceYamlStr_value",
         "jarStr": "jarStr_value",
         "wgetStr": "wgetStr_value"
-    }
-}
 ```
 
-#### getDeployConfig
+`}` `}`
+
+#### 4.2.6 getDeployConfig
 
 **API 接口概述**
 
 **中文名称：**查询部署配置
+**英文名称：** getDeployConfig
 **功能概述：**查询部署配置。
 
 ```
@@ -4181,9 +4612,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -4195,35 +4626,49 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | {} | 响应数据。 |
 
-**示例**
-
-智能体工厂 OpenTrek
-
 **请求示例**
 
-```json
-POST /gatewayInstance/getInstanceDeployDeployConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/getInstanceDeployDeployConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getInstanceImageUrl
+`}`
+
+#### 4.2.7 getInstanceImageUrl
 
 **API 接口概述**
 
 **中文名称：**查询实例镜像地址
+**英文名称：** getInstanceImageUrl
 **功能概述：**查询实例镜像地址。
+
+```
+请求路径： /gatewayInstance/getInstanceImageUrl
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -4232,9 +4677,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -4243,44 +4688,60 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | requestId | string | uuid-xxx-xxx | 请求 ID。 |
 | code | integer | 200 | 响应码。 |
 
-智能体工厂 OpenTrek
-
 | msg | string | success | 响应消息。 |
 |---|---|---|---|
 | message | string | success | 响应消息。 |
 | data | string | registry.example.com /higress:v1.0 | 响应数据。 |
 
-|  | registry.example.com | 响应数据。 |
+|   | registry.example.com | 响应数据。 |
 |---|---|---|
-| /higress:v1.0 |  |  |
+| /higress:v1.0 |   |   |
 
 **示例**
 
 **请求示例**
 
-```json
-POST /gatewayInstance/getInstanceImageUrl HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/getInstanceImageUrl HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getInstanceInfo
+`}`
+
+#### 4.2.8 getInstanceInfo
 
 **API 接口概述**
 
 **中文名称：**查询实例详情
+**英文名称：** getInstanceInfo
 **功能概述：**查询指定网关实例的详细信息。
+
+```
+请求路径： /gatewayInstance/getInstanceInfo
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -4288,14 +4749,12 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | 是 | gw-instance- 001 | 网关实例 ID。 |
 |---|---|---|---|---|
 
-|  |  | gw-instance- |
+|   |   | gw-instance- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -4317,8 +4776,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.createTime | string | 2024-01- 01T00:00:00 | 创建时间。 |
 | data.modifyTime | string | 2024-01- 01T00:00:00 | 修改时间。 |
 
-智能体工厂 OpenTrek
-
 | data.vpcId | string | vpc-xxx | VPC ID。 |
 |---|---|---|---|
 | data.vSwitchId | string | vsw-xxx | vSwitch ID。 |
@@ -4334,32 +4791,28 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.resourceGroup | string | group-001 | 资源组。 |
 | data.ingressClassName | string | higress | IngressClass 名称。 |
 
-智能体工厂 OpenTrek
-
-| data.brokerEngineType | string | HIGRESS |  | 引擎类型。可选值： HIGRESS (AI网关)、 SCG (API 网关)、 SHARED SCG (共享 _ 型 API 网关)、 CLOUD NATIVE GAT _ _ EWAY (云原生网关)。 |  |  |
+| data.brokerEngineType | string | HIGRESS |   | 引擎类型。可选值： HIGRESS (AI网关)、 SCG (API 网关)、 SHARED SCG (共享 _ 型 API 网关)、 CLOUD NATIVE GAT _ _ EWAY (云原生网关)。 |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | CLOUD NATIVE GAT _ _ |  |
-|  |  |  |  | EWAY |  |  |
-| data.brokerEngineVersio n | string | 1.4.0 |  | 当前引擎版本。 |  |  |
-| data.brokerLatestEngine Version | string | 1.5.0 |  | 最新引擎版本（用于升级提示）。 |  |  |
-| data.deployClusterAttrib ute | string | hub |  | 部署集群属性。 |  |  |
-| data.nodeNumber | integer | 2 |  | 节点数量。 |  |  |
-| data.sharedInstance | boolean | false |  | 是否为共享实例。 |  |  |
-| data.sharedInstanceSour ce | string | external-sharing |  | 共享实例来源。 |  |  |
-| data.higressDeployment Uid | string | uid-xxx |  | Higress Deployment 的 K8s UID。 |  |  |
-| data.o11y | object | {} |  | 可观测配置对象。 |  |  |
-| data.o11y.slsEnabled | boolean | true |  | 是否启用 SLS 日志。 |  |  |
-| data.o11y.prometheusEn abled | boolean | true |  | 是否启用 Prometheus 监控。 |  |  |
-| data.accessMode | array | [] |  | 访问模式列表，详见下方二级参数表。 |  |  |
-| data.edasAppInfos | array | [] |  | EDAS 应用信息列表，详见下方二级参数表。 |  |  |
+|   |   |   |   |   | CLOUD NATIVE GAT _ _ |   |
+|   |   |   |   | EWAY |   |   |
+| data.brokerEngineVersio n | string | 1.4.0 |   | 当前引擎版本。 |   |   |
+| data.brokerLatestEngine Version | string | 1.5.0 |   | 最新引擎版本（用于升级提示）。 |   |   |
+| data.deployClusterAttrib ute | string | hub |   | 部署集群属性。 |   |   |
+| data.nodeNumber | integer | 2 |   | 节点数量。 |   |   |
+| data.sharedInstance | boolean | false |   | 是否为共享实例。 |   |   |
+| data.sharedInstanceSour ce | string | external-sharing |   | 共享实例来源。 |   |   |
+| data.higressDeployment Uid | string | uid-xxx |   | Higress Deployment 的 K8s UID。 |   |   |
+| data.o11y | object | {} |   | 可观测配置对象。 |   |   |
+| data.o11y.slsEnabled | boolean | true |   | 是否启用 SLS 日志。 |   |   |
+| data.o11y.prometheusEn abled | boolean | true |   | 是否启用 Prometheus 监控。 |   |   |
+| data.accessMode | array | [] |   | 访问模式列表，详见下方二级参数表。 |   |   |
+| data.edasAppInfos | array | [] |   | EDAS 应用信息列表，详见下方二级参数表。 |   |   |
 
 **accessMode 二级参数表：**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | accessMode[].ips | string[] | ["192.168.1.1"] | IP 地址列表。 |
-
-智能体工厂 OpenTrek
 
 | accessMode[].ports | string[] | ["80", "443"] | 端口列表。 |
 |---|---|---|---|
@@ -4385,18 +4838,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /gatewayInstance/getInstanceInfo HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gw-instance-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "msg": "success",
   "message": "success",
@@ -4425,30 +4887,31 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "o11y": {
       "slsEnabled": true,
       "prometheusEnabled": true
-    },
+```
+
+`},`
+
+```json
     "accessMode": [
-      {
+```
+
+`{`
+
+```json
         "ips": ["192.168.1.1"],
         "ports": ["80", "443"],
         "accessModeType": "LoadBalancer",
         "serviceName": "higress-gateway"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-#### getK8sMsg
-
-智能体工厂 OpenTrek
+#### 4.2.9 getK8sMsg
 
 **API 接口概述**
 
 **中文名称：**查询实例部署信息
+**英文名称：** getK8sMsg
 **功能概述：**查询实例部署信息。
 
 ```
@@ -4463,9 +4926,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -4483,47 +4946,43 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.resConfig.cpuLimit | string | 1000m | cpuLimit 字段。 |
 | data.resConfig.memoryLi mit | string | 1Gi | memoryLimit 字段。 |
 
-|  |  | higress-001- | d |
+|   |   | higress-001- | d |
 |---|---|---|---|
-|  | deployment |  |  |
+|   | deployment |   |   |
 
-智能体工厂 OpenTrek
-
-| data.resConfig.replicas |  | integer |  | 2 |  |  | 副本数。 |
+| data.resConfig.replicas |   | integer |   | 2 |   |   | 副本数。 |
 |---|---|---|---|---|---|---|---|
-| data.resConfig.jvmArgs |  | string |  | -Xms256m -Xmx512m |  |  | jvmArgs 字段。 |
-| data.clusterConfig |  | object |  | {} |  |  | clusterConfig 字段。 |
-| data.clusterConfig.cluste rName |  | string |  | my-k8s-cluster |  |  | clusterName 字段。 |
-| data.clusterConfig.name space |  | string |  | apigateway-system |  |  | Kubernetes 命名空间。 |
-| data.clusterConfig.cluste rCode |  | string |  | k8s-cluster-001 |  |  | Kubernetes 集群编码。 |
-| data.accessModeList |  | GetGwInstanceDeployM |  |  |  |  | accessModeList 字段。 |
-|  |  |  | GetGwInstanceDeployM |  |  |  |  |
-|  | a.accessModeList | sgResponse$AccessModeI |  |  |  |  |  |
-|  |  |  |  |  | [] |  |  |
-|  |  | nfo[] |  |  |  |  |  |
-| data.accessModeList.na me |  | string |  | 内网访问 |  |  | 名称。 |
-| data.accessModeList.typ e |  | string |  | intranet |  |  | 类型。 |
-| data.accessModeList.intr anetUrlStrList |  | string[] |  | ["http://192.168.1.1 :80"] |  |  | intranetUrlStrList 字段。 |
-| data.accessModeList.net workUrlStrList |  | string[] |  | ["http://api.example .com"] |  |  | networkUrlStrList 字段。 |
-| data.podInfoList |  | GetGwInstanceDeployM sgResponse$PodInfo[] |  | [] |  |  | podInfoList 字段。 |
-|  |  |  | GetGwInstanceDeployM |  |  |  |  |
-|  | a.podInfoList | sgResponse$PodInfo[] |  |  |  |  |  |
-| data.podInfoList.name |  | string |  | higress-001-pod-1 |  |  | 名称。 |
-| data.podInfoList.isReady |  | boolean |  | true |  |  | isReady 字段。 |
-| data.podInfoList.ipList |  | GetGwInstanceDeployM sgResponse$IpInfo[] |  | [] |  |  | ipList 字段。 |
+| data.resConfig.jvmArgs |   | string |   | -Xms256m -Xmx512m |   |   | jvmArgs 字段。 |
+| data.clusterConfig |   | object |   | {} |   |   | clusterConfig 字段。 |
+| data.clusterConfig.cluste rName |   | string |   | my-k8s-cluster |   |   | clusterName 字段。 |
+| data.clusterConfig.name space |   | string |   | apigateway-system |   |   | Kubernetes 命名空间。 |
+| data.clusterConfig.cluste rCode |   | string |   | k8s-cluster-001 |   |   | Kubernetes 集群编码。 |
+| data.accessModeList |   | GetGwInstanceDeployM |   |   |   |   | accessModeList 字段。 |
+|   |   |   | GetGwInstanceDeployM |   |   |   |   |
+|   | a.accessModeList | sgResponse$AccessModeI |   |   |   |   |   |
+|   |   |   |   |   | [] |   |   |
+|   |   | nfo[] |   |   |   |   |   |
+| data.accessModeList.na me |   | string |   | 内网访问 |   |   | 名称。 |
+| data.accessModeList.typ e |   | string |   | intranet |   |   | 类型。 |
+| data.accessModeList.intr anetUrlStrList |   | string[] |   | ["http://192.168.1.1 :80"] |   |   | intranetUrlStrList 字段。 |
+| data.accessModeList.net workUrlStrList |   | string[] |   | ["http://api.example .com"] |   |   | networkUrlStrList 字段。 |
+| data.podInfoList |   | GetGwInstanceDeployM sgResponse$PodInfo[] |   | [] |   |   | podInfoList 字段。 |
+|   |   |   | GetGwInstanceDeployM |   |   |   |   |
+|   | a.podInfoList | sgResponse$PodInfo[] |   |   |   |   |   |
+| data.podInfoList.name |   | string |   | higress-001-pod-1 |   |   | 名称。 |
+| data.podInfoList.isReady |   | boolean |   | true |   |   | isReady 字段。 |
+| data.podInfoList.ipList |   | GetGwInstanceDeployM sgResponse$IpInfo[] |   | [] |   |   | ipList 字段。 |
 
 | ["http://192.168.1.1 | intra |
 |---|---|
 
-|  | ["http://api.example | netwo |
+|   | ["http://api.example | netwo |
 |---|---|---|
-| .com"] |  |  |
+| .com"] |   |   |
 
-|  |  | GetGwInstanceDeployM |  |
+|   |   | GetGwInstanceDeployM |   |
 |---|---|---|---|
-| a.podInfoList.ipList | sgResponse$IpInfo[] |  |  |
-
-智能体工厂 OpenTrek
+| a.podInfoList.ipList | sgResponse$IpInfo[] |   |   |
 
 | data.podInfoList.ipList.ip | string | 192.168.1.1 | IP 地址。 |
 |---|---|---|---|
@@ -4540,18 +4999,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-POST /gatewayInstance/getInstanceDeployMsg HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/getInstanceDeployMsg HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -4564,26 +5032,41 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "memoryLimit": "memoryLimit_value",
             "replicas": 0,
             "jvmArgs": "jvmArgs_value"
-        },
+```
+
+`},`
+
+```json
         "clusterConfig": {
             "clusterName": "clusterName_value",
             "namespace": "namespace_value",
             "clusterCode": "clusterCode_value"
-        },
+```
+
+`},`
+
+```json
         "accessModeList": {
             "name": "name_value",
             "type": "type_value",
             "intranetUrlStrList": [],
             "networkUrlStrList": []
-        },
+```
+
+`},`
+
+```json
         "podInfoList": {
             "name": "name_value",
             "isReady": true,
             "ipList": {
                 "ip": "ip_value",
                 "ipType": "ipType_value"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "gwInstanceId": "gwInstanceId_value",
         "instanceName": "instanceName_value",
         "engineSpecification": "engineSpecification_value",
@@ -4591,15 +5074,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "regionId": "regionId_value",
         "zoneId": "zoneId_value",
         "vSwitchId": "vSwitchId_value"
-    }
-}
 ```
 
-#### getK8sServiceConfigContent
+`}` `}`
+
+#### 4.2.10 getK8sServiceConfigContent
 
 **API 接口概述**
 
 **中文名称：**查询实例访问配置
+**英文名称：** getK8sServiceConfigContent
 **功能概述：**查询实例访问配置。
 
 ```
@@ -4607,7 +5091,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 ```
 
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -4615,9 +5098,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -4633,30 +5116,41 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-POST /gatewayInstance/getInstanceAccessModeConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/getInstanceAccessModeConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-#### getPortTemplates
+`}`
 
-智能体工厂 OpenTrek
+#### 4.2.11 getPortTemplates
 
 **API 接口概述**
 
 **中文名称：**查询端口模板
+**英文名称：** getPortTemplates
 **功能概述：**查询端口模板。
 
 ```
@@ -4684,9 +5178,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.name | string | http-port | 名称。 |
 | data.protocol | string | TCP | 协议类型。 |
 
-|  |  | AccessModePortTempla | [{}] |
+|   |   | AccessModePortTempla | [{}] |
 |---|---|---|---|
-| a | teResponse[] |  |  |
+| a | teResponse[] |   |   |
 
 **示例**
 
@@ -4696,12 +5190,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 POST /gatewayInstance/getInstanceDeployPortTemplates HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
 ```
 
-智能体工厂 OpenTrek
-
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -4711,15 +5208,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "nodePort": 0,
         "name": "name_value",
         "protocol": "protocol_value"
-    }
-}
 ```
 
-#### importHigressInstance
+`}` `}`
+
+#### 4.2.12 importHigressInstance
 
 **API 接口概述**
 
 **中文名称：**导入 Higress 实例
+**英文名称：** importHigressInstance
 **功能概述：**导入 Higress 实例。
 
 ```
@@ -4737,25 +5235,23 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | clusterCode | string | body | 否 | k8s- cluster-001 | Kubernetes 集群编码。 |
 | ingressName | string | body | 否 | higress- ingress | Ingress 名称。 |
 
-|  |  | higress- | K |
+|   |   | higress- | K |
 |---|---|---|---|
-|  | system |  |  |
+|   | system |   |   |
 
-|  |  | k8s- | Ku |
+|   |   | k8s- | Ku |
 |---|---|---|---|
-|  | cluster-001 |  |  |
+|   | cluster-001 |   |   |
 
-|  |  | higress- | In |
+|   |   | higress- | In |
 |---|---|---|---|
-|  | ingress |  |  |
+|   | ingress |   |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求 ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -4767,30 +5263,43 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /gatewayInstance/importHigressInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /gatewayInstance/importHigressInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "namespace": "namespace_value",
   "clusterCode": "clusterCode_value",
   "ingressName": "ingressName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": true
-}
 ```
 
-#### listAllGatewayInstances
+`}`
+
+#### 4.2.13 listAllGatewayInstances
 
 **API 接口概述**
 
 **中文名称：**查询所有实例
+**英文名称：** listAllGatewayInstances
 **功能概述：**查询所有实例。
 
 ```
@@ -4804,8 +5313,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 无请求参数。
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4827,15 +5334,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.accessMode.extern alIps | string[] | [] | externalIps 字段。 |
 | data.accessMode.clusterI p | string[] | ["10.0.0.1"] | clusterIp 字段。 |
 
-| ListAllGwInstanceRes | [{}] |  |
+| ListAllGwInstanceRes | [{}] |   |
 |---|---|---|
-|  |  | [{}] |
+|   |   | [{}] |
 
-|  |  | GetInstanceAccessMod | [{}] |
+|   |   | GetInstanceAccessMod | [{}] |
 |---|---|---|---|
-| a.accessMode | eResponse[] |  |  |
-
-智能体工厂 OpenTrek
+| a.accessMode | eResponse[] |   |   |
 
 | data.accessMode.edasAp pId | string | app-xxx | edasAppId 字段。 |
 |---|---|---|---|
@@ -4851,18 +5356,31 @@ POST /gatewayInstance/listAllInstances HTTP/1.1 Host: localhost:80 Content-Type:
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": [
-        {
+```
+
+`{`
+
+```json
             "gwInstanceId": "instance-001",
             "name": "demo-instance",
             "status": 1,
             "accessMode": [
-                {
+```
+
+`{`
+
+```json
                     "ips": ["192.168.1.1"],
                     "ports": ["8080"],
                     "accessModeType": "LoadBalancer",
@@ -4873,34 +5391,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
                     "clusterIp": ["10.0.0.1"],
                     "edasAppId": "edas-app-001",
                     "ipVersion": "ipv4"
-                }
 ```
 
-]
+`}` `]` `},` `{`
 
 ```json
-        },
-        {
             "gwInstanceId": "instance-002",
             "name": "another-instance",
             "status": 2,
             "accessMode": []
-        }
 ```
 
-]
+`}` `]`
 
-```
-}
-```
-
-智能体工厂 OpenTrek
-
-#### listGatewayInstances
+#### 4.2.14 listGatewayInstances
 
 **API 接口概述**
 
 **中文名称：**查询实例列表
+**英文名称：** listGatewayInstances
 **功能概述：**分页查询网关实例列表。
 
 ```
@@ -4920,16 +5429,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | deployMode | string | 否 | k8s | 按部署模式过滤。可选值： edas (EDAS K8s部署，SCG引擎)、 custom (自定义部署，SCG引擎)、 adp (ADP部署，SCG引擎)、 apig k8s ( _ APIG K8s部署，SCG 引擎)、 onpaas (共享PaaS部署，SHARED SCG _ 引擎)、 k8s (K8s 部署，Higress引擎)、 acs k8s (A _ CS K8s部署，Higress引擎)。 |
 | status | integer | 否 | 1 | 按实例状态过滤。 |
 
-|  |  | gw-instance- |
+|   |   | gw-instance- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-智能体工厂 OpenTrek
-
-| brokerEngineType | string | 否 | HIGRESS |  | 按引擎类型过滤。可选值： HIGRESS (AI 网关)、 SCG (API 网关)、 SHARED SCG _ (共享型API网关)、 CLOUD NATIV _ E GATEWAY (云原生 _ 网关)。 |  |  |
+| brokerEngineType | string | 否 | HIGRESS |   | 按引擎类型过滤。可选值： HIGRESS (AI 网关)、 SCG (API 网关)、 SHARED SCG _ (共享型API网关)、 CLOUD NATIV _ E GATEWAY (云原生 _ 网关)。 |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | CLOUD NATIV _ |  |
-|  |  |  |  |  | E GATEWAY _ |  |  |
+|   |   |   |   |   |   | CLOUD NATIV _ |   |
+|   |   |   |   |   | E GATEWAY _ |   |   |
 
 **返回数据**
 
@@ -4953,8 +5460,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | records[].gwInstanceId | string | gw-instance-001 | 网关实例ID。 |
 | records[].name | string | my-gateway | 网关实例名称。 |
 
-智能体工厂 OpenTrek
-
 | records[].instanceName | string | my-gateway | 实例名称。 |
 |---|---|---|---|
 | records[].deployClusterN amespace | string | apigateway-system | 部署集群命名空间。 |
@@ -4975,15 +5480,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | records[].instanceClass | string | standard | 实例规格类型。 |
 | records[].department | string | 研发部 | 所属部门。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 01T00:00:00 |   |
 
 | records[].resourceGroup | string | group-001 | 资源组。 |
 |---|---|---|---|
@@ -5008,8 +5511,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|
 | accessMode[].ips | string[] | ["192.168.1.1"] | IP地址列表。 |
 
-智能体工厂 OpenTrek
-
 | accessMode[].ports | string[] | ["80", "443"] | 端口列表。 |
 |---|---|---|---|
 | accessMode[].accessMod eType | string | LoadBalancer | 访问模式类型。 |
@@ -5025,21 +5526,30 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /gatewayInstance/listInstances HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /gatewayInstance/listInstances HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "current": 1,
   "size": 10,
   "brokerEngineType": "HIGRESS",
   "deployMode": "k8s"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "msg": "success",
   "message": "success",
@@ -5049,7 +5559,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "current": 1,
     "size": 10,
     "records": [
-      {
+```
+
+`{`
+
+```json
         "status": 1,
         "gwInstanceId": "gw-instance-001",
         "name": "my-higress-gateway",
@@ -5068,34 +5582,31 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "o11y": {
           "slsEnabled": true,
           "prometheusEnabled": true
-        },
+```
+
+`},`
+
+```json
         "accessMode": [
-          {
+```
+
+`{`
+
+```json
             "ips": ["192.168.1.1"],
             "ports": ["80", "443"],
             "accessModeType": "LoadBalancer",
             "serviceName": "higress-gateway"
-          }
 ```
 
-]
+`}` `]` `}` `]` `}` `}`
 
-```
-      }
-```
-
-]
-
-```
-  }
-}
-```
-
-#### modifyCapacity
+#### 4.2.15 modifyCapacity
 
 **API 接口概述**
 
 **中文名称：**修改资源容量
+**英文名称：** modifyCapacity
 **功能概述：**修改资源容量。
 
 ```
@@ -5103,7 +5614,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 ```
 
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -5120,25 +5630,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | thirdVSwitchId | string | body | 否 | vsw-xxx- xxx | thirdVSwitchId 参数。 |
 | zoneType | string | body | 否 | multizone | zoneType 参数。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | cn- |  |
+|   |   | cn- |   |
 |---|---|---|---|
-|  | hangzhou-b |  |  |
+|   | hangzhou-b |   |   |
 
-|  |  | vsw-xxx- |
+|   |   | vsw-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | cn- |  |
+|   |   | cn- |   |
 |---|---|---|---|
-|  | hangzhou-c |  |  |
+|   | hangzhou-c |   |   |
 
-|  |  | vsw-xxx- |
+|   |   | vsw-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 **返回数据**
 
@@ -5149,8 +5659,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | msg | string | success | 响应消息。 |
 | message | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | data | string | higress-001 | 响应数据。 |
 |---|---|---|---|
 
@@ -5158,8 +5666,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /gatewayInstance/modifyResource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /gatewayInstance/modifyResource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "replicas": 0,
   "specificationTemplate": 0,
@@ -5170,26 +5683,39 @@ POST /gatewayInstance/modifyResource HTTP/1.1 Host: localhost:80 Content-Type: a
   "thirdZoneId": "thirdZoneId_value",
   "thirdVSwitchId": "thirdVSwitchId_value",
   "zoneType": "zoneType_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### modifyInstance
+`}`
+
+#### 4.2.16 modifyInstance
 
 **API 接口概述**
 
 **中文名称：**修改实例
+**英文名称：** modifyInstance
 **功能概述：**修改实例。
+
+```
+请求路径： /gatewayInstance/modifyInstance
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -5197,19 +5723,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 | instanceName | string | body | 是 | my-higress- instance | instanceName 参数。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-higress- | instanc |
+|   |   | my-higress- | instanc |
 |---|---|---|---|
-|  | instance |  |  |
+|   | instance |   |   |
 
 **返回数据**
 
@@ -5225,31 +5749,40 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /gatewayInstance/modifyInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "instanceName": "my-higress-instance"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": true
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### modifyInstanceImageUrl
+#### 4.2.17 modifyInstanceImageUrl
 
 **API 接口概述**
 
 **中文名称：**修改实例镜像地址
+**英文名称：** modifyInstanceImageUrl
 **功能概述：**修改实例镜像地址。
 
 ```
@@ -5260,21 +5793,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-| 参数名称 |  | 类型 |  | 位置 |  |  |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 |   | 类型 |   | 位置 |   |   |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gwInstanceId |  | string |  | body |  |  |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
-| imageUrl |  | string |  |  |  |  |  |  |  | higress- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | higress- |  |  |
-|  |  |  |  |  |  |  |  |  |  | registry.cn- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | hangzhou.cr.a |  |  |  |
-|  |  |  |  |  | body |  |  | 是 |  |  |  | imageUrl参数。 |  |
-|  |  |  |  |  |  |  |  |  |  | liyuncs.com/h |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | igress/gatewa |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | y:1.4.0 |  |  |  |
+| gwInstanceId |   | string |   | body |   |   |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
+| imageUrl |   | string |   |   |   |   |   |   |   | higress- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | higress- |   |   |
+|   |   |   |   |   |   |   |   |   |   | registry.cn- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | hangzhou.cr.a |   |   |   |
+|   |   |   |   |   | body |   |   | 是 |   |   |   | imageUrl参数。 |   |
+|   |   |   |   |   |   |   |   |   |   | liyuncs.com/h |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | igress/gatewa |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | y:1.4.0 |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -5290,32 +5823,48 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /gatewayInstance/modifyInstanceImageUrl HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /gatewayInstance/modifyInstanceImageUrl HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "imageUrl": "imageUrl_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": true
-}
 ```
 
-#### refresh
+`}`
+
+#### 4.2.18 refresh
 
 **API 接口概述**
 
 **中文名称：**刷新实例状态
+**英文名称：** refresh
 **功能概述：**刷新实例状态。
+
+```
+请求路径： /gatewayInstance/refreshInstance
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -5324,9 +5873,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceCod e | string | body | 是 | higress- 001 | gwInstanceCod e 参数。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -5335,57 +5884,64 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | requestId | string | uuid-xxx-xxx | 请求 ID。 |
 | code | integer | 200 | 响应码。 |
 
-智能体工厂 OpenTrek
-
-| msg |  | string |  | success | 响应消息。 |
+| msg |   | string |   | success | 响应消息。 |
 |---|---|---|---|---|---|
-| message |  | string |  | success | 响应消息。 |
-| data |  | object |  | {} | 响应数据。 |
-| data.status |  | integer |  | 1 | 状态。 |
-| data.gwInstanceId |  | string |  | higress-001 | 网关实例 ID。 |
-| data.name |  | string |  | my-higress-gateway | 名称。 |
-| data.deployClusterName space |  | string |  | apigateway-system | deployClusterNamespac e 字段。 |
-| data.deployClusterCode |  | string |  | cluster-001 | deployClusterCode 字段。 |
-| data.accessMode |  | RefreshGwInstanceRes |  | [{}] | accessMode 字段。 |
-|  |  |  | RefreshGwInstanceRes |  |  |
-|  | a.accessMode | ponse$AccessModeInfo[] |  |  |  |
-| data.accessMode.ips |  | string[] |  | ["192.168.1.1"] | ips 字段。 |
-| data.accessMode.ports |  | string[] |  | ["80", "443"] | ports 字段。 |
-| data.accessMode.access ModeType |  | string |  | LoadBalancer | accessModeType 字段。 |
-| data.accessMode.extern alIps |  | string[] |  | [] | externalIps 字段。 |
-| data.accessMode.clusterI p |  | string[] |  | ["10.0.0.1"] | clusterIp 字段。 |
-| data.deployClusterName |  | string |  | 生产集群 | deployClusterName 字段。 |
-| data.k8sServiceName |  | string |  | higress-gateway | k8sServiceName 字段。 |
-| data.createTime |  | string |  | 2024-01- 01T00:00:00 | 创建时间。 |
+| message |   | string |   | success | 响应消息。 |
+| data |   | object |   | {} | 响应数据。 |
+| data.status |   | integer |   | 1 | 状态。 |
+| data.gwInstanceId |   | string |   | higress-001 | 网关实例 ID。 |
+| data.name |   | string |   | my-higress-gateway | 名称。 |
+| data.deployClusterName space |   | string |   | apigateway-system | deployClusterNamespac e 字段。 |
+| data.deployClusterCode |   | string |   | cluster-001 | deployClusterCode 字段。 |
+| data.accessMode |   | RefreshGwInstanceRes |   | [{}] | accessMode 字段。 |
+|   |   |   | RefreshGwInstanceRes |   |   |
+|   | a.accessMode | ponse$AccessModeInfo[] |   |   |   |
+| data.accessMode.ips |   | string[] |   | ["192.168.1.1"] | ips 字段。 |
+| data.accessMode.ports |   | string[] |   | ["80", "443"] | ports 字段。 |
+| data.accessMode.access ModeType |   | string |   | LoadBalancer | accessModeType 字段。 |
+| data.accessMode.extern alIps |   | string[] |   | [] | externalIps 字段。 |
+| data.accessMode.clusterI p |   | string[] |   | ["10.0.0.1"] | clusterIp 字段。 |
+| data.deployClusterName |   | string |   | 生产集群 | deployClusterName 字段。 |
+| data.k8sServiceName |   | string |   | higress-gateway | k8sServiceName 字段。 |
+| data.createTime |   | string |   | 2024-01- 01T00:00:00 | 创建时间。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 01T00:00:00 |   |
 
 | data.modifyTime | string | 2024-01- 01T00:00:00 | modifyTime 字段。 |
 |---|---|---|---|
 | data.tid | string | tid-xxx | tid 字段。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
 **示例**
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceCode": "gwInstanceCode_value"
-}
 ```
+POST /gatewayInstance/refreshInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceCode": "gwInstanceCode_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -5401,22 +5957,26 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "accessModeType": "accessModeType_value",
             "externalIps": [],
             "clusterIp": []
-        },
+```
+
+`},`
+
+```json
         "deployClusterName": "deployClusterName_value",
         "k8sServiceName": "k8sServiceName_value",
         "createTime": "createTime_value",
         "modifyTime": "modifyTime_value",
         "tid": "tid_value"
-    }
-}
 ```
 
-#### removeGwInstance
+`}` `}`
+
+#### 4.2.19 removeGwInstance
 
 **API 接口概述**
 
 **中文名称：**删除实例
-智能体工厂 OpenTrek
+**英文名称：** removeGwInstance
 **功能概述：**删除实例。
 
 ```
@@ -5432,9 +5992,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 | forcedDelete | boolean | body | 否 | false | forcedDelete 参数。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -5450,32 +6010,48 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /gatewayInstance/deleteInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /gatewayInstance/deleteInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "forcedDelete": true
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-#### restart
+`}`
+
+#### 4.2.20 restart
 
 **API 接口概述**
 
 **中文名称：**重启实例
+**英文名称：** restart
 **功能概述：**重启实例。
+
+```
+请求路径： /gatewayInstance/restartInstance
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -5484,9 +6060,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -5502,31 +6078,47 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /gatewayInstance/restartInstance HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-#### stopInstance
+`}`
+
+#### 4.2.21 stopInstance
 
 **API 接口概述**
 
 **中文名称：**停止实例
+**英文名称：** stopInstance
 **功能概述：**停止实例。
+
+```
+请求路径： /gatewayInstance/stopInstance
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -5535,9 +6127,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -5546,8 +6138,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
-
-智能体工厂 OpenTrek
 
 | message | string | success | 响应消息。 |
 |---|---|---|---|
@@ -5557,29 +6147,47 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/stopInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": true
-}
 ```
 
-#### upgradeInstance
+`}`
+
+#### 4.2.22 upgradeInstance
 
 **API 接口概述**
 
 **中文名称：**升级实例
+**英文名称：** upgradeInstance
 **功能概述：**升级实例。
+
+```
+请求路径： /gatewayInstance/upgradeInstance
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -5588,16 +6196,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 |---|---|---|---|
@@ -5610,30 +6216,43 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /gatewayInstance/upgradeInstance HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-### MCP管理
+`}`
 
-#### addConsumers
+### 4.3 MCP管理
+
+#### 4.3.1 addConsumers
 
 **API 接口概述**
 
 **中文名称：**添加 MCP 授权消费者
+**英文名称：** addConsumers
 **功能概述：** MCP Server 授权消费者。
 
 ```
@@ -5645,27 +6264,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-智能体工厂 OpenTrek
-
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|
-| gwInstanceId | string | body |  | 是 |  | higress- 001 |  | 网关实例 ID。 |  |
-| mcpServerNam e | string | body |  | 是 |  | my-mcp- server |  | MCP 服务名称。 |  |
-| consumers | string[] | body |  |  |  | ["consumer- |  |  |  |
-|  |  |  |  |  |  |  | ["consumer- |  |  |
-|  |  |  |  |  |  | 001", |  |  |  |
-|  |  |  |  |  |  |  |  | consum |  |
-|  |  |  |  | 是 |  |  |  |  |  |
-|  |  |  |  |  |  | "consumer- |  |  |  |
-|  |  |  |  |  |  | 002"] |  |  |  |
+| gwInstanceId | string | body |   | 是 |   | higress- 001 |   | 网关实例 ID。 |   |
+| mcpServerNam e | string | body |   | 是 |   | my-mcp- server |   | MCP 服务名称。 |   |
+| consumers | string[] | body |   |   |   | ["consumer- |   |   |   |
+|   |   |   |   |   |   |   | ["consumer- |   |   |
+|   |   |   |   |   |   | 001", |   |   |   |
+|   |   |   |   |   |   |   |   | consum |   |
+|   |   |   |   | 是 |   |   |   |   |   |
+|   |   |   |   |   |   | "consumer- |   |   |   |
+|   |   |   |   |   |   | 002"] |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
 **返回数据**
 
@@ -5681,113 +6298,123 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /mcpServer/addMcpServerConsumers HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /mcpServer/addMcpServerConsumers HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "mcpServerName": "my-mcp-server",
   "consumers": ["consumer-001", "consumer-002"]
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "success"
-}
 ```
 
-#### createMcpServer
+`}`
+
+#### 4.3.2 createMcpServer
 
 **API 接口概述**
 
 **中文名称：**创建 MCP 服务
+**英文名称：** createMcpServer
 **功能概述：**创建 MCP 服务。
+**请求路径：** `/mcpServer/createMcpServer`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
 **请求参数**
 
-|  | 参数名称 |  | 类型 |  | 位置 |  |  |  | 是否必选 |  |  | 示例 |  | 说明 |  |
+|   | 参数名称 |   | 类型 |   | 位置 |   |   |   | 是否必选 |   |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | gwInstanceId |  | string |  | body |  |  |  | 是 |  |  | higress- 001 |  | 网关实例 ID。 |  |
-|  | id |  | string |  | body |  |  |  | 否 |  |  | mcp-server- 001 |  | ID 标识。 |  |
-|  | name |  | string |  | body |  |  |  | 否 |  |  | my-mcp- server |  | MCP 服务名称。 |  |
-|  | description |  | string |  | body |  |  |  | 否 |  |  | 数据库查询服务 |  | MCP 服务描述。 |  |
-|  | domains |  | string[] |  | body |  |  |  | 否 |  |  | ["api.exampl e.com"] |  | MCP 服务生效的域名列表。 |  |
-|  |  |  | CreateMcpSer |  |  |  |  |  |  |  |  | [{"serviceId |  |  |  |
-|  |  |  |  | CreateMcpSer |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | [{"serviceId | MCP 服务上游服 |  |
-|  |  |  | verRequest$Hi |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | body |  |  | 是 |  |  | ": "service- |  | MCP |  |
-|  | services | vices |  |  |  | body |  |  |  |  |  |  |  | 务列 |  |
-|  |  |  | gressServiceT |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | 001"}] |  |  |  |
-|  |  |  | arget[] |  |  |  |  |  |  |  |  |  |  |  |  |
+|   | gwInstanceId |   | string |   | body |   |   |   | 是 |   |   | higress- 001 |   | 网关实例 ID。 |   |
+|   | id |   | string |   | body |   |   |   | 否 |   |   | mcp-server- 001 |   | ID 标识。 |   |
+|   | name |   | string |   | body |   |   |   | 否 |   |   | my-mcp- server |   | MCP 服务名称。 |   |
+|   | description |   | string |   | body |   |   |   | 否 |   |   | 数据库查询服务 |   | MCP 服务描述。 |   |
+|   | domains |   | string[] |   | body |   |   |   | 否 |   |   | ["api.exampl e.com"] |   | MCP 服务生效的域名列表。 |   |
+|   |   |   | CreateMcpSer |   |   |   |   |   |   |   |   | [{"serviceId |   |   |   |
+|   |   |   |   | CreateMcpSer |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | [{"serviceId | MCP 服务上游服 |   |
+|   |   |   | verRequest$Hi |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | body |   |   | 是 |   |   | ": "service- |   | MCP |   |
+|   | services | vices |   |   |   | body |   |   |   |   |   |   |   | 务列 |   |
+|   |   |   | gressServiceT |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | 001"}] |   |   |   |
+|   |   |   | arget[] |   |   |   |   |   |   |   |   |   |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | mcp-server- | I |
+|   |   | mcp-server- | I |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
-|  |  | 数据库查询服 |
+|   |   | 数据库查询服 |
 |---|---|---|
-|  | 务 |  |
+|   | 务 |   |
 
-|  |  | ["api.exampl | MCP 服 |
+|   |   | ["api.exampl | MCP 服 |
 |---|---|---|---|
-|  | e.com"] |  |  |
+|   | e.com"] |   |   |
 
-智能体工厂 OpenTrek
-
-| type | string | body |  |  | 否 |  | DATABASE |  | MCP 服务类型。 可选值： OPEN API _ （OpenAPI 类型，通过 API 工具提供服务）、 DATABA SE （数据库类型，直连数据库提供服务）、 DIRECT ROUTE （直连 _ 路由类型）。 |  |
+| type | string | body |   |   | 否 |   | DATABASE |   | MCP 服务类型。 可选值： OPEN API _ （OpenAPI 类型，通过 API 工具提供服务）、 DATABA SE （数据库类型，直连数据库提供服务）、 DIRECT ROUTE （直连 _ 路由类型）。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| consumerAuthI nfo | object | body |  |  |  |  | {"type": |  |  |  |
-|  |  |  |  |  |  |  |  | {"type": |  |  |
-|  |  |  |  |  |  |  | "consumer", |  |  |  |
-|  |  |  | body |  |  |  |  |  | 消费者认证配 |  |
-|  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  | "enable": |  |  |  |
-|  |  |  |  |  |  |  | true} |  |  |  |
-| rawConfigurati ons | string | body |  |  | 否 |  | tools:\n - name: query |  | YAML 格式的原始配置。 |  |
-| dbConfig | object | body |  |  | 否 |  | 见下方示例 |  | 数据库配置（数据库类型 MCP 服务，type=DATA BASE 时需填写）。 |  |
-| dbType | string | body |  |  | 否 |  | MYSQL |  | 数据库类型。可选值： MYSQL （MySQL 数据库）、 POSTGR ESQL （Postgr eSQL 数据库）、 SQLITE （SQLite 数据库）、 CLICKH OUSE （ClickH ouse 数据库）。 |  |
-| directRouteCon fig | object | body |  |  | 否 |  | 见下方示例 |  | 直连路由配置。 |  |
-| observabilityEn abled | boolean | body |  |  | 否 |  | true |  | MCP Server observability enabled flag。 |  |
+| consumerAuthI nfo | object | body |   |   |   |   | {"type": |   |   |   |
+|   |   |   |   |   |   |   |   | {"type": |   |   |
+|   |   |   |   |   |   |   | "consumer", |   |   |   |
+|   |   |   | body |   |   |   |   |   | 消费者认证配 |   |
+|   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   | "enable": |   |   |   |
+|   |   |   |   |   |   |   | true} |   |   |   |
+| rawConfigurati ons | string | body |   |   | 否 |   | tools:\n - name: query |   | YAML 格式的原始配置。 |   |
+| dbConfig | object | body |   |   | 否 |   | 见下方示例 |   | 数据库配置（数据库类型 MCP 服务，type=DATA BASE 时需填写）。 |   |
+| dbType | string | body |   |   | 否 |   | MYSQL |   | 数据库类型。可选值： MYSQL （MySQL 数据库）、 POSTGR ESQL （Postgr eSQL 数据库）、 SQLITE （SQLite 数据库）、 CLICKH OUSE （ClickH ouse 数据库）。 |   |
+| directRouteCon fig | object | body |   |   | 否 |   | 见下方示例 |   | 直连路由配置。 |   |
+| observabilityEn abled | boolean | body |   |   | 否 |   | true |   | MCP Server observability enabled flag。 |   |
 
-| DATABA |  |
+| DATABA |   |
 |---|---|
 
-|  |  | DIRECT |  |
+|   |   | DIRECT |   |
 |---|---|---|---|
-|  | ROUTE _ |  |  |
+|   | ROUTE _ |   |   |
 
-|  |  | tools:\n - | YAML 格式 |
+|   |   | tools:\n - | YAML 格式 |
 |---|---|---|---|
-|  | name: query |  |  |
+|   | name: query |   |   |
 
-| POSTGR |  |
+| POSTGR |   |
 |---|---|
 
-|  | ESQL |
+|   | ESQL |
 |---|---|
 
-| CLICKH |  |
+| CLICKH |   |
 |---|---|
 
-|  | OUSE |
+|   | OUSE |
 |---|---|
 
 **services 对象结构**
@@ -5795,14 +6422,12 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | serviceId | string | body | 否 | service- 001 | 服务 ID。 |
 |---|---|---|---|---|---|
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **consumerAuthInfo 对象结构**
 
@@ -5812,9 +6437,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | enable | boolean | body | 否 | true | 是否启用。 |
 | allowedConsu mers | string[] | body | 否 | ["consumer- 001"] | 允许的消费者名称列表。 |
 
-|  |  | ["consumer- | 允许 |
+|   |   | ["consumer- | 允许 |
 |---|---|---|---|
-|  | 001"] |  |  |
+|   | 001"] |   |   |
 
 **dbConfig 对象结构**
 
@@ -5827,36 +6452,34 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | dbname | string | body | 否 | mydb | 数据库名称。 |
 | otherParams | object | body | 否 | {"charset": "utf8mb4"} | 其他数据库连接参数，详见下方说明。 |
 
-|  |  | 192.168.1.10 |  |
+|   |   | 192.168.1.10 |   |
 |---|---|---|---|
-|  | 0 |  |  |
+|   | 0 |   |   |
 
-|  |  | password123 |
+|   |   | password123 |
 |---|---|---|
 
-|  |  | {"charset": | 其他数据库参数，详见 |
+|   |   | {"charset": | 其他数据库参数，详见 |
 |---|---|---|---|
-|  | "utf8mb4"} |  |  |
+|   | "utf8mb4"} |   |   |
 
 **otherParams 常用参数：**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| sslmode | string | require | SSL 连接模式 （PostgreSQL），可选值： disable 、 requ ire 、 verify- ca 、 verify-full 。 |  |  |
+| sslmode | string | require | SSL 连接模式 （PostgreSQL），可选值： disable 、 requ ire 、 verify- ca 、 verify-full 。 |   |   |
 |---|---|---|---|---|---|
-|  |  |  |  | requ |  |
-| connect timeout _ | integer | 10 | 连接超时时间（秒）。 |  |  |
-| charset | string | utf8mb4 | 字符集编码（MySQL）。 |  |  |
-| ssl | string | true | 是否启用 SSL 连接。 |  |  |
-| timeout | integer | 30 | 查询超时时间（秒）。 |  |  |
+|   |   |   |   | requ |   |
+| connect timeout _ | integer | 10 | 连接超时时间（秒）。 |   |   |
+| charset | string | utf8mb4 | 字符集编码（MySQL）。 |   |   |
+| ssl | string | true | 是否启用 SSL 连接。 |   |   |
+| timeout | integer | 30 | 查询超时时间（秒）。 |   |   |
 
-|  |  |  | disable |  |
+|   |   |   | disable |   |
 |---|---|---|---|---|
-|  |  | ire |  |  |
-|  |  | ca |  |  |
+|   |   | ire |   |   |
+|   |   | ca |   |   |
 
 **说明**： `otherParams` 为数据库连接的额外参数，以 key-value 形式传递。具体参数取决于数据库类型
 （MySQL、PostgreSQL、SQLite、ClickHouse）和实际需求。
@@ -5879,14 +6502,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | mcp-server-001 | 响应数据。 |
 
-**示例**
-
-智能体工厂 OpenTrek
-
 **请求示例**
 
+```
+POST /mcpServer/createMcpServer HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "id": "mcp-server-001",
   "name": "my-mcp-server",
@@ -5897,12 +6521,15 @@ Host: localhost:80 Content-Type: application/json {
 ```json
   "domains": ["api.example.com"],
   "services": [
-    {
-      "serviceId": "service-001"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "serviceId": "service-001"
+```
+
+`}` `],`
 
 ```json
   "type": "DATABASE",
@@ -5910,7 +6537,11 @@ Host: localhost:80 Content-Type: application/json {
     "type": "consumer",
     "enable": true,
     "allowedConsumers": ["consumer-001"]
-  },
+```
+
+`},`
+
+```json
   "dbConfig": {
     "host": "192.168.1.100",
     "port": "3306",
@@ -5918,30 +6549,46 @@ Host: localhost:80 Content-Type: application/json {
     "password": "password123",
     "dbname": "mydb",
     "otherParams": {"charset": "utf8mb4"}
-  },
+```
+
+`},`
+
+```json
   "dbType": "MYSQL",
   "observabilityEnabled": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "mcp-server-001"
-}
 ```
 
-#### deleteConsumers
+`}`
+
+#### 4.3.3 deleteConsumers
 
 **API 接口概述**
 
 **中文名称：**删除 MCP 授权消费者
+**英文名称：** deleteConsumers
 **功能概述：** MCP Server 解除授权消费者。
-智能体工厂 OpenTrek
+
+```
+请求路径： /mcpServer/deleteMcpServerConsumers
+```
+
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
@@ -5953,17 +6600,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | mcpServerNam e | string | body | 是 | my-mcp- server | MCP 服务名称。 |
 | consumers | string[] | body | 是 | ["consumer- 001"] | consumers 参数。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
-|  |  | ["consumer- | con |
+|   |   | ["consumer- | con |
 |---|---|---|---|
-|  | 001"] |  |  |
+|   | 001"] |   |   |
 
 **返回数据**
 
@@ -5979,33 +6626,45 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /mcpServer/deleteMcpServerConsumers HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /mcpServer/deleteMcpServerConsumers HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "mcpServerName": "my-mcp-server",
   "consumers": ["consumer-001"]
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "success"
-}
 ```
 
-#### deleteMcpServer
+`}`
+
+#### 4.3.4 deleteMcpServer
 
 **API 接口概述**
 
 **中文名称：**删除 MCP 服务
+**英文名称：** deleteMcpServer
 **功能概述：**删除 MCP 服务。
+**请求路径：** `/mcpServer/deleteMcpServer`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
@@ -6016,13 +6675,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 | mcpServerNam e | string | body | 是 | my-mcp- server | MCP 服务名称。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
 **返回数据**
 
@@ -6034,36 +6693,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | my-mcp-server | 响应数据。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 **请求示例**
 
+```
+POST /mcpServer/deleteMcpServer HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "mcpServerName": "my-mcp-server"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "my-mcp-server"
-}
 ```
 
-#### getMcpServer
+`}`
+
+#### 4.3.5 getMcpServer
 
 **API 接口概述**
 
 **中文名称：**查询 MCP 服务详情
+**英文名称：** getMcpServer
 **功能概述：**查询 MCP 服务详情。
+**请求路径：** `/mcpServer/getMcpServer`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
@@ -6074,20 +6743,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 | mcpServerNam e | string | body | 是 | my-mcp- server | MCP 服务名称。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx-xxx | 请求 ID。 |
 |---|---|---|---|
@@ -6109,18 +6776,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.rawConfigurations | string | tools:\n - name: query | 原始配置内容。 |
 | data.type | string | DATABASE | 类型。 |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
-|  |  | HigressServiceSimple | 见下方 |
+|   |   | HigressServiceSimple | 见下方 |
 |---|---|---|---|
-| a.services | Response[] |  |  |
+| a.services | Response[] |   |   |
 
-|  | tools:\n - name: |  |
+|   | tools:\n - name: |   |
 |---|---|---|
-| query |  |  |
-
-智能体工厂 OpenTrek
+| query |   |   |
 
 | data.dbType | string | MYSQL | 数据库类型。 |
 |---|---|---|---|
@@ -6141,27 +6806,34 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.tools.description | string | 查询数据库 | 描述信息。 |
 | data.tools.inputSchema | object | {} | inputSchema 字段。 |
 
-|  |  | {"charset": |  |
+|   |   | {"charset": |   |
 |---|---|---|---|
-|  | "utf8mb4"} |  |  |
-
-**示例**
+|   | "utf8mb4"} |   |   |
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /mcpServer/getMcpServer HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "mcpServerName": "my-mcp-server"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
@@ -6177,12 +6849,20 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "services": {
       "serviceId": "service-001",
       "name": "ai-service"
-    },
+```
+
+`},`
+
+```json
     "consumerAuthInfo": {
       "type": "consumer",
       "enable": true,
       "allowedConsumers": ["consumer-001"]
-    },
+```
+
+`},`
+
+```json
     "rawConfigurations": "tools:\n  - name: query",
     "type": "DATABASE",
     "dbType": "MYSQL",
@@ -6193,12 +6873,20 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "password": "password123",
       "dbname": "mydb",
       "otherParams": {"charset": "utf8mb4"}
-    },
+```
+
+`},`
+
+```json
     "directRouteConfig": {
       "path": "/api/v1",
       "transportType": "http",
       "protocolConversion": true
-    },
+```
+
+`},`
+
+```json
     "observabilityEnabled": true,
     "tools": {
       "name": "query",
@@ -6208,19 +6896,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 ```json
       "inputSchema": {}
-    }
-  }
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-#### getSsePathSuffix
+#### 4.3.6 getSsePathSuffix
 
 **API 接口概述**
 
 **中文名称：**查询 SSE 路径后缀
+**英文名称：** getSsePathSuffix
 **功能概述：**获取 MCP Server SSE 后缀路径。
+**请求路径：** `/mcpServer/getSsePathSuffix`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
@@ -6230,9 +6917,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -6244,38 +6931,47 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | /sse/mcp-server- 001 | 响应数据。 |
 
-|  | /sse/mcp-server- |
+|   | /sse/mcp-server- |
 |---|---|
-| 001 |  |
+| 001 |   |
 
 **示例**
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "higress-001"
-}
+```
+POST /mcpServer/getSsePathSuffix HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
 ```
 
-智能体工厂 OpenTrek
+`{`
+
+```json
+  "gwInstanceId": "higress-001"
+```
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "/sse/mcp-server-001"
-}
 ```
 
-#### listConsumers
+`}`
+
+#### 4.3.7 listConsumers
 
 **API 接口概述**
 
 **中文名称：**查询 MCP 授权消费者列表
+**英文名称：** listConsumers
 **功能概述：**查询 MCP Server 授权消费者列表。
 
 ```
@@ -6295,25 +6991,23 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | mcpServerNam e | string | body | 否 | my-mcp- server | MCP 服务名称。 |
 | consumerNam e | string | body | 否 | my- consumer | 消费者名称。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
-|  |  | my- |
+|   |   | my- |
 |---|---|---|
-|  | consumer |  |
+|   | consumer |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求 ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -6330,30 +7024,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.authType | string | 1 | 认证类型。0=无认证，1=Key Auth，2=Basic Auth，3=JWT，4=OAuth 2。 |
 | data.records.enable | boolean | true | 是否启用。 |
 
-|  |  | ListMcpServerConsume | - |
+|   |   | ListMcpServerConsume | - |
 |---|---|---|---|
-| a.records | rsResponse[] |  |  |
+| a.records | rsResponse[] |   |   |
 
 **示例**
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /mcpServer/listMcpServerConsumers HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-POST /mcpServer/listMcpServerConsumers HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "gwInstanceId": "gwInstanceId_value",
   "mcpServerName": "mcpServerName_value",
   "consumerName": "consumerName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -6367,17 +7070,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "consumerName": "consumerName_value",
             "authType": "authType_value",
             "enable": true
-        }
-    }
-}
 ```
 
-#### listMcpServers
+`}` `}` `}`
+
+#### 4.3.8 listMcpServers
 
 **API 接口概述**
 
 **中文名称：**查询 MCP 服务列表
+**英文名称：** listMcpServers
 **功能概述：**查询 MCP 服务列表。
+**请求路径：** `/mcpServer/listMcpServers`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
@@ -6387,40 +7091,38 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | size | integer | body | 是 | 10 | 每页大小。 |
 
-智能体工厂 OpenTrek
-
-| current | integer | body | 是 | 1 |  | 当前页码。 |  |  |
+| current | integer | body | 是 | 1 |   | 当前页码。 |   |   |
 |---|---|---|---|---|---|---|---|---|
-| gwInstanceId | string | body | 是 | higress- 001 |  | 网关实例 ID。 |  |  |
-| name | string | body | 否 | my-mcp- server |  | 名称。 |  |  |
-| type | string | body | 否 | OPEN API _ |  | MCP 服务类型。 可选值： OPEN API _ （OpenAPI 类型）、 DATABA SE （数据库类型）、 DIRECT ROUTE （直连 _ 路由类型）。 |  |  |
-|  |  |  |  |  |  |  | DIRECT |  |
-|  |  |  |  |  |  | ROUTE _ |  |  |
-| domainId | string | body | 否 | domain- 001 |  | 域名 ID。 |  |  |
-| serviceId | string | body | 否 | service- 001 |  | 服务 ID。 |  |  |
+| gwInstanceId | string | body | 是 | higress- 001 |   | 网关实例 ID。 |   |   |
+| name | string | body | 否 | my-mcp- server |   | 名称。 |   |   |
+| type | string | body | 否 | OPEN API _ |   | MCP 服务类型。 可选值： OPEN API _ （OpenAPI 类型）、 DATABA SE （数据库类型）、 DIRECT ROUTE （直连 _ 路由类型）。 |   |   |
+|   |   |   |   |   |   |   | DIRECT |   |
+|   |   |   |   |   |   | ROUTE _ |   |   |
+| domainId | string | body | 否 | domain- 001 |   | 域名 ID。 |   |   |
+| serviceId | string | body | 否 | service- 001 |   | 服务 ID。 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
-| OPEN API _ |  |  |  |  |
+| OPEN API _ |   |   |   |   |
 |---|---|---|---|---|
-|  |  |  |  | SE |
+|   |   |   |   | SE |
 
-| DATABA |  |
+| DATABA |   |
 |---|---|
 
-|  |  | domain- |
+|   |   | domain- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -6434,8 +7136,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.total | integer | 100 | 总数。 |
 | data.current | integer | 1 | 当前页码。 |
 | data.size | integer | 10 | 每页大小。 |
-
-智能体工厂 OpenTrek
 
 | data.records | ListMcpServerRespons e[] | - | 记录列表。 |
 |---|---|---|---|
@@ -6455,18 +7155,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.type | string | OPEN API _ | MCP 类型。 |
 | data.records.dbType | string | mysql | 数据库类型。 |
 
-|  |  | ListMcpServerRespons |  |  |
+|   |   | ListMcpServerRespons |   |   |
 |---|---|---|---|---|
-| a.records | e[] |  |  |  |
+| a.records | e[] |   |   |   |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
-|  |  | HigressServiceSimple | - |
+|   |   | HigressServiceSimple | - |
 |---|---|---|---|
-| a.records.services | Response[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records.services | Response[] |   |   |
 
 | data.records.dbConfig | object | - | 数据库配置。 |
 |---|---|---|---|
@@ -6485,10 +7183,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /mcpServer/listMcpServers HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "size": 0,
   "current": 0,
   "gwInstanceId": "gwInstanceId_value",
@@ -6496,15 +7197,19 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "type": "type_value",
   "domainId": "domainId_value",
   "serviceId": "serviceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -6521,12 +7226,20 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "services": {
                 "serviceId": "serviceId_value",
                 "name": "name_value"
-            },
+```
+
+`},`
+
+```json
             "consumerAuthInfo": {
                 "type": "type_value",
                 "enable": true,
                 "allowedConsumers": []
-            },
+```
+
+`},`
+
+```json
             "rawConfigurations": "rawConfigurations_value",
             "type": "type_value",
             "dbType": "dbType_value",
@@ -6537,25 +7250,32 @@ HTTP/1.1 200 OK Content-Type: application/json {
                 "password": "password_value",
                 "dbname": "dbname_value",
                 "otherParams": {}
-            },
+```
+
+`},`
+
+```json
             "directRouteConfig": {
                 "path": "path_value",
                 "transportType": "transportType_value",
                 "protocolConversion": true
-            }
-        }
-    }
-}
 ```
 
-#### swaggerToMcpConfig
+`}` `}` `}` `}`
+
+#### 4.3.9 swaggerToMcpConfig
 
 **API 接口概述**
 
 **中文名称：** Swagger 转 MCP 配置
+**英文名称：** swaggerToMcpConfig
 **功能概述：**将 Swagger 配置转换为 MCP 配置。
+
+```
+请求路径： /mcpServer/swaggerToMcpConfig
+```
+
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
 **请求参数**
@@ -6565,13 +7285,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | content | string | body | 是 | {"swagger":" 2.0",...} | Swagger 内容。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例 ID。 |
 
-|  |  | {"swagger":" | Swagger |
+|   |   | {"swagger":" | Swagger |
 |---|---|---|---|
-|  | 2.0",...} |  |  |
+|   | 2.0",...} |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -6589,110 +7309,119 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /mcpServer/swaggerToMcpConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "content": "content_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": {
         "mcpConfigContent": "mcpConfigContent_value",
         "warnings": []
-    }
-}
 ```
 
-#### updateMcpServer
+`}` `}`
+
+#### 4.3.10 updateMcpServer
 
 **API 接口概述**
 
 **中文名称：**更新 MCP 服务
+**英文名称：** updateMcpServer
 **功能概述：**编辑 MCP 服务。
+**请求路径：** `/mcpServer/updateMcpServer`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress 引擎）实例。
 
 **请求参数**
 
-|  | 参数名称 |  | 类型 |  | 位置 |  |  |  | 是否必选 |  |  | 示例 |  | 说明 |  |
+|   | 参数名称 |   | 类型 |   | 位置 |   |   |   | 是否必选 |   |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | gwInstanceId |  | string |  | body |  |  |  | 是 |  |  | higress- 001 |  | 网关实例 ID。 |  |
-|  | id |  | string |  | body |  |  |  | 否 |  |  | mcp-server- 001 |  | ID 标识。 |  |
-|  | name |  | string |  | body |  |  |  | 否 |  |  | my-mcp- server |  | MCP Server 名称。 |  |
-|  | description |  | string |  | body |  |  |  | 否 |  |  | 数据库查询服务（已更新） |  | MCP Server 描述。 |  |
-|  | domains |  | string[] |  | body |  |  |  | 否 |  |  | ["api.exampl e.com"] |  | MCP Server 适用的域名列表。 |  |
-|  |  |  | CreateMcpSer |  |  |  |  |  |  |  |  | [{"serviceId |  |  |  |
-|  |  |  |  | CreateMcpSer |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | [{"serviceId | MCP Server 上 |  |
-|  |  |  | verRequest$Hi |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | body |  |  | 是 |  |  | ": "service- |  | MCP |  |
-|  | services | vices |  |  |  | body |  |  |  |  |  |  |  | 游服 |  |
-|  |  |  | gressServiceT |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | 001"}] |  |  |  |
-|  |  |  | arget[] |  |  |  |  |  |  |  |  |  |  |  |  |
+|   | gwInstanceId |   | string |   | body |   |   |   | 是 |   |   | higress- 001 |   | 网关实例 ID。 |   |
+|   | id |   | string |   | body |   |   |   | 否 |   |   | mcp-server- 001 |   | ID 标识。 |   |
+|   | name |   | string |   | body |   |   |   | 否 |   |   | my-mcp- server |   | MCP Server 名称。 |   |
+|   | description |   | string |   | body |   |   |   | 否 |   |   | 数据库查询服务（已更新） |   | MCP Server 描述。 |   |
+|   | domains |   | string[] |   | body |   |   |   | 否 |   |   | ["api.exampl e.com"] |   | MCP Server 适用的域名列表。 |   |
+|   |   |   | CreateMcpSer |   |   |   |   |   |   |   |   | [{"serviceId |   |   |   |
+|   |   |   |   | CreateMcpSer |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | [{"serviceId | MCP Server 上 |   |
+|   |   |   | verRequest$Hi |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | body |   |   | 是 |   |   | ": "service- |   | MCP |   |
+|   | services | vices |   |   |   | body |   |   |   |   |   |   |   | 游服 |   |
+|   |   |   | gressServiceT |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | 001"}] |   |   |   |
+|   |   |   | arget[] |   |   |   |   |   |   |   |   |   |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | mcp-server- | I |
+|   |   | mcp-server- | I |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | my-mcp- |  |
+|   |   | my-mcp- |   |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
-|  |  | 数据库查询服 | MCP Ser |
+|   |   | 数据库查询服 | MCP Ser |
 |---|---|---|---|
-|  | 务（已更新） |  |  |
+|   | 务（已更新） |   |   |
 
-|  |  | ["api.exampl | MCP Se |
+|   |   | ["api.exampl | MCP Se |
 |---|---|---|---|
-|  | e.com"] |  |  |
+|   | e.com"] |   |   |
 
-智能体工厂 OpenTrek
-
-| type | string | body |  |  | 否 |  | DATABASE |  | MCP 服务类型。 可选值： OPEN API _ （OpenAPI 类型）、 DATABA SE （数据库类型）、 DIRECT ROUTE （直连 _ 路由类型）。 |  |
+| type | string | body |   |   | 否 |   | DATABASE |   | MCP 服务类型。 可选值： OPEN API _ （OpenAPI 类型）、 DATABA SE （数据库类型）、 DIRECT ROUTE （直连 _ 路由类型）。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| consumerAuthI nfo | object | body |  |  |  |  | {"type": |  |  |  |
-|  |  |  |  |  |  |  |  | {"type": |  |  |
-|  |  |  |  |  |  |  | "consumer", |  |  |  |
-|  |  |  | body |  |  |  |  |  | 消费者认证配 |  |
-|  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  | "enable": |  |  |  |
-|  |  |  |  |  |  |  | true} |  |  |  |
-| rawConfigurati ons | string | body |  |  | 否 |  | tools:\n - name: query |  | YAML 格式的原始配置。 |  |
-| dbConfig | object | body |  |  | 否 |  | 见下方示例 |  | 数据库配置 （type=DATAB ASE 时需填写）。 |  |
-| dbType | string | body |  |  | 否 |  | MYSQL |  | 数据库类型。可选值： MYSQL （MySQL）、 POSTGRESQL （PostgreSQL） 、 SQLITE （ SQLite）、 CL ICKHOUSE （Cl ickHouse）。 |  |
-| directRouteCon fig | object | body |  |  | 否 |  | 见下方示例 |  | 直连路由配置。 |  |
-| observabilityEn abled | boolean | body |  |  | 否 |  | true |  | 是否启用 MCP Server 可观测性。 |  |
+| consumerAuthI nfo | object | body |   |   |   |   | {"type": |   |   |   |
+|   |   |   |   |   |   |   |   | {"type": |   |   |
+|   |   |   |   |   |   |   | "consumer", |   |   |   |
+|   |   |   | body |   |   |   |   |   | 消费者认证配 |   |
+|   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   | "enable": |   |   |   |
+|   |   |   |   |   |   |   | true} |   |   |   |
+| rawConfigurati ons | string | body |   |   | 否 |   | tools:\n - name: query |   | YAML 格式的原始配置。 |   |
+| dbConfig | object | body |   |   | 否 |   | 见下方示例 |   | 数据库配置 （type=DATAB ASE 时需填写）。 |   |
+| dbType | string | body |   |   | 否 |   | MYSQL |   | 数据库类型。可选值： MYSQL （MySQL）、 POSTGRESQL （PostgreSQL） 、 SQLITE （ SQLite）、 CL ICKHOUSE （Cl ickHouse）。 |   |
+| directRouteCon fig | object | body |   |   | 否 |   | 见下方示例 |   | 直连路由配置。 |   |
+| observabilityEn abled | boolean | body |   |   | 否 |   | true |   | 是否启用 MCP Server 可观测性。 |   |
 
-| DATABASE |  |  |  |  |
+| DATABASE |   |   |   |   |
 |---|---|---|---|---|
-|  |  |  |  | SE |
+|   |   |   |   | SE |
 
-| DATABA |  |
+| DATABA |   |
 |---|---|
 
-|  |  | DIRECT |  |
+|   |   | DIRECT |   |
 |---|---|---|---|
-|  | ROUTE _ |  |  |
+|   | ROUTE _ |   |   |
 
-|  |  | tools:\n - | YAML 格式 |
+|   |   | tools:\n - | YAML 格式 |
 |---|---|---|---|
-|  | name: query |  |  |
+|   | name: query |   |   |
 
-|  | ICKHOUSE |  |
+|   | ICKHOUSE |   |
 |---|---|---|
 
 **services 对象结构**
@@ -6701,13 +7430,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | serviceId | string | body | 否 | service- 001 | 服务 ID。 |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **consumerAuthInfo 对象结构**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6715,9 +7442,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | enable | boolean | body | 否 | true | 是否启用。 |
 | allowedConsu mers | string[] | body | 否 | ["consumer- 001"] | 允许的消费者名称列表。 |
 
-|  |  | ["consumer- | 允许 |
+|   |   | ["consumer- | 允许 |
 |---|---|---|---|
-|  | 001"] |  |  |
+|   | 001"] |   |   |
 
 **dbConfig 对象结构**
 
@@ -6730,16 +7457,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | dbname | string | body | 否 | mydb | 数据库名称。 |
 | otherParams | object | body | 否 | {"charset": "utf8mb4"} | 其他参数。 |
 
-|  |  | 192.168.1.10 |  |
+|   |   | 192.168.1.10 |   |
 |---|---|---|---|
-|  | 0 |  |  |
+|   | 0 |   |   |
 
-|  |  | password123 |
+|   |   | password123 |
 |---|---|---|
 
-|  |  | {"charset": | 其他参数。 |
+|   |   | {"charset": | 其他参数。 |
 |---|---|---|---|
-|  | "utf8mb4"} |  |  |
+|   | "utf8mb4"} |   |   |
 
 **directRouteConfig 对象结构**
 
@@ -6754,8 +7481,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | requestId | string | uuid-xxx-xxx | 请求 ID。 |
 |---|---|---|---|
 | code | integer | 200 | 响应码。 |
@@ -6767,8 +7492,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /mcpServer/updateMcpServer HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "id": "mcp-server-001",
   "name": "my-mcp-server",
@@ -6779,12 +7509,15 @@ Host: localhost:80 Content-Type: application/json {
 ```json
   "domains": ["api.example.com"],
   "services": [
-    {
-      "serviceId": "service-001"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "serviceId": "service-001"
+```
+
+`}` `],`
 
 ```json
   "type": "DATABASE",
@@ -6792,7 +7525,11 @@ Host: localhost:80 Content-Type: application/json {
     "type": "consumer",
     "enable": true,
     "allowedConsumers": ["consumer-001"]
-  },
+```
+
+`},`
+
+```json
   "dbConfig": {
     "host": "192.168.1.100",
     "port": "3306",
@@ -6800,30 +7537,47 @@ Host: localhost:80 Content-Type: application/json {
     "password": "password123",
     "dbname": "mydb",
     "otherParams": {"charset": "utf8mb4"}
-  },
+```
+
+`},`
+
+```json
   "dbType": "MYSQL",
   "observabilityEnabled": true
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "mcp-server-001"
-}
 ```
 
-### 代理服务器
+`}`
 
-#### createProxyServer
+### 4.4 代理服务器
+
+#### 4.4.1 createProxyServer
 
 **API 接口概述**
+
+**中文名称：**创建代理服务器
+**英文名称：** createProxyServer
+**功能概述：**服务管理 - 创建代理服务器。
+
+```
+请求路径： /microservice/createProxyServer
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -6839,22 +7593,20 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serverPort | integer | body | 否 | 8080 | 代理服务器端口。 |
 | connectTimeou t | integer | body | 否 | 1200 | 连接超时时间 （毫秒），默认 1200。 |
 
-|  |  | my-proxy- | 代 |
+|   |   | my-proxy- | 代 |
 |---|---|---|---|
-|  | server |  |  |
+|   | server |   |   |
 
-|  |  | 192.168.1.10 |  |
+|   |   | 192.168.1.10 |   |
 |---|---|---|---|
-|  | 0 |  |  |
-
-智能体工厂 OpenTrek
+|   | 0 |   |   |
 
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -6870,8 +7622,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /microservice/createProxyServer HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "type": "type_value",
   "name": "name_value",
   "version": "version_value",
@@ -6879,25 +7636,38 @@ Host: localhost:80 Content-Type: application/json {
   "serverPort": 0,
   "connectTimeout": 0,
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteProxyServer
+`}`
 
-智能体工厂 OpenTrek
+#### 4.4.2 deleteProxyServer
 
 **API 接口概述**
+
+**中文名称：**删除代理服务器
+**英文名称：** deleteProxyServer
+**功能概述：**服务管理 - 删除代理服务器。
+
+```
+请求路径： /microservice/deleteProxyServer
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -6909,13 +7679,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | proxyServerId | string | body | 是 | proxy- server-001 | proxyServerId 参数。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | proxy- | pro |
+|   |   | proxy- | pro |
 |---|---|---|---|
-|  | server-001 |  |  |
+|   | server-001 |   |   |
 
 **返回数据**
 
@@ -6931,30 +7701,42 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value",
-  "proxyServerId": "proxyServerId_value"
-}
+```
+POST /microservice/deleteProxyServer HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
 ```
 
-智能体工厂 OpenTrek
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value",
+  "proxyServerId": "proxyServerId_value"
+```
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getProxyServer
+`}`
+
+#### 4.4.3 getProxyServer
 
 **API 接口概述**
 
+**中文名称：**查询代理服务器详情
+**英文名称：** getProxyServer
+**功能概述：**服务管理 - 查询代理服务器详情。
+**请求路径：** `/microservice/getProxyServer`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
@@ -6965,9 +7747,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | proxyServerId | string | body | 是 | proxy-001 | 代理服务器ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -6978,8 +7760,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | msg | string | success | 响应消息。 |
 | message | string | success | 响应消息。 |
 | data | object | - | 响应数据。 |
-
-智能体工厂 OpenTrek
 
 | data.type | string | HTTP | 代理服务器类型。目前仅支持 HTTP 。 |
 |---|---|---|---|
@@ -6993,17 +7773,28 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /microservice/getProxyServer HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "proxyServerId": "proxyServerId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -7014,15 +7805,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "serverAddress": "serverAddress_value",
         "serverPort": 0,
         "connectTimeout": 0
-    }
-}
 ```
 
-#### ListProxyServers
+`}` `}`
+
+#### 4.4.4 ListProxyServers
 
 **API 接口概述**
 
-智能体工厂 OpenTrek
+**中文名称：**查询代理服务器列表
+**英文名称：** ListProxyServers
+**功能概述：**服务管理 - 查询代理服务器列表。
+
+```
+请求路径： /microservice/listProxyServers
+```
+
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
@@ -7034,9 +7832,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | current | integer | body | 是 | 1 | 当前页码。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -7052,8 +7850,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.size | integer | 10 | 每页大小。 |
 | data.records | ProxyServer[] | [] | 记录列表。 |
 
-智能体工厂 OpenTrek
-
 | data.records.type | string | HTTP | 代理服务器类型。目前仅支持 HTTP 。 |
 |---|---|---|---|
 | data.records.name | string | proxy-server-001 | Proxy server name。 |
@@ -7066,20 +7862,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /microservice/listProxyServers HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "size": 0,
   "current": 0,
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -7094,14 +7899,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "serverAddress": "serverAddress_value",
             "serverPort": 0,
             "connectTimeout": 0
-        }
-    }
-}
 ```
 
-#### updateProxyServer
+`}` `}` `}`
+
+#### 4.4.5 updateProxyServer
 
 **API 接口概述**
+
+**中文名称：**修改代理服务器
+**英文名称：** updateProxyServer
+**功能概述：**服务管理 - 编辑代理服务器。
+
+```
+请求路径： /microservice/updateProxyServer
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -7114,21 +7926,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | name | string | body | 否 | my-proxy | Proxy server name。 |
 | version | string | body | 否 | v1.0 | Proxy server version. Required when updating。 |
 
-智能体工厂 OpenTrek
-
 | serverAddress | string | body | 否 | 192.168.1.10 0 | Proxy server address, can be IP or domain name。 |
 |---|---|---|---|---|---|
 | serverPort | integer | body | 否 | 8080 | Proxy server port。 |
 | connectTimeou t | integer | body | 否 | 1200 | Proxy server connect timeout in milliseconds, default is 1200。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | 192.168.1.10 |  |
+|   |   | 192.168.1.10 |   |
 |---|---|---|---|
-|  | 0 |  |  |
+|   | 0 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -7144,10 +7954,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /microservice/updateProxyServer HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "type": "type_value",
   "name": "name_value",
   "version": "version_value",
@@ -7155,55 +7968,62 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "serverPort": 0,
   "connectTimeout": 0,
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-### 服务来源
+`}`
 
-#### batchDeleteSource
+### 4.5 服务来源
+
+#### 4.5.1 batchDeleteSource
 
 **API 接口概述**
 
 **中文名称：**批量删除来源
+**英文名称：** batchDeleteSource
 **功能概述：**来源管理 - 批量删除来源。
+**请求路径：** `/source/batchDeleteSource`
 **请求方式：** `POST`
 **说明**：此接口用于批量删除多个服务来源配置。
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|---|---|
-| sourceIds | array<string > | body |  | 是 |  |  | ["source- |  |  |
-|  |  |  |  |  |  |  |  | ["source- |  |
-|  |  |  |  |  |  |  | 001", |  |  |
-|  |  |  |  |  |  |  |  |  | 要删除 |
-|  |  |  |  |  | 是 |  |  |  |  |
-|  |  |  |  |  |  |  | "source- |  |  |
-|  |  |  |  |  |  |  | 002"] |  |  |
+| sourceIds | array<string > | body |   | 是 |   |   | ["source- |   |   |
+|   |   |   |   |   |   |   |   | ["source- |   |
+|   |   |   |   |   |   |   | 001", |   |   |
+|   |   |   |   |   |   |   |   |   | 要删除 |
+|   |   |   |   |   | 是 |   |   |   |   |
+|   |   |   |   |   |   |   | "source- |   |   |
+|   |   |   |   |   |   |   | 002"] |   |   |
 
-|  |  | array<string |  |
+|   |   | array<string |   |
 |---|---|---|---|
-| rceIds | > |  |  |
-
-智能体工厂 OpenTrek
+| rceIds | > |   |   |
 
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例唯一标识。 |
 |---|---|---|---|---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -7221,35 +8041,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /source/batchDeleteSource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "sourceIds": ["source-001", "source-002", "source-003"],
   "gwInstanceId": "higress-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {
     "successIds": ["source-001", "source-003"],
     "failedIds": ["source-002"]
-  }
-}
 ```
 
-#### createSource
+`}` `}`
+
+#### 4.5.2 createSource
 
 **API 接口概述**
 
 **中文名称：**创建来源
+**英文名称：** createSource
 **功能概述：**来源管理 - 创建来源。
+**请求路径：** `/source/createSource`
 **请求方式：** `POST`
 **说明**：此接口用于注册新的服务来源（如 Nacos、EDAS、Eureka 等），支持 Higress 整合多种服务发现机制。
 
@@ -7265,27 +8096,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | username | string | body | 否 | nacos | 注册中心用户名。 |
 | password | string | body | 否 | nacos123 | 注册中心密码。 |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 | nacos.exampl | 注册 |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | description | string | body | 否 | Nacos 服务发现 | 备注说明。 |
 |---|---|---|---|---|---|
 | sourceType | integer | body | 是 | 1 | 来源类型，见下方枚举说明。 |
 | sourceStruct | object | body | 是 | 见下方示例 | 来源详细配置， 根据 sourceType 不同结构不同。 |
 
-|  |  | Nacos 服务发 |  |
+|   |   | Nacos 服务发 |   |
 |---|---|---|---|
-|  | 现 |  |  |
+|   | 现 |   |   |
 
 **sourceType 枚举值**
 
@@ -7301,30 +8130,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **Nacos 来源配置（sourceType = 1）**
 
-| 参数名称 | 类型 |  | 是否必选 |  | 说明 |  |  |
+| 参数名称 | 类型 |   | 是否必选 |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|
-| nacosRegistry | string |  | 是 |  | Nacos 注册中心地址，如 mse- |  |  |
-|  |  |  |  |  |  | mse- |  |
-|  |  |  |  |  | xxx.nacos.mse.aliyuncs |  |  |
-|  |  |  |  |  | .com:8848 |  |  |
-| checkType | integer |  | 是 |  | 鉴权类型：0=阿里云 AK/SK 鉴权，1=简易用户名密码鉴权。 |  |  |
-| nacosAccessKey | string |  | 否 |  | 阿里云 AccessKey（checkType= 0 时必填）。 |  |  |
-
-智能体工厂 OpenTrek
+| nacosRegistry | string |   | 是 |   | Nacos 注册中心地址，如 mse- |   |   |
+|   |   |   |   |   |   | mse- |   |
+|   |   |   |   |   | xxx.nacos.mse.aliyuncs |   |   |
+|   |   |   |   |   | .com:8848 |   |   |
+| checkType | integer |   | 是 |   | 鉴权类型：0=阿里云 AK/SK 鉴权，1=简易用户名密码鉴权。 |   |   |
+| nacosAccessKey | string |   | 否 |   | 阿里云 AccessKey（checkType= 0 时必填）。 |   |   |
 
 | nacosSecretKey | string | 否 | 阿里云 SecretKey（checkType= 0 时必填）。 |
 |---|---|---|---|
 
 **示例**：
+`{`
 
 ```json
-{
   "nacosRegistry": "mse-xxx.nacos.mse.aliyuncs.com:8848",
   "checkType": 0,
   "nacosAccessKey": "AK_xxx",
   "nacosSecretKey": "SK_xxx"
-}
 ```
+
+`}`
 
 **EDAS 来源配置（sourceType = 2）**
 
@@ -7339,34 +8167,34 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | edasSecretKey | string | 否 | 阿里云 SecretKey。 |
 
 **示例**：
+`{`
 
 ```json
-{
   "type": 0,
   "edasNameSpaceId": "namespace-001",
   "edasServerAddr": "edas-server.aliyuncs.com",
   "edasAccessKey": "AK_xxx",
   "edasSecretKey": "SK_xxx"
-}
 ```
+
+`}`
 
 **Eureka 来源配置（sourceType = 3）**
 
 | 参数名称 | 类型 | 是否必选 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | eurekaRegistry | string | 是 | Eureka 注册中心地址。 |
 |---|---|---|---|
 
 **示例**：
+`{`
 
 ```json
-{
   "eurekaRegistry": "eureka.example.com:8761"
-}
 ```
+
+`}`
 
 **K8s 来源配置（sourceType = 4）**
 
@@ -7375,12 +8203,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | k8sConfig | string | 是 | KubeConfig 内容 （Base64 编码）。 |
 
 **示例**：
+`{`
 
 ```json
-{
   "k8sConfig": "base64-encoded-kubeconfig"
-}
 ```
+
+`}`
 
 **固定节点配置（sourceType = 7）**
 
@@ -7396,30 +8225,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | nodes[].vpcMappingPort | integer | 否 | VPC 映射端口。 |
 
 **示例**：
-智能体工厂 OpenTrek
 
 ```json
-{
   "nodes": [
-    {
       "ip": "192.168.1.1",
       "port": 8080,
       "weight": 1,
       "enable": true
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "ip": "192.168.1.2",
       "port": 8080,
       "weight": 1,
       "enable": true
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **返回数据**
 
@@ -7435,10 +8259,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例 - 创建 Nacos 来源**
 
-智能体工厂 OpenTrek
+```
+POST /source/createSource HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "sourceName": "my-nacos",
   "sourceType": 1,
@@ -7448,14 +8275,19 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
     "checkType": 0,
     "nacosAccessKey": "AK_xxx",
     "nacosSecretKey": "SK_xxx"
-  }
-}
 ```
+
+`}` `}`
 
 **请求示例 - 创建固定节点来源**
 
+```
+POST /source/createSource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "sourceName": "fixed-backend",
   "sourceType": 7,
@@ -7466,46 +8298,53 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
 ```json
   "sourceStruct": {
     "nodes": [
-      {
+```
+
+`{`
+
+```json
         "ip": "192.168.1.1",
         "port": 8080,
         "weight": 1,
         "enable": true
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ip": "192.168.1.2",
         "port": 8080,
         "weight": 1,
         "enable": true
-      }
 ```
 
-]
-
-```
-  }
-}
-```
+`}` `]` `}` `}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "source-001"
-}
 ```
 
-#### deleteSource
+`}`
+
+#### 4.5.3 deleteSource
 
 **API 接口概述**
 
 **中文名称：**删除来源
+**英文名称：** deleteSource
 **功能概述：**来源管理 - 删除来源。
+**请求路径：** `/source/deleteSource`
 **请求方式：** `POST`
 **说明**：此接口用于删除指定的服务来源配置。
 
@@ -7516,13 +8355,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | sourceId | string | body | 是 | source- 001 | 要删除的来源 ID。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例唯一标识。 |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -7534,36 +8373,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | source-001 | 已删除的来源 ID。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 **请求示例**
 
+```
+POST /source/deleteSource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "sourceId": "source-001",
   "gwInstanceId": "higress-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "source-001"
-}
 ```
 
-#### getSource
+`}`
+
+#### 4.5.4 getSource
 
 **API 接口概述**
 
 **中文名称：**查询来源详情
+**英文名称：** getSource
 **功能概述：**来源管理 - 查询来源详情。
+**请求路径：** `/source/getSource`
 **请求方式：** `POST`
 **说明**：此接口用于获取单个服务来源的详细配置信息。
 
@@ -7574,17 +8423,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | sourceId | string | body | 是 | source- 001 | 来源唯一标识。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例唯一标识。 |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -7602,31 +8449,38 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.createTime | string | 2024-01- 01T00:00:00 | 创建时间。 |
 | data.updateTime | string | 2024-01- 01T00:00:00 | 更新时间。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
 **示例**
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "sourceId": "source-001",
-  "gwInstanceId": "higress-001"
-}
+```
+POST /source/getSource HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
 ```
 
-智能体工厂 OpenTrek
+`{`
+
+```json
+  "sourceId": "source-001",
+  "gwInstanceId": "higress-001"
+```
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -7640,20 +8494,26 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "checkType": 0,
       "nacosAccessKey": "AK_xxx",
       "nacosSecretKey": "SK_xxx"
-    },
+```
+
+`},`
+
+```json
     "description": "Nacos 服务发现",
     "createTime": "2024-01-01T00:00:00",
     "updateTime": "2024-01-01T00:00:00"
-  }
-}
 ```
 
-#### listAllNamespaces
+`}` `}`
+
+#### 4.5.5 listAllNamespaces
 
 **API 接口概述**
 
 **中文名称：**获取所有命名空间
+**英文名称：** listAllNamespaces
 **功能概述：**来源管理 - 查询来源下的命名空间列表。
+**请求路径：** `/source/listAllNamespaces`
 **请求方式：** `POST`
 **说明**：此接口用于查询指定服务来源（如 Nacos、EDAS）下的命名空间列表，主要用于服务发现场景。
 
@@ -7664,20 +8524,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例唯一标识。 |
 | sourceId | string | body | 是 | source- 001 | 来源唯一标识。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx | 请求ID。 |
 |---|---|---|---|
@@ -7692,61 +8550,62 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /source/listAllNamespaces HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "sourceId": "source-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": [
-    {
+```
+
+`{`
+
+```json
       "namespaceId": "public",
 ```
 
-`"namespaceName": "`公共命名空间"
+`"namespaceName": "`公共命名空间`"` `},` `{`
 
 ```json
-    },
-    {
       "namespaceId": "namespace-001",
 ```
 
-`"namespaceName": "`生产环境"
+`"namespaceName": "`生产环境`"` `},` `{`
 
 ```json
-    },
-    {
       "namespaceId": "namespace-002",
 ```
 
-`"namespaceName": "`测试环境"
+`"namespaceName": "`测试环境`"` `}` `]` `}`
 
-```
-    }
-```
-
-]
-
-```
-}
-```
-
-#### listAllSources
+#### 4.5.6 listAllSources
 
 **API 接口概述**
 
 **中文名称：**获取所有来源
+**英文名称：** listAllSources
 **功能概述：**来源管理 - 全量查询来源列表。
+**请求路径：** `/source/listAllSources`
 **请求方式：** `POST`
 **说明**：此接口用于全量查询指定网关实例下的所有服务来源（不分页）。
 
@@ -7758,16 +8617,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型过滤。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否容灾来源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx | 请求ID。 |
 |---|---|---|---|
@@ -7785,54 +8642,62 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "higress-001"
-}
 ```
+POST /source/listAllSources HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "higress-001"
+```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": [
-    {
+```
+
+`{`
+
+```json
       "sourceId": "source-001",
       "sourceName": "my-nacos",
       "sourceType": 1,
       "sourceTypeName": "Nacos",
 ```
 
-`"description": "Nacos` 服务发现"
+`"description": "Nacos` 服务发现`"` `},` `{`
 
 ```json
-    },
-    {
       "sourceId": "source-002",
       "sourceName": "my-eureka",
       "sourceType": 3,
       "sourceTypeName": "Eureka",
       "description": "Eureka 服务发现"
-    }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-#### listSources
+#### 4.5.7 listSources
 
 **API 接口概述**
 
 **中文名称：**查询来源列表
+**英文名称：** listSources
 **功能概述：**来源管理 - 分页查询来源列表。
+**请求路径：** `/source/listSources`
 **请求方式：** `POST`
 **说明**：此接口用于分页查询指定网关实例下的服务来源列表。
 
@@ -7845,15 +8710,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | size | integer | body | 是 | 10 | 每页大小。 |
 | sourceId | string | body | 否 | source- 001 | 来源 ID 精确检索。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 | sourceName | string | body | 否 | nacos | 来源名称模糊检索。 |
 |---|---|---|---|---|---|
@@ -7879,39 +8742,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records[].sourceTyp eName | string | Nacos | 类型名称。 |
 | data.records[].descriptio n | string | Nacos 服务发现 | 描述信息。 |
 
-智能体工厂 OpenTrek
-
 | data.records[].createTim e | string | 2024-01- 01T00:00:00 | 创建时间。 |
 |---|---|---|---|
 | data.records[].updateTi me | string | 2024-01- 01T00:00:00 | 更新时间。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /source/listSources HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "current": 1,
   "size": 10,
   "sourceName": "nacos"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -7920,7 +8790,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "total": 2,
     "current": 1,
     "records": [
-      {
+```
+
+`{`
+
+```json
         "sourceId": "source-001",
         "sourceName": "my-nacos",
         "sourceType": 1,
@@ -7928,8 +8802,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "description": "Nacos 服务发现",
         "createTime": "2024-01-01T00:00:00",
         "updateTime": "2024-01-01T00:00:00"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "sourceId": "source-002",
         "sourceName": "my-nacos-backup",
         "sourceType": 1,
@@ -7937,22 +8814,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "description": "备用 Nacos",
         "createTime": "2024-01-02T00:00:00",
         "updateTime": "2024-01-02T00:00:00"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-#### modifySource
+#### 4.5.8 modifySource
 
 **API 接口概述**
 
 **中文名称：**修改来源
+**英文名称：** modifySource
 **功能概述：**来源管理 - 修改来源。
+**请求路径：** `/source/modifySource`
 **请求方式：** `POST`
 **说明**：此接口用于修改现有的服务来源配置。
 
@@ -7962,11 +8835,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | sourceId | string | body | 是 | source- 001 | 来源唯一标识。 |
 
-|  |  | source- |
+|   |   | source- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例唯一标识。 |
 |---|---|---|---|---|---|
@@ -7975,17 +8846,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | description | string | body | 否 | 更新后的 Nacos 配置 | 备注说明。 |
 | sourceType | integer | body | 否 | 1 | 来源类型。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-nacos- | 来源 |
+|   |   | my-nacos- | 来源 |
 |---|---|---|---|
-|  | updated |  |  |
+|   | updated |   |   |
 
-|  |  | 更新后的 | 备注 |
+|   |   | 更新后的 | 备注 |
 |---|---|---|---|
-|  | Nacos 配置 |  |  |
+|   | Nacos 配置 |   |   |
 
 **说明**： `sourceStruct` 的结构请参考createSource接口文档中的 `sourceStruct` 结构说明。
 
@@ -8003,10 +8874,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /source/modifySource HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "sourceId": "source-001",
   "gwInstanceId": "higress-001",
   "sourceName": "my-nacos-updated",
@@ -8020,29 +8894,41 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
     "checkType": 0,
     "nacosAccessKey": "AK_new",
     "nacosSecretKey": "SK_new"
-  }
-}
 ```
+
+`}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "source-001"
-}
 ```
 
-### 插件
+`}`
 
-#### createCustomWasmPlugin
+### 4.6 插件
+
+#### 4.6.1 createCustomWasmPlugin
 
 **API 接口概述**
 
 **中文名称：**创建自定义WASM插件
+**英文名称：** createCustomWasmPlugin
 **功能概述：**插件管理 - 创建自定义WASM插件。
+
+```
+请求路径： /plugin/createCustomWasmPlugin
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -8051,54 +8937,52 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-智能体工厂 OpenTrek
-
-|  | pluginName |  |  | string |  | body |  |  |  | 是 |  |  | my-custom- plugin |  | 插件名称。 |  |
+|   | pluginName |   |   | string |   | body |   |   |   | 是 |   |   | my-custom- plugin |   | 插件名称。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | category |  |  | string |  | body |  |  |  | 否 |  |  | auth |  | 插件分类。 |  |
-|  | title |  |  | string |  | body |  |  |  | 是 |  |  | 自定义认证插件 |  | 插件显示标题。 |  |
-|  | description |  |  | string |  | body |  |  |  | 是 |  |  | 用于API请求认证的自定义插件 |  | 插件显示描述。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | 用于API请求认 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 证的自定义插 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 件 |  |  |  |
-|  | imageRepositor y |  |  | string |  | body |  |  |  | 是 |  |  | registry.exa |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | registry.exa |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | mple.com/my- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 插件 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | plugin |  |  |  |
-|  | imagePullPolicy |  |  | string |  | body |  |  |  | 是 |  |  | IfNotPresent |  | 插件镜像拉取策略。 |  |
-|  | imagePullSecre t |  |  | string |  | body |  |  |  | 否 |  |  | my-secret |  | 插件镜像拉取密钥。 |  |
-|  | phase |  |  | string (枚 |  | body |  |  |  | 是 |  |  | AUTH |  | 执行阶段。 |  |
-|  |  |  |  |  | string (枚 |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | 举: |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  | hase |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | PluginPhase) |  |  |  |  |  |  |  |  |  |  |  |  |
-|  | priority |  |  | integer |  | body |  |  |  | 是 |  |  | 100 |  | 插件执行优先级。 |  |
-|  | example |  |  | string |  | body |  |  |  | 否 |  |  | {"timeout":3 0} |  | 配置示例。 |  |
-|  | document |  |  | string |  | body |  |  |  | 否 |  |  | https://docs |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | https://docs |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | .example.com/ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 插件文 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | plugin |  |  |  |
+|   | category |   |   | string |   | body |   |   |   | 否 |   |   | auth |   | 插件分类。 |   |
+|   | title |   |   | string |   | body |   |   |   | 是 |   |   | 自定义认证插件 |   | 插件显示标题。 |   |
+|   | description |   |   | string |   | body |   |   |   | 是 |   |   | 用于API请求认证的自定义插件 |   | 插件显示描述。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | 用于API请求认 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 证的自定义插 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 件 |   |   |   |
+|   | imageRepositor y |   |   | string |   | body |   |   |   | 是 |   |   | registry.exa |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | registry.exa |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | mple.com/my- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 插件 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | plugin |   |   |   |
+|   | imagePullPolicy |   |   | string |   | body |   |   |   | 是 |   |   | IfNotPresent |   | 插件镜像拉取策略。 |   |
+|   | imagePullSecre t |   |   | string |   | body |   |   |   | 否 |   |   | my-secret |   | 插件镜像拉取密钥。 |   |
+|   | phase |   |   | string (枚 |   | body |   |   |   | 是 |   |   | AUTH |   | 执行阶段。 |   |
+|   |   |   |   |   | string (枚 |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | 举: |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   | hase |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | PluginPhase) |   |   |   |   |   |   |   |   |   |   |   |   |
+|   | priority |   |   | integer |   | body |   |   |   | 是 |   |   | 100 |   | 插件执行优先级。 |   |
+|   | example |   |   | string |   | body |   |   |   | 否 |   |   | {"timeout":3 0} |   | 配置示例。 |   |
+|   | document |   |   | string |   | body |   |   |   | 否 |   |   | https://docs |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | https://docs |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | .example.com/ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 插件文 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | plugin |   |   |   |
 
-|  |  | my-custom- | 插件 |
+|   |   | my-custom- | 插件 |
 |---|---|---|---|
-|  | plugin |  |  |
+|   | plugin |   |   |
 
-|  |  | 自定义认证插 |
+|   |   | 自定义认证插 |
 |---|---|---|
-|  | 件 |  |
+|   | 件 |   |
 
-|  |  | IfNotPresent |
+|   |   | IfNotPresent |
 |---|---|---|
 
-|  |  | {"timeout":3 | 配 |
+|   |   | {"timeout":3 | 配 |
 |---|---|---|---|
-|  | 0} |  |  |
+|   | 0} |   |   |
 
 **返回数据**
 
@@ -8106,8 +8990,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 | code | integer | 200 | 响应码。 |
-
-智能体工厂 OpenTrek
 
 | msg | string | success | 响应消息。 |
 |---|---|---|---|
@@ -8118,8 +9000,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /plugin/createCustomWasmPlugin HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "pluginName": "pluginName_value",
   "category": "category_value",
@@ -8132,27 +9019,39 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "priority": 0,
   "example": "example_value",
   "document": "document_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteCustomWasmPlugin
+`}`
+
+#### 4.6.2 deleteCustomWasmPlugin
 
 **API 接口概述**
 
 **中文名称：**删除自定义WASM插件
+**英文名称：** deleteCustomWasmPlugin
 **功能概述：**插件管理 - 删除自定义WASM插件。
-智能体工厂 OpenTrek
+
+```
+请求路径： /plugin/deleteCustomWasmPlugin
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -8162,13 +9061,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | pluginName | string | body | 是 | my-custom- plugin | 插件名称。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-custom- | 插件 |
+|   |   | my-custom- | 插件 |
 |---|---|---|---|
-|  | plugin |  |  |
+|   | plugin |   |   |
 
 **返回数据**
 
@@ -8184,32 +9083,44 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /plugin/deleteCustomWasmPlugin HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "pluginName": "pluginName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getCustomWasmPlugin
+`}`
+
+#### 4.6.3 getCustomWasmPlugin
 
 **API 接口概述**
 
 **中文名称：**查询自定义WASM插件详情
+**英文名称：** getCustomWasmPlugin
 **功能概述：**插件管理 - 查询自定义WASM插件详情。
+**请求路径：** `/plugin/getCustomWasmPlugin`
 **请求方式：** `POST`
 
 **请求参数**
@@ -8219,13 +9130,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | pluginName | string | body | 是 | my-custom- plugin | 插件名称。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-custom- | 插件 |
+|   |   | my-custom- | 插件 |
 |---|---|---|---|
-|  | plugin |  |  |
+|   | plugin |   |   |
 
 **返回数据**
 
@@ -8237,8 +9148,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | object | - | 响应数据。 |
 | data.pluginName | string | my-custom-plugin | 插件名称。 |
-
-智能体工厂 OpenTrek
 
 | data.category | string | auth | 插件分类。 |
 |---|---|---|---|
@@ -8253,13 +9162,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.priority | integer | 100 | 插件执行优先级。 |
 | data.gwInstanceId | string | higress-001 | 网关实例ID。 |
 
-|  | 用于API请求认证的自定义 | 插 |
+|   | 用于API请求认证的自定义 | 插 |
 |---|---|---|
-| 插件 |  |  |
+| 插件 |   |   |
 
-|  | https://docs.example | 插件文档链接 |
+|   | https://docs.example | 插件文档链接 |
 |---|---|---|
-| .com/plugin |  |  |
+| .com/plugin |   |   |
 
 | registry.example.com | 插件镜像仓 |
 |---|---|
@@ -8268,19 +9177,28 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /plugin/getCustomWasmPlugin HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "pluginName": "pluginName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -8297,16 +9215,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "phase": "phase_value",
         "priority": 0,
         "gwInstanceId": "gwInstanceId_value"
-    }
-}
 ```
 
-#### modifyCustomWasmPlugin
+`}` `}`
+
+#### 4.6.4 modifyCustomWasmPlugin
 
 **API 接口概述**
 
 **中文名称：**修改自定义WASM插件
+**英文名称：** modifyCustomWasmPlugin
 **功能概述：**插件管理 - 编辑自定义WASM插件。
+
+```
+请求路径： /plugin/modifyCustomWasmPlugin
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -8318,55 +9242,53 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | category | string | body | 否 | auth | 插件分类。 |
 | title | string | body | 是 | 自定义认证插件 | 插件显示标题。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-custom- | 插件 |
+|   |   | my-custom- | 插件 |
 |---|---|---|---|
-|  | plugin |  |  |
+|   | plugin |   |   |
 
-|  |  | 自定义认证插 |
+|   |   | 自定义认证插 |
 |---|---|---|
-|  | 件 |  |
+|   | 件 |   |
 
-智能体工厂 OpenTrek
-
-|  | description |  |  | string |  | body |  |  |  |  |  |  |  | 用于自定义认 |  | 插件显示描述。 |  |
+|   | description |   |   | string |   | body |   |   |   |   |   |   |   | 用于自定义认 |   | 插件显示描述。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 用于自定义认 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | 证逻辑的WASM插 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 是 |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | 件 |  |  |  |
-|  | imageRepositor y |  |  | string |  | body |  |  |  | 是 |  |  |  | registry.exa |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | registry.exa | 插件镜像仓库地 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | mple.com/plug |  | 插件镜像 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 址。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | ins/auth |  |  |  |
-|  | imagePullPolicy |  |  | string |  | body |  |  |  | 是 |  |  |  | IfNotPresent |  | 插件镜像拉取策略。 |  |
-|  | imagePullSecre t |  |  | string |  | body |  |  |  | 否 |  |  |  | docker- |  | 插件镜像拉取密钥。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | docker- | 插件镜像拉 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | registry- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | secret |  |  |  |
-|  | phase |  |  | string (枚 |  | body |  |  |  | 是 |  |  |  | AUTHN |  | 执行阶段。 |  |
-|  |  |  |  |  | string (枚 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | 举: |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  | hase |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | PluginPhase) |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  | priority |  |  | integer |  | body |  |  |  | 是 |  |  |  | 100 |  | 插件在指定阶段中的执行优先级。 |  |
-|  | example |  |  | string |  | body |  |  |  | 否 |  |  |  | {"rules": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | {"rules": |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 配置示 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | "header"}]} |  |  |  |
-|  | document |  |  | string |  | body |  |  |  | 否 |  |  |  | https://docs |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | https://docs |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | .example.com/ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 插件文 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | plugin |  |  |  |
-|  | version |  |  | string |  | body |  |  |  | 否 |  |  |  | 1.0.0 |  | 版本号。 |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 用于自定义认 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | 证逻辑的WASM插 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 是 |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | 件 |   |   |   |
+|   | imageRepositor y |   |   | string |   | body |   |   |   | 是 |   |   |   | registry.exa |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | registry.exa | 插件镜像仓库地 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | mple.com/plug |   | 插件镜像 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 址。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | ins/auth |   |   |   |
+|   | imagePullPolicy |   |   | string |   | body |   |   |   | 是 |   |   |   | IfNotPresent |   | 插件镜像拉取策略。 |   |
+|   | imagePullSecre t |   |   | string |   | body |   |   |   | 否 |   |   |   | docker- |   | 插件镜像拉取密钥。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | docker- | 插件镜像拉 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | registry- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | secret |   |   |   |
+|   | phase |   |   | string (枚 |   | body |   |   |   | 是 |   |   |   | AUTHN |   | 执行阶段。 |   |
+|   |   |   |   |   | string (枚 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | 举: |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   | hase |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | PluginPhase) |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   | priority |   |   | integer |   | body |   |   |   | 是 |   |   |   | 100 |   | 插件在指定阶段中的执行优先级。 |   |
+|   | example |   |   | string |   | body |   |   |   | 否 |   |   |   | {"rules": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | {"rules": |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 配置示 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | "header"}]} |   |   |   |
+|   | document |   |   | string |   | body |   |   |   | 否 |   |   |   | https://docs |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | https://docs |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | .example.com/ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 插件文 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | plugin |   |   |   |
+|   | version |   |   | string |   | body |   |   |   | 否 |   |   |   | 1.0.0 |   | 版本号。 |   |
 
-|  |  | IfNotPresent |
+|   |   | IfNotPresent |
 |---|---|---|
 
 **返回数据**
@@ -8377,8 +9299,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | message | string | success | 响应消息。 |
 |---|---|---|---|
 | data | string | my-custom-plugin | 响应数据。 |
@@ -8387,8 +9307,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /plugin/modifyCustomWasmPlugin HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "pluginName": "my-custom-plugin",
   "category": "auth",
@@ -8405,29 +9330,36 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "example": "{\"rules\": [{\"key\": \"header\"}]}",
   "document": "https://docs.example.com/plugin",
   "version": "1.0.0"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "my-custom-plugin"
-}
 ```
 
-### 消费者
+`}`
 
-#### batchCreateAppAuthByRoute
+### 4.7 消费者
+
+#### 4.7.1 batchCreateAppAuthByRoute
 
 **API 接口概述**
 
 **中文名称：**批量创建消费者授权
+**英文名称：** batchCreateAppAuthByRoute
 **功能概述：**应用授权管理 - 批量创建应用授权与认证绑定（支持 grantType）。
-智能体工厂 OpenTrek
 
 ```
 请求路径： /applicationauth/batchCreateAppAuthByRoute
@@ -8437,27 +9369,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|---|
-| gwInstanceId | string | body |  | 是 |  | higress- 001 |  | 网关实例ID。 |
-| appId | string | body |  | 是 |  | app-001 |  | 应用ID。 |
-| routeId | string[] | body |  | 否 |  | ["route- |  | 路由ID列表。 |
-|  |  |  |  |  |  |  | ["route- |  |
-|  |  |  |  |  |  | 001", "route- |  |  |
-|  |  |  |  |  |  |  |  | 路由 |
-|  |  |  |  |  |  | 002"] |  |  |
-| authStatus | integer | body |  | 是 |  | 1 |  | 授权状态。 |
-| isDisasterReco very | boolean | body |  | 否 |  | false |  | 是否为容灾资源。 |
-| grantType | string | body |  | 否 |  | route |  | 授权类型。 |
-| grantTargetIds | string[] | body |  | 否 |  | ["route- |  | 授权目标ID列表。 |
-|  |  |  |  |  |  |  | ["route- | 授权目标ID列 |
-|  |  |  |  |  |  | 001", "route- |  | 授权 |
-|  |  |  |  |  |  |  |  | 表。 |
-|  |  |  |  |  |  | 002"] |  |  |
+| gwInstanceId | string | body |   | 是 |   | higress- 001 |   | 网关实例ID。 |
+| appId | string | body |   | 是 |   | app-001 |   | 应用ID。 |
+| routeId | string[] | body |   | 否 |   | ["route- |   | 路由ID列表。 |
+|   |   |   |   |   |   |   | ["route- |   |
+|   |   |   |   |   |   | 001", "route- |   |   |
+|   |   |   |   |   |   |   |   | 路由 |
+|   |   |   |   |   |   | 002"] |   |   |
+| authStatus | integer | body |   | 是 |   | 1 |   | 授权状态。 |
+| isDisasterReco very | boolean | body |   | 否 |   | false |   | 是否为容灾资源。 |
+| grantType | string | body |   | 否 |   | route |   | 授权类型。 |
+| grantTargetIds | string[] | body |   | 否 |   | ["route- |   | 授权目标ID列表。 |
+|   |   |   |   |   |   |   | ["route- | 授权目标ID列 |
+|   |   |   |   |   |   | 001", "route- |   | 授权 |
+|   |   |   |   |   |   |   |   | 表。 |
+|   |   |   |   |   |   | 002"] |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -8469,14 +9401,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | success | 响应数据。 |
 
-**示例**
-
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /applicationauth/batchCreateAppAuthByRoute HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /applicationauth/batchCreateAppAuthByRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "appId": "appId_value",
   "routeId": [],
@@ -8484,26 +9417,35 @@ POST /applicationauth/batchCreateAppAuthByRoute HTTP/1.1 Host: localhost:80 Cont
   "isDisasterRecovery": true,
   "grantType": "grantType_value",
   "grantTargetIds": []
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### batchDeleteApp
+`}`
+
+#### 4.7.2 batchDeleteApp
 
 **API 接口概述**
 
 **中文名称：**批量删除消费者
+**英文名称：** batchDeleteApp
 **功能概述：**消费者管理 - 批量删除消费者。
+**请求路径：** `/application/batchDeleteApp`
 **请求方式：** `POST`
 
 **请求参数**
@@ -8513,17 +9455,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | appIds | string[] | body | 是 | ["app-001", "app-002"] | 应用ID列表。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | ["app-001", | 应用ID列表 |
+|   |   | ["app-001", | 应用ID列表 |
 |---|---|---|---|
-|  | "app-002"] |  |  |
+|   | "app-002"] |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8539,34 +9479,50 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /application/batchDeleteApp HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "appIds": [],
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": {
         "successIds": [],
         "failedIds": []
-    }
-}
 ```
 
-#### createAppAuthByRoute
+`}` `}`
+
+#### 4.7.3 createAppAuthByRoute
 
 **API 接口概述**
 
-智能体工厂 OpenTrek
 **中文名称：**创建消费者授权
+**英文名称：** createAppAuthByRoute
 **功能概述：**应用授权管理 - 创建应用授权与认证绑定（支持 grantType）。
+
+```
+请求路径： /applicationauth/createAppAuthByRoute
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -8583,9 +9539,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | grantType | string | body | 否 | route | 授权类型。 |
 | grantTargetId | string | body | 否 | route-001 | 授权目标ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -8596,8 +9552,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | msg | string | success | 响应消息。 |
 | message | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | data | string | auth-001 | 响应数据。 |
 |---|---|---|---|
 
@@ -8605,8 +9559,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /applicationauth/createAppAuthByRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /applicationauth/createAppAuthByRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "appId": "appId_value",
   "authId": "authId_value",
@@ -8616,25 +9575,33 @@ POST /applicationauth/createAppAuthByRoute HTTP/1.1 Host: localhost:80 Content-T
   "isDisasterRecovery": true,
   "grantType": "grantType_value",
   "grantTargetId": "grantTargetId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### createConsumer
+`}`
+
+#### 4.7.4 createConsumer
 
 **API 接口概述**
 
 **中文名称：**创建消费者
+**英文名称：** createConsumer
 **功能概述：**消费者管理 - 创建消费者。
 **请求路径：** `/application/createApp`
 **请求方式：** `POST`
@@ -8644,60 +9611,56 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| key | string |  | body |  |  |  | 是 |  | api-key- 001 |  | Key Auth认证时的Key。 |  |
+| key | string |   | body |   |   |   | 是 |   | api-key- 001 |   | Key Auth认证时的Key。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| payload | object |  | body |  |  |  |  |  | {"subject": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | {"subject": | JWT认证时的 |  |
-|  |  |  |  |  |  |  |  |  | "user-001", |  |  |  |
-|  |  |  |  | body |  |  |  |  |  |  | payload配置 |  |
-|  |  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "issuer": |  | （包含 |  |
-|  |  |  |  |  |  |  |  |  | "my-app"} |  |  |  |
-| oauth2Payload | object |  | body |  |  |  | 否 |  | {"clientId": |  | OAuth2认证时的配置。 |  |
-|  |  |  |  |  |  |  |  |  |  | {"clientId": | OAuth2认证时 |  |
-|  |  |  |  |  |  |  |  |  | "client- |  |  |  |
-|  |  |  |  |  |  |  |  |  | 001"} |  |  |  |
-| password | string |  | body |  |  |  | 否 |  | password123 |  | Basic Auth认证时的密码。 |  |
-| expireTime | integer |  | body |  |  |  | 否 |  | 3600 |  | 过期时间。 |  |
-| appSecret | string |  | body |  |  |  | 否 |  | secret- abc123 |  | 应用Secret。 |  |
-| requestHeader | string |  | body |  |  |  | 否 |  | X-Custom- Header |  | 认证请求头名称。 |  |
-| token | string |  | body |  |  |  | 否 |  | token- xyz789 |  | Token。 |  |
-| useAuth | boolean |  | body |  |  |  | 否 |  | true |  | 是否启用认证。 |  |
-| appId | string |  | body |  |  |  | 否 |  | app-001 |  | 应用ID。 |  |
-| authType | integer |  | body |  |  |  | 是 |  | 1 |  | 认证类型。 0 =无认证， 1 =Key Auth， 2 =B asic Auth， 3 =J WT， 4 =OA uth2。 |  |
-| useWhiteList | boolean |  | body |  |  |  | 否 |  | false |  | 是否启用IP白名单。 |  |
-| ipWhiteList | string |  | body |  |  |  | 否 |  | 192.168.1.0/ 24,10.0.0.1 |  | IP白名单，逗号分隔。 |  |
+| payload | object |   | body |   |   |   |   |   | {"subject": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | {"subject": | JWT认证时的 |   |
+|   |   |   |   |   |   |   |   |   | "user-001", |   |   |   |
+|   |   |   |   | body |   |   |   |   |   |   | payload配置 |   |
+|   |   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "issuer": |   | （包含 |   |
+|   |   |   |   |   |   |   |   |   | "my-app"} |   |   |   |
+| oauth2Payload | object |   | body |   |   |   | 否 |   | {"clientId": |   | OAuth2认证时的配置。 |   |
+|   |   |   |   |   |   |   |   |   |   | {"clientId": | OAuth2认证时 |   |
+|   |   |   |   |   |   |   |   |   | "client- |   |   |   |
+|   |   |   |   |   |   |   |   |   | 001"} |   |   |   |
+| password | string |   | body |   |   |   | 否 |   | password123 |   | Basic Auth认证时的密码。 |   |
+| expireTime | integer |   | body |   |   |   | 否 |   | 3600 |   | 过期时间。 |   |
+| appSecret | string |   | body |   |   |   | 否 |   | secret- abc123 |   | 应用Secret。 |   |
+| requestHeader | string |   | body |   |   |   | 否 |   | X-Custom- Header |   | 认证请求头名称。 |   |
+| token | string |   | body |   |   |   | 否 |   | token- xyz789 |   | Token。 |   |
+| useAuth | boolean |   | body |   |   |   | 否 |   | true |   | 是否启用认证。 |   |
+| appId | string |   | body |   |   |   | 否 |   | app-001 |   | 应用ID。 |   |
+| authType | integer |   | body |   |   |   | 是 |   | 1 |   | 认证类型。 0 =无认证， 1 =Key Auth， 2 =B asic Auth， 3 =J WT， 4 =OA uth2。 |   |
+| useWhiteList | boolean |   | body |   |   |   | 否 |   | false |   | 是否启用IP白名单。 |   |
+| ipWhiteList | string |   | body |   |   |   | 否 |   | 192.168.1.0/ 24,10.0.0.1 |   | IP白名单，逗号分隔。 |   |
 
-|  |  | api-key- |
+|   |   | api-key- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  | password123 |
+|   | password123 |
 |---|---|
 
-|  |  | secret- |  |
+|   |   | secret- |   |
 |---|---|---|---|
-|  | abc123 |  |  |
+|   | abc123 |   |   |
 
-|  |  | X-Custom- | 认 |
+|   |   | X-Custom- | 认 |
 |---|---|---|---|
-|  | Header |  |  |
+|   | Header |   |   |
 
-|  |  | token- |
+|   |   | token- |
 |---|---|---|
-|  | xyz789 |  |
+|   | xyz789 |   |
 
-|  | 3 |
+|   | 3 |
 |---|---|
-| 4 |  |
+| 4 |   |
 
-|  |  | 192.168.1.0/ | IP白名单，逗 |
+|   |   | 192.168.1.0/ | IP白名单，逗 |
 |---|---|---|---|
-|  | 24,10.0.0.1 |  |  |
-
-智能体工厂 OpenTrek
+|   | 24,10.0.0.1 |   |   |
 
 | appName | string | body | 是 | my- consumer | 消费者名称。 |
 |---|---|---|---|---|---|
@@ -8714,28 +9677,26 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | apiKeyLocation Type | string | body | 否 | HEADER | API Key位置类型。可选值： HEADER （放在请求头中）、 QUERY （放在查询参数中）、 BEARER （Bearer Token认证）。 |
 | keyName | string | body | 否 | X-API-Key | Key名称。 |
 
-|  |  | my- |
+|   |   | my- |
 |---|---|---|
-|  | consumer |  |
+|   | consumer |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | app-key- |
+|   |   | app-key- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | ["group- |  |
+|   |   | ["group- |   |
 |---|---|---|---|
-|  | 001"] |  |  |
+|   | 001"] |   |   |
 
 **payload 对象结构**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | subject | string | body | 否 | user-001 | JWT Subject标识。 |
 |---|---|---|---|---|---|
@@ -8743,38 +9704,36 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **oauth2Payload 对象结构**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|
-| scopes | string | body | 否 |  | read,write |  | OAuth2授权范围。 |
-| authorizationC ode | boolean | body | 否 |  | true |  | 是否启用授权码模式。 |
-| clientCredentia ls | boolean | body | 否 |  | false |  | 是否启用客户端凭证模式。 |
-| implicitGrant | boolean | body | 否 |  | false |  | 是否启用隐式授权模式。 |
-| passwordGrant | boolean | body | 否 |  | false |  | 是否启用密码模式。 |
-| tokenExpiratio n | integer | body | 否 |  | 3600 |  | Token过期时间 （秒）。 |
-| refreshTokenEx piration | integer | body | 否 |  | 86400 |  | Refresh Token 过期时间 （秒）。 |
-| clientId | string | body | 否 |  | client- 001 |  | OAuth2客户端 ID。 |
-| clientSecret | string | body | 否 |  | secret- abc123 |  | OAuth2客户端 Secret。 |
-| redirectUris | string | body | 否 |  | https://exam |  |  |
-|  |  |  |  |  |  | https://exam | OAuth2回调地 |
-|  |  |  |  |  | ple.com/callb |  | O |
-|  |  |  |  |  |  |  | 址 |
-|  |  |  |  |  | ack |  |  |
-| pkce | boolean | body | 否 |  | true |  | 是否启用PKCE。 |
+| scopes | string | body | 否 |   | read,write |   | OAuth2授权范围。 |
+| authorizationC ode | boolean | body | 否 |   | true |   | 是否启用授权码模式。 |
+| clientCredentia ls | boolean | body | 否 |   | false |   | 是否启用客户端凭证模式。 |
+| implicitGrant | boolean | body | 否 |   | false |   | 是否启用隐式授权模式。 |
+| passwordGrant | boolean | body | 否 |   | false |   | 是否启用密码模式。 |
+| tokenExpiratio n | integer | body | 否 |   | 3600 |   | Token过期时间 （秒）。 |
+| refreshTokenEx piration | integer | body | 否 |   | 86400 |   | Refresh Token 过期时间 （秒）。 |
+| clientId | string | body | 否 |   | client- 001 |   | OAuth2客户端 ID。 |
+| clientSecret | string | body | 否 |   | secret- abc123 |   | OAuth2客户端 Secret。 |
+| redirectUris | string | body | 否 |   | https://exam |   |   |
+|   |   |   |   |   |   | https://exam | OAuth2回调地 |
+|   |   |   |   |   | ple.com/callb |   | O |
+|   |   |   |   |   |   |   | 址 |
+|   |   |   |   |   | ack |   |   |
+| pkce | boolean | body | 否 |   | true |   | 是否启用PKCE。 |
 
-|  |  | read,write |
+|   |   | read,write |
 |---|---|---|
 
-|  |  | client- |
+|   |   | client- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | secret- |  |
+|   |   | secret- |   |
 |---|---|---|---|
-|  | abc123 |  |  |
+|   | abc123 |   |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8788,15 +9747,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /application/createApp HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /application/createApp HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "key": "key_value",
   "payload": {
     "subject": "subject_value",
     "issuer": "issuer_value"
-  },
+```
+
+`},`
+
+```json
   "oauth2Payload": {
     "scopes": "scopes_value",
     "authorizationCode": true,
@@ -8809,7 +9775,11 @@ POST /application/createApp HTTP/1.1 Host: localhost:80 Content-Type: applicatio
     "clientSecret": "clientSecret_value",
     "redirectUris": "redirectUris_value",
     "pkce": true
-  },
+```
+
+`},`
+
+```json
   "password": "password_value",
   "expireTime": 0,
   "appSecret": "appSecret_value",
@@ -8833,28 +9803,35 @@ POST /application/createApp HTTP/1.1 Host: localhost:80 Content-Type: applicatio
   "isDisasterRecovery": true,
   "apiKeyLocationType": "apiKeyLocationType_value",
   "keyName": "keyName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteApp
+`}`
+
+#### 4.7.5 deleteApp
 
 **API 接口概述**
 
 **中文名称：**删除消费者
+**英文名称：** deleteApp
 **功能概述：**消费者管理 - 删除消费者。
+**请求路径：** `/application/deleteApp`
 **请求方式：** `POST`
 
 **请求参数**
@@ -8864,9 +9841,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | appId | string | body | 是 | app-001 | 应用ID。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -8878,36 +9855,50 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | app-001 | 响应数据。 |
 
-**示例**
-
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /application/deleteApp HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "appId": "appId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteAppAuth
+`}`
+
+#### 4.7.6 deleteAppAuth
 
 **API 接口概述**
 
 **中文名称：**删除消费者授权
+**英文名称：** deleteAppAuth
 **功能概述：**消费者管理 - 删除消费者授权。
+
+```
+请求路径： /applicationauth/deleteAppAuth
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -8918,16 +9909,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | isStop | boolean | body | 否 | false | 是否停止。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 |---|---|---|---|
@@ -8940,45 +9929,57 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /applicationauth/deleteAppAuth HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "authId": "authId_value",
   "gwInstanceId": "gwInstanceId_value",
   "isStop": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getApp
+`}`
+
+#### 4.7.7 getApp
 
 **API 接口概述**
 
 **中文名称：**查询消费者详情
+**英文名称：** getApp
 **功能概述：**消费者管理 - 根据 AppId 获取消费者详情。
+**请求路径：** `/application/getApp`
 **请求方式：** `POST`
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | appId | string | body | 是 | app-001 | 应用ID。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -8997,8 +9998,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.authTypeName | string | Key Auth | 认证类型名称。 |
 | data.ipWhiteList | string | 192.168.1.0/24 | IP白名单。 |
 | data.useWhiteList | boolean | false | 是否启用IP白名单。 |
-
-智能体工厂 OpenTrek
 
 | data.description | string | 测试应用 | 描述信息。 |
 |---|---|---|---|
@@ -9022,11 +10021,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | [{"key":"env","value | 应用标签列 |
 |---|---|
 
-|  | eyJhbGciOiJIUzI1NiIs | To |
+|   | eyJhbGciOiJIUzI1NiIs | To |
 |---|---|---|
-| ... |  |  |
-
-智能体工厂 OpenTrek
+| ... |   |   |
 
 | data.oauth2Payload.clien tSecret | string | secret-xxx | OAuth2客户端Secret。 |
 |---|---|---|---|
@@ -9047,20 +10044,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe.routeInfos | StrategyConfigScopeD TO$ScopeTargetDTO[] | - | 路由信息列表。 |
 | data.strategyConfigs.sco pe.routeInfos.name | string | my-route | 路由名称。 |
 
-|  | https://example.com/ | OAuth2 |
+|   | https://example.com/ | OAuth2 |
 |---|---|---|
-| callback |  |  |
+| callback |   |   |
 
-|  |  | StrategyConfigRelati | - |  |
+|   |   | StrategyConfigRelati | - |   |
 |---|---|---|---|---|
-|  |  |  |  | - |
-| a.strategyConfigs | on[] |  |  |  |
+|   |   |   |   | - |
+| a.strategyConfigs | on[] |   |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| routeInfos | TO$ScopeTargetDTO[] |  |  |
-
-智能体工厂 OpenTrek
+| routeInfos | TO$ScopeTargetDTO[] |   |   |
 
 | data.strategyConfigs.sco pe.routeInfos.id | string | route-001 | 路由ID。 |
 |---|---|---|---|
@@ -9079,27 +10074,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe.scopes | string[] | ["read","write"] | OAuth2授权范围。 |
 | data.strategyConfigs.cre ateTime | string | 2024-01-01 10:00:00 | 创建时间。 |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| serviceInfos | TO$ScopeTargetDTO[] |  |  |
+| serviceInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| appInfos | TO$ScopeTargetDTO[] |  |  |
+| appInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| domainInfos | TO$ScopeTargetDTO[] |  |  |
+| domainInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| mcpServerInfos | TO$ScopeTargetDTO[] |  |  |
+| mcpServerInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 10:00:00 |   |
 
 | data.strategyConfigs.upd ateTime | string | 2024-01-02 10:00:00 | 更新时间。 |
 |---|---|---|---|
@@ -9109,25 +10102,36 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.apiKeyLocationType | string | HEADER | API Key位置类型。 |
 | data.keyName | string | X-API-Key | Key名称。 |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /application/getApp HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "appId": "appId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -9150,11 +10154,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 "issuer":"issuervalue"
 ```
 
-智能体工厂 OpenTrek
+```
+            issuer: issuer_value
+```
+
+`},`
 
 ```json
-            issuer: issuer_value
-        },
         "oauth2Payload": {
             "scopes": "scopes_value",
             "authorizationCode": true,
@@ -9167,7 +10173,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "clientSecret": "clientSecret_value",
             "redirectUris": "redirectUris_value",
             "pkce": true
-        },
+```
+
+`},`
+
+```json
         "enable": true,
         "key": "key_value",
         "password": "password_value",
@@ -9183,45 +10193,71 @@ HTTP/1.1 200 OK Content-Type: application/json {
                 "routeInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "serviceInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "appInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "domainInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "mcpServerInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "scopes": []
-            },
+```
+
+`},`
+
+```json
             "createTime": "createTime_value",
             "updateTime": "updateTime_value"
-        },
+```
+
+`},`
+
+```json
         "appCode": "appCode_value",
         "accessKey": "accessKey_value",
         "secretKey": "secretKey_value",
         "apiKeyLocationType": "apiKeyLocationType_value",
         "keyName": "keyName_value"
-    }
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### getAppAuth
+#### 4.7.8 getAppAuth
 
 **API 接口概述**
 
 **中文名称：**查询消费者授权详情
+**英文名称：** getAppAuth
 **功能概述：**消费者管理 - 查询认证信息。
+**请求路径：** `/applicationauth/getAppAuth`
 **请求方式：** `POST`
 
 **请求参数**
@@ -9231,9 +10267,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | authId | string | body | 是 | auth-001 | 授权ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -9249,8 +10285,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.routeId | string | route-001 | 路由ID。 |
 | data.routePath | string | /api/v1/test | 路由路径。 |
 
-智能体工厂 OpenTrek
-
 | data.serviceId | integer | 2001 | 服务ID。 |
 |---|---|---|---|
 | data.serviceName | string | my-service | 服务名称。 |
@@ -9261,17 +10295,28 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /applicationauth/getAppAuth HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "authId": "authId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -9284,17 +10329,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "serviceName": "serviceName_value",
         "serviceProtocol": "serviceProtocol_value",
         "authStatus": 0
-    }
-}
 ```
 
-#### listApps
+`}` `}`
+
+#### 4.7.9 listApps
 
 **API 接口概述**
 
 **中文名称：**查询消费者列表
+**英文名称：** listApps
 **功能概述：**消费者管理 - 分页查询消费者。
-智能体工厂 OpenTrek
+**请求路径：** `/application/listApps`
 **请求方式：** `POST`
 
 **请求参数**
@@ -9316,14 +10362,12 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | userName | string | body | 否 | admin | 用户名。 |
 | email | string | body | 否 | admin@exampl e.com | 用户邮箱。 |
 
-|  |  | cn- |
+|   |   | cn- |
 |---|---|---|
-|  | hangzhou |  |
+|   | hangzhou |   |
 
-|  | e.com |
+|   | e.com |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | status | integer | body | 否 | 1 | 状态。 |
 |---|---|---|---|---|---|
@@ -9331,9 +10375,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | appType | integer | body | 否 | 1 | 应用类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -9351,8 +10395,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.appId | string | app-001 | 应用ID。 |
 | data.records.appName | string | my-app | 应用名称。 |
 | data.records.appAddress | string | 192.168.1.100:8080 | 应用地址。 |
-
-智能体工厂 OpenTrek
 
 | data.records.appTags | object[] | [{"key":"env","value ":"prod"}] | 应用标签列表。 |
 |---|---|---|---|
@@ -9372,19 +10414,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.delFlag | string | 0 | 删除标记。 |
 | data.records.isDisable | boolean | false | 是否禁用。 |
 
-|  | [{"key":"env","value |  |
+|   | [{"key":"env","value |   |
 |---|---|---|
-| ":"prod"}] |  |  |
+| ":"prod"}] |   |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 10:00:00 |   |
 
 | data.records.enable | boolean | true | 是否启用。 |
 |---|---|---|---|
@@ -9396,8 +10436,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /application/listApps HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "isShareInstance": true,
@@ -9416,15 +10461,19 @@ Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "appType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -9456,17 +10505,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "groups": [],
             "credentials": [],
             "timeOut": true
-        }
-    }
-}
 ```
 
-#### listAppsByGwInstanceId
+`}` `}` `}`
+
+#### 4.7.10 listAppsByGwInstanceId
 
 **API 接口概述**
 
 **中文名称：**按实例查询消费者
+**英文名称：** listAppsByGwInstanceId
 **功能概述：**消费者管理 - 根据网关实例查询消费者列表。
+
+```
+请求路径： /application/listAppsByGwInstanceId
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -9474,16 +10528,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -9502,10 +10554,8 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.authTypeName | string | Key Auth | 认证类型名称。 |
 | data.ipWhiteList | string | 192.168.1.0/24 | IP白名单。 |
 
-|  |  | AppDetailResponse[] |
+|   |   | AppDetailResponse[] |
 |---|---|---|
-
-智能体工厂 OpenTrek
 
 | data.useWhiteList | boolean | false | 是否启用IP白名单。 |
 |---|---|---|---|
@@ -9529,11 +10579,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | [{"key":"env","value | 应用标签列 |
 |---|---|
 
-|  | eyJhbGciOiJIUzI1NiIs | To |
+|   | eyJhbGciOiJIUzI1NiIs | To |
 |---|---|---|
-| ... |  |  |
-
-智能体工厂 OpenTrek
+| ... |   |   |
 
 | data.oauth2Payload.clien tId | string | client-001 | OAuth2客户端ID。 |
 |---|---|---|---|
@@ -9554,20 +10602,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe | object | - | 策略作用域配置。 |
 | data.strategyConfigs.sco pe.routeInfos | StrategyConfigScopeD TO$ScopeTargetDTO[] | - | 路由信息列表。 |
 
-|  | https://example.com/ | OAuth2 |
+|   | https://example.com/ | OAuth2 |
 |---|---|---|
-| callback |  |  |
+| callback |   |   |
 
-|  |  | StrategyConfigRelati | - |  |
+|   |   | StrategyConfigRelati | - |   |
 |---|---|---|---|---|
-|  |  |  |  | - |
-| a.strategyConfigs | on[] |  |  |  |
+|   |   |   |   | - |
+| a.strategyConfigs | on[] |   |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| routeInfos | TO$ScopeTargetDTO[] |  |  |
-
-智能体工厂 OpenTrek
+| routeInfos | TO$ScopeTargetDTO[] |   |   |
 
 | data.strategyConfigs.sco pe.routeInfos.name | string | my-route | 路由名称。 |
 |---|---|---|---|
@@ -9586,23 +10632,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe.mcpServerInfos.id | string | mcp-001 | MCP服务器ID。 |
 | data.strategyConfigs.sco pe.scopes | string[] | ["read","write"] | OAuth2授权范围。 |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| serviceInfos | TO$ScopeTargetDTO[] |  |  |
+| serviceInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| appInfos | TO$ScopeTargetDTO[] |  |  |
+| appInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| domainInfos | TO$ScopeTargetDTO[] |  |  |
+| domainInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | - |
+|   |   | StrategyConfigScopeD | - |
 |---|---|---|---|
-| mcpServerInfos | TO$ScopeTargetDTO[] |  |  |
-
-智能体工厂 OpenTrek
+| mcpServerInfos | TO$ScopeTargetDTO[] |   |   |
 
 | data.strategyConfigs.cre ateTime | string | 2024-01-01 10:00:00 | 创建时间。 |
 |---|---|---|---|
@@ -9613,30 +10657,41 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.apiKeyLocationType | string | HEADER | API Key位置类型。 |
 | data.keyName | string | X-API-Key | Key名称。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /application/listAppsByGwInstanceId HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /application/listAppsByGwInstanceId HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -9654,8 +10709,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 "token":"tokenvalue"
 ```
 
-智能体工厂 OpenTrek
-
 ```json
         token: token_value,
         "appSecret": "appSecret_value",
@@ -9663,7 +10716,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "payload": {
             "subject": "subject_value",
             "issuer": "issuer_value"
-        },
+```
+
+`},`
+
+```json
         "oauth2Payload": {
             "scopes": "scopes_value",
             "authorizationCode": true,
@@ -9676,7 +10733,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "clientSecret": "clientSecret_value",
             "redirectUris": "redirectUris_value",
             "pkce": true
-        },
+```
+
+`},`
+
+```json
         "enable": true,
         "key": "key_value",
         "password": "password_value",
@@ -9692,47 +10753,74 @@ HTTP/1.1 200 OK Content-Type: application/json {
                 "routeInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "serviceInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "appInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "domainInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "mcpServerInfos": {
                     "name": {},
                     "id": {}
-                },
+```
+
+`},`
+
+```json
                 "scopes": []
-            },
+```
+
+`},`
+
+```json
             "createTime": "createTime_value",
             "updateTime": "updateTime_value"
-        },
+```
+
+`},`
+
+```json
         "appCode": "appCode_value",
         "accessKey": "accessKey_value",
 ```
-
-智能体工厂 OpenTrek
 
 ```json
         "secretKey": "secretKey_value",
         "apiKeyLocationType": "apiKeyLocationType_value",
         "keyName": "keyName_value"
-    }
-}
 ```
 
-#### listMcpServersByAppId
+`}`
+
+#### 4.7.11 listMcpServersByAppId
 
 **API 接口概述**
 
 **中文名称：**查询消费者关联MCP服务
+**英文名称：** listMcpServersByAppId
 **功能概述：**消费者管理 - 查询 MCP 服务器列表。
 
 ```
@@ -9755,19 +10843,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 | grantType | string | body | 否 | mcpServer | 授权类型。 |
 
-| my-mcp- |  |
+| my-mcp- |   |
 |---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 |---|---|---|---|
@@ -9789,11 +10875,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.authStatus | integer | 1 | 授权状态。 |
 | data.records.createTime | string | 2024-01-01 10:00:00 | 创建时间。 |
 
-|  |  | ListRoutesByAppIdRes | - |
+|   |   | ListRoutesByAppIdRes | - |
 |---|---|---|---|
-| a.records | ponseRecord[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | ponseRecord[] |   |   |
 
 | data.records.updateTime | string | 2024-01-02 10:00:00 | 更新时间。 |
 |---|---|---|---|
@@ -9804,8 +10888,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /applicationauth/listMcpServersByAppId HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /applicationauth/listMcpServersByAppId HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "total": 0,
@@ -9815,15 +10904,19 @@ POST /applicationauth/listMcpServersByAppId HTTP/1.1 Host: localhost:80 Content-
   "gwInstanceId": "gwInstanceId_value",
   "isDisasterRecovery": true,
   "grantType": "grantType_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -9844,14 +10937,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "updateTime": "updateTime_value",
             "targetId": "targetId_value",
             "targetName": "targetName_value"
-        }
-    }
-}
 ```
 
-#### listModelApisByAppId
+`}` `}` `}`
+
+#### 4.7.12 listModelApisByAppId
 
 **API 接口概述**
+
+**中文名称：**查询消费者关联模型API
+**英文名称：** listModelApisByAppId
+**功能概述：**消费者管理 - 查询模型 API 列表。
+
+```
+请求路径： /applicationauth/listModelApisByAppId
+```
 
 **请求方式：** `POST`
 
@@ -9863,8 +10963,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | current | integer | body | 是 | 1 | 当前页码。 |
 | total | integer | body | 否 | 100 | 总数。 |
 
-智能体工厂 OpenTrek
-
 | routeName | string | body | 否 | my-model- api | 模型API名称。 |
 |---|---|---|---|---|---|
 | routeId | string | body | 否 | model-api- 001 | 模型API ID。 |
@@ -9873,17 +10971,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 | grantType | string | body | 否 | modelApi | 授权类型。 |
 
-|  |  | my-model- |
+|   |   | my-model- |
 |---|---|---|
-|  | api |  |
+|   | api |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -9900,11 +10998,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records | ListRoutesByAppIdRes ponseRecord[] | - | 记录列表。 |
 | data.records.routeId | string | model-api-001 | 模型API ID。 |
 
-|  |  | ListRoutesByAppIdRes | - |
+|   |   | ListRoutesByAppIdRes | - |
 |---|---|---|---|
-| a.records | ponseRecord[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | ponseRecord[] |   |   |
 
 | data.records.routeName | string | my-model-api | 模型API名称。 |
 |---|---|---|---|
@@ -9919,20 +11015,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.targetId | string | model-api-001 | 目标ID。 |
 | data.records.targetName | string | my-model-api | 目标名称。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /applicationauth/listModelApisByAppId HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /applicationauth/listModelApisByAppId HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "total": 0,
@@ -9942,15 +11043,17 @@ POST /applicationauth/listModelApisByAppId HTTP/1.1 Host: localhost:80 Content-T
   "gwInstanceId": "gwInstanceId_value",
   "isDisasterRecovery": true,
   "grantType": "grantType_value"
-}
 ```
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -9971,17 +11074,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "updateTime": "updateTime_value",
             "targetId": "targetId_value",
             "targetName": "targetName_value"
-        }
-    }
-}
 ```
 
-#### listRoutesByAppId
+`}` `}` `}`
+
+#### 4.7.13 listRoutesByAppId
 
 **API 接口概述**
 
 **中文名称：**查询消费者关联路由
+**英文名称：** listRoutesByAppId
 **功能概述：**消费者管理 - 查询路由列表。
+
+```
+请求路径： /applicationauth/listRoutesByAppId
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -9993,8 +11101,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | total | integer | body | 否 | 100 | 总数。 |
 | routeName | string | body | 否 | my-route | 路由名称。 |
 
-智能体工厂 OpenTrek
-
 | routeId | string | body | 否 | route-001 | 路由ID。 |
 |---|---|---|---|---|---|
 | appId | string | body | 否 | app-001 | 应用ID。 |
@@ -10002,9 +11108,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 | grantType | string | body | 否 | route | 授权类型。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -10023,11 +11129,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.routeName | string | my-route | 路由名称。 |
 | data.records.routePath | string | /api/v1/test | 路由路径。 |
 
-|  |  | ListRoutesByAppIdRes | - |
+|   |   | ListRoutesByAppIdRes | - |
 |---|---|---|---|
-| a.records | ponseRecord[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | ponseRecord[] |   |   |
 
 | data.records.serviceId | string | service-001 | 服务ID。 |
 |---|---|---|---|
@@ -10040,20 +11144,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.targetId | string | route-001 | 目标ID。 |
 | data.records.targetName | string | my-route | 目标名称。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /applicationauth/listRoutesByAppId HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /applicationauth/listRoutesByAppId HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "total": 0,
@@ -10063,15 +11172,19 @@ POST /applicationauth/listRoutesByAppId HTTP/1.1 Host: localhost:80 Content-Type
   "gwInstanceId": "gwInstanceId_value",
   "isDisasterRecovery": true,
   "grantType": "grantType_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -10092,16 +11205,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "updateTime": "updateTime_value",
             "targetId": "targetId_value",
             "targetName": "targetName_value"
-        }
-    }
-}
 ```
 
-#### listRoutesByGwInstanceId
+`}` `}` `}`
+
+#### 4.7.14 listRoutesByGwInstanceId
 
 **API 接口概述**
 
 **中文名称：**按实例查询路由列表
+**英文名称：** listRoutesByGwInstanceId
 **功能概述：**消费者管理 - 根据网关实例获取路由列表。
 
 ```
@@ -10118,13 +11231,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -10141,28 +11252,32 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.serviceProtocol | string | HTTP | 服务协议。 |
 | data.isDisasterRecovery | boolean | false | 是否为容灾资源。 |
 
-|  |  | GetRouteListByGwInst | - |
+|   |   | GetRouteListByGwInst | - |
 |---|---|---|---|
-| a | anceIdResponse[] |  |  |
+| a | anceIdResponse[] |   |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /applicationauth/listRoutesByGwInstanceId HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /applicationauth/listRoutesByGwInstanceId HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
-
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
+HTTP/1.1 200 OK
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -10174,16 +11289,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "serviceName": "serviceName_value",
         "serviceProtocol": "serviceProtocol_value",
         "isDisasterRecovery": true
-    }
-} }
 ```
 
-#### modifyApp
+`}` `}` `}`
+
+#### 4.7.15 modifyApp
 
 **API 接口概述**
 
 **中文名称：**修改消费者
+**英文名称：** modifyApp
 **功能概述：**消费者管理 - 编辑消费者。
+**请求路径：** `/application/modifyApp`
 **请求方式：** `POST`
 
 **请求参数**
@@ -10197,18 +11314,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | expireTime | integer | body | 否 | 3600 | 过期时间 （秒）。 |
 | appSecret | string | body | 否 | secret-xxx- xxx | 应用Secret。 |
 
-|  |  | api-key- |
+|   |   | api-key- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | password123 |
+|   |   | password123 |
 |---|---|---|
 
-|  |  | secret-xxx- |  |
+|   |   | secret-xxx- |   |
 |---|---|---|---|
-|  | xxx |  |  |
-
-智能体工厂 OpenTrek
+|   | xxx |   |   |
 
 | requestHeader | string | body | 否 | X-API-Key | 认证请求头名称。 |
 |---|---|---|---|---|---|
@@ -10228,112 +11343,106 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | appCode | string | body | 否 | APP001 | 应用Code。 |
 | accessKey | string | body | 否 | AK-xxx- xxx | AccessKey。 |
 
-|  |  | eyJhbGciOiJI | Token。 |
+|   |   | eyJhbGciOiJI | Token。 |
 |---|---|---|---|
-|  | UzI1NiIs... |  |  |
+|   | UzI1NiIs... |   |   |
 
 | 192.168.1.0/ | I |
 |---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | app-key- |
+|   |   | app-key- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-| ["group- |  |
+| ["group- |   |
 |---|---|
 
-|  |  | AK-xxx- |
+|   |   | AK-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-智能体工厂 OpenTrek
-
-| secretKey | string | body |  | 否 |  | SK-xxx- xxx |  | SecretKey。 |
+| secretKey | string | body |   | 否 |   | SK-xxx- xxx |   | SecretKey。 |
 |---|---|---|---|---|---|---|---|---|
-| isDisasterReco very | boolean | body |  | 否 |  | false |  | 是否为容灾资源。 |
-| apiKeyLocation Type | string | body |  | 否 |  | HEADER |  | API Key位置类型。可选值： HEADER （放在请求头中）、 QUERY （放在查询参数中）、 BEARER （Bearer Token认证）。 |
-| keyName | string | body |  | 否 |  | X-API-Key |  | Key名称。 |
-| appAddress | string | body |  | 否 |  | 192.168.1.10 0:8080 |  | 应用地址。 |
-| appTagsStr | string | body |  | 否 |  | env:prod,typ e:api |  | 应用标签字符串。 |
-| chargePersonN ame | string | body |  | 否 |  | 张三 |  | 负责人姓名。 |
-| openCross | boolean | body |  | 否 |  | false |  | 是否启用跨域。 |
-| allowedOrigins | string | body |  | 否 |  | https://exam ple.com |  | 允许的跨域来源。 |
-| allowedHeader s | string | body |  | 否 |  | Content- |  | 允许的请求头。 |
-|  |  |  |  |  |  |  | Content- |  |
-|  |  |  |  |  |  | Type,X-API- |  |  |
-|  |  |  |  |  |  | Key |  |  |
-| allowedMethod s | string | body |  | 否 |  | GET,POST,PUT ,DELETE |  | 允许的请求方法。 |
-| isDisable | boolean | body |  | 否 |  | false |  | 是否禁用。 |
-| appType | integer | body |  | 否 |  | 1 |  | 应用类型。 |
+| isDisasterReco very | boolean | body |   | 否 |   | false |   | 是否为容灾资源。 |
+| apiKeyLocation Type | string | body |   | 否 |   | HEADER |   | API Key位置类型。可选值： HEADER （放在请求头中）、 QUERY （放在查询参数中）、 BEARER （Bearer Token认证）。 |
+| keyName | string | body |   | 否 |   | X-API-Key |   | Key名称。 |
+| appAddress | string | body |   | 否 |   | 192.168.1.10 0:8080 |   | 应用地址。 |
+| appTagsStr | string | body |   | 否 |   | env:prod,typ e:api |   | 应用标签字符串。 |
+| chargePersonN ame | string | body |   | 否 |   | 张三 |   | 负责人姓名。 |
+| openCross | boolean | body |   | 否 |   | false |   | 是否启用跨域。 |
+| allowedOrigins | string | body |   | 否 |   | https://exam ple.com |   | 允许的跨域来源。 |
+| allowedHeader s | string | body |   | 否 |   | Content- |   | 允许的请求头。 |
+|   |   |   |   |   |   |   | Content- |   |
+|   |   |   |   |   |   | Type,X-API- |   |   |
+|   |   |   |   |   |   | Key |   |   |
+| allowedMethod s | string | body |   | 否 |   | GET,POST,PUT ,DELETE |   | 允许的请求方法。 |
+| isDisable | boolean | body |   | 否 |   | false |   | 是否禁用。 |
+| appType | integer | body |   | 否 |   | 1 |   | 应用类型。 |
 
-|  |  | SK-xxx- |
+|   |   | SK-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 | 192.168.1.10 | 应用地 |
 |---|---|
 
-|  |  | env:prod,typ | 应用 |
+|   |   | env:prod,typ | 应用 |
 |---|---|---|---|
-|  | e:api |  |  |
+|   | e:api |   |   |
 
-|  |  | https://exam | 允许的跨 |
+|   |   | https://exam | 允许的跨 |
 |---|---|---|---|
-|  | ple.com |  |  |
+|   | ple.com |   |   |
 
-|  |  | GET,POST,PUT | 允许的请 |
+|   |   | GET,POST,PUT | 允许的请 |
 |---|---|---|---|
-|  | ,DELETE |  |  |
+|   | ,DELETE |   |   |
 
 **payload 对象结构**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | subject | string | body | 否 | my- subject | JWT Subject。 |
 | issuer | string | body | 否 | my-issuer | JWT Issuer。 |
 
-|  |  | my- |
+|   |   | my- |
 |---|---|---|
-|  | subject |  |
+|   | subject |   |
 
 **oauth2Payload 对象结构**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|
-| scopes | string | body | 否 |  | read,write |  | OAuth2授权范围。 |
-| authorizationC ode | boolean | body | 否 |  | true |  | 是否启用授权码模式。 |
-| clientCredentia ls | boolean | body | 否 |  | false |  | 是否启用客户端凭证模式。 |
-| implicitGrant | boolean | body | 否 |  | false |  | 是否启用隐式授权模式。 |
-| passwordGrant | boolean | body | 否 |  | false |  | 是否启用密码模式。 |
-| tokenExpiratio n | integer | body | 否 |  | 3600 |  | Token过期时间 （秒）。 |
-| refreshTokenEx piration | integer | body | 否 |  | 7200 |  | Refresh Token 过期时间 （秒）。 |
-| clientId | string | body | 否 |  | client- 001 |  | OAuth2客户端 ID。 |
-| clientSecret | string | body | 否 |  | secret- xxx |  | OAuth2客户端 Secret。 |
-| redirectUris | string | body | 否 |  | https://exam |  |  |
-|  |  |  |  |  |  | https://exam | OAuth2回调地 |
-|  |  |  |  |  | ple.com/callb |  | O |
-|  |  |  |  |  |  |  | 址 |
-|  |  |  |  |  | ack |  |  |
-| pkce | boolean | body | 否 |  | false |  | 是否启用PKCE。 |
+| scopes | string | body | 否 |   | read,write |   | OAuth2授权范围。 |
+| authorizationC ode | boolean | body | 否 |   | true |   | 是否启用授权码模式。 |
+| clientCredentia ls | boolean | body | 否 |   | false |   | 是否启用客户端凭证模式。 |
+| implicitGrant | boolean | body | 否 |   | false |   | 是否启用隐式授权模式。 |
+| passwordGrant | boolean | body | 否 |   | false |   | 是否启用密码模式。 |
+| tokenExpiratio n | integer | body | 否 |   | 3600 |   | Token过期时间 （秒）。 |
+| refreshTokenEx piration | integer | body | 否 |   | 7200 |   | Refresh Token 过期时间 （秒）。 |
+| clientId | string | body | 否 |   | client- 001 |   | OAuth2客户端 ID。 |
+| clientSecret | string | body | 否 |   | secret- xxx |   | OAuth2客户端 Secret。 |
+| redirectUris | string | body | 否 |   | https://exam |   |   |
+|   |   |   |   |   |   | https://exam | OAuth2回调地 |
+|   |   |   |   |   | ple.com/callb |   | O |
+|   |   |   |   |   |   |   | 址 |
+|   |   |   |   |   | ack |   |   |
+| pkce | boolean | body | 否 |   | false |   | 是否启用PKCE。 |
 
-|  |  | read,write |
+|   |   | read,write |
 |---|---|---|
 
-|  |  | client- |
+|   |   | client- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | secret- |
+|   |   | secret- |
 |---|---|---|
-|  | xxx |  |
-
-智能体工厂 OpenTrek
+|   | xxx |   |
 
 **返回数据**
 
@@ -10349,15 +11458,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /application/modifyApp HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "key": "key_value",
   "payload": {
     "subject": "subject_value",
     "issuer": "issuer_value"
-  },
+```
+
+`},`
+
+```json
   "oauth2Payload": {
     "scopes": "scopes_value",
     "authorizationCode": true,
@@ -10370,7 +11486,11 @@ Host: localhost:80 Content-Type: application/json {
     "clientSecret": "clientSecret_value",
     "redirectUris": "redirectUris_value",
     "pkce": true
-  },
+```
+
+`},`
+
+```json
   "password": "password_value",
   "expireTime": 0,
   "appSecret": "appSecret_value",
@@ -10403,28 +11523,33 @@ Host: localhost:80 Content-Type: application/json {
   "allowedMethods": "allowedMethods_value",
   "isDisable": true,
   "appType": 0
-}
 ```
-
-智能体工厂 OpenTrek
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### refreshToken
+`}`
+
+#### 4.7.16 refreshToken
 
 **API 接口概述**
 
 **中文名称：**刷新消费者Token
+**英文名称：** refreshToken
 **功能概述：**消费者管理 - 刷新 Token。
+**请求路径：** `/application/refreshToken`
 **请求方式：** `POST`
 
 **请求参数**
@@ -10439,18 +11564,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | appSecret | string | body | 否 | secret-xxx- xxx | 应用Secret。 |
 | requestHeader | string | body | 否 | X-API-Key | 认证请求头名称。 |
 
-|  |  | api-key- |
+|   |   | api-key- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | password123 |
+|   |   | password123 |
 |---|---|---|
 
-|  |  | secret-xxx- | 应 |
+|   |   | secret-xxx- | 应 |
 |---|---|---|---|
-|  | xxx |  |  |
-
-智能体工厂 OpenTrek
+|   | xxx |   |   |
 
 | token | string | body | 否 | eyJhbGciOiJI UzI1NiIs... | Token。 |
 |---|---|---|---|---|---|
@@ -10476,26 +11599,24 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 192.168.1.0/ | I |
 |---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | app-key- |
+|   |   | app-key- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-| ["group- |  |
+| ["group- |   |
 |---|---|
 
-|  |  | AK-xxx- |
+|   |   | AK-xxx- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
-|  |  | SK-xxx- |
+|   |   | SK-xxx- |
 |---|---|---|
-|  | xxx |  |
-
-智能体工厂 OpenTrek
+|   | xxx |   |
 
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 |---|---|---|---|---|---|
@@ -10509,9 +11630,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | subject | string | body | 否 | my- subject | JWT Subject。 |
 | issuer | string | body | 否 | my-issuer | JWT Issuer。 |
 
-|  |  | my- |
+|   |   | my- |
 |---|---|---|
-|  | subject |  |
+|   | subject |   |
 
 **oauth2Payload 对象结构**
 
@@ -10524,29 +11645,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | passwordGrant | boolean | body | 否 | false | 是否启用密码模式。 |
 | tokenExpiratio n | integer | body | 否 | 3600 | Token过期时间 （秒）。 |
 
-|  |  | read,write |
+|   |   | read,write |
 |---|---|---|
 
-智能体工厂 OpenTrek
-
-| refreshTokenEx piration | integer | body | 否 |  | 7200 |  | Refresh Token 过期时间 （秒）。 |
+| refreshTokenEx piration | integer | body | 否 |   | 7200 |   | Refresh Token 过期时间 （秒）。 |
 |---|---|---|---|---|---|---|---|
-| clientId | string | body | 否 |  | client- 001 |  | OAuth2客户端 ID。 |
-| clientSecret | string | body | 否 |  | secret- xxx |  | OAuth2客户端 Secret。 |
-| redirectUris | string | body | 否 |  | https://exam |  |  |
-|  |  |  |  |  |  | https://exam | OAuth2回调地 |
-|  |  |  |  |  | ple.com/callb |  | O |
-|  |  |  |  |  |  |  | 址 |
-|  |  |  |  |  | ack |  |  |
-| pkce | boolean | body | 否 |  | false |  | 是否启用PKCE。 |
+| clientId | string | body | 否 |   | client- 001 |   | OAuth2客户端 ID。 |
+| clientSecret | string | body | 否 |   | secret- xxx |   | OAuth2客户端 Secret。 |
+| redirectUris | string | body | 否 |   | https://exam |   |   |
+|   |   |   |   |   |   | https://exam | OAuth2回调地 |
+|   |   |   |   |   | ple.com/callb |   | O |
+|   |   |   |   |   |   |   | 址 |
+|   |   |   |   |   | ack |   |   |
+| pkce | boolean | body | 否 |   | false |   | 是否启用PKCE。 |
 
-|  |  | client- |
+|   |   | client- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | secret- |
+|   |   | secret- |
 |---|---|---|
-|  | xxx |  |
+|   | xxx |   |
 
 **返回数据**
 
@@ -10558,23 +11677,30 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | string | eyJhbGciOiJIUzI1NiIs ... | 新Token。 |
 
-|  | eyJhbGciOiJIUzI1NiIs | 新 |
+|   | eyJhbGciOiJIUzI1NiIs | 新 |
 |---|---|---|
-| ... |  |  |
+| ... |   |   |
 
 **示例**
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /application/refreshToken HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "key": "key_value",
   "payload": {
     "subject": "subject_value",
     "issuer": "issuer_value"
-  },
+```
+
+`},`
+
+```json
   "oauth2Payload": {
     "scopes": "scopes_value",
     "authorizationCode": true,
@@ -10587,7 +11713,11 @@ Host: localhost:80 Content-Type: application/json {
     "clientSecret": "clientSecret_value",
     "redirectUris": "redirectUris_value",
     "pkce": true
-  },
+```
+
+`},`
+
+```json
   "password": "password_value",
   "expireTime": 0,
   "appSecret": "appSecret_value",
@@ -10611,30 +11741,37 @@ Host: localhost:80 Content-Type: application/json {
   "isDisasterRecovery": true,
   "apiKeyLocationType": "apiKeyLocationType_value",
   "keyName": "keyName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-### 域名
+`}`
 
-#### createDomain
+### 4.8 域名
+
+#### 4.8.1 createDomain
 
 **API 接口概述**
 
 **中文名称：**创建域名
+**英文名称：** createDomain
 **功能概述：**创建域名。
+**请求路径：** `/domain/createDomain`
 **请求方式：** `POST`
 
 **请求参数**
@@ -10647,22 +11784,20 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | certificateId | string | body | 否 | cert-001 | HTTPS协议时需要的服务端证书 ID。HTTP协议时不需要。 |
 | domain | string | body | 是 | api.example. com | 域名，长度不超过255字符。支持精确域名和通配符域名（如 *.example.com ）。 |
 
-|  |  | domain- |
+|   |   | domain- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  | HTTP |
+|   | HTTP |
 |---|---|
-| HTTPS |  |
+| HTTPS |   |
 
-|  | com |
+|   | com |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | clientAuth | integer | body | 否 | 0 | 是否开启客户端认证。 0 =关闭， 1 =开启。仅HTTPS协议且非Higress引擎时生效。 |
 |---|---|---|---|---|---|
@@ -10670,13 +11805,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | subjectDn | string | body | 否 | X-Subject- Dn | Subject DN转发头。 |
 | issuerDn | string | body | 否 | X-Issuer- Dn | Issuer DN转发头。 |
 
-|  | 0 |
+|   | 0 |
 |---|---|
-| 1 |  |
+| 1 |   |
 
-|  |  | ca-cert- |
+|   |   | ca-cert- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -10692,10 +11827,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /domain/createDomain HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "domainId": "domainId_value",
   "gwInstanceId": "gwInstanceId_value",
   "protocol": "protocol_value",
@@ -10705,26 +11843,35 @@ Host: localhost:80 Content-Type: application/json {
   "caCertificateId": "caCertificateId_value",
   "subjectDn": "subjectDn_value",
   "issuerDn": "issuerDn_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteDomain
+`}`
+
+#### 4.8.2 deleteDomain
 
 **API 接口概述**
 
 **中文名称：**删除域名
+**英文名称：** deleteDomain
 **功能概述：**删除域名。
+**请求路径：** `/domain/deleteDomain`
 **请求方式：** `POST`
 
 **请求参数**
@@ -10734,17 +11881,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | domainId | string | body | 是 | domain- 001 | 域名ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | domain- |
+|   |   | domain- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -10758,48 +11903,60 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /domain/deleteDomain HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "higress-001",
   "domainId": "domain-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "domain-001"
-}
 ```
 
-#### getDomain
+`}`
+
+#### 4.8.3 getDomain
 
 **API 接口概述**
 
 **中文名称：**查询域名详情
+**英文名称：** getDomain
 **功能概述：**查询域名详情。
+**请求路径：** `/domain/getDomain`
 **请求方式：** `POST`
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | domainId | string | body | 否 | domain- 001 | 域名ID。 |
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 
-|  |  | domain- |
+|   |   | domain- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -10819,8 +11976,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.clientAuth | integer | 0 | 是否开启客户端认证。 |
 | data.caCertificateId | string | ca-cert-001 | CA证书ID。 |
 
-智能体工厂 OpenTrek
-
 | data.subjectDn | string | X-Subject-Dn | Subject DN转发头。 |
 |---|---|---|---|
 | data.issuerDn | string | X-Issuer-Dn | Issuer DN转发头。 |
@@ -10831,31 +11986,40 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.routeInfos.serviceN ame | string | my-service | 服务名称。 |
 | data.routeInfos.createTi me | string | 2024-01-01 10:00:00 | 创建时间。 |
 
-|  |  | GetDomainResponse$Ro | - |
+|   |   | GetDomainResponse$Ro | - |
 |---|---|---|---|
-| a.routeInfos | uteInfo[] |  |  |
+| a.routeInfos | uteInfo[] |   |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /domain/getDomain HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "domainId": "domainId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -10876,17 +12040,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "serviceId": "serviceId_value",
             "serviceName": "serviceName_value",
             "createTime": "createTime_value"
-        }
-    }
-}
 ```
 
-#### listAllDomains
+`}` `}` `}`
+
+#### 4.8.4 listAllDomains
 
 **API 接口概述**
 
 **中文名称：**查询所有域名
+**英文名称：** listAllDomains
 **功能概述：**查询所有域名。
+**请求路径：** `/domain/listAllDomains`
 **请求方式：** `POST`
 
 **请求参数**
@@ -10897,13 +12062,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -10930,20 +12093,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /domain/listAllDomains HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -10958,16 +12130,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "clientAuth": 0,
         "caCertificateId": "caCertificateId_value",
         "caCertificateName": "caCertificateName_value"
-    }
-}
 ```
 
-#### listDomains
+`}` `}`
+
+#### 4.8.5 listDomains
 
 **API 接口概述**
 
 **中文名称：**查询域名列表
+**英文名称：** listDomains
 **功能概述：**查询域名列表。
+**请求路径：** `/domain/listDomains`
 **请求方式：** `POST`
 
 **请求参数**
@@ -10977,19 +12151,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | size | integer | body | 是 | 10 | 每页大小。 |
 | current | integer | body | 是 | 1 | 当前页码。 |
 
-智能体工厂 OpenTrek
-
 | domain | string | body | 否 | api.example. com | 域名。 |
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | api.example. |  |
+|   |   | api.example. |   |
 |---|---|---|---|
-|  | com |  |  |
+|   | com |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -11013,8 +12185,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | ListDomainsResponseR | - |
 |---|---|
 
-智能体工厂 OpenTrek
-
 | data.records.createTime | string | 2024-01-01 10:00:00 | 创建时间。 |
 |---|---|---|---|
 | data.records.updateTime | string | 2024-01-02 10:00:00 | 更新时间。 |
@@ -11022,33 +12192,42 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.caCertificat eId | string | ca-cert-001 | CA证书ID。 |
 | data.records.caCertificat eName | string | my-ca-cert | CA证书名称。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /domain/listDomains HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "domain": "domain_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
@@ -11067,16 +12246,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "clientAuth": 0,
             "caCertificateId": "caCertificateId_value",
             "caCertificateName": "caCertificateName_value"
-        }
-    }
-}
 ```
 
-#### updateDomain
+`}` `}` `}`
+
+#### 4.8.6 updateDomain
 
 **API 接口概述**
 
 **中文名称：**修改域名
+**英文名称：** updateDomain
 **功能概述：**修改域名。
 **请求路径：** `/domain/modifyDomain`
 **请求方式：** `POST`
@@ -11089,19 +12268,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | protocol | string | body | 是 | HTTPS | 协议类型。可选值： HTTP 、 HTTPS 。 |
 
-|  |  | domain- |
+|   |   | domain- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  | HTTP |
+|   | HTTP |
 |---|---|
-| HTTPS |  |
-
-智能体工厂 OpenTrek
+| HTTPS |   |
 
 | certificateId | string | body | 否 | cert-001 | HTTPS协议时需要的服务端证书 ID。 |
 |---|---|---|---|---|---|
@@ -11111,13 +12288,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | subjectDn | string | body | 否 | X-Subject- Dn | Subject DN转发头。 |
 | issuerDn | string | body | 否 | X-Issuer- Dn | Issuer DN转发头。 |
 
-|  |  | api.example. | 域 |
+|   |   | api.example. | 域 |
 |---|---|---|---|
-|  | com |  |  |
+|   | com |   |   |
 
-|  |  | ca-cert- |
+|   |   | ca-cert- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -11133,10 +12310,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /domain/modifyDomain HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /domain/modifyDomain HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "domainId": "domainId_value",
   "gwInstanceId": "gwInstanceId_value",
   "protocol": "protocol_value",
@@ -11146,26 +12326,37 @@ POST /domain/modifyDomain HTTP/1.1 Host: localhost:80 Content-Type: application/
   "caCertificateId": "caCertificateId_value",
   "subjectDn": "subjectDn_value",
   "issuerDn": "issuerDn_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-### 模型API
+`}`
 
-#### batchGrantModelApi
+### 4.9 模型API
+
+#### 4.9.1 batchGrantModelApi
 
 **API 接口概述**
 
+**中文名称：**批量授权模型API
+**英文名称：** batchGrantModelApi
+**功能概述：**模型 API 管理 - 批量授权模型 API 给多个消费者。
+**请求路径：** `/modelapi/batchGrantModelApi`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
@@ -11175,23 +12366,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 | modelApiId | string | body | 是 | model-api- 001 | 模型API ID。 |
 |---|---|---|---|---|---|
 | consumerIds | string[] | body | 是 | ["app-001", "app-002"] | 消费者ID列表。 |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | ["app-001", | 消费者ID列 |
+|   |   | ["app-001", | 消费者ID列 |
 |---|---|---|---|
-|  | "app-002"] |  |  |
+|   | "app-002"] |   |   |
 
 **返回数据**
 
@@ -11207,30 +12396,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/batchGrantModelApi HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "modelApiId": "model-api-001",
   "consumerIds": ["app-001", "app-002"]
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": null
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### changeModelApiAuthStatus
+#### 4.9.2 changeModelApiAuthStatus
 
 **API 接口概述**
+
+**中文名称：**切换模型API授权状态
+**英文名称：** changeModelApiAuthStatus
+**功能概述：**模型 API 管理 - 启用/禁用模型 API 鉴权。
+
+```
+请求路径： /modelapi/changeModelApiAuthStatus
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -11243,13 +12448,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | id | string | body | 是 | model-api- 001 | 模型API ID。 |
 | authentication Config | object | body | 是 | - | 认证配置。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **authenticationConfig 对象结构**
 
@@ -11258,9 +12463,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | enable | boolean | body | 否 | true | 是否启用。 |
 | credentialType List | string[] | body | 否 | ["apiKey","b earer"] | 凭证类型列表。 |
 
-|  |  | ["apiKey","b | 凭证类型 |
+|   |   | ["apiKey","b | 凭证类型 |
 |---|---|---|---|
-|  | earer"] |  |  |
+|   | earer"] |   |   |
 
 **返回数据**
 
@@ -11270,8 +12475,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | message | string | success | 响应消息。 |
 |---|---|---|---|
 | data | object | - | 响应数据。 |
@@ -11280,32 +12483,47 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/changeModelApiAuthStatus HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /modelapi/changeModelApiAuthStatus HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "id": "id_value",
   "authenticationConfig": {
     "enable": true,
     "credentialTypeList": []
-  }
-}
 ```
+
+`}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-#### createModelApi
+`}`
+
+#### 4.9.3 createModelApi
 
 **API 接口概述**
 
+**中文名称：**创建模型API
+**英文名称：** createModelApi
+**功能概述：**模型 API 管理 - 创建模型 API。
+**请求路径：** `/modelapi/createModelApi`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
@@ -11314,84 +12532,78 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| gwInstanceId |  | string |  |  | body |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
+| gwInstanceId |   | string |   |   | body |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| apiName |  | string |  |  | body |  | 是 |  | my-ai-api |  | 模型API名称。 |  |
-| description |  | string |  |  | body |  | 否 |  | OpenAI文本生成API |  | 描述信息。 |  |
-| basePath |  | string |  |  | body |  | 否 |  | /v1/chat |  | 基础路径。 |  |
-| basePathRemo ve |  | boolean |  |  | body |  | 否 |  | false |  | 是否移除基础路径前缀。 |  |
-| methodPathList |  | ModelRouteMe thodPath[] |  |  | body |  |  |  | [{"path": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{"path": |  |  |
-|  |  |  | ModelRouteMe |  | body |  |  |  | "/completions |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 路径和方法配置 |  |
-|  | thodPathList | thodPath[] |  |  |  |  | 是 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ", "method": |  | 列表。 |  |
-|  |  |  |  |  |  |  |  |  | "POST"}] |  |  |  |
-| domainNameLi st |  | string[] |  |  | body |  | 否 |  | ["api.exampl e.com"] |  | 域名列表。 |  |
-| protocol |  | string |  |  | body |  | 是 |  | openai |  | 协议类型。 |  |
+| apiName |   | string |   |   | body |   | 是 |   | my-ai-api |   | 模型API名称。 |   |
+| description |   | string |   |   | body |   | 否 |   | OpenAI文本生成API |   | 描述信息。 |   |
+| basePath |   | string |   |   | body |   | 否 |   | /v1/chat |   | 基础路径。 |   |
+| basePathRemo ve |   | boolean |   |   | body |   | 否 |   | false |   | 是否移除基础路径前缀。 |   |
+| methodPathList |   | ModelRouteMe thodPath[] |   |   | body |   |   |   | [{"path": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{"path": |   |   |
+|   |   |   | ModelRouteMe |   | body |   |   |   | "/completions |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 路径和方法配置 |   |
+|   | thodPathList | thodPath[] |   |   |   |   | 是 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ", "method": |   | 列表。 |   |
+|   |   |   |   |   |   |   |   |   | "POST"}] |   |   |   |
+| domainNameLi st |   | string[] |   |   | body |   | 否 |   | ["api.exampl e.com"] |   | 域名列表。 |   |
+| protocol |   | string |   |   | body |   | 是 |   | openai |   | 协议类型。 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | OpenAI文本生 | 描述 |
+|   |   | OpenAI文本生 | 描述 |
 |---|---|---|---|
-|  | 成API |  |  |
+|   | 成API |   |   |
 
-|  |  | ["api.exampl | 域名列表 |
+|   |   | ["api.exampl | 域名列表 |
 |---|---|---|---|
-|  | e.com"] |  |  |
+|   | e.com"] |   |   |
 
-智能体工厂 OpenTrek
-
-| sceneType | string | body | 是 | TEXT GENERAT _ ION |  | 场景类型。可选值： TEXT GEN _ ERATION （文本生成）、 IMAGE _ GENERATION （图片生成）、 VIDEO _ GENERATION （视频生成）、 SPEECH SYNTHESIS _ （语音合成）、 TEXT R _ ERANK （文本排序/Rerank）、 EMBEDDING （ 向量化）、 OTHER （其他）。 |  |  |  |
+| sceneType | string | body | 是 | TEXT GENERAT _ ION |   | 场景类型。可选值： TEXT GEN _ ERATION （文本生成）、 IMAGE _ GENERATION （图片生成）、 VIDEO _ GENERATION （视频生成）、 SPEECH SYNTHESIS _ （语音合成）、 TEXT R _ ERANK （文本排序/Rerank）、 EMBEDDING （ 向量化）、 OTHER （其他）。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | IMAGE _ |  |  |
-|  |  |  |  |  |  | GENERATION |  |  |  |
-|  |  |  |  |  |  |  | VIDEO _ |  |  |
-|  |  |  |  |  |  | GENERATION |  |  |  |
-|  |  |  |  |  |  |  | SPEECH |  |  |
-|  |  |  |  |  |  | SYNTHESIS _ |  |  |  |
-| routeDispatche r | object | body | 否 | 见下方示例 |  | 路由分发配置。 |  |  |  |
-| observationCon fig | object | body | 否 | {"enable": true} |  | 可观测性配置。 |  |  |  |
-| fallback | object | body | 否 | {"enable": false} |  | 降级配置。 |  |  |  |
+|   |   |   |   |   |   |   | IMAGE _ |   |   |
+|   |   |   |   |   |   | GENERATION |   |   |   |
+|   |   |   |   |   |   |   | VIDEO _ |   |   |
+|   |   |   |   |   |   | GENERATION |   |   |   |
+|   |   |   |   |   |   |   | SPEECH |   |   |
+|   |   |   |   |   |   | SYNTHESIS _ |   |   |   |
+| routeDispatche r | object | body | 否 | 见下方示例 |   | 路由分发配置。 |   |   |   |
+| observationCon fig | object | body | 否 | {"enable": true} |   | 可观测性配置。 |   |   |   |
+| fallback | object | body | 否 | {"enable": false} |   | 降级配置。 |   |   |   |
 
-|  |  | TEXT GEN _ |  |
+|   |   | TEXT GEN _ |   |
 |---|---|---|---|
-|  | ERATION |  |  |
+|   | ERATION |   |   |
 
-|  |  | TEXT R _ |  |
+|   |   | TEXT R _ |   |
 |---|---|---|---|
-|  | ERANK |  |  |
+|   | ERANK |   |   |
 
-| ERAT |  |
+| ERAT |   |
 |---|---|
 
-|  | ION |
+|   | ION |
 |---|---|
 
-|  |  | {"enable": | 可观 |
+|   |   | {"enable": | 可观 |
 |---|---|---|---|
-|  | true} |  |  |
+|   | true} |   |   |
 
-|  |  | {"enable": | 降级 |
+|   |   | {"enable": | 降级 |
 |---|---|---|---|
-|  | false} |  |  |
+|   | false} |   |   |
 
 **methodPathList 对象结构**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | path | string | body | 否 | /completions | 路径。 |
 |---|---|---|---|---|---|
 | method | string | body | 否 | POST | HTTP方法。 |
 
-|  |  | /completions |
+|   |   | /completions |
 |---|---|---|
 
 **observationConfig 对象结构**
@@ -11411,13 +12623,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | fallbackServiceI d | string | body | 否 | fallback- service-001 | 降级服务ID。 |
 | fallbackStrateg y | string | body | 否 | ratio | 降级策略。 |
 
-|  |  | ["500", | 触 |
+|   |   | ["500", | 触 |
 |---|---|---|---|
-|  | "503"] |  |  |
+|   | "503"] |   |   |
 
-|  |  | fallback- | 降级服务I |
+|   |   | fallback- | 降级服务I |
 |---|---|---|---|
-|  | service-001 |  |  |
+|   | service-001 |   |   |
 
 **routeDispatcher 对象结构**
 
@@ -11426,91 +12638,85 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| strategyType | string | body |  |  |  | 是 |  |  |  |  |  | 路由分发策略类型，可选值： WEIGHT （权重分发）、 HEADER （Header条件分发）、 WEIGHT |  |  |
+| strategyType | string | body |   |   |   | 是 |   |   |   |   |   | 路由分发策略类型，可选值： WEIGHT （权重分发）、 HEADER （Header条件分发）、 WEIGHT |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  | WEIGHT |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | MODEL MAPPIN _ _ |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | G |  |  |
-|  |  |  |  |  |  |  |  |  | WEIGHT | WEIGHT |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | SINGLE |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | MODEL MAPPIN _ _ |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | G |  |  |
-| rules | array | body |  |  |  |  |  |  | [{"weight":5 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{"weight":5 |  | 路由规则列表， 结构根据 |  |  |
-|  |  |  |  |  |  |  |  |  | 0,"serviceId" |  |  |  |  |  |
-|  |  |  | body |  |  |  |  |  |  |  |  | strategyTyp |  |  |
-|  |  |  |  |  |  | 否 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | :"svc- |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 001"}] |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | WEIGHT |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | MODEL MAPPIN _ _ |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | G |   |   |
+|   |   |   |   |   |   |   |   |   | WEIGHT | WEIGHT |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | SINGLE |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | MODEL MAPPIN _ _ |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | G |   |   |
+| rules | array | body |   |   |   |   |   |   | [{"weight":5 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{"weight":5 |   | 路由规则列表， 结构根据 |   |   |
+|   |   |   |   |   |   |   |   |   | 0,"serviceId" |   |   |   |   |   |
+|   |   |   | body |   |   |   |   |   |   |   |   | strategyTyp |   |   |
+|   |   |   |   |   |   | 否 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | :"svc- |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 001"}] |   |   |   |   |   |
 
 **WEIGHT 策略（权重分发）：**
 
-| 参数名称 | 类型 | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|
-| rules | array | 是 |  | [{"weight":50," |  |  |  |
-|  |  |  |  |  | [{"weight":50," |  |  |
-|  |  |  |  | serviceId":"svc- |  |  |  |
-|  |  |  |  |  |  | 权重 |  |
-|  |  |  |  | 001"}] |  |  |  |
-| rules[].weight | integer | 是 |  | 50 |  | 权重值（百分比）。 |  |
-| rules[].serviceId | string | 是 |  | svc-001 |  | 目标服务ID。 |  |
-| rules[].serviceNam e | string | 否 |  | model-service |  | 目标服务名称。 |  |
+| rules | array | 是 |   | [{"weight":50," |   |   |   |
+|   |   |   |   |   | [{"weight":50," |   |   |
+|   |   |   |   | serviceId":"svc- |   |   |   |
+|   |   |   |   |   |   | 权重 |   |
+|   |   |   |   | 001"}] |   |   |   |
+| rules[].weight | integer | 是 |   | 50 |   | 权重值（百分比）。 |   |
+| rules[].serviceId | string | 是 |   | svc-001 |   | 目标服务ID。 |   |
+| rules[].serviceNam e | string | 否 |   | model-service |   | 目标服务名称。 |   |
 
 **HEADER 策略（Header条件分发）：**
 
 | 参数名称 | 类型 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
-| rules | array |  |  |  | [{"headerMatch" |  |  |  |  |  |  |
+| rules | array |   |   |   | [{"headerMatch" |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | [{"headerMatch" |  |  |  |  |  |
-|  |  |  |  |  | :{"model":"gpt- |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | He |  |  |
-|  |  |  | 是 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 4"}}] |  |  |  |  |  |  |
-| rules[].headerMatc h | object |  | 是 |  | {"model": "gpt-4"} |  |  |  | Header匹配条件，key-value 形式，如 {"model": "gpt-4"} 。 |  |  |
-|  |  |  |  |  |  | {"model": |  |  | 件 |  |  |
-|  |  |  |  |  |  |  |  |  |  | {"model": |  |
-|  |  |  |  |  |  |  |  |  | "gpt-4"} |  |  |
-| rules[].weightRuleL ist | array |  | 否 |  | [{"weight":50," |  |  |  |  |  |  |
-|  |  |  |  |  |  | [{"weight":50," |  |  | 权重规则列表（匹配 |  |  |
-|  |  |  |  |  | serviceId":"svc- |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 成功 |  |  |
-|  |  |  |  |  | 001"}] |  |  |  |  |  |  |
-| rules[].serviceId | string |  | 否 |  | svc-001 |  |  |  | 目标服务ID（已废弃，建议使用 weightRuleList）。 |  |  |
+|   |   |   |   |   |   | [{"headerMatch" |   |   |   |   |   |
+|   |   |   |   |   | :{"model":"gpt- |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | He |   |   |
+|   |   |   | 是 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 4"}}] |   |   |   |   |   |   |
+| rules[].headerMatc h | object |   | 是 |   | {"model": "gpt-4"} |   |   |   | Header匹配条件，key-value 形式，如 {"model": "gpt-4"} 。 |   |   |
+|   |   |   |   |   |   | {"model": |   |   | 件 |   |   |
+|   |   |   |   |   |   |   |   |   |   | {"model": |   |
+|   |   |   |   |   |   |   |   |   | "gpt-4"} |   |   |
+| rules[].weightRuleL ist | array |   | 否 |   | [{"weight":50," |   |   |   |   |   |   |
+|   |   |   |   |   |   | [{"weight":50," |   |   | 权重规则列表（匹配 |   |   |
+|   |   |   |   |   | serviceId":"svc- |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 成功 |   |   |
+|   |   |   |   |   | 001"}] |   |   |   |   |   |   |
+| rules[].serviceId | string |   | 否 |   | svc-001 |   |   |   | 目标服务ID（已废弃，建议使用 weightRuleList）。 |   |   |
 
 **WEIGHT_MODEL_MAPPING / SINGLE_MODEL_MAPPING 策略（权重+模型映射）：**
 
-|  | 参数名称 |  |  | 类型 |  |  |  | 是否必选 |  | 示例 |  | 说明 |  |
+|   | 参数名称 |   |   | 类型 |   |   |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | rules |  |  |  |  |  |  |  |  | [{"weight":50," |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{"weight":50," |  |  |
-|  |  |  |  |  |  |  |  |  |  | serviceId":"svc- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 001","modelMappin |  | 权重+模型映射规则 |  |
-|  |  |  |  | array |  |  |  | 是 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | g":{"gpt- |  | 列表。 |  |
-|  |  |  |  |  |  |  |  |  |  | 3.5":"gpt- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 4"}}] |  |  |  |
-|  | rules[].weight |  |  | integer |  |  |  | 是 |  | 50 |  | 权重值（百分比）。 |  |
-|  | rules[].serviceId |  |  | string |  |  |  | 是 |  | svc-001 |  | 目标服务ID。 |  |
-|  | rules[].modelMappi ng |  |  | object |  |  |  | 否 |  | {"gpt-3.5": "gpt-4"} |  | 模型映射配置，key- value 形式，如 {"gpt-3.5": "gpt-4"} 。 |  |
-|  | rules[].serviceNam e |  |  | string |  |  |  | 否 |  | model-service |  | 目标服务名称。 |  |
+|   | rules |   |   |   |   |   |   |   |   | [{"weight":50," |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{"weight":50," |   |   |
+|   |   |   |   |   |   |   |   |   |   | serviceId":"svc- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 001","modelMappin |   | 权重+模型映射规则 |   |
+|   |   |   |   | array |   |   |   | 是 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | g":{"gpt- |   | 列表。 |   |
+|   |   |   |   |   |   |   |   |   |   | 3.5":"gpt- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 4"}}] |   |   |   |
+|   | rules[].weight |   |   | integer |   |   |   | 是 |   | 50 |   | 权重值（百分比）。 |   |
+|   | rules[].serviceId |   |   | string |   |   |   | 是 |   | svc-001 |   | 目标服务ID。 |   |
+|   | rules[].modelMappi ng |   |   | object |   |   |   | 否 |   | {"gpt-3.5": "gpt-4"} |   | 模型映射配置，key- value 形式，如 {"gpt-3.5": "gpt-4"} 。 |   |
+|   | rules[].serviceNam e |   |   | string |   |   |   | 否 |   | model-service |   | 目标服务名称。 |   |
 
-| {"gpt-3.5": |  |  | valu |  |
+| {"gpt-3.5": |   |   | valu |   |
 |---|---|---|---|---|
-|  |  |  | "gpt-4"} |  |
+|   |   |   | "gpt-4"} |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -11522,21 +12728,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/createModelApi HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "apiName": "apiName_value",
   "description": "description_value",
   "basePath": "basePath_value",
   "basePathRemove": true,
   "methodPathList": [
-    {
-      "path": "path_value",
-      "method": "method_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "path": "path_value",
+      "method": "method_value"
+```
+
+`}` `],`
 
 ```json
   "domainNameList": [],
@@ -11547,32 +12761,44 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
     "enable": true,
     "logRequestInfo": true,
     "logResponseInfo": true
-  },
+```
+
+`},`
+
+```json
   "fallback": {
     "enable": true,
     "responseCodes": [],
     "fallbackServiceId": "fallbackServiceId_value",
     "fallbackStrategy": "fallbackStrategy_value"
-  }
-}
 ```
+
+`}` `}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### createModelApiStrategyConfig
+`}`
+
+#### 4.9.4 createModelApiStrategyConfig
 
 **API 接口概述**
+
+**中文名称：**创建模型API策略
+**英文名称：** createModelApiStrategyConfig
+**功能概述：**模型 API 管理 - 创建模型 API 插件。
 
 ```
 请求路径： /modelapi/createModelApiStrategyConfig
@@ -11583,30 +12809,31 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  |  | 示例 |  |  |  |  |  |  |  | 说明 |  |  |  |  |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 |   |   | 示例 |   |   |   |   |   |   |   | 说明 |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| modelApiId | string | body | 是 |  |  | model-api- |  |  |  |  |  |  |  | 模型API ID，格式为 model- |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | model-api- |  |  |  |  |  |  | 式为 |  |  | model- |  |  |  |
-|  |  |  |  |  |  | my-api |  |  |  |  |  |  |  | api- |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | {apiName} |  |  |  |  |  |  |
-| gwInstanceId | string | body | 是 |  |  | higress- 001 |  |  |  |  |  |  |  | 网关实例ID。 |  |  |  |  |  |  |
-| strategyName | string | body | 是 |  |  | ai-token- |  |  |  |  |  |  |  | 策略名称（插件名称），如 |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ai-token- |  |  |  |  |  |  |  |  | ai-token- |  |  |  |  |
-|  |  |  |  |  |  | limit |  |  |  |  |  |  |  | limit |  |  |  | 、 | ai- |  |
-| config | object | body | 否 |  |  | 见下方示例 |  |  |  |  |  |  |  | 插件配置对象，JSON 格式， 字段根据插件类型动态变化。 |  |  |  |  |  |  |
+| modelApiId | string | body | 是 |   |   | model-api- |   |   |   |   |   |   |   | 模型API ID，格式为 model- |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | model-api- |   |   |   |   |   |   | 式为 |   |   | model- |   |   |   |
+|   |   |   |   |   |   | my-api |   |   |   |   |   |   |   | api- |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | {apiName} |   |   |   |   |   |   |
+| gwInstanceId | string | body | 是 |   |   | higress- 001 |   |   |   |   |   |   |   | 网关实例ID。 |   |   |   |   |   |   |
+| strategyName | string | body | 是 |   |   | ai-token- |   |   |   |   |   |   |   | 策略名称（插件名称），如 |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ai-token- |   |   |   |   |   |   |   |   | ai-token- |   |   |   |   |
+|   |   |   |   |   |   | limit |   |   |   |   |   |   |   | limit |   |   |   | 、 | ai- |   |
+| config | object | body | 否 |   |   | 见下方示例 |   |   |   |   |   |   |   | 插件配置对象，JSON 格式， 字段根据插件类型动态变化。 |   |   |   |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 | rawConfig | string | body | 否 | 见下方示例 | YAML 格式的插件配置字符串， 与 config 二选一，推荐使用此字段。 |
 |---|---|---|---|---|---|
 
 | 要： | config |
 |---|---|
-| config ：JS rawConfig |  |
+| config ：JS rawConfig |   |
+
+**重要**： `config` 和 `rawConfig` 不能同时为空，必须至少提供一个。两者内容相同，只是格式不同：
+`config` ：JSON 对象格式，适合程序化构造 `rawConfig` ：YAML 字符串格式，适合手动编写，更清晰易读
 
 **config/rawConfig 配置结构**
 
@@ -11616,33 +12843,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 限制 API 的 Token 消耗量，支持按时间窗口配置限流规则。
 **config** **示例（****JSON** **格式）**：
+`{`
 
 ```json
-{
   "rule_items": [
-    {
+```
+
+`{`
+
+```json
       "limit_by_type": "consumer",
       "limit_by_value": "",
       "limit_keys": [
-        {
+```
+
+`{`
+
+```json
           "key": "default",
           "time_unit": "hour",
           "token_limit": 1000
-        }
 ```
 
-]
-
-```
-    }
-```
-
-]
-
-```
-}
-```
-
+`}` `]` `}` `]` `}`
 **rawConfig** **示例（****YAML** **格式）**：
 
 ```
@@ -11659,32 +12882,30 @@ rule_items:
 |---|---|---|
 | rule items _ | array | 限流规则列表。 |
 
-智能体工厂 OpenTrek
-
-| rule items.limit by type _ _ _ | string | 限流维度，可选值： consumer （按消费者）、 api key （按 API Key）。 _ |  |  |
+| rule items.limit by type _ _ _ | string | 限流维度，可选值： consumer （按消费者）、 api key （按 API Key）。 _ |   |   |
 |---|---|---|---|---|
-| rule items.limit by value _ _ _ | string | 限流维度的具体值，为空表示全部。 |  |  |
-| rule items.limit keys _ _ | array | 限流配置项列表。 |  |  |
-| rule items.limit keys.key _ _ | string | 限流键名， default 表示默认规则。 |  |  |
-| rule items.limit keys.time unit _ _ _ | string | 时间单位，可选值： second 、 minute 、 hou r 、 day 。 |  |  |
-|  |  |  | hou |  |
-| rule items.limit keys.token limit _ _ _ | integer | Token 数量上限。 |  |  |
+| rule items.limit by value _ _ _ | string | 限流维度的具体值，为空表示全部。 |   |   |
+| rule items.limit keys _ _ | array | 限流配置项列表。 |   |   |
+| rule items.limit keys.key _ _ | string | 限流键名， default 表示默认规则。 |   |   |
+| rule items.limit keys.time unit _ _ _ | string | 时间单位，可选值： second 、 minute 、 hou r 、 day 。 |   |   |
+|   |   |   | hou |   |
+| rule items.limit keys.token limit _ _ _ | integer | Token 数量上限。 |   |   |
 
-|  | r |
+|   | r |
 |---|---|
 
 **ai-statistics（AI 统计插件）**
 
 记录 AI 调用的统计信息，用于监控和分析。
 **config** **示例（****JSON** **格式）**：
+`{`
 
 ```json
-{
   "enable": true,
   "statistics_type": "model"
-}
 ```
 
+`}`
 **rawConfig** **示例（****YAML** **格式）**：
 
 ```
@@ -11700,20 +12921,16 @@ enable: true statistics_type: model
 
 校验请求参数，确保请求符合预期格式。
 **config** **示例（****JSON** **格式）**：
-智能体工厂 OpenTrek
 
 ```json
-{
   "body_schema": {
     "type": "object",
     "required": ["prompt"],
     "properties": {
       "prompt": {"type": "string"}
-    }
-  }
-}
 ```
 
+`}` `}` `}`
 **rawConfig** **示例（****YAML** **格式）**：
 
 ```
@@ -11734,33 +12951,31 @@ body_schema:
 
 缓存 AI 响应结果，减少重复调用。
 **config** **示例（****JSON** **格式）**：
+`{`
 
 ```json
-{
   "cache_key": "request_body",
   "ttl": 3600
-}
 ```
 
+`}`
 **rawConfig** **示例（****YAML** **格式）**：
 
 ```
 cache_key: request_body ttl: 3600
 ```
 
-| 字段 | 类型 | 说明 |  |  |
+| 字段 | 类型 | 说明 |   |   |
 |---|---|---|---|---|
-| cache key _ | string | 缓存键来源，可选值： request body 、 request _ _ header 等。 |  |  |
-|  |  |  | request _ |  |
-| ttl | integer | 缓存过期时间（秒）。 |  |  |
+| cache key _ | string | 缓存键来源，可选值： request body 、 request _ _ header 等。 |   |   |
+|   |   |   | request _ |   |
+| ttl | integer | 缓存过期时间（秒）。 |   |   |
 
-|  |  | request body _ |
+|   |   | request body _ |
 |---|---|---|
-|  | header |  |
+|   | header |   |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -11774,65 +12989,81 @@ cache_key: request_body ttl: 3600
 
 **请求示例 - 使用 rawConfig（推荐）**
 
+```
+POST /modelapi/createModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /modelapi/createModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "modelApiId": "model-api-my-ai-api",
   "gwInstanceId": "higress-001",
   "strategyName": "ai-token-limit",
   "rawConfig": "rule_items:\n  - limit_by_type: consumer\n    limit_by_value: \"\"\n    limit_k
-eys:\n - key: default\n time_unit: hour\n token_limit: 1000" }
+eys:\n - key: default\n time_unit: hour\n token_limit: 1000"
 ```
+
+`}`
 
 **请求示例 - 使用 config**
 
-智能体工厂 OpenTrek
+```
+POST /modelapi/createModelApiStrategyConfig HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /modelapi/createModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "modelApiId": "model-api-my-ai-api",
   "gwInstanceId": "higress-001",
   "strategyName": "ai-token-limit",
   "config": {
     "rule_items": [
-      {
+```
+
+`{`
+
+```json
         "limit_by_type": "consumer",
         "limit_by_value": "",
         "limit_keys": [
-          {
+```
+
+`{`
+
+```json
             "key": "default",
             "time_unit": "hour",
             "token_limit": 1000
-          }
 ```
 
-]
-
-```
-      }
-```
-
-]
-
-```
-  }
-}
-```
+`}` `]` `}` `]` `}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "wasm-plugin-ai-token-limit-model-api-my-ai-api-xxx"
-}
 ```
 
-#### deleteModelApi
+`}`
+
+#### 4.9.5 deleteModelApi
 
 **API 接口概述**
 
+**中文名称：**删除模型API
+**英文名称：** deleteModelApi
+**功能概述：**模型 API 管理 - 删除模型 API。
+**请求路径：** `/modelapi/deleteModelApi`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
@@ -11841,20 +13072,20 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-| AI Gateway 开发指 | 南·API参考 |  |  | 智 | 能体工厂 OpenTre |
+| AI Gateway 开发指 | 南·API参考 |   |   | 智 | 能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 | id | string | body | 否 | model-api- 001 | ID标识。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **返回数据**
 
@@ -11870,29 +13101,41 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/deleteModelApi HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "id": "id_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": null
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### deleteModelApiStrategyConfig
+#### 4.9.6 deleteModelApiStrategyConfig
 
 **API 接口概述**
+
+**中文名称：**删除模型API策略
+**英文名称：** deleteModelApiStrategyConfig
+**功能概述：**模型 API 管理 - 删除模型 API 插件。
 
 ```
 请求路径： /modelapi/deleteModelApiStrategyConfig
@@ -11909,17 +13152,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | modelApiId | string | body | 否 | model-api- 001 | 模型API ID。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | strategy- |
+|   |   | strategy- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -11935,31 +13178,44 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /modelapi/deleteModelApiStrategyConfig HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-POST /modelapi/deleteModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "strategyConfigId": "strategy-001",
   "modelApiId": "model-api-001",
   "gwInstanceId": "higress-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": null
-}
 ```
 
-#### getModelApiById
+`}`
+
+#### 4.9.7 getModelApiById
 
 **API 接口概述**
 
+**中文名称：**查询模型API详情
+**英文名称：** getModelApiById
+**功能概述：**模型 API 管理 - 查询模型 API 详情。
 **请求路径：** `/modelapi/getModelApi`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -11971,21 +13227,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 | id | string | body | 否 | model-api- 001 | ID标识。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -12007,14 +13261,12 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.observationConfig | object | - | 可观测性配置。 |
 | data.observationConfig.e nable | boolean | true | 是否启用。 |
 
-|  |  | ModelRouteMethodPath |  |  |
+|   |   | ModelRouteMethodPath |   |   |
 |---|---|---|---|---|
-| a.methodPathList | [] |  |  |  |
+| a.methodPathList | [] |   |   |   |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | data.observationConfig.l ogRequestInfo | boolean | true | 是否记录请求信息。 |
 |---|---|---|---|
@@ -12028,30 +13280,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.authenticationConfi g.enable | boolean | true | 是否启用。 |
 | data.authenticationConfi g.credentialTypeList | string[] | ["apiKey","bearer"] | 凭证类型列表。 |
 
-|  | fallback-service- |
+|   | fallback-service- |
 |---|---|
-| 001 |  |
+| 001 |   |
 
-|  | ["apiKey","bearer"] |
+|   | ["apiKey","bearer"] |
 |---|---|
 
 **示例**
 
 **请求示例**
 
+```
+POST /modelapi/getModelApi HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /modelapi/getModelApi HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "id": "id_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12064,7 +13325,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "methodPathList": {
       "path": "path_value",
       "method": "method_value"
-    },
+```
+
+`},`
+
+```json
     "domainNameList": [],
     "protocol": "protocol_value",
     "sceneType": "sceneType_value",
@@ -12073,24 +13338,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "enable": true,
       "logRequestInfo": true,
       "logResponseInfo": true
-    },
+```
+
+`},`
+
+```json
     "fallback": {
       "enable": true,
       "responseCodes": [],
       "fallbackServiceId": "fallbackServiceId_value",
       "fallbackStrategy": "fallbackStrategy_value"
-    },
+```
+
+`},`
+
+```json
     "authenticationConfig": {
       "enable": true,
       "credentialTypeList": []
-    }
-  }
-}
 ```
 
-#### getModelApiPolicies
+`}` `}` `}`
+
+#### 4.9.8 getModelApiPolicies
 
 **API 接口概述**
+
+**中文名称：**查询模型API策略配置
+**英文名称：** getModelApiPolicies
+**功能概述：**模型 API 管理 - 查询模型 API 策略配置。
+
+```
+请求路径： /modelapi/getModelApiPolicies
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -12100,19 +13380,17 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 | id | string | body | 否 | model-api- 001 | ID标识。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **返回数据**
 
@@ -12135,87 +13413,79 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | https://security.exa | 安全检查 |
 |---|---|
 
-智能体工厂 OpenTrek
-
-| data.aiSecurityPolicyCon fig.requestCheckService |  | string |  | security-service |  |  | 请求检查服务名称。 |
+| data.aiSecurityPolicyCon fig.requestCheckService |   | string |   | security-service |   |   | 请求检查服务名称。 |
 |---|---|---|---|---|---|---|---|
-| data.aiSecurityPolicyCon fig.responseCheckServic e |  | string |  | security-service |  |  | 响应检查服务名称。 |
-| data.aiSecurityPolicyCon fig.riskLevelBar |  | string |  | HIGH |  |  | 风险级别阈值。 |
-| data.aiTokenLimitPolicyC onfig |  | object |  | {} |  |  | AI Token限流策略配置。 |
-| data.aiTokenLimitPolicyC onfig.enabled |  | boolean |  | true |  |  | 是否启用。 |
-| data.aiTokenLimitPolicyC |  | AiTokenLimitPolicyCo |  |  |  |  | 限流规则项列表。 |
-|  |  |  | AiTokenLimitPolicyCo |  |  |  |  |
-|  | a.aiTokenLimitPolicyC | nfig$AiTokenLimitRuleI |  |  |  |  |  |
-|  |  |  |  |  | [] |  |  |
-| onfig.ruleItems | ig.ruleItems |  |  |  |  |  |  |
-|  |  | tem[] |  |  |  |  |  |
-| data.aiTokenLimitPolicyC onfig.ruleItems.limitByTy pe |  | string |  | consumer |  |  | 限流维度类型。 |
-| data.aiTokenLimitPolicyC onfig.ruleItems.limitByVa lue |  | string |  | app-001 |  |  | 限流维度值。 |
-| data.aiTokenLimitPolicyC |  | AiTokenLimitPolicyCo |  | [] |  |  | 限流键列表。 |
-|  |  |  | AiTokenLimitPolicyCo |  |  |  |  |
-|  | a.aiTokenLimitPolicyC | nfig$AiTokenLimitKey[] |  |  |  |  |  |
-| onfig.ruleItems.limitKeys | ig.ruleItems.limitKeys |  |  |  |  |  |  |
-| data.aiTokenLimitPolicyC onfig.ruleItems.limitKeys .key |  | string |  | token limit _ |  |  | 键名。 |
-| data.aiTokenLimitPolicyC onfig.ruleItems.limitKeys .timeUnit |  | string |  | DAY |  |  | 时间单位。 |
-| data.aiTokenLimitPolicyC onfig.ruleItems.limitKeys .tokenLimit |  | integer |  | 10000 |  |  | Token限制数量。 |
-| data.clusterQpsLimitPolic yConfig |  | object |  | {} |  |  | 集群QPS限流策略配置。 |
-| data.clusterQpsLimitPolic yConfig.enabled |  | boolean |  | true |  |  | 是否启用。 |
+| data.aiSecurityPolicyCon fig.responseCheckServic e |   | string |   | security-service |   |   | 响应检查服务名称。 |
+| data.aiSecurityPolicyCon fig.riskLevelBar |   | string |   | HIGH |   |   | 风险级别阈值。 |
+| data.aiTokenLimitPolicyC onfig |   | object |   | {} |   |   | AI Token限流策略配置。 |
+| data.aiTokenLimitPolicyC onfig.enabled |   | boolean |   | true |   |   | 是否启用。 |
+| data.aiTokenLimitPolicyC |   | AiTokenLimitPolicyCo |   |   |   |   | 限流规则项列表。 |
+|   |   |   | AiTokenLimitPolicyCo |   |   |   |   |
+|   | a.aiTokenLimitPolicyC | nfig$AiTokenLimitRuleI |   |   |   |   |   |
+|   |   |   |   |   | [] |   |   |
+| onfig.ruleItems | ig.ruleItems |   |   |   |   |   |   |
+|   |   | tem[] |   |   |   |   |   |
+| data.aiTokenLimitPolicyC onfig.ruleItems.limitByTy pe |   | string |   | consumer |   |   | 限流维度类型。 |
+| data.aiTokenLimitPolicyC onfig.ruleItems.limitByVa lue |   | string |   | app-001 |   |   | 限流维度值。 |
+| data.aiTokenLimitPolicyC |   | AiTokenLimitPolicyCo |   | [] |   |   | 限流键列表。 |
+|   |   |   | AiTokenLimitPolicyCo |   |   |   |   |
+|   | a.aiTokenLimitPolicyC | nfig$AiTokenLimitKey[] |   |   |   |   |   |
+| onfig.ruleItems.limitKeys | ig.ruleItems.limitKeys |   |   |   |   |   |   |
+| data.aiTokenLimitPolicyC onfig.ruleItems.limitKeys .key |   | string |   | token limit _ |   |   | 键名。 |
+| data.aiTokenLimitPolicyC onfig.ruleItems.limitKeys .timeUnit |   | string |   | DAY |   |   | 时间单位。 |
+| data.aiTokenLimitPolicyC onfig.ruleItems.limitKeys .tokenLimit |   | integer |   | 10000 |   |   | Token限制数量。 |
+| data.clusterQpsLimitPolic yConfig |   | object |   | {} |   |   | 集群QPS限流策略配置。 |
+| data.clusterQpsLimitPolic yConfig.enabled |   | boolean |   | true |   |   | 是否启用。 |
 
-智能体工厂 OpenTrek
-
-| data.clusterQpsLimitPolic yConfig.queryPerSecond |  | integer |  | 100 |  |  | 每秒允许的请求数。 |
+| data.clusterQpsLimitPolic yConfig.queryPerSecond |   | integer |   | 100 |   |   | 每秒允许的请求数。 |
 |---|---|---|---|---|---|---|---|
-| data.clusterQpsLimitPolic yConfig.queryPerMinute |  | integer |  | 6000 |  |  | 每分钟允许的请求数。 |
-| data.clusterQpsLimitPolic yConfig.queryPerHour |  | integer |  | 360000 |  |  | 每小时允许的请求数。 |
-| data.clusterQpsLimitPolic yConfig.queryPerDay |  | integer |  | 8640000 |  |  | 每天允许的请求数。 |
-| data.allClusterLimitPolicy Config |  | object |  | {} |  |  | 全局限流策略配置。 |
-| data.allClusterLimitPolicy Config.enabled |  | boolean |  | false |  |  | 是否启用。 |
-| data.allClusterLimitPolicy Config.multiRuleMode |  | boolean |  | false |  |  | 多规则模式。 |
-| data.allClusterLimitPolicy Config.maxConcurrentRu les |  | integer |  | 10 |  |  | 最大并发规则数。 |
-| data.allClusterLimitPolicy Config.rejectedCode |  | integer |  | 429 |  |  | 拒绝响应码。 |
-| data.allClusterLimitPolicy Config.rejectedMsg |  | string |  | 请求过多，请稍后重试 |  |  | 拒绝消息。 |
-| data.allClusterLimitPolicy |  | AllClusterLimitPolic |  |  |  |  | 全局阈值列表。 |
-|  |  |  | AllClusterLimitPolic |  |  |  |  |
-|  | a.allClusterLimitPolicy | yConfig$GlobalThreshol |  |  |  |  |  |
-|  |  |  |  |  | [] |  |  |
-| Config.globalThresholds | fig.globalThresholds |  |  |  |  |  |  |
-|  |  | dConfig[] |  |  |  |  |  |
-| data.allClusterLimitPolicy Config.globalThresholds.l imitType |  | string |  | QPS |  |  | 限制类型。 |
-| data.allClusterLimitPolicy Config.globalThresholds.l imitKeys |  | object |  | {} |  |  | 限制键配置。 |
-| data.allClusterLimitPolicy Config.globalThresholds.f ixedQuotaMode |  | boolean |  | false |  |  | 固定配额模式。 |
+| data.clusterQpsLimitPolic yConfig.queryPerMinute |   | integer |   | 6000 |   |   | 每分钟允许的请求数。 |
+| data.clusterQpsLimitPolic yConfig.queryPerHour |   | integer |   | 360000 |   |   | 每小时允许的请求数。 |
+| data.clusterQpsLimitPolic yConfig.queryPerDay |   | integer |   | 8640000 |   |   | 每天允许的请求数。 |
+| data.allClusterLimitPolicy Config |   | object |   | {} |   |   | 全局限流策略配置。 |
+| data.allClusterLimitPolicy Config.enabled |   | boolean |   | false |   |   | 是否启用。 |
+| data.allClusterLimitPolicy Config.multiRuleMode |   | boolean |   | false |   |   | 多规则模式。 |
+| data.allClusterLimitPolicy Config.maxConcurrentRu les |   | integer |   | 10 |   |   | 最大并发规则数。 |
+| data.allClusterLimitPolicy Config.rejectedCode |   | integer |   | 429 |   |   | 拒绝响应码。 |
+| data.allClusterLimitPolicy Config.rejectedMsg |   | string |   | 请求过多，请稍后重试 |   |   | 拒绝消息。 |
+| data.allClusterLimitPolicy |   | AllClusterLimitPolic |   |   |   |   | 全局阈值列表。 |
+|   |   |   | AllClusterLimitPolic |   |   |   |   |
+|   | a.allClusterLimitPolicy | yConfig$GlobalThreshol |   |   |   |   |   |
+|   |   |   |   |   | [] |   |   |
+| Config.globalThresholds | fig.globalThresholds |   |   |   |   |   |   |
+|   |   | dConfig[] |   |   |   |   |   |
+| data.allClusterLimitPolicy Config.globalThresholds.l imitType |   | string |   | QPS |   |   | 限制类型。 |
+| data.allClusterLimitPolicy Config.globalThresholds.l imitKeys |   | object |   | {} |   |   | 限制键配置。 |
+| data.allClusterLimitPolicy Config.globalThresholds.f ixedQuotaMode |   | boolean |   | false |   |   | 固定配额模式。 |
 
-智能体工厂 OpenTrek
-
-| data.allClusterLimitPolicy Config.globalThresholds. hitsAddend |  | object |  | {} |  |  |  | 命中加数配置。 |
+| data.allClusterLimitPolicy Config.globalThresholds. hitsAddend |   | object |   | {} |   |   |   | 命中加数配置。 |
 |---|---|---|---|---|---|---|---|---|
-| data.allClusterLimitPolicy Config.globalThresholds. hitsAddend.base |  | integer |  | 1 |  |  |  | 基础值。 |
-| data.allClusterLimitPolicy Config.globalThresholds. hitsAddend.fromHeader |  | string |  | X-Request-Weight |  |  |  | 来源Header。 |
-| data.allClusterLimitPolicy |  | AllClusterLimitPolic |  |  |  |  |  | 规则项列表。 |
-|  |  |  | AllClusterLimitPolic |  |  |  |  |  |
-|  | a.allClusterLimitPolicy | yConfig$RuleItemConfig |  |  |  |  |  |  |
-|  |  |  |  |  |  | [] |  |  |
-| Config.ruleItems | fig.ruleItems |  |  |  |  |  |  |  |
-|  |  | [] |  |  |  |  |  |  |
-| data.allClusterLimitPolicy Config.ruleItems.limitBy |  | string |  | consumer |  |  |  | 限制维度。 |
-| data.allClusterLimitPolicy Config.ruleItems.limitByF rom |  | string |  | header |  |  |  | 限制来源。 |
-| data.allClusterLimitPolicy Config.ruleItems.andMat |  | AllClusterLimitPolic |  |  |  |  |  | 匹配器配置列表。 |
-|  |  |  | AllClusterLimitPolic |  |  |  |  |  |
-|  | fig.ruleItems.andMat | yConfig$AndMatcherConf |  |  |  |  |  |  |
-|  |  |  |  |  | [] |  |  |  |
-| cherConfig |  |  |  |  |  |  |  |  |
-|  |  | ig[] |  |  |  |  |  |  |
-| data.allClusterLimitPolicy Config.ruleItems.andMat cherConfig.limitBy |  | string |  | header |  |  |  | 匹配维度。 |
-| data.allClusterLimitPolicy Config.ruleItems.andMat cherConfig.limitByFrom |  | string |  | X-Consumer-ID |  |  |  | 匹配来源。 |
-| data.allClusterLimitPolicy Config.ruleItems.andMat cherConfig.key |  | string |  | consumer match _ |  |  |  | 键名。 |
-| data.allClusterLimitPolicy Config.ruleItems.limitKey |  | AllClusterLimitPolic |  |  |  |  |  | 限制键列表。 |
-|  |  |  | AllClusterLimitPolic |  |  |  |  |  |
-|  | fig.ruleItems.limitKey | yConfig$RuleItemLimitK |  |  |  |  |  |  |
-|  |  |  |  |  | [] |  |  |  |
-| s |  |  |  |  |  |  |  |  |
-|  |  | ey[] |  |  |  |  |  |  |
-| data.allClusterLimitPolicy Config.ruleItems.limitKey s.limitType |  | string |  | QPS |  |  |  | 限制类型。 |
-
-智能体工厂 OpenTrek
+| data.allClusterLimitPolicy Config.globalThresholds. hitsAddend.base |   | integer |   | 1 |   |   |   | 基础值。 |
+| data.allClusterLimitPolicy Config.globalThresholds. hitsAddend.fromHeader |   | string |   | X-Request-Weight |   |   |   | 来源Header。 |
+| data.allClusterLimitPolicy |   | AllClusterLimitPolic |   |   |   |   |   | 规则项列表。 |
+|   |   |   | AllClusterLimitPolic |   |   |   |   |   |
+|   | a.allClusterLimitPolicy | yConfig$RuleItemConfig |   |   |   |   |   |   |
+|   |   |   |   |   |   | [] |   |   |
+| Config.ruleItems | fig.ruleItems |   |   |   |   |   |   |   |
+|   |   | [] |   |   |   |   |   |   |
+| data.allClusterLimitPolicy Config.ruleItems.limitBy |   | string |   | consumer |   |   |   | 限制维度。 |
+| data.allClusterLimitPolicy Config.ruleItems.limitByF rom |   | string |   | header |   |   |   | 限制来源。 |
+| data.allClusterLimitPolicy Config.ruleItems.andMat |   | AllClusterLimitPolic |   |   |   |   |   | 匹配器配置列表。 |
+|   |   |   | AllClusterLimitPolic |   |   |   |   |   |
+|   | fig.ruleItems.andMat | yConfig$AndMatcherConf |   |   |   |   |   |   |
+|   |   |   |   |   | [] |   |   |   |
+| cherConfig |   |   |   |   |   |   |   |   |
+|   |   | ig[] |   |   |   |   |   |   |
+| data.allClusterLimitPolicy Config.ruleItems.andMat cherConfig.limitBy |   | string |   | header |   |   |   | 匹配维度。 |
+| data.allClusterLimitPolicy Config.ruleItems.andMat cherConfig.limitByFrom |   | string |   | X-Consumer-ID |   |   |   | 匹配来源。 |
+| data.allClusterLimitPolicy Config.ruleItems.andMat cherConfig.key |   | string |   | consumer match _ |   |   |   | 键名。 |
+| data.allClusterLimitPolicy Config.ruleItems.limitKey |   | AllClusterLimitPolic |   |   |   |   |   | 限制键列表。 |
+|   |   |   | AllClusterLimitPolic |   |   |   |   |   |
+|   | fig.ruleItems.limitKey | yConfig$RuleItemLimitK |   |   |   |   |   |   |
+|   |   |   |   |   | [] |   |   |   |
+| s |   |   |   |   |   |   |   |   |
+|   |   | ey[] |   |   |   |   |   |   |
+| data.allClusterLimitPolicy Config.ruleItems.limitKey s.limitType |   | string |   | QPS |   |   |   | 限制类型。 |
 
 | data.allClusterLimitPolicy Config.ruleItems.limitKey s.limitKeys | object | {} | 限制键配置。 |
 |---|---|---|---|
@@ -12232,8 +13502,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.headerControl.requ est.add.value | string | custom-value | 键值。 |
 | data.headerControl.requ est.set | Header[] | [] | 要设置的Header列表。 |
 | data.headerControl.requ est.set.key | string | X-Set-Header | 键名。 |
-
-智能体工厂 OpenTrek
 
 | data.headerControl.requ est.set.value | string | set-value | 键值。 |
 |---|---|---|---|
@@ -12254,31 +13522,40 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.retryConfig.attempt s | integer | 3 | 重试次数。 |
 | data.retryConfig.timeout | integer | 5 | 超时时间（秒）。 |
 
-智能体工厂 OpenTrek
-
 | data.retryConfig.conditio ns | string[] | ["error", "timeout"] | 重试条件。 |
 |---|---|---|---|
 | data.retryConfig.httpStat usCodes | integer[] | [500, 502, 503] | HTTP状态码列表。 |
 
-|  |  | ["error", |
+|   |   | ["error", |
 |---|---|---|
-|  | "timeout"] |  |
+|   | "timeout"] |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /modelapi/getModelApiPolicies HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "id": "id_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12294,7 +13571,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "requestCheckService": "requestCheckService_value",
       "responseCheckService": "responseCheckService_value",
       "riskLevelBar": "riskLevelBar_value"
-    },
+```
+
+`},`
+
+```json
     "aiTokenLimitPolicyConfig": {
       "enabled": true,
       "ruleItems": {
@@ -12304,22 +13585,26 @@ HTTP/1.1 200 OK Content-Type: application/json {
           "key": {},
           "timeUnit": {},
           "tokenLimit": {}
-        }
-      }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "clusterQpsLimitPolicyConfig": {
       "enabled": true,
       "queryPerSecond": 0,
 ```
-
-智能体工厂 OpenTrek
 
 ```json
       queryPerSecond: 0,
       "queryPerMinute": 0,
       "queryPerHour": 0,
       "queryPerDay": 0
-    },
+```
+
+`},`
+
+```json
     "allClusterLimitPolicyConfig": {
       "enabled": true,
       "multiRuleMode": true,
@@ -12333,8 +13618,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "hitsAddend": {
           "base": {},
           "fromHeader": {}
-        }
-      },
+```
+
+`}` `},`
+
+```json
       "ruleItems": {
         "limitBy": "limitBy_value",
         "limitByFrom": "limitByFrom_value",
@@ -12342,64 +13630,99 @@ HTTP/1.1 200 OK Content-Type: application/json {
           "limitBy": {},
           "limitByFrom": {},
           "key": {}
-        },
+```
+
+`},`
+
+```json
         "limitKeys": {
           "limitType": {},
           "limitKeys": {},
           "fixedQuotaMode": {},
           "hitsAddend": {},
           "key": {}
-        }
-      }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "headerControl": {
       "enabled": true,
       "request": {
         "add": {
           "key": {},
           "value": {}
-        },
+```
+
+`},`
+
+```json
         "set": {
           "key": {},
           "value": {}
-        },
+```
+
+`},`
+
+```json
         "remove": []
-      },
+```
+
+`},`
+
+```json
       "response": {
         "add": {
           "key": {},
           "value": {}
-        },
+```
+
+`},`
+
+```json
         "set": {
           "key": {},
           "value": {}
-        },
 ```
 
-智能体工厂 OpenTrek
+`},`
 
 ```json
         "remove": []
-      }
-    },
+```
+
+`},`
+
+```json
     "timeoutConfig": {
       "enabled": true,
       "timeout": 0
-    },
+```
+
+`},`
+
+```json
     "retryConfig": {
       "enabled": true,
       "attempts": 0,
       "timeout": 0,
       "conditions": [],
       "httpStatusCodes": []
-    }
-  }
-}
 ```
 
-#### getModelApiStrategyConfig
+`}` `}` `}`
+
+#### 4.9.9 getModelApiStrategyConfig
 
 **API 接口概述**
+
+**中文名称：**查询模型API策略详情
+**英文名称：** getModelApiStrategyConfig
+**功能概述：**模型 API 管理 - 查询模型 API 插件。
+
+```
+请求路径： /modelapi/getModelApiStrategyConfig
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -12412,25 +13735,23 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | modelApiId | string | body | 否 | model-api- 001 | 模型API ID。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | strategy- |
+|   |   | strategy- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -12451,20 +13772,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/getModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /modelapi/getModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "strategyConfigId": "strategyConfigId_value",
   "modelApiId": "modelApiId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12478,13 +13808,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "createTime": "createTime_value",
     "updateTime": "updateTime_value",
     "modelApiId": "modelApiId_value"
-  }
-}
 ```
 
-#### listModelApiConsumers
+`}` `}`
+
+#### 4.9.10 listModelApiConsumers
 
 **API 接口概述**
+
+**中文名称：**查询模型API授权消费者
+**英文名称：** listModelApiConsumers
+**功能概述：**模型 API 管理 - 查询模型 API 授权的消费者列表。
+
+```
+请求路径： /modelapi/listModelApiConsumers
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -12498,15 +13836,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | modelApiId | string | body | 是 | model-api- 001 | 模型API ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |   |
 
 | consumerNam e | string | body | 否 | app-001 | 消费者名称（可选，支持模糊查询）。 |
 |---|---|---|---|---|---|
@@ -12531,11 +13867,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.authType | string | apikey | 认证类型。 |
 | data.records.enable | boolean | true | 是否启用。 |
 
-|  |  | ListModelApiConsumer | [] |
+|   |   | ListModelApiConsumer | [] |
 |---|---|---|---|
-| a.records | sResponse[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | sResponse[] |   |   |
 
 | data.records.authId | string | auth-001 | 授权ID。 |
 |---|---|---|---|
@@ -12544,20 +13878,31 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/listModelApiConsumers HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "gwInstanceId": "gwInstanceId_value",
   "modelApiId": "modelApiId_value",
   "consumerName": "consumerName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12573,17 +13918,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "authType": "authType_value",
       "enable": true,
       "authId": "authId_value"
-    }
-  }
-}
 ```
 
-#### listModelApiRoutes
+`}` `}` `}`
+
+#### 4.9.11 listModelApiRoutes
 
 **API 接口概述**
 
+**中文名称：**查询模型API关联路由
+**英文名称：** listModelApiRoutes
+**功能概述：**模型 API 管理 - 查询模型 API 关联的路由列表。
+**请求路径：** `/modelapi/listModelApiRoutes`
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
 **请求参数**
@@ -12593,39 +13940,37 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 | id | string | body | 否 | model-api- 001 | ID标识。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **返回数据**
 
-|  | 参数名称 |  | 类型 |  | 示例 |  | 说明 |
+|   | 参数名称 |   | 类型 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|
-|  | requestId |  | string |  | uuid-xxx-xxx |  | 请求ID。 |
-|  | code |  | integer |  | 200 |  | 响应码。 |
-|  | msg |  | string |  | success |  | 响应消息。 |
-|  | message |  | string |  | success |  | 响应消息。 |
-|  | data |  | ModelApiRouteInfo[] |  | [] |  | 响应数据。 |
-|  | data.routeId |  | string |  | route-001 |  | 路由ID。 |
-|  | data.routeName |  | string |  | ai-route-001 |  | 路由名称。 |
-|  | data.enableStatus |  | boolean |  | true |  | 启用状态。 |
-|  | data.routePath |  | string[] |  | ["/api/v1/chat"] |  | 路由路径。 |
-|  | data.path |  | object |  | {} |  | 路径。 |
-|  | data.path.matchType |  | string (枚举: |  | EXACT |  | 匹配类型。 |
-|  |  |  |  | string (枚举: |  |  |  |
-|  |  | atchType | RoutePredicateTypeEnum |  |  |  |  |
-|  |  |  |  |  |  | EXACT |  |
-|  |  |  | ) |  |  |  |  |
-|  | data.path.matchValue |  | string |  | /api/v1/chat |  | 用于匹配的值。 |
+|   | requestId |   | string |   | uuid-xxx-xxx |   | 请求ID。 |
+|   | code |   | integer |   | 200 |   | 响应码。 |
+|   | msg |   | string |   | success |   | 响应消息。 |
+|   | message |   | string |   | success |   | 响应消息。 |
+|   | data |   | ModelApiRouteInfo[] |   | [] |   | 响应数据。 |
+|   | data.routeId |   | string |   | route-001 |   | 路由ID。 |
+|   | data.routeName |   | string |   | ai-route-001 |   | 路由名称。 |
+|   | data.enableStatus |   | boolean |   | true |   | 启用状态。 |
+|   | data.routePath |   | string[] |   | ["/api/v1/chat"] |   | 路由路径。 |
+|   | data.path |   | object |   | {} |   | 路径。 |
+|   | data.path.matchType |   | string (枚举: |   | EXACT |   | 匹配类型。 |
+|   |   |   |   | string (枚举: |   |   |   |
+|   |   | atchType | RoutePredicateTypeEnum |   |   |   |   |
+|   |   |   |   |   |   | EXACT |   |
+|   |   |   | ) |   |   |   |   |
+|   | data.path.matchValue |   | string |   | /api/v1/chat |   | 用于匹配的值。 |
 
-|  |  | ModelApiRouteInfo[] |
+|   |   | ModelApiRouteInfo[] |
 |---|---|---|
-
-智能体工厂 OpenTrek
 
 | data.path.caseSensitive | boolean | true | 是否区分大小写匹配。 |
 |---|---|---|---|
@@ -12633,28 +13978,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.domains | string[] | ["api.example.com"] | 域名列表。 |
 | data.routeDispatcherCon fig | object | {} | 路由分发配置。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
 **示例**
 
 **请求示例**
 
+```
+POST /modelapi/listModelApiRoutes HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "id": "id_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12667,64 +14023,68 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "matchType": "matchType_value",
       "matchValue": "matchValue_value",
       "caseSensitive": true
-    },
+```
+
+`},`
+
+```json
     "createTime": "createTime_value",
     "domains": [],
     "routeDispatcherConfig": {}
-  }
-}
 ```
 
-#### listModelApis
+`}` `}`
 
-智能体工厂 OpenTrek
+#### 4.9.12 listModelApis
 
 **API 接口概述**
 
+**中文名称：**查询模型API列表
+**英文名称：** listModelApis
+**功能概述：**模型 API 管理 - 查询所有模型 API。
+**请求路径：** `/modelapi/listModelApis`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  |  | 说明 |  |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   |   | 说明 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| size | integer | body | 是 |  | 10 |  |  | 每页大小。 |  |  |  |
-| current | integer | body | 是 |  | 1 |  |  | 当前页码。 |  |  |  |
-| gwInstanceId | string | body | 否 |  | higress- 001 |  |  | 网关实例ID。 |  |  |  |
-| apiName | string | body | 否 |  | my-model- api |  |  | API名称。 |  |  |  |
-| protocol | string | body | 否 |  | openai |  |  | 协议类型。 |  |  |  |
-| sceneType | string | body | 否 |  | TEXT GENERAT _ ION |  |  | 场景类型。可选值： TEXT GEN _ ERATION （文本生成）、 IMAGE _ GENERATION （图片生成）、 VIDEO _ GENERATION （视频生成）、 SPEECH SYNTHESIS _ （语音合成）、 TEXT R _ ERANK （文本排序/Rerank）、 EMBEDDING （ 向量化）、 OTHER （其他）。 |  |  |  |
-|  |  |  |  |  |  |  |  |  | IMAGE _ |  |  |
-|  |  |  |  |  |  |  |  | GENERATION |  |  |  |
-|  |  |  |  |  |  |  |  |  | VIDEO _ |  |  |
-|  |  |  |  |  |  |  |  | GENERATION |  |  |  |
-|  |  |  |  |  |  | TEXT GENERAT _ |  | （ 成 |  |  |  |
-|  |  |  |  |  |  |  |  |  | SPEECH |  |  |
-|  |  |  |  |  | ION |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | SYNTHESIS _ |  |  |  |
+| size | integer | body | 是 |   | 10 |   |   | 每页大小。 |   |   |   |
+| current | integer | body | 是 |   | 1 |   |   | 当前页码。 |   |   |   |
+| gwInstanceId | string | body | 否 |   | higress- 001 |   |   | 网关实例ID。 |   |   |   |
+| apiName | string | body | 否 |   | my-model- api |   |   | API名称。 |   |   |   |
+| protocol | string | body | 否 |   | openai |   |   | 协议类型。 |   |   |   |
+| sceneType | string | body | 否 |   | TEXT GENERAT _ ION |   |   | 场景类型。可选值： TEXT GEN _ ERATION （文本生成）、 IMAGE _ GENERATION （图片生成）、 VIDEO _ GENERATION （视频生成）、 SPEECH SYNTHESIS _ （语音合成）、 TEXT R _ ERANK （文本排序/Rerank）、 EMBEDDING （ 向量化）、 OTHER （其他）。 |   |   |   |
+|   |   |   |   |   |   |   |   |   | IMAGE _ |   |   |
+|   |   |   |   |   |   |   |   | GENERATION |   |   |   |
+|   |   |   |   |   |   |   |   |   | VIDEO _ |   |   |
+|   |   |   |   |   |   |   |   | GENERATION |   |   |   |
+|   |   |   |   |   |   | TEXT GENERAT _ |   | （ 成 |   |   |   |
+|   |   |   |   |   |   |   |   |   | SPEECH |   |   |
+|   |   |   |   |   | ION |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | SYNTHESIS _ |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | my-model- |
+|   |   | my-model- |
 |---|---|---|
-|  | api |  |
+|   | api |   |
 
-|  |  | TEXT GEN _ |  |
+|   |   | TEXT GEN _ |   |
 |---|---|---|---|
-|  | ERATION |  |  |
+|   | ERATION |   |   |
 
-|  |  | TEXT R _ |  |
+|   |   | TEXT R _ |   |
 |---|---|---|---|
-|  | ERANK |  |  |
+|   | ERANK |   |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 |---|---|---|---|
@@ -12746,14 +14106,12 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.methodPath List.method | string | POST | HTTP方法。 |
 | data.records.domainNam eList | string[] | ["api.example.com"] | 域名列表。 |
 
-|  |  | ModelRouteMethodPath |  |  |
+|   |   | ModelRouteMethodPath |   |   |
 |---|---|---|---|---|
-|  | [] |  |  |  |
+|   | [] |   |   |   |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | data.records.protocol | string | openai | 协议类型。 |
 |---|---|---|---|
@@ -12772,33 +14130,38 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.authenticati onConfig.enable | boolean | true | 是否启用。 |
 | data.records.authenticati onConfig.credentialType List | string[] | ["apiKey","bearer"] | 凭证类型列表。 |
 
-|  | fallback-service- |
+|   | fallback-service- |
 |---|---|
-| 001 |  |
-
-**示例**
+| 001 |   |
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /modelapi/listModelApis HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "gwInstanceId": "gwInstanceId_value",
   "apiName": "apiName_value",
   "protocol": "protocol_value",
   "sceneType": "sceneType_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12815,7 +14178,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "methodPathList": {
         "path": "path_value",
         "method": "method_value"
-      },
+```
+
+`},`
+
+```json
       "domainNameList": [],
       "protocol": "protocol_value",
       "sceneType": "sceneType_value",
@@ -12824,29 +14191,42 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "enable": true,
         "logRequestInfo": true,
         "logResponseInfo": true
-      },
+```
+
+`},`
+
+```json
       "fallback": {
         "enable": true,
         "responseCodes": [],
         "fallbackServiceId": "fallbackServiceId_value",
         "fallbackStrategy": "fallbackStrategy_value"
-      },
+```
+
+`},`
+
+```json
       "authenticationConfig": {
         "enable": true,
         "credentialTypeList": []
-      }
-    }
-  }
-}
 ```
 
-#### listModelApiStrategyConfig
+`}` `}` `}` `}`
+
+#### 4.9.13 listModelApiStrategyConfig
 
 **API 接口概述**
 
+**中文名称：**查询模型API策略列表
+**英文名称：** listModelApiStrategyConfig
+**功能概述：**模型 API 管理 - 查询模型 API 插件列表。
+
+```
+请求路径： /modelapi/listModelApiStrategyConfig
+```
+
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -12858,19 +14238,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | modelApiId | string | body | 否 | model-api- 001 | 模型API ID。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-| token- |  |
+| token- |   |
 |---|---|
 
-|  |  | policy |
+|   |   | policy |
 |---|---|---|
 
-|  |  | model-api- |  |
+|   |   | model-api- |   |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -12886,11 +14266,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.size | integer | 10 | 每页大小。 |
 | data.records | ListModelApiStrategy ConfigResponse[] | [] | 记录列表。 |
 
-|  |  | ListModelApiStrategy | [] |
+|   |   | ListModelApiStrategy | [] |
 |---|---|---|---|
-| a.records | ConfigResponse[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | ConfigResponse[] |   |   |
 
 | data.records.strategyCon figId | string | strategy-001 | 策略配置ID。 |
 |---|---|---|---|
@@ -12900,34 +14278,43 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.createTime | string | 2024-01-01 10:00:00 | 创建时间。 |
 | data.records.updateTime | string | 2024-01-01 10:00:00 | 更新时间。 |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /modelapi/listModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /modelapi/listModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "size": 0,
   "current": 0,
   "strategyName": "strategyName_value",
   "modelApiId": "modelApiId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -12942,14 +14329,21 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "status": true,
       "createTime": "createTime_value",
       "updateTime": "updateTime_value"
-    }
-  }
-}
 ```
 
-#### modifyModelApiPolicy
+`}` `}` `}`
+
+#### 4.9.14 modifyModelApiPolicy
 
 **API 接口概述**
+
+**中文名称：**修改模型API策略配置。
+**英文名称：** modifyModelApiPolicy
+**功能概述：**模型 API 管理 - 编辑模型 API策略
+
+```
+请求路径： /modelapi/modifyModelApiPolicy
+```
 
 **请求方式：** `POST`
 
@@ -12959,55 +14353,54 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  |  |  | 说明 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   |   |   | 说明 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| configTy pe | string | body | 是 |  | "aiSec |  |  |  | 策略类型，决定 configData 的结构。支持值： rewrite 、 header 、 timeout 、 r etry 、 fallback 、 aiSecurity 、 aiTo kenLimit 、 aiModelParameterOverride 、 clusterQpsLimit 、 allClusterLimit 。 详见configType 与 configData 对应关系。 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | rewrite |  |  |  |  |  | header |  |  | timeout |  |  | r |  |
-|  |  |  |  |  |  | "aiSec |  |  | etry |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 、 |  |  |  |  | 、 |  |  | 、 |  |  |  |
-|  |  |  |  |  | urity |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | " |  |  |  |  |  |  |  | 、 |  |  |  |  |  |  |  |  |  |
-| configDa ta | object | body | 是 |  | {...} |  |  |  | 策略配置数据，结构随 configType 变化。详见configType 与 configData 对应关系。 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| configTy pe | string | body | 是 |   | "aiSec |   |   |   | 策略类型，决定 configData 的结构。支持值： rewrite 、 header 、 timeout 、 r etry 、 fallback 、 aiSecurity 、 aiTo kenLimit 、 aiModelParameterOverride 、 clusterQpsLimit 、 allClusterLimit 。 详见configType 与 configData 对应关系。 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | rewrite |   |   |   |   |   | header |   |   | timeout |   |   | r |   |
+|   |   |   |   |   |   | "aiSec |   |   | etry |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 、 |   |   |   |   | 、 |   |   | 、 |   |   |   |
+|   |   |   |   |   | urity |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | " |   |   |   |   |   |   |   | 、 |   |   |   |   |   |   |   |   |   |
+| configDa ta | object | body | 是 |   | {...} |   |   |   | 策略配置数据，结构随 configType 变化。详见configType 与 configData 对应关系。 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 
-|  |  | string |
+|   |   | string |
 |---|---|---|
 
-|  |  | object |
+|   |   | object |
 |---|---|---|
 
-|  |  | {...} |
+|   |   | {...} |
 |---|---|---|
 
-智能体工厂 OpenTrek
-
-| gwInstan ceId | string | body |  | 是 |  |  | "higre |  | 网关实例ID。 |
+| gwInstan ceId | string | body |   | 是 |   |   | "higre |   | 网关实例ID。 |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | "higre |  |
-|  |  |  |  |  |  |  | ss- |  |  |
-|  |  |  |  |  |  |  |  |  | 网关 |
-|  |  |  |  |  | 是 |  |  |  |  |
-|  |  |  |  |  |  |  | demo- |  |  |
-|  |  |  |  |  |  |  | 001" |  |  |
-| targetId | string | body |  | 是 |  |  | "model |  | 模型API的唯一标识ID。 |
-|  |  |  |  |  |  |  |  | "model |  |
-|  |  |  |  |  |  |  | -api- |  |  |
-|  |  |  |  |  |  |  | 001" |  |  |
+|   |   |   |   |   |   |   |   | "higre |   |
+|   |   |   |   |   |   |   | ss- |   |   |
+|   |   |   |   |   |   |   |   |   | 网关 |
+|   |   |   |   |   | 是 |   |   |   |   |
+|   |   |   |   |   |   |   | demo- |   |   |
+|   |   |   |   |   |   |   | 001" |   |   |
+| targetId | string | body |   | 是 |   |   | "model |   | 模型API的唯一标识ID。 |
+|   |   |   |   |   |   |   |   | "model |   |
+|   |   |   |   |   |   |   | -api- |   |   |
+|   |   |   |   |   |   |   | 001" |   |   |
 
-|  |  | string |
+|   |   | string |
 |---|---|---|
 
-| etId |  |
+| etId |   |
 |---|---|
 
 **configType 与 configData 对应关系**
 
 `configType` 指定策略类型， `configData` 提供对应的配置数据。以下是所有支持的策略类型及其配置结构：
-1. . aiSecurity**（**AI** **内容安全策略）**
+1. . aiSecurity****（****AI** **内容安全策略）**
 
 **configData 结构：**
 
+`{`
+
 ```json
-{
   "enabled": true,
   "checkRequestEnabled": true,
   "checkResponseEnabled": true,
@@ -13017,8 +14410,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
   "requestCheckService": "dc_llm_query_moderation",
   "responseCheckService": "dc_llm_response_moderation",
   "riskLevelBar": "low"
-}
 ```
+
+`}`
 
 **参数说明：**
 
@@ -13031,43 +14425,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | timeoutSeconds | Integer | 否 | 1 | 检测超时时间 （秒）。 |
 | denyMessage | String | 否 | - | 内容违规时的拒绝消息。 |
 
-智能体工厂 OpenTrek
-
 | requestCheckServi ce | String | 否 | dc llm query mod _ _ _ eration | 请求内容检测服务名称。 |
 |---|---|---|---|---|
 | responseCheckSer vice | String | 否 | dc llm response m _ _ _ oderation | 响应内容检测服务名称。 |
 | riskLevelBar | String | 否 | low | 风险等级拦截阈值： max （仅记录不拦截）、 high （仅拦截高风险）、 medium （ 拦截中等及以上）、 low （拦截低风险及以上）。 |
 
-2. . aiTokenLimit**（**AI Token** **限流策略）**
+2. . aiTokenLimit****（****AI Token** **限流策略）**
 
 **configData 结构：**
 
+`{`
+
 ```json
-{
   "enabled": true,
   "ruleItems": [
-    {
+```
+
+`{`
+
+```json
       "limitByType": "header",
       "limitByValue": "Authorization",
       "limitKeys": [
-        {
+```
+
+`{`
+
+```json
           "key": "*",
           "timeUnit": "MINUTE",
           "tokenLimit": 1000
-        }
 ```
 
-]
-
-```
-    }
-```
-
-]
-
-```
-}
-```
+`}` `]` `}` `]` `}`
 
 **参数说明：**
 
@@ -13078,30 +14468,30 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | ruleItems[].limitByType | String | 否 | 限流条件类型： header 、 param 、 ip 等。 |
 | ruleItems[].limitByValue | String | 否 | 限流条件值，如 header 名称。 |
 
-智能体工厂 OpenTrek
-
 | ruleItems[].limitKeys | Array | 否 | 限流键配置列表。 |
 |---|---|---|---|
 | ruleItems[].limitKeys[].ke y | String | 否 | 匹配的键值， * 表示所有。 |
 | ruleItems[].limitKeys[].ti meUnit | String | 否 | 时间单位： SECOND 、 MINUT E 、 HOUR 、 DAY 。 |
 | ruleItems[].limitKeys[].to kenLimit | Integer | 否 | 限定时间窗口内允许的 Token 数量。 |
 
-|  | E |
+|   | E |
 |---|---|
 
 3. . clusterQpsLimit****（集群** **QPS** **限流策略）**
 
 **configData 结构：**
 
+`{`
+
 ```json
-{
   "enabled": true,
   "queryPerSecond": 100,
   "queryPerMinute": 5000,
   "queryPerHour": 200000,
   "queryPerDay": 4000000
-}
 ```
+
+`}`
 
 **参数说明：**
 
@@ -13117,54 +14507,54 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **configData 结构：**
 
-智能体工厂 OpenTrek
-
 ```json
-{
   "enabled": true,
   "multiRuleMode": true,
   "maxConcurrentRules": 10,
   "rejectedCode": 429,
   "rejectedMsg": "Rate limit exceeded",
   "globalThresholds": [
-    {
+```
+
+`{`
+
+```json
       "limitType": "ip",
       "fixedQuotaMode": false,
       "hitsAddend": {
         "base": 1
-      }
-    }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "ruleItems": [
-    {
+```
+
+`{`
+
+```json
       "limitBy": "header",
       "limitByFrom": "X-User-ID",
       "limitKeys": [
-        {
+```
+
+`{`
+
+```json
           "limitType": "token",
           "fixedQuotaMode": false,
           "hitsAddend": {
             "base": 1
-          },
+```
+
+`},`
+
+```json
           "key": "*"
-        }
 ```
 
-]
-
-```
-    }
-```
-
-]
-
-```
-}
-```
+`}` `]` `}` `]` `}`
 
 **参数说明：**
 
@@ -13177,43 +14567,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | rejectedMsg | String | 否 | Rate limit exceeded | 限流触发时的错误消息。 |
 | globalThresholds | Array | 否 | - | 全局阈值配置列表。 |
 
-智能体工厂 OpenTrek
-
-| globalThresholds[]. limitType | String | 否 | - | 限流类型： ip 、 user 、 api key _ 等。 |  |  |
+| globalThresholds[]. limitType | String | 否 | - | 限流类型： ip 、 user 、 api key _ 等。 |   |   |
 |---|---|---|---|---|---|---|
-| globalThresholds[]. fixedQuotaMode | Boolean | 否 | false | 是否使用固定配额模式。 |  |  |
-| globalThresholds[]. hitsAddend | Object | 否 | - | 计数增量配置。 |  |  |
-| globalThresholds[]. hitsAddend.base | Integer | 否 | 1 | 基础增量值。 |  |  |
-| globalThresholds[]. hitsAddend.fromHe ader | String | 否 | - | 从请求头获取增量值。 |  |  |
-| ruleItems | Array | 否 | - | 限流规则列表。 |  |  |
-| ruleItems[].limitBy | String | 否 | - | 限流维度： header 、 param 、 ip 等。 |  |  |
-| ruleItems[].limitBy From | String | 否 | - | 限流来源字段名。 |  |  |
-| ruleItems[].andMat cherConfig | Array | 否 | - | 组合匹配条件。 |  |  |
-| ruleItems[].limitKe ys | Array | 否 | - | 限流键配置。 |  |  |
-| ruleItems[].limitKe ys[].limitType | String | 否 | - | 限流类型： token 、 r equest 等。 |  |  |
-|  |  |  |  |  | r |  |
-| ruleItems[].limitKe ys[].key | String | 否 | * | 匹配的键值。 |  |  |
+| globalThresholds[]. fixedQuotaMode | Boolean | 否 | false | 是否使用固定配额模式。 |   |   |
+| globalThresholds[]. hitsAddend | Object | 否 | - | 计数增量配置。 |   |   |
+| globalThresholds[]. hitsAddend.base | Integer | 否 | 1 | 基础增量值。 |   |   |
+| globalThresholds[]. hitsAddend.fromHe ader | String | 否 | - | 从请求头获取增量值。 |   |   |
+| ruleItems | Array | 否 | - | 限流规则列表。 |   |   |
+| ruleItems[].limitBy | String | 否 | - | 限流维度： header 、 param 、 ip 等。 |   |   |
+| ruleItems[].limitBy From | String | 否 | - | 限流来源字段名。 |   |   |
+| ruleItems[].andMat cherConfig | Array | 否 | - | 组合匹配条件。 |   |   |
+| ruleItems[].limitKe ys | Array | 否 | - | 限流键配置。 |   |   |
+| ruleItems[].limitKe ys[].limitType | String | 否 | - | 限流类型： token 、 r equest 等。 |   |   |
+|   |   |   |   |   | r |   |
+| ruleItems[].limitKe ys[].key | String | 否 | * | 匹配的键值。 |   |   |
 
-|  | header |  |
+|   | header |   |
 |---|---|---|
-| param |  |  |
+| param |   |   |
 
-|  |  | token |
+|   |   | token |
 |---|---|---|
-|  | equest |  |
+|   | equest |   |
 
 5. . timeout****（超时控制策略）**
 
 **configData 结构：**
 
+`{`
+
 ```json
-{
   "enabled": true,
   "timeout": 30
-}
 ```
-
-智能体工厂 OpenTrek
 
 **参数说明：**
 
@@ -13226,64 +14612,62 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **configData 结构：**
 
+`{`
+
 ```json
-{
   "enabled": true,
   "attempts": 2,
   "timeout": 10,
   "conditions": ["error", "timeout", "non_idempotent"],
   "httpStatusCodes": [502, 503, 504]
-}
 ```
+
+`}`
 
 **参数说明：**
 
-| 参数名 | 类型 |  |  | 必填 |  | 默认值 |  | 说明 |  |  |  |
+| 参数名 | 类型 |   |   | 必填 |   | 默认值 |   | 说明 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| enabled | Boolean |  |  | 是 |  | - |  | 是否启用重试。 |  |  |  |
-| attempts | Integer |  |  | 否 |  | 2 |  | 最大重试次数。 |  |  |  |
-| timeout | Integer |  |  | 否 |  | - |  | 每次重试的超时时间 （秒）。 |  |  |  |
-| conditions | String[] |  |  |  |  | ["error", |  | 重试触发条 |  |  |  |
-|  |  |  |  |  |  |  | ["error", | 件： | error |  |  |
-|  |  |  |  |  |  | "timeout", |  | 接错 |  |  |  |
-|  |  |  |  |  |  |  |  | 误）、 |  | tim |  |
-|  |  |  |  | 否 |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | "non idempotent"] _ |  |  |  |  |  |
-| httpStatusCodes | Integer[] |  |  | 否 |  | [502, 503, 504] |  | 需要重试的 HTTP 状态码列表。 |  |  |  |
+| enabled | Boolean |   |   | 是 |   | - |   | 是否启用重试。 |   |   |   |
+| attempts | Integer |   |   | 否 |   | 2 |   | 最大重试次数。 |   |   |   |
+| timeout | Integer |   |   | 否 |   | - |   | 每次重试的超时时间 （秒）。 |   |   |   |
+| conditions | String[] |   |   |   |   | ["error", |   | 重试触发条 |   |   |   |
+|   |   |   |   |   |   |   | ["error", | 件： | error |   |   |
+|   |   |   |   |   |   | "timeout", |   | 接错 |   |   |   |
+|   |   |   |   |   |   |   |   | 误）、 |   | tim |   |
+|   |   |   |   | 否 |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | "non idempotent"] _ |   |   |   |   |   |
+| httpStatusCodes | Integer[] |   |   | 否 |   | [502, 503, 504] |   | 需要重试的 HTTP 状态码列表。 |   |   |   |
 
-| non idempoten _ |  |
+| non idempoten _ |   |
 |---|---|
 
-|  | t |
+|   | t |
 |---|---|
 
-|  |  | [502, 503, |
+|   |   | [502, 503, |
 |---|---|---|
-|  | 504] |  |
+|   | 504] |   |
 
 7. . fallback****（降级策略）**
 
 **configData 结构：**
 
-智能体工厂 OpenTrek
-
 ```json
-{
   "enabled": true,
   "fallbackStrategy": "RANDOM",
   "responseCodes": ["500", "502", "503", "504"],
   "services": [
-    {
+```
+
+`{`
+
+```json
       "name": "backup-service",
       "weight": 100
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **参数说明：**
 
@@ -13300,10 +14684,7 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **configData 结构：**
 
-智能体工厂 OpenTrek
-
 ```json
-{
   "enabled": true,
   "request": {
     "add": [
@@ -13321,7 +14702,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 ```json
     "remove": ["X-Internal-Token"]
-  },
+```
+
+`},`
+
+```json
   "response": {
     "add": [
       {"key": "X-API-Version", "value": "v1.0"}
@@ -13338,9 +14723,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 ```json
     "remove": ["X-Internal-Debug"]
-  }
-}
 ```
+
+`}` `}`
 
 **参数说明：**
 
@@ -13356,18 +14741,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | response.set | Array | 否 | 要设置的响应头列表。 |
 | response.remove | String[] | 否 | 要删除的响应头名称列表。 |
 
-9. . rewrite**（**URL** **重写策略）**
+9. . rewrite****（****URL** **重写策略）**
 
 **configData 结构：**
 
-智能体工厂 OpenTrek
-
 ```json
-{
   "path": "/new-path",
   "host": "new-host.example.com"
-}
 ```
+
+`}`
 
 **参数说明：**
 
@@ -13379,7 +14762,8 @@ HTTP/1.1 200 OK Content-Type: application/json {
 **重要**
 
 此配置来自 Higress SDK 的“RewriteConfig”，具体字段可能随版本变化。
-10. . aiModelParameterOverride**（**AI** **模型参数覆盖策略）**
+10. . aiModelParameterOverride****（****AI** **模型参数覆盖策略）**
+覆盖模型 API 的默认参数配置。
 
 **重要**
 
@@ -13401,10 +14785,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **示例 1：配置 AI 内容安全策略**
 
-智能体工厂 OpenTrek
+```
+POST /modelapi/modifyModelApiPolicy HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "configType": "aiSecurity",
   "configData": {
     "enabled": true,
@@ -13418,76 +14805,105 @@ Host: localhost:80 Content-Type: application/json {
 
 ```json
     "riskLevelBar": "medium"
-  },
+```
+
+`},`
+
+```json
   "gwInstanceId": "higress-demo-001",
   "targetId": "model-api-001"
-}
 ```
+
+`}`
 
 **示例 2：配置 Token 限流策略**
 
+```
+POST /modelapi/modifyModelApiPolicy HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json {
   "configType": "aiTokenLimit",
   "configData": {
     "enabled": true,
     "ruleItems": [
-      {
+```
+
+`{`
+
+```json
         "limitByType": "header",
         "limitByValue": "X-User-ID",
         "limitKeys": [
-          {
+```
+
+`{`
+
+```json
             "key": "*",
             "timeUnit": "MINUTE",
             "tokenLimit": 5000
-          }
 ```
 
-]
-
-```
-      }
-```
-
-]
+`}` `]` `}` `]` `},`
 
 ```json
-  },
   "gwInstanceId": "higress-demo-001",
   "targetId": "model-api-001"
-}
 ```
+
+`}`
 
 **示例 3：配置超时策略**
 
-智能体工厂 OpenTrek
+```
+POST /modelapi/modifyModelApiPolicy HTTP/1.1 Host: localhost:80
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json {
   "configType": "timeout",
   "configData": {
     "enabled": true,
     "timeout": 60
-  },
+```
+
+`},`
+
+```json
   "gwInstanceId": "higress-demo-001",
   "targetId": "model-api-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "model-api-001"
-}
 ```
 
-#### modifyModelApiStrategyConfig
+`}`
+
+#### 4.9.15 modifyModelApiStrategyConfig
 
 **API 接口概述**
+
+**中文名称：**修改模型API策略
+**英文名称：** modifyModelApiStrategyConfig
+**功能概述：**模型 API 管理 - 编辑模型 API 插件。
 
 ```
 请求路径： /modelapi/modifyModelApiStrategyConfig
@@ -13504,38 +14920,36 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | modelApiId | string | body | 否 | modelapi- 001 | 模型API ID。 |
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 
-|  |  | strategy- |
+|   |   | strategy- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | modelapi- |
+|   |   | modelapi- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-智能体工厂 OpenTrek
-
-| strategyName | string |  | body |  | 否 |  |  | ai-token- limit |  | 策略名称（插件名称）。 |  |
+| strategyName | string |   | body |   | 否 |   |   | ai-token- limit |   | 策略名称（插件名称）。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| config | object |  | body |  | 否 |  |  | {"enable":tr |  |  |  |
-|  |  |  |  |  |  |  |  |  | {"enable":tr | 插件配置对象， |  |
-|  |  |  |  |  |  |  |  | ue,"limit":10 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 字型 |  |
-|  |  |  |  |  |  |  |  | 00} |  |  |  |
-| rawConfig | string |  | body |  |  |  |  | enable: |  |  |  |
-|  |  |  |  |  |  |  |  |  | enable: | YAML 格式的插 |  |
-|  |  |  |  |  |  |  |  | true\nlimit: |  | 件配置，与 |  |
-|  |  |  |  |  |  |  |  |  |  | config 二选一， |  |
-|  |  |  |  |  | 否 |  |  |  |  | config 二 |  |
-|  |  |  |  |  |  |  |  | 1000\nwindowS |  | 推荐使用 |  |
-|  |  |  |  |  |  |  |  | ize: 3600 |  |  |  |
+| config | object |   | body |   | 否 |   |   | {"enable":tr |   |   |   |
+|   |   |   |   |   |   |   |   |   | {"enable":tr | 插件配置对象， |   |
+|   |   |   |   |   |   |   |   | ue,"limit":10 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 字型 |   |
+|   |   |   |   |   |   |   |   | 00} |   |   |   |
+| rawConfig | string |   | body |   |   |   |   | enable: |   |   |   |
+|   |   |   |   |   |   |   |   |   | enable: | YAML 格式的插 |   |
+|   |   |   |   |   |   |   |   | true\nlimit: |   | 件配置，与 |   |
+|   |   |   |   |   |   |   |   |   |   | config 二选一， |   |
+|   |   |   |   |   | 否 |   |   |   |   | config 二 |   |
+|   |   |   |   |   |   |   |   | 1000\nwindowS |   | 推荐使用 |   |
+|   |   |   |   |   |   |   |   | ize: 3600 |   |   |   |
 
-|  |  | ai-token- | 策 |
+|   |   | ai-token- | 策 |
 |---|---|---|---|
-|  | limit |  |  |
+|   | limit |   |   |
 
 **config 对象结构**
 
@@ -13563,8 +14977,6 @@ enable: true limit: 1000 windowSize: 3600
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | message | string | success | 响应消息。 |
 |---|---|---|---|
 | data | string | strategy-001 | 响应数据。 |
@@ -13573,31 +14985,51 @@ enable: true limit: 1000 windowSize: 3600
 
 **请求示例**
 
+```
+POST /modelapi/modifyModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /modelapi/modifyModelApiStrategyConfig HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "strategyConfigId": "strategyConfigId_value",
   "modelApiId": "modelApiId_value",
   "gwInstanceId": "gwInstanceId_value",
   "strategyName": "strategyName_value",
   "config": {},
   "rawConfig": "rawConfig_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### revokeModelApiGrant
+`}`
+
+#### 4.9.16 revokeModelApiGrant
 
 **API 接口概述**
+
+**中文名称：**移除模型API授权
+**英文名称：** revokeModelApiGrant
+**功能概述：**模型 API 管理 - 移除模型 API 授权。
+
+```
+请求路径： /modelapi/revokeModelApiGrant
+```
 
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
@@ -13607,15 +15039,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 | authId | string | body | 是 | auth-001 | 授权ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -13631,92 +15061,104 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /modelapi/revokeModelApiGrant HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "authId": "authId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-#### updateModelApi
+`}`
 
-智能体工厂 OpenTrek
+#### 4.9.17 updateModelApi
 
 **API 接口概述**
 
+**中文名称：**更新模型API
+**英文名称：** updateModelApi
+**功能概述：**模型 API 管理 - 更新模型 API。
+**请求路径：** `/modelapi/updateModelApi`
 **请求方式：** `POST`
 **说明**：此接口仅适用于 AI网关（Higress引擎）实例。
 
 **请求参数**
 
-| 参数名称 |  | 类型 |  |  |  | 位置 |  |  |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 |   | 类型 |   |   |   | 位置 |   |   |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gwInstanceId |  | string |  |  |  | body |  |  |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
-| id |  | string |  |  |  | body |  |  |  | 是 |  | modelapi- 001 |  | ID标识。 |  |
-| apiName |  | string |  |  |  | body |  |  |  | 是 |  | gpt-4-api |  | API名称。 |  |
-| description |  | string |  |  |  | body |  |  |  | 否 |  | GPT-4模型API 接口 |  | 描述信息。 |  |
-| basePath |  | string |  |  |  | body |  |  |  | 否 |  | /v1/chat/com pletions |  | 基础路径。 |  |
-| basePathRemo ve |  | boolean |  |  |  | body |  |  |  | 否 |  | false |  | 是否移除基础路径。 |  |
-| methodPathList |  | ModelRouteMe thodPath[] |  |  |  | body |  |  |  |  |  | [{"path":"/v |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | [{"path":"/v |  |  |
-|  |  |  | ModelRouteMe |  |  | body |  |  |  |  |  | 1/chat/comple |  |  |  |
-|  |  |  |  |  |  |  | body |  |  |  |  |  |  | 方法和路径配置 |  |
-|  | thodPathList | thodPath[] |  |  |  |  |  |  |  | 是 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | tions","metho |  | 列表。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | d":"POST"}] |  |  |  |
-| domainNameLi st |  | string[] |  |  |  | body |  |  |  | 否 |  | ["api.exampl e.com"] |  | 域名列表。 |  |
-| protocol |  | string |  |  |  | body |  |  |  | 是 |  | openai |  | 协议类型。 |  |
+| gwInstanceId |   | string |   |   |   | body |   |   |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
+| id |   | string |   |   |   | body |   |   |   | 是 |   | modelapi- 001 |   | ID标识。 |   |
+| apiName |   | string |   |   |   | body |   |   |   | 是 |   | gpt-4-api |   | API名称。 |   |
+| description |   | string |   |   |   | body |   |   |   | 否 |   | GPT-4模型API 接口 |   | 描述信息。 |   |
+| basePath |   | string |   |   |   | body |   |   |   | 否 |   | /v1/chat/com pletions |   | 基础路径。 |   |
+| basePathRemo ve |   | boolean |   |   |   | body |   |   |   | 否 |   | false |   | 是否移除基础路径。 |   |
+| methodPathList |   | ModelRouteMe thodPath[] |   |   |   | body |   |   |   |   |   | [{"path":"/v |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | [{"path":"/v |   |   |
+|   |   |   | ModelRouteMe |   |   | body |   |   |   |   |   | 1/chat/comple |   |   |   |
+|   |   |   |   |   |   |   | body |   |   |   |   |   |   | 方法和路径配置 |   |
+|   | thodPathList | thodPath[] |   |   |   |   |   |   |   | 是 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | tions","metho |   | 列表。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | d":"POST"}] |   |   |   |
+| domainNameLi st |   | string[] |   |   |   | body |   |   |   | 否 |   | ["api.exampl e.com"] |   | 域名列表。 |   |
+| protocol |   | string |   |   |   | body |   |   |   | 是 |   | openai |   | 协议类型。 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | modelapi- |
+|   |   | modelapi- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | GPT-4模型API | 描 |
+|   |   | GPT-4模型API | 描 |
 |---|---|---|---|
-|  | 接口 |  |  |
+|   | 接口 |   |   |
 
-|  |  | /v1/chat/com | 基础路径 |
+|   |   | /v1/chat/com | 基础路径 |
 |---|---|---|---|
-|  | pletions |  |  |
+|   | pletions |   |   |
 
-|  |  | ["api.exampl | 域名列表 |
+|   |   | ["api.exampl | 域名列表 |
 |---|---|---|---|
-|  | e.com"] |  |  |
+|   | e.com"] |   |   |
 
-智能体工厂 OpenTrek
-
-| sceneType | string | body | 是 | TEXT GENERAT _ ION |  | 场景类型。可选值： TEXT GEN _ ERATION （文本生成）、 IMAGE _ GENERATION （图片生成）、 VIDEO _ GENERATION （视频生成）、 SPEECH SYNTHESIS _ （语音合成）、 TEXT R _ ERANK （文本排序/Rerank）、 EMBEDDING （ 向量化）、 OTHER （其他）。 |  |  |  |
+| sceneType | string | body | 是 | TEXT GENERAT _ ION |   | 场景类型。可选值： TEXT GEN _ ERATION （文本生成）、 IMAGE _ GENERATION （图片生成）、 VIDEO _ GENERATION （视频生成）、 SPEECH SYNTHESIS _ （语音合成）、 TEXT R _ ERANK （文本排序/Rerank）、 EMBEDDING （ 向量化）、 OTHER （其他）。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | IMAGE _ |  |  |
-|  |  |  |  |  |  | GENERATION |  |  |  |
-|  |  |  |  |  |  |  | VIDEO _ |  |  |
-|  |  |  |  |  |  | GENERATION |  |  |  |
-|  |  |  |  |  |  |  | SPEECH |  |  |
-|  |  |  |  |  |  | SYNTHESIS _ |  |  |  |
-|  |  |  |  |  | NERAT | S _ |  |  |  |
-|  |  |  |  |  |  | （ |  |  |  |
-| routeDispatche r | object | body | 否 |  |  | 路由分发配置。 |  |  |  |
-| observationCon fig | object | body | 否 |  |  | 可观测性配置。 |  |  |  |
-| fallback | object | body | 否 |  |  | 降级配置。 |  |  |  |
+|   |   |   |   |   |   |   | IMAGE _ |   |   |
+|   |   |   |   |   |   | GENERATION |   |   |   |
+|   |   |   |   |   |   |   | VIDEO _ |   |   |
+|   |   |   |   |   |   | GENERATION |   |   |   |
+|   |   |   |   |   |   |   | SPEECH |   |   |
+|   |   |   |   |   |   | SYNTHESIS _ |   |   |   |
+|   |   |   |   |   | NERAT | S _ |   |   |   |
+|   |   |   |   |   |   | （ |   |   |   |
+| routeDispatche r | object | body | 否 |   |   | 路由分发配置。 |   |   |   |
+| observationCon fig | object | body | 否 |   |   | 可观测性配置。 |   |   |   |
+| fallback | object | body | 否 |   |   | 降级配置。 |   |   |   |
 
-|  |  | TEXT GEN _ |  |
+|   |   | TEXT GEN _ |   |
 |---|---|---|---|
-|  | ERATION |  |  |
+|   | ERATION |   |   |
 
 **methodPathList 对象结构**
 
@@ -13725,17 +15167,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | path | string | body | 否 | /v1/chat/com pletions | 路径。 |
 | method | string | body | 否 | POST | HTTP方法。 |
 
-|  |  | /v1/chat/com | 路径。 |
+|   |   | /v1/chat/com | 路径。 |
 |---|---|---|---|
-|  | pletions |  |  |
+|   | pletions |   |   |
 
 **observationConfig 对象结构**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | enable | boolean | body | 否 | true | 是否启用。 |
-
-智能体工厂 OpenTrek
 
 | logRequestInfo | boolean | body | 否 | true | 是否记录请求信息。 |
 |---|---|---|---|---|---|
@@ -13753,91 +15193,87 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | ["500", | 触 |
 |---|---|
 
-|  |  | fallback- | 降级服务I |
+|   |   | fallback- | 降级服务I |
 |---|---|---|---|
-|  | service-001 |  |  |
+|   | service-001 |   |   |
 
 **routeDispatcher 对象结构**
 
 路由分发配置，根据 `strategyType` 字段值采用不同的策略类型。
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  | 说明 |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| strategyType | string | body | 是 |  | WEIGHT |  | 路由分发策略类型，可选值： WEIGHT （权重分发）、 HEADER （Header条件分发）、 WEIGHT |  |  |
-|  |  |  |  |  |  |  |  | WEIGHT |  |
-|  |  |  |  |  |  |  | MODEL MAPPIN _ _ |  |  |
-|  |  |  |  |  |  |  | G |  |  |
-|  |  |  |  |  |  |  |  | SINGLE |  |
-|  |  |  |  |  |  |  | MODEL MAPPIN _ _ |  |  |
-|  |  |  |  |  |  |  | G |  |  |
+| strategyType | string | body | 是 |   | WEIGHT |   | 路由分发策略类型，可选值： WEIGHT （权重分发）、 HEADER （Header条件分发）、 WEIGHT |   |   |
+|   |   |   |   |   |   |   |   | WEIGHT |   |
+|   |   |   |   |   |   |   | MODEL MAPPIN _ _ |   |   |
+|   |   |   |   |   |   |   | G |   |   |
+|   |   |   |   |   |   |   |   | SINGLE |   |
+|   |   |   |   |   |   |   | MODEL MAPPIN _ _ |   |   |
+|   |   |   |   |   |   |   | G |   |   |
 
-智能体工厂 OpenTrek
-
-| rules | array |  | body |  |  |  |  |  | [{"weight":5 |  | 路由规则列表， |  |
+| rules | array |   | body |   |   |   |   |   | [{"weight":5 |   | 路由规则列表， |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  | [{"weight":5 | 结构根据 |  |
-|  |  |  |  |  |  |  |  |  | 0,"serviceId" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | strategyType 不同而变化，详 |  |
-|  |  |  |  |  |  |  |  |  |  |  | 不 |  |
-|  |  |  |  | body |  |  |  |  | :"service- |  | 见 |  |
-|  |  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 001"}] |  |  |  |
+|   |   |   |   |   |   |   |   |   |   | [{"weight":5 | 结构根据 |   |
+|   |   |   |   |   |   |   |   |   | 0,"serviceId" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | strategyType 不同而变化，详 |   |
+|   |   |   |   |   |   |   |   |   |   |   | 不 |   |
+|   |   |   |   | body |   |   |   |   | :"service- |   | 见 |   |
+|   |   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 001"}] |   |   |   |
 
 **WEIGHT 策略（权重分发）：**
 
-| 参数名称 | 类型 | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|
-| rules | array | 是 |  | [{"weight":50," |  |  |  |
-|  |  |  |  |  | [{"weight":50," |  |  |
-|  |  |  |  | serviceId":"svc- |  |  |  |
-|  |  |  |  |  |  | 权重 |  |
-|  |  |  |  | 001"}] |  |  |  |
-| rules[].weight | integer | 是 |  | 50 |  | 权重值（百分比）。 |  |
-| rules[].serviceId | string | 是 |  | svc-001 |  | 目标服务ID。 |  |
-| rules[].serviceNam e | string | 否 |  | model-service |  | 目标服务名称。 |  |
+| rules | array | 是 |   | [{"weight":50," |   |   |   |
+|   |   |   |   |   | [{"weight":50," |   |   |
+|   |   |   |   | serviceId":"svc- |   |   |   |
+|   |   |   |   |   |   | 权重 |   |
+|   |   |   |   | 001"}] |   |   |   |
+| rules[].weight | integer | 是 |   | 50 |   | 权重值（百分比）。 |   |
+| rules[].serviceId | string | 是 |   | svc-001 |   | 目标服务ID。 |   |
+| rules[].serviceNam e | string | 否 |   | model-service |   | 目标服务名称。 |   |
 
 **HEADER 策略（Header条件分发）：**
 
-| 参数名称 | 类型 |  | 是否必选 |  | 示例 |  |  |  | 说明 |  |  |
+| 参数名称 | 类型 |   | 是否必选 |   | 示例 |   |   |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| rules | array |  | 是 |  | [{"headerMatch" |  |  |  |  |  |  |
-|  |  |  |  |  |  | [{"headerMatch" |  |  | Header匹配规则列 |  |  |
-|  |  |  |  |  | :{"model":"gpt- |  |  |  | H |  |  |
-|  |  |  |  |  |  |  |  |  | 表 |  |  |
-|  |  |  |  |  | 4"}}] |  |  |  |  |  |  |
-| rules[].headerMatc h | object |  | 是 |  | {"model": "gpt-4"} |  |  |  | Header匹配条件，key-value 形式，如 {"model": "gpt-4"} 。 |  |  |
-|  |  |  |  |  |  | {"model": |  |  | 件 |  |  |
-|  |  |  |  |  |  |  |  |  |  | {"model": |  |
-|  |  |  |  |  |  |  |  |  | "gpt-4"} |  |  |
-| rules[].weightRuleL ist | array |  | 否 |  | [{"weight":50," |  |  |  |  |  |  |
-|  |  |  |  |  |  | [{"weight":50," |  |  | 权重规则列表（匹配 |  |  |
-|  |  |  |  |  | serviceId":"svc- |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 成功 |  |  |
-|  |  |  |  |  | 001"}] |  |  |  |  |  |  |
-| rules[].serviceId | string |  | 否 |  | svc-001 |  |  |  | 目标服务ID（已废弃，建议使用 weightRuleList）。 |  |  |
+| rules | array |   | 是 |   | [{"headerMatch" |   |   |   |   |   |   |
+|   |   |   |   |   |   | [{"headerMatch" |   |   | Header匹配规则列 |   |   |
+|   |   |   |   |   | :{"model":"gpt- |   |   |   | H |   |   |
+|   |   |   |   |   |   |   |   |   | 表 |   |   |
+|   |   |   |   |   | 4"}}] |   |   |   |   |   |   |
+| rules[].headerMatc h | object |   | 是 |   | {"model": "gpt-4"} |   |   |   | Header匹配条件，key-value 形式，如 {"model": "gpt-4"} 。 |   |   |
+|   |   |   |   |   |   | {"model": |   |   | 件 |   |   |
+|   |   |   |   |   |   |   |   |   |   | {"model": |   |
+|   |   |   |   |   |   |   |   |   | "gpt-4"} |   |   |
+| rules[].weightRuleL ist | array |   | 否 |   | [{"weight":50," |   |   |   |   |   |   |
+|   |   |   |   |   |   | [{"weight":50," |   |   | 权重规则列表（匹配 |   |   |
+|   |   |   |   |   | serviceId":"svc- |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 成功 |   |   |
+|   |   |   |   |   | 001"}] |   |   |   |   |   |   |
+| rules[].serviceId | string |   | 否 |   | svc-001 |   |   |   | 目标服务ID（已废弃，建议使用 weightRuleList）。 |   |   |
 
 **WEIGHT_MODEL_MAPPING / SINGLE_MODEL_MAPPING 策略（权重+模型映射）：**
 
-智能体工厂 OpenTrek
-
-|  | 参数名称 |  |  | 类型 |  |  |  | 是否必选 |  | 示例 |  | 说明 |  |
+|   | 参数名称 |   |   | 类型 |   |   |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | rules |  |  |  |  |  |  |  |  | [{"weight":50," |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{"weight":50," |  |  |
-|  |  |  |  |  |  |  |  |  |  | serviceId":"svc- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 001","modelMappin |  | 权重+模型映射规则 |  |
-|  |  |  |  | array |  |  |  | 是 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | g":{"gpt- |  | 列表。 |  |
-|  |  |  |  |  |  |  |  |  |  | 3.5":"gpt- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 4"}}] |  |  |  |
-|  | rules[].weight |  |  | integer |  |  |  | 是 |  | 50 |  | 权重值（百分比）。 |  |
-|  | rules[].serviceId |  |  | string |  |  |  | 是 |  | svc-001 |  | 目标服务ID。 |  |
-|  | rules[].modelMappi ng |  |  | object |  |  |  | 否 |  | {"gpt-3.5": "gpt-4"} |  | 模型映射配置，key- value 形式，如 {"gpt-3.5": "gpt-4"} 。 |  |
-|  | rules[].serviceNam e |  |  | string |  |  |  | 否 |  | model-service |  | 目标服务名称。 |  |
+|   | rules |   |   |   |   |   |   |   |   | [{"weight":50," |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{"weight":50," |   |   |
+|   |   |   |   |   |   |   |   |   |   | serviceId":"svc- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 001","modelMappin |   | 权重+模型映射规则 |   |
+|   |   |   |   | array |   |   |   | 是 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | g":{"gpt- |   | 列表。 |   |
+|   |   |   |   |   |   |   |   |   |   | 3.5":"gpt- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 4"}}] |   |   |   |
+|   | rules[].weight |   |   | integer |   |   |   | 是 |   | 50 |   | 权重值（百分比）。 |   |
+|   | rules[].serviceId |   |   | string |   |   |   | 是 |   | svc-001 |   | 目标服务ID。 |   |
+|   | rules[].modelMappi ng |   |   | object |   |   |   | 否 |   | {"gpt-3.5": "gpt-4"} |   | 模型映射配置，key- value 形式，如 {"gpt-3.5": "gpt-4"} 。 |   |
+|   | rules[].serviceNam e |   |   | string |   |   |   | 否 |   | model-service |   | 目标服务名称。 |   |
 
-| {"gpt-3.5": |  |  | valu |  |
+| {"gpt-3.5": |   |   | valu |   |
 |---|---|---|---|---|
-|  |  |  | "gpt-4"} |  |
+|   |   |   | "gpt-4"} |   |
 
 **返回数据**
 
@@ -13853,10 +15289,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /modelapi/updateModelApi HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "id": "id_value",
   "apiName": "apiName_value",
@@ -13864,13 +15303,16 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "basePath": "basePath_value",
   "basePathRemove": true,
   "methodPathList": [
-    {
-      "path": "path_value",
-      "method": "method_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "path": "path_value",
+      "method": "method_value"
+```
+
+`}` `],`
 
 ```json
   "domainNameList": [],
@@ -13881,61 +15323,76 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
     "enable": true,
     "logRequestInfo": true,
     "logResponseInfo": true
-  },
+```
+
+`},`
+
+```json
   "fallback": {
     "enable": true,
     "responseCodes": [],
     "fallbackServiceId": "fallbackServiceId_value",
     "fallbackStrategy": "fallbackStrategy_value"
-  }
-}
 ```
+
+`}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-### 证书
+`}`
 
-#### createCertificate
+### 4.10 证书
+
+#### 4.10.1 createCertificate
 
 **API 接口概述**
 
 **中文名称：**创建证书
-智能体工厂 OpenTrek
+**英文名称：** createCertificate
 **功能概述：**创建证书。
+
+```
+请求路径： /certificate/createCertificate
+```
+
 **请求方式：** `POST`
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|
-| certificateId | string | body |  | 否 |  | cert-001 |  | 证书ID。 |  |
-| gwInstanceId | string | body |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
-| certificates | string | body |  | 否 |  | -----BEGIN |  |  |  |
-|  |  |  |  |  |  |  | -----BEGIN | 证书内容，PEM |  |
-|  |  |  |  |  |  | CERTIFICATE-- |  |  |  |
-|  |  |  |  |  |  |  |  | 格式。 证书文 |  |
-|  |  |  |  |  |  | ---... |  |  |  |
-| privateKey | string | body |  | 否 |  | -----BEGIN |  | 私钥内容，PEM |  |
-|  |  |  |  |  |  |  | -----BEGIN | 格式。仅服务端 |  |
-|  |  |  |  |  |  | PRIVATE KEY-- |  |  |  |
-|  |  |  |  |  |  |  |  | 证书 (cert |  |
-|  |  |  |  |  |  | ---... |  |  |  |
-| certificateNam e | string | body |  | 否 |  | my-cert |  | 证书名称，长度不超过15字符。 |  |
-| certType | integer | body |  | 是 |  | 0 |  | 证书类型。 0 =服务端证书（SSL证书）， 1 =CA 证书（客户端认证用）。 |  |
-| isImport | boolean | body |  | 否 |  | false |  | 是否为导入。 |  |
+| certificateId | string | body |   | 否 |   | cert-001 |   | 证书ID。 |   |
+| gwInstanceId | string | body |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
+| certificates | string | body |   | 否 |   | -----BEGIN |   |   |   |
+|   |   |   |   |   |   |   | -----BEGIN | 证书内容，PEM |   |
+|   |   |   |   |   |   | CERTIFICATE-- |   |   |   |
+|   |   |   |   |   |   |   |   | 格式。 证书文 |   |
+|   |   |   |   |   |   | ---... |   |   |   |
+| privateKey | string | body |   | 否 |   | -----BEGIN |   | 私钥内容，PEM |   |
+|   |   |   |   |   |   |   | -----BEGIN | 格式。仅服务端 |   |
+|   |   |   |   |   |   | PRIVATE KEY-- |   |   |   |
+|   |   |   |   |   |   |   |   | 证书 (cert |   |
+|   |   |   |   |   |   | ---... |   |   |   |
+| certificateNam e | string | body |   | 否 |   | my-cert |   | 证书名称，长度不超过15字符。 |   |
+| certType | integer | body |   | 是 |   | 0 |   | 证书类型。 0 =服务端证书（SSL证书）， 1 =CA 证书（客户端认证用）。 |   |
+| isImport | boolean | body |   | 否 |   | false |   | 是否为导入。 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -13945,8 +15402,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | message | string | success | 响应消息。 |
 |---|---|---|---|
 | data | string | cert-001 | 响应数据。 |
@@ -13955,8 +15410,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /certificate/createCertificate HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "certificateId": "certificateId_value",
   "gwInstanceId": "gwInstanceId_value",
   "certificates": "certificates_value",
@@ -13964,26 +15424,39 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "certificateName": "certificateName_value",
   "certType": 0,
   "isImport": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteCertificate
+`}`
+
+#### 4.10.2 deleteCertificate
 
 **API 接口概述**
 
 **中文名称：**删除证书
+**英文名称：** deleteCertificate
 **功能概述：**删除证书。
+
+```
+请求路径： /certificate/deleteCertificate
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -13991,15 +15464,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | certificateId | string | body | 是 | cert-001 | 证书ID。 |
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -14015,32 +15486,44 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /certificate/deleteCertificate HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "certificateId": "certificateId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-#### getCertificate
+#### 4.10.3 getCertificate
 
 **API 接口概述**
 
 **中文名称：**查询证书详情
+**英文名称：** getCertificate
 **功能概述：**查询证书详情。
+**请求路径：** `/certificate/getCertificate`
 **请求方式：** `POST`
 
 **请求参数**
@@ -14050,9 +15533,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | certificateId | string | body | 否 | cert-001 | 证书ID。 |
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -14068,8 +15551,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.algorithm | string | RSA | 加密算法。 |
 | data.privateKeyLen | integer | 2048 | 私钥长度。 |
 
-智能体工厂 OpenTrek
-
 | data.fingerPrint | string | A1:B2:C3:D4:E5... | 指纹。 |
 |---|---|---|---|
 | data.snis | string[] | ["api.example.com"] | SNI列表。 |
@@ -14081,30 +15562,39 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.certType | integer | 0 | 证书类型。0=服务端证书，1=CA证书。 |
 | data.SN | string | 1234567890ABCDEF | 序列号。 |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
-|  |  | Certificate |  |
+|   |   | Certificate |   |
 |---|---|---|---|
-|  | Authority |  |  |
+|   | Authority |   |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /certificate/getCertificate HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "certificateId": "certificateId_value",
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -14122,16 +15612,22 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "domainId": "domainId_value",
     "certType": 0,
     "SN": "SN_value"
-  }
-}
 ```
 
-#### listAllCACertificates
+`}` `}`
+
+#### 4.10.4 listAllCACertificates
 
 **API 接口概述**
 
 **中文名称：**查询所有CA证书
+**英文名称：** listAllCACertificates
 **功能概述：**查询所有CA证书。
+
+```
+请求路径： /certificate/listAllCACertificates
+```
+
 **请求方式：** `POST`
 
 **请求参数**
@@ -14142,16 +15638,14 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 |---|---|---|---|
@@ -14167,48 +15661,59 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.certificateId | string | ca-cert-001 | 证书ID。 |
 | data.certType | integer | 1 | 证书类型。0=服务端证书，1=CA证书。 |
 
-|  |  | ListCertificateRespo | - |
+|   |   | ListCertificateRespo | - |
 |---|---|---|---|
-| a | nseRecord[] |  |  |
+| a | nseRecord[] |   |   |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
-|  |  | 2025-01-01 |
+|   |   | 2025-01-01 |
 |---|---|---|
-|  | 00:00:00 |  |
+|   | 00:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /certificate/listAllCACertificates HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /certificate/listAllCACertificates HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
-
-智能体工厂 OpenTrek
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": [
-        {
+```
+
+`{`
+
+```json
             "snis": [],
             "expireTime": "expireTime_value",
             "updateTime": "updateTime_value",
@@ -14216,20 +15721,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
             "certificateName": "certificateName_value",
             "certificateId": "certificateId_value",
             "certType": 0
-        }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-#### listAllServerCertificates
+#### 4.10.5 listAllServerCertificates
 
 **API 接口概述**
 
 **中文名称：**查询所有服务端证书
+**英文名称：** listAllServerCertificates
 **功能概述：**查询所有服务端证书。
 
 ```
@@ -14246,17 +15747,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -14276,46 +15775,55 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.signerOU | String | www.digicert.com | 签发者 Organization Unit。 |
 | data.signTime | LocalDateTime | 2024-01- 01T00:00:00 | 签发时间。 |
 
-|  | ["example.com", | SNI 域名列表 |
+|   | ["example.com", | SNI 域名列表 |
 |---|---|---|
-| "*.example.com"] |  |  |
+| "*.example.com"] |   |   |
 
-|  | A1:B2:C3:D4:E5:F6... |
+|   | A1:B2:C3:D4:E5:F6... |
 |---|---|
 
-|  | 01:23:45:67:89:AB:CD | 序 |
+|   | 01:23:45:67:89:AB:CD | 序 |
 |---|---|---|
-| :EF |  |  |
+| :EF |   |   |
 
-|  | DigiCert Global | 签 |
+|   | DigiCert Global | 签 |
 |---|---|---|
-| Root CA |  |  |
-
-智能体工厂 OpenTrek
+| Root CA |   |   |
 
 | data.expireTime | LocalDateTime | 2026-12- 31T23:59:59 | 过期时间。 |
 |---|---|---|---|
 
-|  | 2026-12- |
+|   | 2026-12- |
 |---|---|
-| 31T23:59:59 |  |
+| 31T23:59:59 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /certificate/listAllServerCertificates HTTP/1.1 Host: localhost:80 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /certificate/listAllServerCertificates HTTP/1.1 Host: localhost:80 Content-Type: application/json {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -14333,18 +15841,23 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "signerOU": "www.digicert.com",
     "signTime": "2024-01-01T00:00:00",
     "expireTime": "2026-12-31T23:59:59"
-  }
-}
 ```
 
-#### listCertificates
+`}` `}`
+
+#### 4.10.6 listCertificates
 
 **API 接口概述**
 
 **中文名称：**查询证书列表
+**英文名称：** listCertificates
 **功能概述：**查询证书列表。
+
+```
+请求路径： /certificate/listCertificates
+```
+
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -14356,13 +15869,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | certType | integer | body | 否 | 0 | 证书类型。0=服务端证书，1=CA证书。 |
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | api.example. | SN |
+|   |   | api.example. | SN |
 |---|---|---|---|
-|  | com |  |  |
+|   | com |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -14378,11 +15891,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.current | integer | 1 | 当前页码。 |
 | data.records | ListCertificateRespo nseRecord[] | - | 记录列表。 |
 
-|  |  | ListCertificateRespo | - |
+|   |   | ListCertificateRespo | - |
 |---|---|---|---|
-| a.records | nseRecord[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | nseRecord[] |   |   |
 
 | data.records.snis | string[] | ["api.example.com"] | SNI列表。 |
 |---|---|---|---|
@@ -14393,41 +15904,50 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.certificateId | string | cert-001 | 证书ID。 |
 | data.records.certType | integer | 0 | 证书类型。0=服务端证书，1=CA证书。 |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
-|  |  | 2025-01-01 |
+|   |   | 2025-01-01 |
 |---|---|---|
-|  | 00:00:00 |  |
+|   | 00:00:00 |   |
 
-|  |  | 2024-01-02 |
+|   |   | 2024-01-02 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
-|  |  | 2024-01-01 |
+|   |   | 2024-01-01 |
 |---|---|---|
-|  | 10:00:00 |  |
+|   | 10:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /certificate/listCertificates HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "size": 0,
   "current": 0,
   "sni": "sni_value",
   "certType": 0,
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -14443,16 +15963,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "certificateName": "certificateName_value",
       "certificateId": "certificateId_value",
       "certType": 0
-    }
-  }
-}
 ```
 
-#### updateCertificate
+`}` `}` `}`
+
+#### 4.10.7 updateCertificate
 
 **API 接口概述**
 
 **中文名称：**修改证书
+**英文名称：** updateCertificate
 **功能概述：**修改证书。
 
 ```
@@ -14463,31 +15983,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|
-| certificateId | string | body |  | 否 |  | cert-001 |  | 证书ID，修改时必填。 |  |
-| gwInstanceId | string | body |  | 是 |  | higress- 001 |  | 网关实例ID。 |  |
-| certificates | string | body |  | 否 |  | -----BEGIN |  |  |  |
-|  |  |  |  |  |  |  | -----BEGIN | 证书内容，PEM |  |
-|  |  |  |  |  |  | CERTIFICATE-- |  | 证书内 |  |
-|  |  |  |  |  |  |  |  | 格式。 |  |
-|  |  |  |  |  |  | ---... |  |  |  |
+| certificateId | string | body |   | 否 |   | cert-001 |   | 证书ID，修改时必填。 |   |
+| gwInstanceId | string | body |   | 是 |   | higress- 001 |   | 网关实例ID。 |   |
+| certificates | string | body |   | 否 |   | -----BEGIN |   |   |   |
+|   |   |   |   |   |   |   | -----BEGIN | 证书内容，PEM |   |
+|   |   |   |   |   |   | CERTIFICATE-- |   | 证书内 |   |
+|   |   |   |   |   |   |   |   | 格式。 |   |
+|   |   |   |   |   |   | ---... |   |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-智能体工厂 OpenTrek
-
-| privateKey | string | body |  | 否 |  | -----BEGIN |  |  |  |
+| privateKey | string | body |   | 否 |   | -----BEGIN |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | -----BEGIN | 私钥内容，PEM 格式。仅服务端 |  |
-|  |  |  |  |  |  | PRIVATE KEY-- |  |  |  |
-|  |  |  |  |  |  |  |  | 证书 |  |
-|  |  |  |  |  |  | ---... |  |  |  |
-| certificateNam e | string | body |  | 否 |  | my-cert |  | 证书名称。 |  |
-| certType | integer | body |  | 是 |  | 0 |  | 证书类型。 0 =服务端证书（SSL证书）， 1 =CA 证书（客户端认证用）。 |  |
-| isImport | boolean | body |  | 否 |  | false |  | 是否为导入。 |  |
+|   |   |   |   |   |   |   | -----BEGIN | 私钥内容，PEM 格式。仅服务端 |   |
+|   |   |   |   |   |   | PRIVATE KEY-- |   |   |   |
+|   |   |   |   |   |   |   |   | 证书 |   |
+|   |   |   |   |   |   | ---... |   |   |   |
+| certificateNam e | string | body |   | 否 |   | my-cert |   | 证书名称。 |   |
+| certType | integer | body |   | 是 |   | 0 |   | 证书类型。 0 =服务端证书（SSL证书）， 1 =CA 证书（客户端认证用）。 |   |
+| isImport | boolean | body |   | 否 |   | false |   | 是否为导入。 |   |
 
 **返回数据**
 
@@ -14503,10 +16021,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /certificate/modifyCertificate HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /certificate/modifyCertificate HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "certificateId": "certificateId_value",
   "gwInstanceId": "gwInstanceId_value",
   "certificates": "certificates_value",
@@ -14514,46 +16035,53 @@ POST /certificate/modifyCertificate HTTP/1.1 Host: localhost:80 Content-Type: ap
   "certificateName": "certificateName_value",
   "certType": 0,
   "isImport": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-### 路由
+`}`
 
-#### batchDeletesRoutes
+### 4.11 路由
+
+#### 4.11.1 batchDeletesRoutes
 
 **API 接口概述**
 
 **中文名称：**批量删除路由
+**英文名称：** batchDeletesRoutes
 **功能概述：**路由管理 - 批量删除路由。
+**请求路径：** `/route/batchDeleteRoute`
 **请求方式：** `POST`
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 |  | 是否必选 |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 |   | 是否必选 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|---|
-| gwInstanceId | string | body |  | 否 |  | higress- 001 |  | 网关实例ID。 |
-| routeIds | string[] | body |  | 否 |  | ["route- |  | 路由ID列表。 |
-|  |  |  |  |  |  |  | ["route- |  |
-|  |  |  |  |  |  | 001", "route- |  |  |
-|  |  |  |  |  |  |  |  | 路由 |
-|  |  |  |  |  |  | 002"] |  |  |
+| gwInstanceId | string | body |   | 否 |   | higress- 001 |   | 网关实例ID。 |
+| routeIds | string[] | body |   | 否 |   | ["route- |   | 路由ID列表。 |
+|   |   |   |   |   |   |   | ["route- |   |
+|   |   |   |   |   |   | 001", "route- |   |   |
+|   |   |   |   |   |   |   |   | 路由 |
+|   |   |   |   |   |   | 002"] |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
-
-智能体工厂 OpenTrek
+|   | 001 |   |
 
 **返回数据**
 
@@ -14571,148 +16099,155 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/batchDeleteRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "routeIds": []
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {
     "successIds": [],
     "failedIds": []
-  }
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-#### createRoute
+#### 4.11.2 createRoute
 
 **API 接口概述**
 
 **中文名称：**创建路由
+**英文名称：** createRoute
 **功能概述：**创建路由。
+**请求路径：** `/route/createRoute`
 **请求方式：** `POST`
 
 **请求参数**
 
-| 参数名称 | 类型 |  |  | 位置 |  |  |  | 是否必选 |  | 示例 |  | 说明 |  |
+| 参数名称 | 类型 |   |   | 位置 |   |   |   | 是否必选 |   | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| order | integer |  |  | body |  |  |  | 否 |  | 100 |  | 路由优先级顺序。 |  |
-| filters | string |  |  | body |  |  |  |  |  | [{\"name\":\ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{\"name\":\ |  |  |
-|  |  |  |  |  |  |  |  |  |  | "requestHeade |  |  |  |
-|  |  | string |  |  | body |  |  |  |  |  |  | 路由过滤器配 |  |
-|  |  |  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | rModifier\"}] |  |  |  |
-| routeId | string |  |  | body |  |  |  | 否 |  | route-001 |  | 路由ID。 |  |
-| routeName | string |  |  | body |  |  |  | 否 |  | my-route |  | 路由名称。 |  |
-| serviceId | string |  |  | body |  |  |  | 否 |  | service- 001 |  | 目标服务ID。 |  |
-| serviceType | string |  |  | body |  |  |  | 否 |  | 1 |  | 服务类型。可选值： 1 （固定节点）、 2 （服务发现）。 |  |
-| gwInstanceId | string |  |  | body |  |  |  | 否 |  | higress- 001 |  | 网关实例ID。 |  |
-| methods | string[] |  |  | body |  |  |  | 否 |  | ["GET", "POST"] |  | HTTP方法列表， 如 GET、 POST、PUT、 DELETE。 |  |
+| order | integer |   |   | body |   |   |   | 否 |   | 100 |   | 路由优先级顺序。 |   |
+| filters | string |   |   | body |   |   |   |   |   | [{\"name\":\ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{\"name\":\ |   |   |
+|   |   |   |   |   |   |   |   |   |   | "requestHeade |   |   |   |
+|   |   | string |   |   | body |   |   |   |   |   |   | 路由过滤器配 |   |
+|   |   |   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | rModifier\"}] |   |   |   |
+| routeId | string |   |   | body |   |   |   | 否 |   | route-001 |   | 路由ID。 |   |
+| routeName | string |   |   | body |   |   |   | 否 |   | my-route |   | 路由名称。 |   |
+| serviceId | string |   |   | body |   |   |   | 否 |   | service- 001 |   | 目标服务ID。 |   |
+| serviceType | string |   |   | body |   |   |   | 否 |   | 1 |   | 服务类型。可选值： 1 （固定节点）、 2 （服务发现）。 |   |
+| gwInstanceId | string |   |   | body |   |   |   | 否 |   | higress- 001 |   | 网关实例ID。 |   |
+| methods | string[] |   |   | body |   |   |   | 否 |   | ["GET", "POST"] |   | HTTP方法列表， 如 GET、 POST、PUT、 DELETE。 |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | ["GET", | 如 |
+|   |   | ["GET", | 如 |
 |---|---|---|---|
-|  | "POST"] |  |  |
+|   | "POST"] |   |   |
 
-智能体工厂 OpenTrek
-
-| header | KvPair[] |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"Con |  |  |  |
+| header | KvPair[] |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"Con |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"Con |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | tent- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Type","value" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :"application |  |  |  |
-|  |  |  | air[] |  |  | body |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  | KvPair[] | air[] |  |  |  | body |  |  |  |  |  | 否 |  | /json"}] |  |  |  |
-| cookie | KvPair[] |  |  |  |  | body |  |  |  |  |  |  | 否 |  | [{"key":"ses |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"ses | Cookie匹配规 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | sion","value" |  | Cookie匹配 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 则。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :"active"}] |  |  |  |
-| queryParam | KvPair[] |  |  |  |  | body |  |  |  |  |  |  | 否 |  | [{"key":"ver |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"ver | 查询参数匹配规 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | sion","value" |  | 查询参 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 则。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :"v1"}] |  |  |  |
-| domainIds | string[] |  |  |  |  | body |  |  |  |  |  |  | 否 |  | ["domain- 001"] |  | 关联域名ID列表。 |  |
-| routePath | string[] |  |  |  |  | body |  |  |  |  |  |  | 否 |  | ["/api/v1/*" ] |  | 路由路径。 |  |
-| stripPrefix | integer |  |  |  |  | body |  |  |  |  |  |  | 否 |  | 1 |  | 去除路径前缀的层数。 |  |
-| requestTimeou t | integer |  |  |  |  | body |  |  |  |  |  |  | 否 |  | 30000 |  | 请求超时时间 （毫秒）。 |  |
-| openStripPrefix | boolean |  |  |  |  | body |  |  |  |  |  |  | 否 |  | true |  | 是否启用去除前缀。 |  |
-| enableForceNo nceCheck | boolean |  |  |  |  | body |  |  |  |  |  |  | 否 |  | false |  | enableForceNo nceCheck参数。 |  |
-| path | object |  |  |  |  | body |  |  |  |  |  |  |  |  | {"matchType" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | {"matchType" |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :"prefix","ma |  |  |  |
-|  |  | object |  |  |  |  | body |  |  |  |  |  |  |  |  |  | 路由路径匹配配 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | tchValue":"/a |  | 置 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | pi"} |  |  |  |
-| serviceIds | ServiceAndWe ight[] |  |  |  |  | body |  |  |  |  |  |  |  |  | [{"serviceId |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"serviceId |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ":"service- |  | 多服务负载均衡 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 配置列表（带权 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  | 配置 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 001","weight" |  | 重） |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :50}] |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"Con |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | tent- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Type","value" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :"application |   |   |   |
+|   |   |   | air[] |   |   | body |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   | KvPair[] | air[] |   |   |   | body |   |   |   |   |   | 否 |   | /json"}] |   |   |   |
+| cookie | KvPair[] |   |   |   |   | body |   |   |   |   |   |   | 否 |   | [{"key":"ses |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"ses | Cookie匹配规 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | sion","value" |   | Cookie匹配 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 则。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :"active"}] |   |   |   |
+| queryParam | KvPair[] |   |   |   |   | body |   |   |   |   |   |   | 否 |   | [{"key":"ver |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"ver | 查询参数匹配规 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | sion","value" |   | 查询参 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 则。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :"v1"}] |   |   |   |
+| domainIds | string[] |   |   |   |   | body |   |   |   |   |   |   | 否 |   | ["domain- 001"] |   | 关联域名ID列表。 |   |
+| routePath | string[] |   |   |   |   | body |   |   |   |   |   |   | 否 |   | ["/api/v1/*" ] |   | 路由路径。 |   |
+| stripPrefix | integer |   |   |   |   | body |   |   |   |   |   |   | 否 |   | 1 |   | 去除路径前缀的层数。 |   |
+| requestTimeou t | integer |   |   |   |   | body |   |   |   |   |   |   | 否 |   | 30000 |   | 请求超时时间 （毫秒）。 |   |
+| openStripPrefix | boolean |   |   |   |   | body |   |   |   |   |   |   | 否 |   | true |   | 是否启用去除前缀。 |   |
+| enableForceNo nceCheck | boolean |   |   |   |   | body |   |   |   |   |   |   | 否 |   | false |   | enableForceNo nceCheck参数。 |   |
+| path | object |   |   |   |   | body |   |   |   |   |   |   |   |   | {"matchType" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | {"matchType" |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :"prefix","ma |   |   |   |
+|   |   | object |   |   |   |   | body |   |   |   |   |   |   |   |   |   | 路由路径匹配配 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | tchValue":"/a |   | 置 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | pi"} |   |   |   |
+| serviceIds | ServiceAndWe ight[] |   |   |   |   | body |   |   |   |   |   |   |   |   | [{"serviceId |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"serviceId |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ":"service- |   | 多服务负载均衡 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 配置列表（带权 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   | 配置 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 001","weight" |   | 重） |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :50}] |   |   |   |
 
-|  |  | ["domain- | 关 |
+|   |   | ["domain- | 关 |
 |---|---|---|---|
-|  | 001"] |  |  |
+|   | 001"] |   |   |
 
-|  |  | ["/api/v1/*" |  |
+|   |   | ["/api/v1/*" |   |
 |---|---|---|---|
-|  | ] |  |  |
+|   | ] |   |   |
 
-|  |  | ServiceAndWe | bod |  |
+|   |   | ServiceAndWe | bod |   |
 |---|---|---|---|---|
-|  |  |  |  | bod |
-| viceIds | ight[] |  |  |  |
+|   |   |   |   | bod |
+| viceIds | ight[] |   |   |   |
 
-智能体工厂 OpenTrek
-
-| groupId | string |  |  |  | body |  |  |  |  |  | 否 |  | group-001 |  | 分组ID。 |  |
+| groupId | string |   |   |   | body |   |   |   |   |   | 否 |   | group-001 |   | 分组ID。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| enableStatus | boolean |  |  |  | body |  |  |  |  |  | 否 |  | true |  | 路由是否启用。 |  |
-| isDisasterReco very | boolean |  |  |  | body |  |  |  |  |  | 否 |  | false |  | 是否为容灾资源。 |  |
-| disasterRecove ryServiceId | string |  |  |  | body |  |  |  |  |  | 否 |  | dr-service- 001 |  | 容灾服务ID。 |  |
-| disasterRecove ryServiceIds | ServiceAndWe ight[] |  |  |  | body |  |  |  |  |  |  |  | [{"serviceId |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"serviceId |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | ":"dr- |  |  |  |
-|  |  |  |  |  | bod |  |  |  |  |  |  |  |  |  | 容灾服务ID列 |  |
-|  |  |  |  |  |  | bod | y |  |  |  | 否 |  |  |  | 容灾服务ID列 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | service- |  | 表。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 表。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 001","weight" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | :100}] |  |  |  |
-| hsfMethodMap pingConfig | object |  |  |  | body |  |  |  |  |  |  |  | {"hsfMethod" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | {"hsfMethod" |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | :"com.example |  | hsfMethodMap |  |
-|  |  | object |  |  |  | body |  |  |  |  |  |  |  |  | pingConfig参 |  |
-|  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  | pin |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | .Service:meth |  | 数。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | od"} |  |  |  |
+| enableStatus | boolean |   |   |   | body |   |   |   |   |   | 否 |   | true |   | 路由是否启用。 |   |
+| isDisasterReco very | boolean |   |   |   | body |   |   |   |   |   | 否 |   | false |   | 是否为容灾资源。 |   |
+| disasterRecove ryServiceId | string |   |   |   | body |   |   |   |   |   | 否 |   | dr-service- 001 |   | 容灾服务ID。 |   |
+| disasterRecove ryServiceIds | ServiceAndWe ight[] |   |   |   | body |   |   |   |   |   |   |   | [{"serviceId |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"serviceId |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | ":"dr- |   |   |   |
+|   |   |   |   |   | bod |   |   |   |   |   |   |   |   |   | 容灾服务ID列 |   |
+|   |   |   |   |   |   | bod | y |   |   |   | 否 |   |   |   | 容灾服务ID列 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | service- |   | 表。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 表。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 001","weight" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | :100}] |   |   |   |
+| hsfMethodMap pingConfig | object |   |   |   | body |   |   |   |   |   |   |   | {"hsfMethod" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | {"hsfMethod" |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | :"com.example |   | hsfMethodMap |   |
+|   |   | object |   |   |   | body |   |   |   |   |   |   |   |   | pingConfig参 |   |
+|   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   | pin |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | .Service:meth |   | 数。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | od"} |   |   |   |
 
-|  |  | dr-service- | 容 |
+|   |   | dr-service- | 容 |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **header 对象结构**
 
@@ -14721,13 +16256,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | key | string | body | 否 | Content- Type | 键名。 |
 | value | string | body | 否 | application/ json | 键值。 |
 
-|  |  | Content- |
+|   |   | Content- |
 |---|---|---|
-|  | Type |  |
+|   | Type |   |
 
-|  |  | application/ | 键值 |
+|   |   | application/ | 键值 |
 |---|---|---|---|
-|  | json |  |  |
+|   | json |   |   |
 
 **cookie 对象结构**
 
@@ -14736,32 +16271,30 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | key | string | body | 否 | Content- Type | 键名。 |
 | value | string | body | 否 | application/ json | 键值。 |
 
-|  |  | Content- |
+|   |   | Content- |
 |---|---|---|
-|  | Type |  |
+|   | Type |   |
 
-|  |  | application/ | 键值 |
+|   |   | application/ | 键值 |
 |---|---|---|---|
-|  | json |  |  |
+|   | json |   |   |
 
 **queryParam 对象结构**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | key | string | body | 否 | Content- Type | 键名。 |
 |---|---|---|---|---|---|
 | value | string | body | 否 | application/ json | 键值。 |
 
-|  |  | Content- |
+|   |   | Content- |
 |---|---|---|
-|  | Type |  |
+|   | Type |   |
 
-|  |  | application/ | 键值 |
+|   |   | application/ | 键值 |
 |---|---|---|---|
-|  | json |  |  |
+|   | json |   |   |
 
 **path 对象结构**
 
@@ -14787,25 +16320,23 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **hsfMethodMappingConfig 对象结构**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 | 是否必选 |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|
-| hsfMethod | string | body | 否 |  | com.example. |  | HSF方法名。 |
-|  |  |  |  |  |  | com.example. |  |
-|  |  |  |  |  | Service:metho |  |  |
-|  |  |  |  |  | d |  |  |
+| hsfMethod | string | body | 否 |   | com.example. |   | HSF方法名。 |
+|   |   |   |   |   |   | com.example. |   |
+|   |   |   |   |   | Service:metho |   |   |
+|   |   |   |   |   | d |   |   |
 
-智能体工厂 OpenTrek
-
-|  | parameterMap |  | HsfMethodMap |  |  |  |  |  |  | 否 |  | [{"name":"pa |  |  |  |
+|   | parameterMap |   | HsfMethodMap |   |   |   |   |   |   | 否 |   | [{"name":"pa |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  | HsfMethodMap |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | [{"name":"pa |  |  |
-|  |  | ameterMap | pingConfig$Pa |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | ram1","order" |  |  |  |
-|  | pingList |  |  |  |  |  |  |  |  |  |  |  |  | 参 |  |
-|  |  |  | rameterMappin |  |  |  | body |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | :1}] |  |  |  |
-|  |  |  | g[] |  |  |  |  |  |  |  |  |  |  |  |  |
+|   |   |   |   | HsfMethodMap |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | [{"name":"pa |   |   |
+|   |   | ameterMap | pingConfig$Pa |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | ram1","order" |   |   |   |
+|   | pingList |   |   |   |   |   |   |   |   |   |   |   |   | 参 |   |
+|   |   |   | rameterMappin |   |   |   | body |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | :1}] |   |   |   |
+|   |   |   | g[] |   |   |   |   |   |   |   |   |   |   |   |   |
 
 **hsfMethodMappingConfig.parameterMappingList 对象结构**
 
@@ -14840,8 +16371,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | type | string | body | 否 | string | 类型。 |
 |---|---|---|---|---|---|
 | items | object | body | 否 | {"type":"str ing"} | 数组元素类型。 |
@@ -14849,9 +16378,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | primitive | boolean | body | 否 | true | 是否为基本类型。 |
 | generic | boolean | body | 否 | false | 是否为泛型类型。 |
 
-|  |  | {"type":"str | 数组 |
+|   |   | {"type":"str | 数组 |
 |---|---|---|---|
-|  | ing"} |  |  |
+|   | ing"} |   |   |
 
 **hsfMethodMappingConfig.parameterMappingList.schema.items.items**
 
@@ -14865,9 +16394,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | primitive | boolean | body | 否 | true | 是否为基本类型。 |
 | generic | boolean | body | 否 | false | 是否为泛型类型。 |
 
-|  |  | {"type":"str | 数组 |
+|   |   | {"type":"str | 数组 |
 |---|---|---|---|
-|  | ing"} |  |  |
+|   | ing"} |   |   |
 
 **返回数据**
 
@@ -14877,8 +16406,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
 
-智能体工厂 OpenTrek
-
 | message | string | success | 响应消息。 |
 |---|---|---|---|
 | data | string | route-001 | 响应数据。 |
@@ -14887,8 +16414,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/createRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "order": 0,
   "filters": "filters_value",
   "routeId": "routeId_value",
@@ -14898,33 +16430,42 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "gwInstanceId": "gwInstanceId_value",
   "methods": [],
   "header": [
-    {
-      "key": "key_value",
-      "value": "value_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "key_value",
+      "value": "value_value"
+```
+
+`}` `],`
 
 ```json
   "cookie": [
-    {
-      "key": "key_value",
-      "value": "value_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "key_value",
+      "value": "value_value"
+```
+
+`}` `],`
 
 ```json
   "queryParam": [
-    {
-      "key": "key_value",
-      "value": "value_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "key_value",
+      "value": "value_value"
+```
+
+`}` `],`
 
 ```json
   "domainIds": [],
@@ -14937,17 +16478,14 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
     "matchType": "matchType_value",
     "matchValue": "matchValue_value",
     "caseSensitive": true
-  },
+```
+
+`},`
+
+```json
   "serviceIds": [
-    {
       "serviceId": "serviceId_value",
       "weight": 0
-```
-
-智能体工厂 OpenTrek
-
-```
-    }
 ```
 
 `],`
@@ -14958,19 +16496,26 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "isDisasterRecovery": true,
   "disasterRecoveryServiceId": "disasterRecoveryServiceId_value",
   "disasterRecoveryServiceIds": [
-    {
-      "serviceId": "serviceId_value",
-      "weight": 0
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "serviceId": "serviceId_value",
+      "weight": 0
+```
+
+`}` `],`
 
 ```json
   "hsfMethodMappingConfig": {
     "hsfMethod": "hsfMethod_value",
     "parameterMappingList": [
-      {
+```
+
+`{`
+
+```json
         "name": "name_value",
         "schema": {
           "type": "type_value",
@@ -14980,42 +16525,51 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
             "array": {},
             "primitive": {},
             "generic": {}
-          },
+```
+
+`},`
+
+```json
           "array": true,
           "primitive": true,
           "generic": true
-        },
+```
+
+`},`
+
+```json
         "location": "location_value",
         "required": true,
         "order": 0
-      }
 ```
 
-]
-
-```
-  }
-}
-```
+`}` `]` `}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### deleteRoute
+`}`
+
+#### 4.11.3 deleteRoute
 
 **API 接口概述**
 
 **中文名称：**删除路由
-智能体工厂 OpenTrek
+**英文名称：** deleteRoute
 **功能概述：**删除路由。
+**请求路径：** `/route/deleteRoute`
 **请求方式：** `POST`
 
 **请求参数**
@@ -15025,9 +16579,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 | routeId | string | body | 是 | route-001 | 路由ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -15043,31 +16597,42 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/deleteRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "routeId": "routeId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getAll
+`}`
+
+#### 4.11.4 getAll
 
 **API 接口概述**
 
 **中文名称：**查询所有路由
+**英文名称：** getAll
 **功能概述：**查询所有路由。
 **请求路径：** `/route/listAllRoutes`
 **请求方式：** `POST`
@@ -15080,9 +16645,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceType | integer | body | 否 | 1 | 服务类型。 |
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -15092,8 +16657,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | code | integer | 200 | 响应码。 |
 | msg | string | success | 响应消息。 |
 | message | string | success | 响应消息。 |
-
-智能体工厂 OpenTrek
 
 | data | AllRouteResponse[] | - | 响应数据。 |
 |---|---|---|---|
@@ -15105,47 +16668,61 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/listAllRoutes HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /route/listAllRoutes HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "serviceType": 0,
   "isDisasterRecovery": true
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": [
-        {
+```
+
+`{`
+
+```json
             "routeName": "demo-route",
             "routeId": "route-001",
             "serviceId": "service-001"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "routeName": "another-route",
             "routeId": "route-002",
             "serviceId": "service-002"
-        }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-#### getProtocolByRoute
+#### 4.11.5 getProtocolByRoute
 
 **API 接口概述**
 
-智能体工厂 OpenTrek
 **中文名称：**查询路由协议
+**英文名称：** getProtocolByRoute
 **功能概述：**查询路由协议。
+**请求路径：** `/route/getProtocolByRoute`
 **请求方式：** `POST`
 
 **请求参数**
@@ -15156,9 +16733,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | routeId | string | body | 否 | route-001 | 路由ID。 |
 | type | integer | body | 否 | 1 | 类型。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -15174,33 +16751,43 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/getProtocolByRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "routeId": "routeId_value",
   "type": 0
-}
 ```
-
-智能体工厂 OpenTrek
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getRoute
+`}`
+
+#### 4.11.6 getRoute
 
 **API 接口概述**
 
 **中文名称：**查询路由详情
+**英文名称：** getRoute
 **功能概述：**查询路由详情。
+**请求路径：** `/route/getRoute`
 **请求方式：** `POST`
 
 **请求参数**
@@ -15210,9 +16797,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 | routeId | string | body | 否 | route-001 | 路由ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -15224,33 +16811,29 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | object | 见下方 | 响应数据。 |
 
-智能体工厂 OpenTrek
-
-|  | data.routeId |  | string |  | route-001 |  | 路由ID。 |
+|   | data.routeId |   | string |   | route-001 |   | 路由ID。 |
 |---|---|---|---|---|---|---|---|
-|  | data.routeName |  | string |  | my-route |  | 路由名称。 |
-|  | data.enableStatus |  | boolean |  | true |  | 启用状态。 |
-|  | data.routePath |  | string[] |  | ["/api/v1"] |  | 路由路径。 |
-|  | data.path |  | object |  | 见下方 |  | 路径。 |
-|  | data.path.matchType |  | string (枚举: |  | EXACT |  | 匹配类型。 |
-|  |  |  |  | string (枚举: |  |  |  |
-|  |  | atchType | RoutePredicateTypeEnum |  |  |  |  |
-|  |  |  |  |  |  | EXACT |  |
-|  |  |  | ) |  |  |  |  |
-|  | data.path.matchValue |  | string |  | /api/v1 |  | The value to match against. |
-|  | data.path.caseSensitive |  | boolean |  | true |  | Whether to match the value case-sensitively. |
-|  | data.openStripPrefix |  | boolean |  | false |  | 是否启用去除前缀。 |
-|  | data.stripPrefix |  | integer |  | 0 |  | 去除路径前缀层数。 |
-|  | data.order |  | integer |  | 1 |  | 顺序/优先级。 |
-|  | data.methods |  | string[] |  | ["GET", "POST"] |  | HTTP方法列表。 |
-|  | data.header |  | KvPair[] |  | 见下方 |  | 请求头匹配规则。 |
-|  | data.header.key |  | string |  | Content-Type |  | 键名。 |
-|  | data.header.value |  | string |  | application/json |  | 键值。 |
-|  | data.cookie |  | KvPair[] |  | 见下方 |  | Cookie匹配规则。 |
-|  | data.cookie.key |  | string |  | session |  | 键名。 |
-|  | data.cookie.value |  | string |  | active |  | 键值。 |
-
-智能体工厂 OpenTrek
+|   | data.routeName |   | string |   | my-route |   | 路由名称。 |
+|   | data.enableStatus |   | boolean |   | true |   | 启用状态。 |
+|   | data.routePath |   | string[] |   | ["/api/v1"] |   | 路由路径。 |
+|   | data.path |   | object |   | 见下方 |   | 路径。 |
+|   | data.path.matchType |   | string (枚举: |   | EXACT |   | 匹配类型。 |
+|   |   |   |   | string (枚举: |   |   |   |
+|   |   | atchType | RoutePredicateTypeEnum |   |   |   |   |
+|   |   |   |   |   |   | EXACT |   |
+|   |   |   | ) |   |   |   |   |
+|   | data.path.matchValue |   | string |   | /api/v1 |   | The value to match against. |
+|   | data.path.caseSensitive |   | boolean |   | true |   | Whether to match the value case-sensitively. |
+|   | data.openStripPrefix |   | boolean |   | false |   | 是否启用去除前缀。 |
+|   | data.stripPrefix |   | integer |   | 0 |   | 去除路径前缀层数。 |
+|   | data.order |   | integer |   | 1 |   | 顺序/优先级。 |
+|   | data.methods |   | string[] |   | ["GET", "POST"] |   | HTTP方法列表。 |
+|   | data.header |   | KvPair[] |   | 见下方 |   | 请求头匹配规则。 |
+|   | data.header.key |   | string |   | Content-Type |   | 键名。 |
+|   | data.header.value |   | string |   | application/json |   | 键值。 |
+|   | data.cookie |   | KvPair[] |   | 见下方 |   | Cookie匹配规则。 |
+|   | data.cookie.key |   | string |   | session |   | 键名。 |
+|   | data.cookie.value |   | string |   | active |   | 键值。 |
 
 | data.queryParam | KvPair[] | 见下方 | 查询参数匹配规则。 |
 |---|---|---|---|
@@ -15271,15 +16854,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.disasterRecoveryLo adBalanceType | integer | 1 | disasterRecoveryLoadBal anceType字段。 |
 | data.disasterRecoveryLo adBalanceTypeName | string | ROUND ROBIN _ | disasterRecoveryLoadBal anceTypeName字段。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 01T00:00:00 |   |
 
 | data.disasterRecoverySe rviceName | string | backup-service | disasterRecoveryService Name字段。 |
 |---|---|---|---|
@@ -15300,11 +16881,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.trafficControl.count | number | 100 | count字段。 |
 | data.trafficControl.contro lBehavior | integer | 0 | controlBehavior字段。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 01T00:00:00 |   |
 
 | data.trafficControl.interv alSec | integer | 1 | intervalSec字段。 |
 |---|---|---|---|
@@ -15324,15 +16903,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.trafficControl.thresh oldByQps | object | 见下方 | thresholdByQps字段。 |
 | data.trafficControl.thresh oldByQps.qpsThreshold | integer | 100 | qpsThreshold字段。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 01T00:00:00 |   |
 
 | data.trafficControl.thresh oldByQps.timeInterval | integer | 1 | timeInterval字段。 |
 |---|---|---|---|
@@ -15352,8 +16929,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.isOpenPlugin | boolean | false | isOpenPlugin字段。 |
 | data.plugins | KvPair[] | 见下方 | plugins字段。 |
 
-智能体工厂 OpenTrek
-
 | data.plugins.key | string | ai-token-limit | 键名。 |
 |---|---|---|---|
 | data.plugins.value | string | {} | 键值。 |
@@ -15370,8 +16945,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.routeFusesConfigVo .routeFusesCondition.sta tInterval | integer | 10 | statInterval字段。 |
 | data.routeFusesConfigVo .routeFusesCondition.tim eWindow | integer | 30 | timeWindow字段。 |
 | data.routeFusesConfigVo .routeFusesCondition.mi nRequestAmount | integer | 10 | minRequestAmount字段。 |
-
-智能体工厂 OpenTrek
 
 | data.routeFusesConfigVo .routeFusesCondition.hal fOpenBaseAmountPerSte p | integer | 5 | halfOpenBaseAmountPer Step字段。 |
 |---|---|---|---|
@@ -15390,11 +16963,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.sigSchemeDTOList. sigAlg | string | HMAC-SHA256 | sigAlg字段。 |
 | data.sigSchemeDTOList. secretKey | string | secret-key-xxx | SecretKey. |
 
-|  |  | SigSchemeRouteRelDet | 见下 |
+|   |   | SigSchemeRouteRelDet | 见下 |
 |---|---|---|---|
-| a.sigSchemeDTOList | ail[] |  |  |
-
-智能体工厂 OpenTrek
+| a.sigSchemeDTOList | ail[] |   |   |
 
 | data.routeAuthVO | object | 见下方 | routeAuthVO字段。 |
 |---|---|---|---|
@@ -15412,8 +16983,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.routeAuthVO.custo mAuth.authAssertValue | string | X-Auth-Token | authAssertValue字段。 |
 | data.routeAuthVO.custo mAuth.openLoosePattern | boolean | false | openLoosePattern字段。 |
 | data.routeAuthVO.custo mAuth.cachedClient | object | {} | cachedClient字段。 |
-
-智能体工厂 OpenTrek
 
 | data.routeAuthVO.apiKey | object | 见下方 | apiKey字段。 |
 |---|---|---|---|
@@ -15434,8 +17003,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.crossConfig.expose dHeaders | string | X-Custom-Header | exposedHeaders字段。 |
 | data.crossConfig.allowed Headers | string | Content-Type | allowedHeaders字段。 |
 
-智能体工厂 OpenTrek
-
 | data.crossConfig.allowed Credentials | boolean | true | allowedCredentials字段。 |
 |---|---|---|---|
 | data.crossConfig.maxAg e | integer | 3600 | maxAge字段。 |
@@ -15452,8 +17019,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.responseCacheConf ig.isOpenResponseCache | boolean | false | isOpenResponseCache字段。 |
 | data.routeIpBlockConfigV O | object | 见下方 | routeIpBlockConfigVO字段。 |
 | data.routeIpBlockConfigV O.ipBlockRules | IpBlockRule[] | 见下方 | ipBlockRules字段。 |
-
-智能体工厂 OpenTrek
 
 | data.routeIpBlockConfigV O.ipBlockRules.ip | string | 192.168.1.100 | IP地址。 |
 |---|---|---|---|
@@ -15474,8 +17039,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.routeACLConfig | object | 见下方 | routeACLConfig字段。 |
 | data.routeACLConfig.acl Rules | ACLRule[] | 见下方 | aclRules字段。 |
 
-智能体工厂 OpenTrek
-
 | data.routeACLConfig.acl Rules.group | string | group-001 | group字段。 |
 |---|---|---|---|
 | data.routeACLConfig.acl Rules.policy | string | ALLOW | policy字段。 |
@@ -15494,15 +17057,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe.routeInfos | StrategyConfigScopeD TO$ScopeTargetDTO[] | 见下方 | routeInfos字段。 |
 | data.strategyConfigs.sco pe.routeInfos.name | string | my-route | 名称。 |
 
-|  |  | StrategyConfigRelati | 见下 |
+|   |   | StrategyConfigRelati | 见下 |
 |---|---|---|---|
-| a.strategyConfigs | on[] |  |  |
+| a.strategyConfigs | on[] |   |   |
 
-|  |  | StrategyConfigScopeD | 见下方 |
+|   |   | StrategyConfigScopeD | 见下方 |
 |---|---|---|---|
-| routeInfos | TO$ScopeTargetDTO[] |  |  |
-
-智能体工厂 OpenTrek
+| routeInfos | TO$ScopeTargetDTO[] |   |   |
 
 | data.strategyConfigs.sco pe.routeInfos.id | string | route-001 | ID标识。 |
 |---|---|---|---|
@@ -15521,27 +17082,25 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.strategyConfigs.sco pe.scopes | string[] | ["route"] | OAuth2授权范围。 |
 | data.strategyConfigs.cre ateTime | string | 2024-01- 01T00:00:00 | 创建时间。 |
 
-|  |  | StrategyConfigScopeD | 见下方 |
+|   |   | StrategyConfigScopeD | 见下方 |
 |---|---|---|---|
-| serviceInfos | TO$ScopeTargetDTO[] |  |  |
+| serviceInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | 见下方 |
+|   |   | StrategyConfigScopeD | 见下方 |
 |---|---|---|---|
-| appInfos | TO$ScopeTargetDTO[] |  |  |
+| appInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | 见下方 |
+|   |   | StrategyConfigScopeD | 见下方 |
 |---|---|---|---|
-| domainInfos | TO$ScopeTargetDTO[] |  |  |
+| domainInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | StrategyConfigScopeD | 见下方 |
+|   |   | StrategyConfigScopeD | 见下方 |
 |---|---|---|---|
-| mcpServerInfos | TO$ScopeTargetDTO[] |  |  |
+| mcpServerInfos | TO$ScopeTargetDTO[] |   |   |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
-
-智能体工厂 OpenTrek
+|   | 01T00:00:00 |   |
 
 | data.strategyConfigs.upd ateTime | string | 2024-01- 01T00:00:00 | 更新时间。 |
 |---|---|---|---|
@@ -15549,25 +17108,36 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.serviceIds | object[] | 见下方 | 服务ID列表（带权重）。 |
 | data.disasterRecoverySe rviceIds | object[] | 见下方 | 容灾服务ID列表。 |
 
-|  |  | 2024-01- |
+|   |   | 2024-01- |
 |---|---|---|
-|  | 01T00:00:00 |  |
+|   | 01T00:00:00 |   |
 
 **示例**
 
 **请求示例**
 
+```
+POST /route/getRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "higress-001",
   "routeId": "route-001"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
@@ -15580,25 +17150,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "matchType": "EXACT",
       "matchValue": "/api/v1",
       "caseSensitive": true
-    },
+```
+
+`},`
+
+```json
     "order": 1,
     "methods": ["GET", "POST"],
     "serviceName": "my-service",
     "serviceId": "service-001",
     "isOpenTimeOut": true,
     "requestTimeout": 30000
-  }
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### getRoutePolicies
+#### 4.11.7 getRoutePolicies
 
 **API 接口概述**
 
 **中文名称：**查询路由策略
+**英文名称：** getRoutePolicies
 **功能概述：**查询路由策略。
+**请求路径：** `/route/getRoutePolicies`
 **请求方式：** `POST`
 
 **请求参数**
@@ -15608,9 +17180,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | gwInstanceId | string | body | 否 | higress- 001 | 网关实例ID。 |
 | routeId | string | body | 否 | route-001 | 路由ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -15627,69 +17199,63 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.rewrite.host | string | api.example.com | 重写主机。 |
 | data.headerControl | object | - | 请求头控制配置。 |
 
-智能体工厂 OpenTrek
-
-| data.headerControl.enab led |  |  |  | boolean |  |  |  |  |  | true |  | 是否启用请求头控制。 |  |
+| data.headerControl.enab led |   |   |   | boolean |   |   |   |   |   | true |   | 是否启用请求头控制。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| data.headerControl.requ est |  |  |  | object |  |  |  |  |  | - |  | 请求头配置。 |  |
-| data.headerControl.requ est.add |  |  |  | Header[] |  |  |  |  |  | [{"key":"X- |  | 添加的请求头。 |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{"key":"X- |  |  |
-|  |  |  |  |  |  |  |  |  |  | Custom","value":"value |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | 添加 |  |
-|  |  |  |  |  |  |  |  |  |  | 1"}] |  |  |  |
-| data.headerControl.requ est.add.key |  |  |  | string |  |  |  |  |  | X-Custom |  | 请求头键名。 |  |
-| data.headerControl.requ est.add.value |  |  |  | string |  |  |  |  |  | value1 |  | 请求头键值。 |  |
-| data.headerControl.requ est.set |  |  |  | Header[] |  |  |  |  |  | [{"key":"Content- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{"key":"Content- |  |  |
-|  |  |  |  |  | Head | er[] |  |  |  | Type","value":"applica |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | 设置的请求头。 |  |
-|  |  |  |  |  |  |  |  |  |  | tion/json"}] |  |  |  |
-| data.headerControl.requ est.set.key |  |  |  | string |  |  |  |  |  | Content-Type |  | 请求头键名。 |  |
-| data.headerControl.requ est.set.value |  |  |  | string |  |  |  |  |  | application/json |  | 请求头键值。 |  |
-| data.headerControl.requ est.remove |  |  |  | string[] |  |  |  |  |  | ["X-Remove"] |  | 移除的请求头。 |  |
-| data.headerControl.resp onse |  |  |  | object |  |  |  |  |  | - |  | 响应头配置。 |  |
-| data.headerControl.resp onse.add |  |  |  | Header[] |  |  |  |  |  | [{"key":"X- |  | 添加的响应头。 |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{"key":"X- |  |  |
-|  |  |  |  |  |  |  |  |  |  | Response","value":"val |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | 添加的 |  |
-|  |  |  |  |  |  |  |  |  |  | ue1"}] |  |  |  |
-| data.headerControl.resp onse.add.key |  |  |  | string |  |  |  |  |  | X-Response |  | 响应头键名。 |  |
-| data.headerControl.resp onse.add.value |  |  |  | string |  |  |  |  |  | value1 |  | 响应头键值。 |  |
-| data.headerControl.resp onse.set |  |  |  | Header[] |  |  |  |  |  | [{"key":"Cache- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{"key":"Cache- |  |  |
-|  |  |  |  |  | Header |  | [] |  |  | Control","value":"no- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | 设置的响 |  |
-|  |  |  |  |  |  |  |  |  |  | cache"}] |  |  |  |
+| data.headerControl.requ est |   |   |   | object |   |   |   |   |   | - |   | 请求头配置。 |   |
+| data.headerControl.requ est.add |   |   |   | Header[] |   |   |   |   |   | [{"key":"X- |   | 添加的请求头。 |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{"key":"X- |   |   |
+|   |   |   |   |   |   |   |   |   |   | Custom","value":"value |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | 添加 |   |
+|   |   |   |   |   |   |   |   |   |   | 1"}] |   |   |   |
+| data.headerControl.requ est.add.key |   |   |   | string |   |   |   |   |   | X-Custom |   | 请求头键名。 |   |
+| data.headerControl.requ est.add.value |   |   |   | string |   |   |   |   |   | value1 |   | 请求头键值。 |   |
+| data.headerControl.requ est.set |   |   |   | Header[] |   |   |   |   |   | [{"key":"Content- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{"key":"Content- |   |   |
+|   |   |   |   |   | Head | er[] |   |   |   | Type","value":"applica |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | 设置的请求头。 |   |
+|   |   |   |   |   |   |   |   |   |   | tion/json"}] |   |   |   |
+| data.headerControl.requ est.set.key |   |   |   | string |   |   |   |   |   | Content-Type |   | 请求头键名。 |   |
+| data.headerControl.requ est.set.value |   |   |   | string |   |   |   |   |   | application/json |   | 请求头键值。 |   |
+| data.headerControl.requ est.remove |   |   |   | string[] |   |   |   |   |   | ["X-Remove"] |   | 移除的请求头。 |   |
+| data.headerControl.resp onse |   |   |   | object |   |   |   |   |   | - |   | 响应头配置。 |   |
+| data.headerControl.resp onse.add |   |   |   | Header[] |   |   |   |   |   | [{"key":"X- |   | 添加的响应头。 |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{"key":"X- |   |   |
+|   |   |   |   |   |   |   |   |   |   | Response","value":"val |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | 添加的 |   |
+|   |   |   |   |   |   |   |   |   |   | ue1"}] |   |   |   |
+| data.headerControl.resp onse.add.key |   |   |   | string |   |   |   |   |   | X-Response |   | 响应头键名。 |   |
+| data.headerControl.resp onse.add.value |   |   |   | string |   |   |   |   |   | value1 |   | 响应头键值。 |   |
+| data.headerControl.resp onse.set |   |   |   | Header[] |   |   |   |   |   | [{"key":"Cache- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{"key":"Cache- |   |   |
+|   |   |   |   |   | Header |   | [] |   |   | Control","value":"no- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | 设置的响 |   |
+|   |   |   |   |   |   |   |   |   |   | cache"}] |   |   |   |
 
-智能体工厂 OpenTrek
-
-|  | data.headerControl.resp onse.set.key |  | string |  | Cache-Control |  |  | 响应头键名。 |
+|   | data.headerControl.resp onse.set.key |   | string |   | Cache-Control |   |   | 响应头键名。 |
 |---|---|---|---|---|---|---|---|---|
-|  | data.headerControl.resp onse.set.value |  | string |  | no-cache |  |  | 响应头键值。 |
-|  | data.headerControl.resp onse.remove |  | string[] |  | ["X-Powered-By"] |  |  | 移除的响应头。 |
-|  | data.timeoutConfig |  | object |  | - |  |  | 超时配置。 |
-|  | data.timeoutConfig.enab led |  | boolean |  | true |  |  | 是否启用。 |
-|  | data.timeoutConfig.time out |  | integer |  | 30 |  |  | 超时时间（秒）。 |
-|  | data.retryConfig |  | object |  | - |  |  | 重试配置。 |
-|  | data.retryConfig.enabled |  | boolean |  | true |  |  | 是否启用。 |
-|  | data.retryConfig.attempt s |  | integer |  | 3 |  |  | 重试次数。 |
-|  | data.retryConfig.timeout |  | integer |  | 5 |  |  | 重试超时时间（秒）。 |
-|  | data.retryConfig.conditio ns |  | string[] |  | ["error","timeout"] |  |  | 重试条件。 |
-|  | data.retryConfig.httpStat usCodes |  | integer[] |  | [500,502,503] |  |  | 重试HTTP状态码。 |
-|  | data.fallbackConfig |  | object |  | - |  |  | 降级配置。 |
-|  | data.fallbackConfig.enab led |  | boolean |  | true |  |  | 是否启用降级。 |
-|  | data.fallbackConfig.fallba |  | string (枚举: |  | modelFallback |  |  | 降级策略。 |
-|  |  |  |  | string (枚举: |  |  |  |  |
-|  |  | kConfig.fallba | AiRouteFallbackStrateg |  |  |  |  |  |
-|  |  |  |  |  |  |  | modelFallback |  |
-|  | ckStrategy |  |  |  |  |  |  |  |
-|  |  |  | y) |  |  |  |  |  |
-|  | data.fallbackConfig.resp onseCodes |  | string[] |  | ["500","502"] |  |  | 需要降级的响应码。 |
+|   | data.headerControl.resp onse.set.value |   | string |   | no-cache |   |   | 响应头键值。 |
+|   | data.headerControl.resp onse.remove |   | string[] |   | ["X-Powered-By"] |   |   | 移除的响应头。 |
+|   | data.timeoutConfig |   | object |   | - |   |   | 超时配置。 |
+|   | data.timeoutConfig.enab led |   | boolean |   | true |   |   | 是否启用。 |
+|   | data.timeoutConfig.time out |   | integer |   | 30 |   |   | 超时时间（秒）。 |
+|   | data.retryConfig |   | object |   | - |   |   | 重试配置。 |
+|   | data.retryConfig.enabled |   | boolean |   | true |   |   | 是否启用。 |
+|   | data.retryConfig.attempt s |   | integer |   | 3 |   |   | 重试次数。 |
+|   | data.retryConfig.timeout |   | integer |   | 5 |   |   | 重试超时时间（秒）。 |
+|   | data.retryConfig.conditio ns |   | string[] |   | ["error","timeout"] |   |   | 重试条件。 |
+|   | data.retryConfig.httpStat usCodes |   | integer[] |   | [500,502,503] |   |   | 重试HTTP状态码。 |
+|   | data.fallbackConfig |   | object |   | - |   |   | 降级配置。 |
+|   | data.fallbackConfig.enab led |   | boolean |   | true |   |   | 是否启用降级。 |
+|   | data.fallbackConfig.fallba |   | string (枚举: |   | modelFallback |   |   | 降级策略。 |
+|   |   |   |   | string (枚举: |   |   |   |   |
+|   |   | kConfig.fallba | AiRouteFallbackStrateg |   |   |   |   |   |
+|   |   |   |   |   |   |   | modelFallback |   |
+|   | ckStrategy |   |   |   |   |   |   |   |
+|   |   |   | y) |   |   |   |   |   |
+|   | data.fallbackConfig.resp onseCodes |   | string[] |   | ["500","502"] |   |   | 需要降级的响应码。 |
 
-|  | ["error","timeout"] |
+|   | ["error","timeout"] |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | data.fallbackConfig.servi ces | UpstreamService[] | - | 上游服务列表。 |
 |---|---|---|---|
@@ -15703,17 +17269,28 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/getRoutePolicies HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value",
   "routeId": "routeId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -15722,7 +17299,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "enabled": true,
       "path": "path_value",
       "host": "host_value"
-    },
+```
+
+`},`
+
+```json
     "headerControl": {
       "enabled": true,
       "request": {
@@ -15731,39 +17312,65 @@ HTTP/1.1 200 OK Content-Type: application/json {
           "value": {}
 ```
 
-智能体工厂 OpenTrek
+`},`
 
 ```json
-        },
         "set": {
           "key": {},
           "value": {}
-        },
+```
+
+`},`
+
+```json
         "remove": []
-      },
+```
+
+`},`
+
+```json
       "response": {
         "add": {
           "key": {},
           "value": {}
-        },
+```
+
+`},`
+
+```json
         "set": {
           "key": {},
           "value": {}
-        },
+```
+
+`},`
+
+```json
         "remove": []
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "timeoutConfig": {
       "enabled": true,
       "timeout": 0
-    },
+```
+
+`},`
+
+```json
     "retryConfig": {
       "enabled": true,
       "attempts": 0,
       "timeout": 0,
       "conditions": [],
       "httpStatusCodes": []
-    },
+```
+
+`},`
+
+```json
     "fallbackConfig": {
       "enabled": true,
       "fallbackStrategy": "fallbackStrategy_value",
@@ -15774,20 +17381,19 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "version": "version_value",
         "weight": 0,
         "bizId": "bizId_value"
-      }
-    }
-  }
-}
 ```
 
-#### listRoutes
+`}` `}` `}` `}`
+
+#### 4.11.8 listRoutes
 
 **API 接口概述**
 
 **中文名称：**查询路由列表
+**英文名称：** listRoutes
 **功能概述：**查询路由列表。
+**请求路径：** `/route/listRoutes`
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -15806,27 +17412,27 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | isDisasterReco very | boolean | body | 否 | false | 是否为容灾资源。 |
 | routePath | string | body | 否 | /api/v1/test | 路由路径。 |
 
-|  |  | my- |
+|   |   | my- |
 |---|---|---|
-|  | service |  |
+|   | service |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | DEFAULT GROU _ |  |
+|   |   | DEFAULT GROU _ |   |
 |---|---|---|---|
-|  | P |  |  |
+|   | P |   |   |
 
-|  |  | api.example. | 域 |
+|   |   | api.example. | 域 |
 |---|---|---|---|
-|  | com |  |  |
+|   | com |   |   |
 
-|  |  | /api/v1/test |
+|   |   | /api/v1/test |
 |---|---|---|
 
 **返回数据**
@@ -15836,37 +17442,33 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 | code | integer | 200 | 响应码。 |
 
-智能体工厂 OpenTrek
-
-|  | msg |  | string |  | success |  | 响应消息。 |
+|   | msg |   | string |   | success |   | 响应消息。 |
 |---|---|---|---|---|---|---|---|
-|  | message |  | string |  | success |  | 响应消息。 |
-|  | data |  | object |  | - |  | 响应数据。 |
-|  | data.size |  | integer |  | 10 |  | 每页大小。 |
-|  | data.total |  | integer |  | 100 |  | 总数。 |
-|  | data.current |  | integer |  | 1 |  | 当前页码。 |
-|  | data.records |  | GetRoutesByPageRespo nseRecord[] |  | - |  | 记录列表。 |
-|  | data.records.routeId |  | string |  | route-001 |  | 路由ID。 |
-|  | data.records.routeName |  | string |  | my-route |  | 路由名称。 |
-|  | data.records.enableStatu s |  | boolean |  | true |  | 启用状态。 |
-|  | data.records.routePath |  | string[] |  | ["/api/v1/test"] |  | 路由路径。 |
-|  | data.records.path |  | object |  | - |  | 路径配置。 |
-|  | data.records.path.match |  | string (枚举: |  | EXACT |  | 匹配类型。 |
-|  |  |  |  | string (枚举: |  |  |  |
-|  |  | s.path.match | RoutePredicateTypeEnum |  |  |  |  |
-|  |  |  |  |  |  | EXACT |  |
-|  | Type |  |  |  |  |  |  |
-|  |  |  | ) |  |  |  |  |
-|  | data.records.path.match Value |  | string |  | /api/v1/test |  | 匹配值。 |
-|  | data.records.path.caseS ensitive |  | boolean |  | true |  | 是否区分大小写。 |
-|  | data.records.createTime |  | string |  | 2024-01-01 10:00:00 |  | 创建时间。 |
-|  | data.records.serviceId |  | string |  | service-001 |  | 服务ID。 |
+|   | message |   | string |   | success |   | 响应消息。 |
+|   | data |   | object |   | - |   | 响应数据。 |
+|   | data.size |   | integer |   | 10 |   | 每页大小。 |
+|   | data.total |   | integer |   | 100 |   | 总数。 |
+|   | data.current |   | integer |   | 1 |   | 当前页码。 |
+|   | data.records |   | GetRoutesByPageRespo nseRecord[] |   | - |   | 记录列表。 |
+|   | data.records.routeId |   | string |   | route-001 |   | 路由ID。 |
+|   | data.records.routeName |   | string |   | my-route |   | 路由名称。 |
+|   | data.records.enableStatu s |   | boolean |   | true |   | 启用状态。 |
+|   | data.records.routePath |   | string[] |   | ["/api/v1/test"] |   | 路由路径。 |
+|   | data.records.path |   | object |   | - |   | 路径配置。 |
+|   | data.records.path.match |   | string (枚举: |   | EXACT |   | 匹配类型。 |
+|   |   |   |   | string (枚举: |   |   |   |
+|   |   | s.path.match | RoutePredicateTypeEnum |   |   |   |   |
+|   |   |   |   |   |   | EXACT |   |
+|   | Type |   |   |   |   |   |   |
+|   |   |   | ) |   |   |   |   |
+|   | data.records.path.match Value |   | string |   | /api/v1/test |   | 匹配值。 |
+|   | data.records.path.caseS ensitive |   | boolean |   | true |   | 是否区分大小写。 |
+|   | data.records.createTime |   | string |   | 2024-01-01 10:00:00 |   | 创建时间。 |
+|   | data.records.serviceId |   | string |   | service-001 |   | 服务ID。 |
 
-|  |  | GetRoutesByPageRespo | - |
+|   |   | GetRoutesByPageRespo | - |
 |---|---|---|---|
-| a.records | nseRecord[] |  |  |
-
-智能体工厂 OpenTrek
+| a.records | nseRecord[] |   |   |
 
 | data.records.serviceType | string | HTTP | 服务类型。 |
 |---|---|---|---|
@@ -15877,19 +17479,24 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.groupName | string | DEFAULT GROUP _ | 分组名称。 |
 | data.records.domains | string[] | ["api.example.com"] | 域名列表。 |
 
-|  | [{"id":"service- | 服务ID列表（带权 |
+|   | [{"id":"service- | 服务ID列表（带权 |
 |---|---|---|
-| 001","weight":100}] |  |  |
+| 001","weight":100}] |   |   |
 
-|  | ["api.example.com"] |
+|   | ["api.example.com"] |
 |---|---|
 
 **示例**
 
 **请求示例**
 
+```
+POST /route/listRoutes HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "size": 0,
   "current": 0,
   "routeName": "routeName_value",
@@ -15902,15 +17509,19 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "domainName": "domainName_value",
   "isDisasterRecovery": true,
   "routePath": "routePath_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -15927,7 +17538,11 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "matchType": "matchType_value",
         "matchValue": "matchValue_value",
         "caseSensitive": true
-      },
+```
+
+`},`
+
+```json
       "createTime": "createTime_value",
       "serviceId": "serviceId_value",
       "serviceType": "serviceType_value",
@@ -15937,17 +17552,18 @@ HTTP/1.1 200 OK Content-Type: application/json {
       "groupId": "groupId_value",
       "groupName": "groupName_value",
       "domains": []
-    }
-  }
-}
 ```
 
-#### modifyRoute
+`}` `}` `}`
+
+#### 4.11.9 modifyRoute
 
 **API 接口概述**
 
 **中文名称：**修改路由
+**英文名称：** modifyRoute
 **功能概述：**修改路由。
+**请求路径：** `/route/modifyRoute`
 **请求方式：** `POST`
 
 **请求参数**
@@ -15956,106 +17572,102 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | order | integer | body | 否 | 100 | 顺序/优先级。 |
 
-智能体工厂 OpenTrek
-
-| filters | string |  |  |  | body |  |  |  |  |  |  |  | [{\"name\":\ |  |  |  |
+| filters | string |   |   |   | body |   |   |   |   |   |   |   | [{\"name\":\ |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{\"name\":\ |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "requestHeade |  |  |  |
-|  |  | string |  |  |  | body |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | rModifier\"}] |  |  |  |
-| routeId | string |  |  |  | body |  |  |  |  |  | 否 |  | route-001 |  | 路由ID。 |  |
-| routeName | string |  |  |  | body |  |  |  |  |  | 否 |  | my-route- updated |  | 路由名称。 |  |
-| serviceId | string |  |  |  | body |  |  |  |  |  | 否 |  | service- 001 |  | 服务ID。 |  |
-| serviceType | string |  |  |  | body |  |  |  |  |  | 否 |  | 1 |  | 服务类型。 |  |
-| gwInstanceId | string |  |  |  | body |  |  |  |  |  | 否 |  | higress- 001 |  | 网关实例ID。 |  |
-| methods | string[] |  |  |  | body |  |  |  |  |  | 否 |  | ["GET", "POST"] |  | HTTP方法列表。 |  |
-| header | KvPair[] |  |  |  | body |  |  |  |  |  |  |  | [{"key":"Con |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"Con |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | tent- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  | 请求头匹配规 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | Type","value" |  | 则。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 则。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | :"application |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | /json"}] |  |  |  |
-| cookie | KvPair[] |  |  |  | body |  |  |  |  |  | 否 |  | [{"key":"ses |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"ses | Cookie匹配规 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | sion","value" |  | Cookie匹配 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 则。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | :"active"}] |  |  |  |
-| queryParam | KvPair[] |  |  |  | body |  |  |  |  |  | 否 |  | [{"key":"ver |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"key":"ver | 查询参数匹配规 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | sion","value" |  | 查询参 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 则。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | :"v1"}] |  |  |  |
-| domainIds | string[] |  |  |  | body |  |  |  |  |  | 否 |  | ["domain- 001"] |  | 域名ID列表。 |  |
-| routePath | string[] |  |  |  | body |  |  |  |  |  | 否 |  | ["/api/v1/*" ] |  | 路由路径。 |  |
-| stripPrefix | integer |  |  |  | body |  |  |  |  |  | 否 |  | 1 |  | 去除路径前缀层数。 |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{\"name\":\ |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "requestHeade |   |   |   |
+|   |   | string |   |   |   | body |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | rModifier\"}] |   |   |   |
+| routeId | string |   |   |   | body |   |   |   |   |   | 否 |   | route-001 |   | 路由ID。 |   |
+| routeName | string |   |   |   | body |   |   |   |   |   | 否 |   | my-route- updated |   | 路由名称。 |   |
+| serviceId | string |   |   |   | body |   |   |   |   |   | 否 |   | service- 001 |   | 服务ID。 |   |
+| serviceType | string |   |   |   | body |   |   |   |   |   | 否 |   | 1 |   | 服务类型。 |   |
+| gwInstanceId | string |   |   |   | body |   |   |   |   |   | 否 |   | higress- 001 |   | 网关实例ID。 |   |
+| methods | string[] |   |   |   | body |   |   |   |   |   | 否 |   | ["GET", "POST"] |   | HTTP方法列表。 |   |
+| header | KvPair[] |   |   |   | body |   |   |   |   |   |   |   | [{"key":"Con |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"Con |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | tent- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   | 请求头匹配规 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | Type","value" |   | 则。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 则。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | :"application |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | /json"}] |   |   |   |
+| cookie | KvPair[] |   |   |   | body |   |   |   |   |   | 否 |   | [{"key":"ses |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"ses | Cookie匹配规 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | sion","value" |   | Cookie匹配 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 则。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | :"active"}] |   |   |   |
+| queryParam | KvPair[] |   |   |   | body |   |   |   |   |   | 否 |   | [{"key":"ver |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"key":"ver | 查询参数匹配规 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | sion","value" |   | 查询参 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 则。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | :"v1"}] |   |   |   |
+| domainIds | string[] |   |   |   | body |   |   |   |   |   | 否 |   | ["domain- 001"] |   | 域名ID列表。 |   |
+| routePath | string[] |   |   |   | body |   |   |   |   |   | 否 |   | ["/api/v1/*" ] |   | 路由路径。 |   |
+| stripPrefix | integer |   |   |   | body |   |   |   |   |   | 否 |   | 1 |   | 去除路径前缀层数。 |   |
 
-|  |  | my-route- | 路由 |
+|   |   | my-route- | 路由 |
 |---|---|---|---|
-|  | updated |  |  |
+|   | updated |   |   |
 
-|  |  | service- |
+|   |   | service- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
-|  |  | ["GET", | HT |
+|   |   | ["GET", | HT |
 |---|---|---|---|
-|  | "POST"] |  |  |
+|   | "POST"] |   |   |
 
-|  |  | ["domain- | 域 |
+|   |   | ["domain- | 域 |
 |---|---|---|---|
-|  | 001"] |  |  |
+|   | 001"] |   |   |
 
-|  |  | ["/api/v1/*" |  |
+|   |   | ["/api/v1/*" |   |
 |---|---|---|---|
-|  | ] |  |  |
+|   | ] |   |   |
 
-智能体工厂 OpenTrek
-
-| requestTimeou t | integer |  |  |  |  | body |  |  |  |  |  |  | 否 |  | 30000 |  | 请求超时时间 （毫秒）。 |  |
+| requestTimeou t | integer |   |   |   |   | body |   |   |   |   |   |   | 否 |   | 30000 |   | 请求超时时间 （毫秒）。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| openStripPrefix | boolean |  |  |  |  | body |  |  |  |  |  |  | 否 |  | true |  | 是否启用去除前缀。 |  |
-| enableForceNo nceCheck | boolean |  |  |  |  | body |  |  |  |  |  |  | 否 |  | false |  | enableForceNo nceCheck参数。 |  |
-| path | object |  |  |  |  | body |  |  |  |  |  |  |  |  | {"matchType" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | {"matchType" |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :"prefix","ma |  |  |  |
-|  |  | object |  |  |  |  | body |  |  |  |  |  |  |  |  |  | 路径。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  | 路径 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | tchValue":"/a |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | pi"} |  |  |  |
-| serviceIds | ServiceAndWe ight[] |  |  |  |  | body |  |  |  |  |  |  |  |  | [{"serviceId |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"serviceId |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ":"service- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 服务ID列表（带 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 001","weight" |  | 权重 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :50}] |  |  |  |
-| disasterRecove ryServiceId | string |  |  |  |  | body |  |  |  |  |  |  | 否 |  | dr-service- 001 |  | 容灾服务ID。 |  |
-| disasterRecove ryServiceIds | ServiceAndWe ight[] |  |  |  |  | body |  |  |  |  |  |  |  |  | [{"serviceId |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"serviceId |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ":"dr- |  |  |  |
-|  |  |  |  |  |  | bod |  |  |  |  |  |  |  |  |  |  | 容灾服务ID列 |  |
-|  |  |  |  |  |  |  | bod | y |  |  |  |  | 否 |  |  |  | 容灾服务ID列 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | service- |  | 表。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 表。 |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 001","weight" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | :100}] |  |  |  |
+| openStripPrefix | boolean |   |   |   |   | body |   |   |   |   |   |   | 否 |   | true |   | 是否启用去除前缀。 |   |
+| enableForceNo nceCheck | boolean |   |   |   |   | body |   |   |   |   |   |   | 否 |   | false |   | enableForceNo nceCheck参数。 |   |
+| path | object |   |   |   |   | body |   |   |   |   |   |   |   |   | {"matchType" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | {"matchType" |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :"prefix","ma |   |   |   |
+|   |   | object |   |   |   |   | body |   |   |   |   |   |   |   |   |   | 路径。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   | 路径 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | tchValue":"/a |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | pi"} |   |   |   |
+| serviceIds | ServiceAndWe ight[] |   |   |   |   | body |   |   |   |   |   |   |   |   | [{"serviceId |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"serviceId |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ":"service- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 服务ID列表（带 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 001","weight" |   | 权重 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :50}] |   |   |   |
+| disasterRecove ryServiceId | string |   |   |   |   | body |   |   |   |   |   |   | 否 |   | dr-service- 001 |   | 容灾服务ID。 |   |
+| disasterRecove ryServiceIds | ServiceAndWe ight[] |   |   |   |   | body |   |   |   |   |   |   |   |   | [{"serviceId |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"serviceId |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ":"dr- |   |   |   |
+|   |   |   |   |   |   | bod |   |   |   |   |   |   |   |   |   |   | 容灾服务ID列 |   |
+|   |   |   |   |   |   |   | bod | y |   |   |   |   | 否 |   |   |   | 容灾服务ID列 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | service- |   | 表。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 表。 |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 001","weight" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | :100}] |   |   |   |
 
-|  |  | ServiceAndWe | bod |  |
+|   |   | ServiceAndWe | bod |   |
 |---|---|---|---|---|
-|  |  |  |  | bod |
-| viceIds | ight[] |  |  |  |
+|   |   |   |   | bod |
+| viceIds | ight[] |   |   |   |
 
-|  |  | dr-service- | 容 |
+|   |   | dr-service- | 容 |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **header 对象结构**
 
@@ -16064,13 +17676,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | key | string | body | 否 | Content- Type | 键名。 |
 | value | string | body | 否 | application/ json | 键值。 |
 
-|  |  | Content- |
+|   |   | Content- |
 |---|---|---|
-|  | Type |  |
+|   | Type |   |
 
-|  |  | application/ | 键值 |
+|   |   | application/ | 键值 |
 |---|---|---|---|
-|  | json |  |  |
+|   | json |   |   |
 
 **cookie 对象结构**
 
@@ -16078,18 +17690,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | key | string | body | 否 | Content- Type | 键名。 |
 
-|  |  | Content- |
+|   |   | Content- |
 |---|---|---|
-|  | Type |  |
-
-智能体工厂 OpenTrek
+|   | Type |   |
 
 | value | string | body | 否 | application/ json | 键值。 |
 |---|---|---|---|---|---|
 
-|  |  | application/ |  |
+|   |   | application/ |   |
 |---|---|---|---|
-|  | json |  |  |
+|   | json |   |   |
 
 **queryParam 对象结构**
 
@@ -16098,13 +17708,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | key | string | body | 否 | Content- Type | 键名。 |
 | value | string | body | 否 | application/ json | 键值。 |
 
-|  |  | Content- |
+|   |   | Content- |
 |---|---|---|
-|  | Type |  |
+|   | Type |   |
 
-|  |  | application/ | 键值 |
+|   |   | application/ | 键值 |
 |---|---|---|---|
-|  | json |  |  |
+|   | json |   |   |
 
 **path 对象结构**
 
@@ -16128,8 +17738,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | serviceId | string | body | 否 | service- 001 | 服务ID。 |
 | weight | integer | body | 否 | 50 | 权重。 |
 
-智能体工厂 OpenTrek
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16144,8 +17752,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/modifyRoute HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "order": 0,
   "filters": "filters_value",
   "routeId": "routeId_value",
@@ -16155,30 +17768,39 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "gwInstanceId": "gwInstanceId_value",
   "methods": [],
   "header": [
-    {
-      "key": "key_value",
-      "value": "value_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "key_value",
+      "value": "value_value"
+```
+
+`}` `],`
 
 ```json
   "cookie": [
-    {
-      "key": "key_value",
-      "value": "value_value"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "key_value",
+      "value": "value_value"
+```
+
+`}` `],`
 
 ```json
   "queryParam": [
-    {
+```
+
+`{`
+
+```json
       "key": "key_value",
       "value": "value_value"
-    }
 ```
 
 `],`
@@ -16187,8 +17809,6 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
   "domainIds": [],
 "routePath":[],
 ```
-
-智能体工厂 OpenTrek
 
 ```json
   routePath: [],
@@ -16200,48 +17820,62 @@ Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKE
     "matchType": "matchType_value",
     "matchValue": "matchValue_value",
     "caseSensitive": true
-  },
-  "serviceIds": [
-    {
-      "serviceId": "serviceId_value",
-      "weight": 0
-    }
 ```
 
-`],`
+`},`
+
+```json
+  "serviceIds": [
+```
+
+`{`
+
+```json
+      "serviceId": "serviceId_value",
+      "weight": 0
+```
+
+`}` `],`
 
 ```json
   "disasterRecoveryServiceId": "disasterRecoveryServiceId_value",
   "disasterRecoveryServiceIds": [
-    {
+```
+
+`{`
+
+```json
       "serviceId": "serviceId_value",
       "weight": 0
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### modifyRoutePolicy
+`}`
+
+#### 4.11.10 modifyRoutePolicy
 
 **API 接口概述**
 
 **中文名称：**修改路由策略
+**英文名称：** modifyRoutePolicy
 **功能概述：**修改路由策略。
+**请求路径：** `/route/modifyRoutePolicy`
 **请求方式：** `POST`
 
 **请求参数**
@@ -16250,8 +17884,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | configType | string | body | 否 | timeout | 配置类型。 |
 
-智能体工厂 OpenTrek
-
 | targetType | string | body | 否 | route | 目标类型。 |
 |---|---|---|---|---|---|
 | configData | object | body | 否 | {"timeout":3 0} | 配置数据。 |
@@ -16259,13 +17891,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | routeId | string | body | 否 | route-001 | 路由ID。 |
 | targetId | string | body | 否 | route-001 | 目标ID。 |
 
-|  |  | {"timeout":3 | 配 |
+|   |   | {"timeout":3 | 配 |
 |---|---|---|---|
-|  | 0} |  |  |
+|   | 0} |   |   |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -16281,38 +17913,48 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /route/modifyRoutePolicy HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "configType": "configType_value",
   "targetType": "targetType_value",
   "configData": {},
   "gwInstanceId": "gwInstanceId_value",
   "routeId": "routeId_value",
   "targetId": "targetId_value"
-}
 ```
-
-智能体工厂 OpenTrek
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-### 集群管理
+`}`
 
-#### cancelImportCluster
+### 4.12 集群管理
+
+#### 4.12.1 cancelImportCluster
 
 **API 接口概述**
 
 **中文名称：**取消导入集群
+**英文名称：** cancelImportCluster
 **功能概述：**取消导入k8s集群。
+**请求路径：** `/k8s/cancelImportCluster`
 **请求方式：** `POST`
 
 **请求参数**
@@ -16321,9 +17963,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | k8sClusterCode | string | body | 是 | k8s- cluster-001 | Kubernetes集群编码。 |
 
-|  |  | k8s- | Ku |
+|   |   | k8s- | Ku |
 |---|---|---|---|
-|  | cluster-001 |  |  |
+|   | cluster-001 |   |   |
 
 **返回数据**
 
@@ -16335,46 +17977,56 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | message | string | success | 响应消息。 |
 | data | object | {} | 响应数据。 |
 
-**示例**
-
-智能体工厂 OpenTrek
-
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "k8sClusterCode": "k8sClusterCode_value"
-}
 ```
+POST /k8s/cancelImportCluster HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "k8sClusterCode": "k8sClusterCode_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {}
-}
 ```
 
-#### checkConnect
+`}`
+
+#### 4.12.2 checkConnect
 
 **API 接口概述**
 
 **中文名称：**检查集群连通性
+**英文名称：** checkConnect
 **功能概述：**测试Kubernetes集群连接是否正常。
+**请求路径：** `/k8s/checkConnectCluster`
 **请求方式：** `POST`
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 |  |  | 示例 |  | 说明 |
+| 参数名称 | 类型 | 位置 | 是否必选 |   |   | 示例 |   | 说明 |
 |---|---|---|---|---|---|---|---|---|
-| configContent | string | body | 是 |  |  | base64- |  | configContent 参数。 |
-|  |  |  |  |  |  |  | base64- | configContent |
-|  |  |  |  |  |  | encoded- |  | conf |
-|  |  |  |  |  |  |  |  | 参数 |
-|  |  |  |  |  |  | kubeconfig |  |  |
+| configContent | string | body | 是 |   |   | base64- |   | configContent 参数。 |
+|   |   |   |   |   |   |   | base64- | configContent |
+|   |   |   |   |   |   | encoded- |   | conf |
+|   |   |   |   |   |   |   |   | 参数 |
+|   |   |   |   |   |   | kubeconfig |   |   |
 
 **返回数据**
 
@@ -16382,8 +18034,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 | code | integer | 200 | 响应码。 |
-
-智能体工厂 OpenTrek
 
 | msg | string | success | 响应消息。 |
 |---|---|---|---|
@@ -16396,35 +18046,46 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "configContent": "configContent_value"
-}
 ```
+POST /k8s/checkConnectCluster HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "configContent": "configContent_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": {
     "connectStatus": 0,
     "connectStatusDesc": "connectStatusDesc_value"
-  }
-}
 ```
 
-#### createK8s
+`}` `}`
+
+#### 4.12.3 createK8s
 
 **API 接口概述**
 
 **中文名称：**导入Kubernetes集群
+**英文名称：** createK8s
 **功能概述：**导入Kubernetes集群。
 **请求路径：** `/k8s/importCluster`
 **请求方式：** `POST`
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -16435,13 +18096,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | k8sClusterType | string | body | 否 | ACK | Kubernetes集群类型。 |
 | k8sClusterAttri bute | object | body | 否 | - | 集群属性配置。 |
 
-|  |  | apiVersion: | Kub |
+|   |   | apiVersion: | Kub |
 |---|---|---|---|
-|  | v1... |  |  |
+|   | v1... |   |   |
 
-|  |  | my-k8s- | K |
+|   |   | my-k8s- | K |
 |---|---|---|---|
-|  | cluster |  |  |
+|   | cluster |   |   |
 
 **k8sClusterAttribute 对象结构**
 
@@ -16449,9 +18110,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | csClusterId | string | body | 否 | cs-cluster- 001 | CS集群ID。 |
 
-|  |  | cs-cluster- | C |
+|   |   | cs-cluster- | C |
 |---|---|---|---|
-|  | 001 |  |  |
+|   | 001 |   |   |
 
 **返回数据**
 
@@ -16467,36 +18128,47 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /k8s/importCluster HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /k8s/importCluster HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "configContent": "configContent_value",
   "k8sClusterName": "k8sClusterName_value",
   "k8sClusterType": "k8sClusterType_value",
   "k8sClusterAttribute": {
     "csClusterId": "csClusterId_value"
-  }
-}
 ```
+
+`}` `}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getK8sClusterName
+`}`
+
+#### 4.12.4 getK8sClusterName
 
 **API 接口概述**
 
 **中文名称：**查询集群名称
+**英文名称：** getK8sClusterName
 **功能概述：**查询集群名称。
+**请求路径：** `/k8s/getK8sClusterName`
 **请求方式：** `POST`
 
 **请求参数**
@@ -16505,17 +18177,15 @@ HTTP/1.1 200 OK Content-Type: application/json {
 |---|---|---|---|---|---|
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
-
-智能体工厂 OpenTrek
 
 | code | integer | 200 | 响应码。 |
 |---|---|---|---|
@@ -16527,28 +18197,41 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
-```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
-  "gwInstanceId": "gwInstanceId_value"
-}
 ```
+POST /k8s/getK8sClusterName HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
+```json
+  "gwInstanceId": "gwInstanceId_value"
+```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
   "data": "data_value"
-}
 ```
 
-#### getK8sInfoByGwInstanceId
+`}`
+
+#### 4.12.5 getK8sInfoByGwInstanceId
 
 **API 接口概述**
 
 **中文名称：**查询实例所属集群
+**英文名称：** getK8sInfoByGwInstanceId
 **功能概述：**获取当前实例的Kubernetes集群信息。
 
 ```
@@ -16562,14 +18245,12 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | gwInstanceId | string | body | 是 | higress- 001 | 网关实例ID。 |
 |---|---|---|---|---|---|
 
-|  |  | higress- |
+|   |   | higress- |
 |---|---|---|
-|  | 001 |  |
+|   | 001 |   |
 
 **返回数据**
 
@@ -16587,26 +18268,35 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.k8sClusterStatusDe sc | string | 正常 | k8sClusterStatusDesc字段。 |
 | data.k8sClusterImportDa teTime | string | 2024-01-01 10:00:00 | k8sClusterImportDateTi me字段。 |
 
-|  | https://192.168.1.10 | mast |
+|   | https://192.168.1.10 | mast |
 |---|---|---|
-| 0:6443 |  |  |
+| 0:6443 |   |   |
 
 **示例**
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /k8s/getK8sClusterInfoByGwInstanceId HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-POST /k8s/getK8sClusterInfoByGwInstanceId HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "gwInstanceId": "gwInstanceId_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -16617,15 +18307,16 @@ HTTP/1.1 200 OK Content-Type: application/json {
     "k8sClusterStatus": 0,
     "k8sClusterStatusDesc": "k8sClusterStatusDesc_value",
     "k8sClusterImportDateTime": "k8sClusterImportDateTime_value"
-  }
-}
 ```
 
-#### listCluster
+`}` `}`
+
+#### 4.12.6 listCluster
 
 **API 接口概述**
 
 **中文名称：**查询集群列表
+**英文名称：** listCluster
 **功能概述：**服务管理 - 获取集群列表。
 **请求路径：** `/k8s/getClusterList`
 **请求方式：** `POST`
@@ -16641,8 +18332,6 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | requestId | string | uuid-xxx-xxx | 请求ID。 |
 | code | integer | 200 | 响应码。 |
 
-智能体工厂 OpenTrek
-
 | msg | string | success | 响应消息。 |
 |---|---|---|---|
 | message | string | success | 响应消息。 |
@@ -16650,9 +18339,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.label | string | my-k8s-cluster | label字段。 |
 | data.value | string | k8s-cluster-001 | 键值。 |
 
-|  |  | BaseLVListResponse[] |
+|   |   | BaseLVListResponse[] |
 |---|---|---|
-| a |  |  |
+| a |   |   |
 
 **示例**
 
@@ -16664,41 +18353,29 @@ POST /k8s/getClusterList HTTP/1.1 Host: localhost:80 Content-Type: application/j
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
     "code": 200,
     "message": "success",
     "requestId": "xxx-xxx-xxx",
     "data": [
-        {
 ```
 
-`"label": "`集群名称`1",` `"value": "`集群编码`1"`
+`{` `"label": "`集群名称`1",` `"value": "`集群编码`1"` `},` `{` `"label": "`集群名称`2",` `"value": "`集群编码`2"` `}` `]` `}`
 
-```
-        },
-        {
-```
-
-`"label": "`集群名称`2",` `"value": "`集群编码`2"`
-
-```
-        }
-```
-
-]
-
-```
-}
-```
-
-#### pageK8s
+#### 4.12.7 pageK8s
 
 **API 接口概述**
 
 **中文名称：**分页查询集群
+**英文名称：** pageK8s
 **功能概述：**获取所有的Kubernetes集群。
-智能体工厂 OpenTrek
+**请求路径：** `/k8s/listClusters`
 **请求方式：** `POST`
 
 **请求参数**
@@ -16709,9 +18386,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | size | integer | body | 是 | 10 | 每页大小。 |
 | clusterName | string | body | 否 | my-k8s- cluster | 集群名称。 |
 
-|  |  | my-k8s- | 集 |
+|   |   | my-k8s- | 集 |
 |---|---|---|---|
-|  | cluster |  |  |
+|   | cluster |   |   |
 
 **返回数据**
 
@@ -16729,11 +18406,9 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.k8sClusterC ode | string | k8s-cluster-001 | Kubernetes集群编码。 |
 | data.records.k8sClusterN ame | string | my-k8s-cluster | Kubernetes集群名称。 |
 
-| ListK8sClusterRespon | - |  |
+| ListK8sClusterRespon | - |   |
 |---|---|---|
-|  |  | - |
-
-智能体工厂 OpenTrek
+|   |   | - |
 
 | data.records.masterUrl | string | https://192.168.1.10 0:6443 | Master节点地址。 |
 |---|---|---|---|
@@ -16750,28 +18425,37 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | data.records.k8sClusterA ttribute.abnormalReason | string | - | 异常原因。 |
 | data.records.k8sClusterT ype | string | ACK | 集群类型。 |
 
-|  | https://192.168.1.10 | Maste |
+|   | https://192.168.1.10 | Maste |
 |---|---|---|
-| 0:6443 |  |  |
+| 0:6443 |   |   |
 
 **示例**
 
 **请求示例**
 
-智能体工厂 OpenTrek
+```
+POST /k8s/listClusters HTTP/1.1 Host: localhost:80 X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
 
 ```json
-Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "current": 0,
   "size": 0,
   "clusterName": "clusterName_value"
-}
 ```
+
+`}`
 
 **响应示例**
 
+```
+HTTP/1.1 200 OK Content-Type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "xxx-xxx-xxx",
@@ -16794,21 +18478,24 @@ HTTP/1.1 200 OK Content-Type: application/json {
         "mappingIP": "mappingIP_value",
         "mappingPort": 0,
         "abnormalReason": "abnormalReason_value"
-      },
-        "k8sClusterType": "k8sClusterType_value"
-     }
-  }
-}
 ```
 
-#### updateK8s
+`},`
+
+```json
+        "k8sClusterType": "k8sClusterType_value"
+```
+
+`}` `}` `}`
+
+#### 4.12.8 updateK8s
 
 **API 接口概述**
 
 **中文名称：**更新Kubernetes集群
+**英文名称：** updateK8s
 **功能概述：**更新Kubernetes集群信息。
 **请求路径：** `/k8s/updateCluster`
-智能体工厂 OpenTrek
 **请求方式：** `POST`
 
 **请求参数**
@@ -16818,13 +18505,13 @@ HTTP/1.1 200 OK Content-Type: application/json {
 | clusterCode | string | body | 是 | k8s- cluster-001 | Kubernetes集群编码。 |
 | k8sClusterAttri bute | string | body | 是 | updated- attribute | k8sClusterAttri bute参数。 |
 
-|  |  | k8s- | Ku |
+|   |   | k8s- | Ku |
 |---|---|---|---|
-|  | cluster-001 |  |  |
+|   | cluster-001 |   |   |
 
-|  |  | updated- | k8sC |
+|   |   | updated- | k8sC |
 |---|---|---|---|
-|  | attribute |  |  |
+|   | attribute |   |   |
 
 **返回数据**
 
@@ -16840,22 +18527,32 @@ HTTP/1.1 200 OK Content-Type: application/json {
 
 **请求示例**
 
+```
+POST /k8s/updateCluster HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022
+```
+
+`{`
+
 ```json
-POST /k8s/updateCluster HTTP/1.1 Host: localhost:80 Content-Type: application/json X-CSB-OPENAPI: true X-CSB-TOKEN: csb@2022 {
   "clusterCode": "k8s-cluster-001",
   "k8sClusterAttribute": "updated-attribute"
-}
 ```
+
+`}`
 
 **响应示例**
 
-智能体工厂 OpenTrek
+```
+HTTP/1.1 200 OK
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type: application/json {
   "code": 200,
   "message": "success",
   "requestId": "uuid-xxx-xxx",
   "data": "k8s-cluster-001"
-}
 ```
+
+`}`

@@ -5,7 +5,7 @@ doc_version: "20240606"
 pdf_pages: 61
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Cloud Security Network Detection and Response User Guide 20240606 (1).pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BD%91%E7%BB%9C%E7%9B%91%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Cloud%20Security%20Network%20Detection%20and%20Response%20User%20Guide%2020240606%20%281%29.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Cloud Security Network Detection and Response User Guide 20240606 (1)
@@ -1048,7 +1048,11 @@ configurations a. In the **Traffic Forwarding Configuration - Service CIDR Block
 | Type | The type of the CIDR block for traffic redirection. Value values: Test and Business. |
 | Service Description | The service-related description. |
 
-After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
+After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections.
+
+**Note**
+
+In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
 
 > icon to manually refresh the check frequency for the CIDR block.
 

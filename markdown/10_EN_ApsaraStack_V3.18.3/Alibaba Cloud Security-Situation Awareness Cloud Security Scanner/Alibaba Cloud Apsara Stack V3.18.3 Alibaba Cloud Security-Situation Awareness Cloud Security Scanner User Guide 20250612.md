@@ -5,7 +5,7 @@ doc_version: "20250612"
 pdf_pages: 16
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner User Guide 20250612.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F-%E9%BB%98%E5%AE%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Scanner%20User%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner User Guide 20250612
@@ -62,6 +62,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -106,6 +109,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -127,10 +133,14 @@ operations in the following scenarios: It is the first time that you log on to t
 #### 3.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
 **Configurations** page, select a region from the **Region** drop-down list and click **Access**
+**with Authorized Role**.
 3. In the left-side navigation pane, click **Rule Operation**.
 4. On the **Cloud Firewall IPS Rules** tab, click **Create Rule**. In the panel that appears,
 configure the parameters and click **OK**.
@@ -156,10 +166,14 @@ After you create a custom IPS rule, you can perform the following operations on 
 #### 3.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
 **Configurations** page, select a region from the **Region** drop-down list and click **Access**
+**with Authorized Role**.
 3. In the left-side navigation pane, click **Rule Operation**.
 4. On the **Anti-DDoS Service Rules** tab, click **Scrubbing Policy**. Then, specify a custom
 threshold for traffic scrubbing. i. Find the traffic scrubbing rule whose threshold you want to modify and click **Modify**
@@ -178,10 +192,14 @@ If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbi
 #### 3.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
 **Configurations** page, select a region from the **Region** drop-down list and click **Access**
+**with Authorized Role**.
 3. In the left-side navigation pane, click **Rule Operation**.
 4. On the **Server Guard Rules** tab, view the information about Server Guard rules.
 
@@ -198,12 +216,15 @@ You can view vulnerabilities, baselines, and server exceptions on the Server Gua
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
+**Procedure**
+
 > **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
 **Configurations** page, select a region from the **Region** drop-down list and click **Access**
+**with Authorized Role**.
 3. In the left-side navigation pane, click **Rule Operation**.
 4. On the **WAF Rules** tab, click **Create Rule**. Configure the parameters and click **OK**.
 
@@ -227,6 +248,9 @@ After you create a rule, you can perform the following operations on the rule: F
 #### 3.3.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -243,17 +267,24 @@ This topic describes how to view and modify the information about your Apsara St
 
 > **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
 **Configurations** page, select a region from the **Region** drop-down list and click **Access**
+**with Authorized Role**.
 3. In the left-side navigation pane, click **Accounts**.
 4. On the **Apsara Stack Account** tab, modify the information about your Apsara Stack
 tenant account. i. Find your Apsara Stack tenant account and click **Revised** in the **Operation** column. ii. In the **Change Account** dialog box, modify Apsara Stack Account, Access Key, and Access Secret, and click **OK**. After the modification, you can click Details in the **Operation** column to view the details of the Apsara Stack tenant account.
 
 #### 3.4.2 Manage Alibaba Cloud accounts
 
-After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
+After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center.
+
+**Procedure**
+
+To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**

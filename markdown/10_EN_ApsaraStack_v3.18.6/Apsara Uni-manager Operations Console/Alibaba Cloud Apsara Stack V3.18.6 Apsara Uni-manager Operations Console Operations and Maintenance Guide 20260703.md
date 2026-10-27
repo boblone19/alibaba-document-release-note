@@ -5,7 +5,7 @@ doc_version: "20260703"
 pdf_pages: 25
 source_pdf: "64c07b90c7d37eab_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Operations and Maintenance "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20Operations%20and%20Maintenance%20Guide%2020260703.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Uni-manager Operations Console Operations and Maintenance Guide

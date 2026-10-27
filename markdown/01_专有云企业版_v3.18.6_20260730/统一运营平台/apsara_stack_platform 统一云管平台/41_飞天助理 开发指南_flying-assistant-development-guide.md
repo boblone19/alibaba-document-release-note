@@ -5,14 +5,41 @@ doc_version: "20260729"
 pdf_pages: 53
 source_pdf: "41_飞天助理 开发指南_flying-assistant-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apsara_stack_platform/zh/flying-assistant-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 统一云管平台 飞天助理 开发指南
 
-## 快速入门
+## 目录
 
-### 开发文档使用说明
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+- 3 通过POP网关调用专有云API
+  - 3.1 调用前置
+  - 3.2 Java版
+  - 3.3 Go版
+  - 3.4 Python版
+- 4 API列表
+  - 4.1 IntelligentAnalysis
+  - 4.2 IntelligentSearch
+  - 4.3 IntelligentQa
+  - 4.4 CreateChat
+  - 4.5 IntelligentCoding
+  - 4.6 GetChatHistory
+  - 4.7 ListHistoryChats
+  - 4.8 PushChatMessage
+  - 4.9 MessageFeedback
+  - 4.10 DeleteChat
+
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -33,7 +60,7 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
@@ -42,12 +69,15 @@ converter: line-classifier (PyMuPDF)
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
 **说明**
 
 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
 **说明**
 
@@ -57,9 +87,9 @@ converter: line-classifier (PyMuPDF)
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -77,7 +107,7 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
 访问身份验证中通过使用AccessKey ID和AccessKey Secret对称加密的方法来验证某个请求的发送者身份。AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。本文将为您描述如何获取通过RAM授权的AccessKey。
 
@@ -96,11 +126,7 @@ AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的Acce
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
-
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 **获取个人账号AccessKey**
 
@@ -108,23 +134,20 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，将鼠标悬停在当前登录用户的头像上，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -177,7 +200,7 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -216,7 +239,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -238,9 +266,9 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，下列代码以ECS为示例。
 
 ```
@@ -253,7 +281,12 @@ public static void main(String[] args) {
 
 ```
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -265,12 +298,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-## 通过POP网关调用专有云API
+`}` 专有云API
 
-### 调用前置
+## 3 通过POP网关调用专有云API
+
+### 3.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -296,7 +330,7 @@ public static void main(String[] args) {
 1. 登录Apsara Uni-manager运维控制台。
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **资源管理**。
 3. 在左侧导航栏，选择**资源管理** > **产品集群运维**。
-4. 在**产品集群运维**页面的**产品**|**集群**输入 `apsara-copilot` 。
+4. 在**产品集群运维**页面的**产品****|****集群**输入 `apsara-copilot` 。
 5. 在集群**操作**列单击**集群详情**。
 6. 在**集群详情**页面单击**资源详情**页签。
 7. 在资源详情页签下找到名称为 `copilot-api-dns` ，类型为 `dns` 的资源，单击**资源申请结果**列的
@@ -305,9 +339,9 @@ public static void main(String[] args) {
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见本手册**准备工作**下的**获取公共****Header****参数**章节。 专有云API
 
-### Java版
+### 3.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -316,9 +350,7 @@ public static void main(String[] args) {
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发**
 **工具** > **API****与工具** > **开发者门户**，选择**API****集成** > **API****调试**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -381,7 +413,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.setSysVersion("2016-07-14");
 ```
 
-`//`设置
+`//`设置专有云API
 
 ```
         // 设置LocationProduct
@@ -425,13 +457,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -449,19 +481,16 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` `}` `}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
     public static void main(String[] args) {
 ```
 
-`//` 创建`DefaultAcsClient`实例并初始化。 `//`创建实例并初始化
+`//` 创建`DefaultAcsClient`实例并初始化。 专有云API `//`创建实例并初始化
 
 ```xml
         DefaultProfile profile = DefaultProfile.getProfile("<your-regionid>", "
@@ -545,19 +574,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -581,13 +610,14 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
 ```
 
+专有云API
+
 ```java
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}`
 
 **重要**
 
@@ -631,10 +661,9 @@ import java.util.Date; import com.aliyun.auth.credentials.Credential; import com
       .build()
 ```
 
-)
+`)` 专有云API );
 
 ```
-    );
     CommonAsyncClient client = CommonAsyncClient.builder()
 ```
 
@@ -647,7 +676,7 @@ import java.util.Date; import com.aliyun.auth.credentials.Credential; import com
         .setProtocol("http")
 ```
 
-`.setEndpointOverride("<yourEndpoint>") //` 请替换为您实际的`Endpoint`。 )
+`.setEndpointOverride("<yourEndpoint>") //` 请替换为您实际的`Endpoint`。 `)`
 
 ```
       .build();
@@ -677,16 +706,19 @@ import java.util.Date; import com.aliyun.auth.credentials.Credential; import com
       ResponseIterator<String> iterator = iterable.iterator();
       while (iterator.hasNext()) {
         System.out.println(System.currentTimeMillis() + ":" + iterator.next());
-      }
+```
+
+`}`
+
+```java
       System.out.println("----end----" + DateUtil.formatIso8601Date(new Date()));
     }catch (Exception e) {
       e.printStackTrace();
-    }
-  }
-}
 ```
 
-### Go版
+`}` `}` `}`
+
+### 3.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -695,13 +727,11 @@ import java.util.Date; import com.aliyun.auth.credentials.Credential; import com
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发**
 **工具** > **API****与工具** > **开发者门户**，选择**API****集成** > **API****调试**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
-当前支持RPC和ROA的方式调用API。
+专有云API 当前支持RPC和ROA的方式调用API。
 
 **CommonRequest调用示例**
 
@@ -714,7 +744,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -758,19 +788,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 专有云API
 
 ```java
 package main import (
@@ -780,7 +813,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -825,37 +858,41 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下：
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 专有云API
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -887,7 +924,9 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-### Python版
+专有云API
+
+### 3.4 Python版
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -896,9 +935,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发**
 **工具** > **API****与工具** > **开发者门户**，选择**API****集成** > **API****调试**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -912,7 +949,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -921,13 +958,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -936,13 +967,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -952,35 +983,39 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-# 非必填，资源集`ID`
+专有云API `#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -989,7 +1024,7 @@ SecurityToken>"};
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -1001,14 +1036,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -1027,13 +1061,15 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-**忽略证书**
+专有云API
+
+> **忽略证书**
 
 **重要**
 
@@ -1044,7 +1080,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -1054,11 +1090,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-)
+`)`
 
-## API列表
+## 4 API列表
 
-### IntelligentAnalysis
+### 4.1 IntelligentAnalysis
 
 支持如下场景的智能问数能力： 1、云平台账单成本分析：支持组织、资源集、资源维度的年、月账单统计、趋势分析、同环比计算等 2、云资源优化治理分析：支持组织、资源集、资源维度的资源闲置、瓶颈及健康度分析。 3、云资源统计：支持按照组织、资源集等统计云资源数量、利用率统计等。 该接口采用 Server-Sent Events (SSE) 通信方式，响应类型为 text/event-stream，表示服务端将以流式传输的方式逐步返回数据。客户端通过持续监听事件流，可以实时接收服务器发送的每一段响应内容，适用于需要分段输出或长时间处理的场景，如模型推理、实时问答等。 在响应过程中，每一条数据以独立的事件形式发送，格式通常为： data: {"content": "这是第一段回答"} 客户端可逐条解析并处理这些事件，实现动态更新和实时反馈。
 
@@ -1068,6 +1104,10 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 **请求语法**
 
+```
+POST /api/open/api/IntelligentAnalysis HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1076,36 +1116,31 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | domain | Strin g | Body | 否 | cloud optimized _ | 智能分析的数据域，可用的数据域有： bill analysis: 成本分析 _ 域 resource analysis: 资 _ 源分析域 cloud optimized：云优 _ 化域 |
 | tables | Array | Body | 否 | ["instance health score" _ _ ] | 数据域下的数据表信息 |
 
-**示例**
-
 请求示例
 
+```
+POST /api/open/api/IntelligentAnalysis HTTP/1.1 Content-Type: application/json Accept: text/event-stream x-acs-userid: 5003 x-acs-roleid: 1
+```
+
+`{`
+
 ```json
-Content-Type: application/json Accept: text/event-stream x-acs-userid: 5003 x-acs-roleid: 1 {
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "role": "user",
 ```
 
-`"content": "`统计`ECS`实例数量最多的一级组织`TOP5"`
-
-```
-    }
-```
-
-]
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`"content": "`统计`ECS`实例数量最多的一级组织`TOP5"` `}` `]` `}` 正常返回示例 `JSON` 格式
 
 ```
 data: {"choices": [{"delta": {"role": "function", "name": "action_node_type", "content" : "data_analysis", "status": "waiting", "extra": {}}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStep>取数意图</TeamixStep>", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "用
 ```
 
-户想要统计`ECS`实例数量最多的前5个一级组织，最相关的是资源分析域的资源实例表，涉及组织、资源类型维度和实例数量指标。我将筛选出资源类型为`ECS`实例的数据，按照组织进行聚合，并取实例数量最多的前5个一级组织。`", "ph`
+户想要统计`ECS`实例数量最多的前`5`个一级组织，最相关的是资源分析域的资源实例表，涉及组织、资源类型维度和实例数量指标。我将筛选出资源类型为`ECS`实例的数据，按照组织进行聚合，并取实例数量最多的前`5`个一级组织。`", "ph`
 
 ```json
 ase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStep>相关指标</TeamixStep>", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "|
@@ -1117,7 +1152,7 @@ ase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}
 hase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStep>查询数据并展示</TeamixStep>", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStepEnd />", "phase": "execute", "status": "done", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "**数据域**: 资源分析域, **
 ```
 
-表`**:` 资源实例表`, **`维度`**:` 组织,资源类型`, **`指标`**:` 实例数量`", "reasonContent": "", "phase":`
+表`**:` 资源实例表`, **`维度`**:` 组织`,`资源类型`, **`指标`**:` 实例数量`", "reasonContent": "", "phase":`
 
 ```
 "answer","status":"ongoing","chatSource":"","chatSourceProps":null}}]}
@@ -1127,7 +1162,7 @@ hase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null
 answer, status: ongoing, chatSource: , chatSourceProps: null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "", "phase": "answer", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "```TeamixModule{\"moduleInfo\": {\"name\": \"renderAIPanel\",\"hideLoadTime\": true}, \"moduleProps\": {\"title\": \"ECS实例数量最多的一级组织TOP5\", \"description\": \"\", \"ch artConfig\": {\"type\": \"bar\", \"config\": {\"column\": true, \"zoom\": true}}, \"dat aSource\": {\"success\": true, \"type\": \"chart\", \"table\": [{\"data\": [[\"ascmTest\", 118], [\"iaas_test\", 100], [\"acs-autotest\", 26], [\"amc-storage\", 2 1], [\"coms standard org\", 13]], \"name\": \"ECS实例数量\"}], \"tableName\": \"ECS实例数量最多的一级组织TOP5\"}, \"dataConfig\": {\"type\": \"apsara-copilot\", \"request\": { \"u rl\": \"/data/api.json\", \"method\": \"POST\", \"data\": {\"$product\": \"ascm\", \"$v ersion\": \"2025-03-10\", \"$action\": \"GetAnalysisDataForCard\", \"cardId\": \"3dd606 e9-d071-4364-8a41-042b1387390e\", \"cardVersion\": \"v1\"}}}}}```", "reasonContent": "" , "phase": "answer", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "status": "ongoing", "phase": "answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "### 数据解读", "status": "ongoing", "phase":"answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "根据统计结果", "status": " ongoing", "phase": "answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "...<总结分析文本>", "statu s": "ongoing", "phase": "answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "status": "ongoing", "phase": "answer"}}]} data: [DONE]
 ```
 
-### IntelligentSearch
+### 4.2 IntelligentSearch
 
 云产品实例、组织、资源集、用户智能搜索功能。 该接口采用 Server-Sent Events (SSE) 通信方式，响应类型为 text/event-stream，表示服务端将以流式传输的方式逐步返回数据。客户端通过持续监听事件流，可以实时接收服务器发送的每一段响应内容，适用于需要分段输出或长时间处理的场景，如模型推理、实时问答等。 在响应过程中，每一条数据以独立的事件形式发送，格式通常为： data: {"content": "这是第一段回答"} 客户端可逐条解析并处理这些事件，实现动态更新和实时反馈。
 
@@ -1136,6 +1171,10 @@ answer, status: ongoing, chatSource: , chatSourceProps: null}}]} data: {"choices
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/open/api/IntelligentSearch HTTP/1.1
+```
 
 **请求参数**
 
@@ -1149,49 +1188,44 @@ answer, status: ongoing, chatSource: , chatSourceProps: null}}]} data: {"choices
 
 请求示例
 
+```
+POST /api/open/api/IntelligentSearch HTTP/1.1
+```
+
+`{`
+
 ```json
-{
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "role": "user",
 ```
 
-`"content": "`查询我创建的`ECS`实例"
-
-```
-    }
-```
-
-]
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`"content": "`查询我创建的`ECS`实例`"` `}` `]` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### IntelligentQa
+### 4.3 IntelligentQa
 
 云产品知识问答，解答各类云平台及云资源使用和配置问题。支持基于对话历史的上下文理解和无对话历史的单次问答两种模式。 接口说明该接口采用 Server-Sent Events (SSE) 通信方式，响应类型为 text/event-stream，表示服务端将以流式传输的方式逐步返回数据。客户端通过持续监听事件流，可以实时接收服务器发送的每一段响应内容，适用于需要分段输出或长时间处理的场景，如模型推理、实时问答等。 在响应过程中，每一条数据以独立的事件形式发送，格式通常为： data: {"content": "这是第一段回答"} 客户端可逐条解析并处理这些事件，实现动态更新和实时反馈。
 
-## 准备工作
+**准备工作**
 
 如需使用会话功能，需要先创建会话或准备有效的 chatId。
 
@@ -1209,6 +1243,10 @@ answer, status: ongoing, chatSource: , chatSourceProps: null}}]} data: {"choices
 
 **请求语法**
 
+```
+POST /api/open/api/IntelligentQa HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1217,7 +1255,7 @@ answer, status: ongoing, chatSource: , chatSourceProps: null}}]} data: {"choices
 | outerType | Strin g | Body | 否 | coms | 外部应用类型标识。 |
 | chatId | Strin g | Body | 否 | 8932b258-75b5-42e7- 8c52-0be053a88d64 | 聊天会话ID，提供时表示启用有会话模式，否则为无会话模式。 |
 
-|  |  |  |  |  | 飞天助理开发指南·API列表 |
+|   |   |   |   |   | 飞天助理开发指南·API列表 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1247,12 +1285,21 @@ answer, status: ongoing, chatSource: , chatSourceProps: null}}]} data: {"choices
 
 请求示例
 
+```
+POST /api/open/api/IntelligentQa HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "chatId": "8932b258-75b5-42e7-8c52-0be053a88d64",
   "parentId": "2e469579-5c6f-4f55-accb-ae339a1aff78",
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "role": "user",
       "msgId": "42511985-4941-49d1-ac10-7573ff19671f",
 ```
@@ -1262,40 +1309,30 @@ Content-Type: application/json {
 ```json
       "chatSourceProps": {
         "intranetSearch": false
-      }
-    }
 ```
 
-]
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`}` `}` `]` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### CreateChat
+### 4.4 CreateChat
 
 创建一个新的对话并返回对话的全局唯一标识和生成的标题（默认为用户输入的第一个内容）。 接口说明
 
-## 准备工作
+**准备工作**
 
 准备消息ID（msgId），必须是非空字符串准备对话内容（content），必须是非空字符串可选择性地提供外部应用标识（outerType和outerId）。outerType和outerId必须同时传递，不能单独使用其中一个。
 
@@ -1312,6 +1349,10 @@ msgId和content都是必需参数，不能为空 content必须是字符串类型
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/open/api/CreateChat HTTP/1.1
+```
 
 **请求参数**
 
@@ -1346,8 +1387,13 @@ msgId和content都是必需参数，不能为空 content必须是字符串类型
 
 请求示例
 
+```
+POST /api/open/api/CreateChat HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
     "msgId": "8158be15-ccf5-4e57-a3b9-68c7af900000",
 ```
 
@@ -1356,21 +1402,18 @@ Content-Type: application/json {
 ```json
     "outerId":"123456",
     "outerType":"coms"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "chatId":"8158be15-ccf5-4e57-a3b9-68c7af900000",
 ```
 
-`"title":"AI`助理是什么呢？"
+`"title":"AI`助理是什么呢？`"` `},`
 
 ```json
- },
  "success":true,
  "dynamicMessages":"[]",
 ```
@@ -1381,10 +1424,9 @@ Content-Type: application/json {
  "errorCode":"UnknownError",
  "message":"success",
  "httpCode":200
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -1397,7 +1439,7 @@ Content-Type: application/json {
 </data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>系统异常</errorMessage> <errorCode>UnknownError</errorCode> <message>success</message> <httpCode>200</httpCode>
 ```
 
-### IntelligentCoding
+### 4.5 IntelligentCoding
 
 支持开放平台OpenAPI代码样例生成及terraform代码样例生成该接口采用 Server-Sent Events (SSE) 通信方式，响应类型为 text/event-stream，表示服务端将以流式传输的方式逐步返回数据。客户端通过持续监听事件流，可以实时接收服务器发送的每一段响应内容，适用于需要分段输出或长时间处理的场景，如模型推理、实时问答等。 在响应过程中，每一条数据以独立的事件形式发送，格式通常为： data: {"content": "这是第一段回答"} 客户端可逐条解析并处理这些事件，实现动态更新和实时反馈。
 
@@ -1406,6 +1448,10 @@ Content-Type: application/json {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/open/api/IntelligentCoding HTTP/1.1
+```
 
 **请求参数**
 
@@ -1428,10 +1474,15 @@ Content-Type: application/json {
 
 **示例**
 
-请求示例正常返回示例 `JSON` 格式
+请求示例
+
+```
+POST /api/open/api/IntelligentCoding HTTP/1.1
+```
+
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
@@ -1442,20 +1493,19 @@ Content-Type: application/json {
 ```json
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>系统异常</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### GetChatHistory
+### 4.6 GetChatHistory
 
 根据对话ID获取完整对话历史。 接口说明
 
-## 准备工作
+**准备工作**
 
 需要获取有效的chatId
 
@@ -1473,6 +1523,10 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 
 **请求语法**
 
+```
+POST /api/open/api/GetChatHistory HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1487,7 +1541,7 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态提示信息。 |
 
-|  |  |  | 飞天助理开发指南·API列表 |
+|   |   |   | 飞天助理开发指南·API列表 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1509,7 +1563,7 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 | --parentId | String | 02fab45f-5770- 45b9-85e2- dc8e4defa06a | 父消息ID |
 | --rating | Integer | 0 | 用户对该消息的评分。 说明未评分0/点赞1/点踩-1 |
 
-|  | 飞天助理开发指南·A | PI列表 |  |  |  |
+|   | 飞天助理开发指南·A | PI列表 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1535,23 +1589,30 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 
 请求示例
 
+```
+POST /api/open/api/GetChatHistory HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "outerId": "123456",
   "outerType": "coms",
   "chatId": "ff536d45-014c-43ca-a97f-f7e4dca3bed9"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "chatId": "8a5544e8-6704-4981-9241-caa15fd9fc3d",
     "chat": {
         "chatId": "8a5544e8-6704-4981-9241-caa15fd9fc3d",
         "messages": [
-            {
+```
+
+`{`
+
+```json
                 "role": "user",
                 "thinkingEnabled": 0,
                 "rating": 0,
@@ -1572,13 +1633,16 @@ Content-Type: application/json {
 ```json
                 "actionNodeType": "default",
                 "timestamp": "2026-01-22T09:04:29Z"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "role": "assistant",
                 "reasonContent": "<TeamixStep>意图识别</TeamixStep><TeamixStepEnd /><Team
 ```
 
-`ixStep>`资料理解与分析`</TeamixStep>`正在检索相关资料, 并对资料进行理解分析, 为您生成参考答案。
+`ixStep>`资料理解与分析`</TeamixStep>`正在检索相关资料`,` 并对资料进行理解分析`,` 为您生成参考答案。
 
 ```json
 <TeamixStepEnd />",
@@ -1596,10 +1660,9 @@ Content-Type: application/json {
                 "parentId": "02fab45f-5770-45b9-85e2-dc8e4defa06a",
                 "actionNodeType": "rag",
                 "timestamp": "2026-01-22T09:04:45Z"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "history": {
@@ -1613,7 +1676,7 @@ Content-Type: application/json {
                     "reasonContent": "<TeamixStep>意图识别</TeamixStep><TeamixStepEnd /><
 ```
 
-`TeamixStep>`资料理解与分析`</TeamixStep>`正在检索相关资料, 并对资料进行理解分析, 为您生成参考答案。
+`TeamixStep>`资料理解与分析`</TeamixStep>`正在检索相关资料`,` 并对资料进行理解分析`,` 为您生成参考答案。
 
 ```json
 <TeamixStepEnd />",
@@ -1631,7 +1694,11 @@ Content-Type: application/json {
                     "chatSource": "default",
                     "actionNodeType": "rag",
                     "timestamp": "2026-01-22T09:04:45Z"
-                },
+```
+
+`},`
+
+```json
                 "02fab45f-5770-45b9-85e2-dc8e4defa06a": {
                     "role": "user",
                     "thinkingEnabled": 0,
@@ -1653,26 +1720,23 @@ Content-Type: application/json {
                     "chatSource": "default",
                     "actionNodeType": "default",
                     "timestamp": "2026-01-22T09:04:29Z"
-                }
-            }
-        },
 ```
 
-`"title": "`一句话告诉我，`AI`助理能为我做什么？`",`
+`}` `}` `},` `"title": "`一句话告诉我，`AI`助理能为我做什么？`",`
 
 ```json
         "chatType": "default"
-    },
+```
+
+`},`
+
+```json
     "namespace": "default",
 ```
 
-`"title": "`一句话告诉我，`AI`助理能为我做什么？"
+`"title": "`一句话告诉我，`AI`助理能为我做什么？`"` `}`
 
-```
-}
-```
-
-### ListHistoryChats
+### 4.7 ListHistoryChats
 
 列出用户的对话历史记录。 接口说明
 
@@ -1689,6 +1753,10 @@ Content-Type: application/json {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/open/api/ListHistoryChats HTTP/1.1
+```
 
 **请求参数**
 
@@ -1724,20 +1792,27 @@ Content-Type: application/json {
 
 请求示例
 
+```
+POST /api/open/api/ListHistoryChats HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "pageSize": 20,
   "outerId": "123456",
   "outerType": "coms"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "data": [
-        {
+```
+
+`{`
+
+```json
             "chatId": "b6aaa1fe-9cbd-40e7-b70b-53f0865e6192",
             "created": "2026-01-22T08:28:51Z",
             "namespace": "default",
@@ -1748,21 +1823,21 @@ Content-Type: application/json {
 ```json
             "updated": "2026-01-22T08:29:12Z",
             "chatType": "default"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": true
-}
 ```
 
-### PushChatMessage
+`}`
+
+### 4.8 PushChatMessage
 
 保存历史对话消息。 接口说明
 
-## 准备工作
+**准备工作**
 
 需要获取有效的chatId 准备需要推送的消息列表，包括消息ID、内容、角色等信息确保消息列表中的父子关系正确（parentId关联）
 
@@ -1779,6 +1854,10 @@ chatId是必需参数，不能为空。 消息序列必须形成一个连贯的�
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/open/api/PushChatMessage HTTP/1.1
+```
 
 **请求参数**
 
@@ -1811,13 +1890,22 @@ chatId是必需参数，不能为空。 消息序列必须形成一个连贯的�
 
 请求示例
 
+```
+POST /api/open/api/PushChatMessage HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "outerId":"123456",
   "outerType":"coms",
   "chatId": "fe5ad98e-0ed7-4f99-8bf6-cbf9d3e878f9",
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "chatSource": "rag",
       "msgId": "8158be15-ccf5-4e57-a3b9-68c7af9a1220",
       "parentId": null,
@@ -1829,8 +1917,11 @@ Content-Type: application/json {
       "role": "user",
       "reasonContent": "",
       "phase": "answer"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "actionNodeType": "rag",
       "msgId": "8158be15-ccf5-4e57-a3b9-68c7af9a1221",
       "parentId": "8158be15-ccf5-4e57-a3b9-68c7af9a1220",
@@ -1842,34 +1933,32 @@ Content-Type: application/json {
       "role": "assistant",
 ```
 
-`"reasonContent": "<TeamixStep>`意图识别`</TeamixStep>`用户询问`AI`助理的功能范围，意图是了解可用的服务和能力。`<TeamixStepEnd /><TeamixStep>`资料理解与分析`</TeamixStep>`正在检索相关资料, 并对资料进行理解分析, 为您生成参考答案。`<TeamixStepEnd />",`
+`"reasonContent": "<TeamixStep>`意图识别`</TeamixStep>`用户询问`AI`助理的功能范围，意图是了解可用的服务和能力。`<TeamixStepEnd /><TeamixStep>`资料理解与分析`</TeamixStep>`正在检索相关资料`,` 并对资料进行理解分析`,` 为您生成参考答案。`<TeamixStepEnd />",`
 
 ```json
       "phase": "answer",
       "model": "qwen3"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "actionNodeType": "rag"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "success": true
-}
 ```
 
-### MessageFeedback
+`}`
+
+### 4.9 MessageFeedback
 
 用于对特定对话消息进行评分反馈，支持点赞/踩操作。 接口说明
 
-## 准备工作
+**准备工作**
 
 需要获取有效的chatId和msgId 需要确定用户对消息的评分（如：1表示点赞，-1表示踩）
 
@@ -1886,6 +1975,10 @@ chatId和msgId必须存在且有效。 支持通过outerType和outerId过滤特�
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/open/api/MessageFeedback HTTP/1.1
+```
 
 **请求参数**
 
@@ -1913,29 +2006,33 @@ chatId和msgId必须存在且有效。 支持通过outerType和outerId过滤特�
 
 请求示例
 
+```
+POST /api/open/api/MessageFeedback HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "chatId": "fe5ad98e-0ed7-4f99-8bf6-cbf9d3e878f9",
   "msgId": "8158be15-ccf5-4e57-a3b9-68c7af9a1221",
   "rating": -1,
   "reason": ""
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "success": true,
     "message": "success"
-}
 ```
 
-### DeleteChat
+`}`
+
+### 4.10 DeleteChat
 
 删除指定的对话记录接口说明
 
-## 准备工作
+**准备工作**
 
 需要获取有效的chatId
 
@@ -1953,6 +2050,10 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 
 **请求语法**
 
+```
+POST /api/open/api/DeleteChat HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1969,7 +2070,7 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | message | String | success | 返回信息。 |
 
-|  |  |  | 飞天助理开发指南·API列表 |
+|   |   |   | 飞天助理开发指南·API列表 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1984,19 +2085,27 @@ chatId是必填参数，不能为空。 支持通过outerType和outerId过滤特
 
 请求示例
 
-```json
-Content-Type: application/json {
-    "chatId": "2a902b57-dd58-416f-b190-cba7dc74e12c"
-}
+```
+POST /api/open/api/DeleteChat HTTP/1.1 Content-Type: application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+    "chatId": "2a902b57-dd58-416f-b190-cba7dc74e12c"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
     "data": {
         "chatId": "d96cbf45-f2a7-4dea-b745-e4069d171e79"
-    },
-    "success": true
-}
 ```
+
+`},`
+
+```json
+    "success": true
+```
+
+`}`

@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 140
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 AnalyticDB for MySQL User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20AnalyticDB%20for%20MySQL%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 AnalyticDB for MySQL User Guide 20220928
@@ -2255,7 +2255,7 @@ This function calculates the average value of all input values.
 AVG(bigint x) AVG(double x) AVG(float x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select avg(a) from testtable;
@@ -2273,7 +2273,7 @@ This function returns the result of bitwise AND of all bits in the parameter.
 BIT_AND(float x) BIT_AND(bigint x) BIT_AND(double x)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select bit_and(a) from testtable;
@@ -2291,7 +2291,7 @@ This function returns the result of bitwise OR of all bits in the parameter.
 BIT_OR(float x) BIT_OR(bigint x) BIT_OR(double x)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select bit_or(a) from testtable;
@@ -2309,7 +2309,7 @@ This function returns the result of bitwise XOR of all bits in the parameter.
 BIT_XOR(double x) BIT_XOR(bigint x) bit_xor(float x)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select bit_xor(a) from testtable;
@@ -2327,7 +2327,7 @@ This function counts the number of records.
 COUNT([distinct|all] value x)
 ```
 
-Description: distinct and all specify whether to exclude duplicate records in the counting process. The default value is all, indicating that all records are counted. If distinct is specified, only records with distinct values are counted. Return value type: BIGINT.
+Description: distinct and all specify whether to exclude duplicate records in the counting process. The default value is all, indicating that all records are counted. If distinct is specified, only records with distinct values are counted. Return value type: BIGINT. Example:
 
 ```
   select count(distinct a) from testtable;
@@ -2345,7 +2345,7 @@ This function returns the maximum value of all input values.
 MAX(value x)
 ```
 
-Description: value can be of any data type. However, data of the BOOLEAN type is not supported in the calculation. If the value for a row in the specified column is null, this row is ignored. Return value type: LONG.
+Description: value can be of any data type. However, data of the BOOLEAN type is not supported in the calculation. If the value for a row in the specified column is null, this row is ignored. Return value type: LONG. Example:
 
 ```
   select max(a) from testtable;
@@ -2363,7 +2363,7 @@ This function returns the minimum value of all input values.
 MIN(value x)
 ```
 
-Description: value can be of any data type. However, data of the BOOLEAN type is not supported in the calculation. If the value for a row in the specified column is null, this row is ignored. Return value type: LONG.
+Description: value can be of any data type. However, data of the BOOLEAN type is not supported in the calculation. If the value for a row in the specified column is null, this row is ignored. Return value type: LONG. Example:
 
 ```
   select min(a) from testtable;
@@ -2381,7 +2381,7 @@ This function returns the sample standard deviation of all input values.
 STD(double x) STD(bigint x) STDDEV(double x) STDDEV(bigint x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select std(a) from testtable;
@@ -2399,7 +2399,7 @@ This function returns the population standard deviation of all input values.
 STDDEV_POP(double x) STDDEV_POP(bigint x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select stddev_pop(a) from testtable;
@@ -2417,7 +2417,7 @@ This function returns the population standard deviation for a group of integers,
 STDDEV_SAMP(double x) STDDEV_SAMP(bigint x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select stddev_samp(a) from testtable;
@@ -2457,7 +2457,7 @@ VAR_POP(double x) VAR_POP(bigint x)
 |---|---|---|
 | VARIANCE() |   | function i |
 
-found, `VAR_POP()` returns the value NULL. Return value type: DOUBLE.
+found, `VAR_POP()` returns the value NULL. Return value type: DOUBLE. Example:
 
 ```
   select var_pop(a)  from testtable;
@@ -2475,7 +2475,7 @@ This function returns the sample variance for a group of integers, decimals, or 
 VAR_SAMP(double x) VAR_SAMP(bigint x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select var_samp(a)  from testtable;
@@ -2493,7 +2493,7 @@ This function returns the population variance for a group of integers, decimals,
 VARIANCE(double x) VARIANCE(bigint x)
 ```
 
-Description: The `VARIANCE()` function is an extension to standard SQL and can be replaced by the standard SQL function `VAR_POP()` . If no matches are found, `VARIANCE()` returns the value NULL. Return value type: DOUBLE.
+Description: The `VARIANCE()` function is an extension to standard SQL and can be replaced by the standard SQL function `VAR_POP()` . If no matches are found, `VARIANCE()` returns the value NULL. Return value type: DOUBLE. Example:
 
 ```
   select variance(a)  from testtable;
@@ -2530,7 +2530,7 @@ Description: Valid values of unit: second, minute, hour, day, month, year, minut
   adddate(varchar, varchar)
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select adddate(date '2001-1-22',interval '3' day);
@@ -2581,7 +2581,7 @@ Parameter types:
   addtime(varchar,varchar)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select addtime(date '1998-01-01','01:01:01');
@@ -2605,7 +2605,7 @@ Parameter types:
   convert_tz(varchar, varchar, varchar)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
   select convert_tz('2004-01-01 12:00:00','+00:00','+10:00');
@@ -2623,7 +2623,7 @@ This function returns the current date.
 CURDATE()
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select curdate;
@@ -2641,7 +2641,7 @@ This function returns the current time.
 CURTIME()
 ```
 
-Return value type: TIME.
+Return value type: TIME. Example:
 
 ```
   select curtime();
@@ -2667,7 +2667,7 @@ Parameter types:
   date(varchar)
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select date(timestamp '2003-12-31 01:02:03');
@@ -2767,7 +2767,7 @@ Description: Valid values of unit: second, minute, hour, day, month, year, minut
   subdate(varchar, varchar)
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select date_sub(date '2001-1-22',interval '3' day);
@@ -2800,7 +2800,7 @@ Parameter types:
   datediff(varchar, date)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
  select datediff('2007-12-31 23:59:59','2007-12-30');
@@ -2828,7 +2828,7 @@ Parameter types:
   dayofmonth(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
 select dayofmonth(timestamp '2007-02-03 12:23:09');
@@ -2855,7 +2855,7 @@ Parameter types:
   dayname(varchar)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select dayname(timestamp '2007-02-03 00:00:00');
@@ -2882,7 +2882,7 @@ Parameter types:
   dayofweek(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select dayofweek(timestamp '2007-02-03 00:00:00');
@@ -2927,7 +2927,7 @@ This function returns a part of a date or time, which is specified by unit. For 
 EXTRACT(unit FROM date)
 ```
 
-Valid values of unit: second, minute, hour, day, month, year, minute_second, hour_second, hour_minute, day_second, day_minute, day_hour, and year_month. Supported parameter types: VARCHAR, TIMESTAMP, DATETIME, and TIME. Return value type: BIGINT.
+Valid values of unit: second, minute, hour, day, month, year, minute_second, hour_second, hour_minute, day_second, day_minute, day_hour, and year_month. Supported parameter types: VARCHAR, TIMESTAMP, DATETIME, and TIME. Return value type: BIGINT. Example:
 
 ```
   select extract(second from '2019-07-02 00:12:34');
@@ -2952,7 +2952,7 @@ Parameter types:
   from_days(bigint)
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select from_days(730669);
@@ -2979,7 +2979,7 @@ Description: The format parameter conforms to the format in the DATE_FORMAT func
   from_unixtime(double)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
  select from_unixtime('1447430881','%Y %M %h:%i:%s %x');
@@ -3007,7 +3007,7 @@ Parameter types:
   hour(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select hour(timestamp '2019-12-07 10:05:03');
@@ -3034,7 +3034,7 @@ Parameter types:
   last_day(date)
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select last_day('2003-02-05');
@@ -3052,7 +3052,7 @@ This function returns the current timestamp.
 localtime localtime() localtimestamp localtimestamp() now()
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
   select now();
@@ -3077,7 +3077,7 @@ Parameter types:
   makedate(varchar, varchar)
 ```
 
-Return value type: DATE.
+Return value type: DATE. Example:
 
 ```
   select makedate(2011,31), makedate(2011,32);
@@ -3102,7 +3102,7 @@ Parameter types:
   maketime(varchar, varchar, varchar)
 ```
 
-Return value type: TIME.
+Return value type: TIME. Example:
 
 ```
   select maketime(12,15,30);
@@ -3130,7 +3130,7 @@ Parameter types:
   minute(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select minute(timestamp '2008-02-03 10:05:03');
@@ -3158,7 +3158,7 @@ Parameter types:
   month(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select month(timestamp '2008-02-03 00:00:00');
@@ -3185,7 +3185,7 @@ Parameter types:
   monthname(varchar)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select monthname(datetime '2008-02-03 00:00:00');
@@ -3211,7 +3211,7 @@ Parameter types:
   period_add(varchar, bigint)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select period_add(200801,2);
@@ -3236,7 +3236,7 @@ Parameter types:
   period_diff(varchar, varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select period_diff(200802,200703);
@@ -3263,7 +3263,7 @@ Parameter types:
   quarter(date)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select quarter(datetime '2008-04-01 12:12:12');
@@ -3288,7 +3288,7 @@ Parameter types:
   sec_to_time(varchar)
 ```
 
-Return value type: TIME.
+Return value type: TIME. Example:
 
 ```
   select sec_to_time(2378);
@@ -3316,7 +3316,7 @@ Parameter types:
   second(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select second(timestamp '2019-03-12 12:13:14');
@@ -3340,7 +3340,7 @@ Parameter types:
   str_to_date(varchar, varchar)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
   select str_to_date('2017-01-06 10:20:30','%Y-%m-%d %H:%i:%s') as result;
@@ -3368,7 +3368,7 @@ Parameter types:
   subtime(varchar, varchar)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
   select subtime(date '2018-10-31','0:1:1');
@@ -3386,7 +3386,7 @@ This function returns the system time.
 SYSDATE()
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
  select sysdate();
@@ -3412,7 +3412,7 @@ Parameter types:
   time(timestamp)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select time('2003-12-31 01:02:03');
@@ -3440,7 +3440,7 @@ Description: The format parameter conforms to the format in the DATE_FORMAT func
   time_format(date, varchar)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select time_format('12:00:00', '%H %k %h %I %l');
@@ -3468,7 +3468,7 @@ Parameter types:
   time_to_sec(time)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select time_to_sec(datetime '2009-12-12 22:23:00');
@@ -3494,7 +3494,7 @@ Parameter types:
   timediff(varchar, varchar)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
   select timediff(time '12:00:00','10:00:00');
@@ -3519,7 +3519,7 @@ Parameter types:
   timestamp(varchar)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
   select timestamp(date '2019-05-27');
@@ -3550,7 +3550,7 @@ Description: unit specifies the unit of interval. Valid values of unit: second, 
   timestampadd(varchar, bigint, varchar)
 ```
 
-Return value type: DATETIME.
+Return value type: DATETIME. Example:
 
 ```
  select timestampadd(second,'1',timestamp '2003-01-02 12:12:12')as result;
@@ -3577,7 +3577,7 @@ Description: Valid values of unit: second, minute, hour, day, week, month, quart
   timestampdiff(varchar, varchar, varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select timestampdiff(second,datetime '2003-02-01 10:12:13',datetime '2003-05-01 10:12:1
@@ -3606,7 +3606,7 @@ Parameter types:
   to_days(datetime)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select to_days(date '2018-12-12');
@@ -3666,7 +3666,7 @@ Description: `UNIX_TIMESTAMP(date)` returns the Unix timestamp for the date para
   unix_timestamp(datetime)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select unix_timestamp();
@@ -3684,7 +3684,7 @@ This function returns the UTC date.
 UTC_DATE()
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select utc_date();
@@ -3702,7 +3702,7 @@ This function returns the UTC time.
 UTC_TIME()
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
    select utc_time();
@@ -3720,7 +3720,7 @@ This function returns the UTC timestamp.
 utc_timestamp()
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select utc_timestamp();
@@ -3764,7 +3764,7 @@ Parameter types:
   week(timestamp, bigint)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select week('2019-05-27');
@@ -3791,7 +3791,7 @@ Parameter types:
   weekday(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select weekday(timestamp '2019-05-27 00:09:00');
@@ -3818,7 +3818,7 @@ Parameter types:
   weekofyear(varchar)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select weekofyear(timestamp '2019-05-27 09:00:00');
@@ -3877,7 +3877,7 @@ Description: The year in the result may be different from the year in the date p
   yearweek(varchar, bigint)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
  select yearweek(timestamp '2019-05-27 00:00:00');
@@ -3915,7 +3915,7 @@ This function returns the binary string of the integer N.
 BIN(bigint N)
 ```
 
-Description: If N is null, null is returned. Return value type: VARCHAR.
+Description: If N is null, null is returned. Return value type: VARCHAR. Example:
 
 ```
   select bin(12);
@@ -3933,7 +3933,7 @@ This function returns the length of the string str, measured in bits.
 BIT_LENGTH(varchar str)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select bit_length('text');
@@ -3951,7 +3951,7 @@ This function returns a string of decimal ASCII codes of the integers N1, N2, an
 CHAR(bigint N1, bigint N2...)
 ```
 
-Return value type: VARBINARY.
+Return value type: VARBINARY. Example:
 
 ```
   select char(97,110,97,108,121,116,105,99,100,98);
@@ -3969,7 +3969,7 @@ This function returns the length of the string str, measured in characters.
 CHAR_LENGTH(varchar str)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select char_length('China');
@@ -3987,7 +3987,7 @@ This function concatenates strings. If any of the parameters is null, null is re
 concat(varchar str1, ..., varchar strn)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select concat('aliyun', ', ', 'analyticdb');
@@ -4005,7 +4005,7 @@ This function concatenates strings and separates them with delimiters. The separ
 concat_ws(varchar separator, varchar str1, ..., varchar strn)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select concat_ws(',', 'First name', 'Second name', 'Last Name')as result;
@@ -4023,7 +4023,7 @@ This function returns the string specified by the integer N.
 ELT(bigint N, varchar str1, varchar str2, varchar str3,...)
 ```
 
-If N is less than 1 or greater than the number of the specified strings, null is returned. Return value type: VARCHAR.
+If N is less than 1 or greater than the number of the specified strings, null is returned. Return value type: VARCHAR. Example:
 
 ```
   select elt(4, 'Aa', 'Bb', 'Cc', 'Dd');
@@ -4041,7 +4041,7 @@ This function returns a string in which the strings on and off are placed based 
 EXPORT_SET(bigint bits, varchar on, varchar off[, varchar separator[, bigint number_of_bits ]])EXPORT_SET(bigint bits, varchar on, varchar off[, varchar separator[, bigint number_of_b its]])
 ```
 
-Description: The string on is placed for bit 1, and the string off is placed for bit 0. These strings are separated by delimiters. The default delimiter is a comma (,). The number_of_bits parameter specifies the number of bits that are checked. Default value: 64. If the value of the number_of_bits parameter is greater than 64, the parameter is silently clipped to 64. The same value is returned when the number_of_bits parameter is set to -1 or 64. Return value type: VARCHAR.
+Description: The string on is placed for bit 1, and the string off is placed for bit 0. These strings are separated by delimiters. The default delimiter is a comma (,). The number_of_bits parameter specifies the number of bits that are checked. Default value: 64. If the value of the number_of_bits parameter is greater than 64, the parameter is silently clipped to 64. The same value is returned when the number_of_bits parameter is set to -1 or 64. Return value type: VARCHAR. Example:
 
 ```
   select export_set(5,'1','0',',',2);
@@ -4059,7 +4059,7 @@ This function returns the position of the string str in the strings such as str1
 field(varchar str, varchar str1, varchar str2, varchar str3,...)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select field('Bb', 'Aa', 'Bb', 'Cc', 'Dd', 'Ff');
@@ -4077,7 +4077,7 @@ This function returns the position of the string str in the string list strlist.
 FIND_IN_SET(varchar str, varchar strlist)
 ```
 
-Description: If str is not found in strlist or strlist is empty, 0 is returned. If either str or strlist is null, null is returned. Return value type: BIGINT.
+Description: If str is not found in strlist or strlist is empty, 0 is returned. If either str or strlist is null, null is returned. Return value type: BIGINT. Example:
 
 ```
   select find_in_set('b','a,b,c,d');
@@ -4095,7 +4095,7 @@ This function formats the integer X to the `#,###,###. ##` format rounded to D d
 format(double X, bigint D)
 ```
 
-Description: If D is 0, the result has no decimal point or fractional part. Return value type: BIGINT.
+Description: If D is 0, the result has no decimal point or fractional part. Return value type: BIGINT. Example:
 
 ```
     select format(12332.123456, 4)as result1, format(12332.1,4)as result2, format(12332.2
@@ -4114,7 +4114,7 @@ This function returns the hexadecimal string of the integer N, or returns a stri
 HEX(bigint N) HEX(varchar str)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select hex(16);
@@ -4132,7 +4132,7 @@ This function returns the position of the first occurrence of the substring subs
 INSTR(varchar str, varchar substr)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select instr('foobarbar', 'bar');
@@ -4150,7 +4150,7 @@ This function returns the leftmost len characters of the string str.
 LEFT(varchar str, bigint len)
 ```
 
-Description: If str or len is null, null is returned. Return value type: VARCHAR.
+Description: If str or len is null, null is returned. Return value type: VARCHAR. Example:
 
 ```
   select left('foobarbar', 5);
@@ -4168,7 +4168,7 @@ This function returns the length of the string str.
 length(varchar str)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select length('aliyun');
@@ -4186,7 +4186,7 @@ The LIKE operator is used to match the string expression with the string pattern
 expression [ NOT ] LIKE pattern [ESCAPE 'escape_char']
 ```
 
-Description: The string pattern can contain the following wildcard characters: %: matches strings in any length. _: matches a single character. escape_char: escapes the percent signs (%) and underscores (_) in the string pattern. The percent signs (%) and underscores (_) following the escape character are not used as wildcard characters. Return value type: BIGINT.
+Description: The string pattern can contain the following wildcard characters: %: matches strings in any length. _: matches a single character. escape_char: escapes the percent signs (%) and underscores (_) in the string pattern. The percent signs (%) and underscores (_) following the escape character are not used as wildcard characters. Return value type: BIGINT. Example:
 
 ```
   select 'David!' like 'David_' as result1, 'David!' not like 'David_' as result2,  'Davi
@@ -4223,7 +4223,7 @@ This function converts the string str to lowercase.
 lower(varchar str)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select lower('Aliyun');
@@ -4241,7 +4241,7 @@ This function returns the string str, left-padded with the string padstr to a le
 lpad(varchar str, bigint len, varchar padstr)
 ```
 
-Description: If str is longer than len, the return value is shortened to len characters. Return value type: VARCHAR.
+Description: If str is longer than len, the return value is shortened to len characters. Return value type: VARCHAR. Example:
 
 ```
   select lpad('Aliyun',9,'#');
@@ -4277,7 +4277,7 @@ This function returns a set value (a string containing substrings separated by d
 MAKE_SET(bits, str1, str2,...)
 ```
 
-Description: The string str1 corresponds to bit 0 and the string str2 corresponds to bit 1. The same rule applies to the rest numbers. The strings whose value is null are not included in the final string. Return value type: VARCHAR.
+Description: The string str1 corresponds to bit 0 and the string str2 corresponds to bit 1. The same rule applies to the rest numbers. The strings whose value is null are not included in the final string. Return value type: VARCHAR. Example:
 
 ```
   select make_set(5,'hello','nice','world');
@@ -4295,7 +4295,7 @@ This function returns a substring that contains len characters in length from th
 MID(varchar str, bigint pos, bigint len)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select mid('Quadratically',5,6);
@@ -4331,7 +4331,7 @@ This function returns the position of the first occurrence of the substring subs
 POSITION(varchar substr IN varchar str)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select position('bar' in 'foobarbar');
@@ -4349,7 +4349,7 @@ This function repeats the string str for count times.
 REPEAT(varchar str, bigint count)
 ```
 
-If count < 1, an empty string is returned. If str or count is null, null is returned. Return value type: VARCHAR.
+If count < 1, an empty string is returned. If str or count is null, null is returned. Return value type: VARCHAR. Example:
 
 ```
   select repeat('a', 3);
@@ -4385,7 +4385,7 @@ This function returns the string str with the order of the characters reversed.
 REVERSE(varchar str)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select reverse('123456');
@@ -4403,7 +4403,7 @@ This function returns the rightmost len characters from the string str.
 RIGHT(varchar str, bigint len)
 ```
 
-Description: If str or len is null, null is returned. Return value type: VARCHAR.
+Description: If str or len is null, null is returned. Return value type: VARCHAR. Example:
 
 ```
   select right('abc',3);
@@ -4439,7 +4439,7 @@ This function returns the string str, right-padded with the string padstr to a l
 rpad(varchar str, bigint len, varchar padstr)
 ```
 
-If str is longer than len, the return value is shortened to len characters. Return value type: VARCHAR.
+If str is longer than len, the return value is shortened to len characters. Return value type: VARCHAR. Example:
 
 ```
   select rpad('Aliyun',9,'#');
@@ -4457,7 +4457,7 @@ This function removes the trailing space characters of the string str.
 RTRIM(varchar str)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select rtrim('barbar   ');
@@ -4475,7 +4475,7 @@ This function returns a string consisting of a specified number of space charact
 SPACE(bigint N)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select concat("#", space(6), "#");
@@ -4493,7 +4493,7 @@ If the string str1 is the same as the string str2, 0 is returned. If the string 
 STRCMP(varchar str1, varchar str2)
 ```
 
-Return value type: BIGINT.
+Return value type: BIGINT. Example:
 
 ```
   select strcmp('text', 'text2');
@@ -4509,7 +4509,7 @@ Return value type: BIGINT.
 SUBSTRING(varchar str, bigint pos) SUBSTRING(varchar str FROM pos) SUBSTRING(varchar str, bigint pos, bigint len) SUBSTRING(varchar str FROM pos FOR len)
 ```
 
-Description: SUBSTRING(varchar str, bigint pos) or SUBSTRING(varchar str FROM pos): returns the substring starting from the pos position to the end of the string. If pos < 0, the beginning of the substring is pos characters from the end of the string. SUBSTRING(varchar str, bigint pos, bigint len) or SUBSTRING(varchar str FROM pos FOR len): returns a substring that contains len characters in length from the string, starting from the pos position. If pos < 0, the beginning of the substring is pos characters from the end of the string. Return value type: VARCHAR.
+Description: SUBSTRING(varchar str, bigint pos) or SUBSTRING(varchar str FROM pos): returns the substring starting from the pos position to the end of the string. If pos < 0, the beginning of the substring is pos characters from the end of the string. SUBSTRING(varchar str, bigint pos, bigint len) or SUBSTRING(varchar str FROM pos FOR len): returns a substring that contains len characters in length from the string, starting from the pos position. If pos < 0, the beginning of the substring is pos characters from the end of the string. Return value type: VARCHAR. Example:
 
 ```
   select substr('helloworld', 6);
@@ -4527,7 +4527,7 @@ This function returns the substring before the last occurrence of the delim deli
 SUBSTRING_INDEX(varchar str, varchar delim, bigint count)
 ```
 
-Description: If count > 0, this function returns all the characters to the left of the last delim delimiter. If count < 0, this function returns all the characters to the right of the last delim delimiter. The SUBSTRING_INDEX function performs a case-sensitive match when searching for the delim delimiter. Return value type: VARCHAR.
+Description: If count > 0, this function returns all the characters to the left of the last delim delimiter. If count < 0, this function returns all the characters to the right of the last delim delimiter. The SUBSTRING_INDEX function performs a case-sensitive match when searching for the delim delimiter. Return value type: VARCHAR. Example:
 
 ```
   select substring_index('www.aliyun.com', '.', 2);
@@ -4545,7 +4545,7 @@ This function removes the leading and trailing space characters or other specifi
 TRIM([remstr FROM] str) TRIM([{BOTH | LEADING | TRAILING} [remstr] FROM] str)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select trim('  bar   ');
@@ -4563,7 +4563,7 @@ This function converts the string str to uppercase.
 upper(varchar str)
 ```
 
-Return value type: VARCHAR.
+Return value type: VARCHAR. Example:
 
 ```
   select upper('Aliyun');
@@ -4583,7 +4583,7 @@ This function returns the absolute value of x.
 abs(tinyint x) abs(smallint x) abs(int x) abs(bigint x) abs(float x) abs(double x) abs(decimal x)
 ```
 
-Return value types: LONG, DECIMAL, and DOUBLE.
+Return value types: LONG, DECIMAL, and DOUBLE. Example:
 
 ```
   select abs(4.5);
@@ -4601,7 +4601,7 @@ This function rounds the parameter x. d specifies the number of decimal places. 
 round(tinyint x) round(smallint x) round(int x) round(bigint x) round(float x) round(double x) round(x, d)
 ```
 
-Description: If x is null, null is returned. If d > 0, the parameter is rounded to the specified decimal place. If d = 0, the parameter is rounded to the nearest integer. If d < 0, digits to the left of the decimal point of the parameter are rounded. Return value types: LONG, DECIMAL, and DOUBLE.
+Description: If x is null, null is returned. If d > 0, the parameter is rounded to the specified decimal place. If d = 0, the parameter is rounded to the nearest integer. If d < 0, digits to the left of the decimal point of the parameter are rounded. Return value types: LONG, DECIMAL, and DOUBLE. Example:
 
 ```
   select round(4);
@@ -4619,7 +4619,7 @@ This function returns the square root of x.
 sqrt(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select sqrt(4.222);
@@ -4637,7 +4637,7 @@ This function returns the natural logarithm of x.
 ln(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select ln(2.718281828459045);
@@ -4649,7 +4649,7 @@ Return value type: DOUBLE.
 
 #### 12.4.5 LOG
 
-If called with one parameter, this function returns the natural logarithm of x. If called with two parameters, this function returns the logarithm of y to the base x. Return value type: DOUBLE.
+If called with one parameter, this function returns the natural logarithm of x. If called with two parameters, this function returns the logarithm of y to the base x. Return value type: DOUBLE. Example:
 
 ```
   select log(16);
@@ -4661,7 +4661,7 @@ If called with one parameter, this function returns the natural logarithm of x. 
 
 #### 12.4.6 LOG2
 
-This function returns the base-2 logarithm of the parameter. Return value type: DOUBLE.
+This function returns the base-2 logarithm of the parameter. Return value type: DOUBLE. Example:
 
 ```
   select log2(8.7654);
@@ -4679,7 +4679,7 @@ This function returns the value of Pi.
 pi()
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select pi();
@@ -4697,7 +4697,7 @@ This function returns the base-10 logarithm of the parameter.
 log10(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select log10(100.876);
@@ -4733,7 +4733,7 @@ This function converts degrees to radians.
 radians(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select radians(60.0);
@@ -4751,7 +4751,7 @@ This function converts radians to degrees.
 degrees(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select degrees(1.3);
@@ -4787,7 +4787,7 @@ This function returns the minimum integer value that is greater than the value o
 ceiling(tinyint x) ceiling(smallint x) ceiling(int x) ceiling(bigint x) ceiling(float x) ceiling(double x)
 ```
 
-Return value types: LONG, DECIMAL, and DOUBLE.
+Return value types: LONG, DECIMAL, and DOUBLE. Example:
 
 ```
   select ceiling(4);
@@ -4805,7 +4805,7 @@ This function returns the maximum integer value that is less than the value of x
 floor(tinyint x) floor(smallint x) floor(int x) floor(bigint x) floor(float x) floor(double x)
 ```
 
-Return value types: LONG, DECIMAL, and DOUBLE.
+Return value types: LONG, DECIMAL, and DOUBLE. Example:
 
 ```
   select floor(4.5);
@@ -4823,7 +4823,7 @@ This function returns the value of e (the base of natural logarithms) raised to 
 exp(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select exp(4.5);
@@ -4841,7 +4841,7 @@ This function returns the cosine of x.
 cos(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select cos(1.3);
@@ -4859,7 +4859,7 @@ This function returns the arc cosine of x.
 acos(double x)
 ```
 
-Description: If x > 1 or x < -1, null is returned. Return value type: DOUBLE.
+Description: If x > 1 or x < -1, null is returned. Return value type: DOUBLE. Example:
 
 ```
   select acos(0.5);
@@ -4895,7 +4895,7 @@ This function returns the arc tangent of x.
 atan(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select atan(0.5);
@@ -4913,7 +4913,7 @@ This function returns the arc tangent of the result of x divided by y.
 atan2(double x, double y) atan(double x, double y)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select atan2(0.5,0.3);
@@ -4949,7 +4949,7 @@ This function returns the arc sine of x.
 asin(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select asin(0.5);
@@ -4967,7 +4967,7 @@ This function returns the sine of x.
 sin(double x)
 ```
 
-Return value type: DOUBLE.
+Return value type: DOUBLE. Example:
 
 ```
   select sin(1.234);
@@ -4979,7 +4979,7 @@ Return value type: DOUBLE.
 
 ### 12.5 Arithmetic operators
 
-+ Description: This operator is used for addition.
++ Description: This operator is used for addition. Example:
 
 ```
   select 3+5;
@@ -4989,7 +4989,7 @@ Return value type: DOUBLE.
   |     8 |
 ```
 
-- Description: This operator is used for subtraction.
+- Description: This operator is used for subtraction. Example:
 
 ```
   select 3-5;
@@ -4999,7 +4999,7 @@ Return value type: DOUBLE.
   |    -2 |
 ```
 
-* Description: This operator is used for multiplication.
+* Description: This operator is used for multiplication. Example:
 
 ```
   select 3*pi();
@@ -5009,7 +5009,7 @@ Return value type: DOUBLE.
   | 9.42477796076938 |
 ```
 
-/ Description: This operator is used for division.
+/ Description: This operator is used for division. Example:
 
 ```
   select 3/pi();
@@ -5019,7 +5019,7 @@ Return value type: DOUBLE.
   | 0.954929658551372 |
 ```
 
-DIV Description: This operator is used for division. The decimal part of the result is discarded.
+DIV Description: This operator is used for division. The decimal part of the result is discarded. Example:
 
 ```
   select 3 div pi();
@@ -5029,7 +5029,7 @@ DIV Description: This operator is used for division. The decimal part of the res
   |     0 |
 ```
 
-% or MOD Description: This operator returns the remainder of one argument divided by the other argument.
+% or MOD Description: This operator returns the remainder of one argument divided by the other argument. Example:
 
 ```
   select 3 mod pi();
@@ -5039,7 +5039,7 @@ DIV Description: This operator is used for division. The decimal part of the res
   |   3.0 |
 ```
 
-- Description: This operator converts a positive number to a negative number or a negative number to a positive number.
+- Description: This operator converts a positive number to a negative number or a negative number to a positive number. Example:
 
 ```
   select - 2;
@@ -5051,7 +5051,7 @@ DIV Description: This operator is used for division. The decimal part of the res
 
 ### 12.6 Bit functions and operators
 
-BIT_COUNT Description: This function converts the parameter to a binary value, and then returns the number of bits that are set to 1 in the value. Return value type: BIGINT.
+BIT_COUNT Description: This function converts the parameter to a binary value, and then returns the number of bits that are set to 1 in the value. Return value type: BIGINT. Example:
 
 ```
   select bit_count(2);
@@ -5061,7 +5061,7 @@ BIT_COUNT Description: This function converts the parameter to a binary value, a
   |            1 |
 ```
 
-& Description: This function is used for bitwise AND. Return value type: BIGINT.
+& Description: This function is used for bitwise AND. Return value type: BIGINT. Example:
 
 ```
   select 12 & 15;
@@ -5082,7 +5082,7 @@ BIT_COUNT Description: This function converts the parameter to a binary value, a
 ```
 
 |
-Description: This function is used for bitwise OR. Return value type: BIGINT.
+Description: This function is used for bitwise OR. Return value type: BIGINT. Example:
 
 ```
   select 29 | 15;
@@ -5092,7 +5092,7 @@ Description: This function is used for bitwise OR. Return value type: BIGINT.
   |                 31 |
 ```
 
-^ Description: This function is used for bitwise XOR. Return value type: BIGINT.
+^ Description: This function is used for bitwise XOR. Return value type: BIGINT. Example:
 
 ```
   select 1 ^ 10;
@@ -5108,7 +5108,7 @@ Description: This function is used for bitwise OR. Return value type: BIGINT.
 bitwise_right_shift(double x, double y) bitwise_right_shift(varchar x, varchar y) bitwise_right_shift(bigint x, bigint y)
 ```
 
-Description: This function shifts a value to the right. Return value type: BIGINT.
+Description: This function shifts a value to the right. Return value type: BIGINT. Example:
 
 ```
   select 3 >> 2;
@@ -5124,7 +5124,7 @@ Description: This function shifts a value to the right. Return value type: BIGIN
 bitwise_left_shift(double x, double y) bitwise_left_shift(varchar x, varchar y) bitwise_left_shift(bigint x, bigint y)
 ```
 
-Description: This function shifts a value to the left. Return value type: BIGINT.
+Description: This function shifts a value to the left. Return value type: BIGINT. Example:
 
 ```
   SELECT 3 << 2;
@@ -5157,7 +5157,7 @@ CASE expression
 END
 ```
 
-Description: A simple CASE expression checks each value from left to right, and returns the result for the first value that is equal to the expression. If no match is found, result is returned.
+Description: A simple CASE expression checks each value from left to right, and returns the result for the first value that is equal to the expression. If no match is found, result is returned. Example:
 
 ```
   SELECT a,
@@ -5180,7 +5180,7 @@ CASE
 END
 ```
 
-Description: An advanced CASE expression calculates conditions from left to right, and returns the result for the first condition that is TRUE. If no condition is TRUE, result is returned.
+Description: An advanced CASE expression calculates conditions from left to right, and returns the result for the first condition that is TRUE. If no condition is TRUE, result is returned. Example:
 
 ```
    SELECT a,
@@ -5204,7 +5204,7 @@ IF
 if(condition, true_value)
 ```
 
-Description: If the condition is true, true_value is returned. Otherwise, null is returned.
+Description: If the condition is true, true_value is returned. Otherwise, null is returned. Example:
 
 ```
   SELECT IF((2+3)>4,5);
@@ -5218,7 +5218,7 @@ Description: If the condition is true, true_value is returned. Otherwise, null i
 if(condition, true_value, false_value)
 ```
 
-Description: If the condition is true, true_value is returned. Otherwise, false_value is returned.
+Description: If the condition is true, true_value is returned. Otherwise, false_value is returned. Example:
 
 ```
   SELECT IF((2+3)<5,5,6);
@@ -5234,7 +5234,7 @@ IFNULL
 IFNULL(expr1,expr2)
 ```
 
-Description: If expr1 is not null, expr1 is returned. Otherwise, expr2 is returned.
+Description: If expr1 is not null, expr1 is returned. Otherwise, expr2 is returned. Example:
 
 ```
   SELECT IFNULL(NULL,2);
@@ -5255,7 +5255,7 @@ NULLIF
 NULLIF(expr1,expr2)
 ```
 
-Description: If expr1 is equal to expr2, null is returned. Otherwise, expr1 is returned.
+Description: If expr1 is equal to expr2, null is returned. Otherwise, expr1 is returned. Example:
 
 ```
   SELECT NULLIF (2,1);

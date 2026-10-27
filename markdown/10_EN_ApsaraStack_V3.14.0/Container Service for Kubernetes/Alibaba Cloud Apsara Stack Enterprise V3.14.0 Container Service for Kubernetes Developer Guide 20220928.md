@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 214
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 Container Service for Kubernetes Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E5%BC%B9%E6%80%A7%E8%AE%A1%E7%AE%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 Container Service for Kubernetes Developer Guide 20220928
@@ -403,7 +403,13 @@ Use Apsara Stack SDK for Node.js The following sample code shows how to use Apsa
     "Version": "<The version of the API operation>",
     "regionId": '<The ID of the region in which the Apsara Stack service is deployed>',
       "<The name of the operation-specific parameter required by the API operation>": "<The
-value of the operation-specific parameter>" // 5. Configure request headers. AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
+value of the operation-specific parameter>"
+```
+
+`}`
+
+```
+// 5. Configure request headers. AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
   const res = await AsapiClient.doRequest(cnofig.API_GATEWAY, params, {
     method: 'POST', // The request method.
     formatParams: false, // Specifies whether to format parameters and capitalize the first
@@ -423,7 +429,7 @@ visit https://nodejs.org/api/https.html#https_https_request_options_callback.
   console.log(e)
 ```
 
-Disable certificate validation The following sample code shows how to disable certificate validation:
+`}` Disable certificate validation The following sample code shows how to disable certificate validation:
 
 ```
 Configure the environment variable. NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -504,7 +510,7 @@ he Apsara Stack SDK
             e.printStackTrace();
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. Sample code:
 
 ```java
 package com.aliyuns.client.pop.cr; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceListTest {
@@ -563,7 +569,7 @@ service resides.
             e.printStackTrace();
 ```
 
-Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
+`}` `}` `}` Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
 ###### 1.1.4.4.2 SDK for Go
 
@@ -590,6 +596,11 @@ func getSdkConfig() *sdk.Config {
   WithMaxTaskQueueSize(10000).
   WithDebug(false).
   WithScheme("HTTP")
+```
+
+`}`
+
+```
 func main(){
  ak := "<The AccessKey ID of your Apsara Stack tenant account.>"
  sk := "<The AccessKey secret of your Apsara Stack tenant account.>"
@@ -640,7 +651,7 @@ he Apsara Stack SDK
  fmt.Print(endpoint)
 ```
 
-Configure proxies You can configure proxies in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY and HTTPS_PROXY environment variables, or set the NO_PROXY environment variable. Sample code:
+`}` Configure proxies You can configure proxies in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY and HTTPS_PROXY environment variables, or set the NO_PROXY environment variable. Sample code:
 
 ```java
 import (
@@ -661,7 +672,7 @@ func main(){
 able.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are conf igured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -733,7 +744,7 @@ The Apsara Stack API (ASAPI) allows you to call API operations by sending HTTP G
 https://public.asapi.aliyuns.com/asapi/v3?Action=GetOrganizationList&Product=ascm&Version=2 019-05-10&Id=<Organization ID>&<Common parameters>
 ```
 
-`https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of the ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation to call. `Id` : the ID of the organization. `<Common parameters>` : the common parameters specified in the system. he Apsara Stack SDK Protocol The ASAPI supports only HTTPS. Endpoint For more information about how to obtain an endpoint, see Generate an endpoint for the ASAPI. To specify an API operation, use the `Action, Product, and Version` parameters. For example, set `Action` to GetOrganizationList, Product to ascm, and Version to 2019-05-10. You must also specify other operation-specific parameters and common parameters. For more information, see Common parameters.
+`https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of the ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation to call. `Id` : the ID of the organization. `<Common parameters>` : the common parameters specified in the system. he Apsara Stack SDK Protocol The ASAPI supports only HTTPS. Endpoint For more information about how to obtain an endpoint, see Generate an endpoint for the ASAPI. Parameter To specify an API operation, use the `Action, Product, and Version` parameters. For example, set `Action` to GetOrganizationList, Product to ascm, and Version to 2019-05-10. You must also specify other operation-specific parameters and common parameters. For more information, see Common parameters.
 
 ##### 1.1.5.3 Request signatures
 
@@ -754,6 +765,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 lace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 3. Use equal signs ( `=` ) to connect the encoded request parameters and their values.
 4. Use ampersands ( `&` ) to connect the encoded request parameters. These parameters must be
 arranged in the same order as those in Step 1. Then, a canonicalized query string that follows the request structure is obtained. For more information, see Request structure. Step 2: Create a string-to-sign
@@ -814,6 +826,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 eplace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 2. Predefine the time format for the `Timestamp` parameter. Specify the `Timestamp` parameter in
 the ISO 8601 format. The time must be in UTC+0.
 
@@ -824,6 +837,7 @@ private static final String ISO8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"; pr
     return df.format(date);
 ```
 
+`}`
 3. Create a request string.
 he Apsara Stack SDK
 
@@ -833,6 +847,11 @@ final String HTTP_METHOD = "GET"; Map parameters = new HashMap(); // Specify req
     canonicalizedQueryString.append("&")
     .append(percentEncode(key)).append("=")
     .append(percentEncode(parameters.get(key)));
+```
+
+`}`
+
+```
 //Encode the canonicalized query string. stringToSign.append(percentEncode( canonicalizedQueryString.toString().substring(1)));
 ```
 
@@ -872,7 +891,7 @@ Responses are returned only in the JSON format. If a return code is greater than
                 "LocalName": ""
 ```
 
-`]` Sample error response If a request fails, the following information is returned. For more information, see the developer guide of the corresponding Apsara Stack service. `{`
+`}` `]` `}` `}` Sample error response If a request fails, the following information is returned. For more information, see the developer guide of the corresponding Apsara Stack service. `{`
 
 ```json
     "code": "asapi.server.api.notfound",// The error code.
@@ -884,7 +903,7 @@ Responses are returned only in the JSON format. If a return code is greater than
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by the ASAPI.
 ```
 
-API invocation
+`}` API invocation
 
 ## 2 Container Service API invocation
 
@@ -952,6 +971,8 @@ JSON format `{`
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
     /* Return Result Data */
 ```
+
+`}`
 
 ### 2.3 Request syntax
 
@@ -1024,7 +1045,7 @@ API invocation The value of `CanonicalizedResource` must be in the following for
 /clusters? name=my-clusters&resource=new
 ```
 
-The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
+Example The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
 
 ```json
 POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept-Encoding: identity Content-Length: 210 Content-MD5: 6U4ALMkKSj0PYbeQSHqgmA== x-acs-version: 2015-12-15 Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: fbf6909a-93a5-45d3-8b1c-3e03a7916799 x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 12:20:18 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Authorization: acs <yourAccessKeyId>:<yourSignature> {"password": "Just$****","instance_type": "ecs.m2.medium","name": "my-test-cluster-9708**** ","size": 1,"network_mode": "vpc","data_disk_category": "cloud","data_disk_size": 10,"ecs_i mage_id": "m-253l****l"}
@@ -1099,7 +1120,7 @@ POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept
 Creates a standard dedicated Kubernetes cluster. Request syntax
 
 ```
-POST /clusters HTTP/1.1
+POST /clusters HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -1187,7 +1208,7 @@ POST /clusters HTTP/1.1
   "timeout_mins" : Long
 ```
 
-Request parameters Request body parameters
+`}` Request parameters Request body parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1289,7 +1310,7 @@ Request parameters Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -1300,7 +1321,7 @@ HTTP/1.1 200
   "task_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1343,7 +1364,7 @@ accessed by using SSH.
             "value":"tag-v"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "addons":[
@@ -1394,7 +1415,7 @@ accessed by using SSH.
             "config":"{"IngressSlbNetworkType":"internet"}"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "os_type":"Linux",
@@ -1419,7 +1440,7 @@ accessed by using SSH.
             "effect":"NoSchedule"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "master_count":3,                 // The number of master nodes. Valid values: 3 and 5.
@@ -1490,7 +1511,7 @@ ecified for master nodes. Valid values: 40 to 500.
     "keep_instance_name": true
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <cluster_id>cb95aa626a47740afbf6aa099b650****</cluster_id> <task_id>T-5a54309c80282e39ea00002f</task_id> <request_id>687C5BAA-D103-4993-884B-C35E4314A1E1</request_id>
@@ -1504,7 +1525,7 @@ Sample success responses `XML` format
     "request_id": "687C5BAA-D103-4993-884B-C35E4314A1E1"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.1.2 ScaleOutCluster
 
@@ -1548,7 +1569,7 @@ POST /api/v2/clusters/ClusterId HTTP/1.1
     "version" : "String"
 ```
 
-Request parameters Request path parameters
+`}` `}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1589,7 +1610,7 @@ Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -1600,7 +1621,7 @@ HTTP/1.1 200
   "task_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1617,7 +1638,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-POST /api/v2/clusters/c82e6987e2961451182edacd74faf**** HTTP/1.1
+POST /api/v2/clusters/c82e6987e2961451182edacd74faf**** HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -1654,7 +1675,7 @@ POST /api/v2/clusters/c82e6987e2961451182edacd74faf**** HTTP/1.1
     "version" : "19.03.5"
 ```
 
-Sample success responses `XML` format
+`}` `}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <cluster_id>c82e6987e2961451182edacd74faf****</cluster_id> <request_id>687C5BAA-D103-4993-884B-C35E4314A1E1</request_id> <task_id>T-5a54309c80282e39ea00002f</task_id>
@@ -1663,7 +1684,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <cluster_id>c82e6987e2961451182edac
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1674,14 +1695,14 @@ HTTP/1.1 200 OK
   "task_id" : "T-5a54309c80282e39ea00002f"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.1.3 DeleteCluster
 
 Deletes a Container Service cluster by ID and releases all nodes in the cluster. Request syntax
 
 ```
-DELETE /clusters/ClusterId?retain_all_resources=Boolean&keep_slb=Boolean&retain_resources=[ "String"] HTTP/1.1
+DELETE /clusters/ClusterId?retain_all_resources=Boolean&keep_slb=Boolean&retain_resources=[ "String"] HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -1710,7 +1731,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```
-DELETE /clusters/c905d1364c2dd4b6284a3f41790c4****?retain_all_resources=false&keep_slb=fals e&retain_resources=["sg-2ze6ess9kho6fdn9****"] HTTP/1.1 Host:cs.aliyuncs.com
+DELETE /clusters/c905d1364c2dd4b6284a3f41790c4****?retain_all_resources=false&keep_slb=fals e&retain_resources=["sg-2ze6ess9kho6fdn9****"] HTTP/1.1 Host:cs.aliyuncs.com Content-Type:application/json
 ```
 
 Sample success responses `JSON` format
@@ -1730,6 +1751,10 @@ GET /k8s/ClusterId/user_config?PrivateIpAddress=Boolean&TemporaryDurationMinutes
 ```
 
 ### 1.1 ASAPI Developer Guide
+
+```
+Content-Type:application/json
+```
 
 Request parameters Request path parameters
 
@@ -1753,7 +1778,7 @@ Request query parameters
 Response syntax
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1763,7 +1788,7 @@ HTTP/1.1 200 OK
   "expiration" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1773,7 +1798,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /k8s/c5b5e80b0b64a4bf6939d2d8fbbc5****/user_config?PrivateIpAddress=true&TemporaryDurat ionMinutes=15 HTTP/1.1 Host:cs.aliyuncs.com
+GET /k8s/c5b5e80b0b64a4bf6939d2d8fbbc5****/user_config?PrivateIpAddress=true&TemporaryDurat ionMinutes=15 HTTP/1.1 Host:cs.aliyuncs.com Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -1787,7 +1812,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <config> apiVersion: v1 clusters:
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1797,7 +1822,7 @@ HTTP/1.1 200 OK
   "expiration" : "2021-03-25T10:01:20Z"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.1.5 Query
 
@@ -1809,7 +1834,13 @@ Queries the details of a specified Container Service cluster. Request syntax
 GET /api/v1/clusters?name=String&cluster_type=String&page_size=Long&page_number=Long HTTP/1
 ```
 
-`.1` Request parameters Request query parameters
+`.1`
+
+```
+Content-Type:application/json
+```
+
+Request parameters Request query parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1865,7 +1896,7 @@ HTTP/1.1 200
     "total_count" : Integer
 ```
 
-Response parameters Response body parameters
+`}` `}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1920,7 +1951,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /api/v1/clusters?name=cluster-demo&cluster_type=Kubernetes&page_size=10&page_number=3 H TTP/1.1
+GET /api/v1/clusters?name=cluster-demo&cluster_type=Kubernetes&page_size=10&page_number=3 H TTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -2014,7 +2045,7 @@ HTTP/1.1 200 OK
     "total_count" : 50
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` `}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.1.5.2 DescribeClusterDetail
 
@@ -2033,7 +2064,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -2071,7 +2102,7 @@ HTTP/1.1 200
   "worker_ram_role_name" : "String",
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2178,14 +2209,14 @@ HTTP/1.1 200 OK
   "worker_ram_role_name" : "KubernetesWorkerRole-ec87d15b-edca-4302-933f-c8a16bf0****",
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.1.5.3 DescribeClusterResources
 
 Queries all resources in a specified Container Service cluster. Request syntax
 
 ```
-GET /clusters/ClusterId/resources HTTP/1.1
+GET /clusters/ClusterId/resources HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -2197,7 +2228,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```json
-HTTP/1.1 200 [ {
+HTTP/1.1 200 Content-Type:application/json [ {
   "cluster_id" : "String",
   "created" : "String",
   "instance_id" : "String",
@@ -2225,7 +2256,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /clusters/cb95aa626a47740afbf6aa099b65****/resources HTTP/1.1
+GET /clusters/cb95aa626a47740afbf6aa099b65****/resources HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -2250,7 +2281,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <0>
 `JSON` format
 
 ```json
-HTTP/1.1 200 OK [ {
+HTTP/1.1 200 OK Content-Type:application/json [ {
   "cluster_id" : "cb95aa626a47740afbf6aa099b65****",
   "created" : "2020-09-11T10:11:54+08:00",
   "instance_id" : "lb-wz9poz4r0ymh8u0uf****",
@@ -2268,7 +2299,7 @@ Error codes You can check further details of error codes. For more information, 
 Queries the namespaces of a specified cluster. Request syntax
 
 ```
-GET /k8s/ClusterId/namespaces HTTP/1.1
+GET /k8s/ClusterId/namespaces HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -2283,7 +2314,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```json
-HTTP/1.1 200 OK [ "String" ]
+HTTP/1.1 200 OK Content-Type:application/json [ "String" ]
 ```
 
 Response parameters Response body parameters
@@ -2295,7 +2326,7 @@ Response parameters Response body parameters
 Examples
 
 ```
-GET /k8s/c68069cade53b4558924a924b415f****/namespaces HTTP/1.1 Host:cs.aliyuncs.com
+GET /k8s/c68069cade53b4558924a924b415f****/namespaces HTTP/1.1 Host:cs.aliyuncs.com Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -2307,7 +2338,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <0>kube-system</0>
 `JSON` format
 
 ```json
-HTTP/1.1 200 OK [ "kube-system" ]
+HTTP/1.1 200 OK Content-Type:application/json [ "kube-system" ]
 ```
 
 Error codes You can check further details of error codes. For more information, see Error codes.
@@ -2317,7 +2348,7 @@ Error codes You can check further details of error codes. For more information, 
 Obtains the agent configurations of an external cluster that is registered in the Container Service console. You can deploy the agent configurations in an external cluster. This allows you to access the API server of the cluster. Request syntax
 
 ```
-GET /k8s/ClusterId/external/agent/deployment?PrivateIpAddress=String HTTP/1.1
+GET /k8s/ClusterId/external/agent/deployment?PrivateIpAddress=String HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -2335,7 +2366,7 @@ Request query parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -2344,7 +2375,7 @@ HTTP/1.1 200
   "config" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2353,7 +2384,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /k8s/c106f377e16f34eb1808d6b9362c9****/external/agent/deployment?PrivateIpAddress=true HTTP/1.1
+GET /k8s/c106f377e16f34eb1808d6b9362c9****/external/agent/deployment?PrivateIpAddress=true HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -2365,7 +2396,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <config>apiVersion: v1****</config>
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2373,6 +2404,8 @@ HTTP/1.1 200 OK
 ```json
   "config" : "apiVersion: v1****"
 ```
+
+`}`
 
 ##### 3.1.5.6 DescribeUserQuota
 
@@ -2420,7 +2453,7 @@ Sample success responses `XML` format
     "ask_cluster_quota": "3"
 ```
 
-Error codes You can check further details of error codes. For a list of error codes, visit the Error codes.
+`}` Error codes You can check further details of error codes. For a list of error codes, visit the Error codes.
 
 ##### 3.1.5.7 DescribeClusterLogs
 
@@ -2439,7 +2472,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```json
-HTTP/1.1 200 [ {
+HTTP/1.1 200 Content-Type:application/json [ {
   "ID" : Long,
   "cluster_id" : "String",
   "cluster_log" : "String",
@@ -2483,7 +2516,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <0>
 `JSON` format
 
 ```json
-HTTP/1.1 200 OK [ {
+HTTP/1.1 200 OK Content-Type:application/json [ {
   "ID" : 590749245,
   "cluster_id" : "c23421cfa74454bc8b37163fd19af***",
   "cluster_log" : "start to update cluster status to CREATE_COMPLETE",
@@ -2551,7 +2584,7 @@ GET /api/v1/metadata/versions HTTP/1.1
     "KubernetestVersion":"1.16.9-aliyun.1"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <0>
@@ -2610,7 +2643,7 @@ Sample success responses `XML` format
                 "version":"19.03.5"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "images":[
@@ -2628,7 +2661,7 @@ Sample success responses `XML` format
                 "os_version":"7.7"
 ```
 
-`]` `]` Error codes You can check further details of error codes. For a list of error codes, visit the Error codes.
+`}` `]` `}` `]` Error codes You can check further details of error codes. For a list of error codes, visit the Error codes.
 
 #### 3.1.6 Modify
 
@@ -2652,7 +2685,7 @@ PUT /api/v2/clusters/ClusterId HTTP/1.1
   "resource_group_id" : "String",
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2683,7 +2716,7 @@ Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -2694,7 +2727,7 @@ HTTP/1.1 200
   "task_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2720,7 +2753,7 @@ PUT /api/v2/clusters/cb95aa626a47740afbf6aa099b65**** HTTP/1.1
   "resource_group_id" : "rg-acfmyvw3wjm****",
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <cluster_id>cb95aa626a47740afbf6aa09****</cluster_id> <request_id>687C5BAA-D103-4993-884B-C35E4314****</request_id> <task_id>T-5a54309c80282e39ea00****</task_id>
@@ -2729,7 +2762,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <cluster_id>cb95aa626a47740afbf6aa0
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2740,14 +2773,14 @@ HTTP/1.1 200 OK
   "task_id" : "T-5a54309c80282e39ea00****"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.1.6.2 ModifyClusterTags
 
 Modifies the labels of a specified Container Service cluster. Request syntax
 
 ```json
-POST /clusters/ClusterId/tags HTTP/1.1 [ {
+POST /clusters/ClusterId/tags HTTP/1.1 Content-Type:application/json [ {
   "key" : "String",
   "value" : "String"
 } ]
@@ -2774,7 +2807,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```json
-POST /clusters/c106f377e16f34eb1808d6b9362c9****/tags HTTP/1.1 [ {
+POST /clusters/c106f377e16f34eb1808d6b9362c9****/tags HTTP/1.1 Content-Type:application/json [ {
   "key" : "env",
   "value" : "prod"
 } ]
@@ -2795,7 +2828,7 @@ Error codes You can check further details of error codes. For more information, 
 Upgrades a specified Container Service cluster. Request syntax
 
 ```
-POST /api/v2/clusters/ClusterId/upgrade HTTP/1.1
+POST /api/v2/clusters/ClusterId/upgrade HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -2806,7 +2839,7 @@ POST /api/v2/clusters/ClusterId/upgrade HTTP/1.1
   "version" : "String"
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2840,7 +2873,7 @@ POST /api/v2/clusters/c82e6987e2961451182edacd74faf****/upgrade HTTP/1.1
   "version" : "1.14.8-aliyun.1"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -2853,7 +2886,7 @@ Error codes You can check further details of error codes. For more information, 
 Queries the upgrade status of a specified Container Service cluster. Request syntax
 
 ```
-GET /api/v2/clusters/ClusterId/upgrade/status HTTP/1.1
+GET /api/v2/clusters/ClusterId/upgrade/status HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -2865,7 +2898,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -2895,7 +2928,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /api/v2/clusters/c106f377e16f34eb1808d6b9362c9****/upgrade/status HTTP/1.1
+GET /api/v2/clusters/c106f377e16f34eb1808d6b9362c9****/upgrade/status HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -2925,14 +2958,14 @@ HTTP/1.1 200 OK
     "message" : "subject to actual return"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` `}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.1.7.3 PauseClusterUpgrade
 
 Suspends the upgrade of a specified Container Service cluster. Request syntax
 
 ```
-POST /api/v2/clusters/ClusterId/upgrade/pause HTTP/1.1
+POST /api/v2/clusters/ClusterId/upgrade/pause HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -2966,7 +2999,7 @@ Error codes You can check further details of error codes. For more information, 
 Cancels the upgrade of a specified Container Service cluster. Request syntax
 
 ```
-POST /api/v2/clusters/ClusterId/upgrade/cancel HTTP/1.1
+POST /api/v2/clusters/ClusterId/upgrade/cancel HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -2984,7 +3017,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```
-POST /api/v2/clusters/c106f377e16f34eb1808d6b9362c9****/upgrade/cancel HTTP/1.1
+POST /api/v2/clusters/c106f377e16f34eb1808d6b9362c9****/upgrade/cancel HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `JSON` format
@@ -3000,7 +3033,7 @@ Error codes You can check further details of error codes. For more information, 
 Resumes the upgrade of a specified Container Service cluster. Request syntax
 
 ```
-POST /api/v2/clusters/ClusterId/upgrade/resume HTTP/1.1
+POST /api/v2/clusters/ClusterId/upgrade/resume HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -3018,7 +3051,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```
-POST /api/v2/clusters/c82e6987e2961451182edacd74faf****/upgrade/resume HTTP/1.1
+POST /api/v2/clusters/c82e6987e2961451182edacd74faf****/upgrade/resume HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `JSON` format
@@ -3084,7 +3117,7 @@ Response
 | page size _ | Integer | "10" | The number of entries returned per page. |
 | total count _ | Integer | "5" | The total number of entries returned. |
 
-Sample requests
+Example Sample requests
 
 ```
 GET /clusters/[ClusterId]/nodes HTTP/1.1 Common request headers
@@ -3096,7 +3129,7 @@ GET /clusters/[ClusterId]/nodes HTTP/1.1 Common request headers
     "ClusterId":" c82e6987e2961451182edacd74faf****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <nodes>
@@ -3156,7 +3189,7 @@ Sample success responses `XML` format
             "host_name": "iZ2vcckdmxp7u0urj2k****"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "page": {
@@ -3165,7 +3198,7 @@ Sample success responses `XML` format
         "page_size": "10"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` `}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.2.2 RemoveClusterNodes
 
@@ -3205,14 +3238,14 @@ POST /api/v2/clusters/c82e6987e2961451182edacd74faf****/nodes/remove Common requ
     "drain_node":false
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.2.3 AttachInstances
 
 Adds existing Elastic Compute Service (ECS) instances to a specified Container Service cluster. Request syntax
 
 ```
-POST /clusters/ClusterId/attach HTTP/1.1
+POST /clusters/ClusterId/attach HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -3243,7 +3276,7 @@ POST /clusters/ClusterId/attach HTTP/1.1
   } ]
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3298,7 +3331,7 @@ HTTP/1.1 200
   "task_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3342,7 +3375,7 @@ POST /clusters/c106f377e16f34eb1808d6b9362c9****/attach HTTP/1.1
   } ]
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <list>
@@ -3355,7 +3388,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <list>
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3369,14 +3402,14 @@ HTTP/1.1 200 OK
   "task_id" : "T-5a544aff80282e39ea000039"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.2.4 DescribeClusterAttachScripts
 
 Adds an existing instance to a specified Container Service cluster. This operation returns a unique executable script. You can run this script on an existing instance to add the instance to the specified cluster. Request syntax
 
 ```
-POST /clusters/ClusterId/attachscript HTTP/1.1
+POST /clusters/ClusterId/attachscript HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -3390,7 +3423,7 @@ POST /clusters/ClusterId/attachscript HTTP/1.1
   "options" : "String"
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3423,7 +3456,7 @@ Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -3432,7 +3465,7 @@ HTTP/1.1 200
   "result" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3444,7 +3477,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-POST /clusters/ca375a93a30474552ad2a0ebe183e****/attachscript HTTP/1.1
+POST /clusters/ca375a93a30474552ad2a0ebe183e****/attachscript HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -3459,7 +3492,7 @@ POST /clusters/ca375a93a30474552ad2a0ebe183e****/attachscript HTTP/1.1
 e,\\\"allowedClusterAddons\\\": [\\\"kube-proxy\\\",\\\"flannel\\\",\\\"coredns\\\"]}"
 ```
 
-Description of the sample request
+`}` Description of the sample request
 
 ```
 When you add an existing instance to a managed edge Kubernetes cluster, you must set option s and arch. The following content describes the parameters of options:
@@ -3482,6 +3515,11 @@ Default value: false.
 indicates the host name is used as the node name. This is the default value. An asterisk (* ) indicates that a random string that contains six characters is used as the node name.The string "*.XXX" indicates that a random string that is followed by a suffix is used as the n ode name. The random string contains six characters.
         "quiet": Specifies whether to enable the silent installation mode.
 ```
+
+`}` `}`
+
+```
+```
 ```
 
 Sample success responses `XML` format
@@ -3493,7 +3531,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <result>"wget http://aliacs-k8s-cn-
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3503,7 +3541,7 @@ HTTP/1.1 200 OK
 run/attach/1.12.6-aliyunedge.1/edgeadm -O edgeadm; chmod u+x edgeadm; ./edgeadm join --open api-token=XXX --node-spec=\"{\\\"flannelIface\\\":\\\"eth0\\\",\\\"enableIptables\\\":true, \\\"assumeYes\\\":true,\\\"manageRuntime\\\":true,\\\"nodeNameStrategy\\\":\\\"hostname\\\" ,\\\"enabledAddons\\\":[\\\"kube-proxy\\\",\\\"flannel\\\",\\\"coredns\\\"]}\"\""
 ```
 
-Description of the sample response
+`}` Description of the sample response
 
 ```
 If the cluster is not a managed edge Kubernetes cluster, the following script is returned: "curl http://aliacs-k8s-cn-chengdu.oss-cn-chengdu-internal.aliyuncs.com/public/pkg/run/atta ch/1.16.9-aliyun.1/attach_node.sh | bash -s -- --node-name-mode nodeip --cms-enabled --cmsversion 1.3.7 --openapi-token **** --addon-names flannel,csi-plugin,csi-provisioner,logtail -ds,ack-node-problem-detector,nginx-ingress-controller,kube-flannel-ds --cpu-policy none -node-cidr-mask 26 --node-port-range 30000-32767 --runtime docker --runtime-version 19.03.5" If the cluster is a managed edge Kubernetes cluster, the following script is returned: "wget http://aliacs-k8s-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/public/pkg/run/attach/1.12 .6-aliyunedge.1/edgeadm -O edgeadm; chmod u+x edgeadm; ./edgeadm join --openapi-token=*** - -node-spec="{\"flannelIface\":\"eth0\",\"enableIptables\":true,\"assumeYes\":true,\"manageR untime\":true,\"nodeNameStrategy\":\"hostname\",\"enabledAddons\":[\"kube-proxy\",\"flannel \",\"coredns\"]}""
@@ -3518,7 +3556,7 @@ Error codes You can check further details of error codes. For more information, 
 Creates a node pool for a Container Service cluster. Request syntax
 
 ```
-POST /clusters/ClusterId/nodepools HTTP/1.1
+POST /clusters/ClusterId/nodepools HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -3600,7 +3638,7 @@ POST /clusters/ClusterId/nodepools HTTP/1.1
   "count" : Long
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3669,7 +3707,7 @@ Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -3678,7 +3716,7 @@ HTTP/1.1 200
   "nodepool_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3687,7 +3725,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-POST /clusters/c61da77e8bfbc4c4c999af2b51b65****/nodepools HTTP/1.1
+POST /clusters/c61da77e8bfbc4c4c999af2b51b65****/nodepools HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -3771,7 +3809,7 @@ POST /clusters/c61da77e8bfbc4c4c999af2b51b65****/nodepools HTTP/1.1
   "count" : 1
 ```
 
-Description of the sample request
+`}` Description of the sample request
 
 ```
 Create a node pool that supports auto scaling:
@@ -3847,7 +3885,7 @@ Create a node pool that supports auto scaling:
                 "value":"cpu"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "taints":[
@@ -3887,7 +3925,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <nodepool_id>np31da1b38983f4511b490
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3896,14 +3934,14 @@ HTTP/1.1 200 OK
   "nodepool_id" : "np31da1b38983f4511b490fc62108a****"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.2.5.2 ScaleClusterNodePool
 
 Scales out a node pool. Request syntax
 
 ```
-POST /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1
+POST /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -3912,7 +3950,7 @@ POST /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1
   "count" : Long
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3931,7 +3969,7 @@ Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -3940,7 +3978,7 @@ HTTP/1.1 200
   "task_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3951,6 +3989,7 @@ Examples Response example
 ```
 POST /clusters/c23421cfa74454bc8b37163fd19af****/nodepools/np31da1b38983f4511b490fc62108a**
 ** HTTP/1.1
+Content-Type:application/json
 ```
 
 `{`
@@ -3959,7 +3998,7 @@ POST /clusters/c23421cfa74454bc8b37163fd19af****/nodepools/np31da1b38983f4511b49
   "count" : 1
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <task_id>T-5faa48fb31b6b8078d00****</task_id>
@@ -3977,14 +4016,14 @@ HTTP/1.1 200 OK
   "task_id" : "T-5faa48fb31b6b8078d00****"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.2.5.3 ModifyClusterNodePool
 
 Updates the configuration of a node pool. Request syntax
 
 ```
-PUT /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1
+PUT /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -4067,7 +4106,7 @@ PUT /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1
   "update_nodes" : Boolean
 ```
 
-Request parameters Request path parameters
+`}` Request parameters Request path parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4140,7 +4179,7 @@ Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -4150,7 +4189,7 @@ HTTP/1.1 200
   "nodepool_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4160,7 +4199,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-PUT /clusters/c23421cfa74454bc8b37163fd19af****/nodepools/p31da1b38983f4511b490fc62108a**** HTTP/1.1
+PUT /clusters/c23421cfa74454bc8b37163fd19af****/nodepools/p31da1b38983f4511b490fc62108a**** HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -4244,7 +4283,7 @@ PUT /clusters/c23421cfa74454bc8b37163fd19af****/nodepools/p31da1b38983f4511b490f
   "update_nodes" : true
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <task_id>T-5fd211e924e1d00787000293</task_id> <nodepool_id>np737c3ac1ac684703b9e10673aa2c****</nodepool_id>
@@ -4253,7 +4292,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <task_id>T-5fd211e924e1d00787000293
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4263,14 +4302,14 @@ HTTP/1.1 200 OK
   "nodepool_id" : "np737c3ac1ac684703b9e10673aa2c****"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.2.5.4 DescribeClusterNodePools
 
 Queries node pools in a specified Container Service cluster. Request syntax
 
 ```
-GET /clusters/ClusterId/nodepools HTTP/1.1
+GET /clusters/ClusterId/nodepools HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -4282,7 +4321,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -4392,7 +4431,7 @@ HTTP/1.1 200
   } ]
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |   |   |
 |---|---|---|---|---|---|
@@ -4484,7 +4523,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /clusters/cc0f87de0b8fb403f86e10e204f83****/nodepools HTTP/1.1
+GET /clusters/cc0f87de0b8fb403f86e10e204f83****/nodepools HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -4570,7 +4609,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <nodepools>
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4677,14 +4716,14 @@ HTTP/1.1 200 OK
   } ]
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.2.5.5 DescribeClusterNodePoolDetail
 
 Queries the details of a specified node pool. Request syntax
 
 ```
-GET /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1
+GET /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -4697,7 +4736,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -4800,7 +4839,7 @@ HTTP/1.1 200
     "tee_enable" : Boolean
 ```
 
-`},` Response parameters Response body parameters
+`},` `}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4884,6 +4923,7 @@ Examples Sample requests
 ```
 GET /clusters/c23421cfa74454bc8b37163fd19af****/nodepools/np31da1b38983f4511b490fc62108a***
 * HTTP/1.1
+Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -4962,7 +5002,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <auto_scaling>
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5067,14 +5107,14 @@ HTTP/1.1 200 OK
     "tee_enable" : false
 ```
 
-`},` Error codes You can check further details of error codes. For more information, see Error codes.
+`},` `}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 ##### 3.2.5.6 DeleteClusterNodepool
 
 Deletes a node pool. Request syntax
 
 ```
-DELETE /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1
+DELETE /clusters/ClusterId/nodepools/NodepoolId HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -5112,7 +5152,7 @@ Error codes You can check further details of error codes. For more information, 
 Creates an orchestration template. Request syntax
 
 ```
-POST /templates HTTP/1.1
+POST /templates HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -5125,7 +5165,7 @@ POST /templates HTTP/1.1
   "template_type" : "String"
 ```
 
-Request parameters Request body parameters
+`}` Request parameters Request body parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5151,7 +5191,7 @@ Request parameters Request body parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -5160,7 +5200,7 @@ HTTP/1.1 200
   "template_id" : "String"
 ```
 
-Response parameters Response body parameters
+`}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5182,7 +5222,7 @@ POST /templates HTTP/1.1
   "template_type" : "kubernetes"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <template_id>ba1fe77b-b01e-4640-b77e-8f1b80e3e3cf</template_id>
@@ -5191,7 +5231,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <template_id>ba1fe77b-b01e-4640-b77
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5200,14 +5240,14 @@ HTTP/1.1 200 OK
   "template_id" : "ba1fe77b-b01e-4640-b77e-8f1b80e3e3cf"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.3.2 DeleteTemplate
 
 Deletes an orchestration template. Request syntax
 
 ```
-DELETE /templates/TemplateId HTTP/1.1
+DELETE /templates/TemplateId HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -5241,7 +5281,7 @@ Error codes You can check further details of error codes. For more information, 
 Queries all orchestration templates. Request syntax
 
 ```
-GET /templates?template_type=String&page_num=Long&page_size=Long HTTP/1.1
+GET /templates?template_type=String&page_num=Long&page_size=Long HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request query parameters
@@ -5268,7 +5308,7 @@ Request parameters Request query parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -5292,7 +5332,7 @@ HTTP/1.1 200
     "total_count" : Long
 ```
 
-Response parameters Response body parameters
+`}` `}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5321,7 +5361,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /templates?template_type=kubernetes&page_num=1&page_size=10 HTTP/1.1
+GET /templates?template_type=kubernetes&page_num=1&page_size=10 HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -5349,7 +5389,7 @@ sic\n labels:\n app: nginx\nspec:\n replicas: 2\n selector:\n matchLabels:\n app
 `JSON` format
 
 ```
-HTTP/1.1 200 OK
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5374,14 +5414,14 @@ ment-basic\\n labels:\\n app: nginx\\nspec:\\n replicas: 2\\n selector:\\n match
     "total_count" : 50
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.3.4 DescribeTemplateAttribute
 
 Queries the details of a specified orchestration template. Request syntax
 
 ```
-GET /templates/TemplateId?template_type=String HTTP/1.1
+GET /templates/TemplateId?template_type=String HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -5439,7 +5479,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /templates/874ec485-e7e6-4373-8a3b-47bde8a****?template_type=kubernetes HTTP/1.1
+GET /templates/874ec485-e7e6-4373-8a3b-47bde8a****?template_type=kubernetes HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -5462,7 +5502,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <0>
 `JSON` format
 
 ```json
-HTTP/1.1 200 OK [ {
+HTTP/1.1 200 OK Content-Type:application/json [ {
   "id" : "72d20cf8-a533-4ea9-a10d-e7630d3d****",
   "acl" : "private",
   "name" : "web",
@@ -5483,7 +5523,7 @@ Error codes You can check further details of error codes. For more information, 
 Updates an orchestration template. Request syntax
 
 ```
-PUT /templates/TemplateId HTTP/1.1
+PUT /templates/TemplateId HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -5534,7 +5574,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```
-PUT /templates/72d20cf8-a533-4ea9-a10d-e7630d3d2708 HTTP/1.1
+PUT /templates/72d20cf8-a533-4ea9-a10d-e7630d3d2708 HTTP/1.1 Content-Type:application/json
 ```
 
 `{`
@@ -5548,7 +5588,7 @@ ployment-basic\\\\n labels:\\\\n app: nginx\\\\nspec:\\\\n replicas: 2\\\\n sele
   "template_type" : "kubernetes"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -5563,7 +5603,7 @@ Error codes You can check further details of error codes. For more information, 
 Installs a component in a specified Container Service cluster. Request syntax
 
 ```json
-POST /clusters/ClusterId/components/install HTTP/1.1 [ {
+POST /clusters/ClusterId/components/install HTTP/1.1 Content-Type:application/json [ {
   "name" : "String",
   "version" : "String",
   "config" : "String"
@@ -5597,7 +5637,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```json
-POST /clusters/c82e6987e2961451182edacd74faf****/components/install HTTP/1.1 [ {
+POST /clusters/c82e6987e2961451182edacd74faf****/components/install HTTP/1.1 Content-Type:application/json [ {
   "name" : "ags-metrics-collector",
   "version" : "v1.0.0.2-cc3b2d6-aliyun",
   "config" : "{\\\"IngressDashboardEnabled\\\":\\\"true\\\",\\\"sls_project_name\\\":\\\"yo
@@ -5636,7 +5676,7 @@ Request parameters Request query parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -5657,7 +5697,7 @@ HTTP/1.1 200
       "disabled" : Boolean
 ```
 
-Response parameters Response body parameters
+`}` `}` `}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5679,7 +5719,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /clusters/components/metadata?region=cn-beijing &cluster_type=kubernetes HTTP/1.1
+GET /clusters/components/metadata?region=cn-beijing &cluster_type=kubernetes HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -5775,7 +5815,7 @@ Manager to create load balancers for k8s applications and manage node route entr
       "description" : "csi-plugin"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "ComponentGroups" : [ {
@@ -5816,7 +5856,7 @@ Error codes You can check further details of error codes. For more information, 
 Queries the details of all components that are installed in a specified Container Service cluster. Request syntax
 
 ```
-GET /clusters/ClusterId/components/version HTTP/1.1
+GET /clusters/ClusterId/components/version HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -5828,7 +5868,7 @@ Request parameters Request path parameters
 Response syntax
 
 ```
-HTTP/1.1 200
+HTTP/1.1 200 Content-Type:application/json
 ```
 
 `{`
@@ -5848,7 +5888,7 @@ HTTP/1.1 200
     "value" : "String"
 ```
 
-Response parameters Response body parameters
+`}` `}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5876,7 +5916,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /clusters/c82e6987e2961451182edacd74faf****/components/version HTTP/1.1
+GET /clusters/c82e6987e2961451182edacd74faf****/components/version HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -5923,14 +5963,14 @@ vent center.",
     "policy" : "overwrite"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` `}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.4.4 DescribeClusterAddonsUpgradeStatus
 
 Queries the upgrade status of the specified components in a Container Service cluster. Request syntax
 
 ```
-GET /clusters/[ClusterId]/components/upgradestatus?componentIds=["String"] HTTP/1.1
+GET /clusters/[ClusterId]/components/upgradestatus?componentIds=["String"] HTTP/1.1 Content-Type:application/json
 ```
 
 Request parameters Request path parameters
@@ -5971,7 +6011,7 @@ HTTP/1.1 200
       "is_canceled" : Boolean
 ```
 
-Response parameters Response body parameters
+`}` `}` `}` Response parameters Response body parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5996,7 +6036,7 @@ Response parameters Response body parameters
 Examples Sample requests
 
 ```
-GET /clusters/[ClusterId]/components/upgradestatus?componentIds=["metric-server"] HTTP/1.1
+GET /clusters/[ClusterId]/components/upgradestatus?componentIds=["metric-server"] HTTP/1.1 Content-Type:application/json
 ```
 
 Sample success responses `XML` format
@@ -6055,7 +6095,7 @@ HTTP/1.1 200 OK
       "ready_to_upgrade" : "true"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "metric-server" : {
@@ -6075,14 +6115,14 @@ HTTP/1.1 200 OK
       "ready_to_upgrade" : "true"
 ```
 
-Error codes You can check further details of error codes. For more information, see Error codes.
+`}` `}` `}` Error codes You can check further details of error codes. For more information, see Error codes.
 
 #### 3.4.5 UpgradeClusterAddons
 
 Upgrades a specified component of a Container Service cluster to the required version. Request syntax
 
 ```json
-POST /clusters/ClusterId/components/upgrade HTTP/1.1 [ {
+POST /clusters/ClusterId/components/upgrade HTTP/1.1 Content-Type:application/json [ {
   "component_name" : "String",
   "next_version" : "String",
   "version" : "String"
@@ -6114,7 +6154,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```json
-POST /clusters/cf4299b79b3e34226abfdc80a4bda****/components/upgrade HTTP/1.1 [ {
+POST /clusters/cf4299b79b3e34226abfdc80a4bda****/components/upgrade HTTP/1.1 Content-Type:application/json [ {
   "component_name" : "coredns",
   "next_version" : "1.6.7",
   "version" : "v1.6.2"
@@ -6134,7 +6174,7 @@ Error codes You can check further details of error codes. For more information, 
 Uninstalls components from a specified Container Service cluster. Request syntax
 
 ```json
-POST /clusters/ClusterId/components/uninstall HTTP/1.1 [ {
+POST /clusters/ClusterId/components/uninstall HTTP/1.1 Content-Type:application/json [ {
   "name" : "String"
 } ]
 ```
@@ -6161,7 +6201,7 @@ HTTP/1.1 200 OK
 Response parameters No response parameters. Examples Sample requests
 
 ```json
-POST /clusters/c5b5e80b0b64a4bf6939d2d8fbbc5****/components/uninstall HTTP/1.1 Host:cs.aliyuncs.com [ {
+POST /clusters/c5b5e80b0b64a4bf6939d2d8fbbc5****/components/uninstall HTTP/1.1 Host:cs.aliyuncs.com Content-Type:application/json [ {
   "name" : "ack-node-problem-detector"
 } ]
 ```

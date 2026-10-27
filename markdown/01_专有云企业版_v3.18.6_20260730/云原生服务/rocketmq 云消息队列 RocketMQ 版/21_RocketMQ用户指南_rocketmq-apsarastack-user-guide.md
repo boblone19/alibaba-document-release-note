@@ -5,18 +5,200 @@ doc_version: "20260729"
 pdf_pages: 312
 source_pdf: "21_RocketMQ用户指南_rocketmq-apsarastack-user-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/rocketmq/zh/rocketmq-apsarastack-user-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云消息队列 RocketMQ 版 RocketMQ用户指南
 
-消息队列 tMQ版
+## 目录
 
-## 消息队列RocketMQ版
+- 1 消息队列RocketMQ版
+- 2 产品更新说明
+- 3 快速入门
+  - 3.1 快速入门概述
+  - 3.2 登录RocketMQ控制台
+  - 3.3 创建资源
+  - 3.4 发送消息
+    - 3.4.1 快速使用TCP协议的SDK收发普通消息
+    - 3.4.2 快速使用HTTP协议的SDK收发普通消息
+    - 3.4.3 查看消息是否发送成功
+  - 3.5 订阅消息
+- 4 消息类型
+  - 4.1 普通消息
+  - 4.2 定时和延时消息
+  - 4.3 事务消息
+  - 4.4 顺序消息
+- 5 控制台使用指南
+  - 5.1 资源管理
+    - 5.1.1 资源管理概述
+    - 5.1.2 实例管理
+    - 5.1.3 Topic管理
+    - 5.1.4 Group管理
+  - 5.2 网络管理
+    - 5.2.1 查看接入点信息
+    - 5.2.2 绑定VPC
+    - 5.2.3 管理VPC
+    - 5.2.4 绑定VPC的IPv6网段
+  - 5.3 查看消费者状态
+  - 5.4 重置消费位点
+  - 5.5 消息查询
+    - 5.5.1 消息查询概述
+    - 5.5.2 查询消息
+    - 5.5.3 查询结果说明
+  - 5.6 消息轨迹
+    - 5.6.1 消息轨迹概述
+    - 5.6.2 查询消息轨迹
+    - 5.6.3 消息轨迹状态说明
+  - 5.7 死信队列
+  - 5.8 资源报表
+    - 5.8.1 资源报表概述
+    - 5.8.2 查看消息生产数据
+    - 5.8.3 查看消息消费数据
+  - 5.9 查看实例监控信息
+  - 5.10 查看实例操作日志
+  - 5.11 管理账号授权
+  - 5.12 数据集成
+    - 5.12.1 Connector概述
+    - 5.12.2 MaxCompute Sink Connector
+- 6 消息路由
+  - 6.1 Replicator
+  - 6.2 Connector
+    - 6.2.1 ElasticSearch
+    - 6.2.2 Redis
+    - 6.2.3 OSS
+    - 6.2.4 MySQL
+- 7 SDK使用指南
+  - 7.1 SDK概述
+  - 7.2 TCP协议SDK参考
+    - 7.2.1 Demo工程
+      - 7.2.1.1 Demo工程概述
+      - 7.2.1.2 Demo环境准备
+      - 7.2.1.3 Demo工程配置
+      - 7.2.1.4 运行Demo
+    - 7.2.2 客户端参数说明
+    - 7.2.3 客户端错误码说明
+    - 7.2.4 Java SDK
+      - 7.2.4.1 使用说明
+      - 7.2.4.2 环境准备
+      - 7.2.4.3 日志配置
+      - 7.2.4.4 Spring 集成
+        - 7.2.4.4.1 Spring集成概述
+        - 7.2.4.4.2 生产者与Spring集成
+        - 7.2.4.4.3 事务消息生产者与Spring集成
+        - 7.2.4.4.4 消费者与Spring集成
+      - 7.2.4.5 发送消息（三种方式）
+        - 7.2.4.5.1 发送消息（三种方式）概述
+        - 7.2.4.5.2 可靠同步发送
+        - 7.2.4.5.3 可靠异步发送
+        - 7.2.4.5.4 单向（Oneway）发送
+      - 7.2.4.6 发送消息（多线程）
+      - 7.2.4.7 收发顺序消息
+      - 7.2.4.8 收发事务消息
+      - 7.2.4.9 收发延时消息
+      - 7.2.4.10 收发定时消息
+      - 7.2.4.11 订阅消息
+    - 7.2.5 C/C++ SDK
+      - 7.2.5.1 C/C++ SDK环境准备
+        - 7.2.5.1.1 环境准备概述
+        - 7.2.5.1.2 下载SDK
+        - 7.2.5.1.3 使用Linux C++ SDK
+      - 7.2.5.2 收发普通消息
+      - 7.2.5.3 收发顺序消息
+      - 7.2.5.4 收发定时消息
+      - 7.2.5.5 收发事务消息
+      - 7.2.5.6 订阅消息
+    - 7.2.6. .NET SDK
+      - 7.2.6.1. .NET SDK环境准备
+        - 7.2.6.1.1 环境准备概述
+        - 7.2.6.1.2 下载SDK
+        - 7.2.6.1.3. .NET SDK配置说明
+      - 7.2.6.2 收发普通消息
+      - 7.2.6.3 收发顺序消息
+      - 7.2.6.4 收发定时消息
+      - 7.2.6.5 收发事务消息
+      - 7.2.6.6 订阅消息
+  - 7.3 HTTP协议SDK参考
+    - 7.3.1 协议说明
+      - 7.3.1.1 公共参数
+      - 7.3.1.2 签名机制
+      - 7.3.1.3 发送消息API
+      - 7.3.1.4 订阅消息API
+      - 7.3.1.5 确认消息API
+    - 7.3.2 Java SDK
+      - 7.3.2.1 准备环境
+      - 7.3.2.2 收发普通消息
+      - 7.3.2.3 收发顺序消息
+      - 7.3.2.4 收发定时消息和延时消息
+      - 7.3.2.5 收发事务消息
+    - 7.3.3 Go SDK
+      - 7.3.3.1 准备环境
+      - 7.3.3.2 收发普通消息
+      - 7.3.3.3 收发顺序消息
+      - 7.3.3.4 收发定时消息和延时消息
+      - 7.3.3.5 收发事务消息
+    - 7.3.4 Python SDK
+      - 7.3.4.1 准备环境
+      - 7.3.4.2 收发普通消息
+      - 7.3.4.3 收发顺序消息
+      - 7.3.4.4 收发定时消息和延时消息
+      - 7.3.4.5 收发事务消息
+    - 7.3.5 Node.js SDK
+      - 7.3.5.1 准备环境
+      - 7.3.5.2 收发普通消息
+      - 7.3.5.3 收发顺序消息
+      - 7.3.5.4 收发定时消息和延时消息
+      - 7.3.5.5 收发事务消息
+    - 7.3.6 PHP SDK
+      - 7.3.6.1 准备环境
+      - 7.3.6.2 收发普通消息
+      - 7.3.6.3 收发顺序消息
+      - 7.3.6.4 收发定时消息和延时消息
+      - 7.3.6.5 收发事务消息
+    - 7.3.7 C# SDK
+      - 7.3.7.1 准备环境
+      - 7.3.7.2 收发普通消息
+      - 7.3.7.3 收发顺序消息
+      - 7.3.7.4 收发定时消息和延时消息
+      - 7.3.7.5 收发事务消息
+    - 7.3.8 C++ SDK
+      - 7.3.8.1 准备环境
+      - 7.3.8.2 收发普通消息
+      - 7.3.8.3 收发顺序消息
+      - 7.3.8.4 收发定时消息和延时消息
+      - 7.3.8.5 收发事务消息
+- 8 最佳实践
+  - 8.1 集群消费和广播消费
+  - 8.2 消息过滤
+  - 8.3 订阅关系一致
+  - 8.4 消费幂等
+  - 8.5 异地多活
+  - 8.6 同城容灾
+  - 8.7 消息路由
+- 9 产品使用问题
+  - 9.1 常见问题
+    - 9.1.1 快速入门
+    - 9.1.2 配置相关
+    - 9.1.3 消息轨迹
+    - 9.1.4 告警处理
+    - 9.1.5 顺序消息
+  - 9.2 异常类别
+    - 9.2.1 使用异常
+    - 9.2.2 资源不存在
+    - 9.2.3 状态不一致
+  - 9.3 故障处理
+    - 9.3.1 非预期的客户端连接
+    - 9.3.2 订阅关系不一致
+    - 9.3.3 消息堆积
+    - 9.3.4 Java进程的消息堆积
+    - 9.3.5 消息在客户端缓存导致应用OOM
 
-消息队列RocketMQ版（简称RocketMQ）是阿里云基于开源Apache RocketMQ构建的低延迟、高并发、 高可用、高可靠的分布式消息中间件。 RocketMQ基于高可用分布式集群技术，提供消息订阅和发布、消息轨迹查询、定时（延时）消息、资源统计等一系列消息云服务，是企业级互联网架构的核心产品。RocketMQ为分布式应用系统提供异步解耦、削峰填谷的能力，同时具备海量消息堆积、高吞吐、可靠重试等互联网应用所需的特性，是支持阿里巴巴双11 的核心产品。 RocketMQ目前提供TCP协议和HTTP协议层面的接入方式，支持Java、C++、.NET等多种编程语言，方便不同编程语言开发的应用快速接入RocketMQ消息云服务。 消息队列
+tMQ版
 
-## 产品更新说明
+## 1 消息队列RocketMQ版
+
+消息队列RocketMQ版（简称RocketMQ）是阿里云基于开源Apache RocketMQ构建的低延迟、高并发、 高可用、高可靠的分布式消息中间件。 RocketMQ基于高可用分布式集群技术，提供消息订阅和发布、消息轨迹查询、定时（延时）消息、资源统计等一系列消息云服务，是企业级互联网架构的核心产品。RocketMQ为分布式应用系统提供异步解耦、削峰填谷的能力，同时具备海量消息堆积、高吞吐、可靠重试等互联网应用所需的特性，是支持阿里巴巴双11 的核心产品。 RocketMQ目前提供TCP协议和HTTP协议层面的接入方式，支持Java、C++、.NET等多种编程语言，方便不同编程语言开发的应用快速接入RocketMQ消息云服务。
+
+## 2 产品更新说明
 
 本文介绍消息队列RocketMQ版（简称RocketMQ）从V3.8.0到V3.18.3的产品更新说明，帮助您更快地上手更新后的版本。
 
@@ -28,7 +210,7 @@ RocketMQ开放实例化功能，解决多租之间的隔离问题，每个用户
 properties.put(PropertyKeyConst.NAMESRV_ADDR, "xxxx");
 ```
 
-`//` 兼容配置（不推荐继续使用, 建议逐渐升级为推荐配置）
+`//` 兼容配置（不推荐继续使用`,` 建议逐渐升级为推荐配置）
 
 ```
 properties.put(PropertyKeyConst.ONSAddr, "xxxx");
@@ -44,11 +226,15 @@ ons-client客户端必须升级到最新版本： JAVA：1.8.7.1.Final C/C++：v
 
 **资源申请流程优化**
 
-原RocketMQ的资源包括3个部分：消息主题（Topic）、生产者（Producer ID）、消费者（Consumer ID），三者之间都是多对多的对应关系，三者之间的关系复杂而难以理解；对于中、大型企业客户来说，每创建一个Topic，都要关联或者更新Producer ID和Consumer ID，流程过于复杂。 因此，为进一步优化用户体验，降低新用户的接入门槛，对资源申请的接入流程进行简化。 资源申请方面，主要包括以下部分： Topic资源申请，一级消息类型，通过Topic对消息进行分类。 取消原Producer ID的申请，与原Consumer ID统一为Group ID，即对应控制台上，取消原生产者管取消原申请Producer ID或Consumer ID时需要指定Topic的关联约束，只需申请Group ID即可在代码中直接配置与Topic的关联使用。 消息队列兼容性相关问题原申请的Producer ID列表将不再显示，不影响当前业务的正常使用。 原申请的以“CID-”或者“CID_”打头的Consumer ID仍可以正常使用，代码中既可在**PropertyKeyConst.ConsumerId**中设置，亦可在**PropertyKeyConst.GROUP_ID**中设置。 示例代码
+原RocketMQ的资源包括3个部分：消息主题（Topic）、生产者（Producer ID）、消费者（Consumer ID），三者之间都是多对多的对应关系，三者之间的关系复杂而难以理解；对于中、大型企业客户来说，每创建一个Topic，都要关联或者更新Producer ID和Consumer ID，流程过于复杂。 因此，为进一步优化用户体验，降低新用户的接入门槛，对资源申请的接入流程进行简化。 资源申请方面，主要包括以下部分： Topic管理（保持不变） Topic资源申请，一级消息类型，通过Topic对消息进行分类。 取消原Producer ID的申请，与原Consumer ID统一为Group ID，即对应控制台上，取消原生产者管理，与原消费者管理统一为Group管理。 取消原申请Producer ID或Consumer ID时需要指定Topic的关联约束，只需申请Group ID即可在代码中直接配置与Topic的关联使用。 兼容性相关问题原申请的Producer ID列表将不再显示，不影响当前业务的正常使用。 原申请的以“CID-”或者“CID_”打头的Consumer ID仍可以正常使用，代码中既可在**PropertyKeyConst.ConsumerId**中设置，亦可在**PropertyKeyConst.GROUP_ID**中设置。 示例代码
 
-**说明**
+> **说明：** 建议您将ons-client客户端升级为最新版本：
 
-建议您将ons-client客户端升级为最新版本： JAVA：1.8.7.1.Final C/C++：v2.0.0 .NET：1.1.3 原来已经在使用的Producer ID或者Consumer ID保持兼容，不影响当前在线业务的正常使用，但建议逐步替换为新的推荐配置方式。 推荐方式：将Producer ID、Consumer ID的概念融合成Group ID。
+JAVA：1.8.7.1.Final C/C++：v2.0.0 .NET：1.1.3
+
+> 原来已经在使用的Producer ID或者Consumer ID保持兼容，不影响当前在线业务的正常使用，但建议逐步替换为新的推荐配置方式。
+
+推荐方式：将Producer ID、Consumer ID的概念融合成Group ID。
 
 ```
 // 设置PropertyKeyConst.GROUP_ID，原PropertyKeyConst.ProducerId和 PropertyKeyConst.ConsumerId会被@Deprecated properties.put(PropertyKeyConst.GROUP_ID, "原CID-XXX或GID-XXX");
@@ -66,13 +252,11 @@ properties.put(PropertyKeyConst.ProducerId, "原PID-XXX或GID-XXX");
 properties.put(PropertyKeyConst.ConsumerId, "原CID-XXX或GID-XXX");
 ```
 
-消息队列
+## 3 快速入门
 
-## 快速入门
+### 3.1 快速入门概述
 
-### 快速入门概述
-
-RocketMQ提供了TCP协议和HTTP协议的多语言客户端SDK以收发不同类型的消息。本文介绍使用两种协
+RocketMQ提供了TCP协议和HTTP协议的多语言客户端SDK以收发不同类型的消息。本文介绍使用两种协议的多语言SDK收发普通消息的流程和使用说明。
 
 **背景信息**
 
@@ -80,7 +264,7 @@ RocketMQ提供了TCP协议和HTTP协议的多语言客户端SDK以收发不同�
 
 **使用流程**
 
-根据您选择的协议，使用流程如下。 消息队列
+根据您选择的协议，使用流程如下。
 1. 创建资源：包括创建RocketMQ实例、Topic、Group以及获取实例的接入点信息。
 2. 根据您选择的协议调用对应的SDK收发消息。
 
@@ -90,9 +274,17 @@ RocketMQ提供了TCP协议和HTTP协议的多语言客户端SDK以收发不同�
 
 **更多信息**
 
-若您需要使用TCP或HTTP协议下的其他语言收发消息，请参见以下文档： 消息队列
+若您需要使用TCP或HTTP协议下的其他语言收发消息，请参见以下文档：
 
-### 登录RocketMQ控制台
+**TCP协议**
+
+C/C++：收发普通消息 .NET：收发普通消息
+
+**HTTP协议**
+
+Go：收发普通消息 Python：收发普通消息 Node.js：收发普通消息 PHP：收发普通消息 C#：收发普通消息 C++：收发普通消息
+
+### 3.2 登录RocketMQ控制台
 
 本文介绍登录RocketMQ的步骤。
 
@@ -103,16 +295,16 @@ RocketMQ提供了TCP协议和HTTP协议的多语言客户端SDK以收发不同�
 **操作步骤**
 
 1. 在浏览器地址栏中，输入Apsara Uni-manager运营控制台的服务域名地址，按回车键。
-消息队列
 
-**说明**
+> **说明：** 单击页面右上角的当前语言可以切换其它语言。
+> 授权登录是第三方认证中配置了全局IdP设置才会显示，且“授权登录”名称用户可按需自定义。
 
-单击页面右上角的当前语言可以切换其它语言。 授权登录是第三方认证中配置了全局IdP设置才会显示，且“授权登录”名称用户可按需自定义。 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. 输入正确的用户名及密码。
 
-**说明**
+> **说明：** 请向运营管理员获取登录控制台的用户名和密码。
+> 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 
-请向运营管理员获取登录控制台的用户名和密码。 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 3. 单击**账号登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 
@@ -124,14 +316,12 @@ a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b
 
 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的章节**《管理** **多因素认证》**。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的章节**《管理**
-**多因素认证》**。
-5. 在顶部菜单栏选择**产品** > **中间件** > **云消息队列** > **消息队列** **RocketMQ** 版，进入消息队列
+5. 在顶部菜单栏选择**产品** **>** **中间件** **>** **云消息队列** **>** **消息队列** **RocketMQ** **版**，进入消息队列
 RocketMQ版控制台。
 
-### 创建资源
+### 3.3 创建资源
 
 在调用客户端SDK收发消息前，您需在RocketMQ控制台创建相关资源及获取相关信息。您在调用SDK时需填写这些资源信息。
 
@@ -139,22 +329,19 @@ RocketMQ版控制台。
 
 一个新的应用接入RocketMQ需要先创建相关的资源，包括：
 **实例：**用于RocketMQ服务的虚拟机资源，会存储消息主题（Topic）和客户端ID（Group ID）信息。
-**Topic**：消息主题。在RocketMQ的消息系统中，消息生产者将消息发送到某个指定的Topic，而消息消
+**Topic****：**消息主题。在RocketMQ的消息系统中，消息生产者将消息发送到某个指定的Topic，而消息消
 费者则通过订阅该指定的Topic来获取和消费消息。
-**Group ID**：用于标识一类消息消费者或生产者。
-消息队列
+**Group ID****：**用于标识一类消息消费者或生产者。
 
-**重要**
+> **重要：** 由于TCP协议和HTTP协议的客户端各不相同，您需为两种协议分别创建不同类型的Group ID。例如，如果您使用TCP协议的SDK收发消息，则必须使用创建的TCP协议的Group ID，不允许使用 HTTP协议的Group ID。
 
-由于TCP协议和HTTP协议的客户端各不相同，您需为两种协议分别创建不同类型的Group ID。例如，如果您使用TCP协议的SDK收发消息，则必须使用创建的TCP协议的Group ID，不允许使用 HTTP协议的Group ID。
 **接入点：**RocketMQ服务端的访问地址，用于消息生产者客户端或消费者客户端接入指定的RocketMQ实
 例。
 
-**重要**
+> **重要：** RocketMQ提供TCP协议接入点和HTTP协议接入点，接入点不能跨协议使用。例如，您使用TCP协议的SDK收发消息，则必须在SDK中填写TCP协议的接入点，不允许使用HTTP协议的接入点。
 
-RocketMQ提供TCP协议接入点和HTTP协议接入点，接入点不能跨协议使用。例如，您使用TCP协议的SDK收发消息，则必须在SDK中填写TCP协议的接入点，不允许使用HTTP协议的接入点。
-**AK**和**SK**：阿里云的身份验证信息，即AccessKey ID和AccessKey Secret。获取方式，请参
-见《RocketMQ**开发指南》**手册的**《获取****AccessKey**》章节。
+**AK****和****SK****：**阿里云的身份验证信息，即AccessKey ID和AccessKey Secret。获取方式，请参
+见**《**RocketMQ**开发指南》**手册的**《获取****AccessKey****》**章节。
 
 **创建实例**
 
@@ -164,22 +351,20 @@ RocketMQ提供TCP协议接入点和HTTP协议接入点，接入点不能跨协�
 4. 在**创建****MQ****实例**页面中设置相关参数，然后单击**提交**。
 相关参数说明如下：
 
-| 参数 |  | 说明 | 取值示例 |
+| 参数 |   | 说明 | 取值示例 |
 |---|---|---|---|
 | 区域 | 组织 | 待创建实例归属的组织。 | root test _ |
-|  | 资源集 | 待创建实例归属的资源集。 | DefaultResource |
-|  | 地域 | 待创建实例所属的地域。 | cn-qingdao- env66-d01 |
-|  | 芯片架构 | 待创建实例所部署的芯片类型，默认和RocketMQ集群所部署的芯片架构一致， 不支持自定义修改。 参数取值如下： intel 鲲鹏海光飞腾倚天申威 | intel |
-|  | 集群 | 待创建实例所属的集群。 | cluster1 |
-
-消息队列
+|   | 资源集 | 待创建实例归属的资源集。 | DefaultResource |
+|   | 地域 | 待创建实例所属的地域。 | cn-qingdao- env66-d01 |
+|   | 芯片架构 | 待创建实例所部署的芯片类型，默认和RocketMQ集群所部署的芯片架构一致， 不支持自定义修改。 参数取值如下： intel 鲲鹏海光飞腾倚天申威 | intel |
+|   | 集群 | 待创建实例所属的集群。 | cluster1 |
 
 | 基本配置 | 实例名称 | 长度限制为 3 ~ 64 个字符，可以是中文、 英文、数字、短横线（-）以及下划线 （ ）。 _ | test |
 |---|---|---|---|
-|  | Topic 数上限 | 表示该实例下支持创建的Topic的最大数量，若您不再需要使用某个Topic，请及时删除。 取值范围：10~5000。 默认值：50。 | 50 |
-|  | 消息发送 TPS | 表示该实例的消息发送TPS的上限值。若实例开启了限流功能，则消息发送TPS超过该上限值时，RocketMQ会对消息发送进行流控处理。 实例限流功能默认关闭，若您需要开启，请参见《RocketMQ运维指南》手册的《实例限流运维操作》章节。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
-|  | 消息订阅 TPS | 表示该实例的消息订阅TPS的上限值。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
-|  | 描述 | 2-128个字符，以字母或中文开头，支持数字和" "、"-"、":"特殊字符，不能以http:// _ 或https://开头。 | test |
+|   | Topic 数上限 | 表示该实例下支持创建的Topic的最大数量，若您不再需要使用某个Topic，请及时删除。 取值范围：10~5000。 默认值：50。 | 50 |
+|   | 消息发送 TPS | 表示该实例的消息发送TPS的上限值。若实例开启了限流功能，则消息发送TPS超过该上限值时，RocketMQ会对消息发送进行流控处理。 实例限流功能默认关闭，若您需要开启，请参见《RocketMQ运维指南》手册的《实例限流运维操作》章节。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
+|   | 消息订阅 TPS | 表示该实例的消息订阅TPS的上限值。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
+|   | 描述 | 2-128个字符，以字母或中文开头，支持数字和" "、"-"、":"特殊字符，不能以http:// _ 或https://开头。 | test |
 
 5. **（可选）**如果您配置了审批流程，则需要额外进行如下操作：
 i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填写**操作理由，**然后单击**提交审批**。 ii. 在**操作成功**的对话框中，单击**申请单详情**，跳转到申请单详情页面。 iii. 在**申请单进度**区域中单击**查看全部**，进入到**申请单进度**面板，待所有环节全部完成，则完成审批流程。 在**实例列表**页面，即可查看到已创建的实例。
@@ -197,7 +382,6 @@ i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填
 
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
-消息队列
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
 面。
 4. 在**实例详情**页面，单击**Topic****管理**页签。
@@ -225,18 +409,15 @@ i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填
 |---|---|
 | Group ID | 设置Group ID。 Group ID只能包含英文、数字、 短横线（-）和下划线（ ）。 _ 长度限制在4～64个字符之间。 Group ID 一旦创建，则无法修改。 新建Group ID不能与已存在的Topic名称或Group ID完全一致。 |
 
-消息队列
-
 | 描述 | 设置Group描述。 |
 |---|---|
 
-**说明**
+> **说明：** Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID），又可用于消费者， 标识同一类 Consumer 实例（Consumer ID）；
+> 同一个 Group ID 不可以共用于 TCP 协议和 HTTP 协议，需要分别申请。
 
-Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID），又可用于消费者， 标识同一类 Consumer 实例（Consumer ID）； 同一个 Group ID 不可以共用于 TCP 协议和 HTTP 协议，需要分别申请。
+### 3.4 发送消息
 
-### 发送消息
-
-#### 快速使用TCP协议的SDK收发普通消息
+#### 3.4.1 快速使用TCP协议的SDK收发普通消息
 
 在控制台创建完所有资源之后，您可以调用RocketMQ的TCP协议的SDK收发普通消息。
 
@@ -244,21 +425,32 @@ Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID�
 
 您已创建了相关资源，详细信息请参见创建资源。
 
+**安装Java SDK**
+
+你可以通过以下任意一种方式安装Java SDK。
+
 **通过Maven方式引入依赖**
 
 ```xml
 <dependency>
    <groupId>com.aliyun.openservices</groupId>
    <artifactId>ons-client</artifactId>
+```
+
+<!-- 设置为`Java SDK`的版本号 `-->`
+
+```xml
    <version>"XXX"</version>
 </dependency>
 ```
 
 **下载依赖JAR包**
 
+下载链接，请参考SDK概述。
+
 **调用TCP协议的SDK发送普通消息**
 
-运行以下示例代码发送普通消息。运行代码前请参考注释填写您提前创建好的资源信息。 消息队列
+运行以下示例代码发送普通消息。运行代码前请参考注释填写您提前创建好的资源信息。
 
 ```java
  import com.aliyun.openservices.ons.api.Message;
@@ -342,23 +534,20 @@ Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID�
              SendResult sendResult = producer.send(msg);
              System.out.println("Send Message success. Message ID is: " +
 sendResult.getMessageId());
-         }
 ```
 
-`//` 在应用退出前，可以销毁`Producer`对象。 `//` 注意：如果不销毁也没有问题。
+`}` `//` 在应用退出前，可以销毁`Producer`对象。 `//` 注意：如果不销毁也没有问题。
 
 ```
          producer.shutdown();
-     }
- }
 ```
 
-同时，您也可以登录RocketMQ控制台，在**Topic****管理**页签找到您刚创建好的Topic，单击右侧**操作**列的发
+`}` `}` 同时，您也可以登录RocketMQ控制台，在**Topic****管理**页签找到您刚创建好的Topic，单击右侧**操作**列的**发**
 **送消息**，通过控制台快速体验消息发送。
 
 **调用TCP协议的SDK订阅普通消息**
 
-消息队列运行以下示例代码订阅普通消息。运行代码前请参考注释填写您提前创建好的资源信息。
+运行以下示例代码订阅普通消息。运行代码前请参考注释填写您提前创建好的资源信息。
 
 ```java
 import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Consumer; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import java.util.Properties; public class ConsumerTest {
@@ -393,13 +582,17 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
-}
 ```
+
+`}` `}`
 
 **查看消息订阅是否成功**
 
@@ -409,19 +602,21 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
 面。
 4. 在**实例详情**页面，单击**Group****管理**页签。
 5. 在Group列表中找到要查看消费者的Group ID，单击其右侧**操作**列的**订阅关系**。
-如果**是否在线**显示为是，则说明消费端已成功启动且订阅成功。否则说明订阅失败。
+如果**是否在线**显示为**是**，则说明消费端已成功启动且订阅成功。**否**则说明订阅失败。
 
 **后续步骤**
 
-#### 查询消息
+#### 3.4.2 快速使用HTTP协议的SDK收发普通消息
 
-#### 快速使用HTTP协议的SDK收发普通消息
-
-在控制台创建完所有资源之后，您可以调用RocketMQ的HTTP协议的SDK收发普通消息。 消息队列
+在控制台创建完所有资源之后，您可以调用RocketMQ的HTTP协议的SDK收发普通消息。
 
 **前提条件**
 
 您已创建了相关资源，详细信息请参见创建资源。
+
+**安装Java SDK**
+
+您可以通过以下任意一种方式安装Java SDK。
 
 **通过Maven方式引入依赖**
 
@@ -429,12 +624,19 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
 <dependency>
     <groupId>com.aliyun.mq</groupId>
     <artifactId>mq-http-sdk</artifactId>
+```
+
+<!-- 设置为`Java SDK`的版本号 `-->`
+
+```xml
     <version>X.X.X</version>
     <classifier>jar-with-dependencies</classifier>
 </dependency>
 ```
 
 **下载依赖JAR包**
+
+下载链接，请参考SDK概述。
 
 **调用HTTP协议的SDK发送普通消息**
 
@@ -462,10 +664,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 您在控制台创建的`Topic`，即该消息所属的`Topic`名称。
+); `//` 您在控制台创建的`Topic`，即该消息所属的`Topic`名称。
 
 ```
         final String topic = "${TOPIC}";
@@ -485,17 +686,13 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
-}
 ```
 
-消息队列
-
 ```
-        }
         try {
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
             for (int i = 0; i < 4; i++) {
@@ -513,10 +710,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
 
 ```
                 "A"
-                );
 ```
 
-`//` 设置消息的自定义属性。
+); `//` 设置消息的自定义属性。
 
 ```
                 pubMsg.getProperties().put("a", String.valueOf(i));
@@ -540,7 +736,11 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
+```
+
+`}`
+
+```
         } catch (Throwable e) {
 ```
 
@@ -550,13 +750,15 @@ topic + ", msgId is: " + pubResultMsg.getMessageId()
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-        }
-        mqClient.close();
-    }
-}
 ```
 
-同时，您也可以登录RocketMQ控制台，在**Topic****管理**页签找到您刚创建好的Topic，单击右侧**操作**列的发
+`}`
+
+```
+        mqClient.close();
+```
+
+`}` `}` 同时，您也可以登录RocketMQ控制台，在**Topic****管理**页签找到您刚创建好的Topic，单击右侧**操作**列的**发**
 **送消息**，通过控制台快速体验消息发送。
 
 **调用HTTP协议的SDK订阅普通消息**
@@ -567,8 +769,6 @@ topic);
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import com.aliyun.mq.http.common.AckMessageException; import com.aliyun.mq.http.model.Message; import java.util.ArrayList; import java.util.List; public class Consumer {
     public static void main(String[] args) {
 ```
-
-消息队列
 
 ```
         MQClient mqClient = new MQClient(
@@ -590,10 +790,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 您在`RocketMQ`控制台创建的`Topic`，即该消息所属的`Topic`名称。
+); `//` 您在`RocketMQ`控制台创建的`Topic`，即该消息所属的`Topic`名称。
 
 ```
         final String topic = "${TOPIC}";
@@ -614,10 +813,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         do {
@@ -625,58 +823,54 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 messages = consumer.consumeMessage(
 ```
 
-`3,//` 一次最多消费3条消息（最多可设置为`16`条）。 `3//` 长轮询时间3秒（最多可设置为`30`秒）。
+`3,//` 一次最多消费`3`条消息（最多可设置为`16`条）。 `3//` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
 ```
 
-`// Topic`中没有消息可消费。
+`}` `}` `// Topic`中没有消息可消费。
 
 ```java
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
 ```
 
-`//` 处理业务逻辑。
+`}` `//` 处理业务逻辑。
 
 ```
             for (Message message : messages) {
 Systemoutprintln("Receivemessage:"+message);
 ```
 
-消息队列
-
 ```java
                 System.out.println("Receive message: " + message);
-            }
 ```
 
-`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。
+`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。 `{`
 
 ```
-            {
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
+```
+
+`}`
+
+```
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -691,22 +885,36 @@ Systemoutprintln("Receivemessage:"+message);
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
-                        continue;
-                    }
-                    e.printStackTrace();
-                }
-            }
-        } while (true);
-    }
-}
 ```
+
+`}` `}`
+
+```
+                        continue;
+```
+
+`}`
+
+```
+                    e.printStackTrace();
+```
+
+`}` `}`
+
+```
+        } while (true);
+```
+
+`}` `}`
 
 **查看消息订阅是否成功**
 
@@ -716,15 +924,11 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
 面。
 4. 在**实例详情**页面，单击**Group****管理**页签。
 5. 在Group列表中找到要查看消费者的Group ID，单击其右侧**操作**列的**订阅关系**。
-如果**是否在线**显示为是，则说明消费端已成功启动且订阅成功。否则说明订阅失败。
+如果**是否在线**显示为**是**，则说明消费端已成功启动且订阅成功。**否**则说明订阅失败。
 
 **后续步骤**
 
-#### 查询消息
-
-消息队列
-
-#### 查看消息是否发送成功
+#### 3.4.3 查看消息是否发送成功
 
 消息发送后，您可以在控制台查看消息发送状态。
 
@@ -735,27 +939,24 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
 面。
 4. 在**实例详情**页面，单击**消息查询**页签。
-5. 在**消息查询**页面，单击按 **Message ID** **查询**页签。
+5. 在**消息查询**页面，单击**按** **Message ID** **查询**页签。
 6. 在搜索框中输入**Topic**以及发送消息后返回的**Message ID**，单击**查询**查看消息发送状态。
 **存储时间**表示RocketMQ服务端存储这条消息的时间。如果查询到此消息，表示消息已经成功发送到服务
 端。
 
-**重要**
-
-此步骤演示的是第一次使用RocketMQ的场景，此时消费者从未启动过，所以消息状态显示暂无消费数据。
+> **重要：** 此步骤演示的是第一次使用RocketMQ的场景，此时消费者从未启动过，所以消息状态显示暂无消费数据。
 
 **后续步骤**
 
 要启动消费者并进行消息订阅请继续订阅消息。更多消息状态请参见消息查询和消息轨迹状态说明。
 
-### 订阅消息
+### 3.5 订阅消息
 
-消息发送成功后，消费方就可以订阅消息。订阅消息需要通过调用相关协议及开发语言的SDK来完成。本文
+消息发送成功后，消费方就可以订阅消息。订阅消息需要通过调用相关协议及开发语言的SDK来完成。本文以调用TCP Java SDK订阅消息为例进行说明。
 
 **操作步骤**
 
 1. 运行以下示例代码来测试订阅消息的功能。运行代码前请按照说明正确设置相关参数。
-消息队列
 
 ```java
 import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Consumer; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import java.util.Properties; public class ConsumerTest {
@@ -786,36 +987,42 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
-}
 ```
 
-完成后，可以在RocketMQ控制台查看消费端是否成功启动，即消息订阅是否完成。
+`}` `}` 完成后，可以在RocketMQ控制台查看消费端是否成功启动，即消息订阅是否完成。
 2. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 3. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 4. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
 面。
 5. 在**实例详情**页面，单击**Group****管理**页签。
 6. 在Group列表中找到要查看消费者的Group ID，单击其右侧**操作**列的**订阅关系**。
-如果**是否在线**显示为是，则说明消费端已成功启动且订阅成功。否则说明订阅失败。 消息队列
+如果**是否在线**显示为**是**，则说明消费端已成功启动且订阅成功。**否**则说明订阅失败。
 
-## 消息类型
+## 4 消息类型
 
-### 普通消息
+### 4.1 普通消息
 
 本文介绍普通消息的定义以及示例代码。 普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。收发普通消息的示例代码如下所示。
 
 **TCP SDK示例代码**
 
-### 订阅消息
+TCP协议下收发普通消息的示例代码请参见以下文档： Java SDK： C/C++ SDK：收发普通消息 .NET SDK：收发普通消息
 
 **HTTP SDK示例代码**
 
-### 定时和延时消息
+HTTP协议下收发普通消息的示例代码请参见以下文档： Java SDK：收发普通消息 Go SDK：收发普通消息 Python SDK：收发普通消息 Node.js SDK：收发普通消息 PHP SDK：收发普通消息 C# SDK：收发普通消息 C++ SDK：收发普通消息
+
+### 4.2 定时和延时消息
+
+本文介绍RocketMQ定时和延时消息的概念、适用场景、使用方式和注意事项。
 
 **概念介绍**
 
@@ -823,11 +1030,11 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
 
 **适用场景**
 
-定时消息和延时消息适用于以下一些场景： 消息生产和消费有时间窗口要求：例如在电商交易中超时未支付关闭订单的场景，在订单创建时会发送一条RocketMQ延时消息，这条消息将会在30分钟以后投递给消费者，消费者收到此消息后需要判断对应的订单是否已完成支付。如支付未完成，则关闭订单，如已完成支付则忽略。 通过消息触发一些定时任务，例如在某一固定时间点向用户发送提醒消息。 消息队列
+定时消息和延时消息适用于以下一些场景： 消息生产和消费有时间窗口要求：例如在电商交易中超时未支付关闭订单的场景，在订单创建时会发送一条RocketMQ延时消息，这条消息将会在30分钟以后投递给消费者，消费者收到此消息后需要判断对应的订单是否已完成支付。如支付未完成，则关闭订单，如已完成支付则忽略。 通过消息触发一些定时任务，例如在某一固定时间点向用户发送提醒消息。
 
 **使用方式**
 
-发送定时消息需要明确指定消息发送时间点之后的某一时间点作为消息投递的时间点。 发送延时消息时需要设定一个延时时间长度，消息将从当前发送时间点开始延迟固定时间之后才开始投递。
+定时和延时消息的使用在代码编写上存在略微的区别： 发送定时消息需要明确指定消息发送时间点之后的某一时间点作为消息投递的时间点。 发送延时消息时需要设定一个延时时间长度，消息将从当前发送时间点开始延迟固定时间之后才开始投递。
 
 **注意事项**
 
@@ -837,15 +1044,19 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
 
 **TCP SDK示例代码**
 
+TCP协议下收发定时消息或延时消息的示例代码请参见以下文档： C++ SDK：收发定时消息 .NET SDK：收发定时消息
+
 **HTTP SDK示例代码**
 
-### 事务消息
+HTTP协议下收发定时消息或延时消息的示例代码请参见以下文档： Java SDK：收发定时消息和延时消息 Go SDK：收发定时消息和延时消息 Python SDK：收发定时消息和延时消息 Node.js SDK：收发定时消息和延时消息 PHP SDK：收发定时消息和延时消息 C# SDK：收发定时消息和延时消息 C++ SDK：收发定时消息和延时消息
+
+### 4.3 事务消息
 
 本文介绍RocketMQ事务消息的概念、适用场景以及使用方式和注意事项。
 
 **概念介绍**
 
-事务消息：RocketMQ提供类似X/Open XA的分布事务功能，通过RocketMQ事务消息能达到分布式事务的最终一致。 半事务消息：暂不能投递的消息，发送方已经将消息成功发送到了RocketMQ服务端，但是服务端未收到生产者对该消息的二次确认，此时该消息被标记成“暂不能投递”状态，处于该种状态下的消息即半事务消息。 消息回查：由于网络闪断、生产者应用重启等原因，导致某条事务消息的二次确认丢失，RocketMQ服务端通过扫描发现某条消息长期处于“半消息”时，需要主动向消息生产者询问该消息的最终状态（Commit 或是Rollback），该过程即消息回查。 消息队列
+事务消息：RocketMQ提供类似X/Open XA的分布事务功能，通过RocketMQ事务消息能达到分布式事务的最终一致。 半事务消息：暂不能投递的消息，发送方已经将消息成功发送到了RocketMQ服务端，但是服务端未收到生产者对该消息的二次确认，此时该消息被标记成“暂不能投递”状态，处于该种状态下的消息即半事务消息。 消息回查：由于网络闪断、生产者应用重启等原因，导致某条事务消息的二次确认丢失，RocketMQ服务端通过扫描发现某条消息长期处于“半消息”时，需要主动向消息生产者询问该消息的最终状态（Commit 或是Rollback），该过程即消息回查。
 
 **适用场景**
 
@@ -874,11 +1085,13 @@ RocketMQ事务消息适用于以下场景： 帮助用户实现类似X/Open XA�
 
 **TCP SDK示例代码**
 
-消息队列
+TCP协议下收发事务消息的示例代码请参见以下文档： Java SDK：收发事务消息 C/C++ SDK：收发事务消息 .NET SDK：收发事务消息
 
 **HTTP SDK示例代码**
 
-### 顺序消息
+HTTP协议下收发事务消息的示例代码请参见以下文档： Java SDK：收发事务消息 Go SDK：收发事务消息 Python SDK：收发事务消息 Node.js SDK：收发事务消息 PHP SDK：收发事务消息 C# SDK：收发事务消息 C++ SDK：收发事务消息
+
+### 4.4 顺序消息
 
 顺序消息可以保证消息的消费顺序和发送的顺序一致，即先发送的先消费，后发送的后消费，常用于金融证券、电商业务等对消息指令顺序有严格要求的场景。本文介绍RocketMQ顺序消息的概念、适用场景、实现原理以及使用过程中的注意事项。
 
@@ -898,7 +1111,7 @@ Sharding Key：顺序消息中用来区分Topic中不同分区的关键字段，
 
 **如何实现顺序消息**
 
-消息队列在RocketMQ中，消息的顺序需要由以下三个阶段保证：
+在RocketMQ中，消息的顺序需要由以下三个阶段保证：
 
 **消息发送**
 
@@ -925,26 +1138,26 @@ RocketMQ按照存储的顺序将消息投递给Consumer，Consumer收到消息�
 
 **TCP SDK示例代码**
 
-消息队列
+TCP协议下收发顺序消息的示例代码请参见以下文档： Java SDK：收发顺序消息 C/C++ SDK：收发顺序消息 .NET SDK：收发顺序消息
 
 **HTTP SDK示例代码**
 
-消息队列
+HTTP协议下收发顺序消息的示例代码请参见以下文档： Java SDK：收发顺序消息 Go SDK：收发顺序消息 Python SDK：收发顺序消息 Node.js SDK：收发顺序消息 PHP SDK：收发顺序消息 C# SDK：收发顺序消息 C++ SDK：收发顺序消息
 
-## 控制台使用指南
+## 5 控制台使用指南
 
-### 资源管理
+### 5.1 资源管理
 
-#### 资源管理概述
+#### 5.1.1 资源管理概述
 
 本文介绍RocketMQ的资源管理。 一个新的应用接入RocketMQ需要先创建相关的RocketMQ资源，包括：
 **实例：**用于RocketMQ服务的虚拟机资源，会存储消息主题（Topic）和客户端ID（Group ID）信息。
 **消息主题（****Topic****）：**在RocketMQ的消息系统中，消息生产者将消息发送到某个指定的Topic，而消息
 消费者则通过订阅该指定的Topic来获取和消费消息。
-**Group ID**：用于标识消息消费者或生产者。
+**Group ID****：**用于标识消息消费者或生产者。
 您可以在RocketMQ控制台或调用API对这些资源进行增删改查的操作，同时也可以对这些资源的增删改的操作配置审批流程，做到资源的流程化管理。 在调用SDK发送和订阅消息的时候，除了需要指定创建的Topic、Group ID以外，还需输入您在控制台创建的身份验证信息，即AccessKey ID和AccessKey Secret。 如果您还没获取访问密钥，可以在Apsara Uni-manager运营控制台获取。具体操作方式，请参见获取AK 和SK。
 
-#### 实例管理
+#### 5.1.2 实例管理
 
 实例存储了消息主题（Topic）和客户端ID（Group ID）信息。本文介绍如何在RocketMQ控制台上创建、 更新、查看以及删除实例。
 
@@ -956,26 +1169,24 @@ RocketMQ按照存储的顺序将消息投递给Consumer，Consumer收到消息�
 4. 在**创建****MQ****实例**页面中设置相关参数，然后单击**提交**。
 相关参数说明如下：
 
-| 参数 |  | 说明 | 取值示例 |
+| 参数 |   | 说明 | 取值示例 |
 |---|---|---|---|
-|  | 组织 | 待创建实例归属的组织。 | root test _ |
-|  | 资源集 | 待创建实例归属的资源集。 | DefaultResource |
-|  | 地域 | 待创建实例所属的地域。 | cn-qingdao- env66-d01 |
+|   | 组织 | 待创建实例归属的组织。 | root test _ |
+|   | 资源集 | 待创建实例归属的资源集。 | DefaultResource |
+|   | 地域 | 待创建实例所属的地域。 | cn-qingdao- env66-d01 |
 
-消息队列
-
-| 区域 |  |  |  |
+| 区域 |   |   |   |
 |---|---|---|---|
-|  | 芯片架构 | 待创建实例所部署的芯片类型，默认和RocketMQ集群所部署的芯片架构一致， 不支持自定义修改。 参数取值如下： intel 鲲鹏海光飞腾倚天申威 | intel |
-|  | 集群 | 待创建实例所属的集群。 | cluster1 |
+|   | 芯片架构 | 待创建实例所部署的芯片类型，默认和RocketMQ集群所部署的芯片架构一致， 不支持自定义修改。 参数取值如下： intel 鲲鹏海光飞腾倚天申威 | intel |
+|   | 集群 | 待创建实例所属的集群。 | cluster1 |
 | 基本配置 | 实例名称 | 长度限制为 3 ~ 64 个字符，可以是中文、 英文、数字、短横线（-）以及下划线 （ ）。 _ | test |
-|  | Topic 数上限 | 表示该实例下支持创建的Topic的最大数量，若您不再需要使用某个Topic，请及时删除。 取值范围：10~5000。 默认值：50。 | 50 |
-|  | 消息发送 TPS | 表示该实例的消息发送TPS的上限值。若实例开启了限流功能，则消息发送TPS超过该上限值时，RocketMQ会对消息发送进行流控处理。 实例限流功能默认关闭，若您需要开启，请参见《RocketMQ运维指南》手册的《实例限流运维操作》章节。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
-|  | 消息订阅 TPS | 表示该实例的消息订阅TPS的上限值。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
-|  | 描述 | 2-128个字符，以字母或中文开头，支持数字和" "、"-"、":"特殊字符，不能以http:// _ 或https://开头。 | test |
+|   | Topic 数上限 | 表示该实例下支持创建的Topic的最大数量，若您不再需要使用某个Topic，请及时删除。 取值范围：10~5000。 默认值：50。 | 50 |
+|   | 消息发送 TPS | 表示该实例的消息发送TPS的上限值。若实例开启了限流功能，则消息发送TPS超过该上限值时，RocketMQ会对消息发送进行流控处理。 实例限流功能默认关闭，若您需要开启，请参见《RocketMQ运维指南》手册的《实例限流运维操作》章节。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
+|   | 消息订阅 TPS | 表示该实例的消息订阅TPS的上限值。 取值范围：500~30000，单位：次/秒。 默认值：500。 | 500 |
+|   | 描述 | 2-128个字符，以字母或中文开头，支持数字和" "、"-"、":"特殊字符，不能以http:// _ 或https://开头。 | test |
 
 5. **（可选）**如果您配置了审批流程，则需要额外进行如下操作：
-i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填写**操作理由，**然后单击**提交审批**。 ii. 在**操作成功**的对话框中，单击**申请单详情**，跳转到申请单详情页面。 iii. 在**申请单进度**区域中单击**查看全部**，进入到**申请单进度**面板，待所有环节全部完成，则完成审批流程。 消息队列在**实例列表**页面，即可查看到已创建的实例。
+i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填写**操作理由，**然后单击**提交审批**。 ii. 在**操作成功**的对话框中，单击**申请单详情**，跳转到申请单详情页面。 iii. 在**申请单进度**区域中单击**查看全部**，进入到**申请单进度**面板，待所有环节全部完成，则完成审批流程。 在**实例列表**页面，即可查看到已创建的实例。
 
 **查看实例列表**
 
@@ -989,7 +1200,7 @@ i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填
 
 **查看实例详情**
 
-在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，即可查看目标实例的详细信息： 基本信息：在**实例详情**页面的**基本信息**页签显示该实例的ID、Topic上限、名称、消息订阅TPS上限、消息发送TPS上限、集群ID、描述、部门及部门ID、资源集及资源集ID、芯片类型、是否拥有独立命名空间，以及是否是容灾集群。 网络管理：在**实例详情**页面的**网络管理**页签，可查看实例的接入点信息。接入点使用场景，请参见客户端接入说明。 Topic管理：在**实例详情**页面的**Topic****管理**页签，可查看到该实例下所有Topic的基本信息，包括Topic名称、Topic的消息类型、Topic的权限信息、描述和可执行操作。详细信息请参见Topic管理。 Group管理：在**实例详情**页面的**Group****管理**页签，可查看到该实例下的所有Group ID的基本信息，包括消息查询：在**实例详情**页面的**消息查询**页签，可按Message ID、Message Key以及Topic查询消息，详细信息请参见消息查询。 消息轨迹：在**实例详情**页面的**消息轨迹**页签，可进行消息轨迹查询，详细信息请参见消息轨迹。 死信队列：在**实例详情**页面的**死信队列**页签，可查询、导出和重新发送进入死信队列的死信消息，详细信息请参见死信队列。 资源报表：在**实例详情**页面的**资源报表**页签，可使用资源报表对消息生产和消费信息进行查询，详细信息请参见资源报表。 监控：在**实例详情**页面的**监控**页签，可查看实例、Group、Topic和Topic&Group的监控信息，详细信息操作日志：在**实例详情**页面的**操作日志**页签，可查看实例的操作日志，详细信息请参见查看实例操作日志。 数据集成：在**实例详情**页面的**数据集成**页签，可进行数据集成的相关配置，详细信息请参见数据集成。 您也可以点击实例名称右侧的下拉按钮切换实例。
+在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，即可查看目标实例的详细信息： 基本信息：在**实例详情**页面的**基本信息**页签显示该实例的ID、Topic上限、名称、消息订阅TPS上限、消息发送TPS上限、集群ID、描述、部门及部门ID、资源集及资源集ID、芯片类型、是否拥有独立命名空间，以及是否是容灾集群。 网络管理：在**实例详情**页面的**网络管理**页签，可查看实例的接入点信息。接入点使用场景，请参见客户端接入说明。 Topic管理：在**实例详情**页面的**Topic****管理**页签，可查看到该实例下所有Topic的基本信息，包括Topic名称、Topic的消息类型、Topic的权限信息、描述和可执行操作。详细信息请参见Topic管理。 Group管理：在**实例详情**页面的**Group****管理**页签，可查看到该实例下的所有Group ID的基本信息，包括 Group ID、创建时间、权限、描述和可执行操作。详细信息请参见Group管理。 消息查询：在**实例详情**页面的**消息查询**页签，可按Message ID、Message Key以及Topic查询消息，详细信息请参见消息查询。 消息轨迹：在**实例详情**页面的**消息轨迹**页签，可进行消息轨迹查询，详细信息请参见消息轨迹。 死信队列：在**实例详情**页面的**死信队列**页签，可查询、导出和重新发送进入死信队列的死信消息，详细信息请参见死信队列。 资源报表：在**实例详情**页面的**资源报表**页签，可使用资源报表对消息生产和消费信息进行查询，详细信息请参见资源报表。 监控：在**实例详情**页面的**监控**页签，可查看实例、Group、Topic和Topic&Group的监控信息，详细信息请参见查看实例监控信息。 操作日志：在**实例详情**页面的**操作日志**页签，可查看实例的操作日志，详细信息请参见查看实例操作日志。 数据集成：在**实例详情**页面的**数据集成**页签，可进行数据集成的相关配置，详细信息请参见数据集成。 您也可以点击实例名称右侧的下拉按钮切换实例。
 
 **更新实例配置**
 
@@ -998,19 +1209,20 @@ i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填
 2. 在**更新配置**页面，修改实例的**基本配置**信息，然后单击**提交**。
 可修改的基本配置信息包括**实例名称**、**Topic** **数上限**、**消息发送** **TPS**、**消息订阅** **TPS**和**描述**。
 3. **（可选）**如果您配置了审批流程，则需要额外进行如下操作：
-i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填写**操作理由，**然后单击**提交审批**。 ii. 在**操作成功**的对话框中，单击**申请单详情**，跳转到申请单详情页面。 消息队列 iii. 在**申请单进度**区域中单击**查看全部**，进入到**申请单进度**面板，待所有环节全部完成，则完成审批流程。
+i. 在**流程信息补充**对话框中，选择**审批后执行方式**并填写**操作理由，**然后单击**提交审批**。 ii. 在**操作成功**的对话框中，单击**申请单详情**，跳转到申请单详情页面。 iii. 在**申请单进度**区域中单击**查看全部**，进入到**申请单进度**面板，待所有环节全部完成，则完成审批流程。
 
 **删除实例**
 
-**重要**
+> **重要：** 删除RocketMQ实例前，请确保：
+> 您已删除该实例下的所有资源，包括Topic和Group ID。
+> 该实例无绑定的微消息队列MQTT版实例。
 
-删除RocketMQ实例前，请确保： 您已删除该实例下的所有资源，包括Topic和Group ID。 该实例无绑定的微消息队列MQTT版实例。
 1. 在**实例列表**页面找到需要删除的目标实例，单击**操作**列的**删除**。
 2. 在弹出的提示对话框中，仔细阅读提示信息，单击**释放**。
 
 **客户端接入说明**
 
-客户端使用消息队列RocketMQ版的SDK进行消息收发时，需要在代码中配置实例信息，包括实例ID和实例实例ID在**实例详情**页面的**基本信息**页签查看。 实例的接入点在**实例详情**页面的**网络管理**页签查看。 配置方式如下： `//` 配置实例`ID`，将`<InstancedId>`替换为您在控制台已创建好的实例的`ID`。
+客户端使用消息队列RocketMQ版的SDK进行消息收发时，需要在代码中配置实例信息，包括实例ID和实例的接入点，以接入消息队列RocketMQ版的指定实例。 实例ID在**实例详情**页面的**基本信息**页签查看。 实例的接入点在**实例详情**页面的**网络管理**页签查看。 配置方式如下： `//` 配置实例`ID`，将`<InstancedId>`替换为您在控制台已创建好的实例的`ID`。
 
 ```
 properties.put(PropertyKeyConst.INSTANCE_ID, "<InstancedId>");
@@ -1024,9 +1236,9 @@ properties.put(PropertyKeyConst.NAMESRV_ADDR, "<Endpoint>");
 
 **更多信息**
 
-如需使用API完成相关操作，请参见《RocketMQ**开发指南》**的相关内容。
+如需使用API完成相关操作，请参见**《**RocketMQ**开发指南》**的相关内容。
 
-#### Topic管理
+#### 5.1.3 Topic管理
 
 消息主题（Topic）是RocketMQ里对消息的一级归类。RocketMQ支持发布和订阅模型，通过Topic完成消息的发布和订阅。消息生产者将消息发送到Topic中，而消息消费者则通过订阅该Topic来消费消息。本文介绍如何在RocketMQ控制台上创建、查看、更新以及删除Topic。
 
@@ -1047,8 +1259,6 @@ properties.put(PropertyKeyConst.NAMESRV_ADDR, "<Endpoint>");
 | 参数 | 说明 |
 |---|---|
 
-消息队列
-
 | Topic | 设置Topic名称。 Topic只能包含英文、数字、 短横线（-）和下划线（ ）。 _ 长度限制在3～64个字符之间。 新建Topic名称不能与已存在的Topic名称或Group ID完全一致。 |
 |---|---|
 | 消息类型 | 设置消息类型。 重要 RocketMQ支持普通消息、分区顺序消息、定时/延时消息和事务消息，您创建Topic时选择的消息类型必须和您后续发送消息的类型保持一致，否则可能会导致消息发送失败。 |
@@ -1068,9 +1278,8 @@ properties.put(PropertyKeyConst.NAMESRV_ADDR, "<Endpoint>");
 
 在创建实例时，您需要指定实例的Topic数量上限值，超过该上限值则无法再继续创建Topic。当您不需要使用某个Topic时，请及时删除该Topic资源。
 
-**重要**
+> **重要：** 删除Topic之后，相关的生产者、消费者将会立即停止服务，并且同时会删除Topic元数据和Topic的消息数据，且数据不可恢复，请谨慎操作。
 
-删除Topic之后，相关的生产者、消费者将会立即停止服务，并且同时会删除Topic元数据和Topic的消息数据，且数据不可恢复，请谨慎操作。
 1. 在**Topic****管理**页签，于Topic列表中找到您需删除的目标Topic，在其**操作**列单击**删除**。
 2. 请仔细阅读弹出的**提醒**对话框中的内容，确认无误后，单击**确定**。
 
@@ -1081,20 +1290,18 @@ properties.put(PropertyKeyConst.NAMESRV_ADDR, "<Endpoint>");
 1. 在**Topic****管理**页签，单击**导入**。
 2. 在**导入****Topic**窗口，单击**上传文件**。文件上传完成后，平台将自动识别上传的topic并进行去重操作。
 
-**说明**
+> **说明：** i. 支持一次选择多个topic文件进行上传。
+> ii. 请上传csv格式文件，文件模板可参考导出的topic文件。
 
-i. 支持一次选择多个topic文件进行上传。 ii. 请上传csv格式文件，文件模板可参考导出的topic文件。
 3. 选择需要上传的topic后，单击**确定**。
-消息队列
 
 **导出**
 
 1. 在**Topic****管理**页签，勾选想要导出的Topic，单击右上方的下载图标
 。
 
-**说明**
+> **说明：** 不勾选任何Topic并点击下载图标时，将默认导出范围为全部Topic。
 
-不勾选任何Topic并点击下载图标时，将默认导出范围为全部Topic。
 2. 在**导出**窗口，选择**导出范围**和**需要导出的数据列**。
 
 | 参数 | 说明 |
@@ -1108,7 +1315,7 @@ i. 支持一次选择多个topic文件进行上传。 ii. 请上传csv格式文�
 
 如需使用API完成相关操作，请参见**《消息队列****RocketMQ****版开发指南》**的相关内容。
 
-#### Group管理
+#### 5.1.4 Group管理
 
 创建完实例和Topic后，您需要为消息的消费者（或生产者）创建客户端ID ，即Group ID。本文介绍如何在RocketMQ控制台上创建、查看以及删除Group ID。
 
@@ -1120,13 +1327,12 @@ i. 支持一次选择多个topic文件进行上传。 ii. 请上传csv格式文�
 
 Group表示一类Producer或Consumer，这类Producer或Consumer通常生产或消费同一类消息，且消息发布或订阅的逻辑一致。使用RocketMQ进行消息收发，您需要创建Group ID用于标识同一类生产者实例或者同一类消费者实例。 Group ID和Topic的关系是N∶N，即一个消费者可以订阅多个Topic，同一个Topic也可以被多个消费者订阅；一个生产者可以向多个Topic发送消息，同一个Topic也可以接收来自多个生产者的消息。
 
-##### 使用说明
+**使用说明**
 
 Group ID不能跨实例使用，例如实例A中创建的Group ID不能在实例B中使用。 Group ID不能跨协议使用，RocketMQ支持使用HTTP协议和TCP协议的SDK收发消息。如果您创建 Group ID时选择的协议为TCP协议，则该Group ID标识的客户端只能用于TCP协议的SDK收发消息，不能用于HTTP协议的SDK收发消息。 对于子账号创建的消费者Group ID或存量CID，该子账号及其主账号有使用权限。 对于主账号创建的消费者Group ID或存量CID，该主账号下的子账号无使用权限。 存量Producer ID和Consumer ID与Group ID的使用变更，请参见产品更新说明。
 
 **创建Group ID**
 
-消息队列
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
@@ -1142,9 +1348,8 @@ Group ID不能跨实例使用，例如实例A中创建的Group ID不能在实例
 | 最大重试次数 | 设置普通消息的最大重试次数，范围为1至16。若此项留空，默认值为 16。 说明若客户端也设置了最大重试次数，则以客户端设置的最大重试次数为准；如客户端未设置最大重试次数，则以此处设置的最大重试次数为准。 |
 | 描述 | 设置Group描述。 |
 
-**说明**
-
-Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID），又可用于消费者， 标识同一类 Consumer 实例（Consumer ID）； 同一个 Group ID 不可以共用于 TCP 协议和 HTTP 协议，需要分别申请。
+> **说明：** Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID），又可用于消费者， 标识同一类 Consumer 实例（Consumer ID）；
+> 同一个 Group ID 不可以共用于 TCP 协议和 HTTP 协议，需要分别申请。
 
 **查看Group ID信息**
 
@@ -1152,11 +1357,11 @@ Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID�
 
 **删除Group ID**
 
-**重要**
+> **重要：** 删除Group ID后，由该Group ID标识的生产者和消费者客户端将在客户端发起重新连接时认证失败， 已连接生产者和消费者不受影响。
 
-删除Group ID后，由该Group ID标识的生产者和消费者客户端将在客户端发起重新连接时认证失败， 已连接生产者和消费者不受影响。 消息队列
 1. 在Group ID列表，找到您需要删除的目标Group ID，在其**操作**列单击
-图标，然后在下拉列表中单击删除。
+图标，然后在下拉列表中单击**删**
+**除**。
 2. 请仔细阅读弹出的**确认信息**对话框的内容，确认无误后，单击**确定**。
 
 **单实例Group导入/导出**
@@ -1178,9 +1383,11 @@ Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID�
 
 如需使用API完成相关操作，请参见《RocketMQ开发指南》的相关内容。
 
-### 网络管理
+### 5.2 网络管理
 
-#### 查看接入点信息
+#### 5.2.1 查看接入点信息
+
+本文介绍如何查看接入点信息。
 
 **前提条件**
 
@@ -1195,13 +1402,11 @@ Group ID 既可用于生产者，标识同一类 Producer 实例（Producer ID�
 4. 在**实例详情**页面，单击**网络管理**页签。
 5. 即可查看实例的**TCP** **协议客户端接入点**和**HTTP** **协议客户端接入点**信息。
 
-**重要**
+> **重要：** 接入点信息包含敏感信息，请根据现场网络环境，注意网络安全防护。
 
-接入点信息包含敏感信息，请根据现场网络环境，注意网络安全防护。
+#### 5.2.2 绑定VPC
 
-#### 绑定VPC
-
-RocketMQ支持为指定的实例绑定多个VPC并提供Single Tunnel VPC接入点。您可以为不同业务分配不同的VPC接入点，实现更细粒度的访问控制。本文介绍如何在RocketMQ控制台为指定实例绑定VPC以及解除绑定的VPC。 消息队列
+RocketMQ支持为指定的实例绑定多个VPC并提供Single Tunnel VPC接入点。您可以为不同业务分配不同的VPC接入点，实现更细粒度的访问控制。本文介绍如何在RocketMQ控制台为指定实例绑定VPC以及解除绑定的VPC。
 
 **背景信息**
 
@@ -1214,6 +1419,9 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 **注意事项**
 
 绑定VPC功能是在已存在Any Tunnel网络的基础上附加的网络操作，Any Tunnel网络仍然可用。 建议由拥有管理员身份的用户统一管理和操作VPC，普通用户请勿随意操作，否则可能会导致业务无法访问RocketMQ实例。 绑定的VPC分配的接入点仅支持TCP协议的客户端接入。 RocketMQ绑定VPC后，只保证RocketMQ服务端在指定VPC网络中的连通能力，若您使用绑定VPC的接入点访问RocketMQ，请自行保证您的客户端在该VPC网络中的连通能力。 本文默认绑定VPC的IPv4网段，如需绑定VPC的IPv6网段，请参考绑定VPC的IPv6网段。
+
+**绑定VPC**
+
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
@@ -1222,9 +1430,9 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 5. 在**网络管理**页签单击**绑定****VPC**。
 6. 在弹出的**绑定****VPC**对话框中设置相关参数，然后单击**确定**。
 
-**说明**
+> **说明：** 本文默认绑定VPC的IPv4网段，如需绑定VPC的IPv6网段，请参考绑定VPC的IPv6网段。
 
-本文默认绑定VPC的IPv4网段，如需绑定VPC的IPv6网段，请参考绑定VPC的IPv6网段。 消息队列您需要设置的参数及说明如下表所示。
+您需要设置的参数及说明如下表所示。
 
 | 参数 | 说明 |
 |---|---|
@@ -1235,15 +1443,15 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 | VPC NAME | 输入您绑定的VPC名称，用于区分业务，建议按照业务语义进行设置。 |
 
 7. 绑定完成后，您可以在**网络管理**页签的VPC列表中查看到已绑定的VPC信息，包括**可用区**、**MQ****集群**
-名、**Endpoint**（绑定VPC后分配的实例接入点）、**VPC** **名称**、**VPC ID**、**VSwitch ID**（VPC所绑定的交换机）。
+**名**、**Endpoint**（绑定VPC后分配的实例接入点）、**VPC** **名称**、**VPC ID**、**VSwitch ID**（VPC所绑定
+的交换机）。
 8. 您还可以单击指定VPC的**操作**列的**VPC** **实例列表**，查询该VPC被哪些RocketMQ实例所绑定。
-消息队列
 
 **解除绑定**
 
-**重要**
+> **重要：** 解除绑定后，指定的VPC访问地址将失效，无法使用该VPC地址访问RocketMQ实例，请谨慎操作。
+> 一个集群下多个实例绑定相同的VPC，若要彻底解除该VPC地址的访问，请将集群下所有已绑定该VPC的实例全部解除绑定。
 
-解除绑定后，指定的VPC访问地址将失效，无法使用该VPC地址访问RocketMQ实例，请谨慎操作。 一个集群下多个实例绑定相同的VPC，若要彻底解除该VPC地址的访问，请将集群下所有已绑定该VPC的实例全部解除绑定。
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
@@ -1252,13 +1460,17 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 5. 在VPC列表中，找到需要解绑的VPC，在其**操作**列单击**解除绑定**。
 6. 在弹出的**解除绑定**对话框中仔细确认提示信息然后单击**确定**。
 
-#### 管理VPC
+#### 5.2.3 管理VPC
 
 本文介绍如何管理已绑定的VPC。
 
 **前提条件**
 
-您已为消息队列 RocketMQ版实例绑定了VPC。您可单击**网络管理** > **绑定****VPC**为消息队列 RocketMQ
+您已创建了消息队列 RocketMQ版实例，详细信息请参见创建实例。 您已为消息队列 RocketMQ版实例绑定了VPC。您可单击**网络管理** **>** **绑定****VPC**为消息队列 RocketMQ 版实例绑定VPC，详细信息请参见绑定VPC。
+
+**管理VPC**
+
+如果实例已绑定VPC，您可通过以下步骤查看VPC的相关信息，并进行管理操作。
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
@@ -1266,18 +1478,20 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 4. 在**实例详情**页面，单击**网络管理**页签。
 5. 在**网络管理**页面，查看实例已绑定VPC的**可用区**、**MQ****集群名**、**Endpoint**、**VPC** **名称**、**VPC**
 **ID**、**VSwitch ID**信息。
-消息队列
 6. （可选）如需解绑VPC，可单击目标VPC右侧**操作**列的**解除绑定**，仔细阅读**解除绑定**弹窗内的信息后，单
 击**确定**。
-7. （可选）如需查看VPC实例列表，可单击目标VPC右侧**操作**列的**VPC** **实例列表**以查看相关信息，包括实
-例、**VPC****名称**、**VPC ID**、**交换机**。
+7. （可选）如需查看VPC实例列表，可单击目标VPC右侧**操作**列的**VPC** **实例列表**以查看相关信息，包括**实**
+**例**、**VPC****名称**、**VPC ID**、**交换机**。
 
-#### 绑定VPC的IPv6网段
+#### 5.2.4 绑定VPC的IPv6网段
+
+本文介绍如何绑定VPC的IPv6网段。
 
 **操作步骤**
 
 **开启 IPv6 绑定开关**
 
+如需绑定VPC的IPv6网段，请先按照以下步骤开启 IPv6 绑定开关。
 1. 登录Apsara Uni-manager运维控制台。
 2. 在顶部菜单栏，选择**平台运维** **> UniConsole****管控研发平台**。
 3. 单击左侧菜单栏**产品列表**。
@@ -1285,6 +1499,9 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 5. 单击**rocketmq**右侧**操作**列的**开关列表**，进入**rocketmq** **开关列表**页面。
 6. 在**rocketmq** **开关列表**页面，找到**开关****ID**为**useIpv6**的开关，单击右侧**操作**列**修改开关状态**。
 7. 在**查看功能开关初始状态**窗口，开启**当前值**开关。
+
+**绑定VPC的IPv6网段**
+
 1. 开启**useIpv6**开关后，重新登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
@@ -1292,7 +1509,6 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 4. 在**实例详情**页面，单击**网络管理**页签。
 5. 单击界面的提示链接，并按照操作指引完成云资源访问授权。
 6. 在**网络管理**页签单击**绑定****VPC**。
-消息队列
 7. 在弹出的**绑定****VPC**对话框中设置如下参数，然后单击**确定**。
 
 | 参数 | 说明 |
@@ -1305,9 +1521,10 @@ RocketMQ实例默认提供一个HTTP协议和一个TCP协议的Any Tunnel类型�
 | VPC NAME | 输入您绑定的VPC名称，用于区分业务，建议按照业务语义进行设置。 |
 
 8. 绑定完成后，您可以在**网络管理**页签的VPC列表中查看到已绑定的VPC信息，包括**可用区**、**MQ****集群**
-名、**Endpoint**（绑定VPC后分配的实例接入点）、**VPC** **名称**、**VPC ID**、**网络类** 型（**ipv4**或**ipv6**）、**VSwitch ID**（VPC所绑定的交换机）。
+**名**、**Endpoint**（绑定VPC后分配的实例接入点）、**VPC** **名称**、**VPC ID**、**网络类**
+**型**（**ipv4**或**ipv6**）、**VSwitch ID**（VPC所绑定的交换机）。
 
-### 查看消费者状态
+### 5.3 查看消费者状态
 
 RocketMQ控制台为您提供了查看消费者状态的功能，帮助您在消息消费出现异常时进行问题排查，初步诊断异常原因。通过该功能，您可以查看Group ID综合信息和Group ID下单个消费端信息，包括在线状态、 订阅关系、消费TPS 、消息堆积量和线程堆栈信息等，本节介绍具体查看步骤。
 
@@ -1317,13 +1534,12 @@ RocketMQ控制台为您提供了查看消费者状态的功能，帮助您在消
 
 **应用场景**
 
-消费者状态查询经常被应用于以下两个故障排查场景。 现象：在**消费者状态**面板，看到Group ID的**订阅关系是否一致**一栏显示否。 堆积告警现象：在**消费者状态**面板，看到Group ID的**堆积量**一栏的值较大。 处理：消费堆积的告警处理方法，请参见消息堆积。
+消费者状态查询经常被应用于以下两个故障排查场景。 现象：在**消费者状态**面板，看到Group ID的**订阅关系是否一致**一栏显示**否**。 处理：订阅关系不一致的处理方法，请参见订阅关系不一致。 堆积告警现象：在**消费者状态**面板，看到Group ID的**堆积量**一栏的值较大。 处理：消费堆积的告警处理方法，请参见消息堆积。
 
 **查看Group ID综合信息**
 
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
-消息队列
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
 面。
 4. 在**实例详情**页面，单击**Group****管理**页签。
@@ -1349,16 +1565,16 @@ RocketMQ控制台为您提供了查看消费者状态的功能，帮助您在消
 消费者实例的具体信息，包括客户端ID、宿主机IP/公网IP、当前进程ID和消息堆积量等。
 2. 除了上述信息，若您还想查看关于某个消费者实例的更多详细信息，可以在其右侧**操作**列的**详细说明**，单
 击**详细信息**查看更多详细信息，包括消费线程数、消费启动时间、订阅关系和消费统计数据等。
-3. 如需查看某消费者实例当前进程的堆栈信息，找到需查看堆栈信息的消费者实例，单击其所在行右侧操
-作列的**堆栈信息**。
+3. 如需查看某消费者实例当前进程的堆栈信息，找到需查看堆栈信息的消费者实例，单击其所在行右侧**操**
+**作**列的**堆栈信息**。
 
-### 重置消费位点
+### 5.4 重置消费位点
 
-您可通过重置消费位点，按需清除堆积的或不想消费的消息后再开始消费，或直接跳转到某个时间点消费该时间点之后的消息（不论是否消费过该时间点之前的消息）。 消息队列
+您可通过重置消费位点，按需清除堆积的或不想消费的消息后再开始消费，或直接跳转到某个时间点消费该时间点之后的消息（不论是否消费过该时间点之前的消息）。
 
 **背景信息**
 
-目前不支持指定Message ID、Message Key和Tag来重置消息的消费位点。
+使用重置消费位点功能有以下注意事项： 广播消费模式不支持重置消费位点。 目前不支持指定Message ID、Message Key和Tag来重置消息的消费位点。
 
 **操作步骤**
 
@@ -1377,9 +1593,9 @@ RocketMQ控制台为您提供了查看消费者状态的功能，帮助您在消
 点之后发送的消息才会被消费。 可选时间范围中的起始和终止时间分别是该 Topic 中储存的最早的和最晚的一条消息的生产时间。不能选择超过可选时间范围的时间点。
 7. 单击**确定**以执行消费位点重置。
 
-### 消息查询
+### 5.5 消息查询
 
-#### 消息查询概述
+#### 5.5.1 消息查询概述
 
 当您遇到消息消费问题时，可通过查询具体发送的消息内容来进行排查。RocketMQ提供了三种消息查询方式，分别为按Message ID查询、按Message Key查询，以及按Topic查询。 表 1. 查询方式对比
 
@@ -1389,9 +1605,9 @@ RocketMQ控制台为您提供了查看消费者状态的功能，帮助您在消
 | 按Message Key查询 | Topic+Messag e Key | 模糊查询 | 根据Topic和Message Key可以匹配到包含指定Key的最近 64条消息，建议消息生产方为每条消息设置尽可能唯一的 Key，以确保相同的Key的消息不会超过64条，否则消息会漏查。 |
 | 按Topic查询 | Topic+时间段 | 范围查询 | 根据Topic和时间范围，批量获取符合条件的所有消息，查询量大，不易匹配。 |
 
-消息队列推荐您按照以下流程查询消息： 图 1. 消息查询流程
+推荐您按照以下流程查询消息： 图 1. 消息查询流程
 
-#### 查询消息
+#### 5.5.2 查询消息
 
 本文介绍通过控制台使用三种方法来查询消息的操作步骤。
 
@@ -1406,27 +1622,29 @@ RocketMQ控制台为您提供了查看消费者状态的功能，帮助您在消
 
 **按Message ID查询**
 
-按Message ID查询消息属于精确查询，您输入Topic和Message ID即可精确查询到任意一条消息。因此，为了尽可能精确地查询，建议在发送消息成功后将Message ID信息打印到日志中，方便问题排查。
+按Message ID查询消息属于精确查询，您输入Topic和Message ID即可精确查询到任意一条消息。因此，为了尽可能精确地查询，建议在发送消息成功后将Message ID信息打印到日志中，方便问题排查。 以Java SDK为例，获取Message ID的方法如下：
 
 ```
 SendResult sendResult = producer.send(msg); String msgId = sendResult.getMessageId();
 ```
 
+其他语言可参见**Group****管理**页签的**示例代码**获取。
+
 **按Message Key查询**
 
-RocketMQ根据您设置的 Message Key建立消息的索引信息，当您输入Topic和Message Key进行查询时，RocketMQ根据该索引即可匹配相关的消息返回。 消息队列
+RocketMQ根据您设置的 Message Key建立消息的索引信息，当您输入Topic和Message Key进行查询时，RocketMQ根据该索引即可匹配相关的消息返回。
 
-**重要**
+> **重要：** 按Message Key查询消息，请注意以下几点：
+> 按Message Key查询的条件是用户设置的Message Key属性。
+> 按Message Key查询仅仅返回符合条件的最近64条消息，因此建议您尽可能保证设置的 Key是唯一的，并具有业务区分度。
 
-按Message Key查询消息，请注意以下几点： 按Message Key查询的条件是用户设置的Message Key属性。 按Message Key查询仅仅返回符合条件的最近64条消息，因此建议您尽可能保证设置的 Key是唯一的，并具有业务区分度。 设置Message Key的方法如下：
+设置Message Key的方法如下：
 
 ```
 Message msg = new Message("Topic","*","Hello MQ".getBytes()); /**
 ```
 
-* 对每条消息设置其检索的`Key`，该`Key`值代表消息的业务关键属性，请尽可能全局唯一。
-* 以方便您在无法正常收到消息情况下，可通过`RocketMQ`控制台查询消息。不设置也不会影响消息正常收发。
-`*/`
+`*` 对每条消息设置其检索的`Key`，该`Key`值代表消息的业务关键属性，请尽可能全局唯一。 `*` 以方便您在无法正常收到消息情况下，可通过`RocketMQ`控制台查询消息。不设置也不会影响消息正常收发。 `*/`
 
 ```
 msg.setKey("TestKey"+System.currentTimeMillis());
@@ -1436,13 +1654,13 @@ msg.setKey("TestKey"+System.currentTimeMillis());
 
 按Topic查询一般用在Message ID和Message Key都无法获得的情况下，根据Topic和消息的发送时间范围，批量获取该时间范围内的所有消息，然后再找到关心的数据。
 
-**重要**
+> **重要：** 按Topic查询消息，请注意以下几点：
+> 按Topic查询属于范围查询，获取Topic下符合时间条件的所有消息，消息量大，建议尽量缩短查询区间。
+> 按Topic查询数据量大，采用分页展示。
 
-按Topic查询消息，请注意以下几点： 按Topic查询属于范围查询，获取Topic下符合时间条件的所有消息，消息量大，建议尽量缩短查询区间。 按Topic查询数据量大，采用分页展示。
+#### 5.5.3 查询结果说明
 
-#### 查询结果说明
-
-本文对消息查询的结果进行说明。 您可以在控制台的**消息查询**页签查看查询到的消息。 直接显示的信息包含**Message ID**、**Tag**、**Key**和**存储时间**。此外，您还可以在每一行消息的**操作**列下载
+本文对消息查询的结果进行说明。 您可以在控制台的**消息查询**页签查看查询到的消息。 直接显示的信息包含**Message ID**、**Tag**、**Key**和**存储时间**。此外，您还可以在每一行消息的**操作**列下载消息内容、查询消息轨迹以及查看消息详情。
 
 **消息详情**
 
@@ -1450,15 +1668,12 @@ msg.setKey("TestKey"+System.currentTimeMillis());
 
 其中，**消息详情**中的**投递状态**是RocketMQ根据各个Group ID的消费进度计算出的结果，投递状态的信息参见消息投递状态。
 
-**说明**
+> **说明：** **投递状态**仅仅是根据消费进度估算的结果，如果需要详细的消费信息，请使用**消息轨迹**工具查询。消息轨迹可以展示该条消息的完整链路，详情参见查询消息轨迹。
 
-**投递状态**仅仅是根据消费进度估算的结果，如果需要详细的消费信息，请使用**消息轨迹**工具查询。消息
 表 1. 消息投递状态
 
 | 投递状态 | 可能的原因 |
 |---|---|
-
-消息队列
 
 | 已订阅，消息至少已被消费一次 | 该Group ID已经正常消费过这条消息。 |
 |---|---|
@@ -1471,25 +1686,23 @@ msg.setKey("TestKey"+System.currentTimeMillis());
 
 在**消息详情**窗口内，RocketMQ还提供了**消费验证**功能。该功能可以将指定消息推送给指定的在线客户端， 以检测客户端消费该消息的逻辑和结果是否符合预期。
 
-**重要**
+> **重要：** 消费验证功能仅仅适用于验证客户端的消费逻辑是否正常，并不会影响正常的接收消息流程，因此消息的消费状态等信息在单击消费验证后并不会改变。
 
-消费验证功能仅仅适用于验证客户端的消费逻辑是否正常，并不会影响正常的接收消息流程，因此消息的消费状态等信息在单击消费验证后并不会改变。
+### 5.6 消息轨迹
 
-### 消息轨迹
-
-#### 消息轨迹概述
+#### 5.6.1 消息轨迹概述
 
 消息轨迹是指一条消息从生产者发送到RocketMQ服务端，再到消费者进行消费处理，整个过程中的各个相关节点的时间、状态等数据汇聚而成的完整链路信息。该轨迹可作为生产环境中排查问题时强有力的数据支持。本文介绍消息轨迹的使用场景、查询步骤以及查询结果的参数说明。
 
 **消息轨迹数据**
 
-RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消费者三个角色，每个角色在处理消息的过程中都会在轨迹链路中增加相关的信息，将这些信息汇聚在一起即可获取任意消息当前的状态，涉及的数据如下图所示： 图 1. 消息轨迹数据消息队列
+RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消费者三个角色，每个角色在处理消息的过程中都会在轨迹链路中增加相关的信息，将这些信息汇聚在一起即可获取任意消息当前的状态，涉及的数据如下图所示： 图 1. 消息轨迹数据
 
 **使用场景**
 
 在生产环境的消息收发不符合预期时，您可使用消息轨迹工具进行问题排查。通过消息的属性（Message ID、Message Key、Topic）搜索相关的消息轨迹，找到消息的实际收发状态，帮助诊断问题。
 
-##### 使用说明
+**使用说明**
 
 消息轨迹的使用不会增加额外的接入成本。所有类型的消息正常发送后，即可根据消息的属性在RocketMQ 控制台查询到消息的发送轨迹，但消费轨迹需要注意以下几点： 表 1. 消息轨迹查询规则
 
@@ -1506,15 +1719,23 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 1. 收集疑似有问题的消息信息，包括Message ID、Message Key、Topic以及大概的发送时间范围。
 2. 进入RocketMQ控制台，根据已有的信息创建查询任务，查询相关消息的轨迹。
 3. 查看结果，并分析、判断原因。
-消息队列如果轨迹显示**尚未消费**，则可以去**Group** **管理**页签查看消费者状态，确认消息是否堆积而导致尚未消费。 如果发现已经消费，请根据消费端的信息，找到对应的客户端机器和时间，登录客户端机器查看相关日志。
+如果轨迹显示**尚未消费**，则可以去**Group** **管理**页签查看消费者状态，确认消息是否堆积而导致尚未消费。 如果发现已经消费，请根据消费端的信息，找到对应的客户端机器和时间，登录客户端机器查看相关日志。
 
-#### 查询消息轨迹
+#### 5.6.2 查询消息轨迹
 
 使用消息轨迹不会对业务方增加额外的接入成本，仅需要确保客户端SDK版本支持该特性。正常收发消息后，便可以在RocketMQ控制台上进行查询。
 
 **前提条件**
 
-请确保您的SDK版本支持消息轨迹功能，具体说明如下： C/C++：v1.1.2及以上版本 .NET：v1.1.2及以上版本 Node.js：v1.0.2及以上版本 Java、Go、Python、C#、C++以及PHP：v1.0.1及以上版本
+请确保您的SDK版本支持消息轨迹功能，具体说明如下：
+
+**TCP协议**
+
+Java SDK：v1.2.7及以上版本 C/C++：v1.1.2及以上版本 .NET：v1.1.2及以上版本
+
+**HTTP协议**
+
+Node.js：v1.0.2及以上版本 Java、Go、Python、C#、C++以及PHP：v1.0.1及以上版本
 
 **操作步骤**
 
@@ -1526,72 +1747,69 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 5. 单击**创建查询任务**。
 6. 在弹出的**创建查询任务**对话框中，按需选择查询条件并按提示输入信息，单击**确定**完成创建。
 
-**重要**
+> **重要：** 查询时，尽可能精确地设置**时间范围**，以便缩小查询范围，提高查询速度。
 
-查询时，尽可能精确地设置**时间范围**，以便缩小查询范围，提高查询速度。 消息轨迹查询功能支持三种查询方式，请根据对应方式输入相应的查询条件，新建查询任务。
+消息轨迹查询功能支持三种查询方式，请根据对应方式输入相应的查询条件，新建查询任务。
 
 | 查询方式 | 输入参数 | 说明 |
 |---|---|---|
 | 按 Message ID 查询 | 需要输入消息唯一的Message ID、Topic以及消息的大致发送时间范围。 | 该方式属于精确查询，速度快，精确匹配，推荐使用。 |
 | 按 Message Key 查询 | 需要输入消息的Message Key和Topic以及大致发送时间范围。 | 该方式属于模糊查询，最多查询 1000条轨迹。仅适用于您没有记录 Message ID但是设置了Message Key，同时Message Key具有区分度的情况。 |
 
-消息队列
-
 | 按 Topic 查询 | 仅需输入Topic和大致发送时间范围，进行批量查询。 | 该方式属于范围查询，适用于没有上述Message ID和Message Key，而且消息量比较小的场景。 因为时间范围内消息很多，且不具备区分度，所以不推荐使用。 |
 |---|---|---|
 
 创建查询任务后，即可在**消息轨迹**页签下查看刚创建的查询任务，且**任务状态**显示为**查询中**，说明暂不能查看消息轨迹。
-7. 在消息轨迹的任务列表的右上角，单击刷新按钮，直到状态切换至**查询完成**。单击任务列表**操作**列的详
-情可查看到轨迹的简要信息。 如果发现没有结果，请确认输入的查询信息是否正确。 如果查询到轨迹信息，可以查看轨迹的简要信息，如Message ID、Tag、Message Key、发送状态、 发送时间和消费状态。
+7. 在消息轨迹的任务列表的右上角，单击刷新按钮，直到状态切换至**查询完成**。单击任务列表**操作**列的**详**
+**情**可查看到轨迹的简要信息。
+如果发现没有结果，请确认输入的查询信息是否正确。 如果查询到轨迹信息，可以查看轨迹的简要信息，如Message ID、Tag、Message Key、发送状态、 发送时间和消费状态。
 8. 单击**查看轨迹**即可查看完整的链路图。
-消息链路图包含3个部分： 生产者信息 Topic信息消费者信息对于Message Key和Topic查询方式，如果匹配到多条轨迹，可以进行上下翻页，查看比对轨迹数据。
+消息链路图包含3个部分： 生产者信息 Topic信息消费者信息对于Message Key和Topic查询方式，如果匹配到多条轨迹，可以进行上下翻页，查看比对轨迹数据。 消息轨迹的查询结果请参见消息轨迹状态说明。
 
-#### 消息轨迹状态说明
+#### 5.6.3 消息轨迹状态说明
 
 本节介绍消息轨迹查询页面中涉及到的名词概念和状态信息。 表 1. 消息轨迹名词解释
 
 | 链路部分 | 字段 | 说明 |
 |---|---|---|
 | 生产者 | 发送端 | 发送端IP地址。 |
-|  | 发送时间 | 消息从发送端发送时的客户端时间戳。 |
-|  | 发送耗时 | 生产者调用Send方法发送消息的毫秒耗时。 |
-|  | 状态 | 发送状态。 |
-|  | Topic | Topic名称。 |
-|  | Key | 阿里云AccessKey ID。 |
+|   | 发送时间 | 消息从发送端发送时的客户端时间戳。 |
+|   | 发送耗时 | 生产者调用Send方法发送消息的毫秒耗时。 |
+|   | 状态 | 发送状态。 |
+|   | Topic | Topic名称。 |
+|   | Key | 阿里云AccessKey ID。 |
 
-| 消息队列 |  |  |
+| 消息队列 |   |   |
 |---|---|---|
-| Topic |  |  |
-|  | Tag | 可理解为Gmail中的标签，对消息进行再归类，方便Consumer指定过滤条件在RocketMQ服务器过滤。 |
-|  | Region | 消息存储的Region信息，或者消费方机器所在的Region信息。 |
+| Topic |   |   |
+|   | Tag | 可理解为Gmail中的标签，对消息进行再归类，方便Consumer指定过滤条件在RocketMQ服务器过滤。 |
+|   | Region | 消息存储的Region信息，或者消费方机器所在的Region信息。 |
 | 消费者 | 第一次 | 消费状态。 |
-|  | IP | 消费者IP地址。 |
-|  | 耗时 | 消息推送到客户端之后执行 consumeMessage方法的耗时。 |
-|  | 投递时间 | 客户端执行consumeMessage方法开始消费消息时的时间戳。 |
+|   | IP | 消费者IP地址。 |
+|   | 耗时 | 消息推送到客户端之后执行 consumeMessage方法的耗时。 |
+|   | 投递时间 | 客户端执行consumeMessage方法开始消费消息时的时间戳。 |
 
 表 2. 发送/消费状态
 
 | 发送/消费状态 | 状态字段 | 说明 |
 |---|---|---|
 | 发送状态 | 发送成功 | 消息发送成功，服务端已经存储成功。 |
-|  | 发送失败 | 消息发送失败，服务端没有存储消息，需要重试。 |
-|  | 消息定时中 | 该消息是定时或者延时消息，且尚未到达投递时间。 |
-|  | 事务未提交 | 该消息是事务消息，且尚未提交状态。 |
-|  | 事务回滚 | 该消息是事务消息，并且已经回滚。 |
-|  | 全部成功 | 该消息的所有投递都已成功消费。 |
-|  | 部分成功 | 该消息投递中存在消费失败的情况， 或消费失败并重试成功的情况。 |
-|  | 全部失败 | 该消息的所有投递都消费失败。 |
+|   | 发送失败 | 消息发送失败，服务端没有存储消息，需要重试。 |
+|   | 消息定时中 | 该消息是定时或者延时消息，且尚未到达投递时间。 |
+|   | 事务未提交 | 该消息是事务消息，且尚未提交状态。 |
+|   | 事务回滚 | 该消息是事务消息，并且已经回滚。 |
+|   | 全部成功 | 该消息的所有投递都已成功消费。 |
+|   | 部分成功 | 该消息投递中存在消费失败的情况， 或消费失败并重试成功的情况。 |
+|   | 全部失败 | 该消息的所有投递都消费失败。 |
 
-消息队列
-
-| 消费状态 |  |  |
+| 消费状态 |   |   |
 |---|---|---|
-|  | 尚未消费 | 该消息尚未投递给任何消费方。 |
-|  | 消费结果未返回 | 消费消息的方法尚未返回结果，或者被中断，导致本次消费结果未传回服务端。 |
-|  | 消费成功 | 该消息已被成功消费。 |
-|  | 消费失败 | 消费消息的方法主动返回失败标志， 或者是消费方法抛异常。 |
+|   | 尚未消费 | 该消息尚未投递给任何消费方。 |
+|   | 消费结果未返回 | 消费消息的方法尚未返回结果，或者被中断，导致本次消费结果未传回服务端。 |
+|   | 消费成功 | 该消息已被成功消费。 |
+|   | 消费失败 | 消费消息的方法主动返回失败标志， 或者是消费方法抛异常。 |
 
-### 死信队列
+### 5.7 死信队列
 
 死信队列用于处理无法被正常消费的消息，即死信消息。本文介绍如何查询、导出和重新发送进入死信队列的死信消息，以便您按需管理死信消息，避免消息漏处理。
 
@@ -1601,15 +1819,15 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 
 **特性说明**
 
-死信消息具有以下特性： 不会再被消费者正常消费。 有效期与正常消息相同，均为 7 天，7 天后会被自动删除。因此，请在死信消息产生后的 7 天内及时处理。 死信队列具有以下特性： 一个死信队列对应一个 Group ID，而不是对应单个消费者实例。 如果一个 Group ID 未产生死信消息，消息队列RocketMQ版不会为其创建相应的死信队列。 一个死信队列包含了对应 Group ID 产生的所有死信消息，不论该消息属于哪个 Topic。
+死信消息具有以下特性： 不会再被消费者正常消费。 有效期与正常消息相同，均为 7 天，7 天后会被自动删除。因此，请在死信消息产生后的 7 天内及时处理。 死信队列具有以下特性： 一个死信队列对应一个 Group ID，而不是对应单个消费者实例。 如果一个 Group ID 未产生死信消息，消息队列RocketMQ版不会为其创建相应的死信队列。 一个死信队列包含了对应 Group ID 产生的所有死信消息，不论该消息属于哪个 Topic。 消息队列RocketMQ版控制台提供对死信消息的查询、导出和重发的功能。
 
 **查询死信消息的方式**
+
+消息队列RocketMQ版提供的查询死信消息的方式对比如下表所示。
 
 | 查询方式 | 查询条件 | 查询类别 | 说明 |
 |---|---|---|---|
 | 按 Group ID 查询 | Group ID+时间段 | 范围查询 | 根据 Group ID 和时间范围，批量获取符合条件的所有消息；查询量大，不易匹配。 |
-
-消息队列
 
 | 按 Message ID 查询 | Group ID+Message ID | 精确查询 | 根据 Group ID 和 Message ID 可以精确定位任意一条消息。 |
 |---|---|---|---|
@@ -1618,15 +1836,14 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 
 您可以根据 Group ID 和死信消息产生的时间范围，批量查询该 Group ID 在某段时间内产生的所有死信消息。
 
-**重要**
+> **重要：** 死信消息产生的时间是指一条消息在投递重试达到最大次数后被发送到死信队列的时间。
 
-死信消息产生的时间是指一条消息在投递重试达到最大次数后被发送到死信队列的时间。
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
 面。
 4. 在**实例详情**页面，单击**死信队列**页签。
-5. 单击按 **Group ID** **查询**页签。
+5. 单击**按** **Group ID** **查询**页签。
 6. 在**GroupId**的下拉列表中选择想要查找的 Group ID。
 7. 单击**查询时间范围**右侧的时间选择框，选择想要查询的时间范围的起止日期和具体时间点。
 8. 单击**查询**按钮。页面中会显示所有符合以上条件的死信消息。
@@ -1641,7 +1858,7 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
 面。
 4. 在**实例详情**页面，单击**死信队列**页签。
-5. 单击按 **Message ID** **查询**页签。
+5. 单击**按** **Message ID** **查询**页签。
 6. 在**GroupId**的下拉列表中选择想要查找的 Group ID。
 7. 在**Message ID**的输入框中输入想要查找的消息的 Message ID。
 8. 单击**查询**按钮。页面中会显示所有符合以上条件的死信消息。
@@ -1650,7 +1867,7 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 
 **导出死信消息**
 
-若您暂时无法处理死信消息，可以在消息队列RocketMQ版控制台上将其导出，以免超过有效期。 消息队列RocketMQ版控制台提供对死信消息的单条导出和批量导出功能。导出的文件格式为 CSV。 导出的消息内容如下表所示。 消息队列
+若您暂时无法处理死信消息，可以在消息队列RocketMQ版控制台上将其导出，以免超过有效期。 消息队列RocketMQ版控制台提供对死信消息的单条导出和批量导出功能。导出的文件格式为 CSV。 导出的消息内容如下表所示。
 
 | 消息字段 | 字段含义 |
 |---|---|
@@ -1671,17 +1888,27 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 
 一条消息进入死信队列，意味着某些因素导致消费者无法正常消费该消息，因此，通常需要您对其进行特殊处理。排查可疑因素并解决问题后，您可以在消息队列RocketMQ版控制台重新发送该消息，让消费者重新消费一次。
 
-**重要**
+> **重要：** 死信消息被重新发送后，仍会在死信队列中存储三天，到期后再删除。
 
-死信消息被重新发送后，仍会在死信队列中存储三天，到期后再删除。 单条重发在消息队列RocketMQ版控制台按任意方式查询到死信消息后，在某条死信消息的**操作**列，单击**重新发** 送，重发该条死信消息。 批量重发消息队列在消息队列RocketMQ版控制台按 Group ID 查询到死信消息后，勾选目标死信消息，然后单击页面下方的**批量重发**按钮，重新发送所有勾选的死信消息。
+单条重发在消息队列RocketMQ版控制台按任意方式查询到死信消息后，在某条死信消息的**操作**列，单击**重新发**
+**送**，重发该条死信消息。
+批量重发在消息队列RocketMQ版控制台按 Group ID 查询到死信消息后，勾选目标死信消息，然后单击页面下方的**批量重发**按钮，重新发送所有勾选的死信消息。
 
-### 资源报表
+### 5.8 资源报表
 
-#### 资源报表概述
+#### 5.8.1 资源报表概述
 
-本文介绍如何使用资源报表对消息生产和消费信息进行查询。 资源报表是统计消息生产和消费数据的功能。通过该功能，您可查询以下数据： 按Topic查询：指定时间范围内发送至某Topic的消息总量或TPS。 按实例查询：指定时间范围内发送至某实例下所有Topic的消息总量或TPS。 按Group ID查询：指定时间范围内某Topic投递至某Group ID的消息总量或TPS。 按实例查询：指定时间范围内投递至实例下所有Group ID的消息总量或TPS。
+本文介绍如何使用资源报表对消息生产和消费信息进行查询。 资源报表是统计消息生产和消费数据的功能。通过该功能，您可查询以下数据：
 
-#### 查看消息生产数据
+**消息生产数据**
+
+按Topic查询：指定时间范围内发送至某Topic的消息总量或TPS。 按实例查询：指定时间范围内发送至某实例下所有Topic的消息总量或TPS。
+
+**消息消费数据**
+
+按Group ID查询：指定时间范围内某Topic投递至某Group ID的消息总量或TPS。 按实例查询：指定时间范围内投递至实例下所有Group ID的消息总量或TPS。
+
+#### 5.8.2 查看消息生产数据
 
 可供查看的消息生产数据是在一定时间范围内某个Topic或指定实例下的所有Topic从Broker接收的消息的总量或者TPS。
 
@@ -1701,8 +1928,6 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 | 当前实例 | 当资源类型为实例时显示，默认为当前实例的名称和ID，您无需输入。 |
 | Topic | 当资源类型为Topic时显示，查询当前实例下指定Topic的消息生产数据。 |
 
-消息队列
-
 | 采集类型 | 分为总量和TPS。 总量提供每个周期内Topic接收的消息总量； TPS提供每个周期内Topic接收消息的平均TPS。 |
 |---|---|
 | 采集周期 | 包括1分钟、10分钟后、30分钟、1小时。采集周期决定了数据采集的时间间隔，周期越短，采集点越密集，消息消费数据越详细。 |
@@ -1710,7 +1935,7 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 
 查询结果将以图表形式显示。
 
-#### 查看消息消费数据
+#### 5.8.3 查看消息消费数据
 
 可供查看的消息消费数据是某个Topic在一个时间段内投递给某个Group ID的消息的总量或TPS。
 
@@ -1732,20 +1957,19 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 | 采集类型 | 分为总量和TPS。 总量提供每个周期内投递给Group ID的消息总量； TPS提供每个周期内投递给Group ID的消息的平均TPS。 |
 | 采集周期 | 包括1分钟、10分钟后、30分钟、1小时。采集周期决定了数据采集的时间间隔，周期越短，采集点越密集，消息消费数据越详细。 |
 
-消息队列
-
 | 时间范围 | RocketMQ最多可以提供最近三天之内的消息的消费查询。 |
 |---|---|
 
 查询结果以图表形式显示。
 
-### 查看实例监控信息
+### 5.9 查看实例监控信息
 
 在云监控中心，您可以通过查看监控图表，了解各实例的运行情况。本文介绍如何快速跳转到云监控查看实例监控信息。
 
 **背景信息**
 
-云监控中心提供了资源的实时监控、告警及通知服务，为您的产品和业务保驾护航。更多信息，请参见专有云文档中心《Apsara Uni-manager运营控制台用户指南》文档的**云监控****CMS** **用户指南** > **云监控****CMS**简介章节。
+云监控中心提供了资源的实时监控、告警及通知服务，为您的产品和业务保驾护航。更多信息，请参见专有云文档中心《Apsara Uni-manager运营控制台用户指南》文档的**云监控****CMS** **用户指南** **>** **云监控****CMS****简**
+**介**章节。
 
 **操作步骤**
 
@@ -1755,9 +1979,7 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 面。
 4. 在**实例详情**页面，单击**监控**页签，查看目标实例的监控信息。
 
-**说明**
-
-您也可以单击**查看更多**，进入云监控CMS控制台查看更详细的实例监控信息。
+> **说明：** 您也可以单击**查看更多**，进入云监控CMS控制台查看更详细的实例监控信息。
 
 | 项目 | 说明 |
 |---|---|
@@ -1765,9 +1987,9 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 | 监控周期 | 您可以配置查看监控数据的时间段，即监控周期。取值范围： 按小时：1小时、3小时、6小时、12小时。 按天：1天、3天、7天、14天。 自定义：可以根据实际需要设置监控周期。支持快速选择近五分钟、近十分钟或近十五分钟。 |
 | 监控指标 | 具体的监控指标说明，请参见专有云文档中心《Apsara Uni-manager运营控制台用户指南》文档的云监控CMS 用户指南 > 云产品监控 > 云监控指标说明章节。 说明默认展示各监控指标的平均值数据，你也可以根据实际需要修改为最大值或最小值数据。 |
 
-### 查看实例操作日志
+### 5.10 查看实例操作日志
 
-消息队列 RocketMQ实例的操作日志会详细记录每次操作的时间、地点及执行者，这些记录将被妥善存档。当您在管理或使用RocketMQ实例时遇到技术问题或故障，查阅这些操作记录将有助于快速定位问题的变更来源，从而提高故障排除的效率。此外，操作日志还可以用于评估故障的影响范围和责任认定等相关事项。
+RocketMQ实例的操作日志会详细记录每次操作的时间、地点及执行者，这些记录将被妥善存档。当您在管理或使用RocketMQ实例时遇到技术问题或故障，查阅这些操作记录将有助于快速定位问题的变更来源，从而提高故障排除的效率。此外，操作日志还可以用于评估故障的影响范围和责任认定等相关事项。
 
 **说明**
 
@@ -1784,17 +2006,15 @@ RocketMQ系统中，一条消息的完整链路包含生产者、服务端、消
 5. 查看操作日志，默认会列出最近7天RocketMQ实例及其相关资源的所有操作记录。
 您可以按**操作人**和**操作名称**等过滤条件进一步筛查出关心的操作记录。
 
-**说明**
+> **说明：** 您也可以单击**操作**列的**操作详情**，在**操作详情信息**面板中查看更详细的日志信息。
 
-您也可以单击**操作**列的**操作详情**，在**操作详情信息**面板中查看更详细的日志信息。
-
-### 管理账号授权
+### 5.11 管理账号授权
 
 消息队列RocketMQ提供两种授权机制：跨云账号授权和RAM主子账号授权，可将Topic的发布和订阅权限授予其他阿里云账号（一级部门账号）或RAM用户（个人云平台账号）。
 
 **注意事项**
 
-基于安全访问控制原则，请优先采用子账号授权方式，尽量减少跨主账号之间的授权使用。 有命名空间的实例不支持在不同主账号之间进行授权。 消息队列
+基于安全访问控制原则，请优先采用子账号授权方式，尽量减少跨主账号之间的授权使用。 有命名空间的实例不支持在不同主账号之间进行授权。
 
 **跨云账号授权**
 
@@ -1830,15 +2050,11 @@ RAM主子账号授权指的是某阿里云账号授权给该账号所属的一�
 | Topic | 正在进行授权的Topic的名称，系统默认写入，您无需填写。 |
 | 账号类型 | 此处选择子账号。 |
 
-消息队列
-
 | 子账号名称 | 输入被授权的RAM用户的名称。 |
 |---|---|
 | 授权类型 | 选择要授予该RAM用户的权限，可选： 发布订阅发布和订阅 |
 
-**说明**
-
-被授权的RAM用户必须是该阿里云账号所属部门下的云平台账号。
+> **说明：** 被授权的RAM用户必须是该阿里云账号所属部门下的云平台账号。
 
 **查看授权信息**
 
@@ -1852,25 +2068,43 @@ RAM主子账号授权指的是某阿里云账号授权给该账号所属的一�
 图标，然后在下拉菜单中选择**查看授**
 **权信息**，即可查看该Topic相关的授权操作记录和信息，包括**Topic**、**授权用户**、**授权类型**和**详细说明**。
 
-**说明**
+> **说明：** 自己创建的Topic，无需给自己重复授权。
+> 被授权的账号登录RocketMQ控制台后，可以查看被授权的Topic资源，但仍需创建Group ID，不能直接使用授权账号的Group ID。
+> 被授权的Topic资源属于授权账号，因此被授权账号不可以对该Topic进行删除操作。
+> RAM主子账号授权方式中，被授权的RAM用户不可以创建Topic。
+> 跨云账号授权方式中，被授权的阿里云账号可以创建Topic，但新创建的Topic和原授权的阿里云账号无关。
 
-自己创建的Topic，无需给自己重复授权。 被授权的账号登录RocketMQ控制台后，可以查看被授权的Topic资源，但仍需创建Group ID，不能直接使用授权账号的Group ID。 被授权的Topic资源属于授权账号，因此被授权账号不可以对该Topic进行删除操作。 RAM主子账号授权方式中，被授权的RAM用户不可以创建Topic。 跨云账号授权方式中，被授权的阿里云账号可以创建Topic，但新创建的Topic和原授权的阿里云账号无关。
+### 5.12 数据集成
 
-### 数据集成
-
-#### Connector概述
+#### 5.12.1 Connector概述
 
 RocketMQ提供全托管、免运维的Connector，用于RocketMQ和其他阿里云服务之间的数据同步。本文介绍Connector的功能描述、RocketMQ支持的Connector任务、使用说明以及功能优势。
 
 **功能描述**
 
-RocketMQ的Connector可实现RocketMQ和其他云服务的数据同步。RocketMQ的Connector包括以下两种类型： 如下图所示，RocketMQ为数据源，其他云服务为数据目标，Sink Connector可将RocketMQ的数据流消息队列出至其他云服务中。 如下图所示，其他云服务为数据源，RocketMQ为数据目标，Source Connector可将其他云服务的数据流入至RocketMQ中。
+RocketMQ的Connector可实现RocketMQ和其他云服务的数据同步。RocketMQ的Connector包括以下两种类型：
+
+**Sink Connector**
+
+如下图所示，RocketMQ为数据源，其他云服务为数据目标，Sink Connector可将RocketMQ的数据流出至其他云服务中。
+
+**Source Connector**
+
+如下图所示，其他云服务为数据源，RocketMQ为数据目标，Source Connector可将其他云服务的数据流入至RocketMQ中。
+
+**Connector任务**
+
+**Sink Connector**
 
 | Connector | 任务描述 | 文档 |
 |---|---|---|
 | MaxCompute Sink Connector | 将数据从RocketMQ导出至大数据计算服务MaxCompute。 | MaxCompute Sink Connector |
 
-##### 使用说明
+**Source Connector**
+
+RocketMQ暂不支持Source Connector类型的数据同步任务。
+
+**使用说明**
 
 Connector运行时，会占用系统CPU、内存及I/O资源，以及数据源和数据目标的资源，请提前做好规格评估，确保资源充足。
 
@@ -1884,17 +2118,15 @@ RocketMQ通过Connector和其他异构数据源进行消息同步时，业务链
 
 RocketMQ的Connector功能通过RocketMQ的控制台完成，全程操作可视化，配置无需额外复杂产品的支持。
 
-#### MaxCompute Sink Connector
+#### 5.12.2 MaxCompute Sink Connector
 
 通过Connector可实现RocketMQ与其他阿里云服务之间的数据同步。本文介绍如何创建并部署 MaxCompute Sink Connector，将数据从RocketMQ实例的源Topic导入至MaxCompute的表中。
 
 **前提条件**
 
-RocketMQ：创建Topic。具体操作，请参见创建Topic。 大数据计算服务（MaxCompute）：创建表。具体操作，请参见大数据计算服务**《用户指南》**手册的**《创建表》**章节。 消息队列本文以创建名称为 `test_rocketmq` 的表为例，该表的建表语句如下：
+RocketMQ：创建Topic。具体操作，请参见创建Topic。 大数据计算服务（MaxCompute）：创建表。具体操作，请参见大数据计算服务**《用户指南》**手册的**《创建表》**章节。 本文以创建名称为 `test_rocketmq` 的表为例，该表的建表语句如下：
 
-**重要**
-
-建表时，您可以根据您的需求自定义修改表的名称，但表的格式字段必须和以下内容保持一致。
+> **重要：** 建表时，您可以根据您的需求自定义修改表的名称，但表的格式字段必须和以下内容保持一致。
 
 ```
 CREATE TABLE IF NOT EXISTS `test_rocketmq` (
@@ -1907,17 +2139,21 @@ CREATE TABLE IF NOT EXISTS `test_rocketmq` (
   `tag` STRING
 ```
 
-)
+`)`
 
 ```
 PARTITIONED BY (
   pt STRING
-);
 ```
 
-##### 使用说明
+);
+
+**使用说明**
 
 Connector运行时，会占用系统CPU和存储资源，以及数据源和数据目标的资源，请提前做好规格评估，确保资源充足。
+
+**创建Connector**
+
 1. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。
 2. 在**实例列表**页面顶部菜单栏中分别选择**组织**和**资源集**。
 3. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页
@@ -1933,15 +2169,11 @@ i. 在**配置基本信息**页签输入任务**名称**和**描述**，然后�
 | 实例 | RocketMQ的实例ID，即需要同步数据的源Topic所属实例的ID。 该参数值自动填充为您在步骤3中指定的实例ID，无需填写。 | MQ INST 1624605771445148 _ _ BfSh**** _ |
 | Topic | RocketMQ的Topic名称，即指定将哪个Topic的数据发送到数据目标中。 | maxcompute sink input _ _ |
 
-消息队列
-
 | 消费初始位置 | 指定消息从源Topic中哪个消费位点开始往目标MaxCompute的表中同步。参数取值如下： 最早位点：表示Connector任务运行时，将从Topic中最早的消费位点开始同步消息数据。 最近位点：表示Connector任务运行时，将从Topic中的最新消费位点开始同步消息数据。 | 最早位点 |
 |---|---|---|
 | 过滤规则 | Connector任务支持按照Tag过滤消息数据。 若未设置过滤规则：指定的源 Topic中的所有消息都将被同步至目标源中。 若设置了过滤规则，则只同步指定源Topic中符合过滤规则的数据。 设置过滤规则时，您可以直接输入 Tag名称按Tag过滤。 例如您的消息Tag属性为 CartService，则直接输入 CartService ；如果需要过滤多个 Tag属性，则用双竖线（\|\|）隔开，例如 CartService\|\|Inventory\|\|Payment 。具体过滤方法请参见消息过滤。 | Cart\|\|Inventory\|\|Payment |
 | 任务数 | 创建Connector任务的最大数量。 每个任务包含一个RocketMQ的消费者客户端，单个任务的消费性能 ≤3000 TPS。 取值范围：1～16的整数。 | 10 |
 | 异常数据 Topic | 用于存储异常数据的 Topic，Connector会将转发失败的消息统一投递至该Topic中。 该参数无需填写，默认取值RocketMQ为当前Connector任务自动创建的Topic的名称。格式为connect-error-connector任务名称。 重要请勿删除RocketMQ为当前 Connector任务自动创建的异常数据Topic，删除 Connector任务时该Topic会被自动删除。 | connect-error-mqsink |
-
-消息队列
 
 | Connector Group ID | 用于消费Connector任务中同步消息数据的Group。 该参数无需填写，默认取值RocketMQ为当前Connector任务自动创建的Group。格式为 connect-connector任务名称。 重要请勿删除RocketMQ为当前 Connector任务自动创建的 Group，删除Connector任务时该Group会被自动删除。 | connect-mqsink |
 |---|---|---|
@@ -1956,38 +2188,47 @@ iii. 在**配置目标源**页签，按需配置以下参数，然后单击**确
 | 连接地址 | MaxCompute服务的接入点。RocketMQ通过该接入点访问 MaxCompute服务。 获取方式，请参见大数据计算服务《开发指南》手册的《获取 Endpoint》章节。 | http://service.xxxx.shuguang. com/api |
 | 工作空间 | MaxCompute的项目名称，即数据将被同步到的目标表所属项目的名称。 | connector test _ |
 
-消息队列
-
 | accessId | MaxCompute资源所属账号的AccessKey ID。 获取方式，请参见大数据计算服务《开发指南》手册的《获取 Accesskey》章节。 | j8geROUEAW1k**** |
 |---|---|---|
 | accessKey | MaxCompute资源所属账号的AccessKey Secret。 获取方式，请参见大数据计算服务《开发指南》手册的《获取 Accesskey》章节。 | ******************************* |
 | 重试次数 | 消息发送超时或异常时，可重新发送的最大次数。参数取值如下： 1 2 3 说明若达到重试次数消息还未发送成功，该消息将被投递至RocketMQ自动创建的异常数据Topic中。消息重试的更多信息，请参见《RocketMQ用户指南》的《消息重试》章节。 | 1 |
 | TargetParams.超时时间 | 消息发送时的响应超时时间，若超过该参数设置的时长还未返回响应，消息将被重新投递。 参数取值：3000ms～ 30000ms，即3s～30s。 | 10 |
 
-创建完成后，在**数据集成**页面的任务列表中可看到已创建的Connector，且状态为**待部署**。 Connector任务创建成功后，您需要部署该任务，部署成功后消息开始按照Connector任务中配置的规则进行同步。
+创建完成后，在**数据集成**页面的任务列表中可看到已创建的Connector，且状态为**待部署**。
+
+**部署Connector**
+
+Connector任务创建成功后，您需要部署该任务，部署成功后消息开始按照Connector任务中配置的规则进行同步。
 1. 在**数据集成**页面的任务列表中，找到新创建的Connector任务，在其**操作**列单击**部署**。
 2. 在弹出的**确认**对话框中，单击**确定**完成部署。
 部署操作完成后，若任务状态显示为**待调度**或**部署中**，说明系统在调度后台资源执行部署任务。请稍等片刻，部署成功后任务状态会自动更新为**运行中**。
+
+**查看Connector任务详情**
+
 1. 在**数据集成**页面的任务列表中，找到待查询的Connector任务，在其**操作**列单击**详情**。
 2. 在**任务详情**面板单击**概览**或**配置**页签。
-消息队列若您暂时不希望某个Connector任务同步数据，您可以暂停该任务，暂停后该任务将立即停止同步数据；若
+**概览**页签展示Connector任务的运行状态、运行结果、数据统计报表等。
+**配置**页签展示Connector任务的基础信息、数据源信息和数据目标信息。
 
-**重要**
+**暂停/恢复Connector**
 
-Connector任务停止后将立即停止数据同步，重新恢复任务后，暂停期间产生的源数据不会被同步到数据目标。
+若您暂时不希望某个Connector任务同步数据，您可以暂停该任务，暂停后该任务将立即停止同步数据；若您需要继续使用该Connector任务，可以恢复该任务。
+
+> **重要：** Connector任务停止后将立即停止数据同步，重新恢复任务后，暂停期间产生的源数据不会被同步到数据目标。
+
 1. 在**数据集成**页面的任务列表中，找到待暂停或恢复的Connector任务，在其**操作**列中单击**暂停**或**恢复**。
 2. 在弹出的**确认**对话框中，单击**确定**。
 
-**重要**
+**删除Connector**
 
-删除Connector任务后，该Connector指定的消息源到消息目标的数据同步将立即停止，请谨慎执行。
+> **重要：** 删除Connector任务后，该Connector指定的消息源到消息目标的数据同步将立即停止，请谨慎执行。
+
 1. 在**数据集成**页面的任务列表中，找到待删除的Connector任务，在其**操作**列中单击**删除**。
 2. 在弹出的**确认**对话框中，单击**确定**删除任务。
-消息队列
 
-## 消息路由
+## 6 消息路由
 
-### Replicator
+### 6.1 Replicator
 
 RocketMQ可通过Replicator消息路由功能进行集群间的数据消息同步，本文介绍如何配置Replicator消息路由任务。
 
@@ -2005,13 +2246,15 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 
 **操作流程**
 
+配置Replicator消息路由任务的操作流程如下：
+
 **步骤一：创建消息同步云**
 
 创建路由任务前，需要先录入部署了RocketMQ集群的云环境的相关信息。包括RocketMQ服务端的接入点、域名、云环境所属账号的AK、SK等。RocketMQ将根据录入的云信息获取跨云访问RocketMQ资源的权限。
 
 **步骤二：创建路由任务**
 
-消息队列指定消息源和消息目标，设置过滤条件和同步位点等信息。
+指定消息源和消息目标，设置过滤条件和同步位点等信息。
 
 **步骤一：创建消息同步云**
 
@@ -2020,9 +2263,7 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 3. 在**replicator**页面单击**云信息**页签，然后单击**创建消息同步云**。
 4. 在弹出的**创建消息同步云**对话框中配置以下参数，然后单击**确定**。
 
-**说明**
-
-创建消息路由将占用消息集群的正常生产并消费消息的资源，请仔细做好扩容评估。
+> **说明：** 创建消息路由将占用消息集群的正常生产并消费消息的资源，请仔细做好扩容评估。
 
 | 参数 | 说明 | 取值示例 |
 |---|---|---|
@@ -2031,16 +2272,14 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 | 地域 | RocketMQ集群所部署的地域。 地域信息可登录RocketMQ控制台，在控制台上方的菜单栏中查看。 | cn-qingdao-****-d01 |
 | Secret | 云环境所属账号的AccessKey Secret。 获取AccessKey Secret，请参见《RocketMQ开发指南》手册的《获取AccessKey》章节。 | AMx4ainrLWhT8jYUPHkdI4zY7t **** |
 
-消息队列
-
 | MQ 实例endpoint | RocketMQ服务的接入点。 获取RocketMQ的Endpoint，请参见本文中的参考信息。 | http://mq.server.****.com:808 0/rocketmq/nsaddr4client- internal |
 |---|---|---|
 | MQ API | RocketMQ控制台的访问接口。 参数格式为： http: {console.domain}/json 。 获取{console.domain}，请参见本文中的参考信息。 | http:mq.console.****.com/json |
 | 备注 | 云环境信息的具体说明或备注，以作区分和记录。 | 中心节点 |
 
-|  |  | http: |  |
+|   |   | http: |   |
 |---|---|---|---|
-|  | {console.domain}/json |  |  |
+|   | {console.domain}/json |   |   |
 
 **步骤二：创建路由任务**
 
@@ -2054,8 +2293,6 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 | 消息源 | 消息同步云：选择需要同步消息的云名称。 源地域：RocketMQ集群所部署的地域。指定消息同步云后，该参数会自动关联，不需要输入。 源实例：选择需要同步的消息所属Topic的所在实例。 源Topic：选择需要同步的消息所属的Topic名称。 |
 | 消息目标 | 消息同步云：选择消息将被同步到的同步云名称。 目标地域：RocketMQ集群所部署的地域。指定消息同步云后，该参数会自动关联，不需要输入。 目标实例：选择消息将被同步到的Topic所属实例。 目标Topic：选择消息将被同步到的Topic名称。 |
 | 起始同步位点 | 指定消息从源Topic中哪个消费位点开始往目标Topic中同步。 默认为最大位点。即任务启动后，从最新写入源Topic的消息开始同步。 重要首次任务启动前，发送至源Topic中的消息不会同步至目标 Topic。 |
-
-消息队列
 
 | 过滤规则 | 若未设置过滤规则，指定的源Topic中的所有消息都将被同步至目标 Topic。 若设置了过滤规则，则只同步指定源Topic中符合过滤规则的消息。 设置过滤规则时，您可以直接输入Tag名称进行Tag过滤。 例如您的消息Tag属性为CartService，则直接输入 CartService ；如果需要过滤多个Tag属性，则用双竖线（\|\|）隔开，例如 CartService\|\|Inventroy\|\|Payment 。具体过滤方法请参见消息过滤。 |
 |---|---|
@@ -2082,9 +2319,8 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 
 **修改路由任务**
 
-**重要**
+> **重要：** 若您修改了任务的**过滤规则**，您需要先停止任务再启动任务，修改的内容才会生效。
 
-若您修改了任务的**过滤规则**，您需要先停止任务再启动任务，修改的内容才会生效。
 1. 在**replicator**页面单击**任务**页签。
 2. 在路由任务列表中找到您需要修改的任务，在其**操作**列单击**修改**。
 3. 在弹出的**编辑任务**对话框中修改路由任务相关参数，然后单击**确定**。
@@ -2095,28 +2331,25 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 2. 在路由任务列表中找到您需要查看的任务，在其**操作**列单击**详情**即可看到该任务的详细信息。
 任务详细信息的关键字段说明如下：
 
-|  | 参数 | 说明 |
+|   | 参数 | 说明 |
 |---|---|---|
-
-消息队列
 
 | 任务概览 | 任务状态 | 显示任务的当前状态： 创建中创建完成运行中已暂停 |
 |---|---|---|
-|  | 消息同步TPS | 每分钟统计一次消息同步的TPS值；TPS即平均每秒传输的消息数量。 |
-|  | 消息堆积量 | 当前还没有来得及同步的消息数量。 |
-|  | 最新同步时间 | 最近一次消息同步发生的时间。 |
+|   | 消息同步TPS | 每分钟统计一次消息同步的TPS值；TPS即平均每秒传输的消息数量。 |
+|   | 消息堆积量 | 当前还没有来得及同步的消息数量。 |
+|   | 最新同步时间 | 最近一次消息同步发生的时间。 |
 | 任务详情 | 来源去向 | 显示任务的来源和去向。 |
-|  | 起始同步位点 | 显示指定的起始同步位点。 |
-|  | 过滤规则 | 显示指定的过滤规则。 |
+|   | 起始同步位点 | 显示指定的起始同步位点。 |
+|   | 过滤规则 | 显示指定的过滤规则。 |
 | 消息详情 | 消息同步TPS | 每分钟统计一次消息同步的TPS值；TPS即平均每秒传输的消息数量。 |
-|  | 消息延迟 | 当前同步到的位点和最新消息位点之间的时间差。 |
-|  | 消息堆积量 | 当前还没有来得及同步的消息数量。 |
+|   | 消息延迟 | 当前同步到的位点和最新消息位点之间的时间差。 |
+|   | 消息堆积量 | 当前还没有来得及同步的消息数量。 |
 
 **删除路由任务**
 
-**重要**
+> **重要：** 删除路由任务会同时停止该任务的运行。
 
-删除路由任务会同时停止该任务的运行。
 1. 在**replicator**页面单击**任务**页签。
 2. 在路由任务列表中找到您需要删除的任务，在其**操作**列单击**删除**。
 3. 在弹出的提示对话框中仔细阅读提示信息，然后单击**确定**。
@@ -2128,7 +2361,6 @@ RocketMQ的Replicator消息路由功能常用于集群间的消息数据同步�
 创建消息同步云时，需要输入指定云环境下RocketMQ服务的接入点和控制台API接口，即**MQ****实例**
 **endpoint**和**MQ API**参数，您可以参考以下操作获取该参数值。
 1. 登录Apsara Uni-manager运维控制台。
-消息队列
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在**服务注册变量大盘**页面，单击**高级筛选**。
@@ -2138,21 +2370,23 @@ i. 在 `mq-cai` 服务的**Service Registration**列中，单击图标。 ii. �
 7. 查看**MQ API**。
 i. `mq-console` 服务的**Service Registration**列中，单击图标。 ii. 单击 `mq-console` 服务的**Service Registration**列的文本信息，在弹出的**注册变量**对话框中，查看到的**console.domain**的参数值加上前缀http://即为**MQ API**的值。
 
-### Connector
+### 6.2 Connector
 
-#### ElasticSearch
+#### 6.2.1 ElasticSearch
 
-RocketMQ可通过Elasticsearch消息路由功能实现不同Elasticsearch实例间的数据消息同步，本文介绍如
+RocketMQ可通过Elasticsearch消息路由功能实现不同Elasticsearch实例间的数据消息同步，本文介绍如何配置Elasticsearch消息路由任务。
 
 **背景信息**
 
-RocketMQ的Elasticsearch消息路由功能常用于不同Elasticsearch实例间的消息数据同步，可将消息先由源Elasticsearch实例同步至指定RocketMQ实例，而后再由RocketMQ实例同步至目标Elasticsearch实
+RocketMQ的Elasticsearch消息路由功能常用于不同Elasticsearch实例间的消息数据同步，可将消息先由源Elasticsearch实例同步至指定RocketMQ实例，而后再由RocketMQ实例同步至目标Elasticsearch实例，以确保不同Elasticsearch实例之间的数据一致性与完整性。
 
 **前提条件**
 
-已创建RocketMQ实例。具体操作，请参见创建实例。 已创建Topic。具体操作，请参见创建Topic。 已创建Elasticsearch实例。具体操作，请参见《**Elasticsearch** **用户指南》** > **创建集群**。
+已创建RocketMQ实例。具体操作，请参见创建实例。 已创建Topic。具体操作，请参见创建Topic。 已创建Elasticsearch实例。具体操作，请参见**《****Elasticsearch** **用户指南》** **>** **创建集群**。
 
 **操作流程**
+
+配置ElasticSearch消息路由任务的操作流程如下：
 
 **步骤一：创建 ES 实例信息**
 
@@ -2168,7 +2402,6 @@ RocketMQ的Elasticsearch消息路由功能常用于不同Elasticsearch实例间�
 2. 在左侧导航栏单击**消息路由** **> Connector**。
 3. 在**ElasticSearch**页签单击**云信息**页子签，然后单击**创建** **ES** **实例信息**。
 4. 在弹出的**创建** **ES** **实例信息**对话框中配置以下参数，然后单击**确定**。
-消息队列
 
 | 参数 | 说明 |
 |---|---|
@@ -2187,9 +2420,7 @@ RocketMQ的Elasticsearch消息路由功能常用于不同Elasticsearch实例间�
 4. 在弹出的**创建任务**对话框中选择任务类型并配置相应参数，然后单击**确定**。
 i. **Source****类型任务：**单击**Source**页签并配置以下参数：
 
-**重要**
-
-当前 ElasticSearch Source Connector 仅支持全量同步，暂不支持实时增量同步。任务执行完毕后请务必手动停止Source任务，以防在重启（如系统升级）时触发数据重复同步。
+> **重要：** 当前 ElasticSearch Source Connector 仅支持全量同步，暂不支持实时增量同步。任务执行完毕后请务必手动停止Source任务，以防在重启（如系统升级）时触发数据重复同步。
 
 | 参数 | 说明 |
 |---|---|
@@ -2197,7 +2428,7 @@ i. **Source****类型任务：**单击**Source**页签并配置以下参数：
 | MQ 目标 | 目标实例：选择消息将被同步到的Topic所属的RocketMQ实例。 目标Topic：选择消息将被同步到的Topic名称。 |
 | 描述 | 输入对该同步任务的具体描述或备注，以作区分和记录。 |
 
-消息队列 ii. **Sink****类型任务：**单击**Sink**页签并配置以下参数：
+ii. **Sink****类型任务：**单击**Sink**页签并配置以下参数：
 
 | 参数 | 说明 |
 |---|---|
@@ -2218,14 +2449,13 @@ i. **Source****类型任务：**单击**Source**页签并配置以下参数：
 
 **删除路由任务**
 
-**重要**
+> **重要：** 删除路由任务会同时停止该任务的运行。
 
-删除路由任务会同时停止该任务的运行。
 1. 在**ElasticSearch**页签单击**任务**子页签。
 2. 在路由任务列表中找到您需要删除的任务，在其**操作**列单击**删除**。
 3. 在弹出的提示对话框中仔细阅读提示信息，然后单击**确定**。
 
-#### Redis
+#### 6.2.2 Redis
 
 RocketMQ可通过Redis消息路由功能实现不同Redis实例间的数据消息同步，本文介绍如何配置Redis消息路由任务。
 
@@ -2235,15 +2465,22 @@ RocketMQ的Redis消息路由功能支持将消息由RocketMQ实例同步至目�
 
 **前提条件**
 
-已创建RocketMQ实例。具体操作，请参见创建实例。 已创建Topic。具体操作，请参见创建Topic。 已创建Redis实例。具体操作，请参见**《云数据库** **Tair****（兼容** **Redis****）用户指南》** > **创建实例**。
+已创建RocketMQ实例。具体操作，请参见创建实例。 已创建Topic。具体操作，请参见创建Topic。 已创建Redis实例。具体操作，请参见**《云数据库** **Tair****（兼容** **Redis****）用户指南》** **>** **创建实例**。
 
 **操作流程**
 
-消息队列创建路由任务前，需要先录入Redis实例的相关信息。包括Redis实例的地址、端口号、密码和编号
+配置Redis消息路由任务的操作流程如下：
+
+**步骤一：创建Redis连接信息**
+
+创建路由任务前，需要先录入Redis实例的相关信息。包括Redis实例的地址、端口号、密码和编号等。RocketMQ将根据录入的Redis实例信息获取访问Redis资源的权限。
 
 **步骤二：创建路由任务**
 
 指定消息源和消息目标，设置描述等信息。
+
+**步骤一：创建Redis连接信息**
+
 1. 登录RocketMQ控制台。
 2. 在左侧导航栏单击**消息路由** **> Connector**。
 3. 单击**Redis**页签，然后单击**云信息**页子签，然后单击**创建** **Redis** **连接**。
@@ -2267,8 +2504,6 @@ RocketMQ的Redis消息路由功能支持将消息由RocketMQ实例同步至目�
 |---|---|
 | MQ 源 | 源实例：选择需要同步的消息所属Topic的所在RocketMQ实例。 源Topic：选择需要同步的消息所属的Topic名称。 |
 
-消息队列
-
 | Redis 目标 | Redis 连接：选择消息将被同步到的Redis连接。 Redis 命令：定义如何将消息内容写入 Redis中。可选值： SET HSET：当选择HSET时，还需要设置Hash字段。 LPUSH RPUSH SADD ZADD Key 策略：决定 Redis 中存储数据的 Key 如何生成。可选值： RECORD TOPIC TOPIC PARTITION _ CUSTOM：当选择CUSTOM时，还需要配置Key前缀，即 Key 的固定前缀部分。 Key 过期时间（秒）：为生成的 Redis Key 设置自动过期时间（单位：秒），防止内存无限增长。 |
 |---|---|
 | 描述 | 输入对该同步任务的具体描述或备注，以作区分和记录。 |
@@ -2286,17 +2521,16 @@ RocketMQ的Redis消息路由功能支持将消息由RocketMQ实例同步至目�
 
 **删除路由任务**
 
-**重要**
+> **重要：** 删除路由任务会同时停止该任务的运行。
+> **运行中**的任务不支持删除。
 
-删除路由任务会同时停止该任务的运行。
-**运行中**的任务不支持删除。
 1. 在**Redis**页签单击**任务**子页签。
 2. 在路由任务列表中找到您需要删除的任务，在其**操作**列单击**删除**。
 3. 在弹出的对话框中仔细阅读提示信息，然后单击**确定**。
 
-#### OSS
+#### 6.2.3 OSS
 
-RocketMQ可通过OSS消息路由功能实现不同OSS存储空间之间的数据消息同步，本文介绍如何配置OSS消息路由任务。 消息队列
+RocketMQ可通过OSS消息路由功能实现不同OSS存储空间之间的数据消息同步，本文介绍如何配置OSS消息路由任务。
 
 **背景信息**
 
@@ -2304,7 +2538,7 @@ RocketMQ的OSS消息路由功能支持将消息由RocketMQ实例同步至目标O
 
 **前提条件**
 
-已创建RocketMQ实例。具体操作，请参见创建实例。 已创建Topic。具体操作，请参见创建Topic。 已创建OSS存储空间。具体操作，请参见**《对象存储****用户指南》** > **创建存储空间**。
+已创建RocketMQ实例。具体操作，请参见创建实例。 已创建Topic。具体操作，请参见创建Topic。 已创建OSS存储空间。具体操作，请参见**《对象存储****用户指南》** **>** **创建存储空间**。
 
 **操作流程**
 
@@ -2337,7 +2571,6 @@ RocketMQ的OSS消息路由功能支持将消息由RocketMQ实例同步至目标O
 **步骤二：创建路由任务**
 
 1. 在**OSS**页签，单击**任务**子页签，然后单击**创建任务**。
-消息队列
 2. 在弹出的**创建任务**对话框中配置相应参数，然后单击**确定**。
 
 | 参数 | 说明 |
@@ -2359,17 +2592,16 @@ RocketMQ的OSS消息路由功能支持将消息由RocketMQ实例同步至目标O
 
 **删除路由任务**
 
-**重要**
+> **重要：** 删除路由任务会同时停止该任务的运行。
+> **运行中**的任务不支持删除。
 
-删除路由任务会同时停止该任务的运行。
-**运行中**的任务不支持删除。
 1. 在**OSS**页签单击**任务**子页签。
 2. 在路由任务列表中找到您需要删除的任务，在其**操作**列单击**删除**。
 3. 在弹出的对话框中仔细阅读提示信息，然后单击**确定**。
 
-#### MySQL
+#### 6.2.4 MySQL
 
-消息队列 RocketMQ可通过MySQL消息路由功能实现不同MySQL实例间的数据消息同步，本文介绍如何配置
+RocketMQ可通过MySQL消息路由功能实现不同MySQL实例间的数据消息同步，本文介绍如何配置 MySQL消息路由任务。
 
 **背景信息**
 
@@ -2377,31 +2609,36 @@ RocketMQ的MySQL消息路由功能支持将消息由RocketMQ实例同步至目�
 
 **前提条件**
 
-已创建RocketMQ实例。具体操作，请参见实例管理。 已创建Topic。具体操作，请参见创建Topic。
+已创建RocketMQ实例。具体操作，请参见实例管理。 已创建Topic。具体操作，请参见创建Topic。 已创建目标 MySQL 实例。
 
 **操作流程**
 
-创建路由任务前，需要先录入MySQL实例的相关信息。包括MySQL实例的地址、用户名、密码
+配置MySQL消息路由任务的操作流程如下：
+
+**步骤一：创建MySQL连接信息**
+
+创建路由任务前，需要先录入MySQL实例的相关信息。包括MySQL实例的地址、用户名、密码等。RocketMQ将根据录入的MySQL实例信息获取访问MySQL资源的权限。
 
 **步骤二：创建路由任务**
 
 指定消息源和消息目标，设置描述等信息。
+
+**步骤一：创建MySQL连接信息**
+
 1. 登录RocketMQ控制台。
 2. 在左侧导航栏单击**消息路由** **> Connector**。
 3. 单击**MySQL**页签，然后单击**云信息**子页签，最后单击**创建** **MySQL** **连接**。
 4. 在弹出的**创建** **MySQL** **连接**对话框中配置以下参数，然后单击**确定**。
 
-| 参数 | 说明 |  |  |
+| 参数 | 说明 |   |   |
 |---|---|---|---|
-| 连接名称 | 为该MySQL连接设置一个便于识别和管理的别名。 |  |  |
-| MySQL 地址 | MySQL 连接地址，格式： host:port/database ，如 rm- xxx:3306/mydb 。 |  |  |
-|  |  | rm- |  |
+| 连接名称 | 为该MySQL连接设置一个便于识别和管理的别名。 |   |   |
+| MySQL 地址 | MySQL 连接地址，格式： host:port/database ，如 rm- xxx:3306/mydb 。 |   |   |
+|   |   | rm- |   |
 
-|  |  | host:port/database |
+|   |   | host:port/database |
 |---|---|---|
-|  | xxx:3306/mydb |  |
-
-消息队列
+|   | xxx:3306/mydb |   |
 
 | 用户名 | 输入要连接的MySQL实例的用户名。 说明 CDC Source 使用 MySQL binlog 实时同步，源库账户需要以下权限： SELECT ：snapshot 全量读取表数据。 REPLICATION SLAVE ：连接 MySQL 读取 binlog 流。 REPLICATION CLIENT ：执行 SHOW MASTER STATUS 获取 binlog 位点。 RELOAD ：snapshot 时加全局读锁保证数据一致性。 |
 |---|---|
@@ -2412,6 +2649,7 @@ RocketMQ的MySQL消息路由功能支持将消息由RocketMQ实例同步至目�
 
 1. 在**MySQL**页签，单击**任务**子页签，然后单击**创建任务**。
 2. 在弹出的**创建任务**对话框中配置相应参数，然后单击**确定**。
+i. **Source****类型任务：**单击**Source****（****MySQL→MQ****）**页签并配置以下参数：
 
 | 参数 | 说明 |
 |---|---|
@@ -2420,7 +2658,7 @@ RocketMQ的MySQL消息路由功能支持将消息由RocketMQ实例同步至目�
 | 描述 | 输入对该同步任务的具体描述或备注，以作区分和记录。 |
 | 高级配置 | 支持配置数据变换，更多信息请参见高级配置。 |
 
-消息队列
+ii. **Sink****类型任务：**单击**Sink****（****MQ→MySQL****）**页签并配置以下参数：
 
 | 参数 | 说明 |
 |---|---|
@@ -2439,8 +2677,6 @@ RocketMQ Connect 为 MySQL 场景内置 5 类单消息转换（SMT）能力，�
 | 命名风格转换（Value） | 一键切换命名风格（snake case ↔ _ camelCase 等）。 | Java 服务与数据仓库命名规范对齐。 |
 | 置空字段（Value） | 按正则匹配字段名，将其值置为 NULL。 | 数据脱敏，如同步时清空手机号、身份证。 |
 
-消息队列
-
 | 行过滤（Value） | 按正则匹配字段值，命中则丢弃整条消息。 | 只同步指定业务数据，如仅同步某地区订单。 |
 |---|---|---|
 
@@ -2450,10 +2686,9 @@ RocketMQ Connect 为 MySQL 场景内置 5 类单消息转换（SMT）能力，�
 **规范落地**：将数据脱敏、命名规范、过滤规则前置到同步链路，降低下游治理成本
 单击**添加变换**，选择变换类型后，配置相关参数：
 
-**说明**
+> **说明：** 支持添加多个数据变换，执行顺序为从上到下。
 
-支持添加多个数据变换，执行顺序为从上到下。
-**字段重命名（****Key**）/**字段重命名（****Value**）
+**字段重命名（****Key****）**/**字段重命名（****Value****）**
 
 | 参数 | 说明 |
 |---|---|
@@ -2472,8 +2707,6 @@ RocketMQ Connect 为 MySQL 场景内置 5 类单消息转换（SMT）能力，�
 
 | 参数 | 说明 |
 |---|---|
-
-消息队列
 
 | 源命名风格 | 选择数据当前的字段命名格式。 LOWER UNDERSCORE _ LOWER CAMEL _ UPPER UNDERSCORE _ UPPER CAMEL _ LOWER HYPHEN _ |
 |---|---|
@@ -2499,18 +2732,16 @@ RocketMQ Connect 为 MySQL 场景内置 5 类单消息转换（SMT）能力，�
 
 **删除路由任务**
 
-**重要**
+> **重要：** 删除路由任务会同时停止该任务的运行。
+> **运行中**的任务不支持删除。
 
-删除路由任务会同时停止该任务的运行。
-**运行中**的任务不支持删除。
 1. 在**MySQL**页签单击**任务**子页签。
 2. 在路由任务列表中找到您需要删除的任务，在其**操作**列单击**删除**。
 3. 在弹出的对话框中仔细阅读提示信息，然后单击**确定**。
-消息队列
 
-## SDK使用指南
+## 7 SDK使用指南
 
-### SDK概述
+### 7.1 SDK概述
 
 本文介绍RocketMQ支持协议以及相关的多语言SDK。
 
@@ -2521,46 +2752,48 @@ RocketMQ支持的协议和多语言SDK如下表所示。
 | 协议 | 语言 | SDK下载链接 | 示例代码 |
 |---|---|---|---|
 | TCP协议 | Java | mq-tcp-java-sdk | mq-tcp-samples-java |
-|  | C/C++ | mq-tcp-csharp-sdk | mq-tcp-samples- csharp |
-|  | .NET | mq-tcp-.net-sdk | mq-tcp-samples-.net |
+|   | C/C++ | mq-tcp-csharp-sdk | mq-tcp-samples- csharp |
+|   | .NET | mq-tcp-.net-sdk | mq-tcp-samples-.net |
 | HTTP协议 | Java | mq-http-java-sdk | mq-http-samples-java |
-|  | PHP | mq-http-php-sdk | mq-http-samples-php |
-|  | Go | mq-http-go-sdk | mq-http-samples-go |
-|  | Python | mq-http-python-sdk | mq-http-samples- python |
-|  | Node.js | mq-http-nodejs-sdk | mq-http-samples- node.js |
-|  | C# | mq-http-cpp-sdk | mq-http-samples-cpp |
-|  | C++ | mq-http-csharp-sdk | mq-http-samples- csharp |
+|   | PHP | mq-http-php-sdk | mq-http-samples-php |
+|   | Go | mq-http-go-sdk | mq-http-samples-go |
+|   | Python | mq-http-python-sdk | mq-http-samples- python |
+|   | Node.js | mq-http-nodejs-sdk | mq-http-samples- node.js |
+|   | C# | mq-http-cpp-sdk | mq-http-samples-cpp |
+|   | C++ | mq-http-csharp-sdk | mq-http-samples- csharp |
 
 **协议使用须知**
 
 由于RocketMQ提供的TCP协议客户端SDK和HTTP协议客户端SDK不同，所创建的同一个Group ID不能混用于TCP协议和HTTP协议。若您使用TCP协议的SDK收发消息，则您需要创建TCP协议类型的Group ID，不能使用HTTP协议类型的Group ID。 同一个RocketMQ实例分别提供TCP协议接入点和HTTP协议接入点，不同协议的接入点不能混用。若您使用TCP协议的SDK收发消息，则您需要获取实例的TCP协议接入点，不能使用HTTP协议的接入点。
 
-### TCP协议SDK参考
+### 7.2 TCP协议SDK参考
 
-消息队列
+#### 7.2.1 Demo工程
 
-#### Demo工程
-
-##### Demo工程概述
+##### 7.2.1.1 Demo工程概述
 
 本Demo主要目的在于帮助初次接触RocketMQ的工程师，一步一步搭建RocketMQ测试工程。Demo程序以Java为例，包括普通消息、事务消息、定时消息的测试代码，以及相关Spring的配置示例。
 
-##### Demo环境准备
+##### 7.2.1.2 Demo环境准备
+
+本文向您介绍RocketMQ Demo工程的环境准备。
 
 **操作步骤**
 
-安装IDE。 您可以使用IntelliJ IDEA或者Eclipse。本文以IntelliJ IDEA为例。 请在IntelliJ IDEA下载IDEA Ultimate版本，并参考IntelliJ IDEA说明进行安装。 解压即可看到本地新增了mq-demo-master文件夹。
+安装IDE。 您可以使用IntelliJ IDEA或者Eclipse。本文以IntelliJ IDEA为例。 请在IntelliJ IDEA下载IDEA Ultimate版本，并参考IntelliJ IDEA说明进行安装。 下载Demo工程。 在GitHub下载Demo工程到本地。 图 1. 下载Demo工程解压即可看到本地新增了mq-demo-master文件夹。
 
-##### Demo工程配置
+##### 7.2.1.3 Demo工程配置
+
+本文介绍Demo工程配置的具体步骤。
 
 **前提条件**
 
-如果本地未安装JDK，请在Java SE Downloads下载安装。推荐使用JDK 8。
+完成Demo环境准备。 如果本地未安装JDK，请在Java SE Downloads下载安装。推荐使用JDK 8。
 
 **操作步骤**
 
 1. Demo工程文件导入IntelliJ IDEA。
-消息队列 i. 在IntelliJ IDEA界面，单击**Import Project**，选择mq-demo-master文件夹。 图 1. 选择mq-demo-master文件夹 ii. 选择Import类型。 图 2. 选择Import类型 iii. 默认单击**Next**，直到导入完成。Demo工程需要加载依赖的JAR包，因此导入过程需要等待2-3分钟。
+i. 在IntelliJ IDEA界面，单击**Import Project**，选择mq-demo-master文件夹。 图 1. 选择mq-demo-master文件夹 ii. 选择Import类型。 图 2. 选择Import类型 iii. 默认单击**Next**，直到导入完成。Demo工程需要加载依赖的JAR包，因此导入过程需要等待2-3分钟。
 2. 创建资源。
 请在RocketMQ控制台创建Topic、Group ID（GID）和鉴权所需的AccessKey（AK）。 i. 创建Topic和Group ID，更多详细信息，具体操作方式，请参见创建资源。 ii. AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云***************区域获取。
 3. 配置Demo。
@@ -2572,9 +2805,9 @@ public static final String TOPIC = “刚才创建的Topic。” public static f
 
 public static final String NAMESRV_ADDR = “您的`RocketMQ`实例的`TCP`接入点，可在控制台获取。”
 
-**说明**
+> **说明：** 要用哪个账号创建的Topic，就需要用这个账号的AccessKey ID和AccessKey Secret。
 
-要用哪个账号创建的Topic，就需要用这个账号的AccessKey ID和AccessKey Secret。 消息队列 ii. 配置common.xml。
+ii. 配置common.xml。
 
 ```xml
  <props>
@@ -2582,7 +2815,7 @@ public static final String NAMESRV_ADDR = “您的`RocketMQ`实例的`TCP`接�
 
 <prop key="AccessKey">XXX</prop> <!-- 使用前请修改这些资源信息 `-->`
 
-```xml
+```
  <prop key="SecretKey">XXX</prop>
  <prop key="GROUP_ID">XXX</prop>
  <prop key="Topic">XXX</prop>
@@ -2590,21 +2823,23 @@ public static final String NAMESRV_ADDR = “您的`RocketMQ`实例的`TCP`接�
 </props>
 ```
 
-##### 运行Demo
+##### 7.2.1.4 运行Demo
+
+在配置好Demo工程后，您可以启动收发消息并发送不同类型的消息。
 
 **以Main方式启动收发消息**
 
 1. 运行SimpleMQProducer类发送消息。
-2. 登录RocketMQ控制台，选择所需实例，在**实例详情**页面，单击**消息查询**页签，选择按**Topic****查询**，选择
+2. 登录RocketMQ控制台，选择所需实例，在**实例详情**页面，单击**消息查询**页签，选择**按****Topic****查询**，选择
 Topic名称进行查询。可以看到消息已经发送至Topic。
 3. 运行SimpleMQConsumer类接收消息。可以看到消息被接收打印的日志。因为有初始化，所以需等待
-几秒，在生产环境中不会经常初始化。 在实例详情页面，单击**Group****管理**页签，选择目标Group ID，单击**操作**列的**消费者状态**。在**消费者状态**面
+几秒，在生产环境中不会经常初始化。 在实例详情页面，单击**Group****管理**页签，选择目标Group ID，单击**操作**列的**消费者状态**。在**消费者状态**面板中可以看到启动的消费端已经在线，并且订阅关系一致。
 
 **以Spring方式启动收发消息**
 
 1. 运行ProducerClient类发送消息。
 2. 运行ConsumerClient类接收消息。
-在实例详情页面，单击**Group****管理**页签，选择目标Group ID，单击**操作**列的**消费者状态**。在**消费者状态**面
+在实例详情页面，单击**Group****管理**页签，选择目标Group ID，单击**操作**列的**消费者状态**。在**消费者状态**面板中可以看到启动的消费端已经在线，并且订阅关系一致。
 
 **发送事务消息**
 
@@ -2612,21 +2847,23 @@ Topic名称进行查询。可以看到消息已经发送至Topic。
 
 **说明**
 
-LocalTransactionCheckerImpl类为本地事务check接口类。用于校验事务。具体内容请参见收发事务消息。 运行SimpleOrderConsumer类接收消息。 运行SimpleOrderProducer类发送消息。
+LocalTransactionCheckerImpl类为本地事务check接口类。用于校验事务。具体内容请参见收发事务消息。
 
-**说明**
+**收发顺序消息**
+
+运行SimpleOrderConsumer类接收消息。 运行SimpleOrderProducer类发送消息。
+
+> **说明：** 此方式下，消息发布和消费都按顺序进行。详情请参见收发顺序消息。
 
 **发送定时（延时）消息**
 
-运行MQTimerProducer类发送消息。延时3秒后投递。 消息队列
+运行MQTimerProducer类发送消息。延时3秒后投递。
 
-**说明**
+> **说明：** 您也可以指定一个精确的投递时间，最长定时时间为40天。具体内容请参见收发定时消息。
 
-您也可以指定一个精确的投递时间，最长定时时间为40天。具体内容请参见收发定时消息。
+#### 7.2.2 客户端参数说明
 
-#### 客户端参数说明
-
-本文介绍客户端参数。
+本文介绍客户端参数。 表 1. 客户端参数说明
 
 | 参数名 | 使用端 | 默认值 | 建议值 | 用途 | 客户端版本 |
 |---|---|---|---|---|---|
@@ -2639,8 +2876,6 @@ LocalTransactionCheckerImpl类为本地事务check接口类。用于校验事务
 | SendMsgTime outMillis | 发送端 | 5000 | 默认 | 消息发送超时时间，如果服务端在配置的对应时间内未ACK，则发送客户端认为该消息发送失败。 | >=1.2.7.Final |
 | ConsumerId | 消费端 | 控制台申请 | 控制台申请 | 标识Consumer 客户端所在分组 | >=1.2.7.Final |
 
-消息队列
-
 | MessageMode l | 消费端 | CLUSTERING | 默认 | 消费模式，有两种： CLUSTERING ，集群消费，每条订阅消息只会被其中一个 Consumer客户端收到； BROADCASTI NG，广播消费，每条订阅的消息会被所有客户端收到。 | >=1.2.7.Final |
 |---|---|---|---|---|---|
 | ConsumeThre adNums | 消费端 | 动态调整的 20~64之间 | 根据业务情况调整 | 消费线程数量； 一般来说，单条消息消费的耗时越大，消费线程数也应该设置更大。 | >=1.2.7.Final |
@@ -2649,13 +2884,11 @@ LocalTransactionCheckerImpl类为本地事务check接口类。用于校验事务
 | PostSubscripti onWhenPull | 消费端 | false | 根据消费模式调整 | 是否每次请求都带上最新的订阅关系；广播消费时，配置为 true，避免因为订阅关系不一致导致部分消息收不到；集群消费时，强制要求订阅关系一致，该参数设置为 false。 | >=1.2.7.Final |
 | ConsumeMes sageBatchMa xSize | 消费端 | 1 | 根据业务需要调整 | BatchConsum er每次批量消费的最大消息数量, 默认值为 1，允许自定义范围为[1, 32]，您的实际消费数量可以小于设置的最大消费数量。 | >=1.6.0.Final |
 
-消息队列
-
 | MaxCachedM essageAmoun t | 消费端 | 5000 | 根据机器内存调整 | Consumer允许在客户端中缓存的最大消息数量，默认值为 5000，设置过大可能会引起客户端OOM，取值范围为[100, 50000]。 | >=1.7.0.Final |
 |---|---|---|---|---|---|
 | MaxCachedM essageSizeIn MiB | 消费端 | 512 | 根据机器内存调整 | Consumer允许在客户端中缓存的最大消息容量，默认值为 512 MB，设置过大可能会引起客户端OOM， 取值范围为[16, 2048]。 | >=1.7.0.Final |
 
-#### 客户端错误码说明
+#### 7.2.3 客户端错误码说明
 
 本文介绍收发消息相关的错误码及参考消息相关内容。
 
@@ -2667,8 +2900,6 @@ LocalTransactionCheckerImpl类为本地事务check接口类。用于校验事务
 | 17 | TOPIC NOT EXIS _ _ T | 消息topic不存在。 | 1. 在RocketMQ控制台完成topic创建。 2. 重启应用。 详情请参见资源不存在中的《Topic 不存在》小节。 | >=4.0.1 |
 | 26 | SUBSCRIPTION G _ ROUP NOT EXIST _ _ | Group ID不存在。 | 1. 在RocketMQ控制台完成Group ID创建。 2. 重启应用。 详情请参见资源不存在中的《Group ID不存在》小节。 | >=4.0.1 |
 
-消息队列
-
 | 24 | SUBSCRIPTION N _ OT EXIST _ | 订阅信息不存在。 | 1. 检查当前订阅组是否已正常启动上线。 2. 检查是否出现订阅关系不一致的情况。 | >=4.0.1 |
 |---|---|---|---|---|
 | 23 | SUBSCRIPTION P _ ARSE FAILED _ | 订阅表达式解析失败。 | 检查对应topic的订阅表达式、tag。 | >=4.0.1 |
@@ -2678,15 +2909,13 @@ LocalTransactionCheckerImpl类为本地事务check接口类。用于校验事务
 | 16 | NO PERMISSION _ （收消息） | 请求无效。 | 当前请求的broker 禁读。 当前订阅组已禁读。 当前拉取的topic已禁读。 当前订阅组禁止广播消息。 | >=4.0.1 |
 | 1 | SYSTEM ERROR _ | 系统异常。 | RocketMQ Broker 正在重启维护或者是服务器压力过大产生的短暂超时。 详情请参见使用异常中的《发消息失败》小节。 | >=4.0.1 |
 
-消息队列
-
 | 1 | SYSTEM ERROR _ （权限校验） | 权限校验失败。 | 检查是否有topic的发布/订阅权限。 | >=4.0.1 |
 |---|---|---|---|---|
 | 2 | SYSTEM BUSY _ | 系统忙，拒绝请求。 | RocketMQ Broker 正在重启维护或者是服务器压力过大产生的短暂超时。 详情请参见使用异常中的《发消息失败》小节。 | >=4.0.1 |
 
-#### Java SDK
+#### 7.2.4 Java SDK
 
-##### 使用说明
+##### 7.2.4.1 使用说明
 
 RocketMQ提供Java SDK实现消息发布与消息订阅。本文将详细介绍各接口的相关参数以及各接口的使用说明。 表 1. 通用参数
 
@@ -2705,7 +2934,7 @@ RocketMQ提供Java SDK实现消息发布与消息订阅。本文将详细介绍�
 | CheckImmunityTimeInSeconds（事务消息） | 设置事务消息第一次回查的最快时间，单位（秒）。 |
 | shardingKey（顺序消息） | 顺序消息中用来计算不同分区的值。 |
 
-消息队列表 3. 订阅消息参数说明
+图 1. Java SDK发布消息接口及参数说明表 3. 订阅消息参数说明
 
 | 参数名 | 参数说明 |
 |---|---|
@@ -2718,11 +2947,11 @@ RocketMQ提供Java SDK实现消息发布与消息订阅。本文将详细介绍�
 | maxCachedMessageAmount | 客户端本地的最大缓存消息数据，默认值：1000；单位：条。 |
 | maxCachedMessageSizeInMiB | 客户端本地的最大缓存消息大小，取值范围：16 MB ~ 2 GB；默认值：512 MB。 |
 
-消息队列
+图 3. Java SDK订阅消息接口及参数说明
 
 **消息收发代码示例**
 
-##### 环境准备
+##### 7.2.4.2 环境准备
 
 运行本节描述的Java代码之前，请按以下步骤准备好环境。
 
@@ -2744,13 +2973,21 @@ Maven方式引入依赖：
 Message Tag可以完全由应用自定义，具体创建过程请参见创建资源。
 3. 以TCP方式接入使用RocketMQ服务的应用程序需要部署在同一个地域的ECS上。
 
-##### 日志配置
+##### 7.2.4.3 日志配置
 
 客户端日志用于记录客户端运行过程中的异常，帮助您快速定位和修复问题。本文介绍RocketMQ客户端日志的打印方式，以及默认和自定义配置。
 
 **打印客户端日志**
 
-消息队列 RocketMQ的Java SDK 1.7.8.Final已内置了日志实现，您无需在客户端应用中添加日志实现依赖即可打印RocketMQ客户端日志。 RocketMQ客户端日志的默认配置和如何修改默认配置，请参见下文的客户端日志配置部分。 RocketMQ的Java SDK 1.7.8.Final以下的旧版本不支持log4j2，只支持log4j、logback。您需要在pom.xml配置文件或者lib中添加对应的日志实现依赖来打印RocketMQ客户端日志。 依赖log4j或logback作为日志实现的示例代码如下所示。
+RocketMQ的TCP Java SDK基于SLF4J接口编程。
+
+**针对Java SDK 1.7.8.Final版本及以上**
+
+RocketMQ的Java SDK 1.7.8.Final已内置了日志实现，您无需在客户端应用中添加日志实现依赖即可打印RocketMQ客户端日志。 RocketMQ客户端日志的默认配置和如何修改默认配置，请参见下文的客户端日志配置部分。
+
+**针对Java SDK 1.7.8.Final以下**
+
+RocketMQ的Java SDK 1.7.8.Final以下的旧版本不支持log4j2，只支持log4j、logback。您需要在pom.xml配置文件或者lib中添加对应的日志实现依赖来打印RocketMQ客户端日志。 依赖log4j或logback作为日志实现的示例代码如下所示。
 
 **方式一：依赖log4j作为日志实现**
 
@@ -2783,13 +3020,11 @@ Message Tag可以完全由应用自定义，具体创建过程请参见创建资
 <version>1.1.2</version> </dependency>
 ```
 
-**说明**
-
-应用中同时依赖log4j和logback的日志实现会造成日志冲突，从而导致客户端日志打印混乱。确保应用只依赖其中一个日志实现，是正确打印RocketMQ客户端日志的前提条件，建议您通过**mvn clean dependency:tree | grep log**命令进行排查。
+> **说明：** 应用中同时依赖log4j和logback的日志实现会造成日志冲突，从而导致客户端日志打印混乱。确保应用只依赖其中一个日志实现，是正确打印RocketMQ客户端日志的前提条件，建议您通过**mvn clean dependency:tree | grep log**命令进行排查。
 
 **客户端日志配置**
 
-RocketMQ 客户端支持自定义**日志保存路径**、**日志级别**以及**保存历史日志文件的最大个数**。考虑到日志传输以及阅读的便利性，暂不允许自定义**单个日志文件大小**，仍保持默认的64 MB。 各参数的配置说明如下： 消息队列
+RocketMQ 客户端支持自定义**日志保存路径**、**日志级别**以及**保存历史日志文件的最大个数**。考虑到日志传输以及阅读的便利性，暂不允许自定义**单个日志文件大小**，仍保持默认的64 MB。 各参数的配置说明如下：
 
 | 参数 | 说明 |
 |---|---|
@@ -2803,9 +3038,9 @@ RocketMQ客户端启动后，会按照如下的默认配置生成日志文件：
 
 **自定义配置**
 
-**说明**
+> **说明：** 若要自定义RocketMQ客户端的日志配置，请升级到Java SDK 1.2.5版本及以上。
 
-若要自定义RocketMQ客户端的日志配置，请升级到Java SDK 1.2.5版本及以上。 ons.client.logRoot：日志保存路径。 ons.client.logFileMaxIndex：保存历史日志文件的最大个数。 ons.client.logLevel：日志级别。
+在Java SDK中自定义RocketMQ客户端日志配置，请设置如下系统参数： ons.client.logRoot：日志保存路径。 ons.client.logFileMaxIndex：保存历史日志文件的最大个数。 ons.client.logLevel：日志级别。
 
 **示例**
 
@@ -2825,13 +3060,15 @@ RocketMQ客户端启动后，会按照如下的默认配置生成日志文件：
 
 其中，/home/admin/ 和 D:\ 仅为示例，请填写您实际的系统目录。
 
-##### Spring 集成
+##### 7.2.4.4 Spring 集成
 
-###### Spring集成概述
+###### 7.2.4.4.1 Spring集成概述
 
-消息队列本节介绍如何在Spring框架下用RocketMQ收发消息。主要包括三部分内容：普通消息生产者和Spring 集请确保同一个Group ID下所有Consumer实例的订阅关系保持一致，具体内容请参见订阅关系一致。 Spring框架下支持的配置参数和TCP Java一致，具体内容请参见使用说明。
+本节介绍如何在Spring框架下用RocketMQ收发消息。主要包括三部分内容：普通消息生产者和Spring 集成，事务消息生产者和Spring集成，消息消费者和Spring集成。 请确保同一个Group ID下所有Consumer实例的订阅关系保持一致，具体内容请参见订阅关系一致。 Spring框架下支持的配置参数和TCP Java一致，具体内容请参见使用说明。
 
-###### 生产者与Spring集成
+###### 7.2.4.4.2 生产者与Spring集成
+
+本文介绍消息生产者与Spring集成的具体步骤。
 
 **操作步骤**
 
@@ -2847,7 +3084,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 it-method="start" destroy-method="shutdown">
 ```
 
-<property name="properties" > <!--生产者配置信息`-->`
+<!-- Spring 接入方式支持 `Java SDK` 支持的所有配置项 `-->` <property name="properties" > <!--生产者配置信息`-->`
 
 ```xml
              <props>
@@ -2857,7 +3094,7 @@ it-method="start" destroy-method="shutdown">
 
 <!-- ons-client 版本是 `1.8.4.Final`，需要配置（从实例管理页面复制 `TCP` 协议接入点）
 
-```xml
+```
                  <prop key="NAMESRV_ADDR">XXX</prop>
                  -->
              </props>
@@ -2867,7 +3104,6 @@ it-method="start" destroy-method="shutdown">
 ```
 
 2. 通过已经与Spring集成好的生产者生产消息。
-消息队列
 
 ```java
  package demo;
@@ -2882,8 +3118,7 @@ it-method="start" destroy-method="shutdown">
          /**
 ```
 
-* 生产者 `Bean` 配置在 `producer.xml` 中，可通过 `ApplicationContext` 获取或者直接注入到
-其他类（比如具体的 `Controller`）中 `*/`
+`*` 生产者 `Bean` 配置在 `producer.xml` 中，可通过 `ApplicationContext` 获取或者直接注入到其他类（比如具体的 `Controller`）中 `*/`
 
 ```
          ApplicationContext context = new
@@ -2931,20 +3166,21 @@ ClassPathXmlApplicationContext("producer.xml");
                  System.out.println("send success: " + sendResult.getMessageId());
              }catch (ONSClientException e) {
                  System.out.println("发送失败");
-             }
-         }
-     }
- }
 ```
 
-###### 事务消息生产者与Spring集成
+`}` `}` `}` `}`
+
+###### 7.2.4.4.3 事务消息生产者与Spring集成
+
+本文介绍事务消息生产者与Spring集成的具体步骤。
 
 **背景信息**
+
+有关事务消息的概念，具体内容请参见收发事务消息。
 
 **操作步骤**
 
 1. 实现LocalTransactionChecker，如下所示。一个消息生产者只能有一个LocalTransactionChecker。
-消息队列
 
 ```java
 package demo; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.transaction.LocalTransactionChecker; import com.aliyun.openservices.ons.api.transaction.TransactionStatus; public class DemoLocalTransactionChecker implements LocalTransactionChecker {
@@ -2955,12 +3191,10 @@ package demo; import com.aliyun.openservices.ons.api.Message; import com.aliyun.
 
 ```
 nsactionStatus
-    }
-}
 ```
 
+`}` `}`
 2. 在transactionProducer.xml中定义事务消息生产者Bean等信息。
-消息队列
 
 ```xml
  <?xml version="1.0" encoding="UTF-8"?>
@@ -2985,7 +3219,7 @@ class="com.aliyun.openservices.ons.api.bean.TransactionProducerBean" init-method
 
 <!-- ons-client版本是`1.8.4.Final`，需要配置（从实例管理页面复制`TCP`协议接入点）
 
-```xml
+```
                  <prop key="NAMESRV_ADDR">XXX</prop>
                  -->
              </props>
@@ -2997,7 +3231,6 @@ class="com.aliyun.openservices.ons.api.bean.TransactionProducerBean" init-method
 ```
 
 3. 通过已经与Spring集成好的生产者生产事务消息。
-消息队列
 
 ```java
  package demo;
@@ -3013,10 +3246,7 @@ class="com.aliyun.openservices.ons.api.bean.TransactionProducerBean" init-method
          /**
 ```
 
-* 事务消息生产者`Bean`配置在`transactionProducer.xml`中，可通过`ApplicationContext`获取
-或者直接注入到其他类（比如具体的`Controller`）中
-* 请结合例子"发送事务消息"
-`*/`
+`*` 事务消息生产者`Bean`配置在`transactionProducer.xml`中，可通过`ApplicationContext`获取或者直接注入到其他类（比如具体的`Controller`）中 `*` 请结合例子`"`发送事务消息`"` `*/`
 
 ```java
          ApplicationContext context = new
@@ -3035,18 +3265,23 @@ LocalTransactionExecuter() {
 
 ```
 不同的TransactionStatus
-             }
-         }, null);
-     }
- }
 ```
 
-###### 消费者与Spring集成
+`}`
+
+```
+         }, null);
+```
+
+`}` `}`
+
+###### 7.2.4.4.4 消费者与Spring集成
+
+本文向您介绍消费者与Spring集成的具体步骤。
 
 **操作步骤**
 
 1. 创建MessageListener，如下所示。
-消息队列
 
 ```java
 package demo; import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; public class DemoMessageListener implements MessageListener {
@@ -3062,11 +3297,9 @@ package demo; import com.aliyun.openservices.ons.api.Action; import com.aliyun.o
 
 ```
             return Action.ReconsumeLater;
-        }
-    }
-}
 ```
 
+`}` `}` `}`
 2. 在consumer.xml中定义消费者Bean等信息。
 
 ```xml
@@ -3080,7 +3313,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 `->` <!-- Group ID订阅同一个`Topic`，可以创建多个`ConsumerBean-->`
 
-```xml
+```
      <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean" in
 it-method="start" destroy-method="shutdown">
 ```
@@ -3096,11 +3329,9 @@ it-method="start" destroy-method="shutdown">
 
 <!-- ons-client版本在`1.8.4.Final`，需要配置（从实例管理页面复制`TCP`协议接入点）
 
-```xml
+```
                  <prop key="NAMESRV_ADDR">XXX</prop>
 ```
-
-消息队列
 
 ```
                  -->
@@ -3123,7 +3354,7 @@ class="com.aliyun.openservices.ons.api.bean.Subscription">
                              <property name="expression" value="*"/><!--expression即Tag
 ```
 
-，可以设置成具体的`Tag`，如 taga||tagb||tagc，也可设置成*。 *仅代表订阅所有`Tag`，不支持通配`-->`
+，可以设置成具体的`Tag`，如 taga||tagb||tagc，也可设置成`*`。 `*`仅代表订阅所有`Tag`，不支持通配`-->`
 
 ```
                          </bean>
@@ -3143,7 +3374,7 @@ class="com.aliyun.openservices.ons.api.bean.Subscription">
 
 阅另外一个`Topic -->`
 
-```xml
+```
                              <property name="expression" value="taga||tagb"/> <!-- 订阅
 ```
 
@@ -3154,8 +3385,6 @@ class="com.aliyun.openservices.ons.api.bean.Subscription">
                      </key>
 </entry>
 ```
-
-消息队列
 
 ```
                  </entry>
@@ -3173,30 +3402,31 @@ package demo; import org.springframework.context.ApplicationContext; import org.
         /**
 ```
 
-* 消费者`Bean`配置在`consumer.xml`中，可通过`ApplicationContext`获取或者直接注入到其他类(
-比如具体的`Controller)`中 `*/`
+`*` 消费者`Bean`配置在`consumer.xml`中，可通过`ApplicationContext`获取或者直接注入到其他类`(` 比如具体的`Controller)`中 `*/`
 
 ```java
         ApplicationContext context = new
 ClassPathXmlApplicationContext("consumer.xml");
         System.out.println("Consumer Started");
-    }
-}
 ```
 
-##### 发送消息（三种方式）
+`}` `}`
 
-###### 发送消息（三种方式）概述
+##### 7.2.4.5 发送消息（三种方式）
+
+###### 7.2.4.5.1 发送消息（三种方式）概述
 
 RocketMQ发送消息有三种实现方式：可靠同步发送、可靠异步发送、单向（Oneway）发送。本节介绍每种实现的原理、使用场景以及三种实现的异同，同时提供代码示例以供参考。
 
-**说明**
+> **说明：** 顺序消息只支持可靠同步发送。
 
-###### 可靠同步发送
+###### 7.2.4.5.2 可靠同步发送
+
+本文介绍可靠同步发送的实现原理和应用场景。
 
 **原理**
 
-同步发送是指消息发送方发出数据后，会在收到接收方发回响应之后才发下一个数据包的通讯方式。 图 1. 同步发送消息队列
+同步发送是指消息发送方发出数据后，会在收到接收方发回响应之后才发下一个数据包的通讯方式。 图 1. 同步发送
 
 **应用场景**
 
@@ -3261,7 +3491,7 @@ import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.o
                 "TagA",
 ```
 
-`// Message Body` 可以是任何二进制形式的数据， `RocketMQ` 不做任何干预， `//` 需要 `Producer` 与 `Consumer` 协商好一致的序列化和反序列化方式消息队列
+`// Message Body` 可以是任何二进制形式的数据， `RocketMQ` 不做任何干预， `//` 需要 `Producer` 与 `Consumer` 协商好一致的序列化和反序列化方式
 
 ```
                 "Hello MQ".getBytes());
@@ -3281,8 +3511,11 @@ import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.o
                 if (sendResult != null) {
                     System.out.println(new Date() + " Send mq message success. Topic is:
 " + msg.getTopic() + " msgId is: " + sendResult.getMessageId());
-                }
-            }
+```
+
+`}` `}`
+
+```
             catch (Exception e) {
 ```
 
@@ -3292,23 +3525,23 @@ import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.o
                 System.out.println(new Date() + " Send mq message failed. Topic is:" + m
 sg.getTopic());
                 e.printStackTrace();
-            }
-        }
 ```
 
-`//` 在应用退出前，销毁 `Producer` 对象 `//` 注意：如果不销毁也没有问题
+`}` `}` `//` 在应用退出前，销毁 `Producer` 对象 `//` 注意：如果不销毁也没有问题
 
 ```
         producer.shutdown();
-    }
-}
 ```
 
-###### 可靠异步发送
+`}` `}`
+
+###### 7.2.4.5.3 可靠异步发送
+
+本文介绍可靠异步发送的实现原理和使用场景。
 
 **原理**
 
-异步发送是指发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。RocketMQ的异步发送，需要您实现异步发送回调接口（SendCallback），在执行消息的异步发送时，应用不需要等待服务器响应即可直接返回，通过回调接口接收服务器响应，并对服务器的响应结果进行处理。 消息队列图 1. 异步发送
+异步发送是指发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。RocketMQ的异步发送，需要您实现异步发送回调接口（SendCallback），在执行消息的异步发送时，应用不需要等待服务器响应即可直接返回，通过回调接口接收服务器响应，并对服务器的响应结果进行处理。 图 1. 异步发送
 
 **应用场景**
 
@@ -3374,7 +3607,7 @@ sg.getTopic());
                 "TagA",
 ```
 
-`// Message Body`，任何二进制形式的数据，`RocketMQ` 不做任何干预，需要 `Producer` 与消息队列 `Consumer` 协商好一致的序列化和反序列化方式
+`// Message Body`，任何二进制形式的数据，`RocketMQ` 不做任何干预，需要 `Producer` 与 `Consumer` 协商好一致的序列化和反序列化方式
 
 ```
                 "Hello MQ".getBytes());
@@ -3386,7 +3619,7 @@ sg.getTopic());
         msg.setKey("ORDERID_100");
 ```
 
-`//` 异步发送消息, 发送结果通过 `callback` 返回给客户端。
+`//` 异步发送消息`,` 发送结果通过 `callback` 返回给客户端。
 
 ```java
         producer.sendAsync(msg, new SendCallback() {
@@ -3399,7 +3632,11 @@ sg.getTopic());
 ```java
                 System.out.println("send message success. topic=" +
 sendResult.getTopic() + ", msgId=" + sendResult.getMessageId());
-            }
+```
+
+`}`
+
+```java
             @Override
             public void onException(OnExceptionContext context) {
 ```
@@ -3409,7 +3646,11 @@ sendResult.getTopic() + ", msgId=" + sendResult.getMessageId());
 ```java
                 System.out.println("send message failed. topic=" + context.getTopic() +
 ", msgId=" + context.getMessageId());
-            }
+```
+
+`}`
+
+```
         });
 ```
 
@@ -3424,14 +3665,17 @@ msg.getMsgID());
 
 ```
         producer.shutdown();
-    }
 ```
 
-###### 单向（Oneway）发送
+`}`
+
+###### 7.2.4.5.4 单向（Oneway）发送
+
+本文介绍单向（Oneway）发送的原理、应用场景和示例代码。
 
 **原理**
 
-单向（Oneway）发送特点为只负责发送消息，不等待服务器回应且没有回调函数触发，即只发送请求不等待应答。此方式发送消息的过程耗时非常短，一般在微秒级别。 图 1. Oneway发送消息队列
+单向（Oneway）发送特点为只负责发送消息，不等待服务器回应且没有回调函数触发，即只发送请求不等待应答。此方式发送消息的过程耗时非常短，一般在微秒级别。 图 1. Oneway发送
 
 **应用场景**
 
@@ -3444,8 +3688,6 @@ msg.getMsgID());
 | 单向发送 | 最快 | 无 | 可能丢失 |
 
 **示例代码**
-
-消息队列
 
 ```java
     import com.aliyun.openservices.ons.api.Message;
@@ -3522,23 +3764,23 @@ msg.getMsgID());
             msg.setKey("ORDERID_" + i);
 ```
 
-`//` 由于在 `oneway` 方式发送消息时没有请求应答处理，一旦出现消息发送失败，则会因为没有重试
+`//` 由于在 `oneway` 方式发送消息时没有请求应答处理，一旦出现消息发送失败，则会因为没有重试而导致数据丢失。若数据不可丢，建议选用可靠同步或可靠异步发送方式。
 
 ```
             producer.sendOneway(msg);
-        }
 ```
 
-`//` 在应用退出前，销毁 `Producer` 对象 `//` 注意：如果不销毁也没有问题
+`}` `//` 在应用退出前，销毁 `Producer` 对象 `//` 注意：如果不销毁也没有问题
 
 ```
         producer.shutdown();
-    }
 ```
 
-##### 发送消息（多线程）
+`}`
 
-RocketMQ的消费者和生产者客户端对象是线程安全的，可以在多个线程之间共享使用。 您可以在服务器上（或者多台服务器）部署多个生产者和消费者实例，也可以在同一个生产者或消费者实例里采用多线程发送或接收消息，从而提高消息发送或接收TPS。请避免为每个线程创建一个客户端实例。 消息队列在多线程之间共享Producer的示例代码如下：
+##### 7.2.4.6 发送消息（多线程）
+
+本文介绍发送消息（多线程）及示例代码。 RocketMQ的消费者和生产者客户端对象是线程安全的，可以在多个线程之间共享使用。 您可以在服务器上（或者多台服务器）部署多个生产者和消费者实例，也可以在同一个生产者或消费者实例里采用多线程发送或接收消息，从而提高消息发送或接收TPS。请避免为每个线程创建一个客户端实例。 在多线程之间共享Producer的示例代码如下：
 
 ```java
 import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.Producer; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import com.aliyun.openservices.ons.api.SendResult; import java.util.Properties; public class SharedProducer {
@@ -3624,7 +3866,11 @@ import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.o
                     if (sendResult != null) {
                         System.out.println(new Date() + " Send mq message success. Topic
 is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
-                    }
+```
+
+`}`
+
+```
                 } catch (Exception e) {
 ```
 
@@ -3634,14 +3880,9 @@ is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
                     System.out.println(new Date() + " Send mq message failed. Topic is:"
 + MqConfig.TOPIC);
                     e.printStackTrace();
-                }
-}
 ```
 
-消息队列
-
 ```java
-            }
         });
         thread.start();
         Thread anotherThread = new Thread(new Runnable() {
@@ -3659,7 +3900,11 @@ is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
                     if (sendResult != null) {
                         System.out.println(new Date() + " Send mq message success. Topic
 is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
-                    }
+```
+
+`}`
+
+```
                 } catch (Exception e) {
 ```
 
@@ -3669,8 +3914,11 @@ is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
                     System.out.println(new Date() + " Send mq message failed. Topic is:"
 + MqConfig.TOPIC);
                     e.printStackTrace();
-                }
-            }
+```
+
+`}` `}`
+
+```
         });
         anotherThread.start();
 ```
@@ -3679,13 +3927,13 @@ is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
 
 ```
         // producer.shutdown();
-    }
-}
 ```
 
-##### 收发顺序消息
+`}` `}`
 
-本文介绍顺序消息的收发及示例代码。 顺序消息（FIFO 消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 TCP协议下的Java SDK收发顺序消息的示例代码供您参考。具体内容请参见顺序消息。
+##### 7.2.4.7 收发顺序消息
+
+本文介绍顺序消息的收发及示例代码。 顺序消息（FIFO 消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 TCP协议下的Java SDK收发顺序消息的示例代码供您参考。具体内容请参见顺序消息。 发送和订阅顺序消息，请使用Java SDK 1.2.7及以上版本。
 
 **发送顺序消息示例代码**
 
@@ -3707,7 +3955,7 @@ package com.aliyun.openservices.ons.example.order; import com.aliyun.openservice
         properties.put(PropertyKeyConst.AccessKey, "XXX");
 ```
 
-`//``AccessKeySecret`阿里云身份验证，在阿里云服务器管理控制台创建。 消息队列 `// AccessKeySecret` 阿里云身份验证在阿里云服务器管理控制台创建
+`//``AccessKeySecret`阿里云身份验证，在阿里云服务器管理控制台创建。 `// AccessKeySecret` 阿里云身份验证在阿里云服务器管理控制台创建
 
 ```
         properties.put(PropertyKeyConst.SecretKey, "XXX");
@@ -3746,10 +3994,9 @@ package com.aliyun.openservices.ons.example.order; import com.aliyun.openservice
 
 ```
                     "send order global msg".getBytes()
-            );
 ```
 
-`//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
+); `//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
 
 ```
             msg.setKey(orderId);
@@ -3769,8 +4016,11 @@ package com.aliyun.openservices.ons.example.order; import com.aliyun.openservice
                 if (sendResult != null) {
                     System.out.println(new Date() + " Send mq message success. Topic is:
 " + msg.getTopic() + " msgId is: " + sendResult.getMessageId());
-                }
-            }
+```
+
+`}` `}`
+
+```
             catch (Exception e) {
 ```
 
@@ -3780,21 +4030,17 @@ package com.aliyun.openservices.ons.example.order; import com.aliyun.openservice
                 System.out.println(new Date() + " Send mq message failed. Topic is:" + m
 sg.getTopic());
                 e.printStackTrace();
-            }
-        }
 ```
 
-`//` 在应用退出前，销毁`Producer`对象。 `//` 注意：如果不销毁也没有问题。
+`}` `}` `//` 在应用退出前，销毁`Producer`对象。 `//` 注意：如果不销毁也没有问题。
 
 ```
         producer.shutdown();
-    }
-}
 ```
 
-**订阅顺序消息示例代码**
+`}` `}`
 
-消息队列
+**订阅顺序消息示例代码**
 
 ```java
 package com.aliyun.openservices.ons.example.order; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import com.aliyun.openservices.ons.api.order.ConsumeOrderContext; import com.aliyun.openservices.ons.api.order.MessageOrderListener; import com.aliyun.openservices.ons.api.order.OrderAction; import com.aliyun.openservices.ons.api.order.OrderConsumer; import java.util.Properties; public class ConsumerClient {
@@ -3868,16 +4114,20 @@ package com.aliyun.openservices.ons.example.order; import com.aliyun.openservice
 ext) {
                         System.out.println(message);
                         return OrderAction.Success;
-                    }
-                });
-        consumer.start();
-    }
-}
 ```
 
-##### 收发事务消息
+`}`
 
-消息队列本文介绍事务消息的交互流程、收发方式、示例代码及回查机制。
+```
+                });
+        consumer.start();
+```
+
+`}` `}`
+
+##### 7.2.4.8 收发事务消息
+
+本文介绍事务消息的交互流程、收发方式、示例代码及回查机制。
 
 **交互流程**
 
@@ -3933,8 +4183,6 @@ transaction===".getBytes());
 LocalTransactionExecuter() { @Override
 ```
 
-消息队列
-
 ```java
                  @Override
                  public TransactionStatus execute(Message msg, Object arg) {
@@ -3972,20 +4220,36 @@ LocalTransactionExecuter() { @Override
 
 `//` 本地事务失败则回滚消息
 
-```java
+```
                              transactionStatus =
 TransactionStatus.RollbackTransaction;
-                         }
+```
+
+`}`
+
+```
                      } catch (Exception e) {
                          log.error("Message Id:{}", msgId, e);
-                     }
+```
+
+`}`
+
+```java
                      System.out.println(msg.getMsgID());
                      log.warn("Message Id:{}transactionStatus:{}", msgId, transactionS
 tatus.name());
                      return transactionStatus;
-                 }
+```
+
+`}`
+
+```
              }, null);
-         }
+```
+
+`}`
+
+```
          catch (Exception e) {
 ```
 
@@ -3995,21 +4259,18 @@ tatus.name());
              System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
              e.printStackTrace();
-         }
 ```
 
-`// demo example` 防止进程退出(实际使用不需要这样)
+`}` `// demo example` 防止进程退出`(`实际使用不需要这样`)`
 
 ```
      TimeUnit.MILLISECONDS.sleep(Integer.MAX_VALUE);
- }
-}
 ```
 
+`}` `}`
 2. 提交事务消息状态。
 当本地事务执行完成（执行成功或执行失败），需要通知服务器当前消息的事务状态。通知方式有以下两种： 执行本地事务完成后提交。 执行本地事务一直没提交状态，等待服务器回查消息的事务状态。 事务状态有以下三种：
 **TransactionStatus.CommitTransaction**提交事务，允许订阅方消费该消息。
-消息队列
 **TransactionStatus.RollbackTransaction**回滚事务，消息将被丢弃不允许消费。
 **TransactionStatus.Unknow**无法判断状态，期待RocketMQ Broker向发送方再次询问该消息对
 应的本地事务的状态。
@@ -4056,16 +4317,24 @@ businessService.checkbusinessService(businessServiceArgs);
 
 ```
                transactionStatus = TransactionStatus.RollbackTransaction;
-           }
+```
+
+`}`
+
+```
        } catch (Exception e) {
            log.error("Message Id:{}", msgId, e);
-       }
+```
+
+`}`
+
+```
        log.warn("Message Id:{}transactionStatus:{}", msgId,
 transactionStatus.name());
        return transactionStatus;
-   }
- }
 ```
+
+`}` `}`
 
 **工具类**
 
@@ -4075,21 +4344,21 @@ import java.util.zip.CRC32; public class HashUtil {
         CRC32 crc32 = new CRC32();
         crc32.update(bytes);
         return crc32.getValue();
-    }
-}
 ```
+
+`}` `}`
 
 **事务回查机制说明**
 
-发送事务消息为什么必须要实现回查Check机制？ 消息队列当步骤1中半事务消息发送完成，但本地事务返回状态为**TransactionStatus.Unknow**，或者应用退出导致本地事务未提交任何状态时，从RocketMQ Broker的角度看，这条Half状态的消息的状态是未知的。因此RocketMQ Broker会定期要求发送方能Check该Half状态消息，并上报其最终状态。 Check被回调时，业务逻辑都需要做些什么？ RocketMQ事务消息的check方法里面，应该写一些检查事务一致性的逻辑。RocketMQ发送事务消息时需要实现**LocalTransactionChecker**接口，用来处理RocketMQ Broker主动发起的本地事务状态回查请求；因此在事务消息的Check方法中，需要完成两件事情： i. 检查该半事务消息对应的本地事务的状态（committed或rollback）； ii. 向RocketMQ Broker提交该半事务消息本地事务的状态。
+发送事务消息为什么必须要实现回查Check机制？ 当步骤1中半事务消息发送完成，但本地事务返回状态为**TransactionStatus.Unknow**，或者应用退出导致本地事务未提交任何状态时，从RocketMQ Broker的角度看，这条Half状态的消息的状态是未知的。因此RocketMQ Broker会定期要求发送方能Check该Half状态消息，并上报其最终状态。 Check被回调时，业务逻辑都需要做些什么？ RocketMQ事务消息的check方法里面，应该写一些检查事务一致性的逻辑。RocketMQ发送事务消息时需要实现**LocalTransactionChecker**接口，用来处理RocketMQ Broker主动发起的本地事务状态回查请求；因此在事务消息的Check方法中，需要完成两件事情： i. 检查该半事务消息对应的本地事务的状态（committed或rollback）； ii. 向RocketMQ Broker提交该半事务消息本地事务的状态。
 
 **订阅事务消息**
 
 事务消息的订阅与普通消息订阅一致，具体操作方式请参见订阅消息。
 
-##### 收发延时消息
+##### 7.2.4.9 收发延时消息
 
-本文介绍延时消息的收发及代码示例。 延时消息用于指定消息发送到RocketMQ服务器端后，延时一段时间才被投递到客户端进行消费（例如3秒后才被消费），适用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发延迟任务的场景，类似于延迟队列。
+本文介绍延时消息的收发及代码示例。 延时消息用于指定消息发送到RocketMQ服务器端后，延时一段时间才被投递到客户端进行消费（例如3秒后才被消费），适用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发延迟任务的场景，类似于延迟队列。 延时消息的概念介绍及使用过程中的注意事项，具体内容请参见定时和延时消息。
 
 **发送延时消息**
 
@@ -4146,7 +4415,7 @@ import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.o
                 "Hello MQ".getBytes());
 ```
 
-消息队列 e o
+`e` `o`
 
 ```
 Q.getBytes());
@@ -4159,7 +4428,7 @@ Q.getBytes());
         try {
 ```
 
-`//` 延时消息，单位毫秒（`ms`），在指定延迟时间（当前时间之后）进行投递，例如消息在 3 秒后投递
+`//` 延时消息，单位毫秒（`ms`），在指定延迟时间（当前时间之后）进行投递，例如消息在 `3` 秒后投递
 
 ```
             long delayTime = System.currentTimeMillis() + 3000;
@@ -4178,7 +4447,11 @@ Q.getBytes());
             if (sendResult != null) {
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 msg.getTopic() + " msgId is: " + sendResult.getMessageId());
-            }
+```
+
+`}`
+
+```
             } catch (Exception e) {
 ```
 
@@ -4188,24 +4461,23 @@ msg.getTopic() + " msgId is: " + sendResult.getMessageId());
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
             e.printStackTrace();
-        }
 ```
 
-`//` 在应用退出前，销毁 `Producer` 对象`<br>` `//` 注意：如果不销毁也没有问题
+`}` `//` 在应用退出前，销毁 `Producer` 对象`<br>` `//` 注意：如果不销毁也没有问题
 
 ```
         producer.shutdown();
-    }
-}
 ```
+
+`}` `}`
 
 **订阅延时消息**
 
 延时消息的订阅方式与普通消息一致，具体操作方式请参见订阅消息。
 
-##### 收发定时消息
+##### 7.2.4.10 收发定时消息
 
-本文介绍发送定时消息的场景及代码示例。 定时消息可以做到在指定时间戳之后才可被消费者消费，用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发定时任务的场景。
+本文介绍发送定时消息的场景及代码示例。 定时消息可以做到在指定时间戳之后才可被消费者消费，用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发定时任务的场景。 定时消息的概念介绍及使用过程中的注意事项，请参见定时和延时消息。
 
 **发送定时消息**
 
@@ -4216,8 +4488,6 @@ import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.o
     public static void main(String[] args) {
 Propertiesproperties=newProperties();
 ```
-
-消息队列
 
 ```
         Properties properties = new Properties();
@@ -4288,7 +4558,11 @@ Propertiesproperties=newProperties();
 ```java
             SendResult sendResult = producer.send(msg);
             System.out.println("Message Id:" + sendResult.getMessageId());
-        }
+```
+
+`}`
+
+```
         catch (Exception e) {
 ```
 
@@ -4298,28 +4572,25 @@ Propertiesproperties=newProperties();
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
             e.printStackTrace();
-        }
 ```
 
-`//` 在应用退出前，销毁 `Producer` 对象 `//` 注意：如果不销毁也没有问题
+`}` `//` 在应用退出前，销毁 `Producer` 对象 `//` 注意：如果不销毁也没有问题
 
 ```
         producer.shutdown();
-    }
-}
 ```
+
+`}` `}`
 
 **订阅定时消息**
 
 定时消息的订阅方式与普通消息一致，具体操作方式请参见订阅消息。
 
-##### 订阅消息
+##### 7.2.4.11 订阅消息
 
-本文介绍消息的订阅方式及示例代码。 消息队列请确保同一个Group ID下所有Consumer实例的订阅关系保持一致，具体内容请参见订阅
+本文介绍消息的订阅方式及示例代码。
 
-**说明**
-
-关系一致。
+> **说明：** 请确保同一个Group ID下所有Consumer实例的订阅关系保持一致，具体内容请参见订阅关系一致。
 
 **订阅方式**
 
@@ -4339,8 +4610,6 @@ RocketMQ支持以下两种订阅方式：
 ```
 
 **示例代码**
-
-消息队列
 
 ```java
 import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Consumer; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import java.util.Properties; public class ConsumerTest {
@@ -4373,7 +4642,7 @@ import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.on
           "XXX");
 ```
 
-`//` 集群订阅方式 (默认)
+`//` 集群订阅方式 `(`默认`)`
 
 ```
           // properties.put(PropertyKeyConst.MessageModel,
@@ -4395,7 +4664,11 @@ PropertyValueConst.BROADCASTING);
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
+```
+
+`}`
+
+```
         });
 ```
 
@@ -4407,33 +4680,34 @@ Tag
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
-}
 ```
 
-在广播消费模式下，您无法在控制台进行消息堆积查询。因此，您也可以创建多个Group
+`}` `}`
 
-**说明**
+> **说明：** 在广播消费模式下，您无法在控制台进行消息堆积查询。因此，您也可以创建多个Group ID来达到广播模式的效果，具体内容请参见集群消费和广播消费。
 
-#### C/C++ SDK
+#### 7.2.5 C/C++ SDK
 
-消息队列
+##### 7.2.5.1 C/C++ SDK环境准备
 
-##### C/C++ SDK环境准备
+###### 7.2.5.1.1 环境准备概述
 
-###### 环境准备概述
+用C++ SDK方式接入RocketMQ，需要完成相关准备工作。
 
-**说明**
+> **说明：** 代码里涉及到的Topic和Group ID需要到RocketMQ控制台上创建。Message Tag可以完全由应用自定义，具体操作方式请参见创建资源。
+> 使用RocketMQ服务的应用程序需要部署在阿里云ECS上。
 
-代码里涉及到的Topic和Group ID需要到RocketMQ控制台上创建。Message Tag可以完全由应用自定义，具体操作方式请参见创建资源。 使用RocketMQ服务的应用程序需要部署在阿里云ECS上。
+###### 7.2.5.1.2 下载SDK
 
-###### 下载SDK
-
-本文为您介绍使用v2.0.0版本的C++ SDK接入RocketMQ所需完成的准备工作、使用说明以及注意事项，
+本文为您介绍使用v2.0.0版本的C++ SDK接入RocketMQ所需完成的准备工作、使用说明以及注意事项， 以便后续使用C++ SDK收发消息。
 
 **操作步骤**
 
@@ -4441,17 +4715,19 @@ Tag
 2. 下载完成后，解压压缩包。
 解压完成后，会有如下目录结构： demos/ 包含了普通消息发送、Oneway消息发送、顺序消息发送、普通消息消费、顺序消息消费等例子，还包含了CMakeList.txt用于demos的编译和管理。 include/ 包含用户自己编写的程序需要的头文件。 lib/ 包含基于x86_64的动态库，分别为接口库（libonsclient4cpp.so）和内核库 （librocketmq_client_core.so）。 changelog 新版本发布解决的问题和引入的新特性列表。
 
-###### 使用Linux C++ SDK
+###### 7.2.5.1.3 使用Linux C++ SDK
 
-自2019年6月28日起，新版本的SDK将只提供动态库方案。RocketMQ的库文件在lib/目录下，需要业务方生成可执行文件时链接librocketmq_client_core.so和libonsclient4cpp.so。由于demos引入了C++ 11 的特性和使用CMake来管理，需要提前安装CMake 3.0以上版本和g++ 4.8及以上版本。
+文本介绍如何在Linux中使用C++ SDK。 自2019年6月28日起，新版本的SDK将只提供动态库方案。RocketMQ的库文件在lib/目录下，需要业务方生成可执行文件时链接librocketmq_client_core.so和libonsclient4cpp.so。由于demos引入了C++ 11 的特性和使用CMake来管理，需要提前安装CMake 3.0以上版本和g++ 4.8及以上版本。
 
 **动态解决方案**
 
-由于 GCC 5.x 及以上版本引入了Dual ABI，编译链接时，请添加-
+由于 GCC 5.x 及以上版本引入了Dual ABI，编译链接时，请添加**-**
 **D_GLIBCXX_USE_CXX11_ABI=0**编译选项。
-demos的使用方法如下： 消息队列 `cd aliyun-mq-linux-cpp-sdk //`下载的 `SDK` 解压后的路径 `cd demos //`进入 `demos` 目录，修改 `demos` 文件，填入自己在 `RocketMQ` 控制台创建的 `Topic` 和 `Key` 等相关的信息 `cmake . //`检测依赖和生成编译脚本 `make` 执行编译操作 `cd bin //`到生成的可执行文件目录下运行程序
+demos的使用方法如下： `cd aliyun-mq-linux-cpp-sdk //`下载的 `SDK` 解压后的路径 `cd demos //`进入 `demos` 目录，修改 `demos` 文件，填入自己在 `RocketMQ` 控制台创建的 `Topic` 和 `Key` 等相关的信息 `cmake . //`检测依赖和生成编译脚本 `make` 执行编译操作 `cd bin //`到生成的可执行文件目录下运行程序
 
-##### 收发普通消息
+##### 7.2.5.2 收发普通消息
+
+本文介绍收发普通消息的代码示例。
 
 **发送普通消息**
 
@@ -4460,13 +4736,18 @@ demos的使用方法如下： 消息队列 `cd aliyun-mq-linux-cpp-sdk //`下载
 ```
 #include "ONSFactory.h"
 #include "ONSClientException.h"
-using namespace ons; int main() {
+using namespace ons; int main()
 ```
 
-`//`创建`Producer`，并配置发送消息所必需的信息。
+`{` `//`创建`Producer`，并配置发送消息所必需的信息。
 
 ```
     ONSFactoryProperty factoryInfo;
+```
+
+`//`您在消息队列`RocketMQ`版控制台创建的`Group ID`。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::ProducerId, "XXX");
 ```
 
@@ -4474,6 +4755,11 @@ using namespace ons; int main() {
 
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::NAMESRV_ADDR, "XXX");
+```
+
+`//` 您在消息队列`RocketMQ`版控制台创建的`Topic`。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::PublishTopics,"XXX" );
 ```
 
@@ -4512,7 +4798,7 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
             factoryInfo.getPublishTopics(),
 ```
 
-`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在消息队列`RocketMQ`版的服务器过滤。 `"T` `A"` 消息队列
+`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在消息队列`RocketMQ`版的服务器过滤。 `"T` `A"`
 
 ```
             "TagA",
@@ -4522,10 +4808,9 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 
 ```
             factoryInfo.getMessageContent()
-    );
 ```
 
-`//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
+); `//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
 
 ```
     msg.setKey("ORDERID_100");
@@ -4535,32 +4820,36 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 
 ```
     try
-    {
+```
+
+`{`
+
+```
         SendResultONS sendResult = pProducer->send(msg);
-    }
+```
+
+`}`
+
+```
     catch(ONSClientException & e)
-    {
 ```
 
-`//`自定义处理`exception`的细节。
-
-```
-    }
-```
-
-`//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
+`{` `//`自定义处理`exception`的细节。 `}` `//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
 
 ```
     pProducer->shutdown();
     return 0;
-}
 ```
+
+`}`
 
 **订阅普通消息**
 
 订阅普通消息的说明和示例代码，具体操作方式请参见订阅消息。
 
-##### 收发顺序消息
+##### 7.2.5.3 收发顺序消息
+
+本文介绍收发顺序消息的代码示例。
 
 **发送顺序消息**
 
@@ -4570,10 +4859,10 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 #include "ONSFactory.h"
 #include "ONSClientException.h"
 #include <iostream>
-using namespace ons; int main() {
+using namespace ons; int main()
 ```
 
-`//Producer`创建和正常工作的参数，必须输入。
+`{` `//Producer`创建和正常工作的参数，必须输入。
 
 ```
     ONSFactoryProperty factoryInfo;
@@ -4584,6 +4873,11 @@ using namespace ons; int main() {
 
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::NAMESRV_ADDR, "XXX"); //设置TCP接
+```
+
+入域名，进入消息队列`RocketMQ`版控制台实例详情页面的接入点区域查看。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::PublishTopics,"XXX" );//您在消息队
 ```
 
@@ -4594,7 +4888,7 @@ using namespace ons; int main() {
     factoryInfo.setFactoryProperty(ONSFactoryProperty::AccessKey, "XXX");//AccessKey ID
 ```
 
-消息队列阿里云身份验证，在阿里云服务器管理控制台创建。
+阿里云身份验证，在阿里云服务器管理控制台创建。
 
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::SecretKey, "XXX" );//AccessKey S
@@ -4616,7 +4910,7 @@ using namespace ons; int main() {
                 factoryInfo.getPublishTopics(),
 ```
 
-`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件
+`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在消息队列`RocketMQ`版的服务器过滤。
 
 ```
                 "TagA",
@@ -4626,10 +4920,9 @@ using namespace ons; int main() {
 
 ```
                 factoryInfo.getMessageContent()
-    );
 ```
 
-`//` 设置代表消息的业务属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
+); `//` 设置代表消息的业务属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
 
 ```
     msg.setKey("ORDERID_100");
@@ -4645,32 +4938,29 @@ using namespace ons; int main() {
 
 ```
     try
-    {
 ```
 
-`//`发送消息，只要不抛异常就是成功。
+`{` `//`发送消息，只要不抛异常就是成功。
 
 ```
         SendResultONS sendResult = pProducer->send(msg, shardingKey);
     std::cout << "send success" << std::endl;
-    }
+```
+
+`}`
+
+```
     catch(ONSClientException & e)
-    {
 ```
 
-`//`添加对`exception`的处理。
-
-```
-    }
-```
-
-`//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
+`{` `//`添加对`exception`的处理。 `}` `//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
 
 ```
     pProducer->shutdown();
     return 0;
-}
 ```
+
+`}`
 
 **接收顺序消息**
 
@@ -4681,33 +4971,58 @@ using namespace ons; int main() {
 using namespace std; using namespace ons;
 ```
 
-创建消费消息的实例消息队列 `//`创建消费消息的实例。 `//pushConsumer`拉取到消息后，会主动调用该实例的`consumeMessage`函数。
+创建消费消息的实例 `//`创建消费消息的实例。 `//pushConsumer`拉取到消息后，会主动调用该实例的`consumeMessage`函数。
 
 ```
-class ONSCLIENT_API MyMsgListener : public MessageOrderListener { public:
+class ONSCLIENT_API MyMsgListener : public MessageOrderListener
+```
+
+`{`
+
+```
+public:
     MyMsgListener()
-    {
-    }
-    virtual ~MyMsgListener()
-    {
-    }
-    virtual OrderAction consume(Message &message, ConsumeOrderContext &context)
-    {
 ```
 
-`//`根据业务需求，消费消息。
+`{` `}`
+
+```
+    virtual ~MyMsgListener()
+```
+
+`{` `}`
+
+```
+    virtual OrderAction consume(Message &message, ConsumeOrderContext &context)
+```
+
+`{` `//`根据业务需求，消费消息。
 
 ```
         return Success; //CONSUME_SUCCESS;
-    }
-}; int main(int argc, char* argv[]) {
 ```
 
-`//OrderConsumer`创建和工作需要的参数，必须输入。
+`}` };
+
+```
+int main(int argc, char* argv[])
+```
+
+`{` `//OrderConsumer`创建和工作需要的参数，必须输入。
 
 ```
     ONSFactoryProperty factoryInfo;
+```
+
+`//`您在消息队列`RocketMQ`版控制台创建的`Group ID`。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::ConsumerId, "XXX");
+```
+
+`//`您在消息队列`RocketMQ`版控制台创建的`Topic`。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::PublishTopics,"XXX" );
 ```
 
@@ -4751,20 +5066,20 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
     orderConsumer->start();
     for(volatile int i = 0; i < 1000000000; ++i) {
         //wait
-    }
 ```
 
-消息队列 `//`销毁`orderConsumer,` 在应用退出前，必须销毁`Consumer`对象，否则会导致内存泄露等问题。
+`//`销毁`orderConsumer,` 在应用退出前，必须销毁`Consumer`对象，否则会导致内存泄露等问题。
 
 ```
     orderConsumer->shutdown();
    return 0;
-}
 ```
 
-##### 收发定时消息
+`}`
 
-定时消息可以做到在指定时间之后才可被消费者消费，用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发定时任务的场景，类似于延迟队列。
+##### 7.2.5.4 收发定时消息
+
+本文介绍收发定时消息的代码示例。 定时消息可以做到在指定时间之后才可被消费者消费，用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发定时任务的场景，类似于延迟队列。
 
 **发送定时消息**
 
@@ -4774,13 +5089,18 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 #include "ONSFactory.h"
 #include "ONSClientException.h"
 #include <windows.h>
-using namespace ons; int main() {
+using namespace ons; int main()
 ```
 
-`//`创建`Producer`，并配置发送消息所必需的信息。
+`{` `//`创建`Producer`，并配置发送消息所必需的信息。
 
 ```
     ONSFactoryProperty factoryInfo;
+```
+
+`//`您在消息队列`RocketMQ`版控制台创建的`Group ID`。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::ProducerId, "XXX");
 ```
 
@@ -4788,6 +5108,11 @@ using namespace ons; int main() {
 
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::NAMESRV_ADDR, "XXX");
+```
+
+`//` 您在消息队列`RocketMQ`版控制台创建的`Topic`。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::PublishTopics,"XXX" );
 ```
 
@@ -4822,7 +5147,7 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
             factoryInfo.getPublishTopics(),
 ```
 
-`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在消息队列R k`tMQ`版的服务器过滤消息队列息队列`RocketMQ`版的服务器过滤
+`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在消息队列`R` `k``tMQ`版的服务器过滤息队列`RocketMQ`版的服务器过滤
 
 ```
             "TagA",
@@ -4832,10 +5157,9 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 
 ```
             factoryInfo.getMessageContent()
-    );
 ```
 
-`//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
+); `//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
 
 ```
     msg.setKey("ORDERID_100");
@@ -4852,38 +5176,40 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 
 ```
     try
-    {
+```
+
+`{`
+
+```
         SendResultONS sendResult = pProducer->send(msg);
-    }
+```
+
+`}`
+
+```
     catch(ONSClientException & e)
-    {
 ```
 
-`//`自定义处理`exception`的细节。
-
-```
-    }
-```
-
-`//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
+`{` `//`自定义处理`exception`的细节。 `}` `//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
 
 ```
     pProducer->shutdown();
     return 0;
-}
 ```
+
+`}`
 
 **订阅定时消息**
 
 订阅定时消息的说明和示例代码，具体操作方式请参见订阅消息。
 
-##### 收发事务消息
+##### 7.2.5.5 收发事务消息
 
 本文介绍事务消息的交互流程、收发方式、示例代码及回查机制。
 
 **交互流程**
 
-RocketMQ事务消息的交互流程如下图所示： 消息队列图 1. 事务消息交互流程图
+RocketMQ事务消息的交互流程如下图所示： 图 1. 事务消息交互流程图
 
 **发送事务消息**
 
@@ -4895,18 +5221,27 @@ RocketMQ事务消息的交互流程如下图所示： 消息队列图 1. 事务�
 #include "ONSClientException.h"
 using namespace ons;
     class MyLocalTransactionExecuter : LocalTransactionExecuter
-    {
-        MyLocalTransactionExecuter()
-        {
-        }
-        ~MyLocalTransactionExecuter()
-        {
-        }
-        virtual TransactionStatus execute(Message &value)
-        {
 ```
 
-`//` 消息`ID`（有可能消息体一样，但消息`ID`不一样，当前消息`ID`在消息队列`RocketMQ`版控制台无法查询。)
+`{`
+
+```
+        MyLocalTransactionExecuter()
+```
+
+`{` `}`
+
+```
+        ~MyLocalTransactionExecuter()
+```
+
+`{` `}`
+
+```
+        virtual TransactionStatus execute(Message &value)
+```
+
+`{` `//` 消息`ID`（有可能消息体一样，但消息`ID`不一样，当前消息`ID`在消息队列`RocketMQ`版控制台无法查询。`)`
 
 ```
                 string msgId = value.getMsgID();
@@ -4936,27 +5271,29 @@ using namespace ons;
 
 ```
                         transactionStatus = RollbackTransaction;
-                    }
+```
+
+`}`
+
+```
                 } catch (...) {
                     //exception handle
-                }
                 return transactionStatus；
-        }
-}
 ```
 
-消息队列
-
 ```
-    }
     int main(int argc, char* argv[])
-    {
 ```
 
-`//`创建`Producer`和发送消息所必需的信息。
+`{` `//`创建`Producer`和发送消息所必需的信息。
 
 ```
         ONSFactoryProperty factoryInfo;
+```
+
+`//`您在消息队列`RocketMQ`版控制台创建的`Group ID`。
+
+```
         factoryInfo.setFactoryProperty(ONSFactoryProperty::ProducerId, "XXX");
 ```
 
@@ -4964,6 +5301,11 @@ using namespace ons;
 
 ```
         factoryInfo.setFactoryProperty(ONSFactoryProperty::NAMESRV_ADDR, "XXX");
+```
+
+`//` 您在消息队列`RocketMQ`版控制台创建的`Topic`。
+
+```
         factoryInfo.setFactoryProperty(ONSFactoryProperty::PublishTopics,"XXX" );
 ```
 
@@ -5005,7 +5347,7 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
             factoryInfo.getPublishTopics(),
 ```
 
-`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在
+`//Message Tag`，可理解为`Gmail`中的标签，对消息进行再归类，方便`Consumer`指定过滤条件在消息队列`RocketMQ`版的服务器过滤。
 
 ```
             "TagA",
@@ -5015,10 +5357,9 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 
 ```
             factoryInfo.getMessageContent()
-        );
 ```
 
-`//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
+); `//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过消息队列`RocketMQ`版控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发。
 
 ```
         msg.setKey("ORDERID_100");
@@ -5028,66 +5369,64 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 
 ```
         try
-        {
 ```
 
-`//`消息队列`RocketMQ`版不负责`pExecuter`的释放，需要业务方自行释放资源。
+`{` `//`消息队列`RocketMQ`版不负责`pExecuter`的释放，需要业务方自行释放资源。
 
 ```
             MyLocalTransactionExecuter pExecuter = new MyLocalTransactionExecuter();
             SendResultONS sendResult = pProducer->send(msg,pExecuter);
-        }
 catch(ONSClientException&e)
 ```
 
-消息队列
-
 ```
         catch(ONSClientException & e)
-        {
 ```
 
-`//`自定义处理`exception`的细节。
-
-```
-        }
-```
-
-`//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
+`{` `//`自定义处理`exception`的细节。 `//` 在应用退出前，必须销毁`Producer`对象，否则会导致内存泄露等问题。
 
 ```
         pProducer->shutdown();
         return 0;
-    }
 ```
 
+`}`
 2. 提交事务消息状态。
 当本地事务执行完成（执行成功或执行失败），需要通知服务器当前消息的事务状态。通知方式有以下两种： 执行本地事务完成后提交。 执行本地事务一直没提交状态，等待服务器回查消息的事务状态。 事务状态有以下三种：
 **TransactionStatus.CommitTransaction**提交事务，允许订阅方消费该消息；
 **TransactionStatus.RollbackTransaction**回滚事务，消息将被丢弃不允许消费；
 **TransactionStatus.Unknow**无法判断状态，期待RocketMQ Broker向发送方再次询问该消息对应
-的本地事务的状态。 消息队列
+的本地事务的状态。
 
 ```
  class MyLocalTransactionChecker : LocalTransactionChecker
- {
-     MyLocalTransactionChecker()
-     {
-     }
-     ~MyLocalTransactionChecker()
-     {
-     }
-     virtual TransactionStatus check(Message &value)
-     {
 ```
 
-`//` 消息 `ID(`有可能消息体一样，但消息 `ID` 不一样, 当前消息 `ID` 在 `console` 控制无法查询)
+`{`
+
+```
+     MyLocalTransactionChecker()
+```
+
+`{` `}`
+
+```
+     ~MyLocalTransactionChecker()
+```
+
+`{` `}`
+
+```
+     virtual TransactionStatus check(Message &value)
+```
+
+`{` `//` 消息 `ID(`有可能消息体一样，但消息 `ID` 不一样`,` 当前消息 `ID` 在 `console` 控制无法查询`)`
 
 ```
          string msgId = value.getMsgID();
 ```
 
-`//` 消息体内容进行 `crc32,` 也可以使用其它的如 `MD5` `//` 消息 `ID` 和 `crc32id` 主要是用来防止消息重复 `//` 如果业务本身是幂等的, 可以忽略, 否则需要利用 `msgId` 或 `crc32Id` 来做幂等 `//` 如果要求消息绝对不重复, 推荐做法是对消息体 `body` 使用 `crc32` 或 `MD5` 来防止重复消息.
+`//` 消息体内容进行 `crc32,` 也可以使用其它的如 `MD5` `//` 消息 `ID` 和 `crc32id` 主要是用来防止消息重复 `//` 如果业务本身是幂等的`,` 可以忽略`,` 否则需要利用 `msgId` 或 `crc32Id` 来做幂等 `//` 如果要求消息绝对不重复`,` 推荐做法是对消息体 `body` 使用 `crc32` 或 `MD5` 来防止重复消息`.`
 
 ```
          TransactionStatus transactionStatus = Unknow;
@@ -5111,14 +5450,22 @@ catch(ONSClientException&e)
 
 ```
                  transactionStatus = RollbackTransaction;
-             }
+```
+
+`}`
+
+```
          } catch(...) {
              //exception error
-         }
-         return transactionStatus；
-     }
- }
 ```
+
+`}`
+
+```
+         return transactionStatus；
+```
+
+`}` `}`
 
 **事务回查机制说明**
 
@@ -5126,19 +5473,17 @@ catch(ONSClientException&e)
 **TransactionStatus.CommitTransaction**提交事务，允许订阅方消费该消息。
 **TransactionStatus.RollbackTransaction**回滚事务，消息将被丢弃不允许消费。
 **TransactionStatus.Unknow**无法判断状态，期待RocketMQ Broker向发送方再次询问该消息对
-应的本地事务的状态。 消息队列具体代码详见**MyLocalTransactionChecker**的实现。
+应的本地事务的状态。 具体代码详见**MyLocalTransactionChecker**的实现。
 
 **订阅事务消息**
 
 订阅事务消息的说明和示例代码，具体操作方式请参见订阅消息。
 
-##### 订阅消息
+##### 7.2.5.6 订阅消息
 
 本文介绍如何通过RocketMQ的SDK使用C/C++语言进行消息订阅。
 
-**说明**
-
-请确保同一个Group ID下所有Consumer实例的订阅关系保持一致，具体内容请参见订阅关系一致。
+> **说明：** 请确保同一个Group ID下所有Consumer实例的订阅关系保持一致，具体内容请参见订阅关系一致。
 
 **订阅方式**
 
@@ -5181,13 +5526,15 @@ using namespace ons; std::mutex console_mtx; class ExampleMessageListener : publ
 <<messagegetMsgID()<<std::endl;
 ```
 
-消息队列
-
 ```
         << message.getMsgID() << std::endl;
         return CommitMessage;
-    }
-}; int main(int argc, char* argv[]) {
+```
+
+};
+
+```
+int main(int argc, char* argv[]) {
     std::cout << "=======Before consuming messages=======" << std::endl;
     ONSFactoryProperty factoryInfo;
 ```
@@ -5210,10 +5557,20 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"));
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::SecretKey,
 getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
+```
+
+`//`请填写阿里云消息队列`RocketMQ`版控制台上对应实例的接入点。
+
+```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::NAMESRV_ADDR,
 "http://xxxxxxxxxxxxxxxx.aliyuncs.com:80");
     PushConsumer *consumer = ONSFactory::getInstance()-
 >createPushConsumer(factoryInfo);
+```
+
+`//`请填写阿里云消息队列`RocketMQ`版控制台上申请的`Topic`。
+
+```
     const char* topic_1 = "topic-1";
 ```
 
@@ -5252,34 +5609,30 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
     delete message_listener;
     std::cout << "=======After consuming messages======" << std::endl;
     return 0;
-}
 ```
+
+`}`
 
 #### 7.2.6. .NET SDK
 
-消息队列
-
 ##### 7.2.6.1. .NET SDK环境准备
 
-###### 环境准备概述
+###### 7.2.6.1.1 环境准备概述
 
 本文为您介绍使用.NET SDK方式接入RocketMQ的准备工作，以便后续使用.NET SDK收发消息。
 
-**说明**
+> **说明：** 代码里涉及到的Topic和Group ID，需要到控制台上创建。Message Tag可以完全由应用自定义，具体创建过程可参见创建资源。
+> 使用RocketMQ服务的应用程序需要部署在阿里云ECS上。
 
-代码里涉及到的Topic和Group ID，需要到控制台上创建。Message Tag可以完全由应用自定义，具体创建过程可参见创建资源。 使用RocketMQ服务的应用程序需要部署在阿里云ECS上。
-
-###### 下载SDK
+###### 7.2.6.1.2 下载SDK
 
 RocketMQ提供的.NET版本是基于RocketMQ CPP版本的托管封装，这样能保证.NET完全不依赖于 Windows .NET公共库，内部采用C++多线程并发处理，保证.NET版本的高效稳定。
 
 **背景信息**
 
-在使用VS开发.NET的应用程序和类库时，默认的目标平台为“Any CPU”，即运行时可根据CPU类型自动选择X86或X64。拥有这样的能力是因为. NET编译后的程序集是基于IL的。在运行时，CLR才会将其JIT发射为X86或X64的机器码。而C或C++编译生成的DLL就是机器码。所以，其平台的决策是在编译时决定的。 通过编译选项的设置，我们将C/C++项目编译为X64的64位DLL，因此我们提供了包含VS2015编译的 release64位版本DLL。其他VS版本也可以使用。 C++ DLL 文件需要 Virtual C++ 2015 运行时环境安装包。如果没有安装 Visual
+在使用VS开发.NET的应用程序和类库时，默认的目标平台为“Any CPU”，即运行时可根据CPU类型自动选择X86或X64。拥有这样的能力是因为. NET编译后的程序集是基于IL的。在运行时，CLR才会将其JIT发射为X86或X64的机器码。而C或C++编译生成的DLL就是机器码。所以，其平台的决策是在编译时决定的。 通过编译选项的设置，我们将C/C++项目编译为X64的64位DLL，因此我们提供了包含VS2015编译的 release64位版本DLL。其他VS版本也可以使用。
 
-**说明**
-
-Studio 2015 运行时环境，请执行 SDK 中提供的 vc_redist.x64.exe 来完成安装。
+> **说明：** C++ DLL 文件需要 Virtual C++ 2015 运行时环境安装包。如果没有安装 Visual Studio 2015 运行时环境，请执行 SDK 中提供的 vc_redist.x64.exe 来完成安装。
 
 **操作步骤**
 
@@ -5293,9 +5646,10 @@ Studio 2015 运行时环境，请执行 SDK 中提供的 vc_redist.x64.exe 来�
       NSClient4CPP.lib
       ONSClient4CPP.dll
       ONSClient4CPP.pdb
+  vc_redist.x64.exe
 ```
 
-interface/ 封装PINVOKE调用的代码，需要包含到用户项目代码中。 SDK_GUIDE.pdf 消息队列 SDK环境准备文档和FAQ。 changelog 新版本发布解决的问题和引入的新特性列表。
+interface/ 封装PINVOKE调用的代码，需要包含到用户项目代码中。 SDK_GUIDE.pdf SDK环境准备文档和FAQ。 changelog 新版本发布解决的问题和引入的新特性列表。
 
 ###### 7.2.6.1.3. .NET SDK配置说明
 
@@ -5309,28 +5663,26 @@ Visual Studio 2015环境下使用.NET SDK
 2. 右键单击项目选择**添加**>**现存在项**将下载的SDK中的**interface**目录下的所有文件都添加进去。
 图 2. .NET SDK-2
 3. 右键单击项目选择**属性**，选择**配置管理器**。设置**活动解决方案配置**为**release**；设置**活动解决方案平**
-台为**x64**。 消息队列
+**台**为**x64**。
 4. 编写测试程序，然后进行编译，最后将SDK下的dll放到和可执行文件同一级目录下，或者系统目录下即可
-运行。 图 3. .NET SDK-3 SDK提供了设置好的Demo，直接打开工程进行编译即可。运行的时候将相关的DLL文
+运行。 图 3. .NET SDK-3
 
-**说明**
+> **说明：** SDK提供了设置好的Demo，直接打开工程进行编译即可。运行的时候将相关的DLL文件拷贝到和可执行文件同级目录下，如下图：
 
-件拷贝到和可执行文件同级目录下，如下图： 图 4. .NET SDK-4
+图 4. .NET SDK-4
 
 **Visual Studio 2015配置ASP.NET使用RocketMQ SDK**
 
 5. 使用VS2015创建一个ASP.NET的**Web Forms**项目。
-图 5. .NET SDK-5 消息队列
+图 5. .NET SDK-5
 6. 右键单击项目选择**属性**，选择**配置管理器**。设置**活动解决方案配置**为**release**；设置**活动解决方案平**
-台为**x64**。 图 6. .NET SDK-6
+**台**为**x64**。
+图 6. .NET SDK-6
 7. 右键单击项目选择**添加**>**现存在项**，将下载的SDK中的interface目录下的所有文件都添加进去。
 请参考上文中配置普通的.net 项目的步骤2。
 8. 在**Global.asax.cs**文件中添加启动和关闭SDK的代码。
-建议将SDK的代码封装成一个单例类，这样可以避免因为作用域的问题被垃圾回收器回
 
-**说明**
-
-收。SDK的example目录下提供了一个Example.cs，实现了一个简单的单例实现。您需要把 Example.cs包含到自己的项目中才能使用。 消息队列
+> **说明：** 建议将SDK的代码封装成一个单例类，这样可以避免因为作用域的问题被垃圾回收器回收。SDK的example目录下提供了一个Example.cs，实现了一个简单的单例实现。您需要把 Example.cs包含到自己的项目中才能使用。
 
 ```
 using System; using System.Collections.Generic; using System.Linq; using System.Web; using System.Web.Optimization; using System.Web.Routing; using System.Web.Security; using System.Web.SessionState;
@@ -5338,79 +5690,100 @@ using System; using System.Collections.Generic; using System.Linq; using System.
 
 using ons; // 这个命名空间是`SDK`所在的命名空间 using test; // 这是一个简单封装`SDK`的类所在命名空间，见`SDK`的`example`目录下的`Example.cs`
 
+```
+namespace WebApplication4
+```
+
+`{`
+
 ```java
-namespace WebApplication4 {
     public class Global : HttpApplication
-    {
+```
+
+`{`
+
+```
         void Application_Start(object sender, EventArgs e)
-        {
+```
+
+`{`
+
+```
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             try
-            {
 ```
 
-`//` 启动`SDK`的代码，下面是简单封装`SDK`后的代码
+`{` `//` 启动`SDK`的代码，下面是简单封装`SDK`后的代码
 
 ```
                 OnscSharp.CreateProducer();
                 OnscSharp.StartProducer();
-            }
+```
+
+`}`
+
+```
             catch (Exception ex)
-            {
 ```
 
-`//`处理异常
+`{` `//`处理异常 `}` `}`
 
-```
-            }
-        }
+```java
         protected void Application_End(object sender, EventArgs e)
-        {
-            try
-            {
 ```
 
-`//` 关闭`SDK`的代码
+`{`
+
+```
+            try
+```
+
+`{` `//` 关闭`SDK`的代码
 
 ```
               OnscSharp.ShutdownProducer();
-            }
+```
+
+`}`
+
+```
             catch (Exception ex)
-            {
 ```
 
-`//` 处理异常
-
-```
-            }
-        }
-    }
-}
-```
-
+`{` `//` 处理异常 `}` `}` `}` `}`
 9. 编写测试程序，然后进行编译。
 0. 将SDK下的dll 放到和可执行文件同一级目录下，或者系统目录下即可运行。
-图 7. .NET SDK-7 消息队列
+图 7. .NET SDK-7
 1. 依次单击**工具**>**选项**>**项目和解决方案**>**Web** **项目**，然后勾选对网站和项目使用**IIS Express**的64位
-版。 图 8. .NET SDK-8 图 9. .NET SDK-9 消息队列
+版。 图 8. .NET SDK-8 图 9. .NET SDK-9
 
-##### 收发普通消息
+##### 7.2.6.2 收发普通消息
+
+本文介绍收发普通消息的代码示例。
 
 **发送普通消息**
 
-您可以运行以下代码进行消息发送。请按说明正确设置相关参数。 消息队列
+您可以运行以下代码进行消息发送。请按说明正确设置相关参数。
 
 ```java
-using System; using ons; public class ProducerExampleForEx {
+using System; using ons; public class ProducerExampleForEx
+```
+
+`{`
+
+```
     public ProducerExampleForEx()
-    {
-    }
+```
+
+`{` `}`
+
+```
     static void Main(string[] args) {
 ```
 
-`//` 配置账号, 从控制台获取设置
+`//` 配置账号`,` 从控制台获取设置
 
 ```
         ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
@@ -5476,40 +5849,60 @@ age body");
         msg.setKey(Guid.NewGuid().ToString());
         for (int i = 0; i < 32; i++) {
             try
-            {
-                SendResultONS sendResult = producer.send(msg);
-                Console.WriteLine("send success {0}", sendResult.getMessageId());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("send failure{0}", ex.ToString());
-            }
-        }
 ```
 
-`//` 在您的线程即将退出时，关闭生产者实例
+`{`
+
+```
+                SendResultONS sendResult = producer.send(msg);
+                Console.WriteLine("send success {0}", sendResult.getMessageId());
+```
+
+`}`
+
+```
+            catch (Exception ex)
+```
+
+`{`
+
+```
+                Console.WriteLine("send failure{0}", ex.ToString());
+```
+
+`}` `}` `//` 在您的线程即将退出时，关闭生产者实例
 
 ```
         producer.shutdown();
-    }
-}
 ```
 
-### 订阅消息
+`}`
 
-消息队列订阅普通消息的说明和示例代码，具体操作方式请参见订阅消息。
+**订阅消息**
 
-##### 收发顺序消息
+订阅普通消息的说明和示例代码，具体操作方式请参见订阅消息。
+
+##### 7.2.6.3 收发顺序消息
+
+本文介绍收发顺序消息的代码示例。
 
 **发送顺序消息**
 
-发送顺序消息的示例代码如下： 消息队列
+发送顺序消息的示例代码如下：
 
 ```java
-using System; using ons; public class OrderProducerExampleForEx {
+using System; using ons; public class OrderProducerExampleForEx
+```
+
+`{`
+
+```
     public OrderProducerExampleForEx()
-    {
-    }
+```
+
+`{` `}`
+
+```
     static void Main(string[] args) {
 ```
 
@@ -5580,56 +5973,87 @@ age body");
         string shardingKey = "App-Test";
         for (int i = 0; i < 32; i++) {
             try
-            {
-                SendResultONS sendResult = producer.send(msg, shardingKey);
-                Console.WriteLine("send success {0}", sendResult.getMessageId());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("send failure{0}", ex.ToString());
-            }
-        }
 ```
 
-`//` 在您的线程即将退出时，关闭生产者实例
+`{`
+
+```
+                SendResultONS sendResult = producer.send(msg, shardingKey);
+                Console.WriteLine("send success {0}", sendResult.getMessageId());
+```
+
+`}`
+
+```
+            catch (Exception ex)
+```
+
+`{`
+
+```
+                Console.WriteLine("send failure{0}", ex.ToString());
+```
+
+`}` `}` `//` 在您的线程即将退出时，关闭生产者实例
 
 ```
         producer.shutdown();
-    }
-}
 ```
-
-消息队列
 
 **消费顺序消息**
 
 消费顺序消息的示例代码如下：
 
+```
+using System; using System.Text; using System.Threading; using ons; namespace demo
+```
+
+`{`
+
 ```java
-using System; using System.Text; using System.Threading; using ons; namespace demo {
     public class MyMsgOrderListener : MessageOrderListener
-    {
+```
+
+`{`
+
+```
         public MyMsgOrderListener()
-        {
-        }
+```
+
+`{` `}`
+
+```
         ~MyMsgOrderListener()
-        {
-        }
+```
+
+`{` `}`
+
+```
         public override ons.OrderAction consume(Message value, ConsumeOrderContext cont
 ext)
-        {
+```
+
+`{`
+
+```
             Byte[] text = Encoding.Default.GetBytes(value.getBody());
             Console.WriteLine(Encoding.UTF8.GetString(text));
             return ons.OrderAction.Success;
-        }
-    }
-    class OrderConsumerExampleForEx
-    {
-        static void Main(string[] args)
-        {
 ```
 
-`//` 配置您的账号，以下设置均可从控制台获取
+`}` `}`
+
+```
+    class OrderConsumerExampleForEx
+```
+
+`{`
+
+```
+        static void Main(string[] args)
+```
+
+`{` `//` 配置您的账号，以下设置均可从控制台获取
 
 ```
             ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
@@ -5690,7 +6114,7 @@ ONSFactory.getInstance().createOrderConsumer(factoryInfo);
 MyMsgOrderListener());
 ```
 
-消息队列 y g `//` 启动消费者实例
+`y` `g` `//` 启动消费者实例
 
 ```
             consumer.start();
@@ -5706,12 +6130,11 @@ MyMsgOrderListener());
 
 ```
             consumer.shutdown();
-        }
-    }
-}
 ```
 
-##### 收发定时消息
+`}` `}` `}`
+
+##### 7.2.6.4 收发定时消息
 
 定时消息可以做到在指定时间之后才可被消费者消费，用于解决一些消息生产和消费有时间窗口要求的场景，或者通过消息触发定时任务的场景，类似于延迟队列。
 
@@ -5720,14 +6143,22 @@ MyMsgOrderListener());
 发送定时消息的代码示例如下：
 
 ```
-using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Runtime.InteropServices; using ons; namespace ons {
-    class onscsharp
-    {
-        static void Main(string[] args)
-        {
+using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Runtime.InteropServices; using ons; namespace ons
 ```
 
-`//producer` 创建和正常工作的参数，必须输入
+`{`
+
+```
+    class onscsharp
+```
+
+`{`
+
+```
+        static void Main(string[] args)
+```
+
+`{` `//producer` 创建和正常工作的参数，必须输入
 
 ```
             ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
@@ -5777,16 +6208,13 @@ using System; using System.Collections.Generic; using System.Linq; using System.
 "TagA",
 ```
 
-消息队列
-
 ```
                 TagA,
                 //Message Body
                 factoryInfo.getMessageContent()
-            );
 ```
 
-`//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过 `MQ Console` 查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发
+); `//` 设置代表消息的业务关键属性，请尽可能全局唯一。 `//` 以方便您在无法正常收到消息情况下，可通过 `MQ Console` 查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发
 
 ```
             msg.setKey("ORDERID_100");
@@ -5802,33 +6230,33 @@ using System; using System.Collections.Generic; using System.Linq; using System.
 
 ```
             try
-            {
+```
+
+`{`
+
+```
                 SendResultONS sendResult = pProducer.send(msg);
-            }
+```
+
+`}`
+
+```
             catch(ONSClientException e)
-            {
 ```
 
-`//`发送失败处理
-
-```
-            }
-```
-
-`//` 在应用退出前，必须销毁 `Producer` 对象，否则会导致内存泄露等问题
+`{` `//`发送失败处理 `}` `//` 在应用退出前，必须销毁 `Producer` 对象，否则会导致内存泄露等问题
 
 ```
             pProducer.shutdown();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **订阅定时消息**
 
 订阅定时消息的说明和示例代码，具体操作方式请参见订阅消息。
 
-##### 收发事务消息
+##### 7.2.6.5 收发事务消息
 
 本文介绍事务消息的交互流程、收发方式、示例代码及回查机制。
 
@@ -5840,9 +6268,8 @@ RocketMQ事务消息的交互流程如下图所示： 图 1. 事务消息交互�
 
 发送事务消息包含以下两个步骤：
 1. 发送半事务消息（Half Message）及执行本地事务。示例代码如下：
-消息队列
 
-```java
+```
  using System;
  using System.Collections.Generic;
  using System.Linq;
@@ -5850,24 +6277,42 @@ RocketMQ事务消息的交互流程如下图所示： 图 1. 事务消息交互�
  using System.Runtime.InteropServices;
  using ons;
  namespace ons
- {
+```
+
+`{`
+
+```java
  public class MyLocalTransactionExecuter : LocalTransactionExecuter
- {
+```
+
+`{`
+
+```
      public MyLocalTransactionExecuter()
-     {
-     }
+```
+
+`{` `}`
+
+```
      ~MyLocalTransactionExecuter()
-     {
-     }
+```
+
+`{` `}`
+
+```
      public override TransactionStatus execute(Message value)
-     {
+```
+
+`{`
+
+```
              Console.WriteLine("execute topic: {0}, tag:{1}, key:{2}, msgId:
 {3},msgbody:{4}, userProperty:{5}",
              value.getTopic(), value.getTag(), value.getKey(), value.getMsgID(), value
 .getBody(), value.getUserProperty("VincentNoUser"));
 ```
 
-`//` 消息 `ID(`有可能消息体一样，但消息 `ID` 不一样。当前消息 `ID` 在控制台无法查询)
+`//` 消息 `ID(`有可能消息体一样，但消息 `ID` 不一样。当前消息 `ID` 在控制台无法查询`)`
 
 ```
              string msgId = value.getMsgID();
@@ -5897,17 +6342,36 @@ RocketMQ事务消息的交互流程如下图所示： 图 1. 事务消息交互�
 
 ```
                      transactionStatus = TransactionStatus.RollbackTransaction;
-                 }
+```
+
+`}`
+
+```
              } catch (Exception e) {
                  //exception handle
-             }
+```
+
+`}`
+
+```
              return transactionStatus；
-     }
- }
+```
+
+`}` `}`
+
+```
  class onscsharp
- {
+```
+
+`{`
+
+```
      static void Main(string[] args)
-     {
+```
+
+`{`
+
+```
          ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
          factoryInfo.setFactoryProperty(factoryInfo.NAMESRV_ADDR, "XXX");//设置 TCP 接
 ```
@@ -5920,7 +6384,7 @@ roup ID
          factoryInfo.setFactoryProperty(factoryInfo.PublishTopics, "");// 您在控制台创建
 ```
 
-的 `Topic` 消息队列
+的 `Topic`
 
 ```
          factoryInfo.setFactoryProperty(factoryInfo.MsgContent, "");//message body
@@ -5954,10 +6418,9 @@ onsfactory.getInstance().createTransactionProducer(factoryInfo,ref myChecker);
              "TagA",
              //Message Body
              factoryInfo.getMessageContent()
-         );
 ```
 
-`//` 设置代表消息的业务关键属性，请尽可能全局唯一 `//` 以方便您在无法正常收到消息情况下，可通过控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发
+); `//` 设置代表消息的业务关键属性，请尽可能全局唯一 `//` 以方便您在无法正常收到消息情况下，可通过控制台查询消息并补发。 `//` 注意：不设置也不会影响消息正常收发
 
 ```
          msg.setKey("ORDERID_100");
@@ -5967,51 +6430,73 @@ onsfactory.getInstance().createTransactionProducer(factoryInfo,ref myChecker);
 
 ```
          try
-         {
-             LocalTransactionExecuter myExecuter = new MyLocalTransactionExecuter();
-             SendResultONS sendResult = pProducer.send(msg, ref myExecuter);
-         }
-         catch(ONSClientException e)
-         {
-             Console.WriteLine("\nexception of sendmsg:{0}",e.what() );
-         }
 ```
 
-`//` 在应用退出前，必须销毁 `Producer` 对象，否则会导致内存泄露等问题； `// shutdown` 之后不能重新 `start` 此 `producer`
+`{`
+
+```
+             LocalTransactionExecuter myExecuter = new MyLocalTransactionExecuter();
+             SendResultONS sendResult = pProducer.send(msg, ref myExecuter);
+```
+
+`}`
+
+```
+         catch(ONSClientException e)
+```
+
+`{`
+
+```
+             Console.WriteLine("\nexception of sendmsg:{0}",e.what() );
+```
+
+`}` `//` 在应用退出前，必须销毁 `Producer` 对象，否则会导致内存泄露等问题； `// shutdown` 之后不能重新 `start` 此 `producer`
 
 ```
          pProducer.shutdown();
-     }
- }
- }
 ```
 
+`}` `}` `}`
 2. 提交事务消息状态。
 当本地事务执行完成（执行成功或执行失败），需要通知服务器当前消息的事务状态。通知方式有以下两种： 执行本地事务完成后提交。 执行本地事务一直没提交状态，等待服务器回查消息的事务状态。 事务状态有以下三种：
 **TransactionStatus.CommitTransaction**提交事务，允许订阅方消费该消息；
 **TransactionStatus.RollbackTransaction**回滚事务，消息将被丢弃不允许消费；
-消息队列
 **TransactionStatus.Unknow**无法判断状态，期待RocketMQ Broker向发送方再次询问该消息对
 应的本地事务的状态。
 
 ```java
     public class MyLocalTransactionChecker : LocalTransactionChecker
-    {
+```
+
+`{`
+
+```
         public MyLocalTransactionChecker()
-        {
-        }
+```
+
+`{` `}`
+
+```
         ~MyLocalTransactionChecker()
-        {
-        }
+```
+
+`{` `}`
+
+```
         public override TransactionStatus check(Message value)
-        {
+```
+
+`{`
+
+```
                 Console.WriteLine("check topic: {0}, tag:{1}, key:{2}, msgId:
 {3},msgbody:{4}, userProperty:{5}",
                 value.getTopic(), value.getTag(), value.getKey(), value.getMsgID(), va
 lue.getBody(), value.getUserProperty("VincentNoUser"));
 ```
 
-`//` 消息 `ID(`有可能消息体一样，但消息 `ID` 不一样。当前消息 `ID` 在控制台无法查询)
+`//` 消息 `ID(`有可能消息体一样，但消息 `ID` 不一样。当前消息 `ID` 在控制台无法查询`)`
 
 ```
                 string msgId = value.getMsgID();
@@ -6041,18 +6526,26 @@ lue.getBody(), value.getUserProperty("VincentNoUser"));
 
 ```
                         transactionStatus = TransactionStatus.RollbackTransaction;
-                    }
+```
+
+`}`
+
+```
                 } catch (Exception e) {
                     //exception handle
-                }
-                return transactionStatus；
-        }
-        }
 ```
+
+`}`
+
+```
+                return transactionStatus；
+```
+
+`}` `}`
 
 **事务回查机制说明**
 
-发送事务消息为什么必须要实现check机制？ 当步骤1半事务消息发送完成，但本地事务返回状态为**TransactionStatus.Unknow**时，亦或是应用退出导致本地事务未提交任何状态时，从RocketMQ Broker的角度看，这条半事务消息的状态是未知的，因此RocketMQ Broker会定期要求发送方能check该半事务消息，并上报其最终状态。 Check被回调时，业务逻辑都需要做些什么？ RocketMQ事务消息的check方法里面，应该写一些检查事务一致性的逻辑。RocketMQ发送事务消息时需要实现**LocalTransactionChecker**接口，用来处理RocketMQ Broker主动发起的本地事务状态回查请求；因此在事务消息的check方法中，需要完成两件事情： i. 检查该半事务消息对应的本地事务的状态（committed or rollback）； ii. 向RocketMQ Broker提交该半事务消息本地事务的状态。 消息队列本地事务的不同状态对半事务消息的影响？
+发送事务消息为什么必须要实现check机制？ 当步骤1半事务消息发送完成，但本地事务返回状态为**TransactionStatus.Unknow**时，亦或是应用退出导致本地事务未提交任何状态时，从RocketMQ Broker的角度看，这条半事务消息的状态是未知的，因此RocketMQ Broker会定期要求发送方能check该半事务消息，并上报其最终状态。 Check被回调时，业务逻辑都需要做些什么？ RocketMQ事务消息的check方法里面，应该写一些检查事务一致性的逻辑。RocketMQ发送事务消息时需要实现**LocalTransactionChecker**接口，用来处理RocketMQ Broker主动发起的本地事务状态回查请求；因此在事务消息的check方法中，需要完成两件事情： i. 检查该半事务消息对应的本地事务的状态（committed or rollback）； ii. 向RocketMQ Broker提交该半事务消息本地事务的状态。 本地事务的不同状态对半事务消息的影响？
 **TransactionStatus.CommitTransaction**提交事务，允许订阅方消费该消息；
 **TransactionStatus.RollbackTransaction**回滚事务，消息将被丢弃不允许消费；
 **TransactionStatus.Unknow**无法判断状态，期待RocketMQ Broker向发送方再次询问该消息对
@@ -6062,7 +6555,7 @@ lue.getBody(), value.getUserProperty("VincentNoUser"));
 
 订阅事务消息的说明和示例代码，具体操作方式请参见订阅消息。
 
-##### 订阅消息
+##### 7.2.6.6 订阅消息
 
 本文介绍如何通过RocketMQ SDK使用.NET语言进行消息订阅。
 
@@ -6098,29 +6591,50 @@ using System; using System.Threading; using System.Text; using ons;
 `//` 从 `Broker` 拉取消息时要执行的回调函数
 
 ```java
-public class MyMsgListener : MessageListener {
-    public MyMsgListener()
-    {
-    }
-    ~MyMsgListener()
-    {
-    }
-    public override ons.Action consume(Message value, ConsumeContext context)
-{
+public class MyMsgListener : MessageListener
 ```
 
-消息队列
+`{`
 
-```java
-    {
+```
+    public MyMsgListener()
+```
+
+`{` `}`
+
+```
+    ~MyMsgListener()
+```
+
+`{`
+
+```
+    public override ons.Action consume(Message value, ConsumeContext context)
+```
+
+`{` `{`
+
+```
         Byte[] text = Encoding.Default.GetBytes(value.getBody());
         Console.WriteLine(Encoding.UTF8.GetString(text));
         return ons.Action.CommitMessage;
-    }
-} public class ConsumerExampleForEx {
+```
+
+`}` `}`
+
+```java
+public class ConsumerExampleForEx
+```
+
+`{`
+
+```
     public ConsumerExampleForEx()
-    {
-    }
+```
+
+`{` `}`
+
+```
     static void Main(string[] args) {
 ```
 
@@ -6213,34 +6727,32 @@ ONSFactory.getInstance().createPushConsumer(factoryInfo);
 
 ```
         consumer.shutdown();
-    }
-}
 ```
 
-### HTTP协议SDK参考
+`}` `}`
 
-消息队列
+### 7.3 HTTP协议SDK参考
 
-#### 协议说明
+#### 7.3.1 协议说明
 
-##### 公共参数
+##### 7.3.1.1 公共参数
 
 本文介绍云消息队列 RocketMQ 版的HTTP请求Header中的公共请求参数和公共返回参数。
 
 **公共请求头**
 
-| 参数 | 是否必选 |  |  | 说明 |  |  |
+| 参数 | 是否必选 |   |   | 说明 |   |   |
 |---|---|---|---|---|---|---|
-| Authorization | 是 |  |  | 验证字符串，由 MQ+空格+ |  |  |
-|  |  |  |  |  | MQ+空格+ |  |
-|  |  |  |  | <AccessKeyId>+:+ |  |  |
-|  |  |  |  | <Signature> |  |  |
-| Content-Length | 是 |  |  | HTTP请求Body的长度。 |  |  |
-| Content-Type | 是 |  |  | 请求内容的MIME类型，目前请求仅支持text/xml; charset=utf-8，即 MIME类型为XML，编码字符集为 UTF-8。 |  |  |
-| Date | 是 |  |  | 请求的构造时间，目前只支持GMT 格式，如果和云消息队列 RocketMQ 版的服务器时间前后差异超过15分钟将返回本次请求非法。 |  |  |
-| Host | 是 |  |  | 即在控制台实例详情页面的网络管理页签查看到的HTTP接入点。 |  |  |
-| x-mq-version | 是 |  |  | 调用云消息队列 RocketMQ 版的版本号，当前版本为2015-06-06。 |  |  |
-| Content-MD5 | 否 |  |  | HTTP消息体的MD5值。具体格式， 请参见Content-MD5 Header Field。 |  |  |
+| Authorization | 是 |   |   | 验证字符串，由 MQ+空格+ |   |   |
+|   |   |   |   |   | MQ+空格+ |   |
+|   |   |   |   | <AccessKeyId>+:+ |   |   |
+|   |   |   |   | <Signature> |   |   |
+| Content-Length | 是 |   |   | HTTP请求Body的长度。 |   |   |
+| Content-Type | 是 |   |   | 请求内容的MIME类型，目前请求仅支持text/xml; charset=utf-8，即 MIME类型为XML，编码字符集为 UTF-8。 |   |   |
+| Date | 是 |   |   | 请求的构造时间，目前只支持GMT 格式，如果和云消息队列 RocketMQ 版的服务器时间前后差异超过15分钟将返回本次请求非法。 |   |   |
+| Host | 是 |   |   | 即在控制台实例详情页面的网络管理页签查看到的HTTP接入点。 |   |   |
+| x-mq-version | 是 |   |   | 调用云消息队列 RocketMQ 版的版本号，当前版本为2015-06-06。 |   |   |
+| Content-MD5 | 否 |   |   | HTTP消息体的MD5值。具体格式， 请参见Content-MD5 Header Field。 |   |   |
 
 **公共返回头**
 
@@ -6249,14 +6761,12 @@ ONSFactory.getInstance().createPushConsumer(factoryInfo);
 | Content-Length | HTTP响应Body的长度。 |
 | Connection | HTTP连接状态。 |
 
-消息队列
-
 | Date | 响应的返回时间，GMT时间格式。 |
 |---|---|
 | x-mq-request-id | 此次请求的请求序列号。 |
 | x-mq-version | API的版本编号，当前版本是2015-06-06。 |
 
-##### 签名机制
+##### 7.3.1.2 签名机制
 
 云消息队列 RocketMQ 版会验证每个访问的HTTP请求。每个向云消息队列 RocketMQ 版提交的HTTP请求中都包含Authorization，Authorization又包含了签名（Signature）。本文介绍签名的生成机制。
 
@@ -6290,11 +6800,12 @@ GMT。
 **CanonicalizedResource**：表示HTTP所请求资源的URI（统一资源标识符），如消费请求的URI
 /topics/abc/messages?consumer=GID_abc。
 
-**说明**
+> **说明：** 用来签名的字符串为UTF-8格式。
+> 签名的方法用RFC 2104中定义的HMAC-SHA1方法，其中Key为AccessKey Secret。
 
-用来签名的字符串为UTF-8格式。 签名的方法用RFC 2104中定义的HMAC-SHA1方法，其中Key为AccessKey Secret。 消息队列
+##### 7.3.1.3 发送消息API
 
-##### 发送消息API
+使用发送消息API从生产者发送消息至云消息队列 RocketMQ 版服务端。
 
 **请求构造**
 
@@ -6335,7 +6846,7 @@ GMT。
 
 **响应构造**
 
-响应行消息队列
+响应行
 
 ```
  HTTP/1.1 201
@@ -6364,7 +6875,9 @@ GMT。
 <Message xmlns="http://mq.aliyuncs.com/doc/v1/"> <MessageId>1E057D566EAD42A579935B5CD874****</MessageId> <MessageBodyMD5>0CC175B9C0F1B6A831C399E26977****</MessageBodyMD5> </Message>
 ```
 
-##### 订阅消息API
+##### 7.3.1.4 订阅消息API
+
+订阅者可通过调用订阅消息API来消费云消息队列 RocketMQ 版服务端中的消息。
 
 **请求构造**
 
@@ -6375,17 +6888,13 @@ GMT。
 ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
 ```
 
-请求行总长度不能超过1024个字符。
-
-**重要**
+> **重要：** 请求行总长度不能超过1024个字符。
 
 参数说明如下。
 
 | 参数 | 是否必选 | 说明 |
 |---|---|---|
 | TopicName | 是 | 将消息发送至的Topic名称。 |
-
-消息队列
 
 | ns | 否 | 实例ID，针对有命名空间的新建实例，该参数为必填。 是否有命名空间可以在控制台实例详情页面查看。实例根据其是否有命名空间分为默认实例和新建实例： 默认实例：无命名空间，所有资源命名在该默认实例内需全局唯一。 新建实例：有命名空间，资源命名只需保证在该实例内唯一。 详细信息，请参见资源隔离优化 （实例化支持）。 |
 |---|---|---|
@@ -6404,7 +6913,7 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
  HTTP/1.1 200
 ```
 
-消息队列响应内容响应内容的参数说明如下。
+响应内容响应内容的参数说明如下。
 
 | 参数 | 类型 | 说明 |
 |---|---|---|
@@ -6439,7 +6948,7 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
  HTTP/1.1 404
 ```
 
-消息队列响应内容响应内容的参数说明如下。
+响应内容响应内容的参数说明如下。
 
 | 参数 | 类型 | 说明 |
 |---|---|---|
@@ -6478,7 +6987,7 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
 </Message> </Messages>
 ```
 
-无消息可消费消息队列
+无消息可消费
 
 ```xml
 <?xml version="1.0" ?> <Error xmlns="http://mq.aliyuncs.com/doc/v1">
@@ -6489,7 +6998,9 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
 </Error>
 ```
 
-##### 确认消息API
+##### 7.3.1.5 确认消息API
+
+使用确认消息API确认消息消费状态。
 
 **请求构造**
 
@@ -6521,7 +7032,7 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
  HTTP/1.1 204
 ```
 
-消息队列响应内容无请求失败响应行
+响应内容无请求失败响应行
 
 ```
  HTTP/1.1 404
@@ -6572,34 +7083,43 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
     </Errors>
 ```
 
-消息队列
+#### 7.3.2 Java SDK
 
-#### Java SDK
+##### 7.3.2.1 准备环境
 
-##### 准备环境
+在使用Java SDK收发消息前，您需按照本文提供的内容来准备环境。
 
 **环境要求**
 
-安装JDK 1.6或以上版本。更多信息，请参见安装JDK。 安装Maven。更多信息，请参见安装Maven。 通过Maven方式引入依赖，在pom.xml中添加以下依赖。
+安装JDK 1.6或以上版本。更多信息，请参见安装JDK。 安装Maven。更多信息，请参见安装Maven。
+
+**安装Java SDK**
+
+通过Maven方式引入依赖，在pom.xml中添加以下依赖。
 
 ```xml
 <dependency>
     <groupId>com.aliyun.mq</groupId>
     <artifactId>mq-http-sdk</artifactId>
+```
+
+<!-- 设置为`Java SDK`的版本号。`-->`
+
+```xml
     <version>X.X.X</version>
     <classifier>jar-with-dependencies</classifier>
 </dependency>
 ```
 
-**说明**
+> **说明：** 获取SDK的版本信息，请参见SDK概述。
 
-##### 收发普通消息
+##### 7.3.2.2 收发普通消息
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的Java SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Java SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
@@ -6617,16 +7137,10 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
                 "${HTTP_ENDPOINT}",
 ```
 
-`//``AccessKey``ID`，阿里云身份验证，在`Apsara``Uni-manager`运营控制台获取。 消息队列
+`//``AccessKey``ID`，阿里云身份验证，在`Apsara``Uni-manager`运营控制台获取。
 
-|  | // AccessKey ID，阿里云身份验证，在Apsara Uni-manager运营控制台获取。 "${ACCESS KEY}", _ // AccessKey Secret，阿里云身份验证，在Apsara Uni-manager运营控制台获取。 "${SECRET KEY}" _ ); // 消息所属的Topic，在RocketMQ控制台创建。 // 不同消息类型的Topic不能混用，例如普通消息的Topic只能用于收发普通消息，不能用于收发其他类型的消息。 final String topic = "${TOPIC}"; // Topic所属的实例ID，在RocketMQ控制台创建。 // 若实例有命名空间，则实例ID必须传入；若实例无命名空间，则实例ID传入null空值或字符串空值。实例的命名空间可以在RocketMQ控制台的实例详情页面查看。 final String instanceId = "${INSTANCE ID}"; _ // 获取Topic的生产者。 MQProducer producer; if (instanceId != null && instanceId != "") { producer = mqClient.getProducer(instanceId, topic); } else { producer = mqClient.getProducer(topic); } try { // 循环发送4条消息。 for (int i = 0; i < 4; i++) { TopicMessage pubMsg; // 普通消息。 pubMsg = new TopicMessage( // 消息内容。 "hello mq!".getBytes(), // 消息标签。 "A" ); // 设置消息的自定义属性。 pubMsg.getProperties().put("a", String.valueOf(i)); // 设置消息的Key。 pubMsg.setMessageKey("MessageKey"); // 同步发送消息，只要不抛异常就是成功。 TopicMessage pubResultMsg = producer.publishMessage(pubMsg); // 同步发送消息，只要不抛异常就是成功。 System.out.println(new Date() + " Send mq message success. Topic is:" + topic + ", msgId is: " + pubResultMsg.getMessageId() + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5()); } } catch (Throwable e) { // 消息发送失败，需要进行重试处理，可重新发送这条消息或持久化这条数据进行补偿处理。 System.out.println(new Date() + " Send mq message failed. Topic is:" + topic); e.printStackTrace(); } mqClient.close(); } } |  |
+|   | // AccessKey ID，阿里云身份验证，在Apsara Uni-manager运营控制台获取。 "${ACCESS KEY}", _ // AccessKey Secret，阿里云身份验证，在Apsara Uni-manager运营控制台获取。 "${SECRET KEY}" _ ); // 消息所属的Topic，在RocketMQ控制台创建。 // 不同消息类型的Topic不能混用，例如普通消息的Topic只能用于收发普通消息，不能用于收发其他类型的消息。 final String topic = "${TOPIC}"; // Topic所属的实例ID，在RocketMQ控制台创建。 // 若实例有命名空间，则实例ID必须传入；若实例无命名空间，则实例ID传入null空值或字符串空值。实例的命名空间可以在RocketMQ控制台的实例详情页面查看。 final String instanceId = "${INSTANCE ID}"; _ // 获取Topic的生产者。 MQProducer producer; if (instanceId != null && instanceId != "") { producer = mqClient.getProducer(instanceId, topic); } else { producer = mqClient.getProducer(topic); } try { // 循环发送4条消息。 for (int i = 0; i < 4; i++) { TopicMessage pubMsg; // 普通消息。 pubMsg = new TopicMessage( // 消息内容。 "hello mq!".getBytes(), // 消息标签。 "A" ); // 设置消息的自定义属性。 pubMsg.getProperties().put("a", String.valueOf(i)); // 设置消息的Key。 pubMsg.setMessageKey("MessageKey"); // 同步发送消息，只要不抛异常就是成功。 TopicMessage pubResultMsg = producer.publishMessage(pubMsg); // 同步发送消息，只要不抛异常就是成功。 System.out.println(new Date() + " Send mq message success. Topic is:" + topic + ", msgId is: " + pubResultMsg.getMessageId() + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5()); } } catch (Throwable e) { // 消息发送失败，需要进行重试处理，可重新发送这条消息或持久化这条数据进行补偿处理。 System.out.println(new Date() + " Send mq message failed. Topic is:" + topic); e.printStackTrace(); } mqClient.close(); } } |   |
 |---|---|---|
-
-消息队列
-
-```
-}
-```
 
 **订阅普通消息**
 
@@ -6654,10 +7168,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -6678,10 +7191,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         do {
@@ -6689,52 +7201,50 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 messages = consumer.consumeMessage(
 ```
 
-`3,//` 一次最多消费3条消息（最多可设置为`16`条）。 `3//` 长轮询时间3秒（最多可设置为`30`秒）。 消息队列
+`3,//` 一次最多消费`3`条消息（最多可设置为`16`条）。 `3//` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
 ```
 
-`// Topic`中没有消息可消费。
+`}` `}` `// Topic`中没有消息可消费。
 
 ```java
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
 ```
 
-`//` 处理业务逻辑。
+`}` `//` 处理业务逻辑。
 
 ```java
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
 ```
 
-`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。
+`}` `//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。 `{`
 
 ```
-            {
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
+```
+
+`}`
+
+```
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -6749,28 +7259,38 @@ continue!");
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
-                        continue;
-                    }
-                    e.printStackTrace();
-                }
-            }
-        } while (true);
-    }
-}
 ```
 
-消息队列
+`}` `}`
 
-##### 收发顺序消息
+```
+                        continue;
+```
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+`}`
+
+```
+                    e.printStackTrace();
+```
+
+`}` `}`
+
+```
+        } while (true);
+```
+
+##### 7.3.2.3 收发顺序消息
+
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的Java SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -6778,7 +7298,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Java SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
@@ -6806,10 +7326,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -6821,7 +7340,7 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
         final String instanceId = "${INSTANCE_ID}";
 ```
 
-`//`获取T i的生产者消息队列 `//` 获取`Topic`的生产者。
+`//`获取`T` `i`的生产者 `//` 获取`Topic`的生产者。
 
 ```
         MQProducer producer;
@@ -6829,11 +7348,15 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
-        }
+```
+
+`}`
+
+```
         try {
 ```
 
-`//` 循环发送8条消息。
+`//` 循环发送`8`条消息。
 
 ```
             for (int i = 0; i < 8; i++) {
@@ -6850,10 +7373,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
 
 ```
                         "A"
-                );
 ```
 
-`//` 设置分区顺序消息的`Sharding Key`，用于标识不同的分区。`Sharding Key`与消息的`Key`是完全不同的概念。
+); `//` 设置分区顺序消息的`Sharding Key`，用于标识不同的分区。`Sharding Key`与消息的`Key`是完全不同的概念。
 
 ```
                 pubMsg.setShardingKey(String.valueOf(i % 2));
@@ -6872,7 +7394,11 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
                 System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
+```
+
+`}`
+
+```
         } catch (Throwable e) {
 ```
 
@@ -6882,11 +7408,15 @@ topic + ", msgId is: " + pubResultMsg.getMessageId()
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-        }
-        mqClient.close();
-    }
-}
 ```
+
+`}`
+
+```
+        mqClient.close();
+```
+
+`}` `}`
 
 **订阅顺序消息**
 
@@ -6895,8 +7425,6 @@ topic);
 ```java
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import com.aliyun.mq.http.common.AckMessageException; import com.aliyun.mq.http.model.Message; import java.util.ArrayList; import java.util.List; public class OrderConsumer {
 ```
-
-消息队列
 
 ```
     public static void main(String[] args) {
@@ -6919,10 +7447,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//`不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//`不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -6943,10 +7470,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         do {
@@ -6954,24 +7480,21 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             try {
 ```
 
-`//` 长轮询顺序消费消息, 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`//` 长轮询顺序消费消息`,` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
                 messages = consumer.consumeMessageOrderly(
 ```
 
-`3, //` 一次最多消费3条消息（最多可设置为`16`条）。 `3 //` 长轮询时间为3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条消息（最多可设置为`16`条）。 `3 //` 长轮询时间为`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
 ```
 
 `// Topic`中没有消息可消费。
@@ -6980,25 +7503,18 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             if (messages == null || messages.isEmpty()) {
 ```
 
-消息队列
-
-```
-(
-```
-
-g
+`(` `g`
 ||
-g
+`g`
 
 ```java
 py()){
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
 ```
 
-`//` 处理业务逻辑。
+`}` `//` 处理业务逻辑。
 
 ```java
             System.out.println("Receive " + messages.size() + " messages:");
@@ -7006,17 +7522,19 @@ continue!");
                 System.out.println(message);
                 System.out.println("ShardingKey: " + message.getShardingKey() + ", a:"
 + message.getProperties().get("a"));
-            }
 ```
 
-`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。 `{`
 
 ```
-            {
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
+```
+
+`}`
+
+```
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -7031,32 +7549,48 @@ continue!");
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
-                        continue;
-                    }
-                    e.printStackTrace();
-                }
-            }
-        } while (true);
-    }
-}
 ```
 
-##### 收发定时消息和延时消息
+`}` `}`
+
+```
+                        continue;
+```
+
+`}`
+
+```
+                    e.printStackTrace();
+```
+
+`}` `}`
+
+```
+        } while (true);
+```
+
+`}` `}`
+
+##### 7.3.2.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的Java SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-消息队列延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Java SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
@@ -7084,10 +7618,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//`不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//`不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -7107,17 +7640,10 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
-        }
         try {
 ```
 
-消息队列
-
-```
-y{
-```
-
-`//` 循环发送4条消息。
+`y``{` `//` 循环发送`4`条消息。
 
 ```
             for (int i = 0; i < 4; i++) {
@@ -7135,10 +7661,9 @@ y{
 
 ```
                 "A"
-                 );
 ```
 
-`//` 设置消息的自定义属性。
+); `//` 设置消息的自定义属性。
 
 ```
                  pubMsg.getProperties().put("a", String.valueOf(i));
@@ -7168,7 +7693,11 @@ y{
              System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
+```
+
+`}`
+
+```
         } catch (Throwable e) {
 ```
 
@@ -7178,11 +7707,15 @@ topic + ", msgId is: " + pubResultMsg.getMessageId()
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-        }
-        mqClient.close();
-    }
-}
 ```
+
+`}`
+
+```
+        mqClient.close();
+```
+
+`}` `}`
 
 **订阅定时消息或延时消息**
 
@@ -7194,7 +7727,7 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
         MQClient mqClient = new MQClient(
 ```
 
-消息队列 `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
                 "${HTTP_ENDPOINT}",
@@ -7210,10 +7743,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -7234,10 +7766,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         do {
@@ -7245,52 +7776,50 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 messages = consumer.consumeMessage(
 ```
 
-`3,//` 一次最多消费3条消息（最多可设置为`16`条）。 `3//` 长轮询时间3秒（最多可设置为`30`秒）。
+`3,//` 一次最多消费`3`条消息（最多可设置为`16`条）。 `3//` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
 ```
 
-`// Topic`中没有消息可消费。
+`}` `}` `// Topic`中没有消息可消费。
 
 ```java
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
 ```
 
-`//` 处理业务逻辑。 消息队列
+`//` 处理业务逻辑。
 
 ```java
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
 ```
 
-`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。
+`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。 `{`
 
 ```
-            {
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
+```
+
+`}`
+
+```
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -7305,34 +7834,48 @@ continue!");
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
-                        continue;
-                    }
-                    e.printStackTrace();
-                }
-            }
-        } while (true);
-    }
-}
 ```
 
-##### 收发事务消息
+`}` `}`
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+```
+                        continue;
+```
+
+`}`
+
+```
+                    e.printStackTrace();
+```
+
+`}` `}`
+
+```
+        } while (true);
+```
+
+`}` `}`
+
+##### 7.3.2.5 收发事务消息
+
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的Java SDK收发事务消息的示例代码。
 
 **背景信息**
 
-事务消息的交互流程如下图所示。 消息队列更多信息，请参见事务消息。
+事务消息的交互流程如下图所示。 更多信息，请参见事务消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Java SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
@@ -7351,10 +7894,11 @@ errors.getRequestId() + ", fail handles:");
 .getErrorMessages().get(errorHandle).getErrorCode()
                             + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                }
-            }
-        }
-    }
+```
+
+`}` `}` `}` `}`
+
+```
     public static void main(String[] args) throws Throwable {
         MQClient mqClient = new MQClient(
 ```
@@ -7365,7 +7909,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
                 "${HTTP_ENDPOINT}",
 ```
 
-消息队列 `// AccessKey ID`，阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`// AccessKey ID`，阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
                 "${ACCESS_KEY}",
@@ -7375,10 +7919,9 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -7413,7 +7956,11 @@ opic, groupId);
             System.out.println("Send---->msgId is: " + pubResultMsg.getMessageId()
                     + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5()
                     + ", Handle: " + pubResultMsg.getReceiptHandle()
-            );
+```
+
+);
+
+```
             if (pubResultMsg != null && pubResultMsg.getReceiptHandle() != null) {
                 if (i == 0) {
 ```
@@ -7434,16 +7981,11 @@ ltMsg.getMessageId()));
                         if (e instanceof AckMessageException) {
                             processCommitRollError(e);
                             continue;
-                        }
-                    }
-                }
-            }
-        }
 ```
 
-消息队列 `//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 启动一个线程来检查没有确认的事务消息。
+`}` `}` `//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 启动一个线程来检查没有确认的事务消息。
 
-```java
+```
         Thread t = new Thread(new Runnable() {
             public void run() {
                 int count = 0;
@@ -7451,13 +7993,25 @@ ltMsg.getMessageId()));
                     try {
                         if (count == 3) {
                             break;
-                        }
+```
+
+`}`
+
+```
                         List<Message> messages = mqTransProducer.consumeHalfMessage(3, 3
+```
+
 );
+
+```java
                         if (messages == null) {
                             System.out.println("No Half message!");
                             continue;
-                        }
+```
+
+`}`
+
+```java
                         System.out.println(String.format("Half----
 >MessageId:%s,Properties:%s,Body:%s,Latency:%d",
                                 messages.get(0).getMessageId(),
@@ -7508,12 +8062,8 @@ ack", message.getMessageId()));
 
 ```java
                                     System.out.println(String.format("MessageId:%s, unkno
-wn", message.getMessageId()));
-                                }
-}catch(Throwablee){
+wn", message.getMessageId())); }catch(Throwablee){
 ```
-
-消息队列
 
 ```
                             } catch (Throwable e) {
@@ -7521,22 +8071,27 @@ wn", message.getMessageId()));
 
 `//` 如果提交或回滚消息时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10s`（针对`consumeHalfMessage`的句柄）则会失败。
 
-```java
+```
                                 processCommitRollError(e);
-                            }
-                        }
+```
+
+`}` `}`
+
+```java
                     } catch (Throwable e) {
                         System.out.println(e.getMessage());
-                    }
-                }
-            }
+```
+
+`}` `}` `}`
+
+```
         });
         t.start();
         t.join();
         mqClient.close();
-    }
-}
 ```
+
+`}` `}`
 
 **订阅事务消息**
 
@@ -7564,10 +8119,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
 
 ```
                 "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。 `//` 不同消息类型的`Topic`不能混用，例如普通消息的`Topic`只能用于收发普通消息，不能用于收发其他类型的消息。
 
 ```
         final String topic = "${TOPIC}";
@@ -7579,7 +8133,7 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
         final String groupId = "${GROUP_ID}";
 ```
 
-`// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。 消息队列例的命名空间可以在`RocketMQ`控制台的实例详情页面查看
+`// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。 例的命名空间可以在`RocketMQ`控制台的实例详情页面查看
 
 ```
         final String instanceId = "${INSTANCE_ID}";
@@ -7588,10 +8142,9 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         do {
@@ -7599,52 +8152,50 @@ import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 messages = consumer.consumeMessage(
 ```
 
-`3,//` 一次最多消费3条消息（最多可设置为`16`条）。 `3//` 长轮询时间3秒（最多可设置为`30`秒）。
+`3,//` 一次最多消费`3`条消息（最多可设置为`16`条）。 `3//` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
 ```
 
-`// Topic`中没有消息可消费。
+`}` `}` `// Topic`中没有消息可消费。
 
 ```java
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
 ```
 
-`//` 处理业务逻辑。
+`}` `//` 处理业务逻辑。
 
 ```java
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
 ```
 
-`//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。
+`}` `//` 消息重试时间到达前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费的时间戳都不一样。 `{`
 
 ```
-            {
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
+```
+
+`}`
+
+```
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -7656,38 +8207,55 @@ continue!");
                     if (e instanceof AckMessageException) {
 ```
 
-消息队列
-
 ```java
                         AckMessageException errors = (AckMessageException) e;
                         System.out.println("Ack message fail, requestId is:" +
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
-                        continue;
-                    }
-                    e.printStackTrace();
-                }
-            }
-        } while (true);
-    }
-}
 ```
 
-#### Go SDK
+`}` `}`
 
-##### 准备环境
+```
+                        continue;
+```
+
+`}`
+
+```
+                    e.printStackTrace();
+```
+
+`}` `}`
+
+```
+        } while (true);
+```
+
+`}` `}`
+
+#### 7.3.3 Go SDK
+
+##### 7.3.3.1 准备环境
+
+在使用Go SDK收发消息前，您需按照本文提供的内容来准备环境。
 
 **环境要求**
 
 安装Go。更多信息，请参见安装Go。 安装完成后，您可以执行 `go version` 命令查看Go语言版本。
+
+**安装Go SDK**
+
 1. 执行以下命令启用Go Modules。Go Modules更多信息，请参见Go Modules Reference。
 
 ```
@@ -7708,26 +8276,31 @@ go mod init
 
 4. 执行以下命令安装Go SDK。
 
-##### 收发普通消息
+```
+go get github.com/aliyunmq/mq-http-go-sdk
+```
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提消息队列
+##### 7.3.3.2 收发普通消息
+
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的Go SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Go SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
-发送普通消息的示例代码如下。 消息队列
+发送普通消息的示例代码如下。
 
 ```java
 package main import (
     "fmt"
     "time"
     "strconv"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -7765,7 +8338,7 @@ func main() {
     mqProducer := client.GetProducer(instanceId, topic)
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
     for i := 0; i < 4; i++ {
@@ -7774,10 +8347,9 @@ func main() {
         MessageBody: "hello mq!",         //消息内容。
         MessageTag:  "",                  // 消息标签。
         Properties:  map[string]string{}, // 消息属性。
-        }
 ```
 
-`//` 设置消息的`Key`。
+`}` `//` 设置消息的`Key`。
 
 ```
         msg.MessageKey = "MessageKey"
@@ -7794,13 +8366,13 @@ func main() {
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
-        }
-        time.Sleep(time.Duration(100) * time.Millisecond)
-    }
-}
 ```
 
-消息队列
+`}`
+
+```
+        time.Sleep(time.Duration(100) * time.Millisecond)
+```
 
 **订阅普通消息**
 
@@ -7812,9 +8384,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -7863,10 +8436,9 @@ func main() {
         go func() {
             select {
             case resp := <-respChan:
-                {
 ```
 
-`//` 处理业务逻辑。
+`{` `//` 处理业务逻辑。
 
 ```
                     var handles []string
@@ -7880,16 +8452,15 @@ func main() {
                             "\tProps: %s\n",
 ```
 
-消息队列 p ,
+`p` `,`
 
 ```
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
-                    }
 ```
 
-`// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     ackerr := mqConsumer.AckMessage(handles)
@@ -7906,38 +8477,72 @@ v.Properties)
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
-                    endChan <- 1
-                }
-            case err := <-errChan:
-                {
 ```
 
-`// Topic`中没有消息可消费。
+`}`
+
+```
+                    endChan <- 1
+```
+
+`}`
+
+```
+            case err := <-errChan:
+```
+
+`{` `// Topic`中没有消息可消费。
 
 ```
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
+```
+
+`}`
+
+```
                     endChan <- 1
-                }
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
+```
+
+`}` `}`
+
+```
         }()
 ```
 
@@ -7947,17 +8552,17 @@ errAckItem.ErrorMsg)
         mqConsumer.ConsumeMessage(respChan, errChan,
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 消息队列 )
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 `)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-##### 收发顺序消息
+`}`
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+##### 7.3.3.3 收发顺序消息
+
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的Go SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -7965,7 +8570,7 @@ errAckItem.ErrorMsg)
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Go SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
@@ -7976,9 +8581,10 @@ package main import (
     "fmt"
     "time"
     "strconv"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -8014,14 +8620,12 @@ func main() {
     instanceId := "${INSTANCE_ID}"
 ```
 
-消息队列
-
 ```
     client := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, "")
     mqProducer := client.GetProducer(instanceId, topic)
 ```
 
-`//` 循环发送8条消息。
+`//` 循环发送`8`条消息。
 
 ```
     for i := 0; i < 8; i++ {
@@ -8029,10 +8633,9 @@ func main() {
             MessageBody: "hello mq!",         //消息内容。
             MessageTag:  "",                  // 消息标签。
             Properties:  map[string]string{}, // 消息属性。
-        }
 ```
 
-`//` 设置消息的`Key`。
+`}` `//` 设置消息的`Key`。
 
 ```
         msg.MessageKey = "MessageKey"
@@ -8055,11 +8658,15 @@ func main() {
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
-        }
-        time.Sleep(time.Duration(100) * time.Millisecond)
-    }
-}
 ```
+
+`}`
+
+```
+        time.Sleep(time.Duration(100) * time.Millisecond)
+```
+
+`}` `}`
 
 **订阅顺序消息**
 
@@ -8071,9 +8678,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -8103,8 +8711,6 @@ func main() {
 topic:="${TOPIC}"
 ```
 
-消息队列
-
 ```
     topic := "${TOPIC}"
 ```
@@ -8128,10 +8734,9 @@ topic:="${TOPIC}"
         go func() {
             select {
             case resp := <-respChan:
-                {
 ```
 
-`//` 处理业务逻辑。
+`{` `//` 处理业务逻辑。
 
 ```
                     var handles []string
@@ -8147,10 +8752,9 @@ topic:="${TOPIC}"
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties, v.ShardingKey)
-                    }
 ```
 
-`// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     ackerr := mqConsumer.AckMessage(handles)
@@ -8168,70 +8772,94 @@ v.Properties, v.ShardingKey)
 ErrorMsg:%s\n",
                                  errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
                         time.Sleep(time.Duration(3) * time.Second)
 }else{
 ```
 
-消息队列
-
 ```
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
                     endChan <- 1
-                }
-            case err := <-errChan:
-                {
 ```
 
-`// Topic`中没有消息可消费。
+`}`
+
+```
+            case err := <-errChan:
+```
+
+`{` `// Topic`中没有消息可消费。
 
 ```
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
+```
+
+`}`
+
+```
                     endChan <- 1
-                }
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
+```
+
+`}` `}`
+
+```
         }()
 ```
 
-`//` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询顺序消费消息, 网络超时时间为`35s`。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`//` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询顺序消费消息`,` 网络超时时间为`35s`。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
         mqConsumer.ConsumeMessageOrderly(respChan, errChan,
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 )
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 `)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-##### 收发定时消息和延时消息
+`}` `}`
+
+##### 7.3.3.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的Go SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 消息队列
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Go SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
@@ -8242,9 +8870,10 @@ package main import (
     "fmt"
     "time"
     "strconv"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -8282,7 +8911,7 @@ func main() {
     mqProducer := client.GetProducer(instanceId, topic)
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
     for i := 0; i < 4; i++ {
@@ -8291,10 +8920,9 @@ func main() {
             MessageBody: "hello mq!",         // 消息内容。
             MessageTag:  "",                  // 消息标签。
             Properties:  map[string]string{}, // 消息属性。
-            }
 ```
 
-`//` 设置消息的`Key`。
+`}` `//` 设置消息的`Key`。
 
 ```
             msg.MessageKey = "MessageKey"
@@ -8312,8 +8940,6 @@ func main() {
 msgStartDelierTime timeNo()UTC()Uni()*1000+10*1000
 ```
 
-消息队列
-
 ```
             msg.StartDeliverTime = time.Now().UTC().Unix() * 1000 + 10 * 1000
         ret, err := mqProducer.PublishMessage(msg)
@@ -8323,11 +8949,15 @@ msgStartDelierTime timeNo()UTC()Uni()*1000+10*1000
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
-        }
-        time.Sleep(time.Duration(100) * time.Millisecond)
-    }
-}
 ```
+
+`}`
+
+```
+        time.Sleep(time.Duration(100) * time.Millisecond)
+```
+
+`}` `}`
 
 **订阅定时消息或延时消息**
 
@@ -8339,9 +8969,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -8388,18 +9019,15 @@ func main() {
 respChan:=make(chanmqhttpsdkConsumeMessageResponse)
 ```
 
-消息队列
-
 ```
         respChan : make(chan mq_http_sdk.ConsumeMessageResponse)
         errChan := make(chan error)
         go func() {
             select {
             case resp := <-respChan:
-                {
 ```
 
-`//` 处理业务逻辑。
+`{` `//` 处理业务逻辑。
 
 ```
                     var handles []string
@@ -8414,10 +9042,9 @@ respChan:=make(chanmqhttpsdkConsumeMessageResponse)
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
-                    }
 ```
 
-`// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     ackerr := mqConsumer.AckMessage(handles)
@@ -8434,43 +9061,65 @@ v.Properties)
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
-                    endChan <- 1
-                }
-            case err := <-errChan:
-                {
 ```
 
-`// Topic`中没有消息可消费。
+`}`
+
+```
+                    endChan <- 1
+```
+
+`}`
+
+```
+            case err := <-errChan:
+```
+
+`{` `// Topic`中没有消息可消费。
 
 ```
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
                     endChan <- 1
 ```
 
-消息队列
+```
+            case <-time.After(35 * time.Second):
+```
+
+`{`
 
 ```
-                }
-            case <-time.After(35 * time.Second):
-                {
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
+```
+
+`}` `}`
+
+```
         }()
 ```
 
@@ -8480,17 +9129,17 @@ errAckItem.ErrorMsg)
         mqConsumer.ConsumeMessage(respChan, errChan,
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 )
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 `)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-##### 收发事务消息
+`}` `}`
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+##### 7.3.3.5 收发事务消息
+
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的Go SDK收发事务消息的示例代码。
 
 **背景信息**
 
@@ -8498,7 +9147,7 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Go SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
@@ -8508,8 +9157,6 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 package main
 ```
 
-消息队列
-
 ```java
 import (
     "fmt"
@@ -8517,9 +9164,10 @@ import (
     "strconv"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 var loopCount = 0 func ProcessError(err error) {
@@ -8530,18 +9178,30 @@ var loopCount = 0 func ProcessError(err error) {
 ```
     if err == nil {
         return
-    }
+```
+
+`}`
+
+```
     fmt.Println(err)
     for _, errAckItem := range err.(errors.ErrCode).Context()["Detail"].
 ([]mq_http_sdk.ErrAckItem) {
         fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
             errAckItem.ErrorHandle, errAckItem.ErrorCode, errAckItem.ErrorMsg)
-    }
-} func ConsumeHalfMsg(mqTransProducer *mq_http_sdk.MQTransProducer) {
+```
+
+`}` `}`
+
+```
+func ConsumeHalfMsg(mqTransProducer *mq_http_sdk.MQTransProducer) {
     for {
         if loopCount >= 10 {
             return
-        }
+```
+
+`}`
+
+```
         loopCount++
         endChan := make(chan int)
         respChan := make(chan mq_http_sdk.ConsumeMessageResponse)
@@ -8549,10 +9209,9 @@ var loopCount = 0 func ProcessError(err error) {
         go func() {
             select {
             case resp := <-respChan:
-                {
 ```
 
-`//` 处理业务逻辑。
+`{` `//` 处理业务逻辑。
 
 ```
                     var handles []string
@@ -8569,8 +9228,6 @@ var loopCount = 0 func ProcessError(err error) {
 v.TransCheckImmunityTime)
                         a, _ := strconv.Atoi(v.Properties["a"])
 ```
-
-消息队列
 
 ```
                         var comRollErr error
@@ -8605,33 +9262,63 @@ v.TransCheckImmunityTime)
 
 ```
                             fmt.Println("Unknown---------->")
-                        }
-                        ProcessError(comRollErr)
-                    }
-                    endChan <- 1
-                }
-            case err := <-errChan:
-                {
 ```
 
-`// Topic`中没有消息可消费。
+`}`
+
+```
+                        ProcessError(comRollErr)
+```
+
+`}`
+
+```
+                    endChan <- 1
+```
+
+`}`
+
+```
+            case err := <-errChan:
+```
+
+`{` `// Topic`中没有消息可消费。
 
 ```
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
+```
+
+`}`
+
+```
                     endChan <- 1
-                }
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     return
-                }
-            }
+```
+
+`}` `}`
+
+```
         }()
 ```
 
@@ -8641,12 +9328,16 @@ v.TransCheckImmunityTime)
         (*mqTransProducer).ConsumeHalfMessage(respChan, errChan,
 ```
 
-`3, //` 一次最多消费3条(最多可设置为`16`条)。 `3, //` 长轮询时间3秒（最多可设置为`30`秒）。 )
+`3, //` 一次最多消费`3`条`(`最多可设置为`16`条`)`。 `3, //` 长轮询时间`3`秒（最多可设置为`30`秒）。 `)`
 
 ```
         <-endChan
-    }
-} func main() {
+```
+
+`}` `}`
+
+```
+func main() {
 ```
 
 `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
@@ -8655,7 +9346,7 @@ v.TransCheckImmunityTime)
     endpoint := "${HTTP_ENDPOINT}"
 ```
 
-阿里云身份验证在运营控制台获取消息队列 `// AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+阿里云身份验证在运营控制台获取 `// AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     accessKey := "${ACCESS_KEY}"
@@ -8693,17 +9384,16 @@ v.TransCheckImmunityTime)
     go ConsumeHalfMsg(&mqTransProducer)
 ```
 
-`//` 发送4条事务消息，1条发送完就提交，其余3条通过检查半事务消息处理。
+`//` 发送`4`条事务消息，`1`条发送完就提交，其余`3`条通过检查半事务消息处理。
 
 ```
     for i := 0; i < 4; i++ {
         msg := mq_http_sdk.PublishMessageRequest{
             MessageBody:"I am transaction msg!",
             Properties: map[string]string{"a":strconv.Itoa(i)},
-        }
 ```
 
-`//` 设置事务第一次回查的时间，为相对时间。单位：秒，范围：10~300。 `//` 第一次事务回查后如果消息没有`Commit`或者`Rollback`，则之后每隔`10s`左右会回查一次，共回查`24`小时。
+`}` `//` 设置事务第一次回查的时间，为相对时间。单位：秒，范围：10~300。 `//` 第一次事务回查后如果消息没有`Commit`或者`Rollback`，则之后每隔`10s`左右会回查一次，共回查`24`小时。
 
 ```
         msg.TransCheckImmunityTime = 10
@@ -8711,7 +9401,11 @@ v.TransCheckImmunityTime)
         if pubErr != nil {
             fmt.Println(pubErr)
             return
-        }
+```
+
+`}`
+
+```
         fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, Handle:%s\n",
             resp.MessageId, resp.MessageBodyMD5, resp.ReceiptHandle)
         if i == 0 {
@@ -8723,15 +9417,14 @@ v.TransCheckImmunityTime)
             ackErr := mqTransProducer.Commit(resp.ReceiptHandle)
             fmt.Println("Commit---------->")
             ProcessError(ackErr)
-        }
-    }
-    for ; loopCount < 10 ; {
-        time.Sleep(time.Duration(1) * time.Second)
-    }
-}
 ```
 
-消息队列
+`}` `}`
+
+```
+    for ; loopCount < 10 ; {
+        time.Sleep(time.Duration(1) * time.Second)
+```
 
 **订阅事务消息**
 
@@ -8743,9 +9436,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -8794,10 +9488,9 @@ func main() {
         go func() {
             select {
             case resp := <-respChan:
-                {
 ```
 
-`//` 处理业务逻辑。
+`{` `//` 处理业务逻辑。
 
 ```
                     var handles []string
@@ -8811,16 +9504,15 @@ func main() {
                             "\tProps: %s\n",
 ```
 
-消息队列 p ,
+`p` `,`
 
 ```
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
-                    }
 ```
 
-`// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     ackerr := mqConsumer.AckMessage(handles)
@@ -8837,38 +9529,72 @@ v.Properties)
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
-                    endChan <- 1
-                }
-            case err := <-errChan:
-                {
 ```
 
-`// Topic`中没有消息可消费。
+`}`
+
+```
+                    endChan <- 1
+```
+
+`}`
+
+```
+            case err := <-errChan:
+```
+
+`{` `// Topic`中没有消息可消费。
 
 ```
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
+```
+
+`}`
+
+```
                     endChan <- 1
-                }
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
+```
+
+`}` `}`
+
+```
         }()
 ```
 
@@ -8878,88 +9604,89 @@ errAckItem.ErrorMsg)
         mqConsumer.ConsumeMessage(respChan, errChan,
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 消息队列 )
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3s`（最多可设置为`30s`）。 `)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-#### Python SDK
+`}`
 
-##### 准备环境
+#### 7.3.4 Python SDK
+
+##### 7.3.4.1 准备环境
+
+在使用Python SDK收发消息前，您需按照本文提供的内容来准备环境。
 
 **环境要求**
 
-安装Python。更多信息，请参见安装Python。安装的Python版本要求如下： 若您使用的SDK版本为v1.0.0，您需要安装大于等于2.5且小于3.0版本的Python。 若您使用的SDK版本大于v1.0.0，您需要安装2.5及以上版本的Python。 安装pip。更多信息，请参见安装pip。 Python 3.4及以上版本自带pip。若您安装的Python版本大于等于3.4，您可以不用单
+安装Python。更多信息，请参见安装Python。安装的Python版本要求如下： 若您使用的SDK版本为v1.0.0，您需要安装大于等于2.5且小于3.0版本的Python。 若您使用的SDK版本大于v1.0.0，您需要安装2.5及以上版本的Python。 安装pip。更多信息，请参见安装pip。
 
-**说明**
+> **说明：** Python 3.4及以上版本自带pip。若您安装的Python版本大于等于3.4，您可以不用单独安装pip。
 
-独安装pip。 安装完成后，您可以执行 `python -V` 命令查看Python语言版本。
+安装完成后，您可以执行 `python -V` 命令查看Python语言版本。
 
 **安装SDK**
+
+执行以下命令，安装Python SDK。
 
 ```
 pip install mq_http_sdk
 ```
 
-##### 收发普通消息
+##### 7.3.4.2 收发普通消息
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的Python SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Python SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
-发送普通消息的示例代码如下。 消息队列
+发送普通消息的示例代码如下。
 
 ```java
 import sys from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_producer import * from mq_http_sdk.mq_client import * import time
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
      "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
      "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" producer = mq_client.get_producer(instance_id, topic_name)
 ```
 
-# 循环发送4条消息。
+`#` 循环发送`4`条消息。
 
 ```python
 msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" % (10 * "=", 10 * "=", topic_name, msg_count)) try:
@@ -8967,26 +9694,25 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
             msg = TopicMessage(
 ```
 
-# 消息内容。
+`#` 消息内容。
 
 ```
                     "I am test message %s.hello" % i,
 ```
 
-# 消息标签。
+`#` 消息标签。
 
 ```
                     "tag %s" % i
 ```
 
-)
-# 设置消息的自定义属性。
+`)` `#` 设置消息的自定义属性。
 
 ```
             msg.put_property("a", "i")
 ```
 
-# 设置消息的`Key`。
+`#` 设置消息的`Key`。
 
 ```python
             msg.set_message_key("MessageKey")
@@ -9001,65 +9727,61 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
 
 **订阅普通消息**
 
-消息队列订阅普通消息的示例代码如下。
+订阅普通消息的示例代码如下。
 
 ```
 from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_consumer import * from mq_http_sdk.mq_client import *
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
     "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# 您在`RocketMQ`控制台创建的`Group ID`。
+`#` 您在`RocketMQ`控制台创建的`Group ID`。
 
 ```
 group_id = "${GROUP_ID}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" consumer = mq_client.get_consumer(instance_id, topic_name, group_id)
 ```
 
-# 长轮询表示如果`Topic`没有消息，则客户端请求会在服务端挂起3秒，3秒内如果有消息可以消费则立即返回响应。
-# 长轮询时间3秒（最多可设置为`30`秒）。
+`#` 长轮询表示如果`Topic`没有消息，则客户端请求会在服务端挂起`3`秒，`3`秒内如果有消息可以消费则立即返回响应。 `#` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
 wait_seconds = 3
 ```
 
-# 一次最多消费3条（最多可设置为`16`条）。
+`#` 一次最多消费`3`条（最多可设置为`16`条）。
 
 ```python
 batch = 3 print(("%sConsume And Ak Message From Topic%s\nTopicName:%s\nMQConsumer:%s\nWaitSeconds:%s\n" \
@@ -9068,7 +9790,7 @@ while True:
     try:
 ```
 
-# 长轮询消费消息。
+`#` 长轮询消费消息。
 
 ```python
         recv_msgs = consumer.consume_message(batch, wait_seconds)
@@ -9087,15 +9809,13 @@ while True:
     except MQExceptionBase as e:
 ```
 
-# Topic中没有消息可消费。
+`# Topic`中没有消息可消费。
 
 ```python
         if e.type == "MessageNotExist":
             print(("No new message! RequestId: %s" % e.req_id))
 continue
 ```
-
-消息队列
 
 ```python
             continue
@@ -9104,8 +9824,7 @@ continue
         continue
 ```
 
-# msg.next_consume_time前若不确认消息消费成功，则消息会被重复消费。
-# 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`# msg.next_consume_time`前若不确认消息消费成功，则消息会被重复消费。 `#` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```python
     try:
@@ -9116,7 +9835,7 @@ continue
         print(("\nAk Message Fail! Exception:%s" % e))
 ```
 
-# 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`#` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```python
         if e.sub_errors:
@@ -9126,9 +9845,9 @@ continue
 sub_error["ErrorMessage"])))
 ```
 
-##### 收发顺序消息
+##### 7.3.4.3 收发顺序消息
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的Python SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -9136,56 +9855,53 @@ sub_error["ErrorMessage"])))
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Python SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
-发送顺序消息的示例代码如下。 消息队列
+发送顺序消息的示例代码如下。
 
 ```java
 import sys from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_producer import * from mq_http_sdk.mq_client import *
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
      "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
      "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" producer = mq_client.get_producer(instance_id, topic_name)
 ```
 
-# 循环发送8条消息。
+`#` 循环发送`8`条消息。
 
 ```python
 msg_count = 8 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" % (10 * "=", 10 * "=", topic_name, msg_count)) try:
@@ -9193,27 +9909,25 @@ msg_count = 8 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
         msg = TopicMessage(
 ```
 
-# 消息内容。
+`#` 消息内容。
 
 ```
             "I am test message %s.hello" % i,
 ```
 
-# 消息标签。
+`#` 消息标签。
 
 ```
             "tag %s" % i
 ```
 
-)
-# 设置消息的自定义属性。
+`)` `#` 设置消息的自定义属性。
 
 ```
         msg.put_property("a", str(i))
 ```
 
-# 设置分区顺序消息的`Sharding Key`，用于标识不同的分区。`Sharding Key`与消息的`Key`是完全不同的
-概念。
+`#` 设置分区顺序消息的`Sharding Key`，用于标识不同的分区。`Sharding Key`与消息的`Key`是完全不同的概念。
 
 ```python
         msg.set_sharding_key(str(i % 3))
@@ -9228,67 +9942,61 @@ re_msg.message_body_md5)) except MQExceptionBase as e:
 
 **订阅顺序消息**
 
-消息队列订阅顺序消息的示例代码如下。
+订阅顺序消息的示例代码如下。
 
 ```
 from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_consumer import * from mq_http_sdk.mq_client import *
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
      "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
      "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# 您在`RocketMQ`控制台创建的`Group ID`。
+`#` 您在`RocketMQ`控制台创建的`Group ID`。
 
 ```
 group_id = "${GROUP_ID}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" consumer = mq_client.get_consumer(instance_id, topic_name, group_id)
 ```
 
-# 长轮询顺序消费消息, 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。
-# 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。
-# 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。
-# 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`#` 长轮询顺序消费消息`,` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `#` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `#` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `#` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
 wait_seconds = 3
 ```
 
-# 一次最多消费3条（最多可设置为`16`条）。
+`#` 一次最多消费`3`条（最多可设置为`16`条）。
 
 ```python
 batch = 3 print(("%sConsume And Ak Message From Topic%s\nTopicName:%s\nMQConsumer:%s\nWaitSeconds:%s\n" \
@@ -9314,15 +10022,12 @@ while True:
 timesleep(2)
 ```
 
-消息队列
-
 ```
         time.sleep(2)
         continue
 ```
 
-# msg.next_consume_time前若不确认消息消费成功，则消息会被重复消费。
-# 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`# msg.next_consume_time`前若不确认消息消费成功，则消息会被重复消费。 `#` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```python
     try:
@@ -9333,7 +10038,7 @@ timesleep(2)
         print(("\nAk Message Fail! Exception:%s" % e))
 ```
 
-# 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`#` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```python
         if e.sub_errors:
@@ -9343,15 +10048,17 @@ timesleep(2)
 sub_error["ErrorMessage"])))
 ```
 
-##### 收发定时消息和延时消息
+##### 7.3.4.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的Python SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Python SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
@@ -9361,48 +10068,43 @@ sub_error["ErrorMessage"])))
 import sys from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_producer import * from mq_http_sdk.mq_client import * import time
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
      "${HTTP_ENDPOINT}",
 ```
 
-#`AccessKey``ID`阿里云身份验证，在`Apsara``Uni``manager`运营控制台获取。
-消息队列
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`#``AccessKey``ID`阿里云身份验证，在`Apsara``Uni``manager`运营控制台获取。 `# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
      "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" producer = mq_client.get_producer(instance_id, topic_name)
 ```
 
-# 循环发送4条消息。
+`#` 循环发送`4`条消息。
 
 ```python
 msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" % (10 * "=", 10 * "=", topic_name, msg_count)) try:
@@ -9410,33 +10112,31 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
             msg = TopicMessage(
 ```
 
-# 消息内容。
+`#` 消息内容。
 
 ```
             "I am test message %s.hello" % i,
 ```
 
-# 消息标签。
+`#` 消息标签。
 
 ```
             "tag1"
 ```
 
-)
-# 设置属性。
+`)` `#` 设置属性。
 
 ```
             msg.put_property("a", "i")
 ```
 
-# 设置消息的`Key`。
+`#` 设置消息的`Key`。
 
 ```
             msg.set_message_key("MessageKey")
 ```
 
-# 延时消息，发送时间为`10s`后。该参数格式为毫秒级别的时间戳。
-# 若发送定时消息，设置该参数时需要计算定时时间与当前时间的时间差。
+`#` 延时消息，发送时间为`10s`后。该参数格式为毫秒级别的时间戳。 `#` 若发送定时消息，设置该参数时需要计算定时时间与当前时间的时间差。
 
 ```python
             msg.set_start_deliver_time(int(round(time.time() * 1000)) + 10 * 1000)
@@ -9457,62 +10157,55 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
 from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_consumer import * from mq_http_sdk.mq_client import *
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-#设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
-消息队列
-# 设置`HTTP`协议客户端接入点
-进入`RocketMQ`控制台实例详情页面的网络管理页签查看
+`#`设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。 `#` 设置`HTTP`协议客户端接入点进入`RocketMQ`控制台实例详情页面的网络管理页签查看
 
 ```
     "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# 您在`RocketMQ`控制台创建的`Group ID`。
+`#` 您在`RocketMQ`控制台创建的`Group ID`。
 
 ```
 group_id = "${GROUP_ID}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" consumer = mq_client.get_consumer(instance_id, topic_name, group_id)
 ```
 
-# 长轮询表示如果`Topic`没有消息，则客户端请求会在服务端挂起3秒，3秒内如果有消息可以消费则立即返回响应。
-# 长轮询时间3秒（最多可设置为`30`秒）。
+`#` 长轮询表示如果`Topic`没有消息，则客户端请求会在服务端挂起`3`秒，`3`秒内如果有消息可以消费则立即返回响应。 `#` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
 wait_seconds = 3
 ```
 
-# 一次最多消费3条（最多可设置为`16`条）。
+`#` 一次最多消费`3`条（最多可设置为`16`条）。
 
 ```python
 batch = 3 print(("%sConsume And Ak Message From Topic%s\nTopicName:%s\nMQConsumer:%s\nWaitSeconds:%s\n" \
@@ -9521,7 +10214,7 @@ while True:
     try:
 ```
 
-# 长轮询消费消息。
+`#` 长轮询消费消息。
 
 ```python
         recv_msgs = consumer.consume_message(batch, wait_seconds)
@@ -9540,7 +10233,7 @@ while True:
     except MQExceptionBase as e:
 ```
 
-# Topic中没有消息可消费。
+`# Topic`中没有消息可消费。
 
 ```python
         if e.type == "MessageNotExist":
@@ -9551,14 +10244,11 @@ while True:
         continue
 ```
 
-# msg.next_consume_time前若不确认消息消费成功，则消息会被重复消费。
-# 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`# msg.next_consume_time`前若不确认消息消费成功，则消息会被重复消费。 `#` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
     try:
 ```
-
-消息队列
 
 ```python
         receipt_handle_list = [msg.receipt_handle for msg in recv_msgs]
@@ -9568,7 +10258,7 @@ while True:
         print(("\nAk Message Fail! Exception:%s" % e))
 ```
 
-# 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`#` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```python
         if e.sub_errors:
@@ -9578,9 +10268,9 @@ while True:
 sub_error["ErrorMessage"])))
 ```
 
-##### 收发事务消息
+##### 7.3.4.5 收发事务消息
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的Python SDK收发事务消息的示例代码。
 
 **背景信息**
 
@@ -9588,7 +10278,7 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Python SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
@@ -9600,52 +10290,49 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 import sys from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_producer import * from mq_http_sdk.mq_client import * import time import threading
 ```
 
-# 初始化`client`。
-消息队列
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
      "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在阿里云`RAM`控制台创建。
+`# AccessKey ID`阿里云身份验证，在阿里云`RAM`控制台创建。
 
 ```
      "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在阿里云`RAM`控制台创建。
+`# AccessKey Secret`阿里云身份验证，在阿里云`RAM`控制台创建。
 
 ```
     "${SECRET_KEY}"
 ```
 
-)
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# 您在`RocketMQ`控制台创建的`Group ID`。
+`#` 您在`RocketMQ`控制台创建的`Group ID`。
 
 ```
 group_id = "${GROUP_ID}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在消息队列`RocketMQ`版控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}"
 ```
 
-# 循环发送4条事务消息。
+`#` 循环发送`4`条事务消息。
 
 ```python
 msg_count = 4 print("%sPublish Transaction Message To %s\nTopicName:%s\nMessageCount:%s\n" \
@@ -9654,8 +10341,7 @@ def process_trans_error(exp):
     print("\nCommit/Roll Transaction Message Fail! Exception:%s" % exp)
 ```
 
-# 如果`Commit`或`Rollback`时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10s`（
-针对`consumeHalfMessage`的句柄），则`Commit`或`Rollback`失败。
+`#` 如果`Commit`或`Rollback`时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10s`（ 针对`consumeHalfMessage`的句柄），则`Commit`或`Rollback`失败。
 
 ```python
     if exp.sub_errors:
@@ -9665,8 +10351,7 @@ def process_trans_error(exp):
 sub_error["ErrorMessage"]))
 ```
 
-# 客户端需要有一个线程或者进程来消费没有确认的事务消息。
-# 启动一个线程来检查没有确认的事务消息。
+`#` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `#` 启动一个线程来检查没有确认的事务消息。
 
 ```python
 class ConsumeHalfMessageThread(threading.Thread):
@@ -9675,31 +10360,31 @@ class ConsumeHalfMessageThread(threading.Thread):
         self.count = 0
 ```
 
-# 重新`New`一个`Client`
+`#` 重新`New`一个`Client`
 
 ```
         self.mq_client = MQClient(
 ```
 
-# 设置`HTTP`接入域名，进入`RocketMQ`控制台实例详情页面的`HTTP`接入点区域查看。
+`#` 设置`HTTP`接入域名，进入`RocketMQ`控制台实例详情页面的`HTTP`接入点区域查看。
 
 ```
                 "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
                 "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
                 "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```python
         self.trans_producer = self.mq_client.get_trans_producer(instance_id,
@@ -9707,8 +10392,6 @@ topic_name, group_id)
     def run(self):
         while 1:
 ```
-
-消息队列
 
 ```python
             if self.count == 3:
@@ -9732,7 +10415,7 @@ half_msg.properties))
                     if a == 1:
 ```
 
-# 确认提交事务消息。
+`#` 确认提交事务消息。
 
 ```python
                         self.trans_producer.commit(half_msg.receipt_handle)
@@ -9741,7 +10424,7 @@ half_msg.properties))
                     elif a == 2 and half_msg.consumed_times > 1:
 ```
 
-# 确认提交事务消息。
+`#` 确认提交事务消息。
 
 ```python
                         self.trans_producer.commit(half_msg.receipt_handle)
@@ -9750,7 +10433,7 @@ half_msg.properties))
                     elif a == 3:
 ```
 
-# 确认回滚事务消息。
+`#` 确认回滚事务消息。
 
 ```python
                         self.trans_producer.rollback(half_msg.receipt_handle)
@@ -9759,7 +10442,7 @@ half_msg.properties))
                     else:
 ```
 
-# 什么都不做，下次再检查。
+`#` 什么都不做，下次再检查。
 
 ```python
                         print("------>unknown")
@@ -9775,41 +10458,36 @@ consume_half_thread = ConsumeHalfMessageThread() consume_half_thread.setDaemon(T
     trans_producer = mq_client.get_trans_producer(instance_id, topic_name, group_id)
 ```
 
-消息队列
-
 ```
     for i in range(msg_count):
         msg = TopicMessage(
 ```
 
-# 消息内容。
+`#` 消息内容。
 
 ```
             "I am test message %s." % i,
 ```
 
-# 消息标签。
+`#` 消息标签。
 
 ```
             "tagA"
 ```
 
-)
-# 设置消息的自定义属性。
+`)` `#` 设置消息的自定义属性。
 
 ```
         msg.put_property("xy", i)
 ```
 
-# 设置消息的`Key`。
+`#` 设置消息的`Key`。
 
 ```
         msg.set_message_key("MessageKey")
 ```
 
-# 设置事务第一次回查的时间，为相对时间。单位：秒，范围：10~300。
-# 第一次事务回查后如果消息没有`Commit`或者`Rollback`，则之后每隔`10s`左右会回查一次，共回查`24`小时
-。
+`#` 设置事务第一次回查的时间，为相对时间。单位：秒，范围：10~300。 `#` 第一次事务回查后如果消息没有`Commit`或者`Rollback`，则之后每隔`10s`左右会回查一次，共回查`24`小时 。
 
 ```python
         msg.set_trans_check_immunity_time(10)
@@ -9821,7 +10499,7 @@ Handle:%s" \
         if i == 0:
 ```
 
-# 发送完事务消息后能获取到半消息句柄，可以直接`Commit`或`Rollback`事务消息。
+`#` 发送完事务消息后能获取到半消息句柄，可以直接`Commit`或`Rollback`事务消息。
 
 ```python
             try:
@@ -9847,59 +10525,55 @@ while 1:
 from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_consumer import * from mq_http_sdk.mq_client import *
 ```
 
-# 初始化`client`。
+`#` 初始化`client`。
 
 ```
 mq_client = MQClient(
 ```
 
-# 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`#` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
     "${HTTP_ENDPOINT}",
 ```
 
-# AccessKey ID阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${ACCESS_KEY}",
 ```
 
-# AccessKey Secret阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`# AccessKey Secret`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
     "${SECRET_KEY}"
 ```
 
-) 消息队列 )
-# 消息所属的`Topic`，在`RocketMQ`控制台创建。
+`)` `)` `#` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
 topic_name = "${TOPIC}"
 ```
 
-# 您在`RocketMQ`控制台创建的`Group ID`。
+`#` 您在`RocketMQ`控制台创建的`Group ID`。
 
 ```
 group_id = "${GROUP_ID}"
 ```
 
-# Topic所属的实例`ID`，在`RocketMQ`控制台创建。
-# 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空
-间可以在`RocketMQ`控制台的实例详情页面查看。
+`# Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `#` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
 instance_id = "${INSTANCE_ID}" consumer = mq_client.get_consumer(instance_id, topic_name, group_id)
 ```
 
-# 长轮询表示如果`Topic`没有消息，则客户端请求会在服务端挂起3秒，3秒内如果有消息可以消费则立即返回响应。
-# 长轮询时间3秒（最多可设置为`30`秒）。
+`#` 长轮询表示如果`Topic`没有消息，则客户端请求会在服务端挂起`3`秒，`3`秒内如果有消息可以消费则立即返回响应。 `#` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
 wait_seconds = 3
 ```
 
-# 一次最多消费3条（最多可设置为`16`条）。
+`#` 一次最多消费`3`条（最多可设置为`16`条）。
 
 ```python
 batch = 3 print(("%sConsume And Ak Message From Topic%s\nTopicName:%s\nMQConsumer:%s\nWaitSeconds:%s\n" \
@@ -9908,7 +10582,7 @@ while True:
     try:
 ```
 
-# 长轮询消费消息。
+`#` 长轮询消费消息。
 
 ```python
         recv_msgs = consumer.consume_message(batch, wait_seconds)
@@ -9927,7 +10601,7 @@ while True:
     except MQExceptionBase as e:
 ```
 
-# Topic中没有消息可消费。
+`# Topic`中没有消息可消费。
 
 ```python
         if e.type == "MessageNotExist":
@@ -9938,8 +10612,7 @@ while True:
         continue
 ```
 
-# msg.next_consume_time前若不确认消息消费成功，则消息会被重复消费。
-# 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`# msg.next_consume_time`前若不确认消息消费成功，则消息会被重复消费。 `#` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```python
     try:
@@ -9950,10 +10623,7 @@ while True:
         print(("\nAk Message Fail! Exception:%s" % e))
 ```
 
-#某些消息的句柄可能超时，会导致消息消费状态确认不成功。
-消息队列
-# 某些消息的句柄可能超时
-会导致消息消费状态确认不成功
+`#`某些消息的句柄可能超时，会导致消息消费状态确认不成功。 `#` 某些消息的句柄可能超时会导致消息消费状态确认不成功
 
 ```python
         if e.sub_errors:
@@ -9963,29 +10633,35 @@ while True:
 sub_error["ErrorMessage"])))
 ```
 
-#### Node.js SDK
+#### 7.3.5 Node.js SDK
 
-##### 准备环境
+##### 7.3.5.1 准备环境
+
+在使用Node.js SDK收发消息前，您需按照本文提供的内容来准备环境。
 
 **环境要求**
 
 安装Node.js 7.6.0或以上版本。更多信息，请参见安装Node.js。 安装完成后，您可以执行 `node -V` 命令查看Node.js语言版本。
 
+**安装Node.js SDK**
+
+执行以下命令安装Node.js SDK。
+
 ```
 npm i @aliyunmq/mq-http-sdk
 ```
 
-##### 收发普通消息
+##### 7.3.5.2 收发普通消息
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的Node.js SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Node.js SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
-发送普通消息的示例代码如下。 消息队列
+发送普通消息的示例代码如下。
 
 ```
 const {
@@ -10025,7 +10701,7 @@ const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanc
   try {
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
     for(var i = 0; i < 4; i++) {
@@ -10046,7 +10722,11 @@ const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanc
       res = await producer.publishMessage("hello mq.", "", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
-    }
+```
+
+`}`
+
+```
   } catch(e) {
 ```
 
@@ -10054,7 +10734,11 @@ ody.MessageBodyMD5);
 
 ```
     console.log(e)
-  }
+```
+
+`}`
+
+```
 })();
 ```
 
@@ -10074,7 +10758,7 @@ const {
 const endpoint = "${HTTPENDPOINT}";
 ```
 
-消息队列 _ `// AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
+`_` `// AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
 const accessKeyId = "${ACCESS_KEY}";
@@ -10117,10 +10801,9 @@ const instanceId = "${INSTANCE_ID}"; const consumer = client.getConsumer(instanc
       res = await consumer.consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-          );
       if (res.code == 200) {
 ```
 
@@ -10153,15 +10836,17 @@ nsumeTime, message.FirstConsumeTime, message.ConsumedTimes, message.MessageBody,
 error.ErrorCode, error.ErrorMessage);
 ```
 
-消息队列
-
 ```
             return error.ReceiptHandle;
           });
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
+```
+
+`}`
+
+```
           });
         } else {
 ```
@@ -10171,8 +10856,11 @@ error.ErrorCode, error.ErrorMessage);
 ```
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
 ```
@@ -10184,15 +10872,17 @@ handles.join(','));
 e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
-##### 收发顺序消息
+##### 7.3.5.3 收发顺序消息
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的Node.js SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -10200,11 +10890,11 @@ e.RequestId, e.Code);
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Node.js SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
-发送顺序消息的示例代码如下。 消息队列
+发送顺序消息的示例代码如下。
 
 ```
 const {
@@ -10244,7 +10934,7 @@ const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanc
   try {
 ```
 
-`//` 循环发送8条消息。
+`//` 循环发送`8`条消息。
 
 ```
     for(var i = 0; i < 8; i++) {
@@ -10264,7 +10954,11 @@ const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanc
       res = await producer.publishMessage("hello mq.", "", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
-    }
+```
+
+`}`
+
+```
   } catch(e) {
 ```
 
@@ -10272,7 +10966,11 @@ ody.MessageBodyMD5);
 
 ```
     console.log(e)
-  }
+```
+
+`}`
+
+```
 })();
 ```
 
@@ -10292,7 +10990,7 @@ const {
 const endpoint = "${HTTP_ENDPOINT}";
 ```
 
-`// AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。 消息队列
+`// AccessKey ID`阿里云身份验证，在`Apsara Uni-manager`运营控制台获取。
 
 ```
 const accessKeyId = "${ACCESS_KEY}";
@@ -10329,16 +11027,15 @@ const instanceId = "${INSTANCE_ID}"; const consumer = client.getConsumer(instanc
     try {
 ```
 
-`//` 长轮询顺序消费消息, 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`//` 长轮询顺序消费消息`,` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
       res = await consumer.consumeMessageOrderly(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-          );
       if (res.code == 200) {
 ```
 
@@ -10368,8 +11065,6 @@ nsumeTime, message.FirstConsumeTime, message.ConsumedTimes, message.MessageBody,
           console.log("Ack Message Fail:");
 ```
 
-消息队列
-
 ```
           const failHandles = res.body.map((error)=>{
             console.log("\tErrorHandle:%s, Code:%s, Reason:%s\n", error.ReceiptHandle,
@@ -10379,7 +11074,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
+```
+
+`}`
+
+```
           });
         } else {
 ```
@@ -10389,8 +11088,11 @@ error.ErrorCode, error.ErrorMessage);
 ```
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
 ```
@@ -10402,25 +11104,29 @@ handles.join(','));
 e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
-##### 收发定时消息和延时消息
+##### 7.3.5.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的Node.js SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Node.js SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
-发送定时消息或延时消息的示例代码如下。 消息队列
+发送定时消息或延时消息的示例代码如下。
 
 ```
 const {
@@ -10460,7 +11166,7 @@ const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanc
   try {
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
     for(var i = 0; i < 4; i++) {
@@ -10487,7 +11193,11 @@ const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanc
       res = await producer.publishMessage("hello mq. timer msg!", "TagA", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
-    }
+```
+
+`}`
+
+```
   } catch(e) {
 ```
 
@@ -10495,7 +11205,11 @@ ody.MessageBodyMD5);
 
 ```
     console.log(e)
-  }
+```
+
+`}`
+
+```
 })();
 ```
 
@@ -10509,7 +11223,7 @@ const {
 } = require('@aliyunmq/mq-http-sdk');
 ```
 
-消息队列 `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```
 const endpoint = "${HTTP_ENDPOINT}";
@@ -10558,10 +11272,9 @@ const instanceId = "${INSTANCE_ID}"; const consumer = client.getConsumer(instanc
       res = await consumer.consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-          );
       if (res.code == 200) {
 ```
 
@@ -10591,8 +11304,6 @@ nsumeTime, message.FirstConsumeTime, message.ConsumedTimes, message.MessageBody,
           console.log("Ack Message Fail:");
 ```
 
-消息队列
-
 ```
           const failHandles = res.body.map((error)=>{
             console.log("\tErrorHandle:%s, Code:%s, Reason:%s\n", error.ReceiptHandle,
@@ -10602,7 +11313,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
+```
+
+`}`
+
+```
           });
         } else {
 ```
@@ -10612,8 +11327,11 @@ error.ErrorCode, error.ErrorMessage);
 ```
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
 ```
@@ -10625,15 +11343,17 @@ handles.join(','));
 e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
-##### 收发事务消息
+##### 7.3.5.5 收发事务消息
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的Node.js SDK收发事务消息的示例代码。
 
 **背景信息**
 
@@ -10641,7 +11361,7 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 
 **前提条件**
 
-您已完成以下操作： 消息队列创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装Node.js SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
@@ -10690,11 +11410,15 @@ const groupId = "${GROUP_ID}";
 const instanceId = "${INSTANCE_ID}"; const mqTransProducer = client.getTransProducer(instanceId, topic, groupId); async function processTransResult(res, msgId) {
     if (!res) {
         return;
-    }
+```
+
+`}`
+
+```
     if (res.code != 204) {
 ```
 
-`//` 如果`Commit`或`Rollback`时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10` s（针对`consumeHalfMessage`的句柄），则`Commit`或`Rollback`失败。
+`//` 如果`Commit`或`Rollback`时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10` `s`（针对`consumeHalfMessage`的句柄），则`Commit`或`Rollback`失败。
 
 ```
       console.log("Commit/Rollback Message Fail:");
@@ -10705,12 +11429,16 @@ error.ErrorCode, error.ErrorMessage);
       });
     } else {
       console.log("Commit/Rollback Message suc!!! %s", msgId);
-    }
-} var halfMessageCount = 0; var halfMessageConsumeCount = 0; (async function(){
+```
+
+`}` `}`
+
+```
+var halfMessageCount = 0; var halfMessageConsumeCount = 0; (async function(){
   try {
 ```
 
-`//`循环发送条事务消息消息队列 `//` 循环发送4条事务消息。
+`//`循环发送条事务消息 `//` 循环发送`4`条事务消息。
 
 ```
     for(var i = 0; i < 4; i++) {
@@ -10752,8 +11480,11 @@ res.body.MessageId, res.body.MessageBodyMD5, res.body.ReceiptHandle);
 
 ```
         processTransResult(res, msgId);
-      }
-    }
+```
+
+`}` `}`
+
+```
   } catch(e) {
 ```
 
@@ -10761,7 +11492,11 @@ res.body.MessageId, res.body.MessageBodyMD5, res.body.ReceiptHandle);
 
 ```
     console.log(e)
-  }
+```
+
+`}`
+
+```
 })();
 ```
 
@@ -10796,8 +11531,6 @@ parseInt(message.Properties.a) : 0;
 if(propA==1||(propA==2&&messageConsumedTimes>1)){
 ```
 
-消息队列
-
 ```
                   if (propA == 1 || (propA == 2 && message.ConsumedTimes > 1)) {
                       opResp = await mqTransProducer.commit(message.ReceiptHandle);
@@ -10808,10 +11541,18 @@ if(propA==1||(propA==2&&messageConsumedTimes>1)){
                       console.log("Rollback msg when check half, %s",
 message.MessageId);
                       halfMessageCount++;
-                  }
+```
+
+`}`
+
+```
                   processTransResult(opResp, message.MessageId);
         });
-      }
+```
+
+`}`
+
+```
     } catch(e) {
       if (e.Code && e.Code.indexOf("MessageNotExist") > -1) {
 ```
@@ -10823,9 +11564,11 @@ message.MessageId);
 Code:%s", e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
@@ -10875,7 +11618,7 @@ const groupId = "${GROUP_ID}";
 const instanceId = "${INSTANCE_ID}"; const consumer = client.getConsumer(instanceId, topic, groupId); (async function(){
 ```
 
-`//`循环消费消息。 消息队列 `//` 循环消费消息
+`//`循环消费消息。 `//` 循环消费消息
 
 ```
   while(true) {
@@ -10888,10 +11631,9 @@ const instanceId = "${INSTANCE_ID}"; const consumer = client.getConsumer(instanc
       res = await consumer.consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-          );
       if (res.code == 200) {
 ```
 
@@ -10927,7 +11669,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
+```
+
+`}`
+
+```
           });
         } else {
 ```
@@ -10937,8 +11683,11 @@ error.ErrorCode, error.ErrorMessage);
 ```
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
 ```
@@ -10952,18 +11701,15 @@ e.RequestId, e.Code);
         console.log(e);
 ```
 
-消息队列
-
 ```
-      }
-    }
-  }
 })();
 ```
 
-#### PHP SDK
+#### 7.3.6 PHP SDK
 
-##### 准备环境
+##### 7.3.6.1 准备环境
+
+在使用PHP SDK收发消息前，您需按照本文提供的内容来准备环境。
 
 **环境要求**
 
@@ -10971,29 +11717,29 @@ e.RequestId, e.Code);
 
 **安装SDK**
 
+执行以下步骤安装PHP SDK。
 1. 在您PHP安装目录下的composer.json文件中加入以下依赖：
+`{`
 
 ```json
-{
   "require": {
      "aliyunmq/mq-http-sdk": ">=1.0.3"
-  }
-}
 ```
 
+`}` `}`
 2. 执行以下命令，通过Composer安装依赖。
 
 ```
 composer install
 ```
 
-##### 收发普通消息
+##### 7.3.6.2 收发普通消息
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的PHP SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装PHP SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
@@ -11003,14 +11749,21 @@ composer install
 <?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; useMQ\MQClient;
 ```
 
-消息队列
+```
+use MQ\MQClient; class ProducerTest
+```
+
+`{`
 
 ```java
-use MQ\MQClient; class ProducerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11030,10 +11783,9 @@ use MQ\MQClient; class ProducerTest {
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11044,13 +11796,29 @@ use MQ\MQClient; class ProducerTest {
 ```
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
-    }
+```
+
+`}`
+
+```
     public function run()
-    {
+```
+
+`{`
+
+```
         try
-        {
+```
+
+`{`
+
+```
             for ($i=1; $i<=4; $i++)
-            {
+```
+
+`{`
+
+```
                 $publishMessage = new TopicMessage(
 ```
 
@@ -11058,10 +11826,9 @@ use MQ\MQClient; class ProducerTest {
 
 ```
                 "hello mq!"
-                );
 ```
 
-`//` 设置消息的自定义属性。
+); `//` 设置消息的自定义属性。
 
 ```
                 $publishMessage->putProperty("a", $i);
@@ -11074,15 +11841,16 @@ use MQ\MQClient; class ProducerTest {
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
-            }
-        } catch (\Exception $e) {
-            print_r($e->getMessage() . "\n");
-        }
-    }
-}
 ```
 
-消息队列
+`}`
+
+```
+        } catch (\Exception $e) {
+            print_r($e->getMessage() . "\n");
+```
+
+`}`
 
 ```
 $instance = new ProducerTest(); $instance->run();
@@ -11094,12 +11862,21 @@ $instance = new ProducerTest(); $instance->run();
 
 订阅普通消息的示例代码如下。
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11119,10 +11896,9 @@ $instance = new ProducerTest(); $instance->run();
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11139,28 +11915,30 @@ $instance = new ProducerTest(); $instance->run();
 ```
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
-    public function run()
-    {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}`
+
+```
+    public function run()
+```
+
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         while (True) {
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。 消息队列
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 $messages = $this->consumer->consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
 ```
@@ -11171,11 +11949,19 @@ $instance = new ProducerTest(); $instance->run();
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
+```
+
+`}`
+
+```
             print "consume finish, messages:\n";
 ```
 
@@ -11193,10 +11979,9 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
-            }
 ```
 
-// $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` // $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             print_r($receiptHandles);
@@ -11213,25 +11998,23 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
+```
+
+`}` `}` `}`
+
+```
             print "ack finish\n";
-        }
 ```
 
-消息队列
-
 ```
-    }
-} $instance = new ConsumerTest(); $instance->run();
+$instance = new ConsumerTest(); $instance->run();
 ```
 
 ?>
 
-##### 收发顺序消息
+##### 7.3.6.3 收发顺序消息
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的PHP SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -11239,18 +12022,27 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装PHP SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
 发送顺序消息的示例代码如下。
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11272,14 +12064,11 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 "${SECRETKEY}"
 ```
 
-消息队列
-
 ```
             ${SECRET_KEY}
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11290,23 +12079,33 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 ```
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
-    }
+```
+
+`}`
+
+```
     public function run()
-    {
+```
+
+`{`
+
+```
         try
-        {
+```
+
+`{`
+
+```
             for ($i=1; $i<=4; $i++)
-            {
+```
+
+`{`
+
+```
                 $publishMessage = new TopicMessage(
 ```
 
-"hello mq!"// 消息内容。
-
-```
-                );
-```
-
-`//` 设置消息的自定义属性。
+"hello mq!"// 消息内容。 ); `//` 设置消息的自定义属性。
 
 ```
                 $publishMessage->putProperty("a", $i);
@@ -11319,12 +12118,19 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
-            }
+```
+
+`}`
+
+```
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
-        }
-    }
-} $instance = new ProducerTest(); $instance->run();
+```
+
+`}` `}` `}`
+
+```
+$instance = new ProducerTest(); $instance->run();
 ```
 
 ?>
@@ -11337,14 +12143,21 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 <?php require "vendor/autoload.php";
 ```
 
-消息队列
+```
+use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
 
 ```java
-use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11364,10 +12177,9 @@ use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11384,28 +12196,30 @@ use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
 ```
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
-    public function run()
-    {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}`
+
+```
+    public function run()
+```
+
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         while (True) {
             try {
 ```
 
-`//` 长轮询顺序消费消息, 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`//` 长轮询顺序消费消息`,` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
                 $messages = $this->consumer->consumeMessageOrderly(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
 ```
@@ -11416,16 +12230,17 @@ use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
 ```
-
-消息队列
 
 ```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
+```
+
+`}`
+
+```
             print "======>consume finish, messages:\n";
 ```
 
@@ -11443,10 +12258,9 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getShardingKey());
                 print_r($message->getProperties());
-            }
 ```
 
-// $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` // $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             print_r($receiptHandles);
@@ -11463,37 +12277,53 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
-            print "=======>ack finish\n";
-        }
-    }
-} $instance = new ConsumerTest(); $instance->run();
 ```
 
-?> 消息队列
+`}` `}` `}`
 
-##### 收发定时消息和延时消息
+```
+            print "=======>ack finish\n";
+```
+
+`}` `}` `}`
+
+```
+$instance = new ConsumerTest(); $instance->run();
+```
+
+?>
+
+##### 7.3.6.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的PHP SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装PHP SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
 发送定时消息或延时消息的示例代码如下。
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11513,10 +12343,9 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11528,27 +12357,30 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
         $instanceId = "${INSTANCE_ID}";
 ```
 
-消息队列
-
 ```
         $this->producer = $this->client->getProducer($instanceId, $topic);
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         try
-        {
+```
+
+`{`
+
+```
             for ($i=1; $i<=4; $i++)
-            {
+```
+
+`{`
+
+```
                 $publishMessage = new TopicMessage(
 ```
 
-"hello mq!"// 消息内容。
-
-```
-                );
-```
-
-`//` 设置消息的自定义属性。
+"hello mq!"// 消息内容。 ); `//` 设置消息的自定义属性。
 
 ```
                 $publishMessage->putProperty("a", $i);
@@ -11567,12 +12399,19 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
-            }
+```
+
+`}`
+
+```
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
-        }
-    }
-} $instance = new ProducerTest(); $instance->run();
+```
+
+`}` `}` `}`
+
+```
+$instance = new ProducerTest(); $instance->run();
 ```
 
 ?>
@@ -11581,17 +12420,26 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 
 订阅定时消息或延时消息的示例代码如下。
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
 ```
 
-消息队列 p
+`p`
 
 ```java
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11611,10 +12459,9 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11631,28 +12478,30 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 ```
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
-    public function run()
-    {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}`
+
+```
+    public function run()
+```
+
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
         while (True) {
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 $messages = $this->consumer->consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
 ```
@@ -11663,15 +12512,23 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
+```
+
+`}`
+
+```
             print "consume finish, messages:\n";
 ```
 
-`//` 处理业务逻辑。 消息队列
+`//` 处理业务逻辑。
 
 ```
             $receiptHandles = array();
@@ -11685,10 +12542,9 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
-            }
 ```
 
-// $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` // $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             print_r($receiptHandles);
@@ -11705,41 +12561,55 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
+```
+
+`}` `}` `}`
+
+```
             print "ack finish\n";
-        }
-    }
-} $instance = new ConsumerTest(); $instance->run();
+```
+
+`}` `}` `}`
+
+```
+$instance = new ConsumerTest(); $instance->run();
 ```
 
 ?>
 
-##### 收发事务消息
+##### 7.3.6.5 收发事务消息
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的PHP SDK收发事务消息的示例代码。
 
 **背景信息**
 
-事务消息的交互流程如下图所示。 消息队列更多信息，请参见事务消息。
+事务消息的交互流程如下图所示。 更多信息，请参见事务消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装PHP SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
 发送事务消息的示例代码如下。
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
     private $transProducer;
     private $count;
     private $popMsgCount;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11759,10 +12629,9 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11774,7 +12643,7 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
         $groupId = "${GROUP_ID}";
 ```
 
-`// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实消息队列例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
+`// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```
         $instanceId = "${INSTANCE_ID}";
@@ -11782,7 +12651,11 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 $groupId);
         $this->count = 0;
         $this->popMsgCount = 0;
-    }
+```
+
+`}`
+
+```
     function processAckError($e) {
         if ($e instanceof MQ\Exception\AckMessageException) {
 ```
@@ -11794,11 +12667,18 @@ $groupId);
             foreach ($e->getAckMessageErrorItems() as $errorItem) {
                 printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $errorItem->ge
 tReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-            }
+```
+
+`}`
+
+```
         } else {
             print_r($e);
-        }
-    }
+```
+
+`}` `}`
+
+```
     function consumeHalfMsg() {
         while($this->count < 3 && $this->popMsgCount < 15) {
             $this->popMsgCount++;
@@ -11808,11 +12688,19 @@ tReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     print "no half transaction message\n";
                     continue;
-                }
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
+```
+
+`}`
+
+```
             foreach ($messages as $message) {
                 printf("ID:%s TAG:%s BODY:%s \nPublishTime:%d,
 FirstConsumeTime:%d\nConsumedTimes:%d, NextConsumeTime:%d\nPropA:%s\n",
@@ -11830,7 +12718,7 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
 "\n";
 ```
 
-$ $ 消息队列
+$ $
 
 ```
                         $this->transProducer->commit($message->getReceiptHandle());
@@ -11848,18 +12736,22 @@ $ $ 消息队列
                     } else {
                         print "\n unknown transaction msg: " . $message->getMessageId()
 . "\n";
-                    }
-                } catch (\Exception $e) {
-                    processAckError($e);
-                }
-            }
-        }
-    }
-    public function run()
-    {
 ```
 
-`//` 循环发送4条事务消息。
+`}`
+
+```
+                } catch (\Exception $e) {
+                    processAckError($e);
+```
+
+`}` `}` `}` `}`
+
+```
+    public function run()
+```
+
+`{` `//` 循环发送`4`条事务消息。
 
 ```
         for ($i = 0; $i < 4; $i++) {
@@ -11878,7 +12770,7 @@ $ $ 消息队列
             $pubMsg->setMessageKey("MessageKey");
 ```
 
-`//` 设置事务第一次回查的时间，为相对时间。单位：秒，范围：10~300。 `//` 第一次事务回查后如果消息没有`Commit`或者`Rollback`，则之后每隔`10s`左右会回查一次，共回查2 4小时。
+`//` 设置事务第一次回查的时间，为相对时间。单位：秒，范围：10~300。 `//` 第一次事务回查后如果消息没有`Commit`或者`Rollback`，则之后每隔`10s`左右会回查一次，共回查`2` `4`小时。
 
 ```
             $pubMsg->setTransCheckImmunityTime(10);
@@ -11902,17 +12794,18 @@ tMessageId() . "\n";
 
 ```
                     processAckError($e);
-                }
-            }
-        }
 ```
 
-`//`客户端需要有一个线程或者进程来消费没有确认的事务消息。 消息队列 `//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 检查没有确认的事务消息。
+`}` `//`客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 检查没有确认的事务消息。
 
 ```
         $this->consumeHalfMsg();
-    }
-} $instance = new ProducerTest(); $instance->run();
+```
+
+`}`
+
+```
+$instance = new ProducerTest(); $instance->run();
 ```
 
 ?>
@@ -11921,12 +12814,21 @@ tMessageId() . "\n";
 
 订阅事务消息的示例代码如下。
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
 ```
 
@@ -11946,10 +12848,9 @@ tMessageId() . "\n";
 
 ```
             "${SECRET_KEY}"
-        );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
         $topic = "${TOPIC}";
@@ -11966,34 +12867,34 @@ tMessageId() . "\n";
 ```
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
-    public function run()
-    {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`}`
+
+```
+    public function run()
+```
+
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
 while(True){
 ```
-
-消息队列
 
 ```
         while (True) {
             try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                 $messages = $this->consumer->consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                );
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
 ```
@@ -12004,11 +12905,19 @@ while(True){
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
+```
+
+`}`
+
+```
             print "consume finish, messages:\n";
 ```
 
@@ -12026,10 +12935,9 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
-            }
 ```
 
-// $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` // $message->getNextConsumeTime()前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             print_r($receiptHandles);
@@ -12046,42 +12954,43 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
             print "ack finish\n";
 ```
 
-消息队列
+`}` `}`
 
 ```
-        }
-    }
-} $instance = new ConsumerTest(); $instance->run();
+$instance = new ConsumerTest(); $instance->run();
 ```
 
 ?>
 
-#### C# SDK
+#### 7.3.7 C# SDK
 
-##### 准备环境
+##### 7.3.7.1 准备环境
+
+在使用C# SDK收发消息前，您需按照本文提供的内容来准备环境。
 
 **环境要求**
 
 安装.NET。更多信息，请参见安装.NET。 安装Visual Studio 2015或以上版本。更多信息，请参见安装Visual Studio。 安装完成后，您可以执行 `dotnet --version` 命令查看.NET Core版本。
+
+**安装C# SDK**
+
+执行以下操作安装C# SDK。
 1. 下载C# SDK及工程文件到本地并解压。其中Aliyun_MQ_SDK为SDK所在目
 录，Aliyun_MQ_SDK.sln为工程文件。
 2. 使用Visual Studio打开Aliyun_MQ_SDK.sln文件导入工程。
 3. 执行Samples.cs文件。在Aliyun_MQ_SDK工程中可以看到Samples.cs文件，该文件中提供了C# SDK
 消息收发的示例代码，将代码中的示例值替换为您实际业务使用的参数值，然后保存并执行。
 
-##### 收发普通消息
+##### 7.3.7.2 收发普通消息
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的C# SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装C# SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
@@ -12091,15 +13000,17 @@ Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode()
 using System; using System.Collections.Generic; using System.Threading;
 ```
 
-消息队列
-
-```java
-using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
-    public class ProducerSample
-    {
+```
+using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class ProducerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12131,16 +13042,23 @@ using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespac
 _secretAccessKey, _endpoint);
         static MQProducer producer = _client.GetProducer(_instanceId, _topicName);
         static void Main(string[] args)
-        {
-            try
-            {
 ```
 
-`//` 循环发送4条消息。
+`{`
+
+```
+            try
+```
+
+`{` `//` 循环发送`4`条消息。
 
 ```
                 for (int i = 0; i < 4; i++)
-                {
+```
+
+`{`
+
+```
     TopicMessage sendMsg;
 ```
 
@@ -12162,30 +13080,37 @@ _secretAccessKey, _endpoint);
                 sendMsg.MessageKey = "MessageKey";
                 TopicMessage result = producer.PublishMessage(sendMsg);
                 Console.WriteLine("publis message success:" + result);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-            }
-        }
-    }
-}
 ```
 
-消息队列
+`}` `}`
+
+```
+            catch (Exception ex)
+```
+
+`{`
+
+```
+                Console.Write(ex);
+```
+
+`}` `}` `}`
 
 **订阅普通消息**
 
 订阅普通消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
-    public class ConsumerSample
-    {
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class ConsumerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12224,52 +13149,75 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
             while (true)
-            {
-                try
-                {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`{`
+
+```
+                try
+```
+
+`{` `//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 );
 
 ```
-                        );
-                    }
                     catch (Exception exp1)
 ```
 
-消息队列 p p
+`p` `p` `{`
 
 ```
-                    {
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
+```
+
+`}`
+
+```
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
 ```
@@ -12278,65 +13226,88 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
 ```
 
-`// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
-                            Console.Write("\t" + handle);
-                        }
-                        Console.WriteLine();
-                    }
-                    catch (Exception exp2)
-                    {
 ```
 
-`//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`{`
+
+```
+                            Console.Write("\t" + handle);
+```
+
+`}`
+
+```
+                        Console.WriteLine();
+```
+
+`}`
+
+```
+                    catch (Exception exp2)
+```
+
+`{` `//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
-                                Console.WriteLine("\tErrorHandle:" +
-errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
 ```
 
-消息队列
+`{`
+
+```
+                                Console.WriteLine("\tErrorHandle:" +
+errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}`
 
 ```
                 catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-##### 收发顺序消息
+`{`
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+`}` `}` `}` `}` `}`
+
+##### 7.3.7.3 收发顺序消息
+
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的C# SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -12344,19 +13315,23 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装C# SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
 发送顺序消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
-    public class OrderProducerSample
-    {
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class OrderProducerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12380,7 +13355,7 @@ using System; using System.Collections.Generic; using System.Threading; using Al
         private const string _topicName = "${TOPIC}";
 ```
 
-所属的实例在控制台创建 `//` 消息队列 `// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
+所属的实例在控制台创建 `//` `// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```java
         private const string _instanceId = "${INSTANCE_ID}";
@@ -12388,19 +13363,21 @@ using System; using System.Collections.Generic; using System.Threading; using Al
 _secretAccessKey, _endpoint);
         static MQProducer producer = _client.GetProducer(_instanceId, _topicName);
         static void Main(string[] args)
-        {
-            try
-            {
 ```
 
-`//` 循环发送8条消息。
+`{`
+
+```
+            try
+```
+
+`{` `//` 循环发送`8`条消息。
 
 ```
                 for (int i = 0; i < 8; i++)
-                {
 ```
 
-`//` 消息内容和消息的`tag`。
+`{` `//` 消息内容和消息的`tag`。
 
 ```
                     TopicMessage sendMsg = new TopicMessage("hello mq", "tag");
@@ -12412,34 +13389,43 @@ _secretAccessKey, _endpoint);
                     sendMsg.PutProperty("a", i.ToString());
 ```
 
-`//` 设置分区顺序消息的`Sharding Key`，用于标识不同的分区。`Sharding Key`与消息的K `ey`是完全不同的概念。
+`//` 设置分区顺序消息的`Sharding Key`，用于标识不同的分区。`Sharding Key`与消息的`K` `ey`是完全不同的概念。
 
 ```
                     sendMsg.ShardingKey = (i % 2).ToString();
                     TopicMessage result = producer.PublishMessage(sendMsg);
                     Console.WriteLine("publis message success:" + result);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-            }
-        }
-    }
-}
 ```
+
+`}` `}`
+
+```
+            catch (Exception ex)
+```
+
+`{`
+
+```
+                Console.Write(ex);
+```
+
+`}` `}` `}` `}`
 
 **订阅顺序消息**
 
 订阅顺序消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
-    public class OrderConsumerSample
-{
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class OrderConsumerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12450,8 +13436,6 @@ using System; using System.Collections.Generic; using System.Threading; using Al
 ```
 privateconststring accessKeyId="${ACCESSKEY}";
 ```
-
-消息队列
 
 ```java
         private const string _accessKeyId = "${ACCESS_KEY}";
@@ -12484,53 +13468,74 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
             while (true)
-            {
-                try
-                {
 ```
 
-`//` 长轮询顺序消费消息, 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`{`
+
+```
+                try
+```
+
+`{` `//` 长轮询顺序消费消息`,` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessageOrderly(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 ); `}`
 
 ```
-                        );
-                    }
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
+```
+
+`}`
+
+```
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
 continue;
 ```
 
-消息队列
-
 ```
                         continue;
-                    }
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
 ```
@@ -12539,80 +13544,112 @@ continue;
 
 ```
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
 ```
 
-`// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
-                            Console.Write("\t" + handle);
-                        }
-                        Console.WriteLine();
-                    }
-                    catch (Exception exp2)
-                    {
 ```
 
-`//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`{`
+
+```
+                            Console.Write("\t" + handle);
+```
+
+`}`
+
+```
+                        Console.WriteLine();
+```
+
+`}`
+
+```
+                    catch (Exception exp2)
+```
+
+`{` `//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
-                                Console.WriteLine("\tErrorHandle:" +
-errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-消息队列
+`{`
 
-##### 收发定时消息和延时消息
+```
+                                Console.WriteLine("\tErrorHandle:" +
+errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}` `}`
+
+```
+                catch (Exception ex)
+```
+
+`{`
+
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+`}` `}` `}` `}` `}`
+
+##### 7.3.7.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的C# SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装C# SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
 发送定时消息或延时消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
-    public class ProducerSample
-    {
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class ProducerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12646,20 +13683,25 @@ _secretAccessKey, _endpoint);
 staticvoidMain(string[]args)
 ```
 
-消息队列
-
 ```
         static void Main(string[] args)
-        {
-            try
-            {
 ```
 
-`//` 循环发送4条消息。
+`{`
+
+```
+            try
+```
+
+`{` `//` 循环发送`4`条消息。
 
 ```
                 for (int i = 0; i < 4; i++)
-                {
+```
+
+`{`
+
+```
                     TopicMessage sendMsg;
 ```
 
@@ -12682,28 +13724,37 @@ staticvoidMain(string[]args)
 000;
                     TopicMessage result = producer.PublishMessage(sendMsg);
                     Console.WriteLine("publis message success:" + result);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-            }
-        }
-    }
-}
 ```
+
+`}` `}`
+
+```
+            catch (Exception ex)
+```
+
+`{`
+
+```
+                Console.Write(ex);
+```
+
+`}` `}` `}` `}`
 
 **订阅定时消息或延时消息**
 
 订阅定时消息或延时消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
-    public class ConsumerSample
-    {
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class ConsumerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12727,7 +13778,7 @@ using System; using System.Collections.Generic; using System.Threading; using Al
         private const string _topicName = "${TOPIC}";
 ```
 
-`// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实消息队列例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
+`// Topic`所属的实例`ID`，在`RocketMQ`控制台创建。 `//` 若实例有命名空间，则实例`ID`必须传入；若实例无命名空间，则实例`ID`传入`null`空值或字符串空值。实例的命名空间可以在`RocketMQ`控制台的实例详情页面查看。
 
 ```java
         private const string _instanceId = "${INSTANCE_ID}";
@@ -12742,47 +13793,75 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
             while (true)
-            {
-                try
-                {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`{`
+
+```
+                try
+```
+
+`{` `//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 ); `}`
 
 ```
-                        );
-                    }
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
+```
+
+`}`
+
+```
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
 ```
@@ -12791,85 +13870,112 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-```
-
-消息队列
-
-```
-                    }
 ```
 
 `// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
-                            Console.Write("\t" + handle);
-                        }
-                        Console.WriteLine();
-                    }
-                    catch (Exception exp2)
-                    {
 ```
 
-`//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`{`
+
+```
+                            Console.Write("\t" + handle);
+```
+
+`}`
+
+```
+                        Console.WriteLine();
+```
+
+`}`
+
+```
+                    catch (Exception exp2)
+```
+
+`{` `//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
-                                Console.WriteLine("\tErrorHandle:" +
-errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-##### 收发事务消息
+`{`
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+```
+                                Console.WriteLine("\tErrorHandle:" +
+errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}` `}`
+
+```
+                catch (Exception ex)
+```
+
+`{`
+
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+`}` `}` `}` `}` `}`
+
+##### 7.3.7.5 收发事务消息
+
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的C# SDK收发事务消息的示例代码。
 
 **背景信息**
 
-事务消息的交互流程如下图所示。 消息队列更多信息，请参见事务消息。
+事务消息的交互流程如下图所示。 更多信息，请参见事务消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装C# SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
 发送事务消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
-    public class TransProducerSample
-    {
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class TransProducerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -12909,55 +14015,85 @@ _secretAccessKey, _endpoint);
 _client.GetTransProdcuer(_instanceId, _topicName, _groupId);
 ```
 
-消息队列
-
 ```
         static void ProcessAckError(Exception exception)
-        {
 ```
 
-`//` 如果`Commit`或`Rollback`时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10s`（针对`consumeHalfMessage`的句柄），则`Commit`或`Rollback`会失败。
+`{` `//` 如果`Commit`或`Rollback`时超过了`TransCheckImmunityTime`（针对发送事务消息的句柄）或者超过`10s`（针对`consumeHalfMessage`的句柄），则`Commit`或`Rollback`会失败。
 
 ```
             if (exception is AckMessageException)
-            {
+```
+
+`{`
+
+```
                 AckMessageException ackExp = (AckMessageException)exception;
                 Console.WriteLine("Ack message fail, RequestId:" + ackExp.RequestId);
                 foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                {
+```
+
+`{`
+
+```
                     Console.WriteLine("\tErrorHandle:" + errorItem.ReceiptHandle + ",Err
 orCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorItem.ErrorMessage);
-                }
-            }
-        }
+```
+
+`}` `}` `}`
+
+```
         static void ConsumeHalfMessage()
-        {
+```
+
+`{`
+
+```
             int count = 0;
             while (true)
-            {
+```
+
+`{`
+
+```
                 if (count == 3)
                     break;
                 try
-                {
 ```
 
-`//` 检查事务半消息，类似消费普通消息。
+`{` `//` 检查事务半消息，类似消费普通消息。
 
 ```
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = transProducer.ConsumeHalfMessage(3, 3);
                     } catch (Exception exp1) {
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No half mess
 age, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
+```
+
+`}`
+
+```
                     if (messages == null)
                         continue;
 ```
@@ -12966,7 +14102,11 @@ age, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         int a = int.Parse(message.GetProperty("a"));
                         uint consumeTimes = message.ConsumedTimes;
@@ -12979,8 +14119,6 @@ age, " + ((MessageNotExistException)exp1).RequestId);
 ```
                                 transProducer.Commit(message.ReceiptHandle);
 ```
-
-消息队列
 
 ```
                                 count++;
@@ -13010,37 +14148,51 @@ age, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                                 Console.WriteLine("Id:" + message.Id + ", unkonwn");
-                            }
-                        } catch (Exception ackError) {
-                            ProcessAckError(ackError);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-        static void Main(string[] args)
-        {
 ```
 
-`//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 启动一个线程来检查没有确认的事务消息。
+`}`
+
+```
+                        } catch (Exception ackError) {
+                            ProcessAckError(ackError);
+```
+
+`}` `}` `}`
+
+```
+                catch (Exception ex)
+```
+
+`{`
+
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+`}` `}` `}`
+
+```
+        static void Main(string[] args)
+```
+
+`{` `//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 启动一个线程来检查没有确认的事务消息。
 
 ```
             Thread consumeHalfThread = new Thread(ConsumeHalfMessage);
             consumeHalfThread.Start();
             try
-            {
 ```
 
-`//` 循环发送4条事务消息，第一条直接在发送完提交事务, 其它三条根据条件处理。
+`{` `//` 循环发送`4`条事务消息，第一条直接在发送完提交事务`,` 其它三条根据条件处理。
 
 ```
                 for (int i = 0; i < 4; i++)
-                {
+```
+
+`{`
+
+```
                     TopicMessage sendMsg = new TopicMessage("trans_msg");
                     sendMsg.MessageTag = "a";
                     sendMsg.MessageKey = "MessageKey";
@@ -13055,45 +14207,52 @@ age, " + ((MessageNotExistException)exp1).RequestId);
                     Console.WriteLine("publis message success:" + result);
                     try {
                         if (!string.IsNullOrEmpty(result.ReceiptHandle) && i == 0)
-{
 ```
 
-消息队列
-
-```
-                        {
-```
-
-`//` 发送完事务消息后能获取到半消息句柄，可以直接`Commit`或`Rollback`事务消息。
+`{` `{` `//` 发送完事务消息后能获取到半消息句柄，可以直接`Commit`或`Rollback`事务消息。
 
 ```
                             transProducer.Commit(result.ReceiptHandle);
                             Console.WriteLine("Id:" + result.Id + ", commit");
-                        }
+```
+
+`}`
+
+```
                     } catch (Exception ackError) {
                         ProcessAckError(ackError);
-                    }
-                }
+```
+
+`}` `}`
+
+```
             } catch (Exception ex) {
                 Console.Write(ex);
-            }
-            consumeHalfThread.Join();
-        }
-    }
-}
 ```
+
+`}`
+
+```
+            consumeHalfThread.Join();
+```
+
+`}` `}` `}`
 
 **订阅事务消息**
 
 订阅事务消息的示例代码如下。
 
-```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
-    public class ConsumerSample
-    {
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
 ```
 
-`//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
+`{`
+
+```java
+    public class ConsumerSample
+```
+
+`{` `//` 设置`HTTP`协议客户端接入点，进入`RocketMQ`控制台实例详情页面的网络管理页签查看。
 
 ```java
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -13133,51 +14292,77 @@ _secretAccessKey, _endpoint);
 pId, null); staticvoidMain(string[]args)
 ```
 
-消息队列
-
 ```
         static void Main(string[] args)
-        {
 ```
 
-`//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
+`{` `//` 在当前线程循环消费消息，建议多开个几个线程并发消费消息。
 
 ```
             while (true)
-            {
-                try
-                {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`{`
+
+```
+                try
+```
+
+`{` `//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3 //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3 //` 长轮询时间`3`秒（最多可设置为`30`秒）。 ); `}`
 
 ```
-                        );
-                    }
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
+```
+
+`}`
+
+```
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
 ```
@@ -13186,71 +14371,91 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
 ```
 
-`// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `// Message.nextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
-                            Console.Write("\t" + handle);
-                        }
 ```
 
-消息队列
+`{`
+
+```
+                            Console.Write("\t" + handle);
+```
 
 ```
                         Console.WriteLine();
-                    }
                     catch (Exception exp2)
-                    {
 ```
 
-`//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`{` `//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
-                                Console.WriteLine("\tErrorHandle:" +
-errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-#### C++ SDK
+`{`
 
-##### 准备环境
+```
+                                Console.WriteLine("\tErrorHandle:" +
+errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}` `}`
+
+```
+                catch (Exception ex)
+```
+
+`{`
+
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+`}` `}` `}` `}` `}`
+
+#### 7.3.8 C++ SDK
+
+##### 7.3.8.1 准备环境
+
+在使用C++ SDK收发消息前，您需要按照本文提供的内容来准备环境。
 
 **环境要求**
 
-安装SCons。更多信息，请参见安装SCons。 使用SCons，需要先安装Python 3.5或以上版本。更多信息，请参见安装Python。 安装Visual Studio 2015或以上版本。更多信息，请参见安装Visual Studio。 仅Windows系统需要安装Visual Studio，本文环境配置以Visual Studio 2019为例。
+安装SCons。更多信息，请参见安装SCons。 使用SCons，需要先安装Python 3.5或以上版本。更多信息，请参见安装Python。 安装Visual Studio 2015或以上版本。更多信息，请参见安装Visual Studio。
 
-**说明**
+> **说明：** 仅Windows系统需要安装Visual Studio，本文环境配置以Visual Studio 2019为例。
+
+**Windows系统安装C++ SDK**
 
 1. 下载SDK到本地并解压。SDK下载链接，请参见SDK概述。
 2. 在下载的SDK目录下，执行以下命令编译项目。
@@ -13261,19 +14466,18 @@ scons
 
 3. 编译成功后，将SDK目录下的include和lib文件夹复制到您本地创建的C++项目目录下。
 4. 在Visual Studio设置项目属性。右键单击项目，选择**属性**。
-消息队列
 
 **设置附加包含目录**
 
-在项目属性页中，选择**配置属性** **> C/C++ >** **常规** > **附加包含目录**，将**附加包含目录**设置为步骤3中复制后的include文件夹路径。
+在项目属性页中，选择**配置属性** **> C/C++ >** **常规** **>** **附加包含目录**，将**附加包含目录**设置为步骤3中复制后的include文件夹路径。
 
 **设置附加库目录**
 
-在项目属性页中，选择**配置属性** > **链接器** > **常规** > **附加库目录**，将**附加库目录**设置为步骤3中复制后的lib文件夹路径，以及lib\windows\ {平台目录}文件夹路径。其中， {平台目录}根据您使用的操作系统选择，64位操作系统选择AMD64，32位操作系统选择I386。
+在项目属性页中，选择**配置属性** **>** **链接器** **>** **常规** **>** **附加库目录**，将**附加库目录**设置为步骤3中复制后的lib文件夹路径，以及lib\windows\ {平台目录}文件夹路径。其中， {平台目录}根据您使用的操作系统选择，64位操作系统选择AMD64，32位操作系统选择I386。
 
 **设置附加依赖项**
 
-在项目属性页中，选择**配置属性** > **链接器** > **输入** > **附加依赖项**，将以下内容添加到**附加依赖项**中。 消息队列
+在项目属性页中，选择**配置属性** **>** **链接器** **>** **输入** **>** **附加依赖项**，将以下内容添加到**附加依赖项**中。
 
 ```
 mqcpp.lib libcurl.lib libcurl_debug.lib libeay32MT.lib libeay32MTd.lib ssleay32MT.lib ssleay32MTd.lib DbgHelp.lib User32.lib GDI32.lib Advapi32.lib
@@ -13281,9 +14485,11 @@ mqcpp.lib libcurl.lib libcurl_debug.lib libeay32MT.lib libeay32MTd.lib ssleay32M
 
 5. 将示例代码复制到项目文件中，并按照注释修改参数并保存。示例代码下载路径，请参见示例代码。
 6. 单击
-按钮开始编译。 以下操作以CentOS系统为例。
+按钮开始编译。
 
-**说明**
+**Linux系统安装C++ SDK**
+
+> **说明：** 以下操作以CentOS系统为例。
 
 1. 下载SDK到本地并解压。SDK下载链接，请参见SDK概述。
 2. 分别执行以下命令安装 `libcurl-devel` 和 `openssl-devel` 库。
@@ -13302,20 +14508,19 @@ scons
 5. 将示例代码复制到您本地的项目文件中，并按照注释修改参数并保存。示例代码下载路径，请参见示例代
 码。
 6. 执行以下命令进行编译。
-消息队列
-# producer.cpp替换为您本地创建的项目文件名称。
+`# producer.cpp`替换为您本地创建的项目文件名称。
 
 ```
 g++ producer.cpp -o producer lib/libmqcpp.a -I include/ -lcurl -lcrypto
 ```
 
-##### 收发普通消息
+##### 7.3.8.2 收发普通消息
 
-普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提
+普通消息是指RocketMQ中无特性的消息，区别于有特性的定时和延时消息、顺序消息和事务消息。本文提供使用HTTP协议下的C++ SDK收发普通消息的示例代码。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装C++ SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送普通消息**
 
@@ -13345,10 +14550,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -13363,21 +14567,27 @@ using namespace std; using namespace mq::http::sdk; int main() {
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
-    }
+```
+
+`}`
+
+```
     try {
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
 for(inti i<4 i++)
 ```
 
-消息队列
-
 ```
         for (int i = 0; i < 4; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
 ```
 
@@ -13401,7 +14611,11 @@ for(inti i<4 i++)
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
-        }
+```
+
+`}`
+
+```
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -13409,10 +14623,15 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
-    }
-    return 0;
-}
 ```
+
+`}`
+
+```
+    return 0;
+```
+
+`}`
 
 **订阅普通消息**
 
@@ -13449,14 +14668,11 @@ using namespace std; using namespace mq::http::sdk; int main() {
 "${SECRETKEY}"
 ```
 
-消息队列
-
 ```
             ${SECRET_KEY}
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -13477,23 +14693,31 @@ using namespace std; using namespace mq::http::sdk; int main() {
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
             consumer->consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
                     messages
-            );
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
 ```
 
@@ -13503,7 +14727,11 @@ using namespace std; using namespace mq::http::sdk; int main() {
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -13514,10 +14742,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
 ```
 
-`//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             AckMessageResponse bdmResp;
@@ -13525,7 +14752,7 @@ using namespace std; using namespace mq::http::sdk; int main() {
             if (!bdmResp.isSuccess()) {
 ```
 
-消息队列 p `//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
+`p` `//` 某些消息的句柄可能超时，会导致消息消费状态确认不成功。
 
 ```
                 const std::vector<AckMessageFailedItem>& failedItems =
@@ -13533,19 +14760,39 @@ using namespace std; using namespace mq::http::sdk; int main() {
                 for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItem
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
+```
+
+`{`
+
+```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
+```
+
+`}`
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -13560,14 +14807,19 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
-    } while(true);
-}
 ```
 
-##### 收发顺序消息
+`}`
 
-顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用
+```
+    } while(true);
+```
+
+`}`
+
+##### 7.3.8.3 收发顺序消息
+
+顺序消息（FIFO消息）是RocketMQ提供的一种严格按照顺序来发布和消费的消息类型。本文提供使用 HTTP协议下的C++ SDK收发顺序消息的示例代码。
 
 **背景信息**
 
@@ -13575,7 +14827,7 @@ me.GetRequestId() << endl;
 
 **前提条件**
 
-消息队列您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
+您已完成以下操作： 安装C++ SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送顺序消息**
 
@@ -13606,10 +14858,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -13624,15 +14875,23 @@ using namespace std; using namespace mq::http::sdk; int main() {
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
-    }
+```
+
+`}`
+
+```
     try {
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
         for (int i = 0; i < 8; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
 ```
 
@@ -13654,15 +14913,17 @@ using namespace std; using namespace mq::http::sdk; int main() {
 pubMsg.putProperty("a",std::tostring(i));
 ```
 
-消息队列
-
 ```
 pubsg.put opety(a,std::to_st g());
             producer->publishMessage(pubMsg, pmResp);
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
-        }
+```
+
+`}`
+
+```
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -13670,10 +14931,15 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
-    }
-    return 0;
-}
 ```
+
+`}`
+
+```
+    return 0;
+```
+
+`}`
 
 **订阅顺序消息**
 
@@ -13708,10 +14974,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -13729,31 +14994,37 @@ using namespace std; using namespace mq::http::sdk; int main() {
     string instanceId = "${INSTANCE_ID}";
 ```
 
-消息队列
-
 ```
     MQConsumerPtr consumer;
     if (instanceId == "") {
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
 ```
 
-`//` 长轮询顺序消费消息, 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
+`//` 长轮询顺序消费消息`,` 拉取到的消息可能是多个分区的（对于分区顺序消息），一个分区内的消息一定是顺序的。 `//` 对于分区顺序消息，只要一个分区内存在没有被确认消费的消息，那么该分区下次还会消费到相同的消息。 `//` 对于一个分区，只有所有消息确认消费成功才能消费下一批消息。 `//` 长轮询表示如果`Topic`没有消息，则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则服务端立即返回响应。
 
 ```
             consumer->consumeMessageOrderly(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
                     messages
-            );
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
 ```
 
@@ -13763,7 +15034,11 @@ using namespace std; using namespace mq::http::sdk; int main() {
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -13774,10 +15049,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
                     << " Properties: " << iter->getPropertiesAsString()
                     << " ShardingKey: " << iter->getShardingKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
 ```
 
-`//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             AckMessageResponse bdmResp;
@@ -13795,22 +15069,37 @@ s.begin();
                         iter != failedItems.end(); ++iter)
 ```
 
-消息队列
+`{`
 
 ```
-                {
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
+```
+
+`}`
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -13825,20 +15114,27 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
-    } while(true);
-}
 ```
 
-##### 收发定时消息和延时消息
+`}`
+
+```
+    } while(true);
+```
+
+`}`
+
+##### 7.3.8.4 收发定时消息和延时消息
+
+本文提供使用HTTP协议下的C++ SDK收发定时消息和延时消息的示例代码。
 
 **背景信息**
 
-延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。
+延时消息：Producer将消息发送到RocketMQRocketMQ服务端，但并不期望立马投递这条消息，而是延迟一定时间后才投递到Consumer进行消费，该消息即延时消息。 定时消息：Producer将消息发送到RocketMQ服务端，但并不期望立马投递这条消息，而是推迟到在当前时间点之后的某一个时间投递到Consumer进行消费，该消息即定时消息。 在HTTP协议下，定时消息和延时消息的代码配置相同，本质都是根据消息中的属性延迟固定时间后才投递给消费者。 更多信息，请参见定时和延时消息。
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。 消息队列
+您已完成以下操作： 安装C++ SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送定时消息或延时消息**
 
@@ -13868,10 +15164,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -13886,15 +15181,23 @@ using namespace std; using namespace mq::http::sdk; int main() {
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
-    }
+```
+
+`}`
+
+```
     try {
 ```
 
-`//` 循环发送4条消息。
+`//` 循环发送`4`条消息。
 
 ```
         for (int i = 0; i < 4; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
 ```
 
@@ -13925,11 +15228,10 @@ using namespace std; using namespace mq::http::sdk; int main() {
                 << ", msgId is:" << pmResp.getMessageId()
 ```
 
-消息队列 , g p pg g
+`,` `g` `p` `p``g` `g`
 
 ```
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
-        }
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -13937,10 +15239,15 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
-    }
-    return 0;
-}
 ```
+
+`}`
+
+```
+    return 0;
+```
+
+`}`
 
 **订阅定时消息或延时消息**
 
@@ -13975,10 +15282,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -13998,29 +15304,35 @@ using namespace std; using namespace mq::http::sdk; int main() {
     if (instanceId == "") {
 ```
 
-消息队列
-
 ```
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
             consumer->consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
                     messages
-            );
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
 ```
 
@@ -14030,7 +15342,11 @@ using namespace std; using namespace mq::http::sdk; int main() {
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -14041,10 +15357,9 @@ using namespace std; using namespace mq::http::sdk; int main() {
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
 ```
 
-`//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             AckMessageResponse bdmResp;
@@ -14060,24 +15375,37 @@ using namespace std; using namespace mq::http::sdk; int main() {
                 for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItem
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
-                    cout << "AckFailedItem: " << iter->errorCode
-                        << "  " << iter->receiptHandle << endl;
-                }
-            } else {
-                cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
 ```
 
-消息队列
+`{`
+
+```
+                    cout << "AckFailedItem: " << iter->errorCode
+                        << "  " << iter->receiptHandle << endl;
+```
+
+`}`
+
+```
+            } else {
+                cout << "Ack: " << messages.size() << " messages suc!" << endl;
+```
 
 ```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -14092,14 +15420,19 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
-    } while(true);
-}
 ```
 
-##### 收发事务消息
+`}`
 
-RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最
+```
+    } while(true);
+```
+
+`}`
+
+##### 7.3.8.5 收发事务消息
+
+RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务消息，能达到分布式事务的最终一致。本文提供使用HTTP协议下的C++ SDK收发事务消息的示例代码。
 
 **背景信息**
 
@@ -14107,7 +15440,7 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 
 **前提条件**
 
-您已完成以下操作： 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。 消息队列
+您已完成以下操作： 安装C++ SDK。更多信息，请参见准备环境。 创建资源。代码中涉及的资源信息，例如实例、Topic和Group ID等，需要在控制台上提前创建。更多信息，请参见创建资源。
 
 **发送事务消息**
 
@@ -14123,26 +15456,46 @@ RocketMQ提供类似XA或Open XA的分布式事务功能，通过RocketMQ事务�
 #include "pthread.h"
 #endif
 #include "mq_http_sdk/mq_client.h"
-using namespace std; using namespace mq::http::sdk; const int32_t pubMsgCount = 4; const int32_t halfCheckCount = 3; void processCommitRollError(AckMessageResponse& bdmResp, const std::string& messageId) {
+using namespace std; using namespace mq::http::sdk; const int32_t pubMsgCount = 4; const int32_t halfCheckCount = 3; void processCommitRollError(AckMessageResponse& bdmResp, const std::string& messageId)
+```
+
+`{`
+
+```
     if (bdmResp.isSuccess()) {
         cout << "Commit/Roll Transaction Suc: " << messageId << endl;
         return;
-    }
+```
+
+`}`
+
+```
     const std::vector<AckMessageFailedItem>& failedItems =
         bdmResp.getAckMessageFailedItem();
     for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItems.begin();
             iter != failedItems.end(); ++iter)
-    {
+```
+
+`{`
+
+```
         cout << "Commit/Roll Transaction ERROR: " << iter->errorCode
             << "  " << iter->receiptHandle << endl;
-    }
-}
+```
+
+`}` `}`
+
+```
 #ifdef WIN32
 unsigned __stdcall consumeHalfMessageThread(void *arg)
 #else
 void* consumeHalfMessageThread(void *arg)
 #endif
-{
+```
+
+`{`
+
+```
     MQTransProducerPtr transProducer = *(MQTransProducerPtr*)(arg);
     int count = 0;
     do {
@@ -14150,34 +15503,45 @@ void* consumeHalfMessageThread(void *arg)
         try {
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
             transProducer->consumeHalfMessage(
 ```
 
-`1, //` 一次最多消费1条（最多可设置为`16`条）。 `3, //` 长轮询时间3秒（最多可设置为`30`秒）。
+`1, //` 一次最多消费`1`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
                     halfMsgs
 ```
 
-消息队列 g
+`g` );
 
 ```
-                    );
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No half message to consume! RequestId: " + me.GetRequestId() <<
 endl;
                 continue;
-            }
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
-        }
+```
+
+`}`
+
+```
         if (halfMsgs.size() == 0) {
             continue;
-        }
+```
+
+`}`
+
+```
         cout << "Consume Half: " << halfMsgs.size() << " Messages!" << endl;
 ```
 
@@ -14187,7 +15551,11 @@ me.GetRequestId() << endl;
         std::vector<std::string> receiptHandles;
         for (std::vector<Message>::iterator iter = halfMsgs.begin();
                 iter != halfMsgs.end(); ++iter)
-        {
+```
+
+`{`
+
+```
             cout << "MessageId: " << iter->getMessageId()
                 << " PublishTime: " << iter->getPublishTime()
                 << " Tag: " << iter->getMessageTag()
@@ -14212,7 +15580,11 @@ me.GetRequestId() << endl;
                     count++;
                 } else {
                     cout << "Commit Later!!!" << endl;
-                }
+```
+
+`}`
+
+```
             } else if(propA == "3") {
                 cout << "Rollback msg.." << endl;
                 transProducer->rollback(handle, bdmResp);
@@ -14220,21 +15592,24 @@ me.GetRequestId() << endl;
             } else {
                 transProducer->commit(handle, bdmResp);
                 cout << "Unkown msg.." << endl;
-            }
 ```
 
-消息队列 `//` 如果`Commit`或`Rollback`时超过了`NextConsumeTime`的时间，则`Commit`或`Rollback`会失败。
+`//` 如果`Commit`或`Rollback`时超过了`NextConsumeTime`的时间，则`Commit`或`Rollback`会失败。
 
 ```
             processCommitRollError(bdmResp, iter->getMessageId());
-        }
     } while(count < halfCheckCount);
 #ifdef WIN32
     return 0;
 #else
     return NULL;
 #endif
-} int main() {
+```
+
+`}`
+
+```
+int main() {
     MQClient mqClient(
 ```
 
@@ -14254,10 +15629,9 @@ me.GetRequestId() << endl;
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -14278,10 +15652,9 @@ me.GetRequestId() << endl;
         transProducer = mqClient.getTransProducerRef(topic, groupId);
     } else {
         transProducer = mqClient.getTransProducerRef(instanceId, topic, groupId);
-    }
 ```
 
-`//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 启动一个线程来检查没有确认的事务消息。
+`}` `//` 客户端需要有一个线程或者进程来消费没有确认的事务消息。 `//` 启动一个线程来检查没有确认的事务消息。
 
 ```
 #ifdef WIN32
@@ -14297,11 +15670,13 @@ me.GetRequestId() << endl;
     try {
 ```
 
-消息队列
-
 ```
         for (int i = 0; i < pubMsgCount; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
             TopicMessage pubMsg("Hello, mq, trans_msg!");
             pubMsg.putProperty("a",std::to_string(i));
@@ -14321,14 +15696,21 @@ me.GetRequestId() << endl;
                 AckMessageResponse bdmResp;
                 transProducer->commit(pmResp.getReceiptHandle(), bdmResp);
                 processCommitRollError(bdmResp, pmResp.getMessageId());
-            }
-        }
+```
+
+`}` `}`
+
+```
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
-    }
+```
+
+`}`
+
+```
 #ifdef WIN32
     WaitForSingleObject(thread, INFINITE);
     CloseHandle(thread);
@@ -14336,8 +15718,9 @@ me.GetRequestId() << endl;
     pthread_join(thread, NULL);
 #endif
     return 0;
-}
 ```
+
+`}`
 
 **订阅事务消息**
 
@@ -14355,13 +15738,13 @@ me.GetRequestId() << endl;
 using namespace std;
 ```
 
-i
+`i`
 
 ```
 htt
 ```
 
-`dk` 消息队列
+`dk`
 
 ```
 using namespace mq::http::sdk; int main() {
@@ -14384,10 +15767,9 @@ using namespace mq::http::sdk; int main() {
 
 ```
             "${SECRET_KEY}"
-            );
 ```
 
-`//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
+); `//` 消息所属的`Topic`，在`RocketMQ`控制台创建。
 
 ```
     string topic = "${TOPIC}";
@@ -14408,23 +15790,31 @@ using namespace mq::http::sdk; int main() {
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
 ```
 
-`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息,则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
+`//` 长轮询消费消息。 `//` 长轮询表示如果`Topic`没有消息`,`则请求会在服务端挂起`3s`，`3s`内如果有消息可以消费则立即返回客户端。
 
 ```
             consumer->consumeMessage(
 ```
 
-`3, //` 一次最多消费3条（最多可设置为`16`条）。 `3, //` 长轮询时间3秒（最多可设置为`30`秒）。
+`3, //` 一次最多消费`3`条（最多可设置为`16`条）。 `3, //` 长轮询时间`3`秒（最多可设置为`30`秒）。
 
 ```
                     messages
-            );
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
 ```
 
@@ -14434,7 +15824,11 @@ using namespace mq::http::sdk; int main() {
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -14444,17 +15838,14 @@ using namespace mq::http::sdk; int main() {
 <<"ConsumedTimes:"<<iter->getConsumedTimes()
 ```
 
-消息队列
-
 ```
                     <<  ConsumedTimes:  << iter>getConsumedTimes()
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
 ```
 
-`//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
+`}` `//` 确认消息消费成功。 `// Message.NextConsumeTime`前若不确认消息消费成功，则消息会被重复消费。 `//` 消息句柄有时间戳，同一条消息每次消费拿到的都不一样。
 
 ```
             AckMessageResponse bdmResp;
@@ -14470,19 +15861,39 @@ using namespace mq::http::sdk; int main() {
                 for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItem
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
+```
+
+`{`
+
+```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
+```
+
+`}`
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -14497,16 +15908,21 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
-    } while(true);
-}
 ```
 
-消息队列
+`}`
 
-## 最佳实践
+```
+    } while(true);
+```
 
-### 集群消费和广播消费
+`}`
+
+## 8 最佳实践
+
+### 8.1 集群消费和广播消费
+
+本文主要介绍RocketMQ集群消费和广播消费的基本概念，适用场景以及注意事项。
 
 **基本概念**
 
@@ -14530,23 +15946,19 @@ RocketMQ是基于发布订阅模型的消息系统。在RocketMQ消息系统中�
 
 **广播消费模式：**
 
-图 2. 广播消费模式消息队列适用场景及注意事项： 广播消费模式下不支持顺序消息。 每条消息都需要被相同逻辑的多台机器处理。 消费进度在客户端维护，出现重复的概率稍大于集群模式。 广播模式下，RocketMQ保证每条消息至少被每台客户端消费一次，但是并不会对消费失败的消息进行失败重投，因此业务方需要关注消费失败的情况。 广播模式下，客户端每一次重启都会从最新消息消费。客户端在被停止期间发送至服务端的消息将会被自动跳过，请谨慎选择。 广播模式下，每条消息都会被大量的客户端重复处理，因此推荐尽可能使用集群模式。 目前仅Java客户端支持广播模式。 广播模式下服务端不维护消费进度，所以RocketMQ控制台不支持消息堆积查询、消息堆积报警和订阅关系查询功能。
+图 2. 广播消费模式适用场景及注意事项： 广播消费模式下不支持顺序消息。 广播消费模式下不支持重置消费位点。 每条消息都需要被相同逻辑的多台机器处理。 消费进度在客户端维护，出现重复的概率稍大于集群模式。 广播模式下，RocketMQ保证每条消息至少被每台客户端消费一次，但是并不会对消费失败的消息进行失败重投，因此业务方需要关注消费失败的情况。 广播模式下，客户端每一次重启都会从最新消息消费。客户端在被停止期间发送至服务端的消息将会被自动跳过，请谨慎选择。 广播模式下，每条消息都会被大量的客户端重复处理，因此推荐尽可能使用集群模式。 目前仅Java客户端支持广播模式。 广播模式下服务端不维护消费进度，所以RocketMQ控制台不支持消息堆积查询、消息堆积报警和订阅关系查询功能。
 
 **使用集群模式模拟广播模式**
 
 如果业务需要使用广播模式，也可以创建多个Group ID，用于订阅同一个Topic。 图 3. 集群方式模拟广播模式使用场景及注意事项： 每条消息都需要被多台机器处理，每台机器的逻辑可以相同也可以不一样。 消费进度在服务端维护，可靠性高于广播模式。 对于一个Group ID来说，可以部署一个消费端实例，也可以部署多个消费端实例。当部署多个消费端实例时，实例之间又组成了集群模式（共同分担消费消息）。假设Group ID 1部署了三个消费者实例 C1、C2、C3，那么这三个实例将共同分担服务器发送给Group ID1的消息。同时，实例之间订阅关系必须保持一致。
 
-### 消息过滤
+### 8.2 消息过滤
 
-本文介绍RocketMQ消费者如何根据Tag在RocketMQ服务端完成消息过滤。 消息队列 Tag，即消息标签、消息类型，用来区分某个RocketMQ的Topic下的消息分类。RocketMQ允许消费者按照Tag对消息进行过滤，确保消费者最终只消费到其关心的消息类型。 以下图所示电商交易场景为例，从客户下单到收到商品这一过程会生产一系列消息，例如订单创建消息 （order）、支付消息（pay）、物流消息（logistics）。这些消息会发送到Topic为Trade_Topic的队列中，被各个不同的系统所接收，例如支付系统、物流系统、交易成功率分析系统、实时计算系统等。其中， 物流系统只需接收物流类型的消息（logistics），而实时计算系统需要接收所有和交易相关（order、 pay、logistics）的消息。 图 1. 消息过滤
+本文介绍RocketMQ消费者如何根据Tag在RocketMQ服务端完成消息过滤。 Tag，即消息标签、消息类型，用来区分某个RocketMQ的Topic下的消息分类。RocketMQ允许消费者按照Tag对消息进行过滤，确保消费者最终只消费到其关心的消息类型。 以下图所示电商交易场景为例，从客户下单到收到商品这一过程会生产一系列消息，例如订单创建消息 （order）、支付消息（pay）、物流消息（logistics）。这些消息会发送到Topic为Trade_Topic的队列中，被各个不同的系统所接收，例如支付系统、物流系统、交易成功率分析系统、实时计算系统等。其中， 物流系统只需接收物流类型的消息（logistics），而实时计算系统需要接收所有和交易相关（order、 pay、logistics）的消息。 图 1. 消息过滤
 
-**说明**
-
-针对消息归类，您可以选择创建多个Topic，或者在同一个Topic下创建多个Tag。但通常情况下，不同的Topic之间的消息没有必然的联系，而Tag则用来区分同一个Topic下相互关联的消息，例如全集和子集的关系、流程先后的关系。
+> **说明：** 针对消息归类，您可以选择创建多个Topic，或者在同一个Topic下创建多个Tag。但通常情况下，不同的Topic之间的消息没有必然的联系，而Tag则用来区分同一个Topic下相互关联的消息，例如全集和子集的关系、流程先后的关系。
 
 **参考示例**
-
-### 发送消息
 
 发送消息时，每条消息必须指明Tag。
 
@@ -14554,16 +15966,18 @@ RocketMQ是基于发布订阅模型的消息系统。在RocketMQ消息系统中�
 Message msg = new Message("MQ_TOPIC","TagA","Hello MQ".getBytes());
 ```
 
-### 订阅消息
-
-消息队列消费方式1 消费者如需订阅某Topic下所有类型的消息，Tag用 * 符号表示。
+消费方式1 消费者如需订阅某Topic下所有类型的消息，Tag用 * 符号表示。
 
 ```java
 consumer.subscribe("MQ_TOPIC", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14574,7 +15988,11 @@ consumer.subscribe("MQ_TOPIC", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14585,7 +16003,11 @@ consumer.subscribe("MQ_TOPIC", "TagA||TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14596,33 +16018,45 @@ consumer.subscribe("MQ_TOPIC", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```java
 }); consumer.subscribe("MQ_TOPIC", "TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
-### 订阅关系一致
+### 8.3 订阅关系一致
 
-RocketMQ里的一个Group ID代表一个Consumer实例群组。对于大多数分布式应用来说，一个Group ID 下通常会挂载多个Consumer实例。订阅关系一致指的是同一个Group ID下所有Consumer实例的处理逻消息队列由于RocketMQ的订阅关系主要由Topic+Tag共同组成，因此，保持订阅关系一致意味着同一个Group ID 下所有的实例需在以下两方面均保持一致： 订阅的Topic必须一致； 订阅的Topic中的Tag必须一致。
+RocketMQ里的一个Group ID代表一个Consumer实例群组。对于大多数分布式应用来说，一个Group ID 下通常会挂载多个Consumer实例。订阅关系一致指的是同一个Group ID下所有Consumer实例的处理逻辑必须完全一致。一旦订阅关系不一致，消息消费的逻辑就会混乱，甚至导致消息丢失。 由于RocketMQ的订阅关系主要由Topic+Tag共同组成，因此，保持订阅关系一致意味着同一个Group ID 下所有的实例需在以下两方面均保持一致： 订阅的Topic必须一致； 订阅的Topic中的Tag必须一致。
 
 **订阅关系图片示例**
 
-正确订阅关系示例在下图中，多个Group ID订阅了多个Topic，并且每个Group ID里的多个消费者实例的订阅关系保持了一致。 错误订阅关系图片示例在下图中，单个Group ID订阅了多个Topic，但是该Group ID里的多个消费者实例的订阅关系并没有保持一致。
+正确订阅关系示例在下图中，多个Group ID订阅了多个Topic，并且每个Group ID里的多个消费者实例的订阅关系保持了一致。 图 1. 订阅关系一致错误订阅关系图片示例在下图中，单个Group ID订阅了多个Topic，但是该Group ID里的多个消费者实例的订阅关系并没有保持一致。 图 2. 订阅关系不一致
 
 **订阅关系代码示例**
 
-错误订阅关系代码示例例一以下例子中，同一个Group ID下的两个实例订阅的Topic不一致。 消息队列 Consumer实例1-1：
+错误订阅关系代码示例例一以下例子中，同一个Group ID下的两个实例订阅的Topic不一致。 Consumer实例1-1：
 
 ```java
 Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_ID, "GID_jodie_test_1"); Consumer consumer = ONSFactory.createConsumer(properties); consumer.subscribe("jodie_test_A", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14633,7 +16067,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14644,7 +16082,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14655,23 +16097,35 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
-例三此例中，错误的原因有两个： 同一个Group ID下订阅Topic个数不一致。 消息队列同一个Group ID下订阅Topic的Tag不一致。 Consumer实例3-1：
+例三此例中，错误的原因有两个： 同一个Group ID下订阅Topic个数不一致。 同一个Group ID下订阅Topic的Tag不一致。 Consumer实例3-1：
 
 ```java
 Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_ID, "GID_jodie_test_3"); Consumer consumer = ONSFactory.createConsumer(properties); consumer.subscribe("jodie_test_A", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```java
 }); consumer.subscribe("jodie_test_B", "TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -14682,11 +16136,15 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
+```
+
+`}`
+
+```
 });
 ```
 
-### 消费幂等
+### 8.4 消费幂等
 
 RocketMQ消费者在接收到消息以后，有必要根据业务上的唯一Key对消息做幂等处理的必要性。
 
@@ -14696,7 +16154,7 @@ RocketMQ消费者在接收到消息以后，有必要根据业务上的唯一Key
 
 **处理建议**
 
-消息队列因为Message ID有可能出现冲突（重复）的情况，所以真正安全的幂等处理，不建议以Message ID作为处理依据；最好的方式是以业务唯一标识作为幂等处理的关键依据，而业务的唯一标识可以通过Key设置到消息里面：
+因为Message ID有可能出现冲突（重复）的情况，所以真正安全的幂等处理，不建议以Message ID作为处理依据；最好的方式是以业务唯一标识作为幂等处理的关键依据，而业务的唯一标识可以通过Key设置到消息里面：
 
 ```
 Message message = new Message(); message.setKey("ORDERID_100"); SendResult sendResult = producer.send(message);
@@ -14710,20 +16168,19 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
         String key = message.getKey()
 ```
 
-`//` 根据业务唯一标识的 `key` 做幂等处理
+`//` 根据业务唯一标识的 `key` 做幂等处理 `}`
 
 ```
-    }
 });
 ```
 
-### 异地多活
+### 8.5 异地多活
 
 依托于阿里云高速通道专线和MSHA（Multi-Site High Availability）异地多活平台，RocketMQ提供多活容灾功能，通过跨实例间数据的双向同步和业务切流能力，实现业务恢复和故障恢复解耦，保障故障场景下的业务连续性。本文介绍异地多活的概念、应用场景、功能优势和配置方法。
 
 **什么是异地多活**
 
-异地多活MSHA（Multi-Site High Availability），是在阿里巴巴电商业务环境演进出来的多活容灾架构解决方案，可以将业务恢复和故障恢复解耦。基于灵活的流量规则调度、跨域跨云管控、数据保护等能力，实现故障场景下的业务快速切换及恢复。 RocketMQ依赖于阿里云高速通道专线MSHA实现同地域及跨地域实例间的消息数据双向同步。和传统容灾不同的是，异地多活方案中，分布在不同中心单元的RocketMQ可以分别同时对外提供服务，不仅解决了容灾本身问题，还提升了业务连续性，并且实现了资源的异地扩展。 RocketMQ的异地多活具体实现如下： 消息队列杭州单元和上海单元分别部署了一套完整的业务系统。 MSHA接入层按照数据分流规则将业务数据路由到两个业务单元，杭州单元和上海单元的应用系统和 RocketMQ Broker集群各自处理对应地域的业务。 两个单元的Broker集群配置了异地多活功能，Broker集群A和Broker集群B间的数据实现了双向同步， 包括Topic数据、Group数据及消费位点等信息。正常情况下，杭州单元和上海单元只负责各自单元的业务，并且同时将各自单元的消息数据同步到对方单元的集群中进行容灾备份。 假设杭州单元发生灾害，整个业务系统出现故障，此时通过MSHA切流操作将整个杭州的业务切到上海单元，因为配置了异地多活，上海单元的Broker集群存储了杭州单元的业务数据，可以继续处理未完成的消息数据。在保证业务不中断的前提下排查故障并修复，做到先恢复业务再恢复故障。 当杭州单元故障恢复后，通过回切流量，将杭州单元的业务重新切回到杭州单元的系统处理，整个过程用户不感知故障，不影响用户业务体验。
+异地多活MSHA（Multi-Site High Availability），是在阿里巴巴电商业务环境演进出来的多活容灾架构解决方案，可以将业务恢复和故障恢复解耦。基于灵活的流量规则调度、跨域跨云管控、数据保护等能力，实现故障场景下的业务快速切换及恢复。 RocketMQ依赖于阿里云高速通道专线MSHA实现同地域及跨地域实例间的消息数据双向同步。和传统容灾不同的是，异地多活方案中，分布在不同中心单元的RocketMQ可以分别同时对外提供服务，不仅解决了容灾本身问题，还提升了业务连续性，并且实现了资源的异地扩展。 RocketMQ的异地多活具体实现如下： 杭州单元和上海单元分别部署了一套完整的业务系统。 MSHA接入层按照数据分流规则将业务数据路由到两个业务单元，杭州单元和上海单元的应用系统和 RocketMQ Broker集群各自处理对应地域的业务。 两个单元的Broker集群配置了异地多活功能，Broker集群A和Broker集群B间的数据实现了双向同步， 包括Topic数据、Group数据及消费位点等信息。正常情况下，杭州单元和上海单元只负责各自单元的业务，并且同时将各自单元的消息数据同步到对方单元的集群中进行容灾备份。 假设杭州单元发生灾害，整个业务系统出现故障，此时通过MSHA切流操作将整个杭州的业务切到上海单元，因为配置了异地多活，上海单元的Broker集群存储了杭州单元的业务数据，可以继续处理未完成的消息数据。在保证业务不中断的前提下排查故障并修复，做到先恢复业务再恢复故障。 当杭州单元故障恢复后，通过回切流量，将杭州单元的业务重新切回到杭州单元的系统处理，整个过程用户不感知故障，不影响用户业务体验。
 
 **应用场景**
 
@@ -14737,7 +16194,7 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
 
 **故障快速恢复**
 
-消息队列异地多活功能够有效保障业务连续性。当其中一个生产中心发生故障，区别于传统的解决思路，不是去排查、处理和修复故障，而是立即使用切流将业务切换到其他生产中心，保证业务的连续性，将业务恢复和故障恢复解耦。
+异地多活功能够有效保障业务连续性。当其中一个生产中心发生故障，区别于传统的解决思路，不是去排查、处理和修复故障，而是立即使用切流将业务切换到其他生产中心，保证业务的连续性，将业务恢复和故障恢复解耦。
 
 **异地容量扩容**
 
@@ -14745,10 +16202,10 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
 
 **配置方法**
 
-配置RocketMQ异地多活的具体操作，请参见**《异地多活用户指南》**手册的**《多活配置**>**同城多活配置**>配
+配置RocketMQ异地多活的具体操作，请参见**《异地多活用户指南》**手册的**《多活配置****>****同城多活配置****>****配**
 **置消息层》**章节。
 
-### 同城容灾
+### 8.6 同城容灾
 
 RocketMQ现已支持同城容灾场景下的多芯跨可用区容灾和非对等容灾能力，本文介绍上述两种能力的需求背景、应用场景和功能优势。
 
@@ -14768,8 +16225,6 @@ RocketMQ现已支持同城容灾场景下的多芯跨可用区容灾和非对等
 
 **场景2：容灾集群 + 备可用区单机房集群**
 
-消息队列
-
 **场景3：容灾集群 + 主可用区单机房集群 + 备可用区单机房集群**
 
 **功能优势**
@@ -14786,13 +16241,13 @@ RocketMQ现已支持同城容灾场景下的多芯跨可用区容灾和非对等
 
 通过构建多层次资源隔离机制，多集群架构在保障系统稳定性方面展现出显著优势。单一集群发生故障时不影响其他集群的业务，实现故障域隔离。
 
-### 消息路由
+### 8.7 消息路由
 
 RocketMQ提供的消息路由功能可用于跨集群间的消息数据同步，实现集群间消息的一致性和完整性。本文介绍消息路由的概念、应用场景、功能优势和配置方法。
 
 **什么消息路由**
 
-RocketMQ的消息路由功能常用于跨集群间的消息同步，通过路由规则动态规划消息的同步路径，使消息按照过滤条件从源节点同步到目标节点。实现跨集群、远距离、毫秒级消息实时同步，确保集群之间的数据一致性与完整性。 RocketMQ消息路由的具体实现如下，以Topic维度进行单向同步，将源实例下指定的源Topic的消息同步至目标实例下指定的目标Topic中。 消息队列
+RocketMQ的消息路由功能常用于跨集群间的消息同步，通过路由规则动态规划消息的同步路径，使消息按照过滤条件从源节点同步到目标节点。实现跨集群、远距离、毫秒级消息实时同步，确保集群之间的数据一致性与完整性。 RocketMQ消息路由的具体实现如下，以Topic维度进行单向同步，将源实例下指定的源Topic的消息同步至目标实例下指定的目标Topic中。
 
 **应用场景**
 
@@ -14804,7 +16259,7 @@ RocketMQ的消息路由功能常用于跨集群间的消息同步，通过路由
 
 **容灾备份**
 
-消息队列对于交易核心系统，商品中心琳琅满目的商品详情与价格随时有可能发生变化，需要实时同步到各个业务系统，为保证系统更高的可用性，可采用多地域（Region）的容灾备份方案，即便某个地域完全不可用，例如光纤被铲断等极端情况，仍可保持服务的连续性。
+对于交易核心系统，商品中心琳琅满目的商品详情与价格随时有可能发生变化，需要实时同步到各个业务系统，为保证系统更高的可用性，可采用多地域（Region）的容灾备份方案，即便某个地域完全不可用，例如光纤被铲断等极端情况，仍可保持服务的连续性。
 
 **功能优势**
 
@@ -14834,13 +16289,13 @@ RocketMQ消息路由功能的配置流程如下，详细信息，请参见控制
 
 **步骤二：创建路由任务**
 
-指定消息源和消息目标，设置过滤条件和同步位点等信息。 消息队列
+指定消息源和消息目标，设置过滤条件和同步位点等信息。
 
-## 产品使用问题
+## 9 产品使用问题
 
-### 常见问题
+### 9.1 常见问题
 
-#### 快速入门
+#### 9.1.1 快速入门
 
 本文简要概括了新手用户使用RocketMQ过程中可能遇到的问题。
 1. 新创建的Group ID从哪里开始消费？
@@ -14870,17 +16325,17 @@ RocketMQ消息路由功能的配置流程如下，详细信息，请参见控制
 | 15 | 1小时 |
 | 16 | 2小时 |
 
-可以通过调用message.getReconsumeTimes()方法来获取消息的重试次数。 消息队列
+可以通过调用message.getReconsumeTimes()方法来获取消息的重试次数。
 
 **广播消费方式**
 
 广播消费方式仍然能保证一条消息至少被消费一次，但消费失败后不做重试操作。
 3. 消息发送了，但是没有收到怎么办？
-RocketMQ提供了多种消息查询方式： 使用Topic按时间范围进行查询，可以查询到一段时间内某Topic收到的所有消息。 使用Topic和Message ID对消息进行精准查询。 使用Topic和Message Key较为精准地查询具有相同Message Key的一类消息。 上述方式可以查询到消息的具体内容以及消费情况，如果需要追踪一条消息从生产者发出到被消费者消费的整个链路中各个相关节点的时间地点，可以使用RocketMQ最新的消息轨迹查询功能，具体操作方式请
+RocketMQ提供了多种消息查询方式： 使用Topic按时间范围进行查询，可以查询到一段时间内某Topic收到的所有消息。 使用Topic和Message ID对消息进行精准查询。 使用Topic和Message Key较为精准地查询具有相同Message Key的一类消息。 上述方式可以查询到消息的具体内容以及消费情况，如果需要追踪一条消息从生产者发出到被消费者消费的整个链路中各个相关节点的时间地点，可以使用RocketMQ最新的消息轨迹查询功能，具体操作方式请参见查询消息轨迹。
 4. RocketMQ是否能保证消息不重复？
 绝大多数情况下，消息是不重复的。作为一款分布式消息中间件，在网络抖动、应用处理超时等异常情况下，无法保证消息不重复，但是能保证消息不丢失。
 
-#### 配置相关
+#### 9.1.2 配置相关
 
 RocketMQ配置相关的常见问题如下。
 1. RocketMQ消息在服务器保存多长时间？
@@ -14899,8 +16354,7 @@ RocketMQ配置相关的常见问题如下。
         /**
 ```
 
-* 设置消费端线程数固定为 `20`
-`*/`
+`*` 设置消费端线程数固定为 `20` `*/`
 
 ```java
         properties.put(PropertyKeyConst.ConsumeThreadNums,20);
@@ -14909,17 +16363,21 @@ RocketMQ配置相关的常见问题如下。
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
 ```
 
+`}`
 4. 由于.NET 客户端的配置问题，导致dll加载失败或者其他运行错误时如何处理？
-具体操作方式请参见.NET SDK压缩包中的文档：SDK_GUIDE.pdf，确认工程配置与文档说明一致。 消息队列
+具体操作方式请参见.NET SDK压缩包中的文档：SDK_GUIDE.pdf，确认工程配置与文档说明一致。
 
-#### 消息轨迹
+#### 9.1.3 消息轨迹
 
 RocketMQ消息轨迹常见问题如下。
 1. 为什么查询不到轨迹数据？
@@ -14931,11 +16389,11 @@ RocketMQ消息轨迹常见问题如下。
 4. 之前的查询任务怎么看不到了？
 为了防止历史查询任务太多，影响展示效果，RocketMQ会对您的历史查询任务做定期清理，默认只保留 7天以内的查询任务，如果出现历史任务看不到，请重新查询即可。
 
-#### 告警处理
+#### 9.1.4 告警处理
 
 RocketMQ告警处理暂不可用。 由于专有云环境是孤岛环境，无法接通短信网关等公网环境接口，所以您在控制台看到监控报警模块暂不可用。
 
-#### 顺序消息
+#### 9.1.5 顺序消息
 
 RocketMQ顺序消息相关的常见问题如下。
 1. **顺序消息是否支持集群消费和广播消费？**
@@ -14945,12 +16403,11 @@ RocketMQ顺序消息相关的常见问题如下。
 3. **顺序消息的使用范围是什么？**
 顺序消息是指在同一个Topic内保证顺序。
 4. **顺序消息支持哪种消息发送方式？**
+顺序消息只支持可靠同步发送方式。
 
-### 异常类别
+### 9.2 异常类别
 
-消息队列
-
-#### 使用异常
+#### 9.2.1 使用异常
 
 RocketMQ使用过程中可能遇到的异常问题如下。
 1. 启动Producer、Consumer失败，Group ID重复。
@@ -14958,13 +16415,13 @@ RocketMQ使用过程中可能遇到的异常问题如下。
 2. 广播模式下，消费者启动加载JSON文件异常。
 可能产生的原因： Fastjson版本太低导致广播消费者加载本地的offsets.json文件异常，导致启动失败。 建议解决方案： 将Fastjson的版本升级到ons-client所依赖的版本，保证本地的offsets.json能够被正常加载。默认情况下offsets.json在/home/{user}/.rocketmq_offsets/下。
 3. 主动订阅消息，获取队列列表失败。
-可能产生的原因： 可能未在控制台上创建该Topic，导致消费方启动时获取Topic的队列信息失败。 建议解决方案： 按如下步骤操作： ii. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页面。 iv. 单击**Group** **管理**页签，而后单击**创建** **Group ID**，按提示创建Group ID。 v. 重启应用。
+可能产生的原因： 可能未在控制台上创建该Topic，导致消费方启动时获取Topic的队列信息失败。 建议解决方案： 按如下步骤操作： i. 登录RocketMQ控制台，在左侧导航栏单击**实例列表**。 ii. 在**实例列表**页面，根据实例名称找到目标实例，单击目标实例ID或右侧**操作**列的**详情**，进入**实例详情**页面。 iii. 选择**Topic** **管理** **>** **创建** **Topic**，按提示创建Topic。 iv. 单击**Group** **管理**页签，而后单击**创建** **Group ID**，按提示创建Group ID。 v. 重启应用。
 4. 发消息失败。
 发送消息尝试多次失败。 可能产生的原因： i. RocketMQ Broker向Producer返回了错误码，具体错误形式参见这个异常对应的嵌套异常； ii. RocketMQ Broker宕机后，Producer还未发现最新的Broker列表，会短暂报此异常； iii. Producer发送消息超时，一般由服务器压力过大或者网络不稳定导致。 建议解决方案： 按如下步骤操作： i. 报此异常是暂时的，可能是RocketMQ Broker正在重启维护或者是服务器压力过大产生的短暂超时， 请稍等一下再尝试。 ii. 如果一直尝试未果，请联系技术支持。
 5. 未收录异常解决办法。
-消息队列问题描述： 暂未收录任何异常。 建议解决方案： 请联系技术支持。
+问题描述： 暂未收录任何异常。 建议解决方案： 请联系技术支持。
 6. 消息显示Consumed，但消费端未感知到。
-消息状态显示Consumed，但是消费端业务日志显示没有收到消息，这种问题一般是下面三个原因导致的。 业务代码在接收到消息后，不立即打印消息。 收到消息后，如果直接进入业务逻辑，一旦代码遗漏某个逻辑分支，就会导致消息信息没有被留在业务日志里，造成没有收到消息的假象。 建议您收到消息后，立刻打印消息信息留存messageId、timestamp、reconsumeTime等。 消费端部署了多个消费实例。 尤其是在调试阶段，消费端不可避免会多次重启，一旦多个消费进程同时存在（进程未退出），那么相当于进入集群的消费模式，多个消费实例会共同分担消费消息。以为没有收到的消息，其实是被另一个消费端接收了。 到RocketMQ控制台，进入**Group** **管理** > **消费者状态** > **连接信息**，会显示消费端的实例部署情况 （有几个消费实例，各自的连接IP等等），然后可以自行排查。 消息消费过程出现未被Catch的异常，导致消息被重新投递。
+消息状态显示Consumed，但是消费端业务日志显示没有收到消息，这种问题一般是下面三个原因导致的。 业务代码在接收到消息后，不立即打印消息。 收到消息后，如果直接进入业务逻辑，一旦代码遗漏某个逻辑分支，就会导致消息信息没有被留在业务日志里，造成没有收到消息的假象。 建议您收到消息后，立刻打印消息信息留存messageId、timestamp、reconsumeTime等。 消费端部署了多个消费实例。 尤其是在调试阶段，消费端不可避免会多次重启，一旦多个消费进程同时存在（进程未退出），那么相当于进入集群的消费模式，多个消费实例会共同分担消费消息。以为没有收到的消息，其实是被另一个消费端接收了。 到RocketMQ控制台，进入**Group** **管理** **>** **消费者状态** **>** **连接信息**，会显示消费端的实例部署情况 （有几个消费实例，各自的连接IP等等），然后可以自行排查。 消息消费过程出现未被Catch的异常，导致消息被重新投递。
 
 ```java
 public class MessageListenerImpl implements MessageListener {
@@ -14983,18 +16440,17 @@ public class MessageListenerImpl implements MessageListener {
 ```
         log.info("Receive Message, messageId:", message.getMsgID());
         return Action.CommitMessage;
-    }
-}
 ```
 
-如果问题还未能解决，请提供本地SDK日志，联系售后技术支持。
+`}` `}` 如果问题还未能解决，请提供本地SDK日志，联系售后技术支持。
 
-#### 资源不存在
+#### 9.2.2 资源不存在
 
+资源不存在相关的异常问题如下。
 1. Group ID不存在
-可能产生的原因： 未在控制台上创建该Group ID，导致使用该Group ID与RocketMQ Broker创建连接的时候，服务器校验不通过。 建议解决方案： 按如下步骤操作： 如果该Group ID已存在，则直接执行下一步。 如果该Group ID不存在，请先创建该Group ID，然后执行下一步。 ii. 重启应用。
+可能产生的原因： 未在控制台上创建该Group ID，导致使用该Group ID与RocketMQ Broker创建连接的时候，服务器校验不通过。 建议解决方案： 按如下步骤操作： i. 登录RocketMQ控制台，进入**Group** **管理**。 如果该Group ID已存在，则直接执行下一步。 如果该Group ID不存在，请先创建该Group ID，然后执行下一步。 ii. 重启应用。
 2. 主机名不存在
-消息队列可能产生的原因： 可能是无法正确获取主机名或者主机IP地址导致，请尝试使用此命令来证实：**hostname** 如果无法正常输出，就说明确实是此原因；如果可以正常输出，可能是其他原因，请联系技术支持。 建议解决方案： 按如下步骤操作： i. 在报错机器上执行查看主机名命令。
+可能产生的原因： 可能是无法正确获取主机名或者主机IP地址导致，请尝试使用此命令来证实：**hostname** 如果无法正常输出，就说明确实是此原因；如果可以正常输出，可能是其他原因，请联系技术支持。 建议解决方案： 按如下步骤操作： i. 在报错机器上执行查看主机名命令。
 
 ```
 [root@iZ231wxgt6mZ ~]# hostname iZ231wxgt6mZ
@@ -15008,8 +16464,9 @@ public class MessageListenerImpl implements MessageListener {
 
 如果无法正常ping通主机名，则需要将本机地址绑定到/etc/hosts文件中。默认ECS机器都会有一个本地地址和主机名的绑定关系，切勿手动地将其去除。 iii. 确认系统配置。 检查/etc/sysconfig/network中的记录的hostname是否和/etc/hosts中绑定的主机名一致，如果不一致请修改。如果需要修改/etc/sysconfig/network中的内容，修改后需要重启机器才能生效。建议不要随意修改系统文件里的配置，可能会引发一些其他异常问题。 以上三个步骤确认完毕后，客户端启动就不在会报UnknownHostException的异常了。
 
-#### 状态不一致
+#### 9.2.3 状态不一致
 
+状态不一致相关的异常问题如下。
 1. 消息不合法
 
 **可能产生的原因：**
@@ -15031,8 +16488,6 @@ public class MessageListenerImpl implements MessageListener {
 | consumeThreadMax Out of range [1, 1000] | 消费端线程数设置不合理 |
 | messageListener is null | 未设置messageListener |
 
-消息队列
-
 | consumerGroup is null | 未设置Group ID |
 |---|---|
 | msg delay time more than 40 day | 定时消息延时不能超过40天 |
@@ -15050,11 +16505,9 @@ i. 创建Consumer、Producer之后未显示调用start()方法来启动客户端
 
 按如下步骤操作： i. 确保创建Group ID之后调用start()，保证客户端处于启动状态。 ii. 查看ons.log判断在客户端在启动过程中是否有异常。
 
-#### 4. 订阅关系不一致
-
 **问题描述：**
 
-在不同的JVM中启动了多个Consumer，并且给相同的Group ID配置了不同的Topic，或者是相同的
+在不同的JVM中启动了多个Consumer，并且给相同的Group ID配置了不同的Topic，或者是相同的 Topic但Tag不同，最终导致订阅关系不一致，消息不符合预期。
 
 **错误代码示例：**
 
@@ -15070,14 +16523,16 @@ i. 创建Consumer、Producer之后未显示调用start()方法来启动客户端
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
 
 **JVM-2上的代码：**
-
-消息队列
 
 ```java
      Properties properties = new Properties();
@@ -15087,7 +16542,11 @@ i. 创建Consumer、Producer之后未显示调用start()方法来启动客户端
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -15104,7 +16563,11 @@ i. 创建Consumer、Producer之后未显示调用start()方法来启动客户端
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -15119,7 +16582,11 @@ i. 创建Consumer、Producer之后未显示调用start()方法来启动客户端
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -15128,19 +16595,21 @@ i. 创建Consumer、Producer之后未显示调用start()方法来启动客户端
 
 请确保在不同JVM中使用相同的Group ID启动多个Consumer时，配置的Topic和Tag是一致的。
 
-### 故障处理
+### 9.3 故障处理
 
-#### 非预期的客户端连接
+#### 9.3.1 非预期的客户端连接
+
+本文介绍非预期的客户端连接的问题现象、分析方法、恢复方法及验证方法。
 
 **现象**
 
-【现象1】：用户侧反馈部分消息发送后未收到，同时结合RocketMQ控制台操作：**消息轨迹** > **创建查询**
-**任务** > 按**Message ID****查询**，发现部分消息已发送至Broker，但未投递给下游消费者。
-【现象2】：用户侧反馈RocketMQ控制台：进入**Group** **管理** > **消费者状态** > **连接信息**查看，出现不在预期范围内的客户端IP，同时存在部分消息堆积只在非预期范围内的客户端上。 消息队列
+【现象1】：用户侧反馈部分消息发送后未收到，同时结合RocketMQ控制台操作：**消息轨迹** **>** **创建查询**
+**任务** **>** **按****Message ID****查询**，发现部分消息已发送至Broker，但未投递给下游消费者。
+【现象2】：用户侧反馈RocketMQ控制台：进入**Group** **管理** **>** **消费者状态** **>** **连接信息**查看，出现不在预期范围内的客户端IP，同时存在部分消息堆积只在非预期范围内的客户端上。
 
 **分析**
 
-**分析方法**：在RocketMQ控制台选择**Group** **管理** > **消费者状态** > **连接信息**，页面中能展示目前GID下面
+**分析方法**：在RocketMQ控制台选择**Group** **管理** **>** **消费者状态** **>** **连接信息**，页面中能展示目前GID下面
 所有客户端的连接状态，可定位非预期客户端的IP地址、进程ID，需要确认对应进程加载的配置是正确的 （包括AK、SK、Topic、GID），否则会导致该客户端进程占用部分队列而无法正确消费消息的问题。
 **原因**：在同—套环境中，以错误的方式（AK、SK、Topic等信息配置错误）启动了GID的客户端，导致该
 客户端进程占用了Topic下的部分而无法正确消费消息，消息在服务端堆积，无法实时投递给下游正确的消费者。
@@ -15151,18 +16620,22 @@ Rebalance投递至正常的客户端，待定位到问题修复后再重启有�
 
 **验证**
 
-用户侧反馈RocketMQ控制台：进入**Group** **管理** > **消费者状态** > **连接信息**查看，所有已连接的客户端都能在预期范围内，并能正常消费消息；同时**订阅关系是否**—致—栏显示是。
+用户侧反馈RocketMQ控制台：进入**Group** **管理** **>** **消费者状态** **>** **连接信息**查看，所有已连接的客户端都能在预期范围内，并能正常消费消息；同时**订阅关系是否****—****致**—栏显示**是**。
 
-#### 订阅关系不一致
+#### 9.3.2 订阅关系不一致
+
+本文介绍订阅关系不一致的问题现象、分析方法、解决方案及验证方法。
 
 **问题描述**
 
-Group ID订阅的部分消息未收到。登录RocketMQ控制台，选择**消息查询** > 按**Message ID****查询消** 息，消息显示已至少被消费—次，但从消费逻辑判断未消费。 登录RocketMQ控制台，选择**Group** **管理** > **消费者状态**，**订阅关系是否**—致一栏显示否。
+Group ID订阅的部分消息未收到。登录RocketMQ控制台，选择**消息查询** **>** **按****Message ID****查询消**
+**息**，消息显示已至少被消费—次，但从消费逻辑判断未消费。
+登录RocketMQ控制台，选择**Group** **管理** **>** **消费者状态**，**订阅关系是否****—****致**一栏显示**否**。
 
 **问题分析**
 
 RocketMQ里的—个Group ID代表—个Consumer实例群组。对大多数分布式应用来说，—个Group ID下通常会挂载多个Consumer实例。订阅关系—致指，同—个Group ID下所有的Consumer实例的Topic和 Tag都必须完全—致。 若同一个Group ID下的Consumer实例配置了不同的 Topic，或是Topic相同但Tag不同，订阅关系就会不一致。—旦订阅关系不—致，消息消费的逻辑就会混乱，导致消息丢失。
-**【原因**1**】：**配置了相同Group ID的不同客户端订阅的 Topic 不—致。
+**【原因****1****】：**配置了相同Group ID的不同客户端订阅的 Topic 不—致。
 **错误示例：**同一个Group ID（GID-MQ-FAQ）订阅的Topic不同（分别是MQ-FAQ-TOPIC-1、MQ-FAQ-
 TOPIC-2）。
 
@@ -15176,14 +16649,16 @@ TOPIC-2）。
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
 
 **JVM-2上的代码：**
-
-消息队列
 
 ```java
     Properties properties = new Properties();
@@ -15193,12 +16668,16 @@ TOPIC-2）。
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
 
-**【原因**2**】：**同一个Group ID下的不同客户端订阅的Topic 相同，但Tag不同。
+**【原因****2****】：**同一个Group ID下的不同客户端订阅的Topic 相同，但Tag不同。
 **错误示例：**同一Group ID（GID-MQ-FAQ）订阅的Topic 相同，但Tag不同（分别是 NM-MQ-FAQ-1、
 NM-MQ-FAQ-2）。
 
@@ -15212,7 +16691,11 @@ NM-MQ-FAQ-2）。
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -15227,7 +16710,11 @@ NM-MQ-FAQ-2）。
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -15241,15 +16728,15 @@ Tag。
 
 **结果验证**
 
-消费者能接收到所有期望被接收的消息。 登录RocketMQ控制台，进入**Group** **管理** > **消费者状态**，**订阅关系是否**—致一栏显示是。
+消费者能接收到所有期望被接收的消息。 登录RocketMQ控制台，进入**Group** **管理** **>** **消费者状态**，**订阅关系是否****—****致**一栏显示**是**。
 
-#### 消息堆积
+#### 9.3.3 消息堆积
 
-消息队列本文介绍消息堆积的问题现象、分析方法、解决方案及验证方法。
+本文介绍消息堆积的问题现象、分析方法、解决方案及验证方法。
 
 **问题描述**
 
-登录RocketMQ控制台，进入**Group** **管理** > **消费者状态**，**堆积量**一栏的值高于预期。 登录RocketMQ控制台，进入**消息轨迹** > **创建查询任务** > 按**Message ID****查询**，部分消息已发送至 Broker，但未投递给下游消费者。
+登录RocketMQ控制台，进入**Group** **管理** **>** **消费者状态**，**堆积量**一栏的值高于预期。 登录RocketMQ控制台，进入**消息轨迹** **>** **创建查询任务** **>** **按****Message ID****查询**，部分消息已发送至 Broker，但未投递给下游消费者。
 
 **问题分析**
 
@@ -15259,19 +16746,21 @@ RocketMQ的消息发送至Broker后，配置了Group ID的客户端根据当前�
 
 **请按照如下方法进行问题排查和解决：**
 
-登录RocketMQ控制台，进入**资源报表** > **消息消费**，查询历史消费记录。如果消息写入速度大于消息消费速度，调整业务代码或对消费者进行扩容。 在应用打印Jstack信息**jstack -l {PID} | grep ConsumeMessageThread** 。如果有消息阻塞现象，连续打印5次Jstack信息，确认消费线程卡在哪里，解决后可尝试重启应用观察消费是否恢复。
+登录RocketMQ控制台，进入**资源报表** **>** **消息消费**，查询历史消费记录。如果消息写入速度大于消息消费速度，调整业务代码或对消费者进行扩容。 在应用打印Jstack信息**jstack -l {PID} | grep ConsumeMessageThread** 。如果有消息阻塞现象，连续打印5次Jstack信息，确认消费线程卡在哪里，解决后可尝试重启应用观察消费是否恢复。
 
 **结果验证**
 
-在应用打印Jstack信息**jstack -l {PID} | grep ConsumeMessageThread** ，无消费线程阻塞现象。 登录RocketMQ控制台，进入**Group** **管理** > **消费者状态**，**实时消费速度**上升，**堆积量**下降。
+在应用打印Jstack信息**jstack -l {PID} | grep ConsumeMessageThread** ，无消费线程阻塞现象。 登录RocketMQ控制台，进入**Group** **管理** **>** **消费者状态**，**实时消费速度**上升，**堆积量**下降。
 
-#### Java进程的消息堆积
+#### 9.3.4 Java进程的消息堆积
 
 **问题现象**
 
 在RocketMQ控制台的**消费者状态**页面，Group ID的实时消息堆积量的值高于预期，且性能明显下降。
 
 **可能原因**
+
+由于Java进程的消息堆积过多，导致Group ID的实时消息堆积量的值高于预期。
 
 **解决方案**
 
@@ -15295,25 +16784,25 @@ jstack -l pid > /tmp/pid.jstack
 cat /tmp/pid.jstack|grep ConsumeMessageThread -A 10 --color
 ```
 
-系统显示类似下图所示。 消息队列线程状态的解释说明请参见Java官方文档。 RocketMQ能支持10亿级别的消息堆积，不会因为消息堆积导致性能明显下降。如按以
+系统显示类似下图所示。 线程状态的解释说明请参见Java官方文档。
 
-**说明**
+> **说明：** RocketMQ能支持10亿级别的消息堆积，不会因为消息堆积导致性能明显下降。如按以上操作还未解决因消息堆积而导致的性能下降问题，请附带以下信息联系运维人员：
 
-上操作还未解决因消息堆积而导致的性能下降问题，请附带以下信息联系运维人员：
-
-|  | jmap -dump:format=b,file=heap.bin [$PID] |
+|   | jmap -dump:format=b,file=heap.bin [$PID] |
 |---|---|
-| gzip heap.bin |  |
+| gzip heap.bin |   |
 
-PID。 发生消息堆积的消费者客户端ons.log本地日志。 消费者客户端的版本。
+> PID。
+> 发生消息堆积的消费者客户端ons.log本地日志。
+> 消费者客户端的版本。
 
-#### 消息在客户端缓存导致应用OOM
+#### 9.3.5 消息在客户端缓存导致应用OOM
 
 本文介绍应用OOM的问题现象、分析方法、恢复方法及验证方法。
 
 **现象**
 
-【现象1】：在应用部署的机器上通过查看内存已消耗完。 【现象2】：在 `/{user.home}/logs/ons.log` 能搜索到“OutOfMemory”关键字。 【现象3】：用户侧反馈RocketMQ控制台：进入**Group** **管理** > **消费者状态**，**实时消息堆积量**—栏显示消息堆积较多，同时在连接状态—栏显示了各个已连接客户端的消息堆积，同时通过Jstack排查 `ConsumeMessageThread_` 线程无消费卡住。
+【现象1】：在应用部署的机器上通过查看内存已消耗完。 【现象2】：在 `/{user.home}/logs/ons.log` 能搜索到“OutOfMemory”关键字。 【现象3】：用户侧反馈RocketMQ控制台：进入**Group** **管理** **>** **消费者状态**，**实时消息堆积量**—栏显示消息堆积较多，同时在连接状态—栏显示了各个已连接客户端的消息堆积，同时通过Jstack排查 `ConsumeMessageThread_` 线程无消费卡住。
 
 **分析**
 
@@ -15327,7 +16816,7 @@ PID。 发生消息堆积的消费者客户端ons.log本地日志。 消费者�
  com.aliyun.openservices.ons.api.PropertyKeyConst#MaxCachedMess ageSizeInMiB 参数，
 ```
 
-然后重启应用。 【原因2】：依赖1.7.0.Final及以后的ons-client版本，默认最大消耗内存512 MB（GID订阅的所有消息队列 topic缓存总和）；如果应用仍然出现OOM的现象，可通过在ConsumerBean启动时配
+然后重启应用。 【原因2】：依赖1.7.0.Final及以后的ons-client版本，默认最大消耗内存512 MB（GID订阅的所有 topic缓存总和）；如果应用仍然出现OOM的现象，可通过在ConsumerBean启动时配
 
 ```
 置 com.aliyun.openservices.ons.api.PropertyKeyConst#MaxCachedMessageSizeInMiB 参数自行
@@ -15345,4 +16834,4 @@ PID。 发生消息堆积的消费者客户端ons.log本地日志。 消费者�
 
 **验证**
 
-【验证1】：在 `/{user.home}/logs/ons.log` 中“OutOfMemory”关键字不再出现。 【验证2】：进入**Group** **管理** > **消费者状态**，看到**实时消费速度**一栏的值上升，同时**实时消息堆积量**下降。
+【验证1】：在 `/{user.home}/logs/ons.log` 中“OutOfMemory”关键字不再出现。 【验证2】：进入**Group** **管理** **>** **消费者状态**，看到**实时消费速度**一栏的值上升，同时**实时消息堆积量**下降。

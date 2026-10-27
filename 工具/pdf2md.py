@@ -694,7 +694,7 @@ class Manual:
             md = CJKSP.sub("", md)
         return md
 
-def convert(pdf, outpath, url="", title="", prodver="", docver="", src_pdf=""):
+def convert(pdf, outpath, url="", title="", prodver="", docver="", src_pdf="", lang=""):
     """src_pdf：写进 front matter 的原始 PDF 文件名。默认用暂存文件名，
     但中文册的交付命名是 "21_手册名_手册code.pdf"，重转时不能变成临时名。"""
     m = Manual(pdf)
@@ -714,17 +714,23 @@ def convert(pdf, outpath, url="", title="", prodver="", docver="", src_pdf=""):
             + 'converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)\n---\n\n')
     open(outpath, "w", encoding="utf-8").write(
         head + f"# {name}\n\n"
-        + ((("## 目录" if _zh_doc(name, body) else "## Table of Contents") + "\n\n" + toc + "\n\n") if toc else "")
+        + ((_toc_head(name, body, lang) + "\n\n" + toc + "\n\n") if toc else "")
         + body.strip() + "\n")
     return len(body), None   # 正文体量，供缓存登记
 
 
-def _zh_doc(name, body):
-    """中文册的目录标题行该用「目录」而不是「Table of Contents」。
-    判据：书名里有汉字，或正文开头 3000 字里汉字足够多。"""
+def _toc_head(name, body, lang=""):
+    """中文册的目录标题行用「目录」，英文册用「Table of Contents」。
+
+    lang 由调用方给（缓存索引里就有），没给才按比例判：英文手册里会夹几个中文字形
+    （残留的"⻔"类部首字、未译的页脚），所以不能见汉字就当中文册——踩过一次。"""
+    if lang in ("zh", "en"):
+        return "## 目录" if lang == "zh" else "## Table of Contents"
     if re.search(r"[\u4e00-\u9fff]", name):
-        return True
-    return len(re.findall(r"[\u4e00-\u9fff]", body[:3000])) > 60
+        return "## 目录"
+    probe = body[:40000]
+    cjk = len(re.findall(r"[\u4e00-\u9fff]", probe))
+    return cjk > 0 and len(probe.strip()) and cjk / max(1, len(re.sub(r"\s+", "", probe))) > 0.05
 
 
 if __name__ == "__main__":

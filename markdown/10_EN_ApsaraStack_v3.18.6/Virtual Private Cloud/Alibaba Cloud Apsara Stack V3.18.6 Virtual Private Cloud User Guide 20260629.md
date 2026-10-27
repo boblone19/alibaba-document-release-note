@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 163
 source_pdf: "61d5165a378dbc5e_Alibaba Cloud Apsara Stack V3.18.6 Virtual Private Cloud User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9CVPC/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Virtual%20Private%20Cloud%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Virtual Private Cloud User Guide 20260629
@@ -1508,7 +1508,11 @@ If no service whose **Cloud resources** value is **vSwitch** exists on the Servi
 
 **View vSwitches**
 
-On the **vSwitches** page, you can view the information about vSwitches. Click the icon next to the **Zone** column to filter vSwitches by zone. Click the VPC ID in the **VPC ID/Name** column of a vSwitch to view the basic information about the VPC to which the vSwitch belongs. Click the route table ID in the **Route Table ID/Name** column of a vSwitch to view the basic information about the route table that is associated with the vSwitch. Click an ID in the **Network ACL ID/Name** column to view the network access control list (ACL) associated with the vSwitch. Click the icon next to the name of a vSwitch in the **vSwitch ID/Name** column to modify the vSwitch name.
+On the **vSwitches** page, you can view the information about vSwitches.
+
+**Note**
+
+Click the icon next to the **Zone** column to filter vSwitches by zone. Click the VPC ID in the **VPC ID/Name** column of a vSwitch to view the basic information about the VPC to which the vSwitch belongs. Click the route table ID in the **Route Table ID/Name** column of a vSwitch to view the basic information about the route table that is associated with the vSwitch. Click an ID in the **Network ACL ID/Name** column to view the network access control list (ACL) associated with the vSwitch. Click the icon next to the name of a vSwitch in the **vSwitch ID/Name** column to modify the vSwitch name.
 
 **Manage tags**
 
@@ -1685,7 +1689,11 @@ Confirm the parameters and click **Confirm Order** if the following requirements
 
 **Manage network ACLs**
 
-On the **Network ACLs** page, you can view the information about the created network ACLs. Click the VPC ID in the **VPC ID/Name** column of a network ACL to view the basic information about the VPC to which the network ACL belongs. Click the vSwitch ID in the **Associated Resources** column of a network ACL to view the basic information about the vSwitch associated with the network ACL. Click the number in the **Network ACL Rules** column of a network ACL to view the inbound and outbound rules of the network ACL. The number indicates the total number of inbound and outbound rules of the network ACL. Click the icon next to a network ACL name in the **Network ACL ID/Name** column to modify the network ACL name.
+On the **Network ACLs** page, you can view the information about the created network ACLs.
+
+**Note**
+
+Click the VPC ID in the **VPC ID/Name** column of a network ACL to view the basic information about the VPC to which the network ACL belongs. Click the vSwitch ID in the **Associated Resources** column of a network ACL to view the basic information about the vSwitch associated with the network ACL. Click the number in the **Network ACL Rules** column of a network ACL to view the inbound and outbound rules of the network ACL. The number indicates the total number of inbound and outbound rules of the network ACL. Click the icon next to a network ACL name in the **Network ACL ID/Name** column to modify the network ACL name.
 
 **Manage tags**
 
@@ -2043,7 +2051,11 @@ On the **EIP** page, you can add tags to EIPs for management. For more informati
 
 **Release an EIP**
 
-You can release an EIP that you no longer need. Before you release an EIP, make sure that no cloud resource is associated with the EIP. For more information, see Disassociate an EIP from a cloud resource.
+You can release an EIP that you no longer need.
+
+**Note**
+
+Before you release an EIP, make sure that no cloud resource is associated with the EIP. For more information, see Disassociate an EIP from a cloud resource.
 1. On the **EIP** page, release a single EIP or multiple EIPs at a time:
 To release an EIP, find the EIP that you want to release and click **Release** in the **Actions** column. To release multiple EIPs at a time, select the EIPs that you want to release and click
 **Release** below the list.

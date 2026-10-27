@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 61
 source_pdf: "5fb437ec6f514b6f_Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%A3%9E%E5%A4%A9%E5%8A%A9%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Copilot%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Copilot User Guide 20260701
@@ -58,6 +58,9 @@ a Copilot homepage
 ## 1 Apsara Copilot homepage
 
 The homepage displays the full capabilities of Apsara Copilot to help you deeply understand the product's value and usage, and provide clear guidance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. Click
 in the top navigation bar or floating menu to enter Apsara Copilot.
@@ -76,6 +79,9 @@ a Copilot homepage s control of Apsara Copilot
 **Copilot**
 
 This topic describes how to implement the access control of Apsara Copilot by configuring custom roles with different permissions.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
@@ -90,7 +96,14 @@ permissions, and custom permissions for the role. For more information about the
 
 ### 3.1 Configure custom settings
 
-This topic describes how to enable, disable, and configure the custom settings of Apsara Copilot. You are an operations administrator.
+This topic describes how to enable, disable, and configure the custom settings of Apsara Copilot.
+
+**Prerequisites**
+
+You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Apsara Copilot** > **Custom Settings**.
@@ -148,6 +161,9 @@ This topic describes how to create an evaluation case. You are an operations adm
 ##### 3.2.1.2 Manage an evaluation case
 
 This topic describes how to manage an evaluation case after it is created. You can view and delete the evaluation case. You are an operations administrator. An evaluation case is created.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Apsara Copilot** > **Accuracy Evaluation**.
@@ -163,7 +179,14 @@ This topic describes how to manage an evaluation case after it is created. You c
 
 ##### 3.2.2.1 Create an evaluation dataset
 
-This topic describes how to create an evaluation set. You are an operations administrator by default. You have created evaluation cases.
+This topic describes how to create an evaluation set.
+
+**Prerequisites**
+
+You are an operations administrator by default. You have created evaluation cases.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Accuracy Evaluation**.
@@ -186,7 +209,14 @@ information.
 
 ##### 3.2.2.2 Manage an evaluation dataset
 
-This topic describes how to manage an evaluation dataset after it is created. You can view, modify, and delete the evaluation dataset. You are an operations administrator. An evaluation dataset is created.
+This topic describes how to manage an evaluation dataset after it is created. You can view, modify, and delete the evaluation dataset.
+
+**Prerequisites**
+
+You are an operations administrator. An evaluation dataset is created.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Apsara Copilot** > **Accuracy Evaluation**.
@@ -205,7 +235,14 @@ This topic describes how to manage an evaluation dataset after it is created. Yo
 
 ##### 3.2.3.1 Create an evaluation task
 
-This topic describes how to create an evaluation task. You are an operations administrator by default. You have created an evaluation dataset.
+This topic describes how to create an evaluation task.
+
+**Prerequisites**
+
+You are an operations administrator by default. You have created an evaluation dataset.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Accuracy Evaluation**.
@@ -234,7 +271,14 @@ This topic describes how to create an evaluation task. You are an operations adm
 
 ##### 3.2.3.2 Manage an evaluation task
 
-This topic describes how to manage an evaluation task. You are an operations administrator by default. You have created an evaluation task.
+This topic describes how to manage an evaluation task.
+
+**Prerequisites**
+
+You are an operations administrator by default. You have created an evaluation task.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the navigation pane on the left, choose **Apsara Copilot** > **Accuracy Assessment**.
@@ -258,7 +302,14 @@ This topic describes how to manage an evaluation task. You are an operations adm
 
 #### 3.2.4 Accuracy rate analysis
 
-View the accuracy status of Apsara Copilot. The operator is an operations administrator by default.
+View the accuracy status of Apsara Copilot.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Accuracy Evaluation**.
@@ -276,7 +327,14 @@ View the accuracy status of Apsara Copilot. The operator is an operations admini
 
 ### 3.3 Model configuration
 
-Manage and configure your AI models, including large language models, embedding models, and rerank models. The operator is an operations administrator by default.
+Manage and configure your AI models, including large language models, embedding models, and rerank models.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Model Configurations**.
@@ -306,7 +364,14 @@ Manage and configure your AI models, including large language models, embedding 
 
 #### 3.4.1 Create a knowledge base
 
-Create vector and graph knowledge bases on the Knowledge Base Management page. The operator is an operations administrator by default.
+Create vector and graph knowledge bases on the Knowledge Base Management page.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -331,7 +396,14 @@ Create vector and graph knowledge bases on the Knowledge Base Management page. T
 
 #### 3.4.2 Edit a knowledge base
 
-You can modify the configuration when updates are available for a knowledge base. The operator is an operations administrator by default.
+You can modify the configuration when updates are available for a knowledge base.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -362,7 +434,11 @@ detailed descriptions of chunking policies, see Create a knowledge base.
 
 #### 3.4.4 Delete a knowledge base
 
-Delete any knowledge base you no longer need. The operater is an operations administrator by default.
+Delete any knowledge base you no longer need.
+
+**Prerequisites**
+
+The operater is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -375,7 +451,14 @@ operation.
 
 #### 3.4.5 Import a file
 
-Import files into a knowledge base. The operator is an operations administrator by default.
+Import files into a knowledge base.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -390,7 +473,14 @@ Import files into a knowledge base. The operator is an operations administrator 
 
 #### 3.4.6 View file details
 
-The file details page displays file preview and chunks information. The operator is an operations administrator by default.
+The file details page displays file preview and chunks information.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -400,7 +490,11 @@ The file details page displays file preview and chunks information. The operator
 
 #### 3.4.7 Ingest files
 
-After importing files, you can ingest them. The operator is an operations administrator by default. The file status is **Parsed**.
+After importing files, you can ingest them.
+
+**Prerequisites**
+
+The operator is an operations administrator by default. The file status is **Parsed**.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -418,7 +512,12 @@ After ingesting a file, the file status changes to **Indexed**. You can download
 
 #### 3.4.8 Delete an file
 
+**Prerequisites**
+
 The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -429,7 +528,11 @@ The operator is an operations administrator by default.
 
 #### 3.4.9 View the knowledge graph
 
-View the generated knowledge graph in a graph-type knowledge base. The operator is an operations administrator by default. The knowledge base is of graph type.
+View the generated knowledge graph in a graph-type knowledge base.
+
+**Prerequisites**
+
+The operator is an operations administrator by default. The knowledge base is of graph type.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -457,7 +560,14 @@ graph exists, click **Generate Now**.
 
 #### 3.4.10 View the mind map
 
-View the generated mind map. The operator is an operations administrator by default.
+View the generated mind map.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Knowledge Base**
@@ -486,7 +596,14 @@ in the upper-right corner of the list.
 
 **testing**
 
-The Retrieve Testing tab supports retrieval configuration and retrieval testing. The operator is an operations administrator by default.
+The Retrieve Testing tab supports retrieval configuration and retrieval testing.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, choose **Apsara Copilot** > **Knowledge Base**
@@ -518,7 +635,14 @@ You can use custom configurations to better manage your cloud resources.
 
 #### 3.5.1 AI-assisted creation
 
-Configure personalized scenarios for AI-assisted creation of cloud services. The operator is an operations administrator by default.
+Configure personalized scenarios for AI-assisted creation of cloud services.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Apsara Copilot** > **Auxiliary Cloud Resource**
@@ -539,7 +663,14 @@ After you configure assisted creation for a cloud service, Apsara Copilot intell
 
 #### 3.5.2 AI-assisted configuration change
 
-You can configure rules for the AI-assisted configuration change of cloud products. These rules are used to analyze and provide recommendations when you upgrade or downgrade a cloud product. The operator is an operations administrator by default.
+You can configure rules for the AI-assisted configuration change of cloud products. These rules are used to analyze and provide recommendations when you upgrade or downgrade a cloud product.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, select **Configurations**.
 3. In the navigation pane on the left, select **Apsara Copilot** > **Auxiliary Cloud Resource**
@@ -587,8 +718,15 @@ After configuring the AI-assisted configuration change for a cloud product, Apsa
 
 ### 4.1 Apsara Copilot chats
 
-Apsara Copilot allows users to ask the platform questions about cloud services in natural language, consult AI for information, and engage in intelligent chats with AI. The user, as an operations administrator, has enabled the display of the AI assistant in the Apsara Uni-manager Management Console under **Configurations** > **Apsara Copilot** >
+Apsara Copilot allows users to ask the platform questions about cloud services in natural language, consult AI for information, and engage in intelligent chats with AI.
+
+**Prerequisites**
+
+The user, as an operations administrator, has enabled the display of the AI assistant in the Apsara Uni-manager Management Console under **Configurations** > **Apsara Copilot** >
 **Custom Settings**.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. Click
 in the top navigation bar or floating menu to enter Apsara Copilot.
@@ -637,11 +775,17 @@ ation of Apsara Copilot
 
 ### 4.2 Perform text-selection Q&A
 
-After you enable text-selection Q&A and select text on a console page, you can trigger Apsara Copilot to answer questions about the selected content. Text-selection Q&A is enabled for Apsara Copilot.
+After you enable text-selection Q&A and select text on a console page, you can trigger Apsara Copilot to answer questions about the selected content.
+
+**Prerequisites**
+
+Text-selection Q&A is enabled for Apsara Copilot.
 
 > **Note:** To enable the feature, click the
 > icon in the upper-right corner of the Apsara Copilot
 > pane and turn on Enable Word Selection.
+
+**Procedure**
 
 1. Log in to the Apsara Uni-manager Management Console.
 ation of Apsara Copilot
@@ -690,7 +834,14 @@ Apsara Copilot provides AI analysis for billing rule scenarios. For detailed ope
 
 **analytics**
 
-Apsara Copilot provides an operations analytics dashboard to help customers better monitor its usage and evaluate business effects. The operator is an operations administrator by default.
+Apsara Copilot provides an operations analytics dashboard to help customers better monitor its usage and evaluate business effects.
+
+**Prerequisites**
+
+The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Home**.
 3. Click the **AI + Operation** tab to view metric data for **last week** and **last month**.
@@ -708,6 +859,9 @@ a Copilot operations analytics peration logs
 ## 6 View operation logs
 
 This topic describes how to view the operation logs of Apsara Copilot.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Operation Log**.
@@ -726,7 +880,14 @@ column. peration logs dix
 
 **manager Management Console**
 
-This topic describes how to log in to the Apsara Uni-manager Management Console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
+This topic describes how to log in to the Apsara Uni-manager Management Console.
+
+**Prerequisites**
+
+The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 

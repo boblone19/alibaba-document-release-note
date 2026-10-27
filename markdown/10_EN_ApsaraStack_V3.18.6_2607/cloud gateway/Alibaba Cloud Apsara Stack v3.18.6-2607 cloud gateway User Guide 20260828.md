@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 26
 source_pdf: "8d0327434eeac477_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828
@@ -50,10 +50,15 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. In the address bar of the browser, enter the URL of the Apsara Uni-manager Management
 Console and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+**Note**
 
 **First-time logon**
 
@@ -107,6 +112,9 @@ Service metadata: Service metadata includes the original image file, configurati
 #### 3.2.2 Create a custom ECS image
 
 After you obtain the original image file of the open network service from Apsara Stack technical support, you can call the CreateImage API operation to create a custom image. The image can be used to create service clusters.
+
+**Procedure**
+
 1. Obtain the image from Apsara Stack Image Center.
 
 > **Note:** Apsara Stack Image Center is reserved for internal use. You need to contact technical support to apply for images.
@@ -248,6 +256,9 @@ If you use Open Network Service Platform (ONSP) within a cloud account for the f
 **Prerequisites**
 
 The cloud account is imported as a resource account, and you use ONSP within the account for the first time.
+
+**Procedure**
+
 1. Open the ONSP console.
 2. In the **Letter of Application** message, click **Authorize**.
 
@@ -383,6 +394,9 @@ Open Network Service Platform (ONSP) allows you to share your application with o
 **Limits**
 
 You can share your application only with users that belong to the same level-1 organization.
+
+**Procedure**
+
 1. Open the Open Network Service Platform console.
 2. In the left-side navigation pane, click **My Applications**.
 3. On the **My Applications** page, click the name of the application that you want to share to
@@ -411,6 +425,9 @@ CIDR allows you to segment an IP address into multiple subnets. Each subnet can 
 **Limits**
 
 You cannot delete a CIDR block that is in use.
+
+**Procedure**
+
 1. Open the ONSP console.
 2. In the left-side navigation pane, click **CIDR Blocks** to manage CIDR blocks.
 

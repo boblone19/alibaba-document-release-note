@@ -5,7 +5,7 @@ doc_version: "20251204"
 pdf_pages: 137
 source_pdf: "f955d88deb264853_Alibaba Cloud Apsara Stack V3.18.6 DataWorks Operations and Maintenance Guide 20251204.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataWorks%20Operations%20and%20Maintenance%20Guide%2020251204.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # DataWorks Operations and Maintenance Guide
@@ -116,7 +116,11 @@ Asset Metadata Intelligent Resource discovery/Asset parsing/Data optimization (b
 
 **governance**
 
-exploration XStudio: Cloud-based IDE with plug-ins for various engines
+exploration XStudio: Cloud-based IDE with plug-ins for various
+
+**DataWorks**
+
+engines
 
 **Intelligent**
 
@@ -192,13 +196,19 @@ The following is a typical Data Development scenario:
 1. Use DataWorks to collect data from various databases into MaxCompute.
 2. Use DataWorks to send SQL, MR, or SHELL statements to MaxCompute for data analysis.
 3. Use DataWorks to synchronize the analysis results from MaxCompute back to the original
-databases. DataX data synchronization Data RDS collection SQL/MR/Shell Data ODPSCompu and storage analysis Design Oracle workflow SQL/MR/Shell Scheduled task ads ...
+databases. DataX data synchronization Data RDS collection SQL/MR/Shell Data ODPSCompu and storage analysis Design Oracle workflow SQL/MR/Shell Scheduled task ads
+
+**DataWorks**
+
+...
 
 > **Note:** Base is an alternative name for DataWorks that appears in some technical contexts.
 
 **Scenario 2: Data synchronization**
 
 DataWorks supports data synchronization between different types of databases. For scenarios that require only data synchronization, DataWorks provides a simplified process. Data Oracle ads synchronization Data RDS Oracle synchronization Data Oracle ODPS synchronization
+
+**DataWorks**
 
 ### 1.4 DataWorks architecture
 

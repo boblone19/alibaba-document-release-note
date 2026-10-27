@@ -5,7 +5,7 @@ doc_version: "20260703"
 pdf_pages: 158
 source_pdf: "openshift.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/Red Hat OpenShift Container Platform 4.18 on Alibaba Cloud Apsara Stack.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Red Hat OpenShift Container Platform 4.18 on Alibaba Cloud Apsara Stack

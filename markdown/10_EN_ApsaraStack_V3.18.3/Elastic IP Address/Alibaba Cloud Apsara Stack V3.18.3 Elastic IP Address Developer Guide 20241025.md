@@ -5,7 +5,7 @@ doc_version: "20241025"
 pdf_pages: 101
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Elastic IP Address Developer Guide 20241025.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91IP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Elastic%20IP%20Address%20Developer%20Guide%2020241025.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Elastic IP Address Developer Guide 20241025
@@ -1552,7 +1552,11 @@ JSON format `{`
 
 #### 5.5.1 AllocateEipAddress
 
-Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
+Applies for an elastic IP address (EIP).
+
+**Description**
+
+After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
 
 **Request parameters**
 
@@ -1731,7 +1735,11 @@ Sample success responses `XML` format
 
 #### 5.5.3 AssociateEipAddress
 
-Associates an elastic IP address (EIP) with an instance in the same region. When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account.
+Associates an elastic IP address (EIP) with an instance in the same region.
+
+**Description**
+
+When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account.
 
 **Request parameters**
 
@@ -1979,7 +1987,11 @@ Sample success responses `XML` format
 
 #### 5.5.6 ReleaseEipSegmentAddress
 
-Releases contiguous elastic IP addresses (EIPs). You can call this operation to release all EIPs in a group of contiguous EIPs.
+Releases contiguous elastic IP addresses (EIPs).
+
+**Description**
+
+You can call this operation to release all EIPs in a group of contiguous EIPs.
 
 **Request parameters**
 
@@ -2407,7 +2419,11 @@ Sample success responses `XML` format
 
 #### 5.5.10 ReleaseEipAddress
 
-Releases a specified elastic IP address (EIP). Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
+Releases a specified elastic IP address (EIP).
+
+**Description**
+
+Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
 
 **Request parameters**
 
@@ -2465,7 +2481,11 @@ Sample success responses `XML` format
 
 #### 5.5.11 DescribeEipGatewayInfo
 
-Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
+Queries information about the gateway and subnet mask of an elastic IP address (EIP).
+
+**Description**
+
+You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
 
 **Request parameters**
 

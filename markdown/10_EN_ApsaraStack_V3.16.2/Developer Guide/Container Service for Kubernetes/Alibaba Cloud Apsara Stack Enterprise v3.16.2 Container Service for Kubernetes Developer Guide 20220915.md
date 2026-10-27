@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 98
 source_pdf: "f44b0c2808ff90ed_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes Developer Guide 20220"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes Developer Guide
@@ -182,7 +182,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer ove
 2. Obtain an STS AccessKey 3-tuple.
 Not e You must replace the following fields with the actual values. Delete the angle brackets (<>) before you submit the code. <yourRegionID>: Replace the field with the actual region ID. <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user. <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user. <yourRoleSessionName>: Replace the field with the actual session name. <yourRoleArn>: Replace the field with the Alibaba Cloud Resource Name (ARN) of the RAM role that is assigned to the current user. <sts.aliyuns.com>: Replace the field with the actual endpoint of STS.
 
-```java
+```
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the actual values.
@@ -200,6 +200,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of STS. The format of an endpoint of STS is sts-vpc.${global:region}.${global:internet-
@@ -223,9 +228,15 @@ domain}.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call the `DescribeUserQuota` operation of Container Service. The following code provides an example:
 Not e You must replace the following fields with the actual values. Delete the angle brackets (<>) before you submit the code. <yourRegionID>: Replace the field with the actual region ID. <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user. <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user. <yourStsToken>: Replace the field with the STS token of the STS AccessKey 3-tuple. <yourResourceGroupID>: Replace the field with the actual resource set ID. <yourOrganizationID>: Replace the field with the actual organization ID.
 
@@ -257,6 +268,8 @@ public class DescribeUserQuota {
         } catch (ClientException e) {
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 #### 1.2.5 Obtain the values of common header parameters
 
@@ -378,7 +391,7 @@ catch (ServerException e) {
     e.printStackTrace();
 ```
 
-Handle client errors
+`}` Handle client errors
 
 ```java
 catch (ClientException e) {
@@ -387,7 +400,7 @@ catch (ClientException e) {
     System.out.println("RequestId:" + e.getRequestId());
 ```
 
-Sample code
+`}` Sample code
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.alibaba.fastjson.JSON; import java.util.*; import com.aliyuncs.cs.model.v20151215.*; public class DescribeImages {
@@ -413,6 +426,8 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 ### 1.4 Examples of using Container Service SDK for Python
 
@@ -558,6 +573,7 @@ if err != nil {
   return
 ```
 
+`}`
 7. Obtain a response parameter.
 The following example shows how to obtain the RequestId parameter.
 
@@ -592,9 +608,16 @@ func main() {
   if err != nil {
     fmt.Println(err)
     return
+```
+
+`}`
+
+```
   // Print response parameters as required. In this example, the RequestId parameter is printed.
   fmt.Println(response.RequestId)
 ```
+
+`}`
 
 ## 2 Cluster API list
 
@@ -607,7 +630,7 @@ To use the APIs provided by Container Service, you can send HTTP requests to the
 
 #### 2.1.2 Common parameters
 
-This topic lists the common request headers, common response headers, and common parameters that are required in Apsara Stack API (ASAPI) requests when you make Container Service API requests. Common request parameters must be included in all Container Service API requests.
+This topic lists the common request headers, common response headers, and common parameters that are required in Apsara Stack API (ASAPI) requests when you make Container Service API requests. Common request headers Common request parameters must be included in all Container Service API requests.
 
 | Parameter | Description | Required |
 |---|---|---|
@@ -622,6 +645,8 @@ This topic lists the common request headers, common response headers, and common
 | x-acs-region-id | The region where the Elastic Compute Service (ECS) instance is deployed. | Yes |
 | x-acs-signature-nonce | A unique, random number used to prevent replay attacks. You must use different numbers for different requests. | Yes |
 | x-acs-signature-method | The encryption method of the signature string. Set the value to HMAC-SHA1. | Yes |
+
+Examples
 
 ```
 GET /clusters HTTP/1.1 Host: cs.aliyuncs.com Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: f63659d4-10ac-483b-99da-ea8fde61eae3 Authorization: acs <yourAccessKeyId>:<yourSignature> x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 11:18:47 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Content-Length: 0
@@ -639,17 +664,24 @@ Common parameters required in ASAPI requests Additional common parameters are re
 | x-acs-resourceGroupId | The ID of the resource set of the Container Service cluster. | Yes |
 | x-acs-roleid | The ID of the role. | Yes |
 
-Common response parameters Every response returns a unique request ID regardless of whether the call is successful. XML format:
+Common response parameters Every response returns a unique request ID regardless of whether the call is successful. Examples XML format:
 
-```json
+```
 <? xml version="1.0" encoding="UTF-8"? > <!—Result Root Node--> <Interface Name + Response>
  | <! -Returned Request Tag -->
  | <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
  | <! -Return Result Data -->
 <Interface Name+Response>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
     /* Return Result Data */
 ```
+
+`}`
 
 #### 2.1.3 Request syntax
 
@@ -659,7 +691,7 @@ This topic describes the syntax that you must follow when you make Container Ser
 |---|---|---|
 | on: | cs.${global:region}.${global:internet-domain} |   |
 
-You must add the /roa prefix to the endpoint that you use to make an Apsara Stack API (ASAPI) request. For example, if the /clusters endpoint is used to create a cluster, you must include /roa/clusters in your ASAPI request. Protocols HTTP and HTTPS are supported. We recommend that you send requests over HTTPS to enhance security. Request methods The following HTTP methods are supported: PUT, POST, GET, and DELETE. Each request must contain common request parameters and parameters unique to specific operations. Request encoding All requests and responses are encoded in the UTF-8 format.
+You must add the /roa prefix to the endpoint that you use to make an Apsara Stack API (ASAPI) request. For example, if the /clusters endpoint is used to create a cluster, you must include /roa/clusters in your ASAPI request. Protocols HTTP and HTTPS are supported. We recommend that you send requests over HTTPS to enhance security. Request methods The following HTTP methods are supported: PUT, POST, GET, and DELETE. Request parameters Each request must contain common request parameters and parameters unique to specific operations. Request encoding All requests and responses are encoded in the UTF-8 format.
 
 #### 2.1.4 Response parameters
 
@@ -723,7 +755,7 @@ http://cs.aliyuncs.com/clusters?name=my-clusters&resource=new
 |---|---|---|
 | /clusters? name=my-clusters&resource=new |   |   |
 
-The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
+Example The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
 
 ```json
 POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept-Encoding: identity Content-Length: 210 Content-MD5: 6U4ALMkKSj0PYbeQSHqgmA== x-acs-version: 2015-12-15 Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: fbf6909a-93a5-45d3-8b1c-3e03a7916799 x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 12:20:18 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Authorization: acs <yourAccessKeyId>:<yourSignature> {"password": "Just$****","instance_type": "ecs.m2.medium","name": "my-test-cluster-9708****","size": 1,"network_mode": "vpc","data_disk_category": "c loud","data_disk_size": 10,"ecs_image_id": "m-253l****l"}
@@ -777,11 +809,13 @@ POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept
 
 #### 2.2.1 Create a Container Service cluster
 
-You can call the CreateCluster operation to create a dedicated Kubernetes cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CreateCluster operation to create a dedicated Kubernetes cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -871,8 +905,15 @@ POST /clusters HTTP/1.1
 | request_id | String | 687C5BAA-D103-4993-884B- C35E4314A1E1 | The ID of the request. |
 | task_id | String | T-5a54309c80282e39ea00002f | The ID of the export task. |
 
-```json
+Examples Sample requests
+
+```
 POST /clusters HTTP/1.1 Common request header
+```
+
+`{`
+
+```json
     "cluster\_type": "Kubernetes",
     "container\_cidr": "172.20.0.0/16",
     "instances": i-2ze4zxnm36vq00xn****,
@@ -892,6 +933,8 @@ POST /clusters HTTP/1.1 Common request header
     "worker\_vswitch\_ids": vsw-2ze3ds0mdip0hdz8i****
 ```
 
+`}` Sample success responses
+
 | XML | format |
 |---|---|
 | <cluster_id>cb95aa626a47740afbf6aa099b650****</cluster_id> <task_id>T-5a54309c80282e39ea00002f</task_id> <request_id>687C5BAA-D103-4993-884B-C35E4314A1E1</request_id> |   |
@@ -904,11 +947,13 @@ POST /clusters HTTP/1.1 Common request header
 
 #### 2.2.2 Delete a cluster
 
-You can call the DeleteCluster operation to delete a cluster by ID and release all nodes in the cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DeleteCluster operation to delete a cluster by ID and release all nodes in the cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 DELETE /clusters/[ClusterId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -917,10 +962,19 @@ DELETE /clusters/[ClusterId] HTTP/1.1
 | keep_slb | Boolean | Query | No | false | Specifies whether to retain the Server Load Balancer (SLB) instances that are created by the cluster. true : retains the SLB instances that are created by the cluster. false : does not retain the SLB instances that are created by the cluster. Default value: false |
 | retain_resources | List<String> | Query | No | ["sg- 2ze6ess9kho6fdn9****"] | The name of the resource. |
 
+Examples Sample requests
+
+```
+DELETE /clusters/[ClusterId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-DELETE /clusters/[ClusterId] HTTP/1.1
     "ClusterId": "c905d1364c2dd4b6284a3f41790c4****"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -928,11 +982,13 @@ DELETE /clusters/[ClusterId] HTTP/1.1
 
 #### 2.2.3 Query the kubeconfig file of a cluster
 
-You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file of a cluster. The kubeconfig file contains the details of the current user and is used to configure access to the cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file of a cluster. The kubeconfig file contains the details of the current user and is used to configure access to the cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /k8s/[ClusterId]/user_config HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -948,10 +1004,19 @@ GET /k8s/[ClusterId]/user_config HTTP/1.1
 | config | String | apiVersion: v1**** | The content of the kubeconfig file. |
 | expiration | String | 2024-03-10T09:56:17Z | The expiration time of the kubeconfig file. The value is the UTC time displayed in RFC3339 format. |
 
+Examples Sample requests
+
+```
+GET /k8s/[ClusterId]/user_config HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /k8s/[ClusterId]/user_config HTTP/1.1
     "ClusterId": "c5b5e80b0b64a4bf6939d2d8fbbc5****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -965,11 +1030,13 @@ GET /k8s/[ClusterId]/user_config HTTP/1.1
 
 ##### 2.2.4.1 Query information about all clusters
 
-You can call the DescribeClustersV1 operation to query information about all clusters. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClustersV1 operation to query information about all clusters. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /api/v1/clusters HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1035,11 +1102,13 @@ GET /api/v1/clusters HTTP/1.1
 | page_size | Integer | 20 | The number of entries returned per page. |
 | total_count | Integer | 50 | The total number of entries returned. |
 
+Examples Sample requests
+
 ```
-GET /api/v1/clusters HTTP/1.1
+GET /api/v1/clusters HTTP/1.1 Common request headers
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <page_info>
@@ -1091,6 +1160,8 @@ GET /api/v1/clusters HTTP/1.1
     </maintenance_window>
 </clusters>
 ```
+
+`JSON` format
 
 ```json
     "page_info": {
@@ -1150,13 +1221,17 @@ GET /api/v1/clusters HTTP/1.1
             "maintenance_time": "03:00:00Z"
 ```
 
+`}` `}` `}`
+
 ##### 2.2.4.2 Query the information about a cluster
 
-You can call the DescribeClusterDetail operation to query the information about a cluster by the cluster ID. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterDetail operation to query the information about a cluster by the cluster ID. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1211,8 +1286,10 @@ GET /clusters/[ClusterId] HTTP/1.1
 | worker_ram_role_name | String | KubernetesWorkerRole-ec87d15b- edca-4302-933f-c8a16bf0**** | The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes that are created on Elastic Compute Service (ECS) instances. |
 | zone_id | String | cn-beijing-a | The ID of the zone where the cluster is deployed. |
 
+Examples Sample requests
+
 ```json
-GET /clusters/[ClusterId] HTTP/1.1
+GET /clusters/[ClusterId] HTTP/1.1 Common request headers
     "ClusterId": "cdde1f21ae22e483ebcb068a6eb7f****"
 ```
 
@@ -1232,6 +1309,8 @@ You can call the DescribeClusterResources operation to query all resources in a 
 GET /clusters/[ClusterId]/resources HTTP/1.1
 ```
 
+Request parameters
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | cb95aa626a47740afbf6aa0 99b65**** | The ID of the cluster. |
@@ -1248,12 +1327,19 @@ GET /clusters/[ClusterId]/resources HTTP/1.1
 | resource_type | String | ALIYUN::SLB::LoadBalancer | The type of the resource. |
 | state | String | CREATE_COMPLETE | The status of the resource. Valid values: CREATE_COMPLETE : The resource is created. CREATE_FAILED : The resource failed to be created. CREATE_IN_PROGRESS : The resource is being created. DELETE_FAILED : The resource failed to be deleted. DELETE_IN_PROGRESS : The resource is being deleted. ROLLBACK_COMPLETE : The resource is rolled back. ROLLBACK_FAILED : The resource failed to be rolled back. ROLLBACK_IN_PROGRESS : The resource is being rolled back. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/resources HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/resources HTTP/1.1
     "ClusterId": "cb95aa626a47740afbf6aa099b65****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <resources>
@@ -1275,11 +1361,13 @@ tatusReason\":\"state changed\",\"Updated\":\"2020-05-21T13:25:02\",\"PhysicalId
 
 ##### 2.2.4.4 Query the namespaces of a cluster
 
-You can call the DescribeClusterNamespaces operation to query the namespaces of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNamespaces operation to query the namespaces of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /k8s/[ClusterId]/namespaces HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1289,10 +1377,19 @@ GET /k8s/[ClusterId]/namespaces HTTP/1.1
 |---|---|---|---|
 | namespaces | List | [“kube-system”] | The name of the namespace. |
 
+Examples Sample requests
+
+```
+GET /k8s/[ClusterId]/namespaces HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /k8s/[ClusterId]/namespaces HTTP/1.1
     "ClusterId": "c68069cade53b4558924a924b415f****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -1310,6 +1407,8 @@ You can call the DescribeExternalAgent operation to query the agent configuratio
 GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
 ```
 
+Request parameters
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c106f377e16f34eb1808d6b 9362c9**** | The ID of the cluster. |
@@ -1319,10 +1418,19 @@ GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
 |---|---|---|---|
 | config | String | apiVersion: v1**** | The agent configurations in the YAML format. |
 
+Examples Sample requests
+
+```
+GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -1334,11 +1442,13 @@ GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
 
 ##### 2.2.4.6 Query resource quotas
 
-You can call the DescribeUserQuota operation to query resource quotas. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeUserQuota operation to query resource quotas. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /quota HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1350,6 +1460,8 @@ GET /quota HTTP/1.1
 GET /quota HTTP/1.1
 ```
 
+Sample success responses
+
 | XML | format |
 |---|---|
 | <amk_cluster_quota>20</amk_cluster_quota> <cluster_nodepool_quota>10</cluster_nodepool_quota> <cluster_quota>50</cluster_quota> <node_quota>100</node_quota> |   |
@@ -1360,11 +1472,13 @@ GET /quota HTTP/1.1
 
 ##### 2.2.4.7 Query the logs of a cluster
 
-You can call the DescribeClusterLogs operation to query the logs of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterLogs operation to query the logs of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/logs HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1380,12 +1494,19 @@ GET /clusters/[ClusterId]/logs HTTP/1.1
 | log_level | String | 0004 | The level of the log. |
 | updated | String | 2020-09-11T10:11:51+08:00 | The time when the log was updated. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/logs HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/logs HTTP/1.1
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
 
-`XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <data>
@@ -1404,11 +1525,13 @@ GET /clusters/[ClusterId]/logs HTTP/1.1
 
 ##### 2.2.4.8 Query information about a Kubernetes version supported by Container Service
 
-You can call the DescribeKubernetesVersionMetadata operation to query a Kubernetes version supported by Container Service. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeKubernetesVersionMetadata operation to query a Kubernetes version supported by Container Service. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /api/v1/metadata/versions HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1449,8 +1572,15 @@ GET /api/v1/metadata/versions HTTP/1.1
 | version | String | "19.05.3" | The version of the container runtime. |
 | version | String | "1.16.9-aliyun.1" | The Kubernetes version. |
 
+Examples Sample requests
+
+```
+GET /api/v1/metadata/versions HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /api/v1/metadata/versions HTTP/1.1
     "ClusterType": "Kubernetes",
     "Region": "cn-beijing"
 ```
@@ -1467,11 +1597,13 @@ GET /api/v1/metadata/versions HTTP/1.1
 
 ##### 2.2.5.1 Modify cluster configurations
 
-You can call the ModifyCluster operation to modify the configurations of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ModifyCluster operation to modify the configurations of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 PUT /api/v2/clusters/[ClusterId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1496,8 +1628,15 @@ PUT /api/v2/clusters/[ClusterId] HTTP/1.1
 | request_id | String | 687C5BAA-D103-4993-884B- C35E4314**** | The ID of the request. |
 | task_id | String | T-5a54309c80282e39ea00**** | The ID of the task. |
 
+Examples Sample requests
+
+```
+PUT /api/v2/clusters/[ClusterId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-PUT /api/v2/clusters/[ClusterId] HTTP/1.1
     "ClusterId": "cb95aa626a47740afbf6aa099b65****"
 ```
 
@@ -1513,11 +1652,13 @@ PUT /api/v2/clusters/[ClusterId] HTTP/1.1
 
 ##### 2.2.5.2 Modify the labels of a cluster
 
-You can call the ModifyClusterTags operation to modify the labels of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ModifyClusterTags operation to modify the labels of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/tags HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1527,14 +1668,23 @@ POST /clusters/[ClusterId]/tags HTTP/1.1
 | key | String |   | No | env | The key of a label. |
 | value | String |   | No | prod | The value of a label. |
 
+Examples Sample requests
+
+```
+POST /clusters/[ClusterId]/tags HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /clusters/[ClusterId]/tags HTTP/1.1
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
     [ {
       "key" : "env",
       "value" : "prod"
     } ]
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -1548,7 +1698,7 @@ POST /clusters/[ClusterId]/tags HTTP/1.1
 
 ##### 2.2.6.1 Upgrade a cluster
 
-You can call the UpgradeCluster operation to upgrade a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UpgradeCluster operation to upgrade a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1
@@ -1562,13 +1712,22 @@ POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1
 | version | String |   | No | 1.14.8-aliyun.1 | The Kubernetes version of the cluster. |
 | next_version | String |   | No | 1.16.9-aliyun.1 | The Kubernetes version to which the cluster can be upgraded. |
 
+Examples Sample requests
+
+```
+POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1
     "ClusterId": ""
     "component_name" : "k8s",
     "next_version" : "1.16.9-aliyun.1",
     "version" : "1.14.8-aliyun.1"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -1576,11 +1735,13 @@ POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1
 
 ##### 2.2.6.2 Query the upgrade status of a cluster
 
-You can call the GetUpgradeStatus operation to query the upgrade status of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the GetUpgradeStatus operation to query the upgrade status of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1596,10 +1757,14 @@ GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
 | message | String | subject to actual return | The description of the upgrade task. |
 | status | String | running | The state of the upgrade task. |
 
+Examples
+
 ```json
 GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1611,20 +1776,31 @@ GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
 
 ##### 2.2.6.3 Suspend the upgrade of a cluster
 
-You can call the PauseClusterUpgrade operation to suspend the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the PauseClusterUpgrade operation to suspend the upgrade of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c82e6987e2961451182edac d74faf**** | The ID of the cluster. |
 
+Examples Sample requests
+
+```
+POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -1632,7 +1808,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1
 
 ##### 2.2.6.4 Cancel the upgrade of a cluster
 
-You can call the CancelClusterUpgrade operation to cancel the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CancelClusterUpgrade operation to cancel the upgrade of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1
@@ -1642,10 +1818,19 @@ POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c106f377e16f34eb1808d6b 9362c9**** | The ID of the cluster. |
 
+Examples Sample requests
+
+```
+POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -1653,20 +1838,31 @@ POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1
 
 ##### 2.2.6.5 Resume the upgrade of a cluster
 
-You can call the ResumeUpgradeCluster operation to resume the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ResumeUpgradeCluster operation to resume the upgrade of a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c82e6987e2961451182edac d74faf**** | The ID of the cluster. |
 
+Examples Sample requests
+
+```
+POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -1676,11 +1872,13 @@ POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1
 
 #### 2.3.1 Query nodes in a cluster
 
-You can call the DescribeClusterNodes operation to query information about the nodes in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNodes operation to query information about the nodes in a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/nodes HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1727,14 +1925,25 @@ GET /clusters/[ClusterId]/nodes HTTP/1.1
 | page_size | Integer | 10 | The number of entries returned per page. |
 | total_count | Integer | 5 | The total number of entries returned. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/nodes HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/nodes HTTP/1.1
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
 | <nodes> <creation_time>"2020-08-25T11:25:35+08:00"</creation_time> <error_message>"***"</error_message> <instance_name>"worker-k8s-for-cs-c5cdf7e3938bc4f8eb0e44b21a80f****"</instance_name> <node_status>"Ready"</node_status> <is_aliyun_node>true</is_aliyun_node> <node_name>"cn-chengdu.192.168.0.36"</node_name> <expired_time>"2099-12-31T23:59:00+08:00"</expired_time> <source>"ess_attach"</source> <instance_type_family>"ecs.c5"</instance_type_family> <instance_id>"i-2vcckdmxp7u0urj2k2rw"</instance_id> <instance_charge_type>"PostPaid"</instance_charge_type> <instance_role>"Worker"</instance_role> <instance_status>"Running"</instance_status> <state>"running"</state> <image_id>"aliyun_2_1903_x64_20G_alibase_20200529.vhd"</image_id> <instance_type>"ecs.c5.xlarge"</instance_type> <nodepool_id>"np0794239424a84eb7a95327369d56****"</nodepool_id> <host_name>"iZ2vcckdmxp7u0urj2k****"</host_name> <ip_address>["192.168.44.247"]</ip_address> </nodes> <page> <page_number>1</page_number> <total_count>5</total_count> <page_size>10</page_size> </page> |   |
+
+`JSON` format
 
 ```json
     "nodes": {
@@ -1768,13 +1977,17 @@ GET /clusters/[ClusterId]/nodes HTTP/1.1
         "page_size": 10
 ```
 
+`}` `}`
+
 #### 2.3.2 Remove nodes from a cluster
 
-You can call the RemoveClusterNodes operation to remove nodes from a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the RemoveClusterNodes operation to remove nodes from a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1783,6 +1996,8 @@ POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1
 | release_node | Boolean |   | No | true | Specifies whether to release the Elastic Compute Service (ECS) instances. Valid values: true : releases the ECS instances. false : does not release the ECS instances. Default value: false Not e You cannot release subscription ECS instances when you remove the nodes. |
 | drain_node | Boolean |   | No | true | Specifies whether to remove all pods from the nodes that you want to remove. Valid values: true : removes all pods from the nodes that you want to remove. false : does not remove pods from the nodes that you want to remove. Default value: false |
 | nodes | String |   | No | ["cn-chengdu.192.168.0.70"] | The name of the node. |
+
+Examples Sample requests
 
 ```json
 POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1
@@ -1796,16 +2011,23 @@ POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1
 
 ```json
     "drain_node": false
+```
+
+`}` Sample success responses `JSON` format
+
+```
 HTTP/1.1 200 OK
 ```
 
 #### 2.3.3 Add existing ECS instances to a cluster
 
-You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/attach HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1834,10 +2056,14 @@ POST /clusters/[ClusterId]/attach HTTP/1.1
 | message | String | successful | Indicates whether the ECS instances are successfully added to the cluster. |
 | task_id | String | T-5a544aff80282e39ea000039 | The ID of the task. |
 
+Examples
+
 ```json
 POST /clusters/[ClusterId]/attach HTTP/1.1
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1849,11 +2075,13 @@ POST /clusters/[ClusterId]/attach HTTP/1.1
 
 #### 2.3.4 Manually add existing instances to a cluster
 
-You can call the DescribeClusterAttachScripts operation to manually add an existing instance to a cluster. This operation returns a unique executable script. You can run this script on an existing instance to add the instance to the specified cluster as a node. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterAttachScripts operation to manually add an existing instance to a cluster. This operation returns a unique executable script. You can run this script on an existing instance to add the instance to the specified cluster as a node. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/attachscript HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |   |   |
 |---|---|---|---|---|---|---|---|
@@ -1873,8 +2101,15 @@ POST /clusters/[ClusterId]/attachscript HTTP/1.1
 | nodepool_id | String |   | No | np1c9229d9be2d432c93f77 a88fca0**** | The ID of the node pool to which you want to add an existing node. This parameter allows you to add an existing node to a specified node pool. |
 | rds_instances | String |   | No | ["rm-xxx"] | The names of the ApsaraDB RDS instances. |
 
+Examples Sample requests
+
+```
+POST /clusters/[ClusterId]/attachscript HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /clusters/[ClusterId]/attachscript HTTP/1.1
     "ClusterId": "ca375a93a30474552ad2a0ebe183e****"
     "nodepool_id": "np1c9229d9be2d432c93f77a88fca0****",
     "format_disk": false,
@@ -1885,6 +2120,8 @@ POST /clusters/[ClusterId]/attachscript HTTP/1.1
 flannel\\\",\\\"coredns\\\"]}"
 ```
 
+`}` Sample success responses
+
 | JSON | format |
 |---|---|
 | HTTP/1.1 200 OK |   |
@@ -1893,11 +2130,13 @@ flannel\\\",\\\"coredns\\\"]}"
 
 ##### 2.3.5.1 Create a node pool
 
-You can call the CreateClusterNodePool operation to create a node pool for a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CreateClusterNodePool operation to create a node pool for a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/nodepools HTTP/1.1
 ```
+
+Request parameters
 
 | Field | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1975,6 +2214,8 @@ POST /clusters/[ClusterId]/nodepools HTTP/1.1
 |---|---|---|---|
 | nodepool_id | String | np5faa48fb31b6b8078d00**** | The ID of the node pool. |
 
+Example Sample requests
+
 ```json
     "nodepool_info": {
         "name": "test"
@@ -2046,6 +2287,8 @@ POST /clusters/[ClusterId]/nodepools HTTP/1.1
     "count": 1
 ```
 
+`}` Sample success responses
+
 | XML | format |
 |---|---|
 | HTTP/1.1 200 OK Content-Type:application/xml <nodepool_id>np31da1b38983f4511b490fc62108a****</nodepool_id> |   |
@@ -2056,11 +2299,13 @@ POST /clusters/[ClusterId]/nodepools HTTP/1.1
 
 ##### 2.3.5.2 Scale out a node pool
 
-You can call the ScaleClusterNodePool operation to scale out a node pool. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ScaleClusterNodePool operation to scale out a node pool. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2079,12 +2324,21 @@ POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|---|---|
 | task_id | String | T-5faa48fb31b6b8078d00**** | The ID of the task. |
 
+Example Sample requests
+
+```
+POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
     "ClusterId": "c23421cfa74454bc8b37163fd19af****",
     "NodepoolId": "np31da1b38983f4511b490fc62108a****"
     "count": 1
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -2096,11 +2350,13 @@ POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 
 ##### 2.3.5.3 Modify the configuration of a node pool
 
-You can call the ModifyClusterNodePool operation to modify the configuration of a node pool. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ModifyClusterNodePool operation to modify the configuration of a node pool. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 ```
+
+Request parameters
 
 | Field | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2168,11 +2424,20 @@ PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 | nodepool_id | String | np737c3ac1ac684703b9e10673aa2c **** | The ID of the node pool. |
 | task_id | String | T-5fd211e924e1d00787000293 | The ID of the task. |
 
+Example Sample requests
+
+```
+PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
     "ClusterId": "c23421cfa74454bc8b37163fd19af****",
     "NodepoolId": "p31da1b38983f4511b490fc62108a****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -2184,11 +2449,13 @@ PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 
 ##### 2.3.5.4 Query node pools
 
-You can call the DescribeClusterNodePools operation to query node pools in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNodePools operation to query node pools in a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/nodepools HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2297,12 +2564,19 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1
 | tee_config | Struct |   | The configurations of confidential computing. |
 | tee_enable | Boolean | false | Indicates whether confidential computing is enabled. Valid values: true : Confidential computing for the cluster is enabled. false : Confidential computing for the cluster is disabled. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/nodepools HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/nodepools HTTP/1.1
     "ClusterId": "cc0f87de0b8fb403f86e10e204f83****"
 ```
 
-`XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <nodepools>
@@ -2385,6 +2659,8 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1
 </nodepools>
 ```
 
+`JSON` format
+
 ```json
     "nodepools": {
         "tee_config": {
@@ -2456,7 +2732,7 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1
                 "key": "key"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "auto_scaling": {
@@ -2495,6 +2771,8 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1
             "healthy_nodes": 3
 ```
 
+`}` `}` `}`
+
 ##### 2.3.5.5 Query the details of a node pool
 
 You can call the DescribeClusterNodePoolDetail operation to query the details of a node pool. This operation uses only common request headers. For more information, see Common request parameters.
@@ -2502,6 +2780,8 @@ You can call the DescribeClusterNodePoolDetail operation to query the details of
 ```
 GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2605,13 +2885,20 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 | tee_config | Struct |   | The configurations of confidential computing. |
 | tee_enable | Boolean | false | Indicates whether confidential computing is enabled. Valid values: true : Confidential computing for the cluster is enabled. false : Confidential computing for the cluster is disabled. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
     "ClusterId": "c23421cfa74454bc8b37163fd19af****",
     "NodepoolId": "np31da1b38983f4511b490fc62108a****"
 ```
 
-`XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <tee_config>
@@ -2686,6 +2973,8 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 </status>
 ```
 
+`JSON` format
+
 ```json
     "tee_config": {
         "tee_enable": false
@@ -2756,7 +3045,7 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
             "key": "key"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "auto_scaling": {
@@ -2794,6 +3083,8 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
         "healthy_nodes": 3
 ```
 
+`}` `}`
+
 ##### 2.3.5.6 Delete a node pool
 
 You can call the DeleteClusterNodepool operation to delete a node pool. This operation uses only common request headers. For more information, see Common request parameters.
@@ -2811,13 +3102,20 @@ DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|---|---|
 | request_id | String | 7263C978-3DBD-4E06-B319- 793B38A2**** | The ID of the request. |
 
+Examples Sample requests
+
+```
+DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
     "ClusterId": "c61da77e8bfbc4c4c999af2b51b65****",
     "NodepoolId": "np30db56bcac7843dca90b999c8928****"
 ```
 
-`XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <request_id>7263C978-3DBD-4E06-B319-793B38A2****</request_id>
@@ -2831,11 +3129,13 @@ DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 
 #### 2.4.1 Create an orchestration template
 
-You can call the CreateTemplate operation to create an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CreateTemplate operation to create an orchestration template. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST|PUT /templates HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2857,14 +3157,23 @@ POST|PUT /templates HTTP/1.1
 |---|---|---|---|
 | template_id | String | ba1fe77b-b01e-4640-b77e- 8f1b80e3**** | The ID of the template. |
 
+Examples Sample requests
+
+```
+POST /templates HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /templates HTTP/1.1
     "name": "service-account-template",
     "template": "apiVersion:v1\\nkind:ServiceAccount\\nmetadata:\\n name:test-sa",
     "tags": "test",
     "description": "this is test",
     "template_type": "kubernetes"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -2876,22 +3185,31 @@ POST /templates HTTP/1.1
 
 #### 2.4.2 Delete an orchestration template
 
-You can call the DeleteTemplate operation to delete an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DeleteTemplate operation to delete an orchestration template. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 DELETE /templates/[TemplateId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | TemplateId | String | Path | Yes | 20663627-81ee-4cfe-9b69- c96fcb84**** | The ID of the template. |
 
+Examples Sample requests
+
+```
+DELETE /templates/[TemplateId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-DELETE /templates/[TemplateId] HTTP/1.1
     "TemplateId": "20663627-81ee-4cfe-9b69-c96fcb84****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```
 HTTP/1.1 200 OK
@@ -2903,11 +3221,13 @@ HTTP/1.1 200 OK
 
 #### 2.4.3 Query all orchestration templates
 
-You can call the DescribeTemplates operation to query all orchestration templates. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeTemplates operation to query all orchestration templates. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /templates HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2936,14 +3256,25 @@ GET /templates HTTP/1.1
 | template_with_hist_id | String | ad81d115-7c8b-47e7-a222- 9c28d7f6e588 | The ID of the parent template. The value of template_with_hist_id is the same for each template version. This allows you to manage different template versions. |
 | updated | String | 2020-06-10T16:30:16+08:00 | The time when the template was updated. |
 
+Examples Sample requests
+
 ```
-GET /templates HTTP/1.1
+GET /templates HTTP/1.1 Common request headers
+```
+
+`{`
+
+```
     "template\_type": "kubernetes"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
 | <templates> <template>apiVersion: apps/v1\nkind: Deployment\nmetadata:\n name: nginx-deployment-basic\n labels:\n app: nginx\nspec:\n replicas: 2\n selector: \n matchLabels:\n app: nginx\n template:\n metadata:\n labels:\n app: nginx\n spec:\n containers:\n - name: nginx\n image: busybox:latest\n ports:\n - containerPort: 80</template> <template_with_hist_id>ad81d115-7c8b-47e7-a222-9c28d7f6e588</template_with_hist_id> <created>2020-06-10T16:30:16+08:00</created> <name>webserver</name> <description>a web server</description> <template_type>kubernetes</template_type> <acl>private</acl> <id>874ec485-e7e6-4373-8a3b-47bde8ae****</id> <updated>2020-06-10T16:30:16+08:00</updated> <tags>kubernetes</tags> </templates> <page_info> <page_number>20</page_number> <total_count>50</total_count> <page_size>3</page_size> </page_info> |   |
+
+`JSON` format
 
 ```json
     "templates": {
@@ -2969,13 +3300,17 @@ GET /templates HTTP/1.1
         "page_size": 3
 ```
 
+`}` `}`
+
 #### 2.4.4 Query an orchestration template
 
-You can call the DescribeTemplateAttributeoperation to query the details of an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeTemplateAttributeoperation to query the details of an orchestration template. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /templates/[TemplateId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2999,10 +3334,19 @@ GET /templates/[TemplateId] HTTP/1.1
 | template_with_hist_id | String | 874ec485-e7e6-4373-8a3b- 47bde8ae**** | The unique ID of the template. The value remains unchanged after the template is updated. |
 | updated | String | 2020-09-16T19:21:29+08:00 | The time when the template was updated. |
 
+Examples Sample requests
+
+```
+GET /templates/[TemplateId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /templates/[TemplateId] HTTP/1.1
     "TemplateId": "874ec485-e7e6-4373-8a3b-47bde8a****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -3014,11 +3358,13 @@ GET /templates/[TemplateId] HTTP/1.1
 
 #### 2.4.5 Update an orchestration template
 
-You can call the UpdateTemplate operation to update an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UpdateTemplate operation to update an orchestration template. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 PUT /templates/[TemplateId] HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3037,13 +3383,25 @@ PUT /templates/[TemplateId] HTTP/1.1
 |---|---|
 |   | compose . |
 
+Examples Sample requests
+
+```
+PUT /templates/[TemplateId] HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-PUT /templates/[TemplateId] HTTP/1.1
     "name": "service-account-template",
     "template": "apiVersion:v1\\nkind:ServiceAccount\\nmetadata:\\n name:test-sa",
     "tags": "test",
     "description": "this is test",
     "template_type": "kubernetes"
+```
+
+`}` Sample success responses `JSON` format
+
+```
 HTTP/1.1 200 OK
 ```
 
@@ -3051,11 +3409,13 @@ HTTP/1.1 200 OK
 
 #### 2.5.1 Install a component in a cluster
 
-You can call the InstallClusterAddons to install a component in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the InstallClusterAddons to install a component in a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/components/install HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3068,10 +3428,19 @@ POST /clusters/[ClusterId]/components/install HTTP/1.1
 |---|---|---|---|---|---|
 | version | String |   | Yes | v1.0.0.2-cc3b2d6-aliyun | The version of the component. Not e You can call the DescribeClusterAddonsVersion operation to query the version of the component. For more information, see Query the details of the components in a cluster. |
 
+Examples Sample requests
+
+```
+POST /clusters/[ClusterId]/components/install HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /clusters/[ClusterId]/components/install HTTP/1.1
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -3083,11 +3452,13 @@ POST /clusters/[ClusterId]/components/install HTTP/1.1
 
 #### 2.5.2 Query the details of the components in a cluster
 
-You can call the DescribeAddons operation to query the details of the components that are installed in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeAddons operation to query the details of the components that are installed in a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/components/metadata HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3111,10 +3482,19 @@ GET /clusters/components/metadata HTTP/1.1
 | required | String | false | Indicates whether the component is required in a Container Service cluster. Valid values: true : The component is required and must be installed when a cluster is created. false : The component is optional. After a cluster is created, you can go to the Add-ons page to install the component. |
 | version | String | 0.5.0 | The version of the component. |
 
+Examples Sample requests
+
+```
+GET /clusters/components/metadata HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/components/metadata HTTP/1.1
     "region": "cn-beijing"
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -3151,12 +3531,19 @@ GET /clusters/[ClusterId]/components/version HTTP/1.1
 | value | String | npd:\n # Custom monitor definitions to add to Node Problem Detector **** | The custom parameter setting. When you install a component, you can customize parameter settings for the component. |
 | version | String | 1.2.1 | The current version of the component. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/components/version HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/components/version HTTP/1.1
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <key>
@@ -3180,22 +3567,33 @@ GET /clusters/[ClusterId]/components/version HTTP/1.1
 
 #### 2.5.4 Query the upgrade status of components in a cluster
 
-You can call the DescribeClusterAddonsUpgradeStatus operation to query the upgrade status of the specified components in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterAddonsUpgradeStatus operation to query the upgrade status of the specified components in a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/components/upgradestatus HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c23421cfa74454bc8b37163f d19af**** | The ID of the cluster. |
 | componentIds | List<String> | Query | Yes | ["metric-server"] | The name of the component. |
 
+Examples Sample requests
+
+```
+GET /clusters/[ClusterId]/components/upgradestatus HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /clusters/[ClusterId]/components/upgradestatus HTTP/1.1
     "ClusterId": "c23421cfa74454bc8b37163fd19af****",
     "componentIds": "[metric-server"]
 ```
+
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -3221,10 +3619,19 @@ POST /clusters/[ClusterId]/components/upgrade HTTP/1.1
 | next_version | String |   | Yes | 1.6.7 | The required version. You can call the DescribeClusterAddonsVersion operation to query the version to which the component can be upgraded. |
 | version | String |   | No | v1.6.2 | The current version of the component. |
 
+Examples Sample requests
+
+```
+POST /clusters/[ClusterId]/components/upgrade HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /clusters/[ClusterId]/components/upgrade HTTP/1.1
     "ClusterId": "cf4299b79b3e34226abfdc80a4bda****"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -3232,11 +3639,13 @@ POST /clusters/[ClusterId]/components/upgrade HTTP/1.1
 
 #### 2.5.6 Uninstall components from a cluster
 
-You can call the UnInstallClusterAddons operation to uninstall components from a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UnInstallClusterAddons operation to uninstall components from a cluster. Request headers This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/components/uninstall HTTP/1.1
 ```
+
+Request parameters
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3244,10 +3653,19 @@ POST /clusters/[ClusterId]/components/uninstall HTTP/1.1
 | addons | Array | Body | No |   | The list of components that you want to uninstall. The list is an array. |
 | name | String |   | No | ack-node-problem- detector | The name of the component. |
 
+Examples Sample requests
+
+```
+POST /clusters/[ClusterId]/components/uninstall HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /clusters/[ClusterId]/components/uninstall HTTP/1.1
     "ClusterId": "c5b5e80b0b64a4bf6939d2d8fbbc5****"
 ```
+
+`}` Sample success responses
 
 | JSON | format |
 |---|---|
@@ -3303,6 +3721,8 @@ rectory.
     // Display the results.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
+
+`}`
 
 ### 3.2 Use the ASAPI gateway to make API calls
 
@@ -3424,7 +3844,7 @@ Apsara Stack Security Token Service (STS) allows you to manage temporary credent
 
 #### 3.3.2 AssumeRole
 
-Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
+Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role. Request parameters
 
 | Paramet er | T ype | Required | Example | Descript ion |
 |---|---|---|---|---|
@@ -3445,7 +3865,7 @@ Obtains a Security Token Service (STS) token to assume a RAM role. In this opera
 | Arn | String | acs:ram::123456789012****:role/ad minrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495****:alice | The ID of the temporary identity that you use to assume the RAM role. |
 
-Add Project Object Model (POM) dependencies The Alibaba Cloud core library is required. Perform the following steps to add the Alibaba Cloud core library to POM:
+Examples Add Project Object Model (POM) dependencies The Alibaba Cloud core library is required. Perform the following steps to add the Alibaba Cloud core library to POM:
 
 ```xml
     <dependency>
@@ -3499,7 +3919,7 @@ obal:region}.${global:internet-domain}.
             System.out.println(e.getErrMsg());
 ```
 
-Call examples In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
+`}` `}` `}` Call examples In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
 
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -3539,7 +3959,7 @@ ceding step.
             System.out.println(e.getErrMsg());
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HT T P st at us code | Error code | Error message | Descript ion |
 |---|---|---|---|

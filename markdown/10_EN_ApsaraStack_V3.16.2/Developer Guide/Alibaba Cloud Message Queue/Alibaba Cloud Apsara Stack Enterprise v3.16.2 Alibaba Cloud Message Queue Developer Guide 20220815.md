@@ -5,7 +5,7 @@ doc_version: "20220815"
 pdf_pages: 113
 source_pdf: "f9272096efccfa90_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Alibaba Cloud Message Queue Developer Guide 20220815.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Alibaba%20Cloud%20Message%20Queue%20Developer%20Guide%2020220815.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Alibaba Cloud Message Queue Developer Guide
@@ -310,7 +310,7 @@ Obtain an organization ID You can call the GetOrganizationList operation to obta
 2. In the top navigation bar, choose Product s > Middleware > Message Queue.
 3. In the left-side navigation pane, click Inst ances.
 4. In the top navigation bar of the Inst ances page, click the name of the instance that you want to
-view. On the Inst ance Inf ormat ion tab, view the instance ID. The following additional response parameters are returned by default after you call API operations to query the instances of cloud services.
+view. On the Inst ance Inf ormat ion tab, view the instance ID. Response parameters The following additional response parameters are returned by default after you call API operations to query the instances of cloud services.
 
 | Parameter | Description |
 |---|---|
@@ -494,7 +494,7 @@ If a Message Queue for Apache RocketMQ API operation is successfully called, HTT
 
 ###### 3.1.6.1.1. /json/region/list
 
-Queries region IDs. The queried region IDs are used as the value of the common request parameter _regionId for other operations. Scenarios You can call this operation to query region IDs. The queried region IDs are used as the value of the common request parameter _regionId for other operations. For more information about common request parameters, see Common request parameters. For more information about common response parameters, see Common response parameters.
+Queries region IDs. The queried region IDs are used as the value of the common request parameter _regionId for other operations. Scenarios You can call this operation to query region IDs. The queried region IDs are used as the value of the common request parameter _regionId for other operations. Request parameters For more information about common request parameters, see Common request parameters. Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -512,13 +512,13 @@ RegionDo
 
 ###### 3.1.6.2.1. /json/cluster/list
 
-Queries clusters. When you create an instance, you must use a cluster name to specify the relationship between the instance and the cluster. You can call this operation to query cluster names. For more information about common request parameters, see Common request parameters.
+Queries clusters. When you create an instance, you must use a cluster name to specify the relationship between the instance and the cluster. You can call this operation to query cluster names. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | regionId _ | String | Yes | The ID of the region where you want to query clusters. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -537,7 +537,7 @@ ClusterInfoDo
 
 ###### 3.1.6.3.1. /json/vpcTunnel/tunnelSwitch
 
-Switches the network access mode for virtual private clouds (VPCs) in a cluster and applies for a virtual IP address (VIP) in the specified access mode for RocketMQ brokers and RocketMQ Name Servers in the cluster. Scenarios An instance provides two network access modes for VPCs: Single Tunnel and Any Tunnel. Import ant not es: The network access mode for VPCs is switched in a specified cluster. This affects all topics in which messages are being sent and received in the cluster. Therefore, check the impact scope before you call this operation. After the network access mode for VPCs is switched in a cluster, change the configuration of all clients that are connected to the cluster to the return value of this operation: properties.put(PropertyKeyConst.NAMESRV_ADDR,"Return value"); For more information about common request parameters, see Common request parameters.
+Switches the network access mode for virtual private clouds (VPCs) in a cluster and applies for a virtual IP address (VIP) in the specified access mode for RocketMQ brokers and RocketMQ Name Servers in the cluster. Scenarios An instance provides two network access modes for VPCs: Single Tunnel and Any Tunnel. Import ant not es: The network access mode for VPCs is switched in a specified cluster. This affects all topics in which messages are being sent and received in the cluster. Therefore, check the impact scope before you call this operation. After the network access mode for VPCs is switched in a cluster, change the configuration of all clients that are connected to the cluster to the return value of this operation: properties.put(PropertyKeyConst.NAMESRV_ADDR,"Return value"); Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -550,7 +550,7 @@ Switches the network access mode for virtual private clouds (VPCs) in a cluster 
 | force | Boolean | No | Specifies whether to forcibly switch the network access mode for VPCs. A value of true indicates that the network access mode for VPCs is forcibly switched regardless of whether RocketMQ brokers are processing messages in the cluster. A value of false indicates that the switching is blocked if the sum of the transactions per second (TPS) for receiving messages and the TPS for sending messages is greater than 10 on a single RocketMQ broker. Default value: false. |
 | vSwitchId | String | No | The VPC in which the VIP in Single Tunnel mode is created. This parameter takes effect only when the tunnelType parameter is set to singleTunnel. If you have only one VPC or the tunnelType parameter is set to anyTunnel, this parameter can be left unspecified. |
 
-The VIP of RocketMQ Name Servers is returned in the JSON format. You must change the configuration of all clients that are connected to the cluster to properties.put(PropertyKeyConst.NAMESRV_ADDR,"Return value");. Then, restart your application to make the configuration take effect.
+Response parameters The VIP of RocketMQ Name Servers is returned in the JSON format. You must change the configuration of all clients that are connected to the cluster to properties.put(PropertyKeyConst.NAMESRV_ADDR,"Return value");. Then, restart your application to make the configuration take effect.
 
 ###### 3.1.6.3.2. /json/instance/baseInfo
 
@@ -560,7 +560,7 @@ Queries the basic information about an instance, including the endpoints for sen
 |---|---|---|---|
 | instanceId | String | Yes | The ID of the instance. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -589,7 +589,7 @@ Endpoints
 
 ###### 3.1.6.3.3. /json/instance/create
 
-Creates an instance. Not e By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. A region can contain up to 500 instances. The name of an instance must be unique in the region where the instance is deployed. For more information about common request parameters, see Common request parameters.
+Creates an instance. Not e By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. A region can contain up to 500 instances. The name of an instance must be unique in the region where the instance is deployed. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -608,17 +608,17 @@ For more information about common response parameters, see Common response param
 
 ###### 3.1.6.3.4. /json/instance/delete
 
-Deletes an instance. Not e By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. An instance can be deleted only when it has no topics or group IDs. An instance can be deleted only when it has no topics or group IDs. For more information about common request parameters, see Common request parameters.
+Deletes an instance. Not e By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. An instance can be deleted only when it has no topics or group IDs. An instance can be deleted only when it has no topics or group IDs. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The ID of the instance. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ###### 3.1.6.3.5. /json/instance/list
 
-Queries all instances in the current environment. Scenarios You can call this operation to query the information about all instances for instance management. For more information about common request parameters, see Common request parameters. For more information about common response parameters, see Common response parameters.
+Queries all instances in the current environment. Scenarios You can call this operation to query the information about all instances for instance management. Request parameters For more information about common request parameters, see Common request parameters. Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -640,7 +640,7 @@ InstanceVO
 
 ###### 3.1.6.3.6. /json/instance/update
 
-Updates the name and description of an instance. Not e By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. A region can contain up to 500 instances. The name of an instance must be unique in the region where the instance is deployed. For more information about common request parameters, see Common request parameters.
+Updates the name and description of an instance. Not e By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. A region can contain up to 500 instances. The name of an instance must be unique in the region where the instance is deployed. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -651,13 +651,13 @@ Updates the name and description of an instance. Not e By default, you must use 
 | instanceName | String | No | The name of the instance. The name must be 3 to 64 characters in length. If you do not specify this parameter, the name of the instance is not updated. Not e The instance name must be unique in a region. |
 | remark | String | No | The description of the instance. If you do not specify this parameter, the description of the instance is not updated. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ##### 3.1.6.4 Topic management
 
 ###### 3.1.6.4.1. /json/topic/create
 
-Creates a topic in a region. Scenarios You can call this operation when new topics are required to publish new applications or implement service logic. By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. For more information about common request parameters, see Common request parameters.
+Creates a topic in a region. Scenarios You can call this operation when new topics are required to publish new applications or implement service logic. By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -669,7 +669,7 @@ Creates a topic in a region. Scenarios You can call this operation when new topi
 | orderType | Integer | Yes | The type of message in the topic. Not e 0: regular message 1: partitionally ordered message 2: globally ordered message 4: transactional message 5: scheduled or delayed message |
 | remark | String | No | The description of the topic. You can leave this parameter unspecified. |
 
-For more information about common response parameters, see Common response parameters. Examples Signature calculation method for the _signature parameter. For more information, see Common request parameters. Example:
+Response parameters For more information about common response parameters, see Common response parameters. Examples Signature calculation method for the _signature parameter. For more information, see Common request parameters. Example:
 
 ```
 echo -n '1498029701000ACCESSKEY_XXXonsConsolemq-privateTOPIC_XXX' | openssl dgst -hmac 'SEC RETKET_XXX' -sha1 -binary | base64
@@ -689,7 +689,7 @@ Not e Contact an administrator to obtain the project-specific domain name, and r
 
 ###### 3.1.6.4.2. /json/topic/delete
 
-Deletes a topic within your account. Scenarios You can call this operation when you need to recycle resources. For example, when applications are deleted, you need to recycle relevant resources. After a topic is deleted, the backend of Message Queue for Apache RocketMQ recycles the resources of the topic. This process is time-consuming. Therefore, we recommend that you do not create a topic immediately after you delete one. If a topic fails to be deleted, troubleshoot the issue based on the returned error code. Not ice The operation to delete a topic results in the cleanup of all subscriptions under the topic. Proceed with caution. For more information about common request parameters, see Common request parameters.
+Deletes a topic within your account. Scenarios You can call this operation when you need to recycle resources. For example, when applications are deleted, you need to recycle relevant resources. After a topic is deleted, the backend of Message Queue for Apache RocketMQ recycles the resources of the topic. This process is time-consuming. Therefore, we recommend that you do not create a topic immediately after you delete one. If a topic fails to be deleted, troubleshoot the issue based on the returned error code. Not ice The operation to delete a topic results in the cleanup of all subscriptions under the topic. Proceed with caution. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -699,22 +699,22 @@ Deletes a topic within your account. Scenarios You can call this operation when 
 |---|---|---|---|
 | instanceId | String | Yes | The ID of the instance where the topic you want to delete resides. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ###### 3.1.6.4.3. /json/topic/get
 
-Queries a topic. Scenarios You can call this operation to query the basic information about a topic, such as the owner and status. For more information about common request parameters, see Common request parameters.
+Queries a topic. Scenarios You can call this operation to query the basic information about a topic, such as the owner and status. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | topic | String | Yes | The name of the topic that you want to query. |
 | instanceId | String | Yes | The ID of the instance where the topic you want to query resides. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ###### 3.1.6.4.4. /json/topic/listInPage
 
-Queries one or more topics within your account by page. Scenarios You can call this operation to query the information about one or more topics within your account by page. You can call the listNames operation to query the names of all topics, and then call this operation to query the detailed information about topics. For more information about common request parameters, see Common request parameters.
+Queries one or more topics within your account by page. Scenarios You can call this operation to query the information about one or more topics within your account by page. You can call the listNames operation to query the names of all topics, and then call this operation to query the detailed information about topics. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -723,11 +723,11 @@ Queries one or more topics within your account by page. Scenarios You can call t
 | pageSize | Integer | No | The number of topics to return on each page. Default value: 20. |
 | instanceId | String | Yes | The ID of the instance for which you want to query topics. |
 
-The specified number of topics on the specified page is returned in the JSON format.
+Response parameters The specified number of topics on the specified page is returned in the JSON format.
 
 ###### 3.1.6.4.5. /json/topic/update
 
-Configures the read/write mode for a topic. Scenarios By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. For more information about common request parameters, see Common request parameters.
+Configures the read/write mode for a topic. Scenarios By default, you must use your Apsara Stack tenant account to call this operation. RAM users can call this operation only after they are authorized. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -738,7 +738,7 @@ Configures the read/write mode for a topic. Scenarios By default, you must use y
 | topic | String | Yes | The name of the topic that you want to configure. A topic name must be unique within your account even across different regions. |
 | perm | Integer | Yes | The read/write mode that you want to configure for the topic. Valid values: 6: Both read and write operations are supported. 4: Write operations are prohibited. 2: Read operations are prohibited. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ###### 3.1.6.4.6. /json/topic/listNames
 
@@ -748,18 +748,18 @@ Queries the names of all topics within your account. You can use this operation 
 |---|---|---|---|
 | instanceId | String | Yes | The ID of the instance for which you want to query the names of topics. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 
-The names of all topics that are created within your account are returned in the JSON format.
+Response parameters The names of all topics that are created within your account are returned in the JSON format.
 
 ###### 3.1.6.4.7. /json/topic/subDetail
 
-Queries the online consumer groups that have subscribed to a topic. For more information about common request parameters, see Common request parameters.
+Queries the online consumer groups that have subscribed to a topic. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The ID of the instance where the topic you want to query resides. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 | topic | String | Yes | The name of the topic that you want to query. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -792,7 +792,7 @@ Creates a group ID. Usage notes When you call this operation, take note of the f
 | groupId | String | Yes | The group ID that you want to create. Take note of the following items: The group ID must start with GID or _ GID- and can contain letters, digits, hyphens (-), and underscores ( ). _ The group ID must be 5 to 64 characters in length. Not e The group ID cannot be modified after it is created. |
 | remark | String | No | The description of the group ID. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -800,7 +800,7 @@ For more information about common response parameters, see Common response param
 
 ###### 3.1.6.5.2. /json/group/delete
 
-Deletes a group ID that is created after you call the /json/group/create operation. For more information about common request parameters, see Common request parameters.
+Deletes a group ID that is created after you call the /json/group/create operation. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -810,11 +810,11 @@ Deletes a group ID that is created after you call the /json/group/create operati
 | instanceId | String | Yes | The ID of the instance where the group ID you want to delete resides. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 | groupId | String | Yes | The group ID that you want to delete. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ###### 3.1.6.5.3. /json/group/list
 
-Queries one or more group IDs. For more information about common request parameters, see Common request parameters.
+Queries one or more group IDs. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -824,7 +824,7 @@ Queries one or more group IDs. For more information about common request paramet
 |---|---|---|---|
 | groupId | String | No | The group ID that you want to query. If you do not specify this parameter, all group IDs are queried. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -849,7 +849,7 @@ Queries the topics to which a group has subscribed. No data can be queried if th
 | instanceId | String | Yes | The ID of the instance where the group ID you want to query resides. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 | groupId | String | Yes | The group ID that you want to query. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -876,7 +876,7 @@ SubscriptionDataListItem
 
 ###### 3.1.6.5.5. /json/group/consumerUpdate
 
-Configures the read permissions on messages for a consumer group that is identified by a group ID. For more information about common request parameters, see Common request parameters.
+Configures the read permissions on messages for a consumer group that is identified by a group ID. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -890,7 +890,7 @@ For more information about common response parameters, see Common response param
 
 ###### 3.1.6.6.1. /json/consumer/accumulate
 
-Queries the message accumulation of a consumer group. The queried information includes the number of unconsumed messages and the consumption latency of the consumer group. Scenarios You can call this operation to query the information about message accumulation in the production environment where you need to know the consumption progress of consumer groups. You can use the queried information to analyze message consumption and consumption latency. For more information about common request parameters, see Common request parameters.
+Queries the message accumulation of a consumer group. The queried information includes the number of unconsumed messages and the consumption latency of the consumer group. Scenarios You can call this operation to query the information about message accumulation in the production environment where you need to know the consumption progress of consumer groups. You can use the queried information to analyze message consumption and consumption latency. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -898,7 +898,7 @@ Queries the message accumulation of a consumer group. The queried information in
 | groupId | String | Yes | The group ID that you want to query. |
 | detail | Boolean | No | Specifies whether to query the detailed information about message accumulation, including the message accumulation details of each queue. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -929,7 +929,7 @@ DetailInTopicList
 
 ###### 3.1.6.6.2. /json/consumer/status
 
-Queries the detailed information about a group ID, including the subscription consistency, consumption TPS, load balancing, and consumer connection status. Scenarios Not ice You can call this operation to troubleshoot abnormal consumption after you confirm whether messages are accumulated and whether consumers are online. You can check whether subscriptions are consistent for a group ID and whether load balancing is normal, and query the jstack information of online consumers. This operation uses a lot of backend methods for data aggregation. Therefore, the system responds slowly. We recommend that you do not frequently call this operation. For more information about common request parameters, see Common request parameters.
+Queries the detailed information about a group ID, including the subscription consistency, consumption TPS, load balancing, and consumer connection status. Scenarios Not ice You can call this operation to troubleshoot abnormal consumption after you confirm whether messages are accumulated and whether consumers are online. You can check whether subscriptions are consistent for a group ID and whether load balancing is normal, and query the jstack information of online consumers. This operation uses a lot of backend methods for data aggregation. Therefore, the system responds slowly. We recommend that you do not frequently call this operation. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -941,7 +941,7 @@ Queries the detailed information about a group ID, including the subscription co
 |---|---|---|---|
 | needJstack | Boolean | No | Specifies whether to display jstack information. Valid values: true: displays jstack information. You can obtain the jstack information from the Jstack parameter in the response. false: does not display jstack information. The Jstack parameter is empty in the response. Default value: false. Not e If you need to display jstack information, make sure that the detail parameter in the request is set to true. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1044,6 +1044,8 @@ Queries the connection information about the consumer instances that are identif
 | instanceId | String | Yes | The ID of the instance where the group ID you want to query resides. If your instance has no namespace, you can leave this parameter unspecified. If your instance has a namespace, you must specify this parameter. For more information about namespaces, see Updates. |
 | groupId | String | Yes | The group ID that you want to query. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | data | List(ConnectionDo) | The connection information for the group ID. |
@@ -1060,7 +1062,7 @@ ConnectionDo
 
 ###### 3.1.6.6.4. /json/consumer/timespan
 
-Queries the timestamps of messages and the latest time of consumption in a topic to which a group has subscribed. Scenarios You can call this operation to query the latest time and earliest time of messages in a topic on a RocketMQ broker, and the last consumption time of consumers. This operation is used to display the consumption progress, and can be used together with the /json/consumer/accumulate operation. For more information, see Query consumption accumulation (/json/consumer/accumulate). For more information about common request parameters, see Common request parameters.
+Queries the timestamps of messages and the latest time of consumption in a topic to which a group has subscribed. Scenarios You can call this operation to query the latest time and earliest time of messages in a topic on a RocketMQ broker, and the last consumption time of consumers. This operation is used to display the consumption progress, and can be used together with the /json/consumer/accumulate operation. For more information, see Query consumption accumulation (/json/consumer/accumulate). Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1068,7 +1070,7 @@ Queries the timestamps of messages and the latest time of consumption in a topic
 | groupId | String | Yes | The group ID that you want to query. |
 | topic | String | Yes | The topic to which the group has subscribed. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1085,7 +1087,7 @@ Data
 
 ###### 3.1.6.6.5. /json/consumer/resetoffset
 
-Resets a consumer offset to a timestamp for a group ID. Scenarios You can call this operation to clear accumulated messages or reset the consumption progress. You can clear accumulated messages by using one of the following methods: Clear all messages. Clear the messages that are sent before a specified point in time. For more information about common request parameters, see Common request parameters.
+Resets a consumer offset to a timestamp for a group ID. Scenarios You can call this operation to clear accumulated messages or reset the consumption progress. You can clear accumulated messages by using one of the following methods: Clear all messages. Clear the messages that are sent before a specified point in time. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1101,13 +1103,13 @@ Resets a consumer offset to a timestamp for a group ID. Scenarios You can call t
 | type | Integer | Yes | The method that is used to clear accumulated messages. Valid values: 0: clears all messages. 1: clears the messages that are sent before a specified point in time. |
 | resetTime | Long | No | The timestamp to which the consumption progress is reset. This parameter takes effect only when the type parameter is set to 1. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ##### 3.1.6.7 Message query
 
 ###### 3.1.6.7.1. /json/message/trace
 
-Queries whether a message has been consumed based on the message ID. Scenarios This operation is implemented based on the internal offset mechanism of Message Queue for Apache RocketMQ. In most cases, the results are valid. However, if you have reset the consumer offset or cleared messages, the results may be invalid. For more information about common request parameters, see Common request parameters.
+Queries whether a message has been consumed based on the message ID. Scenarios This operation is implemented based on the internal offset mechanism of Message Queue for Apache RocketMQ. In most cases, the results are valid. However, if you have reset the consumer offset or cleared messages, the results may be invalid. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1118,7 +1120,7 @@ Queries whether a message has been consumed based on the message ID. Scenarios T
 | topic | String | Yes | The topic to which the message belongs. |
 | msgId | String | Yes | The ID of the message. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1138,7 +1140,7 @@ MessageTrack
 
 ###### 3.1.6.7.2. /json/message/getById
 
-Queries a message based on the message ID and queries whether the message has been consumed. The queried information about the message includes the sending time, RocketMQ broker, and properties such as the key and tag. Scenarios You can call this operation to query the information about a message based on the message ID. This is an exact match. You can obtain the message ID from the SendResult parameter that is returned after the message is sent. Therefore, you must store the results that are returned after each message is sent. For more information about common request parameters, see Common request parameters.
+Queries a message based on the message ID and queries whether the message has been consumed. The queried information about the message includes the sending time, RocketMQ broker, and properties such as the key and tag. Scenarios You can call this operation to query the information about a message based on the message ID. This is an exact match. You can obtain the message ID from the SendResult parameter that is returned after the message is sent. Therefore, you must store the results that are returned after each message is sent. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1149,7 +1151,7 @@ Queries a message based on the message ID and queries whether the message has be
 | msgId | String | Yes | The ID of the message that you want to query. |
 | topic | String | Yes | The topic to which the message belongs. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1176,7 +1178,7 @@ Data
 Queries messages by using fuzzy match based on the topic and message key. Scenarios You can call this operation to query the information about messages based on the message key. This is a fuzzy match. A key may not be unique for a message. Therefore, the return results may contain multiple messages. This operation is applicable to scenarios where you cannot obtain message IDs. In these scenarios, perform the following steps:
 1. Call this operation to query message IDs by using fuzzy match.
 2. Call the /json/message/getById operation to query a message based on the message ID. For more
-information, see Query messages by message ID (/json/message/getById). For more information about common request parameters, see Common request parameters.
+information, see Query messages by message ID (/json/message/getById). Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1184,7 +1186,7 @@ information, see Query messages by message ID (/json/message/getById). For more 
 | topic | String | Yes | The topic to which the messages belong. |
 | key | String | Yes | The key of the messages. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1224,7 +1226,7 @@ the first query. When you query the messages, specify the query task ID and curr
 | currentPage | Integer | Yes | The number of the page to return. Valid values: 1 to 50. |
 | pageSize | Integer | No | The number of entries to return on each page. Valid values: 5 to 50. Default value: 20. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1243,7 +1245,7 @@ MsgFoundDo
 
 ###### 3.1.6.8.1. /json/trend/topicInputTps
 
-Queries the statistics about messages that are written to a topic within a period of time. Scenarios You can call this operation to query online message statistics for a specified topic, and query the number of messages that are written or the TPS curve within a specified period of time. Not ice If the message volume is small and messages are unevenly distributed for your application, the TPS curve may be flat. We recommend that you query the total number of messages that are written to the topic. For more information about common request parameters, see Common request parameters.
+Queries the statistics about messages that are written to a topic within a period of time. Scenarios You can call this operation to query online message statistics for a specified topic, and query the number of messages that are written or the TPS curve within a specified period of time. Not ice If the message volume is small and messages are unevenly distributed for your application, the TPS curve may be flat. We recommend that you query the total number of messages that are written to the topic. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1256,6 +1258,8 @@ Queries the statistics about messages that are written to a topic within a perio
 | endTime | Long | Yes | The end of the time range to query. Unit: milliseconds. |
 | period | Long | Yes | The sampling period. Unit: minutes. Valid values: 1, 5, and 10. |
 | type | Integer | Yes | The type of statistics that you want to query. Valid values: 0: queries the number of messages that are written to the specified topic within the specified period of time. 1: queries the TPS curve within the specified period of time. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1277,7 +1281,7 @@ StatsDataDo
 
 ###### 3.1.6.8.2. /json/trend/groupOutputTps
 
-Queries the statistics about messages that are consumed by a group within a period of time. Scenarios When the system generates consumption statistics online, you can call this operation to query the following statistics based on a specified group ID: The statistical curve of the total number of consumed messages The statistical curve of the TPS for message consumption Not ice If the message volume is small and messages are unevenly distributed for your application, the TPS curve may be flat. We recommend that you query the total number of consumed messages. For more information about common request parameters, see Common request parameters.
+Queries the statistics about messages that are consumed by a group within a period of time. Scenarios When the system generates consumption statistics online, you can call this operation to query the following statistics based on a specified group ID: The statistical curve of the total number of consumed messages The statistical curve of the TPS for message consumption Not ice If the message volume is small and messages are unevenly distributed for your application, the TPS curve may be flat. We recommend that you query the total number of consumed messages. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1292,7 +1296,7 @@ Queries the statistics about messages that are consumed by a group within a peri
 | period | Long | Yes | The sampling period. Unit: minutes. Valid values: 1, 5, and 10. |
 | type | Integer | Yes | The type of statistics that you want to query. Valid values: 0: queries the statistical curve of the total number of consumed messages. 1: queries the statistical curve of the TPS for message consumption. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1325,11 +1329,11 @@ Authorizes another Apsara Stack tenant account to use a topic, including the per
 | topic | String | Yes | The topic whose permissions you want to grant. The topic must belong to you. |
 | relation | Integer | Yes | The type of permission to be granted. Valid values: 2: the permissions to publish messages 4: the permissions to subscribe to messages 6: the permissions to publish and subscribe to messages |
 
-The returned data is null.
+Response parameters The returned data is null.
 
 ###### 3.1.6.9.2. /json/empower/createBySub
 
-Authorizes a RAM user to use a topic, including the permissions to publish and subscribe to messages. Scenarios In Message Queue for Apache RocketMQ, a topic belongs to the owner account that is used to create the topic. If a RAM user needs to use the topic, the owner can call this operation to grant the permissions to publish and subscribe to messages to the RAM user. Not e Three types of permissions are supported for authorization: publishing, subscription, and publishing and subscription. The account that is used to grant permissions must be the owner account of the topic. Permissions are granted to a RAM user. After permissions are granted, the RAM user still needs to create its own group ID for subscribing to and receiving messages instead of using the group ID that is created by the owner account. For more information about common request parameters, see Common request parameters.
+Authorizes a RAM user to use a topic, including the permissions to publish and subscribe to messages. Scenarios In Message Queue for Apache RocketMQ, a topic belongs to the owner account that is used to create the topic. If a RAM user needs to use the topic, the owner can call this operation to grant the permissions to publish and subscribe to messages to the RAM user. Not e Three types of permissions are supported for authorization: publishing, subscription, and publishing and subscription. The account that is used to grant permissions must be the owner account of the topic. Permissions are granted to a RAM user. After permissions are granted, the RAM user still needs to create its own group ID for subscribing to and receiving messages instead of using the group ID that is created by the owner account. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1344,11 +1348,11 @@ Authorizes a RAM user to use a topic, including the permissions to publish and s
 | topic | String | Yes | The topic whose permissions you want to grant. The topic must belong to you. |
 | relation | Integer | Yes | The type of permission to be granted. Valid values: 2: the permissions to publish messages 4: the permissions to subscribe to messages 6: the permissions to publish and subscribe to messages |
 
-The returned data is null.
+Response parameters The returned data is null.
 
 ###### 3.1.6.9.3. /json/empower/delete
 
-Deletes an existing authorization to revoke the topic access permissions that are granted to an account. Scenarios After the permissions to access a topic are granted to an account, the owner of the topic can call this operation to revoke the granted permissions. Not e The account that is used to call this operation must be the owner account of the topic. The authorization information to be deleted must exist. For more information about common request parameters, see Common request parameters.
+Deletes an existing authorization to revoke the topic access permissions that are granted to an account. Scenarios After the permissions to access a topic are granted to an account, the owner of the topic can call this operation to revoke the granted permissions. Not e The account that is used to call this operation must be the owner account of the topic. The authorization information to be deleted must exist. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1356,11 +1360,11 @@ Deletes an existing authorization to revoke the topic access permissions that ar
 | empowerUser | Long | Yes | The user ID of the authorized account. A RAM user ID is supported. |
 | topic | String | Yes | The topic whose permissions are granted. The topic must belong to you. |
 
-The returned data is null.
+Response parameters The returned data is null.
 
 ###### 3.1.6.9.4. /json/empower/list
 
-Queries the authorization information about a topic. Scenarios The owner of a topic can query whether the topic access permissions are granted to a specific account and query the type of granted permission. For more information about common request parameters, see Common request parameters.
+Queries the authorization information about a topic. Scenarios The owner of a topic can query whether the topic access permissions are granted to a specific account and query the type of granted permission. Request parameters For more information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1368,13 +1372,13 @@ Queries the authorization information about a topic. Scenarios The owner of a to
 | empowerUser | Long | Yes | The user ID of the authorized account. A RAM user ID is supported. |
 | topic | String | Yes | The topic whose permissions are granted. The topic must belong to you. |
 
-The authorization information about the topic is returned in the JSON format, including the authorized account and type of granted permission.
+Response parameters The authorization information about the topic is returned in the JSON format, including the authorized account and type of granted permission.
 
 ##### 3.1.6.10 Dead-letter queue management
 
 ###### 3.1.6.10.1. /json/message/getByIdInDLQ
 
-Queries a dead-letter message based on the message ID. The queried information about the deadletter message includes the storage time, message body, and properties such as the key and tag. You can call this operation to query the information about a dead-letter message based on the message ID. This is an exact match. You can obtain the message ID from the SendResult parameter that is returned after the message is sent. You can also call the /json/message/getByPagedDLQ operation to query message IDs.
+Queries a dead-letter message based on the message ID. The queried information about the deadletter message includes the storage time, message body, and properties such as the key and tag. Description You can call this operation to query the information about a dead-letter message based on the message ID. This is an exact match. You can obtain the message ID from the SendResult parameter that is returned after the message is sent. You can also call the /json/message/getByPagedDLQ operation to query message IDs. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1385,7 +1389,7 @@ Queries a dead-letter message based on the message ID. The queried information a
 | GroupId | String | Yes | The group ID that you want to query. |
 | MsgId | String | Yes | The ID of the message that you want to query. |
 
-Data
+Response parameters Data
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1409,11 +1413,11 @@ Data
 
 ###### 3.1.6.10.2. /json/message/getByPagedDLQ
 
-Queries all dead-letter messages in a group within a period of time by page. You can call this operation to query dead-letter messages based on the group ID. This is a range query. The query results are displayed on multiple pages. This operation is applicable only when message IDs are unavailable. However, we recommend that you shorten the time range to query. Otherwise, excessive messages may be returned and affect your troubleshooting efficiency. To call this operation, perform the following steps:
+Queries all dead-letter messages in a group within a period of time by page. Description You can call this operation to query dead-letter messages based on the group ID. This is a range query. The query results are displayed on multiple pages. This operation is applicable only when message IDs are unavailable. However, we recommend that you shorten the time range to query. Otherwise, excessive messages may be returned and affect your troubleshooting efficiency. To call this operation, perform the following steps:
 1. Specify the group ID, start time, end time, and size of each page to query messages by page. If
 matched messages are found, the first page of the messages, total number of pages, and query task ID are returned by default.
 2. Query messages that are not displayed on the first page based on the returned query task ID for
-the first query. When you query the messages, specify the query task ID and current page number.
+the first query. When you query the messages, specify the query task ID and current page number. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1428,6 +1432,8 @@ the first query. When you query the messages, specify the query task ID and curr
 | TaskId | String | No | The ID of the query task. This parameter is not required for the first query but is required to query messages subsequently. You can obtain the value of this parameter from the previous return results. |
 | CurrentPage | Integer | Yes | The number of the page to return. Valid values: 1 to 50. |
 | PageSize | Integer | No | The number of entries to return on each page. Valid values: 5 to 50. Default value: 20. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1444,7 +1450,7 @@ MsgFoundDo
 
 ###### 3.1.6.10.3. /json/message/resendByIdInDLQ
 
-Resends a dead-letter message based on the message ID so that the message can be consumed again by the same consumer. You can call this operation to allow a dead-letter message to be consumed by the same consumer again. A dead-letter message is a message that still fails to be consumed after the number of consumption retries reaches the upper limit. If the message still cannot be consumed after you resend it, a message with the same message ID is added to the corresponding dead-letter queue. You can query the message ID on the Dead-letter Queues page in the Message Queue for Apache RocketMQ console or by calling API operations. You can determine the number of consumption failures for a message after you resend it, based on the number of messages with the same message ID. Not ice A dead-letter message is a message that still fails to be consumed after the number of consumption retries reaches the upper limit. This generally means that the consumption logic may have errors. Therefore, first identify the causes of the consumption failures, and then call this operation to resend the message. Message Queue for Apache RocketMQ does not manage the status of dead-letter messages after you resend them. Messages that are consumed after you call this operation are not removed from corresponding dead-letter queues. You must manually manage dead-letter messages and determine whether to resend a dead-letter message. This way, you do not need to repeatedly resend dead-letter messages that are consumed.
+Resends a dead-letter message based on the message ID so that the message can be consumed again by the same consumer. Description You can call this operation to allow a dead-letter message to be consumed by the same consumer again. A dead-letter message is a message that still fails to be consumed after the number of consumption retries reaches the upper limit. If the message still cannot be consumed after you resend it, a message with the same message ID is added to the corresponding dead-letter queue. You can query the message ID on the Dead-letter Queues page in the Message Queue for Apache RocketMQ console or by calling API operations. You can determine the number of consumption failures for a message after you resend it, based on the number of messages with the same message ID. Not ice A dead-letter message is a message that still fails to be consumed after the number of consumption retries reaches the upper limit. This generally means that the consumption logic may have errors. Therefore, first identify the causes of the consumption failures, and then call this operation to resend the message. Message Queue for Apache RocketMQ does not manage the status of dead-letter messages after you resend them. Messages that are consumed after you call this operation are not removed from corresponding dead-letter queues. You must manually manage dead-letter messages and determine whether to resend a dead-letter message. This way, you do not need to repeatedly resend dead-letter messages that are consumed. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1456,7 +1462,7 @@ Resends a dead-letter message based on the message ID so that the message can be
 | Parameter | Type | Required | Description |
 | GroupId | String | Yes | The group ID that you want to query. |
 
-For more information about common response parameters, see Common response parameters.
+Response parameters For more information about common response parameters, see Common response parameters.
 
 ## 4 SDK reference
 
@@ -1863,7 +1869,7 @@ Syntax: public ONSClientException() Description: Uses the default exception cons
 
 ###### 4.1.5.4.2 ONSClientException construction by using parameters (1)
 
-parameters (1) Syntax: public ONSClientException(String message) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+parameters (1) Syntax: public ONSClientException(String message) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1871,7 +1877,7 @@ parameters (1) Syntax: public ONSClientException(String message) Description: Us
 
 ###### 4.1.5.4.3 ONSClientException construction by using parameters (2)
 
-parameters (2) Syntax: public ONSClientException(Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+parameters (2) Syntax: public ONSClientException(Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1879,7 +1885,7 @@ parameters (2) Syntax: public ONSClientException(Throwable cause) Description: U
 
 ###### 4.1.5.4.4 ONSClientException construction by using parameters (3)
 
-parameters (3) Syntax: public ONSClientException(String message, Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+parameters (3) Syntax: public ONSClientException(String message, Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1900,7 +1906,7 @@ Syntax: public SendResult() Description: Uses the default constructor to create 
 
 ###### 4.1.5.5.2.2 getMessageId
 
-Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none
+Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -1908,7 +1914,7 @@ Syntax: public long getMessageId() Description: Queries the ID of a message that
 
 ###### 4.1.5.5.2.3 getTopic
 
-Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none
+Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -1916,7 +1922,7 @@ Syntax: public String getTopic() Description: Queries the topic to which a messa
 
 ###### 4.1.5.5.2.4 toString
 
-Syntax: public String toString() Description: Serializes a message sending result. Request parameters: none
+Syntax: public String toString() Description: Serializes a message sending result. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -1930,11 +1936,13 @@ You can use a producer instance to send regular messages, scheduled messages, or
 
 ###### 4.1.5.5.3.2 send
 
-Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown.
+Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to send. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -1942,7 +1950,7 @@ Syntax: public SendResult send(Message message) Description: Sends a regular mes
 
 ###### 4.1.5.5.3.3 sendOneway
 
-Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker.
+Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1952,7 +1960,7 @@ Response parameters: none
 
 ###### 4.1.5.5.3.4 sendAsync
 
-Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode.
+Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1963,7 +1971,7 @@ Response parameters: none
 
 ###### 4.1.5.5.3.5 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -1971,7 +1979,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.5.3.6 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -1989,13 +1997,15 @@ Syntax: public void shutdown() Description: Disables a producer instance from se
 
 ###### 4.1.5.5.4.1 send
 
-Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2.
+Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The transactional message that you want to send. |
 | executer | LocalTransactionExecuter | The local transaction executor. For more information, see the LocalTransactionExecuter class. |
 | arg | Object | A custom parameter. This parameter can be used for the local transaction executor. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2011,7 +2021,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.5.4.3 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2027,7 +2037,7 @@ Syntax: public void shutdown() Description: Disables a producer instance from se
 
 ###### 4.1.5.5.4.6 LocalTransactionExecuter
 
-execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications.
+execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2039,6 +2049,8 @@ execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: 
 | Parameter | Type | Description |
 |---|---|---|
 | arg | Object | The custom parameter that is specified by the send method. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2058,7 +2070,7 @@ The result of a local transaction that corresponds to a half message. The transa
 
 ###### 4.1.5.5.5.1 send
 
-Syntax: SendResult send(Message message, String shardingKey) Description: Sends an ordered message.
+Syntax: SendResult send(Message message, String shardingKey) Description: Sends an ordered message. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2071,7 +2083,7 @@ Syntax: SendResult send(Message message, String shardingKey) Description: Sends 
 
 ###### 4.1.5.5.5.2 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2079,7 +2091,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.5.5.3 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2107,7 +2119,7 @@ You can use a consumer instance to subscribe to regular messages, transactional 
 
 ###### 4.1.5.6.2.2 subscribe
 
-Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages.
+Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2119,7 +2131,7 @@ Response parameters: none
 
 ###### 4.1.5.6.2.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2129,7 +2141,7 @@ Response parameters: none
 
 ###### 4.1.5.6.2.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2137,7 +2149,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.6.2.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2159,12 +2171,14 @@ A consumer registers a message listener to subscribe to messages. Thread securit
 
 ###### 4.1.5.6.3.2 consume
 
-Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to consume. |
 | context | ConsumeContext | The context of the consumption. For more information, see ConsumeContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2183,11 +2197,13 @@ The result of the consumption that is returned for a message. Enumeration
 
 ###### 4.1.5.6.4.2 valueOf
 
-Syntax: public static Action valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
+Syntax: public static Action valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | name | String | The name of the enumerated constant to return. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2202,7 +2218,7 @@ Exceptions
 
 ###### 4.1.5.6.4.3 values
 
-Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2225,7 +2241,7 @@ You can use a consumer instance of ordered messages to subscribe to messages in 
 
 ###### 4.1.5.6.6.2 subscribe
 
-Syntax: void subscribe(String topic, String subExpression, MessageOrderListener listener) Description: Subscribes to ordered messages.
+Syntax: void subscribe(String topic, String subExpression, MessageOrderListener listener) Description: Subscribes to ordered messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2247,7 +2263,7 @@ Response parameters: none
 
 ###### 4.1.5.6.6.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2255,7 +2271,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.6.6.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2277,12 +2293,14 @@ A consumer registers an ordered message listener to subscribe to ordered message
 
 ###### 4.1.5.6.7.2 consume
 
-Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to consume. |
 | context | ConsumeOrderContext | The context of the consumption. For more information, see ConsumeOrderContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2301,11 +2319,13 @@ The result of the consumption that is returned for an ordered message. Enumerati
 
 ###### 4.1.5.6.8.2 valueOf
 
-Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
+Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | name | String | The name of the enumerated constant to return. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2320,7 +2340,7 @@ Exceptions
 
 ###### 4.1.5.6.8.3 values
 
-Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -2334,7 +2354,7 @@ You can use a batch consumer instance to subscribe to multiple messages at a tim
 
 ###### 4.1.5.6.9.2 subscribe
 
-Syntax: void subscribe(String topic, String subExpression, BatchMessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages.
+Syntax: void subscribe(String topic, String subExpression, BatchMessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2346,7 +2366,7 @@ Response parameters: none
 
 ###### 4.1.5.6.9.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2356,7 +2376,7 @@ Response parameters: none
 
 ###### 4.1.5.6.9.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2364,7 +2384,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.6.9.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -2386,7 +2406,7 @@ A consumer registers a batch message listener to consume multiple messages at a 
 
 ###### 4.1.5.6.10.2 consume
 
-Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|

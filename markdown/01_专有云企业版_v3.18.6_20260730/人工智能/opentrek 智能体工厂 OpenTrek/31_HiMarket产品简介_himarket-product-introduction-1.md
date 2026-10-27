@@ -5,14 +5,22 @@ doc_version: "20260729"
 pdf_pages: 15
 source_pdf: "31_HiMarket产品简介_himarket-product-introduction-1.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/opentrek/zh/himarket-product-introduction-1.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 智能体工厂 OpenTrek HiMarket产品简介
 
-智能体工厂 OpenTrek
+## 目录
 
-## 什么是HiMarket
+- 1 什么是HiMarket
+- 2 产品详情
+- 3 产品价值
+- 4 功能特性
+- 5 应用场景
+- 6 使用限制
+- 7 基本概念
+
+## 1 什么是HiMarket
 
 HiMarket是面向企业开发者用于统一管理和分发AI能力的企业级AI开放平台。
 
@@ -33,9 +41,9 @@ HiMarket是基于Higress AI网关构建的企业级AI开放平台，帮助企业
 **企业级运营管理**：提供产品全生命周期管理、多维度观测分析、统一计量计费、版本管理与灰度发布能
 力。
 **多租户门户定制**：支持为不同业务线和生态合作方构建独立的开发者门户，支持自定义域名、品牌样式、
-身份认证与审批工作流。 智能体工厂 OpenTrek
+身份认证与审批工作流。
 
-## 产品详情
+## 2 产品详情
 
 本文档为您介绍HiMarket的产品架构与核心技术能力，本文主要介绍HiMarket的工作原理、核心功能与技术特性。
 
@@ -64,14 +72,12 @@ HiMarket提供针对模型和MCP Server的监控能力。模型监控聚合展�
 **管理工具**
 
 **管理控制台**：提供Portal门户管理、API产品管理、分类管理、实例管理、观测分析等运营功能。
-智能体工厂 OpenTrek
 **开发者门户**：提供产品浏览与订阅、凭证管理、HiChat对话、Skill市场浏览与安装等开发者自助服务功
 能。
 **Skill****市场**：提供Skill产品的浏览、搜索、下载与安装能力，支持按下载量和更新时间排序。
 **MCP****市场**：提供MCP Server的浏览、创建、关注与使用能力，支持在HiChat中直接调用MCP工具。
-智能体工厂 OpenTrek
 
-## 产品价值
+## 3 产品价值
 
 HiMarket通过统一的AI能力市场与治理平台，帮助企业将分散的AI资源进行标准化封装、集中化管理与规模化分发，本文主要介绍HiMarket的核心产品价值。
 
@@ -101,9 +107,9 @@ HiMarket通过统一的AI能力市场与治理平台，帮助企业将分散的A
 
 **灵活门户定制**
 
-多租户门户设计支持为不同业务线和生态合作方构建独立品牌的开发者门户，共享底层基础设施的同时保持门户隔离。 智能体工厂 OpenTrek
+多租户门户设计支持为不同业务线和生态合作方构建独立品牌的开发者门户，共享底层基础设施的同时保持门户隔离。
 
-## 功能特性
+## 4 功能特性
 
 HiMarket涵盖AI体验中心、AI市场、开发者门户、管理后台、AI治理与基础设施等功能模块。 具体功能及详细说明如下：
 
@@ -131,8 +137,6 @@ HiMarket涵盖AI体验中心、AI市场、开发者门户、管理后台、AI治
 | 功能点 | 详细说明 |
 |---|---|
 
-智能体工厂 OpenTrek
-
 | SSO注册与凭证管理 | 对接企业统一身份认证体系，支持API Key的自助申请、 轮换与管理。 |
 |---|---|
 | 产品浏览/订阅/调试 | 以产品化方式展示所有可用AI服务，支持在线浏览API文档、一键订阅和在线调试。 |
@@ -159,8 +163,6 @@ HiMarket涵盖AI体验中心、AI市场、开发者门户、管理后台、AI治
 
 **基础设施**
 
-智能体工厂 OpenTrek
-
 | 功能点 | 详细说明 |
 |---|---|
 | Higress AI网关 | 承载所有AI流量的统一接入与路由，继承自AI网关能力。 |
@@ -169,9 +171,7 @@ HiMarket涵盖AI体验中心、AI市场、开发者门户、管理后台、AI治
 | Agent Runtime | 提供Agent的运行时环境，支持安全沙箱隔离部署。 |
 | 安全沙箱 | 为MCP Server提供托管能力。 |
 
-智能体工厂 OpenTrek
-
-## 应用场景
+## 5 应用场景
 
 HiMarket适用于企业AI能力统一管理、开发者生态建设与AI规模化落地等多种场景，本文主要介绍 HiMarket的应用场景。
 
@@ -202,9 +202,8 @@ HiMarket适用于企业AI能力统一管理、开发者生态建设与AI规模�
 **实时监控**：提供多维度监控指标大盘，支持按多种维度过滤查询。
 **成本核算**：基于Token进行精确计量，支持多维度用量统计。
 **风险管控**：内容审核与权限管控确保AI使用安全合规。
-智能体工厂 OpenTrek
 
-## 使用限制
+## 6 使用限制
 
 HiMarket对部分核心指标进行了约束，使用时请不要超过限制值，具体的限制项和限制值请参见下表。
 
@@ -216,11 +215,13 @@ HiMarket对部分核心指标进行了约束，使用时请不要超过限制值
 | 自定义域名 | 需完成DNS解析 | Portal门户绑定的自定义域名必须完成正确的DNS解析后才能生效。 |
 | 网关日志上报 | 依赖网关配置 | 观测分析模块的监控数据依赖网关侧的访问日志上报链路，首次导入网关实例后需等待数据上报生效。 |
 
-智能体工厂 OpenTrek
+## 7 基本概念
 
-## 基本概念
+本文主要对HiMarket涉及的专有名词及术语进行定义和解析，方便您更好地理解相关概念并使用 HiMarket。
 
-本文主要对HiMarket涉及的专有名词及术语进行定义和解析，方便您更好地理解相关概念并使用 HiMarket。 基于Higress AI网关构建的企业级AI开放平台，帮助企业构建私有化的AI能力市场，统一管理和分发 LLM、MCP Server、Worker、Skill等AI资源。
+**HiMarket**
+
+基于Higress AI网关构建的企业级AI开放平台，帮助企业构建私有化的AI能力市场，统一管理和分发 LLM、MCP Server、Worker、Skill等AI资源。
 
 **Higress AI网关**
 
@@ -272,7 +273,7 @@ API产品调用的身份实体，开发者创建Consumer后获取API Key等凭�
 
 **HiChat**
 
-HiMarket内置的AI对话体验中心，支持语言模型对话、文生图、多模型对比、MCP工具调用和附件上传等能力。 智能体工厂 OpenTrek
+HiMarket内置的AI对话体验中心，支持语言模型对话、文生图、多模型对比、MCP工具调用和附件上传等能力。
 
 **OIDC（OpenID Connect）**
 

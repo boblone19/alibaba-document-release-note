@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 49
 source_pdf: "05518f7ebfc752a0_Alibaba Cloud Apsara Stack V3.18.6 Lindorm User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Lindorm%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Lindorm User Guide 20260630
@@ -364,6 +364,8 @@ Advertiser Historical Transactions
 | Data U | ploadin |
 |---|---|
 
+**Lindorm**
+
 > Behavior Logs (Logon and Payment)
 
 Third-party Enterprise Data Risk Control & D Event Data
@@ -372,6 +374,8 @@ Third-party Enterprise Data Risk Control & D Event Data
 > Crawler-based Data Fetching
 
 Other Information
+
+**Lindorm**
 
 | Rule-ba | sed Mode |
 |---|---|

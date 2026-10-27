@@ -5,7 +5,7 @@ doc_version: "20250613"
 pdf_pages: 157
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Developer Guide 20250613.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%89%E9%AA%91%E5%A3%AB/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20Developer%20Guide%2020250613.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Developer Guide 20250613
@@ -227,7 +227,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role.
 > "sts.aliyuns.com": Replace it with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -247,6 +247,11 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of STS. The format of an ST
@@ -271,9 +276,15 @@ e that is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The
 following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
@@ -324,6 +335,8 @@ STS. The STS token is obtained in the previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ## 2 Call examples
 
@@ -390,6 +403,8 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             // TODO Auto-generated catch block
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 ### 2.2 Call examples for SDK for Python
 
@@ -491,6 +506,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<your-endpoint>"// The endpoint of the service.
     request.Version = "<API-version>"// The version of the API.
@@ -500,10 +520,15 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-ters
+`}` ters
 
 ## 3 Common parameters
 
@@ -535,7 +560,11 @@ API responses use the HTTP response format: A 2xx status code indicates a succes
 
 #### 4.1.1 Request structure
 
-Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
+Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests.
+
+**Description**
+
+You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -644,19 +673,27 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 **Sample responses (JSON format)**
 
+`{`
+
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
+`}`
+
 ### 4.2 Asset management
 
 #### 4.2.1 DescribeGroupSummary
+
+**Description**
 
 You can call this operation to obtain a list of asset groups.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeGroupSummary. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -671,10 +708,16 @@ You can call this operation to obtain a list of asset groups.
 | GroupFlag | Integer | The type of the asset group. Valid values: 1: indicates a non-leaf node group that contains child asset groups. 0: indicates a leaf node group. |
 | MachineNum | Integer | The number of ECS instances contained in the group. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupSummary
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupSummary &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -688,7 +731,7 @@ Sample responses (JSON format)
    "GroupId":346
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":1,
@@ -698,7 +741,7 @@ Sample responses (JSON format)
    "GroupId":343
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":1,
@@ -708,7 +751,7 @@ Sample responses (JSON format)
    "GroupId":345
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":0,
@@ -718,16 +761,22 @@ Sample responses (JSON format)
    "GroupId":336
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":4,
  "RequestId":"B9FB5483-3CA6-4520-9F89-068ED6AAC6EE"
 ```
 
+`}`
+
 #### 4.2.2 DescribeGroupStruct
 
+**Description**
+
 You can call this operation to query the asset group structure.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -751,10 +800,16 @@ You can call this operation to query the asset group structure.
 | GroupFlag | Integer | The type of the asset group. Valid values: 1: indicates a non-leaf node group that contains child asset groups. 0: indicates a leaf node group. |
 | ChildGroups | List | The child asset groups. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupStruct &remark=x.x.x.x &tagIdList=123
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupStruct &remark=x.x.x.x &tagIdList=123 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -770,7 +825,7 @@ Sample response (JSON format)
             "childGroups":[]
 ```
 
-`},`
+`},` `{`
 
 ```json
             "groupIndex":3,
@@ -780,6 +835,11 @@ Sample response (JSON format)
             "groupLevel":1,
             "groupFlag":1,
             "childGroups":[
+```
+
+`{`
+
+```json
                     "groupIndex":1,
                     "groupFather":345,
                     "groupId":346,
@@ -789,7 +849,7 @@ Sample response (JSON format)
                     "childGroups":[]
 ```
 
-`]` `},`
+`}` `]` `},` `{`
 
 ```json
             "groupIndex":100,
@@ -800,7 +860,7 @@ Sample response (JSON format)
             "childGroups":[]
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"C4490A16-DDE4-4351-A366-57F9FCDC188F",
@@ -808,7 +868,11 @@ Sample response (JSON format)
     "GroupId":0
 ```
 
+`}`
+
 #### 4.2.3 DescribeAllEntity
+
+**Description**
 
 You can call this operation to query information about all servers.
 
@@ -817,6 +881,8 @@ You can call this operation to query information about all servers.
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeAllEntity. |
 | GroupId | Long | No | The ID of the asset group. |
 | Os | String | No | The operating system of the server. Valid values: win: indicates the Windows operating system. linux: indicates the Linux operating system. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -828,10 +894,16 @@ You can call this operation to query information about all servers.
 | InstanceName | String | The instance name of the server. |
 | Ip | String | The IP address of the server. Note The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeAllEntity &GroupId=123 &Os=win
+https://aegis.[ RegionId].example.com/?Action=DescribeAllEntity &GroupId=123 &Os=win &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -840,6 +912,11 @@ Sample response (JSON format)
     "Count":2,
     "RequestId":"09D7C349-5306-4335-849A-10916F89E769",
     "EntityList":[
+```
+
+`{`
+
+```json
             "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
             "Ip":"x.x.x.x",
             "GroupId":336,
@@ -852,11 +929,15 @@ Sample response (JSON format)
         ......
 ```
 
-`]`
+`]` `}`
 
 #### 4.2.4 DescribeEntityList
 
+**Description**
+
 You can call this operation to query servers of a specified type. For example, you can query servers by security event type.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -875,6 +956,8 @@ You can call this operation to query servers of a specified type. For example, y
 | Trojan | String | No | Queries servers with webshells detected. Valid values: webshell: indicates trojan files. process: indicates trojan processes. |
 | Status | String | No | The status of the Server Guard Agent. Valid values: offline: indicates that the Server Guard Agent is offline. pause: indicates that the Server Guard Agent is disabled. |
 | TagIdList | String | No | The server tag ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -897,10 +980,16 @@ You can call this operation to query servers of a specified type. For example, y
 | Region | String | The ID of the region. |
 | Ip | String | The IP address of the server. Note The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeEntityList &Account=remoteLogin &CurrentPage=1 &GroupId=1 &Health=exception &Os=windows &PageSize=20 &Patch=vul &RegionNo=**** &Remark=x.x.x.x &Status=offline &Suspicious=exception &TagIdList=1,2,3 &Trojan=webshell
+https://aegis.[ RegionId].example.com/?Action=DescribeEntityList &Account=remoteLogin &CurrentPage=1 &GroupId=1 &Health=exception &Os=windows &PageSize=20 &Patch=vul &RegionNo=**** &Remark=x.x.x.x &Status=offline &Suspicious=exception &TagIdList=1,2,3 &Trojan=webshell &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -911,6 +1000,11 @@ Sample response (JSON format)
     "RequestId":"8BFB5273-6582-446A-9E0B-BAC0A1A468EA",
     "CurrentPage":1,
     "EntityList":[
+```
+
+`{`
+
+```json
             "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
             "Os":"linux",
             "ClientStatus":false,
@@ -922,11 +1016,15 @@ Sample response (JSON format)
             "InstanceName":"****"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.2.5 DescribeMachines
 
+**Description**
+
 You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -934,6 +1032,8 @@ You can call this operation to query servers that match the specified criteria. 
 | GroupId | Long | No | The ID of the asset group. |
 | TagIdList | String | No | The server tag ID. |
 | Mark | String | No | The IP address or instance name of the server. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -948,17 +1048,28 @@ You can call this operation to query servers that match the specified criteria. 
 | Ip | String | The IP address of the server. Note The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 | Uuid | String | The universally unique identifier (UUID) of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeMachines &GroupId=123
+https://aegis.[ RegionId].example.com/?Action=DescribeMachines &GroupId=123 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "Count":1,
     "Machines":[
+```
+
+`{`
+
+```json
             "groupId":336,
             "os":"linux",
             "instanceName":"****",
@@ -966,15 +1077,21 @@ Sample response (JSON format)
             "ip":"192.168.x.x"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"C984123D-C8E0-4974-9CEE-ADD0596C46DB"
 ```
 
+`}`
+
 #### 4.2.6 DescribeMachineDetail
 
+**Description**
+
 You can call this operation to query the detailed information about a specified server.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -982,6 +1099,8 @@ You can call this operation to query the detailed information about a specified 
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeMachineDetail. |
 |---|---|---|---|
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1006,13 +1125,17 @@ You can call this operation to query the detailed information about a specified 
 | Tag | String | The server tag ID. |
 |---|---|---|
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeMachineDetail &Uuid=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac
+https://aegis.[ RegionId].example.com/?Action=DescribeMachineDetail &Uuid=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"5D5D6F8F-6986-4996-9321-8EEA9FC048D1",
@@ -1028,9 +1151,15 @@ Sample response (JSON format)
         "InstanceName":"****"
 ```
 
+`}` `}`
+
 #### 4.2.7 DescribePropertyStatistic
 
+**Description**
+
 You can call this operation to query the server statistics.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1052,16 +1181,27 @@ You can call this operation to query the server statistics.
 | UserGetDate | String | The user account information update time. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyStatistic &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyStatistic &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "PropertyStatistics":[
+```
+
+`{`
+
+```json
    "UserGetDate":1514373155000,
    "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
    "RootUserCount":1,
@@ -1072,11 +1212,13 @@ Sample responses (JSON format)
    "ProcGetDate":1514373133000
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"C1CACE7E-E868-4E44-A52E-4CB1463B62BB"
 ```
+
+`}`
 
 #### 4.2.8 DescribePropertyPortItem
 
@@ -1090,6 +1232,8 @@ You can call this operation to obtain a list of listener ports on hosts.
 | Port | String | No | The port number. |
 | ProcName | String | No | The process name. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -1102,13 +1246,15 @@ You can call this operation to obtain a list of listener ports on hosts.
 | Port | String | The port number. |
 | Proto | String | The network protocol, such as TCP or UDP. |
 
+**Error codes**
+
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortItem &Port=22
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
@@ -1116,20 +1262,31 @@ Sample responses (JSON format)
  "RequestId":"9D38986A-F145-4FA8-AE1C-1DB1C2BDF4C0",
  "CurrentPage":1,
  "PropertyPortItems":[
+```
+
+`{`
+
+```json
    "Proto":"tcp",
    "Port":"22",
    "Count":2
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":1
 ```
 
+`}`
+
 #### 4.2.9 DescribePropertyPortDetail
 
+**Description**
+
 You can call this operation to query detailed information about a listening port.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1146,6 +1303,8 @@ You can call this operation to query detailed information about a listening port
 | Mark | String | No | The IP address or instance name of the server. Note Fuzzy match is supported. |
 | TagIdListString | String | No | The server tag ID. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1167,10 +1326,10 @@ You can call this operation to query detailed information about a listening port
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDetail &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDetail &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TotalCount":1,
@@ -1178,6 +1337,11 @@ Sample response (JSON format)
     "RequestId":"D85484BB-4DC2-44EC-AD67-0B3765EC9213",
     "CurrentPage":1,
     "PropertyPorts":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Uuid":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
             "Proto":"tcp",
@@ -1188,15 +1352,21 @@ Sample response (JSON format)
             "BindIp":"0.0.0.0"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Count":1
 ```
 
+`}`
+
 #### 4.2.10 DescribePropertyProcItem
 
+**Description**
+
 You can call this operation to obtain a list of server processes.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1207,6 +1377,8 @@ You can call this operation to obtain a list of server processes.
 |---|---|---|---|
 | Name | String | No | The process name. |
 | User | String | No | The user who started the process. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -1219,10 +1391,16 @@ You can call this operation to obtain a list of server processes.
 | Count | Integer | The number of servers on which the process is running. |
 | Name | String | The process name. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcItem &Name=init
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcItem &Name=init &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -1230,11 +1408,16 @@ Sample responses (JSON format)
 ```json
  "TotalCount":1,
  "PropertyProcItems":[
+```
+
+`{`
+
+```json
    "Count":2,
    "Name":"init"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -1243,9 +1426,15 @@ Sample responses (JSON format)
  "Count":1
 ```
 
+`}`
+
 #### 4.2.11 DescribePropertyProcDetail
 
+**Description**
+
 You can call this operation to query server process details.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1263,6 +1452,8 @@ You can call this operation to query server process details.
 | Cmdline | String | No | The process parameter. |
 | TagIdListString | String | No | The server tag ID. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1288,16 +1479,25 @@ You can call this operation to query server process details.
 | Uuid | String | The UUID of the server. |
 |---|---|---|
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "PropertyProcs":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Path":"/sbin/init",
             "Pname":"N/A",
@@ -1312,7 +1512,7 @@ Sample response (JSON format)
             "Md5":"70023aaf3f480d198d3b078d8c39****"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":1,
@@ -1322,9 +1522,15 @@ Sample response (JSON format)
     "Count":1
 ```
 
+`}`
+
 #### 4.2.12 DescribePropertySoftwareItem
 
+**Description**
+
 You can call this operation to query servers that have been installed with the specified application.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1337,6 +1543,8 @@ You can call this operation to query servers that have been installed with the s
 | Path | String | No | The application installation path. |
 | SoftwareVersion | String | No | The version of the application. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -1348,7 +1556,13 @@ You can call this operation to query servers that have been installed with the s
 | Count | Integer | The number of servers that have been installed with the application. |
 | Name | String | The name of the application. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareItem &Name=spice-vdagent
@@ -1359,11 +1573,16 @@ Sample responses (JSON format)
 ```json
  "TotalCount":1,
  "PropertySoftwareItems":[
+```
+
+`{`
+
+```json
    "count":2,
    "Name":"spice-vdagent"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -1372,9 +1591,15 @@ Sample responses (JSON format)
  "count": 1,
 ```
 
+`}`
+
 #### 4.2.13 DescribePropertySoftwareDetail
 
+**Description**
+
 You can call this operation to query the details of software installed on a server.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1390,6 +1615,8 @@ You can call this operation to query the details of software installed on a serv
 |---|---|---|---|
 | SoftwareVersion | String | No | The version of the software. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1407,10 +1634,16 @@ You can call this operation to query the details of software installed on a serv
 | Version | String | The version of the software. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -1418,6 +1651,11 @@ Sample response (JSON format)
 ```json
     "TotalCount":1,
     "PropertySoftwares":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Path":"/usr/libexec/gvfs-gphoto2-volume-monitor",
             "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
@@ -1427,7 +1665,7 @@ Sample response (JSON format)
             "Ip":"x.x.x.x"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageSize":20,
@@ -1436,9 +1674,15 @@ Sample response (JSON format)
     "Count":1
 ```
 
+`}`
+
 #### 4.2.14 DescribePropertyUserItem
 
+**Description**
+
 You can call this operation to query user account information.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1446,6 +1690,8 @@ You can call this operation to query user account information.
 | PageSize | Integer | No | The maximum number of records displayed on a page. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 | User | String | No | The username of the account. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -1460,29 +1706,40 @@ You can call this operation to query user account information.
 | Count | Integer | The number of servers under the account. |
 | Name | String | The username of the account. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserItem
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserItem &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":2,
  "PropertyUserItems":[
+```
+
+`{`
+
+```json
    "User":"abrt",
    "Count": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
    "User":"adm",
    "Count": 2
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -1491,9 +1748,15 @@ Sample responses (JSON format)
  "Count": 2
 ```
 
+`}`
+
 #### 4.2.15 DescribePropertyUserDetail
 
+**Description**
+
 You can call this operation to query user account details.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1510,6 +1773,8 @@ You can call this operation to query user account details.
 | Mark | String | No | The IP address or instance name of the server. Note Fuzzy match is supported. |
 | TagIdListString | String | No | The server tag ID. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1533,10 +1798,16 @@ You can call this operation to query user account details.
 | User | String | The name of the user account. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -1548,6 +1819,11 @@ Sample response (JSON format)
     "CurrentPage":1,
     "Count":1,
     "PropertyUsers":[
+```
+
+`{`
+
+```json
             "GroupName":[
                 "root"
 ```
@@ -1567,16 +1843,22 @@ Sample response (JSON format)
             "PasswordExpirationDate":"never"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.2.16 DescribeTopRiskyAssets
 
+**Description**
+
 You can call this operation to query top N vulnerable servers.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeTopRiskyAssets. |
 | PageSize | Integer | No | The number of records to return, that is, the top N vulnerable servers. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1591,18 +1873,29 @@ You can call this operation to query top N vulnerable servers.
 | VulCount | String | The number of detected vulnerabilities. |
 | WarningCount | String | The number of detected security events. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTopRiskyAssets &PageSize=1
+https://aegis.[ RegionId].example.com/?Action=DescribeTopRiskyAssets &PageSize=1 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TotalCount": 1,
     "RequestId": "5D8D4058-2EE3-4599-9951-BDAA3340AD4D",
     "TopRiskyAssets": [
+```
+
+`{`
+
+```json
             "Ip": "192.168.x.x",
             "Uuid": "inet-dsljaoe-jjdsklaj****",
             "VulCount": 2,
@@ -1610,11 +1903,13 @@ Sample response (JSON format)
             "WarningCount": 2
 ```
 
-`]`
+`}` `]` `}`
 
 ### 4.3 Vulnerability management
 
 #### 4.3.1 DescribeTarget
+
+**Description**
 
 You can call this operation to query the servers that are checked for the specified type of risks in vulnerability management.
 
@@ -1624,6 +1919,8 @@ You can call this operation to query the servers that are checked for the specif
 | Type | String | No | The type of the risks. For example, vul represents vulnerabilities. |
 | Config | String | No | The type of the vulnerabilities in JSON format. For example, {"vulType":"cve"} represents Linux software vulnerabilities. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -1632,10 +1929,16 @@ You can call this operation to query the servers that are checked for the specif
 | TargetType | String | Valid values: groupId: indicates the ID of an asset group. uuid: indicates the UUID of a server. |
 | Target | String | The asset group ID or server UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTarget &Config={"vulType":"cve"} &Type=vul
+https://aegis.[ RegionId].example.com/?Action=DescribeTarget &Config={"vulType":"cve"} &Type=vul &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -1644,27 +1947,38 @@ Sample responses (JSON format)
     "TotalCount":2,
     "RequestId":"1FF54D56-47ED-47FB-B4DB-2BDF3857D526",
     "Targets":[
+```
+
+`{`
+
+```json
             "Target":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
             "TargetType":"uuid"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Target":"336",
             "TargetType":"groupId"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.2 DescribeVulTargetStatistics
 
+**Description**
+
 You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulTargetStatistics. |
 | Type | String | No | The vulnerability type. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -1681,17 +1995,28 @@ You can call this operation to query the information about target hosts for whic
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a host asset UUID. |
 | Target | String | The asset group ID or host asset UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulTargetStatistics &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulTargetStatistics &Type=cve &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "TargetStats":[
+```
+
+`{`
+
+```json
    "VulType":"cve","Targets":[]
 ```
 
@@ -1703,9 +2028,15 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
+`}`
+
 #### 4.3.3 DescribeTargetConfig
 
+**Description**
+
 You can call this operation to query the vulnerability scanning configuration information of a specified server.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1724,33 +2055,48 @@ You can call this operation to query the vulnerability scanning configuration in
 | Config | String | Whether vulnerability scanning is enabled. Valid values: on and off. |
 | OverAllConfig | String | Whether global vulnerability scanning is enabled. Valid values: on and off. Note The global vulnerability scanning configuration overrides the vulnerability scanning configuration for a single server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTargetConfig &Type=cve &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribeTargetConfig &Type=cve &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"092094BF-910F-4CE6-BE93-C3989B607977",
  "TargetConfigs":[
+```
+
+`{`
+
+```json
    "Config":"off",
    "Type":"cve",
    "OverAllConfig":"off"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.4 DescribeVulConfig
 
 You can call this operation to query the global scanning configuration for each vulnerability type.
 
+**Request parameters**
+
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulConfig. |
 | Type | String | No | The type of the vulnerability. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -1760,51 +2106,80 @@ You can call this operation to query the global scanning configuration for each 
 | Type | String | The type of the vulnerability. |
 | Config | String | The global scanning configuration for the vulnerability type. Valid values: on and off. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulConfig &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulConfig &Type=cve &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"A8E09216-31DF-45B6-A76B-E3F053752C07",
  "TargetConfigs":[
+```
+
+`{`
+
+```json
    "Config":"off",
    "Type":"cve"
 ```
 
 #### 4.3.5 DescribeAutoDelConfig
 
+**Description**
+
 You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeAutoDelConfig. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Days | Integer | The number of days that an invalid vulnerability is kept for. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeAutoDelConfig
+https://aegis.[ RegionId].example.com/?Action=DescribeAutoDelConfig &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053",
  "Days":7
 ```
 
+`}`
+
 #### 4.3.6 DescribeVulLevel
 
+**Description**
+
 You can call this operation to query the vulnerability severities that require attention.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1812,27 +2187,41 @@ You can call this operation to query the vulnerability severities that require a
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulLevel. |
 |---|---|---|---|
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | ConcernLevels | List | The list of vulnerability severities that require attention. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulLevel
+https://aegis.[ RegionId].example.com/?Action=DescribeVulLevel &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"7935CB7A-D1B7-4EE6-93D0-FF3D040CF19B",
  "ConcernLevels":["high","medium"]
 ```
 
+`}`
+
 #### 4.3.7 DescribeVulWhitelist
 
+**Description**
+
 You can call this operation to obtain the whitelist of vulnerabilities.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1852,24 +2241,35 @@ You can call this operation to obtain the whitelist of vulnerabilities.
 | Reason | String | The reason for adding the vulnerability to the whitelist. |
 | Type | String | The vulnerability type. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulWhitelist &CurrentPage=1 &PageSize=20
+https://aegis.[ RegionId].example.com/?Action=DescribeVulWhitelist &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "VulWhitelists":[
+```
+
+`{`
+
+```json
    "Name":"oval:com.redhat.rhsa:def:20173263",
    "AliasName":"RHSA-2017:3263: curl security update",
    "Type":"cve",
    "Reason":"Not fixed at present"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":3,
@@ -1877,9 +2277,13 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
+`}`
+
 #### 4.3.8 DescribeGroupedVul
 
 You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1904,6 +2308,8 @@ You can call this operation to query information about the specified vulnerabili
 | Type | String | No | The type of the vulnerability. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -1926,16 +2332,27 @@ You can call this operation to query information about the specified vulnerabili
 | TotalCount | Integer | The total number of vulnerabilities. |
 | Type | String | The type of the vulnerability. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupedVul &CurrentPage=1 &Dealed=y &Direction=asc &LastTsEnd=1517414400000 &LastTsStart=1517414500000 &Level=high &Name=oval:com.redhat.rhsa:def:20170817 &Necessity=asap &OrderBy=name &PageSize=20 &PatchId=27001 &Product=redhat &SourceIp= &StatusList=1,2 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupedVul &CurrentPage=1 &Dealed=y &Direction=asc &LastTsEnd=1517414400000 &LastTsStart=1517414500000 &Level=high &Name=oval:com.redhat.rhsa:def:20170817 &Necessity=asap &OrderBy=name &PageSize=20 &PatchId=27001 &Product=redhat &SourceIp= &StatusList=1,2 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "GroupedVulItems":[
+```
+
+`{`
+
+```json
    "Name":"oval:com.redhat.rhsa:def:20170817",
    "Status":7,
    "Count":0,
@@ -1958,9 +2375,15 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
+`}`
+
 #### 4.3.9 DescribeVulList
 
+**Description**
+
 You can call this operation to obtain the vulnerability list of the specified host asset.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1978,6 +2401,8 @@ You can call this operation to obtain the vulnerability list of the specified ho
 | StatusList | String | No | The status of the vulnerability. Valid values: 1: indicates that the vulnerability has not been fixed. 2: indicates that the vulnerability fix failed. 3: indicates that the host has failed to be rolled back to the version before the vulnerability fix. 4: indicates that the vulnerability is being fixed. 5: indicates that the host is being rolled back to the version before the vulnerability fix. 6: indicates that the vulnerability fix is being verified. 7: indicates that the vulnerability has been fixed successfully. 8: indicates that the vulnerability has been fixed successfully, and that the host is waiting for restart. 9: indicates that the host has been rolled back to the version before the vulnerability fix. 10: indicates that the vulnerability has been ignored. 11: indicates that the host has been rolled back to the version before the vulnerability fix, and that the host is waiting for restart. 12: indicates that the vulnerability does not exist. 20: indicates that the vulnerability is invalid. Note Note: The statuses are specified in a single parameter, separated with commas (,). |
 |---|---|---|---|
 | Uuids | String | No | The UUID of the host asset. Separate multiple host asset UUIDs with commas (,). |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2013,10 +2438,16 @@ You can call this operation to obtain the vulnerability list of the specified ho
 | Type | String | The type of the vulnerability. |
 | Uuid | String | The UUID of the host asset. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulList &CurrentPage=1 &Dealed=n &Level=serious &Name=RHSA-2017:1100: nss and nss-util security update &Necessity=asap &PageSize=20 &StatusList=1 &Type=cve &Uuids=f293ade2-e5b1-4cc0-99a6-cc993a4158cc
+https://aegis.[ RegionId].example.com/?Action=DescribeVulList &CurrentPage=1 &Dealed=n &Level=serious &Name=RHSA-2017:1100: nss and nss-util security update &Necessity=asap &PageSize=20 &StatusList=1 &Type=cve &Uuids=f293ade2-e5b1-4cc0-99a6-cc993a4158cc &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2027,6 +2458,11 @@ Sample responses (JSON format)
  "RequestId":"2E35F7F7-DA6D-46A5-BA9D-8751BDAE7710",
  "CurrentPage":1,
  "VulRecords":[
+```
+
+`{`
+
+```json
    "Uuid":"b688bf9f-1fd9-42c8-bb34-28697f562dc5",
    "Necessity":"nntf",
    "ModifyTs":1512949391000,
@@ -2044,11 +2480,15 @@ Sample responses (JSON format)
    "Level":"high"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.10 DescribeVulDetails
 
+**Description**
+
 You can call this operation to query detailed information about a vulnerability.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2087,13 +2527,17 @@ You can call this operation to query detailed information about a vulnerability.
 | VulLevel | String | The severity level of the vulnerability. |
 |---|---|---|
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulDetails &Name=oval:com.redhat.rhsa:def:20170036 &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulDetails &Name=oval:com.redhat.rhsa:def:20170036 &Type=cve &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "Cves": [{
@@ -2117,9 +2561,15 @@ es for Linux operating systems. The use-after-free vulnerability is found in the
  "RequestId": "70DEE6B7-A167-4B5D-ADAA-3631443D5190"
 ```
 
+`}`
+
 #### 4.3.11 DescribeVulNumStatistics
 
+**Description**
+
 You can call this operation to query vulnerability statistics.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2129,6 +2579,8 @@ You can call this operation to query vulnerability statistics.
 | StartTs | Long | No | The start time for statistics collection. |
 | EndTs | Long | No | The end time for statistics collection. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2147,13 +2599,19 @@ You can call this operation to query vulnerability statistics.
 | VulLaterSum | Integer | The number of vulnerabilities that can be handled later. |
 | VulNntfSum | Integer | The number of vulnerabilities that do not need to be fixed temporarily. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulNumStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=DescribeVulNumStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "VulHighTotal":0,
@@ -2172,9 +2630,15 @@ Sample responses (JSON format)
     "VulLaterSum":0
 ```
 
+`}`
+
 #### 4.3.12 DescribeVulLevelStatistics
 
+**Description**
+
 You can call this operation to obtain the statistics on vulnerabilities by vulnerability severity.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2205,10 +2669,16 @@ You can call this operation to obtain the statistics on vulnerabilities by vulne
 | VulLaterSum | Integer | The number of medium-priority vulnerabilities. |
 | VulNntfSum | Integer | The number of low-priority vulnerabilities. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulLevelStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5
+https://aegis.[ RegionId].example.com/?Action=DescribeVulLevelStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2216,6 +2686,11 @@ Sample responses (JSON format)
 ```json
  "TotalCount":0,
  "LevelStatistics":[
+```
+
+`{`
+
+```json
    "VulHighTotal":0,
    "CveNum":0,
    "VulMediumTotal":0,
@@ -2232,7 +2707,7 @@ Sample responses (JSON format)
    "VulLaterSum":0
 ```
 
-`},`
+`},` `{`
 
 ```json
    "VulHighTotal":0,
@@ -2251,15 +2726,21 @@ Sample responses (JSON format)
    "VulLaterSum":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"9B062D3F-AD5A-4D3E-9A7A-45CAC2713FC0"
 ```
 
+`}`
+
 #### 4.3.13 DescribeVulMachineList
 
+**Description**
+
 You can call this operation to query the vulnerability statistics of a specified server.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2269,6 +2750,8 @@ You can call this operation to query the vulnerability statistics of a specified
 | StartTs | Long | No | The start time of the time frame during which the statistics were collected. |
 | EndTs | Long | No | The end time of the time frame during which the statistics were collected. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2293,14 +2776,19 @@ You can call this operation to query the vulnerability statistics of a specified
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulMachineList &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=DescribeVulMachineList &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":0,
  "MachineStatistics":[
+```
+
+`{`
+
+```json
    "Uuid":"577f9886-bf66-4c3c-88ac-28c938cb527b",
    "VulHighTotal":0,
    "CveNum":1,
@@ -2317,17 +2805,23 @@ Sample responses (JSON format)
    "VulLaterSum":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"A3F8BE63-9BA1-450D-BB5D-CE9205E6645D"
 ```
 
+`}`
+
 ### 4.4 Baseline check
 
 #### 4.4.1 DescribeStratetyDetail
 
+**Description**
+
 You can call this operation to query the details of a specified baseline check policy.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2354,13 +2848,15 @@ You can call this operation to query the details of a specified baseline check p
 | TypeName | String | The code of the risk subcategory. |
 | On | Boolean | Indicates whether to check for risks of the specified subcategory. |
 
+**Error codes**
+
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStratetyDetail &Id=1
+https://aegis.[ RegionId].example.com/?Action=DescribeStratetyDetail &Id=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
      "RequestId": "99F17C4B-2E23-4B41-BBEB-C03963B06EB4",
@@ -2371,16 +2867,26 @@ Sample responses (JSON format)
              "Type": 2,
              "Id": 12,
              "RiskTypeWhiteListQueryResultList": [
+```
+
+`{`
+
+```json
                      "On": false,
                      "Alias": "Compliance with Security Standards",
                      "TypeName": "cis",
                      "SubTypes": [
+```
+
+`{`
+
+```json
                               "On": true,
                               "Alias": "Memcached",
                               "TypeName": "memcached-check"
 ```
 
-`},`
+`},` `{`
 
 ```json
                               "On": true,
@@ -2388,7 +2894,7 @@ Sample responses (JSON format)
                               "TypeName": "centos7"
 ```
 
-`},`
+`},` `{`
 
 ```json
                               "On": false,
@@ -2396,7 +2902,7 @@ Sample responses (JSON format)
                               "TypeName": "tomcat7"
 ```
 
-`},`
+`},` `{`
 
 ```json
                               "On": false,
@@ -2404,7 +2910,7 @@ Sample responses (JSON format)
                               "TypeName": "mongodb-check"
 ```
 
-`]` `]`
+`}` `]` `}` `]` `}` `}`
 
 #### 4.4.2 DescribeStrategyTarget
 
@@ -2417,6 +2923,8 @@ You can call this operation to query the information about asset groups to which
 | Type | String | No | The configuration type. Set the value to hc strategy. _ |
 | Target | String | No | The ID of the asset group to which the baseline check policy applies. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -2426,36 +2934,51 @@ You can call this operation to query the information about asset groups to which
 | TargetType | String | The return value is fixed to groupId, indicating that the value of the Target parameter is the ID of the asset group. |
 | Target | String | The asset group ID. |
 
+**Error codes**
+
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategyTarget &Config={"strategyId":15161} &Type=hc_strategy
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategyTarget &Config={"strategyId":15161} &Type=hc_strategy &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
         "Count": 1,
         "StrategyTargets":[
+```
+
+`{`
+
+```json
                 "Flag": "del",
                 "Target": "281801",
                 "TargetType": "groupId"
 ```
 
-`]`
+`}` `]`
 
 ```json
  "requestId": "B44F545D-15CF-4A57-B8BF-4340D15D0507"
 ```
 
+`}`
+
 #### 4.4.3 DescribeUuidConfig
 
+**Description**
+
 You can call this operation to check whether baseline check is enabled for a specified server.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeUuidConfig. |
 | Uuid | String | No | The UUID of the server. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2466,10 +2989,10 @@ You can call this operation to check whether baseline check is enabled for a spe
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeUuidConfig &uuid=4bc19998-e100-4b04-ab11-1e677418d311
+https://aegis.[ RegionId].example.com/?Action=DescribeUuidConfig &uuid=4bc19998-e100-4b04-ab11-1e677418d311 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "Data": {
@@ -2482,23 +3005,37 @@ Sample responses (JSON format)
     "RequestId": "A89978FE-BC35-427E-A4B1-7AEEAE741CC2",
 ```
 
+`}`
+
 #### 4.4.4 DescribeUserSetting
 
+**Description**
+
 You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeUserSetting. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | InvalidWarningKeepDa ys | Integer | The number of days that an invalid risk is kept for. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeUserSetting
+https://aegis.[ RegionId].example.com/?Action=DescribeUserSetting &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2508,9 +3045,15 @@ Sample responses (JSON format)
  "RequestId":"0A079FE2-0D1B-4A4D-A4EF-D02B5DDE12A7"
 ```
 
+`}`
+
 #### 4.4.5 DescribeRiskWhiteList
 
+**Description**
+
 You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2518,6 +3061,8 @@ You can call this operation to obtain the whitelist of risk items that are exemp
 | PageSize | Integer | No | The maximum number of records to be displayed on each page of the query output. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 | RiskName | String | No | The name of the risk item. This parameter supports fuzzy match. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2533,13 +3078,17 @@ You can call this operation to obtain the whitelist of risk items that are exemp
 | RiskName | String | The name of the risk item. |
 |---|---|---|
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeRiskWhiteList &RiskName=SSH logon baseline check
+https://aegis.[ RegionId].example.com/?Action=DescribeRiskWhiteList &RiskName=SSH logon baseline check &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
@@ -2547,23 +3096,36 @@ Sample responses (JSON format)
  "RequestId":"B452E97A-7DFA-44FC-915D-5D590A702846",
  "CurrentPage":1,
  "WhiteLists":[
+```
+
+`{`
+
+```json
    "RiskName":"SSH logon baseline check",
    "RiskId":1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":1
 ```
 
+`}`
+
 #### 4.4.6 DescribeStratety
 
+**Description**
+
 You can call this operation to query the execution details of a specified baseline check policy.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeStratety. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2584,10 +3146,16 @@ You can call this operation to query the execution details of a specified baseli
 | TargetType | String | The return value is fixed to groupId, indicating that the value of the Target parameter is the ID of the asset group. |
 | Target | String | The asset group ID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStratety
+https://aegis.[ RegionId].example.com/?Action=DescribeStratety &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2595,6 +3163,11 @@ Sample responses (JSON format)
 ```json
         "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
     "Strategies": [
+```
+
+`{`
+
+```json
                 "Name": "Threat Detection Service No. 12345",
                 "RiskCount": 4,
                 "CycleDays": 1,
@@ -2602,12 +3175,17 @@ Sample responses (JSON format)
                 "Type": 2,
                 "ProcessRate": 0,
                 "ConfigTargets": [
+```
+
+`{`
+
+```json
                         "Flag": "add",
                         "Target": "5078483",
                         "TargetType": "groupId"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "Id": 36071,
@@ -2615,16 +3193,22 @@ Sample responses (JSON format)
                 "EcsCount": 2
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.4.7 DescribeStrategyExecDetail
 
+**Description**
+
 You can call this operation to query the execution details of a baseline check policy.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeStrategyExecDetail. |
 | StrategyId | Integer | No | The ID of the baseline check policy. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2644,13 +3228,19 @@ You can call this operation to query the execution details of a baseline check p
 | StartTime | String | The time when the baseline check started. |
 | SuccessCount | Integer | The number of servers that have passed the check. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategyExecDetail &StrategyId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategyExecDetail &StrategyId=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
      "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
@@ -2664,7 +3254,11 @@ Sample responses (JSON format)
        "FailCount": 0,
 ```
 
+`}`
+
 #### 4.4.8 DescribeRiskType
+
+**Description**
 
 You can call this operation to query all types of risks detected in baseline check and view the number of risks that have been detected by a baseline check policy or on the specified servers for a specific risk type.
 
@@ -2673,6 +3267,8 @@ You can call this operation to query all types of risks detected in baseline che
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeRiskType. |
 | StrategyId | Long | No | The ID of the baseline check policy. |
 | Uuids | String | No | The UUID of the server. Multiple UUIDs are separated with commas (,). |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2687,10 +3283,16 @@ You can call this operation to query all types of risks detected in baseline che
 | TypeName | String | The code of the sub-risk type. |
 | WarnCount | String | The number of risks that have been detected. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeRiskType &StrategyId=10
+https://aegis.[ RegionId].example.com/?Action=DescribeRiskType &StrategyId=10 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2698,14 +3300,24 @@ Sample responses (JSON format)
 ```json
  "RequestId":"11D3993A-02B8-4FD9-9116-922BCDE53A80",
  "RiskTypes":[
+```
+
+`{`
+
+```json
    "TypeName":"system",
    "SubTypes":[
+```
+
+`{`
+
+```json
      "TypeName":"group_policy",
      "Alias":"Group policy",
      "WarnCount":0
 ```
 
-`},`
+`},` `{`
 
 ```json
      "TypeName":"baseline",
@@ -2713,7 +3325,7 @@ Sample responses (JSON format)
      "WarnCount":0
 ```
 
-`},`
+`},` `{`
 
 ```json
      "TypeName":"register",
@@ -2721,22 +3333,28 @@ Sample responses (JSON format)
      "WarnCount":0
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Alias":"System",
    "WarnCount":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "count": 1,
 ```
 
+`}`
+
 #### 4.4.9 Describesummary
 
+**Description**
+
 You can call this operation to query the risks detected in baseline check by risk type.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2753,6 +3371,8 @@ You can call this operation to query the risks detected in baseline check by ris
 | TypeNames | String | No | The type of the risk. Separate multiple risk types with commas (,). |
 | SubTypeNames | String | No | The type of the sub-risk. Separate multiple sub-risk types with commas (,). |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2774,10 +3394,16 @@ You can call this operation to query the risks detected in baseline check by ris
 | SubTypeAlias | String | The type of the sub-risk. |
 | TotalCount | Integer | The total number of risks. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=Describesummary &CurrentPage=20 &Dealed=Y &PageSize=10 &StrategyId=1 &Uuid=2738e842-7d46-42f7-acb4-e6796b051ddc
+https://aegis.[ RegionId].example.com/?Action=Describesummary &CurrentPage=20 &Dealed=Y &PageSize=10 &StrategyId=1 &Uuid=2738e842-7d46-42f7-acb4-e6796b051ddc &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2789,6 +3415,11 @@ Sample responses (JSON format)
  "CurrentPage":1,
  "count": 1,
  "WarningSummarys":[
+```
+
+`{`
+
+```json
    "RiskId":1,
    "LastFoundTime":"2018-04-08 16:51:26",
    "RiskDetail":"The SSH logon security policy checks the following configurations: \
@@ -2799,13 +3430,17 @@ n1. Checks whether the logon port is the default port 22\n2 and whether the root
    "RiskName":"SSH logon baseline check"
 ```
 
-`]`
+`}` `]` `}`
 
 ### 4.5 Unusual logon detection
 
 #### 4.5.1 DescribeBaseConfigs
 
+**Description**
+
 You can call this operation to query the logon security settings.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2816,6 +3451,8 @@ You can call this operation to query the logon security settings.
 |---|---|---|---|
 | PageSize | Integer | No | The maximum number of records to be displayed on each page. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2837,13 +3474,19 @@ You can call this operation to query the logon security settings.
 |---|---|---|
 | Target | String | The asset group ID or server UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeBaseConfigs &CurrentPage=1 &PageSize=20 &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DescribeBaseConfigs &CurrentPage=1 &PageSize=20 &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "BaseConfigs": [{
@@ -2865,15 +3508,23 @@ Sample responses (JSON format)
  "CurrentPage": 1
 ```
 
+`}`
+
 #### 4.5.2 DescribeSwitchConfigs
 
+**Description**
+
 You can call this operation to query the logon security configuration records in the logon security settings.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSwitchConfigs. |
 |---|---|---|---|
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -2883,10 +3534,16 @@ You can call this operation to query the logon security configuration records in
 | Item | String | The logon security configuration items. Valid values: login common location: indicates an approved _ _ logon location. login common ip: indicates an approved logon _ _ IP address. login common time: indicates an approved _ _ logon time range. login common account: indicates an approved _ _ logon account. |
 | Status | Integer | The status of the configuration item. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSwitchConfigs
+https://aegis.[ RegionId].example.com/?Action=DescribeSwitchConfigs &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -2895,28 +3552,37 @@ Sample responses (JSON format)
  "Count":3,
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4",
  "ConfigList":[
+```
+
+`{`
+
+```json
    "Status":1,
    "Item":"login_common_ip"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Status":0,
    "Item":"login_common_account"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Status":0,"Item":"login_common_time"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.5.3 DescribeConfigTarget
 
+**Description**
+
 You can call this operation to query the information about servers to which a specified logon security configuration record applies.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2932,13 +3598,19 @@ You can call this operation to query the information about servers to which a sp
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a server UUID. |
 | Target | String | The asset group ID or server UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeConfigTarget &Config={"uuidCount":1,"location":"Ganzhou"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DescribeConfigTarget &Config={"uuidCount":1,"location":"Ganzhou"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
   "TargetList": [{
@@ -2947,11 +3619,20 @@ Sample responses (JSON format)
   }, {
    "Target": "inet-25f4ef74-29c7-49fd-85cc-b4543a2489a8",
    "TargetType": "uuid"
+```
+
+`}`
+
+```json
  "Count": 2,
  "RequestId": "B8064EA4-9472-4D03-B7D1-6684DB5CD0BE",
 ```
 
+`}`
+
 #### 4.5.4 ModifyBaseConfig
+
+**Description**
 
 You can call this operation to modify logon security settings.
 
@@ -2964,25 +3645,39 @@ You can call this operation to modify logon security settings.
 |   |   |   |   |   | {"startTime":"16:18","endTime" |   |
 |   |   |   |   | :"16:18"} |   |   |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyBaseConfig &Config={"startTime":"16:18","endTime":"16:18"} &Target=[{"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"},{"targetType":"uuid","target":"1759b0ea-6dd7-438b-b60d-c9 0179bd9ebc","flag":"del"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=ModifyBaseConfig &Config={"startTime":"16:18","endTime":"16:18"} &Target=[{"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"},{"targetType":"uuid","target":"1759b0ea-6dd7-438b-b60d-c9 0179bd9ebc","flag":"del"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BB8F5902-BD50-49AB-B124-18E9CA92BB99"
 ```
 
+`}`
+
 #### 4.5.5 DeleteBaseConfig
 
+**Description**
+
 You can call this operation to delete a logon security setting, such as an approved logon location or IP address.
+
+**Request parameters**
 
 | Parameter | Type |   | Required | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -2995,25 +3690,39 @@ You can call this operation to delete a logon security setting, such as an appro
 | Target | String | No | The target server. Note You must set this parameter if you want to delete a logon security setting for a server. For more information about the format, see the following sample request. |
 |---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteBaseConfig &Config={"location":"Ganzhou City"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DeleteBaseConfig &Config={"location":"Ganzhou City"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
+`}`
+
 #### 4.5.6 ModifySwitchConfig
 
+**Description**
+
 You can call this operation to modify the setting about whether to enable a logon security configuration record to identify a valid logon to a server in the logon security settings.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3023,6 +3732,8 @@ You can call this operation to modify the setting about whether to enable a logo
 |---|---|---|---|
 | Status | Integer | Yes | The status of the logon security configuration switch. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -3031,40 +3742,60 @@ You can call this operation to modify the setting about whether to enable a logo
 | Item | String | The logon security configuration items. Valid values: login common location: indicates an approved _ _ logon location. login common ip: indicates an approved logon _ _ IP address. login common time: indicates an approved _ _ logon time range. login common account: indicates an approved _ _ logon account. |
 | Status | Integer | The status of the logon security configuration switch. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifySwitchConfig &Item=login_common_location &Status=1
+https://aegis.[ RegionId].example.com/?Action=ModifySwitchConfig &Item=login_common_location &Status=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4"
 ```
 
+`}`
+
 ### 4.6 Webshell detection
 
 #### 4.6.1 DescribeCategoryCount
 
+**Description**
+
 You can call this operation to query the number of webshells detected by Server Guard.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeCategoryCount. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Webshell | Integer | The number of webshells. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeCategoryCount
+https://aegis.[ RegionId].example.com/?Action=DescribeCategoryCount &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
@@ -3073,7 +3804,11 @@ Sample responses (JSON format)
 
 #### 4.6.2 DescribeWebshell
 
+**Description**
+
 You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3082,6 +3817,8 @@ You can call this operation to query records of webshell files that have been de
 | Mark | String | No | The IP address or instance name of the server. |
 | Tag | Integer | No | The server tag ID. |
 | Dealed | String | No | The status of the webshell event. Valid values: n: indicates that the event is pending. y: indicates that the event has been handled. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3104,10 +3841,16 @@ You can call this operation to query records of webshell files that have been de
 | Region | String | The region where the server resides. |
 | Status | Integer | The status of the webshell event. Valid values: 1: indicates that the event is pending. 2: indicates that the event has been ignored. 3: indicates that the event has been confirmed. 8: indicates that the event has been labeled as a false positive. 16: indicates that the event is being handled. 32: indicates that the event has been handled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeWebshell &Dealed=n &GroupId=1 &Remark=xx.xx.xx.xx &Tag=11
+https://aegis.[ RegionId].example.com/?Action=DescribeWebshell &Dealed=n &GroupId=1 &Remark=xx.xx.xx.xx &Tag=11 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -3147,9 +3890,15 @@ Sample response (JSON format)
     "RequestId": "E4B254AE-5CB1-4810-8B51-A08DF5697F25"
 ```
 
+`}`
+
 #### 4.6.3 DescribeQuaraFile
 
+**Description**
+
 You can call this operation to obtain the list of quarantined files.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3158,6 +3907,8 @@ You can call this operation to obtain the list of quarantined files.
 | PageSize | Integer | No | The maximum number of records to be displayed on each page of the query result. Default value: 20. |
 |---|---|---|---|
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3175,13 +3926,17 @@ You can call this operation to obtain the list of quarantined files.
 | Tag | String | The unique identifier of the unusual event. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeQuaraFile
+https://aegis.[ RegionId].example.com/?Action=DescribeQuaraFile &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "TotalCount":1,
@@ -3189,6 +3944,11 @@ Sample responses (JSON format)
     "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
     "CurrentPage":1,
     "QuaraFiles":[
+```
+
+`{`
+
+```json
             "Path":"/bin/ping",
             "Uuid":"9b0c4d55-2f1f-4766-a90a-2c9d8a0b7642",
             "FileStatus":"quaraDone",
@@ -3199,11 +3959,15 @@ Sample responses (JSON format)
             "Md5":"1421d9ad2b0031483f396154d48161f1"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.6.4 RollbackQuaraFile
 
+**Description**
+
 You can call this operation to restore a specified quarantined file.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3217,21 +3981,33 @@ You can call this operation to restore a specified quarantined file.
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=RollbackQuaraFile &EventName=DDoS trojan &EventType=Malicious process &Tag=a50f96f958fbd59f68e4bca4d90679d6 &Uuid=00f11fcb-1a9a-4fd5-a48a-e0e5bd12a6a4
+https://aegis.[ RegionId].example.com/?Action=RollbackQuaraFile &EventName=DDoS trojan &EventType=Malicious process &Tag=a50f96f958fbd59f68e4bca4d90679d6 &Uuid=00f11fcb-1a9a-4fd5-a48a-e0e5bd12a6a4 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
 ```
 
+`}`
+
 #### 4.6.5 DescribeWebPath
 
+**Description**
+
 You can call this operation to query the Web directories defined in webshell settings.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3253,10 +4029,16 @@ You can call this operation to query the Web directories defined in webshell set
 | TargetType | String | This parameter always returns a value of uuid, which means that the Target parameter returns the universally unique identifier (UUID) of the server. |
 | Target | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeWebPath
+https://aegis.[ RegionId].example.com/?Action=DescribeWebPath &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -3268,22 +4050,36 @@ Sample response (JSON format)
  "CurrentPage":1,
  "Count":1,
  "ConfigList":[
+```
+
+`{`
+
+```json
    "TargetList":[
+```
+
+`{`
+
+```json
      "Target":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
      "TargetType":"uuid"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "WebPath":"/usr/local/tomcat/webroot18"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.6.6 ModifyWebPath
 
+**Description**
+
 You can call this operation to modify the Web directory in webshell settings.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3292,25 +4088,37 @@ You can call this operation to modify the Web directory in webshell settings.
 | Config | String | No | The Web directory configuration, in JSON format. For more information, see the sample request. |
 | Target | String | No | The list of target servers to which the Web directory configuration applies, in JSON format. For more information, see the sample request. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyWebPath &Type=web_path &Config={"webPath":"/test"} &Target={"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"}
+https://aegis.[ RegionId].example.com/?Action=ModifyWebPath &Type=web_path &Config={"webPath":"/test"} &Target={"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"} &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534"
 ```
 
+`}`
+
 #### 4.6.7 OperateTrojan
 
+**Description**
+
 You can call this operation to handle detected webshells.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3325,13 +4133,19 @@ You can call this operation to handle detected webshells.
 | FailedCount | Integer | The number of failed operations. |
 | SuccessCount | Integer | The number of successful operations. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateTrojan &Info=[{"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","filePath":"/home/test/Z02.php","webshellId":""}] &OperateType=trust &Type=1
+https://aegis.[ RegionId].example.com/?Action=OperateTrojan &Info=[{"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","filePath":"/home/test/Z02.php","webshellId":""}] &OperateType=trust &Type=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
@@ -3339,15 +4153,23 @@ Sample responses (JSON format)
     "SuccessCount": 1
 ```
 
+`}`
+
 ### 4.7 Exception detection on hosts
 
 #### 4.7.1 DescribeSuspEventTypes
 
+**Description**
+
 You can call this operation to query the unusual event types.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSuspEventTypes. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3359,27 +4181,42 @@ You can call this operation to query the unusual event types.
 | AliseEventType | String | The name of the unusual event type. |
 | EventType | String | The identifier of the unusual event type. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspEventTypes
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspEventTypes &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
  "EventTypes":[
+```
+
+`{`
+
+```json
    "EventType":"Suspicious process",
    "AliseEventType":"Suspicious process"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.7.2 DescribeSuspTrendStatistics
 
+**Description**
+
 You can call this operation to query the chart data on different types of unusual server events on each day.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3392,13 +4229,19 @@ You can call this operation to query the chart data on different types of unusua
 | StartTime | Integer | The start time of the time frame specified for query. |
 | SuspiciousItems | List | The statistics on numbers of different types of suspicious events. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspTrendStatistics
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspTrendStatistics &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
@@ -3407,14 +4250,22 @@ Sample responses (JSON format)
  "SuspiciousItems":[ ]
 ```
 
+`}`
+
 #### 4.7.3 DescribeSuspiciousExportInfo
 
+**Description**
+
 You can call this operation to query an unusual event export task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeSuspiciousExportInfo. |
 | ExportId | Long | No | The ID of the export task. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3431,13 +4282,19 @@ You can call this operation to query an unusual event export task.
 | Progress | Integer | The export progress. |
 | TotalCount | Integer | The total number of records that have been exported. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspiciousExportInfo &ExportId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspiciousExportInfo &ExportId=1 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
  "TotalCount":30,
@@ -3455,7 +4312,11 @@ shanghai.example.com/export/suspicious_20180208_1518071576098.zip? Expires=15180
 
 #### 4.7.4 OperateSuspiciousEvent
 
+**Description**
+
 You can call this operation to handle detected unusual events.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3463,25 +4324,39 @@ You can call this operation to handle detected unusual events.
 | Data | String | No | The unusual event to be handled, in JSON format. For more information, see the sample request. |
 | OperateType | String | No | The type of the operation. Valid values: deal: indicates an operation to handle the unusual event. confirm: indicates an operation to mark the unusual event as handled. mark misinformation: indicates an _ operation to mark the unusual event as false positive. unmark misinformation: indicates _ an operation to remove the false positive mark of the unusual event. ignore: indicates an operation to ignore the unusual event. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateSuspiciousEvent &OperateType=ignore &Data={"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","tag":"f87eb0ee5934f6f65343ec601ce71c2f","eventType":"Malicious process es (malware checking)","eventName":"DDoS Trojan},{"uuid":"97988c2b-de9d-4159-90ab-7cc 73561c64c","tag":"95347a77b8c0d6dae99a23ab69aa90f4","eventType":"Malicious processes (malware checking)","eventName":"GateDDoS Trojan"}
+https://aegis.[ RegionId].example.com/?Action=OperateSuspiciousEvent &OperateType=ignore &Data={"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","tag":"f87eb0ee5934f6f65343ec601ce71c2f","eventType":"Malicious process es (malware checking)","eventName":"DDoS Trojan},{"uuid":"97988c2b-de9d-4159-90ab-7cc 73561c64c","tag":"95347a77b8c0d6dae99a23ab69aa90f4","eventType":"Malicious processes (malware checking)","eventName":"GateDDoS Trojan"} &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"654A6FD8-B55D-4D6B-AAFF-4122503D108B"
 ```
 
+`}`
+
 #### 4.7.5 OperateLoginLog
 
+**Description**
+
 You can call this operation to label a detected unusual logon event as handled.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3489,25 +4364,39 @@ You can call this operation to label a detected unusual logon event as handled.
 | Ids | String | Yes | The ID of the unusual logon log. Separate multiple log IDs with commas (,). |
 | OperateType | String | Yes | The type of the operation. Set the value to confirm, indicating that the event has been handled. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateLoginLog &Ids=2006434 &OperateType=confirm
+https://aegis.[ RegionId].example.com/?Action=OperateLoginLog &Ids=2006434 &OperateType=confirm &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905"
 ```
 
+`}`
+
 #### 4.7.6 DescribeVirusInfo
 
+**Description**
+
 You can call this operation to upload the MD5 values of files and use Alibaba Cloud Antivirus to determine whether the files are malicious programs.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3515,12 +4404,20 @@ You can call this operation to upload the MD5 values of files and use Alibaba Cl
 | Md5 | String | Yes | The MD5 value of the file. |
 | Lang | String | No | The language attribute of the file, such as zh. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Data | Boolean | Indicates whether the file is malicious. Valid values: True: Indicates that the file is malicious. False: Indicates that the file is not malicious. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
 https://aegis.[ RegionId].aliyuncs.com/?Action= DescribeVirusInfo &Md5=6f6628d923f9018b28acc5f905e03244
@@ -3533,9 +4430,15 @@ Sample responses (JSON format)
  "Data": true
 ```
 
+`}`
+
 #### 4.7.7 CreateSuspiciousExport
 
+**Description**
+
 You can call this operation to export the information about unusual events on servers based on search conditions.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3552,19 +4455,27 @@ You can call this operation to export the information about unusual events on se
 | Tag | String | No | The tag of the server. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | FileName | String | The name of the exported file. |
 | Id | Long | The ID of the export task. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateSuspiciousExport &Remark=23 &EventType=Suspicious process &Level=serious,high,medium,low &Dealed=n
+https://aegis.[ RegionId].example.com/?Action=CreateSuspiciousExport &Remark=23 &EventType=Suspicious process &Level=serious,high,medium,low &Dealed=n &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
@@ -3572,16 +4483,24 @@ Sample responses (JSON format)
     "Id": 387
 ```
 
+`}`
+
 ### 4.8 Retrieval of host logs
 
 #### 4.8.1 DescribeFilterFields
 
+**Description**
+
 You can call this operation to query the filter fields of a specified server log search condition.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeFilterFields. |
 | Query | String | No | The log search condition. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3590,29 +4509,42 @@ You can call this operation to query the filter fields of a specified server log
 | LogFilterList | Array | The filter field information. For more information, see the following parameter descriptions. |
 | Fields | String | The filter fields. |
 
+**Error codes**
+
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeFilterFields &Query=aegis-log-login@warn_port:22
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "LogFilterList":[
+```
+
+`{`
+
+```json
    "Fields":"IP;IP address,UUID;Client ID","fieldsName":"default"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Total":"20",
  "RequestID":"883e1e3d-4443-4206-871c-6c0625c01332"
 ```
 
+`}`
+
 #### 4.8.2 DescribeHistogram
 
+**Description**
+
 You can call this operation to obtain the statistics on server logs generated within a specified time frame.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3620,6 +4552,8 @@ You can call this operation to obtain the statistics on server logs generated wi
 | Query | String | Yes | The log query conditions. |
 | EndTime | String | Yes | The end time of the time frame specified for query. |
 | StartTime | String | Yes | The start time of the time frame specified for query. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3631,10 +4565,10 @@ You can call this operation to obtain the statistics on server logs generated wi
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeHistogram &EndTime=2018-03-03 17:41:03 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeHistogram &EndTime=2018-03-03 17:41:03 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"82D245FB-7A5D-4155-B59F-5B084CE93B6B",
@@ -3652,14 +4586,23 @@ Sample responses (JSON format)
 
 ```json
  "Items":[
+```
+
+`{`
+
+```json
    "Data":[
 ```
 
-`0,` `0,` `0,` `0,` `0,` `0,` `]` `]`
+`0,` `0,` `0,` `0,` `0,` `0,` `]` `}` `]` `}`
 
 #### 4.8.3 DescribeLogInfo
 
+**Description**
+
 You can call this operation to query the server log fields based on specified query conditions.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3671,6 +4614,8 @@ You can call this operation to query the server log fields based on specified qu
 | Query | String | Yes | The log query conditions. |
 | EndTime | String | Yes | The end time of the query. |
 | StartTime | String | Yes | The start time of the query. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3684,7 +4629,13 @@ You can call this operation to query the server log fields based on specified qu
 | Desc | String | The name of the log field. |
 | Type | String | The type of the log field. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeLogInfo &CurrentPage=1 &EndTime=2018-03-03 17:41:03 &PageSize=20 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
@@ -3696,13 +4647,23 @@ Sample responses (JSON format)
     "TotalCount":1,
     "RequestId":"3A7CFB73-C24C-4711-B7D9-2BE74EBFFE78",
     "LogInfoItems":[
+```
+
+`{`
+
+```json
             "Fields":[
+```
+
+`{`
+
+```json
                     "Desc":"IP address",
                     "Type":"string",
                     "Name":"ip"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Client number",
@@ -3710,7 +4671,7 @@ Sample responses (JSON format)
                     "Name":"uuid"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon source IP address",
@@ -3718,7 +4679,7 @@ Sample responses (JSON format)
                     "Name":"warn_ip"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon port",
@@ -3726,7 +4687,7 @@ Sample responses (JSON format)
                     "Name":"warn_port"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon username",
@@ -3734,7 +4695,7 @@ Sample responses (JSON format)
                     "Name":"warn_user"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon type",
@@ -3742,7 +4703,7 @@ Sample responses (JSON format)
                     "Name":"warn_type"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon count",
@@ -3750,18 +4711,20 @@ Sample responses (JSON format)
                     "Name":"warn_count"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Id":"aegis-log-login",
             "Name":"Logon serial number"
 ```
 
-`},` `]`
+`},` `]` `}`
 
 #### 4.8.4 DescribeLogItems
 
 You can call this operation to query the server log details that are returned by a query.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3778,6 +4741,8 @@ You can call this operation to query the server log details that are returned by
 | ProcessSnapshot Offset | Integer | No | The offset of the process snapshot log. |
 | EndTime | String | Yes | The end time of the time frame specified for query. |
 | StartTime | String | Yes | The start time of the time frame specified for query. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3808,13 +4773,15 @@ You can call this operation to query the server log details that are returned by
 | MKey | String | The log entry. |
 | MValue | String | The value of the log entry. |
 
+**Error codes**
+
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogItems &CurrentPage=1 &PageSize=100 &AccountSnapshotOffset=1000 &CrackOffset=1000 &EndTime=2018-03-05 11:46:07 &LoginOffset=1000 &NetworkOffset=1000 &PortSnapshotOffset=1000 &ProcessOffset=1000 &ProcessSnapshotOffset=1000 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeLogItems &CurrentPage=1 &PageSize=100 &AccountSnapshotOffset=1000 &CrackOffset=1000 &EndTime=2018-03-05 11:46:07 &LoginOffset=1000 &NetworkOffset=1000 &PortSnapshotOffset=1000 &ProcessOffset=1000 &ProcessSnapshotOffset=1000 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905",
@@ -3836,9 +4803,15 @@ Sample responses (JSON format)
  "ProcessTotalCount":0
 ```
 
+`}`
+
 #### 4.8.5 CreateLogQuery
 
+**Description**
+
 You can call this operation to create or save server log search conditions.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3849,29 +4822,45 @@ You can call this operation to create or save server log search conditions.
 |---|---|---|---|
 | QueryName | String | No | The saved search name. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```json
-https://aegis.[ RegionId].example.com/?Action=CreateLogQuery &Conditions=aegis-log-login@warn_port:22 &QueryDetail=[[{"itemForm":{},"d":{"name":"Logons","id":"aegis-log-login","fields":[{ "name":"ip","type":"string","desc":"IP address","text":"IP(IP address)"}]] &QueryName=test
+https://aegis.[ RegionId].example.com/?Action=CreateLogQuery &Conditions=aegis-log-login@warn_port:22 &QueryDetail=[[{"itemForm":{},"d":{"name":"Logons","id":"aegis-log-login","fields":[{ "name":"ip","type":"string","desc":"IP address","text":"IP(IP address)"}]] &QueryName=test &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
+`}`
+
 #### 4.8.6 DescribeLogQuery
 
+**Description**
+
 You can call this operation to query the saved server log search conditions.
+
+**Request parameters**
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeLogQuery. |
+
+**Response parameters**
 
 | Name | Type | Description |
 |---|---|---|
@@ -3884,10 +4873,16 @@ You can call this operation to query the saved server log search conditions.
 | QueryDetail | String | The log search sub-conditions. |
 | QueryName | String | The name of the log search task. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogQuery
+https://aegis.[ RegionId].example.com/?Action=DescribeLogQuery &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -3896,13 +4891,18 @@ Sample responses (JSON format)
  "RequestId":"65802B9B-4D30-40F0-8691-F126652DBEBE",
  "ListTotal":1,
  "QueryItems":[
+```
+
+`{`
+
+```json
    "QueryDetail":"[[{\"itemForm\":{},\"d\":{\"name\":\"Account
 snapshot\",\"id\":\"aegis-snapshot-host\",\"fields\": [{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\"}, {\"name\":\"uuid\",\"type\":\"string\",\"desc\":\"Client ID\"}, {\"name\":\"perm\",\"type\":\"string\",\"desc\":\"Root permission availability\"},{\" name\":\"home_dir\",\"type\":\"string\",\"desc\":\"Home directory\"}, {\"name\":\"warn_time\",\"type\":\"string\",\"desc\":\"Password expiration reminder t ime\"},{\"name\":\"groups\",\"type\":\"array\",\"desc\":\"User group\"}, {\"name\":\"login_ip\",\"type\":\"string\",\"desc\":\"Last logon IP\"}, {\"name\":\"last_chg\",\"type\":\"string\",\"desc\":\"Last password change time\"},{\ "name\":\"shell\",\"type\":\"string\",\"desc\":\"Linux shell command\"}, {\"name\":\"domain\",\"type\":\"string\",\"desc\":\"Windows domain\"}, {\"name\":\"tty\",\"type\":\"string\",\"desc\":\"Logon terminal\"}, {\"name\":\"account_expire\",\"type\":\"string\",\"desc\":\"Account expiration time\" },{\"name\":\"passwd_expire\",\"type\":\"string\",\"desc\":\"Password expiration time \"},{\"name\":\"last_logon\",\"type\":\"string\",\"desc\":\"Last logon time\"},{\"nam e\":\"user\",\"type\":\"string\",\"desc\":\"User\"}, {\"name\":\"status\",\"type\":\"string\",\"desc\":\"User status: 0-disabled, 1-enable d\"}]},\"searchFields\":[{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\" },{\"name\":\"uuid\",\"type\":\"string\",\"desc\":\"Client ID\"}, {\"name\":\"perm\",\"type\":\"string\",\"desc\":\"Root permission availability\"},{\" name\":\"home_dir\",\"type\":\"string\",\"desc\":\"Home directory\"}, {\"name\":\"warn_time\",\"type\":\"string\",\"desc\":\"Password expiration reminder t ime\"},{\"name\":\"groups\",\"type\":\"array\",\"desc\":\"User group\"}, {\"name\":\"login_ip\",\"type\":\"string\",\"desc\":\"Last logon IP\"}, {\"name\":\"last_chg\",\"type\":\"string\",\"desc\":\"Last password change time\"},{\ "name\":\"shell\",\"type\":\"string\",\"desc\":\"Linux shell command\"}, {\"name\":\"domain\",\"type\":\"string\",\"desc\":\"Windows domain\"}, {\"name\":\"tty\",\"type\":\"string\",\"desc\":\"Logon terminal\"}, {\"name\":\"account_expire\",\"type\":\"string\",\"desc\":\"Account expiration time\" },{\"name\":\"passwd_expire\",\"type\":\"string\",\"desc\":\"Password expiration time \"},{\"name\":\"last_logon\",\"type\":\"string\",\"desc\":\"Last logon time\"},{\"nam e\":\"user\",\"type\":\"string\",\"desc\":\"User\"}, {\"name\":\"status\",\"type\":\"string\",\"desc\":\"User status: 0-disabled, 1-enable d\"}],\"f\":{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\"},\"searchLimit\": [{\"name\":\"Including\",\"value\":\":\"}],\"l\":\":\",\"kw\":\"string\"}]]",
    "Conditions":"aegis-snapshot-host@ip:string",
    "QueryName":"aa"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.8.7 DeleteLogQuery
 
@@ -3913,21 +4913,31 @@ You can call this operation to delete the saved server log search conditions.
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteLogQuery. |
 | QueryName | String | No | The name of the saved search. |
 
+**Response parameters**
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes.
+
+**Examples**
+
+Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteLogQuery &QueryName=test
+https://aegis.[ RegionId].example.com/?Action=DeleteLogQuery &QueryName=test &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
+
+`}`
 
 ## 5 Error codes
 

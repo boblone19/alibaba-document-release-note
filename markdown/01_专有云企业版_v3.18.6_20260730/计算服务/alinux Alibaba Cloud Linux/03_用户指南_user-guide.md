@@ -5,20 +5,173 @@ doc_version: "20260729"
 pdf_pages: 228
 source_pdf: "03_用户指南_user-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/alinux/zh/user-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Linux 用户指南
 
-Alibaba Cloud Linux
+## 目录
 
-## 系统管理和部署
+- 1 系统管理和部署
+  - 1.1 系统配置
+    - 1.1.1 配置时间和日期
+    - 1.1.2 配置键盘布局
+    - 1.1.3 配置语言
+  - 1.2 用户管理
+    - 1.2.1 普通用户
+    - 1.2.2 管理用户组
+    - 1.2.3 组内用户操作
+  - 1.3 系统服务
+    - 1.3.1 查看系统服务
+    - 1.3.2 启用和禁用
+    - 1.3.3 启动、关闭和重启
+  - 1.4 内存管理
+    - 1.4.1 内存管理概述
+    - 1.4.2 sysfs内存接口
+    - 1.4.3 proc内存接口
+    - 1.4.4 cmdline 常见内存参数
+    - 1.4.5 内存自研特性
+      - 1.4.5.1 冷内存回收
+      - 1.4.5.2 memcg OOM优先级策略
+      - 1.4.5.3 代码大页（hugetext）
+      - 1.4.5.4 代码多备份（duptext）
+      - 1.4.5.5 代码段锁定
+      - 1.4.5.6 稀疏文件零页填充特性
+      - 1.4.5.7 匿名页回收优先级特性
+      - 1.4.5.8 为page cache设置预留内存空间
+  - 1.5 网络管理
+    - 1.5.1 网络管理工具
+    - 1.5.2 配置静态 IP
+    - 1.5.3 配置静态路由
+    - 1.5.4 配置网络桥接
+    - 1.5.5 配置主机名
+    - 1.5.6 网络自研特性
+      - 1.5.6.1 修改TCP TIME_WAIT 超时时间
+      - 1.5.6.2 TCP-RT功能的配置说明
+      - 1.5.6.3 共享内存通信（SMC）
+        - 1.5.6.3.1 共享内存通信（SMC）使用说明
+        - 1.5.6.3.2 共享内存通信（SMC）监控和诊断
+        - 1.5.6.3.3 共享内存通信（SMC）常见问题
+  - 1.6 存储管理
+    - 1.6.1 基础命令
+    - 1.6.2 分区管理
+      - 1.6.2.1 查看磁盘分区
+      - 1.6.2.2 创建磁盘分区
+      - 1.6.2.3 删除磁盘分区
+      - 1.6.2.4 修改分区大小
+    - 1.6.3 文件系统管理
+      - 1.6.3.1 创建文件系统
+      - 1.6.3.2 挂载文件系统
+      - 1.6.3.3 卸载文件系统
+      - 1.6.3.4 修改系统大小
+      - 1.6.3.5 文件系统管理工具对比
+    - 1.6.4 逻辑卷管理
+      - 1.6.4.1 LVM管理物理卷
+      - 1.6.4.2 LVM管理卷组
+      - 1.6.4.3 LVM管理逻辑卷
+      - 1.6.4.4 LVM创建并管理文件系统
+    - 1.6.5 存储自研特性
+      - 1.6.5.1 blk-iocost权重控制
+      - 1.6.5.2 cgroup v1 writeback限流
+      - 1.6.5.3 IO hang检测
+      - 1.6.5.4 virtiofs perfile DAX
+  - 1.7 任务管理
+    - 1.7.1 任务管理工具
+      - 1.7.1.1 top 工具
+      - 1.7.1.3 kill 工具
+      - 1.7.1.4 chrt 工具
+    - 1.7.2 sysfs相关接口
+    - 1.7.3 procfs 相关接口
+    - 1.7.4 debugfs 相关接口
+    - 1.7.5 调度自研特性
+      - 1.7.5.1 Group Identity
+      - 1.7.5.2 Group Balancer
+      - 1.7.5.3 CPU Burst
+      - 1.7.5.4 CPU 动态隔离
+      - 1.7.5.5 plugsched 特性
+  - 1.8 安全更新
+    - 1.8.1 安全更新识别
+      - 1.8.1.1 显示可安装的安全更新
+      - 1.8.1.2 显示已安装的安全更新
+      - 1.8.1.3 显示具体安全公告
+    - 1.8.2 安全更新安装
+      - 1.8.2.1 安装所有可用的安全更新
+      - 1.8.2.2 根据公告安装特定的安全更新
+  - 1.9 软件包管理
+    - 1.9.1 DNF 配置
+      - 1.9.1.1 配置 main 部分
+      - 1.9.1.2 配置 repository 部分
+      - 1.9.1.3 显示当前配置
+      - 1.9.1.4 创建本地软件源仓库
+      - 1.9.1.5 添加、启用和禁用软件源
+    - 1.9.2 管理软件包
+      - 1.9.2.1 搜索软件包
+      - 1.9.2.2 列出软件包清单
+      - 1.9.2.3 显示 RPM 包信息
+      - 1.9.2.4 安装 RPM 包
+      - 1.9.2.5 下载软件包
+      - 1.9.2.6 删除软件包
+    - 1.9.3 管理软件包组
+      - 1.9.3.1 列出软件包组清单
+      - 1.9.3.2 显示软件包组信息
+      - 1.9.3.3 安装软件包组
+      - 1.9.3.4 删除软件包组
+    - 1.9.4 检查并更新
+  - 1.10 日志管理
+    - 1.10.1 日志文件
+    - 1.10.2 日志分析
+      - 1.10.2.1 基础日志分析
+      - 1.10.2.2 高级日志分析
+    - 1.10.3 远程日志功能
+      - 1.10.3.1 配置远程日志服务端配置
+      - 1.10.3.2 配置远程日志发送端配置
+      - 1.10.3.3 测试远程日志
+  - 1.11 桌面环境
+    - 1.11.1 基本操作
+      - 1.11.1.2 用户界面
+      - 1.11.1.5 关机与重启
+    - 1.11.2 系统管理
+      - 1.11.2.1 设置中心
+      - 1.11.2.2 系统监视器
+      - 1.11.2.3 磁盘管理器
+      - 1.11.2.4 文件管理器
+      - 1.11.2.5 日志收集工具
+  - 1.12 中文支持
+    - 1.12.1 系统语言设置
+    - 1.12.2 添加输入法
+  - 1.13 虚拟化
+    - 1.13.1 配置虚拟化环境
+      - 1.13.1.1 硬件查看
+      - 1.13.1.2 组件安装
+      - 1.13.1.3 环境验证
+    - 1.13.2 管理虚拟机
+      - 1.13.2.1 虚拟机创建
+      - 1.13.2.2 虚拟机信息查看
+      - 1.13.2.3 虚拟机配置更新
+      - 1.13.2.4 网络连接
+    - 1.13.3 管理虚拟资源
+      - 1.13.3.1 虚拟 CPU 管理
+      - 1.13.3.2 虚拟内存管理
+  - 1.14 编译器和编程语言
+    - 1.14.1 C++ 编译器 ACC
+    - 1.14.2 C++ 基础库 yaLanTingLibs
+    - 1.14.3 Dragonwell
+- 2 安全增强
+  - 2.1 安全加固
+    - 2.1.1 修复工具
+    - 2.1.2 扫描工具
+  - 2.2 数据安全
+    - 2.2.1 磁盘加密
+    - 2.2.2 文件加密
+    - 2.2.3 铜锁支持商用密码加密
 
-### 系统配置
+## 1 系统管理和部署
+
+### 1.1 系统配置
 
 阿里云服务器操作系统 V3的基本配置包括时间、键盘和语言设置等。时间设置允许用户根据所在地区和需求调整系统时钟，确保准确的时间同步和事件记录。键盘配置使用户能够选择适合的键盘布局和映射，提高输入效率和舒适性。语言设置允许用户选择系统的默认语言和区域设置，以便在界面、应用程序和文档中获得最佳的语言支持和用户体验。这些基本配置不仅使系统个性化和易用性增强，还确保了用户在操作系统中的顺畅沟通和更好的工作效率。
 
-#### 配置时间和日期
+#### 1.1.1 配置时间和日期
 
 本节的主要内容是指导用户如何设置系统的日期、时间和时区。
 
@@ -60,7 +213,7 @@ hwclock
 
 **修改时间**
 
-Alibaba Cloud Linux 通过 `timedatectl` 命令设置系统时间，timedatectl 设置时间前需要先关闭 NTP。
+通过 `timedatectl` 命令设置系统时间，timedatectl 设置时间前需要先关闭 NTP。
 
 ```
 timedatectl set-ntp no timedatectl set-time YYYY-MM-DD timedatectl set-time HH:MM:SS
@@ -92,7 +245,7 @@ timedatectl list-timezones
 Africa/Abidjan Africa/Accra Africa/Addis_Ababa Africa/Algiers Africa/Asmara ... Asia/Beijing ... timedatectl set-timezone Asia/Beijing
 ```
 
-#### 配置键盘布局
+#### 1.1.2 配置键盘布局
 
 **操作步骤**
 
@@ -122,7 +275,6 @@ at-mac at-nodeadkeys
 ```
 
 2. 执行以下命令，查看当前的键盘布局。
-Alibaba Cloud Linux
 
 ```
 localectl status
@@ -148,7 +300,7 @@ localectl set-keymap cn localectl status
 System Locale: LANG=zh_CN.UTF-8 VC Keymap: cn X11 Layout: us
 ```
 
-#### 配置语言
+#### 1.1.3 配置语言
 
 **操作步骤**
 
@@ -183,15 +335,15 @@ System Locale: LANG=zh_CN.UTF-8 VC Keymap: en X11 Layout: us
 localectl set-locale C.utf8 localectl status
 ```
 
-返回如下示例： Alibaba Cloud Linux
+返回如下示例：
 
 ```
 System Locale: LANG=C.utf8 VC Keymap: en X11 Layout: us
 ```
 
-### 用户管理
+### 1.2 用户管理
 
-#### 普通用户
+#### 1.2.1 普通用户
 
 **操作步骤**
 
@@ -202,9 +354,9 @@ i. 执行以下命令添加用户。
 useradd <newuser>
 ```
 
-**说明**
+> **说明：** <newuser>替换为实际的用户名。
 
-<newuser>替换为实际的用户名。 添加用户操作需要 root 权限。 ii. 执行以下命令查看添加的用户信息。
+添加用户操作需要 root 权限。 ii. 执行以下命令查看添加的用户信息。
 
 ```
 id <newuser>
@@ -229,7 +381,7 @@ passwd
 passwd newuser
 ```
 
-更改用户 `newuser` 的密码。 新的密码： 重新输入新的密码： `passwd`：所有的身份验证令牌已经成功更新。 设置的密码如果过弱，会被拒绝。如下示例： 无效的密码：密码未通过字典检查 - 太简单或太有规律无效的密码：密码是一个回文通过 `usermode [options] <username>` 命令修改用户的其他信息，参数说明如下： Alibaba Cloud Linux
+更改用户 `newuser` 的密码。 新的密码： 重新输入新的密码： `passwd`：所有的身份验证令牌已经成功更新。 设置的密码如果过弱，会被拒绝。如下示例： 无效的密码：密码未通过字典检查 `-` 太简单或太有规律无效的密码：密码是一个回文通过 `usermode [options] <username>` 命令修改用户的其他信息，参数说明如下：
 
 | 参数 | 说明 |
 |---|---|
@@ -258,7 +410,7 @@ usermod -l newname <newuser> id newname
 ```
 
 4. 管理员权限。
-执行以下命令为普通用户追加管理员权限并查看。 Alibaba Cloud Linux
+执行以下命令为普通用户追加管理员权限并查看。
 
 ```
 usermod -G wheel newname id newname
@@ -276,7 +428,7 @@ uid=1000(newname) gid=1000(newuser) 组=1000(newuser),10(wheel)
 userdel <newname>
 ```
 
-#### 管理用户组
+#### 1.2.2 管理用户组
 
 **操作步骤**
 
@@ -302,25 +454,24 @@ cat /etc/group | grep <newgroup>
 groupdel newgroup
 ```
 
-#### 组内用户操作
+#### 1.2.3 组内用户操作
 
 **操作步骤**
 
 1. 以下命令任选其一，将用户添加到补充组。
-#方式一
-`usermod -a -G` 用户组名用户名
-#方式二
-`gpasswd -a` 用户名用户组名
+`#`方式一 `usermod -a -G` 用户组名用户名 `#`方式二 `gpasswd -a` 用户名用户组名
 2. 执行以下命令，将用户从补充组内删除。
 `gpasswd -d` 用户名用户组名
 3. 切换用户组。
-Alibaba Cloud Linux i. 执行以下命令，查看用户当前所在的用户组。 `groups` 用户名 ii. 更改 newuser 的用户组到 newgroup。 `usermod -g` 用户组名用户名
+i. 执行以下命令，查看用户当前所在的用户组。 `groups` 用户名 ii. 更改 newuser 的用户组到 newgroup。 `usermod -g` 用户组名用户名
 
-### 系统服务
+### 1.3 系统服务
 
-#### 查看系统服务
+#### 1.3.1 查看系统服务
 
 **操作步骤**
+
+**查看系统服务列表**
 
 1. 执行以下命令，查看系统中活跃的服务。
 
@@ -341,8 +492,6 @@ UNIT LOAD ACTIVE SUB DESCRIPTION aegis.service loaded active running Aegis Servi
 | UNIT | 系统单元的名称。 |
 | LOAD | 系统单元的载入状态，取值范围：stub, loaded, not-found, bad-setting, error, merged, masked。 |
 | ACTIVE | 活跃状态，取值范围为：active, reloading, inactive, failed, activating, deactivating。 |
-
-Alibaba Cloud Linux
 
 | SUB | 具体的活跃状态，根据系统单元的类型不同而不同，系统服务类的具体活跃状态取值范围为：dead, condition, start-pre, start, start-post, running, exited, reload, stop, stop-sigabrt, stop-sigterm, stop-sigkill, stop-post, final- sigterm, final-sigkill, failed, auto-restart。 |
 |---|---|
@@ -371,7 +520,7 @@ STATE表示模块的启用或禁用状态。 enabled：启用 disabled：禁用 
 systemctl status xxx.service
 ```
 
-其中xxx替换为服务名称，如下示例： Alibaba Cloud Linux
+其中xxx替换为服务名称，如下示例：
 
 ```bash
 # systemctl status accounts-daemon.service
@@ -404,7 +553,7 @@ systemctl is-active xxx.service
 systemctl is-enabled xxx.service
 ```
 
-#### 启用和禁用
+#### 1.3.2 启用和禁用
 
 **操作步骤**
 
@@ -428,11 +577,9 @@ systemctl enable xxx.service
 systemctl disable xxx.service
 ```
 
-#### 启动、关闭和重启
+#### 1.3.3 启动、关闭和重启
 
 **操作步骤**
-
-Alibaba Cloud Linux
 
 **说明**
 
@@ -455,11 +602,13 @@ systemctl stop xxx.service
 systemctl restart xxx.service
 ```
 
-### 内存管理
+### 1.4 内存管理
 
 本节主要说明阿里云服务器操作系统V3 中基本的内存使用、内存信息查看以及阿里云服务器操作系统 V3 自研内存特性使用说明。
 
-#### 内存管理概述
+#### 1.4.1 内存管理概述
+
+**内存管理概述**
 
 **内存大小查看**
 
@@ -488,13 +637,11 @@ cat /proc/meminfo
 MemTotal: 130707300 kB MemFree: 125368952 kB MemAvailable: 129349968 kB Buffers: 207240 kB Cached: 4363348 kB SwapCached: 0 kB
 ```
 
-Alibaba Cloud Linux
-
 ```
 Active: 735120 kB Inactive: 3946620 kB Active(anon): 204 kB Inactive(anon): 106732 kB Active(file): 734916 kB Inactive(file): 3839888 kB Unevictable: 0 kB Mlocked: 0 kB SwapTotal: 1048572 kB SwapFree: 1048212 kB Dirty: 56 kB Writeback: 0 kB AnonPages: 111160 kB Mapped: 154836 kB Shmem: 312 kB KReclaimable: 280100 kB Slab: 366032 kB SReclaimable: 280100 kB SUnreclaim: 85932 kB KernelStack: 7536 kB PageTables: 5384 kB NFS_Unstable: 0 kB Bounce: 0 kB WritebackTmp: 0 kB CommitLimit: 66402220 kB Committed_AS: 8740288 kB VmallocTotal: 135290159040 kB VmallocUsed: 128676 kB VmallocChunk: 0 kB Percpu: 97536 kB HardwareCorrupted: 0 kB AnonHugePages: 0 kB ShmemHugePages: 0 kB ShmemPmdMapped: 0 kB FileHugePages: 32768 kB FilePmdMapped: 2048 kB CmaTotal: 65536 kB CmaFree: 53248 kB DupText: 0 kB MemZeroed: 0 kB HugePages_Total: 0 HugePages_Free: 0 HugePages_Rsvd: 0 HugePages_Surp: 0 Hugepagesize: 2048 kB Hugetlb: 0 kB DirectMap4k: 108416 kB DirectMap2M: 4085760 kB DirectMap1G: 14680064 kB
 ```
 
-meminfo 中重要字段解释如下： Alibaba Cloud Linux
+meminfo 中重要字段解释如下：
 
 | 序号 | 字段 | 说明 |
 |---|---|---|
@@ -514,8 +661,6 @@ meminfo 中重要字段解释如下： Alibaba Cloud Linux
 | 14 | SwapFree | 交换空间空闲内存。 |
 | 15 | Dirty | 内存中被修改且需要写回磁盘的内存。 |
 | 16 | Writeback | 属于 Dirty 内存，且正在被写回到磁盘。 |
-
-Alibaba Cloud Linux
 
 | 17 | AnonPages | 未映射页的内存/映射到用户空间的非文件页表大小。 |
 |---|---|---|
@@ -537,8 +682,6 @@ Alibaba Cloud Linux
 | 33 | Percpu | 每个 CPU 对象专用的内存量。为了实现可扩展性和内存访问速度优化，许多内核特定对象被分解为每个系统 CPU 的一个对象副本（即每个CPU）。这些对象可以在系统启动时静态分配，也可以在系统运行时动态分配；例如，cgroups经常创建动态的每个CPU 对象分配。 |
 | 34 | AnonHugePages | 系统所使用的总的透明大页量。 |
 
-Alibaba Cloud Linux
-
 | 35 | ShmemHugePages | 系统中 Shmem 大页的使用量。 |
 |---|---|---|
 | 36 | ShmemPmdMappe d | 系统中仍然是 PMD 映射的内存，与 ShmemHugePages 字段存在差异，例如一个 Shmem 大页，在进程 A 中是 PMD 映射，在进程 B 中为 PTE 映射，所以 ShmemHugePages 一般大于 ShmemPmdMapped 值。 |
@@ -556,8 +699,6 @@ Alibaba Cloud Linux
 | 48 | Hugetlb | 被不同大小 hugetlb 大页消耗的总的内存大小。如果系统中超过两种 hugetlb 大页被使用，该值可能会超过 HugePages Total * Hugepagesize。详细的数 _ 据可查看/sys/kernel/mm/hugepages。 |
 | 49 | DirectMap4k | 以 4 KB 页面映射方式映射到内核地址空间的内存总量，仅支持 x86 架构。 |
 | 50 | DirectMap2M | 以 2MB 页面映射方式映射到内核地址空间的内存总量，仅支持 x86 架构。 |
-
-Alibaba Cloud Linux
 
 | 51 | DirectMap1G | 以 1GB 页面映射方式映射到内核地址空间的内存总量，仅支持 x86 架构。 |
 |---|---|---|
@@ -590,7 +731,7 @@ Numa_Hit 88799.42 Local_Node 88574.15 Other_Node 225.27 Interleave_Hit 85.54 Num
 
 **cache分布信息查看**
 
-Alibaba Cloud Linux cache 的分布也属于内存相关问题的主要原因之一。cache 的分布、大小可以通过 sys 相关接口获取：
+cache 的分布也属于内存相关问题的主要原因之一。cache 的分布、大小可以通过 sys 相关接口获取：
 
 ```bash
 cat /sys/devices/system/cpu/cpu0/cache/index3/shared_cpu_list
@@ -601,7 +742,9 @@ cat /sys/devices/system/cpu/cpu0/cache/index3/size
 
 以上面的数据为例，core 1-31 共享同一个 L3 Cache，L3 Cache 大小为 32MB。
 
-#### sysfs内存接口
+#### 1.4.2 sysfs内存接口
+
+**sysfs内存接口**
 
 在 /sys 中，除前面的虚拟内存配置功能外，还包括其他高级内存设置接口，见下表：
 
@@ -611,12 +754,10 @@ cat /sys/devices/system/cpu/cpu0/cache/index3/size
 | /sys/kernel/mm/hugepages/hugepages- 64kB/nr hugepages _ | N/A | 用于更改huge page pool的最小页面数量； 64K hugepage 仅在AArch64 架构支持。 |
 | /sys/kernel/mm/hugepages/hugepages- 64kB/nr hugepages mempolicy _ _ | N/A | 该字段和nr hugepages类似，只是在 _ NUMA环境专用，遵从numa的mempolicy 来设置huge page pool的最小页面数量； 64K hugepage 仅在AArch64 架构支持。 |
 | /sys/kernel/mm/hugepages/hugepages- 64kB/nr overcommit hugepages _ _ | N/A | 用于更改huge page pool可扩展增长的最大页面数量，最大的页面数量上限 = nr hugepages + _ nr overcommit hugepages；64K _ _ hugepage 仅在AArch64 架构支持。 |
-| /sys/kernel/mm/hugepages/hugepages- 32768kB 各字段与64KB相同，这里需要说明的是， 不同架构可支持的hugepage的size是不同的，以 arm64为例，如果PAGE SIZE为4KB，则支持 _ 64KB、2M、32M、1G这4种hugepage |  | 32M hugepage 仅在AArch64 架构支持。 |
+| /sys/kernel/mm/hugepages/hugepages- 32768kB 各字段与64KB相同，这里需要说明的是， 不同架构可支持的hugepage的size是不同的，以 arm64为例，如果PAGE SIZE为4KB，则支持 _ 64KB、2M、32M、1G这4种hugepage |   | 32M hugepage 仅在AArch64 架构支持。 |
 | /sys/kernel/mm/kidled/scan period in seconds _ _ _ | 0 | 设置扫描idle页面的时间间隔，单位是秒。 |
 | /sys/kernel/mm/kidled/scan target _ | 1 | 设置扫描idle页面的对象，1表示只扫描匿名页、页缓存PageCache，2表示只扫描slab 页，3表示以上都扫描。 |
 | /sys/kernel/mm/ksm/max page sharing _ _ | 256 | 该值设置的是ksm page可被共享的最大值。 |
-
-Alibaba Cloud Linux
 
 | /sys/kernel/mm/ksm/merge across nodes _ _ | 1 | 用于控制不同NUMA node的page是否可以合并，默认为1，即允许跨NUMA node对 page进行合并。 |
 |---|---|---|
@@ -633,8 +774,6 @@ Alibaba Cloud Linux
 | /sys/kernel/mm/page idle/bitmap _ | N/A | 以bitmap的方式来显示内存中的idle页面， 每个bit位表示一个pfn，bit设置为1表示对应页面idle。 |
 | /sys/kernel/mm/swap/vma ra enabled _ _ | true | 是否支持swapin预读，默认是开启的。 |
 
-Alibaba Cloud Linux
-
 | /sys/kernel/mm/transparent hugepage/defrag _ | never | 该值影响THP发生缺页时的内存分配行为， 如果是always，那么如果thp无法直接分配，则会进入直接内存回收，如果是defer， 分配不到立即失败，同时会唤醒kswapd，如果是madvise，那么如果显式要求分配 hugepage，则会进入直接回收，否则分配不到立即失败，如果是never，那么都是分配不到立即失败，如果是defer+madvise，则是唤醒kswapd，并且如果显式要求分配 hugepage，会进入直接回收。 |
 |---|---|---|
 | /sys/kernel/mm/transparent hugepage/enable _ d | never | 用于使能THP分配，如果是always，则每次都分配THP，如果是madvise，则用户显式要求分配hugepage才会分配THP，如果是 never，则关闭THP分配。 |
@@ -644,8 +783,6 @@ Alibaba Cloud Linux
 | /sys/kernel/mm/transparent hugepage/khugep _ aged/alloc sleep millisecs _ _ | 60000 | 使能THP后，在 khugepaged 中等待多少毫秒，才会在分配失败后进行下一次分配尝试。 |
 | /sys/kernel/mm/transparent hugepage/khugep _ aged/defrag | 1 | khugepaged进行扫描时，用于分配 hugepage的过程中，是否允许direct回收， 因为khugepaged的运行频率很低，所以默认支持。 |
 
-Alibaba Cloud Linux
-
 | /sys/kernel/mm/transparent hugepage/khugep _ aged/max ptes none _ _ | 511 | 指定有多少未映射的小页面可以折叠合并为一个大页面，该值不能太大，否则在 khugepaged扫描阶段会减小系统可用内存。 |
 |---|---|---|
 | /sys/kernel/mm/transparent hugepage/khugep _ aged/max ptes shared _ _ | 256 | 在进程间可以共享的最大页面数，默认256。 |
@@ -653,11 +790,11 @@ Alibaba Cloud Linux
 | /sys/kernel/mm/transparent hugepage/khugep _ aged/pages to scan _ _ | 4096 | khugepaged一次扫描的页面数，默认 4096。 |
 | /sys/kernel/mm/transparent hugepage/khugep _ aged/scan sleep millisecs _ _ | 10000 | khugepaged的扫描周期间隔，默认 10000ms。 |
 
-**重要**
+> **重要：** 以上接口属于阿里云服务器操作系统 V3 系列支持。
 
-以上接口属于阿里云服务器操作系统 V3 系列支持。
+#### 1.4.3 proc内存接口
 
-#### proc内存接口
+**proc内存接口**
 
 虚拟内存参数列在/proc/sys/vm 目录中。
 
@@ -667,8 +804,6 @@ Alibaba Cloud Linux
 | /proc/sys/vm/block dump _ | 0 | block层debug信息开关，默认要关闭，如果开启后会产生大量串口输出。 |
 | /proc/sys/vm/compaction proactiveness _ | 20 | 与内存规整功能相关，用于控制内存碎片化评分水线， 在系统内存存在碎片化时，内核应当多么积极地进行内存规整来获取更多的可用连续内存，设置为0表示禁用内存规整。 |
 | /proc/sys/vm/compact unevictable allo _ _ wed | 1 | 是否允许对unevictable的内存进行规整，默认为1。 |
-
-Alibaba Cloud Linux
 
 | /proc/sys/vm/dirty background bytes _ _ | 0 | 脏页平衡相关，系统中存在的脏页累积到一定值后，会启动回写，该值就是脏页累积启动后台回写的字节数， 如果dirty background bytes的值为0 _ _ 时，dirty background ratio才会生效，所以通常该 _ _ 值默认为0。 |
 |---|---|---|
@@ -685,8 +820,6 @@ Alibaba Cloud Linux
 | /proc/sys/vm/laptop mode _ | 0 | 膝上电脑模式，服务器场景必须关闭。 |
 | /proc/sys/vm/legacy va layout _ _ | 0 | 老式mmap内存布局开关，默认必须关闭。 |
 
-Alibaba Cloud Linux
-
 | /proc/sys/vm/lowmem reserve ratio _ _ | 256 256 32 0 | 存在高端内存的机器上，如果从lowmem中分配内存， 那么可能会被pin住而无法被回收，导致系统陷入内存耗尽的风险，lowmem reserve ratio就是用来阻止这 _ _ 种风险发生的参数，该字段内容是一个数组，与zone个数相同，分别对应每个zone的reserve ratio，数值 256表示lowmem保留值为该zone管理页面的（1 / 256）。 |
 |---|---|---|
 | /proc/sys/vm/max map count _ _ | 65530 | 进程可以映射的vma最大数量。 |
@@ -700,8 +833,6 @@ Alibaba Cloud Linux
 | /proc/sys/vm/mmap rnd bits _ _ | N/A | vma基址的随机偏移量支持的地址位数，涉及arch的 mmap地址空间随机化，数值与架构相关。 |
 | /proc/sys/vm/mmap rnd compat bits _ _ _ | N/A | 兼容模式运行时，vma基址的随机偏移量支持的地址位数，数值与架构相关。 |
 | /proc/sys/vm/nr hugepages _ | N/A | 用于更改huge page pool的最小页面数量。 |
-
-Alibaba Cloud Linux
 
 | /proc/sys/vm/nr hugepages mempolicy _ _ | N/A | 该字段和nr hugepages类似，只是在NUMA环境专 _ 用，遵从numa的mempolicy来设置huge page pool 的最小页面数量。 |
 |---|---|---|
@@ -717,8 +848,6 @@ Alibaba Cloud Linux
 | /proc/sys/vm/page lock unfairness _ _ | 5 | bit锁的优化，避免在高争用场景下，task长时间wait on page bit。 |
 | /proc/sys/vm/panic on oom _ _ | 0 | oom时是否会触发panic，默认为0。 |
 
-Alibaba Cloud Linux
-
 | /proc/sys/vm/percpu pagelist fraction _ _ | 0 | 用于设定per cpu pagelist的高水线值，该值是一个 _ _ 分母，高水线值是zone管理的页面总数除以该值，默认为0，即不设定高水线值，如果设定了高水线值，那么如果pcp管理的内存超过这个水线，就需要将page释放回伙伴系统。 |
 |---|---|---|
 | /proc/sys/vm/stat interval _ | 1 | vmstat统计更新的时间间隔，默认为1秒。 |
@@ -731,7 +860,7 @@ Alibaba Cloud Linux
 | /proc/sys/vm/watermark scale factor _ _ | 10 | 该值控制kswapd的回收积极性，该值会影响low水线值和high水线值，从而控制唤醒kswapd和kswapd需要回收多少内存才能再次返回睡眠，该值在实际使用中会除以1000，默认为10，即0.1%的系统管理内存作为调整值。 |
 | /proc/sys/vm/zone reclaim mode _ _ | 0 | 该值用于控制在进行内存分配时，如果当前zone没有直接可用的空闲内存，是否直接在当前zone上启动 reclaim，默认为0，即不直接在当前zone上 reclaim，而是尝试在其他zone进行分配。 |
 
-Alibaba Cloud Linux 虚拟内存参数配置说明： 临时设置参数有助于确定参数在系统上具有的影响。当您确保参数值具有所需的效果时，您可以永久设置该参数。这个步骤描述了如何临时和永久设置与内存相关的内核参数。 要临时设置与内存相关的内核参数，请编辑 /proc 文件系统或 sysctl 工具中的相应文件。例如，要临时将vm.overcommit_memory 参数设置为 1：
+虚拟内存参数配置说明： 临时设置参数有助于确定参数在系统上具有的影响。当您确保参数值具有所需的效果时，您可以永久设置该参数。这个步骤描述了如何临时和永久设置与内存相关的内核参数。 要临时设置与内存相关的内核参数，请编辑 /proc 文件系统或 sysctl 工具中的相应文件。例如，要临时将vm.overcommit_memory 参数设置为 1：
 
 ```
 echo 1 > /proc/sys/vm/overcommit_memory sysctl -w vm.overcommit_memory=1
@@ -739,7 +868,9 @@ echo 1 > /proc/sys/vm/overcommit_memory sysctl -w vm.overcommit_memory=1
 
 要永久设置与内存相关的内核参数，请编辑/etc/sysctl.conf 文件并重新载入设置。 如：要永久将vm.overcommit_memory参数设置为1： i. 在/etc/sysctl.conf 文件中添加以下内容： `vm.overcommit_memory=1` 。 ii. 重新载入来自/etc/sysctl.conf 文件的sysctl，执行 `sysctl -p` 命令。
 
-#### cmdline 常见内存参数
+#### 1.4.4 cmdline 常见内存参数
+
+**cmdline常见内存参数**
 
 cmdline 场景的内存参数说明如下表，您可以通过对照您当前系统 cmdline 配置理解：
 
@@ -764,43 +895,39 @@ BOOT_IMAGE=(hd0,gpt2)/vmlinuz-5.10.134-010.ali5000.pro.al8.aarch64 root=/dev/map
 | cgroup.memory= | kmem、nokmem | 默认nokmem。是否记账内核内存使用。内存统计对所有内存控制组默认使能，在启动时传递 cgroup.memory=nokmem参数可以禁用该功能，在禁用后，内核内存就不会被统计，否则会带来性能问题。 |
 | kpti= | off、on | 默认on。 |
 
-Alibaba Cloud Linux
-
 | transparent hugepage= _ | always、madvise和never | 默认always。控制透明大页。 |
 |---|---|---|
 | numa= | off、on | 默认on。在OS层屏蔽NUMA结构，但实际各节点访存延迟还是存在差异。另外在硬件上关闭NUMA需要在BIOS中设置。 |
 | numa balancing= _ | enable或disable | 使能自动平衡NUMA压力，减少跨NUMA 节点内存访问的延迟。其功能也可在系统启动以后通过/proc/sys/kernel/numa balancing设 _ 置。 /proc/sys/kernel/numa balancing设 _ 置。 |
 | hugetext enabled= _ | 0、1、2和3 | 默认0。使能应用代码段和动态共享库大页。1表示仅使能应用本身的代码段使用大页，2表示匿名页形式的代码使用大页，3表示使能以上两种。 |
 
-**说明**
+> **说明：** 其中自研 cmdline 只能在阿里云服务器操作系统 V3 产品中使用。
 
-其中自研 cmdline 只能在阿里云服务器操作系统 V3 产品中使用。
+#### 1.4.5 内存自研特性
 
-#### 内存自研特性
-
-##### 冷内存回收
+##### 1.4.5.1 冷内存回收
 
 **接口概述**
 
 | 模块 | 配置项 | 默认值 | 描述 |
 |---|---|---|---|
 | kidled | /sys/kernel/mm/kidled/scan targe _ t | 1 | 用户设置kidled扫描对象，例如匿名页、页缓存PageCache或slab，或者以上都扫描（设置为3）。 |
-|  | /sys/kernel/mm/kidled/scan perio _ d in seconds _ _ | 0 | kidled扫描冷页的周期，该值越小，kidled占用CPU开销越大；0值表示关闭kidled扫描。 |
+|   | /sys/kernel/mm/kidled/scan perio _ d in seconds _ _ | 0 | kidled扫描冷页的周期，该值越小，kidled占用CPU开销越大；0值表示关闭kidled扫描。 |
 | coldpgs | /sys/kernel/mm/coldpgs/batch | 32 | coldpgs一次冷内存回收的页数量。 |
-|  | /sys/kernel/mm/coldpgs/flags | 0x0 | 全局冷内存回收属性设置，当前主要设置 memcg下该参数。 |
-|  | /sys/kernel/mm/coldpgs/hierarchy | 0 | 用来控制 memory cgroup 的 stats 接口是否累加子 cgroup 的数据。1 为累加，0 为不累加。 |
+|   | /sys/kernel/mm/coldpgs/flags | 0x0 | 全局冷内存回收属性设置，当前主要设置 memcg下该参数。 |
+|   | /sys/kernel/mm/coldpgs/hierarchy | 0 | 用来控制 memory cgroup 的 stats 接口是否累加子 cgroup 的数据。1 为累加，0 为不累加。 |
 
-|  | /sys/kernel/mm/coldpgs/mode | 0x0 | 设置回收模式，0x1表示回收页缓存，0x2表示回收匿名页，0x4表示回收slab。 |
+|   | /sys/kernel/mm/coldpgs/mode | 0x0 | 设置回收模式，0x1表示回收页缓存，0x2表示回收匿名页，0x4表示回收slab。 |
 |---|---|---|---|
-|  | /sys/kernel/mm/coldpgs/swapin | swapin | 将所有被回收的匿名页重新读取到内存中。 |
-|  | /sys/kernel/mm/coldpgs/threshold | 0 | 全局回收冷内存阈值设置，不常用。 |
-|  | /sys/kernel/mm/coldpgs/threshold nonrot _ | 0 | 在开启内存压缩回收匿名页的场景下，如果匿名页的冷值超过了该接口设定的值，那么会将该页交换到磁盘上，而不是通过内存压缩。 |
-|  | /sys/kernel/mm/coldpgs/version | \ | 当前coldpgs模块版本，例如当前最新版本为 0x20500。 |
-|  | /sys/fs/cgroup/memory/memory.c oldpgs.flags | 0x0 | 设置回收类型，例如匿名页（unlock或 locked）、页缓存PageCache（unlock或 locked）或slab。 |
-|  | /sys/fs/cgroup/memory/memory.c oldpgs.size | 0 | 一次回收的内存大小，回收完成自动清0。 |
-|  | /sys/fs/cgroup/memory/memory.c oldpgs.stats | \ | 冷内存回收统计。 |
-|  | /sys/fs/cgroup/memory/memory.c oldpgs.swapin | swapin | 将该 memory cgroup 被回收的匿名页重新读取到内存中。 |
-|  | /sys/fs/cgroup/memory/memory.c oldpgs.threshold | 0 | 回收阈值，memory.idle page stats中大于 _ _ 该阈值的内存可以被回收。 |
+|   | /sys/kernel/mm/coldpgs/swapin | swapin | 将所有被回收的匿名页重新读取到内存中。 |
+|   | /sys/kernel/mm/coldpgs/threshold | 0 | 全局回收冷内存阈值设置，不常用。 |
+|   | /sys/kernel/mm/coldpgs/threshold nonrot _ | 0 | 在开启内存压缩回收匿名页的场景下，如果匿名页的冷值超过了该接口设定的值，那么会将该页交换到磁盘上，而不是通过内存压缩。 |
+|   | /sys/kernel/mm/coldpgs/version | \ | 当前coldpgs模块版本，例如当前最新版本为 0x20500。 |
+|   | /sys/fs/cgroup/memory/memory.c oldpgs.flags | 0x0 | 设置回收类型，例如匿名页（unlock或 locked）、页缓存PageCache（unlock或 locked）或slab。 |
+|   | /sys/fs/cgroup/memory/memory.c oldpgs.size | 0 | 一次回收的内存大小，回收完成自动清0。 |
+|   | /sys/fs/cgroup/memory/memory.c oldpgs.stats | \ | 冷内存回收统计。 |
+|   | /sys/fs/cgroup/memory/memory.c oldpgs.swapin | swapin | 将该 memory cgroup 被回收的匿名页重新读取到内存中。 |
+|   | /sys/fs/cgroup/memory/memory.c oldpgs.threshold | 0 | 回收阈值，memory.idle page stats中大于 _ _ 该阈值的内存可以被回收。 |
 | \ | /sys/fs/cgroup/memory/memory.i dle page stats _ _ | \ | 统计kidled扫描的冷内存。 |
 
 补充说明 memory.coldpgs.flags接口的设置： `flags` 字段含义：
@@ -812,7 +939,7 @@ Alibaba Cloud Linux
              reserved   mlock     mode     coldness
 ```
 
-其中： mlock 段决定是否回收被锁内存； Alibaba Cloud Linux mode 表示将回收的内存类型； coldness 表示回收的冷内存阈值； 另外，补充说明 memory.idle_page_stats 和memory.coldpgs.stats，其中 memory.idle_page_stats 用于显示当前 kidled 扫描的冷内存数据，按照内存冷热程度统计以及扫描类型 （csei、dsei、cfei、dfei 等），如下： Alibaba Cloud Linux
+其中： mlock 段决定是否回收被锁内存； mode 表示将回收的内存类型； coldness 表示回收的冷内存阈值； 另外，补充说明 memory.idle_page_stats 和memory.coldpgs.stats，其中 memory.idle_page_stats 用于显示当前 kidled 扫描的冷内存数据，按照内存冷热程度统计以及扫描类型 （csei、dsei、cfei、dfei 等），如下：
 
 ```bash
 # cat /sys/fs/cgroup/memory/memory.idle_page_stats
@@ -823,7 +950,7 @@ Alibaba Cloud Linux
 # buckets: 1,2,5,15,30,60,120,240
 ```
 
-#
+`#`
 
 ```bash
 #   _-----=> clean/dirty
@@ -876,7 +1003,7 @@ memory.coldpgs.stats用于统计通过 coldpgs 模块回收的冷内存大小，
 cat /sys/fs/cgroup/memory/memory.coldpgs.stats
 ```
 
-Alibaba Cloud Linux 返回如下示例：
+返回如下示例：
 
 ```
 pagecache migrate in : 0 kB pagecache migrate out : 0 kB pagecache dropped : 0 kB anon migrate in : 0 kB anon zswap in : 0 kB anon swap in : 0 kB anon migrate out : 0 kB anon zswap out : 0 kB anon swap out : 0 kB slab drop : 0 kB mlock dropped : 0 kB mlock refault : 0 kB Total pagecache migrate in : 0 kB Total pagecache migrate out : 0 kB Total pagecache dropped : 0 kB Total anon migrate in : 0 kB Total anon zswap in : 0 kB Total anon swap in : 0 kB Total anon migrate out : 0 kB Total anon zswap out : 0 kB Total anon swap out : 0 kB Total slab drop : 0 kB Total mlock dropped : 0 kB Total mlock refault : 0 kB
@@ -888,16 +1015,15 @@ pagecache migrate in : 0 kB pagecache migrate out : 0 kB pagecache dropped : 0 k
 
 描述手动配置和触发方式展示 kidled 与 coldpgs 对内存的冷热扫描和回收。
 
-**说明**
+> **说明：** 本文展示的冷内存回收示例主要为快速展示回收模块冷内存扫描和回收功能，设置的相关回收参数并不代表业务配置。
 
-本文展示的冷内存回收示例主要为快速展示回收模块冷内存扫描和回收功能，设置的相关回收参数并不代表业务配置。
 1. 测试前，设置 kidled 扫描周期，快速测试可配置为15s 扫描一次。
 
 ```
 echo 15 > /sys/kernel/mm/kidled/scan_period_in_seconds
 ```
 
-Alibaba Cloud Linux 设置 kidled 扫描对象为页和 slab。
+设置 kidled 扫描对象为页和 slab。
 
 ```
 echo 3 > /sys/kernel/mm/kidled/scan_target
@@ -918,9 +1044,7 @@ coldpgs 40960 0
 
 kidled部分目前不支持模块安装，默认是以 builtin 方式融入内核，可间接通过查看是否有/sys/kernel/mm/kidled目录判断是否支持 kidled。
 
-**说明**
-
-阿里云服务器操作系统 V3 中所支持的 coldpgs 回收模块必须在 kidled 和 coldpgs 同时安装成功
+> **说明：** 阿里云服务器操作系统 V3 中所支持的 coldpgs 回收模块必须在 kidled 和 coldpgs 同时安装成功的情况下才能执行完整的冷内存回收功能。
 
 **页缓存Page Cache回收**
 
@@ -936,7 +1060,7 @@ load_pagecaches.c测试程序如下： `/*`
 * Copyright (C) 2018, Alibaba Group. All Rights Reserved.
 ```
 
-*
+`*`
 
 ```
 * This program is free software; you can redistribute it and/or
@@ -945,7 +1069,7 @@ load_pagecaches.c测试程序如下： `/*`
 * the License, or (at your option) any later version.
 ```
 
-*
+`*`
 
 ```
 * This program is distributed in the hope that it would be useful,
@@ -954,14 +1078,14 @@ load_pagecaches.c测试程序如下： `/*`
 * GNU General Public License for more details.
 ```
 
-*
+`*`
 
 ```
 * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 ```
 
-*
+`*`
 
 ```
 * Description: generate page caches by reading file
@@ -978,8 +1102,6 @@ load_pagecaches.c测试程序如下： `/*`
 #include <string.h>
 ```
 
-Alibaba Cloud Linux
-
 ```
 #include <signal.h>
 #include <sys/mman.h>
@@ -987,16 +1109,36 @@ Alibaba Cloud Linux
 #include <fcntl.h>
 #include <ctype.h>
 #define PAGE_SIZE 4096
-static void help(const char *myname) {
+static void help(const char *myname)
+```
+
+`{`
+
+```
     printf("Usage: %s [-c|-w|-l|-h] path_of_file_to_read\n\n", myname);
     printf("Options:\n");
     printf("-c cgroup\tAdd the task to given cgroup\n");
     printf("-w\t\tWait SIGUSR1 before exiting\n");
     printf("-l\t\tLock the memory to avoid being swapped out\n");
     printf("-h\t\tPrint this help\n");
-} static unsigned int flag_end = 0; void sigusr_handler(int signo) {
+```
+
+`}`
+
+```
+static unsigned int flag_end = 0; void sigusr_handler(int signo) {
     flag_end = 1;
-} int read_file(const char *filename, int waitsigusr, bool mlock) {
+```
+
+`}`
+
+```
+int read_file(const char *filename, int waitsigusr, bool mlock)
+```
+
+`{`
+
+```
     char *addr, *start, *end;
     struct stat filestat;
     int fd, tn;
@@ -1007,24 +1149,33 @@ static void help(const char *myname) {
                 "get status failed on file: %s\n",
                 filename);
         return 1;
-    }
+```
+
+`}`
+
+```
     size = filestat.st_size;
     if (size == 0) {
         fprintf(stderr,
                 "empty file: %s\n",
                 filename);
         return 1;
-    }
+```
+
+`}`
+
+```
     if (mlock) {
         if (mlockall(MCL_CURRENT|MCL_FUTURE) < 0) {
             perror("mlockall failed");
             return 1;
-        }
-    }
-    fd = open(filename, O_RDWR);
 ```
 
-Alibaba Cloud Linux
+`}` `}`
+
+```
+    fd = open(filename, O_RDWR);
+```
 
 ```
     if (fd < 0) {
@@ -1032,7 +1183,11 @@ Alibaba Cloud Linux
                 "failed to open file: %s\n",
                 filename);
         return 1;
-    }
+```
+
+`}`
+
+```
     start = mmap(0, size, PROT_WRITE|PROT_READ,
                  MAP_SHARED|MAP_POPULATE, fd, 0);
     if (start == MAP_FAILED) {
@@ -1041,13 +1196,21 @@ Alibaba Cloud Linux
                 filename);
         close(fd);
         return 1;
-    }
+```
+
+`}`
+
+```
     end = start + size - 1;
     addr = start;
     while (addr < end) {
         tn = *addr;
         addr += PAGE_SIZE;
-    }
+```
+
+`}`
+
+```
     printf("Read through the file %s (size: %ld): done\n",
            filename, size);
     if (waitsigusr) {
@@ -1056,27 +1219,39 @@ Alibaba Cloud Linux
             usleep(10000);
             if (flag_end)
                 break;
-        }
-    }
+```
+
+`}` `}`
+
+```
     if (mlock) {
         if (munlockall() < 0) {
             perror("munlockall failed");
             return 1;
-        }
-    }
+```
+
+`}` `}`
+
+```
     munmap(start, size);
     close(fd);
     //printf("close file and return\n");
     return 0;
-}
+```
+
+`}`
+
+```
   int main(int argc, char *argv[])
-{
+```
+
+`{`
+
+```
     const char *myname, *filename;
     const char *cgroup = NULL;
     int c;
 ```
-
-Alibaba Cloud Linux
 
 ```
     bool waitsigusr = false;
@@ -1085,7 +1260,11 @@ Alibaba Cloud Linux
     myname = argv[0];
     while ((c = getopt(argc, argv, "c:wlh")) != -1) {
         switch(c)
-        {
+```
+
+`{`
+
+```
             case 'c':
                 cgroup = optarg;
                 break;
@@ -1115,14 +1294,21 @@ Alibaba Cloud Linux
                 return 1;
             default:
                 abort();
-        }
-    }
+```
+
+`}` `}`
+
+```
     if (optind == argc - 1)
         filename = argv[optind];
     else {
         help(myname);
         return 1;
-    }
+```
+
+`}`
+
+```
     /* setup signal */
     signal(SIGUSR1, sigusr_handler);
     /* Add the task to given cgroup */
@@ -1132,25 +1318,30 @@ Alibaba Cloud Linux
 fprintf(stderr
 ```
 
-Alibaba Cloud Linux
-
 ```
             fprintf(stderr,
                     "fopen failed: %s\n",
                     cgroup);
             return 1;
-        }
+```
+
+`}`
+
+```
         fprintf(f, "%i\n", getpid());
         fclose(f);
-    }
+```
+
+`}`
+
+```
     /* Read file to load page caches */
     if (read_file(filename, waitsigusr, mlock))
         return 1;
     return 0;
-}
 ```
 
-该程序，使用较简单：
+`}` 该程序，使用较简单：
 
 ```
 gcc load_pagecaches.c -o usefile dd if=/dev/zero of=/<path>/file bs=1M count=128 oflag=direct ./usefile -c /sys/fs/cgroup/memory/test/tasks /<path>/file
@@ -1188,7 +1379,9 @@ echo 1 > /sys/fs/cgroup/memory/test/memory.coldpgs.threshold echo 0x100000001 > 
 cat /sys/fs/cgroup/memory/test/memory.coldpgs.stats | grep pagecache
 ```
 
-Alibaba Cloud Linux 与 pagecache 测试相同，但由于匿名页的回收是 swapout 到 swap 分区，因此测试前需要配置 swap 分区，swap 区间配置可参考：
+**匿名页回收**
+
+与 pagecache 测试相同，但由于匿名页的回收是 swapout 到 swap 分区，因此测试前需要配置 swap 分区，swap 区间配置可参考：
 
 ```
 dd if=/dev/zero of=swapfile bs=1024 count=512 chmod 600 swapfile mkswap swapfile swapon swapfile swapon -s
@@ -1206,7 +1399,7 @@ load_pageanon.c测试程序： `/*`
 * Copyright (C) 2018, Alibaba Group. All Rights Reserved.
 ```
 
-*
+`*`
 
 ```
 * This program is free software; you can redistribute it and/or
@@ -1215,7 +1408,7 @@ load_pageanon.c测试程序： `/*`
 * the License, or (at your option) any later version.
 ```
 
-*
+`*`
 
 ```
 * This program is distributed in the hope that it would be useful,
@@ -1224,14 +1417,14 @@ load_pageanon.c测试程序： `/*`
 * GNU General Public License for more details.
 ```
 
-*
+`*`
 
 ```
 * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 ```
 
-*
+`*`
 
 ```
 * Description: generate anonymous pages by malloc
@@ -1252,11 +1445,14 @@ load_pageanon.c测试程序： `/*`
 #include <fcntl.h>
 #include <ctype.h>
 #define PAGE_SIZE 4096
-static void help(const char *myname) {
-    printf("Usage: %s [-c|-w|-l|-h] size \n\n", myname);
+static void help(const char *myname)
 ```
 
-Alibaba Cloud Linux
+`{`
+
+```
+    printf("Usage: %s [-c|-w|-l|-h] size \n\n", myname);
+```
 
 ```
     printf("Options:\n");
@@ -1264,17 +1460,35 @@ Alibaba Cloud Linux
     printf("-w\t\tWait SIGUSR1 before exiting\n");
     printf("-l\t\tLock the memory to avoid being swapped out\n");
     printf("-h\t\tPrint this help\n");
-} static unsigned int flag_end = 0; void sigusr_handler(int signo) {
+```
+
+`}`
+
+```
+static unsigned int flag_end = 0; void sigusr_handler(int signo) {
     flag_end = 1;
-} int create_anonymous_page(unsigned long size, int waitsigusr, bool mlock) {
+```
+
+`}`
+
+```
+int create_anonymous_page(unsigned long size, int waitsigusr, bool mlock)
+```
+
+`{`
+
+```
     const unsigned long alloc_size = size*1024*1024;
     char* arr;
     if (mlock) {
         if (mlockall(MCL_CURRENT|MCL_FUTURE) < 0) {
             perror("mlockall failed");
             return 1;
-        }
-    }
+```
+
+`}` `}`
+
+```
     arr = malloc(alloc_size);
     memset(arr,'0',alloc_size);
     printf("Create anonymous pages (size: %ld): done\n",alloc_size/PAGE_SIZE);
@@ -1285,26 +1499,38 @@ Alibaba Cloud Linux
             usleep(10000);
             if (flag_end)
                 break;
-        }
-    }
+```
+
+`}` `}`
+
+```
     if (mlock) {
         if (munlockall() < 0) {
             perror("munlockall failed");
         return 1;
-    }
-  }
+```
+
+`}` `}`
+
+```
     return 0;
-}
+```
+
+`}`
+
+```
   int main(int argc, char *argv[])
-{
+```
+
+`{`
+
+```
     const char *myname;
     unsigned long size;
     const char *cgroup = NULL;
     int c;
 bool aitsigsr false
 ```
-
-Alibaba Cloud Linux
 
 ```
     bool waitsigusr = false;
@@ -1313,7 +1539,11 @@ Alibaba Cloud Linux
     myname = argv[0];
     while ((c = getopt(argc, argv, "c:wlh")) != -1) {
         switch(c)
-        {
+```
+
+`{`
+
+```
             case 'c':
                 cgroup = optarg;
                 break;
@@ -1343,13 +1573,20 @@ Alibaba Cloud Linux
                 return 1;
             default:
                 abort();
-        }
-    }
+```
+
+`}` `}`
+
+```
     if (optind == argc - 1)
         size = atoi(argv[optind]);
     else {
         size = 1024;
-    }
+```
+
+`}`
+
+```
     /* setup signal */
     signal(SIGUSR1, sigusr_handler);
     /* Add the task to given cgroup */
@@ -1360,24 +1597,29 @@ Alibaba Cloud Linux
 "fopenfailed:%s\n",
 ```
 
-Alibaba Cloud Linux
-
 ```
                     fopen failed: %s\n,
                     cgroup);
             return 1;
-        }
+```
+
+`}`
+
+```
         fprintf(f, "%i\n", getpid());
         fclose(f);
-    }
+```
+
+`}`
+
+```
     /* Load anonymous pages */
     if (create_anonymous_page(size, waitsigusr, mlock))
         return 1;
     return 0;
-}
 ```
 
-运行：
+`}` 运行：
 
 ```
 gcc load_pageanon.c -o useanon ./useanon -c /sys/fs/cgroup/memory/test/tasks -w
@@ -1419,7 +1661,7 @@ done
 echo 0x4 > /sys/kernel/mm/coldpgs/mode chmod a+x useslab.sh ./useslab.sh
 ```
 
-Alibaba Cloud Linux 上述脚本通过创建大量临时文件来构造适量的 slab。
+上述脚本通过创建大量临时文件来构造适量的 slab。
 2. 等待一两分钟，观察冷内存统计，回收前观察是否有识别到冷 slab。需要注意的是，当系统没有启用
 kmem 功能时，slab 的扫描和回收发生在 root memcg。
 
@@ -1457,7 +1699,7 @@ slab drop : 19414 kB Total slab drop : 19414 kB
 rm -rf tmp
 ```
 
-##### memcg OOM优先级策略
+##### 1.4.5.2 memcg OOM优先级策略
 
 在现有内核系统中，内存紧张情况下内核会遍历cgroup，选择耗用内存较多的 cgroup 进行内存回收，甚至在回收失败的情况下直接 OOM，并停止当前 cgroup 下的所有任务。这对于当前 cgroup 包含的核心业务来说，会造成很大的影响。为此希望这类包含核心业务的 cgroup 占有的内存不被回收，或者 cgroup 下的任务在 OOM 中可以存活下来，以便让内核去选择其他的 cgroup 进行内存回收或者 OOM。 为了解决这个问题，阿里云服务器操作系统V3 增加了memcg OOM 优先级配置功能。该功能在进行 OOM 操作时，会首先判定 cgroup 的优先级，选择低优先级的 cgroup 进行 OOM 操作。
 
@@ -1466,8 +1708,6 @@ rm -rf tmp
 | 接口 | 说明 |
 |---|---|
 | memory.use priority _ _ oom | 该接口用于设置是否启用memcg OOM优先级策略功能，取值为0或者1。该接口不会继承，默认值为0。 取值为0时，表示禁用memcg OOM优先级策略功能。 取值为1时，表示开启memcg OOM优先级策略功能。 |
-
-Alibaba Cloud Linux
 
 | memory.priority | 该接口提供13个级别的memcg优先级以支持不同重要程度的业务。取值范围为0~12， 数值越大表示优先级越高。该接口不会继承，默认值为0。 实现一定程度的内存QoS，此处需要说明的优先级值非全局变量，只能在同父cgroup 下的兄弟节点进行比较。 对于优先级相等的兄弟节点来说，会按照组的内存使用量来排序选择内存使用最大的进行OOM操作。 |
 |---|---|
@@ -1498,7 +1738,7 @@ cd /sys/fs/cgroup/memory/A echo 10 > memory.priority cd /sys/fs/cgroup/memory/B 
 ```
 
 3. 运行以下命令分别在 A 节点下创建 C、D 子节点，在 B 节点下创建 E、F 子节点，并开启 memcg
-OOM优先级策略功能。 Alibaba Cloud Linux
+OOM优先级策略功能。
 
 ```
 mkdir /sys/fs/cgroup/memory/A/C cd /sys/fs/cgroup/memory/A/C echo 1 >memory.use_priority_oom mkdir /sys/fs/cgroup/memory/A/D cd /sys/fs/cgroup/memory/A/D echo 1 >memory.use_priority_oom mkdir /sys/fs/cgroup/memory/B/E cd /sys/fs/cgroup/memory/B/E echo 1 >memory.use_priority_oom mkdir /sys/fs/cgroup/memory/B/F cd /sys/fs/cgroup/memory/B/F echo 1 >memory.use_priority_oom
@@ -1512,7 +1752,7 @@ cd /sys/fs/cgroup/memory/A/C echo 5 > memory.priority cd /sys/fs/cgroup/memory/A
 
 当在 root 中进行 OOM 操作时，它首先迭代查找它的两个子节点A 和B，由于B 的优先级值低于A，所以会选择B 节点作为下一个迭代cgroup 继续进行迭代，最终会在子节点 E 上进行 OOM 操作，因为它的优先级比其他的兄弟节点低。
 
-##### 代码大页（hugetext）
+##### 1.4.5.3 代码大页（hugetext）
 
 1. 代码大页提供了两种方式启动：内核启动参数、sysfs接口。
 启动参数打开：hugetext=1 or 2 or 3 关闭：缺省即为关闭 sysfs 接口仅打开二进制和动态库大页：
@@ -1540,7 +1780,7 @@ echo 2 > /sys/kernel/mm/transparent_hugepage/hugetext_enabled
 ```
 
 2. 查看/proc/<pid>/smaps 中FilePmdMapped 字段可确定是否使用了代码大页。
-Alibaba Cloud Linux 扫描进程代码大页使用数量（单位KB）：
+扫描进程代码大页使用数量（单位KB）：
 
 ```
 cat /proc/<pid>/smaps | grep FilePmdMapped | awk '{sum+=$2}END{print"Sum= ",sum}'
@@ -1575,7 +1815,7 @@ echo 1 > /sys/kernel/debug/split_huge_pages
 4. 为确认代码段是否大页映射，可以通过 grep FilePmdMapped /proc/$(pidof mysqld)/smaps 来确
 认。
 
-##### 代码多备份（duptext）
+##### 1.4.5.4 代码多备份（duptext）
 
 代码 NUMA 多备份。针对多路服务器场景，优化.text 跨 socket 访存延迟。remote node/socket 访问的延时比 local node/socket 访问的延迟高数倍，特别是 AArch64架构下，性能会更差。代码多备份 （duptext）针对代码段，当前访问识别出远端访问时，则在当前节点创建副本并创建映射。压力测试中， 代码段跨 NUMA 访问能造成 -3% ~ -20% 的性能下降，代码多备份（duptext）能将性能下降恢复到 - 1% 左右。代码多备份（duptext）对用户透明，应用不需修改。提供全局开关和 per-memcg 开关。 接口 `/sys/kernel/mm/duptext/enabled` 全局开关，是 memcg 开关使能的前提；关闭时会主动清除所有代码段副本。 打开：
 
@@ -1589,7 +1829,7 @@ echo 1 > /sys/kernel/mm/duptext/enabled
 echo 0 > /sys/kernel/mm/duptext/enabled/sys/fs/cgroup/memory/{...}/memory.allow_duptext
 ```
 
-memcg接口 Alibaba Cloud Linux 打开：
+memcg接口打开：
 
 ```
 echo 1 > /sys/fs/cgroup/memory/test/memory.allow_duptext
@@ -1601,20 +1841,24 @@ echo 1 > /sys/fs/cgroup/memory/test/memory.allow_duptext
 echo 0 > /sys/fs/cgroup/memory/test/memory.allow_duptext
 ```
 
-**重要**
+> **重要：** 全局开关和 memcg 开关必须同时打开，应用的代码段才会进行 NUMA 多备份。
 
-全局开关和 memcg 开关必须同时打开，应用的代码段才会进行 NUMA 多备份。
-
-##### 代码段锁定
+##### 1.4.5.5 代码段锁定
 
 代码段锁定功能是一种基于 cgroup 粒度以及进程粒度，可根据大小自由设置锁定代码段内存的机制方案， 该方案的出发点是为了防止在服务器场景下，核心业务程序在系统内存不足时，将该代码段内存回收，但是随着业务程序的运行，这部分内存又会从磁盘读取，重新加载到内存，内存不足时，又被回收，频繁的 IO 操作，导致核心业务出现响应延迟，造成性能抖动，引入该功能的原因就是为了防止代码段所属内存被频繁换入换出，通过预先选定需要锁住代码段内存，使其不被内存回收，以此来解决业务性能抖动提升，提升用户体验。
 
 **接口介绍**
 
-i. /proc/unevictable/add_pid 设定需要锁定的代码段进程，通过 pid 值传入。
+以进程为粒度设定代码段锁定。 i. /proc/unevictable/add_pid 设定需要锁定的代码段进程，通过 pid 值传入。
 
 ```
-echo <pid> > /proc/unevictable/add_pid cat /proc/unevictable/add_pid
+echo <pid> > /proc/unevictable/add_pid
+```
+
+查看当前设定代码段锁定的进程 pid 值。
+
+```
+cat /proc/unevictable/add_pid
 ```
 
 ii. /proc/unevictable/del_pid 设定需要解除锁定代码段进程，通过 pid 值传入。
@@ -1623,15 +1867,13 @@ ii. /proc/unevictable/del_pid 设定需要解除锁定代码段进程，通过 p
 echo <pid> > /proc/unevictable/del_pid
 ```
 
-/sys/kernel/mm/unevictable/enabled /sys/fs/cgroup/memory/{...}/ memory.allow_text_unevictable cgroup 粒度开关，开启当前 cgroup 下代码段锁定功能， 0 表示关闭，1 表示开启，在开启该功能之前，必须先开启全局开关才能生效； /sys/fs/cgroup/memory/{...}/memory.text_unevictable_percent 设定当前 cgroup 代码段锁定大小的百分比，设定值范围为0 到100；例如开启cgroup test 下代码段
+以 cgroup 为粒度设定代码段锁定。 /sys/kernel/mm/unevictable/enabled 全局开关，开启 cgroup 粒度代码段锁定之前必须开启，0 表示关闭，1表示开启； /sys/fs/cgroup/memory/{...}/ memory.allow_text_unevictable cgroup 粒度开关，开启当前 cgroup 下代码段锁定功能， 0 表示关闭，1 表示开启，在开启该功能之前，必须先开启全局开关才能生效； /sys/fs/cgroup/memory/{...}/memory.text_unevictable_percent 设定当前 cgroup 代码段锁定大小的百分比，设定值范围为0 到100；例如开启cgroup test 下代码段锁定功能，并设置代码段锁定大小为当前 cgroup 下代码段大小的 30%；
 
 ```
 echo 1 > /sys/kernel/mm/unevictable/enabled echo 30 > /sys/fs/cgroup/memory/test/memory.text_unevictable_percent echo 1 > /sys/fs/cgroup/memory/test/memory.allow_text_unevictable
 ```
 
-Alibaba Cloud Linux
-
-##### 稀疏文件零页填充特性
+##### 1.4.5.6 稀疏文件零页填充特性
 
 **简介**
 
@@ -1651,7 +1893,7 @@ echo 1 > /sys/kernel/mm/file_zeropage/enabled
 echo 0 > /sys/kernel/mm/file_zeropage/enabled
 ```
 
-##### 匿名页回收优先级特性
+##### 1.4.5.7 匿名页回收优先级特性
 
 **简介**
 
@@ -1667,7 +1909,7 @@ echo 0 > /sys/kernel/mm/file_zeropage/enabled
 mkdir /sys/fs/cgroup/memory/memcgA
 ```
 
-Alibaba Cloud Linux 打开：
+打开：
 
 ```
 echo 1 > /sys/fs/cgroup/memory/memcgA/memory.use_priority_swap
@@ -1692,7 +1934,7 @@ echo 50 > /sys/fs/cgroup/memory/memcgA/memory.swappiness
 echo 10 > /sys/fs/cgroup/memory/memcgA/memory.swappiness
 ```
 
-##### 为page cache设置预留内存空间
+##### 1.4.5.8 为page cache设置预留内存空间
 
 本文介绍了通过为page cache（文件缓存）设置预留内存空间，解决因大量匿名页申请导致文件缓存颠簸的问题，从而缓解因持续回收page cache所引发的系统稳定性问题（例如无法触发OOM）。
 
@@ -1719,45 +1961,42 @@ Alibaba Cloud Linux 3 引入了 `vm.min_cache_kbytes` 参数。该功能在不�
 | (4G, 8G] | 300 MB |
 | (8G, 16G] | 400 MB |
 
-Alibaba Cloud Linux
-
 | (16G, 128G] | 500 MB |
 |---|---|
 | > 128G | 1024 MB (1 GB) |
 
-**重要**
-
-上述默认值是基于通用场景的经验值。在大多数情况下，默认配置即可满足系统稳定运行需求。 如果您的内核版本在 `5.10.112-11` 到 `5.10.134-18` 之间，该参数存在但不会自动设置上述默认值（初始值通常为 0），您需要根据下文步骤手动设置。
+> **重要：** 上述默认值是基于通用场景的经验值。在大多数情况下，默认配置即可满足系统稳定运行需求。
+> 如果您的内核版本在 `5.10.112-11` 到 `5.10.134-18` 之间，该参数存在但不会自动设置上述默认值（初始值通常为 0），您需要根据下文步骤手动设置。
 
 **调整建议**
 
 无论您使用的是哪个版本，如果在业务运行过程中发现以下情况： 系统在当前配置下频繁发生 OOM（Out Of Memory）kill 现象。 观察到因 Page Cache 被过度回收导致的文件读写性能抖动。 建议结合实际的内存使用情况手动调整 `vm.min_cache_kbytes` 参数。
 
-**警告**
-
-设置过大风险：若为 Page Cache 设置的预留空间过大，会导致用户态可用内存（匿名页空间）减少，从而引起过早出现 OOM 的情况，可能导致正常业务进程被终止。 设置过小风险：若设置过小（或为 0），可能无法有效缓解文件缓存颠簸问题，导致系统在高负载下不稳定。 操作建议：请务必根据实际业务负载、内存监控数据以及当前的内核版本谨慎调整。
+> **警告：** 设置过大风险：若为 Page Cache 设置的预留空间过大，会导致用户态可用内存（匿名页空间）减少，从而引起过早出现 OOM 的情况，可能导致正常业务进程被终止。
+> 设置过小风险：若设置过小（或为 0），可能无法有效缓解文件缓存颠簸问题，导致系统在高负载下不稳定。
+> 操作建议：请务必根据实际业务负载、内存监控数据以及当前的内核版本谨慎调整。
 
 **操作步骤**
 
-**说明**
+> **说明：** `<KB>` 需替换为所需设置预留的大小，单位：千字节（kbytes）。例如设置1 GB的page cache， `<KB>` 应为 `1048576` 。 `<KB>` 值为 `0` 则代表关闭该功能。
 
-`<KB>` 需替换为所需设置预留的大小，单位：千字节（kbytes）。例如设置1 GB的page cache， `<KB>` 应为 `1048576` 。 `<KB>` 值为 0 则代表关闭该功能。 方法一：通过 `/proc` 接口设置page cache预留。
+方法一：通过 `/proc` 接口设置page cache预留。
 
-```bash
+```python
 sudo sh -c 'echo <KB> > /proc/sys/vm/min_cache_kbytes'
 ```
 
 方法二：通过 sysctl 设置page cache预留。
 
-```bash
+```python
 sudo sysctl -w vm.min_cache_kbytes=<KB>
 ```
 
-### 网络管理
+### 1.5 网络管理
 
-#### 网络管理工具
+#### 1.5.1 网络管理工具
 
-Alibaba Cloud Linux ip 是 Linux/Unix 操作系统中用于管理网络配置和路由的命令行工具，可以用来配置和管理网络接口、路由表、NAT、防火墙等网络相关的参数，是网络配置和管理的重要工具之一。其指令格式为ip [OPTIONS ] OBJECT { COMMAND | help }，详细参数可见 `ip -h` 。 ip 指令的安装方式为： `yum install -y iproute` 。 本节的后续部分将以 dummy0 网络设备为例介绍网络配置方法。在实际操作中应当将范例中的 dummy0 设备替换为实际使用的网络设备。此外需要注意的是，随意设置网络设备属性可能造成网络不可达，无法访问等风险，请务必谨慎操作。 创建 dummy0 网络设备的方式为： i. 加载 dummy 内核模块。
+ip 是 Linux/Unix 操作系统中用于管理网络配置和路由的命令行工具，可以用来配置和管理网络接口、路由表、NAT、防火墙等网络相关的参数，是网络配置和管理的重要工具之一。其指令格式为ip [OPTIONS ] OBJECT { COMMAND | help }，详细参数可见 `ip -h` 。 ip 指令的安装方式为： `yum install -y iproute` 。 本节的后续部分将以 dummy0 网络设备为例介绍网络配置方法。在实际操作中应当将范例中的 dummy0 设备替换为实际使用的网络设备。此外需要注意的是，随意设置网络设备属性可能造成网络不可达，无法访问等风险，请务必谨慎操作。 创建 dummy0 网络设备的方式为： i. 加载 dummy 内核模块。
 
 ```
 modprobe dummy
@@ -1794,7 +2033,7 @@ v. 完成测试后可以通过下述方式删除 dummy0 网络设备。
 ip link del dummy0
 ```
 
-#### 配置静态 IP
+#### 1.5.2 配置静态 IP
 
 **操作步骤**
 
@@ -1817,7 +2056,7 @@ ip addr add 10.0.0.3/24 dev dummy0
 ip addr
 ```
 
-返回如下示例： Alibaba Cloud Linux
+返回如下示例：
 
 ```
 3: dummy0: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group d efault qlen 1000
@@ -1830,7 +2069,7 @@ ip addr
 
 可以看到 dummy0 网络接口成功配置了 10.0.0.3/24 地址。
 
-#### 配置静态路由
+#### 1.5.3 配置静态路由
 
 **操作步骤**
 
@@ -1867,7 +2106,7 @@ ip route del 192.0.2.0/24
 
 需要注意的是，使用ip route 对路由表所做的任何更改在系统重启后不会保留。
 
-#### 配置网络桥接
+#### 1.5.4 配置网络桥接
 
 网络桥接（bridge）是一个链路层设备，它可以将多个局域网（LAN）连接起来，在不同的网络中传输数据包，根据 MAC 地址列表转发网络间的流量。 网桥连接的设备类型包括： 物理和虚拟以太网设备； 网络绑定； VLAN 设备；
 
@@ -1880,7 +2119,6 @@ ip link add name br0 type bridge ip link set dev br0 up
 ```
 
 2. 将网络接口 dummy0 加入到 br0 中。
-Alibaba Cloud Linux
 
 ```
 ip link set dummy0 master br0
@@ -1910,7 +2148,7 @@ bridge link
 ip link delete br0 type bridge
 ```
 
-#### 配置主机名
+#### 1.5.5 配置主机名
 
 使用 hostnamectl 可以配置以下几种主机名：
 1. 静态主机名（static hostname）：系统永久性的主机名，存储于 /etc/hostname 文件中。
@@ -1935,37 +2173,37 @@ hostnamectl set-hostname --{static|transient|pretty} newname
 
 需要注意的是，不同类型主机名称有格式要求，具体可见man hostnamectl。同时，如果static 类型主机名被设置，transient将不被使用且设置无效。
 
-#### 网络自研特性
+#### 1.5.6 网络自研特性
 
-##### 修改TCP TIME_WAIT 超时时间
+##### 1.5.6.1 修改TCP TIME_WAIT 超时时间
 
 在Linux的内核中，TCP/IP协议的TIME-WAIT状态持续60秒且无法修改。在某些场景下（例如TCP负载过高时），适当调小该值有助于提升网络性能。因此Alibaba Cloud Linux 2（内核版本 `4.19.43-13.al7` 开始）和Alibaba Cloud Linux 3新增内核接口用于修改TCP TIME-WAIT状态持续时间，从而提升网络性能和资源的利用率。
 
 **注意事项**
 
-TCP/IP协议TIME-WAIT状态持续时间修改为小于60秒与TCP/IP协议quiet time概念相违背，可能导致您的系统将旧数据当做新数据接收，或者复制的新数据当作旧数据拒绝。因此请在网络专家建议下调整。了解 TCP/IP协议quiet time的相关概念，请参见IETF RFC 793标准。 Alibaba Cloud Linux
+TCP/IP协议TIME-WAIT状态持续时间修改为小于60秒与TCP/IP协议quiet time概念相违背，可能导致您的系统将旧数据当做新数据接收，或者复制的新数据当作旧数据拒绝。因此请在网络专家建议下调整。了解 TCP/IP协议quiet time的相关概念，请参见IETF RFC 793标准。
 
 **配置方法**
 
 您可以通过以下三种方式修改TIME-WAIT超时时间，其中参数[$TIME_VALUE]为您修改的TIME-WAIT超时时间。
 
-**警告**
+> **警告：** 修改参数[$TIME_VALUE]可能会存在业务不可用风险，可能导致业务中断，建议您在非业务高峰期时执行该操作。
 
-修改参数[$TIME_VALUE]可能会存在业务不可用风险，可能导致业务中断，建议您在非业务高峰期时执行该操作。 通过 `sysctl` 命令修改TIME-WAIT超时时间。该方法即时生效，无法持久化。
+通过 `sysctl` 命令修改TIME-WAIT超时时间。该方法即时生效，无法持久化。
 
-```bash
+```python
 sudo sysctl -w "net.ipv4.tcp_tw_timeout=[$TIME_VALUE]"
 ```
 
 通过 `echo` 命令将值修改到 `/proc/sys/net/ipv4/tcp_tw_timeout` 接口中。该方法即时生效，无法持久化。
 
-```bash
+```python
 sudo sh -c "echo [$TIME_VALUE] > /proc/sys/net/ipv4/tcp_tw_timeout"
 ```
 
 通过编辑 `/etc/sysctl.conf` 文件修改 `net.ipv4.tcp_tw_timeout` 参数。该方法即时生效，且修改可以持久化。这意味着一旦系统重启，所做的修改仍然保留。具体操作步骤如下： i. 执行以下命令，打开 sysctl.conf 文件。
 
-```bash
+```python
 sudo vim /etc/sysctl.conf
 ```
 
@@ -1977,7 +2215,7 @@ net.ipv4.tcp_tw_timeout = [$TIME_VALUE]
 
 iii. 按 `Esc` 键，输入 `:wq` 后按 `Enter` 键，保存配置。 iv. 执行以下命令，使配置生效。
 
-```bash
+```python
 sudo sysctl -p
 ```
 
@@ -1987,49 +2225,47 @@ v. 执行以下命令，查看tcp_tw_timeout（TIME_WAIT状态的超时时间）
 sysctl net.ipv4.tcp_tw_timeout
 ```
 
-**说明**
+> **说明：** 您可以通过运行netstat -ant | grep TIME_WAIT | wc -l命令判断服务器中是否存在大量短连接。
+> 例如，在Nginx配置7层代理等存在大量短连接的场景下，阿里云推荐您将[$TIME_VALUE]值设置为 5，代表TIME-WAIT超时时间被修改为5s。
 
-您可以通过运行netstat -ant | grep TIME_WAIT | wc -l命令判断服务器中是否存在大量短连接。 例如，在Nginx配置7层代理等存在大量短连接的场景下，阿里云推荐您将[$TIME_VALUE]值设置为 5，代表TIME-WAIT超时时间被修改为5s。
+##### 1.5.6.2 TCP-RT功能的配置说明
 
-##### TCP-RT功能的配置说明
+TCP-RT是一款TCP监控工具，采用内核埋点技术识别TCP连接中的请求与响应，捕获请求接收及服务处理时间等相关信息。TCP-RT适用于单个连接上仅存在一个并发请求与响应的场景（例如HTTP/1.1、 MySQL、Redis等服务），要求系统为Alibaba Cloud Linux 2（内核4.19.91-21.al7及以上版本）或 Alibaba Cloud Linux 3。Alibaba Cloud Linux 3（内核kernel-5.10.134-010.ali5000.pro.al8 及以上版本）提供了新版本的TCP-RT，在继承了原版本特性的基础上增加了对HTTP/TLS协议的支持。
 
-TCP-RT是一款TCP监控工具，采用内核埋点技术识别TCP连接中的请求与响应，捕获请求接收及服务处理时间等相关信息。TCP-RT适用于单个连接上仅存在一个并发请求与响应的场景（例如HTTP/1.1、 MySQL、Redis等服务），要求系统为Alibaba Cloud Linux 2（内核4.19.91-21.al7及以上版本）或 Alibaba Cloud Linux 3。Alibaba Cloud Linux 3（内核kernel-5.10.134-010.ali5000.pro.al8 及以上版本）提供了新版本的TCP-RT，在继承了原版本特性的基础上增加了对HTTP/TLS协议的支持。 Alibaba Cloud Linux
-
-**说明**
-
-为便于区分，在涉及新老版本功能差异时，将以tcp_rt.ko代指老版本，tcprt代指新版本。二者核心差异在： tcp_rt.ko：以内核模块形式使用。 tcprt：通过 `systemctl` 配合配置文件使用，新增若干功能。 建议您优先使用tcprt。
+> **说明：** 为便于区分，在涉及新老版本功能差异时，将以tcp_rt.ko代指老版本，tcprt代指新版本。二者核心差异在：
+> tcp_rt.ko：以内核模块形式使用。
+> tcprt：通过 `systemctl` 配合配置文件使用，新增若干功能。
+> 建议您优先使用tcprt。
 
 **功能原理**
 
 当TCP的服务场景为一个并发的请求与响应时，各个阶段如下图所示。 Client Server
 
-**ReqN-1**
+> **ReqN-1**
 
 T0
 
-**ACK**
+> **ACK**
 
 upload_time
 
-**ReqN-2**
+> **ReqN-2**
 
 T1
 
-**ACK**
+> **ACK**
 
 process_time T2
 
-**RspN-1**
-
-**ACK**
+> **RspN-1**
+> **ACK**
 
 download_tim
 
-**RspN-2**
+> **RspN-2**
+> **ACK**
 
-**ACK**
-
-T3 客户端（Client）向服务端（Server）发送的第N个请求（request）表示为ReqN，该请求由 `ReqN-` 1 和 `ReqN-2` 两个数据包组成。服务端收到第一个包的时间被记录为T0，第二个包的时间被记录为T1。 服务端收到请求后进行处理，完成处理后会向客户端发送两个响应的数据包 `RspN-1` 和 `RspN-2` ，服务端发送第一个包的时间被记录为T2。客户端收到响应包后会发送确认信息ACK给服务器，服务端收到最后一个ACK的时间被记录为T3。 TCP-RT基于以上的时间点的记录，可以计算出以下有意义的信息： upload_time：用户请求上传所使用的时间。 process_time：服务端的处理时间。 服务端从收到最后一个请求的数据包开始，到服务端向客户端开始发送响应的数据包为止，这段时间为服务端的处理时间。 download_time：数据下载时间。 从服务端向客户端发送响应的数据包开始，到服务端收到客户端最后一个ACK为止，这段时间为数据下载时间。对于下载比较大的数据响应，该信息的获取较为重要。 Alibaba Cloud Linux
+T3 客户端（Client）向服务端（Server）发送的第N个请求（request）表示为ReqN，该请求由 `ReqN-` `1` 和 `ReqN-2` 两个数据包组成。服务端收到第一个包的时间被记录为T0，第二个包的时间被记录为T1。 服务端收到请求后进行处理，完成处理后会向客户端发送两个响应的数据包 `RspN-1` 和 `RspN-2` ，服务端发送第一个包的时间被记录为T2。客户端收到响应包后会发送确认信息ACK给服务器，服务端收到最后一个ACK的时间被记录为T3。 TCP-RT基于以上的时间点的记录，可以计算出以下有意义的信息： upload_time：用户请求上传所使用的时间。 process_time：服务端的处理时间。 服务端从收到最后一个请求的数据包开始，到服务端向客户端开始发送响应的数据包为止，这段时间为服务端的处理时间。 download_time：数据下载时间。 从服务端向客户端发送响应的数据包开始，到服务端收到客户端最后一个ACK为止，这段时间为数据下载时间。对于下载比较大的数据响应，该信息的获取较为重要。
 
 **信息输出说明**
 
@@ -2047,17 +2283,13 @@ TCP-RT在内核态采集TCP服务的相关参数并输出，下表说明了文�
 
 TCP-RT支持多种解析模式，用户可自行配置。具体操作，请参见功能使用。 default：默认模式。 基于通用TCP流进行解析，TCP流可以是HTTP、Redis、Mysql等符合请求/响应行为的协议。 http：HTTP增强。 在default模式基础上，额外报告RTT和拥塞窗口信息，并且识别HTTP协议的“Expect: 100continue”处理过程。将100-continue请求及其响应报告为一条 `R.C` 类型记录。更多信息，请参见输出格式说明。 https：HTTPS增强。 在http模式的基础上，额外增加了TLS部分报文解析。 TLS握手解析：识别TLS 1.2和TLS 1.3的握手阶段，在输出日志中标记出来。更多信息，请参见输出格式说明。 对TLS 1.2四次握手，产生两条 `R.H` 类型记录。 对TLS 1.3三次握手，产生一条 `R.H` 类型记录，并报告握手用时。 “Close Notify” Alert报文解析：在输出日志中以 `R.A` 记录标记。更多信息，请参见输出格式说明。
 
-**说明**
-
-tcp_rt.ko的解析模式不可配置，仅支持default模式。
+> **说明：** tcp_rt.ko的解析模式不可配置，仅支持default模式。
 
 **输出格式说明**
 
-Alibaba Cloud Linux
-
-**说明**
-
-TASK与TCP生命周期释义。 TASK表示一次完整的请求+响应（request+response）。 TCP生命周期中包含多个TASK。
+> **说明：** TASK与TCP生命周期释义。
+> TASK表示一次完整的请求+响应（request+response）。
+> TCP生命周期中包含多个TASK。
 
 **log文件格式说明**
 
@@ -2066,43 +2298,34 @@ TASK与TCP生命周期释义。 TASK表示一次完整的请求+响应（request
 | 记录场景标识 | 参数说明 |
 |---|---|
 
-Alibaba Cloud Linux
-
 | R | 该记录是TASK正常启动和关闭的记录，每个TCP连接可以有多个R记录。 TASK发送的数据量。单位：Byte。 TASK总耗时。单位：us。 即第一个请求segment到达与最后一个响应的segment被ack之间的时间间隔。 TASK最小的TCP RTT（Round Trip Time）。单位：us。 TASK重传发送的TCP报文段（TCP segment）数量。 TASK序号。TCP建立后的第一个TASK序号为1。 TASK服务延时。单位：us。 即最后一个请求的segment到达与第一个响应的segment发送之间的时间间隔。 TASK上送延时。单位：us。 即第一个请求segment到达与最后一个请求segment到达之间的时间间隔。 TASK接收的数据量。单位：Byte。 TASK过程是否发生接收乱序。参数值说明： 1：发生。 0：没有发生。 TASK过程中TCP使用的最大报文长度（MSS）。单位：Byte。 TASK结束时的平滑RTT，http、https解析模式下生效（仅tcprt支持，版本号为V7）。单位：us。 TASK结束时的拥塞窗口，http、https解析模式下生效（仅tcprt支持，版本号为V7）。单位：segments。 |
 |---|---|
 | R.C | 说明仅tcprt支持，版本号为V7。 http、https解析模式下可能出现，格式同R记录。 表示TASK为“Expect: 100-continue”引入（该TASK不带有应用数据）。 |
 | R.Z | 说明仅tcprt支持，版本号为V7。 https解析模式下可能出现，格式同R记录。 表示TASK属于TLS 1.3 0RTT握手。 |
 | R.A | 说明仅tcprt支持，版本号为V7。 https解析模式下可能出现，格式同R记录。 表示TASK中含有 Close Notify Alert报文，该TASK不会计入Alert报文引入额外耗时 （即最后一个响应数据包与Alert包之间的用时）。 |
 
-Alibaba Cloud Linux
-
-|  | R.H | 说明仅tcprt支持，版本号为V7。 https解析模式下可能出现，R记录末尾可能附加额外内容。 表示TASK属于TLS握手阶段。若是TLS 1.3（三次握手），日志末尾将报告握手耗时，单位： us。 末尾附加内容格式为 H <time> 。例如 H 151878 表示握手用时 151878 us。 |  |  |
+|   | R.H | 说明仅tcprt支持，版本号为V7。 https解析模式下可能出现，R记录末尾可能附加额外内容。 表示TASK属于TLS握手阶段。若是TLS 1.3（三次握手），日志末尾将报告握手耗时，单位： us。 末尾附加内容格式为 H <time> 。例如 H 151878 表示握手用时 151878 us。 |   |   |
 |---|---|---|---|---|
-|  | R.F | 说明仅tcprt支持，版本号为V7。 开启 first frame 后出现（具体操作，请参见功能使用），R记录末尾可能附加额外内 _ 容。 表示TASK触发按字节数的完成时间统计。根据配置文件定义的字节数阈值阶梯，划分每个 TASK响应数据流，统计各阶梯的数据量与完成时间，附加于记录末尾，单位分别为bytes和 us。 末尾附加内容格式为 F <n> [bytes time] 。例如 F 6 7240 214 63698 311 98436 358 ，表示共有6个数字，7240、63698、98436 Bytes 对应的总耗时依次为214 us、311 us、358 us。 |  |  |
-|  |  |  | F 6 7240 214 63698 311 |  |
-|  |  | 98436 358 |  |  |
-|  | P | 该记录是TASK正常启动和关闭的记录，每个TCP服务可以有多个P记录。P是V6版本中新增的记录，表述的是客户端对外请求时的信息。只有配置了选项 pports 或 pports range 时才有该记录。 _ TASK发送的数据量。单位：Byte。 TASK总耗时。从本地服务器发送数据开始到最后一次收到对端响应的时间。单位：us。 TASK最小的TCP RTT（Round Trip Time）。单位：us。 TASK重传发送的TCP报文段（TCP segment）数量。 TASK序号。TCP建立后的第一个TASK序号为1。 TASK服务时间。即从请求发送完成到收到第一个响应的时间。单位：us。 TASK响应接收时间。从接收到第一个响应包到最后一个响应包之间的时间。单位：us。 TASK接收响应的总大小。单位：Byte。 TASK过程是否发生接收乱序。参数值说明： 1：发生。 0：没有发生。 TASK过程中TCP使用的最大报文长度（MSS）。单位：Byte。 |  |  |
-
-Alibaba Cloud Linux
+|   | R.F | 说明仅tcprt支持，版本号为V7。 开启 first frame 后出现（具体操作，请参见功能使用），R记录末尾可能附加额外内 _ 容。 表示TASK触发按字节数的完成时间统计。根据配置文件定义的字节数阈值阶梯，划分每个 TASK响应数据流，统计各阶梯的数据量与完成时间，附加于记录末尾，单位分别为bytes和 us。 末尾附加内容格式为 F <n> [bytes time] 。例如 F 6 7240 214 63698 311 98436 358 ，表示共有6个数字，7240、63698、98436 Bytes 对应的总耗时依次为214 us、311 us、358 us。 |   |   |
+|   |   |   | F 6 7240 214 63698 311 |   |
+|   |   | 98436 358 |   |   |
+|   | P | 该记录是TASK正常启动和关闭的记录，每个TCP服务可以有多个P记录。P是V6版本中新增的记录，表述的是客户端对外请求时的信息。只有配置了选项 pports 或 pports range 时才有该记录。 _ TASK发送的数据量。单位：Byte。 TASK总耗时。从本地服务器发送数据开始到最后一次收到对端响应的时间。单位：us。 TASK最小的TCP RTT（Round Trip Time）。单位：us。 TASK重传发送的TCP报文段（TCP segment）数量。 TASK序号。TCP建立后的第一个TASK序号为1。 TASK服务时间。即从请求发送完成到收到第一个响应的时间。单位：us。 TASK响应接收时间。从接收到第一个响应包到最后一个响应包之间的时间。单位：us。 TASK接收响应的总大小。单位：Byte。 TASK过程是否发生接收乱序。参数值说明： 1：发生。 0：没有发生。 TASK过程中TCP使用的最大报文长度（MSS）。单位：Byte。 |   |   |
 
 | E | 该记录是TCP被关闭的记录。每个TCP连接都有1个E记录，配置了选项 pports 或 pports range 的连接也会有该记录。 _ 最后一个TASK的序号。 TCP生命周期中发送的数据量。单位：Byte。 TCP发送响应但是没有收到ACK的数据量。参数值说明：没有则为0。单位：Byte。 TCP生命周期中接收的数据量。单位：Byte。 TASK重传发送的TCP报文段（TCP segment）数量。 TCP生命周期中最小的TCP RTT（Round Trip Time）。单位：us。 |
 |---|---|
 | N | 该记录是在TASK请求接收报文段（segment）过程中，TCP被关闭场景下的记录。每个TCP 连接可能有一个N记录或没有。 最后一个TASK的序号。 最后一个TASK的耗时，因为是被关闭，所以只有接收时间，没有发送时间。单位：us。 TCP生命周期中接收的数据量。单位：Byte。 TASK过程是否发生接收乱序。参数值说明：1表示发生；0表示没有发生。 TASK过程中TCP使用的最大报文长度（MSS）。单位：Byte。 |
 | W | 该记录是在TASK响应发送的报文段（segment）过程中，TCP被关闭场景的记录。每个TCP 连接可能有1个W记录或没有。 最后一个TASK的响应已发送数据量。单位：Byte。 最后一个TASK的耗时，因为是被关闭，所以发送时间是不完整的。单位：us。 最后一个TASK最小的TCP RTT（Round Trip Time）。单位：us。 最后一个TASK重传发送的TCP报文段（TCP segment）数量。 最后一个TASK的序号。 最后一个TASK服务延时。单位：us。 最后一个TASK上送延时。单位：us。 最后一个TASK发送响应但是没有收到ACK确认信息的数据量。参数值说明：没有则为0。单位：Byte。 TASK过程是否发生接收乱序。参数值说明： 1：发生。 0：没有发生。 最后一个TASK过程中TCP使用的最大报文长度（MSS）。单位：Byte。 |
 
-Alibaba Cloud Linux
-
-**说明**
-
-|  | R.x |
+|   | R.x |
 |---|---|
-| R.AF |  |
+| R.AF |   |
 
-`R.A` 和 `R.C` 类型日志，以响应数据量为判据，因此可能存在少量误判。 在上表涉及TASK发送数据量的这类信息中，如果是连接的最后一个TASK，正常处理会减去关闭连接（fin）占用的一个 `snd_nxt` 值。而如果连接是异常关闭的，例如一个TASK完成之后收到了异常终止报文（reset）并且连接也是以响应 `reset` 结束的，则实际发送的数据量会大于这里显示值一个字节。正常情况下，该类值都是正确的，并且异常的情况下只误差一个字节。
+> **说明：** 扩展日志类型以 `R.x` 格式标记，其中 `x` 可以是单个字符（如上表），也可以是多个字符的组合。比如 `R.AF` 即表示 `A` 和 `F` 同时生效。
+> `R.A` 和 `R.C` 类型日志，以响应数据量为判据，因此可能存在少量误判。
+> 在上表涉及TASK发送数据量的这类信息中，如果是连接的最后一个TASK，正常处理会减去关闭连接（fin）占用的一个 `snd_nxt` 值。而如果连接是异常关闭的，例如一个TASK完成之后收到了异常终止报文（reset）并且连接也是以响应 `reset` 结束的，则实际发送的数据量会大于这里显示值一个字节。正常情况下，该类值都是正确的，并且异常的情况下只误差一个字节。
 
-**说明**
-
-关于功能原理部分所示的三个时间阶段。 R记录报告总时间（T0至T3）、上送延时（upload_time，T0至T1）、服务延时 （process_time，T1至T2）。数据下载时间（download_time）可由上述信息计算得出：
+> **说明：** 关于功能原理部分所示的三个时间阶段。
+> R记录报告总时间（T0至T3）、上送延时（upload_time，T0至T1）、服务延时 （process_time，T1至T2）。数据下载时间（download_time）可由上述信息计算得出：
 
 ```
  download_time = 总时间 - upload_time - process_time
@@ -2116,11 +2339,9 @@ Alibaba Cloud Linux
 
 | 比较项 | tcprt | tcp rt.ko _ |
 |---|---|---|
-| 日志文件路径 | 相同 |  |
-| 日志格式 | tcprt对日志格式有扩展，原格式保持兼容。 |  |
+| 日志文件路径 | 相同 |   |
+| 日志格式 | tcprt对日志格式有扩展，原格式保持兼容。 |   |
 | 功能管理 | systemctl | modprobe/rmmod |
-
-Alibaba Cloud Linux
 
 | 功能配置 | 配置文件： /etc/tcprt-bpf/tcprt.yaml | 模块参数： /sys/module/tcp rt/parameters/* _ |
 |---|---|---|
@@ -2129,23 +2350,25 @@ Alibaba Cloud Linux
 
 **功能使用**
 
-您可以根据实际使用场景选择以下操作使用TCP-RT。 Alibaba Cloud Linux 3（内核kernel-5.10.134-010.ali5000.pro.al8及以上版本）。 tcp_rt.ko Alibaba Cloud Linux 2（内核4.19.91-21.al7及以上版本）。 Alibaba Cloud Linux 3。
+您可以根据实际使用场景选择以下操作使用TCP-RT。 tcprt Alibaba Cloud Linux 3（内核kernel-5.10.134-010.ali5000.pro.al8及以上版本）。 tcp_rt.ko Alibaba Cloud Linux 2（内核4.19.91-21.al7及以上版本）。 Alibaba Cloud Linux 3。
 
-**说明**
+> **说明：** 因为二者共享相同的日志文件路径，所以不能同时开启，只能使用其中之一。
 
-因为二者共享相同的日志文件路径，所以不能同时开启，只能使用其中之一。 安装与配置。 i. 安装tcprt。
+**tcprt**
 
-```bash
+安装与配置。 i. 安装tcprt。
+
+```python
 sudo yum install -y tcprt
 ```
 
 ii. 配置tcprt。 a. 打开 `/etc/tcprt-bpf/tcprt.yaml` 文件。
 
-```bash
+```python
 sudo vim /etc/tcprt/tcprt.yaml
 ```
 
-b. 按 i 键进入编辑模式，根据需要进行配置。 配置项分为三部分，global、per-port、init，说明如下。 Alibaba Cloud Linux global
+b. 按 `i` 键进入编辑模式，根据需要进行配置。 配置项分为三部分，global、per-port、init，说明如下。 global
 
 | 参数 | 说明 | 可选值 | 默认值 |
 |---|---|---|---|
@@ -2163,46 +2386,46 @@ per-port。 以列表表示，默认为空，一个元素对应一项端口配�
 | mode | 协议解析模式。default效果与tcp rt.ko一致。 _ | default/http/https | default |
 | first frame _ | 是否开启按字节数的完成时间统计。 | enable/disable | disable |
 
-Alibaba Cloud Linux init。
+init。
 
-| 参数 | 说明 |  |  | 可选值 | 默认值 |
+| 参数 | 说明 |   |   | 可选值 | 默认值 |
 |---|---|---|---|---|---|
-| log buf num _ _ | log文件的子缓冲区个数。 |  |  | 整数 | 8 |
-| log buf size _ _ | log文件的子缓冲区大小，单位：byte。 每一个log文件最大大小为 log buf num * _ _ log buf size 。 _ _ |  |  | 整数 | 262144 |
-|  |  |  | log buf num * _ _ |  |  |
-| stats buf num _ _ | stats文件的子缓冲区个数。 |  |  | 整数 | 8 |
-| stats buf size _ _ | stats文件的子缓冲区大小，单位：byte。 stats文件最大大小为 stats buf num * _ _ stats buf size 。 _ _ |  |  | 整数 | 16384 |
-|  |  | stats buf num * _ _ |  |  |  |
+| log buf num _ _ | log文件的子缓冲区个数。 |   |   | 整数 | 8 |
+| log buf size _ _ | log文件的子缓冲区大小，单位：byte。 每一个log文件最大大小为 log buf num * _ _ log buf size 。 _ _ |   |   | 整数 | 262144 |
+|   |   |   | log buf num * _ _ |   |   |
+| stats buf num _ _ | stats文件的子缓冲区个数。 |   |   | 整数 | 8 |
+| stats buf size _ _ | stats文件的子缓冲区大小，单位：byte。 stats文件最大大小为 stats buf num * _ _ stats buf size 。 _ _ |   |   | 整数 | 16384 |
+|   |   | stats buf num * _ _ |   |   |   |
 
-|  | log buf size _ _ |
+|   | log buf size _ _ |
 |---|---|
 
-|  | stats buf size _ _ |
+|   | stats buf size _ _ |
 |---|---|
 
 c. 配置完成后按 `Esc` 键，输入 `:wq` 后按 `Enter` 键，保存配置。 d. 启动服务，自动解析配置文件。
 
-```bash
+```python
 sudo systemctl start tcprt
 ```
 
 e. 设置开机自动（如有需要）。
 
-```bash
+```python
 sudo systemctl enable tcprt
 ```
 
 卸载tcprt。
 
-```bash
+```python
 sudo yum remove tcprt
 ```
 
-输入 y 按回车键，完成卸载。
+输入 `y` 按回车键，完成卸载。
 
 **配置文件举例tcprt**
 
-peer配置为false，表示默认采用本地端口匹配。添加了两项端口配置。 443端口精确匹配：启用HTTPS解析，匹配本地端口。开启“first_frame”功能（即按字节的完成时间统计），数据量阈值阶梯依次为100/2000/20000字节。 56789～56800端口范围匹配：采用默认TCP解析，匹配对端端口。 stats功能关闭。 log文件和stats缓冲区大小采用默认配置。 Alibaba Cloud Linux
+peer配置为false，表示默认采用本地端口匹配。添加了两项端口配置。 443端口精确匹配：启用HTTPS解析，匹配本地端口。开启“first_frame”功能（即按字节的完成时间统计），数据量阈值阶梯依次为100/2000/20000字节。 56789～56800端口范围匹配：采用默认TCP解析，匹配对端端口。 stats功能关闭。 log文件和stats缓冲区大小采用默认配置。
 
 ```
 global:
@@ -2213,7 +2436,7 @@ global:
 per-port:
 ```
 
--
+`-`
 
 ```
     port: 443
@@ -2221,7 +2444,7 @@ per-port:
     first_frame: enable
 ```
 
--
+`-`
 
 ```
     port: 56789,56800
@@ -2234,74 +2457,72 @@ init:
   stats_buf_size: 16384
 ```
 
-**说明**
-
-字节数完成时间是通过ACK包统计的，实际数据传输中，一次ACK可能对应大量数据（比如几十 KB），因此日志中输出的数据量可能超过文件中的Bytes阈值配置。
+> **说明：** 字节数完成时间是通过ACK包统计的，实际数据传输中，一次ACK可能对应大量数据（比如几十 KB），因此日志中输出的数据量可能超过文件中的Bytes阈值配置。
 
 **tcp_rt.ko**
 
 加载与配置模块。 您可以用以下任一方式加载与配置模块。 模块加载时直接配置参数。 a. 在加载tcp_rt模块的同时，将模块配置作为命令参数一并输入。 例如加载tcp_rt模块，并配置lports为80。
 
-```bash
+```python
 sudo modprobe tcp_rt lports=80
 ```
 
 b. 查看配置是否生效。
 
-```bash
+```python
 sudo cat /sys/module/tcp_rt/parameters/lports
 ```
 
 先加载模块，然后进行配置。 a. 运行以下命令加载模块。
 
-```bash
+```python
 sudo modprobe tcp_rt
 ```
 
-Alibaba Cloud Linux b. 模块加载后，在/sys/module/tcp_rt/parameters/路径下，运行命令进行配置。 例如用下面命令配置监控本地80端口。
+b. 模块加载后，在/sys/module/tcp_rt/parameters/路径下，运行命令进行配置。 例如用下面命令配置监控本地80端口。
 
-```bash
+```python
 sudo sh -c 'echo 80 > /sys/module/tcp_rt/parameters/lports'
 ```
 
 查看配置是否生效。
 
-```bash
+```python
 sudo cat /sys/module/tcp_rt/parameters/lports
 ```
 
 更多参数配置说明与配置命令如下表所示。
 
-| 参数 | 说明 |  |  |  |  | 默认值 | 配置命令 |  |  |
+| 参数 | 说明 |   |   |   |   | 默认值 | 配置命令 |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| stats | 是否输出stats。取值范围： 0：否。 1：是。 |  |  |  |  | 0 | echo 0 > stats |  |  |
-| stats interval _ | stats输出时间间隔。单位： s。 |  |  |  |  | 60 | echo 60 > stats interval _ |  |  |
-| lports | 控制采集的本地服务器端口， 最多6个。 |  |  |  |  |  | echo 80,800,8080 > lports |  |  |
-|  |  |  |  |  |  |  |  | echo 80,800,8080 > |  |
-|  |  |  |  |  |  | 无 | lports |  |  |
-| pports | TCP连接的对端端口。 |  |  |  |  |  | echo 80,800,8080 > pports |  |  |
-|  |  |  |  |  |  |  |  | echo 80,800,8080 > |  |
-|  |  |  |  |  |  | 无 | pports |  |  |
-| lports range _ | 本地服务器端口范围，两个为一组，配置命令中表示80-100 和1000-2000。 |  |  |  |  |  | echo 80,100,1000,2000 >lports range _ |  |  |
-|  |  |  |  |  |  |  |  | echo 80,100,1000,2000 |  |
-|  |  |  | 80-100 |  |  | 无 | >lports range _ |  |  |
-| pports range _ | TCP连接的对端端口范围，两个为一组，配置命令中表示80- 100和1000-2000。 |  |  |  |  |  | echo 80,100,1000,2000 >pports range _ |  |  |
-|  |  |  |  |  |  |  |  | echo 80,100,1000,2000 |  |
-|  |  |  | 表示80- |  |  | 无 | >pports range _ |  |  |
-|  | 每一个log文件最大大小为 log buf num * 256 _ _ |  |  |  |  |  | modprobe tcp rt _ |  |  |
-|  |  |  |  |  |  |  |  | modprobe tcp rt _ |  |
-| log buf num _ _ | k |  |  |  |  | 8 | log buf num=10 _ _ |  |  |
-|  | 每一个stats文件最大大小为 stats buf num * 16 _ _ k 。只在加载模块的时候可以配置。 |  |  |  |  |  | modprobe tcp rt _ stats buf num=10 _ _ |  |  |
-|  |  | stats buf num * 16 _ _ |  |  |  |  |  | modprobe tcp rt _ |  |
-| stats buf num _ _ | k |  |  |  |  | 8 | stats buf num=10 _ _ |  |  |
+| stats | 是否输出stats。取值范围： 0：否。 1：是。 |   |   |   |   | 0 | echo 0 > stats |   |   |
+| stats interval _ | stats输出时间间隔。单位： s。 |   |   |   |   | 60 | echo 60 > stats interval _ |   |   |
+| lports | 控制采集的本地服务器端口， 最多6个。 |   |   |   |   |   | echo 80,800,8080 > lports |   |   |
+|   |   |   |   |   |   |   |   | echo 80,800,8080 > |   |
+|   |   |   |   |   |   | 无 | lports |   |   |
+| pports | TCP连接的对端端口。 |   |   |   |   |   | echo 80,800,8080 > pports |   |   |
+|   |   |   |   |   |   |   |   | echo 80,800,8080 > |   |
+|   |   |   |   |   |   | 无 | pports |   |   |
+| lports range _ | 本地服务器端口范围，两个为一组，配置命令中表示80-100 和1000-2000。 |   |   |   |   |   | echo 80,100,1000,2000 >lports range _ |   |   |
+|   |   |   |   |   |   |   |   | echo 80,100,1000,2000 |   |
+|   |   |   | 80-100 |   |   | 无 | >lports range _ |   |   |
+| pports range _ | TCP连接的对端端口范围，两个为一组，配置命令中表示80- 100和1000-2000。 |   |   |   |   |   | echo 80,100,1000,2000 >pports range _ |   |   |
+|   |   |   |   |   |   |   |   | echo 80,100,1000,2000 |   |
+|   |   |   | 表示80- |   |   | 无 | >pports range _ |   |   |
+|   | 每一个log文件最大大小为 log buf num * 256 _ _ |   |   |   |   |   | modprobe tcp rt _ |   |   |
+|   |   |   |   |   |   |   |   | modprobe tcp rt _ |   |
+| log buf num _ _ | k |   |   |   |   | 8 | log buf num=10 _ _ |   |   |
+|   | 每一个stats文件最大大小为 stats buf num * 16 _ _ k 。只在加载模块的时候可以配置。 |   |   |   |   |   | modprobe tcp rt _ stats buf num=10 _ _ |   |   |
+|   |   | stats buf num * 16 _ _ |   |   |   |   |   | modprobe tcp rt _ |   |
+| stats buf num _ _ | k |   |   |   |   | 8 | stats buf num=10 _ _ |   |   |
 
-|  |  | echo 60 > |  |
+|   |   | echo 60 > |   |
 |---|---|---|---|
-| 0 | stats interval _ |  |  |
+| 0 | stats interval _ |   |   |
 
-卸载模块。 i. 运行以下命令，停用 `tcp-rt` 模块，保证不会有新的连接使用TCP-RT。 Alibaba Cloud Linux
+卸载模块。 i. 运行以下命令，停用 `tcp-rt` 模块，保证不会有新的连接使用TCP-RT。
 
-```bash
+```python
 sudo echo 1 > /sys/kernel/debug/tcp-rt/deactivate
 ```
 
@@ -2311,9 +2532,9 @@ ii. 运行以下命令判断是否所有连接均未使用 `tcp-rt` 模块。
 lsmod
 ```
 
-当输出结果中 `tcp-rt` 模块 `Used by` 为 0 时，表示没有连接使用 `tcp-rt` 。 iii. 当所有连接都不使用 `tcp-rt` 模块后，运行以下命令卸载 `tcp-rt` 模块。
+当输出结果中 `tcp-rt` 模块 `Used by` 为 `0` 时，表示没有连接使用 `tcp-rt` 。 iii. 当所有连接都不使用 `tcp-rt` 模块后，运行以下命令卸载 `tcp-rt` 模块。
 
-```bash
+```python
 sudo rmmod tcp_rt
 ```
 
@@ -2321,31 +2542,31 @@ sudo rmmod tcp_rt
 
 **日志文件大小与配置参数不一致**
 
-|  | ls -l |
+|   | ls -l |
 |---|---|
-| l |  |
+| l |   |
 
-下图展示了在默认配置（2 M）下的示例。可以看到，使用 `cat` 将日志内容重定向到文件后，其实际大小约为2 M，符合预期。
+`ls -l` 等命令显示文件大小超过配置值，这是正常现象。日志文件位于 `/sys` 虚拟文件系统下， `ls -` `l` 结果不代表真实大小（也不占磁盘空间）。实际上，这里相当于累积的总日志量，保持递增。若想检查日志真实大小，可以将日志重定向到文件后查看。 下图展示了在默认配置（2 M）下的示例。可以看到，使用 `cat` 将日志内容重定向到文件后，其实际大小约为2 M，符合预期。
 
-##### 共享内存通信（SMC）
+##### 1.5.6.3 共享内存通信（SMC）
 
-###### 共享内存通信（SMC）使用说明
+###### 1.5.6.3.1 共享内存通信（SMC）使用说明
 
 Alibaba Cloud Linux 3提供的共享内存通信SMC（Shared Memory Communication）是一种兼容 socket层、使用共享内存技术实现的高性能内核网络协议栈。根据共享内存技术的不同，SMC又可以细分为基于ISM（Internal Shared Memory）技术的SMC-D（SMC over DMA）和基于RDMA（Remote Direct Memory Access）技术的SMC-R（SMC over RDMA）。本文为您介绍SMC-R及其使用方法。
 
 **背景信息**
 
-SMC-R由IBM于2017年开源至Linux 4.11并持续维护至今，其协议标准可参考IETF RFC 7609。Alibaba Cloud Linux 3操作系统基于阿里云弹性RDMA（elastic RDMA，简称eRDMA）技术首次将SMC-R带入云上场景，实现对TCP应用透明无侵入的替换，提供高性能、普惠的软硬件协同网络。 Alibaba Cloud Linux
+SMC-R由IBM于2017年开源至Linux 4.11并持续维护至今，其协议标准可参考IETF RFC 7609。Alibaba Cloud Linux 3操作系统基于阿里云弹性RDMA（elastic RDMA，简称eRDMA）技术首次将SMC-R带入云上场景，实现对TCP应用透明无侵入的替换，提供高性能、普惠的软硬件协同网络。
 
-**重要**
+> **重要：** eRDMA 在神龙moc2.5 开始支持。
 
-eRDMA 在神龙moc2.5 开始支持。 SMC-R的共享内存数据交互模型依赖RDMA提供的内存操作原语。RDMA技术将网络协议栈下沉至RDMA网卡（RNIC）实现，使网络节点能够绕过内核直接访问远程内存。与TCP网络相比，RDMA网络可以减少数据在内存间拷贝的次数，降低网络传输过程中消耗的CPU资源，进而提高网络吞吐、降低网络时延。两者协议栈差异如下图所示。
+SMC-R的共享内存数据交互模型依赖RDMA提供的内存操作原语。RDMA技术将网络协议栈下沉至RDMA网卡（RNIC）实现，使网络节点能够绕过内核直接访问远程内存。与TCP网络相比，RDMA网络可以减少数据在内存间拷贝的次数，降低网络传输过程中消耗的CPU资源，进而提高网络吞吐、降低网络时延。两者协议栈差异如下图所示。
 
 **TCP/IP**
 
 **RDMA**
 
-| App Buffer |  |
+| App Buffer |   |
 |---|---|
 
 Buffer App CPU Copy TCP/IP DMA Kernel Buffer Kernel Copy Driver DMA Copy Buffer RDMA Buffer Adapter Adapter 因此，RDMA被广泛应用于数据密集型和计算密集型场景中，是高性能计算、机器学习、数据中心、海量存储等领域的重要解决方案。 过去，RDMA只能在一些数据中心网络中通过网卡和交换机紧密配合使用，部署复杂度高。如今，阿里云弹性RDMA将复杂的RDMA技术带到云上，使普通的ECS用户也能使用高性能的RDMA传输，无需关心底层复杂的网卡、交换机等物理网络环境配置，使其成为一种亲民、普惠的技术。 但是，RDMA技术基于IB verbs接口，与常用的POSIX socket接口存在巨大的差异。现有socket应用程序迁移至RDMA网络往往面临大量的改造，使用RDMA技术仍存在较高的技术门槛。 因此，为了充分挖掘弹性RDMA的潜力，为云上用户提供更好的网络性能，Alibaba Cloud Linux 3提供并优化了SMC-R。在高效使用RDMA技术的同时，保留对标准TCP应用的兼容，使更多的应用无需修改便能享受RDMA所带来的性能红利。
@@ -2360,7 +2581,7 @@ SMC-R的优势主要体现在以下几点：
 
 **透明替换**
 
-得益于SMC-R对POSIX socket接口的兼容以及协议栈透明替换能力，socket应用程序可以在无修改的情况下完成TCP协议栈到SMC-R协议栈的切换，无需额外的应用改造和开发成本。具体表现在： 兼容socket接口的共享内存通信。 Alibaba Cloud Linux 进程或net namespace维度的透明协议替换。 自动协议协商和安全回退机制。
+得益于SMC-R对POSIX socket接口的兼容以及协议栈透明替换能力，socket应用程序可以在无修改的情况下完成TCP协议栈到SMC-R协议栈的切换，无需额外的应用改造和开发成本。具体表现在： 兼容socket接口的共享内存通信。 进程或net namespace维度的透明协议替换。 自动协议协商和安全回退机制。
 
 **技术架构**
 
@@ -2370,15 +2591,15 @@ SMC-R技术架构说明如下：
 
 SMC-R工作于内核空间，向上支持用户态程序通过socket接口描述的网络行为，向下使用IB verbs接口实现RDMA网络传输。RDMA资源的使用、管理与维护均由SMC-R协议栈完成，应用程序不会感知到内核中的RDMA实体。技术架构如下图所示：
 
-| App based Appbased on on SMC socket TCP socket LD PRELOAD __ |  |
+| App based Appbased on on SMC socket TCP socket LD PRELOAD __ |   |
 |---|---|
 | SMC-R | tcp2smc sysctl AF INET __ TCP IP Ethernet er Eth-driver |
-| IB |  |
-| Verbs ib-driv |  |
+| IB |   |
+| Verbs ib-driv |   |
 
 User Space Kernel
 
-| SMC-R |  |
+| SMC-R |   |
 |---|---|
 
 | ib-driv | er |
@@ -2388,43 +2609,43 @@ PCIe Hardwa RNIC Alibaba Cloud Linux 3提供了进程或net namespace维度的TC
 
 **自动协商和安全回退**
 
-SMC-R具备自动协商、动态回退TCP的能力。建立SMC-R通信前，协议栈首先在内核中与通信对端建立 TCP连接，在握手过程中使用特殊的TCP选项表明自身支持SMC-R，并确认对端同样支持SMC-R。 如果协商成功，通信两侧SMC-R协议栈将创建新的或者复用已有的RDMA资源，建立可用的RDMA RC 链路。从此网络传输将基于RDMA网络完成。 Alibaba Cloud Linux 如果协商失败，例如一侧不具备RDMA设备，SMC-R协议栈将自动回退到TCP协议栈，使用协商时建立的TCP连接完成数据传输。
+SMC-R具备自动协商、动态回退TCP的能力。建立SMC-R通信前，协议栈首先在内核中与通信对端建立 TCP连接，在握手过程中使用特殊的TCP选项表明自身支持SMC-R，并确认对端同样支持SMC-R。 如果协商成功，通信两侧SMC-R协议栈将创建新的或者复用已有的RDMA资源，建立可用的RDMA RC 链路。从此网络传输将基于RDMA网络完成。 如果协商失败，例如一侧不具备RDMA设备，SMC-R协议栈将自动回退到TCP协议栈，使用协商时建立的TCP连接完成数据传输。
 
-**说明**
+> **说明：** SMC-R仅支持连接协商期间回退至TCP，但不支持数据传输过程中的回退。
 
-SMC-R仅支持连接协商期间回退至TCP，但不支持数据传输过程中的回退。 协商和数据传输流如下图所示： Host A Host B
+协商和数据传输流如下图所示： Host A Host B
 
-| Application |  |  |  |  |
+| Application |   |   |   |   |
 |---|---|---|---|---|
-| Sockets |  |  |  |  |
-| SMC |  | -R |  |  |
-|  |  |  |  | TCP IP |
-|  |  |  |  | IP |
-|  |  |  |  | inteRrfNaIcC |
+| Sockets |   |   |   |   |
+| SMC |   | -R |   |   |
+|   |   |   |   | TCP IP |
+|   |   |   |   | IP |
+|   |   |   |   | inteRrfNaIcC |
 
-| Application |  |  |  |  |
+| Application |   |   |   |   |
 |---|---|---|---|---|
-| Sockets |  |  |  |  |
-|  |  | SM |  | C-R |
-| TCP IP |  |  |  |  |
-|  | IP |  |  |  |
-|  | nRtNeIrCface |  |  |  |
+| Sockets |   |   |   |   |
+|   |   | SM |   | C-R |
+| TCP IP |   |   |   |   |
+|   | IP |   |   |   |
+|   | nRtNeIrCface |   |   |   |
 
 TCP syn flows with TCP options indicating SMC-R capability RDMA network iWARP/RoCE Dataexchangedusing
 
 **基于RDMA的共享内存通信**
 
-完成协议协商并建立连接后，协议栈为SMC-R socket分配一块用于缓存待发送数据的环形缓冲区sndbuf 和一块用于缓存待接收数据的环形缓冲区RMB（Remote Memory Buffer）。 发送端应用程序通过socket接口将待发送数据拷贝到本侧sndbuf中，由SMC-R协议栈通过RDMA WRITE操作直接高效地写入对侧节点的RMB中。同时伴随着使用RDMA SEND/RECV操作交互连接数据管理消息，用于更新、同步环形缓冲区中的数据游标。 接收端SMC-R协议栈感知到RMB中填入新数据后，通过epoll等方式告知接收端应用程序将RMB中的数据拷贝到用户态，完成数据传输。所以在SMC-R中，RMB充当传输过程中的共享内存。 数据传输过程如下图所示： Alibaba Cloud Linux
+完成协议协商并建立连接后，协议栈为SMC-R socket分配一块用于缓存待发送数据的环形缓冲区sndbuf 和一块用于缓存待接收数据的环形缓冲区RMB（Remote Memory Buffer）。 发送端应用程序通过socket接口将待发送数据拷贝到本侧sndbuf中，由SMC-R协议栈通过RDMA WRITE操作直接高效地写入对侧节点的RMB中。同时伴随着使用RDMA SEND/RECV操作交互连接数据管理消息，用于更新、同步环形缓冲区中的数据游标。 接收端SMC-R协议栈感知到RMB中填入新数据后，通过epoll等方式告知接收端应用程序将RMB中的数据拷贝到用户态，完成数据传输。所以在SMC-R中，RMB充当传输过程中的共享内存。 数据传输过程如下图所示： Sender Receiver
 
-|  | App data |
+|   | App data |
 |---|---|
 
-| App data |  |
+| App data |   |
 |---|---|
 
-kernel-smc
+kernel-smc kernel-smc
 
-| RMB data sndbuf |  |
+| RMB data sndbuf |   |
 |---|---|
 
 data DATA (RDMA Write) sndbuf RMB
@@ -2433,19 +2654,21 @@ data DATA (RDMA Write) sndbuf RMB
 
 基于SMC-R的高性能、透明替换等优势，适用于网络通信占比高的场景，该技术的典型应用场景示例如下： 时延敏感的数据查询和处理 Redis、Memcached、PostgreSQL等高性能数据查询与处理的场景，对网络性能有极高的要求。SMC- R为应用提供无侵入式透明替换TCP协议栈的能力，无需应用二次开发和适配，即可为应用提供最高50% 的QPS（Queries Per Second）提升。 高吞吐的数据传输集群内的大规模数据交互与传输，往往需要占用大量的带宽和CPU资源。得益于RDMA技术带来的远程内存直接访问，SMC-R在相同的吞吐性能下，CPU资源使用显著低于TCP协议栈，为应用节省更多的计算资源。
 
-**说明**
-
-SMC-R握手涉及到RDMA资源创建和申请，所以对于频繁建立、销毁连接（短链接）场景没有收益。 SMC-R支持的连接规模受限于如下资源： 实例可用的物理内存大小。每个SMC-R socket所用的收发缓冲区sndbuf和RMB默认使用物理连续内存，在SMC-R连接建立时分配，大小默认为当前net.smc.wmem和 net.smc.rmem值。查看方式： `sysctl net.smc.wmem #` 每个`SMC-R socket sndbuf`默认大小，单位：字节 `sysctl net.smc.rmem #` 每个`SMC-R socket RMB`默认大小，单位：字节 ERI eRDMA规格。SMC-R为连接创建的RDMA资源（例如QP、MR、CQ、PD等）上限由实例ERI eRDMA规格决定。 当SMC-R无法获取到所需资源时将会安全回退到TCP协议，确保数据传输稳定可靠。
+> **说明：** SMC-R握手涉及到RDMA资源创建和申请，所以对于频繁建立、销毁连接（短链接）场景没有收益。
+> SMC-R支持的连接规模受限于如下资源：
+> 实例可用的物理内存大小。每个SMC-R socket所用的收发缓冲区sndbuf和RMB默认使用物理连续内存，在SMC-R连接建立时分配，大小默认为当前net.smc.wmem和 net.smc.rmem值。查看方式：
+> `sysctl net.smc.wmem #` 每个`SMC-R socket sndbuf`默认大小，单位：字节 `sysctl net.smc.rmem #` 每个`SMC-R socket RMB`默认大小，单位：字节
+> ERI eRDMA规格。SMC-R为连接创建的RDMA资源（例如QP、MR、CQ、PD等）上限由实例ERI eRDMA规格决定。
+> 当SMC-R无法获取到所需资源时将会安全回退到TCP协议，确保数据传输稳定可靠。
 
 **使用说明**
 
-Alibaba Cloud Linux Alibaba Cloud Linux 3提供并优化了SMC-R内核协议栈，配合SMC-R状态监控和故障诊断工具，您可以通过以下步骤使用SMC-R：
+Alibaba Cloud Linux 3提供并优化了SMC-R内核协议栈，配合SMC-R状态监控和故障诊断工具，您可以通过以下步骤使用SMC-R：
 1. 创建支持ERI的ECS实例。
 SMC-R基于RDMA实现，因此使用SMC-R前需要创建支持ERI功能的ECS实例，以获得云上RDMA能力。
 
-**重要**
+> **重要：** 阿里云ERI eRDMA设备与SMC目前均不支持使用IPv6地址。如果应用层使用IPv6地址，会导致SMC 回退到TCP协议栈。
 
-阿里云ERI eRDMA设备与SMC目前均不支持使用IPv6地址。如果应用层使用IPv6地址，会导致SMC 回退到TCP协议栈。
 2. 执行以下命令，加载 `smc` 和 `smc_diag` 内核模块。
 
 ```
@@ -2458,27 +2681,26 @@ modprobe smc modprobe smc_diag
 smc: smc: load SMC module with reserve_mode NET: Registered protocol family 43 smc: netns <netns ID> reserved ports [65500 ~ 65515] for eRDMA OOB smc: adding ib device erdma_0 with port count 1 smc: ib device erdma_0 port 1 has pnetid
 ```
 
-**说明**
-
-由于SMC支持ERI eRDMA方式的特殊性，自kernel-5.10.134-010.ali5000.pro.al8内核版本起，SMC内核模块加载时将尝试占用当前可访问ERI设备的net namespace中65500~65515共16 个socket端口，用于RDMA带外（OOB）建连。如果端口占用失败将无法在SMC模块中使用ERI eRDMA设备（但仍可以加载SMC模块）。卸载SMC模块时将自动解除端口占用。 查看内核版本：
+> **说明：** 由于SMC支持ERI eRDMA方式的特殊性，自kernel-5.10.134-010.ali5000.pro.al8内核版本起，SMC内核模块加载时将尝试占用当前可访问ERI设备的net namespace中65500~65515共16 个socket端口，用于RDMA带外（OOB）建连。如果端口占用失败将无法在SMC模块中使用ERI eRDMA设备（但仍可以加载SMC模块）。卸载SMC模块时将自动解除端口占用。
+> 查看内核版本：
 
 ```
 uname -r
 ```
 
-SMC模块加载时因端口占用失败而无法使用ERI eRDMA设备的 `dmesg` 警告信息：
+> SMC模块加载时因端口占用失败而无法使用ERI eRDMA设备的 `dmesg` 警告信息：
 
 ```
 smc: smc: load SMC module with reserve_mode NET: Registered protocol family 43 warning: smc: netns <netns ID> reserved ports <占用失败的端口号> FAIL for eRDMA OOB
 ```
 
-卸载SMC模块：
+> 卸载SMC模块：
 
 ```
 rmmod smc_diag rmmod smc
 ```
 
-卸载模块时的打印信息：
+> 卸载模块时的打印信息：
 
 ```
 NET: Unregistered protocol family 43 smc: removing ib device erdma_0 smc: netns <netns ID> released ports [65500 ~ 65515] used by eRDMA OOB
@@ -2490,25 +2712,24 @@ NET: Unregistered protocol family 43 smc: removing ib device erdma_0 smc: netns 
 yum install -y smc-tools
 ```
 
-Alibaba Cloud Linux
 4. （可选）设置收发缓冲区默认大小。
-如技术架构：基于RDMA的共享内存通信中所述，SMC-R协议栈会为每个SMC-R socket分配一块用于缓存待发送数据的环形缓冲区sndbuf和一块用于缓存待接收数据的环形缓冲区RMB。SMC-R中sndbuf与 RMB概念可类比于TCP协议中的send buffer与receive buffer，有效值范围为16 KB到512 KB。 对于注重吞吐性能的网络模型可以通过下述方式调整SMC-R socket sndbuf和RMB的默认大小，以获得最佳的SMC-R网络加速效果。 Alibaba Cloud Linux 3提供了sysctl net.smc.wmem和sysctl net.smc.rmem来设置当前net namespace中所有新建SMC-R socket的sndbuf和RMB的默认大小，已建立连接的SMC-R socket的 sndbuf和RMB不受影响。具体步骤为： `sysctl net.smc.wmem=<sndbuf` 指定值，以字节为单位> `sysctl net.smc.rmem=<RMB` 指定值，以字节为单位> `sysctl net.smc.wmem` 和 `sysctl net.smc.rmem` 的初始化值为 256 KB。 除了上述设置SMC-R socket的sndbuf和RMB默认值的方法，应用程序还可以通过setsockopt()系统调用，在建立连接前设置SMC-R socket的SO_SNDBUF和SO_RCVBUF选项值，进而改变SMC-R socket 所使用的sndbuf和RMB大小。
+如技术架构：基于RDMA的共享内存通信中所述，SMC-R协议栈会为每个SMC-R socket分配一块用于缓存待发送数据的环形缓冲区sndbuf和一块用于缓存待接收数据的环形缓冲区RMB。SMC-R中sndbuf与 RMB概念可类比于TCP协议中的send buffer与receive buffer，有效值范围为16 KB到512 KB。 对于注重吞吐性能的网络模型可以通过下述方式调整SMC-R socket sndbuf和RMB的默认大小，以获得最佳的SMC-R网络加速效果。 Alibaba Cloud Linux 3提供了sysctl net.smc.wmem和sysctl net.smc.rmem来设置当前net namespace中所有新建SMC-R socket的sndbuf和RMB的默认大小，已建立连接的SMC-R socket的 sndbuf和RMB不受影响。具体步骤为： `sysctl net.smc.wmem=<sndbuf` 指定值，以字节为单位`>` `sysctl net.smc.rmem=<RMB` 指定值，以字节为单位`>` `sysctl net.smc.wmem` 和 `sysctl net.smc.rmem` 的初始化值为 256 KB。 除了上述设置SMC-R socket的sndbuf和RMB默认值的方法，应用程序还可以通过setsockopt()系统调用，在建立连接前设置SMC-R socket的SO_SNDBUF和SO_RCVBUF选项值，进而改变SMC-R socket 所使用的sndbuf和RMB大小。
 5. 基于SMC协议栈运行TCP socket应用程序。
-Alibaba Cloud Linux 3支持两个维度的透明替换。具体说明如下： net namespace维度透明替换 Alibaba Cloud Linux 3提供了net namespace维度的协议透明替换功能，可以通过 `sysctl` `net.smc.tcp2smc` 将net namespace中所有符合如下条件的TCP socket替换为SMC socket。 family为AF_INET type为SOCK_STREAM protocol为IPPROTO_IP或IPPROTO_TCP 替换过程如下图所示： Alibaba Cloud Linux App based on
+Alibaba Cloud Linux 3支持两个维度的透明替换。具体说明如下： net namespace维度透明替换 Alibaba Cloud Linux 3提供了net namespace维度的协议透明替换功能，可以通过 `sysctl` `net.smc.tcp2smc` 将net namespace中所有符合如下条件的TCP socket替换为SMC socket。 family为AF_INET type为SOCK_STREAM protocol为IPPROTO_IP或IPPROTO_TCP 替换过程如下图所示： App based on
 **TCP** socket
 User Space Kernel tcp2smc sysct1 AF__INET
 
-| SMC-R |  |
+| SMC-R |   |
 |---|---|
 
 TCP IP
 
-| IB |  |
+| IB |   |
 |---|---|
 
-Ethernet
+Ethernet Verbs
 
-| ib-driver |  |
+| ib-driver |   |
 |---|---|
 
 Eth-driver PCIe Hardware RNIC 在net namespace维度开启透明替换的操作步骤如下： a. 执行以下命令，打开net namespace范围全局替换开关net.smc.tcp2smc。
@@ -2529,19 +2750,19 @@ sysctl net.smc.tcp2smc=1
 sysctl net.smc.tcp2smc=0
 ```
 
-进程维度透明替换 Alibaba Cloud Linux 3还提供了进程维度的协议透明替换功能，该功能实现需要基于SMC-R的监控诊断工具smc-tools。smc-tools的安装操作，请参见安装smc-tools工具。 替换过程如下图所示： Alibaba Cloud Linux
+进程维度透明替换 Alibaba Cloud Linux 3还提供了进程维度的协议透明替换功能，该功能实现需要基于SMC-R的监控诊断工具smc-tools。smc-tools的安装操作，请参见安装smc-tools工具。 替换过程如下图所示：
 
-| App based on TCP socket LD PRELOA _ |  | App based on TCP socket |  |
+| App based on TCP socket LD PRELOA _ |   | App based on TCP socket |   |
 |---|---|---|---|
-|  |  | LD PRELOA _ |  |
-|  | AF INET _ TCP IP Ethernet Eth- driver |  |  |
-| SMC-R |  |  |  |
-| IB |  |  |  |
-| Verbs |  |  |  |
-| ib- |  |  |  |
-| driver |  |  |  |
-|  | PCIe |  |  |
-| RNIC |  |  |  |
+|   |   | LD PRELOA _ |   |
+|   | AF INET _ TCP IP Ethernet Eth- driver |   |   |
+| SMC-R |   |   |   |
+| IB |   |   |   |
+| Verbs |   |   |   |
+| ib- |   |   |   |
+| driver |   |   |   |
+|   | PCIe |   |   |
+| RNIC |   |   |   |
 
 User space Kernel Hardware 使用smc-tools工具集中的脚本 `smc_run` 运行应用程序时， `smc_run` 通过环境变量 `LD_PRELOAD` 将smc-tools工具集中的libsmc-preload.so定义为优先加载的动态库。 libsmc-preload.so将把应用程序及其子进程中符合如下条件的TCP socket替换为SMC socket。 family为AF_INET type为SOCK_STREAM protocol为IPPROTO_IP或IPPROTO_TCP 执行以下命令，指定TCP socket程序foo运行在SMC-R协议栈。
 
@@ -2553,15 +2774,15 @@ smc_run ./foo
 
 **监控诊断**
 
-在使用SMC过程中，您可以使用smc-tools工具监控和诊断SMC内核协议栈，了解和掌握SMC网络流量的
+在使用SMC过程中，您可以使用smc-tools工具监控和诊断SMC内核协议栈，了解和掌握SMC网络流量的各类指标，判断网络健康状况。更多信息，请参见共享内存通信（SMC）监控和诊断。
 
 **常见问题**
 
 如果您在使用SMC过程中无法正常通信、遇到部分端口不可用等问题，您可以参考共享内存通信（SMC） 常见问题进行解决。
 
-###### 共享内存通信（SMC）监控和诊断
+###### 1.5.6.3.2 共享内存通信（SMC）监控和诊断
 
-本文将为您介绍SMC内核协议栈中SMC-R的监控诊断工具及使用方法，以帮助您了解和掌握SMC网络流量的各类指标，判断网络健康状况。 Alibaba Cloud Linux
+本文将为您介绍SMC内核协议栈中SMC-R的监控诊断工具及使用方法，以帮助您了解和掌握SMC网络流量的各类指标，判断网络健康状况。
 
 **前提条件**
 
@@ -2573,7 +2794,7 @@ Alibaba Cloud Linux 3提供的smc-tools可以帮助您获取SMC的连接、资�
 
 **安装smc-tools**
 
-```bash
+```python
 sudo yum install -y smc-tools
 ```
 
@@ -2600,9 +2821,9 @@ Net-Dev IB-Dev IB-P IB-State Type Crit #Links PNET-ID eth1 erdma_0 1 ACTIVE 0x10
 
 `smcr linkgroup` ：查看SMC-R link group信息。
 
-**说明**
+> **说明：** link group在SMC-R中用于表示一组RDMA资源集合，包括QP（Queue Pair）、PD（Protection Domain）、MR（Memory Region）等，一个link group默认承载32个SMC连接。
 
-link group在SMC-R中用于表示一组RDMA资源集合，包括QP（Queue Pair）、PD（Protection Domain）、MR（Memory Region）等，一个link group默认承载32个SMC连接。 输出示例： Alibaba Cloud Linux
+输出示例：
 
 ```bash
 # smcr linkgroup
@@ -2651,8 +2872,6 @@ Extras
 | 参数 | 说明 |
 |---|---|
 
-Alibaba Cloud Linux
-
 | Total connections handled | SMC-R协议栈处理的连接数量累加值，为 SMC connections 、 Handshake errors 、 TCP fallback 数量之和。 |
 |---|---|
 | SMC connections | 成功转化为SMC-R连接的数量累加值。 |
@@ -2668,15 +2887,13 @@ Alibaba Cloud Linux
 | Tx/Total requests | SMC-R连接发送请求累加值。 |
 | Tx/Buffer full | SMC-R连接发送缓冲区已满次数累加值，表示SMC-R协议栈未及时将用户态程序下发的数据发送到链路上。如果占比较高则考虑在此场景下增大发送缓冲区容量。 |
 
-|  | SMC |  |
+|   | SMC |   |
 |---|---|---|
-| Handshake errors |  |  |
+| Handshake errors |   |   |
 
-|  | connections |
+|   | connections |
 |---|---|
-|  | fallback |
-
-Alibaba Cloud Linux
+|   | fallback |
 
 | Tx/Buffer full (remote) | SMC-R连接的对端接收缓冲区已满次数累加值，表示因对端接收缓冲区已满而无法将数据发送到对端。若占比较高则考虑在此场景下增大对端接收缓冲区容量。 |
 |---|---|
@@ -2685,24 +2902,24 @@ Alibaba Cloud Linux
 | Tx/Bufs | SMC-R连接使用的发送缓冲区分布图。SMC-R在每个link group维度维护一个内存池，创建连接时从内存池中获取符合大小的、空闲的内存块。如果不存在则创建新的内存块，连接断开后将内存块还回内存池。此处统计值为连接从内存池中获取发送缓冲区的次数累加值与大小分布，不代表实际占用内存的发送缓冲区数量。 |
 | Tx/Reqs | SMC-R连接接收请求数据大小的分布。 |
 
-|  | Tx/Buffer too small |
+|   | Tx/Buffer too small |
 |---|---|
-| (remote) |  |
+| (remote) |   |
 
 **查看SMC-R连接信息**
 
 `smcss` ：查看当前net namespace下正在建连、正在断连、已建连的SMC socket的基础信息。
 
-**说明**
+> **说明：** 上述指令输出包含回退到使用TCP/IP协议栈的SMC socket。
 
-上述指令输出包含回退到使用TCP/IP协议栈的SMC socket。 输出示例如下：
+输出示例如下：
 
 ```bash
 # smcss
 State UID Inode Local Address Peer Address Intf Mode ACTIVE 00994 2954337 192.168.4.78:80 192.168.4.79:36000 0000 SMCR ACTIVE 00994 2954336 192.168.4.78:80 192.168.4.79:35994 0000 SMCR ACTIVE 00994 2954333 192.168.4.78:80 192.168.4.79:35978 0000 SMCR ACTIVE 00994 2950860 192.168.4.78:80 192.168.4.79:35972 0000 SMCR ACTIVE 00994 2953298 192.168.4.78:80 192.168.4.79:35966 0000 SMCR ACTIVE 00994 2953297 192.168.4.78:80 192.168.4.79:35948 0000 TCP 0x03010000 ACTIVE 00994 2954330 192.168.4.78:80 192.168.4.79:35922 0000 TCP 0x03010000 ACTIVE 00994 2947957 192.168.4.78:80 192.168.4.79:35920 0000 TCP 0x03010000 ACTIVE 00994 2953293 192.168.4.78:80 192.168.4.79:35822 0000 TCP 0x03010000 ACTIVE 00994 2955286 192.168.4.78:80 192.168.4.79:35752 0000 TCP 0x03010000
 ```
 
-您主要需要关注如下参数： Alibaba Cloud Linux
+您主要需要关注如下参数：
 
 | 参数 | 说明 |
 |---|---|
@@ -2711,7 +2928,7 @@ State UID Inode Local Address Peer Address Intf Mode ACTIVE 00994 2954337 192.16
 | Peer Address | 对端IPv4地址与端口，目前SMC仅支持IPv4协议。 |
 | Mode | 通信模式。 SMCR：使用SMC-R协议栈通信。 TCP <fallback reason>：回退使用TCP/IP协议栈通信。 说明数字代码表示回退原因。具体含义，请参见启用SMC后回退无法使用 RDMA加速。 |
 
-`smcss -l` ：查看当前net namespace下正在监听（ `LISTEN` 状态）的socket。 `smcss -l` 的输出参数与 `smcss` 的输出参数相同。 `smcss -R` ：查看当前net namespace下运行在SMC-R协议栈的socket。 输出示例： Alibaba Cloud Linux
+`smcss -l` ：查看当前net namespace下正在监听（ `LISTEN` 状态）的socket。 `smcss -l` 的输出参数与 `smcss` 的输出参数相同。 `smcss -R` ：查看当前net namespace下运行在SMC-R协议栈的socket。 输出示例：
 
 ```bash
 # smcss -R
@@ -2735,11 +2952,11 @@ Mode字段的数字代码表示回退原因。具体含义，请参见启用SMC�
 
 **相关文档**
 
-如果您在使用共享内存通信SMC过程中遇到无法正常通信、部分端口不可用、对比TCP没有应用性能提升等
+如果您在使用共享内存通信SMC过程中遇到无法正常通信、部分端口不可用、对比TCP没有应用性能提升等问题，可以参考共享内存通信（SMC）常见问题。
 
-###### 共享内存通信（SMC）常见问题
+###### 1.5.6.3.3 共享内存通信（SMC）常见问题
 
-Alibaba Cloud Linux 如果您在Alibaba Cloud Linux 3系统中启用了共享内存通信SMC（Shared Memory Communication），且使用过程中遇到无法正常通信、部分端口不可用、对比TCP没有应用性能提升等问题，可以参考本文提供的方案进行排查并解决。
+如果您在Alibaba Cloud Linux 3系统中启用了共享内存通信SMC（Shared Memory Communication），且使用过程中遇到无法正常通信、部分端口不可用、对比TCP没有应用性能提升等问题，可以参考本文提供的方案进行排查并解决。
 
 **启用SMC后应用性能对比TCP没有提升**
 
@@ -2749,7 +2966,7 @@ Alibaba Cloud Linux 如果您在Alibaba Cloud Linux 3系统中启用了共享内
 
 **问题原因及解决方案**
 
-由于某些原因，导致应用创建的SMC连接回退到TCP，此时无法使用RDMA加速网络通信。详细的回退排查和解决方法，请参见启用SMC后回退无法使用RDMA加速。 应用的网络通信开销在整个应用中占比较小。例如应用是倾向于CPU密集型，网络通信在应用中占比较低。 应用的网络通信模型不适用SMC。例如： 频繁建立、销毁连接（短连接）的场景。SMC创建连接涉及到RDMA资源创建和申请等慢速路径，根据不同应用短连接的占比，性能对比TCP可能没有收益。 资源受限的场景。SMC通信所使用的资源受限于机器内存和eRDMA网卡规格，资源不足可能导致SMC
+由于某些原因，导致应用创建的SMC连接回退到TCP，此时无法使用RDMA加速网络通信。详细的回退排查和解决方法，请参见启用SMC后回退无法使用RDMA加速。 应用的网络通信开销在整个应用中占比较小。例如应用是倾向于CPU密集型，网络通信在应用中占比较低。 应用的网络通信模型不适用SMC。例如： 频繁建立、销毁连接（短连接）的场景。SMC创建连接涉及到RDMA资源创建和申请等慢速路径，根据不同应用短连接的占比，性能对比TCP可能没有收益。 资源受限的场景。SMC通信所使用的资源受限于机器内存和eRDMA网卡规格，资源不足可能导致SMC 回退到TCP。更多信息，请参见共享内存通信（SMC）使用说明。
 
 **启用SMC后无法正常通信**
 
@@ -2761,18 +2978,16 @@ Alibaba Cloud Linux 如果您在Alibaba Cloud Linux 3系统中启用了共享内
 
 某些服务器实现上没有严格遵守TCP规范，在处理TCP options时，可能重放TCP options，导致SMC协议识别出现问题。
 
-**说明**
+> **说明：** A TCP implementation **MUST** (MUST-6) ignore without error any TCP Option it does not implement, assuming that the option has a length field. 更多信息，请参见RFC 9293。
 
-A TCP implementation **MUST** (MUST-6) ignore without error any TCP Option it does not implement, assuming that the option has a length field. 更多信息，请参见RFC 9293。 如果用于表征支持SMC的TCP option被重放，就会使得本端误认为对端服务具备SMC能力，引起握手错误，导致请求（例如curl）失败，而ping（ICMP协议）成功的现象。
+如果用于表征支持SMC的TCP option被重放，就会使得本端误认为对端服务具备SMC能力，引起握手错误，导致请求（例如curl）失败，而ping（ICMP协议）成功的现象。 SMC-capable SMC-incapable
 
 | 1 4 | SYN TCP option('SMC') SYN-ACK TCP option('SMC') | 2 3 |
 |---|---|---|
 
-支持 i ( ) 您可以通过**check_tcpoption_replay.py**工具诊断此类问题：
+误以为服务端错误重放支持 i ( ) 您可以通过**check_tcpoption_replay.py**工具诊断此类问题：
 
 **单击check_tcpoption_replay.py查看脚本内容**
-
-Alibaba Cloud Linux
 
 ```java
 from scapy.all import * import time import argparse
@@ -2780,7 +2995,7 @@ from scapy.all import * import time import argparse
 parser = argparse.ArgumentParser(description='Check if the server replays with the same TCP option.') parser.add_argument('-i', '--ip', required=True, help='Target IP address') parser.add_argument('-p', '--port', required=True, type=int, help='Target port number') parser.add_argument('-v', '--verbose', action='store_true', help='Print verbose output'
 ```
 
-)
+`)`
 
 ```python
 args = parser.parse_args()
@@ -2817,7 +3032,7 @@ seq=last_ack_pkt[TCP].ack, ack=last_ack_pkt[TCP].seq + 1)
     send(ip/lastack, verbose=verbose)
 ```
 
-Alibaba Cloud Linux _
+`_`
 1. 安装Python 3和scapy库。
 
 ```bash
@@ -2830,10 +3045,10 @@ yum install python3 -y python3 -m pip install scapy
 python3 check_tcpoption_replay.py -i <服务端IP> -p <服务端port>
 ```
 
-| 如果服务端存在重放问题则输出 | The server has replayed the TCP option |  |
+| 如果服务端存在重放问题则输出 | The server has replayed the TCP option |   |
 |---|---|---|
-| server did not replay the TCP option |  |  |
-|  |  | 。 |
+| server did not replay the TCP option |   |   |
+|   |   | 。 |
 
 **解决方案**
 
@@ -2843,7 +3058,7 @@ python3 check_tcpoption_replay.py -i <服务端IP> -p <服务端port>
 
 **问题描述**
 
-根据共享内存通信（SMC）使用说明通过 `smc_run ./foo` 在应用程序维度启用SMC后，使用 `smcr` l 观察发现没有成功创建的link group，使用 `smcss -a` 也看不到连接或是看到一侧连接出现回退。
+根据共享内存通信（SMC）使用说明通过 `smc_run ./foo` 在应用程序维度启用SMC后，使用 `smcr` `l` 观察发现没有成功创建的link group，使用 `smcss -a` 也看不到连接或是看到一侧连接出现回退。
 
 **问题原因**
 
@@ -2875,8 +3090,6 @@ smc: smc: load SMC module with reserve_mode NET: Registered protocol family 43 s
 
 **启用SMC后回退无法使用RDMA加速**
 
-Alibaba Cloud Linux
-
 **问题描述**
 
 启用SMC并替换应用的TCP连接，此时运行 `smcss -a` 命令可以看到建立的连接已经自动回退 （fallback）到TCP。
@@ -2905,23 +3118,19 @@ State UID Inode Local Address Peer Address Intf Mode ACTIVE 00000 0156721 192.16
 | 0x02020000 | 通过LLC创建link超时。 | 预留字段，当前未使用。 |
 | 0x03000000 | 配置错误，无法获取正确的IP地址。 | 原因：建立连接时，构建proposal时获取CLC socket对应的IP 地址失败。 解决方案：检查当前CLC连接（基于TCP协议）和所对应的设备是否正常后重试。 |
 
-Alibaba Cloud Linux
-
 | 0x03010000 | 对端不支持或未使用SMC。 | 原因：如果支持SMC协议，将会在建立连接时的CLC连接（基于 TCP协议）的SYN（客户端）或SYNACK（服务端）报文头中携带SMC TCP option标志位。 解决方案：检测本地或者对端是否已将应用的协议栈替换为 SMC，通过 smcss命令（smc-tools包提供）可查看当前SMC 的连接状态。如果没有找到应用的连接和端口，请重新替换为 SMC并创建新的连接。 |
 |---|---|---|
 | 0x03020000 | 不支持IPSec。 | 原因：替换的连接使用IPSec，但是当前SMC并不支持IPSec。 解决方案：不使用IPSec。 |
 | 0x03030000 | 未找到可用的SMC- D或SMC-R设备。 | 原因1：SMC建立连接使用时，未找到可用的SMC- R（RDMA）设备。 解决方案1：执行 smcr d 命令，检查当前是否有SMC- R（RDMA）设备。如果没有返回任何设备，在使用阿里云 eRDMA的场景下，请检查ECS控制台是否正确配置ERI设备， 并确保操作系统中正确安装ERI的驱动。 原因2：在多以太网卡环境中，连接所用的以太网卡不具备ERI 功能，无法找到eRDMA设备。 解决方案2：通过 ibv devinfo 命令查看eRDMA设备的 _ node guid，再通过 ip addr 命令查看以太网卡的MAC _ 地址，对比两者确认连接所用的以太网设备具备ERI eRDMA 功能。 原因3：如果启用RDMA设备的独占模式，SMC只会在当前创建socket的net namespace中寻找RDMA设备。 解决方案3：执行 rdma system 命令，如果返回的结果中包含 netns exclusive 则说明为独占模式。如果需要在某个netns中使用该RDMA设备，请执行命令 rdma dev set <RDMA 设备名> netns <NETNS 名> ，将RDMA设备移至该netns。如果RDMA设备为RoCE和iWARP，请将所需的以太网设备也一并移动到该netns。 原因4：使用eRDMA设备时，客户端尝试将AF INET6连接替 _ 换为SMC连接。 解决方案4：eRDMA设备只能配合SMCv2协议使用，而 SMCv2协议目前不支持替换AF INET6协议族连接，因此回退 _ 到TCP。此时请将应用程序切换为AF INET协议族。 _ |
 | 0x03030001 | 未找到可用的SMC- D设备。 | 当前云场景暂未提供可用的SMC-D设备，如出现该错误请联系阿里云技术支持。 |
 
-|  | rdma system |
+|   | rdma system |
 |---|---|
-| netns exclusive |  |
+| netns exclusive |   |
 
-|  |  | rdma dev |
+|   |   | rdma dev |
 |---|---|---|
-|  | set <RDMA 设备名> netns <NETNS 名> |  |
-
-Alibaba Cloud Linux
+|   | set <RDMA 设备名> netns <NETNS 名> |   |
 
 | 0x03030002 | 未找到可用的SMC- R设备。 | 原因1：SMC创建连接过程中，已经选中的RDMA设备失效。 解决方案1：执行 smcr d 命令，检查当前系统中是否有可用的 SMC-R（RDMA）设备，如果所需的RDMA设备为阿里云eRDMA设备，请确保该ERI设备已经在ECS控制台中添加并正确安装和配置ERI驱动。 原因2：在多以太网卡环境中，连接所用的以太网卡不具备ERI 功能，无法找到eRDMA设备。 解决方案2：通过 ibv devinfo 命令查看eRDMA设备的 _ node guid，再通过 ip addr 命令查看以太网卡的MAC _ 地址，对比两者确认连接所用的以太网设备具备ERI eRDMA 功能。 原因3：如果启用RDMA设备的独占模式，SMC只会在当前创建socket的net namespace中寻找RDMA设备。 解决方案3：执行 rdma system 命令，如果返回的结果中包含 netns exclusive 则说明为独占模式。如果需要在某个netns中使用该RDMA设备，请执行命令 rdma dev set <RDMA 设备名> netns <NETNS 名> ，将RDMA设备移至该netns。如果RDMA设备为RoCE和iWARP，请将所需的以太网设备也一并移动到该netns。 |
 |---|---|---|
@@ -2932,18 +3141,16 @@ Alibaba Cloud Linux
 | 0x03030007 | 未找到可用的SMC- D v2设备。 | 当前云场景暂未提供可用的SMC-D设备，如出现该错误请联系阿里云技术支持。 |
 | 0x03030008 | 对端缺少UEID。 | 原因：启用了SMC v2协议，但没有设置UEID。 解决方案：在两侧通过smc-tools设置相同的UEID，指令为 smcr ueid {show \| add \| del} 。 |
 
-|  | rdma system |
+|   | rdma system |
 |---|---|
-| netns exclusive |  |
+| netns exclusive |   |
 
-|  |  | rdma dev |
+|   |   | rdma dev |
 |---|---|---|
-|  | set <RDMA 设备名> netns <NETNS 名> |  |
+|   | set <RDMA 设备名> netns <NETNS 名> |   |
 
-| 文档版本：20260729 |  | 9 |
+| 文档版本：20260729 |   | 9 |
 |---|---|---|
-
-Alibaba Cloud Linux
 
 | 0x03030009 | 本地和对端协商 SMC版本失败。 | 原因：两侧协商SMC版本的结果在CLC握手过程中发生变化。 解决方案：确认两端OS发行版一致。 |
 |---|---|---|
@@ -2956,16 +3163,14 @@ Alibaba Cloud Linux
 | 0x03070000 | 本地和对端的IP前缀/子网不匹配。 | 原因：所用RDMA设备是RoCEv1设备时，SMC自动使用SMCv1 协议。SMCv1仅支持子网内通信。当两侧不在同一子网内时，将出现该回退。 解决方案：若所用RDMA设备为RoCEv1，则确保通信两侧处在同一子网内；若所用RDMA设备为阿里云eRDMA，则SMC默认使用SMCv2协议，不会有子网限制与相关回退。 |
 | 0x03080000 | 获取设备VLAN ID 失败。 | 原因：创建连接时，SMC会尝试获取socket对应设备的VLAN ID。 解决方案：检查该五元组创建的TCP连接和对应的以太网设备是否正常。 |
 
-|  | r |
+|   | r |
 |---|---|
 
-|  | 010.ali5000.pro.al8 |  |  |
+|   | 010.ali5000.pro.al8 |   |   |
 |---|---|---|---|
 
-|  |  | > 文档版本：2026072 |
+|   |   | > 文档版本：2026072 |
 |---|---|---|
-
-Alibaba Cloud Linux
 
 | 0x03090000 | ISM设备注册VLAN ID失败。 | 当前云场景暂未提供可用的SMC-D设备，如出现该错误请联系阿里云技术支持。 |
 |---|---|---|
@@ -2978,20 +3183,18 @@ Alibaba Cloud Linux
 | 0x04000000 | 服务端和客户端复用LGR错误。 | 原因：建连过程中，服务端复用LGR，但是客户端想要创建 LGR，二者行为错误。 解决方案：执行 smcr d 命令，检查ECS的RDMA卡是否正常。如果所需的RDMA设备为阿里云eRDMA设备，请确保该ERI 设备已经在ECS控制台中添加并正确安装和配置ERI驱动。 |
 | 0x05000000 | 握手过程中对端拒绝。 | 原因：建立连接过程中，对端回复的CLC消息拒绝建立RDMA连接。 解决方案：执行 smcss 命令，根据五元组信息找到对应的连接，并找到回退原因，包含本地和对端回退原因，根据对端回退编号确定具体原因。 |
 
-| 文档版本：20260729 |  | 9 |
+| 文档版本：20260729 |   | 9 |
 |---|---|---|
 
-Alibaba Cloud Linux
-
-| 0x09990000 |  | RDMA相关资源创建错误。 | 原因：RDMA资源创建、初始化失败。 解决方案：通过RDMA监控工具查看资源申请失败统计。若所用设备为阿里云eRDMA设备，可以使用 eadm stat 查看错误统计。 |  |  |  |  |  |
+| 0x09990000 |   | RDMA相关资源创建错误。 | 原因：RDMA资源创建、初始化失败。 解决方案：通过RDMA监控工具查看资源申请失败统计。若所用设备为阿里云eRDMA设备，可以使用 eadm stat 查看错误统计。 |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-| 0x09990001 |  | RDMA rtoken增加失败。 | SMC协议栈错误，如出现该错误请联系阿里云技术支持。 |  |  |  |  |  |
-| 0x09990002 |  | 初始化RDMA QP 资源失败。 | 原因：建立连接时，如果需要创建新的link（对应为一个RDMA QP）资源，SMC会依次调用IB verbs接口初始化并修改RDMA QP，而在此过程中发生异常。 解决方案：执行 smcr d 命令，检查当前是否有SMC- R（RDMA）设备。如果使用阿里云eRDMA，请检查ECS控制台是否正确配置ERI设备，并确保操作系统中正确安装ERI的驱动。 |  |  |  |  |  |
-| 0x09990003 |  | RDMA内存注册 （MR）失败。 | 原因：使用RDMA通信时，需要注册内存区域用以RDMA网卡访问和写入数据，如果使用的MR数量或者大小超过了RDMA设备的规格，则会报错。 解决方案：执行 smcr d 命令，找到SMC所使用的RDMA设备名。再执行 ibv devinfo -d <RDMA 设备名> -v \| _ grep max mr ，其中 max mr 为RDMA设备支持的最多 _ _ MR数量， max mr size 为 RDMA设备支持的最大MR大 _ _ 小；通常情况下为MR的数量达到瓶颈，此时请减少SMC的连接数量。 |  |  |  |  |  |
-|  |  |  |  |  | ibv devinfo -d <RDMA 设备名> -v \| _ |  |  |  |
-|  |  |  | grep max mr _ |  |  |  |  |  |
-|  |  |  |  |  |  | ，其中 | max mr _ |  |
-| 0x09990004 |  | SMC流控所需的 credit初始化失败。 | 原因：RDMA网卡或者链路发生故障，导致credit通告消息（通过RDMA链路通信）发送失败。 解决方案：确认RDMA网卡的状态是否正常。 |  |  |  |  |  |
+| 0x09990001 |   | RDMA rtoken增加失败。 | SMC协议栈错误，如出现该错误请联系阿里云技术支持。 |   |   |   |   |   |
+| 0x09990002 |   | 初始化RDMA QP 资源失败。 | 原因：建立连接时，如果需要创建新的link（对应为一个RDMA QP）资源，SMC会依次调用IB verbs接口初始化并修改RDMA QP，而在此过程中发生异常。 解决方案：执行 smcr d 命令，检查当前是否有SMC- R（RDMA）设备。如果使用阿里云eRDMA，请检查ECS控制台是否正确配置ERI设备，并确保操作系统中正确安装ERI的驱动。 |   |   |   |   |   |
+| 0x09990003 |   | RDMA内存注册 （MR）失败。 | 原因：使用RDMA通信时，需要注册内存区域用以RDMA网卡访问和写入数据，如果使用的MR数量或者大小超过了RDMA设备的规格，则会报错。 解决方案：执行 smcr d 命令，找到SMC所使用的RDMA设备名。再执行 ibv devinfo -d <RDMA 设备名> -v \| _ grep max mr ，其中 max mr 为RDMA设备支持的最多 _ _ MR数量， max mr size 为 RDMA设备支持的最大MR大 _ _ 小；通常情况下为MR的数量达到瓶颈，此时请减少SMC的连接数量。 |   |   |   |   |   |
+|   |   |   |   |   | ibv devinfo -d <RDMA 设备名> -v \| _ |   |   |   |
+|   |   |   | grep max mr _ |   |   |   |   |   |
+|   |   |   |   |   |   | ，其中 | max mr _ |   |
+| 0x09990004 |   | SMC流控所需的 credit初始化失败。 | 原因：RDMA网卡或者链路发生故障，导致credit通告消息（通过RDMA链路通信）发送失败。 解决方案：确认RDMA网卡的状态是否正常。 |   |   |   |   |   |
 
 **启用SMC后常见网络运维工具的数据与预期不符**
 
@@ -3015,7 +3218,7 @@ Alibaba Cloud Linux
 
 **问题原因**
 
-Alibaba Cloud Linux 这类实例中安装了Mellanox厂商版本OFED驱动，默认加载的是OFED中的SMC模块，不具备实际功能。且由于安装Mellanox OFED驱动后RDMA相关函数的符号发生变化，加载内核自带的SMC模块会出现 `Unknow symbol` 错误而无法加载成功。
+这类实例中安装了Mellanox厂商版本OFED驱动，默认加载的是OFED中的SMC模块，不具备实际功能。且由于安装Mellanox OFED驱动后RDMA相关函数的符号发生变化，加载内核自带的SMC模块会出现 `Unknow symbol` 错误而无法加载成功。
 
 **解决方案**
 
@@ -3050,8 +3253,6 @@ Alibaba Cloud Linux 这类实例中安装了Mellanox厂商版本OFED驱动，默
 | SO SNDBUF _ | Y |
 | SO RCVBUF _ | Y |
 
-Alibaba Cloud Linux
-
 | SO SNDBUFFORCE _ | Y |
 |---|---|
 | SO RCVBUFFORCE _ | Y |
@@ -3072,8 +3273,6 @@ Alibaba Cloud Linux
 | SO SECURITY ENCRYPTION TRANSPORT _ _ _ | N |
 | SO SECURITY ENCRYPTION NETWORK _ _ _ | N |
 | SO BINDTODEVICE _ | N |
-
-Alibaba Cloud Linux
 
 | SO ATTACH FILTER _ _ | M |
 |---|---|
@@ -3096,8 +3295,6 @@ Alibaba Cloud Linux
 | SO BPF EXTENSIONS _ _ | Y |
 | SO INCOMING CPU _ _ | M |
 
-Alibaba Cloud Linux
-
 | SO ATTACH BPF _ _ | M |
 |---|---|
 | SO ATTACH REUSEPORT CBPF _ _ _ | M |
@@ -3118,8 +3315,6 @@ Alibaba Cloud Linux
 | SO TIMESTAMPING NEW _ _ | M |
 | SO RCVTIMEO NEW _ _ | Y |
 | SO SNDTIMEO NEW _ _ | Y |
-
-Alibaba Cloud Linux
 
 | SO DETACH REUSEPORT BPF _ _ _ | N |
 |---|---|
@@ -3145,8 +3340,6 @@ Alibaba Cloud Linux
 | TCP THIN LINEAR TIMEOUTS _ _ _ | M |
 | TCP THIN DUPACK _ _ | M |
 
-Alibaba Cloud Linux
-
 | TCP USER TIMEOUT _ _ | M |
 |---|---|
 | TCP REPAIR _ | M |
@@ -3168,12 +3361,10 @@ Alibaba Cloud Linux
 | TCP ZEROCOPY RECEIVE _ _ | N |
 | TCP CM INQ/TCP INQ _ _ _ | M |
 
-Alibaba Cloud Linux
-
 | TCP TX DELAY _ _ | M |
 |---|---|
 
-### 存储管理
+### 1.6 存储管理
 
 阿里云服务器操作系统 V3 的默认文件系统类型为 ext4，此外还支持多种文件系统类型。用户可以根据实际需要，选择不同类型的文件系统，格式化分区后进行使用。常见文件系统分类如下表所示：
 
@@ -3185,7 +3376,7 @@ Alibaba Cloud Linux
 
 阿里云服务器操作系统 V3 内提供了多种工具，用户可以通过这些工具查看和管理内核存储。
 
-#### 基础命令
+#### 1.6.1 基础命令
 
 和所有 Unix 类的操作系统相同，阿里云服务器操作系统 V3 包含了许多文件系统管理命令，Linux 中文件系统管理的命令如下：
 
@@ -3198,8 +3389,6 @@ Alibaba Cloud Linux
 | cp | 复制文件或目录。 |
 | mv | 移动文件或目录。 |
 | rm | 删除文件或目录。 |
-
-Alibaba Cloud Linux
 
 | touch | 创建或更新一个空文件。 |
 |---|---|
@@ -3222,17 +3411,15 @@ Alibaba Cloud Linux
 | fsck | 检查和修复文件系统错误。 |
 | lsblk | 显示块设备。 |
 
-Alibaba Cloud Linux 在命令行界面，可以通过 `man` 命令，查看各命令的介绍和使用方法。
+在命令行界面，可以通过 `man` 命令，查看各命令的介绍和使用方法。
 
-#### 分区管理
+#### 1.6.2 分区管理
 
 阿里云服务器操作系统 V3 内包含多种分区工具，如 parted、fdisk 等，本节以 parted 为例，介绍分区管理操作。获取更多资源，可以查看 parted 手册。
 
-**说明**
+> **说明：** man parted 获取 parted 手册页。
 
-man parted 获取 parted 手册页。
-
-##### 查看磁盘分区
+##### 1.6.2.1 查看磁盘分区
 
 **操作步骤**
 
@@ -3244,9 +3431,9 @@ man parted 获取 parted 手册页。
 Welcome to GNU Parted! Type 'help' to view a list of commands. (parted) print Model: ATA MTFDDAV240TCB-1A (scsi) Disk /dev/sda: 240GB Sector size (logical/physical): 512B/4096B Partition Table: gpt Disk Flags: Number Start End Size File system Name Flags 1 1049kB 5243kB 4194kB 5mvlh bios_grub 2 5243kB 1079MB 1074MB ext4 fDRIy boot 3 1079MB 54.8GB 53.7GB ext4 TKq3y 4 54.8GB 56.9GB 2147MB linux-swap(v1) DZBP5 5 56.9GB 240GB 183GB nnJhv
 ```
 
-如果需要切换所操作的磁盘设备，使用 select /dev/your-device 命令即可。 打印命令的输出，其详细信息为下： Model：ATA MTFDDAV240TCB-1A(scsi) 磁盘类型、制造商、型号和接口。 Disk /dev/sda:256GB 磁盘设备的设备路径和存储容量。 Partition Table:GPT 分区表类型。 Number 分区号。例如，1 号分区对应 /dev/sda1。 Start、End 和 Size 分区开始和末尾在设备中的位置。Size计算出该区间的总大小。 File system Alibaba Cloud Linux 文件系统类型。如果字段未显示，说明文件系统类型未知。parted工具无法识别加密设备上的文件系统。 Flags 列出为分区设置的标记，如boot、root、swap 等。
+如果需要切换所操作的磁盘设备，使用 select /dev/your-device 命令即可。 打印命令的输出，其详细信息为下： Model：ATA MTFDDAV240TCB-1A(scsi) 磁盘类型、制造商、型号和接口。 Disk /dev/sda:256GB 磁盘设备的设备路径和存储容量。 Partition Table:GPT 分区表类型。 Number 分区号。例如，1 号分区对应 /dev/sda1。 Start、End 和 Size 分区开始和末尾在设备中的位置。Size计算出该区间的总大小。 File system 文件系统类型。如果字段未显示，说明文件系统类型未知。parted工具无法识别加密设备上的文件系统。 Flags 列出为分区设置的标记，如boot、root、swap 等。
 
-##### 创建磁盘分区
+##### 1.6.2.2 创建磁盘分区
 
 在 parted 中，使用 print 命令可以确定某设备是否已存在分区表。如果设备已包含分区表，则创建分区表操作会覆盖原有分区表。
 
@@ -3258,9 +3445,8 @@ Welcome to GNU Parted! Type 'help' to view a list of commands. (parted) print Mo
 (parted) mklabel <part-type>
 ```
 
-**说明**
+> **说明：** 使用需要的分区表类型创建分区表，将需要的类型替换 part-type 字段，msdos 适用于 MBR，gpt 适用于 GPT。
 
-使用需要的分区表类型创建分区表，将需要的类型替换 part-type 字段，msdos 适用于 MBR，gpt 适用于 GPT。
 2. 创建完成后，通过 `print` 命令可以确认创建成功。在创建新分区前，需要确认是否有剩余空间。
 3. 创建新分区，通过 mkpart 命令实现，命令格式如下：
 
@@ -3282,7 +3468,7 @@ udevadm settle
 cat /proc/partitions
 ```
 
-##### 删除磁盘分区
+##### 1.6.2.3 删除磁盘分区
 
 **操作步骤**
 
@@ -3293,8 +3479,7 @@ cat /proc/partitions
 parted block-device
 ```
 
-#例如 `/dev/sda`
-Alibaba Cloud Linux
+`#`例如 `/dev/sda`
 2. 查看分区表确定要删除的分区序号。
 
 ```
@@ -3307,7 +3492,7 @@ Alibaba Cloud Linux
 (parted) rm NUMBER
 ```
 
-#例如 `rm 3`
+`#`例如 `rm 3`
 4. 再次查看分区表验证是否已经从分区表中删除了分区。
 
 ```
@@ -3323,7 +3508,7 @@ Alibaba Cloud Linux
 6. 如果分区依然存在，需要用文本编辑器将/etc/fstab中的目标表项删除，随后重新注册新的配置。
 `vim /etc/fstab #`删除分区对应的表项后退出 `systemctl daemon-reloaded #`重新生成挂载单元
 
-##### 修改分区大小
+##### 1.6.2.4 修改分区大小
 
 分区的大小可以重新划分，用户可以通过parted 扩展分区，有效利用未使用的磁盘空间；该功能也可以缩小分区。注意： 如果缩小分区，需要提前备份数据。xfs文件系统格式下的分区不支持分区缩小。 如果分区大于 2TB，需要使用 GPT 分区表格式化磁盘，msdos 不满足需求。 若缩小分区，需要首先缩小文件系统，使其不大于重新定义的分区大小。 操作过程如下：
 1. 启动 parted，进入命令行。
@@ -3332,7 +3517,7 @@ Alibaba Cloud Linux
 parted block-device
 ```
 
-#例如 `/dev/sda`
+`#`例如 `/dev/sda`
 2. 查看分区表确定待修改分区的序号和新的起始/结束位置。
 
 ```
@@ -3351,11 +3536,11 @@ parted block-device
 cat /proc/partitions
 ```
 
-#### 文件系统管理
+#### 1.6.3 文件系统管理
 
-ext4 是阿里云服务器操作系统 V3 内核中的默认文件系统，其特性包含： 使用扩展（extent）：ext4 使用扩展（extent）描述数据块，在使用大型文件时提高性能，减少大型文件的元数据开销。 Alibaba Cloud Linux ext4 标记未分配的存储块和 inode 表部分，这允许在文件系统检查期间跳过这些部分，便于快速进行文件系统检查。 元数据校验和ext4的分配特性： 持久性预分配延迟分配多块分配条带感知分配扩展属性（xattr）：允许系统为每个文件关联多个额外属性。 限额日志：避免在崩溃后进行冗长的一致性检查。 本节以 ext4 为例，介绍文件系统管理操作，拥有管理员权限的用户可以创建、挂载、备份、调整大小、恢复 ext4 文件系统。其它类型的文件系统的操作过程和 ext4 类似。
+ext4 是阿里云服务器操作系统 V3 内核中的默认文件系统，其特性包含： 使用扩展（extent）：ext4 使用扩展（extent）描述数据块，在使用大型文件时提高性能，减少大型文件的元数据开销。 ext4 标记未分配的存储块和 inode 表部分，这允许在文件系统检查期间跳过这些部分，便于快速进行文件系统检查。 元数据校验和ext4的分配特性： 持久性预分配延迟分配多块分配条带感知分配扩展属性（xattr）：允许系统为每个文件关联多个额外属性。 限额日志：避免在崩溃后进行冗长的一致性检查。 本节以 ext4 为例，介绍文件系统管理操作，拥有管理员权限的用户可以创建、挂载、备份、调整大小、恢复 ext4 文件系统。其它类型的文件系统的操作过程和 ext4 类似。
 
-##### 创建文件系统
+##### 1.6.3.1 创建文件系统
 
 1. 在 Linux 中，可以使用 mkfs 命令来创建文件系统。mkfs 命令可以创建多种类型的文件系统，包括
 ext4、XFS、NTFS 等。以创建 ext4 文件系统为例,可以使用以下命令创建一个新的ext4 文件系统：
@@ -3364,9 +3549,8 @@ ext4、XFS、NTFS 等。以创建 ext4 文件系统为例,可以使用以下命�
 mkfs.ext4 <device-name>
 ```
 
-**说明**
+> **说明：** 用实际的设备名替换上述词条，例如：mkfs.ext4 /dev/sdb2。
 
-用实际的设备名替换上述词条，例如：mkfs.ext4 /dev/sdb2。
 2. 查看创建好的文件系统，可使用如下命令。
 
 ```
@@ -3379,9 +3563,9 @@ blkid
 /dev/sdb2: LABEL="/" UUID="8da0b1fa-27ad-437b-878d-ef9a745e9e96" TYPE="ext4"\ PARTLABEL="TKq3y" PARTUUID="595cfb7c-9cc5-461b-aa82-691dffaf9520"
 ```
 
-##### 挂载文件系统
+##### 1.6.3.2 挂载文件系统
 
-挂载文件系统，是将文件系统连接到 Linux 文件树的过程，使得文件系统中的内容可以被访问。在 Linux
+挂载文件系统，是将文件系统连接到 Linux 文件树的过程，使得文件系统中的内容可以被访问。在 Linux 中，可以使用 mount 命令来挂载文件系统。
 1. 首先，需要一个空文件夹来挂载文件系统。
 
 ```
@@ -3397,7 +3581,6 @@ mount <dev-name> <dir-name>
 
 将设备挂载到指定文件夹下，例如：mount /dev/sdb /mnt。 如果需要永久挂载文件系统，可以将词条写入/etc/fstab中，该配置文件控制了文件系统的永久挂载点。
 3. 查看挂载后的文件系统，可以使用命令。
-Alibaba Cloud Linux
 
 ```
 df -h
@@ -3422,12 +3605,11 @@ df -h
 | defaults | 使用默认挂载选项。 |
 | nouser | 禁止普通用户挂载文件系统。 |
 
-##### 卸载文件系统
+##### 1.6.3.3 卸载文件系统
 
 **操作步骤**
 
 1. 在使用完文件系统后，可以使用 `umount` 命令来卸载文件系统。
-Alibaba Cloud Linux
 
 ```
 umount <dev-name>
@@ -3443,15 +3625,15 @@ fuser --mount <dir-name> /mnt: xxx xxxx xxxxx
 
 结束这三个进程后，再次尝试卸载
 
-##### 修改系统大小
+##### 1.6.3.4 修改系统大小
 
-可以在管理员权限下使用resize2fs 工具修改文件系统的大小。工具默认以块大小为单位进行读取，使用特定后缀单位（如 K、M、G、T 等）可以替换度量单位。在修改文件系统大小前，需要确保已经创建过文件系统。 不同类型的文件系统有不同的操作方法和注意事项。例如：ext4文件系统可以在线缩小和扩展，但是 xfs 文件系统只能在线扩展，不能在线缩小。 对于 ext4 文件系统，在管理员权限下，修改文件系统大小的操作为： 可以使用命令 e2fsck -f <dev-name> 校验文件系统成功卸载且无故障。
+可以在管理员权限下使用resize2fs 工具修改文件系统的大小。工具默认以块大小为单位进行读取，使用特定后缀单位（如 K、M、G、T 等）可以替换度量单位。在修改文件系统大小前，需要确保已经创建过文件系统。 不同类型的文件系统有不同的操作方法和注意事项。例如：ext4文件系统可以在线缩小和扩展，但是 xfs 文件系统只能在线扩展，不能在线缩小。 对于 ext4 文件系统，在管理员权限下，修改文件系统大小的操作为： `umount <dev-name> #`卸载文件系统可以使用命令 e2fsck -f <dev-name> 校验文件系统成功卸载且无故障。
 
 ```
 resize2fs <dev-name> <size>
 ```
 
-##### 文件系统管理工具对比
+##### 1.6.3.5 文件系统管理工具对比
 
 不同文件系统，其文件系统管理的工具可能有所区别，本节以ext4 和xfs 为例，比较了两种文件系统的管理工具，其区别见下表：
 
@@ -3464,17 +3646,15 @@ resize2fs <dev-name> <size>
 | 调整文件系统 | tune2fs | xfs admin _ |
 | 备份与恢复 | dump 和 restore | xfsdump 和 xfsrestore |
 
-Alibaba Cloud Linux
-
 | 限额管理 | quota | xfs quota _ |
 |---|---|---|
 | 映射管理 | filefrag | xfs bmap _ |
 
-#### 逻辑卷管理
+#### 1.6.4 逻辑卷管理
 
 逻辑卷管理工具（Logical Volume Manager，LVM）是一种对存储设备进行管理的工具。它允许管理员将多个物理磁盘分配给一个逻辑卷，并将其视为单个逻辑磁盘。LVM 还允许管理员在运行时增加或减少存储容量，而无需停机。逻辑卷介于物理卷和文件系统之间，通过逻辑卷管理，文件系统不受限于硬盘大小， 可以分布在多个硬盘上。总体来说，LVM 是一个非常方便的工具，可以提高存储管理的效率和灵活性。但需要注意的是，在使用 LVM 时需要仔细考虑分配和管理存储，以避免数据丢失或其他问题。 LVM 工具集已经预装在阿里云服务器操作系统 V3 中，通过 rpm -qa | grep lvm2 命令可以查看安装情况，如果不存在，可以通过包管理软件安装LVM 工具。
 
-##### LVM管理物理卷
+##### 1.6.4.1 LVM管理物理卷
 
 物理卷（Physical Volume）是 LVM 的基本存储逻辑块，在通过 LVM 创建文件系统前，需要预留磁盘空间，使用 fdisk 或 parted 等工具进行分区，也可以将整个磁盘作为 LVM 的物理卷。 通过 LVM 提供的命令，可以创建和查看物理卷：
 
@@ -3490,7 +3670,7 @@ pvcreate [option] <dev-name>
 pvremove [option] <dev-name> #删除物理卷
 ```
 
-##### LVM管理卷组
+##### 1.6.4.2 LVM管理卷组
 
 在准备好的物理卷上创建卷组（volume group）。卷组是一个逻辑概念，用于管理多个物理卷，并为逻辑卷提供统一的空间管理。可以使用 `vgcreate` 命令来创建卷组：
 
@@ -3498,7 +3678,7 @@ pvremove [option] <dev-name> #删除物理卷
 vgcreate [option] <vg-name> <pv-name>
 ```
 
-如果要创建包含多个物理卷的卷组，需填写多个物理卷的名称，并用空格分开。 例如：vgcreatemyvg /dev/sda /dev/sdb 常用可选项包含： -p：该卷组中允许包含的最大物理卷数。 -s：卷组上的物理卷的 PE 大小。 Alibaba Cloud Linux --addtag ：为卷组添加别名。 示例：
+如果要创建包含多个物理卷的卷组，需填写多个物理卷的名称，并用空格分开。 例如：vgcreatemyvg /dev/sda /dev/sdb 常用可选项包含： -p：该卷组中允许包含的最大物理卷数。 -s：卷组上的物理卷的 PE 大小。 --addtag ：为卷组添加别名。 示例：
 
 ```
 vgdisplay [option] <vg-name> #查看卷组信息 vgchange [option] <vg-name> #修改卷组属性
@@ -3510,7 +3690,7 @@ vgdisplay [option] <vg-name> #查看卷组信息 vgchange [option] <vg-name> #�
 pvremove [option] <vg-name> #删除卷组
 ```
 
-##### LVM管理逻辑卷
+##### 1.6.4.3 LVM管理逻辑卷
 
 在创建好的卷组上创建逻辑卷（logical volume）。逻辑卷是用户可见的卷，用户可以在其上创建文件系统。可以使用 lvcreate 命令来创建逻辑卷：
 
@@ -3530,7 +3710,7 @@ lvcreate [option] <vg-name>
 lvremove [option] <lv-name> #删除逻辑卷
 ```
 
-##### LVM创建并管理文件系统
+##### 1.6.4.4 LVM创建并管理文件系统
 
 逻辑卷创建完成后，需要先格式化为需要的文件系统才能使用，例如： `mkfs.ext4 /dev/myvg/mylv #`格式化为 `ext4` 文件系统最后，将格式化好的文件系统挂载到系统中。可以手动在/etc/fstab中添加挂载点并重启系统，也可以使用 mount 命令临时挂载。例如：
 
@@ -3538,24 +3718,23 @@ lvremove [option] <lv-name> #删除逻辑卷
 mount /dev/myvg/mylv /mnt/mylv
 ```
 
-**说明**
+> **说明：** /mnt/mylv 是挂载点路径，/dev/myvg/mylv 是逻辑卷设备地址。
 
-/mnt/mylv 是挂载点路径，/dev/myvg/mylv 是逻辑卷设备地址。 完成以上步骤后，就可以在创建的逻辑卷上使用文件系统。 Alibaba Cloud Linux
+完成以上步骤后，就可以在创建的逻辑卷上使用文件系统。
 
-#### 存储自研特性
+#### 1.6.5 存储自研特性
 
-##### blk-iocost权重控制
+##### 1.6.5.1 blk-iocost权重控制
 
 blk-iocost 是对内核 cgroup IO 子系统（blkcg）基于权重的磁盘限速功能的改进。它是一种 IO 控制器， 可以根据应用程序或进程的优先级为块设备上的 IO 操作分配带宽，并且可以通过设置权重值来限制特定应用程序或进程对块设备的 IO 带宽使用，以便帮助您更好地实现对磁盘 IO 资源的控制和管理。在阿里云服务器操作系统 V3 中，该功能同时支持 cgroup v1 和 v2 接口。
 
-**说明**
-
-您可以通过 stat -fc %T /sys/fs/cgroup 命令查看当前系统使用的是 cgroup v1 接口还是 cgroup v2 接口： 回显为 `tmpfs` ：表示 cgroup v1 接口。 回显为 `cgroup2fs` ：表示 cgroup v2 接口。
+> **说明：** 您可以通过 stat -fc %T /sys/fs/cgroup 命令查看当前系统使用的是 cgroup v1 接口还是 cgroup v2 接口：
+> 回显为 `tmpfs` ：表示 cgroup v1 接口。
+> 回显为 `cgroup2fs` ：表示 cgroup v2 接口。
 
 **接口说明**
 
-cost.qos 可读可写接口，该接口用于开启或关闭 blk-iocost 功能以及基于延迟（latency）权重限制 IO 服务质量 （QoS）的速率。只存在于 blkcg 根组，且在不同 cgroup 版本中完整名称不同： cgroup v1：接口文件完整名称为 blkio.cost.qos。 cgroup v2：接口文件完整名称为 io.cost.qos。 每行配置以设备的 major 号和 minor 号开头，格式为 `MAJ:MIN` （可通过 lsblk | grep <云盘名称
-> 命令查询设备号），后面衔接其他配置项。其他配置项说明如下：
+cost.qos 可读可写接口，该接口用于开启或关闭 blk-iocost 功能以及基于延迟（latency）权重限制 IO 服务质量 （QoS）的速率。只存在于 blkcg 根组，且在不同 cgroup 版本中完整名称不同： cgroup v1：接口文件完整名称为 blkio.cost.qos。 cgroup v2：接口文件完整名称为 io.cost.qos。 每行配置以设备的 major 号和 minor 号开头，格式为 `MAJ:MIN` （可通过 lsblk | grep <云盘名称 `>` 命令查询设备号），后面衔接其他配置项。其他配置项说明如下：
 
 | 参数 | 详细说明 |
 |---|---|
@@ -3566,8 +3745,6 @@ cost.qos 可读可写接口，该接口用于开启或关闭 blk-iocost 功能�
 | wpct | ctrl=user 时配置，写延迟百分比，范围为[0，100]。 |
 | wlat | ctrl=user 时配置，写延迟，单位为 us。 |
 | min | ctrl=user 时配置，最小速率调整比例，[1,10000]。 |
-
-Alibaba Cloud Linux
 
 | max | ctrl=user 时配置，最大速率调整比例，[1,10000]。 |
 |---|---|
@@ -3586,7 +3763,7 @@ cost.weight 可读可写接口，该接口用于配置子组的权重，范围�
 | weight | 修改 blkcg 的默认权重。 |
 | MAJ:MIN weight | 修改某设备上的 blkcg 的权重。 |
 
-##### cgroup v1 writeback限流
+##### 1.6.5.2 cgroup v1 writeback限流
 
 在离线混部场景下，在线业务主要为 Buffered IO，其中大多数 IO 为写日志，IO 量比较小，但对延迟比较敏感。如果 IO 受阻，则应用容器的 load.d 会升高，从而导致 RT 抖动。因此，需要优先保障此类业务的 IO 可用性。本节介绍阿里云操作系统 V3 cgroup v1 writeback 限流功能的使用。
 
@@ -3594,9 +3771,9 @@ cost.weight 可读可写接口，该接口用于配置子组的权重，范围�
 
 cgroup v1 接口中的 cgroup writeback 功能默认开启。按照以下步骤用户可通过提供的开关接口关闭该功能：
 1. 通过命令 grubby 添加 cgwb_v1_off 字段关闭该功能。示例中内核版本为 5.10.134-
-010.ali5000.pro.al8.x86_64，您需要更换为指定修改的内核。 Alibaba Cloud Linux
+010.ali5000.pro.al8.x86_64，您需要更换为指定修改的内核。
 
-```bash
+```python
 sudo grubby --update-kernel="/boot/vmlinuz-5.10.134-010.ali5000.pro.al8.x86_64" --arg s="cgwb_v1_off"
 ```
 
@@ -3612,30 +3789,30 @@ cat /proc/cmdline | grep cgwb_v1_off
 确认功能未关闭的情况下，Buffered IO 限流功能可以通过以下操作实现。
 1. 创建 blkcg 和 memcg。
 
-```bash
+```python
 sudo mkdir /sys/fs/cgroup/blkio/blkcg1 sudo mkdir /sys/fs/cgroup/memory/memcg1
 ```
 
 2. 将当前 bash 加入到 blkcg/memcg 的 cgroup.procs 中，完成映射。
 
-```bash
+```python
 sudo bash -c "echo $$ > /sys/fs/cgroup/blkio/blkcg1/cgroup.procs" sudo bash -c "echo $$ > /sys/fs/cgroup/memory/memcg1/cgroup.procs"
 ```
 
 3. 获取磁盘 major 和 minor 号，使用 blkcg 下的 blkio.throttle.write_bps_device 接口对 Buffered
 I/O 进行限速（示例中磁盘 major:minor 号为 253:0，您需要根据实际磁盘名称和编号修改）。
 
-```bash
+```python
 sudo bash -c "echo 253:0 10485760 > /sys/fs/cgroup/blkio/blkcg1/blkio.throttle.write_bps_device"
 ```
 
-##### IO hang检测
+##### 1.6.5.3 IO hang检测
 
-| 当一个进程或线程执行一个 IO 操作时，它通常会等待操作完成，然后才能继续执行下一步操作。如果 IO |  |
+| 当一个进程或线程执行一个 IO 操作时，它通常会等待操作完成，然后才能继续执行下一步操作。如果 IO |   |
 |---|---|
-| 操作花费的时间很长，那么进程或线程可能会被挂起，这可能导致其他进程或线程也被阻塞。本文介绍阿里 |  |
-| 云操作系统 V3 IO hang 检测模块，针对文件系统层（filesystem）的页面和块层（block）的 bio 阻塞行 |  |
-| 为检测。用户态 IO hang 检测模块可以通过导出的内核接口检测到当前发生的 IO 阻塞行为的相关信息。 |  |
+| 操作花费的时间很长，那么进程或线程可能会被挂起，这可能导致其他进程或线程也被阻塞。本文介绍阿里 |   |
+| 云操作系统 V3 IO hang 检测模块，针对文件系统层（filesystem）的页面和块层（block）的 bio 阻塞行 |   |
+| 为检测。用户态 IO hang 检测模块可以通过导出的内核接口检测到当前发生的 IO 阻塞行为的相关信息。 |   |
 
 **接口说明**
 
@@ -3645,8 +3822,6 @@ sudo bash -c "echo 253:0 10485760 > /sys/fs/cgroup/blkio/blkcg1/blkio.throttle.w
 | /sys/block/<device>/hang | 该接口能够输出对应设备上超过 IO hang 阈值的读写 IO 个数。 |
 | /sys/kernel/debug/block/<device>/rq hang _ | 该接口能够获取 IO hang 的详细信息。 (需要先mount -t debugfs 确保已加载debugfs) |
 | /proc/<pid>/wait res _ | 该接口能够获取进程正在等待的资源信息。 |
-
-Alibaba Cloud Linux
 
 | /proc/<pid>/task/<tid>/wait res _ | 该接口能够获取线程正在等待的资源信息。 |
 |---|---|
@@ -3659,7 +3834,7 @@ Alibaba Cloud Linux
 | <pid> | 进程 ID。 |
 | <tid> | 线程 ID。 |
 
-##### virtiofs perfile DAX
+##### 1.6.5.4 virtiofs perfile DAX
 
 阿里云服务器操作系统 V3 实现了 virtiofs 下支持 per-file DAX的方案。在此之前，DAX 模式的开启或关闭是文件系统级别的，即每个 virtiofs 文件系统，要么全部开启 DAX 模式，要么全部关闭 DAX 模式。而有了 per-file DAX 之后，每个文件可以单独控制开启或关闭 DAX 模式，相当于是为 DAX 模式的开启或关闭提供更细粒度的控制。用户可以根据场景和需求，自行控制每个文件是否开启 DAX 模式。
 
@@ -3673,15 +3848,15 @@ Alibaba Cloud Linux
 | -o dax=always | 表示强制开启 DAX 特性。 |
 | -o dax=inode | 表示 per-file DAX 特性，即文件自身决定该文件是否开启 DAX 特性。 |
 
-### 任务管理
+### 1.7 任务管理
 
 本节主要说明阿里云服务器操作系统 V3 中几个基本的任务信息查看、任务管理使用手册以及阿里云服务器操作系统 V3 自研特性使用说明。
 
-#### 任务管理工具
+#### 1.7.1 任务管理工具
 
-##### top 工具
+##### 1.7.1.1 top 工具
 
-top 工具是一款常见的基于终端的系统性能监控工具，它可以实时显示系统中各进程的运行情况，包括 CPU、内存的占用情况。如下图所示： Alibaba Cloud Linux
+top 工具是一款常见的基于终端的系统性能监控工具，它可以实时显示系统中各进程的运行情况，包括 CPU、内存的占用情况。如下图所示：
 
 ```
 top
@@ -3689,7 +3864,7 @@ top
 
 解释说明： 第一行：显示系统的当前时间、运行时间和平均负载等信息。 第二行：显示总的进程数、运行中的进程数、睡眠中的进程数、停止的进程数、僵尸进程数等信息。 第三行：显示 CPU 的使用情况，包括用户空间使用率、内核空间使用率、空闲率等信息。 第四行：显示内存的使用情况，包括总的内存大小、已用内存大小、空闲内存大小、缓存大小等信息。 进程列表：显示系统中正在运行的进程列表，包括进程的PID、用户、CPU使用率、内存使用率、运行时间等信息。 界面中下半部分描述了具体的进程所对应的信息，包含进程的 PID 号（PID）、 user（USER）、优先级 （PR）、nice 值（NI）、占用的虚拟内存（VIRT）、占用的实际内存（RES）、共享内存（SHR）、 CPU 利用率（%CPU）、内存使用的百分比（%MEM）、运行时间（TIME+）和进程的命令行 （COMMAND）。
 
-##### ps 工具
+##### 1.7.1.2 ps 工具
 
 ps 是一个常见的命令工具，用于查看系统进程的信息。它可以显示在系统中正在运行的进程的详细信息， 包括进程的 PID、占用的CPU 和内存，以及进程的执行状态等。ps 命令的基本语法如下：
 
@@ -3705,8 +3880,6 @@ ps 命令中最常用的任务管理选项包括：
 | u | 以用户为主的格式来显示进程信息； |
 | x | 显示没有控制终端的进程； |
 
-Alibaba Cloud Linux
-
 | e | 显示所有进程，包括没有控制终端的进程； |
 |---|---|
 | f | 以树状结构显示进程信息； |
@@ -3721,9 +3894,9 @@ USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.3 0.0 171672 134
 
 解释说明： USER：进程的所有者 PID：进程的 ID 号 %CPU：进程占用 CPU 的使用比率 %MEM：进程占用内存的使用比率 VSZ：进程使用的虚拟内存大小（单位为 KB） RSS：进程占用的固定内存大小（单位为 KB） TTY：进程关联的终端设备（？表示无） STAT：进程状态（运行中、睡眠、僵尸等） START：进程启动的时间 TIME：进程占用 CPU 的运行时间 COMMAND：进程启动的命令行
 
-##### kill 工具
+##### 1.7.1.3 kill 工具
 
-kill 命令是一种用于终止（停止）进程的命令。当一个进程变得不稳定或者有问题时，可以使用 kill 命令停止它。其使用方式如下所示： Alibaba Cloud Linux
+kill 命令是一种用于终止（停止）进程的命令。当一个进程变得不稳定或者有问题时，可以使用 kill 命令停止它。其使用方式如下所示：
 
 ```
 kill --help
@@ -3752,17 +3925,17 @@ kill: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sig
 
 最常用的方式有： 终止进程：kill PID，PID 是进程的 ID，可通过 ps 命令查看； 给进程发送信号：kill -s SIGNAL PID，其中常见的信号包括： SIGHUP (1)：终端断开或进程被挂起； SIGINT (2)：用户输入中断信号； SIGQUIT (3)：用户输入退出信号； SIGKILL (9)：强制终止进程； SIGTERM (15)：默认情况下发送的终止信号，允许进程清理资源并退出； SIGSTOP (17)：暂停进程，可以使用 SIGCONT 信号恢复进程； 其他的信号可使用 kill -l 命令查看； 可以使用 killall COMMAND 命令终止进程名为 COMMAND 的所有进程。
 
-##### chrt 工具
+##### 1.7.1.4 chrt 工具
 
-| chrt 命令用于更改或显示进程或线程的调度策略，例如实时优先级和调度策略，以及可选的 CPU。这个命 |  |
+| chrt 命令用于更改或显示进程或线程的调度策略，例如实时优先级和调度策略，以及可选的 CPU。这个命 |   |
 |---|---|
-| 令通常只能由 root 用户或具有 CAP SYS NICE 特权的用户运行。其用法如下所示： |  |
+| 令通常只能由 root 用户或具有 CAP SYS NICE 特权的用户运行。其用法如下所示： |   |
 
 ```
 chrt --help
 ```
 
-返回示例如下： Alibaba Cloud Linux
+返回示例如下：
 
 ```
 Show or change the real-time scheduling attributes of a process. Set policy:
@@ -3800,8 +3973,6 @@ For more details see chrt(1).
 | -r | 表示使用 RR 调度策略。RR 即轮询的调度策略，它会按照时间片轮流为每个进程分配 CPU 时间。如果某个进程的时间片耗尽，那么它就会被挂起，等待下一次轮换。 |
 | -b | 表示使用 BATCH 调度策略。BATCH 即批处理的调度策略，它会按照提交顺序依次执行进程。与 FIFO 不同的是，BATCH 会将进程放在后台运行，因此不会影响其他前台进程的运行。 |
 
-Alibaba Cloud Linux
-
 | -d | 表示使用 DEADLINE 调度策略。DEADLINE 是一种基于期限的调度策略，可以为实时任务提供更高的实时性和响应能力，适用于对任务实时性要求非常高的场景。 |
 |---|---|
 | -o | 表示使用 OTHER 调度策略，即 CFS 调度策略，是系统中默认的非实时调度策略，适用于大多数普通的用户进程。CFS 是一种完全公平的调度器，通过维护一棵红黑树来实现公平调度。它为每个进程分配虚拟运行时间，并选择虚拟运行时间最小的任务来运行。这种方式可以保证每个进程都获得相等的 CPU 时间，从而提高了系统的公平性和响应性。 |
@@ -3836,7 +4007,7 @@ chrt -p 1234
 pid 1234's current scheduling policy: SCHED_OTHER pid 1234's current scheduling priority: 0
 ```
 
-给 1234 号进程设置 SCHED_RR 调度器策略，优先级为 50：（如果失败，请检查该进程所在 cgroup 的 cpu.rt_runtime_us 参数，若为 0 则不允许设置） Alibaba Cloud Linux
+给 1234 号进程设置 SCHED_RR 调度器策略，优先级为 50：（如果失败，请检查该进程所在 cgroup 的 cpu.rt_runtime_us 参数，若为 0 则不允许设置）
 
 ```
 chrt -r -p 50 1234 chrt -p 1234
@@ -3860,7 +4031,9 @@ chrt -d -T 1000000 -D 3000000 -P 5000000 -p 0 1234 chrt -p 1234
 pid 1234's current scheduling policy: SCHED_DEADLINE pid 1234's current scheduling priority: 0 pid 1234's current runtime/deadline/period parameters: 1000000/3000000/5000000
 ```
 
-#### sysfs相关接口
+#### 1.7.2 sysfs相关接口
+
+sysfs相关接口如下表：
 
 | 配置接口 | 读\写权限 | 默认值 | 描述 |
 |---|---|---|---|
@@ -3870,8 +4043,6 @@ pid 1234's current scheduling policy: SCHED_DEADLINE pid 1234's current scheduli
 | /sys/fs/cgroup/cpu/$cg/cpu. rt period us _ _ | rw 根组不可写 | 1000000 | rt 带宽控制器给一个cgroup分配 cpu 时间片的周期，单位：us。 |
 | /sys/fs/cgroup/cpu/$cg/cpu. rt runtime us _ _ | rw 根组不可写 | 950000 | rt 带宽控制器在一个周期内能够给该cgroup 使用的CPU的最大时间片，单位：us。 |
 | /sys/fs/cgroup/cpu/$cg/cpu. shares | rw 根组不可写 | 1024 | cgroup 的调度相对权重值，表示可以使用的CPU时间。 |
-
-Alibaba Cloud Linux
 
 | /sys/fs/cgroup/cpu/$cg/cpu. stat | read only | NA | cgroup 内的进程使用的 CPU 时间统计。 |
 |---|---|---|---|
@@ -3887,8 +4058,6 @@ Alibaba Cloud Linux
 | /sys/fs/cgroup/cpuacct/$cg/ cpuacct.usage percpu _ | read only | NA | 统计一个cgroup中所有任务（包括其子孙层级中的所有任务）在每个CPU使用CPU的时间（纳秒）。 |
 | /sys/fs/cgroup/cpuacct/$cg/ cpuacct.usage percpu sys _ _ | read only | NA | 统计一个cgroup中所有任务（包括其子孙层级中的所有任务）在每个CPU上使用内核态CPU的时间 （纳秒）。 |
 
-Alibaba Cloud Linux
-
 | /sys/fs/cgroup/cpuacct/$cg/ cpuacct.usage percpu user _ _ | read only | NA | 统计一个cgroup中所有任务（包括其子孙层级中的所有任务）在每个CPU上使用用户态CPU的时间 （纳秒）。 |
 |---|---|---|---|
 | /sys/fs/cgroup/cpuacct/$cg/ cpuacct.usage sys _ | read only | NA | 统计一个cgroup中所有任务（包括其子孙层级中的所有任务）使用内核态CPU的总时间（纳秒）。 |
@@ -3903,8 +4072,6 @@ Alibaba Cloud Linux
 | /sys/fs/cgroup/cpuset/$cg/c puset.memory migrate _ | rw | 0 | 该接口为开关接口，有效值为0，1。 设置为1时， 使能 memory migration, 即内存节点改变后迁移内存。 设置为0时，关闭 memory migration, 即内存节点改变后不会迁移内存。 |
 | /sys/fs/cgroup/cpuset/$cg/c puset.memory pressure _ | read only | NA | 统计该 cpuset 中的内存压力，仅当 cpuset.memory pressure enabled 为1时统 _ _ 计。 |
 
-Alibaba Cloud Linux
-
 | /sys/fs/cgroup/cpuset/$cg/c puset.memory pressure en _ _ abled | rw | 0 | 该接口为开关接口，有效值为0，1 设置为1时，统计该 cpuset 中的内存压力设置为0时，不统计该 cpuset 中的内存压力 |
 |---|---|---|---|
 | /sys/fs/cgroup/cpuset/$cg/c puset.memory spread pag _ _ e | rw | 0 | 该接口为开关接口，有效值为0，1 设置为1时，该 cgroup 的内核 page cache 将会均匀地分布在不同的节点上。 设置为0时，该 cgroup 的内核 page cache 将不会均匀地分布在不同的节点上。 |
@@ -3913,7 +4080,9 @@ Alibaba Cloud Linux
 | /sys/fs/cgroup/cpuset/$cg/c puset.sched load balance _ _ | rw | 1 | flag：默认为值1，表示进程会在该cpuset中允许的cpu上进行负载均衡。 |
 | /sys/fs/cgroup/cpuset/$cg/c puset.sched relax domain _ _ _ level | rw | -1 | 可设置的值为-1到一个较小的整数值，只有 sched load balance为1时生效，值越大，表示负 _ _ 载均衡时查找的cpu范围越大。 |
 
-#### procfs 相关接口
+#### 1.7.3 procfs 相关接口
+
+procfs 相关接口如下表：
 
 | 配置接口 | 读\写权限 | 默认值 | 描述 |
 |---|---|---|---|
@@ -3922,8 +4091,6 @@ Alibaba Cloud Linux
 | /proc/$pid/cpuset | r | NA | 进程所在cpuset cgroup的路径。 |
 | /proc/$pid/task/$tid/sch ed | r | NA | 线程调度相关的实时数据。 |
 | /proc/$pid/task/$tid/sch edstat | r | NA | 线程运行时间、休眠时间和等待时间。 |
-
-Alibaba Cloud Linux
 
 | /proc/$pid/task/$tid/cpu set | r | NA | 线程所在cpuset cgroup的路径。 |
 |---|---|---|---|
@@ -3941,8 +4108,6 @@ Alibaba Cloud Linux
 | /proc/sys/kernel/sched _ deadline period min us _ _ _ | rw | 100 | deadline任务时钟周期最小值，单位us。 |
 | /proc/sys/kernel/sched _ domain/cpu0/domain0/b usy factor _ | rw | 16 | 正常情况下，balance interval定义了均衡的 _ 时间间隔，如果cpu繁忙，那么均衡需要的时间间隔长一些，即时间间隔定义为busy factor x _ balance interval。 _ |
 
-Alibaba Cloud Linux
-
 | /proc/sys/kernel/sched _ domain/cpu0/domain0/c ache nice tries _ _ | rw | 0 | 这个成员应该是和nr balance failed配合控制 _ _ 负载均衡过程的迁移力度。当 nr balance failed大于cache nice tries的 _ _ _ _ 时候，负载均衡会变得更加激进。 |
 |---|---|---|---|
 | /proc/sys/kernel/sched _ domain/cpu0/domain0/fl ags | read only | SD BALANCE N _ _ EWIDLE SD BALANCE E _ _ XEC SD BALANCE F _ _ ORK SD WAKE AFFI _ _ NE SD SHARE CPU _ _ CAPACITY SD SHARE PKG _ _ RESOURCES _ SD PREFER SIB _ _ LING | 调度域标志，其默认值因不同硬件拓扑结构而异。 |
@@ -3952,8 +4117,6 @@ Alibaba Cloud Linux
 | /proc/sys/kernel/sched _ domain/cpu0/domain0/ min interval _ | rw | 2 | 设置此CPU在第0级调度域进行负载均衡的最小间隔时间，在上一次负载均衡到这段时间内都不能再进行负载均衡。 |
 | /proc/sys/kernel/sched _ domain/cpu0/domain0/n ame | read only | SMT | 第0级调度域的名称。 |
 | /proc/sys/kernel/sched l _ atency ns _ | rw | 24,000,000 | 表示进程排队的最长时间，调度器尽力保障进程排队时间不超过该参数，以确保多进程并发执行。随着进程数量增多，调度器根据该参数调整进程执行的时间片。当进程数量多于 kernel.sched latency ns / _ _ kernel.sched min granularity ns之后，调 _ _ _ 度器不再作此保证。 |
-
-Alibaba Cloud Linux
 
 | /proc/sys/kernel/sched _ migration cost ns _ _ | rw | 500,000 | 表示在多个 CPU 之间迁移进程时的成本，单位是纳秒。这个参数的值越大，意味着迁移进程的成本越高，调度器就会更倾向于让进程在当前 CPU 上执行，而不是迁移到其他 CPU 上执行。主要用于判断是否能 pull 进程到即将idle 的 CPU 上，以及用于判断进程是否已经在原 CPU 上缓存足够热了。 |
 |---|---|---|---|
@@ -3966,20 +4129,20 @@ Alibaba Cloud Linux
 | /proc/sys/kernel/sched t _ unable scaling _ | rw | 1 | 当内核试图调整 sched min granularity，sched latency和 _ _ _ sched wakeup granularity这三个值的时候 _ _ 所使用的更新方法： 0：不缩放 1：按照cpu个数以2为底的对数值进行缩放 2：按照cpu的个数进行线性比例的缩放 |
 | /proc/sys/kernel/sched _ wakeup granularity ns _ _ | rw | 4,000,000 | 新唤醒进程很容易抢占正在运行的进程，为了避免频繁打断正在运行的进程，该参数限制新唤醒的进程的抢占的概率。只有当新唤醒进程的vruntime大于当前进程的vruntime时，才进行抢占。该参数越大，新唤醒进程抢占的概率越小。 |
 
-#### debugfs 相关接口
+#### 1.7.4 debugfs 相关接口
 
-Alibaba Cloud Linux
+debugfs 相关接口如下表：
 
 | 配置接口 | 读\写权限 | 默认值 | 描述 |
 |---|---|---|---|
 | /sys/kernel/debug/sc hed debug _ | rw | N | 拓扑相关调试信息开关，开启后将在调度域重建时打印详细信息。 |
 | /sys/kernel/debug/sc hed features _ | rw | GENTLE FAIR SLEEPERS _ _ START DEBIT NO NEXT BUDDY _ _ _ LAST BUDDY CACHE HOT BUDDY _ _ _ WAKEUP PREEMPTION NO HRTICK _ _ NO DOUBLE TICK _ _ NONTASK CAPACITY TTWU QUEUE _ _ PREFER TTWU QUEUE _ _ NO SIS AVG CPU SIS PROP _ _ _ _ NO WARN DOUBLE CLOCK _ _ _ RT PUSH IPI _ _ NO RT RUNTIME SHARE _ _ _ NO LB MIN ATTACH AGE LOAD _ _ _ _ WA IDLE WA WEIGHT WA BIAS _ _ _ UTIL EST UTIL EST FASTUP _ _ _ ALT PERIOD BASE SLICE _ _ NO NUMA AFFINE NO HT STABLE _ _ _ _ | 见下文。 |
 
-各项调度特性的配置，NO_前缀表示关闭，否则表示开启。以下是调度特性的简介： GENTLE_FAIR_SLEEPERS：对于被唤醒的睡眠线程给予较少的补偿。 START_DEBIT：推迟新建线程的运行时机，避免饿死当前线程。 NEXT_BUDDY：偏向于运行最后唤醒的线程，逻辑上将其放到队列最前，即使它不能抢占，可能有助于缓存亲和性。 LAST_BUDDY：偏向于运行上次被唤醒抢占的受害者，可能有助于缓存亲和性。 CACHE_HOT_BUDDY：认为上述两种进程有缓存亲和性，避免被负载均衡机制迁移。 WAKEUP_PREEMPTION：允许被唤醒的线程抢占当前线程。 HRTICK：使用高精度时钟而不是普通时钟实现抢占。 DOUBLE_TICK：同时使用普通时钟和高精度时钟实现抢占。 NONTASK_CAPACITY：将 CPU 容量减去不能用于运行任务的时间，例如 steal 和 irq 部分时间。 TTWU_QUEUE：将线程唤醒的下半部分卸载到远端 CPU 执行（跨 llc 时）。 PREFER_TTWU_QUEUE：更偏好使用上述方式，只要目标 CPU 空闲均可卸载。 SIS_AVG_CPU：如果寻找空闲 CPU 的开销超过了平均空闲时间，则不寻找。 SIS_PROP：根据调度域大小和空闲时间，缩小扫描空闲 CPU 的范围。 WARN_DOUBLE_CLOCK：如果在同一个调度器队列临界区内更新了两次调度器时钟，则发出警告。 RT_PUSH_IPI：对于实时任务，用 IPI 向其他 CPU 发送通知 push 迁移任务，避免单个 CPU 执行过重的 pull 迁移任务。 RT_RUNTIME_SHARE：允许所有 CPU 共享实时任务的时间限额。 LB_MIN：负载均衡阶段，计算负载时忽略极小负载的任务。 ATTACH_AGE_LOAD：在进程切换 cgroup 时更新负载，算上时间衰减。 WA_IDLE：如果当前 CPU 即将空闲，则将被唤醒的线程拉取过来。 WA_WEIGHT：如果当前 CPU 负载小于被唤醒线程之前所在的 CPU，则将被唤醒的线程拉取过来。 WA_BIAS：为上述特性的负载计算中加入不平衡因子的偏移。 Alibaba Cloud Linux UTIL_EST：预估利用率功能，用于补救 PELT 的 util 更新不及时，大任务从长时间睡眠中醒来负载误判的情况。 UTIL_EST_FASTUP：调整预估利用率算法，利用率上升不做平滑，只在利用率下降时才使用平滑算法。 ALT_PERIOD：计算时间片时，考虑在当前 cgroup 的所有类型的任务数量，而非 CFS 普通任务的数量，避免错误估计调度延迟。 BASE_SLICE：确保时间片不低于最小运行粒度参数，避免高频切换。 NUMA_AFFINE：把相同 Cgroup 里的线程约束在同一个 node 里执行，利用这些线程之间的亲和性关系提升访存效率。 HT_STABLE：在超线程对端施加固定干扰从而实现算力稳定的特性，仅在支持 HT 超线程特性的环境中出现。
+各项调度特性的配置，NO_前缀表示关闭，否则表示开启。以下是调度特性的简介： GENTLE_FAIR_SLEEPERS：对于被唤醒的睡眠线程给予较少的补偿。 START_DEBIT：推迟新建线程的运行时机，避免饿死当前线程。 NEXT_BUDDY：偏向于运行最后唤醒的线程，逻辑上将其放到队列最前，即使它不能抢占，可能有助于缓存亲和性。 LAST_BUDDY：偏向于运行上次被唤醒抢占的受害者，可能有助于缓存亲和性。 CACHE_HOT_BUDDY：认为上述两种进程有缓存亲和性，避免被负载均衡机制迁移。 WAKEUP_PREEMPTION：允许被唤醒的线程抢占当前线程。 HRTICK：使用高精度时钟而不是普通时钟实现抢占。 DOUBLE_TICK：同时使用普通时钟和高精度时钟实现抢占。 NONTASK_CAPACITY：将 CPU 容量减去不能用于运行任务的时间，例如 steal 和 irq 部分时间。 TTWU_QUEUE：将线程唤醒的下半部分卸载到远端 CPU 执行（跨 llc 时）。 PREFER_TTWU_QUEUE：更偏好使用上述方式，只要目标 CPU 空闲均可卸载。 SIS_AVG_CPU：如果寻找空闲 CPU 的开销超过了平均空闲时间，则不寻找。 SIS_PROP：根据调度域大小和空闲时间，缩小扫描空闲 CPU 的范围。 WARN_DOUBLE_CLOCK：如果在同一个调度器队列临界区内更新了两次调度器时钟，则发出警告。 RT_PUSH_IPI：对于实时任务，用 IPI 向其他 CPU 发送通知 push 迁移任务，避免单个 CPU 执行过重的 pull 迁移任务。 RT_RUNTIME_SHARE：允许所有 CPU 共享实时任务的时间限额。 LB_MIN：负载均衡阶段，计算负载时忽略极小负载的任务。 ATTACH_AGE_LOAD：在进程切换 cgroup 时更新负载，算上时间衰减。 WA_IDLE：如果当前 CPU 即将空闲，则将被唤醒的线程拉取过来。 WA_WEIGHT：如果当前 CPU 负载小于被唤醒线程之前所在的 CPU，则将被唤醒的线程拉取过来。 WA_BIAS：为上述特性的负载计算中加入不平衡因子的偏移。 UTIL_EST：预估利用率功能，用于补救 PELT 的 util 更新不及时，大任务从长时间睡眠中醒来负载误判的情况。 UTIL_EST_FASTUP：调整预估利用率算法，利用率上升不做平滑，只在利用率下降时才使用平滑算法。 ALT_PERIOD：计算时间片时，考虑在当前 cgroup 的所有类型的任务数量，而非 CFS 普通任务的数量，避免错误估计调度延迟。 BASE_SLICE：确保时间片不低于最小运行粒度参数，避免高频切换。 NUMA_AFFINE：把相同 Cgroup 里的线程约束在同一个 node 里执行，利用这些线程之间的亲和性关系提升访存效率。 HT_STABLE：在超线程对端施加固定干扰从而实现算力稳定的特性，仅在支持 HT 超线程特性的环境中出现。
 
-#### 调度自研特性
+#### 1.7.5 调度自研特性
 
-##### Group Identity
+##### 1.7.5.1 Group Identity
 
 Group Identity 是阿里云服务器操作系统 V3内核提供的 CPU 混部功能，可以通过该功能为每一个 CPU cgroup 设置不同的身份标识，以区分不同 CPU cgroup 中进程任务的优先级。其提供的接口如下。 procfs 提供的接口：
 
@@ -3991,35 +4154,31 @@ Group Identity 是阿里云服务器操作系统 V3内核提供的 CPU 混部功
 | /proc/sys/kernel/sched _ idle saver wmark _ _ | rw | 0 | 设置CPU空闲时间的水位线。当ID IDLE SAVER _ _ 任务被唤醒时，只会尝试找到高于该水位线的空闲 CPU，不会尝试找到低于该水位线的空闲CPU。 |
 | /proc/sys/kernel/sched _ bvt place epsilon _ _ | rw | 1000000 | 离线任务唤醒时的惩罚时间，单位 ns。 |
 
-sysfs 提供的接口： Alibaba Cloud Linux
+sysfs 提供的接口：
 
-| 配置接口 |  | 读写权限 | 初始值 |  | 描述 |  |  |
+| 配置接口 |   | 读写权限 | 初始值 |   | 描述 |   |   |
 |---|---|---|---|---|---|---|---|
-| /sys/fs/cgroup/cpu/$cg/cpu.bv t warp ns _ _ |  | rw 根组不可写 | 0 |  | cgroup优先级配置接口，该接口的取值说明如下： 2：表示同时具有身份标识 ID SMT EXPELLER、ID IDLE SEEKER、 _ _ _ _ ID HIGHCLASS，对应的identity值为22。 _ 1：表示同时具有身份标识ID HIGHCLASS、 _ ID IDLE SEEKER，对应的identity值为18。 _ _ 0：表示身份标识为ID NORMAL，对应的 _ identity值为0。 -1：表示同时具有身份标识 ID UNDERCLASS、ID IDLE SAVER，对应 _ _ _ 的identity值为9。 -2：表示同时具有身份标识 ID UNDERCLASS、ID IDLE SAVER，对应 _ _ _ 的identity值为9。 |  |  |
-| /sys/fs/cgroup/cpu/$cg/cpu.id entity |  | rw 根组不可写 | 0 |  | cgroup优先级配置接口，该接口是一个位段，共有5个比特位，该接口各个比特位的取值说明如下： 空值：表示身份标识为ID NORMAL。 _ 比特位0：表示身份标识为 ID UNDERCLASS。 _ 比特位1：表示身份标识为ID HIGHCLASS。 _ 比特位2：表示身份标识为 ID SMT EXPELLER。 _ _ 比特位3：表示身份标识为ID IDLE SAVER。 _ _ 比特位4：表示身份标识为 ID IDLE SEEKER。 例如，如果设置一个 _ _ cgroup的身份标识为ID HIGHCLASS和 _ ID IDLE SEEKER，那么将比特位1和4置为 _ _ 1，其他比特位置为0，得到的二进制表示为： 10010，转化为十进制为：18，则执行 echo 18 > |  |  |
-|  |  |  |  |  |  | echo 18 > |  |
-|  |  |  |  |  | /sys/fs/cgroup/cpu/$cg/cpu.identity |  |  |
+| /sys/fs/cgroup/cpu/$cg/cpu.bv t warp ns _ _ |   | rw 根组不可写 | 0 |   | cgroup优先级配置接口，该接口的取值说明如下： 2：表示同时具有身份标识 ID SMT EXPELLER、ID IDLE SEEKER、 _ _ _ _ ID HIGHCLASS，对应的identity值为22。 _ 1：表示同时具有身份标识ID HIGHCLASS、 _ ID IDLE SEEKER，对应的identity值为18。 _ _ 0：表示身份标识为ID NORMAL，对应的 _ identity值为0。 -1：表示同时具有身份标识 ID UNDERCLASS、ID IDLE SAVER，对应 _ _ _ 的identity值为9。 -2：表示同时具有身份标识 ID UNDERCLASS、ID IDLE SAVER，对应 _ _ _ 的identity值为9。 |   |   |
+| /sys/fs/cgroup/cpu/$cg/cpu.id entity |   | rw 根组不可写 | 0 |   | cgroup优先级配置接口，该接口是一个位段，共有5个比特位，该接口各个比特位的取值说明如下： 空值：表示身份标识为ID NORMAL。 _ 比特位0：表示身份标识为 ID UNDERCLASS。 _ 比特位1：表示身份标识为ID HIGHCLASS。 _ 比特位2：表示身份标识为 ID SMT EXPELLER。 _ _ 比特位3：表示身份标识为ID IDLE SAVER。 _ _ 比特位4：表示身份标识为 ID IDLE SEEKER。 例如，如果设置一个 _ _ cgroup的身份标识为ID HIGHCLASS和 _ ID IDLE SEEKER，那么将比特位1和4置为 _ _ 1，其他比特位置为0，得到的二进制表示为： 10010，转化为十进制为：18，则执行 echo 18 > |   |   |
+|   |   |   |   |   |   | echo 18 > |   |
+|   |   |   |   |   | /sys/fs/cgroup/cpu/$cg/cpu.identity |   |   |
 
 debugfs中提供的接口主要在 sched_features 中。
 
 | 配置接口 | 读写权限 | 初始值 | 描述 |
 |---|---|---|---|
 
-Alibaba Cloud Linux
-
 | /sys/kernel/debug/sched fe _ atures | rw | ID IDLE AVG _ _ NO ID RESCUE EXPELLEE _ _ _ NO ID EXPELLEE NEVER HO _ _ _ _ T NO ID LAST HIGHCLASS STA _ _ _ _ Y NO ID LOOSE EXPEL _ _ _ NO ID EXPELLER SHARE CO _ _ _ _ RE ID LOAD BALANCE _ _ | 见下文。 |
 |---|---|---|---|
 
 ID_IDLE_AVG：该特性与 ID_IDLE_SAVER 身份标识配合，把 ID_UNDERCLASS 任务的运行时间计入空闲时长，防止只有 ID_UNDERCLASS 任务运行时仍保留空闲 CPU（idle CPU）的问题，避免资源浪费。 ID_RESCUE_EXPELLEE：该特性作用于负载均衡场景，如果任务无法找到可用的 CPU 资源，则正在进行驱逐 ID_UNDERCLASS 任务的 CPU 会成为负载均衡的目标。该特性用于帮助 ID_UNDERCLASS 任务尽快摆脱被驱逐的状态。 ID_EXPELLEE_NEVER_HOT：该特性被启用后，正在被驱逐的 ID_UNDERCLASS 任务在判断是否需要迁移至其他 CPU 时，不会因为热缓存的原因而造成拒绝迁移。用于帮助 ID_UNDERCLASS 任务尽快摆脱被驱逐的状态。 ID_LAST_HIGHCLASS_STAY：该特性被启用后，CPU 上最后一个运行的 ID_HIGHCLASS 任务不会被迁移至其他 CPU。 ID_LOOSE_EXPEL：该特性被启用后，CPU 不会在每次选择任务时更新驱逐状态，而是根据内核参数 sched_expel_update_interval 设置的时间自动更新。该特性的开关仅影响 CPU 选择任务时的状态更新，不影响处理IPI 中断的更新。 ID_EXPELLER_SHARE_CORE：该特性开启时允许 ID_SMT_EXPELLER 的任务优先选择已经有 ID_SMT_EXPELLER 任务的物理核，该特性关闭时则不允许。该特性关闭时可以尽可能地把 ID_SMT_EXPELLER 的任务分散到各个物理核上，从而避免 ID_SMT_EXPELLER 任务之间的相互干扰。 ID_LOAD_BALANCE：该特性主要影响任务唤醒时的 CPU 选择，是为了保证 ID_SMT_EXPELLER 任务在运行时可以尽可能的独占一个物理核，避免 SMT 干扰，最好在 ID_EXPELLER_SHARE_CORE 关闭地情况下使用。
 
-##### Group Balancer
+##### 1.7.5.2 Group Balancer
 
 GroupBalancer可以解决 share 化场景下的亲和域问题：cache 亲和性下降、cache miss增多、跨 NUMA 访问内存等等，以及内存带宽竞争等问题，可以避免以上问题带来的 share 化场景下的性能下降， 降低高负载场景下的 CPU 使用率，提高吞吐量。该特性提供的接口如下。 sysfs 提供的接口：
 
 | 配置接口 | 读写权限 | 初始值 | 描述 |
 |---|---|---|---|
-
-Alibaba Cloud Linux
 
 | /sys/fs/cgroup/cpuset/$cg/c puset.group balancer _ | rw 根组不可写 | 0 | 该接口为开关接口，有效值为0，1 设置为1时表示使能 GroupBalancer，使 cgroup 被 GroupBalancer 分配到某个分区，并通过软绑定功能进行限制。 设置为0时则表示不被 GroupBalancer 分配到某个分区，按照硬绑定范围使用 CPU。 |
 |---|---|---|---|
@@ -4032,9 +4191,9 @@ scan_period：巡检线程的唤醒周期，类型：unsigned int，单位为毫
 |---|---|---|---|
 | /sys/kernel/debug/sc hed features _ | rw | NO GROUP BALAN _ _ CER | 开启 GROUP BALANCER 功能全局开关， 该功能详见《Group Balancer 详细设计说明书》。 |
 
-##### CPU Burst
+##### 1.7.5.3 CPU Burst
 
-CPU Burst 主要是针对一些突发性、对延迟敏感的工作负载，然而，原有的 Linux CFS 带宽控制器并不能完全满足所有工作负载的需求，特别是在一些突发性负载的情况下，进程可能会短时间内需要更多的 CPU 时间以避免太高的延迟。对于本特性，在每个带宽控制周期中，用于从 CPU 带宽控制器中收集没有用完的时间配额，并缓存起来。下一个带宽控制周期里，将历史周期里缓存的时间配额，增加到 CPU 带宽控制器提供的 procfs 接口如下： Alibaba Cloud Linux
+CPU Burst 主要是针对一些突发性、对延迟敏感的工作负载，然而，原有的 Linux CFS 带宽控制器并不能完全满足所有工作负载的需求，特别是在一些突发性负载的情况下，进程可能会短时间内需要更多的 CPU 时间以避免太高的延迟。对于本特性，在每个带宽控制周期中，用于从 CPU 带宽控制器中收集没有用完的时间配额，并缓存起来。下一个带宽控制周期里，将历史周期里缓存的时间配额，增加到 CPU 带宽控制器的当前周期的配额中。CPU Burst 提供的用户接口如下所示。 提供的 procfs 接口如下：
 
 | 配置接口 | 读写权限 | 初始值 | 描述 |
 |---|---|---|---|
@@ -4049,24 +4208,23 @@ CPU Burst 主要是针对一些突发性、对延迟敏感的工作负载，然�
 | /sys/fs/cgroup/cpu/$cg/cp u.cfs init buffer us _ _ _ | rw 根组不可写 | 0 | 表示首次运行时，最多可以缓存的CPU时间配额，单位：us。 |
 | /sys/fs/cgroup/cpu/$cg/cp u.stat | read only | NA | cpu burst 监控指标： current bw：当前周期CPU cgroup 的可 _ 用带宽； nr burst：发生 burst 的周期数； _ burst time：CPU cgroup 总的 burst 时 _ 间。 |
 
-##### CPU 动态隔离
+##### 1.7.5.4 CPU 动态隔离
 
-CPU 隔离的作用是将不同的 CPU 核心或 CPU 集群分配给不同的任务，以避免不同的任务在 CPU 资源上相互竞争，从而提高整体系统性能和稳定性。CPU 隔离技术可以把一部分 CPU 隔离出来，分配给关键任务使用，非关键任务共享不被隔离的 CPU，从而保证关键任务的运行不受影响。
+CPU 隔离的作用是将不同的 CPU 核心或 CPU 集群分配给不同的任务，以避免不同的任务在 CPU 资源上相互竞争，从而提高整体系统性能和稳定性。CPU 隔离技术可以把一部分 CPU 隔离出来，分配给关键任务使用，非关键任务共享不被隔离的 CPU，从而保证关键任务的运行不受影响。 CPU 动态隔离提供的接口如下：
 
 | 配置接口 | 读写权限 | 初始值 | 描述 |
 |---|---|---|---|
 | /proc/dyn isol _ cpus | rw | NA | 控制动态隔离的 CPU 列表。 |
 
-##### plugsched 特性
+##### 1.7.5.5 plugsched 特性
 
-plugsched 是阿里云服务器操作系统 V3 自主原创的内核调度器特性，它是内核调度器子系统热升级的
+plugsched 是阿里云服务器操作系统 V3 自主原创的内核调度器特性，它是内核调度器子系统热升级的 SDK，可以实现在不重启系统、应用的情况下动态替换调度器子系统，毫秒级 downtime。plugsched 可
 
-| 以对生产环境中的内核调度特性动态的进行增、删、改，以满足不同场景或应用的需求，且支持回滚。使用 |  |
+| 以对生产环境中的内核调度特性动态的进行增、删、改，以满足不同场景或应用的需求，且支持回滚。使用 |   |
 |---|---|
-| plugsched 特性需要安装其软件，使用接口及说明如下： |  |
+| plugsched 特性需要安装其软件，使用接口及说明如下： |   |
 
 1. 在阿里云服务器操作系统 V3中安装 plugsched：
-Alibaba Cloud Linux
 
 ```bash
 yum install plugsched -y
@@ -4102,7 +4260,7 @@ d product Subcommand arguments:
   target_dir          directory to place kernel source code
 ```
 
-extract_src选项，选项功能是从内核 source 软件中提取内核源代码： <kernel_src_rpm>：选项的必须参数，由用户输入，是指用户指定的内核 source 软件包的本地路径； <target_dir>：选项的必须参数，由用户输入，是指定的提取后的内核源代码存储路径。 init选项，选项功能是从内核源代码中生成模块代码开发环境，用户可在该开发环境中定制调度器模块： <release_kernel>：选项的必须参数，由用户输入，用于指定内核版本； <kernel_src>：选项的必须参数，由用户输入，用于指定 <release_kernel> 内核版本对应的内核源代码的存储路径； <work_dir>：选项的必须参数，由用户输入，用于指定模块代码开发环境的工作目录。 dev_init 选项，该选项是从内核源代码中生成模块代码的开发环境，注意，该内核源码不是从内核的 source rpm 包中提取出来的，而是用户自己的内核代码的目录，需要注意的是，使用该选项前，需要在内核代码目录中编译一次内核： <kernel_src>：选项的必须参数，由用户输入，用于指定用户的内核源代码的存储路径； <work_dir>：选项的必须参数，由用户输入，用于指定模块代码开发环境的工作目录。 build 选项，该选项功能是将调度器模块构建成为调度器插件： <work_dir>：选项的必须参数，由用户输入，用于指定模块代码开发环境的工作目录。 Alibaba Cloud Linux
+extract_src选项，选项功能是从内核 source 软件中提取内核源代码： <kernel_src_rpm>：选项的必须参数，由用户输入，是指用户指定的内核 source 软件包的本地路径； <target_dir>：选项的必须参数，由用户输入，是指定的提取后的内核源代码存储路径。 init选项，选项功能是从内核源代码中生成模块代码开发环境，用户可在该开发环境中定制调度器模块： <release_kernel>：选项的必须参数，由用户输入，用于指定内核版本； <kernel_src>：选项的必须参数，由用户输入，用于指定 <release_kernel> 内核版本对应的内核源代码的存储路径； <work_dir>：选项的必须参数，由用户输入，用于指定模块代码开发环境的工作目录。 dev_init 选项，该选项是从内核源代码中生成模块代码的开发环境，注意，该内核源码不是从内核的 source rpm 包中提取出来的，而是用户自己的内核代码的目录，需要注意的是，使用该选项前，需要在内核代码目录中编译一次内核： <kernel_src>：选项的必须参数，由用户输入，用于指定用户的内核源代码的存储路径； <work_dir>：选项的必须参数，由用户输入，用于指定模块代码开发环境的工作目录。 build 选项，该选项功能是将调度器模块构建成为调度器插件： <work_dir>：选项的必须参数，由用户输入，用于指定模块代码开发环境的工作目录。
 2. 用户使用的步骤如下：
 i. 创建工作目录，准备开发环境，下载并提取当前内核源代码，可使用 yumdownload 工具下载 release 内核的 source rpm 包。
 
@@ -4110,7 +4268,7 @@ i. 创建工作目录，准备开发环境，下载并提取当前内核源代�
 mkdir /root/work && cd /root/work yum install kernel-devel kernel-debuginfo yum-utils --enablerepo=BaseOS-debuginfo -
 ```
 
-y
+`y`
 
 ```
 yumdownloader --source kernel-$(uname -r)
@@ -4148,11 +4306,11 @@ rpm -ivh scheduler-xxx-kernelversion1.rpm --oldpackage rpm -ivh scheduler-xxx-ke
 
 d. 系统启动时会自动使能当前内核版本的调度器插件，若未安装任何插件，请忽略。
 
-### 安全更新
+### 1.8 安全更新
 
-#### 安全更新识别
+#### 1.8.1 安全更新识别
 
-##### 显示可安装的安全更新
+##### 1.8.1.1 显示可安装的安全更新
 
 使用 yum 工具列出主机上未安装的可用安全更新：
 
@@ -4160,7 +4318,7 @@ d. 系统启动时会自动使能当前内核版本的调度器插件，若未�
 yum updateinfo list security
 ```
 
-返回示例如下： Alibaba Cloud Linux
+返回示例如下：
 
 ```
 ALINUX3-SA-2023:0032 中危/安全漏洞 curl-7.61.1-25.0.2.al8.3.x86_64 ALINUX3-SA-2023:0032 中危/安全漏洞 libcurl-7.61.1-25.0.2.al8.3.x86_64
@@ -4168,7 +4326,7 @@ ALINUX3-SA-2023:0032 中危/安全漏洞 curl-7.61.1-25.0.2.al8.3.x86_64 ALINUX3
 
 若没有未安装的安全更新则不会有类似条目。
 
-##### 显示已安装的安全更新
+##### 1.8.1.2 显示已安装的安全更新
 
 使用 yum 工具列出主机上已安装的安全更新：
 
@@ -4184,7 +4342,7 @@ ALINUX3-SA-2021:0025 重要/安全漏洞 bind-export-libs-9.11.20-5.1.al8.1.x86_
 
 若没有已安装的安全更新则不会有类似条目。
 
-##### 显示具体安全公告
+##### 1.8.1.3 显示具体安全公告
 
 使用 yum 查看特定的安全公告，此处以ALINUX3-SA-2023:0032 为例。
 
@@ -4192,7 +4350,7 @@ ALINUX3-SA-2021:0025 重要/安全漏洞 bind-export-libs-9.11.20-5.1.al8.1.x86_
 yum updateinfo info ALINUX3-SA-2023:0032 --all
 ```
 
-返回示例如下： Alibaba Cloud Linux
+返回示例如下：
 
 ```
 ===============================================================================
@@ -4200,13 +4358,13 @@ yum updateinfo info ALINUX3-SA-2023:0032 --all
 =============================================================================== 更新 ID: ALINUX3-SA-2023:0032
 ```
 
-类型: 安全更新更新完毕`: 1970-01-01 08:00:00` 安全漏洞`: CVE-2023-23916` 描述`: Package updates are available for`阿里云服务器操作系统 `V3 that fix the following v`
+类型`:` 安全更新更新完毕`: 1970-01-01 08:00:00` 安全漏洞`: CVE-2023-23916` 描述`: Package updates are available for`阿里云服务器操作系统 `V3 that fix the following v`
 
 ```
 ulnerabilities:
 ```
 
-:
+`:`
 
 ```
         : CVE-2023-23916:
@@ -4214,11 +4372,13 @@ ulnerabilities:
 in curl <v7.88.0 based on the "chained" HTTP compression algorithms, meaning that a ser ver response can be compressed multiple times and potentially with differentalgorithms. The number of acceptable "links" in this "decompression chain" wascapped, but the cap w as implemented on a per-header basis allowing a maliciousserver to insert a virtually u nlimited number of compression steps simply byusing many headers. The use of such a dec ompression chain could result in a "malloc bomb", making curl end up spending enormous amounts of allocated heap memory, or trying to and returning out of memory errors.
 ```
 
-: 严重性`: Moderate`
+`:` 严重性`: Moderate`
 
-#### 安全更新安装
+#### 1.8.2 安全更新安装
 
-##### 安装所有可用的安全更新
+##### 1.8.2.1 安装所有可用的安全更新
+
+使用 yum 工具安装所有可用的安全更新，如果没有未安装的安全更新则无需安装。
 
 ```bash
 yum update --security
@@ -4230,9 +4390,9 @@ yum update --security
 ========================================================================================= ===================================================================
 ```
 
-升级 2 软件包总下载：`522 k` 确定吗？`[y/N]`： y
+升级 `2` 软件包总下载：`522 k` 确定吗？`[y/N]`： `y`
 
-##### 根据公告安装特定的安全更新
+##### 1.8.2.2 根据公告安装特定的安全更新
 
 根据特定的公告 ID 安装安全更新，如 ALINUX3-SA-2023:0032。若此安全更新已安装则无需安装。
 
@@ -4240,21 +4400,21 @@ yum update --security
 yum update --advisory="ALINUX3-SA-2023:0032"
 ```
 
-返回示例如下，输入y 确定安装。 Alibaba Cloud Linux 事务概要
+返回示例如下，输入y 确定安装。 事务概要
 
 ```
 ========================================================================================= ===================================================================
 ```
 
-升级 2 软件包总下载：`522 k` 确定吗？`[y/N]`： y
+升级 `2` 软件包总下载：`522 k` 确定吗？`[y/N]`： `y`
 
-### 软件包管理
+### 1.9 软件包管理
 
-#### DNF 配置
+#### 1.9.1 DNF 配置
 
 DNF的主要配置文件是/etc/dnf/dnf.conf，该文件包含两部分： “main” 部分保存着 DNF 的全局设置。 “repository”部分保存着软件源的设置，可以允许多个“repository”。 另外，在 /etc/yum.repos.d 目录中保存着一个或多个 repo 源相关文件，它们也可以定义不同的“repository”。 软件源的配置一般有两种方式，一种是直接配置 /etc/dnf/dnf.conf 文件中的“repository”部分，另外一种是在/etc/yum.repos.d 目录下增加.repo 文件。
 
-##### 配置 main 部分
+##### 1.9.1.1 配置 main 部分
 
 /etc/dnf/dnf.conf 文件包含的“main”部分，配置示例如下：
 
@@ -4270,8 +4430,6 @@ DNF的主要配置文件是/etc/dnf/dnf.conf，该文件包含两部分： “ma
 | keepcache | 可选值是1和0，表示是否要缓存已安装成功的那些RPM包及头文件，默认值为 0，即不缓存。 |
 | debuglevel | 设置dnf生成的debug信息。取值范围：[0-10]，数值越大会输出越详细的 debug信息。默认值为2，设置为0表示不输出debug信息。 |
 
-Alibaba Cloud Linux
-
 | clean requirements on rem _ _ _ ove | 删除在dnf remove期间不再使用的依赖项，如果软件包是通过DNF安装的，而不是通过显式用户请求安装的，则只能通过clean requirements on remove _ _ _ 删除软件包，即它是作为依赖项引入的。 默认值为True。 |
 |---|---|
 | best | 升级包时，总是尝试安装其最高版本，如果最高版本无法安装，则提示无法安装的原因并停止安装。默认值为True。 |
@@ -4280,7 +4438,7 @@ Alibaba Cloud Linux
 | plugins | 可选值1和0，表示启用或禁用dnf插件。默认值为1，表示启用dnf插件。 |
 | installonly limit _ | 设置可以同时安装“installonlypkgs”指令列出包的数量。默认值为3，不建议降低此值。 |
 
-##### 配置 repository 部分
+##### 1.9.1.2 配置 repository 部分
 
 repository 部分允许您定义定制化的软件源仓库，各个仓库的名称不能相同，否则会引起冲突。配置 repository 部分有两种方式，一种是直接配置 /etc/dnf/dnf.conf 文件中的“repository”部分，另外一种是配置 /etc/yum.repos.d 目录下的 .repo 文件。 直接配置/etc/dnf/dnf.conf 文件中的“repository”部分。最小配置示例如下：
 
@@ -4295,7 +4453,7 @@ repository 部分允许您定义定制化的软件源仓库，各个仓库的名
 | name=repository name _ | 软件仓库（repository ）描述的字符串。 |
 | baseurl=repository url _ | 软件仓库（repository ）的地址。 使用http协议的网络位置：例如 http://path/to/repo 使用ftp协议的网络位置：例如 ftp://path/to/repo 本地位置：例如 file:///path/to/local/repo |
 
-配置/etc/yum.repos.d 目录下的 .repo 文件。 阿里云服务器操作系统 V3 提供了多种 repo 源供用户在线使用，使用 root 权限添加 repo 源的示例如下： Alibaba Cloud Linux
+配置/etc/yum.repos.d 目录下的 .repo 文件。 阿里云服务器操作系统 V3 提供了多种 repo 源供用户在线使用，使用 root 权限添加 repo 源的示例如下：
 
 ```bash
 # vim /etc/yum.repos.d/AliYun.repo
@@ -4304,7 +4462,7 @@ repository 部分允许您定义定制化的软件源仓库，各个仓库的名
 
 选项说明如下： enabled 为是否启用该软件源仓库，可选值为 1 和 0。默认值为 1，表示启用该软件源仓库。 gpgkey 为验证签名用的公钥。
 
-##### 显示当前配置
+##### 1.9.1.3 显示当前配置
 
 **操作步骤**
 
@@ -4332,7 +4490,7 @@ dnf config-manager --dump repository
 dnf config-manager --dump expression
 ```
 
-##### 创建本地软件源仓库
+##### 1.9.1.4 创建本地软件源仓库
 
 按照下列步骤建立一个本地软件源仓库：
 1. 安装createrepo 软件包。在 root权限下执行如下命令。
@@ -4348,9 +4506,9 @@ dnf install createrepo
  createrepo /mnt/local_repo
 ```
 
-##### 添加、启用和禁用软件源
+##### 1.9.1.5 添加、启用和禁用软件源
 
-添加软件源要定义一个新的软件源仓库，您可以在/etc/dnf/dnf.conf 文件中添加“repository”部分，或者在/etc/yum.repos.d/目录下添加“.repo”文件进行说明。建议您通过添加“.repo”的方式，每个软件源都有自己对应的“.repo”文件，以下介绍该方式的操作方法。 Alibaba Cloud Linux 要在您的系统中添加一个这样的源，请在root 权限下执行如下命令，执行完成之后在/etc/yum.repos.d/ 目录下生成对应的 repo 文件。其中 repository_url 为 repo 源地址。
+添加软件源要定义一个新的软件源仓库，您可以在/etc/dnf/dnf.conf 文件中添加“repository”部分，或者在/etc/yum.repos.d/目录下添加“.repo”文件进行说明。建议您通过添加“.repo”的方式，每个软件源都有自己对应的“.repo”文件，以下介绍该方式的操作方法。 要在您的系统中添加一个这样的源，请在root 权限下执行如下命令，执行完成之后在/etc/yum.repos.d/ 目录下生成对应的 repo 文件。其中 repository_url 为 repo 源地址。
 
 ```
 dnf config-manager --add-repo repository_url
@@ -4368,7 +4526,7 @@ dnf config-manager --set-enable repository
 dnf config-manager --set-enable expression
 ```
 
-在 root 权限下执行如下命令禁用软件源：
+禁用软件源在 root 权限下执行如下命令禁用软件源：
 
 ```
 dnf config-manager --set-disable repository
@@ -4380,9 +4538,11 @@ dnf config-manager --set-disable repository
 dnf config-manager --set-disable expression
 ```
 
-#### 管理软件包
+#### 1.9.2 管理软件包
 
-##### 搜索软件包
+DNF 能够方便的进行查询、安装、删除软件包等操作。
+
+##### 1.9.2.1 搜索软件包
 
 使用 rpm 包名称、缩写或者描述搜索需要的RPM 包：
 
@@ -4390,7 +4550,7 @@ dnf config-manager --set-disable expression
 dnf search term
 ```
 
-示例如下： Alibaba Cloud Linux
+示例如下：
 
 ```bash
 # dnf search
@@ -4409,9 +4569,7 @@ httpd ==========================================================================
 ====================================================================================== alinux-logos-httpd.noarch : Alinux-related icons and pictures used by httpd dmlite-apache-httpd.x86_64 : Apache HTTPD frontend for dmlite keycloak-httpd-client-install.noarch : Tools to configure Apache HTTPD as Keycloak client libmicrohttpd-devel.x86_64 : Development files for libmicrohttpd libmicrohttpd-doc.noarch : Documentation for libmicrohttpd lighttpd-fastcgi.x86_64 : FastCGI module and spawning helper for lighttpd and PHP configuration lighttpd-filesystem.noarch : The basic directory layout for lighttpd lighttpd-mod_authn_dbi.x86_64 : Authentication module for lighttpd that uses DBI lighttpd-mod_authn_gssapi.x86_64 : Authentication module for lighttpd that uses GSSAPI lighttpd-mod_authn_ldap.x86_64 : Authentication module for lighttpd that uses LDAP lighttpd-mod_authn_pam.x86_64 : Authentication module for lighttpd that uses PAM lighttpd-mod_authn_sasl.x86_64 : Authentication module for lighttpd that uses SASL lighttpd-mod_deflate.x86_64 : Compression module for lighttpd lighttpd-mod_gnutls.x86_64 : TLS module for lighttpd that uses GnuTLS lighttpd-mod_magnet.x86_64 : Lua module for lighttpd lighttpd-mod_maxminddb.x86_64 : GeoIP2 module for lighttpd to use for location lookups lighttpd-mod_mbedtls.x86_64 : TLS module for lighttpd that uses mbedTLS lighttpd-mod_nss.x86_64 : TLS module for lighttpd that uses NSS lighttpd-mod_openssl.x86_64 : TLS module for lighttpd that uses OpenSSL lighttpd-mod_vhostdb_dbi.x86_64 : Virtual host module for lighttpd that uses DBI lighttpd-mod_vhostdb_ldap.x86_64 : Virtual host module for lighttpd that uses LDAP lighttpd-mod_vhostdb_mysql.x86_64 : Virtual host module for lighttpd that uses MySQL lighttpd-mod_vhostdb_pgsql.x86_64 : Virtual host module for lighttpd that uses PostgreSQL lighttpd-mod_webdav.x86_64 : WebDAV module for lighttpd pagure-web-apache-httpd.noarch : Apache HTTPD configuration for Pagure python3-keycloak-httpd-client-install.noarch : Tools to configure Apache HTTPD as Keycloak client radicale3-httpd.noarch : httpd config for Radicale sympa-lighttpd.x86_64 : Sympa with lighttpd
 ```
 
-Alibaba Cloud Linux
-
-##### 列出软件包清单
+##### 1.9.2.2 列出软件包清单
 
 使用如下命令列出系统中所有已安装的以及可用的RPM 包信息。
 
@@ -4437,7 +4595,7 @@ dnf list expression
 httpd.x86_64 2.4.37-47.0.1.al8.2 alinux3-updates
 ```
 
-##### 显示 RPM 包信息
+##### 1.9.2.3 显示 RPM 包信息
 
 使用如下命令显示一个或者多个RPM 包信息。
 
@@ -4470,7 +4628,7 @@ dnf info package_name
  : web server.
 ```
 
-##### 安装 RPM 包
+##### 1.9.2.4 安装 RPM 包
 
 在 root 权限下执行如下命令安装一个软件包及其所有未安装的依赖：
 
@@ -4478,7 +4636,7 @@ dnf info package_name
 dnf install package_name
 ```
 
-或者，可以通过添加软件包名字同时安装多个软件包。配置文件/etc/dnf/dnf.conf 添加参数 strict=False，运行 dnf 命令参数添加--setopt=strict=0。请在 root 权限下执行如下命令： Alibaba Cloud Linux
+或者，可以通过添加软件包名字同时安装多个软件包。配置文件/etc/dnf/dnf.conf 添加参数 strict=False，运行 dnf 命令参数添加--setopt=strict=0。请在 root 权限下执行如下命令：
 
 ```
  dnf install package_name package_name --setopt=strict=0
@@ -4490,7 +4648,9 @@ dnf install package_name
 dnf install httpd
 ```
 
-##### 下载软件包
+##### 1.9.2.5 下载软件包
+
+在 root 权限下使用如下命令下载软件包：
 
 ```
 dnf download package_name
@@ -4508,7 +4668,9 @@ dnf download --resolve package_name
 dnf download --resolve httpd
 ```
 
-##### 删除软件包
+##### 1.9.2.6 删除软件包
+
+在 root 权限下使用如下命令删除软件包：
 
 ```
 dnf remove package_name
@@ -4520,11 +4682,11 @@ dnf remove package_name
 dnf remove httpd
 ```
 
-#### 管理软件包组
+#### 1.9.3 管理软件包组
 
 软件包集合是服务于一个共同目的的一组软件包，例如系统工具集等。使用 dnf 可以对软件包组进行安装/ 删除等操作，使相关操作更高效。
 
-##### 列出软件包组清单
+##### 1.9.3.1 列出软件包组清单
 
 使用 summary 参数，可以列出系统中所有已安装软件包组、可用的组和可用的环境组的数量，命令如下：
 
@@ -4538,7 +4700,7 @@ dnf groups summary
 # dnf groups summary
 ```
 
-上次元数据过期检查：`0:22:29` 前，执行于 `2023` 年 `03` 月 `22` 日星期三 `20` 时 `01` 分 `59` 秒。 可用组： `14` 要列出所有软件包组和它们的组ID ，命令如下： Alibaba Cloud Linux
+上次元数据过期检查：`0:22:29` 前，执行于 `2023` 年 `03` 月 `22` 日星期三 `20` 时 `01` 分 `59` 秒。 可用组： `14` 要列出所有软件包组和它们的组ID ，命令如下：
 
 ```
 dnf group list
@@ -4557,7 +4719,7 @@ dnf group list
    Xfce
 ```
 
-##### 显示软件包组信息
+##### 1.9.3.2 显示软件包组信息
 
 要列出包含在一个软件包组中必须安装的包和可选包，使用命令如下：
 
@@ -4565,7 +4727,7 @@ dnf group list
 dnf group info expression
 ```
 
-示例如下： Alibaba Cloud Linux
+示例如下：
 
 ```bash
 # dnf group info "Debugging Tools"
@@ -4624,9 +4786,9 @@ dnf group info expression
    rpmlint
 ```
 
-##### 安装软件包组
+##### 1.9.3.3 安装软件包组
 
-每一个软件包组都有自己的名称以及相应的ID（groupid），您可以使用软件包组名称或它的ID 进行安装。 要安装一个软件包组，请在root 权限下执行如下命令： Alibaba Cloud Linux
+每一个软件包组都有自己的名称以及相应的ID（groupid），您可以使用软件包组名称或它的ID 进行安装。 要安装一个软件包组，请在root 权限下执行如下命令：
 
 ```
 dnf group install group_name dnf group install groupid
@@ -4640,7 +4802,7 @@ dnf group install group_name dnf group install groupid
 
 输出过多，这里不展示
 
-##### 删除软件包组
+##### 1.9.3.4 删除软件包组
 
 要卸载软件包组，可以使用软件包组名称或它的ID，在root 权限下执行如下命令：
 
@@ -4656,7 +4818,7 @@ dnf group remove group_name dnf group remove groupid
 
 输出过多，这里不展示
 
-#### 检查并更新
+#### 1.9.4 检查并更新
 
 DNF 可以检查您的系统中是否有软件包需要更新。您可以通过 DNF 列出需要更新的软件包，并可以选择一次性全部更新或者只对指定包进行更新。
 
@@ -4688,7 +4850,7 @@ alinux-release.x86_64 3-1.7.al8 alinux3-updates alinux-repos.x86_64 3-1.7.al8 al
 dnf update package_name
 ```
 
-示例如下： Alibaba Cloud Linux
+示例如下：
 
 ```bash
 # dnf update kernel
@@ -4708,19 +4870,17 @@ dnf group update group_name
 dnf update
 ```
 
-### 日志管理
+### 1.10 日志管理
 
 在 Linux 系统中，日志记录了系统的运行状况、错误信息、安全事件等，对系统管理和故障排除非常重要。 阿里云服务器操作系统 V3拥有非常灵活和强大的日志功能，可以保存几乎所有的操作记录，并可以从中检索出我们需要的信息。
 
-#### 日志文件
+#### 1.10.1 日志文件
 
 日志文件通常存储在 /var/log 目录中，包括系统日志、安全日志、应用程序日志等，该目录主要包括以下日志文件： boot.log：系统启动过程中的日志信息，包括加载的模块、初始化的硬件、启动的服务等。 cron：记录系统中所有计划任务（Cron Jobs）的执行情况的日志。 hawkey.log：RPM 包管理器的日志文件，记录了 RPM 包管理器使用 Hawkey 库进行软件包管理操作的详细信息，例如软件包的依赖关系、安装、升级和删除等。 kdump.log：用于记录系统崩溃转储信息，包括 kdump 服务的启动、配置信息、转储过程中的错误和警告信息等。 lastlog：记录用户最近一次登录到系统的信息，包含用户的 UID、用户名、最后登录时间和登录位置。 maillog：邮件服务器的操作和事件的日志，通常包含有关邮件传输、发送、接收和错误的详细信息。 messages：系统级别的日志，记录各种系统级别事件和错误消息，包含系统启动和关机记录、内核事件 （硬件错误、内存故障、CPU 崩溃）、系统服务的启停、用户登录和注销、系统调试信息和安全事件等。 secure：与安全相关的日志，登录和注销事件、用户和组管理事件、sudo 操作、ssh 访问事件、安全漏洞事件等。 spooler：打印作业的日志。 btmp：登录失败日志。 wtmp：登录成功日志。 除此以外还有一些应用的日志子目录。
 
-#### 日志分析
+#### 1.10.2 日志分析
 
-Alibaba Cloud Linux
-
-##### 基础日志分析
+##### 1.10.2.1 基础日志分析
 
 journalctl 是systemd 系统日志服务的命令行工具，它可以查询和显示系统日志信息。journalctl 可以访问 systemd-journald 守护进程维护的系统日志，支持按时间、日志级别、单位和消息源等多种条件进行过滤和排序。一种便捷的方法是使用 journalctl 命令查看日志。 查看所有日志
 
@@ -4766,9 +4926,9 @@ journalctl -f -u sshd.service | grep keyword
 
 以上是 journactl 的常用命令，更多详细用法可以通过 man journalctl 命令查看。
 
-##### 高级日志分析
+##### 1.10.2.2 高级日志分析
 
-rsyslog 也是一款用于系统日志管理的工具，可以将其收集到的日志信息输出到 journalctl 所管理的日志服务中，从而实现rsyslog 和 journalctl 的协同工作。用户可以使用 rsyslog 进行高级日志管理（例如过滤、分类、处理、存储和归档），让用户更好地管理和维护系统日志信息。具体来说，rsyslog 可以实现以下功能： 收集系统日志：rsyslog 可以从多个来源收集系统日志信息，包括应用程序、系统内核和其他设备，例如路由器和交换机。 过滤和分类日志信息：rsyslog 可以根据用户的需求对日志信息进行过滤和分类，例如，将某个应用程序的日志信息单独存储到一个文件中。 处理和转换日志信息：rsyslog 还可以对日志信息进行处理和转换，例如，将日志信息转换为 JSON 或 XML 格式，或者对日志信息进行加密和解密。 存储和归档日志信息：rsyslog 可以将日志信息存储到本地文件系统或远程数据库中，并支持压缩和归档功能，以便更好地管理和维护日志信息。 Alibaba Cloud Linux 提供安全和可靠的日志记录服务：rsyslog 提供了安全和可靠的日志记录服务，包括数据备份和恢复、数据完整性校验和安全访问控制等功能。 在大多数情况下，用户可以通过配置文件/etc/rsyslog.conf 来定制 rsyslog 的行为，比如接收、处理和发送系统日志消息的方式，以及指定日志文件的格式、位置和文件名等。修改配置后需重启 rsyslog 服务使更改生效，注意在进行更改前备份旧的 rsyslog 配置文件。 以下是 Alinux 3 上的 rsyslog 默认配置文件：
+rsyslog 也是一款用于系统日志管理的工具，可以将其收集到的日志信息输出到 journalctl 所管理的日志服务中，从而实现rsyslog 和 journalctl 的协同工作。用户可以使用 rsyslog 进行高级日志管理（例如过滤、分类、处理、存储和归档），让用户更好地管理和维护系统日志信息。具体来说，rsyslog 可以实现以下功能： 收集系统日志：rsyslog 可以从多个来源收集系统日志信息，包括应用程序、系统内核和其他设备，例如路由器和交换机。 过滤和分类日志信息：rsyslog 可以根据用户的需求对日志信息进行过滤和分类，例如，将某个应用程序的日志信息单独存储到一个文件中。 处理和转换日志信息：rsyslog 还可以对日志信息进行处理和转换，例如，将日志信息转换为 JSON 或 XML 格式，或者对日志信息进行加密和解密。 存储和归档日志信息：rsyslog 可以将日志信息存储到本地文件系统或远程数据库中，并支持压缩和归档功能，以便更好地管理和维护日志信息。 提供安全和可靠的日志记录服务：rsyslog 提供了安全和可靠的日志记录服务，包括数据备份和恢复、数据完整性校验和安全访问控制等功能。 在大多数情况下，用户可以通过配置文件/etc/rsyslog.conf 来定制 rsyslog 的行为，比如接收、处理和发送系统日志消息的方式，以及指定日志文件的格式、位置和文件名等。修改配置后需重启 rsyslog 服务使更改生效，注意在进行更改前备份旧的 rsyslog 配置文件。 以下是 Alinux 3 上的 rsyslog 默认配置文件：
 
 ```bash
 # rsyslog configuration file
@@ -4805,8 +4965,6 @@ include(file="/etc/rsyslog.d/*.conf" mode="optional")
 # Don't log private authentication messages!
 ```
 
-Alibaba Cloud Linux
-
 ```bash
 *.info;mail.none;authpriv.none;cron.none /var/log/messages
 # The authpriv file has restricted access.
@@ -4841,13 +4999,13 @@ local7.* /var/log/boot.log
 cron.* /var/log/cron
 ```
 
-表示匹配所有 cron 类型的日志，并将它们写入到 /var/log/cron 文件中。 Alibaba Cloud Linux 其中 cron.* 是过滤器，过滤器中的 cron 是设备类型，可选设备范围是 kern、user、mail、 daemon、auth、 syslog,、lpr、news、cron、authpriv、ftp、local0~local7。* 通配符匹配的是所有日志级别，包括 debug,info, warning, error, critical, alert, emergency 等。 后面的/var/log/cron 则是动作，表示写入/var/log/cron 日志文件。动作不仅可以是写入指定文件，还可以是写入数据库、通过网络发送到其他日志服务器、发送给指定用户、执行脚本或者丢弃等。
+表示匹配所有 cron 类型的日志，并将它们写入到 /var/log/cron 文件中。 其中 cron.* 是过滤器，过滤器中的 cron 是设备类型，可选设备范围是 kern、user、mail、 daemon、auth、 syslog,、lpr、news、cron、authpriv、ftp、local0~local7。* 通配符匹配的是所有日志级别，包括 debug,info, warning, error, critical, alert, emergency 等。 后面的/var/log/cron 则是动作，表示写入/var/log/cron 日志文件。动作不仅可以是写入指定文件，还可以是写入数据库、通过网络发送到其他日志服务器、发送给指定用户、执行脚本或者丢弃等。
 
-#### 远程日志功能
+#### 1.10.3 远程日志功能
 
 当环境中包含多台机器时，用户可以通过配置远程日志，将所有节点上的日志集中到一台，以便统一管理和调试。远程日志记录可以提高日志的可用性和可靠性，并使日志更容易管理和分析。
 
-##### 配置远程日志服务端配置
+##### 1.10.3.1 配置远程日志服务端配置
 
 您可以将安装了 rsyslog 服务的 Alinux 3 机器配置为日志服务器，用于集中接收其他客户端系统发送的日志。步骤如下：
 1. 增加远程接收配置。
@@ -4863,7 +5021,7 @@ module(load="imtcp") # needs to be done just once input(type="imtcp" port="514")
 systemctl restart rsyslog.service
 ```
 
-##### 配置远程日志发送端配置
+##### 1.10.3.2 配置远程日志发送端配置
 
 要使用远程日志功能，您应当同时配置客户端，以允许 rsyslog 将本机日志发送到远程日志服务器。
 1. 增加远程发送配置。
@@ -4878,14 +5036,14 @@ systemctl restart rsyslog.service
       target="172.16.125.109" port="514" protocol="tcp"
 ```
 
-) 其中 ip 地址应当替换为您上一步操作中使用的 server ip。
+`)` 其中 ip 地址应当替换为您上一步操作中使用的 server ip。
 2. 重启 rsyslog 服务。
 
 ```bash
 systemctl restart rsyslog.service
 ```
 
-##### 测试远程日志
+##### 1.10.3.3 测试远程日志
 
 在 client 端执行以下操作。
 
@@ -4893,7 +5051,7 @@ systemctl restart rsyslog.service
 logger "test message"
 ```
 
-到服务端查看/var/log/messages，发现添加了一行记录，说明远程日志配置成功。 Alibaba Cloud Linux
+到服务端查看/var/log/messages，发现添加了一行记录，说明远程日志配置成功。
 
 ```
 tail -n1 /var/log/messages
@@ -4905,88 +5063,82 @@ tail -n1 /var/log/messages
 Apr 12 21:16:11 iZbp1glb8irh5ftjwildjtZ root[1195199]: test51129
 ```
 
-### 桌面环境
+### 1.11 桌面环境
 
-#### 基本操作
+#### 1.11.1 基本操作
 
-##### 登录
+##### 1.11.1.1 登录
 
-启动计算机后进入引导界面，阿里云服务器操作系统 V3作为默认选择项。倒计时 5 秒自动进入。 系统正常启动，初始化完成后出现登录窗口。系统会提示输入用户及密码，即系统安装过程中已创建的用户名和密码。如果尚未创建，请与管理员联系以获取用户名和密码。 Alibaba Cloud Linux
+启动计算机后进入引导界面，阿里云服务器操作系统 V3作为默认选择项。倒计时 5 秒自动进入。 系统正常启动，初始化完成后出现登录窗口。系统会提示输入用户及密码，即系统安装过程中已创建的用户名和密码。如果尚未创建，请与管理员联系以获取用户名和密码。
 
-##### 用户界面
+##### 1.11.1.2 用户界面
 
-进入系统后用户界面整体布局如图所示。 Alibaba Cloud Linux
+进入系统后用户界面整体布局如图所示。
 1. 顶栏
 用户界面顶部的横向栏提供了系统基本功能，从左到右分别为活动概述、日历与时钟、系统状态图标和系统菜单。
 2. 活动概述
-活动概述位于用户界面左上角，用于查看活跃的应用程序与窗口，或是在其中进行切换。 对于当前正在使用的应用程序，以“文件”为例，活动概述可进一步列举出适用于此程序的操作。 Alibaba Cloud Linux
+活动概述位于用户界面左上角，用于查看活跃的应用程序与窗口，或是在其中进行切换。 对于当前正在使用的应用程序，以“文件”为例，活动概述可进一步列举出适用于此程序的操作。
 3. 系统通知
-系统通知位于用户界面的正上方，包含系统时间、日历与系统通知。 Alibaba Cloud Linux
+系统通知位于用户界面的正上方，包含系统时间、日历与系统通知。
 4. 系统菜单
-系统菜单位于用户界面的右上角，可用于截图； 更新设置； 锁屏及切换用户； 挂起、重启、关闭、注销计算机； 查看与设置网络连接； 设置显示模式； Alibaba Cloud Linux
+系统菜单位于用户界面的右上角，可用于截图； 更新设置； 锁屏及切换用户； 挂起、重启、关闭、注销计算机； 查看与设置网络连接； 设置显示模式；
 5. 启动器
-启动器可以用于管理系统中已安装的所有应用，在启动器中使用分类导航或搜索功能可以快速找到需要的应用程序。 单击左上角活动概述，点击用户界面底部最右侧点状按钮即可显示出所有可用应用程序。 Alibaba Cloud Linux
+启动器可以用于管理系统中已安装的所有应用，在启动器中使用分类导航或搜索功能可以快速找到需要的应用程序。 单击左上角活动概述，点击用户界面底部最右侧点状按钮即可显示出所有可用应用程序。
 
-##### 锁屏
+##### 1.11.1.3 锁屏
 
 锁屏是保护用户数据，锁屏后必须使用用户密码进行登录。
 1. 在阿里云服务器操作系统 V3 桌面，右上角系统设置中单击**挂起**即可手动锁屏，如下图所示。
-Alibaba Cloud Linux
-2. 打开**设置**>**隐私**>**锁屏**，可以设置息屏延时时间、自动锁屏、自动锁屏延迟，如下图所示窗口。
-Alibaba Cloud Linux
+2. 打开**设置****>****隐私****>****锁屏**，可以设置息屏延时时间、自动锁屏、自动锁屏延迟，如下图所示窗口。
 
-##### 注销（登出）
+##### 1.11.1.4 注销（登出）
 
 注销是清除当前登录的用户信息，注销计算机后您可以使用其他用户账户来登录。
 1. 在阿里云服务器操作系统 V3 桌面，右上角系统设置中单击**注销**。
-Alibaba Cloud Linux
 2. 弹出如下图所示窗口，单击**注销**，登出系统。
-Alibaba Cloud Linux
 
-##### 关机与重启
+##### 1.11.1.5 关机与重启
 
 1. 在阿里云服务器操作系统 V3 桌面，单击任务栏右上角的**关机**或**重启**图标。
-Alibaba Cloud Linux
 2. 弹出如下图所示窗口，单击**关机**或**重启**，关闭系统或者重启系统。
-Alibaba Cloud Linux
 
-#### 系统管理
+#### 1.11.2 系统管理
 
-##### 设置中心
+##### 1.11.2.1 设置中心
 
 阿里云服务器操作系统 V3 通过设置中心来管理系统的基本设置，包括用户管理、网络设置、日期和时间、 个性化设置、显示设置等。进入用户界面后，单击系统菜单中的齿轮图案即可打开设置中心窗口。
 
 **网络**
 
-根据系统监测到的网络环境不同，左侧引导栏会出现**网络**或是**Wi-Fi**。此处以有线网络为例。 设置中心单击左侧**网络**进入详情页，可以打开或是关闭网络，还可以设置 VPN 和网络代理，如下图所示。 Alibaba Cloud Linux 单击右侧小齿轮图标，可查看此网络连接的详细信息，也可对此连接进行配置，如下图所示。 Alibaba Cloud Linux
+根据系统监测到的网络环境不同，左侧引导栏会出现**网络**或是**Wi-Fi**。此处以有线网络为例。 设置中心单击左侧**网络**进入详情页，可以打开或是关闭网络，还可以设置 VPN 和网络代理，如下图所示。 单击右侧小齿轮图标，可查看此网络连接的详细信息，也可对此连接进行配置，如下图所示。
 
 **蓝牙**
 
-设置中心单击左侧**蓝牙**进入详情页，在检测到有效的蓝牙设备后显示。 Alibaba Cloud Linux
+设置中心单击左侧**蓝牙**进入详情页，在检测到有效的蓝牙设备后显示。
 
 **外观**
 
-设置中心单击左侧**外观**进入详情页，可以设置窗口样式和选择图片作为桌面背景，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**外观**进入详情页，可以设置窗口样式和选择图片作为桌面背景，如下图所示。
 
 **通知**
 
-设置中心单击左侧**通知**进入详情页，可以设置是否打开勿扰模式，锁屏通知和应用通知，如下图所示。 Alibaba Cloud Linux 应用通知可以进一步设置。可以选择打开通知和声音警告，可以选择弹出通知提示，打开锁屏通知等设置， 如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**通知**进入详情页，可以设置是否打开勿扰模式，锁屏通知和应用通知，如下图所示。 应用通知可以进一步设置。可以选择打开通知和声音警告，可以选择弹出通知提示，打开锁屏通知等设置， 如下图所示。
 
 **搜索**
 
-设置中心单击左侧**搜索**进入详情页，可以设置启动器中搜索工具的搜索位置以及对应用的搜索权限，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**搜索**进入详情页，可以设置启动器中搜索工具的搜索位置以及对应用的搜索权限，如下图所示。
 
 **多任务**
 
-设置中心单击左侧**多任务**进入详情页，可以设置各类多任务属性，如热区、工作空间、多显示器等，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**多任务**进入详情页，可以设置各类多任务属性，如热区、工作空间、多显示器等，如下图所示。
 
 **APP**
 
-设置中心单击左侧**多任务**进入详情页，可以打开某个 APP 以及设置APP 的搜索或通知权限，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**多任务**进入详情页，可以打开某个 APP 以及设置APP 的搜索或通知权限，如下图所示。
 
 **隐私**
 
-设置中心单击左侧**隐私**进入详情页，可以对当前用户的隐私安全进行设置。 锁屏设置前面小节中已介绍； 定位服务设置； 摄像头设置麦克风设置； 文件历史与回收站设置。记住历史能够在下次使用时方便查找，而且历史可以选择清除。自动清理回收站及临时文件设置，避免计算机保存不必要信息。 Alibaba Cloud Linux
+设置中心单击左侧**隐私**进入详情页，可以对当前用户的隐私安全进行设置。 锁屏设置前面小节中已介绍； 定位服务设置； 摄像头设置麦克风设置； 文件历史与回收站设置。记住历史能够在下次使用时方便查找，而且历史可以选择清除。自动清理回收站及临时文件设置，避免计算机保存不必要信息。
 
 **在线账户**
 
@@ -4998,7 +5150,7 @@ Alibaba Cloud Linux
 
 **声音**
 
-设置中心单击左侧**声音**进入详情页，可以选择音频输出输入设备，设置音量和警报声类型，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**声音**进入详情页，可以选择音频输出输入设备，设置音量和警报声类型，如下图所示。
 
 **电源**
 
@@ -5006,27 +5158,27 @@ Alibaba Cloud Linux
 
 **显示器**
 
-设置中心单击左侧**显示器**进入详情页，可以设置显示方向、分辨率、刷新频率，让电脑显示到达最佳状态，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**显示器**进入详情页，可以设置显示方向、分辨率、刷新频率，让电脑显示到达最佳状态，如下图所示。
 
 **鼠标与触摸板**
 
-设置中心单击左侧**鼠标与触摸板**进入详情页，可设置鼠标和触摸板的主按钮、移动速度、是否开启加速、 滚轮方向等，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**鼠标与触摸板**进入详情页，可设置鼠标和触摸板的主按钮、移动速度、是否开启加速、 滚轮方向等，如下图所示。
 
 **键盘**
 
-设置中心单击左侧**键盘**进入详情页，可以设置键盘布局与输入法，切换输入源的方式、特殊字符输入方式以及键盘快捷键，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**键盘**进入详情页，可以设置键盘布局与输入法，切换输入源的方式、特殊字符输入方式以及键盘快捷键，如下图所示。
 
 **打印机**
 
-设置中心单击左侧**打印机**进入详情页，可以通过指定打印机网络地址或搜索方式添加打印机，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**打印机**进入详情页，可以通过指定打印机网络地址或搜索方式添加打印机，如下图所示。
 
 **可移动介质**
 
-可移动介质设置项是选择接入的可移动介质的响应方式。设置中心单击左侧**可移动介质**进入详情页，可设置的可移动介质包括 CD 音频、DVD 视频、音乐播放器、照片、软件等等。响应方式包括询问如何处理、 无动作、打开文件夹、打开相应的应用程序。如下图所示。 Alibaba Cloud Linux
+可移动介质设置项是选择接入的可移动介质的响应方式。设置中心单击左侧**可移动介质**进入详情页，可设置的可移动介质包括 CD 音频、DVD 视频、音乐播放器、照片、软件等等。响应方式包括询问如何处理、 无动作、打开文件夹、打开相应的应用程序。如下图所示。
 
 **色彩**
 
-设置中心单击左侧**色彩**进入详情页，可以添加当前系统内的色彩模式也可以导入新的色彩模式，如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**色彩**进入详情页，可以添加当前系统内的色彩模式也可以导入新的色彩模式，如下图所示。
 
 **区域与语言**
 
@@ -5036,9 +5188,9 @@ Alibaba Cloud Linux
 
 设置中心单击左侧**色彩**进入详情页，通用辅助功能可以对视觉、听觉、打字、指向和单击进行设置。
 1. 快捷设置
-打开辅助功能快捷设置后可在顶栏中快速设置辅助功能，如下图所示。 Alibaba Cloud Linux
+打开辅助功能快捷设置后可在顶栏中快速设置辅助功能，如下图所示。
 2. 视觉
-Alibaba Cloud Linux 在通用辅助功能首页，可以看到**视觉**设置项。具体设置项如下： 打开或关闭高对比度； 是否减少动画效果； 是否使用大号字体； 光标的尺寸选择； 设置发声键，数字键盘锁定和大小写锁定时发出蜂鸣声； 是否隐藏滚动条； 设置屏幕朗读，移动焦点时朗读显示的文本；
+在通用辅助功能首页，可以看到**视觉**设置项。具体设置项如下： 打开或关闭高对比度； 是否减少动画效果； 是否使用大号字体； 光标的尺寸选择； 设置发声键，数字键盘锁定和大小写锁定时发出蜂鸣声； 是否隐藏滚动条； 设置屏幕朗读，移动焦点时朗读显示的文本；
 3. 听觉
 在通用辅助功能首页，可以看到**听觉**设置项。可设置警示声视觉提示，打开视觉提示后警示声会伴随屏幕闪烁。
 4. 打字
@@ -5048,17 +5200,17 @@ Alibaba Cloud Linux 在通用辅助功能首页，可以看到**视觉**设置�
 6. 缩放效果
 在通用辅助功能首页，可以看到**缩放效果**设置项。可以选择是否打开缩放效果，以及打开缩放效果后的放大镜位置和比率、十字光标的显示参数以及色彩效果；
 7. 用户
-设置中心单击左侧**用户**进入详情页，可以： 查看当前用户的信息，选择头像与修改用户名和密码； 添加新的用户，设置账号类型。输入用户名、密码； Alibaba Cloud Linux Alibaba Cloud Linux
+设置中心单击左侧**用户**进入详情页，可以： 查看当前用户的信息，选择头像与修改用户名和密码； 添加新的用户，设置账号类型。输入用户名、密码；
 8. 默认应用程序
-设置中心单击左侧**默认应用程序**进入详情页。当安装有多个功能相似的应用程序时，可以选择其中的一个应用作为对应文件类型的默认启动程序。如下图所示。 Alibaba Cloud Linux
+设置中心单击左侧**默认应用程序**进入详情页。当安装有多个功能相似的应用程序时，可以选择其中的一个应用作为对应文件类型的默认启动程序。如下图所示。
 9. 日期和时间
-设置中心单击左侧**日期和时间**进入详情页，可以设置日期与时间，时区和时间格式，如下图所示。默认情况下，系统通过网络自动同步该时区的本地时间和日期。用户也可以手动修改时间和日期。手动设置后，自动同步功能会被关闭。 Alibaba Cloud Linux
+设置中心单击左侧**日期和时间**进入详情页，可以设置日期与时间，时区和时间格式，如下图所示。默认情况下，系统通过网络自动同步该时区的本地时间和日期。用户也可以手动修改时间和日期。手动设置后，自动同步功能会被关闭。
 
-##### 系统监视器
+##### 1.11.2.2 系统监视器
 
-系统监视器是一个对硬件负载、程序运行和系统服务，进行监测查看和管理操作的系统工具。系统监视器可以实时监控处理器状态、内存占用率、网络上传下载速度、还可以管理系统进程和应用进程，也支持搜索进程和强制结束进程。 Alibaba Cloud Linux Alibaba Cloud Linux
+系统监视器是一个对硬件负载、程序运行和系统服务，进行监测查看和管理操作的系统工具。系统监视器可以实时监控处理器状态、内存占用率、网络上传下载速度、还可以管理系统进程和应用进程，也支持搜索进程和强制结束进程。
 
-##### 磁盘管理器
+##### 1.11.2.3 磁盘管理器
 
 **概述**
 
@@ -5066,9 +5218,11 @@ Alibaba Cloud Linux 在通用辅助功能首页，可以看到**视觉**设置�
 
 **操作介绍**
 
-进入启动器，单击工具选择**磁盘**打开。管理器界面显示当前系统下所有的硬盘、CD/DVD驱动器和分区设备。不同的设备操作也不同，涉及数据安全，请谨慎操作。 非系统分区所在的磁盘设备：可卸载，可删除设备中的分区； Alibaba Cloud Linux CD/DVD 驱动器：只可以卸载设备； 系统分区：只可以卸载分区或者停用当前交换分区；
+**运行磁盘管理器**
 
-##### 文件管理器
+进入启动器，单击工具选择**磁盘**打开。管理器界面显示当前系统下所有的硬盘、CD/DVD驱动器和分区设备。不同的设备操作也不同，涉及数据安全，请谨慎操作。 非系统分区所在的磁盘设备：可卸载，可删除设备中的分区； CD/DVD 驱动器：只可以卸载设备； 系统分区：只可以卸载分区或者停用当前交换分区；
+
+##### 1.11.2.4 文件管理器
 
 **概述**
 
@@ -5076,36 +5230,33 @@ Alibaba Cloud Linux 在通用辅助功能首页，可以看到**视觉**设置�
 
 **常用操作**
 
-打开启动器，单击左边栏**文件**打开。文件管理器具备基本的文件管理功能，对文件（夹）进行新建、复制、重命名、删除以及文件搜索等操作都非常简单。 切换视图在右上角第二个按钮，可以调整视图样式; 主菜单功能在右上角第三个按钮，可以设置排序方式、隐藏文件等。 批量重命名。在文件管理器界面上，选中多个文件。右击文件，并选择**重命名**。可设置使用模板命名或者查找并替换文本。如下图所示。 Alibaba Cloud Linux
+打开启动器，单击左边栏**文件**打开。文件管理器具备基本的文件管理功能，对文件（夹）进行新建、复制、重命名、删除以及文件搜索等操作都非常简单。 切换视图在右上角第二个按钮，可以调整视图样式; 主菜单功能在右上角第三个按钮，可以设置排序方式、隐藏文件等。 批量重命名。在文件管理器界面上，选中多个文件。右击文件，并选择**重命名**。可设置使用模板命名或者查找并替换文本。如下图所示。
 
-##### 日志收集工具
+##### 1.11.2.5 日志收集工具
 
-日志收集工具是负责收集程序运行时所产生日志的小工具，如操作系统和应用程序在启动、运行等过程中的相关信息。通过分析详细日志信息，可以快速地找到故障原因并解决问题。 Alibaba Cloud Linux 日志收集工具将收集的日志做了详细的分类，可按需选择要查阅的日志。日志优先级分为重要和全部，两个角度来满足使用需求。其次根据所属不同将日志分为应用程序、系统、安全和硬件四种，可以根据实际情况选择。
+日志收集工具是负责收集程序运行时所产生日志的小工具，如操作系统和应用程序在启动、运行等过程中的相关信息。通过分析详细日志信息，可以快速地找到故障原因并解决问题。 日志收集工具将收集的日志做了详细的分类，可按需选择要查阅的日志。日志优先级分为重要和全部，两个角度来满足使用需求。其次根据所属不同将日志分为应用程序、系统、安全和硬件四种，可以根据实际情况选择。
 
-### 中文支持
+### 1.12 中文支持
 
 阿里云服务器操作系统 V3 提供完整的中文语言支持。在 Gnome 桌面环境下，系统提供简洁、易用的中文界面。用户可以在安装阶段进行语言选择，直接选择将系统默认语言设置为中文；也可以在进入系统后，手动将系统语言调整为中文或其他语言。
 
-#### 系统语言设置
+#### 1.12.1 系统语言设置
 
 操作系统支持系统语言在多语言之间切换。在登录系统后，用户可以切换为任意一种支持的语言。本节以英文环境为例，介绍如何切换为中文模式。
 1. 单击左上角活动“Activities”——程序活动块中找到设置“Settings”
-Alibaba Cloud Linux 此外，还有多种方式进入设置菜单： 在桌面右键，选择 Settings 栏进入。 用户也可以选择在终端中输入命令 `gnome-control-center` 进入。
+此外，还有多种方式进入设置菜单： 在桌面右键，选择 Settings 栏进入。 用户也可以选择在终端中输入命令 `gnome-control-center` 进入。
 2. 左侧边栏选择区域和语言“Region and Languages”。
-Alibaba Cloud Linux
 3. 在语言“Language”、格式“Formats”中找到并选择简体中文，单击最下方选项可以扩展选项并检索关键
-字。勾选完毕后，单击“Select”按钮。 Alibaba Cloud Linux Alibaba Cloud Linux
+字。勾选完毕后，单击“Select”按钮。
 4. 操作完成后，需要注销账户，重新启动，完成中文语言加载。
 
-#### 添加输入法
+#### 1.12.2 添加输入法
 
 添加中文输入法的入口在“设置”——“键盘”中：
 1. 在输入源“Input Sources”中，选择并添加汉语拼音输入法。
-Alibaba Cloud Linux
 2. 完成后，在右上角的输入法切换栏，可以手动选择中文拼音输入法并切换。
-Alibaba Cloud Linux
 
-#### GB18030 支持
+#### 1.12.3 GB18030 支持
 
 阿里云服务器操作系统 V3 的软件默认运行语言环境为zh_CN.UTF-8。同时，运行环境字符集添加了对 GB 18030-2022 的支持，用户可以通过手动切换的形式，将运行语言环境切换至 GB 18030 或其他环境。当软件运行在不匹配自身字符编码规则的运行环境中时，字符显示会出现乱码。阿里云服务器操作系统 V3 图形环境已经集成了支持 GB 18030-2022 标准的 Alibaba PuHuiTi 字体，如果遇到第三方应用无法显示字形的情况，请确保使用的字体是 Alibaba PuHuiTi。本节介绍切换语言运行环境至 GB 18030 的方法。
 1. locale 命令用于将当前语言环境或全部公共语言环境输出到控制台，定义了软件运行时的语言环境。在终
@@ -5115,7 +5266,7 @@ Alibaba Cloud Linux
 locale
 ```
 
-返回示例如下： Alibaba Cloud Linux
+返回示例如下：
 
 ```
 LANG=zh_CN.UTF-8 LC_CTYPE="zh_CN.UTF-8" LC_NUMERIC="zh_CN.UTF-8" LC_TIME="zh_CN.UTF-8" LC_COLLATE="zh_CN.UTF-8" LC_MONETARY="zh_CN.UTF-8" LC_MESSAGES="zh_CN.UTF-8" LC_PAPER="zh_CN.UTF-8" LC_NAME="zh_CN.UTF-8" LC_ADDRESS="zh_CN.UTF-8" LC_TELEPHONE="zh_CN.UTF-8" LC_MEASUREMENT="zh_CN.UTF-8" LC_IDENTIFICATION="zh_CN.UTF-8" LC_ALL=
@@ -5137,8 +5288,6 @@ LANG=zh_CN.UTF-8 LC_CTYPE="zh_CN.UTF-8" LC_NUMERIC="zh_CN.UTF-8" LC_TIME="zh_CN.
 | LC ADDRESS _ | 地址显示格式设置。 |
 | LC TELEPHONE _ | 电话号码显示格式设置。 |
 | LC MEASUREMENT _ | 度量单位显示格式设置。 |
-
-Alibaba Cloud Linux
 
 | LC IDENTIFICATION _ | 汇编信息显示格式设置。 |
 |---|---|
@@ -5180,13 +5329,13 @@ locale
 LANG=zh_CN.gb18030 LC_CTYPE="zh_CN.gb18030" LC_NUMERIC="zh_CN.gb18030" LC_TIME="zh_CN.gb18030" LC_COLLATE="zh_CN.gb18030" LC_MONETARY="zh_CN.gb18030" LC_MESSAGES="zh_CN.gb18030" LC_PAPER="zh_CN.gb18030" LC_NAME="zh_CN.gb18030" LC_ADDRESS="zh_CN.gb18030" LC_TELEPHONE="zh_CN.gb18030" LC_MEASUREMENT="zh_CN.gb18030" LC_IDENTIFICATION="zh_CN.gb18030" LC_ALL=
 ```
 
-### 虚拟化
+### 1.13 虚拟化
 
-#### 配置虚拟化环境
+#### 1.13.1 配置虚拟化环境
 
-##### 硬件查看
+##### 1.13.1.1 硬件查看
 
-查看本机硬件是否支持虚拟化。 Alibaba Cloud Linux
+查看本机硬件是否支持虚拟化。
 
 ```
 egrep -c '(svm|vmx)' /proc/cpuinfo
@@ -5198,7 +5347,7 @@ egrep -c '(svm|vmx)' /proc/cpuinfo
 
 在某些情况下，您的计算机可能会支持硬件虚拟化，但默认情况下未启用。您可以在 BIOS 设置中查找相关选项并启用它。
 
-##### 组件安装
+##### 1.13.1.2 组件安装
 
 **kvm模块**
 
@@ -5240,9 +5389,9 @@ systemctl start libvirtd
 
 virsh 是基于 libvirt 实现的虚拟化管理工具，把 libvirt 的底层 API 包装成命令行，以便于在命令行进行虚拟机管理的操作。在安装 libvirt 时会自动安装 virsh，后面小节中将使用 virsh 来操作虚拟机。
 
-##### 环境验证
+##### 1.13.1.3 环境验证
 
-通过如下命令验证虚拟化环境是否配置完成： Alibaba Cloud Linux
+通过如下命令验证虚拟化环境是否配置完成：
 
 ```
 virt-host-validate
@@ -5261,9 +5410,9 @@ QEMU: Checking for hardware virtualization : PASS
 
 如果 virt-host-validate 检查返回 PASS 值，说明虚拟化功能已经准备好；如果返回 WARNING 值，说明虚拟化功能/性能可以改进，但不修复也不影响使用；如果返回 FAIL，则需要按照提示修复问题。
 
-#### 管理虚拟机
+#### 1.13.2 管理虚拟机
 
-##### 虚拟机创建
+##### 1.13.2.1 虚拟机创建
 
 **操作步骤**
 
@@ -5296,19 +5445,17 @@ libvirt 提供了基于 XML 的配置文件格式，用于配置和管理虚拟�
   </clock>
 ```
 
-<
+`<`
 
 ```
 ff>d
 ```
 
-t `</`
+`t` `</`
 
 ```
 ff>
 ```
-
-Alibaba Cloud Linux
 
 ```xml
   <on_poweroff>destroy</on_poweroff>
@@ -5326,7 +5473,7 @@ Alibaba Cloud Linux
 
 <source file='/path/to/vhd_file'/> <!-- 填写阿里云服务器操作系统 `V3` 镜像的绝对路径。
 
-```xml
+```
 -->
       <backingStore/>
       <target dev='hda' bus='ide'/>
@@ -5372,8 +5519,6 @@ function='on'/>
 <aliasname='serial0'/>
 ```
 
-Alibaba Cloud Linux
-
 ```xml
       <alias name=serial0/>
     </serial>
@@ -5403,7 +5548,7 @@ Alibaba Cloud Linux
 virsh define alinux3.xml
 ```
 
-运行启动虚拟机：
+虚拟机创建完成以后，可通过以下命令管理虚拟机（运行、关闭和删除）： 运行启动虚拟机：
 
 ```
 virsh start alinux3
@@ -5439,11 +5584,11 @@ virsh destroy alinux3
 virsh undefine alinux3
 ```
 
-##### 虚拟机信息查看
+##### 1.13.2.2 虚拟机信息查看
 
-Alibaba Cloud Linux virsh 可以通过多种方式查看虚拟机相关的信息，以下是一些常用的命令： virshlist：列出当前正在运行的虚拟机。 virsh dominfo vm_name：显示指定虚拟机的基本信息，包括虚拟机 ID、名称、UUID、内存大小、虚拟 CPU 数量等。 virsh domstate vm_name：显示指定虚拟机的运行状态，包括 running（运行中）、paused（暂停中）和 shut off（已关闭）。 virsh domiflist vm_name：显示指定虚拟机的网络接口信息，包括接口名称、MAC 地址、虚拟网络名称、虚拟网络设备类型等。 virsh domblklist vm_name：显示指定虚拟机的磁盘信息，包括磁盘名称、磁盘类型、磁盘设备路径、 磁盘容量等。 virsh dommemstat vm_name：显示指定虚拟机的内存使用情况，包括内存总量、已使用内存、可用内存等。 virsh domblkinfo vm_name path_to_disk_image：显示指定磁盘镜像文件的信息，包括磁盘大小、 簇大小、扇区大小、UID、GID 等。 virsh cpu-stats vm_name：显示指定虚拟机的 CPU 使用情况，包括 CPU 时间、CPU 周期、CPU 利用率等。 以上命令可以帮助用户了解虚拟机的基本信息、运行状态、网络、存储、内存和 CPU 使用情况等。可以根据实际需要选择合适的命令来查看虚拟机的信息。
+virsh 可以通过多种方式查看虚拟机相关的信息，以下是一些常用的命令： virshlist：列出当前正在运行的虚拟机。 virsh dominfo vm_name：显示指定虚拟机的基本信息，包括虚拟机 ID、名称、UUID、内存大小、虚拟 CPU 数量等。 virsh domstate vm_name：显示指定虚拟机的运行状态，包括 running（运行中）、paused（暂停中）和 shut off（已关闭）。 virsh domiflist vm_name：显示指定虚拟机的网络接口信息，包括接口名称、MAC 地址、虚拟网络名称、虚拟网络设备类型等。 virsh domblklist vm_name：显示指定虚拟机的磁盘信息，包括磁盘名称、磁盘类型、磁盘设备路径、 磁盘容量等。 virsh dommemstat vm_name：显示指定虚拟机的内存使用情况，包括内存总量、已使用内存、可用内存等。 virsh domblkinfo vm_name path_to_disk_image：显示指定磁盘镜像文件的信息，包括磁盘大小、 簇大小、扇区大小、UID、GID 等。 virsh cpu-stats vm_name：显示指定虚拟机的 CPU 使用情况，包括 CPU 时间、CPU 周期、CPU 利用率等。 以上命令可以帮助用户了解虚拟机的基本信息、运行状态、网络、存储、内存和 CPU 使用情况等。可以根据实际需要选择合适的命令来查看虚拟机的信息。
 
-##### 虚拟机配置更新
+##### 1.13.2.3 虚拟机配置更新
 
 编辑指定虚拟机的 XML 配置文件：
 
@@ -5451,20 +5596,20 @@ Alibaba Cloud Linux virsh 可以通过多种方式查看虚拟机相关的信息
 virsh edit alinux3
 ```
 
-##### 网络连接
+##### 1.13.2.4 网络连接
 
 QEMU-KVM 虚拟机可以使用多种不同的网络连接类型。以下是一些常用的网络连接类型： NAT：QEMU 会为虚拟机创建一个私有的子网，并通过主机的网络连接将虚拟机连接到 Internet。该网络连接类型适合用于一些不需要公共 IP 地址的场景，如开发、测试环境等。 桥接：QEMU 将虚拟网卡连接到主机的物理网卡上，使得虚拟机可以和主机处于同一网络中，可以直接访问主机和其他网络设备。该网络连接类型适合用于一些需要公共 IP 地址的场景，如 Web 服务器、 DNS 服务器等。 主机网络：QEMU 将虚拟机直接连接到主机上，虚拟机和主机处于同一网络中，但是无法访问外部网络。该网络连接类型适合用于一些内网环境下的虚拟机，如测试、开发环境等。 仅主机：QEMU 将虚拟机和主机隔离开来，虚拟机无法访问任何网络，只能和主机进行通信。该网络连接类型适合用于一些严格的安全环境下的虚拟机。 要在 virsh 中配置虚拟机的网络连接，可以在 alinux3.xml 中的 <interface> 段修改。前面我们配置的虚拟机网络为如下内容：
 
-```xml
+```
 <interface type='network'>
  <source network='default'/>
   <model type='virtio'/>
 </interface>
 ```
 
-Alibaba Cloud Linux 这段配置代码表示将虚拟机的网络接口配置为使用默认网络（通过 libvirt 自动创建的网络），<interface type='network'>表示该接口的类型为网络接口，<source network='default'/>表示该接口使用默认的网络，<model type='virtio'/>表示使用 virtio 网络模型。这种配置方式会将虚拟机的网络接口连接到一个网络，但该网络的类型和配置取决于默认网络的配置。default 网络是 libvirt 针对 KVM/QEMU 虚拟化环境预置的默认虚拟网络，它在 libvirt 安装和配置时就已经创建好了。 虚拟机启动时，libvirt 会自动创建默认网络并补充网络配置信息，运行中的虚拟机可以用如下命令查看当前网络配置：
+这段配置代码表示将虚拟机的网络接口配置为使用默认网络（通过 libvirt 自动创建的网络），<interface type='network'>表示该接口的类型为网络接口，<source network='default'/>表示该接口使用默认的网络，<model type='virtio'/>表示使用 virtio 网络模型。这种配置方式会将虚拟机的网络接口连接到一个网络，但该网络的类型和配置取决于默认网络的配置。default 网络是 libvirt 针对 KVM/QEMU 虚拟化环境预置的默认虚拟网络，它在 libvirt 安装和配置时就已经创建好了。 虚拟机启动时，libvirt 会自动创建默认网络并补充网络配置信息，运行中的虚拟机可以用如下命令查看当前网络配置：
 
-```bash
+```python
 sudo virsh net-dumpxml default
 ```
 
@@ -5515,7 +5660,7 @@ xml 的内容如下：
 </network>
 ```
 
-Alibaba Cloud Linux name 为网络名称，bridge 为虚拟网桥名称，ip 为网络地址，dhcp 为该网络的 DHCP 配置。 启动新网络。
+name 为网络名称，bridge 为虚拟网桥名称，ip 为网络地址，dhcp 为该网络的 DHCP 配置。 启动新网络。
 
 ```
 virsh net-start hostonly
@@ -5529,11 +5674,11 @@ virsh attach-interface alinux3 --type network --source hostonly --model virtio -
 
 `ig` 最后启动虚拟机。
 
-#### 管理虚拟资源
+#### 1.13.3 管理虚拟资源
 
-##### 虚拟 CPU 管理
+##### 1.13.3.1 虚拟 CPU 管理
 
-查看当前虚拟机 CPU 配额。
+虚拟 CPU 管理可以实现增加/减少虚拟机使用的 CPU 核数。几个管理配置命令如下： 查看当前虚拟机 CPU 配额。
 
 ```
 virsh schedinfo <VMInstance>
@@ -5557,7 +5702,7 @@ virsh schedinfo <VMInstance> --live cpu_shares=<number>
 virsh schedinfo testVM --live cpu_shares=2048
 ```
 
-返回示例如下： Alibaba Cloud Linux
+返回示例如下：
 
 ```
 Scheduler : posix cpu_shares : 2048 vcpu_period : 100000 vcpu_quota : -1 emulator_period: 100000 emulator_quota : -1 global_period : 100000 global_quota : -1 iothread_period: 100000 iothread_quota : -1
@@ -5588,7 +5733,7 @@ emulator: CPU Affinity ----------------------------------
        *: 0-63
 ```
 
-Alibaba Cloud Linux 在线绑定修改处于 running 状态的虚拟机对应的 QEMU 进程的绑定关系，使用带–live 参数的 vcpu emulatorpin 命令：
+在线绑定修改处于 running 状态的虚拟机对应的 QEMU 进程的绑定关系，使用带–live 参数的 vcpu emulatorpin 命令：
 
 ```
 virsh emulatorpin testVM --live 2-3 virsh emulatorpin testVM #修改后查看
@@ -5616,7 +5761,7 @@ emulator: CPU Affinity ----------------------------------
 
 以上命令把虚拟机 testVM 对应的 QEMU 进程绑定到物理 CPU0、2、3 上，即限制了 QEMU 进程只在这三个物理 CPU 上调度。这一绑定关系的调整不会立即生效，在虚拟机下一次启动后才生效，并持久生效。
 
-##### 虚拟内存管理
+##### 1.13.3.2 虚拟内存管理
 
 传统的多核运算使用 SMP（Symmetric Multi-Processor）模式：将多个处理器与一个集中的存储器和 I/O 总线相连。所有处理器只能访问同一个物理存储器，因此 SMP 系统也被称为一致存储器访问（UMA） 系统。一致性指无论在什么时候，处理器只能为内存的每个数据保持或共享唯一一个数值。很显然，SMP 的缺点是可伸缩性有限，因为在存储器和 I/O 接口达到饱和的时候，增加处理器并不能获得更高的性能。 NUMA（Non Uniform Memory Access Architecture）模式是一种分布式存储器访问方式，处理器可以同时访问不同的存储器地址，大幅度提高并行性。 NUMA 模式下，处理器被划分成多个“节点”（NODE），每个节点分配一块本地存储器空间。所有节点中的处理器都可以访问全部的物理存储器， 但是访问本节点内的存储器所需要的时间，比访问某些远程节点内的存储器所花的时间要少得多。 Host NUMA 信息查看：
 
@@ -5624,7 +5769,7 @@ emulator: CPU Affinity ----------------------------------
 numactl -H
 ```
 
-返回如下示例： Alibaba Cloud Linux
+返回如下示例：
 
 ```
 available: 4 nodes (0-3) node 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 node 0 size: 257170 MB node 0 free: 60456 MB node 1 cpus: 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 node 1 size: 258043 MB node 1 free: 202468 MB node 2 cpus: 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 node 2 size: 258043 MB node 2 free: 130961 MB node 3 cpus: 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 1 15 116 117 118 119 120 121 122 123 124 125 126 127 node 3 size: 255991 MB node 3 free: 226530 MB node distances: node 0 1 2 3
@@ -5650,9 +5795,9 @@ yum install numactl -y
 
 绑定虚拟机内存分配节点，一般在虚拟机的性能测试中经常遇到，内存与 vCPU 同属于一个节点可以提升虚拟机性能，避免远端内存访问。
 
-**说明**
+> **说明：** 虚拟机远端内存访问可能导致一些性能波动，比如数据库，多次测试性能抖动，影响测试效果。
 
-虚拟机远端内存访问可能导致一些性能波动，比如数据库，多次测试性能抖动，影响测试效果。 除修改虚拟机 XML 文件约束虚拟机内存分配的节点外，也可修改虚拟机 XML 文件，为虚拟机虚拟多个节点，为测试 NUMA 功能需要，配置示例如下： Alibaba Cloud Linux
+除修改虚拟机 XML 文件约束虚拟机内存分配的节点外，也可修改虚拟机 XML 文件，为虚拟机虚拟多个节点，为测试 NUMA 功能需要，配置示例如下：
 
 ```xml
 <cputune>
@@ -5676,9 +5821,9 @@ yum install numactl -y
 
 注意 <cpu> 段的信息需要增加在 alinux3.xml 的 <cpu> 段内，而不是新增加一个 <cpu> 段。 参数简单说明： <numa>项提供虚拟机内部呈现 NUMA 拓扑功能，“cell id”表示 vNode 编号，“cpus”表示 vCPU 编号，“memory”表示对应 vNode 上的内存大小。 如果希望通过 Guest NUMA 提供更好的性能，则需要配置<numatune>和<cputune>，使 vCPU 和对应的内存分布在同一个物理 NUMA NODE 上。 <numatune>中的“cellid”和<numa>中的“cell id”是对应的；“mode”可以配置为“strict”（严格从指定 node 上申请内存，内存不够则失败）、“preferred”（优先从某一 node 上申请内存，如果不够则从其他 node 上申请）、“interleave”（从指定的 node 上交叉申请内存）；“nodeset”表示指定物理 NUMA NODE。 <cputune>中需要将同一 cell id 中的 vCPU 绑定到与 memnode 相同的物理 NUMA NODE 上。
 
-### 编译器和编程语言
+### 1.14 编译器和编程语言
 
-#### C++ 编译器 ACC
+#### 1.14.1 C++ 编译器 ACC
 
 ACC 基于 Clang/LLVM-13 社区开源版本开发，继承开源版本支持的所有选项、参数。另外 ACC 在开源版本基础之上，提供特有的特性、优化。
 
@@ -5698,7 +5843,7 @@ export PATH=/opt/alibaba-cloud-compiler/bin:$PATH
 
 **使用ACC 编译 C、C++程序**
 
-C 程序如下： Alibaba Cloud Linux
+C 程序如下：
 
 ```bash
 # cat hello.c
@@ -5706,10 +5851,9 @@ C 程序如下： Alibaba Cloud Linux
 int main() {
   printf("hello C\n");
   return 0;
-}
 ```
 
-编译上述 `hello.c` 程序
+`}` 编译上述 `hello.c` 程序
 
 ```bash
 # clang -O2 hello.c -o hello.c.out
@@ -5723,10 +5867,9 @@ C++程序如下：
 int main() {
   std::cout << "hello C++" << std::endl;
   return 0;
-}
 ```
 
-编译上述 `hello.cpp` 程序
+`}` 编译上述 `hello.cpp` 程序
 
 ```bash
 # clang++ -O2 hello.cpp -o hello.cpp.out
@@ -5753,21 +5896,24 @@ ACC支持 C++20 Coroutine、Modules 特性，用户调用 clang++编译 C++程�
 
 Modules代码如下：
 
-```java
+```bash
 # cat Hello.cppm
 module;
 #include <iostream>
 export module Hello; export void hello() {
   std::cout << "Hello World!\n";
-}
+```
+
+`}`
+
+```java
 # cat use.cpp
 import Hello; int main() {
   hello();
   return 0;
-}
 ```
 
-编译上述 `Modules` 样例
+`}` 编译上述 `Modules` 样例
 
 ```bash
 # clang++ -std=c++20 Hello.cppm --precompile -o Hello.pcm
@@ -5789,13 +5935,21 @@ template <typename T> struct generator {
     std::suspend_always yield_value(T value) {
       this->current_value = value;
       return {};
-    }
+```
+
+`}`
+
+```
     std::suspend_always initial_suspend() { return {}; }
     std::suspend_always final_suspend() noexcept { return {}; }
     generator get_return_object() { return generator{this}; };
     void unhandled_exception() {}
     void return_void() {}
-  };
+```
+
+};
+
+```
   struct iterator {
     std::coroutine_handle<promise_type> _Coro;
     bool _Done;
@@ -5804,23 +5958,37 @@ template <typename T> struct generator {
     iterator &operator++() {
 ```
 
-Alibaba Cloud Linux
-
 ```
       _Coro.resume();
       _Done = _Coro.done();
       return *this;
-    }
+```
+
+`}`
+
+```
     bool operator==(iterator const &_Right) const {
       return _Done == _Right._Done;
-    }
+```
+
+`}`
+
+```
     bool operator!=(iterator const &_Right) const { return !(*this == _Right); }
     T const &operator*() const { return _Coro.promise().current_value; }
-  };
+```
+
+};
+
+```
   iterator begin() {
     p.resume();
     return {p, p.done()};
-  }
+```
+
+`}`
+
+```
   iterator end() { return {p, true}; }
   generator(generator const &) = delete;
   ~generator() { if (p) p.destroy(); }
@@ -5828,35 +5996,42 @@ private:
   explicit generator(promise_type *p)
       : p(std::coroutine_handle<promise_type>::from_promise(*p)) {}
   std::coroutine_handle<promise_type> p;
-}; template <typename T> generator<T> seq() { for (T i = {};; ++i) co_yield i; } template <typename T> generator<T> take_until(generator<T> &g, T limit) {
+```
+
+};
+
+```
+template <typename T> generator<T> seq() { for (T i = {};; ++i) co_yield i; } template <typename T> generator<T> take_until(generator<T> &g, T limit) {
   for (auto &&v : g)
     if (v < limit)
       co_yield v;
     else
       break;
-} int main() {
+```
+
+`}`
+
+```
+int main() {
   auto s = seq<int>();
   auto t = take_until(s, 10);
   int generated_result = std::accumulate(t.begin(), t.end(), 0);
   std::cout << "Calculatation from generator: " << generated_result << "\n";
   return 0;
-}
 ```
 
-编译上述 `Modules` 样例
+`}` 编译上述 `Modules` 样例
 
 ```bash
 # clang++ -std=c++20 generator.cpp -o generator
 ```
-
-Alibaba Cloud Linux
 
 ```bash
 # ./generator
 Calculatation from generator: 45
 ```
 
-#### C++ 基础库 yaLanTingLibs
+#### 1.14.2 C++ 基础库 yaLanTingLibs
 
 **yum安装**
 
@@ -5872,10 +6047,28 @@ yum install -y yalantinglibs-devel yum install -y glibc-devel gcc yum install -y
 ```
 #include <iostream>
 #include "struct_pack/struct_pack.hpp"
-struct person { int age; std::string name; }; int main() { person tom{.age=20,.name="tom"}; auto buffer = struct_pack::serialize(tom); auto tom2 = struct_pack::deserialize<person>(buffer); std::cout<<"age: "<<tom2.value().age<<", name: "<<tom2.value().name<<std::endl; return 0; }
+struct person
 ```
 
-该段代码实现了对 person 的序列化和反序列化。
+`{`
+
+```
+int age; std::string name;
+```
+
+};
+
+```
+int main()
+```
+
+`{`
+
+```
+person tom{.age=20,.name="tom"}; auto buffer = struct_pack::serialize(tom); auto tom2 = struct_pack::deserialize<person>(buffer); std::cout<<"age: "<<tom2.value().age<<", name: "<<tom2.value().name<<std::endl; return 0;
+```
+
+`}` 该段代码实现了对 person 的序列化和反序列化。
 2. 编译程序
 在相同目录下执行命令：
 
@@ -5899,24 +6092,60 @@ age: 20, name: tom
 **使用C++基础库 rpc 库**
 
 1. 新建代码文件 server.cpp。
-代码内容如下： Alibaba Cloud Linux
+代码内容如下：
 
 ```
 #include "coro_rpc/coro_rpc_server.hpp"
-std::string ping(std::string ping) { return "Receive: " + ping + ". Return pong."; } int main() { coro_rpc::coro_rpc_server server{1 , 8801}; server.register_handler<ping>(); return server.start()==std::errc{}; }
+std::string ping(std::string ping)
 ```
 
-该段代码启动了一个持续运行的 rpc 服务器，监听 8801 端口，该服务器注册了 rpc 函数 ping。
+`{`
+
+```
+return "Receive: " + ping + ". Return pong.";
+```
+
+`}`
+
+```
+int main()
+```
+
+`{`
+
+```
+coro_rpc::coro_rpc_server server{1 , 8801}; server.register_handler<ping>(); return server.start()==std::errc{};
+```
+
+`}` 该段代码启动了一个持续运行的 rpc 服务器，监听 8801 端口，该服务器注册了 rpc 函数 ping。
 2. 新建代码文件 client.cpp。
 代码内容如下：
 
 ```
 #include <iostream>
 #include "coro_rpc/coro_rpc_client.hpp"
-std::string ping(std::string); async_simple::coro::Lazy<void> example() { coro_rpc::coro_rpc_client client; auto ec = co_await client.connect("localhost","8801"); assert(ec == std::errc{}); auto ret = co_await client.call<ping>("ping"); std::cout << ret.value() << std::endl; co_return; }; int main() { async_simple::coro::syncAwait(example()); return 0; }
+std::string ping(std::string); async_simple::coro::Lazy<void> example()
 ```
 
-该段代码启动了一个 RPC 客户端，调用了 RPC 函数 ping，并打印了 RPC 函数的返回结果。
+`{`
+
+```
+coro_rpc::coro_rpc_client client; auto ec = co_await client.connect("localhost","8801"); assert(ec == std::errc{}); auto ret = co_await client.call<ping>("ping"); std::cout << ret.value() << std::endl; co_return;
+```
+
+};
+
+```
+int main()
+```
+
+`{`
+
+```
+async_simple::coro::syncAwait(example()); return 0;
+```
+
+`}` 该段代码启动了一个 RPC 客户端，调用了 RPC 函数 ping，并打印了 RPC 函数的返回结果。
 3. 编译服务端程序。
 执行命令：
 
@@ -5937,7 +6166,7 @@ clang++ client.cpp -std=c++20 -I /usr/include/yalantinglibs -o client
 ./server & ./client
 ```
 
-程序应该输出类似于下面日志的内容： Alibaba Cloud Linux
+程序应该输出类似于下面日志的内容：
 
 ```
 2023-09-01 16:45:33.365 INFO [76380] [coro_rpc_server.hpp:309] begin to listen 2023-09-01 16:45:33.365 INFO [76380] [coro_rpc_server.hpp:338] listen port 8801 succe ssfully 2023-09-01 16:45:33.365 INFO [76381] [coro_rpc_client.hpp:161] client_id 0 begin to c onnect 8801 2023-09-01 16:45:33.366 INFO [76384] [coro_rpc_server.hpp:366] new client conn_id 1 c oming 2023-09-01 16:45:33.367 INFO [76384] [router.hpp:289] route function name: ping Receive: ping. Return pong. 2023-09-01 16:45:33.367 INFO [76382] [coro_rpc_client.hpp:637] client_id 0 close 2023-09-01 16:45:33.367 INFO [76384] [coro_connection.hpp:161] connection 1 close: En d of file
@@ -5953,7 +6182,7 @@ pidof server
 
 得到 server 的 pid 进程号，再执行命令： `kill` 进程号
 
-#### Dragonwell
+#### 1.14.3 Dragonwell
 
 **yum安装**
 
@@ -5967,7 +6196,7 @@ yum install -y java-11-alibaba-jdk-devel.x86_64 yum install -y java-11-alibaba-j
 export JAVA_HOME=/usr/lib/jvm/java-11-alibaba-jdk-11.0.18.17.1-6.alnx3.x86_64
 ```
 
-#这里根据实际安装的路径进行修改
+`#`这里根据实际安装的路径进行修改
 
 ```
 export PATH=${JAVA_HOME}/bin:${PATH}
@@ -5976,7 +6205,6 @@ export PATH=${JAVA_HOME}/bin:${PATH}
 **使用协程**
 
 1. 新建文件 PingPong.java，内容如下：
-Alibaba Cloud Linux
 
 ```java
 import java.util.concurrent.*; public class PingPong {
@@ -5988,16 +6216,19 @@ LinkedBlockingQueue<>();
         Future<?> f = THREAD_POOL.submit(() -> pingpong(q1, q2));
         q1.put((byte) 1);
         System.out.println(f.get() + " ms");
-    }
+```
+
+`}`
+
+```java
     private static long pingpong(BlockingQueue<Byte> in, BlockingQueue<Byte> out) thr
 ows Exception {
         long start = System.currentTimeMillis();
         for (int i = 0; i < 1_000_000; i++) out.put(in.take());
         return System.currentTimeMillis() - start;
-    }
-}
 ```
 
+`}` `}`
 2. 执行命令进行编译。
 
 ```
@@ -6028,10 +6259,9 @@ public class HelloWorld {
 static void main(String[] args) {
  System.out.println("Hello
 world!");
- }
-}
 ```
 
+`}` `}`
 2. 执行命令编译。
 
 ```
@@ -6044,7 +6274,7 @@ javac HelloWorld.java
 java -Xquickstart:verbose HelloWorld
 ```
 
-完成以后会当前用户的${HOME}/alibaba.quickstart.sharedcache中保存加速相关文件。 Alibaba Cloud Linux
+完成以后会当前用户的${HOME}/alibaba.quickstart.sharedcache中保存加速相关文件。
 4. 再次运行命令。
 
 ```
@@ -6061,13 +6291,16 @@ java -Xquickstart:verbose HelloWorld
 public class Hello {
     public static void main(String[] args) throws InterruptedException {
         sayHello();
-    }
-    public static void sayHello() {
-        System.out.println("Hello, World");
-    }
-}
 ```
 
+`}`
+
+```java
+    public static void sayHello() {
+        System.out.println("Hello, World");
+```
+
+`}` `}`
 2. 执行命令进行编译。
 
 ```
@@ -6093,12 +6326,15 @@ public class ConsumeMemory {
     public static void main(String[] args) {
         for(int i = 0 ; i < 1000; i++) {
             blackhole = new byte[100*1000*1000];
-        }
-        System.out.println("Done");
-    }
-}
 ```
 
+`}`
+
+```java
+        System.out.println("Done");
+```
+
+`}` `}`
 2. 编译。
 
 ```
@@ -6116,7 +6352,6 @@ java -XX:+UseJadeGC -Xms1g -Xmx2g -Xlog:gc ConsumeMemory
 **使用多租户**
 
 1. 安装 cgroup-tools。
-Alibaba Cloud Linux
 
 ```bash
 yum install -y libcgroup-tools.x86_64
@@ -6124,7 +6359,7 @@ yum install -y libcgroup-tools.x86_64
 
 2. 配置 Linux 的 cgroup，在 root 用户下执行。
 
-```bash
+```python
 sudo <jdk_home>/bin/jgroup -g <group> -u <user>
 ```
 
@@ -6144,10 +6379,9 @@ TenantConfiguration().limitCpuShares(1024).limitCpuSet("3-6"));
         tenant.run(() -> {
             System.out.println("Hello AJDK!");
         });
-    }
-}
 ```
 
+`}` `}`
 4. 编译。
 
 ```
@@ -6160,19 +6394,19 @@ javac TenantTest.java
 java -XX:+MultiTenant -XX:+TenantCpuThrottling TenantTest
 ```
 
-上述的运行限定了只能使用 3-6 的 CPU 执行 tenant 中的代码。 Alibaba Cloud Linux
+上述的运行限定了只能使用 3-6 的 CPU 执行 tenant 中的代码。
 
-## 安全增强
+## 2 安全增强
 
 安全增强包括安全加固、数据安全和机密计算三个部分，其中安全加固可用于对系统网络安全、访问控制、 安全审计、权限控制等进行自动化安全基线配置扫描和修复加固，降低由于安全控制不足而引起的安全风险。
 
-### 安全加固
+### 2.1 安全加固
 
 阿里云服务器操作系统 V3 安全加固工具可用于对系统网络安全、访问控制、安全审计、权限控制等进行自动化安全基线配置扫描和修复加固，降低由于安全控制不足而引起的安全风险。它包括修复工具和扫描工具两个部分。 使用安全加固工具，您可以获得以下优势： 节省成本：该工具在阿里云服务器操作系统V3 Yum 中是免费提供使用的。 节省人力：通过该工具的修复工具能够快速对Alinux 3 进行安全配置，降低安全风险。使用对应的扫描工具能够快速检查和发现系统是否存在配置风险。 节省时间：自动化执行、提供一键式修复和扫描工具且结果很快就能完成。 灵活配置：允许用户根据自己的场景自由选择要修复和扫描的配置。 包含范围广：结合公安部网络安全等级保护 2.0（三级）合规要求以及国际第三方 Center of Internet Security (CIS）组织认证的阿里云服务器操作系统 V3 Benchmark 打造，包含几百条配置相关的修复和扫描，涉及网络安全、访问控制、安全审计、权限控制等多个方面。
 
-| 此外，安全加固工具从自动化、性能和易用性多个维度对安全配置分为四个等级（level 1-level 4），其 |  |
+| 此外，安全加固工具从自动化、性能和易用性多个维度对安全配置分为四个等级（level 1-level 4），其 |   |
 |---|---|
-| 中： |  |
+| 中： |   |
 
 一、二级不影响系统的性能、易用性等；第三、四级对性能和易用性有影响。 第二级跟第一级的区别在于第二级不能通过脚本自动化修复或者扫描检测而第一级可以；第四级跟第三级的区别跟第二级与第一级类似。
 
@@ -6183,7 +6417,7 @@ java -XX:+MultiTenant -XX:+TenantCpuThrottling TenantTest
 | level-3 | 是 | 是 |
 | level-4 | 否 | 是 |
 
-#### 修复工具
+#### 2.1.1 修复工具
 
 **操作步骤**
 
@@ -6194,7 +6428,6 @@ yum install -y security-benchmark
 ```
 
 2. 确认修复（加固）项目。
-Alibaba Cloud Linux
 
 ```
 cd /usr/share/security-benchmark/tools/remediation-kits/config cat ./Alinux_security_benchmark_level1.config
@@ -6202,16 +6435,13 @@ cd /usr/share/security-benchmark/tools/remediation-kits/config cat ./Alinux_secu
 
 默认使用 config 文件夹下的Alinux_security_benchmark_level1.config 中的加固项目； 也可根据使用场景，自行选择 security-benchmark/remediation-kits 目录下的加固项目； 也可以自定义 config 文件： config 文件建议存放在 security-benchmark/tools/remediationkits/config 目录下，内容为以换行符（LF）分隔的项目编号。 注意： 仅需填写对应加固脚本的项目编号即可，不需要填写完整脚本名称。 建议只添加未通过检查需要修复的项目编号，已通过检查的项目不需要重复执行加固。 默认配置文件（Alinux_security_benchmark_level1.config）内仅加入了需要修复的项目，剔除了系统初始状态已通过的项目。 Alinux_security_benchmark_level3.config包含 level-1 和 level-3 中需要修复的项目，剔除了系统初始状态已通过的项目。 level-3 中 SElinux 相关项目（5.2/5.3/5.4）的修复需重启才可生效，且对系统影响较大，请谨慎选择是否修复。
 3. 执行脚本。
-直接执行 run_Alinux_remediation_kit.sh 加固脚本，将默认使用 config 文件夹下 Alinux_security_benchmark_level1.config 配置文件进行加固修复（相当于进行 level-1 等级的加固修复）。 -c 参数可指定任意路径下符合要求的 config 文件（要求详见上节），并使用该文件内包含的加固项目， 对系统进行加固修复。如./config/Alinux_security_benchmark_level2.config、 ./config/Reference_CIS.config 等。 具体命令可参考下文：
-#默认加固
+直接执行 run_Alinux_remediation_kit.sh 加固脚本，将默认使用 config 文件夹下 Alinux_security_benchmark_level1.config 配置文件进行加固修复（相当于进行 level-1 等级的加固修复）。 -c 参数可指定任意路径下符合要求的 config 文件（要求详见上节），并使用该文件内包含的加固项目， 对系统进行加固修复。如./config/Alinux_security_benchmark_level2.config、 ./config/Reference_CIS.config 等。 具体命令可参考下文： `#`默认加固
 
 ```
 cd /usr/share/security-benchmark/tools/remediation-kits ./run_Alinux_remediation_kit.sh
 ```
 
-Alibaba Cloud Linux
-
-#### 扫描工具
+#### 2.1.2 扫描工具
 
 **操作步骤**
 
@@ -6230,50 +6460,46 @@ yum install -y security-benchmark
 export LANG="en_US.UTF-8" cd /usr/share/security-benchmark/tools/scanners sh ./run_Alinux_scanners.sh
 ```
 
-Alibaba Cloud Linux 注意：不同的环境包括用户的一些额外操作都可能会影响到扫描结果，如果遇到结果中个别 fail 的情况，请您再执行修复工具中对应条目进行修复即可。
+注意：不同的环境包括用户的一些额外操作都可能会影响到扫描结果，如果遇到结果中个别 fail 的情况，请您再执行修复工具中对应条目进行修复即可。
 
-### 数据安全
+### 2.2 数据安全
 
-#### 磁盘加密
+#### 2.2.1 磁盘加密
 
-用户根据实际需求对磁盘进行加密，以/dev/vda4为例。格式化加密磁盘为 LUKS 分区，使用 SM4 作为加密算法：
-# 根据提示输入大写的 `YES` 和密码完成格式化操作
+用户根据实际需求对磁盘进行加密，以/dev/vda4为例。格式化加密磁盘为 LUKS 分区，使用 SM4 作为加密算法： `#` 根据提示输入大写的 `YES` 和密码完成格式化操作
 
 ```
 cryptsetup --cipher sm4-xts-plain64 --key-size=256 --hash sm3 luksFormat /dev/vda4
 ```
 
-# 打开该加密分区，密码正确后，会创建代表该分区的透明设备 `/dev/mapper/diskluks`
-该设备展示给用户的是一个未加密的普通的分区设备，可以对它进行任何针对分区的操作
+`#` 打开该加密分区，密码正确后，会创建代表该分区的透明设备 `/dev/mapper/diskluks` 该设备展示给用户的是一个未加密的普通的分区设备，可以对它进行任何针对分区的操作
 
 ```
 cryptsetup luksOpen /dev/vda4 diskluks
 ```
 
-# 此时，`diskluks` 表现为一个普通分区，我们可以格式化为任意支持的文件系统，并挂载它
+`#` 此时，`diskluks` 表现为一个普通分区，我们可以格式化为任意支持的文件系统，并挂载它
 
 ```
 mkfs.ext4 /dev/mapper/diskluks mount /dev/mapper/diskluks /mnt/
 ```
 
-此时，可以把需要保护的数据放到该磁盘上，完成操作后，需要关闭加密磁盘的映射，关闭后，没有正确的密码，是读取不到磁盘数据的，关闭是通过以下命令来完成的：
-#卸载
+此时，可以把需要保护的数据放到该磁盘上，完成操作后，需要关闭加密磁盘的映射，关闭后，没有正确的密码，是读取不到磁盘数据的，关闭是通过以下命令来完成的： `#`卸载
 
 ```
 umount /mnt
 ```
 
-#锁定加密分区，`diskluks` 设备被删除，此时没有密码的用户看不到明文数据
+`#`锁定加密分区，`diskluks` 设备被删除，此时没有密码的用户看不到明文数据
 
 ```
 cryptsetup close diskluks
 ```
 
-#### 文件加密
+#### 2.2.2 文件加密
 
 **操作步骤**
 
-Alibaba Cloud Linux
 1. 安装 fscryptctl 工具。
 
 ```bash
@@ -6339,7 +6565,7 @@ endir 已经是支持透明加解密的一个目录，可以像正常目录一�
 /mnt/endir ├── curl.h ├── easy.h ├── foo │ └── hello └── websockets.h
 ```
 
-Alibaba Cloud Linux 之所以能像普通目录一样操作，是因为密钥已经被添加到了文件系统中。接下来删除密钥后，就能看到目录被锁定，里面的所有路径和内容都是加密状态： 移除密钥
+之所以能像普通目录一样操作，是因为密钥已经被添加到了文件系统中。接下来删除密钥后，就能看到目录被锁定，里面的所有路径和内容都是加密状态： 移除密钥
 
 ```bash
 # fscryptctl remove_key 23086a13ed81fd75ca5fe9b8f2ff25c7 /mnt
@@ -6377,7 +6603,7 @@ mkdir: cannot create directory ‘/mnt/endir/hello’: Required key not availabl
 hello
 ```
 
-#### 铜锁支持商用密码加密
+#### 2.2.3 铜锁支持商用密码加密
 
 **铜锁支持商业加密**
 
@@ -6397,20 +6623,19 @@ tongsuo genpkey -algorithm ec -pkeyopt ec_paramgen_curve:sm2 -out sm2.key tongsu
 
 **使用SM2算法做签名验签**
 
-通过基于 SM2 非对称算法的签名验签功能可以提供身份验证的能力。 Alibaba Cloud Linux
-#生成一个随机内容文件
+通过基于 SM2 非对称算法的签名验签功能可以提供身份验证的能力。 `#`生成一个随机内容文件
 
 ```
 dd if=/dev/urandom of=msg.bin bs=1024 count=1
 ```
 
-#SM2 私钥签名，签名算法为 `SM2withSM3`
+`#SM2` 私钥签名，签名算法为 `SM2withSM3`
 
 ```
 tongsuo dgst -sm3 -sign sm2.key -out sigfile msg.bin
 ```
 
-#SM2公钥验签，验签成功会有`Verify OK`的字样
+`#SM2`公钥验签，验签成功会有`Verify OK`的字样
 
 ```
 tongsuo dgst -sm3 -verify sm2pub.key -signature sigfile msg.bin

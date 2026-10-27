@@ -5,7 +5,7 @@ doc_version: "20241114"
 pdf_pages: 2303
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Cloud Defined Storage Developer Guide 20241114.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/CDS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Cloud%20Defined%20Storage%20Developer%20Guide%2020241114.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Cloud Defined Storage Developer Guide 20241114
@@ -4253,7 +4253,7 @@ PUT /?policy Content-Length: 230 Host: oss-example.oss-cn-hangzhou.aliyuncs.com 
     "Resource":["acs:oss:*:1234567890:*/*"]
 ```
 
-`]` Sample success responses
+`}` `]` `}` Sample success responses
 
 ```
 HTTP/1.1 200 OK content-length: 0 server: AliyunOSS x-oss-server-time: 87 connection: keep-alive x-oss-request-id: 5C6E9EBD5CC26B28EE41**** date: Thu, 21 Feb 2019 12:51:09 GMT
@@ -4314,7 +4314,7 @@ HTTP/1.1 200 OK server: AliyunOSS x-oss-server-time: 24 connection: keep-alive x
       "Resource":["acs:oss:*:1234567890:*/*"]
 ```
 
-`]`
+`}` `]` `}`
 
 **Error codes**
 
@@ -4763,7 +4763,7 @@ typedef boost::crc_optimal<64, 0x42F0E1EBA9EA3693ULL, 0xffffffffffffffffULL, 0xf
     return crc.checksum();
 ```
 
-Use the crcmod function in Python
+`}` Use the crcmod function in Python
 
 ```
 do_crc64 = crcmod.mkCrcFun(0x142F0E1EBA9EA3693L, initCrc=0L, xorOut=0xffffffffffffffffL, rev=True) print do_crc64("123456789")
@@ -5310,7 +5310,7 @@ The policy form field in a PostObject request is used to verify the validity of 
  ["starts-with", "$key", "user/eric/"]
 ```
 
-`]` In the PostObject request, the policy form field must contain the expiration and conditions attributes. Expiration expiration specifies the expiration time of the policy, which is expressed in ISO 8601 GMT. For example, "2014-12-01T12:00:00.000Z" indicates that the PostObject request must be sent before 12:00:00 on December 1, 2014. Conditions The conditions parameter is a list that specifies the valid values of the form fields in the PostObject request. The value of a form field is extended after OSS checks the policy. Therefore, the valid value of the form field set in policy is equivalent to the value of the form field before extension. For example, if the key form field is set to user/user1/${filename} and the object name before the upload is a.txt, the key form field in policy of the PostObject request must be set to ["eq", "$key", "user/user1/\${filename}"] instead of ["eq", "$key","$key", "user/user1/a.txt"]. The following table lists the form fields that can be used as conditions in a policy. Table 1. Conditions
+`]` `}` In the PostObject request, the policy form field must contain the expiration and conditions attributes. Expiration expiration specifies the expiration time of the policy, which is expressed in ISO 8601 GMT. For example, "2014-12-01T12:00:00.000Z" indicates that the PostObject request must be sent before 12:00:00 on December 1, 2014. Conditions The conditions parameter is a list that specifies the valid values of the form fields in the PostObject request. The value of a form field is extended after OSS checks the policy. Therefore, the valid value of the form field set in policy is equivalent to the value of the form field before extension. For example, if the key form field is set to user/user1/${filename} and the object name before the upload is a.txt, the key form field in policy of the PostObject request must be set to ["eq", "$key", "user/user1/\${filename}"] instead of ["eq", "$key","$key", "user/user1/a.txt"]. The following table lists the form fields that can be used as conditions in a policy. Table 1. Conditions
 
 | Form field | Description |
 |---|---|
@@ -6463,9 +6463,19 @@ The following code provides an example on how to query the content of an object:
         String line = reader.readLine();
         if (line == null) break;
         System.out.println("\n" + line);
+```
+
+`}`
+
+```
     // You must close the connection after each use to prevent connection leaks.
 Otherwise, requests may be unable to establish connections and the program cannot run p roperly.
     content.close();
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -6477,6 +6487,11 @@ The following code provides an example on how to list objects in a specified buc
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Call ossClient.listObjects to obtain an ObjectListing instance. The ObjectListing in stance contains the response to the listObject request. ObjectListing objectListing = ossClient.listObjects(bucketName); // Call objectListing.getObjectSummaries to query the descriptions of all objects. for (OSSObjectSummary objectSummary : objectListing.getObjectSummaries()) {
     System.out.println(" - " + objectSummary.getKey() + "  " +
             "(size = " + objectSummary.getSize() + ")");
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -6509,6 +6524,11 @@ The following code provides an example on how to list all buckets:
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // List all buckets. List<Bucket> buckets = ossClient.listBuckets(); for (Bucket bucket : buckets) {
     System.out.println(" - " + bucket.getName());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -6521,6 +6541,8 @@ ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // List bucket
     System.out.println(" - " + bucket.getName());
 ```
 
+`}`
+
 **List buckets whose names come after a specified marker**
 
 The marker parameter specifies the name of the bucket after which the list begins. The following code provides an example on how to list buckets whose names come after a specified marker:
@@ -6530,6 +6552,8 @@ ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // List bucket
     System.out.println(" - " + bucket.getName());
 ```
 
+`}`
+
 **List a specified number of buckets**
 
 The following code provides an example on how to specify the maxKeys parameter to list a specified number of buckets:
@@ -6538,6 +6562,8 @@ The following code provides an example on how to specify the maxKeys parameter t
 ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // Set the maximum number of buckets to list each time to 500. The default value is 100 . The maximum value is 1000. listBucketsRequest.setMaxKeys(500); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
     System.out.println(" - " + bucket.getName());
 ```
+
+`}`
 
 ###### 1.2.1.5.3 Determine whether buckets exist
 
@@ -6610,6 +6636,11 @@ The following code provides an example on how to list buckets that have specifie
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations . Using these credentials to perform operations in OSS is a high-risk operation. We rec ommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // List buckets that have a specified tag. ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); listBucketsRequest.setTag("<yourTagKey>", "<yourTagValue>"); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket o : bucketList.getBucketList()) {
   System.out.println("list result bucket: " + o.getName());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -6764,6 +6795,8 @@ encountered "
                 ossClient.shutdown();
 ```
 
+`}` `}` `}` `}`
+
 **Query the inventories of a bucket**
 
 The following sample code provides an example on how to query the inventories of a bucket:
@@ -6804,9 +6837,19 @@ config.getIncludedObjectVersions());
             if (config.getInventoryFilter().getPrefix() != null) {
                 System.out.println("filter, prefix:" +
 config.getInventoryFilter().getPrefix());
+```
+
+`}`
+
+```java
             List<String> fields = config.getOptionalFields();
             for (String field : fields) {
                 System.out.println("field:" + field);
+```
+
+`}`
+
+```java
             System.out.println("===bucket destination config===");
             InventoryOSSBucketDestination destin =
 config.getDestination().getOssBucketDestination();
@@ -6829,6 +6872,11 @@ tEncryption().getServerSideKmsEncryption().getKeyId());
 
 ```java
                     System.out.println("server-side oss encryption.");
+```
+
+`}` `}`
+
+```java
         } catch (OSSException oe) {
             System.out.println("Caught an OSSException, which means your request made it
 to OSS, "
@@ -6852,6 +6900,8 @@ encountered "
             if (ossClient != null) {
                 ossClient.shutdown();
 ```
+
+`}` `}` `}` `}`
 
 **List multiple inventories at a time**
 
@@ -6907,9 +6957,19 @@ config.getSchedule().getFrequency());
                         if (config.getInventoryFilter().getPrefix() != null) {
                             System.out.println("filter, prefix:" +
 config.getInventoryFilter().getPrefix());
+```
+
+`}`
+
+```java
                         List<String> fields = config.getOptionalFields();
                         for (String field : fields) {
                             System.out.println("field:" + field);
+```
+
+`}`
+
+```java
                         System.out.println("===bucket destination config===");
                         InventoryOSSBucketDestination destin =
 config.getDestination().getOssBucketDestination();
@@ -6929,10 +6989,20 @@ ull) {
                             } else if
 (destin.getEncryption().getServerSideOssEncryption() != null) {
                                 System.out.println("server-side oss encryption.");
+```
+
+`}` `}` `}`
+
+```
                     if (result.isTruncated()) {
                         continuationToken = result.getNextContinuationToken();
                     } else {
                         break;
+```
+
+`}` `}` `}`
+
+```java
         } catch (OSSException oe) {
             System.out.println("Caught an OSSException, which means your request made it
 to OSS, "
@@ -6956,6 +7026,8 @@ encountered "
             if (ossClient != null) {
                 ossClient.shutdown();
 ```
+
+`}` `}` `}` `}`
 
 **Delete an inventory of a bucket**
 
@@ -7002,6 +7074,8 @@ encountered "
             if (ossClient != null) {
                 ossClient.shutdown();
 ```
+
+`}` `}` `}` `}`
 
 ###### 1.2.1.5.8 Retention policies
 
@@ -7071,6 +7145,8 @@ encountered "
                 ossClient.shutdown();
 ```
 
+`}` `}` `}` `}`
+
 **Delete an unlocked retention policy**
 
 The following code provides an example on how to delete an unlocked retention policy:
@@ -7116,6 +7192,8 @@ encountered "
             if (ossClient != null) {
                 ossClient.shutdown();
 ```
+
+`}` `}` `}` `}`
 
 **Lock a retention policy**
 
@@ -7163,6 +7241,8 @@ encountered "
             if (ossClient != null) {
                 ossClient.shutdown();
 ```
+
+`}` `}` `}` `}`
 
 **Query a retention policy**
 
@@ -7220,6 +7300,8 @@ encountered "
                 ossClient.shutdown();
 ```
 
+`}` `}` `}` `}`
+
 **Extend the retention period of objects**
 
 The following code provides an example on how to extend the retention period of objects in a bucket for which a retention policy is locked:
@@ -7268,6 +7350,8 @@ encountered "
                 ossClient.shutdown();
 ```
 
+`}` `}` `}`
+
 **References**
 
 For more information about the complete sample code for a retention policy, visit GitHub. For more information about the API operation that you can call to create a retention policy, see InitiateBucketWorm. For more information about the API operation that you can call to delete an unlocked retention policy, see AbortBucketWorm. For more information about the API operation that you can call to lock a retention policy, see CompleteBucketWorm. For more information about the API operation that you can call to query a retention policy, see GetBucketWorm. For more information about the API operation that you can call to extend the retention period of objects in a bucket whose retention policy is locked, see ExtendBucketWorm.
@@ -7301,6 +7385,11 @@ The following code provides an example on how to view lifecycle rules:
     if(rule.hasAbortMultipartUpload()) {
         System.out.println(rule.getAbortMultipartUpload().getExpirationDays());
         System.out.println(rule.getAbortMultipartUpload().getCreatedBeforeDate());
+```
+
+`}` `}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7331,6 +7420,11 @@ The following code provides an example on how to query the hotlink configuration
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Query the Referer whitelist of the bucket. BucketReferer br = ossClient.getBucketReferer(bucketName); List<String> refererList = br.getRefererList(); for (String referer : refererList) {
     System.out.println(referer);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7375,20 +7469,45 @@ The following code provides an example on how to query CORS rules configured for
     for (String allowedOrigin1 : rule.getAllowedOrigins()) {
         // Query the allowed origins from which CORS requests are sent.
         System.out.println(allowedOrigin1);
+```
+
+`}`
+
+```java
     for (String allowedMethod1 : rule.getAllowedMethods()) {
         // Query the allowed cross-origin request methods.
         System.out.println(allowedMethod1);
+```
+
+`}`
+
+```java
     if (rule.getAllowedHeaders().size() > 0){
         for (String allowedHeader1 : rule.getAllowedHeaders()) {
             // Query the list of headers allowed in cross-origin requests.
             System.out.println(allowedHeader1);
+```
+
+`}` `}`
+
+```java
     if (rule.getExposeHeaders().size() > 0) {
         for (String exposeHeader : rule.getExposeHeaders()) {
             // Query the list of response headers that can be accessed from an
 application.
             System.out.println(exposeHeader);
+```
+
+`}` `}`
+
+```java
     if ( null ! = rule.getMaxAgeSeconds()) {
         System.out.println(rule.getMaxAgeSeconds());
+```
+
+`}` `}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7582,6 +7701,11 @@ com.aliyun.oss.common.auth.ServiceSignature.create().computeSignature(accessKeyS
         System.out.println("Post Object [" + this.objectName + "] to bucket [" +
 bucketName + "]");
         System.out.println("post reponse:" + ret);
+```
+
+`}`
+
+```java
     private static String formUpload(String urlStr, Map<String, String> formFields, Str
 ing localFile)
             throws Exception {
@@ -7618,6 +7742,11 @@ output stream.
                     String inputValue = entry.getValue();
                     if (inputValue == null) {
                         continue;
+```
+
+`}`
+
+```
                     if (i == 0) {
                         strBuf.append("--").append(boundary).append("\r\n");
                         strBuf.append("Content-Disposition: form-data; name=\""
@@ -7629,14 +7758,34 @@ output stream.
                         strBuf.append("Content-Disposition: form-data; name=\""
                                 + inputName + "\"\r\n\r\n");
                         strBuf.append(inputValue);
+```
+
+`}`
+
+```
                     i++;
+```
+
+`}`
+
+```
                 out.write(strBuf.toString().getBytes());
+```
+
+`}`
+
+```
             // Read the object and write it to the output stream.
             File file = new File(localFile);
             String filename = file.getName();
             String contentType = new MimetypesFileTypeMap().getContentType(file);
             if (contentType == null || contentType.equals("")) {
                 contentType = "application/octet-stream";
+```
+
+`}`
+
+```
             StringBuffer strBuf = new StringBuffer();
             strBuf.append("\r\n").append("--").append(boundary)
                     .append("\r\n");
@@ -7656,7 +7805,7 @@ hil ((bt
 d(bff Ot))! 1){
 ```
 
-```java
+```
             while ((bytes = in.read(bufferOut)) ! = -1) {
                 out.write(bufferOut, 0, bytes);
             in.close();
@@ -7671,6 +7820,11 @@ InputStreamReader(conn.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) ! = null) {
                 strBuf.append(line).append("\n");
+```
+
+`}`
+
+```
             res = strBuf.toString();
             reader.close();
             reader = null;
@@ -7681,7 +7835,17 @@ InputStreamReader(conn.getInputStream()));
             if (conn ! = null) {
                 conn.disconnect();
                 conn = null;
+```
+
+`}` `}`
+
+```
         return res;
+```
+
+`}`
+
+```java
      private static void setCallBack(Map<String, String> formFields, Callback callback)
 ```
 
@@ -7696,10 +7860,17 @@ InputStreamReader(conn.getInputStream()));
                 Map<String, String> varMap = callback.getCallbackVar();
                 for (Entry<String, String> entry : varMap.entrySet()) {
                     formFields.put(entry.getKey(), entry.getValue());
+```
+
+`}` `}` `}` `}`
+
+```
     public static void main(String[] args) throws Exception {
         PostObjectSample ossPostObject = new PostObjectSample();
         ossPostObject.PostObject();
 ```
+
+`}` `}`
 
 ###### 1.2.1.6.4 Append upload
 
@@ -7745,6 +7916,11 @@ After all parts are uploaded, call the ossClient.completeMultipartUpload method 
 ```
 d task. You can initiate related requests based on the upload ID, such as canceling a m ultipart upload and querying a multipart upload. String uploadId = upresult.getUploadId(); // partETags is a set of PartETags. A PartETag consists of an ETag and a part number. List<PartETag> partETags = new ArrayList<PartETag>(); // Calculate the total number of parts to upload. final long partSize = 1 * 1024 * 1024L; // 1MB final File sampleFile = new File("<localFile>"); long fileLength = sampleFile.length(); int partCount = (int) (fileLength / partSize); if (fileLength % partSize ! = 0) {
     partCount++;
+```
+
+`}`
+
+```
 // Upload each part sequentially until all parts are uploaded. for (int i = 0; i < partCount; i++) {
     long startPos = i * partSize;
     long curPartSize = (i + 1 == partCount) ? (fileLength - startPos) : partSize;
@@ -7768,6 +7944,11 @@ OSS clients. OSS sorts the parts based on their part numbers and combines them t
     // After you upload a part, OSS returns a result that contains a PartETag. The Part
 ETag is stored in partETags.
     partETags.add(uploadPartResult.getPartETag());
+```
+
+`}`
+
+```
 // Create a CompleteMultipartUploadRequest object. // When the multipart upload task is complete, you must provide all valid partETags. Af ter OSS receives the partETags, OSS verifies the validity of all parts one by one. Afte r all parts are validated, OSS combines these parts into a complete object. CompleteMultipartUploadRequest completeMultipartUploadRequest =
         new CompleteMultipartUploadRequest(bucketName, objectName, uploadId,
 partETags); // Optional. Set the ACL. // completeMultipartUploadRequest.setObjectACL(CannedAccessControlList.PublicRead);
@@ -7810,6 +7991,11 @@ PartListing partListing = ossClient.listParts(listPartsRequest); for (PartSummar
     part.getETag();
     // Query the last modified time.
     part.getLastModified();
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7827,6 +8013,11 @@ List all uploaded parts By default, listParts can list up to 1,000 parts at a ti
         part.getETag();
         // Query the last modified time.
         part.getLastModified();
+```
+
+`}`
+
+```
 // Specify the start point of the list. Only the parts whose part numbers are greater than the value of this parameter are listed. listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker()); } while (partListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown()
 ```
 
@@ -7844,6 +8035,11 @@ List all uploaded parts by page The following code provides an example on how to
         part.getETag();
         // Query the last modified time.
         part.getLastModified();
+```
+
+`}`
+
+```
     listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker());
 } while (partListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -7877,6 +8073,11 @@ Simple list The following code provides an example for simple list:
     multipartUpload.getKey();
     // Query the time the multipart upload tasks are initiated.
     multipartUpload.getInitiated();
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7894,6 +8095,11 @@ multipartUploadListing.getMultipartUploads()) {
         multipartUpload.getKey();
         // Query the time the multipart upload tasks are initiated.
         multipartUpload.getInitiated();
+```
+
+`}`
+
+```
 listMultipartUploadsRequest.setKeyMarker(multipartUploadListing.getNextKeyMarker()); listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUploadIdMar r()); } while (multipartUploadListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7911,6 +8117,11 @@ multipartUploadListing.getMultipartUploads()) {
         multipartUpload.getKey();
         // Query the time the multipart upload tasks are initiated.
         multipartUpload.getInitiated();
+```
+
+`}`
+
+```
 listMultipartUploadsRequest.setKeyMarker(multipartUploadListing.getNextKeyMarker()); listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUploadIdMar r()); } while (multipartUploadListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -7948,6 +8159,11 @@ d progress: " + percent + "%(" + this.bytesWritten + "/" + this.totalBytes + ")"
             } else {
                 System.out.println(bytes + " bytes have been written at this time, uploa
 d ratio: unknown" + "(" + this.bytesWritten + "/...)");
+```
+
+`}`
+
+```java
             break;
         case TRANSFER_COMPLETED_EVENT:
             this.succeed = true;
@@ -7960,8 +8176,18 @@ been transferred");
             break;
         default:
             break;
+```
+
+`}` `}`
+
+```
     public boolean isSucceed() {
         return succeed;
+```
+
+`}`
+
+```
     public static void main(String[] args) {
         // The endpoint of the China (Hangzhou) region is used in this example. Specify
 the actual endpoint.
@@ -7986,11 +8212,16 @@ yourLocalFile>")).
 PutObjectProgressListener()));
         } catch (Exception e) {
             e.printStackTrace();
+```
+
+`}`
+
+```
         // Shut down the OSSClient instance.
         ossClient.shutdown();
 ```
 
-You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile.
+`}` `}` You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile.
 
 ##### 1.2.1.7 Download objects
 
@@ -8019,6 +8250,11 @@ OSSObject ossObject = ossClient.getObject(bucketName, objectName); // Read the o
     String line = reader.readLine();
     if (line == null) break;
     System.out.println("\n" + line);
+```
+
+`}`
+
+```
 // You must close the stream that is obtained by using ossClient.getObject after the ob ject is read. Otherwise, connection leaks may occur. As a result, no connections are av ailable and an exception occurs. reader.close(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8041,6 +8277,11 @@ The following code provides an example on how to specify a valid range to downlo
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object you want to download from OSS. The path must include the file extension of the object. Example: abc/efg/123.jpg. String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectName); // The valid range for an object whose size is 1,000 bytes is from byte 0 to byte 999. // Query the data that is within the range from byte 0 to byte 999, which includes a to tal of 1,000 bytes. If the specified range is invalid, for example, the specified range includes a negative number, or the specified value is larger than the object size, the entire object is downloaded. getObjectRequest.setRange(0, 999); // Start range download. OSSObject ossObject = ossClient.getObject(getObjectRequest); // Read the data. byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n ! = -1; ) {
     n = in.read(buf, 0, buf.length);
+```
+
+`}`
+
+```
 // You must close the stream that is obtained by using ossClient.getObject after the ob ject is read. Otherwise, connection leaks may occur. As a result, no connections are av ailable and an exception occurs. in.close(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8049,6 +8290,11 @@ Streaming download may not read all data at a time. To read 64 KB of data from O
 ```
 byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n ! = -1; ) {
     n = in.read(buf, 0, buf.length);
+```
+
+`}`
+
+```
 in.close();
 ```
 
@@ -8070,7 +8316,13 @@ the following code. The returned HTTP status code is 416 and the returned error 
     ossClient.getObject(getObjectRequest);
 } catch (OSSException e) {
     System.out.println("standard get " + "1000~2000:" + "error code:" +
-e.getErrorCode()); // Shut down the OSSClient instance. ossClient.shutdown();
+e.getErrorCode());
+```
+
+`}`
+
+```
+// Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
 ###### 1.2.1.7.5 Resumable download
@@ -8154,6 +8406,11 @@ load progress: " +
                     System.out.println(bytes + " bytes have been read at this time, down
 load ratio: unknown" +
                             "(" + this.bytesRead + "/...)");
+```
+
+`}`
+
+```java
                 break;
             case TRANSFER_COMPLETED_EVENT:
                 this.succeed = true;
@@ -8166,8 +8423,18 @@ e been transferred");
                 break;
             default:
                 break;
+```
+
+`}` `}`
+
+```
         public boolean isSucceed() {
             return succeed;
+```
+
+`}` `}`
+
+```xml
 public static void main(String[] args) {
     // The endpoint of the China (Hangzhou) region is used in this example. Specify the
 actual endpoint.
@@ -8309,6 +8576,11 @@ The following code provides an example on how to list objects in a specified buc
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String KeyPrefix = "<yourKeyPrefix>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // List objects. If you do not set KeyPrefix, all objects in the bucket are listed. If you set KeyPrefix, objects whose names contain the specified prefix in the bucket are l isted. ObjectListing objectListing = ossClient.listObjects(bucketName, KeyPrefix); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8331,6 +8603,11 @@ List a specified number of objects in a bucket The following code provides an ex
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Specify the maximum number of objects that this operation can list. final int maxKeys = 200; // List objects. ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withMaxKeys(maxKeys)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8339,6 +8616,11 @@ List objects whose names contain a specified prefix in a bucket The following co
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Specify the prefix that is contained in the names of the objects that you want to list. final String keyPrefix = "<yourkeyPrefix>"; // List objects whose names contain the specified prefix. By default, 100 objects are listed. ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withPrefix(keyPrefix)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8347,6 +8629,11 @@ List objects whose names are alphabetically after the value of marker You can co
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); final String marker = "<yourMarker>"; // List objects whose names are alphabetically after the specified marker. By default , 100 objects are listed. ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withMarker(marker)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8359,6 +8646,11 @@ ListObjectsRequest(bucketName).withMarker(nextMarker).withMaxKeys(maxKeys));
     List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
     for (OSSObjectSummary s : sums) {
         System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -8372,6 +8664,11 @@ List objects whose names contain a specified prefix by page The following code p
     List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
     for (OSSObjectSummary s : sums) {
         System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -8391,13 +8688,28 @@ List objects whose names are encoded by a specific encoding type Currently, OSS 
     for (OSSObjectSummary objectSummary: objectListing.getObjectSummaries()) {
         System.out.println("Key:" + URLDecoder.decode(objectSummary.getKey(), "UTF-
 8"));
+```
+
+`}`
+
+```java
     // Decode the value of commonPrefixes in the response.
     for (String commonPrefixes: objectListing.getCommonPrefixes()) {
         System.out.println("CommonPrefixes:" + URLDecoder.decode(commonPrefixes,
 "UTF-8"));
+```
+
+`}`
+
+```
     // Decode the value of nextMarker in the response.
     if (objectListing.getNextMarker() != null) {
         nextMarker = URLDecoder.decode(objectListing.getNextMarker(), "UTF-8");
+```
+
+`}`
+
+```
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8408,8 +8720,18 @@ OSS uses a flat structure for objects instead of a hierarchical structure to sto
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a ListObjectsRequest. ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName); // List all objects in the bucket. ObjectListing listing = ossClient.listObjects(listObjectsRequest); // Traverse all objects. System.out.println("Objects:"); for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
+```
+
+`}`
+
+```java
 // Traverse all commonPrefix elements. System.out.println("CommonPrefixes:"); for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8424,8 +8746,18 @@ List all objects in the specified directory The following code provides an examp
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a ListObjectsRequest. ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName); // Set Prefix to fun/ to list all objects in the fun/ directory. listObjectsRequest.setPrefix("fun/"); // Lists all objects in the fun/ directory. ObjectListing listing = ossClient.listObjects(listObjectsRequest); // Traverse all objects. System.out.println("Objects:"); for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
+```
+
+`}`
+
+```java
 // Traverse all commonPrefix elements. System.out.println("\nCommonPrefixes:"); for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8440,8 +8772,18 @@ List objects and subdirectories in a specified directory The following code prov
 ```java
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a ListObjectsRequest. ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName); // Set the delimiter to a forward slash (/). listObjectsRequest.setDelimiter("/"); // List all objects and subdirectories in the fun/ directory. listObjectsRequest.setPrefix("fun/"); ObjectListing listing = ossClient.listObjects(listObjectsRequest); // Traverse all objects. System.out.println("Objects:"); // In the response, objectSummaries lists the objects in the fun/ directory. for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
+```
+
+`}`
+
+```java
 // Traverse all commonPrefix elements. System.out.println("\nCommonPrefixes:"); // commonPrefixs lists the subdirectories in the fun/ directory. The fun/movie/001.avi and fun/movie/007.avi objects are not listed because they are in th e movie/ subdirectory of the fun/ directory. for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8466,12 +8808,27 @@ g folder) {
 ListObjectsRequest(bucketName).withPrefix(folder).withMaxKeys(1000);
             if (objectListing != null) {
                 request.setMarker(objectListing.getNextMarker());
+```
+
+`}`
+
+```
             objectListing = ossClient.listObjects(request);
             List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
             for (OSSObjectSummary s : sums) {
                 size += s.getSize();
+```
+
+`}`
+
+```
         } while (objectListing.isTruncated());
         return size;
+```
+
+`}`
+
+```
     public void Calculate() {
         // In this example, the endpoint of the China (Hangzhou) region is used.
 Specify your actual endpoint.
@@ -8501,12 +8858,24 @@ List<String>folders=objectListing.getCommonPrefixes();
             for (String folder : folders) {
                 System.out.println(folder + " : " + (calculateFolderLength(ossClient,
 bucketName, folder) / 1024) + "KB");
+```
+
+`}`
+
+```java
             List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
             for (OSSObjectSummary s : sums) {
                 System.out.println(s.getKey() + " : " + (s.getSize() / 1024) + "KB");
+```
+
+`}`
+
+```
         } while (objectListing.isTruncated());
         ossClient.shutdown();
 ```
+
+`}`
 
 ###### 1.2.1.8.6 Query objects
 
@@ -8531,6 +8900,11 @@ accessKeySecret);
         selectCsvSample("test.csv", ossClient);
         selectJsonSample("test.json", ossClient);
         ossClient.shutdown();
+```
+
+`}`
+
+```java
     private static void selectCsvSample(String key, OSS ossClient) throws Exception {
         String content = "name,school,company,age\r\n" +
                 "Lora Francis,School A,Staples Inc,27\r\n" +
@@ -8568,9 +8942,24 @@ InputStreamReader(ossObject.getObjectContent()));
             String line = reader.readLine();
             if (line == null) {
                 break;
+```
+
+`}`
+
+```java
             System.out.println(line);
+```
+
+`}`
+
+```
         reader.close();
         ossClient.deleteObject(bucketName, key);
+```
+
+`}`
+
+```java
     private static void selectJsonSample(String key, OSS ossClient) throws Exception {
         final String content = "{\n" +
                 "\t\"name\": \"Lora Francis\",\n" +
@@ -8611,7 +9000,7 @@ JsonFormat().withJsonType(JsonType.LINES)))
 
 ;
 
-```java
+```
         OSSObject ossObject = ossClient.selectObject(selectObjectRequest);
         // read object content from ossObject
         BufferedReader reader = new BufferedReader(new
@@ -8620,10 +9009,22 @@ InputStreamReader(ossObject.getObjectContent()));
             String line = reader.readLine();
             if (line == null) {
                 break;
+```
+
+`}`
+
+```java
             System.out.println(line);
+```
+
+`}`
+
+```
         reader.close();
         ossClient.deleteObject(bucketName, key);
 ```
+
+`}` `}`
 
 ###### 1.2.1.8.7 Delete objects
 
@@ -8681,9 +9082,19 @@ The following code provides an example on how to delete objects whose names cont
         for (OSSObjectSummary s : objectListing.getObjectSummaries()) {
             System.out.println("key name: " + s.getKey());
             keys.add(s.getKey());
+```
+
+`}`
+
+```
         DeleteObjectsRequest deleteObjectsRequest = new
 DeleteObjectsRequest(bucketName).withKeys(keys);
         ossClient.deleteObjects(deleteObjectsRequest);
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -8756,9 +9167,14 @@ For the complete code that is used to perform multipart copy, visit GitHub. The 
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>";
 ```
 
-```java
+```
 ObjectMetadata objectMetadata = ossClient.getObjectMetadata(sourceBucketName, sourceObjectName); // Query the size of the object to copy. long contentLength = objectMetadata.getContentLength(); // Set the size of each part to 10 MB. long partSize = 1024 * 1024 * 10; // Calculate the total number of parts. int partCount = (int) (contentLength / partSize); if (contentLength % partSize ! = 0) {
     partCount++;
+```
+
+`}`
+
+```java
 System.out.println("total part count:" + partCount); // Initiate a multipart copy task. You can call the InitiateMultipartUploadRequest oper ation to specify the metadata of the target object. InitiateMultipartUploadRequest initiateMultipartUploadRequest = new InitiateMultipartUploadRequest(destinationBucketName, destinationObjectName); InitiateMultipartUploadResult initiateMultipartUploadResult = ossClient.initiateMultipartUpload(initiateMultipartUploadRequest); String uploadId = initiateMultipartUploadResult.getUploadId(); // Start the multipart copy task. List<PartETag> partETags = new ArrayList<PartETag>(); for (int i = 0; i < partCount; i++) {
      // Calculate the size of each part.
     long skipBytes = partSize * i;
@@ -8777,6 +9193,11 @@ destinationBucketName, destinationObjectName);
 ossClient.uploadPartCopy(uploadPartCopyRequest);
     // Store the returned part ETag in partETags.
     partETags.add(uploadPartCopyResult.getPartETag());
+```
+
+`}`
+
+```
 // Complete the multipart copy task. CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUploadRequest(
                     destinationBucketName, destinationObjectName, uploadId, partETags);
 ossClient.completeMultipartUpload(completeMultipartUploadRequest);
@@ -8859,6 +9280,11 @@ InitiateMultipartUploadRequest request = new InitiateMultipartUploadRequest(buck
 ```
 // partETags is a set of PartETags. The PartETag of an uploaded part consists of the pa rt number and ETag value of the part. List<PartETag> partETags = new ArrayList<PartETag>(); // Calculate the total number of parts. final long partSize = 1 * 1024 * 1024L; // 1MB final File sampleFile = new File("<localFile>"); long fileLength = sampleFile.length(); int partCount = (int) (fileLength / partSize); if (fileLength % partSize != 0) {
     partCount++;
+```
+
+`}`
+
+```
 // Upload each part simultaneously until all parts are uploaded. for (int i = 0; i < partCount; i++) {
     long startPos = i * partSize;
     long curPartSize = (i + 1 == partCount) ? (fileLength - startPos) : partSize;
@@ -8885,6 +9311,11 @@ SS clients. OSS sorts the parts based on their part numbers and combines them in
   // After you upload a part, OSS returns a result that contains a PartETag. The PartET
 ag is stored in partETags.
     partETags.add(uploadPartResult.getPartETag());
+```
+
+`}`
+
+```
 /* Step 3: Complete multipart upload.
 ```
 
@@ -8905,6 +9336,11 @@ By default, when you call the GetObject operation to download an object in a ver
     String line = reader.readLine();
     if (line == null) break;
     System.out.println("\n" + line);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -8928,9 +9364,14 @@ To copy an object that is larger than 1 GB in size, you must split the object in
 
 If versionId is not specified in the request and the current version of the source object is a delete marker, OSS returns 404 Not Found. If versionId is specified in the request and the specified version of the source object is a delete marker, OSS returns 400 Bad Request. The following code provides an example on how to copy a large object by part:
 
-```java
+```
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations . Using these credentials to perform operations in OSS is a high-risk operation. We rec ommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>"; String sourceObjectVersionid = "<yourSourceObjectVersionid>"; ObjectMetadata objectMetadata = ossClient.getObjectMetadata(sourceBucketName, sourceObjectName, sourceObjectVersionid); // Query the size of the object that you want to copy. long contentLength = objectMetadata.getContentLength(); // Set the size of each part to 10 MB. long partSize = 1024 * 1024 * 10; // Calculate the total number of parts. int partCount = (int) (contentLength / partSize); if (contentLength % partSize != 0) {
     partCount++;
+```
+
+`}`
+
+```java
 System.out.println("total part count:" + partCount); // Initiate a multipart copy task. You can use InitiateMultipartUploadRequest to specif y the metadata of the destination object. InitiateMultipartUploadRequest initiateMultipartUploadRequest = new InitiateMultipartUploadRequest(destinationBucketName, destinationObjectName); InitiateMultipartUploadResult initiateMultipartUploadResult = ossClient.initiateMultipartUpload(initiateMultipartUploadRequest); String uploadId = initiateMultipartUploadResult.getUploadId(); // Start the multipart copy task. List<PartETag> partETags = new ArrayList<PartETag>(); for (int i = 0; i < partCount; i++) {
      // Calculate the size of each part.
     long skipBytes = partSize * i;
@@ -8938,7 +9379,7 @@ System.out.println("total part count:" + partCount); // Initiate a multipart cop
 ytes;
 ```
 
-```java
+```
     // Create an UploadPartCopyRequest object. You can call UploadPartCopyRequest to sp
 ecify conditions.
     UploadPartCopyRequest uploadPartCopyRequest =
@@ -8954,6 +9395,11 @@ destinationBucketName, destinationObjectName);
 ossClient.uploadPartCopy(uploadPartCopyRequest);
     // Store the returned PartETags in partETags.
     partETags.add(uploadPartCopyResult.getPartETag());
+```
+
+`}`
+
+```java
 // Complete the multipart copy task. CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUploadRequest(
                     destinationBucketName, destinationObjectName, uploadId, partETags);
 CompleteMultipartUploadResult completeMultipartUploadResult = ossClient.completeMultipartUpload(completeMultipartUploadRequest); // Display the version ID of the destination object. System.out.println("object versionid: " + completeMultipartUploadResult.getVersionId()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -8979,6 +9425,11 @@ The following code provides an example on how to list the versions of all object
         System.out.println("versionid: " + ossVersion.getVersionId());
         System.out.println("Is latest: " + ossVersion.isLatest());
         System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9005,6 +9456,11 @@ The following code provides an example on how to list the version information ab
         System.out.println("versionid: " + ossVersion.getVersionId());
         System.out.println("Is latest: " + ossVersion.isLatest());
         System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9025,6 +9481,11 @@ ect are none.
     System.out.println("versionid: " + ossVersion.getVersionId());
     System.out.println("Is latest: " + ossVersion.isLatest());
     System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -9044,6 +9505,11 @@ The following code provides an example on how to list the versions of all object
         System.out.println("versionid: " + ossVersion.getVersionId());
         System.out.println("Is latest: " + ossVersion.isLatest());
         System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9069,6 +9535,11 @@ If the name of an object contains any of the following special characters, you m
         System.out.println("versionid: " + ossVersion.getVersionId());
         System.out.println("Is latest: " + ossVersion.isLatest());
         System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9093,10 +9564,20 @@ OSS uses a flat structure instead of a hierarchical structure to store objects. 
         System.out.println("versionid: " + ossVersion.getVersionId());
         System.out.println("Is latest: " + ossVersion.isLatest());
         System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```java
     // Display the name of directories whose names are end with a forward slash (/) i
 n the root folder.
     for (String commonPrefix : versionListing.getCommonPrefixes()) {
         System.out.println("commonPrefix: " + commonPrefix);
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9126,9 +9607,19 @@ List objects and subdirectories in a specified directory The following code prov
         System.out.println("versionid: " + ossVersion.getVersionId());
         System.out.println("Is latest: " + ossVersion.isLatest());
         System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
+```
+
+`}`
+
+```java
     // Display the names of the subdirectories within the fun directory.
     for (String commonPrefix : versionListing.getCommonPrefixes()) {
         System.out.println("commonPrefix: " + commonPrefix);
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9193,6 +9684,11 @@ The following examples show how to permanently or temporarily delete multiple ob
   System.out.println("delete key versionid: " + keyVersionId);
   if(keyDelMarkerId != null && keyDelMarkerId.length() != 0){
     System.out.println("delete key del_marker versionid: " + keyDelMarkerId);
+```
+
+`}` `}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -9202,6 +9698,11 @@ Temporarily delete multiple objects from a versioned bucket The following code p
 // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. String endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; // The AccessKey pair of an Alibaba Cloud account has permissions on all API operatio ns. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String versionid = "<yourObjectVersionid>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Delete multiple objects at a time. List<String> KeysList = new ArrayList<String>(); KeysList.add("<yourObject1Name>"); KeysList.add("<yourObject2Name>"); DeleteObjectsRequest request = new DeleteObjectsRequest(bucketName); request.setKeys(KeysList); // Initiate a deleteObjects request. DeleteObjectsResult delObjResult = ossClient.deleteObjects(request); // Display the deletion result. for (String o : delObjResult.getDeletedObjects()) {
     String keyName = URLDecoder.decode(o, "UTF-8");
     System.out.println("delete key name: " + keyName);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -9225,9 +9726,19 @@ The following code provides an example on how to delete objects whose names cont
             System.out.println("Is delete marker: " + ossVersion.isDeleteMarker());
             keyVersionsList.add(new KeyVersion(ossVersion.getKey(),
 ossVersion.getVersionId()));
+```
+
+`}`
+
+```
         DeleteVersionsRequest delVersionsRequest = new
 DeleteVersionsRequest(bucketName).withKeys(keyVersionsList);
         ossClient.deleteVersions(delVersionsRequest);
+```
+
+`}`
+
+```
     nextKeyMarker = versionListing.getNextKeyMarker();
     nextVersionMarker = versionListing.getNextVersionIdMarker();
 } while (versionListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -9534,6 +10045,8 @@ OSS, "
     if (client ! = null) {
         client.shutdown();
 ```
+
+`}` `}`
 
 **ClientException**
 
@@ -9953,6 +10466,8 @@ Cause: A background thread IdleConnectionReaper from OSSClient shuts down idle c
 ```
 try { serviceClient.shutdown(); } catch(Exception e) {
 ```
+
+`}`
 
 #### 1.2.2 Python-SDK
 
@@ -12913,7 +13428,7 @@ You can use one of the following method to install SDK: Composer i. Go to the ro
     "aliyuncs/oss-sdk-php": "~2.x.x"
 ```
 
-ii. Run the `composer install` command to install the dependency. After the dependency is installed, check whether your directory structure complies with the following structure: `.`
+`}` ii. Run the `composer install` command to install the dependency. After the dependency is installed, check whether your directory structure complies with the following structure: `.`
 
 ```
         ├── app.php
@@ -12956,21 +13471,41 @@ To create an OSSClient instance, you must specify an endpoint. For more informat
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 } catch (OssException $e) {
     print $e->getMessage();
 ```
 
-Use STS to create an OSSClient
+`}` Use STS to create an OSSClient
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $securityToken = "<yourSecurityToken>"; try {
     $ossClient = new OssClient(
         $accessKeyId, $accessKeySecret, $endpoint, false, $securityToken);
@@ -12978,18 +13513,30 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-Use a proxy server to create an OSSClient You can use a proxy server to create an OSSClient when you use OSS SDK for PHP version 5.3 and later. The following code provides an example on how to use a proxy server to create an OSSClient:
+`}` Use a proxy server to create an OSSClient You can use a proxy server to create an OSSClient when you use OSS SDK for PHP version 5.3 and later. The following code provides an example on how to use a proxy server to create an OSSClient:
 
-```xml
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```xml
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // Specify the IP address of the proxy server. Example: http://<username>: <password>@<proxyip>:<proxyport>. $requestProxy = "<yourRequestProxy>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $req
 uestProxy); } catch (OssException $e) {
     print $e->getMessage();
 ```
+
+`}`
 
 **Configure network parameters**
 
@@ -12998,8 +13545,18 @@ The following code provides an example on how to configure network parameters fo
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try {
     $ossClient = new OssClient(
         $accessKeyId, $accessKeySecret, $endpoint);
@@ -13013,6 +13570,8 @@ e: 10.
     print $e->getMessage();
 ```
 
+`}`
+
 ##### 1.2.3.4 Getting Started
 
 This topic describes how to use Object Storage Service (OSS) SDK for PHP to perform routine operations, such as creating buckets, uploading objects, and downloading objects.
@@ -13024,8 +13583,18 @@ The following code provides an example on how to create a bucket:
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket = "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->createBucket($bucket);
@@ -13033,7 +13602,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint.
+`}` For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint.
 
 **Upload an object**
 
@@ -13042,8 +13611,18 @@ The following code provides an example on how to upload objects to OSS by using 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= " <yourBucketName>"; // <yourObjectName> indicates the full path of the object that you want to upload to OS S. <yourObjectName> must include the file extension of the object. Example: abc/efg/123 .jpg. $object = " <yourObjectName>"; $content = "Hi, OSS."; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content);
@@ -13051,15 +13630,27 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
+`}`
+
 **Download an object**
 
 The following code provides an example on how to download an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // <yourObjectName> indicates the full path of the object that you want to download fro m OSS. <yourObjectName> must include the file extension of the object. Example: abc/efg /123.jpg. $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object);
@@ -13068,15 +13659,27 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
+`}`
+
 **List objects**
 
 The following code provides an example on how to list objects in a bucket. By default, 100 objects are listed.
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $listObjectInfo = $ossClient->listObjects($bucket);
@@ -13084,9 +13687,17 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     if (!empty($objectList)) {
         foreach ($objectList as $objectInfo) {
         print($objectInfo->getKey() . "\t" . $objectInfo->getSize() . "\t" .
-$objectInfo->getLastModified() . "\n"); } catch (OssException $e) {
+$objectInfo->getLastModified() . "\n");
+```
+
+`}` `}`
+
+```
+} catch (OssException $e) {
     print $e->getMessage();
 ```
+
+`}`
 
 **Delete an object**
 
@@ -13095,14 +13706,26 @@ The following code provides an example on how to delete an object:
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // <yourObjectName> indicates the full path of the object that you want to delete from OSS. <yourObjectName> must include the file extension of the object. Example: abc/efg/1 23.jpg. $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObject($bucket, $object);
 } catch (OssException $e) {
     print $e->getMessage();
 ```
+
+`}`
 
 ##### 1.2.3.5 Buckets
 
@@ -13113,8 +13736,18 @@ A bucket is a container used to store objects in Object Storage Service (OSS). A
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Set the storage class of the bucket to Standard. The default storage class is St
@@ -13125,7 +13758,7 @@ andard.
 
 );
 
-```python
+```
     // Set the access control list (ACL) of the bucket to public read. The default buck
 et ACL is private.
     $ossClient->createBucket($bucket, OssClient::OSS_ACL_TYPE_PUBLIC_READ, $options);
@@ -13133,6 +13766,11 @@ et ACL is private.
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13142,11 +13780,21 @@ For the complete code that is used to create a bucket, visit GitHub.
 
 A bucket is a container for objects stored in Object Storage Service (OSS). All objects in OSS are contained in buckets. Buckets are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet specific conditions. The following sample code provides an example on how to list all buckets that belong to an Apsara Stack tenant account:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $bucketListInfo = $ossClient->listBuckets();
@@ -13154,20 +13802,37 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 $bucketList = $bucketListInfo->getBucketList(); foreach($bucketList as $bucket) {
     print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreat
 edate() . "\n");
 ```
 
+`}`
+
 ###### 1.2.3.5.3 Determine whether a bucket exists
 
 A bucket is a container used to store objects in Object Storage Service (OSS). This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a bucket exists:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $res = $ossClient->doesBucketExist($bucket);
@@ -13175,11 +13840,18 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 if ($res === true) {
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
     print(__FUNCTION__ . ": FAILED" . "\n");
 ```
+
+`}`
 
 ###### 1.2.3.5.4 Manage the ACL of a bucket
 
@@ -13199,11 +13871,21 @@ The following table describes the ACLs that you can configure for a bucket.
 
 The following code provides an example on how to configure the ACL of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // Set the ACL of the bucket to private. $acl = OssClient::OSS_ACL_TYPE_PRIVATE; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketAcl($bucket, $acl);
@@ -13211,6 +13893,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13218,11 +13905,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query the ACL of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $res = $ossClient->getBucketAcl($bucket);
@@ -13230,6 +13927,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print('acl: ' . $res);
 ```
 
@@ -13249,11 +13951,21 @@ You can use tags to identify buckets used for different purposes and manage thes
 
 The following code provides an example on how to configure tags for a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\TaggingConfig; use OSS\Model\Tag; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in Object Storage Service (OSS) i s a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Configure tags for the bucket.
     $config = new TaggingConfig();
@@ -13264,6 +13976,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\TaggingConfig; use O
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13271,11 +13988,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query the tags of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\TaggingConfig; use OSS\Model\Tag; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Query the tags of the bucket.
     $config = $ossClient->getBucketTags($bucket);
@@ -13284,6 +14011,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\TaggingConfig; use O
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13291,11 +14023,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to delete the tags of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\Tag; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Delete the specific tags that are configured for the bucket.
     $tags = array();
@@ -13308,6 +14050,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\Tag; // The AccessKe
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13315,11 +14062,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 If you no longer use an Object Storage Service (OSS) bucket, you can delete the bucket to prevent unnecessary charges. Before you delete a bucket, make sure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following sample code provides an example on how to delete a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucket($bucket);
@@ -13327,6 +14084,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13342,11 +14104,21 @@ OSS supports the Write Once Read Many (WORM) strategy that prevents an object fr
 
 The following code provides an example on how to create a retention policy:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you use the AccessKey pair of an Alibaba Cloud account t o log on to OSS because the account has permissions on all API operations. We recommend that you use your RAM user's credentials to call API operations or perform routine oper ations and maintenance. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Create a retention policy and set the retention period to 30 days.
     $wormId = $ossClient->initiateBucketWorm($bucket, 30);
@@ -13356,6 +14128,11 @@ use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13365,11 +14142,21 @@ For more information about how to create a retention policy, see InitiateBucketW
 
 The following code provides an example on how to cancel an unlocked retention policy:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you use the AccessKey pair of an Alibaba Cloud account t o log on to OSS because the account has permissions on all API operations. We recommend that you use your RAM user's credentials to call API operations or perform routine oper ations and maintenance. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Cancel the retention policy.
     $ossClient->abortBucketWorm($bucket);
@@ -13377,6 +14164,11 @@ use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13386,11 +14178,21 @@ For more information about how to cancel an unlocked retention policy, see Abort
 
 The following code provides an example on how to lock a retention policy:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you use the AccessKey pair of an Alibaba Cloud account t o log on to OSS because the account has permissions on all API operations. We recommend that you use your RAM user's credentials to call API operations or perform routine oper ations and maintenance. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Create a retention policy and set the retention period to 30 days.
     $wormId = $ossClient->initiateBucketWorm($bucket, 30);
@@ -13400,6 +14202,11 @@ use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13409,11 +14216,21 @@ For more information about how to lock a retention policy, see CompleteBucketWor
 
 The following code provides an example on how to query a retention policy:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you use the AccessKey pair of an Alibaba Cloud account t o log on to OSS because the account has permissions on all API operations. We recommend that you use your RAM user's credentials to call API operations or perform routine oper ations and maintenance. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Query the retention policy.
     $config = $ossClient->getBucketWorm($bucket);
@@ -13425,6 +14242,11 @@ use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13434,11 +14256,21 @@ For more information about how to query a retention policy, see GetBucketWorm.
 
 The following code provides an example on how to extend the retention period of a locked retention policy:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you use the AccessKey pair of an Alibaba Cloud account t o log on to OSS because the account has permissions on all API operations. We recommend that you use your RAM user's credentials to call API operations or perform routine oper ations and maintenance. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $wormId = "<yourWormId>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); try {
     // Extend the retention period of the locked retention policy to 120 days.
     $ossClient->extendBucketWorm($bucket, $wormId, 120);
@@ -13446,6 +14278,11 @@ use OSS\OssClient; use OSS\Core\OssException; // Security risks may arise if you
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13463,11 +14300,21 @@ Each lifecycle rule contains the following information: Policy: specifies the mo
 
 The following code provides an example on how to configure lifecycle rules for a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\LifecycleConfig; use OSS\Model\LifecycleRule; use OSS\Model\LifecycleAction; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the rule ID and the prefix of the object names that match the rule. $ruleId0 = "rule0"; $matchPrefix0 = "A0/"; $ruleId1 = "rule1"; $matchPrefix1 = "A1/"; $lifecycleConfig = new LifecycleConfig(); $actions = array(); // Specify that objects expire three days after they are last modified. $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECYCLE_TIMING_DAYS, 3); $lifecycleRule = new LifecycleRule($ruleId0, $matchPrefix0, "Enabled", $actions); $lifecycleConfig->addRule($lifecycleRule); $actions = array(); // Specify that objects created before the specified date expire. $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECYCLE_TIMING_DATE, '2022-10-12T00:00:00.000Z'); $lifecycleRule = new LifecycleRule($ruleId1, $matchPrefix1, "Enabled", $actions); $lifecycleConfig->addRule($lifecycleRule); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketLifecycle($bucket, $lifecycleConfig);
@@ -13475,6 +14322,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\LifecycleConfig; use
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13482,11 +14334,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query lifecycle rules of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $lifecycleConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $lifecycleConfig = $ossClient->getBucketLifecycle($bucket);
@@ -13494,6 +14356,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($lifecycleConfig->serializeToXml() . "\n");
 ```
 
@@ -13501,11 +14368,21 @@ print(__FUNCTION__ . ": OK" . "\n"); print($lifecycleConfig->serializeToXml() . 
 
 The following code provides an example on how to delete lifecycle rules from a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketLifecycle($bucket);
@@ -13513,6 +14390,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13524,11 +14406,21 @@ Object Storage Service (OSS) provides hotlink protection to prevent unauthorized
 
 The following code provides an example on how to configure hotlink protection:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = new RefererConfig(); // Allow empty Referers. $refererConfig->setAllowEmptyReferer(true); // Add a Referer allowlist. You can use asterisks (*) and question marks (?) as wildcar d characters in Referers. $refererConfig->addReferer("www.aliiyun.com"); $refererConfig->addReferer("www.aliiyuncs.com"); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketReferer($bucket, $refererConfig);
@@ -13536,6 +14428,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $acce
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13543,11 +14440,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query the hotlink protection configurations:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $refererConfig = $ossClient->getBucketReferer($bucket);
@@ -13555,6 +14462,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $acce
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($refererConfig->serializeToXml() . "\n");
 ```
 
@@ -13562,11 +14474,21 @@ print(__FUNCTION__ . ": OK" . "\n"); print($refererConfig->serializeToXml() . "\
 
 The following code provides an example on how to clear the hotlink protection configurations:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = new RefererConfig(); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // The hotlink protection configurations of a bucket cannot be directly cleared. Yo
@@ -13576,6 +14498,11 @@ u must configure a new hotlink protection rule that allows empty Referer fields 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13591,11 +14518,21 @@ SS-UniqueString .
 
 The following code provides an example on how to enable logging for a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $option = array(); // Specify the bucket that is used to store log objects. $targetBucket = "<yourBucketName>"; $targetPrefix = "access.log"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Enable logging.
@@ -13604,6 +14541,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13611,11 +14553,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to view the logging configurations of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $loggingConfig = null; $options = array(); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // View the logging configurations.
@@ -13624,6 +14576,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($loggingConfig->serializeToXml() . "\n");
 ```
 
@@ -13631,11 +14588,21 @@ print(__FUNCTION__ . ": OK" . "\n"); print($loggingConfig->serializeToXml() . "\
 
 The following code provides an example on how to disable logging for a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Disable logging.
@@ -13644,6 +14611,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13655,11 +14627,21 @@ You can configure static website hosting for your bucket. After the configuratio
 
 The following code provides an example on how to configure static website hosting:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\WebsiteConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the ac tual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Configure static web hosting. Set the index page to index.html and the error page to error.html. $websiteConfig = new WebsiteConfig("index.html", "error.html"); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketWebsite($bucket, $websiteConfig);
@@ -13667,6 +14649,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\WebsiteConfig; $acce
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13674,11 +14661,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query static website hosting configurations:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the ac tual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $websiteConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $websiteConfig = $ossClient->getBucketWebsite($bucket);
@@ -13686,6 +14683,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($websiteConfig->serializeToXml() . "\n");
 ```
 
@@ -13693,11 +14695,21 @@ print(__FUNCTION__ . ": OK" . "\n"); print($websiteConfig->serializeToXml() . "\
 
 The following code provides an example on how to delete static website hosting configurations:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the ac tual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketWebsite($bucket);
@@ -13705,6 +14717,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13716,11 +14733,21 @@ CORS allows web applications to access resources that belong to different region
 
 The following code provides an example on how to configure CORS rules for a specific bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\CorsConfig; use OSS\Model\CorsRule; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the ac tual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $corsConfig = new CorsConfig(); $rule = new CorsRule(); // AllowedHeaders and ExposeHeaders do not support wildcard characters. $rule->addAllowedHeader("x-oss-header"); // AllowedOlowedMethods allows only one asterisk (*) wildcard character. The asterisk ( *) wildcard character specifies that all origins or operations are allowed. $rule->addAllowedOrigin("http://www.b.com"); $rule->addAllowedMethod("POST"); $rule->setMaxAgeSeconds(10); // Up to 10 rules can be configured for each bucket. $corsConfig->addRule($rule); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // The existing rules are overwritten.
@@ -13729,6 +14756,11 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\CorsConfig; use OSS\
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13736,11 +14768,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query CORS rules that are configured for a specific bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the ac tual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $corsConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $corsConfig = $ossClient->getBucketCors($bucket);
@@ -13748,6 +14790,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($corsConfig->serializeToXml() . "\n");
 ```
 
@@ -13755,11 +14802,21 @@ print(__FUNCTION__ . ": OK" . "\n"); print($corsConfig->serializeToXml() . "\n")
 
 The following code provides an example on how to delete the CORS rules that are configured for a specific bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the ac tual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketCors($bucket);
@@ -13767,6 +14824,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13784,11 +14846,21 @@ Simple upload allows you to upload strings or local files. This topic describes 
 
 The following code provides an example on how to upload a string to an OSS object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // Specify the name of the object. $object = "<yourObjectName>"; // Configure the object content. $content = "Hello OSS"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content);
@@ -13796,6 +14868,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); // You can configure headers in upload requests when you upload the string. For example , you can set the object ACL to private and configure the user metadata of the object. $options = array(
     OssClient::OSS_HEADERS => array(
         'x-oss-object-acl' => 'private',
@@ -13804,7 +14881,7 @@ print(__FUNCTION__ . ": OK" . "\n"); // You can configure headers in upload requ
 
 `),` );
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content, $options);
@@ -13812,6 +14889,11 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13819,11 +14901,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to upload a local file to OSS:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // Specify the name of the object. $object = "<yourObjectName>"; // <yourLocalFile> consists of the local file path and the file name with an extension. Example: /users/local/myfile.txt. $filePath = "<yourLocalFile>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->uploadFile($bucket, $object, $filePath);
@@ -13831,6 +14923,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13842,11 +14939,21 @@ You can append strings and local files when you use append upload. The CopyObjec
 
 The following code provides an example on how to upload strings to OSS by using append upload:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Query the content of the object to upload. $content_array = array('Hello OSS', 'Hi OSS', 'OSS OK'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Start the first append. // If the object is appended for the first time, the app
@@ -13859,6 +14966,11 @@ $position); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13866,12 +14978,22 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to upload local files to OSS by using append upload:
 
-```python
+```
  <? php
 if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Obtain Local File 1. $filePath = "<yourLocalFile1>"; // Obtain Local File 2. $filePath1 = "<yourLocalFile2>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $position = $ossClient->appendFile($bucket, $object, $filePath, 0);
@@ -13880,6 +15002,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -13901,8 +15028,18 @@ After all parts are uploaded, call the ossClient.completeMultipartUpload method 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Core\OssUtil; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $uploadFile = "<yourLocalFile>"; /**
  * Step 1. Initiate a multipart upload task and obtain the upload ID.
 ```
@@ -13952,6 +15089,11 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
     if ($isCheckMd5) {
         $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
         $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
+```
+
+`}`
+
+```
     try {
         // Upload parts.
         $responseUploadPart[] = $ossClient->uploadPart($bucket, $object, $uploadId, $up
@@ -13961,14 +15103,24 @@ Options);
 FAILED\n");
         printf($e->getMessage() . "\n");
         return;
+```
+
+`}`
+
+```
     printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
+```
+
+`}`
+
+```
 // $uploadParts is an array that consists of the ETag and PartNumber of each part. $uploadParts = array(); foreach ($responseUploadPart as $i => $eTag) {
     $uploadParts[] = array(
         'PartNumber' => ($i + 1),
         'ETag' => $eTag,
 ```
 
-);
+); `}`
 
 ```
 /**
@@ -14007,11 +15159,21 @@ The following table describes the parameters contained in $options involved in t
 
 You can call $ossClient->abortMultipartUpload to cancel a multipart upload task. If you cancel a multipart upload task, you cannot use the upload ID to upload any parts. The uploaded parts are deleted. The following sample code provides an example on how to cancel a multipart upload task:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $upload_id = "<yourUploadId>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->abortMultipartUpload($bucket, $object, $upload_id);
@@ -14019,6 +15181,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14029,8 +15196,18 @@ The following code provides an example on how to upload a local file to OSS by u
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $file = "<yourLocalFile>"; $options = array(
     OssClient::OSS_CHECK_MD5 => true,
     OssClient::OSS_PART_SIZE => 1,
@@ -14038,7 +15215,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 );
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->multiuploadFile($bucket, $object, $file, $options);
@@ -14046,6 +15223,11 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14053,11 +15235,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to upload a local directory including all files in the directory to OSS by using multipart upload:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $localDirectory = "."; $prefix = "samples/codes"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->uploadDir($bucket, $prefix, $localDirectory);
@@ -14065,6 +15257,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14072,20 +15269,41 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to list uploaded parts:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $uploadId = "<yourUploadId>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $listPartsInfo = $ossClient->listParts($bucket, $object, $uploadId);
     foreach ($listPartsInfo->getListPart() as $partInfo) {
         print($partInfo->getPartNumber() . "\t" . $partInfo->getSize() . "\t" .
-$partInfo->getETag() . "\t" . $partInfo->getLastModified() . "\n"); } catch(OssException $e) {
+$partInfo->getETag() . "\t" . $partInfo->getLastModified() . "\n");
+```
+
+`}`
+
+```
+} catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14096,8 +15314,18 @@ The following code provides an example on how to list multipart upload tasks:
 ```
 <?php <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $options = array(
     'delimiter' => '/',
     'max-uploads' => 100,
@@ -14116,6 +15344,11 @@ try {
     printf(__FUNCTION__ . ": listMultipartUploads FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```
 printf(__FUNCTION__ . ": listMultipartUploads OK\n"); $listUploadInfo = $listMultipartUploadInfo->getUploads(); var_dump($listUploadInfo);
 ```
 
@@ -14144,15 +15377,25 @@ This topic describes how to use OSS SDK for PHP to download specific objects to 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object you want to download from OSS. The path must include the extension of the object name. Example: abc/efg/123.jpg. $object = "<yourObjectName>"; // <yourLocalFile> consists of a local file path and a file name with an extension. Exa mple: /users/local/myfile.txt. $localfile = "<yourLocalFile>"; $options = array(
         OssClient::OSS_FILE_DOWNLOAD => $localfile
 ```
 
 );
 
-```python
+```
 // Use try catch to catch exceptions. If an exception is returned, the download fails. If no exceptions are returned, the object is downloaded. try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->getObject($bucket, $object, $options);
@@ -14160,6 +15403,11 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt'" . "\ n");
 ```
 
@@ -14167,11 +15415,21 @@ print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt
 
 This topic describes how to use OSS SDK for PHP to download specified objects to local memory. The following code provides an example on how to download a specified object to local memory and display the content of the object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object);
@@ -14179,6 +15437,11 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14188,11 +15451,21 @@ print($content); print(__FUNCTION__ . ": OK" . "\n");
 
 If you need only part of the data in an object, you can use range download to download data within the specified range. The following code provides an example on how to download data within the range from byte 0 to byte 4 in an object to local memory:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; // Query the data within the range from byte 0 to byte 4, including a total of 5 bytes of data. If the specified range is invalid, for example, the specified range includes a negative number, or the specified value is larger than the object size, the entire obje ct is downloaded. $options = array(OssClient::OSS_RANGE => '0-4'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object, $options);
@@ -14200,6 +15473,11 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14224,8 +15502,18 @@ You can use conditional download to download objects to the local file or local 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $options = array(
         OssClient::OSS_HEADERS => array(
@@ -14234,13 +15522,18 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 
 );
 
-```python
+```
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object, $options);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14254,11 +15547,21 @@ You can manage objects in a bucket by using a variety of operations including Se
 
 This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $exist = $ossClient->doesObjectExist($bucket, $object);
@@ -14266,6 +15569,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); var_dump($exist);
 ```
 
@@ -14286,11 +15594,21 @@ This topic describes how to manage the access control list (ACL) of an object. T
 
 The following code provides an example on how to configure the ACL of an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; // Set the ACL of the object to public read. If you do not specify the ACL of the objec t, the ACL of the object inherits the ACL of the bucket in which the object is stored. $acl = "public-read"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObjectAcl($bucket, $object, $acl);
@@ -14298,6 +15616,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14305,11 +15628,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query the ACL of an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $objectAcl = $ossClient->getObjectAcl($bucket, $object);
@@ -14317,6 +15650,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); var_dump($objectAcl);
 ```
 
@@ -14328,11 +15666,21 @@ This topic describes how to manage object metadata.
 
 The following code provides an example on how to configure object metadata:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $content = file_get_contents(__FILE__); $options = array(
     OssClient::OSS_HEADERS => array(
         'Expires' => '2012-10-01 08:00:00',
@@ -14346,6 +15694,11 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14356,8 +15709,18 @@ The following code provides an example on how to modify object metadata:
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $fromBucket = "<yourFromBucketName>"; $fromObject = "<yourFromObjectName>"; $toBucket = "<yourToBucketName>"; $toObject = "<yourToObjectName>"; $copyOptions = array(
     OssClient::OSS_HEADERS => array(
         'Expires' => '2018-10-01 08:00:00',
@@ -14367,7 +15730,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 `),` );
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject,
@@ -14375,16 +15738,31 @@ $copyOptions); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **Query object metadata**
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $objectMeta = $ossClient->getObjectMeta($bucket, $object);
@@ -14392,6 +15770,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-Disposition')]) &&
     'attachment; filename="xxxxxx"' === $objectMeta[strtolower('Content-Disposition')]
 ) {
@@ -14399,6 +15782,8 @@ print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-D
 } else {
     print(__FUNCTION__ . ": ObjectMeta checked FAILED" . "\n");
 ```
+
+`}`
 
 ###### 1.2.3.8.5 List objects
 
@@ -14411,6 +15796,11 @@ The following code provides an example on how to list all the objects in a speci
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
 ```
@@ -14425,12 +15815,17 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 );
 
-```python
+```
         $listObjectInfo = $ossClient->listObjects($bucket, $options);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
         return;
+```
+
+`}`
+
+```python
     // Obtain nextMarker to list the remaining objects. The reading starts from the obj
 ect next to the last object previously obtained through the listObjects operation.
     $nextMarker = $listObjectInfo->getNextMarker();
@@ -14440,13 +15835,25 @@ ect next to the last object previously obtained through the listObjects operatio
         print("objectList:\n");
         foreach ($listObject as $objectInfo) {
             print($objectInfo->getKey() . "\n");
+```
+
+`}` `}`
+
+```python
     if (! empty($listPrefix)) {
         print("prefixList: \n");
         foreach ($listPrefix as $prefixInfo) {
             print($prefixInfo->getPrefix() . "\n");
+```
+
+`}` `}`
+
+```
     if ($listObjectInfo->getIsTruncated() ! == "true") {
        break;
 ```
+
+`}` `}`
 
 > **Note:** In the preceding sample code, $options is optional and can be used to list all objects in the entire bucket or in a folder.
 
@@ -14459,8 +15866,18 @@ The following code provides an example on how to list objects that meet specific
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); $prefix = 'dir/'; $delimiter = '/'; $nextMarker = ''; $maxkeys = 10; $options = array(
     'delimiter' => $delimiter,
     'prefix' => $prefix,
@@ -14470,17 +15887,27 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 );
 
-```python
+```
 try {
     $listObjectInfo = $ossClient->listObjects($bucket, $options);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); $objectList = $listObjectInfo->getObjectList(); // object list $prefixList = $listObjectInfo->getPrefixList(); // directory list if (! empty($objectList)) {
     print("objectList:\n");
     foreach ($objectList as $objectInfo) {
         print($objectInfo->getKey() . "\n");
+```
+
+`}` `}`
+
+```python
 if (! empty($prefixList)) {
     print("prefixList: \n");
     foreach ($prefixList as $prefixInfo) {
@@ -14506,11 +15933,21 @@ This topic describes how to delete objects.
 
 The following code provides an example on how to delete a single object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObject($bucket, $object);
@@ -14518,6 +15955,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14525,11 +15967,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to delete multiple objects:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $objects = array(); $objects[] = "<yourObjectName1>"; $objects[] = "<yourObjectName2>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObjects($bucket, $objects);
@@ -14537,6 +15989,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14550,11 +16007,21 @@ This topic describes how to copy an object. Take note of the following items whe
 
 You can call $ossClient->copyObject to copy an object less than or equal to 1 GB in size from the source bucket to the destination bucket within the same region. The following code provides an example on how to copy a small object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $from_bucket = "<yourFromBucketName>"; $from_object = "<yourFromObjectName>"; $to_bucket = $bucket; $to_object = $from_object . '.copy'; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->copyObject($from_bucket, $from_object, $to_bucket, $to_object);
@@ -14562,6 +16029,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14577,6 +16049,11 @@ The following code provides an example on how to use multipart copy to copy larg
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
 use OSS\OssClient;
@@ -14608,6 +16085,11 @@ use OSS\Core\OssException; $accessKeySecret = "<yourAccessKeySecret>"; // In thi
         $response_upload_part[] = $ossClient->uploadPartCopy( $src_bucket, $src_object,
 $dst_bucket, $dst_object, $copyId, $upload_id, $up_options);
         $copyId = $copyId + 1;
+```
+
+`}`
+
+```
     // Complete the multipart copy task.
     $upload_parts = array();
     foreach ($response_upload_part as $i => $etag) {
@@ -14616,7 +16098,7 @@ $dst_bucket, $dst_object, $copyId, $upload_id, $up_options);
             'ETag' => $etag,
 ```
 
-);
+); `}`
 
 ```
     $result = $ossClient->completeMultipartUpload($dst_bucket, $dst_object, $upload_id,
@@ -14642,11 +16124,21 @@ The versioning state of a bucket takes effect on all objects in the bucket. If y
 
 The following code provides an example on how to configure the versioning state of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try {
     // Set the versioning state of the bucket to enabled or suspended.
     $ossClient->putBucketVersioning($bucket, "Enabled");
@@ -14654,6 +16146,11 @@ use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14661,11 +16158,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following code provides an example on how to query the versioning state of a bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try {
     // Query the versioning state of the bucket.
     $status = $ossClient->getBucketVersioning($bucket);
@@ -14674,6 +16181,11 @@ use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14684,8 +16196,18 @@ The following code provides an example on how to list the versions of all object
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation.
 ```
 
@@ -14720,6 +16242,11 @@ We recommend that you use a RAM user to call API operations or perform routine O
                 print($objectInfo->getETag() . ",");
                 print($objectInfo->getSize() . ",");
                 print($objectInfo->getIsLatest() . "\n");
+```
+
+`}` `}`
+
+```python
         // Display the version information about all delete markers in the bucket.
         if (!empty($deleteMarkerList)) {
             print("deleteMarkerList: \n");
@@ -14730,13 +16257,23 @@ We recommend that you use a RAM user to call API operations or perform routine O
                 print($deleteMarkerInfo->getIsLatest() . "\n");
 ```
 
-```python
+```
                 if ($result->getIsTruncated() !== "true") {
                 break;
+```
+
+`}` `}`
+
+```
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14748,11 +16285,21 @@ This topic describes how to upload objects to a versioned bucket.
 
 When an object is uploaded to a bucket for which versioning is enabled, OSS generates a random string as the globally unique version ID of the object and includes the version ID in the response as the `x-oss-version-id` header. When an object is uploaded to a bucket for which versioning is suspended, OSS generates a version ID of null for the uploaded object. In this case, if you upload an object that has the same name as the existing object to the bucket, the existing object is overwritten. The following code provides an example on how to upload an object to a versioned bucket by using simple upload:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the full path of the object. The full path cannot contain the bucket name. E xample: example/test.txt. $object = "<yourObjectName>"; $content = "hello world"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try {
     // Upload the object to the versioned bucket.
     $ret = $ossClient->putObject($bucket, $object, $content);
@@ -14762,6 +16309,11 @@ use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14769,11 +16321,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 When you upload an object to a versioned bucket by using append upload, take note of the following items: You can perform the AppendObject operation only on an object whose current version is an appendable object. The AppendObject operation cannot be performed on an object whose current version is not an appendable object, such as a normal object or a delete marker. When you perform the AppendObject operation on an object whose current version is an appendable object, OSS does not generate a previous version for the appendable object. When you perform the PutObject or DeleteObject operation on an object whose current version is an appendable object, OSS stores the appendable object as a previous version and prevents the object from being further appended. The following code provides an example on how to perform append upload:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; // Specify that the object content obtained after the first, second, and third append u pload is Hello OSS, Hi OSS, and OSS OK. $content_array = array('Hello OSS', 'Hi OSS', 'OSS OK'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Perform the first append upload. The position for the first append upload is 0,
@@ -14786,6 +16348,11 @@ $position); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14796,15 +16363,25 @@ If you call the CompleteMultipartUpload operation to complete the multipart uplo
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Core\OssUtil; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; // Specify the full path of the local file. $uploadFile = "<yourLocalFile>"; /**
  * Step 1. Initiate a multipart upload task and obtain the upload ID.
 ```
 
 `*/`
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Obtain the upload ID. The upload ID uniquely identifies the multipart upload tas
@@ -14814,6 +16391,11 @@ k. You can use the upload ID to cancel or query the multipart upload task.
     printf(__FUNCTION__ . ": initiateMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
 ```
 
@@ -14853,6 +16435,11 @@ verification is enabled. A value of false indicates MD5 verification is disabled
     if ($isCheckMd5) {
         $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
         $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
+```
+
+`}`
+
+```
     try {
         // Upload parts.
         $responseUploadPart[] = $ossClient->uploadPart($bucket, $object, $uploadId, $up
@@ -14862,14 +16449,24 @@ Options);
 FAILED\n");
         printf($e->getMessage() . "\n");
         return;
+```
+
+`}`
+
+```
     printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
+```
+
+`}`
+
+```
 // $uploadParts is an array that consists of the ETag and PartNumber of each part. $uploadParts = array(); foreach ($responseUploadPart as $i => $eTag) {
     $uploadParts[] = array(
         'PartNumber' => ($i + 1),
         'ETag' => $eTag,
 ```
 
-);
+); `}`
 
 ```
 /**
@@ -14897,11 +16494,21 @@ printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
 
 By default, when you call the GetObject operation to download an object from a versioned bucket, only the current version of the object is returned. When you perform the GetObject operation on an object in a bucket, you may obtain one of the following results: If the current version of the object is a delete marker, OSS returns 404 Not Found. If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version whose version ID is null. If the version ID is set to a delete marker, OSS returns 405 Method Not Allowed. The following code provides an example on how to download an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the full path of the object. The full path cannot contain the bucket name. E xample: example/test.txt. $object = "<yourObjectName>"; // Specify the version ID of the version you want to download. $versionId = "<yourObjectVersionId>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try{
     // Download the version with the specified version ID.
     $content = $ossClient->getObject($bucket, $object, array(OssClient::OSS_VERSION_ID
@@ -14911,6 +16518,11 @@ use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14922,11 +16534,21 @@ This topic describes how to copy objects in a versioned bucket. You can call Cop
 
 You can call CopyObject to copy an object that is up to 1 GB in size from a source bucket to a destination bucket in the same region. By default, the x-oss-copy-source header in a CopyObject request specifies the current version of the object to copy. If the current version of the object is a delete marker, OSS returns the 404 status code, which indicates that the object does not exist. You can add a version ID in the x-oss-copy-source header to copy a specified object version. Delete markers cannot be copied. You can copy a previous version of an object to the same bucket. The copied previous version becomes the new version of the object. This way, the previous version of the object is recovered. If versioning is enabled for the destination bucket, OSS generates a unique version ID for the new object. The version ID is returned as the x-oss-version-id header in the response. If versioning is disabled or suspended for the destination bucket, OSS generates a version whose version ID is null for the destination object and overwrites the original version whose version ID is null. Appendable objects in a bucket for which versioning is enabled or suspended cannot be copied. The following code provides an example on how to copy a small object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the full path of the object. The full path cannot contain the bucket name. E xample: example/test.txt. $object = "<yourObjectName>"; $versionId = "<yourObjectVersionId>"; $to_bucket = $bucket; $to_object = $object . '.copy'; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try{
     // Copy the object with the specified version ID.
     $ret = $ossClient->copyObject($bucket, $object, $to_bucket, $to_object,
@@ -14936,6 +16558,11 @@ array(OssClient::OSS_VERSION_ID => $versionId));
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -14954,15 +16581,25 @@ If versionId is not specified in the request and the current version of the sour
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $versionId = "<yourObjectVersionId>"; $to_bucket = $bucket; $to_object = $object . '.copy'; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); /**
  * Step 1. Initiate a multipart upload task and obtain the upload ID.
 ```
 
 `*/`
 
-```python
+```
 try {
     // Obtain the upload ID. The upload ID is the unique identifier for a multipart upl
 oad task. You can perform related operations such as cancel or query the multipart uplo ad task based on the upload ID.
@@ -14971,6 +16608,11 @@ oad task. You can perform related operations such as cancel or query the multipa
     printf(__FUNCTION__ . ": initiateMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
 ```
 
@@ -14994,6 +16636,11 @@ $partSize = 10 * 1024 * 1024; try {
     printf(__FUNCTION__ . ": getSimplifiedObjectMeta FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```
 $pieces = $ossClient->generateMultiuploadParts($uploadSize, $partSize); $responseUploadPart = array(); $uploadPosition = 0; foreach ($pieces as $i => $piece) {
     $fromPos = $uploadPosition + (integer)$piece[$ossClient::OSS_SEEK_TO];
     $toPos = (integer)$piece[$ossClient::OSS_LENGTH] + $fromPos - 1;
@@ -15020,10 +16667,15 @@ $to_bucket, $to_object, ($i + 1), $uploadId, $upOptions);
 ILED\n");
         printf($e->getMessage() . "\n");
         return;
+```
+
+`}`
+
+```
     printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPartCopy - part#{$i} OK\n")
 ```
 
-;
+; `}`
 
 ```
 // $uploadParts is an array that consists of the ETag and PartNumber of each part. $uploadParts = array(); foreach ($responseUploadPart as $i => $eTag) {
@@ -15032,7 +16684,7 @@ ILED\n");
         'ETag' => $eTag,
 ```
 
-);
+); `}`
 
 ```
 /**
@@ -15057,6 +16709,11 @@ adParts);
     printf(__FUNCTION__ . ": completeMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```
 printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
 ```
 
@@ -15084,11 +16741,21 @@ permanently deletes the version specified by the `versionId` field in the `param
 
 The following examples describe how to permanently or temporarily delete a single object from a versioned bucket. Permanently delete an object from a versioned bucket The following code provides an example on how to permanently delete an object from a versioned bucket by specifying the version ID of the object in the request:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API op erations. Using these credentials to perform operations in OSS is a high-risk operati on. We recommend that you use a RAM user to call API operations or perform routine O& M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the full path of the object. The full path cannot contain the bucket name. Example: example/test.txt. $object = "<yourObjectName>"; $versionId = "<yourObjectVersionId>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try{
     // Delete the object with the specified version ID.
     $ossClient->deleteObject($bucket, $object, array(OssClient::OSS_VERSION_ID => $ve
@@ -15096,16 +16763,31 @@ rsionId)); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Temporarily delete an object from a versioned bucket The following code provides an example on how to temporarily delete an object from a versioned bucket by sending a request in which no version ID is specified:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API op erations. Using these credentials to perform operations in OSS is a high-risk operati on. We recommend that you use a RAM user to call API operations or perform routine O& M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try{
     // Temporarily delete an object without specifying its version ID. A delete marke
 r is added to the object.
@@ -15116,6 +16798,11 @@ r is added to the object.
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -15123,11 +16810,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 The following examples demonstrate how to permanently or temporarily delete multiple objects from a versioned bucket. Permanently delete multiple objects from a versioned bucket The following code provides an example on how to permanently delete multiple objects with specified version IDs from a versioned bucket:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\DeleteObjectInfo; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API op erations. Using these credentials to perform operations in OSS is a high-risk operati on. We recommend that you use a RAM user to call API operations or perform routine O& M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try{
     // Delete the objects with the specified version IDs.
     $objects = array();
@@ -15142,20 +16839,40 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\DeleteObjectInfo; //
             print($deletedObjectInfo->getVersionId() . ",");
             print($deletedObjectInfo->getDeleteMarker() . ",");
             print($deletedObjectInfo->getDeleteMarkerVersionId() . "\n");
+```
+
+`}` `}`
+
+```
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Temporarily delete multiple objects from a versioned bucket The following code provides an example on how to delete multiple objects from a versioned bucket by sending a request in which no version IDs are specified:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\DeleteObjectInfo; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API op erations. Using these credentials to perform operations in OSS is a high-risk operati on. We recommend that you use a RAM user to call API operations or perform routine O& M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your actual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try{
     // Temporarily delete multiple object without specifying their version IDs. Delet
 e markers are added to the objects.
@@ -15171,6 +16888,11 @@ e markers are added to the objects.
             print($deletedObjectInfo->getVersionId() . ",");
             print($deletedObjectInfo->getDeleteMarker() . ",");
             print($deletedObjectInfo->getDeleteMarkerVersionId() . "\n");
+```
+
+`}` `}`
+
+```python
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
@@ -15186,11 +16908,21 @@ By default, when you perform the HeadObject operation on an object in a versione
 
 The following code provides an example on how to query object metadata:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $versionId = "<yourObjectVersionId>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try {
     // Query all metadata of the object with the specified version ID.
     $objectMeta = $ossClient->getObjectMeta($bucket, $object,
@@ -15204,6 +16936,11 @@ array(OssClient::OSS_VERSION_ID => $versionId));
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -15228,11 +16965,21 @@ The ACL of an object takes precedence over the ACL of the bucket in which the ob
 
 By default, the `putObjectAcl` method is used to configure the ACL of the current version of an object. If the current version of the object is a delete marker, OSS returns 404 Not Found. You can specify a version ID in the request to configure the ACL of the specified version of an object. The following code provides an example on how to configure the ACL of an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // Specify the name of the object. The name is the full path of the object and cannot c ontain the bucket name. Example: example/test.txt. $object = "<yourObjectName>"; // Specify the ID of the version for which you want to configure ACL. $versionId = "<yourObjectVersionId>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try {
     // Set the ACL of the specified version of the object to public read.
     $ossClient->putObjectAcl($bucket, $object, 'public-read',
@@ -15240,6 +16987,11 @@ array(OssClient::OSS_VERSION_ID => $versionId)); } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -15247,11 +16999,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 By default, the `getObjectAcl` method is used to query the ACL of the current version of an object. If the current version of the object is a delete marker, OSS returns 404 Not Found. You can specify a version ID in the request to query the ACL of the specified version of an object. The following code provides an example on how to query the ACL of an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara Stack tenant account has permissions on all API oper ations. Using these credentials to perform operations in OSS is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&M. To create a RAM user, log on to the RAM console. $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify your a ctual endpoint. $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; // Specify the name of the bucket. $bucket= "<yourBucketName>"; // Specify the name of the object. The name is the full path of the object and cannot c ontain the bucket name. Example: example/test.txt. $object = "<yourObjectName>"; // Specify the ID of the version for which you want to query ACL. $versionId = "<yourObjectVersionId>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); try {
     // Query the ACL of the object.
     $acl = $ossClient->getObjectAcl($bucket, $object, array(OssClient::OSS_VERSION_ID =
@@ -15261,6 +17023,11 @@ use OSS\OssClient; use OSS\Core\OssException; // The AccessKey pair of an Apsara
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -15275,8 +17042,18 @@ Alibaba Cloud STS is a web service that provides a temporary access token to a c
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the en dpoint based on your business requirements. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; $content = "Hi, OSS."; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false,
 $securityToken);
@@ -15285,15 +17062,27 @@ $securityToken);
     print $e->getMessage();
 ```
 
+`}`
+
 **Use a signed URL for temporary access authorization**
 
 You can generate a signed URL and provide the URL to a visitor for temporary access. When you generate a signed URL, you can specify the validity period of the URL to limit the period of time during which the visitor can access OSS. For more information about the complete sample code of STS-based authorization, visit GitHub. Generate a signed URL to download an object The following sample code provides an example on how to generate a signed URL to download an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the endpoint based on your business requirements. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; // Set the validity period of a URL to 3,600 seconds. $timeout = 3600; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $sec
 urityToken);
@@ -15303,6 +17092,11 @@ urityToken);
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); // You can run code to access the signed URL, or access the signed URL in a browser. $request = new RequestCore($signedUrl); // Set GET as the default method to access the signed URL. $request->set_method('GET'); $request->add_header('Content-Type', ''); $request->send_request(); $res = new ResponseCore($request->get_response_header(), $request- >get_response_body(), $request->get_response_code()); if ($res->isOK()) {
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
@@ -15311,11 +17105,21 @@ print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); // You can run code t
 
 }; Generate a signed URL to upload an object The following sample code provides an example on how to generate a signed URL to upload an object:
 
-```python
+```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // In this example, the endpoint of the China (Hangzhou) region is used. Specify the endpoint based on your business requirements. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; $timeout = 3600; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $sec
 urityToken);
@@ -15325,6 +17129,11 @@ urityToken);
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); $content = "Hello OSS."; $request = new RequestCore($signedUrl); // Set PUT as the default method to access the signed URL. $request->set_method('PUT'); $request->add_header('Content-Type', ''); $request->add_header('Content-Length', strlen($content)); $request->set_body($content); $request->send_request(); $res = new ResponseCore($request->get_response_header(),
     $request->get_response_body(), $request->get_response_code());
 if ($res->isOK()) {
@@ -15412,11 +17221,21 @@ If the ACL of an image object is private, you must have permissions on the image
 
 The following code provides an example on how to generate a signed URL to access IMG:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the a ctual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); // Generate a signed URL that you can directly access by using a browser. The validit y period of the URL is 3,600 seconds. $timeout = 3600; $options = array(
     OssClient::OSS_PROCESS => "image/resize,m_lfit,h_100,w_100" );
 $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, "GET", $options); print("rtmp url: \n" . $signedUrl);
@@ -15427,8 +17246,18 @@ Access by using SDKs You can use **OSS SDKs** to access and process the image ob
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket = "<yourBucketName>"; $object "<orObjectName>"
 ```
 
@@ -15462,8 +17291,18 @@ Custom image styles
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket = "<yourBucketName>"; $object = "<yourObjectName>"; $download_file = "download.jpg"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); // Upload a sample image. $ossClient->uploadFile($bucket, $object, "example.jpg"); // Customize the image style. $style = "style/oss-pic-style-w-300"; $options = array(
     OssClient::OSS_FILE_DOWNLOAD => $download_file,
     OssClient::OSS_PROCESS => $style);
@@ -15475,8 +17314,18 @@ Cascade processing
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket = "<yourBucketName>"; $object = "<yourObjectName>"; $download_file = "download.jpg"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); // Upload a sample image. $ossClient->uploadFile($bucket, $object, "example.jpg"); // Perform cascade processing. $style = "image/resize,m_fixed,w_100,h_100/rotate,90"; $options = array(
     OssClient::OSS_FILE_DOWNLOAD => $download_file,
     OssClient::OSS_PROCESS => $style);
@@ -15490,8 +17339,18 @@ The following code provides an example on how to save processed images:
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Specify the object name for the processed image. $targetObject = "<yourTargetObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 // The following code provides an example on how to convert the image format of a proce ssed image. To crop, rotate, or watermark an image, modify the $options parameters. $options = array(
@@ -15500,11 +17359,16 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 
 );
 
-```python
+```
 $content = $ossClient->getObject($bucket, $object, $options); $ossClient->putObject($bucket, $targetObject, $content); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -15523,7 +17387,7 @@ The following code provides an example on how to rectify an error and display th
         print("Exception:" . $e->getMessage() . "\n");
 ```
 
-The following table describes the error messages you can obtain.
+`}` The following table describes the error messages you can obtain.
 
 | Parameter | Description |
 |---|---|
@@ -15745,12 +17609,22 @@ not used. */
     /* Configure network parameters. The second parameter in this function indicates th
 e ownership of ctl. By default, the value is 0. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
     /* Initialize global variables, which are run before the program starts. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         return -1;
+```
+
+`}`
+
+```
     /* Initialize the memory pool and options. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -15763,6 +17637,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Use the custom domain name to initialize request options**
 
@@ -15780,12 +17656,22 @@ const char *endpoint = "<yourCustomEndpoint>"; const char *access_key_id = "<you
     /* Enable the CNAME and bind the custom domain name to the bucket. */
     options->config->is_cname = 1;
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
     /* Initialize global variables, which are run before the program starts. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         return -1;
+```
+
+`}`
+
+```
     /* Initialize the memory pool and options. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -15798,6 +17684,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Use STS to initialize request options**
 
@@ -15823,12 +17711,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 not used. */
     options->config->is_cname = 0;
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
     /* Initialize global variables, which are run before the program starts. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         return -1;
+```
+
+`}`
+
+```
     /* Initialize the memory pool and options. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -15841,6 +17739,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Configure a timeout period**
 
@@ -15891,6 +17791,8 @@ than 1 KB/s for 15 consecutive seconds, the request times out.
     options->ctl->options->speed_time = 15;
 ```
 
+`}`
+
 ##### 1.2.4.4 Getting Started
 
 This topic describes how to use Object Storage Service (OSS) SDK for C to complete routine operations such as bucket creation, object upload, and object download.
@@ -15923,6 +17825,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -15933,6 +17840,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -15965,6 +17877,11 @@ rmation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. 
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -15972,6 +17889,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Upload an object**
 
@@ -16028,6 +17947,11 @@ etod
 egoba esouces such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16065,6 +17989,11 @@ fer, headers, &resp_headers);
         printf("put file succeeded\n");
     } else {
         printf("put file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16072,6 +18001,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Download an object**
 
@@ -16095,6 +18026,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16105,6 +18041,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16142,6 +18083,11 @@ params, &file, &resp_headers);
         printf("get object to local file succeeded\n");
     } else {
         printf("get object to local file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16149,6 +18095,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **List objects**
 
@@ -16172,6 +18120,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16182,6 +18135,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool = NULL;
@@ -16219,6 +18177,11 @@ rmation such as endpoint, accesskeyid, accesskeysecret, iscname, and curl. */
 
 ```
         printf("list object failed\n");
+```
+
+`}`
+
+```
     else{
         /* Display the objects. */
         printf("Object\tSize\tLastModified\n");
@@ -16230,7 +18193,17 @@ key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         printf("Total %d\n", size);
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16238,6 +18211,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Delete an object**
 
@@ -16277,6 +18252,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16287,6 +18267,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16324,6 +18309,11 @@ aos_tabe_t esp_eades
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16332,7 +18322,7 @@ for the request. */
     return 0;
 ```
 
-The following code provides an example on how to specify the access control list (ACL) of a bucket when you create the bucket:
+`}` The following code provides an example on how to specify the access control list (ACL) of a bucket when you create the bucket:
 
 ```
     /* Create a bucket and set the ACL of the bucket to public read. The default bucket
@@ -16344,6 +18334,8 @@ resp_headers);
     } else {
         printf("create bucket failed\n");
 ```
+
+`}`
 
 ###### 1.2.4.5.2 List buckets
 
@@ -16372,6 +18364,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16382,6 +18379,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t *pool is equivalent to
 apr_pool_t. The code to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -16408,11 +18410,21 @@ ormation such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. 
         printf("list buckets succeeded\n");
     } else {
         printf("list buckets failed\n");
+```
+
+`}`
+
+```
     /* Display the list of buckets. */
     aos_list_for_each_entry(oss_list_bucket_content_t, content, &params->bucket_list, n
 ode) {
         printf("BucketName: %s\n", content->name.data);
         ++size;
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -16456,6 +18468,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16495,6 +18512,11 @@ ormation such as endpoint, access_key_id, access_key_secret, is_cname, and curl.
         printf("set bucket acl succeeded\n");
     } else {
         printf("set bucket acl failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -16502,6 +18524,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Query the ACL of a bucket**
 
@@ -16541,6 +18565,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16568,6 +18597,11 @@ rmation, such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. 
         printf("get bucket acl succeeded : %s \n", oss_acl.data);
     } else {
         printf("get bucket acl failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -16575,6 +18609,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.5.4 Delete buckets
 
@@ -16599,6 +18635,11 @@ not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16609,6 +18650,11 @@ int main(int argc, char *argv[])
 such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the Apache Portable Runtime (APR) library. */
     aos_pool_t *pool;
@@ -16645,6 +18691,8 @@ the request. */
     return 0;
 ```
 
+`}`
+
 ###### 1.2.4.5.5 Manage lifecycle rules
 
 Not all data that is uploaded to Object Storage Service (OSS) buckets is frequently accessed. Rarely accessed data is stored in cold storage for compliance and archiving purposes. If you want to delete data stored in multiple OSS buckets at the same time, you can configure lifecycle rules based on the last modified time of the data. To reduce storage costs, we recommend that you store cold data and hot data separately. To achieve separate storage of hot data and cold data, you can configure OSS to automatically monitor data access modes, identify cold data, and then change the storage class of the cold data. In this scenario, you can also configure lifecycle rules based on the last access time of the data.
@@ -16676,6 +18724,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16686,6 +18739,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16739,6 +18797,11 @@ oss_create_lifecycle_rule_content(pool);
 request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_sta
 tus->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16746,6 +18809,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Query lifecycle rules**
 
@@ -16770,6 +18835,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16780,6 +18850,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16825,6 +18900,11 @@ tatus.data);
             date = apr_psprintf(pool, "%.*s", rule_content->date.len, rule_content->date
 .data);
             days = rule_content->days;
+```
+
+`}`
+
+```
         printf("rule_id: %s \n", rule_id);
         printf("prefix: %s \n", prefix);
         printf("status: %s \n", status);
@@ -16835,6 +18915,11 @@ tatus.data);
 request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_sta
 tus->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16869,6 +18954,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -16879,6 +18969,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -16912,6 +19007,11 @@ aosstrset(&bucket bucketname);
 equest_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_sta
 tus->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -16919,6 +19019,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.5.6 CORS
 
@@ -16947,6 +19049,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17013,6 +19120,11 @@ sp_headers);
         printf("put bucket cors succeeded\n");
     } else {
         printf("put bucket cors failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17050,6 +19162,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17060,6 +19177,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17097,17 +19219,42 @@ sp_headers);
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >allowed_origin_list, node) {
                 printf("allowed_origin_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >allowed_method_list, node) {
                 printf("allowed_method_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >allowed_head_list, node) {
                 printf("allowed_head_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >expose_head_list, node) {
                 printf("expose_head_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}` `}`
+
+```
     } else {
         printf("get bucket cors failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17115,6 +19262,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Delete CORS rules**
 
@@ -17142,6 +19291,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17152,6 +19306,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17176,6 +19335,11 @@ ormation such as endpoint, access_key_id, access_key_secret, is_cname, and curl.
         printf("get bucket cors succeeded\n");
     } else {
         printf("get bucket cors failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17183,6 +19347,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.5.7 Configure hotlink protection
 
@@ -17211,6 +19377,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17221,6 +19392,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17256,6 +19432,11 @@ wildcard character to set the Referer parameter. */
         printf("put bucket referer succeeded\n");
     } else {
         printf("put bucket referer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17263,6 +19444,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Query hotlink protection information**
 
@@ -17287,6 +19470,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17297,6 +19485,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17329,8 +19522,18 @@ ormation such as endpoint, access_key_id, access_key_secret, is_cname, and curl.
         aos_list_for_each_entry(oss_referer_t, referer, &referer_config.referer_list, n
 ode) {
             printf("get referer %s\n", referer->referer.data);
+```
+
+`}`
+
+```
     } else {
         printf("get bucket referer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17338,6 +19541,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Delete hotlink protection configurations**
 
@@ -17365,6 +19570,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17375,6 +19585,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17404,6 +19619,11 @@ rotection configurations, you must create a rule that allows an empty Referer fi
         printf("delete bucket referer succeeded\n");
     } else {
         printf("delete bucket referer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17411,6 +19631,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.5.8 Static website hosting
 
@@ -17439,6 +19661,11 @@ not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17449,6 +19676,11 @@ int main(int argc, char *argv[])
 such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the Apache Portable Runtime (APR) library. */
     aos_pool_t *pool;
@@ -17482,6 +19714,11 @@ page to error.html. */
         printf("put bucket website succeeded\n");
     } else {
         printf("put bucket website failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated for
 the request. */
     aos_pool_destroy(pool);
@@ -17489,6 +19726,8 @@ the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Query the configurations of static website hosting**
 
@@ -17513,6 +19752,11 @@ not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17523,6 +19767,11 @@ int main(int argc, char *argv[])
 such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17554,6 +19803,11 @@ rmation, such as endpoint, access_key_id, access_key_secret, is_cname, and curl.
 website_config.key_str.data);
     } else {
         printf("get bucket website failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated for
 the request. */
     aos_pool_destroy(pool);
@@ -17561,6 +19815,8 @@ the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Delete the configurations of static website hosting**
 
@@ -17598,6 +19854,11 @@ int main(int argc, char *argv[])
 such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17623,6 +19884,11 @@ rmation, such as endpoint, access_key_id, access_key_secret, is_cname, and curl.
         printf("delete bucket website succeeded\n");
     } else {
         printf("delete bucket website failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated for
 the request. */
     aos_pool_destroy(pool);
@@ -17630,6 +19896,8 @@ the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 1.2.4.6 Upload objects
 
@@ -17664,6 +19932,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17674,6 +19947,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17712,6 +19990,11 @@ fer, headers, &resp_headers);
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17719,6 +20002,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Upload a local file**
 
@@ -17747,6 +20032,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17757,6 +20047,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17788,6 +20083,11 @@ headers, &resp_headers);
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17812,7 +20112,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 `{`
 
 ```
-options->config = oss_config_create(options->pool); /* Use a char* string to initialize aos_string_t. */ aos_str_set(&options->config->endpoint, endpoint); aos_str_set(&options->config->access_key_id, access_key_id); aos_str_set(&options->config->access_key_secret, access_key_secret); /* Specify whether to use CNAME to access OSS. A value of 0 indicates that CNAME is not used. */ options->config->is_cname = 0; /* Configure network parameters such as timeout periods. */ options->ctl = aos_http_controller_create(options->pool, 0); char* multibyte_to_utf8(const char * ch, char *str, int size)
+options->config = oss_config_create(options->pool); /* Use a char* string to initialize aos_string_t. */ aos_str_set(&options->config->endpoint, endpoint); aos_str_set(&options->config->access_key_id, access_key_id); aos_str_set(&options->config->access_key_secret, access_key_secret); /* Specify whether to use CNAME to access OSS. A value of 0 indicates that CNAME is not used. */ options->config->is_cname = 0; /* Configure network parameters such as timeout periods. */ options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
+char* multibyte_to_utf8(const char * ch, char *str, int size)
 ```
 
 `{`
@@ -17824,6 +20130,11 @@ int chlen = strlen(ch); int multi_byte_cnt = 0; for (int i = 0; i < chlen - 1; i
         if ((ch[i] & 0x80) && (ch[i + 1] & 0x80)) {
             i++;
             multi_byte_cnt++;
+```
+
+`}` `}`
+
+```
 if (multi_byte_cnt == 0)
         return ch;
 int len = MultiByteToWideChar(CP_ACP, 0, ch, -1, NULL, 0); if (len <= 0)
@@ -17845,7 +20156,18 @@ idCh
 len = WideCharToMultiByte(CP_UTF8, 0, wch, -1, NULL, 0, NULL, NULL); if ((len <= 0) || (size < len + 1)) {
         free(wch);
         return NULL;
-memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL, NULL); free(wch); return str; int main(int argc, char argv[])
+```
+
+`}`
+
+```
+memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL, NULL); free(wch); return str;
+```
+
+`}`
+
+```
+int main(int argc, char argv[])
 ```
 
 `{`
@@ -17853,6 +20175,11 @@ memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL
 ```
 /* Call aos_http_io_initialize in main() to initialize global resources such as netw orks and memory. */ if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
     exit(1);
+```
+
+`}`
+
+```
 /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. Th e code used to create a memory pool is included in the APR library. */ aos_pool_t pool; /* Create a memory pool. The second parameter is NULL. This parameter indicates that the pool does not inherit any other memory pool. */ aos_pool_create(&pool, NULL);
     /* Create and initialize options. This parameter specifies global configuration inf
 ormation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */ oss_request_options_t oss_client_options; /* Allocate a memory chunk in the memory pool to options. */ oss_client_options = oss_request_options_create(pool); /* Call oss_client_options to initialize the client options. */ init_options(oss_client_options); /* Initialize the parameters. */ aos_string_t bucket; aos_string_t object;
@@ -17881,6 +20208,8 @@ headers, &resp_headers); /* Determine whether the object is uploaded. */ if (aos
         printf("put object from file failed\n");
 /* Release the memory pool, which releases memory resources allocated for the request. */ aos_pool_destroy(pool); /* Release the allocated global resources. */ aos_http_io_deinitialize(); return 0;
 ```
+
+`}`
 
 ###### 1.2.4.6.3 Append upload
 
@@ -17911,6 +20240,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -17921,6 +20255,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -17959,6 +20298,11 @@ _headers);
         next_append_position = (char*)(apr_table_get(resp_headers, "x-oss-next-append-p
 osition"));
         position = atoi(next_append_position);
+```
+
+`}`
+
+```
     /* Append the object. */
     headers2 = aos_table_make(pool, 0);
     aos_list_init(&buffer);
@@ -17970,6 +20314,11 @@ osition, &buffer, headers2, &resp_headers);
         printf("append object from buffer succeeded\n");
     } else {
         printf("append object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -17977,6 +20326,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Append data from a local file**
 
@@ -18001,6 +20352,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18011,6 +20367,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18048,6 +20409,11 @@ _headers);
         next_append_position = (char*)(apr_table_get(resp_headers, "x-oss-next-append-p
 osition"));
         position = atoi(next_append_position);
+```
+
+`}`
+
+```
     /* Append the object. */
     resp_status = oss_append_object_from_file(oss_client_options, &bucket, &object, pos
 ition, &file, headers2, &resp_headers);
@@ -18056,6 +20422,11 @@ ition, &file, headers2, &resp_headers);
         printf("append object from file succeeded\n");
     } else {
         printf("append object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18063,6 +20434,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.6.4 Resumable upload
 
@@ -18097,6 +20470,11 @@ t(&
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18107,6 +20485,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18142,6 +20525,11 @@ NULL);
         printf("resumable upload succeeded\n");
     } else {
         printf("resumable upload failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -18204,7 +20592,17 @@ int64_t get_file_size(const char *file_path)
         return filesize;
     } else {
         filesize = statbuff.st_size;
+```
+
+`}`
+
+```
     return filesize;
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18215,6 +20613,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18274,6 +20677,11 @@ upload_id, part_num++, upload_file, &resp_headers);
             printf("Multipart upload part from file succeeded\n");
         } else {
             printf("Multipart upload part from file failed\n");
+```
+
+`}` `}`
+
+```
     oss_list_upload_part_params_t *params = NULL;
     aos_list_t complete_part_list;
     /* Query the uploaded parts. */
@@ -18287,6 +20695,11 @@ upload_id, part_num++, upload_file, &resp_headers);
         printf("List multipart succeeded\n");
     } else {
         printf("List multipart failed\n");
+```
+
+`}`
+
+```
     oss_complete_part_content_t *complete_part_content = NULL;
     oss_list_part_content_t *part_content = NULL;
     aos_list_for_each_entry(oss_list_part_content_t, part_content, &params->part_list,
@@ -18296,6 +20709,11 @@ node) {
 >part_number.data);
         aos_str_set(&complete_part_content->etag, part_content->etag.data);
         aos_list_add_tail(&complete_part_content->node, &complete_part_list);
+```
+
+`}`
+
+```
     /* Complete the multipart upload task. */
     resp_status = oss_complete_multipart_upload(oss_client_options, &bucket, &object, &
 upload_id,
@@ -18316,6 +20734,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > **Note:** Query the uploaded parts. You must provide the ETag value of each part to call the oss_complete_multipart_upload operation. You can use one of the following method to obtain the ETag values: First, the response of a part upload contains the ETag value of the part. You can save the values for future use. Second, you can call the oss_list_upload_part operation to query the ETag values of the uploaded parts. In this example, the second method is used.
 
@@ -18342,6 +20762,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18352,6 +20777,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18388,6 +20818,11 @@ ad_id, headers, &resp_headers);
     } else {
         printf("Init multipart upload failed, upload_id:%.*s\n",
                upload_id.len, upload_id.data);
+```
+
+`}`
+
+```
     /* Cancel the multipart upload task. */
     resp_status = oss_abort_multipart_upload(oss_client_options, &bucket, &object, &upl
 oad_id, &resp_headers);
@@ -18397,6 +20832,11 @@ oad_id, &resp_headers);
                upload_id.len, upload_id.data);
     } else {
         printf("Abort multipart upload failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18404,6 +20844,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > **Note:** If a multipart upload task is canceled, the upload ID can no longer be used to upload any parts. The parts uploaded by using that upload ID are also deleted.
 
@@ -18430,6 +20872,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
 
@@ -18438,6 +20885,11 @@ void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
     assert(total_bytes >= consumed_bytes);
     printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18448,6 +20900,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18483,6 +20940,11 @@ le, NULL, NULL, percentage, &resp_headers, &resp_body);
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18491,7 +20953,7 @@ st. */
     return 0;
 ```
 
-You cannot use progress bars when you use oss_put_object_from_file and oss_put_object_from_buffer.
+`}` You cannot use progress bars when you use oss_put_object_from_file and oss_put_object_from_buffer.
 
 ##### 1.2.4.7 Download objects
 
@@ -18532,6 +20994,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18542,6 +21009,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18579,6 +21051,11 @@ params, &file, &resp_headers);
         printf("Get object from file succeeded\n");
     } else {
         printf("Get object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18586,6 +21063,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > **Note:** Compared with OSS SDK for C V1.0.0, this version adds the params parameter to the oss_get_object_to_file operation, and the values of the headers and params parameters can be NULL.
 
@@ -18612,6 +21091,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18676,8 +21160,18 @@ ormation such as endpoint, access_key_id, access_key_secret, is_cname, and curl.
         size = aos_buf_size(content);
             memcpy(buf + pos, content->pos, size);
             pos += size;
+```
+
+`}` `}`
+
+```
     else {
         printf("get object to buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18709,6 +21203,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18719,6 +21218,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18769,6 +21273,11 @@ s, params, &buffer, &resp_headers);
         /* Obtain the buffer length. */
         aos_list_for_each_entry(aos_buf_t, content, &buffer, node) {
             len += aos_buf_size(content);
+```
+
+`}`
+
+```
         buf = aos_pcalloc(pool, (apr_size_t)(len + 1));
         buf[len] = '\0';
         /* Copy the content in the buffer to the memory. */
@@ -18776,8 +21285,18 @@ s, params, &buffer, &resp_headers);
             size = aos_buf_size(content);
             memcpy(buf + pos, content->pos, (size_t)size);
             pos += size;
+```
+
+`}` `}`
+
+```
     else {
         printf("get object to buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18785,6 +21304,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.7.5 Perform resumable download
 
@@ -18824,6 +21345,11 @@ not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18834,6 +21360,11 @@ int main(int argc, char *argv[])
 such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the Apache Portable Runtime (APR) library. */
     aos_pool_t *pool;
@@ -18870,6 +21401,11 @@ le, headers, NULL, clt_params, NULL, &resp_headers);
         printf("download succeeded\n");
     } else {
         printf("download failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated for
 the request. */
     aos_pool_destroy(pool);
@@ -18877,6 +21413,8 @@ the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.7.6 Use progress bars
 
@@ -18904,6 +21442,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
 
@@ -18912,6 +21455,11 @@ void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
     assert(total_bytes >= consumed_bytes);
     printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -18922,6 +21470,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -18967,6 +21520,11 @@ NULL, &file, percentage, NULL);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -18975,7 +21533,7 @@ st. */
     return 0;
 ```
 
-oss_get_object_from_file and oss_get_object_from_buffer does not support the progress bar feature.
+`}` oss_get_object_from_file and oss_get_object_from_buffer does not support the progress bar feature.
 
 ##### 1.2.4.8 Manage objects
 
@@ -19017,6 +21575,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19027,6 +21590,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -19058,6 +21626,11 @@ sp_headers);
         printf("put object acl success! \n");
     } else {
         printf("put object acl failed! \n");
+```
+
+`}`
+
+```
     /* Query the ACL of the object. */
     aos_string_t oss_acl_string;
     resp_status = oss_get_object_acl(oss_client_options, &bucket, &object,
@@ -19067,6 +21640,11 @@ sp_headers);
         printf("acl: %s \n", oss_acl_string.data);
     } else {
         printf("get object acl failed! \n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -19074,6 +21652,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.8.3 Manage object metadata
 
@@ -19102,6 +21682,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19112,6 +21697,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -19157,6 +21747,11 @@ strlen(object_content));
         printf("put object from buffer with md5 succeeded\n");
     } else {
         printf("put object from buffer with md5 failed\n");
+```
+
+`}`
+
+```
     /* Query the ACL of the object. */
     resp_status = oss_get_object_meta(oss_client_options, &bucket, &object,
 &resp_headers);
@@ -19164,12 +21759,22 @@ strlen(object_content));
         content_length_str = (char*)apr_table_get(resp_headers, OSS_CONTENT_LENGTH);
         if (content_length_str ! = NULL) {
             content_length = atol(content_length_str);
+```
+
+`}`
+
+```
         object_author = (char*)apr_table_get(resp_headers, OSS_AUTHORIZATION);
         object_type = (char*)apr_table_get(resp_headers, OSS_OBJECT_TYPE);
         printf("get object meta succeeded, object author:%s, object type:%s,
 content_length:%ld\n", object_author, object_type, content_length);
     } else {
         printf("req:%s, get object meta failed\n", resp_status->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -19177,6 +21782,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > **Note:** For more information about HTTP headers, see RFC 2616.
 
@@ -19216,6 +21823,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19226,6 +21838,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -19270,6 +21887,11 @@ rmation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. 
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -19278,6 +21900,11 @@ key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -19292,6 +21919,8 @@ request is released. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > **Note:** If a bucket contains more than 1,000 objects, only the first 1,000 objects are returned, and the value of the truncated parameter in the response is true. Additionally, the next_marker parameter is returned as the start point for the next read. To list more than 1,000 objects at a time, you can modify the max_ret parameter. You can also use the marker parameter to perform multiple read operations.
 
@@ -19320,6 +21949,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19330,6 +21964,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is
 included in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -19381,6 +22020,11 @@ data,
             content->size.len, content->size.data,
             content->last_modified.len, content->last_modified.data);
         printf("%s", line);
+```
+
+`}`
+
+```
     printf("Total %d\n", size);
     /* Release the memory pool after the request is complete. In this case, the memory
 allocated to various resources used for the request is released. */
@@ -19390,6 +22034,8 @@ ated global resources. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **List objects whose names contain the specified prefix**
 
@@ -19412,6 +22058,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19422,6 +22073,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is
 included in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -19466,6 +22122,11 @@ ith the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -19474,6 +22135,11 @@ key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -19522,6 +22188,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19532,6 +22203,11 @@ int main(int argc, char *argv[])
 works and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is
 included in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -19576,6 +22252,11 @@ ith the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -19584,6 +22265,11 @@ key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -19599,6 +22285,8 @@ ated global resources. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Folder simulation**
 
@@ -19623,6 +22311,11 @@ is not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19633,6 +22326,11 @@ int main(int argc, char *argv[])
 etworks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t.
 The code used to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -19673,6 +22371,11 @@ formation such as endpoint, access_key_id, access_key_secret, is_cname, and curl
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -19681,6 +22384,11 @@ content->key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -19696,7 +22404,7 @@ e request is released. */
     return 0;
 ```
 
-The returned results are as follows:
+`}` The returned results are as follows:
 
 ```
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg oss.jpg CommonPrefixes:
@@ -19726,6 +22434,11 @@ is not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19736,6 +22449,11 @@ int main(int argc, char *argv[])
 etworks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool i
 s included in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -19780,6 +22498,11 @@ with the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -19788,6 +22511,11 @@ content->key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -19804,7 +22532,7 @@ ocated global resources.
     return 0;
 ```
 
-The returned results are as follows:
+`}` The returned results are as follows:
 
 ```
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg CommonPrefixes:
@@ -19836,6 +22564,11 @@ is not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -19846,6 +22579,11 @@ int main(int argc, char *argv[])
 etworks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool i
 s included in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -19894,6 +22632,11 @@ with the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -19902,11 +22645,21 @@ content->key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_common_prefix_t, commonPrefix,
 &params->common_prefix_list, node) {
             line = apr_psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix->
 prefix.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -19923,7 +22676,7 @@ ocated global resources. */
     return 0;
 ```
 
-The returned results are as follows:
+`}` The returned results are as follows:
 
 ```
 Objects: fun/test.jpg CommonPrefixes: fun/movie/
@@ -19954,6 +22707,11 @@ is not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int64_t calculateFolderLength (aos_string_t bucketName, char* folder)
 ```
 
@@ -19984,9 +22742,19 @@ int64_t calculateFolderLength (aos_string_t bucketName, char* folder)
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             size += content->size.len;
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(p, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -20010,6 +22778,11 @@ int main(int argc, char *argv[])
 etworks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool i
 s included in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -20055,6 +22828,11 @@ with the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params-
 >object_list, node) {
             ++size;
@@ -20086,12 +22864,22 @@ content->key.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_common_prefix_t, commonPrefix,
 &params->common_prefix_list, node) {
             line = apr_psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix->
 prefix.data);
             int64_t size = calculateFolderLength(bucket, commonPrefix->prefix.data);
             printf("Total %d\n", size);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -20107,6 +22895,8 @@ ocated global resources. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ###### 1.2.4.8.5 Delete objects
 
@@ -20143,6 +22933,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20153,6 +22948,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -20182,6 +22982,11 @@ rmation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. 
         printf("delete object succeed\n");
     } else {
         printf("delete object failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -20189,6 +22994,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Delete multiple objects**
 
@@ -20212,6 +23019,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20222,6 +23034,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -20270,6 +23087,11 @@ is_quiet, &resp_headers, &deleted_object_list);
         printf("delete objects succeeded\n");
     } else {
         printf("delete objects failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -20277,6 +23099,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Delete multiple objects whose names contain a specified prefix**
 
@@ -20310,6 +23134,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -20335,6 +23164,11 @@ rmation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. 
         printf("delete objects by prefix succeeded\n");
     } else {
         printf("delete objects by prefix failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases the memory resources allocated
 for the request. */
     aos_pool_destroy(pool);
@@ -20342,6 +23176,8 @@ for the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > **Warning:** If you set the prefix to an empty string or NULL, all objects in the bucket are deleted. Exercise caution when you use this operation.
 
@@ -20372,6 +23208,11 @@ not used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20382,6 +23223,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -20418,6 +23264,11 @@ dest_bucket, &dest_object, headers, &resp_headers);
         printf("copy object succeeded\n");
     } else {
         printf("copy object failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. The memory allocated to various resources used for the
 request is released. */
     aos_pool_destroy(pool);
@@ -20425,6 +23276,8 @@ request is released. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Copy a large object**
 
@@ -20462,7 +23315,17 @@ int64_t get_file_size(const char *file_path)
         return filesize;
     } else {
         filesize = statbuff.st_size;
+```
+
+`}`
+
+```
     return filesize;
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20473,6 +23336,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -20521,6 +23389,11 @@ respstatus=ossinitmultipartupload(ossclientoptions &destbucket
         printf("init multipart upload succeeded, upload_id is %s\n", upload_id.data);
     } else {
         printf("init multipart upload failed\n");
+```
+
+`}`
+
+```
     /* Copy the first part. */
     upload_part_copy_params1 = oss_create_upload_part_copy_params(pool);
     aos_str_set(&upload_part_copy_params1->source_bucket, source_bucket_name);
@@ -20538,6 +23411,11 @@ aders, &resp_headers);
         printf("upload part 1 copy succeeded\n");
     } else {
         printf("upload part 1 copy failed\n");
+```
+
+`}`
+
+```
     /* Copy the second part. */
     range_end2 = get_file_size(local_filename) - 1;
     upload_part_copy_params2 = oss_create_upload_part_copy_params(pool);
@@ -20556,6 +23434,11 @@ aders, &resp_headers);
         printf("upload part 2 copy succeeded\n");
     } else {
         printf("upload part 2 copy failed\n");
+```
+
+`}`
+
+```
     /* List the copied parts. */
     headers = aos_table_make(pool, 0);
     list_upload_part_params = oss_create_list_upload_part_params(pool);
@@ -20581,6 +23464,11 @@ _object, &upload_id, &complete_part_list, headers, &complete_resp_headers);
         printf("complete multipart upload succeeded\n");
     } else {
         printf("complete multipart upload failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. The memory allocated to various resources used for the
 request is released. */
     aos_pool_destroy(pool);
@@ -20588,6 +23476,8 @@ request is released. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 1.2.4.9 Authorization
 
@@ -20622,6 +23512,11 @@ not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20632,6 +23527,11 @@ int main(int argc, char *argv[])
 such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code that is used to create a memory pool is included in the Apache Portable Runtime (APR) library. */
     aos_pool_t *pool;
@@ -20671,6 +23571,11 @@ fer, headers, &resp_headers);
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated for
 the request. */
     aos_pool_destroy(pool);
@@ -20678,6 +23583,8 @@ the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 **Use a signed URL for temporary access authorization**
 
@@ -20702,6 +23609,11 @@ is not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20764,6 +23676,11 @@ aders, &resp_headers);
         printf("put objects by signed url succeeded\n");
     } else {
         printf("put objects by signed url failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated fo
 r the request. */
     aos_pool_destroy(pool);
@@ -20796,6 +23713,11 @@ is not accessed by using a CNAME. */
     options->config->is_cname = 0;
     /* Configure network parameters, such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -20806,6 +23728,11 @@ int main(int argc, char *argv[])
 resources, such as the network and memory. */
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t.
 The code that is used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -20858,6 +23785,11 @@ rams, &file, &resp_headers);
         printf("get object succeeded\n");
     } else {
         printf("get object failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. This operation releases memory resources allocated fo
 r the request. */
     aos_pool_destroy(pool);
@@ -20865,6 +23797,8 @@ r the request. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 1.2.4.10 IMG
 
@@ -20959,6 +23893,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -21016,7 +23955,7 @@ uest. */
     return 0;
 ```
 
-Access by using SDKs You can use **OSS SDKs** to access and process image objects of any ACLs. The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
+`}` Access by using SDKs You can use **OSS SDKs** to access and process image objects of any ACLs. The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
 
 ```
 #include"ossapi.h"
@@ -21034,6 +23973,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Crop the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/crop,w_100,h_100,x_100,y_100,r_1");
@@ -21045,6 +23989,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Rotate the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/rotate,90");
@@ -21056,6 +24005,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Sharpen the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/sharpen,100");
@@ -21067,6 +24021,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Add watermarks to the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/watermark,text_SGVsbG8g5Zu-
@@ -21093,6 +24052,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Obtain image information. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/info");
@@ -21104,6 +24068,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the r
 equest. */
     aos_pool_destroy(pool);
@@ -21112,7 +24081,7 @@ equest. */
     return 0;
 ```
 
-Custom image styles
+`}` Custom image styles
 
 ```
 #include "oss_api.h"
@@ -21150,6 +24119,11 @@ int main(int argc, char *argv[])
 ces such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to
 apr_pool_t. The code used to create a memory pool is included in the APR library. *
 ```
@@ -21194,6 +24168,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the r
 equest. */
     aos_pool_destroy(pool);
@@ -21227,6 +24206,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -21237,6 +24221,11 @@ int main(int argc, char *argv[])
 ces such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to
 apr_pool_t. The code used to create a memory pool is included in the APR library. *
 ```
@@ -21285,6 +24274,11 @@ ers, params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the r
 equest. */
     aos_pool_destroy(pool);
@@ -21292,6 +24286,8 @@ equest. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 1.2.4.11 Error handling
 
@@ -21426,6 +24422,8 @@ func main() {
   fmt.Println("OSS Go SDK Version: ", oss.Version)
 ```
 
+`}`
+
 ##### 1.2.5.3 Initialization
 
 OSSClient serves as the client of OSS SDK for Go to manage OSS resources such as buckets and objects. To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient instance, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The following table describes the parameters you can configure for this operation.
@@ -21450,6 +24448,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     os.Exit(-1)
 ```
 
+`}`
+
 **Create an OSSClient instance based on a custom domain name**
 
 For the complete code of custom domain names, visit GitHub. The following code provides an example on how to create an OSSClient instance based on a custom domain name:
@@ -21459,6 +24459,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.UseCname(true) indicates
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}`
 
 > **Important:** When you use CNAME, you cannot list buckets because a custom domain name is bound to a specified bucket.
 
@@ -21472,6 +24474,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     os.Exit(-1)
 ```
 
+`}`
+
 **Configure the connection timeout period**
 
 The following code provides an example on how to configure the connection timeout period:
@@ -21481,6 +24485,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.Timeout(10, 120) indicat
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}`
 
 **Disable CRC**
 
@@ -21493,6 +24499,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}`
 
 ##### 1.2.5.4 Quick start
 
@@ -21515,6 +24523,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // In this example, the endpoint of the China (Hangzhou) region is used. Specify yo
 ur actual endpoint.
@@ -21526,13 +24539,18 @@ ur actual endpoint.
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Create the bucket.
     err = client.CreateBucket(bucketName)
     if err != nil {
         handleError(err)
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint.
+`}` `}` For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint.
 
 **Upload objects**
 
@@ -21551,6 +24569,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // In this example, the endpoint of the China (Hangzhou) region is used. Specify yo
 ur actual endpoint.
@@ -21568,15 +24591,27 @@ extension. Example: /users/local/myfile.txt.
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Query the bucket.
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Upload the object.
     err = bucket.PutObjectFromFile(objectName, localFileName)
     if err != nil {
         handleError(err)
 ```
+
+`}` `}`
 
 **Download objects**
 
@@ -21595,6 +24630,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // In this example, the endpoint of the China (Hangzhou) region is used. Specify yo
 ur actual endpoint.
@@ -21610,15 +24650,27 @@ from OSS. <yourObjectName> must include the extension of the object name. Exampl
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Query the bucket.
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Download the object.
     err = bucket.GetObjectToFile(objectName, downloadedFileName)
     if err != nil {
         handleError(err)
 ```
+
+`}` `}`
 
 **List objects**
 
@@ -21633,36 +24685,63 @@ package main import (
 
 `)`
 
-```xml
+```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Query the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // List objects.
     marker := ""
     for {
         lsRes, err := bucket.ListObjects(oss.Marker(marker))
         if err != nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the listed objects. By default, a maximum of 100 objects are
 returned at a time.
         for _, object := range lsRes.Objects {
             fmt.Println("Bucket: ", object.Key)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
 ```
+
+`}` `}` `}`
 
 **Delete objects**
 
@@ -21681,6 +24760,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // In this example, the endpoint of the China (Hangzhou) region is used. Specify yo
 ur actual endpoint.
@@ -21695,17 +24779,27 @@ rom OSS. The path must include the extension of the object name. Example: abc/ef
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Query the bucket.
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Delete the object.
     err = bucket.DeleteObject(objectName)
     if err != nil {
         handleError(err)
 ```
 
-For more information about how to delete objects, see Delete objects.
+`}` `}` For more information about how to delete objects, see Delete objects.
 
 ##### 1.2.5.5 Buckets
 
@@ -21731,6 +24825,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Create the bucket. By default, the storage class of the bucket is Standard, and
 the ACL of the bucket is private.
     err = client.CreateBucket("<yourBucketName>")
@@ -21738,6 +24837,8 @@ the ACL of the bucket is private.
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.2 List buckets
 
@@ -21764,6 +24865,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the buckets.
     marker := ""
     for {
@@ -21771,14 +24877,26 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         // By default, a maximum of 100 buckets are listed at a time.
         for _, bucket := range lsRes.Buckets {
             fmt.Println("Bucket: ", bucket.Name)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
 ```
+
+`}` `}` `}`
 
 **List the buckets whose names contain a specified prefix**
 
@@ -21790,11 +24908,18 @@ The following code provides an example on how to list the buckets whose names co
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the list of buckets.
     fmt.Println("Buckets with prefix: ", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with prefix: ", bucket.Name)
 ```
+
+`}`
 
 **List the buckets whose names are alphabetically after the**
 
@@ -21809,11 +24934,18 @@ rker.
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the list of buckets.
     fmt.Println("My buckets with marker :", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with marker: ", bucket.Name)
 ```
+
+`}`
 
 **List a specified number of buckets**
 
@@ -21826,11 +24958,18 @@ alue: 100.
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the list of buckets.
     fmt.Println("My buckets max num:", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with maxKeys: ", bucket.Name)
 ```
+
+`}`
 
 ###### 1.2.5.5.3 Manage bucket ACLs
 
@@ -21865,6 +25004,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Set the ACL of the bucket to public read.
     err = client.SetBucketACL("<yourBucketName>", oss.ACLPublicRead)
     if err ! = nil {
@@ -21893,13 +25037,25 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the ACL of the bucket.
     aclRes, err := client.GetBucketACL("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Bucket ACL:", aclRes.ACL)
 ```
+
+`}`
 
 ###### 1.2.5.5.4 Configure bucket tagging
 
@@ -21934,21 +25090,43 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Initialize tagging configurations.
   tag1 := oss.Tag{
     Key:   "key1",
     Value: "value1",
+```
+
+`}`
+
+```
   tag2 := oss.Tag{
     Key:   "key2",
     Value: "value2",
+```
+
+`}`
+
+```
   tagging := oss.Tagging{
     Tags: []oss.Tag{tag1, tag2},
+```
+
+`}`
+
+```
   // Configure tags for the bucket.
   err = client.SetBucketTagging("yourBucketName", tagging)
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query tags of a bucket**
 
@@ -21971,14 +25149,26 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the tags of the bucket.
   ret, err := client.GetBucketTagging("yourBucketName")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the number of returned tags.
   fmt.Println("Tag length: ", len(ret.Tags))
 ```
+
+`}`
 
 **List the buckets that have a specified tag**
 
@@ -22001,14 +25191,29 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query buckets by specifying the TagKey parameter.
   ret, err := client.ListBuckets(oss.TagKey("yourTaggingKey"))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display information about the buckets.
   for _, bucket := range ret.Buckets{
     fmt.Println("bucket:", bucket)
+```
+
+`}`
+
+```
   // Query buckets by specifying TagKey and TagValue.
   // The TagValue parameter must be configured together with the TagKey parameter and c
 an be unspecified. If you do not specify the TagValue parameter, buckets are listed bas ed on only the TagKey parameter.
@@ -22017,10 +25222,17 @@ oss.TagValue("yourTaggingValue"))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display information about the buckets.
   for _, b := range res.Buckets{
     fmt.Println("bucket:", b)
 ```
+
+`}` `}`
 
 **Delete the tags of a bucket**
 
@@ -22043,12 +25255,19 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Delete the tags of the object.
   err = client.DeleteBucketTagging("yourBucketName")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.5 Delete buckets
 
@@ -22071,12 +25290,19 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Delete the bucket.
     err = client.DeleteBucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.6 Manage bucket inventories
 
@@ -22110,6 +25336,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     IsEnabled := true
     // The following code provides an example on how to encrypt the inventory lists by
 using CMKs managed by KMS.
@@ -22169,7 +25400,7 @@ versions of objects in the inventory lists.
 "IsMultipartUploaded", "EncryptionStatus",
 ```
 
-`},` `},`
+`},` `},` `}`
 
 ```
     // Specify the name of the bucket for which you want to configure the inventory.
@@ -22178,6 +25409,8 @@ versions of objects in the inventory lists.
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query an inventory of a bucket**
 
@@ -22201,19 +25434,36 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket
     // Specify the name of the inventory.
     result, err := client.GetBucketInventory("yourBucketName", "yourInventoryId")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the inventory.
     bs, err := xml.MarshalIndent(result, "  ", "    ")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println(string(bs))
 ```
+
+`}`
 
 **List multiple inventories at a time**
 
@@ -22239,6 +25489,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     var sumResult oss.ListInventoryConfigurationsResult
     vmarker := ""
     for {
@@ -22247,19 +25502,36 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         sumResult.InventoryConfiguration = append(sumResult.InventoryConfiguration,
 listResult.InventoryConfiguration...)
         if listResult.IsTruncated != nil && *listResult.IsTruncated {
             vmarker = listResult.NextContinuationToken
         } else {
             break
+```
+
+`}` `}`
+
+```
     // Display the inventories of the bucket.
     bs, err := xml.MarshalIndent(sumResult, "  ", "    ")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println(string(bs))
 ```
+
+`}`
 
 **Delete an inventory of a bucket**
 
@@ -22282,6 +25554,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Delete the inventory.
     // Specify the name of the bucket
     // Specify the name of the inventory.
@@ -22290,6 +25567,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.7 Manage retention policies
 
@@ -22318,6 +25597,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     // Specify the endpoint of the region in which the bucket is located. For example,
@@ -22325,14 +25609,26 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     client, err := oss.New("yourEndpoint", "yourAccessKeyId", "yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket for which you want to create a retention policy.
     bucketname := "yourBucketName"
     // Set the retention period to 60 days.
     result,err := client.InitiateBucketWorm(bucketname,60)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     fmt.Println(result)
 ```
+
+`}`
 
 **Delete an unlocked retention policy of a bucket**
 
@@ -22351,6 +25647,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     // Specify the endpoint of the region in which the bucket is located. For example,
@@ -22358,6 +25659,11 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     client, err := oss.New("yourEndpoint", "yourAccessKeyId", "yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket for which you want to delete the retention policy
 ```
 
@@ -22369,6 +25675,8 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     if err != nil {
         HandleError(err)
 ```
+
+`}` `}`
 
 **Lock a retention policy**
 
@@ -22387,6 +25695,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     // Specify the endpoint of the region in which the bucket is located. For example,
@@ -22394,6 +25707,11 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     client, err := oss.New("yourEndpoint", "yourAccessKeyId", "yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket for which you want to lock the retention policy.
     bucketname := "yourBucketName"
     wormConfig,err := client.GetBucketWorm(bucketname)
@@ -22401,6 +25719,8 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     if err != nil {
         HandleError(err)
 ```
+
+`}` `}`
 
 **Query the retention policy of a bucket**
 
@@ -22419,6 +25739,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     // Specify the endpoint of the region in which the bucket is located. For example,
@@ -22426,11 +25751,21 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     client, err := oss.New("yourEndpoint", "yourAccessKeyId", "yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket for which you want to query the retention policy.
     bucketname := "yourBucketName"
     wormConfig,err := client.GetBucketWorm(bucketname)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Display the ID of the retention policy.
     fmt.Println(wormConfig.WormId)
     // Display the time when the retention policy was created.
@@ -22442,6 +25777,8 @@ ion policy is not locked. Locked indicates that the retention policy is locked.
 locked.
     fmt.Println(wormConfig.RetentionPeriodInDays)
 ```
+
+`}`
 
 **Extend the retention period of objects**
 
@@ -22460,6 +25797,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     // Specify the endpoint of the region in which the bucket is located. For example,
@@ -22467,6 +25809,11 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     client, err := oss.New("yourEndpoint", "yourAccessKeyId", "yourAccessKeySecret")
     if err != nil {
        HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket for which you want to extend the retention period
 ```
 
@@ -22480,6 +25827,8 @@ if the bucket is located in the China (Hangzhou) region, set the endpoint to htt
     if err != nil {
         HandleError(err)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.8 Manage lifecycle rules
 
@@ -22510,6 +25859,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // rule1 (id:"rule1", enable:true, prefix:"foo/", expiry:Days 3) indicates that obj
 ects whose names contain the prefix foo/ expire three days after they are last modified
 ```
@@ -22526,6 +25880,8 @@ ects whose names contain the prefix foo/ expire three days after they are last m
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query lifecycle rules**
 
@@ -22548,14 +25904,26 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Query the lifecycle rules configured for the bucket.
     lcRes, err := client.GetBucketLifecycle(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Lifecycle Rules:", lcRes.Rules)
 ```
+
+`}`
 
 **Delete lifecycle rules**
 
@@ -22578,6 +25946,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete the lifecycle rules.
     err = client.DeleteBucketLifecycle(bucketName)
@@ -22585,6 +25958,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}`
 
 ###### 1.2.5.5.9 Hotlink protection
 
@@ -22611,6 +25986,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Add a Referer whitelist. Specify that an empty Referer field is not allowed. You
 can use an asterisk (*) or a question mark (?) as a wildcard to set the Referer paramet er.
@@ -22622,6 +26002,8 @@ can use an asterisk (*) or a question mark (?) as a wildcard to set the Referer 
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query hotlink protection configurations**
 
@@ -22644,15 +26026,27 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Query hotlink protection information.
     refRes, err := client.GetBucketReferer(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Referers: ", refRes.RefererList)
     fmt.Println("AllowEmptyReferer: ", refRes.AllowEmptyReferer)
 ```
+
+`}`
 
 **Delete hotlink protection configurations**
 
@@ -22675,6 +26069,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete hotlink protection configurations. // You cannot delete hotlink
 protection configurations directly. To delete hotlink protection configurations, you mu st create a rule that allows an empty Referer field to replace the existing rule.
@@ -22683,6 +26082,8 @@ protection configurations directly. To delete hotlink protection configurations,
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.10 Configure logging
 
@@ -22715,6 +26116,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     targetBucketName := "<yourTargetBucketName>"
     targetPrefix := "<yourTargetPrefix>"
@@ -22725,6 +26131,8 @@ log objects. targetPrefix specifies the prefix of the stored log objects. The lo
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **View logging configurations**
 
@@ -22747,15 +26155,27 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // View logging configurations of the bucket.
     logRes, err := client.GetBucketLogging(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Target Bucket: ", logRes.LoggingEnabled.TargetBucket)
     fmt.Println("Target Prefix: ", logRes.LoggingEnabled.TargetPrefix)
 ```
+
+`}`
 
 **Disable logging**
 
@@ -22778,6 +26198,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Disable logging.
     err = client.DeleteBucketLogging(bucketName)
@@ -22785,6 +26210,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.11 Static website hosting
 
@@ -22811,6 +26238,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Configure static website hosting: Set the index page to index.html and the error
 page to error.html.
@@ -22819,6 +26251,8 @@ page to error.html.
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query the configurations of static website hosting**
 
@@ -22841,15 +26275,27 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Query the configurations of static website hosting.
     wsRes, err := client.GetBucketWebsite(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("indexWebsite: ", wsRes.IndexDocument.Suffix)
     fmt.Println("errorWebsite: ", wsRes.ErrorDocument.Key)
 ```
+
+`}`
 
 **Delete the configurations of static website hosting**
 
@@ -22872,6 +26318,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete the configurations of static website hosting.
     err = client.DeleteBucketWebsite(bucketName)
@@ -22879,6 +26330,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.5.12 CORS
 
@@ -22905,6 +26358,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     rule1 := oss.CORSRule{
         AllowedOrigin: []string{"*"},
@@ -22912,18 +26370,30 @@ func main() {
         AllowedHeader: []string{},
         ExposeHeader:  []string{},
         MaxAgeSeconds: 200,
+```
+
+`}`
+
+```
     rule2 := oss.CORSRule{
         AllowedOrigin: []string{"http://www.a.com", "http://www.b.com"},
         AllowedMethod: []string{"POST"},
         AllowedHeader: []string{"Authorization"},
         ExposeHeader:  []string{"x-oss-test", "x-oss-test1"},
         MaxAgeSeconds: 100,
+```
+
+`}`
+
+```
     // Configure the CORS rules.
     err = client.SetBucketCORS(bucketName, []oss.CORSRule{rule1, rule2})
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query CORS rules**
 
@@ -22946,14 +26416,26 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Query the CORS rules.
     corsRes, err := client.GetBucketCORS(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Bucket CORS:", corsRes.CORSRules)
 ```
+
+`}`
 
 **Delete CORS rules**
 
@@ -22976,6 +26458,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete the CORS rules.
     err = client.DeleteBucketCORS(bucketName)
@@ -22983,6 +26470,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 1.2.5.6 Upload objects
 
@@ -23016,11 +26505,21 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Set the storage class to Standard. The default storage class is Standard.
     storageType := oss.ObjectStorageClass(oss.StorageStandard)
     // Set the object ACL to public read. By default, the object inherits the bucket AC
@@ -23037,6 +26536,8 @@ orageType, objectAcl)
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Upload a byte array**
 
@@ -23060,11 +26561,21 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload the byte array.
     err = bucket.PutObject("<yourObjectName>",
 bytes.NewReader([]byte("yourObjectValueByteArrary")))
@@ -23072,6 +26583,8 @@ bytes.NewReader([]byte("yourObjectValueByteArrary")))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Upload a file stream**
 
@@ -23094,16 +26607,31 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Read the on-premises file.
     fd, err := os.Open("<yourLocalFile>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer fd.Close()
     // Upload the file stream.
     err = bucket.PutObject("<yourObjectName>", fd)
@@ -23111,6 +26639,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Upload an on-premises file**
 
@@ -23133,17 +26663,29 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload an on-premises file.
     err = bucket.PutObjectFromFile("<yourObjectName>", "<yourLocalFile>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.6.3 Append upload
 
@@ -23167,11 +26709,21 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the bucket information.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     var nextPos int64 = 0
     // The position for the first append upload is 0, and the position for the next app
 end upload is included in the response. The position from which the next append upload starts is the current length of the object.
@@ -23180,16 +26732,26 @@ strings.NewReader("YourObjectAppendValue1"), nextPos)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Perform the second append operation.
     nextPos, err = bucket.AppendObject("<yourObjectName>",
 strings.NewReader("YourObjectAppendValue2"), nextPos)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // You can append content to an object multiple times.
 ```
 
-You can specify object metadata when you perform the first append operation from the position of 0. Object metadata cannot be specified during subsequent append operations.
+`}` You can specify object metadata when you perform the first append operation from the position of 0. Object metadata cannot be specified during subsequent append operations.
 
 ```
     // Specify the metadata of a new object when you perform the first append operation
@@ -23204,6 +26766,8 @@ strings.NewReader("YourObjectValue"), 0, oss.Meta("MyProp", "MyPropVal"))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}`
 
 ###### 1.2.5.6.4 Resumable upload
 
@@ -23240,11 +26804,21 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Obtain the bucket information.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // The part size is 100 KB. Start resumable upload. Upload the parts by using three
 concurrent threads.
     // <yourObjectName> is equivalent to objectKey and indicates the full path of the o
@@ -23256,6 +26830,8 @@ oss.Checkpoint(true, ""))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.6.5 Multipart upload
 
@@ -23289,6 +26865,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     locaFilename := "<yourLocalFilename>"
@@ -23297,6 +26878,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
     fd, err := os.Open(locaFilename)
     defer fd.Close()
@@ -23318,7 +26904,17 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         parts = append(parts, part)
+```
+
+`}`
+
+```
     // Set the object ACL to public read. By default, the object inherits the bucket AC
 ```
 
@@ -23331,8 +26927,15 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("cmur:", cmur)
 ```
+
+`}`
 
 **Cancel a multipart upload task**
 
@@ -23355,22 +26958,39 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Initiate a multipart upload task.
     imur, err := bucket.InitiateMultipartUpload("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Cancel the multipart upload task.
     err = bucket.AbortMultipartUpload(imur)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **List uploaded parts**
 
@@ -23405,6 +27025,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Split the local file. In this example, the local file is split into three parts.
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
     fd, err := os.Open(locaFilename)
@@ -23416,6 +27041,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload the parts.
     var parts []oss.UploadPart
     for _, chunk := range chunks {
@@ -23425,19 +27055,39 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         fmt.Println("UploadPartNumber: ", part.PartNumber, ", ETag: ", part.ETag)
         parts = append(parts, part)
+```
+
+`}`
+
+```
     // List the uploaded parts based on the result obtained by using the
 InitiateMultipartUploadResult operation.
     lsRes, err := bucket.ListUploadedParts(imur)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the uploaded parts.
     fmt.Println("\nParts:", lsRes.UploadedParts)
     for _, upload := range lsRes.UploadedParts {
         fmt.Println("List PartNumber:  ", upload.PartNumber, ", ETag: " ,upload.ETag, ",
 LastModified: ", upload.LastModified)
+```
+
+`}`
+
+```
     // List all the uploaded parts based on the result that is obtained by using the In
 itiateMultipartUploadResult operation. The result is generated based on the specified o bject name and upload ID. In this case, the object name and upload ID are known.
     var imur_with_uploadid oss.InitiateMultipartUploadResult
@@ -23451,18 +27101,35 @@ itiateMultipartUploadResult operation. The result is generated based on the spec
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the uploaded parts.
     fmt.Println("\nListUploadedParts by UploadID: ", uploadID)
     for _, upload := range lsRes.UploadedParts {
         fmt.Println("List PartNumber:  ", upload.PartNumber, ", ETag: " ,upload.ETag, ",
 LastModified: ", upload.LastModified)
+```
+
+`}`
+
+```
     // Complete the multipart upload task.
     cmur, err := bucket.CompleteMultipartUpload(imur, parts)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("cmur:", cmur)
 ```
+
+`}`
 
 **List multipart upload tasks**
 
@@ -23495,12 +27162,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List all multipart upload tasks.
     keyMarker := ""
     uploadIdMarker := ""
@@ -23511,9 +27188,19 @@ oss.UploadIDMarker(uploadIdMarker))
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         // Display all multipart upload tasks.
         for _, upload := range lsRes.Uploads {
             fmt.Println("Upload: ", upload.Key, ", UploadID: ",upload.UploadID)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             keyMarker = lsRes.NextKeyMarker
             uploadIdMarker = lsRes.NextUploadIDMarker
@@ -23521,7 +27208,7 @@ oss.UploadIDMarker(uploadIdMarker))
             break
 ```
 
-List multipart upload tasks by specifying a prefix
+`}` `}` `}` List multipart upload tasks by specifying a prefix
 
 ```
     lsRes, err := bucket.ListMultipartUploads(oss.Prefix("<yourObjectNamePrefix>"))
@@ -23538,6 +27225,11 @@ List up to 100 multipart upload tasks
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
@@ -23549,6 +27241,11 @@ ss.MaxUploads(100))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
@@ -23566,7 +27263,13 @@ package main import (
 `)`
 
 ```
-// Define a progress bar listener. type OssProgressListener struct { // Define the progress event handler. func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
+// Define a progress bar listener. type OssProgressListener struct {
+```
+
+`}`
+
+```
+// Define the progress event handler. func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
     switch event.EventType {
     case oss.TransferStartedEvent:
         fmt.Printf("Transfer Started, ConsumedBytes: %d, TotalBytes %d.\n",
@@ -23593,6 +27296,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFile := "<yourLocalFile>"
@@ -23601,6 +27309,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // View the upload progress information while you upload an object.
     err = bucket.PutObjectFromFile(objectName, localFile,
 oss.Progress(&OssProgressListener{}))
@@ -23608,6 +27321,8 @@ oss.Progress(&OssProgressListener{}))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 1.2.5.7 Download objects
 
@@ -23641,16 +27356,31 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to a stream.
     body, err := bucket.GetObject("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // If you do not close the connection after it is used, connection leaks may occur.
 Consequently, no connections are available and the program cannot run properly.
     defer body.Close()
@@ -23658,8 +27388,15 @@ Consequently, no connections are available and the program cannot run properly.
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("data:", string(data))
 ```
+
+`}`
 
 **Download an object to the buffer**
 
@@ -23684,21 +27421,38 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to the buffer.
     body, err := bucket.GetObject("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer body.Close()
     buf := new(bytes.Buffer)
     io.Copy(buf, body)
     fmt.Println("buf:", buf)
 ```
+
+`}`
 
 **Download an object to a local file stream**
 
@@ -23722,24 +27476,46 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to a local file stream.
     body, err := bucket.GetObject("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer body.Close()
     fd, err := os.OpenFile("LocalFile", os.O_WRONLY|os.O_CREATE, 0660)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer fd.Close()
     io.Copy(fd, body)
 ```
+
+`}`
 
 ###### 1.2.5.7.3 Range download
 
@@ -23767,11 +27543,21 @@ func main() {
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("<yourBucketName>")
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the data that is within the range from byte 15 to byte 35, which includes a
 total of 21 bytes.
   If the specified range is invalid, for example, the specified range includes a negati
@@ -23780,6 +27566,11 @@ ve number, or the specified value is larger than the object size, the entire obj
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // If you do not close the connection after it is used, connection leaks may occur. C
 onsequently, no connections are available and the program cannot run properly.
   defer body.Close()
@@ -23787,8 +27578,15 @@ onsequently, no connections are available and the program cannot run properly.
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   fmt.Println("data:", string(data))
 ```
+
+`}`
 
 **Specify an invalid range**
 
@@ -23817,15 +27615,30 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload 1,000 bytes.
     strContent := ""
     for i := 0; i < 100; i++ {
         strContent += "abcdefghij"
+```
+
+`}`
+
+```
     fmt.Printf("content len:%d\n", len(strContent))
     // Upload a string.
 err=bucket.PutObject("<yourObjectName>",strings.NewReader(strContent))
@@ -23836,6 +27649,11 @@ err=bucket.PutObject("<yourObjectName>",strings.NewReader(strContent))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // If you set Range: bytes to 500-2000, the value at the end of the range is invali
 d. OSS returns the 206 HTTP status code and the data that is within the range from byte 500 to byte 999.
     // If you set Range: bytes to 1000-2000, the value at the start of the range is inv
@@ -23845,6 +27663,11 @@ oss.RangeBehavior("standard"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // If you do not close the connection after it is used, connection leaks may occur.
 Consequently, no connections are available and the program cannot run properly.
     defer body.Close()
@@ -23852,11 +27675,23 @@ Consequently, no connections are available and the program cannot run properly.
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     if len(data) ! = 500 {
         fmt.Println("read data error, len:%d", len(data))
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("data:", string(data))
 ```
+
+`}`
 
 ###### 1.2.5.7.4 Download to local files
 
@@ -23879,17 +27714,29 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to the local file.
     err = bucket.GetObjectToFile("<yourObjectName>", "LocalFile")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.7.5 Resumable download
 
@@ -23928,11 +27775,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Start resumable download. Download the parts by using three threads
 concurrently.
     // yourObjectName is equivalent to objectKey and indicates the complete path of the
@@ -23944,6 +27801,8 @@ oss.Routines(3), oss.Checkpoint(true, ""))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.7.6 Conditional download
 
@@ -23978,11 +27837,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Configure the download conditions.
     date := time.Date(2015, time.November, 10, 23, 0, 0, 0, time.UTC)
     // The object is not downloaded if it does not meet the specified conditions.
@@ -23991,6 +27860,11 @@ oss.IfModifiedSince(date))
     if err == nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // The object is downloaded if it meets the specified conditions.
     err = bucket.GetObjectToFile("<yourObjectName>", "LocalFile",
 oss.IfUnmodifiedSince(date))
@@ -23998,6 +27872,8 @@ oss.IfUnmodifiedSince(date))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ###### 1.2.5.7.7 Use a progress bar
 
@@ -24015,8 +27891,15 @@ oss.Progress(&OssProgressListener{}))
     if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Transfer Completed.")
 ```
+
+`}`
 
 ##### 1.2.5.8 Manage objects
 
@@ -24045,18 +27928,35 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket from which you want to delete the objects.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Determine whether the object exists.
     isExist, err := bucket.IsObjectExist("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Exist:", isExist)
 ```
+
+`}`
 
 ###### 1.2.5.8.3 Manage object ACLs
 
@@ -24090,23 +27990,45 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Configure ACL for the object.
     err = bucket.SetObjectACL("<yourObjectName>", oss.ACLPublicReadWrite)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the ACL of the object.
     aclRes, err := bucket.GetObjectACL("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object ACL:", aclRes.ACL)
 ```
+
+`}`
 
 ###### 1.2.5.8.4 Manage object metadata
 
@@ -24146,11 +28068,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Configure object metadata: Set the expiration time to 23:00:00, 10 January 2049
 in GMT, ACL to public read, and MyProp to MyPropVal as user metadata.
     expires := time.Date(2049, time.January, 10, 23, 0, 0, 0, time.UTC)
@@ -24158,17 +28090,32 @@ in GMT, ACL to public read, and MyProp to MyPropVal as user metadata.
         oss.Expires(expires),
         oss.ObjectACL(oss.ACLPublicRead),
         oss.Meta("MyProp", "MyPropVal"),
+```
+
+`}`
+
+```
     // Use a data stream to upload the object.
     err = bucket.PutObject("<yourObjectName>", strings.NewReader("MyObjectValue"), opti
 ons...)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the object metadata.
     props, err := bucket.GetObjectDetailedMeta("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object Meta:", props)
 ```
 
@@ -24193,6 +28140,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
@@ -24200,19 +28152,39 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Modify a single object metadata parameter at a time.
     err = bucket.SetObjectMeta(objectName, oss.Meta("MyMeta", "MyMetaValue1"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Modify multiple object metadata parameters at a time.
     options := []oss.Option{
         oss.Meta("MyMeta", "MyMetaValue2"),
         oss.Meta("MyObjectLocation", "HangZhou"),
+```
+
+`}`
+
+```
     err = bucket.SetObjectMeta(objectName, options...)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the object metadata.
     props, err := bucket.GetObjectDetailedMeta(objectName)
     if err ! = nil {
@@ -24245,6 +28217,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
@@ -24252,13 +28229,25 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the object metadata.
     props, err := bucket.GetObjectDetailedMeta(objectName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object Meta:", props)
 ```
+
+`}`
 
 ###### 1.2.5.8.5 List objects
 
@@ -24286,36 +28275,63 @@ package main import (
 
 `)`
 
-```xml
+```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // List all objects.
     marker := ""
     for {
         lsRes, err := bucket.ListObjects(oss.Marker(marker))
         if err ! = nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the listed objects. By default, a maximum of 100 records are
 returned each time.
         for _, object := range lsRes.Objects {
             fmt.Println("Bucket: ", object.Key)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
 ```
+
+`}` `}` `}`
 
 **List a specified number of objects**
 
@@ -24336,22 +28352,39 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Set the maximum number of objects to list and list the objects.
     lsRes, err := bucket.ListObjects(oss.MaxKeys(200))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the listed objects.
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
 ```
+
+`}` `}`
 
 **List objects whose names contain a specified prefix**
 
@@ -24372,23 +28405,40 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names contain the specified prefix. By default, a maximum
 of 100 objects are listed.
     lsRes, err := bucket.ListObjects(oss.Prefix("my-object-"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the listed objects.
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
 ```
+
+`}` `}`
 
 **List objects whose names come after a specified marker**
 
@@ -24409,23 +28459,40 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names come after the specified marker. By default, a maxi
 mum of 100 objects are listed.
     lsRes, err := bucket.ListObjects(oss.Marker("my-object-xx"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the listed objects.
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
 ```
+
+`}` `}`
 
 **List all objects by page**
 
@@ -24446,12 +28513,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List all objects by page, with up to 200 objects on each page.
     marker := oss.Marker("")
     for {
@@ -24459,11 +28536,18 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if ! lsRes.IsTruncated {
             break
 ```
+
+`}` `}` `}`
 
 **List objects whose names come after a specified marker by**
 
@@ -24488,12 +28572,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names come after the specified marker by page, with up to
 50 objects on each page.
     marker = oss.Marker("my-object-xx")
@@ -24502,11 +28596,18 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if ! lsRes.IsTruncated {
             break
 ```
+
+`}` `}` `}`
 
 **List objects whose names contain a specified prefix by page**
 
@@ -24529,12 +28630,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names contain the specified prefix by page, with up to 80
 objects on each page.
     prefix := oss.Prefix("my-object-")
@@ -24544,12 +28655,19 @@ objects on each page.
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lsRes.Prefix)
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if ! lsRes.IsTruncated {
             break
 ```
+
+`}` `}` `}`
 
 **List the information about the objects whose names contain a**
 
@@ -24574,11 +28692,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Traverse the objects.
     marker := oss.Marker("")
     prefix := oss.Prefix("<yourObjectPrefix>")
@@ -24587,13 +28715,25 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         for _, object := range lor.Objects {
             fmt.Printf("%s %d %s\n", object.LastModified, object.Size, object.Key)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if ! lor.IsTruncated {
             break
 ```
+
+`}` `}` `}`
 
 **List the information about the subfolders whose names contain**
 
@@ -24618,11 +28758,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     marker := oss.Marker("")
     prefix := oss.Prefix("<yourDirPrefix>")
     for {
@@ -24630,13 +28780,25 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         for _, dirName := range lor.CommonPrefixes {
             fmt.Println(dirName)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if ! lor.IsTruncated {
             break
 ```
+
+`}` `}` `}`
 
 ###### 1.2.5.8.6 Delete objects
 
@@ -24667,6 +28829,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket from which you want to delete the object.
@@ -24674,6 +28841,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Delete the object. objectName indicates the full path that includes the extensio
 n of the object. Example: abc/efg/123.jpg.
     // To delete a directory, set objectName to the directory name. If the directory co
@@ -24683,6 +28855,8 @@ ntains objects, delete all objects from the directory before you delete the dire
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Delete multiple objects**
 
@@ -24709,17 +28883,32 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket from which you want to delete the object.
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify that information of deleted objects is returned.
     delRes, err := bucket.DeleteObjects([]string{"my-object-1", "my-object-2"})
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Deleted Objects:", delRes.DeletedObjects)
     // Specify that results of delete operations are not returned.
     _, err = bucket.DeleteObjects([]string{"my-object-3", "my-object-4"},
@@ -24728,6 +28917,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Delete objects whose names contain a specified prefix**
 
@@ -24753,11 +28944,21 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket from which you want to delete the objects.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List all objects whose names contain the specified prefix and delete the objects
 ```
 
@@ -24772,16 +28973,36 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         objects := []string{}
         for _, object := range lor.Objects {
             objects = append(objects, object.Key)
+```
+
+`}`
+
+```
         delRes, err := bucket.DeleteObjects(objects, oss.DeleteObjectsQuiet(true))
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         if len(delRes.DeletedObjects) > 0 {
             fmt.Println("these objects deleted failure,", delRes.DeletedObjects)
             os.Exit(-1)
+```
+
+`}`
+
+```
         count += len(objects)
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
@@ -24792,6 +29013,8 @@ func main() {
             break
     fmt.Printf("success,total delete object count:%d\n", count)
 ```
+
+`}`
 
 ###### 1.2.5.8.7 Copy objects
 
@@ -24818,6 +29041,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     destObjectName := "<yourDestObjectName>"
@@ -24826,12 +29054,19 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Copy the object to another object within the bucket.
     _, err = bucket.CopyObject(objectName, destObjectName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Copy objects across buckets**
 
@@ -24854,6 +29089,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     srcBucketName := "<yourSrcBucketName>"
     dstBucketName := "<yourDstBucketName>"
@@ -24864,17 +29104,29 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Copy srcObjectName from srcBucketName to the current bucket.
     bucket.CopyObjectFrom(srcBucketName, srcObjectName, dstObjectName)
     if err ! = nil {
         fmt.Println("CopyObjectFrom Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Copy srcObjectName from the current bucket to dstBucketName.
     bucket.CopyObjectTo(dstBucketName, dstObjectName, srcObjectName)
     if err ! = nil {
         fmt.Println("CopyObjectTo Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Process object metadata during object copy**
 
@@ -24914,6 +29166,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     destObjectName := "<yourDestObjectName>"
@@ -24922,6 +29179,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify metadata for the destination object.
     expires := time.Date(2049, time.January, 10, 23, 0, 0, 0, time.UTC)
     options := []oss.Option{
@@ -24935,6 +29197,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 **Conditional copy**
 
@@ -24967,6 +29231,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // bucketName := "<yourBucketName>"
     // objectName := "<yourObjectName>"
     bucketName := "<yourBucketName>"
@@ -24978,18 +29247,30 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     date := time.Date(2011, time.November, 10, 23, 0, 0, 0, time.UTC)
     // Copy the objects that meet the specified condition.
     _, err = bucket.CopyObject(objectName, destMatchObjectName,
 oss.CopySourceIfModifiedSince(date))
     if err ! = nil {
         fmt.Println("CopyObject CopySourceIfModifiedSince Error:", err)
+```
+
+`}`
+
+```
     // Do not copy the objects that cannot meet the specified condition.
     _, err = bucket.CopyObject(objectName, destUnMatchObjectName,
 oss.CopySourceIfUnmodifiedSince(date))
     if err ! = nil {
         fmt.Println("CopyObject CopySourceIfUnmodifiedSince Error:", err)
 ```
+
+`}` `}`
 
 ##### 1.2.5.9 Versioning
 
@@ -25020,11 +29301,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Create a bucket.
   err = client.CreateBucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Set the versioning state of the bucket to Enabled or Suspended. In this example, t
 he versioning state of the bucket is set to Enabled.
   config := oss.VersioningConfig{Status: "Enabled"}
@@ -25033,6 +29324,8 @@ he versioning state of the bucket is set to Enabled.
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query the versioning state of a bucket**
 
@@ -25055,14 +29348,26 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the versioning state of the bucket.
   ret, err := client.GetBucketVersioning("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the versioning state of the bucket.
   fmt.Println("The bucket Versioning status:", ret.Status)
 ```
+
+`}`
 
 **List the versions of all objects in a bucket**
 
@@ -25087,23 +29392,45 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // List the objects whose names contain the specified prefix.
   ret, err := bucket.ListObjectVersions(oss.Prefix("yourObjectPrefix"))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the version information about the objects.
   for _, object := range ret.ObjectVersions {
     fmt.Println("Object:", object)
+```
+
+`}`
+
+```
   // Display the version information about the delete markers.
   for _, marker := range ret.ObjectDeleteMarkers {
     fmt.Println("Delete Markers:", marker)
 ```
+
+`}` `}`
 
 ###### 1.2.5.9.2 Upload objects
 
@@ -25132,11 +29459,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   var retHeader http.Header
   // Upload the string. Use oss.GetResponseHeader to obtain the returned header.
   err = bucket.PutObject("<yourObjectName>", strings.NewReader("yourObjectValue"), oss.
@@ -25144,9 +29481,16 @@ GetResponseHeader(&retHeader))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the value of x-oss-version-id.
   fmt.Println("x-oss-version-id:", oss.GetVersionId(retHeader))
 ```
+
+`}`
 
 **Append upload**
 
@@ -25176,11 +29520,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // The position for the first append upload is 0, and the position for the next appen
 d upload is included in the response. The position from which the next append upload st arts is the current length of the object.
   var retHeader http.Header
@@ -25190,6 +29544,11 @@ strings.NewReader("YourObjectAppendValue1"), nextPos, oss.GetResponseHeader(&ret
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the value of x-oss-version-id.
   fmt.Println("x-oss-version-id:", retHeader.Get("x-oss-version-id"))
   // Perform the second append operation. Use oss.GetResponseHeader to obtain the retur
@@ -25202,10 +29561,17 @@ strings.NewReader("YourObjectAppendValue2"), nextPos, oss.GetResponseHeader(&ret
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the value of x-oss-version-id.
   fmt.Println("x-oss-version-id:", oss.GetVersionId(retHeader))
   // You can append content to an object multiple times.
 ```
+
+`}`
 
 **Multipart upload**
 
@@ -25228,6 +29594,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     locaFilename := "<yourLocalFilename>"
@@ -25238,6 +29609,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
     fd, err := os.Open(locaFilename)
     defer fd.Close()
@@ -25256,17 +29632,34 @@ fdSeek(chunkOffset osSEEKSET)
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         parts = append(parts, part)
+```
+
+`}`
+
+```
     // Step 3: Complete the multipart upload task.
     cmur, err := bucket.CompleteMultipartUpload(imur, parts,
 oss.GetResponseHeader(&retHeader))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("cmur:", cmur)
     // Display the value of x-oss-version-id.
     fmt.Println("x-oss-version-id:", oss.GetVersionId(retHeader))
 ```
+
+`}`
 
 ###### 1.2.5.9.3 Download objects
 
@@ -25290,11 +29683,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   var retHeader http.Header
   // Download the version whose ID is yourObjectVersionId to the cache.
   _, err = bucket.GetObject("youObjectName", oss.VersionId("yourObjectVersionId"), oss.
@@ -25302,9 +29705,16 @@ GetResponseHeader(&retHeader))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the value of x-oss-version-id.
   fmt.Println("x-oss-version-id:",  oss.GetVersionId(retHeader))
 ```
+
+`}`
 
 ###### 1.2.5.9.4 Copy objects
 
@@ -25331,6 +29741,11 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   bucketName := "<yourBucketName>"
   objectName := "<yourObjectName>"
   destObjectName := "<yourDestObjectName>"
@@ -25339,6 +29754,11 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Copy the specified version of the object to another object in the same bucket and
 query the version ID of the destination object.
   var retHeader http.Header
@@ -25347,6 +29767,11 @@ oss.VersionId("yourObjectVersionId"), oss.GetResponseHeader(&retHeader))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the version ID of the destination object.
   fmt.Println("x-oss-version-id:", oss.GetVersionId(retHeader))
   fmt.Println("x-oss-copy-source-version-id:", oss.GetCopySrcVersionId(retHeader))
@@ -25379,11 +29804,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("yourBucketName")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   bucketName := "yourBucketName"
   objectName := "yourObjectName"
   fileName := "yourFileName"
@@ -25399,16 +29834,31 @@ oss.GetResponseHeader(&retHeader))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the version ID of the uploaded source object.
   versionId := oss.GetVersionId(retHeader)
   options := []oss.Option{
     oss.Expires(futureDate), oss.Meta("my", "myprop"),
+```
+
+`}`
+
+```
   // Specify the name of the destination object.
   objectDest := objectName + "dest"
   var parts []oss.UploadPart
   // Configure the parameters for the object copy operation.
   copyOptions := []oss.Option{
      oss.VersionId(versionId), oss.GetResponseHeader(&retHeader),
+```
+
+`}`
+
+```
   // Copy the large object.
   imu, err := bucket.InitiateMultipartUpload(objectDest, options...)
   for _, chunk := range chunks {
@@ -25417,17 +29867,34 @@ oss.GetResponseHeader(&retHeader))
     if err != nil {
       fmt.Println("Error:", err)
       os.Exit(-1)
+```
+
+`}`
+
+```
     parts = append(parts, part)
     // Display the value of x-oss-copy-source-version-id.
     fmt.Println("x-oss-copy-source-version-id:", oss.GetCopySrcVersionId(retHeader))
+```
+
+`}`
+
+```
   _, err = bucket.CompleteMultipartUpload(imu, parts,
 oss.GetResponseHeader(&retHeader))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the value of x-oss-version-id.
   fmt.Println("x-oss-version-id:", oss.GetVersionId(retHeader))
 ```
+
+`}`
 
 ###### 1.2.5.9.5 List objects
 
@@ -25468,6 +29935,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     // Specify the endpoint of the region in which the bucket is located. For example,
@@ -25477,11 +29949,21 @@ operations. Using these credentials to perform operations in OSS is a high-risk 
     client, err := oss.New("yourEndpoint","yourAccessKeyId","yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "examplebucket"
     bucket,err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // List the versions of all objects including delete markers in the bucket.
     keyMarker := oss.KeyMarker("")
     // The VersionIdMarker parameter is configured together with the KeyMarker
@@ -25508,15 +29990,30 @@ parameter to specify the position from which the list operation starts.
         lor, err := bucket.ListObjectVersions(keyMarker,versionIdMarker)
         if err != nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the versions of the listed objects.
         for _, dirName := range lor.ObjectVersions{
             fmt.Println("Versionid:",dirName.VersionId)
             fmt.Println("Key:",dirName.Key)
             fmt.Println("Is Latest",dirName.IsLatest)
+```
+
+`}`
+
+```
         // View the versions of the listed delete markers.
          for _, marker  := range lor.ObjectDeleteMarkers {
             fmt.Println(marker.VersionId)
             fmt.Println(marker.Key)
+```
+
+`}`
+
+```
         // Check whether the required versions are listed. If the versions are
 incompletely listed, the list operation continues. If the versions are completely liste d, the list operation stops.
         keyMarker = oss.KeyMarker(lor.NextKeyMarker)
@@ -25525,7 +30022,7 @@ incompletely listed, the list operation continues. If the versions are completel
             break
 ```
 
-Returned results
+`}` `}` `}` Returned results
 
 ```
 Versionid: CAEQChiBgIDHzNPEthciIDYzZGQ5M2VjOTU2ODRmMzA4ZWM4ODk0NjVmMWEx**** Key: fun/ Is Latest true Versionid: CAEQChiBgID61tnEthciIDNmOGM2MTQ3ZjU1NTQ2MGFhYWJjNjQxMTQxZWZh**** Key: fun/destfolder/ Is Latest true Versionid: CAEQChiBgMDczt3EthciIDEwYjliZmQ4MDNiMDQ2Njk4YWMxM2NhM2E5NzQ3**** Key: fun/destfolder/image1.jpg Is Latest true Versionid: CAEQChiBgIDszt3EthciIGU5OWU0ZTllMGY3NTRmMmU5NzVjZmJkYmE3ZWYy**** Key: fun/destfolder/image2.png Is Latest true Versionid: CAEQChiBgICditzEthciIDBiNTg1ZTZkMDRlMzRjNDdiMjRjMTBlOGUzMTM0**** Key: fun/examplefile.txt Is Latest true Versionid: CAEQChiBgMC.itzEthciIDEzNWVlYjNhYzNmMjQ4NWM5Nzc2NzllY2FiYmQ3**** Key: fun/exampleobject.jpg Is Latest true Versionid: CAEQChiBgIDMgdbEthciIDUyMGI0NmZlNThkODQwY2ZhNmZhNTQ1Njk4ZTdj**** Key: oss.jpg Is Latest true Versionid: CAEQChiBgICIgdbEthciIDdlM2Q1YjYxZDIyZDQyMzI4MTRkNzVmYzdiMTBh**** Key: srcfile.txt Is Latest true
@@ -25550,11 +30047,21 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("yourEndpoint","yourAccessKeyId","yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "examplebucket"
     bucket,err := client.Bucket(bucketName)
@@ -25572,11 +30079,21 @@ the fun prefix.
         lor, err := bucket.ListObjectVersions(prefix,keyMarker,versionIdMarker)
         if err != nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the versions of the listed objects.
         for _, dirName := range lor.ObjectVersions{
             fmt.Println("Versionid:",dirName.VersionId)
             fmt.Println("Key:",dirName.Key)
             fmt.Println("Is Latest",dirName.IsLatest)
+```
+
+`}`
+
+```
         // Check whether the required versions are listed. If the versions are
 incompletely listed, the list operation continues. If the versions are completely liste d, the list operation stops.
         keyMarker = oss.KeyMarker(lor.NextKeyMarker)
@@ -25585,7 +30102,7 @@ incompletely listed, the list operation continues. If the versions are completel
             break
 ```
 
-Returned results
+`}` `}` `}` Returned results
 
 ```
 Versionid: CAEQChiBgIDHzNPEthciIDYzZGQ5M2VjOTU2ODRmMzA4ZWM4ODk0NjVmMWEx**** Key: fun/ Is Latest true Versionid: CAEQChiBgID61tnEthciIDNmOGM2MTQ3ZjU1NTQ2MGFhYWJjNjQxMTQxZWZh**** Key: fun/destfolder/ Is Latest true Versionid: CAEQChiBgMDczt3EthciIDEwYjliZmQ4MDNiMDQ2Njk4YWMxM2NhM2E5NzQ3**** Key: fun/destfolder/image1.jpg Is Latest true Versionid: CAEQChiBgIDszt3EthciIGU5OWU0ZTllMGY3NTRmMmU5NzVjZmJkYmE3ZWYy**** Key: fun/destfolder/image2.png Is Latest true Versionid: CAEQChiBgICditzEthciIDBiNTg1ZTZkMDRlMzRjNDdiMjRjMTBlOGUzMTM0**** Key: fun/examplefile.txt Is Latest true Versionid: CAEQChiBgMC.itzEthciIDEzNWVlYjNhYzNmMjQ4NWM5Nzc2NzllY2FiYmQ3**** Key: fun/exampleobject.jpg Is Latest true
@@ -25608,16 +30125,31 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("yourEndpoint","yourAccessKeyId","yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "examplebucket"
     bucket,err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the MaxKeys parameter to list up to four object versions in alphabetical
 order of the object names.
     maxkey := oss.MaxKeys(4)
@@ -25628,11 +30160,21 @@ order of the object names.
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         // Display the versions of the listed objects.
         for _, dirName := range lor.ObjectVersions{
             fmt.Println("Versionid:",dirName.VersionId)
             fmt.Println("Key:",dirName.Key)
             fmt.Println("Is Latest",dirName.IsLatest)
+```
+
+`}`
+
+```
         // Check whether the required versions are listed. If the versions are
 incompletely listed, the list operation continues. If the versions are completely liste d, the list operation stops.
         keyMarker = oss.KeyMarker(lor.NextKeyMarker)
@@ -25644,7 +30186,7 @@ incompletely listed, the list operation continues. If the versions are completel
             break
 ```
 
-Returned results
+`}` Returned results
 
 ```
 Versionid: CAEQChiBgIDHzNPEthciIDYzZGQ5M2VjOTU2ODRmMzA4ZWM4ODk0NjVmMWEx**** Key: fun/ Is Latest true Versionid: CAEQChiBgID61tnEthciIDNmOGM2MTQ3ZjU1NTQ2MGFhYWJjNjQxMTQxZWZh**** Key: fun/destfolder/ Is Latest true Versionid: CAEQChiBgMDczt3EthciIDEwYjliZmQ4MDNiMDQ2Njk4YWMxM2NhM2E5NzQ3**** Key: fun/destfolder/image1.jpg Is Latest true Versionid: CAEQChiBgIDszt3EthciIGU5OWU0ZTllMGY3NTRmMmU5NzVjZmJkYmE3ZWYy**** Key: fun/destfolder/image2.png Is Latest true
@@ -25667,16 +30209,31 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("yourEndpoint","yourAccessKeyId","yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "examplebucket"
     bucket,err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // List the versions of all objects in the bucket by page.
     keyMarker := oss.KeyMarker("")
     // Specify the MaxKeys parameter to list up to four object versions in alphabetical
@@ -25693,11 +30250,21 @@ order of the object names.
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         // Display the versions of the listed objects.
         for _, dirName := range lor.ObjectVersions{
             fmt.Println("Versionid:",dirName.VersionId)
             fmt.Println("Key:",dirName.Key)
             fmt.Println("Is Latest",dirName.IsLatest)
+```
+
+`}`
+
+```
         fmt.Println("---------------")
         // Check whether the required versions are listed. If the versions are
 incompletely listed, the list operation continues. If the versions are completely liste d, the list operation stops.
@@ -25708,7 +30275,7 @@ incompletely listed, the list operation continues. If the versions are completel
             break
 ```
 
-Returned results
+`}` `}` `}` Returned results
 
 ```
 Versionid: CAEQChiBgIDHzNPEthciIDYzZGQ5M2VjOTU2ODRmMzA4ZWM4ODk0NjVmMWEx**** Key: fun/ Is Latest true Versionid: CAEQChiBgID61tnEthciIDNmOGM2MTQ3ZjU1NTQ2MGFhYWJjNjQxMTQxZWZh**** Key: fun/destfolder/ Is Latest true Versionid: CAEQChiBgMDczt3EthciIDEwYjliZmQ4MDNiMDQ2Njk4YWMxM2NhM2E5NzQ3**** Key: fun/destfolder/image1.jpg Is Latest true Versionid: CAEQChiBgIDszt3EthciIGU5OWU0ZTllMGY3NTRmMmU5NzVjZmJkYmE3ZWYy**** Key: fun/destfolder/image2.png Is Latest true --------------- Versionid: CAEQChiBgICditzEthciIDBiNTg1ZTZkMDRlMzRjNDdiMjRjMTBlOGUzMTM0**** Key: fun/examplefile.txt Is Latest true Versionid: CAEQChiBgMC.itzEthciIDEzNWVlYjNhYzNmMjQ4NWM5Nzc2NzllY2FiYmQ3**** Key: fun/exampleobject.jpg Is Latest true Versionid: CAEQChiBgIDMgdbEthciIDUyMGI0NmZlNThkODQwY2ZhNmZhNTQ1Njk4ZTdj**** Key: oss.jpg Is Latest true Versionid: CAEQChiBgICIgdbEthciIDdlM2Q1YjYxZDIyZDQyMzI4MTRkNzVmYzdiMTBh**** Key: srcfile.txt Is Latest true ---------------
@@ -25736,11 +30303,21 @@ func main() {
     client, err := oss.New("yourEndpoint","yourAccessKeyId","yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "examplebucket"
     bucket,err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Set the delimiter parameter to a forward slash (/) to list the versions of obj
 ects and the names of subdirectories in the root directory.
     delimiter := oss.Delimiter("/")
@@ -25750,14 +30327,29 @@ ects and the names of subdirectories in the root directory.
         lor, err := bucket.ListObjectVersions(keyMarker,delimiter,versionIdMarker)
         if err != nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the versions of the listed objects.
         for _, dirName := range lor.ObjectVersions{
             fmt.Println("Versionid:",dirName.VersionId)
             fmt.Println("Key:",dirName.Key)
             fmt.Println("Is Latest",dirName.IsLatest)
+```
+
+`}`
+
+```
         // Display the directories whose names end with a forward slash (/).
         for _,common_prefix := range lor.CommonPrefixes{
             fmt.Println("common_prefix:",common_prefix)
+```
+
+`}`
+
+```
         // Check whether the required versions are listed. If the versions are incomp
 letely listed, the list operation continues. If the versions are completely listed, t he list operation stops.
         if lor.IsTruncated {
@@ -25767,7 +30359,7 @@ letely listed, the list operation continues. If the versions are completely list
             break
 ```
 
-Returned results
+`}` `}` Returned results
 
 ```
 Versionid: CAEQChiBgIDMgdbEthciIDUyMGI0NmZlNThkODQwY2ZhNmZhNTQ1Njk4ZTdj**** Key: oss.jpg Is Latest true Versionid: CAEQChiBgICIgdbEthciIDdlM2Q1YjYxZDIyZDQyMzI4MTRkNzVmYzdiMTBh**** Key: srcfile.txt Is Latest true common_prefix: fun/
@@ -25788,16 +30380,31 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("yourEndpoint","yourAccessKeyId","yourAccessKeySecret")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "examplebucket"
     bucket,err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Configure the Prefix parameter to list all objects and subdirectories in the f
 un folder. Set the delimiter parameter to a forward slash (/).
     prefix := oss.Prefix("fun/")
@@ -25809,6 +30416,11 @@ un folder. Set the delimiter parameter to a forward slash (/).
 bucket.ListObjectVersions(prefix,delimiter,keyMarker,versionIdMarker)
         if err != nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the versions of the listed objects.
         for _, dirName := range lor.ObjectVersions{
 ```
@@ -25817,9 +30429,19 @@ bucket.ListObjectVersions(prefix,delimiter,keyMarker,versionIdMarker)
             fmt.Println("Versionid:",dirName.VersionId)
             fmt.Println("Key:",dirName.Key)
             fmt.Println("Is Latest:",dirName.IsLatest)
+```
+
+`}`
+
+```
         // Display the directories whose names end with a forward slash (/).
         for _,common_prefix := range lor.CommonPrefixes{
             fmt.Println("common_prefix:",common_prefix)
+```
+
+`}`
+
+```
         // Check whether the required versions are listed. If the versions are incomp
 letely listed, the list operation continues. If the versions are completely listed, t he list operation stops.
         if lor.IsTruncated {
@@ -25829,7 +30451,7 @@ letely listed, the list operation continues. If the versions are completely list
             break
 ```
 
-Returned results
+`}` `}` `}` Returned results
 
 ```
 Versionid: CAEQChiBgIDHzNPEthciIDYzZGQ5M2VjOTU2ODRmMzA4ZWM4ODk0NjVmMWEx**** Key: fun/ Is Latest: true Versionid: CAEQChiBgICditzEthciIDBiNTg1ZTZkMDRlMzRjNDdiMjRjMTBlOGUzMTM0**** Key: fun/examplefile.txt Is Latest: true Versionid: CAEQChiBgMC.itzEthciIDEzNWVlYjNhYzNmMjQ4NWM5Nzc2NzllY2FiYmQ3**** Key: fun/exampleobject.jpg Is Latest: true common_prefix: fun/destfolder/
@@ -25878,11 +30500,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Permanently delete an object by specifying the version ID of the object.
   err = bucket.DeleteObject(key, oss.VersionId("yourObjectVersionId"))
   if err != nil {
@@ -25890,7 +30522,7 @@ func main() {
     os.Exit(-1)
 ```
 
-Temporarily delete an object without specifying its version ID The following code provides an example on how to temporarily delete an object from a versioned bucket by sending a request in which no version ID is specified:
+`}` `}` Temporarily delete an object without specifying its version ID The following code provides an example on how to temporarily delete an object from a versioned bucket by sending a request in which no version ID is specified:
 
 ```java
 package main import (
@@ -25911,21 +30543,38 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Temporarily delete an object without specifying its version ID. A delete marker
 is added to the object.
   err = bucket.DeleteObject("youObjectName", oss.GetResponseHeader(&retHeader))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the information about the delete markers.
   fmt.Println("x-oss-version-id:", oss.GetVersionId(retHeader))
   fmt.Println("x-oss-delete-marker:", oss.GetDeleteMark(retHeader))
 ```
+
+`}`
 
 **Delete multiple objects**
 
@@ -25950,26 +30599,46 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("yourBucketName")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the version IDs of the objects that you want to delete.
   keyArray := []oss.DeleteObject{
     oss.DeleteObject{Key: "objectName1", VersionId:"objectVersionId1"},
     oss.DeleteObject{Key: "objectName2", VersionId:"objectVersionId2"},
+```
+
+`}`
+
+```
   // Delete the objects with the specified version IDs.
   ret, err := bucket.DeleteObjectVersions(keyArray)
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the information about the deleted objects.
   for _, object := range ret.DeletedObjectsDetail {
     fmt.Println("Key:", object.Key, "\n VersionId:", object.VersionId)
 ```
 
-Permanently delete multiple delete markers by specifying their version IDs The following code provides an example on how to permanently delete multiple delete markers with specified version IDs from a versioned bucket:
+`}` `}` Permanently delete multiple delete markers by specifying their version IDs The following code provides an example on how to permanently delete multiple delete markers with specified version IDs from a versioned bucket:
 
 ```java
 package main import (
@@ -25990,27 +30659,47 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("yourBucketName")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the version IDs of the delete markers that you want to delete.
   keyArray := []oss.DeleteObject{
     oss.DeleteObject{Key: "objectName1", VersionId:"objectVersionId1"},
     oss.DeleteObject{Key: "objectName2", VersionId:"objectVersionId2"},
+```
+
+`}`
+
+```
   // Permanently delete the delete markers with the specified version IDs.
   ret, err := bucket.DeleteObjectVersions(keyArray)
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the deleted objects and delete markers.
   for _, object := range ret.DeletedObjectsDetail {
     fmt.Println("key:", object.Key, "\n versionId:", object.VersionId, "\n
 DeleteMarker:", object.DeleteMarker, "\nDeleteMarkerVersionId", object.DeleteMarkerVersionId)
 ```
 
-Temporarily delete multiple objects without specifying their version IDs The following code provides an example on how to delete multiple objects from a versioned bucket by sending a request in which no version IDs are specified:
+`}` `}` Temporarily delete multiple objects without specifying their version IDs The following code provides an example on how to delete multiple objects from a versioned bucket by sending a request in which no version IDs are specified:
 
 ```java
 package main import (
@@ -26031,25 +30720,47 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("yourBucketName")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Temporarily delete multiple object without specifying their version IDs. Delete
 markers are added to the objects.
   keyArray := []oss.DeleteObject{
     oss.DeleteObject{Key: "objectName1"},
     oss.DeleteObject{Key: "objectName2"},
+```
+
+`}`
+
+```
   res, err := bucket.DeleteObjectVersions(keyArray)
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Display the delete markers that are added to the objects.
   for _, object := range res.DeletedObjectsDetail {
     fmt.Println("key:", object.Key, "\n DeleteMarker:", object.DeleteMarker,
 "\nDeleteMarkerVersionId", object.DeleteMarkerVersionId)
 ```
+
+`}` `}`
 
 **Delete objects whose names contain a specified prefix**
 
@@ -26075,11 +30786,21 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names contain the specified prefix and delete these objec
 ts.
     prefix := oss.Prefix("<yourObjectPrefix>")
@@ -26090,6 +30811,11 @@ ts.
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         objects := []oss.DeleteObject{}
         for _, object := range lor.ObjectDeleteMarkers {
             objects = append(objects, oss.DeleteObject{
@@ -26097,7 +30823,7 @@ ts.
                 VersionId: object.VersionId,
 ```
 
-`})`
+`})` `}`
 
 ```
         for _, object := range lor.ObjectVersions {
@@ -26106,7 +30832,7 @@ ts.
                 VersionId: object.VersionId,
 ```
 
-`})`
+`})` `}`
 
 ```
         delRes, err := bucket.DeleteObjectVersions(objects,
@@ -26126,13 +30852,25 @@ os.
         if len(delRes.DeletedObjectsDetail) > 0 {
             fmt.Println("these objects deleted failure,", delRes.DeletedObjectsDetail)
             os.Exit(-1)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.KeyMarker(lor.NextKeyMarker)
         version = oss.VersionIdMarker(lor.NextVersionIdMarker)
         if !lor.IsTruncated {
             break
+```
+
+`}` `}`
+
+```
     fmt.Printf("delete success\n")
 ```
+
+`}`
 
 ###### 1.2.5.9.7 Query object metadata
 
@@ -26159,17 +30897,32 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   objectName := "<yourObjectName>"
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query partial metadata of the specified version of the object.
   props, err := bucket.GetObjectMeta(objectName, oss.VersionId("youObjectVersionId"))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   fmt.Println("Object Meta:", props)
   // Query all metadata of the specified version of the object.
   props, err := bucket.GetObjectDetailedMeta(objectName,
@@ -26177,8 +30930,15 @@ oss.VersionId("youObjectVersionId"))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   fmt.Println("Object Meta:", ret)
 ```
+
+`}`
 
 ###### 1.2.5.9.8 Manage the ACL of an object
 
@@ -26205,11 +30965,21 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Configure the ACL of the specified version of the object.
   err = bucket.SetObjectACL("<yourObjectName>", oss.ACLPublicReadWrite,
 oss.VersionId("youObjectVersionId"))
@@ -26217,6 +30987,8 @@ oss.VersionId("youObjectVersionId"))
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}` `}`
 
 **Query the ACL of an object**
 
@@ -26239,19 +31011,36 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the bucket information.
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the ACL of the specified version of the object.
   aclRes, err := bucket.GetObjectACL("<yourObjectName>",
 oss.VersionId("youObjectVersionId"))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   fmt.Println("Object ACL:", aclRes.ACL)
 ```
+
+`}`
 
 ##### 1.2.5.10 Authorization
 
@@ -26268,6 +31057,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // After you obtain a temporary
 // Perform operations on OSS.
 ```
 
+`}`
+
 **Use a signed URL for temporary access authorization**
 
 You can generate a signed URL and provide the URL to a visitor for temporary access. When you generate a signed URL, you can specify the validity period of the URL to limit the period of time during which the visitor can access OSS. For more information about the complete sample code of signed URL-based authorization, visit GitHub. Use a signed URL to upload an object The following sample code provides an example on how to use a signed URL to upload an object:
@@ -26282,10 +31073,15 @@ package main import (
 
 `)`
 
-```xml
+```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
@@ -26301,27 +31097,52 @@ func main() {
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Upload the object by using the signed URL.
     signedURL, err := bucket.SignURL(objectName, oss.HTTPPut, 60)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     var val = "Alibaba Cloud"
     err = bucket.PutObjectWithURL(signedURL, strings.NewReader(val))
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Upload the object by using the signed URL with optional parameters configured.
     options := []oss.Option{
         oss.Meta("myprop", "mypropval"),
         oss.ContentType("image/tiff"),
+```
+
+`}`
+
+```
     signedURL, err = bucket.SignURL(objectName, oss.HTTPPut, 60, options...)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     err = bucket.PutObjectFromFileWithURL(signedURL, localFilename, options...)
     if err != nil {
         HandleError(err)
 ```
 
-Use a signed URL to download an object The following sample code provides an example on how to use a signed URL to download an object:
+`}` `}` Use a signed URL to download an object The following sample code provides an example on how to use a signed URL to download an object:
 
 ```java
 package main import (
@@ -26345,6 +31166,11 @@ func main() {
 <yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localDownloadedFilename := "<yourDownloadedFilename>"
@@ -26352,13 +31178,28 @@ func main() {
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Download the object to a stream by using the signed URL.
     signedURL, err := bucket.SignURL(objectName, oss.HTTPGet, 60)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     body, err := bucket.GetObjectWithURL(signedURL)
     if err != nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Read the content of the object.
     data, err := ioutil.ReadAll(body)
     body.Close()
@@ -26368,6 +31209,8 @@ func main() {
     if err != nil {
         HandleError(err)
 ```
+
+`}` `}`
 
 ##### 1.2.5.11 IMG
 
@@ -26448,21 +31291,36 @@ package main import (
 
 `)`
 
-```xml
+```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     ossImageName := "<yourImageName>"
     signedURL, err := bucket.SignURL(ossImageName, oss.HTTPGet, 600,
 oss.Process("image/format,png"))
@@ -26472,7 +31330,7 @@ oss.Process("image/format,png"))
     fmt.Println(signedURL)
 ```
 
-Access by using SDKs You can use **OSS SDKs** to access and process image objects of any ACLs. The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
+`}` `}` Access by using SDKs You can use **OSS SDKs** to access and process image objects of any ACLs. The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
 
 ```java
 package main import (
@@ -26497,11 +31355,21 @@ func main() {
 <yourAccessKeySecret>")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Resize the image.
     sourceImageName := "example.png"
     targetImageName := "example-resize.png"
@@ -26510,6 +31378,11 @@ func main() {
 oss.Process(style))
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Crop the image.
     targetImageName = "example-crop.png"
     style = "image/crop,w_100,h_100,x_100,y_100,r_1"
@@ -26517,6 +31390,11 @@ oss.Process(style))
 oss.Process(style))
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Rotate the image.
     targetImageName = "example-rotate.png"
     style = "image/rotate,90"
@@ -26524,6 +31402,11 @@ oss.Process(style))
 oss.Process(style))
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Sharpen the image.
     targetImageName = "example-sharpen.png"
     style = "image/sharpen,100"
@@ -26542,6 +31425,11 @@ HandleError(err)
 oss.Process(style))
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Convert the image format.
     targetImageName = "example-formatconvert.jpg"
     style = "image/format,jpg"
@@ -26551,7 +31439,7 @@ oss.Process(style))
     HandleError(err)
 ```
 
-Custom image styles
+`}` `}` Custom image styles
 
 ```java
 package main import (
@@ -26562,21 +31450,36 @@ package main import (
 
 `)`
 
-```xml
+```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
      HandleError(err)
+```
+
+`}`
+
+```
     // Customize the image style.
     sourceImageName := "example.png"
     targetImageName := "example-custom.png"
@@ -26587,7 +31490,7 @@ oss.Process(style))
     HandleError(err)
 ```
 
-Cascade processing
+`}` `}` Cascade processing
 
 ```java
 package main import (
@@ -26598,21 +31501,36 @@ package main import (
 
 `)`
 
-```xml
+```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Customize the image style.
     sourceImageName := "example.png"
     targetImageName := "example-cascade.png"
@@ -26622,6 +31540,8 @@ oss.Process(style))
     if err ! = nil {
      HandleError(err)
 ```
+
+`}` `}`
 
 **Persistent storage of processed images**
 
@@ -26649,11 +31569,21 @@ func main() {
 <yourAccessKeySecret>")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
      HandleError(err)
+```
+
+`}`
+
+```
     // Scale the image and store the processed image. By default, the processed image i
 s stored in the same bucket as the original image.
     sourceImageName := "example.png"
@@ -26666,6 +31596,11 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Scale the image and store the processed image. The processed image is stored in
 the different bucket from the original image.
     targetBucketName := "<yourTargetBucketName>"
@@ -26678,6 +31613,11 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)), base64.URLEncoding.E
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Crop the image and store the processed image.
     targetImageName = "example-crop.png"
     style = "image/crop,w_100,h_100,x_100,y_100,r_1"
@@ -26693,6 +31633,11 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Rotate the image and store the processed image.
     targetImageName = "example-rotate.png"
     style = "image/rotate,90"
@@ -26703,6 +31648,11 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Sharpen the image and store the processed image.
     targetImageName = "example-sharpen.png"
     style = "image/sharpen,100"
@@ -26713,6 +31663,11 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
        fmt.Println(result)
+```
+
+`}`
+
+```
     // Add watermarks to the image and store the processed image.
     targetImageName = "example-watermark.png"
     style = "image/watermark,text_SGVsbG8g5Zu-54mH5pyN5YqhIQ"
@@ -26723,6 +31678,11 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Convert the image format and store the processed image.
     targetImageName = "example-formatconvert.jpg"
     style = "image/format,jpg"
@@ -26748,13 +31708,15 @@ type error interface {
     Error() string
 ```
 
-Other specific errors are further defined based on this error operation. The following code provides an example of the operation used to handle an HTTP request error:
+`}` Other specific errors are further defined based on this error operation. The following code provides an example of the operation used to handle an HTTP request error:
 
 ```
 //net.Error type Error interface {
     Timeout() bool   // Is the error a timeout
     Temporary() bool // Is the error temporary
 ```
+
+`}`
 
 **Server errors**
 
@@ -26769,13 +31731,15 @@ type ServiceError struct {
     StatusCode int       // The HTTP status code.
 ```
 
-If the HTTP status code returned by OSS is not as expected, the following error is returned, which is an implementation of the error operation:
+`}` If the HTTP status code returned by OSS is not as expected, the following error is returned, which is an implementation of the error operation:
 
 ```
 type UnexpectedStatusCodeError struct {
     allowed []int    // The expected HTTP status code returned by OSS.
     got     int      // The actual HTTP status code returned by OSS.
 ```
+
+`}`
 
 **Example**
 
@@ -26791,28 +31755,45 @@ package main import (
 
 `)`
 
-```xml
+```
 // The function used to handle the error. func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```xml
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "
 <yourAccessKeySecret>")
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Use simple upload to upload strings.
     err = bucket.PutObject(objectName,
 strings.NewReader("yourObjectValueContentString"))
     if err ! = nil {
         HandleError(err)
 ```
+
+`}`
 
 **OSS error codes**
 
@@ -27092,7 +32073,7 @@ iii. On the page that appears, click **View Current Role Policy**. In the **View
 > <yourRoleArn>: Replace this variable with the ARN of your RAM role.
 > <sts.aliyuns.com>: Replace this variable with the STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize the instance.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with your
@@ -27112,6 +32093,11 @@ region ID, AccessKey ID, and AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the actual endpoint of STS. The endpoint of STS i
@@ -27136,9 +32122,15 @@ eceding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an operation of a service.
 
 > **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
@@ -27189,7 +32181,7 @@ API operation in API references.
         System.out.println(e.getErrMsg());
 ```
 
-The following sample code provides an example on how to call the DescribeDiskReplicaPairs operation to query the information about replication pairs:
+`}` `}` The following sample code provides an example on how to call the DescribeDiskReplicaPairs operation to query the information about replication pairs:
 
 ```java
 public static void main(String[] args) {
@@ -27232,6 +32224,8 @@ API operation in API Reference.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 #### 2.2.5 Obtain the values of common request headers
 
@@ -27432,7 +32426,7 @@ solated. Modify the values of the headers based on your business requirements.
            e.printStackTrace();
 ```
 
-The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
+`}` `}` `}` The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
 
 ```java
 package com.aliyun.sample; import com.aliyun.tea.*; import com.aliyun.ebs20210730.*; import com.aliyun.ebs20210730.models.*; import com.aliyun.teaopenapi.*; import com.aliyun.teaopenapi.models.*; public class Sample {
@@ -27446,7 +32440,7 @@ package com.aliyun.sample; import com.aliyun.tea.*; import com.aliyun.ebs2021073
 
 `*/`
 
-```java
+```
     public static com.aliyun.ebs20210730.Client createClient(String accessKeyId, String
 accessKeySecret) throws Exception {
         Config config = new Config()
@@ -27458,6 +32452,11 @@ accessKeySecret) throws Exception {
 ual values.
         config.endpoint = "ebs.cn-beijing.aliyuncs.com";
         return new com.aliyun.ebs20210730.Client(config);
+```
+
+`}`
+
+```java
     public static void main(String[] args_) throws Exception {
         java.util.List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.ebs20210730.Client client = Sample.createClient("<yourAccessKeyID>",
@@ -27476,6 +32475,8 @@ DescribeDiskReplicaPairsResponseBody.DescribeDiskReplicaPairsResponseBodyReplica
             System.out.println(pair.getReplicaPairId());
             System.out.println(pair.getStatus());
 ```
+
+`}` `}`
 
 #### 2.3.2 User Manual
 
@@ -27611,7 +32612,7 @@ DescribeDisksResponse response; try {
     e.printStackTrace();
 ```
 
-In normal cases, all returned fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
+`}` In normal cases, all returned fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
 
 ```
 Integer count = response.getTotalCount()
@@ -27640,6 +32641,7 @@ ctual values.
         return new com.aliyun.ebs20210730.Client(config);
 ```
 
+`}`
 2. Create a request.
 
 ```
@@ -27656,6 +32658,8 @@ DescribeDiskReplicaPairsResponse resp = client.describeDiskReplicaPairs(describe
     System.out.println(pair.getReplicaPairId());
     System.out.println(pair.getStatus());
 ```
+
+`}`
 
 ##### 2.3.2.5 Troubleshooting
 
@@ -27685,6 +32689,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 ##### 2.3.2.6 Use CommonRequest to call API operations
 
@@ -27801,7 +32807,7 @@ you must specify the SecurityToken parameter in the request.
             e.printStackTrace();
 ```
 
-The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
+`}` `}` `}` The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -28429,6 +33435,11 @@ cret.
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Configure the proxy.
     ecsClient.SetHttpProxy("https://192.168.XX:33XX>")   // Configure the HTTP proxy.
     ecsClient.GetHttpProxy()                          // Query the HTTP proxy.
@@ -28450,10 +33461,15 @@ domain names that do not require proxies.
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
-The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
+`}` The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
 
 ```java
 package main import (
@@ -28487,24 +33503,54 @@ func CreateClient (accessKeyId *string, accessKeySecret *string) (_result *ebs20
     AccessKeyId: accessKeyId,
     // Your AccessKey secret.
     AccessKeySecret: accessKeySecret,
+```
+
+`}`
+
+```
   // The endpoint of the service.
   config.Endpoint = tea.String("ebs.cn-beijing.aliyuncs.com")
   _result = &ebs20210730.Client{}
   _result, _err = ebs20210730.NewClient(config)
   return _result, _err
+```
+
+`}`
+
+```
 func _main (args []*string) (_err error) {
   client, _err := CreateClient(tea.String("accessKeyId"),
 tea.String("accessKeySecret"))
   if _err != nil {
     return _err
+```
+
+`}`
+
+```
   describeDiskReplicaPairsRequest := &ebs20210730.DescribeDiskReplicaPairsRequest{
     RegionId: tea.String("cn-beijing"),
+```
+
+`}`
+
+```
   // Run the following sample code to obtain the response parameter values of the API
 operation.
   resp, _err = client.DescribeDiskReplicaPairs(describeDiskReplicaPairsRequest)
   if _err != nil {
     return _err
+```
+
+`}`
+
+```
   return _err
+```
+
+`}`
+
+```
 func main() {
   err := _main(tea.StringSlice(os.Args[1:]))
   if err != nil {
@@ -28556,12 +33602,19 @@ func CreateClient (accessKeyId *string, accessKeySecret *string) (_result *ebs20
     AccessKeyId: accessKeyId,
     // Your AccessKey secret.
     AccessKeySecret: accessKeySecret,
+```
+
+`}`
+
+```
   // The endpoint of the service.
   config.Endpoint = tea.String("ebs.cn-beijing.aliyuncs.com")
   _result = &ebs20210730.Client{}
   _result, _err = ebs20210730.NewClient(config)
   return _result, _err
 ```
+
+`}`
 
 ##### 2.5.2.3 Initiate a request
 
@@ -28624,6 +33677,7 @@ describeDiskReplicaPairsRequest := &ebs20210730.DescribeDiskReplicaPairsRequest{
     RegionId: tea.String("cn-beijing"),
 ```
 
+`}`
 4. Initiate the request and process the response.
 
 ```
@@ -28633,6 +33687,8 @@ operation.
   if _err != nil {
     return _err
 ```
+
+`}`
 
 ##### 2.5.2.4 Handle errors
 
@@ -28682,6 +33738,8 @@ response, err := ecsClient.DescribeDisks(request) if clientError, ok := err.(*er
     clientError.OriginError()
 ```
 
+`}`
+
 **ServerError**
 
 If the server returns an error response, the SDK wraps the response into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from Response. The following sample code shows how to determine and obtain the error message in a `ServerError` and `Response` returned by ECS SDK for Go:
@@ -28710,6 +33768,8 @@ response, err := ecsClient.DescribeDisks(request) if serverError, ok := err.(*er
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 ##### 2.5.2.5 Use CommonRequest to call API operations
 
@@ -28757,6 +33817,11 @@ func main() {
         "<yourAccessKeySecret>") // Replace the variable with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<ecs.aliyuncs.com>" // Specify the endpoint of the service.
@@ -28796,10 +33861,15 @@ e instance ID. This parameter is required if you want to modify, delete, or view
      response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
+`}` The following sample code provides an example in which the DescribeDiskReplicaPairs operation is called to query the information about replication pairs:
 
 ```java
 package main import (
@@ -28818,6 +33888,11 @@ func main() {
         "<yourAccessKeySecret>") // Replace the variable with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<ebs.aliyuncs.com>" // Specify the endpoint of the service.
@@ -28857,8 +33932,15 @@ e instance ID. This parameter is required if you want to modify, delete, or view
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ### 2.6 API references
 
@@ -28923,7 +34005,7 @@ UnsupportedEncodingException {
 "%20").replace("*", "%2A").replace("%7E", "~") : null;
 ```
 
-iii. Use equal signs ( `=` ) to connect the encoded parameter names and values. iv. Sort the parameters in the order specified in Step 1.i and connect the parameter nameparameter value pairs by using ampersands (&) to generate a canonicalized query string.
+`}` iii. Use equal signs ( `=` ) to connect the encoded parameter names and values. iv. Sort the parameters in the order specified in Step 1.i and connect the parameter nameparameter value pairs by using ampersands (&) to generate a canonicalized query string.
 2. Construct a string-to-sign based on the canonicalized query string and the following rules:
 
 ```
@@ -28970,6 +34052,8 @@ JSON format `{`
     /* Return result data */
 ```
 
+`}`
+
 **Sample error responses**
 
 If an error occurs when you call an API operation, no result data is returned. You can troubleshoot the error based on the error code returned. For an error that occurs when you call an API operation, a 4XX or 5XX HTTP status code is returned. The response body contains the specific error code and error message. The response body also contains the request ID and ID of the host that you wanted to access with this request. The request ID is globally unique. XML format
@@ -28991,6 +34075,8 @@ JSON format `{`
     "Code": "InvalidOwnerId",
     "Message": "The specified OwnerId is not valid."
 ```
+
+`}`
 
 #### 2.6.2 RAM authentication
 
@@ -29160,6 +34246,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "DiskId": "d-bp131n0q38u3a4zi1****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -29630,6 +34718,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -29722,6 +34812,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -29803,6 +34895,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -29871,6 +34965,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -29945,6 +35041,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"F3CD6886-D8D0-4FEE-B93E-1B73239673DE"
 ```
+
+`}`
 
 **Error codes**
 
@@ -30034,6 +35132,8 @@ Sample success responses `XML` format
     "RequestId": "337568C5-64F3-4B76-8CDD-D3D8C57B5B8C",
     "DiskId": "d-bp67acfmxazb4p****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -30152,6 +35252,8 @@ Sample success responses `XML` format
     "RequestId": "F3CD6886-D8D0-4FEE-B93E-1B73239673DE"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -30242,6 +35344,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -30305,6 +35409,8 @@ This operation does not have operation-specific request headers and uses only co
  "TotalCloudEssd":"",
  "ToalCloud":""
 ```
+
+`}`
 
 **Error codes**
 
@@ -30397,6 +35503,8 @@ Sample success responses `JSON` format `{`
   "ShowName":"d-b***(test_name***)",
   "DiskId":"d-b***"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -30574,6 +35682,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7B****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -30770,6 +35880,8 @@ Sample success responses `XML` format
             "TagValue": "TestValue"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -30901,7 +36013,7 @@ Sample success responses `XML` format
                 "TotalCount": 1
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": 1,
@@ -30909,6 +36021,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "TotalCount": 9
 ```
+
+`}`
 
 **Error codes**
 
@@ -30963,6 +36077,8 @@ Sample success responses `XML` format
     "SnapshotSize": "122",
     "RequestId": "ACD9BBB0-A9D1-46D7-9630-B7A69889E110"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31022,6 +36138,8 @@ Sample success responses `XML` format
     "AutoSnapshotPolicyId": "sp-bp12m37ccmxvbmi5****"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -31076,6 +36194,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"F3CD6886-D8D0-4FEE-B93E-1B73239673DE"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31185,6 +36305,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"C8B26B44-0189-443E-9816-D951F596****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31318,12 +36440,14 @@ AutoSnapshotPolicyName</AutoSnapshotPolicyName>
                             "TagValue": "Test"
 ```
 
-`]` `]` `},`
+`}` `]` `}` `}` `]` `},`
 
 ```json
     "PageSize": 1,
     "RequestId": "CC323EDF-BBB7-420F-BCD1-D9B9D2E9D424"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31377,6 +36501,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31434,6 +36560,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"F3CD6886-D8D0-4FEE-B93E-1B73239673DE"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31498,6 +36626,8 @@ Sample success responses `XML` format
     "RequestId": "ssg-j6ciyh3k52qp7ovm****",
     "SnapshotGroupId": "01ABBD93-1ABB-4D92-B496-1A3D20EC****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31652,6 +36782,8 @@ Sample success responses `XML` format
             "SourceDiskId": "d-j6c3ogynmvpi6wy7****"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -31731,6 +36863,8 @@ Sample success responses `XML` format
             "Name": ""
 ```
 
+`}` `}` `}`
+
 ##### 2.6.5.16 ModifySnapshotGroup
 
 Modifies the name or description of a snapshot-consistent group.
@@ -31774,6 +36908,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "A00B5E55-76B7-42C8-8A80-AF10E980****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31835,6 +36971,8 @@ Sample success responses `XML` format
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "StorageSetId": "ss-bp67acfmxazb4ph***"
 ```
+
+`}`
 
 **Error codes**
 
@@ -31928,6 +37066,8 @@ Sample success responses `XML` format
         "StorageSetId": "ss-bp67acfmxazb4ph****",
         "StorageSetName": "testStorageSetName"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -32025,6 +37165,8 @@ Sample success responses `XML` format
         "DiskId": "d-bp67acfmxazb4p****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -32081,6 +37223,8 @@ Sample success responses `XML` format
   "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -32133,6 +37277,8 @@ Sample success responses `XML` format
   "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -32180,6 +37326,8 @@ Sample success responses `JSON` format `{`
 ```json
  "RequestId":""
 ```
+
+`}`
 
 **Error codes**
 
@@ -32258,6 +37406,8 @@ Sample success responses `JSON` format `{`
   "StorageSetId":"StorageSetId"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -32334,6 +37484,8 @@ This operation does not have operation-specific request headers and uses only co
   "RegionId":"cn-hangzhou",
   "StorageSetId":"ss-bp67acfmxazb4p"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -32486,7 +37638,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"A37597A6-BB99-19B3-85EA-4C2B91F00123"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>A37597A6-BB99-19B3-85EA-4C2B91F00123</RequestId>
@@ -32676,7 +37828,7 @@ Sample success responses `JSON` format `{`
  "PageNumber":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <ReplicaPairs>
@@ -32791,6 +37943,8 @@ Sample success responses `XML` format
     "RecoverPoint": 1637835114
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -32861,7 +38015,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId>
@@ -32943,7 +38097,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId>
@@ -33020,7 +38174,7 @@ Sample success response `JSON` format `{`
  "RequestId":"C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId>
@@ -33106,6 +38260,8 @@ Sample success responses `XML` format
     "RequestId": "A37597A6-BB99-19B3-85EA-4C2B91F00123"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -33181,6 +38337,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "A37597A6-BB99-19B3-85EA-4C2B91F00123"
 ```
+
+`}`
 
 **Error codes**
 
@@ -33274,6 +38432,8 @@ Sample success responses `JSON` format `{`
   "DestRegionId":"cn-shanghai"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -33360,7 +38520,7 @@ Sample success response `JSON` format `{`
  "ReplicaGroupId":"pg-myreplica****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId> <ReplicaGroupId>pg-myreplica****</ReplicaGroupId>
@@ -33435,6 +38595,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
+
+`}`
 
 **Error codes**
 
@@ -33690,7 +38852,7 @@ Sample success response `JSON` format `{`
  "PageNumber":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <ReplicaGroups>
@@ -33799,7 +38961,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId>
@@ -33969,7 +39131,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId>
@@ -34045,7 +39207,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>C123F94F-4E38-19AE-942A-A8D6F44F0450</RequestId>
@@ -34237,6 +39399,8 @@ Sample success responses `XML` format
     "RequestId": "A37597A6-BB99-19B3-85EA-4C2B91F00123"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -34315,6 +39479,8 @@ Sample success responses `XML` format
     "RequestId": "C123F94F-4E38-19AE-942A-A8D6F44F0450"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -34371,6 +39537,8 @@ This operation does not have operation-specific request headers and uses only co
 ```json
   "RequestId": "C123F94F-4E38-19AE-942A-A8D6F44F****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -34430,6 +39598,8 @@ This operation does not have operation-specific request headers and uses only co
   "DrillId": "pg-drill-xxxx",
   "RequestId": "C123F94F-4E38-19AE-942A-A8D6F44F****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -34532,7 +39702,7 @@ This operation does not have operation-specific request headers and uses only co
           "DrillDiskStatus": "created"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "StartAt": 1649750977,
@@ -34540,7 +39710,7 @@ This operation does not have operation-specific request headers and uses only co
       "StatusMessage": "GROUP_SYNCPOINT_NOT_FOUND"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "NextToken": "AAAAAdDWBF2****",
@@ -34549,6 +39719,8 @@ This operation does not have operation-specific request headers and uses only co
   "TotalCount": 1,
   "RequestId": "C123F94F-4E38-19AE-942A-A8D6F44F****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -34606,6 +39778,8 @@ This operation does not have operation-specific request headers and uses only co
 ```json
   "RequestId": "20758A-585D-4A41-A9B2-28DA8F4F****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -34665,6 +39839,8 @@ This operation does not have operation-specific request headers and uses only co
   "DrillId": "drill-xxx",
   "RequestId": "C123F94F-4E38-19AE-942A-A8D6F44F****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -34756,7 +39932,7 @@ This operation does not have operation-specific request headers and uses only co
       "StatusMessage": "PAIR_SYNCPOINT_NOT_FOUND"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "NextToken": "AAAAAdDWBF2****",
@@ -34765,6 +39941,8 @@ This operation does not have operation-specific request headers and uses only co
   "TotalCount": 1,
   "RequestId": "C46FF5A8-C5F0-4024-8262-B16B6392****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -34845,6 +40023,8 @@ Sample success responses `JSON` format `{`
   "RegionEndpoint":"ebs.cn-hangzhou.aliyuncs.com",
   "LocalName":"China (Hangzhou)"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -35223,6 +40403,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
         ListLogStoresResponse res = client.ListLogStores(lsRequest)
         //TODO: Process the returned data...
         break;
+```
+
+`}`
+
+```
     catch(LogException ex)
 ```
 
@@ -35243,8 +40428,18 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
 ```java
                 System.out.println("request is still failed after all retries.");
                 break;
+```
+
+`}`
+
+```java
             else
                 System.out.println("request error happens, retry it!");
+```
+
+`}`
+
+```
         else
 ```
 
@@ -35255,6 +40450,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
             System.out.println("error message :" + e.GetErrorMessage());
             System.out.println("error requestId :" + e.GetRequestId());
             break;
+```
+
+`}` `}`
+
+```
     catch(...)
 ```
 
@@ -35263,6 +40463,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
 ```java
         System.out.println("unrecoverable exception when listing logstores.");
         break;
+```
+
+`}` `}`
+
+```
 // Other code...
 ```
 
@@ -35284,6 +40489,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
         ListLogstoresResponse response = client.ListLogstores(request);
         //TODO: Process the returned data...
         break;
+```
+
+`}`
+
+```
     catch(LogException ex)
 ```
 
@@ -35304,6 +40514,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
 ```
                 Console.Writeline("request is still failed after all retries.");
                 break;
+```
+
+`}`
+
+```
             else
 ```
 
@@ -35311,6 +40526,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
 
 ```
                 Console.Writeline("request error happens, retry it!");
+```
+
+`}` `}`
+
+```
         else
 ```
 
@@ -35321,6 +40541,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
             Console.Writeline("error message :" + e.Message;
             Console.Writeline("error requestId :" + e.RequestId;
             break;
+```
+
+`}` `}`
+
+```
     catch(...)
 ```
 
@@ -35329,6 +40554,11 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
 ```
         Console.Writeline("unrecoverable exception when listing logstores.");
         break;
+```
+
+`}` `}`
+
+```
 // Other code...
 ```
 
@@ -35350,6 +40580,11 @@ PHP
         $response = $client->ListLogstores($request);
         //TODO: Process the returned data...
         break;
+```
+
+`}`
+
+```
     catch (Aliyun_Sls_Exception $e)
 ```
 
@@ -35371,7 +40606,17 @@ PHP
                 echo "error code :" . $e->getErrorCode() . PHP_EOL;
                 echo "error message :" . $e->getErrorMessage() . PHP_EOL;
                 break;
+```
+
+`}`
+
+```
             echo 'request error happens, retry it!' . PHP_EOL;
+```
+
+`}`
+
+```
         else
 ```
 
@@ -35382,6 +40627,11 @@ PHP
             echo "error message :" . $e->getErrorMessage() . PHP_EOL;
             echo "error requestId :" . $e->getRequestId() . PHP_EOL;
             break;
+```
+
+`}` `}`
+
+```
     catch (Exception $ex)
 ```
 
@@ -35391,6 +40641,11 @@ PHP
         echo 'unrecoverable exception when listing logstores.' . PHP_EOL;
         var_dump($ex);
         break;
+```
+
+`}` `}`
+
+```
 // Other code...
 ```
 
@@ -35567,6 +40822,11 @@ Stringtopic="";
                 LogItem logItem = new LogItem((int) (new Date().getTime() / 1000));
                 logItem.PushBack("index"+String.valueOf(j), String.valueOf(i * 10 + j));
                 logGroup.add(logItem);
+```
+
+`}`
+
+```
             PutLogsRequest req2 = new PutLogsRequest(project, logstore, topic, source,
 logGroup);
             client.PutLogs(req2);
@@ -35584,7 +40844,7 @@ nge includes the hash key. For more information, see the API operation PutLogsRe
 5(id).
 ```
 
-`*/`
+`*/` `}`
 
 ```java
         // Read the data that was written to shard 0 in the last minute.
@@ -35626,9 +40886,19 @@ log.getTime() + ", GetContentCount: " + log.getContentsCount());
                         FastLogContent content = log.getContents(cIdx);
                         System.out.println(content.getKey() + "\t:\t" +
 content.getValue());
+```
+
+`}` `}` `}`
+
+```java
             String next_cursor = logDataRes.GetNextCursor();
             System.out.println("The Next cursor:" + next_cursor);
             curCursor = next_cursor;
+```
+
+`}`
+
+```
         // Note: You can call the following API operation only after you enable the ind
 exing feature.
         // Before you query logs, wait for 1 minute.
@@ -35636,6 +40906,11 @@ exing feature.
             Thread.sleep(60 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+```
+
+`}`
+
+```
         // Query the distribution of logs.
         String query = "<Specify the query keyword. To query all contents, use an empty
 string.>";
@@ -35653,13 +40928,28 @@ topic, query, from, to);
 
 `{`
 
-```java
+```
                 break;
+```
+
+`}`
+
+```
             Thread.sleep(200);
+```
+
+`}`
+
+```java
         System.out.println("Total count of logs is " + res3.GetTotalCount());
         for (Histogram ht : res3.GetHistograms()) {
             System.out.printf("from %d, to %d, count %d.\n", ht.GetFrom(), ht.GetTo(), h
 t.GetCount());
+```
+
+`}`
+
+```
         // Query log data.
         long total_log_lines = res3.GetTotalCount();
         int log_offset = 0;
@@ -35673,14 +40963,29 @@ fails, a maximum of three retries are allowed.
 pic, query, log_offset,
 ```
 
-```java
+```
                         log_line, false);
                 res4 = client.GetLogs(req4);
                 if (res4 ! = null && res4.IsCompleted()) {
                     break;
+```
+
+`}`
+
+```
                 Thread.sleep(200);
+```
+
+`}`
+
+```java
             System.out.println("Read log count:" + String.valueOf(res4.GetCount()));
             log_offset += log_line;
+```
+
+`}`
+
+```java
         // Enable the analytics feature. You can use SQL statements only after you enab
 le the analytics feature. You can log on to the Log Service console or use the SDK to e nable the analytics feature.
         IndexKeys indexKeys = new IndexKeys();
@@ -35708,8 +41013,15 @@ ex0:value | select avg(index1) as v1,sum(index2) as v2, index0 group by index0")
                 LogItem item = log.GetLogItem();
                 for(LogContent content : item.GetLogContents()){
                     System.out.print(content.GetKey()+":"+content.GetValue());
+```
+
+`}`
+
+```java
                 System.out.println();
 ```
+
+`}` `}` `}` `}`
 
 **Usage notes**
 
@@ -35857,12 +41169,17 @@ for ($i = 0; $i < 5; $i++)
 
 `{`
 
-```bash
+```
     $contents = array('index1'=> strval($i));
     $logItem = new Aliyun_Log_Models_LogItem();
     $logItem->setTime(time());
     $logItem->setContents($contents);
     array_push($logitems, $logItem);
+```
+
+`}`
+
+```bash
 $req2 = new Aliyun_Log_Models_PutLogsRequest($project, $logstore, $topic, $source, $log items); $res2 = $client->putLogs($req2); var_dump($res2);
 # Pull the data.
 # List the shard IDs in the Logstore.
@@ -35896,6 +41213,11 @@ Aliyun_Log_Models_BatchGetLogsRequest($project,$logstore,$shardId,$count,$cursor
 
 ```
             break;
+```
+
+`}`
+
+```
         $logGroupList = $response -> getLogGroupList();
         foreach($logGroupList as $logGroup)
 ```
@@ -35917,8 +41239,23 @@ Aliyun_Log_Models_BatchGetLogsRequest($project,$logstore,$shardId,$count,$cursor
 
 ```python
                     print($content-> getKey().":".$content->getValue()."\t");
+```
+
+`}`
+
+```python
                 print("\n");
+```
+
+`}` `}`
+
+```
         $cursor = $response -> getNextCursor();
+```
+
+`}` `}`
+
+```bash
 # Before you query logs, wait for 1 minute.
 sleep(60);
 # Query the distribution of logs. Before you query logs, you must ensure that indexes a
@@ -35937,10 +41274,15 @@ does otpo dete opeato tatyouca call to create indexes. You must create indexes i
 
 `{`
 
-```bash
+```
     $req3 = new Aliyun_Log_Models_GetHistogramsRequest($project, $logstore, $from, $to,
 $topic, $query);
     $res3 = $client->getHistograms($req3);
+```
+
+`}`
+
+```bash
 var_dump($res3);
 # Query log data.
 $res4 = NULL; while (is_null($res4) || (! $res4->isCompleted()))
@@ -35952,6 +41294,11 @@ $res4 = NULL; while (is_null($res4) || (! $res4->isCompleted()))
     $req4 = new Aliyun_Log_Models_GetLogsRequest($project, $logstore, $from, $to, $topi
 c, $query, 5, 0, False);
     $res4 = $client->getLogs($req4);
+```
+
+`}`
+
+```
 var_dump($res4);
 ```
 
@@ -36188,6 +41535,8 @@ let myClient = try! LOGClient(endPoint: "",
             print("timed out") // note, `response` is likely `nil` if it timed out
 ```
 
+`}` `}`
+
 **Objective-C**
 
 For information about how to use Log Service SDK for iOS based on Objective-C, visit Objective-C at GitHub.
@@ -36293,7 +41642,7 @@ Step 2
             value: log[5]
 ```
 
-`]`
+`}` `]`
 
 ```
     }],
@@ -36572,7 +41921,7 @@ When an API request error occurs, Log Service returns an error message, includin
 "errorCode" : <ErrorCode>, "errorMessage" : <ErrorMessage>
 ```
 
-Some of the error messages that may be returned by Log Service apply to most APIs and are defined as common error codes. The other error messages apply only to some APIs and are defined as special error codes. The unique error codes of an API are described in the relevant API reference. Table 1. Common error codes
+`}` Some of the error messages that may be returned by Log Service apply to most APIs and are defined as common error codes. The other error messages apply only to some APIs and are defined as special error codes. The unique error codes of an API are described in the relevant API reference. Table 1. Common error codes
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -36624,6 +41973,8 @@ POST / HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: 0 User-A
   "description": <Description>
 ```
 
+`}`
+
 **Request elements**
 
 Request headers The CreateProject API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
@@ -36662,7 +42013,7 @@ POST / HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyr
   "description": "Description of my-project-test"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 07:43:27 GMT x-log-requestid: 5B0A619F205DC3F30EDA9322
@@ -36760,7 +42111,7 @@ PUT / HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyra
   "description": "Description of my-project-test"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 07:43:27 GMT x-log-requestid: 5B0A619F205DC3F30EDA9322
@@ -36920,7 +42271,7 @@ HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 345 Co
       "lastModifyTime": "1524539357"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 3.3.6.6 GetProjectLogs
 
@@ -37015,7 +42366,7 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
             "Key4": "Value4"
 ```
 
-`]` In the sample response, the value of the x-log-progress parameter is Complete. This value indicates that all logs are queried and the returned results are complete. Two logs meet the specified query conditions. The logs are displayed as the value of the logs parameter. If the value of the x-log-progress parameter in the response is Incomplete, you must repeat the request to obtain complete query results.
+`}` `]` `}` In the sample response, the value of the x-log-progress parameter is Complete. This value indicates that all logs are queried and the returned results are complete. Two logs meet the specified query conditions. The logs are displayed as the value of the logs parameter. If the value of the x-log-progress parameter in the response is Incomplete, you must repeat the request to obtain complete query results.
 
 #### 3.3.7 Logstore operations
 
@@ -37040,6 +42391,8 @@ POST /logstores HTTP/1.1 Authorization: <AuthorizationString> Date: <GMT Date> H
     "autoSplit": <autoSplit>,
     "maxSplitShard": <maxSplitShard>
 ```
+
+`}`
 
 **Request elements**
 
@@ -37080,7 +42433,13 @@ POST /logstores HTTP/1.1 Header :
 `{`
 
 ```
-x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=7EF43D0B8F4A807B95E775048C911C72, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json Body :
+x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=7EF43D0B8F4A807B95E775048C911C72, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+```
+
+`}`
+
+```
+Body :
 ```
 
 `{`
@@ -37093,7 +42452,7 @@ x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Hos
     "maxSplitShard": 64
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header:
@@ -37104,6 +42463,8 @@ HTTP/1.1 200 OK Header:
 ```
 Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
 ```
+
+`}`
 
 ##### 3.3.7.2 DeleteLogstore
 
@@ -37150,7 +42511,7 @@ DELETE /logstores/test_logstore HTTP/1.1 Header :
 x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:09:38 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header:
@@ -37161,6 +42522,8 @@ HTTP/1.1 200 OK Header:
 ```
 Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=0, x-log-requestid=5642F7C399248C817B013A07, Connection=close, Server=nginx/1.6.1
 ```
+
+`}`
 
 ##### 3.3.7.3 UpdateLogstore
 
@@ -37181,6 +42544,8 @@ PUT /logstores/{logstoreName} HTTP/1.1 Authorization: <AuthorizationString> Date
     "autoSplit": <autoSplit>,
     "maxSplitShard": <maxSplitShard>
 ```
+
+`}`
 
 **Request elements**
 
@@ -37228,7 +42593,13 @@ PUT /logstores/test-logstore HTTP/1.1 Header:
 `{`
 
 ```
-x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json Body :
+x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+```
+
+`}`
+
+```
+Body :
 ```
 
 `{`
@@ -37241,7 +42612,7 @@ x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Hos
     "maxSplitShard": 64
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header:
@@ -37252,6 +42623,8 @@ HTTP/1.1 200 OK Header:
 ```
 Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1
 ```
+
+`}`
 
 ##### 3.3.7.4 GetLogstore
 
@@ -37283,6 +42656,8 @@ Response headers The GetLogstore API operation does not have special response he
     "lastModifyTime": <lastModifyTime>
 ```
 
+`}`
+
 **Error codes**
 
 In addition to Common error codes, the API operation may also return the following special error codes.
@@ -37307,7 +42682,7 @@ GET /logstores/test-logstore HTTP/1.1 Header :
 x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:53:29 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -37316,7 +42691,13 @@ HTTP/1.1 200 OK Header :
 `{`
 
 ```
-Date=Wed, 11 Nov 2015 07:53:30 GMT, Content-Length=107, x-log-requestid=5642F3FA99248C817B01352D, Connection=close, Content-Type=application/json, Server=nginx/1.6.1 Body :
+Date=Wed, 11 Nov 2015 07:53:30 GMT, Content-Length=107, x-log-requestid=5642F3FA99248C817B01352D, Connection=close, Content-Type=application/json, Server=nginx/1.6.1
+```
+
+`}`
+
+```
+Body :
 ```
 
 `{`
@@ -37328,6 +42709,8 @@ Date=Wed, 11 Nov 2015 07:53:30 GMT, Content-Length=107, x-log-requestid=5642F3FA
     "createTime": 1447833064,
     "lastModifyTime": 1447833064
 ```
+
+`}`
 
 ##### 3.3.7.5 ListLogstore
 
@@ -37384,7 +42767,7 @@ GET /logstores HTTP/1.1 Header:
 x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header:
@@ -37393,7 +42776,13 @@ HTTP/1.1 200 OK Header:
 `{`
 
 ```
-Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=52, x-log-requestid=5642F7C399248C8D7B01342F, Connection=close, Content-Type=application/json, Server=nginx/1.6.1 Body:
+Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=52, x-log-requestid=5642F7C399248C8D7B01342F, Connection=close, Content-Type=application/json, Server=nginx/1.6.1
+```
+
+`}`
+
+```
+Body:
 ```
 
 `{`
@@ -37401,6 +42790,8 @@ Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=52, x-log-requestid=5642F7C39
 ```json
 "count":1, "logstores":["test-logstore"], "total":1
 ```
+
+`}`
 
 ##### 3.3.7.6 ListShards
 
@@ -37444,7 +42835,7 @@ Response headers The ListShards API operation does not have special response hea
         ...
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -37479,7 +42870,7 @@ GET /logstores/sls-test-logstore/shards Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header:
@@ -37494,6 +42885,11 @@ Header:
     "date": "Thu, 12 Nov 2015 03:40:31 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440A2F99248C050600C74C"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -37527,7 +42923,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.7.7 SplitShard
 
@@ -37585,7 +42981,7 @@ Response headers Content-Type: application/json The SplitShard API operation doe
         "createTime": 1453949705
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -37622,7 +43018,7 @@ POST /logstores/logstorename/shards/33? action=split&key=ef000000000000000000000
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header:
@@ -37637,6 +43033,11 @@ Header:
     "date": "Thu, 12 Nov 2015 03:40:31 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440A2F99248C050600C74C"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -37670,7 +43071,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.7.8 MergeShards
 
@@ -37724,7 +43125,7 @@ Response headers Content-Type: application/json The MergeShards API operation do
         'exclusiveEndKey': 'ffffffffffffffffffffffffffffffff'
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -37761,7 +43162,7 @@ POST /logstores/logstorename/shards/30? action=merge Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header:
@@ -37776,6 +43177,11 @@ Header:
     "date": "Thu, 12 Nov 2015 03:40:31 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440A2F99248C050600C74C"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -37810,7 +43216,7 @@ Body :
         'exclusiveEndKey': 'ffffffffffffffffffffffffffffffff'
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.7.9 GetCursor
 
@@ -37848,6 +43254,8 @@ Response headers The GetCursor API operation does not have special response head
     "cursor": "MTQ0NzI5OTYwNjg5NjYzMjM1Ng=="
 ```
 
+`}`
+
 **Error codes**
 
 In addition to Common error codes, the API operation may also return the following special error codes.
@@ -37882,7 +43290,7 @@ GET /logstores/sls-test-logstore/shards/0? type=cursor&from=begin Header:
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header:
@@ -37897,6 +43305,11 @@ Header:
     "date": "Thu, 12 Nov 2015 03:56:57 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440E0999248C070600C6AA"
+```
+
+`}`
+
+```
 Body:
 ```
 
@@ -37905,6 +43318,8 @@ Body:
 ```json
     "cursor": "MTQ0NzI5OTYwNjg5NjYzMjM1Ng=="
 ```
+
+`}`
 
 ##### 3.3.7.10 GetCursorTime
 
@@ -37937,6 +43352,8 @@ Response headers The GetCursorTime API does not have special response headers. F
    "cursor_time": 1554260243
 ```
 
+`}`
+
 **Error codes**
 
 In addition to Common error codes, the API operation may also return the following special error codes.
@@ -37968,6 +43385,8 @@ HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 26 Con
 ```json
   "cursor_time": 1554260243
 ```
+
+`}`
 
 ##### 3.3.7.11 PullLogs
 
@@ -38030,7 +43449,7 @@ Read data from shard 0. GET /logstores/sls-test-logstore/shards/0? cursor=MTQ0Nz
     "accept" : "application/x-protobuf"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header:
@@ -38049,6 +43468,11 @@ Header:
     "Date" : "Thu, 12 Nov 2015 12:01:54 GMT",
     "x-log-compresstype" : "lz4",
     "Content-Type" : "application/x-protobuf"
+```
+
+`}`
+
+```
 Body: The <log group list in the Protocol Buffer format> after the compression.
 ```
 
@@ -38166,6 +43590,11 @@ POST /logstores/sls-test-logstore
     "x-log-compresstype":"lz4"
     "x-log-signaturemethod": "hmac-sha1",
     "Authorization":"LOG <yourAccessKeyId>:<yourSignature>"
+```
+
+`}`
+
+```
 <Binary data obtained after logs in the Protocol Buffer format are compressed with th e LZ4 algorithm>
 ```
 
@@ -38184,6 +43613,8 @@ Header
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 ##### 3.3.7.13 GetShipperStatus
 
@@ -38228,6 +43659,11 @@ If a request is successful, the response body contains a list of log shipping ta
         "running" : 0,
         "success" : 20,
         "fail" : 0
+```
+
+`}`
+
+```json
     "tasks" : [
 ```
 
@@ -38242,7 +43678,7 @@ If a request is successful, the response body contains a list of log shipping ta
             "taskFinishTime" : 1448926013
 ```
 
-`]` GetShipperStatus response parameters describes the GetShipperStatus response parameters. Table 2. GetShipperStatus response parameters
+`}` `]` `}` GetShipperStatus response parameters describes the GetShipperStatus response parameters. Table 2. GetShipperStatus response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -38304,7 +43740,7 @@ GET /logstores/test-logstore/shipper/test-shipper/tasks? from=1448748198&to=1448
 x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.regionid.example.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header:
@@ -38313,7 +43749,13 @@ HTTP/1.1 200 OK Header:
 `{`
 
 ```
-Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1 Body:
+Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1
+```
+
+`}`
+
+```
+Body:
 ```
 
 `{`
@@ -38325,6 +43767,11 @@ Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399
         "running" : 0,
         "success" : 20,
         "fail" : 0
+```
+
+`}`
+
+```json
     "tasks" : [
 ```
 
@@ -38339,7 +43786,7 @@ Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399
             "taskFinishTime" : 1448926013
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.7.14 RetryShipperTask
 
@@ -38400,8 +43847,14 @@ PUT /logstores/test-logstore/shipper/test-shipper/tasks HTTP/1.1 Header:
 
 `{`
 
+```
+x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.regionid.example.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+```
+
+`}`
+
 ```json
-x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.regionid.example.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json Body : ["task-id-1", "task-id-2", "task-id-2"]
+Body : ["task-id-1", "task-id-2", "task-id-2"]
 ```
 
 **Sample responses**
@@ -38415,6 +43868,8 @@ HTTP/1.1 200 OK Header:
 ```
 Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1
 ```
+
+`}`
 
 ##### 3.3.7.15 GetLogs
 
@@ -38525,7 +43980,7 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
             "Key4": "Value4"
 ```
 
-`]` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. Two logs meet the specified query conditions and are displayed as the value of the logs parameter. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
+`}` `]` `}` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. Two logs meet the specified query conditions and are displayed as the value of the logs parameter. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
 
 ##### 3.3.7.16 GetHistograms
 
@@ -38625,7 +44080,7 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
             "progress": "Incomplete"
 ```
 
-`]` In this sample response, the server divides the entire histogram into two equal time ranges: [2014-09-01 00:00:00, 2014-09-01 11:00:00) and [2014-09-01 11:00:00, 2014-09-01 22:00:00). The first query returns incomplete data because the amount of data exceeds the limit. The sample response indicates three hits. The results for the time range [2014-09-01 00:00:00 2014-09-01 11:00:00) are complete, including two hits. The results for the other time range are incomplete, including one hit. To obtain the complete results, you must repeatedly call the preceding sample request until the progress value in the response changes to Complete. The sample response is as follows:
+`}` `]` In this sample response, the server divides the entire histogram into two equal time ranges: [2014-09-01 00:00:00, 2014-09-01 11:00:00) and [2014-09-01 11:00:00, 2014-09-01 22:00:00). The first query returns incomplete data because the amount of data exceeds the limit. The sample response indicates three hits. The results for the time range [2014-09-01 00:00:00 2014-09-01 11:00:00) are complete, including two hits. The results for the other time range are incomplete, including one hit. To obtain the complete results, you must repeatedly call the preceding sample request until the progress value in the response changes to Complete. The sample response is as follows:
 
 ```
 HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84EE3808AAA8C8 Content-Type: application/json Date: Wed, 3 Sept. 2014 08:33:48 GMT Content-Length: 232 x-log-requestid: afag01322-1e241-25432e
@@ -38649,7 +44104,7 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
             "progress": "complete"
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.7.17 UpdateIndex
 
@@ -38668,6 +44123,8 @@ PUT /logstores/<logstoreName>/index HTTP/1.1 Authorization: <AuthorizationString
   "keys": <key-value index>,
   "ttl": <ttl>
 ```
+
+`}`
 
 **Request elements**
 
@@ -38795,13 +44252,13 @@ PUT /logstores/logstore-4/index HTTP/1.1 Header: Authorization: LOG <yourAccessK
         "\r"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
   "ttl": 90
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Mon, 07 May 2018 09:47:21 GMT x-log-requestid: 5AF020A98CBAA2EF52AB66C9
@@ -38823,6 +44280,8 @@ POST /logstores/<logstoreName>/index HTTP/1.1 Authorization: <AuthorizationStrin
   "line": <full text index>,
   "keys": <key-value index>
 ```
+
+`}`
 
 **Request elements**
 
@@ -38951,7 +44410,7 @@ POST /logstores/my-logstore/index HTTP/1.1 Authorization: LOG <yourAccessKeyId>:
         "\r"
 ```
 
-`]`
+`]` `}` `}` `}`
 
 ##### 3.3.7.19 DeleteIndex
 
@@ -39177,7 +44636,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
       "type": "long"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "line": {
@@ -39221,6 +44680,8 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
   "lastModifyTime": 1524155379
 ```
 
+`}`
+
 ##### 3.3.7.21 PutWebtracking
 
 Merges multiple logs into one log during a single collection request. In the WebTracking mode, only one log can be written to each request. This API operation applies to scenarios where you need to collect a large amount of logs. Before you can call the PutWebtracking API operation, you must turn on the WebTracking switch for the corresponding Logstore. We recommend that you call this API operation to collect logs from web pages or clients.
@@ -39253,13 +44714,15 @@ POST {project}.{endpoint}/logstores/{logstoreName}/track HTTP/1.1 x-log-apiversi
       "key2": "value2"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "__tags__": {
     "tag1": "value1",
     "tag2": "value2"
 ```
+
+`}` `}`
 
 **Request elements**
 
@@ -39314,7 +44777,7 @@ POST my-project.cn-hangzhou.log.aliyuncs.com/logstores/logstore-test/track HTTP/
       "bar1": "foo1"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "__tags__": {
@@ -39322,7 +44785,7 @@ POST my-project.cn-hangzhou.log.aliyuncs.com/logstores/logstore-test/track HTTP/
     "tag2": "value2"
 ```
 
-Sample responses
+`}` `}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header:
@@ -39333,6 +44796,8 @@ HTTP/1.1 200 OK Header:
 ```
 Date=Wed, 20 May 2019 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
 ```
+
+`}`
 
 #### 3.3.8 Logtail machine group operations
 
@@ -39365,7 +44830,7 @@ POST /machinegroups HTTP/1.1 Authorization: <AuthorizationString> Content-Type:a
         "test-ip2"
 ```
 
-`]`
+`]` `}`
 
 **Request elements**
 
@@ -39421,6 +44886,11 @@ POST /machinegroups HTTP/1.1 Header :
     "User-Agent": "sls-java-sdk-v-0.6.0",
     "Content-Type": "application/json",
     "x-log-bodyrawsize": "0"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -39443,7 +44913,7 @@ Body :
         "127.0.0.2"
 ```
 
-`]` Sample responses
+`]` `}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -39458,6 +44928,8 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Server": "nginx/1.6.1"
 ```
+
+`}`
 
 ##### 3.3.8.2 DeleteMachineGroup
 
@@ -39512,7 +44984,7 @@ DELETE /machinegroups/test-machine-group-4 HTTP/1.1 Header :
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -39527,6 +44999,8 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Server": "nginx/1.6.1"
 ```
+
+`}`
 
 ##### 3.3.8.3 UpdateMachineGroup
 
@@ -39557,7 +45031,7 @@ PUT /machinegroups/{groupName} HTTP/1.1 Authorization: <AuthorizationString> Con
         "test-ip2"
 ```
 
-`]`
+`]` `}`
 
 **Request elements**
 
@@ -39617,6 +45091,11 @@ PUT /machinegroups/test-machine-group HTTP/1.1 Header :
     "User-Agent": "sls-java-sdk-v-0.6.0",
     "Content-Type": "application/json",
     "x-log-bodyrawsize": "0"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -39639,7 +45118,7 @@ Body :
         "uu_id_2"
 ```
 
-`]` Sample responses
+`]` `}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -39702,6 +45181,8 @@ Response headers The ListMachineGroup API operation does not have special respon
     "total": 2
 ```
 
+`}`
+
 **Error codes**
 
 In addition to Common error codes, the API operation may also return the following special error codes.
@@ -39732,7 +45213,7 @@ GET /machinegroups? groupName=test-machine-group&offset=0&size=3 HTTP/1.1 Header
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -39747,6 +45228,11 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -39764,6 +45250,8 @@ Body :
     "count": 2,
     "total": 2
 ```
+
+`}`
 
 ##### 3.3.8.5 GetMachineGroup
 
@@ -39861,7 +45349,7 @@ GET /machinegroups/test-machine-group HTTP/1.1 Header :
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -39876,6 +45364,11 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -39904,6 +45397,8 @@ Body :
     "createTime": 1447178253,
     "lastModifyTime": 1447178253
 ```
+
+`}`
 
 ##### 3.3.8.6 ApplyConfigToMachineGroup
 
@@ -39961,7 +45456,7 @@ PUT /machinegroups/sample-group/configs/logtail-config-sample Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses `{`
+`}` Sample responses `{`
 
 ```json
     "date": "Mon, 09 Nov 2015 09:44:43 GMT",
@@ -39970,6 +45465,8 @@ Sample responses `{`
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 ##### 3.3.8.7 RemoveConfigFromMachineGroup
 
@@ -40025,7 +45522,7 @@ DELETE /machinegroups/sample-group/configs/logtail-config-sample
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses `{`
+`}` Sample responses `{`
 
 ```json
     "date": "Mon, 09 Nov 2015 09:48:48 GMT",
@@ -40034,6 +45531,8 @@ Sample responses `{`
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 ##### 3.3.8.8 ListMachines
 
@@ -40110,7 +45609,7 @@ GET /machinegroups/test-machine-group-5/machines? offset=0&size=3 HTTP/1.1 Heade
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -40125,6 +45624,11 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -40161,12 +45665,14 @@ Body :
             "lastHeartbeatTime": 1447182248
 ```
 
-`],`
+`}` `],`
 
 ```json
     "count": 3,
     "total": 8
 ```
+
+`}`
 
 ##### 3.3.8.9 GetAppliedConfigs
 
@@ -40226,7 +45732,7 @@ GET /machinegroups/test-machine-group/configs HTTP/1.1 Header :
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -40241,6 +45747,11 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -40258,6 +45769,8 @@ Body :
 ```json
     "count": 3
 ```
+
+`}`
 
 #### 3.3.9 Logtail configuration operations
 
@@ -40304,6 +45817,8 @@ POST /configs HTTP/1.1 Authorization: <AuthorizationString> Content-Type:applica
         "logstoreName": "perfcounter"
 ```
 
+`}` `}`
+
 **Request elements**
 
 Request headers The CreateConfig API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters For information about the request parameters and Logtail configuration examples, see Logtail configurations.
@@ -40345,6 +45860,11 @@ POST /configs HTTP/1.1 Header :
     'User-Agent': 'log-python-sdk-v-0.6.0',
     'Content-Type': 'application/json',
     'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
+```
+
+`}`
+
+```
 Body:
 ```
 
@@ -40383,7 +45903,7 @@ Body:
         "logstoreName": "sls-test-logstore"
 ```
 
-Sample responses
+`}` `}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header
@@ -40458,7 +45978,7 @@ GET /configs? offset=0&size=10 HTTP/1.1 Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header :
@@ -40473,6 +45993,11 @@ Header :
     "date": "Mon, 09 Nov 2015 09:19:13 GMT",
     "content-type": "application/json",
     "x-log-requestid": "5640651199248CAA2300C2BA"
+```
+
+`}`
+
+```
 Body:
 ```
 
@@ -40496,6 +46021,8 @@ Body:
 ```json
     "total": 3
 ```
+
+`}`
 
 ##### 3.3.9.3 GetAppliedMachineGroups
 
@@ -40554,7 +46081,7 @@ GET /configs/logtail-config-sample/machinegroups Header:
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header :
@@ -40569,6 +46096,11 @@ Header :
     "date": "Mon, 09 Nov 2015 09:51:38 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56406CAA99248CAA230BE828"
+```
+
+`}`
+
+```
 Body:
 ```
 
@@ -40585,7 +46117,7 @@ Body:
         "sample-group"
 ```
 
-`]`
+`]` `}`
 
 ##### 3.3.9.4 GetConfig
 
@@ -40639,7 +46171,7 @@ GET /configs/logtail-config-sample Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header :
@@ -40654,6 +46186,11 @@ Header :
     "date": "Mon, 09 Nov 2015 08:29:15 GMT",
     "content-type": "application/json",
     "x-log-requestid": "5640595B99248CAA23004A59"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -40708,6 +46245,8 @@ Body :
     "lastModifyTime": 1447050456
 ```
 
+`}`
+
 ##### 3.3.9.5 DeleteConfig
 
 Deletes a Logtail configuration. When you call this API operation, the Logtail configuration is deleted even if it is applied to the Machine Group.
@@ -40761,7 +46300,7 @@ DELETE /configs/logtail-config-sample Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 Header :
@@ -40776,6 +46315,8 @@ Header :
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 ##### 3.3.9.6 UpdateConfig
 
@@ -40819,6 +46360,8 @@ PUT /configs/<configName> HTTP/1.1 Authorization: <AuthorizationString> Content-
         "logstoreName": "perfcounter"
 ```
 
+`}` `}`
+
 **Request elements**
 
 Request headers The UpdateConfig API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters For information about the request parameters and Logtail configuration examples, see Logtail configurations.
@@ -40861,6 +46404,11 @@ PUT /configs/logtail-config-sample Header :
     "User-Agent": "log-python-sdk-v-0.6.0",
     "Content-Type": "application/json",
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
+```
+
+`}`
+
+```
 Body :
 ```
 
@@ -40912,7 +46460,7 @@ Body :
     "configName": "logtail-config-sample"
 ```
 
-Sample responses `{`
+`}` Sample responses `{`
 
 ```json
     "date": "Mon, 09 Nov 2015 09:14:32 GMT",
@@ -40921,6 +46469,8 @@ Sample responses `{`
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 #### 3.3.10 Consumer group operations
 
@@ -40941,6 +46491,8 @@ POST /logstores/<logstoreName>/consumergroups HTTP/1.1 Authorization: <Authoriza
   "timeout": <timeout>,
   "order": <order>
 ```
+
+`}`
 
 **Request elements**
 
@@ -40987,7 +46539,7 @@ POST /logstores/my-logstore/consumergroups HTTP/1.1 Header: Authorization: LOG <
   "order": true
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
@@ -41111,7 +46663,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
     "consumer": "consumer_1"
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.10.4 HeartBeat
 
@@ -41228,7 +46780,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Connection: clo
     "order": true
 ```
 
-`]`
+`}` `]`
 
 ##### 3.3.10.6 UpdateCheckPoint
 
@@ -41246,6 +46798,8 @@ POST /logstores/<logstoreName>/consumergroups/<consumerGroupName>? forceSuccess=
   "shard": <shardID>,
   "checkpoint": <checkpoint>
 ```
+
+`}`
 
 **Request elements**
 
@@ -41296,7 +46850,7 @@ POST /logstores/logstore-4/consumergroups/consumer_group_test? forceSuccess=fals
   "checkpoint": "MTUyNDE1NTM3OTM3MzkwODQ5Ng=="
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 06 May 2018 09:14:54 GMT x-log-requestid: 5AEEC78E1FFC0366B24F1C63
@@ -41318,6 +46872,8 @@ PUT /logstores/<logstoreName>/consumergroups/<consumerGroupName> HTTP/1.1 Author
   "timeout": <timeout>,
   "order": <order>
 ```
+
+`}`
 
 **Request elements**
 
@@ -41363,7 +46919,7 @@ PUT /logstores/logstore-test/consumergroups/consumer-group-1 HTTP/1.1 Header: Au
   "timeout": 100
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
@@ -41417,6 +46973,7 @@ POST /externalstores HTTP/1.1 x-log-bodyrawsize: 0 Content-Type: application/jso
         "region": "region"
 ```
 
+`}` `}`
 **Host** consists of a project name and a Log Service endpoint. You must specify a project in
 **Host**.
 
@@ -41456,7 +47013,13 @@ POST /externalstores HTTP/1.1 Header:
 `{`
 
 ```
-x-log-bodyrawsize: 0 Content-Type: application/json Content-Length: 307 Content-MD5: 7C1D14659C0BBBA7C7BFF9E5A1A46705 x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 02:15:41 GMT Authorization: LOG yourAccessKeyId:yourSignature Body:
+x-log-bodyrawsize: 0 Content-Type: application/json Content-Length: 307 Content-MD5: 7C1D14659C0BBBA7C7BFF9E5A1A46705 x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 02:15:41 GMT Authorization: LOG yourAccessKeyId:yourSignature
+```
+
+`}`
+
+```
+Body:
 ```
 
 `{`
@@ -41476,7 +47039,7 @@ x-log-bodyrawsize: 0 Content-Type: application/json Content-Length: 307 Content-
         "region": "cn-qingdao"
 ```
 
-Sample success responses
+`}` `}` Sample success responses
 
 ```
 HTTP/1.1 200 OK Header
@@ -41487,6 +47050,8 @@ HTTP/1.1 200 OK Header
 ```
 date: Mon, 09 Nov 2015 07:45:30 GMT connection: close x-log-requestid: 56404F1A99248CA26C002180 content-length: 0 server: nginx/1.6.1
 ```
+
+`}`
 
 **Error codes**
 
@@ -41540,7 +47105,7 @@ DELETE /externalstores/rds_store Header :
 Content-Length: 0 x-log-bodyrawsize: 0 x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 03:32:49 GMT Authorization: LOG yourAccessKeyId:yourSignature
 ```
 
-Sample success responses
+`}` Sample success responses
 
 ```
 HTTP/1.1 200 OK Header
@@ -41555,6 +47120,8 @@ HTTP/1.1 200 OK Header
     content-length: 0
     server: nginx/1.6.1
 ```
+
+`}`
 
 **Error codes**
 
@@ -41620,7 +47187,7 @@ GET /externalstores/rds_store Header :
 Content-Length: 0 x-log-bodyrawsize: 0 x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 03:26:49 GMT Authorization: LOG yourAccessKeyId:yourSignature
 ```
 
-Sample success responses
+`}` Sample success responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -41629,7 +47196,13 @@ HTTP/1.1 200 OK Header :
 `{`
 
 ```
-content-length: 730 server: nginx/1.6.1 connection: close date: Mon, 09 Nov 2015 08:29:15 GMT content-type: application/json x-log-requestid: 5640595B99248CAA23004A59 Body :
+content-length: 730 server: nginx/1.6.1 connection: close date: Mon, 09 Nov 2015 08:29:15 GMT content-type: application/json x-log-requestid: 5640595B99248CAA23004A59
+```
+
+`}`
+
+```
+Body :
 ```
 
 `{`
@@ -41646,6 +47219,8 @@ content-length: 730 server: nginx/1.6.1 connection: close date: Mon, 09 Nov 2015
                'db': 'meta',
                'table': 'join_meta'
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -41709,7 +47284,7 @@ GET http://ali-test-project.cn-chengdu.log.aliyuncs.com:80/externalstores? exter
 Content-Length: 0 x-log-bodyrawsize: 0 x-log-apiversion: 0.6.0 x-log-signaturemethod':hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 03:03:16 GMT Authorization: LOG yourAccessKeyId:yourSignature
 ```
 
-Sample success responses
+`}` Sample success responses
 
 ```
 HTTP/1.1 200 OK Header :
@@ -41718,7 +47293,13 @@ HTTP/1.1 200 OK Header :
 `{`
 
 ```
-content-length: 103 server: nginx/1.6.1 connection: close date: Mon, 09 Nov 2015 09:19:13 GMT content-type: application/json x-log-requestid: 5640651199248CAA2300C2BA Body:
+content-length: 103 server: nginx/1.6.1 connection: close date: Mon, 09 Nov 2015 09:19:13 GMT content-type: application/json x-log-requestid: 5640651199248CAA2300C2BA
+```
+
+`}`
+
+```
+Body:
 ```
 
 `{`
@@ -41737,7 +47318,7 @@ content-length: 103 server: nginx/1.6.1 connection: close date: Mon, 09 Nov 2015
         "ecs_store1"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -41774,6 +47355,7 @@ PUT /externalstores/externalStoreName HTTP/1.1 x-log-bodyrawsize: 0 Content-Type
                "region": "region"
 ```
 
+`}` `}`
 **Host** consists of a project name and a Log Service endpoint. You must specify a project in
 **Host**.
 
@@ -41812,8 +47394,14 @@ PUT /externalstores/rds_store HTTP/1.1 Header :
 
 `{`
 
+```
+x-log-bodyrawsize: 0 Content-Type: application/json Content-Length: 307 Content-MD5: 7C1D14659C0BBBA7C7BFF9E5A1A46705 x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 02:15:41 GMT Authorization: LOG yourAccessKeyId:yourSignature
+```
+
+`}`
+
 ```json
-x-log-bodyrawsize: 0 Content-Type: application/json Content-Length: 307 Content-MD5: 7C1D14659C0BBBA7C7BFF9E5A1A46705 x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Host: ali-test-project.cn-chengdu.log.aliyuncs.com Date: Thu, 19 Apr 2018 02:15:41 GMT Authorization: LOG yourAccessKeyId:yourSignature Body : {"externalStoreName": "rds_store",
+Body : {"externalStoreName": "rds_store",
   "storeType": "rds-vpc",
   "parameter": {
                "vpc-id": "vpc-p1aevy8sofi8mh1q****",
@@ -41827,7 +47415,7 @@ x-log-bodyrawsize: 0 Content-Type: application/json Content-Length: 307 Content-
                "region": "cn-qingdao"
 ```
 
-Sample success responses
+`}` `}` Sample success responses
 
 ```
 HTTP/1.1 200 OK Header
@@ -41838,6 +47426,8 @@ HTTP/1.1 200 OK Header
 ```
 date: Mon, 09 Nov 2015 07:45:30 GMT connection: close x-log-requestid: 56404F1A99248CA26C002180 content-length: 0 server: nginx/1.6.1
 ```
+
+`}`
 
 **Error codes**
 
@@ -41912,7 +47502,7 @@ T(*) as pv group by time",
   "displayName" : "displayname"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -42030,6 +47620,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "topic" : ""
 ```
 
+`}`
+
 ##### 3.3.12.4 ListSavedSearch
 
 Queries a list of saved searches.
@@ -42105,6 +47697,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   } ]
 ```
 
+`}`
+
 ##### 3.3.12.5 UpdateSavedSearch
 
 Updates a saved search.
@@ -42164,7 +47758,7 @@ T(*) as pv group by time",
   "displayName" : "displayname"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -42201,7 +47795,7 @@ You can attach the following policies to a RAM user. Then, the RAM user has the 
         "Effect": "Allow"
 ```
 
-`]` AliyunLogReadOnlyAccess If you attach this policy to a RAM user, the RAM user has the read-only permissions to access Log Service resources of your Apsara Stack tenant account. The following example shows the policy: `{`
+`}` `]` `}` AliyunLogReadOnlyAccess If you attach this policy to a RAM user, the RAM user has the read-only permissions to access Log Service resources of your Apsara Stack tenant account. The following example shows the policy: `{`
 
 ```json
     "Version": "1",
@@ -42223,7 +47817,7 @@ You can attach the following policies to a RAM user. Then, the RAM user has the 
         "Effect": "Allow"
 ```
 
-`]` Upload data to a specified Logstore If you attach this policy to a RAM user, the RAM user has the permissions to upload data to a specified Logstore by calling API operations or using SDKs. The following example shows the policy: `{`
+`}` `]` `}` Upload data to a specified Logstore If you attach this policy to a RAM user, the RAM user has the permissions to upload data to a specified Logstore by calling API operations or using SDKs. The following example shows the policy: `{`
 
 ```json
     "Version": "1",
@@ -42245,7 +47839,7 @@ You can attach the following policies to a RAM user. Then, the RAM user has the 
         "Effect": "Allow"
 ```
 
-`]` Query data of a specified Logstore in the console If you attach this policy to a RAM user, the RAM user has the read-only permissions to query the data of a specified Logstore in the console. The permissions allow the RAM user to query logs, pull logs, and view the Logstore list. The following example shows the policy: `{`
+`}` `]` `}` Query data of a specified Logstore in the console If you attach this policy to a RAM user, the RAM user has the read-only permissions to query the data of a specified Logstore in the console. The permissions allow the RAM user to query logs, pull logs, and view the Logstore list. The following example shows the policy: `{`
 
 ```json
     "Version": "1",
@@ -42268,7 +47862,7 @@ You can attach the following policies to a RAM user. Then, the RAM user has the 
         "Effect": "Allow"
 ```
 
-`]` For more information, see the following topics:
+`}` `]` `}` For more information, see the following topics:
 
 ##### 3.3.13.2 Resource list
 
@@ -42597,6 +48191,8 @@ encrypt_conf = {
 gcm or aes_gcm.
 ```
 
+`}`
+
 **Bring Your Own Key (BYOK) encryption**
 
 1. In the KMS console, create a BYOK.
@@ -42630,6 +48226,8 @@ encrypt_conf = {
             "arn": "", # The ARN of the RAM role that is obtained in Step 3.
             "region_id" : ""# The ID of the region where the CMK resides.
 ```
+
+`}` `}`
 
 ##### 3.3.14.2 Data model
 
@@ -42732,7 +48330,17 @@ message Log
 ```
         required string Key = 1;
         required string Value = 2;
+```
+
+`}`
+
+```
     repeated Content Contents= 2;
+```
+
+`}`
+
+```
 message LogGroup
 ```
 
@@ -42743,6 +48351,11 @@ message LogGroup
     optional string Reserved = 2; // Reserved fields
     optional string Topic = 3;
     optional string Source = 4;
+```
+
+`}`
+
+```
 message LogGroupList
 ```
 
@@ -42751,6 +48364,8 @@ message LogGroupList
 ```
     repeated LogGroup logGroupList = 1;
 ```
+
+`}`
 
 > **Note:** When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs.
 
@@ -42774,7 +48389,17 @@ message Log
 ```
         required string key = 1;
         required string value = 2;
+```
+
+`}`
+
+```
     repeated Content contents= 2;
+```
+
+`}`
+
+```
 message LogGroup
 ```
 
@@ -42786,6 +48411,11 @@ message LogGroup
 field.
     optional string topic = 3;
     optional string source = 4;
+```
+
+`}`
+
+```
 message LogGroupList
 ```
 
@@ -42794,6 +48424,8 @@ message LogGroupList
 ```
     repeated LogGroup logGroupList = 1;
 ```
+
+`}`
 
 > **Note:** When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs.
 > For more information about the Protocol Buffer format, visit GitHub.
@@ -42871,7 +48503,7 @@ You can create up to 100 Logtail configurations for a project. The name of a Log
     "lastModifyTime": 1400123456
 ```
 
-The following table describes the configuration parameters. Table 1. Configuration parameters
+`}` The following table describes the configuration parameters. Table 1. Configuration parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -42932,7 +48564,7 @@ After a machine with Logtail is started, the machine is automatically associated
     "lastHeartbeatTime”:1397781420
 ```
 
-The following table describes the machine attribute parameters. Table 1. Parameters
+`}` The following table describes the machine attribute parameters. Table 1. Parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -42974,7 +48606,7 @@ The machinegroup parameter indicates the machine group that belongs to the curre
     "lastModifyTime" : 1431705075
 ```
 
-The following table lists the parameters of a machine group. Table 2. Machine group parameters
+`}` The following table lists the parameters of a machine group. Table 2. Machine group parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -43592,6 +49224,8 @@ Output `{`
   "status": "Normal"
 ```
 
+`}`
+
 **Error codes**
 
 If an error message is returned, fix the error based on the error code description of the related API operation. For more information, see GetProject.
@@ -43651,11 +49285,13 @@ Output `{`
       "status": "Disable"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "total": 2
 ```
+
+`}`
 
 **Error codes**
 
@@ -43855,13 +49491,15 @@ Output `{`
       "used": 0
 ```
 
-`},`
+`}` `},`
 
 ```json
   "shardCount": 2,
   "telemetryType": "",
   "ttl": 30
 ```
+
+`}`
 
 **Error codes**
 
@@ -43922,6 +49560,8 @@ Output `{`
 ```json
   "total": 8
 ```
+
+`}`
 
 **Error codes**
 
@@ -44025,7 +49665,7 @@ Output `[` `{`
     "status": "readwrite"
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -44200,7 +49840,7 @@ group_name2. Example: `{`
     "groupTopic": "topic x"
 ```
 
-The following table describes the parameters.
+`}` `}` The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -44251,7 +49891,7 @@ Output: `{`
     "machine2"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -44346,7 +49986,7 @@ Output `{`
     "machine2"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -44399,6 +50039,8 @@ Output `{`
 ```json
   "total": 10
 ```
+
+`}`
 
 **Error codes**
 
@@ -44453,11 +50095,13 @@ Output `{`
       "userdefined-id": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "total": 1
 ```
+
+`}`
 
 **Error codes**
 
@@ -44507,7 +50151,7 @@ group is group_name2. Example: `{`
     "groupTopic": "topic x"
 ```
 
-The following table describes the parameters.
+`}` `}` The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -44555,7 +50199,7 @@ Output: `{`
     "machine2"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -44630,6 +50274,7 @@ configuration to config_name2 in the file. Example: `{`
   "logSample": "xxx 2017-11-11 11:11:11 hello alicloud."
 ```
 
+`}`
 2. Use the default account to create a Logtail configuration named config_name2.
 
 ```
@@ -44874,6 +50519,8 @@ Output `{`
   "outputType": "LogService"
 ```
 
+`}`
+
 **Error codes**
 
 If an error message is returned, fix the error based on the error code description of the related API operation. For more information, see Error codes of GetConfig.
@@ -44925,6 +50572,8 @@ Output `{`
   "count": 1,
   "total": 1
 ```
+
+`}`
 
 **Error codes**
 
@@ -44995,6 +50644,7 @@ configuration is set to config_name2. Example: `{`
   "logSample": "xxx 2017-11-11 11:11:11 hello alicloud."
 ```
 
+`}`
 2. Use the default account to modify a Logtail configuration named config_name2.
 
 ```
@@ -45085,6 +50735,8 @@ Output: `{`
   "outputType": "LogService"
 ```
 
+`}`
+
 **Error codes**
 
 If an error message is returned, fix the error based on the error code description of the related API operation. For more information, see Error codes of UpdateConfig.
@@ -45144,6 +50796,7 @@ Output: `{`
   "total": 4
 ```
 
+`}`
 2. Query the existing machine groups. Command:
 
 ```
@@ -45166,6 +50819,7 @@ Output: `{`
   "total": 3
 ```
 
+`}`
 3. Use the default account to apply a Logtail configuration to a machine group. Example:
 
 ```
@@ -45191,6 +50845,8 @@ Output: `{`
 ```json
   "count": 1
 ```
+
+`}`
 
 **Error codes**
 
@@ -45237,7 +50893,7 @@ Output `{`
     "group_name2"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -45289,6 +50945,8 @@ Output `{`
 ```json
   "count": 2
 ```
+
+`}`
 
 **Error codes**
 
@@ -45520,7 +51178,7 @@ For more information about the global parameters of this command, see Global par
       "doc_value": true
 ```
 
-`},`
+`}` `},`
 
 ```json
   "storage": "pg",
@@ -45719,7 +51377,7 @@ Output: `{`
       "type": "text"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "lastModifyTime": 0,
@@ -45756,6 +51414,8 @@ Output: `{`
   "storage": "pg",
   "ttl": 30
 ```
+
+`}`
 
 **Error codes**
 
@@ -45987,7 +51647,7 @@ Output `{`
       "type": "text"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "lastModifyTime": 0,
@@ -46027,6 +51687,8 @@ Output `{`
   "storage": "pg",
   "ttl": 30
 ```
+
+`}`
 
 **Error codes**
 
@@ -46212,7 +51874,7 @@ For more information about the global parameters of this command, see Global par
       "doc_value": true
 ```
 
-`},`
+`}` `},`
 
 ```json
   "storage": "pg",
@@ -46410,7 +52072,7 @@ Output: `{`
       "type": "text"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "lastModifyTime": 0,
@@ -46447,6 +52109,8 @@ Output: `{`
   "storage": "pg",
   "ttl": 30
 ```
+
+`}`
 
 **Error codes**
 
@@ -46692,7 +52356,7 @@ request_method is PUT and status is 200 within 15 minutes. Example: `{`
 "topic": "", "logstore": "logstore-a", "project": "aliyun-test-project", "toTime": "2023-03-03 14:30:41", "query": "request_method:PUT and status:200", "fromTime": "2023-03-03 14:15:41"
 ```
 
-The following table describes the parameters.
+`}` The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -46757,7 +52421,7 @@ The following result shows the distribution of logs that meet the specified cond
     "to": 1677825041
 ```
 
-`]`
+`}` `]`
 
 **References**
 
@@ -46793,7 +52457,7 @@ query statement that you want to use. Example: `{`
 "topic": "", "logstore": "logstore-a", "project": "aliyun-test-project", "toTime": "2021-05-28 15:33:00", "offset": "0", "query": "*|select status,COUNT(*) as pv group by status order by pv desc limit 3", "line": "2", "fromTime": "2021-05-28 15:18:00", "reverse": "true"
 ```
 
-We recommend that you specify a valid search or query statement that can be used to query data in the Log Service console for the query parameter. For more information, see
+`}` We recommend that you specify a valid search or query statement that can be used to query data in the Log Service console for the query parameter. For more information, see
 **Log search overview** and **Log analysis overview** in the **Query and analysis topic of**
 **Log Service User Guide**.
 2. Use the default account to query logs. Command:
@@ -46829,7 +52493,7 @@ Output: `[` `{`
     "status": "301"
 ```
 
-`]`
+`}` `]`
 
 **References**
 
@@ -46973,7 +52637,7 @@ Output `[` `{`
     "__time__": "1622186400"
 ```
 
-`]`
+`}` `]`
 
 **References**
 
@@ -47096,7 +52760,7 @@ Query output `[` `{`
     "__time__": "1622186400"
 ```
 
-`]` Download example Use the get_log_all command to download logs to your computer.
+`}` `]` Download example Use the get_log_all command to download logs to your computer.
 
 ```
 aliyunlog log get_log_all --project="aliyun-test-project" --logstore="logstore-a" --f rom_time="2022-12-29 15:54:31" --to_time="2022-12-29 16:09:31" -query="status:200|select request_method as method,COUNT(*) as pv group by method orde r by pv" --format-output=json >>download_data.txt
@@ -47147,7 +52811,7 @@ Download description After the command is run, the download_data.txt file is gen
     "pv": "5226"
 ```
 
-`]`
+`}` `]`
 
 **References**
 
@@ -47263,13 +52927,13 @@ Output `{`
       "upstream_response_time": "0.54"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "next_cursor": "MTY3Mzg2Mzc2OTk0MDQyNDc5NA=="
 ```
 
-`{`
+`}` `{`
 
 ```json
   "count": 0,
@@ -47393,11 +53057,13 @@ Output `{`
       "version": "0"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "next_cursor": "MTYxNDc1MDAyNzM3MzIwNTcxNg=="
 ```
+
+`}`
 
 **Error codes**
 
@@ -47467,6 +53133,8 @@ Output `{`
   "total_count": 2
 ```
 
+`}`
+
 ##### 3.4.6.10 Shipping management
 
 ###### 3.4.6.10.1 create_shipper
@@ -47518,12 +53186,13 @@ Example: `{`
       "format": "json"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "targetType": "oss"
 ```
 
+`}`
 2. Use the default account to create a log shipping task. Example:
 
 ```
@@ -47551,7 +53220,7 @@ Output: `{`
   "total": 1
 ```
 
-For more information, see Ship logs to OSS and MaxCompute.
+`}` For more information, see Ship logs to OSS and MaxCompute.
 
 ###### 3.4.6.10.2 delete_shipper
 
@@ -47677,11 +53346,13 @@ Output `{`
       "taskStatus": "success"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "total": 39
 ```
+
+`}`
 
 **Error codes**
 
@@ -47731,6 +53402,8 @@ Output `{`
 ```json
   "total": 1
 ```
+
+`}`
 
 ###### 3.4.6.10.5 retry_shipper_tasks
 
@@ -47826,12 +53499,13 @@ log shipping task. Example: `{`
       "format": "json"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "targetType": "oss"
 ```
 
+`}`
 2. Use the default account to update the log shipping task. Example:
 
 ```
@@ -47857,6 +53531,8 @@ Output: `{`
 ```json
   "total": 1
 ```
+
+`}`
 
 ##### 3.4.6.11 Consumer group management
 
@@ -47980,7 +53656,7 @@ Output `[` `{`
     "updateTime": 1622636965080584
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -48025,7 +53701,7 @@ Output `[` `{`
     "timeout": 360
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -48179,7 +53855,7 @@ i. Create a file named external_store_config.json to specify the OSS bucket that
             {"name": "age", "type" : "bigint"}]
 ```
 
-The following figure shows an example of a CSV file. For more information, see **Associate Log Service with external data sources** in **Log**
+`}` `}` The following figure shows an example of a CSV file. For more information, see **Associate Log Service with external data sources** in **Log**
 **Service User Guide**.
 ii. Use the default account to associate Log Service with the oss-store-demo external store as an external data source. Command
 
@@ -48234,7 +53910,7 @@ Output If the command is successfully run, no responses are returned. You can ru
                 "type": "bigint"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "endpoint": "oss-cn-hangzhou.aliyuncs.com",
@@ -48248,7 +53924,7 @@ Output If the command is successfully run, no responses are returned. You can ru
     "storeType": "oss"
 ```
 
-After the external data source is associated, you can execute the *|select * from `oss-store-demo` query statement in the Log Service console to query data in the data source.
+`}` After the external data source is associated, you can execute the *|select * from `oss-store-demo` query statement in the Log Service console to query data in the data source.
 
 **Associate Log Service with a database that is created on an ApsaraDB RDS for**
 
@@ -48271,7 +53947,7 @@ i. Create a file named rds-mysql-external-store.json to specify the database tha
         "table": "chiji_user"
 ```
 
-The following figure shows an example of a table. For more information, see **Associate Log Service with external data sources** in **Log**
+`}` `}` The following figure shows an example of a table. For more information, see **Associate Log Service with external data sources** in **Log**
 **Service User Guide**.
 ii. Use the default account to associate Log Service with the rds-vpc-mysql-store external store as an external data source. Command
 
@@ -48307,7 +53983,7 @@ Output If the command is successfully run, no responses are returned. You can ru
     "storeType": "rds-vpc"
 ```
 
-After the external data source is associated, you can execute the *|select * from `rds-vpc-mysql-store` query statement in the Log Service console to query data in the data source.
+`}` After the external data source is associated, you can execute the *|select * from `rds-vpc-mysql-store` query statement in the Log Service console to query data in the data source.
 
 **Associate Log Service with a local CSV file as an external data source**
 
@@ -48328,7 +54004,7 @@ i. Create a file named external_store_config_local.json to specify the CSV file 
         "objects": "./user2.csv"
 ```
 
-The following figure shows an example of a CSV file. For more information, see **Associate Log Service with external data sources** in **Log**
+`}` `}` The following figure shows an example of a CSV file. For more information, see **Associate Log Service with external data sources** in **Log**
 **Service User Guide**.
 ii. Use the default account to associate Log Service with the doctest-local-csvfile external store as an external data source. Command
 
@@ -48388,7 +54064,7 @@ Output If the command is successfully run, no responses are returned. You can ru
         "type": "bigint"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "endpoint": "",
@@ -48402,7 +54078,7 @@ Output If the command is successfully run, no responses are returned. You can ru
   "storeType": "csv"
 ```
 
-After the external data source is associated, you can execute the *|select * from `doctest-local-csvfile` query statement in the Log Service console to query data in the data source.
+`}` After the external data source is associated, you can execute the *|select * from `doctest-local-csvfile` query statement in the Log Service console to query data in the data source.
 
 **References**
 
@@ -48471,6 +54147,8 @@ command to query a list of external data sources that are associated with Log Se
 ```json
   "total": 4
 ```
+
+`}`
 
 **References**
 
@@ -48563,7 +54241,7 @@ Output `{`
         "type": "bigint"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "endpoint": "oss-cn-hangzhou.aliyuncs.com",
@@ -48576,6 +54254,8 @@ Output `{`
 ```json
   "storeType": "oss"
 ```
+
+`}`
 
 **References**
 
@@ -48627,6 +54307,8 @@ Output `{`
   "total": 4
 ```
 
+`}`
+
 **References**
 
 If the response that is returned by Log Service contains error information after you call an API operation, the call fails. You can handle errors based on the error codes that are returned when API calls fail. For more information, see Common error codes. For more information about the API operation that corresponds to this command, see ListExternalStore. For more information, see **Associate Log Service with external data sources** in **Log**
@@ -48671,7 +54353,7 @@ For more information about the global parameters of this command, see Global par
 "varchar"}, {"name": "gender", "type": "varchar"}, {"name": "province", "type": "varc har"}]
 ```
 
-The following figure shows an example of a CSV file. For more information, see **Associate Log Service with external data sources** in **Log**
+`}` `}` The following figure shows an example of a CSV file. For more information, see **Associate Log Service with external data sources** in **Log**
 **Service User Guide**.
 2. Use the default account to modify the configuration of the oss-store-demo external data
 source. Command
@@ -48720,7 +54402,7 @@ Output If the command is successfully run, no responses are returned. You can ru
                 "type": "varchar"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "endpoint": "oss-cn-hangzhou.aliyuncs.com",
@@ -48734,7 +54416,7 @@ Output If the command is successfully run, no responses are returned. You can ru
     "storeType": "oss"
 ```
 
-After the external data source is modified, you can execute the *|select * from oss- `store-demo` query statement in the Log Service console to query data in the data source.
+`}` After the external data source is modified, you can execute the *|select * from oss- `store-demo` query statement in the Log Service console to query data in the data source.
 
 **References**
 
@@ -48881,7 +54563,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace this variable with your RAM role.
 > <sts.aliyuns.com>: Replace this variable with the STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize the instance.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with your
@@ -48901,6 +54583,11 @@ region ID, AccessKey ID, and AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the actual endpoint of STS. The endpoint of STS i
@@ -48925,9 +54612,15 @@ eceding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a service.
 
 > **Note:** You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code.
@@ -48982,7 +54675,7 @@ me of the API operation in API references.
             System.out.println(e.getErrMsg());
 ```
 
-The following sample code provides an example on how to call the ListInstance operation to query instances:
+`}` `}` `}` The following sample code provides an example on how to call the ListInstance operation to query instances:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class ListInstances {
@@ -49032,6 +54725,8 @@ me of the API operation in API references.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 ##### 4.2.1.3 Obtain the values of common request headers
 
@@ -49190,6 +54885,11 @@ The following sample code provides an example on how to use Apsara Stack SDK for
 ```java
 package com.aliyuncs.ots; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.ots.model.v20160620.GetInstanceRequest; import com.aliyuncs.ots.model.v20160620.GetInstanceResponse; import com.aliyuncs.ots.model.v20160620.InsertInstanceRequest; import com.aliyuncs.ots.model.v20160620.ListClusterTypeRequest; import com.aliyuncs.ots.model.v20160620.ListClusterTypeResponse; import com.aliyuncs.ots.model.v20160620.ListInstanceRequest; import com.aliyuncs.ots.model.v20160620.ListInstanceResponse; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.profile.IClientProfile; import java.util.Iterator; public class Test {
     public Test() {
+```
+
+`}`
+
+```xml
     public static void main(String[] args) throws Exception {
         // Specify the region ID, service name, and endpoint of the cloud service in
 sequence. In this example, the service name is ots. You must set the endpoint to the value of the ocm.pop_endpoint parameter.
@@ -49209,12 +54909,17 @@ xy address must be the same as the specified protocol.
 //clientdoActionWithProxy(ProtocolTypeHTTPS"https:\\ip:port""");
 ```
 
-```java
+```
         //client.doActionWithProxy(ProtocolType.HTTPS,"https:\\ip:port","");
         insertInstance(client);
         listInstance(client);
         listClusterType(client);
         getInstance(client);
+```
+
+`}`
+
+```java
     private static void getInstance(DefaultAcsClient client) throws Exception {
         GetInstanceRequest request = new GetInstanceRequest();
         // Specify the name of the instance.
@@ -49227,6 +54932,11 @@ xy address must be the same as the specified protocol.
         System.out.println(response.getInstanceInfo().getReadCapacity());
         System.out.println(response.getInstanceInfo().getQuota().getEntityQuota());
         System.out.println(response.getInstanceInfo().getCreateTime());
+```
+
+`}`
+
+```java
     private static void listClusterType(DefaultAcsClient client) throws Exception {
         ListClusterTypeRequest request = new ListClusterTypeRequest();
         ListClusterTypeResponse response =
@@ -49235,6 +54945,11 @@ xy address must be the same as the specified protocol.
         while(var3.hasNext()) {
             String info = (String)var3.next();
             System.out.println(info);
+```
+
+`}` `}`
+
+```java
     private static void insertInstance(DefaultAcsClient client) throws Exception {
         InsertInstanceRequest request = new InsertInstanceRequest();
         // Specify the type of the cluster.
@@ -49242,6 +54957,11 @@ xy address must be the same as the specified protocol.
         // Specify the name of the instance.
         request.setInstanceName("myinstance");
         client.getAcsResponse(request);
+```
+
+`}`
+
+```java
     private static void listInstance(DefaultAcsClient client) throws Exception {
         ListInstanceRequest lir = new ListInstanceRequest();
         ListInstanceResponse response =
@@ -49281,6 +55001,11 @@ roxy address must be the same as the specified protocol.
       // Specify the HTTPS proxy address.
       //config.httpsProxy = "https://ip:port";
         return new com.aliyun.tablestore20201209.Client(config);
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         com.aliyun.tablestore20201209.Client client =
 Tablestoretest.createClient("w1dK4MflLLk8IJwT", "QHXXjCQVctGtbDoqmPTI5kHFTgF0WH");
@@ -49288,6 +55013,11 @@ Tablestoretest.createClient("w1dK4MflLLk8IJwT", "QHXXjCQVctGtbDoqmPTI5kHFTgF0WH"
         updateInstances(client);
         getInstance(client);
         listInstances(client);
+```
+
+`}`
+
+```
     public static void createInstance(com.aliyun.tablestore20201209.Client client) th
 rows Exception {
       CreateInstanceRequest request = new CreateInstanceRequest();
@@ -49300,7 +55030,7 @@ rows Exception {
 clientcreateInstance(request);
 ```
 
-```java
+```
       client.createInstance(request);
     public static void updateInstances(com.aliyun.tablestore20201209.Client client) t
 hrows Exception {
@@ -49314,6 +55044,11 @@ hrows Exception {
       // Specify the network type of the instance.
       request.setNetwork("VPC");
       client.updateInstance(request);
+```
+
+`}`
+
+```java
     public static void listInstances(com.aliyun.tablestore20201209.Client client) thr
 ows Exception {
         ListInstancesRequest request = new ListInstancesRequest();
@@ -49323,7 +55058,17 @@ ows Exception {
                     = response.body.getInstances().get(i);
             System.out.println(instance.instanceName);
             System.out.println(instance.regionId);
+```
+
+`}`
+
+```java
         System.out.println(response.getBody().getTotalCount());
+```
+
+`}`
+
+```java
     public static void getInstance(com.aliyun.tablestore20201209.Client client) throw
 s Exception {
         GetInstanceRequest request= new GetInstanceRequest();
@@ -49339,6 +55084,8 @@ ers of the API operation.
         System.out.println(response.getBody().getInstanceSpecification());
         System.out.println(response.getBody().getCreateTime());
 ```
+
+`}` `}`
 
 ### 4.3 Sample calls to data operations
 
@@ -49489,7 +55236,7 @@ tableOptions);
         client.createTable(request);
 ```
 
-Create a data table and an index table whose index type is global secondary index
+`}` Create a data table and an index table whose index type is global secondary index
 
 ```java
 private static void createTable(SyncClient client) {
@@ -49519,7 +55266,7 @@ dexMetas); // Create the index table when you create the data table.
     client.createTable(request);
 ```
 
-Create a data table and an index table whose index type is local secondary index
+`}` Create a data table and an index table whose index type is local secondary index
 
 ```java
 private static void createTable(SyncClient client) {
@@ -49555,6 +55302,8 @@ dexMetas); // Create the index table when you create the data table.
     client.createTable(request);
 ```
 
+`}`
+
 **ListTable**
 
 You can call this operation to query the names of all tables that are created in the current instance. The following sample code provides an example on how to query the names of all tables in an instance:
@@ -49566,6 +55315,8 @@ private static void listTable(SyncClient client) {
     for (String tableName : response.getTableNames()) {
         System.out.println(tableName);
 ```
+
+`}` `}`
 
 **UpdateTable**
 
@@ -49581,6 +55332,8 @@ private static void updateTable(SyncClient client) {
     client.updateTable(request);
 ```
 
+`}`
+
 **DescribeTable**
 
 You can call this operation to query the structure information, configurations, and reserved read/write throughput settings of a table. For more information about the TableMeta and TableOptions parameters, see the "CreateTable" section of this topic. Besides the reserved read/write throughput, the ReservedThroughputDetails parameter describes the most recent time when the throughput was increased or decreased. The following sample code provides an example on how to query the description of a table:
@@ -49594,6 +55347,11 @@ private static void describeTable(SyncClient client) {
     System.out.println("The primary key of the table:");
     for (PrimaryKeySchema primaryKeySchema : tableMeta.getPrimaryKeyList()) {
         System.out.println(primaryKeySchema);
+```
+
+`}`
+
+```java
     TableOptions tableOptions = response.getTableOptions();
     System.out.println("The TTL of the table:" + tableOptions.getTimeToLive());
     System.out.println("The maximum number of data versions retained for each attribute
@@ -49606,6 +55364,8 @@ response.getReservedThroughputDetails();
             + reservedThroughputDetails.getCapacityUnit().getWriteCapacityUnit());
 ```
 
+`}`
+
 **DeleteTable**
 
 You can call this operation to delete a table from the current instance. The following sample code provides an example on how to delete a table from the current instance:
@@ -49615,6 +55375,8 @@ private static void deleteTable(SyncClient client) {
     DeleteTableRequest request = new DeleteTableRequest(TABLE_NAME);
     client.deleteTable(request);
 ```
+
+`}`
 
 ###### 4.3.1.4.2 Basic operations on data
 
@@ -49656,10 +55418,15 @@ PrimaryKeyValue.fromString(pkValue));
     // Add attribute columns.
     for (int i = 0; i < 10; i++) {
         rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-Example 2 The following sample code provides an example on how to write a row that contains 10 attribute columns, each of which stores data of three versions. In this example, the data version numbers (timestamps) are specified.
+`}` Example 2 The following sample code provides an example on how to write a row that contains 10 attribute columns, each of which stores data of three versions. In this example, the data version numbers (timestamps) are specified.
 
 ```java
 private static void putRow(SyncClient client, String pkValue) {
@@ -49677,10 +55444,15 @@ PrimaryKeyValue.fromString(pkValue));
         for (int j = 0; j < 3; j++) {
             rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(j), ts
 + j));
+```
+
+`}` `}`
+
+```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-Example 3 The following sample code provides an example on how to insert a row if the row does not exist. The row contains 10 attribute columns, each of which stores data of three versions. In this example, the data version numbers (timestamps) are specified.
+`}` Example 3 The following sample code provides an example on how to insert a row if the row does not exist. The row contains 10 attribute columns, each of which stores data of three versions. In this example, the data version numbers (timestamps) are specified.
 
 ```java
 private static void putRow(SyncClient client, String pkValue) {
@@ -49702,10 +55474,15 @@ Condition(RowExistenceExpectation.EXPECT_NOT_EXIST));
         for (int j = 0; j < 3; j++) {
             rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(j), ts
 + j));
+```
+
+`}` `}`
+
+```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-Example 4 The following sample code provides an example on how to write a row if the row exists and the value of the Col0 column is greater than 100. The row contains 10 attribute columns, each of which stores data of three versions. In this example, the data version numbers (timestamps) are specified.
+`}` Example 4 The following sample code provides an example on how to write a row if the row exists and the value of the Col0 column is greater than 100. The row contains 10 attribute columns, each of which stores data of three versions. In this example, the data version numbers (timestamps) are specified.
 
 ```java
 private static void putRow(SyncClient client, String pkValue) {
@@ -49730,8 +55507,15 @@ ong(100)));
         for (int j = 0; j < 3; j++) {
             rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(j), ts
 + j));
+```
+
+`}` `}`
+
+```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
+
+`}`
 
 **Update a single row of data**
 
@@ -49765,6 +55549,11 @@ PrimaryKeyValue.fromString(pkValue));
     // Update columns.
     for (int i = 0; i < 10; i++) {
         rowUpdateChange.put(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     // Delete the specified data version of a column.
     rowUpdateChange.deleteColumn("Col10", 1465373223000L);
     // Delete a column.
@@ -49772,7 +55561,7 @@ PrimaryKeyValue.fromString(pkValue));
     client.updateRow(new UpdateRowRequest(rowUpdateChange));
 ```
 
-Example 2 The following sample code provides an example on how to specify the conditions for the UpdateRow operation:
+`}` Example 2 The following sample code provides an example on how to specify the conditions for the UpdateRow operation:
 
 ```java
 private static void updateRow(SyncClient client, String pkValue) {
@@ -49794,12 +55583,19 @@ ong(100)));
     // Update columns.
     for (int i = 0; i < 10; i++) {
         rowUpdateChange.put(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     // Delete the specified data version of a column.
     rowUpdateChange.deleteColumn("Col10", 1465373223000L);
     // Delete a column.
     rowUpdateChange.deleteColumns("Col11");
     client.updateRow(new UpdateRowRequest(rowUpdateChange));
 ```
+
+`}`
 
 **Write multiple rows of data in a batch**
 
@@ -49816,6 +55612,11 @@ PrimaryKeyValue.fromString("pk1"));
     // Add columns.
     for (int i = 0; i < 10; i++) {
         rowPutChange1.addColumn(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     // Add rowPutChange1 to the code of the batch operation.
     batchWriteRowRequest.addRowChange(rowPutChange1);
     // Construct rowPutChange2.
@@ -49826,6 +55627,11 @@ PrimaryKeyValue.fromString("pk2"));
     // Add columns.
     for (int i = 0; i < 10; i++) {
         rowPutChange2.addColumn(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     // Add rowPutChange2 to the code of the batch operation.
     batchWriteRowRequest.addRowChange(rowPutChange2);
     // Construct rowUpdateChange.
@@ -49837,6 +55643,11 @@ pk3Builder.build());
     // Add columns.
     for (int i = 0; i < 10; i++) {
         rowUpdateChange.put(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     // Delete a column.
     rowUpdateChange.deleteColumns("Col10");
     // Add rowUpdateChange to the code of the batch operation.
@@ -49862,6 +55673,11 @@ response.isAllSucceed());
             System.out.println("Failed rows:" +
 batchWriteRowRequest.getRowChange(rowResult.getTableName(), rowResult.getIndex()).getPrimaryKey());
             System.out.println("Cause of failures:" + rowResult.getError());
+```
+
+`}`
+
+```
         /**
          * You can use the createRequestForRetry method to construct another request
 to retry the batch operation on failed rows. In this example, only the retry request is constructed.
@@ -49876,7 +55692,7 @@ can use this policy to retry the batch operation on failed rows. After you confi
 batchWriteRowRequest.createRequestForRetry(response.getFailedRows());
 ```
 
-For more information about the detailed sample code, visit BatchWriteRow on GitHub.
+`}` `}` For more information about the detailed sample code, visit BatchWriteRow on GitHub.
 
 ###### 4.3.1.4.2.2 Read data
 
@@ -49930,7 +55746,7 @@ ey);
     System.out.println(row);
 ```
 
-Example 2 The following sample code provides an example on how to read a row of data when a filter is used:
+`}` Example 2 The following sample code provides an example on how to read a row of data when a filter is used:
 
 ```java
 private static void getRow(SyncClient client, String pkValue) {
@@ -49958,7 +55774,7 @@ SingleColumnValueFilter("Col0",
     System.out.println(row);
 ```
 
-Example 3 The following sample code provides an example on how to read the data of the Col1 column in a row when a regular expression is used to filter data in the column.
+`}` Example 3 The following sample code provides an example on how to read the data of the Col1 column in a row when a regular expression is used to filter data in the column.
 
 ```java
 private static void getRow(SyncClient client, String pkValue) {
@@ -49984,6 +55800,8 @@ ColumnValue.fromLong(100));
     System.out.println(row);
 ```
 
+`}`
+
 **Read multiple rows of data in a batch**
 
 You can call the BatchGetRow operation to read multiple rows of data from one or more tables in a batch. The BatchGetRow operation consists of multiple GetRow operations. The process of constructing a suboperation is the same as the process of calling the GetRow operation. The BatchGetRow operation supports filters. The BatchGetRow operation uses the same parameter configurations for all rows. For example, if the ColumnsToGet parameter is set to [colA], only the value of the colA column is read from all rows. If you call the BatchGetRow operation, each GetRow operation is separately performed and the response to each GetRow operation is separately returned. When you call the BatchGetRow operation to read multiple rows at a time, some rows may fail to be read. If this happens, Tablestore does not return exceptions, but returns BatchGetRowResponse in which error messages of the failed rows are included. Therefore, when you call the BatchGetRow operation, you must check the return values. You can use the isAllSucceed method of BatchGetRowResponse to check whether all rows are read or use the getFailedRows method of BatchGetRowResponse to obtain the information about failed rows. The following sample code provides an example on how to specify the version conditions, columns to read, and filters to read 10 rows of data:
@@ -50000,6 +55818,11 @@ PrimaryKeyBuilder.createPrimaryKeyBuilder();
 PrimaryKeyValue.fromString("pk" + i));
         PrimaryKey primaryKey = primaryKeyBuilder.build();
         multiRowQueryCriteria.addRow(primaryKey);
+```
+
+`}`
+
+```java
     // Add conditions.
     multiRowQueryCriteria.setMaxVersions(1);
     multiRowQueryCriteria.addColumnsToGet("Col0");
@@ -50022,6 +55845,11 @@ batchGetRowResponse.getFailedRows()) {
             System.out.println("Failed rows:" +
 batchGetRowRequest.getPrimaryKey(rowResult.getTableName(), rowResult.getIndex()));
             System.out.println("Cause of failures:" + rowResult.getError());
+```
+
+`}`
+
+```
         /**
          * You can use the createRequestForRetry method to construct another request to
 retry the operations on failed rows. In this example, only the retry request is constru cted.
@@ -50089,6 +55917,11 @@ PrimaryKeyValue.fromString(endPkValue));
 GetRangeRequest(rangeRowQueryCriteria));
         for (Row row : getRangeResponse.getRows()) {
             System.out.println(row);
+```
+
+`}`
+
+```
         // If the value of the nextStartPrimaryKey parameter is not null, continue to
 read data.
         if (getRangeResponse.getNextStartPrimaryKey() != null) {
@@ -50097,7 +55930,7 @@ rangeRowQueryCriteria.setInclusiveStartPrimaryKey(getRangeResponse.getNextStartP
             break;
 ```
 
-Example 2 The following sample code provides an example on how to read data in the forward direction within the range determined by the value of the first primary key column. The start value of the second primary key column is INF_MIN. The end value of the second primary key column is INF_MAX. If the value of the nextStartPrimaryKey parameter is null in the response, all data in the specified range is read.
+`}` `}` `}` Example 2 The following sample code provides an example on how to read data in the forward direction within the range determined by the value of the first primary key column. The start value of the second primary key column is INF_MIN. The end value of the second primary key column is INF_MAX. If the value of the nextStartPrimaryKey parameter is null in the response, all data in the specified range is read.
 
 ```java
 private static void getRange(SyncClient client, String startPkValue, String endPkValu e) {
@@ -50126,6 +55959,11 @@ PrimaryKeyValue.INF_MAX); // Set the value of the second primary key column to a
 GetRangeRequest(rangeRowQueryCriteria));
         for (Row row : getRangeResponse.getRows()) {
             System.out.println(row);
+```
+
+`}`
+
+```
         // If the value of the nextStartPrimaryKey parameter is not null, continue to
 read data.
         if (getRangeResponse.getNextStartPrimaryKey() != null) {
@@ -50134,7 +55972,7 @@ rangeRowQueryCriteria.setInclusiveStartPrimaryKey(getRangeResponse.getNextStartP
             break;
 ```
 
-Example 3 The following sample code provides an example on how to read data whose primary key values are in the range of `["pk:2020-01-01.log", "pk:2021-01-01.log")` from the Col1 column and use a regular expression to filter data in the Col1 column.
+`}` `}` `}` Example 3 The following sample code provides an example on how to read data whose primary key values are in the range of `["pk:2020-01-01.log", "pk:2021-01-01.log")` from the Col1 column and use a regular expression to filter data in the Col1 column.
 
 ```java
 private static void getRange(SyncClient client) {
@@ -50168,13 +56006,18 @@ regexRule,SingleColumnValueRegexFilter.CompareOperator.GREATER_THAN,ColumnValue.
         for (Row row : resp.getRows()) {
             // do something
             System.out.println(row);
+```
+
+`}`
+
+```
         if (resp.getNextStartPrimaryKey() != null) {
             criteria.setInclusiveStartPrimaryKey(resp.getNextStartPrimaryKey());
         } else {
             break;
 ```
 
-For detailed sample code, visit GetRange on GitHub.
+`}` `}` `}` For detailed sample code, visit GetRange on GitHub.
 
 **Read data whose primary key values are in the specified range**
 
@@ -50205,7 +56048,7 @@ on:");
         System.out.println(row);
 ```
 
-For more information about the detailed sample code, visit GetRangeByIterator on GitHub.
+`}` `}` For more information about the detailed sample code, visit GetRangeByIterator on GitHub.
 
 ###### 4.3.1.4.2.3 Delete data
 
@@ -50242,7 +56085,7 @@ PrimaryKeyValue.fromString(pkValue));
     client.deleteRow(new DeleteRowRequest(rowDeleteChange));
 ```
 
-Example 2 The following sample code provides an example on how to specify a condition for the DeleteRow operation:
+`}` Example 2 The following sample code provides an example on how to specify a condition for the DeleteRow operation:
 
 ```java
 private static void deleteRow(SyncClient client, String pkValue) {
@@ -50263,6 +56106,8 @@ ong(100)));
     rowDeleteChange.setCondition(condition);
     client.deleteRow(new DeleteRowRequest(rowDeleteChange));
 ```
+
+`}`
 
 **Delete multiple rows of data in a batch**
 
@@ -50326,7 +56171,7 @@ PrimaryKeyType.INTEGER, PrimaryKeyOption.AUTO_INCREMENT));
         client.createTable(request);
 ```
 
-When you write data to a table, you do not need to specify a value for the auto-increment primary key column. Instead, you can set the value in the auto-increment primary key column to AUTO_INCREMENT.
+`}` When you write data to a table, you do not need to specify a value for the auto-increment primary key column. Instead, you can set the value in the auto-increment primary key column to AUTO_INCREMENT.
 
 ```java
     private static void putRow(SyncClient client, String receive_id) {
@@ -50355,11 +56200,18 @@ ColumnValue.fromString(content)));
         Row returnRow = response.getRow();
         if (returnRow != null) {
             System.out.println("PrimaryKey:" + returnRow.getPrimaryKey().toString());
+```
+
+`}`
+
+```java
         // Display the consumed capacity units (CUs).
         CapacityUnit  cu = response.getConsumedCapacity().getCapacityUnit();
         System.out.println("Read CapacityUnit:" + cu.getReadCapacityUnit());
         System.out.println("Write CapacityUnit:" + cu.getWriteCapacityUnit());
 ```
+
+`}`
 
 ###### 4.3.1.4.4 Conditional update
 
@@ -50456,6 +56308,8 @@ SingleColumnValueCondition.CompareOperator.EQUAL, ColumnValue.fromLong(col0Value
          System.out.println(ex.toString());
 ```
 
+`}` `}`
+
 ###### 4.3.1.4.5 Filters
 
 Tablestore filters are used to filter the query results on the server side. The server returns only the rows or columns that match the filter conditions. Filters can be used for GetRow, BatchGetRow, and GetRange operations. Tablestore supports only SingleColumnValueFilter and CompositeColumnValueFilter, which are used to determine whether to filter out a row based on reference column values. SingleColumnValueFilter can be used to determine whether to filter out of a row based on a single reference column value. CompositeColumnValueFilter can be used to determine whether to filter out of a row based on the combination of multiple reference column values. Note that filters are used to filter the read data. Therefore, the reference columns used by SingleColumnValueFilter or CompositeColumnValueFilter must be included in the read data. If the data to read does not contain the reference columns, filters cannot obtain the values in the reference columns.
@@ -50536,7 +56390,7 @@ indexMetas); // Create an index table when you create a data table.
         client.createTable(request);
 ```
 
-Create a global secondary index for an existing data table
+`}` Create a global secondary index for an existing data table
 
 > **Note:** You can set the IncludeBaseData parameter in CreateInexRequest to specify whether the index table includes the existing data in the data table. If the IncludeBaseData parameter in CreateInexRequest is set to true, the index table includes the existing data. If the IncludeBaseData parameter in CreateInexRequest is set to false, the index table excludes the existing data.
 
@@ -50562,6 +56416,8 @@ data of the data table to the index table after the index table is created. Then
     request.setIncludeBaseData(true);
     client.createIndex(request); // Create an index table.
 ```
+
+`}`
 
 **Query data from an index table**
 
@@ -50597,6 +56453,11 @@ PrimaryKeyValue.INF_MAX); // Specify the maximum value for a primary key column.
 GetRangeRequest(rangeRowQueryCriteria));
         for (Row row : getRangeResponse.getRows()) {
             System.out.println(row);
+```
+
+`}`
+
+```
         // If the value of the nextStartPrimaryKey parameter is not null, continue to
 read data.
         if (getRangeResponse.getNextStartPrimaryKey() != null) {
@@ -50605,7 +56466,7 @@ rangeRowQueryCriteria.setInclusiveStartPrimaryKey(getRangeResponse.getNextStartP
             break;
 ```
 
-Query data from the data table when the index table does not contain the attribute columns that you want to return
+`}` `}` `}` Query data from the data table when the index table does not contain the attribute columns that you want to return
 
 ```
 privatestaticvoidscanFromIndex(SyncClientclient){
@@ -50622,6 +56483,11 @@ privatestaticvoidscanFromIndex(SyncClientclient){
 GetRowRequest(criteria));
             Row mainTableRow = getRowResponse.getRow();
             System.out.println(row);
+```
+
+`}`
+
+```
         // If the value of the nextStartPrimaryKey parameter is not null, continue to
 read data.
         if (getRangeResponse.getNextStartPrimaryKey() != null) {
@@ -50629,6 +56495,8 @@ rangeRowQueryCriteria.setInclusiveStartPrimaryKey(getRangeResponse.getNextStartP
         } else {
             break;
 ```
+
+`}` `}` `}`
 
 **Delete a global secondary index**
 
@@ -50645,6 +56513,8 @@ cify the name of the index table that you want to delete and the name of the dat
 ```
     client.deleteIndex(request); // Delete the index table.
 ```
+
+`}`
 
 ###### 4.3.1.4.7 Search index
 
@@ -50699,7 +56569,7 @@ type of the field.
     client.createSearchIndex(request); // Call the client to create the search index.
 ```
 
-Create a search index with indexSort specified
+`}` Create a search index with indexSort specified
 
 ```java
 private static void createSearchIndexWithIndexSort(SyncClient client) {
@@ -50719,7 +56589,7 @@ private static void createSearchIndexWithIndexSort(SyncClient client) {
     client.createSearchIndex(request);
 ```
 
-Create a search index with the TTL specified
+`}` Create a search index with the TTL specified
 
 > **Important:** Make sure that the update operations on the data table are disabled.
 
@@ -50734,6 +56604,8 @@ Create a search index with the TTL specified
     createRequest.setTimeToLiveInDays(days);
     client.createSearchIndex(createRequest);
 ```
+
+`}`
 
 ###### 4.3.1.4.7.2 Specify the TTL of a search index
 
@@ -50761,6 +56633,7 @@ public void disableTableUpdate(SyncClient client) {
     client.updateTable(updateTableRequest);
 ```
 
+`}`
 2. Specify the TTL of a search index.
 After the UpdateRow operation is disabled on a data table, you can specify the TTL of a search index when you create the search index, or change the TTL of an existing search index. Specify the TTL when you create a search index
 
@@ -50776,7 +56649,7 @@ After the UpdateRow operation is disabled on a data table, you can specify the T
     client.createSearchIndex(createRequest);
 ```
 
-Change the TTL of an existing search index
+`}` Change the TTL of an existing search index
 
 ```
 // Use Tablestore SDK for Java V5.12.0 or later. public void updateIndexWithTTL(SyncClient client) {
@@ -50788,6 +56661,7 @@ UpdateSearchIndexRequest(tableName, indexName);
     client.updateSearchIndex(updateSearchIndexRequest);
 ```
 
+`}`
 3. The TTL of a search index is independent of that of the data table for which the search
 index is created. If you want to use the TTL feature for a data table, specify the TTL of the data table.
 
@@ -50800,6 +56674,8 @@ public void updateTableTTL(SyncClient client) {
     updateTableRequest.setTableOptionsForUpdate(options);
     client.updateTable(updateTableRequest);
 ```
+
+`}`
 
 ###### 4.3.1.4.7.3 Query the description of a search index
 
@@ -50831,6 +56707,8 @@ private static DescribeSearchIndexResponse describeSearchIndex(SyncClient client
 a synchronization status of the search index.
     return response;
 ```
+
+`}`
 
 ###### 4.3.1.4.7.4 List search indexes
 
@@ -50880,6 +56758,8 @@ private static void deleteSearchIndex(SyncClient client) {
     request.setIndexName(INDEX_NAME); // Specify the name of the search index.
     client.deleteSearchIndex(request); // Call the client to delete the search Index.
 ```
+
+`}`
 
 ###### 4.3.1.4.7.6 Perform sorting and paging
 
@@ -50987,6 +56867,11 @@ searchQuery);
     SearchResponse resp = client.search(searchRequest);
     if (!resp.isAllSuccess()) {
         throw new RuntimeException("not all success");
+```
+
+`}`
+
+```
     List<Row> rows = resp.getRows();
     while (resp.getNextToken()!=null) { // If nextToken is null in the response, all da
 ta is read.
@@ -50996,7 +56881,7 @@ ta is read.
 
 `{`
 
-```java
+```
             // If you want to persist nextToken or transfer nextToken to the frontend
 page, you can use Base64 to encode nextToken into a string.
             // Tokens are not strings. If you use new String(nextToken) to encode a tok
@@ -51004,17 +56889,34 @@ en into a string, information about the token is lost.
             String tokenAsString = Base64.toBase64String(nextToken);
             // Decode the string into bytes.
             byte[] tokenAsByte = Base64.fromBase64String(tokenAsString);
+```
+
+`}`
+
+```
         // Set the token in this request to the value of nextToken in the previous
 response.
         searchRequest.getSearchQuery().setToken(nextToken);
         resp = client.search(searchRequest);
         if (!resp.isAllSuccess()) {
             throw new RuntimeException("not all success");
+```
+
+`}`
+
+```
         rows.addAll(resp.getRows());
+```
+
+`}`
+
+```java
     System.out.println("RowSize: " + rows.size());
     System.out.println("TotalCount: " + resp.getTotalCount());// Display the total numb
 er of rows that meet the query conditions rather than the number of returned rows.
 ```
+
+`}`
 
 ###### 4.3.1.4.7.7 Perform a match all query
 
@@ -51090,11 +56992,18 @@ s correct. If isAllSuccess is false, Tablestore may fail to query data on all se
 ```java
     if (!resp.isAllSuccess()) {
         System.out.println("NotAllSuccess!");
+```
+
+`}`
+
+```java
     System.out.println("IsAllSuccess: " + resp.isAllSuccess());
     System.out.println("TotalCount: " + resp.getTotalCount()); // Display the total num
 ber of rows that meet the query conditions.
     System.out.println(resp.getRequestId());
 ```
+
+`}`
 
 ###### 4.3.1.4.7.8 Perform a match query
 
@@ -51165,6 +57074,8 @@ umns that you want to return.
 umber of rows that meet the query conditions instead of the number of returned rows.
     System.out.println("Row: " + resp.getRows());
 ```
+
+`}`
 
 ###### 4.3.1.4.7.9 Perform a match phrase query
 
@@ -51292,6 +57203,8 @@ umber of rows that meet the query conditions instead of the number of returned r
     System.out.println("Row: " + resp.getRows());
 ```
 
+`}`
+
 ###### 4.3.1.4.7.11 Perform a terms query
 
 A terms query is similar to a term query except that a terms query supports multiple terms. A row of data is returned if at least one of the keywords matches the value of the specified column. Terms queries can be used in the same manner as the IN operator in SQL statements.
@@ -51352,6 +57265,8 @@ umber of rows that meet the query conditions instead of the number of returned r
     System.out.println("Row: " + resp.getRows());
 ```
 
+`}`
+
 ###### 4.3.1.4.7.12 Perform a prefix query
 
 You can perform a prefix query to query the data whose prefix matches the specified prefix. If the column used to match the query conditions is of the TEXT type, the value of the column is tokenized. A row meets the query conditions when the tokenized value of the specified column contains at least one term that contains the specified prefix.
@@ -51409,6 +57324,8 @@ umns that you want to return.
 umber of rows that meet the query conditions instead of the number of returned rows.
     System.out.println("Row: " + resp.getRows());
 ```
+
+`}`
 
 ###### 4.3.1.4.7.13 Perform a range query
 
@@ -51480,6 +57397,8 @@ umber of rows that meet the query conditions instead of the number of returned r
     System.out.println("Row: " + resp.getRows());
 ```
 
+`}`
+
 ###### 4.3.1.4.7.14 Perform a wildcard query
 
 When you perform a wildcard query, you can use the asterisk (*) and question mark (?) wildcard characters in the query to search for data. The asterisk (*) matches a string of any length at, before, or after a search term. The question mark (?) matches a single character in a specific position. The string to match can start with an asterisk (*) or a question mark (?). For example, if you search for the "table*e" string, "tablestore" can be matched. The `*word*` string is equivalent to the WHERE field_a LIKE '%word%' clause in an SQL statement. If you want to search for the *word* string, you can perform a fuzzy query that provides higher performance than a wildcard query. The query performance of a fuzzy query is not compromised as the data volume increases.
@@ -51540,6 +57459,8 @@ umns that you want to return.
 umber of rows that meet the query conditions instead of the number of returned rows.
     System.out.println("Row: " + resp.getRows());
 ```
+
+`}`
 
 ###### 4.3.1.4.7.15 Perform a Boolean query
 
@@ -51775,7 +57696,7 @@ otal number of rows that meet the query conditions instead of the number of retu
         System.out.println("Row: " + resp.getRows());
 ```
 
-Example 4 The following sample code provides an example on how to perform a Boolean query that consists of Boolean subqueries. In this example, the rows that meet the following conditions of Boolean subqueries are returned: `(col2<4 or col3<5) or (col2 = 4 and (col3 = 5 or` `col3 =6))` . The Boolean subqueries are connected by the AND or OR operator.
+`}` `}` Example 4 The following sample code provides an example on how to perform a Boolean query that consists of Boolean subqueries. In this example, the rows that meet the following conditions of Boolean subqueries are returned: `(col2<4 or col3<5) or (col2 = 4 and (col3 = 5 or` `col3 =6))` . The Boolean subqueries are connected by the AND or OR operator.
 
 ```
 /**
@@ -51853,6 +57774,8 @@ otal number of rows that meet the query conditions instead of the number of retu
         System.out.println(response.getRows());
 ```
 
+`}`
+
 ###### 4.3.1.4.7.16 Perform a nested query
 
 This topic describes how to perform nested queries to query the data in the child rows of nested fields. You must use the NestedQuery operation to wrap a nested field before you can use the nested field to query data. When you call the NestedQuery operation, you must specify a subquery of any type and the path of the nested field.
@@ -51915,7 +57838,7 @@ number of rows that meet the query conditions instead of the number of returned 
     System.out.println("Row: " + resp.getRows());
 ```
 
-Example 2 The following sample code provides an example on how to query the rows in which the value of the col_nested.nested_2.nested_2_2 column is tablestore. In this example, the nested field named col_nested includes two subcolumns: nested_1 and nested_2. The nested_2 subcolumn includes two columns: nested_2_1 and nested_2_2.
+`}` Example 2 The following sample code provides an example on how to query the rows in which the value of the col_nested.nested_2.nested_2_2 column is tablestore. In this example, the nested field named col_nested includes two subcolumns: nested_1 and nested_2. The nested_2 subcolumn includes two columns: nested_2_1 and nested_2_2.
 
 ```java
 private static void nestedQuery(SyncClient client) {
@@ -51950,6 +57873,8 @@ olumns that you want to return.
 number of rows that meet the query conditions instead of the number of returned rows.
     System.out.println("Row: " + resp.getRows());
 ```
+
+`}`
 
 ###### 4.3.1.4.7.17 Perform a geo query
 
@@ -52009,6 +57934,8 @@ number of rows that meet the query conditions instead of the number of returned 
     System.out.println("Row: " + resp.getRows());
 ```
 
+`}`
+
 **Geo-bounding box query**
 
 To perform a geo-bounding box query, specify a rectangular geographic area by using an upper-left corner and a lower-right corner. Tablestore returns the rows in which the value of a specific column falls within the rectangular geographic area. Parameters
@@ -52062,6 +57989,8 @@ number of rows that meet the query conditions instead of the number of returned 
     System.out.println("Row: " + resp.getRows());
 ```
 
+`}`
+
 **Geo-polygon query**
 
 To perform a geo-polygon query, specify a polygon geographic area by using the coordinate pairs of multiple points. Tablestore returns the rows in which the value of a specific column falls within the polygon geographic area. Parameters
@@ -52110,6 +58039,8 @@ olumns that you want to return.
 number of rows that meet the query conditions instead of the number of returned rows.
     System.out.println("Row: " + resp.getRows());
 ```
+
+`}`
 
 ###### 4.3.1.4.7.18 Perform an exists query
 
@@ -52183,6 +58114,11 @@ Query);
                                     .limit(10)
                                     .build())
                     .build());
+```
+
+`}` `}`
+
+```
     // Nested structure: {"col_nested":[{keyword:"a","long":123}]}
 ```
 
@@ -52209,6 +58145,11 @@ the Nested type.
                                     .getTotalCount(false)
                                     .build())
                     .build());
+```
+
+`}`
+
+```
         // Query whether the col_nested.keyword field exists. The col_nested.keyword
 field is of the Nested type.
 ```
@@ -52289,6 +58230,8 @@ are returned based on the product_name column.
     System.out.println(response.getRows()); // Display the product names that are retur
 ned based on the product_name column.
 ```
+
+`}`
 
 ###### 4.3.1.4.7.20 Perform aggregation operations
 
@@ -52380,6 +58323,11 @@ aggregation results instead of specific data, you can set limit to 0 to improve 
         SearchResponse resp = client.search(searchRequest);
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsMinAggregationResult("min_agg_1"). tValue());
+```
+
+`}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -52415,6 +58363,8 @@ statement. The method that uses builder to create an aggregation statement has t
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsMinAggregationResult("min_agg_1"). tValue());
 ```
+
+`}` `}`
 
 **Maximum value**
 
@@ -52463,6 +58413,11 @@ aggregation results instead of specific data, you can set limit to 0 to improve 
         SearchResponse resp = client.search(searchRequest);
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsMaxAggregationResult("max_agg_1"). tValue());
+```
+
+`}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -52501,6 +58456,8 @@ statement. The method that uses builder to create an aggregation statement has t
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsMaxAggregationResult("max_agg_1"). tValue());
 ```
+
+`}` `}`
 
 **Sum**
 
@@ -52551,6 +58508,11 @@ aggregation results instead of specific data, you can set limit to 0 to improve 
         SearchResponse resp = client.search(searchRequest);
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsSumAggregationResult("sum_agg_1"). tValue());
+```
+
+`}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -52590,6 +58552,8 @@ statement. The method that uses builder to create an aggregation statement has t
 System.out.println(resp.getAggregationResults().getAsSumAggregationResult("sum_agg_1"). tValue());
 ```
 
+`}` `}`
+
 **Average value**
 
 The aggregation method that can be used to return the average of all values for a numeric field. This method is used in a similar manner as the SQL AVG function. Parameters
@@ -52623,6 +58587,8 @@ me effect as the method that uses TermQuery to create an aggregation statement.
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsAvgAggregationResult("avg_agg_1"). tValue());
 ```
+
+`}` `}`
 
 **Count**
 
@@ -52679,6 +58645,11 @@ aggregation results instead of specific data, you can set limit to 0 to improve 
         SearchResponse resp = client.search(searchRequest);
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsSumAggregationResult("count_agg_1" getValue());
+```
+
+`}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -52718,6 +58689,8 @@ column_history").build();
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsCountAggregationResult("count_agg_ ).getValue());
 ```
+
+`}` `}`
 
 **Distinct count**
 
@@ -52767,6 +58740,11 @@ aggregation results instead of specific data, you can set limit to 0 to improve 
         SearchResponse resp = client.search(searchRequest);
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsSumAggregationResult("dis_count_ag 1").getValue());
+```
+
+`}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -52801,6 +58779,8 @@ AggregationBuilders.distinctCount("dis_count_agg_1", "column_place").build();
         // Obtain the aggregation results.
 System.out.println(resp.getAggregationResults().getAsDistinctCountAggregationResult("di count_agg_1").getValue());
 ```
+
+`}` `}`
 
 **Percentile statistics**
 
@@ -52866,6 +58846,11 @@ resp.getAggregationResults().getAsPercentilesAggregationResult("percentilesAgg")
 percentilesAggregationResult.getPercentilesAggregationItems()) {
             System.out.println("key: " + item.getKey() + " value:" +
 item.getValue().asDouble());
+```
+
+`}` `}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -52906,6 +58891,8 @@ percentilesAggregationResult.getPercentilesAggregationItems()) {
             System.out.println("key: " + item.getKey() + " value:" +
 item.getValue().asDouble());
 ```
+
+`}` `}` `}`
 
 **Group by field value**
 
@@ -52988,6 +58975,11 @@ resp.getGroupByResults().getAsGroupByFieldResult("name1").getGroupByFieldResultI
 System.out.println(item.getSubAggregationResults().getAsMinAggregationResult("subName1" getValue());
             // Display the maximum prices.
 System.out.println(item.getSubAggregationResults().getAsMaxAggregationResult("subName2" getValue());
+```
+
+`}` `}`
+
+```
     // Create a query statement without using builder.
 ```
 
@@ -53047,7 +59039,7 @@ System.out.println(item.getSubAggregationResults().getAsMinAggregationResult("su
 System.out.println(item.getSubAggregationResults().getAsMaxAggregationResult("subName2" getValue());
 ```
 
-Example 2
+`}` `}` `}` Example 2
 
 ```
 /**
@@ -53124,7 +59116,7 @@ item.getSubAggregationResults().getAsSumAggregationResult("unique name_4").getVa
             System.out.println("sumOf_field_c:" + sumOf_field_c);
 ```
 
-Example 3
+`}` `}` `}` Example 3
 
 ```
 /**
@@ -53170,6 +59162,8 @@ Sort the groups in descending order based on the number of rows that are obtaine
     // Execute the query statement.
     SearchResponse resp = client.search(searchRequest);
 ```
+
+`}`
 
 **Group by range**
 
@@ -53230,6 +59224,8 @@ resp.getGroupByResults().getAsGroupByRangeResult("name1").getGroupByRangeResultI
         System.out.println(item.getRowCount());
 ```
 
+`}` `}`
+
 **Group by geographical location**
 
 The aggregation method that can be used to group query results based on geographical locations to a central point. Query results in distances that are within a specified range are grouped together. The number of items in each range is returned. Parameters
@@ -53283,6 +59279,8 @@ resp.getGroupByResults().getAsGroupByGeoDistanceResult("name1").getGroupByGeoDis
        // Display the number of rows.
         System.out.println(item.getRowCount());
 ```
+
+`}` `}`
 
 **Group by filter**
 
@@ -53340,6 +59338,8 @@ resp.getGroupByResults().getAsGroupByFilterResult("name1").getGroupByFilterResul
         System.out.println(item.getRowCount());
 ```
 
+`}` `}`
+
 **Group by histogram**
 
 The aggregation method that can be used to group query results based on specific data intervals. Field values that are within the same range are grouped together. The value range of each group and the number of values in each group are returned. Parameters
@@ -53389,6 +59389,8 @@ resp.getGroupByResults().getAsGroupByHistogramResult("groupByHistogram");
         System.out.println("key:" + item.getKey().asLong() + " value:" +
 item.getValue());
 ```
+
+`}` `}`
 
 **Query the rows that are obtained from the results of an**
 
@@ -53460,6 +59462,8 @@ item.getSubAggregationResults().getAsTopRowsAggregationResult("topRowsName").get
         String teacher = row.getLatestColumn("teacher").getValue().asString();
         String monitor = row.getLatestColumn("monitor").getValue().asString();
 ```
+
+`}` `}`
 
 **Nesting**
 
@@ -53543,6 +59547,8 @@ resp.getGroupByResults().getAsGroupByRangeResult("subName3");
             System.out.println("key:" + subItem.getKey());
 ```
 
+`}` `}` `}`
+
 **Multiple aggregations**
 
 You can perform multiple aggregation operations.
@@ -53576,7 +59582,7 @@ System.out.println(resp.getAggregationResults().getAsSumAggregationResult("name2
 tion. System.out.println(resp.getAggregationResults().getAsDistinctCountAggregationResult("na 3").getValue());
 ```
 
-Example 2
+`}` Example 2
 
 ```java
 public void multipleGroupBy(SyncClient client) {
@@ -53621,6 +59627,11 @@ resp.getGroupByResults().getAsGroupByFieldResult("name4").getGroupByFieldResultI
         System.out.println(item.getKey());
         // Display the number of rows.
         System.out.println(item.getRowCount());
+```
+
+`}`
+
+```
     // Obtain the GroupByRange values from the results of the aggregation operation.
     for (GroupByRangeResultItem item :
 resp.getGroupByResults().getAsGroupByRangeResult("name5").getGroupByRangeResultItems())
@@ -53632,6 +59643,8 @@ resp.getGroupByResults().getAsGroupByRangeResult("name5").getGroupByRangeResultI
         // Display the number of rows.
         System.out.println(item.getRowCount());
 ```
+
+`}` `}`
 
 ###### 4.3.1.4.7.21 Perform a parallel scan
 
@@ -53791,7 +59804,7 @@ client.parallelScan(parallelScanRequest);
                 nextToken = parallelScanResponse.getNextToken();
 ```
 
-`/*`
+`}` `}` `/*`
 
 ```
          * Recommended method.
@@ -53812,7 +59825,7 @@ client.createParallelScanIterator(parallelScanRequestByBuilder);
                 long col_2 = row.getLatestColumn("col_2").getValue().asLong();
 ```
 
-`/*`
+`}` `}` `/*`
 
 ```
          * If the operation fails, retry the operation. If the caller of this
@@ -53846,6 +59859,11 @@ client.createParallelScanIterator(parallelScanRequestByBuilder);
                     // Process rows of data. If you have sufficient memory resources,
 you can add the rows to a list.
                     result.add(row);
+```
+
+`}` `}`
+
+```
         } catch (Exception ex) {
             // Retry the processing logic.
 ```
@@ -53861,10 +59879,15 @@ client.createParallelScanIterator(parallelScanRequestByBuilder);
                     // Process rows of data. If you have sufficient memory resources,
 you can add the rows to a list.
                     result.add(row);
+```
+
+`}` `}` `}`
+
+```
         return result;
 ```
 
-Scan data by using multiple threads
+`}` `}` Scan data by using multiple threads
 
 ```java
 import com.alicloud.openservices.tablestore.SyncClient; import com.alicloud.openservices.tablestore.model.ComputeSplitsRequest; import com.alicloud.openservices.tablestore.model.ComputeSplitsResponse; import com.alicloud.openservices.tablestore.model.Row; import com.alicloud.openservices.tablestore.model.SearchIndexSplitsOptions; import com.alicloud.openservices.tablestore.model.iterator.RowIterator; import com.alicloud.openservices.tablestore.model.search.ParallelScanRequest; import com.alicloud.openservices.tablestore.model.search.ScanQuery; import com.alicloud.openservices.tablestore.model.search.query.QueryBuilders; import java.util.ArrayList; import java.util.List; import java.util.concurrent.Semaphore; import java.util.concurrent.atomic.AtomicLong; public class Test {
@@ -53911,6 +59934,11 @@ n internal class to inherit the threads.
                 this.currentParallelId = currentParallelId;
                 this.setName("ThreadForScanQuery:" + maxParallel + "-" + currentParall
 elId); // Specify the thread name.
+```
+
+`}`
+
+```java
             @Override
             public void run() {
                 System.out.println("start thread:" + this.getName());
@@ -53943,7 +59971,7 @@ ParallelScanRequest.newBuilder()
 bild()
 ```
 
-```java
+```
                                 .build();
                         // Use an iterator to obtain all the data.
                         RowIterator ltr =
@@ -53954,13 +59982,28 @@ client.createParallelScanIterator(parallelScanRequest);
                             // Add custom processing logic. The following sample code
 shows how to add custom processing logic to count the number of rows:
                             count++;
+```
+
+`}`
+
+```java
                         rowCount.addAndGet(count);
                         System.out.println("thread[" + this.getName() + "] finished. t
 his thread get rows:" + count);
+```
+
+`}`
+
+```
                 } catch (Exception ex) {
                     // If exceptions occur, you can retry the processing logic.
                 } finally {
                     semaphore.release();
+```
+
+`}` `}` `}`
+
+```
         // Simultaneously execute threads. Valid values of currentParallelId: [0,
 Value of maxParallel).
         List<ThreadForScanQuery> threadList = new ArrayList<ThreadForScanQuery>();
@@ -53968,17 +60011,34 @@ Value of maxParallel).
 currentParallelId++) {
             ThreadForScanQuery thread = new ThreadForScanQuery(currentParallelId);
             threadList.add(thread);
+```
+
+`}`
+
+```
         // Simultaneously initiate the threads.
         for (ThreadForScanQuery thread : threadList) {
             // Specify a value for semaphore to limit the number of threads that can
 be initiated at a time to prevent bottlenecks on the client.
             semaphore.acquire();
             thread.start();
+```
+
+`}`
+
+```
         // The main thread is blocked until all threads are complete.
         for (ThreadForScanQuery thread : threadList) {
             thread.join();
+```
+
+`}`
+
+```java
         System.out.println("all thread finished! total rows:" + rowCount.get());
 ```
+
+`}` `}`
 
 ###### 4.3.1.4.7.22 Use the virtual column feature
 
@@ -54037,6 +60097,7 @@ field to which the virtual column is mapped in the data table.
     client.createSearchIndex(request); // Call the client to create the search index.
 ```
 
+`}`
 2. Use a virtual column to query data.
 Query the rows in which the value of the Col_Long_Virtual_Keyword column is 1000 from a data table. Specify that the rows that meet the query condition and the total number of rows that meet the query condition are returned.
 
@@ -54063,6 +60124,8 @@ all columns excluding the virtual column.
 umber of rows that meet the query condition instead of the number of returned rows.
     System.out.println("Row: " + resp.getRows());
 ```
+
+`}`
 
 ###### 4.3.1.4.8 Tunnel Service
 
@@ -54103,9 +60166,19 @@ input.getRecords().size(), input.getNextToken()));
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+```
+
+`}` `}`
+
+```java
     @Override
     public void shutdown() {
         System.out.println("Mock shutdown");
+```
+
+`}` `}`
+
+```
 // By default, the system starts a thread pool to read and process data based on Tunn elWorkerConfig. A single server starts multiple TunnelWorkers. // We recommend that TunnelWorkers share the same TunnelWorkerConfig. A custom Tunnel WorkerConfig provides more advanced parameters than the default one. TunnelWorkerConfig config = new TunnelWorkerConfig(new SimpleProcessor()); // Configure TunnelWorkers to start automatic data processing. TunnelWorker worker = new TunnelWorker(tunnelId, tunnelClient, config); try {
     worker.connectAndWorking();
 } catch (Exception e) {
@@ -54113,6 +60186,8 @@ input.getRecords().size(), input.getNextToken()));
     worker.shutdown();
     tunnelClient.shutdown();
 ```
+
+`}`
 
 **Usage notes**
 
@@ -54135,9 +60210,19 @@ input.getRecords().size(), input.getNextToken()));
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         @Override
         public void shutdown() {
             System.out.println("Mock shutdown");
+```
+
+`}` `}`
+
+```
     public static void main(String[] args) throws Exception {
         //1.Initialize a tunnel client.
         final String endPoint = "";
@@ -54175,6 +60260,8 @@ default one.
             worker.shutdown();
             tunnelClient.shutdown();
 ```
+
+`}` `}` `}`
 
 ###### 4.3.1.4.8.2 Configure tunnel clients
 
@@ -54229,6 +60316,8 @@ Type.BaseData);
     System.out.println("TunnelId: " + resp.getTunnelId());
 ```
 
+`}`
+
 ###### 4.3.1.4.8.4 Query the tunnel information about a data table
 
 **data table**
@@ -54271,6 +60360,8 @@ InitBaseDataAndStreamShard, ProcessBaseData, and ProcessStream.
 echnical support through DingTalk.
         System.out.println("\tExpired: " + info.isExpired());
 ```
+
+`}` `}`
 
 ###### 4.3.1.4.8.5 Query the information about a tunnel
 
@@ -54320,6 +60411,8 @@ name of the client and a random string.
         System.out.println("\tChannelCount: " + ci.getChannelCount());
 ```
 
+`}` `}`
+
 ###### 4.3.1.4.8.6 Delete tunnels
 
 You can call the DeleteTunnel operation to delete a tunnel from a data table by specifying the names of the data table and tunnel.
@@ -54346,6 +60439,8 @@ private static void deleteTunnel(TunnelClient client, String tableName, String t
     DeleteTunnelResponse resp = client.deleteTunnel(request);
     System.out.println("RequestId: " + resp.getRequestId());
 ```
+
+`}`
 
 ##### 4.3.1.5 Error handling
 
@@ -54792,6 +60887,11 @@ s in the mobile and age columns is deleted. update_of_attribute_columns = {
     'PUT' : [('name','David'), ('address','Hongkong')],
     'DELETE' : [('address', None, 1488436949003)],
     'DELETE_ALL' : [('mobile'), ('age')],
+```
+
+`}`
+
+```bash
 row = Row(primary_key, update_of_attribute_columns)
 # The condition for row check is that the row existence is ignored. This indicates th
 at the row is updated regardless of whether the row exists. condition = Condition(RowExistenceExpectation.IGNORE, SingleColumnCondition("age", 20 , ComparatorType.EQUAL)) # update row only when this row is exist try:
@@ -57023,7 +63123,7 @@ rst primary key column is also the partition key.
         fmt.Println("Create table finished")
 ```
 
-For more information about the complete sample code, see CreateTable@GitHub. Create a data table with a global secondary index
+`}` `}` For more information about the complete sample code, see CreateTable@GitHub. Create a data table with a global secondary index
 
 ```
 func CreateTableWithGlobalIndexSample(client *tablestore.TableStoreClient, tableNam e string) {
@@ -57057,7 +63157,7 @@ e retained for each column. A value of 1 specifies that only the latest version 
         fmt.Println("Create table finished")
 ```
 
-Create a data table with a local secondary index
+`}` `}` Create a data table with a local secondary index
 
 ```
 func CreateTableWithLocalIndexSample(client *tablestore.TableStoreClient, tableName string) {
@@ -57095,6 +63195,8 @@ e retained for each column. A value of 1 specifies that only the latest version 
         fmt.Println("Create table finished")
 ```
 
+`}` `}`
+
 **ListTable**
 
 You can call this operation to query the names of all tables in the current instance. API operation
@@ -57114,7 +63216,7 @@ tables, err := client.ListTable() if err != nil {
         fmt.Println("TableName: ", table)
 ```
 
-For more information about the complete sample code, see ListTable@GitHub.
+`}` `}` For more information about the complete sample code, see ListTable@GitHub.
 
 **UpdateTable**
 
@@ -57133,7 +63235,7 @@ updateTableReq := new(tablestore.UpdateTableRequest) updateTableReq.TableName = 
     fmt.Println("update finished")
 ```
 
-For more information about the complete sample code, see UpdateTable@GitHub.
+`}` For more information about the complete sample code, see UpdateTable@GitHub.
 
 **DescribeTable**
 
@@ -57153,7 +63255,7 @@ describeTableReq := new(tablestore.DescribeTableRequest) describeTableReq.TableN
 describ.TableOption.MaxVersion, describ.TableOption.TimeToAlive)
 ```
 
-For more information about the complete sample code, see DescribeTable@GitHub.
+`}` For more information about the complete sample code, see DescribeTable@GitHub.
 
 **DeleteTable**
 
@@ -57172,7 +63274,7 @@ deleteReq := new(tablestore.DeleteTableRequest) deleteReq.TableName = tableName 
     fmt.Println("Delete table finished")
 ```
 
-For more information about the complete sample code, see DeleteTable@GitHub.
+`}` For more information about the complete sample code, see DeleteTable@GitHub.
 
 ###### 4.3.3.4.2 Basic operations on data
 
@@ -57246,7 +63348,7 @@ updateRowRequest := new(tablestore.UpdateRowRequest) updateRowChange := new(tabl
     fmt.Println("update row finished")
 ```
 
-For more information about the complete sample code, see UpdateRow@GitHub.
+`}` For more information about the complete sample code, see UpdateRow@GitHub.
 
 **Write multiple rows of data at a time**
 
@@ -57270,13 +63372,18 @@ batchWriteReq := &tablestore.BatchWriteRowRequest{} for i := 0; i < 100; i++ {
     putRowChange.AddColumn("col1", "fixvalue")
     putRowChange.SetCondition(tablestore.RowExistenceExpectation_IGNORE)
     batchWriteReq.AddRowChange(putRowChange)
+```
+
+`}`
+
+```
 response, err := client.BatchWriteRow(batchWriteReq) if err != nil {
     fmt.Println("batch request failed with:", response)
 } else {
     fmt.Println("batch write row finished")
 ```
 
-For more information about the complete sample code, see BatchWriteRow@GitHub.
+`}` For more information about the complete sample code, see BatchWriteRow@GitHub.
 
 ###### 4.3.3.4.2.2 Read data
 
@@ -57317,7 +63424,7 @@ getRowRequest := new(tablestore.GetRowRequest) criteria := new(tablestore.Single
 getResp.Columns[0].Value,)
 ```
 
-For more information about the complete sample code, see GetRow@GitHub.
+`}` For more information about the complete sample code, see GetRow@GitHub.
 
 **Read multiple rows of data at a time**
 
@@ -57337,13 +63444,18 @@ batchGetReq := &tablestore.BatchGetRowRequest{} mqCriteria := &tablestore.MultiR
     pkToGet.AddPrimaryKeyColumn("pk3", []byte("pk3"))
     mqCriteria.AddRow(pkToGet)
     mqCriteria.MaxVersion = 1
+```
+
+`}`
+
+```
 mqCriteria.TableName = tableName batchGetReq.MultiRowQueryCriteria = append(batchGetReq.MultiRowQueryCriteria, mqCrite ria) batchGetResponse, err := client.BatchGetRow(batchGetReq) if err != nil {
     fmt.Println("batchget failed with error:", err)
 } else {
     fmt.Println("batchget finished")
 ```
 
-For more information about the complete sample code, see BatchGetRow@GitHub.
+`}` For more information about the complete sample code, see BatchGetRow@GitHub.
 
 **Read data whose primary key values are in the specified range**
 
@@ -57389,9 +63501,19 @@ Example The following sample code provides an example on how to read data whose 
 getRangeRequest := &tablestore.GetRangeRequest{} rangeRowQueryCriteria := &tablestore.RangeRowQueryCriteria{} rangeRowQueryCriteria.TableName = tableName startPK := new(tablestore.PrimaryKey) startPK.AddPrimaryKeyColumnWithMinValue("pk1") startPK.AddPrimaryKeyColumnWithMinValue("pk2") startPK.AddPrimaryKeyColumnWithMinValue("pk3") endPK := new(tablestore.PrimaryKey) endPK.AddPrimaryKeyColumnWithMaxValue("pk1") endPK.AddPrimaryKeyColumnWithMaxValue("pk2") endPK.AddPrimaryKeyColumnWithMaxValue("pk3") rangeRowQueryCriteria.StartPrimaryKey = startPK rangeRowQueryCriteria.EndPrimaryKey = endPK rangeRowQueryCriteria.Direction = tablestore.FORWARD rangeRowQueryCriteria.MaxVersion = 1 rangeRowQueryCriteria.Limit = 10 getRangeRequest.RangeRowQueryCriteria = rangeRowQueryCriteria getRangeResp, err := client.GetRange(getRangeRequest) fmt.Println("get range result is " ,getRangeResp) for {
     if err != nil {
         fmt.Println("get range failed with error:", err)
+```
+
+`}`
+
+```
     for _, row := range getRangeResp.Rows {
         fmt.Println("range get row with key", row.PrimaryKey.PrimaryKeys[0].Value,
 row.PrimaryKey.PrimaryKeys[1].Value, row.PrimaryKey.PrimaryKeys[2].Value)
+```
+
+`}`
+
+```
     if getRangeResp.NextStartPrimaryKey == nil {
         break
     } else {
@@ -57400,7 +63522,17 @@ getRangeResp.NextStartPrimaryKey.PrimaryKeys[0].Value, getRangeResp.NextStartPri
         getRangeRequest.RangeRowQueryCriteria.StartPrimaryKey =
 getRangeResp.NextStartPrimaryKey
         getRangeResp, err = client.GetRange(getRangeRequest)
+```
+
+`}`
+
+```
     fmt.Println("continue to query rows")
+```
+
+`}`
+
+```
 fmt.Println("range get row finished")
 ```
 
@@ -57447,7 +63579,7 @@ clCondition1 := tablestore.NewSingleColumnCondition("col2", tablestore.CT_EQUAL,
     fmt.Println("delete row finished")
 ```
 
-For more information about the complete sample code, see DeleteRow@GitHub.
+`}` For more information about the complete sample code, see DeleteRow@GitHub.
 
 **Delete multiple rows of data at a time**
 
@@ -57495,6 +63627,11 @@ e data table as an attribute column of the index table.
         IndexMeta: indexMeta,
         IncludeBaseData: true, // Specify that the index table includes the existing
 data of the data table.
+```
+
+`}`
+
+```
     /**
       You can set the IncludeBaseData parameter to true to synchronize the existing d
 ata from the data table to the index table after the index table is created. Then, yo u can query all data from the index table.
@@ -57511,6 +63648,8 @@ on the size of the data to be synchronized.
     } else {
         fmt.Println("Create index finished", resp)
 ```
+
+`}` `}`
 
 **Read data from an index table**
 
@@ -57543,6 +63682,11 @@ third primary key column of the index table. The primary key column is autocompl
     for {
         if err != nil {
             fmt.Println("get range failed with error:", err)
+```
+
+`}`
+
+```
         if len(getRangeResp.Rows) > 0 {
             for _, row := range getRangeResp.Rows {
                 fmt.Println("range get row with key",
@@ -57559,11 +63703,28 @@ getRangeResp.NextStartPrimaryKey.PrimaryKeys[0].Value, getRangeResp.NextStartPri
                 getRangeRequest.RangeRowQueryCriteria.StartPrimaryKey = getRangeResp
 .NextStartPrimaryKey
                 getRangeResp, err = client.GetRange(getRangeRequest)
+```
+
+`}`
+
+```
         } else {
             break
+```
+
+`}`
+
+```
         fmt.Println("continue to query rows")
+```
+
+`}`
+
+```
     fmt.Println("putrow finished")
 ```
+
+`}`
 
 **Delete an index table by calling the DeleteIndex operation**
 
@@ -57586,6 +63747,8 @@ IndexName: indexName }
     } else {
         fmt.Println("drop index finished", resp)
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.3.2 Local secondary index
 
@@ -57632,6 +63795,11 @@ IT_LOCAL_INDEX.
         IndexMeta: indexMeta,
         IncludeBaseData: true, // Specify that the index table includes the existing
 data of the data table.
+```
+
+`}`
+
+```
     /**
       You can set the IncludeBaseData parameter to true to synchronize the existing d
 ata from the data table to the index table after the index table is created. Then, yo u can query all data from the index table.
@@ -57648,6 +63816,8 @@ on the size of the data to be synchronized.
     } else {
         fmt.Println("Create index finished", resp)
 ```
+
+`}` `}`
 
 **Read data from an index table**
 
@@ -57680,6 +63850,11 @@ third primary key column of the index table. The primary key column is autocompl
     for {
         if err != nil {
             fmt.Println("get range failed with error:", err)
+```
+
+`}`
+
+```
         if len(getRangeResp.Rows) > 0 {
             for _, row := range getRangeResp.Rows {
                 fmt.Println("range get row with key",
@@ -57696,11 +63871,28 @@ getRangeResp.NextStartPrimaryKey.PrimaryKeys[0].Value, getRangeResp.NextStartPri
                 getRangeRequest.RangeRowQueryCriteria.StartPrimaryKey = getRangeResp
 .NextStartPrimaryKey
                 getRangeResp, err = client.GetRange(getRangeRequest)
+```
+
+`}`
+
+```
         } else {
             break
+```
+
+`}`
+
+```
         fmt.Println("continue to query rows")
+```
+
+`}`
+
+```
     fmt.Println("putrow finished")
 ```
+
+`}`
 
 **Delete an index table**
 
@@ -57723,6 +63915,8 @@ IndexName: indexName }
     } else {
         fmt.Println("drop index finished", resp)
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4 Search index
 
@@ -57767,25 +63961,45 @@ the proto.String method. This method is used to request a string pointer.
         FieldType: tablestore.FieldType_KEYWORD, // Specify the column type.
         Index:     proto.Bool(true), // Enable the indexing feature.
         EnableSortAndAgg: proto.Bool(true), // Enable sorting and aggregation.
+```
+
+`}`
+
+```
     field2 := &tablestore.FieldSchema{
         FieldName: proto.String("Col_Long"),
         FieldType: tablestore.FieldType_LONG,
         Index:     proto.Bool(true),
         EnableSortAndAgg: proto.Bool(true),
+```
+
+`}`
+
+```
     schemas = append(schemas, field1, field2)
     request.IndexSchema = &tablestore.IndexSchema{
         FieldSchemas: schemas, // Specify the columns that are included in the search
 index.
+```
+
+`}`
+
+```
     resp, err := client.CreateSearchIndex(request) // Call the client to create the s
 earch index.
     if err != nil {
         fmt.Println("error :", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("CreateSearchIndex finished, requestId:",
 resp.ResponseInfo.RequestId)
 ```
 
-Create a search index with the IndexSort parameter specified The following sample code provides an example on how to create a search index with the IndexSort parameter specified. The search index contains the col1 and col2 columns. The col1 column is of the KEYWORD type, and the col2 column is of the LONG type.
+`}` Create a search index with the IndexSort parameter specified The following sample code provides an example on how to create a search index with the IndexSort parameter specified. The search index contains the col1 and col2 columns. The col1 column is of the KEYWORD type, and the col2 column is of the LONG type.
 
 ```
 func createSearchIndex_withIndexSort(client *tablestore.TableStoreClient){
@@ -57799,11 +64013,21 @@ proto.String method. This method is used to request a string pointer.
         FieldType: tablestore.FieldType_KEYWORD, // Specify the column type.
         Index:     proto.Bool(true), // Enable the indexing feature.
         EnableSortAndAgg: proto.Bool(true), // Enable sorting and aggregation.
+```
+
+`}`
+
+```
     field2 := &tablestore.FieldSchema{
         FieldName: proto.String("col2"),
         FieldType: tablestore.FieldType_LONG,
         Index:     proto.Bool(true),
         EnableSortAndAgg: proto.Bool(true),
+```
+
+`}`
+
+```
     schemas = append(schemas, field1, field2)
     request.IndexSchema = &tablestore.IndexSchema{
         FieldSchemas: schemas, // Specify the columns that are included in the search
@@ -57824,7 +64048,7 @@ sorted based on the value of the col2 column in ascending order and then sorted 
                     Order:     search.SortOrder_DESC.Enum(),
 ```
 
-`},` `},` `},`
+`},` `},` `},` `}`
 
 ```
     resp, err := client.CreateSearchIndex(request) // Call the client to create the s
@@ -57832,11 +64056,16 @@ earch index.
     if err != nil {
         fmt.Println("error :", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("CreateSearchIndex finished, requestId:",
 resp.ResponseInfo.RequestId)
 ```
 
-Create a search index with the TTL specified
+`}` Create a search index with the TTL specified
 
 > **Important:** Makesurethatupdateoperationsonthedatatableareprohibited
 
@@ -57855,9 +64084,16 @@ x to 7 days.
     if err != nil {
        fmt.Println("error :", err)
        return
+```
+
+`}`
+
+```
     fmt.Println("createIndexWithTTL finished, requestId:",
 resp.ResponseInfo.RequestId)
 ```
+
+`}`
 
 ###### 4.3.3.4.4.2 Configure the TTL of a search index
 
@@ -57891,16 +64127,22 @@ continuity. If a TTL is configured for the search index of a data table, you can
           AllowUpdate: proto.Bool(false),
 ```
 
-`},`
+`},` `}`
 
 ```
     resp, err := client.UpdateTable(request)
     if err != nil {
        fmt.Println("error :", err)
        return
+```
+
+`}`
+
+```
     fmt.Println("UpdateTable finished, requestId:", resp.ResponseInfo.RequestId)
 ```
 
+`}`
 2. Configure the TTL of a search index.
 After the UpdateRow operation on a data table is disabled, you can configure the TTL of a search index when you create the search index or modify the TTL of an existing search index. Configure the TTL when you create a search index
 
@@ -57917,6 +64159,11 @@ dex to 7 days.
     if err != nil {
        fmt.Println("error :", err)
        return
+```
+
+`}`
+
+```
     fmt.Println("createIndexWithTTL finished, requestId:",
 resp.ResponseInfo.RequestId)
 ```
@@ -57934,10 +64181,16 @@ dex to 7 days.
     if err != nil {
        fmt.Println("error :", err)
        return
+```
+
+`}`
+
+```
     fmt.Println("updateIndexWithTTL finished, requestId:",
 resp.ResponseInfo.RequestId)
 ```
 
+`}`
 3. The TTL of a search index is independent of that of the data table for which the search
 index is created. If you want to use the TTL feature for a data table, configure the TTL of the data table.
 
@@ -57957,15 +64210,22 @@ continuity. If a TTL is configured for the search index of a data table, you can
             AllowUpdate: proto.Bool(false),
 ```
 
-`},`
+`},` `}`
 
 ```
     resp, err := client.UpdateTable(request)
     if err != nil {
         fmt.Println("error :", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("UpdateTable finished, requestId:", resp.ResponseInfo.RequestId)
 ```
+
+`}`
 
 ###### 4.3.3.4.4.3 List search indexes
 
@@ -57992,10 +64252,22 @@ associated with the data table.
     if err != nil {
         fmt.Println("error: ", err)
         return
+```
+
+`}`
+
+```
     for _, info := range resp.IndexInfo {
         fmt.Printf("%#v\n", info) // Display the information about the search indexes.
+```
+
+`}`
+
+```
     fmt.Println("ListSearchIndex finished, requestId:", resp.ResponseInfo.RequestId)
 ```
+
+`}`
 
 ###### 4.3.3.4.4.4 Query the description of a search index
 
@@ -58025,13 +64297,25 @@ func DescribeSearchIndex(client *tablestore.TableStoreClient, tableName string, 
     if err != nil {
         fmt.Println("error: ", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("FieldSchemas:")
     for _, schema := range resp.Schema.FieldSchemas {
         fmt.Printf("%s\n", schema) // Display the schema information about the fields i
 n the search index.
+```
+
+`}`
+
+```
     fmt.Println("DescribeSearchIndex finished, requestId: ",
 resp.ResponseInfo.RequestId)
 ```
+
+`}`
 
 ###### 4.3.3.4.4.5 Delete a search index
 
@@ -58060,8 +64344,15 @@ rch index.
     if err != nil {
         fmt.Println("error: ", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("DeleteSearchIndex finished, requestId: ", resp.ResponseInfo.RequestId)
 ```
+
+`}`
 
 ###### 4.3.3.4.4.6 Perform a term query
 
@@ -58125,6 +64416,11 @@ he column.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58134,8 +64430,15 @@ of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.7 Perform a terms query
 
@@ -58196,6 +64499,11 @@ column.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("RowCount: ", len(searchResponse.Rows))
@@ -58203,8 +64511,15 @@ s that meet the query conditions are returned.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.8 Perform a match all query
 
@@ -58250,10 +64565,17 @@ ecific data is returned.
     if err != nil { // An error occurs.
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess)
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
 of rows in the table.
 ```
+
+`}`
 
 ###### 4.3.3.4.4.9 Perform a match query
 
@@ -58314,6 +64636,11 @@ m of 20 rows can be returned.
     if err != nil { // An error occurs.
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58324,6 +64651,11 @@ rows that are returned.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody)) // By default, if you do not specify the
 columnsToGet parameter, only the primary key columns are returned.
 ```
@@ -58341,6 +64673,11 @@ columnsToGet parameter, only the primary key columns are returned.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58350,8 +64687,15 @@ of rows that meet the query conditions.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.10 Perform a match phrase query
 
@@ -58411,6 +64755,11 @@ m of 20 rows can be returned.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58420,7 +64769,17 @@ of rows that meet the query conditions.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
+```
+
+`}`
+
+```
     // Return all columns in the rows that meet the query conditions.
     searchRequest.SetColumnsToGet(&tablestore.ColumnsToGet{
         ReturnAll:true,
@@ -58433,6 +64792,11 @@ of rows that meet the query conditions.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58442,8 +64806,15 @@ of rows that meet the query conditions.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.11 Perform a prefix query
 
@@ -58501,6 +64872,11 @@ the column.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58510,8 +64886,15 @@ of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.12 Perform a range query
 
@@ -58581,6 +64964,11 @@ rder.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("RowCount: ", len(searchResponse.Rows))
@@ -58588,8 +64976,15 @@ s that meet the query conditions are returned.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.13 Perform a wildcard query
 
@@ -58643,6 +65038,11 @@ func WildcardQuery(client *tablestore.TableStoreClient, tableName string, indexN
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -58652,8 +65052,15 @@ of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.14 Perform a geo query
 
@@ -58707,6 +65114,11 @@ ea to 10,000. Unit: meter.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all r
 ows that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total numbe
@@ -58716,8 +65128,15 @@ r of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 **Geo-bounding box query**
 
@@ -58768,6 +65187,11 @@ er of the rectangular geographic area.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all r
 ows that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total numbe
@@ -58777,8 +65201,15 @@ r of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 **Geo-polygon query**
 
@@ -58824,6 +65255,11 @@ vertices of the polygon geographic area.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all r
 ows that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total numbe
@@ -58833,8 +65269,15 @@ r of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.15 Perform a Boolean query
 
@@ -58923,7 +65366,7 @@ Query Condition 2.
                 matchQuery,
 ```
 
-`},`
+`},` `}`
 
 ```
         searchQuery := search.NewSearchQuery()
@@ -58933,6 +65376,11 @@ Query Condition 2.
         if err != nil {
             fmt.Printf("%#v", err)
             return
+```
+
+`}`
+
+```
         fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all
 rows that meet the query conditions are returned.
         fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total
@@ -58940,7 +65388,7 @@ number of rows that meet the query conditions instead of the number of returned 
         fmt.Println("RowCount: ", len(searchResponse.Rows))
 ```
 
-`{`
+`}` `{`
 
 ```
         /**
@@ -58961,6 +65409,11 @@ Condition 1 and Query Condition 2.
 
 ```
             MinimumShouldMatch: proto.Int32(1),
+```
+
+`}`
+
+```
         searchQuery := search.NewSearchQuery()
         searchQuery.SetQuery(boolQuery)
         searchRequest.SetSearchQuery(searchQuery)
@@ -58978,6 +65431,8 @@ rows that meet the query conditions are returned.
 number of rows that meet the query conditions instead of the number of returned rows.
         fmt.Println("RowCount: ", len(searchResponse.Rows))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.16 Perform a nested query
 
@@ -59019,6 +65474,11 @@ match the value of the column.
 
 ```
         ScoreMode: search.ScoreMode_Avg,
+```
+
+`}`
+
+```
     searchQuery := search.NewSearchQuery()
     searchQuery.SetQuery(query)
     searchRequest.SetSearchQuery(searchQuery)
@@ -59034,6 +65494,11 @@ match the value of the column.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("RowCount: ", len(searchResponse.Rows))
@@ -59041,8 +65506,15 @@ s that meet the query conditions are returned.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.17 Sort and page data
 
@@ -59196,7 +65668,7 @@ func QueryRowsWithToken(client *tablestore.TableStoreClient, tableName string, i
             Term:      "tablestore",
 ```
 
-`},`
+`},` `}`
 
 ```
     for _, query := range querys {
@@ -59213,6 +65685,11 @@ func QueryRowsWithToken(client *tablestore.TableStoreClient, tableName string, i
         if err != nil {
             fmt.Printf("%#v", err)
             return
+```
+
+`}`
+
+```
         rows := searchResponse.Rows
         requestCount := 1
         for searchResponse.NextToken != nil {
@@ -59221,14 +65698,26 @@ func QueryRowsWithToken(client *tablestore.TableStoreClient, tableName string, i
             if err != nil {
                 fmt.Printf("%#v", err)
                 return
+```
+
+`}`
+
+```
             requestCount++
             for _, r := range searchResponse.Rows {
                 rows = append(rows, r)
+```
+
+`}` `}`
+
+```
         fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess)
         fmt.Println("TotalCount: ", searchResponse.TotalCount)
         fmt.Println("RowsSize: ", len(rows))
         fmt.Println("RequestCount: ", requestCount)
 ```
+
+`}`
 
 ###### 4.3.3.4.4.18 Perform an exists query
 
@@ -59279,6 +65768,11 @@ func ExitsQuery(client *tablestore.TableStoreClient, tableName string, indexName
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     fmt.Println("IsAllSuccess: ", searchResponse.IsAllSuccess) // Check whether all row
 s that meet the query conditions are returned.
     fmt.Println("TotalCount: ", searchResponse.TotalCount) // Display the total number
@@ -59288,8 +65782,15 @@ of rows that meet the query conditions instead of the number of returned rows.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.19 Collapse data
 
@@ -59348,13 +65849,25 @@ ll columns in the rows that meet the query conditions.
     if err != nil {
         fmt.Println("Failed to search with error:", err)
         return
+```
+
+`}`
+
+```
     for _, row := range searchResponse.Rows {           // Display the rows that are
 returned.
         jsonBody, err := json.Marshal(row)
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("Row: ", string(jsonBody))
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.20 Aggregate data
 
@@ -59428,10 +65941,17 @@ results.
 aggregation operation named min_agg_1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg1.HasValue() {        // Check whether the results of the aggregation
 operation named min_agg_1 contain values.
         fmt.Println(agg1.Value)    // Display the aggregation results.
 ```
+
+`}` `}`
 
 **Maximum value**
 
@@ -59476,10 +65996,17 @@ results.
 aggregation operation named max_agg_1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg1.HasValue() {        // Check whether the results of the aggregation
 operation named max_agg_1 contain values.
         fmt.Println(agg1.Value)    // Display the aggregation results.
 ```
+
+`}` `}`
 
 **Sum**
 
@@ -59524,8 +66051,15 @@ results.
 aggregation operation named sum_agg_1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(agg1.Value)    // Display the aggregation results.
 ```
+
+`}`
 
 **Average value**
 
@@ -59568,10 +66102,17 @@ results.
 aggregation operation named avg_agg_1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg1.HasValue() {        // Check whether the results of the aggregation
 operation named agg1 contain values.
         fmt.Println(agg1.Value)    // Display the aggregation results.
 ```
+
+`}` `}`
 
 **Count**
 
@@ -59619,8 +66160,15 @@ results.
 aggregation operation named count_agg_1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(agg1.Value)    // Display the aggregation results.
 ```
+
+`}`
 
 **Distinct count**
 
@@ -59667,8 +66215,15 @@ results.
 the results of the aggregation operation named distinct_count_agg_1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(agg1.Value)    // Display the aggregation results.
 ```
+
+`}`
 
 **Group by field value**
 
@@ -59729,12 +66284,22 @@ cts by category.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     groupByResults := searchResponse.GroupByResults    // Obtain the aggregation resu
 lts.
     group, err := groupByResults.GroupByField("group1")
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     for _, item := range group.Items {    // Traverse the groups that are returned.
         // Display the value of each group and the number of rows in each group.
         fmt.Println("\tkey: ", item.Key, ", rowCount: ", item.RowCount)
@@ -59742,11 +66307,18 @@ lts.
         minPrice, _ := item.SubAggregations.Min("min_price")
         if minPrice.HasValue() {
             fmt.Println("\t\tmin_price: ", minPrice.Value)
+```
+
+`}`
+
+```
         // Display the highest prices.
         maxPrice, _ := item.SubAggregations.Max("max_price")
         if maxPrice.HasValue() {
             fmt.Println("\t\tmax_price: ", maxPrice.Value)
 ```
+
+`}` `}` `}`
 
 **Group by range**
 
@@ -59788,16 +66360,28 @@ func GroupByRange(client *tablestore.TableStoreClient, tableName string, indexNa
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     groupByResults := searchResponse.GroupByResults    // Obtain the aggregation resu
 lts.
     group, err := groupByResults.GroupByRange("group1")
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     for _, item := range group.Items {    // Traverse the groups that are returned.
         fmt.Println("\t[", item.From, ", ", item.To, "), rowCount: ", item.RowCount)
 // Display the number of rows in each group.
 ```
+
+`}` `}`
 
 **Group by geographical location**
 
@@ -59841,16 +66425,28 @@ oint{Lat: 30.137817, Lon:120.08681}).
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     groupByResults := searchResponse.GroupByResults    // Obtain the aggregation resu
 lts.
     group, err := groupByResults.GroupByGeoDistance("group1")
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     for _, item := range group.Items {    // Traverse the groups that are returned.
         fmt.Println("\t[", item.From, ", ", item.To, "), rowCount: ", item.RowCount)
 // Display the number of rows in each group.
 ```
+
+`}` `}`
 
 **Group by filter**
 
@@ -59900,16 +66496,28 @@ func GroupByFilter(client *tablestore.TableStoreClient, tableName string, indexN
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     groupByResults := searchResponse.GroupByResults    // Obtain the aggregation resu
 lts.
     group, err := groupByResults.GroupByFilter("group1")
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     for _, item := range group.Items {    // Traverse the groups that are returned.
         fmt.Println("\trowCount: ", item.RowCount)    // Display the number of rows
 in each group.
 ```
+
+`}` `}`
 
 **Nesting**
 
@@ -59948,12 +66556,22 @@ func NestedSample(client *tablestore.TableStoreClient, tableName string, indexNa
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     groupByResults := searchResponse.GroupByResults    // Obtain the aggregation
 results.
     group, err := groupByResults.GroupByField("group1")
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     for _, item := range group.Items {    // Traverse the groups that are returned.
         // Display the value of each group and the number of rows in each group.
         fmt.Println("\tkey: ", item.Key, ", rowCount: ", item.RowCount)
@@ -59974,13 +66592,18 @@ results.
         subAgg2, _ := item.SubAggregations.Max("sub_agg2")
         if subAgg2.HasValue() {
             fmt.Println("\t\tsub_agg2: ", subAgg2.Value)
+```
+
+`}`
+
+```
         // Obtain the results of the aggregation operation named sub_group1.
         subGroup, _ := item.SubGroupBys.GroupByRange("sub_group1")
         for _, item := range subGroup.Items {
             fmt.Println("\t\t[", item.From, ", ", item.To, "), rowCount: ", item.RowCoun
 ```
 
-`t)`
+`t)` `}` `}` `}`
 
 **Multiple aggregations**
 
@@ -60021,6 +66644,11 @@ Calculate the number of rows that contain the Col_Long field.
     if err != nil {
         fmt.Printf("%#v", err)
         return
+```
+
+`}`
+
+```
     aggResults := searchResponse.AggregationResults    // Obtain the aggregation
 results.
     // Obtain the average value obtained from the aggregation operation.
@@ -60028,6 +66656,11 @@ results.
 ation operation named agg1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg1.HasValue() {                           // Check whether the results of the
 aggregation operation named agg1 contain values.
         fmt.Println("(avg) agg1: ", agg1.Value)    // Display the average value of the
@@ -60035,12 +66668,22 @@ Col_Long field.
     } else {
         fmt.Println("(avg) agg1: no value")        // Display "no value" if no rows co
 ntain the Col_Long field.
+```
+
+`}`
+
+```
     // Obtain the number of distinct values from the results of the aggregation opera
 tion.
     agg2, err := aggResults.DistinctCount("agg2")  // Obtain the results of the aggre
 gation operation named agg2.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println("(distinct) agg2: ", agg2.Value)   // Display the number of distinct
 values for the Col_Long field.
     // Display the maximum value obtained from the aggregation operation.
@@ -60048,12 +66691,22 @@ values for the Col_Long field.
 ation operation named agg3.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg3.HasValue() {
         fmt.Println("(max) agg3: ", agg3.Value)    // Display the maximum value for th
 e Col_Long field.
     } else {
         fmt.Println("(max) agg3: no value")        // Display "no value" if no rows co
 ntain the Col_Long field.
+```
+
+`}`
+
+```
     // Obtain the sum from the results of the aggregation operation.
     agg4, err := aggResults.Sum("agg4")            // Obtain the results of the aggreg
 ation operation named agg4.
@@ -60069,11 +66722,16 @@ Col_Long field.
 aggregation operation named agg5.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println("(count) agg6: ", agg5.Value)      // Display the number of values
 for the Col_Long field.
 ```
 
-Example 2
+`}` Example 2
 
 ```
 func MultipleAggregationsAndGroupBysSample(client *tablestore.TableStoreClient, table Name string, indexName string) {
@@ -60123,6 +66781,11 @@ results.
 ation operation named agg1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg1.HasValue() {                           // Check whether the results of the
 aggregation operation named agg1 contain values.
         fmt.Println("(avg) agg1: ", agg1.Value)    // Display the average value of the
@@ -60130,12 +66793,22 @@ Col_Long field.
     } else {
         fmt.Println("(avg) agg1: no value")        // Display "no value" if no rows co
 ntain the Col_Long field.
+```
+
+`}`
+
+```
     // Obtain the number of distinct values from the results of the aggregation opera
 tion.
     agg2, err := aggResults.DistinctCount("agg2")  // Obtain the results of the aggre
 gation operation named agg2.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println("(distinct) agg2: ", agg2.Value)   // Display the number of distinct
 values for the Col_Long field.
     // Display the maximum value obtained from the aggregation operation.
@@ -60143,12 +66816,22 @@ values for the Col_Long field.
 aggregation operation named agg3.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     if agg3.HasValue() {
         fmt.Println("(max) agg3: ", agg3.Value)    // Display the maximum value for th
 e Col_Long field.
     } else {
         fmt.Println("(max) agg3: no value")        // Display "no value" if no rows co
 ntain the Col_Long field.
+```
+
+`}`
+
+```
     groupByResults := searchResponse.GroupByResults    // Obtain the aggregation resu
 lts.
     // Obtain the results of the GroupByField aggregation operation.
@@ -60156,6 +66839,11 @@ lts.
 the aggregation operation named group1.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println("group1: ")
     for _, item := range group1.Items {    // Traverse all groups that are returned.
         //item
@@ -60171,15 +66859,30 @@ the number of rows in each group.
 of the sub-aggregation operation named sub_agg1.
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         if subAgg1.HasValue() {    // If sub_agg1 obtains the average value for the
 Col_Long field, HasValue() is set to true.
             fmt.Println("\t\tsub_agg1: ", subAgg1.Value)    // Display the average val
 ue for the Col_Long field obtained from the sub-aggregation operation.
+```
+
+`}`
+
+```
         // Obtain the results of the GroupByField sub-aggregation operation.
         subGroup1, err := item.SubGroupBys.GroupByField("sub_group1")    // Obtain
 the results of the sub-aggregation operation named sub_group1.
         if err != nil {
             panic(err)
+```
+
+`}`
+
+```
         fmt.Println("\t\tsub_group1")
         for _, subItem := range subGroup1.Items {    // Traverse the results of the
 sub-aggregation operation named sub_group1.
@@ -60187,16 +66890,28 @@ sub-aggregation operation named sub_group1.
 // Display the number of rows in each group that is obtained from the results of the sub-aggregation operation named sub_group1.
             tablestore.Assert(subItem.SubAggregations.Empty(), "")
             tablestore.Assert(subItem.SubGroupBys.Empty(), "")
+```
+
+`}` `}`
+
+```
     // Obtain the results of the GroupByRange aggregation operation.
     group2, err := groupByResults.GroupByRange("group2")    // Obtain the results of
 the aggregation operation named group2.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println("group2: ")
     for _, item := range group2.Items {    // Traverse all groups that are returned.
         fmt.Println("\t[", item.From, ", ", item.To, "), rowCount: ", item.RowCount)
 // Display the number of rows in each group.
 ```
+
+`}` `}`
 
 ###### 4.3.3.4.4.21 Perform a parallel scan
 
@@ -60240,6 +66955,11 @@ func ParallelScanSingleConcurrency(client *tablestore.TableStoreClient, tableNam
         if err != nil {
                 fmt.Printf("%#v", err)
                 return
+```
+
+`}`
+
+```
         query := search.NewScanQuery().SetQuery(&search.MatchAllQuery{}).SetLimit(2)
         req := &tablestore.ParallelScanRequest{}
         req.SetTableName(tableName).
@@ -60251,6 +66971,11 @@ func ParallelScanSingleConcurrency(client *tablestore.TableStoreClient, tableNam
         if err != nil {
                 fmt.Printf("%#v", err)
                 return
+```
+
+`}`
+
+```
         total := len(res.Rows)
         for res.NextToken != nil {
                 req.SetScanQuery(query.SetToken(res.NextToken))
@@ -60258,11 +66983,21 @@ func ParallelScanSingleConcurrency(client *tablestore.TableStoreClient, tableNam
                 if err != nil {
                         fmt.Printf("%#v", err)
                         return
+```
+
+`}`
+
+```
                 total += len(res.Rows) //process rows each loop
+```
+
+`}`
+
+```
         fmt.Println("total: ", total)
 ```
 
-Scan data by using multiple threads
+`}` Scan data by using multiple threads
 
 ```
 /**
@@ -60301,6 +67036,11 @@ SetColumnsToGet(&tablestore.ColumnsToGet{ReturnAllFromIndex: false}).
                         if err != nil {
                                 fmt.Printf("%#v", err)
                                 return
+```
+
+`}`
+
+```
                         total := len(res.Rows)
                         for res.NextToken != nil {
                                 req.SetScanQuery(query.SetToken(res.NextToken))
@@ -60308,11 +67048,28 @@ SetColumnsToGet(&tablestore.ColumnsToGet{ReturnAllFromIndex: false}).
                                 if err != nil {
                                         fmt.Printf("%#v", err)
                                         return
+```
+
+`}`
+
+```
                                 total += len(res.Rows) //process rows each loop
+```
+
+`}`
+
+```
                         fmt.Println("total: ", total)
                 }()
+```
+
+`}`
+
+```
         wg.Wait()
 ```
+
+`}`
 
 ###### 4.3.3.4.5 Tunnel Service
 
@@ -60357,8 +67114,18 @@ req := &tunnel.CreateTunnelRequest{
    TableName:  "testTable",
    TunnelName: "testTunnel",
    Type:       tunnel.TunnelTypeBaseStream, // Create a differential tunnel.
+```
+
+`}`
+
+```
 resp, err := tunnelClient.CreateTunnel(req) if err != nil {
    log.Fatal("create test tunnel failed", err)
+```
+
+`}`
+
+```
 log.Println("tunnel id is", resp.TunnelId)
 ```
 
@@ -60369,15 +67136,25 @@ log.Println("tunnel id is", resp.TunnelId)
     fmt.Println("user-defined information", ctx.CustomValue)
     for _, rec := range records {
         fmt.Println("tunnel record detail:", rec.String())
+```
+
+`}`
+
+```
     fmt.Println("a round of records consumption finished")
     return nil
+```
+
+`}`
+
+```
 // Configure the callback function in the SimpleProcessFactory operation and configur e the TunnelWorkerConfig operation. workConfig := &tunnel.TunnelWorkerConfig{
    ProcessorFactory: &tunnel.SimpleProcessFactory{
       CustomValue: "user custom interface{} value",
       ProcessFunc: exampleConsumeFunction,
 ```
 
-`},`
+`},` `}`
 
 ```
 // Use TunnelDaemon to continuously consume data by using the specified tunnel. daemon := tunnel.NewTunnelDaemon(tunnelClient, tunnelId, workConfig) log.Fatal(daemon.Run())
@@ -60390,8 +67167,18 @@ req := &tunnel.CreateTunnelRequest{
    TableName:  "testTable",
    TunnelName: "testTunnel",
    Type:       tunnel.TunnelTypeBaseStream, // Create a differential tunnel.
+```
+
+`}`
+
+```
 resp, err := tunnelClient.CreateTunnel(req) if err != nil {
    log.Fatal("create test tunnel failed", err)
+```
+
+`}`
+
+```
 log.Println("tunnel id is", resp.TunnelId)
 ```
 
@@ -60401,8 +67188,18 @@ log.Println("tunnel id is", resp.TunnelId)
 req := &tunnel.DescribeTunnelRequest{
    TableName:  "testTable",
    TunnelName: "testTunnel",
+```
+
+`}`
+
+```
 resp, err := tunnelClient.DescribeTunnel(req) if err != nil {
    log.Fatal("describe test tunnel failed", err)
+```
+
+`}`
+
+```
 log.Println("tunnel id is", resp.Tunnel.TunnelId)
 ```
 
@@ -60412,9 +67209,16 @@ log.Println("tunnel id is", resp.Tunnel.TunnelId)
 req := &tunnel.DeleteTunnelRequest {
    TableName: "testTable",
    TunnelName: "testTunnel",
+```
+
+`}`
+
+```
 _, err := tunnelClient.DeleteTunnel(req) if err != nil {
    log.Fatal("delete test tunnel failed", err)
 ```
+
+`}`
 
 ###### 4.3.3.4.5.3 Configuration items
 
@@ -60433,6 +67237,8 @@ var DefaultTunnelConfig = &TunnelConfig{
       // Specify http.DefaultTransport.
       Transport:           http.DefaultTransport,
 ```
+
+`}`
 
 **Worker**
 
@@ -60458,7 +67264,7 @@ most cases, the callback function is used to initialize the SimpleProcessFactory
    LogWriteSyncer zapcore.WriteSyncer
 ```
 
-ProcessorFactory is used to configure information such as the callback function information. We recommend that you use the SimpleProcessorFactory operation that is defined in Tablestore SDK for Go.
+`}` ProcessorFactory is used to configure information such as the callback function information. We recommend that you use the SimpleProcessorFactory operation that is defined in Tablestore SDK for Go.
 
 ```
 type SimpleProcessFactory struct {
@@ -60477,6 +67283,8 @@ f an error is returned from ProcessFunc, the worker sends retry requests to Proc
 itialize the logger.
    Logger *zap.Logger
 ```
+
+`}`
 
 **Log management**
 
@@ -60509,7 +67317,7 @@ The following examples show the default configurations of logs and log rotation:
       EncodeCaller:   zapcore.ShortCallerEncoder,
 ```
 
-`},` Default configurations of log rotation
+`},` `}` Default configurations of log rotation
 
 ```
 // By default, DefaultSyncer is used in the TunnelWorkerConfig and SimpleProcessFactory operations to configure log rotation. var DefaultSyncer = zapcore.AddSync(&lumberjack.Logger{
@@ -60541,6 +67349,8 @@ message Error {
     optional string message = 2;
     optional string tunnel_id = 3;
 ```
+
+`}`
 
 **Error codes**
 
@@ -60688,7 +67498,7 @@ var client = require('./client'); var params = {
         type: 'INTEGER'
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```
   reservedThroughput: {
@@ -60697,7 +67507,7 @@ var client = require('./client'); var params = {
       write: 0
 ```
 
-`},`
+`}` `},`
 
 ```
   tableOptions: {
@@ -60707,13 +67517,18 @@ that the data never expires. Unit: seconds. If you want to specify the validity 
 for each column. A value of 1 specifies that only the latest version is retained fo r each column.
 ```
 
-};
+`}` };
 
 ```
 client.createTable(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -60741,7 +67556,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var p
         type: TableStore.PrimaryKeyType.INTEGER
 ```
 
-`],`
+`}` `],`
 
 ```
     definedColumn: [
@@ -60761,7 +67576,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var p
         "type": TableStore.DefinedColumnType.DCT_INTEGER
 ```
 
-`],` `},`
+`}` `],` `},`
 
 ```
   reservedThroughput: {
@@ -60770,7 +67585,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var p
       write: 0
 ```
 
-`},`
+`}` `},`
 
 ```
   tableOptions: {
@@ -60810,7 +67625,7 @@ xes.
       definedColumn: ["col2"]
 ```
 
-`]` };
+`}` `]` };
 
 ```
 client.createTable(params, function (err, data) {
@@ -60847,7 +67662,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var p
         type: TableStore.PrimaryKeyType.INTEGER
 ```
 
-`],`
+`}` `],`
 
 ```
     definedColumn: [
@@ -60867,7 +67682,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var p
         "type": TableStore.DefinedColumnType.DCT_INTEGER
 ```
 
-`],` `},`
+`}` `],` `},`
 
 ```
   reservedThroughput: {
@@ -60876,7 +67691,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var p
       write: 0
 ```
 
-`},`
+`}` `},`
 
 ```
   tableOptions: {
@@ -60936,13 +67751,18 @@ pdate mode to IUM_SYNC_INDEX, which indicates that the index is updated in synch
 IT_LOCAL_INDEX, which indicates a local secondary index.
 ```
 
-`]` };
+`}` `]` };
 
 ```
 client.createTable(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -60969,6 +67789,11 @@ var client = require('./client'); client.listTable({}, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -60999,13 +67824,18 @@ var client = require('./client'); var params = {
         maxVersions: 5,
 ```
 
-};
+`}` };
 
 ```
 client.updateTable(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -61042,6 +67872,11 @@ client.describeTable(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -61077,6 +67912,11 @@ client.deleteTable(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -61154,6 +67994,11 @@ client.putRow(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -61212,6 +68057,11 @@ client.updateRow(params,
         if (err) {
             console.log('error:', err);
             return;
+```
+
+`}`
+
+```
         console.log('success:', data);
     });
 ```
@@ -61282,13 +68132,18 @@ TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
 Number(20018) }],
 ```
 
-`]` `],` };
+`}` `]` `}` `],` };
 
 ```
 client.batchWriteRow(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -61353,6 +68208,11 @@ var condition = new TableStore.CompositeCondition(TableStore.LogicalOperator.AND
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -61404,7 +68264,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var L
             [{ 'gid': Long.fromNumber(10001) }, { 'uid': Long.fromNumber(10001) }]
 ```
 
-`]` `],` };
+`]` `}` `],` };
 
 ```
 var maxRetryTimes = 3; var retryCount = 0; function batchGetRow(params) {
@@ -61436,15 +68296,40 @@ var maxRetryTimes = 3; var retryCount = 0; function batchGetRow(params) {
                         var kp = {};
                         kp[name] = value;
                         pks.push(kp);
+```
+
+`}`
+
+```
                     failedRequest.primaryKey.push(pks);
                 } else {
                     // get success data
+```
+
+`}` `}`
+
+```
             if (failedRequest.primaryKey.length > 0) {
                 retryRequest.tables.push(failedRequest);
+```
+
+`}` `}`
+
+```
         if (!isAllSuccess && retryCount++ < maxRetryTimes) {
             batchGetRow(retryRequest);
+```
+
+`}`
+
+```
         console.log('success:', data);
     });
+```
+
+`}`
+
+```
 batchGetRow(params, maxRetryTimes);
 ```
 
@@ -61514,9 +68399,19 @@ client.getRange(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   // If the value of the data.next_start_primary_key parameter is not empty, the syst
 em continues to read data.
   if (data.next_start_primary_key) {
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -61573,6 +68468,11 @@ client.deleteRow(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -61624,10 +68524,21 @@ var client = require('./client'); var TableStore = require('../index.js'); clien
         indexUpdateMode: TableStore.IndexUpdateMode.IUM_ASYNC_INDEX,// By default, th
 e indexUpdateMode parameter is set to IUM_ASYNC_INDEX.
         indexType: TableStore.IndexType.IT_GLOBAL_INDEX,// By default, the indexType
-parameter is set to IT_GLOBAL_INDEX. }, function (err, data) {
+parameter is set to IT_GLOBAL_INDEX.
+```
+
+`}`
+
+```
+}, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -61649,6 +68560,11 @@ client.getRow(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -61670,12 +68586,17 @@ TableStore.INF_MAX }],
 
 };
 
-```json
+```
 var resultRows = [] var getRange = function () {
   client.getRange(params, function (err, data) {
     if (err) {
       console.log('error:', err);
       return;
+```
+
+`}`
+
+```json
     resultRows = resultRows.concat(data.rows)
     // If the value of the data.next_start_primary_key parameter is not empty, the
 system continues to read data.
@@ -61691,7 +68612,17 @@ system continues to read data.
       getRange()
     } else {
       console.log(JSON.stringify(resultRows));
+```
+
+`}`
+
+```
   });
+```
+
+`}`
+
+```
 getRange()
 ```
 
@@ -61716,6 +68647,11 @@ var client = require('./client'); client.dropIndex({
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -61757,10 +68693,21 @@ first primary key column of the index table must be the same as the first primar
         indexUpdateMode: TableStore.IndexUpdateMode.IUM_SYNC_INDEX,// Set the
 indexUpdateMode parameter to IUM_SYNC_INDEX, which indicates that the index is update d in synchronous mode. If the indexType parameter is set to IT_LOCAL_INDEX, you must set the indexUpdateMode parameter to IUM_SYNC_INDEX.
         indexType: TableStore.IndexType.IT_LOCAL_INDEX,// Set the indexType parameter
-to IT_LOCAL_INDEX, which indicates a local secondary index. }, function (err, data) {
+to IT_LOCAL_INDEX, which indicates a local secondary index.
+```
+
+`}`
+
+```
+}, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -61783,6 +68730,11 @@ client.getRow(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -61803,12 +68755,17 @@ TableStore.INF_MIN }, { "pk2": TableStore.INF_MAX }],
 
 };
 
-```json
+```
 var resultRows = [] var getRange = function () {
   client.getRange(params, function (err, data) {
     if (err) {
       console.log('error:', err);
       return;
+```
+
+`}`
+
+```json
     resultRows = resultRows.concat(data.rows)
     // If the value of the data.next_start_primary_key parameter is not empty, the
 system continues to read data.
@@ -61825,7 +68782,17 @@ system continues to read data.
       getRange()
     } else {
       console.log(JSON.stringify(resultRows));
+```
+
+`}`
+
+```
   });
+```
+
+`}`
+
+```
 getRange()
 ```
 
@@ -61850,6 +68817,11 @@ var client = require('./client'); client.dropIndex({
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -61999,14 +68971,24 @@ sorted based on the primary key in ascending order.
 in which data is sorted.
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```
         timeToLive: 1000000, // Unit: seconds.
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:',data);
 });
 ```
@@ -62065,11 +69047,21 @@ let params = {
     tableName: tableName,
     indexName: indexName,
     timeToLive: 8000000,
+```
+
+`}`
+
+```
 client.updateSearchIndex(params, function (err, data) {
     if (err) {
         console.log('updateSearchIndex error:', err.toString());
     } else {
         console.log('updateSearchIndex success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -62098,6 +69090,11 @@ client.describeSearchIndex({
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62129,6 +69126,11 @@ client.deleteSearchIndex({
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -62182,7 +69184,7 @@ ithout specific data, set the limit parameter to 0.
                 term: "hangzhou"
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specify whether to return the total number of rows that
@@ -62195,10 +69197,20 @@ meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62254,7 +69266,7 @@ ithout specific data, set the limit parameter to 0.
                 terms: ["hangzhou", "shanghai"]
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specify whether to return the total number of rows that
@@ -62267,10 +69279,20 @@ meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62335,10 +69357,20 @@ meet the query conditions. Default value: false.
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_SPECIFIED,
         returnNames: ["Col_1", "Col_2", "Col_3"]
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62398,7 +69430,7 @@ t to query.
 of the column.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specify whether to return the total number of rows that
@@ -62411,10 +69443,20 @@ meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62472,7 +69514,7 @@ o query.
 he value of the column.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows
@@ -62485,10 +69527,20 @@ that meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62541,7 +69593,7 @@ ithout specific data, set the limit parameter to 0.
 s "hangzhou" or "hangzhoushi".
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows
@@ -62554,10 +69606,20 @@ that meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62619,7 +69681,7 @@ in the range.
 om the range.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows
@@ -62632,10 +69694,20 @@ that meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62690,7 +69762,7 @@ ithout specific data, set the limit parameter to 0.
 characters to perform a wildcard query.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows
@@ -62703,10 +69775,20 @@ that meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62760,7 +69842,7 @@ without specific data, set the limit parameter to 0.
 smaller than or equal to 10,000. Unit: meter.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows t
@@ -62773,10 +69855,20 @@ hat meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the pa
 rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all col umns, RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to return only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62822,7 +69914,7 @@ er of the rectangular geographic area.
 corner of the rectangular geographic area.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows t
@@ -62835,10 +69927,20 @@ hat meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the pa
 rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all col umns, RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to return only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62879,7 +69981,7 @@ without specific data, set the limit parameter to 0.
 tices of the polygon geographic area.
 ```
 
-`},`
+`}` `},`
 
 ```
         getTotalCount: true // Specifies whether to return the total number of rows t
@@ -62892,10 +69994,20 @@ hat meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the pa
 rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all col umns, RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to return only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -62972,7 +70084,7 @@ the rows in which the value of the col2 column is smaller than 4.
                                         rangeTo: 4
 ```
 
-`},` `{`
+`}` `},` `{`
 
 ```
                                     // Query Condition 2: Perform a range query to query
@@ -63011,7 +70123,7 @@ he rows in which the value of the col2 column is 4.
                                         term: 4
 ```
 
-`},`
+`}` `},`
 
 ```
                                 { // Construct boolQuery2: Specify the query condition
@@ -63035,7 +70147,7 @@ TableStore.QueryType.TERM_QUERY,
                                                     term: 5
 ```
 
-`},` `{`
+`}` `},` `{`
 
 ```
                                                 // Query Condition 5: Perform a term
@@ -63045,13 +70157,13 @@ query to query the rows in which the value of the col3 column is 6. queryType: T
                                                     term: 6
 ```
 
-`],`
+`}` `}` `],`
 
 ```
                                         minimumShouldMatch:1
 ```
 
-`]` `],`
+`}` `}` `]` `}` `],`
 
 ```
                 minimumShouldMatch: 1 // Specify the minimum number of conditions that m
@@ -63068,10 +70180,20 @@ ust be met. This parameter is valid if subquery conditions are specified only by
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_SPECIFIED,
         returnNames: ["col2", "col3", "col4"]
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -63131,10 +70253,20 @@ meet the query conditions. Default value: false.
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_SPECIFIED,
         returnNames: ["Col_1", "Col_2", "Col_3"]
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -63203,11 +70335,21 @@ meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all 
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63261,7 +70403,7 @@ ithout specific data, set the limit parameter to 0.
                         term: "Kaixin"
 ```
 
-`},` `},`
+`}` `},` `}` `},`
 
 ```
         getTotalCount: true // Specify whether to return the total number of rows that
@@ -63274,10 +70416,20 @@ meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the para
 meter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns , RETURN_ALL_FROM_INDEX to return all columns in the search index, or RETURN_NONE to re turn only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -63375,11 +70527,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63439,6 +70601,11 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
@@ -63501,11 +70668,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63565,6 +70742,11 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
@@ -63632,11 +70814,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63700,11 +70892,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63768,11 +70970,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63904,11 +71116,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -63983,11 +71205,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -64068,6 +71300,11 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
@@ -64144,11 +71381,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -64238,11 +71485,21 @@ RETURN_SPECIFIED to return specified columns, RETURN_ALL to return all columns, 
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -64329,11 +71586,21 @@ rameter to RETURN_SPECIFIED to return specified columns, RETURN_ALL to return al
 
 ```
     timeoutMs: 30000,
+```
+
+`}`
+
+```
 client.search(params, function (err, data) {
     if (err) {
         console.log('search error:', err.toString());
     } else {
         console.log('search success:', data);
+```
+
+`}`
+
+```
 });
 ```
 
@@ -64370,6 +71637,11 @@ A TableStoreClient instance is initialized. For more information, see Initializa
         tableName: tableName,
         searchIndexSplitsOptions: {
             indexName: indexName,
+```
+
+`}`
+
+```
     }, function (err, data) {
         if (err) {
             console.log('computeSplits error:', err.toString());
@@ -64379,7 +71651,7 @@ A TableStoreClient instance is initialized. For more information, see Initializa
             resolve(data)
 ```
 
-`})` `})`
+`}` `})` `})`
 
 ```
 // 2. Specify query conditions. const scanQuery = {
@@ -64395,6 +71667,11 @@ A TableStoreClient instance is initialized. For more information, see Initializa
     token: undefined,
     currentParallelId: 0,
     maxParallel: 1,
+```
+
+`}`
+
+```
 // 3. Create a ParallelScan request. In this example, a synchronous request is created. You can create an asynchronous request based on your business requirement. const parallelScanPromise = function () {
     return new Promise(function (resolve, reject) {
         client.parallelScan({
@@ -64416,10 +71693,15 @@ A TableStoreClient instance is initialized. For more information, see Initializa
             } else {
                 console.log("parallelScan, rows:", data.rows.length)
                 resolve(data)
+```
+
+`}`
+
+```
         });
 ```
 
-`})`
+`})` `}`
 
 ```
 let totalCount = 0 // Specify that the total number of rows that meet the query conditi ons is returned. let parallelScanResponse = await parallelScanPromise() totalCount = totalCount + parallelScanResponse.rows.length // 4. Pull data by using an iterator until all data is pulled. while (parallelScanResponse.nextToken !== null && parallelScanResponse.nextToken.length
@@ -64427,6 +71709,11 @@ let totalCount = 0 // Specify that the total number of rows that meet the query 
     scanQuery.token = parallelScanResponse.nextToken
     parallelScanResponse = await parallelScanPromise()
     totalCount += parallelScanResponse.rows.length
+```
+
+`}`
+
+```
 console.log("total rows:", totalCount)
 ```
 
@@ -64478,7 +71765,7 @@ sort: {
                 order: TableStore.SortOrder.SORT_ORDER_ASC
 ```
 
-`]`
+`}` `}` `]` `}`
 
 **PrimaryKeySort**
 
@@ -64499,7 +71786,7 @@ sed on the primary key value in the descending order.
 ased on the primary key value in the ascending order.
 ```
 
-`]`
+`}` `}` `]`
 
 **FieldSort**
 
@@ -64518,7 +71805,7 @@ sort: {
                 order: TableStore.SortOrder.SORT_ORDER_DESC
 ```
 
-`]` You can also sort query results based on the values of two columns in specific orders to determine the order in which the matched data is returned.
+`}` `}` `]` `}` You can also sort query results based on the values of two columns in specific orders to determine the order in which the matched data is returned.
 
 ```
 sort: {
@@ -64533,7 +71820,7 @@ sort: {
                 order: TableStore.SortOrder.SORT_ORDER_DESC
 ```
 
-`},` `{`
+`}` `},` `{`
 
 ```
             fieldSort: {
@@ -64541,7 +71828,7 @@ sort: {
                 order: TableStore.SortOrder.SORT_ORDER_DESC
 ```
 
-`]`
+`}` `}` `]` `}`
 
 **GeoDistanceSort**
 
@@ -64562,7 +71849,7 @@ sort: {
 rned in ascending order based on the distances between geographical locations and the c entral point.
 ```
 
-`]`
+`}` `}` `]`
 
 **Specify a paging method**
 
@@ -64589,6 +71876,11 @@ client.search({
         limit: 10,
         query: {
             queryType: TableStore.QueryType.MATCH_ALL_QUERY
+```
+
+`}`
+
+```
         getTotalCount: true // Specify whether to return the total number of rows that
 meet the query conditions. Default value: false.
 ```
@@ -64599,10 +71891,20 @@ meet the query conditions. Default value: false.
     columnToGet: { // Specify the columns that you want to return. You can set the colu
 mnToGet parameter to RETURN_SPECIFIED to return the specified columns, RETURN_ALL to re turn all columns, or RETURN_NONE to return only the primary key columns.
         returnType: TableStore.ColumnReturnType.RETURN_ALL
+```
+
+`}`
+
+```
 }, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', JSON.stringify(data, null, 2));
 });
 ```
@@ -64647,7 +71949,7 @@ The token is a byte stream.
         returnNames: ["pic_tag", "pic_description", "time_stemp", "pos"]
 ```
 
-};
+`}` };
 
 ```
 /**
@@ -64700,6 +72002,11 @@ Buffer object, and then use the binary data as the value of a parameter.
         client.search(params, function (err, data) {
             console.log('token success:', JSON.stringify(data, null, 2));
         });
+```
+
+`}`
+
+```
 });
 ```
 
@@ -64885,6 +72192,11 @@ key columns.
 the operation is successful.
      otsClient.CreateTable(request);
      Console.WriteLine("Create table succeeded.");
+```
+
+`}`
+
+```
  // If an exception is returned, the operation fails. Handle the exception.
  catch (Exception ex)
 ```
@@ -64895,7 +72207,7 @@ the operation is successful.
      Console.WriteLine("Create table failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see CreateTable@GitHub. Create a data table with an index
+`}` For more information about the complete sample code, see CreateTable@GitHub. Create a data table with an index
 
 ```
 public static void CreateTableWithGlobalIndex()
@@ -64946,6 +72258,8 @@ reservedThroughput, indexMetas);
     Console.WriteLine("Table is created: " + TableName);
 ```
 
+`}`
+
 **ListTable**
 
 You can call this operation to query the names of all tables in the current instance. API operation
@@ -64981,7 +72295,17 @@ Example The following sample code provides an example on how to obtain the names
 
 ```
          Console.WriteLine("Table name:{0}", tableName);
+```
+
+`}`
+
+```
      Console.Writeline("List table succeeded.");
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -64990,6 +72314,8 @@ Example The following sample code provides an example on how to obtain the names
 ```
      Console.WriteLine("List table failed, exception:{0}", ex.Message);
 ```
+
+`}`
 
 **UpdateTable**
 
@@ -65029,6 +72355,11 @@ ble.
      otsClient.UpdateTable(request);
      // If no exception is returned, the operation is successful.
      Console.Writeline("Update table succeeded.");
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -65039,7 +72370,7 @@ ble.
      Console.WriteLine("Update table failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see UpdateTable@GitHub.
+`}` For more information about the complete sample code, see UpdateTable@GitHub.
 
 **DescribeTable**
 
@@ -65083,6 +72414,11 @@ response.ReservedThroughputDetails.LastIncreaseTime);
 response.ReservedThroughputDetails.CapacityUnit.Read);
      Console.WriteLine("WriteCapacity: {0}",
 response.ReservedThroughputDetails.CapacityUnit.Write);
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -65093,7 +72429,7 @@ response.ReservedThroughputDetails.CapacityUnit.Write);
      Console.WriteLine("Describe table failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see DescribeTable@GitHub.
+`}` For more information about the complete sample code, see DescribeTable@GitHub.
 
 **DeleteTable**
 
@@ -65126,6 +72462,11 @@ Example The following sample code provides an example on how to delete a table:
 ```
      otsClient.DeleteTable(request);
      Console.Writeline("Delete table succeeded.");
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -65135,7 +72476,7 @@ Example The following sample code provides an example on how to delete a table:
      Console.WriteLine("Delete table failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see DeleteTable@GitHub.
+`}` For more information about the complete sample code, see DeleteTable@GitHub.
 
 ###### 4.3.5.4.2 Basic operations on data
 
@@ -65194,6 +72535,11 @@ Condition(RowExistenceExpectation.IGNORE),
     otsClient.PutRow(request);
     // If no exception is returned, the operation is successful.
     Console.WriteLine("Put row succeeded.");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65204,7 +72550,7 @@ catch (Exception ex)
     Console.WriteLine("Put row failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see PutRow@GitHub. Example 2 The following sample code provides an example on how to insert a row of data based on specified conditions. In the following example, data is inserted only when the row exists and the value of the col0 column is greater than 24.
+`}` For more information about the complete sample code, see PutRow@GitHub. Example 2 The following sample code provides an example on how to insert a row of data based on specified conditions. In the following example, data is inserted only when the row exists and the value of the col0 column is greater than 24.
 
 ```
 // Specify the primary key of the row. The primary key must be the same as the primar y key that is specified in TableMeta when the table is created. var primaryKey = new PrimaryKey(); primaryKey.Add("pk0", new ColumnValue(0)); primaryKey.Add("pk1", new ColumnValue("abc")); // Specify the attribute columns of the row. AttributeColumns attribute = new AttributeColumns(); attribute.Add("col0", new ColumnValue(0)); attribute.Add("col1", new ColumnValue("a")); attribute.Add("col2", new ColumnValue(true)); // If the value of the col0 column is greater than 24, the row is inserted, and the o riginal value is overwritten. try
@@ -65221,6 +72567,11 @@ RelationalCondition.CompareOperator.GREATER_THAN,
                                         new ColumnValue(24));
     otsClient.PutRow(request);
     Console.WriteLine("Put row succeeded.");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65230,7 +72581,7 @@ catch (Exception ex)
     Console.WriteLine("Put row failed. error:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see ConditionPutRow@GitHub. Example 3 The following sample code provides an example on how to insert a row of data in asynchronous mode.
+`}` For more information about the complete sample code, see ConditionPutRow@GitHub. Example 3 The following sample code provides an example on how to insert a row of data in asynchronous mode.
 
 > **Important:** Each asynchronous invocation starts a thread. A timeout error may occur if too many asynchronous invocations are consecutively started, and each invocation consumes an extended period of time.
 
@@ -65262,6 +72613,11 @@ e primary key that is specified in TableMeta when the table is created.
 Condition(RowExistenceExpectation.IGNORE),
                                         primaryKey, attribute);
         putRowTaskList.Add(TabeStoreClient.PutRowAsync(request));
+```
+
+`}`
+
+```
     // Wait until each asynchronous invocation returns results and displays the consu
 med CUs.
     foreach (var task in putRowTaskList)
@@ -65274,8 +72630,18 @@ med CUs.
         Console.WriteLine("consumed read:{0}, write:{1}",
 task.Result.ConsumedCapacityUnit.Read,
                             task.Result.ConsumedCapacityUnit.Write);
+```
+
+`}`
+
+```
     // If no exception is returned, the operation is successful.
     Console.WriteLine("Put row async succeeded.");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65286,7 +72652,7 @@ catch (Exception ex)
     Console.WriteLine("Put row async failed. exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see PutRowAsync@GitHub.
+`}` For more information about the complete sample code, see PutRowAsync@GitHub.
 
 **Update a row of data**
 
@@ -65329,6 +72695,11 @@ Condition(RowExistenceExpectation.IGNORE),
     otsClient.UpdateRow(request);
     // If no exception is returned, the operation is successful.
     Console.Writeline("Update row succeeded.");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65339,7 +72710,7 @@ catch (Exception ex)
     Console.WriteLine("Update row failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see UpdateRow@GitHub.
+`}` For more information about the complete sample code, see UpdateRow@GitHub.
 
 **Write multiple rows of data at a time**
 
@@ -65373,7 +72744,13 @@ Example The following sample code provides an example on how to write 100 rows o
     attribute.AddAttributeColumnToPut("col1", new ColumnValue("a"));
     attribute.AddAttributeColumnToPut("col2", new ColumnValue(true));
     rowChanges.AddUpdate(new Condition(RowExistenceExpectation.IGNORE), primaryKey, a
-ttribute); request.Add(TableName, rowChanges); try
+ttribute);
+```
+
+`}`
+
+```
+request.Add(TableName, rowChanges); try
 ```
 
 `{`
@@ -65384,7 +72761,13 @@ ttribute); request.Add(TableName, rowChanges); try
     var tableRows = response.TableRespones;
     var rows = tableRows[TableName];
     // When you call the BatchGetRow operation to write multiple rows at a time, some
-rows may fail to be written. You must check the return values to determine whether da ta is successfully written into each row. For more information about the complete sam ple code, visit the GitHub link of the sample code file. catch (Exception ex)
+rows may fail to be written. You must check the return values to determine whether da ta is successfully written into each row. For more information about the complete sam ple code, visit the GitHub link of the sample code file.
+```
+
+`}`
+
+```
+catch (Exception ex)
 ```
 
 `{`
@@ -65394,7 +72777,7 @@ rows may fail to be written. You must check the return values to determine wheth
     Console.WriteLine("Batch put row failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see BatchWriteRow@GitHub.
+`}` For more information about the complete sample code, see BatchWriteRow@GitHub.
 
 ###### 4.3.5.4.2.2 Read data
 
@@ -65448,6 +72831,11 @@ pecified.
 to return the data of the row is omitted. For more information about the complete sam ple code, visit the GitHub link of the sample code file.
         // If no exception is returned, the operation is successful.
         Console.WriteLine("Get row succeeded.");
+```
+
+`}`
+
+```
     catch (Exception ex)
 ```
 
@@ -65458,7 +72846,7 @@ to return the data of the row is omitted. For more information about the complet
         Console.WriteLine("Update table failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see GetRow@GitHub. Example 2 The following sample code provides an example on how to read a row of data when a filter is used. In this example, the values of the col0 and col1 columns that meet the following filter conditions are returned: the value of the col0 column is 5 or the value of the col1 column is not ff.
+`}` For more information about the complete sample code, see GetRow@GitHub. Example 2 The following sample code provides an example on how to read a row of data when a filter is used. In this example, the values of the col0 and col1 columns that meet the following filter conditions are returned: the value of the col0 column is 5 or the value of the col1 column is not ff.
 
 ```
     // Specify the primary key of the row. The primary key must be the same as the pr
@@ -65499,6 +72887,11 @@ the values of the col0 and col1 columns, and then returns the rows that meet the
 code that is used to return data or perform the related logical operation is omitted.
         // If no exception is returned, the operation is successful.
         Console.WriteLine("Get row with filter succeeded.");
+```
+
+`}`
+
+```
     catch (Exception ex)
 ```
 
@@ -65538,6 +72931,11 @@ Example The following sample code provides an example on how to read 10 rows of 
     primaryKey.Add("pk0", new ColumnValue(i));
     primaryKey.Add("pk1", new ColumnValue("abc"));
     primaryKeys.Add(primaryKey);
+```
+
+`}`
+
+```
 try
 ```
 
@@ -65553,7 +72951,13 @@ try
     // Return the data of the rows. In this example, the sample code that is used to
 return the data of the rows is omitted. For more information about the complete sampl e code, visit the GitHub link of the sample code file.
     // When you call the BatchGetRow operation to read multiple rows at a time, some
-rows may fail to be read. You must check the return values to determine whether data is successfully read from each row. For more information about the complete sample co de, visit the GitHub link of the sample code file. catch (Exception ex)
+rows may fail to be read. You must check the return values to determine whether data is successfully read from each row. For more information about the complete sample co de, visit the GitHub link of the sample code file.
+```
+
+`}`
+
+```
+catch (Exception ex)
 ```
 
 `{`
@@ -65563,7 +72967,7 @@ rows may fail to be read. You must check the return values to determine whether 
     Console.WriteLine("Batch get row failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see BatchGetRow@GitHub.
+`}` For more information about the complete sample code, see BatchGetRow@GitHub.
 
 **Read data whose primary key values are in the specified range**
 
@@ -65632,10 +73036,20 @@ ecified range.
 
 ```
             rows.Add(row);
+```
+
+`}` `}`
+
+```
     // Return the data of the rows. In this example, the sample code that is used to
 return the data of the rows is omitted. For more information about the complete sampl e code, visit the GitHub link of the sample code file.
     // If no exception is returned, the operation is successful.
     Console.WriteLine("Get range succeeded");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65646,7 +73060,7 @@ catch (Exception ex)
     Console.WriteLine("Get range failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see GetRange@GitHub.
+`}` For more information about the complete sample code, see GetRange@GitHub.
 
 **Read data whose primary key values are in the specified range**
 
@@ -65680,7 +73094,17 @@ iveStartPrimaryKey,
 
 ```
         // Execute the processing logic.
+```
+
+`}`
+
+```
     Console.WriteLine("Iterate row succeeded");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65690,7 +73114,7 @@ catch (Exception ex)
     Console.WriteLine("Iterate row failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see GetRangeIterator@GitHub.
+`}` For more information about the complete sample code, see GetRangeIterator@GitHub.
 
 ###### 4.3.5.4.2.3 Delete data
 
@@ -65735,6 +73159,11 @@ Condition(RowExistenceExpectation.EXPECT_EXIST), primaryKey);
     otsClient.DeleteRow(deleteRowRequest);
     // If no exception is returned, the operation is successful.
     Console.Writeline("Delete table succeeded.");
+```
+
+`}`
+
+```
 catch (Exception ex)
 ```
 
@@ -65745,7 +73174,7 @@ catch (Exception ex)
     Console.WriteLine("Delete table failed, exception:{0}", ex.Message);
 ```
 
-For more information about the complete sample code, see DeleteRow@GitHub.
+`}` For more information about the complete sample code, see DeleteRow@GitHub.
 
 **Delete multiple rows of data at a time**
 
@@ -65797,6 +73226,8 @@ eta);
     Console.WriteLine("Global Index is created,tableName: " + TableName +
 ",IndexName:" + IndexName2);
 ```
+
+`}`
 
 **Read data from an index table**
 
@@ -65862,14 +73293,29 @@ nextStartPrimaryKey, exclusiveEndPrimaryKey);
 
 ```
             rows.Add(row);
+```
+
+`}` `}`
+
+```
     foreach (var row in rows)
 ```
 
 `{`
 
-```java
+```
         PrintRow(row);
+```
+
+`}`
+
+```
     Console.WriteLine("TotalRowsRead: " + rows.Count);
+```
+
+`}`
+
+```java
 private static void PrintRow(Row row)
 ```
 
@@ -65894,8 +73340,15 @@ private static void PrintRow(Row row)
 
 ```
         Console.WriteLine(entry.Name + ":" + PrintColumnValue(entry.Value));
+```
+
+`}`
+
+```
     Console.WriteLine("-----------------");
 ```
+
+`}`
 
 **Delete an index table by calling the DeleteIndex operation**
 
@@ -65926,6 +73379,8 @@ Name2);
     Console.WriteLine("Global Index is deleted,tableName: " + TableName +
 ",IndexName:" + IndexName + "," + IndexName2);
 ```
+
+`}`
 
 ###### 4.3.5.4.4 Search index
 
@@ -66004,7 +73459,7 @@ index=true,EnableSortAndAgg=true},
     Console.WriteLine("Searchindex is created: " + IndexName);
 ```
 
-Example 2 The following sample code provides an example on how to create a search index with the IndexSort parameter specified:
+`}` Example 2 The following sample code provides an example on how to create a search index with the IndexSort parameter specified:
 
 ```
 /// <summary> /// Create a search index that contains the Keyword_type_col, Long_type_col, and Text _type_col attribute columns. Set the type of data in the Keyword_type_col column to K eyword, in the Long_type_col column to Long, and in the Text_type_col column to Text. /// </summary> /// <param name="otsClient"></param> public static void CreateSearchIndexWithIndexSort(OTSClient otsClient)
@@ -66059,12 +73514,14 @@ Long_type_col column and enable sorting and aggregation for the column.
 DataModel.Search.Sort.SortOrder.ASC)
 ```
 
-};
+`}` `}` };
 
 ```
     CreateSearchIndexResponse response = otsClient.CreateSearchIndex(request);
     Console.WriteLine("Searchindex is created: " + IndexName);
 ```
+
+`}`
 
 ###### 4.3.5.4.4.2 List search indexes
 
@@ -66103,6 +73560,8 @@ A TableStoreClient instance is initialized. For more information, see Initializa
         Console.WriteLine("tablename:" + index.TableName);
 ```
 
+`}` `}`
+
 ###### 4.3.5.4.4.3 Query the description of a search index
 
 This topic describes how to query the description of a search index, including the information about the columns in the search index and configurations of the search index.
@@ -66134,6 +73593,8 @@ xName);
     string serializedObjectString = JsonConvert.SerializeObject(response);
     Console.WriteLine(serializedObjectString); // Display the details of the response.
 ```
+
+`}`
 
 ###### 4.3.5.4.4.4 Delete a search index
 
@@ -66217,6 +73678,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66227,6 +73693,8 @@ y, all columns in the rows that meet the query conditions, or all columns in the
     var response = otsClient.Search(request);
     // Check whether the NextToken parameter is returned.
 ```
+
+`}`
 
 ###### 4.3.5.4.4.6 Perform a terms query
 
@@ -66289,6 +73757,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66299,6 +73772,8 @@ y, all columns in the rows that meet the query conditions, or all columns in the
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 ###### 4.3.5.4.4.7 Perform a match all query
 
@@ -66355,6 +73830,8 @@ of the isAllSuccess parameter is false, Tablestore may fail to query data on som
     Console.WriteLine("Total Count:" + response.TotalCount);
 ```
 
+`}`
+
 ###### 4.3.5.4.4.8 Perform a match query
 
 You can call the MatchQuery operation to perform match queries on the data in a table based on approximate matches. Tablestore tokenizes the values of the columns that are of the TEXT type and the keywords that you use to perform match queries based on the analyzer that you specify. Therefore, Tablestore can perform match queries based on the tokens. We recommend that you call the MatchPhraseQuery operation to perform match phrase queries on columns for which fuzzy tokenization is used to ensure high-performance fuzzy queries.
@@ -66409,6 +73886,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66420,6 +73902,8 @@ y, all columns in the rows that meet the query conditions, or all columns in the
     Console.WriteLine("Total Count:" + response.TotalCount); // Display the total numbe
 r of rows that meet the query conditions instead of the number of returned rows.
 ```
+
+`}`
 
 ###### 4.3.5.4.4.9 Perform a match phrase query
 
@@ -66470,6 +73954,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66532,6 +74021,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66543,6 +74037,8 @@ y, all columns in the rows that meet the query conditions, or all columns in the
     Console.WriteLine("Total Count:" + response.TotalCount); // Display the total numbe
 r of rows that meet the query conditions instead of the number of returned rows.
 ```
+
+`}`
 
 ###### 4.3.5.4.4.11 Perform a range query
 
@@ -66599,6 +74095,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66661,6 +74162,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66672,6 +74178,8 @@ y, all columns in the rows that meet the query conditions, or all columns in the
     Console.WriteLine("Total Count:" + response.TotalCount); // Display the total numbe
 r of rows that meet the query conditions instead of the number of returned rows.
 ```
+
+`}`
 
 ###### 4.3.5.4.4.13 Perform a geo query
 
@@ -66729,6 +74237,8 @@ eo_type_col column is returned.
     Console.WriteLine(response.TotalCount);
 ```
 
+`}`
+
 **Geo-bounding box query**
 
 Specify a rectangular geographical area as a filter condition to perform a geo-bounding box query. Tablestore returns the rows in which the value of a specific column is within the rectangular geographical area. Parameters
@@ -66775,6 +74285,8 @@ _type_col column is returned.
     SearchResponse response = client.Search(searchRequest);
     Console.WriteLine(response.TotalCount);
 ```
+
+`}`
 
 **Geo-polygon query**
 
@@ -66877,6 +74389,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66895,6 +74412,8 @@ r of rows that meet the query conditions instead of the number of returned rows.
 ```
         PrintRow(row);
 ```
+
+`}` `}`
 
 ###### 4.3.5.4.4.15 Perform a nested query
 
@@ -66946,6 +74465,11 @@ y, all columns in the rows that meet the query conditions, or all columns in the
         ReturnAllFromIndex = true
         // Return the columns that you specify.
         //Columns = new List<string>() { Long_type_col, Text_type_col, Keyword_type_col
+```
+
+`}`
+
+```
         // Return all columns in the rows that meet the query conditions.
         //ReturnAll = true
 ```
@@ -66957,6 +74481,8 @@ y, all columns in the rows that meet the query conditions, or all columns in the
     Console.WriteLine("Total Count:" + response.TotalCount); // Display the total numbe
 r of rows that meet the query conditions instead of the number of returned rows.
 ```
+
+`}`
 
 ###### 4.3.5.4.4.16 Collapse data
 
@@ -67006,6 +74532,8 @@ If you use the collapse feature, you can perform paging only by specifying the O
 ```
         Console.WriteLine(JsonConvert.SerializeObject(row));
 ```
+
+`}` `}`
 
 ###### 4.3.5.4.4.17 Perform an exists query
 
@@ -67070,6 +74598,8 @@ A TableStoreClient instance is initialized. For more information, see Initializa
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 ###### 4.3.5.4.4.18 Sort and page data
 
@@ -67186,8 +74716,15 @@ a is read.
         request.SearchQuery.Token = response.NextToken;
         response = otsClient.Search(request);
         rows.AddRange(response.Rows);
+```
+
+`}`
+
+```
     return response;
 ```
+
+`}`
 
 ###### 4.3.5.4.4.19 Aggregate data
 
@@ -67270,7 +74807,7 @@ Example
             minAggregation
 ```
 
-};
+`}` };
 
 ```
     SearchRequest searchRequest = new SearchRequest(TableName, IndexName,
@@ -67278,6 +74815,8 @@ seachQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
 Console.WriteLine(JsonConvert.SerializeObject(searchResponse.AggregationResults.GetAsMi ggregationResult("Min_Agg")));
 ```
+
+`}`
 
 **Maximum value**
 
@@ -67324,7 +74863,7 @@ Example
             maxAggregation
 ```
 
-};
+`}` };
 
 ```
     SearchRequest searchRequest = new SearchRequest(TableName, IndexName,
@@ -67376,7 +74915,7 @@ Example
             sumAggregation
 ```
 
-};
+`}` };
 
 ```
     SearchRequest searchRequest = new SearchRequest(TableName, IndexName,
@@ -67384,6 +74923,8 @@ seachQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
 Console.WriteLine(JsonConvert.SerializeObject(searchResponse.AggregationResults.GetAsSu ggregationResult("Sum_Agg")));
 ```
+
+`}`
 
 **Average value**
 
@@ -67430,7 +74971,7 @@ Example
             avgAggregation
 ```
 
-};
+`}` };
 
 ```
     SearchRequest searchRequest = new SearchRequest(TableName, IndexName,
@@ -67438,6 +74979,8 @@ seachQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
 Console.WriteLine(JsonConvert.SerializeObject(searchResponse.AggregationResults.GetAsAv ggregationResult("Avg_Agg")));
 ```
+
+`}`
 
 **Count**
 
@@ -67488,7 +75031,7 @@ Example
             countAggregation
 ```
 
-};
+`}` };
 
 ```
     SearchRequest searchRequest = new SearchRequest(TableName, IndexName,
@@ -67496,6 +75039,8 @@ seachQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
 Console.WriteLine(JsonConvert.SerializeObject(searchResponse.AggregationResults.GetAsCo tAggregationResult("Count_Agg")));
 ```
+
+`}`
 
 **Distinct count**
 
@@ -67560,7 +75105,7 @@ DistinctCountAggregation();
             distinctCountAggregation
 ```
 
-};
+`}` };
 
 ```
     SearchRequest searchRequest = new SearchRequest(TableName, IndexName,
@@ -67568,6 +75113,8 @@ seachQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
 Console.WriteLine(JsonConvert.SerializeObject(searchResponse.AggregationResults.GetAsDi inctCountAggregationResult("DistinctCount_Agg")));
 ```
+
+`}`
 
 **Percentile statistics**
 
@@ -67609,6 +75156,8 @@ searchQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 **Group by field value**
 
@@ -67667,7 +75216,7 @@ Example
                 GroupKeySort = new GroupKeySort{ Order = SortOrder.DESC }
 ```
 
-};
+`}` `}` };
 
 ```
     MatchAllQuery matchAllQuery = new MatchAllQuery();
@@ -67680,6 +75229,8 @@ searchQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 **Group by range**
 
@@ -67732,6 +75283,8 @@ searchQuery);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
 
+`}`
+
 **Group by geographical location**
 
 The aggregation method that can be used to group query results based on distances from a central point. The distances that are within a specific range are grouped together. The number of items in each range is returned. Parameters
@@ -67773,7 +75326,7 @@ Example
             new Range(5000.0, double.MaxValue)
 ```
 
-};
+`}` };
 
 ```
     MatchAllQuery matchAllQuery = new MatchAllQuery();
@@ -67786,6 +75339,8 @@ searchQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 **Group by filter**
 
@@ -67830,7 +75385,7 @@ Example
                 To = new ColumnValue(5.0)
 ```
 
-`},` };
+`},` `}` };
 
 ```
     TermsQuery termsQuery = new TermsQuery();
@@ -67857,6 +75412,8 @@ searchQuery);
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 **Query by histogram**
 
@@ -67918,6 +75475,8 @@ searchResponse.GroupByResults.GetAsGroupByHistogramResult("GroupBy_Histogram").G
         Console.WriteLine(JsonConvert.SerializeObject(item));
 ```
 
+`}` `}`
+
 **Query the rows that are obtained from the results of an**
 
 **aggregation operation in each group**
@@ -67967,7 +75526,7 @@ Example
             Limit = 2
 ```
 
-};
+`}` };
 
 ```
     MatchAllQuery matchAllQuery = new MatchAllQuery(); ;
@@ -68005,6 +75564,8 @@ item.SubAggregationResults.GetAsTopRowsAggregationResult("TopRows_Agg").Rows)
 ```
             Console.WriteLine(JsonConvert.SerializeObject(row));
 ```
+
+`}` `}` `}`
 
 **Nesting**
 
@@ -68047,7 +75608,7 @@ GroupBy supports nesting. You can perform sub-aggregation operations by using Gr
                 new Range(100, double.MaxValue)
 ```
 
-};
+`}` `}` };
 
 ```
     MatchAllQuery matchAllQuery = new MatchAllQuery();
@@ -68078,6 +75639,8 @@ searchResponse.GroupByResults.GetAsGroupByFieldResult("Field_GroupBy").GroupByFi
 ```
 Console.WriteLine(JsonConvert.SerializeObject(item.SubGroupByResults.GetAsGroupByRangeRes t("Range_GroupBy")));
 ```
+
+`}` `}`
 
 **Multiple aggregations**
 
@@ -68122,6 +75685,8 @@ You can perform multiple aggregation operations.
     SearchResponse searchResponse = otsClient.Search(searchRequest);
     Console.WriteLine(JsonConvert.SerializeObject(searchResponse));
 ```
+
+`}`
 
 ###### 4.3.5.4.4.20 Perform a parallel scan
 
@@ -68225,6 +75790,11 @@ otsClient.ParallelScan(parallelScanRequest);
             result.AddRange(rows);
             parallelScanRequest.ScanQuery.Token = parallelScanResponse.NextToken;
             parallelScanResponse = otsClient.ParallelScan(parallelScanRequest);
+```
+
+`}`
+
+```
         foreach (Row row in result)
 ```
 
@@ -68232,8 +75802,15 @@ otsClient.ParallelScan(parallelScanRequest);
 
 ```
             Console.WriteLine(JsonConvert.SerializeObject(row));
+```
+
+`}`
+
+```
         Console.WriteLine("Total Row Count: {0}", total);
 ```
+
+`}` `}`
 
 ##### 4.3.5.5 Error handling
 
@@ -68439,6 +76016,8 @@ Sample success responses `JSON` format `{`
  "RequestId":"50A08374-BB14-41F9-AF1B-A9BC********"
 ```
 
+`}`
+
 ###### 4.4.2.2.2 ListClusterType
 
 Queries the instance types that are supported in a region. The instance types include capacity instance and high-performance instance. Only one of the instance types is supported in a small number of regions.
@@ -68519,6 +76098,8 @@ Sample success responses `JSON` format `{`
  "RequestId":"A240B515-37CD-4259-B1CB-A3A8********"
 ```
 
+`}`
+
 ###### 4.4.2.2.4 ListVpcInfoByVpc
 
 Queries the list of all virtual private clouds (VPCs) that are bound to an instance.
@@ -68594,6 +76175,8 @@ Sample success responses `JSON` format `{`
   "Domain":"************.cn-hangzhou.vpc.ots.aliyuncs.com"
 ```
 
+`}` `}`
+
 ###### 4.4.2.2.5 ListInstance
 
 Queries the list of instances by page.
@@ -68657,6 +76240,8 @@ Sample success responses `JSON` format `{`
   "Timestamp":"2020-07-28 08:00:45"
 ```
 
+`}` `}`
+
 ###### 4.4.2.2.6 InsertInstance
 
 Creates an instance based on the specified name, type, and description of the instance.
@@ -68707,6 +76292,8 @@ Sample success responses `JSON` format `{`
  "RequestId":"A240B515-37CD-4259-B1CB-A3A8********"
 ```
 
+`}`
+
 ###### 4.4.2.2.7 InsertTags
 
 Add tags to an instance to manage resources.
@@ -68754,6 +76341,8 @@ Sample success responses `JSON` format `{`
 ```json
  "RequestId":"F8F79722-5FA0-43B5-B918-B464********"
 ```
+
+`}`
 
 ###### 4.4.2.2.8 DeleteTags
 
@@ -68865,6 +76454,8 @@ Sample success responses `JSON` format `{`
  "RequestId":"F8F79722-5FA0-43B5-B918-B464********"
 ```
 
+`}`
+
 ###### 4.4.2.2.10 ListVpcInfoByInstance
 
 Queries all virtual private clouds (VPCs) that are bound to an instance. You can bind multiple VPCs to an instance.
@@ -68934,6 +76525,8 @@ Sample success responses `JSON` format `{`
   "Domain":"**************.cn-hangzhou.vpc.ots.aliyuncs.com"
 ```
 
+`}` `}`
+
 ###### 4.4.2.2.11 UnbindInstance2Vpc
 
 Unbinds an instance from virtual private clouds (VPCs).
@@ -68983,6 +76576,8 @@ Sample success responses `JSON` format `{`
 ```json
  "RequestId":"F8F79722-5FA0-43B5-B918-B464********"
 ```
+
+`}`
 
 ###### 4.4.2.2.12 BindInstance2Vpc
 
@@ -69038,6 +76633,8 @@ Sample success responses `JSON` format `{`
  "Endpoint":"192.168.***.***",
  "Domain":"*********.cn-hangzhou.vpc.ots.aliyuncs.com"
 ```
+
+`}`
 
 ###### 4.4.2.2.13 GetInstance
 
@@ -69126,6 +76723,8 @@ Sample success responses `JSON` format `{`
   "WriteCapacity":1000
 ```
 
+`}` `}`
+
 ##### 4.4.2.3 Tablestore (API version: 2020-12-09)
 
 ###### 4.4.2.3.1 CreateInstance
@@ -69171,11 +76770,13 @@ POST /v2/openapi/createinstance HTTP/1.1
 "InstanceName" : "myinstance", "ClusterName" : "clustertest"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"4FE9-A487-026D********"
 ```
+
+`}`
 
 ###### 4.4.2.3.2 ListClusterType
 
@@ -69215,6 +76816,8 @@ Sample success responses `JSON` format `{`
  "ClusterTypes":["SSD"]
 ```
 
+`}`
+
 ###### 4.4.2.3.3 ListClusterInfo
 
 Queries information about all clusters.
@@ -69247,7 +76850,7 @@ Sample requests
 POST /v2/openapi/listclusterinfo HTTP/1.1
 ```
 
-`{` Sample success responses `JSON` format `{`
+`{` `}` Sample success responses `JSON` format `{`
 
 ```json
  "ClusterList":{
@@ -69262,6 +76865,8 @@ POST /v2/openapi/listclusterinfo HTTP/1.1
 ```json
  "RequestId":"52A7CDBA-7952-48A3-BD7B-140D********"
 ```
+
+`}`
 
 ###### 4.4.2.3.4 ListInstances
 
@@ -69347,6 +76952,8 @@ Sample success responses `JSON` format `{`
  "NextToken":"3BA9660A**************"
 ```
 
+`}`
+
 ###### 4.4.2.3.5 UpdateInstance
 
 Updates the information about an instance. For example, you can update the network access limits of an instance.
@@ -69388,11 +76995,13 @@ POST /v2/openapi/updateinstance HTTP/1.1
 "InstanceName":"myInstance", "Network":"NORMAL", "AliasName":"testinstance", "InstanceDescription":"test"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"300A9735-57DD-44D3-AC5E-5D4A********"
 ```
+
+`}`
 
 ###### 4.4.2.3.6 GetInstance
 
@@ -69476,6 +77085,8 @@ Sample success responses `JSON` format `{`
   "TagValue":"cn-hangzhou"
 ```
 
+`}` `}`
+
 #### 4.4.3 API reference
 
 ##### 4.4.3.1 API-based operations
@@ -69501,6 +77112,8 @@ lumns are read.
     optional bytes token = 10;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table from which you want to read data. |
@@ -69523,6 +77136,8 @@ message GetRowResponse {
     required bytes row = 2;  // The row is encoded as binary data in the PlainBuffer fo
 rmat.
 ```
+
+`}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -69548,6 +77163,8 @@ rmat.
     optional ReturnContent return_content = 4;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table to which you want to write data. |
@@ -69564,6 +77181,8 @@ message PutRowResponse {
  required ConsumedCapacity consumed = 1;
  optional bytes row = 2;
 ```
+
+`}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -69590,6 +77209,8 @@ message UpdateRowRequest {
  optional ReturnContent return_content = 4;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table whose data you want to update. |
@@ -69606,6 +77227,8 @@ message UpdateRowResponse {
  required ConsumedCapacity consumed = 1;
  optional bytes row = 2;
 ```
+
+`}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -69631,6 +77254,8 @@ rmat.
     optional ReturnContent return_content = 4;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the data table. |
@@ -69645,6 +77270,8 @@ message DeleteRowResponse {
  required ConsumedCapacity consumed = 1;
  optional bytes row = 2;
 ```
+
+`}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -69679,6 +77306,8 @@ PlainBuffer format.
     optional string end_column = 12;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table whose data you want to read. |
@@ -69706,6 +77335,8 @@ message GetRangeResponse {
     optional bytes next_start_primary_key = 3;
 ```
 
+`}`
+
 | Parameter | Type | Description |
 |---|---|---|
 | consumed | ConsumedCapaci ty | The number of capacity units (CUs) that are consumed by the operation. |
@@ -69728,6 +77359,8 @@ You can use the BatchGetRow API to simultaneously read data in several rows from
 message BatchGetRowRequest {
     repeated TableInBatchGetRowRequest tables = 1;
 ```
+
+`}`
 
 **tables:**
 
@@ -69763,6 +77396,8 @@ message BatchWriteRowRequest {
     repeated TableInBatchWriteRowRequest tables = 1;
 ```
 
+`}`
+
 **tables:**
 
 Type: repeated TableInBatchWriteRowRequest Required: yes This parameter specifies the information of rows that require write operations. An error is returned if any of the following conditions occurs: Any table listed in the tables parameter does not exist. Tables with the same name exist. The name of any table does not comply with the table naming conventions. The primary key is not specified for any row in a table, the primary key column name does not comply with the conventions, or the primary key column type is incorrect. For any attribute column in a table, the column name does not comply with the column naming conventions. Any row in a table contains an attribute column with the same name as the primary key column. The value of any primary key or attribute column in a table exceeds the upper limit. Any table in the tables contains rows with identical primary keys. The total number of rows for all tables listed in the tables parameter exceeds 200 or the total size of the data exceeds 4 MB. If any table contains no rows, the OTSParameterInvalidException error is returned. The number of columns included in any PutRowInBatchWriteRowRequest of a table exceeds 1,024. The number of ColumnUpdate objects included in any UpdateRowInBatchWriteRowRequest in a table exceeds 1,024.
@@ -69773,6 +77408,8 @@ Type: repeated TableInBatchWriteRowRequest Required: yes This parameter specifie
 message BatchWriteRowResponse {
     repeated TableInBatchWriteRowResponse tables = 1;
 ```
+
+`}`
 
 **tables:**
 
@@ -69802,6 +77439,8 @@ message CreateTableRequest {
     optional StreamSpecification stream_spec = 5;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table meta _ | TableMeta | Yes | The schema of the data table. The table name must be unique within the instance. A primary key can contain one to four primary key columns. You must specify the name and data type of each primary key column. The name of each primary key column must comply with the naming conventions and the data type of each primary key column must be STRING, INTEGER, or BINARY. After you create a table, you cannot modify the schema of the table. |
@@ -69815,6 +77454,8 @@ message CreateTableRequest {
 message CreateTableResponse {
 ```
 
+`}`
+
 ###### 4.4.3.1.9 ListTable
 
 **Action**
@@ -69827,12 +77468,16 @@ You can use the ListTable API to obtain the names of all tables created in the c
 message ListTableRequest {
 ```
 
+`}`
+
 **Response structure**
 
 ```
 message ListTableResponse {
     repeated string table_names = 1;
 ```
+
+`}`
 
 **table_names:**
 
@@ -69855,6 +77500,8 @@ message DeleteTableRequest {
     required string table_name = 1;
 ```
 
+`}`
+
 **table_name:**
 
 Type: string Required: yes This parameter specifies the name of the table you want to delete.
@@ -69865,7 +77512,7 @@ Type: string Required: yes This parameter specifies the name of the table you wa
 message DeleteTableResponse {
 ```
 
-If the response of DeleteTable does not contain an error, the table has been deleted.
+`}` If the response of DeleteTable does not contain an error, the table has been deleted.
 
 ###### 4.4.3.1.11 UpdateTable
 
@@ -69882,6 +77529,8 @@ message UpdateTableRequest {
     optional TableOptions table_options = 3;
     optional StreamSpecification stream_spec = 4;
 ```
+
+`}`
 
 **table_name:**
 
@@ -69902,6 +77551,8 @@ message UpdateTableResponse {
     required ReservedThroughputDetails reserved_throughput_details = 1;
     required TableOptions table_options = 2;
 ```
+
+`}`
 
 **reserved_throughput_details:**
 
@@ -69928,6 +77579,8 @@ message DescribeTableRequest {
  required string table_name = 1;
 ```
 
+`}`
+
 **table_name:**
 
 Type: string Required: yes This parameter specifies the name of the table you want to query.
@@ -69942,6 +77595,8 @@ message DescribeTableResponse {
     optional StreamDetails stream_details = 5;
     repeated bytes shard_splits = 6;
 ```
+
+`}`
 
 **table_meta:**
 
@@ -69976,6 +77631,8 @@ message ComputeSplitPointsBySizeRequest {
     required string table_name = 1;
     required int64 split_size = 2; // in 100MB
 ```
+
+`}`
 
 **table_name:**
 
@@ -70032,8 +77689,15 @@ message ComputeSplitPointsBySizeResponse {
      message SplitLocation {
          required string location = 1;
          required sint64 repeat = 2;
+```
+
+`}`
+
+```
      repeated SplitLocation locations = 4;
 ```
+
+`}`
 
 **consumed:**
 
@@ -70072,6 +77736,8 @@ message ListStreamRequest {
     optional string table_name = 1;
 ```
 
+`}`
+
 **table_name:**
 
 Type: optional string This parameter specifies the name of the table for which the current stream is enabled.
@@ -70081,11 +77747,18 @@ Type: optional string This parameter specifies the name of the table for which t
 ```
 message ListStreamResponse {
     repeated Stream streams = 1;
+```
+
+`}`
+
+```
 message Stream {
     required string stream_id = 1;
     required string table_name = 2;
     required int64 creation_time = 3;
 ```
+
+`}`
 
 **stream_id:**
 
@@ -70114,6 +77787,8 @@ message DescribeStreamRequest {
     optional int32 shard_limit = 3;
 ```
 
+`}`
+
 **stream_id:**
 
 Type: required string This parameter specifies the ID of the current stream.
@@ -70137,11 +77812,18 @@ message DescribeStreamResponse {
     required StreamStatus stream_status = 5;
     repeated StreamShard shards = 6;
     optional string next_shard_id = 7;
+```
+
+`}`
+
+```
 message StreamShard {
     required string shard_id = 1;
     optional string parent_id = 2;
     optional string parent_sibling_id = 3;
 ```
+
+`}`
 
 **stream_id:**
 
@@ -70189,6 +77871,8 @@ message GetShardIteratorRequest {
     required string shard_id = 2;
 ```
 
+`}`
+
 **stream_id:**
 
 Type: required string This parameter specifies the ID of the current stream.
@@ -70222,6 +77906,8 @@ message GetStreamRecordRequest {
     optional int32 limit = 2;
 ```
 
+`}`
+
 **shard_iterator:**
 
 Type: required string This parameter specifies the iterator for reading the current partition next time.
@@ -70233,10 +77919,17 @@ message GetStreamRecordResponse {
     message StreamRecord {
         required ActionType action_type = 1;
         required bytes record = 2;
+```
+
+`}`
+
+```
     repeated StreamRecord stream_records = 1;
     optional raw_string next_shard_iterator = 2;
     optional ConsumedCapacity consumed = 3;
 ```
+
+`}`
 
 **StreamRecord:**
 
@@ -70262,35 +77955,81 @@ This topic describes the detailed definitions of table_store.proto and table_sto
 package com.alicloud.openservices.tablestore.core.protocol; message Error {
     required string code = 1;
     optional string message = 2;
+```
+
+`}`
+
+```
 enum PrimaryKeyType {
     INTEGER = 1;
     STRING = 2;
     BINARY = 3;
+```
+
+`}`
+
+```
 enum PrimaryKeyOption {
     AUTO_INCREMENT = 1;
+```
+
+`}`
+
+```
 message PrimaryKeySchema {
     required string name = 1;
     required PrimaryKeyType type = 2;
     optional PrimaryKeyOption option = 3;
+```
+
+`}`
+
+```
 message TableOptions {
     optional int32 time_to_live = 1; // This parameter value can be dynamically
 modified.
     optional int32 max_versions = 2; // This parameter value can be dynamically
 modified.
     optional int64 deviation_cell_version_in_sec = 5; // This parameter value can be dy
-namically modified. message TableMeta {
+namically modified.
+```
+
+`}`
+
+```
+message TableMeta {
     required string table_name = 1;
     repeated PrimaryKeySchema primary_key = 2;
+```
+
+`}`
+
+```
 enum RowExistenceExpectation {
     IGNORE = 0;
     EXPECT_EXIST = 1;
     EXPECT_NOT_EXIST = 2;
+```
+
+`}`
+
+```
 message Condition {
     required RowExistenceExpectation row_existence = 1;
     optional bytes column_condition      = 2;
+```
+
+`}`
+
+```
 message CapacityUnit {
     optional int32 read = 1;
     optional int32 write = 2;
+```
+
+`}`
+
+```
 message ReservedThroughputDetails {
     required CapacityUnit capacity_unit = 1; // This parameter indicates the current re
 served throughput of the table.
@@ -70304,6 +78043,11 @@ e reserved throughput was lowered. message ReservedThroughput {
     required CapacityUnit capacity_unit = 1;
 message ConsumedCapacity {
     required CapacityUnit capacity_unit = 1;
+```
+
+`}`
+
+```
 /* ############################################# CreateTable
 ############################################# */
 /**
@@ -70323,10 +78067,15 @@ message CreateTableRequest {
     required TableMeta table_meta = 1;
     required ReservedThroughput reserved_throughput = 2;
     optional TableOptions table_options = 3;
+```
+
+`}`
+
+```
 message CreateTableResponse {
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70337,12 +78086,17 @@ message UpdateTableRequest {
     required string table_name = 1;
     optional ReservedThroughput reserved_throughput = 2;
     optional TableOptions table_options = 3;
+```
+
+`}`
+
+```
 message UpdateTableResponse {
     required ReservedThroughputDetails reserved_throughput_details = 1;
     required TableOptions table_options = 2;
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70351,6 +78105,11 @@ message UpdateTableResponse {
 ############################################# */
 message DescribeTableRequest {
     required string table_name = 1;
+```
+
+`}`
+
+```
 message DescribeTableResponse {
     required TableMeta table_meta = 1;
     required ReservedThroughputDetails reserved_throughput_details = 2;
@@ -70369,7 +78128,13 @@ message DescribeTableResponse {
 ################ */
 /* ############################################# ListTable
 ############################################# */
-message ListTableRequest { /**
+message ListTableRequest {
+```
+
+`}`
+
+```
+/**
  * Only a simple name list is returned.
 ```
 
@@ -70380,7 +78145,7 @@ message ListTableResponse {
     repeated string table_names = 1;
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70389,14 +78154,30 @@ message ListTableResponse {
 ############################################# */
 message DeleteTableRequest {
     required string table_name = 1;
-message DeleteTableResponse { /* ############################################# UnloadTable
+```
+
+`}`
+
+```
+message DeleteTableResponse {
+```
+
+`}`
+
+```
+/* ############################################# UnloadTable
 ############################################# */
 message UnloadTableRequest {
     required string table_name = 1;
+```
+
+`}`
+
+```
 message UnloadTableResponse {
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70414,13 +78195,28 @@ message TimeRange {
     optional int64 start_time = 1;
     optional int64 end_time = 2;
     optional int64 specific_time = 3;
+```
+
+`}`
+
+```
 /* ############################################# GetRow
 ############################################# */
 enum ReturnType {
     RT_NONE = 0;
     RT_PK = 1;
+```
+
+`}`
+
+```
 message ReturnContent {
     optional ReturnType return_type = 1;
+```
+
+`}`
+
+```
 /**
  * 1. You can specify the timestamp range or time to read the specified version of a co
 lumn.
@@ -70442,13 +78238,18 @@ mns are read.
     optional string start_column = 8;
     optional string end_column = 9;
     optional bytes token = 10;
+```
+
+`}`
+
+```
 message GetRowResponse {
     required ConsumedCapacity consumed = 1;
     required bytes row = 2; // encoded as InplaceRowChangeSet
     optional bytes next_token = 3;
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70460,12 +78261,17 @@ message UpdateRowRequest {
     required bytes row_change = 2;
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message UpdateRowResponse {
     required ConsumedCapacity consumed = 1;
     optional bytes row = 2;
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70485,6 +78291,11 @@ message PutRowRequest {
     required bytes row = 2; // encoded as InplaceRowChangeSet
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message PutRowResponse {
     required ConsumedCapacity consumed = 1;
     optional bytes row = 2;
@@ -70515,12 +78326,17 @@ message DeleteRowRequest {
 mary key
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message DeleteRowResponse {
     required ConsumedCapacity consumed = 1;
     optional bytes row = 2;
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70539,17 +78355,37 @@ l columns are read.
     optional bytes filter = 8;
     optional string start_column = 9;
     optional string end_column = 10;
+```
+
+`}`
+
+```
 message BatchGetRowRequest {
     repeated TableInBatchGetRowRequest tables = 1;
+```
+
+`}`
+
+```
 message RowInBatchGetRowResponse {
     required bool is_ok = 1;
     optional Error error = 2;
     optional ConsumedCapacity consumed = 3;
     optional bytes row = 4; // encoded as InplaceRowChangeSet
     optional bytes next_token = 5;
+```
+
+`}`
+
+```
 message TableInBatchGetRowResponse {
     required string table_name = 1;
     repeated RowInBatchGetRowResponse rows = 2;
+```
+
+`}`
+
+```
 message BatchGetRowResponse {
     repeated TableInBatchGetRowResponse tables = 1;
 ```
@@ -70565,29 +78401,59 @@ enum OperationType {
     PUT = 1;
     UPDATE = 2;
     DELETE = 3;
+```
+
+`}`
+
+```
 message RowInBatchWriteRowRequest {
     required OperationType type = 1;
     required bytes row_change = 2; // encoded as InplaceRowChangeSet
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message TableInBatchWriteRowRequest {
     required string table_name = 1;
     repeated RowInBatchWriteRowRequest rows = 2;
+```
+
+`}`
+
+```
 message BatchWriteRowRequest {
     repeated TableInBatchWriteRowRequest tables = 1;
+```
+
+`}`
+
+```
 message RowInBatchWriteRowResponse {
     required bool is_ok = 1;
     optional Error error = 2;
     optional ConsumedCapacity consumed = 3;
     optional bytes row = 4;
+```
+
+`}`
+
+```
 message TableInBatchWriteRowResponse {
     required string table_name = 1;
     repeated RowInBatchWriteRowResponse rows = 2;
+```
+
+`}`
+
+```
 message BatchWriteRowResponse {
     repeated TableInBatchWriteRowResponse tables = 1;
 ```
 
-`/*`
+`}` `/*`
 
 ```
 #########################################################################################
@@ -70597,6 +78463,11 @@ message BatchWriteRowResponse {
 enum Direction {
     FORWARD = 0;
     BACKWARD = 1;
+```
+
+`}`
+
+```
 message GetRangeRequest {
     required string table_name = 1;
     required Direction direction = 2;
@@ -70617,15 +78488,30 @@ t only has primary key
     optional string start_column = 11;
     optional string end_column = 12;
     optional bytes token = 13;
+```
+
+`}`
+
+```
 message GetRangeResponse {
     required ConsumedCapacity consumed = 1;
     required bytes rows = 2; // encoded as InplaceRowChangeSet
     optional bytes next_start_primary_key = 3; // If this parameter is not specified, a
 ll data is read. next_start_primary_key is encoded as InplaceRowChangeSet, but only con tains primary key.
     optional bytes next_token = 4;
+```
+
+`}`
+
+```
 /* #################### ComputeSplitPointsBySize #################### */ message ComputeSplitPointsBySizeRequest {
     required string table_name = 1;
     required int64 split_size = 2; // in 100MB
+```
+
+`}`
+
+```
 message ComputeSplitPointsBySizeResponse {
     required ConsumedCapacity consumed = 1;
     repeated PrimaryKeySchema schema = 2;
@@ -70670,8 +78556,15 @@ message ComputeSplitPointsBySizeResponse {
      message SplitLocation {
          required string location = 1;
          required sint64 repeat = 2;
+```
+
+`}`
+
+```
      repeated SplitLocation locations = 4;
 ```
+
+`}`
 
 **table_store_filter.proto**
 
@@ -70680,6 +78573,11 @@ package com.alicloud.openservices.tablestore.core.protocol; enum FilterType {
     FT_SINGLE_COLUMN_VALUE = 1;
     FT_COMPOSITE_COLUMN_VALUE = 2;
     FT_COLUMN_PAGINATION = 3;
+```
+
+`}`
+
+```
 enum ComparatorType {
     CT_EQUAL = 1;
     CT_NOT_EQUAL = 2;
@@ -70687,26 +78585,53 @@ enum ComparatorType {
     CT_GREATER_EQUAL = 4;
     CT_LESS_THAN = 5;
     CT_LESS_EQUAL = 6;
+```
+
+`}`
+
+```
 message SingleColumnValueFilter {
     required ComparatorType comparator = 1;
     required string column_name = 2;
     required bytes column_value = 3;
     required bool filter_if_missing = 4;
     required bool latest_version_only = 5;
+```
+
+`}`
+
+```
 enum LogicalOperator {
     LO_NOT = 1;
     LO_AND = 2;
     LO_OR = 3;
+```
+
+`}`
+
+```
 message CompositeColumnValueFilter {
     required LogicalOperator combinator = 1;
     repeated Filter sub_filters = 2;
+```
+
+`}`
+
+```
 message ColumnPaginationFilter {
     required int32 offset = 1;
     required int32 limit = 2;
+```
+
+`}`
+
+```
 message Filter {
     required FilterType type = 1;
     required bytes filter = 2;  // Serialized string of filter of the type
 ```
+
+`}`
 
 ###### 4.4.3.1.19 CreateIndex
 
@@ -70729,6 +78654,8 @@ main_table_name Type: string. Required: yes. This parameter specifies the name o
 message CreateIndexResponse {
 ```
 
+`}`
+
 ###### 4.4.3.1.20 DeleteIndex
 
 You can call this operation to delete an index table from the specified base table.
@@ -70741,13 +78668,15 @@ message DropIndexRequest {
     required string index_name = 2;
 ```
 
-main_table_name Type: string. Required: yes. This parameter specifies the name of the base table from which to delete an index table. index_name Type: string. Required: yes. This parameter specifies the name of the index table to be deleted.
+`}` main_table_name Type: string. Required: yes. This parameter specifies the name of the base table from which to delete an index table. index_name Type: string. Required: yes. This parameter specifies the name of the index table to be deleted.
 
 **Response syntax**
 
 ```
 message DropIndexResponse {
 ```
+
+`}`
 
 ##### 4.4.3.2 DataType
 
@@ -70764,6 +78693,8 @@ enum ActionType {
     DELETE_ROW = 3;
 ```
 
+`}`
+
 ###### 4.4.3.2.2 CapacityUnit
 
 CapacityUnit specifies the number of CUs consumed in an operation, or reserved read/write throughput of a table.
@@ -70775,6 +78706,8 @@ message CapacityUnit {
     optional int32 read = 1;
     optional int32 write = 2;
 ```
+
+`}`
 
 **read:**
 
@@ -70795,6 +78728,8 @@ message ColumnPaginationFilter {
  required int32 offset = 1;
  required int32 limit = 2;
 ```
+
+`}`
 
 **offset:**
 
@@ -70820,6 +78755,8 @@ enum ComparatorType {
  CT_LESS_EQUAL = 6;
 ```
 
+`}`
+
 ###### 4.4.3.2.5 CompositeColumnValueFilter
 
 CompositeColumnValueFilter specifies a group of conditions, for example, column_a > 5 AND column_b = 10. This API is applicable to the ConditionUpdate and Filter functions.
@@ -70831,6 +78768,8 @@ message CompositeColumnValueFilter {
  required LogicalOperator combinator = 1;
  repeated Filter sub_filters = 2;
 ```
+
+`}`
 
 **combinator:**
 
@@ -70852,6 +78791,8 @@ message Condition {
     optional bytes column_condition      = 2;
 ```
 
+`}`
+
 **row_existence:**
 
 Type: RowExistenceExpectation Description: the row existence check settings for this row.
@@ -70871,6 +78812,8 @@ message ConsumedCapacity {
     required CapacityUnit capacity_unit = 1;
 ```
 
+`}`
+
 **capacity_unit:**
 
 Type: CapacityUnit Description: the number of CUs consumed by this operation.
@@ -70887,6 +78830,8 @@ enum Direction {
  BACKWARD = 1;
 ```
 
+`}`
+
 ###### 4.4.3.2.9 Error
 
 Error indicates an error message returned when an operation fails. This parameter is also used to indicate errors for single-row requests in the BatchGetRow and BatchWriteRow operations.
@@ -70898,6 +78843,8 @@ Error {
  required string code = 1;
  optional string message = 2;
 ```
+
+`}`
 
 **code:**
 
@@ -70919,6 +78866,8 @@ message Filter {
  required bytes filter = 2;
 ```
 
+`}`
+
 **type:**
 
 Type: FilterType Description: the column condition type.
@@ -70938,6 +78887,8 @@ enum PrimaryKeyOption {
  AUTO_INCREMENT = 1;
 ```
 
+`}`
+
 ###### 4.4.3.2.12 FilterType
 
 FilterType specifies the type for condition updates or filters. The types include: FT_SINGLE_COLUMN_VALUE indicates a single-column condition. FT_COMPOSITE_COLUMN_VALUE indicates a multi-column composite condition. FT_COLUMN_PAGINATION indicates a wide-row read condition.
@@ -70950,6 +78901,8 @@ enum FilterType {
  FT_COMPOSITE_COLUMN_VALUE = 2;
  FT_COLUMN_PAGINATION = 3;
 ```
+
+`}`
 
 ###### 4.4.3.2.13 LogicalOperator
 
@@ -70964,6 +78917,8 @@ enum LogicalOperator {
  LO_OR = 3;
 ```
 
+`}`
+
 ###### 4.4.3.2.14 OperationType
 
 OperationType indicates the modification method for one column in UpdateRow. The types of operations include: PUT indicates that a column is inserted or data in this column is overwritten. UPDATE indicates that a column is updated. DELETE indicates that a column is deleted.
@@ -70976,6 +78931,8 @@ enum OperationType {
  UPDATE = 2;
  DELETE = 3;
 ```
+
+`}`
 
 ###### 4.4.3.2.15 PartitionRange
 
@@ -71036,6 +78993,11 @@ void GetChecksum(uint8_t* crc, const InplaceCell& cell)
     Crc8(crc, cell.GetValue().GetInternalSlice());
     Crc8(crc, cell.GetTimestamp());
     Crc8(crc, cell.GetOpType());
+```
+
+`}`
+
+```
 void GetChecksum(uint8_t* crc, const InplaceRow& row)
 ```
 
@@ -71048,16 +79010,33 @@ void GetChecksum(uint8_t* crc, const InplaceRow& row)
         *cellcrc = 0;
         GetChecksum(cellcrc, pk[i]);
         Crc8(crc, *cellcrc);
+```
+
+`}`
+
+```
     for (int i = 0; i < row.GetCellCount(); i++) {
         uint8_t* cellcrc;
         *cellcrc = 0;
         GetChecksum(cellcrc, row.GetCell(i));
         Crc8(crc, *cellcrc);
+```
+
+`}`
+
+```
     uint8_t del = 0;
     if (row.HasDeleteMarker()) {
         del = 1;
+```
+
+`}`
+
+```
     Crc8(crc, del);
 ```
+
+`}`
 
 **Example**
 
@@ -71088,6 +79067,8 @@ message PrimaryKeySchema {
  optional PrimaryKeyOption option = 3;
 ```
 
+`}`
+
 **name:**
 
 Type: string Description: the name of the column.
@@ -71115,6 +79096,8 @@ enum PrimaryKeyType {
  BINARY = 3;
 ```
 
+`}`
+
 ###### 4.4.3.2.19 ReservedThroughput
 
 ReservedThroughput indicates the reserved read/write throughput value for a table.
@@ -71125,6 +79108,8 @@ ReservedThroughput indicates the reserved read/write throughput value for a tabl
 message ReservedThroughput {
  required CapacityUnit capacity_unit = 1;
 ```
+
+`}`
 
 **capacity_unit:**
 
@@ -71143,6 +79128,8 @@ message ReservedThroughputDetails {
     optional int64 last_decrease_time = 3;
     required int32 number_of_decreases_today = 4;
 ```
+
+`}`
 
 **capacity_unit:**
 
@@ -71171,6 +79158,8 @@ message ReturnContent {
     optional ReturnType return_type = 1;
 ```
 
+`}`
+
 **return_type:**
 
 Type: ReturnType Description: the type of the returned data.
@@ -71187,7 +79176,7 @@ enum ReturnType {
     RT_PK = 1;
 ```
 
-RT_NONE: the default value. This parameter indicates that no value is returned. RT_PK: This parameter indicates that the primary key is returned.
+`}` RT_NONE: the default value. This parameter indicates that no value is returned. RT_PK: This parameter indicates that the primary key is returned.
 
 ###### 4.4.3.2.23 RowExistenceExpectation
 
@@ -71201,6 +79190,8 @@ enum RowExistenceExpectation {
     EXPECT_EXIST = 1;
     EXPECT_NOT_EXIST = 2;
 ```
+
+`}`
 
 ###### 4.4.3.2.24 RowInBatchGetRowResponse
 
@@ -71216,6 +79207,8 @@ message RowInBatchGetRowResponse {
  optional bytes row = 4;
  optional bytes next_token = 5;
 ```
+
+`}`
 
 **is_ok:**
 
@@ -71251,6 +79244,8 @@ message RowInBatchWriteRowRequest {
     optional ReturnContent return_content = 4;
 ```
 
+`}`
+
 **type:**
 
 Type: OperationType Description: the operation type.
@@ -71280,6 +79275,8 @@ message RowInBatchWriteRowResponse {
  optional ConsumedCapacity consumed = 3;
 ```
 
+`}`
+
 **is_ok:**
 
 Type: bool Description: determines whether the operation for this row succeeds. If the value is true, the row is written and error is invalid. If the value is false, this row fails to be written.
@@ -71306,6 +79303,8 @@ message SingleColumnValueFilter {
  required bool filter_if_missing = 4;
  required bool latest_version_only = 5;
 ```
+
+`}`
 
 **comparator:**
 
@@ -71341,6 +79340,8 @@ message StreamDetails {
     optional int64 last_enable_time = 4;
 ```
 
+`}`
+
 **enable_stream:**
 
 Type: required bool Description: determines whether stream is enabled for the table.
@@ -71369,6 +79370,8 @@ StreamRecord indicates a row of data in the response of the GetStreamRecord oper
         required bytes record = 2;
 ```
 
+`}`
+
 **action_type:**
 
 Type: required ActionType Description: the operation type of the row.
@@ -71388,6 +79391,8 @@ message StreamSpecification {
     required bool enable_stream = 1;
     optional int32 expiration_time = 2;
 ```
+
+`}`
 
 **enable_stream:**
 
@@ -71419,6 +79424,8 @@ r the read data is written to BlockCache.
     optional string start_column = 9;
     optional string end_column = 10;
 ```
+
+`}`
 
 **table_name:**
 
@@ -71472,6 +79479,8 @@ message TableInBatchGetRowResponse {
  repeated RowInBatchGetRowResponse rows = 2;
 ```
 
+`}`
+
 **table_name:**
 
 Type: string Description: the name of the table.
@@ -71491,6 +79500,8 @@ message TableInBatchWriteRowRequest {
  required string table_name = 1;
  repeated RowInBatchWriteRowRequest rows = 2;
 ```
+
+`}`
 
 **table_name:**
 
@@ -71513,6 +79524,8 @@ message TableInBatchWriteRowResponse {
  repeated RowInBatchWriteRowResponse update_rows = 3;
  repeated RowInBatchWriteRowResponse delete_rows = 4;
 ```
+
+`}`
 
 **table_name:**
 
@@ -71542,6 +79555,8 @@ message TableMeta {
  repeated PrimaryKeySchema primary_key = 2;
 ```
 
+`}`
+
 **table_name:**
 
 Type: string. Description: the name of the table.
@@ -71565,6 +79580,8 @@ modified.
     optional int64 deviation_cell_version_in_sec = 5; // This parameter value can be dy
 namically modified.
 ```
+
+`}`
 
 **time_to_live:**
 
@@ -71590,6 +79607,8 @@ message TimeRange {
     optional int64 end_time = 2;
     optional int64 specific_time = 3;
 ```
+
+`}`
 
 **start_time:**
 
@@ -71724,7 +79743,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace it with your RAM role.
 > "sts.aliyuns.com": Replace it with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -71743,6 +79762,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpo
@@ -71767,9 +79791,15 @@ step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following
 sample code provides an example on how to call the `DescribeGatewaysRequest` operation of Cloud Storage Gateway (CSG).
 
@@ -71844,11 +79874,18 @@ request protocol. Default value: HTTP.
             DescribeGatewaysResponse response = client.getAcsResponse(request);
             for (DescribeGatewaysResponse.Gateway gateway : response.getGateways()) {
                 System.out.println(gateway.getGatewayId());
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 #### 5.1.5 Obtain the values of common header parameters
 
@@ -71998,11 +80035,18 @@ request protocol. Default value: HTTP.
             DescribeGatewaysResponse response = client.getAcsResponse(request);
             for (DescribeGatewaysResponse.Gateway gateway : response.getGateways()) {
                 System.out.println(gateway.getGatewayId());
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
 ```
+
+`}`
 
 #### 5.2.2 Use CSG SDK for Java
 
@@ -72088,13 +80132,18 @@ DescribeGatewaysResponse response; try {
     response = client.getAcsResponse(request);
     for (DescribeGatewaysResponse.Gateway gateway:response.getGateways()) {
         System.out.println(gateway.getGatewayId());
+```
+
+`}`
+
+```
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
 ```
 
-In normal cases, all returned fields are deserialized into the response. You can directly use `response.getXXX()` to obtain the response fields.
+`}` In normal cases, all returned fields are deserialized into the response. You can directly use `response.getXXX()` to obtain the response fields.
 
 ```
 String name = response.getName()
@@ -72120,6 +80169,8 @@ If you want to handle the SDK errors returned by CSG SDK for Java, refer to the 
 ```java
 try { FooResponse response = client.getAcsResponse(request); // Handle the response. //... }catch (ServerException e){ // You can add your own error handling logic here. // For example, print the error message. System.out.println("ErrorCode=" + e.getErrCode()); System.out.println("ErrorMessage=" + e.getErrMsg()); // If you are unable to troubleshoot the problem, submit a ticket and provide RequestId to Alibaba Cloud technical support. System.out.println("ResponseId=" + e.getRequestId()); }catch (ClientException e){ // You can add your own error handling logic here. // For example, print the error message. System.out.println("ErrorCode=" + e.getErrCode()); System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 ### 5.3 Call examples of SDK for Python
 
@@ -72445,7 +80496,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Types>File</Types> <RequestId>4DBB36C3-F3E8-16E5-9AB5-AD71C13F***</RequestId> <Message>successful</Message> <Code>200</Code> <Success>true</Success>
@@ -72519,7 +80570,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>BEB787A4-713A-1DC8-8CE1-0FDE4163***</RequestId> <Message>successful</Message> <Actions>
@@ -72571,7 +80622,7 @@ Sample success responses `JSON` format `{`
  "Classes":"Standard"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>88C90B61-690C-1EE5-8A8C-66C3AD543***</RequestId> <Message>successful</Message> <Code>200</Code> <Success>true</Success> <Classes>Standard</Classes>
@@ -72785,7 +80836,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FE7E3FDD-0D9A-139B-ABC3-6F9CCF6FB***</RequestId> <Message>successful</Message> <Locations>Cloud</Locations> <Code>200</Code> <Success>true</Success>
@@ -72854,7 +80905,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FEB787A4-713A-1DC8-8CE1-0FDE41435***</RequestId> <Message>successful</Message> <Categories>Aliyun</Categories> <Code>200</Code> <Success>true</Success>
@@ -72940,7 +80991,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>38FCE2E2-DBBA-114B-9993-10103C0C2***</RequestId> <Message>successful</Message> <Regions>
@@ -72994,7 +81045,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Exist>true</Exist> <RequestId>DCB08402-EBAC-1A3F-A559-91C6F***</RequestId> <Message>successful</Message> <Code>200</Code> <Success>true</Success>
@@ -73071,7 +81122,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Vswitches>
@@ -73152,7 +81203,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Vpcs>
@@ -73224,7 +81275,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>DCB08402-EBAC-1A3F-A559-91C6F*** </RequestId> <Message>successful</Message> <IsArchive>false</IsArchive> <IsSupportServerSideEncryption>false</IsSupportServerSideEncryption> <StorageSize>0</StorageSize> <IsBackToResource>false</IsBackToResource> <PollingInterval>0</PollingInterval> <IsVersioning>true</IsVersioning> <Code>200</Code> <Success>true</Success>
@@ -73276,7 +81327,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FCB08402-EBAC-1A3F-A559-91C6F***</RequestId> <Message>successful</Message> <Code>200</Code> <BucketEndpoints>
@@ -73333,7 +81384,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>7D07C060-5C45-1ECE-86EC-A09A3E23***</RequestId> <Message>successful</Message> <Code>200</Code> <Buckets>
@@ -73604,7 +81655,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <TaskId>t-0006onc9rk5w6a3of***</TaskId> <RequestId>BEB787A4-713A-1DC8-8CE1-0FDE4163***</RequestId> <Message>successful</Message> <Code>200</Code> <Success>true</Success>

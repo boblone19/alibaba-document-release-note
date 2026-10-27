@@ -5,7 +5,7 @@ doc_version: "20250612"
 pdf_pages: 50
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide 20250612.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Alibaba%20Cloud%20DNS%20Alibaba%20Cloud%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide 20250612
@@ -149,6 +149,9 @@ This topic describes how to log on to the Apsara Stack DNS console by using Goog
 **Prerequisites**
 
 You need to obtain the endpoint of the Apsara Uni-manager Management Console from the deployment personnel. A browser is available. We recommend using Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press Enter. Stack DNS console
 
@@ -185,6 +188,8 @@ All the operations of this feature require administrator privileges.
 
 ##### 4.1.1.2 View an internal domain name
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domains > Global Internal Domains**.
 3. In the **Domain Name** search box, enter the domain name that you want to view.
@@ -194,6 +199,9 @@ The search result is displayed.
 ##### 4.1.1.3 Add a domain name
 
 This topic describes how to add a global internal domain name in the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack Domain Name System (DNS) console. For more information, see
 Log on to the Apsara Stack DNS console.
 2. Choose **DNS within Cloud > Global Domain Name within Cloud** in the left-side
@@ -217,6 +225,9 @@ This topic describes how to add a description for a domain name in the Apsara Un
 **Background information**
 
 You can add a description for a domain name to help you identify it. For example, you can add a hostname or internal system information to describe a domain name.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Names > Global Internal**
 **Domain Name**.
@@ -228,6 +239,9 @@ icon in the Actions column, and then select **Description**.
 ##### 4.1.1.5 Delete a domain name
 
 This topic describes how to delete a domain name in the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Names > Global Internal**
 **Domain Name**.
@@ -238,6 +252,9 @@ icon in the **Actions** column, and then select **Delete**.
 ##### 4.1.1.6 Delete multiple domain names at a time
 
 This topic describes how to delete multiple global internal domain names at a time in the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack Domain Name System (DNS) console. For more information, see
 Log on to the Apsara Stack DNS console.
 2. Choose **DNS within Cloud > Global Domain Name within Cloud** in the left-side
@@ -249,6 +266,9 @@ domain names that you want to delete and click **Batch Delete** below the domain
 ##### 4.1.1.7 Add a DNS record for a domain name
 
 This topic describes how to add a Domain Name System (DNS) record for a global internal domain name in the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console. For more information, see Log on to the Apsara
 Stack DNS console.
 2. Choose **DNS within Cloud > Global Domain Name within Cloud** in the left-side
@@ -270,6 +290,9 @@ All operations on global forwarding domain names require system administrator pe
 ###### 4.1.2.1.2 View global forwarding domain names
 
 This topic describes how to view global forwarding domain names in the Apsara Uni-manager Management Console. This operation requires administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Names > Forwarding**
 **Settings > Global Forwarding Domain Names**.
@@ -293,6 +316,9 @@ This topic describes how to add a description for a domain name in the Apsara Un
 **Background information**
 
 You can add a description for a domain name to help you identify it. For example, you can describe a domain name by using a hostname or internal system information.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Names > Forwarding**
 **Settings > Global Forwarding Domain Names**.
@@ -305,6 +331,9 @@ in the Actions column, and then select **Description**.
 **name**
 
 This topic describes how to modify the configurations of a global forwarding domain name in the Apsara Uni-manager Management Console. This operation requires system administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack Domain Name System (DNS) console. For more information, see
 Log on to the Apsara Stack DNS console.
 2. Choose **DNS within Cloud > Global Domain Name within Cloud** in the left-side
@@ -327,6 +356,9 @@ icon in the Actions column, and then select **Delete**.
 ###### 4.1.2.1.7 Delete multiple domain names
 
 This topic describes how to delete multiple domain names at a time in the Apsara Unimanager Management Console. This operation requires administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Domains > Forwarding**
 **Settings > Global Forwarding Domain Names**.
@@ -339,6 +371,9 @@ right corner.
 ###### 4.1.2.2.1 Enable default forwarding
 
 This topic describes how to enable default forwarding in the Apsara Uni-manager Management Console. This operation requires administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Names > Forwarding**
 **Settings > Global Default Forwarding**.
@@ -361,6 +396,9 @@ Then, click **OK**.
 ###### 4.1.2.2.3 Disable default forwarding
 
 This topic describes how to disable default forwarding in the Apsara Uni-manager Management Console. This operation requires administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Internal Domain Names > Forwarding**
 **Settings > Global Default Forwarding**.
@@ -379,6 +417,8 @@ Recursive access control list (ACL) policies are used to specify whether to recu
 > **Note:** Recursion for ACL policies takes precedence over global resolution.
 
 ###### 4.1.3.1.2 Add an ACL policy
+
+**Procedure**
 
 1. Log on to the Apsara Stack Domain Name System (DNS) console. For more information, see
 Log on to the Apsara Stack DNS console.
@@ -433,6 +473,9 @@ you want to delete and click **Delete** in the Actions column.
 ###### 4.1.3.1.6 Delete multiple ACL policies at a time
 
 You can delete multiple access control list (ACL) policies at a time in the Apsara Stack Domain Name System (DNS) console. This operation requires system administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, click **Global Domain Name within Cloud**. On the **Global**
 **Domain Names** page, click the **Global Recursive Resolution** tab, and then click the
@@ -448,6 +491,9 @@ page.
 **Prerequisites**
 
 You have administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Internal Domains > Global Recursive Resolution**.
 3. Click the
@@ -459,6 +505,9 @@ icon in the Actions column and select **Enable**.
 **Prerequisites**
 
 You have administrator permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Internal Domains > Global Recursive Resolution**.
 3. Click the
@@ -505,6 +554,9 @@ The IP Address Line Configuration tab allows you to define lines based on IP add
 #### 4.2.1 View global lines
 
 You can view the list of global lines in the Apsara Stack Domain Name System (DNS) console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, click **Global Line**.
 3. On the Global Line page, select **Line Name** or **IP** from the drop-down list, enter the
@@ -560,6 +612,8 @@ The PrivateZone feature allows you to create VPC-specific tenant domain names. Y
 
 ##### 5.1.1.1 View a domain name
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant Internal**
 **Domains**.
@@ -569,6 +623,8 @@ The search result is displayed.
 
 ##### 5.1.1.2 Add a domain name
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant Internal**
 **Domains**.
@@ -577,6 +633,8 @@ The search result is displayed.
 5. Click **OK**.
 
 ##### 5.1.1.3 Configure DNS records
+
+**Procedure**
 
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant Internal**
@@ -669,6 +727,9 @@ Delete multiple DNS records. Select the DNS records that you want to modify and 
 ##### 5.1.1.4 Bind an organization to a VPC
 
 Tenant domain names are isolated based on VPCs. To ensure that the DNS forwarding configurations take effect, you must bind the organization of domain names to a VPC.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant Internal**
 **Domains**.
@@ -690,6 +751,8 @@ icon in the **Actions** column, and then select **Disassociate**. Make sure that
 
 ##### 5.1.1.6 Add a description for a domain name
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant Internal**
 **Domains**.
@@ -701,6 +764,8 @@ icon in the Actions column, and then select
 
 ##### 5.1.1.7 Delete a domain name
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant Internal**
 **Domains**.
@@ -710,6 +775,8 @@ icon in the Actions column, and then select
 4. In the message that appears, click **OK**.
 
 ##### 5.1.1.8 Delete multiple domain names at a time
+
+**Procedure**
 
 1. Log on to the Apsara Stack Domain Name System (DNS) console. For more information, see
 Log on to the Apsara Stack DNS console.
@@ -734,6 +801,8 @@ icon in the Actions column, and then select Configure DNS Records.
 
 ###### 5.1.2.1.1 View a tenant forwarding domain name
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Forwarding Domains**.
@@ -742,6 +811,8 @@ icon in the Actions column, and then select Configure DNS Records.
 The search result is displayed.
 
 ###### 5.1.2.1.2 Add a tenant forwarding domain name
+
+**Procedure**
 
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
@@ -764,6 +835,8 @@ Mode, and Forwarder IP Addresses.
 
 **a domain name**
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Forwarding Domains**.
@@ -777,6 +850,9 @@ icon in the Actions column, and then select
 ###### 5.1.2.1.4 Bind an organization to a VPC
 
 Tenant domain names are isolated based on VPCs. You must bind the organization of domain names to a VPC before the DNS forwarding configurations can take effect.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Forwarding Domains**.
@@ -789,6 +865,9 @@ the list of VPCs Selected, and then click **OK**.
 ###### 5.1.2.1.5 Unbind a domain name from a VPC
 
 This topic describes how to unbind a domain name from a VPC.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Forwarding Domains**.
@@ -799,6 +878,8 @@ icon in the Actions column, and then select **Disassociate**. Make sure that the
 ###### 5.1.2.1.6 Add a description for a tenant forwarding domain name
 
 **forwarding domain name**
+
+**Procedure**
 
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
@@ -824,6 +905,8 @@ Actions column.
 
 **domain names**
 
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Forwarding Domains**.
@@ -838,6 +921,9 @@ right corner.
 **Prerequisites**
 
 You have the permissions of a system administrator or level-1 organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -847,6 +933,9 @@ You have the permissions of a system administrator or level-1 organization admin
 **Prerequisites**
 
 You have the permissions of a system administrator or level-1 organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -868,6 +957,9 @@ Tenant domain names are isolated based on VPCs. You must bind the organization o
 **Prerequisites**
 
 You have the permissions of a system administrator or level-1 organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -880,6 +972,9 @@ the list of VPCs Selected, and then click **OK**.
 ###### 5.1.2.2.4 Unbind a domain name from a VPC
 
 This topic describes how to unbind a domain name from a VPC.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -894,6 +989,9 @@ icon in the Actions column, and then select **Disassociate**. Make sure that the
 **Prerequisites**
 
 You have the permissions of a system administrator or level-1 organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -909,6 +1007,9 @@ icon in the Actions column, and then select
 **Prerequisites**
 
 You have the permissions of a system administrator or level-1 organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -940,6 +1041,9 @@ icon in the Actions column, and then select
 **Prerequisites**
 
 You have the permissions of a system administrator or level-1 organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Forwarding Configurations > Tenant**
 **Forwarding Settings > Tenant Default Forwarding**.
@@ -954,6 +1058,9 @@ Apsara Stack DNS allows you to define lines based on IP addresses on the Private
 #### 5.2.1 Query private lines
 
 You can query the list of private lines in the Apsara Stack Domain Name System (DNS) console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, click **Private Line**.
 3. On the Private Line page, select **Line Name** or **IP** from the drop-down list, enter the
@@ -990,6 +1097,9 @@ Actions column.
 #### 5.2.6 Delete multiple private lines at a time
 
 You can delete multiple private lines at a time in the Apsara Stack Domain Name System (DNS) console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, click **Private Line**
 3. On the Private Line page, select one or more private lines and click **Batch Delete** in the
@@ -1005,6 +1115,9 @@ The Scheduling Instance page displays all existing scheduling instances. You can
 #### 6.1.1 Search for a scheduling instance
 
 You can search for a scheduling instance in the Apsara Stack Domain Name System (DNS) console.
+
+**Procedure**
+
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose **Global Scheduling > Scheduling Instance**.
 3. On the **Scheduling Instance** page, enter the keyword of the desired scheduling instance
@@ -1176,6 +1289,9 @@ addresses in the address pool as well as the return modes and health status of t
 #### 6.2.1 Search for address pools
 
 This topic describes how to search for address pools.
+
+**Procedure**
+
 1. Log on to the Apsara Stack Domain Name System (DNS) console.
 2. In the left-side navigation pane, choose **Global Scheduling > Address Pool**.
 3. On the **Address Pool** page, select **Address Pool Name** or **Include IP Addresses** from

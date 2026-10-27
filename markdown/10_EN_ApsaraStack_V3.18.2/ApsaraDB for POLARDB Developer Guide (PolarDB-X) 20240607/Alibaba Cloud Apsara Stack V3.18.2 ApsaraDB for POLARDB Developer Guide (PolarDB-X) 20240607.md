@@ -5,7 +5,7 @@ doc_version: "20240607"
 pdf_pages: 147
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 ApsaraDB for POLARDB Developer Guide (PolarDB-X) 20240607.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Polardbx/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20ApsaraDB%20for%20POLARDB%20Developer%20Guide%20%28PolarDB-X%29%2020240607.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 ApsaraDB for POLARDB Developer Guide (PolarDB-X) 20240607
@@ -117,6 +117,8 @@ http://Endpoint/?Action=xx&Parameters
 > **Parameters**: the request parameters for the operation. Separate multiple parameters by using ampersands (&).
 > Request parameters include both common parameters and operation-specific parameters. Common parameters include the API version and the authentication information. For more information, see Common parameters.
 
+**Request parameters**
+
 You must configure the Action parameter based on the API operation that you want to call. For example, set Action to CreateDatabase. You must also configure other common request parameters and operation-specific request parameters that are required to call the operation.
 
 **Character encoding**
@@ -143,7 +145,7 @@ This topic describes the common parameters that can be used to call each API ope
 
 **Common response parameters**
 
-API responses use the HTTP response format. Responses can be returned in the JSON or XML format. You can specify the response format in the request. The default response format is XML. Each response returns a unique **RequestId** regardless of whether the call is successful. A `2xx` status code indicates a successful call. A `4xx` or `5xx` status code indicates a failed call. Sample responses:
+API responses use the HTTP response format. Responses can be returned in the JSON or XML format. You can specify the response format in the request. The default response format is XML. Each response returns a unique **RequestId** regardless of whether the call is successful. A `2xx` status code indicates a successful call. A `4xx` or `5xx` status code indicates a failed call. Sample responses: XML format
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -155,12 +157,14 @@ API responses use the HTTP response format. Responses can be returned in the JSO
     </Interface Name+Response>
 ```
 
-`{`
+JSON format `{`
 
 ```json
     "RequestId":"4C467B38-3910-447D-87BC-AC0491******",
     /*Return Result Data*/
 ```
+
+`}`
 
 ### 1.3 Performance parameters
 
@@ -258,6 +262,8 @@ Creates a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateDBInstanc e | The operation that you want to perform. Set the value to CreateDBInstance. |
@@ -288,13 +294,23 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateDBInstance &RegionId=cn-hangzhou &PayType=PREPAY &DBNodeCount=2 &DBNodeClass=polarx.x4.2xlarge.2d &ZoneId=cn-hangzhou-a &ClientToken=xxxxxx-xxx &NetworkType=vpc &VPCId=vpc-***** &VSwitchId=vsw-********* &UsedTime=1 &Period=Month &ResourceGroupId=null &AutoRenew=true &EngineVersion=2.0 &IsReadDBInstance=false &PrimaryDBInstanceName=pxc-********* &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=CreateDBInstance &RegionId=cn-hangzhou &PayType=PREPAY &DBNodeCount=2 &DBNodeClass=polarx.x4.2xlarge.2d &ZoneId=cn-hangzhou-a &ClientToken=xxxxxx-xxx &NetworkType=vpc &VPCId=vpc-***** &VSwitchId=vsw-********* &UsedTime=1 &Period=Month &ResourceGroupId=null &AutoRenew=true &EngineVersion=2.0 &IsReadDBInstance=false &PrimaryDBInstanceName=pxc-********* &<Common request parameters> Content-Type:application/xml <CreateDBInstanceResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateDBInstanceResponse>
     <DBInstanceName>pxc-*********</DBInstanceName>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <OrderId>12345</OrderId>
 </CreateDBInstanceResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -308,6 +324,8 @@ Content-Type:application/json
   "OrderId" : "12345"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -320,11 +338,15 @@ Deletes a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteDBInstanc e | The operation that you want to perform. Set the value to DeleteDBInstance. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-******** | The name of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -332,10 +354,24 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteDBInstance &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DeleteDBInstance &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &<Common request parameters> Content-Type:application/xml <DeleteDBInstanceResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteDBInstanceResponse>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
-</DeleteDBInstanceResponse> Content-Type:application/json
+</DeleteDBInstanceResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -343,6 +379,8 @@ http(s)://[Endpoint]/?Action=DeleteDBInstance &RegionId=cn-hangzhou &DBInstanceN
 ```json
   "RequestId" : "9B2F3840-5C98-475C-B269-2D5C3A31797C"
 ```
+
+`}`
 
 **Error codes**
 
@@ -356,6 +394,8 @@ Queries the attribute details about a specified instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nceAttribute | The operation that you want to perform. Set the value to DescribeDBInstanceAttribute. |
@@ -363,6 +403,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 | RegionId | String | Yes | cn-hangzhou | The region where the instance is deployed. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example |   | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -423,9 +465,13 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://polardbx.cn-hangzhou.aliyuncs.com/? Action=DescribeDBInstanceAttribute &DBInstanceName=pxc-**************** &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeDBInstanceAttributeResponse>
@@ -496,12 +542,16 @@ Queries the PolarDB-X instances that are deployed in a specified region.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nces | The operation that you want to perform. Set the value to DescribeDBInstances. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -545,9 +595,13 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeDBInstances &RegionId=cn-hangzhou &PageNumber=1 &PageSize=20&<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeDBInstancesResponse>
@@ -588,6 +642,8 @@ Content-Type:application/xml <DescribeDBInstancesResponse>
     </DBInstances>
 </DescribeDBInstancesResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -633,6 +689,8 @@ Content-Type:application/json
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -645,10 +703,14 @@ Queries the progress of a scale-out task.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | No | DescribeScaleO utMigrateTaskLi st | The operation that you want to perform. Set the value to DescribeScaleOutMigrateTaskLis t. |
 | DBInstanceNam e | String | Yes | pxc-******** | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -657,12 +719,22 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeScaleOutMigrateTaskList &ResourceOwnerId=111 &DBInstanceName=pxc-******** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeScaleOutMigrateTaskList &ResourceOwnerId=111 &DBInstanceName=pxc-******** &<Common request parameters> Content-Type:application/xml <DescribeScaleOutMigrateTaskListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeScaleOutMigrateTaskListResponse>
     <Progress>32</Progress>
     <RequestId>C458B1E8-1683-3645-B154-6BA32080EEA</RequestId>
 </DescribeScaleOutMigrateTaskListResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -675,6 +747,8 @@ Content-Type:application/json
   "RequestId" : "C458B1E8-1683-3645-B154-6BA32080EEA"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -686,6 +760,8 @@ Queries the tasks that are performed on a PolarDB-X instance.
 **Debugging**
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -720,8 +796,16 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeTasks &DBInstanceId=pxc-hzjasd**** &StartTime=2021-11-01 &EndTime=2021-11-04 &PageSize=20 &PageNumber=30 &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeTasks &DBInstanceId=pxc-hzjasd**** &StartTime=2021-11-01 &EndTime=2021-11-04 &PageSize=20 &PageNumber=30 &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <DescribeTasksResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeTasksResponse>
     <RequestId>D6045D78-C119-5A17-9DEA-0F810394E008</RequestId>
     <PageNumber>1</PageNumber>
     <PageRecordCount>30</PageRecordCount>
@@ -768,6 +852,8 @@ Content-Type:application/json
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -780,6 +866,8 @@ Changes the instance type of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyDBInstanc eClass | The operation that you want to perform. Set the value to ModifyDBInstanceClass. |
@@ -790,6 +878,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | TargetDBInstanc eClass | String | Yes | polarx.x4.xlarge. 2e | The new instance type of the instance. Valid values: polarx.x4.medium.2e: Instances of this type have 2 CPU cores and 8 GB of memory. polarx.x4.large.2e: Instances of this type have 4 CPU cores and 16 GB of memory. polarx.x8.large.2e: Instances of this type have 4 CPU cores and 32 GB of memory. polarx.x4.xlarge.2e: Instances of this type have 8 CPU cores and 32 GB of memory. polarx.x8.xlarge.2e: Instances of this type have 8 CPU cores and 64 GB of memory. polarx.x4.2xlarge.2e: Instances of this type have 16 CPU cores and 64 GB of memory. polarx.x8.2xlarge.2e: Instances of this type have 16 CPU cores and 128 GB of memory. polarx.x4.4xlarge.2e: Instances of this type have 32 CPU cores and 128 GB of memory. polarx.x8.4xlarge.2e: Instances of this type have 32 CPU cores and 256 GB of memory. polarx.st.8xlarge.2e: Instances of this type have 60 CPU cores and 470 GB of memory. polarx.st.12xlarge.2e: Instances of this type have 90 CPU cores and 720 GB of memory. |
 | ClientToken | String | No | FEA5DC20- 6D8A-5979- 97AA- FC57546ADC20 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | OrderId | String | 20211103105558 | The ID of the order. An order is created each time you upgrade or downgrade the specifications of your instance or change the instance type of your instance. |
@@ -799,11 +889,25 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifyDBInstanceClass &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &TargetDBInstanceClass=polarx.x4.xlarge.2e &ClientToken=FEA5DC20-6D8A-5979-97AA-FC57546ADC20 &Common request parameters
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=ModifyDBInstanceClass &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &TargetDBInstanceClass=polarx.x4.xlarge.2e &ClientToken=FEA5DC20-6D8A-5979-97AA-FC57546ADC20 &Common request parameters Content-Type:application/xml <ModifyDBInstanceClassResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyDBInstanceClassResponse>
     <OrderId>20211103105558</OrderId>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</ModifyDBInstanceClassResponse> Content-Type:application/json
+</ModifyDBInstanceClassResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -812,6 +916,8 @@ http(s)://[Endpoint]/?Action=ModifyDBInstanceClass &RegionId=cn-hangzhou &DBInst
   "OrderId" : "20211103105558",
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20"
 ```
+
+`}`
 
 **Error codes**
 
@@ -834,11 +940,15 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | ConfigValue | String | Yes | true | If ConfigName is set to ENABLE CONSISTENT REPLICA READ _ _ _ , the valid values of the ConfigValue parameter are true and false. |
 | ResourceGroupI d | String | No | rg- acfmx2qz2eh2** * | The ID of the resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FEA5DC20-6D8A- 5979-97AA- FC57546ADC20 | The ID of the request. |
 
 **Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ModifyDBInstanceConfig &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &ConfigName=ENABLE_CONSISTENT_REPLICA_READ &ConfigValue=true &ResourceGroupId=rg-acfmx2qz2eh2*** &<Common request parameters>
@@ -847,7 +957,13 @@ http(s)://[Endpoint]/?Action=ModifyDBInstanceConfig &RegionId=cn-hangzhou &DBIns
 ```xml
 Content-Type:application/xml <ModifyDBInstanceConfigResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</ModifyDBInstanceConfigResponse> Content-Type:application/json
+</ModifyDBInstanceConfigResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -855,6 +971,8 @@ Content-Type:application/xml <ModifyDBInstanceConfigResponse>
 ```json
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20"
 ```
+
+`}`
 
 **Error codes**
 
@@ -868,12 +986,16 @@ Changes the description of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyDBInstanc eDescription | The operation that you want to perform. Set the value to ModifyDBInstanceDescription. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-hzjasd**** | The ID of the instance. |
 | DBInstanceDesc ription | String | Yes | test | The new description of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -883,10 +1005,24 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifyDBInstanceDescription &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &DBInstanceDescription=test &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=ModifyDBInstanceDescription &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &DBInstanceDescription=test &<Common request parameters> Content-Type:application/xml <ModifyDBInstanceDescriptionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyDBInstanceDescriptionResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</ModifyDBInstanceDescriptionResponse> Content-Type:application/json
+</ModifyDBInstanceDescriptionResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -894,6 +1030,8 @@ http(s)://[Endpoint]/?Action=ModifyDBInstanceDescription &RegionId=cn-hangzhou &
 ```json
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20"
 ```
+
+`}`
 
 **Error codes**
 
@@ -907,6 +1045,8 @@ Releases the public endpoint of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 
@@ -916,16 +1056,32 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | CurrentConnecti onString | String | Yes | pxc- hzjasdyuoo.pola rx.rds.aliyuncs.c om | The connection string in the public endpoint. |
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FEA5DC20-6D8A- 5979-97AA- FC57546ADC20 | The ID of the request. |
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ReleaseInstancePublicConnection &DBInstanceName=pxc-hzjasd**** &CurrentConnectionString=pxc-hzjasdyuoo.polarx.rds.aliyuncs.com &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=ReleaseInstancePublicConnection &DBInstanceName=pxc-hzjasd**** &CurrentConnectionString=pxc-hzjasdyuoo.polarx.rds.aliyuncs.com &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <ReleaseInstancePublicConnectionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ReleaseInstancePublicConnectionResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</ReleaseInstancePublicConnectionResponse> Content-Type:application/json
+</ReleaseInstancePublicConnectionResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -946,11 +1102,15 @@ Restarts a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RestartDBInstan ce | The operation that you want to perform. Set the value to RestartDBInstance. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-hzjasd**** | The name of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -958,14 +1118,24 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=RestartDBInstance &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &<Common request parameters>
 ```
 
+Sample success responses `XML` format
+
 ```xml
 Content-Type:application/xml <RestartDBInstanceResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</RestartDBInstanceResponse> Content-Type:application/json
+</RestartDBInstanceResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -973,6 +1143,8 @@ Content-Type:application/xml <RestartDBInstanceResponse>
 ```json
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20"
 ```
+
+`}`
 
 **Error codes**
 
@@ -986,11 +1158,15 @@ Updates the kernel version of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UpgradeDBInsta nceKernelVersio n | The operation that you want to perform. Set the value to UpgradeDBInstanceKernelVersio n. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-hzjasd**** | The name of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1003,14 +1179,28 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpgradeDBInstanceKernelVersion &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=UpgradeDBInstanceKernelVersion &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &<Common request parameters> Content-Type:application/xml <UpgradeDBInstanceKernelVersionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpgradeDBInstanceKernelVersionResponse>
     <DBInstanceName>pxc-hzjasd****</DBInstanceName>
     <TargetMinorVersion>polarx-kernel_5.4.7-16001481_xcluster-
 20200910</TargetMinorVersion>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <TaskId>422922413</TaskId>
-</UpgradeDBInstanceKernelVersionResponse> Content-Type:application/json
+</UpgradeDBInstanceKernelVersionResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1021,6 +1211,8 @@ http(s)://[Endpoint]/?Action=UpgradeDBInstanceKernelVersion &RegionId=cn-hangzho
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20",
   "TaskId" : "422922413"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1034,6 +1226,8 @@ Changes the number of nodes in a PolarDB-X instance. You can call this operation
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UpdatePolarDBX InstanceNode | The operation that you want to perform. Set the value to UpdatePolarDBXInstanceNode. |
@@ -1042,6 +1236,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | DbInstanceNode Count | String | Yes | 3 | The number of nodes after the scaling operation. |
 | ClientToken | String | Yes | FEA5DC20- 6D8A-5979- 97AA- FC57546ADC20 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | OrderId | String | 20211103105558 | The ID of the order that is generated for this request. |
@@ -1049,11 +1245,23 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+```
+http(s)://[Endpoint]/?Action=UpdatePolarDBXInstanceNode &RegionId=cn-hanzhou &DBInstanceName=pxc-hzjasdyuoo &DbInstanceNodeCount=3 &ClientToken=FEA5DC20-6D8A-5979-97AA-FC57546ADC20 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=UpdatePolarDBXInstanceNode &RegionId=cn-hanzhou &DBInstanceName=pxc-hzjasdyuoo &DbInstanceNodeCount=3 &ClientToken=FEA5DC20-6D8A-5979-97AA-FC57546ADC20 &<Common request parameters> Content-Type:application/xml <UpdatePolarDBXInstanceNodeResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdatePolarDBXInstanceNodeResponse>
     <OrderId>20211103105558</OrderId>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</UpdatePolarDBXInstanceNodeResponse> Content-Type:application/json
+</UpdatePolarDBXInstanceNodeResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1062,6 +1270,8 @@ http(s)://[Endpoint]/?Action=UpdatePolarDBXInstanceNode &RegionId=cn-hanzhou &DB
   "OrderId" : "20211103105558",
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1084,6 +1294,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | DBInstanceNam e | String | Yes | pxc- hzfd13214****** | The name of the instance. |
 | StartTime | String | Yes | 2021-09-09 10:27:46 | The beginning of the time range to query. |
 | EndTime | String | Yes | 2021-11-09 10:27:46 | The end of the time range to query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1108,8 +1320,14 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+```
+http(s)://[Endpoint]/?Action=DescribeBinaryLogList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=30 &DBInstanceName=pxc-hzfd13214****** &StartTime=2021-09-09 10:27:46 &EndTime=2021-11-09 10:27:46 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeBinaryLogList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=30 &DBInstanceName=pxc-hzfd13214****** &StartTime=2021-09-09 10:27:46 &EndTime=2021-11-09 10:27:46 &<Common request parameters> Content-Type:application/xml <DescribeBinaryLogListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeBinaryLogListResponse>
     <RequestId>2DFF784E-DC31-5BBC-9B25-9261CD9E0AA9</RequestId>
     <PageNumber>1</PageNumber>
     <PageSize>30</PageSize>
@@ -1131,6 +1349,8 @@ hangzhou.aliyuncs.com/polardbx_cdc/pxc-hzfd13214******/binlog.000001? Expires=16
     </LogList>
 </DescribeBinaryLogListResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -1163,6 +1383,8 @@ hangzhou.aliyuncs.com/polardbx_cdc/pxc-hzfd13214******/binlog.000001? Expires=16
     "Id" : 100
   } ]
 ```
+
+`}`
 
 **Error codes**
 
@@ -1203,13 +1425,23 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateDB &RegionId=cn-hangzhou &DBInstanceName=pxc-************** &AccountName=testaccount &Charset=utf8mb4 &DbName=testdb &AccountPrivilege=ReadWrite &DbDescription=db for test &SecurityAccountName=securityAccount &SecurityAccountPassword=securityPassword &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=CreateDB &RegionId=cn-hangzhou &DBInstanceName=pxc-************** &AccountName=testaccount &Charset=utf8mb4 &DbName=testdb &AccountPrivilege=ReadWrite &DbDescription=db for test &SecurityAccountName=securityAccount &SecurityAccountPassword=securityPassword &<Common request parameters> Content-Type:application/xml <CreateDBResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateDBResponse>
     <Message>*****</Message>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <Success>true</Success>
 </CreateDBResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -1223,6 +1455,8 @@ Content-Type:application/json
   "Success" : true
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -1235,6 +1469,8 @@ Queries the schema of a table.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeTableD etail | The operation that you want to perform. Set the value to DescribeTableDetail. |
@@ -1242,6 +1478,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | DBInstanceNam e | String | Yes | pxc- sprcym7g7w**** | The name of the PolarDB-X instance. |
 | DbName | String | Yes | sbtest | The name of the database to which the table belongs. |
 | TableName | String | Yes | k 4 _ | The name of the table. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1259,9 +1497,13 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeTableDetail &RegionId=cn-hangzhou &DBInstanceName=pxc-sprcym7g7w**** &DbName=sbtest &TableName=k_4 &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeTableDetailResponse>
@@ -1276,7 +1518,13 @@ Content-Type:application/xml <DescribeTableDetailResponse>
             <Extra>*</Extra>
         </Fields>
     </Data>
-</DescribeTableDetailResponse> Content-Type:application/json
+</DescribeTableDetailResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1293,6 +1541,8 @@ Content-Type:application/xml <DescribeTableDetailResponse>
       "Extra" : "*"
     } ]
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -1313,6 +1563,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | DBInstanceNam e | String | Yes | pxc-******** | The name of the PolarDB-X instance. |
 | DbName | String | Yes | testdb | The name of the database that you want to delete. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | ***** | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1321,16 +1573,26 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DeleteDB &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &DbName=testdb &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DeleteDBResponse>
     <Message>*****</Message>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <Success>true</Success>
-</DeleteDBResponse> Content-Type:application/json
+</DeleteDBResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1340,6 +1602,8 @@ Content-Type:application/xml <DeleteDBResponse>
   "RequestId" : "9B2F3840-5C98-475C-B269-2D5C3A31797C",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1352,6 +1616,8 @@ Queries the character sets that are supported by databases in a PolarDB-X instan
 **Debugging**
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1370,8 +1636,16 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeCharacterSet &DBInstanceName=pxc-********* &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeCharacterSet &DBInstanceName=pxc-********* &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <DescribeCharacterSetResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeCharacterSetResponse>
     <Message>success</Message>
     <RequestId>709C1E40-092D-4A3D-9958-6D7438******</RequestId>
     <Success>true</Success>
@@ -1397,6 +1671,8 @@ Content-Type:application/json
     "CharacterSet" : [ "utf8" ]
 ```
 
+`}` `}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -1409,12 +1685,16 @@ Queries information about tables in a PolarDB-X database.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDistribu teTableList | The operation that you want to perform. Set the value to DescribeDistributeTableList. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where your PolarDB-X instance is deployed. |
 | DBInstanceNam e | String | Yes | pxc-******** | The name of the PolarDB-X instance. |
 | DbName | String | Yes | sbtest1 | The name of the database. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1432,9 +1712,13 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeDistributeTableList &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &DbName=sbtest1 &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeDistributeTableListResponse>
@@ -1449,7 +1733,13 @@ Content-Type:application/xml <DescribeDistributeTableListResponse>
             <DbKey>id</DbKey>
         </Tables>
     </Data>
-</DescribeDistributeTableListResponse> Content-Type:application/json
+</DescribeDistributeTableListResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1466,6 +1756,8 @@ Content-Type:application/xml <DescribeDistributeTableListResponse>
       "DbKey" : "id"
     } ]
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -1487,6 +1779,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | DbName | String | Yes | testDB | The name of the database. |
 | DbDescription | String | Yes | DatabaseForTes t | The new description of the database. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | success | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1495,16 +1789,26 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=ModifyDatabaseDescription &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &DbName=testDB &DbDescription=DatabaseForTest &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <ModifyDatabaseDescriptionResponse>
     <Message>success</Message>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Success>true</Success>
-</ModifyDatabaseDescriptionResponse> Content-Type:application/json
+</ModifyDatabaseDescriptionResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1514,6 +1818,8 @@ Content-Type:application/xml <ModifyDatabaseDescriptionResponse>
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1527,6 +1833,8 @@ Queries information about databases in a PolarDB-X instance.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDbList | The operation that you want to perform. Set the value to DescribeDbList. |
@@ -1535,6 +1843,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 | DBName | String | No | db name _ | The name of the database that you want to query. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1552,8 +1862,16 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeDbList &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &DBName=db_name &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeDbList &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &DBName=db_name &<Common request parameters> Content-Type:application/xml <DescribeDbListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeDbListResponse>
     <Message>Success</Message>
     <RequestId>C458B1E8-1683-3645-B154-6BA32080EEA</RequestId>
     <Success>true</Success>
@@ -1567,7 +1885,13 @@ http(s)://[Endpoint]/?Action=DescribeDbList &RegionId=cn-hangzhou &DBInstanceNam
             <AccountName>root4test</AccountName>
         </Accounts>
     </Data>
-</DescribeDbListResponse> Content-Type:application/json
+</DescribeDbListResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1588,6 +1912,8 @@ http(s)://[Endpoint]/?Action=DescribeDbList &RegionId=cn-hangzhou &DBInstanceNam
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -1602,9 +1928,13 @@ Queries available regions.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1627,8 +1957,16 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters> Content-Type:application/xml <DescribeRegionsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeRegionsResponse>
     <Code>200</Code>
     <Message>success</Message>
     <RequestId>C458B1E8-1683-3645-B154-6BA32080EEA</RequestId>
@@ -1645,6 +1983,8 @@ http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters> Conten
     </Regions>
 </DescribeRegionsResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -1669,6 +2009,8 @@ Content-Type:application/json
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -1682,6 +2024,8 @@ Creates an account for a PolarDB-X instance.
 **Debugging**
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1698,6 +2042,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | SecurityAccount Name | String | No | securityAccount | The username of the data security administrator (DSA) account. Note If the three-role mode is enabled for the PolarDB-X instance, you must specify this parameter. |
 | SecurityAccount Password | String | No | securityPasswor d | The password of the DSA account. Note If the three-role mode is enabled for the PolarDB-X instance, you must specify this parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | **** | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1708,12 +2054,26 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateAccount &RegionId=cn-hangzhou &DBInstanceName=pxc-************** &AccountName=testAccount &AccountPassword=Test@1111 &DBName=testdb &AccountPrivilege=ReadWrite &AccountDescription=test &SecurityAccountName=securityAccount &SecurityAccountPassword=securityPassword &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=CreateAccount &RegionId=cn-hangzhou &DBInstanceName=pxc-************** &AccountName=testAccount &AccountPassword=Test@1111 &DBName=testdb &AccountPrivilege=ReadWrite &AccountDescription=test &SecurityAccountName=securityAccount &SecurityAccountPassword=securityPassword &<Common request parameters> Content-Type:application/xml <CreateAccountResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateAccountResponse>
     <Message>****</Message>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <Success>true</Success>
-</CreateAccountResponse> Content-Type:application/json
+</CreateAccountResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1723,6 +2083,8 @@ http(s)://[Endpoint]/?Action=CreateAccount &RegionId=cn-hangzhou &DBInstanceName
   "RequestId" : "9B2F3840-5C98-475C-B269-2D5C3A31797C",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1736,6 +2098,8 @@ Changes the type of permissions that are granted to an account.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyAccountPr ivilege | The operation that you want to perform. Set the value to ModifyAccountPrivilege. |
@@ -1747,6 +2111,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | SecurityAccount Name | String | No | account audit _ | The username of the data security administrator (DSA) account. |
 | SecurityAccount Password | String | No | ***** | The password of the DSA account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | success | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1757,12 +2123,26 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifyAccountPrivilege &RegionId=cn-hangzhou &DBInstanceName=pxc-htri0ori2r4k9p &AccountName=account_sec &DbName=sbtest &AccountPrivilege=ReadWrite &SecurityAccountName=account_audit &SecurityAccountPassword=***** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=ModifyAccountPrivilege &RegionId=cn-hangzhou &DBInstanceName=pxc-htri0ori2r4k9p &AccountName=account_sec &DbName=sbtest &AccountPrivilege=ReadWrite &SecurityAccountName=account_audit &SecurityAccountPassword=***** &<Common request parameters> Content-Type:application/xml <ModifyAccountPrivilegeResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyAccountPrivilegeResponse>
     <Message>success</Message>
     <RequestId>73559800-3c8c-11ec-bd40-99cfcff3fe1e</RequestId>
     <Success>true</Success>
-</ModifyAccountPrivilegeResponse> Content-Type:application/json
+</ModifyAccountPrivilegeResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1772,6 +2152,8 @@ http(s)://[Endpoint]/?Action=ModifyAccountPrivilege &RegionId=cn-hangzhou &DBIns
   "RequestId" : "73559800-3c8c-11ec-bd40-99cfcff3fe1e",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1785,6 +2167,8 @@ Enables the three-role mode for a PolarDB-X instance.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | EnableRightsSep aration | The operation that you want to perform. Set the value to EnableRightsSeparation. |
@@ -1797,6 +2181,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | AuditAccountPas sword | String | Yes | ****** | The password of the DAA account. |
 | AuditAccountDe scription | String | No | test123 | The description of the DAA account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | success | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1807,12 +2193,26 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=EnableRightsSeparation &RegionId=cn-hangzhou &DBInstanceName=pxc-htri0ori2r4k9p &SecurityAccountName=account_sec &SecurityAccountPassword=***** &SecurityAccountDescription=test123 &AuditAccountName=account_audit &AuditAccountPassword=****** &AuditAccountDescription=test123 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=EnableRightsSeparation &RegionId=cn-hangzhou &DBInstanceName=pxc-htri0ori2r4k9p &SecurityAccountName=account_sec &SecurityAccountPassword=***** &SecurityAccountDescription=test123 &AuditAccountName=account_audit &AuditAccountPassword=****** &AuditAccountDescription=test123 &<Common request parameters> Content-Type:application/xml <EnableRightsSeparationResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <EnableRightsSeparationResponse>
     <Message>success</Message>
     <RequestId>73559800-3c8c-11ec-bd40-99cfcff3fe1e</RequestId>
     <Success>true</Success>
-</EnableRightsSeparationResponse> Content-Type:application/json
+</EnableRightsSeparationResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1822,6 +2222,8 @@ http(s)://[Endpoint]/?Action=EnableRightsSeparation &RegionId=cn-hangzhou &DBIns
   "RequestId" : "73559800-3c8c-11ec-bd40-99cfcff3fe1e",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1835,6 +2237,8 @@ Changes the password for a database account.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ResetAccountPa ssword | The operation that you want to perform. Set the value to ResetAccountPassword. |
@@ -1845,6 +2249,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | SecurityAccount Name | String | No | account sec _ | The username of the data security administrator (DSA) account |
 | SecurityAccount Password | String | No | ***** | The password of the DSA account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | success | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1853,12 +2259,24 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+```
+http(s)://[Endpoint]/?Action=ResetAccountPassword &RegionId=cn-hangzhou &DBInstanceName=pxc-htri0ori2r4k9p &AccountName=account &AccountPassword=***** &SecurityAccountName=account_sec &SecurityAccountPassword=***** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=ResetAccountPassword &RegionId=cn-hangzhou &DBInstanceName=pxc-htri0ori2r4k9p &AccountName=account &AccountPassword=***** &SecurityAccountName=account_sec &SecurityAccountPassword=***** &<Common request parameters> Content-Type:application/xml <ResetAccountPasswordResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ResetAccountPasswordResponse>
     <Message>success</Message>
     <RequestId>73559800-3c8c-11ec-bd40-99cfcff3fe1e</RequestId>
     <Success>true</Success>
-</ResetAccountPasswordResponse> Content-Type:application/json
+</ResetAccountPasswordResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1868,6 +2286,8 @@ http(s)://[Endpoint]/?Action=ResetAccountPassword &RegionId=cn-hangzhou &DBInsta
   "RequestId" : "73559800-3c8c-11ec-bd40-99cfcff3fe1e",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1893,6 +2313,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | AccountPasswor d | String | Yes | testdbapasswor d | The password of the privileged account. |
 | AccountDescripti on | String | No | testdbadescripti on | The description of the privileged account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | ***** | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1901,16 +2323,24 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=CreateSuperAccount &RegionId=cn-hangzhou &DBInstanceName=pxc-************ &AccountName=dba &AccountPassword=testdbapassword &AccountDescription=testdbadescription &<Common request parameters>
 ```
 
 ```xml
-Content-Type:application/xml <CreateSuperAccountResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateSuperAccountResponse>
     <Message>*****</Message>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <Success>true</Success>
-</CreateSuperAccountResponse> Content-Type:application/json
+</CreateSuperAccountResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1920,6 +2350,8 @@ Content-Type:application/xml <CreateSuperAccountResponse>
   "RequestId" : "9B2F3840-5C98-475C-B269-2D5C3A31797C",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1933,6 +2365,8 @@ Deletes a database account from a PolarDB-X instance.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteAccount | The operation that you want to perform. Set the value to DeleteAccount. |
@@ -1944,6 +2378,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | SecurityAccount Name | String | No | securityAccount | The username of the data security administrator (DSA) account. Note If the three-role mode is enabled for the PolarDB-X instance, you must specify this parameter. |
 | SecurityAccount Password | String | No | securityPasswor d | The password of the DSA account. Note If the three-role mode is enabled for the PolarDB-X instance, you must specify this parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | **** | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -1951,6 +2387,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | Success | Boolean | true | Indicates whether the request is successful. |
 
 **Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DeleteAccount &DBInstanceName=pxc-********* &AccountName=testaccount &RegionId=cn-hangzhou &SecurityAccountName=securityAccount &SecurityAccountPassword=securityPassword &<Common request parameters>
@@ -1961,7 +2399,13 @@ Content-Type:application/xml <DeleteAccountResponse>
     <Message>****</Message>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <Success>true</Success>
-</DeleteAccountResponse> Content-Type:application/json
+</DeleteAccountResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1971,6 +2415,8 @@ Content-Type:application/xml <DeleteAccountResponse>
   "RequestId" : "9B2F3840-5C98-475C-B269-2D5C3A31797C",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1984,6 +2430,8 @@ Queries information about all accounts or specified accounts in a PolarDB-X inst
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAccount List | The operation that you want to perform. Set the value to DescribeAccountList. |
@@ -1993,6 +2441,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | AccountName | String | No | testaccount | The username of the account that you want to query. If you want to query information about a specific account, you must specify this parameter. |
 |---|---|---|---|---|
 | AccountType | String | No | 0 | The type of accounts that you want to query. If you want to query a specific type of accounts, you must specify this parameter. If you do not specify this parameter, information about all accounts of the specified instance is returned. If the three-role mode is disabled, valid values are 0 and 1. The value 0 specifies standard accounts, and the value 1 specifies the privileged account. If the three-role mode is enabled, valid values are 0, 2, 3, and 4. The value 0 specifies standard accounts, the value 2 specifies the database administrator (DBA) account, the value 3 specifies the data security administrator (DSA) account, and the value 4 specifies the data audit administrator (DAA) account. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2012,9 +2462,13 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeAccountList &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &AccountName=testaccount &AccountType=0 &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeAccountListResponse>
@@ -2030,7 +2484,13 @@ Content-Type:application/xml <DescribeAccountListResponse>
         <AccountType>0</AccountType>
         <AccountName>testAccount</AccountName>
     </Data>
-</DescribeAccountListResponse> Content-Type:application/json
+</DescribeAccountListResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2049,6 +2509,8 @@ Content-Type:application/xml <DescribeAccountListResponse>
     "AccountName" : "testAccount"
   } ]
 ```
+
+`}`
 
 **Error codes**
 
@@ -2070,6 +2532,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | AccountName | String | Yes | account | The username of the account whose description you want to modify. |
 | AccountDescripti on | String | No | AccountForTest | The new description of the account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | msg | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -2078,16 +2542,26 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=ModifyAccountDescription &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &AccountName=account &AccountDescription=AccountForTest &<Common request parameters>
 ```
+
+Sample success responses
 
 ```xml
 Content-Type:application/xml <ModifyAccountDescriptionResponse>
     <Message>msg</Message>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Success>true</Success>
-</ModifyAccountDescriptionResponse> Content-Type:application/json
+</ModifyAccountDescriptionResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2097,6 +2571,8 @@ Content-Type:application/xml <ModifyAccountDescriptionResponse>
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -2112,6 +2588,8 @@ Creates a public endpoint for a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | No | AllocateInstance PublicConnectio n | The operation that you want to perform. Set the value to AllocateInstancePublicConnectio n. |
@@ -2122,16 +2600,32 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 |---|---|---|---|---|
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9B2F3840-5C98- 475C-B269- 2D5C3A31797C | The ID of the request. |
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AllocateInstancePublicConnection &DBInstanceName=pxc-************** &ConnectionStringPrefix=pxc-************** &Port=3306 &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=AllocateInstancePublicConnection &DBInstanceName=pxc-************** &ConnectionStringPrefix=pxc-************** &Port=3306 &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <AllocateInstancePublicConnectionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AllocateInstancePublicConnectionResponse>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
-</AllocateInstancePublicConnectionResponse> Content-Type:application/json
+</AllocateInstancePublicConnectionResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2139,6 +2633,8 @@ http(s)://[Endpoint]/?Action=AllocateInstancePublicConnection &DBInstanceName=px
 ```json
   "RequestId" : "9B2F3840-5C98-475C-B269-2D5C3A31797C"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2152,12 +2648,16 @@ Queries whether your Alibaba Cloud account is authorized to use Key Management S
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CheckCloudReso urceAuthorized | The operation that you want to perform. Set the value to CheckCloudResourceAuthorized. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-******** | The ID of the instance. |
 | RoleArn | String | Yes | acs:ram::12345 6789012****:rol e/AliyunRdsInsta nceEncryptionD efaultRole | The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that you want to assign to your account. Specify the ARN in the format of acs:ram::$accountID:role/$roleName. After the RAM role is assigned, you can use KMS for your PolarDB-X instance. $accountID: the ID of the Alibaba Cloud account. To view the account ID, you can log on to the Alibaba Cloud Management Console, move the pointer over your profile picture in the upper- right corner of the page, and then click Security Settings. $roleName: the name of the RAM role. Set the value to AliyunRdsInstanceEncryptionDefau ltRole. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2170,8 +2670,16 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CheckCloudResourceAuthorized &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &RoleArn=acs:ram::123456789012****:role/AliyunRdsInstanceEncryptionDefaultRole &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=CheckCloudResourceAuthorized &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &RoleArn=acs:ram::123456789012****:role/AliyunRdsInstanceEncryptionDefaultRole &<Common request parameters> Content-Type:application/xml <CheckCloudResourceAuthorizedResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CheckCloudResourceAuthorizedResponse>
     <RequestId>A501A191-BD70-5E50-98A9-C2A486A82****</RequestId>
     <Data>
         <AuthorizationState>0</AuthorizationState>
@@ -2179,6 +2687,8 @@ http(s)://[Endpoint]/?Action=CheckCloudResourceAuthorized &RegionId=cn-hangzhou 
     </Data>
 </CheckCloudResourceAuthorizedResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -2192,6 +2702,8 @@ Content-Type:application/json
     "AuthorizationState" : "0",
     "RoleArn" : "acs:ram::123456789012****:role/AliyunRdsInstanceEncryptionDefaultRole"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -2209,11 +2721,15 @@ Queries whether Transparent Data Encryption (TDE) is enabled for a PolarDB-X ins
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nceTDE | The operation that you want to perform. Set the value to DescribeDBInstanceTDE. |
 | DBInstanceNam e | String | No | pxc-******** | The ID of the instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2225,13 +2741,27 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeDBInstanceTDE &DBInstanceName=pxc-******** &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeDBInstanceTDE &DBInstanceName=pxc-******** &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <DescribeDBInstanceTDEResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeDBInstanceTDEResponse>
     <RequestId>C458B1E8-1683-3645-B154-6BA32080EEA</RequestId>
     <Data>
         <TDEStatus>0</TDEStatus>
     </Data>
-</DescribeDBInstanceTDEResponse> Content-Type:application/json
+</DescribeDBInstanceTDEResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2241,6 +2771,8 @@ http(s)://[Endpoint]/?Action=DescribeDBInstanceTDE &DBInstanceName=pxc-******** 
   "Data" : {
     "TDEStatus" : "0"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -2260,11 +2792,15 @@ Queries the IP address whitelists of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSecurit yIps | The operation that you want to perform. Set the value to DescribeSecurityIps. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-hzjasd**** | The name of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2281,8 +2817,16 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeSecurityIps &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeSecurityIps &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &<Common request parameters> Content-Type:application/xml <DescribeSecurityIpsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeSecurityIpsResponse>
     <Message>success</Message>
     <RequestId>14036EBE-CF2E-44DB-ACE9-AC6157D3A6FC</RequestId>
     <Success>true</Success>
@@ -2295,6 +2839,8 @@ http(s)://[Endpoint]/?Action=DescribeSecurityIps &RegionId=cn-hangzhou &DBInstan
     </Data>
 </DescribeSecurityIpsResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -2314,6 +2860,8 @@ Content-Type:application/json
     } ]
 ```
 
+`}` `}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -2326,11 +2874,15 @@ Queries the keys that are used by Transparent Data Encryption (TDE) for a PolarD
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeUserEn cryptionKeyList | The operation that you want to perform. Set the value to DescribeUserEncryptionKeyList. |
 | DBInstanceNam e | String | No | pxc- hzjasdyu**** | The ID of the instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2342,13 +2894,27 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeUserEncryptionKeyList &DBInstanceName=pxc-hzjasdyu**** &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeUserEncryptionKeyList &DBInstanceName=pxc-hzjasdyu**** &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <DescribeUserEncryptionKeyListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeUserEncryptionKeyListResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Data>
         <KeyIds>RkVBNURDMjAtNkQ4QS01OTc5LTk3QUEtRkM1NzU0Nk******</KeyIds>
     </Data>
-</DescribeUserEncryptionKeyListResponse> Content-Type:application/json
+</DescribeUserEncryptionKeyListResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2358,6 +2924,8 @@ http(s)://[Endpoint]/?Action=DescribeUserEncryptionKeyList &DBInstanceName=pxc-h
   "Data" : {
     "KeyIds" : [ "RkVBNURDMjAtNkQ4QS01OTc5LTk3QUEtRkM1NzU0Nk******" ]
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -2376,6 +2944,8 @@ Modifies an IP address whitelist of a PolarDB-X instance.
 **Debugging**
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2396,12 +2966,26 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifySecurityIps &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &GroupName=default &SecurityIPList=127.0.0.1,192.168.0.0 &ModifyMode=1 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=ModifySecurityIps &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasd**** &GroupName=default &SecurityIPList=127.0.0.1,192.168.0.0 &ModifyMode=1 &<Common request parameters> Content-Type:application/xml <ModifySecurityIpsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifySecurityIpsResponse>
     <Message>success</Message>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Success>true</Success>
-</ModifySecurityIpsResponse> Content-Type:application/json
+</ModifySecurityIpsResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2411,6 +2995,8 @@ http(s)://[Endpoint]/?Action=ModifySecurityIps &RegionId=cn-hangzhou &DBInstance
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20",
   "Success" : true
 ```
+
+`}`
 
 **Error codes**
 
@@ -2424,6 +3010,8 @@ Enables Transparent Data Encryption (TDE) for a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UpdateDBInstan ceTDE | The operation that you want to perform. Set the value to UpdateDBInstanceTDE. |
@@ -2432,6 +3020,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | TDEStatus | Integer | Yes | 1 | Enables TDE. Set the value to 1. |
 | EncryptionKey | String | Yes | RkVBNURDMjAt NkQ4QS01OTc5 LTk3QUEtRkM1N zU0N****** | The custom key that is used to encrypt data. This parameter is required if you want to use a custom key. If you do not specify this parameter, the key that is automatically generated by the backend is used to encrypt data. |
 | RoleArn | String | Yes | acs:ram::14069 26****:role/aliyu nrdsinstanceenc ryptiondefaultrol e | The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that you want to assign to your account. For more information, see RAM role overview. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2444,13 +3034,27 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateDBInstanceTDE &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasdyuoo &TDEStatus=1 &EncryptionKey=RkVBNURDMjAtNkQ4QS01OTc5LTk3QUEtRkM1NzU0Nk****** &RoleArn=acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=UpdateDBInstanceTDE &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasdyuoo &TDEStatus=1 &EncryptionKey=RkVBNURDMjAtNkQ4QS01OTc5LTk3QUEtRkM1NzU0Nk****** &RoleArn=acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole &<Common request parameters> Content-Type:application/xml <UpdateDBInstanceTDEResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateDBInstanceTDEResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Data>
         <TaskId>42292****</TaskId>
     </Data>
-</UpdateDBInstanceTDEResponse> Content-Type:application/json
+</UpdateDBInstanceTDEResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2460,6 +3064,8 @@ http(s)://[Endpoint]/?Action=UpdateDBInstanceTDE &RegionId=cn-hangzhou &DBInstan
   "Data" : {
     "TaskId" : "42292****"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -2479,12 +3085,16 @@ Creates a backup for a PolarDB-X instance.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateBackup | The operation that you want to perform. Set the value to CreateBackup. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the PolarDB-X instance is deployed. |
 | DBInstanceNam e | String | Yes | pxc- ************** | The name of the PolarDB-X instance. |
 | BackupType | String | No | 0 | The type of the backup. Valid values: 0. The value 0 specifies fast backup. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2498,15 +3108,29 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateBackup &RegionId=cn-hangzhou &DBInstanceName=pxc-************** &BackupType=0 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=CreateBackup &RegionId=cn-hangzhou &DBInstanceName=pxc-************** &BackupType=0 &<Common request parameters> Content-Type:application/xml <CreateBackupResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateBackupResponse>
     <Message>*****</Message>
     <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId>
     <Success>true</Success>
     <Data>
         <BackupSetId>627833</BackupSetId>
     </Data>
-</CreateBackupResponse> Content-Type:application/json
+</CreateBackupResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2520,6 +3144,8 @@ http(s)://[Endpoint]/?Action=CreateBackup &RegionId=cn-hangzhou &DBInstanceName=
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -2532,11 +3158,15 @@ Queries the backup policy of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeBackup Policy | The operation that you want to perform. Set the value to DescribeBackupPolicy. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
 | DBInstanceNam e | String | Yes | pxc-******** | The name of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2564,9 +3194,13 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeBackupPolicy &RegionId=cn-hangzhou &DBInstanceName=pxc-******** &Common request parameters
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeBackupPolicyResponse>
@@ -2588,7 +3222,13 @@ Content-Type:application/xml <DescribeBackupPolicyResponse>
         <ColdDataBackupInterval>30</ColdDataBackupInterval>
         <ColdDataBackupRetention>30</ColdDataBackupRetention>
     </Data>
-</DescribeBackupPolicyResponse> Content-Type:application/json
+</DescribeBackupPolicyResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2614,6 +3254,8 @@ Content-Type:application/xml <DescribeBackupPolicyResponse>
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 访问错误中心查看更多错误码。 For a list of error codes, visit the API Error Center.
@@ -2626,6 +3268,8 @@ Queries backup sets of a PolarDB-X instance.
 
 Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeBackup SetList | The operation that you want to perform. Set the value to DescribeBackupSetList. |
@@ -2635,6 +3279,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | EndTime | Long | No | 1635707845000 | The end time of the backup. Unit: millisecond. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2654,9 +3300,13 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeBackupSetList &RegionId=cn-hangzhou &DBInstanceName=pxc-xxxxxx &StartTime=1635707845000 &EndTime=1635707845000 &PageSize=30 &PageNumber=1 &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeBackupSetListResponse>
@@ -2672,7 +3322,13 @@ Content-Type:application/xml <DescribeBackupSetListResponse>
         <BeginTime>1635706960956</BeginTime>
         <BackupModel>0</BackupModel>
     </Data>
-</DescribeBackupSetListResponse> Content-Type:application/json
+</DescribeBackupSetListResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2691,6 +3347,8 @@ Content-Type:application/xml <DescribeBackupSetListResponse>
     "BackupModel" : 0
   } ]
 ```
+
+`}`
 
 **Error codes**
 
@@ -2724,6 +3382,8 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 | RemoveLogRete ntion | Integer | No | 7 | The number of days for which log backup files can be retained in the backup storage space that is provided by Alibaba Cloud. Valid values range from 7 to 730. The default value is 7. |
 | LogLocalRetenti onSpace | Integer | No | 30 | The maximum percentage of storage space that can be consumed by binlog files. Valid values range from 0 to 50. The default value is 30. When the specified percentage of space is fully occupied by binlog files, the system can delete the binlog files that are retained for the longest period of time till the space usage of binlog files drops to a value that is less than the specified value. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | success | The message that is returned. If the request is successful, "success" is returned. If the request fails, an error code is returned. |
@@ -2748,8 +3408,16 @@ Alibaba Cloud provides OpenAPI Explorer to simplify API usage. OpenAPI Explorer 
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateBackupPolicy &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasdyuoo &BackupPeriod=1001000 &BackupPlanBegin=03:00Z &BackupSetRetention=30 &BackupType=0 &BackupWay=P &ForceCleanOnHighSpaceUsage=1 &IsEnabled=1 &LocalLogRetention=7 &RemoveLogRetention=7 &LogLocalRetentionSpace=30 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=UpdateBackupPolicy &RegionId=cn-hangzhou &DBInstanceName=pxc-hzjasdyuoo &BackupPeriod=1001000 &BackupPlanBegin=03:00Z &BackupSetRetention=30 &BackupType=0 &BackupWay=P &ForceCleanOnHighSpaceUsage=1 &IsEnabled=1 &LocalLogRetention=7 &RemoveLogRetention=7 &LogLocalRetentionSpace=30 &<Common request parameters> Content-Type:application/xml <UpdateBackupPolicyResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateBackupPolicyResponse>
     <Message>success</Message>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Success>true</Success>
@@ -2768,6 +3436,8 @@ http(s)://[Endpoint]/?Action=UpdateBackupPolicy &RegionId=cn-hangzhou &DBInstanc
     </Data>
 </UpdateBackupPolicyResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -2794,6 +3464,8 @@ Content-Type:application/json
   } ]
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
@@ -2808,6 +3480,8 @@ Queries the parameter settings of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeParame ters | The operation that you want to perform. Set the value to DescribeParameters. |
@@ -2816,6 +3490,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | DBInstanceId | String | Yes | pxc-******** | The ID of the instance. |
 |---|---|---|---|---|
 | ParamLevel | String | No | compute | The type of nodes whose parameters you want to query. Valid values: compute: data nodes storage: storage nodes |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2836,8 +3512,16 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeParameters &RegionId=cn-hangzhou &DBInstanceId=pxc-******** &ParamLevel=compute &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeParameters &RegionId=cn-hangzhou &DBInstanceId=pxc-******** &ParamLevel=compute &<Common request parameters> Content-Type:application/xml <DescribeParametersResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeParametersResponse>
     <RequestId>6BA32080EEA</RequestId>
     <Data>
         <EngineVersion>2.0</EngineVersion>
@@ -2857,6 +3541,8 @@ for storage nodes.(-1: turn off; 0: turn on)</ParameterDescription>
     </Data>
 </DescribeParametersResponse>
 ```
+
+`JSON` format
 
 ```
 Content-Type:application/json
@@ -2883,6 +3569,8 @@ or storage nodes.(-1: turn off; 0: turn on)",
     } ]
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -2899,6 +3587,8 @@ Modifies parameter settings for data nodes and storage nodes of a PolarDB-X inst
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 
@@ -2910,11 +3600,15 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | Parameters | String | Yes | null | The details about each parameter that you want to modify. The value of the Parameters parameter must be a JSON string that consists of maps. In a map, MapKey specifies the name of a parameter name and MapValue specifies the new value of the parameter. |
 | ClientToken | String | No | FEA5DC20- 6D8A-5979- 97AA- FC57546ADC20 | The client token that is generated by your client. A client token is a unique random string. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FEA5DC20-6D8A- 5979-97AA- FC57546ADC20 | The ID of the request. |
 
 **Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ModifyParameter &RegionId=cn-hangzhou &DBInstanceId=pxc-hzjasdyuoo &ParamLevel=compute &Parameters={"CONN_POOL_BLOCK_TIMEOUT":6000} &ClientToken=FEA5DC20-6D8A-5979-97AA-FC57546ADC20 &<Common request parameters>
@@ -2923,7 +3617,13 @@ http(s)://[Endpoint]/?Action=ModifyParameter &RegionId=cn-hangzhou &DBInstanceId
 ```xml
 Content-Type:application/xml <ModifyParameterResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
-</ModifyParameterResponse> Content-Type:application/json
+</ModifyParameterResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2931,6 +3631,8 @@ Content-Type:application/xml <ModifyParameterResponse>
 ```json
   "RequestId" : "FEA5DC20-6D8A-5979-97AA-FC57546ADC20"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2950,6 +3652,8 @@ Queries SSL settings of a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nceSSL | The operation that you want to perform. Set the value to DescribeDBInstanceSSL. |
@@ -2957,6 +3661,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | DBInstanceNam e | String | No | pxc-********* | The ID of the instance. |
 |---|---|---|---|---|
 | RegionId | String | No | cn-hangzhou | The ID of the region. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2968,9 +3674,13 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeDBInstanceSSL &DBInstanceName=pxc-********* &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeDBInstanceSSLResponse>
@@ -2981,7 +3691,13 @@ Content-Type:application/xml <DescribeDBInstanceSSLResponse>
         <CertCommonName>pxc-
 sddddddcym7g7wj7kv.polarx.singapore.rds.aliyuncs.com</CertCommonName>
     </Data>
-</DescribeDBInstanceSSLResponse> Content-Type:application/json
+</DescribeDBInstanceSSLResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2993,6 +3709,8 @@ sddddddcym7g7wj7kv.polarx.singapore.rds.aliyuncs.com</CertCommonName>
     "SSLExpiredTime" : "2022-11-04T09:39:07Z",
     "CertCommonName" : "pxc-sddddddcym7g7wj7kv.polarx.singapore.rds.aliyuncs.com"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -3013,6 +3731,8 @@ Updates the SSL settings for a PolarDB-X instance.
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UpdateDBInstan ceSSL | The operation that you want to perform. Set the value to UpdateDBInstanceSSL. |
@@ -3020,6 +3740,8 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | CertCommonNa me | String | Yes | pxc- hzrqjarxdocd4t. polarx.rds.aliyun cs.com | The domain name to which the certificate is bound. |
 | DBInstanceNam e | String | Yes | pxc-hzjasd**** | The ID of the instance. |
 | RegionId | String | No | cn-hangzhou | The ID of the region. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3029,13 +3751,27 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Examples**
 
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateDBInstanceSSL &EnableSSL=true &CertCommonName=pxc-hzrqjarxdocd4t.polarx.rds.aliyuncs.com &DBInstanceName=pxc-hzjasd**** &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=UpdateDBInstanceSSL &EnableSSL=true &CertCommonName=pxc-hzrqjarxdocd4t.polarx.rds.aliyuncs.com &DBInstanceName=pxc-hzjasd**** &RegionId=cn-hangzhou &<Common request parameters> Content-Type:application/xml <UpdateDBInstanceSSLResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateDBInstanceSSLResponse>
     <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId>
     <Data>
         <TaskId>2209883</TaskId>
     </Data>
-</UpdateDBInstanceSSLResponse> Content-Type:application/json
+</UpdateDBInstanceSSLResponse>
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3045,6 +3781,8 @@ http(s)://[Endpoint]/?Action=UpdateDBInstanceSSL &EnableSSL=true &CertCommonName
   "Data" : {
     "TaskId" : 2209883
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -3070,6 +3808,8 @@ Queries the detailed information about database monitoring.
 | StartTime | String | No | 2020-08-19 11:02:50 | The beginning of the time range to query. Specify the time in the time zone of the queried database in the yyyy-mm-dd hh:mm:ss format. |
 | EndTime | String | No | 2020-08-19 11:03:50 | The end of the time range to query. Specify the time in the time zone of the queried database in the yyyy- mm-dd hh:mm:ss format. Note The end of the time range must be later than the beginning of the time range. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | Struct |   | The monitoring data. |
@@ -3087,11 +3827,15 @@ Queries the detailed information about database monitoring.
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeInstanceDbPerformance &DbInstanceName=pxc-**************** &DbName=db2 &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-```json
+Sample success responses `XML` format
+
+```xml
 <Message>****</Message> <RequestId>5C07B700-A7CC-4F81-8861-86F840G7YH6U</RequestId> <Data>
     <PerformanceItems>
         <Measurement>lqps,active,running_count</Measurement>
@@ -3101,12 +3845,20 @@ http(s)://[Endpoint]/?Action=DescribeInstanceDbPerformance &DbInstanceName=pxc-*
             <Timestamp>1597179542</Timestamp>
         </Points>
     </PerformanceItems>
-</Data> <Success>true</Success> {"Message":"****","RequestId":"5C07B700-A7CC-4F81-8861-86F840G7YH6U","Data":{"Performan ceItems":[{"Measurement":"lqps,active,running_count","MetricName":"lqps","Points":[{"Va lue":"1","Timestamp":"1597179542"}]}]},"Success":"true"}
+</Data> <Success>true</Success>
+```
+
+`JSON` format
+
+```json
+{"Message":"****","RequestId":"5C07B700-A7CC-4F81-8861-86F840G7YH6U","Data":{"Performan ceItems":[{"Measurement":"lqps,active,running_count","MetricName":"lqps","Points":[{"Va lue":"1","Timestamp":"1597179542"}]}]},"Success":"true"}
 ```
 
 #### 1.13.2 DescribeInstanceStoragePerformance
 
 Queries the monitoring information of a storage node.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3119,6 +3871,8 @@ Queries the monitoring information of a storage node.
 
 | EndTime | String | No | 2020-08-12 11:16:35 | The end of the time range to query. Specify the time in the time zone of the queried instance in the yyyy- mm-dd hh:mm:ss format. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3133,11 +3887,15 @@ Queries the monitoring information of a storage node.
 | RequestId | String | 39518C53-F3C3- 424B-8108- 27CCF9DR54TH | The request ID. |
 | Success | Boolean | true | Indicates whether the request is successful. |
 
+**Description**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeInstanceStoragePerformance &DbInstanceName= pxc-hzr2ak5ll5**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-```json
+```xml
 <Message>****</Message> <RequestId>39518C53-F3C3-424B-8108-27CCF9DR54TH</RequestId> <Data>
     <PerformanceItems>
         <Measurement>com_insert</Measurement>
@@ -3147,12 +3905,20 @@ http(s)://[Endpoint]/?Action=DescribeInstanceStoragePerformance &DbInstanceName=
             <Timestamp>1597180560000</Timestamp>
         </Points>
     </PerformanceItems>
-</Data> <Success>true</Success> {"Message":"****","RequestId":"39518C53-F3C3-424B-8108-27CCF9DR54TH","Data":{"Performan ceItems":[{"Measurement":"com_insert","MetricName":"com_insert","Points": [{"Value":"0.1","Timestamp":"1597180560000"}]}]},"Success":"true"}
+</Data> <Success>true</Success>
+```
+
+`JSON` format
+
+```json
+{"Message":"****","RequestId":"39518C53-F3C3-424B-8108-27CCF9DR54TH","Data":{"Performan ceItems":[{"Measurement":"com_insert","MetricName":"com_insert","Points": [{"Value":"0.1","Timestamp":"1597180560000"}]}]},"Success":"true"}
 ```
 
 #### 1.13.3 DescribeInstancePerformance
 
 Queries the monitoring information of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3165,6 +3931,8 @@ Queries the monitoring information of an instance.
 |---|---|---|---|---|
 | StartTime | String | No | 2020-08-12 04:59:02 | The beginning of the time range to query. Specify the time in the time zone of the queried instance in the yyyy-mm-dd hh:mm:ss format. |
 | EndTime | String | No | 2020-08-12 10:59:02 | The end of the time range to query. Specify the time in the time zone of the queried instance in the yyyy- mm-dd hh:mm:ss format. Note The end of the time range must be later than the beginning of the time range. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3181,11 +3949,17 @@ Queries the monitoring information of an instance.
 | RequestId | String | 88DC5709-8BEC- 4D17-A6D5- 4DACA9DF45TP | The request ID. |
 | Success | Boolean | true | Indicates whether the request is successful. |
 
+**Description**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeInstancePerformance &DbInstanceName=pxc-hzr2ak5ll5**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-```json
+Sample success responses `XML` format
+
+```xml
 <Message>****</Message> <RequestId>88DC5709-8BEC-4D17-A6D5-4DACA9DF45TP</RequestId> <Data>
     <PerformanceItems>
         <Measurement>cpu,old</Measurement>
@@ -3195,12 +3969,20 @@ http(s)://[Endpoint]/?Action=DescribeInstancePerformance &DbInstanceName=pxc-hzr
             <Timestamp>1597201474</Timestamp>
         </Points>
     </PerformanceItems>
-</Data> <Success>true</Success> {"Message":"****","RequestId":"88DC5709-8BEC-4D17-A6D5-4DACA9DF45TP","Data":{"Performan ceItems":[{"Measurement":"cpu,old","MetricName":"cpu","Points": [{"Value":"1","Timestamp":"1597201474"}]}]},"Success":"true"}
+</Data> <Success>true</Success>
+```
+
+`JSON` format
+
+```json
+{"Message":"****","RequestId":"88DC5709-8BEC-4D17-A6D5-4DACA9DF45TP","Data":{"Performan ceItems":[{"Measurement":"cpu,old","MetricName":"cpu","Points": [{"Value":"1","Timestamp":"1597201474"}]}]},"Success":"true"}
 ```
 
 #### 1.13.4 DescribeMetricsPerf
 
 Queries the monitoring information of computing resources, storage resources, and log resources.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3219,6 +4001,8 @@ Queries the monitoring information of computing resources, storage resources, an
 | HostId | String | No | 10000 | The ID of the host. You must specify this parameter or the InstanceName parameter. |
 | DbRole | String | No | 0 | The role of the node. Valid values: 0: master 1: slave 18: standby |
 | InsLogicId | String | No | pxc-c-xxxxxxx | The names of physical nodes. Separate multiple names with commas (,). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3251,11 +4035,15 @@ Queries the monitoring information of computing resources, storage resources, an
 
 **Examples**
 
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeMetricsPerf &DBInstanceName=pxc-unrwuyttjx**** &EndTime=2022-08-22T08:00:57Z &InstanceName=pxc-unrwuyttjx**** &IsMultipleIns=false &MetricsGroupKey=Connections &MetricsKeys=avg(node_slow_request_count),avg(node_physical_slow_request_count),avg(node_ twork_in_bytes),avg(node_network_out_bytes),avg(jvmstats_ygc_collector_time),avg(jvmstats gc_collector_time) &MetricsMeasurement=polarx &RegionId=cn-wulan-env213-d01 &StartTime=2022-08-22T02:00:57Z &<Common request parameters>
 ```
 
-```json
+Sample success responses `XML` format
+
+```xml
 <RequestId>BFC01449-C5D2-4457-8909-8285B9E1710</RequestId> <Data>
     <EndTime>2022-08-24T06:57:37Z</EndTime>
     <Message>success</Message>
@@ -3279,7 +4067,13 @@ http(s)://[Endpoint]/?Action=DescribeMetricsPerf &DBInstanceName=pxc-unrwuyttjx*
             <MetricsTimestamp>1568620311000</MetricsTimestamp>
         </MetricsValues>
     </HostMetricItems>
-</Data> {"RequestId":"BFC01449-C5D2-4457-8909-8285B9E1710","Data":{"EndTime":"2022-08-24T06:57: 37Z","Message":"success","InstanceID":"pxcunrwuyttjx****","UserID":"26842","InstanceNodeRole":"master","StartTime":"2022-08-24T05 :57:37Z","HttpStatusCode":"200","InstanceEngine":"polarx","HostId":"1000","Code":"200","S cess":"true","HostMetricItems":[{"InsId":" pxchzrqdp9iwn****","MetricsKey":"avg(node_slow_request_count),avg(node_physical_slow_request ount),avg(node_network_in_bytes),avg(node_network_out_bytes),avg(jvmstats_ygc_collector_t e),avg(jvmstats_fgc_collector_time)","MetricsGroupKey":"Connections","InsLogicId":"pxcc-xxxxxxx","InsName":"pxc-hzr1m03gei****","MetricsValues": [{"MetricsData":"24","MetricsTimestamp":"1568620311000"}]}]}}
+</Data>
+```
+
+`JSON` format
+
+```json
+{"RequestId":"BFC01449-C5D2-4457-8909-8285B9E1710","Data":{"EndTime":"2022-08-24T06:57: 37Z","Message":"success","InstanceID":"pxcunrwuyttjx****","UserID":"26842","InstanceNodeRole":"master","StartTime":"2022-08-24T05 :57:37Z","HttpStatusCode":"200","InstanceEngine":"polarx","HostId":"1000","Code":"200","S cess":"true","HostMetricItems":[{"InsId":" pxchzrqdp9iwn****","MetricsKey":"avg(node_slow_request_count),avg(node_physical_slow_request ount),avg(node_network_in_bytes),avg(node_network_out_bytes),avg(jvmstats_ygc_collector_t e),avg(jvmstats_fgc_collector_time)","MetricsGroupKey":"Connections","InsLogicId":"pxcc-xxxxxxx","InsName":"pxc-hzr1m03gei****","MetricsValues": [{"MetricsData":"24","MetricsTimestamp":"1568620311000"}]}]}}
 ```
 
 endixes
@@ -3541,6 +4335,8 @@ endixes STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey p
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
+**Request parameters**
+
 | Parameter | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
@@ -3634,6 +4430,8 @@ endixes
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -3683,6 +4481,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

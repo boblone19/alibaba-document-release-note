@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 517
 source_pdf: "ce3a01f671ac302e_Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%20ECS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elastic%20Compute%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service User Guide 20260828
@@ -320,7 +320,7 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 
 ### 1.1 Overview
 
-Elastic Compute Service (ECS) is a computing service that provides scalable processing capacity. It is simpler and more efficient to manage than physical servers. You can create instances, scale out disks, or delete multiple ECS instances in batches at any time as needed. An ECS instance, the core concept of Elastic Compute Service, is a virtual computing environment that includes basic computing components, such as CPUs and memory. You can use the ECS console to perform various operations on your instances. Other resources, such as Elastic Block Storage, images, and snapshots, can be used only when they are attached to an ECS instance. Elastic Block Storage instance image snap security gro bandwidth ECS console
+Elastic Compute Service (ECS) is a computing service that provides scalable processing capacity. It is simpler and more efficient to manage than physical servers. You can create instances, scale out disks, or delete multiple ECS instances in batches at any time as needed. An ECS instance, the core concept of Elastic Compute Service, is a virtual computing environment that includes basic computing components, such as CPUs and memory. You can use the ECS console to perform various operations on your instances. Other resources, such as Elastic Block Storage, images, and snapshots, can be used only when they are attached to an ECS instance. Elastic Block Storage instance Elastic Compute Service image snap security gro bandwidth ECS console
 
 ### 1.2 Instance lifecycle
 
@@ -2480,7 +2480,11 @@ You can add a created Elastic Compute Service (ECS) instance to multiple securit
 
 **Background information**
 
-Security groups are used as virtual firewalls to provide security isolation and control network access for ECS instances. Security groups determine whether the ECS instances in the same account that are deployed in the same virtual private cloud (VPC) and region can communicate with each other over the internal network. By default, ECS instances in the same security group can communicate with each other over the internal network, and ECS instances from different security groups are isolated from each other. If you want ECS instances from different security groups to communicate with each other over the internal network, authorize mutual access between the security groups. For more information about security groups, see Overview of security groups. For information about how to add multiple ECS instances to a security group, see Add ECS instances to a security group.
+Security groups are used as virtual firewalls to provide security isolation and control network access for ECS instances. Security groups determine whether the ECS instances in the same account that are deployed in the same virtual private cloud (VPC) and region can communicate with each other over the internal network. By default, ECS instances in the same security group can communicate with each other over the internal network, and ECS instances from different security groups are isolated from each other. If you want ECS instances from different security groups to communicate with each other over the internal network, authorize mutual access between the security groups. For more information about security groups, see Overview of security groups.
+
+**Note**
+
+For information about how to add multiple ECS instances to a security group, see Add ECS instances to a security group.
 
 **Procedure**
 
@@ -4748,6 +4752,8 @@ The following methods are supported to encrypt a system disk: Method 1: Enable s
 
 **ECS instance**
 
+**Note**
+
 This method is supported only for premium performance disks and standard performance disks.
 1. Log on to the ECS console.
 2. In the left-side navigation pane, choose **Instances & Images > ECS Instances**.
@@ -5405,6 +5411,8 @@ search box. The custom images that meet the specified filter condition are autom
 
 6. Click the image ID in the **Image ID/Name** column to view the basic information and
 operation logs of the image. On the **Basic Information** tab, view the information, such as image name, image ID, operating system, platform, and snapshot details. Click the **Operation Log** tab to view the information about the operation logs of the custom image, including the operation name, operator, execution status, operation source (console call or API call), operation type, source IP address of the operation, and operation time.
+
+**Note**
 
 **What to do next**
 
@@ -6832,7 +6840,11 @@ b. Press the `I` key to enter the Insert mode and add the following content to t
 add_drivers+="virtio_blk virtio_net"
 ```
 
-`:wq`, and then press the Enter key to save and close the file. Press the `Esc` key, enter c. Run the following command to regenerate initrd:
+`:wq`, and then press the Enter key to save and close the file. Press the `Esc` key, enter
+
+**Note**
+
+c. Run the following command to regenerate initrd:
 
 ```
 dracut -f
@@ -7817,7 +7829,11 @@ You can share snapshots only between level-1 organizations: You can share a sing
 4. In the **Snapshots** list, find the snapshot that you want to share and click **Share Snapshot**
 in the **Actions** column.
 5. In the **Share Snapshot** dialog box, select the **Organization** check box and select the
-level-1 organizations with which you want to share the snapshot. If you cannot obtain the organization list due to permission issues, you can manually enter the UID of a level-1 organization to share the snapshot.
+level-1 organizations with which you want to share the snapshot.
+
+**Note**
+
+If you cannot obtain the organization list due to permission issues, you can manually enter the UID of a level-1 organization to share the snapshot.
 6. Click **OK**.
 
 **View shared snapshots**
@@ -7855,7 +7871,11 @@ and click the icon in the **Actions** column.
 
 To share an encrypted snapshot, you must first use a RAM role to grant the recipient organization access to the KMS key. Then you can share the snapshot with the authorized organization.
 1. Create a RAM role, configure a key authorization policy for the source organization, and
-configure a trust policy for the target organization. RAM role: AliyunECSShareEncryptSnapshotDefaultRole. The RAM role name must be AliyunECSShareEncryptSnapshotDefaultRole. Otherwise, the encrypted snapshot sharing fails. Custom policy: `{`
+configure a trust policy for the target organization. RAM role: AliyunECSShareEncryptSnapshotDefaultRole.
+
+**Note**
+
+The RAM role name must be AliyunECSShareEncryptSnapshotDefaultRole. Otherwise, the encrypted snapshot sharing fails. Custom policy: `{`
 
 ```json
   "Version": "1",

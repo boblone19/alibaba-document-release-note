@@ -5,36 +5,305 @@ doc_version: "20260813"
 pdf_pages: 588
 source_pdf: "06_开发指南_ascm-enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/oss/zh/ascm-enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 对象存储 开发指南
 
-对象存储 OSS
+## 目录
 
-## 使用前须知
+- 1 使用前须知
+- 2 API参考
+  - 2.1 OSS API文档简介
+  - 2.2 访问控制
+    - 2.2.1 用户签名验证
+    - 2.2.2 在Header中包含签名
+    - 2.2.3 在URL中包含签名
+    - 2.2.4 临时授权访问
+    - 2.2.5 Bucket权限控制
+  - 2.3 公共HTTP头定义
+  - 2.4 关于Service的操作
+    - 2.4.1 GetService(ListBuckets)
+  - 2.5 关于Bucket的操作
+    - 2.5.1 PutBucket
+    - 2.5.2 PutBucketACL
+    - 2.5.3 PutBucketLogging
+    - 2.5.4 PutBucketWebsite
+    - 2.5.5 PutBucketReferer
+    - 2.5.6 PutBucketTags
+    - 2.5.7 PutBucketLifecycle
+    - 2.5.8 GetBucket (ListObjects)
+    - 2.5.9 GetBucketAcl
+    - 2.5.10 GetBucketLocation
+    - 2.5.11 GetBucketInfo
+    - 2.5.12 GetBucketLogging
+    - 2.5.13 GetBucketWebsite
+    - 2.5.14 GetBucketReferer
+    - 2.5.15 GetBucketLifecycle
+    - 2.5.16 GetBucketTags
+    - 2.5.17 DeleteBucket
+    - 2.5.18 DeleteBucketLogging
+    - 2.5.19 DeleteBucketWebsite
+    - 2.5.20 DeleteBucketLifecycle
+    - 2.5.21 DeleteBucketTags
+    - 2.5.22 PutBucketPolicy
+    - 2.5.23 GetBucketPolicy
+    - 2.5.24 GetBucketPolicyStatus
+    - 2.5.25 DeleteBucketPolicy
+    - 2.5.26 GetBucketStat
+    - 2.5.27 PutCname
+    - 2.5.28 ListCname
+    - 2.5.29 DeleteCname
+    - 2.5.30 PutBucketHttpsConfig
+    - 2.5.31 GetBucketHttpsConfig
+  - 2.6 关于Object的操作
+    - 2.6.1 PutObject
+    - 2.6.2 GetObject
+    - 2.6.3 CopyObject
+    - 2.6.4 AppendObject
+    - 2.6.5 DeleteObject
+    - 2.6.6 DeleteMultipleObjects
+    - 2.6.7 HeadObject
+    - 2.6.8 GetObjectMeta
+    - 2.6.9 PutObjectACL
+    - 2.6.10 GetObjectACL
+    - 2.6.11 PostObject
+    - 2.6.12 Callback
+    - 2.6.13 PutObjectTagging
+    - 2.6.14 GetObjectTagging
+    - 2.6.15 DeleteObjectTagging
+  - 2.7 关于MultipartUpload的操作
+    - 2.7.2 InitiateMultipartUpload
+    - 2.7.3 UploadPart
+    - 2.7.4 UploadPartCopy
+    - 2.7.5 CompleteMultipartUpload
+    - 2.7.6 AbortMultipartUpload
+    - 2.7.7 ListMultipartUploads
+    - 2.7.8 ListParts
+  - 2.8 跨域资源共享
+    - 2.8.2 PutBucketcors
+    - 2.8.3 GetBucketcors
+    - 2.8.4 DeleteBucketcors
+    - 2.8.5 OptionObject
+  - 2.9 OSS错误响应
+- 3 SDK参考
+  - 3.1 Java-SDK
+    - 3.1.3 初始化
+    - 3.1.4 快速入门
+    - 3.1.5 存储空间
+      - 3.1.5.1 创建存储空间
+      - 3.1.5.2 列举存储空间
+      - 3.1.5.3 判断存储空间是否存在
+      - 3.1.5.4 管理存储空间访问权限
+      - 3.1.5.5 删除存储空间
+      - 3.1.5.6 生命周期管理
+      - 3.1.5.7 防盗链
+      - 3.1.5.8 跨域资源共享
+      - 3.1.5.9 设置访问日志
+      - 3.1.5.10 静态网站托管
+      - 3.1.5.11 安全传输层协议
+      - 3.1.5.12 绑定自定义域名
+    - 3.1.6 上传文件
+      - 3.1.6.2 简单上传
+      - 3.1.6.3 表单上传
+      - 3.1.6.4 追加上传
+      - 3.1.6.5 断点续传上传
+      - 3.1.6.6 分片上传
+      - 3.1.6.7 进度条
+      - 3.1.6.8 上传回调
+    - 3.1.7 下载文件
+      - 3.1.7.2 流式下载
+      - 3.1.7.3 下载到本地文件
+      - 3.1.7.4 范围下载
+      - 3.1.7.5 断点续传下载
+      - 3.1.7.6 限定条件下载
+      - 3.1.7.7 进度条
+    - 3.1.8 管理文件
+      - 3.1.8.2 判断文件是否存在
+      - 3.1.8.3 管理文件访问权限
+      - 3.1.8.4 管理文件元信息
+      - 3.1.8.5 列举文件
+      - 3.1.8.6 查询文件
+      - 3.1.8.7 删除文件
+      - 3.1.8.8 拷贝文件
+    - 3.1.9 授权访问
+    - 3.1.10 图片处理
+    - 3.1.11 异常处理
+    - 3.1.12 常见问题
+  - 3.2 Python-SDK
+    - 3.2.3 快速入门
+    - 3.2.4 初始化
+    - 3.2.5 存储空间
+      - 3.2.5.1 创建存储空间
+      - 3.2.5.2 列举存储空间
+      - 3.2.5.3 判断存储空间是否存在
+      - 3.2.5.4 管理存储空间访问权限
+      - 3.2.5.5 删除存储空间
+      - 3.2.5.6 生命周期管理
+      - 3.2.5.7 静态网站托管
+      - 3.2.5.8 跨域资源共享
+      - 3.2.5.9 防盗链
+      - 3.2.5.10 设置访问日志
+      - 3.2.5.11 绑定自定义域名
+    - 3.2.6 上传文件
+      - 3.2.6.2 简单上传
+      - 3.2.6.3 追加上传
+      - 3.2.6.4 断点续传上传
+      - 3.2.6.5 分片上传
+      - 3.2.6.6 进度条
+      - 3.2.6.7 上传回调
+    - 3.2.7 下载文件
+      - 3.2.7.2 流式下载
+      - 3.2.7.3 下载到本地文件
+      - 3.2.7.4 范围下载
+      - 3.2.7.5 断点续传下载
+      - 3.2.7.6 进度条
+    - 3.2.8 管理文件
+      - 3.2.8.2 判断文件是否存在
+      - 3.2.8.3 管理文件访问权限
+      - 3.2.8.4 管理文件元信息
+      - 3.2.8.5 列举文件
+      - 3.2.8.6 查询文件
+      - 3.2.8.7 删除文件
+      - 3.2.8.8 拷贝文件
+    - 3.2.9 授权访问
+    - 3.2.10 中文和时间
+    - 3.2.11 图片处理
+    - 3.2.12 异常处理
+  - 3.3 PHP-SDK
+    - 3.3.3 初始化
+    - 3.3.4 快速入门
+    - 3.3.5 存储空间
+      - 3.3.5.1 创建存储空间
+      - 3.3.5.2 列举存储空间
+      - 3.3.5.3 判断存储空间是否存在
+      - 3.3.5.4 管理存储空间访问权限
+      - 3.3.5.5 删除存储空间
+      - 3.3.5.6 生命周期管理
+      - 3.3.5.7 防盗链
+      - 3.3.5.8 设置访问日志
+      - 3.3.5.9 静态网站托管
+      - 3.3.5.10 跨域资源共享
+      - 3.3.5.11 绑定自定义域名
+    - 3.3.6 上传文件
+      - 3.3.6.2 简单上传
+      - 3.3.6.3 追加上传
+      - 3.3.6.4 分片上传
+      - 3.3.6.5 上传回调
+    - 3.3.7 下载文件
+      - 3.3.7.2 下载到本地文件
+      - 3.3.7.3 下载到本地内存
+      - 3.3.7.4 范围下载
+      - 3.3.7.5 限定条件下载
+    - 3.3.8 管理文件
+      - 3.3.8.2 判断文件是否存在
+      - 3.3.8.3 管理文件访问权限
+      - 3.3.8.4 管理文件元信息
+      - 3.3.8.5 列举文件
+      - 3.3.8.6 删除文件
+      - 3.3.8.7 拷贝文件
+    - 3.3.9 授权访问
+    - 3.3.10 图片处理
+    - 3.3.11 异常处理
+  - 3.4 C-SDK
+    - 3.4.3 初始化
+    - 3.4.4 快速入门
+    - 3.4.5 存储空间
+      - 3.4.5.1 创建存储空间
+      - 3.4.5.2 列举存储空间
+      - 3.4.5.3 管理存储空间访问权限
+      - 3.4.5.4 删除存储空间
+      - 3.4.5.5 生命周期管理
+      - 3.4.5.6 跨域资源共享
+      - 3.4.5.7 设置访问日志
+      - 3.4.5.8 防盗链
+      - 3.4.5.9 静态网站托管
+    - 3.4.6 上传文件
+      - 3.4.6.2 简单上传
+      - 3.4.6.3 追加上传
+      - 3.4.6.4 断点续传上传
+      - 3.4.6.5 分片上传
+      - 3.4.6.6 进度条
+      - 3.4.6.7 上传回调
+    - 3.4.7 下载文件
+      - 3.4.7.2 下载到本地文件
+      - 3.4.7.3 下载到本地内存
+      - 3.4.7.4 范围下载
+      - 3.4.7.5 断点续传下载
+      - 3.4.7.6 进度条
+    - 3.4.8 管理文件
+      - 3.4.8.2 管理文件访问权限
+      - 3.4.8.3 管理文件元信息
+      - 3.4.8.4 列举文件
+      - 3.4.8.5 删除文件
+      - 3.4.8.6 拷贝文件
+    - 3.4.9 授权访问
+    - 3.4.10 图片处理
+    - 3.4.11 错误处理
+  - 3.5 Go-SDK
+    - 3.5.3 初始化
+    - 3.5.4 快速开始
+    - 3.5.5 存储空间
+      - 3.5.5.1 创建存储空间
+      - 3.5.5.2 列举存储空间
+      - 3.5.5.3 管理存储空间的访问权限
+      - 3.5.5.4 删除存储空间
+      - 3.5.5.5 生命周期管理
+      - 3.5.5.6 防盗链
+      - 3.5.5.7 设置访问日志
+      - 3.5.5.8 静态网站托管
+      - 3.5.5.9 跨域资源共享
+      - 3.5.5.10 绑定自定义域名
+    - 3.5.6 上传文件
+      - 3.5.6.2 简单上传
+      - 3.5.6.3 追加上传
+      - 3.5.6.4 断点续传上传
+      - 3.5.6.5 分片上传
+      - 3.5.6.6 进度条
+    - 3.5.7 下载文件
+      - 3.5.7.2 流式下载
+      - 3.5.7.3 范围下载
+      - 3.5.7.4 下载到本地文件
+      - 3.5.7.5 断点续传下载
+      - 3.5.7.6 限定条件下载
+      - 3.5.7.7 进度条
+    - 3.5.8 管理文件
+      - 3.5.8.2 判断文件是否存在
+      - 3.5.8.3 管理文件访问权限
+      - 3.5.8.4 管理文件元信息
+      - 3.5.8.5 列举文件
+      - 3.5.8.6 删除文件
+      - 3.5.8.7 拷贝文件
+    - 3.5.9 授权访问
+    - 3.5.10 图片处理
+    - 3.5.11 错误处理
+- 4 配置访问凭证
+- 5 获取Endpoint
+- 6 获取AccessKey
+
+## 1 使用前须知
 
 使用OSS API实现具体功能前，开发人员需要了解调用OSS API的两种使用方式以及根据实际选择合适的方式。
 
-**重要**
+> **重要：** 如果使用过程中遇到问题，请联系阿里云技术支持。
 
-如果使用过程中遇到问题，请联系阿里云技术支持。 OSS API支持通过OSS SDK进行调用，请根据实际使用场景选择合适的调用方式。 当要在指定组织下某个资源集中进行OSS存储空间（Bucket）相关操作（例如创建Bucket）时，请通过SDK调用 OSS对应API来实现。 在不涉及到资源集和组织的情况下，当要在Bucket中进行Object相关操作（例如上传Object）时，请通过OSS SDK调用OSS对应API来实现。具体操作，请参见《**OSS****开发指南》**文档中“SDK参考”节点下的相应文档。
+OSS API支持通过OSS SDK进行调用，请根据实际使用场景选择合适的调用方式。 当要在指定组织下某个资源集中进行OSS存储空间（Bucket）相关操作（例如创建Bucket）时，请通过SDK调用 OSS对应API来实现。 在不涉及到资源集和组织的情况下，当要在Bucket中进行Object相关操作（例如上传Object）时，请通过OSS SDK调用OSS对应API来实现。具体操作，请参见**《****OSS****开发指南》**文档中“SDK参考”节点下的相应文档。
 
-**重要**
+> **重要：** 要在Bucket中进行Object相关操作，您必须有对Bucket进行相应操作的权限。
 
-要在Bucket中进行Object相关操作，您必须有对Bucket进行相应操作的权限。 具体调用流程如下图所示。 对象存储 OSS
+具体调用流程如下图所示。
 
-## API参考
+## 2 API参考
 
-### OSS API文档简介
+### 2.1 OSS API文档简介
 
-阿里云对象存储OSS（Object Storage Service）是阿里云对外提供的海量、安全、低成本、高可靠的云存储服务。您可以通过本文档提供的简单的RESTful接口，在任何时间、任何地点、任何互联网设备上进行上传和下载数据。基于OSS，您可以搭建出各种多媒体分享网站、网盘、个人和企业数据备份等基于大规模数据的服务。 请确保在使用这些接口前，已充分了解了OSS产品说明、使用协议。
+阿里云对象存储OSS（Object Storage Service）是阿里云对外提供的海量、安全、低成本、高可靠的云存储服务。您可以通过本文档提供的简单的RESTful接口，在任何时间、任何地点、任何互联网设备上进行上传和下载数据。基于OSS，您可以搭建出各种多媒体分享网站、网盘、个人和企业数据备份等基于大规模数据的服务。
 
-**说明**
+> **说明：** 请确保在使用这些接口前，已充分了解了OSS产品说明、使用协议。
 
 **使用说明**
 
-OSS API参考主要介绍接口的请求语法、相关参数含义以及请求和返回示例。如果要进行快速二次开发，建议您使用
+OSS API参考主要介绍接口的请求语法、相关参数含义以及请求和返回示例。如果要进行快速二次开发，建议您使用 SDK开发包。关于SDK的安装和使用，请参见OSS SDK参考。
 
 **资源术语**
 
@@ -45,17 +314,17 @@ OSS API参考主要介绍接口的请求语法、相关参数含义以及请求�
 | 访问域名 | Endpoint | Endpoint表示OSS对外服务的访问域名。OSS以HTTP RESTful API的形式对外提供服务，当访问不同地域的时候， 需要不同的域名。通过内网和外网访问同一个地域所需要的域名也是不同的。获取Endpoint请参见获取Endpoint。 |
 | 访问密钥 | AccessKey | AccessKey简称AK，指的是访问身份验证中用到的 AccessKeyId和AccessKeySecret。OSS通过使用 AccessKeyId 和AccessKeySecret对称加密的方法来验证某个请求的发送者身份。AccessKeyId用于标识用户，AccessKeySecret是用户用于加密签名字符串和OSS用来验证签名字符串的密钥，其中AccessKeySecret 必须保密。获取AccessKey操作请参见获取AccessKey。 |
 
-### 访问控制
+### 2.2 访问控制
 
-#### 用户签名验证
+#### 2.2.1 用户签名验证
 
 OSS通过使用AccessKeyId和AccessKeySecret对称加密的方法来验证某个请求的发送者身份。AccessKeyId用于标示用户，AccessKeySecret是您用于加密签名字符串和OSS用来验证签名字符串的密钥，其中AccessKeySecret 必须保密。
 
-**说明**
+> **说明：** 关于如何获取AccessKey，请参见获取AccessKey。
 
-AccessKey根据所属账号的类型有所区分： 阿里云账户AccessKey：每个阿里云账号提供的AccessKey拥有对拥有的资源有完全的权限。 RAM账户AccessKey：RAM账户由阿里云账号授权生成，所拥的AccessKey拥有对特定资源限定的操作权限。 STS临时访问凭证：由阿里云账号或RAM账号生成，所拥有的AccessKey在限定时间内拥有对特定资源限定的操作权限。过期权限收回。 当您想以个人身份向OSS发送请求时，需要首先将发送的请求按照OSS指定的格式生成签名字符串；然后使用 AccessKeySecret对签名字符串进行加密产生验证码。OSS收到请求以后，会通过AccessKeyId找到对应的 AccessKeySecret，以同样的方法提取签名字符串和验证码，如果计算出来的验证码和提供的一样即认为该请求是有效的；否则，OSS将拒绝处理这次请求，并返回HTTP 403错误。 对象存储 OSS
+AccessKey根据所属账号的类型有所区分： 阿里云账户AccessKey：每个阿里云账号提供的AccessKey拥有对拥有的资源有完全的权限。 RAM账户AccessKey：RAM账户由阿里云账号授权生成，所拥的AccessKey拥有对特定资源限定的操作权限。 STS临时访问凭证：由阿里云账号或RAM账号生成，所拥有的AccessKey在限定时间内拥有对特定资源限定的操作权限。过期权限收回。 当您想以个人身份向OSS发送请求时，需要首先将发送的请求按照OSS指定的格式生成签名字符串；然后使用 AccessKeySecret对签名字符串进行加密产生验证码。OSS收到请求以后，会通过AccessKeyId找到对应的 AccessKeySecret，以同样的方法提取签名字符串和验证码，如果计算出来的验证码和提供的一样即认为该请求是有效的；否则，OSS将拒绝处理这次请求，并返回HTTP 403错误。
 
-#### 在Header中包含签名
+#### 2.2.2 在Header中包含签名
 
 您可以在HTTP请求中增加Authorization的Header来包含签名（Signature）信息，表明这个消息已被授权。
 
@@ -73,13 +342,13 @@ Authorization = "OSS " + AccessKeyId + ":" + Signature Signature = base64(hmac-s
 
 `AccessKeySecret` 表示签名所需的密钥。 `VERB` 表示HTTP请求的Method，主要有PUT，GET，POST，HEAD，DELETE等。 \n 表示换行符。 `Content-MD5` 表示请求内容数据的MD5值，对消息内容（不包括头部）计算MD5值获得128比特位数字，对该数字进行base64编码而得到。该请求头可用于消息合法性的检查（消息内容是否与发送时一致）， 如”eB5eJF1ptWaXm4bijSPyxw==”，也可以为空。更多信息，请参见RFC2616 Content-MD5。
 
-| Content-Type |  |
+| Content-Type |   |
 |---|---|
-| Date |  |
-| CanonicalizedOSSHeaders |  |
+| Date |   |
+| CanonicalizedOSSHeaders |   |
 | CanonicalizedResource | 表 |
 
-其中，Date和CanonicalizedResource不能为空；如果请求中的Date时间和OSS服务器的时间差15分钟以上，OSS服务器将拒绝该服务，并返回HTTP 403错误。
+`Content-Type` 表示请求内容的类型，如”application/octet-stream”，也可以为空。 `Date` 表示此次操作的时间，且必须为GMT格式，如”Sun, 22 Nov 2015 08:16:38 GMT”。 `CanonicalizedOSSHeaders` 表示以x-oss-为前缀的http header的字典序排列。 其中，Date和CanonicalizedResource不能为空；如果请求中的Date时间和OSS服务器的时间差15分钟以上，OSS服务器将拒绝该服务，并返回HTTP 403错误。
 
 **构建CanonicalizedOSSHeaders的方法**
 
@@ -101,34 +370,36 @@ name:TaoBao 。
 
 5. 将每一个头和内容用 \n 分隔符分隔拼成最后的CanonicalizedOSSHeaders。
 
-**说明**
-
-CanonicalizedOSSHeaders可以为空，无需添加最后的 \n 。 如果只有一个，则如 x-oss-meta-a\n ，注意最后的 \n 。 如果有多个，则如 x-oss-meta-a:a\nx-oss-meta-b:b\nx-oss-meta-c:c\n ，注意最后的 \n 。
+> **说明：** CanonicalizedOSSHeaders可以为空，无需添加最后的 \n 。
+> 如果只有一个，则如 x-oss-meta-a\n ，注意最后的 \n 。
+> 如果有多个，则如 x-oss-meta-a:a\nx-oss-meta-b:b\nx-oss-meta-c:c\n ，注意最后的 \n 。
 
 **构建CanonicalizedResource的方法**
 
 用户发送请求中想访问的OSS目标资源被称为CanonicalizedResource。它的构建方法如下：
 1. 将CanonicalizedResource置成空字符串""；
 2. 放入要访问的OSS资源 `/BucketName/ObjectName` （无ObjectName则CanonicalizedResource
-为 `/BucketName/` ，如果同时也没有BucketName则为 / ） 对象存储 OSS
-3. 如果请求的资源包括子资源（SubResource），那么将所有的子资源按照字典序，从小到大排列并以 & 为分隔
+为 `/BucketName/` ，如果同时也没有BucketName则为 `/` ）
+3. 如果请求的资源包括子资源（SubResource），那么将所有的子资源按照字典序，从小到大排列并以 `&` 为分隔
 符生成子资源字符串。在CanonicalizedResource字符串尾添加？和子资源字符串。此时的 CanonicalizedResource如： /BucketName/ObjectName?acl&uploadId=UploadId
 4. 如果用户请求在指定了查询字符串（QueryString，也叫Http Request Parameters），那么将这些查询字符串
-及其请求值按照字典序，从小到大排列，以 & 为分隔符，按参数添加到CanonicalizedResource中。此时的 CanonicalizedResource如： /BucketName/ObjectName?acl&response-content-
+及其请求值按照字典序，从小到大排列，以 `&` 为分隔符，按参数添加到CanonicalizedResource中。此时的 CanonicalizedResource如： /BucketName/ObjectName?acl&response-content-
 
 ```
 type=ContentType&uploadId=UploadId 。
 ```
 
-**说明**
-
-OSS目前支持的子资源（sub-resource）包括：
+> **说明：** OSS目前支持的子资源（sub-resource）包括：
 
 ```
 acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，taggin token，position，img，style，styleName，replication，replicationProgress，replicationLoca oss-process，response-content-type，response-content-language，responseexpires，response-cache-control，response-content-disposition，response-content-
 ```
 
-`encoding`等。 子资源（sub-resource）有三种类型： 资源标识，如子资源中的acl，append，uploadId，symlink等。 指定返回Header字段，如 `response-***` 。 文件（Object）处理方式，如 `x-oss-process` ，用于文件的处理方式。
+> `encoding`等。
+> 子资源（sub-resource）有三种类型：
+> 资源标识，如子资源中的acl，append，uploadId，symlink等。
+> 指定返回Header字段，如 `response-***` 。
+> 文件（Object）处理方式，如 `x-oss-process` ，用于文件的处理方式。
 
 **计算签名头规则**
 
@@ -149,27 +420,25 @@ header的名字需要变成小写。 header按字典序自小到大排序。 分
 | 请求 | 签名字符串计算公式 | 签名字符串 |
 |---|---|---|
 
-对象存储 OSS
-
-| PUT /nelson HTTP/1.0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| PUT /nelson HTTP/1.0 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | PUT /nelson HTTP/1.0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| Content-MD5: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | Signature = base64(hmac- |  |  |  |  |  |  |  |  |  |  |
-| eB5eJF1 |  | ptWaXm4bijSPyxw== |  |  |  |  |  |  |  | "PUT\n ***w==\n text/html\n |  |  |  |  |  |
-|  |  |  |  | sha |  | 1(AccessKeySecret,VERB + |  |  |  |  |  |  |  |  |  |
-| Content |  | -Type: text/html Date: |  |  |  |  |  |  | Thu, 17 Nov 2005 18:49:58 |  |  |  |  |  |  |
-|  |  |  |  | “\n |  | ” + Content-MD5 + “\n”+ |  |  |  |  |  |  |  |  |  |
-| Thu, 17 No |  |  | v 2005 18:49:58 GMT |  |  |  |  |  | GMT\n x-oss-magic:a***a\nx- |  |  |  |  |  |  |
-|  |  |  |  | Content-Type + “\n” + Date + |  |  |  |  |  |  |  |  |  |  |  |
-| Host: oss- |  |  |  |  |  |  |  |  | oss-meta- |  |  |  |  |  |  |
-|  |  |  |  | “\n” + |  |  |  |  |  |  |  |  |  |  |  |
-| example.regionid.example.com |  |  |  |  |  |  |  |  | author:***@bar |  | .com |  | \n/oss |  |  |
-|  |  |  |  | CanonicalizedOSSHe |  |  | aders+ |  |  |  |  |  |  |  |  |
-| X-OSS-Meta-Author: |  |  |  |  |  |  |  |  | example/nelson" |  |  |  |  |  |  |
-|  |  |  |  | CanonicalizedResou |  |  | rce)) |  |  |  |  |  |  |  |  |
-| ***@bar.com X-OSS-Magic: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| a***a |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|   | PUT /nelson HTTP/1.0 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| Content-MD5: |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | Signature = base64(hmac- |   |   |   |   |   |   |   |   |   |   |
+| eB5eJF1 |   | ptWaXm4bijSPyxw== |   |   |   |   |   |   |   | "PUT\n ***w==\n text/html\n |   |   |   |   |   |
+|   |   |   |   | sha |   | 1(AccessKeySecret,VERB + |   |   |   |   |   |   |   |   |   |
+| Content |   | -Type: text/html Date: |   |   |   |   |   |   | Thu, 17 Nov 2005 18:49:58 |   |   |   |   |   |   |
+|   |   |   |   | “\n |   | ” + Content-MD5 + “\n”+ |   |   |   |   |   |   |   |   |   |
+| Thu, 17 No |   |   | v 2005 18:49:58 GMT |   |   |   |   |   | GMT\n x-oss-magic:a***a\nx- |   |   |   |   |   |   |
+|   |   |   |   | Content-Type + “\n” + Date + |   |   |   |   |   |   |   |   |   |   |   |
+| Host: oss- |   |   |   |   |   |   |   |   | oss-meta- |   |   |   |   |   |   |
+|   |   |   |   | “\n” + |   |   |   |   |   |   |   |   |   |   |   |
+| example.regionid.example.com |   |   |   |   |   |   |   |   | author:***@bar |   | .com |   | \n/oss |   |   |
+|   |   |   |   | CanonicalizedOSSHe |   |   | aders+ |   |   |   |   |   |   |   |   |
+| X-OSS-Meta-Author: |   |   |   |   |   |   |   |   | example/nelson" |   |   |   |   |   |   |
+|   |   |   |   | CanonicalizedResou |   |   | rce)) |   |   |   |   |   |   |   |   |
+| ***@bar.com X-OSS-Magic: |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| a***a |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 
 可用以下方法计算签名（Signature）:
 
@@ -187,7 +456,7 @@ PUT /nelson HTTP/1.0 Authorization:OSS 4***7:2***A= Content-Md5: e***w== Content
 
 **细节分析**
 
-如果传入的AccessKeyId不存在或inactive，返回403 Forbidden。错误码：InvalidAccessKeyId。 若用户请求头中Authorization值的格式不对，返回400 Bad Request。错误码：InvalidArgument。 OSS所有的请求都必须使用HTTP 1.1协议规定的GMT时间格式。其中，日期的格式为： `date1 = 2DIGIT SP` month SP 4DIGIT; day month year (e.g., 02 Jun 1982) 上述日期格式中，“天”所占位数都是“2 DIGIT”。因此，“Jun 2”、“2 Jun 1982”和“2-Jun-82”都是非法日期格式。 如果签名验证的时候，头中没有传入Date或者格式不正确，返回403 Forbidden错误。错误码： AccessDenied。 传入请求的时间必须在OSS服务器当前时间之后的15分钟以内，否则返回403 Forbidden。错误码： RequestTimeTooSkewed。 如果AccessKeyId是active的，但OSS判断用户的请求发生签名错误，则返回403 Forbidden，并在返回给用户的response中告诉用户正确的用于验证加密的签名字符串。用户可以根据OSS的response来检查自己的签名字符串是否正确。返回示例： 对象存储 OSS
+如果传入的AccessKeyId不存在或inactive，返回403 Forbidden。错误码：InvalidAccessKeyId。 若用户请求头中Authorization值的格式不对，返回400 Bad Request。错误码：InvalidArgument。 OSS所有的请求都必须使用HTTP 1.1协议规定的GMT时间格式。其中，日期的格式为： `date1 = 2DIGIT SP` month SP 4DIGIT; day month year (e.g., 02 Jun 1982) 上述日期格式中，“天”所占位数都是“2 DIGIT”。因此，“Jun 2”、“2 Jun 1982”和“2-Jun-82”都是非法日期格式。 如果签名验证的时候，头中没有传入Date或者格式不正确，返回403 Forbidden错误。错误码： AccessDenied。 传入请求的时间必须在OSS服务器当前时间之后的15分钟以内，否则返回403 Forbidden。错误码： RequestTimeTooSkewed。 如果AccessKeyId是active的，但OSS判断用户的请求发生签名错误，则返回403 Forbidden，并在返回给用户的response中告诉用户正确的用于验证加密的签名字符串。用户可以根据OSS的response来检查自己的签名字符串是否正确。返回示例：
 
 ```xml
 <?xml version="1.0" ?> <Error>
@@ -235,11 +504,8 @@ OSS SDK已经实现签名，用户使用OSS SDK不需要关注签名问题。如
 | Ruby SDK | util.rb |
 | Android SDK | OSSUtils.java |
 
-#### 常见问题
-
 以消息内容为“123456789”来说，计算这个字符串的Content-MD5，正确的计算方式：
 1. 先计算MD5加密的二进制数组（128位）。
-对象存储 OSS
 2. 再对这个二进制进行base64编码（而不是对32位字符串编码）。
 以Python为例，正确计算的代码为：
 
@@ -265,7 +531,7 @@ OSS SDK已经实现签名，用户使用OSS SDK不需要关注签名问题。如
 >>> base64.b64encode(hash.hexdigest()) 'NzgxZTVlMjQ1ZDY5YjU2Njk3OWI4NmUyOGQyM2YyYzc='
 ```
 
-#### 在URL中包含签名
+#### 2.2.3 在URL中包含签名
 
 除了使用Authorization Header，用户还可以在URL中加入签名信息，这样用户就可以把该URL转给第三方实现授权访问。
 
@@ -277,7 +543,7 @@ URL签名示例：
 http://oss-example.regionid.example.com/oss-api.pdf? AccessKeyId=AccessKeyId&Expires=1141889120&Signature=vjb***%3D
 ```
 
-URL签名，必须至少包含Signature、Expires、AccessKeyId三个参数。 `Expires` 这个参数的值是一个UNIX时间（自UTC时间1970年1月1号开始的秒数），用于标识该URL的超时时间。如果OSS接收到这个URL请求的时候晚于签名中包含的Expires参数时，则返回请求超时的错误码。例如：当前时间是1141889060，开发者希望创建一个60秒后自动失效的URL，则可以设置Expires时间为 1141889120。 `AccessKeyId` 即密钥中的AccessKeyId。 对象存储 OSS `Signature` 表示签名信息。所有的OSS支持的请求和各种Header参数，在URL中进行签名的算法和在 Header中包含签名的算法基本一样。
+URL签名，必须至少包含Signature、Expires、AccessKeyId三个参数。 `Expires` 这个参数的值是一个UNIX时间（自UTC时间1970年1月1号开始的秒数），用于标识该URL的超时时间。如果OSS接收到这个URL请求的时候晚于签名中包含的Expires参数时，则返回请求超时的错误码。例如：当前时间是1141889060，开发者希望创建一个60秒后自动失效的URL，则可以设置Expires时间为 1141889120。 `AccessKeyId` 即密钥中的AccessKeyId。 `Signature` 表示签名信息。所有的OSS支持的请求和各种Header参数，在URL中进行签名的算法和在 Header中包含签名的算法基本一样。
 
 ```
 Signature = urlencode(base64(hmac-sha1(AccessKeySecret,
@@ -319,9 +585,9 @@ OSS SDK中提供了提供URL签名的方法，使用方法请参见SDK文件中�
 
 **细节分析**
 
-使用在URL中签名的方式，会将你授权的数据在过期时间以内曝露在互联网上，请预先评估使用风险。 PUT和GET请求都支持在URL中签名。 在URL中添加签名时，Signature、Expires、AccessKeyId顺序可以交换，但是如果缺少Signature、Expires 或AccessKeyId其中的一个或者多个，返回403 Forbidden消息。错误码：AccessDenied。 对象存储 OSS 如果访问的当前时间晚于请求中设定的Expires时间或时间格式错误，返回403 Forbidden消息。错误码： AccessDenied。 如果URL中包含Signature、Expires、AccessKeyId中的一个或者多个，并且Header中也包含签名消息，返回 400 Bad Request消息。错误码：InvalidArgument。 生成签名字符串时，除Date被替换成Expires参数外，仍然包含content-type、content-md5等上节中定义的 Header。（请求中虽然仍有Date这个请求头，但不需要将Date加入签名字符串中）。
+使用在URL中签名的方式，会将你授权的数据在过期时间以内曝露在互联网上，请预先评估使用风险。 PUT和GET请求都支持在URL中签名。 在URL中添加签名时，Signature、Expires、AccessKeyId顺序可以交换，但是如果缺少Signature、Expires 或AccessKeyId其中的一个或者多个，返回403 Forbidden消息。错误码：AccessDenied。 如果访问的当前时间晚于请求中设定的Expires时间或时间格式错误，返回403 Forbidden消息。错误码： AccessDenied。 如果URL中包含Signature、Expires、AccessKeyId中的一个或者多个，并且Header中也包含签名消息，返回 400 Bad Request消息。错误码：InvalidArgument。 生成签名字符串时，除Date被替换成Expires参数外，仍然包含content-type、content-md5等上节中定义的 Header。（请求中虽然仍有Date这个请求头，但不需要将Date加入签名字符串中）。
 
-#### 临时授权访问
+#### 2.2.4 临时授权访问
 
 OSS可以通过STS（Security Token Service）进行临时授权访问，向第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。
 
@@ -331,25 +597,25 @@ STS是为用户提供临时访问令牌的Web服务。通过STS，您可以为�
 1. App用户登录。App用户身份是客户自己管理。客户可以自定义身份管理系统，也可以使用外部Web账号或
 OpenID。对于每个有效的App用户来说，AppServer是可以确切地定义出每个App用户的最小访问权限。
 2. AppServer请求STS服务获取一个安全令牌（SecurityToken）。在调用STS之前，AppServer需要确定App用户
-的最小访问权限（用Policy语法描述）以及授权的过期时间。然后通过调用STS的AssumeRole（扮演角色）接口来获取安全令牌。角色管理与使用相关内容请参考《**Apsara Uni-manager****运营控制台****用户指南》**手册中**企业**
-**中心** > **权限管理** > **角色授权**章节。
+的最小访问权限（用Policy语法描述）以及授权的过期时间。然后通过调用STS的AssumeRole（扮演角色）接口来获取安全令牌。角色管理与使用相关内容请参考**《****Apsara Uni-manager****运营控制台****用户指南》**手册中**企业**
+**中心** **>** **权限管理** **>** **角色授权**章节。
 3. STS返回给AppServer一个有效的访问凭证，包括一个安全令牌（SecurityToken）、临时访问密钥
 （AccessKeyId、AccessKeySecret）以及过期时间。
 4. AppServer将访问凭证返回给ClientApp。ClientApp可以缓存这个凭证。当凭证失效时，ClientApp需要向
 AppServer申请新的有效访问凭证。比如，访问凭证有效期为1小时，那么ClientApp可以每30分钟向AppServer 请求更新访问凭证。
 5. ClientApp客户端使用本地缓存的临时访问凭证去请求OSS API。OSS收到访问请求后，会通过STS服务来验证访
-问凭证，正确响应用户请求。 STS安全令牌详情，请参考《**Apsara Uni-manager****运营控制台****开发指南》**手册中**STS API****参考** >
+问凭证，正确响应用户请求。 STS安全令牌详情，请参考**《****Apsara Uni-manager****运营控制台****开发指南》**手册中**STS API****参考** **>**
 **AssumeRole -** **获取扮演角色的临时身份凭证**章节。关键是调用STS服务接口AssumeRole来获取有效访问凭证。
 
 **使用STS凭证构造签名请求**
 
-用户的客户端获取到STS临时凭证后，通过其中安全令牌（SecurityToken）以及临时访问密钥（AccessKeyId、 AccessKeySecret）构建签名。授权访问签名的构建方式与使用直接使用根账号的AccessKey在Header中包含签名基本一致，关键注意两点： 用户使用的签名密钥为STS提供的临时访问密钥（AccessKeyId, AccessKeySecret）。 对象存储 OSS 用户需要将安全令牌（SecurityToken）携带在请求header中或者以请求参数的形式放入URL中。这两种形式只能选择其一，如果都选择，oss会返回InvalidArgument错误。 在header中包含头部 `x-oss-security-token`：`SecurityToken` 。计算签名CanonicalizedOSSHeaders 时，将x-oss-security-token计算在内。 在URL中携带参数**security-*********************。计算签名CanonicalizedResource时，将 security-token当做一个sub-resource计算在内。
+用户的客户端获取到STS临时凭证后，通过其中安全令牌（SecurityToken）以及临时访问密钥（AccessKeyId、 AccessKeySecret）构建签名。授权访问签名的构建方式与使用直接使用根账号的AccessKey在Header中包含签名基本一致，关键注意两点： 用户使用的签名密钥为STS提供的临时访问密钥（AccessKeyId, AccessKeySecret）。 用户需要将安全令牌（SecurityToken）携带在请求header中或者以请求参数的形式放入URL中。这两种形式只能选择其一，如果都选择，oss会返回InvalidArgument错误。 在header中包含头部 `x-oss-security-token`：`SecurityToken` 。计算签名CanonicalizedOSSHeaders 时，将x-oss-security-token计算在内。 在URL中携带参数**security-*********************。计算签名CanonicalizedResource时，将 security-token当做一个sub-resource计算在内。
 
-#### Bucket权限控制
+#### 2.2.5 Bucket权限控制
 
 您可以在创建存储空间（Bucket）时设置存储空间的访问权限（ACL），也可以在创建Bucket后根据自己的业务需求修改存储空间的ACL，该操作只有存储空间的拥有者可以执行。 Bucket目前有三种访问权限：public-read-write，public-read和private，它们的含义如下： public-read-write：任何人（包括匿名访问）都可以对该Bucket中的Object进行Put，Get和Delete操作；所有这些操作产生的费用由该Bucket的创建者承担，请慎用该权限。 public-read：只有该Bucket的创建者可以对该Bucket内的Object进行写操作（包括Put和Delete Object）；任何人（包括匿名访问）可以对该Bucket中的Object进行读操作（Get Object）。 private：只有该Bucket的创建者可以对该Bucket内的Object进行读写操作（包括Put、Delete和Get Object）；其他人无法访问该Bucket内的Object。 用户新创建一个新Bucket时，如果不指定Bucket权限，OSS会自动为该Bucket设置private权限。对于一个已经存在的Bucket，只有它的创建者可以通过OSS的 PutBucketACL接口修改该Bucket的权限。
 
-### 公共HTTP头定义
+### 2.3 公共HTTP头定义
 
 本文介绍OSS的RESTful接口使用的请求头和响应头。
 
@@ -363,8 +629,6 @@ OSS的RESTful接口中使用了一些公共请求头。这些请求头可以被�
 | Content-Length | RFC2616中定义的HTTP请求内容长度。 类型：字符串。 默认值：无。 使用场景：需要向OSS提交数据的请求。 |
 | Content-Type | RFC2616中定义的HTTP请求内容类型。 类型：字符串。 默认值：无。 使用场景：需要向OSS提交数据的请求。 |
 | Date | HTTP 1.1协议中规定的GMT时间，例如：Wed, 05 Sep. 2012 23:00:00 GMT。 类型：字符串。 默认值：无。 |
-
-对象存储 OSS
 
 | Host | 访问Host值，格式为： <bucketname>.regionid.example.com 。 类型：字符串。 默认值：无。 |
 |---|---|
@@ -382,15 +646,15 @@ OSS的RESTful接口中使用了一些公共响应头。这些响应头可以被�
 | Server | 生成Response的服务器。 类型：字符串。 默认值：AliyunOSS。 |
 | x-oss-request-id | x-oss-request-id是由Aliyun OSS创建，并唯一标识这个response的UUID。如果在使用OSS服务时遇到问题，可以凭借该字段联系OSS工作人员，快速定位问题。 类型：字符串。 默认值：无。 |
 
-### 关于Service的操作
+### 2.4 关于Service的操作
 
-#### GetService(ListBuckets)
+#### 2.4.1 GetService(ListBuckets)
 
 对于服务地址作Get请求可以返回请求者拥有的所有Bucket，其中正斜线（/）表示根目录。
 
 **注意事项**
 
-GetService这个API只对验证通过的用户有效。 如果请求中没有用户验证信息（即匿名访问），返回403 Forbidden。错误码：AccessDenied。 对象存储 OSS 当所有的Bucket都返回时，返回的XML中不包含Prefix、Marker、MaxKeys、IsTruncated、NextMarker节点；如果还有部分结果未返回，则增加上述节点，其中NextMarker用于继续查询时给marker赋值。
+GetService这个API只对验证通过的用户有效。 如果请求中没有用户验证信息（即匿名访问），返回403 Forbidden。错误码：AccessDenied。 当所有的Bucket都返回时，返回的XML中不包含Prefix、Marker、MaxKeys、IsTruncated、NextMarker节点；如果还有部分结果未返回，则增加上述节点，其中NextMarker用于继续查询时给marker赋值。
 
 **请求语法**
 
@@ -418,22 +682,20 @@ GetService(ListBucket)时，可以通过prefix，marker和max-keys对list做限�
 | MaxKeys | 字符串 | 1 | 响应请求内返回结果的最大数目。 当Bucket未全部返回时才有此节点。 |
 | IsTruncated | 枚举字符串 | true | 指明是否所有的结果都已经返回。取值如下： true ：表示本次没有返回全部结果 false ：表示本次已经返回了全部结果。 当Bucket未全部返回时才有此节点。 |
 
-对象存储 OSS
-
-| NextMarker | 字符串 | xz02tphky6fjfiuc0 |  | 表示下一次GetService(ListBucket)时，可以以此为marker，将未返回的结果返回。 当Bucket未全部返回时才有此节点。 |  |  |
+| NextMarker | 字符串 | xz02tphky6fjfiuc0 |   | 表示下一次GetService(ListBucket)时，可以以此为marker，将未返回的结果返回。 当Bucket未全部返回时才有此节点。 |   |   |
 |---|---|---|---|---|---|---|
-| Owner | 容器 | 不涉及 |  | 用于存放Bucket拥有者信息的容器。 |  |  |
-| ID | 字符串 | 17464******0274 5 |  | Bucket拥有者的用户ID。 |  |  |
-| DisplayName | 字符串 | 17464******0274 5 |  | Bucket拥有者的名称，目前和用户ID一致。 |  |  |
-| Buckets | 容器 | 不涉及 |  | 保存多个Bucket信息的容器。 |  |  |
-| Bucket | 容器 | 不涉及 |  | 保存Bucket信息的容器。 |  |  |
-| Name | 字符串 | examplebucket |  | Bucket名称。 |  |  |
-| CreationDate | 时间 | 2011-12- 01T12:27:13.000Z |  | Bucket的创建时间。格式： yyyy-mm- ddThh:mm:ss.timezone 。 |  |  |
-|  |  |  |  |  | yyyy-mm- |  |
-|  |  |  | 3.000Z | ddThh:mm:ss.timezone |  |  |
-| Location | 字符串 | oss-cn-shenzhen |  | Bucket所在的数据中心。 |  |  |
-| ExtranetEndpoint | 字符串 | oss-cn- shenzhen.aliyuncs .com |  | Bucket的外网Endpoint。 |  |  |
-| IntranetEndpoint | 字符串 | oss-cn-shenzhen- internal.aliyuncs.c om |  | Bucket的内网Endpoint。 |  |  |
+| Owner | 容器 | 不涉及 |   | 用于存放Bucket拥有者信息的容器。 |   |   |
+| ID | 字符串 | 17464******0274 5 |   | Bucket拥有者的用户ID。 |   |   |
+| DisplayName | 字符串 | 17464******0274 5 |   | Bucket拥有者的名称，目前和用户ID一致。 |   |   |
+| Buckets | 容器 | 不涉及 |   | 保存多个Bucket信息的容器。 |   |   |
+| Bucket | 容器 | 不涉及 |   | 保存Bucket信息的容器。 |   |   |
+| Name | 字符串 | examplebucket |   | Bucket名称。 |   |   |
+| CreationDate | 时间 | 2011-12- 01T12:27:13.000Z |   | Bucket的创建时间。格式： yyyy-mm- ddThh:mm:ss.timezone 。 |   |   |
+|   |   |   |   |   | yyyy-mm- |   |
+|   |   |   | 3.000Z | ddThh:mm:ss.timezone |   |   |
+| Location | 字符串 | oss-cn-shenzhen |   | Bucket所在的数据中心。 |   |   |
+| ExtranetEndpoint | 字符串 | oss-cn- shenzhen.aliyuncs .com |   | Bucket的外网Endpoint。 |   |   |
+| IntranetEndpoint | 字符串 | oss-cn-shenzhen- internal.aliyuncs.c om |   | Bucket的内网Endpoint。 |   |   |
 
 **示例**
 
@@ -443,7 +705,7 @@ GetService(ListBucket)时，可以通过prefix，marker和max-keys对list做限�
 GET / HTTP/1.1 Date: Thu, 15 May 2014 11:18:32 GMT Host: regionid.example.com Authorization: OSS n***i:C***I=
 ```
 
-返回示例1 对象存储 OSS
+返回示例1
 
 ```xml
 HTTP/1.1 200 OK Date: Thu, 15 May 2014 11:18:32 GMT Content-Type: application/xml Content-Length: 556 Connection: keep-alive Server: AliyunOSS x-oss-request-id: 5***4 <?xml version="1.0" encoding="UTF-8"?> <ListAllMyBucketsResult>
@@ -476,7 +738,7 @@ HTTP/1.1 200 OK Date: Thu, 15 May 2014 11:18:32 GMT Content-Type: application/xm
 GET /?prefix=xz02tphky6fjfiuc&max-keys=1 HTTP/1.1 Date: Thu, 15 May 2014 11:18:32 GMT Host: regionid.example.com Authorization: OSS n***i:C***I=
 ```
 
-返回示例2 对象存储 OSS
+返回示例2
 
 ```xml
 HTTP/1.1 200 OK Date: Thu, 15 May 2014 11:18:32 GMT Content-Type: application/xml Content-Length: 545 Connection: keep-alive Server: AliyunOSS x-oss-request-id: 5***5 <?xml version="1.0" encoding="UTF-8"?> <ListAllMyBucketsResult>
@@ -501,9 +763,9 @@ HTTP/1.1 200 OK Date: Thu, 15 May 2014 11:18:32 GMT Content-Type: application/xm
 </ListAllMyBucketsResult>
 ```
 
-### 关于Bucket的操作
+### 2.5 关于Bucket的操作
 
-#### PutBucket
+#### 2.5.1 PutBucket
 
 PutBucket用于创建Bucket。创建的Bucket所在的Region和发送请求的Endpoint所对应的Region一致。Bucket 所在的数据中心确定后，该Bucket下的所有Object将一直存放在对应的地区。
 
@@ -515,14 +777,12 @@ PUT / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date x-oss-acl: P
 
 **注意事项**
 
-此接口不支持匿名访问。 同一阿里云账号在同一地域（Region）内最多可创建100个Bucket。
+调用PutBucket时，有如下注意事项： 此接口不支持匿名访问。 同一阿里云账号在同一地域（Region）内最多可创建100个Bucket。
 
 **请求头**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-对象存储 OSS
 
 | x-oss-acl | 字符串 | 否 | private | 指定Bucket的访问权限ACL。 有效值： public-read-write：公共读写 public-read：公共读 private：私有（默认值） |
 |---|---|---|---|---|
@@ -555,7 +815,9 @@ PUT / HTTP/1.1 Host: BucketName.regionid.example.com Date: Fri, 24 Feb 2012 03:1
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 03:15:40 GMT Location: /*** Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### PutBucketACL
+#### 2.5.2 PutBucketACL
+
+PutBucketACL接口用于修改Bucket访问权限。
 
 **请求语法**
 
@@ -563,11 +825,9 @@ HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 03:15:40 GMT Loca
 PUT /?acl HTTP/1.1 x-oss-acl: Permission Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
-对象存储 OSS
-
 **注意事项**
 
-该接口的请求者需要对Bucket有写入ACL的权限。 如果指定要设置ACL的Bucket不存在，调用该接口时将新建Bucket。
+使用PutBucketAcl接口时，有如下注意事项： 该接口的请求者需要对Bucket有写入ACL的权限。 PutBucketAcl为覆盖语义，即新传入的ACL将覆盖原有的ACL。 如果指定要设置ACL的Bucket不存在，调用该接口时将新建Bucket。
 
 **请求头**
 
@@ -595,7 +855,7 @@ PUT /?acl HTTP/1.1 x-oss-acl: public-read Host: BucketName.regionid.example.com 
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 03:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-如果该设置的权限不存在，则返回400错误码。 错误返回示例： 对象存储 OSS
+如果该设置的权限不存在，则返回400错误码。 错误返回示例：
 
 ```xml
 HTTP/1.1 400 Bad Request x-oss-request-id: 5***9 Date: Fri, 24 Feb 2012 03:55:00 GMT Content-Length: 309 Content-Type: text/xml; charset=UTF-8 Connection: keep-alive Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <Error>
@@ -608,27 +868,23 @@ HTTP/1.1 400 Bad Request x-oss-request-id: 5***9 Date: Fri, 24 Feb 2012 03:55:00
 </Error>
 ```
 
-#### PutBucketLogging
+#### 2.5.3 PutBucketLogging
 
-Bucket的拥有者可以为Bucket开启访问日志记录功能。这个功能开启后，OSS将自动记录访问这个Bucket请求的详细信息，并按照用户指定的规则，以小时为单位，将访问日志作为一个Object写入用户指定的Bucket。 OSS提供Bucket访问日志的目的是为了方便Bucket的拥有者理解和分析Bucket的访问行为。OSS
+Bucket的拥有者可以为Bucket开启访问日志记录功能。这个功能开启后，OSS将自动记录访问这个Bucket请求的详细信息，并按照用户指定的规则，以小时为单位，将访问日志作为一个Object写入用户指定的Bucket。
 
-**重要**
-
-提供的Bucket访问日志不保证记录下每一条访问记录。
+> **重要：** OSS提供Bucket访问日志的目的是为了方便Bucket的拥有者理解和分析Bucket的访问行为。OSS 提供的Bucket访问日志不保证记录下每一条访问记录。
 
 **注意事项**
 
-源Bucket和目标Bucket必须属于同一个用户。 当关闭一个Bucket的访问日志记录功能时，只要发送一个空的BucketLoggingStatus即可，具体方法可以参考下面的请求示例。 源Bucket被删除时，对应的Logging规则也将被删除。 OSS以小时为单位生成bucket访问的Log文件，但并不表示这个小时的所有请求都记录在这个小时的LOG文件内，也有可能出现在上一个或者下一个LOG文件中。 OSS生成的LOG文件命名规则中的“UniqueString”仅仅是OSS为其生成的UUID，用于唯一标识该文件。 OSS生成一个Bucket访问的Log文件，算作一次PUT操作，并记录其占用的空间，但不会记录产生的流量。LOG 生成后，用户可以按照普通的Object来操作这些LOG文件。 OSS会忽略掉所有以“x-”开头的query-string参数，但这个query-string会被记录在访问LOG中。如果你想从海量的访问日志中，标示一个特殊的请求，可以在URL中添加一个“x-”开头的query-string参数。例如：
+源Bucket和目标Bucket必须属于同一个用户。 当关闭一个Bucket的访问日志记录功能时，只要发送一个空的BucketLoggingStatus即可，具体方法可以参考下面的请求示例。 所有PUTBucketLogging请求必须带签名，即不支持匿名访问。 源Bucket被删除时，对应的Logging规则也将被删除。 OSS以小时为单位生成bucket访问的Log文件，但并不表示这个小时的所有请求都记录在这个小时的LOG文件内，也有可能出现在上一个或者下一个LOG文件中。 OSS生成的LOG文件命名规则中的“UniqueString”仅仅是OSS为其生成的UUID，用于唯一标识该文件。 OSS生成一个Bucket访问的Log文件，算作一次PUT操作，并记录其占用的空间，但不会记录产生的流量。LOG 生成后，用户可以按照普通的Object来操作这些LOG文件。 OSS会忽略掉所有以“x-”开头的query-string参数，但这个query-string会被记录在访问LOG中。如果你想从海量的访问日志中，标示一个特殊的请求，可以在URL中添加一个“x-”开头的query-string参数。例如：
 
-| http://oss-example.regionid.example.com/aliyun-logo.png |  |
+| http://oss-example.regionid.example.com/aliyun-logo.png |   |
 |---|---|
-| http://oss-example.regionid.example.com/aliyun-logo.png?x-user=admin |  |
+| http://oss-example.regionid.example.com/aliyun-logo.png?x-user=admin |   |
 
-OSS处理上面两个请求，结果是一样的。但是在访问LOG中，你可以通过搜索“x-user=admin”，很方便地定位出经过标记的这个请求。 OSS的LOG中的任何一个字段，都可能出现 - ，用于表示未知数据或对于当前请求该字段无效。 根据需求，OSS的LOG格式将来会在尾部添加一些字段，请您开发LOG处理工具时考虑兼容性的问题。
+OSS处理上面两个请求，结果是一样的。但是在访问LOG中，你可以通过搜索“x-user=admin”，很方便地定位出经过标记的这个请求。 OSS的LOG中的任何一个字段，都可能出现 `-` ，用于表示未知数据或对于当前请求该字段无效。 根据需求，OSS的LOG格式将来会在尾部添加一些字段，请您开发LOG处理工具时考虑兼容性的问题。
 
 **请求语法**
-
-对象存储 OSS
 
 ```xml
 PUT /?logging HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-Type: application/xml Authorization: SignatureValue Host: BucketName.regionid.example.com <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus>
@@ -675,8 +931,6 @@ MyLog-oss-example-2012-09-10-04-00-00-0000
 | Reserved | 不涉及 | 保留字段。 |
 | Time | [02/May/2012:00:00:04 +0800] | OSS收到请求的时间。 |
 
-对象存储 OSS
-
 | Request-URI | “GET /aliyun-logo.png HTTP/1.1“ | 用户请求的URI（包括query-string）。 |
 |---|---|---|
 | HTTP Status | 200 | OSS返回的HTTP状态码。 |
@@ -708,7 +962,7 @@ MyLog-oss-example-2012-09-10-04-00-00-0000
 PUT /?logging HTTP/1.1 Host: ***.regionid.example.com Content-Length: 186 Date: Fri, 04 May 2012 03:21:12 GMT Authorization: OSS q***c:K***= <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus> <LoggingEnabled> <TargetBucket>doc-log</TargetBucket> <TargetPrefix>MyLog-</TargetPrefix> </LoggingEnabled> </BucketLoggingStatus>
 ```
 
-对象存储 OSS 返回示例：
+返回示例：
 
 ```
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 04 May 2012 03:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
@@ -726,7 +980,7 @@ PUT /?logging HTTP/1.1 Host: ***.regionid.example.com Content-Type: application/
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 04 May 2012 04:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### PutBucketWebsite
+#### 2.5.4 PutBucketWebsite
 
 PutBucketWebsite操作可以将一个Bucket设置成静态网站托管模式。
 
@@ -735,8 +989,6 @@ PutBucketWebsite操作可以将一个Bucket设置成静态网站托管模式。
 所谓静态网站是指所有的网页都由静态内容构成，包括客户端执行的脚本，例如JavaScript；OSS不支持涉及到需要服务器端处理的内容，例如PHP、JSP、APS.NET等。 在将一个Bucket设置成静态网站托管模式后，对静态网站根域名的匿名访问，OSS将返回索引页面；对静态网站根域名的签名访问，OSS将返回Get Bucket结果。
 
 **请求语法**
-
-对象存储 OSS
 
 ```xml
 PUT /?website HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-Type: application/xml Host: BucketName.regionid.example.com Authorization: SignatureValue <?xml version="1.0" encoding="UTF-8"?> <WebsiteConfiguration>
@@ -764,22 +1016,18 @@ IndexDocument的内容
 | IndexDocument | 容器 | 有条件至少指定 IndexDocument、 ErrorDocument、 RoutingRules三个容器中的一个。 | 不涉及 | 默认主页的容器父节点：WebsiteConfiguration |
 | Suffix | 字符串 | 有条件若指定了父节点 IndexDocument， 则必须指定此项。 | index.ht ml | 默认主页如果设置，则访问以正斜线（/）结尾的 Object时都会返回此默认主页。 父节点：IndexDocument |
 
-对象存储 OSS
-
-| SupportSubDir | 字符串 | 否 |  |  | false | 表示是否支持访问子目录时转到子目录下的默认主页。 取值： true：则表示转到子目录下的默认主页。 false：表示不转到子目录下的默认主页， 而是转到根目录下的默认主页。 假设访问bucket.oss-cn- hangzhou.aliyuncs.com/subdir/时，默认主页设置为index.html，则false表示转到 bucket.oss-cn- hangzhou.aliyuncs.com/index.html，tru e表示转到bucket.oss-cn- hangzhou.aliyuncs.com/subdir/index.ht ml。 默认值：false 父节点：IndexDocument |  |  |
+| SupportSubDir | 字符串 | 否 |   |   | false | 表示是否支持访问子目录时转到子目录下的默认主页。 取值： true：则表示转到子目录下的默认主页。 false：表示不转到子目录下的默认主页， 而是转到根目录下的默认主页。 假设访问bucket.oss-cn- hangzhou.aliyuncs.com/subdir/时，默认主页设置为index.html，则false表示转到 bucket.oss-cn- hangzhou.aliyuncs.com/index.html，tru e表示转到bucket.oss-cn- hangzhou.aliyuncs.com/subdir/index.ht ml。 默认值：false 父节点：IndexDocument |   |   |
 |---|---|---|---|---|---|---|---|---|
-| Type | 枚举值 | 否 |  |  | 0 | 表示设置了默认主页后，访问以非正斜线 （/）结尾的Object，且该Object不存在时的行为。 说明只有在SupportSubDir为 true时生效，且生效的顺序在 RoutingRule之后、ErrorFile之前。 假设默认主页设置为index.html，访问的文件路径是bucket.oss-cn- hangzhou.aliyuncs.com/abc，且abc这个 Object不存在，此时type三种取值类型对应的行为如下： 0：检查abc/index.html是否存在 （即 Object + 正斜线（/）+ 主页的形式），如果存在则返回 302，Location头为 /abc/ 的URL编码（即正斜线（/） + Object + 正斜线（/） 的形式），如果不存在则返回 404，继续检查ErrorFile。 1：直接返回404，报错NoSuchKey，继续检查ErrorFile。 2：检查abc/index.html是否存在，如果存在则返回该Object的内容；如果不存在则返回404，继续检查ErrorFile。 默认值：0 父节点：IndexDocument |  |  |
-|  |  |  |  |  |  | 页 |  |  |
-|  |  |  |  |  |  |  | 正斜线（/） + Object + 正斜 |  |
-|  |  |  |  |  |  | 线（/） |  |  |
+| Type | 枚举值 | 否 |   |   | 0 | 表示设置了默认主页后，访问以非正斜线 （/）结尾的Object，且该Object不存在时的行为。 说明只有在SupportSubDir为 true时生效，且生效的顺序在 RoutingRule之后、ErrorFile之前。 假设默认主页设置为index.html，访问的文件路径是bucket.oss-cn- hangzhou.aliyuncs.com/abc，且abc这个 Object不存在，此时type三种取值类型对应的行为如下： 0：检查abc/index.html是否存在 （即 Object + 正斜线（/）+ 主页的形式），如果存在则返回 302，Location头为 /abc/ 的URL编码（即正斜线（/） + Object + 正斜线（/） 的形式），如果不存在则返回 404，继续检查ErrorFile。 1：直接返回404，报错NoSuchKey，继续检查ErrorFile。 2：检查abc/index.html是否存在，如果存在则返回该Object的内容；如果不存在则返回404，继续检查ErrorFile。 默认值：0 父节点：IndexDocument |   |   |
+|   |   |   |   |   |   | 页 |   |   |
+|   |   |   |   |   |   |   | 正斜线（/） + Object + 正斜 |   |
+|   |   |   |   |   |   | 线（/） |   |   |
 
 ErrorDocument的内容
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | ErrorDocument | 容器 | 有条件至少指定IndexDocument、 ErrorDocument、 RoutingRules三个容器中的一个。 | 404页面的容器父节点： WebsiteConfiguration |
-
-对象存储 OSS
 
 | Key | 容器 | 有条件若指定了父节点 ErrorDocument，则必须指定此项。 | 404页面如果指定，则访问的Object不存在时则返回此404页面。 父节点：ErrorDocument |
 |---|---|---|---|
@@ -802,38 +1050,32 @@ RoutingRules|RoutingRule|Condition的内容
 | IncludeHeader | 容器 | 否 | 不涉及 | 只有请求中包含了指定Header，且值为指定值时，才能匹配此规则。该容器最多可指定5 个。 父节点：Condition |
 | Key | 字符串 | 有条件若指定了父节点 IncludeHeader， 则必须指定此项。 | host | 只有请求中包含了此Header，且值为Equals 的指定值时，才能匹配此规则。 父节点：IncludeHeader |
 
-对象存储 OSS
-
 | Equals | 字符串 | 有条件若指定了父节点 IncludeHeader， 则必须指定此项。 | test.oss- cn- beijing- internal. aliyuncs. com | 只有请求中包含了Key指定的Header，且值为指定值时，才能匹配此规则。 父节点：IncludeHeader |
 |---|---|---|---|---|
 | KeySuffixEquals | 字符串 | 否 | zip | 只有匹配此字段指定的后缀才能匹配此规则。 默认值为空，表示不匹配指定的后缀父节点：Condition |
 
 RoutingRules|RoutingRule|Redirect的内容
 
-| 名称 | 类型 | 是否必须 |  | 示例值 | 描述 |  |  |
+| 名称 | 类型 | 是否必须 |   | 示例值 | 描述 |   |   |
 |---|---|---|---|---|---|---|---|
-| Redirect | 容器 | 有条件若指定了父节点 RoutingRule，则必须指定此项。 |  | 不涉及 | 指定匹配此规则后执行的动作。 父节点：RoutingRule |  |  |
-| RedirectType | 字符串 | 有条件若指定了父节点 Redirect，则必须指定此项。 |  | Mirror | 指定跳转的类型。 取值： Mirror：镜像回源 External：外部跳转，即OSS会返回一个 3xx请求，指定跳转到另外一个地址。 Internal：内部跳转，即OSS会根据此规则将访问的Object1转换成另外一个 Object2，相当于用户访问的是Object2。 AliCDN：阿里云CDN跳转，主要用于阿里云的CDN。与External不同的是，OSS会额外添加一个Header。阿里云CDN识别到此Header后会主动跳转到指定的地址，返回给用户获取到的数据，而不是将3xx跳转请求返回给用户。 父节点：Redirect |  |  |
-| PassQueryStrin g | 布尔 | 否 |  |  | 执行跳转或者镜像回源时，是否携带请求参数。 用户请求OSS时携带了请求参数 ? a=b&c=d ，并且此项设置为true，当规则为302跳转，则跳转的Location头中会添加此请求参数。例如 Location:www.example.com? a=b&c=d ，跳转类型是镜像回源，则在发起的回源请求中也会携带此请求参数。 取值：true、false 默认值：false 父节点：Redirect |  |  |
-|  |  |  |  |  |  | Location:www.example.com? |  |
-|  |  |  |  | true | a=b&c=d |  |  |
+| Redirect | 容器 | 有条件若指定了父节点 RoutingRule，则必须指定此项。 |   | 不涉及 | 指定匹配此规则后执行的动作。 父节点：RoutingRule |   |   |
+| RedirectType | 字符串 | 有条件若指定了父节点 Redirect，则必须指定此项。 |   | Mirror | 指定跳转的类型。 取值： Mirror：镜像回源 External：外部跳转，即OSS会返回一个 3xx请求，指定跳转到另外一个地址。 Internal：内部跳转，即OSS会根据此规则将访问的Object1转换成另外一个 Object2，相当于用户访问的是Object2。 AliCDN：阿里云CDN跳转，主要用于阿里云的CDN。与External不同的是，OSS会额外添加一个Header。阿里云CDN识别到此Header后会主动跳转到指定的地址，返回给用户获取到的数据，而不是将3xx跳转请求返回给用户。 父节点：Redirect |   |   |
+| PassQueryStrin g | 布尔 | 否 |   |   | 执行跳转或者镜像回源时，是否携带请求参数。 用户请求OSS时携带了请求参数 ? a=b&c=d ，并且此项设置为true，当规则为302跳转，则跳转的Location头中会添加此请求参数。例如 Location:www.example.com? a=b&c=d ，跳转类型是镜像回源，则在发起的回源请求中也会携带此请求参数。 取值：true、false 默认值：false 父节点：Redirect |   |   |
+|   |   |   |   |   |   | Location:www.example.com? |   |
+|   |   |   |   | true | a=b&c=d |   |   |
 
-|  | a=b&c=d |
+|   | a=b&c=d |
 |---|---|
 
-对象存储 OSS
-
-| MirrorURL | 字符串 |  | 有条件若RedirectType指定为Mirror，则必须 | http://ww w.examp le.com/ | 仅在RedirectType为Mirror时生效，表示镜像回源的源站地址。 假设以http://或者https://开头，必须以正斜线（/）结尾，OSS会在此字符串的基础上加上Object名称构成回源URL。 例如指定为 http://www.example.com/ ，访问的Object名称是myobject，则回源的URL 为 http://www.example.com/myobject ，如果指定为 http://www.example.com/dir1/ ，那么回源的URL 为 http://www.example.com/dir1/myo bject 。 父节点：Redirect |  |  |
+| MirrorURL | 字符串 |   | 有条件若RedirectType指定为Mirror，则必须 | http://ww w.examp le.com/ | 仅在RedirectType为Mirror时生效，表示镜像回源的源站地址。 假设以http://或者https://开头，必须以正斜线（/）结尾，OSS会在此字符串的基础上加上Object名称构成回源URL。 例如指定为 http://www.example.com/ ，访问的Object名称是myobject，则回源的URL 为 http://www.example.com/myobject ，如果指定为 http://www.example.com/dir1/ ，那么回源的URL 为 http://www.example.com/dir1/myo bject 。 父节点：Redirect |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  | 指定此项。 |  |  |  |  |
-|  |  |  |  |  |  | http://www.example.com/dir1/myo |  |
-|  |  |  |  |  | bject |  |  |
-| MirrorPassQuer yString | 布尔 |  | 否 | true | 与PassQueryString作用相同，优先级高于 PassQueryString。 仅在RedirectType为Mirror时生效。 默认值：false 父节点：Redirect |  |  |
-| MirrorFollowRe direct | 布尔 |  | 否 | true | 如果镜像回源获取的结果是3xx，是否要继续跳转到指定的Location获取数据。 例如发起镜像回源请求时，如果源站返回了 302，并且指定了Location。 如果设置为true，则oss会继续请求 Location指定的地址（最多跳转10次，如果超过10次，则返回镜像回源失败）。 如果设置为false，则OSS返回302，并将 Location透传出去。只有在RedirectType 为Mirror时生效。 默认值：true 父节点：Redirect |  |  |
-| MirrorCheckMd 5 | 布尔 |  | 否 | false | 是否检查回源body的MD5。 当此项为true且源站返回的response中含有 Content-Md5头时，OSS检查拉取的数据 MD5是否与此Header匹配，如果不匹配，则不保存在OSS上。仅在RedirectType为 Mirror时生效。 默认值：false 父节点：Redirect |  |  |
-| MirrorHeaders | 容器 |  | 否 | 不涉及 | 用于指定镜像回源时携带的Header。只有在 RedirectType为Mirror时生效。 父节点：Redirect |  |  |
-
-对象存储 OSS
+|   |   |   | 指定此项。 |   |   |   |   |
+|   |   |   |   |   |   | http://www.example.com/dir1/myo |   |
+|   |   |   |   |   | bject |   |   |
+| MirrorPassQuer yString | 布尔 |   | 否 | true | 与PassQueryString作用相同，优先级高于 PassQueryString。 仅在RedirectType为Mirror时生效。 默认值：false 父节点：Redirect |   |   |
+| MirrorFollowRe direct | 布尔 |   | 否 | true | 如果镜像回源获取的结果是3xx，是否要继续跳转到指定的Location获取数据。 例如发起镜像回源请求时，如果源站返回了 302，并且指定了Location。 如果设置为true，则oss会继续请求 Location指定的地址（最多跳转10次，如果超过10次，则返回镜像回源失败）。 如果设置为false，则OSS返回302，并将 Location透传出去。只有在RedirectType 为Mirror时生效。 默认值：true 父节点：Redirect |   |   |
+| MirrorCheckMd 5 | 布尔 |   | 否 | false | 是否检查回源body的MD5。 当此项为true且源站返回的response中含有 Content-Md5头时，OSS检查拉取的数据 MD5是否与此Header匹配，如果不匹配，则不保存在OSS上。仅在RedirectType为 Mirror时生效。 默认值：false 父节点：Redirect |   |   |
+| MirrorHeaders | 容器 |   | 否 | 不涉及 | 用于指定镜像回源时携带的Header。只有在 RedirectType为Mirror时生效。 父节点：Redirect |   |   |
 
 | PassAll | 布尔 | 否 | true | 是否透传除以下Header之外的其他Header 到源站。 content-length、authorization2、 authorization、range、date等Header 以oss-/x-oss-/x-drs-开头的Header 只有在RedirectType为Mirror时生效。 默认值：false 父节点：MirrorHeaders |
 |---|---|---|---|---|
@@ -844,24 +1086,22 @@ RoutingRules|RoutingRule|Redirect的内容
 | Value | 字符串 | 有条件若指定了父节点 Set，则必须指定此项。 | myheade r-value5 | 设置Header的value，最多1024个字节，不能出现 \r\n 。 仅在RedirectType为Mirror时生效。 父节点：Set |
 | Protocol | 字符串 | 有条件若RedirectType指定为External或者 AliCDN，则必须指定此项。 | http | 跳转时的协议。 假设访问的文件为test，设定跳转到 www.example.com ，而且Protocol字段为https，那么Location头为 https://www.example.com/test 。 仅在RedirectType为External或者AliCDN 时生效。 取值：http或https。 父节点：Redirect |
 
-对象存储 OSS
-
-| HostName | 字符串 |  | 有条件若RedirectType指定为External或者 AliCDN，则必须指定此项。 | www.exa mple.co m | 跳转时的域名，需符合域名规范。 例如访问的Object为test，Protocol为 https，Hostname指定为 www.example.com ，那么Location头为 https://www.example.com/test 。 父节点：Redirect |  |  |
+| HostName | 字符串 |   | 有条件若RedirectType指定为External或者 AliCDN，则必须指定此项。 | www.exa mple.co m | 跳转时的域名，需符合域名规范。 例如访问的Object为test，Protocol为 https，Hostname指定为 www.example.com ，那么Location头为 https://www.example.com/test 。 父节点：Redirect |   |   |
 |---|---|---|---|---|---|---|---|
-| ReplaceKeyPrefi xWith | 字符串 |  | 否 | abc/ | Redirect时Object名称的前缀将替换成该值。如果前缀为空，则将这个字符串插入 Object名称的前面。 说明仅允许存在 ReplaceKeyWith或 ReplaceKeyPrefixWith节点。 假设指定了KeyPrefixEquals为abc/，指定了 ReplaceKeyPrefixWith为def/，那么如果访问的Object为abc/test.txt，Location头则为 http://www.example.com/def/test .txt 。 父节点：Redirect |  |  |
-|  |  |  |  |  |  | http://www.example.com/def/test |  |
-|  |  |  |  |  | .txt |  |  |
-| EnableReplaceP refix | 布尔 |  | 否 | true | 如果此字段设置为true，则Object的前缀将被替换为ReplaceKeyPrefixWith指定的值。 如果未指定此字段或为空，则表示截断 Object前缀。 说明 ReplaceKeyWith字段不为空时，此字段不能设置为true。 默认值：false 父节点：Redirect |  |  |
-| ReplaceKeyWith | 字符串 |  | 否 | prefix/${ key}.suff ix | Redirect时Object名称将替换成 ReplaceKeyWith指定的值，ReplaceKeyWith支持设置变量。目前支持的变量是${key}，表示该请求中的Object 名称。 假设设置ReplaceKeyWith 为 prefix/${key}.suffix ，访问的 Object为test，那么Location头则为 http://www.example.com/prefix/t est.suffix 。 父节点：Redirect |  |  |
-|  |  |  |  |  |  | http://www.example.com/prefix/t |  |
-|  |  |  |  |  | est.suffix |  |  |
-| HttpRedirectCo de | HTTP状态码 |  | 有条件若RedirectType指定为External或者 AliCDN，则必须指定此项。 | 301 | 跳转时返回的状态码。 仅在RedirectType为External或者AliCDN 时生效。 取值：301、302或307。 父节点：Redirect |  |  |
+| ReplaceKeyPrefi xWith | 字符串 |   | 否 | abc/ | Redirect时Object名称的前缀将替换成该值。如果前缀为空，则将这个字符串插入 Object名称的前面。 说明仅允许存在 ReplaceKeyWith或 ReplaceKeyPrefixWith节点。 假设指定了KeyPrefixEquals为abc/，指定了 ReplaceKeyPrefixWith为def/，那么如果访问的Object为abc/test.txt，Location头则为 http://www.example.com/def/test .txt 。 父节点：Redirect |   |   |
+|   |   |   |   |   |   | http://www.example.com/def/test |   |
+|   |   |   |   |   | .txt |   |   |
+| EnableReplaceP refix | 布尔 |   | 否 | true | 如果此字段设置为true，则Object的前缀将被替换为ReplaceKeyPrefixWith指定的值。 如果未指定此字段或为空，则表示截断 Object前缀。 说明 ReplaceKeyWith字段不为空时，此字段不能设置为true。 默认值：false 父节点：Redirect |   |   |
+| ReplaceKeyWith | 字符串 |   | 否 | prefix/${ key}.suff ix | Redirect时Object名称将替换成 ReplaceKeyWith指定的值，ReplaceKeyWith支持设置变量。目前支持的变量是${key}，表示该请求中的Object 名称。 假设设置ReplaceKeyWith 为 prefix/${key}.suffix ，访问的 Object为test，那么Location头则为 http://www.example.com/prefix/t est.suffix 。 父节点：Redirect |   |   |
+|   |   |   |   |   |   | http://www.example.com/prefix/t |   |
+|   |   |   |   |   | est.suffix |   |   |
+| HttpRedirectCo de | HTTP状态码 |   | 有条件若RedirectType指定为External或者 AliCDN，则必须指定此项。 | 301 | 跳转时返回的状态码。 仅在RedirectType为External或者AliCDN 时生效。 取值：301、302或307。 父节点：Redirect |   |   |
 
 有关此接口的其他公共请求元素，请参见公共请求头（Common Request Headers）。
 
 **响应元素**
 
-有关此接口的响应元素，请参见公共响应头（Common Response Headers）。 对象存储 OSS
+有关此接口的响应元素，请参见公共响应头（Common Response Headers）。
 
 **示例**
 
@@ -912,8 +1152,6 @@ PUT /?website HTTP/1.1 Date: Fri, 27 Jul 2018 09:03:18 GMT Content-Length: 2064 
 <MirrorPassQueryString>true</MirrorPassQueryString>
 ```
 
-对象存储 OSS
-
 ```xml
         <MirrorPassQueryString>true</MirrorPassQueryString>
         <MirrorFollowRedirect>true</MirrorFollowRedirect>
@@ -954,7 +1192,7 @@ PUT /?website HTTP/1.1 Date: Fri, 27 Jul 2018 09:03:18 GMT Content-Length: 2064 
 </WebsiteConfiguration> HTTP/1.1 200 OK Server: AliyunOSS Date: Fri, 27 Jul 2018 09:03:18 GMT Content-Length: 0 Connection: keep-alive x-oss-request-id: 5B5ADFD6ED3CC49176CBE29D x-oss-server-time: 47
 ```
 
-#### PutBucketReferer
+#### 2.5.5 PutBucketReferer
 
 PutBucketReferer操作可以设置一个Bucket的Referer访问白名单和是否允许Referer字段为空的请求访问。
 
@@ -963,8 +1201,6 @@ PutBucketReferer操作可以设置一个Bucket的Referer访问白名单和是否
 此操作将用RefererList中的白名单列表覆盖之前配置的白名单列表，当用户上传的RefererList为空时（不包含 Referer请求元素），此操作会覆盖已配置的白名单列表，即删除之前配置的RefererList。
 
 **请求语法**
-
-对象存储 OSS
 
 ```xml
 PUT /?referer HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-Type: application/xml Host: BucketName.oss.example.com Authorization: SignatureValue <?xml version="1.0" encoding="UTF-8"?> <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer >
@@ -998,7 +1234,7 @@ PUT /?referer HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-Typ
 PUT /?referer HTTP/1.1 Host: BucketName.oss.example.com Content-Length: 247 Date: Fri, 04 May 2012 03:21:12 GMT Authorization: OSS q***c:K***= <?xml version="1.0" encoding="UTF-8"?> <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer > < RefererList /> </RefererConfiguration>
 ```
 
-对象存储 OSS 包含Referer的请求示例：
+包含Referer的请求示例：
 
 ```xml
 PUT /?referer HTTP/1.1 Host: BucketName.oss.example.com Content-Length: 247 Date: Fri, 04 May 2012 03:21:12 GMT Authorization: OSS q***c:K***= <?xml version="1.0" encoding="UTF-8"?> <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer > < RefererList> <Referer> http://www.aliyun.com</Referer> <Referer> https://www.aliyun.com</Referer> <Referer> http://www.*.com</Referer> <Referer> https://www.?.aliyuncs.com</Referer> </ RefererList> </RefererConfiguration>
@@ -1010,17 +1246,15 @@ PUT /?referer HTTP/1.1 Host: BucketName.oss.example.com Content-Length: 247 Date
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 04 May 2012 03:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### PutBucketTags
+#### 2.5.6 PutBucketTags
 
 调用PutBucketTags接口用来给某个存储空间（Bucket）添加或修改标签。用户可以通过标签，对Bucket进行分类管理。
 
 **注意事项**
 
-只有Bucket的拥有者及授权RAM账户才能为Bucket设置用户标签，否则返回403 Forbidden错误，错误码为 AccessDenied。 最多可设置20对Bucket用户标签（Key-Value对）。 v3.18.1及以后版本，Apsara Uni-manager运营控制台会自动给Bucket下发key为 `ascm:tag/rg` 的系统标签。在修改Bucket标签时请勿覆盖此标签，避免影响控制台正常使用。
+只有Bucket的拥有者及授权RAM账户才能为Bucket设置用户标签，否则返回403 Forbidden错误，错误码为 AccessDenied。 最多可设置20对Bucket用户标签（Key-Value对）。 PutBucketTags是覆盖语义，即新添加的标签会完全覆盖已有的标签。 v3.18.1及以后版本，Apsara Uni-manager运营控制台会自动给Bucket下发key为 `ascm:tag/rg` 的系统标签。在修改Bucket标签时请勿覆盖此标签，避免影响控制台正常使用。
 
 **请求语法**
-
-对象存储 OSS
 
 ```xml
 PUT /?tagging HTTP/1.1 Date: GMT Date Content-Length: ContentLength Authorization: SignatureValue Host: BucketName.oss-cn-hangzhou.aliyuncs.com <?xml version="1.0" encoding="UTF-8"?> <Tagging>
@@ -1050,10 +1284,8 @@ PUT /?tagging HTTP/1.1 Date: GMT Date Content-Length: ContentLength Authorizatio
 | Tag | 容器 | 是 | 设置Bucket Tag的容器。 子元素：Key、Value 父元素：TagSet |
 | Key | 字符串 | 是 | 指定Bucket Tag的Key。 最大长度为64字节。 不能以 http :// 、 https:// 、 Aliyun 为前缀。 必须为UTF-8编码； 不能为空。 子元素：无父元素：Tag |
 
-|  | :// |
+|   | :// |
 |---|---|
-
-对象存储 OSS
 
 | Value | 字符串 | 否 | 指定Bucket Tag的Value。 最大长度为128字节。 必须为UTF-8编码。 可以为空。 子元素：无父元素：Tag |
 |---|---|---|---|
@@ -1087,13 +1319,13 @@ PUT /?tagging Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Tue, 20 Dec 2
 200 (OK) content-length: 0 server: AliyunOSS x-oss-request-id: 5C1B138A109F4E405B2D**** date: Thu, 20 Dec 2018 11:59:06 GMT x-oss-server-time: 148 connection: keep-alive
 ```
 
-#### PutBucketLifecycle
+#### 2.5.7 PutBucketLifecycle
 
 Bucket的拥有者可以通过PutBucket Lifecycle来设置Bucket的Lifecycle配置。Lifecycle开启后，OSS将按照配置，定期自动删除与Lifecycle规则相匹配的Object。
 
 **注意事项**
 
-只有Bucket的拥有者以及被授予PutBucketLifecycle权限的RAM用户才能发起配置生命周期规则的请求。 如果Bucket此前没有设置过生命周期规则，此操作会创建一个新的生命周期规则；如果Bucket此前设置过生命周期规则，此操作会覆写先前的规则配置。 由于PutBucketLifecycle是覆盖语义，当您需要追加生命周期规则时，请先调用GetBucketLifecycle接口获取当前生命周期规则配置，然后追加新的生命周期规则配置，最后调用PutBucketLifecycle接口更新生命周期规则配置。 PutBucketLifecycle操作可以对Object以及Part（以分片方式上传，但最后未提交的分片）设置过期时间。 对象存储 OSS
+调用PutBucketLifecycle接口时，有如下注意事项： 只有Bucket的拥有者以及被授予PutBucketLifecycle权限的RAM用户才能发起配置生命周期规则的请求。 如果Bucket此前没有设置过生命周期规则，此操作会创建一个新的生命周期规则；如果Bucket此前设置过生命周期规则，此操作会覆写先前的规则配置。 由于PutBucketLifecycle是覆盖语义，当您需要追加生命周期规则时，请先调用GetBucketLifecycle接口获取当前生命周期规则配置，然后追加新的生命周期规则配置，最后调用PutBucketLifecycle接口更新生命周期规则配置。 PutBucketLifecycle操作可以对Object以及Part（以分片方式上传，但最后未提交的分片）设置过期时间。
 
 **请求语法**
 
@@ -1106,6 +1338,8 @@ PUT /?lifecycle HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-T
  <Expiration>
  <Days>Days</Days>
  </Expiration>
+ <AbortMultipartUpload>
+ <Days>Days</Days> </AbortMultipartUpload>
  </Rule>
 </LifecycleConfiguration>
 ```
@@ -1125,8 +1359,6 @@ PUT /?lifecycle HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-T
 | ID | 字符串 | 否 | rule1 | 标识规则的唯一ID。最多由255个字节组成。如没有指定，或者该值为空时，OSS会自动生成一个唯一ID。 |
 | LifecycleCon figuration | 容器 | 是 | 不涉及 | Lifecycle配置的容器，最多可容纳1000条规则。 |
 | Prefix | 字符串 | 是 | data | 指定规则所适用的前缀（Prefix）。Prefix不可重复。 若指定了Prefix，则表示此规则仅适用于Bucket 中与Prefix匹配的Object。 若Prefix置空，则表示此规则适用于Bucket中的所有Object。 |
-
-对象存储 OSS
 
 | Rule | 容器 | 是 | 不涉及 | 标识一条规则。 |
 |---|---|---|---|---|
@@ -1149,7 +1381,9 @@ PUT /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Content-Length: 443 Da
  <Expiration>
  <Days>1</Days>
  </Expiration>
+ <AbortMultipartUpload>
  <Days>1</Days>
+ </AbortMultipartUpload>
  </Rule>
  <Rule>
  <ID>rule2</ID>
@@ -1158,7 +1392,9 @@ PUT /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Content-Length: 443 Da
  <Expiration>
  <CreatedBeforeDate>2014-10-11T00:00:00.000Z</CreatedBeforeDate>
  </Expiration>
+ <AbortMultipartUpload>
  <CreatedBeforeDate>2014-10-11T00:00:00.000Z</CreatedBeforeDate>
+ </AbortMultipartUpload>
  </Rule>
 </LifecycleConfiguration>
 ```
@@ -1169,13 +1405,13 @@ PUT /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Content-Length: 443 Da
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:10 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### GetBucket (ListObjects)
+#### 2.5.8 GetBucket (ListObjects)
 
 GetBucket操作可用来列举Bucket中所有Object的信息。
 
 **细节分析**
 
-对象存储 OSS Object中用户自定义的meta在GetBucket请求时不会返回。 如果因为max-keys的设定无法一次完成listing，返回结果会附加一个 `<NextMarker>` ，提示继续listing可以以此为marker。NextMarker中的值仍在list结果之中。 在做条件查询时，即使marker实际在列表中不存在，返回也从符合marker字母排序的下一个开始打印。如果 max-keys小于0或者大于1000，将返回400 Bad Request错误。错误码：InvalidArgument。 prefix、marker用来实现分页显示效果，参数的长度必须小于1024字节。 如果把prefix设为某个文件夹名，就可以罗列以此prefix开头的文件，即该文件夹下递归的所有的文件和子文件夹。如果再把delimiter设置为 / 时，返回值就只罗列该文件夹下的文件，该文件夹下的子文件名返回在 CommonPrefixes部分，子文件夹下递归的文件和文件夹不被显示。如一个Bucket存在三个Object : fun/test.jpg， fun/movie/001.avi， fun/movie/007.avi。若设定prefix为”fun/” ，则返回三个Object；如果增加设定delimiter为“/”，则返回文件”fun/test.jpg”和前缀”fun/movie/”。
+Object中用户自定义的meta在GetBucket请求时不会返回。 如果因为max-keys的设定无法一次完成listing，返回结果会附加一个 `<NextMarker>` ，提示继续listing可以以此为marker。NextMarker中的值仍在list结果之中。 在做条件查询时，即使marker实际在列表中不存在，返回也从符合marker字母排序的下一个开始打印。如果 max-keys小于0或者大于1000，将返回400 Bad Request错误。错误码：InvalidArgument。 prefix、marker用来实现分页显示效果，参数的长度必须小于1024字节。 如果把prefix设为某个文件夹名，就可以罗列以此prefix开头的文件，即该文件夹下递归的所有的文件和子文件夹。如果再把delimiter设置为 / 时，返回值就只罗列该文件夹下的文件，该文件夹下的子文件名返回在 CommonPrefixes部分，子文件夹下递归的文件和文件夹不被显示。如一个Bucket存在三个Object : fun/test.jpg， fun/movie/001.avi， fun/movie/007.avi。若设定prefix为”fun/” ，则返回三个Object；如果增加设定delimiter为“/”，则返回文件”fun/test.jpg”和前缀”fun/movie/”。
 
 **请求语法**
 
@@ -1192,8 +1428,6 @@ GET / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorizatio
 | max- keys | 字符串 | 否 | 200 | 指定返回Object的最大数。 如果因为max-keys的设定无法一次完成列举，返回结果会附加NextMarker元素作为下一次列举的 marker。 取值：大于0小于1000 默认值：100 |
 | prefix | 字符串 | 否 | fun | 限定返回文件的Key必须以prefix作为前缀。 prefix参数的长度必须小于1024字节。 使用prefix查询时，返回的Key中仍会包含prefix。 如果把prefix设为某个文件夹名，则列举以此Prefix开头的文件，即该文件夹下递归的所有文件和子文件夹。 在设置prefix的基础上，将delimiter设置为正斜线（/）时，返回值中只列举该文件夹下的文件，文件夹下的子文件夹名返回在 CommonPrefixes中，子文件夹下递归的所有文件和文件夹不显示。 例如，一个Bucket中有三个Object ，分别为fun/test.jpg、 fun/movie/001.avi和fun/movie/007.avi。如果设定prefix为 fun/，则返回三个Object；如果在prefix设置为fun/的基础上， 将delimiter设置为正斜线（/），则返回fun/test.jpg和 fun/movie/。 默认值：无 |
 
-对象存储 OSS
-
 | encoding -type | 字符串 | 否 | URL | 对返回的内容进行编码并指定编码的类型。 默认值：无可选值：URL 重要 delimiter、marker、prefix、NextMarker 以及Key使用UTF-8字符。如果delimiter、marker、 prefix、NextMarker以及Key中包含XML 1.0标准不支持的控制字符，您可以通过指定encoding-type对返回结果中的Delimiter、Marker、Prefix、NextMarker以及Key进行编码。 |
 |---|---|---|---|---|
 
@@ -1209,8 +1443,6 @@ GET / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorizatio
 | ETag | 字符串 | 5B3C1A2E053 D763E1B002 CC607C5A0FE 1**** | ETag (Entity Tag) 在每个Object生成时创建，用于标识一个 Object的内容。 对于PutObject请求创建的Object，ETag值是其内容的MD5 值。 对于其他方式创建的Object，ETag值是其内容的UUID。 ETag值可以用于检查Object内容是否发生变化。不建议使用 ETag值作为Object内容的MD5校验数据完整性的依据。 父节点：ListBucketResult.Contents |
 | ID | 字符串 | 0022012**** | Bucket拥有者的用户ID。 父节点：ListBucketResult.Contents.Owner |
 | IsTruncated | 枚举字符串 | false | 请求中返回的结果是否被截断。 返回值：true、false true表示本次没有返回全部结果。 false表示本次已经返回了全部结果。 父节点：ListBucketResult |
-
-对象存储 OSS
 
 | Key | 字符串 | fun/test.jpg | Object的Key。 父节点：ListBucketResult.Contents |
 |---|---|---|---|
@@ -1239,8 +1471,6 @@ GET / HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Fri, 24 Feb 
 ```
 HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Fri, 24 Feb 2012 08:43:27 GMT Content-Type: application/xml Content-Length: 1866 Connection: keep-alive
 ```
-
-对象存储 OSS
 
 ```xml
 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <ListBucketResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”> <Name>oss-example</Name> <Prefix></Prefix> <Marker></Marker> <MaxKeys>100</MaxKeys> <Delimiter></Delimiter> <IsTruncated>false</IsTruncated> <Contents>
@@ -1290,13 +1520,13 @@ Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <ListBucketResult xmlns
 </Contents> </ListBucketResult>
 ```
 
-对象存储 OSS 带prefix参数的请求示例
+带prefix参数的请求示例
 
 ```
 GET /?prefix=fun HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Fri, 24 Feb 2012 08:43:27 GMT Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:BC+oQIXVR2/ZghT7cGa0ykbo****
 ```
 
-返回示例对象存储 OSS
+返回示例
 
 ```xml
 HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Fri, 24 Feb 2012 08:43:27 GMT Content-Type: application/xml Content-Length: 1464 Connection: keep-alive Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <ListBucketResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”> <Name>oss-example</Name> <Prefix>fun</Prefix> <Marker></Marker> <MaxKeys>100</MaxKeys> <Delimiter></Delimiter> <IsTruncated>false</IsTruncated> <Contents>
@@ -1335,7 +1565,7 @@ HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Fri, 24 Feb 201
 </Contents> </ListBucketResult>
 ```
 
-带prefix和delimiter参数的请求示例对象存储 OSS
+带prefix和delimiter参数的请求示例
 
 ```
 GET /?prefix=fun/&delimiter=/ HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Fri, 24 Feb 2012 08:43:27 GMT Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:DNrnx7xHk3sgysx7I8U9I9IY****
@@ -1366,7 +1596,7 @@ HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Fri, 24 Feb 201
 GET /?max-keys=2&marker=test1.txt HTTP/1.1 Host: test-bucket-xxx.oss-cn-shenzhen.aliyuncs.com Accept-Encoding: identity Accept: */* Connection: keep-alive User-Agent: aliyun-sdk-python/2.11.0(Darwin/18.2.0/x86_64;3.4.1) date: Tue, 26 May 2020 08:39:48 GMT authorization: OSS LTAIB1VW9xxxxxxx:MmY11jLlO8UlAqjqHK3Ckp****
 ```
 
-返回示例结果中的NextMarker可以做为下次列举请求的Marker。 对象存储 OSS
+返回示例结果中的NextMarker可以做为下次列举请求的Marker。
 
 ```xml
 HTTP/1.1 200 OK Server: AliyunOSS Date: Tue, 26 May 2020 08:39:48 GMT Content-Type: application/xml Content-Length: 1032 Connection: keep-alive x-oss-request-id: 5ECCD5D4881816373582xxx x-oss-server-time: 3 <?xml version="1.0" encoding="UTF-8"?> <ListBucketResult>
@@ -1405,7 +1635,9 @@ HTTP/1.1 200 OK Server: AliyunOSS Date: Tue, 26 May 2020 08:39:48 GMT Content-Ty
 </ListBucketResult>
 ```
 
-#### GetBucketAcl
+#### 2.5.9 GetBucketAcl
+
+GetBucketACL用来获取某个Bucket的访问权限。
 
 **请求语法**
 
@@ -1415,7 +1647,7 @@ GET /?acl HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authoriz
 
 **请求头**
 
-对象存储 OSS 此接口涉及的公共请求头，请参见公共请求头（Common Request Headers）。
+此接口涉及的公共请求头，请参见公共请求头（Common Request Headers）。
 
 **响应元素**
 
@@ -1450,11 +1682,11 @@ HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 04:11:23 GMT Cont
 </AccessControlPolicy>
 ```
 
-#### GetBucketLocation
+#### 2.5.10 GetBucketLocation
+
+GetBucketLocation用于查看Bucket所属的数据中心位置信息。
 
 **请求语法**
-
-对象存储 OSS
 
 ```
 GET /?location HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1484,17 +1716,15 @@ Get /?location HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 04 May 2012 05
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Fri, 15 Mar 2013 05:31:04 GMT Connection: keep-alive Content-Length: 90 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <LocationConstraint xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>oss-cnhangzhou</LocationConstraint >
 ```
 
-#### GetBucketInfo
+#### 2.5.11 GetBucketInfo
 
-创建时间外网访问Endpoint 内网访问Endpoint Bucket的拥有者信息 Bucket的ACL（AccessControlList）
+GetBucketInfo操作用于查看Bucket的相关信息。 GetBucketInfo操作可查看如下内容： 创建时间外网访问Endpoint 内网访问Endpoint Bucket的拥有者信息 Bucket的ACL（AccessControlList）
 
 **请求语法**
 
 ```
 GET /?bucketInfo HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authorization: SignatureValue
 ```
-
-对象存储 OSS
 
 **请求头**
 
@@ -1505,7 +1735,7 @@ GET /?bucketInfo HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Author
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | BucketInfo | 容器 | 不涉及 | 保存Bucket信息内容的容器。 |
-| Bucket | 容器 |  | 保存Bucket具体信息的容器。 |
+| Bucket | 容器 |   | 保存Bucket具体信息的容器。 |
 | CreationDate | 时间 | 2013-07- 31T10:56:21.000 Z | Bucket创建时间。 |
 | ExtranetEndpoint | 字符串 | oss-cn- hangzhou.aliyunc s.com | 外网Endpoint。 |
 | IntranetEndpoint | 字符串 | oss-cn-hangzhou- internal.aliyuncs. com | 内网Endpoint。 |
@@ -1525,7 +1755,7 @@ GET /?bucketInfo HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Author
 Get /?bucketInfo HTTP/1.1 Host: BucketName.oss.example.com Date: Sat, 12 Sep 2015 07:51:28 GMT Authorization: OSS q***c: B***=
 ```
 
-成功获取Bucket信息的返回示例： 对象存储 OSS
+成功获取Bucket信息的返回示例：
 
 ```xml
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Sat, 12 Sep 2015 07:51:28 GMT Connection: keep-alive Content-Length: 531 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <BucketInfo>
@@ -1558,7 +1788,7 @@ HTTP/1.1 404 x-oss-request-id: 5***B Date: Sat, 12 Sep 2015 07:51:28 GMT Connect
 </Error>
 ```
 
-获取没有权限访问的Bucket信息的返回示例： 对象存储 OSS
+获取没有权限访问的Bucket信息的返回示例：
 
 ```xml
 HTTP/1.1 403 x-oss-request-id: 5***C Date: Sat, 12 Sep 2015 07:51:28 GMT Connection: keep-alive Content-Length: 209 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <Error>
@@ -1569,7 +1799,9 @@ HTTP/1.1 403 x-oss-request-id: 5***C Date: Sat, 12 Sep 2015 07:51:28 GMT Connect
 </Error>
 ```
 
-#### GetBucketLogging
+#### 2.5.12 GetBucketLogging
+
+GetBucketLogging用于查看Bucket的访问日志配置情况。
 
 **请求语法**
 
@@ -1598,7 +1830,7 @@ GET /?logging HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Auth
 Get /?logging HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 04 May 2012 05:31:04 GMT Authorization: OSS q***c:c***=
 ```
 
-已设置LOG规则的返回示例： 对象存储 OSS
+已设置LOG规则的返回示例：
 
 ```xml
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Fri, 04 May 2012 05:31:04 GMT Connection: keep-alive Content-Length: 210 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
@@ -1615,7 +1847,9 @@ HTTP/1.1 200 x-oss-request-id: 5***B Date: Fri, 04 May 2012 05:31:04 GMT Connect
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Fri, 04 May 2012 05:31:04 GMT Connection: keep-alive Content-Length: 110 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”> </BucketLoggingStatus>
 ```
 
-#### GetBucketWebsite
+#### 2.5.13 GetBucketWebsite
+
+GetBucketWebsite操作用于查看Bucket的静态网站托管状态。
 
 **请求语法**
 
@@ -1634,8 +1868,6 @@ GET /?website HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Auth
 | ErrorDocument | 容器 | 不涉及 | 子元素Key的父元素。 |
 | IndexDocument | 容器 | 不涉及 | 子元素Suffix的父元素。 |
 | Key | 字符串 | error.html | 返回404错误时使用的文件名。 |
-
-对象存储 OSS
 
 | Suffix | 字符串 | index.html | 返回目录URL时添加的索引文件名，不要为空，也不要包含正斜线（/）。例如索引文件设置为index.html，则访问 regionid.example.com/mybucket/mydir/的时候相当于访问regionid.example.com/mybucket/index.html。 |
 |---|---|---|---|
@@ -1672,9 +1904,9 @@ HTTP/1.1 404 x-oss-request-id: 5***B Date: Thu, 13 Sep 2012 07:56:46 GMT Connect
 </Error>
 ```
 
-#### GetBucketReferer
+#### 2.5.14 GetBucketReferer
 
-对象存储 OSS GetBucketReferer操作用于查看Bucket的Referer相关配置。
+GetBucketReferer操作用于查看Bucket的Referer相关配置。
 
 **请求语法**
 
@@ -1703,7 +1935,7 @@ GET /?referer HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authoriza
 Get /?referer HTTP/1.1 Host: BucketName.oss.example.com Date: Thu, 13 Sep 2012 07:51:28 GMT Authorization: OSS q***: B***=
 ```
 
-已设置Referer规则的返回示例： 对象存储 OSS
+已设置Referer规则的返回示例：
 
 ```xml
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Thu, 13 Sep 2012 07:51:28 GMT Connection: keep-alive Content-Length: 218 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer >
@@ -1722,7 +1954,7 @@ HTTP/1.1 200 x-oss-request-id: 5***B Date: Thu, 13 Sep 2012 07:51:28 GMT Connect
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Thu, 13 Sep 2012 07:56:46 GMT Connection: keep-alive Content-Length: 308 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer > < RefererList /> </RefererConfiguration>
 ```
 
-#### GetBucketLifecycle
+#### 2.5.15 GetBucketLifecycle
 
 GetBucketLifecycle用于查看Bucket的Lifecycle配置。
 
@@ -1738,8 +1970,6 @@ GET /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authori
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-对象存储 OSS
 
 | CreatedBeforeD ate | 字符串 | 2002-10- 11T00:00:00.00 0Z | 指定一个日期，OSS会对最后更新时间早于该日期的数据执行生命周期规则。日期必须服从ISO8601的格式，且要求是 UTC的零点。 例如：2002-10-11T00:00:00.000Z，表示将最后更新时间早于2002-10-11T00:00:00.000Z 的Object删除或转换成其他存储类型，等于或晚于这个时间的Object不会被删除或转储。 |
 |---|---|---|---|
@@ -1760,7 +1990,7 @@ GET /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authori
 Get /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Date: Mon, 14 Apr 2014 01:17:29 GMT Authorization: OSS q***:c***=
 ```
 
-已设置Lifecycle的返回示例： 对象存储 OSS
+已设置Lifecycle的返回示例：
 
 ```xml
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:29 GMT Connection: keep-alive Content-Length: 255 Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <LifecycleConfiguration> <Rule>
@@ -1770,7 +2000,9 @@ HTTP/1.1 200 x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:29 GMT Connect
  <Expiration>
  <Days>1</Days>
  </Expiration>
+ <AbortMultipartUpload>
  <Days>1</Days>
+ </AbortMultipartUpload>
  </Rule>
  <Rule>
  <ID>rule2</ID>
@@ -1779,7 +2011,9 @@ HTTP/1.1 200 x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:29 GMT Connect
  <Expiration>
  <CreatedBeforeDate>2014-10-11T00:00:00.000Z</CreatedBeforeDate>
  </Expiration>
+ <AbortMultipartUpload>
  <CreatedBeforeDate>2014-10-11T00:00:00.000Z</CreatedBeforeDate>
+ </AbortMultipartUpload>
  </Rule>
 </LifecycleConfiguration>
 ```
@@ -1796,9 +2030,9 @@ HTTP/1.1 404 x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:29 GMT Connect
 </Error>
 ```
 
-#### GetBucketTags
+#### 2.5.16 GetBucketTags
 
-对象存储 OSS
+GetBucketTags用来获取Bucket的标签信息。
 
 **请求语法**
 
@@ -1828,7 +2062,7 @@ GET /?tagging Host: BucketName.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Autho
 GET /?tagging Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Tue, 20 Dec 2018 13:09:13 GMT Authorization: OSS qn6qrrqxo2oawuk53otf****:ceOEyZavKY4QcjoUWYSpYbJ3****
 ```
 
-返回示例对象存储 OSS
+返回示例
 
 ```xml
 200 (OK) content-length: 237 server: AliyunOSS x-oss-request-id: 5C1B2D24B90AD5490CFE368E date: Thu, 20 Dec 2018 13:12:21 GMT content-type: application/xml <?xml version="1.0" encoding="UTF-8"?> <Tagging>
@@ -1845,7 +2079,9 @@ GET /?tagging Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Tue, 20 Dec 2
 </Tagging>
 ```
 
-#### DeleteBucket
+#### 2.5.17 DeleteBucket
+
+DeleteBucket用于删除某个Bucket。
 
 **请求语法**
 
@@ -1873,13 +2109,15 @@ DELETE / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authoriza
 DELETE / HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 05:31:04 GMT Authorization: OSS q***:c***=
 ```
 
-返回示例： 对象存储 OSS
+返回示例：
 
 ```
 HTTP/1.1 204 No Content x-oss-request-id: 534B371674E88A4D8906008B Date: Fri, 24 Feb 2012 05:31:04 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-#### DeleteBucketLogging
+#### 2.5.18 DeleteBucketLogging
+
+DeleteBucketLogging操作用于关闭Bucket访问日志记录功能。
 
 **请求语法**
 
@@ -1909,15 +2147,15 @@ DELETE /?logging HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 
 HTTP/1.1 204 No Content x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 05:35:24 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-#### DeleteBucketWebsite
+#### 2.5.19 DeleteBucketWebsite
+
+DeleteBucketWebsite用于关闭Bucket的静态网站托管模式。
 
 **请求语法**
 
 ```
 DELETE /?website HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
-
-对象存储 OSS
 
 **请求头**
 
@@ -1941,7 +2179,9 @@ DELETE /?website HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 
 HTTP/1.1 204 No Content x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 05:45:34 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-#### DeleteBucketLifecycle
+#### 2.5.20 DeleteBucketLifecycle
+
+DeleteBucketLifecycle来删除指定Bucket的生命周期配置。
 
 **请求语法**
 
@@ -1965,13 +2205,15 @@ DELETE /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Auth
 DELETE /?lifecycle HTTP/1.1 Host: BucketName.oss.example.com Date: Mon, 14 Apr 2014 01:17:35 GMT Authorization: OSS q***:6***=
 ```
 
-返回示例： 对象存储 OSS
+返回示例：
 
 ```
 HTTP/1.1 204 No Content x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:35 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-#### DeleteBucketTags
+#### 2.5.21 DeleteBucketTags
+
+DeleteBucketTags接口用于删除Bucket的标签。
 
 **请求语法**
 
@@ -2003,13 +2245,13 @@ HTTP/1.1 204 No Content x-oss-request-id: 5C22E0EFD127F6810B1A92A8 Date: Tue, 25
 DELETE /?tagging=k1,k2 HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Tue, 25 Dec 2018 17:35:24 GMT Authorization: OSS qn6qrrqxo2oawuk53otf****:6ZVHOehYzxoC1yxRydPQs/Cn****
 ```
 
-返回示例对象存储 OSS
+返回示例
 
 ```
 HTTP/1.1 204 No Content x-oss-request-id: 5C22E0EFD127F6810B1A92A8 Date: Tue, 25 Dec 2018 17:35:24 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-#### PutBucketPolicy
+#### 2.5.22 PutBucketPolicy
 
 PutBucketPolicy接口用于为指定的存储空间（Bucket）设置授权策略（Policy)。
 
@@ -2031,13 +2273,23 @@ PUT /?policy Host: BucketName.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Author
 
 请求示例
 
+```
+PUT /?policy Content-Length: 230 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Thu, 21 Feb 2019 12:51:09 GMT Authorization: OSS qn6q**************:77Dv****************
+```
+
+`{`
+
 ```json
-PUT /?policy Content-Length: 230 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Thu, 21 Feb 2019 12:51:09 GMT Authorization: OSS qn6q**************:77Dv**************** {
    "Version":"1",
    "Statement":[
-   {
+```
+
+`{`
+
+```json
      "Action":[
        "oss:PutObject",
+       "oss:GetObject"
 ```
 
 `],`
@@ -2046,22 +2298,15 @@ PUT /?policy Content-Length: 230 Host: oss-example.oss-cn-hangzhou.aliyuncs.com 
     "Effect":"Deny",
     "Principal":["1234567890"],
     "Resource":["acs:oss:*:1234567890:*/*"]
-   }
 ```
 
-]
-
-```
- }
-```
-
-返回示例对象存储 OSS
+`}` `]` `}` 返回示例
 
 ```
 HTTP/1.1 200 OK content-length: 0 server: AliyunOSS x-oss-server-time: 87 connection: keep-alive x-oss-request-id: 5C6E9EBD5CC26B28EE41**** date: Thu, 21 Feb 2019 12:51:09 GMT
 ```
 
-#### GetBucketPolicy
+#### 2.5.23 GetBucketPolicy
 
 GetBucketPolicy用于获取指定存储空间（Bucket）的权限策略（Policy）。
 
@@ -2089,13 +2334,23 @@ GET /?policy Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Tue, 13 Nov 20
 
 返回示例
 
+```
+HTTP/1.1 200 OK server: AliyunOSS x-oss-server-time: 24 connection: keep-alive x-oss-request-id: 5C6E9847BE0EBCD13DA90C11 date: Thu, 21 Feb 2019 12:23:35 GMT content-type: application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK server: AliyunOSS x-oss-server-time: 24 connection: keep-alive x-oss-request-id: 5C6E9847BE0EBCD13DA90C11 date: Thu, 21 Feb 2019 12:23:35 GMT content-type: application/json {
   "Version":"1",
   "Statement":[
-    {
+```
+
+`{`
+
+```json
       "Action":[
         "oss:PutObject",
+        "oss:GetObject"
 ```
 
 `],`
@@ -2104,16 +2359,9 @@ HTTP/1.1 200 OK server: AliyunOSS x-oss-server-time: 24 connection: keep-alive x
       "Effect":"Deny",
       "Principal":["1234567890"],
       "Resource":["acs:oss:*:1234567890:*/*"]
-    }
 ```
 
-]
-
-```
-}
-```
-
-对象存储 OSS
+`]`
 
 **错误码**
 
@@ -2121,13 +2369,13 @@ HTTP/1.1 200 OK server: AliyunOSS x-oss-server-time: 24 connection: keep-alive x
 |---|---|---|
 | NoSuchBucketPolicy | 404 | 请求的Bucket没有配置权限策略 （Policy）。 |
 
-#### GetBucketPolicyStatus
+#### 2.5.24 GetBucketPolicyStatus
 
 调用GetBucketPolicyStatus接口查看当前Bucket Policy是否允许公共访问。
 
 **注意事项**
 
-阿里云账号默认拥有查看当前Bucket Policy是否允许公共访问的权限。如果您希望通过RAM用户或者STS的方式进
+阿里云账号默认拥有查看当前Bucket Policy是否允许公共访问的权限。如果您希望通过RAM用户或者STS的方式进行查看，您必须拥有 `oss:GetBucketPolicyStatus` 权限。
 
 **请求语法**
 
@@ -2152,7 +2400,7 @@ GET /?policyStatus HTTP/1.1 Date: GMT Date Content-Length：ContentLength Conten
 
 **示例**
 
-请求示例对象存储 OSS
+请求示例
 
 ```
 GET /?policyStatus HTTP/1.1 Date: Mon, 19 Feb 2024 08:40:17 GMT Content-Length：0 Content-Type: application/xml Host: examplebucket.oss-cn-hangzhou.aliyuncs.com Authorization: OSS qn6q**************:77Dv****************
@@ -2166,7 +2414,7 @@ HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Mon, 19 Feb 202
 </PolicyStatus>
 ```
 
-#### DeleteBucketPolicy
+#### 2.5.25 DeleteBucketPolicy
 
 DeleteBucketPolicy用于删除指定存储空间（Bucket）的权限策略（Policy）。
 
@@ -2198,13 +2446,13 @@ DELETE /?policy Host: oss-example.oss-cn-hangzhou.aliyuncs.com Date: Thu, 21 Feb
 204 (No Content) content-length: 0 server: AliyunOSS x-oss-server-time: 31 connection: keep-alive x-oss-request-id: 5C6E9FAF31A13327124B**** date: Thu, 21 Feb 2019 12:55:11 GMT
 ```
 
-#### GetBucketStat
+#### 2.5.26 GetBucketStat
 
-对象存储 OSS GetBucketStat用于获取指定存储空间（Bucket）的存储容量以及文件（Object）数量。
+GetBucketStat用于获取指定存储空间（Bucket）的存储容量以及文件（Object）数量。
 
 **注意事项**
 
-调用该接口获取的数据并非是实时数据，延时可能超过一个小时。 调用该接口获取到的存储信息的时间点不保证是最新的，即后一次调用该接口返回的LastModifiedTime字段值可能比前一次调用该接口返回的LastModifiedTime字段值小。
+调用该接口时需要拥有 `oss:GetBucketStat` 权限。 调用该接口获取的数据并非是实时数据，延时可能超过一个小时。 调用该接口获取到的存储信息的时间点不保证是最新的，即后一次调用该接口返回的LastModifiedTime字段值可能比前一次调用该接口返回的LastModifiedTime字段值小。
 
 **请求语法**
 
@@ -2237,7 +2485,7 @@ GET /?stat HTTP/1.1 Host: BucketName.oss-cn-hangzhou.aliyuncs.com Date: GMT Date
 GET /?stat HTTP/1.1 Host: examplebucket.oss-cn-hangzhou.aliyuncs.com Date: Tue, 28 Dec 2021 01:17:29 GMT Authorization: OSS qn6q**************:77Dv****************
 ```
 
-返回示例对象存储 OSS
+返回示例
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <BucketStat>
@@ -2247,7 +2495,9 @@ GET /?stat HTTP/1.1 Host: examplebucket.oss-cn-hangzhou.aliyuncs.com Date: Tue, 
 </BucketStat>
 ```
 
-#### PutCname
+#### 2.5.27 PutCname
+
+调用PutCname接口为某个存储空间（Bucket）绑定自定义域名。
 
 **请求语法**
 
@@ -2271,8 +2521,6 @@ POST /?cname&comp=add HTTP/1.1 Host: BucketName.oss-cn-hangzhou.aliyuncs.com Con
 | Cname | 容器 | 是 | 不涉及 | Cname信息的容器。 父节点： BucketCnameConfi guration 子节点：Domain |
 | Domain | 字符串 | 是 | example.com | 自定义域名。 父节点：Cname 子节点：无 |
 
-对象存储 OSS
-
 | CertificateConfigur ation | 容器 | 否 | 不涉及 | 证书配置的容器。 父节点：Cname 子节点：CertId、Delete Certificate |
 |---|---|---|---|---|
 | CertId | 字符串 | 否 | 493****-cn- hangzhou | 证书ID。 父节点： CertificateConfigur ation 子节点：无 |
@@ -2294,11 +2542,9 @@ POST /?cname&comp=add HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Co
 </BucketCnameConfiguration>
 ```
 
-对象存储 OSS 绑定证书将基于Bucket自定义域名生成的证书绑定到自定义域名。
+绑定证书将基于Bucket自定义域名生成的证书绑定到自定义域名。
 
-**重要**
-
-请确保已将证书上传到数据证书管理服务中并获取证书ID。
+> **重要：** 请确保已将证书上传到数据证书管理服务中并获取证书ID。
 
 ```xml
 POST /?cname&comp=add HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Content-Type: application/xml Content-Length: 186 Date: Thu, 24 Sep 2015 15:39:12 GMT Authorization: SignatureValue <BucketCnameConfiguration>
@@ -2336,14 +2582,12 @@ content-length: 0 x-oss-console-auth: success server: AliyunOSS x-oss-server-tim
 |---|---|---|
 | InvalidArgument | 400 | Cname格式错误，您可以在返回XML中查看具体错误字段和原因。 |
 
-对象存储 OSS
-
 | CnameDenied | 403 | 域名已被占用。 |
 |---|---|---|
 | CnameIsForbidden | 403 | 该域名为OSS内部保留域名，无法绑定。 |
 | CnameAlreadyExists | 409 | 返回此错误的可能原因如下： 该域名已绑定至当前账号下的另一个Bucket。 问题现象：返回错误信息中的CnameType为 CNAME OSS。 _ 该域名是图片处理域名。 问题现象：返回错误信息中的CnameType为 CNAME IMG。 _ 针对以上问题，您需要解除域名绑定。 |
 
-#### ListCname
+#### 2.5.28 ListCname
 
 调用ListCname接口用于查询某个存储空间（Bucket）下绑定的所有的自定义域名（Cname）列表。
 
@@ -2369,8 +2613,6 @@ GET /?cname HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Content-Type
 | Bucket | 字符串 | examplebucket | 待获取已绑定Cname列表的Bucket名称。 父节点：ListCnameResult 子节点：无 |
 | Owner | 字符串 | testowner | Bucket Owner名称。 父节点：ListCnameResult 子节点：无 |
 
-对象存储 OSS
-
 | Cname | 容器 | 不涉及 | Cname信息列表的容器。 父节点：ListCnameResult 子节点：Domain、LastModified、Status和 Certificate |
 |---|---|---|---|
 | Domain | 字符串 | example.com | 自定义域名。 父节点：Cname 子节点：无 |
@@ -2380,8 +2622,6 @@ GET /?cname HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Content-Type
 | Type | 字符串 | CAS | 证书来源。取值为： CAS：证书中心。 Upload：旧版证书托管中用户自主上传的证书。 父节点：Certificate 子节点：无 |
 | CertId | 字符串 | 493****-cn- hangzhou | 证书ID。 父节点：Certificate 子节点：无 |
 | Status | 字符串 | Enabled | 证书状态。取值如下： Enabled：使用证书。 Disabled：未使用证书。 父节点：Certificate 子节点：无 |
-
-对象存储 OSS
 
 | CreationDate | 字符串 | Wed, 15 Sep 2021 02:35:06 GMT | 证书绑定时间。 父节点：Certificate 子节点：无 |
 |---|---|---|---|
@@ -2397,10 +2637,10 @@ GET /?cname HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Content-Type
 GET /?cname HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com Content-Type: application/xml Content-Length: 186 Date: Tues, 11 May 2022 11:39:12 GMT Authorization: OSS qn6q**************:77Dv****************
 ```
 
-返回示例对象存储 OSS
+返回示例
 
 ```xml
-content-length: 1855 x-oss-console-auth: success server: AliyunOSS x-oss-server-time: 7 connection: keep-alive x-oss-request-id: 614169F1AE63BD37355CA12B date: Tues, 11 May 2022 11:39:12 GMT content-type: application/xml <?xml version="1.0" encoding="UTF-8"?>
+content-length: 1855 x-oss-console-auth: success server: AliyunOSS x-oss-server-time: 7 connection: keep-alive x-oss-request-id: 614169F1AE63BD37355CA12B date: Tues, 11 May 2022 11:39:12 GMT content-type: application/xml <?xml version="1.0" encoding="UTF-8"?> <ListCnameResult>
   <Bucket>targetbucket</Bucket>
   <Owner>testowner</Owner>
   <Cname>
@@ -2427,6 +2667,7 @@ content-length: 1855 x-oss-console-auth: success server: AliyunOSS x-oss-server-
     <LastModified>2021-09-15T02:50:34.000Z</LastModified>
     <Status>Enabled</Status>
   </Cname>
+</ListCnameResult>
 ```
 
 **错误码**
@@ -2436,13 +2677,11 @@ content-length: 1855 x-oss-console-auth: success server: AliyunOSS x-oss-server-
 | AccessDenied | 403 | 没有调用ListCname接口的权限。仅Bucket拥有者以及被授予 oss:ListCname 权限的用户可以查询当前Bucket下绑定的所有Cname列表。 |
 | NoSuchCname | 404 | 该Bucket未绑定Cname。 |
 
-#### DeleteCname
+#### 2.5.29 DeleteCname
 
 调用DeleteCname接口删除某个存储空间（Bucket）已绑定的Cname。
 
 **请求语法**
-
-对象存储 OSS
 
 ```
 POST /?cname&comp=delete HTTP/1.1 Host: BucketName.oss-cn-hangzhou.aliyuncs.com Content-Type: application/xml Content-Length: 186 Date: GMT Date Authorization: SignatureValue
@@ -2476,7 +2715,7 @@ POST /?cname&comp=delete HTTP/1.1 Host: oss-example.oss-cn-hangzhou.aliyuncs.com
 </BucketCnameConfiguration>
 ```
 
-返回示例对象存储 OSS
+返回示例
 
 ```
 HTTP/1.1 200 OK x-oss-request-id: 5C1B138A109F4E405B2D Date: Mon, 26 Jul 2021 13:08:38 GMT Content-Length: 118 Content-Type: application/xml Connection: keep-alive Server: AliyunOSS
@@ -2489,7 +2728,9 @@ HTTP/1.1 200 OK x-oss-request-id: 5C1B138A109F4E405B2D Date: Mon, 26 Jul 2021 13
 | AccessDenied | 403 | 没有调用DeleteCname接口的权限。仅Bucket拥有者以及被授予 oss:DeleteCname 权限的用户可以删除当前Bucket 下已绑定的Cname。 |
 | NoSuchCname | 404 | 该Bucket未绑定Cname。 |
 
-#### PutBucketHttpsConfig
+#### 2.5.30 PutBucketHttpsConfig
+
+调用PutBucketHttpsConfig接口为Bucket设置TLS版本。
 
 **请求语法**
 
@@ -2513,8 +2754,6 @@ PUT /?httpsConfig HTTP/1.1 Date: GMT Date Authorization: SignatureValue Host: Bu
 |---|---|---|---|---|
 | HttpsConfiguration | 容器 | 是 | 不涉及 | HTTPS配置的容器。 父节点：无 |
 | TLS | 容器 | 是 | 不涉及 | TLS版本配置的容器。 父节点：HttpsConfiguration |
-
-对象存储 OSS
 
 | Enable | 布尔型 | 是 | true | 是否为Bucket开启TLS版本设置。取值如下： true：开启TLS版本设置。 false：关闭TLS版本设置。 父节点：TLS |
 |---|---|---|---|---|
@@ -2544,7 +2783,7 @@ PUT /?httpsConfig HTTP/1.1 Date: Thu, 17 Apr 2025 08:40:17 GMT Authorization: OS
 HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Wed, 16 Aug 2023 15:56:37 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### GetBucketHttpsConfig
+#### 2.5.31 GetBucketHttpsConfig
 
 调用GetBucketHttpsConfig接口查看Bucket的TLS版本配置。
 
@@ -2553,8 +2792,6 @@ HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Wed, 16 Aug 202
 ```
 GET /?httpsConfig HTTP/1.1 Host: BucketName.oss.aliyuncs.com Date: GMT Date Authorization: SignatureValue
 ```
-
-对象存储 OSS
 
 **请求头**
 
@@ -2593,21 +2830,21 @@ HTTP/1.1 200 OK x-oss-request-id: 534B371674E88A4D8906**** Date: Sat, 8 May 2021
 </HttpsConfiguration>
 ```
 
-### 关于Object的操作
+### 2.6 关于Object的操作
 
-#### PutObject
+#### 2.6.1 PutObject
 
-对象存储 OSS
+PutObject用于简单上传文件（Object）。
 
 **请求语法**
 
 ```
-Content-Length：ContentLength Content-Type: ContentType Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
+PUT /ObjectName HTTP/1.1 Content-Length：ContentLength Content-Type: ContentType Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
 **注意事项**
 
-添加的Object大小不能超过5 GiB。 默认情况下，如果已经存在同名Object且对该Object有访问权限，则新添加的Object将覆盖原有的Object，并成功返回200 OK。 OSS没有文件夹的概念，所有元素都是以文件来存储，但您可以通过创建一个以正斜线（/）结尾，大小为0的 Object来创建模拟文件夹。 为确保数据完整性，OSS提供多种方式对数据的MD5值进行校验。如需通过Content-MD5进行MD5验证，可将其加入请求头中。在请求中指定Content-MD5头后，OSS会计算所发送数据的MD5值，并与请求中Conent-MD5 的值进行比较。如二者不一致，则操作失败并返回400（Bad Request）错误。
+调用PutObject接口时，有如下注意事项： 添加的Object大小不能超过5 GiB。 默认情况下，如果已经存在同名Object且对该Object有访问权限，则新添加的Object将覆盖原有的Object，并成功返回200 OK。 OSS没有文件夹的概念，所有元素都是以文件来存储，但您可以通过创建一个以正斜线（/）结尾，大小为0的 Object来创建模拟文件夹。 为确保数据完整性，OSS提供多种方式对数据的MD5值进行校验。如需通过Content-MD5进行MD5验证，可将其加入请求头中。在请求中指定Content-MD5头后，OSS会计算所发送数据的MD5值，并与请求中Conent-MD5 的值进行比较。如二者不一致，则操作失败并返回400（Bad Request）错误。
 
 **请求头**
 
@@ -2618,8 +2855,6 @@ Content-Length：ContentLength Content-Type: ContentType Host: BucketName.region
 | Content- Encoding | 字符串 | 否 | utf-8 | 指定该Object被下载时的内容编码格式。更多信息请参见RFC2616。 类型：字符串默认值：无 |
 | Content- MD5 | 字符串 | 否 | uk8Os/oSh U2MMhcajp eAVA== | 根据协议RFC 1864对消息内容（不包括头部）计算MD5 值获得128比特位数字，对该数字进行Base64编码为一个消息的Content-MD5值。该请求头可用于消息合法性的检查（消息内容是否与发送时一致）。虽然该请求头是可选项，OSS建议您使用该请求头进行端到端检查。 |
 | Expires | 字符串 | 否 | Fri, 28 Feb 2012 05:38:42 GMT | 过期时间。更多信息请参见RFC2616。 说明 OSS不会对这个值进行限制和验证。 |
-
-对象存储 OSS
 
 | x-oss- server- side- encryption | 字符串 | 否 | KMS | 创建Object时，指定服务器端加密方式。 取值：AES256、KMS或SM4 指定此参数后，在响应头中会返回此参数，OSS会对简单上传的Object进行加密编码存储。当下载该Object时，响应头中会包含x-oss-server-side-encryption，且该值会被设置成此Object的加密算法。 |
 |---|---|---|---|---|
@@ -2645,9 +2880,7 @@ PUT /oss.jpg HTTP/1.1 Host: ***.regionid.example.com Cache-control: no-cache Exp
 HTTP/1.1 200 OK Server: AliyunOSS Date: Sat, 21 Nov 2015 18:52:34 GMT Content-Length: 0 Connection: keep-alive x-oss-request-id: 5***A x-oss-bucket-version: 1***9 ETag: "A***2"
 ```
 
-对象存储 OSS
-
-#### GetObject
+#### 2.6.2 GetObject
 
 GetObject用于获取某个Object，此操作要求您对该Object有读权限。
 
@@ -2658,7 +2891,7 @@ GetObject通过range参数可以支持断点续传，对于比较大的Object建
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue Range: bytes=ByteRange(可选)
+GET /ObjectName HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue Range: bytes=ByteRange(可选)
 ```
 
 **请求参数**
@@ -2673,8 +2906,6 @@ OSS支持在发送GET请求时，可以自定义OSS返回请求中的一些Heade
 | response- cache-control | 字符串 | 否 | No-cache | 设置OSS返回请求的cache-control头。 类型：字符串默认值：无 |
 | response- content- disposition | 字符串 | 否 | attachment; filename:test ing.txt | 设置OSS返回请求的content-disposition头。 类型：字符串默认值：无 |
 | response- content- encoding | 字符串 | 否 | utf-8 | 设置OSS返回请求的content-encoding头。 类型：字符串默认值：无 |
-
-对象存储 OSS
 
 **请求头**
 
@@ -2702,7 +2933,7 @@ OSS支持在发送GET请求时，可以自定义OSS返回请求中的一些Heade
 GET /oss.jpg HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 06:38:30 GMT Authorization: OSS q***:U***=
 ```
 
-返回示例： 对象存储 OSS
+返回示例：
 
 ```
 HTTP/1.1 200 OK x-oss-request-id: 3***1 x-oss-object-type: Normal Date: Fri, 24 Feb 2012 06:38:30 GMT Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT ETag: "5***E " Content-Type: image/jpg Content-Length: 344606 Server: AliyunOSS [344606 bytes of object data]
@@ -2726,13 +2957,13 @@ HTTP/1.1 206 Partial Content x-oss-request-id: 2***9 x-oss-object-type: Normal D
 GET /oss.jpg?response-expires=Thu%2C%2001%20Feb%202012%2017%3A00%3A00%20GMT& response-content-t ype=text&response-cache-control=No-cache&response-contentdisposition=attachment%253B%2520filename%253Dtesting.txt&response-content-encoding=utf-8&respon se-content-language=%E4%B8%AD%E6%96%87 HTTP/1.1 Host: ***.regionid.example.com: Date: Fri, 24 Feb 2012 06:09:48 GMT
 ```
 
-返回示例： 对象存储 OSS
+返回示例：
 
 ```
 HTTP/1.1 200 OK x-oss-request-id: 5***1 x-oss-object-type: Normal Date: Fri, 24 Feb 2012 06:09:48 GMT Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT ETag: "5***E " Content-Length: 344606 Connection: keep-alive Content-disposition: attachment; filename:testing.txt Content-language: 中文 Content-encoding: utf-8 Content-type: text Cache-control: no-cache Expires: Fri, 24 Feb 2012 17:00:00 GMT Server: AliyunOSS [344606 bytes of object data]
 ```
 
-#### CopyObject
+#### 2.6.3 CopyObject
 
 CopyObject接口用于在同一个存储空间（Bucket ）内或同地域的不同Bucket之间拷贝文件（Object）。 拷贝一个在OSS上已经存在的Object成另外一个Object，可以发送一个PUT请求给OSS，并在PUT请求头中添加元素x-oss-copy-source来指定拷贝源。OSS会自动判断出这是一个Copy操作，并直接在服务器端执行该操作。如果拷贝成功，则返回新的Object信息给用户。该操作适用于拷贝小于1 GiB的文件，当拷贝一个大于1 GiB的文件时， 必须使用Multipart Upload操作，具体请参见UploadPartCopy。
 
@@ -2752,8 +2983,6 @@ PUT /DestObjectName HTTP/1.1 Host: DestBucketName.regionid.example.com Date: GMT
 |---|---|---|---|---|
 | x-oss-copy- source | 字符串 | 是 | /oss- example/ oss.jpg | 指定拷贝的源地址。 默认值：无 |
 
-对象存储 OSS
-
 | x-oss-copy- source-if- match | 字符串 | 否 | 5B3C1A2 E053D76 3E1B002 CC607C5* *** | 如果源Object的ETag值和您提供的ETag相等，则执行拷贝操作，并返回200 OK；否则返回412 Precondition Failed错误码（预处理失败）。 默认值：无 |
 |---|---|---|---|---|
 | x-oss-copy- source-if-none- match | 字符串 | 否 | 5B3C1A2 E053D76 3E1B002 CC607C5* *** | 如果源Object的ETag值和您提供的ETag不相等，则执行拷贝操作，并返回200 OK；否则返回304 Not Modified错误码（预处理失败）。 默认值：无 |
@@ -2762,8 +2991,6 @@ PUT /DestObjectName HTTP/1.1 Host: DestBucketName.regionid.example.com Date: GMT
 | x-oss- metadata- directive | 字符串 | 否 | COPY | 指定如何设置目标Object的元信息。取值如下： COPY（默认值）：复制源Object的元数据到目标 Object。 OSS不会复制源Object的x-oss-server-side- encryption属性配置到目标Object。目标 Object的服务器端加密编码方式取决于当前拷贝操作是否指定了x-oss-server-side- encryption。 REPLACE：忽略源Object的元数据，直接采用请求中指定的元数据。 |
 | x-oss-server- side-encryption | 字符串 | 否 | AES256 | 指定OSS创建目标Object时，服务器端熵编码加密算法 。 取值：AES256 、KMS 如果拷贝操作中未指定x-oss-server-side- encryption，则无论源Object是否进行过服务器端加密编码，拷贝后的目标Object均不进行服务器端加密编码。 如果拷贝操作中指定了x-oss-server-side- encryption，则无论源Object是否进行过服务器端加密编码，拷贝后的目标Object均会进行服务器端加密编码。并且拷贝操作的响应头中会包含x-oss-server-side-encryption，值为目标Object的加密算法。在目标Object被下载时， 响应头中也会包含x-oss-server-side- encryption，值为该Object的加密算法。 |
 | x-oss-server- side- encryption- key-id | 字符串 | 否 | 9468da86 -3509- 4f8d- a61e- 6eab1eac **** | 表示KMS托管的用户主密钥。 该参数仅在x-oss-server-side-encryption为 KMS时有效。 |
-
-对象存储 OSS
 
 | x-oss-object- acl | 字符串 | 否 | private | 指定OSS创建目标Object时的访问权限。 取值：public-read、private、public-read- write、default。 |
 |---|---|---|---|---|
@@ -2796,15 +3023,16 @@ PUT /copy_oss.jpg HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Content-Type: application/xml Content-Length: 193 Connection: keep-alive Date: Fri, 24 Feb 2012 07:18:48 GMT Server: AliyunOSS <?xml version="1.0" encoding="UTF-8"?> <CopyObjectResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
  <LastModified>Fri, 24 Feb 2012 07:18:48 GMT</LastModified>
  <ETag>"5***E"</ETag>
+</CopyObjectResult>
 ```
 
-#### AppendObject
+#### 2.6.4 AppendObject
 
-对象存储 OSS AppendObject以追加写的方式上传文件。通过AppendObject操作创建的Object类型为Appendable Object，而
+AppendObject以追加写的方式上传文件。通过AppendObject操作创建的Object类型为Appendable Object，而通过PutObject上传的Object是Normal Object。
 
 **注意事项**
 
-不能对一个非Appendable Object进行AppendObject操作。例如，已经存在一个同名Normal Object 时，AppendObject调用返回409，错误码ObjectNotAppendable。 对一个已经存在的Appendable Object进行PutObject操作，那么该Appendable Object会被新的Object覆盖， 类型变为Normal Object。 HeadObject操作会返回x-oss-object-type，用于表明Object的类型。对于Appendable Object来说，该值为 Appendable。对Appendable Object，HeadObject也会返回上述的x-oss-next-append-position和x-osshash-crc64ecma。 GetBucket（List Objects）请求的响应XML中，会把Appendable Object的Type设为Appendable 不能使用CopyObject来拷贝一个Appendable Object，也不能改变它的服务器端加密的属性。可以使用 URL参数append和position均为CanonicalizedResource，需要包含在签名中。
+不能对一个非Appendable Object进行AppendObject操作。例如，已经存在一个同名Normal Object 时，AppendObject调用返回409，错误码ObjectNotAppendable。 对一个已经存在的Appendable Object进行PutObject操作，那么该Appendable Object会被新的Object覆盖， 类型变为Normal Object。 HeadObject操作会返回x-oss-object-type，用于表明Object的类型。对于Appendable Object来说，该值为 Appendable。对Appendable Object，HeadObject也会返回上述的x-oss-next-append-position和x-osshash-crc64ecma。 GetBucket（List Objects）请求的响应XML中，会把Appendable Object的Type设为Appendable 不能使用CopyObject来拷贝一个Appendable Object，也不能改变它的服务器端加密的属性。可以使用 CopyObject来改变用户自定义元信息。 URL参数append和position均为CanonicalizedResource，需要包含在签名中。
 
 **请求语法**
 
@@ -2820,8 +3048,6 @@ POST /ObjectName?append&position=Position HTTP/1.1 Content-Length：ContentLengt
 | position | 字符串 | 是 | 0 | 用于指定从何处进行追加。 每次操作成功后，响应消息头x- oss-next-append-position会标明下一次追加的position。 首次追加操作的position必须为0，后续追加操作的position是 Object的当前大小。例如，第一次AppendObject请求指定 position值为0，content-length是65536，则第二次 AppendObject需要指定position为65536。 当position值为0，且不存在同名Object时，则 AppendObject与PutObject请求类似，即允许设置x-oss- server-side-encryption等请求头。如果加入了正确的x- oss-server-side-encryption头，那么后续的 AppendObject响应头部也会包含x-oss-server-side- encryption头。后续如需更改元数据，可以使用 CopyObject接口。 在position值正确的情况下，对已存在的Appendable Object追加一个大小为0的内容，该操作不会改变Object的状态。 |
 | Cache- control | 字符串 | 否 | no-cache | 指定该Object的网页缓存行为。更多信息，请参见RFC2616。 默认值：无 |
 
-对象存储 OSS
-
 | Content- Dispositio n | 字符串 | 否 | attachme nt;filenam e=oss do _ wnload.jp g | 指定该Object被下载时的名称。更多信息，请参见RFC2616。 默认值：无 |
 |---|---|---|---|---|
 | Content- Encoding | 字符串 | 否 | utf-8 | 指定该Object的内容编码格式。更多信息，请参见RFC2616。 默认值：无 |
@@ -2831,7 +3057,7 @@ POST /ObjectName?append&position=Position HTTP/1.1 Content-Length：ContentLengt
 | x-oss- object-acl | 字符串 | 否 | private | 指定Object的访问权限。 取值： public-read：只有该存储空间的拥有者可以对该存储空间内的Object进行写操作，任何人（包括匿名访问者）可以对该存储空间中的文件进行读操作。 private：只有该存储空间的拥有者可以对该存储空间内的 Object进行读写操作，其他人无法访问该存储空间内的 Object。 public-read-write：任何人（包括匿名访问者）都可以对该存储空间中的Object进行读写操作，所有这些操作产生的费用由该存储空间的拥有者承担，请慎用该权限。 |
 | x-oss- meta-* | 字符串 | 否 | x-oss- meta- location | 创建AppendObject时可以添加x-oss-meta-*，继续追加时不可以携带此参数。如果配置以x-oss-meta-*为前缀的参数，则该参数视为元数据。 元数据大小限制：一个Object可以包含多个元数据，但所有的元数据总大小不能超过8 KB。 元数据命名规则：支持短划线（-）、数字、英文字母 （a~z）。英文字符的大写字母会被转成小写字母，不支持下划线（ ）在内的其他字符。 _ |
 
-有关此接口涉及的其他公共请求头的更多信息，请参见公共请求头（Common Request Headers）。 对象存储 OSS
+有关此接口涉及的其他公共请求头的更多信息，请参见公共请求头（Common Request Headers）。
 
 **响应头**
 
@@ -2847,14 +3073,18 @@ POST /ObjectName?append&position=Position HTTP/1.1 Content-Length：ContentLengt
 Appendable Object的CRC64采用ECMA-182标准。您可以使用以下方法进行计算： 用Boost CRC模块的方式计算
 
 ```
-typedef boost::crc_optimal<64, 0x42F0E1EBA9EA3693ULL, 0xffffffffffffffffULL, 0xffffffffffffff ffULL, true, true> boost_ecma; uint64_t do_boost_crc(const char* buffer, int length) {
+typedef boost::crc_optimal<64, 0x42F0E1EBA9EA3693ULL, 0xffffffffffffffffULL, 0xffffffffffffff ffULL, true, true> boost_ecma; uint64_t do_boost_crc(const char* buffer, int length)
+```
+
+`{`
+
+```
     boost_ecma crc;
     crc.process_bytes(buffer, length);
     return crc.checksum();
-}
 ```
 
-用Python crcmod的方式计算
+`}` 用Python crcmod的方式计算
 
 ```
 do_crc64 = crcmod.mkCrcFun(0x142F0E1EBA9EA3693L, initCrc=0L, xorOut=0xffffffffffffffffL, rev= True) print do_crc64(“123456789”)
@@ -2868,22 +3098,24 @@ do_crc64 = crcmod.mkCrcFun(0x142F0E1EBA9EA3693L, initCrc=0L, xorOut=0xffffffffff
 POST /oss.jpg?append&position=0 HTTP/1.1 Host: BucketName.oss.example.com Cache-control: no-cache Expires: Wed, 08 Jul 2015 16:57:01 GMT Content-Encoding: utf-8 Content-Disposition: attachment;filename=oss_download.jpg Date: Wed, 08 Jul 2015 06:57:01 GMT Content-Type: image/jpg Content-Length: 1717 Authorization: OSS q***:k***= [1717 bytes of object data]
 ```
 
-返回示例： 对象存储 OSS
+返回示例：
 
 ```
 HTTP/1.1 200 OK Date: Wed, 08 Jul 2015 06:57:01 GMT ETag: "0***0" Connection: keep-alive Content-Length: 0 Server: AliyunOSS x-oss-hash-crc64ecma: 14741617095266562575 x-oss-next-append-position: 1717 x-oss-request-id: 5***1
 ```
 
-#### DeleteObject
+#### 2.6.5 DeleteObject
+
+DeleteObject用于删除某个Object。
 
 **注意事项**
 
-您需要对要删除的Object有写权限。 无论要删除的Object是否存在，删除成功后均会返回204状态码。
+调用DeleteObject接口时，有如下注意事项： 您需要对要删除的Object有写权限。 无论要删除的Object是否存在，删除成功后均会返回204状态码。 如果Object类型为软链接，使用DeleteObject仅会删除该软链接。
 
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
+DELETE /ObjectName HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
 **请求头**
@@ -2908,9 +3140,9 @@ DELETE /copy_oss.jpg HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2
 HTTP/1.1 204 NoContent x-oss-request-id: 5***1 Date: Fri, 24 Feb 2012 07:45:28 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### DeleteMultipleObjects
+#### 2.6.6 DeleteMultipleObjects
 
-对象存储 OSS DeleteMultipleObjects操作支持用户通过一个HTTP请求删除同一个Bucket中的多个Object。 DeleteMultipleObjects操作支持一次请求内最多删除1000个Object，并提供详细（verbose）模式和简单 （quiet）模式两种返回模式： 详细模式：OSS返回的消息体中会包含每一个删除Object的结果。 简单模式：OSS返回的消息体中只包含删除过程中出错的Object结果；如果所有删除都成功的话，则没有消息体。
+DeleteMultipleObjects操作支持用户通过一个HTTP请求删除同一个Bucket中的多个Object。 DeleteMultipleObjects操作支持一次请求内最多删除1000个Object，并提供详细（verbose）模式和简单 （quiet）模式两种返回模式： 详细模式：OSS返回的消息体中会包含每一个删除Object的结果。 简单模式：OSS返回的消息体中只包含删除过程中出错的Object结果；如果所有删除都成功的话，则没有消息体。
 
 **细节分析**
 
@@ -2941,8 +3173,6 @@ DeleteMultipleObjects时，可以通过encoding-type对返回结果中的Key进�
 | Encoding -type | 字符串 | 否 | url | Key使用UTF-8字符。如果Key中包含XML 1.0标准不支持的控制字符，您可以通过指定Encoding-type对返回结果中的Key进行编码。 可选值：url |
 | Content- Length | 字符串 | 是 | 151 | 用于描述HTTP消息体的传输长度。 OSS会根据此请求头验证收到的消息体，消息体正确才会执行删除操作。 |
 
-对象存储 OSS
-
 | Content- MD5 | 字符串 | 是 | IVaXz0Q X0UTCXr aY9Z61m Q== | Content-MD5是一串由MD5算法生成的值，该请求头用于检查消息内容是否与发送时一致。上传了Content-MD5请求头后，OSS会计算消息体的Content-MD5并检查一致性。 说明将DeleteMultipleObjects的请求消息体经过 MD5加密后得到一个128位字节数组。然后将该字节数组用 base64算法编码，编码后得到的字符串即Content-MD5字段内容。 |
 |---|---|---|---|---|
 
@@ -2961,7 +3191,7 @@ DeleteMultipleObjects时，可以通过encoding-type对返回结果中的Key进�
 
 **示例**
 
-请求示例1： 对象存储 OSS
+请求示例1：
 
 ```xml
 POST /?delete HTTP/1.1 Host: ***.regionid.example.com Date: Wed, 29 Feb 2012 12:26:16 GMT Content-Length:151 Content-MD5: o***== Authorization: OSS q***:+z***= <?xml version="1.0" encoding="UTF-8"?> <Delete>
@@ -2994,7 +3224,7 @@ HTTP/1.1 200 OK x-oss-request-id: 7***7 Date: Wed, 29 Feb 2012 12:26:16 GMT Cont
 </DeleteResult>
 ```
 
-请求示例2： 对象存储 OSS
+请求示例2：
 
 ```xml
 POST /?delete HTTP/1.1 Host: ***.regionid.example.com Date: Wed, 29 Feb 2012 12:33:45 GMT Content-Length:151 Content-MD5: o***A== Authorization: OSS q***c:W***= <?xml version="1.0" encoding="UTF-8"?> <Delete>
@@ -3017,24 +3247,24 @@ POST /?delete HTTP/1.1 Host: ***.regionid.example.com Date: Wed, 29 Feb 2012 12:
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Feb 2012 12:33:45 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### HeadObject
+#### 2.6.7 HeadObject
+
+HeadObject只返回某个Object的meta信息，不返回文件内容。
 
 **细节分析**
 
-如果用户在PutObject的时候传入以x-oss-meta-为开头的user meta，比如x-oss-meta-location，返回消息时，返回这些user meta。 如果文件不存在返回404 Not Found错误。 若该Object为进行服务器端熵编码加密存储的，则在Head请求响应头中，会返回x-oss-server-sideencryption，其值表明该Object的服务器端加密算法。
+不论正常返回200 OK还是非正常返回，HeadObject都不返回消息体。 如果用户在PutObject的时候传入以x-oss-meta-为开头的user meta，比如x-oss-meta-location，返回消息时，返回这些user meta。 如果文件不存在返回404 Not Found错误。 若该Object为进行服务器端熵编码加密存储的，则在Head请求响应头中，会返回x-oss-server-sideencryption，其值表明该Object的服务器端加密算法。
 
 **请求语法**
 
 ```
-Host: BucketName/regionid.example.com Date: GMT Date Authorization: SignatureValue
+HEAD /ObjectName HTTP/1.1 Host: BucketName/regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
 **请求头**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-对象存储 OSS
 
 | If- Modified- Since | 字符串 | 否 | Fri, 24 Feb 2012 07:32:52 GMT | 如果传入参数中的时间早于实际修改时间，则返回200 OK和 Object Meta；否则返回304 not modified。 默认值：无 |
 |---|---|---|---|---|
@@ -3055,8 +3285,6 @@ Host: BucketName/regionid.example.com Date: GMT Date Authorization: SignatureVal
 | x-oss-object- type | 字符串 | Normal | 表示Object的类型。 通过PutObject上传的Object类型为Normal。 通过AppendObject上传的Object类型为Appendable。 通过MultipartUpload上传的Object类型为Multipart。 |
 | x-oss-next- append- position | 字符串 | 100 | 对于Appendable类型的Object会返回此Header，指明下一次请求应当提供的position。 |
 
-对象存储 OSS
-
 | x-oss-hash- crc64ecma | 字符串 | 1542941521 8160274758 | 表示该Object的64位CRC值。该64位CRC根据ECMA-182标准计算得出。 对OSS支持CRC64校验前创建的Object，调用HeadObject接口时可能不会返回此响应头。 |
 |---|---|---|---|
 | Content-Md5 | 字符串 | IVaXz0QX0U TCXraY9Z61 mQ== | 对于Normal类型的Object，根据RFC 1864标准对消息内容（不包括Header）计算Md5值获得128比特位数字，对该数字进行 Base64编码作为一个消息的Content-Md5值。 Multipart和Appendable类型的文件不会返回这个Header。 |
@@ -3076,21 +3304,19 @@ HEAD /oss.jpg HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 07:
 HTTP/1.1 200 OK x-oss-request-id: 5***1 x-oss-object-type: Normal Date: Fri, 24 Feb 2012 07:32:52 GMT Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT ETag: "f***8" Content-Length: 344606 Content-Type: image/jpg Connection: keep-alive Server: AliyunOSS
 ```
 
-#### GetObjectMeta
+#### 2.6.8 GetObjectMeta
 
 GetObjectMeta用来获取某个Bucket下的某个Object的基本meta信息，包括该Object的ETag、Size（文件大小）、LastModified，并不返回其内容。
 
 **注意事项**
 
-GetObjectMeta需包含Object meta请求参数，否则表示GetObject请求。 如果文件不存在返回404 Not Found错误。 GetObjectMeta相比HeadObject更轻量，仅返回指定Object的少量基本meta信息，包括该Object的ETag、 Size（文件大小）、LastModified，其中Size由响应头Content-Length的数值表示。
+无论正常返回还是非正常返回，GetObjectMeta均不返回消息体。 GetObjectMeta需包含Object meta请求参数，否则表示GetObject请求。 如果文件不存在返回404 Not Found错误。 GetObjectMeta相比HeadObject更轻量，仅返回指定Object的少量基本meta信息，包括该Object的ETag、 Size（文件大小）、LastModified，其中Size由响应头Content-Length的数值表示。
 
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
+GET /ObjectName?objectMeta HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
-
-对象存储 OSS
 
 **请求头**
 
@@ -3118,18 +3344,18 @@ GET /oss.jpg?objectMeta HTTP/1.1 Host: ***.regionid.example.com Date: Wed, 29 Ap
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Apr 2015 05:21:12 GMT ETag: "5***E" Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT Content-Length: 344606 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### PutObjectACL
+#### 2.6.9 PutObjectACL
 
-PutObjectACL操作通过Put请求中的x-oss-object-acl头来设置Object的ACL，这个操作只有Bucket拥有者有权限执行。如果操作成功，则返回200；否则返回相应的错误码和提示信息。目前Object支持四种访问权限：private、 public-read、 public-read-write、default。
+PutObjectACL接口用于修改Object的访问权限。 PutObjectACL操作通过Put请求中的x-oss-object-acl头来设置Object的ACL，这个操作只有Bucket拥有者有权限执行。如果操作成功，则返回200；否则返回相应的错误码和提示信息。目前Object支持四种访问权限：private、 public-read、 public-read-write、default。
 
 **注意事项**
 
-您不仅可以通过PutObjectACL接口来设置Object ACL，还可以在Object的写操作时，在请求头中带上x-ossobject-acl来设置Object ACL，效果与PutObjectA ACL等同。例如PutObject时在请求头中带上x-oss-objectacl可以在上传一个Object的同时设置某个Object的ACL。 Object ACL优先级高于Bucket ACL。例如Bucket ACL是private的，而Object ACL是public-read-write的， 则访问这个Object时，先判断Object的ACL。如果某个Object从来没设置过ACL，则访问权限遵循Bucket ACL。 对象存储 OSS
+您不仅可以通过PutObjectACL接口来设置Object ACL，还可以在Object的写操作时，在请求头中带上x-ossobject-acl来设置Object ACL，效果与PutObjectA ACL等同。例如PutObject时在请求头中带上x-oss-objectacl可以在上传一个Object的同时设置某个Object的ACL。 Object ACL优先级高于Bucket ACL。例如Bucket ACL是private的，而Object ACL是public-read-write的， 则访问这个Object时，先判断Object的ACL。如果某个Object从来没设置过ACL，则访问权限遵循Bucket ACL。
 
 **请求语法**
 
 ```
-x-oss-object-acl: Permission Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
+PUT /ObjectName?acl HTTP/1.1 x-oss-object-acl: Permission Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
 **请求头**
@@ -3158,15 +3384,15 @@ PUT /test-object?acl HTTP/1.1 x-oss-object-acl: public-read Host: ***.regionid.e
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Apr 2015 05:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### GetObjectACL
+#### 2.6.10 GetObjectACL
+
+GetObjectACL用来获取Object的访问权限信息。
 
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
+GET /ObjectName?acl HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
-
-对象存储 OSS
 
 **请求头**
 
@@ -3205,9 +3431,9 @@ HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Apr 2015 05:21:12 GMT Cont
 </AccessControlPolicy>
 ```
 
-#### PostObject
+#### 2.6.11 PostObject
 
-对象存储 OSS
+PostObject使用HTML表单上传文件到指定Bucket。
 
 **注意事项**
 
@@ -3227,25 +3453,19 @@ POST / HTTP/1.1 Host: BucketName.regionid.example.com User-Agent: browser_data C
 
 **请求头**
 
-PostObject的消息实体通过多重表单格式（multipart/form-data）编码，在PutObject操作中参
+> **说明：** PostObject的消息实体通过多重表单格式（multipart/form-data）编码，在PutObject操作中参数通过HTTP请求头传递，在PostObject操作中则作为消息体中的表单域传递。
 
-**说明**
-
-数通过HTTP请求头传递，在PostObject操作中则作为消息体中的表单域传递。 对象存储 OSS
-
-| 名称 | 类型 | 是否必选 | 示例值 | 描述 |  |
+| 名称 | 类型 | 是否必选 | 示例值 | 描述 |   |
 |---|---|---|---|---|---|
-| OSSAcces sKeyId | 字符串 | 有条件 | LTAI4Fw2NbDUCV8zYU* ***** | Bucket拥有者的AccessKeyId。 默认值：无限制：当Bucket为非public-read-write或者提供了Policy（或Signature）表单域时，必须提供OSSAccessKeyId表单域。 |  |
-| policy | 字符串 | 有条件 | { "expiration": "2014-12- 01T12:00:00.000Z", "conditions": [ {"bucket": "johnsmith" }, ["starts-with", "$key", "user/eric/"] ] } | Policy规定了请求表单域的合法性。不包含 Policy表单域的请求被认为是匿名请求，并只能访问public-read-write的Bucket。Policy示例，请参见Post policy。 默认值：无限制：当Bucket为非public-read-write或者提供了OSSAccessKeyId（或Signature）表单域时，必须提供Policy表单域。 说明表单和Policy必须使用UTF- 8编码。 |  |
-| Signature | 字符串 | 有条件 | 无 | 根据AccessKeySecret和Policy计算的签名信息，OSS验证该签名信息从而验证该Post请求的合法性。 默认值：无限制：当Bucket为非public-read-write或者提供了OSSAccessKeyId（或Policy）表单域时，必须提供Signature表单域。 说明表单域对大小写不敏感，但表单域的值对大小写敏感。 |  |
-| Cache- Control、 Content- Type, Content- Dispositio n、 Content- Encoding 、Expires | 字符串 | 否 | 无 | HTTP请求Header，详细信息请参见PutObject。 默认值：无 Post操作提交表单编码必须为 multipart/form-data ，即Header中 Content-Type为 multipart/form- data;boundary=xxxxxx 这样的形式，boundary为边界字符串。 |  |
-| x-oss- content- type | 字符串 | 否 | text/h323 | 由于浏览器会自动在文件表单域中增加 Content-Type，为了解决此问题，OSS支持用户在Post请求体中增加x-oss-content-type， 该项允许用户指定Content-Type，且拥有最高优先级。 优先级顺序：x-oss-content-type > 文件表单域的Content-Type > Content-Type 默认值：无 |  |
-| key | 字符串 | 是 | /user/a/objectName.txt | 上传Object的名称。如果名称包含路径，例如 a/b/c/b.jpg，则OSS会自动创建相应的文件夹。 默认值：无 |  |
+| OSSAcces sKeyId | 字符串 | 有条件 | LTAI4Fw2NbDUCV8zYU* ***** | Bucket拥有者的AccessKeyId。 默认值：无限制：当Bucket为非public-read-write或者提供了Policy（或Signature）表单域时，必须提供OSSAccessKeyId表单域。 |   |
+| policy | 字符串 | 有条件 | { "expiration": "2014-12- 01T12:00:00.000Z", "conditions": [ {"bucket": "johnsmith" }, ["starts-with", "$key", "user/eric/"] ] } | Policy规定了请求表单域的合法性。不包含 Policy表单域的请求被认为是匿名请求，并只能访问public-read-write的Bucket。Policy示例，请参见Post policy。 默认值：无限制：当Bucket为非public-read-write或者提供了OSSAccessKeyId（或Signature）表单域时，必须提供Policy表单域。 说明表单和Policy必须使用UTF- 8编码。 |   |
+| Signature | 字符串 | 有条件 | 无 | 根据AccessKeySecret和Policy计算的签名信息，OSS验证该签名信息从而验证该Post请求的合法性。 默认值：无限制：当Bucket为非public-read-write或者提供了OSSAccessKeyId（或Policy）表单域时，必须提供Signature表单域。 说明表单域对大小写不敏感，但表单域的值对大小写敏感。 |   |
+| Cache- Control、 Content- Type, Content- Dispositio n、 Content- Encoding 、Expires | 字符串 | 否 | 无 | HTTP请求Header，详细信息请参见PutObject。 默认值：无 Post操作提交表单编码必须为 multipart/form-data ，即Header中 Content-Type为 multipart/form- data;boundary=xxxxxx 这样的形式，boundary为边界字符串。 |   |
+| x-oss- content- type | 字符串 | 否 | text/h323 | 由于浏览器会自动在文件表单域中增加 Content-Type，为了解决此问题，OSS支持用户在Post请求体中增加x-oss-content-type， 该项允许用户指定Content-Type，且拥有最高优先级。 优先级顺序：x-oss-content-type > 文件表单域的Content-Type > Content-Type 默认值：无 |   |
+| key | 字符串 | 是 | /user/a/objectName.txt | 上传Object的名称。如果名称包含路径，例如 a/b/c/b.jpg，则OSS会自动创建相应的文件夹。 默认值：无 |   |
 
-|  | data;boundary=xxxxxx |  |
+|   | data;boundary=xxxxxx |   |
 |---|---|---|
-
-对象存储 OSS
 
 | success a _ ction redir _ ect | 字符串 | 否 | 无 | 上传成功后客户端跳转到的URL。如果未指定该表单域，返回结果由 success action status表单域指定。如果上 _ _ 传失败，OSS返回错误码，并不进行跳转。 默认值：无 |
 |---|---|---|---|---|
@@ -3255,8 +3475,6 @@ PostObject的消息实体通过多重表单格式（multipart/form-data）编码
 | x-oss- server- side-data- encryptio n | 字符串 | 否 | SM4 | 指定Object的加密算法。若未指定此选项，表明Object使用AES256加密算法。此选项仅当x-oss-server-side-encryption为KMS 时有效。 取值：SM4 |
 | x-oss- server- side- encryptio n-key-id | 字符串 | 否 | 3dea0cae-5fd6-4bf8- 8574-87c557****** | 表示KMS托管的用户主密钥。 该参数在x-oss-server-side- encryption的值为KMS时有效。 |
 | x-oss- object-acl | 字符串 | 否 | private | 创建Object时，指定Object的访问权限。 有效值：public-read、private、public- read-write |
-
-对象存储 OSS
 
 | x-oss- security- token | 字符串 | 否 | 无 | 若本次访问是使用STS临时授权方式，则需要指定该项为SecurityToken的值，同时 OSSAccessKeyId需要使用与之配对的临时 AccessKeyId。计算签名时，与使用普通 AccessKeyId签名方式一致。 默认值：无 |
 |---|---|---|---|---|
@@ -3279,7 +3497,7 @@ PostObject的消息实体通过多重表单格式（multipart/form-data）编码
 
 **示例**
 
-请求示例： 对象存储 OSS
+请求示例：
 
 ```
 POST / HTTP/1.1 Host: ***.regionid.example.com Content-Length: 344606 Content-Type: multipart/form-data; boundary=9431149156168 --9431149156168 Content-Disposition: form-data; name="key" /user/a/${filename} --9431149156168 Content-Disposition: form-data; name="success_action_status" --9431149156168 Content-Disposition: form-data; name="Content-Disposition" content_disposition --9431149156168 Content-Disposition: form-data; name="x-oss-meta-uuid" uuid --9431149156168 Content-Disposition: form-data; name="x-oss-meta-tag" metadata --9431149156168 Content-Disposition: form-data; name="OSSAccessKeyId" 44CF9590006BF252F707 --9431149156168 Content-Disposition: form-data; name="policy" eyJleHBpcmF0aW9uIjoiMjAxMy0xMi0wMVQxMjowMDowMFoiLCJjb25kaXRpb25zIjpbWyJjb250ZW50LWxlbmd0aC1yYW5nZ sIDAsIDEwNDg1NzYwXSx7ImJ1Y2tldCI6ImFoYWhhIn0sIHsiQSI6ICJhIn0seyJrZXkiOiAiQUJDIn1dfQ== --9431149156168 Content-Disposition: form-data; name="Signature" k***0+d***k= --9431149156168 Content-Disposition: form-data; name="file"; filename="MyFilename.txt" Content-Type: text/plain abcdefg --9431149156168 Content-Disposition: form-data; name="submit" Upload to OSS --9431149156168--
@@ -3293,7 +3511,7 @@ HTTP/1.1 200 OK x-oss-request-id: 6***e Date: Fri, 24 Feb 2014 06:03:28 GMT ETag
 
 **Post policy**
 
-Post请求的policy表单域用于验证请求的合法性。 policy为一段经过UTF-8和Base64编码的JSON文本，声明了 Post请求必须满足的条件。虽然对于public-read-write的Bucket上传时，post表单域为可选项，我们强烈建议使用该域来限制Post请求。 Policy示例对象存储 OSS
+Post请求的policy表单域用于验证请求的合法性。 policy为一段经过UTF-8和Base64编码的JSON文本，声明了 Post请求必须满足的条件。虽然对于public-read-write的Bucket上传时，post表单域为可选项，我们强烈建议使用该域来限制Post请求。 Policy示例
 
 ```json
 { "expiration": "2014-12-01T12:00:00.000Z",
@@ -3302,13 +3520,7 @@ Post请求的policy表单域用于验证请求的合法性。 policy为一段经
  ["starts-with", "$key", "user/eric/"]
 ```
 
-]
-
-```
-}
-```
-
-Post policy中必须包含expiration和condtions。 Expiration Expiration项指定了policy的过期时间，以ISO8601 GMT时间表示。例如”2014-12-01T12:00:00.000Z”指定了Post请求必须发生在2014年12月1日12点之前。 Conditions Conditions是一个列表，可以用于指定Post请求的表单域的合法值。表单域对应的值在检查policy之后进行扩展，因此，policy中设置的表单域的合法值应当对应于扩展之前的表单域的值。例如，如果设置key表单域为 user/user1/${filename}，用户的文件名为a.txt，则Post policy应当设置成[“eq”, “$key”, “user/user1/\${filename}”]，而不是[“eq”, “$key”，“$key”, “user/user1/a.txt”]。Policy中支持的 conditions项见下表： 表 1. Conditions
+`]` `}` Post policy中必须包含expiration和condtions。 Expiration Expiration项指定了policy的过期时间，以ISO8601 GMT时间表示。例如”2014-12-01T12:00:00.000Z”指定了Post请求必须发生在2014年12月1日12点之前。 Conditions Conditions是一个列表，可以用于指定Post请求的表单域的合法值。表单域对应的值在检查policy之后进行扩展，因此，policy中设置的表单域的合法值应当对应于扩展之前的表单域的值。例如，如果设置key表单域为 user/user1/${filename}，用户的文件名为a.txt，则Post policy应当设置成[“eq”, “$key”, “user/user1/\${filename}”]，而不是[“eq”, “$key”，“$key”, “user/user1/a.txt”]。Policy中支持的 conditions项见下表： 表 1. Conditions
 
 | 名称 | 描述 |
 |---|---|
@@ -3332,8 +3544,6 @@ Post policy中必须包含expiration和condtions。 Expiration Expiration项指�
 | 转义字符 | 描述 |
 |---|---|
 
-对象存储 OSS
-
 | \/ | 斜杠 |
 |---|---|
 | \ | 反斜杠 |
@@ -3354,39 +3564,43 @@ Post policy中必须包含expiration和condtions。 Expiration Expiration项指�
 3. 使用AccessKey Secret对要签名的字符串进行签名，签名方法与Head中签名的计算方法相同（将要签名的字符
 串替换为policy即可）。
 
-#### Callback
+#### 2.6.12 Callback
 
-用户只需要在发送给OSS的请求中携带相应的Callback参数，即能实现回调。本文详细介绍Callback的实现原理。 目前支持Callback的API接口有：PutObject、PostObject、CompleteMultipartUpload。
+用户只需要在发送给OSS的请求中携带相应的Callback参数，即能实现回调。本文详细介绍Callback的实现原理。
 
-**说明**
+> **说明：** 目前支持Callback的API接口有：PutObject、PostObject、CompleteMultipartUpload。
 
 **步骤1：构造参数**
 
-Callback参数是由一段经过Base64编码的JSON字符串（字段）。构建 callback 参数的关键是指定请求回调的服 JSON字段如下：
+Callback参数 Callback参数是由一段经过Base64编码的JSON字符串（字段）。构建 callback 参数的关键是指定请求回调的服务器URL（callbackUrl）以及回调的内容（callbackBody）。 JSON字段如下：
 
 | 字段 | 含义 | 是否必需 |
 |---|---|---|
 
-对象存储 OSS
-
-|  | callbackUrl | 字段说明及注意事项： 文件上传成功后，OSS向此URL发送回调请求，请求方法为 POST，body为callbackBody指定的内容。正常情况下，该 URL需要响应 HTTP/1.1 200 OK ，body必须为JSON格式，响应头Content-Length必须为合法的值，且不超过3 MB。 支持同时配置最多5个URL，以分号（;）分割。OSS会依次发送请求直到第一个返回成功为止。 如果没有配置或者值为空则认为没有配置Callback。 支持HTTPS地址。 为了保证正确处理中文等情况，callbackUrl需做URL编码处理，例如 http://example.com/中文.php? key=value&中文名称=中文值需要编码成 http://example.com/%E4%B8%AD%E6%96%87.php? |  |  |  | 是 |  |
+|   | callbackUrl | 字段说明及注意事项： 文件上传成功后，OSS向此URL发送回调请求，请求方法为 POST，body为callbackBody指定的内容。正常情况下，该 URL需要响应 HTTP/1.1 200 OK ，body必须为JSON格式，响应头Content-Length必须为合法的值，且不超过3 MB。 支持同时配置最多5个URL，以分号（;）分割。OSS会依次发送请求直到第一个返回成功为止。 如果没有配置或者值为空则认为没有配置Callback。 支持HTTPS地址。 为了保证正确处理中文等情况，callbackUrl需做URL编码处理，例如 http://example.com/中文.php? key=value&中文名称=中文值需要编码成 http://example.com/%E4%B8%AD%E6%96%87.php? |   |   |   | 是 |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  | http://example.com/中文.php? |  |  |  |
-|  |  | key=value&中文名称=中文值 |  |  |  |  |  |
-|  |  |  |  |  | 需要编码成 |  |  |
-|  |  | key=value&%E4%B8%AD%E6%96%87%E5%90%8D%E7%A7%B0= |  |  |  |  |  |
-|  |  | %E4%B8%AD%E6%96%87%E5%80%BC |  |  |  |  |  |
-|  | callbackHost | 字段说明及注意事项： 发起回调请求时Host头的值，只有在设置了callbackUrl时才有效。 如果没有配置callbackHost，则会解析callbackUrl中的URL 并将解析出的host填充到callbackHost中。 |  |  |  | 否 |  |
-|  | callbackBody | 字段说明及注意事项： 发起回调时请求body的值，例如： key=$(object)&etag=$(etag)&my var=$(x:my var)。 _ _ 支持OSS系统变量、自定义变量和常量，支持的系统变量如下表所示 。自定义变量的支持方式在PutObject 和 CompleteMultipart中是通过callback-var来传递，在 PostObject中则是将各个变量通过表单域来传递。 |  |  |  | 是 |  |
-|  | callbackBodyType | 字段说明及注意事项： 发起回调请求的Content-Type，支持application/x-www- form-urlencoded和application/json，默认为前者。 callbackBodyType的取值为 application/x-www-form- urlencoded，则callbackBody中的变量将会被经过 URL 编码的值替换掉；如果为application/json，则会按照JSON格式替换其中的变量。 |  |  |  | 否 |  |
+|   |   |   |   | http://example.com/中文.php? |   |   |   |
+|   |   | key=value&中文名称=中文值 |   |   |   |   |   |
+|   |   |   |   |   | 需要编码成 |   |   |
+|   |   | key=value&%E4%B8%AD%E6%96%87%E5%90%8D%E7%A7%B0= |   |   |   |   |   |
+|   |   | %E4%B8%AD%E6%96%87%E5%80%BC |   |   |   |   |   |
+|   | callbackHost | 字段说明及注意事项： 发起回调请求时Host头的值，只有在设置了callbackUrl时才有效。 如果没有配置callbackHost，则会解析callbackUrl中的URL 并将解析出的host填充到callbackHost中。 |   |   |   | 否 |   |
+|   | callbackBody | 字段说明及注意事项： 发起回调时请求body的值，例如： key=$(object)&etag=$(etag)&my var=$(x:my var)。 _ _ 支持OSS系统变量、自定义变量和常量，支持的系统变量如下表所示 。自定义变量的支持方式在PutObject 和 CompleteMultipart中是通过callback-var来传递，在 PostObject中则是将各个变量通过表单域来传递。 |   |   |   | 是 |   |
+|   | callbackBodyType | 字段说明及注意事项： 发起回调请求的Content-Type，支持application/x-www- form-urlencoded和application/json，默认为前者。 callbackBodyType的取值为 application/x-www-form- urlencoded，则callbackBody中的变量将会被经过 URL 编码的值替换掉；如果为application/json，则会按照JSON格式替换其中的变量。 |   |   |   | 否 |   |
 
-JSON字段示例如下：
+JSON字段示例如下： `{`
 
 ```json
-{ "callbackUrl":"121.101.166.30/test.php", "callbackHost":"oss-cn-hangzhou.aliyuncs.com", "callbackBody":"{\"mimeType\":${mimeType},\"size\":${size}}", } { "callbackUrl":"121.43.113.8:23456/index.html", "callbackBody":"bucket=${bucket}&object=${object}&etag=${etag}&size=${size}&mimeType=${mimeType imageInfo.height=${imageInfo.height}&imageInfo.width=${imageInfo.width}&imageInfo.format=${imag nfo.format}&my_var=${x:my_var}" }
+"callbackUrl":"121.101.166.30/test.php", "callbackHost":"oss-cn-hangzhou.aliyuncs.com", "callbackBody":"{\"mimeType\":${mimeType},\"size\":${size}}", "callbackBodyType":"application/json"
 ```
 
-对象存储 OSS
+`}` `{`
+
+```json
+"callbackUrl":"121.43.113.8:23456/index.html", "callbackBody":"bucket=${bucket}&object=${object}&etag=${etag}&size=${size}&mimeType=${mimeType imageInfo.height=${imageInfo.height}&imageInfo.width=${imageInfo.width}&imageInfo.format=${imag nfo.format}&my_var=${x:my_var}"
+```
+
+callbackBody中可以设置的系统参数如下表所示：
 
 | 系统参数 | 含义 |
 |---|---|
@@ -3399,52 +3613,46 @@ JSON字段示例如下：
 | imageInfo.width | 图片宽度。 |
 | imageInfo.format | 图片格式，如JPG、PNG等。 |
 
-imageInfo针对图片格式，如果为非图片格式，imageInfo.height、imageInfo.width、
+> **说明：** imageInfo针对图片格式，如果为非图片格式，imageInfo.height、imageInfo.width、 imageInfo.format都为空。
 
-**说明**
+callback-var自定义参数用户可以通过callback-var参数来配置自定义参数。自定义参数是一个Key-Value的Map，用户可以配置自己需要的参数到该Map。在OSS发起POST回调请求的时候，会将这些参数和上述的系统参数一起放在POST请求的body 中以方便接收回调方获取。 构造自定义参数的方法和callBack参数的方法是一样的，也是以JSON格式来传递。该JSON字符串就是一个包含所有自定义参数的Key-Value的Map。
 
-imageInfo.format都为空。 用户可以通过callback-var参数来配置自定义参数。自定义参数是一个Key-Value的Map，用户可以配置自己需要的参数到该Map。在OSS发起POST回调请求的时候，会将这些参数和上述的系统参数一起放在POST请求的body 中以方便接收回调方获取。 构造自定义参数的方法和callBack参数的方法是一样的，也是以JSON格式来传递。该JSON字符串就是一个包含所有自定义参数的Key-Value的Map。 用户自定义参数的Key一定要以x:开头且必须为小写，否则OSS会返回错误。
+> **说明：** 用户自定义参数的Key一定要以x:开头且必须为小写，否则OSS会返回错误。
 
-**说明**
+假定用户需要设定两个自定义的参数分别为x:var1和x:var2，对应的值分别为value1和value2，那么构造出来的 JSON格式如下： `{`
 
-假定用户需要设定两个自定义的参数分别为x:var1和x:var2，对应的值分别为value1和value2，那么构造出来的 JSON格式如下：
-
-```json
-{ "x:var1":"value1", "x:var2":"value2" }
+```
+"x:var1":"value1", "x:var2":"value2"
 ```
 
-对象存储 OSS 如果传入的callback或者callback-var参数不合法，则会返回400错误，错误码为
+`}`
 
-**说明**
-
-InvalidArgument，不合法的情况包括以下几类： PutObject()和CompleteMultipartUpload()接口中URL和header同时传入callback(x-oss-callback) callback或者callback-var参数过长，超过5 KB ( PostObject() 由于没有callback-var参数，因此没有此限制，下同）。 callback或者callback-var参数没有经过Base64编码或经过Base64解码后不是合法的JSON格式。 callback参数解析后callbackUrl字段包含的URL超过限制（5 个），或者URL中传入的port不合法，例如：
+> **说明：** 如果传入的callback或者callback-var参数不合法，则会返回400错误，错误码为 InvalidArgument，不合法的情况包括以下几类：
+> PutObject()和CompleteMultipartUpload()接口中URL和header同时传入callback(x-oss-callback) 或者callback-var(x-oss-callback-var)参数。
+> callback或者callback-var参数过长，超过5 KB ( PostObject() 由于没有callback-var参数，因此没有此限制，下同）。
+> callback或者callback-var参数没有经过Base64编码或经过Base64解码后不是合法的JSON格式。
+> callback参数解析后callbackUrl字段包含的URL超过限制（5 个），或者URL中传入的port不合法，例如：
 
 ```json
 {"callbackUrl":"10.101.166.30:test",
+    "callbackBody":"test"}
 ```
 
-callback参数解析后callbackBodyType字段的值不是 `application/x-www-form-urlencoded` 或
-
-```
-者 application/json 。
-```
-
-callback参数解析后callbackBody字段中变量的格式不合法，合法的格式为${var}。
-
-```
-为 {"x:var1":"value1","x:var2":"value2"...} 。
-```
+> callback参数解析后callbackBody字段为空。
+> callback参数解析后callbackBodyType字段的值不是 `application/x-www-form-urlencoded` 或者 `application/json` 。
+> callback参数解析后callbackBody字段中变量的格式不合法，合法的格式为${var}。
+> callback-var参数解析后不是预期的JSON格式，预期的格式应该为 `{"x:var1":"value1","x:var2":"value2"...}` 。
 
 **步骤2：构造回调请求**
 
-构造完成上述的callback和callback-var两个参数后，需将参数附加到OSS的请求中。 附加方式共有三种，方式如下： 在URL中携带参数。 在Header中携带参数。 在POST请求的body中使用表单域来携带参数。 在使用POST请求上传Object时只能使用这种方式来指定回调参数。
+构造完成上述的callback和callback-var两个参数后，需将参数附加到OSS的请求中。 附加方式共有三种，方式如下： 在URL中携带参数。 在Header中携带参数。 在POST请求的body中使用表单域来携带参数。
 
-**说明**
+> **说明：** 在使用POST请求上传Object时只能使用这种方式来指定回调参数。
 
-以上三种方式只能同时使用其中一种，否则OSS会返回InvalidArgument错误。 要将参数附加到OSS的请求中，首先要将上文构造的JSON字符串使用Base64编码，然后按照如下的方法附加到OSS 的请求中。 如果在URL中携带参数。把 `callback=[CallBack]` 或者 `callback-var=[CallBackVar]` 作为一个URL参数带入请求发送。计算签名CanonicalizedResource时，将callback或者callback-var当做一个sub-resource计算在内。 如果在Header中携带参数。把 `x-oss-callback=[CallBack]` 或者 `x-oss-callback-var=[CallBackVar]` 作为一个Header带入请求发送。在计算签名CanonicalizedOSSHeaders时，将x-oss-callback-var和x-oss- 对象存储 OSS
+以上三种方式只能同时使用其中一种，否则OSS会返回InvalidArgument错误。 要将参数附加到OSS的请求中，首先要将上文构造的JSON字符串使用Base64编码，然后按照如下的方法附加到OSS 的请求中。 如果在URL中携带参数。把 `callback=[CallBack]` 或者 `callback-var=[CallBackVar]` 作为一个URL参数带入请求发送。计算签名CanonicalizedResource时，将callback或者callback-var当做一个sub-resource计算在内。 如果在Header中携带参数。把 `x-oss-callback=[CallBack]` 或者 `x-oss-callback-var=[CallBackVar]` 作为一个Header带入请求发送。在计算签名CanonicalizedOSSHeaders时，将x-oss-callback-var和x-osscallback计算在内。示例如下：
 
 ```
-PUT /test.txt HTTP/1.1 Accept-Encoding: identity Content-Length: 5 x-oss-callback-var: eyJ4Om15X3ZhciI6ImZvci1jYWxsYmFjay10ZXN0In0= User-Agent: aliyun-sdk-python/0.4.0 (Linux/2.6.32-220.23.2.ali1089.el5.x86_64/x86_64;2.5.4) x-oss-callback: eyJjYWxsYmFja1VybCI6IjEyMS40My4xMTMuODoyMzQ1Ni9pbmRleC5odG1sIiwgICJjYWxsYmFja0JvZHkiOiJidWNrZXQ HtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBl ZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRof pbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0mbXlfdmFyPSR7eDpteV92YXJ9In0= Expect: 100-Continue Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: text/plain Authorization: OSS mlepou3zr4u7b14:5a74vhd4UXpmyuudV14Kaen5**** Test
+PUT /test.txt HTTP/1.1 Host: callback-test.oss-test.aliyun-inc.com Accept-Encoding: identity Content-Length: 5 x-oss-callback-var: eyJ4Om15X3ZhciI6ImZvci1jYWxsYmFjay10ZXN0In0= User-Agent: aliyun-sdk-python/0.4.0 (Linux/2.6.32-220.23.2.ali1089.el5.x86_64/x86_64;2.5.4) x-oss-callback: eyJjYWxsYmFja1VybCI6IjEyMS40My4xMTMuODoyMzQ1Ni9pbmRleC5odG1sIiwgICJjYWxsYmFja0JvZHkiOiJidWNrZXQ HtidWNrZXR9Jm9iamVjdD0ke29iamVjdH0mZXRhZz0ke2V0YWd9JnNpemU9JHtzaXplfSZtaW1lVHlwZT0ke21pbWVUeXBl ZpbWFnZUluZm8uaGVpZ2h0PSR7aW1hZ2VJbmZvLmhlaWdodH0maW1hZ2VJbmZvLndpZHRoPSR7aW1hZ2VJbmZvLndpZHRof pbWFnZUluZm8uZm9ybWF0PSR7aW1hZ2VJbmZvLmZvcm1hdH0mbXlfdmFyPSR7eDpteV92YXJ9In0= Host: callback-test.oss-test.aliyun-inc.com Expect: 100-Continue Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: text/plain Authorization: OSS mlepou3zr4u7b14:5a74vhd4UXpmyuudV14Kaen5**** Test
 ```
 
 在POST请求的body中使用表单域来携带参数。 如果需要在POST上传Object时附带回调参数会稍微复杂一点，callback参数要使用独立的表单域来附加，示例如下：
@@ -3453,13 +3661,13 @@ PUT /test.txt HTTP/1.1 Accept-Encoding: identity Content-Length: 5 x-oss-callbac
 --9431149156168 Content-Disposition: form-data; name="callback" eyJjYWxsYmFja1VybCI6IjEwLjEwMS4xNjYuMzA6ODA4My9jYWxsYmFjay5waHAiLCJjYWxsYmFja0hvc3QiOiIxMC4xM uMTY2LjMwIiwiY2FsbGJhY2tCb2R5IjoiZmlsZW5hbWU9JChmaWxlbmFtZSkmdGFibGU9JHt4OnRhYmxlfSIsImNhbGxi NrQm9keVR5cGUiOiJhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQifQ==
 ```
 
-对象存储 OSS 如果是自定义参数，不能直接将callback-var参数直接附加到表单域中，每个自定义的参数都需要使用独立的表单域来附加。如果用户的自定义参数JSON字段示例如下：
+如果是自定义参数，不能直接将callback-var参数直接附加到表单域中，每个自定义的参数都需要使用独立的表单域来附加。如果用户的自定义参数JSON字段示例如下： `{`
 
-```json
-{ "x:var1":"value1", "x:var2":"value2" }
+```
+"x:var1":"value1", "x:var2":"value2"
 ```
 
-那么POST请求的表单域为：
+`}` 那么POST请求的表单域为：
 
 ```
 --9431149156168 Content-Disposition: form-data; name="callback" eyJjYWxsYmFja1VybCI6IjEwLjEwMS4xNjYuMzA6ODA4My9jYWxsYmFjay5waHAiLCJjYWxsYmFja0hvc3QiOiIxMC4xM uMTY2LjMwIiwiY2FsbGJhY2tCb2R5IjoiZmlsZW5hbWU9JChmaWxlbmFtZSkmdGFibGU9JHt4OnRhYmxlfSIsImNhbGxi NrQm9keVR5cGUiOiJhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQifQ== --9431149156168 Content-Disposition: form-data; name="x:var1" value1 --9431149156168 Content-Disposition: form-data; name="x:var2" value2
@@ -3476,33 +3684,27 @@ PUT /test.txt HTTP/1.1 Accept-Encoding: identity Content-Length: 5 x-oss-callbac
     ["starts-with", "$key", "user/eric/"],
 ```
 
-]
-
-```
-}
-```
+`]` `}`
 
 **步骤3：发起回调请求**
 
 如果文件上传成功，OSS会根据用户请求中的callback参数和callback-var自定义参数，将特定内容以POST方式发送给应用服务器。
 
 ```
-POST /index.html HTTP/1.0 Host: 121.43.113.8 Connection: close Content-Length: 181 Content-Type: application/x-www-form-urlencoded User-Agent: http-client/0.0.1 test&object=test.txt&etag=D8E8FCA2DC0F896FD7CB4CB0031BA249&size=5&mimeType=text%2Fplain&imageInfo eight=&imageInfo.width=&imageInfo.format=&x:var1=for-callback-test
+POST /index.html HTTP/1.0 Host: 121.43.113.8 Connection: close Content-Length: 181 Content-Type: application/x-www-form-urlencoded User-Agent: http-client/0.0.1 bucket=callbacktest&object=test.txt&etag=D8E8FCA2DC0F896FD7CB4CB0031BA249&size=5&mimeType=text%2Fplain&imageInfo eight=&imageInfo.width=&imageInfo.format=&x:var1=for-callback-test
 ```
 
 **（可选）步骤4：回调签名**
 
-用户设置callback参数后，OSS将按照用户设置的callbackUrl发送POST回调请求给用户的应用服务器。应用服务器收到回调请求之后，如果希望验证回调请求确实是由OSS发起的话，可以通过在回调中带上签名来验证OSS的身份。 生成签名签名发生在OSS端，采用RSA非对称方式。 私钥加密生成签名的过程为： 对象存储 OSS
+用户设置callback参数后，OSS将按照用户设置的callbackUrl发送POST回调请求给用户的应用服务器。应用服务器收到回调请求之后，如果希望验证回调请求确实是由OSS发起的话，可以通过在回调中带上签名来验证OSS的身份。 生成签名签名发生在OSS端，采用RSA非对称方式。 私钥加密生成签名的过程为：
 
 ```
 authorization = base64_encode(rsa_sign(private_key, url_decode(path) + query_string + ‘\n’ + body, md5))
 ```
 
-其中private_key为私钥，只有OSS知晓，path为回调请求的资源路径，query_string为查询字
+> **说明：** 其中private_key为私钥，只有OSS知晓，path为回调请求的资源路径，query_string为查询字符串，body为回调的消息体。
 
-**说明**
-
-符串，body为回调的消息体。 签名过程分为以下三步： i. 获取待签名字符串：资源路径经过URL解码后，加上原始的查询字符串、加上一个回车符、然后加上回调消息体。 ii. RSA签名：使用密钥对待签名字符串进行签名，签名的hash函数为MD5。 iii. 将签名后的结果做Base64编码，得到最终的签名，签名放在回调请求的authorization头中。 示例如下：
+签名过程分为以下三步： i. 获取待签名字符串：资源路径经过URL解码后，加上原始的查询字符串、加上一个回车符、然后加上回调消息体。 ii. RSA签名：使用密钥对待签名字符串进行签名，签名的hash函数为MD5。 iii. 将签名后的结果做Base64编码，得到最终的签名，签名放在回调请求的authorization头中。 示例如下：
 
 ```
 POST /index.php?id=1&index=2 HTTP/1.0 Host: 121.43.113.8 Connection: close Content-Length: 18 authorization: kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2t**** Content-Type: application/x-www-form-urlencoded User-Agent: http-client/0.0.1 x-oss-pub-key-url: aHR0cDovL2dvc3NwdWJsaWMuYWxpY2RuLmNvbS9jYWxsYmFja19wdWJfa2V5X3YxLnBlbQ== bucket=yonghu-test
@@ -3510,7 +3712,7 @@ POST /index.php?id=1&index=2 HTTP/1.0 Host: 121.43.113.8 Connection: close Conte
 
 | th为 | /index.php | ，query string为 _ | ?id=1&index=2 | ，body为 | bucket=yonghu-test | ，最终签名结 |
 |---|---|---|---|---|---|---|
-| kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2txA== |  |  |  |  |  |  |
+| kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2txA== |   |   |   |   |   |   |
 
 验证签名验证签名的过程即为签名的逆过程，由应用服务器验证，过程如下：
 
@@ -3524,13 +3726,7 @@ Result = rsa_verify(public_key, md5(url_decode(path) + query_string + ‘\n’ +
 public_key = urlopen(base64_decode(x-oss-pub-key-url头的值))
 ```
 
-了保证这个publickey是由OSS颁发的，用户需要校验 `x-oss-pub-key-url` 头的值必须
-
-**说明**
-
-```
-以 http://gosspublic.alicdn.com/ 或者 https://gosspublic.alicdn.com/ 开头。
-```
+> **说明：** 了保证这个publickey是由OSS颁发的，用户需要校验 `x-oss-pub-key-url` 头的值必须以 `http://gosspublic.alicdn.com/` 或者 `https://gosspublic.alicdn.com/` 开头。
 
 ii. 获取Base64解码后的签名
 
@@ -3555,8 +3751,6 @@ result = rsa_verify(public_key, md5(sign_str), signature)
 ```
 即 aHR0cDovL2dvc3NwdWJsaWMuYWxpY2RuLmNvbS9jYWxsYmFja19wdWJfa2V5X3YxLnBlbQ== 经过Base64解码后
 ```
-
-对象存储 OSS
 
 ```
 得到 http://gosspublic.alicdn.com/callback_pub_key_v1.pem 。
@@ -3608,11 +3802,10 @@ pub_key_url.startswith("https://gosspublic.alicdn.com/"):
         #get authorization
         authorization_base64 = self.headers['authorization']
         authorization = authorization_base64.decode('base64')
+        #get callback body
         content_length = self.headers['content-length']
 callbackbody=selfrfileread(int(contentlength))
 ```
-
-对象存储 OSS
 
 ```python
         callback_body = self.rfile.read(int(content_length))
@@ -3623,6 +3816,7 @@ callbackbody=selfrfileread(int(contentlength))
             auth_str = urllib2.unquote(self.path) + '\n' + callback_body
         else:
             auth_str = urllib2.unquote(self.path[0:pos]) + self.path[pos:] + '\n' +
+callback_body
         print auth_str
         #verify authorization
         auth_md5 = md5.new(auth_str).digest()
@@ -3639,6 +3833,7 @@ callbackbody=selfrfileread(int(contentlength))
             self.send_response(400)
             self.end_headers()
             return
+        #do something according to callback_body
         #response to OSS
         resp_body = '{"Status":"OK"}'
         self.send_response(200)
@@ -3654,7 +3849,7 @@ if '__main__' == __name__:
 server_port = 23451 server = MyHTTPServer(server_ip, server_port) server.serve_forever()
 ```
 
-其它语言的服务端代码如下： Java版本： 下载地址：Java 运行方法：解压包运行 `java -jar oss-callback-server-demo.jar 9000` （9000就是运行的端口，可以自己指定） PHP版本： 下载地址：PHP 运行方法：部署到Apache环境下，因为PHP本身语言的特点，取一些数据头部会依赖于环境。所以可以参考例子根据所在环境修改。 Python版本： 下载地址：Python 运行方法：解压包直接运行 `python callback_app_server.py` ，运行该程序需要安装RSA的依赖。 .NET版本： 对象存储 OSS 下载地址：.NET 运行方法：解压后参见 `README.md` 。 Go版本： 下载地址：Go 运行方法：解压后参见 `README.md` 。 Ruby版本： 下载地址：Ruby
+其它语言的服务端代码如下： Java版本： 下载地址：Java 运行方法：解压包运行 `java -jar oss-callback-server-demo.jar 9000` （9000就是运行的端口，可以自己指定） PHP版本： 下载地址：PHP 运行方法：部署到Apache环境下，因为PHP本身语言的特点，取一些数据头部会依赖于环境。所以可以参考例子根据所在环境修改。 Python版本： 下载地址：Python 运行方法：解压包直接运行 `python callback_app_server.py` ，运行该程序需要安装RSA的依赖。 .NET版本： 下载地址：.NET 运行方法：解压后参见 `README.md` 。 Go版本： 下载地址：Go 运行方法：解压后参见 `README.md` 。 Ruby版本： 下载地址：Ruby 运行方法： ruby aliyun_oss_callback_server.rb
 
 **步骤5：返回回调结果**
 
@@ -3664,9 +3859,7 @@ server_port = 23451 server = MyHTTPServer(server_ip, server_port) server.serve_f
 HTTP/1.0 200 OK Server: BaseHTTP/0.3 Python/2.7.6 Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: application/json Content-Length: 9 {"a":"b"}
 ```
 
-应用服务器返回OSS的响应必须带有Content-Length的Header，Body大小不能超过1 MB。
-
-**说明**
+> **说明：** 应用服务器返回OSS的响应必须带有Content-Length的Header，Body大小不能超过1 MB。
 
 **步骤6：返回上传结果**
 
@@ -3676,22 +3869,21 @@ OSS将应用服务器返回的内容返回给用户。 返回的内容响应为�
 HTTP/1.1 200 OK Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: application/json Content-Length: 9 Connection: keep-alive ETag: "D8E8FCA2DC0F896FD7CB4CB0031BA249" Server: AliyunOSS x-oss-bucket-version: 1442231779 x-oss-request-id: 55F6BF87207FB30F2640C548 {"a":"b"}
 ```
 
-**说明**
+> **说明：** 如果类似CompleteMultipartUpload这样的请求，在返回请求本身body中存在内容（如XML格式的信息），使用上传回调功能后会覆盖原有的body中的内容如 `{"a":"b"}` ，希望对此处做好判断处理。
+> 如果回调失败，则返回203，错误码为CallbackFailed。文件已经成功上传到了OSS，但回调失败。回调失败只是表示OSS没有收到预期的回调响应，不代表应用服务器没有收到回调请求（例如应用服务器返回的内容不是JSON格式）。
 
-如果类似CompleteMultipartUpload这样的请求，在返回请求本身body中存在内容（如XML格式的信息），使用上传回调功能后会覆盖原有的body中的内容如 `{"a":"b"}` ，希望对此处做好判断处理。 如果回调失败，则返回203，错误码为CallbackFailed。文件已经成功上传到了OSS，但回调失败。回调失败只是表示OSS没有收到预期的回调响应，不代表应用服务器没有收到回调请求（例如应用服务器返回的内容不是JSON格式）。
-
-#### PutObjectTagging
+#### 2.6.13 PutObjectTagging
 
 您可以通过PutObjectTagging接口设置或更新对象的标签（Object Tagging）。
 
 **注意事项**
 
-对象存储 OSS 对象标签使用一组键值对（Key-Value）标记对象。调用PutObjectTagging接口时，有如下注意事项： 标签限制单个Object最多可设置10个标签，Key不可重复。 每个Key长度不超过128字节，每个Value长度不超过256字节。 Key和Value区分大小写。 标签合法字符集包括大小写字母、数字、空格和以下符号： +‑=._:/ 通过HTTP header的方式设置标签且标签中包含任意字符时，您需要对标签的Key和Value做URL编码。 Last‑Modified 更改标签信息不会更新Object的Last‑Modified时间。
+对象标签使用一组键值对（Key-Value）标记对象。调用PutObjectTagging接口时，有如下注意事项： 标签限制单个Object最多可设置10个标签，Key不可重复。 每个Key长度不超过128字节，每个Value长度不超过256字节。 Key和Value区分大小写。 标签合法字符集包括大小写字母、数字、空格和以下符号： +‑=._:/ 通过HTTP header的方式设置标签且标签中包含任意字符时，您需要对标签的Key和Value做URL编码。 Last‑Modified 更改标签信息不会更新Object的Last‑Modified时间。
 
 **请求语法**
 
 ```xml
-Content‐Length: 114 Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue <Tagging>
+PUT /objectname?tagging Content‐Length: 114 Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue <Tagging>
   <TagSet>
     <Tag>
       <Key>Key</Key>
@@ -3717,10 +3909,10 @@ Content‐Length: 114 Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GM
 
 **示例**
 
-请求示例： 对象存储 OSS
+请求示例：
 
 ```xml
-Content‐Length: 114 Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Mon, 18 Mar 2019 08:25:17 GMT Authorization: OSS ***********:********************* <Tagging>
+PUT /objectname?tagging Content‐Length: 114 Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Mon, 18 Mar 2019 08:25:17 GMT Authorization: OSS ***********:********************* <Tagging>
   <TagSet>
     <Tag>
       <Key>a</Key>
@@ -3740,12 +3932,14 @@ Content‐Length: 114 Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Mo
 200 (OK) content‐length: 0 server: AliyunOSS x‐oss‐request‐id: 5C8F55ED461FB4A64C000004 date: Mon, 18 Mar 2019 08:25:17 GMT
 ```
 
-#### GetObjectTagging
+#### 2.6.14 GetObjectTagging
+
+您可以通过GetObjectTagging接口获取对象的标签信息。
 
 **请求语法**
 
 ```
-Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
+GET /objectname?tagging Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
 ```
 
 **请求头**
@@ -3766,14 +3960,12 @@ Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: 
 | Key | 字符串 | a | 标签键。 |
 | Value | 字符串 | 1 | 标签值。 |
 
-对象存储 OSS
-
 **示例**
 
 请求示例：
 
 ```
-Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Wed, 20 Mar 2019 02:02:36 GMT Authorization: OSS ************:********************
+GET /objectname?tagging Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Wed, 20 Mar 2019 02:02:36 GMT Authorization: OSS ************:********************
 ```
 
 响应示例：
@@ -3793,12 +3985,14 @@ Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Wed, 20 Mar 2019 02:02:3
 </Tagging>
 ```
 
-#### DeleteObjectTagging
+#### 2.6.15 DeleteObjectTagging
+
+您可以通过DeleteObjectTagging删除指定对象的标签。
 
 **请求语法**
 
 ```
-Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
+DELETE /objectname?tagging Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
 ```
 
 **请求头**
@@ -3814,22 +4008,22 @@ Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: GMT Date Authorization: 
 请求示例：
 
 ```
-Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Tue, 09 Apr 2019 03:00:33 GMT Authorization: OSS LTAIbsTkySSptaz****/Zr0o6BKgAl7iiBtHN2JMC****
+DELETE /objectname?tagging Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Tue, 09 Apr 2019 03:00:33 GMT Authorization: OSS LTAIbsTkySSptaz****/Zr0o6BKgAl7iiBtHN2JMC****
 ```
 
-响应示例： 对象存储 OSS
+响应示例：
 
 ```
 204 (No Content) content‐length: 0 server: AliyunOSS x‐oss‐request‐id: 5CAC0AD16D0232E2051B**** date: Tue, 09 Apr 2019 03:00:33 GMT
 ```
 
-### 关于MultipartUpload的操作
+### 2.7 关于MultipartUpload的操作
 
-#### 简介
+#### 2.7.1 简介
 
 除了通过PutObject、PostObject等接口上传文件到OSS以外，OSS还提供了Multipart Upload上传模式。 您可以在如下的应用场景内（但不仅限于此），使用Multipart Upload上传模式，例如： 需要支持断点上传。 上传超过5 GiB大小的文件。 网络条件较差，和OSS的服务器之间的链接经常断开。 上传文件之前，无法确定上传文件的大小。
 
-#### InitiateMultipartUpload
+#### 2.7.2 InitiateMultipartUpload
 
 使用Multipart Upload模式传输数据前，必须先调用InitiateMultipartUpload接口来通知OSS初始化一个Multipart Upload事件。 InitiateMultipartUpload接口会返回一个OSS服务器创建的全局唯一的Upload ID，用于标识本次Multipart Upload事件。您可以根据这个ID来发起相关的操作，如中止Multipart Upload、查询Multipart Upload等。
 
@@ -3840,7 +4034,7 @@ Host: bucketname.oss‐cn‐hangzhou.aliyuncs.com Date: Tue, 09 Apr 2019 03:00:3
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT date Authorization: SignatureValue
+POST /ObjectName?uploads HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT date Authorization: SignatureValue
 ```
 
 **请求参数**
@@ -3851,7 +4045,7 @@ InitiateMultipartUpload时，可以通过encoding-type对返回结果中的Key�
 |---|---|---|---|---|
 | encoding-type | 字符串 | 否 | url | 指定对返回的Key进行编码，目前支持URL编码。Key使用UTF-8字符，但XML 1.0标准不支持解析一些控制字符，比如ASCII值从0到10 的字符。对于Key中包含XML 1.0标准不支持的控制字符，可以通过指定encoding-type对返回的Key进行编码。 默认值：无可选值：url |
 
-| 开发指南·API参考 |  |  |  | 对象存储 OSS |
+| 开发指南·API参考 |   |   |   | 对象存储 OSS |
 |---|---|---|---|---|
 
 **请求头**
@@ -3874,8 +4068,6 @@ InitiateMultipartUpload时，可以通过encoding-type对返回结果中的Key�
 | UploadId | 字符串 | 0***D | 唯一标示此次Multipart Upload事件的ID。 |
 | EncodingType | 字符串 | url | 指明返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，那返回的结果会对Key 进行编码。 |
 
-对象存储 OSS
-
 **示例**
 
 请求示例：
@@ -3891,15 +4083,16 @@ HTTP/1.1 200 OK Content-Length: 230 Server: AliyunOSS Connection: keep-alive x-o
     <Bucket>multipart_upload</Bucket>
     <Key>multipart.data</Key>
     <UploadId>0***D</UploadId>
+</InitiateMultipartUploadResult>
 ```
 
-#### UploadPart
+#### 2.7.3 UploadPart
 
 初始化一个Multipart Upload之后，可以根据指定的Object名和Upload ID来分块（Part）上传数据。
 
 **注意事项**
 
-调用该接口上传Part数据前，必须调用InitiateMultipartUpload接口获取一个OSS服务器颁发的Upload ID。 Part号码的范围是1~10000。如果超出这个范围，OSS将返回InvalidArgument的错误码。 Multipart Upload要求除最后一个Part以外，其他的Part大小都要大于100 KB。但是Upload Part接口并不会立即校验上传Part的大小（因为不知道是否为最后一块），只有当CompleteMultipartUpload的时候才会校验。 OSS会将服务器端收到Part数据的MD5值放在ETag头内返回给用户。 若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在UploadPart响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算
+调用该接口上传Part数据前，必须调用InitiateMultipartUpload接口获取一个OSS服务器颁发的Upload ID。 Part号码的范围是1~10000。如果超出这个范围，OSS将返回InvalidArgument的错误码。 Multipart Upload要求除最后一个Part以外，其他的Part大小都要大于100 KB。但是Upload Part接口并不会立即校验上传Part的大小（因为不知道是否为最后一块），只有当CompleteMultipartUpload的时候才会校验。 OSS会将服务器端收到Part数据的MD5值放在ETag头内返回给用户。 若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在UploadPart响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算法，具体请参见InitiateMultipartUpload。
 
 **请求语法**
 
@@ -3913,7 +4106,7 @@ PUT /ObjectName?partNumber=PartNumber&uploadId=UploadId HTTP/1.1 Host: BucketNam
 
 **响应头**
 
-此接口仅涉及公共响应头。更多信息，请参见公共响应头（Common Response Headers）。 对象存储 OSS
+此接口仅涉及公共响应头。更多信息，请参见公共响应头（Common Response Headers）。
 
 **示例**
 
@@ -3929,25 +4122,23 @@ PUT /multipart.data?partNumber=1&uploadId=0***6 HTTP/1.1 Host: ***.regionid.exam
 HTTP/1.1 200 OK Server: AliyunOSS Connection: keep-alive ETag: 7***9 x-oss-request-id: 3***a Date: Wed, 22 Feb 2012 08:32:21 GMT
 ```
 
-#### UploadPartCopy
+#### 2.7.4 UploadPartCopy
 
 UploadPartCopy接口通过从一个已存在的Object中拷贝数据来上传一个Part。
 
 **注意事项**
 
-当拷贝一个大于1 GiB的文件时，必须使用UploadPartCopy的方式进行拷贝。如果想通过单个操作拷贝小于1 GiB 执行UploadPartCopy的源Bucket地址和目标Bucket地址必须是同一个Region。 调用该接口上传Part数据前，必须先调用InitiateMultipartUpload接口来获取一个OSS服务器颁发的Upload ID。 若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在UploadPart响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算法。 MultipartUpload要求除最后一个Part以外，其他的Part大小都要大于100 KiB。因不确定是否为最后一个 Part，UploadPart接口并不会立即校验上传Part的大小，只有当CompleteMultipartUpload的时候才会校验。
+当拷贝一个大于1 GiB的文件时，必须使用UploadPartCopy的方式进行拷贝。如果想通过单个操作拷贝小于1 GiB 的文件，请参见CopyObject。 使用UploadPartCopy接口时，有如下注意事项： 不允许拷贝以AppendObject方式上传的Object。 执行UploadPartCopy的源Bucket地址和目标Bucket地址必须是同一个Region。 调用该接口上传Part数据前，必须先调用InitiateMultipartUpload接口来获取一个OSS服务器颁发的Upload ID。 若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在UploadPart响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算法。 MultipartUpload要求除最后一个Part以外，其他的Part大小都要大于100 KiB。因不确定是否为最后一个 Part，UploadPart接口并不会立即校验上传Part的大小，只有当CompleteMultipartUpload的时候才会校验。
 
 **版本控制**
 
 UploadPartCopy默认从一个已存在的Object的当前版本中拷贝数据来上传一个Part。允许通过在请求头x-osscopy-source中附带versionId的子条件，实现从Object的指定版本进行拷贝，例如x-oss-copy-source : /SourceBucketName/SourceObjectName?versionId=111111。
 
-**说明**
+> **说明：** SourceObjectName要进行URL编码。响应中将会返回被拷贝Object的versionId：x-oss-copy-source- version-id。
 
-SourceObjectName要进行URL编码。响应中将会返回被拷贝Object的versionId：x-oss-copy-sourceversion-id。 如果未指定versionId且拷贝Object的当前版本为删除标记（Delete Marker），OSS将返回404 Not Found。通过指定versionId来拷贝删除标记时，OSS将返回400 Bad Request。
+如果未指定versionId且拷贝Object的当前版本为删除标记（Delete Marker），OSS将返回404 Not Found。通过指定versionId来拷贝删除标记时，OSS将返回400 Bad Request。
 
 **请求语法**
-
-对象存储 OSS
 
 ```
 PUT /ObjectName? partNumber=PartNumber&uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Authorization: SignatureValue x-oss-copy-source: /SourceBucketName/SourceObjectName x-oss-copy-source-range:bytes=first-last
@@ -3968,8 +4159,6 @@ PUT /ObjectName? partNumber=PartNumber&uploadId=UploadId HTTP/1.1 Host: BucketNa
 |---|---|---|---|---|
 | x-oss-copy- source-if- match | 字符串 | 否 | 5B3C1A2E053 D763E1B002C C607C5**** | 如果源Object的ETag值和用户提供的ETag 相等，则执行拷贝操作；否则返回412 HTTP错误码（预处理失败）。 类型：字符串默认值：无 |
 | x-oss-copy- source-if- none-match | 字符串 | 否 | 2019-04- 09T07:01:56. 000Z | 如果源Object自从用户指定的时间以后就没有被修改过，则执行拷贝操作；否则返回 412 HTTP错误码（预处理失败）。 类型：字符串默认值：无 |
-
-对象存储 OSS
 
 | x-oss-copy- source-if- unmodified- since | 字符串 | 否 | 2019-04- 09T07:01:56. 000Z | 如果传入参数中的时间等于或者晚于文件实际修改时间，则正常传输文件，并返回200 OK；否则返回412 precondition failed错误。 类型：字符串默认值：无 |
 |---|---|---|---|---|
@@ -4000,7 +4189,7 @@ HTTP/1.1 200 OK Server: AliyunOSS Connection: keep-alive x-oss-request-id: 3e6ab
 </CopyPartResult>
 ```
 
-对象存储 OSS 请求示例
+指定versionId进行UploadPartCopy 请求示例
 
 ```
 PUT /multipart.data?partNumber=2&uploadId=63C06A5CFF6F4AE4A6BB3AD7F01C**** HTTP/1.1 Host: ***.regionid.example.com Date: Tue, 09 Apr 2019 07:01:56 GMT Authorization: OSS 6jftttm6x6san0ewtgyk****:v/sJFtYvg7DTa4pJ2AMShZL/**** x-oss-copy-source: /oss-example/src-object? versionId=CAEQMxiBgMC0vs6D0BYiIGJiZWRjOTRjNTg0NzQ1MTRiN2Y1OTYxMTdkYjQ0****
@@ -4015,7 +4204,7 @@ HTTP/1.1 200 OK Server: AliyunOSS Connection: keep-alive x-oss-copy-source-versi
 </CopyPartResult>
 ```
 
-#### CompleteMultipartUpload
+#### 2.7.5 CompleteMultipartUpload
 
 在将所有数据Part都上传完成后，必须调用CompleteMultipartUpload API来完成整个文件的Multipart Upload。
 
@@ -4025,10 +4214,8 @@ HTTP/1.1 200 OK Server: AliyunOSS Connection: keep-alive x-oss-copy-source-versi
 
 **请求语法**
 
-对象存储 OSS
-
 ```xml
-Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Authorization: Signature <Part> <PartNumber>PartNumber</PartNumber> <ETag>ETag</ETag> </Part> ...
+POST /ObjectName?uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Authorization: Signature <CompleteMultipartUpload> <Part> <PartNumber>PartNumber</PartNumber> <ETag>ETag</ETag> </Part> ... </CompleteMultipartUpload>
 ```
 
 **请求头**
@@ -4056,8 +4243,6 @@ Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Author
 | CompleteMultip artUploadResult | 容器 | 不涉及 | 保存CompleteMultipartUpload请求结果的容器。 |
 | ETag | 字符串 | B***D-3 | ETag在每个Object生成的时候被创建，用于标示一个 Object的内容。CompleteMultipartUpload请求创建的 Object，ETag值是其内容的UUID。ETag值可以用于检查 Object内容是否发生变化。 |
 
-对象存储 OSS
-
 | Location | 字符串 | http://oss- example.endpoi nt /multipart.data | 新创建Object的URL。 |
 |---|---|---|---|
 | Key | 字符串 | multipart.data | 新创建Object的名字。 |
@@ -4068,7 +4253,7 @@ Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Author
 请求示例：
 
 ```xml
-POST /multipart.data? uploadId=0***4 HTTP/1.1 Host: ***.regionid.example.com Content-Length: 1056 Date: Fri, 24 Feb 2012 10:19:18 GMT Authorization: OSS q***0=
+POST /multipart.data? uploadId=0***4 HTTP/1.1 Host: ***.regionid.example.com Content-Length: 1056 Date: Fri, 24 Feb 2012 10:19:18 GMT Authorization: OSS q***0= <CompleteMultipartUpload>
     <Part>
         <PartNumber>1</PartNumber>
         <ETag>"3***9"</ETag>
@@ -4081,6 +4266,7 @@ POST /multipart.data? uploadId=0***4 HTTP/1.1 Host: ***.regionid.example.com Con
         <PartNumber>8</PartNumber>
         <ETag>"8***2"</ETag>
     </Part>
+</CompleteMultipartUpload>
 ```
 
 返回示例：
@@ -4091,20 +4277,21 @@ HTTP/1.1 200 OK Server: AliyunOSS Content-Length: 329 Content-Type: Application/
     <Bucket>oss-example</Bucket>
     <Key>multipart.data</Key>
     <ETag>B***D-3</ETag>
+</CompleteMultipartUploadResult>
 ```
 
-#### AbortMultipartUpload
+#### 2.7.6 AbortMultipartUpload
 
-AbortMultipartUpload接口可以根据用户提供的Upload ID中止其对应的Multipart Upload事件。 对象存储 OSS
+AbortMultipartUpload接口可以根据用户提供的Upload ID中止其对应的Multipart Upload事件。
 
 **注意事项**
 
-您需要提供MultipartUpload事件相应的uploadId。 取消一个MultipartUpload事件过程中，如果所属的某些Part仍然在上传，那么此次取消操作将无法删除这些 Part。 取消一个MultipartUpload事件后，您无法再使用此uploadId做任何操作，已经上传的Part数据也会被删除。 建议您及时完成分片上传或者取消分片上传，因为已上传但是未完成或未取消的分片会占用存储空间进而产生存储费用。
+调用AbortMultipartUpload接口时，有如下注意事项： 您需要提供MultipartUpload事件相应的uploadId。 取消一个MultipartUpload事件过程中，如果所属的某些Part仍然在上传，那么此次取消操作将无法删除这些 Part。 取消一个MultipartUpload事件后，您无法再使用此uploadId做任何操作，已经上传的Part数据也会被删除。 建议您及时完成分片上传或者取消分片上传，因为已上传但是未完成或未取消的分片会占用存储空间进而产生存储费用。
 
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
+DELETE /ObjectName?uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
 ```
 
 **请求元素**
@@ -4133,9 +4320,9 @@ Delete /multipart.data?&uploadId=0***E HTTP/1.1 Host: ***.regionid.example.com D
 HTTP/1.1 204 Server: AliyunOSS Connection: keep-alive x-oss-request-id: 0***d Date: Wed, 22 Feb 2012 08:32:21 GMT
 ```
 
-#### ListMultipartUploads
+#### 2.7.7 ListMultipartUploads
 
-ListMultipartUploads可以罗列出所有执行中的Multipart Upload事件，即已经被初始化的Multipart Upload但是未被Complete或者Abort的Multipart Upload事件。 OSS返回的罗列结果中最多会包含1000个Multipart Upload信息。如果想指定OSS返回罗列结果内Multipart Upload信息的数目，可以在请求中添加max-uploads参数。另外，OSS返回罗列结果中的IsTruncated元素标明是否还有其他的Multipart Upload。 对象存储 OSS
+ListMultipartUploads可以罗列出所有执行中的Multipart Upload事件，即已经被初始化的Multipart Upload但是未被Complete或者Abort的Multipart Upload事件。 OSS返回的罗列结果中最多会包含1000个Multipart Upload信息。如果想指定OSS返回罗列结果内Multipart Upload信息的数目，可以在请求中添加max-uploads参数。另外，OSS返回罗列结果中的IsTruncated元素标明是否还有其他的Multipart Upload。
 
 **请求语法**
 
@@ -4158,8 +4345,6 @@ Get /?uploads HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Auth
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-对象存储 OSS
 
 | ListMultipartU ploadsResult | 容器 | 不涉及 | 保存List Multipart Upload请求结果的容器。 |
 |---|---|---|---|
@@ -4188,7 +4373,7 @@ max-uploads参数最大值为1000。 在OSS的返回结果首先按照Object名�
 Get /?uploads HTTP/1.1 Host:***.regionid.example.com Date: Thu, 23 Feb 2012 06:14:27 GMT Authorization: OSS q***Y=
 ```
 
-返回示例： 对象存储 OSS
+返回示例：
 
 ```xml
 HTTP/1.1 200 Server: AliyunOSS Connection: keep-alive Content-length: 1839 Content-type: application/xml x-oss-request-id: 5***a Date: Thu, 23 Feb 2012 06:14:27 GMT <?xml version="1.0" encoding="UTF-8"?> <ListMultipartUploadsResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
@@ -4216,9 +4401,10 @@ HTTP/1.1 200 Server: AliyunOSS Connection: keep-alive Content-length: 1839 Conte
         <UploadId>0***F</UploadId>
         <Initiated>2012-02-23T06:14:27.000Z</Initiated>
     </Upload>
+</ListMultipartUploadsResult>
 ```
 
-#### ListParts
+#### 2.7.8 ListParts
 
 ListParts接口可以列举出指定Upload ID所属的所有已经上传成功Part。
 
@@ -4229,12 +4415,10 @@ ListParts支持max-parts和part-number-marker两种请求参数。 max-parts参�
 **请求语法**
 
 ```
-Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
+Get /ObjectName?uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
 ```
 
 **请求参数**
-
-对象存储 OSS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4258,8 +4442,6 @@ Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
 | IsTruncated | 枚举字符串 | false | 标明是否本次返回的List Part结果列表被截断。true表示本次没有返回全部结果；false表示本次已经返回了全部结果。 有效值：true、false |
 | Part | 容器 | 不涉及 | 保存Part信息的容器。 |
 | PartNumber | 整数 | 1 | 标示Part的数字。 |
-
-对象存储 OSS
 
 | LastModified | 日期 | 2012-02- 23T07:01:34 .000Z | Part上传的时间。 |
 |---|---|---|---|
@@ -4302,32 +4484,29 @@ HTTP/1.1 200 Server: AliyunOSS Connection: keep-alive Content-length: 1221 Conte
         <ETag>7***9</ETag>
         <Size>1024</Size>
     </Part>
+</ListPartsResult>
 ```
 
-对象存储 OSS
+### 2.8 跨域资源共享
 
-### 跨域资源共享
-
-#### 简介
+#### 2.8.1 简介
 
 跨域资源共享CORS允许Web端的应用程序访问不属于本域的资源。OSS提供了CORS支持以方便利用OSS开发更灵活的WEB应用程序。OSS提供接口方便开发者控制跨域访问的各种权限。
 
-#### PutBucketcors
+#### 2.8.2 PutBucketcors
 
 PutBucketcors接口用于为指定的存储空间（Bucket）设定一个跨域资源共享（CORS）规则。如果Bucket已有 CORS规则，使用此接口会覆盖原有规则。Bucket默认不开启CORS功能，所有跨域请求的Origin都不被允许。
 
 **注意事项**
 
-默认不开启CORS Bucket默认不开启CORS功能，所有跨域请求的Origin都不被允许。 覆盖语义 PutBucketCors为覆盖语义，即新配置的CORS规则将覆盖已有的CORS规则。 应用程序中使用CORS 在应用程序中使用CORS功能时，需通过PutBucketCors接口手动上传CORS规则来开启CORS功能。 例如，从 `www.a.com` 通过浏览器的 `XMLHttpRequest` 功能来访问OSS，需要通过本接口手动上传CORS规则， 且CORS规则需由XML文档进行描述。 CORS规则匹配当OSS收到一个跨域请求或OPTIONS请求，会先读取Bucket对应的CORS规则，然后进行相应的权限检查。OSS 会依次检查每一条规则，使用第一条匹配的规则来允许请求并返回对应的Header。如果所有规则都匹配失败，则不附加任何CORS相关的Header。 CORS规则匹配成功必须满足以下三个条件： 请求的Origin必须匹配一个 `AllowedOrigin` 项。 请求的方法（如GET、PUT等）或者OPTIONS请求的 `Access-Control-Request-Method` 头对应的方法必须匹
+使用跨域资源共享时，有如下注意事项： 默认不开启CORS Bucket默认不开启CORS功能，所有跨域请求的Origin都不被允许。 覆盖语义 PutBucketCors为覆盖语义，即新配置的CORS规则将覆盖已有的CORS规则。 应用程序中使用CORS 在应用程序中使用CORS功能时，需通过PutBucketCors接口手动上传CORS规则来开启CORS功能。 例如，从 `www.a.com` 通过浏览器的 `XMLHttpRequest` 功能来访问OSS，需要通过本接口手动上传CORS规则， 且CORS规则需由XML文档进行描述。 CORS规则匹配当OSS收到一个跨域请求或OPTIONS请求，会先读取Bucket对应的CORS规则，然后进行相应的权限检查。OSS 会依次检查每一条规则，使用第一条匹配的规则来允许请求并返回对应的Header。如果所有规则都匹配失败，则不附加任何CORS相关的Header。 CORS规则匹配成功必须满足以下三个条件： 请求的Origin必须匹配一个 `AllowedOrigin` 项。 请求的方法（如GET、PUT等）或者OPTIONS请求的 `Access-Control-Request-Method` 头对应的方法必须匹
 
-| 一个 AllowedMethod 项。 PTIONS请求的 Access-Control-Request-Headers | AllowedMethod |  |  | 项。 |
+| 一个 AllowedMethod 项。 PTIONS请求的 Access-Control-Request-Headers | AllowedMethod |   |   | 项。 |
 |---|---|---|---|---|
-|  |  | Access-Control-Request-Headers |  |  |
-| AllowedHeader |  |  | 项。 |  |
+|   |   | Access-Control-Request-Headers |   |   |
+| AllowedHeader |   |   | 项。 |   |
 
 **请求语法**
-
-对象存储 OSS
 
 ```xml
 PUT /?cors HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-Type: application/xml Host: BucketName.regionid.example.com Authorization: SignatureValue <?xml version="1.0" encoding="UTF-8"?> <CORSConfiguration>
@@ -4369,8 +4548,6 @@ PUT /?cors HTTP/1.1 Date: GMT Date Content-Length：ContentLength Content-Type: 
 | CORSConfigur ation | 容器 | 是 | 不涉及 | Bucket的CORS规则容器。 |
 | MaxAgeSecon ds | 整型 | 否 | 100 | 指定浏览器对特定资源的预取（OPTIONS）请求返回结果的缓存时间，单位为秒。一个 CORSRule里面最多允许出现一个。 |
 
-对象存储 OSS
-
 **响应头**
 
 此接口仅涉及公共响应头。更多信息，请参见公共响应头（Common Response Headers）。
@@ -4405,7 +4582,9 @@ PUT /?cors HTTP/1.1 Host: ***.regionid.example.com Content-Length: 186 Date: Fri
 HTTP/1.1 200 OK x-oss-request-id: 5***F Date: Fri, 04 May 2012 03:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-#### GetBucketcors
+#### 2.8.3 GetBucketcors
+
+GetBucketcors操作用于获取指定的Bucket目前的CORS规则。
 
 **请求语法**
 
@@ -4415,7 +4594,7 @@ GET /?cors HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authori
 
 **请求头**
 
-此接口仅涉及公共请求头。更多详情，请参见公共请求头（Common Request Headers）。 对象存储 OSS
+此接口仅涉及公共请求头。更多详情，请参见公共请求头（Common Request Headers）。
 
 **响应元素**
 
@@ -4451,9 +4630,9 @@ HTTP/1.1 200 x-oss-request-id: 5***F Date: Thu, 13 Sep 2012 07:51:28 GMT Connect
 </CORSConfiguration>
 ```
 
-#### DeleteBucketcors
+#### 2.8.4 DeleteBucketcors
 
-对象存储 OSS
+DeleteBucketcors用于清空CORS规则。
 
 **请求语法**
 
@@ -4483,7 +4662,7 @@ DELETE /?cors HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 05:
 HTTP/1.1 204 No Content x-oss-request-id: 5***C Date: Fri, 24 Feb 2012 05:45:34 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-#### OptionObject
+#### 2.8.5 OptionObject
 
 浏览器在发送跨域请求之前会发送一个preflight请求（OPTIONS）并带上特定的来源域，HTTP方法和header信息等给OSS以决定是否发送真正的请求。 OSS可以通过PutBucketcors接口来开启Bucket的CORS支持，开启CORS功能之后，OSS在收到浏览器preflight 请求时会根据设定的规则评估是否允许本次请求。如果不允许或者CORS功能没有开启，返回403 Forbidden。
 
@@ -4498,8 +4677,6 @@ OPTIONS /ObjectName HTTP/1.1 Host: BucketName.regionid.example.com Origin:Origin
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Origin | 字符串 | 是 | http://www.e xample.com | 请求来源域，用来标示跨域请求。 默认值：无 |
-
-对象存储 OSS
 
 | Access- Control- Request- Method | 字符串 | 是 | PUT | 表示在实际请求中将会用到的方法。 默认值：无 |
 |---|---|---|---|---|
@@ -4529,13 +4706,13 @@ OPTIONS /testobject HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 20
 HTTP/1.1 200 OK x-oss-request-id: 5***C Date: Fri, 24 Feb 2012 05:45:34 GMT Access-Control-Allow-Origin: http://www.example.com Access-Control-Allow-Methods: PUT Access-Control-Expose-Headers: x-oss-test Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-### OSS错误响应
+### 2.9 OSS错误响应
 
 当用户访问OSS出现错误时，OSS会返回给用户相应的错误码和错误信息，便于用户定位问题，并做出适当的处理。
 
 **OSS的错误响应格式**
 
-对象存储 OSS 当用户访问OSS出错时，OSS会返回给用户一个合适的3xx、4xx或者5xx的HTTP状态码，以及一个 application/xml格式的消息体。 错误响应的消息体例子：
+当用户访问OSS出错时，OSS会返回给用户一个合适的3xx、4xx或者5xx的HTTP状态码，以及一个 application/xml格式的消息体。 错误响应的消息体例子：
 
 ```xml
 <?xml version="1.0" ?> <Error xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
@@ -4575,8 +4752,6 @@ OSS的错误码列表如下： 表 1. OSS的错误码
 | InvalidArgument | 参数格式错误。 | 400 |
 | InvalidAccessKeyId | AccessKeyId不存在。 | 403 |
 
-对象存储 OSS
-
 | InvalidBucketName | 无效的Bucket名字。 | 400 |
 |---|---|---|
 | InvalidDigest | 无效的摘要。 | 400 |
@@ -4612,7 +4787,7 @@ OSS的错误码列表如下： 表 1. OSS的错误码
 ABC /1.txt HTTP/1.1 Host: bucketname.regionid.example.com Date: Thu, 11 Aug 2016 03:53:40 GMT Authorization: signatureValue
 ```
 
-对象存储 OSS 返回示例：
+返回示例：
 
 ```xml
 HTTP/1.1 405 Method Not Allowed Server: AliyunOSS Date: Thu, 11 Aug 2016 03:53:44 GMT Content-Type: application/xml Content-Length: 338 Connection: keep-alive x-oss-request-id: 57ABF6C8BC4D25D86CBA5ADE Allow: GET DELETE HEAD PUT POST OPTIONS <?xml version="1.0" encoding="UTF-8"?> <Error>
@@ -4625,11 +4800,7 @@ HTTP/1.1 405 Method Not Allowed Server: AliyunOSS Date: Thu, 11 Aug 2016 03:53:4
 </Error>
 ```
 
-如果访问的资源是/bucket/， ResourceType应该是Bucket，如果访问的资源
-
-**说明**
-
-是/bucket/object，ResourceType应该是Object。
+> **说明：** 如果访问的资源是/bucket/， ResourceType应该是Bucket，如果访问的资源是/bucket/object，ResourceType应该是Object。
 
 **OSS操作支持但参数不支持的操作**
 
@@ -4651,23 +4822,25 @@ HTTP/1.1 400 Bad Request Server: AliyunOSS Date: Thu, 11 Aug 2016 01:44:54 GMT C
 </Error>
 ```
 
-对象存储 OSS
+## 3 SDK参考
 
-## SDK参考
+### 3.1 Java-SDK
 
-### Java-SDK
+#### 3.1.1 前言
 
-#### 前言
+本文介绍 OSS Java SDK 的版本兼容性说明，并提供详细的源码示例。
 
 **兼容性**
 
-对于3.×.×系列SDK： 接口：兼容。 命名空间：兼容。 对于2.×.×系列SDK： 接口：兼容。 命名空间：兼容。 对于1.0.× 系列SDK： 接口：兼容。 命名空间：不兼容。2.0.0版本移除了1.0.x版本中Table Store相关代码，将包名
+OSS Java SDK新版本对之前版本兼容性说明： 对于3.×.×系列SDK： 接口：兼容。 命名空间：兼容。 对于2.×.×系列SDK： 接口：兼容。 命名空间：兼容。 对于1.0.× 系列SDK： 接口：兼容。 命名空间：不兼容。2.0.0版本移除了1.0.x版本中Table Store相关代码，将包名
 
 ```
 称 com.aliyun.openservices.* 和 com.aliyun.openservices.oss.* 更换为 com.aliyun.oss.* 。
 ```
 
 **SDK源码和API文档**
+
+SDK源码请参见GitHub。更多信息请参见OSS Java SDK API文档。
 
 **示例代码**
 
@@ -4684,8 +4857,6 @@ OSS Java SDK提供丰富的示例代码，方便您参考或直接使用。示�
 | CreateFolderSample.java | 创建文件夹的用法，OSS文件夹的详细说明请参看文件夹。 |
 | UploadSample.java | 展示断点续传上传的用法。 |
 
-对象存储 OSS
-
 | DownloadSample.java | 展示了断点续传下载的用法。 |
 |---|---|
 | ImageSample.java | 展示了图片服务的用法。 |
@@ -4698,7 +4869,9 @@ OSS Java SDK提供丰富的示例代码，方便您参考或直接使用。示�
 | ConcurrentGetObjectSample.ja va | 利用范围下载实现的并发下载，推荐直接使用的断点续传下载（downloadFile）。 |
 | UploadPartCopySample.java | 展示了大文件分片复制的用法。 |
 
-#### 安装
+#### 3.1.2 安装
+
+本文介绍如何安装Java SDK。
 
 **环境准备**
 
@@ -4714,7 +4887,7 @@ OSS Java SDK提供丰富的示例代码，方便您参考或直接使用。示�
 
 **在Maven项目中加入依赖项（推荐方式）**
 
-在 Maven 工程中使用 OSS Java SDK，只需在 pom.xml 中加入相应依赖即可。以 3.18.4 版本为例，在 <dependencies> 内加入如下内容： 对象存储 OSS
+在 Maven 工程中使用 OSS Java SDK，只需在 pom.xml 中加入相应依赖即可。以 3.18.4 版本为例，在 <dependencies> 内加入如下内容：
 
 ```xml
 <dependency>
@@ -4743,13 +4916,13 @@ OSS Java SDK提供丰富的示例代码，方便您参考或直接使用。示�
 **JARs or directories**。
 5. 选中您在第3步拷贝的所有JAR文件，导入到External Libraries中。
 
-#### 初始化
+#### 3.1.3 初始化
 
 OSSClient是OSS的Java客户端，用于管理存储空间和文件等OSS资源。使用Java SDK发起OSS请求，您需要初始化一个OSSClient实例，并根据需要修改ClientConfiguration的默认配置项。
 
 **前提条件**
 
-已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
+已安装OSS Java SDK。 已获取Endpoint。 已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
 
 **新建OSSClient**
 
@@ -4757,7 +4930,7 @@ OSSClient是OSS的Java客户端，用于管理存储空间和文件等OSS资源�
 
 **使用AccessKey**
 
-对象存储 OSS `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+（推荐）从环境变量获取AccessKey `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
 String endpoint = "<yourEndpoint>";
@@ -4803,7 +4976,7 @@ ossClient.shutdown();
 
 **使用STS临时访问凭证**
 
-适用于应用程序需要临时访问OSS的场景。通过STS服务获取的临时身份凭证（Access Key ID、Access Key Secret和Security Token）初始化凭证提供者。该方式需要手动维护STS Token，存在安全性风险和维护复杂度增加的风险。如果需要多次临时访问OSS，需要手动刷新STS Token。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+适用于应用程序需要临时访问OSS的场景。通过STS服务获取的临时身份凭证（Access Key ID、Access Key Secret和Security Token）初始化凭证提供者。该方式需要手动维护STS Token，存在安全性风险和维护复杂度增加的风险。如果需要多次临时访问OSS，需要手动刷新STS Token。 （推荐）从环境变量获取AccessKey `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
 String endpoint = "<yourEndpoint>";
@@ -4827,7 +5000,7 @@ N_TOKEN。 EnvironmentVariableCredentialsProvider credentialsProvider = Credenti
          .build();
 ```
 
-硬编码AccessKey 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+硬编码AccessKey `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String securityToken = "<yourSecurityToken>";
@@ -4862,8 +5035,6 @@ ClientConfiguration是OSSClient的配置类，您可通过此类来配置代理�
 | SupportCname | 是否支持CNAME作为Endpoint，默认支持CNAME。 | ClientConfiguration.setSupportCna me |
 | SLDEnabled | 是否开启二级域名（Second Level Domain）的访问方式，默认不开启。 | ClientConfiguration.setSLDEnabled |
 | Protocol | 连接OSS所采用的协议（HTTP或 HTTPS），默认为HTTP。 | ClientConfiguration.setProtocol |
-
-对象存储 OSS
 
 | UserAgent | 用户代理，指HTTP的User-Agent头。 默认为”aliyun-sdk-java”。 | ClientConfiguration.setUserAgent |
 |---|---|---|
@@ -4945,8 +5116,6 @@ OSS ossClient = new OSSClientBuilder()
     .clientConfiguration(clientBuilderConfiguration)
     .build();
 ```
-
-对象存储 OSS
 
 **最大错误重试次数**
 
@@ -5037,7 +5206,7 @@ clientBuilderConfiguration.setProtocol(Protocol.HTTPS); OSS ossClient = new OSSC
 
 **签名版本**
 
-使用 `setSignatureVersion` 配置签名算法版本。 对象存储 OSS
+使用 `setSignatureVersion` 配置签名算法版本。
 
 ```
 ClientBuilderConfiguration clientBuilderConfiguration = new ClientBuilderConfiguration();
@@ -5064,7 +5233,7 @@ clientBuilderConfiguration.setSignatureVersion(SignVersion.V1); OSS ossClient = 
 ClientBuilderConfiguration clientBuilderConfiguration = new ClientBuilderConfiguration();
 ```
 
-`//` 开启二级域名访问`OSS`，默认情况下是关闭的 `// 2.1.2`及之后的版本会自动检测到`IP`地址，因此不再需要设置此值
+`//` 开启二级域名访问`OSS`，默认情况下是关闭的 `// OSS Java SDK V1 2.1.2`及之前的版本需要设置此值 `// 2.1.2`及之后的版本会自动检测到`IP`地址，因此不再需要设置此值
 
 ```
 clientBuilderConfiguration.setSLDEnabled(true); OSS ossClient = new OSSClientBuilder()
@@ -5104,13 +5273,13 @@ clientBuilderConfiguration.setSupportCname(false); OSS ossClient = new OSSClient
     .build();
 ```
 
-#### 快速入门
+#### 3.1.4 快速入门
 
 本节您将看到如何快速使用 OSS Java SDK，完成常见操作，如创建存储空间、上传文件、下载文件等。
 
 **示例工程**
 
-OSS Java SDK提供了基于Maven和Ant的示例工程。您可以在本地设备上编译和运行示例工程，也可以以示例工程为基础开发您的应用。工程的编译和运行方法，请参见工程目录下的README.md。 存储空间是OSS全局命名空间，相当于数据的容器，可以存储若干文件。以下代码用于新建一个存储空间： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+OSS Java SDK提供了基于Maven和Ant的示例工程。您可以在本地设备上编译和运行示例工程，也可以以示例工程为基础开发您的应用。工程的编译和运行方法，请参见工程目录下的README.md。 Maven示例工程：aliyun-oss-java-sdk-demo-mvn.zip Ant示例工程：aliyun-oss-java-sdk-demo-ant.zip 存储空间是OSS全局命名空间，相当于数据的容器，可以存储若干文件。以下代码用于新建一个存储空间： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5119,7 +5288,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ossClient.createBucket(bucketName);
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 创建存储空间。
+
+```
+ossClient.createBucket(bucketName);
 ```
 
 `//` 关闭`OSSClient`。
@@ -5128,11 +5303,7 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-AccessKey Id和AccessKey Secret获取方式请参见获取AccessKey。
-
-#### 上传文件
-
-以下代码用于上传文件至OSS： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+AccessKey Id和AccessKey Secret获取方式请参见获取AccessKey。 获取Endpoint信息，请参见获取Endpoint。 以下代码用于上传文件至OSS： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -5156,9 +5327,7 @@ String content = "Hello OSS"; ossClient.putObject(bucketName, objectName, new By
 ossClient.shutdown();
 ```
 
-#### 下载文件
-
-以下代码用于获取文件的文本内容： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于获取文件的文本内容： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -5185,23 +5354,19 @@ InputStream content = ossObject.getObjectContent(); if (content != null) {
         String line = reader.readLine();
         if (line == null) break;
         System.out.println("\n" + line);
-    }
 ```
 
-`//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
+`}` `//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
 
 ```
     content.close();
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
-
-##### 列举文件
 
 以下代码用于列举指定存储空间下的文件。默认列举100个文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
@@ -5227,18 +5392,15 @@ ObjectListing objectListing = ossClient.listObjects(bucketName);
 for (OSSObjectSummary objectSummary : objectListing.getObjectSummaries()) {
     System.out.println(" - " + objectSummary.getKey() + "  " +
             "(size = " + objectSummary.getSize() + ")");
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
 
-##### 删除文件
-
-对象存储 OSS 删除文件完整代码请参见GitHub。 以下代码用于删除指定文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+删除文件完整代码请参见GitHub。 以下代码用于删除指定文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -5262,11 +5424,11 @@ ossClient.deleteObject(bucketName, objectName);
 ossClient.shutdown();
 ```
 
-#### 存储空间
+#### 3.1.5 存储空间
 
-##### 创建存储空间
+##### 3.1.5.1 创建存储空间
 
-存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 以下代码用于创建存储空间： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5275,7 +5437,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ossClient.createBucket(bucketName);
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 创建存储空间。
+
+```
+ossClient.createBucket(bucketName);
 ```
 
 `//` 关闭`OSSClient`。
@@ -5284,13 +5452,13 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-##### 列举存储空间
+##### 3.1.5.2 列举存储空间
 
-存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何列举存储空间。 存储空间按照字母顺序排列。您可以列举所有的存储空间，或符合指定条件的存储空间。如果有低频类型或归档类型
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何列举存储空间。 存储空间按照字母顺序排列。您可以列举所有的存储空间，或符合指定条件的存储空间。如果有低频类型或归档类型的存储空间，请使用Java SDK 2.6.0及以上版本。
 
 **列举所有的存储空间**
 
-以下代码用于列举所有的存储空间： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于列举所有的存储空间： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -5298,13 +5466,18 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 
 `//` 创建`OSSClient`实例。
 
-```java
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); List<Bucket> buckets = ossClient.listBuckets(); for (Bucket bucket : buckets) {
-    System.out.println(" - " + bucket.getName());
-}
+```
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 ```
 
-`//` 关闭`OSSClient`。
+`//` 列举存储空间。
+
+```java
+List<Bucket> buckets = ossClient.listBuckets(); for (Bucket bucket : buckets) {
+    System.out.println(" - " + bucket.getName());
+```
+
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -5323,8 +5496,9 @@ ListBucketsRequest listBucketsRequest = new ListBucketsRequest();
 ```java
 listBucketsRequest.setPrefix("<yourBucketPrefix>"); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
     System.out.println(" - " + bucket.getName());
-}
 ```
+
+`}`
 
 **列举指定marker之后的存储空间**
 
@@ -5339,22 +5513,30 @@ ListBucketsRequest listBucketsRequest = new ListBucketsRequest();
 ```java
 listBucketsRequest.setMarker("<yourBucketMarker>"); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
     System.out.println(" - " + bucket.getName());
-}
 ```
+
+`}`
 
 **列举指定个数的存储空间**
 
 以下代码用于列举指定个数（maxKeys）的存储空间：
 
-```java
-ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); listBucketsRequest.setMaxKeys(500); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
-    System.out.println(" - " + bucket.getName());
-}
+```
+ListBucketsRequest listBucketsRequest = new ListBucketsRequest();
 ```
 
-##### 判断存储空间是否存在
+`//` 限定此次列举存储空间的个数为`500`。默认值为`100`，最大值为`1000`。
 
-对象存储 OSS 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何判断存储空间是否存在。 以下代码用于判断指定的存储空间是否存在： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+```java
+listBucketsRequest.setMaxKeys(500); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
+    System.out.println(" - " + bucket.getName());
+```
+
+`}`
+
+##### 3.1.5.3 判断存储空间是否存在
+
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何判断存储空间是否存在。 以下代码用于判断指定的存储空间是否存在： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
@@ -5378,7 +5560,7 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-##### 管理存储空间访问权限
+##### 3.1.5.4 管理存储空间访问权限
 
 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何设置和获取存储空间访问权限（ACL）。
 
@@ -5416,8 +5598,6 @@ ossClient.setBucketAcl("<yourBucketName>", CannedAccessControlList.Private);
 ossClient.shutdown();
 ```
 
-对象存储 OSS
-
 **获取存储空间访问权限**
 
 以下代码用于获取存储空间的访问权限： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -5444,13 +5624,13 @@ AccessControlList acl = ossClient.getBucketAcl("<yourBucketName>"); System.out.p
 ossClient.shutdown();
 ```
 
-##### 删除存储空间
+##### 3.1.5.5 删除存储空间
 
 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何删除存储空间。
 
-**说明**
+> **说明：** 删除存储空间之前，必须先删除存储空间下的所有文件和分片上传产生的碎片。
 
-`// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于删除存储空间： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -5459,7 +5639,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ossClient.deleteBucket("<yourBucketName>");
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 删除存储空间。
+
+```
+ossClient.deleteBucket("<yourBucketName>");
 ```
 
 `//` 关闭`OSSClient`。
@@ -5468,13 +5654,13 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-##### 生命周期管理
+##### 3.1.5.6 生命周期管理
 
 OSS支持设置生命周期（Lifecycle）规则，自动删除过期的文件和碎片，从而节省存储空间。本文介绍如何管理生命周期规则。
 
 **背景信息**
 
-生命周期规则包含如下信息： 策略：生命周期规则匹配的Object和碎片。 按前缀匹配：按指定前缀匹配Object和碎片。可创建多条规则匹配不同的前缀，前缀不能重复。 配置到整个Bucket：匹配整个Bucket内的所有Object和碎片。此种方式只能创建一条规则。 文件过期策略：设置Object的过期时间及操作。 过期天数：指定一个过期天数N，Object会在其最后修改时间的N天后被删除。 过期日期：指定一个过期日期，最后修改时间在该日期之前的Object全部会被删除。 对象存储 OSS 碎片过期策略：设置碎片的过期时间及操作。 过期天数：可指定一个过期天数N，文件碎片会在其最后修改时间的N天后被删除。 过期日期：指定一个过期日期，最后修改时间在该日期之前的文件碎片会被全部删除。 通过uploadPart方法上传的分片也支持设置生命周期规则。文件最后修改时间以初始化分片上传事件的时间为准。
+生命周期规则包含如下信息： 策略：生命周期规则匹配的Object和碎片。 按前缀匹配：按指定前缀匹配Object和碎片。可创建多条规则匹配不同的前缀，前缀不能重复。 配置到整个Bucket：匹配整个Bucket内的所有Object和碎片。此种方式只能创建一条规则。 文件过期策略：设置Object的过期时间及操作。 过期天数：指定一个过期天数N，Object会在其最后修改时间的N天后被删除。 过期日期：指定一个过期日期，最后修改时间在该日期之前的Object全部会被删除。 碎片过期策略：设置碎片的过期时间及操作。 过期天数：可指定一个过期天数N，文件碎片会在其最后修改时间的N天后被删除。 过期日期：指定一个过期日期，最后修改时间在该日期之前的文件碎片会被全部删除。 通过uploadPart方法上传的分片也支持设置生命周期规则。文件最后修改时间以初始化分片上传事件的时间为准。
 
 **设置生命周期规则**
 
@@ -5496,7 +5682,7 @@ OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); Set
 String ruleId0 = "rule0"; String matchPrefix0 = "A0/"; String ruleId1 = "rule1"; String matchPrefix1 = "A1/"; String ruleId2 = "rule2"; String matchPrefix2 = "A2/"; String ruleId3 = "rule3"; String matchPrefix3 = "A3/";
 ```
 
-`//` 距最后修改时间3天后过期。
+`//` 距最后修改时间`3`天后过期。
 
 ```
 request.AddLifecycleRule(new LifecycleRule(ruleId0, matchPrefix0, RuleStatus.Enabled, 3));
@@ -5508,7 +5694,7 @@ request.AddLifecycleRule(new LifecycleRule(ruleId0, matchPrefix0, RuleStatus.Ena
 LifecycleRule rule = new LifecycleRule(ruleId1, matchPrefix1, RuleStatus.Enabled); rule.setCreatedBeforeDate(DateUtil.parseISO8601Date("2022-10-12T00:00:00.000Z")); request.AddLifecycleRule(rule);
 ```
 
-`//` 分片3天后过期。
+`//` 分片`3`天后过期。
 
 ```
 rule = new LifecycleRule(ruleId2, matchPrefix2, RuleStatus.Enabled); LifecycleRule.AbortMultipartUpload abortMultipartUpload = new LifecycleRule.AbortMultipartUpload(); abortMultipartUpload.setExpirationDays(3); rule.setAbortMultipartUpload(abortMultipartUpload); request.AddLifecycleRule(rule);
@@ -5528,7 +5714,7 @@ ossClient.shutdown();
 
 **查看生命周期规则**
 
-以下代码用于查看生命周期规则： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于查看生命周期规则： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5542,13 +5728,12 @@ OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); Lis
     System.out.println(rule.getPrefix());
     System.out.println(rule.getExpirationDays());
     System.out.println(rule.getCreatedBeforeDate());
+    if(rule.hasAbortMultipartUpload()) {
         System.out.println(rule.getAbortMultipartUpload().getExpirationDays());
         System.out.println(rule.getAbortMultipartUpload().getCreatedBeforeDate());
-    }
-}
 ```
 
-`//` 关闭`Client`。
+`}` `}` `//` 关闭`Client`。
 
 ```
 ossClient.shutdown();
@@ -5574,13 +5759,13 @@ OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); oss
 ossClient.shutdown();
 ```
 
-##### 防盗链
+##### 3.1.5.7 防盗链
 
 为了防止用户在OSS上的数据被其他人盗链，OSS支持基于HTTP header中表头字段referer的防盗链方法。 防盗链功能包括以下参数： Referer白名单。仅允许指定的域名访问OSS资源。 是否允许空Referer。如果不允许空Referer，则只有HTTP或HTTPS header中包含Referer字段的请求才能访问 OSS资源。
 
 **设置Referer白名单**
 
-通过下面代码设置Referer白名单： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+通过下面代码设置Referer白名单： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5592,7 +5777,7 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); List<String> refererList = new ArrayList<String>();
 ```
 
-`//` 添加`Referer`白名单。`Referer`参数支持通配符星号（*）和问号（？）。
+`//` 添加`Referer`白名单。`Referer`参数支持通配符星号（`*`）和问号（？）。
 
 ```
 refererList.add("http://www.aliyun.com"); refererList.add("http://www.*.com"); refererList.add("http://www.?.aliyuncs.com");
@@ -5629,10 +5814,9 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ```java
 BucketReferer br = ossClient.getBucketReferer(bucketName); List<String> refererList = br.getRefererList(); for (String referer : refererList) {
     System.out.println(referer);
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -5640,7 +5824,7 @@ ossClient.shutdown();
 
 **清空防盗链配置**
 
-以下代码用于清空防盗链： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于清空防盗链： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5664,9 +5848,13 @@ BucketReferer br = new BucketReferer(); ossClient.setBucketReferer(bucketName, b
 ossClient.shutdown();
 ```
 
-##### 跨域资源共享
+##### 3.1.5.8 跨域资源共享
 
-跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供跨域资源共享接口，方便您控制跨域访问的权限。
+
+**设置跨域资源共享规则**
+
+以下代码用于设置指定存储空间的跨域资源共享规则： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5675,7 +5863,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); SetBucketCORSRequest request = new SetBucketCORSRequest(bucketName); ArrayList<CORSRule> putCorsRules = new ArrayList<CORSRule>(); CORSRule corRule = new CORSRule(); ArrayList<String> allowedOrigin = new ArrayList<String>();
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); SetBucketCORSRequest request = new SetBucketCORSRequest(bucketName);
+```
+
+`//` 跨域资源共享规则的容器，每个存储空间最多允许`10`条规则。
+
+```
+ArrayList<CORSRule> putCorsRules = new ArrayList<CORSRule>(); CORSRule corRule = new CORSRule(); ArrayList<String> allowedOrigin = new ArrayList<String>();
 ```
 
 `//` 指定允许跨域请求的来源。
@@ -5702,7 +5896,7 @@ allowedHeader.add("x-oss-test"); ArrayList<String> exposedHeader = new ArrayList
 exposedHeader.add("x-oss-test1");
 ```
 
-`// AllowedOrigins`和`AllowedMethods`最多支持一个星号（*）通配符。星号（*）表示允许所有的域来源或者操作。
+`// AllowedOrigins`和`AllowedMethods`最多支持一个星号（`*`）通配符。星号（`*`）表示允许所有的域来源或者操作。
 
 ```
 corRule.setAllowedMethods(allowedMethod); corRule.setAllowedOrigins(allowedOrigin);
@@ -5738,7 +5932,9 @@ request.setCorsRules(putCorsRules); ossClient.setBucketCORS(request);
 ossClient.shutdown();
 ```
 
-对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+**获取跨域资源共享规则**
+
+以下代码用于获取跨域资源共享规则： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5747,7 +5943,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ArrayList<CORSRule> corsRules; corsRules = (ArrayList<CORSRule>) ossClient.getBucketCORSRules(bucketName); for (CORSRule rule : corsRules) {
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ArrayList<CORSRule> corsRules;
+```
+
+`//` 获取跨域资源共享规则列表。
+
+```
+corsRules = (ArrayList<CORSRule>) ossClient.getBucketCORSRules(bucketName); for (CORSRule rule : corsRules) {
     for (String allowedOrigin1 : rule.getAllowedOrigins()) {
 ```
 
@@ -5755,7 +5957,11 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 
 ```java
         System.out.println(allowedOrigin1);
-    }
+```
+
+`}`
+
+```
     for (String allowedMethod1 : rule.getAllowedMethods()) {
 ```
 
@@ -5763,7 +5969,11 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 
 ```java
         System.out.println(allowedMethod1);
-    }
+```
+
+`}`
+
+```
     if (rule.getAllowedHeaders().size() > 0){
         for (String allowedHeader1 : rule.getAllowedHeaders()) {
 ```
@@ -5772,8 +5982,11 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 
 ```java
             System.out.println(allowedHeader1);
-        }
-    }
+```
+
+`}` `}`
+
+```
     if (rule.getExposeHeaders().size() > 0) {
         for (String exposeHeader : rule.getExposeHeaders()) {
 ```
@@ -5782,21 +5995,24 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 
 ```java
             System.out.println(exposeHeader);
-        }
-    }
-    if ( null != rule.getMaxAgeSeconds()) {
-        System.out.println(rule.getMaxAgeSeconds());
-    }
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `}`
+
+```java
+    if ( null != rule.getMaxAgeSeconds()) {
+        System.out.println(rule.getMaxAgeSeconds());
+```
+
+`}` `}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
 
-对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+**删除跨域资源共享规则**
+
+以下代码用于删除指定存储空间的所有跨域资源共享规则： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -5805,7 +6021,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ossClient.deleteBucketCORSRules(bucketName);
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 删除存储空间的跨域资源共享规则。
+
+```
+ossClient.deleteBucketCORSRules(bucketName);
 ```
 
 `//` 关闭`OSSClient`。
@@ -5814,7 +6036,7 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-##### 设置访问日志
+##### 3.1.5.9 设置访问日志
 
 您可以开启存储空间的访问日志记录功能，开启后对于此存储空间的访问会被记录成日志文件，保存在指定的存储空间中。
 
@@ -5856,7 +6078,7 @@ ossClient.shutdown();
 
 **查看访问日志设置**
 
-以下代码用于查看存储空间的访问日志设置： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于查看存储空间的访问日志设置： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -5894,9 +6116,13 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-##### 静态网站托管
+##### 3.1.5.10 静态网站托管
 
-您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。
+
+**设置静态网站托管**
+
+以下代码用于设置静态网站托管： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -5914,7 +6140,9 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-`// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+**查看静态网站托管配置**
+
+以下代码用于查看静态网站托管配置： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -5932,7 +6160,9 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-`// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+**删除静态网站托管配置**
+
+以下代码用于删除静态网站托管配置： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -5950,18 +6180,20 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ossClient.shutdown();
 ```
 
-##### 安全传输层协议
+##### 3.1.5.11 安全传输层协议
 
-对象存储 OSS
+本文介绍如何使用Java SDK为Bucket设置安全传输层协议。
 
 **注意事项**
+
+本文以从环境变量读取访问凭证为例介绍。配置访问凭证的操作请参见配置访问凭证。
 
 **示例代码**
 
 以下示例展示调用PutBucketHttpsConfig接口为Bucket设置TLS版本，并使用GetBucketHttpsConfig接口获取 Bucket的TLS版本信息。
 
 ```java
-import com.aliyun.oss.*; import com.aliyun.oss.common.auth.CredentialsProviderFactory; import com.aliyun.oss.common.auth.EnvironmentVariableCredentialsProvider; import com.aliyun.oss.common.comm.SignVersion; import com.aliyun.oss.model.GetBucketHttpsConfigResult; import com.aliyun.oss.model.PutBucketHttpsConfigRequest; import java.util.ArrayList; import java.util.List;
+import com.aliyun.oss.*; import com.aliyun.oss.common.auth.CredentialsProviderFactory; import com.aliyun.oss.common.auth.EnvironmentVariableCredentialsProvider; import com.aliyun.oss.common.comm.SignVersion; import com.aliyun.oss.model.GetBucketHttpsConfigResult; import com.aliyun.oss.model.PutBucketHttpsConfigRequest; import java.util.ArrayList; import java.util.List; public class PutBucketHttpsConfig {
     public static void main(String[] args) throws Exception {
 ```
 
@@ -5997,6 +6229,11 @@ ClientBuilderConfiguration();
                 .clientConfiguration(clientBuilderConfiguration)
                 .build();
         try {
+```
+
+`//` 调用`PutBucketHttpsConfig`接口为`Bucket`设置`TLS`版本。
+
+```
             List<String> tlsVersion = new ArrayList<String>();
             tlsVersion.add("TLSv1.2");
             tlsVersion.add("TLSv1.3");
@@ -6014,8 +6251,6 @@ ClientBuilderConfiguration();
             System.out.println("TLSVersion:" + result.getTlsVersion().get(0));
 Systemoutprintln("TLSVersion:"+resultgetTlsVersion()get(1));
 ```
-
-对象存储 OSS
 
 ```java
             System.out.println(TLSVersion: + result.getTlsVersion().get(1));
@@ -6035,17 +6270,17 @@ OSS, "
         } finally {
             if (ossClient != null) {
                 ossClient.shutdown();
-            }
-        }
-    }
-}
 ```
 
-##### 绑定自定义域名
+`}` `}` `}` `}`
+
+##### 3.1.5.12 绑定自定义域名
 
 文件（Object）上传至存储空间（Bucket）后，OSS 会自动生成文件的 URL，您可以直接通过该 URL访问文件。 如果您希望使用自定义域名访问这些 Object，需要添加 CNAME 记录将自定义域名绑定到 Object 所在的 Bucket。
 
 **注意事项**
+
+本文以从环境变量读取访问凭证为例介绍。配置访问凭证的操作请参见配置访问凭证。
 
 **示例代码**
 
@@ -6082,7 +6317,7 @@ CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
         String domain = "www.example.com";
 ```
 
-`//` 创建`OSSClient`实例。 `//` 当`OSSClient`实例不再使用时，调用`shutdown`方法以释放资源。 对象存储 OSS
+`//` 创建`OSSClient`实例。 `//` 当`OSSClient`实例不再使用时，调用`shutdown`方法以释放资源。
 
 ```
         ClientBuilderConfiguration clientBuilderConfiguration = new
@@ -6094,6 +6329,11 @@ ClientBuilderConfiguration();
                 .clientConfiguration(clientBuilderConfiguration)
                 .build();
         try {
+```
+
+`//` 绑定自定义域名并删除证书。
+
+```
             AddBucketCnameRequest request = new AddBucketCnameRequest(bucketName)
                     .withDomain(domain);
                     //.withDomain(domain)
@@ -6121,11 +6361,9 @@ OSS, "
         } finally {
             if (ossClient != null) {
                 ossClient.shutdown();
-            }
-        }
-    }
-}
 ```
+
+`}` `}` `}` `}`
 
 **查看CNAME记录**
 
@@ -6150,7 +6388,7 @@ OSS_ACCESS_KEY_SECRET。
 CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
 ```
 
-`//` 填写`Bucket`名称，例如`examplebucket`。 对象存储 OSS
+`//` 填写`Bucket`名称，例如`examplebucket`。
 
 ```
         String bucketName = "examplebucket";
@@ -6188,8 +6426,17 @@ ossClient.getBucketCname(bucketName);
 
 ```java
                 System.out.println(cnameConfigurations.get(0).getStatus());
+```
+
+`//` 打印绑定自定义域名的时间。
+
+```java
                 System.out.println(cnameConfigurations.get(0).getLastMofiedTime());
-            }
+```
+
+`}`
+
+```java
         } catch (OSSException oe) {
             System.out.println("Caught an OSSException, which means your request made it to
 OSS, "
@@ -6206,15 +6453,13 @@ OSS, "
         } finally {
             if (ossClient != null) {
                 ossClient.shutdown();
-            }
-        }
-    }
-}
 ```
+
+`}` `}` `}` `}`
 
 **删除CNAME记录**
 
-以下代码用于删除CNAME记录。 对象存储 OSS
+以下代码用于删除CNAME记录。
 
 ```java
 import com.aliyun.oss.*; import com.aliyun.oss.common.auth.*; import com.aliyun.oss.common.comm.SignVersion; public class Demo {
@@ -6281,27 +6526,25 @@ OSS, "
         } finally {
             if (ossClient != null) {
                 ossClient.shutdown();
-            }
-        }
-    }
-}
 ```
 
-#### 上传文件
+`}` `}` `}` `}`
 
-##### 概述
+#### 3.1.6 上传文件
 
-对象存储 OSS 在OSS中，操作的基本数据单元是文件（Object）。OSS Java SDK提供了以下几种文件上传方式： 简单上传：包括流式上传和文件上传。最大不能超过5 GiB。 表单上传：最大不能超过5 GiB。 追加上传：最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：当文件较大时，可以使用分片上传，最大不能超过48.8 TiB。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。上传完成后，您还可以进行上传回调。
+##### 3.1.6.1 概述
 
-##### 简单上传
+本文介绍对象存储OSS Java SDK的多种文件上传方式。 在OSS中，操作的基本数据单元是文件（Object）。OSS Java SDK提供了以下几种文件上传方式： 简单上传：包括流式上传和文件上传。最大不能超过5 GiB。 表单上传：最大不能超过5 GiB。 追加上传：最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：当文件较大时，可以使用分片上传，最大不能超过48.8 TiB。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。上传完成后，您还可以进行上传回调。
 
-简单上传指的是使用OSS API中的PutObject方法上传单个文件（Object），本文主要介绍通过Java SDK进行简单上传。 简单上传分为流式上传和文件上传。流式上传使用InputStream作为文件的数据源。文件上传使用本地文件作为OSS 文件的数据源。 简单上传的完整代码请参见GitHub。
+##### 3.1.6.2 简单上传
 
-**说明**
+简单上传指的是使用OSS API中的PutObject方法上传单个文件（Object），本文主要介绍通过Java SDK进行简单上传。 简单上传分为流式上传和文件上传。流式上传使用InputStream作为文件的数据源。文件上传使用本地文件作为OSS 文件的数据源。
+
+> **说明：** 简单上传的完整代码请参见GitHub。
 
 **流式上传**
 
-上传字符串以下代码用于上传字符串： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+使用ossClient.putObject上传数据流到OSS。 上传字符串以下代码用于上传字符串： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -6310,7 +6553,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); String content = "Hello OSS";
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 创建`PutObjectRequest`对象。
+
+```
+String content = "Hello OSS";
 ```
 
 `// <yourObjectName>`表示上传文件到`OSS`时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。
@@ -6331,7 +6580,7 @@ ossClient.putObject(putObjectRequest);
 ossClient.shutdown();
 ```
 
-上传Byte数组以下代码用于上传Byte数组： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+上传Byte数组以下代码用于上传Byte数组： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -6405,7 +6654,7 @@ ossClient.shutdown();
 
 **文件上传**
 
-以下代码用于上传本地文件： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于上传本地文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -6414,7 +6663,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); PutObjectRequest putObjectRequest = new PutObjectRequest("<yourBucketName>", "<yourObjectName>" , new File("<yourLocalFile>"));
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 创建`PutObjectRequest`对象。
+
+```
+PutObjectRequest putObjectRequest = new PutObjectRequest("<yourBucketName>", "<yourObjectName>" , new File("<yourLocalFile>"));
 ```
 
 `//` 上传文件。
@@ -6429,9 +6684,15 @@ ossClient.putObject(putObjectRequest);
 ossClient.shutdown();
 ```
 
-##### 表单上传
+##### 3.1.6.3 表单上传
 
-表单上传是使用HTML表单形式上传文件到指定存储空间中，文件最大不能超过5 GiB。 以下代码用于表单上传： `//` 上传文件
+表单上传是使用HTML表单形式上传文件到指定存储空间中，文件最大不能超过5 GiB。 以下代码用于表单上传：
+
+```java
+public class PostObjectSample {
+```
+
+`//` 上传文件
 
 ```java
     private String localFilePath = "<yourLocalFile>";
@@ -6463,13 +6724,19 @@ ossClient.shutdown();
     /**
 ```
 
-* 表单上传
+`*` 表单上传
 
 ```
      * @throws Exception
 ```
 
-`*/` `//` 在`URL`中添加存储空间名称，添加后`URL`如下：`http://yourBucketName.oss-cn-hangzhou.aliyuncs.com`
+`*/`
+
+```java
+    private void PostObject() throws Exception {
+```
+
+`//` 在`URL`中添加存储空间名称，添加后`URL`如下：`http://yourBucketName.oss-cn-hangzhou.aliyuncs.com`
 
 ```
         String urlStr = endpoint.replace("http://", "http://" + bucketName+ ".");
@@ -6508,7 +6775,7 @@ ossClient.shutdown();
         callback.setCallbackHost("<yourCallbackServerHost>");
 ```
 
-`//` 设置发起回调时请求`body`的值。 对象存储 OSS y
+`//` 设置发起回调时请求`body`的值。 `y`
 
 ```
         callback.setCallbackBody("{\\\"mimeType\\\":${mimeType},\\\"size\\\":${size}}");
@@ -6563,7 +6830,11 @@ com.aliyun.oss.common.auth.ServiceSignature.create().computeSignature(accessKeyS
         System.out.println("Post Object [" + this.objectName + "] to bucket [" + bucketName + "
 ]");
         System.out.println("post reponse:" + ret);
-    }
+```
+
+`}`
+
+```java
     private static String formUpload(String urlStr, Map<String, String> formFields, String loca
 lFile)
             throws Exception {
@@ -6604,13 +6875,9 @@ lFile)
                     String inputValue = entry.getValue();
                     if (inputValue == null) {
                         continue;
-}
 ```
 
-对象存储 OSS
-
 ```
-                    }
                     if (i == 0) {
                         strBuf.append("--").append(boundary).append("\r\n");
                         strBuf.append("Content-Disposition: form-data; name=\""
@@ -6621,14 +6888,21 @@ lFile)
                         strBuf.append("Content-Disposition: form-data; name=\""
                                 + inputName + "\"\r\n\r\n");
                         strBuf.append(inputValue);
-                    }
-                    i++;
-                }
-                out.write(strBuf.toString().getBytes());
-            }
 ```
 
-`//` 读取文件信息，将要上传的文件写入到输出流中。
+`}`
+
+```
+                    i++;
+```
+
+`}`
+
+```
+                out.write(strBuf.toString().getBytes());
+```
+
+`}` `//` 读取文件信息，将要上传的文件写入到输出流中。
 
 ```
             File file = new File(localFile);
@@ -6636,7 +6910,11 @@ lFile)
             String contentType = new MimetypesFileTypeMap().getContentType(file);
             if (contentType == null || contentType.equals("")) {
                 contentType = "application/octet-stream";
-            }
+```
+
+`}`
+
+```
             StringBuffer strBuf = new StringBuffer();
             strBuf.append("\r\n").append("--").append(boundary)
                     .append("\r\n");
@@ -6649,7 +6927,11 @@ lFile)
             byte[] bufferOut = new byte[1024];
             while ((bytes = in.read(bufferOut)) != -1) {
                 out.write(bufferOut, 0, bytes);
-            }
+```
+
+`}`
+
+```
             in.close();
             byte[] endData = ("\r\n--" + boundary + "--\r\n").getBytes();
             out.write(endData);
@@ -6666,7 +6948,11 @@ InputStreamReader(conn.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
                 strBuf.append(line).append("\n");
-            }
+```
+
+`}`
+
+```
             res = strBuf.toString();
             reader.close();
             reader = null;
@@ -6679,34 +6965,32 @@ InputStreamReader(conn.getInputStream()));
                 conn = null;
 ```
 
-对象存储 OSS
-
 ```java
-            }
-        }
         return res;
-    }
      private static void setCallBack(Map<String, String> formFields, Callback callback) {
+        if (callback != null) {
             String jsonCb = OSSUtils.jsonizeCallback(callback);
             String base64Cb = BinaryUtil.toBase64String(jsonCb.getBytes());
             formFields.put("callback", base64Cb);
+            if (callback.hasCallbackVar()) {
                 Map<String, String> varMap = callback.getCallbackVar();
                 for (Entry<String, String> entry : varMap.entrySet()) {
                     formFields.put(entry.getKey(), entry.getValue());
-                }
-            }
-        }
-    }
+```
+
+`}` `}` `}` `}`
+
+```
     public static void main(String[] args) throws Exception {
         PostObjectSample ossPostObject = new PostObjectSample();
         ossPostObject.PostObject();
-    }
-}
 ```
 
-##### 追加上传
+`}` `}`
 
-OSS提供了追加上传（Append Object）的方式，在一个Object后面直接追加内容。通过这种方式操作的Object的类型为Appendable Object。 以下代码用于追加上传文件： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+##### 3.1.6.4 追加上传
+
+OSS提供了追加上传（Append Object）的方式，在一个Object后面直接追加内容。通过这种方式操作的Object的类型为Appendable Object。 追加类型的文件（Append Object）暂时不支持copyObject操作。 以下代码用于追加上传文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
@@ -6727,10 +7011,16 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 `//` 指定上传的内容类型。
 
 ```
-meta.setContentType("text/plain"); AppendObjectRequest appendObjectRequest = new AppendObjectRequest("<yourBucketName>", "<yourObj ectName>", new ByteArrayInputStream(content1.getBytes()),meta);
+meta.setContentType("text/plain");
 ```
 
-`//` 设置存储空间名称。
+`//` 通过`AppendObjectRequest`设置多个参数。
+
+```
+AppendObjectRequest appendObjectRequest = new AppendObjectRequest("<yourBucketName>", "<yourObj ectName>", new ByteArrayInputStream(content1.getBytes()),meta);
+```
+
+`//` 通过`AppendObjectRequest`设置单个参数。 `//` 设置存储空间名称。
 
 ```
 //appendObjectRequest.setBucketName("<yourBucketName>");
@@ -6790,11 +7080,9 @@ appendObjectRequest.setPosition(appendObjectResult.getNextPosition()); appendObj
 ossClient.shutdown();
 ```
 
-对象存储 OSS
+##### 3.1.6.5 断点续传上传
 
-##### 断点续传上传
-
-在使用分片上传的过程中，如果系统意外崩溃，可以在重启的时候通过ListMultipartUploads和ListParts两个接口来获取某个Object上的所有的分片上传任务和每个分片上传任务中上传成功的Part列表。这样就可以从最后一块成功上传的Part开始继续上传，从而达到断点续传的效果。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+在使用分片上传的过程中，如果系统意外崩溃，可以在重启的时候通过ListMultipartUploads和ListParts两个接口来获取某个Object上的所有的分片上传任务和每个分片上传任务中上传成功的Part列表。这样就可以从最后一块成功上传的Part开始继续上传，从而达到断点续传的效果。 以下代码用于断点续传上传： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -6836,7 +7124,7 @@ UploadFileRequest uploadFileRequest = new UploadFileRequest("<yourBucketName>","
 uploadFileRequest.setUploadFile("<yourLocalFile>");
 ```
 
-`//` 指定上传并发线程数，默认为1。
+`//` 指定上传并发线程数，默认为`1`。
 
 ```
 uploadFileRequest.setTaskNum(5);
@@ -6854,7 +7142,7 @@ uploadFileRequest.setPartSize(1 * 1024 * 1024);
 uploadFileRequest.setEnableCheckpoint(true);
 ```
 
-`//` 记录本地分片上传结果的文件。开启断点续传功能时需要设置此参数，上传过程中的进度信息会保存在该文件中，如果某一分片上传失败，再次上传时会根据文件中记录的点继续上传。上传完成后，该文件会被删除。默认与待上传的本地文件同目录，为u
+`//` 记录本地分片上传结果的文件。开启断点续传功能时需要设置此参数，上传过程中的进度信息会保存在该文件中，如果某一分片上传失败，再次上传时会根据文件中记录的点继续上传。上传完成后，该文件会被删除。默认与待上传的本地文件同目录，为`u`
 
 ```
 ploadFile.ucp。 uploadFileRequest.setCheckpointFile("<yourCheckpointFile>");
@@ -6863,7 +7151,19 @@ ploadFile.ucp。 uploadFileRequest.setCheckpointFile("<yourCheckpointFile>");
 `//` 文件的元数据。
 
 ```
-uploadFileRequest.setObjectMetadata(meta); uploadFileRequest.setCallback("<yourCallbackEvent>"); ossClient.uploadFile(uploadFileRequest);
+uploadFileRequest.setObjectMetadata(meta);
+```
+
+`//` 设置上传成功回调，参数为`Callback`类型。
+
+```
+uploadFileRequest.setCallback("<yourCallbackEvent>");
+```
+
+`//` 断点续传上传。
+
+```
+ossClient.uploadFile(uploadFileRequest);
 ```
 
 `//` 关闭`OSSClient`。
@@ -6872,16 +7172,18 @@ uploadFileRequest.setObjectMetadata(meta); uploadFileRequest.setCallback("<yourC
 ossClient.shutdown();
 ```
 
-##### 分片上传
+##### 3.1.6.6 分片上传
 
-分片上传将要上传的文件分成若干个分片（Part）分别上传，所有分片都上传完成后，将所有分片合并成完整的文件，完成整个文件的上传。 对象存储 OSS 分片上传（Multipart Upload）分为以下三个步骤：
+分片上传将要上传的文件分成若干个分片（Part）分别上传，所有分片都上传完成后，将所有分片合并成完整的文件，完成整个文件的上传。 分片上传（Multipart Upload）分为以下三个步骤：
 1. 初始化一个分片上传事件。
 调用ossClient.initiateMultipartUpload方法返回OSS创建的全局唯一的uploadId。
 2. 上传分片。
+调用ossClient.uploadPart方法上传分片数据。
 
-**说明**
+> **说明：** 对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。
+> OSS将收到的分片数据的MD5值放在ETag头内返回给用户。
+> OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 
-对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。 OSS将收到的分片数据的MD5值放在ETag头内返回给用户。 OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 3. 完成分片上传。
 所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 以下通过一个完整的示例对分片上传的流程进行逐步解析： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
@@ -6898,7 +7200,7 @@ String objectName = "<yourObjectName>";
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); InitiateMultipartUploadRequest request = new InitiateMultipartUploadRequest("<yourBucketName>", "<yourObjectName>");
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // 创建InitiateMultipartUploadRequest对象。 InitiateMultipartUploadRequest request = new InitiateMultipartUploadRequest("<yourBucketName>", "<yourObjectName>");
 ```
 
 `//` 如果需要在初始化分片时设置文件存储类型，请参考以下示例代码。
@@ -6930,18 +7232,15 @@ List<PartETag> partETags = new ArrayList<PartETag>();
 ```
 final long partSize = 1 * 1024 * 1024L; // 1MB final File sampleFile = new File("<localFile>"); long fileLength = sampleFile.length(); int partCount = (int) (fileLength / partSize); if (fileLength % partSize != 0) {
     partCount++;
- }
 ```
 
-`//` 遍历分片上传。
+`}` `//` 遍历分片上传。
 
 ```
 for (int i = 0; i < partCount; i++) {
     long startPos = i * partSize;
     long curPartSize = (i + 1 == partCount) ? (fileLength - startPos) : partSize;
 ```
-
-对象存储 OSS
 
 ```
     InputStream instream = new FileInputStream(sampleFile);
@@ -6980,7 +7279,12 @@ for (int i = 0; i < partCount; i++) {
 
 ```
     partETags.add(uploadPartResult.getPartETag());
-}
+```
+
+`}`
+
+```
+// 创建CompleteMultipartUploadRequest对象。
 ```
 
 `//` 在执行完成分片上传操作时，需要提供所有有效的`partETags`。`OSS`收到提交的`partETags`后，会逐一验证每个分片的有效性。当所有的数据分片验证通过后，`OSS`将把这些分片组合成一个完整的文件。
@@ -7035,8 +7339,6 @@ ossClient.abortMultipartUpload(abortMultipartUploadRequest);
 ```
 ossClient.shutdown();
 ```
-
-对象存储 OSS
 
 **列举已上传的分片**
 
@@ -7099,16 +7401,15 @@ PartListing partListing = ossClient.listParts(listPartsRequest); for (PartSummar
 
 ```
     part.getLastModified();
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
 
-列举所有已上传的分片默认情况下，listParts只能一次列举1000个分片。当分片数量大于1000时，请使用以下代码列举所有已上传的分片。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+列举所有已上传的分片默认情况下，listParts只能一次列举1000个分片。当分片数量大于1000时，请使用以下代码列举所有已上传的分片。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -7150,10 +7451,9 @@ PartListing partListing; ListPartsRequest listPartsRequest = new ListPartsReques
 
 ```
         part.getLastModified();
-    }
 ```
 
-`//` 指定`List`的起始位置，只有分片号大于该参数值的分片会被列出。
+`}` `//` 指定`List`的起始位置，只有分片号大于该参数值的分片会被列出。
 
 ```
 listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker()); } while (partListing.isTruncated());
@@ -7165,7 +7465,7 @@ listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker()); } w
 ossClient.shutdown()
 ```
 
-分页列举所有已上传的分片以下代码用于指定每页分片的数量，分页列举所有分片。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+分页列举所有已上传的分片以下代码用于指定每页分片的数量，分页列举所有分片。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -7213,7 +7513,11 @@ listPartsRequest.setMaxParts(100); do {
 
 ```
         part.getLastModified();
-    }
+```
+
+`}`
+
+```
     listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker());
 } while (partListing.isTruncated());
 ```
@@ -7234,8 +7538,6 @@ ossClient.shutdown();
 | delimiter | 用于对文件名称进行分组的一个字符。 所有名称包含指定的前缀且第一次出现 delimiter字符之间的文件作为一组元素。 | ListMultipartUploadsRequest.setDe limiter(String delimiter) |
 | maxUploads | 限定此次返回分片上传事件的最大数目，默认值和最大值均为1000。 | ListMultipartUploadsRequest.setM axUploads(Integer maxUploads) |
 | keyMarker | 所有文件名称的字母序大于keyMarker 参数值的分片上传事件。可以与 uploadIdMarker参数一同使用来指定返回结果的起始位置。 | ListMultipartUploadsRequest.setKe yMarker(String keyMarker) |
-
-对象存储 OSS
 
 | uploadIdMarker | 与keyMarker参数一同使用来指定返回结果的起始位置。如果未设置 keyMarker参数，则此参数无效。如果设置了keyMarker参数，则查询结果中包含： 名称的字母序大于keyMarker参数值的所有文件。 文件名称等于keyMarker参数值且 uploadId比uploadIdMarker参数值大的所有分片上传事件。 | ListMultipartUploadsRequest.setUp loadIdMarker(String uploadIdMarker) |
 |---|---|---|
@@ -7274,16 +7576,15 @@ ListMultipartUploadsRequest listMultipartUploadsRequest = new ListMultipartUploa
 
 ```
     multipartUpload.getInitiated();
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
 
-返回结果中isTruncated为false，返回nextKeyMarker和nextUploadIdMarker作为下次读取的起点。如果没有一次性获取所有的上传事件，可以采用分页列举的方式。 列举全部分片上传事件默认情况下，listMultipartUploads只能一次列举1000个分片。当分片数量大于1000时，请使用以下代码列举全部分片上传事件。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+返回结果中isTruncated为false，返回nextKeyMarker和nextUploadIdMarker作为下次读取的起点。如果没有一次性获取所有的上传事件，可以采用分页列举的方式。 列举全部分片上传事件默认情况下，listMultipartUploads只能一次列举1000个分片。当分片数量大于1000时，请使用以下代码列举全部分片上传事件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -7319,7 +7620,11 @@ MultipartUploadListing multipartUploadListing; ListMultipartUploadsRequest listM
 
 ```
         multipartUpload.getInitiated();
-    }
+```
+
+`}`
+
+```
     listMultipartUploadsRequest.setKeyMarker(multipartUploadListing.getNextKeyMarker());
 listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUploadIdMarker()); } while (multipartUploadListing.isTruncated());
 ```
@@ -7330,7 +7635,7 @@ listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUplo
 ossClient.shutdown();
 ```
 
-分页列举全部上传事件以下代码用于分页列举所有上传事件： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+分页列举全部上传事件以下代码用于分页列举所有上传事件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -7372,7 +7677,11 @@ listMultipartUploadsRequest.setMaxUploads(50); do {
 
 ```
         multipartUpload.getInitiated();
-    }
+```
+
+`}`
+
+```
     listMultipartUploadsRequest.setKeyMarker(multipartUploadListing.getNextKeyMarker());
 listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUploadIdMarker()); } while (multipartUploadListing.isTruncated());
 ```
@@ -7383,9 +7692,9 @@ listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUplo
 ossClient.shutdown();
 ```
 
-##### 进度条
+##### 3.1.6.7 进度条
 
-进度条用于指示上传或下载的进度。
+进度条用于指示上传或下载的进度。 下面的代码以ossClient.putObject方法为例，介绍如何使用进度条。
 
 ```java
 public class PutObjectProgressListener implements ProgressListener {
@@ -7403,8 +7712,6 @@ public class PutObjectProgressListener implements ProgressListener {
         case REQUEST_CONTENT_LENGTH_EVENT:
 ```
 
-对象存储 OSS
-
 ```java
             this.totalBytes = bytes;
             System.out.println(this.totalBytes + " bytes in total will be uploaded to OSS");
@@ -7418,7 +7725,11 @@ progress: " + percent + "%(" + this.bytesWritten + "/" + this.totalBytes + ")");
             } else {
                 System.out.println(bytes + " bytes have been written at this time, upload
 ratio: unknown" + "(" + this.bytesWritten + "/...)");
-            }
+```
+
+`}`
+
+```java
             break;
         case TRANSFER_COMPLETED_EVENT:
             this.succeed = true;
@@ -7431,11 +7742,18 @@ nsferred");
             break;
         default:
             break;
-        }
-    }
+```
+
+`}` `}`
+
+```
     public boolean isSucceed() {
         return succeed;
-    }
+```
+
+`}`
+
+```
     public static void main(String[] args) {
 ```
 
@@ -7469,22 +7787,19 @@ nsferred");
                     <PutObjectRequest>withProgressListener(new PutObjectProgressListener()));
         } catch (Exception e) {
             e.printStackTrace();
-        }
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
         ossClient.shutdown();
-    }
-}
 ```
 
-对象存储 OSS ossClient.putObject、ossClient.getObject和ossClient.uploadPart方法支持进度条功能。 ossClient.uploadFile和ossClient.downloadFile方法不支持进度条功能。
+ossClient.putObject、ossClient.getObject和ossClient.uploadPart方法支持进度条功能。 ossClient.uploadFile和ossClient.downloadFile方法不支持进度条功能。
 
-##### 上传回调
+##### 3.1.6.8 上传回调
 
-本文介绍如何使用上传回调。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+本文介绍如何使用上传回调。 以下代码用于上传回调（callback）： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -7550,19 +7865,13 @@ putObjectResult.getResponse().getContent().close();
 ossClient.shutdown();
 ```
 
-#### 下载文件
+#### 3.1.7 下载文件
 
-##### 概述
+##### 3.1.7.1 概述
 
-OSS提供了丰富的文件下载方式，您可以选择合适的方式将OSS上的文件（Object）下载下来。 对象存储 OSS
+OSS提供了丰富的文件下载方式，您可以选择合适的方式将OSS上的文件（Object）下载下来。 OSS Java SDK提供了以下文件下载方式： 下载过程中，您还可以通过下载进度条功能查看下载进度。详情请参见进度条。
 
-##### 流式下载
-
-##### 范围下载
-
-下载过程中，您还可以通过下载进度条功能查看下载进度。详情请参见进度条。
-
-##### 流式下载
+##### 3.1.7.2 流式下载
 
 如果要下载的文件太大，或者一次性下载耗时太长，您可以通过流式下载，一次处理部分内容，直到完成文件的下载。 ossObject对象使用完毕后必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。关闭方法如下：
 
@@ -7601,10 +7910,9 @@ System.out.println("Object content:"); BufferedReader reader = new BufferedReade
     String line = reader.readLine();
     if (line == null) break;
     System.out.println("\n" + line);
-}
 ```
 
-`//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
+`}` `//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
 
 ```
 reader.close();
@@ -7616,9 +7924,9 @@ reader.close();
 ossClient.shutdown();
 ```
 
-##### 下载到本地文件
+##### 3.1.7.3 下载到本地文件
 
-本文介绍如何将OSS文件下载到本地。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+本文介绍如何将OSS文件下载到本地。 以下代码用于把指定的OSS文件下载到本地文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -7642,7 +7950,7 @@ ossClient.getObject(new GetObjectRequest(bucketName, objectName), new File("<you
 ossClient.shutdown();
 ```
 
-##### 范围下载
+##### 3.1.7.4 范围下载
 
 如果仅需要文件中的部分数据，您可以使用范围下载，下载指定范围内的数据。
 
@@ -7666,7 +7974,7 @@ String objectName = "<yourObjectName>";
 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectName);
 ```
 
-`//` 对于`1000`字节大小的文件，正常的字节范围为0～`999`。 `//` 获取0～`999`字节范围内的数据，包括0和`999`，共`1000`个字节的数据。如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
+`//` 对于`1000`字节大小的文件，正常的字节范围为`0`～`999`。 `//` 获取`0`～`999`字节范围内的数据，包括`0`和`999`，共`1000`个字节的数据。如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
 
 ```
 getObjectRequest.setRange(0, 999);
@@ -7683,10 +7991,9 @@ OSSObject ossObject = ossClient.getObject(getObjectRequest);
 ```
 byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n != -1; ) {
     n = in.read(buf, 0, buf.length);
-}
 ```
 
-`//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
+`}` `//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
 
 ```
 in.close();
@@ -7698,12 +8005,17 @@ in.close();
 ossClient.shutdown();
 ```
 
-对象存储 OSS 流式读取一次可能无法读取全部数据。如果您需要流式读取64 KB的数据，请使用如下的方式多次读取，直到读取到 64 KB或者文件结束。详情请参见InputStream.read。
+流式读取一次可能无法读取全部数据。如果您需要流式读取64 KB的数据，请使用如下的方式多次读取，直到读取到 64 KB或者文件结束。详情请参见InputStream.read。
 
 ```
 byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n != -1; ) {
     n = in.read(buf, 0, buf.length);
-} in.close();
+```
+
+`}`
+
+```
+in.close();
 ```
 
 **指定异常的下载范围**
@@ -7712,7 +8024,7 @@ byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for 
 
 **兼容行为范围下载**
 
-在请求中增加请求头x-oss-range-behavior:standard，则改变指定范围不在有效区间时OSS的下载行为。假设现有大小为1000 Byte的Object： 若指定了Range: bytes=500-2000，此时范围末端取值不在有效区间，返回500~999字节范围内容，且http code为206。 若指定了Range: bytes=1000-2000，此时范围首端取值不在有效区间，返回http code为416，错误码为 InvalidRange。 以下代码用于兼容行为范围下载： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+在请求中增加请求头x-oss-range-behavior:standard，则改变指定范围不在有效区间时OSS的下载行为。假设现有大小为1000 Byte的Object： 若指定了Range: bytes=500-2000，此时范围末端取值不在有效区间，返回500~999字节范围内容，且http code为206。 若指定了Range: bytes=1000-2000，此时范围首端取值不在有效区间，返回http code为416，错误码为 InvalidRange。 以下代码用于兼容行为范围下载： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -7745,25 +8057,22 @@ getObjectRequest = new GetObjectRequest(bucketName, objectName); getObjectReques
     ossClient.getObject(getObjectRequest);
 } catch (OSSException e) {
     System.out.println("standard get " + "1000~2000:" + "error code:" + e.getErrorCode());
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
 
-##### 断点续传下载
+##### 3.1.7.5 断点续传下载
 
-当下载大文件时，如果网络不稳定或者程序异常退出，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提断点续传下载将需要下载的文件分成若干个分片分别下载，所有分片都下载完成后，将所有分片合并成完整的文件。 您可以通过ossClient.downloadFile方法实现断点续传下载。此方法的DownloadFileRequest请求包含以下参数：
+当下载大文件时，如果网络不稳定或者程序异常退出，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提供了断点续传下载功能。 断点续传下载将需要下载的文件分成若干个分片分别下载，所有分片都下载完成后，将所有分片合并成完整的文件。 您可以通过ossClient.downloadFile方法实现断点续传下载。此方法的DownloadFileRequest请求包含以下参数：
 
 | 参数 | 描述 | 是否必需 | 默认值 | 如何设置 |
 |---|---|---|---|---|
 | bucket | 存储空间名称。 | 是 | 无 | 通过构造方法设置。 |
 | key | OSS文件名称。 | 是 | 无 | 通过构造方法设置。 |
-
-对象存储 OSS
 
 | downloadFile | 本地文件。OSS文件将下载到该文件。 | 否 | OSS文件名称 | 通过构造方法或 setDownloadFile设置。 |
 |---|---|---|---|---|
@@ -7772,7 +8081,7 @@ ossClient.shutdown();
 | enableCheckpoint | 是否开启断点续传功能。 | 否 | 关闭 | 通过 setEnableCheckpoi nt设置。 |
 | checkpointFile | 记录本地分片下载结果的文件。开启断点续传功能时需要设置此参数。下载过程中的进度信息会保存在该文件中，如果某一分片下载失败，再次下载时会根据文件中记录的点继续下载。 下载完成后，该文件会被删除。 | 否 | downloadFile.ucp（ 与DownloadFile同目录）。 | 通过 setCheckpointFile 设置。 |
 
-`// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于断点续传下载： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -7808,11 +8117,9 @@ downloadRes.getObjectMetadata();
 ossClient.shutdown();
 ```
 
-对象存储 OSS
+##### 3.1.7.6 限定条件下载
 
-##### 限定条件下载
-
-下载文件时，可以指定一个或多个限定条件。满足限定条件则下载，不满足则返回错误，不下载。可以使用的限定条件如下：
+本文介绍如何使用限定条件下载OSS文件。 下载文件时，可以指定一个或多个限定条件。满足限定条件则下载，不满足则返回错误，不下载。可以使用的限定条件如下：
 
 | 参数 | 描述 |
 |---|---|
@@ -7821,7 +8128,7 @@ ossClient.shutdown();
 | If-Match | 如果指定的ETag和OSS文件的ETag匹配，则正常传输文件， 否则返回错误（412 Precondition failed）。 |
 | If-None-Match | 如果指定的ETag和OSS文件的ETag不匹配，则正常传输文件，否则返回错误（304 Not modified）。 |
 
-If-Modified-Since和If-Unmodified-Since可以同时存在。If-Match和If-None-Match可以同时存在。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+If-Modified-Since和If-Unmodified-Since可以同时存在。If-Match和If-None-Match可以同时存在。 ETag可以通过ossClient.getObjectMeta方法获取。 以下代码用于限定条件下载： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -7853,9 +8160,9 @@ ossClient.shutdown();
 
 ossClient.getObject和ossClient.downloadFile方法支持限定条件下载。
 
-##### 进度条
+##### 3.1.7.7 进度条
 
-进度条用于指示上传或下载的进度。 下载进度条的完整代码请参见GitHub。
+进度条用于指示上传或下载的进度。 下载进度条的完整代码请参见GitHub。 下面的代码以ossClient.getObject方法为例，介绍如何使用进度条。
 
 ```java
 static class GetObjectProgressListener implements ProgressListener {
@@ -7864,8 +8171,6 @@ static class GetObjectProgressListener implements ProgressListener {
         private boolean succeed = false;
         @Override
 ```
-
-对象存储 OSS
 
 ```java
         public void progressChanged(ProgressEvent progressEvent) {
@@ -7891,7 +8196,11 @@ progress: " +
                     System.out.println(bytes + " bytes have been read at this time, download
 ratio: unknown" +
                             "(" + this.bytesRead + "/...)");
-                }
+```
+
+`}`
+
+```java
                 break;
             case TRANSFER_COMPLETED_EVENT:
                 this.succeed = true;
@@ -7904,12 +8213,18 @@ transferred");
                 break;
             default:
                 break;
-            }
-        }
+```
+
+`}` `}`
+
+```
         public boolean isSucceed() {
             return succeed;
-        }
-    }
+```
+
+`}` `}`
+
+```
 public static void main(String[] args) {
 ```
 
@@ -7933,35 +8248,25 @@ public static void main(String[] args) {
                     new File("<yourLocalFile>"));
     } catch (Exception e) {
         e.printStackTrace();
-    }
 ```
 
-`//` 关闭`OSSClient`。 对象存储 OSS
+`//` 关闭`OSSClient`。
 
 ```
     ossClient.shutdown();
-}
 ```
 
 ossClient.putObject、ossClient.getObject和ossClient.uploadPart方法支持进度条功能。 ossClient.uploadFile和ossClient.downloadFile方法不支持进度条功能。
 
-#### 管理文件
+#### 3.1.8 管理文件
 
-##### 概述
+##### 3.1.8.1 概述
 
 您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 ListObjects、DeleteObject、CopyObject、DoesObjectExist等。 利用上述接口，您可以完成以下操作：
 
-##### 列举文件
+##### 3.1.8.2 判断文件是否存在
 
-##### 查询文件
-
-##### 删除文件
-
-##### 拷贝文件
-
-##### 判断文件是否存在
-
-以下代码用于判断指定的文件是否存在： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+本文介绍如何判断文件是否存在。 以下代码用于判断指定的文件是否存在： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -7985,15 +8290,13 @@ boolean found = ossClient.doesObjectExist("<yourBucketName>", "<yourObjectName>"
 ossClient.shutdown();
 ```
 
-##### 管理文件访问权限
+##### 3.1.8.3 管理文件访问权限
 
-文件的访问权限（ACL）有以下四种：
+本文介绍如何管理文件访问权限。 文件的访问权限（ACL）有以下四种：
 
 | 访问权限 | 描述 | 访问权限值 |
 |---|---|---|
 | 继承Bucket | 文件遵循存储空间的访问权限。 | CannedAccessControlList.Default |
-
-对象存储 OSS
 
 | 私有 | 文件的拥有者和授权用户有该文件的读写权限，其他用户没有权限操作该文件。 | CannedAccessControlList.Private |
 |---|---|---|
@@ -8054,13 +8357,13 @@ ObjectAcl objectAcl = ossClient.getObjectAcl("<yourBucketName>", "<yourObjectNam
 ossClient.shutdown();
 ```
 
-##### 管理文件元信息
+##### 3.1.8.4 管理文件元信息
 
 文件元信息（Object Meta）包括HTTP header和自定义元信息。
 
 **设置文件元信息**
 
-对象存储 OSS 设置HTTP header 以下代码用于设置HTTP header： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+设置HTTP header 以下代码用于设置HTTP header： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String content = "Hello OSS";
@@ -8138,7 +8441,7 @@ ossClient.putObject("<yourBucketName>", "<yourObjectName>", new ByteArrayInputSt
 ossClient.shutdown();
 ```
 
-HTTP header详情请参见RFC2616。 设置自定义元信息您可以自定义文件的元信息来对文件进行描述。 以下代码用于设置文件的自定义元信息： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+HTTP header详情请参见RFC2616。 设置自定义元信息您可以自定义文件的元信息来对文件进行描述。 以下代码用于设置文件的自定义元信息： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
@@ -8190,7 +8493,7 @@ ossClient.shutdown();
 
 **修改文件元信息**
 
-以下代码用于修改文件的元信息： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于修改文件的元信息： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>";
@@ -8271,7 +8574,7 @@ ossClient.shutdown();
 | ossClient.getSimplifiedObjectMeta | 获取文件的ETag、Size（文件大小）、 LastModified（最后修改时间）。 | 更轻量、更快 |
 | ossClient.getObjectMetadata | 获取文件的全部元信息。 | 无 |
 
-以下代码用于获取文件元信息： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于获取文件元信息： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>";
@@ -8301,7 +8604,7 @@ ObjectMetadata metadata = ossClient.getObjectMetadata("<yourBucketName>", "<your
 ossClient.shutdown();
 ```
 
-##### 列举文件
+##### 3.1.8.5 列举文件
 
 OSS文件按照字母顺序排列。您可以通过ossClient.listObjects列出存储空间下的文件。 listObjects有以下三类参数格式： ObjectListing listObjects(String bucketName)：列举存储空间下的文件。最多列举100个文件。 ObjectListing listObjects(String bucketName, String prefix)：列举存储空间下指定前缀的文件。最多列举 100个文件。 ObjectListing listObjects(ListObjectsRequest listObjectsRequest)：提供多种过滤功能，实现灵活的查询功能。 ObjectListing的参数如下：
 
@@ -8316,7 +8619,7 @@ OSS文件按照字母顺序排列。您可以通过ossClient.listObjects列出�
 | isTruncated | 指明列举文件是否被截断。 列举完没有截断，返回值为false。 没列举完就有截断，返回值为true。 | boolean isTruncated() |
 | commonPrefixes | 以delimiter结尾，且有共同前缀的文件集合。 | List<String> getCommonPrefixes() |
 
-| 开发指南·SDK参考 |  | 对象存储 OSS |
+| 开发指南·SDK参考 |   | 对象存储 OSS |
 |---|---|---|
 
 | encodingType | 指明返回结果中编码使用的类型。 | String getEncodingType() |
@@ -8341,10 +8644,9 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ```java
 ObjectListing objectListing = ossClient.listObjects(bucketName, KeyPrefix); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -8362,7 +8664,7 @@ ossClient.shutdown();
 | maxKeys | 限定此次列举文件的最大个数。默认值为100，最大值为1000。 | setMaxKeys(Integer maxKeys) |
 | encodingType | 请求响应体中文件名称采用的编码方式，目前仅支持URL。 | setEncodingType(String encodingType) |
 
-列举指定个数的文件以下代码用于列举指定个数的文件。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+列举指定个数的文件以下代码用于列举指定个数的文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8385,10 +8687,9 @@ final int maxKeys = 200;
 ```java
 ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withMaxKeys(maxKeys)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -8417,16 +8718,15 @@ final String keyPrefix = "<yourkeyPrefix>";
 ```java
 ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withPrefix(keyPrefix)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
 ```
 
-列举指定marker之后的文件参数marker代表文件名称。以下代码用于列举指定marker之后的文件。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+列举指定marker之后的文件参数marker代表文件名称。以下代码用于列举指定marker之后的文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8443,10 +8743,9 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ```java
 ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withMarker(marker)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -8467,7 +8766,11 @@ ListObjectsRequest(bucketName).withMarker(nextMarker).withMaxKeys(maxKeys));
     List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
     for (OSSObjectSummary s : sums) {
         System.out.println("\t" + s.getKey());
-    }
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated());
 ```
@@ -8478,7 +8781,7 @@ ListObjectsRequest(bucketName).withMarker(nextMarker).withMaxKeys(maxKeys));
 ossClient.shutdown();
 ```
 
-分页列举指定前缀的文件以下代码用于分页列举包含指定前缀的文件。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+分页列举指定前缀的文件以下代码用于分页列举包含指定前缀的文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8499,7 +8802,11 @@ final int maxKeys = 200; final String keyPrefix = "<yourkeyPrefix>"; String next
     List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
     for (OSSObjectSummary s : sums) {
         System.out.println("\t" + s.getKey());
-    }
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated());
 ```
@@ -8510,7 +8817,7 @@ final int maxKeys = 200; final String keyPrefix = "<yourkeyPrefix>"; String next
 ossClient.shutdown();
 ```
 
-指定文件名称编码如果文件名称含有以下特殊字符，需要进行编码传输。OSS目前仅支持URL编码。 单引号（'） 双引号（"） and符号（&） 尖括号（<>） 顿号（、） 中文以下代码用于指定文件名称编码。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+指定文件名称编码如果文件名称含有以下特殊字符，需要进行编码传输。OSS目前仅支持URL编码。 单引号（'） 双引号（"） and符号（&） 尖括号（<>） 顿号（、） 中文以下代码用于指定文件名称编码。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8538,19 +8845,26 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ```java
     for (OSSObjectSummary objectSummary: objectListing.getObjectSummaries()) {
         System.out.println("Key:" + URLDecoder.decode(objectSummary.getKey(), "UTF-8"));
-    }
+```
+
+`}`
+
+```java
     // commonPrefixes解码。
     for (String commonPrefixes: objectListing.getCommonPrefixes()) {
         System.out.println("CommonPrefixes:" + URLDecoder.decode(commonPrefixes, "UTF-8"));
-    }
 ```
 
-`// nextMarker`解码。
+`}` `// nextMarker`解码。
 
 ```
     if (objectListing.getNextMarker() != null) {
         nextMarker = URLDecoder.decode(objectListing.getNextMarker(), "UTF-8");
-    }
+```
+
+`}`
+
+```
 } while (objectListing.isTruncated());
 ```
 
@@ -8562,7 +8876,7 @@ ossClient.shutdown();
 
 **文件夹功能**
 
-OSS没有文件夹的概念，所有元素都是以文件来存储。创建文件夹本质上来说是创建了一个大小为0并以正斜线（/） 结尾的文件。这个文件可以被上传和下载，控制台会对以正斜线（/）结尾的文件以文件夹的方式展示。 通过delimiter和prefix两个参数可以模拟文件夹功能： 如果设置prefix为某个文件夹名称，则会列举以此prefix开头的文件，即该文件夹下所有的文件和子文件夹（目录），显示为Objects。 如果再设置delimiter为正斜线（/），则只列举该文件夹下的文件和子文件夹（目录），该文件夹下的子文件夹 （目录）则显示为CommonPrefixes，子文件夹下的文件和文件夹不显示。 创建文件夹的完整代码请参见GitHub。 假设存储空间中有4个文件：oss.jpg、fun/test.jpg、fun/movie/001.avi、fun/movie/007.avi，正斜线（/）作为文件夹的分隔符。下面的示例展示了如何模拟文件夹功能。 对象存储 OSS 以下代码用于列举指定存储空间下的所有文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+OSS没有文件夹的概念，所有元素都是以文件来存储。创建文件夹本质上来说是创建了一个大小为0并以正斜线（/） 结尾的文件。这个文件可以被上传和下载，控制台会对以正斜线（/）结尾的文件以文件夹的方式展示。 通过delimiter和prefix两个参数可以模拟文件夹功能： 如果设置prefix为某个文件夹名称，则会列举以此prefix开头的文件，即该文件夹下所有的文件和子文件夹（目录），显示为Objects。 如果再设置delimiter为正斜线（/），则只列举该文件夹下的文件和子文件夹（目录），该文件夹下的子文件夹 （目录）则显示为CommonPrefixes，子文件夹下的文件和文件夹不显示。 创建文件夹的完整代码请参见GitHub。 假设存储空间中有4个文件：oss.jpg、fun/test.jpg、fun/movie/001.avi、fun/movie/007.avi，正斜线（/）作为文件夹的分隔符。下面的示例展示了如何模拟文件夹功能。 列举存储空间下所有文件以下代码用于列举指定存储空间下的所有文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8591,18 +8905,16 @@ ObjectListing listing = ossClient.listObjects(listObjectsRequest);
 ```java
 System.out.println("Objects:"); for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
-}
 ```
 
-`//` 遍历所有`commonPrefix`。
+`}` `//` 遍历所有`commonPrefix`。
 
 ```java
 System.out.println("CommonPrefixes:"); for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -8614,7 +8926,7 @@ ossClient.shutdown();
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg oss.jpg CommonPrefixes:
 ```
 
-列举指定目录下所有文件以下代码用于列举指定目录下的所有文件。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+列举指定目录下所有文件以下代码用于列举指定目录下的所有文件。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8649,18 +8961,16 @@ ObjectListing listing = ossClient.listObjects(listObjectsRequest);
 ```java
 System.out.println("Objects:"); for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
-}
 ```
 
-`//` 遍历所有`commonPrefix`。
+`}` `//` 遍历所有`commonPrefix`。
 
 ```java
 System.out.println("\nCommonPrefixes:"); for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -8672,7 +8982,7 @@ ossClient.shutdown();
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg CommonPrefixes:
 ```
 
-列举目录下的文件和子目录以下代码用于列举指定目录下的文件和子目录。 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+列举目录下的文件和子目录以下代码用于列举指定目录下的文件和子目录。 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -8690,7 +9000,7 @@ OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySec
 ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName);
 ```
 
-`//` 设置正斜线（/）为文件夹的分隔符。
+`//` 设置正斜线（`/`）为文件夹的分隔符。
 
 ```
 listObjectsRequest.setDelimiter("/");
@@ -8713,10 +9023,9 @@ System.out.println("Objects:");
 ```java
 for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
-}
 ```
 
-`//` 遍历所有`commonPrefix`。
+`}` `//` 遍历所有`commonPrefix`。
 
 ```java
 System.out.println("\nCommonPrefixes:");
@@ -8727,10 +9036,9 @@ System.out.println("\nCommonPrefixes:");
 ```java
 for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
-}
 ```
 
-`//` 关闭`OSSClient`。
+`}` `//` 关闭`OSSClient`。
 
 ```
 ossClient.shutdown();
@@ -8742,7 +9050,7 @@ ossClient.shutdown();
 Objects: fun/test.jpg CommonPrefixes: fun/movie/
 ```
 
-获取指定目录下的文件大小以下代码用于获取指定目录下的文件大小。 对象存储 OSS `//` 获取`bucket`下某个文件夹大小。
+获取指定目录下的文件大小以下代码用于获取指定目录下的文件大小。 `//` 获取`bucket`下某个文件夹大小。
 
 ```java
     private static long calculateFolderLength(OSS ossClient, String bucketName, String folder
@@ -8759,15 +9067,27 @@ Objects: fun/test.jpg CommonPrefixes: fun/movie/
 ListObjectsRequest(bucketName).withPrefix(folder).withMaxKeys(1000);
             if (objectListing != null) {
                 request.setMarker(objectListing.getNextMarker());
-            }
+```
+
+`}`
+
+```
             objectListing = ossClient.listObjects(request);
             List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
             for (OSSObjectSummary s : sums) {
                 size += s.getSize();
-            }
+```
+
+`}`
+
+```
         } while (objectListing.isTruncated());
         return size;
-    }
+```
+
+`}`
+
+```
     public void Calculate() {
 ```
 
@@ -8796,28 +9116,41 @@ ListObjectsRequest(bucketName).withPrefix(folder).withMaxKeys(1000);
 
 `//` 默认情况下，每次列举`100`个文件或目录。
 
-```java
+```
             ListObjectsRequest request = new
 ListObjectsRequest(bucketName).withDelimiter("/").withPrefix(keyPrefix);
             if (objectListing != null) {
                 request.setMarker(objectListing.getNextMarker());
-            }
+```
+
+`}`
+
+```java
             objectListing = ossClient.listObjects(request);
             List<String> folders = objectListing.getCommonPrefixes();
             for (String folder : folders) {
                 System.out.println(folder + " : " + (calculateFolderLength(ossClient,
 bucketName, folder) / 1024) + "KB");
-            }
+```
+
+`}`
+
+```java
             List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
             for (OSSObjectSummary s : sums) {
                 System.out.println(s.getKey() + " : " + (s.getSize() / 1024) + "KB");
-            }
-        } while (objectListing.isTruncated());
-        ossClient.shutdown();
-    }
 ```
 
-##### 查询文件
+`}`
+
+```
+        } while (objectListing.isTruncated());
+        ossClient.shutdown();
+```
+
+`}`
+
+##### 3.1.8.6 查询文件
 
 本文介绍如何使用Java SDK的SelectObject查询CSV和JSON文件。 以下代码用于查询CSV和JSON文件：
 
@@ -8825,18 +9158,14 @@ bucketName, folder) / 1024) + "KB");
 packagesamples;
 ```
 
-对象存储 OSS
-
-|  | package samples; import com.aliyun.oss.model.*; import com.aliyun.oss.OSS; import com.aliyun.oss.OSSClientBuilder; import java.io.BufferedReader; import java.io.ByteArrayInputStream; import java.io.InputStreamReader; /** * Examples of create select object metadata and select object. * */ public class SelectObjectSample { // yourEndpoint填写Bucket所在地域对应的Endpoint。以华东1（杭州）为例，Endpoint填写为https://oss-cn- hangzhou.aliyuncs.com。 private static String endpoint = "<endpoint, http://oss-cn-hangzhou.aliyuncs.com>"; // 填写账号相关的Accesskey。 private static String accessKeyId = "<yourAccessKeyId>"; private static String accessKeySecret = "<yourAccessKeySecret>"; // 填写Bucket名称。 private static String bucketName = "<yourBucketName>"; public static void main(String[] args) throws Exception { // 创建OSSClient实例。 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // 填写CSV格式的Object完整路径。 selectCsvSample("test.csv", ossClient); // 填写JSON格式的Object完整路径。 selectJsonSample("test.json", ossClient); ossClient.shutdown(); } private static void selectCsvSample(String key, OSS ossClient) throws Exception { // 填写上传的内容。 String content = "name,school,company,age\r\n" + "Lora Francis,School A,Staples Inc,27\r\n" + "Eleanor Little,School B,\"Conectiv, Inc\",43\r\n" + "Rosie Hughes,School C,Western Gas Resources Inc,44\r\n" + "Lawrence Ross,School D,MetLife Inc.,24"; ossClient.putObject(bucketName, key, new ByteArrayInputStream(content.getBytes())); SelectObjectMetadata selectObjectMetadata = ossClient.createSelectObjectMetadata( new CreateSelectObjectMetadataRequest(bucketName, key) .withInputSerialization( new InputSerialization().withCsvInputFormat( new CSVFormat().withHeaderInfo(CSVFormat.Header.Use).withRecordDelimiter("\r\n")))); System.out.println(selectObjectMetadata.getCsvObjectMetadata().getTotalLines()); System.out.println(selectObjectMetadata.getCsvObjectMetadata().getSplits()); SelectObjectRequest selectObjectRequest = new SelectObjectRequest(bucketName, key) .withInputSerialization( new InputSerialization().withCsvInputFormat( new CSVFormat().withHeaderInfo(CSVFormat.Header.Use).withRecordDelimiter("\r\n"))) .withOutputSerialization(new |  |
+|   | package samples; import com.aliyun.oss.model.*; import com.aliyun.oss.OSS; import com.aliyun.oss.OSSClientBuilder; import java.io.BufferedReader; import java.io.ByteArrayInputStream; import java.io.InputStreamReader; /** * Examples of create select object metadata and select object. * */ public class SelectObjectSample { // yourEndpoint填写Bucket所在地域对应的Endpoint。以华东1（杭州）为例，Endpoint填写为https://oss-cn- hangzhou.aliyuncs.com。 private static String endpoint = "<endpoint, http://oss-cn-hangzhou.aliyuncs.com>"; // 填写账号相关的Accesskey。 private static String accessKeyId = "<yourAccessKeyId>"; private static String accessKeySecret = "<yourAccessKeySecret>"; // 填写Bucket名称。 private static String bucketName = "<yourBucketName>"; public static void main(String[] args) throws Exception { // 创建OSSClient实例。 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // 填写CSV格式的Object完整路径。 selectCsvSample("test.csv", ossClient); // 填写JSON格式的Object完整路径。 selectJsonSample("test.json", ossClient); ossClient.shutdown(); } private static void selectCsvSample(String key, OSS ossClient) throws Exception { // 填写上传的内容。 String content = "name,school,company,age\r\n" + "Lora Francis,School A,Staples Inc,27\r\n" + "Eleanor Little,School B,\"Conectiv, Inc\",43\r\n" + "Rosie Hughes,School C,Western Gas Resources Inc,44\r\n" + "Lawrence Ross,School D,MetLife Inc.,24"; ossClient.putObject(bucketName, key, new ByteArrayInputStream(content.getBytes())); SelectObjectMetadata selectObjectMetadata = ossClient.createSelectObjectMetadata( new CreateSelectObjectMetadataRequest(bucketName, key) .withInputSerialization( new InputSerialization().withCsvInputFormat( new CSVFormat().withHeaderInfo(CSVFormat.Header.Use).withRecordDelimiter("\r\n")))); System.out.println(selectObjectMetadata.getCsvObjectMetadata().getTotalLines()); System.out.println(selectObjectMetadata.getCsvObjectMetadata().getSplits()); SelectObjectRequest selectObjectRequest = new SelectObjectRequest(bucketName, key) .withInputSerialization( new InputSerialization().withCsvInputFormat( new CSVFormat().withHeaderInfo(CSVFormat.Header.Use).withRecordDelimiter("\r\n"))) .withOutputSerialization(new |   |
 |---|---|---|
-
-对象存储 OSS
 
 ```
 OutputSerialization().withCsvOutputFormat(new CSVFormat()));
 ```
 
-`//` 使用`SELECT`语句查询第4列，值大于`40`的所有记录。
+`//` 使用`SELECT`语句查询第`4`列，值大于`40`的所有记录。
 
 ```
         +selectObjectRequest.setExpression("select * from ossobject where _4 > 40");
@@ -8845,19 +9174,31 @@ OutputSerialization().withCsvOutputFormat(new CSVFormat()));
 
 `//` 读取内容。
 
-```java
+```
         BufferedReader reader = new BufferedReader(new
 InputStreamReader(ossObject.getObjectContent()));
         while (true) {
             String line = reader.readLine();
             if (line == null) {
                 break;
-            }
+```
+
+`}`
+
+```java
             System.out.println(line);
-        }
+```
+
+`}`
+
+```
         reader.close();
         ossClient.deleteObject(bucketName, key);
-    }
+```
+
+`}`
+
+```java
     private static void selectJsonSample(String key, OSS ossClient) throws Exception {
 ```
 
@@ -8898,29 +9239,37 @@ JsonFormat().withJsonType(JsonType.LINES)))
         OSSObject ossObject = ossClient.selectObject(selectObjectRequest);
 ```
 
-`//` 读取内容。 对象存储 OSS
+`//` 读取内容。
 
-```java
+```
         BufferedReader reader = new BufferedReader(new
 InputStreamReader(ossObject.getObjectContent()));
         while (true) {
             String line = reader.readLine();
             if (line == null) {
                 break;
-            }
-            System.out.println(line);
-        }
-        reader.close();
-        ossClient.deleteObject(bucketName, key);
-    }
-}
 ```
 
-##### 删除文件
+`}`
 
-本文介绍如何删除文件。 请您谨慎使用删除操作，文件一旦删除将无法恢复。
+```java
+            System.out.println(line);
+```
 
-**警告**
+`}`
+
+```
+        reader.close();
+        ossClient.deleteObject(bucketName, key);
+```
+
+`}` `}`
+
+##### 3.1.8.7 删除文件
+
+本文介绍如何删除文件。
+
+> **警告：** 请您谨慎使用删除操作，文件一旦删除将无法恢复。
 
 **删除单个文件**
 
@@ -8936,7 +9285,7 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 ```
 
-`//` 删除文件。如需删除文件夹，请将`ObjectName`设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有`objec` t删除后才能删除该文件夹。
+`//` 删除文件。如需删除文件夹，请将`ObjectName`设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有`objec` `t`删除后才能删除该文件夹。
 
 ```
 ossClient.deleteObject(bucketName, objectName);
@@ -8950,17 +9299,17 @@ ossClient.shutdown();
 
 **删除多个文件**
 
-每次最多删除1000个文件。有两种返回模式： 详细（verbose）模式：返回删除成功的文件列表。默认为详细模式。 简单（quiet）模式：返回删除失败的文件列表。
+每次最多删除1000个文件。有两种返回模式： 详细（verbose）模式：返回删除成功的文件列表。默认为详细模式。 简单（quiet）模式：返回删除失败的文件列表。 DeleteObjectsRequest的参数如下：
 
 | 参数 | 描述 | 方法 |
 |---|---|---|
 | Keys | 需要删除的文件。 | setKeys(List<String>) |
 | quiet | 返回模式。true表示简单模式，false表示详细模式。默认为详细模式。 | setQuiet(boolean) |
 
-对象存储 OSS
-
 | encodingType | 对返回的文件名称进行编码。编码类型目前仅支持URL。 | setEncodingType(String) |
 |---|---|---|
+
+DeleteObjectsResult的参数如下：
 
 | 参数 | 描述 | 方法 |
 |---|---|---|
@@ -8995,7 +9344,7 @@ ossClient.shutdown();
 
 **删除指定前缀（prefix）的文件**
 
-以下代码用于删除指定前缀的文件： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+以下代码用于删除指定前缀的文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>";
@@ -9021,15 +9370,24 @@ String nextMarker = null; ObjectListing objectListing = null; do {
             .withPrefix(prefix)
             .withMarker(nextMarker);
     objectListing = ossClient.listObjects(listObjectsRequest);
+    if (objectListing.getObjectSummaries().size() > 0) {
         List<String> keys = new ArrayList<String>();
         for (OSSObjectSummary s : objectListing.getObjectSummaries()) {
             System.out.println("key name: " + s.getKey());
             keys.add(s.getKey());
-        }
+```
+
+`}`
+
+```
         DeleteObjectsRequest deleteObjectsRequest = new
 DeleteObjectsRequest(bucketName).withKeys(keys);
         ossClient.deleteObjects(deleteObjectsRequest);
-    }
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated());
 ```
@@ -9040,7 +9398,7 @@ DeleteObjectsRequest(bucketName).withKeys(keys);
 ossClient.shutdown();
 ```
 
-##### 拷贝文件
+##### 3.1.8.8 拷贝文件
 
 拷贝文件分为拷贝小文件和拷贝大文件。
 
@@ -9052,10 +9410,10 @@ ossClient.shutdown();
 |---|---|
 | CopyObjectResult copyObject(String sourceBucketName, String sourceKey, String destinationBucketName, String destinationKey) | 允许指定源存储空间和源文件，以及目标存储空间和目标文件。拷贝后，目标文件的内容及元信息与源文件相同，称为简单拷贝。 |
 
-对象存储 OSS
-
 | CopyObjectResult copyObject(CopyObjectRequest copyObjectRequest) | 允许指定目标文件的元信息和拷贝的限制条件。如果拷贝操作的源文件地址和目标文件地址相同，则直接替换源文件的元信息。 |
 |---|---|
+
+CopyObjectRequest可设置的参数如下：
 
 | 参数 | 描述 | 方法 |
 |---|---|---|
@@ -9069,16 +9427,19 @@ ossClient.shutdown();
 | unmodifiedSinceConstraint | 拷贝的限制条件。如果传入参数中的时间等于或者晚于文件实际修改时间，则执行拷贝操作，否则返回错误。 | setUnmodifiedSinceConstraint(Dat e unmodifiedSinceConstraint) |
 | modifiedSinceConstraint | 拷贝的限制条件。如果源文件在指定的时间之后被修改过，则执行拷贝操作， 否则返回错误。 | setModifiedSinceConstraint(Date modifiedSinceConstraint) |
 
+CopyObjectRequest的参数如下：
+
 | 参数 | 描述 | 方法 |
 |---|---|---|
 | etag | OSS文件唯一性标志。 | String getETag() |
 | lastModified | 文件最后修改时间。 | Date getLastModified() |
 
-对象存储 OSS
+> **说明：** 此操作的限制条件如下：
+> 用户有源文件的读写权限。
+> 不支持跨地域拷贝。
+> 文件的大小不能超过1 GiB。
 
-**说明**
-
-此操作的限制条件如下： 用户有源文件的读写权限。 不支持跨地域拷贝。 文件的大小不能超过1 GiB。 拷贝小文件有以下几种拷贝形式。 简单拷贝以下代码用于简单拷贝： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+拷贝小文件有以下几种拷贝形式。 简单拷贝以下代码用于简单拷贝： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>";
@@ -9102,7 +9463,7 @@ CopyObjectResult result = ossClient.copyObject(sourceBucketName, sourceObjectNam
 ossClient.shutdown();
 ```
 
-对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+通过CopyObjectRequest拷贝以下代码用于通过CopyObjectRequest拷贝文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>";
@@ -9111,7 +9472,13 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 `//` 创建`OSSClient`实例。
 
 ```
-OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); CopyObjectRequest copyObjectRequest = new CopyObjectRequest(sourceBucketName, sourceObjectNam e, destinationBucketName, destinationObjectName);
+OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+```
+
+`//` 创建`CopyObjectRequest`对象。
+
+```
+CopyObjectRequest copyObjectRequest = new CopyObjectRequest(sourceBucketName, sourceObjectNam e, destinationBucketName, destinationObjectName);
 ```
 
 `//` 设置新的文件元信息。
@@ -9156,12 +9523,17 @@ long contentLength = objectMetadata.getContentLength();
 long partSize = 1024 * 1024 * 10;
 ```
 
-对象存储 OSS `//` 计算分片总数。
+`//` 计算分片总数。
 
-```java
+```
 int partCount = (int) (contentLength / partSize); if (contentLength % partSize != 0) {
     partCount++;
-} System.out.println("total part count:" + partCount);
+```
+
+`}`
+
+```java
+System.out.println("total part count:" + partCount);
 ```
 
 `//` 初始化拷贝任务。可以通过`InitiateMultipartUploadRequest`指定目标文件元信息。
@@ -9201,13 +9573,12 @@ ossClient.uploadPartCopy(uploadPartCopyRequest);
 
 ```
     partETags.add(uploadPartCopyResult.getPartETag());
-}
 ```
 
-`//` 提交分片拷贝任务。
+`}` `//` 提交分片拷贝任务。
 
 ```
-CompleteMultipartUploadRequest completeMultipartUploadRequest = new
+CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUploadRequest(
                     destinationBucketName, destinationObjectName, uploadId, partETags);
 ossClient.completeMultipartUpload(completeMultipartUploadRequest);
 ```
@@ -9218,13 +9589,13 @@ ossClient.completeMultipartUpload(completeMultipartUploadRequest);
 ossClient.shutdown();
 ```
 
-#### 授权访问
+#### 3.1.9 授权访问
 
 本文介绍如何使用STS和文件URL进行授权访问。
 
 **使用STS进行临时授权**
 
-阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 STS的优势如下： 您无需透露您的长期密钥（AccessKey）给第三方应用，只需生成一个访问令牌并将令牌交给第三方应用。您可以对象存储 OSS 自定义这个令牌的访问权限及有效期限。 您无需关心权限撤销问题，访问令牌过期后自动失效。 以下代码用于使用STS凭证构造签名请求： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 STS的优势如下： 您无需透露您的长期密钥（AccessKey）给第三方应用，只需生成一个访问令牌并将令牌交给第三方应用。您可以自定义这个令牌的访问权限及有效期限。 您无需关心权限撤销问题，访问令牌过期后自动失效。 以下代码用于使用STS凭证构造签名请求： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String securityToken = "<yourSecurityToken>";
@@ -9268,7 +9639,7 @@ String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<
 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 ```
 
-`//` 设置`URL`过期时间为1小时。
+`//` 设置`URL`过期时间为`1`小时。
 
 ```
 Date expiration = new Date(new Date().getTime() + 3600 * 1000);
@@ -9286,7 +9657,7 @@ URL url = ossClient.generatePresignedUrl(bucketName, objectName, expiration);
 ossClient.shutdown();
 ```
 
-生成以其他HTTP方法访问的签名URL 如果您想允许访客临时进行其他操作（比如上传或删除文件），需要生成对应的签名URL，例如使用生成PUT的签名URL上传文件： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+生成以其他HTTP方法访问的签名URL 如果您想允许访客临时进行其他操作（比如上传或删除文件），需要生成对应的签名URL，例如使用生成PUT的签名URL上传文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String securityToken = "<yourSecurityToken>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -9298,7 +9669,7 @@ String endpoint = "oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAcc
 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret, securityToken); GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, objectName, HttpMethod.PUT);
 ```
 
-`//` 设置`URL`过期时间为1小时。
+`//` 设置`URL`过期时间为`1`小时。
 
 ```
 Date expiration = new Date(new Date().getTime() + 3600 * 1000); request.setExpiration(expiration);
@@ -9334,7 +9705,7 @@ ossClient.putObject(signedUrl, new ByteArrayInputStream("Hello OSS".getBytes()),
 ossClient.shutdown();
 ```
 
-通过传入HttpMethod.PUT参数，访客可以使用生成的签名URL上传文件。 生成指定参数的签名URL 以下代码用于生成指定参数的签名URL： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+通过传入HttpMethod.PUT参数，访客可以使用生成的签名URL上传文件。 生成指定参数的签名URL 以下代码用于生成指定参数的签名URL： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -9364,7 +9735,7 @@ generatePresignedUrlRequest.addUserMetadata("author", "baymax");
 generatePresignedUrlRequest.setContentType("application/octet-stream");
 ```
 
-`//` 设置`URL`过期时间为1小时。
+`//` 设置`URL`过期时间为`1`小时。
 
 ```
 Date expiration = new Date(new Date().getTime() + 3600 * 1000); generatePresignedUrlRequest.setExpiration(expiration);
@@ -9382,7 +9753,7 @@ URL url = ossClient.generatePresignedUrl(generatePresignedUrlRequest);
 ossClient.shutdown();
 ```
 
-使用签名URL上传或获取文件对象存储 OSS 使用签名URL获取文件以下代码用于使用签名URL获取指定文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+使用签名URL上传或获取文件使用签名URL获取文件以下代码用于使用签名URL获取指定文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -9409,7 +9780,13 @@ URL signedUrl = ossClient .generatePresignedUrl(request); System.out.println("si
 `//` 使用签名`URL`发送请求。
 
 ```
-Map<String, String> customHeaders = new HashMap<String, String>(); customHeaders.put("Range", "bytes=100-1000"); OSSObject object = ossClient.getObject(signedUrl,customHeaders);
+Map<String, String> customHeaders = new HashMap<String, String>();
+```
+
+`//` 添加`GetObject`请求头。
+
+```
+customHeaders.put("Range", "bytes=100-1000"); OSSObject object = ossClient.getObject(signedUrl,customHeaders);
 ```
 
 `//` 关闭`OSSClient`。
@@ -9418,7 +9795,7 @@ Map<String, String> customHeaders = new HashMap<String, String>(); customHeaders
 ossClient.shutdown();
 ```
 
-使用签名URL上传文件以下代码用于使用签名URL上传文件： 对象存储 OSS `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+使用签名URL上传文件以下代码用于使用签名URL上传文件： `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>";
@@ -9463,7 +9840,13 @@ URL signedUrl = ossClient.generatePresignedUrl(request); System.out.println("sig
 `//` 使用签名`URL`发送请求。
 
 ```
-File f = new File("<yourLocalFile>"); FileInputStream fin = new FileInputStream(f); Map<String, String> customHeaders = new HashMap<String, String>(); customHeaders.put("Content-Type", "application/octet-stream"); customHeaders.put("x-oss-meta-author", "aliy"); PutObjectResult result = ossClient.putObject(signedUrl, fin, f.length(), customHeaders);
+File f = new File("<yourLocalFile>"); FileInputStream fin = new FileInputStream(f);
+```
+
+`//` 添加`PutObject`请求头。
+
+```
+Map<String, String> customHeaders = new HashMap<String, String>(); customHeaders.put("Content-Type", "application/octet-stream"); customHeaders.put("x-oss-meta-author", "aliy"); PutObjectResult result = ossClient.putObject(signedUrl, fin, f.length(), customHeaders);
 ```
 
 `//` 关闭`OSSClient`。
@@ -9472,13 +9855,13 @@ File f = new File("<yourLocalFile>"); FileInputStream fin = new FileInputStream(
 ossClient.shutdown();
 ```
 
-#### 图片处理
+#### 3.1.10 图片处理
 
 图片处理是OSS提供的海量、安全、低成本、高可靠的图片处理服务。原始图片上传到OSS后，您可以通过简单的 RESTful接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。基于OSS图片处理，您可以搭建自己的图片处理服务。
 
 **图片处理基础功能**
 
-OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** > **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。 对象存储 OSS
+OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** **>** **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
 
 **图片处理使用**
 
@@ -9522,7 +9905,7 @@ style：自定义样式的保留标志符。 yourStyleName：自定义样式名�
 http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=style/oss-picstyle-w-100
 ```
 
-对象存储 OSS 级联处理通过级联处理，可以对一张图片顺序进行多个操作，格式如下：
+级联处理通过级联处理，可以对一张图片顺序进行多个操作，格式如下：
 
 ```
 http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<yourAction1>,< yourParamValue1>/<yourAction2>,<yourParamValue2>/...
@@ -9539,8 +9922,6 @@ http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/re
 ```
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/resize,w_100
 ```
-
-#### 授权访问
 
 对私有权限的文件（Object），如下表所示的权限，必须通过授权才能访问图片服务。
 
@@ -9579,15 +9960,19 @@ thod.GET);
     ossClient.shutdown();
 ```
 
-| 说明授权访问支持自定义样式、 HTTPS、级联处理。 指定过期时间请使用 Date expiration = DateUtil.parseRfc822Date("Wed, 21 Dec 2022 14:20:00 GMT"); 。 |  |  |
+| 说明授权访问支持自定义样式、 HTTPS、级联处理。 指定过期时间请使用 Date expiration = DateUtil.parseRfc822Date("Wed, 21 Dec 2022 14:20:00 GMT"); 。 |   |   |
 |---|---|---|
-|  | Date expiration = DateUtil.parseRfc822Date("Wed, 21 Dec 2022 |  |
+|   | Date expiration = DateUtil.parseRfc822Date("Wed, 21 Dec 2022 |   |
 
-SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。 对象存储 OSS
+SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。
 
 **说明**
 
-图片处理的完整代码请参考：GitHub SDK处理图片文件支持**自定义样式**、**HTTPS**、**级联处理** 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
+图片处理的完整代码请参考：GitHub
+
+> SDK处理图片文件支持**自定义样式**、**HTTPS**、**级联处理**
+
+基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
 
 ```
     String endpoint = "<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>";
@@ -9662,7 +10047,7 @@ SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问�
     ossClient.shutdown();
 ```
 
-对象存储 OSS 自定义样式
+自定义样式
 
 ```
     String endpoint = "<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>";
@@ -9704,7 +10089,7 @@ SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问�
     ossClient.shutdown();
 ```
 
-#### 异常处理
+#### 3.1.11 异常处理
 
 调用OSSClient类的相关接口时，如果抛出异常，则表明操作失败，否则操作成功。抛出异常时，方法返回的数据无效。OSS Java SDK包含两类异常，一类是服务器端异常OSSException，另一类是客户端异常ClientException， 它们均继承自RuntimeException。
 
@@ -9729,11 +10114,7 @@ try {
 } finally {
     if (client != null) {
         client.shutdown();
-    }
-}
 ```
-
-对象存储 OSS
 
 **ClientException**
 
@@ -9769,8 +10150,6 @@ OSSException指服务器端错误，它来自于对服务器错误信息的解�
 | MissingArgument | 缺少参数。 | 411 |
 | MissingContentLength | 缺少内容长度。 | 411 |
 
-对象存储 OSS
-
 | NoSuchBucket | Bucket不存在。 | 404 |
 |---|---|---|
 | NoSuchKey | 文件不存在。 | 404 |
@@ -9782,9 +10161,13 @@ OSSException指服务器端错误，它来自于对服务器错误信息的解�
 | SignatureDoesNotMatch | 签名错误。 | 403 |
 | InvalidEncryptionAlgorithmError | 指定的熵编码加密算法错误。 | 400 |
 
-#### 常见问题
+#### 3.1.12 常见问题
+
+本文介绍使用OSS Java SDK的常见问题及解决方法。
 
 **包冲突**
+
+使用OSS Java SDK时，报类似如下错误，说明您的工程里可能有包冲突。
 
 ```
 Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
@@ -9802,7 +10185,7 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
     ... 3 more
 ```
 
-或对象存储 OSS
+或
 
 ```
 Exception in thread "main" java.lang.NoSuchFieldError: INSTANCE
@@ -9843,9 +10226,11 @@ com.aliyun.oss.common.comm.DefaultServiceClient.createHttpClientConnectionManage
  at OSSManagerImpl.main(OSSManagerImpl.java:63)
 ```
 
-问题原因：OSS Java SDK使用了Apache httpclient 4.4.1，而您的工程使用了与Apache httpclient 4.4.1冲突的 Apache httpclient或commons-httpclient jar包。要查看工程使用的jar包及版本，请在您的工程目录下执行 `mvn` `dependency:tree` 。如下图所示，您的工程里使用了Apache httpclient 4.3： 解决方案：包冲突有以下两种解决方法。 使用统一版本。如果您的工程使用与Apache httpclient 4.4.1冲突的版本，请您使用4.4.1版本，并在pom.xml 删除其它版本的Apache httpclient依赖。如果您的工程使用了commons-httpclient，也可能存在冲突，请删除 commons-httpclient。 对象存储 OSS 解除依赖冲突。如果您的工程依赖多个第三方包，而第三方包又依赖不同版本的Apache httpclient，您的工程里会有依赖冲突，请使用exclusion解除。详细请参见Maven Guides。
+问题原因：OSS Java SDK使用了Apache httpclient 4.4.1，而您的工程使用了与Apache httpclient 4.4.1冲突的 Apache httpclient或commons-httpclient jar包。要查看工程使用的jar包及版本，请在您的工程目录下执行 `mvn` `dependency:tree` 。如下图所示，您的工程里使用了Apache httpclient 4.3： 解决方案：包冲突有以下两种解决方法。 使用统一版本。如果您的工程使用与Apache httpclient 4.4.1冲突的版本，请您使用4.4.1版本，并在pom.xml 删除其它版本的Apache httpclient依赖。如果您的工程使用了commons-httpclient，也可能存在冲突，请删除 commons-httpclient。 解除依赖冲突。如果您的工程依赖多个第三方包，而第三方包又依赖不同版本的Apache httpclient，您的工程里会有依赖冲突，请使用exclusion解除。详细请参见Maven Guides。 OSS Java SDK依赖以下版本的包，冲突解决办法与httpclient类似。
 
 **缺少包**
+
+使用OSS Java SDK时，报类似如下错误：
 
 ```
 Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/http/auth/Credentials
@@ -9881,7 +10266,7 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.protocol.HttpContex
         ... 3 more
 ```
 
-或对象存储 OSS
+或
 
 ```
 Exception in thread "main" java.lang.NoClassDefFoundError: org/jdom/input/SAXBuilder
@@ -9901,11 +10286,11 @@ Caused by: java.lang.ClassNotFoundException: org.jdom.input.SAXBuilder
         ... 11 more
 ```
 
-问题原因：您的工程中可能缺少编译或运行OSS Java SDK所必需的包，OSS Java SDK依赖下列包： aliyun-sdk-oss-2.2.1.jar hamcrest-core-1.1.jar jdom-1.1.jar commons-codec-1.9.jar httpclient-4.4.1.jar commons-logging-1.2.jar httpcore-4.4.1.jar log4j-1.2.15.jar 其中，log4j-1.2.15.jar是可选的，需要日志功能的时加入该包，其他包都是必不可少的。 如果您的工程在Eclipse中，请参考安装中的安装方式二：在Eclipse项目中导入工程依赖的包。 如果您直接使用javac/java，请使用-classpath/-cp指定OSS Java SDK依赖的包路径，或把OSS Java SDK依赖的包放入classpath路经下。
+问题原因：您的工程中可能缺少编译或运行OSS Java SDK所必需的包，OSS Java SDK依赖下列包： aliyun-sdk-oss-2.2.1.jar hamcrest-core-1.1.jar jdom-1.1.jar commons-codec-1.9.jar httpclient-4.4.1.jar commons-logging-1.2.jar httpcore-4.4.1.jar log4j-1.2.15.jar 其中，log4j-1.2.15.jar是可选的，需要日志功能的时加入该包，其他包都是必不可少的。 解决方案：您的工程中在加入OSS Java SDK依赖的包，加入方法如下： 如果您的工程在Eclipse中，请参考安装中的安装方式二：在Eclipse项目中导入工程依赖的包。 如果您的工程是Ant。请把OSS Java SDK依赖的包，放入工程lib目录； 如果您直接使用javac/java，请使用-classpath/-cp指定OSS Java SDK依赖的包路径，或把OSS Java SDK依赖的包放入classpath路经下。
 
 **连接超时**
 
-对象存储 OSS
+运行OSS Java SDK程序抛出如下异常：
 
 ```
 com.aliyun.oss.ClientException: SocketException
@@ -9964,7 +10349,11 @@ com.aliyun.oss.common.comm.DefaultServiceClient.sendRequestCore(DefaultServiceCl
 
 **to respond**
 
-问题原因：使用过期的连接会导致上述错误。该错误仅在Java SDK 2.1.2前的版本出现。 调用OSS Java SDK不响应，通过 `jstack -l <pid>` 查看堆栈，问题出现在如下位置： 对象存储 OSS
+运行OSS Java SDK程序抛出如下异常： 问题原因：使用过期的连接会导致上述错误。该错误仅在Java SDK 2.1.2前的版本出现。 解决方案：请升级OSS Java SDK到2.1.2及以后版本。
+
+**调用OSS Java SDK不响应**
+
+调用OSS Java SDK不响应，通过 `jstack -l <pid>` 查看堆栈，问题出现在如下位置：
 
 ```
 "main" prio=6 tid=0x000000000291e000 nid=0xc40 waiting on condition [0x0000000002dae000] java.lang.Thread.State: WAITING (parking)
@@ -10032,7 +10421,7 @@ ossObject.close();
 
 **连接关闭**
 
-对象存储 OSS
+您在使用OSSClient.getObject时，报类似如下错误：
 
 ```
 Exception in thread "main" org.apache.http.ConnectionClosedException: Premature end of Content-Length delimited message body (expected: 11990526; received: 202880
@@ -10067,7 +10456,7 @@ org.apache.http.impl.execchain.ResponseEntityProxy.streamClosed(ResponseEntityPr
 
 **调用OSSClient.shutdown抛异常InterruptedException**
 
-调用OSSClient.shutdown抛如下异常： 对象存储 OSS
+调用OSSClient.shutdown抛如下异常：
 
 ```
 java.lang.InterruptedException: sleep interrupted
@@ -10075,15 +10464,19 @@ java.lang.InterruptedException: sleep interrupted
         at com.aliyun.oss.common.comm.IdleConnectionReaper.run(IdleConnectionReaper:76)
 ```
 
-问题原因：OSSClient后台线程IdleConnectionReaper，定时关闭闲置连接。IdleConnectionReaper线程在 sleep时，调用shutdown，就会抛出上面的异常。 解决方案：
+问题原因：OSSClient后台线程IdleConnectionReaper，定时关闭闲置连接。IdleConnectionReaper线程在 sleep时，调用shutdown，就会抛出上面的异常。 解决方案： OSS Java SDK 2.3.0已经修复该问题，请升级您的SDK版本。 OSS Java SDK 2.3.0之前的版本，请使用如下代码，忽略该异常：
 
 ```
-try { serviceClient.shutdown(); } catch(Exception e) { }
+try { serviceClient.shutdown(); } catch(Exception e) {
 ```
 
-### Python-SDK
+`}`
 
-#### 前言
+### 3.2 Python-SDK
+
+#### 3.2.1 前言
+
+本文介绍对象存储OSS的Python SDK各种使用场景下的示例代码。
 
 **源码地址**
 
@@ -10108,21 +10501,19 @@ Python SDK的示例代码在examples目录下，地址是GitHub。示例包括�
 | image.py | 展示了图片服务的用法。 |
 | bucket.py | 展示了Bucket管理操作的用法，诸如创建、删除、列举 Bucket等。 |
 
-对象存储 OSS
+#### 3.2.2 安装
 
-#### 安装
+本文介绍如何安装Python SDK。
 
 **环境准备**
 
 OSS Python SDK适用于Python 2.6、2.7、3.3、3.4、3.5、3.6、3.7、3.8及以上版本。 安装环境根据Python官网的引导安装合适的Python版本。
 
-**说明**
+> **说明：** 本手册以python3为例为您进行介绍。
 
-本手册以python3为例为您进行介绍。 查看版本执行命令 `python -V` 查看Python版本。 Windows环境中，如果提示“不是内部或外部命令”，请在环境变量中编辑 `Path` ，增加Python和pip的安装路径。pip的安装路径一般为Python所在目录的Scripts文件夹。
+查看版本执行命令 `python -V` 查看Python版本。 Windows环境中，如果提示“不是内部或外部命令”，请在环境变量中编辑 `Path` ，增加Python和pip的安装路径。pip的安装路径一般为Python所在目录的Scripts文件夹。
 
-**说明**
-
-您可能需要重启电脑使环境变量生效。
+> **说明：** 您可能需要重启电脑使环境变量生效。
 
 **下载SDK**
 
@@ -10150,9 +10541,9 @@ apt-get install python-dev
 pip install oss2
 ```
 
-**说明**
+> **说明：** 如果您的环境尚未安装pip，请参见pip官网安装。
 
-如果您的环境尚未安装pip，请参见pip官网安装。 通过源码安装从GitHub下载相应版本的SDK包，解压后进入目录，确认目录下有setup.py文件，然后执行命令如下： 对象存储 OSS
+通过源码安装从GitHub下载相应版本的SDK包，解压后进入目录，确认目录下有setup.py文件，然后执行命令如下：
 
 ```
 python setup.py install
@@ -10166,7 +10557,7 @@ python setup.py install
 >>> import oss2 >>> oss2.__version__ '2.0.0'
 ```
 
-验证crcmod OSS的CRC数据校验有两种方式：C扩展模式（通过SDK的依赖库crcmod调用扩展库_crcfunext.so计算CRC） 和纯Python模式。前者的性能远优于后者。安装oss2时会自动安装crcmod。crcmod详情请参见crcmod introduction。 如果发现安装SDK之后调用上传、下载接口较其他工具或者其他SDK慢了很多，有可能是安装SDK的依赖库 crcmod的C扩展模式失败，导致在上传、下载计算CRC校验码时采用了纯Python模式。 验证crcmod的C扩展模式是否安装成功的方法如下： i. 在命令行输入 `python` 并回车，进入Python环境。 ii. 输入 `import crcmod._crcfunext` 并回车。 如果没有出现错误提示，则表明crcmod库的C扩展模式安装成功。 如果出现以下错误提示，则表明crcmod库的C扩展模式安装失败。
+上面的输出表明您已经成功安装了Python SDK 2.0.0。 验证crcmod OSS的CRC数据校验有两种方式：C扩展模式（通过SDK的依赖库crcmod调用扩展库_crcfunext.so计算CRC） 和纯Python模式。前者的性能远优于后者。安装oss2时会自动安装crcmod。crcmod详情请参见crcmod introduction。 如果发现安装SDK之后调用上传、下载接口较其他工具或者其他SDK慢了很多，有可能是安装SDK的依赖库 crcmod的C扩展模式失败，导致在上传、下载计算CRC校验码时采用了纯Python模式。 验证crcmod的C扩展模式是否安装成功的方法如下： i. 在命令行输入 `python` 并回车，进入Python环境。 ii. 输入 `import crcmod._crcfunext` 并回车。 如果没有出现错误提示，则表明crcmod库的C扩展模式安装成功。 如果出现以下错误提示，则表明crcmod库的C扩展模式安装失败。
 
 ```
 >>> import crcmod._crcfunext Traceback (most recent call last): File "<stdin>", line 1, in <module> ImportError: No module named _crcfunext
@@ -10198,121 +10589,114 @@ pip install crcmod -v
 pip uninstall oss2
 ```
 
-对象存储 OSS
+#### 3.2.3 快速入门
 
-#### 快速入门
-
-本节介绍如何快速使用OSS Python SDK完成常见操作，如创建存储空间（Bucket）、上传或下载文件（Object） 等。
+本节介绍如何快速使用OSS Python SDK完成常见操作，如创建存储空间（Bucket）、上传或下载文件（Object） 等。 以下代码用于创建存储空间。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 设置存储空间为私有读写权限。
+`#` 设置存储空间为私有读写权限。
 
 ```
 bucket.create_bucket(oss2.models.BUCKET_ACL_PRIVATE)
 ```
 
-AccessKey Id和AccessKey Secret获取方式请参见获取AccessKey。
-
-#### 上传文件
+AccessKey Id和AccessKey Secret获取方式请参见获取AccessKey。 获取Endpoint信息，请参见获取Endpoint。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# <yourObjectName>上传文件到`OSS`时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。
-# <yourLocalFile>由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
+`# <yourObjectName>`上传文件到`OSS`时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。 `# <yourLocalFile>`由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
 
 ```
 bucket.put_object_from_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
-#### 下载文件
+以下代码用于将指定的OSS文件下载到本地文件：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# <yourObjectName>从`OSS`下载文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。
-# <yourLocalFile>由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
+`# <yourObjectName>`从`OSS`下载文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。 `# <yourLocalFile>`由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
 
 ```
 bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
-##### 列举文件
-
-以下代码用于列举指定存储空间下的10个文件： 对象存储 OSS
+以下代码用于列举指定存储空间下的10个文件：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 from itertools import islice auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# oss2.ObjectIteratorr用于遍历文件。
-
-```python
-for b in islice(oss2.ObjectIterator(bucket), 10):
-    print(b.key)
-```
-
-##### 删除文件
+`# oss2.ObjectIteratorr`用于遍历文件。
 
 ```java
+for b in islice(oss2.ObjectIterator(bucket), 10):
+    print(b.key)
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# <yourObjectName>表示删除`OSS`文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。
+`# <yourObjectName>`表示删除`OSS`文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。
 
-#### 初始化
+```
+bucket.delete_object('<yourObjectName>')
+```
+
+#### 3.2.4 初始化
+
+本文介绍如何初始化Python SDK。
 
 **背景信息**
 
-Python SDK中的大部分操作都是通过oss2.Service和oss2.Bucket这两个类进行的。
+Python SDK中的大部分操作都是通过oss2.Service和oss2.Bucket这两个类进行的。 oss2.Service类用于列举存储空间。
 
-**重要**
+> **重要：** oss2.Service类不支持自定义域名访问。
 
-oss2.Service类不支持自定义域名访问。 oss2.Bucket类用于上传、下载、删除文件以及对存储空间进行各种配置。
+oss2.Bucket类用于上传、下载、删除文件以及对存储空间进行各种配置。
 
 **前提条件**
 
-已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
+已安装OSS Python SDK。 已获取Endpoint。 已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
 
 **初始化客户端**
 
@@ -10320,50 +10704,55 @@ oss2.Service类不支持自定义域名访问。 oss2.Bucket类用于上传、�
 
 **初始化oss2.Service类**
 
-对象存储 OSS
+（推荐）从环境变量获取AccessKey
+
+```
+#!/usr/bin/env python3# -*- coding: utf-8 -*-
+```
+
+`# OSS Python SDK V1` 初始化`Service`客户端示例代码
 
 ```java
-#!/usr/bin/env python3# -*- coding: utf-8 -*-
 import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider def main():
 ```
 
-# 从环境变量中加载访问凭证（需要设置`OSS_ACCESS_KEY_ID`和`OSS_ACCESS_KEY_SECRET`）
+`#` 从环境变量中加载访问凭证（需要设置`OSS_ACCESS_KEY_ID`和`OSS_ACCESS_KEY_SECRET`）
 
 ```
     auth = oss2.ProviderAuth(EnvironmentVariableCredentialsProvider())
 ```
 
-# 设置`Endpoint`
+`#` 设置`Endpoint`
 
 ```
     endpoint = "<endpoint>"
 ```
 
-# 初始化`OSS Service`实例
+`#` 初始化`OSS Service`实例
 
 ```
     service = oss2.Service(auth, endpoint)
 ```
 
-# 列举所有`Bucketprint("===` 列举所有`Bucket ===")`
+`#` 列举所有`Bucketprint("===` 列举所有`Bucket ===")`
 
 ```
     try:
 ```
 
-# 使用`BucketIterator`列举`Bucket`
+`#` 使用`BucketIterator`列举`Bucket`
 
 ```
         buckets = [b.name for b in oss2.BucketIterator(service)]
 ```
 
-# 遍历`Bucket`列表，只输出`Bucket`名称`for bucket in buckets:`
+`#` 遍历`Bucket`列表，只输出`Bucket`名称`for bucket in buckets:`
 
 ```python
             print(bucket)
 ```
 
-# 输出统计信息print(f"\n共列举`Bucket`数`: {len(buckets)}")`
+`#` 输出统计信息print(f"\n共列举`Bucket`数`: {len(buckets)}")`
 
 ```python
     except oss2.exceptions.OssError as e:
@@ -10377,7 +10766,7 @@ import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider 
         raiseif __name__ == "__main__":
 ```
 
-# 程序入口点`try:`
+`#` 程序入口点`try:`
 
 ```
         main()
@@ -10397,7 +10786,7 @@ import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider 
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 service = oss2.Service(auth, 'http://oss-cn-hangzhou.aliyuncs.com')
@@ -10405,66 +10794,70 @@ service = oss2.Service(auth, 'http://oss-cn-hangzhou.aliyuncs.com')
 
 **初始化oss2.Bucket类**
 
-对象存储 OSS
+（推荐）从环境变量获取AccessKey
 
-```java
+```bash
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+```
+
+`# OSS Python SDK V1` 初始化客户端示例代码
+
+```java
 import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider def main():
 ```
 
-# 从环境变量中加载访问凭证（需要设置`OSS_ACCESS_KEY_ID`和`OSS_ACCESS_KEY_SECRET`）
+`#` 从环境变量中加载访问凭证（需要设置`OSS_ACCESS_KEY_ID`和`OSS_ACCESS_KEY_SECRET`）
 
 ```
     auth = oss2.ProviderAuth(EnvironmentVariableCredentialsProvider())
 ```
 
-# 设置`Endpoint`
+`#` 设置`Endpoint`
 
 ```
     endpoint = "<endpoint>"
 ```
 
-# 设置`Bucket`名称
+`#` 设置`Bucket`名称
 
 ```
     bucket_name = "example-bucket"
 ```
 
-# 初始化`OSS Bucket`实例
+`#` 初始化`OSS Bucket`实例
 
 ```
     bucket = oss2.Bucket(auth, endpoint, bucket_name)
 ```
 
-# 列举`Bucket`下的文件列表
-`print("===` 列举`Bucket`下的文件 `===")`
+`#` 列举`Bucket`下的文件列表 `print("===` 列举`Bucket`下的文件 `===")`
 
 ```
     try:
 ```
 
-# 使用`list_objects`方法列举文件
+`#` 使用`list_objects`方法列举文件
 
 ```
         result = bucket.list_objects()
 ```
 
-# 遍历文件列表，只输出文件名
+`#` 遍历文件列表，只输出文件名
 
 ```python
         for obj in result.object_list:
             print(obj.key)
 ```
 
-# 输出统计信息
+`#` 输出统计信息
 
 ```python
         print(f"\n共列举文件数: {len(result.object_list)}")
         if result.is_truncated:
 ```
 
-`print("`注意: 结果被截断，还有更多文件未列出`")`
+`print("`注意`:` 结果被截断，还有更多文件未列出`")`
 
 ```python
     except oss2.exceptions.OssError as e:
@@ -10480,7 +10873,7 @@ import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider 
 if __name__ == "__main__":
 ```
 
-# 程序入口点
+`#` 程序入口点
 
 ```
     try:
@@ -10494,14 +10887,14 @@ if __name__ == "__main__":
         raise
 ```
 
-硬编码AccessKey 对象存储 OSS
+硬编码AccessKey
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 endpoint = 'https://oss-cn-hangzhou.aliyuncs.com' bucket = oss2.Bucket(auth, endpoint, '<yourBucketName>')
@@ -10513,16 +10906,15 @@ endpoint = 'https://oss-cn-hangzhou.aliyuncs.com' bucket = oss2.Bucket(auth, end
 
 将Endpoint指定为自定义域名，并在初始化客户端时通过 `is_cname=True` 参数启用CNAME选项，即可实现自定义域名访问。
 
-**说明**
+> **说明：** 使用自定义域名前，需确保已将自定义域名绑定到Bucket。
 
-使用自定义域名前，需确保已将自定义域名绑定到Bucket。
-# 设置自定义域名
+`#` 设置自定义域名
 
 ```
 endpoint = "http://example.com"
 ```
 
-# 初始化`OSS`客户端实例
+`#` 初始化`OSS`客户端实例
 
 ```
 bucket = oss2.Bucket(auth, endpoint, bucket_name, is_cname=True)
@@ -10530,8 +10922,7 @@ bucket = oss2.Bucket(auth, endpoint, bucket_name, is_cname=True)
 
 **超时控制**
 
-初始化OSS客户端时，使用 `connect_timeout` 参数设置超时时长，单位为秒，默认值为60秒。
-# 初始化`OSS Bucket`实例
+初始化OSS客户端时，使用 `connect_timeout` 参数设置超时时长，单位为秒，默认值为60秒。 `#` 初始化`OSS Bucket`实例
 
 ```
 bucket = oss2.Bucket(auth, endpoint, bucket_name, connect_timeout=30)
@@ -10541,40 +10932,38 @@ bucket = oss2.Bucket(auth, endpoint, bucket_name, connect_timeout=30)
 
 上传、下载文件时默认开启CRC数据校验，确保上传、下载过程的数据完整性。可通过 `enable_crc=False` 参数关闭CRC数据校验功能。
 
-**重要**
+> **重要：** 强烈建议您不要关闭CRC数据校验功能。如果您关闭此功能，则阿里云不保证上传、下载过程数据的完整性。
 
-强烈建议您不要关闭CRC数据校验功能。如果您关闭此功能，则阿里云不保证上传、下载过程数据的完整性。 以下代码用于关闭CRC数据校验：
-# 初始化`OSS Bucket`实例
+以下代码用于关闭CRC数据校验： `#` 初始化`OSS Bucket`实例
 
 ```
 bucket = oss2.Bucket(auth, endpoint, bucket_name, enable_crc=False)
 ```
 
-#### 存储空间
+#### 3.2.5 存储空间
 
-##### 创建存储空间
+##### 3.2.5.1 创建存储空间
 
-存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 对象存储 OSS
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 以下代码用于创建存储空间。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# 通过指定`Endpoint`和存储空间名称，您可以在指定的地域创建新的存储空间。`Endpoint`以杭州为例，其它`Region`请按实际
-情况填写。
+`#` 通过指定`Endpoint`和存储空间名称，您可以在指定的地域创建新的存储空间。`Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 新建存储空间默认为私有访问权限。
+`#` 新建存储空间默认为私有访问权限。
 
 ```
 bucket.create_bucket()
 ```
 
-##### 列举存储空间
+##### 3.2.5.2 列举存储空间
 
 存储空间（Bucket）是用来存储对象（Object）的容器。对象都隶属于存储空间。存储空间按照字母顺序排列。您可以列举当前账号所有地域下符合指定条件的存储空间。 以下代码用于列举当前账号所有地域下的存储空间。
 
@@ -10583,26 +10972,27 @@ bucket.create_bucket()
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
 service = oss2.Service(auth, 'http://oss-cn-hangzhou.aliyuncs.com') print([b.name for b in oss2.BucketIterator(service)])
 ```
 
-##### 判断存储空间是否存在
+##### 3.2.5.3 判断存储空间是否存在
 
-存储空间（Bucket）是存储对象（Object）的容器。对象均隶属于存储空间。本文介绍如何判断存储空间是否存在。
+存储空间（Bucket）是存储对象（Object）的容器。对象均隶属于存储空间。本文介绍如何判断存储空间是否存在。 以下代码用于判断存储空间是否存在。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') def does_bucket_exist(bucket):
     try:
+        bucket.get_bucket_info()
     except oss2.exceptions.NoSuchBucket:
         return False
     except:
@@ -10611,7 +11001,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 exist = does_bucket_exist(bucket)
 ```
 
-# 返回值为`true`表示已存在同名`Bucket`，`false`表示不存在同名`Bucket`。
+`#` 返回值为`true`表示已存在同名`Bucket`，`false`表示不存在同名`Bucket`。
 
 ```python
 if exist:
@@ -10620,9 +11010,7 @@ else:
     print('bucket not exist')
 ```
 
-对象存储 OSS
-
-##### 管理存储空间访问权限
+##### 3.2.5.4 管理存储空间访问权限
 
 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何设置和获取存储空间读写权限（ACL）。
 
@@ -10643,13 +11031,17 @@ else:
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 设置存储空间访问权限为私有。
+`#` 设置存储空间访问权限为私有。
+
+```
+bucket.put_bucket_acl(oss2.BUCKET_ACL_PRIVATE)
+```
 
 **获取存储空间访问权限**
 
@@ -10660,25 +11052,32 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
+```python
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') print(bucket.get_bucket_acl().acl)
 ```
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
-```
 
-##### 删除存储空间
+##### 3.2.5.5 删除存储空间
 
-当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。 删除存储空间之前，必须先删除存储空间下的所有文件、LiveChannel和分片上传产生的碎片。以下代码用于删除存储空间： 对象存储 OSS
+当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。 删除存储空间之前，必须先删除存储空间下的所有文件、LiveChannel和分片上传产生的碎片。以下代码用于删除存储空间：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+
+```
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try:
+```
+
+`#` 删除存储空间。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try: except oss2.exceptions.BucketNotEmpty:
+    bucket.delete_bucket()
+except oss2.exceptions.BucketNotEmpty:
     print('bucket is not empty.')
 except oss2.exceptions.NoSuchBucket:
     print('bucket does not exist')
@@ -10686,26 +11085,26 @@ except oss2.exceptions.NoSuchBucket:
 
 对于非空的存储空间，可以通过边列举边删除（对于分片上传则是终止上传）的方法清空存储空间，然后再删除。
 
-##### 生命周期管理
+##### 3.2.5.6 生命周期管理
 
 并不是所有上传至OSS的数据都需要频繁访问，但基于数据合规或者存档等原因，部分数据仍需要继续以冷存储类型进行保存。或者基于业务使用场景，希望批量删除Bucket内不再需要保存的数据，您可以配置基于最后一次修改时间（Last Modified Time）的生命周期规则。如果您希望OSS自动监测数据的访问模式并识别冷数据，然后将识别出来的冷数据进行存储类型的转换，从而达到数据的冷热分层存储，最终降低存储成本，您可以配置基于最后一次访问时间（Last Access Time）的生命周期规则。
 
 **设置生命周期规则**
 
-以下代码用于设置生命周期规则。 对象存储 OSS
+以下代码用于设置生命周期规则。
 
 ```java
 # -*- coding: utf-8 -*-
-import oss2 from oss2.models import LifecycleExpiration, LifecycleRule, import datetime auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
+import oss2 from oss2.models import LifecycleExpiration, LifecycleRule, BucketLifecycle,AbortMultipartUpload import datetime auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 距最后修改时间3天后过期。
+`#` 距最后修改时间`3`天后过期。
 
 ```
 rule1 = LifecycleRule('rule1', 'tests/',
@@ -10713,7 +11112,7 @@ rule1 = LifecycleRule('rule1', 'tests/',
                       expiration=LifecycleExpiration(days=3))
 ```
 
-# 指定日期之前创建的文件过期。
+`#` 指定日期之前创建的文件过期。
 
 ```
 rule2 = LifecycleRule('rule2', 'logging-',
@@ -10721,7 +11120,7 @@ rule2 = LifecycleRule('rule2', 'logging-',
 expiration=LifecycleExpiration(created_before_date=datetime.date(2018, 12, 12)))
 ```
 
-# 分片3天后过期。
+`#` 分片`3`天后过期。
 
 ```
 rule3 = LifecycleRule('rule3', 'tests1/',
@@ -10729,27 +11128,28 @@ rule3 = LifecycleRule('rule3', 'tests1/',
             abort_multipart_upload=AbortMultipartUpload(days=3))
 ```
 
-# 指定日期之前的分片过期。
+`#` 指定日期之前的分片过期。
 
 ```
 rule4 = LifecycleRule('rule4', 'logging1-',
                       status=LifecycleRule.DISABLED,
-AbortMultipartUpload(created_before_date=datetime.date(2018, 12, 12))) lifecycle = BucketLifecycle([rule1, rule2,rule3,rule4])
+                      abort_multipart_upload =
+AbortMultipartUpload(created_before_date=datetime.date(2018, 12, 12))) lifecycle = BucketLifecycle([rule1, rule2,rule3,rule4]) bucket.put_bucket_lifecycle(lifecycle)
 ```
 
 **查看生命周期规则**
 
-以下代码用于查看存储空间的生命周期规则。 对象存储 OSS
+以下代码用于查看存储空间的生命周期规则。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') for rule in lifecycle.rules:
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') lifecycle = bucket.get_bucket_lifecycle() for rule in lifecycle.rules:
     if rule.abort_multipart_upload is None:
         print('id={0}, prefix={1}, status={2}, days={3}, created_before_date={4}'
               .format(rule.id, rule.prefix, rule.status,
@@ -10771,74 +11171,99 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.delete_bucket_lifecycle()
 ```
 
-# 再次查看生命周期规则会抛出异常。
+`#` 再次查看生命周期规则会抛出异常。
 
 ```python
-try: except oss2.exceptions.NoSuchLifecycle:
+try:
+    lifecycle = bucket.get_bucket_lifecycle()
+except oss2.exceptions.NoSuchLifecycle:
     print('lifecycle is not configured')
 ```
 
-##### 静态网站托管
+##### 3.2.5.7 静态网站托管
 
-您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。 对象存储 OSS
+您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。
+
+**设置静态网站托管**
+
+以下代码用于设置静态网站托管。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 from oss2.models import BucketWebsite auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 开启静态网站托管模式，并把索引页面设置为`index.html`，`404`错误页面设置为`error.html`。
+`#` 开启静态网站托管模式，并把索引页面设置为`index.html`，`404`错误页面设置为`error.html`。
+
+```
+bucket.put_bucket_website(BucketWebsite('index.html', 'error.html'))
+```
+
+**查看静态网站托管配置**
+
+以下代码用于查看静态网站托管配置。
 
 ```java
-bucket.put_bucket_website(BucketWebsite('index.html', 'error.html'))
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try:
 ```
 
-# 当静态网站托管模式没有开启时，`get_bucket_website`会抛出`NoSuchWebsite`异常。
+`#` 当静态网站托管模式没有开启时，`get_bucket_website`会抛出`NoSuchWebsite`异常。
 
-```java
+```python
+    website = bucket.get_bucket_website()
     print('Index file is {0}, error file is {1}'.format(website.index_file,
 website.error_file)) except oss2.exceptions.NoSuchWebsite as e:
     print('Website is not configured, request_id={0}'.format(e.request_id))
+```
+
+**删除静态网站托管配置**
+
+以下代码用于删除静态网站托管配置。
+
+```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.delete_bucket_website()
 ```
 
-##### 跨域资源共享
+##### 3.2.5.8 跨域资源共享
 
-跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供对象存储 OSS
+跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供跨域资源共享接口，方便您控制跨域访问的权限。
+
+**设置跨域资源共享规则**
+
+以下代码用于设置指定存储空间的跨域资源共享规则。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 from oss2.models import BucketCors, CorsRule auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') rule = CorsRule(allowed_origins=['*'],
@@ -10847,17 +11272,27 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
                 max_age_seconds=1000)
 ```
 
-# 已存在的规则将被覆盖。
+`#` 已存在的规则将被覆盖。
+
+```
+bucket.put_bucket_cors(BucketCors([rule]))
+```
+
+**获取跨域资源共享规则**
+
+以下代码用于获取跨域资源共享规则。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```java
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try: except oss2.exceptions.NoSuchCors:
+```python
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try:
+    cors = bucket.get_bucket_cors()
+except oss2.exceptions.NoSuchCors:
     print('cors is not set')
 else:
     for rule in cors.rules:
@@ -10866,19 +11301,26 @@ else:
         print('AllowedHeaders={0}'.format(rule.allowed_headers))
         print('ExposeHeaders={0}'.format(rule.expose_headers))
         print('MaxAgeSeconds={0}'.format(rule.max_age_seconds))
+```
+
+**删除跨域资源共享规则**
+
+以下代码用于删除指定存储空间的所有跨域资源共享规则。
+
+```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.delete_bucket_cors()
 ```
 
-##### 防盗链
+##### 3.2.5.9 防盗链
 
-对象存储 OSS 为了防止用户在OSS上的数据被其他人盗链，OSS支持基于HTTP header中表头字段Referer的防盗链方法。 一个Bucket支持设置一个防盗链，可根据实际需要设置以下参数： Referer白名单。Referer为域名和IP地址，支持通配符星号（*）和问号（？），多个Referer以换行分隔。仅允许指定的域名访问OSS资源。 Referer黑名单。Referer为域名和IP地址，支持通配符星号（*）和问号（？），多个Referer以换行分隔。不允许指定的域名访问OSS资源。 是否允许空Referer。如果不允许空Referer，则只有HTTP或HTTPS header中包含Referer字段的请求才能访问 OSS资源。
+为了防止用户在OSS上的数据被其他人盗链，OSS支持基于HTTP header中表头字段Referer的防盗链方法。 一个Bucket支持设置一个防盗链，可根据实际需要设置以下参数： Referer白名单。Referer为域名和IP地址，支持通配符星号（*）和问号（？），多个Referer以换行分隔。仅允许指定的域名访问OSS资源。 Referer黑名单。Referer为域名和IP地址，支持通配符星号（*）和问号（？），多个Referer以换行分隔。不允许指定的域名访问OSS资源。 是否允许空Referer。如果不允许空Referer，则只有HTTP或HTTPS header中包含Referer字段的请求才能访问 OSS资源。
 
 **设置防盗链**
 
@@ -10889,13 +11331,13 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 from oss2.models import BucketReferer auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 设置允许空`Referer`（`True`表示允许空`Referer`，`False`表示不允许空`Referer`），并设置`Referer`白名单。
+`#` 设置允许空`Referer`（`True`表示允许空`Referer`，`False`表示不允许空`Referer`），并设置`Referer`白名单。
 
 ```
 bucket.put_bucket_referer(BucketReferer(True, ['http://aliyun.com', 'http://*.aliyuncs.com']))
@@ -10910,10 +11352,10 @@ bucket.put_bucket_referer(BucketReferer(True, ['http://aliyun.com', 'http://*.al
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') print('allow empty referer={0}, referers={1}'.format(config.allow_empty_referer, config.referer s))
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') config = bucket.get_bucket_referer() print('allow empty referer={0}, referers={1}'.format(config.allow_empty_referer, config.referer s))
 ```
 
 **清空防盗链设置**
@@ -10925,21 +11367,19 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 不能直接清空防盗链，需要新建一个允许空`Referer`的规则来覆盖之前的规则。
+`#` 不能直接清空防盗链，需要新建一个允许空`Referer`的规则来覆盖之前的规则。
 
 ```
 bucket.put_bucket_referer(BucketReferer(True, []))
 ```
 
-对象存储 OSS
-
-##### 设置访问日志
+##### 3.2.5.10 设置访问日志
 
 您可以开启存储空间的访问日志记录功能，开启后对于此存储空间的访问会被记录成日志文件，保存在指定的存储空间中。
 
@@ -10956,13 +11396,13 @@ bucket.put_bucket_referer(BucketReferer(True, []))
 import oss2 from oss2.models import BucketLogging auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 开启日志记录。把日志保存在当前存储空间，设置日志文件存放的目录为 `logging/`。
+`#` 开启日志记录。把日志保存在当前存储空间，设置日志文件存放的目录为 `logging/`。
 
 ```python
 logging = bucket.put_bucket_logging(BucketLogging(bucket.bucket_name, 'logging/')) if logging.status == 200:
@@ -10981,36 +11421,38 @@ else:
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') print('TargetBucket={0}, TargetPrefix={1}'.format(logging.target_bucket, logging.target_prefix))
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') logging = bucket.get_bucket_logging() print('TargetBucket={0}, TargetPrefix={1}'.format(logging.target_bucket, logging.target_prefix))
 ```
 
 **关闭访问日志记录**
 
-以下代码用于关闭存储空间的访问日志记录。 对象存储 OSS
+以下代码用于关闭存储空间的访问日志记录。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') if logging.status == 204:
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') logging = bucket.delete_bucket_logging() if logging.status == 204:
     print("Disable access logging")
 else:
     print("request_id ：", logging.request_id)
     print("resp : ", logging.resp.response)
 ```
 
-##### 绑定自定义域名
+##### 3.2.5.11 绑定自定义域名
 
 文件（Object）上传至存储空间（Bucket）后，OSS 会自动生成文件的 URL，您可以直接通过该 URL访问文件。 如果您希望使用自定义域名访问这些 Object，需要添加 CNAME 记录将自定义域名绑定到 Object 所在的 Bucket。
 
 **注意事项**
+
+本文以从环境变量读取访问凭证为例介绍。配置访问凭证的操作请参见配置访问凭证。
 
 **示例代码**
 
@@ -11023,74 +11465,78 @@ else:
 import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider
 ```
 
-# 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
+`#` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
 
 ```
 OSS_ACCESS_KEY_SECRET。 auth = oss2.ProviderAuth(EnvironmentVariableCredentialsProvider())
 ```
 
-# 填写`Bucket`所在地域对应的`Endpoint`。以华东1（杭州）为例，`Endpoint`填写为`https://oss-cn-`
+`#` 填写`Bucket`所在地域对应的`Endpoint`。以华东`1`（杭州）为例，`Endpoint`填写为`https://oss-cn-`
 
 ```
 hangzhou.aliyuncs.com。 endpoint = "https://oss-cn-hangzhou.aliyuncs.com"
 ```
 
-# examplebucket填写存储空间名称。
+`# examplebucket`填写存储空间名称。
 
 ```
 bucket = oss2.Bucket(auth, endpoint, "examplebucket")
 ```
 
-# 填写自定义域名。
+`#` 填写自定义域名。
 
 ```
 test_domain = 'www.example.com'
 ```
 
-# 通过`delete_certificate`选择是否删除证书。设置为`delete_certificate=True`表示删除证书，设置为`delete_certi`
-`ficate=False`表示不删除证书。
+`#` 通过`delete_certificate`选择是否删除证书。设置为`delete_certificate=True`表示删除证书，设置为`delete_certi` `ficate=False`表示不删除证书。
 
 ```bash
 # cert = oss2.models.CertInfo(delete_certificate=True)
 # input = oss2.models.PutBucketCnameRequest(test_domain, cert)
-input = oss2.models.PutBucketCnameRequest(test_domain)
+input = oss2.models.PutBucketCnameRequest(test_domain) bucket.put_bucket_cname(input)
 ```
 
 **查看CNAME记录**
 
-对象存储 OSS 以下代码用于查看CNAME记录。
+以下代码用于查看CNAME记录。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider
 ```
 
-# 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
+`#` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
 
 ```
 OSS_ACCESS_KEY_SECRET。 auth = oss2.ProviderAuth(EnvironmentVariableCredentialsProvider())
 ```
 
-# 填写`Bucket`所在地域对应的`Endpoint`。以华东1（杭州）为例，`Endpoint`填写为`https://oss-cn-`
+`#` 填写`Bucket`所在地域对应的`Endpoint`。以华东`1`（杭州）为例，`Endpoint`填写为`https://oss-cn-`
 
 ```
 hangzhou.aliyuncs.com。 endpoint = "https://oss-cn-hangzhou.aliyuncs.com"
 ```
 
-# examplebucket填写存储空间名称。
+`# examplebucket`填写存储空间名称。
 
 ```
 bucket = oss2.Bucket(auth, endpoint, "examplebucket") list_result = bucket.list_bucket_cname() for c in list_result.cname:
 ```
 
-# 打印自定义域名。
+`#` 打印自定义域名。
 
 ```python
     print(c.domain)
+```
+
+`#` 打印绑定自定义域名的时间。
+
+```python
     print(c.last_modified)
 ```
 
-# 打印域名所处状态。
+`#` 打印域名所处状态。
 
 ```python
     print(c.status)
@@ -11103,39 +11549,43 @@ bucket = oss2.Bucket(auth, endpoint, "examplebucket") list_result = bucket.list_
 import oss2 from oss2.credentials import EnvironmentVariableCredentialsProvider
 ```
 
-# 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
+`#` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
 
 ```
 OSS_ACCESS_KEY_SECRET。 auth = oss2.ProviderAuth(EnvironmentVariableCredentialsProvider())
 ```
 
-# 填写`Bucket`所在地域对应的`Endpoint`。以华东1（杭州）为例，`Endpoint`填写为`https://oss-cn-`
+`#` 填写`Bucket`所在地域对应的`Endpoint`。以华东`1`（杭州）为例，`Endpoint`填写为`https://oss-cn-`
 
 ```
 hangzhou.aliyuncs.com。 endpoint = "https://oss-cn-hangzhou.aliyuncs.com"
 ```
 
-# examplebucket填写存储空间名称。
+`# examplebucket`填写存储空间名称。
 
 ```
 bucket = oss2.Bucket(auth, endpoint, "examplebucket")
 ```
 
-# 填写自定义域名。
+`#` 填写自定义域名。
 
 ```
 test_domain = 'www.example.com'
 ```
 
-# 删除`CNAME`记录。
+`#` 删除`CNAME`记录。
 
-#### 上传文件
+```
+bucket.delete_bucket_cname(test_domain)
+```
 
-##### 概述
+#### 3.2.6 上传文件
 
-在OSS中，操作的基本数据单元是文件（Object）。OSS Python SDK提供了丰富的文件上传方式。 对象存储 OSS 简单上传：文件最大不能超过5 GiB。 追加上传：文件最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：当文件较大时，可以使用分片上传，最大不能超过48.8 TiB。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。
+##### 3.2.6.1 概述
 
-##### 简单上传
+在OSS中，操作的基本数据单元是文件（Object）。OSS Python SDK提供了丰富的文件上传方式。 OSS Python SDK支持以下文件上传方式： 简单上传：文件最大不能超过5 GiB。 追加上传：文件最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：当文件较大时，可以使用分片上传，最大不能超过48.8 TiB。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。
+
+##### 3.2.6.2 简单上传
 
 简单上传提供上传字符串、上传Bytes、上传Unicode、上传网络流以及上传本地文件五种形式。 通过bucket.put_object方法上传文件。上传方法支持多种类型的输入源，输入源有如下几种类型：
 
@@ -11147,44 +11597,48 @@ test_domain = 'www.example.com'
 | 本地文件 | 文件对象（File Object），必须以二进制方式打开（如“rb”模式）。 |
 | 网络流 | 可迭代对象（Iterable），以Chunked Encoding的方式上传。 |
 
-**说明**
-
-试图添加文件（Object）时，如果存储空间（Bucket）中已经存在同名文件且对该文件有访问权限，则新添加的文件将覆盖原来的文件，文件添加成功后返回200 OK。
+> **说明：** 试图添加文件（Object）时，如果存储空间（Bucket）中已经存在同名文件且对该文件有访问权限，则新添加的文件将覆盖原来的文件，文件添加成功后返回200 OK。
 
 **上传字符串**
 
-以下代码用于将字符串上传到OSS文件。 对象存储 OSS
+以下代码用于将字符串上传到OSS文件。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 返回值。
+`#` 返回值。
 
 ```
 result = bucket.put_object('<yourObjectName>', 'content of object')
 ```
 
-# HTTP返回码。
+`# HTTP`返回码。
 
 ```python
 print('http status: {0}'.format(result.status))
 ```
 
-# 请求`ID`。请求`ID`是请求的唯一标识，强烈建议在程序日志中添加此参数。
+`#` 请求`ID`。请求`ID`是请求的唯一标识，强烈建议在程序日志中添加此参数。
 
 ```python
-print('request_id: {0}'.format(result.request_id)) print('ETag: {0}'.format(result.etag))
+print('request_id: {0}'.format(result.request_id))
 ```
 
-# HTTP响应头部。
+`# ETag`是`put_object`方法返回值特有的属性。
+
+```python
+print('ETag: {0}'.format(result.etag))
+```
+
+`# HTTP`响应头部。
 
 ```python
 print('date: {0}'.format(result.headers['date']))
@@ -11199,7 +11653,7 @@ print('date: {0}'.format(result.headers['date']))
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.put_object('<yourObjectName>', b'content of object')
@@ -11214,7 +11668,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.put_object('<yourObjectName>', u'content of object')
@@ -11222,36 +11676,41 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 
 **上传本地文件**
 
-以下代码用于上传本地文件。 对象存储 OSS
+以下代码用于上传本地文件。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 必须以二进制的方式打开文件，因为需要知道文件包含的字节数。
+`#` 必须以二进制的方式打开文件，因为需要知道文件包含的字节数。
 
 ```
 with open('<yourLocalFile>', 'rb') as fileobj:
 ```
 
-# Seek方法用于指定从第N个字节位置开始读写。此处以`1000`为例进行介绍，上传时会从您指定的第`1000`个字节位置开始
-上传，直到文件结束。
+`# Seek`方法用于指定从第`N`个字节位置开始读写。此处以`1000`为例进行介绍，上传时会从您指定的第`1000`个字节位置开始上传，直到文件结束。
 
 ```
     fileobj.seek(1000, os.SEEK_SET)
 ```
 
-# Tell方法用于返回当前位置。
+`# Tell`方法用于返回当前位置。
 
 ```
     current = fileobj.tell()
+    bucket.put_object('<yourObjectName>', fileobj)
+```
+
+Python SDK还提供了一个更加便捷的方法用于上传本地文件：
+
+```
 bucket.put_object_from_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
@@ -11264,40 +11723,40 @@ bucket.put_object_from_file('<yourObjectName>', '<yourLocalFile>')
 import oss2 import requests auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# requests.get返回的是一个可迭代对象（`Iterable`），此时`Python SDK`会通过`Chunked Encoding`方式上传。
+`# requests.get`返回的是一个可迭代对象（`Iterable`），此时`Python SDK`会通过`Chunked Encoding`方式上传。
 
 ```
-input = requests.get('http://www.aliyun.com')
+input = requests.get('http://www.aliyun.com') bucket.put_object('<yourObjectName>', input)
 ```
 
-##### 追加上传
+##### 3.2.6.3 追加上传
 
-OSS提供了追加上传（Append Object）的方式，在一个Object后面直接追加内容。通过这种方式操作的Object的类型为Appendable Object。 以下代码用于追加上传文件到OSS。 对象存储 OSS
+OSS提供了追加上传（Append Object）的方式，在一个Object后面直接追加内容。通过这种方式操作的Object的类型为Appendable Object。 以下代码用于追加上传文件到OSS。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 设置首次上传的追加位置（`Position`参数）为0。
+`#` 设置首次上传的追加位置（`Position`参数）为`0`。
 
 ```
 result = bucket.append_object('<yourObjectName>', 0, 'content of first append')
 ```
 
-# 如果不是首次上传，可以通过`bucket.head_object`方法或上次追加返回值的`next_position`属性，得到追加位置。
+`#` 如果不是首次上传，可以通过`bucket.head_object`方法或上次追加返回值的`next_position`属性，得到追加位置。
 
 ```
 bucket.append_object('<yourObjectName>', result.next_position, 'content of second append')
@@ -11305,7 +11764,7 @@ bucket.append_object('<yourObjectName>', result.next_position, 'content of secon
 
 如果文件已经存在，如下两种情况将会抛出异常： 不可追加文件，则抛出ObjectNotAppendable异常。 可追加文件，但设置的追加位置和文件当前长度不等，则抛出PositionNotEqualToLength异常。
 
-##### 断点续传上传
+##### 3.2.6.4 断点续传上传
 
 在使用分片上传的过程中，如果系统意外崩溃，可以在重启的时候通过ListMultipartUploads和ListParts两个接口来获取某个Object上的所有的分片上传任务和每个分片上传任务中上传成功的Part列表。这样就可以从最后一块成功上传的Part开始继续上传，从而达到断点续传的效果。 您可以通过oss2.resumable_upload方法断点续传上传指定文件，该方法包含以下参数：
 
@@ -11321,28 +11780,26 @@ bucket.append_object('<yourObjectName>', result.next_position, 'content of secon
 | progress callback _ | 上传进度回调函数。 | 否 | 无 |
 | num threads _ | 并发上传的线程数。 | 否 | 1 |
 
-对象存储 OSS
+以下代码用于断点续传上传：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 当文件长度大于或等于可选参数`multipart_threshold`（默认值为`10MB`）时，会使用分片上传。如未使用参数`store`指定目
-录，则会在`HOME`目录下建立`.py-oss-upload`目录来保存断点信息。
+`#` 当文件长度大于或等于可选参数`multipart_threshold`（默认值为`10MB`）时，会使用分片上传。如未使用参数`store`指定目录，则会在`HOME`目录下建立`.py-oss-upload`目录来保存断点信息。
 
 ```
 oss2.resumable_upload(bucket, '<yourObjectName>', '<yourLocalFile>')
 ```
 
-# 如使用`store`指定了目录，则保存断点信息在指定目录中。如使用`num_threads`设置上传并发数，请将
-`oss2.defaults.connection_pool_size`设成大于或等于线程数。默认线程数为1。
+Python SDK 2.1.0以上版本支持设置可选参数进行断点续传上传，代码如下： `#` 如使用`store`指定了目录，则保存断点信息在指定目录中。如使用`num_threads`设置上传并发数，请将 `oss2.defaults.connection_pool_size`设成大于或等于线程数。默认线程数为`1`。
 
 ```
 oss2.resumable_upload(bucket, '<yourObjectName>', '<yourLocalFile>',
@@ -11352,42 +11809,42 @@ oss2.resumable_upload(bucket, '<yourObjectName>', '<yourLocalFile>',
     num_threads=4)
 ```
 
-**说明**
+> **说明：** 断点续传内部使用了多线程，调用时无需在外面封装多线程，否则可能导致数据重复传输。
+> 网络情况较好时，建议增大分片大小。反之，减小分片大小。
 
-断点续传内部使用了多线程，调用时无需在外面封装多线程，否则可能导致数据重复传输。 网络情况较好时，建议增大分片大小。反之，减小分片大小。
-
-##### 分片上传
+##### 3.2.6.5 分片上传
 
 分片上传将要上传的文件分成若干个分片（Part）分别上传，所有分片都上传完成后，将所有分片合并成完整的文件，完成整个文件的上传。 分片上传（Multipart Upload）分为以下三个步骤：
 1. 初始化一个分片上传事件。
 调用ossClient.initiateMultipartUpload方法返回OSS创建的全局唯一的uploadId。
 2. 上传分片。
+调用ossClient.uploadPart方法上传分片数据。
 
-**说明**
+> **说明：** 对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。
+> OSS将收到的分片数据的MD5值放在ETag头内返回给用户。
+> OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 
-对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。 OSS将收到的分片数据的MD5值放在ETag头内返回给用户。 OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 3. 完成分片上传。
-所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 以下代码用于分片上传文件： 对象存储 OSS
+所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 以下代码用于分片上传文件：
 
 ```java
 # -*- coding: utf-8 -*-
 import os from oss2 import SizedFileAdapter, determine_part_size from oss2.models import PartInfo import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') key = '<yourObjectName>' filename = '<yourLocalFile>' total_size = os.path.getsize(filename)
 ```
 
-# determine_part_size方法用来确定分片大小。
+`# determine_part_size`方法用来确定分片大小。
 
 ```
 part_size = determine_part_size(total_size, preferred_size=100 * 1024)
 ```
 
-# 初始化分片。
-# 如果需要在初始化分片时设置文件存储类型，请在`init_multipart_upload`中设置相关`headers`，参考如下。
+`#` 初始化分片。 `#` 如果需要在初始化分片时设置文件存储类型，请在`init_multipart_upload`中设置相关`headers`，参考如下。
 
 ```bash
 # headers = dict()
@@ -11396,7 +11853,7 @@ part_size = determine_part_size(total_size, preferred_size=100 * 1024)
 upload_id = bucket.init_multipart_upload(key).upload_id parts = []
 ```
 
-# 逐个上传分片。
+`#` 逐个上传分片。
 
 ```
 with open(filename, 'rb') as fileobj:
@@ -11406,7 +11863,7 @@ with open(filename, 'rb') as fileobj:
         num_to_upload = min(part_size, total_size - offset)
 ```
 
-# SizedFileAdapter(fileobj, size)方法会生成一个新的文件对象，重新计算起始追加位置。
+`# SizedFileAdapter(fileobj, size)`方法会生成一个新的文件对象，重新计算起始追加位置。
 
 ```
         result = bucket.upload_part(key, upload_id, part_number,
@@ -11416,9 +11873,7 @@ with open(filename, 'rb') as fileobj:
         part_number += 1
 ```
 
-# 完成分片上传。
-# 如果需要在完成分片上传时设置文件访问权限`ACL`，请在`complete_multipart_upload`函数中设置相关`headers`，参考如
-下。
+`#` 完成分片上传。 `#` 如果需要在完成分片上传时设置文件访问权限`ACL`，请在`complete_multipart_upload`函数中设置相关`headers`，参考如下。
 
 ```bash
 # headers = dict()
@@ -11427,7 +11882,7 @@ with open(filename, 'rb') as fileobj:
 bucket.complete_multipart_upload(key, upload_id, parts)
 ```
 
-# 验证分片上传。
+`#` 验证分片上传。
 
 ```
 with open(filename, 'rb') as fileobj:
@@ -11436,26 +11891,30 @@ with open(filename, 'rb') as fileobj:
 
 **取消分片上传事件**
 
-您可以调用bucket.abort_multipart_upload方法来取消分片上传事件。当一个分片上传事件被取消后，无法再使用这个uploadId做任何操作，已经上传的分片数据会被删除。 对象存储 OSS
+您可以调用bucket.abort_multipart_upload方法来取消分片上传事件。当一个分片上传事件被取消后，无法再使用这个uploadId做任何操作，已经上传的分片数据会被删除。
 
 ```java
 # -*- coding: utf-8 -*-
 import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') key = '<yourObjectName>'
 ```
 
-# 由`init_multipart_upload`接口返回的`upload_id`。
+`#` 由`init_multipart_upload`接口返回的`upload_id`。
 
 ```
 upload_id = '<yourUploadId>'
 ```
 
-# 取消指定`upload_id`的分片上传事件，已上传的分片会被删除。
+`#` 取消指定`upload_id`的分片上传事件，已上传的分片会被删除。
+
+```
+bucket.abort_multipart_upload(key, upload_id)
+```
 
 **列举已上传的分片信息**
 
@@ -11466,19 +11925,19 @@ upload_id = '<yourUploadId>'
 import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') key = '<yourObjectName>'
 ```
 
-# 由`init_multipart_upload`接口返回的`upload_id`。
+`#` 由`init_multipart_upload`接口返回的`upload_id`。
 
 ```
 upload_id = '<yourUploadId>'
 ```
 
-# 列举指定`upload_id`的已上传的分片信息。
+`#` 列举指定`upload_id`的已上传的分片信息。
 
 ```python
 for part_info in oss2.PartIterator(bucket, key, upload_id):
@@ -11496,14 +11955,13 @@ for part_info in oss2.PartIterator(bucket, key, upload_id):
 import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') key = '<yourObjectName>'
 ```
 
-# 列举`Object`的所有分片上传事件。同一个`Object`每次调用`init_multipart_upload`会返回不同的`upload_id`。
-# 一个`upload_id`对应一个分片上传事件。
+`#` 列举`Object`的所有分片上传事件。同一个`Object`每次调用`init_multipart_upload`会返回不同的`upload_id`。 `#` 一个`upload_id`对应一个分片上传事件。
 
 ```python
 for upload_info in oss2.ObjectUploadIterator(bucket, key):
@@ -11511,47 +11969,64 @@ for upload_info in oss2.ObjectUploadIterator(bucket, key):
     print('upload_id:', upload_info.upload_id)
 ```
 
-对象存储 OSS
+列举存储空间下的所有分片事件以下代码用于列举存储空间下的所有分片上传事件：
 
 ```java
 # -*- coding: utf-8 -*-
 import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```java
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') for upload_info in oss2.MultipartUploadIterator(bucket):
-    print('key:', upload_info.key)
-    print('upload_id:', upload_info.upload_id)
-# -*- coding: utf-8 -*-
-import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
+```
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`#` 列举存储空间下的所有分片上传事件。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') for upload_info in oss2.MultipartUploadIterator(bucket, prefix='test'):
+for upload_info in oss2.MultipartUploadIterator(bucket):
     print('key:', upload_info.key)
     print('upload_id:', upload_info.upload_id)
 ```
 
-##### 进度条
+列举存储空间下指定前缀Object的分片上传事件以下代码用于列举存储空间下指定前缀Object的分片上传事件：
 
-进度条用于指示上传或下载的进度。 进度条的完整示例代码请参见GitHub。
+```java
+# -*- coding: utf-8 -*-
+import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
+```
+
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+
+```
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
+```
+
+`#` 列举存储空间下以`'test'`为前缀的`Object`的分片上传事件。
+
+```python
+for upload_info in oss2.MultipartUploadIterator(bucket, prefix='test'):
+    print('key:', upload_info.key)
+    print('upload_id:', upload_info.upload_id)
+```
+
+##### 3.2.6.6 进度条
+
+进度条用于指示上传或下载的进度。 进度条的完整示例代码请参见GitHub。 下面的代码以bucket.put_object方法为例，介绍如何使用进度条。
 
 ```java
 # -*- coding: utf-8 -*-
 from __future__ import print_function import os, sys import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 当无法确定待上传的数据长度时，`total_bytes`的值为`None`。
+`#` 当无法确定待上传的数据长度时，`total_bytes`的值为`None`。
 
 ```python
 def percentage(consumed_bytes, total_bytes):
@@ -11559,110 +12034,118 @@ def percentage(consumed_bytes, total_bytes):
         rate = int(100 * (float(consumed_bytes) / float(total_bytes)))
         print('\r{0}% '.format(rate), end='')
         sys.stdout.flush()
+```
+
+`# progress_callback`为可选参数，用于实现进度条功能。
+
+```
 bucket.put_object('<yourObjectName>', 'a'*1024*1024, progress_callback=percentage)
 ```
 
-##### 上传回调
+##### 3.2.6.7 上传回调
 
-本文介绍如何使用上传回调。 对象存储 OSS 上传回调的完整代码请参见GitHub。 put_object、put_object_from_file、complete_multipart_upload支持上传回调功能。
+本文介绍如何使用上传回调。 上传回调的完整代码请参见GitHub。 put_object、put_object_from_file、complete_multipart_upload支持上传回调功能。 以下代码用于上传回调（callback）。
 
 ```java
 # -*- coding: utf-8 -*-
 import json import base64 import os import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 准备回调参数。
-# 设置回调请求的服务器地址，如`http://oss-demo.aliyuncs.com:23450`或`http://127.0.0.1:9090`。
+`#` 准备回调参数。
+
+```
+callback_dict = {}
+```
+
+`#` 设置回调请求的服务器地址，如`http://oss-demo.aliyuncs.com:23450`或`http://127.0.0.1:9090`。
 
 ```
 callback_dict['callbackUrl'] = 'http://oss-demo.aliyuncs.com:23450'
 ```
 
-#（可选）设置回调请求消息头中`Host`的值，即您的服务器配置`Host`的值。
+`#`（可选）设置回调请求消息头中`Host`的值，即您的服务器配置`Host`的值。
 
 ```bash
 # callback_dict['callbackHost'] = 'yourCallbackHost'
 ```
 
-# 设置发起回调时请求`body`的值。
+`#` 设置发起回调时请求`body`的值。
 
 ```
 callback_dict['callbackBody'] = 'filename=${object}&size=${size}&mimeType=${mimeType}'
 ```
 
-# 设置发起回调请求的`Content-Type`。
+`#` 设置发起回调请求的`Content-Type`。
 
 ```
 callback_dict['callbackBodyType'] = 'application/x-www-form-urlencoded'
 ```
 
-# 回调参数是`JSON`格式，并且需要`Base64`编码。
+`#` 回调参数是`JSON`格式，并且需要`Base64`编码。
 
 ```
-base64_callback_body = base64.b64encode(callback_param)
+callback_param = json.dumps(callback_dict).strip() base64_callback_body = base64.b64encode(callback_param)
 ```
 
-# 回调参数编码后放在`Header`中发送给`OSS`。
+`#` 回调参数编码后放在`Header`中发送给`OSS`。
 
 ```
 headers = {'x-oss-callback': base64_callback_body}
 ```
 
-# 上传并回调。
+`#` 上传并回调。
 
 ```
 result = bucket.put_object('<yourObjectName>', 'a'*1024*1024, headers)
 ```
 
-#### 下载文件
+#### 3.2.7 下载文件
 
-##### 概述
+##### 3.2.7.1 概述
 
-在OSS中，操作的基本数据单元是文件（Object）。OSS Python SDK提供了丰富的文件下载方式。 您可以通过以下方式下载OSS文件：
+在OSS中，操作的基本数据单元是文件（Object）。OSS Python SDK提供了丰富的文件下载方式。 您可以通过以下方式下载OSS文件： 下载过程中，您还可以通过进度条功能查看下载进度。
 
-##### 流式下载
+##### 3.2.7.2 流式下载
 
-##### 范围下载
-
-下载过程中，您还可以通过进度条功能查看下载进度。
-
-##### 流式下载
-
-如果要下载的文件太大，或者一次性下载耗时太长，您可以通过流式下载，一次处理部分内容，直到完成文件的下载。 以下代码用于流式下载文件。 对象存储 OSS
+如果要下载的文件太大，或者一次性下载耗时太长，您可以通过流式下载，一次处理部分内容，直到完成文件的下载。 以下代码用于流式下载文件。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# bucket.get_object的返回值是一个类文件对象（`File-Like Object`），同时也是一个可迭代对象（`Iterable`）。
+`# bucket.get_object`的返回值是一个类文件对象（`File-Like Object`），同时也是一个可迭代对象（`Iterable`）。
 
 ```python
 object_stream = bucket.get_object('<yourObjectName>') print(object_stream.read())
 ```
 
-# 由于`get_object`接口返回的是一个`stream`流，需要执行`read()`后才能计算出返回`Object`数据的`CRC checksum`，因此需
-要在调用该接口后做`CRC`校验。
+`#` 由于`get_object`接口返回的是一个`stream`流，需要执行`read()`后才能计算出返回`Object`数据的`CRC checksum`，因此需要在调用该接口后做`CRC`校验。
 
-```java
+```
 if object_stream.client_crc != object_stream.server_crc:
     print "The CRC checksum between client and server is inconsistent!"
+```
+
+以下代码用于将数据下载到本地文件：
+
+```java
 import shutil
 ```
 
-# object_stream是类文件对象，您可以使用`shutil.copyfileobj`方法，将数据下载到本地文件中。
+`# object_stream`是类文件对象，您可以使用`shutil.copyfileobj`方法，将数据下载到本地文件中。
 
 ```
 object_stream = bucket.get_object('<yourObjectName>') with open('<yourLocalFile>', 'wb') as local_fileobj:
@@ -11676,37 +12159,34 @@ object_stream = bucket.get_object('<yourObjectName>') with open('<yourLocalFile>
 import oss2
 ```
 
-# object_stream是一个可迭代对象，您可以将它流式拷贝到另一个文件中。
+`# object_stream`是一个可迭代对象，您可以将它流式拷贝到另一个文件中。
 
 ```
 object_stream = bucket.get_object('<yourObjectName>') bucket.put_object('<yourBackupObjectName>', object_stream)
 ```
 
-##### 下载到本地文件
+##### 3.2.7.3 下载到本地文件
 
-本文介绍如何将OSS文件下载到本地。
+本文介绍如何将OSS文件下载到本地。 以下代码用于把指定的OSS文件下载到本地文件：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 下载`OSS`文件到本地文件。如果指定的本地文件存在会覆盖，不存在则新建。
-# <yourLocalFile>由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
+`#` 下载`OSS`文件到本地文件。如果指定的本地文件存在会覆盖，不存在则新建。 `# <yourLocalFile>`由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
 
 ```
 bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
-对象存储 OSS
-
-##### 范围下载
+##### 3.2.7.4 范围下载
 
 如果仅需要文件中的部分数据，您可以使用范围下载，下载指定范围内的数据。
 
@@ -11719,15 +12199,13 @@ bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>')
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 对于`1000`字节大小的文件，正常的下载范围取值为0~999。
-# 获取0~999字节范围内的数据，包括0和`999`，共`1000`个字节的数据。如果指定的范围无效（比如开始或结束位置的指定值为负
-数，或指定值大于文件大小），则下载整个文件。
+`#` 对于`1000`字节大小的文件，正常的下载范围取值为0~999。 `#` 获取0~999字节范围内的数据，包括`0`和`999`，共`1000`个字节的数据。如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
 
 ```
 object_stream = bucket.get_object('<yourObjectName>', byte_range=(0, 999))
@@ -11739,33 +12217,32 @@ object_stream = bucket.get_object('<yourObjectName>', byte_range=(0, 999))
 
 **兼容行为范围下载**
 
-在请求中增加请求头x-oss-range-behavior:standard，则改变指定范围不在有效区间时OSS的下载行为。假设现有大小为1000 Byte的Object： 若指定了Range: bytes=500~2000，此时范围末端取值不在有效区间，返回500~999字节范围内容，且HTTP Code为206。 若指定了Range: bytes=1000~2000，此时范围首端取值不在有效区间，返回HTTP Code为416，错误码为 InvalidRange。 以下代码用于兼容行为范围下载。 对象存储 OSS
+在请求中增加请求头x-oss-range-behavior:standard，则改变指定范围不在有效区间时OSS的下载行为。假设现有大小为1000 Byte的Object： 若指定了Range: bytes=500~2000，此时范围末端取值不在有效区间，返回500~999字节范围内容，且HTTP Code为206。 若指定了Range: bytes=1000~2000，此时范围首端取值不在有效区间，返回HTTP Code为416，错误码为 InvalidRange。 以下代码用于兼容行为范围下载。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 创建大小为`1000`字节的`Object`。
+`#` 创建大小为`1000`字节的`Object`。
 
 ```
-object_name = 'rangeTest.txt' content = 'a' * 1000 headers = {'x-oss-range-behavior':'standard'}
+object_name = 'rangeTest.txt' content = 'a' * 1000 bucket.put_object(object_name, content) headers = {'x-oss-range-behavior':'standard'}
 ```
 
-# 指定兼容行为。
-# 范围末端取值不在有效区间，返回500~999字节范围内容，`http`状态码为`206`。
+`#` 指定兼容行为。 `#` 范围末端取值不在有效区间，返回500~999字节范围内容，`http`状态码为`206`。
 
 ```python
 object_stream = bucket.get_object(object_name, byte_range=(500, 2000), headers=headers) print('standard get 500~2000 http status code:', object_stream.status) print('standard get 500~2000 contnet_length:', object_stream.content_length) try:
 ```
 
-# 范围首端取值不在有效区间，以下代码抛出异常。`http`状态码为`416`，错误码为`InvalidRange`。
+`#` 范围首端取值不在有效区间，以下代码抛出异常。`http`状态码为`416`，错误码为`InvalidRange`。
 
 ```python
     object_stream = bucket.get_object(object_name, byte_range=(1000, 2000), headers=headers)
@@ -11774,9 +12251,9 @@ except oss2.exceptions.ServerError as e:
     print('standard get 1000~2000 error code:', e.code)
 ```
 
-##### 断点续传下载
+##### 3.2.7.5 断点续传下载
 
-当下载大文件时，如果网络不稳定或者程序异常退出，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提
+当下载大文件时，如果网络不稳定或者程序异常退出，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提供了断点续传下载功能。 断点续传下载的流程如下：
 1. 在本地创建一个临时文件，文件名由原文件名加上一个随机的后缀组成。
 2. 通过指定HTTP请求的Range头，按照范围读取OSS文件，并写入到临时文件里相应的位置。
 3. 下载完成之后，把临时文件重命名为目标文件。如目标文件已存在会覆盖，不存在则新建。
@@ -11787,8 +12264,6 @@ except oss2.exceptions.ServerError as e:
 | bucket | 存储空间名称。 | 是 | 无 |
 | key | OSS文件名称。 | 是 | 无 |
 | filename | 本地文件。OSS文件将下载到该文件中。 | 是 | 无 |
-
-对象存储 OSS
 
 | store | 记录本地分片下载结果的文件。下载过程中，断点信息会保存在此文件中，如果下载中断了，再次下载时会根据文件中记录的点继续下载。 | 否 | HOME目录下建立的.py- oss-download目录。 |
 |---|---|---|---|
@@ -11802,21 +12277,26 @@ except oss2.exceptions.ServerError as e:
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+
+```
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') oss2.resumable_download(bucket, '<yourObjectName>', '<yourLocalFile>')
+```
+
+Python SDK 2.1.0以上版本支持设置可选参数进行断点续传下载，代码如下：
 
 ```java
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') oss2.resumable_download(bucket, '<yourObjectName>', '<yourLocalFile>')
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 请将`oss2.defaults.connection_pool_size`设成大于或等于线程数，并将`part_size`参数设成大于或等于`oss2.defau`
+`#` 请将`oss2.defaults.connection_pool_size`设成大于或等于线程数，并将`part_size`参数设成大于或等于`oss2.defau`
 
 ```
 lts.multiget_part_size。 oss2.resumable_download(bucket, '<yourObjectName>', '<yourLocalFile>',
@@ -11826,11 +12306,9 @@ lts.multiget_part_size。 oss2.resumable_download(bucket, '<yourObjectName>', '<
   num_threads=3)
 ```
 
-**说明**
+> **说明：** 避免多个程序（线程）同时调用该方法下载同一个源文件到同一个目标文件中。因为断点信息会在本地磁盘上互相覆盖，且临时文件名可能会冲突。
 
-避免多个程序（线程）同时调用该方法下载同一个源文件到同一个目标文件中。因为断点信息会在本地磁盘上互相覆盖，且临时文件名可能会冲突。 对象存储 OSS
-
-##### 进度条
+##### 3.2.7.6 进度条
 
 进度条用于指示上传或下载的进度。 进度条的完整示例代码请参见GitHub。 下面的代码以bucket.get_object_to_file方法为例，介绍如何使用进度条。
 
@@ -11839,13 +12317,13 @@ lts.multiget_part_size。 oss2.resumable_download(bucket, '<yourObjectName>', '<
 from __future__ import print_function import os, sys import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 当`HTTP`响应头部没有`Content-Length`时，`total_bytes`的值为`None`。
+`#` 当`HTTP`响应头部没有`Content-Length`时，`total_bytes`的值为`None`。
 
 ```python
 def percentage(consumed_bytes, total_bytes):
@@ -11853,39 +12331,36 @@ def percentage(consumed_bytes, total_bytes):
         rate = int(100 * (float(consumed_bytes) / float(total_bytes)))
         print('\r{0}% '.format(rate), end='')
         sys.stdout.flush()
+```
+
+`# progress_callback`是可选参数，用于实现进度条功能。
+
+```
 bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>', progress_callback=percentage)
 ```
 
-#### 管理文件
+#### 3.2.8 管理文件
 
-##### 概述
+##### 3.2.8.1 概述
 
-您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 利用上述接口，您可以完成以下操作：
+您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 ListObjects、DeleteObject、CopyObject等。 利用上述接口，您可以完成以下操作：
 
-##### 列举文件
+##### 3.2.8.2 判断文件是否存在
 
-##### 查询文件
-
-##### 删除文件
-
-##### 拷贝文件
-
-##### 判断文件是否存在
-
-对象存储 OSS
+本文介绍如何判断文件是否存在。 以下代码用于判断文件是否存在。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') exist = bucket.object_exists('<yourObjectName>')
 ```
 
-# 返回值为`true`表示文件存在，`false`表示文件不存在。
+`#` 返回值为`true`表示文件存在，`false`表示文件不存在。
 
 ```python
 if exist:
@@ -11894,9 +12369,9 @@ else:
     print('object not exist')
 ```
 
-##### 管理文件访问权限
+##### 3.2.8.3 管理文件访问权限
 
-文件的访问权限（ACL）有以下四种：
+本文介绍如何管理文件访问权限。 文件的访问权限（ACL）有以下四种：
 
 | 访问权限 | 描述 | 访问权限值 |
 |---|---|---|
@@ -11916,13 +12391,13 @@ else:
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 设置文件的访问权限。
+`#` 设置文件的访问权限。
 
 ```
 bucket.put_object_acl('<yourObjectName>', oss2.OBJECT_ACL_PUBLIC_READ)
@@ -11930,20 +12405,20 @@ bucket.put_object_acl('<yourObjectName>', oss2.OBJECT_ACL_PUBLIC_READ)
 
 **获取文件访问权限**
 
-以下代码用于获取指定文件的访问权限。 对象存储 OSS
+以下代码用于获取指定文件的访问权限。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') print(bucket.get_object_acl('<yourObjectName>').acl)
 ```
 
-##### 管理文件元信息
+##### 3.2.8.4 管理文件元信息
 
 文件元信息（Object Meta）包括HTTP header和自定义元信息。
 
@@ -11956,7 +12431,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.put_object('<yourObjectName>', '{"age": 1}', headers={'Content-Type': 'application/json; charset=utf-8'})
@@ -11973,7 +12448,7 @@ HTTP header详情请参见RFC2616。
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.put_object('<yourObjectName>', 'a novel', headers={'x-oss-meta-author': 'O. Henry', 'Con tent-Type': 'application/json; charset=utf-8'})
@@ -11981,20 +12456,20 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 
 **修改文件元信息**
 
-以下代码用于修改文件的元信息。 对象存储 OSS
+以下代码用于修改文件的元信息。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.update_object_meta('<yourObjectName>', {'x-oss-meta-author': 'O. Henry'})
 ```
 
-# 每次调用`bucket.update_object_meta`都会清空用户自定义元信息，重新写入。
+`#` 每次调用`bucket.update_object_meta`都会清空用户自定义元信息，重新写入。
 
 ```
 bucket.update_object_meta('<yourObjectName>', {'x-oss-meta-price': '100 dollar'})
@@ -12006,7 +12481,7 @@ bucket.update_object_meta('<yourObjectName>', {'x-oss-meta-price': '100 dollar'}
 bucket.update_object_meta('<yourObjectName>', {'x-oss-meta-author': 'O. Henry'})
 ```
 
-# 每次调用`bucket.update_object_meta`都会清空用户自定义元信息，重新写入。
+`#` 每次调用`bucket.update_object_meta`都会清空用户自定义元信息，重新写入。
 
 ```
 bucket.update_object_meta('<yourObjectName>', {'Content-Type': 'text/plain'})
@@ -12028,27 +12503,27 @@ bucket.update_object_meta('<yourObjectName>', {'Content-Type': 'text/plain'})
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 获取文件的部分元信息
+`#` 获取文件的部分元信息
 
 ```python
 simplifiedmeta = bucket.get_object_meta("<yourObjectName>") print(simplifiedmeta.headers['Last-Modified']) print(simplifiedmeta.headers['Content-Length']) print(simplifiedmeta.headers['ETag'])
 ```
 
-# 获取文件的全部元信息
+`#` 获取文件的全部元信息
 
 ```python
 objectmeta = bucket.head_object("<yourObjectName>") print(objectmeta.headers['Content-Type']) print(objectmeta.headers['Last-Modified']) print(objectmeta.headers['x-oss-object-type'])
 ```
 
-##### 列举文件
+##### 3.2.8.5 列举文件
 
-对象存储 OSS
+OSS文件按照字母顺序排列。Python SDK提供了一系列列举文件的方法。
 
 **简单列举**
 
@@ -12059,19 +12534,32 @@ objectmeta = bucket.head_object("<yourObjectName>") print(objectmeta.headers['Co
 import oss2 from itertools import islice auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```java
+```python
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') for b in islice(oss2.ObjectIterator(bucket), 10):
     print(b.key)
+```
+
+**列举存储空间下所有文件**
+
+以下代码用于列举存储空间下的所有文件。
+
+```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
+
+```
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
+```
+
+`#` 列举存储空间下所有文件。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') for obj in oss2.ObjectIterator(bucket):
+for obj in oss2.ObjectIterator(bucket):
     print(obj.key)
 ```
 
@@ -12084,13 +12572,13 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 列举`fun`文件夹下的所有文件，包括子目录下的文件。
+`#` 列举`fun`文件夹下的所有文件，包括子目录下的文件。
 
 ```python
 for obj in oss2.ObjectIterator(bucket, prefix='fun/'):
@@ -12105,26 +12593,26 @@ fun/movie/001.avi fun/movie/007.avi fun/test.jpg
 
 **列举指定目录下的文件和子目录**
 
-对象存储 OSS OSS没有文件夹的概念，所有元素都是以文件来存储。创建文件夹本质上来说是创建了一个大小为0并以正斜线（/） 结尾的文件。这个文件可以被上传和下载，控制台会对以正斜线（/）结尾的文件以文件夹的方式展示。关于创建文件夹的完整示例代码，请参见GitHub示例。 通过delimiter和prefix两个参数可以模拟文件夹功能： 如果设置prefix为某个文件夹名称，则会列举以此prefix开头的文件，即该文件夹下所有的文件和子文件夹（目录），包括子文件夹下的文件和文件夹。 如果再设置delimiter为正斜线（/），则只列举该文件夹下的文件和子文件夹（目录）名称，子文件夹下的文件和文件夹不显示。 以下代码用于列举指定目录下的文件和子目录。
+OSS没有文件夹的概念，所有元素都是以文件来存储。创建文件夹本质上来说是创建了一个大小为0并以正斜线（/） 结尾的文件。这个文件可以被上传和下载，控制台会对以正斜线（/）结尾的文件以文件夹的方式展示。关于创建文件夹的完整示例代码，请参见GitHub示例。 通过delimiter和prefix两个参数可以模拟文件夹功能： 如果设置prefix为某个文件夹名称，则会列举以此prefix开头的文件，即该文件夹下所有的文件和子文件夹（目录），包括子文件夹下的文件和文件夹。 如果再设置delimiter为正斜线（/），则只列举该文件夹下的文件和子文件夹（目录）名称，子文件夹下的文件和文件夹不显示。 以下代码用于列举指定目录下的文件和子目录。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 列举`fun`文件夹下的文件与子文件夹名称，不列举子文件夹下的文件。
+`#` 列举`fun`文件夹下的文件与子文件夹名称，不列举子文件夹下的文件。
 
 ```
 for obj in oss2.ObjectIterator(bucket, prefix = 'fun/', delimiter = '/'):
 ```
 
-# 通过`is_prefix`方法判断`obj`是否为文件夹。
+`#` 通过`is_prefix`方法判断`obj`是否为文件夹。
 
 ```python
     if obj.is_prefix():  # 文件夹
@@ -12153,7 +12641,7 @@ import oss2 def CalculateFolderLength(bucket, folder):
 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') for obj in oss2.ObjectIterator(bucket, delimiter='/'):
@@ -12168,18 +12656,33 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
         print('file:' + obj.key + '  length:' + str(obj.size) + "Byte.")
 ```
 
-##### 查询文件
+##### 3.2.8.6 查询文件
 
-对象存储 OSS 本文主要介绍如何使用Python SDK的SelectObject查询CSV和JSON文件。 以下代码用于查询CSV和JSON文件：
+本文主要介绍如何使用Python SDK的SelectObject查询CSV和JSON文件。
+
+**Python SDK示例**
+
+以下代码用于查询CSV和JSON文件：
 
 ```java
 import oss2 def select_call_back(consumed_bytes, total_bytes = None):
         print('Consumed Bytes:' + str(consumed_bytes) + '\n')
-access_key_id = '<yourAccessKeyId>' access_key_secret = '<yourAccessKeySecret>' bucket_name = '<yourtBucketName>' endpoint = '<yourEndpoint>' bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name) key = 'python_select.csv' content = 'Tom Hanks,USA,45\r\n'*1024 filename = 'python_select.csv'
+access_key_id = '<yourAccessKeyId>' access_key_secret = '<yourAccessKeySecret>' bucket_name = '<yourtBucketName>' endpoint = '<yourEndpoint>'
 ```
 
-# 上传`CSV`文件。
-# Select API的参数。
+`#` 创建存储空间，所有文件相关的方法都需要通过存储空间来调用。
+
+```
+bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name) key = 'python_select.csv' content = 'Tom Hanks,USA,45\r\n'*1024 filename = 'python_select.csv'
+```
+
+`#` 上传`CSV`文件。
+
+```
+bucket.put_object(key, content)
+```
+
+`# Select API`的参数。
 
 ```json
 csv_meta_params = {'RecordDelimiter': '\r\n'} select_csv_params = {'CsvHeaderInfo': 'None',
@@ -12187,35 +12690,36 @@ csv_meta_params = {'RecordDelimiter': '\r\n'} select_csv_params = {'CsvHeaderInf
                     'LineRange': (500, 1000)}
 csv_header = bucket.create_select_object_meta(key, csv_meta_params) print(csv_header.rows) print(csv_header.splits) result = bucket.select_object(key, "select * from ossobject where _3 > 44", select_call_back, s elect_csv_params) select_content = result.read() print(select_content) result = bucket.select_object_to_file(key, filename,
       "select * from ossobject where _3 > 44", select_call_back, select_csv_params)
+bucket.delete_object(key)
 ###JSON DOCUMENT
 key = 'python_select.json' content = "{\"contacts\":[{\"key1\":1,\"key2\":\"hello world1\"},{\"key1\":2,\"key2\":\"hello world2\"}]}" filename = 'python_select.json'
 ```
 
-# 上传`JSON DOCUMENT`。
+`#` 上传`JSON DOCUMENT`。
 
 ```python
-select_json_params = {'Json_Type': 'DOCUMENT'} result = bucket.select_object(key, "select s.key2 from ossobject.contacts[*] s where s.key1 = 1 ", None, select_json_params) select_content = result.read() print(select_content) result = bucket.select_object_to_file(key, filename,
+bucket.put_object(key, content) select_json_params = {'Json_Type': 'DOCUMENT'} result = bucket.select_object(key, "select s.key2 from ossobject.contacts[*] s where s.key1 = 1 ", None, select_json_params) select_content = result.read() print(select_content) result = bucket.select_object_to_file(key, filename,
       "select s.key2 from ossobject.contacts[*] s where s.key1 = 1", None, select_json_params)
+bucket.delete_object(key)
 ###JSON LINES
 ```
-
-对象存储 OSS
 
 ```
 ###JSO
 ```
 
-S
+`S`
 
 ```
 key = 'python_select_lines.json' content = "{\"key1\":1,\"key2\":\"hello world1\"}\n{\"key1\":2,\"key2\":\"hello world2\"}" filename = 'python_select.json'
 ```
 
-# 上传`JSON LINE`。
+`#` 上传`JSON LINE`。
 
 ```python
-select_json_params = {'Json_Type': 'LINES'} json_header = bucket.create_select_object_meta(key,select_json_params) print(json_header.rows) print(json_header.splits) result = bucket.select_object(key, "select s.key2 from ossobject s where s.key1 = 1", None, sel ect_json_params) select_content = result.read() print(select_content) result = bucket.select_object_to_file(key, filename,
+bucket.put_object(key, content) select_json_params = {'Json_Type': 'LINES'} json_header = bucket.create_select_object_meta(key,select_json_params) print(json_header.rows) print(json_header.splits) result = bucket.select_object(key, "select s.key2 from ossobject s where s.key1 = 1", None, sel ect_json_params) select_content = result.read() print(select_content) result = bucket.select_object_to_file(key, filename,
            "select s.key2 from ossobject s where s.key1 = 1", None, select_json_params)
+bucket.delete_object(key)
 ```
 
 **Python Select API**
@@ -12232,6 +12736,7 @@ def select_object(self, key, sql,
 
 `):` 以上示例用于对指定Key的文件运行SQL，并返回查询结果。
 **sql**是原始的SQL字符串，无需做base64编码。
+**Progress_callback**是可选的用来汇报进度的回调函数。
 **select_params**用于指定select执行的各种参数以及行为。
 **headers**用于指定请求中附带的header信息，其行为和get-object一致。比如，对于CSV文件，在某些情况
 下可以用bytes来指定SQL查询在文件中的范围。 select_params支持的参数：
@@ -12241,8 +12746,6 @@ def select_object(self, key, sql,
 | Json Type _ | 当Json Type没有指定时，默认为CSV文件。 _ 当Json Type指定为DOCUMENT时，该文件为JSON DOCUMENT文件。 _ 当Json Type指定为LINES时，该文件为JSON LINE文件。 _ |
 | CsvHeaderInfo | CSV的header信息。 合法值为None、Ignore以及Use。 None：该文件没有header信息。 Ignore：该文件有header信息但未在SQL中使用。 Use：该文件有Header信息且在sql语句中使用了Header中的列名。 |
 | CommentCharacter | CSV中的注释字符。仅支持一个字符，默认为None表示没有注释字符。 |
-
-对象存储 OSS
 
 | RecordDelimiter | CSV中的行分隔符，仅支持一个或两个字符。默认为\n。 |
 |---|---|
@@ -12261,20 +12764,20 @@ def select_object(self, key, sql,
 | MaxSkippedRecordsAllowed | 允许跳过的行的最大值。默认为0，表示一旦有一行跳过就返回错误。 |
 | ParseJsonNumberAsString | 当该参数为True时：表示JSON文件中的数字都解析为字符串。 当参数为False时：按照整数或者浮点数进行解析，False为默认值。 当JSON文件中含有高精度的浮点数时，直接解析为浮点数会丢失精度。如果想保留原始的精度，则可以设置该参数为True，并且在SQL语句中将该列Cast为 decimal类型即可。 |
 
-|  | firstname, age from ossobject |
+|   | firstname, age from ossobject |
 |---|---|
 
-| select 1, 4 _ _ |  |
+| select 1, 4 _ _ |   |
 |---|---|
 
 | ecord | from ossobject |
 |---|---|
 
-对象存储 OSS select_object返回值：返回SelectObjectResult对象，该对象支持read()函数以获得所有select结果。同时也支持__iter__方法。 如果Select结果偏大，调用read()函数会阻塞直到select结果完全返回，同时占用过多的内
+select_object返回值：返回SelectObjectResult对象，该对象支持read()函数以获得所有select结果。同时也支持__iter__方法。
 
-**说明**
+> **说明：** 如果Select结果偏大，调用read()函数会阻塞直到select结果完全返回，同时占用过多的内存。建议使用__iter__方法（foreach chunk in result），然后对每个chunk进行处理。__iter__方法不仅可以降低内存使用，且OSS服务器端每处理一个请求chunk客户端都能及时处理，不必等到全部结果返回后才处理。
 
-存。建议使用__iter__方法（foreach chunk in result），然后对每个chunk进行处理。__iter__方法不仅可以降低内存使用，且OSS服务器端每处理一个请求chunk客户端都能及时处理，不必等到全部结果返回后才处理。 select_object_to_file
+select_object_to_file
 
 ```python
 def select_object_to_file(self, key, filename, sql,
@@ -12302,43 +12805,42 @@ def create_select_object_meta(self, key, select_meta_params=None, header=None):
 
 create_select_object_meta 返回值： GetSelectObjectMetaResult对象，包括rows、 splits 两个属性。 对于CSV文件，其内部的select_resp对象还包括columns值，表示CSV文件的列数。
 
-##### 删除文件
+##### 3.2.8.7 删除文件
 
 本文介绍如何删除文件。
 
-**警告**
-
-请您谨慎使用删除操作，文件一旦删除将无法恢复。
+> **警告：** 请您谨慎使用删除操作，文件一旦删除将无法恢复。
 
 **删除单个文件**
 
-对象存储 OSS 以下代码用于删除单个文件。
+以下代码用于删除单个文件。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 删除文件。`<yourObjectName>`表示删除`OSS`文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。
-# 如需删除文件夹，请将`<yourObjectName>`设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有`object`删
-除后才能删除该文件夹。
+`#` 删除文件。`<yourObjectName>`表示删除`OSS`文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。 `#` 如需删除文件夹，请将`<yourObjectName>`设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有`object`删除后才能删除该文件夹。
+
+```
+bucket.delete_object('<yourObjectName>')
+```
 
 **删除多个文件**
 
-以下代码用于删除多个文件。
-# 批量删除3个文件。每次最多删除`1000`个文件。
+以下代码用于删除多个文件。 `#` 批量删除`3`个文件。每次最多删除`1000`个文件。
 
 ```
 result = bucket.batch_delete_objects(['<yourObjectName-a>', '<yourObjectName-b>', '<yourObjectN ame-c>'])
 ```
 
-# 打印成功删除的文件名。
+`#` 打印成功删除的文件名。
 
 ```python
 print('\n'.join(result.deleted_keys))
@@ -12348,41 +12850,40 @@ print('\n'.join(result.deleted_keys))
 
 以下代码用于删除指定前缀的文件。
 
-**说明**
-
-支持指定目录（文件夹）及目录下的所有文件，删除时将prefix设置为 `src/` 格式即可。
+> **说明：** 支持指定目录（文件夹）及目录下的所有文件，删除时将prefix设置为 `src/` 格式即可。
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') prefix = "<yourKeyPrefix>"
 ```
 
-# 删除指定前缀的文件。
+`#` 删除指定前缀的文件。
 
 ```
 for obj in oss2.ObjectIterator(bucket, prefix=prefix):
+    bucket.delete_object(obj.key)
 ```
 
-##### 拷贝文件
+##### 3.2.8.8 拷贝文件
 
 您可以通过拷贝方法将文件从一个存储空间（源存储空间）复制到同一地域的另一个存储空间（目标存储空间）中。 拷贝时限制条件如下： 有源文件的读权限和目标存储空间的写权限。 不支持跨地域拷贝。
 
 **简单拷贝**
 
-对于不超过1 GiB的文件，您可以使用简单拷贝。以下代码用于简单拷贝： 对象存储 OSS
+对于不超过1 GiB的文件，您可以使用简单拷贝。以下代码用于简单拷贝：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourDestinationBucketName>') bucket.copy_object('<yourSourceBucketName>', '<yourSourceObjectName>', '<yourDestinationObjectName>')
@@ -12401,19 +12902,19 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourDestinat
 import oss2 from oss2.models import PartInfo from oss2 import determine_part_size auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') src_object = '<yourSourceObjectName>' dst_object = '<yourDestinationObjectName>' total_size = bucket.head_object(src_object).content_length part_size = determine_part_size(total_size, preferred_size=100 * 1024)
 ```
 
-# 初始化分片。
+`#` 初始化分片。
 
 ```
 upload_id = bucket.init_multipart_upload(dst_object).upload_id parts = []
 ```
 
-# 逐个分片拷贝。
+`#` 逐个分片拷贝。
 
 ```
 part_number = 1 offset = 0 while offset < total_size:
@@ -12426,52 +12927,56 @@ oad_id, part_number)
     part_number += 1
 ```
 
-# 完成分片拷贝。
+`#` 完成分片拷贝。
 
 ```
 bucket.complete_multipart_upload(dst_object, upload_id, parts)
 ```
 
-对象存储 OSS
-
-#### 授权访问
+#### 3.2.9 授权访问
 
 本文介绍如何使用STS和文件URL进行授权访问。
 
 **使用STS进行临时授权**
 
-阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 STS的优势如下： 您无需透露您的长期密钥（AccessKey）给第三方应用，只需生成一个访问令牌并将令牌交给第三方应用。您可以自定义这个令牌的访问权限及有效期限。 您无需关心权限撤销问题，访问令牌过期后自动失效。 首先您需要安装官方的Python STS客户端： 请使用2.0.6及以上版本。以下代码用于使用STS临时授权上传文件： 对象存储 OSS
+阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 STS的优势如下： 您无需透露您的长期密钥（AccessKey）给第三方应用，只需生成一个访问令牌并将令牌交给第三方应用。您可以自定义这个令牌的访问权限及有效期限。 您无需关心权限撤销问题，访问令牌过期后自动失效。 首先您需要安装官方的Python STS客户端：
+
+```
+pip install aliyun-python-sdk-sts
+```
+
+请使用2.0.6及以上版本。以下代码用于使用STS临时授权上传文件：
 
 ```java
 # -*- coding: utf-8 -*-
 from aliyunsdkcore import client from aliyunsdksts.request.v20150401 import AssumeRoleRequest import json import oss2
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 endpoint = 'oss-cn-hangzhou.aliyuncs.com' access_key_id = '<yourAccessKeyId>' access_key_secret = '<yourAccessKeySecret>' bucket_name = '<yourBucketName>'
 ```
 
-# role_arn是角色的资源名称。
+`# role_arn`是角色的资源名称。
 
 ```
 role_arn = '<yourRoleArn>' clt = client.AcsClient(access_key_id, access_key_secret, 'cn-hangzhou') req = AssumeRoleRequest.AssumeRoleRequest()
 ```
 
-# 设置返回值格式为`JSON`。
+`#` 设置返回值格式为`JSON`。
 
 ```
 req.set_accept_format('json') req.set_RoleArn(role_arn) req.set_RoleSessionName('session-name') body = clt.do_action(req)
 ```
 
-# 使用`RAM`账号的`AccessKeyId`和`AccessKeySecret`向`STS`申请临时`token`。
+`#` 使用`RAM`账号的`AccessKeyId`和`AccessKeySecret`向`STS`申请临时`token`。
 
 ```
 token = json.loads(body)
 ```
 
-# 使用临时`token`中的认证信息初始化`StsAuth`实例。
+`#` 使用临时`token`中的认证信息初始化`StsAuth`实例。
 
 ```
 auth = oss2.StsAuth(token['Credentials']['AccessKeyId'],
@@ -12479,13 +12984,13 @@ auth = oss2.StsAuth(token['Credentials']['AccessKeyId'],
                     token['Credentials']['SecurityToken'])
 ```
 
-# 使用`StsAuth`实例初始化存储空间。
+`#` 使用`StsAuth`实例初始化存储空间。
 
 ```
 bucket = oss2.Bucket(auth, endpoint, bucket_name)
 ```
 
-# 上传一个字符串。
+`#` 上传一个字符串。
 
 ```
 bucket.put_object('object-name.txt', b'hello world')
@@ -12506,26 +13011,28 @@ import oss2 auth = oss2.Auth('您的AccessKeyId', '您的AccessKeySecret') bucke
 
 **使用签名URL进行临时授权**
 
-您可以将生成的签名URL提供给访客进行临时访问。生成签名URL时，您可以指定URL的过期时间，来限制访客的访问时长。 对象存储 OSS 以下代码用于使用签名URL下载文件：
+您可以将生成的签名URL提供给访客进行临时访问。生成签名URL时，您可以指定URL的过期时间，来限制访客的访问时长。 以下代码用于使用签名URL下载文件：
 
 ```java
 # -*- coding: utf-8 -*-
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 ```
 
-# 设置此签名`URL`在`60`秒内有效。
+`#` 设置此签名`URL`在`60`秒内有效。
 
 ```python
 print(bucket.sign_url('GET', '<yourObjectName>', 60))
 ```
 
-#### 中文和时间
+#### 3.2.10 中文和时间
+
+本文介绍使用Python SDK时所用到的中文和时间知识。
 
 **中文**
 
@@ -12557,14 +13064,14 @@ Python 3.x支持以下两种数据类型：
 | 本地文件名 | str, unicode | 如为bytes，要求是UTF-8编码，例如 bucket.get object to file里的 _ _ _ yourLocalFile参数。 |
 | 输入数据流 | bytes | 例如bucket.put object里的data参 _ 数。 |
 
-输出类型约定如下： 对象存储 OSS
+输出类型约定如下：
 
 | 输出 | 类型 | 备注 |
 |---|---|---|
 | 解析XML得到的结果 | str | 例如通过bucket.list object得到结果 _ 中的字符串。 |
 | 下载内容 | bytes | Python SDK默认bytes类型经过UTF- 8编码，请确保Python源文件也是 UTF-8编码。 |
 
-类型转换函数
+类型转换函数 Python SDK提供了三个用于类型转换的函数：
 
 | 函数 | 描述 |
 |---|---|
@@ -12576,17 +13083,17 @@ Python 3.x支持以下两种数据类型：
 
 Python SDK会把从服务器获得的时间戳字符串（datetime.datetime类型的时间）都转换为Unix Time类型的时间，即自1970年1月1日UTC零点以来的秒数。例如bucket.get_object方法返回结果中的last_modified就是一个 int类型的Unix Time。 您可以通过datetime.datetime.fromtimestamp()方法进行时间转换，得到时间戳字符串。
 
-#### 图片处理
+#### 3.2.11 图片处理
 
 OSS图片处理，是OSS对外提供的海量、安全、低成本、高可靠的图片处理服务。用户将原始图片上传保存到OSS， 通过简单的 `RESTful` 接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。图片处理提供图片处理接口，图片上传请使用上传接口。基于OSS图片处理，用户可以搭建自己的图片处理服务。
 
 **图片处理基础功能**
 
-OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** > **新建样式**对图片处理样式进行自定义。 通过级联处理调用多个图片处理功能。
+OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** **>** **新建样式**对图片处理样式进行自定义。 通过级联处理调用多个图片处理功能。
 
 **图片处理使用**
 
-图片处理使用标准的 `HTTP GET` 请求来访问，所有的处理参数是编码在 `URL` 中的QueyString。 匿名访问对象存储 OSS 如果图片文件（Object）的访问权限是公共读，如下表所示的权限，则可以匿名访问图片服务。
+图片处理使用标准的 `HTTP GET` 请求来访问，所有的处理参数是编码在 `URL` 中的QueyString。 匿名访问如果图片文件（Object）的访问权限是公共读，如下表所示的权限，则可以匿名访问图片服务。
 
 | Bucket权限 | Object权限 |
 |---|---|
@@ -12635,14 +13142,10 @@ http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/re
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-#### 授权访问
-
 对私有权限的文件（Object），如下表所示的权限，必须通过授权才能访问图片服务。
 
 | Bucket权限 | Object权限 |
 |---|---|
-
-对象存储 OSS
 
 | 私有读写（private） | 默认权限（default） |
 |---|---|
@@ -12655,130 +13158,153 @@ https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/
 import oss2 endpoint = '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>' access_key_id = '<access_key_id>' access_key_secret = '<access_key_secret>' bucket_name = '<bucket_name>' key = 'example.jpg'
 ```
 
-# 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
+`#` 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
 
 ```
 bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name)
 ```
 
-# 上传示例图片
-# 生成带签名的`URL`，过期时间`10`分钟。
+`#` 上传示例图片
+
+```
+bucket.put_object_from_file(key, 'example.jpg')
+```
+
+`#` 生成带签名的`URL`，过期时间`10`分钟。
 
 ```python
 style = 'image/resize,m_fixed,w_100,h_100/rotate,90' url = bucket.sign_url('GET', key, 10 * 60, params={'x-oss-process': style}) print(url)
 ```
 
-**说明**
+> **说明：** 授权访问支持**自定义样式**、**HTTPS**、**级联处理**。
+> **sign_url**过期时间单位是秒。
 
-授权访问支持**自定义样式**、**HTTPS**、**级联处理**。
-**sign_url**过期时间单位是秒。
 SDK访问对于任意权限的图片文件，都可以直接使用 `SDK` 访问图片、进行处理。
 
-**说明**
+> **说明：** 图片处理的完整代码请参考：GitHub。
+> SDK处理图片文件支持**自定义样式**、**HTTPS**、**级联处理**。
 
-图片处理的完整代码请参考：GitHub。 SDK处理图片文件支持**自定义样式**、**HTTPS**、**级联处理**。 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
+基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
 
-**说明**
-
-用同样的方法也可以进行视频截帧，参数key需要指定视频文件。 对象存储 OSS
+> **说明：** 用同样的方法也可以进行视频截帧，参数key需要指定视频文件。
 
 ```java
 # -*- coding: utf-8 -*-
 import os import oss2 endpoint = '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>' access_key_id = '<access_key_id>' access_key_secret = '<access_key_secret>' bucket_name = '<bucket_name>' key = 'example.jpg' new_pic = 'example-new.jpg'
 ```
 
-# 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
+`#` 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
 
 ```
 bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name)
 ```
 
-# 上传示例图片。
-# 图片缩放。
+`#` 上传示例图片。
+
+```
+bucket.put_object_from_file(key, 'example.jpg')
+```
+
+`#` 图片缩放。
 
 ```
 style = 'image/resize,m_fixed,w_100,h_100' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 图片裁剪。
+`#` 图片裁剪。
 
 ```
 style = 'image/crop,w_100,h_100,x_100,y_100,r_1' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 图片旋转。
+`#` 图片旋转。
 
 ```
 style = 'image/rotate,90' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 图片锐化。
+`#` 图片锐化。
 
 ```
 style = 'image/sharpen,100' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 图片加文字水印。
+`#` 图片加文字水印。
 
 ```
 style = 'image/watermark,text_SGVsbG8g5Zu-54mH5pyN5YqhIQ' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 图片格式转换。
+`#` 图片格式转换。
 
 ```
 style = 'image/format,png' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 视频截帧。用精确时间模式截取视频`17s`处的内容，输出为`JPG`格式的图片，宽度为`800`，高度为`600`。
+`#` 视频截帧。用精确时间模式截取视频`17s`处的内容，输出为`JPG`格式的图片，宽度为`800`，高度为`600`。
 
 ```
 style = 'video/snapshot,t_17000,f_jpg,w_800,h_600' bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 删除示例图片。
-# 清除本地文件。
+`#` 删除示例图片。
+
+```
+bucket.delete_object(key)
+```
+
+`#` 清除本地文件。
 
 ```
 os.remove(new_pic)
 ```
 
-**说明**
+> **说明：** `get_object` 也支持图片处理功能。
 
-对象存储 OSS 自定义样式
+自定义样式
 
 ```java
 # -*- coding: utf-8 -*-
 import os import oss2 endpoint = '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>' access_key_id = '<access_key_id>' access_key_secret = '<access_key_secret>' bucket_name = '<bucket_name>' key = 'example.jpg' new_pic = 'example-new.jpg'
 ```
 
-# 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
+`#` 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
 
 ```
 bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name)
 ```
 
-# 上传示例图片。
-# 自定义样式。
+`#` 上传示例图片。
+
+```
+bucket.put_object_from_file(key, 'example.jpg')
+```
+
+`#` 自定义样式。
 
 ```
 style = 'style/oss-pic-style-w-100'
 ```
 
-# 图片处理。
+`#` 图片处理。
 
 ```
 bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 删除示例图片。
-# 清除本地文件。
+`#` 删除示例图片。
+
+```
+bucket.delete_object(key)
+```
+
+`#` 清除本地文件。
 
 ```
 os.remove(new_pic)
 ```
 
-**说明**
+> **说明：** `get_object` 也支持图片处理功能。
 
 级联处理
 
@@ -12787,37 +13313,45 @@ os.remove(new_pic)
 import os import oss2 endpoint = '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>' access_key_id = '<access_key_id>' access_key_secret = '<access_key_secret>' bucket_name = '<bucket_name>' key = 'example.jpg' new_pic = 'example-new.jpg'
 ```
 
-# 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
+`#` 创建`Bucket`对象，所有`Object`相关的接口都可以通过`Bucket`对象来进行。
 
 ```
 bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name)
 ```
 
-# 上传示例图片。
-# 级联处理。
+`#` 上传示例图片。
+
+```
+bucket.put_object_from_file(key, 'example.jpg')
+```
+
+`#` 级联处理。
 
 ```
 style = 'image/resize,m_fixed,w_100,h_100/rotate,90'
 ```
 
-# 图片处理。
+`#` 图片处理。
 
 ```
 bucket.get_object_to_file(key, new_pic, process=style)
 ```
 
-# 删除示例图片。
-# 清除本地文件。
+`#` 删除示例图片。
+
+```
+bucket.delete_object(key)
+```
+
+`#` 清除本地文件。
 
 ```
 os.remove(new_pic)
 ```
 
-**说明**
+> **说明：** `get_object` 也支持图片处理功能。
 
-对象存储 OSS
-
-#### 异常处理
+#### 3.2.12 异常处理
 
 OSS Python SDK异常（OssError）分为三类：ClientError、RequestError和ServerError，这些异常定义在 oss2.exceptions子模块中。 异常的变量、类型及描述如下表所示：
 
@@ -12836,10 +13370,12 @@ OSS Python SDK异常（OssError）分为三类：ClientError、RequestError和Se
 import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 ```
 
-# Endpoint以杭州为例，其它`Region`请按实际情况填写。
+`# Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
 ```python
-bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try: except oss2.exceptions.NoSuchKey as e:
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') try:
+    stream = bucket.get_object('random-key.txt')
+except oss2.exceptions.NoSuchKey as e:
     print('status={0}, request_id={1}'.format(e.status, e.request_id))
 ```
 
@@ -12858,8 +13394,6 @@ ClientError是由于客户端输入有误引起的。例如，使用bucket.batch
 | NoSuchBucket | 404 | NoSuchBucket | 存储空间不存在。 |
 | NoSuchKey | 404 | NoSuchKey | 文件不存在。 |
 
-对象存储 OSS
-
 | NoSuchUpload | 404 | NoSuchUpload | 分片上传不存在。 |
 |---|---|---|---|
 | NoSuchWebsite | 404 | NoSuchWebsiteConfigura tion | 静态网站托管未配置。 |
@@ -12869,9 +13403,11 @@ ClientError是由于客户端输入有误引起的。例如，使用bucket.batch
 | PositionNotEqualToLengt h | 409 | PositionNotEqualToLengt h | 设置的追加位置和文件长度不等。 |
 | ObjectNotAppendable | 409 | ObjectNotAppendable | 不是可追加文件。 |
 
-### PHP-SDK
+### 3.3 PHP-SDK
 
-#### 前言
+#### 3.3.1 前言
+
+本文介绍对象存储OSS的PHP SDK各种使用场景下的示例代码。
 
 **源码地址**
 
@@ -12896,13 +13432,13 @@ OSS PHP SDK提供丰富的示例代码，方便您参考或直接使用。示例
 | BucketWebsite.php | 展示了如何设置、读取、清除Bucket的静态网站托管。 |
 | BucketCors.php | 展示了如何设置、读取、清除Bucket的跨域资源访问。 |
 
-#### 安装
+#### 3.3.2 安装
 
-对象存储 OSS
+本文介绍如何安装PHP SDK。
 
 **环境准备**
 
-安装环境您需要安装PHP和cURL扩展： 在Windows系统中，请参见官方教程来安装PHP和cURL扩展。在Windows环境中，如果提示找不到指定模块，请在php.ini文件中指定extension_dir为 `C:/Windows/System32/` 。 在Ubuntu系统中，请使用apt-get包管理器安装PHP的cURL扩展 `sudo apt-get install php-curl` 。 在CentOS系统中，请使用yum包管理器安装PHP的cURL扩展 `sudo yum install php-curl` 。 查看版本通过 `php -v` 命令查看当前的PHP版本。 通过 `php -m` 命令查看cURL扩展是否已经安装好。
+OSS PHP SDK适用于PHP 5.3及以上版本。本文以PHP 5.6.22为例。 安装环境您需要安装PHP和cURL扩展： 在Windows系统中，请参见官方教程来安装PHP和cURL扩展。在Windows环境中，如果提示找不到指定模块，请在php.ini文件中指定extension_dir为 `C:/Windows/System32/` 。 在Ubuntu系统中，请使用apt-get包管理器安装PHP的cURL扩展 `sudo apt-get install php-curl` 。 在CentOS系统中，请使用yum包管理器安装PHP的cURL扩展 `sudo yum install php-curl` 。 查看版本通过 `php -v` 命令查看当前的PHP版本。 通过 `php -m` 命令查看cURL扩展是否已经安装好。
 
 **下载SDK**
 
@@ -12915,10 +13451,9 @@ OSS PHP SDK提供丰富的示例代码，方便您参考或直接使用。示例
 ```json
 "require": {
     "aliyuncs/oss-sdk-php": "~2.x.x"
-}
 ```
 
-ii. 运行 `composer install` ，安装依赖。安装完成后，目录结构如下： .
+`}` ii. 运行 `composer install` ，安装依赖。安装完成后，目录结构如下： `.`
 
 ```
         ├── app.php
@@ -12933,16 +13468,15 @@ ii. 运行 `composer install` ，安装依赖。安装完成后，目录结构�
 require_once __DIR__ . '/vendor/autoload.php';
 ```
 
-**说明**
-
-如果您的项目中已经引用过 `autoload.php` ，则添加了SDK的依赖关系之后，不需要再次引入。 如果使用composer出现网络错误，可以使用composer中国区的镜像源。方法是在命令行执行
+> **说明：** 如果您的项目中已经引用过 `autoload.php` ，则添加了SDK的依赖关系之后，不需要再次引入。
+> 如果使用composer出现网络错误，可以使用composer中国区的镜像源。方法是在命令行执行
 
 ```
  composer config -g repositories.packagist composer
 http://packagist.phpcomposer.com 。
 ```
 
-对象存储 OSS phar方式 i. 在GitHub中选择相应的版本并下载打包好的phar文件。 ii. 在代码中引入phar文件：
+phar方式 i. 在GitHub中选择相应的版本并下载打包好的phar文件。 ii. 在代码中引入phar文件：
 
 ```
 require_once '/path/to/oss-sdk-php.phar';
@@ -12954,13 +13488,13 @@ require_once '/path/to/oss-sdk-php.phar';
 require_once '/path/to/oss-sdk/autoload.php';
 ```
 
-#### 初始化
+#### 3.3.3 初始化
 
 OssClient是OSS的PHP客户端，用于管理存储空间和文件等OSS资源。
 
 **前提条件**
 
-已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
+已安装OSS PHP SDK。 已获取Endpoint。 已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
 
 **新建OssClient**
 
@@ -12968,14 +13502,24 @@ OssClient是OSS的PHP客户端，用于管理存储空间和文件等OSS资源�
 
 **使用AccessKey**
 
-对象存储 OSS
+（推荐）从环境变量获取AccessKey
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
 ```
 
 `//` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
@@ -12991,21 +13535,34 @@ hangzhou.aliyuncs.com"; try {
     $config = array(
         "provider" => $provider,
         "endpoint" => $endpoint
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-硬编码AccessKey
+`}` 硬编码AccessKey
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13015,19 +13572,30 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
+
+`}`
 
 **使用STS临时访问凭证**
 
-适用于应用程序需要临时访问OSS的场景。通过STS服务获取的临时身份凭证（Access Key ID、Access Key Secret和Security Token）初始化凭证提供者。该方式需要手动维护STS Token，存在安全性风险和维护复杂度增加的风险。如果需要多次临时访问OSS，需要手动刷新STS Token。 对象存储 OSS
+适用于应用程序需要临时访问OSS的场景。通过STS服务获取的临时身份凭证（Access Key ID、Access Key Secret和Security Token）初始化凭证提供者。该方式需要手动维护STS Token，存在安全性风险和维护复杂度增加的风险。如果需要多次临时访问OSS，需要手动刷新STS Token。 （推荐）从环境变量获取AccessKey
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
 ```
 
 `//` 运行本代码示例之前，请确保已在环境变量中配置`STS`的访问密钥（`AccessKey ID`和`AccessKey Secret`）和安全令牌
@@ -13043,21 +13611,34 @@ hangzhou.aliyuncs.com"; try {
     $config = array(
         "provider" => $provider,
         "endpoint" => $endpoint,
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-硬编码AccessKey
+`}` 硬编码AccessKey
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13068,21 +13649,32 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $securityToken = "<yourSecuri
         $accessKeyId, $accessKeySecret, $endpoint, false, $securityToken);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
+
+`}`
 
 **配置OssClient**
 
-对象存储 OSS 您可以通过OssClient配置代理、连接超时等参数。
+您可以通过OssClient配置代理、连接超时等参数。
 
 **使用自定义域名**
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
 ```
 
 `//` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
@@ -13099,26 +13691,41 @@ $endpoint = "http://example.com"; try {
         "provider" => $provider,
         "endpoint" => $endpoint,
         "cname" => true
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
+
+`}`
 
 **配置代理服务器**
 
-PHP 5.3及以上版本支持配置代理服务器。 对象存储 OSS
+PHP 5.3及以上版本支持配置代理服务器。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
-    require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
 ```
 
-`//` 运行本代码示例之前，请确保已在环境变量中配置`STS`的访问密钥（`AccessKey ID`和`AccessKey Secret`）和安全令牌（S
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
+```
+
+`//` 运行本代码示例之前，请确保已在环境变量中配置`STS`的访问密钥（`AccessKey ID`和`AccessKey Secret`）和安全令牌（`S`
 
 ```
 ecurityToken）。 $provider = new EnvironmentVariableCredentialsProvider();
@@ -13130,7 +13737,7 @@ ecurityToken）。 $provider = new EnvironmentVariableCredentialsProvider();
 $endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
 ```
 
-`//` 设置代理服务器地址，例如`http://<`用户名`>:<`密码`>@<`代理`ip>:<`代理端口>。
+`//` 设置代理服务器地址，例如`http://<`用户名`>:<`密码`>@<`代理`ip>:<`代理端口`>`。
 
 ```
 $request_proxy = "yourRequestProxy" try {
@@ -13138,23 +13745,38 @@ $request_proxy = "yourRequestProxy" try {
         "provider" => $provider,
         "endpoint" => $endpoint,
         "request_proxy"=> $request_proxy
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
+
+`}`
 
 **配置网络参数**
 
-以下代码用于配置OssClient网络参数： 对象存储 OSS
+以下代码用于配置OssClient网络参数：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\Core\OssException;
 ```
 
 `//` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
@@ -13170,7 +13792,11 @@ $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; try {
     $config = array(
         "provider" => $provider,
         "endpoint" => $endpoint
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 ```
 
@@ -13186,19 +13812,30 @@ $endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; try {
     $ossClient->setTimeout(30);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-#### 快速入门
+`}`
 
-本节介绍如何快速使用OSS PHP SDK完成常见操作，如创建存储空间（Bucket）、上传或下载文件（Object）等。 对象存储 OSS
+#### 3.3.4 快速入门
+
+本节介绍如何快速使用OSS PHP SDK完成常见操作，如创建存储空间（Bucket）、上传或下载文件（Object）等。 以下代码用于创建存储空间。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13215,21 +13852,26 @@ $bucket = "<yourBucketName>"; try {
     $ossClient->createBucket($bucket);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-AccessKey ID和AccessKey Secret获取方式请参见获取AccessKey。
-
-#### 上传文件
-
-以下代码用于通过流式上传方式上传文件到OSS。 对象存储 OSS
+`}` AccessKey ID和AccessKey Secret获取方式请参见获取AccessKey。 获取Endpoint信息，请参见获取Endpoint。 以下代码用于通过流式上传方式上传文件到OSS。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13252,19 +13894,26 @@ $object = " <yourObjectName>"; $content = "Hi, OSS."; try {
     $ossClient->putObject($bucket, $object, $content);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-#### 下载文件
-
-以下代码用于下载文件。 对象存储 OSS
+`}` 以下代码用于下载文件。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13288,19 +13937,26 @@ $object = "<yourObjectName>"; try {
     print("object content: " . $content);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-##### 列举文件
-
-对象存储 OSS
+`}` 以下代码用于列举存储空间下的文件。默认列举100个文件。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13320,23 +13976,33 @@ $bucket= "<yourBucketName>"; try {
         foreach ($objectList as $objectInfo) {
         print($objectInfo->getKey() . "\t" . $objectInfo->getSize() . "\t" . $objectInfo->getLa
 stModified() . "\n");
-        }
-    }
-} catch (OssException $e) {
-    print $e->getMessage();
-}
 ```
 
-##### 删除文件
+`}` `}`
 
-以下代码用于删除指定文件。 对象存储 OSS
+```
+} catch (OssException $e) {
+    print $e->getMessage();
+```
+
+`}` 以下代码用于删除指定文件。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13359,21 +14025,32 @@ $object = "<yourObjectName>"; try {
     $ossClient->deleteObject($bucket, $object);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
 
-#### 存储空间
+`}`
 
-##### 创建存储空间
+#### 3.3.5 存储空间
 
-存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 对象存储 OSS
+##### 3.3.5.1 创建存储空间
+
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 以下代码用于创建存储空间。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13394,35 +14071,51 @@ $bucket= "<yourBucketName>"; try {
 ```
     $options = array(
         OssClient::OSS_STORAGE => OssClient::OSS_STORAGE_Standard
-    );
 ```
 
-`//` 设置存储空间的权限为公共读，默认是私有读写。
+); `//` 设置存储空间的权限为公共读，默认是私有读写。
 
-```python
+```
     $ossClient->createBucket($bucket, OssClient::OSS_ACL_TYPE_PUBLIC_READ, $options);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 列举存储空间
+`}`
 
-存储空间（Bucket）是用来存储对象（Object）的容器。对象都隶属于存储空间。存储空间按照字母顺序排列。您可以列举当前账号所有地域下符合指定条件的存储空间。 以下代码用于列举所有存储空间。 对象存储 OSS
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+创建存储空间的完整代码请参见GitHub。
+
+##### 3.3.5.2 列举存储空间
+
+存储空间（Bucket）是用来存储对象（Object）的容器。对象都隶属于存储空间。存储空间按照字母顺序排列。您可以列举当前账号所有地域下符合指定条件的存储空间。 以下代码用于列举所有存储空间。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $bucketListInfo = $ossClient->listBuckets();
@@ -13430,21 +14123,38 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} $bucketList = $bucketListInfo->getBucketList(); foreach($bucketList as $bucket) {
-    print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreatedate()
-. "\n"); }
 ```
 
-##### 判断存储空间是否存在
+`}`
 
-存储空间（Bucket）是存储对象（Object）的容器。对象均隶属于存储空间。本文介绍如何判断存储空间是否存在。 对象存储 OSS
+```python
+$bucketList = $bucketListInfo->getBucketList(); foreach($bucketList as $bucket) {
+    print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreatedate()
+. "\n");
+```
+
+`}`
+
+##### 3.3.5.3 判断存储空间是否存在
+
+存储空间（Bucket）是存储对象（Object）的容器。对象均隶属于存储空间。本文介绍如何判断存储空间是否存在。 以下代码用于判断存储空间是否存在。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13455,7 +14165,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
 
 `//` 存储空间名称。
 
-```python
+```
 $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $res = $ossClient->doesBucketExist($bucket);
@@ -13463,14 +14173,20 @@ $bucket= "<yourBucketName>"; try {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} if ($res === true) {
+```
+
+`}`
+
+```python
+if ($res === true) {
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
     print(__FUNCTION__ . ": FAILED" . "\n");
-}
 ```
 
-##### 管理存储空间访问权限
+`}`
+
+##### 3.3.5.4 管理存储空间访问权限
 
 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何设置和获取存储空间读写权限（ACL）。
 
@@ -13484,14 +14200,24 @@ $bucket= "<yourBucketName>"; try {
 | 公共读 | 存储空间的拥有者和授权用户有该存储空间内的文件的读写权限，其他用户只有该存储空间内的文件的读权限。请谨慎使用该权限。 | OssClient::OSS ACL TYPE PUBLIC _ _ _ _ READ |
 | 公共读写 | 所有用户都有该存储空间内的文件的读写权限。请谨慎使用该权限。 | OssClient::OSS ACL TYPE PUBLIC _ _ _ _ READ WRITE _ |
 
-以下代码用于设置存储空间的访问权限。 对象存储 OSS
+以下代码用于设置存储空间的访问权限。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13508,7 +14234,7 @@ $bucket= "<yourBucketName>";
 
 `//` 设置存储空间的权限为私有。
 
-```python
+```
 $acl = OssClient::OSS_ACL_TYPE_PRIVATE; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketAcl($bucket, $acl);
@@ -13516,19 +14242,34 @@ $acl = OssClient::OSS_ACL_TYPE_PRIVATE; try {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **获取存储空间的访问权限**
 
-以下代码用于获取存储空间的访问权限。 对象存储 OSS
+以下代码用于获取存储空间的访问权限。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13539,7 +14280,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
 
 `//` 存储空间名称。
 
-```python
+```
 $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $res = $ossClient->getBucketAcl($bucket);
@@ -13547,19 +14288,34 @@ $bucket= "<yourBucketName>"; try {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); print('acl: ' . $res);
 ```
 
-##### 删除存储空间
+`}`
 
-当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。 删除存储空间之前，必须先删除存储空间下的所有文件、LiveChannel和分片上传产生的碎片。以下代码用于删除存储空间： 对象存储 OSS
+```python
+print(__FUNCTION__ . ": OK" . "\n"); print('acl: ' . $res);
+```
+
+##### 3.3.5.5 删除存储空间
+
+当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。 删除存储空间之前，必须先删除存储空间下的所有文件、LiveChannel和分片上传产生的碎片。以下代码用于删除存储空间：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13570,7 +14326,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
 
 `//` 存储空间名称。
 
-```python
+```
 $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucket($bucket);
@@ -13578,23 +14334,38 @@ $bucket= "<yourBucketName>"; try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 生命周期管理
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.5.6 生命周期管理
 
 并不是所有上传至OSS的数据都需要频繁访问，但基于数据合规或者存档等原因，部分数据仍需要继续以冷存储类型进行保存。或者基于业务使用场景，希望批量删除Bucket内不再需要保存的数据，您可以配置基于最后一次修改时间（Last Modified Time）的生命周期规则。如果您希望OSS自动监测数据的访问模式并识别冷数据，然后将识别出来的冷数据进行存储类型的转换，从而达到数据的冷热分层存储，最终降低存储成本，您可以配置基于最后一次访问时间（Last Access Time）的生命周期规则。
 
 **设置生命周期规则**
 
-以下代码用于为存储空间设置生命周期规则。 对象存储 OSS
+以下代码用于为存储空间设置生命周期规则。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\LifecycleConfig; use OSS\Model\LifecycleRule; use OSS\Model\LifecycleAction; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\LifecycleConfig; use OSS\Model\LifecycleRule; use OSS\Model\LifecycleAction; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13609,7 +14380,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>";
 $ruleId0 = "rule0"; $matchPrefix0 = "A0/"; $ruleId1 = "rule1"; $matchPrefix1 = "A1/"; $lifecycleConfig = new LifecycleConfig(); $actions = array();
 ```
 
-`//` 距最后修改时间3天后过期。
+`//` 距最后修改时间`3`天后过期。
 
 ```
 $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECYCLE_TIMING_DAYS, 3); $lifecycleRule = new LifecycleRule($ruleId0, $matchPrefix0, "Enabled", $actions); $lifecycleConfig->addRule($lifecycleRule); $actions = array();
@@ -13617,7 +14388,7 @@ $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient:
 
 `//` 指定日期之前创建的文件过期。
 
-```python
+```
 $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECYCLE_TIMING_DATE, '2022-10-12T00:00:00.000Z'); $lifecycleRule = new LifecycleRule($ruleId1, $matchPrefix1, "Enabled", $actions); $lifecycleConfig->addRule($lifecycleRule); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketLifecycle($bucket, $lifecycleConfig);
@@ -13625,24 +14396,39 @@ $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient:
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **查看生命周期规则**
 
-以下代码用于查看存储空间的生命周期规则。 对象存储 OSS
+以下代码用于查看存储空间的生命周期规则。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $lifecycleConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $lifecycleConfig = $ossClient->getBucketLifecycle($bucket);
@@ -13650,24 +14436,39 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); print($lifecycleConfig->serializeToXml() . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); print($lifecycleConfig->serializeToXml() . "\n");
 ```
 
 **清空生命周期规则**
 
-以下代码用于清空存储空间的生命周期规则。 对象存储 OSS
+以下代码用于清空存储空间的生命周期规则。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketLifecycle($bucket);
@@ -13675,23 +14476,38 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 防盗链
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.5.7 防盗链
 
 为了防止用户在OSS上的数据被其他人盗链，OSS支持基于HTTP header中表头字段Referer的防盗链方法。
 
 **设置防盗链**
 
-以下代码用于设置防盗链。 对象存储 OSS
+以下代码用于设置防盗链。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13706,9 +14522,9 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 $refererConfig->setAllowEmptyReferer(true);
 ```
 
-`//` 添加`Referer`白名单。`Referer`参数支持通配符星号（*）和问号（？）。
+`//` 添加`Referer`白名单。`Referer`参数支持通配符星号（`*`）和问号（？）。
 
-```python
+```
 $refererConfig->addReferer("www.aliiyun.com"); $refererConfig->addReferer("www.aliiyuncs.com"); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketReferer($bucket, $refererConfig);
@@ -13716,24 +14532,39 @@ $refererConfig->addReferer("www.aliiyun.com"); $refererConfig->addReferer("www.a
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **获取防盗链信息**
 
-以下代码用于获取防盗链信息。 对象存储 OSS
+以下代码用于获取防盗链信息。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $refererConfig = $ossClient->getBucketReferer($bucket);
@@ -13741,19 +14572,34 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); print($refererConfig->serializeToXml() . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); print($refererConfig->serializeToXml() . "\n");
 ```
 
 **清空防盗链**
 
-以下代码用于清空防盗链。 对象存储 OSS
+以下代码用于清空防盗链。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13765,16 +14611,21 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 `//` 防盗链不能直接清空，需要新建一个允许空`Referer`的规则来覆盖之前的规则。
 
-```python
+```
     $ossClient->putBucketReferer($bucket, $refererConfig);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 设置访问日志
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.5.8 设置访问日志
 
 您可以开启存储空间的访问日志记录功能，开启后对于此存储空间的访问会被记录成日志文件，保存在指定的存储空间中。
 
@@ -13784,14 +14635,24 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 **开启访问日志记录**
 
-以下代码用于开启存储空间的访问日志记录。 对象存储 OSS
+以下代码用于开启存储空间的访问日志记录。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13809,25 +14670,40 @@ $targetBucket = "<yourBucketName>"; $targetPrefix = "access.log"; try {
 
 `//` 开启访问日志记录。
 
-```python
+```
     $ossClient->putBucketLogging($bucket, $targetBucket, $targetPrefix, $option);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **查看访问日志设置**
 
-以下代码用于查看存储空间的访问日志设置。 对象存储 OSS
+以下代码用于查看存储空间的访问日志设置。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13839,25 +14715,40 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 `//` 查看访问日志设置。
 
-```python
+```
     $loggingConfig = $ossClient->getBucketLogging($bucket, $options);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); print($loggingConfig->serializeToXml() . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); print($loggingConfig->serializeToXml() . "\n");
 ```
 
 **关闭访问日志记录**
 
-以下代码用于关闭存储空间的访问日志记录。 对象存储 OSS
+以下代码用于关闭存储空间的访问日志记录。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13869,53 +14760,95 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 `//` 关闭访问日志记录。
 
-```python
+```
     $ossClient->deleteBucketLogging($bucket);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 静态网站托管
+`}`
 
-您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。 以下场景的完整代码请参见GitHub。 对象存储 OSS
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.5.9 静态网站托管
+
+您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。 以下场景的完整代码请参见GitHub。
+
+**设置静态网站托管**
+
+以下代码用于设置静态网站托管。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\WebsiteConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\WebsiteConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
-$endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $websiteConfig = new WebsiteConfig("index.html", "error.html"); try {
+```
+$endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>";
+```
+
+`//` 设置静态网站托管：索引页面为`index.html,` 错误页面为`error.html`。
+
+```
+$websiteConfig = new WebsiteConfig("index.html", "error.html"); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketWebsite($bucket, $websiteConfig);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-对象存储 OSS
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+**查看静态网站托管配置**
+
+以下代码用于查看静态网站托管配置。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $websiteConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $websiteConfig = $ossClient->getBucketWebsite($bucket);
@@ -13923,22 +14856,39 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); print($websiteConfig->serializeToXml() . "\n");
 ```
 
-对象存储 OSS
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); print($websiteConfig->serializeToXml() . "\n");
+```
+
+**删除静态网站托管配置**
+
+以下代码用于删除静态网站托管配置。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketWebsite($bucket);
@@ -13946,19 +14896,38 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 跨域资源共享
+`}`
 
-跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供对象存储 OSS
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.5.10 跨域资源共享
+
+跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供跨域资源共享接口，方便您控制跨域访问的权限。 跨域资源共享的完整代码请参见GitHub。
+
+**设置跨域资源共享规则**
+
+以下代码用于设置指定存储空间的跨域资源共享规则。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\CorsConfig; use OSS\Model\CorsRule; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\CorsConfig; use OSS\Model\CorsRule; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -13973,7 +14942,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 $rule->addAllowedHeader("x-oss-header");
 ```
 
-`// AllowedOlowedMethods`最多支持一个星号（*）通配符。星号（*）表示允许所有的域来源或者操作。
+`// AllowedOlowedMethods`最多支持一个星号（`*`）通配符。星号（`*`）表示允许所有的域来源或者操作。
 
 ```
 $rule->addAllowedOrigin("http://www.b.com"); $rule->addAllowedMethod("POST"); $rule->setMaxAgeSeconds(10);
@@ -13988,28 +14957,45 @@ $corsConfig->addRule($rule); try{
 
 `//` 已存在的规则将被覆盖。
 
-```python
+```
     $ossClient->putBucketCors($bucket, $corsConfig);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-对象存储 OSS
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+**获取跨域资源共享规则**
+
+以下代码用于获取跨域资源共享规则。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $corsConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $corsConfig = $ossClient->getBucketCors($bucket);
@@ -14017,22 +15003,39 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); print($corsConfig->serializeToXml() . "\n");
 ```
 
-对象存储 OSS
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); print($corsConfig->serializeToXml() . "\n");
+```
+
+**删除跨域资源共享规则**
+
+以下代码用于删除指定存储空间的所有跨域资源共享规则。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketCors($bucket);
@@ -14040,27 +15043,42 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 绑定自定义域名
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.5.11 绑定自定义域名
 
 文件（Object）上传至存储空间（Bucket）后，OSS 会自动生成文件的 URL，您可以直接通过该 URL访问文件。 如果您希望使用自定义域名访问这些 Object，需要添加 CNAME 记录将自定义域名绑定到 Object 所在的 Bucket。
 
 **注意事项**
 
+本文以从环境变量读取访问凭证为例介绍。配置访问凭证的操作请参见配置访问凭证。
+
 **示例代码**
 
 **添加CNAME记录**
 
-对象存储 OSS
-
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\CoreOssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\CoreOssException;
 ```
 
 `//` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
@@ -14082,31 +15100,48 @@ $myDomain = '<yourDomainName>'; try {
     $config = array(
         "provider" => $provider,
         "endpoint" => $endpoint
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 ```
 
 `//` 添加`CNAME`记录。
 
-```python
+```
     $ossClient->addBucketCname($bucket, $myDomain);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **查看CNAME记录**
 
-对象存储 OSS
-
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\CoreOssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\CoreOssException;
 ```
 
 `//` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
@@ -14122,31 +15157,48 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     $config = array(
         "provider" => $provider,
         "endpoint" => $endpoint
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 ```
 
 `//` 查看`CNAME`记录。
 
-```python
+```
     $cnameConfig = $ossClient->getBucketCname($bucket);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} var_dump($cnameConfig); print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+var_dump($cnameConfig); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **删除CNAME记录**
 
-对象存储 OSS
-
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\CoreOssException;
+```
+
+`}`
+
+```
+use OSS\Credentials\EnvironmentVariableCredentialsProvider; use OSS\OssClient; use OSS\CoreOssException;
 ```
 
 `//` 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量`OSS_ACCESS_KEY_ID`和
@@ -14168,41 +15220,60 @@ $myDomain = '<yourDomainName>'; try {
     $config = array(
         "provider" => $provider,
         "endpoint" => $endpoint
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($config);
 ```
 
 `//` 删除`CNAME`记录。
 
-```python
+```
     $ossClient->deleteBucketCname($bucket, $myDomain);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-#### 上传文件
+`}`
 
-##### 概述
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+#### 3.3.6 上传文件
+
+##### 3.3.6.1 概述
 
 在OSS中，操作的基本数据单元是文件（Object）。OSS PHP SDK提供了丰富的文件上传方式。 您可以通过以下方式上传文件到OSS： 简单上传：文件最大不能超过5 GiB。 追加上传：文件最大不能超过5 GiB。 分片上传：文件最大不能超过48.8 TiB。当文件较大时，请使用分片上传。
 
-##### 简单上传
+##### 3.3.6.2 简单上传
 
 简单上传分为字符串上传和文件上传。本文介绍如何进行字符串上传和文件上传。
 
 **字符串上传**
 
-以下代码用于将字符串上传到OSS文件。 对象存储 OSS
+以下代码用于将字符串上传到OSS文件。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14225,7 +15296,7 @@ $object = "<yourObjectName>";
 
 `//` 配置文件内容。
 
-```python
+```
 $content = "Hello OSS"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content);
@@ -14233,7 +15304,12 @@ $content = "Hello OSS"; try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 `//` 上传时可以设置相关的`headers`，例如设置访问权限为`private`和自定义元信息。
@@ -14245,29 +15321,44 @@ $options = array(
         'x-oss-meta-info' => 'your info'
 ```
 
-`),`
+`),` );
 
-```python
-); try{
+```
+try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content, $options);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **文件上传**
 
-以下代码用于上传文件到OSS。 对象存储 OSS
+以下代码用于上传文件到OSS。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14290,7 +15381,7 @@ $object = "<yourObjectName>";
 
 `// <yourLocalFile>`由本地文件路径加文件名包括后缀组成，例如`/users/local/myfile.txt`。
 
-```python
+```
 $filePath = "<yourLocalFile>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->uploadFile($bucket, $object, $filePath);
@@ -14298,23 +15389,38 @@ $filePath = "<yourLocalFile>"; try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 追加上传
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.6.3 追加上传
 
 追加上传支持两种上传类型，分别为字符串和文件。追加类型的文件（Append Object）暂时不支持CopyObject操作。
 
 **追加上传字符串**
 
-以下代码用于追加上传字符串到OSS： 对象存储 OSS
+以下代码用于追加上传字符串到OSS：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14342,9 +15448,9 @@ $content_array = array('Hello OSS', 'Hi OSS', 'OSS OK'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 ```
 
-`//` 第一次追加上传。第一次追加的位置是0，返回值为下一次追加的位置。后续追加的位置是追加前文件的长度。
+`//` 第一次追加上传。第一次追加的位置是`0`，返回值为下一次追加的位置。后续追加的位置是追加前文件的长度。
 
-```python
+```
     $position = $ossClient->appendObject($bucket, $object, $content_array[0], 0);
     $position = $ossClient->appendObject($bucket, $object, $content_array[1], $position);
     $position = $ossClient->appendObject($bucket, $object, $content_array[2], $position);
@@ -14352,20 +15458,35 @@ $content_array = array('Hello OSS', 'Hi OSS', 'OSS OK'); try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **追加上传文件**
 
-以下代码用于追加上传本地文件到OSS： 对象存储 OSS
+以下代码用于追加上传本地文件到OSS：
 
 ```
  <?php
 if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14386,15 +15507,15 @@ $bucket= "<yourBucketName>";
 $object = "<yourObjectName>";
 ```
 
-`//` 获取本地文件1。
+`//` 获取本地文件`1`。
 
 ```
 $filePath = "<yourLocalFile1>";
 ```
 
-`//` 获取本地文件2。
+`//` 获取本地文件`2`。
 
-```python
+```
 $filePath1 = "<yourLocalFile2>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $position = $ossClient->appendFile($bucket, $object, $filePath, 0);
@@ -14403,28 +15524,45 @@ $filePath1 = "<yourLocalFile2>"; try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 分片上传
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.6.4 分片上传
 
 分片上传将要上传的文件分成若干个分片（Part）分别上传，所有分片都上传完成后，将所有分片合并成完整的文件，完成整个文件的上传。 分片上传（Multipart Upload）分为以下三个步骤：
 1. 初始化一个分片上传事件。
 调用ossClient.initiateMultipartUpload方法返回OSS创建的全局唯一的uploadId。
 2. 上传分片。
+调用ossClient.uploadPart方法上传分片数据。
 
-**说明**
+> **说明：** 对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。
+> OSS将收到的分片数据的MD5值放在ETag头内返回给用户。
+> OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 
-对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。 OSS将收到的分片数据的MD5值放在ETag头内返回给用户。 OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 3. 完成分片上传。
-对象存储 OSS 所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 分片上传的完整代码请参见：GitHub。 以下代码用于分片上传文件。
+所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 分片上传的完整代码请参见：GitHub。 以下代码用于分片上传文件。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Core\OssUtil; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Core\OssUtil; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14433,8 +15571,7 @@ $filePath1 = "<yourLocalFile2>"; try{
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $uploadFile = "<yourLocalFile>"; /**
 ```
 
-* 步骤1：初始化一个分片上传事件，获取`uploadId`。
-`*/`
+`*` 步骤`1`：初始化一个分片上传事件，获取`uploadId`。 `*/`
 
 ```
 try{
@@ -14443,18 +15580,21 @@ try{
 
 `//`返回`uploadId`，它是分片上传事件的唯一标识，您可以根据这个`ID`来发起相关的操作，如取消分片上传、查询分片上传等。
 
-```python
+```
     $uploadId = $ossClient->initiateMultipartUpload($bucket, $object);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": initiateMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
 ```
 
-`/*`
-* 步骤2：上传分片。
-`*/`
+`}`
+
+```python
+print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
+```
+
+`/*` `*` 步骤`2`：上传分片。 `*/`
 
 ```
 $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces = $ossClient->generateMultiuploadParts($uploadFileSize, $partSize); $responseUploadPart = array(); $uploadPosition = 0; $isCheckMd5 = true; foreach ($pieces as $i => $piece) {
@@ -14466,16 +15606,19 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
         $ossClient::OSS_SEEK_TO => $fromPos,
         $ossClient::OSS_LENGTH => $toPos - $fromPos + 1,
         $ossClient::OSS_CHECK_MD5 => $isCheckMd5,
-    );
 ```
 
-校验对象存储 OSS `// MD5`校验。
+); 校验 `// MD5`校验。
 
 ```
     if ($isCheckMd5) {
         $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
         $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
-    }
+```
+
+`}`
+
+```
     try {
 ```
 
@@ -14483,28 +15626,39 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
 
 ```
         $responseUploadPart[] = $ossClient->uploadPart($bucket, $object, $uploadId, $upOptions)
+```
+
 ;
+
+```
     } catch(OssException $e) {
         printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} FAILED\n");
         printf($e->getMessage() . "\n");
         return;
-    }
+```
+
+`}`
+
+```
     printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
-}
 ```
 
-// $uploadParts是由每个分片的`ETag`和分片号（`PartNumber`）组成的数组。
+`}` // $uploadParts是由每个分片的`ETag`和分片号（`PartNumber`）组成的数组。
 
 ```
-$uploadParts = array();
+$uploadParts = array(); foreach ($responseUploadPart as $i => $eTag) {
+    $uploadParts[] = array(
         'PartNumber' => ($i + 1),
         'ETag' => $eTag,
-    );
-} /**
 ```
 
-* 步骤3：完成上传。
-`*/`
+); `}`
+
+```
+/**
+```
+
+`*` 步骤`3`：完成上传。 `*/`
 
 ```
 try {
@@ -14518,7 +15672,12 @@ try {
     printf(__FUNCTION__ . ": completeMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
+```
+
+`}`
+
+```
+printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
 ```
 
 上述例子中的$options包含的参数如下：
@@ -14534,19 +15693,29 @@ try {
 
 **取消分片上传事件**
 
-您可以调用$ossClient->abortMultipartUpload方法来取消分片上传事件。当一个分片上传事件被取消后，无法再使用这个uploadId做任何操作，已经上传的分片数据会被删除。 对象存储 OSS
+您可以调用$ossClient->abortMultipartUpload方法来取消分片上传事件。当一个分片上传事件被取消后，无法再使用这个uploadId做任何操作，已经上传的分片数据会被删除。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $upload_id = "<yourUploadId>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->abortMultipartUpload($bucket, $object, $upload_id);
@@ -14554,52 +15723,87 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **分片上传本地文件**
 
-以下代码用于分片上传本地文件到OSS： 对象存储 OSS
+以下代码用于分片上传本地文件到OSS：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $file = "<yourLocalFile>"; $options = array(
     OssClient::OSS_CHECK_MD5 => true,
     OssClient::OSS_PART_SIZE => 1,
-); try{
+```
+
+);
+
+```
+try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->multiuploadFile($bucket, $object, $file, $options);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **分片上传目录**
 
-以下代码用于分片上传本地目录（包含此目录下所有文件）到OSS： 对象存储 OSS
+以下代码用于分片上传本地目录（包含此目录下所有文件）到OSS：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $localDirectory = "."; $prefix = "samples/codes"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->uploadDir($bucket, $prefix, $localDirectory);
@@ -14607,19 +15811,34 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **列举已上传的分片**
 
-以下代码用于列举已上传的分片： 对象存储 OSS
+以下代码用于列举已上传的分片：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14631,24 +15850,43 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     foreach ($listPartsInfo->getListPart() as $partInfo) {
         print($partInfo->getPartNumber() . "\t" . $partInfo->getSize() . "\t" . $partInfo->getE
 Tag() . "\t" . $partInfo->getLastModified() . "\n");
-    }
+```
+
+`}`
+
+```
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **列举分片上传事件**
 
-以下代码用于列举分片上传事件： 对象存储 OSS
+以下代码用于列举分片上传事件：
 
 ```
 <?php <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14660,14 +15898,24 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     'key-marker' => '',
     'prefix' => '',
     'upload-id-marker' => ''
-); try {
+```
+
+);
+
+```
+try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $listMultipartUploadInfo = $ossClient->listMultipartUploads($bucket, $options);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": listMultipartUploads FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} printf(__FUNCTION__ . ": listMultipartUploads OK\n"); $listUploadInfo = $listMultipartUploadInfo->getUploads(); var_dump($listUploadInfo);
+```
+
+`}`
+
+```
+printf(__FUNCTION__ . ": listMultipartUploads OK\n"); $listUploadInfo = $listMultipartUploadInfo->getUploads(); var_dump($listUploadInfo);
 ```
 
 $options的参数说明如下：
@@ -14679,25 +15927,33 @@ $options的参数说明如下：
 | max-uploads | 限定此次返回分片上传事件的最大数目，默认值和最大值均为1000。 |
 | prefix | 限定返回的文件名称必须以指定的prefix作为前缀。注意使用prefix查询时，返回的文件名称中仍会包含prefix。 |
 
-对象存储 OSS
-
 | upload-id-marker | 与key-marker参数一同使用来指定返回结果的起始位置。如果未设置key-marker 参数，则此参数无效。如果设置了key-marker参数，则查询结果中包含： 名称的字母序大于key-marker参数值的所有文件。 文件名称等于key-marker参数值且uploadId比upload-id-marker参数值大的所有分片上传事件。 |
 |---|---|
 
-##### 上传回调
+##### 3.3.6.5 上传回调
 
 本文介绍如何在简单上传及分片上传中使用上传回调。
 
 **简单上传设置回调**
 
-以下代码用于在简单上传设置回调： 对象存储 OSS
+以下代码用于在简单上传设置回调：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14714,9 +15970,13 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 `//`（可选）`callbackHost`为回调请求消息头中`Host`的值，即您的服务器配置`Host`的值。
 
-```json
+```
 $url =
-    '{
+```
+
+`'{`
+
+```json
         "callbackUrl":"<yourCallbackServerUrl>",
         "callbackHost":"<yourCallbackServerHost>",
 "callbackBody":"bucket=${bucket}&object=${object}&etag=${etag}&size=${size}&mimeType=${mimeType}& ageInfo.height=${imageInfo.height}&imageInfo.width=${imageInfo.width}&imageInfo.format=${imageInf format}&my_var1=${x:var1}&my_var2=${x:var2}",
@@ -14728,11 +15988,22 @@ $url =
 
 ```
 $var =
-    '{
+```
+
+`'{`
+
+```
         "x:var1":"value1",
         "x:var2":"值2"
     }';
-$options = array(OssClient::OSS_CALLBACK => $url, ); $result = $ossClient->putObject($bucket, $object, file_get_contents(__FILE__), $options); print_r($result['body']); print_r($result['info']['http_code']);
+$options = array(OssClient::OSS_CALLBACK => $url,
+    OssClient::OSS_CALLBACK_VAR => $var
+```
+
+);
+
+```
+$result = $ossClient->putObject($bucket, $object, file_get_contents(__FILE__), $options); print_r($result['body']); print_r($result['info']['http_code']);
 ```
 
 **分片上传设置回调**
@@ -14742,12 +16013,17 @@ $options = array(OssClient::OSS_CALLBACK => $url, ); $result = $ossClient->putOb
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
-    require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; OSS\C
 ```
 
-\O E `ti` 对象存储 OSS
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+use OSS\OssClient; OSS\C
+```
+
+\O `E` `ti`
 
 ```
 use OSS\Core\OssException; use OSS\Core\OssUtil; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
@@ -14759,8 +16035,7 @@ use OSS\Core\OssException; use OSS\Core\OssUtil; $accessKeyId = "<yourAccessKeyI
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $uploadFile = "<yourLocalFile>"; /**
 ```
 
-* 步骤1：初始化一个分片上传事件，获取`uploadId`。
-`*/`
+`*` 步骤`1`：初始化一个分片上传事件，获取`uploadId`。 `*/`
 
 ```
 $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
@@ -14772,9 +16047,7 @@ $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 $uploadId = $ossClient->initiateMultipartUpload($bucket, $object); print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
 ```
 
-`/*`
-* 步骤2：上传分片。
-`*/`
+`/*` `*` 步骤`2`：上传分片。 `*/`
 
 ```
 $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces = $ossClient->generateMultiuploadParts($uploadFileSize, $partSize); $responseUploadPart = array(); $uploadPosition = 0; $isCheckMd5 = true; foreach ($pieces as $i => $piece) {
@@ -14786,16 +16059,19 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
         $ossClient::OSS_SEEK_TO => $fromPos,
         $ossClient::OSS_LENGTH => $toPos - $fromPos + 1,
         $ossClient::OSS_CHECK_MD5 => $isCheckMd5,
-    );
 ```
 
-`// MD5`校验。
+); `// MD5`校验。
 
 ```
     if ($isCheckMd5) {
         $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
         $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
-    }
+```
+
+`}`
+
+```
     try {
 ```
 
@@ -14803,33 +16079,42 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
 
 ```
         $responseUploadPart[] = $ossClient->uploadPart($bucket, $object, $uploadId, $upOptions)
+```
+
 ;
+
+```
     } catch(OssException $e) {
         printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} FAILED\n");
         printf($e->getMessage() . "\n");
         return;
-    }
+```
+
+`}`
+
+```
     printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
-}
 ```
 
-// $uploadParts是由每个分片的`ETag`和分片号（`PartNumber`）组成的数组。
+`}` // $uploadParts是由每个分片的`ETag`和分片号（`PartNumber`）组成的数组。
 
 ```
-$uploadParts = array();
+$uploadParts = array(); foreach ($responseUploadPart as $i => $eTag) {
+    $uploadParts[] = array(
 ```
-
-对象存储 OSS
 
 ```
         'PartNumber' => ($i + 1),
         'ETag' => $eTag,
-    );
-} /**
 ```
 
-* 步骤3：完成上传。
-`*/`
+);
+
+```
+/**
+```
+
+`*` 步骤`3`：完成上传。 `*/`
 
 ```
 // callbackUrl为回调服务器地址，如http://oss-demo.aliyuncs.com:23450或http://127.0.0.1:9090。
@@ -14837,12 +16122,18 @@ $uploadParts = array();
 
 `//`（可选）`callbackHost`为回调请求消息头中`Host`的值，即您的服务器配置`Host`的值。
 
-```json
+```
 $json =
-    '{
+```
+
+`'{`
+
+```json
         "callbackUrl":"<yourCallbackServerUrl>",
         "callbackHost":"<yourCallbackServerHost>",
+        "callbackBody":"
 {\"mimeType\":${mimeType},\"size\":${size},\"x:var1\":${x:var1},\"x:var2\":${x:var2}}",
+        "callbackBodyType":"application/json"
     }';
 ```
 
@@ -14850,7 +16141,11 @@ $json =
 
 ```
 $var =
-    '{
+```
+
+`'{`
+
+```
         "x:var1":"value1",
         "x:var2":"值2"
     }';
@@ -14864,24 +16159,32 @@ $options = array(OssClient::OSS_CALLBACK => $json,
 $ossClient->completeMultipartUpload($bucket, $object, $uploadId, $uploadParts, $options); printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
 ```
 
-#### 下载文件
+#### 3.3.7 下载文件
 
-##### 概述
+##### 3.3.7.1 概述
 
 在OSS中，操作的基本数据单元是文件（Object）。OSS PHP SDK提供了丰富的文件下载方式。 您可以通过以下方式下载OSS文件：
 
-##### 范围下载
+##### 3.3.7.2 下载到本地文件
 
-##### 下载到本地文件
-
-以下代码用于把指定的OSS文件下载到本地： 对象存储 OSS
+本文介绍如何使用PHP SDK将指定的文件（Object）下载到本地。 以下代码用于把指定的OSS文件下载到本地：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14901,12 +16204,11 @@ $object = "<yourObjectName>";
 ```
 $localfile = "<yourLocalFile>"; $options = array(
         OssClient::OSS_FILE_DOWNLOAD => $localfile
-    );
 ```
 
-`//` 使用`try catch`捕获异常，如果捕获到异常，则说明下载失败；如果没有捕获到异常，则说明下载成功。
+); `//` 使用`try catch`捕获异常，如果捕获到异常，则说明下载失败；如果没有捕获到异常，则说明下载成功。
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->getObject($bucket, $object, $options);
@@ -14914,19 +16216,34 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt'" . "\n");
 ```
 
-##### 下载到本地内存
+`}`
 
-对象存储 OSS
+```python
+print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt'" . "\n");
+```
+
+##### 3.3.7.3 下载到本地内存
+
+本文介绍如何使用PHP SDK将指定的文件下载到本地内存。 以下代码用于把指定的OSS文件下载到本地内存并打印出文件内容：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14937,7 +16254,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>";
 
 `//` 文件名称。
 
-```python
+```
 $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object);
@@ -14945,21 +16262,36 @@ $object = "<yourObjectName>"; try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-**说明**
+`}`
 
-##### 范围下载
+```python
+print($content); print(__FUNCTION__ . ": OK" . "\n");
+```
 
-如果仅需要文件中的部分数据，您可以使用范围下载，下载指定范围内的数据。 以下代码用于下载文件[0,4]的内容到本地内存： 对象存储 OSS
+> **说明：** 由于内存断电数据就会丢失，若想将下载文件保存在本地磁盘请参见下载到本地文件。
+
+##### 3.3.7.4 范围下载
+
+如果仅需要文件中的部分数据，您可以使用范围下载，下载指定范围内的数据。 以下代码用于下载文件[0,4]的内容到本地内存：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -14968,9 +16300,9 @@ $object = "<yourObjectName>"; try{
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>";
 ```
 
-`//` 获取0~4字节（包括0和4），共5个字节的数据。如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
+`//` 获取0~4字节（包括`0`和`4`），共`5`个字节的数据。如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
 
-```python
+```
 $options = array(OssClient::OSS_RANGE => '0-4'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object, $options);
@@ -14978,10 +16310,15 @@ $options = array(OssClient::OSS_RANGE => '0-4'); try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-##### 限定条件下载
+`}`
+
+```python
+print ($content); print(__FUNCTION__ . ": OK" . "\n");
+```
+
+##### 3.3.7.5 限定条件下载
 
 下载文件时，可以指定一个或多个限定条件。满足限定条件则下载，条件不满足则返回错误且不会触发下载行为。 可用的限定条件如下：
 
@@ -14992,64 +16329,86 @@ $options = array(OssClient::OSS_RANGE => '0-4'); try{
 | If-Match | 如果指定的ETag和OSS文件的ETag匹配，则正常传输文件，否则返回错误 （412 Precondition failed）。 | OssClient::OSS IF MATCH _ _ |
 | If-None-Match | 如果指定的ETag和OSS文件的ETag不匹配，则正常传输文件，否则返回错误 （304 Not modified）。 | OssClient::OSS IF NONE MATCH _ _ _ |
 
-对象存储 OSS
+> **说明：** If-Modified-Since和If-Unmodified-Since可以同时存在。If-Match和If-None-Match也可以同时存在。
+> ETag可以通过$ossClient->getObjectMeta方法获取。
 
-**说明**
-
-If-Modified-Since和If-Unmodified-Since可以同时存在。If-Match和If-None-Match也可以同时存在。 条件下载既可以下载OSS文件到本地内存，也可以下载到本地文件。以下代码用于限定条件下载：
+条件下载既可以下载OSS文件到本地内存，也可以下载到本地文件。以下代码用于限定条件下载：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $options = array(
         OssClient::OSS_HEADERS => array(
             OssClient::OSS_IF_MODIFIED_SINCE => "Fri, 13 Nov 2015 14:47:53 GMT"),
-    );
+```
+
+);
+
+```
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object, $options);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-#### 管理文件
+`}`
 
-##### 概述
+```python
+print ($content); print(__FUNCTION__ . ": OK" . "\n");
+```
 
-您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 利用上述接口，您可以完成以下操作：
+#### 3.3.8 管理文件
 
-##### 列举文件
+##### 3.3.8.1 概述
 
-##### 删除文件
+您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 ListObjects、DeleteObject、CopyObject等。 利用上述接口，您可以完成以下操作：
 
-对象存储 OSS
+##### 3.3.8.2 判断文件是否存在
 
-##### 拷贝文件
-
-##### 判断文件是否存在
+本文介绍如何判断文件是否存在。 以下代码用于判断文件是否存在。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $exist = $ossClient->doesObjectExist($bucket, $object);
@@ -15057,19 +16416,22 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); var_dump($exist);
 ```
 
-##### 管理文件访问权限
+`}`
 
-文件的访问权限（ACL）有以下四种：
+```python
+print(__FUNCTION__ . ": OK" . "\n"); var_dump($exist);
+```
+
+##### 3.3.8.3 管理文件访问权限
+
+本文介绍如何管理文件访问权限。 文件的访问权限（ACL）有以下四种：
 
 | 访问权限 | 描述 | 访问权限值 |
 |---|---|---|
 | 继承Bucket | 文件遵循存储空间的访问权限。 | default |
 | 私有 | 文件的拥有者和授权用户有该文件的读写权限，其他用户没有权限操作该文件。 | private |
-
-对象存储 OSS
 
 | 公共读 | 文件的拥有者和授权用户有该文件的读写权限，其他用户只有文件的读权限。 请谨慎使用该权限。 | public-read |
 |---|---|---|
@@ -15084,9 +16446,19 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15097,7 +16469,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 `//` 设置文件的访问权限为公共读，默认为继承`Bucket`。
 
-```python
+```
 $acl = "public-read"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObjectAcl($bucket, $object, $acl);
@@ -15105,24 +16477,39 @@ $acl = "public-read"; try {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **获取文件访问权限**
 
-以下代码用于获取指定文件的访问权限。 对象存储 OSS
+以下代码用于获取指定文件的访问权限。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $objectAcl = $ossClient->getObjectAcl($bucket, $object);
@@ -15130,26 +16517,43 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); var_dump($objectAcl);
 ```
 
-##### 管理文件元信息
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); var_dump($objectAcl);
+```
+
+##### 3.3.8.4 管理文件元信息
+
+本文介绍如何管理文件元信息。
 
 **设置文件元信息**
 
-以下代码用于设置文件元信息： 对象存储 OSS
+以下代码用于设置文件元信息：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $content = file_get_contents(__FILE__); $options = array(
     OssClient::OSS_HEADERS => array(
         'Expires' => '2012-10-01 08:00:00',
@@ -15163,19 +16567,34 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **修改文件元信息**
 
-以下代码用于修改文件元信息： 对象存储 OSS
+以下代码用于修改文件元信息：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15188,34 +16607,49 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $fromBucket = "<yourFromBucke
         'x-oss-meta-location' => 'location',
 ```
 
-`),`
+`),` );
 
-```python
-); try{
+```
+try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $copyOptions);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **获取文件元信息**
 
-以下代码用于获取文件元数据。 对象存储 OSS
+以下代码用于获取文件元数据。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $objectMeta = $ossClient->getObjectMeta($bucket, $object);
@@ -15223,29 +16657,45 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-Disposition')]) &&
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-Disposition')]) &&
     'attachment; filename="xxxxxx"' === $objectMeta[strtolower('Content-Disposition')]
 ) {
     print(__FUNCTION__ . ": ObjectMeta checked OK" . "\n");
 } else {
     print(__FUNCTION__ . ": ObjectMeta checked FAILED" . "\n");
-}
 ```
 
-##### 列举文件
+`}`
+
+##### 3.3.8.5 列举文件
 
 本文介绍如何列举指定存储空间（Bucket）下的所有文件或者符合条件的文件（Object）。
 
 **列举所有文件**
 
-以下代码用于列举指定存储空间下的所有文件： 对象存储 OSS
+以下代码用于列举指定存储空间下的所有文件：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15256,16 +16706,19 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
         $options = array(
             'delimiter' => '',
             'marker' => $nextMarker,
-        );
+```
+
+);
+
+```
         $listObjectInfo = $ossClient->listObjects($bucket, $options);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
         return;
-    }
 ```
 
-`//` 得到`nextMarker`，从上一次`listObjects`读到的最后一个文件的下一个文件开始继续获取文件列表。
+`}` `//` 得到`nextMarker`，从上一次`listObjects`读到的最后一个文件的下一个文件开始继续获取文件列表。
 
 ```python
     $nextMarker = $listObjectInfo->getNextMarker();
@@ -15275,71 +16728,95 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
         print("objectList:\n");
         foreach ($listObject as $objectInfo) {
             print($objectInfo->getKey() . "\n");
-        }
-    }
+```
+
+`}` `}`
+
+```python
     if (!empty($listPrefix)) {
         print("prefixList: \n");
         foreach ($listPrefix as $prefixInfo) {
             print($prefixInfo->getPrefix() . "\n");
-        }
-    }
-    if ($listObjectInfo->getIsTruncated() !== "true") {
-       break;
-    }
-}
 ```
 
-对象存储 OSS
+`}` `}`
 
-**说明**
+```
+    if ($listObjectInfo->getIsTruncated() !== "true") {
+       break;
+```
 
-上述示例代码中的$options为可选参数，可以用来列举整个bucket或者某个目录下的所有文件。 使用listObjects方法主要用于获取文件列表，如需获取其他属性，如文件名，文件大小等，请参见管理文件元信息。
+`}` `}`
+
+> **说明：** 上述示例代码中的$options为可选参数，可以用来列举整个bucket或者某个目录下的所有文件。
+
+使用listObjects方法主要用于获取文件列表，如需获取其他属性，如文件名，文件大小等，请参见管理文件元信息。
 
 **列举指定条件的文件**
 
-以下代码用于列举指定条件的文件： 对象存储 OSS
+以下代码用于列举指定条件的文件：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); $prefix = 'dir/'; $delimiter = '/'; $nextMarker = ''; $maxkeys = 10; $options = array(
     'delimiter' => $delimiter,
     'prefix' => $prefix,
     'max-keys' => $maxkeys,
     'marker' => $nextMarker,
-); try {
+```
+
+);
+
+```
+try {
     $listObjectInfo = $ossClient->listObjects($bucket, $options);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n"); $objectList = $listObjectInfo->getObjectList(); // object list $prefixList = $listObjectInfo->getPrefixList(); // directory list if (!empty($objectList)) {
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n"); $objectList = $listObjectInfo->getObjectList(); // object list $prefixList = $listObjectInfo->getPrefixList(); // directory list if (!empty($objectList)) {
     print("objectList:\n");
     foreach ($objectList as $objectInfo) {
         print($objectInfo->getKey() . "\n");
-    }
-} if (!empty($prefixList)) {
+```
+
+`}` `}`
+
+```python
+if (!empty($prefixList)) {
     print("prefixList: \n");
     foreach ($prefixList as $prefixInfo) {
         print($prefixInfo->getPrefix() . "\n");
-    }
-}
 ```
 
-上述例子中的$options包含的参数如下：
+`}` `}` 上述例子中的$options包含的参数如下：
 
 | 参数 | 说明 | 是否必须 |
 |---|---|---|
-
-对象存储 OSS
 
 | delimiter | 对文件名称进行分组的一个字符。 CommonPrefixes是以delimiter结尾，并有共同前缀的文件集合。 | 否 |
 |---|---|---|
@@ -15347,11 +16824,11 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 | max-keys | 列举文件的最大个数。默认为100，最大值为1000。 | 否 |
 | marker | 标明本次列举文件的起点。 | 否 |
 
-##### 删除文件
+##### 3.3.8.6 删除文件
 
-本文介绍如何删除文件。 请您谨慎使用删除操作，文件删除后将无法恢复。
+本文介绍如何删除文件。
 
-**警告**
+> **警告：** 请您谨慎使用删除操作，文件删除后将无法恢复。
 
 **删除单个文件**
 
@@ -15360,14 +16837,24 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObject($bucket, $object);
@@ -15375,24 +16862,39 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **删除多个文件**
 
-以下代码用于删除多个文件。 对象存储 OSS
+以下代码用于删除多个文件。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $objects = array(); $objects[] = "<yourObjectName1>"; $objects[] = "<yourObjectName2>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObjects($bucket, $objects);
@@ -15400,34 +16902,45 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-如果使用try{}catch{}获取错误时抛出Exception则表示没有成功删除单个或多个文件。同时，您
+`}`
 
-**说明**
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
 
-还可以根据$e->getMessage来分析错误原因。
+> **说明：** 如果使用try{}catch{}获取错误时抛出Exception则表示没有成功删除单个或多个文件。同时，您还可以根据$e->getMessage来分析错误原因。
 
-##### 拷贝文件
+##### 3.3.8.7 拷贝文件
 
 本文介绍如何拷贝文件。 拷贝文件时限制条件如下： 有源文件的读权限和目标存储空间的写权限。 不支持跨地域拷贝。
 
 **拷贝小文件**
 
-对于小于或等于1 GiB的文件，您可以通过$ossClient->copyObject方法将文件从一个存储空间（源存储空间）复制到同一地域的另一个存储空间（目标存储空间）。 以下代码用于拷贝小文件： 对象存储 OSS
+对于小于或等于1 GiB的文件，您可以通过$ossClient->copyObject方法将文件从一个存储空间（源存储空间）复制到同一地域的另一个存储空间（目标存储空间）。 以下代码用于拷贝小文件：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $from_bucket = "<yourFromBucketName>"; $from_object = "<yourFromObjectName>"; $to_bucket = $bucket; $to_object = $from_object . '.copy'; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->copyObject($from_bucket, $from_object, $to_bucket, $to_object);
@@ -15435,7 +16948,12 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $from_bucket = "<yourFromBuck
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 **拷贝大文件**
@@ -15449,9 +16967,19 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $from_bucket = "<yourFromBuck
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15460,7 +16988,7 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $from_bucket = "<yourFromBuck
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $src_bucket = "<yourSourceBucketName>"; $src_object = "<yourSourceObjectName>"; $dstbucket = "<yourDestinationBucketName>";
 ```
 
-对象存储 OSS _
+`_`
 
 ```
 $dst_object = "<yourDestinationObjectName>";
@@ -15494,43 +17022,66 @@ $part_size = 256*1024*1024; try{
         $up_options = array(
             'start' => $from_pos,
             'end' => $to_pos,
-        );
+```
+
+);
+
+```
         $response_upload_part[] = $ossClient->uploadPartCopy( $src_bucket, $src_object, $dst_bu
 cket, $dst_object, $copyId, $upload_id, $up_options);
         $copyId = $copyId + 1;
-    }
 ```
 
-`//` 完成分片拷贝。
+`}` `//` 完成分片拷贝。
 
-```python
+```
     $upload_parts = array();
+    foreach ($response_upload_part as $i => $etag) {
+        $upload_parts[] = array(
             'PartNumber' => ($i + 1),
             'ETag' => $etag,
-        );
-    }
+```
+
+); `}`
+
+```
     $result = $ossClient->completeMultipartUpload($dst_bucket, $dst_object, $upload_id, $upload
 _parts); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-#### 授权访问
+`}`
+
+```python
+print(__FUNCTION__ . ": OK" . "\n");
+```
+
+#### 3.3.9 授权访问
 
 本文介绍如何使用STS和文件URL进行授权访问。
 
 **使用STS进行临时授权**
 
-阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 对象存储 OSS STS的优势如下： 您无需透露您的长期密钥（AccessKey）给第三方应用，只需生成一个访问令牌并将令牌交给第三方应用。您可以自定义这个令牌的访问权限及有效期限。 您无需关心权限撤销问题，访问令牌过期后自动失效。 以下代码用于使用STS凭证构造签名请求：
+阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 STS的优势如下： 您无需透露您的长期密钥（AccessKey）给第三方应用，只需生成一个访问令牌并将令牌交给第三方应用。您可以自定义这个令牌的访问权限及有效期限。 您无需关心权限撤销问题，访问令牌过期后自动失效。 以下代码用于使用STS凭证构造签名请求：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15542,19 +17093,30 @@ $securityToken);
     $ossClient->putObject($bucket, $object, $content);
 } catch (OssException $e) {
     print $e->getMessage();
-}
 ```
+
+`}`
 
 **使用签名URL进行临时授权**
 
-您可以将生成的签名URL提供给访客进行临时访问。生成签名URL时，您可以自定义URL的过期时间来限制访客的访问时长。 授权访问的完整代码请参见GitHub。 生成下载的签名URL 以下代码用于生成下载的签名URL： 对象存储 OSS
+您可以将生成的签名URL提供给访客进行临时访问。生成签名URL时，您可以自定义URL的过期时间来限制访客的访问时长。 授权访问的完整代码请参见GitHub。 生成下载的签名URL 以下代码用于生成下载的签名URL：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15565,16 +17127,26 @@ $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; 
 
 `//` 设置`URL`的有效期为`3600`秒。
 
-```python
+```
 $timeout = 3600; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $securityTok
 en);
+```
+
+`//` 生成`GetObject`的签名`URL`。
+
+```
     $signedUrl = $ossClient->signUrl($bucket, $object, $timeout);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n");
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n");
 ```
 
 `//` 可以使用代码来访问签名的`URL`，也可以输入到浏览器中进行访问。
@@ -15590,31 +17162,50 @@ $request->set_method('GET'); $request->add_header('Content-Type', ''); $request-
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
     print(__FUNCTION__ . ": FAILED" . "\n");
-};
 ```
 
-生成上传的签名URL 以下代码用于生成上传的签名URL： 对象存储 OSS
+}; 生成上传的签名URL 以下代码用于生成上传的签名URL：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
 
-```python
+```
 $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; $timeout = 3600; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $securityTok
 en);
+```
+
+`//` 生成`PutObject`的签名`URL`。
+
+```
     $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, "PUT");
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); $content = "Hello OSS."; $request = new RequestCore($signedUrl);
+```
+
+`}`
+
+```python
+print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); $content = "Hello OSS."; $request = new RequestCore($signedUrl);
 ```
 
 `//` 生成的`URL`以`PUT`方式访问。
@@ -15626,16 +17217,17 @@ if ($res->isOK()) {
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
     print(__FUNCTION__ . ": FAILED" . "\n");
-};
 ```
 
-#### 图片处理
+};
 
-图片处理是OSS提供的海量、安全、低成本、高可靠的图片处理服务。原始图片上传到OSS后，您可以通过简单的 RESTful接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。 图片处理的完整代码请参见GitHub。 对象存储 OSS
+#### 3.3.10 图片处理
+
+图片处理是OSS提供的海量、安全、低成本、高可靠的图片处理服务。原始图片上传到OSS后，您可以通过简单的 RESTful接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。 图片处理的完整代码请参见GitHub。
 
 **图片处理基础功能**
 
-OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** > **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
+OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** **>** **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
 
 **图片处理使用**
 
@@ -15673,7 +17265,7 @@ http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/r
 http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=style/<yourStyleName>
 ```
 
-style：自定义样式的保留标志符。 yourStyleName：自定义样式名称，即通过控制台自定义样式的规则名称。 例如： 对象存储 OSS
+style：自定义样式的保留标志符。 yourStyleName：自定义样式名称，即通过控制台自定义样式的规则名称。 例如：
 
 ```
 http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=style/oss-pic-stylew-100
@@ -15697,8 +17289,6 @@ http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/re
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-#### 授权访问
-
 对私有权限的文件（Object），如下表所示的权限，必须通过授权才能访问图片服务。
 
 | Bucket权限 | Object权限 |
@@ -15711,9 +17301,19 @@ https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15730,14 +17330,24 @@ $timeout = 3600; $options = array(
 $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, "GET", $options); print("rtmp url: \n" . $signedUrl);
 ```
 
-SDK访问对象存储 OSS 对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
+SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15797,7 +17407,7 @@ $options = array(
 $ossClient->getObject($bucket, $object, $options);
 ```
 
-`//` 图片格式转换对象存储 OSS
+`//` 图片格式转换
 
 ```
 $options = array(
@@ -15826,9 +17436,19 @@ $ossClient->deleteObject($bucket, $object);
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15858,14 +17478,24 @@ $ossClient->getObject($bucket, $object, $options);
 $ossClient->deleteObject($bucket, $object);
 ```
 
-对象存储 OSS 级联处理
+级联处理
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15897,14 +17527,24 @@ $ossClient->deleteObject($bucket, $object);
 
 **图片处理持久化**
 
-以下代码用于图片处理持久化： 对象存储 OSS
+以下代码用于图片处理持久化：
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
-} if (is_file(__DIR__ . '/../vendor/autoload.php')) {
+```
+
+`}`
+
+```
+if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
-} use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
+```
+
+`}`
+
+```
+use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>";
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -15928,17 +17568,27 @@ $targetObject = "<yourTargetObjectName>"; try{
 
 `//` 以下为图片处理持久化的格式转换示例。如需对图片进行裁剪、旋转、添加水印等操作，请修改$options相应参数。
 
-```python
+```
 $options = array(
   OssClient::OSS_PROCESS => "image/format,png"
-); $content = $ossClient->getObject($bucket, $object，$options); $ossClient->putObject($bucket, $targetObject, $content); } catch(OssException $e) {
+```
+
+);
+
+```
+$content = $ossClient->getObject($bucket, $object，$options); $ossClient->putObject($bucket, $targetObject, $content); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
-} print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-#### 异常处理
+`}`
+
+```python
+print($content); print(__FUNCTION__ . ": OK" . "\n");
+```
+
+#### 3.3.11 异常处理
 
 OSS PHP SDK异常（OssException）包括参数无效、文件不存在等错误。您可以通过getMessage方法获取错误信息。 OssException的详细信息请参见GitHub。
 
@@ -15951,10 +17601,9 @@ OSS PHP SDK异常（OssException）包括参数无效、文件不存在等错误
         $ossClient->createBucket($bucket);
     } catch (OssException $e) {
         print("Exception:" . $e->getMessage() . "\n");
-    }
 ```
 
-您还可以获取以下信息： 对象存储 OSS
+`}` 您还可以获取以下信息：
 
 | 参数 | 说明 |
 |---|---|
@@ -15992,8 +17641,6 @@ OSS PHP SDK异常（OssException）包括参数无效、文件不存在等错误
 | NoSuchBucket | 存储空间不存在 | 404 |
 | NoSuchKey | 文件不存在 | 404 |
 
-对象存储 OSS
-
 | NoSuchUpload | 分片上传ID不存在 | 404 |
 |---|---|---|
 | NotImplemented | 无法处理的方法 | 501 |
@@ -16003,15 +17650,15 @@ OSS PHP SDK异常（OssException）包括参数无效、文件不存在等错误
 | SignatureDoesNotMatch | 签名错误 | 403 |
 | InvalidEncryptionAlgorithmError | 指定的熵编码加密算法错误 | 400 |
 
-### C-SDK
+### 3.4 C-SDK
 
-#### 前言
+#### 3.4.1 前言
 
 本文档主要介绍OSS C SDK。
 
 **兼容性**
 
-对于3.*.*系列SDK：兼容。 对于 2.*.*系列SDK： Windows兼容。 Linux接口兼容，链表（aos_list_t）遍历接口不兼容。 aos_list_for_each_entry aos_list_for_each_entry_reverse aos_list_for_each_entry_safe aos_list_for_each_entry_safe_reverse 对于 1.0.0 系列SDK：以下结构体和接口不兼容，其余都兼容。 oss_request_options_t oss_init_multipart_upload 对于 0.0.*系列SDK：不兼容。
+对于3.*.*系列SDK：兼容。 对于 2.*.*系列SDK： Windows兼容。 Linux接口兼容，链表（aos_list_t）遍历接口不兼容。 aos_list_for_each_entry aos_list_for_each_entry_reverse aos_list_for_each_entry_safe aos_list_for_each_entry_safe_reverse 对于 1.0.0 系列SDK：以下结构体和接口不兼容，其余都兼容。 oss_request_options_t oss_get_object_to_buffer oss_get_object_to_file oss_get_object_to_buffer_by_url oss_get_object_to_file_by_url oss_init_multipart_upload oss_complete_multipart_upload 对于 0.0.*系列SDK：不兼容。
 
 **SDK源码**
 
@@ -16025,8 +17672,6 @@ OSS C SDK提供丰富的示例代码，方便您参考或直接使用。示例�
 |---|---|
 | oss put object sample _ _ _ | 展示了文件上传的用法，包括从内存上传、携带MD5校验上传、携带元数据上传、 URL签名上传等。 |
 
-对象存储 OSS
-
 | oss get object sample.c _ _ _ | 展示了文件下载的用法，包括下载到内存、下载到文件、范围下载、URL签名下载等。 |
 |---|---|
 | oss append object sample.c _ _ _ | 展示了追加上传的用法，包括从内存追加上传、从文件追加上传。 |
@@ -16039,7 +17684,7 @@ OSS C SDK提供丰富的示例代码，方便您参考或直接使用。示例�
 | oss crc sample.c _ _ | 展示了上传、下载使用CRC校验的用法。 |
 | oss image sample.c _ _ | 展示了图片处理的用法。 |
 
-#### 安装
+#### 3.4.2 安装
 
 本文介绍如何安装OSS C SDK。
 
@@ -16056,25 +17701,25 @@ OSS C SDK提供丰富的示例代码，方便您参考或直接使用。示例�
 
 请选择对应的系统安装。 Ubuntu、Debian 安装CMake
 
-```bash
+```python
 sudo apt-get install cmake
 ```
 
 安装第三方库
 
-```bash
+```python
 sudo apt-get install libcurl4-openssl-dev libapr1-dev libaprutil1-dev libmxml-dev
 ```
 
-对象存储 OSS RedHat、Aliyun、CentOS 安装CMake
+RedHat、Aliyun、CentOS 安装CMake
 
-```bash
+```python
 sudo yum install cmake
 ```
 
 安装第三方库
 
-```bash
+```python
 sudo yum install curl-devel apr-devel apr-util-devel mxml mxml-devel
 ```
 
@@ -16096,17 +17741,15 @@ zypper install cmake
 zypper install libcurl-devel libapr1-devel libapr-util1-devel mxml-devel
 ```
 
-对象存储 OSS 其它Linux 安装CMake 下载CMake，并使用如下方式安装：
+其它Linux 安装CMake 下载CMake，并使用如下方式安装：
 
 ```
 ./configure make make install
 ```
 
-执行./configure时，默认安装路径为/usr/local/，如果需要指定安装路径，请使用
+> **说明：** 执行./configure时，默认安装路径为/usr/local/，如果需要指定安装路径，请使用 ./configure --prefix选项。
 
-**说明**
-
-./configure --prefix选项。 安装libcurl 下载libcurl，并使用如下方式安装：
+安装libcurl 下载libcurl，并使用如下方式安装：
 
 ```
 ./configure make make install
@@ -16124,17 +17767,17 @@ zypper install libcurl-devel libapr1-devel libapr-util1-devel mxml-devel
 ./configure --with-apr=/your/apr/install/path make make install
 ```
 
-安装minixml 请使用2.x版本的minixml。
+安装minixml
 
-**说明**
+> **说明：** 请使用2.x版本的minixml。
 
 下载minixml，并使用如下方式安装：
 
-```bash
+```python
 ./configure make sudo make install
 ```
 
-下载SDK 直接下载通过GitHub下载历史版本下载安装SDK 如果curl、apr、apr-util和mxml第三方库安装在默认路径下时，安装方式如下： 对象存储 OSS
+下载SDK 直接下载通过GitHub下载历史版本下载安装SDK 如果curl、apr、apr-util和mxml第三方库安装在默认路径下时，安装方式如下：
 
 ```
 cmake . make make install
@@ -16178,24 +17821,27 @@ cmake -f CMakeLists.txt
 
 **Windows环境下的安装**
 
-下载SDK 直接下载通过GitHub下载历史版本下载安装SDK 使用Visual Studio编译OSS C SDK的详细步骤及常见问题，请参见Windows下编译使用Aliyun OSS C SDK。 如果您使用Visual Studio 2012及其以后版本打开时，会提示是否将项目升级成最新版的编译器
+下载SDK 直接下载通过GitHub下载历史版本下载安装SDK 使用Visual Studio编译OSS C SDK的详细步骤及常见问题，请参见Windows下编译使用Aliyun OSS C SDK。
 
-**说明**
+> **说明：** 如果您使用Visual Studio 2012及其以后版本打开时，会提示是否将项目升级成最新版的编译器和库，这里最好和您自己的项目保持一致。如果项目使用了最新版本的编译器和库，就选择升级，否则可以不升级。
 
-和库，这里最好和您自己的项目保持一致。如果项目使用了最新版本的编译器和库，就选择升级，否则可以不升级。
-
-#### 初始化
+#### 3.4.3 初始化
 
 使用OSS C SDK时，需要初始化请求选项（oss_request_options_t），并指定Endpoint。 初始化时，需要指定Endpoint。有关Endpoint的更多信息，请参见获取Endpoint。 初始化时，需要指定AccessKey。获取AccessKey的操作，请参见获取AccessKey。
 
 **使用OSS域名初始化请求选项**
 
-以下代码用于OSS域名初始化请求选项： 对象存储 OSS
+以下代码用于OSS域名初始化请求选项：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16207,17 +17853,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
 ```
 
-`/*` 用于设置网络相关参数，其中这个函数的第二个参数表示`ctl`的归属，默认为0。`*/`
+`/*` 用于设置网络相关参数，其中这个函数的第二个参数表示`ctl`的归属，默认为`0`。`*/`
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main() {
+```
+
+`}`
+
+```
+int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
 ```
@@ -16227,10 +17878,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         return -1;
-    }
 ```
 
-`/*` 初始化内存池和`options`。`*/`
+`}` `/*` 初始化内存池和`options`。`*/`
 
 ```
     aos_pool_create(&p, NULL);
@@ -16249,12 +17899,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **使用自定义域名初始化请求选项**
 
-以下代码用于自定义域名初始化请求选项： 对象存储 OSS
+以下代码用于自定义域名初始化请求选项：
 
 ```
 #include "oss_api.h"
@@ -16276,7 +17927,12 @@ const char *endpoint = "<yourCustomEndpoint>"; const char *access_key_id = "<you
 ```
     options->config->is_cname = 1;
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main() {
+```
+
+`}`
+
+```
+int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
 ```
@@ -16286,10 +17942,9 @@ const char *endpoint = "<yourCustomEndpoint>"; const char *access_key_id = "<you
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         return -1;
-    }
 ```
 
-`/*` 初始化内存池和`options`。`*/`
+`}` `/*` 初始化内存池和`options`。`*/`
 
 ```
     aos_pool_create(&p, NULL);
@@ -16308,17 +17963,23 @@ const char *endpoint = "<yourCustomEndpoint>"; const char *access_key_id = "<you
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **使用STS初始化请求选项**
 
-以下代码用于STS初始化请求选项： 对象存储 OSS
+以下代码用于STS初始化请求选项：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *sts_token = "<yourSecurityToken>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *sts_token = "<yourSecurityToken>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16336,12 +17997,17 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->sts_token, sts_token);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main() {
+```
+
+`}`
+
+```
+int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
 ```
@@ -16351,10 +18017,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         return -1;
-    }
 ```
 
-`/*` 初始化内存池和`options`。`*/`
+`}` `/*` 初始化内存池和`options`。`*/`
 
 ```
     aos_pool_create(&p, NULL);
@@ -16373,17 +18038,23 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **设置超时时间**
 
-以下代码用于设置超时时间： 对象存储 OSS
+以下代码用于设置超时时间：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16395,13 +18066,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
 ```
 
-`/*` 用于设置网络相关参数，其中这个函数的第二个参数表示`ctl`的归属，默认为0。`*/`
+`/*` 用于设置网络相关参数，其中这个函数的第二个参数表示`ctl`的归属，默认为`0`。`*/`
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
@@ -16424,31 +18095,37 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     options->ctl->options->speed_limit = 1024;
     options->ctl->options->speed_time = 15;
-}
 ```
 
-#### 快速入门
+`}`
+
+#### 3.4.4 快速入门
 
 本节介绍如何快速使用OSS C SDK完成常见操作，如创建存储空间、上传文件、下载文件等。
 
 **示例工程**
 
-Linux示例工程 i. 下载示例工程并解压。 ii. 安装oss-c-sdk-demo-specified-installation时需要指定安装目录**/home/your/oss/csdk**。其它示例工程基于OSS C SDK及依赖的第三方库默认安装，不需要指定安装目录。
+Linux示例工程 i. 下载示例工程并解压。 ii. 安装oss-c-sdk-demo-specified-installation时需要指定安装目录***********************。其它示例工程基于OSS C SDK及依赖的第三方库默认安装，不需要指定安装目录。 iii. 将示例代码中的OSS_ENDPOINT、ACCESS_KEY_ID、ACCESS_KEY_SECRET、BUCKET_NAME更换成有效
 
-| _ LD LIBRARY PATH _ _ |  |  |
+| _ LD LIBRARY PATH _ _ |   |   |
 |---|---|---|
 | ；执行 | ./main | 运 |
 
-需重新编译，请执行 `make clean` 再进行编译。 示例工程安装详情请参见Linux下使用Aliyun OSS C SDK。 Windows示例工程 i. 下载示例工程并解压。 更多示例工程下载请参见GitHub。 ii. 使用Visual Studio直接打开对应的示例工程，将oss_config.c中的OSS_ENDPOINT、ACCESS_KEY_ID、 ACCESS_KEY_SECRET、BUCKET_NAME、OBJECT_NAME、MULTIPART_UPLOAD_FILE_PATH和 DIR_NAME更换成有效值，编译运行，也可以在示例工程基础上开发您的项目。 使用Visual Studio运行示例工程的详细步骤及常见问题，请参见Windows下编译使用Aliyun
+值。如果OSS C SDK及依赖库的动态库不在系统目录下，执行时请使用 `LD_LIBRARY_PATH` 指定。 iv. 进入工程目录（oss-c-sdk-demo-xxx），执行 `make` ，编译示例工程；执行 `./main` 运行可执行程序；如需重新编译，请执行 `make clean` 再进行编译。 示例工程安装详情请参见Linux下使用Aliyun OSS C SDK。 Windows示例工程 i. 下载示例工程并解压。 更多示例工程下载请参见GitHub。 ii. 使用Visual Studio直接打开对应的示例工程，将oss_config.c中的OSS_ENDPOINT、ACCESS_KEY_ID、 ACCESS_KEY_SECRET、BUCKET_NAME、OBJECT_NAME、MULTIPART_UPLOAD_FILE_PATH和 DIR_NAME更换成有效值，编译运行，也可以在示例工程基础上开发您的项目。
 
-**说明**
+> **说明：** 使用Visual Studio运行示例工程的详细步骤及常见问题，请参见Windows下编译使用Aliyun OSS C SDK。
 
-OSS C SDK。 对象存储 OSS 以下代码用于创建空间。 对象存储 OSS
+以下代码用于创建空间。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16460,7 +18137,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -16470,18 +18147,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -16509,6 +18190,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     init_options(oss_client_options);
+```
+
+`/*` 创建存储空间。`*/`
+
+```
     aos_status_t *resp_status;
     aos_table_t *resp_headers;
     oss_acl_e oss_acl = OSS_ACL_PRIVATE;
@@ -16529,10 +18215,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -16543,17 +18228,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-#### 上传文件
-
-对象存储 OSS 以下代码用于通过流式上传方式上传文件到OSS。
+`}` 以下代码用于通过流式上传方式上传文件到OSS。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16565,7 +18252,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -16575,18 +18262,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -16653,13 +18344,10 @@ ders, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
 ```
 
-对象存储 OSS
-
 ```
         printf("put file succeeded\n");
     } else {
         printf("put file failed\n");
-    }
 ```
 
 `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
@@ -16673,15 +18361,19 @@ ders, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-#### 下载文件
+`}` 以下代码用于将指定的OSS文件下载到本地文件。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *download_filename = "<yourDownloadedFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *download_filename = "<yourDownloadedFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16693,7 +18385,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -16703,18 +18395,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -16755,16 +18451,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 aostablet*params=NULL;
 ```
 
-对象存储 OSS
-
 ```
 aos_tabe_t paas
 ```
 
-U
+`U` ;
 
 ```
-;
     aos_table_t *resp_headers = NULL;
     aos_str_set(&bucket, bucket_name);
     aos_str_set(&object, object_name);
@@ -16786,10 +18479,9 @@ U
         printf("get object to local file succeeded\n");
     } else {
         printf("get object to local file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -16800,17 +18492,19 @@ U
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 列举文件
-
-以下代码用于列举指定存储空间的文件。
+`}` 以下代码用于列举指定存储空间的文件。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16822,7 +18516,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -16832,18 +18526,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool = NULL;
@@ -16867,7 +18565,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     oss_client_options = oss_request_options_create(pool);
 ```
 
-`/*`初始化`Client`的选项`oss``client``options`。`*/` 对象存储 OSS `/*` 初始化`Client`的选项`oss_client_options`。`*/`
+`/*`初始化`Client`的选项`oss``client``options`。`*/` `/*` 初始化`Client`的选项`oss_client_options`。`*/`
 
 ```
     init_options(oss_client_options);
@@ -16896,9 +18594,17 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     if (!aos_status_is_ok(resp_status))
-    {
+```
+
+`{`
+
+```
         printf("list object failed\n");
-    }
+```
+
+`}`
+
+```
     else{
 ```
 
@@ -16907,23 +18613,30 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
         printf("Object\tSize\tLastModified\n");
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node)
-{
+```
+
+`{`
+
+```
             ++size;
             line = apr_psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.data
 ```
 
-,
+`,`
 
 ```
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
-        printf("Total %d\n", size);
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}`
+
+```
+        printf("Total %d\n", size);
+```
+
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -16934,17 +18647,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 删除文件
-
-以下代码用于删除指定文件。 对象存储 OSS
+`}` 以下代码用于删除指定文件。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -16956,7 +18671,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -16966,18 +18681,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool = NULL;
@@ -17031,10 +18750,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("delete object succeeded\n");
     } else {
         printf("delete object failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17045,21 +18763,23 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
+#### 3.4.5 存储空间
 
-#### 存储空间
+##### 3.4.5.1 创建存储空间
 
-##### 创建存储空间
-
-存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 对象存储 OSS
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 以下代码用于创建存储空间。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17071,7 +18791,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`CNAME`域名访问`OSS`服务。0表示不使用。 `*/`
+`/*` 是否使用`CNAME`域名访问`OSS`服务。`0`表示不使用。 `*/`
 
 ```
     options->config->is_cname = 0;
@@ -17081,18 +18801,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。 `*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。 `*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17135,6 +18859,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 创建存储空间。`*/`
+
+```
     resp_status = oss_create_bucket(oss_client_options, &bucket, oss_acl, &resp_headers);
 ```
 
@@ -17145,10 +18874,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17159,10 +18887,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
+以下代码用于在创建存储空间时指定存储空间的访问权限。 `/*` 创建存储空间，并设置存储空间的权限为公共读（默认是私有）。`*/`
 
 ```
     resp_status = oss_create_bucket(oss_client_options, &bucket, OSS_ACL_PUBLIC_READ, &resp_hea
@@ -17171,17 +18898,23 @@ ders);
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
-    }
 ```
 
-##### 列举存储空间
+`}`
+
+##### 3.4.5.2 列举存储空间
 
 存储空间（Bucket）是用来存储对象（Object）的容器。对象都隶属于存储空间。存储空间按照字母顺序排列。您可以列举当前账号所有地域下符合指定条件的存储空间。 以下代码用于列举当前账号所有地域下的存储空间。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17193,7 +18926,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`CNAME`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`CNAME`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17203,18 +18936,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。 `*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。 `*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17255,28 +18992,29 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 params=osscreatelistbucketsparams(pool);
 ```
 
-对象存储 OSS
-
 ```
     params = oss_create_list_buckets_params(pool);
+```
+
+`/*` 列举存储空间。 `*/`
+
+```
     resp_status = oss_list_bucket(oss_client_options, params, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
         printf("list buckets succeeded\n");
     } else {
         printf("list buckets failed\n");
-    }
 ```
 
-`/*` 打印存储空间。 `*/`
+`}` `/*` 打印存储空间。 `*/`
 
 ```
     aos_list_for_each_entry(oss_list_bucket_content_t, content, &params->bucket_list, node) {
         printf("BucketName: %s\n", content->name.data);
         ++size;
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17287,10 +19025,11 @@ params=osscreatelistbucketsparams(pool);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 管理存储空间访问权限
+`}`
+
+##### 3.4.5.3 管理存储空间访问权限
 
 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何设置和获取存储空间读写权限（ACL）。
 
@@ -17304,12 +19043,17 @@ params=osscreatelistbucketsparams(pool);
 | 公共读 | 存储空间的拥有者和授权用户有该存储空间内的文件的读写权限，其他用户只有该存储空间内的文件的读权限。请谨慎使用该权限。 | OSS ACL PUBLIC READ _ _ _ |
 | 公共读写 | 所有用户都有该存储空间内的文件的读写权限。请谨慎使用该权限。 | OSS ACL PUBLIC READ WRITE _ _ _ _ |
 
-以下代码用于设置存储空间的访问权限： 对象存储 OSS
+以下代码用于设置存储空间的访问权限：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17321,7 +19065,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`CNAME`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`CNAME`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17331,18 +19075,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17395,10 +19143,9 @@ aders);
         printf("set bucket acl succeeded\n");
     } else {
         printf("set bucket acl failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17409,17 +19156,23 @@ aders);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **获取存储空间的访问权限**
 
-对象存储 OSS 以下代码用于获取存储空间的读写权限：
+以下代码用于获取存储空间的读写权限：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17431,7 +19184,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`CNAME`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`CNAME`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17441,18 +19194,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17505,10 +19262,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("get bucket acl succeeded : %s \n", oss_acl.data);
     } else {
         printf("get bucket acl failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17519,23 +19275,25 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
-
-##### 删除存储空间
+##### 3.4.5.4 删除存储空间
 
 当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。
 
-**说明**
+> **说明：** 删除存储空间之前，必须先删除存储空间下的所有文件和分片上传产生的碎片。
 
-对象存储 OSS
+以下代码用于删除存储空间。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17547,7 +19305,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`CNAME`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`CNAME`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17557,18 +19315,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17610,15 +19372,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 删除存储空间。 `*/`
+
+```
     resp_status = oss_delete_bucket (oss_client_options, &bucket, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
         printf("delete bucket succeeded\n");
     } else {
         printf("delete bucket failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17629,12 +19395,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 生命周期管理
+`}`
 
-对象存储 OSS 并不是所有上传至OSS的数据都需要频繁访问，但基于数据合规或者存档等原因，部分数据仍需要继续以冷存储类型进行保存。或者基于业务使用场景，希望批量删除Bucket内不再需要保存的数据，您可以配置基于最后一次修改时间（Last Modified Time）的生命周期规则。如果您希望OSS自动监测数据的访问模式并识别冷数据，然后将识别出来的冷数据进行存储类型的转换，从而达到数据的冷热分层存储，最终降低存储成本，您可以配置基于最后一次访问时间（Last Access Time）的生命周期规则。
+##### 3.4.5.5 生命周期管理
+
+并不是所有上传至OSS的数据都需要频繁访问，但基于数据合规或者存档等原因，部分数据仍需要继续以冷存储类型进行保存。或者基于业务使用场景，希望批量删除Bucket内不再需要保存的数据，您可以配置基于最后一次修改时间（Last Modified Time）的生命周期规则。如果您希望OSS自动监测数据的访问模式并识别冷数据，然后将识别出来的冷数据进行存储类型的转换，从而达到数据的冷热分层存储，最终降低存储成本，您可以配置基于最后一次访问时间（Last Access Time）的生命周期规则。
 
 **设置生命周期规则**
 
@@ -17643,7 +19410,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17655,7 +19427,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`cname`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`cname`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17665,18 +19437,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17733,8 +19509,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     rule_content_days->days = 3;
 ```
 
-对象存储 OSS
-
 ```
     aos_list_add_tail(&rule_content_days->node, &lifecycle_rule_list);
 ```
@@ -17762,10 +19536,9 @@ resp_headers);
 request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status->re
 q_id);
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17776,8 +19549,9 @@ q_id);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **查看生命周期规则**
 
@@ -17786,7 +19560,12 @@ q_id);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17798,7 +19577,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`cname`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`cname`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17808,18 +19587,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17831,7 +19614,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_pool_create(&pool, NULL);
 ```
 
-`/*` 创建并初始化`options`，该参数包括`endpoint`、`access``key``id`、`acces``key``secret`、`is``cname`、 `curl`等全对象存储 OSS p p _ `y_` _ `y_` _ 局配置信息。`*/`
+`/*` 创建并初始化`options`，该参数包括`endpoint`、`access``key``id`、`acces``key``secret`、`is``cname`、 `curl`等全 `p` `p` `_` `y_` `_` `y_` `_` 局配置信息。`*/`
 
 ```
     oss_request_options_t *oss_client_options;
@@ -17882,7 +19665,11 @@ resp_headers);
 >status.data);
             date = apr_psprintf(pool, "%.*s", rule_content->date.len, rule_content->date.data);
             days = rule_content->days;
-        }
+```
+
+`}`
+
+```
         printf("rule_id: %s \n", rule_id);
         printf("prefix: %s \n", prefix);
         printf("status: %s \n", status);
@@ -17893,10 +19680,9 @@ resp_headers);
 request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status->re
 q_id);
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -17907,17 +19693,23 @@ q_id);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **清空生命周期规则**
 
-以下代码用于清空存储空间的生命周期规则。 对象存储 OSS
+以下代码用于清空存储空间的生命周期规则。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -17929,7 +19721,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用`cname`域名访问`OSS`服务。0表示不使用。`*/`
+`/*` 是否使用`cname`域名访问`OSS`服务。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -17939,18 +19731,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -17987,6 +19783,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_table_t *resp_headers = NULL;
     aos_status_t *resp_status = NULL;
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 删除存储空间生命周期规则。`*/`
+
+```
     aos_str_set(&bucket, bucket_name);
     resp_status = oss_delete_bucket_lifecycle(oss_client_options, &bucket, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
@@ -17996,10 +19797,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 d:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status->re
 q_id);
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -18010,19 +19810,25 @@ q_id);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
+##### 3.4.5.6 跨域资源共享
 
-##### 跨域资源共享
+跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供跨域资源共享接口，方便您控制跨域访问的权限。
 
-跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供以下代码用于设置指定存储空间的跨域规则：
+**设置跨域资源共享规则**
+
+以下代码用于设置指定存储空间的跨域规则：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18034,7 +19840,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18044,18 +19850,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18104,8 +19914,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     oss_create_sub_cors_rule(pool, &cors_rule1->allowed_head_list, "Authorization");
 ```
 
-对象存储 OSS
-
 ```
     oss_create_sub_cors_rule(pool, &cors_rule1->expose_head_list, "expose_head_1_1");
     oss_create_sub_cors_rule(pool, &cors_rule1->expose_head_list, "expose_head_1_1");
@@ -18118,16 +19926,20 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     oss_create_sub_cors_rule(pool, &cors_rule2->allowed_head_list, "Authorization");
     oss_create_sub_cors_rule(pool, &cors_rule2->expose_head_list, "expose_head_2_1");
     oss_create_sub_cors_rule(pool, &cors_rule2->expose_head_list, "expose_head_2_2");
+```
+
+`/*` 设置跨域资源共享规则。`*/`
+
+```
     resp_status = oss_put_bucket_cors(oss_client_options, &bucket, &cors_rule_list, &resp_heade
 rs);
     if (aos_status_is_ok(resp_status)) {
         printf("put bucket cors succeeded\n");
     } else {
         printf("put bucket cors failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -18138,15 +19950,23 @@ rs);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
+
+**获取跨域资源共享规则**
 
 以下代码用于获取跨域规则：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18158,7 +19978,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18168,18 +19988,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18191,7 +20015,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_pool_create(&pool, NULL);
 ```
 
-`/*`创建并初始化`options`，该参数包括`endpoint`、`access``key``id`、`acces``key``secret`、`is``cname`、`curl`等全局对象存储 OSS / 创建并初始化`options` 该参数包括`endpoint` `curl`等全局
+`/*`创建并初始化`options`，该参数包括`endpoint`、`access``key``id`、`acces``key``secret`、`is``cname`、`curl`等全局 `/` 创建并初始化`options` 该参数包括`endpoint` `curl`等全局
 
 ```
 access_key_id acces_key_secret is_cname
@@ -18225,6 +20049,11 @@ access_key_id acces_key_secret is_cname
     oss_cors_rule_t *cors_rule = NULL;
     oss_sub_cors_rule_t *sub_cors_rule = NULL;
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 获取跨域资源共享规则。`*/`
+
+```
     aos_list_init(&cors_rule_list);
     resp_status = oss_get_bucket_cors(oss_client_options, &bucket, &cors_rule_list, &resp_heade
 rs);
@@ -18235,26 +20064,40 @@ rs);
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >allowed_origin_list, node) {
                 printf("allowed_origin_list: %s \n", sub_cors_rule->rule.data);
-            }
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >allowed_method_list, node) {
                 printf("allowed_method_list: %s \n", sub_cors_rule->rule.data);
-            }
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >allowed_head_list, node) {
                 printf("allowed_head_list: %s \n", sub_cors_rule->rule.data);
-            }
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule-
 >expose_head_list, node) {
                 printf("expose_head_list: %s \n", sub_cors_rule->rule.data);
-            }
-        }
-    } else {
-        printf("get bucket cors failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `}`
+
+```
+    } else {
+        printf("get bucket cors failed\n");
+```
+
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -18265,15 +20108,23 @@ rs);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-以下代码用于删除指定存储空间的所有跨域规则： 对象存储 OSS
+`}`
+
+**删除跨域资源共享规则**
+
+以下代码用于删除指定存储空间的所有跨域规则：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18285,7 +20136,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18295,18 +20146,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18343,15 +20198,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_table_t *resp_headers = NULL;
     aos_status_t *resp_status = NULL;
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 删除跨域资源共享规则。`*/`
+
+```
     resp_status = oss_delete_bucket_cors(oss_client_options, &bucket, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
         printf("get bucket cors succeeded\n");
     } else {
         printf("get bucket cors failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -18362,12 +20221,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 设置访问日志
+`}`
 
-对象存储 OSS 您可以开启存储空间的访问日志记录功能，开启后对于此存储空间的访问会被记录成日志文件，保存在指定的存储空间中。
+##### 3.4.5.7 设置访问日志
+
+您可以开启存储空间的访问日志记录功能，开启后对于此存储空间的访问会被记录成日志文件，保存在指定的存储空间中。
 
 ```
 日志文件的格式为： <TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString
@@ -18380,7 +20240,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *target_bucket_name = "<yourTargetBucketName>"; const char *target_logging_prefix = "<yourTargetPrefix>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *target_bucket_name = "<yourTargetBucketName>"; const char *target_logging_prefix = "<yourTargetPrefix>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18392,7 +20257,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18402,18 +20267,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18465,13 +20334,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     } else {
 ```
 
-\ 对象存储 OSS
+\
 
 ```
         printf("put symlink failed, code:%d, error_code:%s, error_msg:%s, request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status->re
 q_id);
-    }
 ```
 
 `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
@@ -18485,8 +20353,9 @@ q_id);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **查看访问日志设置**
 
@@ -18495,7 +20364,12 @@ q_id);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18507,7 +20381,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18517,18 +20391,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18575,8 +20453,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     resp_status = oss_get_bucket_logging(oss_client_options, &bucket, content, &resp_headers);
 ```
 
-对象存储 OSS
-
 ```
     if (aos_status_is_ok(resp_status)) {
         printf("get bucket logging succeeded\n");
@@ -18585,7 +20461,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status->re
 q_id);
-    }
+```
+
+`}`
+
+```
     printf("bucket:%s, prefix:%s\n", content->target_bucket.data, content->prefix.data);
 ```
 
@@ -18600,17 +20480,23 @@ q_id);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **关闭访问日志记录**
 
-以下代码用于关闭访问日志记录。 对象存储 OSS
+以下代码用于关闭访问日志记录。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18622,7 +20508,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18632,18 +20518,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18693,10 +20583,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status->re
 q_id);
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -18707,12 +20596,9 @@ q_id);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
-
-##### 防盗链
+##### 3.4.5.8 防盗链
 
 为了防止用户在OSS上的数据被其他人盗链，OSS支持基于HTTP header中表头字段Referer的防盗链方法。
 
@@ -18723,7 +20609,12 @@ q_id);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18735,7 +20626,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18745,18 +20636,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18800,7 +20695,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     referer_config.allow_empty_referer = 0;
 ```
 
-`/*` 添加`Referer`白名单。`Referer`参数支持通配符星号（*）和问号（？）。`*/`
+`/*` 添加`Referer`白名单。`Referer`参数支持通配符星号（`*`）和问号（？）。`*/`
 
 ```
     resp_status = oss_put_bucket_referer(oss_client_options, &bucket, &referer_config, &resp_he
@@ -18810,11 +20705,8 @@ aders);
     } else {
 ```
 
-对象存储 OSS
-
 ```
         printf("put bucket referer failed\n");
-    }
 ```
 
 `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
@@ -18828,8 +20720,9 @@ aders);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **获取防盗链信息**
 
@@ -18838,7 +20731,12 @@ aders);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18850,7 +20748,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18860,18 +20758,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -18920,21 +20822,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 aders);
 ```
 
-对象存储 OSS
-
 ```
 aders);
     if (aos_status_is_ok(resp_status)) {
         printf("get bucket referer succeeded\n");
         aos_list_for_each_entry(oss_referer_t, referer, &referer_config.referer_list, node) {
             printf("get referer %s\n", referer->referer.data);
-        }
-    } else {
-        printf("get bucket referer failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}`
+
+```
+    } else {
+        printf("get bucket referer failed\n");
+```
+
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -18945,17 +20848,23 @@ aders);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **清空防盗链**
 
-以下代码用于清空防盗链： 对象存储 OSS
+以下代码用于清空防盗链：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -18967,7 +20876,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -18977,18 +20886,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19039,10 +20952,9 @@ aders);
         printf("delete bucket referer succeeded\n");
     } else {
         printf("delete bucket referer failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -19053,19 +20965,25 @@ aders);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
+##### 3.4.5.9 静态网站托管
 
-##### 静态网站托管
+您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。
 
-您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。 对象存储 OSS
+**设置静态网站托管**
+
+以下代码用于设置静态网站托管：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19077,7 +20995,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19087,18 +21005,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19149,10 +21071,9 @@ aders);
         printf("put bucket website succeeded\n");
     } else {
         printf("put bucket website failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -19163,15 +21084,21 @@ aders);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS 对象存储 OSS
+**查看静态网站托管配置**
+
+以下代码用于查看静态网站托管配置：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19183,7 +21110,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19193,18 +21120,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19242,6 +21173,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_status_t *resp_status = NULL;
     oss_website_config_t website_config;
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 查看静态网站托管配置。`*/`
+
+```
     resp_status = oss_get_bucket_website(oss_client_options, &bucket, &website_config, &resp_he
 aders);
     if (aos_status_is_ok(resp_status)) {
@@ -19250,10 +21186,9 @@ aders);
 website_config.key_str.data);
     } else {
         printf("get bucket website failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -19264,15 +21199,21 @@ website_config.key_str.data);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
+**删除静态网站托管配置**
+
+以下代码用于删除静态网站托管配置：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19284,7 +21225,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19294,18 +21235,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19342,15 +21287,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_table_t *resp_headers = NULL;
     aos_status_t *resp_status = NULL;
     aos_str_set(&bucket, bucket_name);
+```
+
+`/*` 删除静态网站托管配置。`*/`
+
+```
     resp_status = oss_delete_bucket_website(oss_client_options, &bucket, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
         printf("delete bucket website succeeded\n");
     } else {
         printf("delete bucket website failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -19361,18 +21310,15 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
+#### 3.4.6 上传文件
 
-#### 上传文件
-
-##### 概述
+##### 3.4.6.1 概述
 
 在OSS中，操作的基本数据单元是文件（Object）。OSS C SDK提供了丰富的文件上传方式。 您可以通过以下方式上传文件到OSS： 简单上传：包括流式上传和文件上传。最大不能超过5 GiB。 追加上传：最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：当文件较大时，可以使用分片上传，最大不能超过48.8 TiB。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。上传完成后，您还可以进行上传回调。
 
-##### 简单上传
+##### 3.4.6.2 简单上传
 
 本文介绍如何使用简单上传。 简单上传的完整代码请参见GitHub。
 
@@ -19383,7 +21329,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19395,7 +21346,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19405,18 +21356,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19439,8 +21394,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 ossclientoptions=ossrequestoptionscreate(pool);
 ```
-
-对象存储 OSS
 
 ```
     oss_client_options = oss_request_options_create(pool);
@@ -19483,10 +21436,9 @@ ders, &resp_headers);
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -19497,8 +21449,9 @@ ders, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **上传本地文件**
 
@@ -19507,7 +21460,12 @@ ders, &resp_headers);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19519,7 +21477,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19529,15 +21487,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/` 对象存储 OSS
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
 `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
@@ -19598,10 +21560,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -19612,8 +21573,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **常见问题：无法上传名称包含中文字符的文件**
 
@@ -19623,7 +21585,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 #include "oss_api.h"
 #include "aos_http_io.h"
 #include <wchar.h>
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename_ch = "c:\\测试.txt"; void init_options(oss_request_options_t *options) { options->config = oss_config_create(options->pool);
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename_ch = "c:\\测试.txt"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
+options->config = oss_config_create(options->pool);
 ```
 
 `/*` 用`char*`类型的字符串初始化`aos_string_t`类型。`*/`
@@ -19632,13 +21600,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 aos_str_set(&options->config->endpoint, endpoint); aos_str_set(&options->config->access_key_id, access_key_id); aosstrset(&options>config>accesskeysecret accesskeysecret);
 ```
 
-对象存储 OSS
-
 ```
 aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
 options->config->is_cname = 0;
@@ -19647,14 +21613,30 @@ options->config->is_cname = 0;
 `/*` 设置网络相关参数，比如超时时间等。`*/`
 
 ```
-options->ctl = aos_http_controller_create(options->pool, 0); } char* multibyte_to_utf8(const char * ch, char *str, int size) { if (!ch || !str || size <= 0)
+options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
+char* multibyte_to_utf8(const char * ch, char *str, int size)
+```
+
+`{`
+
+```
+if (!ch || !str || size <= 0)
     return NULL;
 int chlen = strlen(ch); int multi_byte_cnt = 0; for (int i = 0; i < chlen - 1; i++) {
         if ((ch[i] & 0x80) && (ch[i + 1] & 0x80)) {
             i++;
             multi_byte_cnt++;
-        }
-} if (multi_byte_cnt == 0)
+```
+
+`}` `}`
+
+```
+if (multi_byte_cnt == 0)
         return ch;
 int len = MultiByteToWideChar(CP_ACP, 0, ch, -1, NULL, 0); if (len <= 0)
         return NULL;
@@ -19663,18 +21645,28 @@ wchar_t *wch = malloc(sizeof(wchar_t) * (len + 1)); if (!wch)
 wmemset(wch, 0, len + 1); MultiByteToWideChar(CP_ACP, 0, ch, -1, wch, len); len = WideCharToMultiByte(CP_UTF8, 0, wch, -1, NULL, 0, NULL, NULL); if ((len <= 0) || (size < len + 1)) {
         free(wch);
         return NULL;
-} memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL, NULL); free(wch); return str; } int main(int argc, char argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL, NULL); free(wch); return str;
+```
+
+`}`
+
+```
+int main(int argc, char argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
 if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
     exit(1);
-}
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
 aos_pool_t pool;
@@ -19698,7 +21690,7 @@ oss_request_options_t oss_client_options;
 oss_client_options = oss_request_options_create(pool);
 ```
 
-`/*` 初始化`Client`的选项`oss_client_options`。`*/` 对象存储 OSS
+`/*` 初始化`Client`的选项`oss_client_options`。`*/`
 
 ```
 init_options(oss_client_options);
@@ -19737,10 +21729,9 @@ if (aos_status_is_ok(resp_status)) {
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
-}
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
 aos_pool_destroy(pool);
@@ -19749,14 +21740,16 @@ aos_pool_destroy(pool);
 `/*` 释放之前分配的全局资源。`*/`
 
 ```
-aos_http_io_deinitialize(); return 0; }
+aos_http_io_deinitialize(); return 0;
 ```
 
-##### 追加上传
+`}`
+
+##### 3.4.6.3 追加上传
 
 追加上传支持两种上传类型，分别为字符串和文件。追加类型的文件（Append Object）暂时不支持CopyObject操作。
 
-**说明**
+> **说明：** 追加类型的文件（Append Object）暂时不支持CopyObject操作。
 
 **从内存中追加数据**
 
@@ -19765,7 +21758,12 @@ aos_http_io_deinitialize(); return 0; }
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19777,14 +21775,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 aosstrset(&options->config->accesskeysecret,accesskeysecret);
 ```
 
-对象存储 OSS
-
 ```
     aos_str_set(&options
-access_key_secret, access_key_secret);
+config access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19794,18 +21790,22 @@ access_key_secret, access_key_secret);
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19857,15 +21857,18 @@ access_key_secret, access_key_secret);
 
 ```
     resp_status = oss_head_object(oss_client_options, &bucket, &object, headers1, &resp_headers
+```
+
 );
+
+```
     if (aos_status_is_ok(resp_status)) {
         next_append_position = (char*)(apr_table_get(resp_headers, "x-oss-next-append-position"
 ));
         position = atoi(next_append_position);
-    }
 ```
 
-`/*` 追加文件。`*/`
+`}` `/*` 追加文件。`*/`
 
 ```
     headers2 = aos_table_make(pool, 0);
@@ -19878,7 +21881,6 @@ access_key_secret, access_key_secret);
         printf("append object from buffer succeeded\n");
     } else {
         printf("append object from buffer failed\n");
-    }
 ```
 
 `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
@@ -19887,12 +21889,11 @@ access_key_secret, access_key_secret);
     aos_pool_destroy(pool);
 ```
 
-`/*`释放之前分配的全局资源。`*/` 对象存储 OSS `/*` 释放之前分配的全局资源。`*/`
+`/*`释放之前分配的全局资源。`*/` `/*` 释放之前分配的全局资源。`*/`
 
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
 **从本地文件追加数据**
@@ -19902,7 +21903,12 @@ access_key_secret, access_key_secret);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -19914,7 +21920,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -19924,18 +21930,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -19982,19 +21992,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&file, local_filename);
 ```
 
-对象存储 OSS `/*` 获取起始追加位置。`*/`
+`/*` 获取起始追加位置。`*/`
 
 ```
     resp_status = oss_head_object(oss_client_options, &bucket, &object, headers1, &resp_headers
+```
+
 );
+
+```
     if(aos_status_is_ok(resp_status)) {
         next_append_position = (char*)(apr_table_get(resp_headers, "x-oss-next-append-position"
 ));
         position = atoi(next_append_position);
-    }
 ```
 
-`/*` 追加文件。`*/`
+`}` `/*` 追加文件。`*/`
 
 ```
     resp_status = oss_append_object_from_file(oss_client_options, &bucket, &object, position, &
@@ -20008,10 +22021,9 @@ file, headers2, &resp_headers);
         printf("append object from file succeeded\n");
     } else {
         printf("append object from file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -20022,10 +22034,11 @@ file, headers2, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 断点续传上传
+`}`
+
+##### 3.4.6.4 断点续传上传
 
 在使用分片上传的过程中，如果系统意外崩溃，可以在重启的时候通过ListMultipartUploads和ListParts两个接口来获取某个Object上的所有的分片上传任务和每个分片上传任务中上传成功的Part列表。这样就可以从最后一块成功上传的Part开始继续上传，从而达到断点续传的效果。 在上传的过程中会在Checkpoint文件中记录当前上传的进度信息，如果上传过程中某一分片上传失败，再次上传时会从Checkpoint文件中记录的点继续上传，从而达到断点续传的效果。上传完成后，Checkpoint文件会被删除。 您可以通过 `oss_resumable_clt_params_t` 实现断点续传。该方法常见参数如下：
 
@@ -20036,16 +22049,21 @@ file, headers2, &resp_headers);
 | partSize | 分片上传大小，取值范围为100KiB~5GiB。 |
 | checkpoint path _ | checkpoint文件的路径，默认为{upload file path}.cp。 _ _ |
 
+以下代码用于断点续传上传。
+
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
 const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>";
 ```
 
-对象存储 OSS
+```
+void init_options(oss_request_options_t *options)
+```
+
+`{`
 
 ```
-void init_options(oss_request_options_t *options) {
     options->config = oss_config_create(options->pool);
 ```
 
@@ -20057,7 +22075,7 @@ void init_options(oss_request_options_t *options) {
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20067,18 +22085,22 @@ void init_options(oss_request_options_t *options) {
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -20135,10 +22157,9 @@ s, NULL, clt_params, NULL, &resp_headers, &resp_body);
         printf("resumable upload succeeded\n");
     } else {
         printf("resumable upload failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -20149,21 +22170,20 @@ s, NULL, clt_params, NULL, &resp_headers, &resp_body);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS
-
-##### 分片上传
+##### 3.4.6.5 分片上传
 
 分片上传将要上传的文件分成若干个分片（Part）分别上传，所有分片都上传完成后，将所有分片合并成完整的文件，完成整个文件的上传。 分片上传（Multipart Upload）分为以下三个步骤：
 1. 初始化一个分片上传事件。
 调用ossClient.initiateMultipartUpload方法返回OSS创建的全局唯一的uploadId。
 2. 上传分片。
+调用ossClient.uploadPart方法上传分片数据。
 
-**说明**
+> **说明：** 对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。
+> OSS将收到的分片数据的MD5值放在ETag头内返回给用户。
+> OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 
-对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。 OSS将收到的分片数据的MD5值放在ETag头内返回给用户。 OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 3. 完成分片上传。
 所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 以下通过一个完整的示例对分片上传的流程进行逐步解析：
 
@@ -20171,7 +22191,12 @@ s, NULL, clt_params, NULL, &resp_headers, &resp_body);
 #include "oss_api.h"
 #include "aos_http_io.h"
 #include <sys/stat.h>
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -20183,7 +22208,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20193,33 +22218,40 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int64_t get_file_size(const char *file_path) {
+```
+
+`}`
+
+```
+int64_t get_file_size(const char *file_path)
+```
+
+`{`
+
+```
     int64_t filesize = -1;
     struct stat statbuff;
     if(stat(file_path, &statbuff) < 0){
         return filesize;
     } else {
         filesize = statbuff.st_size;
-    }
+```
+
+`}`
+
+```
     return filesize;
-} int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
 ```
 
-对象存储 OSS
-
-```
-{
-```
-
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`{` `{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -20284,10 +22316,9 @@ eaders, &resp_headers);
     } else {
         printf("Init multipart upload failed, upload_id:%.*s\n",
                upload_id.len, upload_id.data);
-    }
 ```
 
-`/*` 上传分片。`*/`
+`}` `/*` 上传分片。`*/`
 
 ```
     int64_t file_length = 0;
@@ -20305,13 +22336,9 @@ d, part_num++, upload_file, &resp_headers);
             printf("Multipart upload part from file succeeded\n");
         } else {
             printf("Multipart upload part from file failed\n");
-        }
 ```
 
-对象存储 OSS
-
 ```
-    }
     oss_list_upload_part_params_t *params = NULL;
     aos_list_t complete_part_list;
 ```
@@ -20333,7 +22360,11 @@ d, part_num++, upload_file, &resp_headers);
         printf("List multipart succeeded\n");
     } else {
         printf("List multipart failed\n");
-    }
+```
+
+`}`
+
+```
     oss_complete_part_content_t *complete_part_content = NULL;
     oss_list_part_content_t *part_content = NULL;
     aos_list_for_each_entry(oss_list_part_content_t, part_content, &params->part_list, node) {
@@ -20341,10 +22372,9 @@ d, part_num++, upload_file, &resp_headers);
         aos_str_set(&complete_part_content->part_number, part_content->part_number.data);
         aos_str_set(&complete_part_content->etag, part_content->etag.data);
         aos_list_add_tail(&complete_part_content->node, &complete_part_list);
-    }
 ```
 
-`/*` 完成分片上传。`*/`
+`}` `/*` 完成分片上传。`*/`
 
 ```
     resp_status = oss_complete_multipart_upload(oss_client_options, &bucket, &object, &upload_i
@@ -20364,10 +22394,9 @@ d, part_num++, upload_file, &resp_headers);
                upload_id.len, upload_id.data);
     } else {
         printf("Complete multipart upload from file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -20378,24 +22407,25 @@ d, part_num++, upload_file, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-获取已经上传的分片，调用oss_complete_multipart_upload接口时需要每个分片的ETag值。
+`}`
 
-**说明**
-
-ETag值获取有两种途径：第一种是上传每个分片的时候，返回结果里面会包含这个分片的ETag值，可以保存使用。第二种是通过调用oss_list_upload_part接口获取已经上传的分片的ETag值。上述示例采用的是第二种方式。
+> **说明：** 获取已经上传的分片，调用oss_complete_multipart_upload接口时需要每个分片的ETag值。 ETag值获取有两种途径：第一种是上传每个分片的时候，返回结果里面会包含这个分片的ETag值，可以保存使用。第二种是通过调用oss_list_upload_part接口获取已经上传的分片的ETag值。上述示例采用的是第二种方式。
 
 **取消分片上传事件**
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) { options->config=ossconfigcreate(options->pool);
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
 ```
 
-对象存储 OSS
+`{`
+
+```
+options->config=ossconfigcreate(options->pool);
+```
 
 ```
     options>config = oss_config_create(options>pool);
@@ -20409,7 +22439,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20419,18 +22449,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -20490,10 +22524,9 @@ eaders, &resp_headers);
     } else {
         printf("Init multipart upload failed, upload_id:%.*s\n",
                upload_id.len, upload_id.data);
-    }
 ```
 
-`/*` 取消这次分片上传。`*/`
+`}` `/*` 取消这次分片上传。`*/`
 
 ```
     resp_status = oss_abort_multipart_upload(oss_client_options, &bucket, &object, &upload_id,
@@ -20508,10 +22541,9 @@ eaders, &resp_headers);
                upload_id.len, upload_id.data);
     } else {
         printf("Abort multipart upload failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/` 对象存储 OSS
+`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -20522,23 +22554,25 @@ eaders, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-当一个分片上传事件被取消后，就不能再使用upload_id做任何操作，已经上传的分片数据也会被删
+`}`
 
-**说明**
+> **说明：** 当一个分片上传事件被取消后，就不能再使用upload_id做任何操作，已经上传的分片数据也会被删除。
 
-除。
+##### 3.4.6.6 进度条
 
-##### 进度条
-
-进度条用于指示上传或下载的进度。 上传进度条的完整代码请参见GitHub。
+进度条用于指示上传或下载的进度。 上传进度条的完整代码请参见GitHub。 下面的代码以PutObject方法为例，介绍如何使用进度条。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -20550,7 +22584,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20560,21 +22594,35 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} void percentage(int64_t consumed_bytes, int64_t total_bytes) {
-    assert(total_bytes >= consumed_bytes);
-    printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+void percentage(int64_t consumed_bytes, int64_t total_bytes)
+```
+
+`{`
+
+```
+    assert(total_bytes >= consumed_bytes);
+    printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
+```
+
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -20604,13 +22652,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 iit
 ```
 
-`ti`
-
-```
-(
-```
-
-`li` t `ti` ) 对象存储 OSS
+`ti` `(` `li` `t` `ti` `)`
 
 ```
     init_options(oss_client_options);
@@ -20639,10 +22681,9 @@ iit
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -20653,19 +22694,23 @@ iit
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-oss_put_object_from_file、oss_put_object_from_buffer不支持进度条功能。
+`}` oss_put_object_from_file、oss_put_object_from_buffer不支持进度条功能。
 
-##### 上传回调
+##### 3.4.6.7 上传回调
 
-本文介绍如何使用上传回调。
+本文介绍如何使用上传回调。 以下代码用于上传回调（callback）：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -20677,7 +22722,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20687,13 +22732,21 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
+```
+
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{`
+
+```
     aos_pool_t *p = NULL;
     aos_status_t *s = NULL;
     aos_string_t bucket;
 ```
-
-对象存储 OSS
 
 ```
     aos_string_t object;
@@ -20714,7 +22767,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 `/*` 采用`JSON`格式。`*/` `/*`（可选）设置回调请求消息头中`Host`的值，如您的服务器配置`Host`的值。`*/`
 
 ```
+    char *callback =  "{"
         "\"callbackUrl\":\"http://oss-demo.aliyuncs.com:23450\","
+         "\"callbackHost\":\"yourCallbackHost\","
 "\"callbackBody\":\"bucket=${bucket}&object=${object}&size=${size}&mimeType=${mimeType}\","
         "\"callbackBodyType\":\"application/x-www-form-urlencoded\""
         "}";
@@ -20725,10 +22780,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 初始化参数。`*/`
+`}` `/*` 初始化参数。`*/`
 
 ```
     aos_pool_create(&p, NULL);
@@ -20740,6 +22794,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_list_init(&buffer);
     content = aos_buf_pack(options->pool, object_content, strlen(object_content));
     aos_list_add_tail(&content->node, &buffer);
+```
+
+`/*` 将`callback`放入`header`。`*/`
+
+```
     b64_len = aos_base64_encode((unsigned char*)callback, strlen(callback), b64_buf);
     b64_buf[b64_len] = '\0';
     headers = aos_table_make(p, 1);
@@ -20755,10 +22814,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
-    }
 ```
 
-`/*` 获取`buffer`长度。`*/`
+`}` `/*` 获取`buffer`长度。`*/`
 
 ```
     len = aos_buf_list_len(&resp_body);
@@ -20773,10 +22831,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         size = aos_buf_size(content);
         memcpy(buf + pos, content->pos, (size_t)size);
         pos += size;
-    }
 ```
 
-对象存储 OSS `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(p);
@@ -20787,27 +22844,29 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-#### 下载文件
+`}`
 
-##### 概述
+#### 3.4.7 下载文件
 
-在OSS中，操作的基本数据单元是文件（Object）。OSS C SDK提供了丰富的文件下载方式。 文件下载的完整代码请参见GitHub。 您可以通过以下方式下载OSS文件：
+##### 3.4.7.1 概述
 
-##### 范围下载
+在OSS中，操作的基本数据单元是文件（Object）。OSS C SDK提供了丰富的文件下载方式。 文件下载的完整代码请参见GitHub。 您可以通过以下方式下载OSS文件： 下载过程中，您还可以通过进度条功能查看下载进度。
 
-下载过程中，您还可以通过进度条功能查看下载进度。
+##### 3.4.7.2 下载到本地文件
 
-##### 下载到本地文件
-
-本文介绍如何将OSS文件下载到本地。 下载OSS文件的完整代码请详见GitHub。
+本文介绍如何将OSS文件下载到本地。 下载OSS文件的完整代码请详见GitHub。 以下代码用于把指定的OSS文件下载到本地文件：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -20819,7 +22878,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20829,15 +22888,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
 `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
@@ -20846,7 +22909,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aospoolt *pool;
 ```
 
-对象存储 OSS _ _ `/*` 重新创建一个内存池，第二个参数是`NULL`，表示没有继承其它内存池。`*/`
+`_` `_` `/*` 重新创建一个内存池，第二个参数是`NULL`，表示没有继承其它内存池。`*/`
 
 ```
     aos_pool_create(&pool, NULL);
@@ -20895,10 +22958,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("Get object from file succeeded\n");
     } else {
         printf("Get object from file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -20909,27 +22971,29 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-当前版本与1.0.0版本相比，oss_get_object_to_file接口新增params参数，headers和params
+`}`
 
-**说明**
+> **说明：** 当前版本与1.0.0版本相比，oss_get_object_to_file接口新增params参数，headers和params 参数允许为NULL。
 
-参数允许为NULL。
+##### 3.4.7.3 下载到本地内存
 
-##### 下载到本地内存
-
-下载OSS文件的完整代码请参见GitHub。 以下代码用于把指定的OSS文件下载到内存中：
+本文介绍如何将OSS文件下载到本地内存。 下载OSS文件的完整代码请参见GitHub。 以下代码用于把指定的OSS文件下载到内存中：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
-`/*` 用`char*`类型的字符串初始化`aos_string_t`类型。`*/` 对象存储 OSS
+`/*` 用`char*`类型的字符串初始化`aos_string_t`类型。`*/`
 
 ```
     aos_str_set(&options->config->endpoint, endpoint);
@@ -20937,7 +23001,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -20947,18 +23011,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -21027,17 +23095,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         size = aos_buf_size(content);
             memcpy(buf + pos, content->pos, size);
             pos += size;
-        }
-    }
+```
+
+`}`
+
+```
     else {
         printf("get object to buffer failed\n");
-}
-```
-
-对象存储 OSS
-
-```
-    }
 ```
 
 `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
@@ -21051,17 +23115,23 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 范围下载
+`}`
+
+##### 3.4.7.4 范围下载
 
 如果仅需要文件中的部分数据，您可以使用范围下载，下载指定范围内的数据。 以下代码用于指定范围下载：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -21073,7 +23143,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21083,18 +23153,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -21137,10 +23211,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aosstatust *respstatus = NULL;
 ```
 
-对象存储 OSS _ _ `p_`
+`_` `_` `p_` ;
 
 ```
-;
     char *buf = NULL;
     int64_t len = 0;
     int64_t size = 0;
@@ -21171,7 +23244,11 @@ s, &buffer, &resp_headers);
 ```
         aos_list_for_each_entry(aos_buf_t, content, &buffer, node) {
             len += aos_buf_size(content);
-        }
+```
+
+`}`
+
+```
         buf = aos_pcalloc(pool, (apr_size_t)(len + 1));
         buf[len] = '\0';
 ```
@@ -21183,14 +23260,16 @@ s, &buffer, &resp_headers);
             size = aos_buf_size(content);
             memcpy(buf + pos, content->pos, (size_t)size);
             pos += size;
-        }
-    }
-    else {
-        printf("get object to buffer failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `}`
+
+```
+    else {
+        printf("get object to buffer failed\n");
+```
+
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -21201,12 +23280,13 @@ s, &buffer, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 断点续传下载
+`}`
 
-大文件下载时，如果网络不稳定或者发生其他异常，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提供您可以通过 `oss_resumable_clt_params_t` 方法实现断点续传下载， `oss_resumable_clt_params_t` 包含以下参数：
+##### 3.4.7.5 断点续传下载
+
+大文件下载时，如果网络不稳定或者发生其他异常，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提供了断点续传下载功能。 您可以通过 `oss_resumable_clt_params_t` 方法实现断点续传下载， `oss_resumable_clt_params_t` 包含以下参数：
 
 | 参数 | 说明 |
 |---|---|
@@ -21214,17 +23294,20 @@ s, &buffer, &resp_headers);
 | enable checkpoint _ | 是否开启断点续传。默认不开启。 |
 | partSize | 分片上传大小，取值范围为1 B~5 GiB，单位为Byte。 |
 
-对象存储 OSS
-
 | checkpoint path _ | checkpoint文件的路径，默认在{upload file path}.cp目 _ _ 录下。 |
 |---|---|
 
-下载过程中，会将当前下载的进度信息记录在 `checkpoint` 文件中，如果下载失败，再次下载将匹配 `checkpoint` 文件中的记录，继续之前的下载。下载完成后，该 `checkpoint` 文件会被删除。
+下载过程中，会将当前下载的进度信息记录在 `checkpoint` 文件中，如果下载失败，再次下载将匹配 `checkpoint` 文件中的记录，继续之前的下载。下载完成后，该 `checkpoint` 文件会被删除。 以下代码用于断点续传下载。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -21236,7 +23319,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21246,18 +23329,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -21308,7 +23395,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     cltparams = osscreateresumablecltparamscontent(pool, 1024 * 100, 3, AOSTRUE, NULL);
 ```
 
-对象存储 OSS `_p` _ _ _ `_p` _ p , , , _ ,
+`_p` `_` `_` `_` `_p` `_` `p` `,` `,` `,` `_` `,`
 
 ```
     resp_status = oss_resumable_download_file(oss_client_options, &bucket, &object, &file, head
@@ -21317,10 +23404,9 @@ ers, NULL, clt_params, NULL, &resp_headers);
         printf("download succeeded\n");
     } else {
         printf("download failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -21331,17 +23417,23 @@ ers, NULL, clt_params, NULL, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 进度条
+`}`
+
+##### 3.4.7.6 进度条
 
 进度条用于指示上传或下载的进度。 下载进度条的完整代码请参见GitHub。 以下代码展示如何使用进度条：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; const char *download_filename = "<yourDownloadFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; const char *download_filename = "<yourDownloadFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -21353,7 +23445,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21363,21 +23455,35 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} void percentage(int64_t consumed_bytes, int64_t total_bytes) {
-    assert(total_bytes >= consumed_bytes);
-    printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+void percentage(int64_t consumed_bytes, int64_t total_bytes)
+```
+
+`{`
+
+```
+    assert(total_bytes >= consumed_bytes);
+    printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
+```
+
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -21389,7 +23495,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_pool_create(&pool, NULL);
 ```
 
-`/*`创建并初始化`options`，该参数包括`endpoint`、`access``key``id`、`acces``key``secret`、`is``cname`、`curl`等全局对象存储 OSS / 创建并初始化`options`，该参数包括`endpoint` `curl`等全局
+`/*`创建并初始化`options`，该参数包括`endpoint`、`access``key``id`、`acces``key``secret`、`is``cname`、`curl`等全局 `/` 创建并初始化`options`，该参数包括`endpoint` `curl`等全局
 
 ```
 access_key_id acces_key_secret is_cname
@@ -21436,10 +23542,9 @@ access_key_id acces_key_secret is_cname
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
-    }
 ```
 
-`/*` 带进度条的文件下载。`*/`
+`}` `/*` 带进度条的文件下载。`*/`
 
 ```
     aos_pool_create(&pool, NULL);
@@ -21452,10 +23557,9 @@ file, percentage, NULL);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -21466,28 +23570,19 @@ file, percentage, NULL);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-oss_get_object_from_file、oss_get_object_from_buffer不支持进度条功能。
+`}` oss_get_object_from_file、oss_get_object_from_buffer不支持进度条功能。
 
-#### 管理文件
+#### 3.4.8 管理文件
 
-##### 概述
+##### 3.4.8.1 概述
 
-您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 利用上述接口，您可以完成以下操作：
+您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 ListObjects、DeleteObject、CopyObject等。 利用上述接口，您可以完成以下操作：
 
-##### 列举文件
+##### 3.4.8.2 管理文件访问权限
 
-##### 删除文件
-
-对象存储 OSS
-
-##### 拷贝文件
-
-##### 管理文件访问权限
-
-文件的访问权限（ACL）有以下四种：
+本文介绍如何管理文件访问权限。 文件的访问权限（ACL）有以下四种：
 
 | 访问权限 | 描述 | 访问权限值 |
 |---|---|---|
@@ -21496,14 +23591,19 @@ oss_get_object_from_file、oss_get_object_from_buffer不支持进度条功能。
 | 公共读 | 文件的拥有者和授权用户有该文件的读写权限，其他用户只有文件的读权限。 请谨慎使用该权限。 | OSS ACL PUBLIC READ _ _ _ |
 | 公共读写 | 所有用户都有该文件的读写权限。请谨慎使用该权限。 | OSS ACL PUBLIC READ WRITE _ _ _ _ |
 
-**说明**
+> **说明：** Object的访问权限优先级高于Bucket的访问权限。例如，Bucket的访问权限为私有，而Object的访问权限是公共读，则任何人（包括匿名用户）都可以对该Object进行读操作。
 
-Object的访问权限优先级高于Bucket的访问权限。例如，Bucket的访问权限为私有，而Object的访问权限是公共读，则任何人（包括匿名用户）都可以对该Object进行读操作。 以下代码用于设置并获取指定Object的读写权限：
+以下代码用于设置并获取指定Object的读写权限：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -21515,7 +23615,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21525,18 +23625,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr``pool`t。其实现代码在`apr`库中。`*/` 对象存储 OSS 用于内存管理的内存池（p ） 等价于p`_p` 其实现代码在p库中 / _ /
+`/*` 用于内存管理的内存池（`pool`），等价于`apr``pool``t`。其实现代码在`apr`库中。`*/` 用于内存管理的内存池（`p` ） 等价于`p``_p` 其实现代码在`p`库中 `/` `_` `/`
 
 ```
     aos_pool_t *pool;
@@ -21587,10 +23691,9 @@ rs);
         printf("put object acl success!\n");
     } else {
         printf("put object acl failed!\n");
-    }
 ```
 
-`/*` 获取文件权限。`*/`
+`}` `/*` 获取文件权限。`*/`
 
 ```
     aos_string_t oss_acl_string;
@@ -21601,10 +23704,9 @@ sp_headers);
         printf("acl: %s \n", oss_acl_string.data);
     } else {
         printf("get object acl failed!\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -21615,10 +23717,11 @@ sp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-##### 管理文件元信息
+`}`
+
+##### 3.4.8.3 管理文件元信息
 
 在OSS中上传文件后或者读取文件前，您可以通过 `oss_get_object_meta` 接口获取文件的一些元信息，比如长度，文件类型等。 以下代码用于设置和获取文件元信息：
 
@@ -21628,10 +23731,9 @@ sp_headers);
 const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void initoptions(ossrequestoptionst *options)
 ```
 
-对象存储 OSS _ _ _ _
+`_` `_` `_` `_` `{`
 
 ```
-{
     options->config = oss_config_create(options->pool);
 ```
 
@@ -21643,7 +23745,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21653,18 +23755,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -21732,7 +23838,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("put object from buffer with md5 succeeded\n");
     } else {
         printf("put object from buffer with md5 failed\n");
-    }
 ```
 
 `/*` 获取文件权限。`*/`
@@ -21741,25 +23846,26 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 respstatus=ossgetobjectmeta(ossclientoptions &bucket &object &respheaders);
 ```
 
-对象存储 OSS
-
 ```
     resp_status = oss_get_object_meta(oss_client_options, &bucket, &object, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
         content_length_str = (char*)apr_table_get(resp_headers, OSS_CONTENT_LENGTH);
         if (content_length_str != NULL) {
             content_length = atol(content_length_str);
-        }
+```
+
+`}`
+
+```
         object_author = (char*)apr_table_get(resp_headers, OSS_AUTHORIZATION);
         object_type = (char*)apr_table_get(resp_headers, OSS_OBJECT_TYPE);
         printf("get object meta succeeded, object author:%s, object type:%s,
 content_length:%ld\n", object_author, object_type, content_length);
     } else {
         printf("req:%s, get object meta failed\n", resp_status->req_id);
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -21770,14 +23876,13 @@ content_length:%ld\n", object_author, object_type, content_length);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-HTTP header详情请参见RFC2616。
+`}`
 
-**说明**
+> **说明：** HTTP header详情请参见RFC2616。
 
-##### 列举文件
+##### 3.4.8.4 列举文件
 
 本文介绍如何列举文件。 列举文件完整代码请参见GitHub。 OSS文件按照字母顺序排列。您可以通过 `oss_list_object` 列出存储空间下的文件。主要的参数如下：
 
@@ -21795,10 +23900,10 @@ HTTP header详情请参见RFC2616。
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
 ```
 
-对象存储 OSS
+`{`
 
 ```
     options->config = oss_config_create(options->pool);
@@ -21812,7 +23917,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21822,18 +23927,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -21888,26 +23997,35 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     do {
         resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
             break;
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node)
-{
+```
+
+`{`
+
+```
             ++size;
             line = apr_psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.data
 ```
 
-,
+`,`
 
 ```
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
 ```
-
-对象存储 OSS
 
 ```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
@@ -21930,12 +24048,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-**说明**
+`}`
 
-默认列举文件数最多1000，若超过，则只返回前1000个文件，且返回结果中的truncated为true，并返回 next_marker作为下次读取的起点。若想调整返回文件数，可修改max_ret参数，或使用marker参数分次读取。
+> **说明：** 默认列举文件数最多1000，若超过，则只返回前1000个文件，且返回结果中的truncated为true，并返回 next_marker作为下次读取的起点。若想调整返回文件数，可修改max_ret参数，或使用marker参数分次读取。
 
 **列举指定个数的文件**
 
@@ -21944,7 +24061,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -21956,7 +24078,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -21966,18 +24088,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 程序入口调用`aos_http_io_initialize`方法，这个方法内部会做一些全局资源的初始化，涉及网络、内存等部分。* /
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 程序入口调用`aos_http_io_initialize`方法，这个方法内部会做一些全局资源的初始化，涉及网络、内存等部分。`*` `/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
+`}` `/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22001,7 +24127,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     oss_client_options = oss_request_options_create(pool);
 ```
 
-对象存储 OSS `/*` 初始化`Client`的选项`oss_client_options`。`*/`
+`/*` 初始化`Client`的选项`oss_client_options`。`*/`
 
 ```
     init_options(oss_client_options);
@@ -22036,16 +24162,28 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
     if (!aos_status_is_ok(resp_status))
-    {
+```
+
+`{`
+
+```
         printf("list object failed\n");
-    }
+```
+
+`}`
+
+```
     aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node) {
         ++size;
         line = apr_psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.data,
             content->size.len, content->size.data,
             content->last_modified.len, content->last_modified.data);
         printf("%s", line);
-    }
+```
+
+`}`
+
+```
     printf("Total %d\n", size);
 ```
 
@@ -22060,8 +24198,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **列举指定前缀的文件**
 
@@ -22070,7 +24209,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22082,28 +24226,27 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
 ```
 
-`/*`用于设置网络相关参数，比如超时时间等。`*/` 对象存储 OSS / 用于设置网络相关参数比如超时时间等 /
+`/*`用于设置网络相关参数，比如超时时间等。`*/` `/` 用于设置网络相关参数比如超时时间等 `/`
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
 ```
 
-`/*` 程序入口调用`aos_http_io_initialize`方法，这个方法内部会做一些全局资源的初始化，涉及网络，内存等部分。* /
+`{` `/*` 程序入口调用`aos_http_io_initialize`方法，这个方法内部会做一些全局资源的初始化，涉及网络，内存等部分。`*` `/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
+`}` `/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22163,32 +24306,46 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     do {
         resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
             break;
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node)
-{
+```
+
+`{`
+
+```
             ++size;
             line = apr_psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.data
 ```
 
-,
+`,`
 
 ```
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
         aos_list_init(&params->object_list);
         aos_list_init(&params->common_prefix_list);
-} hile(params>trncated AOSTRUE)
+hile(params>trncated AOSTRUE)
 ```
-
-对象存储 OSS
 
 ```
     } while (params->truncated == AOS_TRUE);
@@ -22206,8 +24363,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **列举指定marker之后的文件**
 
@@ -22216,7 +24374,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22228,7 +24391,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -22238,18 +24401,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 程序入口调用`aos_http_io_initialize`方法，这个方法内部会做一些全局资源的初始化，涉及网络，内存等部分。* /
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 程序入口调用`aos_http_io_initialize`方法，这个方法内部会做一些全局资源的初始化，涉及网络，内存等部分。`*` `/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
+`}` `/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22297,8 +24464,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     char *nextMarker = "<yourObjectMarker>";
 ```
 
-对象存储 OSS
-
 ```
     aos_str_set(&bucket, bucket_name);
     params = oss_create_list_object_params(pool);
@@ -22314,23 +24479,39 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     do {
         resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
             break;
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node)
-{
+```
+
+`{`
+
+```
             ++size;
             line = apr_psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.data
 ```
 
-,
+`,`
 
 ```
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -22351,12 +24532,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **文件夹功能**
 
-OSS没有文件夹的概念，所有元素都是以文件来存储。创建文件夹本质上来说是创建了一个大小为0并以正斜线（/） 结尾的文件。这个文件可以被上传和下载，控制台会对以正斜线（/）结尾的文件以文件夹的方式展示。关于创建文件夹的完整示例代码，请参见GitHub示例。 通过delimiter和prefix两个参数可以模拟文件夹功能： 如果设置prefix为某个文件夹名称，则会列举以此prefix开头的文件，即该文件夹下所有的文件和子文件夹（目录）均显示为objects。 如果在设置了prefix的情况下，将delimiter设置为正斜线（/），则只列举该文件夹下的文件和子文件夹（目录），该文件夹下的子文件夹（目录）显示为CommonPrefixes，子文件夹下的文件和文件夹不显示。 创建文件夹的完整代码请参见GitHub。 假设存储空间中包含文件 `oss.jpg` 、 `fun/test.jpg` 、 `fun/movie/001.avi` 和 `fun/movie/007.avi` ，以正斜线（/）作为文件夹的分隔符。以下示例说明了如何通过模拟文件夹的方式列举文件。 以下代码用于列举指定存储空间下的所有文件。
+OSS没有文件夹的概念，所有元素都是以文件来存储。创建文件夹本质上来说是创建了一个大小为0并以正斜线（/） 结尾的文件。这个文件可以被上传和下载，控制台会对以正斜线（/）结尾的文件以文件夹的方式展示。关于创建文件夹的完整示例代码，请参见GitHub示例。 通过delimiter和prefix两个参数可以模拟文件夹功能： 如果设置prefix为某个文件夹名称，则会列举以此prefix开头的文件，即该文件夹下所有的文件和子文件夹（目录）均显示为objects。 如果在设置了prefix的情况下，将delimiter设置为正斜线（/），则只列举该文件夹下的文件和子文件夹（目录），该文件夹下的子文件夹（目录）显示为CommonPrefixes，子文件夹下的文件和文件夹不显示。 创建文件夹的完整代码请参见GitHub。 假设存储空间中包含文件 `oss.jpg` 、 `fun/test.jpg` 、 `fun/movie/001.avi` 和 `fun/movie/007.avi` ，以正斜线（/）作为文件夹的分隔符。以下示例说明了如何通过模拟文件夹的方式列举文件。 列举存储空间下所有文件以下代码用于列举指定存储空间下的所有文件。
 
 ```
 #include "oss_api.h"
@@ -22364,10 +24546,13 @@ OSS没有文件夹的概念，所有元素都是以文件来存储。创建文�
 const char *endpoint = "<yourEndpoint>"; constchar*accesskeyid="<yourAccessKeyId>";
 ```
 
-对象存储 OSS
+```
+const char *access_key_id = <yourAccessKeyId>; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
 
 ```
-const char *access_key_id = <yourAccessKeyId>; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22379,7 +24564,7 @@ const char *access_key_id = <yourAccessKeyId>; const char *access_key_secret = "
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -22389,18 +24574,22 @@ const char *access_key_id = <yourAccessKeyId>; const char *access_key_secret = "
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22453,10 +24642,18 @@ const char *access_key_id = <yourAccessKeyId>; const char *access_key_secret = "
     do {
         resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
             break;
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, nod
 e) {
             ++size;
@@ -22465,12 +24662,9 @@ ta,
                 content->size.len, content->size.data,
 ```
 
-对象存储 OSS
-
 ```
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -22491,15 +24685,19 @@ ta,
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-列举指定目录下所有文件以下代码用于列举指定目录下的所有文件。
+`}` 列举指定目录下所有文件以下代码用于列举指定目录下的所有文件。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22511,7 +24709,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -22521,18 +24719,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 程序入口调用`aos_http_io_initialize`方法，该方法内部会做某些全局资源的初始化，涉及网络、内存等部分。 `*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 程序入口调用`aos_http_io_initialize`方法，该方法内部会做某些全局资源的初始化，涉及网络、内存等部分。 `*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
+`}` `/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22569,8 +24771,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_status_t *resp_status = NULL;
 ```
 
-对象存储 OSS
-
 ```
     oss_list_object_params_t *params = NULL;
     oss_list_object_content_t *content = NULL;
@@ -22597,10 +24797,18 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     do {
         resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
             break;
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, nod
 e) {
             ++size;
@@ -22609,7 +24817,11 @@ ta,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -22630,10 +24842,9 @@ ta,
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-返回结果如下：
+`}` 返回结果如下：
 
 ```
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg CommonPrefixes:
@@ -22647,10 +24858,13 @@ Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg CommonPrefixes:
 const char *endpoint = "<yourEndpoint>";
 ```
 
-对象存储 OSS
+```
+const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
 
 ```
-const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22662,7 +24876,7 @@ const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret =
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -22672,18 +24886,22 @@ const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret =
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 程序入口调用`aos_http_io_initialize`方法，该方法内部会做某些全局资源的初始化，涉及网络、内存等部分。 `*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 程序入口调用`aos_http_io_initialize`方法，该方法内部会做某些全局资源的初始化，涉及网络、内存等部分。 `*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
+`}` `/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22732,7 +24950,7 @@ const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret =
     char *nextMarker = "";
 ```
 
-`/*` 设置正斜线（/）为文件夹的分隔符。`*/`
+`/*` 设置正斜线（`/`）为文件夹的分隔符。`*/`
 
 ```
     char *delimiter = "/";
@@ -22751,22 +24969,18 @@ const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret =
     do {
         resp_status = oss_list_object(oss_client_options, &bucket, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
 ```
 
-对象存储 OSS p
+`p` `(` `j` \ );
 
 ```
-(
-```
-
-j \
-
-```
-);
             break;
-        }
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, nod
 e) {
             ++size;
@@ -22775,13 +24989,21 @@ ta,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_common_prefix_t, commonPrefix, &params->commo
 n_prefix_list, node) {
             line = apr_psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix-
 >prefix.data);
             printf("%s", line);
-        }
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -22802,10 +25024,9 @@ n_prefix_list, node) {
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-返回结果如下：
+`}` 返回结果如下：
 
 ```
 Objects: fun/test.jpg CommonPrefixes: fun/movie/
@@ -22816,7 +25037,12 @@ Objects: fun/test.jpg CommonPrefixes: fun/movie/
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22828,17 +25054,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否设置了`CNAME`。0表示不设置。`*/`
+`/*` 是否设置了`CNAME`。`0`表示不设置。`*/`
 
 ```
     options->config->is_cname = 0;
 ```
 
-`/*` 用于设置网络相关参数，比如超时时间等。`*/` 对象存储 OSS
+`/*` 用于设置网络相关参数，比如超时时间等。`*/`
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int64_t calculateFolderLength (aos_string_t bucketName, char* folder) {
+int64_t calculateFolderLength (aos_string_t bucketName, char* folder)
+```
+
+`{`
+
+```
     int64_t size = 0;
     oss_list_object_params_t *params = NULL;
     char *nextMarker = "";
@@ -22860,14 +25091,26 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     do {
         resp_status = oss_list_object(options, &bucketName, params, NULL);
         if (!aos_status_is_ok(resp_status))
-        {
+```
+
+`{`
+
+```
             printf("list object failed\n");
             break;
-        }
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, nod
 e) {
             size += content->size.len;
-        }
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(p, "%.*s", params->next_marker.len, params-
 >next_marker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -22881,18 +25124,22 @@ e) {
 ```
     aos_pool_destroy(p);
     return size;
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 程序入口调用`aos_http_io_initialize`方法，该方法内部会做某些全局资源的初始化，涉及网络、内存等部分。 `*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 程序入口调用`aos_http_io_initialize`方法，该方法内部会做某些全局资源的初始化，涉及网络、内存等部分。 `*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
+`}` `/*` 等价于`apr_pool_t`，用于内存管理的内存池，实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -22916,24 +25163,16 @@ e) {
 ossclientoptions=ossrequestoptionscreate(pool);
 ```
 
-对象存储 OSS
-
-|  | oss client options = oss request options create(pool); _ _ _ _ _ /* 初始化Client的选项oss client options。*/ _ _ init options(oss client options); _ _ _ /* 初始化参数。*/ aos string t bucket; _ _ aos status t *resp status = NULL; _ _ _ oss list object params t *params = NULL; _ _ _ _ oss list object content t *content = NULL; _ _ _ _ oss list object common prefix t *commonPrefix = NULL; _ _ _ _ _ int size = 0; char *line = NULL; /* 列举包含指定前缀的文件。*/ char *prefix = "fun/"; char *nextMarker = ""; /* 设置正斜线（/）为文件夹的分隔符。*/ char *delimiter = "/"; aos str set(&bucket, bucket name); _ _ _ params = oss create list object params(pool); _ _ _ _ params->max ret = 100; _ aos str set(&params->prefix, prefix); _ _ aos str set(&params->marker, nextMarker); _ _ aos str set(&params->delimiter, delimiter); _ _ printf("Object\tSize\tLastModified\n"); /*列举所有文件。*/ do { resp status = oss list object(oss client options, &bucket, params, NULL); _ _ _ _ _ if (!aos status is ok(resp status)) _ _ _ _ { printf("list object failed\n"); break; } aos list for each entry(oss list object content t, content, &params->object list, nod _ _ _ _ _ _ _ _ _ e) { ++size; line = apr psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.da _ ta, content->size.len, content->size.data, content->last modified.len, content->last modified.data); _ _ printf("%s", line); } aos list for each entry(oss list object common prefix t, commonPrefix, &params->commo _ _ _ _ _ _ _ _ _ n prefix list, node) { _ _ line = apr psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix- _ >prefix.data); int64 t size = calculateFolderLength(bucket, commonPrefix->prefix.data); _ printf("Total %d\n", size); } nextMarker = apr psprintf(pool, "%.*s", params->next marker.len, params- _ _ >next marker.data); _ aos str set(&params->marker, nextMarker); _ _ aos list init(&params->object list); _ _ _ aos list init(&params->common prefix list); _ _ _ _ } while (params->truncated == AOS TRUE); _ printf("Total %d\n", size); /* 执行完一个请求后，释放这个内存池，相当于释放了这个请求过程中各个部分分配的内存。*/ aos pool destroy(pool); _ _ /* 程序结束前，调用aos http io deinitialize方法释放之前分配的全局资源。*/ _ _ _ aos http io deinitialize(); _ _ _ return 0; |  |
+|   | oss client options = oss request options create(pool); _ _ _ _ _ /* 初始化Client的选项oss client options。*/ _ _ init options(oss client options); _ _ _ /* 初始化参数。*/ aos string t bucket; _ _ aos status t *resp status = NULL; _ _ _ oss list object params t *params = NULL; _ _ _ _ oss list object content t *content = NULL; _ _ _ _ oss list object common prefix t *commonPrefix = NULL; _ _ _ _ _ int size = 0; char *line = NULL; /* 列举包含指定前缀的文件。*/ char *prefix = "fun/"; char *nextMarker = ""; /* 设置正斜线（/）为文件夹的分隔符。*/ char *delimiter = "/"; aos str set(&bucket, bucket name); _ _ _ params = oss create list object params(pool); _ _ _ _ params->max ret = 100; _ aos str set(&params->prefix, prefix); _ _ aos str set(&params->marker, nextMarker); _ _ aos str set(&params->delimiter, delimiter); _ _ printf("Object\tSize\tLastModified\n"); /*列举所有文件。*/ do { resp status = oss list object(oss client options, &bucket, params, NULL); _ _ _ _ _ if (!aos status is ok(resp status)) _ _ _ _ { printf("list object failed\n"); break; } aos list for each entry(oss list object content t, content, &params->object list, nod _ _ _ _ _ _ _ _ _ e) { ++size; line = apr psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.da _ ta, content->size.len, content->size.data, content->last modified.len, content->last modified.data); _ _ printf("%s", line); } aos list for each entry(oss list object common prefix t, commonPrefix, &params->commo _ _ _ _ _ _ _ _ _ n prefix list, node) { _ _ line = apr psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix- _ >prefix.data); int64 t size = calculateFolderLength(bucket, commonPrefix->prefix.data); _ printf("Total %d\n", size); } nextMarker = apr psprintf(pool, "%.*s", params->next marker.len, params- _ _ >next marker.data); _ aos str set(&params->marker, nextMarker); _ _ aos list init(&params->object list); _ _ _ aos list init(&params->common prefix list); _ _ _ _ } while (params->truncated == AOS TRUE); _ printf("Total %d\n", size); /* 执行完一个请求后，释放这个内存池，相当于释放了这个请求过程中各个部分分配的内存。*/ aos pool destroy(pool); _ _ /* 程序结束前，调用aos http io deinitialize方法释放之前分配的全局资源。*/ _ _ _ aos http io deinitialize(); _ _ _ return 0; |   |
 |---|---|---|
 
-对象存储 OSS
-
-```
-}
-```
-
-##### 删除文件
+##### 3.4.8.5 删除文件
 
 本文介绍如何删除文件。
 
-**警告**
+> **警告：** 请您谨慎使用删除操作，文件删除后将无法恢复。
 
-请您谨慎使用删除操作，文件删除后将无法恢复。 删除文件的完整代码请参见GitHub。
+删除文件的完整代码请参见GitHub。
 
 **删除单个文件**
 
@@ -22942,7 +25181,12 @@ ossclientoptions=ossrequestoptionscreate(pool);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -22954,7 +25198,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -22964,18 +25208,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23020,8 +25268,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&bucket, bucket_name);
 ```
 
-对象存储 OSS
-
 ```
     aos_str_set(&object, object_name);
 ```
@@ -23039,10 +25285,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("delete object succeed\n");
     } else {
         printf("delete object failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23053,8 +25298,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **删除多个文件**
 
@@ -23063,7 +25309,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name1 = "<yourObjectName1>"; const char *object_name2 = "<yourObjectName2>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name1 = "<yourObjectName1>"; const char *object_name2 = "<yourObjectName2>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23075,7 +25326,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -23085,18 +25336,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23131,8 +25386,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_string_t bucket;
 ```
-
-对象存储 OSS
 
 ```
     aos_string_t object1;
@@ -23171,10 +25424,9 @@ _headers, &deleted_object_list);
         printf("delete objects succeeded\n");
     } else {
         printf("delete objects failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23185,17 +25437,23 @@ _headers, &deleted_object_list);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **批量删除指定前缀的文件**
 
-批量删除指定前缀的文件可以实现删除目录的功能，如prefix的值为**dir/**，表示删除dir目录。以下代码用于批量删除指定前缀的文件： 对象存储 OSS
+批量删除指定前缀的文件可以实现删除目录的功能，如prefix的值为**dir/**，表示删除dir目录。以下代码用于批量删除指定前缀的文件：
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_prefix = "<yourObjectNamePrefix>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_prefix = "<yourObjectNamePrefix>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23207,7 +25465,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -23217,18 +25475,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23276,10 +25538,9 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
         printf("delete objects by prefix succeeded\n");
     } else {
         printf("delete objects by prefix failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23290,14 +25551,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-对象存储 OSS 如果前缀prefix的值为空字符串或者NULL，将会删除整个存储空间里的文件，请谨慎使用。
+`}`
 
-**警告**
+> **警告：** 如果前缀prefix的值为空字符串或者NULL，将会删除整个存储空间里的文件，请谨慎使用。
 
-##### 拷贝文件
+##### 3.4.8.6 拷贝文件
 
 本文介绍如何拷贝文件。 拷贝文件时限制条件如下： 有源文件的读权限和目标存储空间的写权限。 不支持跨地域拷贝。
 
@@ -23308,7 +25568,12 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *source_bucket_name = "<yourSourceBucketName>"; const char *source_object_name = "<yourSourceObjectName>"; const char *dest_bucket_name = "<yourDestBucketName>"; const char *dest_object_name = "<yourDestObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *source_bucket_name = "<yourSourceBucketName>"; const char *source_object_name = "<yourSourceObjectName>"; const char *dest_bucket_name = "<yourDestBucketName>"; const char *dest_object_name = "<yourDestObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23320,7 +25585,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -23330,18 +25595,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23379,8 +25648,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_string_t dest_bucket;
 ```
 
-对象存储 OSS
-
 ```
     aos_string_t dest_object;
     aos_table_t *headers = NULL;
@@ -23402,10 +25669,9 @@ ket, &dest_object, headers, &resp_headers);
         printf("copy object succeeded\n");
     } else {
         printf("copy object failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23416,8 +25682,9 @@ ket, &dest_object, headers, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **拷贝大文件**
 
@@ -23427,7 +25694,12 @@ ket, &dest_object, headers, &resp_headers);
 #include "oss_api.h"
 #include "aos_http_io.h"
 #include <sys/stat.h>
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *source_bucket_name = "<yourSourceBucketName>"; const char *source_object_name = "<yourSourceObjectName>"; const char *dest_bucket_name = "<yourDestBucketName>"; const char *dest_object_name = "<yourDestObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *source_bucket_name = "<yourSourceBucketName>"; const char *source_object_name = "<yourSourceObjectName>"; const char *dest_bucket_name = "<yourDestBucketName>"; const char *dest_object_name = "<yourDestObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23439,7 +25711,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -23449,7 +25721,17 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int64_t get_file_size(const char *file_path) {
+```
+
+`}`
+
+```
+int64_t get_file_size(const char *file_path)
+```
+
+`{`
+
+```
     int64_t filesize = -1;
     struct stat statbuff;
     if(stat(file_path, &statbuff) < 0){
@@ -23457,25 +25739,26 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 }else{
 ```
 
-对象存储 OSS
-
 ```
 }ese{
         filesize = statbuff.st_size;
-    }
     return filesize;
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23538,10 +25821,9 @@ load_id, headers, &resp_headers);
         printf("init multipart upload succeeded, upload_id is %s\n", upload_id.data);
     } else {
         printf("init multipart upload failed\n");
-    }
 ```
 
-`/*` 拷贝第一个分片数据。`*/`
+`}` `/*` 拷贝第一个分片数据。`*/`
 
 ```
     upload_part_copy_params1 = oss_create_upload_part_copy_params(pool);
@@ -23551,18 +25833,10 @@ load_id, headers, &resp_headers);
 aosstrset(&ploadpartcop params1>destobject destobjectname)
 ```
 
-对象存储 OSS
-
-|  | aos str set(&upload part copy params1->dest object, dest object name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params1->upload id, upload id.data); _ _ _ _ _ _ _ upload part copy params1->part num = part1; _ _ _ _ upload part copy params1->range start = range start1; _ _ _ _ _ upload part copy params1->range end = range end1; _ _ _ _ _ headers = aos table make(pool, 0); _ _ resp status = oss upload part copy(oss client options, upload part copy params1, headers, & _ _ _ _ _ _ _ _ _ resp headers); _ if (aos status is ok(resp status)) { _ _ _ _ printf("upload part 1 copy succeeded\n"); } else { printf("upload part 1 copy failed\n"); } /* 拷贝第二个分片数据。*/ range end2 = get file size(local filename) - 1; _ _ _ _ upload part copy params2 = oss create upload part copy params(pool); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->source bucket, source bucket name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->source object, source object name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->dest bucket, dest bucket name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->dest object, dest object name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->upload id, upload id.data); _ _ _ _ _ _ _ upload part copy params2->part num = part2; _ _ _ _ upload part copy params2->range start = range start2; _ _ _ _ _ upload part copy params2->range end = range end2; _ _ _ _ _ headers = aos table make(pool, 0); _ _ resp status = oss upload part copy(oss client options, upload part copy params2, headers, & _ _ _ _ _ _ _ _ _ resp headers); _ if (aos status is ok(resp status)) { _ _ _ _ printf("upload part 2 copy succeeded\n"); } else { printf("upload part 2 copy failed\n"); } /* 列出分片。*/ headers = aos table make(pool, 0); _ _ list upload part params = oss create list upload part params(pool); _ _ _ _ _ _ _ _ list upload part params->max ret = max ret; _ _ _ _ _ aos list init(&complete part list); _ _ _ _ resp status = oss list upload part(oss client options, &dest bucket, &dest object, &upload _ _ _ _ _ _ _ _ _ id, list upload part params, &list part resp headers); _ _ _ _ _ _ aos list for each entry(oss list part content t, part content, &list upload part params->pa _ _ _ _ _ _ _ _ _ _ _ _ rt list, node) { _ complete content = oss create complete part content(pool); _ _ _ _ _ aos str set(&complete content->part number, part content->part number.data); _ _ _ _ _ _ aos str set(&complete content->etag, part content->etag.data); _ _ _ _ aos list add tail(&complete content->node, &complete part list); _ _ _ _ _ _ } /* 完成分片拷贝。*/ resp status = oss complete multipart upload(oss client options, &dest bucket, &dest object, _ _ _ _ _ _ _ _ &upload id, &complete part list, headers, &complete resp headers); _ _ _ _ _ if (aos status is ok(resp status)) { _ _ _ _ printf("complete multipart upload succeeded\n"); } else { printf("complete multipart upload failed\n"); } /* 释放内存池，相当于释放了请求过程中各资源分配的内存。*/ aos pool destroy(pool); _ _ /* 释放之前分配的全局资源。*/ aos http io deinitialize(); _ _ _ return 0; |  |
+|   | aos str set(&upload part copy params1->dest object, dest object name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params1->upload id, upload id.data); _ _ _ _ _ _ _ upload part copy params1->part num = part1; _ _ _ _ upload part copy params1->range start = range start1; _ _ _ _ _ upload part copy params1->range end = range end1; _ _ _ _ _ headers = aos table make(pool, 0); _ _ resp status = oss upload part copy(oss client options, upload part copy params1, headers, & _ _ _ _ _ _ _ _ _ resp headers); _ if (aos status is ok(resp status)) { _ _ _ _ printf("upload part 1 copy succeeded\n"); } else { printf("upload part 1 copy failed\n"); } /* 拷贝第二个分片数据。*/ range end2 = get file size(local filename) - 1; _ _ _ _ upload part copy params2 = oss create upload part copy params(pool); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->source bucket, source bucket name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->source object, source object name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->dest bucket, dest bucket name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->dest object, dest object name); _ _ _ _ _ _ _ _ aos str set(&upload part copy params2->upload id, upload id.data); _ _ _ _ _ _ _ upload part copy params2->part num = part2; _ _ _ _ upload part copy params2->range start = range start2; _ _ _ _ _ upload part copy params2->range end = range end2; _ _ _ _ _ headers = aos table make(pool, 0); _ _ resp status = oss upload part copy(oss client options, upload part copy params2, headers, & _ _ _ _ _ _ _ _ _ resp headers); _ if (aos status is ok(resp status)) { _ _ _ _ printf("upload part 2 copy succeeded\n"); } else { printf("upload part 2 copy failed\n"); } /* 列出分片。*/ headers = aos table make(pool, 0); _ _ list upload part params = oss create list upload part params(pool); _ _ _ _ _ _ _ _ list upload part params->max ret = max ret; _ _ _ _ _ aos list init(&complete part list); _ _ _ _ resp status = oss list upload part(oss client options, &dest bucket, &dest object, &upload _ _ _ _ _ _ _ _ _ id, list upload part params, &list part resp headers); _ _ _ _ _ _ aos list for each entry(oss list part content t, part content, &list upload part params->pa _ _ _ _ _ _ _ _ _ _ _ _ rt list, node) { _ complete content = oss create complete part content(pool); _ _ _ _ _ aos str set(&complete content->part number, part content->part number.data); _ _ _ _ _ _ aos str set(&complete content->etag, part content->etag.data); _ _ _ _ aos list add tail(&complete content->node, &complete part list); _ _ _ _ _ _ } /* 完成分片拷贝。*/ resp status = oss complete multipart upload(oss client options, &dest bucket, &dest object, _ _ _ _ _ _ _ _ &upload id, &complete part list, headers, &complete resp headers); _ _ _ _ _ if (aos status is ok(resp status)) { _ _ _ _ printf("complete multipart upload succeeded\n"); } else { printf("complete multipart upload failed\n"); } /* 释放内存池，相当于释放了请求过程中各资源分配的内存。*/ aos pool destroy(pool); _ _ /* 释放之前分配的全局资源。*/ aos http io deinitialize(); _ _ _ return 0; |   |
 |---|---|---|
 
-对象存储 OSS
-
-```
-}
-```
-
-#### 授权访问
+#### 3.4.9 授权访问
 
 本文介绍如何使用STS和文件URL进行授权访问。
 
@@ -23573,7 +25847,12 @@ aosstrset(&ploadpartcop params1>destobject destobjectname)
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *sts_token = "<yourStsToken>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *sts_token = "<yourStsToken>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *object_content = "More than just cloud."; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23586,7 +25865,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->sts_token, sts_token);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -23596,18 +25875,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23643,8 +25926,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_string_t bucket;
 ```
 
-对象存储 OSS
-
 ```
     aos_string_t object;
     aos_list_t buffer;
@@ -23678,10 +25959,9 @@ ders, &resp_headers);
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23692,8 +25972,9 @@ ders, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
+
+`}`
 
 **使用签名URL进行临时授权**
 
@@ -23702,7 +25983,12 @@ ders, &resp_headers);
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23714,28 +26000,27 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
 ```
 
-对象存储 OSS `/*` 设置网络相关参数，比如超时时间等。`*/`
+`/*` 设置网络相关参数，比如超时时间等。`*/`
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23812,10 +26097,9 @@ resp_headers);
         printf("put objects by signed url succeeded\n");
     } else {
         printf("put objects by signed url failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23828,18 +26112,17 @@ resp_headers);
     return 0;
 ```
 
-对象存储 OSS
-
-```
-}
-```
-
 使用签名URL下载文件以下代码用于使用签名URL下载文件。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; const char *local_filename = "<yourLocalFilename>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -23851,7 +26134,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -23861,18 +26144,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -23923,8 +26210,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 aosstrset(&file localfilename);
 ```
 
-对象存储 OSS
-
 ```
     aos_str_set(&file, local_filename);
     expire_time = now / 1000000 + one_hour;
@@ -23956,10 +26241,9 @@ ile, &resp_headers);
         printf("get object succeeded\n");
     } else {
         printf("get object failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -23970,16 +26254,17 @@ ile, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-#### 图片处理
+`}`
+
+#### 3.4.10 图片处理
 
 图片处理是OSS提供的海量、安全、低成本、高可靠的图片处理服务。原始图片上传到OSS后，您可以通过简单的 RESTful接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。 图片处理的完整代码请参见：GitHub。
 
 **图片处理基础功能**
 
-OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** > **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
+OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** **>** **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
 
 **图片处理使用**
 
@@ -23992,8 +26277,6 @@ http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<you
 | 参数 | 描述 |
 |---|---|
 | bucket | 存储空间名称。 |
-
-对象存储 OSS
 
 | endpoint | 存储空间所在地域的访问域名。 |
 |---|---|
@@ -24038,8 +26321,6 @@ http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/re
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/resize,w_100
 ```
 
-#### 授权访问
-
 对私有权限的文件（Object），如下表所示的权限，必须通过授权才能访问图片服务。
 
 | Bucket权限 | Object权限 |
@@ -24055,10 +26336,13 @@ https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/r
 const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>";
 ```
 
-对象存储 OSS
+```
+const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
 
 ```
-const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
     options->config = oss_config_create(options->pool);
 ```
 
@@ -24070,7 +26354,7 @@ const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -24080,18 +26364,22 @@ const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -24172,18 +26460,17 @@ const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name
     return 0;
 ```
 
-对象存储 OSS
-
-```
-}
-```
-
 SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -24195,7 +26482,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -24205,18 +26492,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -24273,8 +26564,6 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&file, "example-resize.jpg");
 ```
 
-对象存储 OSS
-
 ```
     resp_status = oss_get_object_to_file(oss_client_options, &bucket, &object, headers,
 params, &file, &resp_headers);
@@ -24282,10 +26571,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 裁剪 `*/`
+`}` `/*` 裁剪 `*/`
 
 ```
     params = aos_table_make(pool, 1);
@@ -24302,10 +26590,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 旋转 `*/`
+`}` `/*` 旋转 `*/`
 
 ```
     params = aos_table_make(pool, 1);
@@ -24322,10 +26609,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 锐化 `*/`
+`}` `/*` 锐化 `*/`
 
 ```
     params = aos_table_make(pool, 1);
@@ -24342,10 +26628,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 水印 `*/`
+`}` `/*` 水印 `*/`
 
 ```
     params = aos_table_make(pool, 1);
@@ -24362,17 +26647,16 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 格式转换 `*/`
+`}` `/*` 格式转换 `*/`
 
 ```
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/format,png");
 ```
 
-`/*`下载处理后的图片到本地文件。`*/` 对象存储 OSS / 下载处理后的图片到本地文件 /
+`/*`下载处理后的图片到本地文件。`*/` `/` 下载处理后的图片到本地文件 `/`
 
 ```
     aos_str_set(&file, "example-format.png");
@@ -24382,10 +26666,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 获取图片信息 `*/`
+`}` `/*` 获取图片信息 `*/`
 
 ```
     params = aos_table_make(pool, 1);
@@ -24402,10 +26685,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -24416,15 +26698,19 @@ params, &file, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-自定义样式
+`}` 自定义样式
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -24436,7 +26722,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。`*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。`*/`
 
 ```
     options->config->is_cname = 0;
@@ -24446,18 +26732,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
-`/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
+`}` `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
 
 ```
     aos_pool_t *pool;
@@ -24469,7 +26759,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_pool_create(&pool, NULL);
 ```
 
-`/*` 创建并初始化`options`，该参数包括`endpoint`、`access_key_id`、`acces_key_secret`、`is_cname`、 `curl` 对象存储 OSS 等全局配置信息。`*/`
+`/*` 创建并初始化`options`，该参数包括`endpoint`、`access_key_id`、`acces_key_secret`、`is_cname`、 `curl` 等全局配置信息。`*/`
 
 ```
     oss_request_options_t *oss_client_options;
@@ -24518,10 +26808,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -24532,15 +26821,19 @@ params, &file, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-级联处理
+`}` 级联处理
 
 ```
 #include "oss_api.h"
 #include "aos_http_io.h"
-const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options) {
+const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAccessKeyId>"; const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name = "<yourBucketName>"; const char *object_name = "<yourObjectName>"; void init_options(oss_request_options_t *options)
+```
+
+`{`
+
+```
     options->config = oss_config_create(options->pool);
 ```
 
@@ -24552,7 +26845,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     aos_str_set(&options->config->access_key_secret, access_key_secret);
 ```
 
-`/*` 是否使用了`CNAME`。0表示不使用。 `*/`
+`/*` 是否使用了`CNAME`。`0`表示不使用。 `*/`
 
 ```
     options->config->is_cname = 0;
@@ -24562,15 +26855,19 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 ```
     options->ctl = aos_http_controller_create(options->pool, 0);
-} int main(int argc, char *argv[]) {
 ```
 
-`/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/` 对象存储 OSS
+`}`
+
+```
+int main(int argc, char *argv[])
+```
+
+`{` `/*` 在程序入口调用`aos_http_io_initialize`方法来初始化网络、内存等全局资源。`*/`
 
 ```
     if (aos_http_io_initialize(NULL, 0) != AOSE_OK) {
         exit(1);
-    }
 ```
 
 `/*` 用于内存管理的内存池（`pool`），等价于`apr_pool_t`。其实现代码在`apr`库中。`*/`
@@ -24634,10 +26931,9 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
-    }
 ```
 
-`/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
+`}` `/*` 释放内存池，相当于释放了请求过程中各资源分配的内存。`*/`
 
 ```
     aos_pool_destroy(pool);
@@ -24648,24 +26944,19 @@ params, &file, &resp_headers);
 ```
     aos_http_io_deinitialize();
     return 0;
-}
 ```
 
-#### 错误处理
+`}`
 
-本文介绍OSS C SDK的错误处理。
+#### 3.4.11 错误处理
 
-#### 异常处理
-
-使用OSS C SDK时，如果请求出错，会在aos_status_s中输出相应的错误信息。aos_status_s有以下几种属性：
+本文介绍OSS C SDK的错误处理。 使用OSS C SDK时，如果请求出错，会在aos_status_s中输出相应的错误信息。aos_status_s有以下几种属性：
 
 | 错误码 | 描述 | 字符类型 |
 |---|---|---|
 | code | 出错请求的HTTP状态码。 | 整形 |
 | error code _ | OSS的错误码。 | 字符串 |
 | error msg _ | OSS的错误信息。 | 字符串 |
-
-对象存储 OSS
 
 | req id _ | 标识该次请求的UUID，可以提供req id _ 来寻求OSS开发工程师的帮助。 | 字符串 |
 |---|---|---|
@@ -24703,8 +26994,6 @@ params, &file, &resp_headers);
 | NoSuchKey | 文件不存在。 | 404 |
 | NoSuchUpload | 分片上传ID不存在。 | 404 |
 
-对象存储 OSS
-
 | NotImplemented | 无法处理的方法。 | 501 |
 |---|---|---|
 | PreconditionFailed | 预处理错误。 | 412 |
@@ -24713,15 +27002,19 @@ params, &file, &resp_headers);
 | SignatureDoesNotMatch | 签名错误。 | 403 |
 | TooManyBuckets | 用户的存储空间数超过限制。 | 400 |
 
-### Go-SDK
+### 3.5 Go-SDK
 
-#### 前言
+#### 3.5.1 前言
+
+本文介绍对象存储OSS的Go SDK各种使用场景下的示例代码。
 
 **SDK源码和API文档**
 
 请访问GitHub获取OSS Go SDK源码。更多信息请参见OSS Go SDK API文档。
 
 **示例程序**
+
+OSS Go SDK提供丰富的示例程序，方便您参考或直接使用。示例包括以下内容：
 
 | 示例文件 | 示例内容 |
 |---|---|
@@ -24742,12 +27035,12 @@ params, &file, &resp_headers);
 | bucket logging.go _ | 展示了如何设置、读取、清除存储空间的日志（Bucket Logging）。 |
 | bucket lifecycle.go _ | 展示了如何设置、读取、清除存储空间中文件的生命周期（Bucket Lifecycle）。 |
 
-对象存储 OSS
-
 | bucket cors.go _ | 展示了如何设置、读取、清除存储空间的跨域访问（Bucket CORS）。 |
 |---|---|
 
-#### 安装
+#### 3.5.2 安装
+
+本文介绍如何安装Go SDK。
 
 **环境准备**
 
@@ -24759,44 +27052,57 @@ params, &file, &resp_headers);
 
 **安装SDK**
 
-安装过程中，界面不会打印提示，请耐心等待。如果安装超时，请再次执行以上命令。
+执行以下命令安装OSS Go SDK：
 
-**说明**
+```
+go get github.com/aliyun/aliyun-oss-go-sdk/oss
+```
+
+> **说明：** 安装过程中，界面不会打印提示，请耐心等待。如果安装超时，请再次执行以上命令。
 
 **查看SDK版本**
+
+运行以下代码查看OSS Go SDK版本：
 
 ```java
 package main import (
   "fmt"
+  "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
-func main() { }
+func main() {
+  fmt.Println("OSS Go SDK Version: ", oss.Version)
 ```
 
-#### 初始化
+`}`
+
+#### 3.5.3 初始化
 
 Client是OSS的Go客户端，用于管理存储空间和文件等OSS资源。
 
 **前提条件**
 
-已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
+已安装OSS Go SDK。 已获取Endpoint。 已获取AccessKey。建议通过环境变量方式获取AccessKey，具体配置请参见配置访问凭证。
 
 **新建OSSClient**
 
-对象存储 OSS 使用OSS SDK时，您需要在新建OSSClient时配置AccessKey（包括AccessKeyId和AccessKeySecret）以完成身份认证以及指定Endpoint。建议通过环境变量获取AccessKey，避免将其硬编码在代码中。
+使用OSS SDK时，您需要在新建OSSClient时配置AccessKey（包括AccessKeyId和AccessKeySecret）以完成身份认证以及指定Endpoint。建议通过环境变量获取AccessKey，避免将其硬编码在代码中。
 
 **使用AccessKey**
+
+（推荐）从环境变量获取AccessKey
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -24809,10 +27115,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+`}` `//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
     clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)}
@@ -24826,19 +27131,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-硬编码AccessKey
+`}` `}` 硬编码AccessKey
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -24846,21 +27150,22 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **使用STS临时访问凭证**
 
-对象存储 OSS
+（推荐）从环境变量获取AccessKey
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -24874,10 +27179,9 @@ SSION_TOKEN。
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+`}` `//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
     clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)}
@@ -24891,19 +27195,18 @@ SSION_TOKEN。
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-硬编码AccessKey
+`}` `}` 硬编码AccessKey
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -24912,9 +27215,9 @@ s.SecurityToken("<yourSecurityToken>"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **配置OSSClient**
 
@@ -24924,8 +27227,6 @@ s.SecurityToken("<yourSecurityToken>"))
 
 | 参数 | 说明 | 方法 |
 |---|---|---|
-
-对象存储 OSS
 
 | IsCname | 是否开启将自定义域名作为Endpoint，默认不开启。 | oss.UseCname |
 |---|---|---|
@@ -24964,7 +27265,7 @@ client, _ := oss.New(
  cname,
 ```
 
-) 对象存储 OSS 自定义域名的完整代码请参见GitHub。
+`)` 自定义域名的完整代码请参见GitHub。
 
 **超时控制**
 
@@ -24986,15 +27287,15 @@ client, _ := oss.New(
  time,
 ```
 
-)
+`)`
 
 **CRC数据校验**
 
 可通过 `oss.EnableCRC(false)` 参数关闭CRC数据校验功能。
 
-**重要**
+> **重要：** 强烈建议保持CRC数据校验功能开启。关闭此功能后，OSS无法保证上传和下载过程中数据的完整性。
 
-强烈建议保持CRC数据校验功能开启。关闭此功能后，OSS无法保证上传和下载过程中数据的完整性。 `//` 关闭`CRC`数据校验
+`//` 关闭`CRC`数据校验
 
 ```
 crc := oss.EnableCRC(false)
@@ -25012,25 +27313,31 @@ client, _ := oss.New(
  crc,
 ```
 
-)
+`)`
 
-#### 快速开始
+#### 3.5.4 快速开始
 
-本节介绍如何快速使用OSS Go SDK完成常见操作，如创建存储空间（Bucket）、上传和下载文件（Object）等。 存储空间是OSS全局命名空间，相当于数据的容器，可以存储若干文件。以下代码用于新建一个存储空间： 对象存储 OSS
+本节介绍如何快速使用OSS Go SDK完成常见操作，如创建存储空间（Bucket）、上传和下载文件（Object）等。 存储空间是OSS全局命名空间，相当于数据的容器，可以存储若干文件。以下代码用于新建一个存储空间：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -25048,33 +27355,37 @@ func handleError(err error) {
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
-    }
+```
+
+`}` `//` 创建存储空间。
+
+```
     err = client.CreateBucket(bucketName)
     if err != nil {
         handleError(err)
-    }
-}
 ```
 
-AccessKey Id和AccessKey Secret获取方式请参见获取AccessKey。
-
-#### 上传文件
-
-对象存储 OSS
+`}` `}` AccessKey Id和AccessKey Secret获取方式请参见获取AccessKey。 获取Endpoint信息，请参见获取Endpoint。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -25104,45 +27415,45 @@ func handleError(err error) {
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         handleError(err)
-    }
 ```
 
-`//` 上传文件。
+`}` `//` 上传文件。
 
 ```
     err = bucket.PutObjectFromFile(objectName, localFileName)
     if err != nil {
         handleError(err)
-    }
-}
 ```
 
-#### 下载文件
-
-以下代码用于下载文件到本地： 对象存储 OSS
+`}` `}` 以下代码用于下载文件到本地：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -25167,45 +27478,45 @@ func handleError(err error) {
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         handleError(err)
-    }
 ```
 
-`//` 下载文件。
+`}` `//` 下载文件。
 
 ```
     err = bucket.GetObjectToFile(objectName, downloadedFileName)
     if err != nil {
         handleError(err)
-    }
-}
 ```
 
-##### 列举文件
-
-以下代码用于列举指定存储空间下的文件，默认列举100个文件。 对象存储 OSS
+`}` `}` 以下代码用于列举指定存储空间下的文件，默认列举100个文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -25214,20 +27525,18 @@ func HandleError(err error) {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 列举文件。
+`}` `//` 列举文件。
 
 ```
     marker := ""
@@ -25235,41 +27544,45 @@ func HandleError(err error) {
         lsRes, err := bucket.ListObjects(oss.Marker(marker))
         if err != nil {
             HandleError(err)
-        }
 ```
 
-`//` 打印列举文件，默认情况下一次返回`100`条记录。
+`}` `//` 打印列举文件，默认情况下一次返回`100`条记录。
 
 ```
         for _, object := range lsRes.Objects {
             fmt.Println("Bucket: ", object.Key)
-        }
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
-        }
-    }
-}
 ```
 
-##### 删除文件
-
-对象存储 OSS
+`}` `}` `}`
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `// Endpoint`以杭州为例，其它`Region`请按实际情况填写。
@@ -25293,43 +27606,41 @@ func handleError(err error) {
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err != nil {
         handleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         handleError(err)
-    }
 ```
 
-`//` 删除文件。
+`}` `//` 删除文件。
 
 ```
+    err = bucket.DeleteObject(objectName)
     if err != nil {
         handleError(err)
-    }
-}
 ```
 
-删除文件详情请参见管理文件中的删除文件。
+`}` `}` 删除文件详情请参见管理文件中的删除文件。
 
-#### 存储空间
+#### 3.5.5 存储空间
 
-##### 创建存储空间
+##### 3.5.5.1 创建存储空间
 
-存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 对象存储 OSS
+存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何创建存储空间。 创建存储空间的完整代码请参见GitHub。 以下代码用于创建存储空间。
 
 ```java
 package main
     import (
         "fmt"
         "os"
+        "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25342,30 +27653,35 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}` `//` 创建存储空间。默认为标准存储类型，私有权限。
+
+```
     err = client.CreateBucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 列举存储空间
+`}` `}`
 
-存储空间（Bucket）是用来存储对象（Object）的容器。对象都隶属于存储空间。存储空间按照字母顺序排列。您可以列举当前账号所有地域下符合指定条件的存储空间。
+##### 3.5.5.2 列举存储空间
+
+存储空间（Bucket）是用来存储对象（Object）的容器。对象都隶属于存储空间。存储空间按照字母顺序排列。您可以列举当前账号所有地域下符合指定条件的存储空间。 列举存储空间的完整代码请参见GitHub。
 
 **列举所有的存储空间**
 
-存储空间按照字母顺序排列。您可以列举所有的存储空间，或符合指定条件的存储空间。 以下代码用于列举所有存储空间。 对象存储 OSS
+存储空间按照字母顺序排列。您可以列举所有的存储空间，或符合指定条件的存储空间。 以下代码用于列举所有存储空间。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25378,30 +27694,36 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}` `//` 列举存储空间。
+
+```
     marker := ""
     for {
         lsRes, err := client.ListBuckets(oss.Marker(marker))
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
 ```
 
-`//` 默认情况下一次返回`100`条记录。
+`}` `//` 默认情况下一次返回`100`条记录。
 
 ```
         for _, bucket := range lsRes.Buckets {
             fmt.Println("Bucket: ", bucket.Name)
-        }
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **列举指定前缀的存储空间**
 
@@ -25412,61 +27734,61 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印存储空间列表。
+`}` `//` 打印存储空间列表。
 
 ```
     fmt.Println("Buckets with prefix: ", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with prefix: ", bucket.Name)
-    }
 ```
+
+`}`
 
 **列举指定marker之后的存储空间**
 
-以下代码用于列举narker之后的存储空间。 对象存储 OSS `//` 列举指定`marker`之后的存储空间。
+以下代码用于列举narker之后的存储空间。 `//` 列举指定`marker`之后的存储空间。
 
 ```
     lsRes, err = client.ListBuckets(oss.Marker("<yourBucketMarker>"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印存储空间列表。
+`}` `//` 打印存储空间列表。
 
 ```
     fmt.Println("My buckets with marker :", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with marker: ", bucket.Name)
-    }
 ```
+
+`}`
 
 **列举指定个数的存储空间**
 
-以下代码用于最多列举500个存储空间。
+以下代码用于最多列举500个存储空间。 `//` 限定此次列举存储空间的个数为`500`。默认值为`100`，最大值为`1000`。
 
 ```
     lsRes, err = client.ListBuckets(oss.MaxKeys(500))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印存储空间列表。
+`}` `//` 打印存储空间列表。
 
 ```
     fmt.Println("My buckets max num:", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with maxKeys: ", bucket.Name)
-    }
 ```
 
-##### 管理存储空间的访问权限
+`}`
+
+##### 3.5.5.3 管理存储空间的访问权限
 
 存储空间（Bucket）是存储对象（Object）的容器。对象都隶属于存储空间。本文介绍如何设置和获取存储空间读写权限（ACL）。 存储空间访问权限的完整代码请参见GitHub。
 
@@ -25480,15 +27802,16 @@ func main() {
 | 公共读 | 存储空间的拥有者和授权用户有文件的读写权限，其他用户只有读权限。请谨慎使用该权限。 | oss.ACLPublicRead |
 | 公共读写 | 所有用户都有文件的读写权限。请谨慎使用该权限。 | oss.ACLPublicReadWrite |
 
-以下代码用于设置存储空间的访问权限： 对象存储 OSS
+以下代码用于设置存储空间的访问权限：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25501,19 +27824,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 设置存储空间的访问权限为公共读。
+`}` `//` 设置存储空间的访问权限为公共读。
 
 ```
     err = client.SetBucketACL("<yourBucketName>", oss.ACLPublicRead)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **获取存储空间的访问权限**
 
@@ -25523,9 +27845,10 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25538,32 +27861,37 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间的访问权限。
+`}` `//` 获取存储空间的访问权限。
 
 ```
     aclRes, err := client.GetBucketACL("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Bucket ACL:", aclRes.ACL)
-}
 ```
 
-##### 删除存储空间
+`}`
 
-对象存储 OSS 当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。 删除存储空间之前，必须先删除存储空间下的所有文件、LiveChannel和分片上传产生的碎片。以下代码用于删除存储空间：
+```
+    fmt.Println("Bucket ACL:", aclRes.ACL)
+```
+
+`}`
+
+##### 3.5.5.4 删除存储空间
+
+当您不再需要保留某个存储空间（Bucket）时，可将其删除，以免产生额外费用。 删除存储空间之前，必须先删除存储空间下的所有文件、LiveChannel和分片上传产生的碎片。以下代码用于删除存储空间：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25576,29 +27904,35 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}` `//` 删除存储空间。
+
+```
+    err = client.DeleteBucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 生命周期管理
+`}` `}`
+
+##### 3.5.5.5 生命周期管理
 
 并不是所有上传至OSS的数据都需要频繁访问，但基于数据合规或者存档等原因，部分数据仍需要继续以冷存储类型进行保存。或者基于业务使用场景，希望批量删除Bucket内不再需要保存的数据，您可以配置基于最后一次修改时间（Last Modified Time）的生命周期规则。如果您希望OSS自动监测数据的访问模式并识别冷数据，然后将识别出来的冷数据进行存储类型的转换，从而达到数据的冷热分层存储，最终降低存储成本，您可以配置基于最后一次访问时间（Last Access Time）的生命周期规则。
 
 **设置生命周期规则**
 
-以下代码用于设置生命周期规则： 对象存储 OSS
+以下代码用于设置生命周期规则：
 
 ```java
 package main import (
     "fmt"
      "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25611,10 +27945,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 生命周期规则1（`id:"rule1", enable:true, prefix:"foo/", expiry:Days 3`），表示前缀为`foo`的文件距最后修改时间3天后过期。
+`}` `//` 生命周期规则`1`（`id:"rule1", enable:true, prefix:"foo/", expiry:Days 3`），表示前缀为`foo`的文件距最后修改时间`3`天后过期。
 
 ```
     rule1 := oss.BuildLifecycleRuleByDays("rule1", "foo/", true, 3)
@@ -25629,21 +27962,22 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **查看生命周期规则**
 
-以下代码用于查看examplebucket的生命周期规则。 对象存储 OSS
+以下代码用于查看examplebucket的生命周期规则。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25656,7 +27990,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -25667,10 +28005,15 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Lifecycle Rules:", lcRes.Rules)
-}
 ```
+
+`}`
+
+```
+    fmt.Println("Lifecycle Rules:", lcRes.Rules)
+```
+
+`}`
 
 **清空生命周期规则**
 
@@ -25680,9 +28023,10 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25695,7 +28039,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -25706,12 +28054,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-对象存储 OSS
-
-##### 防盗链
+##### 3.5.5.6 防盗链
 
 为了防止用户在OSS上的数据被其他人盗链，OSS支持基于HTTP header中表头字段Referer的防盗链方法。
 
@@ -25723,9 +28068,10 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25738,11 +28084,15 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
-`//` 添加`Referer`白名单，且不允许空`Referer`。`Referer`参数支持通配符星号（*）和问号（？）。
+`//` 添加`Referer`白名单，且不允许空`Referer`。`Referer`参数支持通配符星号（`*`）和问号（？）。
 
 ```
     referers := []string{"http://www.aliyun.com",
@@ -25752,21 +28102,22 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **获取防盗链信息**
 
-以下代码用于获取防盗链配置： 对象存储 OSS
+以下代码用于获取防盗链配置：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25779,7 +28130,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -25790,23 +28145,29 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Referers: ", refRes.RefererList)
     fmt.Println("AllowEmptyReferer: ", refRes.AllowEmptyReferer)
-}
 ```
+
+`}`
 
 **清空防盗链**
 
-以下代码用于清空防盗链： 对象存储 OSS
+以下代码用于清空防盗链：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25819,7 +28180,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -25830,25 +28195,26 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 设置访问日志
+`}` `}`
+
+##### 3.5.5.7 设置访问日志
 
 您可以开启存储空间的访问日志记录功能。开启后对于此存储空间的访问会被记录成日志文件，保存在指定的存储空间中。 访问日志的完整代码请参见GitHub。
 
 **开启访问日志记录**
 
-以下代码用于开启日志记录。 对象存储 OSS
+以下代码用于开启日志记录。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25861,7 +28227,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     targetBucketName := "<yourTargetBucketName>"
     targetPrefix := "<yourTargetPrefix>"
@@ -25874,21 +28244,22 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **查看访问日志设置**
 
-以下代码用于查看访问日志设置。 对象存储 OSS
+以下代码用于查看访问日志设置。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25901,7 +28272,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -25912,23 +28287,29 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Target Bucket: ", logRes.LoggingEnabled.TargetBucket)
     fmt.Println("Target Prefix: ", logRes.LoggingEnabled.TargetPrefix)
-}
 ```
+
+`}`
 
 **关闭访问日志记录**
 
-以下代码用于关闭访问日志记录。 对象存储 OSS
+以下代码用于关闭访问日志记录。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25941,31 +28322,41 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
 `//` 关闭访问日志记录。
 
 ```
+    err = client.DeleteBucketLogging(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 静态网站托管
+`}` `}`
 
-您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。 对象存储 OSS
+##### 3.5.5.8 静态网站托管
+
+您可以将存储空间配置成静态网站托管模式。配置生效后，访问网站相当于访问存储空间，并且能够自动跳转至指定的索引页面和错误页面。
+
+**设置静态网站托管**
+
+以下代码用于设置静态网站托管：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -25978,25 +28369,37 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
+```
+
+`//` 设置静态网站托管：索引页面为`index.html,` 错误页面为`error.html`。
+
+```
     err = client.SetBucketWebsite(bucketName, "index.html", "error.html")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-对象存储 OSS
+`}` `}`
+
+**查看静态网站托管配置**
+
+以下代码用于查看静态网站托管配置：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26009,27 +28412,44 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
+```
+
+`//` 查看静态网站托管配置。
+
+```
     wsRes, err := client.GetBucketWebsite(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("indexWebsite: ", wsRes.IndexDocument.Suffix)
     fmt.Println("errorWebsite: ", wsRes.ErrorDocument.Key)
-}
 ```
 
-对象存储 OSS
+`}`
+
+**删除静态网站托管配置**
+
+以下代码用于删除静态网站托管配置：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26042,26 +28462,41 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
+```
+
+`//` 删除静态网站托管配置。
+
+```
+    err = client.DeleteBucketWebsite(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 跨域资源共享
+`}` `}`
 
-跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供以下代码用于设置指定存储空间的跨域规则： 对象存储 OSS
+##### 3.5.5.9 跨域资源共享
+
+跨域资源共享CORS（Cross-origin resource sharing）允许Web端的应用程序访问不属于本域的资源。OSS提供跨域资源共享接口，方便您控制跨域访问的权限。 跨域资源共享的完整代码请参见GitHub。
+
+**设置跨域资源共享规则**
+
+以下代码用于设置指定存储空间的跨域规则：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26074,7 +28509,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     rule1 := oss.CORSRule{
         AllowedOrigin: []string{"*"},
@@ -26082,31 +28521,42 @@ func main() {
         AllowedHeader: []string{},
         ExposeHeader:  []string{},
         MaxAgeSeconds: 200,
-    }
+```
+
+`}`
+
+```
     rule2 := oss.CORSRule{
         AllowedOrigin: []string{"http://www.a.com", "http://www.b.com"},
         AllowedMethod: []string{"POST"},
         AllowedHeader: []string{"Authorization"},
         ExposeHeader:  []string{"x-oss-test", "x-oss-test1"},
         MaxAgeSeconds: 100,
-    }
+```
+
+`}` `//` 设置跨域资源共享规则。
+
+```
     err = client.SetBucketCORS(bucketName, []oss.CORSRule{rule1, rule2})
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-以下代码用于获取跨域规则： 对象存储 OSS
+`}` `}`
+
+**获取跨域资源共享规则**
+
+以下代码用于获取跨域规则：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26119,25 +28569,43 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
+```
+
+`//` 获取跨域资源共享规则。
+
+```
+    corsRes, err := client.GetBucketCORS(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Bucket CORS:", corsRes.CORSRules)
-}
 ```
 
-以下代码用于删除指定存储空间的所有跨域规则： 对象存储 OSS
+`}`
+
+**删除跨域资源共享规则**
+
+以下代码用于删除指定存储空间的所有跨域规则：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26150,43 +28618,55 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
+```
+
+`//` 删除跨域资源共享规则。
+
+```
+    err = client.DeleteBucketCORS(bucketName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 绑定自定义域名
+`}` `}`
+
+##### 3.5.5.10 绑定自定义域名
 
 文件（Object）上传至存储空间（Bucket）后，OSS 会自动生成文件的 URL，您可以直接通过该 URL访问文件。 如果您希望使用自定义域名访问这些 Object，需要添加 CNAME 记录将自定义域名绑定到 Object 所在的 Bucket。
 
 **注意事项**
 
+本文以从环境变量读取访问凭证为例介绍。配置访问凭证的操作请参见配置访问凭证。
+
 **示例代码**
 
 **添加CNAME记录**
 
-添加自定义域名以下代码用于添加CNAME记录。 对象存储 OSS
+添加自定义域名以下代码用于添加CNAME记录。
 
 ```java
 package main import (
  "log"
+ "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
     provider, err := oss.NewEnvironmentVariableCredentialsProvider()
     if err != nil {
         log.Fatalf("Failed to create credentials provider: %v", err)
-    }
 ```
 
-`//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+`}` `//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
     clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)}
@@ -26199,10 +28679,9 @@ func main() {
     client, err := oss.New("<yourEndpoint>", "", "", clientOptions...)
     if err != nil {
         log.Fatalf("Failed to create OSS client: %v", err)
-    }
 ```
 
-`//` 填写`Bucket`名称，例如`examplebucket`。
+`}` `//` 填写`Bucket`名称，例如`examplebucket`。
 
 ```
     bucketName := "examplebucket"
@@ -26212,24 +28691,32 @@ func main() {
 
 ```
     cname := "www.example.com"
+    err = client.PutBucketCname(bucketName, cname)
     if err != nil {
-    }
+        log.Fatalf("Failed to put bucket CNAME: %v", err)
 ```
 
-`//` 输出成功信息
+`}` `//` 输出成功信息
 
 ```
-} cname := "www.examplemyh111.com"
+    log.Println("Put Bucket Cname Success!")
 ```
 
-解除证书如果您不希望该域名继续使用该证书，可以执行解绑证书的操作。 对象存储 OSS
+`}`
+
+```
+cname := "www.examplemyh111.com"
+```
+
+解除证书如果您不希望该域名继续使用该证书，可以执行解绑证书的操作。
 
 ```java
 package main import (
  "log"
+ "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26242,10 +28729,9 @@ OSS_ACCESS_KEY_SECRET。
  provider, err := oss.NewEnvironmentVariableCredentialsProvider()
  if err != nil {
   log.Fatalf("Failed to create credentials provider: %v", err)
- }
 ```
 
-`//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+`}` `//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
  clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)}
@@ -26258,10 +28744,9 @@ OSS_ACCESS_KEY_SECRET。
  client, err := oss.New("yourEndpoint", "", "", clientOptions...)
  if err != nil {
   log.Fatalf("Failed to create OSS client: %v", err)
- }
 ```
 
-`//` 填写`Bucket`名称，例如`examplebucket`。
+`}` `//` 填写`Bucket`名称，例如`examplebucket`。
 
 ```
  bucketName := "examplebucket"
@@ -26270,23 +28755,27 @@ OSS_ACCESS_KEY_SECRET。
 `//` 配置`CNAME`和删除证书。
 
 ```
+ putCnameConfig := oss.PutBucketCname{
   Cname: "www.example.com",
   CertificateConfiguration: &oss.CertificateConfiguration{
    DeleteCertificate: true,
-  },
- }
+```
+
+`},` `}` `//` 绑定自定义域名并删除证书
+
+```
  err = client.PutBucketCnameWithCertificate(bucketName, putCnameConfig)
  if err != nil {
   log.Fatalf("Failed to delete certificate: %v", err)
- }
 ```
 
-`//` 输出成功信息
+`}` `//` 输出成功信息
 
 ```
  log.Println("Delete Certificate Success!")
-}
 ```
+
+`}`
 
 **查看CNAME记录**
 
@@ -26295,18 +28784,13 @@ OSS_ACCESS_KEY_SECRET。
 ```java
 package main import (
  "log"
+ "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-) 对象存储 OSS
+`)`
 
-|  | func main() { provider, err := oss.NewEnvironmentVariableCredentialsProvider() if err != nil { log.Fatalf("Failed to create credentials provider: %v", err) } // 创建OSSClient实例。 // yourEndpoint填写Bucket对应的Endpoint。 clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)} // 设置签名版本 clientOptions = append(clientOptions, oss.AuthVersion(oss.AuthV1)) client, err := oss.New("<yourEndpoint>", "", "", clientOptions...) if err != nil { log.Fatalf("Failed to create OSS client: %v", err) } // 填写Bucket名称，例如examplebucket。 bucketName := "examplebucket" // 查看CNAME记录。 cnResult, err := client.ListBucketCname(bucketName) if err != nil { log.Fatalf("Error: %v", err) } var certificate oss.Certificate log.Printf("Bucket: %s", cnResult.Bucket) log.Printf("Owner: %s", cnResult.Owner) if len(cnResult.Cname) > 0 { for , cnameInfo := range cnResult.Cname { _ // 打印自定义域名。 log.Printf("Domain: %s", cnameInfo.Domain) // 打印绑定自定义域名的时间。 log.Printf("LastModified: %s", cnameInfo.LastModified) // 打印域名所处状态。 log.Printf("Status: %s", cnameInfo.Status) if cnameInfo.Certificate != certificate { // 打印证书来源。 log.Printf("Type: %s", cnameInfo.Certificate.Type) // 打印证书ID。 log.Printf("CertId: %s", cnameInfo.Certificate.CertId) // 打印证书状态。 log.Printf("Status: %s", cnameInfo.Certificate.Status) // 打印证书绑定时间。 log.Printf("CreationDate: %s", cnameInfo.Certificate.CreationDate) // 打印证书签名。 log.Printf("Fingerprint: %s", cnameInfo.Certificate.Fingerprint) // 打印证书有效期起始时间。 log.Printf("ValidStartDate: %s", cnameInfo.Certificate.ValidStartDate) // 打印证书有效期终止时间。 log.Printf("ValidEndDate: %s", cnameInfo.Certificate.ValidEndDate) } } } } |  |
+|   | func main() { provider, err := oss.NewEnvironmentVariableCredentialsProvider() if err != nil { log.Fatalf("Failed to create credentials provider: %v", err) } // 创建OSSClient实例。 // yourEndpoint填写Bucket对应的Endpoint。 clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)} // 设置签名版本 clientOptions = append(clientOptions, oss.AuthVersion(oss.AuthV1)) client, err := oss.New("<yourEndpoint>", "", "", clientOptions...) if err != nil { log.Fatalf("Failed to create OSS client: %v", err) } // 填写Bucket名称，例如examplebucket。 bucketName := "examplebucket" // 查看CNAME记录。 cnResult, err := client.ListBucketCname(bucketName) if err != nil { log.Fatalf("Error: %v", err) } var certificate oss.Certificate log.Printf("Bucket: %s", cnResult.Bucket) log.Printf("Owner: %s", cnResult.Owner) if len(cnResult.Cname) > 0 { for , cnameInfo := range cnResult.Cname { _ // 打印自定义域名。 log.Printf("Domain: %s", cnameInfo.Domain) // 打印绑定自定义域名的时间。 log.Printf("LastModified: %s", cnameInfo.LastModified) // 打印域名所处状态。 log.Printf("Status: %s", cnameInfo.Status) if cnameInfo.Certificate != certificate { // 打印证书来源。 log.Printf("Type: %s", cnameInfo.Certificate.Type) // 打印证书ID。 log.Printf("CertId: %s", cnameInfo.Certificate.CertId) // 打印证书状态。 log.Printf("Status: %s", cnameInfo.Certificate.Status) // 打印证书绑定时间。 log.Printf("CreationDate: %s", cnameInfo.Certificate.CreationDate) // 打印证书签名。 log.Printf("Fingerprint: %s", cnameInfo.Certificate.Fingerprint) // 打印证书有效期起始时间。 log.Printf("ValidStartDate: %s", cnameInfo.Certificate.ValidStartDate) // 打印证书有效期终止时间。 log.Printf("ValidEndDate: %s", cnameInfo.Certificate.ValidEndDate) } } } } |   |
 |---|---|---|
-
-对象存储 OSS
-
-```
-}
-```
 
 **删除CNAME记录**
 
@@ -26315,19 +28799,19 @@ package main import (
 ```java
 package main import (
  "log"
+ "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
     provider, err := oss.NewEnvironmentVariableCredentialsProvider()
     if err != nil {
         log.Fatalf("Failed to create credentials provider: %v", err)
-    }
 ```
 
-`//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
+`}` `//` 创建`OSSClient`实例。 `// yourEndpoint`填写`Bucket`对应的`Endpoint`。
 
 ```
     clientOptions := []oss.ClientOption{oss.SetCredentialsProvider(&provider)}
@@ -26340,10 +28824,9 @@ func main() {
     client, err := oss.New("<yourEndpoint>", "", "", clientOptions...)
     if err != nil {
         log.Fatalf("Failed to create OSS client: %v", err)
-    }
 ```
 
-`//` 填写`Bucket`名称，例如`examplebucket`。
+`}` `//` 填写`Bucket`名称，例如`examplebucket`。
 
 ```
     bucketName := "examplebucket"
@@ -26361,22 +28844,23 @@ func main() {
     err = client.DeleteBucketCname(bucketName, cname)
     if err != nil {
         log.Fatalf("Error: %v", err)
-    }
 ```
 
-`//` 输出成功信息
+`}` `//` 输出成功信息
 
 ```
-}
+    log.Println("Delete Bucket Cname Success!")
 ```
 
-#### 上传文件
+`}`
 
-##### 概述
+#### 3.5.6 上传文件
 
-在OSS中，操作的基本数据单元是文件（Object）。OSS PHP SDK提供了丰富的文件上传方式。 您可以通过以下方式上传文件到OSS： 简单上传：文件最大不能超过5 GiB。 对象存储 OSS 追加上传：文件最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：文件最大不能超过48.8 TiB。当文件较大时，请使用分片上传。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。
+##### 3.5.6.1 概述
 
-##### 简单上传
+在OSS中，操作的基本数据单元是文件（Object）。OSS PHP SDK提供了丰富的文件上传方式。 您可以通过以下方式上传文件到OSS： 简单上传：文件最大不能超过5 GiB。 追加上传：文件最大不能超过5 GiB。 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。最大不能超过48.8 TiB。 分片上传：文件最大不能超过48.8 TiB。当文件较大时，请使用分片上传。 上传过程中，您可以设置文件元信息，也可以通过进度条功能查看上传进度。
+
+##### 3.5.6.2 简单上传
 
 本文介绍如何使用简单上传。 简单上传的完整代码请参见GitHub。
 
@@ -26389,9 +28873,10 @@ package main import (
     "fmt"
     "os"
     "strings"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26404,20 +28889,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 指定存储类型为标准存储，默认为标准存储。
+`}` `//` 指定存储类型为标准存储，默认为标准存储。
 
 ```
     storageType := oss.ObjectStorageClass(oss.StorageStandard)
@@ -26437,22 +28920,23 @@ e, objectAcl)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **上传Byte数组**
 
-以下代码用于上传Byte数组。 对象存储 OSS
+以下代码用于上传Byte数组。
 
 ```java
 package main import (
     "fmt"
     "os"
     "bytes"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26465,20 +28949,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 上传`Byte`数组。
+`}` `//` 上传`Byte`数组。
 
 ```
     err = bucket.PutObject("<yourObjectName>",
@@ -26486,21 +28968,22 @@ bytes.NewReader([]byte("yourObjectValueByteArrary")))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **上传文件流**
 
-以下代码用于上传文件流。 对象存储 OSS
+以下代码用于上传文件流。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26513,51 +28996,55 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 读取本地文件。
+`}` `//` 读取本地文件。
 
 ```
     fd, err := os.Open("<yourLocalFile>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     defer fd.Close()
 ```
 
 `//` 上传文件流。
 
 ```
+    err = bucket.PutObject("<yourObjectName>", fd)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **上传本地文件**
 
-以下代码用于上传本地文件。 对象存储 OSS
+以下代码用于上传本地文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26570,42 +29057,41 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 上传本地文件。
+`}` `//` 上传本地文件。
 
 ```
     err = bucket.PutObjectFromFile("<yourObjectName>", "<yourLocalFile>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 追加上传
+`}` `}`
 
-本文介绍如何使用追加上传。 追加类型的文件（Append Object）暂时不支持copyObject操作。文件不存在时，调用 `AppendObject` 会创建一以下代码用于追加上传文件。 对象存储 OSS
+##### 3.5.6.3 追加上传
+
+本文介绍如何使用追加上传。 追加类型的文件（Append Object）暂时不支持copyObject操作。文件不存在时，调用 `AppendObject` 会创建一个可追加的文件；文件存在时，调用 `AppendObject` 会向文件末尾追加内容。 以下代码用于追加上传文件。
 
 ```java
 package main import (
     "fmt"
     "os"
     "strings"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26618,21 +29104,24 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     var nextPos int64 = 0
 ```
 
-`//` 第一次追加的位置是0，返回值为下一次追加的位置。后续追加的位置是追加前文件的长度。
+`//` 第一次追加的位置是`0`，返回值为下一次追加的位置。后续追加的位置是追加前文件的长度。
 
 ```
     nextPos, err = bucket.AppendObject("<yourObjectName>",
@@ -26640,10 +29129,9 @@ strings.NewReader("YourObjectAppendValue1"), nextPos)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 第二次追加。
+`}` `//` 第二次追加。
 
 ```
     nextPos, err = bucket.AppendObject("<yourObjectName>",
@@ -26651,16 +29139,9 @@ strings.NewReader("YourObjectAppendValue2"), nextPos)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 您可以进行多次`Append`。
-
-```
-}
-```
-
-第一次追加（即开始位置是0的追加）可以指定文件元信息。后续追加不能指定文件元信息。 `//` 第一次追加指定文件元信息。
+`}` `//` 您可以进行多次`Append`。 `}` 第一次追加（即开始位置是0的追加）可以指定文件元信息。后续追加不能指定文件元信息。 `//` 第一次追加指定文件元信息。
 
 ```
     nextPos, err = bucket.AppendObject("<yourObjectName>",
@@ -26668,18 +29149,18 @@ strings.NewReader("YourObjectValue"), 0, oss.Meta("MyProp", "MyPropVal"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-对象存储 OSS
+`}`
 
-##### 断点续传上传
+##### 3.5.6.4 断点续传上传
 
 在使用分片上传的过程中，如果系统意外崩溃，可以在重启的时候通过ListMultipartUploads和ListParts两个接口来获取某个Object上的所有的分片上传任务和每个分片上传任务中上传成功的Part列表。这样就可以从最后一块成功上传的Part开始继续上传，从而达到断点续传的效果。 在上传的过程中会在Checkpoint文件中记录当前上传的进度信息，如果上传过程中某一分片上传失败，再次上传时会从Checkpoint文件中记录的点继续上传，从而达到断点续传的效果。上传完成后，Checkpoint文件会被删除。
 
-**说明**
+> **说明：** SDK会将上传的中间状态信息记录在Checkpoint文件中，所以要确保程序对Checkpoint文件有写权限。Checkpoint携带了校验信息，请不要修改。如果Checkpoint文件损坏则会重新上传所有分片。
+> 如果上传过程中本地文件发生了改变，则会重新上传所有分片。
 
-SDK会将上传的中间状态信息记录在Checkpoint文件中，所以要确保程序对Checkpoint文件有写权限。Checkpoint携带了校验信息，请不要修改。如果Checkpoint文件损坏则会重新上传所有分片。 如果上传过程中本地文件发生了改变，则会重新上传所有分片。 您可以使用 `Bucket.UploadFile` 实现断点续传。可设置的参数如下：
+您可以使用 `Bucket.UploadFile` 实现断点续传。可设置的参数如下：
 
 | 参数 | 说明 |
 |---|---|
@@ -26688,15 +29169,16 @@ SDK会将上传的中间状态信息记录在Checkpoint文件中，所以要确�
 | partSize | 分片上传大小，取值范围为100 KiB~5 GiB。 |
 | options | 可选项，包括： Routines：指定分片上传的并发数。默认是1，即不使用并发上传。 Checkpoint：指定是否开启断点续传功能以及设置Checkpoint文件。默认关闭断点续传功能。例如 oss.Checkpoint(true, "") 表示开启断点续传功能，并且 Checkpoint文件为与本地文件同目录下的 file.cp ，其中 file 是本地文件名称。您也可以使用 oss.Checkpoint(true, "your-cp-file.cp") 指定 Checkpoint文件。 其它元信息：请参见管理文件元信息。 |
 
-对象存储 OSS
+以下代码用于断点续传上传。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26709,20 +29191,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 分片大小`100K`，3个协程并发上传分片，使用断点续传。 `//` 其中`"<yourObjectName>"`为`objectKey`，表示断点上传文件到`OSS`时需要指定包含文件后缀在内的完整路径，例如a
+`}` `//` 分片大小`100K`，`3`个协程并发上传分片，使用断点续传。 `//` 其中`"<yourObjectName>"`为`objectKey`，表示断点上传文件到`OSS`时需要指定包含文件后缀在内的完整路径，例如`a`
 
 ```
 bc/efg/123.jpg。
@@ -26732,30 +29212,33 @@ ckpoint(true, ""))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 分片上传
+`}` `}`
+
+##### 3.5.6.5 分片上传
 
 分片上传将要上传的文件分成若干个分片（Part）分别上传，所有分片都上传完成后，将所有分片合并成完整的文件，完成整个文件的上传。 分片上传（Multipart Upload）分为以下三个步骤：
 1. 初始化一个分片上传事件。
 调用ossClient.initiateMultipartUpload方法返回OSS创建的全局唯一的uploadId。
 2. 上传分片。
+调用ossClient.uploadPart方法上传分片数据。
 
-**说明**
+> **说明：** 对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。
+> OSS将收到的分片数据的MD5值放在ETag头内返回给用户。
+> OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 
-对于同一个uploadId，分片号（partNumber）标识了该分片在整个文件内的相对位置。如果使用同一个分片号上传了新的数据，那么OSS上这个分片已有的数据将会被覆盖。 OSS将收到的分片数据的MD5值放在ETag头内返回给用户。 OSS计算上传数据的MD5值，并与SDK计算的MD5值比较，如果不一致则返回InvalidDigest错误码。
 3. 完成分片上传。
-对象存储 OSS 所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 以下通过一个完整的示例对分片上传的流程进行逐步解析：
+所有分片上传完成后，调用ossClient.completeMultipartUpload方法将所有分片合并成完整的文件。 以下通过一个完整的示例对分片上传的流程进行逐步解析：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26768,7 +29251,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     locaFilename := "<yourLocalFilename>"
@@ -26781,7 +29268,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
     fd, err := os.Open(locaFilename)
     defer fd.Close()
@@ -26799,43 +29290,57 @@ func main() {
     // storageType := oss.ObjectStorageClass(oss.StorageArchive)
 ```
 
-`//` 步骤1：初始化一个分片上传事件，指定存储类型为标准存储。
+`//` 步骤`1`：初始化一个分片上传事件，指定存储类型为标准存储。
 
 ```
     imur, err := bucket.InitiateMultipartUpload(objectName, storageType)
 ```
 
-`//` 步骤2：上传分片。
+`//` 步骤`2`：上传分片。
 
 ```
+    var parts []oss.UploadPart
     for _, chunk := range chunks {
         fd.Seek(chunk.Offset, os.SEEK_SET)
+```
+
+`//` 对每个分片调用`UploadPart`方法上传。
+
+```
         part, err := bucket.UploadPart(imur, fd, chunk.Size, chunk.Number)
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
-        parts = append(parts, part)
-    }
 ```
 
-`//` 指定访问权限为公共读，缺省为继承`bucket`的权限。
+`}`
+
+```
+        parts = append(parts, part)
+```
+
+`}` `//` 指定访问权限为公共读，缺省为继承`bucket`的权限。
 
 ```
     objectAcl := oss.ObjectACL(oss.ACLPublicRead)
 ```
 
-`//`步骤3：完成分片上传，指定访问权限为公共读。 对象存储 OSS `//` 步骤3：完成分片上传，指定访问权限为公共读
+`//`步骤`3`：完成分片上传，指定访问权限为公共读。 `//` 步骤`3`：完成分片上传，指定访问权限为公共读
 
 ```
     cmur, err := bucket.CompleteMultipartUpload(imur, parts, objectAcl)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("cmur:", cmur)
-}
 ```
+
+`}`
+
+```
+    fmt.Println("cmur:", cmur)
+```
+
+`}`
 
 **取消分片上传事件**
 
@@ -26845,9 +29350,10 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26860,38 +29366,36 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 初始化一个分片上传事件。
+`}` `//` 初始化一个分片上传事件。
 
 ```
     imur, err := bucket.InitiateMultipartUpload("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 取消分片上传。
+`}` `//` 取消分片上传。
 
 ```
+    err = bucket.AbortMultipartUpload(imur)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **列举已上传的分片**
 
@@ -26901,9 +29405,10 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -26915,14 +29420,16 @@ func main() {
 client err ossNe("<orEndpoint>" "<orAccessKeId>" "<orAccessKeSecret>")
 ```
 
-对象存储 OSS
-
 ```
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     locaFilename := "<yourLocalFilename>"
@@ -26936,10 +29443,9 @@ client err ossNe("<orEndpoint>" "<orAccessKeId>" "<orAccessKeSecret>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 将本地文件分片，此处分为3片。
+`}` `//` 将本地文件分片，此处分为`3`片。
 
 ```
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
@@ -26956,40 +29462,51 @@ client err ossNe("<orEndpoint>" "<orAccessKeId>" "<orAccessKeSecret>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 上传分片。
+`}` `//` 上传分片。
 
 ```
+    var parts []oss.UploadPart
     for _, chunk := range chunks {
         fd.Seek(chunk.Offset, os.SEEK_SET)
+```
+
+`//` 对每个分片调用`UploadPart`方法上传。
+
+```
         part, err := bucket.UploadPart(imur, fd, chunk.Size, chunk.Number)
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         fmt.Println("UploadPartNumber: ", part.PartNumber, ", ETag: ", part.ETag)
         parts = append(parts, part)
-    }
+```
+
+`}` `//` 根据`InitiateMultipartUploadResult`列举已上传的分片。
+
+```
     lsRes, err := bucket.ListUploadedParts(imur)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印已上传的分片。
+`}` `//` 打印已上传的分片。
 
 ```
     fmt.Println("\nParts:", lsRes.UploadedParts)
     for _, upload := range lsRes.UploadedParts {
         fmt.Println("List PartNumber:  ", upload.PartNumber, ", ETag: " ,upload.ETag, ",
 LastModified: ", upload.LastModified)
-    }
 ```
 
-`//` 根据`objectName`和`UploadID`生成`InitiateMultipartUploadResult`，然后列举所有已上传的分片，这种情况适用于已知`objectName`和`UploadID`的情况。
+`}` `//` 根据`objectName`和`UploadID`生成`InitiateMultipartUploadResult`，然后列举所有已上传的分片，这种情况适用于已知`objectName`和`UploadID`的情况。
 
 ```
     var imur_with_uploadid oss.InitiateMultipartUploadResult
@@ -27003,13 +29520,10 @@ LastModified: ", upload.LastModified)
     lsRes, err = bucket.ListUploadedParts(imur_with_uploadid)
 ```
 
-对象存储 OSS
-
 ```
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
 `//` 打印已上传的分片。
@@ -27019,20 +29533,24 @@ LastModified: ", upload.LastModified)
     for _, upload := range lsRes.UploadedParts {
         fmt.Println("List PartNumber:  ", upload.PartNumber, ", ETag: " ,upload.ETag, ",
 LastModified: ", upload.LastModified)
-    }
 ```
 
-`//` 完成分片上传。
+`}` `//` 完成分片上传。
 
 ```
     cmur, err := bucket.CompleteMultipartUpload(imur, parts)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("cmur:", cmur)
-}
 ```
+
+`}`
+
+```
+    fmt.Println("cmur:", cmur)
+```
+
+`}`
 
 **列举分片上传事件**
 
@@ -27046,15 +29564,16 @@ LastModified: ", upload.LastModified)
 | Prefix | 限定返回的文件名称必须以指定的prefix作为前缀。注意使用prefix查询时，返回的文件名称中仍会包含prefix。 |
 | UploadIDMarker | 与KeyMarker参数一同使用来指定返回结果的起始位置。 如果KeyMarker参数未设置，则OSS忽略该参数。 如果KeyMarker参数被设置，查询结果中包含： 所有Object名字的字典序大于KeyMarker参数值的分片上传事件。 Object名字等于KeyMarker参数值，但是Upload ID比UploadIDMarker参数值大的分片上传事件。 |
 
-使用默认参数对象存储 OSS
+使用默认参数
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27067,10 +29586,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucketName := "<yourBucketName>"
@@ -27078,10 +29596,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 列举所有分片上传事件。
+`}` `//` 列举所有分片上传事件。
 
 ```
     keyMarker := ""
@@ -27097,44 +29614,52 @@ oss.UploadIDMarker(uploadIdMarker))
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
 ```
 
-`//` 打印分片上传事件。
+`}` `//` 打印分片上传事件。
 
 ```
         for _, upload := range lsRes.Uploads {
             fmt.Println("Upload: ", upload.Key, ", UploadID: ",upload.UploadID)
-        }
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             keyMarker = lsRes.NextKeyMarker
             uploadIdMarker = lsRes.NextUploadIDMarker
         } else {
             break
-        }
-    }
-}
 ```
 
-指定前缀
+`}` `}` `}` 指定前缀
 
 ```
     lsRes, err := bucket.ListMultipartUploads(oss.Prefix("<yourObjectNamePrefix>"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
-指定最多返回100条结果数据对象存储 OSS
+指定最多返回100条结果数据
 
 ```
     lsRes, err := bucket.ListMultipartUploads(oss.MaxUploads(100))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
@@ -27146,11 +29671,15 @@ loads(100))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
-##### 进度条
+##### 3.5.6.6 进度条
 
 进度条用于指示上传或下载的进度。 下面的代码以Bucket.PutObjectFromFile方法为例，介绍如何使用进度条。
 
@@ -27158,15 +29687,16 @@ loads(100))
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-) `//` 定义进度条监听器。
+`)` `//` 定义进度条监听器。
 
 ```
-type OssProgressListener struct { }
+type OssProgressListener struct {
 ```
 
-`//` 定义进度变更事件处理函数。
+`}` `//` 定义进度变更事件处理函数。
 
 ```
 func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
@@ -27184,8 +29714,12 @@ func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
         fmt.Printf("\nTransfer Failed, ConsumedBytes: %d, TotalBytes %d.\n",
             event.ConsumedBytes, event.TotalBytes)
     default:
-    }
-} func main() {
+```
+
+`}` `}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -27196,11 +29730,8 @@ func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
         fmt.Println("Error:", err)
 ```
 
-对象存储 OSS
-
 ```
         os.Exit(-1)
-    }
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFile := "<yourLocalFile>"
@@ -27213,48 +29744,42 @@ func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 带进度条的上传。
+`}` `//` 带进度条的上传。
 
 ```
     err = bucket.PutObjectFromFile(objectName, localFile, oss.Progress(&OssProgressListener{}))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-#### 下载文件
+`}` `}`
 
-##### 概述
+#### 3.5.7 下载文件
 
-在OSS中，操作的基本数据单元是文件（Object）。OSS Go SDK提供了丰富的文件下载方式。 下载文件的完整示例代码请参见GitHub。 您可以通过以下方式下载OSS文件：
+##### 3.5.7.1 概述
 
-##### 流式下载
+在OSS中，操作的基本数据单元是文件（Object）。OSS Go SDK提供了丰富的文件下载方式。 下载文件的完整示例代码请参见GitHub。 您可以通过以下方式下载OSS文件： 下载过程中，您还可以通过进度条功能查看下载进度。
 
-##### 范围下载
-
-下载过程中，您还可以通过进度条功能查看下载进度。
-
-##### 流式下载
+##### 3.5.7.2 流式下载
 
 本文介绍如何使用流式下载。
 
 **下载文件到流**
 
-以下代码用于把指定的OSS文件下载到流： 对象存储 OSS
+以下代码用于把指定的OSS文件下载到流：
 
 ```java
 package main import (
     "fmt"
     "os"
     "io/ioutil"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27267,30 +29792,27 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 下载文件到流。
+`}` `//` 下载文件到流。
 
 ```
     body, err := bucket.GetObject("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
+`}` `//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
 
 ```
     defer body.Close()
@@ -27298,14 +29820,19 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("data:", string(data))
-}
 ```
+
+`}`
+
+```
+    fmt.Println("data:", string(data))
+```
+
+`}`
 
 **下载文件到缓存**
 
-以下代码用于把指定的OSS文件下载到本地缓存： 对象存储 OSS
+以下代码用于把指定的OSS文件下载到本地缓存：
 
 ```java
 package main import (
@@ -27313,9 +29840,10 @@ package main import (
     "os"
     "io"
     "bytes"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27328,46 +29856,50 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 下载文件到缓存。
+`}` `//` 下载文件到缓存。
 
 ```
     body, err := bucket.GetObject("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     defer body.Close()
     buf := new(bytes.Buffer)
     io.Copy(buf, body)
     fmt.Println("buf:", buf)
-}
 ```
+
+`}`
 
 **下载文件到本地文件流**
 
-对象存储 OSS
+以下代码用于把指定的OSS文件下载到本地文件流：
 
 ```java
 package main import (
     "fmt"
     "os"
     "io"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27380,54 +29912,62 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 下载文件到本地文件流。
+`}` `//` 下载文件到本地文件流。
 
 ```
     body, err := bucket.GetObject("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     defer body.Close()
     fd, err := os.OpenFile("LocalFile", os.O_WRONLY|os.O_CREATE, 0660)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    defer fd.Close()
-    io.Copy(fd, body)
-}
 ```
 
-##### 范围下载
+`}`
+
+```
+    defer fd.Close()
+    io.Copy(fd, body)
+```
+
+`}`
+
+##### 3.5.7.3 范围下载
 
 如果仅需要文件中的部分数据，您可以使用范围下载，下载指定范围内的数据。
 
 **指定正常的下载范围**
 
-以下代码用于指定正常的下载范围来下载文件。 对象存储 OSS
+以下代码用于指定正常的下载范围来下载文件。
 
 ```java
 package main import (
   "fmt"
   "os"
   "io/ioutil"
+  "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27440,30 +29980,27 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
-  }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
   bucket, err := client.Bucket("<yourBucketName>")
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
-  }
 ```
 
-`//` 获取15~35字节范围内的数据，包含`15`和`35`，共`21`个字节的数据。 `//` 如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
+`}` `//` 获取15~35字节范围内的数据，包含`15`和`35`，共`21`个字节的数据。 `//` 如果指定的范围无效（比如开始或结束位置的指定值为负数，或指定值大于文件大小），则下载整个文件。
 
 ```
   body, err := bucket.GetObject("<yourObjectName>", oss.Range(15, 35))
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
-  }
 ```
 
-`//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
+`}` `//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
 
 ```
   defer body.Close()
@@ -27471,10 +30008,15 @@ func main() {
   if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
-  }
-  fmt.Println("data:", string(data))
-}
 ```
+
+`}`
+
+```
+  fmt.Println("data:", string(data))
+```
+
+`}`
 
 **指定异常的下载范围**
 
@@ -27482,7 +30024,7 @@ func main() {
 
 **兼容行为范围下载**
 
-在请求中增加请求头x-oss-range-behavior:standard，则改变指定范围不在有效区间时OSS的下载行为。假设现有大小为1000 Byte的Object： 若指定了Range: bytes=500~2000，此时范围末端取值不在有效区间，返回500~999字节范围内容，且HTTP Code为206。 对象存储 OSS 若指定了Range: bytes=1000~2000，此时范围首端取值不在有效区间，返回HTTP Code为416，错误码为 InvalidRange。 以下代码用于标准行为范围下载。
+在请求中增加请求头x-oss-range-behavior:standard，则改变指定范围不在有效区间时OSS的下载行为。假设现有大小为1000 Byte的Object： 若指定了Range: bytes=500~2000，此时范围末端取值不在有效区间，返回500~999字节范围内容，且HTTP Code为206。 若指定了Range: bytes=1000~2000，此时范围首端取值不在有效区间，返回HTTP Code为416，错误码为 InvalidRange。 以下代码用于标准行为范围下载。
 
 ```java
 package main import (
@@ -27490,9 +30032,10 @@ package main import (
     "io/ioutil"
     "os"
     "strings"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27505,26 +30048,28 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 上传`1000`个字节内容。
+`}` `//` 上传`1000`个字节内容。
 
 ```
     strContent := ""
     for i := 0; i < 100; i++ {
         strContent += "abcdefghij"
-    }
+```
+
+`}`
+
+```
     fmt.Printf("content len:%d\n", len(strContent))
 ```
 
@@ -27535,10 +30080,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//`若指定了`Range: bytes=500-2000`，此时范围末端取值不在有效区间，返回500~999字节范围内容，且`http code`为 `206`。 `//`若指定了`Range: bytes=1000-2000`，此时范围首端取值不在有效区间，返回`http code`为`416`，错误码为`InvalidR` `ange`。
+`}` `//`若指定了`Range: bytes=500-2000`，此时范围末端取值不在有效区间，返回500~999字节范围内容，且`http code`为 `206`。 `//`若指定了`Range: bytes=1000-2000`，此时范围首端取值不在有效区间，返回`http code`为`416`，错误码为`InvalidR` `ange`。
 
 ```
     body, err := bucket.GetObject("<yourObjectName>", oss.Range(500, 2000),
@@ -27546,49 +30090,56 @@ oss.RangeBehavior("standard"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
+`}` `//` 数据读取完成后，获取的流必须关闭，否则会造成连接泄漏，导致请求无连接可用，程序无法正常工作。
 
 ```
     defer body.Close()
 data,err:=ioutil.ReadAll(body)
 ```
 
-对象存储 OSS
-
 ```
 data,e
 ```
 
-:
+`:`
 
 ```
 out .ead (body)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     if len(data) != 500 {
         fmt.Println("read data error, len:%d", len(data))
         os.Exit(-1)
-    }
-    fmt.Println("data:", string(data))
-}
 ```
 
-##### 下载到本地文件
+`}`
 
-本文介绍如何把OSS文件下载到本地。
+```
+    fmt.Println("data:", string(data))
+```
+
+`}`
+
+##### 3.5.7.4 下载到本地文件
+
+本文介绍如何把OSS文件下载到本地。 以下代码用于把指定的OSS文件下载到本地文件：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27601,57 +30152,57 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 下载文件到本地文件。
+`}` `//` 下载文件到本地文件。
 
 ```
     err = bucket.GetObjectToFile("<yourObjectName>", "LocalFile")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 断点续传下载
+`}` `}`
 
-当下载大文件时，如果网络不稳定或者程序异常退出，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提对象存储 OSS 在下载的过程中会在checkpoint文件中记录当前下载的进度信息，如果下载过程中某一分片下载失败，再次下载时会从checkpoint文件中记录的点继续下载，从而达到断点续传下载的效果。下载完成后，checkpoint文件会被删除。
+##### 3.5.7.5 断点续传下载
 
-**说明**
+当下载大文件时，如果网络不稳定或者程序异常退出，会导致下载失败，甚至重试多次仍无法完成下载。为此OSS提供了断点续传下载功能。 断点续传下载将需要下载的大文件分成多个较小的分片并发下载，加速下载完成时间。 在下载的过程中会在checkpoint文件中记录当前下载的进度信息，如果下载过程中某一分片下载失败，再次下载时会从checkpoint文件中记录的点继续下载，从而达到断点续传下载的效果。下载完成后，checkpoint文件会被删除。
 
-SDK会将下载的中间状态信息记录在Checkpoint文件中，所以要确保程序对Checkpoint文件有写权限。Checkpoint携带了校验信息，请不要修改。如果Checkpoint文件损坏则会重新下载文件。 如果下载过程中待下载的OSS文件发生了改变（ETag改变），或者part文件丢失或被修改，则会重新下载文件。 您可以使用 `Bucket.DownloadFile` 实现断点续传下载。可设置的参数如下：
+> **说明：** SDK会将下载的中间状态信息记录在Checkpoint文件中，所以要确保程序对Checkpoint文件有写权限。Checkpoint携带了校验信息，请不要修改。如果Checkpoint文件损坏则会重新下载文件。
+> 如果下载过程中待下载的OSS文件发生了改变（ETag改变），或者part文件丢失或被修改，则会重新下载文件。
 
-| 参数 | 说明 |  |
+您可以使用 `Bucket.DownloadFile` 实现断点续传下载。可设置的参数如下：
+
+| 参数 | 说明 |   |
 |---|---|---|
-| objectKey | 要下载的OSS文件名称。 |  |
-| filePath | 下载到本地文件的路径。 |  |
-| partSize | 下载分片大小，取值范围为1 B~5 GiB。 |  |
-| options | 可选项，包括： Routines：指定分片下载的并发数。默认是1，即不使用并发下载。 Checkpoint：指定是否开启断点续传下载功能以及设置 Checkpoint文件。默认关闭断点续传下载功能。例如 oss.Checkpoint(true, "") 表示开启断点续传下载功能，并且Checkpoint文件为与本地文件同目录下的 file.cp ，其中 file 是本地文件名称。您也可以使用 oss.Checkpoint(true, "your-cp- file.cp") 指定Checkpoint文件。 下载时限定条件，请参见管理文件元信息。 |  |
+| objectKey | 要下载的OSS文件名称。 |   |
+| filePath | 下载到本地文件的路径。 |   |
+| partSize | 下载分片大小，取值范围为1 B~5 GiB。 |   |
+| options | 可选项，包括： Routines：指定分片下载的并发数。默认是1，即不使用并发下载。 Checkpoint：指定是否开启断点续传下载功能以及设置 Checkpoint文件。默认关闭断点续传下载功能。例如 oss.Checkpoint(true, "") 表示开启断点续传下载功能，并且Checkpoint文件为与本地文件同目录下的 file.cp ，其中 file 是本地文件名称。您也可以使用 oss.Checkpoint(true, "your-cp- file.cp") 指定Checkpoint文件。 下载时限定条件，请参见管理文件元信息。 |   |
 
-|  | file.cp") |  |
+|   | file.cp") |   |
 |---|---|---|
 
-对象存储 OSS
+以下代码用于断点续传下载。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27664,20 +30215,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 其中`"<yourObjectName>"`为`objectKey`，表示从`OSS`断点下载文件到时需要指定包含文件后缀在内的完整路径，例
+`}` `//` 分片下载。`3`个协程并发下载分片，开启断点续传下载。 `//` 其中`"<yourObjectName>"`为`objectKey`，表示从`OSS`断点下载文件到时需要指定包含文件后缀在内的完整路径，例
 
 ```
 如abc/efg/123.jpg。
@@ -27687,11 +30236,11 @@ heckpoint(true, ""))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 限定条件下载
+`}` `}`
+
+##### 3.5.7.6 限定条件下载
 
 下载文件时，可以指定一个或多个限定条件。满足限定条件则下载，不满足则返回错误，不下载。 可以使用的限定条件如下：
 
@@ -27701,21 +30250,20 @@ heckpoint(true, ""))
 | IfUnmodifiedSince | 如果指定的时间等于或者晚于文件实际修改时间，则正常传输文件，否则返回错误（412 Precondition failed）。 | oss.IfUnmodifiedSince |
 | IfMatch | 如果指定的ETag和OSS文件的ETag匹配，则正常传输文件，否则返回错误 （412 Precondition failed）。 | oss.IfMatch |
 
-对象存储 OSS
-
 | IfNoneMatch | 如果指定的ETag和OSS文件的ETag不匹配，则正常传输文件，否则返回错误 （304 Not modified）。 | oss.IfNoneMatch |
 |---|---|---|
 
-If-Modified-Since和If-Unmodified-Since可以同时存在。If-Match和If-None-Match可以同时存在。ETag可以通
+If-Modified-Since和If-Unmodified-Since可以同时存在。If-Match和If-None-Match可以同时存在。ETag可以通过Bucket.GetObjectDetailedMeta方法获取。 以下代码用于限定条件下载。
 
 ```java
 package main import (
     "fmt"
     "os"
     "time"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27728,20 +30276,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 设置时间限定条件。
+`}` `//` 设置时间限定条件。
 
 ```
     date := time.Date(2015, time.November, 10, 23, 0, 0, 0, time.UTC)
@@ -27754,37 +30300,37 @@ func main() {
     if err == nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 满足限定条件，下载文件。
+`}` `//` 满足限定条件，下载文件。
 
 ```
     err = bucket.GetObjectToFile("<yourObjectName>", "LocalFile", oss.IfUnmodifiedSince(date))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
 
-##### 进度条
+`}` `}`
 
-进度条用于指示上传或下载的进度。 下面的代码以Bucket.GetObjectToFile方法为例，介绍如何使用进度条。 对象存储 OSS
+##### 3.5.7.7 进度条
+
+进度条用于指示上传或下载的进度。 下面的代码以Bucket.GetObjectToFile方法为例，介绍如何使用进度条。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-) `//` 定义进度条监听器。
+`)` `//` 定义进度条监听器。
 
 ```
-type OssProgressListener struct { }
+type OssProgressListener struct {
 ```
 
-`//` 定义进度变更事件处理函数。
+`}` `//` 定义进度变更事件处理函数。
 
 ```
 func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
@@ -27802,8 +30348,12 @@ func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
         fmt.Printf("\nTransfer Failed, ConsumedBytes: %d, TotalBytes %d.\n",
             event.ConsumedBytes, event.TotalBytes)
     default:
-    }
-} func main() {
+```
+
+`}` `}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -27813,7 +30363,11 @@ func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFile := "<yourLocalFile>"
@@ -27826,44 +30380,36 @@ func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 带进度条的下载。
+`}` `//` 带进度条的下载。
 
 ```
     err = bucket.GetObjectToFile(objectName, localFile, oss.Progress(&OssProgressListener{}))
     if err != nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
-    }
     fmt.Println("Transfer Completed.")
-}
 ```
 
-对象存储 OSS
+#### 3.5.8 管理文件
 
-#### 管理文件
+##### 3.5.8.1 概述
 
-##### 概述
+您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 ListObjects、DeleteObject、CopyObject等。 利用上述接口，您可以完成以下操作：
 
-您可以通过一系列的接口管理存储空间（Bucket）下的文件（Object），例如SetObjectAcl、GetObjectAcl、 利用上述接口，您可以完成以下操作：
+##### 3.5.8.2 判断文件是否存在
 
-##### 列举文件
-
-##### 删除文件
-
-##### 拷贝文件
-
-##### 判断文件是否存在
+本文介绍如何判断文件是否存在。 以下代码用于判断文件是否存在。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27876,31 +30422,37 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}` `//` 判断文件是否存在。
+
+```
     isExist, err := bucket.IsObjectExist("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Exist:", isExist)
-}
 ```
 
-对象存储 OSS
+`}`
 
-##### 管理文件访问权限
+```
+    fmt.Println("Exist:", isExist)
+```
 
-文件访问权限的完整示例代码请参见GitHub。 文件的访问权限（ACL）有以下四种：
+`}`
+
+##### 3.5.8.3 管理文件访问权限
+
+本文介绍如何管理文件访问权限。 文件访问权限的完整示例代码请参见GitHub。 文件的访问权限（ACL）有以下四种：
 
 | 访问权限 | 描述 | 访问权限值 |
 |---|---|---|
@@ -27909,15 +30461,16 @@ func main() {
 | 公共读 | 文件的拥有者和授权用户有该文件的读写权限，其他用户只有文件的读权限。 请谨慎使用该权限。 | oss.ACLPublicRead |
 | 公共读写 | 所有用户都有该文件的读写权限。请谨慎使用该权限。 | oss.PublicReadWrite |
 
-文件的访问权限优先级高于存储空间的访问权限。例如存储空间的访问权限是私有，而文件的访问权限是公共读写， 则所有用户都有该文件的读写权限。如果某个文件没有设置过访问权限，则遵循存储空间的访问权限。 以下是设置并获取文件访问权限的完整代码： 对象存储 OSS
+文件的访问权限优先级高于存储空间的访问权限。例如存储空间的访问权限是私有，而文件的访问权限是公共读写， 则所有用户都有该文件的读写权限。如果某个文件没有设置过访问权限，则遵循存储空间的访问权限。 以下是设置并获取文件访问权限的完整代码：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -27930,44 +30483,46 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 设置文件的访问权限。
+`}` `//` 设置文件的访问权限。
 
 ```
     err = bucket.SetObjectACL("<yourObjectName>", oss.ACLPublicReadWrite)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取文件的访问权限。
+`}` `//` 获取文件的访问权限。
 
 ```
     aclRes, err := bucket.GetObjectACL("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Object ACL:", aclRes.ACL)
-}
 ```
 
-##### 管理文件元信息
+`}`
 
-文件元信息的完整代码请参见GitHub。
+```
+    fmt.Println("Object ACL:", aclRes.ACL)
+```
+
+`}`
+
+##### 3.5.8.4 管理文件元信息
+
+本文介绍如何使用对象存储OSS的Go SDK设置、修改和获取文件元信息。 文件元信息的完整代码请参见GitHub。
 
 **设置文件元信息**
 
@@ -27979,15 +30534,13 @@ func main() {
 | ContentDisposition | 指定该文件被下载时的名称。 |
 | ContentEncoding | 指定该文件被下载时的内容编码格式。 |
 
-对象存储 OSS
-
 | Expires | 设置缓存过期时间，格式是格林威治时间（GMT）。 |
 |---|---|
 | ServerSideEncryption | 指定OSS创建文件时的服务器端加密编码算法。有效值： AES256。 |
 | ObjectACL | 指定OSS创建的文件的访问权限。 |
 | Meta | 自定义元信息，以 X-Oss-Meta- 为前缀的参数。 |
 
-以下代码用于设置文件元信息： 对象存储 OSS
+以下代码用于设置文件元信息：
 
 ```java
 package main import (
@@ -27995,9 +30548,10 @@ package main import (
     "os"
     "time"
     "strings"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28010,20 +30564,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 设置文件元信息：过期时间为`2049`年1月`10`日 `23:00:00 GMT`，访问权限为公共读，自定义元信息为`MyProp`（取值`My`
+`}` `//` 设置文件元信息：过期时间为`2049`年`1`月`10`日 `23:00:00 GMT`，访问权限为公共读，自定义元信息为`MyProp`（取值`My`
 
 ```
 PropVal）
@@ -28032,42 +30584,46 @@ PropVal）
         oss.Expires(expires),
         oss.ObjectACL(oss.ACLPublicRead),
         oss.Meta("MyProp", "MyPropVal"),
-    }
 ```
 
-`//` 使用数据流上传文件。
+`}` `//` 使用数据流上传文件。
 
 ```
     err = bucket.PutObject("<yourObjectName>", strings.NewReader("MyObjectValue"), options...)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取文件元信息。
+`}` `//` 获取文件元信息。
 
 ```
     props, err := bucket.GetObjectDetailedMeta("<yourObjectName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Object Meta:", props)
-}
 ```
+
+`}`
+
+```
+    fmt.Println("Object Meta:", props)
+```
+
+`}`
 
 **修改文件元信息**
 
-您可以一次修改一条或多条元信息，代码如下： 对象存储 OSS
+您可以一次修改一条或多条元信息，代码如下：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28080,7 +30636,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
 ```
@@ -28092,56 +30652,63 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 一次修改一条元信息。
+`}` `//` 一次修改一条元信息。
 
 ```
     err = bucket.SetObjectMeta(objectName, oss.Meta("MyMeta", "MyMetaValue1"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 一次修改多条元信息。
+`}` `//` 一次修改多条元信息。
 
 ```
     options := []oss.Option{
         oss.Meta("MyMeta", "MyMetaValue2"),
         oss.Meta("MyObjectLocation", "HangZhou"),
-    }
+```
+
+`}`
+
+```
     err = bucket.SetObjectMeta(objectName, options...)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取文件元信息。
+`}` `//` 获取文件元信息。
 
 ```
     props, err := bucket.GetObjectDetailedMeta(objectName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Object Meta:", props)
-}
 ```
+
+`}`
+
+```
+    fmt.Println("Object Meta:", props)
+```
+
+`}`
 
 **获取文件元信息**
 
-以下代码用于获取文件元数据。 对象存储 OSS
+以下代码用于获取文件元数据。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28154,7 +30721,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
 ```
@@ -28166,22 +30737,26 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取文件元信息。
+`}` `//` 获取文件元信息。
 
 ```
     props, err := bucket.GetObjectDetailedMeta(objectName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-    fmt.Println("Object Meta:", props)
-}
 ```
 
-##### 列举文件
+`}`
+
+```
+    fmt.Println("Object Meta:", props)
+```
+
+`}`
+
+##### 3.5.8.5 列举文件
 
 本文介绍如何列举文件。 OSS文件按照字母顺序排列。您可以通过 `Bucket.ListObjects` 列出存储空间下的文件。主要的参数如下：
 
@@ -28192,7 +30767,7 @@ func main() {
 | maxKeys | 限定此次列举文件的最大个数。默认值为100，最大值为1000。 |
 | marker | 列举指定marker之后的文件。 |
 
-对象存储 OSS 列举文件的完整代码请参见Github。
+列举文件的完整代码请参见Github。
 
 **简单列举文件**
 
@@ -28202,15 +30777,21 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -28219,20 +30800,18 @@ func HandleError(err error) {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 列举所有文件。
+`}` `//` 列举所有文件。
 
 ```
     marker := ""
@@ -28240,35 +30819,38 @@ func HandleError(err error) {
         lsRes, err := bucket.ListObjects(oss.Marker(marker))
         if err != nil {
             HandleError(err)
-        }
 ```
 
-`//` 打印列举文件，默认情况下一次返回`100`条记录。
+`}` `//` 打印列举文件，默认情况下一次返回`100`条记录。
 
 ```
         for _, object := range lsRes.Objects {
             fmt.Println("Bucket: ", object.Key)
-        }
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **列举指定个数的文件**
 
-以下代码用于列举指定个数的文件。 对象存储 OSS
+以下代码用于列举指定个数的文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28281,7 +30863,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28292,40 +30878,39 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 设置列举文件的最大个数，并列举文件。
+`}` `//` 设置列举文件的最大个数，并列举文件。
 
 ```
     lsRes, err := bucket.ListObjects(oss.MaxKeys(200))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印结果。
+`}` `//` 打印结果。
 
 ```
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
-    }
-}
 ```
+
+`}` `}`
 
 **列举指定前缀的文件**
 
-以下代码用于列举指定前缀的文件。 对象存储 OSS
+以下代码用于列举指定前缀的文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28338,7 +30923,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28349,40 +30938,39 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 列举包含指定前缀的文件。默认列举`100`个文件。
+`}` `//` 列举包含指定前缀的文件。默认列举`100`个文件。
 
 ```
     lsRes, err := bucket.ListObjects(oss.Prefix("my-object-"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印结果。
+`}` `//` 打印结果。
 
 ```
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
-    }
-}
 ```
+
+`}` `}`
 
 **列举指定marker之后的文件**
 
-以下代码用于列举指定marker之后的文件。 对象存储 OSS
+以下代码用于列举指定marker之后的文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28395,7 +30983,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28406,40 +30998,39 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 列举指定`marker`之后的文件。默认列举`100`个文件。
+`}` `//` 列举指定`marker`之后的文件。默认列举`100`个文件。
 
 ```
     lsRes, err := bucket.ListObjects(oss.Marker("my-object-xx"))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 打印结果。
+`}` `//` 打印结果。
 
 ```
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
-    }
-}
 ```
+
+`}` `}`
 
 **分页列举所有文件**
 
-以下代码用于分页列举所有文件。 对象存储 OSS
+以下代码用于分页列举所有文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28452,7 +31043,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28463,10 +31058,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 分页列举所有文件。每页列举`200`个。
+`}` `//` 分页列举所有文件。每页列举`200`个。
 
 ```
     marker := oss.Marker("")
@@ -28475,27 +31069,31 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if !lsRes.IsTruncated {
             break
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **分页列举指定marker之后的文件**
 
-以下代码用于分页列举指定maker之后的文件。每页列举的文件个数通过maxKeys指定。 对象存储 OSS
+以下代码用于分页列举指定maker之后的文件。每页列举的文件个数通过maxKeys指定。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28508,7 +31106,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28519,10 +31121,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 分页列举指定`maker`之后的文件。每页列举`50`个。
+`}` `//` 分页列举指定`maker`之后的文件。每页列举`50`个。
 
 ```
     marker = oss.Marker("my-object-xx")
@@ -28531,27 +31132,31 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if !lsRes.IsTruncated {
             break
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **分页列举指定前缀的文件**
 
-以下代码用于分页列举包含指定前缀的文件。每页列举的文件个数通过maxKeys指定。 对象存储 OSS
+以下代码用于分页列举包含指定前缀的文件。每页列举的文件个数通过maxKeys指定。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28564,7 +31169,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28575,10 +31184,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 分页列举包含指定前缀的文件。每页列举`80`个。
+`}` `//` 分页列举包含指定前缀的文件。每页列举`80`个。
 
 ```
     prefix := oss.Prefix("my-object-")
@@ -28588,28 +31196,32 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lsRes.Prefix)
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if !lsRes.IsTruncated {
             break
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **列举指定前缀（目录）下所有文件的信息**
 
-以下代码用于列举指定前缀（目录）下所有文件的信息，包含文件大小、文件最后被修改的时间及文件名等： 对象存储 OSS
+以下代码用于列举指定前缀（目录）下所有文件的信息，包含文件大小、文件最后被修改的时间及文件名等：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28622,20 +31234,18 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 遍历文件。
+`}` `//` 遍历文件。
 
 ```
     marker := oss.Marker("")
@@ -28645,30 +31255,38 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         for _, object := range lor.Objects {
             fmt.Printf("%s %d %s\n", object.LastModified, object.Size, object.Key)
-        }
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if !lor.IsTruncated {
             break
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **列举指定前缀（目录）下所有子目录的信息**
 
-以下代码用于列举指定目录下所有子目录的信息： 对象存储 OSS
+以下代码用于列举指定目录下所有子目录的信息：
 
 ```java
 import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28681,17 +31299,20 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     marker := oss.Marker("")
     prefix := oss.Prefix("<yourDirPrefix>")
     for {
@@ -28699,38 +31320,46 @@ func main() {
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         for _, dirName := range lor.CommonPrefixes {
             fmt.Println(dirName)
-        }
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if !lor.IsTruncated {
             break
-        }
-    }
-}
 ```
 
-##### 删除文件
+`}` `}` `}`
+
+##### 3.5.8.6 删除文件
 
 本文介绍如何删除文件。
 
-**警告**
+> **警告：** 请您谨慎使用删除操作，文件删除后将无法恢复。
 
-请您谨慎使用删除操作，文件删除后将无法恢复。 删除文件的完整代码请参见GitHub。
+删除文件的完整代码请参见GitHub。
 
 **删除单个文件**
 
-以下代码用于删除examplebucket中的exampleobject.txt文件。 对象存储 OSS
+以下代码用于删除examplebucket中的exampleobject.txt文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28743,7 +31372,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
 ```
@@ -28755,30 +31388,31 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 删除单个文件。`objectName`表示删除`OSS`文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。 `//` 如需删除文件夹，请将`objectName`设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有`object`删除后才能删除该文件夹。
+`}` `//` 删除单个文件。`objectName`表示删除`OSS`文件时需要指定包含文件后缀在内的完整路径，例如`abc/efg/123.jpg`。 `//` 如需删除文件夹，请将`objectName`设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有`object`删除后才能删除该文件夹。
 
 ```
+    err = bucket.DeleteObject(objectName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **删除多个文件**
 
-您可以通过 `Bucket.DeleteObjects` 来删除多个文件，并通过 `DeleteObjectsQuiet` 参数来指定是否返回删除的结果。默认返回删除成功的文件。 以下代码用于删除多个文件。 对象存储 OSS
+您可以通过 `Bucket.DeleteObjects` 来删除多个文件，并通过 `DeleteObjectsQuiet` 参数来指定是否返回删除的结果。默认返回删除成功的文件。 以下代码用于删除多个文件。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28791,7 +31425,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
 ```
 
@@ -28802,17 +31440,20 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 返回删除成功的文件。
+`}` `//` 返回删除成功的文件。
 
 ```
     delRes, err := bucket.DeleteObjects([]string{"my-object-1", "my-object-2"})
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Deleted Objects:", delRes.DeletedObjects)
 ```
 
@@ -28820,12 +31461,13 @@ func main() {
 
 ```
     _, err = bucket.DeleteObjects([]string{"my-object-3", "my-object-4"},
+    oss.DeleteObjectsQuiet(true))
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **删除指定前缀（prefix）的文件**
 
@@ -28835,59 +31477,56 @@ func main() {
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
 ```
 
-`//` 创建`OSSClient`实例。 `li` t N
+`//` 创建`OSSClient`实例。 `li` `t` `N`
 
 ```
 ("<
 ```
 
-Ed
+`E``d`
 
 ```
 it>"
 ```
 
-`"<` A K
+`"<` `A` `K`
 
 ```
 Id>"
 ```
 
-`"<` A K S
+`"<` `A` `K` `S`
 
 ```
 t>")
 ```
-
-对象存储 OSS
 
 ```
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket("<yourBucketName>")
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 列举所有包含指定前缀的文件并删除。
+`}` `//` 列举所有包含指定前缀的文件并删除。
 
 ```
     marker := oss.Marker("")
@@ -28898,45 +31537,67 @@ t>")
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         objects := []string{}
         for _, object := range lor.Objects {
-        }
+            objects = append(objects, object.Key)
+```
+
+`}`
+
+```
         delRes, err := bucket.DeleteObjects(objects, oss.DeleteObjectsQuiet(true))
         if err != nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         if len(delRes.DeletedObjects) > 0 {
             fmt.Println("these objects deleted failure,", delRes.DeletedObjects)
             os.Exit(-1)
-        }
+```
+
+`}`
+
+```
         count += len(objects)
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if !lor.IsTruncated {
             break
-        }
-    }
-    fmt.Printf("success,total delete object count:%d\n", count)
-}
 ```
 
-##### 拷贝文件
+`}` `}`
+
+```
+    fmt.Printf("success,total delete object count:%d\n", count)
+```
+
+`}`
+
+##### 3.5.8.7 拷贝文件
 
 本文介绍如何拷贝文件。 拷贝文件的完整代码请参见GitHub。
 
 **同一存储空间内拷贝文件**
 
-对象存储 OSS 以下代码用于在同一个存储空间内拷贝文件：
+以下代码用于在同一个存储空间内拷贝文件：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28949,7 +31610,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     destObjectName := "<yourDestObjectName>"
@@ -28962,31 +31627,31 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 拷贝文件到同一个存储空间的另一个文件。
+`}` `//` 拷贝文件到同一个存储空间的另一个文件。
 
 ```
     _, err = bucket.CopyObject(objectName, destObjectName)
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **跨存储空间拷贝文件**
 
-您可以将其它存储空间的文件拷贝到当前存储空间，也可以将当前存储空间的文件拷贝到其它存储空间。代码如下： 对象存储 OSS
+您可以将其它存储空间的文件拷贝到当前存储空间，也可以将当前存储空间的文件拷贝到其它存储空间。代码如下：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -28999,7 +31664,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     srcBucketName := "<yourSrcBucketName>"
     dstBucketName := "<yourDstBucketName>"
@@ -29014,40 +31683,38 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 从其它存储空间（`srcBucketName`）拷贝源文件（`srcObjectName`）到本存储空间。
+`}` `//` 从其它存储空间（`srcBucketName`）拷贝源文件（`srcObjectName`）到本存储空间。
 
 ```
     bucket.CopyObjectFrom(srcBucketName, srcObjectName, dstObjectName)
     if err != nil {
+        fmt.Println("CopyObjectFrom Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 从本存储空间拷贝源文件（`srcObjectName`）到其它存储空间（`dstBucketName`）。
+`}` `//` 从本存储空间拷贝源文件（`srcObjectName`）到其它存储空间（`dstBucketName`）。
 
 ```
     bucket.CopyObjectTo(dstBucketName, dstObjectName, srcObjectName)
     if err != nil {
+        fmt.Println("CopyObjectTo Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **拷贝时处理文件元信息**
 
-您可以在拷贝文件时通过**MetadataDirective**参数来处理文件元信息。**MetadataDirective**的取值如下： oss.MetaCopy：默认值。目标文件的元信息与源文件的元信息相同，即拷贝源文件的元信息。 oss.MetaReplace：使用指定的元信息覆盖源文件的元信息。 oss.MetaReplace将覆盖源文件的全部元信息，且无法恢复，请谨慎操作。
+您可以在拷贝文件时通过**MetadataDirective**参数来处理文件元信息。**MetadataDirective**的取值如下： oss.MetaCopy：默认值。目标文件的元信息与源文件的元信息相同，即拷贝源文件的元信息。 oss.MetaReplace：使用指定的元信息覆盖源文件的元信息。
 
-**重要**
+> **重要：** oss.MetaReplace将覆盖源文件的全部元信息，且无法恢复，请谨慎操作。
 
 **MetadataDirective**取值为oss.MetaReplace时，可以指定的元信息如下：
 
 | 参数 | 说明 |
 |---|---|
-
-对象存储 OSS
 
 | CacheControl | 指定目标文件被下载时的网页的缓存行为。 |
 |---|---|
@@ -29058,16 +31725,17 @@ func main() {
 | ObjectACL | 指定OSS创建的目标文件的访问权限。 |
 | Meta | 自定义元信息，以 X-Oss-Meta- 为前缀的参数。 |
 
-以下代码用于在拷贝时处理文件元信息： 对象存储 OSS
+以下代码用于在拷贝时处理文件元信息：
 
 ```java
 package main import (
     "fmt"
     "os"
     "time"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -29080,7 +31748,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     destObjectName := "<yourDestObjectName>"
@@ -29093,10 +31765,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
 ```
 
-`//` 指定目标文件的元信息。
+`}` `//` 指定目标文件的元信息。
 
 ```
     expires := time.Date(2049, time.January, 10, 23, 0, 0, 0, time.UTC)
@@ -29114,9 +31785,9 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
-}
 ```
+
+`}` `}`
 
 **限定条件拷贝**
 
@@ -29128,8 +31799,6 @@ func main() {
 | CopySourceIfNoneMatch | 如果源文件的ETag和指定的ETag不匹配，则执行拷贝操作；否则返回错误。 |
 | CopySourceIfModifiedSince | 如果指定的时间早于实际修改时间，则执行拷贝操作；否则返回错误。 |
 
-对象存储 OSS
-
 | CopySourceIfUnmodifiedSinc e | 如果指定的时间等于或者晚于文件实际修改时间，则执行拷贝操作；否则返回错误。 |
 |---|---|
 
@@ -29140,9 +31809,10 @@ package main import (
     "fmt"
     "os"
     "time"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -29155,7 +31825,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     // bucketName := "<yourBucketName>"
     // objectName := "<yourObjectName>"
     bucketName := "<yourBucketName>"
@@ -29171,7 +31845,11 @@ func main() {
     if err != nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
-    }
+```
+
+`}`
+
+```
     date := time.Date(2011, time.November, 10, 23, 0, 0, 0, time.UTC)
 ```
 
@@ -29182,29 +31860,32 @@ func main() {
 oss.CopySourceIfModifiedSince(date))
     if err != nil {
         fmt.Println("CopyObject CopySourceIfModifiedSince Error:", err)
-    }
 ```
 
-`//` 不满足限定条件，不执行拷贝。
+`}` `//` 不满足限定条件，不执行拷贝。
 
 ```
     _, err = bucket.CopyObject(objectName, destUnMatchObjectName,
 oss.CopySourceIfUnmodifiedSince(date))
     if err != nil {
         fmt.Println("CopyObject CopySourceIfUnmodifiedSince Error:", err)
-    }
-}
 ```
 
-对象存储 OSS
+`}` `}`
 
-#### 授权访问
+#### 3.5.9 授权访问
 
 本文介绍如何使用STS和文件URL进行授权访问。
 
 **使用STS进行临时授权**
 
-阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 以下代码用于使用STS凭证构造签名请求： `//` 用户拿到`STS`临时凭证后，通过其中的安全令牌（`SecurityToken`）和临时访问密钥（`AccessKeyId`和`AccessKeySecret` ）生成`OSSClient`。 `//` 创建`OSSClient`实例。
+阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或子用户（即用户身份由您自己管理的用户）颁发一个自定义时效和权限的访问凭证。 以下代码用于使用STS凭证构造签名请求：
+
+```java
+import "github.com/aliyun/aliyun-oss-go-sdk/oss"
+```
+
+`//` 用户拿到`STS`临时凭证后，通过其中的安全令牌（`SecurityToken`）和临时访问密钥（`AccessKeyId`和`AccessKeySecret` ）生成`OSSClient`。 `//` 创建`OSSClient`实例。
 
 ```
 client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>", oss.Secu rityToken("<yourSecurityToken>")) if err != nil {
@@ -29212,11 +31893,7 @@ client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySec
     os.Exit(-1)
 ```
 
-`// OSS`操作。
-
-```
-}
-```
+`// OSS`操作。 `}`
 
 **使用签名URL进行临时授权**
 
@@ -29227,91 +31904,116 @@ package main import (
     "fmt"
     "os"
     "strings"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFilename := "<yourLocalFilename>"
 ```
 
-对象存储 OSS `//` 获取存储空间。
+`//` 获取存储空间。
 
 ```
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 签名直传。
+`}` `//` 签名直传。
 
 ```
     signedURL, err := bucket.SignURL(objectName, oss.HTTPPut, 60)
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`var val = "`上云就上阿里云"
+`}` `var val = "`上云就上阿里云`"`
 
 ```
     err = bucket.PutObjectWithURL(signedURL, strings.NewReader(val))
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 带可选参数的签名直传。
+`}` `//` 带可选参数的签名直传。
 
 ```
     options := []oss.Option{
         oss.Meta("myprop", "mypropval"),
         oss.ContentType("image/tiff"),
-    }
+```
+
+`}`
+
+```
     signedURL, err = bucket.SignURL(objectName, oss.HTTPPut, 60, options...)
     if err != nil {
         HandleError(err)
-    }
+```
+
+`}`
+
+```
     err = bucket.PutObjectFromFileWithURL(signedURL, localFilename, options...)
     if err != nil {
         HandleError(err)
-    }
-}
 ```
+
+`}` `}`
 
 **说明**
 
-使用签名URL下载文件生成用于下载的签名URL。 对象存储 OSS
+可选参数详情请参见管理文件元信息。 使用签名URL下载文件生成用于下载的签名URL。
 
 ```java
 package main import (
     "fmt"
     "os"
     "io/ioutil"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localDownloadedFilename := "<yourDownloadedFilename>"
@@ -29323,22 +32025,25 @@ func HandleError(err error) {
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 签名直传，下载到流。
+`}` `//` 签名直传，下载到流。
 
 ```
     signedURL, err := bucket.SignURL(objectName, oss.HTTPGet, 60)
     if err != nil {
         HandleError(err)
-    }
-    if err != nil {
-        HandleError(err)
-    }
 ```
 
-`//` 读取内容。
+`}`
+
+```
+    body, err := bucket.GetObjectWithURL(signedURL)
+    if err != nil {
+        HandleError(err)
+```
+
+`}` `//` 读取内容。
 
 ```
     data, err := ioutil.ReadAll(body)
@@ -29352,17 +32057,17 @@ func HandleError(err error) {
     err = bucket.GetObjectToFileWithURL(signedURL, localDownloadedFilename)
     if err != nil {
         HandleError(err)
-    }
-}
 ```
 
-#### 图片处理
+`}` `}`
 
-对象存储 OSS 图片处理是OSS提供的海量、安全、低成本、高可靠的图片处理服务。原始图片上传到OSS后，您可以通过简单的 RESTful接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。
+#### 3.5.10 图片处理
+
+图片处理是OSS提供的海量、安全、低成本、高可靠的图片处理服务。原始图片上传到OSS后，您可以通过简单的 RESTful接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。
 
 **图片处理基础功能**
 
-OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** > **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
+OSS图片处理提供以下功能： 获取图片信息。 图片格式转换。 图片缩放、裁剪、旋转。 图片效果。 图片水印，包括添加图片、文字、图文混合水印。 自定义图片处理样式，登录对象存储控制台后，在Bucket详情页面中单击**图片处理** **>** **新建样式**对图片处理样式进行自定义。 级联处理，调用多个图片处理功能。
 
 **图片处理使用**
 
@@ -29399,7 +32104,7 @@ style：自定义样式的保留标志符。 yourStyleName：自定义样式名�
 http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=style/oss-picstyle-w-100
 ```
 
-对象存储 OSS 级联处理通过级联处理，可以对一张图片顺序进行多个操作，格式如下：
+级联处理通过级联处理，可以对一张图片顺序进行多个操作，格式如下：
 
 ```
 http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<yourAction1>,< yourParamValue1>/<yourAction2>,<yourParamValue2>/...
@@ -29417,8 +32122,6 @@ http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/re
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/resize,w_100
 ```
 
-#### 授权访问
-
 对私有权限的文件（Object），如下表所示的权限，必须通过授权才能访问图片服务。
 
 | Bucket权限 | Object权限 |
@@ -29426,21 +32129,27 @@ https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-ossprocess=image/r
 | 私有读写（private） | 默认权限（default） |
 | 任意权限 | 私有读写（private） |
 
-生成带签名的图片处理的URL代码如下： 对象存储 OSS
+生成带签名的图片处理的URL代码如下：
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -29449,17 +32158,20 @@ func HandleError(err error) {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err != nil {
     HandleError(err)
-    }
+```
+
+`}`
+
+```
     ossImageName := "<yourImageName>"
     signedURL, err := bucket.SignURL(ossImageName, oss.HTTPGet, 600,
 oss.Process("image/format,png"))
@@ -29467,25 +32179,29 @@ oss.Process("image/format,png"))
     HandleError(err)
     } else {
     fmt.Println(signedURL)
-    }
-}
 ```
 
-SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
+`}` `}` SDK访问对于任意权限的图片文件，都可以直接使用**SDK**访问图片、进行处理。 基础操作图片处理的基础操作包括，获取图片信息、格式转换、缩放、裁剪、旋转、效果、水印等。
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -29494,36 +32210,35 @@ func HandleError(err error) {
 client,err:=oss.New("<yourEndpoint>","<yourAccessKeyId>","<yourAccessKeySecret>")
 ```
 
-对象存储 OSS c
+`c`
 
 ```
 et,e
 ```
 
-:
+`:`
 
 ```
 oss.ew( you dpo
 ```
 
-t ,
+`t` `,`
 
 ```
 you ccesseyd
 ```
 
-,
+`,`
 
 ```
 you ccesseySecet
 ```
 
-)
+`)`
 
 ```
     if err != nil {
     HandleError(err)
-    }
 ```
 
 `//` 获取存储空间。
@@ -29533,10 +32248,9 @@ you ccesseySecet
     bucket, err := client.Bucket(bucketName)
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 图片处理：缩放。
+`}` `//` 图片处理：缩放。
 
 ```
     sourceImageName := "example.png"
@@ -29545,10 +32259,9 @@ you ccesseySecet
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 图片处理：裁剪。
+`}` `//` 图片处理：裁剪。
 
 ```
     targetImageName = "example-crop.png"
@@ -29556,10 +32269,9 @@ you ccesseySecet
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 图片处理：旋转。
+`}` `//` 图片处理：旋转。
 
 ```
     targetImageName = "example-rotate.png"
@@ -29567,10 +32279,9 @@ you ccesseySecet
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 图片处理：锐化。
+`}` `//` 图片处理：锐化。
 
 ```
     targetImageName = "example-sharpen.png"
@@ -29578,10 +32289,9 @@ you ccesseySecet
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 图片处理：水印。
+`}` `//` 图片处理：水印。
 
 ```
     targetImageName = "example-watermark.png"
@@ -29589,10 +32299,9 @@ you ccesseySecet
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 图片处理：格式转换。
+`}` `//` 图片处理：格式转换。
 
 ```
     targetImageName = "example-formatconvert.jpg"
@@ -29600,14 +32309,6 @@ you ccesseySecet
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-}
-```
-
-对象存储 OSS
-
-```
-    }
-}
 ```
 
 自定义样式
@@ -29616,15 +32317,21 @@ you ccesseySecet
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -29633,20 +32340,18 @@ func HandleError(err error) {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err != nil {
      HandleError(err)
-    }
 ```
 
-`//` 图片处理：自定义样式。
+`}` `//` 图片处理：自定义样式。
 
 ```
     sourceImageName := "example.png"
@@ -29655,25 +32360,29 @@ func HandleError(err error) {
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
     HandleError(err)
-    }
-}
 ```
 
-对象存储 OSS 级联处理
+`}` `}` 级联处理
 
 ```java
 package main import (
     "fmt"
     "os"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -29682,20 +32391,18 @@ func HandleError(err error) {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
     HandleError(err)
-    }
 ```
 
-`//` 获取存储空间。
+`}` `//` 获取存储空间。
 
 ```
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err != nil {
     HandleError(err)
-     }
 ```
 
-`//` 图片处理：自定义样式。
+`}` `//` 图片处理：自定义样式。
 
 ```
     sourceImageName := "example.png"
@@ -29704,9 +32411,9 @@ func HandleError(err error) {
     err = bucket.GetObjectToFile(sourceImageName, targetImageName, oss.Process(style))
     if err != nil {
      HandleError(err)
-    }
-}
 ```
+
+`}` `}`
 
 **图片处理持久化**
 
@@ -29715,15 +32422,21 @@ package main import (
     "fmt"
     "os"
     "encoding/base64"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-)
+`)`
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -29733,11 +32446,8 @@ func HandleError(err error) {
     if err != nil {
 ```
 
-对象存储 OSS
-
 ```
     HandleError(err)
-    }
 ```
 
 `//` 获取存储空间。
@@ -29747,10 +32457,9 @@ func HandleError(err error) {
     bucket, err := client.Bucket(bucketName)
     if err != nil {
      HandleError(err)
-    }
 ```
 
-`//` 图片处理持久化：缩放。目标图片默认会存放到相同的`bucket`中。
+`}` `//` 图片处理持久化：缩放。目标图片默认会存放到相同的`bucket`中。
 
 ```
     sourceImageName := "example.png"
@@ -29763,10 +32472,9 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
-    }
 ```
 
-`//` 图片处理持久化：缩放。将目标图片存放到不同的`bucket`中。
+`}` `//` 图片处理持久化：缩放。将目标图片存放到不同的`bucket`中。
 
 ```
     targetBucketName := "<yourTargetBucketName>"
@@ -29779,10 +32487,9 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)), base64.URLEncoding.E
     HandleError(err)
     } else {
         fmt.Println(result)
-    }
 ```
 
-`//` 图片处理持久化：裁剪。
+`}` `//` 图片处理持久化：裁剪。
 
 ```
     targetImageName = "example-crop.png"
@@ -29794,10 +32501,9 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
-    }
 ```
 
-`//` 图片处理持久化：旋转。
+`}` `//` 图片处理持久化：旋转。
 
 ```
     targetImageName = "example-rotate.png"
@@ -29810,12 +32516,9 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
 }else{
 ```
 
-对象存储 OSS
-
 ```
     } else {
         fmt.Println(result)
-    }
 ```
 
 `//` 图片处理持久化：锐化。
@@ -29830,10 +32533,9 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
        fmt.Println(result)
-    }
 ```
 
-`//` 图片处理持久化：水印。
+`}` `//` 图片处理持久化：水印。
 
 ```
     targetImageName = "example-watermark.png"
@@ -29845,10 +32547,9 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
-    }
 ```
 
-`//` 图片处理持久化：格式转换。
+`}` `//` 图片处理持久化：格式转换。
 
 ```
     targetImageName = "example-formatconvert.jpg"
@@ -29860,29 +32561,33 @@ base64.URLEncoding.EncodeToString([]byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
-    }
-}
 ```
 
-#### 错误处理
+`}` `}`
+
+#### 3.5.11 错误处理
+
+本文介绍Go SDK的错误处理。
 
 **客户端错误**
+
+Go SDK中调用出错会统一返回error接口，该接口定义如下：
 
 ```
 type error interface {
     Error() string
-}
 ```
 
-其它错误继承该接口。比如HTTP错误请求返回的错误如下： 对象存储 OSS
+`}` 其它错误继承该接口。比如HTTP错误请求返回的错误如下：
 
 ```
 //net.Error type Error interface {
     error
     Timeout() bool   // Is the error a timeout
     Temporary() bool // Is the error temporary
-}
 ```
+
+`}`
 
 **服务器端错误**
 
@@ -29896,39 +32601,40 @@ type ServiceError struct {
 
 ```
     StatusCode int       // HTTP状态码。
-}
 ```
 
-如果OSS返回的HTTP状态码与预期不符，则返回如下错误，该错误也实现了Error接口。
+`}` 如果OSS返回的HTTP状态码与预期不符，则返回如下错误，该错误也实现了Error接口。
 
 ```
 type UnexpectedStatusCodeError struct {
 ```
 
-`allowed []int //` 预期`OSS`返回`HTTP`状态码。 `got int // OSS`实际返回`HTTP`状态码。
-
-```
-}
-```
+`allowed []int //` 预期`OSS`返回`HTTP`状态码。 `got int // OSS`实际返回`HTTP`状态码。 `}`
 
 **错误处理示例**
 
-以下代码用于展示错误处理： 对象存储 OSS
+以下代码用于展示错误处理：
 
 ```java
 package main import (
     "fmt"
     "os"
     "strings"
+    "github.com/aliyun/aliyun-oss-go-sdk/oss"
 ```
 
-) `//` 错误处理函数。
+`)` `//` 错误处理函数。
 
 ```
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
-} func main() {
+```
+
+`}`
+
+```
+func main() {
 ```
 
 `//` 创建`OSSClient`实例。
@@ -29937,7 +32643,11 @@ func HandleError(err error) {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err != nil {
         HandleError(err)
-    }
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
 ```
@@ -29948,17 +32658,17 @@ func HandleError(err error) {
     bucket, err := client.Bucket(bucketName)
     if err != nil {
         HandleError(err)
-    }
 ```
 
-`//` 简单上传：字符串上传。
+`}` `//` 简单上传：字符串上传。
 
 ```
     err = bucket.PutObject(objectName, strings.NewReader("yourObjectValueContentString"))
     if err != nil {
         HandleError(err)
-}
 ```
+
+`}`
 
 **OSS错误码**
 
@@ -29978,8 +32688,6 @@ OSS错误码列表如下：
 | FieldItemTooLong | Post请求中表单域过大。 | 400 |
 | FilePartInterity | 文件Part已改变。 | 400 |
 | FilePartNotExist | 文件Part不存在。 | 400 |
-
-对象存储 OSS
 
 | FilePartStale | 文件Part过时。 | 400 |
 |---|---|---|
@@ -30013,13 +32721,9 @@ OSS错误码列表如下：
 | TooManyBuckets | 用户的Bucket数目超过限制。 | 400 |
 | InvalidEncryptionAlgorithmError | 指定的熵编码加密算法错误。 | 400 |
 
-对象存储 OSS 上表中的**错误码**即OssServiceError.Code，**HTTP****状态码**即OssServiceError.StatusCode。
+> **说明：** 上表中的**错误码**即OssServiceError.Code，**HTTP****状态码**即OssServiceError.StatusCode。
 
-**说明**
-
-对象存储 OSS
-
-## 配置访问凭证
+## 4 配置访问凭证
 
 将访问密钥AccessKey配置到环境变量中。通过环境变量配置AccessKey可避免在代码中硬编码敏感信息，提升安全性。
 
@@ -30027,17 +32731,15 @@ OSS错误码列表如下：
 
 AccessKey的环境变量名称必须配置为OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
 
-**说明**
-
-如果应用程序需要临时访问OSS，可使用STS临时访问凭证，且需将临时身份凭证设置到环境变量。环境变量名称必须分别配置为OSS_ACCESS_KEY_ID、OSS_ACCESS_KEY_SECRET和OSS_SESSION_TOKEN。请注意区分STS服务获取的Access Key ID以STS开头，例如 `STS.****************` ，使用通过STS服务获取的临时身份凭证（Access Key ID、Access Key Secret和Security Token）。
+> **说明：** 如果应用程序需要临时访问OSS，可使用STS临时访问凭证，且需将临时身份凭证设置到环境变量。环境变量名称必须分别配置为OSS_ACCESS_KEY_ID、OSS_ACCESS_KEY_SECRET和OSS_SESSION_TOKEN。请注意区分STS服务获取的Access Key ID以STS开头，例如 `STS.****************` ，使用通过STS服务获取的临时身份凭证（Access Key ID、Access Key Secret和Security Token）。
 
 **前提条件**
 
+已获取AccessKey。
+
 **配置方法**
 
-**重要**
-
-配置完成后请重启或刷新编译运行环境，包括IDE、命令行界面、其它桌面应用程序及后台服务，确保最新的系统环境变量成功加载。
+> **重要：** 配置完成后请重启或刷新编译运行环境，包括IDE、命令行界面、其它桌面应用程序及后台服务，确保最新的系统环境变量成功加载。
 
 **Linux**
 
@@ -30083,7 +32785,7 @@ ii. 执行以下命令使变更生效。
 source ~/.zshrc
 ```
 
-对象存储 OSS iii. 执行以下命令检查环境变量是否生效。
+iii. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $OSS_ACCESS_KEY_IDecho $OSS_ACCESS_KEY_SECRET
@@ -30139,9 +32841,7 @@ echo %OSS_ACCESS_KEY_ID% echo %OSS_ACCESS_KEY_SECRET%
 [Environment]::GetEnvironmentVariable("OSS_ACCESS_KEY_ID", [EnvironmentVariableTarget]::User) [Environment]::GetEnvironmentVariable("OSS_ACCESS_KEY_SECRET", [Enviro
 ```
 
-对象存储 OSS
-
-## 获取Endpoint
+## 5 获取Endpoint
 
 您可以通过Apsara Uni-manager运维控制台获取产品的Endpoint。
 
@@ -30150,14 +32850,13 @@ echo %OSS_ACCESS_KEY_ID% echo %OSS_ACCESS_KEY_SECRET%
 1. 登录Apsara Uni-manager运维控制台
 登录Apsara Uni-manager运维控制台的步骤，请参见**《运维指南》**的**《登录****Apsara Uni-manager****运维控制**
 **台》**章节。
-2. 在顶部的菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
+2. 在顶部的菜单栏选择**平台运维** **>** **飞天基础运维平台** **>** **运维工具**。
 3. 在**服务注册变量大盘**页面，选择**服务**并输入**oss-server**。
 4. 单击**Service Registration**列
 图标，单击显示的信息。
 5. 在**注册变量**对话框，查看**api-endpoint**的值即为OSS的Endpoint。
-对象存储 OSS
 
-## 获取AccessKey
+## 6 获取AccessKey
 
 访问身份验证中通过使用AccessKey ID和AccessKey Secret对称加密的方法来验证某个请求的发送者身份。 AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。本问将为您介绍如何获取 AccessKey。
 
@@ -30170,7 +32869,7 @@ echo %OSS_ACCESS_KEY_ID% echo %OSS_ACCESS_KEY_SECRET%
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
@@ -30180,16 +32879,15 @@ echo %OSS_ACCESS_KEY_ID% echo %OSS_ACCESS_KEY_SECRET%
 获取个人账号AccessKey的方法如下：
 1. 在浏览器地址栏中，输入Apsara Uni-manager运营控制台的访问地址，按回车键。
 2. 输入正确的用户名及密码。
-请向运营管理员获取登录控制台的用户名和密码。 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密
+请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为 8~20 位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（！）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-码修改。为提高安全性，密码长度必须为 8~20 位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（！）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 在系统界面右上角，单击当前登录用户的头像，选择**个人信息**。
 5. 在**阿里云****AccessKey**模块，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥
 
-**说明**
-
-善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。

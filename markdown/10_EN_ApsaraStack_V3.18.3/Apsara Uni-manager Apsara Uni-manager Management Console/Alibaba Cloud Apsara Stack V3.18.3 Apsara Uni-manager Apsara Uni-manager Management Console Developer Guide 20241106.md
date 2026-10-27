@@ -5,7 +5,7 @@ doc_version: "20241106"
 pdf_pages: 776
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Apsara Uni-manager Management Console Developer Guide 20241106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1ASCM/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Uni-manager%20Apsara%20Uni-manager%20Management%20Console%20Developer%20Guide%2020241106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Apsara Uni-manager Management Console Developer Guide 20241106
@@ -284,6 +284,8 @@ with the `internet-domain` value.
 
 3. Call the AssumeRole operation of STS to obtain the AccessKey 3-tuple. The following
 example shows how to call the operation by using STS SDK for Java.
+
+**Note**
 
 |   | <yourRegionID> |
 |---|---|
@@ -812,6 +814,8 @@ ommon Header parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-res
 
 `}` `}` `}`
 
+**Note**
+
 |   | <yourAccessKeyID> |   |
 |---|---|---|
 | <http://192.168.XX.XX:33XX> |   |   |
@@ -1030,6 +1034,8 @@ response = client.do_action_with_exception(request)
 # python2:  print(response)
 print(str(response, encoding='utf-8'))
 ```
+
+**Note**
 
 |   | <yourRegionID> |   |
 |---|---|---|
@@ -1349,6 +1355,8 @@ OP to make API calls
 ```
 
 `}`
+
+**Note**
 
 |   | <yourAccessKeyID> |   |
 |---|---|---|

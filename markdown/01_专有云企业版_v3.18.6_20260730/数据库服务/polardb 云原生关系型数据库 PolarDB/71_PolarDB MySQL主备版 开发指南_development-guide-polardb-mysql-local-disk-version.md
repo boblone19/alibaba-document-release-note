@@ -5,16 +5,129 @@ doc_version: "20260729"
 pdf_pages: 146
 source_pdf: "71_PolarDB MySQL主备版 开发指南_development-guide-polardb-mysql-local-disk-version.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/polardb/zh/development-guide-polardb-mysql-local-disk-version.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云原生关系型数据库 PolarDB PolarDB MySQL主备版 开发指南
 
-云原生数据库 I参考
+## 目录
 
-## API参考
+- 1 API参考
+  - 1.1 API 概览
+  - 1.2 调用方式
+    - 1.2.1 请求结构
+    - 1.2.2 公共参数
+      - 1.2.2.1 公共请求参数
+      - 1.2.2.2 公共返回参数
+    - 1.2.3 返回结果
+      - 1.2.3.1 成功结果
+      - 1.2.3.2 错误结果
+    - 1.2.4 签名机制
+  - 1.3 实例管理
+    - 1.3.1 创建实例
+    - 1.3.2 释放实例
+    - 1.3.3 重启实例
+    - 1.3.4 查看实例属性
+    - 1.3.5 查询实例列表
+    - 1.3.6 变更实例配置
+    - 1.3.7 申请外网连接地址
+    - 1.3.8 释放外网连接地址
+    - 1.3.9 申请内网连接地址（原内外网切换）
+    - 1.3.10 查看所有连接地址
+    - 1.3.11 修改连接地址
+    - 1.3.12 修改PolarDB实例访问模式
+    - 1.3.13 修改PolarDB实例网络类型
+    - 1.3.14 查看PolarDB实例IP白名单
+    - 1.3.15 修改PolarDB实例IP白名单
+    - 1.3.16 查询PolarDB地域和可用区信息
+    - 1.3.17 查询PolarDB可用区信息和数据复制状态
+    - 1.3.18 迁移PolarDB实例可用区
+    - 1.3.19 清理PolarDB实例日志
+    - 1.3.20 升级PolarDB实例版本
+    - 1.3.21 修改PolarDB实例备注
+    - 1.3.22 修改PolarDB实例可维护时间
+    - 1.3.23 修改PolarDB实例数据复制和高可用策略
+    - 1.3.24 切换PolarDB实例的主备库
+    - 1.3.25 创建PolarDB只读实例
+    - 1.3.26 查询实例SSL链路
+    - 1.3.27 修改实例SSL链路
+    - 1.3.28 查询实例数据加密状态
+    - 1.3.29 修改实例数据加密状态
+  - 1.4 数据库管理
+    - 1.4.1 创建数据库
+    - 1.4.2 删除数据库
+    - 1.4.3 查看数据库列表
+    - 1.4.4 修改数据库备注
+  - 1.5 账号管理
+    - 1.5.1 创建账号
+    - 1.5.2 删除账号
+    - 1.5.3 查看账号列表
+    - 1.5.4 授权账号权限
+    - 1.5.5 撤销账号权限
+    - 1.5.6 修改账号备注
+    - 1.5.7 重置密码
+    - 1.5.8 重置账号
+  - 1.6 备份恢复
+    - 1.6.1 创建备份
+    - 1.6.2 克隆PolarDB实例
+    - 1.6.3 查看备份列表
+    - 1.6.4 创建临时实例
+    - 1.6.5 查看备份策略
+    - 1.6.6 修改备份策略
+    - 1.6.7 恢复备份集到实例
+    - 1.6.8 删除数据备份文件
+  - 1.7 监控管理
+    - 1.7.1 查看实例资源使用情况
+    - 1.7.2 查看实例性能数据
+    - 1.7.3 查询监控行为
+    - 1.7.4 修改监控行为
+  - 1.8 参数管理
+    - 1.8.1 查询参数模板列表
+    - 1.8.2 查看数据库参数模板
+    - 1.8.3 查看当前实例数据库参数运行列表
+    - 1.8.4 修改数据库参数列表
+  - 1.9 日志管理
+    - 1.9.1 查看慢日志列表
+    - 1.9.2 查看慢日志明细
+    - 1.9.3 查看错误日志
+    - 1.9.4 查看BINLOG日志
+    - 1.9.5 查询SQL审计功能是否开启
+    - 1.9.6 切换SQL采集状态
+    - 1.9.7 查询SQL审计日志
+    - 1.9.8 查询SQL审计文件列表
+  - 1.10 数据迁移
+    - 1.10.1 获取文件上传地址
+    - 1.10.2 其他实例迁入
+    - 1.10.3 取消迁移
+  - 1.11 标签管理
+    - 1.11.1 绑定标签
+    - 1.11.2 查询标签
+    - 1.11.3 解绑标签
+  - 1.12 如何使用RAM授权
+    - 1.13.1 客户端错误代码表
+      - 1.13.1.1 公共错误
+      - 1.13.1.2 特定错误
+    - 1.13.2 服务器端错误代码表
+    - 1.13.3 实例状态表
+    - 1.13.4 性能参数表
+    - 1.13.5 禁用关键字表
+- 2 SDK参考
+  - 2.1 获取SDK源代码
+  - 2.2 Java SDK调用
+    - 2.2.1 使用手册
+      - 2.2.1.1 使用CommonRequest进行调用
+  - 2.3 Python SDK调用
+    - 2.3.1 使用手册
+      - 2.3.1.1 使用CommonRequest进行调用
+  - 2.4 PHP SDK调用
+    - 2.4.1 快速开始
+  - 2.5 C# SDK调用
+- 3 获取endpoint
+- 4 获取Accesskey
 
-### API 概览
+## 1 API参考
+
+### 1.1 API 概览
 
 简单描述各个API。
 
@@ -38,8 +151,6 @@ converter: line-classifier (PyMuPDF)
 | DescribeDBInstanceIPArrayList | 查看PolarDB实例IP白名单。 |
 | ModifySecurityIps | 修改PolarDB实例IP白名单。 |
 
-云原生数据库 I参考
-
 | DescribeRegions | 查询PolarDB地域和可用区信息。 |
 |---|---|
 | DescribeDBInstanceHAConfig | 查询PolarDB可用区信息和数据复制状态 |
@@ -56,13 +167,13 @@ converter: line-classifier (PyMuPDF)
 | DescribeDBInstanceTDE | 查询实例数据加密状态。 |
 | ModifyDBInstanceTDE | 修改实例数据加密状态。 |
 
+**PolarDB数据库管理**
+
 | API | 描述 |
 |---|---|
 | CreateDatabase | 创建数据库。 |
 | DeleteDatabase | 删除数据库。 |
 | DescribeDatabases | 查看数据库列表。 |
-
-云原生数据库 I参考
 
 | ModifyDBDescription | 修改数据库备注。 |
 |---|---|
@@ -90,8 +201,6 @@ converter: line-classifier (PyMuPDF)
 | CreateTempDBInstance | 创建临时实例。 |
 | DescribeBackupPolicy | 查看备份策略。 |
 | ModifyBackupPolicy | 修改备份策略。 |
-
-云原生数据库 I参考
 
 | RestoreDBInstance | 恢复备份集到实例。 |
 |---|---|
@@ -123,8 +232,6 @@ converter: line-classifier (PyMuPDF)
 | DescribeErrorLogs | 查看错误日志。 |
 | DescribeBinlogFiles | 查看BINLOG日志。 |
 
-云原生数据库 I参考
-
 | DescribeSQLCollectorPolicy | 查询SQL审计功能是否开启。 |
 |---|---|
 | ModifySQLCollectorPolicy | 切换SQL采集状态。 |
@@ -149,15 +256,15 @@ converter: line-classifier (PyMuPDF)
 | DescribeTags | 查询标签。 |
 | RemoveTagsFromResource | 解绑标签。 |
 
-### 调用方式
+### 1.2 调用方式
 
-#### 请求结构
+#### 1.2.1 请求结构
 
 本章介绍云数据库PolarDB API的请求结构。
 
 **服务地址**
 
-云原生数据库 I参考 PolarDB API的服务接入地址为：polardb.example.com。关于如何获取产品的endpoint，参见获取 ASAPI的endpoint。
+PolarDB API的服务接入地址为：polardb.example.com。关于如何获取产品的endpoint，参见获取 ASAPI的endpoint。
 
 **通信协议**
 
@@ -169,15 +276,17 @@ converter: line-classifier (PyMuPDF)
 
 **请求参数**
 
-每个请求都需要指定要执行的操作，即Action参数（例如CreateDatabase），以及每个操作都需要包含的
+每个请求都需要指定要执行的操作，即Action参数（例如CreateDatabase），以及每个操作都需要包含的公共请求参数和指定操作所特有的请求参数。
 
 **字符编码**
 
 请求及返回结果都使用UTF-8字符集进行编码。
 
-#### 公共参数
+#### 1.2.2 公共参数
 
-##### 公共请求参数
+##### 1.2.2.1 公共请求参数
+
+公共请求参数是指每个接口都需要使用到的请求参数。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -189,8 +298,6 @@ converter: line-classifier (PyMuPDF)
 | Timestamp | Stri ng | 是 | 请求的时间戳。日期格式按照ISO8601标准表示，并需要使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ；例如，2013-08-15T12:00:00Z（为北京时间2013年8月15日20点0分0秒）。 |
 | SignatureVer sion | Stri ng | 是 | 签名算法版本，目前版本是1.0。 |
 
-云原生数据库 I参考
-
 | SignatureNo nce | Stri ng | 是 | 唯一随机数，用于防止网络重放攻击。用户在不同请求间要使用不同的随机数值。 |
 |---|---|---|---|
 
@@ -200,7 +307,7 @@ converter: line-classifier (PyMuPDF)
 https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8gokVnxxxxx &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &OwnerId=12345678 &Timestamp=2024-07-12T12:00:00Z
 ```
 
-##### 公共返回参数
+##### 1.2.2.2 公共返回参数
 
 用户发送的每次接口调用请求，无论成功与否，系统都会返回一个唯一识别码RequestId给用户。
 
@@ -210,7 +317,7 @@ https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8go
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+<!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
     <RequestId>4C4***38-****-****-****-*******6F216</RequestId>
@@ -218,23 +325,23 @@ https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8go
 
 <!—返回结果数据`-->` `</`接口名称`+Response>`
 
-#### 返回结果
+#### 1.2.3 返回结果
 
-##### 成功结果
+##### 1.2.3.1 成功结果
 
-调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功。 调用成功返回的数据格式主要有XML和JSON两种，外部系统可以在请求时传入参数来制定返回的数据格式，默认为XML格式。 本文档中的返回示例为了便于用户查看，做了格式化处理，实际返回结果是没有进行换行、缩进等处理的。 XML返回结果包括请求是否成功信息和具体的业务数据。示例如下： <!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功。 调用成功返回的数据格式主要有XML和JSON两种，外部系统可以在请求时传入参数来制定返回的数据格式，默认为XML格式。 本文档中的返回示例为了便于用户查看，做了格式化处理，实际返回结果是没有进行换行、缩进等处理的。 XML返回结果包括请求是否成功信息和具体的业务数据。示例如下： <!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
 <RequestId>4C467B38-****-447D-****-AC04*******16</RequestId>
 ```
 
-<!—返回结果数据`-->` `</`接口名称`+Response>` JSON示例： 云原生数据库 I参考
+<!—返回结果数据`-->` `</`接口名称`+Response>` JSON示例：
 
 ```json
 { "RequestId": "4C467B38-****-447D-****-AC04*******16", /* 返回结果数据 */}
 ```
 
-##### 错误结果
+##### 1.2.3.2 错误结果
 
 调用接口出错后，将不会返回结果数据。调用方可根据附表错误代码表来定位错误原因。 当调用出错时，HTTP请求返回一个4xx或5xx的HTTP状态码。 返回的消息体中是具体的错误代码及错误信息。 另外还包含一个全局唯一的请求IDRequestId和一个您该次请求访问的站点IDHostId。在调用方找不到错误原因，可以联系阿里云客服，并提供该HostId和RequestId，以便我们尽快帮您解决问题。 XML示例：
 
@@ -245,22 +352,24 @@ https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8go
 JSON示例：
 
 ```json
-{ "RequestId": "7463B73D-****-4D19-****-6B8*******2EF", "HostId": "polardb.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported." }
+{ "RequestId": "7463B73D-****-4D19-****-6B8*******2EF", "HostId": "polardb.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
 
-#### 签名机制
+`}`
+
+#### 1.2.4 签名机制
 
 PolarDB服务会对每个访问的请求进行身份验证，所以无论使用HTTP还是HTTPS协议提交请求，都需要在请求中包含签名（Signature）信息。关于如何获取 Access Key，参见获取AccessKey。 PolarDB通过使用Access Key ID和Access Key Secret进行对称加密的方法来验证请求发送者的身份。 Access Key ID和Access Key Secret由阿里云官方颁发给访问者（可以通过阿里云官方网站申请和管理）： Access Key ID用于标识访问者的身份。 Access Key Secret是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密，只有阿里云和用户知道。 用户在访问时，按照如下方法对请求进行签名处理：
 1. 使用请求参数构造规范化的请求字符串（Canonicalized Query String）。
 i. 按照参数名称的字典顺序对请求中所有的请求参数进行排序。 所有的请求参数包括公共参数和请求接口的自定义参数，不包括公共请求参数中提到的Signature参数本身。
 
-**说明**
+> **说明：** 当使用GET方法提交请求时，这些参数就是请求URI中的参数部分，即URI中“?”之后由“&”连接的部分。
 
-当使用GET方法提交请求时，这些参数就是请求URI中的参数部分，即URI中“?”之后由“&”连接的部分。 云原生数据库 I参考 ii. 对每个请求参数的名称和值进行编码。 名称和值要使用UTF-8字符集进行URL编码。 URL编码的编码规则是： 对于字符 A-Z、a-z、0-9以及字符“-”、“_”、“.”、“~”不编码。 对于其他字符编码成“%XY”的格式。 其中XY是字符对应ASCII码的16进制表示，比如英文的双引号（”）对应的编码就是%22。 对于扩展的UTF-8字符，编码成“%XY%ZA…”的格式。 英文空格要被编码是%20，而不是加号（+）。
+ii. 对每个请求参数的名称和值进行编码。 名称和值要使用UTF-8字符集进行URL编码。 URL编码的编码规则是： 对于字符 A-Z、a-z、0-9以及字符“-”、“_”、“.”、“~”不编码。 对于其他字符编码成“%XY”的格式。 其中XY是字符对应ASCII码的16进制表示，比如英文的双引号（”）对应的编码就是%22。 对于扩展的UTF-8字符，编码成“%XY%ZA…”的格式。 英文空格要被编码是%20，而不是加号（+）。
 
-**说明**
+> **说明：** 一般支持URL编码的库，比如Java中的java.net.URLEncoder，都是按照“application/x- www-form-urlencoded”的MIME类型的规则进行编码的。
 
-一般支持URL编码的库，比如Java中的java.net.URLEncoder，都是按照“application/xwww-form-urlencoded”的MIME类型的规则进行编码的。 实现时可以直接使用这类方式进行编码，把编码后的字符串中加号（+）替换成%20、星号（*）替换成%2A、%7E替换回波浪号（~），即可得到上述规则描述的编码字符串。 iii. 对编码后的参数名称和值使用英文等号（=）进行连接。 iv. 将英文等号连接得到的字符串按参数名称的字典顺序依次使用&符号连接，即得到规范化请求字符串。
+实现时可以直接使用这类方式进行编码，把编码后的字符串中加号（+）替换成%20、星号（*）替换成%2A、%7E替换回波浪号（~），即可得到上述规则描述的编码字符串。 iii. 对编码后的参数名称和值使用英文等号（=）进行连接。 iv. 将英文等号连接得到的字符串按参数名称的字典顺序依次使用&符号连接，即得到规范化请求字符串。
 2. 使用上一步构造的规范化字符串按照下面的规则构造用于计算签名的字符串。
 
 ```
@@ -270,15 +379,14 @@ StringToSign= HTTPMethod + “&” + percentEncode(“/”) + ”&” + percentE
 HTTPMethod是用于提交请求的HTTP方法，比如GET。 percentEncode("/")是按照1.b中描述的URL编码规则对字符 "/"进行编码得到的值，即"%2F"。 percentEncode(CanonicalizedQueryString)是对1中构造的规范化请求字符串按1.b描述的URL编码规则编码后得到的字符串。
 3. 按照RFC2104的定义，使用上述用于签名的字符串计算签名HMAC值。
 
-**说明**
+> **说明：** 计算签名时使用的Key就是用户持有的Access Key Secret并加上一个"&”字符（ASCII:38），使用的哈希算法是SHA1。
 
-计算签名时使用的Key就是用户持有的Access Key Secret并加上一个"&”字符（ASCII:38），使用的哈希算法是SHA1。
 4. 按照Base64编码规则把上面的HMAC值编码成字符串，即得到签名值（Signature）。
 5. 将得到的签名值作为Signature参数添加到请求参数中，即完成对请求签名的过程。
 
-**说明**
+> **说明：** 得到的签名值在作为最后的请求参数值提交给PolarDB服务器的时候，要和其他参数一样，按照 RFC3986的规则进行URL编码）。
 
-得到的签名值在作为最后的请求参数值提交给PolarDB服务器的时候，要和其他参数一样，按照 RFC3986的规则进行URL编码）。 以DescribeDBInstances为例，签名前的请求URL为： 云原生数据库 I参考
+以DescribeDBInstances为例，签名前的请求URL为：
 
 ```
 http://polardb.example.com/?TimeStamp=2013-06- 01T10:33:56Z&Format=XML&AccessKeyId=testid&Action=DescribeDBInstances&SignatureMethod=H C-SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2014-08- 15&SignatureVersion=1.0
@@ -302,13 +410,15 @@ BIPOMlu8LXBeZtLQkJTw6iFvw1E=
 http://polardb.example.com/?TimeStamp=2013-06- 01T10%3A33%3A56Z&Format=XML&AccessKeyId=testid&Action=DescribeDBInstances&SignatureMeth =HMAC-SH
 ```
 
-### 实例管理
+### 1.3 实例管理
 
-#### 创建实例
+#### 1.3.1 创建实例
 
 创建PolarDB数据库实例。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -320,7 +430,7 @@ http://polardb.example.com/?TimeStamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acces
 | Resource OwnerAcc ount | Strin g | Query | 否 | test | 鉴权相关的系统参数，不填。 |
 | Resource OwnerId | Long | Query | 否 | 345678912345 | 鉴权相关的系统参数，不填。 |
 
-| 云原生数据库 |  |  |  | PolarD | B MySQL主备版开发指南·A I参考 |
+| 云原生数据库 |   |   |   | PolarD | B MySQL主备版开发指南·A I参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -336,8 +446,6 @@ http://polardb.example.com/?TimeStamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acces
 | DBInstanc eDescripti on | Strin g | Query | 否 | test | 实例描述。 |
 | SecurityIP List | Strin g | Query | 是 | 10.***.***.*** | PolarDB集群白名单IP地址。 支持配置多个白名单IP 地址，多个IP地址之间使用英文逗号（,）分隔。 |
 
-云原生数据库 I参考
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ClientToke n | Strin g | Query | 否 | 6000170000591aed949 d0f54a343f1a4233c1e7 d1c5c****** | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，保证在不同请求间唯一，大小写敏感、 不超过64个ASCII字符。 |
@@ -350,8 +458,6 @@ http://polardb.example.com/?TimeStamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acces
 | OwnerAcc ount | Strin g | Query | 否 | test | 鉴权相关的系统参数，不填。 |
 | Resource GroupId | Strin g | Query | 否 | rg-************ | 资源组ID。 |
 
-云原生数据库 I参考
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | DBIsIgnor eCase | Strin g | Query | 否 | true | 表名是否区分大小写，取值： true ：不区分大小写 （默认）。 false ：区分大小写。 |
@@ -360,8 +466,6 @@ http://polardb.example.com/?TimeStamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acces
 | Character SetName | Strin g | Query | 否 | utf8 | 字符集。 |
 | DBParam GroupId | Strin g | Query | 否 | mysql-sys-**** | 参数模板ID，可调用 DescribeParameterGrou ps查询。 对于PolarDB MySQL 主备版，如需创建内核版本为8.4的集群，请务必将参数模板配置为 mysql-sys- 01040401020200。 创建前请先参见《运维指南》中“开启 PolarDB MySQL 8.4 内核参数开关”教程， 在Apsara Uni- manager运维控制台启用对应开关，启用后调用API创建即可。若无运维平台操作权限， 请联系阿里云技术支持协助开启。 |
 | IPVersionS electedTy pe | Strin g | Query | 否 | IPV4V6 | IP类型，取值如下： IPV4 （默认值）：仅分配IPv4地址。 IPV6 ：仅分配IPv6地址。 IPV4V6 ：同时分配 IPv4和IPv6地址。 |
-
-云原生数据库 I参考
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -385,19 +489,23 @@ http://polardb.example.com/?TimeStamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acces
 http(s)://[Endpoint]/?Action=CreateDBInstance &RegionId=cn-hangzhou &Engine=MySQL &EngineVersion=8.0 &DBInstanceClass=polar.mysql.x2.medium &DBInstanceStorage=20 &DBInstanceNetType=Intranet &SecurityIPList=10.***.***.*** &PayType=Postpaid
 ```
 
-正常返回示例云原生数据库 I参考 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "DBInstanceId":"POLARDB-cn-**************",
  "Port":"1521",
  "OrderId":"2035638*******",
  "ConnectionString":"abc.polardb.rds.aliyuncs.com"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <DBInstanceId>POLARDB-cn-**************</DBInstanceId> <Port>1521</Port> <OrderId>2035638*******</OrderId> <ConnectionString>abc.polardb.rds.aliyuncs.com</ConnectionString>
@@ -418,11 +526,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | UnsupportedTdeEn ableOnInstanceCre ation | UnsupportedTdeEnableOnInsta nceCreation | The Specified TDE is not supported |
 | 400 | SpecifiedMinorVersi onProcessFailed | SpecifiedMinorVersionProcessF ailed | Specified minor version process failed. |
 
-云原生数据库 I参考
-
-#### 释放实例
-
-**描述**
+#### 1.3.2 释放实例
 
 释放PolarDB实例接口调用要求如下： 实例状态为运行中。 实例没有被人为锁定。 实例类型包括主实例（按量付费类型）、只读实例、灾备实例和临时实例。
 
@@ -447,6 +551,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 https://polardb.example.com/?Action=DeleteDBInstance &DBInstanceId=polardb-xxxxx
 ```
 
+`&<[`公共请求参数`]>`
+
 **返回示例**
 
 XML格式：
@@ -461,11 +567,9 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 重启实例
+#### 1.3.3 重启实例
 
-**描述**
-
-云原生数据库 I参考重启实例一般在10s钟内完成。 如果当时有大量的事务需要提交或回滚，可能会延长1分钟左右。 操作必须满足以下条件，否则操作将失败： 实例使用中。 实例没有进行中的备份。
+重启实例一般在10s钟内完成。 如果当时有大量的事务需要提交或回滚，可能会延长1分钟左右。 操作必须满足以下条件，否则操作将失败： 实例使用中。 实例没有进行中的备份。
 
 **请求参数**
 
@@ -494,7 +598,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查看实例属性
+#### 1.3.4 查看实例属性
 
 **描述**
 
@@ -506,8 +610,6 @@ JSON格式：
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：DescribeDBInstanceAttribute。 |
 
-云原生数据库 I参考
-
 | DBInstanc eId | String | 是 | 实例ID，可以一次输入多个，以英文半角“,”分隔；最多传入30个。 |
 |---|---|---|---|
 
@@ -515,7 +617,7 @@ JSON格式：
 
 | 参数 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items |  |  | DBInstanceAttribute的参数。 |
+| Items |   |   | DBInstanceAttribute的参数。 |
 | └DBInstanceId | String | rm-bpvxxxxx | 实例ID。 |
 | └DBInstanceType | String | Primary | 实例类型。取值范围： Primary：表示主实例。 Readonly：表示只读实例。 Guard：表示灾备实例。 Temp：表示临时实例。 |
 | └Category | String | Basic | 实例系列。取值范围： Basic：表示基础版。 Standard：表示高可用版。 Enterprise：表示金融版。 |
@@ -526,8 +628,6 @@ JSON格式：
 | └Port | String | 3306 | 应用访问端口。 |
 | └Engine | String | MySQL | 数据库类型。 |
 | └EngineVersion | String | 5.5 | 数据库版本。 |
-
-云原生数据库 I参考
 
 | └DBInstanceClas sType | String | s | 实例规格族。取值范围： s：表示共享型。 x：表示通用型。 d：表示独享型。 h：表示独占物理机。 |
 |---|---|---|---|
@@ -542,8 +642,6 @@ JSON格式：
 | └DBMaxQuantity | Integer | 200 | 一个实例下最多可以创建的数据库数量。 |
 | └AccountMaxQua ntity | Integer | 50 | 一个实例下最多可以创建的账号数量。 |
 
-云原生数据库 I参考
-
 | └CreationTime | String | 2011-05- 30T12:11:4Z | 创建时间格式为： YYYY-MM-DD’T’hh:mm:ssZ 2011-05-30T12:11:4Z |
 |---|---|---|---|
 | └ExpireTime | String | 无 | 到期时间，按量付费实例无到期时间。 |
@@ -555,11 +653,9 @@ JSON格式：
 | └IncrementSourc eDBInstanceId | String | null | 增量数据来源的实例ID，如灾备实例的增量数据来源是主实例，只读实例的增量数据来源是主实例， 主实例的增量数据来源是NULL。 |
 | └GuardDBInstanc eId | String | 无 | 该实例如果挂载着灾备实例，即为灾备实例的ID。 |
 | └TempDBInstanc eId | String | 无 | 该实例如果挂载着临时实例，即为临时实例的ID。 |
-| └ReadOnlyDBInst anceIds |  | rr-xxxxx | 主实例下挂载的只读实例的ID列表。 |
+| └ReadOnlyDBInst anceIds |   | rr-xxxxx | 主实例下挂载的只读实例的ID列表。 |
 | └DBInstanceId | String | rm-bpxxxxx | 实例的名称。 |
 | └VpcCloudInstan ceId | String | vpc-xxxxx | 专有网络实例的ID。 |
-
-云原生数据库 I参考
 
 | └ResourceGroupI d | String | 3653788125 | 资源组ID。 |
 |---|---|---|---|
@@ -567,9 +663,7 @@ JSON格式：
 
 DBInstanceAttribute的参数
 
-**说明**
-
-实例主备节点信息请通过另一接口DescribeDBInstanceHAConfig查询。
+> **说明：** 实例主备节点信息请通过另一接口DescribeDBInstanceHAConfig查询。
 
 **示例**
 
@@ -579,9 +673,11 @@ DBInstanceAttribute的参数
 https://polardb.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **正常返回示例返回示例**
 
-JSON格式： 云原生数据库 I参考
+JSON格式：
 
 ```json
 { "Items":
@@ -627,15 +723,11 @@ JSON格式：
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查询实例列表
+#### 1.3.5 查询实例列表
 
 **描述**
 
 查看实例列表或被RAM授权的实例列表。
-
-**请求参数**
-
-云原生数据库 I参考
 
 | 参数 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -647,8 +739,6 @@ JSON格式：
 | PageNumber | Integer | 否 | 1 | 页码。大于0且不超过Integer的最大值，默认值：1。 |
 | PageSize | Integer | 否 | 30 | 每页记录数。取值：30/50/100， 默认值：30。 |
 
-云原生数据库 I参考
-
 | Tags | String | 否 | {“key1”:”value1” } | 查询绑定有该标签的实例。传入值格式为JSON string， 包括TagKey和 TagValue，TagKe y不能为空，TagValue可以为空。格式示例： {“key1”:”value1 ”}。 |
 |---|---|---|---|---|
 
@@ -659,13 +749,11 @@ JSON格式：
 | PageNumber | Integer | 1 | 页码。 |
 | TotalRecordCount | Integer | 1 | 总记录数。 |
 | PageRecordCount | Integer | 1 | 本页实例个数。 |
-| Items |  |  | 由实例组成的数组。 |
+| Items |   |   | 由实例组成的数组。 |
 | └DBInstanceId | String | rm-xxxxx | 实例ID。 |
 | └DBInstanceDescriptio n | String | testforRemarks | 实例描述。 |
 | └PayType | String | Postpaid | 计费方式。取值范围： Postpaid：表示按时付费 Prepaid：表示包年包月 |
 | └DBInstanceType | String | Primary | 实例类型。取值范围： Primary：表示主实例 ReadOnly：表示只读实例 Guard：表示灾备实例 Temp：表示临时实例 |
-
-云原生数据库 I参考
 
 | └InstanceNetworkType | String | Classic | 实例的网络类型。取值范围： Classic：表示经典网络 VPC：表示VPC网络 |
 |---|---|---|---|
@@ -678,14 +766,12 @@ JSON格式：
 | └LockMode | String | Unlock | 实例的锁定状态。取值范围： Unlock：表示正常。 ManualLock：表示手动触发锁定。 LockByExpiration： 表示实例过期自动锁定。 LockByRestoration ：表示实例回滚前的自动锁定。 LockByDiskQuota： 表示实例空间满自动。 |
 | └LockReason | String | 无 | 被锁定的原因。 |
 
-云原生数据库 I参考
-
 | └MasterInstanceId | String | null | 主实例的ID，如果没有返回此参数（即为null）则表示该实例是主实例。 |
 |---|---|---|---|
 | └GuardDBInstanceId | String | 无 | 该实例如果挂载着灾备实例，即为灾备实例的ID。 |
 | └TempDBInstanceId | String | 无 | 该实例如果挂载着临时实例，即为临时实例的ID。 |
 | └VpcCloudInstanceId | String | vpc-xxxxx | 专有网络实例的ID。 |
-| └ReadOnlyDBInstanceI ds |  |  | 无 |
+| └ReadOnlyDBInstanceI ds |   |   | 无 |
 | └DBInstanceId | String | rm-xxxxx | 实例ID。 |
 | hostInfos | Array | 无 | 节点信息列表。 |
 | └role | String | 0 | 节点角色。取值范围： 0：主节点。 1：备节点。 |
@@ -701,15 +787,17 @@ JSON格式：
 https://polardb.example.com/?Action=DescribeDBInstances &RegionId=cn-hangzhou &Engine=MySQL
 ```
 
+`&<`公共请求参数`>`
+
 **正常返回示例**
 
-XML格式： 云原生数据库 I参考
+XML格式：
 
 ```xml
 <DescribeDBInstancesResponse> <PageRecordCount>2</PageRecordCount> <Items> <DBInstance> <DBInstanceDescription>testforRemarks</DBInstanceDescription> <ExpireTime>2014-10-10T16:00:00Z</ExpireTime> <DBInstanceId>polardbmjfirxxxxx</DBInstanceId> <DBInstanceNetType>Internet</DBInstanceNetType> <PayType>Prepaid</PayType> <DBInstanceStatus>Running</DBInstanceStatus> <DBInstanceType>Primary</DBInstanceType> <Engine>MySQL</Engine> <LockMode>Unlock</LockMode> <LockReason/> <RegionId>cn-hangzhou</RegionId> <ZoneId>cn-hangzhou-a</ZoneId> <MasterInstanceId/> <GuardDBInstanceId/> <TempDBInstanceId/> <ReadOnlyDBInstanceIds> <ReadOnlyDBInstanceId/> </ReadOnlyDBInstanceIds> </DBInstance> </Items> <PageNumber>1</PageNumber> <TotalRecordCount>2</TotalRecordCount> <RequestId>2553A660-E4EB-4AF4-A402-8AFF70A49143</RequestId> </DescribeDBInstancesResponse>
 ```
 
-JSON格式： 云原生数据库 I参考
+JSON格式：
 
 ```json
 { "Items":
@@ -735,8 +823,9 @@ JSON格式： 云原生数据库 I参考
     "PageRecordCount":2,
     "RequestId":"2553A660-E4EB-4AF4-A402-8AFF70A49143",
     "TotalRecordCount":2
-}
 ```
+
+`}`
 
 **异常返回示例**
 
@@ -746,7 +835,7 @@ JSON 格式：
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### 变更实例配置
+#### 1.3.6 变更实例配置
 
 **描述**
 
@@ -756,8 +845,6 @@ JSON 格式：
 
 | 参数 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云原生数据库 I参考
 
 | Action | String | 是 | ModifyDBInstanc eSpec | 系统规定参数。取值： ModifyDBInstanc eSpec |
 |---|---|---|---|---|
@@ -775,15 +862,13 @@ JSON 格式：
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606-4A42- BF6D-8A4442913CEF | 请求ID。 |
 
-**示例**
-
 **请求示例**
-
-云原生数据库 I参考
 
 ```
 https://polardb.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=polardb-xxxxx &PayType=Postpaid &DBInstanceStorage=10
 ```
+
+`&<`公共请求参数`>`
 
 **正常返回示例返回示例**
 
@@ -807,7 +892,7 @@ JSON格式：
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### 申请外网连接地址
+#### 1.3.7 申请外网连接地址
 
 **描述**
 
@@ -822,10 +907,6 @@ JSON格式：
 | ConnectionString Prefix | Strin g | 是 | 外网连接地址的前缀。 |
 | Port | Strin g | 是 | 外网端口。 |
 
-云原生数据库 I参考
-
-**返回参数**
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
@@ -837,6 +918,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=AllocateInstancePublicConnection &DBInstanceId=polardb-xxxxx &ConnectionStringPrefix=test0001 &Port=3306
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -852,7 +935,7 @@ JSON格式：
 { "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64"}
 ```
 
-#### 释放外网连接地址
+#### 1.3.8 释放外网连接地址
 
 **描述**
 
@@ -866,10 +949,6 @@ JSON格式：
 | DBInstanceId | String | 是 | 实例ID。 |
 | CurrentConnection String | String | 是 | 外网连接地址。 |
 
-**返回参数**
-
-云原生数据库 I参考
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
@@ -881,6 +960,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=polardb-xxxxx &CurrentConnectionString=test0001.mysql.polardb.example.com
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -896,7 +977,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 申请内网连接地址（原内外网切换）
+#### 1.3.9 申请内网连接地址（原内外网切换）
 
 **描述**
 
@@ -912,11 +993,7 @@ JSON格式：
 
 **返回参数**
 
-#### 查看所有连接地址
-
-云原生数据库 I参考
-
-**描述**
+#### 1.3.10 查看所有连接地址
 
 查看指定实例的所有连接地址信息。
 
@@ -931,7 +1008,7 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceNetInfos | List<DBInstanceAttribute> | 实例的连接信息。 |
 | InstanceNetworkType | String | VPC：VPC实例； Classic：经典实例。 |
 
@@ -946,13 +1023,9 @@ DBInstanceNetInfo的参数
 | VPCId | String | VPC ID。 |
 | VSwitchId | String | VSwitch ID。 |
 
-云原生数据库 I参考
+#### 1.3.11 修改连接地址
 
-#### 修改连接地址
-
-**描述**
-
-目前PolarDB提供内外网两种连接地址，并能支持特定访问模式下的连接地址并存。
+目前PolarDB提供内外网两种连接地址，并能支持特定访问模式下的连接地址并存。 通过本接口可以修改连接地址的名字和端口。
 
 **请求参数**
 
@@ -966,7 +1039,9 @@ DBInstanceNetInfo的参数
 
 **返回参数**
 
-#### 修改PolarDB实例访问模式
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.12 修改PolarDB实例访问模式
 
 **描述**
 
@@ -978,23 +1053,21 @@ DBInstanceNetInfo的参数
 |---|---|---|---|
 | Action | Stri ng | 是 | 系统规定参数，取值：ModifyDBInstanceConnectionMode。 |
 
-云原生数据库 I参考
-
 | DBInstance Id | Stri ng | 是 | 实例ID。 |
 |---|---|---|---|
 | Connection Mode | Stri ng | 是 | Performance为标准访问模式；Safe为高安全访问模式。 |
 
 **返回参数**
 
-#### 修改PolarDB实例网络类型
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.13 修改PolarDB实例网络类型
 
 **描述**
 
 将VPC PolarDB切换成Classic模式，或将Classic PolarDB切换成VPC模式。
 
-**说明**
-
-只有ConnectionMode为“Safety”的Classic实例才能切换成VPC模式。
+> **说明：** 只有ConnectionMode为“Safety”的Classic实例才能切换成VPC模式。
 
 **请求参数**
 
@@ -1006,14 +1079,14 @@ DBInstanceNetInfo的参数
 | VPCId | St ri n g | 否 | VPC ID。 |
 | VSwitchId | St ri n g | 否 | VSwitch ID；若传入VPCID的值，则该参数必传。 |
 
-云原生数据库 I参考
-
 | PrivateIpAddres s | St ri n g | 否 | 用户可以指定VSwitchId下的vpcIp，如果不输入，系统通过vpcId和 VSwitchId 自动分配。 |
 |---|---|---|---|
 
 **返回参数**
 
-#### 查看PolarDB实例IP白名单
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.14 查看PolarDB实例IP白名单
 
 **描述**
 
@@ -1030,7 +1103,7 @@ DBInstanceNetInfo的参数
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数 。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数 。 |
 | Items | List<DBInstanceIP Array> | 实例的IP白名单分组列表。 |
 
 DBInstanceIPArray的参数
@@ -1040,12 +1113,10 @@ DBInstanceIPArray的参数
 | DBInstanceIPArrayN ame | Strin g | IP白名单分组的名字。 |
 | DBInstanceIPArrayAt tribute | Strin g | 默认为空。为了区分不同的属性值，控制台不显示带有“hidden”标签的分组。 |
 
-云原生数据库 I参考
-
 | SecurityIPList | Strin g | IP白名单分组下的IP列表，最多1000个以逗号隔开，格式如下： 0.0.0.0/0，10.23.12.24（IP），或者10.23.12.24/24（CIDR模式，无类域间路由，/24表示了地址中前缀的长度，范围[1,32]）。 |
 |---|---|---|
 
-#### 修改PolarDB实例IP白名单
+#### 1.3.15 修改PolarDB实例IP白名单
 
 **描述**
 
@@ -1063,6 +1134,8 @@ DBInstanceIPArray的参数
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1071,9 +1144,11 @@ DBInstanceIPArray的参数
 https://polardb.example.com/?Action=ModifySecurityIps &DBInstanceId=polardb-xxxxx &SecurityIps=192.168.1.2
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-云原生数据库 I参考 XML格式：
+XML格式：
 
 ```xml
 <ModifySecurityIpsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifySecurityIpsResponse>
@@ -1085,7 +1160,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查询PolarDB地域和可用区信息
+#### 1.3.16 查询PolarDB地域和可用区信息
 
 **描述**
 
@@ -1115,11 +1190,11 @@ PolarDBRegion
 
 **请求示例**
 
-云原生数据库 I参考
-
 ```
 https://polardb.example.com/?Action=DescribeRegions
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1140,10 +1215,11 @@ JSON格式：
             "ZoneId":"cn-hangzhou-b"},
              ]},
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"
-}
 ```
 
-#### 查询PolarDB可用区信息和数据复制状态
+`}`
+
+#### 1.3.17 查询PolarDB可用区信息和数据复制状态
 
 **描述**
 
@@ -1156,13 +1232,9 @@ JSON格式：
 | Action | String | 是 | 系统规定参数，取值：DescribeDBInstanceHAConfig。 |
 | DBInstanceI d | String | 是 | 实例ID。 |
 
-**返回参数**
-
-云原生数据库 I参考
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceId | String | 实例ID。 |
 | SyncMode | String | Semi-sync：半同步；Async：异步。 |
 | HAMode | String | RPO：数据持久性优先；RTO：实例可用性优先。 |
@@ -1180,15 +1252,13 @@ NodeInfo的参数
 | LogSyncTime | String | 备库收到的日志时间点。 |
 | DataSyncTime | String | 备库当前的数据时间点。 |
 
-#### 迁移PolarDB实例可用区
+#### 1.3.18 迁移PolarDB实例可用区
 
 **描述**
 
-支持将一个实例迁移至其他可用区。 例如实例1目前位于华东 1 （杭州）的cn-hangzhou-a的可用区，调用此接口可以将该实例迁移至杭州的 cn-hangzhou-b。 云原生数据库 I参考
+支持将一个实例迁移至其他可用区。 例如实例1目前位于华东 1 （杭州）的cn-hangzhou-a的可用区，调用此接口可以将该实例迁移至杭州的 cn-hangzhou-b。
 
-**说明**
-
-跨可用区迁移必须迁移至相同物理位置内的。如华东（杭州）可用区内的实例不支持迁移至华北 1（青岛）的可用区。
+> **说明：** 跨可用区迁移必须迁移至相同物理位置内的。如华东（杭州）可用区内的实例不支持迁移至华北 1（青岛）的可用区。
 
 **请求参数**
 
@@ -1200,6 +1270,8 @@ NodeInfo的参数
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1207,6 +1279,8 @@ NodeInfo的参数
 ```
 https://polardb.example.com/?Action=MigrateToOtherZone &DBInstanceId=polardb-xxxxx &ZoneId=cn-hangzhou-b
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1222,15 +1296,11 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 清理PolarDB实例日志
+#### 1.3.19 清理PolarDB实例日志
 
 **描述**
 
 对于MySQL类型的实例，将清空实例的所有BINLOG日志。
-
-**请求参数**
-
-云原生数据库 I参考
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1239,6 +1309,8 @@ JSON格式：
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1246,6 +1318,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1261,7 +1335,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 升级PolarDB实例版本
+#### 1.3.20 升级PolarDB实例版本
 
 **描述**
 
@@ -1273,8 +1347,6 @@ JSON格式：
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值： UpgradeDBInstanceEn gineVersion。 |
 
-云原生数据库 I参考
-
 | DBInstanceId | String | 是 | 待升降级的实例。 |
 |---|---|---|---|
 | EngineVersion | String | 是 | 待升级到的数据库版本。 |
@@ -1283,7 +1355,7 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数 。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数 。 |
 | TaskId | Integer | 任务ID。 |
 
 **示例**
@@ -1293,6 +1365,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=UpgradeDBInstanceEngineVersion DBInstanceId=rm-xxxxxx &EngineVersion=5.6
 ```
+
+`&<`公共请求参数`>`
 
 **返回参数**
 
@@ -1308,7 +1382,7 @@ JSON格式：
 {"RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "TaskId":”124378” }
 ```
 
-#### 修改PolarDB实例备注
+#### 1.3.21 修改PolarDB实例备注
 
 **描述**
 
@@ -1320,13 +1394,13 @@ JSON格式：
 |---|---|---|---|
 | Action | Strin g | 是 | 系统规定参数，取值：ModifyDBInstanceDescription。 |
 
-云原生数据库 I参考
-
 | DBInstanceId | Strin g | 是 | 实例ID。 |
 |---|---|---|---|
 | DBInstanceDesc ription | Stin g | 是 | 实例描述信息。 |
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -1335,6 +1409,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=ModifyDBInstanceDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testdescribe
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1350,7 +1426,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改PolarDB实例可维护时间
+#### 1.3.22 修改PolarDB实例可维护时间
 
 **描述**
 
@@ -1363,12 +1439,12 @@ JSON格式：
 | Action | String | 是 | 系统规定参数，取值：ModifyDBInstanceMaintainTime。 |
 | DBInstanceI d | String | 是 | 实例ID。 |
 
-云原生数据库 I参考
-
 | MaintainTim e | String | 是 | 实例的维护时间，取值范围如下： 22:00Z-02:00Z：22点至凌晨2点。 02:00Z-06:00Z：凌晨2点至6点。 06:00-10:00：6点至10点。 10:00Z14:00Z：10点至14点。 14:00Z-18:00Z：14点至18点。 18:00Z-22:00Z：18点至22点。 |
 |---|---|---|---|
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -1377,6 +1453,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=polardb-xxxxx &MaintainTime=22:00Z-02:00Z
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1392,7 +1470,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 修改PolarDB实例数据复制和高可用策略
+#### 1.3.23 修改PolarDB实例数据复制和高可用策略
 
 **描述**
 
@@ -1406,14 +1484,14 @@ JSON格式：
 | DBInstance Id | String | 是 | 实例ID。 |
 | SyncMode | String | 是 | Semi-sync：半同步；Async：异步。 |
 
-云原生数据库 I参考
-
 | HAMode | String | 是 | RPO：数据持久性优先；RTO：实例可用性优先。 |
 |---|---|---|---|
 
 **返回参数**
 
-#### 切换PolarDB实例的主备库
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.24 切换PolarDB实例的主备库
 
 **描述**
 
@@ -1430,7 +1508,9 @@ PolarDB主实例是由分布在不同服务器上面的主库和备库组成的�
 
 **返回参数**
 
-#### 创建PolarDB只读实例
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.25 创建PolarDB只读实例
 
 **描述**
 
@@ -1440,8 +1520,6 @@ PolarDB主实例是由分布在不同服务器上面的主库和备库组成的�
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
-
-云原生数据库 I参考
 
 | Action | String | 是 | 系统规定参数，取值：CreateReadOnlyDBInstance。 |
 |---|---|---|---|
@@ -1464,8 +1542,6 @@ PolarDB主实例是由分布在不同服务器上面的主库和备库组成的�
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceId | String | 实例ID。 |
-
-云原生数据库 I参考
 
 | OrderId | String | 订单ID。 |
 |---|---|---|
@@ -1494,7 +1570,7 @@ JSON格式：
 { "OrderId": "100789370230206", "ConnectionString": "polardb-xxxxx.mysql.polardb.aliyuncs.com", "DBInstanceId": "polardb-xxxxx", "Port": "3306", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 查询实例SSL链路
+#### 1.3.26 查询实例SSL链路
 
 **描述**
 
@@ -1504,8 +1580,6 @@ JSON格式：
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
-
-云原生数据库 I参考
 
 | Action | String | 是 | 系统规定参数，取值：DescribeDBInstanceSSL。 |
 |---|---|---|---|
@@ -1521,7 +1595,7 @@ JSON格式：
 | RequireUpdate | String | Yes：建议用户立即更新；No：不建议用户立即更新。 |
 | RequireUpdateRe ason | String | 建议更新的原因。 |
 
-#### 修改实例SSL链路
+#### 1.3.27 修改实例SSL链路
 
 **描述**
 
@@ -1540,17 +1614,17 @@ JSON格式：
 | 名称 | 类型 | 描述 |
 |---|---|---|
 
-云原生数据库 I参考
-
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 |---|---|---|
 | SSLExpireTime | String | SSL过期的时间，格式为YYYY-MM-DD’T’hh:mm:ssZ。 |
 
-#### 查询实例数据加密状态
+#### 1.3.28 查询实例数据加密状态
 
 调用DescribeDBInstanceTDE查询PolarDB数据库实例的透明数据加密（TDE）配置。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -1568,8 +1642,6 @@ JSON格式：
 | -TDEStatus | String | Enabled | 是否开通TDE加密，取值： Enabled ：开通 Disabled ：关闭 |
 | RequestId | String | 9B7BFB11-C077- 4FE3-B051- F69CEB****** | 请求ID。 |
 
-云原生数据库 I参考
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | EncryptAlgorit hm | String | AES 256 CBC _ _ | 加密算法： AUTO ：自动加密。 TKIP ：临时密钥完整性协议。 AES 256 CBC ：AES-256-CBC 是一种 _ _ 采用 256 位长密钥的高强度对称加密算法， 它通过将数据分块并结合前一个密文块进行链式异或运算（需配合随机初始化向量），有效隐藏数据模式以抵御攻击，从而提供极高的安全性。 SM4 ：是一种采用 128 位密钥和分组长度的对称加密算法。 |
@@ -1582,27 +1654,34 @@ JSON格式：
 http(s)://[Endpoint]/?Action=DescribeDBInstanceTDE &DBInstanceId=pc-****************
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TDEStatus":"Enabled",
- "Databases":[
-  {
-   "TDEStatus":"Enabled",
-   "DBName":"test_db"
-  }
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`],`
+`{`
+
+```json
+ "TDEStatus":"Enabled",
+ "Databases":[
+```
+
+`{`
+
+```json
+   "TDEStatus":"Enabled",
+   "DBName":"test_db"
+```
+
+`}` `],`
 
 ```json
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "EncryptAlgorithm":"AES"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <TDEStatus>Enabled</TDEStatus> <Databases>
@@ -1611,11 +1690,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </Databases> <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <EncryptAlgorithm>AES</EncryptAlgorithm>
 ```
 
-#### 修改实例数据加密状态
-
-云原生数据库 I参考
-
-**描述**
+#### 1.3.29 修改实例数据加密状态
 
 调用该接口修改PolarDB实例的数据加密状态。
 
@@ -1630,25 +1705,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **返回参数**
 
-### 数据库管理
+公共返回参数，具体请参见公共返回参数。
 
-#### 创建数据库
+### 1.4 数据库管理
+
+#### 1.4.1 创建数据库
 
 **描述**
 
 在某个实例下创建一个新的数据库，接口必须满足以下条件，否则将调用失败： 实例状态运行中。 实例没有被锁定。 没有超出实例最大数据库数量。 实例类型是主实例。
 
-**说明**
-
-PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口不支持PolarDB。
+> **说明：** PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口不支持PolarDB。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：CreateDatabase。 |
-
-云原生数据库 I参考
 
 | DBInstanceI d | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -1658,6 +1731,8 @@ PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口�
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1665,6 +1740,8 @@ PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口�
 ```
 https://polardb.example.com/?Action=CreateDatabase &CharacterSetName=gbk &DBName=testDB &DBInstanceId=polardb-xxxxx
 ```
+
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -1680,15 +1757,13 @@ JSON格式：
 { "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 删除数据库
+#### 1.4.2 删除数据库
 
 **描述**
 
-用户可以删除实例下的的某个数据库。 接口必须满足以下条件，否则将调用失败： 云原生数据库 I参考实例状态运行中。 实例类型为主实例。
+用户可以删除实例下的的某个数据库。 接口必须满足以下条件，否则将调用失败： 实例状态运行中。 实例类型为主实例。
 
-**说明**
-
-PolarDB实例中用户有权限通过SQL做DROP DATABASE操作，因此接口不支持PolarDB。
+> **说明：** PolarDB实例中用户有权限通过SQL做DROP DATABASE操作，因此接口不支持PolarDB。
 
 **请求参数**
 
@@ -1712,6 +1787,8 @@ PolarDB实例中用户有权限通过SQL做DROP DATABASE操作，因此接口不
 https://polardb.example.com/?Action=DeleteDatabase &DBName=testDB &DBInstanceId=polardb-xxxxx
 ```
 
+`&<[`公共请求参数`]>`
+
 **返回示例**
 
 XML格式：
@@ -1726,13 +1803,9 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 查看数据库列表
+#### 1.4.3 查看数据库列表
 
-**描述**
-
-云原生数据库 I参考查找指定实例、指定DB的DB列表信息。如果查找参数类型错误，返回错误提示，返回数据为空。
-
-**请求参数**
+查找指定实例、指定DB的DB列表信息。如果查找参数类型错误，返回错误提示，返回数据为空。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1759,8 +1832,6 @@ DATABASE参数
 | CharacterSet Name | String | 字符集。 |
 | DBDescription | String | 数据库描述。 |
 
-云原生数据库 I参考
-
 | Accounts | List<AccountPrivileg eInfo> | 有Accounts组成的list。 |
 |---|---|---|
 | Account | String | 账号名称。 |
@@ -1781,6 +1852,8 @@ AccountPrivilegeInfo参数
 https://polardb.example.com/?Action=DescribeDatabases &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -1789,7 +1862,7 @@ XML格式：
 <DescribeDatabasesResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Databases> <Database> <Engine>MySQL</Engine> <DBName>testdb</DBName> <CharacterSetName>utf8</CharacterSetName> <DBStatus>Creating</DBStatus> <DBInstanceId>polardb-xxxxx</DBInstanceId> <Accounts> <AccountPrivilegeInfo></AccountPrivilegeInfo> <Accounts> </Database> </Databases> </DescribeDatabasesResponse>
 ```
 
-JSON格式： 云原生数据库 I参考
+JSON格式：
 
 ```json
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "Databases":
@@ -1801,10 +1874,11 @@ JSON格式： 云原生数据库 I参考
             "DBInstanceId": "polardb-xxxxx",
             "Accounts": { " AccountPrivilegeInfo": [] },
             "DBName": "testdb" }] }
-            }
 ```
 
-#### 修改数据库备注
+`}`
+
+#### 1.4.4 修改数据库备注
 
 **描述**
 
@@ -1821,6 +1895,8 @@ JSON格式： 云原生数据库 I参考
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1829,9 +1905,11 @@ JSON格式： 云原生数据库 I参考
 https://polardb.example.com/?Action=ModifyDBDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testDBdescribe
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： 云原生数据库 I参考
+XML格式：
 
 ```xml
 <ModifyDBDescriptionResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyDBDescriptionResponse>
@@ -1843,9 +1921,9 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### 账号管理
+### 1.5 账号管理
 
-#### 创建账号
+#### 1.5.1 创建账号
 
 **描述**
 
@@ -1862,10 +1940,6 @@ JSON格式：
 | AccountType | Strin g | 否 | 取值为：Normal（普通账号），Super（高权限账号），默认为Normal。 PolarDB有且仅有一个初始账号，其他账号由初始账号连接数据库后创建。 |
 | AccountDescr iption | Strin g | 否 | 账号备注，长度不超过256个字符。请注意：开头不能以http://或https:// 开头；必须以中文、英文字母作为开头。可以包含中文、英文字符、” ”，” _ -”，数字字符长度2~256位。 |
 
-云原生数据库 I参考
-
-**返回参数**
-
 **示例**
 
 **请求示例**
@@ -1873,6 +1947,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx
 ```
+
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -1888,11 +1964,11 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 删除账号
+#### 1.5.2 删除账号
 
 **描述**
 
-实例状态要求为运行中。
+调用此接口可以直接删除数据库账号。 实例状态要求为运行中。
 
 **请求参数**
 
@@ -1904,15 +1980,15 @@ JSON格式：
 
 **返回参数**
 
-**示例**
+公共返回参数，具体请参见公共返回参数。
 
 **请求示例**
-
-云原生数据库 I参考
 
 ```
 https://polardb.example.com/?Action=DeleteAccount &DBInstanceId=rds-xxxxx &AccountName=testacc01
 ```
+
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -1928,7 +2004,7 @@ JSON格式：
 { "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 查看账号列表
+#### 1.5.3 查看账号列表
 
 **描述**
 
@@ -1946,10 +2022,10 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | Accounts | List<DBInstanceAccount > | 由Account组成的数组。 |
 
-DBInstanceAccount参数云原生数据库 I参考
+DBInstanceAccount参数
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -1975,9 +2051,11 @@ DatabasePrivilege参数
 https://polardb.example.com/?Action=DescribeAccounts &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： 云原生数据库 I参考
+XML格式：
 
 ```xml
 <DescribeAccountsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Accounts> <DBInstanceAccount> <AccountName>MySQL</AccountName> <DBInstanceId>testdb</DBInstanceId> <AccountStatus>utf8</AccountStatus> <AccountDescription> </AccountDescription> <DatabasePrivileges> <DatabasePrivilege></DatabasePrivilege> </DatabasePrivileges> <DBInstanceAccount> </Accounts> </DescribeAccountsResponse>
@@ -1996,7 +2074,7 @@ JSON格式：
  "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 授权账号权限
+#### 1.5.4 授权账号权限
 
 **描述**
 
@@ -2011,12 +2089,12 @@ JSON格式：
 | AccountName | String | 是 | 账号名称。 |
 | DBName | String | 是 | 设置与该账号关联的数据库名数据库名称。 |
 
-云原生数据库 I参考
-
 | AccountPrivileg e | String | 是 | 账号权限，ReadOnly 只读，ReadWrite读写。 |
 |---|---|---|---|
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -2025,6 +2103,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=GrantAccountPrivilege &AccountName=testacc02 &AccountPrivilege=readwrite &DBName=testdb03 &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2040,7 +2120,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 撤销账号权限
+#### 1.5.5 撤销账号权限
 
 **描述**
 
@@ -2054,12 +2134,12 @@ JSON格式：
 | DBInstanc eId | String | 是 | 实例ID。 |
 | AccountNa me | String | 是 | 账号名称。 |
 
-云原生数据库 I参考
-
 | DBName | String | 是 | 数据库名称。 |
 |---|---|---|---|
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -2068,6 +2148,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=RevokeAccountPrivilege &AccountName=testacc02 &DBName=testdb03 &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2083,7 +2165,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改账号备注
+#### 1.5.6 修改账号备注
 
 **描述**
 
@@ -2096,8 +2178,6 @@ JSON格式：
 | Action | Stri ng | 是 | 系统规定参数，取值：ModifyAccountDescription。 |
 | DBInstanceId | Stri ng | 是 | 实例ID。 |
 | AccountName | Stri ng | 是 | 操作账号，需唯一性检查，由小写字母，数字、下划线组成，字母开头， 长度不超过16个字符。其他非法字符，请参见禁用关键字表。 |
-
-云原生数据库 I参考
 
 | AccountDescr iption | Stri ng | 是 | 修改账号备注。注：不能以http:// , https:// 开头。以中文、英文字母开头。可以包含中文、英文字符、” ”，” -”，数字字符长度2~256位。 _ |
 |---|---|---|---|
@@ -2116,6 +2196,8 @@ JSON格式：
 https://polardb.example.com/?Action=ModifyAccountDescription &DBInstanceId=polardb-xxxxx &AccountName=testacc01 &AccountDescription=testAccoutdescribe
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -2130,7 +2212,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 重置密码
+#### 1.5.7 重置密码
 
 **描述**
 
@@ -2143,13 +2225,13 @@ JSON格式：
 | Action | Strin g | 是 | 系统规定参数，取值：ResetAccountPassword。 |
 | DBInstanceId | Strin g | 是 | 实例ID。 |
 
-云原生数据库 I参考
-
 | AccountNam e | Strin g | 是 | 账号名称。 |
 |---|---|---|---|
 | AccountPass word | Strin g | 是 | 新密码，由字母、数字或下划线组成，长度为6~32位。 |
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -2158,6 +2240,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=ResetAccountPassword &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2173,7 +2257,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 重置账号
+#### 1.5.8 重置账号
 
 **描述**
 
@@ -2188,17 +2272,13 @@ JSON格式：
 | AccountNam e | Strin g | 是 | 账号名称。 |
 | AccountPass word | Strin g | 是 | 账号密码。 |
 
-云原生数据库 I参考
-
-**返回参数**
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 
-### 备份恢复
+### 1.6 备份恢复
 
-#### 创建备份
+#### 1.6.1 创建备份
 
 **描述**
 
@@ -2221,15 +2301,13 @@ JSON格式：
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 
-云原生数据库 I参考
-
-**示例**
-
 **请求示例**
 
 ```
 https://polardb.example.com/?Action= CreateBackup &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2245,7 +2323,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 克隆PolarDB实例
+#### 1.6.2 克隆PolarDB实例
 
 **描述**
 
@@ -2260,8 +2338,6 @@ JSON格式：
 | BackupId | String | 否 | 备份集ID，可通过查询备份列表接口DescribeBackups获取。 |
 | RestoreTime | String | 否 | 用户指定备份保留周期内的任意时间点，如2011-06- 11T16:00:00Z。BackupId和RestoreTime两者至少传入一个。 |
 | DBInstanceClas s | String | 否 | 实例规格，详见规格列表附录。可选参数，若不传入，则默认规格和主实例一致。 |
-
-云原生数据库 I参考
 
 | DBInstanceStor age | String | 否 | 磁盘空间，默认与主实例一致，单位GB。PolarDB独占物理机规格可传入范围为[3000，3000];其他规格可传入范围为[5,2000]。每5GB 递增。 |
 |---|---|---|---|
@@ -2278,7 +2354,7 @@ JSON格式：
 | DBInstanceId | String | 实例ID。 |
 | OrderId | Integer | 订单号。 |
 
-#### 查看备份列表
+#### 1.6.3 查看备份列表
 
 **描述**
 
@@ -2287,10 +2363,6 @@ JSON格式：
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?><Error><Code>AccessDenied</Code> <Message>Request has expired.</Message><Expires>2012-12-25T09:47:52.000Z</Expires><Se rverTime>2012-12-25T09:49:00.000Z</ServerTime> <RequestId>50D9768CA801C2F102005C70</RequestId><HostId>oss-test.aliyuninc.com</HostId></Error>
 ```
-
-**请求参数**
-
-云原生数据库 I参考
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -2308,23 +2380,21 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TotalRecordCount | Integer | 总记录数。 |
 | PageNumber | Integer | 页码。 |
 | PageRecordCount | Integer | 本页备份集个数。 |
 
-云原生数据库 I参考
-
 | Items | List<Backup> | 由Backup组成的数组。 |
 |---|---|---|
 
-#### 创建临时实例
+#### 1.6.4 创建临时实例
 
 **描述**
 
-**说明**
+> **说明：** 基于备份集或者7天内的一个时间点创建临时实例。临时实例创建成功后，账号，数据库将继承备份集数据。
 
-基于备份集或者7天内的一个时间点创建临时实例。临时实例创建成功后，账号，数据库将继承备份集数据。 实例状态必须满足以下条件，否则将操作失败： 运行中。 没有迁移任务。 没有被锁定。 当前实例备份集的状态为完成备份。
+实例状态必须满足以下条件，否则将操作失败： 运行中。 没有迁移任务。 没有被锁定。 当前实例备份集的状态为完成备份。
 
 **请求参数**
 
@@ -2339,18 +2409,16 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TempDBInstanceId | String | 临时实例ID。 |
 
-**示例**
-
 **请求示例**
-
-云原生数据库 I参考
 
 ```
 https://polardb.example.com/?Action=CreateTempDBInstance &BackupId=90262 &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2366,7 +2434,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "TempDBInstanceId":"sub-xxxxx"}
 ```
 
-#### 查看备份策略
+#### 1.6.5 查看备份策略
 
 **描述**
 
@@ -2383,20 +2451,20 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | BackupRetentionPeri od | String | 数据备份保留天数（1~30天）。 |
 | PreferredBackupTim e | String | 数据备份时间，格式：HH:mmZ- HH:mm Z。 |
-
-云原生数据库 I参考
 
 | PreferredBackupPeri od | String | 数据备份周期：Monday：周一；Tuesday：周二；Wednesday：周三；Thursday：周四；Friday：周五；Saturday：周六；Sunday：周日。 |
 |---|---|---|
 | BackupLog | String | 日志备份状态，Enable：开启，Disabled：关闭。 |
 | LogBackupRetention Period | String | 日志备份保留天数（1~30天）。 |
 
-#### 修改备份策略
+#### 1.6.6 修改备份策略
 
 **描述**
+
+修改备份策略，PolarDB系统将根据用户设置的系统配置，定期做实例备份。
 
 **请求参数**
 
@@ -2410,10 +2478,6 @@ JSON格式：
 | BackupLog | String | 否 | 默认为Enable，可改为Disabled。 |
 | LogBackupRetention Period | String | 否 | 日志备份保留天数（1~30天，且不大于数据备份保留天数）。 当开启日志备份时，可设置日志备份文件的保留天数，目前仅支持 MySQL/ PolarDB PostgreSQL/ PolarDB PPAS引擎设置该值。 _ _ |
 
-**返回参数**
-
-云原生数据库 I参考
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
@@ -2425,6 +2489,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=ModifyBackupPolicy &DBInstanceId=polardb-xxxxx &PreferredBackupTime=00:00Z—01:00Z &PreferredBackupPeriod=Monday
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2440,7 +2506,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 恢复备份集到实例
+#### 1.6.7 恢复备份集到实例
 
 **描述**
 
@@ -2452,8 +2518,6 @@ JSON格式：
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值： RestoreDBInstance。 |
 | DBInstanceId | String | 是 | 实例ID。 |
-
-云原生数据库 I参考
 
 | BackupId | Integer | 是 | 备份集ID。 |
 |---|---|---|---|
@@ -2472,6 +2536,8 @@ JSON格式：
 https://polardb.example.com/?Action=RestoreDBInstance &BackupId=103312 &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -2486,7 +2552,7 @@ JSON格式：
 {"RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 删除数据备份文件
+#### 1.6.8 删除数据备份文件
 
 **描述**
 
@@ -2499,16 +2565,16 @@ JSON格式：
 | Action | String | 是 | 系统规定参数，取值：DeleteBackup。 |
 | DBInstanc eId | String | 是 | 实例ID。 |
 
-云原生数据库 I参考
-
 | BackupId | String | 是 | 备份集ID，可通过查看备份列表获取。支持传入多组值，以逗号隔开，单次最多传入100个。只支持删除查看备份列表中存储状态为Enable的备份集。 |
 |---|---|---|---|
 
 **返回参数**
 
-### 监控管理
+公共返回参数，具体请参见公共返回参数。
 
-#### 查看实例资源使用情况
+### 1.7 监控管理
+
+#### 1.7.1 查看实例资源使用情况
 
 **描述**
 
@@ -2525,7 +2591,7 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceId | String | 实例ID。 |
 | Engine | String | 数据库类型。 |
 | DiskUsed | Integer | 已用空间（DataSize+LogSize），单位：Byte，-1表示没有数据。 |
@@ -2535,15 +2601,11 @@ JSON格式：
 | ColdBackupSize | Integer | 冷备的存储量，单位：Byte，-1表示没有数据。 |
 | SQLSize | Integer | SQL的存储量，单位：Byte，-1表示没有数据。 |
 
-#### 查看实例性能数据
+#### 1.7.2 查看实例性能数据
 
-**描述**
+根据性能参数查看某个用户实例，某时间段范围内的性能监控数据。 根据查询时间范围的不同，有如下3种输出形式： 当查询时间范围小于等于1天，按分钟描点性能值。 当查询时间范围1天到7天不支持，暂不支持。 当查询时间范围大于7天小于等于15天，按小时描点性能值。 当查询时间范围大于15天小于30天，暂不支持。 当查询时间范围大于等于30天小于等于1年时，按天描点。
 
-云原生数据库 I参考根据性能参数查看某个用户实例，某时间段范围内的性能监控数据。 根据查询时间范围的不同，有如下3种输出形式： 当查询时间范围小于等于1天，按分钟描点性能值。 当查询时间范围1天到7天不支持，暂不支持。 当查询时间范围大于7天小于等于15天，按小时描点性能值。 当查询时间范围大于15天小于30天，暂不支持。 当查询时间范围大于等于30天小于等于1年时，按天描点。
-
-**说明**
-
-实例空间占用Key为MySQL_SpaceUsage，仅支持查询1天内的监控数据，即第1种输出形式。
+> **说明：** 实例空间占用Key为MySQL_SpaceUsage，仅支持查询1天内的监控数据，即第1种输出形式。
 
 **请求参数**
 
@@ -2564,8 +2626,6 @@ JSON格式：
 | Engine | String | 数据库类型。 |
 | StartTime | String | 查询开始时间，格式：YYYY-MM-DD'T'HH:mmZ，如 2011-05-30T03:29Z。 |
 
-云原生数据库 I参考
-
 | EndTime | String | 查询结束时间，格式：YYYY-MM-DD'T'HH:mmZ，如 2011-05-30T03:29Z，大于查询开始时间。 |
 |---|---|---|
 | PerformanceKey s | List<PerformanceKey> | 数组格式：{perf1, perf2, perf3, …}。 |
@@ -2577,6 +2637,8 @@ JSON格式：
 ```
 https://polardb.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId=polardb-xxxxx &key= MySQL_xxxxx &StartTime=2013-01-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2597,11 +2659,7 @@ JSON格式：
         "Values": { "PerformanceValue":[] } } ] }}
 ```
 
-#### 查询监控行为
-
-云原生数据库 I参考
-
-**描述**
+#### 1.7.3 查询监控行为
 
 描述监控的行为。
 
@@ -2619,7 +2677,7 @@ JSON格式：
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 | Period | String | 监控的采集间隔，单位为秒。 |
 
-#### 修改监控行为
+#### 1.7.4 修改监控行为
 
 **描述**
 
@@ -2639,17 +2697,15 @@ JSON格式：
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 
-### 参数管理
+### 1.8 参数管理
 
-#### 查询参数模板列表
+#### 1.8.1 查询参数模板列表
 
 查看目标地域的参数模板列表。
 
 **请求头**
 
-**请求参数**
-
-云原生数据库 I参考
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2663,20 +2719,20 @@ JSON格式：
 
 **返回数据**
 
-| 参数名称 | 类型 | 示例 | 说明 |  |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |   |
 |---|---|---|---|---|---|
-| ParameterGro ups | Array | group1 | 参数模板列表。 |  |  |
-| - ParameterGro upType | Integer | 1 | 参数模板类型。返回值如下： 0 ：系统默认模板 1 ：用户自定义模板 2 ：系统自动备份模板（应用模板后系统会自动备份之前的参数设置为模板） |  |  |
-| -Created | String | 0 | 参数模板创建时间，格式为 yyyy-MM- ddTHH:mm:ssZ （UTC时间）。 |  |  |
-|  |  |  |  | yyyy-MM- |  |
-| -Modified | String | 19723574**** | 修改时间。 |  |  |
-| - ParameterGro upName | String | test | 参数模板名称。 |  |  |
-| -ParamCounts | Integer | 2 | 参数模板内的参数数量。 |  |  |
+| ParameterGro ups | Array | group1 | 参数模板列表。 |   |   |
+| - ParameterGro upType | Integer | 1 | 参数模板类型。返回值如下： 0 ：系统默认模板 1 ：用户自定义模板 2 ：系统自动备份模板（应用模板后系统会自动备份之前的参数设置为模板） |   |   |
+| -Created | String | 0 | 参数模板创建时间，格式为 yyyy-MM- ddTHH:mm:ssZ （UTC时间）。 |   |   |
+|   |   |   |   | yyyy-MM- |   |
+| -Modified | String | 19723574**** | 修改时间。 |   |   |
+| - ParameterGro upName | String | test | 参数模板名称。 |   |   |
+| -ParamCounts | Integer | 2 | 参数模板内的参数数量。 |   |   |
 
-|  | ddTHH:mm:ssZ |
+|   | ddTHH:mm:ssZ |
 |---|---|
 
-| 云原生数据库 |  |  | PolarDB MySQL主备版开发指南·A |
+| 云原生数据库 |   |   | PolarDB MySQL主备版开发指南·A |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2698,12 +2754,21 @@ JSON格式：
 http(s)://[Endpoint]/?Action=DescribeParameterGroups &RegionId=cn-hangzhou
 ```
 
-正常返回示例 `JSON` 格式云原生数据库 I参考
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "ParameterGroups":[
-  {
+```
+
+`{`
+
+```json
    "Modified":"19723574****",
    "EngineVersion":"8.0",
    "ParameterGroupId":1,
@@ -2715,18 +2780,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "Engine":"polardb_mysql",
    "ParamGroupId":"rpg-sys-01040401010200",
    "Created":"0"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "SignalForOptimizeParams":false
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <ParameterGroups>
@@ -2750,13 +2813,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 400 | InvalidRegionId.Mal formed | InvalidRegionId.Malformed | The specified parameter RegionId is not valid. |
 
-#### 查看数据库参数模板
+#### 1.8.2 查看数据库参数模板
 
-**描述**
-
-云原生数据库 I参考该接口返回参数模板列表，包含内容：参数名，参数默认值，是否可修改，是否需要重启才能生效，参数校验规则（正则表达式）。
-
-**请求参数**
+该接口返回参数模板列表，包含内容：参数名，参数默认值，是否可修改，是否需要重启才能生效，参数校验规则（正则表达式）。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -2782,7 +2841,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 https://polardb.example.com/?Action=DescribeParameterTemplates &Engine=MySQL &EngineVersion=5.6
 ```
 
-云原生数据库 I参考
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2808,7 +2867,7 @@ JSON格式：
 "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查看当前实例数据库参数运行列表
+#### 1.8.3 查看当前实例数据库参数运行列表
 
 **描述**
 
@@ -2819,8 +2878,6 @@ JSON格式：
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：DescribeParameters。 |
-
-云原生数据库 I参考
 
 | DBInstanceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -2851,9 +2908,11 @@ JSON格式：
 https://polardb.example.com/?Action=DescribeParameters &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： 云原生数据库 I参考
+XML格式：
 
 ```xml
 <DescribeParametersResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Engine>mysql</Engine > <EngineVersion>5.6</EngineVersion> <RunningParameters> <DBInstanceParameter> <ParameterDescription>test</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>0</ParameterValue> </DBInstanceParameter> </RunningParameters> <ConfigParameters> <DBInstanceParameter> <ParameterDescription>test1</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>50</ParameterValue> </DBInstanceParameter> </ConfigParameters> </DescribeParametersResponse>
@@ -2877,11 +2936,11 @@ JSON格式：
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改数据库参数列表
+#### 1.8.4 修改数据库参数列表
 
 **描述**
 
-用户可以修改实例参数，提交请求后，PolarDB将下达任务，新修改的参数应用到实例。如果所提交的参数中，有需要重启数据库的，PolarDB将重启数据库。 必须满足以下条件，否则调用失败： 当前实例状态：使用中。 当前实例锁定模式：正常。 参数值有如下3类： [1-65535]，表示数值范围，通过正则识别，从而提取出最小值和最大值。然后根据最小值和最大值对输入参数进行验证，另外，还需要是整除因子的倍数。 [utf8|gbk|latin1]，表示固定的取值规则，通过正则识别，从而提取出固定的取值。然后根据这些固定的取值对输入参数进行验证。 其他，这种情况符合正则表达式。 云原生数据库 I参考下达任务之前，PolarDB将会进行参数检查，步骤如下：
+用户可以修改实例参数，提交请求后，PolarDB将下达任务，新修改的参数应用到实例。如果所提交的参数中，有需要重启数据库的，PolarDB将重启数据库。 必须满足以下条件，否则调用失败： 当前实例状态：使用中。 当前实例锁定模式：正常。 参数值有如下3类： [1-65535]，表示数值范围，通过正则识别，从而提取出最小值和最大值。然后根据最小值和最大值对输入参数进行验证，另外，还需要是整除因子的倍数。 [utf8|gbk|latin1]，表示固定的取值规则，通过正则识别，从而提取出固定的取值。然后根据这些固定的取值对输入参数进行验证。 其他，这种情况符合正则表达式。 下达任务之前，PolarDB将会进行参数检查，步骤如下：
 1. 检查参数是否存在。
 2. 检查参数是否可修改。
 3. 检查参数是否合法。
@@ -2914,9 +2973,11 @@ JSON格式：
 https://polardb.example.com/?Action=ModifyParameter &DBInstanceId=polardb-xxxxx &Parameters={"key_buffer_size":"456","character_set_client":"gbk"}
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-云原生数据库 I参考 XML格式：
+XML格式：
 
 ```xml
 <ModifyParameterResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyParameterResponse>
@@ -2928,9 +2989,9 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC",}
 ```
 
-### 日志管理
+### 1.9 日志管理
 
-#### 查看慢日志列表
+#### 1.9.1 查看慢日志列表
 
 **描述**
 
@@ -2949,13 +3010,9 @@ JSON格式：
 | PageSize | Integer | 否 | 每页记录数，取值：30/50/100，默认值：30。 |
 | PageNum ber | Integer | 否 | 页码大于0，且不超过Integer的最大值；默认值：1。 |
 
-云原生数据库 I参考
-
-**返回参数**
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | Engine | String | 数据库类型。 |
 | StartTime | String | 查询开始日期，格式：YYYY-MM-DDZ，如2011-05-30Z。 |
 | EndTime | String | 查询结束日期，格式：YYYY-MM-DDZ，如2011-05-30Z。 |
@@ -2972,9 +3029,11 @@ JSON格式：
 https://polardb.example.com/?Action=DescribeSlowLogs &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11Z &EndTime=2011-12-11Z &SortKey= Totaxxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： 云原生数据库 I参考
+XML格式：
 
 ```xml
 <DescribeSlowLogsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <Engine>MySQL</Engine> <StartTime>2011-06-11Z</StartTime> <EndTime>2011-12-11Z</EndTime> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowLog> <SQLText>update test.zxb set id=0 limit 1</SQLText> <MySQLTotalExecutionCounts>178</MySQLTotalExecutionCounts> <MySQLTotalExecutionTimes>189</MySQLTotalExecutionTimes> <TotalLogicalReadcounts>89</TotalLogicalReadcounts> <TotalPhysicalReadcounts>90</TotalPhysicalReadcounts> <ReportTime>2013-11-12Z</ReportTime> </SQLSlowLog> </Items> </DescribeSlowLogsResponse>
@@ -2993,7 +3052,7 @@ JSON格式：
         "ReportTime":"2013-11-12Z " }]}}
 ```
 
-#### 查看慢日志明细
+#### 1.9.2 查看慢日志明细
 
 **描述**
 
@@ -3004,8 +3063,6 @@ JSON格式：
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：DescribeSlowLogRecords。 |
-
-云原生数据库 I参考
 
 | DBInstan ceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -3019,7 +3076,7 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | Engine | String | 数据库类型。 |
 | TotalRecordCount | Integer | 总记录数。 |
 | PageNumber | Integer | 页码。 |
@@ -3032,8 +3089,6 @@ SQLSlowLog参数
 |---|---|---|
 | HostAddress | Strin g | 用户连接数据库的主机地址。 |
 | DBName | Strin g | 数据库名称。 |
-
-云原生数据库 I参考
 
 | SQLText | Strin g | 查询语句。 |
 |---|---|---|
@@ -3051,6 +3106,8 @@ SQLSlowLog参数
 https://polardb.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-xxxxx &StartTime=2011-06-11T15:00Z &EndTime=2011-06-11T16:00Z
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3059,7 +3116,7 @@ XML格式：
 <DescribeSlowLogRecordsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>rm-xxxxx</DBInstanceID> <Engine>MySQL</Engine> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowRecord> <HostAddress>192.168.0.123</HostAddress> <DBName>test</DBName> <SQLText>update test.zxb set id=0 limit 1</SQLText> <QueryTimes>123</QueryTimes> <LockTimes>12</LockTimes> <ParseRowCounts>125</ParseRowCounts> <ReturnRowCounts>1</ReturnRowCounts> <ExecutionStartTime>2011-06-11T15:00:08Z</ExecutionStartTime> </SQLSlowRecord> </Items> </DescribeSlowLogRecordsResponse>
 ```
 
-云原生数据库 I参考 JSON格式：
+JSON格式：
 
 ```json
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "Engine":"MySQL", "PageNumber":1, "PageRecordCount":1, "TotalRecordCount":1, "Items":{
@@ -3074,7 +3131,7 @@ XML格式：
   ExecutionStartTime:”2011-06-11T15:00:08Z”}]}}
 ```
 
-#### 查看错误日志
+#### 1.9.3 查看错误日志
 
 **描述**
 
@@ -3091,13 +3148,9 @@ XML格式：
 | PageSize | Inte ger | 否 | 每页记录数，取值：30/50/100，默认值：30。 |
 | PageNum ber | Inte ger | 否 | 页码大于0，且不超过Integer的最大值；默认值：1。 |
 
-**返回参数**
-
-云原生数据库 I参考
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TotalRecordCount | Integer | 总记录数。 |
 | PageNumber | Integer | 页码。 |
 | PageRecordCount | Integer | 本页错误日志个数。 |
@@ -3118,9 +3171,11 @@ ErrorLogs参数
 https://polardb.example.com/?Action=DescribeErrorLogs &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00Z &EndTime=2011-06-11T20:00Z
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： 云原生数据库 I参考
+XML格式：
 
 ```xml
 <DescribeErrorLogsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1<PageRecordCount> <Items> <ErrorLog> <ErrorInfo>spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required</ErrorInfo> <CreateTime>2013-06-04T15:00:00</CreateTime> </ErrorLog> </Items> </DescribeErrorLogsResponse>
@@ -3136,7 +3191,7 @@ ational message only; no user action is required”,
   CreateTime:”2013-06-04T15:00:00”}]}}
 ```
 
-#### 查看BINLOG日志
+#### 1.9.4 查看BINLOG日志
 
 **描述**
 
@@ -3150,8 +3205,6 @@ ational message only; no user action is required”,
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
-
-云原生数据库 I参考
 
 | Action | String | 是 | 系统规定参数，取值：DescribeBinlogFiles。 |
 |---|---|---|---|
@@ -3179,8 +3232,6 @@ BinLogFile参数
 | LogBeginTime | String | Binglog文件记录的开始时间。 |
 | LogEndTime | String | Binglog文件记录的结束时间。 |
 
-云原生数据库 I参考
-
 | DownloadLink | String | 支持HTTP协议的下载链接URL，NULL表示没有下载链接 |
 |---|---|---|
 | HostInstanceID | String | Binlog所在实例编号，用户区分该Binlog日志产生于主实例或从实例。 |
@@ -3194,6 +3245,8 @@ BinLogFile参数
 https://polardb.example.com/?Action=DescribeBinlogFiles &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3202,7 +3255,7 @@ XML格式：
 <DescribeBinlogFilesResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1<PageRecordCount> <Items> <BinLogFile> <FileSize>123</FileSize> <LogBeginTime>2013-06-01T15:00:00Z</LogBeginTime> <LogEndTime>2013-06-02T18:00:00Z</LogEndTime> <DownloadLink>http://polardblogreal.oss.aliyuncs.com/custinsxxxxx/hostinsxxxxx/mysql-bin.000120.zip? spm=0.0.0.0.eMQKjs&OSSAccessKeyId=c9gzsqpauxxxxx&Expires=1384916927&Signature=07TMgM3xx x</DownloadLink> <LinkExpiredTime>2013-06-09T18:00:00Z</LinkExpiredTime> </BinLogFile> </Items> </DescribeBinlogFilesResponse>
 ```
 
-JSON格式： 云原生数据库 I参考
+JSON格式：
 
 ```json
 { "RequestId":"66816822-CEC1-4C8D-AB26-2530A7D4DCA5", "PageNumber":1, "TotalRecordCount":1, "PageRecordCount":1, "Items":{
@@ -3215,7 +3268,7 @@ real.oss.aliyuncs.com/custinsxxxxx/hostinsxxxxx/mysql-bin.000120.zip? spm=0.0.0.
   LinkExpiredTime”2013-06-09T18:00:00Z”}]}}
 ```
 
-#### 查询SQL审计功能是否开启
+#### 1.9.5 查询SQL审计功能是否开启
 
 **描述**
 
@@ -3232,18 +3285,14 @@ real.oss.aliyuncs.com/custinsxxxxx/hostinsxxxxx/mysql-bin.000120.zip? spm=0.0.0.
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | SQLCollectorStatu s | String | Enable：SQL采集开启；Disabled：SQL采集关闭。 |
 
-#### 切换SQL采集状态
+#### 1.9.6 切换SQL采集状态
 
 **描述**
 
 开启或关闭指定PolarDB实例的SQL采集功能。
-
-**请求参数**
-
-云原生数据库 I参考
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -3253,7 +3302,9 @@ real.oss.aliyuncs.com/custinsxxxxx/hostinsxxxxx/mysql-bin.000120.zip? spm=0.0.0.
 
 **返回参数**
 
-#### 查询SQL审计日志
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.9.7 查询SQL审计日志
 
 **描述**
 
@@ -3269,8 +3320,6 @@ real.oss.aliyuncs.com/custinsxxxxx/hostinsxxxxx/mysql-bin.000120.zip? spm=0.0.0.
 | User | Stri ng | 否 | 用户名称，默认为所有用户。 |
 | Form | Stri ng | 否 | File，触发审计日志文件的生成，若传入这个值，则只返回公共参数，需再调用查询SQL审计文件列表接口获取文件的最终下载地址；Stream，返回数据流。默认为Stream。 |
 | QueryKey words | Stri ng | 否 | 关键字查询，多个关键字以空格分隔，不超过10个关键字。 |
-
-云原生数据库 I参考
 
 | StartTime | Stri ng | 是 | 查询开始时间，格式如：yyyy-MM-dd'`T'HH:mm:ssZ。 |
 |---|---|---|---|
@@ -3298,8 +3347,6 @@ SQLRecord参数
 | SQLText | String | SQL语句。 |
 | TotalExecutionTimes | Long | 消耗时间，单位：微秒。 |
 
-云原生数据库 I参考
-
 | ReturnRowCounts | Long | 返回记录数。 |
 |---|---|---|
 | ThreadID | String | 线程ID。 |
@@ -3312,6 +3359,8 @@ SQLRecord参数
 ```
 https://polardb.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3336,7 +3385,7 @@ XML格式：
 </DescribeSQLLogRecordsResponse>
 ```
 
-JSON格式： 云原生数据库 I参考
+JSON格式：
 
 ```json
 {"PageNumber":1,
@@ -3344,7 +3393,11 @@ JSON格式： 云原生数据库 I参考
     "TotalRecordCounts":1,
     "SQLItems":{
         "SQLItem":[
-            {
+```
+
+`{`
+
+```json
                 "ReturnRowCounts":34,
                 "TotalExecutionTimes":12,
                 "HostAddress":"192.168.xx.xx",
@@ -3352,20 +3405,21 @@ JSON格式： 云原生数据库 I参考
                 "SQLText":"update test.zxb set id=0 limit 1",
                 "AccountName":"accounttest",
                 "DBName":"test"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "ItemsCounts":1
-}
 ```
 
-#### 查询SQL审计文件列表
+`}`
+
+#### 1.9.8 查询SQL审计文件列表
 
 **描述**
+
+查询SQL审计文件列表。
 
 **请求参数**
 
@@ -3378,12 +3432,10 @@ JSON格式： 云原生数据库 I参考
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TotalRecordCount | Interger | 总记录数。 |
 | PageNumber | Interger | 页码。 |
 | PageRecordCount | Interger | 本页记录数。 |
-
-云原生数据库 I参考
 
 | Items | List<LogFile> | 由审计文件组成的数组。 |
 |---|---|---|
@@ -3400,9 +3452,9 @@ LogFile参数
 | LogDownloadU RL | String | 下载链接的地址。若当前不可下载，则为空串。 |
 | LogSize | Long | 日志文件大小，单位：Byte。 |
 
-### 数据迁移
+### 1.10 数据迁移
 
-#### 获取文件上传地址
+#### 1.10.1 获取文件上传地址
 
 **描述**
 
@@ -3414,8 +3466,6 @@ LogFile参数
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值： CreateUploadPathForSQLServer。 |
 | DBInstanceId | String | 是 | 实例ID。 |
-
-云原生数据库 I参考
 
 | DBName | String | 是 | 数据库名称。 |
 |---|---|---|---|
@@ -3441,6 +3491,8 @@ LogFile参数
 https://polardb.example.com/?Action= CreateUploadPathForSQLServer &DBInstanceId=polardb-xxxxx &DBName=testdb01
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3449,7 +3501,7 @@ XML格式：
 <CreateUploadPathForSQLServerResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <InternetFtpServer>10.230.239.1</InternetFtpServer> <InternetPort>3021</InternetPort> <IntranetFtpServer></IntranetFtpServer> <UserName>userxxx</UserName> <Password>pwxxxxx</Password> <FileName>testdb01_xxxxx.bak</FileName> </CreateUploadPathForSQLServerResponse>
 ```
 
-JSON格式： 云原生数据库 I参考
+JSON格式：
 
 ```json
 {"RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC",
@@ -3461,7 +3513,7 @@ JSON格式： 云原生数据库 I参考
  "FileName":"testdb01_xxxxx.bak"}
 ```
 
-#### 其他实例迁入
+#### 1.10.2 其他实例迁入
 
 **描述**
 
@@ -3481,8 +3533,6 @@ DBInfo参数
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 
-云原生数据库 I参考
-
 | DBNames | List | 是 | 待迁移的数据库名称列表，如["mydb","mydb2"]。 |
 |---|---|---|---|
 
@@ -3490,7 +3540,7 @@ DBInfo参数
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | ImportId | Integer | 导入实例ID。 |
 
 **示例**
@@ -3500,6 +3550,8 @@ DBInfo参数
 ```
 https://polardb.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=polardb-xxxxx &SourceDBInstanceId=polardb-xxxxx &{"DBNames":["mydb","mydb2"]}
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3519,7 +3571,7 @@ JSON格式：
  RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 取消迁移
+#### 1.10.3 取消迁移
 
 **描述**
 
@@ -3530,8 +3582,6 @@ JSON格式：
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：CancelImport。 |
-
-云原生数据库 I参考
 
 | DBInstanceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -3551,6 +3601,8 @@ JSON格式：
 https://polardb.example.com/?Action=CancelImport &DBInstanceId=polardb-xxxxx &ImportId=127562
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3565,17 +3617,13 @@ JSON格式：
 {"RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### 标签管理
+### 1.11 标签管理
 
-#### 绑定标签
+#### 1.11.1 绑定标签
 
 **描述**
 
 为实例绑定已有的或新创建的标签。 每个标签（Tag)由标签键（TagKey)和标签值（TagValue)组成，TagKey不能为空，TagValue可以为空。 TagKey，TagValue的值不允许以aliyun开头。 TagKey，TagValue不区分大小写。 TagKey 最长为64字符，TagValue 最长为128字符每个实例最多绑定10个Tag，每个实例绑定的TagKey不能重复。若绑定带有重复TagKey的Tag，则最后绑定的Tag将覆盖已绑定的Tag。
-
-**请求参数**
-
-云原生数据库 I参考
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -3590,7 +3638,7 @@ JSON格式：
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数 。 |
 
-#### 查询标签
+#### 1.11.2 查询标签
 
 **描述**
 
@@ -3603,8 +3651,6 @@ JSON格式：
 | Action | String | 是 | 系统规定参数，取值：DescribeTags。 |
 | RegionId | String | 是 | 地域。 |
 | DBInstanc eId | String | 否 | 实例ID，传入这个参数，其他过滤条件失效。 |
-
-云原生数据库 I参考
 
 | Tags | Json String | 否 | 需要查询的Tag列表，包括TagKey和TagValue。TagKey不能为空，TagValue可以为空。 格式示例：{“key1”:”value1”} |
 |---|---|---|---|
@@ -3630,7 +3676,7 @@ DBInstanceId
 |---|---|---|
 | DBInstanceId | String | 实例名称。 |
 
-#### 解绑标签
+#### 1.11.3 解绑标签
 
 **描述**
 
@@ -3641,8 +3687,6 @@ DBInstanceId
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：RemoveTagsFromResource。 |
-
-云原生数据库 I参考
 
 | RegionId | String | 是 | 地域。 |
 |---|---|---|---|
@@ -3655,7 +3699,7 @@ DBInstanceId
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数 。 |
 
-### 如何使用RAM授权
+### 1.12 如何使用RAM授权
 
 **使用RAM实现PolarDB资源授权**
 
@@ -3679,8 +3723,6 @@ DBInstanceId
 |---|---|
 | CreateDBInstance | ModifyDBInstanceSpec |
 
-云原生数据库 I参考
-
 | DeleteDBInstance | CreateReadonlyDBInstance |
 |---|---|
 | DescribeDBInstances | DescribeDBInstanceAttribute |
@@ -3702,8 +3744,6 @@ DBInstanceId
 | DescribeDBInstancePerformance | DescribeSlowLogs |
 | DescribeSlowLogRecords | DescribeErrorLogs |
 
-云原生数据库 I参考
-
 | DescribeBinlogFiles | DescribeSQLLogReports |
 |---|---|
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
@@ -3711,9 +3751,7 @@ DBInstanceId
 | DescribeOptimizeAdviceOnMissIndex | DescribeOptimizeAdviceByDBA |
 | DescribeParameters | ModifyParameter |
 
-**说明**
-
-除了DescribeRegions，DescribeParameterTemplates参数外，其他接口都可以鉴权。
+> **说明：** 除了DescribeRegions，DescribeParameterTemplates参数外，其他接口都可以鉴权。
 
 **授权访问鉴权规则**
 
@@ -3728,8 +3766,6 @@ DBInstanceId
 | ModifyDBInstanceDescription | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | ModifyDBInstanceMaintainTime | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | PurgeDBInstanceLog | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-
-云原生数据库 I参考
 
 | DeleteDatabase | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
@@ -3748,8 +3784,6 @@ DBInstanceId
 | DescribeBinlogFiles | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | DescribeSQLLogRecords | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
-云原生数据库 I参考
-
 | DescribeOptimizeAdviceOnMissPK | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
 | DescribeOptimizeAdviceOnMissIndex | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
@@ -3766,8 +3800,6 @@ DBInstanceId
 | DescribeDatabases | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | CreateUploadPathForSQLServer | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | ImportDataForSQLServer | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-
-云原生数据库 I参考
 
 | ImportDataBaseBetweenInstances | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
@@ -3786,13 +3818,11 @@ DBInstanceId
 | DescribeOptimizeAdviceByDBA | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | ModifyParameter | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
-云原生数据库 I参考
+### 1.13 附表
 
-### 附表
+#### 1.13.1 客户端错误代码表
 
-#### 客户端错误代码表
-
-##### 公共错误
+##### 1.13.1.1 公共错误
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
@@ -3816,14 +3846,12 @@ DBInstanceId
 | InsufficientBalance | Your account does not have enough balance. | 400 |
 | Forbidden.Authentication | This operation is forbidden by Aliyun Realname Authentication system. | 403 |
 
-云原生数据库 I参考
-
 | Invalid<parameter name>.ValueNotSupport ed | The specified parameter “parameter name” is not valid. | 400 |
 |---|---|---|
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
 
-##### 特定错误
+##### 1.13.1.2 特定错误
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
@@ -3838,8 +3866,6 @@ DBInstanceId
 | QuotaExceeded.CreateInstance | The quota of create instance exceeds. | 403 |
 | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist in our records. | 404 |
 | MissingParameter | The input parameters "DBInstanceClass" and "DBInstanceStorage" all blank or no change. | 400 |
-
-云原生数据库 I参考
 
 | OperationDenied.DBInstanceType | The operation is not permitted due to type of instance. | 400 |
 |---|---|---|
@@ -3857,8 +3883,6 @@ DBInstanceId
 | QuotaExceeded.DBName | The quota of db exceeds. | 400 |
 | InvalidDBName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
 | InvalidParameter.Keyword | The specified parameter "DBName" is keyword | 400 |
-
-云原生数据库 I参考
 
 | OperationDenied.DBStatus | The operation is not permitted due to status of database. | 403 |
 |---|---|---|
@@ -3878,8 +3902,6 @@ DBInstanceId
 | InvalidAccountName.keyword | The specified parameter "AccountName" is a keyword. | 400 |
 | InvalidAccountName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
 
-云原生数据库 I参考
-
 | QuotaExceeded.AccountName | The quota of account exceeds. | 403 |
 |---|---|---|
 | OperationDenied.AccountStatus | The operation is not permitted due to status of account. | 403 |
@@ -3897,8 +3919,6 @@ DBInstanceId
 | Forbidden.Authentication | The operation is forbidden by Aliyun Realname Authentication System. | 403 |
 | IncorrectDBInstanceConnType | Current DB instance conn type does not support this operation. | 404 |
 
-云原生数据库 I参考
-
 | IncorrecttVpcId.Mismatch | The specified parameter "VpcId " is not valid. | 400 |
 |---|---|---|
 | IntranetNetTypeNotExists | Current DB instance net type does not support this operation. | 404 |
@@ -3915,8 +3935,6 @@ DBInstanceId
 | InvalidDBInstanceType.ValueNotSu pport | The specified parameter "DBInstanceType" is not valid. | 400 |
 | InvalidEngineVersion.Malformed | The specified parameter "EngineVersion" is not valid. | 400 |
 | InvalidInstanceNetworkType.ValueN otSupported | The specified parameter "InstanceNetworkType" is not valid. | 400 |
-
-云原生数据库 I参考
 
 | InvalidParameter | The specified parameter "dbInstanceId" is not valid. | 400 |
 |---|---|---|
@@ -3937,8 +3955,6 @@ DBInstanceId
 | OperationDenied.SwitchToVPC | Specified instance cannot be switched to VPC. | 403 |
 | OperationDenied | The resource is out of usage. | 403 |
 
-云原生数据库 I参考
-
 | OperationDenied | The vpc cloudinstanceIp is use, please check params. | 406 |
 |---|---|---|
 | OperationDenied | The vpc service is error, please check params. | 400 |
@@ -3959,17 +3975,17 @@ DBInstanceId
 | PublicConnectionExists | PublicConnection exists. | 403 |
 | bpcIzNoNotEqualsRdsMultIzNo | Specified vpc IzNo not equal rds IzNo. | 400 |
 
-| olarDB MySQL主备版开发指南·AP 参考 |  | 云原生数据库 |
+| olarDB MySQL主备版开发指南·AP 参考 |   | 云原生数据库 |
 |---|---|---|
 
-#### 服务器端错误代码表
+#### 1.13.2 服务器端错误代码表
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
 
-#### 实例状态表
+#### 1.13.3 实例状态表
 
 | 状态 | 说明 |
 |---|---|
@@ -3986,14 +4002,12 @@ DBInstanceId
 | Importing | 数据导入中。 |
 | ImportingFromOthers | 从其他PolarDB实例导入数据中。 |
 
-云原生数据库 I参考
-
 | DBInstanceNetTypeChanging | 内外网切换中。 |
 |---|---|
 | GuardSwitching | 容灾切换中。 |
 | INS CLONING _ | 实例克隆中。 |
 
-#### 性能参数表
+#### 1.13.4 性能参数表
 
 **云数据库MySQL版**
 
@@ -4010,8 +4024,6 @@ DBInstanceId
 | MySQL MyISAMKeyBufferR _ atio | MyISAM平均每秒Key Buffer利用率，MyISAM平均每秒Key Buffer读命中率，MyISAM平均每秒Key Buffer写命中率。 |
 | MySQL MyISAMKeyReadWr _ ites | MyISAM平均每秒钟从缓冲池中的读取次数，MyISAM平均每秒钟从缓冲池中的写入次数，MyISAM平均每秒钟从硬盘上读取的次数，MyISAM平均每秒钟从硬盘上写入的次数。 |
 
-云原生数据库 I参考
-
 | MySQL COMDML _ | 平均每秒Delete语句执行次数，平均每秒Insert语句执行次数， 平均每秒 Insert Select语句执行次数，平均每秒Replace语句执行次数，平均每秒 _ Replace Select语句执行次数，平均每秒Select语句执行次数，平均每秒Update _ 语句执行次数。 |
 |---|---|
 | MySQL RowDML _ | 平均每秒从InnoDB表读取的行数，平均每秒从InnoDB表更新的行数，平均每秒从 InnoDB表删除的行数，平均每秒从InnoDB表插入的行数，平均每秒向日志文件的物理写次数。 |
@@ -4020,14 +4032,12 @@ DBInstanceId
 | MySQL DetailedSpaceUsag _ e | MySQL实例空间占用详情：ins size实例总空间使用量；data size数据空间； _ _ log size日志空间；tmp size临时空间；other size系统空间。 _ _ _ |
 | slavestat | 只读实例延迟。 |
 
-#### 禁用关键字表
+#### 1.13.5 禁用关键字表
 
 **云数据库MySQL版**
 
 | 参数字段 | 关键字描述 |
 |---|---|
-
-云原生数据库 I参考
 
 | DBName/ AccountName | admin,aurora,replicator,xtrabak,root（MySQL5.5/5.6）,mysql,test,eagleye,infor mation schema,guest,add,analyze,asc,between,blob,call,c _ hange,check,condition,continue,cross,current timestamp,database,day micros _ _ econd,dec,default,desc,distinct,double,e ach,enclosed,exit,fetch,float8,foreign,goto,having,hour minute,ignore,infile,inse _ nsitive,int1,int4,interval,iterate,keys,lea ding,like,lines,localtimestamp,longblob,low priority,mediumint,minute microse _ _ cond,modifies,no write to binlog,on, _ _ _ optionally,out,precision,purge,read,references,rename,require,revoke,schema,s elect,set,spatial,sqlexception,sql big re _ _ sult,ssl,table,tinyblob,to,true,unique,update,using,utc timestamp,varchar,when, _ with,xor,all,and,asensitive,bigint,both,c ascade,char,collate,connection,convert,current date,current user,databases,da _ _ y minute,decimal,delayed,describe,dis _ tinctrow,drop,else,escaped,explain,float,for,from,grant,high priority,hour secon _ _ d,in,inner,insert,int2,int8,into,join,kill,le ave,limit,load,lock,longtext,match,mediumtext,minute second,natural,null,opti _ mize,or,outer,primary,raid0,reads,regex p,repeat,restrict,right,schemas,sensitive,show,specific,sqlstate,sql calc found r _ _ _ ows,starting,terminated,tinyint,trailing, undo,unlock,usage,utc date,values,varcharacter,where,write,year month,alter, _ _ as,before,binary,by,case,character,colu mn,constraint,create,current time,cursor,day hour,day second,declare,delete, _ _ _ deterministic,div,dual,elseif,exists,false, float4,force,fulltext,group,hour microsecond,if,index,inout,int,int3,integer,is,key _ ,label,left,linear,localtime,long,loop,me diumblob,middleint,mod,not,numeric,option,order,outfile,procedure,range,real,r elease,replace,return,rlike,second mi _ crosecond,separator,smallint,sql,sqlwarning,sql small result,straight join,then,t _ _ _ inytext,trigger,union,unsigned,use,utc _ time,varbinary,varying,while,x509,zerofill,galaxy |
 |---|---|
@@ -4037,16 +4047,14 @@ DBInstanceId
 | 参数字段 | 关键字描述 |
 |---|---|
 
-云原生数据库 I参考
-
 | DBName/ AccountName | root,admin,eagleye,master,aurora,sa,sysadmin,administrator,mssqld,public,security admin,serveradmin,setupadmin,pr ocessadmin,diskadmin,dbcreator,bulkadmin,tempdb,msdb,model,distribution,mssqls ystemresource,guest,add,except, percent,all,exec,plan,alter,execute,precision,and,exists,primary,any,exit,print,as,fetc h,proc,asc,file,procedure,authorizati on,fillfactor,public,backup,for,raiserror,begin,foreign,read,between,freetext,readtext, break,freetexttable,reconfigure,br owse,from,references,bulk,full,replication,by,function,restore,cascade,goto,restrict,c ase,grant,return,check,group,rev oke,checkpoint,having,right,close,holdlock,rollback,clustered,identity,rowcount,coale sce,identity insert,rowguidcol,coll _ ate,identitycol,rule,column,if,save,commit,in,schema,compute,index,select,constrain t,inner,session user,contains,insert, _ set,containstable,intersect,setuser,continue,into,shutdown,convert,is,some,create,jo in,statistics,cross,key,system user, _ current,kill,table,current date,left,textsize,current time,like,then,current timestamp, _ _ _ lineno,to,current user,load,top,cur _ sor,national,tran,database,nocheck,transaction,dbcc,nonclustered,trigger,deallocate ,not,truncate,declare,null,tsequal, default,nullif,union,delete,of,unique,deny,off,update,desc,offsets,updatetext,disk,on, use,distinct,open,user,distributed, opendatasource,values,double,openquery,varying,drop,openrowset,view,dummy,op enxml,waitfor,dump,option,when, else,or,where,end,order,while,errlvl,outer,with,escape,over,writetext,galaxy |
 |---|---|
 
-云原生数据库 K参考
+K参考
 
-## SDK参考
+## 2 SDK参考
 
-### 获取SDK源代码
+### 2.1 获取SDK源代码
 
 您可以通过SDK工具，按需定制所需的SDK语言。
 
@@ -4061,13 +4069,13 @@ i. 在浏览器地址栏中，输入Apsara Stack运维系统的访问地址 http
 2. 登录阿里云专有云运维API平台。在页面左侧导航栏中，单击**产品运维管理** **> Opsapi**，进入**专有云运维**
 **API**平台。
 3. 下载SDK源代码。
-云原生数据库 K参考 i. 在左侧导航栏中，选择**版本管理** **> SDK****工具**。 ii. 单击页面顶部右上角**SDK****按需定制**。 iii. 在弹出的**专有云****SDK****定制**页面，从左到右依次选择对应的专有云版本、产品名称、产品版本、SDK版本、API版本和SDK语言。 iv. 填写完成后，单击**创建****SDK**。 v. 单击**下载**，下载对应的SDK。
+K参考 i. 在左侧导航栏中，选择**版本管理** **> SDK****工具**。 ii. 单击页面顶部右上角**SDK****按需定制**。 iii. 在弹出的**专有云****SDK****定制**页面，从左到右依次选择对应的专有云版本、产品名称、产品版本、SDK版本、API版本和SDK语言。 iv. 填写完成后，单击**创建****SDK****。** v. 单击**下载**，下载对应的SDK。
 
-### Java SDK调用
+### 2.2 Java SDK调用
 
-#### 使用手册
+#### 2.2.1 使用手册
 
-##### 使用CommonRequest进行调用
+##### 2.2.1.1 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -4077,7 +4085,10 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
-发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名（domain）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 云原生数据库 K参考接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName =` `"RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定 RESTful路径。 例如查看所有集群实例的API的**PathPattern**为 `/clusters` ，在发起CommonRequest请求时，要使用 `request.PathPattern = "/clusters"` 指定RESTful路径。
+
+**使用CommonRequest**
+
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名（domain）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 K参考接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName =` `"RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定 RESTful路径。 例如查看所有集群实例的API的**PathPattern**为 `/clusters` ，在发起CommonRequest请求时，要使用 `request.PathPattern = "/clusters"` 指定RESTful路径。
 
 **示例：调用RPC风格的API**
 
@@ -4116,14 +4127,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **示例：调用RESTful风格的API**
 
-以下代码展示了如何使用CommonRequest的方式调用的查看所有集群实例接口： 云原生数据库 K参考
+以下代码展示了如何使用CommonRequest的方式调用的查看所有集群实例接口： K参考
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -4156,16 +4166,15 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Python SDK调用
+`}` `}` `}`
 
-#### 使用手册
+### 2.3 Python SDK调用
 
-##### 使用CommonRequest进行调用
+#### 2.3.1 使用手册
+
+##### 2.3.1.1 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -4175,24 +4184,15 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
-云原生数据库 K参考发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName`
 
-```
-                            =
-```
+**使用CommonRequest**
 
-`"<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName` `= "RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern`
+K参考发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName` `=` `"<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName` `= "RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern` `=` `"<PathPattern>"` 的方式来指定RESTful路径。
 
-```
-                            =
-```
-
-`"<PathPattern>"` 的方式来指定RESTful路径。
-
-|  | /clusters |  | ，在发起Comm |
+|   | /clusters |   | ，在发起Comm |
 |---|---|---|---|
-| request.PathPattern |  |  |  |
-|  |  | 指定RESTful路径。 |  |
+| request.PathPattern |   |   |   |
+|   |   | 指定RESTful路径。 |   |
 
 **示例：调用RPC风格的API**
 
@@ -4207,7 +4207,7 @@ ame='DescribeDBInstanceAttribute') request.add_query_param('PageNumber', '1') re
 
 **示例：调用RESTful风格的API**
 
-以下代码展示了Python2.x如何使用CommonRequest的方式调用的查看所有集群实例接口： 云原生数据库 K参考
+以下代码展示了Python2.x如何使用CommonRequest的方式调用的查看所有集群实例接口： K参考
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('polardb-xxxxx.xxx.com') request.set_version('2024-01-30') request.set_uri_pattern('/clusters')
@@ -4216,15 +4216,15 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 ern='/clusters') response = client.do_action_with_exception(request)
 ```
 
-### PHP SDK调用
+### 2.4 PHP SDK调用
 
-#### 快速开始
+#### 2.4.1 快速开始
 
 阿里云PHP SDK让您不用复杂编程即可访问。本操作介绍如何获取阿里云PolarDB PHP SDK并开始调用。
 
 **环境准备**
 
-使用PHP SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取 Accesskey在ASCM控制台上获取和查看您的AccessKey。 阿里云PHP SDK适用于PHP的5.3、5.4、5.5、5.6、7.0和7.1版本。（您可以通过**php -v**命令来获得当前使用的PHP版本号。）
+使用PHP SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取 Accesskey在ASCM控制台上获取和查看您的AccessKey。 获取产品的endpoint，具体操作参见获取endpoint。 阿里云PHP SDK适用于PHP的5.3、5.4、5.5、5.6、7.0和7.1版本。（您可以通过**php -v**命令来获得当前使用的PHP版本号。）
 
 **安装阿里云 PHP SDK**
 
@@ -4245,35 +4245,40 @@ require_once '/path/to/aliyun-openapi-php-sdk/aliyun-php-sdk-core/Config.php';
 **Secret**这三个参数的值。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-云原生数据库 K参考
+K参考
 
 ```
 <?php use PolarDB\Request\V20140526\DescribeDBInstanceAttributeRequest;
 ```
 
-# 创建`DefaultAcsClient`实例并初始化
+`#` 创建`DefaultAcsClient`实例并初始化
 
 ```
 $clientProfile = DefaultProfile::getProfile(
     "<your-region-id>",                   # 您的 Region ID
     "<your-access-key-id>",               # 您的 AccessKey ID
     "<your-access-key-secret>"            # 您的 AccessKey Secret
-); $client = new DefaultAcsClient($clientProfile);
 ```
 
-# 设置当前产品的`endpoint`
+);
+
+```
+$client = new DefaultAcsClient($clientProfile);
+```
+
+`#` 设置当前产品的`endpoint`
 
 ```
 $profile->endpoint ="your-region-id", "your-region-id", "product", "endpoint";
 ```
 
-# 创建`API`请求并设置参数
+`#` 创建`API`请求并设置参数
 
 ```
 $request = new DescribeDBInstanceAttributeRequest(); $request->setPageSize(10);
 ```
 
-# 发起请求并处理返回
+`#` 发起请求并处理返回
 
 ```
 try {
@@ -4283,12 +4288,11 @@ try {
     print "Error: " . $e->getErrorCode() . " Message: " . $e->getMessage() . "\n";
 } catch(ClientException $e) {
     print "Error: " . $e->getErrorCode() . " Message: " . $e->getMessage() . "\n";
-}
 ```
 
-?>
+`}` ?>
 
-### C# SDK调用
+### 2.5 C# SDK调用
 
 **环境准备**
 
@@ -4301,22 +4305,23 @@ framework 2.0+
 **安装 SDK**
 
 1. 从上面的下载链接下载相应产品 C# SDK 的源代码，并编译成为 .dll 文件。
-2. 右击您的 Visual Studio 项目，然后单击**添加引用** > **浏览**（如果您用的是 MonoDevelop，请自行按照
+2. 右击您的 Visual Studio 项目，然后单击**添加引用** **>** **浏览**（如果您用的是 MonoDevelop，请自行按照
 相应导入 .dll 的方法导入这个.dll文件）。
 3. 选择上述的 .dll 文件，单击**确定**按钮，然后您就可以在工程中使用阿里云 C# SDK 了。
-云原生数据库
+取endpoint
 
-## 获取endpoint
+## 3 获取endpoint
 
 您可以通过Apsara Stack运维系统获取产品的endpoint。
 
 **方式一**
 
 1. 登录Apsara Stack运维系统。
-登录Apsara Stack运维系统相关操作，请参见**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系** 统 > **登录****Apsara Stack****运维系统**章节的描述。
-2. 在页面左侧导航栏中，选择**产品运维管理** > **产品列表** > **云平台运维**。
+登录Apsara Stack运维系统相关操作，请参见**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系**
+**统** **>** **登录****Apsara Stack****运维系统**章节的描述。
+2. 在页面左侧导航栏中，选择**产品运维管理** **>** **产品列表** **>** **云平台运维**。
 3. 单击**天基**，跳转至天基portal。
-4. 在顶部菜单栏中，选择**报表** > **系统报表**。
+4. 在顶部菜单栏中，选择**报表** **>** **系统报表**。
 5. 在**系统报表**详情页面，单击**服务注册变量**。
 6. 在**服务注册变量**详情页面，找到polardb-yaochi行，右击对应的**Service Registration**列单元格，选
 择**显示更多**。
@@ -4326,21 +4331,24 @@ endpoint。
 **方式二**
 
 1. 登录Apsara Stack运维系统。
-登录Apsara Stack运维系统相关操作，请参考**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系** 统 > **登录****Apsara Stack****运维系统**章节的描述。
+登录Apsara Stack运维系统相关操作，请参考**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系**
+**统** **>** **登录****Apsara Stack****运维系统**章节的描述。
 2. 在页面左侧导航栏中，选择菜单，进入**产品运维管理**产品列表页面。
 3. 单击**天基**，跳转至天基portal。
-4. 在顶部菜单栏中，选择**运维** > **机器运维**，进入**机器运维**页面。
+4. 在顶部菜单栏中，选择**运维** **>** **机器运维**，进入**机器运维**页面。
 5. 在机器列表中，选择任意一台机器，单击**Terminal**，登录到机器。
-云原生数据库
+取endpoint
 6. 在机器中执行如下命令：**curl -l**
 
 **"http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?**
 
 **c.sr.service_registration"**，获取json数据。
 7. 根据PolarDB产品的ID（polardb-yaochi）和key值（polardb.openapi.endpoint），找到PolarDB的
-endpoint。 云原生数据库
+endpoint。 取Accesskey
 
-## 获取Accesskey
+## 4 获取Accesskey
+
+您可以在ASCM控制台上获取Accesskey。
 
 **获取组织AccessKey**
 
@@ -4352,9 +4360,8 @@ endpoint。 云原生数据库
 。
 5. 在弹出的下拉菜单中，选择**获取组织****Accesskey**。
 6. 在弹出的对话框中，查看组织Accesskey信息。
-一级组织的AccessKey为系统自动分配，下级组织使用一级组织的AccessKey。
 
-**说明**
+> **说明：** 一级组织的AccessKey为系统自动分配，下级组织使用一级组织的AccessKey。
 
 **获取个人账号AccessKey**
 
@@ -4362,8 +4369,5 @@ endpoint。 云原生数据库
 1. 管理员登录ASCM控制台。
 2. 在系统界面右上角，单击当前登录用户的头像，选择**个人信息**。
 3. 在**阿里云****AccessKey**模块，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。

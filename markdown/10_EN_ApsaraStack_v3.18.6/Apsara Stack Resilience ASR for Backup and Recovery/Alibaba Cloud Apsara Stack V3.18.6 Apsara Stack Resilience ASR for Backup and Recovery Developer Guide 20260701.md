@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 279
 source_pdf: "948fabe97a572834_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Backup and Recovery Developer Gui"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%A4%87%E4%BB%BDASRBR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Backup%C2%A0and%C2%A0Recovery%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Resilience ASR for Backup and Recovery Developer Guide 20260701
@@ -1124,6 +1124,8 @@ This operation does not have operation-specific request headers and uses only co
 | -ctime | Long | 1677825909000 | The time when the backup schedule was created. Unit: milliseconds. |
 | -mtime | Long | 1677825909000 | The time when the backup schedule was modified. Unit: milliseconds. |
 
+**Example**
+
 Sample requests
 
 ```json
@@ -1243,6 +1245,8 @@ This operation does not have operation-specific request headers and uses only co
 | -creatorId | Integer | 5612 | The ID of the user who created the backup schedule. |
 | -ctime | Long | 1677825909000 | The time when the backup schedule was created. Unit: milliseconds. |
 | -mtime | Long | 1677825909000 | The time when the backup schedule was modified. Unit: milliseconds. |
+
+**Example**
 
 Sample requests
 
@@ -1656,6 +1660,8 @@ This operation does not have operation-specific request headers and uses only co
 | -creatorId | Integer | 5612 | The ID of the user who created the backup schedule. |
 | -ctime | Long | 1677825909000 | The time when the backup schedule was created. Unit: milliseconds. |
 | -mtime | Long | 1677825909000 | The time when the backup schedule was modified. Unit: milliseconds. |
+
+**Example**
 
 Sample requests
 

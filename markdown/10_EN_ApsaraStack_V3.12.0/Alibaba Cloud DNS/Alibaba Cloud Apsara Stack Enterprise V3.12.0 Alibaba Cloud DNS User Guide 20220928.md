@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 36
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Alibaba Cloud DNS User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Alibaba%20Cloud%20DNS%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Alibaba Cloud DNS User Guide 20220928
@@ -116,7 +116,7 @@ ack DNS console
 
 ## 3 Log on to the Apsara Stack DNS console
 
-DNS console This topic describes how to log on to the Apsara Stack DNS console by using Google Chrome. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+DNS console This topic describes how to log on to the Apsara Stack DNS console by using Google Chrome. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
@@ -137,6 +137,7 @@ All the operations of this feature require administrator privileges.
 
 #### 4.1.2 View an internal domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Int ernal Domains.
 3. In the Domain Name search box, enter the domain name that you want to view.
@@ -145,7 +146,7 @@ The search result is displayed.
 
 #### 4.1.3 Add a domain name
 
-This topic describes how to add a domain name in the Apsara Stack Cloud Management (ASCM) console.
+This topic describes how to add a domain name in the Apsara Stack Cloud Management (ASCM) console. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Int ernal Domains.
 3. Click Add Domain Name.
@@ -164,7 +165,7 @@ icon in the Actions column, and then select Descript ion.
 
 #### 4.1.5 Delete a domain name
 
-This topic describes how to delete a domain name in the Apsara Stack Cloud Management (ASCM) console.
+This topic describes how to delete a domain name in the Apsara Stack Cloud Management (ASCM) console. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Int ernal Domains.
 3. Find the target domain name, click the
@@ -173,7 +174,7 @@ icon in the Act ions column, and then select Delet e.
 
 #### 4.1.6 Delete multiple domain names
 
-This topic describes how to delete multiple domain names at a time in the Apsara Stack Cloud Management (ASCM) console.
+This topic describes how to delete multiple domain names at a time in the Apsara Stack Cloud Management (ASCM) console. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Int ernal Domains.
 3. Select the domain names that you want to delete and click Delet e in the upper-right corner.
@@ -181,7 +182,7 @@ This topic describes how to delete multiple domain names at a time in the Apsara
 
 #### 4.1.7 Configure DNS records
 
-This topic describes how to configure DNS records in the Apsara Stack Cloud Management (ASCM) console.
+This topic describes how to configure DNS records in the Apsara Stack Cloud Management (ASCM) console. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Int ernal Domains.
 3. Find the target domain name, click the
@@ -192,6 +193,7 @@ Add a description for a DNS record Select the DNS record for which you want to a
 
 #### 4.1.8 View a resolution policy
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Int ernal Domains.
 3. Find the target domain name, click the
@@ -210,7 +212,7 @@ All operations on global forwarding domain names require system administrator pe
 
 ##### 4.2.1.2 View global forwarding domain names
 
-This topic describes how to view forwarding domain names in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to view forwarding domain names in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Forwarding Domains.
@@ -218,7 +220,7 @@ Global Forwarding Domains.
 
 ##### 4.2.1.3 Add a domain name
 
-This topic describes how to add a domain name in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to add a domain name in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Forwarding Domains.
@@ -228,7 +230,7 @@ Forwarder IP Addresses. Then, click OK.
 
 ##### 4.2.1.4 Add a description for a domain name
 
-This topic describes how to add a description for a domain name in the ASCM console. This operation requires administrator privileges. Context You can add a description for a domain name for identification. For example, you can describe a domain name by using a hostname or internal system information.
+This topic describes how to add a description for a domain name in the ASCM console. This operation requires administrator privileges. Context You can add a description for a domain name for identification. For example, you can describe a domain name by using a hostname or internal system information. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > Global Forwarding
 Set t ings > Global Forwarding Domains.
@@ -238,7 +240,7 @@ in the Actions column, and then select Descript ion from the shortcut menu. mana
 
 ##### 4.2.1.5 Modify the forwarding configurations of a domain name
 
-domain name This topic describes how to modify the forwarding configurations of a domain name in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+domain name This topic describes how to modify the forwarding configurations of a domain name in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Forwarding Domains.
@@ -249,7 +251,7 @@ and click OK.
 
 ##### 4.2.1.6 Delete a domain name
 
-This topic describes how to delete a domain name in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to delete a domain name in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Forwarding Domains.
@@ -259,7 +261,7 @@ icon in the Actions column, and then select Delet e.
 
 ##### 4.2.1.7 Delete multiple domain names
 
-This topic describes how to delete multiple domain names at a time in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to delete multiple domain names at a time in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Forwarding Domains.
@@ -273,7 +275,7 @@ management
 
 ##### 4.2.2.1 Enable default forwarding
 
-This topic describes how to enable default forwarding in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to enable default forwarding in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Def ault Forwarding.
@@ -284,7 +286,7 @@ OK. Make sure that Enable Default Forwarding is set to ON.
 
 ##### 4.2.2.2 Modify default forwarding configurations
 
-This topic describes how to modify default forwarding configurations in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to modify default forwarding configurations in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Def ault Forwarding.
@@ -295,7 +297,7 @@ OK.
 
 ##### 4.2.2.3 Disable default forwarding
 
-This topic describes how to disable default forwarding in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions.
+This topic describes how to disable default forwarding in the Apsara Stack Cloud Management (ASCM) console. This operation requires administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Int ernal Domains > Global Forwarding Set t ings >
 Global Def ault Forwarding.
@@ -309,7 +311,7 @@ management
 
 #### 4.3.1 Enable global recursive resolution
 
-Prerequisites You have administrator permissions.
+Prerequisites You have administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. Choose Int ernal Domains > Global Recursive Resolut ion.
 3. Click the
@@ -318,7 +320,7 @@ icon in the Actions column and select Enable.
 
 #### 4.3.2 Disable global recursive resolution
 
-Prerequisites You have administrator permissions.
+Prerequisites You have administrator permissions. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. Choose Int ernal Domains > Global Recursive Resolut ion.
 3. Click the
@@ -333,6 +335,7 @@ Edition only) The PrivateZone feature allows you to create VPC-specific tenant d
 
 #### 5.1.1 View a domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -342,6 +345,7 @@ The search result is displayed.
 
 #### 5.1.2 Add a domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -351,7 +355,7 @@ Domains.
 
 #### 5.1.3 Bind an organization to a VPC
 
-Tenant domain names are isolated based on VPCs. To ensure that the DNS forwarding configurations take effect, you must bind the organization of domain names to a VPC.
+Tenant domain names are isolated based on VPCs. To ensure that the DNS forwarding configurations take effect, you must bind the organization of domain names to a VPC. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -362,7 +366,7 @@ of VPCs Selected, and then click OK.
 
 #### 5.1.4 Unbind a domain name from a VPC
 
-This topic describes how to unbind a domain name from a VPC.
+This topic describes how to unbind a domain name from a VPC. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -372,6 +376,7 @@ icon in the Act ions column, and then select Disassociat e. Make sure that the u
 
 #### 5.1.5 Add a description for a domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -382,6 +387,7 @@ icon in the Actions column, and then select Descript ion.
 
 #### 5.1.6 Delete a domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -391,6 +397,7 @@ icon in the Actions column, and then select Delet e.
 
 #### 5.1.7 Delete multiple domain names
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -400,6 +407,7 @@ corner.
 
 #### 5.1.8 Configure DNS records
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -481,7 +489,7 @@ Add a description for a DNS record. Find the target DNS record, click the icon i
 
 #### 5.1.9 View a resolution policy
 
-This topic describes how to view the details of a resolution policy.
+This topic describes how to view the details of a resolution policy. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Int ernal
 Domains.
@@ -495,6 +503,7 @@ icon in the Actions column, and then select Configure DNS Records.
 
 ##### 5.2.1.1 View a tenant forwarding domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -504,6 +513,7 @@ The search result is displayed.
 
 ##### 5.2.1.2 Add a tenant forwarding domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -524,7 +534,7 @@ Forwarder IP Addresses.
 
 ##### 5.2.1.3 Bind an organization to a VPC
 
-Tenant domain names are isolated based on VPCs. You must bind the organization of domain names to a VPC before the DNS forwarding configurations can take effect.
+Tenant domain names are isolated based on VPCs. You must bind the organization of domain names to a VPC before the DNS forwarding configurations can take effect. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -535,7 +545,7 @@ of VPCs Selected, and then click OK.
 
 ##### 5.2.1.4 Unbind a domain name from a VPC
 
-This topic describes how to unbind a domain name from a VPC.
+This topic describes how to unbind a domain name from a VPC. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -545,7 +555,7 @@ icon in the Actions column, and then select Disassociat e. Make sure that the un
 
 ##### 5.2.1.5 Modify the forwarding configurations of a domain name
 
-domain name
+domain name Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -557,7 +567,7 @@ Addresses.
 
 ##### 5.2.1.6 Add a description for a tenant forwarding domain name
 
-domain name
+domain name Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -568,6 +578,7 @@ icon in the Actions column, and then select Descript ion.
 
 ##### 5.2.1.7 Delete a tenant forwarding domain name
 
+Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -577,7 +588,7 @@ icon in the Actions column, and then select Delet e.
 
 ##### 5.2.1.8 Delete multiple tenant forwarding domain names
 
-names
+names Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Forwarding Domains.
@@ -589,14 +600,14 @@ corner.
 
 ##### 5.2.2.1 View default forwarding configurations
 
-Prerequisites You have the permissions of a system administrator or level-1 organization administrator.
+Prerequisites You have the permissions of a system administrator or level-1 organization administrator. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Def ault Forwarding.
 
 ##### 5.2.2.2 Add a default forwarding configuration
 
-Prerequisites You have the permissions of a system administrator or level-1 organization administrator.
+Prerequisites You have the permissions of a system administrator or level-1 organization administrator. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Def ault Forwarding.
@@ -616,7 +627,7 @@ ddresses.
 
 ##### 5.2.2.3 Bind an organization to a VPC
 
-Tenant domain names are isolated based on VPCs. You must bind the organization of domain names to a VPC before the DNS forwarding configurations can take effect. Prerequisites You have the permissions of a system administrator or level-1 organization administrator.
+Tenant domain names are isolated based on VPCs. You must bind the organization of domain names to a VPC before the DNS forwarding configurations can take effect. Prerequisites You have the permissions of a system administrator or level-1 organization administrator. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Def ault Forwarding.
@@ -637,7 +648,7 @@ icon in the Actions column, and then select Disassociat e. Make sure that the un
 
 ##### 5.2.2.5 Modify a default forwarding configuration
 
-Prerequisites You have the permissions of a system administrator or level-1 organization administrator.
+Prerequisites You have the permissions of a system administrator or level-1 organization administrator. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Def ault Forwarding.
@@ -649,7 +660,7 @@ Addresses.
 
 ##### 5.2.2.6 Add a default forwarding configuration
 
-Prerequisites You have the permissions of a system administrator or level-1 organization administrator.
+Prerequisites You have the permissions of a system administrator or level-1 organization administrator. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Def ault Forwarding.
@@ -670,7 +681,7 @@ icon in the Actions column, and then select Delet e.
 
 ##### 5.2.2.8 Delete multiple default forwarding configurations
 
-configurations Prerequisites You have the permissions of a system administrator or level-1 organization administrator.
+configurations Prerequisites You have the permissions of a system administrator or level-1 organization administrator. Procedure
 1. Log on to the Apsara Stack DNS console.
 2. In the left-side navigation pane, choose Forwarding Conf igurat ions > T enant Forwarding
 Set t ings > T enant Def ault Forwarding.

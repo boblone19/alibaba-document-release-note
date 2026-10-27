@@ -80,7 +80,8 @@ def convert_one(row, md_dir=None):
     nchars, err = None, None
     try:
         nchars, err = pdf2md.convert(row["_pdf"], out, url=row["url"], title=row["label"],
-                                    prodver=row.get("version", ""), docver=row.get("versionStamp", ""))
+                                    prodver=row.get("version", ""), docver=row.get("versionStamp", ""),
+                                    lang=row.get("lang") or "en")
     except Exception as ex:
         err = f"转换异常 {ex!r}"[:160]
     if err:

@@ -5,16 +5,396 @@ doc_version: "20260729"
 pdf_pages: 931
 source_pdf: "11_AI Studio 开发指南_ai-studio-development-guide-2.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/opentrek/zh/ai-studio-development-guide-2.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 智能体工厂 OpenTrek AI Studio 开发指南
 
-智能体工厂 OpenTrek
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取AccessKey
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 通过POP网关调用专有云API
+- 3 Java SDK调用示例
+  - 3.1 安装Java SDK
+  - 3.2 设置身份验证凭证
+  - 3.3 发起调用请求
+  - 3.4 错误处理
+- 4 API参考
+  - 4.1 数据集
+    - 4.1.1 GetApfs
+    - 4.1.2 DeleteDataset
+    - 4.1.3 GetDataset
+    - 4.1.4 ListDatasets
+    - 4.1.5 UpdateDataset
+    - 4.1.6 CreateDataset
+    - 4.1.7 ListDataExportTask
+    - 4.1.8 CreateDataExportTask
+    - 4.1.9 DeleteDatasetVersion
+    - 4.1.10 GetDatasetFileContent
+    - 4.1.11 ListDatasetVersion
+  - 4.2 数据标注
+    - 4.2.1 ListAnnotationSubTaskCheck
+    - 4.2.2 ListAnnotationTaskSubTask
+    - 4.2.3 ListAnnotationSubTaskAnnotation
+    - 4.2.4 GetAnnotationTask
+    - 4.2.5 UpdateAnnotationTask
+    - 4.2.6 UpdateAnnotationDataAnnotationResult
+    - 4.2.7 CreateAnnotationTask
+    - 4.2.8 UpdateAnnotationSubTaskCheck
+    - 4.2.9 UpdateAnnotationTaskAlreadyReadManual
+    - 4.2.10 GetAnnotationConfig
+    - 4.2.11 DeleteAnnotationTask
+    - 4.2.12 UpdateAnnotationSubTaskReassign
+    - 4.2.13 ListAnnotationTask
+    - 4.2.14 UpdateAnnotationDataCheckResult
+    - 4.2.15 ListAnnotationData
+    - 4.2.16 UpdateAnnotationSubTaskAnnotation
+    - 4.2.17 CreateAnnotationPromptTemplate
+    - 4.2.18 ListAnnotationPromptTemplate
+  - 4.3 数据生成
+    - 4.3.1 CreateDataGenerationTask
+    - 4.3.2 DeleteDataGenerationTask
+    - 4.3.3 DeleteGenerationData
+    - 4.3.4 UpdateDataGenerationTask
+    - 4.3.5 UpdateGenerationData
+  - 4.4 NoteBook建模
+    - 4.4.1 ModifyNotebookSSHAccess
+    - 4.4.2 ModifyNotebookStatus
+    - 4.4.3 CreateNotebook
+    - 4.4.4 DeleteNotebook
+    - 4.4.5 GetNotebook
+    - 4.4.6 ListNotebook
+    - 4.4.7 ModifyNotebook
+    - 4.4.8 ModifyNotebookSpec
+    - 4.4.9 ModifyNotebookUser
+    - 4.4.10 CreateNotebookImageExportTask
+    - 4.4.11 ModifyNotebookAutoShutdown
+    - 4.4.12 ModifyNotebookServiceConfig
+    - 4.4.13 ResetNotebookUserPassword
+  - 4.5 任务建模
+    - 4.5.1 ModifyTask
+    - 4.5.2 ModifyTaskStatus
+    - 4.5.3 CreateTask
+    - 4.5.4 DeleteTask
+    - 4.5.5 GetTask
+    - 4.5.6 ListTask
+    - 4.5.7 ListCheckpoint
+    - 4.5.8 FaultTolerantLogPageList
+    - 4.5.9 GetCpfs
+    - 4.5.10 任务诊断
+      - 4.5.10.1 GetTaskDiagnosticsDetail
+      - 4.5.10.2 TaskDiagnose
+      - 4.5.10.3 ListTaskDiagnoseConfig
+      - 4.5.10.4 GetPodDiagnosticsDetail
+      - 4.5.10.5 ListDiagnostics
+    - 4.5.11 Tensorboard
+      - 4.5.11.1 DeleteTensorboard
+      - 4.5.11.2 ListTensorboard
+      - 4.5.11.3 CreateTensorboard
+      - 4.5.11.4 DeleteTensorboardConfig
+      - 4.5.11.5 ModifyTensorboardStatus
+      - 4.5.11.6 GetTensorboard
+      - 4.5.11.7 GetTensorboardOssFileSize
+  - 4.6 可视化建模
+    - 4.6.1 工作流
+      - 4.6.1.1 ModifyPipelineDraft
+      - 4.6.1.2 ListPipelineDraft
+      - 4.6.1.3 CreatePipelineRun
+      - 4.6.1.4 ModifyPipelineDraftContent
+      - 4.6.1.5 DeletePipelineDraft
+      - 4.6.1.6 GetPipelineNodeInputSchema
+      - 4.6.1.7 GetPipelineDraft
+      - 4.6.1.8 ClonePipelineDraft
+      - 4.6.1.9 TerminatePipelineRun
+      - 4.6.1.10 GetPipelineDraftStatus
+      - 4.6.1.11 GetPipelineRun
+      - 4.6.1.12 ListPipelineRun
+      - 4.6.1.13 GetPipelineArtifactData
+      - 4.6.1.14 ListPipelineArtifact
+      - 4.6.1.15 CreatePipelineDraft
+      - 4.6.1.16 ModifyPipelineDraftContentByRollback
+      - 4.6.1.17 GetPipelineDraftSchedule
+      - 4.6.1.18 ModifyPipelineDraftSchedule
+      - 4.6.2.1 ListPipelineDraftTemplate
+      - 4.6.2.2 CreateDraftTemplate
+      - 4.6.2.3 DeleteDraftTemplate
+      - 4.6.3.1 ListPipelineComponent
+      - 4.6.3.2 GetPipelineComponentTree
+      - 4.6.3.3 GetPipelineComponent
+      - 4.6.3.4 CreatePipelineCustomComponent
+      - 4.6.3.5 ModifyPipelineCustomComponent
+      - 4.6.3.6 DeletePipelineCustomComponent
+  - 4.7 在线服务
+    - 4.7.1 在线服务
+      - 4.7.1.1 ModifyOnlineServiceLoraAdapter
+      - 4.7.1.2 ListOnlineService
+      - 4.7.1.3 GetOnlineService
+      - 4.7.1.4 ModifyOnlineServiceSpec
+      - 4.7.1.5 ModifyOnlineServiceConfig
+      - 4.7.1.6 CreateOnlineService
+      - 4.7.1.7 DeleteOnlineService
+      - 4.7.1.8 ModifyOnlineServiceStatus
+      - 4.7.1.9 ModifyOnlineService
+      - 4.7.1.10 ModifyOnlineServicePortSpec
+      - 4.7.1.11 GetServiceHealthStatus
+      - 4.7.1.12 CreateSecurityScanTask
+      - 4.7.1.13 ListSecScanTaskByServiceId
+      - 4.7.1.14 GetASpeedTemplate
+      - 4.7.1.15 ListAPIs
+      - 4.7.1.16 OnlineDebugging
+      - 4.7.1.17 DeleteSecurityScanTask
+      - 4.7.1.18 弹性伸缩
+        - 4.7.1.18.1 ListAutoScalerRecord
+        - 4.7.1.18.2 CreateInferenceServiceAutoScaler
+        - 4.7.1.18.3 DeleteInferenceServiceAutoScaler
+        - 4.7.1.18.4 GetInferenceServiceAutoScaler
+        - 4.7.1.18.5 ModifyInferenceServiceAutoScaler
+      - 4.7.1.19 AI网关
+        - 4.7.1.19.1 CreateAIGateway
+        - 4.7.1.19.2 CreateGatewayAccessLink
+        - 4.7.1.19.3 DeleteAIGateway
+        - 4.7.1.19.4 GetGatewayAPIKeyLatestCallLog
+        - 4.7.1.19.5 ListGatewayAPIKey
+        - 4.7.1.19.6 ListGatewayAPIKeyStatisticDetail
+        - 4.7.1.19.7 GetGatewayAPIKeyStatisticTotal
+        - 4.7.1.19.8 ListGatewayAPIKeyDetailCalls
+      - 4.7.1.20 智能路由
+        - 4.7.1.20.1 GetGatewayRouter
+        - 4.7.1.20.2 ModifyGatewayRouter
+        - 4.7.1.20.3 CreateGatewayRouter
+      - 4.7.1.21 限流设置
+        - 4.7.1.21.1 CreateAPIkeyTrafficLimit
+        - 4.7.1.21.2 ModifyAPIkeyTrafficLimit
+        - 4.7.1.21.3 CreateGatewayTrafficLimit
+        - 4.7.1.21.4 ListGatewayTrafficLimit
+        - 4.7.1.21.5 ModifyGatewayTrafficLimit
+      - 4.7.1.22 异步推理
+        - 4.7.1.22.1 CreateAsyncInferenceService
+        - 4.7.1.22.2 DeleteAsyncInferenceService
+        - 4.7.1.22.3 GetAsyncInferenceService
+      - 4.7.1.23 内容安全
+        - 4.7.1.23.1 GetContentSecurity
+        - 4.7.1.23.2 DeleteContentSecurity
+        - 4.7.1.23.3 GetContentSecurityAccess
+        - 4.7.1.23.4 ModifyContentSecurity
+        - 4.7.1.23.5 CreateContentSecurity
+    - 4.7.2 灰度群组
+      - 4.7.2.1 CreateGatewayGrayscale
+      - 4.7.2.2 CreateOnlineServiceGroup
+      - 4.7.2.3 DeleteOnlineServiceGroup
+      - 4.7.2.4 GetOnlineServiceGroupDetail
+      - 4.7.2.5 ListGatewayGrayscale
+      - 4.7.2.6 ListOnlineServiceGroup
+      - 4.7.2.7 ListServiceGroupRelatedService
+      - 4.7.2.8 ModifyGatewayGrayscale
+      - 4.7.2.9 ModifyOnlineServiceGroup
+      - 4.7.2.10 ModifyOnlineServiceToGroup
+    - 4.7.3 一键压测
+      - 4.7.3.1 CreateStressTestTaskConfig
+      - 4.7.3.2 ListStressTestTask
+      - 4.7.3.3 DeleteStressTestTask
+      - 4.7.3.4 GetStressTestTask
+  - 4.8 批量推理
+    - 4.8.1 CreateBatchInferenceJob
+    - 4.8.2 GetBatchInferenceJob
+    - 4.8.3 DeleteBatchInferenceJob
+    - 4.8.4 UpdateBatchInferenceJob
+    - 4.8.5 ListBatchInferenceJob
+    - 4.8.6 CreateInferenceResultStorageTask
+    - 4.8.7 GetInferenceResultStorageTask
+    - 4.8.8 ModifyBatchInferenceJobStatus
+    - 4.8.9 ModifyBatchInferenceJobSpec
+    - 4.8.10 ListInferenceResultStorageTask
+  - 4.9 模型广场
+    - 4.9.1 CreateModel
+    - 4.9.2 DeleteModel
+    - 4.9.3 GetModel
+    - 4.9.4 ListModel
+    - 4.9.5 ListModelSelection
+    - 4.9.6 ModifyModel
+    - 4.9.7 ModifyModelStatus
+    - 4.9.8 DeleteModelVersion
+    - 4.9.9 ListModelFiles
+    - 4.9.10 GetModelLineage
+    - 4.9.11 ModifyModelCategory
+    - 4.9.12 ModifyModelVersionComponent
+    - 4.9.13 GetModelAccessInfo
+    - 4.9.14 模型导出
+      - 4.9.14.1 ListModelImportTask
+      - 4.9.14.2 CreateModelImportTask
+      - 4.9.14.3 GetModelImportTask
+    - 4.9.15 MaaS市场
+      - 4.9.15.1 ListModelGallery
+      - 4.9.15.2 GetModelGalleryDetails
+      - 4.9.15.3 ListModelGalleryCategory
+      - 4.9.15.4 DownloadModelGallery
+      - 4.9.15.5 GetModelGalleryConnectionStatus
+      - 4.9.15.6 UpdateModelGalleryConnectionStatus
+    - 4.9.16 模型体验
+      - 4.9.16.1 StreamChat
+      - 4.9.16.2 GetAigcGenerationResult
+      - 4.9.16.3 CreateAigcGenerationTask
+  - 4.10 模型调优
+    - 4.10.1 CreateFinetune
+    - 4.10.2 ListFinetune
+    - 4.10.3 UpdateFinetuneStatus
+    - 4.10.4 DeleteFinetune
+    - 4.10.5 ModifyFinetune
+    - 4.10.6 GetFinetune
+  - 4.11 模型工坊
+    - 4.11.1 模型量化
+      - 4.11.1.1 GetQuantize
+      - 4.11.1.2 CreateQuantize
+      - 4.11.1.3 DeleteQuantize
+      - 4.11.1.4 ListQuantize
+    - 4.11.2 模型转换
+      - 4.11.2.1 CreateModelConvertTask
+      - 4.11.2.2 GetModelConvertProgress
+      - 4.11.2.3 ListModelConvertTask
+      - 4.11.2.4 DeleteModelConvert
+      - 4.11.2.5 CreateModelConvertSource
+  - 4.12 模型评测
+    - 4.12.1 CreateEvaluateTask
+    - 4.12.2 DeleteEvaluateTask
+    - 4.12.3 GetEvaluateTask
+    - 4.12.4 ListEvaluateTask
+    - 4.12.5 ModifyEvaluateTask
+    - 4.12.6 ModifyEvaluateTaskStatus
+    - 4.12.7 ListEvaluateResult
+    - 4.12.8 ListEvaluateReviewResult
+    - 4.12.9 ExportEvaluateReviewResult
+    - 4.12.10 ModifyEvaluateReview
+  - 4.13 AI资源池
+    - 4.13.1 EnableResourcePoolSLS
+    - 4.13.2 CreateResourcePool
+    - 4.13.3 DeleteResourcePool
+    - 4.13.4 GetResourcePoolDetail
+    - 4.13.5 GetResourcePoolList
+    - 4.13.6 GetResourcePoolNode
+    - 4.13.7 UpdateResourcePool
+    - 4.13.8 UpdateResourcePoolAccessType
+    - 4.13.9 GetGPUConfig
+    - 4.13.10 ListFeature
+    - 4.13.11 UpdateFeatureStatus
+    - 4.13.12 DeleteStorageCheck
+    - 4.13.13 ListAvailableCluster
+    - 4.13.14 UpdateResourcePoolCertificate
+    - 4.13.15 资源统计
+      - 4.13.15.1 GetPoolTaskResourceConsumption
+      - 4.13.15.2 ListPoolResourceUtilization
+      - 4.13.15.3 GetPoolResourceOverview
+      - 4.13.15.4 GetPoolGPUUtilization
+    - 4.13.16 共享节点池
+      - 4.13.16.1 AddSharedResourcePoolNodes
+      - 4.13.16.2 RemoveSharedResourcePoolNodes
+    - 4.13.17 三方资源配置
+      - 4.13.17.1 UpdateThirdPartyStorage
+      - 4.13.17.2 UpdateResourcePoolThirdPartyRdma
+  - 4.14 资源组
+    - 4.14.1 GetResourceQuotaList
+    - 4.14.2 GetQuotaNodeAllocatables
+    - 4.14.3 ListQuotaNodeResources
+    - 4.14.4 ChangeResourceQuotaConfiguration
+    - 4.14.5 CreateResourceQuota
+    - 4.14.6 DeleteResourceQuota
+    - 4.14.7 GetResourceQuotaDetail
+    - 4.14.8 UpdateResourceQuota
+    - 4.14.9 GetQuotaGPUType
+    - 4.14.10 资源组统计
+      - 4.14.10.1 GetQuotaTaskResourceConsumption
+      - 4.14.10.2 GetQuotaResourceOverview
+      - 4.14.10.3 ListQuotaTaskResource
+    - 4.14.11 潮汐调度
+      - 4.14.11.1 UpdateMoveResourceQuotaStatus
+      - 4.14.11.2 CreateMoveResourceQuota
+      - 4.14.11.3 DeleteMoveResourceQuotaConfig
+      - 4.14.11.4 GetMoveResourceQuotaStatus
+      - 4.14.11.5 ListMoveResourceQuotaConfig
+      - 4.14.11.6 UpdateMoveResourceQuota
+    - 4.14.12 优先级调度
+      - 4.14.12.1 ModifyPriorityQueue
+      - 4.14.12.2 ListPriorityQueue
+  - 4.15 镜像库
+    - 4.15.1 VerifyImageSig
+    - 4.15.2 ListImageVersions
+    - 4.15.3 GetImageVersionDetail
+    - 4.15.4 CreateCustomImage
+    - 4.15.5 DeleteImageVersion
+    - 4.15.6 DeleteCustomImage
+    - 4.15.7 UpdateCustomImage
+    - 4.15.8 ConvertAcceleratedImage
+    - 4.15.9 ListImages
+  - 4.16 代码集
+    - 4.16.1 CreateCodeRepo
+    - 4.16.2 DeleteCodeRepo
+    - 4.16.3 GetCodeRepoDetail
+    - 4.16.4 ListCodeRepo
+    - 4.16.5 UpdateCodeRepo
+  - 4.17 数据加速器
+    - 4.17.1 UpdateDataAccInstance
+    - 4.17.2 DeleteDataAccInstance
+    - 4.17.3 BindDataAccInstance
+    - 4.17.4 ListDataAccInstance
+    - 4.17.5 UpdateDataAccInstanceStatus
+    - 4.17.6 UpdateDataAccInstanceSpec
+    - 4.17.7 GetDataAccInstance
+    - 4.17.8 CreateDataAccInstance
+    - 4.17.9 UnbindDataAccInstance
+    - 4.18.1 GetComponent
+    - 4.18.2 ModifyComponent
+    - 4.18.3 DeleteComponent
+    - 4.18.4 GetComponentMetaInfo
+    - 4.18.5 GenComponentJsonSchema
+    - 4.18.6 CreateComponent
+    - 4.18.7 ListComponent
+  - 4.19 软件源
+    - 4.19.1 UpdateSoftwareSourceConfig
+    - 4.19.2 ListSoftwareSource
+    - 4.19.3 UpdateSoftwareSource
+  - 4.20 资源同步
+    - 4.20.1 ListBmcpImageSyncHistory
+    - 4.20.2 SyncBmcpImage
+  - 4.21 用户APIKey
+    - 4.21.1 CreateGatewayAPIKey
+    - 4.21.2 DeleteGatewayAPIKey
+    - 4.21.3 ModifyGatewayAPIKeyStatus
+    - 4.21.4 UnbindGatewayAPIKey
+    - 4.21.5 BindGatewayAPIKey
+    - 4.21.6 ModifyGatewayAPIKeyAutoBinding
+    - 4.21.7 ListUserAPIKey
+    - 4.21.8 GetUserAPIKey
+    - 4.21.9 ModifyGatewayAPIKeyExpireTime
+  - 4.22 用户优先级
+    - 4.22.1 DeleteUserPriority
+    - 4.22.2 ListUserPriority
+    - 4.22.3 CreateUserPriority
+    - 4.22.4 ModifyUserPriority
+    - 4.22.5 GetUserPriorityDetail
+  - 4.23 Readme文档
+    - 4.23.1 DeleteDocument
+    - 4.23.2 ModifyDocument
+    - 4.23.3 CreateDocument
+    - 4.23.4 GetDocument
+  - 4.24 可观测
+    - 4.24.1 PodLogExport
+    - 4.24.2 ListEvent
+    - 4.24.3 ListPodLog
+    - 4.24.4 ListNode
+    - 4.24.5 GetTenantObservability
+  - 4.25 基础服务
+    - 4.25.1 GetManagedGpuCount
+    - 4.25.2 ListPod
+    - 4.25.3 ListPodsOnNode
+    - 4.25.4 GetSysParamValue
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,12 +411,11 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本单击**企业版**、**敏捷版**或**一体机**标签。
-智能体工厂 OpenTrek
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
@@ -47,20 +426,20 @@ AI Studio的API调用流程如下图所示。
 **调用步骤**
 
 1. 获取AccessKey。
-智能体工厂 OpenTrek
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取Endpoint和Region ID信息。
 获取调用时所需要的Endpoint和RegionID参数，请参见获取API信息及其EndPoint。
 3. 获取AI Studio的SDK包和SDK核心库，获取方法请参见安装Java SDK。
 4. 通过API参考章节的信息进行调用。
-智能体工厂 OpenTrek
 
-## 准备工作
+## 2 准备工作
 
-### 获取AccessKey
+### 2.1 获取AccessKey
+
+本文介绍获取AccessKey ID和AccessKey Secret的具体操作。
 
 **背景信息**
 
@@ -77,24 +456,21 @@ AI Studio的API调用流程如下图所示。
 2. 在系统界面右上角，将鼠标悬停在当前登录用户的头像上，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**重要**
-
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+> **重要：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
-**警告**
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。 获取组织AccessKey的方法如下：
+获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
-智能体工厂 OpenTrek
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -112,7 +488,7 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取AI Studio的POP Endpoint和Region ID等信息。
 
-### 通过POP网关调用专有云API
+### 2.3 通过POP网关调用专有云API
 
 AI Studio通过绑定的POP域名来访问，当前版本支持ROA风格的接口调用。
 
@@ -129,13 +505,11 @@ AI Studio通过绑定的POP域名来访问，当前版本支持ROA风格的接�
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType;
 ```
 
-智能体工厂 OpenTrek
-
 ```java
 import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.profile.IClientProfile;
 ```
 
-#sts安全访问示例`demo`：
+`#sts`安全访问示例`demo`：
 
 ```
 public static void main(String[] args) {
@@ -216,7 +590,7 @@ public static void main(String[] args) {
     /**
 ```
 
-设置`Headers` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-` `id`等" i i `id` `id` i 智能体工厂 OpenTrek
+设置`Headers` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-` `id`等`"` `i` `i` `id` `id` `i`
 
 ```
 organizationid、x-acs-resourcegroupid、x-acs-instanceid等"
@@ -249,29 +623,30 @@ organizationid、x-acs-resourcegroupid、x-acs-instanceid等"
         e.printStackTrace();
     } catch (ClientException e) {
         e.printStackTrace();
-    }
-}
 ```
 
-**重要**
+`}` `}`
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置： Java
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置：
+
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-`//` 设置不校验服务端证书
+> `//` 设置不校验服务端证书
 
 ```
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-智能体工厂 OpenTrek 例
+例
 
-## Java SDK调用示例
+## 3 Java SDK调用示例
 
-### 安装Java SDK
+### 3.1 安装Java SDK
 
 本文介绍如何安装AI Studio的Java SDK。
 
@@ -296,25 +671,21 @@ clientConfig.setIgnoreSSLCerts(true)
 </dependency>
 ```
 
-### 设置身份验证凭证
+### 3.2 设置身份验证凭证
 
 使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 Java SDK支持通过AccessKey进行身份验证，获取AccessKey ID和AccessKey Secret的方法请参见获取AccessKey，获取Endpoint和Region ID的方法请参见获取API信息及其EndPoint。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-请确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 请确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
 ```
 
-`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret` 智能体工厂 OpenTrek 例
+`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret` 例
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留
-
-### 发起调用请求
+### 3.3 发起调用请求
 
 本文介绍如何使用Java SDK发起请求。
 
@@ -342,6 +713,8 @@ CommonResponse response = client.getCommonResponse(request););
 
 **完整调用示例**
 
+以下代码为AI Studio的 `createCustomImage` 接口调用示例。
+
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.profile.IClientProfile; public static void main(String[] args) {
 ```
@@ -367,7 +740,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-智能体工厂 OpenTrek 例 `//` 设置请求协议
+例 `//` 设置请求协议
 
 ```
     clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -449,7 +822,7 @@ organizationid、x-acs-resourcegroupid、x-acs-instanceid等"
     request.setSysMethod(MethodType.POST);
 ```
 
-智能体工厂 OpenTrek 例
+例
 
 ```java
     request.setHttpContentType(FormatType.JSON);
@@ -460,11 +833,11 @@ organizationid、x-acs-resourcegroupid、x-acs-instanceid等"
         e.printStackTrace();
     } catch (ClientException e) {
         e.printStackTrace();
-    }
-}
 ```
 
-### 错误处理
+`}` `}`
+
+### 3.4 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要根据Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 ServerException是服务端错误信息。 ClientException是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -494,16 +867,19 @@ try {
     e.printStackTrace();
 } catch (ServerException e) {
     e.printStackTrace();
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-## API参考
+## 4 API参考
 
-### 数据集
+这是 API 参考内容
 
-#### GetApfs
+### 4.1 数据集
+
+#### 4.1.1 GetApfs
+
+调用GetApfs查询Apfs文件系统信息。
 
 **请求头**
 
@@ -528,31 +904,35 @@ try {
 | -mountDir | List | [ "/example/dir" ] | 挂载目录列表。 |
 | -mountedFs | String | efs-****018e | 已挂载的文件系统。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```
-&bmcpClusterId=ack-YoZjG*****
+GET /task/apfs/get HTTP/1.1 &bmcpClusterId=ack-YoZjG*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "mountedFs":"efs-****018e",
   "mountDir":"[  \"/example/dir\"]"
- },
+```
+
+`},`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteDataset
+`}`
+
+#### 4.1.2 DeleteDataset
+
+调用DeleteDataset删除指定的数据集。
 
 **请求头**
 
@@ -576,8 +956,6 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -593,19 +971,21 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1
 DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491cafa76b5d842****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetDataset
+`}`
+
+#### 4.1.3 GetDataset
+
+调用GetDataset查询指定数据集的详细信息。
 
 **请求头**
 
@@ -613,12 +993,14 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
 
 **请求语法**
 
+```
+GET /dataset/getDataset/[datasetId] HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -641,7 +1023,7 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
 | -datasetId | String | ds- a60cbb90******46f 4 | 数据集ID。 |
 | -datasetName | String | ait dataset pytorc _ _ h mnist 770b587b _ _ | 数据集名称。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -656,13 +1038,12 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
 请求示例
 
 ```
-&datasetId=ds-3dc49fc087b3491cafa76b5d842****
+GET /dataset/getDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491cafa76b5d842****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "versionCount":"",
   "datasetDescription":"",
@@ -674,24 +1055,29 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
   "datasetName":"",
   "datasetId":"",
   "dataSource":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListDatasets
+`}`
 
-**请求头**
+#### 4.1.4 ListDatasets
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ListDatasets查询所有的数据集列表。
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /dataset/listDatasets HTTP/1.1
+```
 
 **请求参数**
 
@@ -707,7 +1093,7 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
 | pageIndex | Integ er | Query | 否 | 1 | 数据集列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -729,7 +1115,7 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
 | - datasetGmtCr eate | String | 2026-02- 27T01:53:30Z | 创建时间。 |
 | -datasetId | String | ds- a60cbb90******46f 4 | 数据集ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -750,12 +1136,21 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例智能体工厂 OpenTrek `JSON` 格式
+请求示例
+
+```
+GET /dataset/listDatasets HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "versionCount":"",
    "shared":"",
    "datasetDescription":"",
@@ -769,10 +1164,9 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
    "datasetGmtCreate":"",
    "datasetId":"",
    "dataSource":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -783,10 +1177,11 @@ DELETE /dataset/deleteDataset/[datasetId] HTTP/1.1 &datasetId=ds-3dc49fc087b3491
  "errorCode":"500",
  "totalCount":100,
  "httpCode":200
-}
 ```
 
-#### UpdateDataset
+`}`
+
+#### 4.1.5 UpdateDataset
 
 调用UpdateDataset修改指定数据集的部分信息，包括数据集名称、描述和数据集类型。
 
@@ -827,32 +1222,38 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "datasetName":"dataset-name" }
+POST /dataset/updateDataset/[datasetId] HTTP/1.1 "datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "datasetName":"dataset-name"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateDataset
+`}`
+
+#### 4.1.6 CreateDataset
+
+调用CreateDataset创建数据集。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /dataset/createDataset HTTP/1.1
+```
 
 **请求参数**
 
@@ -863,8 +1264,6 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | versionDe scription | Strin g | Body | 否 | datasetVersionDescripti on | 数据集版本描述信息。 |
 | datasetDe scription | Strin g | Body | 否 | dataset-description | 数据集描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | datasetTy pe | Integ er | Body | 是 | 0 | 数据集类型，该参数必填， 取值范围： 0：训练集。 1：评测集。 2：训练集&评测集。 （废弃） |
@@ -874,13 +1273,9 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | isDirector y | Integ er | Body | 是 | 0 | 数据集是否为文件夹，该参数必填，取值范围： 0：文件。 1：文件夹。 |
 | sourceTyp e | Integ er | Body | 是 | 1 | 数据集来源，该参数必填， 取值范围： 1：自定义创建。 2：数据标注导出。 3：数据生成导出。 4：评测结果导出。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | dataProce ssOptions | Strin g | Body | 否 | { "dataProcessTaskType": 2, "initResultPath": "oss://***/***", "dataSubProcessTaskTy pe": "0" } | 可选配置。在数据集需要标注时必传。 dataProcessTaskType ：数据集待处理任务的类型。支持任务场景： 2：数据标注 dataSubProcessTaskT ype：数据集待处理任务的子类型。 数据标注场景（即 dataProcessTaskTy pe为2 时，dataSubProcess TaskType必传） 0：文本类标注 1：图片类标注 initResultPath：数据处理任务前，数据集进行初始化后的存储路径。 数据标注场景（即 dataProcessTaskTy pe为2 时，initResultPath必传） 文本类标注（即 dataSubProcessT askType为0 时），initResultP ath与数据集的存储路径（dataPath） 一致图片类标注（即 dataSubProcessT askType为1时）， 创建数据集的过程中将生成标准格式的初始化待标注数据文件，initResultPat h为该初始化文件的存放的目录 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -897,38 +1292,41 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-{ "datasetId":"ds-rbvg5****jhc9ks92", "datasetName":"dataset-name", "datasetType":"0", "dataType":"0", "dataSource":"1", "dataPath":"oss://****/****", "isDirectory":"0", "sourceType":"1", "sourceInfo":""sourceInfo":{
+POST /dataset/createDataset HTTP/1.1 "datasetId":"ds-rbvg5****jhc9ks92", "datasetName":"dataset-name", "datasetType":"0", "dataType":"0", "dataSource":"1", "dataPath":"oss://****/****", "isDirectory":"0", "sourceType":"1", "sourceInfo":""sourceInfo":{
     "sfmWorkspaceCode":"****",
     "sfmDatasetCode": "****",
     "sfmSubsetCode":"****"
-}" }
 ```
 
-正常返回示例 `JSON` 格式
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{       \"datasetId\": \"ds-*****\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListDataExportTask
+`}`
+
+#### 4.1.7 ListDataExportTask
+
+调用ListDataExportTask查询所有的数据导出任务列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /dataset/exportData/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -937,7 +1335,7 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | exportTas kId | Strin g | Query | 否 | exdt- 7c687fe90b7be047ce09 e34**** | 导出任务ID。 |
 | dataProce ssTaskId | Strin g | Query | 否 | at- 8870154d05c9f047b70a 5f30**** | 来源数据处理任务ID。 |
 
-|  | 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -956,8 +1354,6 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -971,8 +1367,6 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | - exportDataset Version | String | v1 | 表示导出数据集的版本号 |
 | - exportFormatT ype | Integer | 0 | 导出文件格式，取值范围： 0：jsonl。 |
 | -exportPath | String | oss://test- gq.osaa.com/ | 导出oss目标路径，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -991,7 +1385,7 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 | totalCount | Integer | 100 | 导出任务数据的总数。 |
 | pageSize | Integer | 10 | 每页行数。 |
 
-| I Studio · | API |  | OpenTre |
+| I Studio · | API |   | OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1004,12 +1398,16 @@ POST /dataset/updateDataset/[datasetId] HTTP/1.1 { "datasetId":"ds-3dc49fc087b34
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /dataset/exportData/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
                 "exportTaskId": "exdt-d1972aae0bd0e04c3b",
                 "gmtModified": "2026-02-27T06:00:21Z",
                 "aliYunUid": "1982260514521225",
@@ -1033,10 +1431,9 @@ me\": \"zexi_test_0212\", \"datasetId\": \"ds-16944a2100cf304285\", \"datasetNam
 cf304285\", \"Department\": 5, \"datasetName\": \"zexi_test_0209\", \"datasetType\": 0, \"ResourceGroup\": 4, \"datasetVersion\": \"v2\"}",
                 "exportFormatType": 0,
                 "progressCompleted": 10
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -1047,10 +1444,13 @@ cf304285\", \"Department\": 5, \"datasetName\": \"zexi_test_0209\", \"datasetTyp
  "errorCode":"500",
  "totalCount":100,
  "httpCode":200
-}
 ```
 
-#### CreateDataExportTask
+`}`
+
+#### 4.1.8 CreateDataExportTask
+
+调用CreateDataExportTask创建导出数据集任务。
 
 **请求头**
 
@@ -1061,8 +1461,6 @@ cf304285\", \"Department\": 5, \"datasetName\": \"zexi_test_0209\", \"datasetTyp
 ```
 POST /dataset/exportData/create HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -1084,7 +1482,7 @@ POST /dataset/exportData/create HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {"exportTaskId": "exdt-*****"} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1098,24 +1496,32 @@ POST /dataset/exportData/create HTTP/1.1
 
 请求示例
 
-```json
-POST /dataset/exportData/create HTTP/1.1 { "dataProcessTaskType":"2", "dataProcessTaskId":"at-8870154d05c9f047b70a5f3*****", "exportType":"0", "exportStorageType":"1", "exportPath":"oss://******/" }
+```
+POST /dataset/exportData/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"dataProcessTaskType":"2", "dataProcessTaskId":"at-8870154d05c9f047b70a5f3*****", "exportType":"0", "exportStorageType":"1", "exportPath":"oss://******/"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"exportTaskId\": \"exdt-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteDatasetVersion
+`}`
+
+#### 4.1.9 DeleteDatasetVersion
+
+调用DeleteDatasetVersion删除指定的数据集版本。
 
 **请求头**
 
@@ -1126,8 +1532,6 @@ POST /dataset/exportData/create HTTP/1.1 { "dataProcessTaskType":"2", "dataProce
 ```
 POST /dataset/delete-version HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -1150,31 +1554,39 @@ POST /dataset/delete-version HTTP/1.1
 
 请求示例
 
-```json
-POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "datasetVersion":"['v1','v3']" }
+```
+POST /dataset/delete-version HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "datasetVersion":"['v1','v3']"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.1.10 GetDatasetFileContent
 
-#### GetDatasetFileContent
+调用GetDatasetFileContent查询指定的文件内容。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /dataset/file/getFileContent HTTP/1.1
+```
 
 **请求参数**
 
@@ -1196,7 +1608,7 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
 | data | Struct | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | -content | String | {"data": {"source":"示例内容。"}} | 响应内容。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1212,13 +1624,12 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
 请求示例
 
 ```
-&datasetId=ds-3dc49fc087b3491cafa76b5d842**** &datasetVersion=v1 &filePath=componentUpload/
+GET /dataset/file/getFileContent HTTP/1.1 &datasetId=ds-3dc49fc087b3491cafa76b5d842**** &datasetVersion=v1 &filePath=componentUpload/
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "datasetVersion":"v1",
   "filePath":"oss://****/example.jsonl",
@@ -1226,22 +1637,29 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
   "objectName":"example.jsonl",
   "preSignedUrl":"http://****/****",
   "content":"{\"data\":{\"source\":\"示例内容。\"}}"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListDatasetVersion
+`}`
 
-**请求头**
+#### 4.1.11 ListDatasetVersion
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用ListDatasetVersion查询所有的数据集版本列表。
 
 **请求语法**
+
+```
+GET /dataset/list-version HTTP/1.1
+```
 
 **请求参数**
 
@@ -1255,8 +1673,6 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
 | datasetTy pe | Integ er | Query | 否 | 0 | 数据集类型，取值范围： 0：训练集。 1：评测集。 |
 | quotaId | Strin g | Query | 否 | rq- d8890a98089c2041d80 86bb0b2e27**** | 资源配额ID。 |
 | sourceTyp e | Integ er | Query | 否 | 1 | 源类型，取值范围： 1：自定义创建。 2：数据标注导出。 3：数据生成导出。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1277,7 +1693,7 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
 | -aliYunUid | String | 127756******1314 | 实例所属的阿里云账户ID。 |
 | -dataAccCount | Integer | 0 | 关联的数据加速器的数量。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1292,8 +1708,6 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
 | -importStatus | Integer | 0 | 数据集导入状态： 0：导入完成。 1：导入中。 2：导入失败。 默认为导入完成。 |
 | -isDirectory | Integer | 0 | 数据集导入格式： 0：文件。 1：文件夹。 |
 | -regionId | String | cn-hangzhou | 地域ID。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1312,15 +1726,13 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
 请求示例
 
 ```
-&datasetId=ds-3dc49fc087b3491cafa76b5d842****
+GET /dataset/list-version HTTP/1.1 &datasetId=ds-3dc49fc087b3491cafa76b5d842****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "versionDescription":"Example desc.",
    "importStatus":0,
    "aliYunUid":"127756******1314",
@@ -1336,10 +1748,9 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
    "datasetType":0,
    "dataSource":1,
    "isDirectory":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -1350,12 +1761,13 @@ POST /dataset/delete-version HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d
  "errorCode":"500",
  "totalCount":1,
  "httpCode":200
-}
 ```
 
-### 数据标注
+`}`
 
-#### ListAnnotationSubTaskCheck
+### 4.2 数据标注
+
+#### 4.2.1 ListAnnotationSubTaskCheck
 
 调用ListAnnotationSubTaskCheck查询所有的验收子任务列表。
 
@@ -1375,7 +1787,7 @@ GET /dataAnnotation/subTask/listCheck HTTP/1.1
 |---|---|---|---|---|---|
 | annotatio nTaskId | Strin g | Query | 否 | at- 97d11ca204c6b0493908 63***** | 数据标注任务ID。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1391,8 +1803,6 @@ GET /dataAnnotation/subTask/listCheck HTTP/1.1
 | Resource Group | Integ er | Query | 否 | 1 | 资源集。 |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1411,7 +1821,7 @@ GET /dataAnnotation/subTask/listCheck HTTP/1.1
 | -checkerUid | String | 23877***** | 验收员ID。 |
 | -name | String | 文本标注 | 任务名称。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1429,20 +1839,21 @@ GET /dataAnnotation/subTask/listCheck HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
 GET /dataAnnotation/subTask/listCheck HTTP/1.1 &subTaskStatus=0
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "taskFromType":0,
    "annotatorUid":"23743437***",
    "subTaskStatus":1,
@@ -1464,10 +1875,9 @@ GET /dataAnnotation/subTask/listCheck HTTP/1.1 &subTaskStatus=0
 ```json
    "checkerName":"lisi",
    "taskFlowType":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -1478,10 +1888,11 @@ GET /dataAnnotation/subTask/listCheck HTTP/1.1 &subTaskStatus=0
  "errorCode":"500",
  "totalCount":100,
  "httpCode":200
-}
 ```
 
-#### ListAnnotationTaskSubTask
+`}`
+
+#### 4.2.2 ListAnnotationTaskSubTask
 
 调用ListAnnotationTaskSubTask查询所有的数据标注子任务列表。
 
@@ -1496,8 +1907,6 @@ GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1518,7 +1927,7 @@ GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1
 | - annotationTas kId | String | at- 97d1493908634*** ** | 数据标注任务ID。 |
 | - annotationTot alNum | Integer | 10 | 标注数据总量 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1537,8 +1946,6 @@ GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1
 | pageIndex | Integer | 1 | 数据标注子任务的页码。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -1553,12 +1960,15 @@ GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1
 GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97d11ca204c6b04939086340c6d*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "taskFromType":1,
    "annotatorUid":"22737***",
    "subTaskStatus":1,
@@ -1572,10 +1982,9 @@ GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1 &annotationTask
    "checkerUid":"28337***",
    "checkedNum":2,
    "checkerName":"lisi"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -1586,16 +1995,13 @@ GET /dataAnnotation/task/subTaskList/[annotationTaskId] HTTP/1.1 &annotationTask
  "errorCode":"500",
  "totalCount":100,
  "httpCode":200
-}
 ```
 
-#### ListAnnotationSubTaskAnnotation
+`}`
 
-智能体工厂 OpenTrek 调用ListAnnotationSubTaskAnnotation查询所有的标注任务子任务列表。
+#### 4.2.3 ListAnnotationSubTaskAnnotation
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ListAnnotationSubTaskAnnotation查询所有的标注任务子任务列表。
 
 **请求语法**
 
@@ -1614,8 +2020,6 @@ GET /dataAnnotation/subTask/listAnnotation HTTP/1.1
 | objectTyp e | Integ er | Query | 否 | 0 | 数据标注对象，取值范围： 0：图片。 1：文本。 |
 | taskFlowT ype | Integ er | Query | 否 | 0 | 数据标注类型，取值范围： 0：标注。 1：标注-验收。 |
 | taskFromT ype | Integ er | Query | 否 | 0 | 数据标注任务来源，取值范围： 0：分配。 1：转派。 2：驳回。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1636,7 +2040,7 @@ GET /dataAnnotation/subTask/listAnnotation HTTP/1.1
 | - annotationTyp e | Integer | 0 | 标注类型，该参数必填，取值范围： 0：文本-分类。 1：文本-实体识别。 2：图片-描述。 3：图片-QA。 4：图片-分类。 5：图片-目标检测。 6：文本-QA。 |
 | - annotatorNam e | String | zhangsan | 标注员名称 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1655,7 +2059,7 @@ GET /dataAnnotation/subTask/listAnnotation HTTP/1.1
 | totalCount | Integer | 10 | 标注任务的总数。 |
 | pageSize | Integer | 10 | 每页行数。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1674,12 +2078,10 @@ GET /dataAnnotation/subTask/listAnnotation HTTP/1.1
 GET /dataAnnotation/subTask/listAnnotation HTTP/1.1 &subTaskStatus=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "taskFromType":0,
    "annotatorUid":"27889****",
    "subTaskStatus":1,
@@ -1701,10 +2103,9 @@ GET /dataAnnotation/subTask/listAnnotation HTTP/1.1 &subTaskStatus=1
 ```json
    "checkerName":"lisi",
    "taskFlowType":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -1715,10 +2116,13 @@ GET /dataAnnotation/subTask/listAnnotation HTTP/1.1 &subTaskStatus=1
  "errorCode":"500",
  "totalCount":10,
  "httpCode":200
-}
 ```
 
-#### GetAnnotationTask
+`}`
+
+#### 4.2.4 GetAnnotationTask
+
+调用GetAnnotationTask查询指定数据标注任务的详细信息。
 
 **请求头**
 
@@ -1736,10 +2140,6 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1
 |---|---|---|---|---|---|
 | annotatio nTaskId | Strin g | Path | 是 | at- 97d11ca204c6b0493908 634***** | 数据标注任务ID。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -1755,7 +2155,7 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1
 | - annotationTyp e | Integer | 1 | 标注类型，取值范围： 0：文本-分类。 1：文本-实体识别。 2：图片-描述。 3：图片-QA。 4：图片-分类。 5：图片-目标检测。 6：文本-QA。 |
 | - checkedSubTa skNum | Integer | 1 | 完成验收的子任务数量。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1772,8 +2172,6 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1
 | -subTaskNum | Integer | 5 | 子任务量。 |
 | -taskFlowType | Integer | 0 | 数据标注类型，取值范围： 0：标注。 1：标注-验收。 |
 | -taskStatus | Integer | 1 | 任务状态，取值范围： 0：初始化中。 1：标注中。 2：验收中。 3：已完成。 255：初始化失败。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1794,8 +2192,6 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1
 | --managerList | Array | 见子字段 | 管理员列表。 |
 | --- aliyunSubUid | String | 1277043054***** | 阿里云子账号Uid。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ---loginName | String | zhangsan | 阿里云子账号名称。 |
@@ -1808,10 +2204,9 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1
 GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97d11ca204c6b0493908634*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "datasetVersion":"v1",
   "totalDataNum":50,
@@ -1821,19 +2216,16 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97
   "gmtCreated":"2017-11-27T06:51:26Z",
   "managerDistributeStrategy":{
    "managerList":[
-    {
+```
+
+`{`
+
+```json
      "loginName":"zhangsan",
      "aliyunSubUid":"1277043054*****"
-    }
 ```
 
-]
-
-```
-  },
-```
-
-`"datasetName":"`待标注数据`",`
+`}` `]` `},` `"datasetName":"`待标注数据`",`
 
 ```json
   "annotationType":1,
@@ -1845,16 +2237,18 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97
    "samplingPercentage":100,
    "samplingMethod":"dataSampling",
    "checkerList":[
-    {
-     "loginName":"zhangsan",
-     "aliyunSubUid":"2277043054*****"
-    }
 ```
 
-]
+`{`
 
 ```json
-  },
+     "loginName":"zhangsan",
+     "aliyunSubUid":"2277043054*****"
+```
+
+`}` `]` `},`
+
+```json
   "checkedSubTaskNum":1,
   "annotationTaskId":"at-97d11ca204c6b0493908634*****",
   "waitingAnnotationSubTaskNum":4,
@@ -1867,8 +2261,6 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97
 "datasetId":"ds7sda****"
 ```
 
-智能体工厂 OpenTrek
-
 ```json
   "datasetId":"ds-7sda****",
   "taskFlowType":0,
@@ -1876,26 +2268,28 @@ GET /dataAnnotation/task/get/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97
   "annotatorDistributeStrategy":{
    "distributeStrategy":"averageDistribution",
    "annotatorList":[
-    {
-     "loginName":"zhangsan",
-     "aliyunSubUid":"1277043054*****"
-    }
 ```
 
-]
+`{`
 
 ```json
-  }
- },
+     "loginName":"zhangsan",
+     "aliyunSubUid":"1277043054*****"
+```
+
+`}` `]` `}` `},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateAnnotationTask
+`}`
+
+#### 4.2.5 UpdateAnnotationTask
 
 调用UpdateAnnotationTask修改指定数据标注任务的部分信息，包括数据标注任务名称、描述以及人员配置。
 
@@ -1915,8 +2309,6 @@ PUT /dataAnnotation/task/update/[annotationTaskId] HTTP/1.1
 |---|---|---|---|---|---|
 | annotatio nTaskId | Strin g | Path | 是 | at- 97d11ca204c6b0493908 6340c***** | 数据标注任务ID。 |
 | name | Strin g | Body | 否 | annotation-name | 数据标注任务名称，长度为 2～64个字符，必须以字母或中文开头，可包含数字、 半角句号（.）、下划线 （ ）和短划线（-）。 _ 注： 1. 更改任务名称时，该参数不能为空； 2. 更改人员配置时，该参数不做校验。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1940,26 +2332,30 @@ PUT /dataAnnotation/task/update/[annotationTaskId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataAnnotation/task/update/[annotationTaskId] HTTP/1.1 { "annotationTaskId":"at-97d11ca204c6b04939086340c*****" }
+```
+PUT /dataAnnotation/task/update/[annotationTaskId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"annotationTaskId":"at-97d11ca204c6b04939086340c*****"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-**4.2.6.**
+`}`
 
-#### UpdateAnnotationDataAnnotationResult
+#### 4.2.6 UpdateAnnotationDataAnnotationResult
 
 调用UpdateAnnotationDataAnnotationResult修改标注数据结果。
 
@@ -1988,8 +2384,6 @@ PUT /dataAnnotation/data/annotationUpdate/[annotationDataId] HTTP/1.1
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -2000,24 +2394,32 @@ PUT /dataAnnotation/data/annotationUpdate/[annotationDataId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataAnnotation/data/annotationUpdate/[annotationDataId] HTTP/1.1 { "annotationDataId":"ad-cf4b1c6900caa048bf095ed05*****" }
+```
+PUT /dataAnnotation/data/annotationUpdate/[annotationDataId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"annotationDataId":"ad-cf4b1c6900caa048bf095ed05*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateAnnotationTask
+`}`
+
+#### 4.2.7 CreateAnnotationTask
+
+调用CreateAnnotationTask创建数据标注任务。
 
 **请求头**
 
@@ -2036,7 +2438,7 @@ POST /dataAnnotation/task/create HTTP/1.1
 | Departme nt | Strin g | Body | 是 | 1 | 组织ID，该参数必填。 |
 | Resource Group | Strin g | Body | 是 | 1 | 资源集ID，该参数必填。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2049,8 +2451,6 @@ POST /dataAnnotation/task/create HTTP/1.1
 | isMustRea dManual | Boole an | Body | 是 | false | 是否必须阅读说明书，该参数必填，取值范围： true：是。 false：否。 默认值：false。 |
 | objectTyp e | Integ er | Body | 是 | 0 | 数据标注对象，该参数必填，取值范围： 0：图片。 1：文本。 |
 | annotatio nType | Integ er | Body | 是 | 1 | 标注类型，该参数必填，取值范围： 0：文本-分类。 1：文本-实体识别。 2：图片-描述。 3：图片-QA。 4：图片-分类。 5：图片-目标检测。 6：文本-QA。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2071,7 +2471,7 @@ POST /dataAnnotation/task/create HTTP/1.1
 | data | String | { "annotationTaskId" : "at-*****" } | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2084,8 +2484,14 @@ POST /dataAnnotation/task/create HTTP/1.1
 
 请求示例
 
+```
+POST /dataAnnotation/task/create HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /dataAnnotation/task/create HTTP/1.1 { "Department":"1", "ResourceGroup":"1", "datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "name":"annotation-name", "isMustReadManual":"false", "objectType":"0", "annotationType":"1", "taskFlowType":"0", "subTaskDataNum":"200", "subTaskCanSkipDataNum":"5", "annotatorDistributeStrategy":"[{
+"Department":"1", "ResourceGroup":"1", "datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "name":"annotation-name", "isMustReadManual":"false", "objectType":"0", "annotationType":"1", "taskFlowType":"0", "subTaskDataNum":"200", "subTaskCanSkipDataNum":"5", "annotatorDistributeStrategy":"[{
  "aliyunSubUid": "23783684****",
  "loginName": "李四"
 }]", "checkerDistributeStrategy":"[{
@@ -2094,25 +2500,21 @@ POST /dataAnnotation/task/create HTTP/1.1 { "Department":"1", "ResourceGroup":"1
 }]", "managerDistributeStrategy":"[{
  "aliyunSubUid": "23783684****",
  "loginName": "李四"
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{     \"annotationTaskId\": \"at-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### UpdateAnnotationSubTaskCheck
+#### 4.2.8 UpdateAnnotationSubTaskCheck
 
 调用UpdateAnnotationSubTaskCheck修改指定数据标注子任务的状态和验收反馈信息。
 
@@ -2145,32 +2547,32 @@ PUT /dataAnnotation/subTask/checkUpdate/[annotationSubTaskId] HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
-```json
-PUT /dataAnnotation/subTask/checkUpdate/[annotationSubTaskId] HTTP/1.1 { "annotationSubTaskId":"ast-eaf458f4057ad04a540b9530****", "taskStatus":"0" }
+```
+PUT /dataAnnotation/subTask/checkUpdate/[annotationSubTaskId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"annotationSubTaskId":"ast-eaf458f4057ad04a540b9530****", "taskStatus":"0"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-**4.2.9.**
+`}`
 
-#### UpdateAnnotationTaskAlreadyReadManual
+#### 4.2.9 UpdateAnnotationTaskAlreadyReadManual
 
 调用UpdateAnnotationTaskAlreadyReadManual修改指定数据标注任务标注说明状态。
 
@@ -2191,10 +2593,6 @@ PUT /dataAnnotation/task/updateAlreadyReadManual/[annotationTaskId] HTTP/1.1
 | annotatio nTaskId | Strin g | Path | 是 | at- 8870154d05c9f047b70a 5f306c9***** | 数据标注任务ID。 |
 | isAlreadyR eadManua l | Boole an | Body | 是 | false | 标注说明是否已读，该参数必填，取值范围： true：是。 false：否。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -2208,28 +2606,32 @@ PUT /dataAnnotation/task/updateAlreadyReadManual/[annotationTaskId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataAnnotation/task/updateAlreadyReadManual/[annotationTaskId] HTTP/1.1 { "annotationTaskId":"at-8870154d05c9f047b70a5f306c9*****", "isAlreadyReadManual":"false" }
+```
+PUT /dataAnnotation/task/updateAlreadyReadManual/[annotationTaskId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"annotationTaskId":"at-8870154d05c9f047b70a5f306c9*****", "isAlreadyReadManual":"false"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetAnnotationConfig
+`}`
 
-**请求头**
+#### 4.2.10 GetAnnotationConfig
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用GetAnnotationConfig查询指定数据标注子任务标注标签配置。
 
 **请求语法**
 
@@ -2257,8 +2659,6 @@ GET /dataAnnotation/subTask/getConfig/[annotationSubTaskId] HTTP/1.1
 | - annotationMet hodType | Integer | 0 | 标准方式。 0：人工标注 1：自动标注 |
 | - annotationTas kId | String | at- 97d11ca204c6086 34***** | 数据标注任务ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - annotationTyp e | Integer | 0 | 标注类型，取值范围： 0：文本-分类。 1：文本-实体识别。 2：图片-描述。 3：图片-QA。 4：图片-分类。 5：图片-目标检测。 6：文本-QA。 |
@@ -2271,8 +2671,6 @@ GET /dataAnnotation/subTask/getConfig/[annotationSubTaskId] HTTP/1.1
 | -sampleRate | Float | 1.0 | 抽检采样率。 |
 | - subTaskCanSk ipDataNum | Integer | 2 | 子任务可跳过的数据量。 |
 | - subTaskDataN um | Integer | 10 | 子任务的数据量。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2287,10 +2685,9 @@ GET /dataAnnotation/subTask/getConfig/[annotationSubTaskId] HTTP/1.1
 GET /dataAnnotation/subTask/getConfig/[annotationSubTaskId] HTTP/1.1 &annotationSubTaskId=ast-eaf458f4057ad04a540b9530*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "annotationType":0,
   "subTaskDataNum":10,
@@ -2311,18 +2708,21 @@ GET /dataAnnotation/subTask/getConfig/[annotationSubTaskId] HTTP/1.1 &annotation
   "taskFlowType":0,
   "subTaskCanSkipDataNum":2,
   "taskStatus":1
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.2.11 DeleteAnnotationTask
 
-#### DeleteAnnotationTask
+调用DeleteAnnotationTask删除指定的数据标注任务。
 
 **请求头**
 
@@ -2358,19 +2758,19 @@ DELETE /dataAnnotation/task/delete/[annotationTaskId] HTTP/1.1
 DELETE /dataAnnotation/task/delete/[annotationTaskId] HTTP/1.1 &annotationTaskId=at-97d11ca204c6b0493908634*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateAnnotationSubTaskReassign
+`}`
+
+#### 4.2.12 UpdateAnnotationSubTaskReassign
 
 调用UpdateAnnotationSubTaskReassign进行转派子任务。
 
@@ -2400,8 +2800,6 @@ PUT /dataAnnotation/subTask/reassign/[annotationSubTaskId] HTTP/1.1
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -2412,24 +2810,32 @@ PUT /dataAnnotation/subTask/reassign/[annotationSubTaskId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataAnnotation/subTask/reassign/[annotationSubTaskId] HTTP/1.1 { "annotationSubTaskId":"ast-eaf458f4057ad04a540b9530*****" }
+```
+PUT /dataAnnotation/subTask/reassign/[annotationSubTaskId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"annotationSubTaskId":"ast-eaf458f4057ad04a540b9530*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListAnnotationTask
+`}`
+
+#### 4.2.13 ListAnnotationTask
+
+调用ListAnnotationTask查询所有的数据标注任务列表。
 
 **请求头**
 
@@ -2447,8 +2853,6 @@ GET /dataAnnotation/task/list HTTP/1.1
 |---|---|---|---|---|---|
 | annotatio nTaskId | Strin g | Query | 否 | at- 97d11ca204c6b0493908 6340***** | 数据标注任务ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | name | Strin g | Query | 否 | annotation-name | 数据标注任务名称。 |
@@ -2462,10 +2866,6 @@ GET /dataAnnotation/task/list HTTP/1.1
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序。 DESC：降序。 ASC：升序。 默认值：DESC。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2482,7 +2882,7 @@ GET /dataAnnotation/task/list HTTP/1.1
 | - completedDat aNum | Integer | 5 | 已完成处理的数据条目数量。 |
 | -datasetId | String | ds-dfasf*** | 数据集ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2501,7 +2901,7 @@ GET /dataAnnotation/task/list HTTP/1.1
 | -totalDataNum | Integer | 100 | 数据总量。 |
 | - waitingAnnota tionSubTaskNu m | Integer | 1 | 待标注的子任务数量。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2522,12 +2922,10 @@ GET /dataAnnotation/task/list HTTP/1.1
 GET /dataAnnotation/task/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "managerNameList":"[\"admin\"]",
    "datasetVersion":"v1",
    "totalDataNum":100,
@@ -2559,10 +2957,9 @@ GET /dataAnnotation/task/list HTTP/1.1
    "datasetId":"ds-dfasf***",
    "taskFlowType":0,
    "taskStatus":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -2573,10 +2970,11 @@ GET /dataAnnotation/task/list HTTP/1.1
  "errorCode":"500",
  "totalCount":100,
  "httpCode":200
-}
 ```
 
-#### UpdateAnnotationDataCheckResult
+`}`
+
+#### 4.2.14 UpdateAnnotationDataCheckResult
 
 调用UpdateAnnotationDataCheckResult修改指定标注数据验收结果。
 
@@ -2591,8 +2989,6 @@ PUT /dataAnnotation/data/checkUpdate/[annotationDataId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2615,24 +3011,32 @@ PUT /dataAnnotation/data/checkUpdate/[annotationDataId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataAnnotation/data/checkUpdate/[annotationDataId] HTTP/1.1 { "annotationDataId":"ad-cf4b1c6900caa048bf095*****" }
+```
+PUT /dataAnnotation/data/checkUpdate/[annotationDataId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"annotationDataId":"ad-cf4b1c6900caa048bf095*****"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListAnnotationData
+`}`
+
+#### 4.2.15 ListAnnotationData
+
+调用ListAnnotationData查询所有的标注数据列表。
 
 **请求头**
 
@@ -2659,8 +3063,6 @@ GET /dataAnnotation/data/list HTTP/1.1
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | - annotationDat aId | String | ad- cf4b1c65ed05***** | 标注数据ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - annotationStat us | Integer | 1 | 标注状态： 0:未标注 1:已标注 |
@@ -2684,12 +3086,15 @@ GET /dataAnnotation/data/list HTTP/1.1
 GET /dataAnnotation/data/list HTTP/1.1 &annotationSubTaskId=ast-eaf458f4057ad04a540b9530*****
 ```
 
-&公共请求参数智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "checkStatus":1,
    "annotationTaskId":"at-97d11ca24*****",
    "annotatorUid":"2377788***",
@@ -2700,13 +3105,7 @@ GET /dataAnnotation/data/list HTTP/1.1 &annotationSubTaskId=ast-eaf458f4057ad04a
    "annotationDataId":"ad-cf4b1c65ed05*****",
 ```
 
-`"source":"`待标注数据内容"
-
-```
-  }
-```
-
-`],`
+`"source":"`待标注数据内容`"` `}` `],`
 
 ```json
  "success":true,
@@ -2714,10 +3113,11 @@ GET /dataAnnotation/data/list HTTP/1.1 &annotationSubTaskId=ast-eaf458f4057ad04a
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateAnnotationSubTaskAnnotation
+`}`
+
+#### 4.2.16 UpdateAnnotationSubTaskAnnotation
 
 调用UpdateAnnotationSubTaskAnnotation更新数据标注子任务状态。
 
@@ -2738,10 +3138,6 @@ PUT /dataAnnotation/subTask/annotationUpdate/[annotationSubTaskId] HTTP/1.1
 | annotatio nSubTaskI d | Strin g | Path | 是 | ast- eaf458f4057ad04a540b 95***** | 数据标注子任务ID。 |
 | taskStatus | Integ er | Body | 是 | 1 | 子任务状态，该参数必填， 取值范围： 1：已标注。 2：待验收。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -2755,30 +3151,32 @@ PUT /dataAnnotation/subTask/annotationUpdate/[annotationSubTaskId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataAnnotation/subTask/annotationUpdate/[annotationSubTaskId] HTTP/1.1 { "annotationSubTaskId":"ast-eaf458f4057ad04a540b95*****", "taskStatus":"1" }
+```
+PUT /dataAnnotation/subTask/annotationUpdate/[annotationSubTaskId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"annotationSubTaskId":"ast-eaf458f4057ad04a540b95*****", "taskStatus":"1"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateAnnotationPromptTemplate
+`}`
+
+#### 4.2.17 CreateAnnotationPromptTemplate
 
 调用CreateAnnotationPromptTemplate创建标注任务模版。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
 
 **请求语法**
 
@@ -2798,7 +3196,7 @@ POST /dataAnnotation/promptTemplate/create HTTP/1.1
 | descriptio n | Strin g | Body | 否 | QAprompt模版生成QA使用 | prompt模版描述，描述长度为2~256个字符，不能以 http://和https:// 开头。 |
 | systemCo ntent | Strin g | Body | 否 | 你是一个有用的数据标注智能助手 | 系统指令。 |
 
-|  | 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2820,30 +3218,30 @@ POST /dataAnnotation/promptTemplate/create HTTP/1.1
 
 请求示例
 
-```json
-POST /dataAnnotation/promptTemplate/create HTTP/1.1 { "usageType":"0", "sourceType":"0", "annotationType":"1", "labelConfigType":"0", "name":"QAprompt模版",
+```
+POST /dataAnnotation/promptTemplate/create HTTP/1.1
 ```
 
-`"userContent":"`请根据给定的内容标注`1-3QA`对，返回为`json`格式。"
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"usageType":"0", "sourceType":"0", "annotationType":"1", "labelConfigType":"0", "name":"QAprompt模版",
+```
+
+`"userContent":"`请根据给定的内容标注`1-3QA`对，返回为`json`格式。`"` `}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{      \"draftId\": \"draft-575011c0045fd0*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListAnnotationPromptTemplate
+`}`
+
+#### 4.2.18 ListAnnotationPromptTemplate
 
 调用ListAnnotationPromptTemplate查询相关的标注Prompt模版列表。
 
@@ -2866,8 +3264,6 @@ GET /dataAnnotation/promptTemplate/list HTTP/1.1
 | usageTyp e | Integ er | Query | 是 | 0 | 设备使用性质，该参数必填，取值范围： 标注场景：0。 生成场景：1。 |
 | sourceTyp e | Integ er | Query | 是 | camera | 源类型，该参数必填，取值范围： 系统内置：0。 用户录入：1。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | annotatio nType | Integ er | Query | 是 | 1 | 标注类型，该参数必填，取值范围： 0：文本-分类。 1：文本-实体识别。 2：图片-描述。 3：图片-QA。 4：图片-分类。 5：图片-目标检测。 6：文本-QA。 |
@@ -2884,7 +3280,7 @@ GET /dataAnnotation/promptTemplate/list HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2902,8 +3298,6 @@ GET /dataAnnotation/promptTemplate/list HTTP/1.1
 | -sourceType | Integer | 0 | 模版类型： 0：系统内置。 1：用户录入。 |
 | - systemConten t | String | 你是一个根据文本可自动生成问答对的专家。 | 系统指令。 |
 | -usageType | Integer | 0 | 模版用途类型： 0：数据标注。 1：数据生成。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2924,12 +3318,15 @@ GET /dataAnnotation/promptTemplate/list HTTP/1.1
 GET /dataAnnotation/promptTemplate/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例智能体工厂 OpenTrek `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "gmtModified":"2026-02-27T06:00:18Z",
    "aliyunUid":"157123456789****",
    "annotationPromptTemplateId":"apt-textQA",
@@ -2945,15 +3342,14 @@ GET /dataAnnotation/promptTemplate/list HTTP/1.1
    "sourceType":0,
 ```
 
-`"userContent":"`【任务描述】请根据【待分析内容】生成1到3个问答对,在生成的问答对精准的情况下越多越好，整体不要超过3对，问题和答案必须严格符合给定的【待分析内容】中描述的事实。【待分析内容】${text}【输出结果参考】输出格式:\"{\"objects\": [{\"question\": \"中国的首都是？\",\"answer\": \"北京 \"},{\"question\": \"浙江的省会是？\",\"answer\": \"杭州\"}]}\" 特别注意: 注意一定要遵循输出结果格式为`JSON,`不要输出`markdown`格式！结果不要包含任何`JSON`格式之外的字符！`",` `"name":"`文本`QA`标注`",`
+`"userContent":"`【任务描述】请根据【待分析内容】生成`1`到`3`个问答对`,`在生成的问答对精准的情况下越多越好，整体不要超过`3`对，问题和答案必须严格符合给定的【待分析内容】中描述的事实。【待分析内容】${text}【输出结果参考】输出格式:\"{\"objects\": [{\"question\": \"中国的首都是？\",\"answer\": \"北京 \"},{\"question\": \"浙江的省会是？\",\"answer\": \"杭州\"}]}\" 特别注意`:` 注意一定要遵循输出结果格式为`JSON,`不要输出`markdown`格式！结果不要包含任何`JSON`格式之外的字符！`",` `"name":"`文本`QA`标注`",`
 
 ```json
    "id":1,
    "usageType":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -2964,12 +3360,15 @@ GET /dataAnnotation/promptTemplate/list HTTP/1.1
  "errorCode":"500",
  "totalCount":1,
  "httpCode":200
-}
 ```
 
-### 数据生成
+`}`
 
-#### CreateDataGenerationTask
+### 4.3 数据生成
+
+#### 4.3.1 CreateDataGenerationTask
+
+调用CreateDataGenerationTask创建数据生成任务。
 
 **请求头**
 
@@ -2982,8 +3381,6 @@ POST /dataGeneration/task/create HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3004,8 +3401,6 @@ POST /dataGeneration/task/create HTTP/1.1
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -3019,28 +3414,32 @@ POST /dataGeneration/task/create HTTP/1.1
 
 请求示例
 
-```json
-POST /dataGeneration/task/create HTTP/1.1 { "datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "datasetVersion":"v1", "objectType":"0", "generationType":"101" }
+```
+POST /dataGeneration/task/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"datasetId":"ds-3dc49fc087b3491cafa76b5d842****", "datasetVersion":"v1", "objectType":"0", "generationType":"101"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{      \"draftId\": \"draft-575011c0045fd0*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteDataGenerationTask
+`}`
 
-**请求头**
+#### 4.3.2 DeleteDataGenerationTask
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用DeleteDataGenerationTask删除指定数据生成任务。
 
 **请求语法**
 
@@ -3072,21 +3471,19 @@ DELETE /dataGeneration/task/delete/[generationTaskId] HTTP/1.1
 DELETE /dataGeneration/task/delete/[generationTaskId] HTTP/1.1 &generationTaskId=gt-sdysu6d***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.3.3 DeleteGenerationData
 
-#### DeleteGenerationData
+调用DeleteGenerationData删除指定的生成数据。
 
 **请求头**
 
@@ -3122,19 +3519,19 @@ DELETE /dataGeneration/data/delete/[dataId] HTTP/1.1
 DELETE /dataGeneration/data/delete/[dataId] HTTP/1.1 &dataId=gd-ddd7ysdy***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateDataGenerationTask
+`}`
+
+#### 4.3.4 UpdateDataGenerationTask
 
 调用UpdateDataGenerationTask修改数据生成任务的部分信息，包括数据生成任务名称和描述。
 
@@ -3163,8 +3560,6 @@ PUT /dataGeneration/task/update/[generationTaskId] HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -3176,24 +3571,32 @@ PUT /dataGeneration/task/update/[generationTaskId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataGeneration/task/update/[generationTaskId] HTTP/1.1 { "generationTaskId":"gt-fsu8fys8afs*****" }
+```
+PUT /dataGeneration/task/update/[generationTaskId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"generationTaskId":"gt-fsu8fys8afs*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateGenerationData
+`}`
+
+#### 4.3.5 UpdateGenerationData
+
+调用UpdateGenerationData修改指定生成数据结果。
 
 **请求头**
 
@@ -3206,8 +3609,6 @@ PUT /dataGeneration/data/update/[dataId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3229,26 +3630,32 @@ PUT /dataGeneration/data/update/[dataId] HTTP/1.1
 
 请求示例
 
-```json
-PUT /dataGeneration/data/update/[dataId] HTTP/1.1 { "dataId":"gtd-df9860cd0fc8*****" }
+```
+PUT /dataGeneration/data/update/[dataId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"dataId":"gtd-df9860cd0fc8*****"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### NoteBook建模
+`}`
 
-#### ModifyNotebookSSHAccess
+### 4.4 NoteBook建模
+
+#### 4.4.1 ModifyNotebookSSHAccess
 
 调用ModifyNotebookSSHAccess修改指定NotebookSSH访问。
 
@@ -3273,10 +3680,6 @@ PUT /notebook/modify-ssh HTTP/1.1
 | sshStatus | Boole an | Body | 否 | false | SSH状态。 |
 | sshPublicK ey | Strin g | Body | 否 | ssh-rsa AAAAB3NzaC1****** | SSH公钥。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -3290,22 +3693,24 @@ PUT /notebook/modify-ssh HTTP/1.1
 请求示例
 
 ```
-PUT /notebook/modify-ssh HTTP/1.1 { }
+PUT /notebook/modify-ssh HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyNotebookStatus
+`}`
+
+#### 4.4.2 ModifyNotebookStatus
+
+调用ModifyNotebookStatus修改Notebook建模状态。
 
 **请求头**
 
@@ -3318,8 +3723,6 @@ PUT /notebook/modify-status HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3339,27 +3742,27 @@ PUT /notebook/modify-status HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-PUT /notebook/modify-status HTTP/1.1 { "notebookId":"nb-05fec54408c6d0460c089de038c****", "notebookStatus":"true" }
+PUT /notebook/modify-status HTTP/1.1 "notebookId":"nb-05fec54408c6d0460c089de038c****", "notebookStatus":"true"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateNotebook
+`}`
+
+#### 4.4.3 CreateNotebook
+
+调用CreateNotebook创建Notebook建模实例。
 
 **请求头**
 
@@ -3378,8 +3781,6 @@ POST /notebook/create HTTP/1.1
 | notebook Name | Strin g | Body | 是 | notebook-name | Notebook名称，该参数必填，长度为2～64个字符， 必须以字母或中文开头，可包含数字、半角句号（.）、 下划线（ ）和短划线 _ （-）。 |
 | notebook Desc | Strin g | Body | 否 | notebook-desc | Notebook描述，描述长度为2~256个字符，不能以 http://和https:// 开头。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | notebookT ype | Integ er | Body | 否 | 1 | Notebook类型，取值范围： 1：jupyterlab。 2：vscode。 3： jupyterlab+vscode。 |
@@ -3397,7 +3798,7 @@ POST /notebook/create HTTP/1.1
 | sshStatus | Integ er | Body | 否 | 0 | SSH状态，取值范围： 0：禁用。 1：启用。 |
 | sshPublicK ey | Strin g | Body | 否 | ssh-rsa AAAAB3NzaC1****** | SSH公钥，当sshStatus值为1时，该参数不能为空。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | slbRegistr yId | Strin g | Body | 否 | lb-*** | SLB注册ID。 |
@@ -3410,8 +3811,6 @@ POST /notebook/create HTTP/1.1
 | storageMo untList | Json | Body | 否 | [{ "quotaId": "rq- d8890a98089c2041d80 86bb0b2e27****", "mountPath": "/root/", "storageSource": 1, "storagePath": "oss://****/****/" }] | 持久化存储设置。 |
 | nodeConfi gList | Json | Body | 否 | [] | 节点配置，可不填。 |
 | autoShutd ownStatus | Boole an | Body | 否 | 0 | 自动停止启用状态，取值范围： 0：未启用。 1：启用。 设置后，将在指定时间强行停止该实例，请谨慎设置。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3433,32 +3832,38 @@ POST /notebook/create HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-e87443ff0d37904e860a4e90b75fa****", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"3", "gpuCount":"0", "notebookAccount":"ad****" }
+POST /notebook/create HTTP/1.1 "notebookName":"notebook-name", "imageId":"img-e87443ff0d37904e860a4e90b75fa****", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"3", "gpuCount":"0", "notebookAccount":"ad****"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{     \"notebookId\": \"nb-****\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteNotebook
+`}`
+
+#### 4.4.4 DeleteNotebook
+
+调用DeleteNotebook删除指定的Notebook建模。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /notebook/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -3472,7 +3877,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -3485,22 +3890,24 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 请求示例
 
 ```
-&notebookId=nb-8c16aa9502e12042930bc750e7ec****
+DELETE /notebook/delete HTTP/1.1 &notebookId=nb-8c16aa9502e12042930bc750e7ec****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetNotebook
+`}`
+
+#### 4.4.5 GetNotebook
+
+调用GetNotebook查询指定notebook建模的详细信息。
 
 **请求头**
 
@@ -3508,9 +3915,11 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 
 **请求语法**
 
-**请求参数**
+```
+GET /notebook/get HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3535,7 +3944,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 | --mountPath | String | /testdata/ | 挂载路径。 |
 | -- datasetFileNa me | String | data.csv | 数据集文件名。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3559,7 +3968,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 | --pvcName | String | null | PVC名称。 |
 | - storageMountL ist | Array | [] | 持久化存储挂载列表。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- storageSource | Integer | 1 | 存储来源。 |
@@ -3581,7 +3990,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 | --gmtCreated | String | 2025-11- 13T08:10:12Z | 创建时间。 |
 | --gmtModified | String | 2025-11- 13T08:10:12Z | 修改时间。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3603,7 +4012,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 | -- imageAccelera tionType | Integer | 0 | 镜像加速类型。枚举值： 0 -IMAGE(普通镜像)， 1 -ACCELERATED IMAGE(加速镜 _ 像)。 |
 | --imageStatus | Integer | 1 | 镜像状态。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3626,7 +4035,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 | --storageId | String | ts- e42a****3204003 | 第三方存储ID。 |
 | --occupantId | String | nb- ff49****22304cae | 资源ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3665,27 +4074,25 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 | - notebookAcco unt | String | admin | Notebook登录账户。 |
 | -tensorboard | Boolean | false | 是否开启TensorBoard。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
-| 参数名称 | 类型 |  |  | 示例 | 说明 |  |  |
+| 参数名称 | 类型 |   |   | 示例 | 说明 |   |   |
 |---|---|---|---|---|---|---|---|
-| -endpoint | String |  |  | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Notebook访问Endpoint。 |  |  |
-| - vscodeEndpoi nt | String |  |  | https://10.*****.10 0/nb- 93a*****e804f43/c odeserver/ | VSCode访问Endpoint。 |  |  |
-| - jupyterEndpoi nt | String |  |  | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Jupyter访问Endpoint。 |  |  |
-| -accessType | Boolean |  |  | true | 访问类型。 |  |  |
-| -sshStatus | Boolean |  |  | true | SSH是否启用。 |  |  |
-| -sshPublicKey | String |  |  | ssh-rsa AAAA****Ts= | SSH公钥。 |  |  |
-| - sshClassicNet workAccess | Boolean |  |  | true | 是否启用SSH经典网络访问。 |  |  |
-| - sshClassicNet workAccessIp | String |  |  | 10.123.123.123 | 经典网络SSH访问IP。 |  |  |
-| - sshClassicNet workAccessPor t | Integer |  |  | 22 | 经典网络SSH访问端口。 |  |  |
-| - sshClassicNet workAccessSta tus | Boolean |  |  | true | 经典网络SSH访问健康检查状态。 |  |  |
-| -gpuType | Integer |  |  |  | GPU类型。枚举值： NO LIMIT -不限 _ 制， NVIDIA Ampere A100 80G NVLink _ _ _ _ -A100 80G， NVIDIA Ampere A800 80G NVLink _ _ _ _ -A800 80G， Hygon Kongming DCUK100 AI PCIE _ _ _ _ 64G -海光DCU K100 _ 64G， HUAWEI DaVinci Ascend910B1 - _ _ 华为昇腾 910B1， Baidu kunlun P800 OAM 96G - _ _ _ _ 百度昆仑P800 96G， PG1 A910E -PPU _ A910E， OTHER -其他。 |  |  |
-|  |  |  |  |  |  | Hygon Kongming DCUK100 AI PCIE _ _ _ _ |  |
-|  |  |  |  | NVIDIA Ampere A1 |  |  |  |
-|  |  | ger |  | _ _ 00 80G NVLink _ _ | 64G _ |  |  |
-
-智能体工厂 OpenTrek
+| -endpoint | String |   |   | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Notebook访问Endpoint。 |   |   |
+| - vscodeEndpoi nt | String |   |   | https://10.*****.10 0/nb- 93a*****e804f43/c odeserver/ | VSCode访问Endpoint。 |   |   |
+| - jupyterEndpoi nt | String |   |   | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Jupyter访问Endpoint。 |   |   |
+| -accessType | Boolean |   |   | true | 访问类型。 |   |   |
+| -sshStatus | Boolean |   |   | true | SSH是否启用。 |   |   |
+| -sshPublicKey | String |   |   | ssh-rsa AAAA****Ts= | SSH公钥。 |   |   |
+| - sshClassicNet workAccess | Boolean |   |   | true | 是否启用SSH经典网络访问。 |   |   |
+| - sshClassicNet workAccessIp | String |   |   | 10.123.123.123 | 经典网络SSH访问IP。 |   |   |
+| - sshClassicNet workAccessPor t | Integer |   |   | 22 | 经典网络SSH访问端口。 |   |   |
+| - sshClassicNet workAccessSta tus | Boolean |   |   | true | 经典网络SSH访问健康检查状态。 |   |   |
+| -gpuType | Integer |   |   |   | GPU类型。枚举值： NO LIMIT -不限 _ 制， NVIDIA Ampere A100 80G NVLink _ _ _ _ -A100 80G， NVIDIA Ampere A800 80G NVLink _ _ _ _ -A800 80G， Hygon Kongming DCUK100 AI PCIE _ _ _ _ 64G -海光DCU K100 _ 64G， HUAWEI DaVinci Ascend910B1 - _ _ 华为昇腾 910B1， Baidu kunlun P800 OAM 96G - _ _ _ _ 百度昆仑P800 96G， PG1 A910E -PPU _ A910E， OTHER -其他。 |   |   |
+|   |   |   |   |   |   | Hygon Kongming DCUK100 AI PCIE _ _ _ _ |   |
+|   |   |   |   | NVIDIA Ampere A1 |   |   |   |
+|   |   | ger |   | _ _ 00 80G NVLink _ _ | 64G _ |   |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3708,36 +4115,42 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
-&notebookId=nb-8c16aa9502e12042930bc750e7ec****
+GET /notebook/get HTTP/1.1 &notebookId=nb-8c16aa9502e12042930bc750e7ec****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "sshPublicKey":"",
   "notebookStatus":"",
   "storageMountList":[
-   {
+```
+
+`{`
+
+```json
     "mountPath":"",
     "pvcName":"",
     "storagePath":"",
     "storageSource":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gmtCreated":"",
   "sshStatus":"",
   "failedMsg":"",
   "modelMountList":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"",
     "dataAccInstance":"",
     "weightType":"",
@@ -3746,22 +4159,24 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
     "pvcName":"",
     "modelVersion":"",
     "modelType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "thirdpartyStorageMountList":[
-   {
+```
+
+`{`
+
+```json
     "mountPath":"",
     "storageSubPath":"",
     "occupantId":"",
     "storageId":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "sshClassicNetworkAccessIp":"",
@@ -3777,10 +4192,7 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
   "nodeConfigList":[
 ```
 
-智能体工厂 OpenTrek
-
 ```json
-   {
     "memCount":"",
     "sharedMemCount":"",
     "gpuMemCount":"",
@@ -3789,10 +4201,9 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
     "nodeType":"",
     "gpuCount":"",
     "cpuCount":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "instanceCost":{
@@ -3808,15 +4219,22 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
    "runningCpu":"",
    "totalCost":"",
    "totalGpu":""
-  },
-  "notebookEnvConfig":[
-   {
-    "code":"",
-    "value":""
-   }
 ```
 
-`],`
+`},`
+
+```json
+  "notebookEnvConfig":[
+```
+
+`{`
+
+```json
+    "code":"",
+    "value":""
+```
+
+`}` `],`
 
 ```json
   "quotaId":"",
@@ -3831,7 +4249,11 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
   "aliyunUid":"",
   "accessType":"",
   "imageExportList":[
-   {
+```
+
+`{`
+
+```json
     "imageVersion":"",
     "frameWork":"",
     "gmtModified":"",
@@ -3843,8 +4265,6 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
     "componentList":"",
     "imageRepo":"",
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "imageRepoTag":"",
@@ -3858,10 +4278,9 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
     "availableService":"",
     "imageAccelerationType":"",
     "exportId":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "endpoint":"",
@@ -3869,7 +4288,11 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
   "imageVersion":"",
   "gpuMemCount":"",
   "notebookServiceConfigList":[
-   {
+```
+
+`{`
+
+```json
     "vpcAccessPort":"",
     "classicNetworkAccess":"",
     "vpcAccess":"",
@@ -3879,10 +4302,9 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
     "targetPort":"",
     "classicNetworkAccessPort":"",
     "classicNetworkAccessIp":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gpuMemTotal":"",
@@ -3894,7 +4316,11 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
   "notebookId":"",
   "gpuMemTotalUnit":"",
   "datasetMountList":[
-   {
+```
+
+`{`
+
+```json
     "dataAccInstance":"",
     "datasetVersion":"",
     "mountPath":"",
@@ -3904,56 +4330,62 @@ POST /notebook/create HTTP/1.1 { "notebookName":"notebook-name", "imageId":"img-
     "datasetId":"",
     "datasetFileName":"",
     "datasetType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "codeMountList":[
-   {
     "codeId":"",
 ```
 
-"
+`"`
 
 ```
 tPth"""
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "mountPath":"",
     "pvcName":"",
     "codeName":"",
     "codeRepoType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "notebookType":"",
   "gpuCountUnit":"",
   "imageAccelerationType":"",
   "sshClassicNetworkAccessPort":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListNotebook
+`}`
+
+#### 4.4.6 ListNotebook
+
+调用ListNotebook查询所有的Notebook建模列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /notebook/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -3963,8 +4395,6 @@ tPth"""
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序。 DESC：降序。 ASC：升序。 默认值：DESC。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3976,11 +4406,11 @@ tPth"""
 | imageId | Strin g | Query | 否 | img-7f2c****5040f6 | 镜像ID。 |
 | imageNa me | Strin g | Query | 否 | nvidia-pytorch-jupyter | 镜像名称。 |
 
-|  | 1 |
+|   | 1 |
 |---|---|
-|  | 2 |
-|  | 3 |
-| 4 |  |
+|   | 2 |
+|   | 3 |
+| 4 |   |
 
 **返回数据**
 
@@ -3991,10 +4421,10 @@ tPth"""
 | - datasetMountL ist | Array | [] | 数据集挂载列表。 |
 | --datasetId | String | ds- c3de****0804b03 | 数据集ID。 |
 
-| 37 |  |  | > 文档版本：2026072 |
+| 37 |   |   | > 文档版本：2026072 |
 |---|---|---|---|
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4017,10 +4447,8 @@ tPth"""
 | -- dataAccInstan ce | String | da-xxxxxxxxx | 数据加速实例。 |
 | --weightType | Integer | 0 | 权重类型。 |
 
-| > 文档版本：20260 | 729 |  | 13 |
+| > 文档版本：20260 | 729 |   | 13 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4043,10 +4471,10 @@ tPth"""
 | -- sharedMemCo unt | Integer | 0 | 共享内存大小（GB）。 |
 | -- gpuMemCount | Integer | -1 | 显存大小（GB）。 |
 
-| 39 |  |  | > 文档版本：2026072 |
+| 39 |   |   | > 文档版本：2026072 |
 |---|---|---|---|
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4068,7 +4496,7 @@ tPth"""
 | -imageName | String | nvidia-pytorch- jupyter | 镜像名称。 |
 | -imageType | Integer | 0 | 镜像类型。枚举值： 0 -PUBLIC(公共镜像)， 1 -CUSTOM(自定义镜像)。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4090,32 +4518,30 @@ tPth"""
 | -endpoint | String | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Notebook访问Endpoint。 |
 | - vscodeEndpoi nt | String | https://10.*****.10 0/nb- 93a*****e804f43/c odeserver/ | VSCode访问Endpoint。 |
 
-| 41 |  |  | > 文档版本：2026072 |
+| 41 |   |   | > 文档版本：2026072 |
 |---|---|---|---|
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
-| 参数名称 | 类型 |  | 示例 | 说明 |  |  |
+| 参数名称 | 类型 |   | 示例 | 说明 |   |   |
 |---|---|---|---|---|---|---|
-| - jupyterEndpoi nt | String |  | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Jupyter访问Endpoint。 |  |  |
-| -accessType | Boolean |  | true | 访问类型。 |  |  |
-| -sshStatus | Boolean |  | true | SSH是否启用。 |  |  |
-| -gpuType | Integer |  |  | GPU类型。枚举值： NO LIMIT -不限制。 _ NVIDIA Ampere A100 80G NVLink - _ _ _ _ A100 80G。 NVIDIA Ampere A800 80G NVLink - _ _ _ _ A800 80G。 Hygon Kongming DCUK100 AI PCIE 64 _ _ _ _ _ G -海光DCU K100 64G。 HUAWEI DaVinci Ascend910B1 -***昇 _ _ 腾910B1。 Baidu kunlun P800 OAM 96G -***昆 _ _ _ _ 仑P800 96G。 PG1 A910E -PPU A910E。 _ OTHER -其他。 |  |  |
-|  |  |  |  |  | Hygon Kongming DCUK100 AI PCIE 64 _ _ _ _ _ |  |
-|  |  | ger | NVIDIA Ampere A1 _ _ 00 80G NVLink _ _ |  |  |  |
-| - autoShutdown Status | Boolean |  | false | 是否启用定时关机。 |  |  |
-| - autoShutdown Time | String |  | 2026-03- 05T10:00:00Z | 定时关机时间。 |  |  |
-| - startCommand | String |  | sleep 100 | 初始化命令。 |  |  |
-| -instanceCost | Struct |  | {} | 实例费用信息。 |  |  |
-| --runningCost | Float |  | 0.00 | 运行中费用。 |  |  |
-| --runningPod | Float |  | 0 | 运行中Pod数。 |  |  |
-| --runningCpu | Float |  | 0 | 运行中CPU数。 |  |  |
+| - jupyterEndpoi nt | String |   | https://10.*****.10 0/nb- 93a*****e804f43/ju pyter/ | Jupyter访问Endpoint。 |   |   |
+| -accessType | Boolean |   | true | 访问类型。 |   |   |
+| -sshStatus | Boolean |   | true | SSH是否启用。 |   |   |
+| -gpuType | Integer |   |   | GPU类型。枚举值： NO LIMIT -不限制。 _ NVIDIA Ampere A100 80G NVLink - _ _ _ _ A100 80G。 NVIDIA Ampere A800 80G NVLink - _ _ _ _ A800 80G。 Hygon Kongming DCUK100 AI PCIE 64 _ _ _ _ _ G -海光DCU K100 64G。 HUAWEI DaVinci Ascend910B1 -***昇 _ _ 腾910B1。 Baidu kunlun P800 OAM 96G -***昆 _ _ _ _ 仑P800 96G。 PG1 A910E -PPU A910E。 _ OTHER -其他。 |   |   |
+|   |   |   |   |   | Hygon Kongming DCUK100 AI PCIE 64 _ _ _ _ _ |   |
+|   |   | ger | NVIDIA Ampere A1 _ _ 00 80G NVLink _ _ |   |   |   |
+| - autoShutdown Status | Boolean |   | false | 是否启用定时关机。 |   |   |
+| - autoShutdown Time | String |   | 2026-03- 05T10:00:00Z | 定时关机时间。 |   |   |
+| - startCommand | String |   | sleep 100 | 初始化命令。 |   |   |
+| -instanceCost | Struct |   | {} | 实例费用信息。 |   |   |
+| --runningCost | Float |   | 0.00 | 运行中费用。 |   |   |
+| --runningPod | Float |   | 0 | 运行中Pod数。 |   |   |
+| --runningCpu | Float |   | 0 | 运行中CPU数。 |   |   |
 
-| > 文档版本：20260 | 729 |  | 14 |
+| > 文档版本：20260 | 729 |   | 14 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4136,27 +4562,37 @@ tPth"""
 | pageSize | Integer | 10 | 每页行数。 |
 | pageIndex | Integer | 1 | notebook建模的页码。 |
 
-**示例**
+请求示例
 
-请求示例智能体工厂 OpenTrek &公共请求参数正常返回示例 `JSON` 格式
+```
+GET /notebook/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "gmtModified":"",
    "notebookStatus":"",
    "quotaName":"",
    "storageMountList":[
-    {
+```
+
+`{`
+
+```json
      "mountPath":"",
      "pvcName":"",
      "storagePath":"",
      "storageSource":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gmtCreated":"",
@@ -4164,7 +4600,11 @@ tPth"""
    "sshStatus":"",
    "failedMsg":"",
    "modelMountList":[
-    {
+```
+
+`{`
+
+```json
      "modelName":"",
      "dataAccInstance":"",
      "weightType":"",
@@ -4173,10 +4613,9 @@ tPth"""
      "pvcName":"",
      "modelVersion":"",
      "modelType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "accessType":"",
@@ -4192,13 +4631,15 @@ tPth"""
    "imageId":"",
    "imageName":"",
    "nodeConfigList":[
-    {
+```
+
+`{`
+
+```json
      "memCount":"",
      "sharedMemCount":"",
      "gpuMemCount":"",
 ```
-
-智能体工厂 OpenTrek
 
 ```json
      "nodeCount":"",
@@ -4206,15 +4647,18 @@ tPth"""
      "nodeType":"",
      "gpuCount":"",
      "cpuCount":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gpuMemCount":"",
    "instanceCost":[
-    {
+```
+
+`{`
+
+```json
      "runningPod":"",
      "runningMem":"",
      "runningGpuMem":"",
@@ -4227,10 +4671,9 @@ tPth"""
      "runningCpu":"",
      "totalCost":"",
      "totalGpu":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "quotaId":"",
@@ -4245,7 +4688,11 @@ tPth"""
    "notebookId":"",
    "gpuMemTotalUnit":"",
    "datasetMountList":[
-    {
+```
+
+`{`
+
+```json
      "dataAccInstance":"",
      "datasetVersion":"",
      "mountPath":"",
@@ -4255,27 +4702,22 @@ tPth"""
      "datasetId":"",
      "datasetFileName":"",
      "datasetType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "notebookDesc":"",
    "autoShutdownStatus":"",
    "codeMountList":[
-    {
      "codeId":"",
      "mountPath":"",
 ```
-
-智能体工厂 OpenTrek
 
 ```json
      "pvcName":"",
      "codeName":"",
      "codeRepoType":""
-    }
 ```
 
 `],`
@@ -4285,10 +4727,9 @@ tPth"""
    "notebookName":"",
    "gpuCountUnit":"",
    "imageAccelerationType":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -4299,10 +4740,11 @@ tPth"""
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ModifyNotebook
+`}`
+
+#### 4.4.7 ModifyNotebook
 
 调用ModifyNotebook修改指定notebook建模的部分信息，包括notebook名称和描述。
 
@@ -4324,10 +4766,6 @@ PUT /notebook/modify HTTP/1.1
 | notebook Name | Strin g | Body | 是 | notebook-name | notebook建模名称，该参数必填，长度为2～64个字符，必须以字母或中文开头，可包含数字、半角句号 （.）、下划线（ ）和短划 _ 线（-）。 |
 | notebook Desc | Strin g | Body | 否 | notebook-desc | notebook建模描述，描述长度为2~256个字符，不能以http://和https:// 开头。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -4340,23 +4778,31 @@ PUT /notebook/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /notebook/modify HTTP/1.1 { "notebookId":" nb-05fec54408c6d0460c089de038cs2j3****", "notebookName":"notebook-name" }
+```
+PUT /notebook/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"notebookId":" nb-05fec54408c6d0460c089de038cs2j3****", "notebookName":"notebook-name"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyNotebookSpec
+`}`
+
+#### 4.4.8 ModifyNotebookSpec
+
+调用ModifyNotebookSpec修改指定notebook的配额信息。
 
 **请求头**
 
@@ -4367,8 +4813,6 @@ PUT /notebook/modify HTTP/1.1 { "notebookId":" nb-05fec54408c6d0460c089de038cs2j
 ```
 PUT /notebook/modify-spec HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -4389,8 +4833,6 @@ PUT /notebook/modify-spec HTTP/1.1
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -4401,23 +4843,31 @@ PUT /notebook/modify-spec HTTP/1.1
 
 请求示例
 
-```json
-PUT /notebook/modify-spec HTTP/1.1 { "notebookId":" nb-05fec54408c6d0460c089de038cc****", "cpuCount":"1", "memCount":"1", "gpuCount":"1" }
+```
+PUT /notebook/modify-spec HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"notebookId":" nb-05fec54408c6d0460c089de038cc****", "cpuCount":"1", "memCount":"1", "gpuCount":"1"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyNotebookUser
+`}`
+
+#### 4.4.9 ModifyNotebookUser
+
+调用ModifyNotebookUser修改指定notebook的用户信息。
 
 **请求头**
 
@@ -4433,8 +4883,6 @@ PUT /notebook/modify-user HTTP/1.1
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4457,23 +4905,29 @@ PUT /notebook/modify-user HTTP/1.1
 
 请求示例
 
-```json
-PUT /notebook/modify-user HTTP/1.1 { "notebookId":"nb-7ea900eb04207041a5090d10b7*****", "notebookAccount":"ad****", "oldPassword":"*******", "notebookPassword":"*******" }
+```
+PUT /notebook/modify-user HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"notebookId":"nb-7ea900eb04207041a5090d10b7*****", "notebookAccount":"ad****", "oldPassword":"*******", "notebookPassword":"*******"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateNotebookImageExportTask
+`}`
+
+#### 4.4.10 CreateNotebookImageExportTask
 
 调用CreateNotebookImageExportTask创建导出notebook镜像任务。
 
@@ -4499,8 +4953,6 @@ POST /notebook/export-image HTTP/1.1
 | imageNa mespace | Strin g | Body | 是 | test | ACR镜像命名空间，该参数必填。 |
 | imageRep o | Strin g | Body | 是 | test | 镜像仓库，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | imageRep oTag | Strin g | Body | 是 | v1 | 镜像仓库Tag，该参数必填。 |
@@ -4511,7 +4963,7 @@ POST /notebook/export-image HTTP/1.1
 | imageStat us | Integ er | Body | 否 | 1 | 镜像状态，取值范围： 0：转换中。 1：正常。 2：转换失败。 3：未知状态。 4：等待中。 |
 | gpuDriver | Strin g | Body | 否 | CUDA v1 _ | AI计算工具包。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4535,24 +4987,30 @@ POST /notebook/export-image HTTP/1.1
 
 请求示例
 
-```json
-POST /notebook/export-image HTTP/1.1 { "notebookId":"nb-8c16aa9502e12042930bc750e7ec****", "imageName":"image-name", "imageVersion":"v1", "imageNamespace":"test", "imageRepo":"test", "imageRepoTag":"v1" }
+```
+POST /notebook/export-image HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"notebookId":"nb-8c16aa9502e12042930bc750e7ec****", "imageName":"image-name", "imageVersion":"v1", "imageNamespace":"test", "imageRepo":"test", "imageRepoTag":"v1"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{      \"exportId\": \"ei-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyNotebookAutoShutdown
+`}`
+
+#### 4.4.11 ModifyNotebookAutoShutdown
 
 调用ModifyNotebookAutoShutdown修改Notebook实例自动停止。
 
@@ -4583,7 +5041,7 @@ PUT /notebook/modify-auto-shutdown HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | httpCode | Integer | 200 | HTTP状态码。 |
@@ -4592,23 +5050,29 @@ PUT /notebook/modify-auto-shutdown HTTP/1.1
 
 请求示例
 
-```json
-PUT /notebook/modify-auto-shutdown HTTP/1.1 { "notebookId":"nb-596e******" }
+```
+PUT /notebook/modify-auto-shutdown HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"notebookId":"nb-596e******"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyNotebookServiceConfig
+`}`
+
+#### 4.4.12 ModifyNotebookServiceConfig
 
 调用ModifyNotebookServiceConfig修改Notebook自定义服务配置。
 
@@ -4628,8 +5092,6 @@ PUT /notebook/modify-service-config HTTP/1.1
 |---|---|---|---|---|---|
 | notebookI d | Strin g | Body | 是 | nb-8c16aa97ec**** | Notebook建模ID，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | notebookS erviceCon fig | Json | Body | 否 | [ { "serviceName": "service-demo1", "targetPort": 9000, "vpcAccess": true, "classicNetworkAccess": false, "servicePort": 9003 }, { "serviceName": "service- demo2", "targetPort": 9000, "vpcAccess": false, "classicNetworkAccess": true, "servicePort": 9005 } ] | 自定义服务的名称、监听端口、访问端口、网络访问类型。 |
@@ -4648,23 +5110,29 @@ PUT /notebook/modify-service-config HTTP/1.1
 
 请求示例
 
-```json
-PUT /notebook/modify-service-config HTTP/1.1 { "notebookId":"nb-8c16aa97ec****" }
+```
+PUT /notebook/modify-service-config HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"notebookId":"nb-8c16aa97ec****"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ResetNotebookUserPassword
+`}`
+
+#### 4.4.13 ResetNotebookUserPassword
 
 调用ResetNotebookUserPassword重置Notebook用户密码。
 
@@ -4695,7 +5163,7 @@ PUT /notebook/reset-user-password HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | httpCode | Integer | 200 | HTTP状态码。 |
@@ -4704,25 +5172,33 @@ PUT /notebook/reset-user-password HTTP/1.1
 
 请求示例
 
-```json
-PUT /notebook/reset-user-password HTTP/1.1 { "notebookId":"nb-8c16750e7ec****", "notebookAccount":"ad****", "notebookPassword":"note*****" }
+```
+PUT /notebook/reset-user-password HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"notebookId":"nb-8c16750e7ec****", "notebookAccount":"ad****", "notebookPassword":"note*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 任务建模
+`}`
 
-#### ModifyTask
+### 4.5 任务建模
+
+#### 4.5.1 ModifyTask
+
+调用ModifyTask修改指定任务的部分信息，包括任务名称和描述。
 
 **请求头**
 
@@ -4739,8 +5215,6 @@ PUT /task/modify HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | taskId | Strin g | Body | 是 | tk- be1b6a1201b4004c5c0b be10c855**** | 任务ID，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4762,25 +5236,27 @@ PUT /task/modify HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /task/modify HTTP/1.1 { "taskId":"tk-be1b6a1201b4004c5c0bbe10c855****", "taskName":"task-name" }
+PUT /task/modify HTTP/1.1 "taskId":"tk-be1b6a1201b4004c5c0bbe10c855****", "taskName":"task-name"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyTaskStatus
+`}`
+
+#### 4.5.2 ModifyTaskStatus
+
+调用ModifyTaskStatus修改指定任务状态。
 
 **请求头**
 
@@ -4799,8 +5275,6 @@ PUT /task/modify-status HTTP/1.1
 | taskId | Strin g | Body | 是 | tk- 3fa6425c0534704b3609 bd80e4c9**** | 任务ID，该参数必填。 |
 | taskStatus | Boole an | Body | 是 | true | 任务状态，该参数必填，取值范围： true：重启。 false：停止。 |
 | restartTyp e | Strin g | Body | 否 | direct | 重启类型，若taskStatus值为true时，该参数不能为空，取值范围： direct：直接重启。 ckpt：从ckpt重启。 默认值：direct。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4823,16 +5297,24 @@ PUT /task/modify-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /task/modify-status HTTP/1.1 { "taskId":"tk-3fa6425c0534704b3609bd80e4c9****", "taskStatus":"true" }
+```
+PUT /task/modify-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
-|  | { "success":true, "dynamicMessages":"-", "errorMessage":"", "errorCode":"500", "httpCode":200 } |  |
+```json
+"taskId":"tk-3fa6425c0534704b3609bd80e4c9****", "taskStatus":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+|   | { "success":true, "dynamicMessages":"-", "errorMessage":"", "errorCode":"500", "httpCode":200 } |   |
 |---|---|---|
 
-#### CreateTask
+#### 4.5.3 CreateTask
+
+调用CreateTask创建任务建模。
 
 **请求头**
 
@@ -4855,8 +5337,6 @@ POST /task/create HTTP/1.1
 | quotaId | Strin g | Body | 是 | rq- d8890a98089c2041d80 86bb0b2e27**** | 资源配额ID，该参数必填。 |
 | taskType | Integ er | Body | 是 | 0 | 任务类型，该参数必填，取值范围： 0：任务建模。 1：模型评测。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | sourceTyp e | Integ er | Body | 否 | 0 | 创建方式，取值范围： 0：自定义配置。 1：套件配置。 |
@@ -4868,7 +5348,7 @@ POST /task/create HTTP/1.1
 | trainType | Integ er | Body | 否 | 0 | 训练类型，取值范围： 0：单机训练。 1：分布式训练。 默认值：0。 |
 | startCom mand | Strin g | Body | 否 | python3 main.py | 启动命令，创建方式为套件配置时，该参数不能为空。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4881,8 +5361,6 @@ POST /task/create HTTP/1.1
 | storageMo untList | Json | Body | 否 | [{ "mountPath": "/root/", "storagePath": "oss://****/****", "storageSource": 1, "quotaId": "rq- d8890a98089c2041d80 86bb0b2e2****" }] | 持久化存储设置。 |
 | nodeConfi gList | Json | Body | 是 | [{ "memCount": 1, "nodeCount": 1, "nodeType": 2, "gpuCount": 0, "cpuCount": 1 }] | 任务资源配置，该参数必填。 |
 | thirdparty StorageLis t | Json | Body | 否 | [ { "storageId":"******", "storageSubPath":"/aistu dio/third/***", "mountPath":"/kea/traini ng/****" } ] | 第三方存储列表。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4902,34 +5380,34 @@ POST /task/create HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "taskType":"0", "frameWork":"1", "nodeConfigList":"[{
+POST /task/create HTTP/1.1 "taskName":"task-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "taskType":"0", "frameWork":"1", "nodeConfigList":"[{
  "memCount": 1,
  "nodeCount": 1,
  "nodeType": 2,
  "gpuCount": 0,
  "cpuCount": 1
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{     \"taskId\": \"tk-****\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteTask
+`}`
+
+#### 4.5.4 DeleteTask
+
+调用DeleteTask删除指定的任务。
 
 **请求头**
 
@@ -4937,15 +5415,15 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 
 **请求语法**
 
+```
+DELETE /task/delete HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | taskId | Strin g | Query | 是 | tk- 522aaaab085c004d600 85360b1c2fs9**** | 任务ID。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4960,22 +5438,24 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 请求示例
 
 ```
-&taskId=tk-522aaaab085c004d60085360b1c2fs9****
+DELETE /task/delete HTTP/1.1 &taskId=tk-522aaaab085c004d60085360b1c2fs9****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetTask
+`}`
+
+#### 4.5.5 GetTask
+
+调用GetTask查询指定任务建模的详细信息。
 
 **请求头**
 
@@ -4983,9 +5463,11 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 
 **请求语法**
 
-**请求参数**
+```
+GET /task/get HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5008,7 +5490,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | --mountPath | String | /tmp | 容器挂载路径。 |
 | - datasetMountL ist | Array | [{ "datasetId": "ds- 5740734ff2cf4a00 bc6da*****", "mountPath": "/data" }] | 数据集配置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5026,8 +5508,6 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -- modelVersion | String | v1 | 模型仓库版本号。 |
 | --mountPath | String | /tmp | 容器挂载路径。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - nodeConfigList | Array | [{ "memCount": 0, "nodeCount": 1, " id": _ "wUSP459HLrZZrD WsARAI", "gpuCount": 0, "cpuCount": 1, "quotaCount": { "task": 0, "cpu": 0, "cpuMax": 0, "mem": 0, "memMax": 0, "gpu": 0, "gpuMax": 0 } }] | 节点配置。 |
@@ -5044,7 +5524,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -- storageSource | Integer | 1 | 存储类型，取值范围： 0：LOCAL。 1：OSS。 |
 | -aliyunUid | String | 157123456789**** | 实例所属的阿里云账户ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5066,7 +5546,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | - imageAccelera tionType | Integer | 0 | 镜像加速类型，取值范围： 0：容器镜像。 1：加速镜像。 默认值：0。 |
 | -imageId | String | img- 05cefd0be2exxxx | 镜像ID。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5102,8 +5582,6 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -- enableFaultTol erant | Boolean | true | 启用容错机制，允许系统在部分组件失败时继续运行并自动恢复 |
 | -- enableHealthC heck | Boolean | true | 启用健康检查功能，用于定期检测服务实例的运行状态以确保高可用性。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --faultStrategy | String | OnFailure | 容错策略。 |
@@ -5136,41 +5614,46 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 请求示例
 
 ```
-&taskId=tk-522aaaab085c004d60085360b1c2fs9****
+GET /task/get HTTP/1.1 &taskId=tk-522aaaab085c004d60085360b1c2fs9****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "gmtModified":"\"2026-03-04T07:55:56Z\"",
   "quotaName":"name",
   "storageMountList":[
-   {
+```
+
+`{`
+
+```json
     "mountPath":"/tmp",
     "storagePath":"oss://****.oss-****/****/",
     "storageSource":1
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "aliyunUid":"157123456789****",
   "gmtCreated":"\"2026-03-04T07:55:56Z\"",
   "trainType":0,
   "modelMountList":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"name",
     "mountPath":"/tmp",
     "modelId":"“md-rbvg5wzljz****ks92”",
     "modelVersion":"v1",
     "modelType":0
-   }
 ```
 
-智能体工厂 OpenTrek `],`
+`],`
 
 ```json
   "taskType":0,
@@ -5190,7 +5673,11 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
   "imageId":"img-05cefd0be2exxxx",
   "imageName":"testImageName",
   "nodeConfigList":[
-   {
+```
+
+`{`
+
+```json
     "memCount":1,
     "sharedMemCount":4,
     "gpuMemCount":0,
@@ -5198,10 +5685,9 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
     "nodeType":0,
     "gpuCount":1,
     "cpuCount":16
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gpuMemCount":0,
@@ -5218,7 +5704,11 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "runningCpu":0,
    "totalCost":150.75,
    "totalGpu":10
-  },
+```
+
+`},`
+
+```json
   "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****",
   "gpuMemTotal":16384,
   "startCommand":"python3 main.py",
@@ -5230,35 +5720,33 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
   "regionId":"cn-hangzhou",
   "sourceType":1,
   "datasetMountList":[
-{
 ```
 
-智能体工厂 OpenTrek
-
 ```json
-   {
     "datasetVersion":"v1",
     "mountPath":"/tmp",
     "dataType":0,
     "datasetName":"name",
     "datasetId":"\"ds-5740734ff2cf4a00bc6da*****\"",
     "datasetType":0
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "codeMountList":[
-   {
+```
+
+`{`
+
+```json
     "codeId":"\"cd-f1bb797e0cef2046ec0bcad0d3682****\"",
     "mountPath":"/tmp",
     "codeName":"name",
     "codeRepoType":1
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gpuCountUnit":1,
@@ -5276,29 +5764,44 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "ckptMountPath":"/mnt/checkpoints",
    "restartType":"direct",
    "enableCkpt":true
-  },
+```
+
+`},`
+
+```json
   "taskConfig":{
    "envs":"[{\"name\":\"x\",\"value\":\"y\"},{\"name\":\"x2\",\"value\":\"y2\"}]"
-  },
+```
+
+`},`
+
+```json
   "imageAccelerationType":0,
   "taskId":"tk-000000000001",
   "isSchedule":false
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListTask
+`}`
 
-**请求头**
+#### 4.5.6 ListTask
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用ListTask查询所有的任务列表。
 
 **请求语法**
+
+```
+GET /task/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -5312,8 +5815,6 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | taskName | Strin g | Query | 否 | task-name | 任务名称。 |
 | taskStatus | Integ er | Query | 否 | 0 | 任务状态，取值范围： 0：已创建。 1：启动中。 2：运行中。 3：已停止。 4：失败。 5：完成。 |
 | frameWor k | Integ er | Query | 否 | 1 | 模型框架，取值范围： 1：Tensorflow。 2：PyTorch。 10：DeepSpeed。 11：Megatron。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5337,7 +5838,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | --codeName | String | name | 代码名称。 |
 | -- codeRepoType | Integer | 1 | 代码仓库类型。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5357,7 +5858,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -- modelVersion | String | v1 | 模型仓库版本号。 |
 | --mountPath | String | /tmp | 容器挂载路径。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5376,7 +5877,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -- storageSource | Integer | 1 | 存储类型，取值范围： 0：LOCAL。 1：OSS。 |
 | -aliyunUid | String | 157123456789**** | 实例所属的阿里云账户ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5397,8 +5898,6 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -gpuType | Integer | 1 | GPU显卡类型。 |
 | - imageAccelera tionType | Integer | 0 | 镜像加速类型，取值范围： 0：容器镜像。 1：加速镜像。 默认值：0。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -imageId | String | img- 05cefd0be2exxxx | 镜像ID。 |
@@ -5418,7 +5917,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | - startCommand | String | python3 main.py | 启动命令。 |
 | -taskId | String | tk-000000000001 | 任务ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5440,7 +5939,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | --totalGpu | Integer | 10 | 配额总数（GPU）。 |
 | --totalGpuMem | Integer | 10 | 显存使用总量。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --totalMem | Integer | 10 | 内存使用总量。 |
@@ -5455,20 +5954,32 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /task/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "gmtModified":"",
    "quotaName":"",
    "storageMountList":[
-    {
+```
+
+`{`
+
+```json
      "mountPath":"",
      "storagePath":"",
      "storageSource":""
-    }
 ```
 
 `],`
@@ -5477,22 +5988,18 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "aliyunUid":"",
 ```
 
-智能体工厂 OpenTrek
-
 ```json
    "gmtCreated":"",
    "trainType":"",
    "modelMountList":[
-    {
      "modelName":"",
      "mountPath":"",
      "modelId":"",
      "modelVersion":"",
      "modelType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "taskType":"",
@@ -5512,7 +6019,11 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "imageId":"",
    "imageName":"",
    "nodeConfigList":[
-    {
+```
+
+`{`
+
+```json
      "memCount":"",
      "sharedMemCount":"",
      "gpuMemCount":"",
@@ -5520,15 +6031,18 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
      "nodeType":"",
      "gpuCount":"",
      "cpuCount":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gpuMemCount":"",
    "instanceCost":[
-    {
+```
+
+`{`
+
+```json
      "runningGpuMem":"",
      "runningMem":"",
      "runningPod":"",
@@ -5541,10 +6055,9 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
      "runningCpu":"",
      "totalCost":"",
      "totalGpu":""
-    }
 ```
 
-] 智能体工厂 OpenTrek `],`
+`]` `],`
 
 ```json
    "quotaId":"",
@@ -5558,29 +6071,35 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "regionId":"",
    "sourceType":"",
    "datasetMountList":[
-    {
+```
+
+`{`
+
+```json
      "datasetVersion":"",
      "mountPath":"",
      "dataType":"",
      "datasetName":"",
      "datasetId":"",
      "datasetType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "codeMountList":[
-    {
+```
+
+`{`
+
+```json
      "codeId":"",
      "mountPath":"",
      "codeName":"",
      "codeRepoType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gpuCountUnit":"",
@@ -5588,10 +6107,9 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "imageAccelerationType":"",
    "taskId":"",
    "isSchedule":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -5602,16 +6120,19 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ListCheckpoint
+`}`
 
-**请求头**
+#### 4.5.7 ListCheckpoint
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用ListCheckpoint查询任务的所有检查点列表。
 
 **请求语法**
+
+```
+GET /task/checkpoint/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -5635,7 +6156,7 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| AI Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| AI Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5647,25 +6168,27 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 请求示例
 
 ```
-&taskId=tk-024db1d30738104a3d0820105f2****
+GET /task/checkpoint/list HTTP/1.1 &taskId=tk-024db1d30738104a3d0820105f2****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "checkPointStoragePath":"",
    "checkPointId":"",
    "checkPointSize":"",
    "checkPointPath":"",
    "checkPointTime":"",
    "checkPointName":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -5673,10 +6196,11 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### FaultTolerantLogPageList
+`}`
+
+#### 4.5.8 FaultTolerantLogPageList
 
 调用FaultTolerantLogPageLis查询所有的容错记录&事件分页列表。
 
@@ -5686,12 +6210,14 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 
 **请求语法**
 
+```
+GET /task/fault/tolerant/log/page/list HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5715,8 +6241,6 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 | -aistudioRunId | String | feca8d72-3a53- 4ab3-9d25- 0dbd4f43xxxx | AI Studio运行ID。 |
 | - aistudioTaskId | String | tk- 1234567890abxxx x | AI Studio任务ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -errorMsg | String | error | 错误信息。 |
@@ -5739,25 +6263,31 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 请求示例
 
 ```
-&taskId=tk-024db1d30738104a3d0820105f2**** &eventType=FaultTolerant
+GET /task/fault/tolerant/log/page/list HTTP/1.1 &taskId=tk-024db1d30738104a3d0820105f2**** &eventType=FaultTolerant
 ```
 
-&公共请求参数智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "eventCode":"MasterStart",
    "detailList":[
-    {
+```
+
+`{`
+
+```json
      "code":"exit_code",
      "label":"Exit Code",
      "value":"0"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "instanceType":"master",
@@ -5768,10 +6298,9 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
    "eventType":"Instance Event",
    "aistudioRunId":"feca8d72-3a53-4ab3-9d25-0dbd4f43xxxx",
    "errorMsg":"error"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -5782,10 +6311,13 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### GetCpfs
+`}`
+
+#### 4.5.9 GetCpfs
+
+调用GetCpfs查询cpfs文件系统信息。
 
 **请求头**
 
@@ -5793,15 +6325,15 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 
 **请求语法**
 
+```
+GET /task/cpfs/get HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | bmcpClust erId | Strin g | Query | 是 | ack-YoZjG***** | bmcp集群ID。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5819,30 +6351,32 @@ POST /task/create HTTP/1.1 { "taskName":"task-name", "quotaId":"rq-d8890a98089c2
 请求示例
 
 ```
-&bmcpClusterId=ack-YoZjG*****
+GET /task/cpfs/get HTTP/1.1 &bmcpClusterId=ack-YoZjG*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "mountedFs":"",
   "mountDir":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.5.10 任务诊断
 
-#### 任务诊断
+##### 4.5.10.1 GetTaskDiagnosticsDetail
 
-##### GetTaskDiagnosticsDetail
+调用GetTaskDiagnosticsDetail查询指定任务诊断详情信息。
 
 **请求头**
 
@@ -5872,8 +6406,6 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1
 | - diagnoseItem Name | String | DEPLOYMENT CHE _ CK ITEM _ | 诊断项 |
 | - diagnoseItemS tate | Integer | 0 | 诊断状态 0-正常 1-异常 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - diagnoseItemS uggestions | String | "" | 诊断项建议 |
@@ -5892,28 +6424,28 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1
 GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":" -",
  "success":false,
  "dynamicMessages":" -",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### TaskDiagnose
+`}`
 
-智能体工厂 OpenTrek
+##### 4.5.10.2 TaskDiagnose
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用TaskDiagnose进行任务诊断。
 
 **请求语法**
+
+```
+GET /diagnose/taskDiagnose HTTP/1.1
+```
 
 **请求参数**
 
@@ -5930,7 +6462,7 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | Array | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5951,7 +6483,7 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误码。 |
 
-| OpenTr | ek |  | AI Studio ·API |
+| OpenTr | ek |   | AI Studio ·API |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5963,26 +6495,32 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 请求示例
 
 ```
-&resourceId=bi-46085f2a0778f0433909623080d***** &resourceType=NOTE_BOOK_MODELING &diagnoseItem=POD
+GET /diagnose/taskDiagnose HTTP/1.1 &resourceId=bi-46085f2a0778f0433909623080d***** &resourceType=NOTE_BOOK_MODELING &diagnoseItem=POD
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "resourceDetails":[
-    {
+```
+
+`{`
+
+```json
      "diagnoseItemState":"\"\"",
      "constantConfig":"\"\"",
      "logMessage":"{}",
      "diagnoseItemDes":"\"\"",
      "codeErrorMsg":"\"\""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "constantConfig":"\"\"",
@@ -5991,10 +6529,9 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
    "finalDiagnoseState":"\"\"",
    "diagnoseTime":"1662307202400",
    "taskStatus":"\"\""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -6002,16 +6539,19 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListTaskDiagnoseConfig
+`}`
 
-**请求头**
+##### 4.5.10.3 ListTaskDiagnoseConfig
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用ListTaskDiagnoseConfig查询任务所有的诊断配置。
 
 **请求语法**
+
+```
+GET /diagnose/queryTaskDiagnoseConfig HTTP/1.1
+```
 
 **请求参数**
 
@@ -6032,7 +6572,7 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6045,23 +6585,25 @@ GET /diagnose/taskDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 请求示例
 
 ```
-&resourceId=nb-1051072203c8404885 &resourceType=NOTE_BOOK_MODELING
+GET /diagnose/queryTaskDiagnoseConfig HTTP/1.1 &resourceId=nb-1051072203c8404885 &resourceType=NOTE_BOOK_MODELING
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPodDiagnosticsDetail
+`}`
+
+##### 4.5.10.4 GetPodDiagnosticsDetail
+
+调用GetPodDiagnosticsDetail查询指定Pod诊断详情信息。
 
 **请求头**
 
@@ -6081,10 +6623,6 @@ GET /diagnose/podDiagnosticsDetail HTTP/1.1
 | podName | Strin g | Path | 否 | tk-1******** | pod名称。 |
 | nodeNam e | Strin g | Path | 否 | i-d***** | 节点名称。 |
 
-智能体工厂 OpenTrek
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -6101,7 +6639,7 @@ GET /diagnose/podDiagnosticsDetail HTTP/1.1
 | ---errorType | String | node cpu core thr _ _ _ ottles total _ | 错误码 |
 | ---link | String | http://xxxxx | 工单链接 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6127,20 +6665,22 @@ GET /diagnose/podDiagnosticsDetail HTTP/1.1
 GET /diagnose/podDiagnosticsDetail HTTP/1.1 &jobId=d7d*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"\t-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListDiagnostics
+`}`
+
+##### 4.5.10.5 ListDiagnostics
+
+调用ListDiagnostics查询诊断列表。
 
 **请求头**
 
@@ -6170,7 +6710,7 @@ GET /diagnose/list HTTP/1.1
 | - bmcpClusterId | String | ack-YoZjGQ**** | BMCP集群ID，该参数必填。 |
 | - diagnosticTim e | String | 2018-01- 17T12:46:09Z | 诊断时间。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -6193,28 +6733,34 @@ GET /diagnose/list HTTP/1.1
 GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"\t-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### Tensorboard
+`}`
 
-##### DeleteTensorboard
+#### 4.5.11 Tensorboard
+
+##### 4.5.11.1 DeleteTensorboard
+
+调用DeleteTensorboard删除指定的Tensorboard。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /tensorboard/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -6232,35 +6778,37 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
-&tensorboardId=tb-8c827f4108be104d9d0a4dc0f7****
+DELETE /tensorboard/delete HTTP/1.1 &tensorboardId=tb-8c827f4108be104d9d0a4dc0f7****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListTensorboard
+`}`
+
+##### 4.5.11.2 ListTensorboard
+
+调用ListTensorboard查询所有的Tensorboard列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /tensorboard/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -6269,8 +6817,6 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 | pageIndex | Integ er | Query | 否 | 1 | tensorboard列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6294,7 +6840,7 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 | -regionId | String | cn-hangzhou | 地域ID。 |
 | -subStatus | Integer | 0 | Tensorboard子状态 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6314,12 +6860,16 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /tensorboard/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "memCount":"",
    "gmtModified":"",
    "aliyunUid":"",
@@ -6333,10 +6883,9 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
    "tensorboardName":"",
    "cpuCount":"",
    "taskId":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -6347,10 +6896,13 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-##### CreateTensorboard
+`}`
+
+##### 4.5.11.3 CreateTensorboard
+
+调用CreateTensorboard创建tensorboard。
 
 **请求头**
 
@@ -6358,14 +6910,16 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 **请求语法**
 
+```
+POST /tensorboard/create HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | tensorboa rdName | Strin g | Body | 是 | tensorboard-name | tensorboard名称，该参数必填。 |
 | taskId | Strin g | Body | 是 | tk- 83d54e96082b7043790 ad2705e4**** | 任务ID，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6386,31 +6940,31 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-{ "tensorboardName":"tensorboard-name", "taskId":"tk-83d54e96082b7043790ad2705e4****", "cpuCount":"1", "memCount":"2", "storageMountList":"[{
+POST /tensorboard/create HTTP/1.1 "tensorboardName":"tensorboard-name", "taskId":"tk-83d54e96082b7043790ad2705e4****", "cpuCount":"1", "memCount":"2", "storageMountList":"[{
  "logdirMountPath": "/data",
  "storagePath": "oss://*****/",
  "mountType": 0,
  "fileTotalSize": "2.12 MB"
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\t\"tensorboardId\": \"tb-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteTensorboardConfig
+`}`
+
+##### 4.5.11.4 DeleteTensorboardConfig
 
 调用DeleteTensorboardConfig删除指定的Tensorboard配置。
 
@@ -6420,16 +6974,16 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 **请求语法**
 
+```
+DELETE /tensorboard/config/delete HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | tensorboa rdId | Strin g | Query | 是 | tb- ae2d52190bf2e04d200b 44b0c**** | tensorboardID。 |
 | logdirMou ntPath | Strin g | Query | 是 | /tmp/****/ | logdir挂载路径。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -6444,22 +6998,22 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 请求示例
 
 ```
-&tensorboardId=tb-ae2d52190bf2e04d200b44b0c**** &logdirMountPath=/tmp/****/
+DELETE /tensorboard/config/delete HTTP/1.1 &tensorboardId=tb-ae2d52190bf2e04d200b44b0c**** &logdirMountPath=/tmp/****/
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyTensorboardStatus
+`}`
+
+##### 4.5.11.5 ModifyTensorboardStatus
 
 调用ModifyTensorboardStatus修改指定Tensorboard的状态。
 
@@ -6469,9 +7023,11 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 **请求语法**
 
-**请求参数**
+```
+PUT /tensorboard/modify-status HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6492,29 +7048,41 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 请求示例
 
-```json
-{ "tensorboardId":"tb-f7eec3e507a0c0420d0a27802dc*****", }
+```
+PUT /tensorboard/modify-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"tensorboardId":"tb-f7eec3e507a0c0420d0a27802dc*****", "tensorboardStatus":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetTensorboard
+`}`
+
+##### 4.5.11.6 GetTensorboard
+
+调用GetTensorboard查询指定Tensorboard的详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /tensorboard/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -6533,7 +7101,7 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 | httpCode | Integer | 200 | HTTP状态码。 |
 | data | Struct | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6555,8 +7123,6 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 | -gmtModified | String | 2022-01- 07T10:07:57.000+ 0000 | 修改时间。 |
 | -memCount | Integer | 1 | 内存大小，单位为GB。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -quotaId | String | rq- d8890a98089c204 1d8086bb0b2e27* *** | 配额ID。 |
@@ -6573,18 +7139,21 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 请求示例
 
 ```
-&tensorboardId=tb-f7eec3e507a0c0420d0a27802dce*****
+GET /tensorboard/get HTTP/1.1 &tensorboardId=tb-f7eec3e507a0c0420d0a27802dce*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "memCount":"",
   "gmtModified":"",
   "storageMountList":[
-   {
+```
+
+`{`
+
+```json
     "gmtModified":"",
     "logdirMountPath":"",
     "aliyunUid":"",
@@ -6593,10 +7162,9 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
     "storagePath":"",
     "tensorboardId":"",
     "mountType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "aliyunUid":"",
@@ -6612,16 +7180,21 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
   "tensorboardName":"",
   "cpuCount":"",
   "taskId":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetTensorboardOssFileSize
+`}`
+
+##### 4.5.11.7 GetTensorboardOssFileSize
 
 调用GetTensorboardOssFileSize查询Tensorboard的OSS文件大小。
 
@@ -6631,9 +7204,11 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 
 **请求语法**
 
-**请求参数**
+```
+POST /tensorboard/get/oss/file/size HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6658,27 +7233,27 @@ GET /diagnose/list HTTP/1.1 &taskId=tk-7f*******
 请求示例
 
 ```
-{ }
+POST /tensorboard/get/oss/file/size HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 可视化建模
+`}`
 
-#### 工作流
+### 4.6 可视化建模
 
-##### ModifyPipelineDraft
+#### 4.6.1 工作流
+
+##### 4.6.1.1 ModifyPipelineDraft
 
 调用ModifyPipelineDraft修改指定工作流的部分信息，包括工作流名称和描述。
 
@@ -6706,7 +7281,7 @@ PUT /pipeline/draft/update HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -6718,23 +7293,31 @@ PUT /pipeline/draft/update HTTP/1.1
 
 请求示例
 
-```json
-PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd*****", "draftName":"draft-name" }
+```
+PUT /pipeline/draft/update HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"draftId":" draft-e48bc4e6020df04a430bd*****", "draftName":"draft-name"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListPipelineDraft
+`}`
+
+##### 4.6.1.2 ListPipelineDraft
+
+调用ListPipelineDraft查询所有的工作流列表。
 
 **请求头**
 
@@ -6742,9 +7325,11 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
 
 **请求语法**
 
-**请求参数**
+```
+GET /pipeline/draft/list HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6767,8 +7352,6 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
 | -gmtCreated | String | 2026-03- 04T08:30:00Z | 创建时间。 |
 | -gmtModified | String | 2026-03- 04T08:58:00Z | 修改时间。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -gpuType | Integer | 0 | GPU类型枚举。枚举值：0-NO LIMIT、1- _ NVIDIA AMPERE A100 80G NVLINK、2- _ _ _ _ NVIDIA AMPERE A800 80G NVLINK、3- _ _ _ _ HUAWEI DAVINCI ASCEND910B1、4- _ _ HUAWEI DAVINCI ASCEND910B2、5- _ _ HUAWEI DAVINCI ASCEND910B3、6- _ _ HUAWEI DAVINCI ASCEND910B4、7- _ _ HUAWEI DaVinci Ascend910B 64G PCIE、 _ _ _ _ 8-BAIDU KUNLUN P800 OAM 96G、9- _ _ _ _ A910E、10- NVIDIA AMPERE A800 80G PCIE、11- _ _ _ _ OTHER。 |
@@ -6785,7 +7368,7 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
 | --gpuMemory | Float | 16384.0 | 显卡内存大小。 |
 | --memory | Float | 2048.0 | 内存大小。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6797,12 +7380,16 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /pipeline/draft/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "templateType":"0",
    "draftId":"draft-abc123",
    "gmtModified":"2026-03-04T08:58:00Z",
@@ -6813,15 +7400,18 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
    "gmtCreated":"2026-03-04T08:30:00Z",
    "quotaId":"rq-d8890a98089c20bb0b2e27****",
    "duration":[
-    {
+```
+
+`{`
+
+```json
      "gpuMemory":16384.0,
      "memory":2048.0,
      "cpu":10,
      "gpu":1
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "templateId":"template-4deda493094f804d87",
@@ -6831,10 +7421,9 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
    "ossStoragePath":"oss://*****/",
    "draftName":"test",
    "gpuType":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -6842,10 +7431,13 @@ PUT /pipeline/draft/update HTTP/1.1 { "draftId":" draft-e48bc4e6020df04a430bd***
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreatePipelineRun
+`}`
+
+##### 4.6.1.3 CreatePipelineRun
+
+调用CreatePipelineRun创建工作流任务。
 
 **请求头**
 
@@ -6861,8 +7453,6 @@ POST /pipeline/run/create HTTP/1.1
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6885,24 +7475,32 @@ POST /pipeline/run/create HTTP/1.1
 
 请求示例
 
-```json
-POST /pipeline/run/create HTTP/1.1 { "draftId":"draft-a8a63bc504127047a309279*****" }
+```
+POST /pipeline/run/create HTTP/1.1
 ```
 
-智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"draftId":"draft-a8a63bc504127047a309279*****"
+```
+
+正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{     \"runId\": \"run-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyPipelineDraftContent
+`}`
+
+##### 4.6.1.4 ModifyPipelineDraftContent
+
+调用ModifyPipelineDraftContent修改工作流工作区内容。
 
 **请求头**
 
@@ -6930,7 +7528,7 @@ PUT /pipeline/draft/updatecontent HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6941,29 +7539,41 @@ PUT /pipeline/draft/updatecontent HTTP/1.1
 
 请求示例
 
-```json
-PUT /pipeline/draft/updatecontent HTTP/1.1 { "draftId":"draft-a8a63bc504127047a309279*****", "content":"""" }
+```
+PUT /pipeline/draft/updatecontent HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"draftId":"draft-a8a63bc504127047a309279*****", "content":""""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeletePipelineDraft
+`}`
+
+##### 4.6.1.5 DeletePipelineDraft
+
+调用DeletePipelineDraft删除指定的工作流。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /pipeline/draft/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -6977,7 +7587,7 @@ PUT /pipeline/draft/updatecontent HTTP/1.1 { "draftId":"draft-a8a63bc504127047a3
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -6991,23 +7601,23 @@ PUT /pipeline/draft/updatecontent HTTP/1.1 { "draftId":"draft-a8a63bc504127047a3
 请求示例
 
 ```
-&draftId=draft-a8a63bc504127047a30927****
+DELETE /pipeline/draft/delete HTTP/1.1 &draftId=draft-a8a63bc504127047a30927****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineNodeInputSchema
+`}`
+
+##### 4.6.1.6 GetPipelineNodeInputSchema
 
 调用GetPipelineNodeInputSchema查询指定工作流组件输出的Schema。
 
@@ -7022,8 +7632,6 @@ GET /pipeline/inputschema/get HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7052,29 +7660,39 @@ GET /pipeline/inputschema/get HTTP/1.1
 GET /pipeline/inputschema/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff20***** &nodeId=node-2qcgrt9ehog9**** &outputId=artifact-740108480de*****
 ```
 
-&公共请求参数正常返回示例智能体工厂 OpenTrek `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "colTypes":"[\"int\", \"string\", \"int\", \"float\"] ",
   "colNames":"[\"id\", \"name\", \"age\", \"score\"]"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineDraft
+`}`
+
+##### 4.6.1.7 GetPipelineDraft
+
+调用GetPipelineDraft查询指定工作流详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /pipeline/draft/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -7091,7 +7709,7 @@ GET /pipeline/inputschema/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff20**
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7114,7 +7732,7 @@ GET /pipeline/inputschema/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff20**
 | - templateName | String | test | 关联的模板名称。 |
 | -templateType | String | 0 | 工作流类型。枚举值：0-System template、 1-Custom template、2-Clone from other draft。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7126,13 +7744,12 @@ GET /pipeline/inputschema/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff20**
 请求示例
 
 ```
-&draftId=draft-97a50b0b04fda046590aff2*****
+GET /pipeline/draft/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff2*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "templateType":"0",
   "draftId":"draft-abc123",
@@ -7150,16 +7767,23 @@ GET /pipeline/inputschema/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff20**
   "modelIds":"[\"md-111\", \"md-222\"]",
   "ossStoragePath":"oss://*****/",
   "draftName":"test"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ClonePipelineDraft
+`}`
+
+##### 4.6.1.8 ClonePipelineDraft
+
+调用ClonePipelineDraft克隆工作流。
 
 **请求头**
 
@@ -7170,8 +7794,6 @@ GET /pipeline/inputschema/get HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff20**
 ```
 POST /pipeline/draft/clone HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -7194,28 +7816,28 @@ POST /pipeline/draft/clone HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /pipeline/draft/clone HTTP/1.1 { "draftId":"draft-97a50b0b04fda046590aff20*****", "draftName":"draft-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "ossStoragePath":"oss://*****/" }
+POST /pipeline/draft/clone HTTP/1.1 "draftId":"draft-97a50b0b04fda046590aff20*****", "draftName":"draft-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "ossStoragePath":"oss://*****/"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{      \"draftId\": \"draft-575011c0045fd0*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### TerminatePipelineRun
+`}`
+
+##### 4.6.1.9 TerminatePipelineRun
+
+调用TerminatePipelineRun终止工作流运行。
 
 **请求头**
 
@@ -7240,8 +7862,6 @@ PUT /pipeline/run/terminate HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -7253,24 +7873,32 @@ PUT /pipeline/run/terminate HTTP/1.1
 
 请求示例
 
-```json
-PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
+```
+PUT /pipeline/run/terminate HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"runId":"run-c75aa00807c78*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineDraftStatus
+`}`
+
+##### 4.6.1.10 GetPipelineDraftStatus
+
+调用GetPipelineDraftStatus查询指定工作流的运行状态。
 
 **请求头**
 
@@ -7278,9 +7906,11 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 
 **请求语法**
 
-**请求参数**
+```
+GET /pipeline/draft/status HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7301,7 +7931,7 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 | --nodeKey | String | train | Pipeline节点的键值，用于标识节点类型。 |
 | --nodeName | String | test | 节点名称。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7335,13 +7965,12 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 请求示例
 
 ```
-&draftId=draft-97a50b0b04fda046590aff2*****
+GET /pipeline/draft/status HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff2*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "templateType":"0",
   "draftId":"draft-97a50b0b04fda046590aff2*****",
@@ -7349,18 +7978,25 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
   "aliyunUid":"12345678",
   "gmtCreated":"2026-03-04T09:00:00Z",
   "nodes":[
-   {
+```
+
+`{`
+
+```json
     "nodeName":"test",
     "duration":[
-     {
+```
+
+`{`
+
+```json
       "gpuMemory":16384.0,
       "memory":2048.0,
       "cpu":10,
       "gpu":1
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "startedAt":"2026-03-04T08:00:00Z",
@@ -7368,10 +8004,9 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
     "runId":"run-13BeYuxc0fxO24uA75UppTiMRoQ",
     "nodeId":"node-123",
     "status":"Running"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "quotaId":"rq-ddfeea0e02175df0b093****",
@@ -7381,16 +8016,23 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
   "ossStoragePath":"oss://*****/",
   "draftName":"test",
   "status":"Running"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineRun
+`}`
+
+##### 4.6.1.11 GetPipelineRun
+
+调用GetPipelineRun查询指定工作流运行的详细信息。
 
 **请求头**
 
@@ -7398,9 +8040,11 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 
 **请求语法**
 
-**请求参数**
+```
+GET /pipeline/run/get HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7421,7 +8065,7 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 | --nodeId | String | node-123 | Pipeline节点ID。 |
 | --nodeKey | String | train-node | Pipeline节点的键值，用于标识节点类型。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7443,8 +8087,6 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 | -startedAt | String | 2026-03- 04T08:00:00Z | Pipeline运行的开始时间，格式为ISO 8601标准时间。 |
 | -versionId | Integer | 1 | Pipeline运行的版本号。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -duration | Struct | {"cpu": 10, "memory": 2048.0, "gpu": 1, "gpuMemory": 16384.0} | Pipeline运行的资源信息。 |
@@ -7458,29 +8100,35 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 请求示例
 
 ```
-&runId=run-13BeYuxc0fxO24uA*****
+GET /pipeline/run/get HTTP/1.1 &runId=run-13BeYuxc0fxO24uA*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "sourceId":"draft-xyz789ghi012",
   "versionId":1,
   "nodes":[
-   {
+```
+
+`{`
+
+```json
     "nodeName":"node-name",
     "duration":[
-     {
+```
+
+`{`
+
+```json
       "gpuMemory":16384.0,
       "memory":2048.0,
       "cpu":10,
       "gpu":1
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "startedAt":"2026-03-04T08:00:00Z",
@@ -7489,10 +8137,9 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
     "nodeId":"node-123",
     "finishedAt":"2026-03-04T08:25:00Z",
     "status":"Succeeded"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "startedAt":"2026-03-04T08:00:00Z",
@@ -7501,21 +8148,32 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
    "memory":2048.0,
    "cpu":10,
    "gpu":1
-  },
+```
+
+`},`
+
+```json
   "runId":"run-abc123def456",
   "content":" {\"nodes\": [], \"edges\": []}",
   "runStatus":"Succeeded",
   "finishedAt":"2026-03-04T08:30:00Z"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListPipelineRun
+`}`
+
+##### 4.6.1.12 ListPipelineRun
+
+调用ListPipelineRun查询所有的工作流任务记录列表。
 
 **请求头**
 
@@ -7523,7 +8181,9 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /pipeline/run/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -7548,7 +8208,7 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 | -versionId | Integer | 1 | Pipeline运行的版本号。 |
 | -duration | Struct | {"cpu": 10, "memory": 2048.0, "gpu": 1, "gpuMemory": 16384.0} | Pipeline运行的资源信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7567,37 +8227,37 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
 请求示例
 
 ```
-&draftId=draft-97a50b0b04fda046590aff2*****
+GET /pipeline/run/list HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff2*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "sourceId":"draft-xyz789ghi012",
    "versionId":1,
    "startedAt":"2026-03-04T08:00:00Z",
    "duration":[
-    {
+```
+
+`{`
+
+```json
      "gpuMemory":16384.0,
      "memory":2048.0,
      "cpu":10,
      "gpu":1
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "runId":"run-abc123def456",
    "runStatus":"Succeeded",
    "finishedAt":"2026-03-04T08:30:00Z"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -7605,10 +8265,13 @@ PUT /pipeline/run/terminate HTTP/1.1 { "runId":"run-c75aa00807c78*****" }
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineArtifactData
+`}`
+
+##### 4.6.1.13 GetPipelineArtifactData
+
+调用GetPipelineArtifactData查询指定工作流制品详细信息。
 
 **请求头**
 
@@ -7632,7 +8295,7 @@ GET /pipeline/artifact/get HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -7649,20 +8312,22 @@ GET /pipeline/artifact/get HTTP/1.1
 GET /pipeline/artifact/get HTTP/1.1 &artifactId=artifact-f2ebc8e20*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListPipelineArtifact
+`}`
+
+##### 4.6.1.14 ListPipelineArtifact
+
+调用ListPipelineArtifact查询所有工作流输出的制品列表。
 
 **请求头**
 
@@ -7675,8 +8340,6 @@ GET /pipeline/artifact/list HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7701,7 +8364,7 @@ GET /pipeline/artifact/list HTTP/1.1
 | -nodeId | String | node- tqrkojdnzd***** | 节点ID。 |
 | -nodeName | String | node-name | 节点名称。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -runId | String | run- 13BeYuxc0fxO2*** ** | 任务ID。 |
@@ -7721,12 +8384,10 @@ GET /pipeline/artifact/list HTTP/1.1
 GET /pipeline/artifact/list HTTP/1.1 &runId=run-13BeYuxc0fxO2*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "nodeName":"node-name",
    "artifactName":"artifact-name",
    "dataType":"Table",
@@ -7738,10 +8399,9 @@ GET /pipeline/artifact/list HTTP/1.1 &runId=run-13BeYuxc0fxO2*****
    "runId":"run-13BeYuxc0fxO2*****",
    "type":"model",
    "nodeId":"node-tqrkojdnzd*****"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -7749,10 +8409,13 @@ GET /pipeline/artifact/list HTTP/1.1 &runId=run-13BeYuxc0fxO2*****
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreatePipelineDraft
+`}`
+
+##### 4.6.1.15 CreatePipelineDraft
+
+调用CreatePipelineDraft创建工作流。
 
 **请求头**
 
@@ -7772,7 +8435,7 @@ POST /pipeline/draft/create HTTP/1.1
 | draftDesc | Strin g | Body | 否 | draft-desc | 工作流描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |
 | quotaId | Strin g | Body | 是 | rq- d8890a98089c2041d80 86bb0b2e27**** | 资源配额ID，该参数必填。 |
 
-| A | I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -7795,24 +8458,30 @@ POST /pipeline/draft/create HTTP/1.1
 
 请求示例
 
-```json
-POST /pipeline/draft/create HTTP/1.1 { "draftName":"draft-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "ossStoragePath":"oss://*****/" }
+```
+POST /pipeline/draft/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"draftName":"draft-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "ossStoragePath":"oss://*****/"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{      \"draftId\": \"draft-*****}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyPipelineDraftContentByRollback
+`}`
+
+##### 4.6.1.16 ModifyPipelineDraftContentByRollback
 
 调用ModifyPipelineDraftContentByRollback修改工作流的内容回滚到指定的版本。
 
@@ -7842,27 +8511,25 @@ PUT /pipeline/draft/versionRollback HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /pipeline/draft/versionRollback HTTP/1.1 { "runId":"run-13BeYuxc0fxO24uA*****" }
+PUT /pipeline/draft/versionRollback HTTP/1.1 "runId":"run-13BeYuxc0fxO24uA*****"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineDraftSchedule
+`}`
+
+##### 4.6.1.17 GetPipelineDraftSchedule
 
 调用GetPipelineDraftSchedule查询指定工作流的周期调度信息。
 
@@ -7871,6 +8538,10 @@ PUT /pipeline/draft/versionRollback HTTP/1.1 { "runId":"run-13BeYuxc0fxO24uA****
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /pipeline/run/getSchedule HTTP/1.1
+```
 
 **请求参数**
 
@@ -7886,7 +8557,7 @@ PUT /pipeline/draft/versionRollback HTTP/1.1 { "runId":"run-13BeYuxc0fxO24uA****
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7906,25 +8577,23 @@ PUT /pipeline/draft/versionRollback HTTP/1.1 { "runId":"run-13BeYuxc0fxO24uA****
 请求示例
 
 ```
-&draftId=draft-97a50b0b04fda046590aff2*****
+GET /pipeline/run/getSchedule HTTP/1.1 &draftId=draft-97a50b0b04fda046590aff2*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+##### 4.6.1.18 ModifyPipelineDraftSchedule
 
-##### ModifyPipelineDraftSchedule
+调用ModifyPipelineDraftSchedule设置工作流的调度配置。
 
 **请求头**
 
@@ -7956,31 +8625,43 @@ PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1
 
 请求示例
 
-```json
-PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1 { "scheduleType":"1", "scheduleStatus":"0", "timeZone":"Asia/Shanghai" }
+```
+PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"scheduleType":"1", "scheduleStatus":"0", "timeZone":"Asia/Shanghai"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 模板
+`}`
 
-##### ListPipelineDraftTemplate
+#### 4.6.2 模板
+
+##### 4.6.2.1 ListPipelineDraftTemplate
+
+调用ListPipelineDraftTemplate查询所有的工作流模板列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /pipeline/draft_template/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -7997,7 +8678,7 @@ PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1 { "scheduleType":"1", "sc
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8019,12 +8700,21 @@ PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1 { "scheduleType":"1", "sc
 
 **示例**
 
-请求示例 &公共请求参数智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /pipeline/draft_template/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "templateType":0,
    "gmtModified":"2026-03-04T09:30:00Z",
    "componentId":"[\"comp-111\", \"comp-222\"]",
@@ -8035,10 +8725,9 @@ PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1 { "scheduleType":"1", "sc
    "templateDesc":"desc",
    "templateContent":"{\"workflow\": {...}}",
    "templateId":"template-4deda493094f804d87"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -8046,10 +8735,13 @@ PUT /pipeline/run/modifyPipelineDraftSchedule HTTP/1.1 { "scheduleType":"1", "sc
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreateDraftTemplate
+`}`
+
+##### 4.6.2.2 CreateDraftTemplate
+
+调用CreateDraftTemplate创建工作流自定义模版。
 
 **请求头**
 
@@ -8067,8 +8759,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1
 |---|---|---|---|---|---|
 | draftId | Strin g | Body | 是 | draft- 97a50b0b04fda046590a ff2***** | 工作流ID，该参数必填。 |
 | templateN ame | Strin g | Body | 是 | template-name | 模板名称，该参数必填，长度为2～64个字符，必须以字母或中文开头，可包含数字、半角句号（.）、下划线 （ ）和短划线（-）。 _ |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8090,30 +8780,42 @@ POST /pipeline/draft/saveTemplate HTTP/1.1
 
 请求示例
 
-```json
-POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda046590aff2*****", "templateName":"template-name", "content":"""" }
+```
+POST /pipeline/draft/saveTemplate HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"draftId":"draft-97a50b0b04fda046590aff2*****", "templateName":"template-name", "content":""""
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{      \"draftId\": \"draft-575011c0045fd0*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteDraftTemplate
+`}`
+
+##### 4.6.2.3 DeleteDraftTemplate
+
+调用DeleteDraftTemplate删除指定的工作流自定义模版。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /pipeline/draft/deleteTemplate HTTP/1.1
+```
 
 **请求参数**
 
@@ -8132,38 +8834,40 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
-&templateId=draft-586602cf0c1*****
+DELETE /pipeline/draft/deleteTemplate HTTP/1.1 &templateId=draft-586602cf0c1*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 组件
+`}`
 
-##### ListPipelineComponent
+#### 4.6.3 组件
+
+##### 4.6.3.1 ListPipelineComponent
+
+调用ListPipelineComponent查询所有工作流组件列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /pipeline/component/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -8172,8 +8876,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | componen tId | Strin g | Body | 否 | comp- 1c2d7a2f0cd67049eb0a ac90**** | 组件ID。 |
 | pageIndex | Integ er | Body | 否 | 1 | 组件列表的页码。 默认值：1。 |
 | pageSize | Integ er | Body | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8193,7 +8895,7 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | ---required | Boolean | true | 是否必填。 |
 | --component | String | InputNumber | 参数组件类型。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8214,8 +8916,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | -type | String | 1 | 组件类型。 |
 | -version | String | v1 | 组件版本号。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -io | Struct | {"outputs": [{"dataType": "model", "subType": "pytorch", "id": "output-model", "type": "artifact", "required": true, "properties": ["accuracy", "loss"], "name": "模型输出"}], "inputs": [{"dataType": "dataset", "subType": "csv", "id": "input- dataset", "type": "artifact", "required": true, "name": "数据集输入"}]} | 组件输入输出定义，包含输入和输出列表。 |
@@ -8226,8 +8926,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | ---required | Boolean | true | 是否必填。 |
 | ---type | String | artifact | 输出类型。 |
 | --outputs | Array | [{"dataType": "model", "subType": "pytorch", "id": "output-model", "type": "artifact", "required": true, "properties": ["accuracy", "loss"], "name": "模型输出"}] | 输出列表。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8248,7 +8946,7 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8264,15 +8962,18 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 请求示例
 
 ```
-&templateType=0
+GET /pipeline/component/list HTTP/1.1 &templateType=0
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "imageVersion":"v1",
    "identifier":"pytorch-train",
    "shared":1,
@@ -8285,26 +8986,25 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
    "type":"1",
    "version":"v1",
    "resources":[
-    {
+```
+
+`{`
+
+```json
      "memory":8192,
      "cpu":4,
      "gpu":1
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "codeId":"[\"code-111\", \"code-222\"]",
    "io":[
-    {
      "inputs":[
-      {
 "dataTpe""model"
 ```
 
-智能体工厂 OpenTrek
-
 ```json
        "dataType":"model",
 ```
@@ -8315,14 +9015,17 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
        "id":"output-model",
        "type":"artifact",
        "required":true
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
      "outputs":[
-      {
+```
+
+`{`
+
+```json
        "dataType":"model",
 ```
 
@@ -8332,60 +9035,51 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
        "id":"output-model",
        "type":"artifact",
        "required":true
-      }
 ```
 
-]
-
-```
-    }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
    "name":"test",
    "metaData":[
-    {
+```
+
+`{`
+
+```json
      "identifier":"pytorch-train",
      "visual":true,
      "dispalyName":"PyTorch训练",
      "version":"1.0.0"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "parameters":[
-    {
+```
+
+`{`
+
+```json
      "component":"InputNumber",
      "default":"0",
      "rules":[
-      {
-       "required":true
-      }
 ```
 
-`],`
+`{`
+
+```json
+       "required":true
+```
+
+`}` `],`
 
 ```json
      "name":"test",
 ```
 
-`"title":"`学习率"
-
-```
-    }
-```
-
-]
-
-```
-  }
-```
-
-`],`
+`"title":"`学习率`"` `}` `]` `}` `],`
 
 ```json
  "pageIndex":1,
@@ -8396,12 +9090,13 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-##### GetPipelineComponentTree
+##### 4.6.3.2 GetPipelineComponentTree
+
+调用GetPipelineComponentTree查询工作流组件详情。
 
 **请求头**
 
@@ -8409,32 +9104,32 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 
 **请求语法**
 
+```
+GET /pipeline/component/tree HTTP/1.1
+```
+
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | Array | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
-|  |  | [{"treeNodeid": "pytorch", "treeNodeName": "PyTorch训练", "treeNodeType": "subcategory", "sortKey": 1, "children": [], "components": [{"componentId": "comp-abc123", "identifier": "pytorch-train", "name": "PyTorch 训练组件", "description": "用于 PyTorch模型训练的组件", "componentPath": "/train/pytorch", "metaData": {"visual": true, "identifier": "pytorch-train", "version": "1.0.0", "dispalyName": "PyTorch训练"}, "type": 1, "version": "1.0.0", "path": "/path/to/compone nt", "io": {"outputs": [{"dataType": "model", "subType": "pytorch", "id": "output-model", |  |
-
-智能体工厂 OpenTrek
+|   |   | [{"treeNodeid": "pytorch", "treeNodeName": "PyTorch训练", "treeNodeType": "subcategory", "sortKey": 1, "children": [], "components": [{"componentId": "comp-abc123", "identifier": "pytorch-train", "name": "PyTorch 训练组件", "description": "用于 PyTorch模型训练的组件", "componentPath": "/train/pytorch", "metaData": {"visual": true, "identifier": "pytorch-train", "version": "1.0.0", "dispalyName": "PyTorch训练"}, "type": 1, "version": "1.0.0", "path": "/path/to/compone nt", "io": {"outputs": [{"dataType": "model", "subType": "pytorch", "id": "output-model", |   |
 
 | 参数名称 | 类型 | "type": "artifact", 示例 "required": true, | 说明 |
 |---|---|---|---|
 | -children | List | "properties": ["accuracy", "loss"], "name": "模型输出"}], "inputs": [{"dataType": "dataset", "subType": "csv", "id": "input- dataset", "type": "artifact", "required": true, "name": "数据集输入"}]}, "resources": {"cpu": 4, "memory": 8192, "gpu": 1}, "parameters": [{"name": "learning rate", _ "default": "0.001", | 子节点列表，用于构建组件树的层级结构。 |
-|  |  | "component": "InputNumber", "title": "学习率", "tooltip": "模型训练的学习率", "rules": [{"required": true, "min": "0.0001", "max": "1.0"}], "dataSource": [{"label": "默认值", "value": "0.001"}], "props": {"step": "0.0001"}, "reactions": {"onChange": "updateModel"}, "pathType": "relative", "anchor": "param1"}], "codeId": ["code- 111", "code-222"], "imageId": "img- xyz789", "imageVersion": "v1.2.3", "gmtCreated": "2026-03- 04T08:30:00Z", "gmtModified": "2026-03- 04T09:45:00Z", "relatedTaskCount" : 5}]}] |  |
-|  |  | [{"componentId": "comp-abc123", "identifier": "pytorch-train", "name": "PyTorch 训练组件", "description": "用于 PyTorch模型训练的组件", |  |
+|   |   | "component": "InputNumber", "title": "学习率", "tooltip": "模型训练的学习率", "rules": [{"required": true, "min": "0.0001", "max": "1.0"}], "dataSource": [{"label": "默认值", "value": "0.001"}], "props": {"step": "0.0001"}, "reactions": {"onChange": "updateModel"}, "pathType": "relative", "anchor": "param1"}], "codeId": ["code- 111", "code-222"], "imageId": "img- xyz789", "imageVersion": "v1.2.3", "gmtCreated": "2026-03- 04T08:30:00Z", "gmtModified": "2026-03- 04T09:45:00Z", "relatedTaskCount" : 5}]}] |   |
+|   |   | [{"componentId": "comp-abc123", "identifier": "pytorch-train", "name": "PyTorch 训练组件", "description": "用于 PyTorch模型训练的组件", |   |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | "componentPath": 示例 "/train/pytorch", | 说明 |
 | -components | Array | "metaData": {"visual": true, "identifier": "pytorch-train", "version": "1.0.0", "dispalyName": "PyTorch训练"}, "type": 1, "version": "1.0.0", "path": "/path/to/compone nt", "io": {"outputs": [{"dataType": "model", "subType": "pytorch", "id": "output-model", "type": "artifact", "required": true, "properties": ["accuracy", "loss"], "name": "模型输出"}], "inputs": [{"dataType": "dataset", "subType": "csv", "id": "input- dataset", "type": "artifact", "required": true, "name": "数据集输入"}]}, "resources": {"cpu": 4, "memory": 8192, "gpu": 1}, "parameters": [{"name": "learning rate", _ "default": "0.001", "component": "InputNumber", "title": "学习率", "tooltip": "模型训练的学习率", "rules": [{"required": true, "min": "0.0001", "max": "1.0"}], "dataSource": [{"label": "默认值", "value": "0.001"}], "props": {"step": "0.0001"}, "reactions": {"onChange": "updateModel"}, "pathType": "relative", "anchor": "param1"}], "codeId": ["code- 111", "code-222"], "imageId": "img- | 组件列表，包含该节点下的所有组件详情。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | xyz789", 示例 "imageVersion": | 说明 |
 |---|---|---|---|
-|  |  | "v1.2.3", "gmtCreated": "2026-03- 04T08:30:00Z", "gmtModified": "2026-03- 04T09:45:00Z", "relatedTaskCount" : 5}] |  |
+|   |   | "v1.2.3", "gmtCreated": "2026-03- 04T08:30:00Z", "gmtModified": "2026-03- 04T09:45:00Z", "relatedTaskCount" : 5}] |   |
 | --parameters | Array | [{"name": "learning rate", _ "default": "0.001", "component": "InputNumber", "title": "学习率", "tooltip": "模型训练的学习率", "rules": [{"required": true, "min": "0.0001", "max": "1.0"}], "dataSource": [{"label": "默认值", "value": "0.001"}], "props": {"step": "0.0001"}, "reactions": {"onChange": "updateModel"}, "pathType": "relative", "anchor": "param1"}] | 组件参数列表。 |
 | ---dataSource | Array | [{"label": "默认值", "value": "0.001"}] | 数据来源。 |
 | ----label | String | 默认值 | 标签。 |
@@ -8446,7 +9141,7 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | ---name | String | test | 输入名称。 |
 | ---pathType | String | relative | 地址类型。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8468,8 +9163,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | --type | String | 1 | 组件类型。 |
 | --version | String | v1 | 组件版本号。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --io | Struct | {"outputs": [{"dataType": "model", "subType": "pytorch", "id": "output-model", "type": "artifact", "required": true, "properties": ["accuracy", "loss"], "name": "模型输出"}], "inputs": [{"dataType": "dataset", "subType": "csv", "id": "input- dataset", "type": "artifact", "required": true, "name": "数据集输入"}]} | 组件输入输出定义，包含输入和输出列表。 |
@@ -8480,8 +9173,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | ----required | Boolean | true | 是否必填。 |
 | ----type | String | artifact | 输出类型。 |
 | ---outputs | Array | [{"dataType": "model", "subType": "pytorch", "id": "output-model", "type": "artifact", "required": true, "properties": ["accuracy", "loss"], "name": "模型输出"}] | 输出列表。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8502,8 +9193,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 | -treeNodeid | String | pytorch-train | 组件ID，组件唯一标识。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -8512,29 +9201,40 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 
 **示例**
 
-请求示例正常返回示例 `JSON` 格式
+请求示例
 
-```json
-{
- "data":[
-  {
+```
+GET /pipeline/component/tree HTTP/1.1
 ```
 
-`"treeNodeName":"`训练组件`",`
+正常返回示例 `JSON` 格式 `{`
+
+```json
+ "data":[
+```
+
+`{` `"treeNodeName":"`训练组件`",`
 
 ```json
    "components":[
-    {
+```
+
+`{`
+
+```json
      "metaData":[
-      {
+```
+
+`{`
+
+```json
        "identifier":"pytorch-train",
        "visual":true,
        "dispalyName":"PyTorch训练",
        "version":"1.0.0"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
      "identifier":"\tpytorch-train",
@@ -8545,18 +9245,25 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
      "relatedTaskCount":5,
      "type":"1",
      "resources":[
-      {
-       "memory":8192,
-       "cpu":4
-      }
 ```
 
-`],`
+`{`
+
+```json
+       "memory":8192,
+       "cpu":4
+```
+
+`}` `],`
 
 ```json
      "version":"v1",
      "parameters":[
-      {
+```
+
+`{`
+
+```json
        "component":"InputNumber",
        "default":"0",
        "name":"test",
@@ -8568,33 +9275,25 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 "reactions"[
 ```
 
-智能体工厂 OpenTrek
-
 ```json
        "reactions":[
-        {
          "fulfill":[
-          {
            "state":[
-            {
+```
+
+`{`
+
+```json
              "display":"0"
-            }
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
          "dependencies":"[\"react\": \"^18.2.0\", \"axios\": \"^1.4.0\"]"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
        "pathType":"relative",
@@ -8604,38 +9303,41 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 
 ```json
        "rules":[
-        {
-         "required":true
-        }
 ```
 
-`],`
+`{`
+
+```json
+         "required":true
+```
+
+`}` `],`
 
 ```json
        "dataSource":[
-        {
 ```
 
-`"label":"`默认值`",`
+`{` `"label":"`默认值`",`
 
 ```json
          "value":"0.001"
-        }
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
      "io":[
-      {
+```
+
+`{`
+
+```json
        "inputs":[
-        {
+```
+
+`{`
+
+```json
          "dataType":"model",
 ```
 
@@ -8645,14 +9347,17 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
          "id":"output-model",
          "type":"artifact",
          "required":true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
        "outputs":[
-        {
+```
+
+`{`
+
+```json
          "dataType":"model",
 ```
 
@@ -8662,20 +9367,12 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
          "id":"output-model",
          "type":"artifact",
          "required":true
-        }
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
      "name":"test"
-    }
 ```
 
 `],`
@@ -8683,8 +9380,6 @@ POST /pipeline/draft/saveTemplate HTTP/1.1 { "draftId":"draft-97a50b0b04fda04659
 ```json
 "children":"[{\"treeNodeid\":\"pytorch\",\"treeNodeName\":\"PyTorch训练\",\"treeN
 ```
-
-智能体工厂 OpenTrek
 
 ```
    children:[{\treeNodeid\: \pytorch\, \treeNodeName\: \PyTorch训练\, \treeN
@@ -8696,10 +9391,9 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
 ```json
 \"/train/pytorch\", \"metaData\": {\"visual\": true, \"identifier\": \"pytorch-train\", \"version\": \"1.0.0\", \"dispalyName\": \"PyTorch训练\"}, \"type\": 1, \"version\": \"1.0.0\", \"path\": \"/path/to/component\", \"io\": {\"outputs\": [{\"dataType\": \"mo del\", \"subType\": \"pytorch\", \"id\": \"output-model\", \"type\": \"artifact\", \"re quired\": true, \"properties\": [\"accuracy\", \"loss\"], \"name\": \"模型输出\"}], \"inputs\": [{\"dataType\": \"dataset\", \"subType\": \"csv\", \"id\": \"input-dataset\ ", \"type\": \"artifact\", \"required\": true, \"name\": \"数据集输入\"}]}, \"resources\" : {\"cpu\": 4, \"memory\": 8192, \"gpu\": 1}, \"parameters\": [{\"name\": \"learning_rate\", \"default\": \"0.001\", \"component\": \"InputNumber\", \"title\": \ "学习率\", \"tooltip\": \"模型训练的学习率\", \"rules\": [{\"required\": true, \"min\": \"0 .0001\", \"max\": \"1.0\"}], \"dataSource\": [{\"label\": \"默认值\", \"value\": \"0.001 \"}], \"props\": {\"step\": \"0.0001\"}, \"reactions\": {\"onChange\": \"updateModel\"}, \"pathType\": \"relative\", \"anchor\": \"param1\"}], \"codeId\": [\" code-111\", \"code-222\"], \"imageId\": \"img-xyz789\", \"imageVersion\": \"v1.2.3\", \ "gmtCreated\": \"2026-03-04T08:30:00Z\", \"gmtModified\": \"2026-03-04T09:45:00Z\", \"r elatedTaskCount\": 5}]}]",
    "treeNodeid":"pytorch-train"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -8707,16 +9401,23 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetPipelineComponent
+`}`
+
+##### 4.6.3.3 GetPipelineComponent
+
+调用GetPipelineComponent查询指定自定义组件详情信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /pipeline/component/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -8725,8 +9426,6 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
 | componen tId | Strin g | Query | 是 | comp- 1c2d7a2f0cd67049eb0a ac90**** | 组件ID，该参数必填。 |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8758,8 +9457,6 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
 | -inputs | Struct | {"artifacts": {"input-dataset": {"name": "数据集输入", "type": "artifact", "dataType": "dataset", "required": true}}} | 组件自定义输入。 |
 | --artifacts | Map | {"input-dataset": {"name": "数据集输入", "type": "artifact", "dataType": "dataset", "required": true}} | 输入制品映射。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -outputs | Struct | {"artifacts": {"output-model": {"name": "模型输出", "type": "artifact", "dataType": "model", "required": true}}} | 组件自定义输出。 |
@@ -8774,13 +9471,12 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
 请求示例
 
 ```
-&componentId=comp-1c2d7a2f0cd67049eb0aac90****
+GET /pipeline/component/get HTTP/1.1 &componentId=comp-1c2d7a2f0cd67049eb0aac90****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "imageVersion":"v1",
   "gmtModified":"2026-03-04T09:30:00Z",
@@ -8797,23 +9493,19 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
 ```json
      "type":"artifact",
      "required":true
-    }
 ```
 
-智能体工厂 OpenTrek
+`},`
 
 ```json
-   }
-  },
   "gmtCreated":"2026-03-04T08:30:00Z",
   "resource":{
    "memory":"8192",
    "cpu":"4",
    "gpu":"1"
-  },
 ```
 
-`"customComponentDesc":"`用于自定义模型训练的组件`",`
+`},` `"customComponentDesc":"`用于自定义模型训练的组件`",`
 
 ```json
   "startCommand":"python train.py --epochs 100",
@@ -8821,14 +9513,17 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
   "relatedTaskCount":5,
   "type":1,
   "codeMountList":[
-   {
+```
+
+`{`
+
+```json
     "codeId":"cd-111",
     "mountPath":"/workspace/code",
     "codeRepoType":"GIT"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "imageType":1,
@@ -8838,8 +9533,11 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
     "name":"learning_rate",
     "type":"float",
     "required":true
-   }
-  },
+```
+
+`}` `},`
+
+```json
   "inputs":{
    "artifacts":{
     "inputdataset":{
@@ -8851,25 +9549,23 @@ odeType\": \"subcategory\", \"sortKey\": 1, \"children\": [], \"components\": [{
 ```json
      "type":"artifact",
      "required":true
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreatePipelineCustomComponent
+`}`
+
+##### 4.6.3.4 CreatePipelineCustomComponent
 
 调用CreatePipelineCustomComponent创建工作流自定义组件。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
 
 **请求语法**
 
@@ -8892,8 +9588,6 @@ POST /pipeline/component/create HTTP/1.1
 | outputs | Json | Body | 否 | {"artifacts":{"output1": {"type":"Model","dataTy pe":"File","required":fals e,"name":"output"}}} | 组件的输出列表。 |
 | parameter s | Json | Body | 否 | {"parameter1": {"type":"TextArea","na me":"featureColName"}, "parameter2": {"type":"TextArea","na me":"labelColName"},"p arameter3": {"type":"NumberPicker", "name":"maxIter","defau ltValue":"100"},"parame ter4": {"type":"NumberPicker", "name":"regularizedLev el","defaultValue":"1"}} | 组件的参数列表。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | isUseGpu | Boole an | Body | 是 | false | 是否使用GPU，该参数必填，取值范围： true：使用。 false：禁用。 |
@@ -8913,27 +9607,33 @@ POST /pipeline/component/create HTTP/1.1
 
 请求示例
 
-```json
-POST /pipeline/component/create HTTP/1.1 { "customComponentName":"component-name", "imageId":"img-66562b610952c0441e0ba6a*****", "imageVersion":"v1", "startCommand":"python3 main.py", "codeMountList":"[{
- "mountPath": "/root/",
- "codeId": "cd-f1bb797e0cef2046ec0bcad0d3682****"
-}]", "componentDefaultResource":"{"cpu": "500", "memory": "1G"}", "isUseGpu":"false" }
+```
+POST /pipeline/component/create HTTP/1.1
 ```
 
-正常返回示例智能体工厂 OpenTrek `JSON` 格式
+`{`
 
 ```json
-{
+"customComponentName":"component-name", "imageId":"img-66562b610952c0441e0ba6a*****", "imageVersion":"v1", "startCommand":"python3 main.py", "codeMountList":"[{
+ "mountPath": "/root/",
+ "codeId": "cd-f1bb797e0cef2046ec0bcad0d3682****"
+}]", "componentDefaultResource":"{"cpu": "500", "memory": "1G"}", "isUseGpu":"false"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{      \"componentId\": \"comp-****\"}",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyPipelineCustomComponent
+`}`
+
+##### 4.6.3.5 ModifyPipelineCustomComponent
 
 调用ModifyPipelineCustomComponent修改指定自定义组件部分信息。
 
@@ -8962,7 +9662,7 @@ PUT /pipeline/component/modify HTTP/1.1
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | errorCode | String | 500 | 错误码。 |
@@ -8973,23 +9673,29 @@ PUT /pipeline/component/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /pipeline/component/modify HTTP/1.1 { "componentId":"comp-1c2d7a2f0cd67049eb0aac90****", "componentName":"python组件" }
+```
+PUT /pipeline/component/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"componentId":"comp-1c2d7a2f0cd67049eb0aac90****", "componentName":"python组件"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeletePipelineCustomComponent
+`}`
+
+##### 4.6.3.6 DeletePipelineCustomComponent
 
 调用DeletePipelineCustomComponent删除指定自定义组件。
 
@@ -9009,10 +9715,6 @@ DELETE /pipeline/component/delete HTTP/1.1
 |---|---|---|---|---|---|
 | componen tId | Strin g | Query | 是 | comp- 1c2d7a2f0cd67049eb0a ac90**** | 组件ID。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -9030,30 +9732,26 @@ DELETE /pipeline/component/delete HTTP/1.1
 DELETE /pipeline/component/delete HTTP/1.1 &componentId=comp-1c2d7a2f0cd67049eb0aac90****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 在线服务
+`}`
 
-#### 在线服务
+### 4.7 在线服务
 
-##### ModifyOnlineServiceLoraAdapter
+#### 4.7.1 在线服务
 
-调用ModifyOnlineServiceLoraAdapter动态加卸载LoRA模型。 智能体工厂 OpenTrek
+##### 4.7.1.1 ModifyOnlineServiceLoraAdapter
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ModifyOnlineServiceLoraAdapter动态加卸载LoRA模型。
 
 **请求语法**
 
@@ -9084,21 +9782,27 @@ PUT /online-service/modify-lora-adapter HTTP/1.1
 请求示例
 
 ```
-PUT /online-service/modify-lora-adapter HTTP/1.1 { }
+PUT /online-service/modify-lora-adapter HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{` `}` 正常返回示例 `JSON` 格式
 
-| { "success":false, "dynamicMessages":"-", "errorMessage":"", "errorCode":"500", "httpCode":200 } |  |
+| { "success":false, "dynamicMessages":"-", "errorMessage":"", "errorCode":"500", "httpCode":200 } |   |
 |---|---|
 
-##### ListOnlineService
+##### 4.7.1.2 ListOnlineService
+
+调用ListOnlineService查询所有的在线服务列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /online-service/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -9110,8 +9814,6 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序。 DESC：降序。 ASC：升序。 默认值：DESC。 |
 | serviceNa me | Strin g | Query | 否 | service-name | 在线服务名称。 |
 | serviceId | Strin g | Query | 否 | os- 5be13385078c904e750 91aa0606**** | 在线服务ID。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9188,7 +9890,7 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | --command | String | python3 -m vllm.entrypoints.op enai.api server -- _ host 0.0.0.0 --port 8080 --model /model/ -- served model nam _ _ e Qwen2.5-0.5B | 主节点启动命令。 |
 | -- workerComma nd | String | null | Worker节点启动命令，开启条件：1、 serviceDeployMode为分布式/PD分离；2、 instanceCount>=2。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -9209,7 +9911,7 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | --imageName | String | vllm-inference | 镜像名称（扩展字段）。 |
 | -- imageIdAndVe rsion | String | img-public- b003****905b7a, 0.11.0-torch2.8- ***12.8.1-py312- ubuntu22.04-lws | 镜像ID和版本（扩展字段）。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9229,8 +9931,6 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | -- gpuCountUnit | Integer | 1 | GPU数量单位。 |
 | -- gpuMemTotal Unit | Integer | 10 | GPU显存总量单位。 |
 | - inferenceRunti meConfigList | Array | [] | M-LoRA推理运行时配置列表。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -9252,8 +9952,6 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | -- serviceInstanc eId | String | osi-xxxx****xxxx | 服务实例ID。 |
 | -gmtCreated | String | 2026-02- 02T03:53:49Z | 创建时间。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -gmtModified | String | 2026-02- 02T23:47:38Z | 修改时间。 |
@@ -9267,8 +9965,6 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | - serviceDeploy Mode | String | customer | 服务部署模式。枚举值： - customer ：Custom deployment（自定义部署） - aspeed ：High-performance deployment（高性能部署） - DisaggregatingEP ：aistudio High performance DisaggregatingEP（分离式EP 高性能部署） - Disaggregating ：aistudio DDP Disaggregating（DDP分离式部署） - ExpertParallelism ：Expert Parallelism mode（专家并行模式） - json ：Standalone deployment（单机部署）。 |
 | -serviceDesc | String | test | 在线服务描述信息。 |
 | -serviceStatus | Integer | 2 | 在线服务状态。枚举值： - 0 ：STARTING（启动中） - 1 ：RUNNING（运行中） - 2 ：STOP（已停止） - 3 ：FAILED（失败） - 4 ：WAITING FOR STARTING（待启 _ _ 动） - 5 ：SCALING（变配中） - 6 ：STOPPING（停止中）。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -9289,7 +9985,7 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | -gpuMemTotal | Integer | 80 | 显存大小，单位GB，默认为0。 |
 | -gpuCountUnit | Integer | 1 | GPU数量单位。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9307,7 +10003,7 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | -gpuType | Integer | 1 | GPU型号类型（由业务逻辑填充）。 |
 | -aliyunSubUid | String | 261080****688733 | 阿里云子账号UID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9330,8 +10026,6 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | --totalCpu | Float | 8 | 总CPU核心数。 |
 | --totalMem | Float | 16 | 总内存大小，单位GB。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --totalGpu | Float | 1 | 总GPU卡数。 |
@@ -9351,8 +10045,6 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 | --sourceType | Integer | 1 | 数据来源。枚举值： - 1 ：在线服务 - 2 ：在线服务组。 |
 | --open | Boolean | false | 是否开启网关，默认为false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -9365,22 +10057,34 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /online-service/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "storageMountList":[
-    {
+```
+
+`{`
+
+```json
      "mountPath":"/models",
      "pvcName":"pvc-storage-xxxx",
      "storagePath":"/data/storage",
      "storageSource":1
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gmtCreated":"2026-02-02T03:53:49Z",
@@ -9390,32 +10094,32 @@ PUT /online-service/modify-lora-adapter HTTP/1.1 { }
 
 ```json
    "modelMountList":[
-    {
+```
+
+`{`
+
+```json
      "modelName":"Qwen2.5-0.5B",
      "dataAccInstance":"da-****",
      "weightType":0,
      "mountPath":"/models",
 ```
 
-智能体工厂 OpenTrek
-
 ```json
      "modelId":"md-xxxx",
      "pvcName":"pvc-storage-xxxx",
      "modelVersion":"v1.0",
      "modelType":0
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "apikeyPermission":false,
    "ddpRoleInstanceConfig":[
-    {
 ```
 
-`"quotaName":"`默认资源组`",`
+`{` `"quotaName":"`默认资源组`",`
 
 ```json
      "sharedMemCount":1,
@@ -9445,10 +10149,9 @@ untu22.04-lws",
      "instanceCount":1,
      "gpuCountUnit":1,
      "imageAccelerationType":0
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "sharedMemCount":1,
@@ -9460,7 +10163,11 @@ untu22.04-lws",
    "imageName":"vllm-inference",
    "haType":0,
    "instanceCost":[
-    {
+```
+
+`{`
+
+```json
      "runningPod":1.0,
      "runningMem":16.0,
      "runningGpuMem":0.0,
@@ -9468,8 +10175,6 @@ untu22.04-lws",
      "totalPod":1.0,
 "ttlM "160
 ```
-
-智能体工厂 OpenTrek
 
 ```json
      "totalMem":16.0,
@@ -9479,10 +10184,9 @@ untu22.04-lws",
      "runningCpu":8.0,
      "totalCost":0.0,
      "totalGpu":1.0
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "quotaId":"rq-394c****04499",
@@ -9500,9 +10204,17 @@ untu22.04-lws",
 ```json
    "aliyunUid":"198226****521225",
    "inferenceRuntimeConfigList":[
-    {
+```
+
+`{`
+
+```json
      "loraConfig":[
-      {
+```
+
+`{`
+
+```json
        "mountPath":"/models/lora",
        "modelId":"md-xxxx****xxxx",
        "modelVersion":"v1.0",
@@ -9513,14 +10225,17 @@ untu22.04-lws",
 ```json
        "modelType":"lora",
        "loraModuleName":"lora-adapter-1"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
      "hyperparameterConfig":[
-      {
+```
+
+`{`
+
+```json
        "code":"temperature",
        "defaultValue":"1.0",
        "custom":false,
@@ -9531,27 +10246,28 @@ untu22.04-lws",
 ```json
        "type":"float",
        "value":"0.7"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
      "serviceInstanceId":"osi-xxxx****xxxx"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "docId":"doc-****",
    "clusterId":"sfi9s8fsnvsa98r2",
    "totalCount":10,
    "aiGatewayInfo":[
-    {
+```
+
+`{`
+
+```json
      "sourceType":1,
      "open":false
-    }
 ```
 
 `],`
@@ -9559,8 +10275,6 @@ untu22.04-lws",
 ```json
 "accessType":false
 ```
-
-智能体工厂 OpenTrek
 
 ```json
    accessType:false,
@@ -9577,10 +10291,9 @@ untu22.04-lws",
    "modelCategoryIds":-1,
    "serviceGroupName":"test",
    "aspeedCRDConfigList":[
-    {
 ```
 
-`"quotaName":"`默认资源组`",`
+`{` `"quotaName":"`默认资源组`",`
 
 ```json
      "enableEP":false,
@@ -9616,10 +10329,9 @@ untu22.04-lws",
      "instanceCount":1,
      "gpuCountUnit":1,
      "imageAccelerationType":0
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "replicasCount":1,
@@ -9628,48 +10340,48 @@ untu22.04-lws",
    "gpuMemTotal":80,
 ```
 
-智能体工厂 OpenTrek
-
 ```json
 gpue ota :80,
    "serviceName":"test-H100-vllm",
    "deployType":[
-    {
      "framework":"deployment",
      "rdmaSwitch":false,
      "serviceConfig":[
-      {
-       "componentEnvs":[
-        {
-         "code":"temperature",
-         "value":"0.7"
-        }
 ```
 
-`],`
+`{`
+
+```json
+       "componentEnvs":[
+```
+
+`{`
+
+```json
+         "code":"temperature",
+         "value":"0.7"
+```
+
+`}` `],`
 
 ```json
        "envs":[
-        {
+```
+
+`{`
+
+```json
          "code":"temperature",
          "value":"0.7"
-        }
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
      "open":false
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "apiPort":"8080",
@@ -9679,10 +10391,9 @@ gpue ota :80,
    "rdmaSwitch":false,
    "gpuCountUnit":1,
    "imageAccelerationType":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -9693,10 +10404,9 @@ gpue ota :80,
  "pageSize":10,
  "httpCode":200,
  "totalCount":10
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -9709,7 +10419,7 @@ gpue ota :80,
  <gmtCreated>2026-02-02T03:53:49Z</gmtCreated>
 ```
 
-`<failedMsg>Pod`启动失败：镜像拉取超时`</failedMsg>` 智能体工厂 OpenTrek `<failedMsg>Pod`启动失败：镜像拉取超时`</failedMsg>`
+`<failedMsg>Pod`启动失败：镜像拉取超时`</failedMsg>` `<failedMsg>Pod`启动失败：镜像拉取超时`</failedMsg>`
 
 ```xml
  <modelMountList>
@@ -9771,8 +10481,6 @@ gpue ota :80,
   <runningGpuMem>0</runningGpuMem>
 <totalCpu>8</totalCpu>
 ```
-
-智能体工厂 OpenTrek
 
 ```xml
   <totalCpu>8</totalCpu>
@@ -9844,7 +10552,7 @@ gpue ota :80,
  <gpuType>1</gpuType>
 ```
 
-智能体工厂 OpenTrek `gp` `yp` `gp` `yp`
+`gp` `yp` `gp` `yp`
 
 ```xml
  <imageVersion>0.11.0-torch2.8-***12.8.1-py312-ubuntu22.04-lws</imageVersion>
@@ -9907,8 +10615,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
    </componentEnvs>
 ```
 
-智能体工厂 OpenTrek
-
 ```xml
    <envs>
     <code>temperature</code>
@@ -9927,13 +10633,19 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 </data> <pageIndex>1</pageIndex> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage /> <errorCode>500</errorCode> <pageSize>10</pageSize> <httpCode>200</httpCode> <totalCount>10</totalCount>
 ```
 
-##### GetOnlineService
+##### 4.7.1.3 GetOnlineService
+
+调用GetOnlineService查询指定在线服务的详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /online-service/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -9946,8 +10658,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -9967,8 +10677,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --pvcName | String | pvc-storage-xxxx | PVC名称。 |
 | -- dataAccInstan ce | String | da-****** | 数据加速实例。 |
 | --weightType | Integer | 0 | 权重类型。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -9990,7 +10698,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --serviceId | String | os-0573****04b94 | 服务ID。 |
 | -- serviceInstanc eId | String | osi-xxxx****xxxx | 服务实例ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10013,7 +10721,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --quotaId | String | rq-394c****04499 | 配额ID。 |
 | --quotaName | String | 默认资源组 | 配额名称。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- startCommand | String | python3 -m vllm.entrypoints.op enai.api server -- _ host 0.0.0.0 --port 8080 --model /model/ -- served model nam _ _ e Qwen2.5-0.5B | 启动命令。 |
@@ -10048,7 +10756,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | -- imageAccelera tionType | Integer | 0 | 镜像加速类型。 |
 | -- sharedMemCo unt | Integer | 1 | 共享内存大小，单位GB。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10070,7 +10778,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | ---name | String | 最大上下文长度 | 超参数名称。 |
 | ---type | String | float | 超参数类型。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10092,7 +10800,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --loraLoadInfo | Array | [] | LoRA动态配置信息。 |
 | ---loraConfigId | String | osla-12345 | LoRA配置ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10114,7 +10822,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | -aliyunUid | String | 198226****521225 | 阿里云主账号UID。 |
 | -regionId | String | cn-neimeng-236e- d01 | 地域ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10131,7 +10839,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | -imageName | String | vllm-inference | 镜像名称。 |
 | -imageVersion | String | 0.11.0-torch2.8- ***12.8.1-py312- ubuntu22.04-lws | 镜像版本。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10153,7 +10861,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | - instanceCount | Integer | 1 | 该类型实例数量。 |
 | -replicasCount | Integer | 1 | 推理子节点副本数。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10171,7 +10879,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | -aiProxyApikey | String | sk-******* | 模型API Key。 |
 | - serviceGroupU id | String | osg-******** | 在线服务所属服务组ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10195,7 +10903,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --totalGpu | Float | 1 | 总GPU卡数。 |
 | --totalGpuMem | Float | 0 | 总GPU显存大小，单位GB。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -deployType | Struct | [] | 部署类型配置信息。 |
@@ -10217,7 +10925,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --imageId | String | img-public- b003****905b7a | 镜像ID。 |
 | -- imageVersion | String | 0.11.0-torch2.8- ***12.8.1-py312- ubuntu22.04-lws | 镜像版本。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10240,8 +10948,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --- middlewareIns tanceId | String | kafka-xxxx****xxxx | Kafka实例ID。 |
 | ---inputTopic | String | async-input-topic | Kafka输入Topic。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ---outputTopic | String | async-output-topic | Kafka输出Topic。 |
@@ -10261,8 +10967,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | ---slbIpType | String | vpc | SLB地址类型。枚举值： - vpc ：VPC类型 - classic ：经典网络类型。 |
 | --- ingressClassN ame | String | higress | Ingress类型。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --- gatewayStatus | String | DEPLOY SUCCEED _ ED | 网关状态。枚举值： - PENDING ：Pending - DEPLOYING ：Deploying - DEPLOY SUCCEEDED ：Deployment _ succeeded - DEPLOY FAILED ：Deployment failed _ - WAIT UPDATE ：Wait update _ - UPDATEING ：Updating - UPDATE SUCCEEDED ：Update _ succeeded - UPDATE FAILED ：Update failed _ - WAIT UNDEPLOY ：Wait undeploy _ - UNDEPLOYING ：Undeploying - UNDEPLOY SUCCEEDED ： _ Undeployment succeeded - UNDEPLOY FAILED ：Undeployment _ failed。 |
@@ -10273,7 +10977,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --gwInstanceId | String | gw-inst- xxxx****xxxx | 网关实例ID。 |
 | --gwName | String | null | 网关实例名称。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10296,7 +11000,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --- resourceType | String | spec | 资源类型。 |
 | ---name | String | 最大上下文长度 | 超参数名称。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10320,7 +11024,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | ---unit | String | K | 超参数单位。 |
 | --regionId | String | cn-neimeng-**** | 地域ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10342,8 +11046,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | ---aliyunUid | String | 198226****521225 | 阿里云主账号UID。 |
 | ---regionId | String | cn-neimeng-236e- d01 | 地域ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --- imageVersionI d | String | v1.0 | 镜像版本ID。 |
@@ -10363,7 +11065,7 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | --codeRepo | Struct | {} | 套件关联的代码仓库信息。 |
 | ---id | Integer | 1 | id。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10386,8 +11088,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 | -- componentInp uts | Struct | {} | 套件输入配置。 |
 | ---artifacts | Array | [] | 制品列表。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ----code | String | test | 参数Code。 |
@@ -10406,13 +11106,12 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 请求示例
 
 ```
-&serviceId=os-d20bd45d0683a047a60b5f50f8b52****
+GET /online-service/get HTTP/1.1 &serviceId=os-d20bd45d0683a047a60b5f50f8b52****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "asyncService":{
    "imageVersion":"0.11.0-torch2.8-***12.8.1-py312-ubuntu22.04-lws",
@@ -10426,8 +11125,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
     "middlewareId":"mw-xxxx****xxxx",
 ```
 
-智能体工厂 OpenTrek
-
 ```json
     "outputTopic":"async-output-topic",
     "gmtModified":"2026-02-02T23:47:38Z",
@@ -10439,7 +11136,11 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
     "middlewareInstanceId":"kafka-xxxx****xxxx",
     "inputTopic":"async-input-topic",
     "authUser":"admin"
-   },
+```
+
+`},`
+
+```json
    "asyncServiceId":"as-xxxx****xxxx",
    "regionId":"cn-neimeng-236e-d01",
    "instanceCount":1,
@@ -10447,17 +11148,24 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
    "occupantId":"os-0573****04b94",
    "storageUrl":"/mnt/data/async",
    "cpuCount":8
-  },
+```
+
+`},`
+
+```json
   "storageMountList":[
-   {
+```
+
+`{`
+
+```json
     "mountPath":"/models",
     "pvcName":"pvc-storage-xxxx",
     "storagePath":"/data/storage",
     "storageSource":1
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gmtCreated":"2026-02-02T03:53:49Z",
@@ -10467,7 +11175,11 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 
 ```json
   "modelMountList":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"Qwen2.5-0.5B",
     "dataAccInstance":"da-******",
     "weightType":0,
@@ -10476,14 +11188,17 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
     "pvcName":"pvc-storage-xxxx",
     "modelVersion":"v1.0",
     "modelType":0
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "thirdpartyStorageMountList":[
-   {
+```
+
+`{`
+
+```json
     "gmtModified":"2026-02-02T23:47:38Z",
     "mountPath":"/models",
     "storageSubPath":"/data/models",
@@ -10492,7 +11207,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
     "regionId":"cn-neimeng-236e-d01",
     "occupantId":"os-0573****04b94",
     "storageId":"ts-xxxx****xxxx"
-   }
 ```
 
 `],`
@@ -10501,11 +11215,8 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
   "apikeyPermission":false,
 ```
 
-智能体工厂 OpenTrek
-
 ```json
   "ddpRoleInstanceConfig":[
-   {
 ```
 
 `"quotaName":"`默认资源组`",`
@@ -10538,10 +11249,9 @@ ntu22.04-lws",
     "instanceCount":1,
     "gpuCountUnit":1,
     "imageAccelerationType":0
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "sharedMemCount":1,
@@ -10553,7 +11263,11 @@ ntu22.04-lws",
   "imageName":"vllm-inference",
   "componentDetail":{
    "componentParams":[
-    {
+```
+
+`{`
+
+```json
      "unit":"K",
      "code":"max-context-len",
      "defaultValue":"1.0",
@@ -10566,44 +11280,42 @@ ntu22.04-lws",
      "description":"test",
      "type":"float",
      "value":"0.7"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "componentType":"inference",
    "componentInputs":{
 ```
 
-"
+`"`
 
 ```
 tif t"[
 ```
 
-智能体工厂 OpenTrek
-
 ```json
     "artifacts":[
-     {
       "mountPath":"/models",
       "code":"test",
       "name":"test",
       "type":"float"
-     }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-   },
    "componentId":"comp-xxxx****xxxx",
    "componentMultiEntry":{
     "decodeEntry":"python3",
     "proxyEntry":"python3",
     "prefillEntry":"python3"
-   },
+```
+
+`},`
+
+```json
    "componentSubType":"llm",
    "image":{
     "imageVersion":"0.11.0-torch2.8-***12.8.1-py312-ubuntu22.04-lws",
@@ -10626,9 +11338,17 @@ tif t"[
     "id":1,
     "imageSize":"27107966",
     "imageAccelerationType":0
-   },
+```
+
+`},`
+
+```json
    "componentResourceSpecs":[
-    {
+```
+
+`{`
+
+```json
      "vGPU":false,
      "gpuMemory":"8192",
      "shmSizeUnit":"GB",
@@ -10645,7 +11365,6 @@ tif t"[
      "gpu":1.0,
      "resourceType":"spec",
      "gpuType":"NVIDIA_Ampere_*****"
-    }
 ```
 
 `],`
@@ -10653,8 +11372,6 @@ tif t"[
 ```json
 "componentDescription":"vLLM推理套件"
 ```
-
-智能体工厂 OpenTrek
 
 ```json
    componentDescription:vLLM推理套件,
@@ -10673,18 +11390,29 @@ tif t"[
     "description":"test",
     "id":1,
     "codeRepoType":1
-   },
-   "componentApis":[
-    {
-     "componentApi":"{}"
-    }
 ```
 
-`],`
+`},`
+
+```json
+   "componentApis":[
+```
+
+`{`
+
+```json
+     "componentApi":"{}"
+```
+
+`}` `],`
 
 ```json
    "componentMetas":[
-    {
+```
+
+`{`
+
+```json
      "unit":"K",
      "code":"max-context-len",
      "defaultValue":"1.0",
@@ -10694,10 +11422,9 @@ tif t"[
 
 ```json
      "type":"float"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "componentCustomService":{},
@@ -10707,19 +11434,20 @@ tif t"[
    "componentLabels":{},
    "componentOutputs":{
     "artifacts":[
-     {
+```
+
+`{`
+
+```json
       "mountPath":"/models",
       "code":"test",
       "name":"test",
       "type":"float"
-     }
 ```
 
-]
+`}` `]` `}` `},`
 
 ```json
-   }
-  },
   "haType":0,
   "instanceCost":{
    "runningPod":1.0,
@@ -10730,13 +11458,11 @@ tif t"[
    "totalMem":16.0,
 ```
 
-智能体工厂 OpenTrek
-
 ```
 tota
 ```
 
-e
+`e`
 
 ```json
 :6.0,
@@ -10746,7 +11472,11 @@ e
    "runningCpu":8.0,
    "totalCost":0.0,
    "totalGpu":1.0
-  },
+```
+
+`},`
+
+```json
   "quotaId":"rq-394c****04499",
   "startCommand":"python3 -m vllm.entrypoints.openai.api_server --host 0.0.0.0 --port 8
 080 --model /model/ --served_model_name Qwen2.5-0.5B",
@@ -10762,9 +11492,17 @@ e
 ```json
   "aliyunUid":"198226****521225",
   "inferenceRuntimeConfigList":[
-   {
+```
+
+`{`
+
+```json
     "loraConfig":[
-     {
+```
+
+`{`
+
+```json
       "loraModuleSourceType":0,
       "mountPath":"/models/lora",
       "modelId":"md-lora-xxxx****xxxx",
@@ -10778,14 +11516,17 @@ e
       "modelType":"lora",
       "loraModuleName":"lora-adapter-1",
       "storageSource":"1"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "hyperparameterConfig":[
-     {
+```
+
+`{`
+
+```json
       "code":"max-context-len",
       "defaultValue":"1.0",
       "custom":false,
@@ -10797,31 +11538,30 @@ e
       "description":"test",
       "type":"float",
       "value":"0.7"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "serviceInstanceId":"osi-xxxx****xxxx",
     "loraLoadInfo":[
-     {
+```
+
+`{`
+
+```json
       "loraModuleCurrentStatus":"ENABLE",
       "mountPath":"/models/lora",
       "loraModuleSource":0,
       "loraModuleTargetStatus":"DISABEL",
       "sourceInfo":[
-       {
         "modelId":"md-123",
         "modelVersion":"v1",
 ```
 
-智能体工厂 OpenTrek
-
 ```json
         "storagePath":"oss://******/",
         "storageSource":"1"
-       }
 ```
 
 `],`
@@ -10830,16 +11570,9 @@ e
       "loraConfigId":"osla-12345",
       "loraModuleName":"lora-adapter-1",
       "statusMessage":"null"
-     }
 ```
 
-]
-
-```
-   }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
   "docId":"doc-*****",
@@ -10849,7 +11582,11 @@ e
   "aiGatewayInfo":{
    "sourceType":1,
    "aiGatewayList":[
-    {
+```
+
+`{`
+
+```json
      "gmtModified":"2026-02-02T23:47:38Z",
      "occupantResourceId":"os-0573****04b94",
      "gmtCreated":"2026-02-02T03:53:49Z",
@@ -10866,16 +11603,19 @@ e
      "slbIp":"10.0.0.1",
      "gwInstanceId":"gw-inst-xxxx****xxxx",
      "gatewayStatus":"DEPLOY_SUCCEEDED"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gwInstanceId":"gw-inst-xxxx****xxxx",
    "gwName":"",
    "open":false
-  },
+```
+
+`},`
+
+```json
   "accessType":false,
   "servedModelName":"Qwen2.5-0.5B",
   "endpoint":"http:://*****",
@@ -10891,12 +11631,9 @@ e
   "modelCategoryIds":1,
 ```
 
-智能体工厂 OpenTrek
-
 ```json
   "serviceGroupName":"test",
   "aspeedCRDConfigList":[
-   {
 ```
 
 `"quotaName":"`默认资源组`",`
@@ -10935,10 +11672,9 @@ ntu22.04-lws",
     "instanceCount":1,
     "gpuCountUnit":1,
     "imageAccelerationType":0
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "replicasCount":1,
@@ -10951,28 +11687,32 @@ ntu22.04-lws",
    "rdmaSwitch":false,
    "serviceConfig":{
     "componentEnvs":[
-     {
-      "code":"test",
-      "value":"0.7"
-     }
 ```
 
-`],` 智能体工厂 OpenTrek
+`{`
+
+```json
+      "code":"test",
+      "value":"0.7"
+```
+
+`],`
 
 ```json
     "envs":[
-     {
       "code":"test",
       "value":"0.7"
-     }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-   },
    "open":false
-  },
+```
+
+`},`
+
+```json
   "apiPort":"8080",
   "regionId":"cn-neimeng-236e-d01",
   "gpuMemTotalUnit":1,
@@ -10980,16 +11720,19 @@ ntu22.04-lws",
   "rdmaSwitch":false,
   "gpuCountUnit":1,
   "imageAccelerationType":0
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -11021,8 +11764,6 @@ ntu22.04-lws",
   <occupantId>os-0573****04b94</occupantId>
   <storageUrl>/mnt/data/async</storageUrl>
 ```
-
-智能体工厂 OpenTrek
 
 ```xml
   <cpuCount>8</cpuCount>
@@ -11089,8 +11830,6 @@ ntu22.04-lws",
   <imageIdAndVersion>img-public-b003****905b7a, 0.11.0-torch2.8-***12.8.1-py312-ubuntu2
 ```
 
-智能体工厂 OpenTrek
-
 ```xml
 2.04-lws</imageIdAndVersion>
   <apiPort>8080</apiPort>
@@ -11152,7 +11891,7 @@ ntu22.04-lws",
    <imageDigest>5b046e2de8c490819125193ee2eb71a66f2cc16c032dcd8b69ead4be1024****</image
 ```
 
-`Di` `t>` 智能体工厂 OpenTrek
+`Di` `t>`
 
 ```xml
 Digest>
@@ -11219,8 +11958,6 @@ Digest>
   <componentDatasetFormats  />
 <componentName>vllm-component</componentName>
 ```
-
-智能体工厂 OpenTrek
 
 ```xml
   <componentName>vllmcomponent</componentName>
@@ -11292,7 +12029,7 @@ Digest>
    <type>float</type>
 ```
 
-智能体工厂 OpenTrek `yp`
+`yp`
 
 ```xml
 /yp
@@ -11351,8 +12088,6 @@ Digest>
  <serviceId>os-0573****04b94</serviceId>
  <clusterVpcList>[&quot;vpc-****&quot;]</clusterVpcList>
 ```
-
-智能体工厂 OpenTrek
 
 ```xml
  <aliyunSubUid>261080****688733</aliyunSubUid>
@@ -11415,8 +12150,6 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
     <code>test</code>
 ```
 
-智能体工厂 OpenTrek
-
 ```xml
     <value>0.7</value>
    </componentEnvs>
@@ -11437,7 +12170,9 @@ odel /model/ --served_model_name Qwen2.5-0.5B</command>
 </data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage /> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-##### ModifyOnlineServiceSpec
+##### 4.7.1.4 ModifyOnlineServiceSpec
+
+调用ModifyOnlineServiceSpec修改指定在线服务的配额信息。
 
 **请求头**
 
@@ -11458,7 +12193,7 @@ PUT /online-service/modify-spec HTTP/1.1
 | memCoun t | Integ er | Body | 是 | 1 | 内存大小，单位为GB，该参数必填。 |
 | gpuCount | Integ er | Body | 是 | 1 | GPU大小，单位为卡，该参数必填。 |
 
-| A | I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -11484,23 +12219,29 @@ PUT /online-service/modify-spec HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service/modify-spec HTTP/1.1 { "serviceId":"os-5bceba1c05979043de081400ds9s9****", "cpuCount":"1", "memCount":"1", "gpuCount":"1", "instanceCount":"1" }
+```
+PUT /online-service/modify-spec HTTP/1.1
 ```
 
-智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-5bceba1c05979043de081400ds9s9****", "cpuCount":"1", "memCount":"1", "gpuCount":"1", "instanceCount":"1"
+```
+
+正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyOnlineServiceConfig
+`}`
+
+##### 4.7.1.5 ModifyOnlineServiceConfig
 
 调用ModifyOnlineServiceConfig修改指定在线服务配置并重启服务。
 
@@ -11527,8 +12268,6 @@ POST /online-service/modify-online-service-config HTTP/1.1
 | sharedMe mCount | Integ er | Body | 否 | 4 | 共享内存大小，单位为GB。 |
 | gpuMemC ount | Integ er | Query | 否 | 8 | GPU显存份数，按照切分粒度来统计，开启GPU虚拟化时需填写；例如切分粒度为 128MB, 申请显存份数为 8，即可申请1GB显存。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | gpuCount | Integ er | Body | 否 | 1 | gpu大小，单位为卡。 |
@@ -11542,10 +12281,6 @@ POST /online-service/modify-online-service-config HTTP/1.1
 | storageMo untList | Json | Body | 否 | { "mountPath": "/datas/utils/test", "storagePath": "oss://******", "storageSource": 1 } | 持久化存储设置。 |
 | aspeedCR DConfigLi st | Json | Body | 否 | {} | aspeed配置。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -11558,31 +12293,35 @@ POST /online-service/modify-online-service-config HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service/modify-online-service-config HTTP/1.1 { "serviceId":"os-d20bd4****", "apiPort":"8000", "startCommand":"python3 main.py", "imageId":"img-66562b610952c0441e0ba6a*****", "imageVersion":"v1" }
+```
+POST /online-service/modify-online-service-config HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-d20bd4****", "apiPort":"8000", "startCommand":"python3 main.py", "imageId":"img-66562b610952c0441e0ba6a*****", "imageVersion":"v1"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreateOnlineService
+`}`
+
+##### 4.7.1.6 CreateOnlineService
+
+调用CreateOnlineService创建在线服务。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
 **请求语法**
-
-智能体工厂 OpenTrek
 
 ```
 POST /online-service/create HTTP/1.1
@@ -11600,7 +12339,7 @@ POST /online-service/create HTTP/1.1
 | imageId | Strin g | Body | 是 | img- cf3b10300ca7c0423b08 a3e02c54**** | 镜像ID，该参数必填。 |
 | imageVer sion | Strin g | Body | 是 | v1 | 镜像版本，该参数必填。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -11617,8 +12356,6 @@ POST /online-service/create HTTP/1.1
 | servicePor t | Strin g | Body | 否 | 80 | Service端口，配置模型服务Service的访问端口，端口可配置范围：80-9000。 默认值：80。 |
 | apiPort | Strin g | Body | 是 | 8080 | API访问端口，该参数必填。 配置模型服务所在POD的 API访问端口，可通过API 访问该模型在线服务。 端口可配置范围建议在： 1000-9000。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | accessTyp e | Boole an | Body | 否 | false | 是否开启经典网络访问，取值范围： true：开启。 false：关闭。 默认值：false。 |
@@ -11629,8 +12366,6 @@ POST /online-service/create HTTP/1.1
 | routerPoli cy | Strin g | Body | 否 | "prefix cache" _ | 网关智能路由策略名称。 |
 | asyncServ ice | Json | Body | 否 | { "open": true, "middlewareType": "kafka", "middlewareMetaInfo": { "middlewareInstanceId": "clust***", "inputTopic": "kafk**", "authUser": "aistudio", "servers": "192.16**" }, "cpuCount": 2, "memCount": 4, "instanceCount": 2, "storageMountList": [ { "storagePath": "oss://pe**/code/", "mountPath": null, "pvcName": "", "storageSource": 1 } ] } | 异步配置。 |
 | deployTyp e | Json | Body | 否 | { "open":true, "framework":"deployme nt", "serviceConfig":{ "rdmaEnable": true, "envs": [ "code":"code- name", "value":"code- value" ] } } | 部署类型。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11643,16 +12378,12 @@ POST /online-service/create HTTP/1.1
 | storageMo untList | Json | Body | 否 | [{ "quotaId": "rq- d8890a98089c2041d80 86bb0b2e****", "mountPath": "/root/", "storageSource": 1, "storagePath": "oss://****/****/" }] | 持久化存储设置。 |
 | nodeConfi gList | Json | Body | 否 | [{}] | 节点配置，可不填。已删除 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | hyperpara meterConf ig | Json | Body | 否 | [ { "code": "tensor- parallel-size", "defaultValue": "2", "name": "张量并行", "description": "张量并行, 单机多卡状态采用的卡数", "type": "INT" }, { "code": "max-model- len", "defaultValue": "32768", "name": "最大长度", "description": "模型处理的上下文长度", "type": "INT" } ] | 推理引擎配置的超参数。 推理服务中，hyperParams（超参数） 是控制大模型文本生成行为的一组可配置参数，它们不改变模型结构，但直接影响输出结果的质量、多样性、长度和风格。比如： temperature 控制输出随机性，值越高越随机，越低越确定。 |
 | componen tInputs | Json | Body | 否 | [ { "mountPath": "$INPUT DIR/model", _ "code": "model", "name": "模型", "type": "model", "sourceType": "model", "modelId": "md-system-56b1f****", "modelVersion": "v1.0", "dataAccInstance": "" } ] | 推理套件输入参数，示例是输入参数中的模型定义。 包含：使用的模型、模型版本、模型挂载路径、模型关联数据加速器等。 |
 | componen tOutputs | Json | Body | 否 | [ { "sourceType": "oss", "storagePath": "oss://****/****/" } ] | 推理套件输出参数，示例是输入参数中的持久化存储定义。 包含：使用的存储类型、存储地址。 |
 | inference RuntimeC onfig | Json | Body | 否 | { "resource": [ { "role": "prefiller", "replicates": 1, "quotaId": "rq- 5ae8d4200*****", "instanceCount": 1, "nodeCount": 1, "cpuCount": 16, "memCount": 32, "sharedMemCount": 20, "gpuCount": 1, "vGPU": false, "gpuType": "NVIDIA ****", _ "sharedMemory": 16 }, { "role": "decoder", "replicates": 1, "quotaId": "rq- 5ae8d420*****", "instanceCount": 1, "nodeCount": 1, "cpuCount": 16, "memCount": 32, "sharedMemCount": 20, "gpuCount": 1, "vGPU": false, "gpuType": "NVIDIA ****", _ "sharedMemory": 16 }, "multiLoraData": [ { "modelVersion": "v1.0", "modelId": "md-system- f63****" } ] ] } | 推理服务运行时参数。 包含multi-lora运行时配置和 PD分离 prefill decoder 运行时参数。 PD分离调度："role"为： "prefiller"、"decoder"、 "proxy"。并分别定义了每个role使用的资源规格和资源配额。 多Lora部署：定义了多个 lora模型的Id和版本号。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11673,30 +12404,42 @@ POST /online-service/create HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service/create HTTP/1.1 { "serviceName":"service-name", "imageId":"img-cf3b10300ca7c0423b08a3e02c54****", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27f****", "startCommand":"python3 main.py", "cpuCount":"1", "memCount":"1", "gpuCount":"0", "instanceCount":"1", "apiPort":"8080" }
+```
+POST /online-service/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"serviceName":"service-name", "imageId":"img-cf3b10300ca7c0423b08a3e02c54****", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27f****", "startCommand":"python3 main.py", "cpuCount":"1", "memCount":"1", "gpuCount":"0", "instanceCount":"1", "apiPort":"8080"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{     \"serviceId\": \"os-****\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteOnlineService
+`}`
+
+##### 4.7.1.7 DeleteOnlineService
+
+调用DeleteOnlineService删除指定的在线服务。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /online-service/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -11714,27 +12457,27 @@ POST /online-service/create HTTP/1.1 { "serviceName":"service-name", "imageId":"
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
-&serviceId=os-d20bd45d0683a047a60b5f50f8b52****
+DELETE /online-service/delete HTTP/1.1 &serviceId=os-d20bd45d0683a047a60b5f50f8b52****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyOnlineServiceStatus
+`}`
+
+##### 4.7.1.8 ModifyOnlineServiceStatus
+
+调用ModifyOnlineServiceStatus修改指定在线服务状态。
 
 **请求头**
 
@@ -11759,8 +12502,6 @@ PUT /online-service/modify-status HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -11772,23 +12513,29 @@ PUT /online-service/modify-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service/modify-status HTTP/1.1 { "serviceId":"os-5bceba1c05979043de081400df54****", "serviceStatus":"true" }
+```
+PUT /online-service/modify-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-5bceba1c05979043de081400df54****", "serviceStatus":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyOnlineService
+`}`
+
+##### 4.7.1.9 ModifyOnlineService
 
 调用ModifyOnlineService修改指定在线服务的部分信息，包括服务名称和描述。
 
@@ -11803,8 +12550,6 @@ PUT /online-service/modify HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11826,23 +12571,29 @@ PUT /online-service/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service/modify HTTP/1.1 { "serviceId":"os-5bceba1c05979043de081400df546****", "serviceName":"service-name" }
+```
+PUT /online-service/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"serviceId":"os-5bceba1c05979043de081400df546****", "serviceName":"service-name"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyOnlineServicePortSpec
+`}`
+
+##### 4.7.1.10 ModifyOnlineServicePortSpec
 
 调用ModifyOnlineServicePortSpec修改指定在线服务的端口配置。
 
@@ -11871,8 +12622,6 @@ PUT /online-service/modify-port-spec HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -11883,23 +12632,31 @@ PUT /online-service/modify-port-spec HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service/modify-port-spec HTTP/1.1 { "serviceId":"os-123f3c61074d3046b408be70c81****" }
+```
+PUT /online-service/modify-port-spec HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-123f3c61074d3046b408be70c81****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetServiceHealthStatus
+`}`
+
+##### 4.7.1.11 GetServiceHealthStatus
+
+调用GetServiceHealthStatus检查服务健康。
 
 **请求头**
 
@@ -11916,8 +12673,6 @@ GET /inference-access/check-service-health HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | resourceS erviceId | Strin g | Query | 是 | example123 | 资源服务唯一标识符，用于区分不同的资源服务类型或实例。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11945,24 +12700,30 @@ GET /inference-access/check-service-health HTTP/1.1
 GET /inference-access/check-service-health HTTP/1.1 &resourceServiceId=example123
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "result":false,
   "fullMessage":"error",
   "message":"error"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreateSecurityScanTask
+`}`
+
+##### 4.7.1.12 CreateSecurityScanTask
+
+调用CreateSecurityScanTask创建在线服务安全评测任务。
 
 **请求头**
 
@@ -11983,8 +12744,6 @@ POST /sec-scan/create HTTP/1.1
 | usePredefi nedRule | Strin g | Body | 是 | true | 表示是否使用预定义安全评测规则，该参数必填，取值范围： true：启用预定义规则。 false：不启用预定义规则。 |
 | isBypass | Strin g | Body | 是 | false | 是否开启对抗攻击模式，该参数必填，取值范围： true：开启。 false：不开启。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | isScanHigr ess | Strin g | Body | 否 | true | 表示被扫描的在线服务是否启用Higress网关，取值范围： true：已启用。 false：未启用。 |
@@ -12002,7 +12761,7 @@ POST /sec-scan/create HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -12015,31 +12774,37 @@ POST /sec-scan/create HTTP/1.1
 
 请求示例
 
+```
+POST /sec-scan/create HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /sec-scan/create HTTP/1.1 { "quotaId":"rq-d8890a98088086bb0b2e27****", "regionId":"cn-hangzhou", "usePredefinedRule":"true", "isBypass":"false", "storageMountList":"[{
+"quotaId":"rq-d8890a98088086bb0b2e27****", "regionId":"cn-hangzhou", "usePredefinedRule":"true", "isBypass":"false", "storageMountList":"[{
     "storageSource": 1,
     "storagePath": "oss://yx-test.oss-cn-wulan-env17*****e.shuguang.com/ai-
 scanner/reports/" }]", "scanModelConfigs":"[{
     "serviceId": "os-906479350*****"
 }]", "riskCheckModelConfigs":"[{
     "serviceId": "os-906479350d****"
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListSecScanTaskByServiceId
+`}`
+
+##### 4.7.1.13 ListSecScanTaskByServiceId
 
 调用ListSecScanTaskByServiceId查询目标在线服务的安全评测任务信息。
 
@@ -12063,8 +12828,6 @@ GET /sec-scan/list HTTP/1.1
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序。 DESC：降序。 ASC：升序。 默认值：DESC。 |
 | taskId | Strin g | Query | 否 | ss- 5103add0062e20452c8 0383***** | 任务ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | taskStatus | Integ er | Query | 否 | 0 | 安全评测状态，取值范围： 0：已创建。 1：启动中。 2：运行中。 3：已停止。 4：失败。 5：完成。 |
@@ -12086,7 +12849,7 @@ GET /sec-scan/list HTTP/1.1
 | --pvcName | String | pvc-storage-001 | PVC 名称。 |
 | - datasetMountL ist | Array | - | 数据集挂载列表。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12109,7 +12872,7 @@ GET /sec-scan/list HTTP/1.1
 | --mountPath | String | /mnt/output/ | 容器内挂载路径。 |
 | --pvcName | String | pvc-storage-001 | PVC 名称。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12132,8 +12895,6 @@ GET /sec-scan/list HTTP/1.1
 | -aliyunUid | String | 1277********1314 | 阿里云账号 UID。 |
 | -failedMsg | String | null | 失败信息；失败态可能有值。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -gmtCreated | String | 2026-03- 05T07:20:15Z | 任务创建时间（UTC）。 |
@@ -12154,7 +12915,7 @@ GET /sec-scan/list HTTP/1.1
 | --runningCpu | Integer | 0 | 运行中 CPU。 |
 | --runningGpu | Integer | 0 | 运行中 GPU。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- runningGpuMe m | Integer | 0 | 运行中 GPU 显存。 |
@@ -12174,18 +12935,15 @@ GET /sec-scan/list HTTP/1.1
 | pageSize | Integer | 10 | 每页条数。 |
 | pageIndex | Integer | 1 | 当前页码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
 GET /sec-scan/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "pageIndex":1,
  "success":true,
@@ -12195,16 +12953,23 @@ GET /sec-scan/list HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-##### GetASpeedTemplate
+`}`
+
+##### 4.7.1.14 GetASpeedTemplate
+
+调用GetASpeedTemplate查询ASpeed CRD部署模板。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /online-service/get-aspeed-template HTTP/1.1
+```
 
 **请求参数**
 
@@ -12219,8 +12984,6 @@ GET /sec-scan/list HTTP/1.1
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -12241,7 +13004,7 @@ GET /sec-scan/list HTTP/1.1
 | -runtimeType | String | infer-singlenode | 运行时模板类型。 |
 | - templateName | String | Qwen3-32B | 运行时模板名称。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12256,17 +13019,21 @@ GET /sec-scan/list HTTP/1.1
 
 请求示例
 
+```
+POST /online-service/get-aspeed-template HTTP/1.1
+```
+
+`{`
+
 ```json
-{ "resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeba63****" }
+"resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeba63****"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{}`
 
-```
-{}
-```
+##### 4.7.1.15 ListAPIs
 
-##### ListAPIs
+调用ListAPIs查询在线服务所有可用的API接口信息。
 
 **请求头**
 
@@ -12274,12 +13041,14 @@ GET /sec-scan/list HTTP/1.1
 
 **请求语法**
 
+```
+GET /online-service/list-apis HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -12303,28 +13072,26 @@ GET /sec-scan/list HTTP/1.1
 | --Authorization | String | ****** | 鉴权头；代码里会脱敏为 ****** 。 |
 | --User-Agent | String | GenericHttpProxy/ 1.0 | 默认 User-Agent。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
-&entityId=os-7dawe99aw23jnfa****
+GET /online-service/list-apis HTTP/1.1 &entityId=os-7dawe99aw23jnfa****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"-",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### OnlineDebugging
+`}`
+
+##### 4.7.1.16 OnlineDebugging
 
 调用OnlineDebugging实现在线调试，指在在线服务运行过程中，通过远程连接对服务进行实时请求并获取模型响应。
 
@@ -12348,8 +13115,6 @@ POST /online-service/debug HTTP/1.1
 | serviceId | Strin g | Body | 是 | os-xxx | 在线服务ID，该参数必填。 |
 | headers | Json | Body | 否 | { "Authorization": "*****", "Accept": "*/*", "User-Agent": "GenericHttpProxy/1.0" } | 请求头。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | requestBo dy | Strin g | Body | 是 | { \"input\": { \"query\": \"What is a text ranking model?\", \"documents\": [ \"Text ranking models are widely used in search engines and recommendation systems, where they rank candidate texts based on text relevance.\", \"Quantum computing is a cutting-edge field in computing science.\", \"The development of pre-trained language models has brought new progress to text ranking models.\" ] }, \"parameters\": { \"top n\": 5, _ \"return documents\": _ true } }", "RegionId": "cn- wulan-env119-d01 | HTTP请求体，该参数必填。 |
@@ -12365,32 +13130,35 @@ POST /online-service/debug HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
-```json
-POST /online-service/debug HTTP/1.1 { "domainUrl":"http://example.com", "apiPath":"/test/1", "httpMethod":"POST", "serviceId":"os-xxx", "requestBody":"{ \"input\": { \"query\": \"What is a text ranking model?\", \"documents\": [ \"Text ranking models are widely used in search engines and recom mendation systems, where they rank candidate texts based on text relevance.\", \"Q uantum computing is a cutting-edge field in computing science.\", \"The development of pre-trained language models has brought new progress to text ranking mod els.\" ] }, \"parameters\": { \"top_n\": 5, \"return_documents\": true }}",
-    "RegionId": "cn-wulan-env119-d01"
-}
+```
+POST /online-service/debug HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"domainUrl":"http://example.com", "apiPath":"/test/1", "httpMethod":"POST", "serviceId":"os-xxx", "requestBody":"{ \"input\": { \"query\": \"What is a text ranking model?\", \"documents\": [ \"Text ranking models are widely used in search engines and recom mendation systems, where they rank candidate texts based on text relevance.\", \"Q uantum computing is a cutting-edge field in computing science.\", \"The development of pre-trained language models has brought new progress to text ranking mod els.\" ] }, \"parameters\": { \"top_n\": 5, \"return_documents\": true }}",
+    "RegionId": "cn-wulan-env119-d01"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteSecurityScanTask
+`}`
+
+##### 4.7.1.17 DeleteSecurityScanTask
+
+调用DeleteSecurityScanTask删除指定的在线服务安全评测任务。
 
 **请求头**
 
@@ -12408,10 +13176,6 @@ DELETE /sec-scan/delete HTTP/1.1
 |---|---|---|---|---|---|
 | taskId | Strin g | Query | 是 | ss- 5103add0062e20452c8 0383***** | 任务ID。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -12428,21 +13192,21 @@ DELETE /sec-scan/delete HTTP/1.1
 DELETE /sec-scan/delete HTTP/1.1 &taskId=ss-5103add0062e20452c80383*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### 弹性伸缩
+`}`
 
-###### ListAutoScalerRecord
+##### 4.7.1.18 弹性伸缩
+
+###### 4.7.1.18.1 ListAutoScalerRecord
 
 调用ListAutoScalerRecord查询所有的在线服务详情-获取弹性伸缩配置记录列表。
 
@@ -12455,8 +13219,6 @@ DELETE /sec-scan/delete HTTP/1.1 &taskId=ss-5103add0062e20452c80383*****
 ```
 GET /inference-service/list-autoscaler-record HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -12478,7 +13240,7 @@ GET /inference-service/list-autoscaler-record HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -12496,7 +13258,7 @@ GET /inference-service/list-autoscaler-record HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12513,10 +13275,9 @@ GET /inference-service/list-autoscaler-record HTTP/1.1
 GET /inference-service/list-autoscaler-record HTTP/1.1 &serviceId=os-d20bd45d0683a047a60b5f50f8b52****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -12526,10 +13287,11 @@ GET /inference-service/list-autoscaler-record HTTP/1.1 &serviceId=os-d20bd45d068
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-###### CreateInferenceServiceAutoScaler
+`}`
+
+###### 4.7.1.18.2 CreateInferenceServiceAutoScaler
 
 调用CreateInferenceServiceAutoScaler创建推理服务弹性伸缩配置。
 
@@ -12549,7 +13311,7 @@ POST /inference-service/create-autoscale HTTP/1.1
 |---|---|---|---|---|---|
 | serviceId | Strin g | Body | 是 | os- d20bd45d0683a047a60 b5f50f8b52**** | 在线服务ID，该参数必填。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12570,7 +13332,7 @@ POST /inference-service/create-autoscale HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12581,27 +13343,33 @@ POST /inference-service/create-autoscale HTTP/1.1
 
 请求示例
 
-```json
-POST /inference-service/create-autoscale HTTP/1.1 { "serviceId":"os-d20bd45d0683a047a60b5f50f8b52****", "minInstanceCount":"1", "maxInstanceCount":"3", "scaleStrategies":"[{
- "metricName": "cpu:Utilization",
- "threshold": 2
-}]" }
+```
+POST /inference-service/create-autoscale HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-d20bd45d0683a047a60b5f50f8b52****", "minInstanceCount":"1", "maxInstanceCount":"3", "scaleStrategies":"[{
+ "metricName": "cpu:Utilization",
+ "threshold": 2
+}]"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{     \"scaleConfigId\": \"isa-cfg-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### DeleteInferenceServiceAutoScaler
+`}`
+
+###### 4.7.1.18.3 DeleteInferenceServiceAutoScaler
 
 调用DeleteInferenceServiceAutoScaler删除指定的推理服务弹性伸缩。
 
@@ -12621,10 +13389,6 @@ DELETE /inference-service/delete-autoscale HTTP/1.1
 |---|---|---|---|---|---|
 | serviceId | Strin g | Query | 是 | os- d20bd45d0683a047a60 b5f50f8b52**** | 在线服务ID，该参数必填 |
 
-智能体工厂 OpenTrek
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -12641,19 +13405,19 @@ DELETE /inference-service/delete-autoscale HTTP/1.1
 DELETE /inference-service/delete-autoscale HTTP/1.1 &serviceId=os-d20bd45d0683a047a60b5f50f8b52****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### GetInferenceServiceAutoScaler
+`}`
+
+###### 4.7.1.18.4 GetInferenceServiceAutoScaler
 
 调用GetInferenceServiceAutoScaler查询指定推理服务弹性伸缩配置详细信息。
 
@@ -12666,8 +13430,6 @@ DELETE /inference-service/delete-autoscale HTTP/1.1 &serviceId=os-d20bd45d0683a0
 ```
 GET /inference-service/get-autoscale HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -12710,7 +13472,7 @@ GET /inference-service/get-autoscale HTTP/1.1
 | - onZeroBehavi or | Struct | {} | 弹性扩缩容参数配置，指定缩容为0时的策略。 |
 | -- scaleDownGra cePeriodSecon ds | Integer | 600 | 缩容到0之前的等待期。 当指标满足缩容到0的条件时，需要经过等待期的时间，才会执行缩容到0。默认值为600。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- scaleUpActivat ionReplicas | Integer | 1 | 当从0开始扩容时，一次性创建的实例数。默认值为1。 |
@@ -12723,20 +13485,20 @@ GET /inference-service/get-autoscale HTTP/1.1
 GET /inference-service/get-autoscale HTTP/1.1 &serviceId=os-d20bd45d0683a047a60b5f50f8b52****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ModifyInferenceServiceAutoScaler
+`}`
+
+###### 4.7.1.18.5 ModifyInferenceServiceAutoScaler
 
 调用ModifyInferenceServiceAutoScaler修改推理服务弹性伸缩配置。
 
@@ -12758,8 +13520,6 @@ PUT /inference-service/modify-autoscale HTTP/1.1
 | minInstan ceCount | Integ er | Body | 是 | 1 | 最小实例数，该参数必填。 |
 | maxInstan ceCount | Integ er | Body | 是 | 3 | 最大实例数，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | scaleStrat egies | Json | Body | 是 | [{ "metricName": "cpu:Utilization", "threshold": 2 }] | 伸缩策略列表，该参数必填。 |
@@ -12778,36 +13538,42 @@ PUT /inference-service/modify-autoscale HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /inference-service/modify-autoscale HTTP/1.1 { "serviceId":"os-d20bd45d0683a047a60b5f50f8b52****", "minInstanceCount":"1", "maxInstanceCount":"3", "scaleStrategies":"[{
+PUT /inference-service/modify-autoscale HTTP/1.1 "serviceId":"os-d20bd45d0683a047a60b5f50f8b52****", "minInstanceCount":"1", "maxInstanceCount":"3", "scaleStrategies":"[{
  "metricName": "cpu:Utilization",
  "threshold": 2
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### AI网关
+`}`
 
-###### CreateAIGateway
+##### 4.7.1.19 AI网关
+
+###### 4.7.1.19.1 CreateAIGateway
+
+调用CreateAIGateway创建在线服务AI网关。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /online-service/create-ai-gateway HTTP/1.1
+```
 
 **请求参数**
 
@@ -12816,10 +13582,6 @@ PUT /inference-service/modify-autoscale HTTP/1.1 { "serviceId":"os-d20bd45d0683a
 | open | Boole an | Body | 是 | true | 是否开启权重配置，该参数必填。取值： true ：开启 |
 | instanceId | Strin g | Body | 是 | i-08ea***77a98866 | 网关实例id，该参数必填。 |
 | occupantI d | Strin g | Body | 是 | os-12345** | 在线服务id或者灰度组id， 该参数必填。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -12833,33 +13595,35 @@ PUT /inference-service/modify-autoscale HTTP/1.1 { "serviceId":"os-d20bd45d0683a
 
 请求示例
 
-```json
-{ "open":"true", "instanceId":"i-08ea***77a98866", "occupantId":"os-12345**" }
+```
+POST /online-service/create-ai-gateway HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"open":"true", "instanceId":"i-08ea***77a98866", "occupantId":"os-12345**"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### CreateGatewayAccessLink
+`}`
+
+###### 4.7.1.19.2 CreateGatewayAccessLink
 
 调用CreateGatewayAccessLink创建网关外部调用链接、开通按钮。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
 **请求语法**
-
-智能体工厂 OpenTrek
 
 ```
 POST /online-service/create-gateway-access-link HTTP/1.1
@@ -12884,31 +13648,37 @@ POST /online-service/create-gateway-access-link HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /online-service/create-gateway-access-link HTTP/1.1 { "entityId":"os-740042f20b89a033b****", "accessType":"inference_sync_vpc" }
+POST /online-service/create-gateway-access-link HTTP/1.1 "entityId":"os-740042f20b89a033b****", "accessType":"inference_sync_vpc"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### DeleteAIGateway
+`}`
+
+###### 4.7.1.19.3 DeleteAIGateway
+
+调用DeleteAIGateway删除指定的在线服务AI网关。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /online-service/delete-ai-gateway HTTP/1.1
+```
 
 **请求参数**
 
@@ -12924,7 +13694,7 @@ POST /online-service/create-gateway-access-link HTTP/1.1 { "entityId":"os-740042
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12937,22 +13707,22 @@ POST /online-service/create-gateway-access-link HTTP/1.1 { "entityId":"os-740042
 请求示例
 
 ```
-&occupantId=os-1234***
+DELETE /online-service/delete-ai-gateway HTTP/1.1 &occupantId=os-1234***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### GetGatewayAPIKeyLatestCallLog
+`}`
+
+###### 4.7.1.19.4 GetGatewayAPIKeyLatestCallLog
 
 调用GetGatewayAPIKeyLatestCallLog获取指定在线服务的APIKey使用信息。
 
@@ -12973,10 +13743,6 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1
 | occupantR esourceId | Strin g | Query | 是 | os-123456 | 在线服务ID。 |
 | apikeyUid | Strin g | Query | 是 | aigk-e02e****049ec | API密钥唯一标识。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -12995,8 +13761,6 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1
 | -gmtModified | String | 2025-10- 23T07:41:53Z | 修改时间，格式为UTC时间。 |
 | -occupantId | String | os-8691****04e80 | 关联业务UID，如灰度组或在线服务。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -regionId | String | cn-neimeng-236e- d01 | 地域ID。 |
@@ -13010,20 +13774,22 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1
 GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourceId=user123 &apikeyUid=1234567890abcdef
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ListGatewayAPIKey
+`}`
+
+###### 4.7.1.19.5 ListGatewayAPIKey
+
+调用ListGatewayAPIKey查询指定在线服务的API Key列表。
 
 **请求头**
 
@@ -13031,13 +13797,17 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourc
 
 **请求语法**
 
+```
+GET /online-service/list-gateway-apikey HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | pageIndex | Integ er | Query | 否 | 10 | API Key列表的页码。 默认值：1。 |
 
-| Ope | nTrek |  |  |  | AI Studio ·API |
+| Ope | nTrek |   |   |   | AI Studio ·API |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -13060,8 +13830,6 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourc
 | -apikey | String | sk- xxxxxxxxxxxxxxxxx xxxxxxx | APIKey值，表示用于身份验证的密钥字符串，实际调用时需要在请求头中携带此值。 |
 | -apikeyType | String | internet | APIKey类型，表示该APIKey的调用范围和用途。枚举值包括：intranet(用作内部的模型广场等内部调用，SystemKey类型)、internet(用户外部互联网调用，用户创建的APIKey)、 aiproxy(AI代理类型，用于AI代理场景)。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -occupantId | String | os-xxxxxxxx | 关联业务资源ID，表示该APIKey绑定的在线服务或在线服务组的唯一标识。 |
@@ -13080,16 +13848,21 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourc
 | pageSize | Integer | 10 | 每页行数。 |
 | pageIndex | Integer | 1 | 镜像版本的页码。 |
 
-智能体工厂 OpenTrek
+请求示例
 
-**示例**
+```
+GET /online-service/list-gateway-apikey HTTP/1.1
+```
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "inputTokenCount":"300000",
    "gmtModified":"2024-01-20T14:22:33Z",
    "failedRequestCount":"50",
@@ -13114,10 +13887,9 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourc
    "apikeyType":"internet",
    "occupantId":"os-xxxxxxxx",
    "status":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -13128,10 +13900,11 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourc
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-###### ListGatewayAPIKeyStatisticDetail
+`}`
+
+###### 4.7.1.19.6 ListGatewayAPIKeyStatisticDetail
 
 调用ListGatewayAPIKeyStatisticDetail查询指定在线服务的API Key调用统计量详情信息。
 
@@ -13145,8 +13918,6 @@ GET /online-service/get-gateway-apikey-latest-call-log HTTP/1.1 &occupantResourc
 GET /online-service/list-gateway-apikey-statistic-detail HTTP/1.1
 ```
 
-智能体工厂 OpenTrek
-
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -13155,8 +13926,6 @@ GET /online-service/list-gateway-apikey-statistic-detail HTTP/1.1
 | occupantI d | Strin g | Query | 否 | os-4821934902*** | 在线服务唯一标识ID，不填返回空数组。 |
 | startTime | Strin g | Query | 否 | 1765184400 | 统计开始时间，Unix时间戳。 同时不填startTime和 endTime，endTime默认值为当前时间，startTime默认值为 endTime 30*24 小时前， endTime填了，startTime不填，startTime默认值为 endTime 30*24 小时前， endTime不填， startTime填了，endTime默认值为 startTime 30*24 小时后， 同时填了startTime和 endTime，startTime 和 endTime 间隔不超过 31 天。 |
 | endTime | Strin g | Query | 否 | 1765188000 | 统计结束时间，Unix时间戳。 同时不填startTime和 endTime，endTime默认值为当前时间，startTime默认值为 endTime 30*24 小时前， endTime填了，startTime不填，startTime默认值为 endTime 30*24 小时前， endTime不填， startTime填了，endTime默认值为 startTime 30*24 小时后， 同时填了startTime和 endTime，startTime 和 endTime 间隔不超过 31 天。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13179,8 +13948,6 @@ GET /online-service/list-gateway-apikey-statistic-detail HTTP/1.1
 | -startTime | Integer | 1765184400 | 统计开始时间，Unix时间戳。 |
 | - successReque stCount | String | 8 | 成功请求数。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -13197,20 +13964,20 @@ GET /online-service/list-gateway-apikey-statistic-detail HTTP/1.1
 GET /online-service/list-gateway-apikey-statistic-detail HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{[]}",
  "success":"",
  "dynamicMessages":"\t[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### GetGatewayAPIKeyStatisticTotal
+`}`
+
+###### 4.7.1.19.7 GetGatewayAPIKeyStatisticTotal
 
 调用GetGatewayAPIKeyStatisticTotal查询指定在线服务API Key的调用统计量信息。
 
@@ -13224,8 +13991,6 @@ GET /online-service/list-gateway-apikey-statistic-detail HTTP/1.1
 GET /online-service/get-gateway-apikey-statistic-total HTTP/1.1
 ```
 
-智能体工厂 OpenTrek
-
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -13233,8 +13998,6 @@ GET /online-service/get-gateway-apikey-statistic-total HTTP/1.1
 | apiKeyUid | Strin g | Query | 是 | aigk-4fb8b2*** | API Key唯一标识ID。 |
 | occupantI d | Strin g | Query | 是 | os-8691****04e80 | 关联业务UID，如在线服务组或在线服务。 |
 | startTime | Strin g | Query | 否 | 2025-10-12T01:14:54Z | 统计开始时间，格式为UTC 时间。 同时不填startTime 和endTime，则默认获取总的调用量，填了start time和 _ endTime，则获取指定时间段调用量， endTime填了，startTime不填，startTime默认值为endTime 30*24 小时前， endTime不填， startTime填了，endTime默认值为startTime 30*24 小时后， 同时填了startTime 和 endTime，startTi me 和 endTime 间隔不超过 31 天。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13250,7 +14013,7 @@ GET /online-service/get-gateway-apikey-statistic-total HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13274,20 +14037,20 @@ GET /online-service/get-gateway-apikey-statistic-total HTTP/1.1
 GET /online-service/get-gateway-apikey-statistic-total HTTP/1.1 &apiKeyUid=aigk-4fb8b2*** &occupantId=os-4821934902***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ListGatewayAPIKeyDetailCalls
+`}`
+
+###### 4.7.1.19.8 ListGatewayAPIKeyDetailCalls
 
 调用ListGatewayAPIKeyDetailCalls查询指定在线服务API Key调用明细列表。
 
@@ -13309,13 +14072,9 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1
 | pageSize | Integ er | Query | 否 | 10 | 每页条数，取值范围：1- 100。 默认值为10。 |
 | sortOrder | Strin g | Query | 否 | desc | 排序顺序，取值范围： desc：降序。 asc：升序。 默认值：desc。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | startTime | Strin g | Query | 否 | 2025-12- 01T03:20:13.000Z | 查询起始时间（utc时间），注： 同时不填startTime 和 endTime，endTime 默认值为当前时间，startTime默认值为endTime 30*24 小时前， endTime填了，startTime不填，startTime默认值为endTime 30*24 小时前， endTime不填， startTime填了，endTime默认值为startTime 30*24 小时后， 同时填了startTime 和 endTime，startTi me和endTime间隔不超过 31 天。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13331,7 +14090,7 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | Array | - | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -aliyunUid | String | 127756****314 | 阿里云账号UID。 |
@@ -13351,8 +14110,6 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1
 | -totalTimeCost | Integer | 1523 | 总耗时，单位毫秒。 |
 | -totalToken | Integer | 14096 | 总Token数量。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -13371,10 +14128,9 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1
 GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1 &type=SUCCESS &occupantId=os-4821934902***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "pageIndex":1,
  "success":false,
@@ -13384,20 +14140,25 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1 &type=SUCCESS &occ
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-##### 智能路由
+`}`
 
-智能体工厂 OpenTrek
+##### 4.7.1.20 智能路由
 
-###### GetGatewayRouter
+###### 4.7.1.20.1 GetGatewayRouter
+
+调用GetGatewayRouter查询指定在线服务的路由策略。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /online-service/get-gateway-router HTTP/1.1
+```
 
 **请求参数**
 
@@ -13419,8 +14180,6 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1 &type=SUCCESS &occ
 | -gmtModified | String | 2017-11- 27T06:51:26Z | 修改时间。 |
 | -aliyunUid | String | 157123456789**** | 阿里云账号ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -regionId | String | cn-hangzhou | 地域ID。 |
@@ -13434,23 +14193,25 @@ GET /online-service/list-gateway-apikey-detail-calls HTTP/1.1 &type=SUCCESS &occ
 请求示例
 
 ```
-&entityId=os-12345678
+GET /online-service/get-gateway-router HTTP/1.1 &entityId=os-12345678
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ModifyGatewayRouter
+`}`
+
+###### 4.7.1.20.2 ModifyGatewayRouter
+
+调用ModifyGatewayRouter修改指定在线服务的路由策略。
 
 **请求头**
 
@@ -13463,8 +14224,6 @@ POST /online-service/modify-gateway-router HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13484,28 +14243,28 @@ POST /online-service/modify-gateway-router HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /online-service/modify-gateway-router HTTP/1.1 { "entityId":"os-123456" }
+POST /online-service/modify-gateway-router HTTP/1.1 "entityId":"os-123456"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### CreateGatewayRouter
+`}`
+
+###### 4.7.1.20.3 CreateGatewayRouter
+
+调用CreateGatewayRouter创建指定在线服务的路由策略。
 
 **请求头**
 
@@ -13530,7 +14289,7 @@ POST /online-service/create-gateway-router HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -13543,36 +14302,38 @@ POST /online-service/create-gateway-router HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service/create-gateway-router HTTP/1.1 { "entityId":"os-123456" }
+```
+POST /online-service/create-gateway-router HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"entityId":"os-123456"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### 限流设置
+`}`
 
-###### CreateAPIkeyTrafficLimit
+##### 4.7.1.21 限流设置
+
+###### 4.7.1.21.1 CreateAPIkeyTrafficLimit
 
 调用CreateAPIkeyTrafficLimit创建在线服务指定API Key的网关限流配置。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
 **请求语法**
-
-智能体工厂 OpenTrek
 
 ```
 POST /online-service-group/create-apikey-traffic-limit HTTP/1.1
@@ -13602,23 +14363,23 @@ POST /online-service-group/create-apikey-traffic-limit HTTP/1.1
 请求示例
 
 ```
-POST /online-service-group/create-apikey-traffic-limit HTTP/1.1 { }
+POST /online-service-group/create-apikey-traffic-limit HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ModifyAPIkeyTrafficLimit
+`}`
+
+###### 4.7.1.21.2 ModifyAPIkeyTrafficLimit
 
 调用ModifyAPIkeyTrafficLimit修改在线服务指定API Key的限流配置。
 
@@ -13648,8 +14409,6 @@ POST /online-service-group/modify-apikey-traffic-limit HTTP/1.1
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -13665,20 +14424,20 @@ POST /online-service-group/modify-apikey-traffic-limit HTTP/1.1
 POST /online-service-group/modify-apikey-traffic-limit HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":false,
  "dynamicMessages":"\t[]",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### CreateGatewayTrafficLimit
+`}`
+
+###### 4.7.1.21.3 CreateGatewayTrafficLimit
 
 调用CreateGatewayTrafficLimit创建指定在线服务的网关限流配置。
 
@@ -13698,7 +14457,7 @@ POST /online-service-group/create-gateway-traffic-limit HTTP/1.1
 |---|---|---|---|---|---|
 | entityId | Strin g | Body | 是 | os-123456 | 在线服务ID，该参数必填。 |
 
-|  | 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -13720,30 +14479,34 @@ POST /online-service-group/create-gateway-traffic-limit HTTP/1.1
 | errorMessage | String | "" | 错误码。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
-```json
-POST /online-service-group/create-gateway-traffic-limit HTTP/1.1 { "entityId":"os-123456", "limitValue":"100", "limitType":""qps"", "limitPerTime":""query_per_second"" }
+```
+POST /online-service-group/create-gateway-traffic-limit HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"entityId":"os-123456", "limitValue":"100", "limitType":""qps"", "limitPerTime":""query_per_second""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ListGatewayTrafficLimit
+`}`
+
+###### 4.7.1.21.4 ListGatewayTrafficLimit
+
+调用ListGatewayTrafficLimit查询指定在线服务的限流配置。
 
 **请求头**
 
@@ -13767,8 +14530,6 @@ GET /online-service-group/list-gateway-traffic-limit HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -13788,7 +14549,7 @@ GET /online-service-group/list-gateway-traffic-limit HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误码。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13803,20 +14564,20 @@ GET /online-service-group/list-gateway-traffic-limit HTTP/1.1
 GET /online-service-group/list-gateway-traffic-limit HTTP/1.1 &entityId=nb-ad56b7f600740042f20b89a033b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ModifyGatewayTrafficLimit
+`}`
+
+###### 4.7.1.21.5 ModifyGatewayTrafficLimit
 
 调用ModifyGatewayTrafficLimit修改指定在线服务的限流配置。
 
@@ -13838,8 +14599,6 @@ POST /online-service-group/modify-gateway-traffic-limit HTTP/1.1
 | entityId | Strin g | Body | 是 | os-123456 | 在线服务ID，该参数必填。 |
 | limitValue | Long | Body | 是 | 100 | 限流值，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | limitType | Strin g | Body | 是 | "qps" | 限流类型，该参数必填，取值范围： qps ：按每秒请求数。 tpm ：按每分钟 Token数。 |
@@ -13860,28 +14619,30 @@ POST /online-service-group/modify-gateway-traffic-limit HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /online-service-group/modify-gateway-traffic-limit HTTP/1.1 { "limitUid":"aigl-123456", "entityId":"os-123456", "limitValue":"100", "limitType":""qps"", "limitPerTime":""query_per_second"" }
+POST /online-service-group/modify-gateway-traffic-limit HTTP/1.1 "limitUid":"aigl-123456", "entityId":"os-123456", "limitValue":"100", "limitType":""qps"", "limitPerTime":""query_per_second""
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### 异步推理
+`}`
 
-###### CreateAsyncInferenceService
+##### 4.7.1.22 异步推理
+
+###### 4.7.1.22.1 CreateAsyncInferenceService
+
+调用CreateAsyncInferenceService创建异步推理服务。
 
 **请求头**
 
@@ -13899,8 +14660,6 @@ POST /online-service/create-async-inference-service HTTP/1.1
 |---|---|---|---|---|---|
 | middlewar eType | Strin g | Body | 是 | "kafka" | 异步推理消息队列中间件类型，该参数必填。 |
 | occupantI d | Strin g | Body | 是 | os-123456 | 在线服务ID，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13921,46 +14680,41 @@ POST /online-service/create-async-inference-service HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-POST /online-service/create-async-inference-service HTTP/1.1 { "middlewareType":""kafka"", "occupantId":"os-123456", "middlewareMetaInfo":"{
+POST /online-service/create-async-inference-service HTTP/1.1 "middlewareType":""kafka"", "occupantId":"os-123456", "middlewareMetaInfo":"{
   "middlewareInstanceId": "cluster-private-paas-default",
   "inputTopic": "kafka-0530",
   "authUser": "aistudio",
   "servers": "192.168.1.25:8088,192.168.1.24:8088,192.168.1.11:8088"
  }",
 "cpuCount":"2", "memCount":"4", "instanceCount":"2", "storageMountList":"[
-  {
+```
+
+`{`
+
+```json
    "storagePath": "oss://****/code/",
    "mountPath": null,
    "pvcName": "",
    "storageSource": 1
-  }
 ```
 
-`]"`
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`}` `]"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### DeleteAsyncInferenceService
+`}`
+
+###### 4.7.1.22.2 DeleteAsyncInferenceService
 
 调用DeleteAsyncInferenceService删除指定的异步推理服务。
 
@@ -13975,8 +14729,6 @@ DELETE /online-service/delete-async-inference-service HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -14000,23 +14752,21 @@ DELETE /online-service/delete-async-inference-service HTTP/1.1
 DELETE /online-service/delete-async-inference-service HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### GetAsyncInferenceService
+`}`
 
-**请求头**
+###### 4.7.1.22.3 GetAsyncInferenceService
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用GetAsyncInferenceService查询指定异步服务详细信息。
 
 **请求语法**
 
@@ -14046,16 +14796,16 @@ GET /online-service/get-async-inference-service HTTP/1.1
 | -regionId | String | cn-neimeng-236e- d01 | 中间件所在的地域ID。 |
 | -imageId | String | null | 创建异步服务使用的预置镜像ID。 |
 
-| yyyy-MM- |  |
+| yyyy-MM- |   |
 |---|---|
 
 | 5Z | dd'T'HH:mm:ss'Z' |
 |---|---|
 
-|  | MM-dd'T'HH:mm:ss'Z' |
+|   | MM-dd'T'HH:mm:ss'Z' |
 |---|---|
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14076,16 +14826,14 @@ GET /online-service/get-async-inference-service HTTP/1.1
 | --regionId | String | cn-neimeng-236e- d01 | 中间件所在的地域ID。 |
 | --middlewareId | String | am- 0c65********ce304 064 | 异步中间件唯一标识ID。 |
 
-| yyyy-MM- |  |
+| yyyy-MM- |   |
 |---|---|
 
 | 5Z | dd'T'HH:mm:ss'Z' |
 |---|---|
 
-|  | MM-dd'T'HH:mm:ss'Z' |
+|   | MM-dd'T'HH:mm:ss'Z' |
 |---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -14104,30 +14852,32 @@ GET /online-service/get-async-inference-service HTTP/1.1
 GET /online-service/get-async-inference-service HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### 内容安全
+`}`
 
-###### GetContentSecurity
+##### 4.7.1.23 内容安全
+
+###### 4.7.1.23.1 GetContentSecurity
+
+调用GetContentSecurity查询指定内容安全配置详细信息。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /online-service/get-content-security HTTP/1.1
+```
 
 **请求参数**
 
@@ -14152,8 +14902,6 @@ GET /online-service/get-async-inference-service HTTP/1.1
 | -occupantId | String | os-4821934902*** | 所属资源ID，在线服务或者灰度组ID。 |
 | - openaiProxyUi d | String | osop-a3356575** | 代理UID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -regionId | String | cn-hangzhou | 地域ID。 |
@@ -14165,20 +14913,28 @@ GET /online-service/get-async-inference-service HTTP/1.1
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /online-service/get-content-security HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### DeleteContentSecurity
+`}`
+
+###### 4.7.1.23.2 DeleteContentSecurity
+
+调用DeleteContentSecurity删除指定内容安全配置。
 
 **请求头**
 
@@ -14191,8 +14947,6 @@ DELETE /online-service/delete-content-security HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -14216,23 +14970,21 @@ DELETE /online-service/delete-content-security HTTP/1.1
 DELETE /online-service/delete-content-security HTTP/1.1 &securityUid=oscs-ed873eb50857*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### GetContentSecurityAccess
+`}`
 
-**请求头**
+###### 4.7.1.23.3 GetContentSecurityAccess
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用GetContentSecurityAccess查询指定内容安全开关校验。
 
 **请求语法**
 
@@ -14270,26 +15022,32 @@ POST /online-service/get-content-security-access HTTP/1.1
 请求示例
 
 ```
-POST /online-service/get-content-security-access HTTP/1.1 { }
+POST /online-service/get-content-security-access HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "resourcePoolAccess":true,
   "aiGatewayAccess":true
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-###### ModifyContentSecurity
+`}`
+
+###### 4.7.1.23.4 ModifyContentSecurity
+
+调用ModifyContentSecurity修改指定内容安全配置。
 
 **请求头**
 
@@ -14307,7 +15065,7 @@ PUT /online-service/modify-content-security HTTP/1.1
 |---|---|---|---|---|---|
 | securityUi d | Strin g | Body | 是 | oscs- ed873eb50857a04e7b | 内容安全配置ID，该参数必填。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -14328,25 +15086,29 @@ PUT /online-service/modify-content-security HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service/modify-content-security HTTP/1.1 { "securityUid":"oscs-ed873eb50857a04e7b" }
+```
+PUT /online-service/modify-content-security HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"securityUid":"oscs-ed873eb50857a04e7b"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+###### 4.7.1.23.5 CreateContentSecurity
 
-###### CreateContentSecurity
+调用CreateContentSecurity开启内容安全配置。
 
 **请求头**
 
@@ -14374,7 +15136,7 @@ POST /online-service/create-content-security HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14388,26 +15150,34 @@ POST /online-service/create-content-security HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service/create-content-security HTTP/1.1 { "open":"true", "occupantId":"os-f5d5a5d2049b6047b9", "securityServiceType":"openai_proxy" }
+```
+POST /online-service/create-content-security HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"open":"true", "occupantId":"os-f5d5a5d2049b6047b9", "securityServiceType":"openai_proxy"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 灰度群组
+`}`
 
-##### CreateGatewayGrayscale
+#### 4.7.2 灰度群组
+
+##### 4.7.2.1 CreateGatewayGrayscale
+
+调用CreateGatewayGrayscale创建网关灰度。
 
 **请求头**
 
@@ -14418,8 +15188,6 @@ POST /online-service/create-content-security HTTP/1.1 { "open":"true", "occupant
 ```
 POST /online-service-group/create-gateway-grayscale HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -14442,30 +15210,30 @@ POST /online-service-group/create-gateway-grayscale HTTP/1.1
 | errorMessage | String | "" | 错误码。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-POST /online-service-group/create-gateway-grayscale HTTP/1.1 { "entityId":"os-00740042f20b89a033b****", "canaryConfig":"{"serviceId": "os-1234***",
+POST /online-service-group/create-gateway-grayscale HTTP/1.1 "entityId":"os-00740042f20b89a033b****", "canaryConfig":"{"serviceId": "os-1234***",
  "value": 10,
-"servicePort": 80 }" }
+"servicePort": 80
 ```
 
-正常返回示例 `JSON` 格式
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreateOnlineServiceGroup
+`}`
+
+##### 4.7.2.2 CreateOnlineServiceGroup
+
+调用CreateOnlineServiceGroup创建灰度组。
 
 **请求头**
 
@@ -14485,7 +15253,7 @@ POST /online-service-group/create HTTP/1.1
 | serviceGr oupName | Strin g | Body | 是 | 我的灰度群组 | 灰度群组名称，该参数必填，长度为2～128个字符，必须以字母或中文开头，可包含数字、半角句号 （.）、下划线（ ）和短划 _ 线（-) |
 | serviceGr oupDesc | Strin g | Body | 否 | 用户管理组 | 灰度组描述，描述长度为 2~256个字符，不能以 http://和https://开头 |
 
-|  | 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -14505,7 +15273,7 @@ POST /online-service-group/create HTTP/1.1
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14517,30 +15285,32 @@ POST /online-service-group/create HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
+```
+POST /online-service-group/create HTTP/1.1
 ```
 
-`"serviceGroupName":"`我的灰度群组"
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-d20bd****",
+```
+
+`"serviceGroupName":"`我的灰度群组`"` `}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"serviceGroupUid\": \"osg-977f0***\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteOnlineServiceGroup
+`}`
+
+##### 4.7.2.3 DeleteOnlineServiceGroup
+
+调用DeleteOnlineServiceGroup删除指定的灰度组。
 
 **请求头**
 
@@ -14548,15 +15318,15 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 
 **请求语法**
 
+```
+DELETE /online-service-group/delete HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | serviceGr oupId | Strin g | Query | 是 | osg-12345** | 灰度组ID。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -14571,22 +15341,22 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 请求示例
 
 ```
-&serviceGroupId=1
+DELETE /online-service-group/delete HTTP/1.1 &serviceGroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetOnlineServiceGroupDetail
+`}`
+
+##### 4.7.2.4 GetOnlineServiceGroupDetail
 
 调用GetOnlineServiceGroupDetail查询指定灰度组详细信息。
 
@@ -14596,9 +15366,11 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 
 **请求语法**
 
-**请求参数**
+```
+GET /online-service-group/get-detail HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -14617,8 +15389,6 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 | -aiGatewayList | Array | [] | AI网关配置。 |
 | --accessType | String | inference sync vpc _ _ | 推理服务访问类型，标识服务的网络访问方式。 枚举值： inference sync vpc (同步VPC _ _ 网络访问)、 inference sync classic (同步经 _ _ 典网络访问)、 inference async vpc req (异步 _ _ _ VPC请求访问)、 inference async vpc resp (异步 _ _ _ VPC查询访问)、 inference async classic req ( _ _ _ 异步经典网络请求访问)、 inference async classic resp ( _ _ _ 异步经典网络查询访问)。 |
 | --aliyunUid | String | 127756****314 | 阿里云账号ID，标识服务组所属的阿里云主账号。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -14669,7 +15439,7 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 | --cpuCount | Integer | 4 | 异步服务实例的CPU核数配置。 |
 | --gmtCreated | String | 2026-02- 25T01:40:46Z | 创建时间。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14692,8 +15462,6 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 | --- middlewareId | String | mw-q1w2****i8 | 中间件的唯一标识符。 |
 | --- middlewareIns tanceId | String | kafka-inst- 1a2b****8h | 中间件实例ID，标识具体的中间件实例。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --- middlewareTy pe | String | KAFKA | 中间件类型，如KAFKA、ROCKETMQ等。 |
@@ -14714,18 +15482,15 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 | --totalMem | Integer | 0 | 服务组内存资源总量，单位为GB。 |
 | --totalPod | Integer | 0 | 服务组Pod实例总数。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```
-&serviceGroupUid=osg-12345**
+GET /online-service-group/get-detail HTTP/1.1 &serviceGroupUid=osg-12345**
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "gmtModified":"2026-02-25T01:40:46Z",
   "asyncService":{
@@ -14748,7 +15513,11 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
     "middlewareInstanceId":"kafka-inst-1a2b****8h",
     "authUser":"kafka-user-***",
     "inputTopic":"async-input-topic"
-   },
+```
+
+`},`
+
+```json
    "asyncServiceId":"asvc-9i0j****p2",
    "regionId":"cn-wulan-env38-d01",
    "instanceCount":2,
@@ -14756,7 +15525,11 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
    "occupantId":"osg-8a3f****074",
    "storageUrl":"oss://bucket-name/path/to/storage",
    "cpuCount":4
-  },
+```
+
+`},`
+
+```json
   "aliyunUid":"127756****314",
   "gmtCreated":"2026-02-25T01:40:46Z",
   "serviceGroupName":"test1",
@@ -14772,21 +15545,27 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
 "runningCost":00,
 ```
 
-智能体工厂 OpenTrek
-
 ```json
    runningCost:0.0,
    "runningCpu":0,
    "totalCost":0.0,
    "totalGpu":0
-  },
+```
+
+`},`
+
+```json
   "description":"EffectGateway Success.",
   "serviceGroupUid":"osg-8a3f****074",
   "apikeyPermission":true,
   "servedModelName":"qwen-turbo",
   "regionId":"cn-wulan-env38-d01",
   "aiGatewayTrafficLimitList":[
-   {
+```
+
+`{`
+
+```json
     "limitValue":100,
     "gmtModified":"2026-02-25T01:40:46Z",
     "aliyunUid":"127756****314",
@@ -14798,14 +15577,17 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
     "occupantId":"osg-8a3f****074",
     "limitKey":"apikey-xxx-***",
     "limitUid":"limit-a1b2****h8"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "aiGatewayList":[
-   {
+```
+
+`{`
+
+```json
     "gmtModified":"2026-02-25T01:40:46Z",
     "occupantResourceId":"osg-8a3f****074",
     "aliyunUid":"127756****314",
@@ -14821,24 +15603,23 @@ POST /online-service-group/create HTTP/1.1 { "serviceId":"os-d20bd****",
     "slbIp":"172.16.1.158",
     "gatewayStatus":"DEPLOY_SUCCEEDED",
     "gwInstanceId":"i-nmrlc6ip2riyzjweco1i"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-##### ListGatewayGrayscale
+##### 4.7.2.5 ListGatewayGrayscale
+
+调用ListGatewayGrayscale查询所有的网关灰度组灰度列表。
 
 **请求头**
 
@@ -14871,7 +15652,7 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1
 | -occupantId | String | osg-****04b19 | os service ID或者os service group ID。 |
 | -scheduleTime | String | 2026-03- 03T16:55:30Z | 定时执行时间。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14889,20 +15670,22 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1
 GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042f20b89a033b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{[]}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListOnlineServiceGroup
+`}`
+
+##### 4.7.2.6 ListOnlineServiceGroup
+
+调用ListOnlineServiceGroup查询所有的灰度组列表。
 
 **请求头**
 
@@ -14910,9 +15693,11 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042
 
 **请求语法**
 
-**请求参数**
+```
+GET /online-service-group/list HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -14937,7 +15722,7 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042
 | --limitPerTime | String | query per second _ _ | 限流key的单位值。 |
 | --limitType | String | qps | 限速类型。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -14958,8 +15743,6 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042
 | - serviceGroupD esc | String | 描述 | 灰度组描述。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -14971,10 +15754,15 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /online-service-group/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{[]}",
  "pageIndex":1,
  "success":true,
@@ -14984,10 +15772,11 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-##### ListServiceGroupRelatedService
+`}`
+
+##### 4.7.2.7 ListServiceGroupRelatedService
 
 调用ListServiceGroupRelatedService查询所有的灰度组关联服务列表。
 
@@ -15000,8 +15789,6 @@ GET /online-service-group/list-gateway-grayscale HTTP/1.1 &entityId=osg-00740042
 ```
 GET /online-service-group/list-related-service HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -15027,7 +15814,7 @@ GET /online-service-group/list-related-service HTTP/1.1
 | -cpuCount | Integer | 8 | CPU总数。 |
 | -gmtCreated | String | 2017-11- 27T06:51:26Z | 创建时间 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15071,10 +15858,9 @@ GET /online-service-group/list-related-service HTTP/1.1
 GET /online-service-group/list-related-service HTTP/1.1 &serviceGroupId=osg-12345**
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{[]}",
  "pageIndex":1,
  "success":true,
@@ -15084,10 +15870,13 @@ GET /online-service-group/list-related-service HTTP/1.1 &serviceGroupId=osg-1234
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-##### ModifyGatewayGrayscale
+`}`
+
+##### 4.7.2.8 ModifyGatewayGrayscale
+
+调用ModifyGatewayGrayscale修改网关灰度。
 
 **请求头**
 
@@ -15110,10 +15899,6 @@ POST /online-service-group/modify-gateway-grayscale HTTP/1.1
 | canaryCo nfig | Json | Body | 是 | {"serviceId": "os- 1234***", "value": 10, "servicePort": 80 } | 灰度发布配置，该参数必填。 |
 | scheduleT ime | Strin g | Body | 否 | 2025-04-16 00:00:00 | 定时启动时间，格式为 yyyy-MM-dd HH:mm:ss。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -15127,32 +15912,34 @@ POST /online-service-group/modify-gateway-grayscale HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service-group/modify-gateway-grayscale HTTP/1.1 { "entityId":"os-00740042f20b89a033b****", "canaryConfig":"{"serviceId": "os-1234***",
- "value": 10,
-"servicePort": 80 }" }
+```
+POST /online-service-group/modify-gateway-grayscale HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"entityId":"os-00740042f20b89a033b****", "canaryConfig":"{"serviceId": "os-1234***",
+ "value": 10,
+"servicePort": 80
+```
+
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyOnlineServiceGroup
+`}`
 
-调用ModifyOnlineServiceGroup修改灰度组部分信息，包括灰度组名称和描述。 智能体工厂 OpenTrek
+##### 4.7.2.9 ModifyOnlineServiceGroup
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ModifyOnlineServiceGroup修改灰度组部分信息，包括灰度组名称和描述。
 
 **请求语法**
 
@@ -15180,31 +15967,25 @@ PUT /online-service-group/modify HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /online-service-group/modify HTTP/1.1 { "serviceGroupId":"osg-123456**",
+PUT /online-service-group/modify HTTP/1.1 "serviceGroupId":"osg-123456**",
 ```
 
-`"serviceGroupName":"`我的灰度组"
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`"serviceGroupName":"`我的灰度组`"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ModifyOnlineServiceToGroup
+`}`
+
+##### 4.7.2.10 ModifyOnlineServiceToGroup
 
 调用ModifyOnlineServiceToGroup修改灰度组（添加/删除服务）。
 
@@ -15232,7 +16013,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -15244,25 +16025,31 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGroupId":"osg-12345**", "operationType":"remove", "serviceId":"os-d20bd45d****" }
+```
+PUT /online-service-group/modify-online-service-to-group HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceGroupId":"osg-12345**", "operationType":"remove", "serviceId":"os-d20bd45d****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 一键压测
+`}`
 
-##### CreateStressTestTaskConfig
+#### 4.7.3 一键压测
+
+##### 4.7.3.1 CreateStressTestTaskConfig
 
 调用CreateStressTestTaskConfig创建性能压测任务以及配置信息。
 
@@ -15272,7 +16059,9 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+POST /stress-test/create-task-config HTTP/1.1
+```
 
 **请求参数**
 
@@ -15289,8 +16078,6 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | scheduleT ime | Strin g | Body | 否 | 2025-04-16 00:00:00 | 定时启动时间，格式为 yyyy-MM-dd HH:mm:ss。 |
 | configNa me | Strin g | Body | 否 | config-sample | 配置名称。 |
 | configDes c | Strin g | Body | 否 | config-desc | 配置描述。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -15311,7 +16098,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15323,8 +16110,14 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 
 请求示例
 
+```
+POST /stress-test/create-task-config HTTP/1.1
+```
+
+`{`
+
 ```json
-{ "taskName":"task-name", "cpuCount":"1", "memCount":"1", "quotaId":"rq-xxx", "modelType":"0", "durationConfig":"{
+"taskName":"task-name", "cpuCount":"1", "memCount":"1", "quotaId":"rq-xxx", "modelType":"0", "durationConfig":"{
         "sampleCount": 10
     }",
 "datasetConfig":"{
@@ -15338,32 +16131,30 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
         "stressMode": "FIXED_REQUEST_RATE",
         "requestRate": 10,
         "maxConcurrency": 100
-    }"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{    ”sressTestTaskId“: \"stt-*****\"  }",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListStressTestTask
+`}`
 
-智能体工厂 OpenTrek
+##### 4.7.3.2 ListStressTestTask
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ListStressTestTask查询所有压力测试任务。
 
 **请求语法**
+
+```
+GET /stress-test/list-task HTTP/1.1
+```
 
 **请求参数**
 
@@ -15382,7 +16173,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | modelNa me | Strin g | Query | 否 | model-name | 模型名称。 |
 | datasetId | Strin g | Query | 否 | ds-**** | 数据集ID。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -15405,11 +16196,11 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | - datasetMountL ist | Array | [{ "mountPath": "/root", "datasetId": "ds- 78b1242ffed14878 88af363a24***", "datasetType": 0, "dataSource": 1, "quotaId": "rq- d8890a98089c204 1d8086bb0b2e27f* **", "dataAccInstance": "da- df89s8f9sdfs99sae *****" }] | 数据集挂载列表（默认 []）。 |
 | -- dataAccInstan ce | String | dataacc-i-011 | 数据加速实例标识。 |
 
-|  | GITHUB |  |
+|   | GITHUB |   |
 |---|---|---|
-| CODE |  |  |
+| CODE |   |   |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15432,8 +16223,6 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | --pvcName | String | pvc-storage-st-001 | 模型挂载列表（默认 []）。 |
 | --weightType | Integer | 0 | 数据加速实例标识。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - nodeConfigList | Array | null | 模型 ID。 |
@@ -15455,34 +16244,34 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | -failedMsg | String | null | 存储挂载列表（默认 []）。 |
 | -gmtCreated | String | 2026-03- 05T03:00:00Z | 容器内挂载路径。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
-| 参数名称 | 类型 | 示例 | 说明 |  |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |   |
 |---|---|---|---|---|---|
-| -gmtEnd | String | 2026-03- 05T06:35:20Z | PVC 名称。 |  |  |
-| -gmtModified | String | 2026-03- 05T03:05:00Z | OSS 存储路径。 |  |  |
-| -imageId | String | img-llm-stress | 存储来源类型。 |  |  |
-| - imageIdAndVe rsion | String | img-llm-stress, v1.2.3 | 阿里云账号 UID。 |  |  |
-| -imageVersion | String | v1.2.3 | CPU 核数。 |  |  |
-| -memCount | Integer | 32 | 失败信息；当前代码中列表接口未主动填充。 |  |  |
-| - onlineServiceI d | String | os- 698b8e19000da04 699 | 配置创建时间（UTC）。 |  |  |
-| -parentPlanId | String | plan-202603 | 任务结束时间（仅结束态可见）。 |  |  |
-| -quotaId | String | rq- 0635cf690bb0704b 1c | 配置修改时间（UTC）。 |  |  |
-| -quotaName | String | A100 high net pool | 镜像 ID。 |  |  |
-| -regionId | String | cn-wulan-env38- d01 | getter 计算字段（ imageId + ", " + imageVersion ）。 |  |  |
-|  |  |  |  | imageId + ", " + |  |
-| -remark | String | auto schedule | 镜像版本。 |  |  |
-| -taskConfigId | String | cfg-st-001 | 内存规格。 |  |  |
-| -taskDesc | String | nightly stress test | 在线服务 ID。 |  |  |
-| -taskId | String | st-20260305-0003 | 父计划 ID。 |  |  |
-| -taskName | String | nightly-qwen3-4b | 资源配额 ID。 |  |  |
-| -taskStatus | Integer | 2 | 资源配额名称（由 fillVO 填充）。 |  |  |
+| -gmtEnd | String | 2026-03- 05T06:35:20Z | PVC 名称。 |   |   |
+| -gmtModified | String | 2026-03- 05T03:05:00Z | OSS 存储路径。 |   |   |
+| -imageId | String | img-llm-stress | 存储来源类型。 |   |   |
+| - imageIdAndVe rsion | String | img-llm-stress, v1.2.3 | 阿里云账号 UID。 |   |   |
+| -imageVersion | String | v1.2.3 | CPU 核数。 |   |   |
+| -memCount | Integer | 32 | 失败信息；当前代码中列表接口未主动填充。 |   |   |
+| - onlineServiceI d | String | os- 698b8e19000da04 699 | 配置创建时间（UTC）。 |   |   |
+| -parentPlanId | String | plan-202603 | 任务结束时间（仅结束态可见）。 |   |   |
+| -quotaId | String | rq- 0635cf690bb0704b 1c | 配置修改时间（UTC）。 |   |   |
+| -quotaName | String | A100 high net pool | 镜像 ID。 |   |   |
+| -regionId | String | cn-wulan-env38- d01 | getter 计算字段（ imageId + ", " + imageVersion ）。 |   |   |
+|   |   |   |   | imageId + ", " + |   |
+| -remark | String | auto schedule | 镜像版本。 |   |   |
+| -taskConfigId | String | cfg-st-001 | 内存规格。 |   |   |
+| -taskDesc | String | nightly stress test | 在线服务 ID。 |   |   |
+| -taskId | String | st-20260305-0003 | 父计划 ID。 |   |   |
+| -taskName | String | nightly-qwen3-4b | 资源配额 ID。 |   |   |
+| -taskStatus | Integer | 2 | 资源配额名称（由 fillVO 填充）。 |   |   |
 
 | 01 | imageVersion |
 |---|---|
 
-| OpenTr | ek |  | AI Studio ·API |
+| OpenTr | ek |   | AI Studio ·API |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15505,8 +16294,6 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | --aliyunUid | String | 1277********1314 | 累计成本。 |
 | --configDesc | String | null | 累计 CPU。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --configId | String | null | 累计 GPU。 |
@@ -15523,7 +16310,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | errorCode | String | null | 压测时长配置字符串；对应 StressDurationConfig.sampleCount 。 |
 | errorMessage | String | null | 额外配置字符串；对应 StressExtraConfig 。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | httpCode | Integer | 200 | 配置创建时间（UTC）。 |
@@ -15533,10 +16320,15 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /stress-test/list-task HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "pageIndex":1,
  "success":false,
@@ -15546,10 +16338,13 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-##### DeleteStressTestTask
+`}`
+
+##### 4.7.3.3 DeleteStressTestTask
+
+调用DeleteStressTestTask删除指定压力测试任务。
 
 **请求头**
 
@@ -15557,9 +16352,11 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 
 **请求语法**
 
-**请求参数**
+```
+DELETE /stress-test/delete-task HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -15577,25 +16374,33 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+DELETE /stress-test/delete-task HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetStressTestTask
+`}`
 
-**请求头**
+##### 4.7.3.4 GetStressTestTask
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用GetStressTestTask查询压力测试任务结果信息。
 
 **请求语法**
+
+```
+GET /stress-test/get-task HTTP/1.1
+```
 
 **请求参数**
 
@@ -15620,11 +16425,11 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | --mountPath | String | /mnt/output/ | 容器内挂载路径。 |
 | --pvcName | String | pvc-storage-st-001 | PVC 名称。 |
 
-|  | GITHUB |  |
+|   | GITHUB |   |
 |---|---|---|
-| CODE |  |  |
+| CODE |   |   |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15644,7 +16449,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | --value | String | 123.45 | 指标值（字符串）。 |
 | - modelMountLi st | Array | null | 模型挂载列表。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15667,8 +16472,6 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | -- sharedMemCo unt | Integer | 4 | 共享内存规格。 |
 | -- startCommand | String | python benchmark.py | 启动命令。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - storageMountL ist | Array | [{ "quotaId": "rq- d8890a98089c204 1d8086bb0b2e**** ", "mountPath": "/root/", "storageSource": 1, "storagePath": "oss://****/****/" }] | 存储挂载列表。 |
@@ -15688,7 +16491,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | -memCount | Integer | 32 | 内存规格。 |
 | - onlineServiceI d | String | os- 698b8e19000da04 699 | 在线服务 ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15712,7 +16515,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | --runningMem | Integer | 0 | 运行中内存。 |
 | --runningPod | Integer | 0 | 运行中 Pod 数。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --totalCost | Float | 0.00 | 累计成本。 |
@@ -15731,7 +16534,7 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 | -- durationConfig | String | {"sampleCount":10 00} | 压测时长配置字符串；对应 StressDurationConfig.sampleCount 。 |
 | --extraConfig | String | {"burstiness":1.0,"r andomSeed":42} | 额外配置字符串；对应 StressExtraConfig 。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15746,25 +16549,27 @@ PUT /online-service-group/modify-online-service-to-group HTTP/1.1 { "serviceGrou
 请求示例
 
 ```
-&taskId=stt-xxx
+GET /stress-test/get-task HTTP/1.1 &taskId=stt-xxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 批量推理
+`}`
 
-#### CreateBatchInferenceJob
+### 4.8 批量推理
+
+#### 4.8.1 CreateBatchInferenceJob
+
+调用CreateBatchInferenceJob创建批量推理任务。
 
 **请求头**
 
@@ -15778,8 +16583,6 @@ POST /batch-inference-job/create HTTP/1.1
 
 **请求参数**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | jobName | Strin g | Body | 是 | job-name | 任务名称，该参数必填，长度为2～64个字符，必须以字母或中文开头，可包含数字、半角句号（.）、下划线 （ ）和短划线（-）。 _ |
@@ -15792,8 +16595,6 @@ POST /batch-inference-job/create HTTP/1.1
 | isSchedul ed | Boole an | Body | 否 | false | 是否定时运行，取值范围： true：是。 false：否。 默认值：false。 |
 | scheduleT ime | Strin g | Body | 否 | 2025-04-16 00:00:00 | 定时启动时间，格式为 yyyy-MM-dd HH:mm:ss。 |
 | datasetMo untList | Json | Body | 否 | [{ "mountPath": "/root", "datasetId": "ds- 78b1242ffed1487888af3 63a24***", "dataAccInstance":"da- df89s8f9sdfs99sae*****" }] | 数据集配置。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -15815,32 +16616,38 @@ POST /batch-inference-job/create HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img-91fa01150ee51045190baa305e****", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "startCommand":"python3 main.py" }
+POST /batch-inference-job/create HTTP/1.1 "jobName":"job-name", "imageId":"img-91fa01150ee51045190baa305e****", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "startCommand":"python3 main.py"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{      \"jobId\": \"bi-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetBatchInferenceJob
+`}`
+
+#### 4.8.2 GetBatchInferenceJob
+
+调用GetBatchInferenceJob查询指定批量推理任务的详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /batch-inference-job/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -15853,8 +16660,6 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -15875,7 +16680,7 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 | -- dataAccInstan ce | String | acc-instance-001 | 数据加速实例标识。 |
 | - modelMountLi st | Array | [] | 模型库挂载列表。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15898,8 +16703,6 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 | --nodeCount | Integer | 1 | 节点数量。 |
 | --cpuCount | Integer | 1 | CPU 核数。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --memCount | Integer | 1 | 内存大小，单位为 GB。 |
@@ -15919,7 +16722,7 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 | -gmtCreated | String | 2025-12- 24T06:02:27Z | 创建时间，格式为 yyyy-MM- dd'T'HH:mm:ss'Z'，时区为 UTC。 |
 | -gmtModified | String | 2026-02- 02T15:28:16Z | 修改时间，格式为 yyyy-MM- dd'T'HH:mm:ss'Z'，时区为 UTC。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15939,8 +16742,6 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 | -quotaId | String | rq- 40c8be****aa040a 9 | 资源配额 ID。 |
 | -quotaName | String | default-quota | 资源配额名称。 |
 | -jobType | Integer | 0 | 批量推理任务类型，枚举值：0-ORIGINAL（原生 job 类型），1- DATA SLICE ELASTIC BATCH（支持数据分 _ _ _ 片的 elasticBatch 类型）。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -15962,7 +16763,7 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 | -instanceCost | Struct | [] | 实例费用统计信息。 |
 | --runningCost | Float | 0.00 | 运行中实例的费用，保留两位小数。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --runningPod | Float | 0 | 运行中的 Pod 数量。 |
@@ -15982,30 +16783,25 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
 请求示例
 
 ```
-&batchInferenceJobId=bi-2d4cd47b02c3c04f080ab5b0b*****
+GET /batch-inference-job/get HTTP/1.1 &batchInferenceJobId=bi-2d4cd47b02c3c04f080ab5b0b*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "scheduleTime":"",
   "gmtModified":"",
   "jobStatus":"",
   "quotaName":"",
   "storageMountList":[
-   {
     "mountPath":"",
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "pvcName":"",
     "storagePath":"",
     "storageSource":""
-   }
 ```
 
 `],`
@@ -16016,7 +16812,11 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
   "failedMsg":"",
   "description":"",
   "modelMountList":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"",
     "dataAccInstance":"",
     "weightType":"",
@@ -16025,14 +16825,17 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
     "pvcName":"",
     "modelVersion":"",
     "modelType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "thirdpartyStorageMountList":[
-   {
+```
+
+`{`
+
+```json
     "gmtModified":"",
     "mountPath":"",
     "storageSubPath":"",
@@ -16041,10 +16844,9 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
     "regionId":"",
     "occupantId":"",
     "storageId":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gmtEnd":"",
@@ -16060,7 +16862,11 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
   "imageId":"",
   "imageName":"",
   "nodeConfigList":[
-   {
+```
+
+`{`
+
+```json
     "memCount":"",
     "sharedMemCount":"",
     "gpuMemCount":"",
@@ -16070,17 +16876,14 @@ POST /batch-inference-job/create HTTP/1.1 { "jobName":"job-name", "imageId":"img
     "gpuCount":"",
 ```
 
-"
+`"`
 
 ```
 t"""
 ```
 
-智能体工厂 OpenTrek
-
 ```json
     "cpuCount":""
-   }
 ```
 
 `],`
@@ -16100,7 +16903,11 @@ t"""
    "runningCpu":"",
    "totalCost":"",
    "totalGpu":""
-  },
+```
+
+`},`
+
+```json
   "quotaId":"",
   "startCommand":"",
   "gpuMemTotal":"",
@@ -16109,7 +16916,11 @@ t"""
   "regionId":"",
   "gpuMemTotalUnit":"",
   "datasetMountList":[
-   {
+```
+
+`{`
+
+```json
     "dataAccInstance":"",
     "datasetVersion":"",
     "mountPath":"",
@@ -16119,34 +16930,38 @@ t"""
     "datasetId":"",
     "datasetFileName":"",
     "datasetType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "jobNodesCount":"",
   "gpuCountUnit":"",
   "imageAccelerationType":"",
   "isSchedule":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteBatchInferenceJob
+`}`
 
-智能体工厂 OpenTrek
+#### 4.8.3 DeleteBatchInferenceJob
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用DeleteBatchInferenceJob删除指定的批量推理任务。
 
 **请求语法**
+
+```
+DELETE /batch-inference-job/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -16169,22 +16984,22 @@ t"""
 请求示例
 
 ```
-&batchInferenceJobId=bi-2d4cd47b02c3c04f080ab5b0b*****
+DELETE /batch-inference-job/delete HTTP/1.1 &batchInferenceJobId=bi-2d4cd47b02c3c04f080ab5b0b*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateBatchInferenceJob
+`}`
+
+#### 4.8.4 UpdateBatchInferenceJob
 
 调用UpdateBatchInferenceJob修改指定批量推理任务的部分信息，包括推理任务名称和描述。
 
@@ -16208,10 +17023,6 @@ PUT /batch-inference-job/update HTTP/1.1
 | scheduleT ime | Strin g | Body | 否 | 2024-11-21 00:00:00 | 定时启动时间。 |
 | isSchedul ed | Boole an | Body | 否 | false | 是否开启定时任务，取值范围： true：是。 false：否。 默认值：false。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -16224,23 +17035,31 @@ PUT /batch-inference-job/update HTTP/1.1
 
 请求示例
 
-```json
-PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c3c04f080ab5b0*****", "jobName":"batchInference-name" }
+```
+PUT /batch-inference-job/update HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"batchInferenceJobId":"bi-2d4cd47b02c3c04f080ab5b0*****", "jobName":"batchInference-name"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListBatchInferenceJob
+`}`
+
+#### 4.8.5 ListBatchInferenceJob
+
+调用ListBatchInferenceJob查询所有的批量推理任务列表。
 
 **请求头**
 
@@ -16248,7 +17067,9 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /batch-inference-job/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -16263,8 +17084,6 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | jobStatus | Integ er | Query | 否 | 0 | 任务状态，取值范围： 0：待启动。 1：启动中。 2：运行中。 3：已停止。 4：失败。 5：完成。 6：排队中。 7：停止中。 8：定时等待。 9：变配中。 |
 | quotaId | Strin g | Query | 否 | rq- d8890a98089c2041d80 86bb0b2e27**** | 资源配额ID。 |
 | quotaNam e | Strin g | Query | 否 | quota-name | 资源配额名称。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -16289,7 +17108,7 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | --dataType | Integer | 0 | 数据类型。 |
 | --mountPath | String | /testdata/ | 挂载路径。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16312,7 +17131,7 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | -- codeRepoType | Integer | 0 | 代码仓库类型。 |
 | --mountPath | String | /testdata/ | 挂载路径。 |
 
-| OpenTr | ek |  | AI Studio ·API |
+| OpenTr | ek |   | AI Studio ·API |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16335,7 +17154,7 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | - thirdpartyStor ageMountList | Array | [] | 三方存储挂载列表。 |
 | --gmtCreated | String | 2025-12- 24T06:02:27Z | 创建时间，格式为 yyyy-MM- dd'T'HH:mm:ss'Z'，时区为 UTC。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16357,7 +17176,7 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | -description | String | 批量推理测试任务 | 批量推理任务描述信息。 |
 | -jobStatus | Integer | 4 | 批量推理任务状态，枚举值：0-Waiting For Starting，1-Starting，2-Running，3- Stopped，4-Failed，5-Completed，6-In Queue，7-Stopping，8-Scheduled Waiting，9-Scaling。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16379,7 +17198,7 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | - gpuLabelCoun t | Integer | 0 | GPU 虚拟化卡数量。 |
 | -gpuCount | Integer | 0 | GPU 卡数量。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16402,7 +17221,7 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 | --totalPod | Float | 0 | 总 Pod 数量。 |
 | --totalCpu | Float | 0 | 总 CPU 使用量。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16420,10 +17239,15 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /batch-inference-job/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -16433,10 +17257,11 @@ PUT /batch-inference-job/update HTTP/1.1 { "batchInferenceJobId":"bi-2d4cd47b02c
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### CreateInferenceResultStorageTask
+`}`
+
+#### 4.8.6 CreateInferenceResultStorageTask
 
 调用CreateInferenceResultStorageTask创建批量推理结果任务。
 
@@ -16462,10 +17287,6 @@ POST /batch-inference-job/result-storage/create HTTP/1.1
 | targetBuc ket | Strin g | Body | 否 | oss://******/ | 目标bucket。 |
 | storagePa th | Strin g | Body | 否 | oss://******/ | 存储路径。 |
 
-智能体工厂 OpenTrek
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -16479,30 +17300,32 @@ POST /batch-inference-job/result-storage/create HTTP/1.1
 
 请求示例
 
-```json
-POST /batch-inference-job/result-storage/create HTTP/1.1 { "taskName":"task-name" }
+```
+POST /batch-inference-job/result-storage/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"taskName":"task-name"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{      \"taskId\": \"*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetInferenceResultStorageTask
+`}`
+
+#### 4.8.7 GetInferenceResultStorageTask
 
 调用GetInferenceResultStorageTask查询指定保存批量推理结果任务。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
 
 **请求语法**
 
@@ -16531,7 +17354,7 @@ GET /batch-inference-job/result-storage/get HTTP/1.1
 | --fileSize | String | 1007 | 文件大小，单位为字节。 |
 | -gmtCreated | String | 2025-12- 25T03:39:14Z | 任务创建时间，格式为 UTC 时间。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16550,7 +17373,7 @@ GET /batch-inference-job/result-storage/get HTTP/1.1
 | -storagePath | String | oss://jieran- test.oss-cn- neimeng-236e- d01- a.env236.ops.arm. com/ | 目标存储路径，即文件存储到目标 Bucket 的完整 OSS 路径。 |
 | -totalFilesNum | Integer | 1 | 需要存储的文件总数。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16567,20 +17390,20 @@ GET /batch-inference-job/result-storage/get HTTP/1.1
 GET /batch-inference-job/result-storage/get HTTP/1.1 &taskId=f131977106bd7049840a3bf0*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyBatchInferenceJobStatus
+`}`
+
+#### 4.8.8 ModifyBatchInferenceJobStatus
 
 调用ModifyBatchInferenceJobStatus修改指定批量推理任务的状态。
 
@@ -16600,8 +17423,6 @@ PUT /batch-inference-job/modify-status HTTP/1.1
 |---|---|---|---|---|---|
 | batchInfer enceJobId | Strin g | Body | 是 | bi- 46085f2a0778f0433909 6230***** | 批量推理任务ID，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | jobStatus | Boole an | Body | 否 | false | 批量推理任务状态，取值范围： true：启用。 false：禁用。 |
@@ -16620,29 +17441,31 @@ PUT /batch-inference-job/modify-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /batch-inference-job/modify-status HTTP/1.1 { "batchInferenceJobId":"bi-46085f2a0778f04339096230*****" }
+```
+PUT /batch-inference-job/modify-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"batchInferenceJobId":"bi-46085f2a0778f04339096230*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyBatchInferenceJobSpec
+`}`
 
-智能体工厂 OpenTrek 调用ModifyBatchInferenceJobSpec修改指定批量推理任务的配额信息。
+#### 4.8.9 ModifyBatchInferenceJobSpec
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ModifyBatchInferenceJobSpec修改指定批量推理任务的配额信息。
 
 **请求语法**
 
@@ -16670,27 +17493,25 @@ PUT /batch-inference-job/modify-spec HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-PUT /batch-inference-job/modify-spec HTTP/1.1 { "batchInferenceJobId":"bi-46085f2a0778f0433909623*****", "cpuCount":"1", "memCount":"1", "gpuCount":"1" }
+PUT /batch-inference-job/modify-spec HTTP/1.1 "batchInferenceJobId":"bi-46085f2a0778f0433909623*****", "cpuCount":"1", "memCount":"1", "gpuCount":"1"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListInferenceResultStorageTask
+`}`
+
+#### 4.8.10 ListInferenceResultStorageTask
 
 调用ListInferenceResultStorageTask查询批量推理结果保存任务列表。
 
@@ -16711,8 +17532,6 @@ GET /batch-inference-job/result-storage/list HTTP/1.1
 | pageIndex | Integ er | Query | 否 | 1 | 批量推理保存任务列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -16749,8 +17568,6 @@ GET /batch-inference-job/result-storage/list HTTP/1.1
 | - currentFileNu m | Integer | 1 | 当前已完成存储的文件数量。 |
 | -gmtEnd | String | 2025-12- 25T03:39:15Z | 任务结束时间，格式为 UTC 时间。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -errorMsg | String | null | 任务执行错误信息，任务成功时为 null。 |
@@ -16770,10 +17587,9 @@ GET /batch-inference-job/result-storage/list HTTP/1.1
 GET /batch-inference-job/result-storage/list HTTP/1.1 &resourceId=bi-46085f2a0778f043390962308*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -16783,14 +17599,15 @@ GET /batch-inference-job/result-storage/list HTTP/1.1 &resourceId=bi-46085f2a077
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-### 模型广场
+`}`
 
-智能体工厂 OpenTrek
+### 4.9 模型广场
 
-#### CreateModel
+#### 4.9.1 CreateModel
+
+调用CreateModel创建模型仓库。
 
 **请求头**
 
@@ -16814,8 +17631,6 @@ POST /model/create HTTP/1.1
 | modelVer sion | Strin g | Body | 是 | v1 | 模型版本号，该参数必填。 |
 | modelSou rce | Integ er | Body | 是 | 1 | 导入方式，该参数必填，取值范围： 0：训练任务导入。 1：云存储。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | modelStat us | Boole an | Body | 否 | false | 模型启用状态，取值范围： false：禁用。 true：启用。 默认值：false。 |
@@ -16826,8 +17641,6 @@ POST /model/create HTTP/1.1
 | storagePa th | Strin g | Body | 是 | oss://****/**** | 存储路径，该参数必填。 |
 | modelCat egoryIds | Json | Body | 否 | [1002,2002,3003] | 模型类型、模型用途、模型厂商ID列表。 当id为“1XXX”时，表示模型类型（可多传），取值范围：[1002,1017]; 当id为“2XXX”时，表示模型用途（可多传），取值范围：[2002,2016]; 当id为“3XXX”时，表示模型厂商，取值范围： [3002,3008]; |
 | weightTyp e | Integ er | Body | 否 | 0 | 是否为Lora权重模型，取值范围： 0：否 1：是 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -16848,30 +17661,42 @@ POST /model/create HTTP/1.1
 
 请求示例
 
-```json
-POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelVersion":"v1", "modelSource":"1", "storageSource":"1", "storagePath":"oss://****/****" }
+```
+POST /model/create HTTP/1.1
 ```
 
-智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"modelName":"model-name", "frameWork":"1", "modelVersion":"v1", "modelSource":"1", "storageSource":"1", "storagePath":"oss://****/****"
+```
+
+正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{     \"modleId\": \"md-****\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteModel
+`}`
+
+#### 4.9.2 DeleteModel
+
+调用DeleteModel删除指定的模型仓库。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /model/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -16889,35 +17714,37 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
-&modelId=md-e97c65da0d70b04f2b0bbcb057d9s****
+DELETE /model/delete HTTP/1.1 &modelId=md-e97c65da0d70b04f2b0bbcb057d9s****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetModel
+`}`
+
+#### 4.9.3 GetModel
+
+调用GetModel查询指定模型仓库的详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -16933,7 +17760,7 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | errorMessage | String | "" | 错误信息。 |
@@ -16954,13 +17781,12 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 请求示例
 
 ```
-&modelId=md-e97c65da0d70b04f2b0bbcb057d9s****
+GET /model/get HTTP/1.1 &modelId=md-e97c65da0d70b04f2b0bbcb057d9s****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "versionCount":1,
   "modelName":"Qwen3-VL-8B-Instruct",
@@ -16971,22 +17797,33 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
   "regionId":"cn-neimeng-236e-d01",
   "systemModelAlreadyInstall":false,
   "modelType":1
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListModel
+`}`
+
+#### 4.9.4 ListModel
+
+调用ListModel查询所有的模型仓库列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -16995,8 +17832,6 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | pageIndex | Integ er | Query | 否 | 1 | 模型仓库列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -17016,7 +17851,7 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | Array | - | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -17034,8 +17869,6 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | -regionId | String | cn-neimeng-236e- d01 | 地域ID。 |
 | -metadata | String | {"Name":"Qwen3- VL-8B-Instruct"} | 模型元数据信息，JSON格式字符串。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -serviceStatus | Integer | 0 | 模型部署状态，枚举值如下： - 0 ：NO DEPLOYMENT（未部署） _ - 1 ：DEPLOYING（部署中） - 2 ：DEPLOYED（部署成功） - 3 ：FAILED（部署失败）。 |
@@ -17052,12 +17885,16 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /model/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "versionCount":3,
    "SecurityLevelTag":"公开",
    "shared":1,
@@ -17075,10 +17912,9 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
    "regionId":"cn-neimeng-236e-d01",
    "serviceStatus":0,
    "SecurityLevelTagBackgroundColer":"#46d72e"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -17089,10 +17925,13 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ListModelSelection
+`}`
+
+#### 4.9.5 ListModelSelection
+
+调用ListModelSelection查询所有模型选择列表。
 
 **请求头**
 
@@ -17100,13 +17939,17 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 
 **请求语法**
 
+```
+GET /model/list-selection HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | pageIndex | Integ er | Query | 否 | 1 | 模型选择列表的页码。 默认值：1。 |
 
-| A | I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -17117,8 +17960,6 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | modelId | Strin g | Query | 否 | md-55a2ab****fd04ca0 | 模型版本关联的模型ID。 |
 | modelVer sion | Strin g | Query | 否 | v1.0 | 模型版本号。 |
 | frameWor k | Integ er | Query | 否 | 2 | 模型框架类型，枚举值如下： - 1 ：TENSOR FLOW _ - 2 ：PY TORCH _ - 3 ：ELASTIC BATCH _ - 4 ：XG BOOST _ - 5 ：ONE FLOW _ - 6 ：MPI JOB _ - 7 ：JOB - 8 ：MODEL CONVERT _ - 10 ：DEEPSPEED - 11 ：MEGATRON - 12 ： PADDLE PADDLE _ - 13 ：MIND SPORE。 _ 1：TENSOR FLOW。 _ 2：PY TORCH。 _ 3：ELASTIC BATCH。 _ 4：XG BOOST。 _ 5：ONE FLOW。 _ 6：MPI JOB。 _ 7：JOB。 8： MODEL CONVERT。 _ 10：DEEPSPEED。 11：MEGATRON。 12： PADDLE PADDLE。 _ 13：MIND SPORE。 _ |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -17135,7 +17976,7 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | data | Array | - | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | - modelCategor yIds | List | 1 | 模型类别ID列表。 |
 
-| I Studio · | API |  | OpenTre |
+| I Studio · | API |   | OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17155,7 +17996,7 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | -modelId | String | md- 55a2ab****fd04ca 0 | 模型版本关联的模型ID。 |
 | -modelSize | Float | 0.0 | 模型文件大小，单位为GB。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17172,7 +18013,7 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17184,15 +18025,13 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 请求示例
 
 ```
-&modelType=1
+GET /model/list-selection HTTP/1.1 &modelType=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "frameWork":2,
    "importStatus":4,
    "modelManufacturer":0,
@@ -17208,7 +18047,11 @@ POST /model/create HTTP/1.1 { "modelName":"model-name", "frameWork":"1", "modelV
 L-8B-Instruct/",
    "modelSize":0.0,
    "modelFeatureMetaConfigs":[
-    {
+```
+
+`{`
+
+```json
      "code":"base_model",
      "placeholder":"****",
 ```
@@ -17217,10 +18060,9 @@ L-8B-Instruct/",
 
 ```json
      "content":"Qwen3-30B-A3B"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "weightType":0,
@@ -17228,10 +18070,9 @@ L-8B-Instruct/",
    "dataAccCount":0,
    "regionId":"cn-neimeng-236e-d01",
    "storageSource":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -17239,10 +18080,11 @@ L-8B-Instruct/",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyModel
+`}`
+
+#### 4.9.6 ModifyModel
 
 调用ModifyModel修改指定模型仓库的部分信息，包括模型仓库名称、描述和版本号。
 
@@ -17257,8 +18099,6 @@ PUT /model/modify HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -17280,25 +18120,27 @@ PUT /model/modify HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /model/modify HTTP/1.1 { "modelId":" md-e97c65da0d70b04f2b0bbcb0574****", "modelName":"model-name" }
+PUT /model/modify HTTP/1.1 "modelId":" md-e97c65da0d70b04f2b0bbcb0574****", "modelName":"model-name"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyModelStatus
+`}`
+
+#### 4.9.7 ModifyModelStatus
+
+调用ModifyModelStatus修改指定模型仓库状态。
 
 **请求头**
 
@@ -17320,8 +18162,6 @@ PUT /model/modify-status HTTP/1.1
 
 **返回数据**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -17334,23 +18174,31 @@ PUT /model/modify-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /model/modify-status HTTP/1.1 { "modelId":"md-e97c65da0d70b04f2b0bbcb0574****", "modelVersion":"v1", "modelStatus":"true" }
+```
+PUT /model/modify-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"modelId":"md-e97c65da0d70b04f2b0bbcb0574****", "modelVersion":"v1", "modelStatus":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteModelVersion
+`}`
+
+#### 4.9.8 DeleteModelVersion
+
+调用DeleteModelVersion删除指定的模型版本。
 
 **请求头**
 
@@ -17358,7 +18206,9 @@ PUT /model/modify-status HTTP/1.1 { "modelId":"md-e97c65da0d70b04f2b0bbcb0574***
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+DELETE /model/delete-version HTTP/1.1
+```
 
 **请求参数**
 
@@ -17382,30 +18232,32 @@ PUT /model/modify-status HTTP/1.1 { "modelId":"md-e97c65da0d70b04f2b0bbcb0574***
 请求示例
 
 ```
-&modelId=md-e97c65da0d70b04f2b0bbcb057d9s**** &modelVersion=v1
+DELETE /model/delete-version HTTP/1.1 &modelId=md-e97c65da0d70b04f2b0bbcb057d9s**** &modelVersion=v1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.9.9 ListModelFiles
 
-#### ListModelFiles
+调用ListModelFiles查询所有模型广场模型文件列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/model-gallery/list-files HTTP/1.1
+```
 
 **请求参数**
 
@@ -17427,32 +18279,38 @@ PUT /model/modify-status HTTP/1.1 { "modelId":"md-e97c65da0d70b04f2b0bbcb0574***
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
-&organization=1 &modelName=model-name
+GET /model/model-gallery/list-files HTTP/1.1 &organization=1 &modelName=model-name
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetModelLineage
+`}`
+
+#### 4.9.10 GetModelLineage
+
+调用GetModelLineage查询指定模型血缘关系。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/get-lineage HTTP/1.1
+```
 
 **请求参数**
 
@@ -17467,8 +18325,6 @@ PUT /model/modify-status HTTP/1.1 { "modelId":"md-e97c65da0d70b04f2b0bbcb0574***
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -17489,38 +18345,47 @@ PUT /model/modify-status HTTP/1.1 { "modelId":"md-e97c65da0d70b04f2b0bbcb0574***
 请求示例
 
 ```
-&modelId=md-sd9au8safusd***** &modelVersion=v1
+GET /model/get-lineage HTTP/1.1 &modelId=md-sd9au8safusd***** &modelVersion=v1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "gmtModified":"2026-03-02T15:55:03Z",
   "aliyunUid":"19822605****1225",
   "gmtCreated":"2026-02-09T11:14:37Z",
   "regionId":"cn-neimeng-236e-d01",
   "modelMountList":[
-   {
-    "modelType":0
-   }
 ```
 
-`],`
+`{`
+
+```json
+    "modelType":0
+```
+
+`}` `],`
 
 ```json
   "resourceType":32
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyModelCategory
+`}`
+
+#### 4.9.11 ModifyModelCategory
+
+调用ModifyModelCategory修改指定模型版本所属类型信息。
 
 **请求头**
 
@@ -17546,7 +18411,7 @@ PUT /model/category/modify HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -17558,23 +18423,29 @@ PUT /model/category/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
+```
+PUT /model/category/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"modelId":"md-sd9au8safusd*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyModelVersionComponent
+`}`
+
+#### 4.9.12 ModifyModelVersionComponent
 
 调用ModifyModelVersionComponent修改指定模型版本关联的组件。
 
@@ -17584,9 +18455,11 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 
 **请求语法**
 
-**请求参数**
+```
+PUT /model/version/modifyComponent HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -17609,38 +18482,44 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-{ "modelId":"md-e97c65da0d70b0457d9s****
+PUT /model/version/modifyComponent HTTP/1.1 "modelId":"md-e97c65da0d70b0457d9s****
 ```
 
 `",`
 
 ```json
-"modelVersion":"v1.0" }
+"modelVersion":"v1.0"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetModelAccessInfo
+`}`
+
+#### 4.9.13 GetModelAccessInfo
+
+调用GetModelAccessInfo查询指定模型服务详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /agent/getModelAccessInfo HTTP/1.1
+```
 
 **请求参数**
 
@@ -17655,7 +18534,7 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | errorCode | String | 500 | 错误码。 |
@@ -17672,38 +18551,44 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 请求示例
 
 ```
-&serviceId=os-d20bd45d0683a047a60b5f50f8b52****
+GET /agent/getModelAccessInfo HTTP/1.1 &serviceId=os-d20bd45d0683a047a60b5f50f8b52****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "agentModelName":"Qwen2.5",
   "agentModelEndpoint":"https://api.example.com/v1/agents",
   "serviceId":"os-xxxxx",
   "agentModelApikey":"sk-****"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.9.14 模型导出
 
-#### 模型导出
+##### 4.9.14.1 ListModelImportTask
 
-##### ListModelImportTask
+调用ListModelImportTask查询所有的导入模型任务列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/import/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -17722,7 +18607,7 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | Array | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -17742,8 +18627,6 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 | -modelVersion | String | v1 | 模型版本号。 |
 | -regionId | String | cn-hangzhou | 地域ID。 |
 | -resourceId | String | 1 | 资源ID。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -17767,15 +18650,18 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 请求示例
 
 ```
-&resourceId=nb-73e3ed200e9fe048d208f3e086****
+GET /model/import/list HTTP/1.1 &resourceId=nb-73e3ed200e9fe048d208f3e086****
 ```
 
-&公共请求参数正常返回示例智能体工厂 OpenTrek `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "frameWork":1,
    "gmtModified":"1703575553000",
    "resourceId":"1",
@@ -17786,13 +18672,16 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
    "modelVersion":"v1",
    "storagePath":"http://xxxxx.jpg",
    "completedList":[
-    {
-     "fileSize":"2782602",
-     "importFile":"example.xlsx"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "fileSize":"2782602",
+     "importFile":"example.xlsx"
+```
+
+`}` `],`
 
 ```json
    "sourceBucket":"***-bucket",
@@ -17806,10 +18695,9 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
    "totalFilesNum":5,
    "taskId":"t-000000000001",
    "taskStatus":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -17820,10 +18708,9 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-`XML` 格式智能体工厂 OpenTrek
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -17854,7 +18741,9 @@ PUT /model/category/modify HTTP/1.1 { "modelId":"md-sd9au8safusd*****" }
 </data> <pageIndex>1</pageIndex> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <pageSize>10</pageSize> <httpCode>200</httpCode> <totalCount>100</totalCount>
 ```
 
-##### CreateModelImportTask
+##### 4.9.14.2 CreateModelImportTask
+
+调用CreateModelImportTask创建导入模型任务。
 
 **请求头**
 
@@ -17871,8 +18760,6 @@ POST /model/import/create HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | resourceId | Strin g | Body | 是 | tk- cf3df8ea09acf0410008c e10d00***** | 资源ID，该参数必填。 |
@@ -17886,8 +18773,6 @@ POST /model/import/create HTTP/1.1
 | modelVer sion | Strin g | Body | 是 | v1.0 | 模型版本号，该参数必填， 版本号支持：vx.x格式(例如 v1.0)。 |
 | targetBuc ket | Strin g | Body | 是 | ****-bucket | 目标bucket，该参数必填。 |
 | storagePa th | Strin g | Body | 是 | oss://****.oss-****/****/ | 存储路径，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -17907,34 +18792,38 @@ POST /model/import/create HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d00*****", "sourceBucket":"***-bucket", "importFilesJson":"["oss://*****.oss-****/*****.pdf"]", "modelName":"model-name", "frameWork":"1", "modelVersion":"v1.0", "targetBucket":"****-bucket", "storagePath":"oss://****.oss-****/****/" }
+POST /model/import/create HTTP/1.1 "resourceId":"tk-cf3df8ea09acf0410008ce10d00*****", "sourceBucket":"***-bucket", "importFilesJson":"["oss://*****.oss-****/*****.pdf"]", "modelName":"model-name", "frameWork":"1", "modelVersion":"v1.0", "targetBucket":"****-bucket", "storagePath":"oss://****.oss-****/****/"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\t\"modelId\": \"md-****\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetModelImportTask
+`}`
+
+##### 4.9.14.3 GetModelImportTask
+
+调用GetModelImportTask查询指定导入模型任务的详细信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/import/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -17948,7 +18837,7 @@ POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d0
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -17966,8 +18855,6 @@ POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d0
 | -gmtEnd | String | 2025-11-19 02:58:34.0 | 任务结束时间，格式为 yyyy-MM-dd HH:mm:ss。 |
 | -gmtModified | String | 2025-11-19 02:58:34.0 | 任务最后修改时间，格式为 yyyy-MM-dd HH:mm:ss。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - importFilesJso n | String | ["oss://yhtest.oss- cn-neimeng-236e- d01- a.env236.ops.arm. com/images/added tokens.json","oss:/ _ /yhtest.oss-cn- neimeng-236e- d01- a.env236.ops.arm. com/images/args.js on","oss://yhtest.os s-cn-neimeng- 236e-d01- a.env236.ops.arm. com/images/gener ation config.json"," _ oss://yhtest.oss-cn- neimeng-236e- d01- a.env236.ops.arm. com/images/chat t _ emplate.jinja","oss: //yhtest.oss-cn- neimeng-236e- d01- a.env236.ops.arm. com/images/config. json"] | 导入文件列表的 JSON 字符串，包含文件名和大小等信息。 |
@@ -17979,8 +18866,6 @@ POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d0
 | -resourceId | String | ft-c****43ad | 资源 ID，关联的模型资源标识。 |
 | -saveModel | Boolean | true | 是否保存模型，true 表示保存，false 表示不保存。 |
 | -sourceBucket | String | yhtest | 源 OSS Bucket 名称，存储待导入模型的存储空间。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -17995,13 +18880,12 @@ POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d0
 请求示例
 
 ```
-&taskId=tk-5103add0062e20452c80383*****
+GET /model/import/get HTTP/1.1 &taskId=tk-5103add0062e20452c80383*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "frameWork":"",
   "gmtModified":"",
@@ -18013,13 +18897,16 @@ POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d0
   "modelVersion":"",
   "storagePath":"",
   "completedList":[
-   {
-    "fileSize":"",
-    "importFile":""
-   }
 ```
 
-`],`
+`{`
+
+```json
+    "fileSize":"",
+    "importFile":""
+```
+
+`}` `],`
 
 ```json
   "sourceBucket":"",
@@ -18033,18 +18920,25 @@ POST /model/import/create HTTP/1.1 { "resourceId":"tk-cf3df8ea09acf0410008ce10d0
   "totalFilesNum":"",
   "taskId":"",
   "taskStatus":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### MaaS市场
+`}`
 
-##### ListModelGallery
+#### 4.9.15 MaaS市场
+
+##### 4.9.15.1 ListModelGallery
+
+调用ListModelGallery查询所有模型广场卡片集合列表。
 
 **请求头**
 
@@ -18057,8 +18951,6 @@ GET /model/model-gallery/listModelGallery HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18087,23 +18979,24 @@ GET /model/model-gallery/listModelGallery HTTP/1.1 &jsonParam={
  "target": "",
  "criterion": [],
  "singleCriterion": []
-}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`}` `&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetModelGalleryDetails
+`}`
+
+##### 4.9.15.2 GetModelGalleryDetails
+
+调用GetModelGalleryDetails查询指定模型详细信息。
 
 **请求头**
 
@@ -18132,7 +19025,7 @@ GET /model/model-gallery/[organization]/[modelName] HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -18147,20 +19040,20 @@ GET /model/model-gallery/[organization]/[modelName] HTTP/1.1
 GET /model/model-gallery/[organization]/[modelName] HTTP/1.1 &organization=1 &modelName=model-name
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListModelGalleryCategory
+`}`
+
+##### 4.9.15.3 ListModelGalleryCategory
 
 调用ListModelGalleryCategory查询MaaS市场模型类型列表。
 
@@ -18180,10 +19073,6 @@ GET /model/model-gallery/listModelGalleryCategory HTTP/1.1
 |---|---|---|---|---|---|
 | type | Integ er | Query | 否 | 1 | 模型任务分类的范围，取值范围： 1 ：获取ModelScope上的原始模型任务分类数据列表 2 ：基于本地已同步模型的元数据获取的任务分类数据列表 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -18201,20 +19090,22 @@ GET /model/model-gallery/listModelGalleryCategory HTTP/1.1
 GET /model/model-gallery/listModelGalleryCategory HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DownloadModelGallery
+`}`
+
+##### 4.9.15.4 DownloadModelGallery
+
+调用DownloadModelGallery下载模型广场。
 
 **请求头**
 
@@ -18225,8 +19116,6 @@ GET /model/model-gallery/listModelGalleryCategory HTTP/1.1
 ```
 POST /model/model-gallery/download HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -18252,23 +19141,23 @@ POST /model/model-gallery/download HTTP/1.1
 请求示例
 
 ```
-POST /model/model-gallery/download HTTP/1.1 { }
+POST /model/model-gallery/download HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetModelGalleryConnectionStatus
+`}`
+
+##### 4.9.15.5 GetModelGalleryConnectionStatus
 
 调用GetModelGalleryConnectionStatus查询模型广场常驻连接状态。
 
@@ -18295,7 +19184,7 @@ GET /model/model-gallery/getConnectionStatus HTTP/1.1
 | - networkStatus | Integer | 0 | 网络访问状态，取值范围：0-不通外网、1-通外网。 |
 | -podId | String | mg-p****4fdb | Pod 的唯一标识符。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -18310,24 +19199,28 @@ GET /model/model-gallery/getConnectionStatus HTTP/1.1
 GET /model/model-gallery/getConnectionStatus HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "podStatus":1,
   "networkStatus":0,
   "podId":"mg-p****4fdb"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### UpdateModelGalleryConnectionStatus
+`}`
+
+##### 4.9.15.6 UpdateModelGalleryConnectionStatus
 
 调用UpdateModelGalleryConnectionStatus修改模型广场连接状态。
 
@@ -18353,7 +19246,7 @@ GET /model/model-gallery/updateConnectionStatus HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -18370,22 +19263,24 @@ GET /model/model-gallery/updateConnectionStatus HTTP/1.1
 GET /model/model-gallery/updateConnectionStatus HTTP/1.1 &status=open
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 模型体验
+`}`
 
-##### StreamChat
+#### 4.9.16 模型体验
+
+##### 4.9.16.1 StreamChat
+
+调用StreamChat实现模型流式对话。
 
 **请求头**
 
@@ -18393,7 +19288,9 @@ GET /model/model-gallery/updateConnectionStatus HTTP/1.1 &status=open
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+POST /model/streamChat HTTP/1.1
+```
 
 **请求参数**
 
@@ -18415,8 +19312,6 @@ GET /model/model-gallery/updateConnectionStatus HTTP/1.1 &status=open
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | - | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -18428,24 +19323,30 @@ GET /model/model-gallery/updateConnectionStatus HTTP/1.1 &status=open
 
 请求示例
 
-```json
-{ "serviceId":"os-d20bd45d0683a047a60b5f50f8b52****", "model":"gpt-4", "messages":"["Hello", "How are you?", "See you later"]" }
+```
+POST /model/streamChat HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"serviceId":"os-d20bd45d0683a047a60b5f50f8b52****", "model":"gpt-4", "messages":"["Hello", "How are you?", "See you later"]"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{      \"draftId\": \"draft-575011c0045fd0*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetAigcGenerationResult
+`}`
+
+##### 4.9.16.2 GetAigcGenerationResult
 
 调用GetAigcGenerationResult查询指定任务多模态生成结果信息。
 
@@ -18460,8 +19361,6 @@ GET /model/aigcGeneration/getTaskResult HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18485,28 +19384,26 @@ GET /model/aigcGeneration/getTaskResult HTTP/1.1
 | --task id _ | String | 0385dc79-5ff8- 4d82-bcb6-xxxxxx | 任务ID。 |
 | --task status _ | String | FAILED | 任务状态。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
 GET /model/aigcGeneration/getTaskResult HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"200",
  "httpCode":200
-}
 ```
 
-##### CreateAigcGenerationTask
+`}`
+
+##### 4.9.16.3 CreateAigcGenerationTask
 
 调用CreateAigcGenerationTask创建多模态生成请求，目前支持文生图|文生视频|图生图|图生视频。
 
@@ -18516,6 +19413,10 @@ GET /model/aigcGeneration/getTaskResult HTTP/1.1
 
 **请求语法**
 
+```
+POST /model/aigcGeneration/createTask HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -18523,8 +19424,6 @@ GET /model/aigcGeneration/getTaskResult HTTP/1.1
 | serviceId | Strin g | Body | 是 | os-edbe708a0b5f5**** | 在线服务ID，该参数必填。 |
 | modelCat egoryId | Integ er | Body | 是 | 1014 | 模型类型ID，该参数必填。 |
 | model | Strin g | Body | 是 | wan2.2-t2i-flash | served-model-Name，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18542,14 +19441,16 @@ GET /model/aigcGeneration/getTaskResult HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
+```
+POST /model/aigcGeneration/createTask HTTP/1.1
+```
+
+`{`
+
 ```json
-{ "serviceId":"os-edbe708a0b5f5****", "modelCategoryId":"1014", "model":"wan2.2-t2i-flash",
+"serviceId":"os-edbe708a0b5f5****", "modelCategoryId":"1014", "model":"wan2.2-t2i-flash",
 ```
 
 `"input":"`文生图 | 文生视频： `{ "prompt": "`雪地，白色小教堂，极光，冬日场景，柔和的光线。`", "negat`
@@ -18570,16 +19471,9 @@ ive_prompt": "人物" }
 ", "img_url": "https://xxx/wanx-demo-1.png" }", "parameters":"图生图 | 文生图 { "size": "1024*1024", "n": 1 }
 ```
 
-文生视频 | 图生视频： `{ "size": "1024*1024", "duration": 10 }"`
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+文生视频 | 图生视频： `{ "size": "1024*1024", "duration": 10 }"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{       \"output\": {              \"taskstatus\": \"PENDING\",
 \"taskid\": \"0385d82-****\" } }",
  "success":false,
@@ -18587,12 +19481,15 @@ ive_prompt": "人物" }
  "errorMessage":"\"\"",
  "errorCode":"200",
  "httpCode":200
-}
 ```
 
-### 模型调优
+`}`
 
-#### CreateFinetune
+### 4.10 模型调优
+
+#### 4.10.1 CreateFinetune
+
+调用CreateFinetune创建模型调优。
 
 **请求头**
 
@@ -18606,8 +19503,6 @@ POST /finetune/create HTTP/1.1
 
 **请求参数**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | finetuneN ame | Strin g | Body | 是 | finetune-name | 模型调优名称，该参数必填，长度为2～64个字符， 必须以字母或中文开头，可包含数字、半角句号（.）、 下划线（ ）和短划线 _ （-）。 |
@@ -18619,8 +19514,6 @@ POST /finetune/create HTTP/1.1
 | gpuMemC ount | Integ er | Body | 否 | 10 | 资源池开启GPU虚拟化特性情况下的显存数。 未开启GPU虚拟化时填- 1，GPU卡数将取 gpuCount参数。 |
 | gpuLabelC ount | Integ er | Body | 否 | 2 | 资源池开启GPU虚拟化特性情况下的显存卡数。未开启 GPU虚拟化时填-1，GPU卡数将取gpuCount参数。 |
 | modelSou rce | Integ er | Body | 是 | 1 | 模型来源，该参数必填，取值范围： 0：系统模型。 1：自定义模型。 2：MaaS市场模型。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18634,8 +19527,6 @@ POST /finetune/create HTTP/1.1
 | finetuneM ethod | Integ er | Body | 否 | 0 | 模型调优方法，取值范围： 0：监督微调。 1：dpo直接偏好优化。 2：ppo近端策略优化。 3：DeepSeek GRPO 组间策略优化。 4：ByteDance DAPO 解耦裁剪和动态采样策略优化。 |
 | parameter Range | Integ er | Body | 否 | 1 | 模型调优参数范围，取值范围： 0：全参微调。 1：ora部分参数微调。 2：qlora部分参数微调。 |
 | learningR ate | Float | Body | 是 | 5e-6 | 学习率，该参数必填。 默认值：5e-6。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18656,7 +19547,7 @@ POST /finetune/create HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | { "finetuneId": "ft- ******" } | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -18669,32 +19560,44 @@ POST /finetune/create HTTP/1.1
 
 请求示例
 
-```json
-POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"1", "gpuCount":"1", "modelSource":"1", "modelId":"md-e97c65da0d70b04f2b0bbcb057d9s****", "modelVersion":"v1", "storagePath":"oss://****/****", "storageMount":"/mnt/output", "learningRate":"5e-6", "numEpoch":"2", "maxLength":"1024", "perDeviceTrainBatchSize":"2", "gradientAccumulationStep":"2", "datasetMountList":" [{
- "mountPath": "/mnt/****"
-}]" }
+```
+POST /finetune/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"finetuneName":"finetune-name", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"1", "gpuCount":"1", "modelSource":"1", "modelId":"md-e97c65da0d70b04f2b0bbcb057d9s****", "modelVersion":"v1", "storagePath":"oss://****/****", "storageMount":"/mnt/output", "learningRate":"5e-6", "numEpoch":"2", "maxLength":"1024", "perDeviceTrainBatchSize":"2", "gradientAccumulationStep":"2", "datasetMountList":" [{
+ "mountPath": "/mnt/****"
+}]"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{      \"finetuneId\": \"ft-******\"}",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListFinetune
+`}`
+
+#### 4.10.2 ListFinetune
+
+调用ListFinetune查询所有的模型调优列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /finetune/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -18707,8 +19610,6 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 | finetuneId | Strin g | Query | 否 | ft- 729c6c1e030cc04d970a 10f097***** | 模型调优ID。 |
 | finetuneN ame | Strin g | Query | 否 | finetune-name | 模型调优名称。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | finetuneSt atus | Integ er | Query | 否 | 0 | 模型调优状态，取值范围： 0：待启动。 1：启动中。 2：调优中。 3：已停止。 4：调优失败。 5：调优成功。 6：排队中。 7：停止中。 |
@@ -18720,8 +19621,6 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 | quotaNam e | Strin g | Query | 否 | quota-name | 资源配额名称。 |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -18741,7 +19640,7 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 | -aliyunUid | String | 157123456789**** | 实例所属的阿里云账户ID。 |
 | -cpuCount | Integer | 16 | CPU总核数。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -18757,7 +19656,7 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 | - gpuLabelCoun t | Integer | 1 | 申请到的gpuMemCount显存，平均分配GPU卡数，GPU虚拟化时开启。例如申请显存为 gpuMemCount=8 ，申请卡数为 gpuLabelCount=2 ，表示申请2张GPU 卡，每张卡分配4份显存。 |
 | - gpuMemCount | Integer | 0 | 显存大小，单位为GB。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -18778,7 +19677,7 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 | -quotaId | String | rq- d8890a98089c204 1d8086bb0b2e27* *** | 配额ID。 |
 | -quotaName | String | quota-name | 配额名称。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -regionId | String | cn-hangzhou | 地域ID。 |
@@ -18799,8 +19698,6 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 | --totalGpuMem | Integer | 16106127360 | 运行消耗的总显存数 |
 | --totalMem | Float | 10 | 总内存 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --totalPod | Integer | 3 | 总Pod |
@@ -18814,10 +19711,15 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /finetune/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -18827,16 +19729,13 @@ POST /finetune/create HTTP/1.1 { "finetuneName":"finetune-name", "quotaId":"rq-d
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### UpdateFinetuneStatus
+`}`
 
-智能体工厂 OpenTrek
+#### 4.10.3 UpdateFinetuneStatus
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用UpdateFinetuneStatus修改指定模型调优状态。
 
 **请求语法**
 
@@ -18865,29 +19764,41 @@ PUT /finetune/update-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /finetune/update-status HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a*****", "finetuneStatus":"false" }
+```
+PUT /finetune/update-status HTTP/1.1
 ```
 
-正常返回示例智能体工厂 OpenTrek `JSON` 格式
+`{`
 
 ```json
-{
+"finetuneId":"ft-729c6c1e030cc04d970a*****", "finetuneStatus":"false"
+```
+
+正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteFinetune
+`}`
+
+#### 4.10.4 DeleteFinetune
+
+调用DeleteFinetune删除指定的模型调优。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /finetune/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -18905,27 +19816,25 @@ PUT /finetune/update-status HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a****
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```
-&finetuneId=ft-729c6c1e030cc04d970a10f097*****
+DELETE /finetune/delete HTTP/1.1 &finetuneId=ft-729c6c1e030cc04d970a10f097*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyFinetune
+`}`
+
+#### 4.10.5 ModifyFinetune
 
 调用ModifyFinetune修改指定模型调优的部分信息，包括模型调优名称和描述。
 
@@ -18949,8 +19858,6 @@ PUT /finetune/modify HTTP/1.1
 
 **返回数据**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -18963,23 +19870,31 @@ PUT /finetune/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****", "finetuneName":"finetune-name" }
+```
+PUT /finetune/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"finetuneId":"ft-729c6c1e030cc04d970a10f09*****", "finetuneName":"finetune-name"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetFinetune
+`}`
+
+#### 4.10.6 GetFinetune
+
+调用GetFinetune查询指定的模型调优详细信息。
 
 **请求头**
 
@@ -18987,7 +19902,9 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /finetune/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -19012,7 +19929,7 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | - componentInp uts | Array | {} | 套件入参。 |
 | --code | String | code | 套件Code。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --datasetId | String | ds- rbvg5*****jhc9ks9 2 | 数据集ID。 |
@@ -19031,8 +19948,6 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | --type | String | 1 | 指标类型 |
 | --value | String | 0.5 | 指标值。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - datasetMountL ist | Array | [{ "mountPath": "/root", "datasetId": "ds- 78b1242ffed14878 88af363a24***", "datasetType": 0, "dataSource": 1, "quotaId": "rq- d8890a98089c204 1d8086bb0b2e27f* **", "dataAccInstance": "da- df89s8f9sdfs99sae *****" }] | 数据集配置。 |
@@ -19048,8 +19963,6 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | -cpuCount | Integer | 16 | CPU总核数。 |
 | -finetuneId | String | ft- 729c6c1e030cc04d 970a10f097***** | 模型调优ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - finetuneMetho d | Integer | 0 | 模型调优方法，取值范围： 0：监督微调。 1：dpo直接偏好优化。 2：ppo近端策略优化。 3：DeepSeek GRPO 组间策略优化。 4：ByteDance DAPO 解耦裁剪和动态采样策略优化。 |
@@ -19062,8 +19975,6 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | - gpuLabelCoun t | Integer | 1 | 申请到的GpuMemCount显存，平均分配GPU 卡数，GPU虚拟化时开启。例如申请显存为 GpuMemCount=8 ，申请卡数为 GpuLabelCount=2 ，表示申请2张GPU 卡，每张卡分配4份显存。 |
 | - gpuMemCount | Integer | 0 | 显存大小，单位为GB。 |
 | -gpuMemTotal | Integer | 16384 | 运行消耗的GPU总量。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -19083,7 +19994,7 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | -quotaName | String | quota-name | 配额名称。 |
 | -regionId | String | cn-hangzhou | 地域ID。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19116,27 +20027,29 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 请求示例
 
 ```
-&finetuneId=ft-729c6c1e030cc04d970a10f*****
+GET /finetune/get HTTP/1.1 &finetuneId=ft-729c6c1e030cc04d970a10f*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 模型工坊
+`}`
 
-#### 模型量化
+### 4.11 模型工坊
 
-##### GetQuantize
+#### 4.11.1 模型量化
+
+##### 4.11.1.1 GetQuantize
+
+调用GetQuantize查询指定的模型量化详细信息。
 
 **请求头**
 
@@ -19144,15 +20057,15 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 
 **请求语法**
 
+```
+GET /quantize/get HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | quantizeId | Strin g | Query | 是 | qt- 729c6c1e030cc04d970a 10f***** | 模型量化ID。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -19172,7 +20085,7 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | - gpuMemCount | Integer | 0 | 显存大小，单位为GB。 |
 | -gpuMemTotal | Integer | 16384 | 显卡总显存容量。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19193,7 +20106,7 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | - sourceModelSi ze | Float | 1.2 | 表示源模型文件的大小，通常用于描述预训练模型或基础模型所占用的磁盘空间容量。 |
 | -storageMount | String | /mnt/output | 持久化挂载点。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19216,7 +20129,7 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 | - modelMountV O | Struct | {} | 模型挂载。 |
 | --modelId | String | md- rbvg5wzljz****ks92 | 模型ID。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19230,23 +20143,25 @@ PUT /finetune/modify HTTP/1.1 { "finetuneId":"ft-729c6c1e030cc04d970a10f09*****"
 请求示例
 
 ```
-&quantizeId=qt-729c6c1e030cc04d970a10f*****
+GET /quantize/get HTTP/1.1 &quantizeId=qt-729c6c1e030cc04d970a10f*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreateQuantize
+`}`
+
+##### 4.11.1.2 CreateQuantize
+
+调用CreateQuantize创建模型量化。
 
 **请求头**
 
@@ -19265,7 +20180,7 @@ POST /quantize/create HTTP/1.1
 | quotaId | Strin g | Body | 是 | rq- d8890a98089c2041d80 86bb0b2e27**** | 资源配额ID，该参数必填。 |
 | cpuCount | Integ er | Body | 是 | 1 | Cpu大小，单位为核，该参数必填。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 
@@ -19280,8 +20195,6 @@ POST /quantize/create HTTP/1.1
 | quantizeM ethod | Integ er | Body | 否 | 0 | 量化策略，取值范围： 0：GPTQ。 1：AWQ。 |
 | storagePa th | Strin g | Body | 是 | oss://******/ | 存储路径，该参数必填。 |
 | storageMo unt | Strin g | Body | 是 | /mnt/output | 持久化挂载点，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -19300,32 +20213,32 @@ POST /quantize/create HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"1", "gpuCount":"1", "modelSource":"1", "quantizeStrategy":"0", "storagePath":"oss://******/", "storageMount":"/mnt/output", "modelMount":"{
+POST /quantize/create HTTP/1.1 "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"1", "gpuCount":"1", "modelSource":"1", "quantizeStrategy":"0", "storagePath":"oss://******/", "storageMount":"/mnt/output", "modelMount":"{
       "modelId":"md-362495ef0fba10****",
       "modelVersion":"v1",
       "mountPath":"/mnt/model",
       "dataAccInstance":"da-29eac3c8861d4e3d9b1478f17d18****"
-    }"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\t\"quantizeId\": \"qt-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteQuantize
+`}`
+
+##### 4.11.1.3 DeleteQuantize
+
+调用DeleteQuantize删除指定的模型量化。
 
 **请求头**
 
@@ -19333,15 +20246,15 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 
 **请求语法**
 
+```
+DELETE /quantize/delete HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | quantizeId | Strin g | Query | 是 | ft- 729c6c1e030cc04d970a 10f097***** | 模型量化ID。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -19356,22 +20269,24 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 请求示例
 
 ```
-&quantizeId=ft-729c6c1e030cc04d970a10f097*****
+DELETE /quantize/delete HTTP/1.1 &quantizeId=ft-729c6c1e030cc04d970a10f097*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListQuantize
+`}`
+
+##### 4.11.1.4 ListQuantize
+
+调用ListQuantize查询所有的模型量化列表。
 
 **请求头**
 
@@ -19379,9 +20294,11 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 
 **请求语法**
 
-**请求参数**
+```
+GET /quantize/list HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -19395,10 +20312,6 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 | quantizeS tatus | Integ er | Query | 否 | 0 | 模型量化状态，取值范围： 0：待启动。 1：启动中。 2：量化中。 3：量化失败。 4：量化成功。 5：排队中。 |
 | quantizeS trategy | Integ er | Query | 否 | 0 | 模型量化策略，取值范围： 0：Int4-W4A16。 1：Int8-W8A16。 2：FP8-Wfp8Afp8。 |
 | quantizeM ethod | Integ er | Query | 否 | 0 | 模型量化方法，取值范围： 0：GPTQ。 1：AWQ。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -19416,8 +20329,6 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 | - gpuMemTotal Unit | Integer | 1 | 表示GPU总显存容量的单位，通常以GB（吉字节）为单位显示 |
 | -gpuType | Integer | 0 | GPU显卡类型。 |
 | -memCount | Integer | 1 | 内存大小，单位为GB。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -19437,7 +20348,7 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 | - targetModelSiz e | Float | 512 | 模型文件的大小，单位为GB，用于评估模型部署所需的存储空间 |
 | - instanceCostV O | Struct | {} | 实例消耗资源 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19460,8 +20371,6 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 | -- modelVersion | String | v1 | 模型仓库版本号。 |
 | --mountPath | String | /tmp | 容器挂载路径。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -19474,10 +20383,15 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /quantize/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -19487,18 +20401,15 @@ POST /quantize/create HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### 模型转换
+`}`
 
-##### CreateModelConvertTask
+#### 4.11.2 模型转换
 
-智能体工厂 OpenTrek
+##### 4.11.2.1 CreateModelConvertTask
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用CreateModelConvertTask创建模型转换任务。
 
 **请求语法**
 
@@ -19522,8 +20433,6 @@ POST /model/convert/task/create HTTP/1.1
 
 **返回数据**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -19537,32 +20446,40 @@ POST /model/convert/task/create HTTP/1.1
 
 请求示例
 
-```json
-POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040c9089ce03*****", "convertType":"1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"1", "tensorParallelism":"1", "pipelineParallelism":"1", "targetStoragePath":"oss://*****", "targetMountPath":"/mnt/model/*****" }
+```
+POST /model/convert/task/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"modelConvertId":"mc-12c6efa90cc75040c9089ce03*****", "convertType":"1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "cpuCount":"1", "memCount":"1", "tensorParallelism":"1", "pipelineParallelism":"1", "targetStoragePath":"oss://*****", "targetMountPath":"/mnt/model/*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{       \"modelConvertId\": \"mc-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+##### 4.11.2.2 GetModelConvertProgress
 
-##### GetModelConvertProgress
+调用GetModelConvertProgress查询指定模型转换任务进度。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/convert/progress/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -19583,8 +20500,6 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 | -aliyunUid | String | 157123456789**** | 实例所属的阿里云账户ID。 |
 | -convertType | Integer | 1 | 模型转换类型，该参数必填，取值范围： 0：HuggingFace to Megatron。 1：Megatron to HuggingFace。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -cpuCount | Integer | 16 | CPU总核数。 |
@@ -19602,7 +20517,7 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 | - targetMountPa th | String | /mnt/model/***** | 目标挂载路径 |
 | - targetStorage Path | String | oss://***** | 目标存储路径，该参数必填。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19622,36 +20537,38 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 | -- sourceStorage Path | String | oss://*****/ | 源模型存储路径。 |
 | --sourceType | Integer | 1 | 源数据的类型。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
-&modelConvertId=mc-48fca8d2020f604b470969b0*****
+GET /model/convert/progress/get HTTP/1.1 &modelConvertId=mc-48fca8d2020f604b470969b0*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListModelConvertTask
+`}`
+
+##### 4.11.2.3 ListModelConvertTask
+
+调用ListModelConvertTask查询所有的模型转换任务列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /model/convert/task/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -19660,8 +20577,6 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 | pageIndex | Integ er | Query | 否 | 1 | 模型转换列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -19680,7 +20595,7 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 | -cpuCount | Integer | 16 | CPU总核数。 |
 | -gmtCreated | String | 2017-11- 27T06:51:26Z | 资源集创建时间。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19698,8 +20613,6 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 | - targetMountPa th | String | /mnt/model/***** | 目标挂载路径 |
 | - targetStorage Path | String | oss://***** | 目标存储路径，该参数必填。 |
 | - tensorParalleli sm | Integer | 1 | tensor并行数 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -19730,10 +20643,15 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /model/convert/task/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -19743,16 +20661,19 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-##### DeleteModelConvert
+`}`
 
-**请求头**
+##### 4.11.2.4 DeleteModelConvert
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用DeleteModelConvert删除指定的模型转换。
 
 **请求语法**
+
+```
+DELETE /model/convert/delete HTTP/1.1
+```
 
 **请求参数**
 
@@ -19775,24 +20696,22 @@ POST /model/convert/task/create HTTP/1.1 { "modelConvertId":"mc-12c6efa90cc75040
 请求示例
 
 ```
-&modelConvertId=mc-48fca8d2020f604b470969b*****
+DELETE /model/convert/delete HTTP/1.1 &modelConvertId=mc-48fca8d2020f604b470969b*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+##### 4.11.2.5 CreateModelConvertSource
 
-##### CreateModelConvertSource
+调用CreateModelConvertSource创建模型转换配置源。
 
 **请求头**
 
@@ -19833,30 +20752,34 @@ POST /model/convert/source/create HTTP/1.1
 
 请求示例
 
-```json
-POST /model/convert/source/create HTTP/1.1 { "sourceType":"1", "modelCategory":"1", "sourceMountPath":"/mnt/model/*****" }
+```
+POST /model/convert/source/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"sourceType":"1", "modelCategory":"1", "sourceMountPath":"/mnt/model/*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{      \"modelConvertId\": \"mc-*****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 模型评测
+`}`
 
-#### CreateEvaluateTask
+### 4.12 模型评测
 
-**请求头**
+#### 4.12.1 CreateEvaluateTask
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用CreateEvaluateTask创建模型评测任务。
 
 **请求语法**
 
@@ -19877,8 +20800,6 @@ POST /evaluate/create HTTP/1.1
 | frameWor k | Integ er | Body | 是 | 1 | 模型框架，该参数非必填 （评测方法为自定义评测时需传），取值范围： 1：Tensorflow。 2：PyTorch。 |
 | trainType | Integ er | Body | 否 | 0 | （废弃参数） 训练类型，取值范围： 0：单机训练。 1：分布式训练。 默认值：0。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | startCom mand | Strin g | Body | 否 | python3 main.py | 启动命令，评测方法为自定义评测时，该参数不能为空。 |
@@ -19889,8 +20810,6 @@ POST /evaluate/create HTTP/1.1
 | codeMoun tList | Json | Body | 否 | [{ "codeId": "cd- a4a60fa1000d304cb609 79f0f1*****", "mountPath": "/data" }] | 代码集配置。 |
 | storageMo untList | Json | Body | 否 | [{ "mountPath": "/root", "storagePath": "oss://****/", "storageSource": 1, "quotaId": "rq- d8890a98089c2041d80 86bb0b2e27f****" }] | 持久化存储设置。评测方法为自动评测、基准评测时该参数不能为空。 |
 | nodeConfi gList | Json | Body | 是 | [{ "nodeType": 2, "nodeCount": 1, "cpuCount": 1, "memCount": 1, "gpuCount": 0 }] | 任务资源配置，该参数必填。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -19907,7 +20826,7 @@ POST /evaluate/create HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | { "taskId": "ev- ****"} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -19920,8 +20839,14 @@ POST /evaluate/create HTTP/1.1
 
 请求示例
 
+```
+POST /evaluate/create HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /evaluate/create HTTP/1.1 { "taskName":"evaluateTask-name", "imageId":"img-359cc14b09a50049800bbd4sada8s***", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27f***", "taskType":"1", "frameWork":"1", "startCommand":"python3 main.py", "datasetMountList":"[{
+"taskName":"evaluateTask-name", "imageId":"img-359cc14b09a50049800bbd4sada8s***", "imageVersion":"v1", "quotaId":"rq-d8890a98089c2041d8086bb0b2e27f***", "taskType":"1", "frameWork":"1", "startCommand":"python3 main.py", "datasetMountList":"[{
  "datasetId": "ds-5740734ff2cf4a00bc6da*****",
  "mountPath": "/data"
 }]", "nodeConfigList":"[{
@@ -19930,23 +20855,25 @@ POST /evaluate/create HTTP/1.1 { "taskName":"evaluateTask-name", "imageId":"img-
  "cpuCount": 1,
  "memCount": 1,
  "gpuCount": 0
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{ \"taskId\": \"ev-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteEvaluateTask
+`}`
+
+#### 4.12.2 DeleteEvaluateTask
+
+调用DeleteEvaluateTask删除指定的模型评测任务。
 
 **请求头**
 
@@ -19974,27 +20901,27 @@ DELETE /evaluate/delete HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
 DELETE /evaluate/delete HTTP/1.1 &taskId=ev-ec00ccee0b8c904e210bad10fb60****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetEvaluateTask
+`}`
+
+#### 4.12.3 GetEvaluateTask
+
+调用GetEvaluateTask查询指定模型评测任务的详细信息。
 
 **请求头**
 
@@ -20021,7 +20948,7 @@ GET /evaluate/get HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20064,7 +20991,7 @@ GET /evaluate/get HTTP/1.1
 | --mountPath | String | /testdata/ | 挂载路径。 |
 | --pvcName | String | null | PVC名称(已废弃）。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20087,8 +21014,6 @@ GET /evaluate/get HTTP/1.1
 | --modelId | String | md-system- fa0c****3596b3 | 裁判员模型ID。 |
 | --modelType | Integer | 0 | 裁判员模型类型。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --modelName | String | Qwen3-4B | 裁判员模型名称。 |
@@ -20110,7 +21035,7 @@ GET /evaluate/get HTTP/1.1
 | --serviceId | String | os- be55****e4d04dc5 | 裁判员在线服务ID。 |
 | --serviceName | String | 在线服务名称xxx | 裁判员模型在线服务名称。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20133,10 +21058,10 @@ GET /evaluate/get HTTP/1.1
 | - gpuMemCount | Integer | -1 | 显存大小（GB）。 |
 | -gpuMemTotal | Integer | 0 | 显存总量（GB）。 |
 
-|  | 2 |
+|   | 2 |
 |---|---|
-| 5 |  |
-| 8 |  |
+| 5 |   |
+| 8 |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -20157,7 +21082,7 @@ GET /evaluate/get HTTP/1.1
 | -instanceCost | Struct | {} | 实例消耗信息。 |
 | --runningCost | Float | 0.00 | 运行中消耗。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20182,26 +21107,21 @@ GET /evaluate/get HTTP/1.1
 GET /evaluate/get HTTP/1.1 &taskId=ev-ec00ccee0b8c904e210bad10fb6dso****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "scheduleTime":"",
   "gmtModified":"",
   "quotaName":"",
   "storageMountList":[
-   {
     "mountPath":"",
     "pvcName":"",
 ```
 
-智能体工厂 OpenTrek
-
 ```json
     "storagePath":"",
     "storageSource":""
-   }
 ```
 
 `],`
@@ -20211,7 +21131,11 @@ GET /evaluate/get HTTP/1.1 &taskId=ev-ec00ccee0b8c904e210bad10fb6dso****
   "aliyunUid":"",
   "failedMsg":"",
   "modelMountList":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"",
     "dataAccInstance":"",
     "weightType":"",
@@ -20220,36 +21144,41 @@ GET /evaluate/get HTTP/1.1 &taskId=ev-ec00ccee0b8c904e210bad10fb6dso****
     "pvcName":"",
     "modelVersion":"",
     "modelType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "thirdpartyStorageMountList":[
-   {
+```
+
+`{`
+
+```json
     "mountPath":"",
     "storageSubPath":"",
     "occupantId":"",
     "storageId":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "judgeModelInfo":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"",
     "modelId":"",
     "modelVersion":"",
     "modelType":"",
     "serviceId":"",
     "serviceName":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "evalMode":"",
@@ -20266,18 +21195,15 @@ GET /evaluate/get HTTP/1.1 &taskId=ev-ec00ccee0b8c904e210bad10fb6dso****
   "imageId":"",
   "imageName":"",
   "nodeConfigList":[
-   {
     "memCount":"",
     "sharedMemCount":"",
 ```
 
-" M
+`"` `M`
 
 ```
 t"""
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "gpuMemCount":"",
@@ -20286,10 +21212,9 @@ t"""
     "nodeType":"",
     "gpuCount":"",
     "cpuCount":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gpuMemCount":"",
@@ -20306,33 +21231,42 @@ t"""
    "runningCpu":"",
    "totalCost":"",
    "totalGpu":""
-  },
+```
+
+`},`
+
+```json
   "quotaId":"",
   "startCommand":"",
   "gpuMemTotal":"",
   "gpuLabelCount":"",
   "evaluateObjectInfo":[
-   {
+```
+
+`{`
+
+```json
     "modelName":"",
     "modelGenerationConfig":[
-     {
+```
+
+`{`
+
+```json
       "temperature":"",
       "maxTokens":"",
       "topP":"",
       "customParameters":[
-       {
+```
+
+`{`
+
+```json
         "value":"",
         "key":""
-       }
 ```
 
-]
-
-```
-     }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
     "modelId":"",
@@ -20340,23 +21274,18 @@ t"""
     "modelType":"",
     "serviceId":"",
     "serviceName":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "taskDesc":"",
   "regionId":"",
   "gpuMemTotalUnit":"",
   "datasetMountList":[
-{
 ```
 
-智能体工厂 OpenTrek
-
 ```json
-   {
     "dataAccInstance":"",
     "datasetVersion":"",
     "mountPath":"",
@@ -20366,23 +21295,25 @@ t"""
     "datasetId":"",
     "datasetFileName":"",
     "datasetType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "codeMountList":[
-   {
+```
+
+`{`
+
+```json
     "codeId":"",
     "mountPath":"",
     "pvcName":"",
     "codeName":"",
     "codeRepoType":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "taskName":"",
@@ -20391,16 +21322,23 @@ t"""
   "taskId":"",
   "benchmarkType":"",
   "isSchedule":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListEvaluateTask
+`}`
+
+#### 4.12.4 ListEvaluateTask
+
+调用ListEvaluateTask查询所有的模型评测任务列表。
 
 **请求头**
 
@@ -20417,8 +21355,6 @@ GET /evaluate/list HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | pageIndex | Integ er | Query | 否 | 1 | 模型评测列表的页码。 默认值：1。 |
@@ -20429,8 +21365,6 @@ GET /evaluate/list HTTP/1.1
 | taskName | Strin g | Query | 否 | test | 评测任务名称。 |
 | taskStatus | Integ er | Query | 否 | 1 | 评测任务状态。枚举值： 0 -待启动， 1 - 启动中， 2 -运行中， 3 -已停止， 4 - 失败， 5 -已完成， 6 -排队中， 7 - 停止中， 8 -定时等待。 0：已创建。 1：启动中。 2：运行中。 3：已停止。 4：失败。 5：完成。 |
 | frameWor k | Integ er | Query | 否 | 1 | 模型框架，取值范围： 1：Tensorflow。 2：PyTorch。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -20453,8 +21387,6 @@ GET /evaluate/list HTTP/1.1
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | -judgeStrategy | List | [0] | 评分策略列表。枚举值： 0 -规则打分， 1 -裁判员打分(llm-as-a-judge)。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - benchmarkTyp e | List | [0] | 预置基准评测类型列表。枚举值： 0 -知识问答， 1 -逻辑推理， 2 -指令遵循。 |
@@ -20475,7 +21407,7 @@ GET /evaluate/list HTTP/1.1
 | -- modelVersion | String | v1.0 | 裁判员模型版本。 |
 | --mountPath | String | /testdata/ | 挂载路径。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20499,7 +21431,7 @@ GET /evaluate/list HTTP/1.1
 | --nodeCount | Integer | 1 | 节点数。 |
 | --cpuCount | Integer | 2 | CPU数量。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20522,8 +21454,6 @@ GET /evaluate/list HTTP/1.1
 | --serviceId | String | os- be55****e4d04dc5 | 裁判员在线服务ID。 |
 | --serviceName | String | 在线服务名称xxx | 裁判员模型在线服务名称。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -- modelGenerati onConfig | Struct | {} | 模型生成参数配置。 |
@@ -20545,7 +21475,7 @@ GET /evaluate/list HTTP/1.1
 | -aliyunUid | String | 198226****1225 | 阿里云主账号。 |
 | -regionId | String | cn-neimeng-236e- d01 | 地域ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20568,12 +21498,12 @@ GET /evaluate/list HTTP/1.1
 | -gpuCountUnit | Integer | -1 | GPU数量单位。 |
 | - gpuMemTotal Unit | Integer | -1 | 显存总量单位。 |
 
-|  | 2 |
+|   | 2 |
 |---|---|
-| 5 |  |
-| 8 |  |
+| 5 |   |
+| 8 |   |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20595,7 +21525,7 @@ GET /evaluate/list HTTP/1.1
 | --runningMem | Float | 0 | 运行中内存数。 |
 | --runningGpu | Float | 0 | 运行中GPU数。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20623,12 +21553,10 @@ GET /evaluate/list HTTP/1.1
 GET /evaluate/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-|  | { "data":[ { "scheduleTime":"", "gmtModified":"", "quotaName":"", "storageMountList":[ { "mountPath":"", "pvcName":"", "storagePath":"", "storageSource":"" } ], "gmtCreated":"", "aliyunUid":"", "failedMsg":"", "modelMountList":[ { "modelName":"", "dataAccInstance":"", "weightType":"", "mountPath":"", "modelId":"", "pvcName":"", "modelVersion":"", "modelType":"" } ], "thirdpartyStorageMountList":[ { "mountPath":"", "storageSubPath":"", "occupantId":"", "storageId":"" } ], "judgeModelInfo":[ { "modelName":"", "modelId":"", "modelVersion":"", "modelType":"", "serviceId":"", "serviceName":"" } ], "evalMode":"", "gmtEnd":"", "judgeStrategy":"", "nodeCount":"", "gpuCount":"", "imageType":"", "taskStatus":"", |  |
+|   | { "data":[ { "scheduleTime":"", "gmtModified":"", "quotaName":"", "storageMountList":[ { "mountPath":"", "pvcName":"", "storagePath":"", "storageSource":"" } ], "gmtCreated":"", "aliyunUid":"", "failedMsg":"", "modelMountList":[ { "modelName":"", "dataAccInstance":"", "weightType":"", "mountPath":"", "modelId":"", "pvcName":"", "modelVersion":"", "modelType":"" } ], "thirdpartyStorageMountList":[ { "mountPath":"", "storageSubPath":"", "occupantId":"", "storageId":"" } ], "judgeModelInfo":[ { "modelName":"", "modelId":"", "modelVersion":"", "modelType":"", "serviceId":"", "serviceName":"" } ], "evalMode":"", "gmtEnd":"", "judgeStrategy":"", "nodeCount":"", "gpuCount":"", "imageType":"", "taskStatus":"", |   |
 |---|---|---|
-
-智能体工厂 OpenTrek
 
 ```json
    "cpuCount":"",
@@ -20638,7 +21566,11 @@ GET /evaluate/list HTTP/1.1
    "imageId":"",
    "imageName":"",
    "nodeConfigList":[
-    {
+```
+
+`{`
+
+```json
      "memCount":"",
      "sharedMemCount":"",
      "gpuMemCount":"",
@@ -20647,15 +21579,18 @@ GET /evaluate/list HTTP/1.1
      "nodeType":"",
      "gpuCount":"",
      "cpuCount":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gpuMemCount":"",
    "instanceCost":[
-    {
+```
+
+`{`
+
+```json
      "runningPod":"",
      "runningMem":"",
      "runningGpuMem":"",
@@ -20668,10 +21603,9 @@ GET /evaluate/list HTTP/1.1
      "runningCpu":"",
      "totalCost":"",
      "totalGpu":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "quotaId":"",
@@ -20679,27 +21613,32 @@ GET /evaluate/list HTTP/1.1
    "gpuMemTotal":"",
    "gpuLabelCount":"",
    "evaluateObjectInfo":[
-    {
+```
+
+`{`
+
+```json
      "modelName":"",
      "modelGenerationConfig":[
-      {
+```
+
+`{`
+
+```json
        "temperature":"",
        "maxTokens":"",
        "topP":"",
        "customParameters":[
-        {
+```
+
+`{`
+
+```json
          "value":"",
          "key":""
-        }
 ```
 
-]
-
-```
-      }
-```
-
-智能体工厂 OpenTrek `],`
+`]` `],`
 
 ```json
      "modelId":"",
@@ -20707,17 +21646,20 @@ GET /evaluate/list HTTP/1.1
      "modelType":"",
      "serviceId":"",
      "serviceName":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "taskDesc":"",
    "regionId":"",
    "gpuMemTotalUnit":"",
    "datasetMountList":[
-    {
+```
+
+`{`
+
+```json
      "dataAccInstance":"",
      "datasetVersion":"",
      "mountPath":"",
@@ -20727,23 +21669,25 @@ GET /evaluate/list HTTP/1.1
      "datasetId":"",
      "datasetFileName":"",
      "datasetType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "codeMountList":[
-    {
+```
+
+`{`
+
+```json
      "codeId":"",
      "mountPath":"",
      "pvcName":"",
      "codeName":"",
      "codeRepoType":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "taskName":"",
@@ -20752,10 +21696,9 @@ GET /evaluate/list HTTP/1.1
    "taskId":"",
    "benchmarkType":"",
    "isSchedule":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -20766,16 +21709,13 @@ GET /evaluate/list HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ModifyEvaluateTask
+`}`
 
-智能体工厂 OpenTrek 调用ModifyEvaluateTask修改指定模型评测任务的部分信息，包括模型评测任务名称和描述。
+#### 4.12.5 ModifyEvaluateTask
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ModifyEvaluateTask修改指定模型评测任务的部分信息，包括模型评测任务名称和描述。
 
 **请求语法**
 
@@ -20803,25 +21743,27 @@ PUT /evaluate/modify HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /evaluate/modify HTTP/1.1 { "taskId":"ev-c5566dc90a718042e40acfa07e29e****", "taskName":"task-name" }
+PUT /evaluate/modify HTTP/1.1 "taskId":"ev-c5566dc90a718042e40acfa07e29e****", "taskName":"task-name"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyEvaluateTaskStatus
+`}`
+
+#### 4.12.6 ModifyEvaluateTaskStatus
+
+调用ModifyEvaluateTaskStatus修改指定模型评测任务的状态。
 
 **请求头**
 
@@ -20857,23 +21799,31 @@ PUT /evaluate/modify-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /evaluate/modify-status HTTP/1.1 { "taskId":"ev-c5566dc90a718042e40acfa07e29e****", "taskStatus":"true" }
+```
+PUT /evaluate/modify-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"taskId":"ev-c5566dc90a718042e40acfa07e29e****", "taskStatus":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListEvaluateResult
+`}`
+
+#### 4.12.7 ListEvaluateResult
+
+调用ListEvaluateResult查询所有的评测概览结果列表。
 
 **请求头**
 
@@ -20886,8 +21836,6 @@ POST /evaluate/list-result HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -20929,65 +21877,70 @@ POST /evaluate/list-result HTTP/1.1
 
 请求示例
 
-```json
-POST /evaluate/list-result HTTP/1.1 { "taskIdList":"["task001", "task042", "task113"]" }
+```
+POST /evaluate/list-result HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"taskIdList":"["task001", "task042", "task113"]"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":[
-  {
    "modelMetrics":[
-    {
+```
+
+`{`
+
+```json
      "modelName":"Qwen3-4B",
      "finalScore":0.85,
      "modelId":"md-system-7ed6****e878ce",
      "metrics":[
-      {
+```
+
+`{`
+
+```json
        "score":0.75,
        "num":100,
        "name":"Rouge-1-F"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
      "modelVersion":"v1.0",
      "categoryScoreList":[
-      {
+```
+
+`{`
+
+```json
        "score":0.75,
        "datasetScoreList":[
-        {
+```
+
+`{`
+
+```json
          "score":0.75,
          "datasetName":"GPQA Diamond"
-        }
 ```
 
-`],` `"category":"`知识问答"
-
-```
-      }
-```
-
-`],`
+`}` `],` `"category":"`知识问答`"` `}` `],`
 
 ```json
      "costTimeList":"[]",
      "serviceId":"os-e2df****9d404e04",
      "serviceName":"开发-LLM"
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
  "success":true,
@@ -20995,10 +21948,13 @@ POST /evaluate/list-result HTTP/1.1 { "taskIdList":"["task001", "task042", "task
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListEvaluateReviewResult
+`}`
+
+#### 4.12.8 ListEvaluateReviewResult
+
+调用ListEvaluateReviewResult查询所有的评测结果明细列表。
 
 **请求头**
 
@@ -21009,8 +21965,6 @@ POST /evaluate/list-result HTTP/1.1 { "taskIdList":"["task001", "task042", "task
 ```
 GET /evaluate/review/list HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -21036,7 +21990,7 @@ GET /evaluate/review/list HTTP/1.1
 | - evalParticipant Id | String | evp- d5c8****7045a9 | 参评对象ID。 |
 | -question | String | 中国的首都是哪里？ | 评测问题。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21061,10 +22015,9 @@ GET /evaluate/review/list HTTP/1.1
 GET /evaluate/review/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -21074,10 +22027,13 @@ GET /evaluate/review/list HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ExportEvaluateReviewResult
+`}`
+
+#### 4.12.9 ExportEvaluateReviewResult
+
+调用ExportEvaluateReviewResult下载评测明细结果。
 
 **请求头**
 
@@ -21104,8 +22060,6 @@ GET /evaluate/review/export HTTP/1.1
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorMessage | String | "" | 错误信息。 |
@@ -21119,20 +22073,22 @@ GET /evaluate/review/export HTTP/1.1
 GET /evaluate/review/export HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"downloadUrl\": \"http://sttest-0610.oss***\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyEvaluateReview
+`}`
+
+#### 4.12.10 ModifyEvaluateReview
+
+调用ModifyEvaluateReview修改评测结果明细。
 
 **请求头**
 
@@ -21152,7 +22108,7 @@ PUT /evaluate/review/modify HTTP/1.1
 | evalPartici pantId | Strin g | Body | 是 | evp-sdydusdf6*** | 评测任务与参评对象关联唯一ID，该参数必填。 |
 | reviewId | Strin g | Body | 是 | review-u7sdfa7*** | 评测ID，该参数必填。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -21175,26 +22131,34 @@ PUT /evaluate/review/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /evaluate/review/modify HTTP/1.1 { "evalTaskId":"ev-ady8sdysdf***", "evalParticipantId":"evp-sdydusdf6***", "reviewId":"review-u7sdfa7***" }
+```
+PUT /evaluate/review/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"evalTaskId":"ev-ady8sdysdf***", "evalParticipantId":"evp-sdydusdf6***", "reviewId":"review-u7sdfa7***"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### AI资源池
+`}`
 
-#### EnableResourcePoolSLS
+### 4.13 AI资源池
+
+#### 4.13.1 EnableResourcePoolSLS
+
+调用EnableResourcePoolSLS启用资源池的日志服务（SLS）。
 
 **请求头**
 
@@ -21222,7 +22186,7 @@ POST /resource/pool/enable-sls/[resourcePoolId] HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21233,23 +22197,31 @@ POST /resource/pool/enable-sls/[resourcePoolId] HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/pool/enable-sls/[resourcePoolId] HTTP/1.1 { "resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeba63****", "logProject":"test" }
+```
+POST /resource/pool/enable-sls/[resourcePoolId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeba63****", "logProject":"test"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateResourcePool
+`}`
+
+#### 4.13.2 CreateResourcePool
+
+调用CreateResourcePool创建AI资源池。
 
 **请求头**
 
@@ -21268,7 +22240,7 @@ POST /resource/pool/create HTTP/1.1
 | resourceP oolName | Strin g | Body | 是 | resourcePool-name | 资源池名称，该参数必填， 长度为2～64个字符，必须以字母或中文开头，可包含数字、半角句号（.）、下划线（ ）和短划线（-）。 _ |
 | resourceP oolDescrip tion | Strin g | Body | 否 | resourcePool-desc | 资源池描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |
 
-|  | 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -21289,8 +22261,6 @@ POST /resource/pool/create HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {"resourcePoolId": "rp-****"} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -21302,24 +22272,32 @@ POST /resource/pool/create HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/pool/create HTTP/1.1 { "resourcePoolName":"resourcePool-name", "resourceType":"0", "clusterId":"c2ce98d5a1dff4fb7b08e7385cb83****" }
+```
+POST /resource/pool/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"resourcePoolName":"resourcePool-name", "resourceType":"0", "clusterId":"c2ce98d5a1dff4fb7b08e7385cb83****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"resourcePoolId\": \"rp-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteResourcePool
+`}`
+
+#### 4.13.3 DeleteResourcePool
+
+调用DeleteResourcePool删除指定的资源池。
 
 **请求头**
 
@@ -21332,8 +22310,6 @@ DELETE /resource/pool/delete/[resourcePoolId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -21358,22 +22334,22 @@ DELETE /resource/pool/delete/[resourcePoolId] HTTP/1.1
 DELETE /resource/pool/delete/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0af720435c0a4d60eeba63****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-#### GetResourcePoolDetail
+#### 4.13.4 GetResourcePoolDetail
+
+调用GetResourcePoolDetail查询指定资源池的详细信息。
 
 **请求头**
 
@@ -21405,7 +22381,7 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1
 | -featureVOList | Array | [] | 资源池关联特性列表。 |
 | --ackClusterId | String | cef51d60a65ab3a8 026c24***** | ACK集群ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21423,8 +22399,6 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1
 | --featureStep | String | "" | 特性步骤。 |
 | -- featureTarget Status | Integer | 1 | 特性目标状态。 |
 | --gmtCreated | String | 2025-11-30 07:23:23 | 创建时间。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -21444,7 +22418,7 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1
 | -createUser | String | 17366294xxxxxxx | 创建人。 |
 | -logProject | String | k8s-log-xxxxxx | 日志服务LogProject的名称。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | - ramRoleStatus | Boolean | true | RAM角色是否可用。 |
@@ -21478,10 +22452,9 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1
 GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0af720435c0a4d60eeba63****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "resourcePoolStatus":"",
   "certStatus":"",
@@ -21490,7 +22463,11 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
    "manufacturerCN":"",
    "gpu":"",
    "manufacturer":""
-  },
+```
+
+`},`
+
+```json
   "resourcePoolGPU":"",
   "resourcePoolGmtCreate":"",
   "ackClusterName":"",
@@ -21508,11 +22485,8 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
   "regionId":"",
 ```
 
-智能体工厂 OpenTrek
-
 ```json
   "featureVOList":[
-   {
     "canClose":"",
     "gmtModified":"",
     "resourceId":"",
@@ -21531,10 +22505,9 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
     "canOpen":"",
     "featureNameTW":"",
     "id":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "resourcePoolId":"",
@@ -21546,16 +22519,23 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
   "logProject":"",
   "thirdPartyRdma":"",
   "resourceType":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetResourcePoolList
+`}`
+
+#### 4.13.5 GetResourcePoolList
+
+调用GetResourcePoolList查询所有的资源池列表。
 
 **请求头**
 
@@ -21563,9 +22543,11 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
 
 **请求语法**
 
-**请求参数**
+```
+GET /resource/pool/list HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -21579,10 +22561,6 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序。 DESC：降序。 ASC：升序。 默认值：DESC。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -21619,7 +22597,7 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
 | - resourcePoolD escription | String | resourcePool-desc | 资源池描述。 |
 | - resourcePoolG mtCreate | String | 2026-02- 09T08:20:20Z | 资源池创建时间。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21638,7 +22616,7 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
 | totalCount | Integer | 100 | 资源集的总数。 |
 | pageSize | Integer | 10 | 每页行数。 |
 
-|  | AI Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+|   | AI Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21647,24 +22625,36 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /resource/pool/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "shared":"",
    "relatedResourceQuota":"",
    "gpuInfo":[
-    {
+```
+
+`{`
+
+```json
      "manufacturerTW":"",
      "manufacturerCN":"",
      "gpu":"",
      "manufacturer":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "certStatus":"",
@@ -21684,12 +22674,15 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
    "createUser":"",
    "resourcePoolTag":"",
    "sourceConnectionList":[
-    {
+```
+
+`{`
+
+```json
      "app":"",
      "mappingPort":"",
      "mappingIp":"",
      "type":""
-    }
 ```
 
 `],`
@@ -21699,25 +22692,20 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
 "relatedResourceQuotaList":[
 ```
 
-智能体工厂 OpenTrek
-
 ```json
    "relatedResourceQuotaList":[
-    {
      "quotaName":"",
      "resourcePoolId":"",
      "resourceQuotaId":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "resourceType":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -21728,10 +22716,13 @@ GET /resource/pool/detail/[resourcePoolId] HTTP/1.1 &resourcePoolId=rp-bc47fd6f0
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### GetResourcePoolNode
+`}`
+
+#### 4.13.6 GetResourcePoolNode
+
+调用GetResourcePoolNode查询所有的节点列表。
 
 **请求头**
 
@@ -21750,8 +22741,6 @@ GET /resource/pool/getNodeList HTTP/1.1
 | id | Strin g | Query | 否 | ack-AXRu**** | ack集群ID或bmcp集群 ID。 |
 | sceneCod e | Integ er | Query | 否 | 0 | 场景标识，取值范围： 0：资源池详情场景 1：资源配额详情场景 2：创建、变更资源配额场景 |
 | nodeType | Strin g | Query | 否 | ecs.gn6v-c8g1.2xlarge | 节点规格，对应ECS实例的规格类型。 shareNode：出让节点 recycleNode：借入节点 myNode：我的节点 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -21772,8 +22761,6 @@ GET /resource/pool/getNodeList HTTP/1.1
 | -available | Boolean | true | 节点是否可用，true表示节点状态为 Ready，false表示不可用。 |
 | -belongsTo | String | myNode | myNode: 当前配额节点。 shareNode: 共享节点。 recycleNode: 潮汐调度节点。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -cpuCount | Integer | 32 | 节点CPU核数。 |
@@ -21793,7 +22780,7 @@ GET /resource/pool/getNodeList HTTP/1.1
 | --gpu | String | NVIDIA Ampere A1 _ _ 00 80G NVLink _ _ | GPU芯片名称。 |
 | -- manufacturer | String | NVIDIA | GPU厂商。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21812,23 +22799,24 @@ GET /resource/pool/getNodeList HTTP/1.1
 GET /resource/pool/getNodeList HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "memCount":"",
    "nodeName":"",
    "gpuInfo":[
-    {
+```
+
+`{`
+
+```json
      "manufacturerCN":"",
      "gpu":"",
      "manufacturer":""
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "gpuMemCount":"",
@@ -21846,10 +22834,9 @@ GET /resource/pool/getNodeList HTTP/1.1
    "nodeId":"",
    "cpuCount":"",
    "gpuType":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -21857,10 +22844,11 @@ GET /resource/pool/getNodeList HTTP/1.1
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateResourcePool
+`}`
+
+#### 4.13.7 UpdateResourcePool
 
 调用UpdateResourcePool修改指定资源池的部分信息，包括资源池名称和描述。
 
@@ -21875,8 +22863,6 @@ POST /resource/pool/update/[resourcePoolId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -21898,23 +22884,29 @@ POST /resource/pool/update/[resourcePoolId] HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/pool/update/[resourcePoolId] HTTP/1.1 { "resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeb****", "resourcePoolName":"resourcePool-name" }
+```
+POST /resource/pool/update/[resourcePoolId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeb****", "resourcePoolName":"resourcePool-name"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateResourcePoolAccessType
+`}`
+
+#### 4.13.8 UpdateResourcePoolAccessType
 
 调用UpdateResourcePoolAccessType修改是否开启经典网络访问。
 
@@ -21944,7 +22936,7 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21955,23 +22947,31 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolId":"rp-b985876a0e0ff04c950affc05ba74*****", "accessType":"true" }
+```
+POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"resourcePoolId":"rp-b985876a0e0ff04c950affc05ba74*****", "accessType":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetGPUConfig
+`}`
+
+#### 4.13.9 GetGPUConfig
+
+调用GetGPUConfig查询GPU相关配置。
 
 **请求头**
 
@@ -21979,14 +22979,16 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 
 **请求语法**
 
+```
+GET /resource/pool/getGPUConfig HTTP/1.1
+```
+
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -22007,49 +23009,57 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 
 **示例**
 
-请求示例正常返回示例智能体工厂 OpenTrek `JSON` 格式
+请求示例
+
+```
+GET /resource/pool/getGPUConfig HTTP/1.1
+```
+
+正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
 ```
 
-`"-`裸金属`":[`
+`"-`裸金属`":[` `{`
 
 ```json
-   {
     "manufacturerTW":"",
     "GPUs":"",
     "manufacturerCN":"",
     "manufacturer":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "EGS":[
-   {
+```
+
+`{`
+
+```json
     "manufacturerTW":"",
     "GPUs":"",
     "manufacturerCN":"",
     "manufacturer":""
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListFeature
+`}`
+
+#### 4.13.10 ListFeature
+
+调用ListFeature查询所有的特性列表。
 
 **请求头**
 
@@ -22057,13 +23067,15 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 
 **请求语法**
 
+```
+GET /resource/pool/listFeature HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | resourceT ype | Strin g | Query | 是 | 0 | 资源类型，取值范围： 0：ResourcePool。 1：ResourceQuota。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -22085,7 +23097,7 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 | - featureNameT W | String | 彈性伸縮GPU指標 | 特性的繁体中文名称，通过国际化翻译获取。 |
 | - featureOriginN ame | String | ResourceQuotaFea ture- InferenceAutoScale GPUFeature | 特性原始名称，包含特性类型前缀和特性名称， 格式为{特性类型前缀}-{特性名称}。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -featureStatus | String | NONE | 特性的动态运行状态，枚举值如下： UNSUPPORTED：不支持；INIT：初始化； NONE：未启用；DOING：安装/升级中； UNDOING：卸载中；DONE：服务中，所有步骤已完成。 |
@@ -22103,15 +23115,18 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 请求示例
 
 ```
-&resourceType=0 &clusterType=1 &gpuTypes=METAX_C550-B****
+GET /resource/pool/listFeature HTTP/1.1 &resourceType=0 &clusterType=1 &gpuTypes=METAX_C550-B****
 ```
 
-&公共请求参数智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "canClose":"",
    "featureOriginName":"",
    "featureNameCn":"",
@@ -22124,10 +23139,9 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
    "canOpen":"",
    "featureNameTW":"",
    "id":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -22135,10 +23149,13 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateFeatureStatus
+`}`
+
+#### 4.13.11 UpdateFeatureStatus
+
+调用UpdateFeatureStatus修改指定特性状态。
 
 **请求头**
 
@@ -22146,13 +23163,15 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 
 **请求语法**
 
+```
+GET /resource/pool/updateFeatureStatus HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | id | Long | Query | 是 | 1 | 特性ID。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -22174,23 +23193,25 @@ POST /resource/pool/update/accessType/[resourcePoolId] HTTP/1.1 { "resourcePoolI
 请求示例
 
 ```
-&id=1 &featureTargetStatus=0
+GET /resource/pool/updateFeatureStatus HTTP/1.1 &id=1 &featureTargetStatus=0
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteStorageCheck
+`}`
+
+#### 4.13.12 DeleteStorageCheck
+
+调用DeleteStorageCheck删除存储信息校验。
 
 **请求头**
 
@@ -22218,27 +23239,27 @@ POST /resource/pool/delete/deleteStorageCheck/[storageId] HTTP/1.1
 | errorMessage | String | "" | 错误码。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /resource/pool/delete/deleteStorageCheck/[storageId] HTTP/1.1 { "storageId":"1ed0670a-ca76-4630******" }
+POST /resource/pool/delete/deleteStorageCheck/[storageId] HTTP/1.1 "storageId":"1ed0670a-ca76-4630******"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListAvailableCluster
+`}`
+
+#### 4.13.13 ListAvailableCluster
+
+调用ListAvailableCluster查询所有可用的集群列表。
 
 **请求头**
 
@@ -22260,10 +23281,6 @@ GET /resource/pool/listAvailableCluster HTTP/1.1
 | clusterId | Strin g | Query | 否 | c2ce98d5a1dff4fb7bcb8 3**** | 集群ID。 |
 | clusterNa me | Strin g | Query | 否 | cluster-name | 集群名称。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -22284,7 +23301,7 @@ GET /resource/pool/listAvailableCluster HTTP/1.1
 | - BmsActiveNod eCount | Integer | 2 | Bms可用节点数量。 |
 | - BmsNodeCoun t | Integer | 2 | Bms节点数量。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -22305,8 +23322,6 @@ GET /resource/pool/listAvailableCluster HTTP/1.1
 | - EcsVideoMem ory | Integer | 0 | ECS Video内存。 |
 | - EdaClusterStat e | String | RUNNING | Eda集群状态。 |
 | -EnableIpv6 | Boolean | false | 是否启用IPv6。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -22329,7 +23344,7 @@ GET /resource/pool/listAvailableCluster HTTP/1.1
 | -Zone | String | cn-hangzhou-i | 可用区。 |
 | -disabledTag | Boolean | true | 集群可用标识。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -22345,20 +23360,20 @@ GET /resource/pool/listAvailableCluster HTTP/1.1
 GET /resource/pool/listAvailableCluster HTTP/1.1 &resourceType=0
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateResourcePoolCertificate
+`}`
+
+#### 4.13.14 UpdateResourcePoolCertificate
 
 调用UpdateResourcePoolCertificate修改访问资源池经典网络地址的HTTPS证书信息。
 
@@ -22373,8 +23388,6 @@ POST /resource/pool/update/certificate/[resourcePoolId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -22394,27 +23407,27 @@ POST /resource/pool/update/certificate/[resourcePoolId] HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /resource/pool/update/certificate/[resourcePoolId] HTTP/1.1 { "resourcePoolId":"rp-40c8be62091a******", "tlsCert":"-----BEGIN CERTIFICATE----- MIICxDCCAaygAwIBAgIJAJ0w2Yt9x4QSMA0GCSqGSIb3DQEBCwUAMBcxFTATBgNV ...... ...... vH6Iie++0txwVhIuqR8bZ7tTu3sjDSEiPjXWygdP445laQOdPmA8CA== -----END CERTIFICATE-----", "tlsKey":"-----BEGIN PRIVATE KEY----- MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDh0EHZzSp5reSv ...... ...... /QT+ZB+mRfGzMd2cIMzPRJMAEA== -----END PRIVATE KEY-----" }
+POST /resource/pool/update/certificate/[resourcePoolId] HTTP/1.1 "resourcePoolId":"rp-40c8be62091a******", "tlsCert":"-----BEGIN CERTIFICATE----- MIICxDCCAaygAwIBAgIJAJ0w2Yt9x4QSMA0GCSqGSIb3DQEBCwUAMBcxFTATBgNV ...... ...... vH6Iie++0txwVhIuqR8bZ7tTu3sjDSEiPjXWygdP445laQOdPmA8CA== -----END CERTIFICATE-----", "tlsKey":"-----BEGIN PRIVATE KEY----- MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDh0EHZzSp5reSv ...... ...... /QT+ZB+mRfGzMd2cIMzPRJMAEA== -----END PRIVATE KEY-----"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 资源统计
+`}`
 
-##### GetPoolTaskResourceConsumption
+#### 4.13.15 资源统计
+
+##### 4.13.15.1 GetPoolTaskResourceConsumption
 
 调用GetPoolTaskResourceConsumption查询指定资源池的资源概览详细信息。
 
@@ -22433,10 +23446,6 @@ GET /resource/statics/poolTaskResourceConsumption HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | poolId | Strin g | Query | 是 | rp-wexxcd3***** | 资源池ID。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -22457,7 +23466,7 @@ GET /resource/statics/poolTaskResourceConsumption HTTP/1.1
 | --cpuUsed | Float | 2.0 | CPU使用。 |
 | -- gpuMemoryUs ed | Float | 2.0 | 显存使用。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -22481,7 +23490,7 @@ GET /resource/statics/poolTaskResourceConsumption HTTP/1.1
 | --cpuUsed | Float | 2.0 | CPU使用。 |
 | -- gpuMemoryUs ed | Float | 2.0 | 显存使用。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -22504,10 +23513,9 @@ GET /resource/statics/poolTaskResourceConsumption HTTP/1.1
 GET /resource/statics/poolTaskResourceConsumption HTTP/1.1 &poolId=rp-wexxcd3*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "task":{
    "gpuMemoryUsed":2.0,
@@ -22515,28 +23523,44 @@ GET /resource/statics/poolTaskResourceConsumption HTTP/1.1 &poolId=rp-wexxcd3***
    "taskCount":2,
    "cpuUsed":2.0,
    "memoryUsed":2.0
-  },
+```
+
+`},`
+
+```json
   "onlineService":{
    "gpuMemoryUsed":2.0,
    "gpuUsed":22.0,
    "taskCount":2,
    "cpuUsed":2.0,
    "memoryUsed":2.0
-  },
+```
+
+`},`
+
+```json
   "notebook":{
    "gpuMemoryUsed":2.0,
    "gpuUsed":22.0,
    "taskCount":2,
    "cpuUsed":2.0,
    "memoryUsed":2.0
-  },
+```
+
+`},`
+
+```json
   "pipelineDraft":{
    "gpuMemoryUsed":2.0,
    "gpuUsed":22.0,
    "taskCount":2,
    "cpuUsed":2.0,
    "memoryUsed":2.0
-  },
+```
+
+`},`
+
+```json
   "gpuShare":true,
   "batchInferenceJob":{
    "gpuMemoryUsed":2.0,
@@ -22544,26 +23568,30 @@ GET /resource/statics/poolTaskResourceConsumption HTTP/1.1 &poolId=rp-wexxcd3***
    "taskCount":2,
    "cpuUsed":2.0,
    "memoryUsed":2.0
-  },
+```
+
+`},`
+
+```json
   "other":{
    "gpuMemoryUsed":2.0,
    "gpuUsed":22.0,
    "taskCount":2,
    "cpuUsed":2.0,
    "memoryUsed":2.0
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
-
-##### ListPoolResourceUtilization
+##### 4.13.15.2 ListPoolResourceUtilization
 
 调用ListPoolResourceUtilization查询资源池概览中的资源利用率信息。
 
@@ -22594,8 +23622,6 @@ GET /resource/statics/poolResourceUtilization HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -22616,7 +23642,7 @@ GET /resource/statics/poolResourceUtilization HTTP/1.1
 | httpCode | Integer | 200 | HTTP状态码。 |
 | totalCount | Integer | 1 | 资源池概览总数。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -22632,12 +23658,15 @@ GET /resource/statics/poolResourceUtilization HTTP/1.1
 GET /resource/statics/poolResourceUtilization HTTP/1.1 &poolId=rp-d8890a98089c2041d8086bb0b2e27****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "cpuUtilization":0.3,
    "gpuMemory":8192.0,
    "sharedPool":true,
@@ -22649,10 +23678,9 @@ GET /resource/statics/poolResourceUtilization HTTP/1.1 &poolId=rp-d8890a98089c20
    "gpuCount":1.0,
    "cpuCount":16.0,
    "gpuType":"NVIDIA_Ampere_*****"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -22663,14 +23691,13 @@ GET /resource/statics/poolResourceUtilization HTTP/1.1 &poolId=rp-d8890a98089c20
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-##### GetPoolResourceOverview
+`}`
 
-**请求头**
+##### 4.13.15.3 GetPoolResourceOverview
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用GetPoolResourceOverview查询指定资源池概览统计。
 
 **请求语法**
 
@@ -22700,7 +23727,7 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1
 | - shareNodeCou nt | Integer | 1 | 共享节点数。 |
 | - sharedPoolTot alCpu | Float | 16.0 | 共享资源池的Cpu总数。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -22723,7 +23750,7 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1
 | --used | Float | 1.0 | 配额内存使用。 |
 | -gpuDetails | Struct | {} | Gpu信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -22766,10 +23793,9 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1
 GET /resource/statics/poolSystemResourceOverview HTTP/1.1 &poolId=rp-xc8x89sva*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "sharedPoolTotalGpu":8.0,
   "cpuDetails":{
@@ -22778,8 +23804,6 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1 &poolId=rp-xc8x89sva**
 "total":10
 ```
 
-智能体工厂 OpenTrek
-
 ```json
    total:1.0,
    "dedicatedQuotaUsage":0.3,
@@ -22787,7 +23811,11 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1 &poolId=rp-xc8x89sva**
    "available":22.0,
    "used":1.0,
    "sharedPoolUsage":0.6
-  },
+```
+
+`},`
+
+```json
   "sharedPoolTotalGpuMemory":255.0,
   "totalCpuCount":4.0,
   "shareNodeCount":1,
@@ -22800,7 +23828,11 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1 &poolId=rp-xc8x89sva**
    "available":22.0,
    "used":1.0,
    "sharedPoolUsage":0.6
-  },
+```
+
+`},`
+
+```json
   "sharedPoolTotalCpu":16.0,
   "sharedPoolTotalMemory":474.0,
   "totalMemory":47777.0,
@@ -22815,7 +23847,11 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1 &poolId=rp-xc8x89sva**
    "available":22.0,
    "used":1.0,
    "sharedPoolUsage":0.6
-  },
+```
+
+`},`
+
+```json
   "nodeCount":2,
   "gpumemoryDetails":{
    "sharedPoolUsed":4.0,
@@ -22826,20 +23862,27 @@ GET /resource/statics/poolSystemResourceOverview HTTP/1.1 &poolId=rp-xc8x89sva**
    "available":22.0,
    "used":1.0,
    "sharedPoolUsage":0.6
-  },
+```
+
+`},`
+
+```json
   "gpuTypes":"[NVIDIA_Ampere_A100_80G_NVLink]"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+##### 4.13.15.4 GetPoolGPUUtilization
 
-##### GetPoolGPUUtilization
+调用GetPoolGPUUtilization查询资源池GPU利用率。
 
 **请求头**
 
@@ -22887,22 +23930,24 @@ GET|POST /resource/statics/quotaFragment HTTP/1.1
 GET|POST /resource/statics/quotaFragment HTTP/1.1 &poolId=rp-****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 共享节点池
+`}`
 
-##### AddSharedResourcePoolNodes
+#### 4.13.16 共享节点池
+
+##### 4.13.16.1 AddSharedResourcePoolNodes
+
+调用AddSharedResourcePoolNodes增加共享池节点。
 
 **请求头**
 
@@ -22915,8 +23960,6 @@ POST /resource/pool/shared-pool/[resourcePoolId]/nodes/add HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -22937,33 +23980,38 @@ POST /resource/pool/shared-pool/[resourcePoolId]/nodes/add HTTP/1.1
 
 请求示例
 
+```
+POST /resource/pool/shared-pool/[resourcePoolId]/nodes/add HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /resource/pool/shared-pool/[resourcePoolId]/nodes/add HTTP/1.1 { "resourcePoolId":"rp-bc47fd6f0d60eeba****", "nodeList":"[
-  {
+"resourcePoolId":"rp-bc47fd6f0d60eeba****", "nodeList":"[
+```
+
+`{`
+
+```json
     "nodeName": "i-cupea****",
     "nodeId": "i-***"
-  }
 ```
 
-`]"`
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`}` `]"` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### RemoveSharedResourcePoolNodes
+`}`
+
+##### 4.13.16.2 RemoveSharedResourcePoolNodes
+
+调用RemoveSharedResourcePoolNodes减少共享池节点。
 
 **请求头**
 
@@ -22991,7 +24039,7 @@ POST /resource/pool/shared-pool/[resourcePoolId]/nodes/remove HTTP/1.1
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -23004,40 +24052,41 @@ POST /resource/pool/shared-pool/[resourcePoolId]/nodes/remove HTTP/1.1
 
 请求示例
 
+```
+POST /resource/pool/shared-pool/[resourcePoolId]/nodes/remove HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /resource/pool/shared-pool/[resourcePoolId]/nodes/remove HTTP/1.1 { "resourcePoolId":"rp-****", "nodeList":"[
-  {
+"resourcePoolId":"rp-****", "nodeList":"[
+```
+
+`{`
+
+```json
     "nodeName": "i-cupea****",
     "nodeId": "i-***"
-  }
 ```
 
-`]"`
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`}` `]"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 三方资源配置
+`}`
 
-##### UpdateThirdPartyStorage
+#### 4.13.17 三方资源配置
 
-**请求头**
+##### 4.13.17.1 UpdateThirdPartyStorage
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用UpdateThirdPartyStorage修改第三方存储。
 
 **请求语法**
 
@@ -23066,23 +24115,29 @@ POST /resource/pool/update/thirdPartyStorage/[resourcePoolId] HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/pool/update/thirdPartyStorage/[resourcePoolId] HTTP/1.1 { "resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeba63****" }
+```
+POST /resource/pool/update/thirdPartyStorage/[resourcePoolId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeba63****"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### UpdateResourcePoolThirdPartyRdma
+`}`
+
+##### 4.13.17.2 UpdateResourcePoolThirdPartyRdma
 
 调用UpdateResourcePoolThirdPartyRdma修改指定资源池第三方RDMA配置信息。
 
@@ -23113,31 +24168,35 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
-```json
-POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeb****", "thirdPartyRdma":"true" }
+```
+POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"resourcePoolId":"rp-bc47fd6f0af720435c0a4d60eeb****", "thirdPartyRdma":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 资源组
+`}`
 
-#### GetResourceQuotaList
+### 4.14 资源组
+
+#### 4.14.1 GetResourceQuotaList
+
+调用GetResourceQuotaList查询所有的资源配额列表。
 
 **请求头**
 
@@ -23152,8 +24211,6 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 | resourceP oolId | Strin g | Query | 否 | rp-ddf453****049f4 | 资源池ID，资源配额所属资源池的唯一标识符。 |
 | resourceP oolName | Strin g | Query | 否 | A100资源池-新 | 资源池名称。 |
 | tag | Strin g | Query | 否 | "" | 资源配额标签。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -23172,7 +24229,7 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | Array | [{}] | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -23192,8 +24249,6 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 | -isStained | Boolean | false | 资源配额节点是否已打污点标记。 |
 | - isUseSharedPo ol | Integer | 0 | 是否为共享配额。 0: 独占。 1: 共享。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -nodeCount | Integer | 1 | 资源配额关联的节点数量。 |
@@ -23209,8 +24264,6 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 | - resourceQuota Name | String | test-A100测试配额- 0202 | 资源配额名称。 |
 | - resourceQuota Status | String | Running | 资源配额的运行状态。 |
 | - resourceQuota Type | Integer | 0 | 资源配额类型。 0: 模型训练。 1: 模型推理。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -23229,7 +24282,7 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 | -- manufacturerC N | String | 英伟达 | 厂商中文名。 |
 | -- manufacturerT W | String | 英偉達 | 厂商英文名。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23244,9 +24297,15 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
 
-#### GetQuotaNodeAllocatables
+```
+GET /resource/quota/list HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例
+
+#### 4.14.2 GetQuotaNodeAllocatables
 
 调用GetQuotaNodeAllocatables查询配额下各节点的可分配资源量信息。
 
@@ -23264,8 +24323,6 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -23287,24 +24344,28 @@ POST /resource/pool/update/thirdPartyRdma/[resourcePoolId] HTTP/1.1 { "resourceP
 GET /resource/quota/nodeAllocatables HTTP/1.1 &resourceQuotaId=rq-f9b8861009a3504ad9089d30ed78****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "memoryAllocatableMax":1.0,
   "gpuAllocatableMax":8,
   "cpuAllocatableMax":1.0
- },
+```
+
+`},`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListQuotaNodeResources
+`}`
+
+#### 4.14.3 ListQuotaNodeResources
 
 调用ListQuotaNodeResources查询配额下所有节点的资源使用信息。
 
@@ -23325,8 +24386,6 @@ GET /resource/quota/nodeAllocatables HTTP/1.1 &resourceQuotaId=rq-f9b8861009a350
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 动态错误码，按顺序填充到错误码的占位符位置。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -23350,22 +24409,24 @@ GET /resource/quota/nodeAllocatables HTTP/1.1 &resourceQuotaId=rq-f9b8861009a350
 GET /resource/quota/nodeResourceList HTTP/1.1 &resourceQuotaId=rq-b6d3a3ee01b8a049690a62e07ab****
 ```
 
-&公共请求参数智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
+```
+
+`{`
+
+```json
    "nodeName":"i-fhsdfu832*****",
    "memoryAllocatable":23.0,
    "gpuMemoryAllocatable":3.0,
    "gpuAllocatable":6,
    "nodeStatus":"Ready",
    "cpuAllocatable":2.0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":false,
@@ -23373,10 +24434,11 @@ GET /resource/quota/nodeResourceList HTTP/1.1 &resourceQuotaId=rq-b6d3a3ee01b8a0
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ChangeResourceQuotaConfiguration
+`}`
+
+#### 4.14.4 ChangeResourceQuotaConfiguration
 
 调用ChangeResourceQuotaConfiguration修改指定资源配额的变更配置信息。
 
@@ -23398,7 +24460,7 @@ POST /resource/quota/change/configuration HTTP/1.1
 | nodeSelec tMode | Integ er | Body | 是 | 0 | 节点类型，该参数必填，取值范围： 0：手动选择。 1：自动选择。 当节点类型为0 时，nodeList不能为空。 |
 | gpuCount | Integ er | Body | 是 | 4 | gpu大小，单位为卡，该参数必填。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -23418,8 +24480,6 @@ POST /resource/quota/change/configuration HTTP/1.1
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -23432,31 +24492,35 @@ POST /resource/quota/change/configuration HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/quota/change/configuration HTTP/1.1 { "resourceQuotaId":"rq-b6d3a3ee01b8a049690a62e07ab****", "nodeSelectMode":"0", "gpuCount":"4", "cpuCount":"4", "memCount":"8" }
+```
+POST /resource/quota/change/configuration HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"resourceQuotaId":"rq-b6d3a3ee01b8a049690a62e07ab****", "nodeSelectMode":"0", "gpuCount":"4", "cpuCount":"4", "memCount":"8"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateResourceQuota
+`}`
+
+#### 4.14.5 CreateResourceQuota
+
+调用CreateResourceQuota创建资源配额。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
 **请求语法**
-
-智能体工厂 OpenTrek
 
 ```
 POST /resource/quota/create HTTP/1.1
@@ -23475,8 +24539,6 @@ POST /resource/quota/create HTTP/1.1
 | nodeSelec tMode | Integ er | Body | 是 | 0 | 节点类型，该参数必填，取值范围： 0：手动选择。 当节点类型为0 时，nodeList不能为空。 |
 | quotaCPU Count | Integ er | Body | 是 | 4 | cpu大小，单位为核，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | quotaMe mCount | Integ er | Body | 是 | 4 | 内存大小，单位为GB，该参数必填。 |
@@ -23486,7 +24548,7 @@ POST /resource/quota/create HTTP/1.1
 | useShared Pool | Boole an | Body | 否 | true | 是否使用共享节点池节点， 取值范围： true: 是代表共享资源配额，不需要指定具体的节点，只需要设置CPU、Memory、GPU的范围，一下 cpuRangeMin、 cpuRangeMax、 memoryRangeMin、 memoryRangeMax、 gpuRangeMin、 gpuRangeMax字段生效。 false: 否代表独占资源配额，需要指定具体节点，以下 quotaCPUCount、 quotaMemCount、 gpuCount、nodeList字段生效。 |
 | cpuRange Min | Integ er | Body | 否 | 1 | CPU配额的最小范围。 |
 
-| A | I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -23510,26 +24572,28 @@ POST /resource/quota/create HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /resource/quota/create HTTP/1.1 { "resourceQuotaName":"resourceQuota-name", "resourceQuotaType":"0", "resourceType":"0", "scheduleStrategy":"0", "resourcePoolId":"rp-3b1b89140391204e050984f0b524****", "nodeSelectMode":"0", "quotaCPUCount":"4", "quotaMemCount":"4", "gpuCount":"2" }
+POST /resource/quota/create HTTP/1.1 "resourceQuotaName":"resourceQuota-name", "resourceQuotaType":"0", "resourceType":"0", "scheduleStrategy":"0", "resourcePoolId":"rp-3b1b89140391204e050984f0b524****", "nodeSelectMode":"0", "quotaCPUCount":"4", "quotaMemCount":"4", "gpuCount":"2"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"resourceQuotaId\": \"rq-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteResourceQuota
+`}`
+
+#### 4.14.6 DeleteResourceQuota
+
+调用DeleteResourceQuota删除指定的资源配额。
 
 **请求头**
 
@@ -23553,7 +24617,7 @@ DELETE /resource/quota/delete/[resourceQuotaId] HTTP/1.1
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -23570,20 +24634,22 @@ DELETE /resource/quota/delete/[resourceQuotaId] HTTP/1.1
 DELETE /resource/quota/delete/[resourceQuotaId] HTTP/1.1 &resourceQuotaId=rq-f9b8861009a3504ad9089d30ed****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetResourceQuotaDetail
+`}`
+
+#### 4.14.7 GetResourceQuotaDetail
+
+调用GetResourceQuotaDetail查询指定资源配额的详细信息。
 
 **请求头**
 
@@ -23596,8 +24662,6 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -23620,7 +24684,7 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1
 | --canOpen | Integer | 1 | 是否可打开。 0: 不可打开。 1: 可打开。 |
 | -- featureDescrip tion | String | GPU共享使用，为任务按照显存大小分配。 | 特性描述。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23640,7 +24704,7 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1
 | --visible | Integer | 0 | 是否可见。 0: 不可见。 1: 可见。 |
 | - bmcpClusterId | String | ack-r6vw****h4ab | BMCP集群ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -23661,7 +24725,7 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1
 | - resourceQuota Description | String | 资源配额描述。 | 资源配额描述信息。 |
 | - resourceQuota GmtCreate | String | 2026-02- 02T11:40:26Z | 资源配额的创建时间，格式为 UTC 时间。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23680,8 +24744,6 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1
 | --gpuUnUsed | Integer | 2 | 表示当前GPU未被使用的数量。未虚拟化显示卡数，虚拟化后显示显存数（GiB）。 |
 | --memCount | Float | 200 | 内存总数（GiB）。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --memUnUsed | Float | 100 | 内存未使用数（GiB）。 |
@@ -23695,10 +24757,9 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1
 GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1 &resourceQuotaId=rq-f9b8861009a3504ad9089d30ed78****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "quotaCpuCount":"",
   "resourceQuotaDescription":"",
@@ -23720,7 +24781,11 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1 &resourceQuotaId=rq-f9b886
    "memUnUsed":"",
    "gpuCount":"",
    "cpuCount":""
-  },
+```
+
+`},`
+
+```json
   "gpuCount":"",
   "gpuType":"",
   "isUseSharedPool":"",
@@ -23728,13 +24793,15 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1 &resourceQuotaId=rq-f9b886
   "quantizeStrategy":"",
   "regionId":"",
   "featureVOList":[
-   {
+```
+
+`{`
+
+```json
     "canClose":"",
     "gmtModified":"",
     "resourceId":"",
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "visible":"",
@@ -23752,10 +24819,9 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1 &resourceQuotaId=rq-f9b886
     "canOpen":"",
     "featureNameTW":"",
     "id":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "quantizeMethod":"",
@@ -23763,16 +24829,21 @@ GET /resource/quota/detail/[resourceQuotaId] HTTP/1.1 &resourceQuotaId=rq-f9b886
   "resourceQuotaId":"",
   "createUser":"",
   "resourceType":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateResourceQuota
+`}`
+
+#### 4.14.8 UpdateResourceQuota
 
 调用UpdateResourceQuota修改指定资源配额的部分信息，包括资源配额名称和描述。
 
@@ -23791,8 +24862,6 @@ POST /resource/quota/update/[resourceQuotaId] HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | resourceQ uotaId | Strin g | Path | 是 | rq- a102a9700ae6a040d70 84f20e336**** | 资源配额ID。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -23814,30 +24883,42 @@ POST /resource/quota/update/[resourceQuotaId] HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/quota/update/[resourceQuotaId] HTTP/1.1 { "resourceQuotaId":"rq-a102a9700ae6a040d7084f20e336****", "resourceQuotaName":"resourceQuota-name" }
+```
+POST /resource/quota/update/[resourceQuotaId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"resourceQuotaId":"rq-a102a9700ae6a040d7084f20e336****", "resourceQuotaName":"resourceQuota-name"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetQuotaGPUType
+`}`
+
+#### 4.14.9 GetQuotaGPUType
+
+调用GetQuotaGPUType查询指定资源配额GPU切分状态。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /resource/feature/getQuotaGPUType HTTP/1.1
+```
 
 **请求参数**
 
@@ -23856,7 +24937,7 @@ POST /resource/quota/update/[resourceQuotaId] HTTP/1.1 { "resourceQuotaId":"rq-a
 | httpCode | Integer | 200 | HTTP状态码。 |
 | data | Struct | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | - canSupportGp uShare | Boolean | true | 是否支持虚拟化。 |
@@ -23877,25 +24958,25 @@ POST /resource/quota/update/[resourceQuotaId] HTTP/1.1 { "resourceQuotaId":"rq-a
 请求示例
 
 ```
-&quotaId=rq-d8890a98089c2041d8086bb0b2e27****
+GET /resource/feature/getQuotaGPUType HTTP/1.1 &quotaId=rq-d8890a98089c2041d8086bb0b2e27****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 资源组统计
+`}`
 
-##### GetQuotaTaskResourceConsumption
+#### 4.14.10 资源组统计
+
+##### 4.14.10.1 GetQuotaTaskResourceConsumption
 
 调用GetQuotaTaskResourceConsumption查询指定资源配额任务资源消耗统计。
 
@@ -23925,7 +25006,7 @@ GET /resource/statics/quotaTaskResourceConsumption HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23969,7 +25050,7 @@ GET /resource/statics/quotaTaskResourceConsumption HTTP/1.1
 | --cpuUsed | Float | 3.0 | CPU使用。 |
 | -- gpuMemoryUs ed | Float | 3.0 | 显存使用。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23986,10 +25067,9 @@ GET /resource/statics/quotaTaskResourceConsumption HTTP/1.1
 GET /resource/statics/quotaTaskResourceConsumption HTTP/1.1 &quotaId=rq-d8890a98089*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "task":{
    "gpuMemoryUsed":3.0,
@@ -23997,28 +25077,44 @@ GET /resource/statics/quotaTaskResourceConsumption HTTP/1.1 &quotaId=rq-d8890a98
    "taskCount":3,
    "cpuUsed":3.0,
    "memoryUsed":3.0
-  },
+```
+
+`},`
+
+```json
   "onlineService":{
    "gpuMemoryUsed":3.0,
    "gpuUsed":3.0,
    "taskCount":3,
    "cpuUsed":3.0,
    "memoryUsed":3.0
-  },
+```
+
+`},`
+
+```json
   "notebook":{
    "gpuMemoryUsed":3.0,
    "gpuUsed":3.0,
    "taskCount":3,
    "cpuUsed":3.0,
    "memoryUsed":3.0
-  },
+```
+
+`},`
+
+```json
   "pipelineDraft":{
    "gpuMemoryUsed":3.0,
    "gpuUsed":3.0,
    "taskCount":3,
    "cpuUsed":3.0,
    "memoryUsed":3.0
-  },
+```
+
+`},`
+
+```json
   "gpuShare":true,
   "batchInferenceJob":{
    "gpuMemoryUsed":3.0,
@@ -24026,26 +25122,30 @@ GET /resource/statics/quotaTaskResourceConsumption HTTP/1.1 &quotaId=rq-d8890a98
    "taskCount":3,
    "cpuUsed":3.0,
    "memoryUsed":3.0
-  },
+```
+
+`},`
+
+```json
   "other":{
    "gpuMemoryUsed":3.0,
    "gpuUsed":3.0,
    "taskCount":3,
    "cpuUsed":3.0,
    "memoryUsed":3.0
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
-
-##### GetQuotaResourceOverview
+##### 4.14.10.2 GetQuotaResourceOverview
 
 调用GetQuotaResourceOverview查询指定资源配额资源概览详细信息。
 
@@ -24079,8 +25179,6 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1
 | -id | String | rq-d6cfb4*** | 配额ID。 |
 | - isUseSharedPo ol | Boolean | true | 是否是共享资源池。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -name | String | test | 配额名称。 |
@@ -24100,8 +25198,6 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1
 | --available | Float | 32.0 | 剩余量。 |
 | -- availableCapa city | Float | 32.0 | 可用余量-共享配额参数。 |
 | -- guaranteedCa pacity | Float | 32.0 | 强保证可用余量-共享配额参数。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -24124,7 +25220,7 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1
 | --usage | Float | 0.69 | 使用率。 |
 | --used | Float | 32.0 | 使用量。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24149,10 +25245,9 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1
 GET /resource/statics/quotaResourceOverview HTTP/1.1 &quotaId=rq-ddfeea0e021760*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "isUseSharedPool":true,
   "cpuDetails":{
@@ -24162,8 +25257,6 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1 &quotaId=rq-ddfeea0e021760*
    "guaranteedCapacity":32.0,
 ```
 
-智能体工厂 OpenTrek
-
 ```json
    "max":32.0,
    "pending":32.0,
@@ -24171,7 +25264,11 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1 &quotaId=rq-ddfeea0e021760*
    "available":32.0,
    "used":32.0,
    "poolTotal":32.0
-  },
+```
+
+`},`
+
+```json
   "name":"test",
   "gpuDetails":{
    "availableCapacity":32.0,
@@ -24184,7 +25281,11 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1 &quotaId=rq-ddfeea0e021760*
    "available":32.0,
    "used":32.0,
    "poolTotal":32.0
-  },
+```
+
+`},`
+
+```json
   "memoryDetails":{
    "availableCapacity":32.0,
    "total":32.0,
@@ -24196,7 +25297,11 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1 &quotaId=rq-ddfeea0e021760*
    "available":32.0,
    "used":32.0,
    "poolTotal":32.0
-  },
+```
+
+`},`
+
+```json
   "nodeCount":5,
   "id":"rq-d6cfb4***",
   "gpumemoryDetails":{
@@ -24210,20 +25315,25 @@ GET /resource/statics/quotaResourceOverview HTTP/1.1 &quotaId=rq-ddfeea0e021760*
    "available":32.0,
    "used":32.0,
    "poolTotal":32.0
-  },
+```
+
+`},`
+
+```json
   "gpuShare":true
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
-
-##### ListQuotaTaskResource
+##### 4.14.10.3 ListQuotaTaskResource
 
 调用ListQuotaTaskResource查询资源配额概览信息中的所有任务消耗列表。
 
@@ -24275,23 +25385,22 @@ GET /resource/statics/quotaTaskResourceList HTTP/1.1
 | --taskType | Integer | 0 | 任务类型。 |
 | -gpuShare | Boolean | true | GPU共享是否开启。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
 GET /resource/statics/quotaTaskResourceList HTTP/1.1 &quotaId=rq-d8890a98089c20
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "taskList":[
-   {
+```
+
+`{`
+
+```json
     "gpuMemory":0.0,
     "resourceGroup":"\"\"",
     "taskType":0,
@@ -24302,14 +25411,17 @@ GET /resource/statics/quotaTaskResourceList HTTP/1.1 &quotaId=rq-d8890a98089c20
     "gpu":3.6,
     "taskId":"os-18b787be055***",
     "status":1
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "gpuShare":true
- },
+```
+
+`},`
+
+```json
  "pageIndex":1,
  "success":true,
  "dynamicMessages":"[]",
@@ -24318,12 +25430,13 @@ GET /resource/statics/quotaTaskResourceList HTTP/1.1 &quotaId=rq-d8890a98089c20
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### 潮汐调度
+`}`
 
-##### UpdateMoveResourceQuotaStatus
+#### 4.14.11 潮汐调度
+
+##### 4.14.11.1 UpdateMoveResourceQuotaStatus
 
 调用UpdateMoveResourceQuotaStatus启用/禁用潮汐调度任务。
 
@@ -24336,8 +25449,6 @@ GET /resource/statics/quotaTaskResourceList HTTP/1.1 &quotaId=rq-d8890a98089c20
 ```
 POST /resource/quota/move/status HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -24360,23 +25471,31 @@ POST /resource/quota/move/status HTTP/1.1
 
 请求示例
 
-```json
-POST /resource/quota/move/status HTTP/1.1 { "configId":"d207a07c", "enable":"true" }
+```
+POST /resource/quota/move/status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"configId":"d207a07c", "enable":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### CreateMoveResourceQuota
+`}`
+
+##### 4.14.11.2 CreateMoveResourceQuota
+
+调用CreateMoveResourceQuota添加调度策略。
 
 **请求头**
 
@@ -24400,7 +25519,7 @@ POST /resource/quota/move HTTP/1.1
 | deleteJobT ype | Json | Body | 否 | ["evaluate","finetune"] | 删除的 Job 类型。 |
 | sourceTim e | Strin g | Body | 是 | 16:00:00 | 每天正向移动的时间，该参数必填。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | targetTim e | Strin g | Body | 是 | 16:00:00 | 每天反向移动的时间，该参数必填。 |
@@ -24421,15 +25540,21 @@ POST /resource/quota/move HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
+```
+POST /resource/quota/move HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /resource/quota/move HTTP/1.1 { "sourceResourceQuotaId":"rq-2d6a96e4037*****", "targetResourceQuotaId":"rq-890195ff095*****", "sourceNodeList":"[
-    {
+"sourceResourceQuotaId":"rq-2d6a96e4037*****", "targetResourceQuotaId":"rq-890195ff095*****", "sourceNodeList":"[
+```
+
+`{`
+
+```json
       "nodeId": "i-j1p01eoza3*****",
       "nodeName": "cn-neimeng*****1.192.168.2.122",
       "nodeType": "ecs.g6x-ft-k*****",
@@ -24437,30 +25562,32 @@ POST /resource/quota/move HTTP/1.1 { "sourceResourceQuotaId":"rq-2d6a96e4037****
       "memCount": 16,
       "nodeStatus": "READY",
       "createTime": "2025-07-14T01:37:11Z"
-    }
+```
+
+`}`
+
+```json
   ]",
 "sourceTime":"16:00:00", "targetTime":"16:00:00", "name":"name", "sourceOutProtectTime":"15", "sourceInProtectTime":"15", "sourceJobTypeOutMap":"{
     "notebook": 1
   }",
 "sourceJobTypeInMap":"{
     "notebook": 1
-  }"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### DeleteMoveResourceQuotaConfig
+`}`
+
+##### 4.14.11.3 DeleteMoveResourceQuotaConfig
 
 调用DeleteMoveResourceQuotaConfig删除指定资源配额策略。
 
@@ -24469,8 +25596,6 @@ POST /resource/quota/move HTTP/1.1 { "sourceResourceQuotaId":"rq-2d6a96e4037****
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
-
-智能体工厂 OpenTrek
 
 ```
 DELETE /resource/quota/move/status/[configId] HTTP/1.1
@@ -24501,20 +25626,22 @@ DELETE /resource/quota/move/status/[configId] HTTP/1.1
 DELETE /resource/quota/move/status/[configId] HTTP/1.1 &configId=5950d4dc
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### GetMoveResourceQuotaStatus
+`}`
+
+##### 4.14.11.4 GetMoveResourceQuotaStatus
+
+调用GetMoveResourceQuotaStatus查询调度策略的历史记录。
 
 **请求头**
 
@@ -24544,7 +25671,7 @@ GET /resource/quota/move/status/[configId] HTTP/1.1
 | --endTime | String | 2017-12- 10T21:00:00Z | 结束时间。 |
 | --jobId | String | MOVE QUOTA:ea3 _ a***** | 任务ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -24587,26 +25714,26 @@ GET /resource/quota/move/status/[configId] HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
 GET /resource/quota/move/status/[configId] HTTP/1.1 &configId=5950d4dc
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListMoveResourceQuotaConfig
+`}`
+
+##### 4.14.11.5 ListMoveResourceQuotaConfig
 
 调用ListMoveResourceQuotaConfig查询所有的资源调度策略。
 
@@ -24630,7 +25757,7 @@ GET /resource/quota/move/list HTTP/1.1
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 
-| A | I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -24656,7 +25783,7 @@ GET /resource/quota/move/list HTTP/1.1
 | --nodeName | String | test | 节点的名称。 |
 | --nodeStatus | String | Running | 节点运行状态，取值如下。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24679,7 +25806,7 @@ GET /resource/quota/move/list HTTP/1.1
 | -sourceTime | String | 22:00:00 | 出让时间。 |
 | - targetResourc eId | String | rq-abc*** | 目标资源配额ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24707,10 +25834,9 @@ GET /resource/quota/move/list HTTP/1.1
 GET /resource/quota/move/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例智能体工厂 OpenTrek `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"[{}]",
  "pageIndex":1,
  "success":true,
@@ -24720,10 +25846,13 @@ GET /resource/quota/move/list HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-##### UpdateMoveResourceQuota
+`}`
+
+##### 4.14.11.6 UpdateMoveResourceQuota
+
+调用UpdateMoveResourceQuota修改调度策略。
 
 **请求头**
 
@@ -24744,7 +25873,7 @@ POST /resource/quota/move/update HTTP/1.1
 | targetNod eList | Json | Body | 否 | [ { "nodeId": "i- xypg1eady121a*****", "nodeName": "cn- neimeng-2****, "nodeType": "ecs.g6x-ft- k*****", "cpuCount": 2, "memCount": 16, "nodeStatus": "READY", "createTime": "2025-07- 14T01:41:12Z" } ] | 从目标资源配额借用给源资源配额的节点列表。 |
 | deletePod List | Json | Body | 否 | ["pod-fooadf1*", "pod- xyai3jnd*"] | 要删除的 Pod 列表。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -24768,7 +25897,7 @@ POST /resource/quota/move/update HTTP/1.1
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24780,9 +25909,19 @@ POST /resource/quota/move/update HTTP/1.1
 
 请求示例
 
+```
+POST /resource/quota/move/update HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /resource/quota/move/update HTTP/1.1 { "configId":"5950d4dc", "sourceNodeList":"[
-    {
+"configId":"5950d4dc", "sourceNodeList":"[
+```
+
+`{`
+
+```json
       "nodeId": "i-j1p01eoza339h*****",
       "nodeName": "cn-neimeng-2****,
       "nodeType": "ecs.g6x-ft-k*****",
@@ -24790,34 +25929,36 @@ POST /resource/quota/move/update HTTP/1.1 { "configId":"5950d4dc", "sourceNodeLi
       "memCount": 16,
       "nodeStatus": "READY",
       "createTime": "2025-07-14T01:37:11Z"
-    }
+```
+
+`}`
+
+```json
   ]",
 "sourceTime":"22:00:00", "targetTime":"22:00:00", "name":"name", "sourceOutProtectTime":"15", "sourceInProtectTime":"15", "sourceJobTypeOutMap":" {
     "notebook": 1
   }",
 "sourceJobTypeInMap":" {
     "notebook": 1
-  }"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}"` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### 优先级调度
+`}`
 
-智能体工厂 OpenTrek
+#### 4.14.12 优先级调度
 
-##### ModifyPriorityQueue
+##### 4.14.12.1 ModifyPriorityQueue
+
+调用ModifyPriorityQueue修改队列优先级。
 
 **请求头**
 
@@ -24847,39 +25988,43 @@ POST /task/priority/queue/update HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "taskList":"[{
+POST /task/priority/queue/update HTTP/1.1 "quotaId":"rq-d8890a98089c2041d8086bb0b2e27****", "taskList":"[{
  "taskId": "tk-s01e868a0e7c8****",
  "queueUnitName": "name",
  "queueUnitNamespace": "ai-studio",
  "queueUnitPriority": 0
-}]" }
+}]"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-##### ListPriorityQueue
+`}`
+
+##### 4.14.12.2 ListPriorityQueue
+
+调用ListPriorityQueue查询所有的任务队列列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /task/priority/queue/list HTTP/1.1
+```
 
 **请求参数**
 
@@ -24893,7 +26038,7 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -24912,8 +26057,6 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 | --gmtEnd | String | 2024-03- 02T12:12:10Z | 结束时间。 |
 | --gpuCount | Integer | 1 | GPU核数。 |
 | -- gpuCountUnit | Integer | 1 | 表示GPU数量的计量单位。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -24935,7 +26078,7 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 | -- queueUnitNam e | String | test | 队列名称。 |
 | -- queueUnitNam espace | String | ai | 队列命名空间。 |
 
-| I Studio · | API |  | OpenTre |
+| I Studio · | API |   | OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24955,8 +26098,6 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 | -- taskNodesCou nt | Integer | 3 | 任务占用的节点数量。 |
 | --taskStatus | Integer | 1 | 状态： 0 已创建。 1 启动中。 2 运行中。 3 已停止。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --taskType | Integer | 1 | 计划任务类型。取值范围如下： 0 建模任务 。 1 评测任务。 2 离线推理任务。 |
@@ -24969,16 +26110,19 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 请求示例
 
 ```
-&quotaId=rq-d8890a98089c2041d8086bb0b2e27****
+GET /task/priority/queue/list HTTP/1.1 &quotaId=rq-d8890a98089c2041d8086bb0b2e27****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "taskList":[
-   {
+```
+
+`{`
+
+```json
     "scheduleTime":"2023-01-03T18:00:00Z",
     "taskNodesCount":3,
     "componentId":"8",
@@ -25000,13 +26144,11 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
     "gpuType":1,
 ```
 
-`"i` i
+`"i` `i`
 
 ```
 ""3241"
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "imageVersion":"3.2.41",
@@ -25034,25 +26176,29 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
     "imageAccelerationType":0,
     "taskId":"1002",
     "isSchedule":false
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "quotaId":"rq-123****"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 镜像库
+`}`
 
-#### VerifyImageSig
+### 4.15 镜像库
+
+#### 4.15.1 VerifyImageSig
 
 调用VerifyImageSig验证公共镜像的签名，用于确认镜像文件的完整性和来源可信性。
 
@@ -25062,9 +26208,11 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 
 **请求语法**
 
-**请求参数**
+```
+GET /image/verifyImageSig HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -25084,16 +26232,15 @@ POST /task/priority/queue/update HTTP/1.1 { "quotaId":"rq-d8890a98089c2041d8086b
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
-&imageId=img-public-610952c0441e0ba6a***** &imageVersion=3.2.**
+GET /image/verifyImageSig HTTP/1.1 &imageId=img-public-610952c0441e0ba6a***** &imageVersion=3.2.**
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"[{\"critical\":{\"identity\":{\"docker-reference\":\"cr-
 ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-manifest-d igest\":\"sha256:2df822801a13c58a1922235a624849283d05ab56c0d7c771fec********\"},\"type\": cosign container image signature\"},\"optional\":{\"signer\":\"aistudio\"}}]\"",
  "success":false,
@@ -25101,10 +26248,13 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListImageVersions
+`}`
+
+#### 4.15.2 ListImageVersions
+
+调用ListImageVersions查询所有的镜像版本列表。
 
 **请求头**
 
@@ -25112,16 +26262,18 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
 
 **请求语法**
 
+```
+GET /image/listImageVersions HTTP/1.1
+```
+
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  | 说明 |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|---|
-| imageId | Strin g | Query | 否 | img-public-437f****48f3 |  | 镜像id。 |  |  |
-| imageVer sion | Strin g | Query | 否 | 0.4.7.post1-pytorch2.7- cu128-20250617 |  | 镜像版本。 |  |  |
-| imageAcc elerationT ype | Integ er | Query | 否 | 0 |  | 镜像加速类型，枚举值： IMAGE(0) ACCELERATED IMAGE(1) _ 。 0：容器镜像。 1：加速镜像。 默认值：0。 |  |  |
-|  |  |  |  |  |  |  | ACCELERATED IMAGE(1) _ |  |
-
-智能体工厂 OpenTrek
+| imageId | Strin g | Query | 否 | img-public-437f****48f3 |   | 镜像id。 |   |   |
+| imageVer sion | Strin g | Query | 否 | 0.4.7.post1-pytorch2.7- cu128-20250617 |   | 镜像版本。 |   |   |
+| imageAcc elerationT ype | Integ er | Query | 否 | 0 |   | 镜像加速类型，枚举值： IMAGE(0) ACCELERATED IMAGE(1) _ 。 0：容器镜像。 1：加速镜像。 默认值：0。 |   |   |
+|   |   |   |   |   |   |   | ACCELERATED IMAGE(1) _ |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -25132,12 +26284,10 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 
-|  | CONVERTING(0) |
+|   | CONVERTING(0) |
 |---|---|
-| NORMAL(1) |  |
-| FAILED(2) |  |
-
-智能体工厂 OpenTrek
+| NORMAL(1) |   |
+| FAILED(2) |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -25159,11 +26309,11 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
 | -imageAddress | String | cr-ee.registry.cn- neimeng-236e- d01.env236.cloud. arm.com/bmcp- private/sglang:0.4. 7.post1- pytorch2.7-cu128- 20250617 | 镜像地址。 |
 | -imageDigest | String | sha256:a3b1c2**** d4e5f6 | 镜像sha256摘要值。 |
 
-|  | IMAGE(0) |
+|   | IMAGE(0) |
 |---|---|
-| ACCELERATED IMAGE(1) _ |  |
+| ACCELERATED IMAGE(1) _ |   |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -25184,11 +26334,11 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
 | -gpuDriver | Struct | [{"tagCode":"*** 12.4","tagName":"* ** 12.4"}] | GPU驱动。 |
 | --tagCode | String | NVIDIA 550.127.08 | GPU硬件驱动程序的代码。 |
 
-|  | CONVERTING(0) |
+|   | CONVERTING(0) |
 |---|---|
-| FAILED(2) |  |
+| FAILED(2) |   |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -25210,15 +26360,13 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
 请求示例
 
 ```
-&imageId=img-91fa01150ee51045190baa305e****
+GET /image/listImageVersions HTTP/1.1 &imageId=img-91fa01150ee51045190baa305e****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "imageVersion":"0.4.7.post1-pytorch2.7-cu128-20250617",
    "gmtModified":"2025-12-18T04:09:14Z",
    "imageId":"img-public-437f****48f3",
@@ -25229,13 +26377,16 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
    "relatedPipeLineComponent":0,
    "relatedTask":0,
    "gpuDriver":[
-    {
-     "tagCode":"*** 12.4",
-     "tagName":"*** 12.4"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "tagCode":"*** 12.4",
+     "tagName":"*** 12.4"
+```
+
+`}` `],`
 
 ```json
    "componentList":"[\"PyTorch:2.7\",\"***:12.8.1\",\"Python:3.12.7\",\"BaseOS:Ubuntu 2
@@ -25247,13 +26398,16 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
    "imageDigest":"sha256:a3b1c2****d4e5f6",
    "imageSource":0,
    "gpuHardwareDriver":[
-    {
-     "tagCode":"NVIDIA 550.127.08",
-     "tagName":"NVIDIA 550.127.08"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "tagCode":"NVIDIA 550.127.08",
+     "tagName":"NVIDIA 550.127.08"
+```
+
+`}` `],`
 
 ```json
    "regionId":"cn-neimeng-236e-d01",
@@ -25263,10 +26417,9 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
    "imageVersionId":"imgv-f208****04d67",
    "imageSize":"31675383808",
    "imageAccelerationType":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -25277,10 +26430,9 @@ ee.registry.****.env236.cloud.arm.com/acr-aipaas/****\"},\"image\":{\"docker-man
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-`XML` 格式智能体工厂 OpenTrek
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -25319,15 +26471,17 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 </data> <pageIndex>1</pageIndex> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <pageSize>10</pageSize> <httpCode>200</httpCode> <totalCount>100</totalCount>
 ```
 
-#### GetImageVersionDetail
+#### 4.15.3 GetImageVersionDetail
+
+调用GetImageVersionDetail查询指定镜像库的详细信息。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /image/getImageVersionDetail HTTP/1.1
+```
 
 **请求参数**
 
@@ -25352,7 +26506,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | -archs | Array | ["ARM64"] | 镜像架构。 |
 | --tagCode | String | 标签code | 标签。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -25372,20 +26526,15 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | - imageVersion Count | Integer | 5 | 表示当前镜像版本的数量，即该镜像已发布的不同版本总数。 |
 | -regionId | String | cn-hangzhou | 地域ID。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
-&imageId=img-91fa01150ee51045190baa305e****
+GET /image/getImageVersionDetail HTTP/1.1 &imageId=img-91fa01150ee51045190baa305e****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "frameWork":1,
   "gmtModified":"1703575553000",
@@ -25394,17 +26543,15 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
   "aliyunUid":"127756******1314",
   "gmtCreated":"1606791494471",
   "archs":[
-   {
+```
+
+`{`
+
+```json
     "tagCode":"标签code",
 ```
 
-`"tagName":"`测试标签"
-
-```
-   }
-```
-
-`],`
+`"tagName":"`测试标签`"` `}` `],`
 
 ```json
   "imageVersionCount":5,
@@ -25415,36 +26562,41 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
   "availableService":3,
   "frameWorkTagList":"[\"Spring\", \"React\", \"Django\"]",
   "gpuManufacturerList":[
-   {
+```
+
+`{`
+
+```json
     "tagCode":"标签code",
 ```
 
-`"tagName":"`测试标签"
-
-```
-   }
-```
-
-`],`
+`"tagName":"`测试标签`"` `}` `],`
 
 ```json
   "imageUsageLabel":"[\"KEA\"]"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateCustomImage
+`}`
 
-**请求头**
+#### 4.15.4 CreateCustomImage
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用CreateCustomImage创建镜像。
 
 **请求语法**
+
+```
+POST /image/createCustomImage HTTP/1.1
+```
 
 **请求参数**
 
@@ -25459,8 +26611,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | imageRep oTag | Strin g | Body | 是 | v1 | 镜像仓库Tag，该参数必填。 |
 | imageAdd ress | Strin g | Body | 是 | cr- ee.registry.${region}.& {domain}/****/**** | 镜像地址，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | availableS ervice | Integ er | Body | 是 | 3 | 可应用的服务类型，该参数必填，取值范围： 1：任务建模。 2：notebook建模。 3：任务建模和 notebook建模。 4：在线服务。 5：任务建模和在线服务。 6：notebook建模和在线服务。 7：任务建模、 notebook建模和在线服务。 该参数为位运算，可以支持单选，多选。 例如多选任务建模和notebook建模时， 该值为3。 |
@@ -25469,8 +26619,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | gpuDriver | Strin g | Body | 否 | [{ "type": "CU***", "version": "v1" }] | AI计算工具包。 |
 | gpuManuf acturerLis t | Json | Body | 否 | ["NVI***", "HY***"] | 芯片厂商。 |
 | useCaseLi st | Json | Body | 否 | ["1000", "2000"] | 镜像的适用场景。 0000 - 不限 1000 - 训练镜像 2000 - 推理镜像 2001 - A-Speed推理镜像 9000 - 其他该字段目前未启用。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -25492,30 +26640,42 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 请求示例
 
-```json
-{ "imageName":"image-name", "imageVersion":"v1", "imageNamespace":"test", "imageRepo":"test", "imageRepoTag":"v1", "imageAddress":"cr-ee.registry.${region}.&{domain}/****/****", "availableService":"3", "frameWork":"1" }
+```
+POST /image/createCustomImage HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"imageName":"image-name", "imageVersion":"v1", "imageNamespace":"test", "imageRepo":"test", "imageRepoTag":"v1", "imageAddress":"cr-ee.registry.${region}.&{domain}/****/****", "availableService":"3", "frameWork":"1"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{\"imageId\": \"img-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteImageVersion
+`}`
+
+#### 4.15.5 DeleteImageVersion
+
+调用DeleteImageVersion删除指定的镜像版本。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /image/deleteImageVersion HTTP/1.1
+```
 
 **请求参数**
 
@@ -25534,35 +26694,37 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
-&imageId=img-91fa01150ee51045190baa305e**** &imageVersion=v1
+DELETE /image/deleteImageVersion HTTP/1.1 &imageId=img-91fa01150ee51045190baa305e**** &imageVersion=v1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteCustomImage
+`}`
+
+#### 4.15.6 DeleteCustomImage
+
+调用DeleteCustomImage删除指定的镜像。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /image/deleteCustomImage HTTP/1.1
+```
 
 **请求参数**
 
@@ -25577,8 +26739,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -25590,22 +26750,22 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 请求示例
 
 ```
-&imageId=img-91fa01150ee51045190baa305e****
+DELETE /image/deleteCustomImage HTTP/1.1 &imageId=img-91fa01150ee51045190baa305e****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateCustomImage
+`}`
+
+#### 4.15.7 UpdateCustomImage
 
 调用UpdateCustomImage修改指定镜像库的部分信息，包括镜像名称、描述和镜像版本。
 
@@ -25615,6 +26775,10 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 **请求语法**
 
+```
+PUT /image/updateCustomImage HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -25622,7 +26786,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | imageId | Strin g | Body | 是 | img- 91fa01150ee51045190b aa305e**** | 镜像ID，该参数必填。 |
 | imageVer sion | Strin g | Body | 否 | v1 | 镜像版本。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -25643,33 +26807,37 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-{ "imageId":"img-91fa01150ee51045190baa305e****" }
+PUT /image/updateCustomImage HTTP/1.1 "imageId":"img-91fa01150ee51045190baa305e****"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ConvertAcceleratedImage
+`}`
+
+#### 4.15.8 ConvertAcceleratedImage
+
+调用ConvertAcceleratedImage转换加速镜像。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /image/convertAcceleratedImage HTTP/1.1
+```
 
 **请求参数**
 
@@ -25685,8 +26853,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -25699,24 +26865,32 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 请求示例
 
-```json
-{ "imageId":"img-91fa01150ee51045190baa305e****", "imageVersion":"v1" }
+```
+POST /image/convertAcceleratedImage HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"imageId":"img-91fa01150ee51045190baa305e****", "imageVersion":"v1"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListImages
+`}`
+
+#### 4.15.9 ListImages
+
+调用ListImages查询镜像列表。
 
 **请求头**
 
@@ -25724,7 +26898,9 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 **请求语法**
 
-智能体工厂 OpenTrek
+```
+GET /image/listImages HTTP/1.1
+```
 
 **请求参数**
 
@@ -25737,8 +26913,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | imageId | Strin g | Query | 否 | img-public-437f****48f3 | 镜像id。 |
 | imageNa me | Strin g | Query | 否 | sglang-nvidia | 镜像名称。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | frameWor k | Integ er | Query | 否 | 2 | 算法框架，枚举值： CUSTOM(0) TENSOR FLOW(1) _ PY TORCH(2) _ ELASTIC BATCH(3) _ XG BOOST(4) _ ONE FLOW(5) _ MPI JOB(6) _ DEEPSPEED(10) MEGATRON(11) PADDLE PADDLE(12) _ MIND SPORE(13) _ VLLM(14) OPEN TREK LLM(15) _ _ SG LANG(16) _ OLLAMA(17) 。 1：Tensorflow。 2：PyTorch。 |
@@ -25748,8 +26922,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | gpuDriver | Strin g | Query | 否 | "" | AI计算工具包。 |
 | gpuManuf acturer | Strin g | Query | 否 | /NVIDIA | GPU厂商。 |
 | useCase | Strin g | Query | 否 | 2000 | 镜像的适用场景，取值范围： 0000：不限 1000：训练镜像 2000：推理镜像 2001：A-Speed推理镜像 9000：其他该字段目前未启用。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -25764,8 +26936,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -25784,7 +26954,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | -aliyunUid | String | 19822605****1225 | 阿里云账号。 |
 | - availableServi ce | Integer | 0 | 可用服务。 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -25801,9 +26971,9 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| PADDLE PADDLE(12) _ |  |
+| PADDLE PADDLE(12) _ |   |
 |---|---|
-| MIND SPORE(13) _ |  |
+| MIND SPORE(13) _ |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -25815,12 +26985,16 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /image/listImages HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "frameWork":2,
    "gmtModified":"2025-12-18T04:09:14Z",
    "imageId":"img-public-437f****48f3",
@@ -25828,13 +27002,16 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
    "aliyunUid":"19822605****1225",
    "gmtCreated":"2025-12-18T04:09:14Z",
    "archs":[
-    {
-     "tagCode":"“AMD64”",
-     "tagName":"“AMD64”"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "tagCode":"“AMD64”",
+     "tagName":"“AMD64”"
+```
+
+`}` `],`
 
 ```json
    "imageVersionCount":1,
@@ -25846,20 +27023,22 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
    "availableService":0,
    "frameWorkTagList":"[{\"tagCode\":\"PT_2_7\",\"tagName\":\"PyTorch 2.7\"}]",
    "gpuManufacturerList":[
-    {
-     "tagCode":"“NVIDIA”",
-     "tagName":"“NVIDIA”"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "tagCode":"“NVIDIA”",
+     "tagName":"“NVIDIA”"
+```
+
+`}` `],`
 
 ```json
    "imageUsageLabel":"[“KEA”]"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -25870,18 +27049,21 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-### 代码集
+`}`
 
-#### CreateCodeRepo
+### 4.16 代码集
 
-**请求头**
+#### 4.16.1 CreateCodeRepo
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用CreateCodeRepo创建代码集。
 
 **请求语法**
+
+```
+POST /codeRepo/createCodeRepo HTTP/1.1
+```
 
 **请求参数**
 
@@ -25903,8 +27085,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | httpCode | Integer | 200 | HTTP状态码。 |
@@ -25913,30 +27093,42 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 请求示例
 
-```json
-{ "codeRepoName":"codeRepo-name", "codeRepoPath":"oss://****/****" }
+```
+POST /codeRepo/createCodeRepo HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"codeRepoName":"codeRepo-name", "codeRepoPath":"oss://****/****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"codeRepoId\": \"cd-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteCodeRepo
+`}`
+
+#### 4.16.2 DeleteCodeRepo
+
+调用DeleteCodeRepo删除指定的代码集。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /codeRepo/deleteCodeRepo HTTP/1.1
+```
 
 **请求参数**
 
@@ -25948,8 +27140,6 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -25964,22 +27154,24 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 请求示例
 
 ```
-&codeRepoId=cd-96a5060c0a9570404f09a8f0747****
+DELETE /codeRepo/deleteCodeRepo HTTP/1.1 &codeRepoId=cd-96a5060c0a9570404f09a8f0747****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetCodeRepoDetail
+`}`
+
+#### 4.16.3 GetCodeRepoDetail
+
+调用GetCodeRepoDetail查询指定代码集的详细信息。
 
 **请求头**
 
@@ -25987,9 +27179,11 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 **请求语法**
 
-**请求参数**
+```
+GET /codeRepo/getCodeRepoDetail HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -26010,7 +27204,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | --tagName | String | NO LIMIT | 标签名称，与标签编码一一对应： NO LIMIT：未分类 _ TRAINING：训练 INFERENCE：推理 QUANTIZATION：量化 OTHERS：未分类 |
 | -aliyunUid | String | 127756******1314 | 实例所属的阿里云账户ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -codeRepoId | String | cd- 2cecf058******44e 1 | 代码集ID。 |
@@ -26028,22 +27222,24 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 请求示例
 
 ```
-&codeRepoId=cd-96a5060c0a9570404f09a8f0747****
+GET /codeRepo/getCodeRepoDetail HTTP/1.1 &codeRepoId=cd-96a5060c0a9570404f09a8f0747****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "useCaseList":[
-   {
-    "tagCode":"",
-    "tagName":""
-   }
 ```
 
-`],`
+`{`
+
+```json
+    "tagCode":"",
+    "tagName":""
+```
+
+`}` `],`
 
 ```json
   "gmtModified":"",
@@ -26056,22 +27252,33 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
   "codeRepoName":"",
   "description":"",
   "codeRepoType":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListCodeRepo
+`}`
+
+#### 4.16.4 ListCodeRepo
+
+调用ListCodeRepo查询所有的代码集列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /codeRepo/listCodeRepo HTTP/1.1
+```
 
 **请求参数**
 
@@ -26081,7 +27288,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | codeRepo Name | Strin g | Query | 否 | codeRepo-name | 代码集名称。 |
 | pageIndex | Integ er | Query | 否 | 1 | 代码集列表的页码。 默认值：1。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -26101,7 +27308,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | --tagName | String | NO LIMIT | 标签名称，与标签编码一一对应： NO LIMIT：未分类 _ TRAINING：训练 INFERENCE：推理 QUANTIZATION：量化 OTHERS：未分类 |
 | -aliyunUid | String | 127756******1314 | 实例所属的阿里云账户ID。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -26122,7 +27329,7 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | errorCode | String | 500 | 错误码。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | errorMessage | String | "" | 错误信息。 |
@@ -26133,12 +27340,16 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /codeRepo/listCodeRepo HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "shared":"",
    "gmtModified":"",
    "codeRepoSize":"",
@@ -26150,23 +27361,25 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
    "relatedPipelineComponent":"",
    "description":"",
    "useCaseList":[
-    {
-     "tagCode":"",
-     "tagName":""
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "tagCode":"",
+     "tagName":""
+```
+
+`}` `],`
 
 ```json
    "codeRepoId":"",
    "regionId":"",
    "relatedComponent":"",
    "codeRepoType":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -26177,10 +27390,13 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### UpdateCodeRepo
+`}`
+
+#### 4.16.5 UpdateCodeRepo
+
+调用UpdateCodeRepo修改指定代码集的部分信息，包括代码集名称和描述。
 
 **请求头**
 
@@ -26188,12 +27404,14 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 **请求语法**
 
+```
+PUT /codeRepo/updateCodeRepo HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -26215,25 +27433,31 @@ ang:0.4.7.post1-pytorch2.7-cu128-20250617</imageAddress>
 
 请求示例
 
-```json
-{ "codeRepoId":"cd-96a5060c0a9570404f09a8f074****", "codeRepoName":"codeRepo-name" }
+```
+PUT /codeRepo/updateCodeRepo HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"codeRepoId":"cd-96a5060c0a9570404f09a8f074****", "codeRepoName":"codeRepo-name"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 数据加速器
+`}`
 
-#### UpdateDataAccInstance
+### 4.17 数据加速器
+
+#### 4.17.1 UpdateDataAccInstance
 
 调用UpdateDataAccInstance修改指定数据加速器的部分信息，包括数据加速器名称和描述。
 
@@ -26262,7 +27486,7 @@ POST /dataacc/updateDataAcc/[instanceId] HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -26276,24 +27500,32 @@ POST /dataacc/updateDataAcc/[instanceId] HTTP/1.1
 
 请求示例
 
-```json
-POST /dataacc/updateDataAcc/[instanceId] HTTP/1.1 { "instanceId":"da-f26ee62248a34dd796dcb602b2****", "name":"dataacc-name" }
+```
+POST /dataacc/updateDataAcc/[instanceId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"instanceId":"da-f26ee62248a34dd796dcb602b2****", "name":"dataacc-name"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteDataAccInstance
+`}`
+
+#### 4.17.2 DeleteDataAccInstance
+
+调用DeleteDataAccInstance删除指定的数据加速器。
 
 **请求头**
 
@@ -26306,8 +27538,6 @@ DELETE /dataacc/deleteDataAcc/[instanceId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -26331,23 +27561,21 @@ DELETE /dataacc/deleteDataAcc/[instanceId] HTTP/1.1
 DELETE /dataacc/deleteDataAcc/[instanceId] HTTP/1.1 &instanceId=da-41252a571fd9431f884ace51fb****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### BindDataAccInstance
+`}`
 
-**请求头**
+#### 4.17.3 BindDataAccInstance
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用BindDataAccInstance绑定指定的数据加速器。
 
 **请求语法**
 
@@ -26376,26 +27604,28 @@ POST /dataacc/bindDataAccInstance/[instanceId] HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /dataacc/bindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-41252a571fd9431f884ace51fbb*****", "sourceId":"ds-0e54d82ee7794547a27363988*****" }
+POST /dataacc/bindDataAccInstance/[instanceId] HTTP/1.1 "instanceId":"da-41252a571fd9431f884ace51fbb*****", "sourceId":"ds-0e54d82ee7794547a27363988*****"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListDataAccInstance
+`}`
+
+#### 4.17.4 ListDataAccInstance
+
+调用ListDataAccInstance查询所有的数据加速器列表。
 
 **请求头**
 
@@ -26415,8 +27645,6 @@ GET /dataacc/listDataAcc HTTP/1.1
 | sourceId | Strin g | Query | 否 | ds- f6e31f22336d43bb9498 2391dfa5**** | 资源ID，该资源为数据集ID 或模型ID。 |
 | pageIndex | Integ er | Query | 否 | 1 | 数据加速器列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -26439,8 +27667,6 @@ GET /dataacc/listDataAcc HTTP/1.1
 | - instanceName | String | exampleName | 实例名称。 |
 | -isDeleted | Integer | 0 | 逻辑删除： 0：未删除 1：已删除 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -memCount | Integer | 1 | 内存大小（GB）。 |
@@ -26459,8 +27685,6 @@ GET /dataacc/listDataAcc HTTP/1.1
 | pageSize | Integer | 10 | 每页行数。 |
 | pageIndex | Integer | 1 | 数据加速器的页码。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -26476,12 +27700,10 @@ GET /dataacc/listDataAcc HTTP/1.1
 GET /dataacc/listDataAcc HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "memCount":"",
    "sourceId":"",
    "aliYunUid":"",
@@ -26503,10 +27725,9 @@ GET /dataacc/listDataAcc HTTP/1.1
    "id":"",
    "sourceName":"",
    "status":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -26517,10 +27738,11 @@ GET /dataacc/listDataAcc HTTP/1.1
  "errorCode":"500",
  "totalCount":100,
  "httpCode":200
-}
 ```
 
-#### UpdateDataAccInstanceStatus
+`}`
+
+#### 4.17.5 UpdateDataAccInstanceStatus
 
 调用UpdateDataAccInstanceStatus修改指定数据加速器的状态。
 
@@ -26538,8 +27760,6 @@ POST /dataacc/updateDataAccStatus/[instanceId] HTTP/1.1
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -26561,24 +27781,30 @@ POST /dataacc/updateDataAccStatus/[instanceId] HTTP/1.1
 
 请求示例
 
-```json
-POST /dataacc/updateDataAccStatus/[instanceId] HTTP/1.1 { "instanceId":"da-4cf366a718774856ba0574da5d7****", "status":"true" }
+```
+POST /dataacc/updateDataAccStatus/[instanceId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"instanceId":"da-4cf366a718774856ba0574da5d7****", "status":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateDataAccInstanceSpec
+`}`
+
+#### 4.17.6 UpdateDataAccInstanceSpec
 
 调用UpdateDataAccInstanceSpec修改指定数据加速器规格的部分信息，包括内存大小和副本个数。
 
@@ -26607,8 +27833,6 @@ POST /dataacc/updateDataAccSpec/[instanceId] HTTP/1.1
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | data | String | {} | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -26620,24 +27844,32 @@ POST /dataacc/updateDataAccSpec/[instanceId] HTTP/1.1
 
 请求示例
 
-```json
-POST /dataacc/updateDataAccSpec/[instanceId] HTTP/1.1 { "instanceId":"da-41252a571fd9431f884ace51****", "memCount":"2", "replica":"1" }
+```
+POST /dataacc/updateDataAccSpec/[instanceId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"instanceId":"da-41252a571fd9431f884ace51****", "memCount":"2", "replica":"1"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetDataAccInstance
+`}`
+
+#### 4.17.7 GetDataAccInstance
+
+调用GetDataAccInstance查询指定数据加速器的详细信息。
 
 **请求头**
 
@@ -26650,8 +27882,6 @@ GET /dataacc/getDataAccStatus/[instanceId] HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -26672,8 +27902,6 @@ GET /dataacc/getDataAccStatus/[instanceId] HTTP/1.1
 | --id | String | nb- e8a4720f******41f b | 训推任务实例ID。 |
 | --name | String | nameExample | 实例名称。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --status | Integer | 0 | Notebook状态。枚举值： 0 -启动中 (starting)， 1 -运行中(running)， 2 -已停止(stopped)， 3 -失败(failed)， 4 -等待启动(waiting for starting)， 5 -变配中 (scaling)， 6 -停止中(stopping)。 |
@@ -26692,31 +27920,31 @@ GET /dataacc/getDataAccStatus/[instanceId] HTTP/1.1
 | -sourceVersion | String | v1 | 绑定数据版本。 |
 | -status | Integer | 2 | 实例状态： 0：启动中 1：运行中 2：停止 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```
 GET /dataacc/getDataAccStatus/[instanceId] HTTP/1.1 &instanceId=da-41252a571fd9431f884ace51fbb*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "memCount":"",
   "sourceId":"",
   "taskList":[
-   {
+```
+
+`{`
+
+```json
     "gmtCreated":"",
     "name":"",
     "id":"",
     "status":""
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "aliYunUid":"",
@@ -26731,16 +27959,23 @@ GET /dataacc/getDataAccStatus/[instanceId] HTTP/1.1 &instanceId=da-41252a571fd94
   "regionId":"",
   "cached":"",
   "status":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateDataAccInstance
+`}`
+
+#### 4.17.8 CreateDataAccInstance
+
+调用CreateDataAccInstance创建数据加速器实例。
 
 **请求头**
 
@@ -26751,8 +27986,6 @@ GET /dataacc/getDataAccStatus/[instanceId] HTTP/1.1 &instanceId=da-41252a571fd94
 ```
 POST /dataacc/createDataAcc HTTP/1.1
 ```
-
-智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -26776,7 +28009,7 @@ POST /dataacc/createDataAcc HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | httpCode | Integer | 200 | HTTP状态码。 |
@@ -26785,24 +28018,32 @@ POST /dataacc/createDataAcc HTTP/1.1
 
 请求示例
 
-```json
-POST /dataacc/createDataAcc HTTP/1.1 { "name":"dataacc-name", "quotaId":"rq-6812fbe20dff7048fd0a1fb0127*****", "memCount":"1", "replica":"1", "sourceId":"ds-55505e6bc47f4a86a455014e*****" }
+```
+POST /dataacc/createDataAcc HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"name":"dataacc-name", "quotaId":"rq-6812fbe20dff7048fd0a1fb0127*****", "memCount":"1", "replica":"1", "sourceId":"ds-55505e6bc47f4a86a455014e*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\t\"instanceId\": \"da-****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UnbindDataAccInstance
+`}`
+
+#### 4.17.9 UnbindDataAccInstance
+
+调用UnbindDataAccInstance解绑数据加速器实例。
 
 **请求头**
 
@@ -26820,10 +28061,6 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1
 |---|---|---|---|---|---|
 | instanceId | Strin g | Path | 是 | da- 41252a571fd9431f884a ce51fb***** | 数据加速器实例ID。 |
 
-**返回数据**
-
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -26837,32 +28074,40 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1
 
 请求示例
 
-```json
-POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-41252a571fd9431f884ace51fb*****" }
+```
+POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"instanceId":"da-41252a571fd9431f884ace51fb*****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 套件
+`}`
 
-#### GetComponent
+### 4.18 套件
 
-**请求头**
+#### 4.18.1 GetComponent
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用GetComponent查询指定套件详细信息。
 
 **请求语法**
+
+```
+GET /component/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -26886,7 +28131,7 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | - componentApi s | Array | [{}] | 组件对外暴露的API列表。 |
 | --id | String | 17 | 数据库主键ID。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -26910,7 +28155,7 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | ----input | Struct | {} | 请求输入字段定义。 |
 | -----type | String | string | 任务状态字段的数据类型。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -26934,7 +28179,7 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | -- responseSche ma | Struct | {} | 响应体JSON Schema定义。 |
 | ---examples | Array | [] | 任务状态字段的数据类型。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -26958,7 +28203,7 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | --gpuType | String | NVIDIA H20 SXM5 _ _ _ 96G | GPU型号。 |
 | --instance | Integer | 1 | 实例数量。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -26980,7 +28225,7 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | -- codeRepoNam e | String | aistudio-hopper- cu12.8-vllm0.11.2- general-v1.0 | 代码仓库名称。 |
 | -- codeRepoPath | String | oss://oss-aipaas- code-repo-****/ | 代码仓库OSS存储路径。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -27022,8 +28267,6 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | --id | Integer | 17 | 数据库主键ID。 |
 | -- imageAccelera tionType | Integer | 0 | 镜像加速类型。 0：容器镜像。 1：加速镜像。 默认值：0。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -- imageAddress | String | cr-ee.registry.cn- ****-d01.***/acr- aipaas/nvidia- hopper-vllm- general:0.11.2-... | 镜像完整地址。 |
@@ -27038,8 +28281,6 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 | --imageStatus | Integer | 1 | 镜像状态，1表示可用。 0：转换中。 1：正常。 2：转换失败。 3：未知状态。 4：等待中。 |
 | --imageType | Integer | 0 | 镜像类型。 镜像ID与版本的组合标识。 1：自定义镜像。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -- imageVersion | String | 0.11.2-***12.8- ubuntu24.04- py3.12-v1.0 | 镜像版本号。 |
@@ -27053,39 +28294,64 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 请求示例
 
 ```
-&componentId=cp-1c2d7a2f0cd67049eb0aac90****
+GET /component/get HTTP/1.1 &componentId=cp-1c2d7a2f0cd67049eb0aac90****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "componentParams":"[Params]",
   "componentType":"inference",
   "componentApis":[
-   {
-    "requestSchema":[
-     {
-      "properties":[
-       {
-        "input":[
-         {
-          "properties":[
-           {
-            "prompt":[
-             {
-              "type":"string"
-             }
 ```
 
-`],`
+`{`
+
+```json
+    "requestSchema":[
+```
+
+`{`
+
+```json
+      "properties":[
+```
+
+`{`
+
+```json
+        "input":[
+```
+
+`{`
+
+```json
+          "properties":[
+```
+
+`{`
+
+```json
+            "prompt":[
+```
+
+`{`
+
+```json
+              "type":"string"
+```
+
+`}` `],`
 
 ```json
             "img_url":[
-             {
+```
+
+`{`
+
+```json
               "type":"string"
-             }
 ```
 
 `],`
@@ -27094,117 +28360,113 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
             "negative_prompt":[
 ```
 
-智能体工厂 OpenTrek
-
 ```json
-             {
               "type":"string"
-             }
 ```
 
-]
-
-```
-           }
-```
-
-`],`
+`]` `}` `],`
 
 ```json
           "type":"string"
-         }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "parameters":[
-         {
-          "properties":[
-           {
-            "duration":[
-             {
-              "type":"string"
-             }
 ```
 
-`],`
+`{`
+
+```json
+          "properties":[
+```
+
+`{`
+
+```json
+            "duration":[
+```
+
+`{`
+
+```json
+              "type":"string"
+```
+
+`}` `],`
 
 ```json
             "size":[
-             {
+```
+
+`{`
+
+```json
               "type":"string"
-             }
 ```
 
-]
-
-```
-           }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
           "type":"string"
-         }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "model":[
-         {
+```
+
+`{`
+
+```json
           "type":"string"
-         }
 ```
 
-]
-
-```
-       }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
       "$schema":"http://json-schema.org/draft-05/schema#",
       "examples":[
-       {
+```
+
+`{`
+
+```json
         "input":[
-         {
+```
+
+`{`
+
+```json
           "img_url":"https://example.com/img.jpg",
           "negative_prompt":"ugly, deformed",
 ```
 
-`"prompt":"`一只可爱的猫咪"
-
-```
-         }
-```
-
-`],`
+`"prompt":"`一只可爱的猫咪`"` `}` `],`
 
 ```json
         "parameters":[
-         {
+```
+
+`{`
+
+```json
           "duration":5,
           "size":"1280x720"
-         }
+```
+
+`}` `],`
+
+```json
+        "model":"qwen"
 ```
 
 `],`
 
 ```json
-        "model":"qwen"
-       }
-```
-
-`],` 智能体工厂 OpenTrek
-
-```json
       "type":"string"
-     }
 ```
 
 `],`
@@ -27214,93 +28476,103 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
     "method":"POST",
     "name":"OpenAI Stream",
     "responseSchema":[
-     {
-      "properties":[
-       {
-        "output":[
-         {
-          "properties":[
-           {
-            "task_status":[
-             {
-              "type":"string"
-             }
 ```
 
-`],`
+`{`
+
+```json
+      "properties":[
+```
+
+`{`
+
+```json
+        "output":[
+```
+
+`{`
+
+```json
+          "properties":[
+```
+
+`{`
+
+```json
+            "task_status":[
+```
+
+`{`
+
+```json
+              "type":"string"
+```
+
+`}` `],`
 
 ```json
             "task_id":[
-             {
+```
+
+`{`
+
+```json
               "type":"string"
-             }
 ```
 
-]
-
-```
-           }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
           "type":"string"
-         }
 ```
 
-]
-
-```
-       }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
       "$schema":"http://json-schema.org/draft-05/schema#",
       "examples":[
-       {
+```
+
+`{`
+
+```json
         "output":[
-         {
+```
+
+`{`
+
+```json
           "task_status":"PENDING",
           "task_id":"task-****abcd****"
-         }
 ```
 
-]
-
-```
-       }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
       "type":"string"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "id":"17"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "componentId":"cp-system-llm-H2****2gpu",
   "componentResourceSpecs":[
-   {
+```
+
+`{`
+
+```json
     "vGPU":false,
     "shmSizeUnit":"Gi",
     "shmSize":"5",
 "instance":1
 ```
-
-智能体工厂 OpenTrek
 
 ```json
     "instance":1,
@@ -27308,10 +28580,9 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
     "cpu":16,
     "gpu":2,
     "gpuType":"NVIDIA_H20_SXM5_96G"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "componentLabels":{
@@ -27319,7 +28590,11 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
    "ability":"[]",
    "kvCacheOffload":"[]",
    "modelDomain":"LLM"
-  },
+```
+
+`},`
+
+```json
   "componentSubType":"inferenceServer",
   "codeRepo":{
    "gmtModified":"2026-02-06T15:53:00",
@@ -27337,7 +28612,11 @@ POST /dataacc/unbindDataAccInstance/[instanceId] HTTP/1.1 { "instanceId":"da-412
 ```json
    "id":17,
    "codeRepoType":0
-  },
+```
+
+`},`
+
+```json
   "componentDescription":"训练套件",
   "componentEntry":"python3 -m vllm.entrypoints.openai.api_server --model
 $COMPONENT_INPUT_MODEL ...",
@@ -27369,59 +28648,67 @@ $COMPONENT_INPUT_MODEL ...",
    "imageSize":"10524283571",
    "imageAccelerationType":0,
    "imageType":0
-},
 ```
 
-智能体工厂 OpenTrek
+`},` `},`
 
 ```json
-  },
   "componentOutputs":{
    "artifacts":[
-    {
      "mountPath":"$OUTPUT_DIR/inference_persistence",
      "code":"max-context-len",
      "name":"OpenAI Stream",
      "type":"string"
-    }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "componentCategoryId":"inferenceServer",
   "componentInputs":{
    "artifacts":[
-    {
+```
+
+`{`
+
+```json
      "mountPath":"$OUTPUT_DIR/inference_persistence",
      "code":"max-context-len",
      "name":"OpenAI Stream",
      "type":"string"
-    }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "componentDatasetFormats":"[dataset]",
   "componentMetas":"[Meta]",
   "componentCustomService":{
    "enableFaultTolerant":false,
    "servicePort":8000
-  },
+```
+
+`},`
+
+```json
   "componentName":"LLM Universal-H20-2GPU"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyComponent
+`}`
+
+#### 4.18.2 ModifyComponent
+
+调用ModifyComponent修改套件的部分信息，不能修改套件的类型。
 
 **请求头**
 
@@ -27435,8 +28722,6 @@ POST /component/modify HTTP/1.1
 
 **请求参数**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | componen tId | Strin g | Body | 是 | cp- 1c2d7a2f0cd67049eb0a ac90**** | 套件ID，该参数必填。 |
@@ -27449,8 +28734,6 @@ POST /component/modify HTTP/1.1
 | componen tResource Specs | Json | Body | 是 | [ { "cpu":64, "gpu":16, "gpuType":"PG1 A910E" _ , "instance":1, "memory":"1000Gi", "shmSize":"10", "shmSizeUnit":"Gi" } ] | 资源规格，该参数必填。 |
 | componen tParams | Json | Body | 否 | [ { "code":"tensor- parallel-size", "defaultValue":"2", "description":"并行数", "name":"并行数", "type":"INT", "value":"" }, { "code":"max-model- len", "defaultValue":"32768", "description":"最大长度", "name":"最大长度", "type":"INT", "value":"" } ] | 超参。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | componen tInputs | Json | Body | 否 | { "artifacts":[ { "mountPath":"mnt/mode l", "code":"model", "name":"模型", "type":"model" }, { "mountPath":"mnt/code" , "code":"code", "name":"代码", "type":"code" } ] } | 输入，当 categoryId!=trainCusto m时，该参数可以为空。 |
@@ -27459,8 +28742,6 @@ POST /component/modify HTTP/1.1
 | componen tLabels | Json | Body | 否 | {"ability": ["DEEP THINK"], _ "modelDomain": ["llm"]} | 套件标签，记录适用的模型类型（modelDomian）和能力（ability）。 |
 | componen tCustomS ervice | Json | Body | 是 | 推理类套件： {"servicePort": 9080} 训练类套件： {"checkpointPath": "$COMPONENT OUTPUT _ HOME", _ "tensorboardPath": "$COMPONENT OUTPUT _ HOME/runs"} _ | 自定义参数，该参数必填。 |
 | componen tDatasetF ormats | Json | Body | 否 | [{"code": "llm-dpo", "name": "llm-dpo", "exampleList": [{"name": "llm- dpo.json", "path": "preset/datasets/llm dpo _ .json"}]}] | 数据集示例，训练类套件专属字段。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -27478,14 +28759,18 @@ POST /component/modify HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****", "componentName":"component-name", "componentDescription":"component-desc", "image":"{
+POST /component/modify HTTP/1.1 "componentId":"cp-1c2d7a2f0cd67049eb0aac90****", "componentName":"component-name", "componentDescription":"component-desc", "image":"{
         "imageId": "img-public-21a8c4ac3***",
         "imageVersion": "v1.0"
 }", "componentResourceSpecs":"[
-    {
+```
+
+`{`
+
+```json
  "cpu":64,
  "gpu":16,
  "gpuType":"PG1_A910E",
@@ -27493,23 +28778,29 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
  "memory":"1000Gi",
  "shmSize":"10",
  "shmSizeUnit":"Gi"
-    }
-]", "componentCustomService":"推理类套件：{"servicePort": 9080} 训练类套件：{"checkpointPath": "$COMPONENT_OUTPUT_HOME", "tensorboardPath": "$COMPONENT_OUTPUT_HOME/runs"}" }
 ```
 
-正常返回示例 `JSON` 格式
+`}`
 
 ```json
-{
+]", "componentCustomService":"推理类套件：{"servicePort": 9080} 训练类套件：{"checkpointPath": "$COMPONENT_OUTPUT_HOME", "tensorboardPath": "$COMPONENT_OUTPUT_HOME/runs"}"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteComponent
+`}`
+
+#### 4.18.3 DeleteComponent
+
+调用DeleteComponent删除指定的套件。
 
 **请求头**
 
@@ -27517,9 +28808,11 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
 
 **请求语法**
 
-**请求参数**
+```
+DELETE /component/delete HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -27540,28 +28833,30 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
 请求示例
 
 ```
-&componentId=cp-1c2d7a2f0cd67049eb0aac90****
+DELETE /component/delete HTTP/1.1 &componentId=cp-1c2d7a2f0cd67049eb0aac90****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetComponentMetaInfo
+`}`
 
-**请求头**
+#### 4.18.4 GetComponentMetaInfo
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用GetComponentMetaInfo查询套件元信息。
 
 **请求语法**
+
+```
+GET /component/metaInfo/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -27586,7 +28881,7 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
 | -typeName | String | 组件能力标签 | 元数据类型名称。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-| A | I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre | k |
+| A | I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre | k |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -27597,17 +28892,25 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
 
-```json
-{
- "data":[
-  {
-   "metaInfoList":[
-    {
+```
+GET /component/metaInfo/get HTTP/1.1
 ```
 
-`"typeName":"`组件能力标签`",`
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
+
+```json
+ "data":[
+```
+
+`{`
+
+```json
+   "metaInfoList":[
+```
+
+`{` `"typeName":"`组件能力标签`",`
 
 ```json
      "id":1,
@@ -27615,17 +28918,15 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
      "value":"KUN_LUN",
      "key":"KUN_LUN",
      "typeCode":"ability"
-    }
 ```
 
-`],` `"typeName":"`组件能力标签`",`
+`}` `],` `"typeName":"`组件能力标签`",`
 
 ```json
    "typeCode":"ability"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":false,
@@ -27633,16 +28934,13 @@ POST /component/modify HTTP/1.1 { "componentId":"cp-1c2d7a2f0cd67049eb0aac90****
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GenComponentJsonSchema
+`}`
+
+#### 4.18.5 GenComponentJsonSchema
 
 调用GenComponentJsonSchema创建推理套件的API信息过程中，将Json转为Json Schema。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
 
 **请求语法**
 
@@ -27669,26 +28967,28 @@ POST /component/genJSONSchema HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /component/genJSONSchema HTTP/1.1 { "json":"{"json":"{ \"model\": \"qwen\", \"messages\": [ { \"role\": \"user\", \"content\": \"hellow111\" } ], \"stream\": true, \"presence_penalty\": 1.03, \" temperature\": 0.5, \"top_p\": 0.95, \"max_tokens\": 200}"}" }
+POST /component/genJSONSchema HTTP/1.1 "json":"{"json":"{ \"model\": \"qwen\", \"messages\": [ { \"role\": \"user\", \"content\": \"hellow111\" } ], \"stream\": true, \"presence_penalty\": 1.03, \" temperature\": 0.5, \"top_p\": 0.95, \"max_tokens\": 200}"}"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### CreateComponent
+`}`
+
+#### 4.18.6 CreateComponent
+
+调用CreateComponent创建自定义套件。
 
 **请求头**
 
@@ -27710,7 +29010,7 @@ POST /component/create HTTP/1.1
 | image | Json | Body | 是 | { "imageId": "img- public-21a8c4ac3***", "imageVersion": "v1.0" } | 镜像版本信息，该参数必填。 |
 | codeRepo | Json | Body | 否 | { "codeRepoId": "cd- public- ae719558c220fb****" } | 代码集信息。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -27721,8 +29021,6 @@ POST /component/create HTTP/1.1
 | componen tParams | Json | Body | 否 | [ { "code":"tensor- parallel-size", "defaultValue":"2", "description":"并行数", "name":"并行数", "type":"INT", "value":"" }, { "code":"max-model- len", "defaultValue":"32768", "description":"最大长度", "name":"最大长度", "type":"INT", "value":"" } ] | 超参。 |
 | componen tInputs | Json | Body | 否 | { "artifacts":[ { "mountPath":"mnt/mode l", "code":"model", "name":"模型", "type":"model" }, { "mountPath":"mnt/code" , "code":"code", "name":"代码", "type":"code" } ] } | 输入，当 categoryId!=trainCusto m时，该参数可以为空。 |
 | componen tOutputs | Json | Body | 否 | { "artifacts":[ { "mountPath":"$OUTPUT _ DIR/checkpoint-best", "code":"model", "name":"输出模型", "type":"model" }, { "mountPath":"$OUTPUT _ DIR/checkpoints", "code":"checkpoint", "name":"输出 checkpoint", "type":"checkpoint" }, { "mountPath":"$OUTPUT _ DIR/runs", "code":"logs", "name":"输出日志", "type":"logs" } ] } | 输出，当 categoryId!=trainCusto m时，该参数可以为空。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -27750,12 +29048,22 @@ POST /component/create HTTP/1.1
 
 请求示例
 
+```
+POST /component/create HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /component/create HTTP/1.1 { "componentName":"component-name", "componentCategoryId":"inferenceServer", "componentDescription":"component-desc", "image":"{
+"componentName":"component-name", "componentCategoryId":"inferenceServer", "componentDescription":"component-desc", "image":"{
         "imageId": "img-public-21a8c4ac3***",
         "imageVersion": "v1.0"
 }", "componentResourceSpecs":"[
-    {
+```
+
+`{`
+
+```json
  "cpu":64,
  "gpu":16,
  "gpuType":"PG1_A910E",
@@ -27763,30 +29071,30 @@ POST /component/create HTTP/1.1 { "componentName":"component-name", "componentCa
  "memory":"1000Gi",
  "shmSize":"10",
  "shmSizeUnit":"Gi"
-    }
-]", "componentCustomService":"推理类套件：{"servicePort": 9080} 训练类套件：{"checkpointPath": "$COMPONENT_OUTPUT_HOME", "tensorboardPath": "$COMPONENT_OUTPUT_HOME/runs"}" }
 ```
 
-正常返回示例 `JSON` 格式
+`}`
 
 ```json
-{
+]", "componentCustomService":"推理类套件：{"servicePort": 9080} 训练类套件：{"checkpointPath": "$COMPONENT_OUTPUT_HOME", "tensorboardPath": "$COMPONENT_OUTPUT_HOME/runs"}"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{    \"cp-****\"}",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListComponent
+`}`
 
-智能体工厂 OpenTrek
+#### 4.18.7 ListComponent
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用ListComponent查询所有系统内置或用户自定义的套件。
 
 **请求语法**
 
@@ -27806,8 +29114,6 @@ POST /component/list HTTP/1.1
 | modelId | Strin g | Body | 否 | md-sd9au8safusd***** | 模型仓库ID。 |
 | modelVer sion | Strin g | Body | 否 | v1 | 模型仓库版本号。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | componen tCategoryI d | Strin g | Body | 否 | inferenceServer | 套件类别ID，枚举值如下： - inferenceServer ： 推理服务 - inferencePrefillDecod e ：推理预填充解码 - inferenceMultiLora ：推理Multi-Lora - inferenceServerDistri bute ：分布式推理 - inferenceDiffusion ：扩散模型推理 - PT ：预训练 - CPT ：持续预训练 - SFT LoRA ：SFT _ LoRA微调 - SFT full ：SFT全参微 _ 调 - DPO LoRA ：DPO _ LoRA微调 - DPO full ：DPO全参 _ 微调 - GRPO LoRA ：GRPO _ LoRA微调 - GRPO full ：GRPO全 _ 参微调 - RL LoRA ：RL LoRA _ 微调 - RL full ：RL全参微调 _ - trainCustom ：自定义训练 - quant ：量化。 |
@@ -27818,8 +29124,6 @@ POST /component/list HTTP/1.1
 | pageSize | Integ er | Body | 否 | 1 | 套件列表每页条数。 |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -27833,8 +29137,6 @@ POST /component/list HTTP/1.1
 | -aliyunUid | String | 19822605****1225 | 阿里云账号。 |
 | -codeRepoId | String | cd- 96a5060c0a95704 04f09a8f0747**** | 套件关联的代码仓库ID。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - componentCat egoryId | String | inferenceServer | 套件类别ID，枚举值如下： inferenceServer：推理服务 inferencePrefillDecode：推理预填充解码 inferenceMultiLora：推理Multi-Lora inferenceServerDistribute：分布式推理 inferenceDiffusion：扩散模型推理 PT：预训练 CPT：持续预训练 SFT LoRA：SFTLoRA微调 _ SFT full：SFT全参微调 _ DPO LoRA：DPOLoRA微调 _ DPO full：DPO全参微调 _ GRPO LoRA：GRPO LoRA微调 _ GRPO full：GRPO全参微调 _ RL LoRA：RL LoRA微调 _ RL full：RL全参微调 _ trainCustom：自定义训练 quant：量化。 |
@@ -27846,7 +29148,7 @@ POST /component/list HTTP/1.1
 | -gmtCreated | String | 2025-11- 10T12:09:22Z | 套件创建时间，格式为UTC时间。 |
 | -gmtModified | String | 2025-11- 12T14:10:48Z | 套件最后修改时间，格式为UTC时间。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -27868,33 +29170,32 @@ POST /component/list HTTP/1.1
 | pageSize | Integer | 10 | 每页行数。 |
 | pageIndex | Integer | 1 | 页码。 |
 
-**示例**
-
-智能体工厂 OpenTrek 请求示例
+请求示例
 
 ```json
-POST /component/list HTTP/1.1 { "componentSource":"admin" }
+POST /component/list HTTP/1.1 "componentSource":"admin"
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "componentType":"inference",
    "gmtModified":"2025-11-12T14:10:48Z",
    "componentId":"cp-42942e39****49c683ae****",
    "componentLabels":[
-    {
+```
+
+`{`
+
+```json
      "disaggInfernenceMode":"true",
      "ability":"MemAccSep",
      "kvCacheOffload":"true",
      "modelDomain":"MM-Understand"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "frameworks":2,
@@ -27903,24 +29204,30 @@ POST /component/list HTTP/1.1 { "componentSource":"admin" }
    "componentDescription":"222",
    "componentCategoryId":"inferenceServer",
    "imageVersion":[
-    {
-     "imageVersion":"3.2.41",
-     "imageId":"img-05cefd0be2exxxx"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "imageVersion":"3.2.41",
+     "imageId":"img-05cefd0be2exxxx"
+```
+
+`}` `],`
 
 ```json
    "xpus":"[APG]",
    "models":[
-    {
-     "modelId":"model-rbvg5wzljz****ks92",
-     "modelVersion":"V1.0.0"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "modelId":"model-rbvg5wzljz****ks92",
+     "modelVersion":"V1.0.0"
+```
+
+`}` `],`
 
 ```json
    "codeRepoId":"cd-96a5060c0a9570404f09a8f0747****",
@@ -27931,10 +29238,9 @@ POST /component/list HTTP/1.1 { "componentSource":"admin" }
 
 ```json
    "componentSource":"custom"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -27945,18 +29251,15 @@ POST /component/list HTTP/1.1 { "componentSource":"admin" }
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-### 软件源
+`}`
 
-#### UpdateSoftwareSourceConfig
+### 4.19 软件源
 
-智能体工厂 OpenTrek
+#### 4.19.1 UpdateSoftwareSourceConfig
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用UpdateSoftwareSourceConfig修改软件源配置。
 
 **请求语法**
 
@@ -27988,22 +29291,24 @@ PUT /softwareSourceConfig/updateSoftwareSourceConfig HTTP/1.1
 请求示例
 
 ```
-PUT /softwareSourceConfig/updateSoftwareSourceConfig HTTP/1.1 { }
+PUT /softwareSourceConfig/updateSoftwareSourceConfig HTTP/1.1
 ```
 
-智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListSoftwareSource
+`}`
+
+#### 4.19.2 ListSoftwareSource
+
+调用ListSoftwareSource查询所有的软件源列表。
 
 **请求头**
 
@@ -28027,7 +29332,7 @@ GET /softwareSource/list HTTP/1.1
 | - proxyAddrCon nectivity | Boolean | true | 代理地址连通性： 1：连通 0：不连通 |
 | -status | Boolean | true | 软件源状态： 1：启用 0：停用 |
 
-|  | 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |  |
+|   | 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -28046,20 +29351,22 @@ GET /softwareSource/list HTTP/1.1
 GET /softwareSource/list HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UpdateSoftwareSource
+`}`
+
+#### 4.19.3 UpdateSoftwareSource
+
+调用UpdateSoftwareSource修改指定软件源配置。
 
 **请求头**
 
@@ -28072,8 +29379,6 @@ PUT /softwareSource/update HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -28096,25 +29401,31 @@ PUT /softwareSource/update HTTP/1.1
 
 请求示例
 
-```json
-PUT /softwareSource/update HTTP/1.1 { "type":"pypi", "status":"true" }
+```
+PUT /softwareSource/update HTTP/1.1
 ```
 
-智能体工厂 OpenTrek 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"type":"pypi", "status":"true"
+```
+
+正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 资源同步
+`}`
 
-#### ListBmcpImageSyncHistory
+### 4.20 资源同步
+
+#### 4.20.1 ListBmcpImageSyncHistory
 
 调用ListBmcpImageSyncHistory查询所有的BMCP镜像同步记录列表。
 
@@ -28138,8 +29449,6 @@ GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序。 DESC：降序。 ASC：升序。 默认值：DESC。 |
@@ -28157,8 +29466,6 @@ GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
 | - failImageCoun t | Integer | 0 | 同步失败镜像数量。 |
 | -gmtCreated | String | 2026-03- 03T03:34:56Z | 同步时间，格式为UTC时间。 |
 | -imageCount | Integer | 4 | 同步镜像数量。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -28181,33 +29488,33 @@ GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
 GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "failImageCount":0,
    "imageCount":4,
    "result":1,
    "successImageInfo":[
-    {
-     "imageVersion":"0.4.7-ubuntu24.04-sail1.5.3-cuda12.6-py312",
-     "imageName":"sglang"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "imageVersion":"0.4.7-ubuntu24.04-sail1.5.3-cuda12.6-py312",
+     "imageName":"sglang"
+```
+
+`}` `],`
 
 ```json
    "gmtCreated":"2026-03-03T03:34:56Z",
    "failImageInfo":"[]",
    "successImageCount":4,
    "syncId":"aa9018b7****dedef79"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -28218,16 +29525,23 @@ GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### SyncBmcpImage
+`}`
+
+#### 4.20.2 SyncBmcpImage
+
+调用SyncBmcpImage同步BMCP镜像。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /image/syncBmcpImage HTTP/1.1
+```
 
 **请求参数**
 
@@ -28239,8 +29553,6 @@ GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -28256,29 +29568,27 @@ GET /systemConfig/listBmcpImageSyncHistory HTTP/1.1
 请求示例
 
 ```
-{ }
+POST /image/syncBmcpImage HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":1,
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 用户APIKey
+`}`
 
-#### CreateGatewayAPIKey
+### 4.21 用户APIKey
 
-**请求头**
+#### 4.21.1 CreateGatewayAPIKey
 
-智能体工厂 OpenTrek 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用CreateGatewayAPIKey创建指定在线服务的API Key。
 
 **请求语法**
 
@@ -28303,8 +29613,6 @@ POST /online-service/create-gateway-apikey HTTP/1.1
 | aliyunSub Name | Strin g | Body | 是 | user | 阿里云子账号登录名称，该参数必填。 |
 | enableExp ireTime | Boole an | Body | 是 | true | 表示启用过期时间功能，APIKey将在指定的过期时间后自动失效，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | expireTim e | Strin g | Body | 否 | 2021-01-20T09:25:56Z | APIKey失效的UTC时间。 当enableExpireTime为 true时，该参数不能为空。 |
@@ -28324,26 +29632,28 @@ POST /online-service/create-gateway-apikey HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /online-service/create-gateway-apikey HTTP/1.1 { "apikeyName":"Test", "status":"1", "organizationUid":"org-1234567890abcdefg", "organizationId":"2", "organizationName":"MyOrganization", "resourceGroupUid":"rs-1234567890abcefg", "resourceGroupId":"3", "resourceGroupName":"resourceGroupName", "aliyunSubUid":"2277043054*****", "aliyunSubId":"5001", "aliyunSubName":"user", "enableExpireTime":"true" }
+POST /online-service/create-gateway-apikey HTTP/1.1 "apikeyName":"Test", "status":"1", "organizationUid":"org-1234567890abcdefg", "organizationId":"2", "organizationName":"MyOrganization", "resourceGroupUid":"rs-1234567890abcefg", "resourceGroupId":"3", "resourceGroupName":"resourceGroupName", "aliyunSubUid":"2277043054*****", "aliyunSubId":"5001", "aliyunSubName":"user", "enableExpireTime":"true"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### DeleteGatewayAPIKey
+`}`
+
+#### 4.21.2 DeleteGatewayAPIKey
+
+调用DeleteGatewayAPIKey删除指定在线服务的API Key。
 
 **请求头**
 
@@ -28363,8 +29673,6 @@ DELETE /online-service/delete-gateway-apikey HTTP/1.1
 
 **返回数据**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
@@ -28381,19 +29689,21 @@ DELETE /online-service/delete-gateway-apikey HTTP/1.1
 DELETE /online-service/delete-gateway-apikey HTTP/1.1 &apikeyUid=1234567890abcdef
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyGatewayAPIKeyStatus
+`}`
+
+#### 4.21.3 ModifyGatewayAPIKeyStatus
+
+调用ModifyGatewayAPIKeyStatus修改指定API Key状态。
 
 **请求头**
 
@@ -28406,8 +29716,6 @@ PUT /online-service/modify-gateway-apikey-status HTTP/1.1
 ```
 
 **请求参数**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -28428,23 +29736,31 @@ PUT /online-service/modify-gateway-apikey-status HTTP/1.1
 
 请求示例
 
-```json
-PUT /online-service/modify-gateway-apikey-status HTTP/1.1 { "apikeyUid":"aigk-123456", "status":"1" }
+```
+PUT /online-service/modify-gateway-apikey-status HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`{`
 
 ```json
-{
+"apikeyUid":"aigk-123456", "status":"1"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### UnbindGatewayAPIKey
+`}`
+
+#### 4.21.4 UnbindGatewayAPIKey
+
+调用UnbindGatewayAPIKey解除用户APIKey和在线服务的绑定。
 
 **请求头**
 
@@ -28473,7 +29789,7 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1
 | errorCode | String | 500 | 错误码。 |
 | errorMessage | String | "" | 错误信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | httpCode | Integer | 200 | HTTP状态码。 |
@@ -28482,24 +29798,32 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1
 
 请求示例
 
-```json
-POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2***", "onlineServiceIds":"[os-1hd***, os-743***, os-hbf***]" }
+```
+POST /online-service/unbind-gateway-apikey HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"apikeyUid":"aigk-4fb8b2***", "onlineServiceIds":"[os-1hd***, os-743***, os-hbf***]"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### BindGatewayAPIKey
+`}`
+
+#### 4.21.5 BindGatewayAPIKey
+
+调用BindGatewayAPIKey绑定APIKey与在线服务。
 
 **请求头**
 
@@ -28507,16 +29831,16 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 
 **请求语法**
 
+```
+POST /online-service/bind-gateway-apikey HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | apikeyUid | Strin g | Body | 是 | aigk-4fb8b2*** | ApiKey唯一标识ID，该参数必填。 |
 | onlineServ iceIds | Json | Body | 是 | [os-1hd***, os-743***, os-hbf***] | 需要绑定的在线服务ID列表，该参数必填。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -28531,30 +29855,32 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 
 请求示例
 
-```json
-{ "apikeyUid":"aigk-4fb8b2***", "onlineServiceIds":"[os-1hd***, os-743***, os-hbf***]" }
+```
+POST /online-service/bind-gateway-apikey HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"apikeyUid":"aigk-4fb8b2***", "onlineServiceIds":"[os-1hd***, os-743***, os-hbf***]"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"-",
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyGatewayAPIKeyAutoBinding
+`}`
+
+#### 4.21.6 ModifyGatewayAPIKeyAutoBinding
 
 调用ModifyGatewayAPIKeyAutoBinding修改指定APIKey的自动绑定状态。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
 
 **请求参数**
 
@@ -28574,7 +29900,9 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-#### ListUserAPIKey
+#### 4.21.7 ListUserAPIKey
+
+调用ListUserAPIKey查询用户APIKey列表。
 
 **请求头**
 
@@ -28582,9 +29910,11 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 
 **请求语法**
 
-**请求参数**
+```
+GET /online-service/list-user-apikey HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -28600,10 +29930,6 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 | resourceG roupName | Strin g | Query | 否 | resourceGroupName | 资源集名称。 |
 | status | Strin g | Query | 否 | ENABLE | APIKey状态，取值范围： ENABLE：启用。 DISABLE：禁用。 EXPIRED：过期。 |
 | autoBindi ng | Integ er | Query | 否 | 1 | 自动绑定的状态，取值范围： 1：启用。 0：禁用。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -28623,7 +29949,7 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 | - aliyunSubNam e | String | suihuai | 阿里云子账号名称。 |
 | -apikey | String | sk-************ | API Key 密钥值（已解密后返回），用于接口调用鉴权。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -28642,10 +29968,15 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /online-service/list-user-apikey HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"-",
  "pageIndex":1,
  "success":false,
@@ -28655,16 +29986,23 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
  "pageSize":10,
  "httpCode":200,
  "totalCount":1
-}
 ```
 
-#### GetUserAPIKey
+`}`
+
+#### 4.21.8 GetUserAPIKey
+
+调用GetUserAPIKey查询指定用户APIKey详情信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /online-service/get-user-apikey HTTP/1.1
+```
 
 **请求参数**
 
@@ -28682,7 +30020,7 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -28703,8 +30041,6 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 | - resourceGroup Uid | String | rs- 1034b60b****0aec 1029000c | 资源集 UID，资源集的唯一标识。 |
 | - resourceGroup Name | String | ResourceSet(iaas t _ est) | 资源集名称。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -aliyunSubUid | String | 2428119****97941 46 | 阿里云子账号 UID，创建该 API Key 的子账号标识。 |
@@ -28720,25 +30056,21 @@ POST /online-service/unbind-gateway-apikey HTTP/1.1 { "apikeyUid":"aigk-4fb8b2**
 请求示例
 
 ```
-&apiKeyUid=aigk-4fb8b2***
+GET /online-service/get-user-apikey HTTP/1.1 &apiKeyUid=aigk-4fb8b2***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
-
-#### ModifyGatewayAPIKeyExpireTime
+#### 4.21.9 ModifyGatewayAPIKeyExpireTime
 
 调用ModifyGatewayAPIKeyExpireTime修改指定APIKey的过期时间。
 
@@ -28770,29 +30102,27 @@ PUT /online-service/modify-gateway-apikey-expire-time HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-PUT /online-service/modify-gateway-apikey-expire-time HTTP/1.1 { "apikeyUid":"aigk-4fb8b2***", "enableExpireTime":"true" }
+PUT /online-service/modify-gateway-apikey-expire-time HTTP/1.1 "apikeyUid":"aigk-4fb8b2***", "enableExpireTime":"true"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 用户优先级
+`}`
 
-#### DeleteUserPriority
+### 4.22 用户优先级
+
+#### 4.22.1 DeleteUserPriority
 
 调用DeleteUserPriority删除用户优先级，删除后用户在组织资源集下的优先级重置为默认用户优先级。
 
@@ -28819,8 +30149,6 @@ POST /user/priority/delete HTTP/1.1
 | dynamicMessa ges | List | [] | 动态提示信息。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -28831,23 +30159,31 @@ POST /user/priority/delete HTTP/1.1
 
 请求示例
 
-```json
-POST /user/priority/delete HTTP/1.1 { "userPriorityId":"user-priority-1234567890abcd" }
+```
+POST /user/priority/delete HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"userPriorityId":"user-priority-1234567890abcd"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListUserPriority
+`}`
+
+#### 4.22.2 ListUserPriority
+
+调用ListUserPriority查询所有用户优先级列表。
 
 **请求头**
 
@@ -28865,8 +30201,6 @@ GET /user/priority/list HTTP/1.1
 |---|---|---|---|---|---|
 | pageIndex | Integ er | Query | 否 | 1 | 页码。 默认值：1。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | pageSize | Integ er | Query | 否 | 10 | 每页数据条数。 默认值：10。 |
@@ -28883,8 +30217,6 @@ GET /user/priority/list HTTP/1.1
 | sortOrder | Strin g | Query | 否 | DESC | 排序顺序，取值范围： DESC：降序。 ASC：升序。 默认值：DESC。 |
 
 **返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -28904,8 +30236,6 @@ GET /user/priority/list HTTP/1.1
 | -regionId | String | cn-hangzhou | 地域ID。 |
 | - resourceGroup Id | Integer | 1002 | 资源集ID。 |
 | - resourceGroup Name | String | res test _ | 资源集名称。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -28929,10 +30259,9 @@ GET /user/priority/list HTTP/1.1
 GET /user/priority/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"-",
  "pageIndex":1,
  "success":true,
@@ -28942,10 +30271,13 @@ GET /user/priority/list HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### CreateUserPriority
+`}`
+
+#### 4.22.3 CreateUserPriority
+
+调用CreateUserPriority创建用户优先级。
 
 **请求头**
 
@@ -28968,8 +30300,6 @@ POST /user/priority/create HTTP/1.1
 | resourceG roupUid | Strin g | Body | 是 | rs- 1234567890abcdefghijkl mn | 资源集的唯一标识符，用于在系统中唯一识别一个资源集实体，该参数必填。 |
 | resourceG roupName | Strin g | Body | 否 | resourceGroupName | 资源集名称。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | aliyunSubI d | Long | Body | 是 | 1 | aliyun子账号ID，该参数必填。 |
@@ -28989,28 +30319,28 @@ POST /user/priority/create HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```json
-POST /user/priority/create HTTP/1.1 { "organizationId":"1", "organizationUid":"org-1234567890abcdefghijklmn", "resourceGroupId":"1", "resourceGroupUid":"rs-1234567890abcdefghijklmn", "aliyunSubId":"1", "aliyunSubUid":"123456789000000000", "userPriority":"1" }
+POST /user/priority/create HTTP/1.1 "organizationId":"1", "organizationUid":"org-1234567890abcdefghijklmn", "resourceGroupId":"1", "resourceGroupUid":"rs-1234567890abcdefghijklmn", "aliyunSubId":"1", "aliyunSubUid":"123456789000000000", "userPriority":"1"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyUserPriority
+`}`
+
+#### 4.22.4 ModifyUserPriority
+
+调用ModifyUserPriority修改用户优先级。
 
 **请求头**
 
@@ -29031,8 +30361,6 @@ PUT /user/priority/modify HTTP/1.1
 
 **返回数据**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态提示信息。 |
@@ -29045,23 +30373,29 @@ PUT /user/priority/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /user/priority/modify HTTP/1.1 { "userPriorityId":"user-priority-1234567890abcd", "userPriority":"2" }
+```
+PUT /user/priority/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"userPriorityId":"user-priority-1234567890abcd", "userPriority":"2"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetUserPriorityDetail
+`}`
+
+#### 4.22.5 GetUserPriorityDetail
 
 调用GetUserPriorityDetail查询用户在组织资源集下优先级详情信息。
 
@@ -29071,9 +30405,11 @@ PUT /user/priority/modify HTTP/1.1 { "userPriorityId":"user-priority-1234567890a
 
 **请求语法**
 
-**请求参数**
+```
+GET /user/priority/detail HTTP/1.1
+```
 
-智能体工厂 OpenTrek
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -29098,7 +30434,7 @@ PUT /user/priority/modify HTTP/1.1 { "userPriorityId":"user-priority-1234567890a
 | -gmtCreated | String | 2022-02- 25T06:57:41Z | 创建时间。 |
 | -gmtModified | String | 2025-02- 25T06:57:41Z | 修改时间。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -29117,22 +30453,30 @@ PUT /user/priority/modify HTTP/1.1 { "userPriorityId":"user-priority-1234567890a
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+请求示例
+
+```
+GET /user/priority/detail HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### Readme文档
+`}`
 
-#### DeleteDocument
+### 4.23 Readme文档
+
+#### 4.23.1 DeleteDocument
+
+调用DeleteDocument删除指定的文档。
 
 **请求头**
 
@@ -29160,29 +30504,25 @@ DELETE /doc/delete HTTP/1.1
 | errorMessage | String | "" | 错误信息。 |
 | httpCode | Integer | 200 | HTTP状态码。 |
 
-智能体工厂 OpenTrek
-
-**示例**
-
 请求示例
 
 ```
 DELETE /doc/delete HTTP/1.1 &docId=14e52afc0ecec046fd0a9320be23a****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ModifyDocument
+`}`
+
+#### 4.23.2 ModifyDocument
 
 调用ModifyDocument修改指定文档的部分信息，包括文档标题、版本和存储路径。
 
@@ -29206,8 +30546,6 @@ PUT /doc/modify HTTP/1.1
 | docUrl | Strin g | Body | 是 | https://****.oss- ****/****.pdf" | 存储路径，该参数必填。 |
 | resourceId | Strin g | Body | 是 | os- 123f3c61074d3046b408 be70c81**** | 资源ID，该参数必填。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | resourceV ersion | Strin g | Body | 否 | v1 | 资源版本。 |
@@ -29226,25 +30564,31 @@ PUT /doc/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT /doc/modify HTTP/1.1 { "docId":"89a5a8d30dbb9042650988d07b****", "docName":"doc-name", "docVersion":"v1.0", "docUrl":"https://****.oss-****/****.pdf"", "resourceId":"os-123f3c61074d3046b408be70c81****" }
+```
+PUT /doc/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"docId":"89a5a8d30dbb9042650988d07b****", "docName":"doc-name", "docVersion":"v1.0", "docUrl":"https://****.oss-****/****.pdf"", "resourceId":"os-123f3c61074d3046b408be70c81****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+`}`
 
-#### CreateDocument
+#### 4.23.3 CreateDocument
+
+调用CreateDocument创建文档。
 
 **请求头**
 
@@ -29274,8 +30618,6 @@ POST /doc/create HTTP/1.1
 | data | String | { "docId": "****" } | 这是一个数据对象，通常包含API响应中的信息或结果。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
@@ -29286,24 +30628,32 @@ POST /doc/create HTTP/1.1
 
 请求示例
 
-```json
-POST /doc/create HTTP/1.1 { "docName":"doc-name", "docVersion":"v1.0", "docUrl":"https://****.oss-****/****.pdf", "resourceId":"os-123f3c61074d3046b408be70c81****" }
+```
+POST /doc/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"docName":"doc-name", "docVersion":"v1.0", "docUrl":"https://****.oss-****/****.pdf", "resourceId":"os-123f3c61074d3046b408be70c81****"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\t\"docId\": \"****\"}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### GetDocument
+`}`
+
+#### 4.23.4 GetDocument
+
+调用GetDocument查询指定文档的详细信息。
 
 **请求头**
 
@@ -29320,10 +30670,6 @@ GET /doc/get HTTP/1.1
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | docId | Strin g | Query | 是 | bedd****d636 | 文档的唯一标识符。 |
-
-智能体工厂 OpenTrek
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -29355,10 +30701,9 @@ GET /doc/get HTTP/1.1
 GET /doc/get HTTP/1.1 &docId=f16bea0f0669404e110b15213901a588****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "docName":"",
   "gmtModified":"",
@@ -29370,26 +30715,31 @@ GET /doc/get HTTP/1.1 &docId=f16bea0f0669404e110b15213901a588****
   "resourceVersion":"",
   "docUrl":"",
   "docVersion":""
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 可观测
+`}`
 
-#### PodLogExport
+### 4.24 可观测
+
+#### 4.24.1 PodLogExport
+
+调用PodLogExport导出日志信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
-
-智能体工厂 OpenTrek
 
 ```
 GET /k8s-resource/export-pod-log HTTP/1.1
@@ -29413,8 +30763,6 @@ GET /k8s-resource/export-pod-log HTTP/1.1
 
 **返回数据**
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | dynamicMessa ges | List | - | 这是一个数据对象，通常包含API响应中的信息或结果。 |
@@ -29430,38 +30778,48 @@ GET /k8s-resource/export-pod-log HTTP/1.1
 
 **示例**
 
-请求示例智能体工厂 OpenTrek
+请求示例
 
 ```
 GET /k8s-resource/export-pod-log HTTP/1.1 &entityId=nb-ad56b7f600740042f20b89a033b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "fileName":"music.log",
   "downloadUrl":"https://xxxxxxxx.oss-cn-hangzhou-1.aliyuncs.com/xxxxx/xxxxxxxxxxxxxx?E
 xpires=1671448125&OSSAccessKeyId=xxx",
   "truncated":true,
   "lineCount":50
- },
+```
+
+`},`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListEvent
+`}`
+
+#### 4.24.2 ListEvent
+
+调用ListEvent查询所有的服务事件列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /k8s-resource/list-event HTTP/1.1
+```
 
 **请求参数**
 
@@ -29471,7 +30829,7 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | gmtCreated | 排序字段。 默认值：gmtCreated。 |
 
-| 智能体工厂 Ope | nTrek |  |  |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 Ope | nTrek |   |   |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -29495,7 +30853,7 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 | -eventDesc | String | Readiness probe failed: dial tcp 172. | 事件描述 |
 | -eventLevel | String | Warning | 事件等级 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -29517,25 +30875,22 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 请求示例
 
 ```
-&entityId=nb-ad56b7f600740042f20b89a033b****
+GET /k8s-resource/list-event HTTP/1.1 &entityId=nb-ad56b7f600740042f20b89a033b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "eventDesc":"",
    "eventLevel":"",
    "instanceId":"",
    "gmtCreated":"",
    "eventName":"",
    "eventType":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -29546,16 +30901,23 @@ xpires=1671448125&OSSAccessKeyId=xxx",
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ListPodLog
+`}`
+
+#### 4.24.3 ListPodLog
+
+调用ListPodLog查询所有服务的日志列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /k8s-resource/list-pod-log HTTP/1.1
+```
 
 **请求参数**
 
@@ -29564,8 +30926,6 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 | pageIndex | Integ er | Query | 否 | 1 | 日志列表的页码。 默认值：1。 |
 | pageSize | Integ er | Query | 否 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
 | orderByFi eld | Strin g | Query | 否 | time | 排序字段。 默认值：time。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -29588,8 +30948,6 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 | -content | String | 2026-03- 06T05:12:01.0195 71816Z [1;36m(A | 响应内容 |
 | -podName | String | os- 4303ffc905d1b04c c2-***** | pod名称 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -time | String | 2016-09- 13T16:04:00Z | 查询时间 |
@@ -29606,23 +30964,20 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 请求示例
 
 ```
-&entityId=nb-ad56b7f600740042f20b89a033b****
+GET /k8s-resource/list-pod-log HTTP/1.1 &entityId=nb-ad56b7f600740042f20b89a033b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":[
-  {
    "containerName":"",
    "podName":"",
    "time":"",
    "content":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "pageIndex":1,
@@ -29633,16 +30988,23 @@ xpires=1671448125&OSSAccessKeyId=xxx",
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### ListNode
+`}`
+
+#### 4.24.4 ListNode
+
+调用ListNode查询指定资源下所有节点列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /resource/nodes/listNode HTTP/1.1
+```
 
 **请求参数**
 
@@ -29656,8 +31018,6 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 |---|---|---|---|
 | dynamicMessa ges | List | [] | 动态错误码，按顺序填充到错误码的占位符位置。 |
 | success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -29676,25 +31036,23 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 请求示例
 
 ```
-&resourceId=os-123f3c61074d300c81****
+GET /resource/nodes/listNode HTTP/1.1 &resourceId=os-123f3c61074d300c81****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"-",
  "success":false,
  "dynamicMessages":"\t[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-智能体工厂 OpenTrek
+#### 4.24.5 GetTenantObservability
 
-#### GetTenantObservability
+调用GetTenantObservability查询租户区可观测特性信息。
 
 **请求头**
 
@@ -29719,8 +31077,6 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 | - logQueryMode l | String | page | 日志展示方式，取值范围： page：分页展示。 cursor：游标展示。 |
 | - dashboardMod el | String | Grafana | 监控面板模式，取值范围： PAI。 Grafana。 tianyan。 dashboard。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -rdma | Boolean | false | 是否展示GPU网络拓扑大盘，取值范围： true：展示。 false：不展示。 |
@@ -29733,26 +31089,32 @@ xpires=1671448125&OSSAccessKeyId=xxx",
 GET /monitoring/GetTenantObservability HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":{
   "dashboardModel":"Grafana",
   "rdma":false,
   "logQueryModel":"page"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-### 基础服务
+`}`
 
-#### GetManagedGpuCount
+### 4.25 基础服务
+
+#### 4.25.1 GetManagedGpuCount
+
+调用GetManagedGpuCount查询当前系统中受管理的GPU芯片数量。
 
 **请求头**
 
@@ -29768,8 +31130,6 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -29795,28 +31155,38 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 GET /resource/statics/managedGpuCount HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式智能体工厂 OpenTrek
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "totalGpuCount":8
- },
+```
+
+`},`
+
+```json
  "success":false,
  "dynamicMessages":"-",
  "errorMessage":"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
-#### ListPod
+`}`
+
+#### 4.25.2 ListPod
+
+调用ListPod查询所有服务的资源实例列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /k8s-resource/list-pod HTTP/1.1
+```
 
 **请求参数**
 
@@ -29829,7 +31199,7 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 | podName | Strin g | Query | 否 | pod-name | Pod名称。 |
 | podType | Strin g | Query | 否 | worker | Pod类型。 |
 
-| I Studio 开发 | 指南·API参 | 考 |  |  | 智能体工厂 OpenTre |
+| I Studio 开发 | 指南·API参 | 考 |   |   | 智能体工厂 OpenTre |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -29876,7 +31246,7 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 | ----startedAt | String | 2021-01- 30T12:51:33.028Z | 当前启动时间。 |
 | ---waiting | Struct | {} | 等待信息。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -29900,8 +31270,6 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 | ----signal | Integer | 20 | 当前接收的信号。 |
 | ----startedAt | String | 2021-01- 30T12:51:33.028Z | 当前启动时间。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ---waiting | Struct | {} | 等待信息。 |
@@ -29920,7 +31288,7 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 | -podSpec | String | {\"cpu\":\"16\",\"gp u\":\"- 1\",\"gpuMem\":\"0\ ",\"memory\":\"64\" } | Pod的资源。 |
 | -podStatus | String | Running | Pod状态。 |
 
-| I Studio 开发指南· | API参考 |  | 智能体工厂 OpenTre |
+| I Studio 开发指南· | API参考 |   | 智能体工厂 OpenTre |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -29942,16 +31310,14 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 请求示例
 
 ```
-&entityId=nb-ad56b7f600740042f20b89a033b****
+GET /k8s-resource/list-pod HTTP/1.1 &entityId=nb-ad56b7f600740042f20b89a033b****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
-#### ListPodsOnNode
+#### 4.25.3 ListPodsOnNode
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 智能体工厂 OpenTrek
+调用ListPodsOnNode查询在Node列表上的所有Pod。
 
 **请求参数**
 
@@ -29974,8 +31340,6 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 | -gmtCreated | String | 2017-11- 27T06:51:26Z | 创建时间。 |
 | - gmtLastCreate d | String | 2017-11- 27T06:51:26Z | 最近一次启动时间。 |
 
-智能体工厂 OpenTrek
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - gmtLastShutd own | String | 2017-11- 27T06:51:26Z | 最近一次停止时间。 |
@@ -29994,7 +31358,7 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 | httpCode | Integer | 200 | HTTP状态码。 |
 | totalCount | Integer | 100 | 节点的总数。 |
 
-| 智能体工厂 OpenTr | ek |  | AI Studio 开发指南·API参考 |
+| 智能体工厂 OpenTr | ek |   | AI Studio 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -30004,10 +31368,15 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+GET /resource/nodes/listpods HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "pageIndex":1,
  "success":true,
@@ -30017,10 +31386,13 @@ GET /resource/statics/managedGpuCount HTTP/1.1
  "pageSize":10,
  "httpCode":200,
  "totalCount":100
-}
 ```
 
-#### GetSysParamValue
+`}`
+
+#### 4.25.4 GetSysParamValue
+
+调用GetSysParamValue查询系统参数配置。
 
 **请求头**
 
@@ -30028,15 +31400,15 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 
 **请求语法**
 
+```
+GET /sysParam/getSysParamValue HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | paramKey | Strin g | Query | 是 | name | 参数名key。 |
-
-**返回数据**
-
-智能体工厂 OpenTrek
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -30052,18 +31424,18 @@ GET /resource/statics/managedGpuCount HTTP/1.1
 请求示例
 
 ```
-&paramKey=name
+GET /sysParam/getSysParamValue HTTP/1.1 &paramKey=name
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
+
+`}`

@@ -5,16 +5,55 @@ doc_version: "20260729"
 pdf_pages: 36
 source_pdf: "33_MQTT开发指南_apsarastack-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/rocketmq/zh/apsarastack-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云消息队列 RocketMQ 版 MQTT开发指南
 
-消息队列
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+- 3 通过POP网关调用专有云API
+  - 3.1 Java版本
+  - 3.2 SDK概览
+- 4 API参考
+  - 4.1 MQTT_API
+    - 4.1.1 MQTT Open API简介
+      - 4.1.1.1 面向用户和场景
+      - 4.1.1.2 适用场景和局限性
+      - 4.1.1.3 Open API基本原理
+    - 4.1.2 MQTT Open API接入指南
+      - 4.1.2.1 公共参数设置
+      - 4.1.2.2 公共返回值解析
+    - 4.1.3 MQTT Open API公共术语
+      - 4.1.3.1 账号安全类
+        - 4.1.3.1.1 AccessKey
+        - 4.1.3.1.2 SecretKey
+      - 4.1.3.2 MQTT资源管控类
+        - 4.1.3.2.1 Group ID（GID）
+    - 4.1.4 MQTT API错误码列表
+    - 4.1.5 API详细说明
+      - 4.1.5.1 Group管理接口
+        - 4.1.5.1.1 创建Group ID（/json/mqtt/createGroupId）
+        - 4.1.5.1.2 删除Group ID（/json/mqtt/deleteGroupId）
+        - 4.1.5.1.3 查询Group ID列表（/json/mqtt/listGroupId）
+      - 4.1.5.2 设备管控接口
+        - 4.1.5.2.1 查询设备在线信息（/json/mqtt/getDeviceRunningInfo）
+        - 4.1.5.2.2 查询历史在线统计（/json/mqtt/getMqttConnectionSum）
+        - 4.1.5.2.3 根据Topic查询在线设备的数量（/json/mqtt/getClientSetByTopic）
+      - 4.1.5.3 资源报表接口
+        - 4.1.5.3.1 消息收发统计（/json/mqtt/getMqttMsgTransTask）
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,47 +70,46 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-消息队列
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
 
-消息队列
-
-| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |  |
+| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |   |
 |---|---|
-| 获取MQTT的Endpoint 获取MQTT的SDK包调用API |  |
+| 获取MQTT的Endpoint 获取MQTT的SDK包调用API |   |
 
 准备工正式调
 
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
-**说明**
+> **说明：** 调用API时，通过Header参数组织ID（<x-acs-organizationid>）和资源集ID（<x-acs- resourcegroupid>）指定组织和资源集，实现实例资源的隔离查询。
+> 组织ID（<x-acs-organizationid>）不指定则默认获取当前用户所属的组织。
+> 资源集ID（<x-acs-resourcegroupid>）不指定默认为空，如果指定资源集需要同时指定组织ID。
 
-调用API时，通过Header参数组织ID（<x-acs-organizationid>）和资源集ID（<x-acsresourcegroupid>）指定组织和资源集，实现实例资源的隔离查询。 组织ID（<x-acs-organizationid>）不指定则默认获取当前用户所属的组织。 资源集ID（<x-acs-resourcegroupid>）不指定默认为空，如果指定资源集需要同时指定组织ID。
 4. 查找API的开发文档。
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，查找开发指南的方式请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-消息队列
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -89,17 +127,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
-AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您
+AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 消息队列通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -108,21 +144,26 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见《Apsara Uni-manager运营控制台开发指南》中的《ListResourceGroup》文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
+**获取个人账号AccessKey**
+
+获取个人账号AccessKey的方法如下：
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
+> **说明：** AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。 消息队列
+**获取组织AccessKey**
+
+获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -154,13 +195,13 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 4. 单击
 按钮，选择**云平台** > **统一云管平台**，**版本**选择**2019-05-10**。
 5. 在文本框内输入 `ListResourceGroup` 进行在线调试，调用成功后查看**调用结果**中**id**的信息，即为资源
-集ID。接口信息详见Apsara Uni-manager运营控制台开发指南中的章节ListResourceGroup。 消息队列
+集ID。接口信息详见Apsara Uni-manager运营控制台开发指南中的章节ListResourceGroup。
 
 **获取实例ID**
 
 实例ID可以通过Apsara Uni-manager运营控制台中的云产品实例列表进行获取，本文中以API网关为例， 获取步骤如下：
 1. 登录Apsara Uni-manager运营控制台。
-2. 在顶部的菜单栏中，选择**产品** > **中间件** > **消息队列** > **微消息队列** **MQTT** 版。
+2. 在顶部的菜单栏中，选择**产品** > **中间件** > **消息队列** > **微消息队列** **MQTT** **版**。
 3. 在左侧导航栏中，单击**实例详情**。
 4. 在实例列表中查看**实例****ID**。
 
@@ -175,7 +216,7 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -188,7 +229,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-消息队列
 
 ```
 public static void main(String[] args) {
@@ -215,7 +255,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -237,11 +282,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，示例如下。
-消息队列
 
 ```java
 import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Config;
@@ -254,7 +298,17 @@ public class DemoStsTest {
     public static void main(String[] args) {
         Config credentialConfig = new Config();
         credentialConfig.setType("sts");
+```
+
+`//` 请替换为前一步获取到的`STS`三元组中`AccessKeyI`。
+
+```
         credentialConfig.setAccessKeyId("your_AccessKeyId");
+```
+
+`//` 请替换为前一步获取到的`STS`三元组中`AccessKeySecret`
+
+```
         credentialConfig.setAccessKeySecret("your__AccessKeySecret");
 ```
 
@@ -265,18 +319,13 @@ public class DemoStsTest {
         Client credentialClient = new Client(credentialConfig);
 ```
 
-`//` 继续调用`API`，完整参考的`API`文档
+`//` 继续调用`API`，完整参考的`API`文档 `}` `}`
 
-```
-    }
-}
-```
+## 3 通过POP网关调用专有云API
 
-消息队列
+通过POP网关调用专有云API简介
 
-## 通过POP网关调用专有云API
-
-### Java版本
+### 3.1 Java版本
 
 **环境要求**
 
@@ -303,11 +352,11 @@ public class DemoStsTest {
 
 **开发者门户获取 SDK**
 
-1.登录 ASCM 的开发者门户，单击 SDK 示例。 2.SDK 类型下拉选择高级版，选择 Java 语言。 3.下方可看到示例代码，点击下载完整工程以获取示例项目及 SDK 包。 消息队列
+1.登录 ASCM 的开发者门户，单击 SDK 示例。 2.SDK 类型下拉选择高级版，选择 Java 语言。 3.下方可看到示例代码，点击下载完整工程以获取示例项目及 SDK 包。
 
 **导入 SDK 包**
 
-1.通过以下任一方式创建 Maven 项目。 方式一：在 IDEA 中添加一个 Maven 项目。 方式二：将已有的项目转换为 Maven 项目。 右键单击要转换的项目，并选择**Add Framework Support** ...。 选择 Maven，并单击 OK。 2.在项目根目录下创建 lib 包，将 Java SDK 包放入到 lib 目录下，如下图。 3.在项目目录下的 pom.xml 中，添加 Java SDK 依赖，代码请参考上文中《安装说明代码》部分。 4.查看 IDEA 右侧 Maven 栏，如图所示，表示已成功导入依赖。 消息队列
+1.通过以下任一方式创建 Maven 项目。 方式一：在 IDEA 中添加一个 Maven 项目。 方式二：将已有的项目转换为 Maven 项目。 右键单击要转换的项目，并选择**Add Framework Support** ...。 选择 Maven，并单击 OK。 2.在项目根目录下创建 lib 包，将 Java SDK 包放入到 lib 目录下，如下图。 3.在项目目录下的 pom.xml 中，添加 Java SDK 依赖，代码请参考上文中《安装说明代码》部分。 4.查看 IDEA 右侧 Maven 栏，如图所示，表示已成功导入依赖。
 
 **代码示例**
 
@@ -324,6 +373,10 @@ import com.aliyun.ons_inner20180205.Client; import com.aliyun.ons_inner20180205.
 
 ```
                 .setRegionId("<your-regionId>")
+                // 您的AccessKey ID
+                .setAccessKeyId("<AccessKey ID>")
+                // 您的AccessKey Secret
+                .setAccessKeySecret("<AccessKey Secret>")
 ```
 
 `//` 支持通过`Config`在初始化`Client`阶段设置请求的代理，根据实际情况替换下面示例。
@@ -386,7 +439,7 @@ import com.aliyun.ons_inner20180205.Client; import com.aliyun.ons_inner20180205.
         QueryInstanceListRequest request = new QueryInstanceListRequest();
 ```
 
-`//` 该参数值为假设值，请您根据实际业务情况进行填写消息队列
+`//` 该参数值为假设值，请您根据实际业务情况进行填写
 
 ```
         request.setNeedResourceInfo(true);
@@ -448,10 +501,9 @@ client.queryInstanceListWithOptions(request, runtime);
 
 ```java
             System.out.println(error.getMessage());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **步骤示例**
 
@@ -459,7 +511,7 @@ client.queryInstanceListWithOptions(request, runtime);
 AccessKeySecret 、Endpoint 等配置，Endpoint 可以在ASCM的开发者门户查询。
 
 ```
-Config config = new Config() .setAccessKeyId(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")) .setAccessKeySecret(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
+Config config = new Config() // 您的AccessKey ID .setAccessKeyId(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")) // 您的AccessKey Secret .setAccessKeySecret(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 ```
 
 `//` 访问的域名
@@ -482,7 +534,7 @@ QueryInstanceListRequest request = new QueryInstanceListRequest();
 ```
 
 4. 设置请求类 request 的参数。通过 request 类的属性设置必要的信息，即 API 中必须要提供的信息。
-消息队列 request.SourceRegionId = "your_value"; // 该参数值为假设值，请您根据实际情况进行填写 request.RegionId = "your_value"; // 该参数值为假设值，请您根据实际情况进行填写
+request.SourceRegionId = "your_value"; // 该参数值为假设值，请您根据实际情况进行填写 request.RegionId = "your_value"; // 该参数值为假设值，请您根据实际情况进行填写
 5. 通过 client 对象获得对应 request 响应 response 。
 
 ```java
@@ -500,10 +552,11 @@ String requestId = response.Body.requestId;
 ```
 catch (Exception e) {
     e.printStackTrace();
-}
 ```
 
-### SDK概览
+`}`
+
+### 3.2 SDK概览
 
 **概览**
 
@@ -531,7 +584,7 @@ catch (Exception e) {
 | CreateCloudInfo | v3.18.6 |
 | CreateCloudRouterTask | v3.18.6 |
 
-|  | 消息队列 | MQTT 开发指南·通过POP网关调用专有云AP | I |
+|   | 消息队列 | MQTT 开发指南·通过POP网关调用专有云AP | I |
 |---|---|---|---|
 
 | API名称 | 所在版本 |
@@ -698,29 +751,29 @@ catch (Exception e) {
 | DeleteEmpower | 3.18.3-0起，不推荐使用 | N/A |
 | DeleteGroupEmpower | 3.18.3-0起，不推荐使用 | N/A |
 
-IDEA 会带上过时标记方便开发人员注意到过时 API，新用户不应该再使用这些接口。 消息队列消息队列
+IDEA 会带上过时标记方便开发人员注意到过时 API，新用户不应该再使用这些接口。
 
-## API参考
+## 4 API参考
 
-### MQTT_API
+### 4.1 MQTT_API
 
-#### MQTT Open API简介
+#### 4.1.1 MQTT Open API简介
 
-##### 面向用户和场景
+##### 4.1.1.1 面向用户和场景
 
 Open API是微消息队列MQTT版提供给用户的管控手段，用于实现一系列资源管理和运维功能。同生产用 SDK不同，Open API主要用于管理微消息队列MQTT版相关的资源，如Group ID。
 
-##### 适用场景和局限性
+##### 4.1.1.2 适用场景和局限性
 
 Open API由于其实现原理，调用端必须具备访问微消息队列MQTT版控制台域名的能力，否则无法调通。 Open API底层基于HTTP协议实现，性能和效率不高，仅适用于管控场景，请勿用于大批量高并发的生产场景。
 
-##### Open API基本原理
+##### 4.1.1.3 Open API基本原理
 
 Open API底层通过HTTP接口提供服务，您调用HTTP客户端，发出HTTP请求到微消息队列MQTT版的后端服务去执行。 您将参数封装到每个请求中，每个请求即对应一个接口，执行的结果放在response中，请求和响应的字符编码都是采用UTF-8编码。 其中，HTTP请求的服务端地址即为控制台的域名地址。
 
-#### MQTT Open API接入指南
+#### 4.1.2 MQTT Open API接入指南
 
-##### 公共参数设置
+##### 4.1.2.1 公共参数设置
 
 客户端基于HTTPS方式调用MQTT Open API，所有API请求都需要传入一部分公共参数，供服务端进行权限校验。 公共参数列表如下：
 
@@ -733,7 +786,6 @@ Open API底层通过HTTP接口提供服务，您调用HTTP客户端，发出HTTP
 | signature _ | String | 是 | 请求的签名 |
 
 **_regionId**参数需要填写当前请求操作的Region，专有域和专有云情况下，默认值为mq-private。
-消息队列
 **_signature**参数是对HTTPS请求中其他参数字段做排序后得到待签名字符串，然后使用账号的SecretKey
 进行签名计算得到。
 
@@ -745,15 +797,7 @@ Open API底层通过HTTP接口提供服务，您调用HTTP客户端，发出HTTP
 https://mq.console.${global:internet-domain}/json/topic/create
 ```
 
-在单region部署的情况下或接入多region部署中的中心region，使
-
-**说明**
-
-用 ${global:internet-domain} 作为访问域名；接入多region部署下的普通region，使
-
-```
-用 ${global:region}.${global:internet-domain} 作为访问域名
-```
+> **说明：** 在单region部署的情况下或接入多region部署中的中心region，使用 ${global:internet-domain} 作为访问域名；接入多region部署下的普通region，使用 ${global:region}.${global:internet-domain} 作为访问域名
 
 参数列表有（参数包含公共参数和每个接口自定义的参数）：
 
@@ -765,7 +809,7 @@ https://mq.console.${global:internet-domain}/json/topic/create
 https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Key_1=Value_1&Key_3=Value_3
 ```
 
-将**Key_2**，**Key_1**，**Key_3**这3对参数的key按字典序排序，然后将对应的value按字符串连接。Key的排序结果为：Key_1、Key_2、Key_3，排序后其对应值的连接结果为Value1Value2Value3。此时待签名字符串就是Value1Value2Value3。 然后使用您的secretKey作为秘钥，使用 HmacSHA1方法对上面的待签名字符串做签名，得到签名字符串。Hmac的算法实现，各个语言都有现成的函数库，请自行搜索。 Linux命令行的方式可以参考：
+将**Key_2****，****Key_1****，****Key_3**这3对参数的key按字典序排序，然后将对应的value按字符串连接。Key的排序结果为：Key_1、Key_2、Key_3，排序后其对应值的连接结果为Value1Value2Value3。此时待签名字符串就是Value1Value2Value3。 然后使用您的secretKey作为秘钥，使用 HmacSHA1方法对上面的待签名字符串做签名，得到签名字符串。Hmac的算法实现，各个语言都有现成的函数库，请自行搜索。 Linux命令行的方式可以参考：
 
 ```
 echo -n 'Value1Value2Value3' | openssl dgst -hmac '用户的SecretKey' -sha1 -binary | base
@@ -777,12 +821,11 @@ echo -n 'Value1Value2Value3' | openssl dgst -hmac '用户的SecretKey' -sha1 -bi
 https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Key_1=Value_1&Key_3=Value_3&_signature= eqweq%2Badwe23****%3D
 ```
 
-##### 公共返回值解析
+##### 4.1.2.2 公共返回值解析
 
-客户端发起HTTP请求到服务端，服务端处理完成后同样以HTTP响应形式返回结果，正常情况下返回结果 HTTP状态码都是200，返回的内容放在Body中，为JSON字符串，需要客户端自己做JSON解析，判断是否调用成功。 JSON格式如下： 消息队列
+客户端发起HTTP请求到服务端，服务端处理完成后同样以HTTP响应形式返回结果，正常情况下返回结果 HTTP状态码都是200，返回的内容放在Body中，为JSON字符串，需要客户端自己做JSON解析，判断是否调用成功。 JSON格式如下： `{`
 
 ```json
- {
     "code": 200,
     "currentPage": 0,
     "data": { },
@@ -793,32 +836,32 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "requestId": "",
     "status": "SUCCESS",
     "success": true,
-"total": 0 }
+"total": 0
 ```
 
-返回值说明： code：状态码，200代表成功，其他都是处理失败。 currentPage：当前请求如果是分页查询的请求，此变量代表结果所处的当前页。 dynamicMessage：错误异常信息字符串。 message：处理结果信息。 pageSize：当前请求如果是分页查询的请求，此变量代表结果所处的当前页大小。 success：是否成功。 data：业务信息返回，String类型，也是JSON，如果当前请求的返回结果中带有业务数据，则此处需要反解JSON内容。 RequestId：每个请求的唯一ID，String类型。
+`}` 返回值说明： code：状态码，200代表成功，其他都是处理失败。 currentPage：当前请求如果是分页查询的请求，此变量代表结果所处的当前页。 dynamicMessage：错误异常信息字符串。 message：处理结果信息。 pageSize：当前请求如果是分页查询的请求，此变量代表结果所处的当前页大小。 success：是否成功。 data：业务信息返回，String类型，也是JSON，如果当前请求的返回结果中带有业务数据，则此处需要反解JSON内容。 RequestId：每个请求的唯一ID，String类型。
 
-#### MQTT Open API公共术语
+#### 4.1.3 MQTT Open API公共术语
 
-##### 账号安全类
+##### 4.1.3.1 账号安全类
 
-###### AccessKey
+###### 4.1.3.1.1 AccessKey
 
 访问阿里云产品使用的账号的AccessKey，由阿里云官网获得。调用时传入给微消息队列MQTT版后台用于身份验证，调用微消息队列MQTT版的Open API只能操作对应账号下的资源。
 
-###### SecretKey
+###### 4.1.3.1.2 SecretKey
 
 访问阿里云产品使用的账号的AK秘钥，由阿里云官网获得，调用时传入，用于计算访问请求的签名。微消息队列MQTT版后端根据对应账号比对签名实现鉴权。
 
-##### MQTT资源管控类
+##### 4.1.3.2 MQTT资源管控类
 
-###### Group ID（GID）
+###### 4.1.3.2.1 Group ID（GID）
 
 用于指定一组逻辑功能完全一致的节点共用的组名，代表一类相同功能的设备。Group ID需要创建后方可使用。
 
-#### MQTT API错误码列表
+#### 4.1.4 MQTT API错误码列表
 
-消息队列如果成功调用微消息队列MQTT版的API，则会返回给客户端ResponseCode=200；如果调用失败，会返回对应的异常错误码以及描述信息。您可以根据以下异常信息对照表查找对应的解决方法。 表 1. 错误码列表
+如果成功调用微消息队列MQTT版的API，则会返回给客户端ResponseCode=200；如果调用失败，会返回对应的异常错误码以及描述信息。您可以根据以下异常信息对照表查找对应的解决方法。 表 1. 错误码列表
 
 | 错误码 | 现象或原因 | 解决方法 |
 |---|---|---|
@@ -838,11 +881,13 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 | EMPOWER EXIST ERROR _ _ | 当前授权关系已经存在 | 核实请求参数，重试或者先查询。 |
 | EMPOWER OWNER CHECK ERR _ _ _ OR | 当前用户不是授权Topic的Owner | 确认资源所属关系。 |
 
-#### API详细说明
+#### 4.1.5 API详细说明
 
-##### Group管理接口
+##### 4.1.5.1 Group管理接口
 
-###### 创建Group ID（/json/mqtt/createGroupId）
+###### 4.1.5.1.1 创建Group ID（/json/mqtt/createGroupId）
+
+该接口用于创建新的微消息队列MQTT版的分组，即Group ID（GID）。
 
 **使用场景**
 
@@ -850,7 +895,7 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **请求参数列表**
 
-消息队列
+其他参数，请参见公共参数设置。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -858,8 +903,9 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **返回结果示例**
 
+`{`
+
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
@@ -872,10 +918,13 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "total":0,
     "pageSize":0,
     "currentPage":0
-}
 ```
 
-###### 删除Group ID（/json/mqtt/deleteGroupId）
+`}`
+
+###### 4.1.5.1.2 删除Group ID（/json/mqtt/deleteGroupId）
+
+该接口用于删除已经创建的微消息队列MQTT版分组，即Group ID（GID）。
 
 **使用场景**
 
@@ -883,16 +932,17 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **请求参数列表**
 
+其他参数请参考公共参数设置。
+
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | groupId | String | 是 | 需要删除的GID |
 
 **返回结果参考**
 
-消息队列
+`{`
 
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
@@ -905,10 +955,13 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "total":0,
     "pageSize":0,
     "currentPage":0
-}
 ```
 
-###### 查询Group ID列表（/json/mqtt/listGroupId）
+`}`
+
+###### 4.1.5.1.3 查询Group ID列表（/json/mqtt/listGroupId）
+
+查询目标地域（Region）里您所有的Group ID（GID）。
 
 **描述**
 
@@ -916,16 +969,23 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **请求参数列表**
 
+其他参数，请参见公共参数设置。
+
 **返回结果示例**
 
+`{`
+
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
     "message":"operation success.",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "id":56222,
             "channelId":0,
             "regionId":"cn-qingdao-publictest",
@@ -946,14 +1006,16 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
             "namespaceId":"mqtt-cn-45919cr0002",
 ```
 
-消息队列
-
 ```json
             "independentNaming":true,"aoneUrl":null,
             "relationName":"",
             "channelName":"ALIYUN",
             "statusName":"\u670D\u52A1\u4E2D"},
-        {
+```
+
+`{`
+
+```json
             "id":56221,
             "channelId":0,
             "regionId":"cn-qingdao-publictest",
@@ -985,12 +1047,13 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "total":2,
     "pageSize":20,
     "currentPage":1
-}
 ```
 
-##### 设备管控接口
+`}`
 
-###### 查询设备在线信息
+##### 4.1.5.2 设备管控接口
+
+###### 4.1.5.2.1 查询设备在线信息（/json/mqtt/getDeviceRunningInfo）
 
 **（/json/mqtt/getDeviceRunningInfo）**
 
@@ -1002,7 +1065,7 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **请求参数列表**
 
-消息队列
+其他参数，请参见公共参数设置。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1010,8 +1073,9 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **返回结果示例**
 
+`{`
+
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
@@ -1028,10 +1092,11 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "total":0,
     "pageSize":0,
     "currentPage":0
-}
 ```
 
-###### 查询历史在线统计
+`}`
+
+###### 4.1.5.2.2 查询历史在线统计（/json/mqtt/getMqttConnectionSum）
 
 **（/json/mqtt/getMqttConnectionSum）**
 
@@ -1043,20 +1108,21 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **请求参数列表**
 
+其他参数请参考公共参数设置。
+
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | groupId | String | 是 | 需要查询的分组ID |
 | beginTime | Long | 是 | 查询的起始毫秒时间戳，不得早于一周前 |
-
-消息队列
 
 | endTime | Long | 是 | 查询的截止毫秒时间戳，不得晚于当前时间 |
 |---|---|---|---|
 
 **返回结果示例**
 
+`{`
+
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
@@ -1070,10 +1136,11 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "total":0,
     "pageSize":0,
     "currentPage":0
-}
 ```
 
-###### 根据Topic查询在线设备的数量
+`}`
+
+###### 4.1.5.2.3 根据Topic查询在线设备的数量（/json/mqtt/getClientSetByTopic）
 
 **（/json/mqtt/getClientSetByTopic）**
 
@@ -1081,12 +1148,13 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 **使用场景**
 
-getClientSetByTopic接口一般用于业务分析。业务上订阅某个特定Topic的设备一般是参与某个特殊活动的设备，可以根据Topic查询参与该活动的设备数量。 消息队列由于OpenAPI面向的场景是用户自定义管控开发，服务端会对过快的调用进行限流，因此不要在业务的主流程中使用本接口。如需判断设备是否在线，请使用设备上下线通知功能。
+getClientSetByTopic接口一般用于业务分析。业务上订阅某个特定Topic的设备一般是参与某个特殊活动的设备，可以根据Topic查询参与该活动的设备数量。 由于OpenAPI面向的场景是用户自定义管控开发，服务端会对过快的调用进行限流，因此不要在业务的主流程中使用本接口。如需判断设备是否在线，请使用设备上下线通知功能。
 
 **返回结果示例**
 
+`{`
+
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
@@ -1099,12 +1167,13 @@ getClientSetByTopic接口一般用于业务分析。业务上订阅某个特定T
     "total":0,
     "pageSize":0,
     "currentPage":0
-}
 ```
 
-##### 资源报表接口
+`}`
 
-###### 消息收发统计
+##### 4.1.5.3 资源报表接口
+
+###### 4.1.5.3.1 消息收发统计（/json/mqtt/getMqttMsgTransTask）
 
 **（/json/mqtt/getMqttMsgTransTask）**
 
@@ -1115,6 +1184,8 @@ getClientSetByTopic接口一般用于业务分析。业务上订阅某个特定T
 统计历史上特定Topic的消息收发量。
 
 **请求参数列表**
+
+其他参数，请参见公共参数设置。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1127,12 +1198,11 @@ getClientSetByTopic接口一般用于业务分析。业务上订阅某个特定T
 | queryType | String | 是 | 设置PUB或者SUB，分别代表查询发送和接收。 |
 | consoleType | String | 是 | 设置TPS或者SUM，代表查询消息TPS或者是消息总量。 |
 
-消息队列
-
 **返回结果示例**
 
+`{`
+
 ```json
-{
     "requestId":"",
     "code":200,
     "status":"SUCCESS",
@@ -1146,5 +1216,6 @@ getClientSetByTopic接口一般用于业务分析。业务上订阅某个特定T
     "total":0,
     "pageSize":0,
     "currentPage":0
-}
 ```
+
+`}`

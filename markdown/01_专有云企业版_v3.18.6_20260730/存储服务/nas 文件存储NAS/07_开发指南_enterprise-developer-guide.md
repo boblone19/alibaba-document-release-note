@@ -5,16 +5,101 @@ doc_version: "20260729"
 pdf_pages: 120
 source_pdf: "07_开发指南_enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/nas/zh/enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 文件存储NAS 开发指南
 
-文件存储NAS
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取公共Header参数
+  - 2.6 获取文件存储的SDK包
+- 3 Java SDK调用示例
+  - 3.1 快速开始
+  - 3.2 使用手册
+    - 3.2.1 安装Java SDK
+    - 3.2.2 设置身份验证凭证
+    - 3.2.3 请求连接配置
+    - 3.2.4 发起调用
+    - 3.2.5 错误处理
+    - 3.2.6 使用CommonRequest进行调用
+- 4 Python SDK调用示例
+  - 4.1 快速开始
+  - 4.2 使用手册
+    - 4.2.1 安装Python SDK
+    - 4.2.2 设置身份验证凭证
+    - 4.2.3 设置HTTPS请求
+    - 4.2.4 发起调用
+    - 4.2.5 错误处理
+    - 4.2.6 使用CommonRequest进行调用
+- 5 API参考
+  - 5.1 API概览
+  - 5.2 调用方式
+    - 5.2.1 公共参数
+    - 5.2.2 请求结构
+    - 5.3.1 DescribeRegions
+    - 5.3.2 DescribeZones
+  - 5.4 文件系统
+    - 5.4.1 CreateFileSystem
+    - 5.4.2 DeleteFileSystem
+    - 5.4.3 ModifyFileSystem
+    - 5.4.4 DescribeFileSystems
+  - 5.5 挂载点
+    - 5.5.1 CreateMountTarget
+    - 5.5.2 DeleteMountTarget
+    - 5.5.3 DescribeMountTargets
+    - 5.5.4 ModifyMountTarget
+    - 5.5.5 DescribeMountedClients
+  - 5.6 权限组
+    - 5.6.1 CreateAccessGroup
+    - 5.6.2 DeleteAccessGroup
+    - 5.6.3 ModifyAccessGroup
+    - 5.6.4 DescribeAccessGroups
+    - 5.6.5 CreateAccessRule
+    - 5.6.6 DeleteAccessRule
+    - 5.6.7 ModifyAccessRule
+    - 5.6.8 DescribeAccessRules
+    - 5.7.1 SetDirQuota
+    - 5.7.2 CancelDirQuota
+    - 5.7.3 DescribeDirQuotas
+  - 5.8 统一命名空间
+    - 5.8.1 CreateNamespace
+    - 5.8.2 DeleteNamespace
+    - 5.8.3 ModifyNamespace
+    - 5.8.4 DescribeNamespaces
+    - 5.8.5 AddFileSystemToNamespace
+    - 5.8.6 RemoveFileSystemFromNamespace
+    - 5.8.7 RenameMappedPathInNamespace
+    - 5.8.8 ListFileSystemsInNamespace
+    - 5.8.9 CreateNamespaceMountTarget
+    - 5.8.10 DeleteNamespaceMountTarget
+    - 5.8.11 ModifyNamespaceMountTarget
+    - 5.8.12 DescribeNamespaceMountTargets
+    - 5.8.13 AddNamespaceToGroup
+    - 5.8.14 RemoveNamespaceFromGroup
+    - 5.8.15 DescribeNamespaceGroup
+  - 5.9 生命周期管理
+    - 5.9.1 CreateLifecyclePolicy
+    - 5.9.2 DeleteLifecyclePolicy
+    - 5.9.3 ModifyLifecyclePolicy
+    - 5.9.4 DescribeLifecyclePolicies
+  - 5.10 NFS NAS ACL
+    - 5.10.1 EnableNfsAcl
+    - 5.10.2 DisableNfsAcl
+    - 5.10.3 DescribeNfsAcl
+  - 5.11 附录：错误代码表
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,47 +116,46 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-文件存储NAS
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
-
-文件存储NAS
 
 **调用步骤**
 
 1. 获取AccessKey。
 获取调用时所需要的AccessKey参数。具体操作，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 获取调用时所需要的RegionID参数。具体操作，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
-**说明**
-
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+> **说明：** 调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-`
+> `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。
+> 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。
+> 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+
 4. 获取对应的API参考文档。
-文件存储NAS 您需要查看目标云产品的开发指南，了解API的功能与使用方式。开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式。开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-文件存储NAS
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户
+### 2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -80,33 +164,30 @@ converter: line-classifier (PyMuPDF)
 **操作步骤**
 
 1. 在浏览器地址栏中，输入Apsara Uni-manager运营控制台的服务域名地址，按回车键。
-文件存储NAS
 
-**说明**
+> **说明：** 单击页面右上角的当前语言可以切换其它语言。
 
-单击页面右上角的当前语言可以切换其它语言。 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. 输入正确的用户名及密码。
 
-**说明**
+> **说明：** 请向运营管理员获取登录控制台的用户名和密码。
+> 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 
-请向运营管理员获取登录控制台的用户名和密码。 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 3. 勾选**我已阅读并同意产品服务协议、隐私协议、用户协议**。
 
 **说明**
 
 登录页展示的链接文字为文档标题，单击链接文字，可查看协议的详细内容。
-**产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布，
-则不需要执行该操作。
+
+> **产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布， 则不需要执行该操作。
+
 4. 单击**账号登录**/**授权登录**。
 
-**说明**
+> **说明：** “授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 
-“授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 5. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 
-**说明**
-
-公网场景下，登录入口默认强制开启多因素认证。
+> **说明：** 公网场景下，登录入口默认强制开启多因素认证。
 
 **开启MFA后的首次登录**
 
@@ -117,13 +198,13 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 输入6位MFA码后单击**认证**。
 6. 在页面上方的菜单栏，选择**产品** > **开发工具** > **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
 **背景信息**
 
-文件存储NAS Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
+Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
 
 **操作步骤**
 
@@ -135,17 +216,15 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您描述如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。具体操作，请 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 文件存储NAS 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。具体操作，请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -160,29 +239,26 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
 **背景信息**
 
-文件存储NAS 阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。您可以选择使用STS方式，调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret及SecurityToken三元组组成，使用STS方式调用云产品API时，三元组缺一不可。
+阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。您可以选择使用STS方式，调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret及SecurityToken三元组组成，使用STS方式调用云产品API时，三元组缺一不可。
 
 **操作步骤**
 
@@ -190,9 +266,7 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 获取STS Accesskey三元组。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 文件存储NAS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
 ```
 public static void main(String[] args) {
@@ -216,11 +290,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -255,16 +334,18 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以NAS的 `DescribeRegions` 接口为示例。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 文件存储NAS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
 ```
 public static void main(String[] args) {
@@ -302,13 +383,13 @@ AccessKeyID、AccessKeySecret。
     request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,请替换为您实际的资源集`ID`。
+`//` 非必填`,`请替换为您实际的资源集`ID`。
 
 ```
     // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,请替换为您实际的组织`ID`。
+`//` 必填`,`请替换为您实际的组织`ID`。
 
 ```java
     request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -321,11 +402,11 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取公共Header参数
+`}` `}`
+
+### 2.5 获取公共Header参数
 
 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
 
@@ -334,8 +415,6 @@ AccessKeyID、AccessKeySecret。
 | 名称 | 描述 |
 |---|---|
 | x-acs-regionid | 环境Region，获取方式请参见获取Region ID。 |
-
-文件存储NAS
 
 | 名称 | 描述 |
 |---|---|
@@ -384,34 +463,34 @@ AccessKeyID、AccessKeySecret。
 |---|---|
 | Department | 组织ID。 |
 
-### 获取文件存储的SDK包
+### 2.6 获取文件存储的SDK包
 
 通过POP网关调用专有云API时，需使用相应云产品的SDK。本文为您介绍如何获取阿里云开发工具包 （SDK）。 软件开发工具包（SDK）包括代码以及示例，您可以自行选择语言创建云应用。 目前SDK的语言支持：Java、Python等，您可以前往阿里云开发工具包（SDK）中进行选择。
 
-**说明**
+> **说明：** 推荐使用 Java、Python语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。
 
-推荐使用 Java、Python语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。 SDK核心库推荐使用阿里云官网的SDK核心库，其内容所有云产品共用，且适用于专有云。 下表列举了文件存储常用语言的SDK的GitHub源码地址。
+SDK核心库推荐使用阿里云官网的SDK核心库，其内容所有云产品共用，且适用于专有云。 下表列举了文件存储常用语言的SDK的GitHub源码地址。
 
 | SDK语言 | GitHub源码 |
 |---|---|
 | Java | NAS Java SDK |
 | Python | NAS Python SDK |
 
-文件存储NAS
+## 3 Java SDK调用示例
 
-## Java SDK调用示例
-
-### 快速开始
+### 3.1 快速开始
 
 本节介绍如何获取文件存储Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具使用NAS Java SDK前，您还需要获取文件存储的Endpoint。具体操作，请参见获取API信息及其 EndPoint。 阿里云专有云Java SDK支持1.8及以上版本的JDK。 如果您使用Apache Maven来管理Java项目，只需在项目的pom.xml中导入JAR文件。
+使用阿里云专有云Java SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 使用NAS Java SDK前，您还需要获取文件存储的Endpoint。具体操作，请参见获取API信息及其 EndPoint。 阿里云专有云Java SDK支持1.8及以上版本的JDK。
 
-**说明**
+**安装Java SDK**
 
-使用文件存储的开发工具包，必须安装阿里云Java SDK核心库以及NAS的SDK。其中，SDK核心库推荐使用4.5.17及以上版本，NAS Java SDK的版本为2.0.2。
+如果您使用Apache Maven来管理Java项目，只需在项目的pom.xml中导入JAR文件。
+
+> **说明：** 使用文件存储的开发工具包，必须安装阿里云Java SDK核心库以及NAS的SDK。其中，SDK核心库推荐使用4.5.17及以上版本，NAS Java SDK的版本为2.0.2。
 
 **使用Java SDK**
 
@@ -420,9 +499,7 @@ AccessKeyID、AccessKeySecret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数请替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> **说明：** 以下代码示例中可变参数请替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
 ```java
 import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsRequest; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsResponse; public class Main {
@@ -447,8 +524,6 @@ import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient
        HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-文件存储NAS
-
 ```
        clientConfig.setIgnoreSSLCerts(true);// 忽略证书。
 ```
@@ -459,7 +534,7 @@ clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选�
        clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);// 连接超时时间（可
 ```
 
-选），单位为毫秒（`ms`）。 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// 设置每个主机的最大请求数（可选）。 clientConfig.setMaxRequests(<maxRequests>);// 设置最大请求数（可选）。 clientConfig.setProtocolType(ProtocolType.HTTP); // 设置请求协议，默认`HTTP`（可选） 。 `/*` 设置代理（可选）,替换为代理`IP+Port`。
+选），单位为毫秒（`ms`）。 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// 设置每个主机的最大请求数（可选）。 clientConfig.setMaxRequests(<maxRequests>);// 设置最大请求数（可选）。 clientConfig.setProtocolType(ProtocolType.HTTP); // 设置请求协议，默认`HTTP`（可选） 。 `/*` 设置代理（可选）`,`替换为代理`IP+Port`。
 
 ```
        clientConfig.setHttpProxy("http://192.168.XX.XX:33XX");
@@ -504,23 +579,27 @@ clientConfig.setReadTimeoutMillis(<readTimeout>);// 读取超时时间（可选�
        DescribeFileSystemsResponse response;
        try {
            response = client.getAcsResponse(request);
+           for (DescribeFileSystemsResponse.FileSystem
 fileSystem:rsp.getFileSystems()) {
                System.out.println(fileSystem.getFileSystemId());
-           }
+```
+
+`}`
+
+```
        } catch (ServerException e) {
            e.printStackTrace();
        } catch (ClientException e) {
            e.printStackTrace();
-       }
-    }
-}
 ```
 
-### 使用手册
+`}` `}` `}`
 
-#### 安装Java SDK
+### 3.2 使用手册
 
-本文介绍如何安装及调用文件存储Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用文件存储的开发工具包，必须安装阿里云Java SDK核心库以及文件存储的Java SDK。SDK核心库推荐使用4.5.17及以上版本，Java SDK的版本为2.0.2。 文件存储NAS 以使用NAS的Java SDK为例，您需要安装阿里云Java SDK核心库和NAS Java SDK，并在pom.xml文件中添加以下依赖即可。准确的SDK版本号，请参见阿里云开发工具包（SDK）。
+#### 3.2.1 安装Java SDK
+
+本文介绍如何安装及调用文件存储Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用文件存储的开发工具包，必须安装阿里云Java SDK核心库以及文件存储的Java SDK。SDK核心库推荐使用4.5.17及以上版本，Java SDK的版本为2.0.2。 以使用NAS的Java SDK为例，您需要安装阿里云Java SDK核心库和NAS Java SDK，并在pom.xml文件中添加以下依赖即可。准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -534,13 +613,11 @@ fileSystem:rsp.getFileSystems()) {
 </dependency>
 ```
 
-#### 设置身份验证凭证
+#### 3.2.2 设置身份验证凭证
 
 当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍如何设置身份验证凭证。 目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的具体操作，请参见获取 AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**说明**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **说明：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -548,17 +625,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 `"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret`
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+#### 3.2.3 请求连接配置
 
-#### 请求连接配置
+本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。 文件存储NAS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 `//` 获取`HttpClientConfig`对象
+`//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -570,31 +651,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -618,7 +699,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### 发起调用
+#### 3.2.4 发起调用
 
 本文介绍如何使用Java SDK发起请求。
 
@@ -631,7 +712,7 @@ IAcsClient client = new DefaultAcsClient(profile);
 ```
 
 2. 创建请求。
-请求类的命名规范为 ${apiName}Request ，其中**${apiName}**为API名称，例在引入多个产品SDK时，有可能存在Request类同名的情况，请注意按照package区分。 文件存储NAS
+请求类的命名规范为 ${apiName}Request ，其中**${apiName}**为API名称，例如DescribeFileSystems。 在引入多个产品SDK时，有可能存在Request类同名的情况，请注意按照package区分。
 
 ```
 DescribeFileSystemsRequest request = new DescribeFileSystemsRequest();
@@ -661,10 +742,9 @@ try {
   System.out.println("ErrCode:" + e.getErrCode());
   System.out.println("ErrMsg:" + e.getErrMsg());
   System.out.println("RequestId:" + e.getRequestId());
-}
 ```
 
-正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
+`}` 正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
 
 ```
 instanceStatus = response.getStatus();
@@ -676,7 +756,7 @@ instanceStatus = response.getStatus();
 HttpResponse response = client.doAction(request);
 ```
 
-#### 错误处理
+#### 3.2.5 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要Java SDK对返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -684,7 +764,7 @@ HttpResponse response = client.doAction(request);
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-如果您需要对SDK的错误进行处理，可以参考如下示例编写代码： 文件存储NAS
+如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
 
 ```
 try {
@@ -716,27 +796,39 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-#### 使用CommonRequest进行调用
+`}`
+
+#### 3.2.6 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
 **CommonRequest调用特点**
 
-CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在NAS的API文档中获取以下参数的值。 域名(domain)：NAS产品服务地址。 API版本(version)：API版本号，格式为YYYY-MM-DD。 您可以在API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.setSysAction("<Action>")` 的方式来指定API名称。 例如CreateFileSystem接口，在发起CommonRequest请求时，需要使用 `request.setSysAction("CreateFileSystem")` 来指定API名称。
+CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。
+
+**使用CommonRequest**
+
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在NAS的API文档中获取以下参数的值。 域名(domain)：NAS产品服务地址。 API版本(version)：API版本号，格式为YYYY-MM-DD。 您可以在API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.setSysAction("<Action>")` 的方式来指定API名称。 例如CreateFileSystem接口，在发起CommonRequest请求时，需要使用 `request.setSysAction("CreateFileSystem")` 来指定API名称。
 
 **示例：调用RPC风格的API**
 
-以下代码为NAS的DescribeFileSystems接口，查询文件系统信息的调用示例。 文件存储NAS 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+以下代码为NAS的DescribeFileSystems接口，查询文件系统信息的调用示例。
 
-**说明**
-
-留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; class DescribeFileSystems {
     public static void main(String[] args) {
 ```
 
@@ -783,8 +875,6 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putQueryParameter("PageNumber", "1");
 requestputQueryParameter("PageSize" "10");
 ```
-
-文件存储NAS
 
 ```
         request.putQueryParameter(PageSize, 10);
@@ -839,22 +929,22 @@ requestputQueryParameter("PageSize" "10");
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-文件存储NAS
+`}` `}` `}`
 
-## Python SDK调用示例
+## 4 Python SDK调用示例
 
-### 快速开始
+### 4.1 快速开始
 
 本文介绍如何获取文件存储Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作， 使用Python SDK前，您需要获取文件存储的Endpoint。具体操作，请参见获取API信息及其EndPoint。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作， 请参见获取AccessKey。 使用Python SDK前，您需要获取文件存储的Endpoint。具体操作，请参见获取API信息及其EndPoint。
+
+**安装Python SDK**
+
 1. 安装SDK核心库。
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库。
 
@@ -887,7 +977,6 @@ pip3 install aliyun-python-sdk-nas
 1. 创建Client实例。在创建Client实例时，您需要获取Region ID、AccessKey ID和AccessKey Secret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-文件存储NAS
 
 ```python
 #!/usr/bin/env python
@@ -919,17 +1008,17 @@ request = DescribeFileSystemsRequest.DescribeFileSystemsRequest()
 response = clt.do_action_with_exception(request) print(response)
 ```
 
-### 使用手册
+### 4.2 使用手册
 
-#### 安装Python SDK
+#### 4.2.1 安装Python SDK
 
 本文档介绍如何安装阿里云Python SDK和文件存储Python SDK。
 1. 安装阿里云Python SDK。
-阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云 Python SDK。 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用
+阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云 Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用 NAS的Python SDK，您需要安装阿里云Python SDK核心库和NAS的Python SDK。
 
-NAS的Python SDK，您需要安装阿里云Python SDK核心库和NAS的Python SDK。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库。
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库。
 
 ```
 pip install aliyun-python-sdk-core
@@ -954,25 +1043,21 @@ pip install aliyun-python-sdk-nas
 pip3 install aliyun-python-sdk-nas
 ```
 
-文件存储NAS
-
-#### 设置身份验证凭证
+#### 4.2.2 设置身份验证凭证
 
 当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的具体操作，请参见获取 AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 clt = client.AcsClient(access_key, access_secret, region_id)
 ```
 
-#### 设置HTTPS请求
+#### 4.2.3 设置HTTPS请求
 
-Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
-**说明**
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
@@ -990,7 +1075,7 @@ pip install pyopenssl
 request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -1000,11 +1085,11 @@ request = DescribeInstancesRequest() request.set_protocol_type("https")
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-#### 发起调用
+#### 4.2.4 发起调用
 
-文件存储NAS 本节介绍如何使用文件存储Python SDK发起请求。
+本节介绍如何使用文件存储Python SDK发起请求。
 
 **操作步骤**
 
@@ -1032,7 +1117,7 @@ request = DescribeFileSystemsRequest.DescribeFileSystemsRequest() request.set_ac
 response = clt.do_action_with_exception(request) print(response)
 ```
 
-#### 错误处理
+#### 4.2.5 错误处理
 
 在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -1048,8 +1133,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -1057,27 +1141,37 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### 使用CommonRequest进行调用
+#### 4.2.6 使用CommonRequest进行调用
 
-当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。 文件存储NAS
+当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
 **CommonRequest调用特点**
 
-CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：NAS产品服务地址。 API版本(version)：NAS API版本号，格式为YYYY-MM-DD。 您可以在NAS API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.set_action_name("Action")` 的方式来指定API名称。 例如CreateFileSystem接口，在发起CommonRequest请求时，需要使用 `request.set_action_name("CreateFileSystem")` 来指定API名称。
+CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。
+
+**使用CommonRequest**
+
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：NAS产品服务地址。 API版本(version)：NAS API版本号，格式为YYYY-MM-DD。 您可以在NAS API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.set_action_name("Action")` 的方式来指定API名称。 例如CreateFileSystem接口，在发起CommonRequest请求时，需要使用 `request.set_action_name("CreateFileSystem")` 来指定API名称。
 
 **示例：调用RPC风格的API**
 
-以下代码为NAS的DescribeFileSystems接口，查询文件系统信息的调用示例。 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+以下代码为NAS的DescribeFileSystems接口，查询文件系统信息的调用示例。
 
-**说明**
-
-留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 文件存储NAS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
 
 ```
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
 ```
 
-# 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
+`#` 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
 
 ```bash
 client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('NAS') request.set_action_name('DescribeFileSystems') request.set_version('2017-06-26') request.set_domain('<nas.aliyuncs.com>') #产品访问域名
@@ -1087,8 +1181,7 @@ action_name='DescribeFileSystems',version='2017-06-26',domain='nas.aliyuncs.com'
 ######
 ```
 
-# 设置请求协议类型,支持`https`或`http,`默认为`http`
-# 设置`https`方法如下：
+`#` 设置请求协议类型`,`支持`https`或`http,`默认为`http` `#` 设置`https`方法如下：
 
 ```bash
 # request.set_protocol_type('https')
@@ -1097,114 +1190,106 @@ request.set_accept_format('json') request.set_method('POST') request.add_query_p
 ######
 ```
 
-# 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段
-# 调用方法如下：
-# 请替换为您实际的`SecurityToken`
+`#` 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段 `#` 调用方法如下： `#` 请替换为您实际的`SecurityToken`
 
 ```bash
 # request.add_query_param("SecurityToken", "<yourSecurityToken>");
 ######
 ```
 
-# 非必填，请替换为您实际的资源集`ID`
+`#` 非必填，请替换为您实际的资源集`ID`
 
 ```
 request.add_header("x-acs-resourcegroupid", "<yourResourceGroupID>")
 ```
 
-# 必填，请替换为您实际的组织`ID`
+`#` 必填，请替换为您实际的组织`ID`
 
 ```
 request.add_header("x-acs-organizationid", "<yourOrganizationID>")
 ```
 
-# 必填，调用来源说明
+`#` 必填，调用来源说明
 
 ```
 request.add_header("x-acs-caller-sdk-source","ApiTestDemo")
 ```
 
-# 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
+`#` 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
 
 ```
 request.add_header("x-acs-regionid", "<yourRegionID>")
 ```
 
-# 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
+`#` 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
 
 ```python
 # request.add_header("x-acs-instanceid", "<yourInstanceID>")
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-文件存储NAS
+## 5 API参考
 
-## API参考
-
-### API概览
+### 5.1 API概览
 
 NAS提供的API接口如API接口所示。 表 1. API接口
 
 | 类别 | API | 描述 |
 |---|---|---|
 | 地域 | DescribeRegions | 返回所有RegionId |
-|  | DescribeZones | 查询一个地域下的所有可用区及可用区所支持的NAS类型 |
+|   | DescribeZones | 查询一个地域下的所有可用区及可用区所支持的NAS类型 |
 | 文件系统 | CreateFileSystem | 创建新的文件系统 |
-|  | DeleteFileSystem | 删除已有文件系统 |
-|  | DescribeFileSystems | 返回文件系统描述信息 |
-|  | ModifyFileSystem | 修改文件系统信息 |
+|   | DeleteFileSystem | 删除已有文件系统 |
+|   | DescribeFileSystems | 返回文件系统描述信息 |
+|   | ModifyFileSystem | 修改文件系统信息 |
 | 挂载点 | CreateMountTarget | 创建挂载点 |
-|  | DeleteMountTarget | 删除已有挂载点 |
-|  | DescribeMountTargets | 返回挂载点描述信息 |
-|  | ModifyMountTarget | 修改挂载点信息 |
-|  | DescribeMountedClients | 查询挂载点客户端 |
-|  | CreateAccessGroup | 创建权限组 |
-|  | DeleteAccessGroup | 删除已有权限组 |
-|  | DescribeAccessGroups | 返回权限组描述信息 |
-|  | ModifyAccessGroup | 修改权限组 |
+|   | DeleteMountTarget | 删除已有挂载点 |
+|   | DescribeMountTargets | 返回挂载点描述信息 |
+|   | ModifyMountTarget | 修改挂载点信息 |
+|   | DescribeMountedClients | 查询挂载点客户端 |
+|   | CreateAccessGroup | 创建权限组 |
+|   | DeleteAccessGroup | 删除已有权限组 |
+|   | DescribeAccessGroups | 返回权限组描述信息 |
+|   | ModifyAccessGroup | 修改权限组 |
 
-文件存储NAS
-
-| 权限组 |  |  |
+| 权限组 |   |   |
 |---|---|---|
-|  | CreateAccessRule | 创建权限组规则 |
-|  | DeleteAccessRule | 删除已有权限组规则 |
-|  | DescribeAccessRules | 返回权限规则描述信息 |
-|  | ModifyAccessRule | 修改权限规则 |
+|   | CreateAccessRule | 创建权限组规则 |
+|   | DeleteAccessRule | 删除已有权限组规则 |
+|   | DescribeAccessRules | 返回权限规则描述信息 |
+|   | ModifyAccessRule | 修改权限规则 |
 | 配额 | SetDirQuota | 设置文件系统的目录配额 |
-|  | CancelDirQuota | 取消文件系统的目录配额 |
-|  | DescribeDirQuotas | 查询文件系统的目录配额 |
+|   | CancelDirQuota | 取消文件系统的目录配额 |
+|   | DescribeDirQuotas | 查询文件系统的目录配额 |
 | 统一命名空间 | CreateNamespace | 创建命名空间 |
-|  | DeleteNamespace | 删除命名空间 |
-|  | ModifyNamespace | 修改命名空间描述 |
-|  | DescribeNamespaces | 查询命名空间信息 |
-|  | AddFileSystemToNamespace | 添加文件系统到命名空间 |
-|  | RemoveFileSystemFromNamespac | 删除命名空间中的一个文件系统 |
-|  | RenameMappedPathInNamespace | 修改命名空间中一个文件系统的映射名 |
-|  | ListFileSystemsInNamespace | 列出命名空间中映射的文件系统 |
-|  | CreateNamespaceMountTarget | 创建命名空间挂载点 |
-|  | DeleteNamespaceMountTarget | 删除命名空间挂载点 |
-|  | ModifyNamespaceMountTarget | 修改命名空间挂载点信息 |
-|  | DescribeNamespaceMountTargets | 查询命名空间挂载点信息 |
+|   | DeleteNamespace | 删除命名空间 |
+|   | ModifyNamespace | 修改命名空间描述 |
+|   | DescribeNamespaces | 查询命名空间信息 |
+|   | AddFileSystemToNamespace | 添加文件系统到命名空间 |
+|   | RemoveFileSystemFromNamespac | 删除命名空间中的一个文件系统 |
+|   | RenameMappedPathInNamespace | 修改命名空间中一个文件系统的映射名 |
+|   | ListFileSystemsInNamespace | 列出命名空间中映射的文件系统 |
+|   | CreateNamespaceMountTarget | 创建命名空间挂载点 |
+|   | DeleteNamespaceMountTarget | 删除命名空间挂载点 |
+|   | ModifyNamespaceMountTarget | 修改命名空间挂载点信息 |
+|   | DescribeNamespaceMountTargets | 查询命名空间挂载点信息 |
 
-文件存储NAS
-
-|  | AddNamespaceToGroup | 创建跨域挂载编排 |
+|   | AddNamespaceToGroup | 创建跨域挂载编排 |
 |---|---|---|
-|  | RemoveNamespaceFromGroup | 删除跨域挂载编排 |
-|  | DescribeNamespaceGroup | 查询跨域编排列表页 |
+|   | RemoveNamespaceFromGroup | 删除跨域挂载编排 |
+|   | DescribeNamespaceGroup | 查询跨域编排列表页 |
 | 生命周期管理 | CreateLifecyclePolicy | 创建生命周期管理策略 |
-|  | DeleteLifecyclePolicy | 删除生命周期管理策略 |
-|  | ModifyLifecyclePolicy | 修改生命周期管理策略 |
-|  | DescribeLifecyclePolicies | 查询生命周期管理策略信息 |
-|  | EnableNfsAcl | 开启NFS ACL功能 |
-| NFS NAS ACL |  |  |
-|  | DisableNfsAcl | 关闭NFS ACL功能 |
-|  | DescribeNfsAcl | 查询指定文件系统是否启用NFS ACL功能 |
+|   | DeleteLifecyclePolicy | 删除生命周期管理策略 |
+|   | ModifyLifecyclePolicy | 修改生命周期管理策略 |
+|   | DescribeLifecyclePolicies | 查询生命周期管理策略信息 |
+|   | EnableNfsAcl | 开启NFS ACL功能 |
+| NFS NAS ACL |   |   |
+|   | DisableNfsAcl | 关闭NFS ACL功能 |
+|   | DescribeNfsAcl | 查询指定文件系统是否启用NFS ACL功能 |
 
-### 调用方式
+### 5.2 调用方式
 
-#### 公共参数
+#### 5.2.1 公共参数
 
 **公共请求参数**
 
@@ -1215,18 +1300,16 @@ NAS提供的API接口如API接口所示。 表 1. API接口
 | Format | String | 否 | 返回值的类型，支持JSON与XML。默认为JSON。 |
 | Version | String | 是 | API 版本号为日期形式： YYYY-MM-DD ， 本版本为2017-06-26。 |
 
-文件存储NAS
-
-| AccessKeyId | String | 是 |  | 用户访问服务所用的密钥 ID。更多信息，请参见获取AccessKey。 |  |  |
+| AccessKeyId | String | 是 |   | 用户访问服务所用的密钥 ID。更多信息，请参见获取AccessKey。 |   |   |
 |---|---|---|---|---|---|---|
-| Signature | String | 是 |  | 签名结果串。 |  |  |
-| SignatureMethod | String | 是 |  | 签名方式，目前支持HMAC-SHA1。 |  |  |
-| Timestamp | String | 是 |  | 请求的时间戳。日期格式按照 ISO8601 标准表示，使用 UTC 时间，具体为 YYYY-MM- DDThh:mm:ssZ 。例如，2017-05- 26T12:00:00Z。 |  |  |
-|  |  |  |  |  | YYYY-MM- |  |
-|  |  |  |  | DDThh:mm:ssZ |  |  |
-| SignatureVersion | String | 是 |  | 签名算法版本，目前版本是1.0。 |  |  |
-| SecurityToken | String | 否 |  | 使用STS凭证类型时，要求传入。 |  |  |
-| SignatureNonce | String | 否 |  | 唯一随机数，用于防止网络重放攻击。用户在不同请求间要使用不同的随机数值。 |  |  |
+| Signature | String | 是 |   | 签名结果串。 |   |   |
+| SignatureMethod | String | 是 |   | 签名方式，目前支持HMAC-SHA1。 |   |   |
+| Timestamp | String | 是 |   | 请求的时间戳。日期格式按照 ISO8601 标准表示，使用 UTC 时间，具体为 YYYY-MM- DDThh:mm:ssZ 。例如，2017-05- 26T12:00:00Z。 |   |   |
+|   |   |   |   |   | YYYY-MM- |   |
+|   |   |   |   | DDThh:mm:ssZ |   |   |
+| SignatureVersion | String | 是 |   | 签名算法版本，目前版本是1.0。 |   |   |
+| SecurityToken | String | 否 |   | 使用STS凭证类型时，要求传入。 |   |   |
+| SignatureNonce | String | 否 |   | 唯一随机数，用于防止网络重放攻击。用户在不同请求间要使用不同的随机数值。 |   |   |
 
 **请求示例**
 
@@ -1238,7 +1321,7 @@ GET https://nas.regionid.example.com/?Action=<Action> &Format=xml &Version=2017-
 
 **公共返回参数**
 
-用户发送的每次接口调用请求，无论成功与否，系统都会返回一个唯一识别码**RequestId**给用户。 表 2. 公共返回参数文件存储NAS
+用户发送的每次接口调用请求，无论成功与否，系统都会返回一个唯一识别码**RequestId**给用户。 表 2. 公共返回参数
 
 | 参数名称 | 类型 | 描述 |
 |---|---|---|
@@ -1252,28 +1335,25 @@ XML示例
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-<接口名称`+Response>` <!--返回请求标签`-->`
+`<`接口名称`+Response>` <!--返回请求标签`-->`
 
 ```xml
   <RequestId> 6D9F62C5-BF52-447C-AA34-C77F7AFCCC12</RequestId>
 ```
 
-<!--返回结果数据`-->` `</`接口名称`+Response>` JSON示例
+<!--返回结果数据`-->` `</`接口名称`+Response>` JSON示例 `{`
 
 ```json
-{
   "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
 ```
 
-`/*` 返回结果数据 `*/`
+`/*` 返回结果数据 `*/` `}`
 
-```
-}
-```
-
-#### 请求结构
+#### 5.2.2 请求结构
 
 **服务地址**
+
+NAS API的服务接入地址格式，请参见获取API信息及其EndPoint。
 
 **通信协议**
 
@@ -1291,13 +1371,11 @@ XML示例
 
 请求及返回结果都使用 `UTF-8` 字符集进行编码。
 
-### 地域
+### 5.3 地域
 
-#### DescribeRegions
+#### 5.3.1 DescribeRegions
 
-**请求参数**
-
-文件存储NAS
+调用DescribeRegions接口查询您可以使用的地域。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -1312,17 +1390,19 @@ XML示例
 |---|---|---|---|
 | PageNumber | Integer | 1 | 列表的分页页码。 |
 | PageSize | Integer | 2 | 每个分页包含的地域个数。 |
-| Regions | Array of Region |  | 地域信息集合。 |
-| Region |  |  |  |
+| Regions | Array of Region |   | 地域信息集合。 |
+| Region |   |   |   |
 | LocalName | String | East China 1 | 地域名称。 |
 | RegionEndpoin t | String | nas.cn- hangzhou.aliyuncs. com | 对应地域的服务入口地址。 |
 | RegionId | String | cn-hangzhou | 地域ID。 |
 | RequestId | String | A70BEE5D-76D3- 49FB-B58F- 1F398211**** | 请求ID。 |
 | TotalCount | Integer | 4 | 查询到的地域总个数。 |
 
-**示例**
+```
+http(s)://[Endpoint]/?Action=DescribeRegions
+```
 
-请求示例文件存储NAS `&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>4</TotalCount> <PageSize>2</PageSize> <RequestId>A70BEE5D-76D3-49FB-B58F-1F398211****</RequestId> <PageNumber>1</PageNumber> <Regions>
@@ -1332,10 +1412,9 @@ XML示例
 </Regions>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 4,
     "PageSize": 2,
     "RequestId": "A70BEE5D-76D3-49FB-B58F-1F398211****",
@@ -1344,11 +1423,11 @@ XML示例
         "RegionId": "cn-hangzhou",
         "RegionEndpoint": "nas.cn-hangzhou.aliyuncs.com",
         "LocalName": "East China 1"
-    }
-}
 ```
 
-#### DescribeZones
+`}` `}`
+
+#### 5.3.2 DescribeZones
 
 调用DescribeZones查询一个地域下的所有可用区及可用区所支持的NAS类型。 只发布中国站
 
@@ -1360,27 +1439,21 @@ XML示例
 | RegionId | String | 是 | cn-hangzhou | 地域ID。 |
 | FileSystemType | String | 否 | standard | 文件系统类型。 默认值：standard，通用型NAS |
 
-文件存储NAS
-
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | A70BEE5D-76D3- 49FB-B58F- 1F398211A5C3 | 请求ID。 |
-| Zones | Array of Zone |  | 可用区信息。 |
-| Zone |  |  |  |
+| Zones | Array of Zone |   | 可用区信息。 |
+| Zone |   |   |   |
 | Capacity | List | 1 | 容量型NAS。 |
-| Clusters | Array of Cluster |  | 集群信息集合。 |
-| Cluster |  |  |  |
+| Clusters | Array of Cluster |   | 集群信息集合。 |
+| Cluster |   |   |   |
 | ClusterId | String | StandarNasCluster | 集群ID。 |
 | ClusterType | String | NAS | 集群类型。 |
 | ClusterVersion | String | 3.16.0 | 集群版本。 |
-| InstanceTypes | Array of InstanceType |  | 实例类型。 |
-| InstanceType |  |  |  |
+| InstanceTypes | Array of InstanceType |   | 实例类型。 |
+| InstanceType |   |   |   |
 | ProtocolType | String | NFS | 文件传输协议类型。 取值： NFS：NFS文件传输协议。 SMB：SMB文件传输协议。 |
 | StorageType | String | Performance | 存储类型。 取值： Performance：性能型 Capacity：容量型 |
-
-文件存储NAS
 
 | SupportedFeat ures | List | ["ACL","Quota","Lif ecycle","Namespac e"] | NAS支持的高级功能。 包括： ACL：访问控制 Quota：配额 Lifecycle：生命周期管理策略 Namespce：统一命名空间 |
 |---|---|---|---|
@@ -1392,10 +1465,10 @@ XML示例
 请求示例
 
 ```
-&RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A70BEE5D-76D3-49FB-B58F-1F398211A5C3</RequestId> <Zones>
@@ -1416,10 +1489,9 @@ XML示例
 </Zones>
 ```
 
-`JSON` 格式文件存储NAS
+`JSON` 格式
 
 ```json
-{
     "RequestId": "A70BEE5D-76D3-49FB-B58F-1F398211A5C3",
     "Zones": {
         "ZoneId": "cn-hangzhou-b",
@@ -1431,13 +1503,16 @@ XML示例
                 "StorageType": "Performance",
                 "ProtocolType": "NFS",
                 "SupportedFeatures": "[\"ACL\",\"Quota\",\"Lifecycle\",\"Namespace\"]"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "Capacity": 1,
         "Performance": 0
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -1446,17 +1521,17 @@ XML示例
 | 500 | InternalError | The request processing has failed due to some unknown error. | 由于未知错误造成请求失败，请稍后再试。 |
 | 404 | InvalidRegionId.Not Found | The specified Region is not found. | 请求的地域不存在或暂未提供服务。 |
 
-### 文件系统
+### 5.4 文件系统
 
-#### CreateFileSystem
+#### 5.4.1 CreateFileSystem
+
+调用CreateFileSystem接口创建文件系统。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateFileSyste m | 接口名称。 取值：CreateFileSystem |
-
-文件存储NAS
 
 | ProtocolType | String | 是 | NFS | 文件传输协议类型。 取值： NFS：NFS文件传输协议。 SMB：SMB文件传输协议。 |
 |---|---|---|---|---|
@@ -1465,10 +1540,6 @@ XML示例
 | EncryptType | Integer | 否 | 1 | 文件系统是否加密。 使用KMS服务托管密钥，对文件系统落盘数据进行加密存储。在读写加密数据时， 无需解密。 取值： 0：不加密 1：加密 |
 | Description | String | 否 | balabala | 文件系统描述。 限制： 长度为2~128个英文或中文字符。 必须以大小写字母或中文开头，不能以 http:// 和 https:// 开头。 可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
 | VolumeSize | Long | 否 | 100 | 通用型NAS容量大小。 单位：Byte 取值： 容量型：0~10 PB 性能型：0~1 PB |
-
-文件存储NAS
-
-**返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -1480,25 +1551,27 @@ XML示例
 请求示例
 
 ```
-&ProtocolType=NFS &StorageType=Performance
+http(s)://[Endpoint]/?Action=CreateFileSystem &ProtocolType=NFS &StorageType=Performance
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>98696EF0-1607-4E9D-B01D-F20930B6****</RequestId> <FileSystemId>1ca404****</FileSystemId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "98696EF0-1607-4E9D-B01D-F20930B6****",
     "FileSystemId": "1ca404****"
-}
 ```
 
-#### DeleteFileSystem
+`}`
+
+#### 5.4.2 DeleteFileSystem
+
+调用DeleteFileSystem接口删除已有的文件系统。
 
 **接口说明**
 
@@ -1511,10 +1584,6 @@ XML示例
 | Action | String | 是 | DeleteFileSyste m | 接口名称。 取值：DeleteFileSystem |
 | FileSystemId | String | 是 | 1ca404**** | 待删除的文件系统ID。 |
 
-文件存储NAS
-
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 9E15E394-38A6- 457A-A62A- D9797C9A**** | 请求ID。 |
@@ -1524,24 +1593,26 @@ XML示例
 请求示例
 
 ```
-&FileSystemId=1ca404****
+http(s)://[Endpoint]/?Action=DeleteFileSystem &FileSystemId=1ca404****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****"
-}
 ```
 
-#### ModifyFileSystem
+`}`
+
+#### 5.4.3 ModifyFileSystem
+
+调用ModifyFileSystem接口修改文件系统的容量以及描述信息。
 
 **请求参数**
 
@@ -1550,8 +1621,6 @@ XML示例
 | Action | String | 是 | ModifyFileSyste m | 接口名称。 取值：ModifyFileSystem |
 | FileSystemId | String | 是 | 1ca404**** | 文件系统ID。 |
 | Description | String | 否 | 空 | 文件系统描述。 限制： 长度为2~128个英文或中文字符。 必须以大小写字母或中文开头，不能以 http://和https://开头。 可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
-
-文件存储NAS
 
 | VolumeSize | Long | 否 | 1000 | 文件系统容量。 取值： 容量型：0~10 PB 性能型：0~1 PB |
 |---|---|---|---|---|
@@ -1567,24 +1636,26 @@ XML示例
 请求示例
 
 ```
-&FileSystemId=1ca404****
+http(s)://[Endpoint]/?Action=ModifyFileSystem &FileSystemId=1ca404****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****"
-}
 ```
 
-#### DescribeFileSystems
+`}`
+
+#### 5.4.4 DescribeFileSystems
+
+调用DescribeFileSystems接口查询文件系统信息。
 
 **请求参数**
 
@@ -1593,8 +1664,6 @@ XML示例
 | Action | String | 是 | DescribeFileSyst ems | 接口名称。 取值：DescribeFileSystems |
 | FileSystemId | String | 否 | 109c04**** | 文件系统ID。 |
 | FileSystemType | String | 否 | standard | 文件系统类型。 取值：standard：通用型NAS |
-
-文件存储NAS
 
 | VpcId | String | 否 | vpc- bp1sevsgtqvk5g xbl**** | 专有网络ID。 必须与待挂载的云服务器ECS选择一样的 VPC网络。 |
 |---|---|---|---|---|
@@ -1610,11 +1679,9 @@ XML示例
 | PageSize | Integer | 1 | 每个分页包含的文件系统个数。 |
 | RequestId | String | 035B3A3A-E514- 4B41-B906- 5D906CFB**** | 请求ID。 |
 | TotalCount | Integer | 1 | 文件系统的总个数。 |
-| FileSystems | Array of FileSystem |  | 文件系统的描述信息集合。 |
-| FileSystem |  |  |  |
+| FileSystems | Array of FileSystem |   | 文件系统的描述信息集合。 |
+| FileSystem |   |   |   |
 | Bandwidth | Long | 150 | 文件系统的带宽。 单位：MB/s。通用型NAS没有该字段。 |
-
-文件存储NAS
 
 | ChargeType | String | PayAsYouGo | 计费类型。 包括： Subscription：包年包月 PayAsYouGo：按量付费 Package：已绑定存储包 |
 |---|---|---|---|
@@ -1626,20 +1693,18 @@ XML示例
 | FileSystemTyp e | String | all | 文件系统类型。 |
 | MeteredIASize | Long | 1000 | 低频介质存储量。 |
 | MeteredSize | Long | 1611661312 | 文件系统的使用量。 非实时使用量，为上一小时最大使用量，单位： Byte。 |
-| MountTargets | Array of MountTarget |  | 挂载点信息集合。 |
-| MountTarget |  |  |  |
+| MountTargets | Array of MountTarget |   | 挂载点信息集合。 |
+| MountTarget |   |   |   |
 | AccessGroupN ame | String | test-001 | 挂载点使用的权限组名称。 |
 | MountTargetD omain | String | 109c042666- w****.cn- hangzhou.nas.aliyu ncs.com | 挂载点域名。 |
-
-文件存储NAS
 
 | NetworkType | String | vpc | 网络类型。 包括： vpc：专有网络 classic：经典网络 |
 |---|---|---|---|
 | Status | String | active | 挂载点状态。 包括： Active：可用 Inactive：不可用 |
 | VpcId | String | vpc- bp1sevsgtqvk5gxbl **** | 专有网络ID。 |
 | VswId | String | vsw- bp1omfzsszekkvax n**** | 交换机ID。 |
-| Packages | Array of Package |  | 存储包信息集合。 |
-| Package |  |  |  |
+| Packages | Array of Package |   | 存储包信息集合。 |
+| Package |   |   |   |
 | ExpiredTime | String | 2020-01- 05T16:00:00Z | 存储包到期时间。 |
 | PackageId | String | naspackage- 0be9c4b624- 37**** | 存储包ID。 |
 | PackageType | String | hybrid | 存储包类型。 |
@@ -1648,8 +1713,6 @@ XML示例
 | ProtocolType | String | NFS | 文件系统协议类型。 包括： NFS：NFS文件协议 SMB：SMB文件协议 |
 | QuotaSize | Long | 100 | 文件系统容量。 |
 | RegionId | String | cn-hangzhou | 地域ID。 |
-
-文件存储NAS
 
 | Status | String | Pending | 文件系统状态。包括： Pending：当前文件系统正在处理任务中。 Running：当前文件系统可用，当状态为 Running时才可以进行后续操作（例如：创建挂载点等）。 Stopped：当前文件系统不可用。 Extending：当前文件系统扩容中。 Stopping：当前文件系统停机中。 Deleting：当前文件系统删除中。 |
 |---|---|---|---|
@@ -1666,7 +1729,7 @@ XML示例
 http(s)://[Endpoint]/?Action=DescribeFileSystems
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式文件存储NAS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <FileSystems>
@@ -1715,16 +1778,14 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 </FileSystems> <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>035B3A3A-E514-4B41-B906-5D906CFB****</RequestId> <PageNumber>1</PageNumber>
 ```
 
-`JSON` 格式文件存储NAS
-
-| { "FileSystems": [ { "Status": "Pending", "StorageType": "Performance", "Description": "This can be the description of the created file system.", "ZoneId": "cn-hangzhou-b", "MeteredIASize": 1000, "CreateTime": "2017-05-27T15:43:06CST", "QuotaSize": 100, "MeteredSize": 1611661312, "EncryptType": 1, "ChargeType": "PayAsYouGo", "ProtocolType": "NFS", "Bandwidth": 150, "FileSystemType": "all", "ExpiredTime": 1572174830000, "FileSystemId": "109c04****", "RegionId": "cn-hangzhou", "VolumeSize": 1000 }, { "MountTargets": { "Status": "active", "VswId": "vsw-bp1omfzsszekkvaxn****", "VpcId": "vpc-bp1sevsgtqvk5gxbl****", "MountTargetDomain": "109c042666-w****.cn-hangzhou.nas.aliyuncs.com", "NetworkType": "vpc", "AccessGroupName": "test-001" }, "Packages": { "StartTime": "2019-12-05T01:40:56Z", "PackageId": "naspackage-0be9c4b624-37****", "Size": 107374182400, "ExpiredTime": "2020-01-05T16:00:00Z", "PackageType": "hybrid" } }, { "SupportedFeatures": "Lifecycle" }, { "Ldap": { "SearchBase": "dc=example", "URI": "ldap://ldap.example.example", "BindDN": "cn=alibaba,dc=com" } } ], "TotalCount": 1, "PageSize": 1, "RequestId": "035B3A3A-E514-4B41-B906-5D906CFB****", "PageNumber": 1 } |  |
+| { "FileSystems": [ { "Status": "Pending", "StorageType": "Performance", "Description": "This can be the description of the created file system.", "ZoneId": "cn-hangzhou-b", "MeteredIASize": 1000, "CreateTime": "2017-05-27T15:43:06CST", "QuotaSize": 100, "MeteredSize": 1611661312, "EncryptType": 1, "ChargeType": "PayAsYouGo", "ProtocolType": "NFS", "Bandwidth": 150, "FileSystemType": "all", "ExpiredTime": 1572174830000, "FileSystemId": "109c04****", "RegionId": "cn-hangzhou", "VolumeSize": 1000 }, { "MountTargets": { "Status": "active", "VswId": "vsw-bp1omfzsszekkvaxn****", "VpcId": "vpc-bp1sevsgtqvk5gxbl****", "MountTargetDomain": "109c042666-w****.cn-hangzhou.nas.aliyuncs.com", "NetworkType": "vpc", "AccessGroupName": "test-001" }, "Packages": { "StartTime": "2019-12-05T01:40:56Z", "PackageId": "naspackage-0be9c4b624-37****", "Size": 107374182400, "ExpiredTime": "2020-01-05T16:00:00Z", "PackageType": "hybrid" } }, { "SupportedFeatures": "Lifecycle" }, { "Ldap": { "SearchBase": "dc=example", "URI": "ldap://ldap.example.example", "BindDN": "cn=alibaba,dc=com" } } ], "TotalCount": 1, "PageSize": 1, "RequestId": "035B3A3A-E514-4B41-B906-5D906CFB****", "PageNumber": 1 } |   |
 |---|---|
 
-文件存储NAS
+### 5.5 挂载点
 
-### 挂载点
+#### 5.5.1 CreateMountTarget
 
-#### CreateMountTarget
+调用CreateMountTarget接口创建挂载点。
 
 **请求参数**
 
@@ -1744,8 +1805,6 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 |---|---|---|---|
 | MountTargetD omain | String | 174494b666- x****.cn- hangzhou.nas.aliyu ncs.com | 挂载点域名。 |
 
-文件存储NAS
-
 | RequestId | String | 70EACC9C-D07A- 4A34-ADA4- 77506C42**** | 请求ID。 |
 |---|---|---|---|
 
@@ -1754,25 +1813,27 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 请求示例
 
 ```
-&AccessGroupName=classic-test &FileSystemId=174494**** &NetworkType=VPC
+http(s)://[Endpoint]/?Action=CreateMountTarget &AccessGroupName=classic-test &FileSystemId=174494**** &NetworkType=VPC
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>70EACC9C-D07A-4A34-ADA4-77506C42****</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "70EACC9C-D07A-4A34-ADA4-77506C42****",
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
-}
 ```
 
-#### DeleteMountTarget
+`}`
+
+#### 5.5.2 DeleteMountTarget
+
+调用DeleteMountTarget接口删除已存在挂载点。
 
 **接口说明**
 
@@ -1786,10 +1847,6 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 | FileSystemId | String | 是 | 174494**** | 文件系统ID。 |
 | MountTargetDo main | String | 是 | 174494b666- x****.cn- hangzhou.nas.al iyuncs.com | 挂载点域名。 |
 
-**返回数据**
-
-文件存储NAS
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF42**** | 请求ID。 |
@@ -1799,24 +1856,26 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 请求示例
 
 ```
-&FileSystemId=174494**** &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com
+http(s)://[Endpoint]/?Action=DeleteMountTarget &FileSystemId=174494**** &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****"
-}
 ```
 
-#### DescribeMountTargets
+`}`
+
+#### 5.5.3 DescribeMountTargets
+
+调用DescribeMountTargets接口查询挂载点信息。
 
 **请求参数**
 
@@ -1827,8 +1886,6 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 | MountTargetDo main | String | 否 | 1ca404a666- x****.cn- hangzhou.nas.al iyuncs.com | 挂载点域名。 |
 | PageSize | Integer | 否 | 1 | 每个分页包含的挂载点个数。 取值范围：1~100 默认值：10 |
 
-文件存储NAS
-
 | PageNumber | Integer | 否 | 1 | 列表的分页页码。 起始值（默认值）：1 |
 |---|---|---|---|---|
 
@@ -1836,8 +1893,8 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| MountTargets | Array of MountTarget |  | 挂载点描述信息集合。 |
-| MountTarget |  |  |  |
+| MountTargets | Array of MountTarget |   | 挂载点描述信息集合。 |
+| MountTarget |   |   |   |
 | AccessGroup | String | DEFAULT VPC GRO _ _ UP NAME _ | 挂载点所应用的权限组名称。 |
 | MountTargetD omain | String | 1ca404a666- w****.cn- hangzhou.nas.aliyu ncs.com | 挂载点域名。 |
 | NetworkType | String | Vpc | 网络类型。 |
@@ -1849,15 +1906,11 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 | RequestId | String | 3BAB90FD-B4A0- 48DA-9F09- 2B963510A0EF | 请求ID。 |
 | TotalCount | Integer | 1 | 挂载点总数。 |
 
-**示例**
-
-文件存储NAS 请求示例
-
 ```
 http(s)://[Endpoint]/?Action=DescribeMountTargets &FileSystemId=1ca404****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>3BAB90FD-B4A0-48DA-9F09-2B963510A0EF</RequestId> <PageNumber>1</PageNumber> <MountTargets>
@@ -1871,10 +1924,9 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 </MountTargets>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 1,
     "PageSize": 1,
     "RequestId": "3BAB90FD-B4A0-48DA-9F09-2B963510A0EF",
@@ -1886,19 +1938,19 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
         "MountTargetDomain": "1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com",
         "AccessGroup": "DEFAULT_VPC_GROUP_NAME",
         "NetworkType": "Vpc"
-    }
-}
 ```
 
-#### ModifyMountTarget
+`}` `}`
+
+#### 5.5.4 ModifyMountTarget
+
+调用ModifyMountTarget接口修改挂载点信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ModifyMountTar get | 接口名称。 取值：ModifyMountTarget |
-
-文件存储NAS
 
 | FileSystemId | String | 是 | 1ca404**** | 文件系统ID。 |
 |---|---|---|---|---|
@@ -1917,30 +1969,30 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 请求示例
 
 ```
-&FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com
+http(s)://[Endpoint]/?Action=ModifyMountTarget &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>FF387D95-34C4-4879-B65A-99D1FA1****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "FF387D95-34C4-4879-B65A-99D1FA1****"
-}
 ```
 
-#### DescribeMountedClients
+`}`
+
+#### 5.5.5 DescribeMountedClients
+
+调用DescribeMountedClients接口查询挂载点客户端。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 文件存储NAS
-
-**请求参数**
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1964,37 +2016,36 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 
 **示例**
 
-请求示例文件存储NAS
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbala &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-x****.cn-hangzhou.nas.aliyuncs.com
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "TotalCount": 10,
   "RequestId": "A70BEE5D-76D3-49FB-B58F-1F398211****",
   "PageSize": 10,
   "PageNumber": 1,
   "Clients": {
     "Client": [
-      {
+```
+
+`{`
+
+```json
         "ClientIP": "10.10.10.1"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+### 5.6 权限组
 
-### 权限组
+#### 5.6.1 CreateAccessGroup
 
-#### CreateAccessGroup
+调用CreateAccessGroup接口创建权限组。
 
 **请求参数**
 
@@ -2002,8 +2053,6 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 |---|---|---|---|---|
 | Action | String | 是 | CreateAccessGr oup | 接口名称。 取值：CreateAccessGroup |
 | AccessGroupNa me | String | 是 | classic-test | 权限组名称。 限制： 长度为3~64个字符。 必须以大小写字母开头，可以包含英文字母、数字、下划线（ ）或者短划线 _ （-）。 新创建的权限组名称不能与两个默认的权限组相同。 默认权限组： DEFAULT VPC GROUP NAME（专有网 _ _ _ 络默认权限组）、 DEFAULT CLASSIC GROUP NAME（经 _ _ _ 典网络默认权限组）。 |
-
-文件存储NAS
 
 | AccessGroupTyp e | String | 是 | Classic | 权限组类型。 取值： Vpc：专有网络 Classic：经典网络 |
 |---|---|---|---|---|
@@ -2022,27 +2071,25 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 请求示例
 
 ```
-&AccessGroupName=classic-test &AccessGroupType=Classic
+http(s)://[Endpoint]/?Action=CreateAccessGroup &AccessGroupName=classic-test &AccessGroupType=Classic
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>55C5FFD6-BF99-41BD-9C66-FFF39189****</RequestId> <AccessGroupName>classic-test</AccessGroupName>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "55C5FFD6-BF99-41BD-9C66-FFF39189****",
     "AccessGroupName": "classic-test"
-}
 ```
 
-文件存储NAS
+#### 5.6.2 DeleteAccessGroup
 
-#### DeleteAccessGroup
+调用DeleteAccessGroup接口删除已有的权限组。
 
 **接口说明**
 
@@ -2067,28 +2114,26 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 请求示例
 
 ```
-&AccessGroupName=classic-test
+http(s)://[Endpoint]/?Action=DeleteAccessGroup &AccessGroupName=classic-test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****"
-}
 ```
 
-#### ModifyAccessGroup
+`}`
 
-文件存储NAS
+#### 5.6.3 ModifyAccessGroup
 
-**请求参数**
+调用ModifyAccessGroup接口修改权限组。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2108,24 +2153,24 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 请求示例
 
 ```
-&AccessGroupName=classic-test
+http(s)://[Endpoint]/?Action=ModifyAccessGroup &AccessGroupName=classic-test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ED2AE737-9D50-4CA4-B0DA-31BD610C****</RequestId>
 ```
 
-文件存储NAS `JSON` 格式
-
 ```json
-{
     "RequestId": "ED2AE737-9D50-4CA4-B0DA-31BD610C****"
-}
 ```
 
-#### DescribeAccessGroups
+`}`
+
+#### 5.6.4 DescribeAccessGroups
+
+调用DescribeAccessGroups接口查询权限组信息。
 
 **请求参数**
 
@@ -2142,11 +2187,9 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| AccessGroups | Array of AccessGroup |  | 权限组描述信息集合。 |
-| AccessGroup |  |  |  |
+| AccessGroups | Array of AccessGroup |   | 权限组描述信息集合。 |
+| AccessGroup |   |   |   |
 | AccessGroupN ame | String | classic-test | 权限组名称。 |
-
-文件存储NAS
 
 | AccessGroupT ype | String | Classic | 权限组类型。 包括： Vpc：专有网络 Classic：经典网络 |
 |---|---|---|---|
@@ -2167,7 +2210,7 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 http(s)://[Endpoint]/?Action=DescribeAccessGroups
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <AccessGroups>
@@ -2179,26 +2222,30 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 </AccessGroups> <TotalCount>2</TotalCount> <PageSize>2</PageSize> <RequestId>2514F97E-FFF0-4A1F-BF04-729CEAC64B6F</RequestId> <PageNumber>1</PageNumber> <ResourceOwnerId>258456</ResourceOwnerId>
 ```
 
-文件存储NAS `JSON` 格式
-
 ```json
-{
     "AccessGroups": {
         "RuleCount": 0,
         "AccessGroupType": "Classic",
         "Description": "This is a classic test access group~",
         "MountTargetCount": 0,
         "AccessGroupName": "classic-test"
-    },
+```
+
+`},`
+
+```json
     "TotalCount": 2,
     "PageSize": 2,
     "RequestId": "2514F97E-FFF0-4A1F-BF04-729CEAC64B6F",
     "PageNumber": 1,
     "ResourceOwnerId": 258456
-}
 ```
 
-#### CreateAccessRule
+`}`
+
+#### 5.6.5 CreateAccessRule
+
+调用CreateAccessRule接口创建权限组规则。
 
 **请求参数**
 
@@ -2208,8 +2255,6 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 | AccessGroupNa me | String | 是 | classic-test | 权限组名称。 |
 | SourceCidrIp | String | 是 | 10.0.*.*/** | 授权对象的IP地址或网段。 格式必须为单一的IP地址或者CIDR网段。 说明经典网络类型的权限组只支持IP地址。 |
 | RWAccessType | String | 否 | RDWR | 授权对象对文件系统的读写权限。 取值： RDWR（默认值）：读写 RDONLY：只读 |
-
-文件存储NAS
 
 | UserAccessType | String | 否 | no squash _ | 授权对象的系统用户对文件系统的访问权限。 取值： no squash（默认值）：允许使用root _ 用户访问文件系统。 root squash：以root用户身份访问 _ 时，映射nobody用户。 all squash：无论以何种用户身份访 _ 问，均映射为nobody用户。 nobody用户是Linux系统的默认用户，只能访问服务器上的公共内容，具有低权限、高安全性的特点。 |
 |---|---|---|---|---|
@@ -2228,25 +2273,25 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 请求示例
 
 ```
-&AccessGroupName=classic-test &SourceCidrIp=10.0.*.*/**
+http(s)://[Endpoint]/?Action=CreateAccessRule &AccessGroupName=classic-test &SourceCidrIp=10.0.*.*/**
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A323836B-5BC6-45A6-8048-60675C23****</RequestId> <AccessRuleId>1</AccessRuleId>
 ```
 
-`JSON` 格式文件存储NAS
-
 ```json
-{
     "RequestId": "A323836B-5BC6-45A6-8048-60675C23****",
     "AccessRuleId": 1
-}
 ```
 
-#### DeleteAccessRule
+`}`
+
+#### 5.6.6 DeleteAccessRule
+
+调用DeleteAccessRule接口删除已创建的权限组规则。
 
 **请求参数**
 
@@ -2268,24 +2313,22 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 请求示例
 
 ```
-&AccessGroupName=classic-test &AccessRuleId=1
+http(s)://[Endpoint]/?Action=DeleteAccessRule &AccessGroupName=classic-test &AccessRuleId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5B4511A7-C99E-4071-AA8C-32E2529D****</RequestId>
 ```
 
-`JSON` 格式文件存储NAS
-
 ```json
-{
     "RequestId": "5B4511A7-C99E-4071-AA8C-32E2529D****"
-}
 ```
 
-#### ModifyAccessRule
+#### 5.6.7 ModifyAccessRule
+
+调用ModifyAccessRule接口修改权限组规则。
 
 **请求参数**
 
@@ -2297,8 +2340,6 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 | SourceCidrIp | String | 是 | 192.1**.*.* | IP地址或网段。 格式必须为单一的IP地址或者CIDR网段。 说明经典网络类型的权限组只支持IP地址。 |
 | RWAccessType | String | 否 | RDWR | 授权对象对文件系统的读写权限。 取值： RDWR（默认值）：读写 RDONLY：只读 |
 | UserAccessType | String | 否 | all squash _ | 授权对象的系统用户对文件系统的访问权限。 取值： no squash：允许使用root用户访问文 _ 件系统。 root squash：以root用户身份访问 _ 时，映射nobody用户。 all squash：无论以何种用户身份访 _ 问，均映射为nobody用户。 nobody用户是Linux系统的默认用户，只能访问服务器上的公共内容，具有低权限，高安全性的特点。 |
-
-文件存储NAS
 
 | Priority | Integer | 否 | 1 | 权限组规则优先级。 取值范围：1~100 默认值：1（最高优先级） |
 |---|---|---|---|---|
@@ -2315,24 +2356,26 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 请求示例
 
 ```
-&AccessGroupName=classic-test &AccessRuleId=1
+http(s)://[Endpoint]/?Action=ModifyAccessRule &AccessGroupName=classic-test &AccessRuleId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>6299428C-3861-435D-AE54-9B330A00****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "6299428C-3861-435D-AE54-9B330A00****"
-}
 ```
 
-#### DescribeAccessRules
+`}`
+
+#### 5.6.8 DescribeAccessRules
+
+调用DescribeAccessRules接口查询权限规则描述。
 
 **请求参数**
 
@@ -2340,8 +2383,6 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 |---|---|---|---|---|
 | Action | String | 是 | DescribeAccess Rules | 接口名称。 取值：DescribeAccessRules |
 | AccessGroupNa me | String | 是 | classic-test | 权限组名称。 |
-
-文件存储NAS
 
 | AccessRuleId | String | 否 | 1 | 规则序号。 |
 |---|---|---|---|---|
@@ -2353,8 +2394,8 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| AccessRules | Array of AccessRule |  | 权限规则描述信息集合。 |
-| AccessRule |  |  |  |
+| AccessRules | Array of AccessRule |   | 权限规则描述信息集合。 |
+| AccessRule |   |   |   |
 | AccessRuleId | String | 1 | 权限规则ID。 |
 | Ipv6SourceCid rIp | String | 2001:250:6000::** * | 源端IPv6 CIDR地址段。 |
 | Priority | Integer | 1 | 优先级。 当同一个授权对象匹配到多条规则时，高优先级规则生效。 取值范围：1~100，1为最高优先级。 |
@@ -2362,8 +2403,6 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 | SourceCidrIp | String | 10.0.*.*/** | 地址或地址段。 |
 | UserAccess | String | no squash _ | 用户权限类型：no squash（默认）、 _ root squash 和 all squash _ _ |
 | PageNumber | Integer | 1 | 文件系统列表的分页页码。 |
-
-文件存储NAS
 
 | PageSize | Integer | 1 | 每个分页包含的权限规则个数。 |
 |---|---|---|---|
@@ -2378,7 +2417,7 @@ http(s)://[Endpoint]/?Action=DescribeAccessGroups
 http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>86D89E82-4297-4343-8E1E-A2495B35CC70</RequestId> <PageNumber>1</PageNumber> <AccessRules>
@@ -2391,10 +2430,9 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 </AccessRules>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 1,
     "PageSize": 1,
     "RequestId": "86D89E82-4297-4343-8E1E-A2495B35CC70",
@@ -2406,15 +2444,15 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
         "SourceCidrIp": "10.0.*.*/**",
         "Ipv6SourceCidrIp": "2001:250:6000::***",
         "AccessRuleId": 1
-    }
-}
 ```
 
-文件存储NAS
+`}` `}`
 
-### 配额
+### 5.7 配额
 
-#### SetDirQuota
+#### 5.7.1 SetDirQuota
+
+调用SetDirQuota设置文件系统的目录配额。
 
 **请求参数**
 
@@ -2427,8 +2465,6 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 | UserType | String | 是 | Uid | 用户类型。 取值： Uid：用户ID Gid：用户所属组ID AllUsers：所有用户 |
 | UserId | String | 否 | 500 | 要限制的Uid或Gid。 当UserType=Uid或Gid时必填且有意义。 例如： 要限制Uid=500的用户，则UserType 填Uid，UserId填500。 要限制Gid=100的用户组，则 UserType填Gid，UserId填100。 |
 | SizeLimit | Long | 否 | 1024 | 限制目录下文件总容量，单位为GB。 当QuotaType为Enforcement 时，SizeLimit和FileCountLimit至少填写其中一项。 |
-
-文件存储NAS
 
 | FileCountLimit | Long | 否 | 10000 | 限制目录下文件数目，包括文件、目录和特殊文件。 当QuotaType为Enforcement 时，SizeLimit和FileCountLimit至少填写其中一项。 |
 |---|---|---|---|---|
@@ -2445,29 +2481,27 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 请求示例
 
 ```
-&FileSystemId=1ca404**** &Path=/data/sub1 &QuotaType=Accounting &UserType=Uid
+http(s)://[Endpoint]/?Action=SetDirQuota &FileSystemId=1ca404**** &Path=/data/sub1 &QuotaType=Accounting &UserType=Uid
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "Success": true
-}
 ```
 
-#### CancelDirQuota
+`}`
 
-**请求参数**
+#### 5.7.2 CancelDirQuota
 
-文件存储NAS
+调用CancelDirQuota取消文件系统的目录配额。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2489,25 +2523,27 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 请求示例
 
 ```
-&FileSystemId=1ca404**** &Path=/data/sub1 &UserType=Uid
+http(s)://[Endpoint]/?Action=CancelDirQuota &FileSystemId=1ca404**** &Path=/data/sub1 &UserType=Uid
 ```
 
-`&<`公共请求参数> 文件存储NAS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>`
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "Success": true
-}
 ```
 
-#### DescribeDirQuotas
+`}`
+
+#### 5.7.3 DescribeDirQuotas
+
+调用DescribeDirQuotas查询文件系统的目录配额。
 
 **请求参数**
 
@@ -2523,15 +2559,13 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DirQuotaInfos | Array of DirQuotaInfo |  | 每个目录的配额信息列表。 |
+| DirQuotaInfos | Array of DirQuotaInfo |   | 每个目录的配额信息列表。 |
 | DirInode | String | 1123 | 目录的inode号。 |
 | Path | String | /data/sub1 | 目录在文件系统中的绝对路径。 |
 
-文件存储NAS
-
 | Status | String | Normal | 目录的统计状态。 初始化时为Initializing；正常时为Normal。 |
 |---|---|---|---|
-| UserQuotaInfo s | Array of UserQuotaInfo |  | 每个用户的配额信息列表。 |
+| UserQuotaInfo s | Array of UserQuotaInfo |   | 每个用户的配额信息列表。 |
 | FileCountLimit | Long | 10000 | 目录下用户的文件数目限制。 |
 | FileCountReal | Long | 5100 | 目录下用户的实际文件数目。 |
 | QuotaType | String | Accounting | 配额类型，包括统计型（Accounting）和限制型（Enforcement）。 |
@@ -2549,10 +2583,10 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 请求示例
 
 ```
-&FileSystemId=1ca404****
+http(s)://[Endpoint]/?Action=DescribeDirQuotas &FileSystemId=1ca404****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式文件存储NAS
+`&<`公共请求参数`>`
 
 ```xml
 <TotalCount>1</TotalCount> <DirQuotaInfos>
@@ -2571,10 +2605,9 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 </DirQuotaInfos> <PageSize>1</PageSize> <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <PageNumber>1</PageNumber>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 1,
     "DirQuotaInfos": {
         "Status": "Normal",
@@ -2588,21 +2621,23 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
             "FileCountReal": 5100,
             "SizeReal": 800,
             "UserType": "Uid"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "PageSize": 1,
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "PageNumber": 1
-}
 ```
 
-### 统一命名空间
+`}`
 
-#### CreateNamespace
+### 5.8 统一命名空间
 
-**请求参数**
+#### 5.8.1 CreateNamespace
 
-文件存储NAS
+调用CreateNamespace创建命名空间。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2613,8 +2648,6 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 | FileSystemType | String | 否 | standard | 文件系统类型。 默认值：standard，通用型NAS |
 | ClusterId | String | 否 | StandardNasClu ster | 集群ID。 |
 | EncryptType | String | 否 | 0 | 命名空间中的文件系统是否加密。 使用KMS服务托管密钥，对文件系统落盘数据进行加密存储。在读写加密数据时， 无需解密。 取值： 0（默认值）：不加密 1：加密 |
-
-文件存储NAS
 
 | Description | String | 否 | balabala | 文件系统描述。 限制： 长度为2~128个英文或中文字符。 必须以大小写字母或中文开头，不能以 http:// 和 https:// 开头。 可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
 |---|---|---|---|---|
@@ -2631,29 +2664,27 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 请求示例
 
 ```
-&ProtocolType=NFS &StorageType=Performance
+http(s)://[Endpoint]/?Action=CreateNamespace &ProtocolType=NFS &StorageType=Performance
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
-}
 ```
 
-#### DeleteNamespace
+`}`
 
-**请求参数**
+#### 5.8.2 DeleteNamespace
 
-文件存储NAS
+调用DeleteNamespace删除命名空间。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2673,32 +2704,32 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 请求示例
 
 ```
-&NasNamespaceId=1NS244****
+http(s)://[Endpoint]/?Action=DeleteNamespace &NasNamespaceId=1NS244****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
-}
 ```
 
-#### ModifyNamespace
+`}`
+
+#### 5.8.3 ModifyNamespace
+
+调用ModifyNamespace修改命名空间描述。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-文件存储NAS
 
 | Action | String | 是 | ModifyNamespa ce | 接口名称。取值：ModifyNamespace。 |
 |---|---|---|---|---|
@@ -2718,29 +2749,27 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 请求示例
 
 ```
-&Description=test &NasNamespaceId=1NS244****
+http(s)://[Endpoint]/?Action=ModifyNamespace &Description=test &NasNamespaceId=1NS244****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
-}
 ```
 
-#### DescribeNamespaces
+`}`
 
-**请求参数**
+#### 5.8.4 DescribeNamespaces
 
-文件存储NAS
+调用DescribeNamespaces查询命名空间信息。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2759,26 +2788,22 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | NasNamespac eCreateLimit | Integer | 2 | 命名空间创建数量限制。 |
-| NasNamespac es | Array of NasNamespac e |  | 命名空间信息集合。 |
+| NasNamespac es | Array of NasNamespac e |   | 命名空间信息集合。 |
 
-文件存储NAS
-
-| CreateTime | String | 2022-07- 20T10:08:08Z | 命名空间创建的实践。 执行ISO8601标准表示，返回格式： yyyy- MM-ddTHH:mm:ssZ 。 |  |  |
+| CreateTime | String | 2022-07- 20T10:08:08Z | 命名空间创建的实践。 执行ISO8601标准表示，返回格式： yyyy- MM-ddTHH:mm:ssZ 。 |   |   |
 |---|---|---|---|---|---|
-|  |  |  |  | yyyy- |  |
-| Description | String | balabala | 文件系统描述。 限制： 长度为2~128个英文或中文字符。 必须以大小写字母或中文开头，不能以 http:// 和 https:// 开头。 可以包含数字、半角冒号（:）、下划线（ ） _ 或者短划线（-）。 |  |  |
-| EncryptType | Integer | 1 | 命名空间中的文件系统是否加密。 使用KMS服务托管密钥，对文件系统落盘数据进行加密存储。在读写加密数据时，无需解密。 取值： 0：不加密 1：加密 |  |  |
-| FileSystemTyp e | String | standard | 文件系统类型。 默认值：standard，通用型NAS |  |  |
-| MountTargets | Array of MountTarget |  | 命名空间文件系统挂载点信息集合。 |  |  |
-| AccessGroupN ame | String | classic-test | 权限组名称。 |  |  |
-| MountTargetD omain | String | 1ca404a666- w****.cn- hangzhou.nas.aliyu ncs.com | 文件系统挂载点。 |  |  |
-| NetworkType | String | Vpc | 网络类型。 包括： Vpc：专有网络 Classic：经典网络 |  |  |
-| Status | String | Active | 当前挂载点状态。 包括： Active：可用 Inactive：不可用 Pending：任务排队中 Deleting：删除中 |  |  |
+|   |   |   |   | yyyy- |   |
+| Description | String | balabala | 文件系统描述。 限制： 长度为2~128个英文或中文字符。 必须以大小写字母或中文开头，不能以 http:// 和 https:// 开头。 可以包含数字、半角冒号（:）、下划线（ ） _ 或者短划线（-）。 |   |   |
+| EncryptType | Integer | 1 | 命名空间中的文件系统是否加密。 使用KMS服务托管密钥，对文件系统落盘数据进行加密存储。在读写加密数据时，无需解密。 取值： 0：不加密 1：加密 |   |   |
+| FileSystemTyp e | String | standard | 文件系统类型。 默认值：standard，通用型NAS |   |   |
+| MountTargets | Array of MountTarget |   | 命名空间文件系统挂载点信息集合。 |   |   |
+| AccessGroupN ame | String | classic-test | 权限组名称。 |   |   |
+| MountTargetD omain | String | 1ca404a666- w****.cn- hangzhou.nas.aliyu ncs.com | 文件系统挂载点。 |   |   |
+| NetworkType | String | Vpc | 网络类型。 包括： Vpc：专有网络 Classic：经典网络 |   |   |
+| Status | String | Active | 当前挂载点状态。 包括： Active：可用 Inactive：不可用 Pending：任务排队中 Deleting：删除中 |   |   |
 
-|  | MM-ddTHH:mm:ssZ |
+|   | MM-ddTHH:mm:ssZ |
 |---|---|
-
-文件存储NAS
 
 | VpcId | String | vpc- 2zesj9afh3y518k9o **** | 专有网络ID。 |
 |---|---|---|---|
@@ -2802,7 +2827,7 @@ http(s)://[Endpoint]/?Action=DescribeAccessRules &AccessGroupName=classic-test
 http(s)://[Endpoint]/?Action=DescribeNamespaces
 ```
 
-`&<`公共请求参数> 正常返回示例文件存储NAS `XML` 格式
+`&<`公共请求参数`>`
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <NasNamespaceCreateLimit>2</NasNamespaceCreateLimit> <NasNamespaces>
@@ -2827,10 +2852,9 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces
 </NasNamespaces>
 ```
 
-`JSON` 格式文件存储NAS
+`JSON` 格式
 
 ```json
-{
     "TotalCount": 1,
     "PageSize": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
@@ -2854,12 +2878,13 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces
             "MountTargetDomain": "",
             "NetworkType": "",
             "AccessGroupName": ""
-        }
-    }
-}
 ```
 
-#### AddFileSystemToNamespace
+`}` `}` `}`
+
+#### 5.8.5 AddFileSystemToNamespace
+
+调用AddFileSystemToNamespace添加文件系统到命名空间。
 
 **请求参数**
 
@@ -2870,10 +2895,6 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces
 | MappedPath | String | 是 | tmp path _ | 映射路径。 |
 | NasNamespaceI d | String | 是 | 1NS244**** | 命名空间ID。 |
 | FileSystemType | String | 否 | standard | 文件系统类型。 取值： standard（默认值）：通用型NAS |
-
-文件存储NAS
-
-**返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -2888,22 +2909,22 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces
 http(s)://[Endpoint]/?Action=AddFileSystemToNamespace &FileSystemId=1ca404**** &MappedPath=tmp_path &NasNamespaceId=1NS244****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <FileSystemId>1ca404****</FileSystemId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "FileSystemId": "1ca404****"
-}
 ```
 
-#### RemoveFileSystemFromNamespace
+`}`
+
+#### 5.8.6 RemoveFileSystemFromNamespace
 
 调用RemoveFileSystemFromNamespace删除命名空间中的一个文件系统。
 
@@ -2914,8 +2935,6 @@ http(s)://[Endpoint]/?Action=AddFileSystemToNamespace &FileSystemId=1ca404**** &
 | Action | String | 是 | RemoveFileSyst emFromNamesp ace | 接口名称。取值： RemoveFileSystemFromNamespace 。 |
 | FileSystemId | String | 是 | 1ca404**** | 文件系统ID。 |
 | NasNamespaceI d | String | 是 | 1NS244**** | 命名空间ID。 |
-
-文件存储NAS
 
 | FileSystemType | String | 否 | standard | 文件系统类型。 默认值：standard，通用型NAS |
 |---|---|---|---|---|
@@ -2935,22 +2954,22 @@ http(s)://[Endpoint]/?Action=AddFileSystemToNamespace &FileSystemId=1ca404**** &
 http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404**** &NasNamespaceId=1NS244****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <FileSystemId>1ca404****</FileSystemId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "FileSystemId": "1ca404****"
-}
 ```
 
-#### RenameMappedPathInNamespace
+`}`
+
+#### 5.8.7 RenameMappedPathInNamespace
 
 调用RenameMappedPathInNamespace修改命名空间中一个文件系统的映射名。
 
@@ -2960,8 +2979,6 @@ http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404*
 |---|---|---|---|---|
 | Action | String | 是 | RenameMapped PathInNamespac e | 接口名称。取值： RenameMappedPathInNamespace。 |
 | FileSystemId | String | 是 | 1ca404**** | 文件系统ID。 |
-
-文件存储NAS
 
 | MappedPath | String | 是 | tmp path _ | 映射路径。 |
 |---|---|---|---|---|
@@ -2983,22 +3000,22 @@ http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404*
 http(s)://[Endpoint]/?Action=RenameMappedPathInNamespace &FileSystemId=1ca404**** &MappedPath=tmp_path &NasNamespaceId=1NS244****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
-}
 ```
 
-#### ListFileSystemsInNamespace
+`}`
+
+#### 5.8.8 ListFileSystemsInNamespace
 
 调用ListFileSystemsInNamespace列出命名空间中映射的文件系统。
 
@@ -3006,8 +3023,6 @@ http(s)://[Endpoint]/?Action=RenameMappedPathInNamespace &FileSystemId=1ca404***
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-文件存储NAS
 
 | Action | String | 是 | ListFileSystemsI nNamespace | 接口名称。取值： ListFileSystemsInNamespace。 |
 |---|---|---|---|---|
@@ -3023,13 +3038,11 @@ http(s)://[Endpoint]/?Action=RenameMappedPathInNamespace &FileSystemId=1ca404***
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| NSMembers | Array of NSMember |  | 文件系统信息集合。 |
+| NSMembers | Array of NSMember |   | 文件系统信息集合。 |
 | CreateTime | String | 2022-07- 25T15:43:06CST | 创建时间。 |
 | FileSystemId | String | 1ca404**** | 文件系统ID。 |
 | FileSystemTyp e | String | standard | 文件系统类型。 standard：通用型NAS。 |
 | MappedPath | String | tmp path _ | 映射路径。 |
-
-文件存储NAS
 
 | Status | String | Running | 文件系统状态。包括： Pending：当前文件系统正在处理任务中。 Running：当前文件系统可用，当状态为 Running时才可以进行后续操作（例如：创建挂载点等）。 Stopped：当前文件系统不可用。 Extending：当前文件系统扩容中。 Stopping：当前文件系统停机中。 Deleting：当前文件系统删除中。 |
 |---|---|---|---|
@@ -3047,7 +3060,7 @@ http(s)://[Endpoint]/?Action=RenameMappedPathInNamespace &FileSystemId=1ca404***
 http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <NSMembers>
@@ -3060,10 +3073,7 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace
 </NSMembers>
 ```
 
-文件存储NAS `JSON` 格式
-
 ```json
-{
     "TotalCount": 1,
     "PageSize": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
@@ -3075,11 +3085,13 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace
         "CreateTime": "2022-07-25T15:43:06CST",
         "FileSystemId": "1ca404****",
         "MappedPath": "tmp_path"
-    }
-}
 ```
 
-#### CreateNamespaceMountTarget
+`}` `}`
+
+#### 5.8.9 CreateNamespaceMountTarget
+
+调用CreateNamespaceMountTarget创建命名空间挂载点。
 
 **请求参数**
 
@@ -3089,8 +3101,6 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace
 | AccessGroupNa me | String | 是 | classic-test | 权限组名称。 限制： 长度为3~64个字符。 必须以大小写字母开头，可以包含英文字母、数字、下划线（ ）或者短划线 _ （-）。 新创建的权限组名称不能与两个默认的权限组相同。 默认权限组： DEFAULT VPC GROUP NAME（专有网 _ _ _ 络默认权限组）、 DEFAULT CLASSIC GROUP NAME（经 _ _ _ 典网络默认权限组）。 |
 | NasNamespaceI d | String | 是 | 1NS244**** | 命名空间ID。 |
 | NetworkType | String | 是 | Vpc | 挂载点网络类型。 取值： Vpc：专有网络 Classic：经典网络 |
-
-文件存储NAS
 
 | FileSystemType | String | 否 | standard | 文件系统类型。 取值： standard：通用型NAS。 |
 |---|---|---|---|---|
@@ -3113,22 +3123,24 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace
 http(s)://[Endpoint]/?Action=CreateNamespaceMountTarget &AccessGroupName=classic-test &NasNamespaceId=1NS244**** &NetworkType=Vpc
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
 ```
 
-`JSON` 格式文件存储NAS
+`JSON` 格式
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
-}
 ```
 
-#### DeleteNamespaceMountTarget
+`}`
+
+#### 5.8.10 DeleteNamespaceMountTarget
+
+调用DeleteNamespaceMountTarget删除命名空间挂载点。
 
 **请求参数**
 
@@ -3153,22 +3165,20 @@ http(s)://[Endpoint]/?Action=CreateNamespaceMountTarget &AccessGroupName=classic
 http(s)://[Endpoint]/?Action=DeleteNamespaceMountTarget &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NS244****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
 ```
 
-文件存储NAS `JSON` 格式
-
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
-}
 ```
 
-#### ModifyNamespaceMountTarget
+`}`
+
+#### 5.8.11 ModifyNamespaceMountTarget
 
 调用ModifyNamespaceMountTarget修改命名空间挂载点状态信息。
 
@@ -3187,8 +3197,6 @@ http(s)://[Endpoint]/?Action=DeleteNamespaceMountTarget &MountTargetDomain=17449
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-文件存储NAS
-
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | 请求ID。 |
 |---|---|---|---|
 
@@ -3200,21 +3208,21 @@ http(s)://[Endpoint]/?Action=DeleteNamespaceMountTarget &MountTargetDomain=17449
 http(s)://[Endpoint]/?Action=ModifyNamespaceMountTarget &MountTargetDomain=1ca404****-kvr2.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NSc24****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8"
-}
 ```
 
-#### DescribeNamespaceMountTargets
+`}`
+
+#### 5.8.12 DescribeNamespaceMountTargets
 
 调用DescribeNamespaceMountTargets接口查询命名空间挂载点。
 
@@ -3230,10 +3238,6 @@ http(s)://[Endpoint]/?Action=ModifyNamespaceMountTarget &MountTargetDomain=1ca40
 | MountTar getDomai n | Strin g | Query | 否 | ns-1NS724****-0****.cn- wulan-en****- d01.nas.inter.en****.sh* ***ng.com | 挂载点域名。 |
 | PageSize | Integ er | Query | 否 | 1 | 每个分页包含的挂载点个数。 取值范围：1~100。 默认值：10。 |
 | PageNum ber | Integ er | Query | 否 | 1 | 列表的分页页码。起始值 （默认值）：1。 |
-
-文件存储NAS
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3251,22 +3255,29 @@ http(s)://[Endpoint]/?Action=ModifyNamespaceMountTarget &MountTargetDomain=1ca40
 
 **示例**
 
-请求示例文件存储NAS
-
 ```
 http(s)://[Endpoint]/?Action=DescribeNamespaceMountTargets &NasNamespaceId=ns1ca404****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":3,
  "RequestId":"3BAB90FD-B4A0-48DA-9F09-2B963510A0EF",
  "PageSize":1,
  "PageNumber":1,
  "MountTargets":[
-  {
+```
+
+`{`
+
+```json
    "Status":"Active",
    "VpcId":"vpc-gxxxxxlzw21fj9k",
    "VswId":"vsw-g4xxxxxxpf4mb6om6j",
@@ -3274,16 +3285,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 d01.nas.inter.en****.sh****ng.com",
    "NetworkType":"Classic",
    "AccessGroup":"pri"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
 <TotalCount>3</TotalCount> <RequestId>3BAB90FD-B4A0-48DA-9F09-2B963510A0EF</RequestId> <PageSize>1</PageSize> <PageNumber>1</PageNumber> <MountTargets>
@@ -3297,14 +3301,14 @@ d01.nas.inter.en****.sh****ng.com</MountTargetDomain>
 </MountTargets>
 ```
 
-#### AddNamespaceToGroup
+#### 5.8.13 AddNamespaceToGroup
+
+调用AddNamespaceToGroup创建跨域挂载编排。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-文件存储NAS
 
 | Action | String | 是 | AddNamespaceT oGroup | 接口名称。取值： AddNamespaceToGroup。 |
 |---|---|---|---|---|
@@ -3319,7 +3323,7 @@ d01.nas.inter.en****.sh****ng.com</MountTargetDomain>
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E |  |
+| RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E |   |
 
 **示例**
 
@@ -3329,21 +3333,19 @@ d01.nas.inter.en****.sh****ng.com</MountTargetDomain>
 http(s)://[Endpoint]/?Action=AddNamespaceToGroup &MappedPath=data &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NS244**** &NasNamespaceRegion=cn-hangzhou &NetworkType=Vpc
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
 ```
 
-`JSON` 格式文件存储NAS
-
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
 
-#### RemoveNamespaceFromGroup
+#### 5.8.14 RemoveNamespaceFromGroup
+
+调用RemoveNamespaceFromGroup删除跨域挂载编排。
 
 **请求参数**
 
@@ -3368,22 +3370,24 @@ http(s)://[Endpoint]/?Action=AddNamespaceToGroup &MappedPath=data &MountTargetDo
 http(s)://[Endpoint]/?Action=RemoveNamespaceFromGroup &MemberId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <MemberId>1</MemberId> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
 ```
 
-`JSON` 格式文件存储NAS
+`JSON` 格式
 
 ```json
-{
     "MemberId": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
 
-#### DescribeNamespaceGroup
+`}`
+
+#### 5.8.15 DescribeNamespaceGroup
+
+调用DescribeNamespaceGroup接口查询跨域编排列表页。
 
 **请求头**
 
@@ -3400,10 +3404,6 @@ http(s)://[Endpoint]/?Action=RemoveNamespaceFromGroup &MemberId=1
 | NasName spaceRegi on | Strin g | Query | 否 | cn-xxxn-envxxx-d01 | 命名空间所在地域。 |
 | Status | Strin g | Query | 否 | Enabled | 命名空间状态。 包括： All：全部 Enabled：启用 Disable：未启用 |
 | MappedPa th | Strin g | Query | 否 | nas | 跨域挂载编排映射路径。 |
-
-**返回数据**
-
-文件存储NAS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3433,16 +3433,25 @@ http(s)://[Endpoint]/?Action=RemoveNamespaceFromGroup &MemberId=1
 http(s)://[Endpoint]/?Action=DescribeNamespaceGroup
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
  "PageSize":1,
  "PageNumber":1,
  "NasNamespaces":[
-  {
+```
+
+`{`
+
+```json
    "Status":"Enabled",
    "MemberId":"6",
    "NasNamespaceRegion":"cn-xxxn-envxxx-d01",
@@ -3453,16 +3462,9 @@ d01.nas.intra.envxx.shxxxang.com.",
    "CreateTime":"2023-12-29T09:18:10Z",
    "MappedPath":"nas",
    "ResourceOwnerId":"12xxxxx8974995"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式文件存储NAS
+`}` `]` `}` `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageSize>1</PageSize> <PageNumber>1</PageNumber> <NasNamespaces>
@@ -3479,9 +3481,11 @@ ountTargetDomain>
 </NasNamespaces>
 ```
 
-### 生命周期管理
+### 5.9 生命周期管理
 
-#### CreateLifecyclePolicy
+#### 5.9.1 CreateLifecyclePolicy
+
+调用CreateLifecyclePolicy创建生命周期管理策略。
 
 **请求参数**
 
@@ -3491,8 +3495,6 @@ ountTargetDomain>
 | FileSystemId | String | 是 | 1ca404**** | 文件系统ID。 |
 | LifecyclePolicyN ame | String | 是 | lifecyclepolicy 0 _ 1 | 生命周期管理策略名称。 长度为3~64个字符，必须以大写字母或小写字母开头，可以包含英文字母、数字、 下划线（ ）或者短划线（-）。 _ |
 | LifecycleRuleNa me | String | 是 | DEFAULT ATIME _ 14 _ | 生命周期管理策略关联的管理规则。 取值： DEFAULT ATIME 14：距今14天未访 _ _ 问的文件 DEFAULT ATIME 30：距今30天未访 _ _ 问的文件 DEFAULT ATIME 60：距今60天未访 _ _ 问的文件 DEFAULT ATIME 90：距今90天未访 _ _ 问的文件 |
-
-文件存储NAS
 
 | OssBucket | String | 是 | rick-test-005 | 冷数据转储的OSS Bucket。 |
 |---|---|---|---|---|
@@ -3515,22 +3517,22 @@ ountTargetDomain>
 http(s)://[Endpoint]/?Action=CreateLifecyclePolicy &FileSystemId=1ca404**** &LifecyclePolicyName=lifecyclepolicy_01 &LifecycleRuleName=DEFAULT_ATIME_14 &OssBucket=rick-test-005 &Path=/pathway/to/folder &StorageType=InfrequentAccess
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
 ```
 
-文件存储NAS `JSON` 格式
-
 ```json
-{
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "Success": true
-}
 ```
 
-#### DeleteLifecyclePolicy
+`}`
+
+#### 5.9.2 DeleteLifecyclePolicy
+
+调用DeleteLifecyclePolicy删除生命周期管理策略。
 
 **请求参数**
 
@@ -3555,19 +3557,19 @@ http(s)://[Endpoint]/?Action=CreateLifecyclePolicy &FileSystemId=1ca404**** &Lif
 http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &LifecyclePolicyName=lifecycle
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <Success>true</Success>
 ```
 
-文件存储NAS `JSON` 格式
-
 ```json
 {"RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E","Success":"true"}
 ```
 
-#### ModifyLifecyclePolicy
+#### 5.9.3 ModifyLifecyclePolicy
+
+调用ModifyLifecyclePolicy修改生命周期管理策略。
 
 **请求参数**
 
@@ -3581,12 +3583,8 @@ http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &Lif
 | Recursive | Boolean | 是 | true | 是否对目录进行递归。 当值为true时，会递归该路径下的所有子目录。 取值： true：是 false（默认值）：否 |
 | StorageType | String | 否 | InfrequentAcces s | 数据转储后的存储类型。 默认值：InfrequentAccess（低频型） |
 
-**返回数据**
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-文件存储NAS
 
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | 请求ID。 |
 |---|---|---|---|
@@ -3600,22 +3598,24 @@ http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &Lif
 http(s)://[Endpoint]/?Action=ModifyLifecyclePolicy &FileSystemId=1ca404**** &LifecyclePolicyName=ifecyclepolicy_01 &LifecycleRuleName=DEFAULT_ATIME_14 &Path=/pathway/to/folder &Recursive=true
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "Success": true
-}
 ```
 
-#### DescribeLifecyclePolicies
+`}`
+
+#### 5.9.4 DescribeLifecyclePolicies
+
+调用DescribeLifecyclePolicies查询生命周期管理策略信息。
 
 **请求参数**
 
@@ -3624,30 +3624,26 @@ http(s)://[Endpoint]/?Action=ModifyLifecyclePolicy &FileSystemId=1ca404**** &Lif
 | Action | String | 是 | DescribeLifecycl ePolicies | 系统规定参数。取值： DescribeLifecyclePolicies。 |
 | FileSystemId | String | 否 | 1ca404**** | 文件系统ID。 |
 
-文件存储NAS
-
 | PageSize | Integer | 否 | 10 | 每个分页包含的生命周期管理策略个数。 取值范围：1~100 默认值：10 |
 |---|---|---|---|---|
 | PageNumber | Integer | 否 | 1 | 列表的分页页码。 起始值（默认值）：1 |
 
 **返回数据**
 
-| 名称 | 类型 | 示例值 | 描述 |  |  |
+| 名称 | 类型 | 示例值 | 描述 |   |   |
 |---|---|---|---|---|---|
-| LifecyclePolici es | Array of LifecyclePolicy |  | 生命周期管理策略信息集合。 |  |  |
-| CreateTime | String | 2019-10- 30T10:08:08Z | 生命周期管理策略创建的时间。 执行ISO8601标准表示，返回格式： yyyy- MM-ddTHH:mm:ssZ 。 |  |  |
-|  |  |  |  | yyyy- |  |
-| FileSystemId | String | 1ca404**** | 文件系统ID。 |  |  |
-| LifecyclePolicy Name | String | lifecyclepolicy 01 _ | 生命周期管理策略名称。 |  |  |
-| LifecycleRuleN ame | String | DEFAULT ATIME 1 _ _ 4 | 生命周期管理策略关联的管理规则。 包括： DEFAULT ATIME 14：距今14天未访问的文 _ _ 件 DEFAULT ATIME 30：距今30天未访问的文 _ _ 件 DEFAULT ATIME 60：距今60天未访问的文 _ _ 件 DEFAULT ATIME 90：距今90天未访问的文 _ _ 件 |  |  |
-| OssBucket | String | rick-test-005 | 需要归档到的OSS Bucket。 |  |  |
-| Path | String | /pathway/to/folder | 生命周期管理策略配置的单个目录的绝对路径。 |  |  |
-| Recursive | Boolean | true | 是否对目录进行递归。 当值为true时，会递归该路径下的所有子目录。 取值： true：是 false（默认值）：否 |  |  |
+| LifecyclePolici es | Array of LifecyclePolicy |   | 生命周期管理策略信息集合。 |   |   |
+| CreateTime | String | 2019-10- 30T10:08:08Z | 生命周期管理策略创建的时间。 执行ISO8601标准表示，返回格式： yyyy- MM-ddTHH:mm:ssZ 。 |   |   |
+|   |   |   |   | yyyy- |   |
+| FileSystemId | String | 1ca404**** | 文件系统ID。 |   |   |
+| LifecyclePolicy Name | String | lifecyclepolicy 01 _ | 生命周期管理策略名称。 |   |   |
+| LifecycleRuleN ame | String | DEFAULT ATIME 1 _ _ 4 | 生命周期管理策略关联的管理规则。 包括： DEFAULT ATIME 14：距今14天未访问的文 _ _ 件 DEFAULT ATIME 30：距今30天未访问的文 _ _ 件 DEFAULT ATIME 60：距今60天未访问的文 _ _ 件 DEFAULT ATIME 90：距今90天未访问的文 _ _ 件 |   |   |
+| OssBucket | String | rick-test-005 | 需要归档到的OSS Bucket。 |   |   |
+| Path | String | /pathway/to/folder | 生命周期管理策略配置的单个目录的绝对路径。 |   |   |
+| Recursive | Boolean | true | 是否对目录进行递归。 当值为true时，会递归该路径下的所有子目录。 取值： true：是 false（默认值）：否 |   |   |
 
-|  | MM-ddTHH:mm:ssZ |
+|   | MM-ddTHH:mm:ssZ |
 |---|---|
-
-文件存储NAS
 
 | StorageType | String | InfrequentAccess | 数据转储后的存储类型。 默认值：InfrequentAccess（低频型） |
 |---|---|---|---|
@@ -3664,7 +3660,7 @@ http(s)://[Endpoint]/?Action=ModifyLifecyclePolicy &FileSystemId=1ca404**** &Lif
 http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <LifecyclePolicies>
@@ -3679,10 +3675,9 @@ http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies
 </LifecyclePolicies>
 ```
 
-`JSON` 格式文件存储NAS
+`JSON` 格式
 
 ```json
-{
     "TotalCount": 10,
     "PageSize": 10,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
@@ -3696,13 +3691,13 @@ http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies
         "OssBucket": "rick-test-005",
         "FileSystemId": "1ca404****",
         "Recursive": true
-    }
-}
 ```
 
-### NFS NAS ACL
+`}` `}`
 
-#### EnableNfsAcl
+### 5.10 NFS NAS ACL
+
+#### 5.10.1 EnableNfsAcl
 
 开启NFS ACL功能。
 
@@ -3727,24 +3722,23 @@ http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies
 请求示例
 
 ```
-&FileSystemId=43f264xxxx
+http(s)://[Endpoint]/?Action=EnableNfsAcl &FileSystemId=43f264xxxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式文件存储NAS
+`&`公共请求参数
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"29F4F360-A6A8-561A-A45B-A0F6882969BA"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>29F4F360-A6A8-561A-A45B-A0F6882969BA</RequestId>
 ```
 
-#### DisableNfsAcl
+#### 5.10.2 DisableNfsAcl
 
 关闭NFS ACL功能。
 
@@ -3769,24 +3763,30 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&FileSystemId=91fcdxxxx
+http(s)://[Endpoint]/?Action=DisableNfsAcl &FileSystemId=91fcdxxxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"24487C24-AE54-57EC-B4E4-4EDEEEB83B01"
-}
 ```
 
-`XML` 格式文件存储NAS
+`}`
 
 ```xml
 <RequestId>24487C24-AE54-57EC-B4E4-4EDEEEB83B01</RequestId>
 ```
 
-#### DescribeNfsAcl
+#### 5.10.3 DescribeNfsAcl
+
+调用DescribeNfsAcl接口查询指定文件系统是否启用了NFS ACL功能。
 
 **请求头**
 
@@ -3811,21 +3811,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&FileSystemId=206614xxxx
+http(s)://[Endpoint]/?Action=DescribeNfsAcl &FileSystemId=206614xxxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"A1098673-1746-505E-A5F1-08527B7EDBDF",
  "Acl":{
   "Enabled":true
- }
-}
 ```
-
-文件存储NAS `XML` 格式
 
 ```xml
 <RequestId>A1098673-1746-505E-A5F1-08527B7EDBDF</RequestId> <Acl>
@@ -3833,7 +3834,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </Acl>
 ```
 
-### 附录：错误代码表
+### 5.11 附录：错误代码表
 
 错误码由 4 部分组成，如错误码所示。 表 1. 错误码
 
@@ -3858,8 +3859,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | MissingParameter.Regi onId | 请求参数缺失：域名中RegionId未指定 | 请在域名中加入 RegionId 字段信息。 |
 | 400 | MissingParameter.VSw itchId | 请求参数缺失：VSwitchId未指定 | 请加入 VSwitchId 请求参数。 |
 
-文件存储NAS
-
 | 400 | MissingParameter.VpcI d | 请求参数缺失：VpcId未指定 | 请加入 VpcId 请求参数。 |
 |---|---|---|---|
 | 400 | InvalidParameter.Stora geType | 请求参数非法：StorageType不合法 | 合法的 StorageType 请求参数有 Performance 和 Capacity。 |
@@ -3877,8 +3876,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | InvalidAZone.NotFoun d | 指定Azone不存在 | 请求的 Zone 不存在或暂未提供服务。 |
 | 404 | InvalidVpc.NotFound | 指定Vpc不存在 | 您指定的 Vpc 不存在，请先创建专有网络 VPC。 |
 | 404 | InvalidVip.NotFound | 指定Vip不存在 | 您指定的Vpc创建Vip失败，请检查你Vpc网络中有可用ip可供创建 |
-
-文件存储NAS
 
 | 404 | InvalidLBid.NotFound | 指定LBid不存在 | 系统创建 LBid 失败，请稍后重试。 |
 |---|---|---|---|
@@ -3898,7 +3895,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **错误码返回示例**
 
-文件存储NAS XML格式
+XML格式
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <Error>
@@ -3913,17 +3910,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </Error>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
   "RequestId": "B71B4C68-6C6B-4D4B-AD70-8951BD7D188E",
   "HostId": " nas.regionid.example.com ",
   "Code": "InvalidFileSystem.NotFound",
 ```
 
-`"Message": "`指定文件系统不存在"
-
-```
-}
-```
+`"Message": "`指定文件系统不存在`"` `}`

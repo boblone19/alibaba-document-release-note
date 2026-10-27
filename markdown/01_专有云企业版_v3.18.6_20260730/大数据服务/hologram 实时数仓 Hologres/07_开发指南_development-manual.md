@@ -5,16 +5,141 @@ doc_version: "20260729"
 pdf_pages: 262
 source_pdf: "07_开发指南_development-manual.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/hologram/zh/development-manual.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 实时数仓 Hologres 开发指南
 
-实时数仓 Hologres
+## 目录
 
-## Hologres SQL
+- 1 Hologres SQL
+  - 1.1 SQL事务能力
+  - 1.2 Explain和Explain Analyze
+  - 1.3 数据类型
+    - 1.3.1 数据类型汇总
+    - 1.3.2 自增序列Serial
+    - 1.3.3 JSON和JSONB类型
+  - 1.4 PostgreSQL兼容函数
+    - 1.4.1 查看表和DB的存储大小
+    - 1.4.2 有序聚集函数
+    - 1.4.3 数学函数
+    - 1.4.4 三角函数
+    - 1.4.5 字符串函数
+    - 1.4.6 模式匹配函数
+    - 1.4.7 时间和日期转换函数
+    - 1.4.8 条件函数
+    - 1.4.9 数组函数
+    - 1.4.10 通用聚合函数
+    - 1.4.11 有序集合函数
+    - 1.4.12 窗口函数
+    - 1.4.13 子查询函数
+    - 1.4.14 比较函数
+    - 1.4.15 集合返回函数
+    - 1.4.16 账号和权限管理函数
+    - 1.4.17 连接函数
+  - 1.5 扩展函数
+    - 1.5.2 PostGIS地理信息分析
+    - 1.5.3 漏斗和留存函数（Beta）
+    - 1.5.4 聚合视图
+    - 1.5.5 向量Proxima
+    - 1.5.6 Oracle兼容函数
+    - 1.5.7 Clickhouse兼容函数
+    - 1.5.8 流量分析函数
+      - 1.5.8.1 漏斗分析函数
+      - 1.5.8.2 明细圈人函数
+      - 1.5.8.3 Roaring Bitmap函数
+    - 1.5.9 聚合函数
+      - 1.5.9.1 APPROX_COUNT_DISTINCT
+      - 1.5.9.2 UNIQ
+      - 1.5.9.3 MAX_BY与MIN_BY
+    - 1.5.10 账号与安全函数
+      - 1.5.10.1 USER_DISPLAY_NAME
+      - 1.5.10.2 HG_DISPLAY_NAME_TO _ID
+    - 1.5.11 Hive兼容函数
+      - 1.5.11.1 JSON函数
+    - 1.5.12 MaxCompute兼容函数
+      - 1.5.12.1 最大分区函数
+    - 1.5.13 工具函数
+      - 1.5.13.1 HG_SHARD_ID_FOR_DISTRIBUTION_KEY
+      - 1.5.13.2 HG_UPDATE_DATABASE_PROPERTY
+      - 1.5.13.3 SET_TABLE_PROPERTY
+      - 1.5.13.4 HG_CREATE_TABLE_LIKE
+  - 1.6 DDL
+    - 1.6.1 DATABASE
+      - 1.6.1.1 CREATE DATABASE
+      - 1.6.1.2 ALTER DATABASE
+      - 1.6.1.3 DROP DATABASE
+    - 1.6.2 SCHEMA
+      - 1.6.2.1 CREATE SCHEMA
+      - 1.6.2.2 ALTER SCHEMA
+      - 1.6.2.3 IMPORT FOREIGN SCHEMA
+      - 1.6.2.4 DROP SCHEMA
+    - 1.6.3 TABLE
+      - 1.6.3.1 CREATE TABLE
+        - 1.6.3.1.1 分布键Distribution Key
+      - 1.6.3.2 CREATE TABLE AS
+      - 1.6.3.3 CREATE TABLE LIKE
+      - 1.6.3.4 ALTER TABLE
+      - 1.6.3.5 DROP TABLE
+      - 1.6.3.6 生成列（3.2内核）
+    - 1.6.4 分区表
+      - 1.6.4.1 逻辑分区表（3.2内核）
+        - 1.6.4.1.1 CREATE LOGICAL PARTITION TABLE（3.2内核）
+        - 1.6.4.1.2 ALTER LOGICAL PARTITION TABLE（3.2内核）
+        - 1.6.4.1.3 DROP LOGICAL PARTITION TABLE（3.2内核）
+      - 1.6.4.2 物理分区表
+        - 1.6.4.2.1 CREATE PARTITION TABLE
+        - 1.6.4.2.2 ALTER PARTITION TABLE
+        - 1.6.4.2.3 DROP PARTITION TABLE
+        - 1.6.4.2.4 动态分区管理（3.2内核）
+    - 1.6.5 FOREIGN TBALE
+      - 1.6.5.1 CREATE FOREIGN TABLE
+      - 1.6.5.2 ALTER FOREIGN TABLE
+      - 1.6.5.3 DROP FOREIGN TABLE
+    - 1.6.6 CAST
+      - 1.6.6.1 CREATE CAST
+      - 1.6.6.2 DROP CAST
+    - 1.6.7 VIEW
+  - 1.7 DML&DQL
+    - 1.7.1 COPY
+    - 1.7.2 INSERT
+    - 1.7.3 SELECT
+    - 1.7.4 DELETE
+    - 1.7.5 UPDATE
+    - 1.7.6 INSERT ON CONFLICT
+    - 1.7.7 TRUNCATE
+    - 1.7.8 Fixed Plan加速SQL执行
+  - 1.8 高级命令
+    - 1.8.1 Auto Analyze
+    - 1.8.2 订阅Hologres Binlog
+    - 1.8.3 Flink实时消费Hologres Binlog
+    - 1.8.4 通过JDBC消费Hologres Binlog
+    - 1.8.5 实时物化视图（Beta）
+    - 1.8.6 列式JSONB
+    - 1.8.7 Table Group与Shard Count
+      - 1.8.7.1 基本概念
+      - 1.8.7.2 Table Group与Shard Count操作指南
+      - 1.8.7.3 Table Group设置最佳实践
+  - 1.9 其他语句
+    - 1.9.1 CANCEL QUERY
+    - 1.9.2 UNNEST
+    - 1.9.3 存储过程（3.2内核）
+    - 1.9.4 其他SQL语句
+- 2 API参考
+  - 2.1 API
+    - 2.1.1 ListInstances - 获取实例列表
+    - 2.1.2 GetInstance - 获取实例详情
+    - 2.1.3 UpdateInstanceName - 修改实例名称
+    - 2.1.4 ListBackupData - 获取快照列表
+    - 2.1.5 ListWhitelistRules - 获取实例白名单列表
+  - 2.2 API（3.2内核）
+    - 2.2.1 EnableInstanceAudit-启用实例审计日志
+    - 2.2.2 DisableInstanceAudit-禁用数据库审计日志
+    - 2.2.3 ListEncryptionRules-查询实例表级别加密情况
 
-### SQL事务能力
+## 1 Hologres SQL
+
+### 1.1 SQL事务能力
 
 Hologres支持完整的DDL事务以及部分DML事务，默认支持单条SQL事务。本文将会为您介绍Hologres的事务支持能力。
 
@@ -27,10 +152,15 @@ Hologres对事务的支持场景和使用说明如下：
 事务内多个表的创建与回滚支持事务保障，示例如下：
 
 ```
-BEGIN; DROP TABLE IF EXISTS ddl_test;
+BEGIN; DROP TABLE IF EXISTS ddl_test; CREATE TABLE ddl_test (
     uid  TEXT NOT NULL,
     name TEXT NOT NULL
-); COMMIT;
+```
+
+);
+
+```
+COMMIT;
 ```
 
 **支持多条DML混合事务（Beta）**
@@ -63,11 +193,9 @@ SET hg_experimental_enable_transaction = ON; BEGIN; DELETE FROM dml_test; INSERT
 
 | 如下示例，DDL和DML在同一个事务中会报错： | ERROR: INSERT in ddl transaction is not supported now | 。 |
 |---|---|---|
-| BEGIN; DROP TABLE IF EXISTS dml_test; CREATE TABLE dml_test ( uid TEXT NOT NULL, name TEXT NOT NULL ); INSERT INTO dml_test (uid, name) VALUES ('1', 'tom'); COMMIT; |  |  |
+| BEGIN; DROP TABLE IF EXISTS dml_test; CREATE TABLE dml_test ( uid TEXT NOT NULL, name TEXT NOT NULL ); INSERT INTO dml_test (uid, name) VALUES ('1', 'tom'); COMMIT; |   |   |
 
-实时数仓 Hologres
-
-### Explain和Explain Analyze
+### 1.2 Explain和Explain Analyze
 
 当SQL查询性能不佳或查询结果不符合预期时，Hologres提供了Explain和Explain Analyze命令用于分析查询语句执行计划，可以帮助您了解Hologres如何执行查询语句，以便您对查询语句或数据库结构进行调整优化。本文介绍在Hologres中通过Explain和Explain Analyze查看执行计划及每个算子的含义。
 
@@ -75,9 +203,11 @@ SET hg_experimental_enable_transaction = ON; BEGIN; DELETE FROM dml_test; INSERT
 
 在Hologres中，优化器（Query Optimizer，QO）会为每一条SQL生成一个执行计划，执行引擎（Query Engine，QE）会根据该执行计划生成最终的执行计划，然后执行并获取SQL结果。执行计划中会反映出SQL的统计信息、执行算子、算子耗时等信息，一个好的执行计划，能够用最少的资源更快的返回结果。因此对于日常开发来说，执行计划至关重要，它可以反应出SQL的问题，从而去针对性优化。 Hologres兼容Postgres，可以根据Explain和Explain Analyze语法了解SQL的执行计划。 Explain：代表优化器QO根据SQL特征**预估**的SQL执行计划，并非实际的执行计划，对SQL的运行有一定参考意义。 Explain Analyze：代表SQL真实的运行计划，相比Explain会包含更多的实际运行信息，能**准确**的反映出SQL的执行算子和算子耗时，可以根据算子耗时去做针对性的 SQL优化。
 
-**说明**
+> **说明：** 从Hologres V1.3.4x版本开始，支持通过Explain和Explain Analyze查看更加清晰且阅读性更高的执行计划，本文档基于V1.3.4x版本撰写，建议将实例升级至 V1.3.4x及以上版本。
 
-从Hologres V1.3.4x版本开始，支持通过Explain和Explain Analyze查看更加清晰且阅读性更高的执行计划，本文档基于V1.3.4x版本撰写，建议将实例升级至 V1.3.4x及以上版本。 语法格式 Explain可以反应出优化器的预估执行计划，语法如下：
+**Explain**
+
+语法格式 Explain可以反应出优化器的预估执行计划，语法如下：
 
 ```
 explain <sql>;
@@ -85,11 +215,10 @@ explain <sql>;
 
 使用示例以TPC-H中的SQL为例。
 
-**说明**
-
-该示例引用TPC-H的SQL，但是不代表TPC-H的测试结果。
+> **说明：** 该示例引用TPC-H的SQL，但是不代表TPC-H的测试结果。
 
 ```
+explain select
         l_returnflag,
         l_linestatus,
         sum(l_quantity) as sum_qty,
@@ -140,7 +269,7 @@ h time zone)
 h time zone)
 ```
 
-结果解释执行计划需要从下往上看，每个箭头（->）代表一个节点，每个子节点会返回使用的算子，以及预估的行数等。需要关注的算子包括： 实时数仓 Hologres
+结果解释执行计划需要从下往上看，每个箭头（->）代表一个节点，每个子节点会返回使用的算子，以及预估的行数等。需要关注的算子包括：
 
 | 参数 | 描述 |
 |---|---|
@@ -148,8 +277,10 @@ h time zone)
 | rows | 算子的预估输出行数，主要基于统计信息进行估算。 对于上述返回结果中Scan的预估值，默认值为 1000 。 说明通常情况下如果出现 rows=1000 则说明表的统计信息不正确，没有根据统计信息进行估算，可以通过执行 analyze <tablename> 命令对表进行统计信息更新。 |
 | width | 算子的预估输出平均宽度（单位：字节），值越大说明列越宽。 |
 
-|  |  | <tablename> |
+|   |   | <tablename> |
 |---|---|---|
+
+**Explain Analyze**
 
 语法格式 Explain Analyze可以反应出SQL的实际执行计划，以及对应的算子耗时，从而帮助诊断SQL性能。语法如下：
 
@@ -160,6 +291,7 @@ explain analyze <sql>;
 使用示例以TPC-H中的SQL为例。
 
 ```
+explain analyze select
         l_returnflag,
         l_linestatus,
         sum(l_quantity) as sum_qty,
@@ -182,7 +314,7 @@ order by
         l_linestatus;
 ```
 
-返回结果实时数仓 Hologres
+返回结果
 
 ```
 QUERY PLAN Sort (cost=0.00..7795.30 rows=3 width=80)
@@ -227,7 +359,8 @@ h time zone)
                                                                           Cluster Filter: (l_shipdate <= '1998-08-03 00:00:00+08'::timestamp wi
 h time zone)
                                                                         [id=2 dop=234 time=259/125/1ms rows=585075720(4222846/2500323/3500) mem
-1418/886/81KB open=10/1/0ms get_next=253/124/0ms] ADVICE: [node id : 1000xxx] distribution key miss match! table lineitem defined distribution keys : l_orderkey; request distribution columns : l_ret urnflag, l_linestatus; shuffle data skew in different shards! max rows is 20, min rows is 0 Query id:[300200511xxxx] ======================cost====================== Total cost:[2505] ms Optimizer cost:[47] ms Init gangs cost:[4] ms Start query cost:[18] ms
+1418/886/81KB open=10/1/0ms get_next=253/124/0ms] ADVICE: [node id : 1000xxx] distribution key miss match! table lineitem defined distribution keys : l_orderkey; request distribution columns : l_ret urnflag, l_linestatus; shuffle data skew in different shards! max rows is 20, min rows is 0 Query id:[300200511xxxx] ======================cost====================== Total cost:[2505] ms Optimizer cost:[47] ms Init gangs cost:[4] ms Build gang desc table cost:[2] ms Start query cost:[18] ms
+- Wait schema cost:[0] ms
 - Lock query cost:[0] ms
 - Create dataset reader cost:[0] ms
 - Create split reader cost:[0] ms
@@ -243,20 +376,18 @@ Get the first block cost:[2434] ms Get result cost:[2434] ms ===================
 | 示例 | 说明 |
 |---|---|
 
-实时数仓 Hologres
-
 | (cost=0.00..2585.43 rows=584421302 width=33) | 都代表优化器的预估值，非真实值，同Explain含义一致。 cost：算子的预估耗时。 rows：算子的预估输出行数，如果rows的值与实际行数相差较大，大部分原因是表的统计信息未更新，建议对表执行一次 analyze <tablename> 命令。 width：算子的预估输出平均宽度（单位：字节），值越大说明列越宽。 |
 |---|---|
 | [20:20 id=100002 dop=20 time=2427/2424/2423ms rows=80(20/4/0) mem=3528/1172/584B open=1/0/0ms getnext=2426/2424/2423ms] _ | 代表实际执行的消耗值，即真实数据。 20:20 ：输入并发度与输出并发度（dag dop）之比，比值代表该算子的输入和输出之间的并行度对应关系。通常来说该值会跟算子结果一起看，比如： gather算子21:1，表示21个输入合成1个输出； Redistribution算子21:21，表示21个并行度间Shuffle； broadcast算子1:21，表示输入并行度为1，输出并行度为21。 id：代表算子的ID，每个算子都有一个唯一的ID。 例如示例返回结果中 id=100002 。 dop：dop（degree of parallelism）表示当前算子实际运行时的并行度，与实例的Shard数保持一致，例如 dop=20 。但是Local Gather节点下的dop都代表扫描的文件数。 time：表示open和get _next两个阶段的实际执行时间（单位：毫秒），Hologres中，每个算子都会有一个open和get next 接口。例如time=2427/2424/2423ms ，代表time=max/avg/min ms。 open：代表算子的初始化操作，某些算子的open阶段会依赖下游算子的数据并进行计算。例如Hash算子的open阶段会进行哈希表构建， 拖取完所有下游算子节点的数据。而 open=1/0/0ms 则代表 open=max/avg/min ms ，表示该算子open阶段的耗时（单位：毫秒）。 get next：每次从下游算子获取一批数据（record batch）并进行计算，不同类型的算子会有不同的实现，get next会被调用多次，直到下游算子的数据被拖取完。而 get_next=2426/2424/2423ms 则代表 get_next=max/avg/min ms ，表示该算子next阶段的耗时（单位：毫秒）。 rows：表示从该算子输出的行数，通过对比最大值、最小值、与平均值的差异， 如果差异过大，说明数据分布不均匀，有倾斜。 例如 rows=80(20/4/0) ，为 total_rows(max/avg/min) 。 mem：代表算子运行时的内存消耗最大值、平均值、最小值。 例如 mem=3528/1172/584B ，为 mem=max/avg/min 。 |
 
-|  | ms |
+|   | ms |
 |---|---|
 
 由于一条SQL语句可能涉及到多个算子，下面将会有单独章节对算子进行详细介绍，请参见算子含义。
 
-**说明**
-
-对于time、row、mem这类数值： 当前算子的time值是下方算子耗时的累加，所以当前算子的耗时需要用当前算子的time值减去下方算子的耗时。 对于row、mem则是每个算子的独立计算，不是累加值。
+> **说明：** 对于time、row、mem这类数值：
+> 当前算子的time值是下方算子耗时的累加，所以当前算子的耗时需要用当前算子的time值减去下方算子的耗时。
+> 对于row、mem则是每个算子的独立计算，不是累加值。
 
 **Advice**
 
@@ -266,9 +397,7 @@ Advice中主要系统根据当前Explain Analyze的执行结果，自动生成�
 数据可能存在倾斜： shuffle data xxx in different shards! max rows is 20, min rows is 0 。
 ```
 
-**说明**
-
-Advice的结果只是根据当前SQL的Explain Analyze结果给出的建议，不一定完全适用，需要根据业务具体分析，并合理采取相应的操作。
+> **说明：** Advice的结果只是根据当前SQL的Explain Analyze结果给出的建议，不一定完全适用，需要根据业务具体分析，并合理采取相应的操作。
 
 **Cost耗时**
 
@@ -276,7 +405,7 @@ Cost代表Query的总耗时以及在每个阶段运行的详细耗时，可以�
 
 **Resource资源消耗情况**
 
-Resource代表Query运行的资源消耗，格式为： `total(max/avg/min)` ，包含总的资源累加和消耗资源的最大值、平均值和最小值。 实时数仓 Hologres 因为Hologres是分布式引擎，一个实例有多个Worker节点，每个Worker节点计算完成会进行结果合并，并最终返回给客户端。因此在资源消耗中，会使用 `total(max` `worker/avg worker/min worker)` 的格式来反应整体消耗，其中： total：代表Query的总消耗。 max：代表单个Worker节点消耗的最大值。 avg：代表平均Worker节点的消耗（avg=total/worker节点数）。 min：代表单个Worker节点消耗的最小值。 以下为各资源消耗指标的详细解释：
+Resource代表Query运行的资源消耗，格式为： `total(max/avg/min)` ，包含总的资源累加和消耗资源的最大值、平均值和最小值。 因为Hologres是分布式引擎，一个实例有多个Worker节点，每个Worker节点计算完成会进行结果合并，并最终返回给客户端。因此在资源消耗中，会使用 `total(max` `worker/avg worker/min worker)` 的格式来反应整体消耗，其中： total：代表Query的总消耗。 max：代表单个Worker节点消耗的最大值。 avg：代表平均Worker节点的消耗（avg=total/worker节点数）。 min：代表单个Worker节点消耗的最小值。 以下为各资源消耗指标的详细解释：
 
 | 指标 | 描述 |
 |---|---|
@@ -317,14 +446,19 @@ EXPLAIN SELECT * FROM public.odps_lineitem_100;
 
 **Index Scan和 Index Seek**
 
-实时数仓 Hologres 如果扫描表有命中索引，根据表的存储格式（行存或列存）不同，Hologres在底层使用的索引也不同，根据索引扫描时主要有Clustering_index和Index Seek（又名 pk_index）两种索引。其中： Clustering_index：表示使用了列存表的索引（例如segment 、clustering等），只要查询命中索引就会使用Clustering_index。 `Seq Scan Using` `Clustering_index` 通常会跟Filter一起出现，Fliter是子节点，会列出命中的索引，包括clusteirng filter、segment filter、bitmap filter等。 示例1：查询命中索引。
+如果扫描表有命中索引，根据表的存储格式（行存或列存）不同，Hologres在底层使用的索引也不同，根据索引扫描时主要有Clustering_index和Index Seek（又名 pk_index）两种索引。其中： Clustering_index：表示使用了列存表的索引（例如segment 、clustering等），只要查询命中索引就会使用Clustering_index。 `Seq Scan Using` `Clustering_index` 通常会跟Filter一起出现，Fliter是子节点，会列出命中的索引，包括clusteirng filter、segment filter、bitmap filter等。 示例1：查询命中索引。
 
 ```
-begin;
+begin; create table column_test (
  "id" bigint not null ,
  "name" text not null ,
  "age" bigint not null
-); call set_table_property('column_test', 'orientation', 'column'); call set_table_property('column_test', 'distribution_key', 'id'); call set_table_property('column_test', 'clustering_key', 'id'); commit; insert into column_test values(1,'tom',10),(2,'tony',11),(3,'tony',12); explain select * from column_test where id>2;
+```
+
+);
+
+```
+call set_table_property('column_test', 'orientation', 'column'); call set_table_property('column_test', 'distribution_key', 'id'); call set_table_property('column_test', 'clustering_key', 'id'); commit; insert into column_test values(1,'tom',10),(2,'tony',11),(3,'tony',12); explain select * from column_test where id>2;
 ```
 
 返回结果： 示例2：假如查询没有命中索引，则不会使用clustering_index。
@@ -333,18 +467,30 @@ begin;
 explain select * from column_test where age>10;
 ```
 
-返回结果： 实时数仓 Hologres Index Seek（又名pk_index）：表示使用了行存表的索引，主要是主键索引。一般情况下，基于主键的行存表点查是走Fixed Plan，但是未走Fixed Plan的行存表且带有主键的查询就会走pk_index。 示例：查询行存表。
+返回结果： Index Seek（又名pk_index）：表示使用了行存表的索引，主要是主键索引。一般情况下，基于主键的行存表点查是走Fixed Plan，但是未走Fixed Plan的行存表且带有主键的查询就会走pk_index。 示例：查询行存表。
 
 ```
-begin;
+begin; create table row_test_1 (
     id bigint not null,
     name text not null,
     class text ,
-PRIMARY KEY (id) ); call set_table_property('row_test_1', 'orientation', 'row'); call set_table_property('row_test_1', 'clustering_key', 'name'); commit; insert into row_test_1 values ('1','qqq','3'),('2','aaa','4'),('3','zzz','5'); begin;
+PRIMARY KEY (id)
+```
+
+);
+
+```
+call set_table_property('row_test_1', 'orientation', 'row'); call set_table_property('row_test_1', 'clustering_key', 'name'); commit; insert into row_test_1 values ('1','qqq','3'),('2','aaa','4'),('3','zzz','5'); begin; create table row_test_2 (
     id bigint not null,
     name text not null,
     class text ,
-PRIMARY KEY (id) ); call set_table_property('row_test_2', 'orientation', 'row'); call set_table_property('row_test_2', 'clustering_key', 'name'); commit; insert into row_test_2 values ('1','qqq','3'),('2','aaa','4'),('3','zzz','5'); --pk_index explain select * from (select id from row_test_1 where id = 1) t1 join row_test_2 t2 on t1.id = t2.id;
+PRIMARY KEY (id)
+```
+
+);
+
+```
+call set_table_property('row_test_2', 'orientation', 'row'); call set_table_property('row_test_2', 'clustering_key', 'name'); commit; insert into row_test_2 values ('1','qqq','3'),('2','aaa','4'),('3','zzz','5'); --pk_index explain select * from (select id from row_test_1 where id = 1) t1 join row_test_2 t2 on t1.id = t2.id;
 ```
 
 返回结果：
@@ -357,23 +503,28 @@ Filter代表将数据根据SQL条件进行过滤，一般会跟随seq scan on ta
 
 如果执行计划中，仅包含Filter，则说明过滤条件没有命中任何索引。此时需要去检查表索引，重新为SQL设置合理的索引，从而提升查询性能。
 
-**说明**
+> **说明：** 如果执行计划中存在 `One-Time Filter: false` ，说明输出结果为空集。
 
-如果执行计划中存在 `One-Time Filter: false` ，说明输出结果为空集。 示例：
+示例：
 
 ```
-begin;
+begin; create table clustering_index_test (
  "id" bigint not null ,
  "name" text not null ,
  "age" bigint not null
-); call set_table_property('clustering_index_test', 'orientation', 'column'); call set_table_property('clustering_index_test', 'distribution_key', 'id'); call set_table_property('clustering_index_test', 'clustering_key', 'age'); commit; insert into clustering_index_test values(1,'tom',10),(2,'tony',11),(3,'tony',12); explain select * from clustering_index_test where id>2;
+```
+
+);
+
+```
+call set_table_property('clustering_index_test', 'orientation', 'column'); call set_table_property('clustering_index_test', 'distribution_key', 'id'); call set_table_property('clustering_index_test', 'clustering_key', 'age'); commit; insert into clustering_index_test values(1,'tom',10),(2,'tony',11),(3,'tony',12); explain select * from clustering_index_test where id>2;
 ```
 
 返回结果：
 
 **Segment Filter**
 
-实时数仓 Hologres Segment Filter表示查询时命中了segment索引，与index_scan一起出现。
+Segment Filter表示查询时命中了segment索引，与index_scan一起出现。
 
 **Cluster Filter**
 
@@ -406,7 +557,19 @@ explain select * from public.lineitem;
 Redistribution表示数据通过哈希分布或者随机分布，查询时shuffle到一个或者多个shard。redistribution算子一般出现在join、count distinct（本质上也是join）以及 group by的场景中。 当出现redistribution时，说明表的distribution key没有设置，或者设置不合理，导致查询时数据在多个shard间shuffle。尤其是在多表join的场景，如果出现 redistribution，则说明没有利用local join的能力，导致查询性能不佳。 示例：两表join。
 
 ```
-begin; a int not null, b text not null ); call set_table_property('tbl1', 'distribution_key', 'a'); c int not null, d text not null ); call set_table_property('tbl2', 'distribution_key', 'd'); commit; explain select * from tbl1 join tbl2 on tbl1.a=tbl2.c;
+begin; create table tbl1( a int not null, b text not null
+```
+
+);
+
+```
+call set_table_property('tbl1', 'distribution_key', 'a'); create table tbl2( c int not null, d text not null
+```
+
+);
+
+```
+call set_table_property('tbl2', 'distribution_key', 'd'); commit; explain select * from tbl1 join tbl2 on tbl1.a=tbl2.c;
 ```
 
 返回结果：执行计划如下，出现redistribution，说明distribution key设置不合理（SQL中join条件是 `tbl1.a=tbl2.c` ，而两个表的distribution key分别为a和d，join 时数据就会shuffle）。 调优建议：如果出现redistribution算子，建议关注表的distribution key设置是否合理。更多关于redistribution的场景和distribution key的设置请参见分布键 Distribution Key。
@@ -425,8 +588,6 @@ hash join是指两个表或者多表join时，基于其中一个表（一般为�
 | Hash Right Join | 多表关联时，返回右表的全部行和左边满足join条件的行，如果右表的行在左表中没有匹配数据，那么左表则返回null。 |
 | Hash Inner Join | 多表关联时，只返回满足join条件的行。 |
 
-实时数仓 Hologres
-
 | Hash Full Join | 多表关联时，从左表和右表返回所有的行，如果其中一个表的数据在另外一个表中没有匹配，则无法匹配的表返回null。 |
 |---|---|
 | Hash Anti Join | 仅返回未匹配到的数据，多用于not exists查询条件。 |
@@ -439,26 +600,36 @@ hash join是指两个表或者多表join时，基于其中一个表（一般为�
 **调优建议：**
 
 更新统计信息
-**hash join****的核心调优思路就是尽可能的将小表作为****hash**表，如果是大表作为hash表，因为要在内存中构建hash表，那么就会消耗较多的资源，大多数情况都是因为
+**hash join****的核心调优思路就是尽可能的将小表作为****hash****表**，如果是大表作为hash表，因为要在内存中构建hash表，那么就会消耗较多的资源，大多数情况都是因为
 表的统计信息没有更新导致优化器QO将大表作为了hash表。 示例：因为统计信息未更新（rows=1000），两表join时大表hash_join_test_2作为hash表（tbl2数据量有100万，tbl1数据量只有1万），导致查询效率较低。
 
 ```
-BEGIN ;
+BEGIN ; CREATE TABLE public.hash_join_test_1 (
     a integer not null,
     b text not null
-); CALL set_table_property('public.hash_join_test_1', 'distribution_key', 'a');
+```
+
+);
+
+```
+CALL set_table_property('public.hash_join_test_1', 'distribution_key', 'a'); CREATE TABLE public.hash_join_test_2 (
     c integer not null,
     d text not null
-); CALL set_table_property('public.hash_join_test_2', 'distribution_key', 'c'); COMMIT ; insert into hash_join_test_1 select i, i+1 from generate_series(1, 10000) as s(i); insert into hash_join_test_2 select i, i::text from generate_series(10, 1000000) as s(i); explain select * from hash_join_test_1 tbl1 join hash_join_test_2 tbl2 on tbl1.a=tbl2.c;
+```
+
+);
+
+```
+CALL set_table_property('public.hash_join_test_2', 'distribution_key', 'c'); COMMIT ; insert into hash_join_test_1 select i, i+1 from generate_series(1, 10000) as s(i); insert into hash_join_test_2 select i, i::text from generate_series(10, 1000000) as s(i); explain select * from hash_join_test_1 tbl1 join hash_join_test_2 tbl2 on tbl1.a=tbl2.c;
 ```
 
 执行计划中大表hash_join_test_2作为hash表，如下：
 
 | 如果统计信息没有及时更新，可以手动执行 | analyze <tablename> | 更新统计信息。示例如下： |
 |---|---|---|
-| analyze hash_join_test_1; analyze hash_join_test_2; |  |  |
+| analyze hash_join_test_1; analyze hash_join_test_2; |   |   |
 
-更新后的执行计划如下，小表hash_join_test_1变成了hash表，且优化器预估的行数正确。 实时数仓 Hologres 调整join order 通常情况下，更新统计信息能解决大部分的join关联问题。但是当SQL比较复杂且是多表关联时（至少5张表），Hologres优化器（QO）的默认机制会根据SQL选择更加合理的执行计划，导致优化器在选择执行计划上会耗费较多时间。我们可以通过如下GUC控制join order，以降低QO的耗时。
+更新后的执行计划如下，小表hash_join_test_1变成了hash表，且优化器预估的行数正确。 调整join order 通常情况下，更新统计信息能解决大部分的join关联问题。但是当SQL比较复杂且是多表关联时（至少5张表），Hologres优化器（QO）的默认机制会根据SQL选择更加合理的执行计划，导致优化器在选择执行计划上会耗费较多时间。我们可以通过如下GUC控制join order，以降低QO的耗时。
 
 ```
 set optimizer_join_order = '<value>';
@@ -474,16 +645,26 @@ value参数的取值如下：
 
 **Nested Loop Join和Materialize**
 
-Nested Loop代表嵌套循环连接，多表关联时，先从一张表中读取数据，成为外层表，再将外层驱动表的每条数据遍历另外的表（即内层表），然后内外层表嵌套循环进行 Join，相当于计算笛卡尔积。在执行计划中第一内层表通常有Materialize算子。 优化建议： Nested Loop的原理是内层表被外层表驱动，外层表返回的每一行都要在内层表中检索与之匹配的行，因此返回的结果集不能太大，否则会消耗较多资源，尽量将返回结果较小的表作为外层表。 非等值的join通常会生成Nested Loop join，在SQL书写中尽量避免非等值join。 Nested Loop join的示例如下：
+Nested Loop代表嵌套循环连接，多表关联时，先从一张表中读取数据，成为外层表，再将外层驱动表的每条数据遍历另外的表（即内层表），然后内外层表嵌套循环进行 Join，相当于计算笛卡尔积。在执行计划中第一内层表通常有Materialize算子。 优化建议： Nested Loop的原理是内层表被外层表驱动，外层表返回的每一行都要在内层表中检索与之匹配的行，因此返回的结果集不能太大，否则会消耗较多资源，尽量将返回结果较小的表作为外层表。 非等值的join通常会生成Nested Loop join，在SQL书写中尽量避免非等值join**。** Nested Loop join的示例如下：
 
 ```
-begin;
+begin; create table public.nestedloop_test_1 (
     a integer not null,
     b integer not null
-); call set_table_property('public.nestedloop_test_1', 'distribution_key', 'a');
+```
+
+);
+
+```
+call set_table_property('public.nestedloop_test_1', 'distribution_key', 'a'); create table public.nestedloop_test_2 (
     c integer not null,
     d text not null
-); call set_table_property('public.nestedloop_test_2', 'distribution_key', 'c'); commit; insert into nestedloop_test_1 select i, i+1 from generate_series(1, 10000) as s(i); insert into nestedloop_test_2 select i, i::text from generate_series(10, 1000000) as s(i); explain select * from nestedloop_test_1 tbl1,nestedloop_test_2 tbl2 where tbl1.a>tbl2.c;
+```
+
+);
+
+```
+call set_table_property('public.nestedloop_test_2', 'distribution_key', 'c'); commit; insert into nestedloop_test_1 select i, i+1 from generate_series(1, 10000) as s(i); insert into nestedloop_test_2 select i, i::text from generate_series(10, 1000000) as s(i); explain select * from nestedloop_test_1 tbl1,nestedloop_test_2 tbl2 where tbl1.a>tbl2.c;
 ```
 
 从下述执行计划中可以看出存在Materialize和Nested Loop算子，说明该SQL走的是Nested Loop join路径。
@@ -493,34 +674,36 @@ begin;
 Broadcast指通过广播的方式将数据分发到各个shard，通常用在Broadcast Join的场景中，一般是小表join大表。下发SQL时，优化器QO会比较redistribution和 Broadcast的代价，然后根据算法生成执行计划。 调优建议： 当查询表的数据量较小且实例的shard数比较少时（比如shard count=5）时，走Broadcast比较划算。 示例：两表join，broadcast_test_1和broadcast_test_2的数据量差异比较明显。
 
 ```
-begin;
+begin; create table broadcast_test_1 (
     f1 int,
     f2 int);
-call set_table_property('broadcast_test_1','distribution_key','f2');
+call set_table_property('broadcast_test_1','distribution_key','f2'); create table broadcast_test_2 (
     f1 int,
     f2 int);
 commit; insert into broadcast_test_1 select i as f1, i as f2 from generate_series(1, 30)i; insert into broadcast_test_2 select i as f1, i as f2 from generate_series(1, 30000)i; analyze broadcast_test_1; analyze broadcast_test_2; explain select * from broadcast_test_1 t1, broadcast_test_2 t2 where t1.f1=t2.f1;
 ```
 
-返回结果： 实时数仓 Hologres 如果不是小表但又生成了Broadcast算子，通常情况是因为统计信息未及时更新导致（比如统计信息中rows=1000，实际扫描100万），需要及时更新统计信息，执
+返回结果： 如果不是小表但又生成了Broadcast算子，通常情况是因为统计信息未及时更新导致（比如统计信息中rows=1000，实际扫描100万），需要及时更新统计信息，执
+
+```
+行 analyze <tablename> 。
+```
 
 **ExecuteExternalSQL**
 
 如Hologres的产品架构介绍，Hologres的计算引擎会分为HQE、PQE、SQE等，其中PQE是原生Postgres引擎，部分Hologres自研引擎HQE还没有支持的算子和函数，会通过PQE执行，相比于HQE，PQE的执行效率会更低。当我们在执行计划中看到有ExecuteExternalSQL算子，说明有函数或者算子走了PQE。 示例1：走PQE的SQL示例如下。
 
-| create table pqe_test(a text); insert into pqe_test values ('2023-01-28 16:25:19.082698+08'); explain select a::timestamp from pqe_test; |  |  |
+| create table pqe_test(a text); insert into pqe_test values ('2023-01-28 16:25:19.082698+08'); explain select a::timestamp from pqe_test; |   |   |
 |---|---|---|
 | 执行计划如下：有ExecuteExternalSQL说明 | ::timestamp | 算子走的是PQE。 |
 
 | 示例2：将 | ::timestamp | 改写成 | to_timestamp | ，可以走HQE，SQL示例如下。 |
 |---|---|---|---|---|
-| explain select to_timestamp(a,'YYYY-MM-DD HH24:MI:SS') from pqe_test; |  |  |  |  |
+| explain select to_timestamp(a,'YYYY-MM-DD HH24:MI:SS') from pqe_test; |   |   |   |   |
 
 执行计划如下，结果中没有ExecuteExternalSQL，表明没有走PQE。 调优建议：通过执行计划找到SQL走了PQE的函数或者算子，并通过改写使其走到HQE，提升查询效率。常见的算子改写列表请参见优化内部表的性能。
 
-**说明**
-
-Hologres的每个版本在不断优化PQE的支持，将更多的PQE下推至HQE实现，因此部分函数可以通过升级版本实现自动下推，详情请参见函数功能发布记录。
+> **说明：** Hologres的每个版本在不断优化PQE的支持，将更多的PQE下推至HQE实现，因此部分函数可以通过升级版本实现自动下推，详情请参见函数功能发布记录。
 
 **Aggregate**
 
@@ -533,6 +716,7 @@ EXPLAIN SELECT l_orderkey,count(l_linenumber) FROM public.holo_lineitem_100g gro
 多阶段HashAggregate：数据是在shard中按照文件存储的，文件有不同的层级，当数据量多时，聚合的阶段也会分为多个阶段。主要的子算子包括： Partial HashAggregate：文件和shard内的聚合。 Final HashAggregate：多个shard上的数据聚合在一起。 示例：TPC-H Q6查询，走了多阶段HashAggregate。
 
 ```
+explain select
         sum(l_extendedprice * l_discount) as revenue
 from
         lineitem
@@ -551,7 +735,7 @@ set optimizer_force_multistage_agg = on;
 
 **Sort**
 
-sort表示将数据按顺序排序（升序ASC或者降序DESC），通常是order by子句的结果。 实时数仓 Hologres 示例：对TPC-H lineitem表的l_shipdate列进行排序输出。
+sort表示将数据按顺序排序（升序ASC或者降序DESC），通常是order by子句的结果。 示例：对TPC-H lineitem表的l_shipdate列进行排序输出。
 
 ```
 EXPLAIN SELECT l_shipdate FROM public.lineitem order by l_shipdate;
@@ -589,15 +773,11 @@ Project一般表示子查询与外层查询的映射关系，无需过多关注�
 
 HoloWeb可视化查看执行计划，请参见查看执行计划。
 
-### 数据类型
+### 1.3 数据类型
 
-#### 1.3.1. 数据类型汇总
+#### 1.3.1 数据类型汇总
 
-Hologres的数据类型与PostgreSQL的数据类型兼容。本文为您介绍Hologres支持的数据类型及数组类型。
-
-### 数据类型
-
-当前Hologres版本支持的数据类型是PostgreSQL的一个子集。Hologres已支持的数据类型列表如下。
+Hologres的数据类型与PostgreSQL的数据类型兼容。本文为您介绍Hologres支持的数据类型及数组类型。 当前Hologres版本支持的数据类型是PostgreSQL的一个子集。Hologres已支持的数据类型列表如下。
 
 | 名称 | 支持的版本 | 存储大小 | 说明 | 取值范围 | 示例 |
 |---|---|---|---|---|---|
@@ -605,8 +785,6 @@ Hologres的数据类型与PostgreSQL的数据类型兼容。本文为您介绍Ho
 | BIGINT（别名INT8） | Hologres所有版本 | 8字节 | 大范围整数。 | -9223372036854775808 ～ +922337203685477580 7 | 9223372036854775807 |
 | BOOLEAN（别名BOOL） | Hologres所有版本 | 1字节 | 布尔类型。 | True False | True |
 | REAL（别名FLOAT4） | Hologres所有版本 | 4字节 | 可变精度，不精确。 说明在PostgreSQL生态中FLOAT不设置精度默认对应的是DOUBLE PRECISION（FLOAT8）。 | 精度为6位的十进制数字。 | 123.123 |
-
-实时数仓 Hologres
 
 | DOUBLE PRECISION（别名FLOAT8） | Hologres所有版本 | 8字节 | 可变精度，不精确。 | 精度为15位的十进制数字。 | 123.123456789123 |
 |---|---|---|---|---|---|
@@ -629,12 +807,10 @@ Hologres的数据类型与PostgreSQL的数据类型兼容。本文为您介绍Ho
 | TIME | Hologres 0.9版本新增 | 8字节 | 一天中的时间（不带时区），解析度为微秒。 | 00:00:00~24:00:00 | 12:00:00 |
 | INET | Hologres 0.9版本新增 | 详情请参见网络地址类型。 | INE在一个数据域里保存一个IPv4 或IPv6 主机地址。 | 无 | 192.***.***.128/25 |
 
-|  |  | 说明标准PostgreSQL使用 TIMESTAMPTZ 的+或者-符号，以及符号后的时区偏移来识别 TIMESTAMP WITH TIME |  |
+|   |   | 说明标准PostgreSQL使用 TIMESTAMPTZ 的+或者-符号，以及符号后的时区偏移来识别 TIMESTAMP WITH TIME |   |
 |---|---|---|---|
-|  |  |  | TIMESTAMP WITH TIME |
-|  |  | ZONE |  |
-
-实时数仓 Hologres
+|   |   |   | TIMESTAMP WITH TIME |
+|   |   | ZONE |   |
 
 | MONEY | Hologres 0.9版本新增 | 8字节，详情请参见货币类型。 | money类型存储固定小数精度的货币数字。 | - 92233720368547758.08 ~+92233720368547758 .07 | 12.34美元 |
 |---|---|---|---|---|---|
@@ -646,12 +822,18 @@ Hologres的数据类型与PostgreSQL的数据类型兼容。本文为您介绍Ho
 TIMESTAMP WITH TIME ZONE、DATE和DECIMAL的示例SQL语句如下。
 
 ```
+CREATE TABLE test_data_type (
   tswtz_column TIMESTAMP WITH TIME ZONE,
   date_column date,
   decimal_column decimal(38, 10),
   char_column char(20),
   varchar_volumn varchar(225)
-); VALUES ('2004-10-19 08:08:08', '2004-10-19', 123.456, 'abcd', 'a'); SELECT * FROM test_data_type; +-----------------------+-------------+----------------+----------------------+----------------+
+```
+
+);
+
+```
+INSERT INTO test_data_type VALUES ('2004-10-19 08:08:08', '2004-10-19', 123.456, 'abcd', 'a'); SELECT * FROM test_data_type; +-----------------------+-------------+----------------+----------------------+----------------+
 |      tswtz_column     | date_column | decimal_column |     char_column      | varchar_volumn |
 ------------------------+-------------+----------------+----------------------+----------------+
 |2004-10-19 08:08:08+08 | 2004-10-19  | 123.4560000000 | abcd                 | a              |
@@ -689,30 +871,32 @@ SET bytea_output = 'escape'; SELECT 'abc \153\154\155 \052\251\124'::bytea; +---
 
 **支持的数组类型**
 
-Hologres当前版本仅支持如下一维数组类型。 int4[] int8[] float4[] 实时数仓 Hologres float8[] boolean[] text[]
+Hologres当前版本仅支持如下一维数组类型。 int4[] int8[] float4[] float8[] boolean[] text[]
 
 **使用示例**
 
 **声明数组**
 
 ```
+CREATE TABLE array_example(
  int4_array int4[],
  int8_array int8[],
  float4_array float4[],
  float8_array float8[],
  boolean_array boolean[],
  text_array text[]
-);
 ```
+
+);
 
 **插入数组**
 
 使用ARRAY关键字。
 
-| INSERT INTO array_example( int4_array, int8_array, float4_array, float8_array, boolean_array, text_array) VALUES (ARRAY[1, 2, 3, 4], ARRAY[1, 2, 3, 4], ARRAY[1.0, 2.0], ARRAY[1.0, 2.0, 3.0], ARRAY[true, true, false], ARRAY['foo1', 'foo2', 'foo3']); |  |  |
+| INSERT INTO array_example( int4_array, int8_array, float4_array, float8_array, boolean_array, text_array) VALUES (ARRAY[1, 2, 3, 4], ARRAY[1, 2, 3, 4], ARRAY[1.0, 2.0], ARRAY[1.0, 2.0, 3.0], ARRAY[true, true, false], ARRAY['foo1', 'foo2', 'foo3']); |   |   |
 |---|---|---|
 | 使用 | {} | 表达式。 |
-| INSERT INTO array_example( int4_array, int8_array, float4_array, float8_array, boolean_array, text_array) VALUES ('{1, 2, 3, 4}', '{1, 2, 3, 4}', '{1.0, 2.0}', '{1.0, 2.0, 3.0}', '{true, true, false}', '{"foo1", "foo2", "foo3"}'); |  |  |
+| INSERT INTO array_example( int4_array, int8_array, float4_array, float8_array, boolean_array, text_array) VALUES ('{1, 2, 3, 4}', '{1, 2, 3, 4}', '{1.0, 2.0}', '{1.0, 2.0, 3.0}', '{true, true, false}', '{"foo1", "foo2", "foo3"}'); |   |   |
 
 **查询数组**
 
@@ -741,51 +925,43 @@ SELECT int4_array[1:2] FROM array_example;
 | DOUBLE | FLOAT FLOAT8 | Hologres所有版本 | 无 |
 | BOOLEAN | BOOL | Hologres所有版本 | 无 |
 
-实时数仓 Hologres
-
-|  | DATETIME |  | TIMESTAMP WITH TIME ZONE |  | Hologres所有版本 | MaxCompute的DATETIME是日期时间类型，使用东八区时间作为系统标准时间。范围从0000年1月1日到9999年12 月31日，精确到毫秒。 |
+|   | DATETIME |   | TIMESTAMP WITH TIME ZONE |   | Hologres所有版本 | MaxCompute的DATETIME是日期时间类型，使用东八区时间作为系统标准时间。范围从0000年1月1日到9999年12 月31日，精确到毫秒。 |
 |---|---|---|---|---|---|---|
-|  | DECIMAL |  | NUMERIC |  | Hologres所有版本 | MaxCompute的DECIMAL如果未指定精度，则默认为（38，18），使用IMPORT FOREIGN SCHEMA创建表时系统会自动转换精度。 |
-|  | TIMESTAMP |  | TIMESTAMP WITH TIME ZONE |  | Hologres 0.8新增 | MaxCompute的TIMESTAMP取值范围为0000-01-01 00:00:00.000000000~9999-12- 31 23.59:59.999999999，精确到纳秒。 Hologres支持的TIMESTAMPTZ精确到毫秒。 Hologres内部已做精度转换，在读取过程中会自动处理成毫秒。 |
-|  | CHAR(n) |  | 默认为CHAR(n)。 Hologres也支持映射MaxCompute的CHAR(n)为 TEXT类型。您需要设置参数 set |  | Hologres 0.8新增 | MaxCompute的CHAR(n)为固定长度字符类型，n为长度。最大取值为255。长度不足则使用空格填充。 |
-|  |  |  |  | set | Hologres 0.8新增 |  |
-|  |  |  | hg_enable_convert_type_for_foreign_table |  |  |  |
-|  |  |  | = true |  |  |  |
-|  | VARCHAR(n) |  | 默认为VARCHAR(n)。 Hologres也支持映射MaxCompute的CHAR(n)为 TEXT类型。您需要设置参数 set |  | Hologres 0.8新增 | MaxCompute的VARCHAR(n)为变长字符类型，n为长度。取值范围为 1~65535。 |
-|  |  |  |  | set | Hologres 0.8新增 |  |
-|  |  |  | hg_enable_convert_type_for_foreign_table |  |  |  |
-|  |  |  | = true |  |  |  |
-|  | DATE |  | DATE |  | Hologres 0.8新增 | 无 |
-|  | SMALLINT |  | 默认为INT2。 Hologres也支持映射MaxCompute的SMALLINT为 INT8类型。您需要设置参数 set |  | Hologres所有版本（0.8版本为 int4，0.9版本为int2） | 无 |
-|  |  |  |  | set | Hologres所有版本（0.8版本为 int4，0.9版本为int2） |  |
-|  |  |  | hg_enable_convert_type_for_foreign_table |  |  |  |
-|  |  |  | = true |  |  |  |
-|  | TINYINT |  | 默认为INT2。 Hologres也支持映射MaxCompute的SMALLINT为 INT8类型。您需要设置参数 set |  | Hologres所有版本（0.8版本为 int4，0.9版本为int2） | 无 |
-|  |  |  |  | set | Hologres所有版本（0.8版本为 |  |
-|  |  |  | hg_enable_convert_type_for_foreign_table |  | int4， |  |
-|  |  |  | = true |  |  |  |
-|  | CHAR |  | 不支持 |  | 不支持 | 无 |
-|  | ARRAY<INT> |  | INT4[] |  | Hologres 0.8新增 | 无 |
-|  | ARRAY<BIGINT> |  | INT8[] |  | Hologres 0.8新增 | 无 |
-|  | ARRAY<FLOAT> |  | FLOAT4[] |  | Hologres 0.8新增 | 无 |
-|  | ARRAY<DOUBLE> |  | FLOAT8[] |  | Hologres 0.8新增 | 无 |
-|  | ARRAY<BOOLEAN> |  | BOOLEAN[] |  | Hologres 0.8新增 | 无 |
-|  | ARRAY<STRING> |  | TEXT[] |  | Hologres 0.8新增 | 无 |
-|  | BINARY |  | BYTEA |  | Hologres 0.9新增 | 无 |
-|  | ARRAY<TINYINT> |  | 不支持 |  | 不支持 | 无 |
-|  | ARRAY<SMALLINT> |  | 不支持 |  | 不支持 | 无 |
+|   | DECIMAL |   | NUMERIC |   | Hologres所有版本 | MaxCompute的DECIMAL如果未指定精度，则默认为（38，18），使用IMPORT FOREIGN SCHEMA创建表时系统会自动转换精度。 |
+|   | TIMESTAMP |   | TIMESTAMP WITH TIME ZONE |   | Hologres 0.8新增 | MaxCompute的TIMESTAMP取值范围为0000-01-01 00:00:00.000000000~9999-12- 31 23.59:59.999999999，精确到纳秒。 Hologres支持的TIMESTAMPTZ精确到毫秒。 Hologres内部已做精度转换，在读取过程中会自动处理成毫秒。 |
+|   | CHAR(n) |   | 默认为CHAR(n)。 Hologres也支持映射MaxCompute的CHAR(n)为 TEXT类型。您需要设置参数 set |   | Hologres 0.8新增 | MaxCompute的CHAR(n)为固定长度字符类型，n为长度。最大取值为255。长度不足则使用空格填充。 |
+|   |   |   |   | set | Hologres 0.8新增 |   |
+|   |   |   | hg_enable_convert_type_for_foreign_table |   |   |   |
+|   |   |   | = true |   |   |   |
+|   | VARCHAR(n) |   | 默认为VARCHAR(n)。 Hologres也支持映射MaxCompute的CHAR(n)为 TEXT类型。您需要设置参数 set |   | Hologres 0.8新增 | MaxCompute的VARCHAR(n)为变长字符类型，n为长度。取值范围为 1~65535。 |
+|   |   |   |   | set | Hologres 0.8新增 |   |
+|   |   |   | hg_enable_convert_type_for_foreign_table |   |   |   |
+|   |   |   | = true |   |   |   |
+|   | DATE |   | DATE |   | Hologres 0.8新增 | 无 |
+|   | SMALLINT |   | 默认为INT2。 Hologres也支持映射MaxCompute的SMALLINT为 INT8类型。您需要设置参数 set |   | Hologres所有版本（0.8版本为 int4，0.9版本为int2） | 无 |
+|   |   |   |   | set | Hologres所有版本（0.8版本为 int4，0.9版本为int2） |   |
+|   |   |   | hg_enable_convert_type_for_foreign_table |   |   |   |
+|   |   |   | = true |   |   |   |
+|   | TINYINT |   | 默认为INT2。 Hologres也支持映射MaxCompute的SMALLINT为 INT8类型。您需要设置参数 set |   | Hologres所有版本（0.8版本为 int4，0.9版本为int2） | 无 |
+|   |   |   |   | set | Hologres所有版本（0.8版本为 |   |
+|   |   |   | hg_enable_convert_type_for_foreign_table |   | int4， |   |
+|   |   |   | = true |   |   |   |
+|   | CHAR |   | 不支持 |   | 不支持 | 无 |
+|   | ARRAY<INT> |   | INT4[] |   | Hologres 0.8新增 | 无 |
+|   | ARRAY<BIGINT> |   | INT8[] |   | Hologres 0.8新增 | 无 |
+|   | ARRAY<FLOAT> |   | FLOAT4[] |   | Hologres 0.8新增 | 无 |
+|   | ARRAY<DOUBLE> |   | FLOAT8[] |   | Hologres 0.8新增 | 无 |
+|   | ARRAY<BOOLEAN> |   | BOOLEAN[] |   | Hologres 0.8新增 | 无 |
+|   | ARRAY<STRING> |   | TEXT[] |   | Hologres 0.8新增 | 无 |
+|   | BINARY |   | BYTEA |   | Hologres 0.9新增 | 无 |
+|   | ARRAY<TINYINT> |   | 不支持 |   | 不支持 | 无 |
+|   | ARRAY<SMALLINT> |   | 不支持 |   | 不支持 | 无 |
 
-**说明**
-
-当MaxCompute数据表中含有Hologres不支持的类型字段时，如果Hologres不访问该字段，则可以正常查询所支持的类型字段。 实时数仓 Hologres
+> **说明：** 当MaxCompute数据表中含有Hologres不支持的类型字段时，如果Hologres不访问该字段，则可以正常查询所支持的类型字段。
 
 **Blink/Flink与Hologres的数据类型映射**
 
-Blink/Flink与Hologres的数据类型映射如下表所示。
-
-**说明**
-
-Binlog源表目前只支持部分数据类型，详情请参见Flink实时消费Hologres Binlog。
+Blink/Flink与Hologres的数据类型映射如下表所示。 Binlog源表目前只支持部分数据类型，详情请参见Flink实时消费Hologres Binlog。
 
 | Flink数据类型 | Hologres数据类型 | 支持映射的Hologres版本 | 支持映射的Flink版本 |
 |---|---|---|---|
@@ -803,8 +979,6 @@ Binlog源表目前只支持部分数据类型，详情请参见Flink实时消费
 | VARCHAR | JSON | Hologres 0.9新增 | 结果表：Flink引擎VVR-4.0.12-Flink-1.13版本开始支持，RPC模式暂不支持。 源表：Flink引擎VVR-6.0.3-Flink-1.15版本开始支持，RPC模式暂不支持。 维表：Flink引擎VVR-4.0.12-Flink-1.13版本开始支持，RPC模式暂不支持。 |
 | BYTES | RoaringBitmap | Hologres 0.10新增 | 结果表：Flink引擎VVR-4.0.12-Flink-1.13版本开始支持，RPC模式暂不支持。 源表：Flink引擎VVR-6.0.3-Flink-1.15版本开始支持，RPC模式暂不支持。 维表：Flink引擎VVR-4.0.12-Flink-1.13版本开始支持，RPC模式暂不支持。 |
 | TINYINT | SMALLINT | Hologres所有版本 | 结果表：Flink引擎VVR-4.0.13-Flink-1.13版本开始支持，RPC模式暂不支持。 源表：Flink引擎VVR-6.0.3-Flink-1.15版本开始支持，RPC模式暂不支持。 维表：Flink引擎VVR-4.0.13-Flink-1.13版本开始支持，RPC模式暂不支持。 |
-
-实时数仓 Hologres
 
 | SMALLINT | SMALLINT | Hologres所有版本 | 结果表：所有版本支持。 源表：Flink引擎VVR-6.0.3-Flink-1.15版本开始支持，RPC模式暂不支持。 维表：所有版本支持。 |
 |---|---|---|---|
@@ -834,8 +1008,6 @@ MySQL与Hologres数据类型映射如下表所示。
 | FLOAT | REAL |
 | INT INTEGER | INT INTEGER |
 
-实时数仓 Hologres
-
 | MEDIUMINT | INTEGER |
 |---|---|
 | NUMERIC(p,s) | NUMERIC(p,s) |
@@ -849,7 +1021,7 @@ MySQL与Hologres数据类型映射如下表所示。
 | VARCHAR(n) | VARCHAR(n) |
 | VARCHAR(max) | TEXT |
 
-#### 1.3.2. 自增序列Serial
+#### 1.3.2 自增序列Serial
 
 实时数仓Hologres兼容PostgreSQL生态，支持在建表时将字段的类型定义为Serial和Bigserial来定义自增的字段。
 
@@ -858,9 +1030,11 @@ MySQL与Hologres数据类型映射如下表所示。
 Hologres在建表时可以将字段的数据类型定义为**Serial**和**Bigserial**。其中，**Serial**表示INT4类型的自增字段，**Bigserial**表示INT8类型的自增字段。 配置Serial类型的自增序列。如下以Serial类型为例，对表格中的colname字段实现自增，Bigserial类型同样适用。
 
 ```
+CREATE TABLE tablename (
     colname serial
-);
 ```
+
+);
 
 **使用限制**
 
@@ -871,7 +1045,13 @@ Hologres不能指定Serial和Bigserial的额外参数，包括**递增步长**�
 使用SQL语句实现自增序列。如下以Serial类型为例，使用SQL语句实现自增序列，Bigserial类型同样适用。 `//`创建表，包含`id`和`f1`两个字段。
 
 ```
-create table if not exists test_tb(id serial primary key, f1 text); insert into test_tb(f1) values('1'); insert into test_tb(f1) values('2'); insert into test_tb(f1) values('3');
+create table if not exists test_tb(id serial primary key, f1 text);
+```
+
+`//`在`insert`语句中，给`f1`字段插入数据。
+
+```
+insert into test_tb(f1) values('1'); insert into test_tb(f1) values('2'); insert into test_tb(f1) values('3');
 ```
 
 `//`查询`test_tb`表，按照`id`增序排列。
@@ -880,7 +1060,7 @@ create table if not exists test_tb(id serial primary key, f1 text); insert into 
 select * from test_tb order by id asc;
 ```
 
-使用JDBC连接Hologres，实现自增序列。如下以Serial类型为例，使用JDBC连接Hologres实现自增序列，Bigserial类型同样适用。 实时数仓 Hologres
+使用JDBC连接Hologres，实现自增序列。如下以Serial类型为例，使用JDBC连接Hologres实现自增序列，Bigserial类型同样适用。
 
 ```java
 package test; import java.sql.*; public class HoloSerial {
@@ -893,11 +1073,9 @@ package test; import java.sql.*; public class HoloSerial {
         try (Statement stmt = conn.createStatement()) {
             stmt.execute("drop table if exists test_tb;");
             stmt.execute("create table if not exists test_tb(id serial primary key, f1 text);");
-        }
-    }
 ```
 
-`//`给`f1`字段插入数据。
+`}` `}` `//`给`f1`字段插入数据。
 
 ```java
     private static void TestSerial(Connection conn) throws Exception {
@@ -906,11 +1084,9 @@ package test; import java.sql.*; public class HoloSerial {
                 stmt.setString(1, String.valueOf(i + 1));
                 int affected_rows = stmt.executeUpdate();
                 System.out.println("affected rows => " + affected_rows);
-            }
-        }
 ```
 
-`//`查询`test_tb`表，按照`id`增序排列。
+`}` `}` `//`查询`test_tb`表，按照`id`增序排列。
 
 ```java
         try (PreparedStatement stmt = conn.prepareStatement("select * from test_tb order by id asc")) {
@@ -918,13 +1094,9 @@ package test; import java.sql.*; public class HoloSerial {
                 while(rs.next()) {
                     String res = rs.getObject(1).toString() + "\t" + rs.getObject(2).toString();
                     System.out.println(res);
-                }
-            }
-        }
-    }
 ```
 
-`//`使用`JDBC`连接`Hologres`。
+`}` `}` `}` `}` `//`使用`JDBC`连接`Hologres`。
 
 ```
     public static void main(String[] args) throws Exception {
@@ -937,12 +1109,11 @@ package test; import java.sql.*; public class HoloSerial {
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             Init(conn);
             TestSerial(conn);
-        }
-    }
-}
 ```
 
-#### 1.3.3. JSON和JSONB类型
+`}` `}` `}`
+
+#### 1.3.3 JSON和JSONB类型
 
 文将为你介绍Hologres中JSON和JSONB数据类型的语法和使用方法。
 
@@ -952,26 +1123,26 @@ package test; import java.sql.*; public class HoloSerial {
 
 **使用限制**
 
-Hologres支持JSON和JSONB两种JSON数据类型，在使用时需要注意的事项如下： 仅Hologres V0.9及以上版本支持JSON类型，如果您的实例是V0.9以下版本，请您升级实例。 仅Hologres V1.1及以上版本支持JSONB类型创建GIN索引。 仅Hologres V1.3及以上版本支持JSONB类型开启列式存储，且JSONB的列存优化仅能用于列存表，行存表暂不支持，并且至少1000条数据才会触发列存优化。 暂不支持的函数包括：json_each/jsonb_each、json_each_text/jsonb_each_text、json_extract_path/jsonb_extract_path、 jsonb_agg/jsonb_each/jsonb_to_record。 如果您需要使用jsonb_extract_path和json_extract_path函数可以使用如下等价写法。 实时数仓 Hologres
+Hologres支持JSON和JSONB两种JSON数据类型，在使用时需要注意的事项如下： 仅Hologres V0.9及以上版本支持JSON类型，如果您的实例是V0.9以下版本，请您升级实例。 仅Hologres V1.1及以上版本支持JSONB类型创建GIN索引。 仅Hologres V1.3及以上版本支持JSONB类型开启列式存储，且JSONB的列存优化仅能用于列存表，行存表暂不支持，并且至少1000条数据才会触发列存优化。 暂不支持的函数包括：json_each/jsonb_each、json_each_text/jsonb_each_text、json_extract_path/jsonb_extract_path、 jsonb_agg/jsonb_each/jsonb_to_record。 如果您需要使用jsonb_extract_path和json_extract_path函数可以使用如下等价写法。
 
 ```
+SELECT json_extract_path(
                         '{"key":{"key1":"key1","key2":"key2"}}'::json
                         , 'key'
                         , 'key1'
-);
 ```
 
-`--json_extract_path`函数的等价写法如下
+); `--json_extract_path`函数的等价写法如下
 
 ```
     '{"key":{"key1":"key1","key2":"key2"}}'::json #> '{"key","key1"}';
+SELECT jsonb_extract_path(
             '{"key":{"key1":"key1","key2":"key2"}}'::jsonb
             , 'key'
             , 'key1'
-);
 ```
 
-`-- jsonb_extract_path`函数的等价写法如下
+); `-- jsonb_extract_path`函数的等价写法如下
 
 ```
     '{"key":{"key1":"key1","key2":"key2"}}'::jsonb #> '{"key","key1"}';
@@ -983,55 +1154,53 @@ Hologres支持JSON和JSONB两种JSON数据类型，在使用时需要注意的�
 
 常用的JSON和JSONB操作符如下表所示：
 
-| 操作符 | 右操作数类型 | 描述 |  |  | 操作示例 |  | 执行结果 |  |
+| 操作符 | 右操作数类型 | 描述 |   |   | 操作示例 |   | 执行结果 |   |
 |---|---|---|---|---|---|---|---|---|
-| -> | int | 获得JSON数组元素（索引从0开始，负整数从末尾开始计）。 |  |  | select '[{"a":"foo"},{"b":"bar"}, |  | {"c":"baz"} |  |
-|  |  |  |  |  |  | select '[{"a":"foo"},{"b":"bar"}, | {"c":" |  |
-|  |  |  |  |  |  |  |  | {"c":" |
-|  |  |  |  |  | {"c":"baz"}]'::json->2 |  |  |  |
-| -> | text | 通过键获得JSON对象域。 |  |  | select '{"a": {"b":"foo"}}'::json->'a' |  | {"b":"foo"} |  |
-| ->> | int | 以TEXT形式获得JSON数组元素。 |  |  | select '[1,2,3]'::json->>2 |  | 3 |  |
-| ->> | text | 以TEXT形式获得JSON对象域。 |  |  | select '{"a":1,"b":2}'::json->>'b' |  | 2 |  |
-| #> | text[] | 获取在指定路径的JSON对象。 |  |  | select '{"a": {"b":{"c": |  | {"c":"foo"} |  |
-|  |  |  |  |  |  | select '{"a": {"b":{"c": |  |  |
-|  |  |  |  | 对象。 | "foo"}}}'::json#>'{a,b}' |  |  |  |
-| #>> | text[] | 以TEXT形式获取指定路径的JSON对象。 |  |  | select '{"a":[1,2,3],"b": |  | 3 |  |
-|  |  |  |  |  |  | select '{"a":[1,2,3],"b": | 3 |  |
-|  |  |  |  |  |  |  |  | 3 |
-|  |  |  |  | 径的对象。 | [4,5,6]}'::json#>>'{a,2}' |  |  |  |
+| -> | int | 获得JSON数组元素（索引从0开始，负整数从末尾开始计）。 |   |   | select '[{"a":"foo"},{"b":"bar"}, |   | {"c":"baz"} |   |
+|   |   |   |   |   |   | select '[{"a":"foo"},{"b":"bar"}, | {"c":" |   |
+|   |   |   |   |   |   |   |   | {"c":" |
+|   |   |   |   |   | {"c":"baz"}]'::json->2 |   |   |   |
+| -> | text | 通过键获得JSON对象域。 |   |   | select '{"a": {"b":"foo"}}'::json->'a' |   | {"b":"foo"} |   |
+| ->> | int | 以TEXT形式获得JSON数组元素。 |   |   | select '[1,2,3]'::json->>2 |   | 3 |   |
+| ->> | text | 以TEXT形式获得JSON对象域。 |   |   | select '{"a":1,"b":2}'::json->>'b' |   | 2 |   |
+| #> | text[] | 获取在指定路径的JSON对象。 |   |   | select '{"a": {"b":{"c": |   | {"c":"foo"} |   |
+|   |   |   |   |   |   | select '{"a": {"b":{"c": |   |   |
+|   |   |   |   | 对象。 | "foo"}}}'::json#>'{a,b}' |   |   |   |
+| #>> | text[] | 以TEXT形式获取指定路径的JSON对象。 |   |   | select '{"a":[1,2,3],"b": |   | 3 |   |
+|   |   |   |   |   |   | select '{"a":[1,2,3],"b": | 3 |   |
+|   |   |   |   |   |   |   |   | 3 |
+|   |   |   |   | 径的对象。 | [4,5,6]}'::json#>>'{a,2}' |   |   |   |
 
 **额外的JSON和JSONB操作符**
 
 除了常用的JSON和JSONB操作符之外，也支持如下额外操作符，满足不同业务开发需求。
 
-| 操作符 | 右操作数类型 | 描述 |  |  |  |  | 操作示例 |  |  | 执行结果 |  |
+| 操作符 | 右操作数类型 | 描述 |   |   |   |   | 操作示例 |   |   | 执行结果 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| @> | jsonb | 左侧的JSON值是否包含右侧的JSON路径或值。 |  |  |  |  | select '{"a":1, "b":2}'::jsonb @> |  |  | true |  |
-|  |  |  |  |  |  |  |  | select '{"a":1, "b":2}'::jsonb @> |  |  |  |
-|  |  |  |  |  | 值是否包含右侧的路径或值。 |  | '{"b":2}'::jsonb |  |  |  |  |
-| <@ | jsonb | 左侧的JSON路径或值是否被包含在右侧的JSON值中。 |  |  |  |  | select '{"b":2}'::jsonb <@ '{"a":1, |  |  | true |  |
-|  |  |  |  |  |  |  |  | select '{"b":2}'::jsonb <@ '{"a":1, |  |  |  |
-|  |  |  |  | 路径或值是否被包含在右侧的值中。 |  |  | "b":2}'::jsonb |  |  |  |  |
-| ? | text | 键或元素字符串是否存在于JSON值中。 |  |  |  |  | select '{"a":1, "b":2}'::jsonb ? 'b' |  |  | true |  |
-| ?\| | text[] | 数组字符串中的任何一个键或元素字符串是否存在于 JSON值中。 |  |  |  |  | select '{"a":1, "b":2, "c":3}'::jsonb ?\| |  |  | true |  |
-|  |  |  |  |  |  |  |  | select '{"a":1, "b":2, "c":3}'::jsonb ?\| |  | true |  |
-|  |  |  |  |  |  |  |  |  |  |  | true |
-|  |  |  | SON值中。 |  |  |  | array['b', 'c'] |  |  |  |  |
-| ?& | text[] | 是否所有数组字符串都存在于JSON值中。 |  |  |  |  | select '["a", "b"]'::jsonb ?& array['a', 'b'] |  |  | true |  |
-| \|\| | jsonb | 将两个JSONB值串接成一个新的JSONB值。 说明 \|\| 操作符将其每一个JSON中的操作元素串接起来，但不会递归操作。例如：两个操作数都是具有相同键字段名称的对象，则结果中字段的值将恰好是右侧操作数的值。 |  |  |  |  | select '["a", "b"]'::jsonb \|\| '["c", |  |  |  |  |
-|  |  |  |  |  |  |  |  | select '["a", "b"]'::jsonb \|\| '["c", |  |  | ["a", "b", "c", |
-|  |  |  |  |  |  |  | "d"]'::jsonb |  |  | "d"] |  |
-| - | text | 根据键值从左操作数开始删除键或者值。 |  |  |  |  | select '{"a": "b"}'::jsonb - 'a' |  |  | {} |  |
+| @> | jsonb | 左侧的JSON值是否包含右侧的JSON路径或值。 |   |   |   |   | select '{"a":1, "b":2}'::jsonb @> |   |   | true |   |
+|   |   |   |   |   |   |   |   | select '{"a":1, "b":2}'::jsonb @> |   |   |   |
+|   |   |   |   |   | 值是否包含右侧的路径或值。 |   | '{"b":2}'::jsonb |   |   |   |   |
+| <@ | jsonb | 左侧的JSON路径或值是否被包含在右侧的JSON值中。 |   |   |   |   | select '{"b":2}'::jsonb <@ '{"a":1, |   |   | true |   |
+|   |   |   |   |   |   |   |   | select '{"b":2}'::jsonb <@ '{"a":1, |   |   |   |
+|   |   |   |   | 路径或值是否被包含在右侧的值中。 |   |   | "b":2}'::jsonb |   |   |   |   |
+| ? | text | 键或元素字符串是否存在于JSON值中。 |   |   |   |   | select '{"a":1, "b":2}'::jsonb ? 'b' |   |   | true |   |
+| ?\| | text[] | 数组字符串中的任何一个键或元素字符串是否存在于 JSON值中。 |   |   |   |   | select '{"a":1, "b":2, "c":3}'::jsonb ?\| |   |   | true |   |
+|   |   |   |   |   |   |   |   | select '{"a":1, "b":2, "c":3}'::jsonb ?\| |   | true |   |
+|   |   |   |   |   |   |   |   |   |   |   | true |
+|   |   |   | SON值中。 |   |   |   | array['b', 'c'] |   |   |   |   |
+| ?& | text[] | 是否所有数组字符串都存在于JSON值中。 |   |   |   |   | select '["a", "b"]'::jsonb ?& array['a', 'b'] |   |   | true |   |
+| \|\| | jsonb | 将两个JSONB值串接成一个新的JSONB值。 说明 \|\| 操作符将其每一个JSON中的操作元素串接起来，但不会递归操作。例如：两个操作数都是具有相同键字段名称的对象，则结果中字段的值将恰好是右侧操作数的值。 |   |   |   |   | select '["a", "b"]'::jsonb \|\| '["c", |   |   |   |   |
+|   |   |   |   |   |   |   |   | select '["a", "b"]'::jsonb \|\| '["c", |   |   | ["a", "b", "c", |
+|   |   |   |   |   |   |   | "d"]'::jsonb |   |   | "d"] |   |
+| - | text | 根据键值从左操作数开始删除键或者值。 |   |   |   |   | select '{"a": "b"}'::jsonb - 'a' |   |   | {} |   |
 
-实时数仓 Hologres
-
-| - | text[] | 根据键值从左操作数开始删除多个键或者值。 |  | select '{"a": "b", "c": "d"}'::jsonb - |  | {} |  |
+| - | text[] | 根据键值从左操作数开始删除多个键或者值。 |   | select '{"a": "b", "c": "d"}'::jsonb - |   | {} |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  | select '{"a": "b", "c": "d"}'::jsonb - | {} |  |
-|  |  |  |  |  |  |  | {} |
-|  |  |  | 键值从左操作数开始删除多个键或者值。 | '{a,c}'::text[] |  |  |  |
-| - | integer | 删除指定位置的数组元素（负值表示倒数）。如果 JSON不是数组则抛出一个错误。 |  | select '["a", "b"]'::jsonb - 1 |  | ["a"] |  |
-| #- | text[] | 删除具有指定路径元素（对于JSON数组，负值表示倒数）。 |  | select '["a", {"b":1}]'::jsonb #- '{1,b}' |  | ["a", {}] |  |
+|   |   |   |   |   | select '{"a": "b", "c": "d"}'::jsonb - | {} |   |
+|   |   |   |   |   |   |   | {} |
+|   |   |   | 键值从左操作数开始删除多个键或者值。 | '{a,c}'::text[] |   |   |   |
+| - | integer | 删除指定位置的数组元素（负值表示倒数）。如果 JSON不是数组则抛出一个错误。 |   | select '["a", "b"]'::jsonb - 1 |   | ["a"] |   |
+| #- | text[] | 删除具有指定路径元素（对于JSON数组，负值表示倒数）。 |   | select '["a", {"b":1}]'::jsonb #- '{1,b}' |   | ["a", {}] |   |
 
 **JSON和JSONB函数**
 
@@ -1039,65 +1208,61 @@ Hologres支持JSON和JSONB两种JSON数据类型，在使用时需要注意的�
 
 如下为可以用于处理JSON值的函数描述及操作示例。
 
-| 函数 | 返回值 |  |  |  | 描述 |  |  |  | 操作示例 |  | 执行结果 |  |  |  |
+| 函数 | 返回值 |   |   |   | 描述 |   |   |   | 操作示例 |   | 执行结果 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| jsonarraylength(json) _ _ | int |  |  |  | 返回最外层JSON数组中的元素数量。 |  |  |  | select |  |  |  |  |  |
-| jsonbarraylength(jsonb) _ _ |  |  |  |  |  | 回最外层JSON数组中的元素数量。 |  |  | json_array_length('[1,2,3, {"f1":1,"f2":[5,6]},4]') |  | 5 |  |  |  |
-| jsonobjectkeys(json) _ _ | setof text |  |  |  | 返回最外层JSON对象中的键集合。 |  |  |  | select |  | json_object_key s |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | json_object_key s |  |  |
-| jsonbobjectkeys(jsonb) _ _ |  |  |  |  |  |  |  |  |  | select |  | --------------- |  |  |
-|  |  |  |  |  |  |  |  |  | json_object_keys('{"f1":"abc","f2 |  |  | --- |  |  |
-|  |  |  |  |  |  |  |  |  | ":{"f3":"a", "f4":"b"}}') |  | f1 f2 | f1 f2 |  |  |
-| jsonpopulaterecord(base _ _ anyelement, fromjson json) _ | anyelement |  |  |  | 扩展from _json中的对象成一个行，它的列匹配由base定义的记录类型。 |  |  |  | begin; create table myrowtype( a text, b text, c text);commit; select * from json_populate_record(null::myr owtype, '{"a": 1, "b": ["2", "a b"], "c": {"d": 4, "e": "a b c"}}') |  | a \| b \| c ---+----------- +------------- 1 \| {2,"a b"} \| {"d": 4, "e": "a b c"} |  |  |  |
-| jsonbpopulaterecord(base _ _ anyelement, fromjson jsonb) _ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| jsonpopulaterecordset(base _ _ anyelement, fromjson json) _ | setof anyelement |  |  |  | 扩展from _json中最外的对象数组为一个集合，该集合的列匹配由base定义的记录类型。 |  |  |  | begin; create table myrowtype(a text,b text); commit; select * from json_populate_recordset(null:: myrowtype, '[{"a":1,"b":2}, {"a":3,"b":4}]') |  | a \| b ---+--- 1 \| 2 3 \| 4 |  |  |  |
-| jsonbpopulaterecordset(base _ _ anyelement, fromjson jsonb) _ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| jsonarrayelements(json) _ _ | setof json |  |  |  | 把一个JSON数组扩展成一个JSON值的集合。 |  |  |  | select * from |  | value |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | value |  |  |
-|  |  |  |  |  |  |  |  |  |  | select * from |  | ----------- 1 |  |  |
-| jsonbarrayelements(jsonb) _ _ | setof jsonb |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | JSON值的集 |  | json_array_elements('[1,true, |  |  | true |  |  |
-|  |  |  |  |  |  |  |  |  | [2,false]]') |  |  |  |  |  |
-| jsonarrayelementstext(json) _ _ _ | setof text |  |  |  | 把一个JSON数组扩展成一个text值集合。 |  |  |  | select * from |  | value |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | value |  |  |
-|  |  |  |  |  |  |  |  |  |  | select * from |  | ----------- |  |  |
-| jsonbarrayelementstext(json _ _ _ b) |  |  |  |  |  |  | text值集合。 |  | json_array_elements_text('["foo", |  |  | foo bar |  |  |
-|  |  |  |  |  |  |  |  |  | "bar"]') |  |  |  |  |  |
-| jsontypeof(json) _ | text |  |  |  | 把最外层的JSON值的类型作为一个文本字符串返回。可能的类型是： object、array、 string、number、 boolean以及null。 |  |  |  | select json_typeof('-123.4') |  | number |  |  |  |
-| jsonbtypeof(jsonb) _ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| jsonarraylength(json) _ _ | int |   |   |   | 返回最外层JSON数组中的元素数量。 |   |   |   | select |   |   |   |   |   |
+| jsonbarraylength(jsonb) _ _ |   |   |   |   |   | 回最外层JSON数组中的元素数量。 |   |   | json_array_length('[1,2,3, {"f1":1,"f2":[5,6]},4]') |   | 5 |   |   |   |
+| jsonobjectkeys(json) _ _ | setof text |   |   |   | 返回最外层JSON对象中的键集合。 |   |   |   | select |   | json_object_key s |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | json_object_key s |   |   |
+| jsonbobjectkeys(jsonb) _ _ |   |   |   |   |   |   |   |   |   | select |   | --------------- |   |   |
+|   |   |   |   |   |   |   |   |   | json_object_keys('{"f1":"abc","f2 |   |   | --- |   |   |
+|   |   |   |   |   |   |   |   |   | ":{"f3":"a", "f4":"b"}}') |   | f1 f2 | f1 f2 |   |   |
+| jsonpopulaterecord(base _ _ anyelement, fromjson json) _ | anyelement |   |   |   | 扩展from _json中的对象成一个行，它的列匹配由base定义的记录类型。 |   |   |   | begin; create table myrowtype( a text, b text, c text);commit; select * from json_populate_record(null::myr owtype, '{"a": 1, "b": ["2", "a b"], "c": {"d": 4, "e": "a b c"}}') |   | a \| b \| c ---+----------- +------------- 1 \| {2,"a b"} \| {"d": 4, "e": "a b c"} |   |   |   |
+| jsonbpopulaterecord(base _ _ anyelement, fromjson jsonb) _ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| jsonpopulaterecordset(base _ _ anyelement, fromjson json) _ | setof anyelement |   |   |   | 扩展from _json中最外的对象数组为一个集合，该集合的列匹配由base定义的记录类型。 |   |   |   | begin; create table myrowtype(a text,b text); commit; select * from json_populate_recordset(null:: myrowtype, '[{"a":1,"b":2}, {"a":3,"b":4}]') |   | a \| b ---+--- 1 \| 2 3 \| 4 |   |   |   |
+| jsonbpopulaterecordset(base _ _ anyelement, fromjson jsonb) _ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| jsonarrayelements(json) _ _ | setof json |   |   |   | 把一个JSON数组扩展成一个JSON值的集合。 |   |   |   | select * from |   | value |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | value |   |   |
+|   |   |   |   |   |   |   |   |   |   | select * from |   | ----------- 1 |   |   |
+| jsonbarrayelements(jsonb) _ _ | setof jsonb |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | JSON值的集 |   | json_array_elements('[1,true, |   |   | true |   |   |
+|   |   |   |   |   |   |   |   |   | [2,false]]') |   |   |   |   |   |
+| jsonarrayelementstext(json) _ _ _ | setof text |   |   |   | 把一个JSON数组扩展成一个text值集合。 |   |   |   | select * from |   | value |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | value |   |   |
+|   |   |   |   |   |   |   |   |   |   | select * from |   | ----------- |   |   |
+| jsonbarrayelementstext(json _ _ _ b) |   |   |   |   |   |   | text值集合。 |   | json_array_elements_text('["foo", |   |   | foo bar |   |   |
+|   |   |   |   |   |   |   |   |   | "bar"]') |   |   |   |   |   |
+| jsontypeof(json) _ | text |   |   |   | 把最外层的JSON值的类型作为一个文本字符串返回。可能的类型是： object、array、 string、number、 boolean以及null。 |   |   |   | select json_typeof('-123.4') |   | number |   |   |   |
+| jsonbtypeof(jsonb) _ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 
-实时数仓 Hologres
-
-| jsonstripnulls(fromjson json) _ _ _ | json |  |  | 返回fromjson，其中所有具有空值的对象 |  |  | select |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| jsonstripnulls(fromjson json) _ _ _ | json |   |   | 返回fromjson，其中所有具有空值的对象 |   |   | select |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | select |  |  |  |  |  |  | [{"f1":1},2,null |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"f1":1},2,null |  |  |  |  |  |
-| jsonbstripnulls(fromjson _ _ _ jsonb) | jsonb |  |  | _ 域都被省略。其他空值不动。 |  |  | json_strip_nulls(' ull},2,null,3]') |  |  |  |  | [{"f1":1,"f2":n |  |  | ,3] |  |  |  |  |  |  |
-| jsonbset(target jsonb, path _ text[], newvalue _ jsonb[,createmissing _ boolean]) |  |  |  |  |  |  | select jsonb_set('[{"f1":1,"f2":null},2, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"f1": [2,3,4],"f2":null} |  |  |  |  |  |  |
-|  |  |  |  | 返回target，其中由path指定的节用 new _value替换，如果path指定的项不存在并且createmissing为真（默认为 |  |  | null,3]' false); |  |  | , '{0,f1}','[2,3,4]', |  |  |  |  | ,2,null,3] |  |  |  |  |  |  |
-|  | jsonb |  |  | _ true）则加上new _value。正如面向路径的操作符一样，出现在path中的负整数表示从 JSON数组的末尾开始数。 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | select |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | select |  |  |  |  |  |  |  | [{"f1": 1, "f2": |  |  |  |  |  |
-|  |  |  |  |  |  |  | jsonb_set('[{"f1": |  |  |  |  | 1,"f2":null},2] |  |  | null, "f3": [2, |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ', |  | '{0,f3}','[2,3,4]') |  |  |  |  |  | 3, 4]}, 2] |  |  |  |  |  |  |
-| jsonbinsert(target jsonb, path _ text[], newvalue jsonb, _ [insertafter boolean]) _ | jsonb |  |  | 返回被插入了new _value的target。如果 path指定的target节在一个JSONB数组 |  |  | select jsonb_insert('{"a": |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | select jsonb_insert('{"a": |  |  |  |  |  |  |  | {"a": [0, |  |  |  |  |  |
-|  |  |  |  |  | _ 的target节在一个JSONB数组 |  | [0,1,2]}', '{a, 1}', |  |  |  |  |  |  |  |  | "new_value", 1, |  |  |  |  |  |
-|  |  |  |  | 中，new _value将被插入到目标之前 |  |  | '"new_va |  |  | lue"') |  |  |  |  | 2]} |  |  |  |  |  |  |
-|  |  |  |  | （insert _after为false，默认情况）或者之后（insert _after为真）。如果path指定的 target节在一个JSONB对象内，则只有当 target不存在时才插入new _value。对于面向路径的操作符来说，出现在path中的负整 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | select jsonb_insert('{"a": |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | select jsonb_insert('{"a": |  |  |  |  |  |  |  | {"a": [0, 1, |  |  |  |  |  |
-|  |  |  |  |  | _ 操作符来说，出现在path中的负整 |  | [0,1,2]}', '{a, 1}', |  |  |  |  |  |  |  | "new_va |  | lue", |  |  |  |  |
-|  |  |  |  | 数表示从JSON数组的末尾开始计数。 |  |  | '"new_va |  |  | lue"', true) |  |  |  |  | 2]} |  |  |  |  |  |  |
-| jsonbpretty(fromjson jsonb) _ _ | text |  |  | 把from _json返回成一段缩进后的JSON文本。 |  |  | select |  |  |  |  |  |  |  | [ { "f1": 1, |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [ { "f1": 1, |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | select |  |  |  |  |  |  |  | "f2": null |  |  |  |  |  |
-|  |  |  |  |  |  | N文 | jsonb_pretty('[{"f1":1,"f2":null} |  |  |  |  |  |  |  |  | }, |  |  |  |  |  |
-|  |  |  |  |  |  |  | ,2,null,3]') |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| jsonbagg _ | jsonb |  |  | 将值（包括空值）聚合为JSON数组。 |  |  | DROP TABLE IF EXISTS t; CREATE TABLE t ( k int PRIMARY KEY, class int NOT NULL, v text NOT NULL ); INSERT INTO t (k, class, v) SELECT (1 + s.v), CASE (s.v) < 3 WHEN TRUE THEN 1 ELSE 2 END, chr(97 + s.v) FROM generate_series(0, 5) AS s (v); SELECT class, jsonb_agg(v ORDER BY v DESC) FILTER (WHERE v <> 'b') AS "jsonb_agg", jsonb_object_agg(v, k ORDER BY v DESC) FILTER (WHERE v <> 'e') AS "jsonb_object_agg(v, k)" FROM t GROUP BY class; |  |  |  |  |  |  |  | class \| jsonb_agg \| jsonb_object_ag g(v, k) -------+------- ----------+---- --------------- ------- 1 \| ["c", "a"] \| {"a": 1, "b": 2, "c": 3} 2 \| ["f", "e", "d"] \| {"d": 4, "f": 6} |  |  |  |  |  |  |
-
-实时数仓 Hologres
+|   |   |   |   |   |   |   |   | select |   |   |   |   |   |   | [{"f1":1},2,null |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"f1":1},2,null |   |   |   |   |   |
+| jsonbstripnulls(fromjson _ _ _ jsonb) | jsonb |   |   | _ 域都被省略。其他空值不动。 |   |   | json_strip_nulls(' ull},2,null,3]') |   |   |   |   | [{"f1":1,"f2":n |   |   | ,3] |   |   |   |   |   |   |
+| jsonbset(target jsonb, path _ text[], newvalue _ jsonb[,createmissing _ boolean]) |   |   |   |   |   |   | select jsonb_set('[{"f1":1,"f2":null},2, |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"f1": [2,3,4],"f2":null} |   |   |   |   |   |   |
+|   |   |   |   | 返回target，其中由path指定的节用 new _value替换，如果path指定的项不存在并且createmissing为真（默认为 |   |   | null,3]' false); |   |   | , '{0,f1}','[2,3,4]', |   |   |   |   | ,2,null,3] |   |   |   |   |   |   |
+|   | jsonb |   |   | _ true）则加上new _value。正如面向路径的操作符一样，出现在path中的负整数表示从 JSON数组的末尾开始数。 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | select |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | select |   |   |   |   |   |   |   | [{"f1": 1, "f2": |   |   |   |   |   |
+|   |   |   |   |   |   |   | jsonb_set('[{"f1": |   |   |   |   | 1,"f2":null},2] |   |   | null, "f3": [2, |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ', |   | '{0,f3}','[2,3,4]') |   |   |   |   |   | 3, 4]}, 2] |   |   |   |   |   |   |
+| jsonbinsert(target jsonb, path _ text[], newvalue jsonb, _ [insertafter boolean]) _ | jsonb |   |   | 返回被插入了new _value的target。如果 path指定的target节在一个JSONB数组 |   |   | select jsonb_insert('{"a": |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | select jsonb_insert('{"a": |   |   |   |   |   |   |   | {"a": [0, |   |   |   |   |   |
+|   |   |   |   |   | _ 的target节在一个JSONB数组 |   | [0,1,2]}', '{a, 1}', |   |   |   |   |   |   |   |   | "new_value", 1, |   |   |   |   |   |
+|   |   |   |   | 中，new _value将被插入到目标之前 |   |   | '"new_va |   |   | lue"') |   |   |   |   | 2]} |   |   |   |   |   |   |
+|   |   |   |   | （insert _after为false，默认情况）或者之后（insert _after为真）。如果path指定的 target节在一个JSONB对象内，则只有当 target不存在时才插入new _value。对于面向路径的操作符来说，出现在path中的负整 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | select jsonb_insert('{"a": |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | select jsonb_insert('{"a": |   |   |   |   |   |   |   | {"a": [0, 1, |   |   |   |   |   |
+|   |   |   |   |   | _ 操作符来说，出现在path中的负整 |   | [0,1,2]}', '{a, 1}', |   |   |   |   |   |   |   | "new_va |   | lue", |   |   |   |   |
+|   |   |   |   | 数表示从JSON数组的末尾开始计数。 |   |   | '"new_va |   |   | lue"', true) |   |   |   |   | 2]} |   |   |   |   |   |   |
+| jsonbpretty(fromjson jsonb) _ _ | text |   |   | 把from _json返回成一段缩进后的JSON文本。 |   |   | select |   |   |   |   |   |   |   | [ { "f1": 1, |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | [ { "f1": 1, |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | select |   |   |   |   |   |   |   | "f2": null |   |   |   |   |   |
+|   |   |   |   |   |   | N文 | jsonb_pretty('[{"f1":1,"f2":null} |   |   |   |   |   |   |   |   | }, |   |   |   |   |   |
+|   |   |   |   |   |   |   | ,2,null,3]') |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| jsonbagg _ | jsonb |   |   | 将值（包括空值）聚合为JSON数组。 |   |   | DROP TABLE IF EXISTS t; CREATE TABLE t ( k int PRIMARY KEY, class int NOT NULL, v text NOT NULL ); INSERT INTO t (k, class, v) SELECT (1 + s.v), CASE (s.v) < 3 WHEN TRUE THEN 1 ELSE 2 END, chr(97 + s.v) FROM generate_series(0, 5) AS s (v); SELECT class, jsonb_agg(v ORDER BY v DESC) FILTER (WHERE v <> 'b') AS "jsonb_agg", jsonb_object_agg(v, k ORDER BY v DESC) FILTER (WHERE v <> 'e') AS "jsonb_object_agg(v, k)" FROM t GROUP BY class; |   |   |   |   |   |   |   | class \| jsonb_agg \| jsonb_object_ag g(v, k) -------+------- ----------+---- --------------- ------- 1 \| ["c", "a"] \| {"a": 1, "b": 2, "c": 3} 2 \| ["f", "e", "d"] \| {"d": 4, "f": 6} |   |   |   |   |   |   |
 
 | jsonbobjectagg _ _ | jsonb | 将Key/Value对聚合为JSON对象，值可以为空，但名称不能为空。 | DROP TABLE IF EXISTS t; CREATE TABLE t ( k int PRIMARY KEY, class int NOT NULL, v text NOT NULL ); INSERT INTO t (k, class, v) SELECT (1 + s.v), CASE (s.v) < 3 WHEN TRUE THEN 1 ELSE 2 END, chr(97 + s.v) FROM generate_series(0, 5) AS s (v); SELECT class, jsonb_agg(v ORDER BY v DESC) FILTER (WHERE v <> 'b') AS "jsonb_agg", jsonb_object_agg(v, k ORDER BY v DESC) FILTER (WHERE v <> 'e') AS "jsonb_object_agg(v, k)" FROM t GROUP BY class; | class \| jsonb_agg \| jsonb_object_ag g(v, k) -------+------- ----------+---- --------------- ------- 1 \| ["c", "a"] \| {"a": 1, "b": 2, "c": 3} 2 \| ["f", "e", "d"] \| {"d": 4, "f": 6} |
 |---|---|---|---|---|
@@ -1105,50 +1270,48 @@ Hologres支持JSON和JSONB两种JSON数据类型，在使用时需要注意的�
 
 **解析函数**
 
-| 函数 | 描述 |  |  |  |  | 操作示例 |  |  | 执行结果 |
+| 函数 | 描述 |   |   |   |   | 操作示例 |   |   | 执行结果 |
 |---|---|---|---|---|---|---|---|---|---|
-| trycasttojsonb(text) _ _ _ | 将TEXT类型转换为JSONB类型。如果文本字段不符合JSONB格式，将返回NULL值。 说明仅Hologres V2.0.24及以上版本支持该函数。 |  |  |  |  | select |  |  | {"key": 1} NULL |
-|  |  |  |  |  |  |  | select |  |  |
-|  |  |  |  |  |  | try_cast_to_jsonb('{"key": |  |  |  |
-|  |  | 说明仅Hologres V2.0.24及以上版本支持该函数。 |  |  |  | 1}'); |  |  |  |
-|  |  |  |  |  |  |  | select |  | NULL |
-|  |  |  |  |  |  | try_cast_to_jsonb('{"key": |  |  |  |
-|  |  |  |  |  |  | 1'); |  |  |  |
+| trycasttojsonb(text) _ _ _ | 将TEXT类型转换为JSONB类型。如果文本字段不符合JSONB格式，将返回NULL值。 说明仅Hologres V2.0.24及以上版本支持该函数。 |   |   |   |   | select |   |   | {"key": 1} NULL |
+|   |   |   |   |   |   |   | select |   |   |
+|   |   |   |   |   |   | try_cast_to_jsonb('{"key": |   |   |   |
+|   |   | 说明仅Hologres V2.0.24及以上版本支持该函数。 |   |   |   | 1}'); |   |   |   |
+|   |   |   |   |   |   |   | select |   | NULL |
+|   |   |   |   |   |   | try_cast_to_jsonb('{"key": |   |   |   |
+|   |   |   |   |   |   | 1'); |   |   |   |
 
-实时数仓 Hologres
-
-| tojson(anyelement) _ | 此函数可以将该值返回为JSON。数组和组合会被 （递归）转换成数组和对象，对于不是数组和组合的值，如果有从该类型到JSON的造型，造型函数将被用来执行该转换，否则将产生一个标量值。对于任何不是数字、布尔、空值的标量类型，将使用文本表达，使其是一个有效的JSON 值。 |  |  |  | select to_json('Fred said |  |  |  | "Fred said \"Hi.\"" |  |  |  |
+| tojson(anyelement) _ | 此函数可以将该值返回为JSON。数组和组合会被 （递归）转换成数组和对象，对于不是数组和组合的值，如果有从该类型到JSON的造型，造型函数将被用来执行该转换，否则将产生一个标量值。对于任何不是数字、布尔、空值的标量类型，将使用文本表达，使其是一个有效的JSON 值。 |   |   |   | select to_json('Fred said |   |   |   | "Fred said \"Hi.\"" |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| tojsonb(anyelement) _ |  |  |  |  |  | select to_json('Fred said |  |  |  |  |  |  |
-|  |  |  | 该转换，否则将产生一个标量是数字、布尔、空值的标量类 |  | "Hi."'::text) |  |  |  |  |  |  |  |
-| arraytojson(anyarray [, _ _ prettybool]) _ | 此函数可以将数组作为一个JSON数组返回。一个 PostgreSQL多维数组会成为一个数组的JSON数组。如果pretty _bool为真，将在第1维度的元素之间增加换行。 |  |  |  | select array_to_json('{{1,5}, |  |  |  | [[1,5],[99,100]] |  |  |  |
-|  |  |  |  |  |  | select array_to_json('{{1,5}, |  |  | [[1,5],[99,10 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [[1,5],[99,10 |  |  |
-|  |  | retty _bool为真，将在第1维度的元素 |  |  | {99,100}}'::int[]) |  |  |  |  |  |  |  |
-| jsonbuildarray(VARIADIC "any") _ _ | 此函数可以从一个可变参数列表构造一个可能包含异质类型的JSON数组。 |  |  |  | select |  |  |  | [1, 2, "3", 4, 5] |  |  |  |
-|  |  |  |  |  |  | select |  |  |  |  |  |  |
-| jsonbbuildarray(VARIADIC _ _ "any") |  |  |  |  | json_build_array(1,2,'3',4,5) |  |  |  |  |  |  |  |
-| jsonbuildobject(VARIADIC "any") _ _ | 此函数可以从一个可变参数列表构造一个JSON对象。通过转换，该参数列表由交替出现的键和值 |  |  |  | select |  |  |  | {"foo": 1, "bar": 2} |  |  |  |
-|  |  |  |  |  |  | select |  |  |  |  |  |  |
-| jsonbbuildobject(VARIADIC _ _ "any") |  |  |  | 键和值 | json_build_object('foo',1,'bar',2 |  |  |  |  | {"foo": 1, "bar": 2} |  |  |
-|  | 构成。 |  |  |  | ) |  |  |  |  |  |  |  |
-| jsonobject(text[]) _ | 此函数可以从一个文本数组构造一个JSON对象。 该数组必须可以是具有偶数个成员的一维数组 （成员被当做交替出现的键/值对），或者是一个二维数组（每一个内部数组刚好有2个元素，可以被看做是键/值对）。 |  |  |  | select json_object('{a, 1, b, |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | select json_object('{a, 1, b, |  |  |  | {"a": "1", "b | ": "def", "c": |  |
-|  |  | 从一个文本数组构造一个JSON对象。 |  |  | "def", |  | c, 3.5}'); |  | "3.5"} |  |  |  |
-| jsonbobject(text[]) _ |  |  |  |  | select jsonb_object('{a, 1, b, |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | select jsonb_object('{a, 1, b, |  |  |  | {"a": "1", "b | ": "def", "c": |  |
-|  |  |  |  |  | "def", |  | c, 3.5}'); |  | "3.5"} |  |  |  |
-| jsonobject(keys text[], values _ text[]) | json _object的这种形式从两个独立的数组得到键/值对。在其他方面和一个参数的形式相同。 |  |  |  | select json_object('{a, b}', |  |  |  | {"a": "1", "b": "2"} |  |  |  |
-|  |  |  |  |  |  | select json_object('{a, b}', |  |  |  |  |  |  |
-| jsonbobject(keys text[], values _ text[]) |  | 在其他方面和一个参数的形式相同。 |  |  | '{1,2}') |  |  |  |  |  |  |  |
+| tojsonb(anyelement) _ |   |   |   |   |   | select to_json('Fred said |   |   |   |   |   |   |
+|   |   |   | 该转换，否则将产生一个标量是数字、布尔、空值的标量类 |   | "Hi."'::text) |   |   |   |   |   |   |   |
+| arraytojson(anyarray [, _ _ prettybool]) _ | 此函数可以将数组作为一个JSON数组返回。一个 PostgreSQL多维数组会成为一个数组的JSON数组。如果pretty _bool为真，将在第1维度的元素之间增加换行。 |   |   |   | select array_to_json('{{1,5}, |   |   |   | [[1,5],[99,100]] |   |   |   |
+|   |   |   |   |   |   | select array_to_json('{{1,5}, |   |   | [[1,5],[99,10 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [[1,5],[99,10 |   |   |
+|   |   | retty _bool为真，将在第1维度的元素 |   |   | {99,100}}'::int[]) |   |   |   |   |   |   |   |
+| jsonbuildarray(VARIADIC "any") _ _ | 此函数可以从一个可变参数列表构造一个可能包含异质类型的JSON数组。 |   |   |   | select |   |   |   | [1, 2, "3", 4, 5] |   |   |   |
+|   |   |   |   |   |   | select |   |   |   |   |   |   |
+| jsonbbuildarray(VARIADIC _ _ "any") |   |   |   |   | json_build_array(1,2,'3',4,5) |   |   |   |   |   |   |   |
+| jsonbuildobject(VARIADIC "any") _ _ | 此函数可以从一个可变参数列表构造一个JSON对象。通过转换，该参数列表由交替出现的键和值 |   |   |   | select |   |   |   | {"foo": 1, "bar": 2} |   |   |   |
+|   |   |   |   |   |   | select |   |   |   |   |   |   |
+| jsonbbuildobject(VARIADIC _ _ "any") |   |   |   | 键和值 | json_build_object('foo',1,'bar',2 |   |   |   |   | {"foo": 1, "bar": 2} |   |   |
+|   | 构成。 |   |   |   | ) |   |   |   |   |   |   |   |
+| jsonobject(text[]) _ | 此函数可以从一个文本数组构造一个JSON对象。 该数组必须可以是具有偶数个成员的一维数组 （成员被当做交替出现的键/值对），或者是一个二维数组（每一个内部数组刚好有2个元素，可以被看做是键/值对）。 |   |   |   | select json_object('{a, 1, b, |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | select json_object('{a, 1, b, |   |   |   | {"a": "1", "b | ": "def", "c": |   |
+|   |   | 从一个文本数组构造一个JSON对象。 |   |   | "def", |   | c, 3.5}'); |   | "3.5"} |   |   |   |
+| jsonbobject(text[]) _ |   |   |   |   | select jsonb_object('{a, 1, b, |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | select jsonb_object('{a, 1, b, |   |   |   | {"a": "1", "b | ": "def", "c": |   |
+|   |   |   |   |   | "def", |   | c, 3.5}'); |   | "3.5"} |   |   |   |
+| jsonobject(keys text[], values _ text[]) | json _object的这种形式从两个独立的数组得到键/值对。在其他方面和一个参数的形式相同。 |   |   |   | select json_object('{a, b}', |   |   |   | {"a": "1", "b": "2"} |   |   |   |
+|   |   |   |   |   |   | select json_object('{a, b}', |   |   |   |   |   |   |
+| jsonbobject(keys text[], values _ text[]) |   | 在其他方面和一个参数的形式相同。 |   |   | '{1,2}') |   |   |   |   |   |   |   |
 
 **JSONB索引**
 
 从Hologres V1.1版本开始，在查询层支持JSONB类型的GIN, BTree索引加速查询。在JSONB上创建GIN索引的方式有两种：使用默认的**jsonb_ops**操作符创建和使用**jsonb_path_ops**操作符创建。
 
-**说明**
+> **说明：** 当前索引都是针对JSONB类型，请尽量使用JSONB类型而不是JSON类型。
 
-当前索引都是针对JSONB类型，请尽量使用JSONB类型而不是JSON类型。 使用默认的**jsonb_ops**操作符创建索引
+使用默认的**jsonb_ops**操作符创建索引
 
 ```
 CREATE INDEX idx_name ON table_name USING gin (idx_col);
@@ -1164,21 +1327,19 @@ CREATE INDEX idx_name ON table_name USING gin (idx_col jsonb_path_ops);
 
 **原生PostgreSQL操作符**
 
-创建**jsonb_ops**操作符索引。 实时数仓 Hologres
+创建**jsonb_ops**操作符索引。
 
-| --1、创建表 BEGIN; DROP TABLE IF EXISTS json_table; CREATE TABLE IF NOT EXISTS json_table ( id INT ,j jsonb ); COMMIT; --2、创建jsonb_ops操作符索引 CREATE INDEX index_json on json_table USING GIN(j); --3、插入数据 INSERT INTO json_table VALUES (1, '{"key1": 1, "key2": [1, 2], "key3": {"a": "b"}}') , (1, '{"key1": 1}'), (2, '{"key2": [1, 2], "key3": {"a": "b"}}') ; --4、查询数据 SELECT * FROM json_table WHERE j ? 'key1'; --返回结果 id \| j ----+------------------------------------------------- 1 \| {"key1": 1, "key2": [1, 2], "key3": {"a": "b"}} 1 \| {"key1": 1} |  |  |  |  |
+| --1、创建表 BEGIN; DROP TABLE IF EXISTS json_table; CREATE TABLE IF NOT EXISTS json_table ( id INT ,j jsonb ); COMMIT; --2、创建jsonb_ops操作符索引 CREATE INDEX index_json on json_table USING GIN(j); --3、插入数据 INSERT INTO json_table VALUES (1, '{"key1": 1, "key2": [1, 2], "key3": {"a": "b"}}') , (1, '{"key1": 1}'), (2, '{"key2": [1, 2], "key3": {"a": "b"}}') ; --4、查询数据 SELECT * FROM json_table WHERE j ? 'key1'; --返回结果 id \| j ----+------------------------------------------------- 1 \| {"key1": 1, "key2": [1, 2], "key3": {"a": "b"}} 1 \| {"key1": 1} |   |   |   |   |
 |---|---|---|---|---|
-| 使用 | explain | 命令查看执行计划如下。 |  |  |
-| explain SELECT * FROM json_table WHERE j ? 'key1'; QUERY PLAN Gather (cost=0.00..0.26 rows=1000 width=12) -> Local Gather (cost=0.00..0.23 rows=1000 width=12) -> Decode (cost=0.00..0.23 rows=1000 width=12) -> Bitmap Heap Scan on json_table (cost=0.00..0.13 rows=1000 width=12) Recheck Cond: (j ? 'key1'::text) -> Bitmap Index Scan on index_json (cost=0.00..0.00 rows=0 width=0) Index Cond: (j ? 'key1'::text) Optimizer: HQO version 1.3.0 |  |  |  |  |
-| 执行计划中出现了 |  |  | Index Scan | 步骤，表明查询过程使用了索引。 |
+| 使用 | explain | 命令查看执行计划如下。 |   |   |
+| explain SELECT * FROM json_table WHERE j ? 'key1'; QUERY PLAN Gather (cost=0.00..0.26 rows=1000 width=12) -> Local Gather (cost=0.00..0.23 rows=1000 width=12) -> Decode (cost=0.00..0.23 rows=1000 width=12) -> Bitmap Heap Scan on json_table (cost=0.00..0.13 rows=1000 width=12) Recheck Cond: (j ? 'key1'::text) -> Bitmap Index Scan on index_json (cost=0.00..0.00 rows=0 width=0) Index Cond: (j ? 'key1'::text) Optimizer: HQO version 1.3.0 |   |   |   |   |
+| 执行计划中出现了 |   |   | Index Scan | 步骤，表明查询过程使用了索引。 |
 
 创建**jsonb_path_ops**操作符索引。
 
-| --1、创建表 BEGIN; DROP TABLE IF EXISTS json_table; CREATE TABLE IF NOT EXISTS json_table ( id INT ,j jsonb ); COMMIT; --2、创建jsonb_ops操作符索引 CREATE INDEX index_json on json_table USING GIN(j jsonb_path_ops); --3、插入数据 INSERT INTO json_table ( SELECT i, ('{ "key1": "'\|\|i\|\|'" ,"key2": "'\|\|i%100\|\|'" ,"key3": "'\|\|i%1000 \|\|'" ,"key4": "'\|\|i%10000\|\|'" ,"key5": "'\|\|i%100000\|\|'" }')::jsonb FROM generate_series(1, 1000000) i ) ; --4、查询包含'{"key1": "10"}'的数据 SELECT * FROM json_table WHERE j @> '{"key1": "10"}'::JSONB; --返回结果 id \| j ----+------------------------------------------------------------------------ 10 \| {"key1": "10", "key2": "10", "key3": "10", "key4": "10", "key5": "10"} (1 row) |  |  |
+| --1、创建表 BEGIN; DROP TABLE IF EXISTS json_table; CREATE TABLE IF NOT EXISTS json_table ( id INT ,j jsonb ); COMMIT; --2、创建jsonb_ops操作符索引 CREATE INDEX index_json on json_table USING GIN(j jsonb_path_ops); --3、插入数据 INSERT INTO json_table ( SELECT i, ('{ "key1": "'\|\|i\|\|'" ,"key2": "'\|\|i%100\|\|'" ,"key3": "'\|\|i%1000 \|\|'" ,"key4": "'\|\|i%10000\|\|'" ,"key5": "'\|\|i%100000\|\|'" }')::jsonb FROM generate_series(1, 1000000) i ) ; --4、查询包含'{"key1": "10"}'的数据 SELECT * FROM json_table WHERE j @> '{"key1": "10"}'::JSONB; --返回结果 id \| j ----+------------------------------------------------------------------------ 10 \| {"key1": "10", "key2": "10", "key3": "10", "key4": "10", "key5": "10"} (1 row) |   |   |
 |---|---|---|
 | 使用 | explain | 命令查看执行计划如下。 |
-
-实时数仓 Hologres
 
 ```
 explain SELECT * FROM json_table WHERE j @> '{"key1": "10"}'::JSONB;
@@ -1201,15 +1362,25 @@ explain SELECT * FROM json_table WHERE j @> '{"key1": "10"}'::JSONB;
 
 由于原生PostgreSQL的JSONB的GIN索引是非精确的索引，所以检索数据后需要进行recheck动作。最终导致创建索引后性能不一定提升。针对上述情况，Hologres实现了一种新的ops_class，可以省去recheck的动作，且若不指定索引操作符，系统会默认使用该操作符，具体使用方式如下。
 
-**说明**
+> **说明：** 使用该操作符时，由于最大存储127个字节，超过该长度的索引会被截断，所以JSONB字段超长时还是会被截断，从而发生recheck的操作。是否有recheck行为，可以使用EXPLAIN ANALYZE语句查看物理执行计划验证。
 
-使用该操作符时，由于最大存储127个字节，超过该长度的索引会被截断，所以JSONB字段超长时还是会被截断，从而发生recheck的操作。是否有recheck行为，可以使用EXPLAIN ANALYZE语句查看物理执行计划验证。 其中**jsonb_holo_ops**对应**jsonb_ops**，支持 ?, ?|, ?&, @> 的过滤操作。其中**jsonb_holo_path_ops**对应**jsonb_path_ops**，仅支持 `@>` 的过滤操作。 创建**jsonb_holo_ops**操作符号索引。 `--1`、创建表
+其中**jsonb_holo_ops**对应**jsonb_ops**，支持 ?, ?|, ?&, @> 的过滤操作。其中**jsonb_holo_path_ops**对应**jsonb_path_ops**，仅支持 `@>` 的过滤操作。 创建**jsonb_holo_ops**操作符号索引。 `--1`、创建表
 
 ```
-BEGIN ; DROP TABLE IF EXISTS json_table; (
+BEGIN ; DROP TABLE IF EXISTS json_table; CREATE TABLE IF NOT EXISTS json_table
+```
+
+`(`
+
+```
     id INT
     ,j jsonb
-); COMMIT ;
+```
+
+);
+
+```
+COMMIT ;
 ```
 
 `--2`、创建索引，使用`jsonb_holo_ops`操作符
@@ -1221,7 +1392,7 @@ CREATE INDEX index_json on json_table USING GIN(j jsonb_holo_ops);
 `--3`、插入数据
 
 ```
-(1, '{"key1": 1, "key2": [1, 2], "key3": {"a": "b"}}') , (1, '{"key1": 1}'), (2, '{"key2": [1, 2], "key3": {"a": "b"}}') ;
+INSERT INTO json_table VALUES (1, '{"key1": 1, "key2": [1, 2], "key3": {"a": "b"}}') , (1, '{"key1": 1}'), (2, '{"key2": [1, 2], "key3": {"a": "b"}}') ;
 ```
 
 `--4`、查询
@@ -1240,22 +1411,32 @@ SELECT * FROM json_table WHERE j ? 'key1';
 (2 rows)
 ```
 
-创建**jsonb_holo_path_ops**操作符号索引。 实时数仓 Hologres `--1`、创建表
+创建**jsonb_holo_path_ops**操作符号索引。 `--1`、创建表
 
 ```
-BEGIN ; DROP TABLE IF EXISTS json_table; (
+BEGIN ; DROP TABLE IF EXISTS json_table; CREATE TABLE IF NOT EXISTS json_table
+```
+
+`(`
+
+```
     id INT
     ,j jsonb
-);
 ```
 
-`--2`、创建索引，使用`jsonb_holo_path_ops`操作符
+); `--2`、创建索引，使用`jsonb_holo_path_ops`操作符
 
 ```
 CREATE INDEX index_json on json_table USING GIN(j jsonb_holo_path_ops);
 ```
 
-`--3`、插入数据 `i,`
+`--3`、插入数据
+
+```
+INSERT INTO json_table (
+```
+
+`i,`
 
 ```json
         ('{
@@ -1290,23 +1471,25 @@ SELECT * FROM json_table WHERE j @> '{"key1": "10"}'::JSONB ;
 
 | Hologres中创建内部表，将 | message | 字段定义为JSONB类型： |
 |---|---|---|
-| BEGIN ; DROP TABLE IF EXISTS holo_internal_table; CREATE TABLE IF NOT EXISTS holo_internal_table ( id BIGINT NOT NULL, message JSONB NOT NULL ); CALL set_table_property('holo_internal_table', 'distribution_key', 'id'); COMMIT ; |  |  |
+| BEGIN ; DROP TABLE IF EXISTS holo_internal_table; CREATE TABLE IF NOT EXISTS holo_internal_table ( id BIGINT NOT NULL, message JSONB NOT NULL ); CALL set_table_property('holo_internal_table', 'distribution_key', 'id'); COMMIT ; |   |   |
 
 | Flink作业中将源表、结果表的 | message | 字段定义为VARCHAR类型，并写入Hologres： |
 |---|---|---|
-| CREATE TEMPORARY TABLE randomSource ( id BIGINT, message VARCHAR ) WITH ('connector' = 'datagen'); CREATE TEMPORARY TABLE sink_holo ( id BIGINT, message VARCHAR ) WITH ( 'connector' = 'hologres', 'dbname'='<yourDBname>', --Hologres的数据库名称。 'tablename'='<holo_internal_table>', --Hologres用于接收数据的表名称。 'username'='<yourUsername>', --当前阿里云账号的AccessKey ID。 'password'='<yourPassword>', --当前阿里云账号的AccessKey Secret。 'endpoint'='<yourEndpoint>', --当前Hologres实例VPC网络的Endpoint。 ); INSERT INTO sink_holo SELECT 1, '{"k":"v"}' FROM randomSource; |  |  |
+| CREATE TEMPORARY TABLE randomSource ( id BIGINT, message VARCHAR ) WITH ('connector' = 'datagen'); CREATE TEMPORARY TABLE sink_holo ( id BIGINT, message VARCHAR ) WITH ( 'connector' = 'hologres', 'dbname'='<yourDBname>', --Hologres的数据库名称。 'tablename'='<holo_internal_table>', --Hologres用于接收数据的表名称。 'username'='<yourUsername>', --当前阿里云账号的AccessKey ID。 'password'='<yourPassword>', --当前阿里云账号的AccessKey Secret。 'endpoint'='<yourEndpoint>', --当前Hologres实例VPC网络的Endpoint。 ); INSERT INTO sink_holo SELECT 1, '{"k":"v"}' FROM randomSource; |   |   |
 
-GIN索引只是计算层的优化，实际计算时还需要扫描整个JSON内容。为了提升JSONB数据的查询效率，Hologres从 V1.3版本开始支持JSONB数据的列式存储，通过存储层的优化，使得JSONB数据能够像结构化数据一样按列式存储，有效提高数据的压缩效率，同时也提升JSONB数据的查询效率。 实时数仓 Hologres
+**高级调优：列式JSONB存储**
 
-### PostgreSQL兼容函数
+GIN索引只是计算层的优化，实际计算时还需要扫描整个JSON内容。为了提升JSONB数据的查询效率，Hologres从 V1.3版本开始支持JSONB数据的列式存储，通过存储层的优化，使得JSONB数据能够像结构化数据一样按列式存储，有效提高数据的压缩效率，同时也提升JSONB数据的查询效率。 JSONB列式存储详情请参见列式JSONB。
 
-#### 1.4.1. 查看表和DB的存储大小
+### 1.4 PostgreSQL兼容函数
+
+#### 1.4.1 查看表和DB的存储大小
 
 Hologres兼容PostgreSQL，当前支持查看表或者DB的存储大小。本文介绍如何在Hologres使用SQL语句查看表和DB的存储大小。
 
 **注意事项**
 
-在查看表和DB的存储规格之前，您需要开通Hologres实例并连接开发工具。 仅Hologres V0.9及以上版本支持查看对象的存储大小，如果您的实例是V0.9以下版本，请您升级实例。 仅支持查看内部表的存储规格大小，不支持直接查看分区父表（查看分区父表返回结果是0），需要指定分区子表进行查看。如果查询到表的规格大小是0，则返回空值。 仅Hologres V1.3.24及以上版本支持使用 `pg_relation_size` 函数查看已经开启Hologres Binlog表的Binlog存储量。 `pg_relation_size` 函数统计的是表的存储量，监控指标采集的是实例在整个Pangu目录的文件存储量，Pangu文件包括表的存储量、元数据文件以及因写入、更新、删除产生的临时文件等，因此监控指标的存储量会稍微多于使用 `pg_relation_size` 函数查询的结果。
+在Hologres中查看表和DB的存储大小需要注意如下事项： 在查看表和DB的存储规格之前，您需要开通Hologres实例并连接开发工具。 仅Hologres V0.9及以上版本支持查看对象的存储大小，如果您的实例是V0.9以下版本，请您升级实例。 仅支持查看内部表的存储规格大小，不支持直接查看分区父表（查看分区父表返回结果是0），需要指定分区子表进行查看。如果查询到表的规格大小是0，则返回空值。 仅Hologres V1.3.24及以上版本支持使用 `pg_relation_size` 函数查看已经开启Hologres Binlog表的Binlog存储量。 `pg_relation_size` 函数统计的是表的存储量，监控指标采集的是实例在整个Pangu目录的文件存储量，Pangu文件包括表的存储量、元数据文件以及因写入、更新、删除产生的临时文件等，因此监控指标的存储量会稍微多于使用 `pg_relation_size` 函数查询的结果。
 
 **查看表的存储大小**
 
@@ -1316,7 +1499,13 @@ Hologres兼容PostgreSQL，当前支持查看表或者DB的存储大小。本文
 
 **函数语法**
 
+```
+SELECT pg_relation_size('table_name');--返回单位是Byte
+```
+
 **参数说明**
+
+table_name：表示待查询的当前数据库下的表名称。
 
 **返回值**
 
@@ -1329,18 +1518,24 @@ SELECT pg_size_pretty(pg_relation_size('table_name'));
 `--`查看所有表大小
 
 ```
-SELECT table_schema || '.' || table_name AS table_full_name, pg_size_pretty(pg_relation_size('"' || table_schema || '"."' || table_name || '" WHERE table_schema NOT IN ('pg_catalog','information_schema','hologres') ORDER BY table_size DESC;
+SELECT table_schema || '.' || table_name AS table_full_name, pg_size_pretty(pg_relation_size('"' || table_schema || '"."' || table_name || '" ')) AS table_size FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema','hologres') ORDER BY table_size DESC;
 ```
 
+**查看schema存储大小**
+
 **使用说明**
+
+您可以通过执行SQL语句查看对应schema下面的所有表的大小。
 
 **函数语法**
 
 ```
-SELECT table_schema, pg_size_pretty(SUM(pg_relation_size( table_schema || '.' || table_name)::bigint)) AS schema_size GROUP BY table_schema;
+SELECT table_schema, pg_size_pretty(SUM(pg_relation_size( table_schema || '.' || table_name)::bigint)) AS schema_size FROM information_schema.tables WHERE table_schema = 'schema_name' GROUP BY table_schema;
 ```
 
 **参数说明**
+
+schema_name：表示当前表所对应的schema名称。
 
 **返回值**
 
@@ -1370,9 +1565,13 @@ current_database：指代当前DB。您无需替换参数，直接执行函数�
 SELECT pg_size_pretty(pg_database_size(current_database())); --返回单位是KB或者MB等单位
 ```
 
-#### 1.4.2. 有序聚集函数
+#### 1.4.2 有序聚集函数
 
-实时数仓（Hologres）兼容PostgreSQL，使用标准的PostgreSQL语法开发。本文介绍Hologres支持的有序聚集函数及其使用方法。 当前Hologres版本支持的函数是PostgreSQL的一个子集，以下为Hologres已支持的有序聚集函数列表。 实时数仓 Hologres
+实时数仓（Hologres）兼容PostgreSQL，使用标准的PostgreSQL语法开发。本文介绍Hologres支持的有序聚集函数及其使用方法。
+
+**有序聚集函数列表**
+
+当前Hologres版本支持的函数是PostgreSQL的一个子集，以下为Hologres已支持的有序聚集函数列表。
 
 | 函数 | 功能 |
 |---|---|
@@ -1384,7 +1583,7 @@ SELECT pg_size_pretty(pg_database_size(current_database())); --返回单位是KB
 
 | 本文后续示例均基于 | stu | 表的数据进行验证。 |
 |---|---|---|
-| CREATE TABLE stu(id bigint, score bigint); INSERT INTO stu VALUES (1, 30); INSERT INTO stu VALUES (2, 30); INSERT INTO stu VALUES (3, 40); INSERT INTO stu VALUES (4, 50); INSERT INTO stu VALUES (5, 60); INSERT INTO stu VALUES (6, 70); INSERT INTO stu VALUES (7, 80); INSERT INTO stu VALUES (8, 90); |  |  |
+| CREATE TABLE stu(id bigint, score bigint); INSERT INTO stu VALUES (1, 30); INSERT INTO stu VALUES (2, 30); INSERT INTO stu VALUES (3, 40); INSERT INTO stu VALUES (4, 50); INSERT INTO stu VALUES (5, 60); INSERT INTO stu VALUES (6, 70); INSERT INTO stu VALUES (7, 80); INSERT INTO stu VALUES (8, 90); |   |   |
 
 **MODE**
 
@@ -1440,7 +1639,9 @@ PERCENTILE_CONT(<fraction>) WITHIN GROUP (ORDER BY <sort_expression>)
 
 | fraction | ：必填， |
 |---|---|
-| sort_expression |  |
+| sort_expression |   |
+
+`fraction` ：必填，介于0到1之间的小数，类型为 `DOUBLE PRECISION` 。 `sort_expression` ：必填，列名或基于列名的表达式，类型为可排序类型。
 
 **返回值**
 
@@ -1450,13 +1651,13 @@ PERCENTILE_CONT(<fraction>) WITHIN GROUP (ORDER BY <sort_expression>)
 
 | 计算 | score | 列第50的百分位数。 |
 |---|---|---|
-| SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY score ASC) FROM stu; -- 返回结果 +-----------------+ \| percentile_cont \| +-----------------+ \| 55.0 \| +-----------------+ |  |  |
+| SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY score ASC) FROM stu; -- 返回结果 +-----------------+ \| percentile_cont \| +-----------------+ \| 55.0 \| +-----------------+ |   |   |
 
 **多重连续百分率**
 
 **使用说明**
 
-实时数仓 Hologres 计算多重连续百分位数。
+计算多重连续百分位数。
 
 **函数语法**
 
@@ -1468,7 +1669,9 @@ PERCENTILE_CONT(<fractions>) WITHIN GROUP (ORDER BY <sort_expression>);
 
 | fractions | ：必填 |
 |---|---|
-| sort_expression |  |
+| sort_expression |   |
+
+`fractions` ：必填，介于0到1之间的多组小数，类型为 `DOUBLE PRECISION[]` 。 `sort_expression` ：必填，列名或基于列名的表达式，类型为可排序类型。
 
 **返回值**
 
@@ -1478,7 +1681,7 @@ PERCENTILE_CONT(<fractions>) WITHIN GROUP (ORDER BY <sort_expression>);
 
 | 计算 | score | 列第25、50和75的百分位数。 |
 |---|---|---|
-| SELECT PERCENTILE_CONT(ARRAY[0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY score ASC) FROM stu; -- 返回结果 +------------------+ \| percentile_cont \| +------------------+ \| {37.5,55,72.5} \| +------------------+ |  |  |
+| SELECT PERCENTILE_CONT(ARRAY[0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY score ASC) FROM stu; -- 返回结果 +------------------+ \| percentile_cont \| +------------------+ \| {37.5,55,72.5} \| +------------------+ |   |   |
 
 **PERCENTILE_DISC**
 
@@ -1498,7 +1701,9 @@ PERCENTILE_DISC(<fraction>) WITHIN GROUP (ORDER BY <sort_expression>);
 
 | fraction | ：必填， |
 |---|---|
-| sort_expression |  |
+| sort_expression |   |
+
+`fraction` ：必填，介于0到1之间的小数，类型为 `DOUBLE PRECISION` 。 `sort_expression` ：必填，列名或基于列名的表达式，类型为可排序类型。
 
 **返回值**
 
@@ -1508,7 +1713,7 @@ PERCENTILE_DISC(<fraction>) WITHIN GROUP (ORDER BY <sort_expression>);
 
 | 计算 | score | 列第40的百分位数。 |
 |---|---|---|
-| SELECT PERCENTILE_DISC(0.4) WITHIN GROUP (ORDER BY score::float8 ASC) FROM stu; -- 返回结果 +------------------+ \| percentile_disc \| +------------------+ \| 50.0 \| +------------------+ |  |  |
+| SELECT PERCENTILE_DISC(0.4) WITHIN GROUP (ORDER BY score::float8 ASC) FROM stu; -- 返回结果 +------------------+ \| percentile_disc \| +------------------+ \| 50.0 \| +------------------+ |   |   |
 
 **多重离散百分率**
 
@@ -1526,7 +1731,9 @@ PERCENTILE_DISC(<fractions>) WITHIN GROUP (ORDER BY <sort_expression>);
 
 | fractions | ：必填 |
 |---|---|
-| sort_expression |  |
+| sort_expression |   |
+
+`fractions` ：必填，介于0到1之间的多组小数，类型为 `DOUBLE PRECISION[]` 。 `sort_expression` ：必填，列名或基于列名的表达式，类型为可排序类型。
 
 **返回值**
 
@@ -1536,11 +1743,11 @@ PERCENTILE_DISC(<fractions>) WITHIN GROUP (ORDER BY <sort_expression>);
 
 | 计算 | score | 列第25、50和75的百分位数。 |
 |---|---|---|
-| SELECT PERCENTILE_DISC(ARRAY[0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY score::float8 ASC) FROM stu; -- 返回结果 +------------------+ \| percentile_disc \| +------------------+ \| {30,50,70} \| +------------------+ |  |  |
+| SELECT PERCENTILE_DISC(ARRAY[0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY score::float8 ASC) FROM stu; -- 返回结果 +------------------+ \| percentile_disc \| +------------------+ \| {30,50,70} \| +------------------+ |   |   |
 
-#### 1.4.3. 数学函数
+#### 1.4.3 数学函数
 
-Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。本文介绍Hologres支持的数学函数及其使用方法。 实时数仓 Hologres
+Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。本文介绍Hologres支持的数学函数及其使用方法。
 
 **数学函数列表**
 
@@ -1608,7 +1815,7 @@ SELECT ABS(-17.4);
 
 **使用说明**
 
-实时数仓 Hologres 计算立方根。
+计算立方根。
 
 **函数语法**
 
@@ -1733,8 +1940,6 @@ DEGREES(num)
 与参数类型一致。
 
 **使用示例**
-
-实时数仓 Hologres
 
 ```
 SELECT DEGREES(3.2);
@@ -1862,7 +2067,7 @@ SELECT LN(3.8);
 
 **使用说明**
 
-实时数仓 Hologres 计算常用对数。
+计算常用对数。
 
 **函数语法**
 
@@ -1918,9 +2123,11 @@ MOD(num, x)
 
 **参数说明**
 
-| num |  |
+| num |   |
 |---|---|
 | x | ： |
+
+`num` ：必填，数值类型参数。 `x` ：必填，数值类型参数。
 
 **返回值**
 
@@ -1986,15 +2193,13 @@ SELECT PI();
 
 **函数语法**
 
-实时数仓 Hologres
-
 ```
 POWER(a, b);
 ```
 
 **参数说明**
 
-a ：必填，类型为DOUBLE PRECISION。 b ：必填，类型为DOUBLE PRECISION。
+`a` ：必填，类型为DOUBLE PRECISION。 `b` ：必填，类型为DOUBLE PRECISION。
 
 **返回值**
 
@@ -2102,17 +2307,17 @@ ROUND(num); ROUND(num1, s)；
 
 **参数说明**
 
-| num |  |
+| num |   |
 |---|---|
 | s | ： |
+
+`num` ：必填，若单入参时，数值类型为DOUBLE PRECISION或NUMERIC；若双入参时，仅支持NUMERIC类型。 `s` ：选填，类型为INT。
 
 **返回值**
 
 与参数类型一致。
 
 **使用示例**
-
-实时数仓 Hologres
 
 ```
 SELECT ROUND(42.4);
@@ -2210,6 +2415,8 @@ SELECT SQRT(2);
 +----------------------+
 ```
 
+**TRUNC**
+
 **使用说明**
 
 去掉表达式的小数位或保留固定小数位数。
@@ -2222,17 +2429,17 @@ TRUNC(num); TRUNC(num, s)
 
 **参数说明**
 
-| num |  |
+| num |   |
 |---|---|
 | s | ： |
+
+`num` ：必填，类型为NUMERIC。 `s` ：选填，类型为INT。
 
 **返回值**
 
 返回值类型为NUMERIC。
 
 **使用示例**
-
-实时数仓 Hologres
 
 ```
 SELECT TRUNC(2.456);
@@ -2241,7 +2448,9 @@ SELECT TRUNC(2.456);
 `--` 返回结果
 
 ```
-+-------+ +-------+
++-------+
+| trunc |
++-------+
 |   2   |
 +-------+ SELECT TRUNC(2.4564, 2);
 ```
@@ -2249,7 +2458,9 @@ SELECT TRUNC(2.456);
 `--` 返回结果
 
 ```
-+----------+ +----------+
++----------+
+|   trunc  |
++----------+
 |   2.45   |
 +----------+
 ```
@@ -2276,7 +2487,7 @@ WIDTH_BUCKET(value, start, end, num_buckets)
 
 **使用示例**
 
-`--` 范围从0到`100`的数据，分成5个桶`,45`落在`(40, 60)`的范围内，第三个桶。
+`--` 范围从`0`到`100`的数据，分成`5`个桶`,45`落在`(40, 60)`的范围内，第三个桶。
 
 ```
 SELECT WIDTH_BUCKET(45, 0, 100, 5);
@@ -2292,7 +2503,7 @@ SELECT WIDTH_BUCKET(45, 0, 100, 5);
 +---------------+
 ```
 
-#### 1.4.4. 三角函数
+#### 1.4.4 三角函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。本文介绍Hologres支持的三角函数及其使用方法。
 
@@ -2315,7 +2526,7 @@ Hologres已支持的三角函数列表如下。当前Hologres版本支持的函�
 
 **使用说明**
 
-计算表达式的反余弦值。 实时数仓 Hologres
+计算表达式的反余弦值。
 
 **函数语法**
 
@@ -2433,15 +2644,13 @@ ATAN2(y, x);
 
 **参数说明**
 
-y ：必填，类型为DOUBLE PRECISION。 x ：必填，类型为DOUBLE PRECISION。
+`y` ：必填，类型为DOUBLE PRECISION。 `x` ：必填，类型为DOUBLE PRECISION。
 
 **返回值**
 
 返回值类型为DOUBLE PRECISION。
 
 **使用示例**
-
-实时数仓 Hologres
 
 ```
 SELECT ATAN2(4, 2);
@@ -2569,7 +2778,7 @@ SELECT SIN(2);
 
 **使用说明**
 
-实时数仓 Hologres 计算表达式的正切值。
+计算表达式的正切值。
 
 **函数语法**
 
@@ -2601,56 +2810,58 @@ SELECT TAN(2);
 +--------------------+
 ```
 
-#### 1.4.5. 字符串函数
+#### 1.4.5 字符串函数
 
-Hologres兼容PostgreSQL，支持使用标准的PostgreSQL字符串函数进行开发。本文介绍Hologres支持的三角函数及其使用方法。 Hologres已支持的字符串截取函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见字符串截取函数。
+Hologres兼容PostgreSQL，支持使用标准的PostgreSQL字符串函数进行开发。本文介绍Hologres支持的三角函数及其使用方法。
+
+**字符串函数列表**
+
+Hologres已支持的字符串截取函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见字符串截取函数。
 
 | 函数类型 | 函数 | 功能 |
 |---|---|---|
 | 拼接类函数 | CONCAT | 连接两个或更多字符串值并返回一个连续字符串。 |
-|  | CONCATWS _ | 使用分隔符连接除第一个参数外的所有参数。 |
-|  | STRING \|\| STRING | 连接两个字符串。 |
-|  | STRINGAGG _ | 使用指定分隔符将指定表达式的非空值串联成字符串。 |
+|   | CONCATWS _ | 使用分隔符连接除第一个参数外的所有参数。 |
+|   | STRING \|\| STRING | 连接两个字符串。 |
+|   | STRINGAGG _ | 使用指定分隔符将指定表达式的非空值串联成字符串。 |
 | 截取类函数 | BTRIM | 去除字符串两端的指定字符。 |
-|  | LEFT | 从字符串的起始位置开始，提取指定数量的字符。 |
-|  | LTRIM | 用于移除字符串左侧（开头）的特定字符。 |
-|  | REGEXPSPLITTOARRAY _ _ _ | 字符串分割函数，按正则表达式对字符串进行分割并转换成数组。 |
-|  | RIGHT | 从字符串的末尾位置开始，提取指定数量的字符。 |
-|  | RTRIM | 用于移除字符串右侧（结尾）的特定字符。 |
-|  | SPLITPART _ | 将字符串按照指定的分隔符进行分割，并返回分割后的第 num 段。 |
-|  | TRIM | 移除字符串首部、尾部或者两端的特定字符。 |
+|   | LEFT | 从字符串的起始位置开始，提取指定数量的字符。 |
+|   | LTRIM | 用于移除字符串左侧（开头）的特定字符。 |
+|   | REGEXPSPLITTOARRAY _ _ _ | 字符串分割函数，按正则表达式对字符串进行分割并转换成数组。 |
+|   | RIGHT | 从字符串的末尾位置开始，提取指定数量的字符。 |
+|   | RTRIM | 用于移除字符串右侧（结尾）的特定字符。 |
+|   | SPLITPART _ | 将字符串按照指定的分隔符进行分割，并返回分割后的第 num 段。 |
+|   | TRIM | 移除字符串首部、尾部或者两端的特定字符。 |
 | 转换类函数 | INITCAP | 支持将每个单词的第一个字母转换为大写，其余字母转换为小写。 |
-|  | LOWER | 支持将字符串转换为小写格式。 |
-|  | MD5 | 计算字符串的MD5哈希值。结果表示为十六进制的形式。 |
-|  | ROWTOJSON _ _ | 将一行数据转换为JSON格式。 说明 Hologres V1.3及以上版本支持。 Hologres从 V1.3.52版本开始，JSON中的Key支持根据列名生成。 最多支持50列。 |
-|  | TOHEX _ | 将数字转换为十六进制的表示形式。 |
-| 50 | > 文档版本：20260729 |  |
+|   | LOWER | 支持将字符串转换为小写格式。 |
+|   | MD5 | 计算字符串的MD5哈希值。结果表示为十六进制的形式。 |
+|   | ROWTOJSON _ _ | 将一行数据转换为JSON格式。 说明 Hologres V1.3及以上版本支持。 Hologres从 V1.3.52版本开始，JSON中的Key支持根据列名生成。 最多支持50列。 |
+|   | TOHEX _ | 将数字转换为十六进制的表示形式。 |
+| 50 | > 文档版本：20260729 |   |
 
-实时数仓 Hologres
-
-|  | TONUMBER _ | 支持将字符串类型数据转换为数值类型。 |
+|   | TONUMBER _ | 支持将字符串类型数据转换为数值类型。 |
 |---|---|---|
-|  | UPPER | 支持将字符串转换为大写格式。 |
+|   | UPPER | 支持将字符串转换为大写格式。 |
 | 替换类函数 | REGEXPREPLACE _ | 通过POSIX正则表达式将子字符串替换为新的子字符串。 |
-|  | REPLACE | 支持在源字符串中查找指定的子字符串，并将其替换为另一个指定的字符串。 |
-|  | TRANSLATE | 支持将字符串中的字符替换为指定字符。 |
+|   | REPLACE | 支持在源字符串中查找指定的子字符串，并将其替换为另一个指定的字符串。 |
+|   | TRANSLATE | 支持将字符串中的字符替换为指定字符。 |
 | 其他类函数 | ASCII | 获取字符串第一个字符的ASCII码。 |
-|  | BITLENGTH _ | 获取字符串的位长度。 |
-|  | CHARLENGTH _ | 获取字符串的字符长度。 |
-|  | CHR | 获取指定编码值对应的字符。 说明参数必须是合法的ASCII或UTF8编码值，并且参数值不能为0。 |
-|  | LENGTH | 获取字符串的字符的个数。 |
-|  | LPAD | 在字符串的左侧填充指定的字符，直到达到指定的总长度。 说明如果String的长度已经超过Length，则从右侧将String截断为长度是Length的字符串。 如果没有指定Fill的值，则Fill默认为空格。 |
-|  | OCTETLENGTH _ | 支持获取字符串的字节数。 |
-|  | PARSEIDENT _ | 用于解析一个符合SQL标识符规则的字符串。 |
-|  | POSITION | 查找子字符串在目标字符串中的位置。 |
-|  | QUOTEIDENT _ | 使用字符串作为合法的SQL标识符。 |
-|  | QUOTELITERAL _ | 将字符串转换为合法的SQL语句字符串的常量形式。 |
-|  | REGEXPMATCH _ | 对字符串按正则表达式进行匹配，如果存在则会在结果数组中表示出来。 |
-|  | REPEAT | 按照设置的次数将字符串重复输出。 |
-|  | ROW | 返回公式所在的行号。 说明 Hologres V1.3及以上版本支持。 |
-|  | RPAD | 在字符串的右侧填充指定的字符，直到达到指定的总长度。 |
-|  | STARTSWITH _ | 确认目标字符串是否以指定前缀开头。 |
-|  | STRPOS | 查找子字符串在目标字符串中的位置。 |
+|   | BITLENGTH _ | 获取字符串的位长度。 |
+|   | CHARLENGTH _ | 获取字符串的字符长度。 |
+|   | CHR | 获取指定编码值对应的字符。 说明参数必须是合法的ASCII或UTF8编码值，并且参数值不能为0。 |
+|   | LENGTH | 获取字符串的字符的个数。 |
+|   | LPAD | 在字符串的左侧填充指定的字符，直到达到指定的总长度。 说明如果String的长度已经超过Length，则从右侧将String截断为长度是Length的字符串。 如果没有指定Fill的值，则Fill默认为空格。 |
+|   | OCTETLENGTH _ | 支持获取字符串的字节数。 |
+|   | PARSEIDENT _ | 用于解析一个符合SQL标识符规则的字符串。 |
+|   | POSITION | 查找子字符串在目标字符串中的位置。 |
+|   | QUOTEIDENT _ | 使用字符串作为合法的SQL标识符。 |
+|   | QUOTELITERAL _ | 将字符串转换为合法的SQL语句字符串的常量形式。 |
+|   | REGEXPMATCH _ | 对字符串按正则表达式进行匹配，如果存在则会在结果数组中表示出来。 |
+|   | REPEAT | 按照设置的次数将字符串重复输出。 |
+|   | ROW | 返回公式所在的行号。 说明 Hologres V1.3及以上版本支持。 |
+|   | RPAD | 在字符串的右侧填充指定的字符，直到达到指定的总长度。 |
+|   | STARTSWITH _ | 确认目标字符串是否以指定前缀开头。 |
+|   | STRPOS | 查找子字符串在目标字符串中的位置。 |
 
 **拼接类函数**
 
@@ -2668,11 +2879,9 @@ CONCAT(<str1> TEXT, <str2> TEXT, ..., <strN> TEXT);
 
 **参数说明**
 
-实时数仓 Hologres
-
 | str1,...,strN | ：这些参数代表想要连接的字符串。 |
 |---|---|
-| 说明若参数中存在NULL，将被忽略。 |  |
+| 说明若参数中存在NULL，将被忽略。 |   |
 
 **返回值**
 
@@ -2710,13 +2919,11 @@ CONCAT_WS(<sep> TEXT, str "any" [, str "any" [, ...] ])
 
 sep：必填，分隔符，插入到要连接的每个字符串之间。
 
-**说明**
+> **说明：** 若取值为NULL，该函数将返回NULL。
 
-若取值为NULL，该函数将返回NULL。 str：必填，要连接的字符串。
+str：必填，要连接的字符串。
 
-**说明**
-
-若参数中存在NULL，将被忽略。
+> **说明：** 若参数中存在NULL，将被忽略。
 
 **返回值**
 
@@ -2782,15 +2989,11 @@ SELECT 'Holo' || 'greSQL';
 
 **函数语法**
 
-实时数仓 Hologres
-
 ```
 STRING_AGG(expression [ order_by_clause ] ) [ FILTER ( WHERE filter_clause ) ]
 ```
 
-**说明**
-
-仅Hologres V1.3及以上版本支持Filter过滤条件。
+> **说明：** 仅Hologres V1.3及以上版本支持Filter过滤条件。
 
 **参数说明**
 
@@ -2803,9 +3006,15 @@ expression：必填，待合并成字符串的表达式或列名。 order_by_cla
 **使用示例**
 
 ```
+CREATE TABLE city_test (
     country text,
     city text
+```
+
 );
+
+```
+INSERT INTO city_test
 ```
 
 `VALUES ('`中国`', '`上海`'), ('`中国`', '`重庆`'), ('`日本`', '`东京`'), ('`法国`', '`巴黎`'), ('`英国`', '`伦敦');
@@ -2824,7 +3033,7 @@ FROM
 +--------------------------+
 ```
 
-| 巴黎,重庆,伦敦,上海,东京 |
+| 巴黎`,`重庆`,`伦敦`,`上海`,`东京 |
 
 ```
 +--------------------------+
@@ -2848,9 +3057,8 @@ BTRIM(<str> TEXT [, <characters> TEXT])
 
 str：必填，目标字符串。 characters：可选，要在目标字符串两端移除的字符集。
 
-**说明**
-
-该参数是将字符集中的每个字符独立进行匹配，并不是整体匹配。 如果没有指定characters参数，characters参数默认为空格。
+> **说明：** 该参数是将字符集中的每个字符独立进行匹配，并不是整体匹配。
+> 如果没有指定characters参数，characters参数默认为空格。
 
 **返回值**
 
@@ -2886,11 +3094,9 @@ LEFT(<str> TEXT, <num> INT)
 
 **参数说明**
 
-str：必填，目标字符串。 实时数仓 Hologres num：必填，整数值，表示从字符串的起始位置提取的字符数量。
+str：必填，目标字符串。 num：必填，整数值，表示从字符串的起始位置提取的字符数量。
 
-**说明**
-
-num为负数时，返回除最后 `-num` 个字符之外的所有字符。
+> **说明：** num为负数时，返回除最后 `-num` 个字符之外的所有字符。
 
 **返回值**
 
@@ -2928,9 +3134,8 @@ LTRIM(<str> TEXT [, <characters> TEXT])
 
 str：必填，目标字符串。 characters：可选，需要从目标字符串左侧（开头）移除的字符集。
 
-**说明**
-
-该参数是将字符集中的每个字符独立进行匹配，并不是整体匹配。 如果没有指定characters参数，characters参数默认为空格。
+> **说明：** 该参数是将字符集中的每个字符独立进行匹配，并不是整体匹配。
+> 如果没有指定characters参数，characters参数默认为空格。
 
 **返回值**
 
@@ -2974,15 +3179,19 @@ str：必填，待分割的字符串。 pattern：必填，定义了如何分割
 
 **使用示例**
 
-实时数仓 Hologres
-
 ```
+CREATE TABLE interests_test (
     name text,
     intrests text
-);
 ```
 
-`VALUES ('`张三`', '`唱歌,跳舞`'), ('`李四`', '`踢球,跑步,画画`'), ('`王五`', '`插花,书法,弹琴,睡觉');
+);
+
+```
+INSERT INTO interests_test
+```
+
+`VALUES ('`张三`', '`唱歌`,`跳舞`'), ('`李四`', '`踢球`,`跑步`,`画画`'), ('`王五`', '`插花`,`书法`,`弹琴`,`睡觉');
 
 ```
     name,
@@ -2999,9 +3208,9 @@ FROM
 +--------+-----------------------+
 ```
 
-| 王五 | {插花,书法,弹琴,睡觉} |
-| 张三 | {唱歌,跳舞} |
-| 李四 | {踢球,跑步,画画} |
+| 王五 | {插花`,`书法`,`弹琴`,`睡觉} |
+| 张三 | {唱歌`,`跳舞} |
+| 李四 | {踢球`,`跑步`,`画画} |
 
 ```
 +--------+-----------------------+
@@ -3023,9 +3232,7 @@ RIGHT(<str> TEXT, <num> INT)
 
 str：必填，目标字符串。 num：必填，整数值，表示从字符串的末尾位置提取的字符数量。
 
-**说明**
-
-num为负数时，返回除前 `-num` 个字符之外的所有字符。
+> **说明：** num为负数时，返回除前 `-num` 个字符之外的所有字符。
 
 **返回值**
 
@@ -3063,9 +3270,7 @@ RTRIM(<str> TEXT [, <characters> TEXT])
 
 str：必填，目标字符串。 characters：可选，需要从目标字符串右侧（结尾）移除的字符集，如果没有指定characters参数，characters参数值默认为空格。
 
-**说明**
-
-该参数是将字符集中的每个字符独立进行匹配，并不是整体匹配。
+> **说明：** 该参数是将字符集中的每个字符独立进行匹配，并不是整体匹配。
 
 **返回值**
 
@@ -3089,8 +3294,6 @@ SELECT RTRIM('testxxzx', 'xyz');
 
 **SPLIT_PART**
 
-实时数仓 Hologres
-
 **使用说明**
 
 将字符串按照指定的分隔符进行分割，并返回分割后的第 `num` 段。
@@ -3112,8 +3315,14 @@ str：必填，待拆分的目标字符串。 delimiter：必填，用来进行�
 **使用示例**
 
 ```
+CREATE TABLE split_part_test (
     a text
-); INSERT INTO split_part_test VALUES ('a/b/c/d/e'), ('a1/b1/c1/d1/e1'); SELECT split_part(a, '/', 2) FROM split_part_test;
+```
+
+);
+
+```
+INSERT INTO split_part_test VALUES ('a/b/c/d/e'), ('a1/b1/c1/d1/e1'); SELECT split_part(a, '/', 2) FROM split_part_test;
 ```
 
 `--` 返回结果
@@ -3157,9 +3366,7 @@ SUBSTRING(<str> TEXT FROM <pattern> TEXT FOR <escape> TEXT );
 
 str：必填，目标字符串。 num_start和num_end：可选，起始和结束位置。 pattern：必填，正则表达式，用于定义如何匹配和提取字符串中的子串。 escape：必填，转义字符。
 
-**说明**
-
-在正则表达式中，某些字符如 . 、 * 、 + 等具有特殊意义。如果需要在文本中匹配这些字符本身，而不是它们的特殊含义，就需要在它们前面加上转义字符。
+> **说明：** 在正则表达式中，某些字符如 `.` 、 `*` 、 `+` 等具有特殊意义。如果需要在文本中匹配这些字符本身，而不是它们的特殊含义，就需要在它们前面加上转义字符。
 
 **返回值**
 
@@ -3199,7 +3406,7 @@ SELECT SUBSTRING('Thomas' FROM '...$');
 +-----------+
 ```
 
-实时数仓 Hologres 示例3：从字符串中找出与SQL正则表达式匹配的子字符串。
+示例3：从字符串中找出与SQL正则表达式匹配的子字符串。
 
 ```
 SELECT SUBSTRING('Thomas' FROM '%#"o_a#"_' FOR '#');
@@ -3265,9 +3472,7 @@ SELECT TRIM(BOTH 'xyz' FROM 'yxTomxx');
 INITCAP(<str> TEXT)
 ```
 
-**说明**
-
-单词是由一系列字母和数字组成的字符，使用非字母或数字分隔。
+> **说明：** 单词是由一系列字母和数字组成的字符，使用非字母或数字分隔。
 
 **参数说明**
 
@@ -3311,7 +3516,7 @@ str：必填，目标字符串。
 
 **返回值**
 
-返回TEXT类型。 实时数仓 Hologres
+返回TEXT类型。
 
 **使用示例**
 
@@ -3388,15 +3593,22 @@ record：是一个行类型的参数，可以是表名、视图名或者查询�
 **使用示例**
 
 ```
+CREATE TABLE interests_test (
     name       TEXT,
     interests  TEXT
+```
+
 );
-```
-
-`('`张三`', '`唱歌,跳舞`'),` `('`李四`', '`踢球,跑步,画画`'),` `('`王五`', '`插花,书法,弹琴,睡觉');
 
 ```
-FROM (
+INSERT INTO interests_test VALUES
+```
+
+`('`张三`', '`唱歌`,`跳舞`'),` `('`李四`', '`踢球`,`跑步`,`画画`'),` `('`王五`', '`插花`,`书法`,`弹琴`,`睡觉');
+
+```
+SELECT row_to_json(t) FROM (
+    SELECT name, interests
     FROM interests_test
 ) AS t;
 ```
@@ -3409,13 +3621,13 @@ FROM (
 +--------------------------------------------------------+
 ```
 
-| {"name" : "李四`", "interests" : "`踢球,跑步,画画"} |
+| {"name" : "李四`", "interests" : "`踢球`,`跑步`,`画画"} |
 
 ```
 | {"name" : "张三", "interests" : "唱歌,跳舞"}           |
 ```
 
-| {"name" : "王五`", "interests" : "`插花,书法,弹琴,睡觉"} |
+| {"name" : "王五`", "interests" : "`插花`,`书法`,`弹琴`,`睡觉"} |
 
 ```
 +--------------------------------------------------------+
@@ -3435,7 +3647,7 @@ TO_HEX(<number> INT OR BIGINT);
 
 **参数说明**
 
-number：必填，目标数值。 实时数仓 Hologres
+number：必填，目标数值。
 
 **返回值**
 
@@ -3553,11 +3765,15 @@ str：必填，待替换的目标字符串。 regex：必填，正则表达式�
 
 **使用示例**
 
-实时数仓 Hologres
+```
+CREATE TABLE a_test (
+    a text
+```
+
+);
 
 ```
-    a text
-); INSERT INTO a_test VALUES ('Abcd1234abCd'); SELECT REGEXP_REPLACE(a, '1234.', '77', 'ig') FROM a_test;
+INSERT INTO a_test VALUES ('Abcd1234abCd'); SELECT REGEXP_REPLACE(a, '1234.', '77', 'ig') FROM a_test;
 ```
 
 `--` 返回结果
@@ -3593,9 +3809,15 @@ str：必填，目标的字符串。 old_str：必填，目标字符串需要被
 **使用示例**
 
 ```
+CREATE TABLE animal_test (
     animal text,
     color text
+```
+
 );
+
+```
+INSERT INTO animal_test
 ```
 
 `VALUES ('`狗`', '`白色`'), ('`猫`', '`白色`'), ('`老虎`', '`黄色');
@@ -3666,8 +3888,6 @@ SELECT TRANSLATE('12345', '143', 'ax');
 **其他类函数**
 
 **ASCII**
-
-实时数仓 Hologres
 
 **使用说明**
 
@@ -3797,8 +4017,6 @@ num：INT类型数值。
 
 **使用示例**
 
-实时数仓 Hologres
-
 ```
 SELECT CHR(65);
 ```
@@ -3865,9 +4083,9 @@ LPAD(<str> TEXT, <length> INT [, <fill> TEXT])
 
 str：必填，目标字符串。 length：必填，结果字符串的总长度。
 
-**说明**
+> **说明：** 如果目标字符串的长度已经超过length，则从右侧将目标字符串截断为长度为length的字符串。
 
-如果目标字符串的长度已经超过length，则从右侧将目标字符串截断为长度为length的字符串。 fill：可选，用于填充的字符，如果没有指定fill的值，则默认为空格。
+fill：可选，用于填充的字符，如果没有指定fill的值，则默认为空格。
 
 **返回值**
 
@@ -3910,8 +4128,6 @@ str：必填，目标字符串。
 返回INT类型。
 
 **使用示例**
-
-实时数仓 Hologres
 
 ```
 SELECT OCTET_LENGTH('jose');
@@ -3958,7 +4174,9 @@ SELECT PARSE_IDENT('"SomeSchema".someTable');
 ```
 +------------------------+
 |       parse_ident      |
-+------------------------+ +------------------------+
++------------------------+
+| {SomeSchema,sometable} |
++------------------------+
 ```
 
 **POSITION**
@@ -4034,8 +4252,6 @@ SELECT QUOTE_IDENT('Foo bar');
 ```
 
 **QUOTE_LITERAL**
-
-实时数仓 Hologres
 
 **使用说明**
 
@@ -4161,18 +4377,24 @@ ROW();
 
 **返回值**
 
-实时数仓 Hologres 返回ARRAY或TEXT类型。
+返回ARRAY或TEXT类型。
 
 **使用示例**
 
 ```
+CREATE TABLE row_test (
     a text,
     b text
+```
+
 );
+
+```
+INSERT INTO row_test
     VALUES ('0', '0'), ('1', '0');
 ```
 
-`a,` b
+`a,` `b`
 
 ```
 FROM
@@ -4207,9 +4429,9 @@ RPAD(<str> TEXT, <length> INT [, <fill> TEXT]);
 
 str：必填，目标字符串。 length：必填，结果字符串的总长度。
 
-**说明**
+> **说明：** 如果目标字符串的长度已经超过length，则从右侧将目标字符串截断为长度为length的字符串。
 
-如果目标字符串的长度已经超过length，则从右侧将目标字符串截断为长度为length的字符串。 fill：可选，用于填充的字符，如果没有指定fill的值，则默认为空格。
+fill：可选，用于填充的字符，如果没有指定fill的值，则默认为空格。
 
 **返回值**
 
@@ -4269,8 +4491,6 @@ SELECT STARTS_WITH('alphabet', 'alph');
 
 **STRPOS**
 
-实时数仓 Hologres
-
 **使用说明**
 
 查找子字符串在目标字符串中的位置。
@@ -4305,7 +4525,7 @@ SELECT STRPOS('high', 'ig');
 +---------+
 ```
 
-#### 1.4.6. 模式匹配函数
+#### 1.4.6 模式匹配函数
 
 Hologres兼容PostgreSQL，支持用标准的PostgreSQL语法进行开发。 Hologres已支持的模式匹配函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见模式匹配函数。
 
@@ -4320,9 +4540,7 @@ Hologres兼容PostgreSQL，支持用标准的PostgreSQL语法进行开发。 Hol
 | rlike ~* | 使用正则表达式判断字符串与模式是否匹配： 匹配则返回true。 不匹配则返回false。 说明不区分大小写。 | 'abc' ~* '(B\|D)' | true |
 | rlike !~ | 使用正则表达式判断字符串与模式是否不匹配： 不匹配则返回true。 匹配则返回false。 说明区分大小写。 | 'abc' !~ '(b\|d)' | false |
 
-实时数仓 Hologres
-
-#### 1.4.7. 时间和日期转换函数
+#### 1.4.7 时间和日期转换函数
 
 Hologres支持使用标准的PostgreSQL语法对时间及日期函数进行转换或计算。本文为您介绍Hologres支持的时间和日期函数列表及使用用例。 当前Hologres版本支持的函数是PostgreSQL的一个子集，PostgreSQL函数的使用方法请参见时间和日期函数和时间格式化函数。
 
@@ -4332,10 +4550,10 @@ Hologres支持使用标准的PostgreSQL语法对时间及日期函数进行转�
 
 返回类型：TEXT 描述： 将时间戳转换为字符串，默认支持时间范围为1925~2282年。 `YYYY` 对应年， `MM` 对应月， `DD` 对应日， `HH` 对应时， `MI` 对应分， `SS` 对应秒。 可以使用to_char函数进行24小时制和12小时制的转换，HH24对应24小时制，HH12对应12小时制，默认为12小时制。
 
-| 从Hologres V1.1.31版本开始，在SQL前执行 |  | set hg_experimental_functions_use_pg_implementation = 'to_char'; |
+| 从Hologres V1.1.31版本开始，在SQL前执行 |   | set hg_experimental_functions_use_pg_implementation = 'to_char'; |
 |---|---|---|
-| hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timestamp'; |  |  |
-|  | 说明使用该GUC参数后，查询性能约有50%的损失，升级至Hologres V1.1.42及以上版本后，约有20%的损失。 |  |
+| hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timestamp'; |   |   |
+|   | 说明使用该GUC参数后，查询性能约有50%的损失，升级至Hologres V1.1.42及以上版本后，约有20%的损失。 |   |
 
 使用示例：
 
@@ -4368,10 +4586,10 @@ Hologres支持使用标准的PostgreSQL语法对时间及日期函数进行转�
 
 返回类型：DATE 描述： 将字符串转换为日期，默认支持时间范围为1925~2282年。
 
-| 从Hologres V1.1.31版本开始，在SQL前执行 |  | set hg_experimental_functions_use_pg_implementation = 'to_date'; |
+| 从Hologres V1.1.31版本开始，在SQL前执行 |   | set hg_experimental_functions_use_pg_implementation = 'to_date'; |
 |---|---|---|
-| hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timestamp'; |  |  |
-|  | 说明使用该GUC参数后，查询性能约有50%的损失，升级至Hologres V1.1.42及以上版本后，约有20%的损失。 |  |
+| hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timestamp'; |   |   |
+|   | 说明使用该GUC参数后，查询性能约有50%的损失，升级至Hologres V1.1.42及以上版本后，约有20%的损失。 |   |
 
 使用示例：
 
@@ -4396,9 +4614,9 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 
 可支持所有时间。
 
-**说明**
+> **说明：** 使用该GUC参数后，查询性能约有50%的损失，升级至Hologres V1.1.42及以上版本后，约有20%的损失。
 
-使用该GUC参数后，查询性能约有50%的损失，升级至Hologres V1.1.42及以上版本后，约有20%的损失。 使用示例：
+使用示例：
 
 | 示例场景 | 示例请求 | 返回结果 |
 |---|---|---|
@@ -4409,14 +4627,12 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 
 返回类型：TIMESTAMPTZ 描述： 将时间戳转换为日期。
 
-**说明**
+> **说明：** 从1970-01-01 00:00:00+00的秒数开始转换。
 
-从1970-01-01 00:00:00+00的秒数开始转换。 使用示例：
+使用示例：
 
 | 示例场景 | 示例请求 | 返回结果 |
 |---|---|---|
-
-实时数仓 Hologres
 
 | 时间戳为秒的转换 | SELECT to_timestamp(163280296); | 1975-03-06 03:38:16+08 |
 |---|---|---|
@@ -4431,38 +4647,38 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 | dateadd(date/timesta mp/timestamptz, bigint, text) | date/timestamp/ timestamptz | 按指定的单位和幅度加/减日期。 支持指定的单位包括yyyy/year（年）、 mm/month/mon（月）、dd/day（日）、 hh/hour（时）、mi（分）、ss（秒）。 仅支持1925-2282范围内的时间计算。 Hologres V2.0.31及以上版本支持该函数，暂不支持常量入参。 | CREATE TABLE test_dateadd (a timestamp); INSERT INTO test_dateadd values ('2005-02-28 00:00:00'); -- 指定日期增加一个月 SELECT dateadd(a , 1, 'mm') FROM test_dateadd; | 2005-03-28 00:00:00 |
 | datediff(date/timesta mp/timestamptz, date/timestamp/time stamptz, text) | bigint | 按指定的单位计算两个时间的差值。 支持指定的单位包括yyyy/year（年）、 mm/month/mon（月）、dd/day（日）、 hh/hour（时）、mi（分）、ss（秒）。 仅支持1925-2282范围内的时间计算。 Hologres V2.0.31及以上版本支持该函数，暂不支持常量入参。 | CREATE TABLE test_datediff (a timestamp); INSERT INTO test_datediff values ('2005-02-28 00:00:00'); -- 计算两个日期的分钟差值 SELECT datediff(a , '2005-03-02 00:00:00', 'mi') FROM test_datediff; | -2880 |
 
-| 日期/时间相加： + |  |  |
+| 日期/时间相加： + |   |   |
 |---|---|---|
 | 返回类型 | 用例 | 结果 |
 | DATE | 从指定日期开始向前加7天，返回日期类型 SELECT date '2001-09-28' + integer '7'; | 2001-10-05 |
-|  | 当前日期向前加3天，返回日期类型 SELECT current_date+ integer '3 '; | 2022-12-10 |
-|  | 当前时间向前加1天，返回日期类型 SELECT to_char(current_date+ interval '1 day','yyyy-mm-dd'); | 2022-12-09 |
+|   | 当前日期向前加3天，返回日期类型 SELECT current_date+ integer '3 '; | 2022-12-10 |
+|   | 当前时间向前加1天，返回日期类型 SELECT to_char(current_date+ interval '1 day','yyyy-mm-dd'); | 2022-12-09 |
 | TIMESTAMP | 从指定日期开始向前加3个小时（0点开始计算），返回timestamp类型 SELECT date '2001-09-28' + time '03:00'; | 2001-09-28 03:00:00 |
-|  | 从指定日期开始向前加1个小时（0点开始计算），返回timestamp类型 SELECT date '2001-09-28' + interval '1 hour'; | 2001-09-28 01:00:00 |
+|   | 从指定日期开始向前加1个小时（0点开始计算），返回timestamp类型 SELECT date '2001-09-28' + interval '1 hour'; | 2001-09-28 01:00:00 |
 | TIMESTAMPTZ | 当前时间向前加1天，返回timestamptz类型 SELECT now()+interval '1 day'; | 2022-12-08 20:09:19.388465+08 |
-|  | 当前时间向前加1个月，返回timestamptz类型 SELECT now()+interval '1 month'; | 2023-01-08 20:21:50.993481+08 |
-|  | 当前时间向前加2年，返回timestamptz类型 SELECT now()+interval '2 year'; | 2024-12-08 20:22:49.416343+08 |
-| > 文档版本：2026072 | 9 69 |  |
+|   | 当前时间向前加1个月，返回timestamptz类型 SELECT now()+interval '1 month'; | 2023-01-08 20:21:50.993481+08 |
+|   | 当前时间向前加2年，返回timestamptz类型 SELECT now()+interval '2 year'; | 2024-12-08 20:22:49.416343+08 |
+| > 文档版本：2026072 | 9 69 |   |
 
-|  |  | 实时数仓 Hologres |
+|   |   | 实时数仓 Hologres |
 |---|---|---|
-| 开发指南 |  |  |
+| 开发指南 |   |   |
 
-| 日期/时间相减： - |  |  |
+| 日期/时间相减： - |   |   |
 |---|---|---|
 | 返回类型 | 用例 | 结果 |
 | INTEGER | 指定日期相减，返回integer类型 SELECT date '2001-10-01' - date '2001-09-28'; | 3 |
 | DATE | 指定日期减7天，返回日期类型 SELECT date '2001-10-01' - integer '7'; | 2001-09-24 |
 | TIMESTAMP | 指定日期减3个小时 SELECT date '2001-09-28' - time '03:00'; | 2001-09-27 21:00:00 |
-|  | 指定日期减1个小时 SELECT date '2001-09-28' - interval '1 hour'; | 2001-09-27 23:00:00 |
-|  | 当前时间减2天 SELECT now()-interval '2 day'; | 2022-12-06 20:27:21.094258+08 |
+|   | 指定日期减1个小时 SELECT date '2001-09-28' - interval '1 hour'; | 2001-09-27 23:00:00 |
+|   | 当前时间减2天 SELECT now()-interval '2 day'; | 2022-12-06 20:27:21.094258+08 |
 
-| 日期/时间相乘： * |  |  |
+| 日期/时间相乘： * |   |   |
 |---|---|---|
 | 返回类型 | 用例 | 结果 |
 | INTERVAL | 时间相乘 SELECT 21 * interval '3 day'; | 0 years 0 mons 63 days 0 hours 0 mins 0.0 secs |
 
-| 日期/时间相除： / |  |  |
+| 日期/时间相除： / |   |   |
 |---|---|---|
 | 返回类型 | 用例 | 结果 |
 | INTERVAL | 时间相除 SELECT interval '1 hour' / double precision '1.5'; | 0 years 0 mons 0 days 0 hours 40 mins 0.0 secs |
@@ -4474,8 +4690,6 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 | currentdate _ | DATE | 获取当前日期。 | SELECT current_date; | 2020-05-03 |
 | currenttimestamp _ | TIMESTAMPTZ | 获取当前事务的开始时刻。 说明在事务的整个运行周期内不改变。 | SELECT current_timestamp; | 2020-05-03 06:33:36.113682+08 |
 | clocktimestamp() _ | TIMESTAMPTZ | 获取当前时刻。 说明在同一条命令中也会发生变化。 | SELECT clock_timestamp(); | 2020-05-03 06:32:28.814918+08 |
-
-实时数仓 Hologres
 
 | localtimestamp | TIMESTAMP | 获取不包含时区的当前时间。 | SELECT localtimestamp; | 2020-08-21 12:02:21.178031 |
 |---|---|---|---|---|
@@ -4498,9 +4712,9 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 
 返回类型：DOUBLE PRECISION 描述： 从时间戳中获取子字段。
 
-**说明**
+> **说明：** 输入的field常量值包括century、day、decade、dow（一周中的第几天，周日为0）、isodow（一周中的第几天，周日为7）、doy（一年中的第几天）、epoch、 hour、minute、month、quarter、second、week、year等。
 
-输入的field常量值包括century、day、decade、dow（一周中的第几天，周日为0）、isodow（一周中的第几天，周日为7）、doy（一年中的第几天）、epoch、 hour、minute、month、quarter、second、week、year等。 使用示例
+使用示例
 
 | 示例场景 | 请求示例 | 返回结果 |
 |---|---|---|
@@ -4508,15 +4722,13 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 | 获取当前时间的分钟数 | SELECT extract(minute FROM now()); | 55 |
 | 带表字段的计算 | CREATE TABLE time_test(a text); INSERT INTO time_test values ('2001-09-28 03:00:00'); --1970年到字段值时间的秒数 SELECT extract(epoch FROM to_timestamp(a, 'YYYY-MM-DD')) FROM time_test; | 978969600 |
 
-实时数仓 Hologres
-
 **date_part(text, timestamp)**
 
 返回类型：DOUBLE PRECISION 描述： 从时间戳中获取子字段，等效于**extract(field FROM timestamp)**。
 
-**说明**
+> **说明：** 输入的field常量值包括century、day、decade、dow（一周中的第几天，周日为0）、isodow（一周中的第几天，周日为7）、doy（一年中的第几天）、epoch、 hour、minute、month、quarter、second、week、year等。
 
-输入的field常量值包括century、day、decade、dow（一周中的第几天，周日为0）、isodow（一周中的第几天，周日为7）、doy（一年中的第几天）、epoch、 hour、minute、month、quarter、second、week、year等。 使用示例
+使用示例
 
 | 示例场景 | 请求示例 | 返回结果 |
 |---|---|---|
@@ -4528,9 +4740,9 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 
 返回类型：TIMESTAMP/TIMESTAMPTZ 描述： 截断时间戳到指定精度。
 
-**说明**
+> **说明：** 输入的text常量值包括century、decade、year、quarter、month、week、day、hour、minute、second等。
 
-输入的text常量值包括century、decade、year、quarter、month、week、day、hour、minute、second等。 使用示例
+使用示例
 
 | 示例场景 | 请求示例 | 返回结果 |
 |---|---|---|
@@ -4552,7 +4764,7 @@ set hg_experimental_functions_use_pg_implementation = 'to_char,to_date,to_timest
 
 **isfinite(timestamp)**
 
-返回类型：BOOLEAN 描述实时数仓 Hologres 判断时间戳是否为有限值，有限值返回 `true` ，无限值返回 `false` 。 使用示例
+返回类型：BOOLEAN 描述判断时间戳是否为有限值，有限值返回 `true` ，无限值返回 `false` 。 使用示例
 
 | 请求示例 | 返回结果 |
 |---|---|
@@ -4595,6 +4807,7 @@ date_part --------------------- 1672285506.296279
 日期字段和数字字段相加。
 
 ```
+CREATE TABLE date_test1(
     a DATE,
     b INT );
 INSERT INTO date_test1 VALUES ('2021-09-28','12'); SELECT a + (b || ' month')::interval FROM date_test1;
@@ -4635,15 +4848,15 @@ date_part ---------
 
 | 两个整数相除有余数的场景中，Hologres会返回整数舍弃余数。示例： | 10/3 | ，结果是3，如果需要显示余数，需要显式做类型转换，转成float再计算，如下所示： |
 |---|---|---|
-| SELECT 10/3::float; |  |  |
+| SELECT 10/3::float; |   |   |
 
-运行结果： 实时数仓 Hologres
+运行结果：
 
 ```
 ?column? --------- 3.3333333333333335
 ```
 
-#### 1.4.8. 条件函数
+#### 1.4.8 条件函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的条件函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见条件函数。
 
@@ -4655,7 +4868,7 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 | greatest | 选择表达式列表中的最大值。 | greatest('a','b','c') | c |
 | least | 选择表达式列表中的最小值。 | least('a','b','c') | a |
 
-#### 1.4.9. 数组函数
+#### 1.4.9 数组函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的数组函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见数组函数。
 
@@ -4682,8 +4895,6 @@ array_max(ARRAY[-2, NULL, -3, -12, -7]); 。
 | arraytostring(anyarray,text[, _ _ text]) | TEXT | 使用提供的定界符和可选的空串连接数组元素。 | arraytostring(ARRAY[1, 2, 3], _ _ ',') | 1,2,3 |
 | arrayagg(anyelement) _ | ARRAY | 将表达式的值串联到数组中。 Hologres从V1.3版本开始支持 DECIMAL、DATE、TIMESTAMP、 TIMESTAMPTZ数据类型。 暂不支持JSON、JSONB、TIMETZ、 INTERVAL、INET、OID、UUID数据类型。 暂不支持数组类型。 | CREATE TABLE test_array_agg_int ( c1 int ); INSERT INTO test_array_agg_int VALUES (1), (2); SELECT array_agg (c1) FROM test_array_agg_int; | array_agg ----------- {1,2} (1 row) |
 
-实时数仓 Hologres
-
 | arrayagg (expression[ _ orderbyclause ] ) [ FILTER ( _ _ WHERE filterclause ) ] _ | ARRAY | 将表达式的值串联到数组中。Hologres从 V1.3版本开始支持filter过滤 | CREATE TABLE test_array_agg_int ( c1 int ); INSERT INTO test_array_agg_int VALUES (1), (2); SELECT array_agg (c1) filter (where c1 >1) FROM test_array_agg_int; | array_agg ----------- {2} |
 |---|---|---|---|---|
 | arraycat(anyarray,anyarray) _ | ARRAY | 连接两个数组。 | arraycat(ARRAY[1,2,3], _ ARRAY[4,5]) | {1,2,3,4,5} |
@@ -4699,20 +4910,16 @@ array_max(ARRAY[-2, NULL, -3, -12, -7]); 。
 | unnest(anyarray) | TEXT | 将数组的每个元素扩展为单独行。 | unnest(ARRAY[1,2]) | 1 2 (2 rows) |
 | arraymax(array) _ | INT | 返回数组中所有数据的最大值。计算过程中会跳过NULL值。 说明 Hologres V1.3.19及以上版本支持。 | CREATE TABLE test_array_max_int ( c1 int[] ); INSERT INTO test_array_max_int VALUES (NULL), (ARRAY[-2, NULL, -3, - 12, -7]); SELECT c1, array_max (c1) FROM test_array_max_int; | c1 \| array_max ----------------- -+----------- \| {-2,0,-3,-12,- 7} \| 0 (2 rows) |
 
-实时数仓 Hologres
-
 | arraymin(array) _ | INT | 返回数组中所有数据的最小值。 说明 Hologres V1.3.19及以上版本支持。 | CREATE TABLE test_array_min_text ( c1 text[] ); INSERT INTO test_array_min_text VALUES (NULL), (ARRAY['hello', 'holo', 'blackhole', 'array']); SELECT c1, array_min (c1) FROM test_array_min_text; | c1 \| array_min ----------------- -------------+--- -------- \| {hello,holo,black hole,array} \| array (2 rows) |
 |---|---|---|---|---|
 | arraycontains(array, _ targetvalue) _ | BOOLEAN | 如果数组包含 target_value ，则返回 true ，反之返回 false 。 说明 Hologres V1.3.19及以上版本支持。 | CREATE TABLE test_array_contains_text ( c1 text[], c2 text ); INSERT INTO test_array_contains_text VALUES (ARRAY[NULL, 'cs', 'holo', 'sql', 'a', NULL, ''], 'holo') , (ARRAY['holo', 'array', 'FE', 'l', NULL, ''], 'function'); SELECT c1, c2, array_contains (c1, c2) FROM test_array_contains_text ; | c1 \| c2 \| array_contains ----------------- ---------+------- ---+------------- --- {holo,array,FE,l, "",""} \| function \| f {"",cs,holo,sql,a ,"",""} \| holo \| t (2 rows) |
 | arrayexcept(array1, array2) _ | ARRAY | 返回属于 array1 而不属于 array2 的元素组成的数组。 说明 Hologres V1.3.19及以上版本支持。 | CREATE TABLE test_array_except_text ( c1 text[], c2 text[] ); INSERT INTO test_array_except_text VALUES (ARRAY['o', 'y', 'l', 'l', NULL, ''], NULL), (ARRAY['holo', 'hello', 'hello', 'SQL', '', 'blackhole'], ARRAY['holo', 'SQL', NULL, 'kk']); SELECT c1, c2, array_except (c1, c2) FROM test_array_except_text; | c1 \| c2 \| array_except ----------------- ----------------- ---+------------- -----+----------- -------- {o,y,l,l,"",""} \| \| {o,l,y,""} {holo,hello,hello ,SQL,"",blackhole } \| {holo,SQL,"",kk} \| {blackhole,hello} (2 rows) |
 
-实时数仓 Hologres
-
 | arraydistinct(array) _ | ARRAY | 从 array 中去除重复项。 说明 Hologres V1.3.19及以上版本支持。 | CREATE TABLE test_array_distinct_text ( c1 text[] ); INSERT INTO test_array_distinct_text VALUES (ARRAY['holo', 'hello', 'holo', 'SQL', 'SQL']), (ARRAY[]::text[]); SELECT c1, array_distinct (c1) FROM test_array_distinct_text ; | c1 \| array_distinct ----------------- ----------+------ ------------ {holo,hello,holo, SQL,SQL} \| {SQL,hello,holo} {} \| {NULL} (2 rows) |
 |---|---|---|---|---|
 | arrayunion(array1, array2) _ | ARRAY | 返回 array1 和 array2 元素并集构成的数组，不含重复项。 说明 Hologres V1.3.19及以上版本支持。 | CREATE TABLE test_array_union_int ( c1 int[], c2 int[] ); INSERT INTO test_array_union_int VALUES (NULL, ARRAY[2, -3, 2, 7]), (ARRAY[2, 7, -3, 2, 7], ARRAY[12, 9, 8, 7]); SELECT c1, c2, array_union (c1, c2) FROM test_array_union_int; | c1 \| c2 \| array_union --------------+-- ----------+------ ----------- \| {2,-3,2,7} \| {2,7,-3} {2,7,-3,2,7} \| {12,9,8,7} \| {9,2,7,8,12,-3} (2 rows) |
 
-#### 1.4.10. 通用聚合函数
+#### 1.4.10 通用聚合函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的通用聚合函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见通用聚合函数。
 
@@ -4734,54 +4941,50 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 | bitor(int) _ | 对INT类型表达式中的非空值执行按位或运算。 | bitor(c1) _ | 3 |
 | booland(bool) _ | 如果BOOL表达式的值均为TRUE，则函数结果返回TRUE，否则返回FALSE。 | booland(c1) _ | f |
 
-实时数仓 Hologres
-
-| boolor(bool) _ |  | 如果BOOL表达式的值包含TRUE，则函数结果返回TRUE，否则返回FALSE。 | boolor(c1) _ | t |
+| boolor(bool) _ |   | 如果BOOL表达式的值包含TRUE，则函数结果返回TRUE，否则返回FALSE。 | boolor(c1) _ | t |
 |---|---|---|---|---|
-| cout(*) |  | 返回指定表的行数。 | count(*) | 3 |
-| cout(bigint) |  | 求BIGINT类型表达式的输入行数。 说明 BIGINT类型表达式的值不为NULL。 | count(c1) | 3 |
-| cout(numeric) |  | 求NUMERIC类型表达式的输入行数。 说明 NUMERIC类型表达式的值不为NULL。 | count(c1) | 3 |
-| every(bool) |  | 如果BOOL表达式的值均为TRUE，则函数结果返回TRUE，否则返回FALSE。 | 无 | 无 |
-| max(bigint) |  | 求BIGINT类型表达式的最大值。 | max(c1) | 3 |
-| max(float8) |  | 求FLOAT8类型表达式的最大值。 | max(c1) | 3.0 |
-| max(float4) |  | 求FLOAT4类型表达式的最大值。 | max(c1) | 3.0 |
-| max(int) |  | 求INT类型表达式的最大值。 | max(c1) | 3 |
-| max(numeric) |  | 求NUMERIC类型表达式的最大值。 | max(c1) | 3.0 |
-| min(bigint) |  | 求BIGINT类型表达式的最小值。 | min(c1) | 1 |
-| min(float8) |  | 求FLOAT8类型表达式的最小值。 | min(c1) | 1.0 |
-| min(float4) |  | 求FLOAT4类型表达式的最小值。 | min(c1) | 1.0 |
-| min(int) |  | 求INT类型表达式的最小值。 | min(c1) | 1 |
-| min(numeric) |  | 求NUMERIC类型表达式的最小值。 | min(c1) | 1.0 |
-| sum(bigint) |  | 求BIGINT类型表达式所有值的总和。 | sum(c1) | 6 |
-| sum(float8) |  | 求FLOAT8类型表达式所有值的总和。 | sum(c1) | 6.0 |
-| sum(float4) |  | 求FLOAT4类型表达式所有值的总和。 | sum(c1) | 6.0 |
-| sum(int) |  | 求INT类型表达式所有值的总和。 | sum(c1) | 6 |
-| sum(numeric) |  | 求NUMERIC类型表达式所有值的总和。 | sum(c1) | 6.0 |
-| stringagg(expression, delimiter) _ |  | 使用指定分隔符将指定表达式的非空值串联成字符串。 | stringagg(c1, '-') _ | a-b-c |
-| corr(Y, X) |  | 求相关系数。 | corr(c1, c2) | 无 |
-| covarpop(Y, X) _ |  | 求总体协方差。 | covarpop(c1, c2) _ | 无 |
-| covarsamp(Y, X) _ |  | 求样本协方差。 | covarsamp(c1, c2) _ | 无 |
-| regravgx(Y, X) _ |  | 求自变量的平均值。 | regavgx(c1, c2) _ | 无 |
-| regravgy(Y, X) _ |  | 求因变量的平均值。 | regavgy(c1, c2) _ | 无 |
-| regrcount(Y, X) _ |  | 求两个输入参数中都不为空的行数。 | regrcount(c1, c2) _ | 无 |
-| regrintercept(Y, X) _ |  | 求由(X,Y)确定的最小方差拟合的纵轴截距。 | regintercept(c1, c2) _ | 无 |
-| regrr2(Y, X) _ |  | 求相关系数的平方。 | regrr2(c1, c2) _ | 无 |
-| regrslope(Y, X) _ |  | 求由(X,Y)确定的最小方差拟合的斜率。 | regrslope(c1, c2) _ | 无 |
-| regrsxx(Y, X) _ |  | 求自变量的平方和 sum(X^2) - sum(X)^2/N 。 | regrsxx(c1, c2) _ | 无 |
-| regrsxy(Y, X) _ |  | 求自变量和因变量的乘积和 sum(X*Y) - sum(X) * sum(Y)/N 。 |  | 无 |
-| regrsyy(Y, X) _ |  | 求因变量的平方和 sum(Y^2) - sum(Y)^2/N 。 | regrsyy(c1, c2) _ | 无 |
-| stddev(int) |  | 求INT类型表达式的样本标准差。 | stddev(c1) | 无 |
-| stddev(numeric) |  | 求NUMERIC类型表达式的样本标准差。 | stddev(c1) | 无 |
-| stddev(float8) |  | 求FLOAT8类型表达式的样本标准差。 | stddev(c1) | 无 |
-| stddevpop(int) _ |  | 求INT类型表达式的总体标准差。 | stddevpop(c1) _ | 无 |
-| stddevpop(numeric) _ |  | 求NUMERIC类型表达式的总体标准差。 | stddevpop(c1) _ | 无 |
-| stddevpop(float8) _ |  | 求FLOAT8类型表达式的总体标准差。 | stddevpop(c1) _ | 无 |
-| stddevsamp(int) _ |  | 求INT类型表达式的样本标准差。 | stddevsamp(c1) _ | 无 |
-| stddevsamp(numeric) _ |  | 求NUMERIC类型表达式的样本标准差。 | stddevsamp(c1) _ | 无 |
-| stddevsamp(float8) _ |  | 求FLOAT8类型表达式的样本标准差。 | stddevsamp(c1) _ | 无 |
-| variance(int) |  | 求INT类型表达式的样本方差。 | variance(c1) | 无 |
-
-实时数仓 Hologres
+| cout(*) |   | 返回指定表的行数。 | count(*) | 3 |
+| cout(bigint) |   | 求BIGINT类型表达式的输入行数。 说明 BIGINT类型表达式的值不为NULL。 | count(c1) | 3 |
+| cout(numeric) |   | 求NUMERIC类型表达式的输入行数。 说明 NUMERIC类型表达式的值不为NULL。 | count(c1) | 3 |
+| every(bool) |   | 如果BOOL表达式的值均为TRUE，则函数结果返回TRUE，否则返回FALSE。 | 无 | 无 |
+| max(bigint) |   | 求BIGINT类型表达式的最大值。 | max(c1) | 3 |
+| max(float8) |   | 求FLOAT8类型表达式的最大值。 | max(c1) | 3.0 |
+| max(float4) |   | 求FLOAT4类型表达式的最大值。 | max(c1) | 3.0 |
+| max(int) |   | 求INT类型表达式的最大值。 | max(c1) | 3 |
+| max(numeric) |   | 求NUMERIC类型表达式的最大值。 | max(c1) | 3.0 |
+| min(bigint) |   | 求BIGINT类型表达式的最小值。 | min(c1) | 1 |
+| min(float8) |   | 求FLOAT8类型表达式的最小值。 | min(c1) | 1.0 |
+| min(float4) |   | 求FLOAT4类型表达式的最小值。 | min(c1) | 1.0 |
+| min(int) |   | 求INT类型表达式的最小值。 | min(c1) | 1 |
+| min(numeric) |   | 求NUMERIC类型表达式的最小值。 | min(c1) | 1.0 |
+| sum(bigint) |   | 求BIGINT类型表达式所有值的总和。 | sum(c1) | 6 |
+| sum(float8) |   | 求FLOAT8类型表达式所有值的总和。 | sum(c1) | 6.0 |
+| sum(float4) |   | 求FLOAT4类型表达式所有值的总和。 | sum(c1) | 6.0 |
+| sum(int) |   | 求INT类型表达式所有值的总和。 | sum(c1) | 6 |
+| sum(numeric) |   | 求NUMERIC类型表达式所有值的总和。 | sum(c1) | 6.0 |
+| stringagg(expression, delimiter) _ |   | 使用指定分隔符将指定表达式的非空值串联成字符串。 | stringagg(c1, '-') _ | a-b-c |
+| corr(Y, X) |   | 求相关系数。 | corr(c1, c2) | 无 |
+| covarpop(Y, X) _ |   | 求总体协方差。 | covarpop(c1, c2) _ | 无 |
+| covarsamp(Y, X) _ |   | 求样本协方差。 | covarsamp(c1, c2) _ | 无 |
+| regravgx(Y, X) _ |   | 求自变量的平均值。 | regavgx(c1, c2) _ | 无 |
+| regravgy(Y, X) _ |   | 求因变量的平均值。 | regavgy(c1, c2) _ | 无 |
+| regrcount(Y, X) _ |   | 求两个输入参数中都不为空的行数。 | regrcount(c1, c2) _ | 无 |
+| regrintercept(Y, X) _ |   | 求由(X,Y)确定的最小方差拟合的纵轴截距。 | regintercept(c1, c2) _ | 无 |
+| regrr2(Y, X) _ |   | 求相关系数的平方。 | regrr2(c1, c2) _ | 无 |
+| regrslope(Y, X) _ |   | 求由(X,Y)确定的最小方差拟合的斜率。 | regrslope(c1, c2) _ | 无 |
+| regrsxx(Y, X) _ |   | 求自变量的平方和 sum(X^2) - sum(X)^2/N 。 | regrsxx(c1, c2) _ | 无 |
+| regrsxy(Y, X) _ |   | 求自变量和因变量的乘积和 sum(X*Y) - sum(X) * sum(Y)/N 。 |   | 无 |
+| regrsyy(Y, X) _ |   | 求因变量的平方和 sum(Y^2) - sum(Y)^2/N 。 | regrsyy(c1, c2) _ | 无 |
+| stddev(int) |   | 求INT类型表达式的样本标准差。 | stddev(c1) | 无 |
+| stddev(numeric) |   | 求NUMERIC类型表达式的样本标准差。 | stddev(c1) | 无 |
+| stddev(float8) |   | 求FLOAT8类型表达式的样本标准差。 | stddev(c1) | 无 |
+| stddevpop(int) _ |   | 求INT类型表达式的总体标准差。 | stddevpop(c1) _ | 无 |
+| stddevpop(numeric) _ |   | 求NUMERIC类型表达式的总体标准差。 | stddevpop(c1) _ | 无 |
+| stddevpop(float8) _ |   | 求FLOAT8类型表达式的总体标准差。 | stddevpop(c1) _ | 无 |
+| stddevsamp(int) _ |   | 求INT类型表达式的样本标准差。 | stddevsamp(c1) _ | 无 |
+| stddevsamp(numeric) _ |   | 求NUMERIC类型表达式的样本标准差。 | stddevsamp(c1) _ | 无 |
+| stddevsamp(float8) _ |   | 求FLOAT8类型表达式的样本标准差。 | stddevsamp(c1) _ | 无 |
+| variance(int) |   | 求INT类型表达式的样本方差。 | variance(c1) | 无 |
 
 | variance(numeric) | 求NUMERIC类型表达式的样本方差。 | variance(c1) | 无 |
 |---|---|---|---|
@@ -4792,7 +4995,7 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 | varsamp(int) _ | 求INT类型表达式的样本方差。 | varsamp(c1) _ | 无 |
 | varsamp(numeric) _ | 求NUMERIC类型表达式的样本方差。 | varsamp(c1) _ | 无 |
 
-#### 1.4.11. 有序集合函数
+#### 1.4.11 有序集合函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。本文介绍Hologres支持的有序集合函数及其使用方法。
 
@@ -4814,23 +5017,28 @@ GROUPING( <expr1> [ , <expr2> , ... ] )
 
 | expr | 表示组的列。 |
 |---|---|
-| 说明 GROUPING是可以与聚合一起使用的实用程序函数，用于生成列的聚合级别： GROUPING( expr ) 若返回0，表示按照 expr 列进行了聚合，若返回1，表示未按照 expr 列进行聚合。 GROUPING( expr1，expr2,...exprN ) 将会返回包含GROUPING( expr1 )，GROUPING( expr2 )，...，GROUPING( exprN )的位向量的整数表示。 |  |
+| 说明 GROUPING是可以与聚合一起使用的实用程序函数，用于生成列的聚合级别： GROUPING( expr ) 若返回0，表示按照 expr 列进行了聚合，若返回1，表示未按照 expr 列进行聚合。 GROUPING( expr1，expr2,...exprN ) 将会返回包含GROUPING( expr1 )，GROUPING( expr2 )，...，GROUPING( exprN )的位向量的整数表示。 |   |
 
 **使用示例**
 
 **创建表并插入数据**
 
 ```
-(
+CREATE TABLE t1
+```
+
+`(`
+
+```
     col_x INT,
     col_y INT,
     col_z INT
 ```
 
-)
+`)` ;
 
 ```
-; INSERT INTO t1 VALUES(1, 2, 1), (1, 2, 3) ; INSERT INTO t1 VALUES(2, 1, 10), (2, 2, 11), (2, 2, 3) ; SELECT * FROM t1 ORDER BY col_x, col_y, col_z;
+INSERT INTO t1 VALUES(1, 2, 1), (1, 2, 3) ; INSERT INTO t1 VALUES(2, 1, 10), (2, 2, 11), (2, 2, 3) ; SELECT * FROM t1 ORDER BY col_x, col_y, col_z;
 ```
 
 `--` 返回结果
@@ -4847,8 +5055,6 @@ GROUPING( <expr1> [ , <expr2> , ... ] )
 +-------+-------+-------+
 ```
 
-实时数仓 Hologres
-
 **使用样例数据**
 
 ```
@@ -4861,7 +5067,7 @@ GROUPING( <expr1> [ , <expr2> , ... ] )
 FROM t1 GROUP BY GROUPING SETS ((col_x), (col_y), ()) ORDER BY 1, 2;
 ```
 
-`--` 返回结果：其中，3表示二进制数`11`转换为的整数。
+`--` 返回结果：其中，`3`表示二进制数`11`转换为的整数。
 
 ```
 +-------+-------+-------+----------+----------+-----------+
@@ -4875,7 +5081,7 @@ FROM t1 GROUP BY GROUPING SETS ((col_x), (col_y), ()) ORDER BY 1, 2;
 +-------+-------+-------+----------+----------+-----------+
 ```
 
-#### 1.4.12. 窗口函数
+#### 1.4.12 窗口函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的窗口函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见窗口函数。
 
@@ -4890,10 +5096,10 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 | firstvalue() _ | 返回在窗口框架的第一行计算出的值。 | c1, firstvalue(c1) over (order by c1) _ | c1 \| firstvalue ----+--- _ ---------- a \| a a \| a b \| a c \| a(4 rows) |
 | lastvalue() _ | 返回在窗口框架的最后一行计算出的值。 | c1, lastvalue(c1) over (order by c1) _ | c1 \| lastvalue ----+--- _ --------- a \| a a \| a b \| b c \| c(4 rows) |
 
-|  | 1） |
+|   | 1） |
 |---|---|
 
-#### 1.4.13. 子查询函数
+#### 1.4.13 子查询函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的子查询函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见子查询函数。
 
@@ -4902,14 +5108,12 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 | EXISTS (subquery) | 判断子查询结果是否返回行： 如果至少返回一行，则EXISTS的结果为TRUE。 如果没有返回行，则EXISTS的结果为FALSE。 说明 Subquery参数为任意的SELECT语句。 |
 | IN (subquery) | 逐行比较指定表达式的值与子查询结果是否相等： 如果存在相等行，则IN的结果返回TRUE。 如果不存在相等行，则IN的结果返回FALSE。 说明指定表达式的值与子查询结果的列数目必须相同。 |
 
-实时数仓 Hologres
-
 | NOT IN (subquery) | 逐行比较指定表达式的值与子查询结果是否相等： 如果不存在相等行，则NOT IN的结果返回TRUE。 如果存在相等行，则NOT IN的结果返回FALSE。 说明指定表达式的值与子查询结果的列数目必须相同。 |
 |---|---|
 | ANY (subquery) | 使用指定操作符逐行运算指定表达式的值与子查询结果： 如果运算结果存在TRUE，则ANY的结果返回TRUE。 如果运算结果均为FALSE，则ANY的结果返回FALSE。 说明指定表达式的值与子查询结果的列数目必须相同。 |
 | SOME (subquery) | 无 |
 
-#### 1.4.14. 比较函数
+#### 1.4.14 比较函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的比较函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见比较函数。
 
@@ -4918,7 +5122,7 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 | expression NOT IN (values,...) | 如果Expression表达式的值与所有Value的值都不相等，则结果返回TRUE，反之返回FALSE。 |
 | expression IN (values,...) | 如果Expression表达式的值与任意Value的值相等，则结果返回TRUE，反之返回FALSE。 |
 
-#### 1.4.15. 集合返回函数
+#### 1.4.15 集合返回函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的集合返回函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见集合返回函数。
 
@@ -4935,6 +5139,8 @@ Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 
 
 | start | 到 | stop |
 |---|---|---|
+
+描述：从 `start` 到 `stop` 生成一个固定步长的数值序列。
 
 ```
 GENERATE_SERIES(start, stop[, step])
@@ -4967,11 +5173,9 @@ SELECT GENERATE_SERIES(5, 1, -2);
  GENERATE_SERIES(start, stop, step INTERVAL)
 ```
 
-实时数仓 Hologres
-
 | 描述：从 | start | 到 | stop | 生成一个步长为 | step | 的日期序列。 |
 |---|---|---|---|---|---|---|
-| GENERATE_SERIES(start, stop, step INTERVAL) |  |  |  |  |  |  |
+| GENERATE_SERIES(start, stop, step INTERVAL) |   |   |   |   |   |   |
 
 参数说明 `start` ：必填，起始值，数据类型为TIMESTAMP和TIMESTAMP WITH TIME ZONE。 `stop` ：必填，结束值，数据类型为TIMESTAMP和TIMESTAMP WITH TIME ZONE。 `step` ：必填，步长值（即时间间隔），数据类型为INTERVAL。 返回值说明返回与入参类型一致的一组日期序列。 示例
 
@@ -5009,29 +5213,29 @@ SELECT GENERATE_SUBSCRIPTS('{NULL,1,NULL,2}'::int[], 1);
 ---------------------
 ```
 
-#### 1.4.16. 账号和权限管理函数
+#### 1.4.16 账号和权限管理函数
+
+本文介绍Hologres支持的账号和权限管理函数。
 
 | 类型 | 函数 | 功能 |
 |---|---|---|
 | 账号管理函数 | HGDISPLAYNAMETOID _ _ _ _ | 将邮箱形式或RAM形式的阿里云账号转换为阿里云账号ID。 |
-|  | USERDISPLAYNAME _ _ | 将阿里云账号ID转换为邮箱形式或RAM形式的阿里云账号。 |
+|   | USERDISPLAYNAME _ _ | 将阿里云账号ID转换为邮箱形式或RAM形式的阿里云账号。 |
 | 授权函数 | APPLYPRIVILEGES _ | 用于在专家权限模型下，将源表给用户授予的权限复制到目标表，目标表保持与源表一致的权限。 |
 | 权限查询函数 | HASANYCOLUMNPRIVILEGE _ _ _ | 确认当前用户或指定用户是否有指定表的任意列的特定权限。 |
-|  | HASCOLUMNPRIVILEGE _ _ | 确认当前用户是否有指定列的特定权限。 |
-|  | HASDATABASEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定数据库的特定权限。 |
-|  | HASFOREIGNDATAWRAPPERP _ _ _ _ RIVILEGE | 确认当前用户或指定用户是否有外部数据包装器的特定权限。 |
-|  | HASFUNCTIONPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定函数的特定权限。 |
-|  | HASLANGUAGEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定语言的特定权限。 |
-|  | HASSCHEMAPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定的Schema的特定权限。 |
-|  | HASSERVERPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定外部服务器的特定权限。 |
-| 82 | > 文档版本：20260729 |  |
+|   | HASCOLUMNPRIVILEGE _ _ | 确认当前用户是否有指定列的特定权限。 |
+|   | HASDATABASEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定数据库的特定权限。 |
+|   | HASFOREIGNDATAWRAPPERP _ _ _ _ RIVILEGE | 确认当前用户或指定用户是否有外部数据包装器的特定权限。 |
+|   | HASFUNCTIONPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定函数的特定权限。 |
+|   | HASLANGUAGEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定语言的特定权限。 |
+|   | HASSCHEMAPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定的Schema的特定权限。 |
+|   | HASSERVERPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定外部服务器的特定权限。 |
+| 82 | > 文档版本：20260729 |   |
 
-实时数仓 Hologres
-
-|  | HASTABLEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定表的特定权限。 |
+|   | HASTABLEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定表的特定权限。 |
 |---|---|---|
-|  | HASTABLESPACEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定表空间的特定权限。 |
-|  | HASTYPEPRIVILEGE _ _ | 确认当前用户或指定用户是否有特定类型（​如表、​视图、​序列等）​的特定权限。 |
+|   | HASTABLESPACEPRIVILEGE _ _ | 确认当前用户或指定用户是否有指定表空间的特定权限。 |
+|   | HASTYPEPRIVILEGE _ _ | 确认当前用户或指定用户是否有特定类型（​如表、​视图、​序列等）​的特定权限。 |
 
 **账号管理函数**
 
@@ -5046,6 +5250,8 @@ SELECT USER_DISPLAY_NAME (user_name);
 ```
 SELECT USER_DISPLAY_NAME ('13532241323xxx');
 ```
+
+**HG_DISPLAY_NAME_TO_ID**
 
 描述：将邮箱形式或RAM形式的阿里云账号转换为阿里云账号ID。
 
@@ -5075,13 +5281,13 @@ CALL APPLY_PRIVILEGES('<old_table>','<new_table>', false);
 CALL APPLY_PRIVILEGES('<old_table>','<new_table>');
 ```
 
-**说明**
-
-|  | CREATE TABLE LIKE |
+|   | CREATE TABLE LIKE |
 |---|---|
-| APPLY_PRIVILEGES |  |
+| APPLY_PRIVILEGES |   |
 
-使用限制仅Hologres V1.1.48及以上版本支持 `APPLY_PRIVILEGES` 函数，如果您的实例是V1.1.48以下版本，请您使用常见升级准备失败报错或加入Hologres钉钉交流群反馈， 详情请参见如何获取更多的在线支持？。 需要数据库开启专家权限模型，如果您开启的是SPM或者SLPM请转换为专家权限模型，详情请参见权限模型转换。 调用函数需要具有目标表的GRANT、REVOKE权限。 `APPLY_PRIVILEGES` 的目标表是分区表时，只对父表复制权限，不影响子表访问控制权限。 参数说明示例 `--` 将`test_table1 ACL`授权信息、`owner`信息应用到`test_table2`上， `false`代表不对`test_table2`之前具有的权限规则进行删除
+> **说明：** 专家权限模型下，当使用 `CREATE TABLE LIKE` 、 `INSERT OVERWRITE` 、自动分区等创建新表时，新表的权限还需要重新再授予给用户，通
+
+使用限制仅Hologres V1.1.48及以上版本支持 `APPLY_PRIVILEGES` 函数，如果您的实例是V1.1.48以下版本，请您使用常见升级准备失败报错或加入Hologres钉钉交流群反馈， 详情请参见如何获取更多的在线支持？。 需要数据库开启专家权限模型，如果您开启的是SPM或者SLPM请转换为专家权限模型，详情请参见权限模型转换。 调用函数需要具有目标表的GRANT、REVOKE权限。 `APPLY_PRIVILEGES` 的目标表是分区表时，只对父表复制权限，不影响子表访问控制权限。 参数说明 old_table：必填，源表名称，即被复制权限的表名称。 new_table：必填，目标表名称，即获得权限的表名称。 示例 `--` 将`test_table1 ACL`授权信息、`owner`信息应用到`test_table2`上， `false`代表不对`test_table2`之前具有的权限规则进行删除
 
 ```
 CALL APPLY_PRIVILEGES('test_table1','test_table2', false);
@@ -5097,11 +5303,17 @@ CALL APPLY_PRIVILEGES('test_table1','test_table2');
 
 **示例数据**
 
-权限查询函数相关的示例均基于 `test` 示例数据。以下是创建表 `test` 并添加数据的命令示例。 实时数仓 Hologres
+权限查询函数相关的示例均基于 `test` 示例数据。以下是创建表 `test` 并添加数据的命令示例。
 
 ```
+CREATE TABLE test (
     a INT
-); INSERT INTO test (a) VALUES (1); INSERT INTO test (a) VALUES (2); INSERT INTO test (a) VALUES (3);
+```
+
+);
+
+```
+INSERT INTO test (a) VALUES (1); INSERT INTO test (a) VALUES (2); INSERT INTO test (a) VALUES (3);
 ```
 
 **HAS_ANY_COLUMN_PRIVILEGE**
@@ -5112,7 +5324,7 @@ CALL APPLY_PRIVILEGES('test_table1','test_table2');
 HAS_ANY_COLUMN_PRIVILEGE([user, ]table, privilege)
 ```
 
-参数说明 user：可选，账号名称或账号ID。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：SELECT、INSERT、UPDATE、REFERENCES。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有访问表任何列的权限，则返回true（t）；反之返回false（f）。 示例
+参数说明 user：可选，账号名称或账号ID。 table：必填，表名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：SELECT、INSERT、UPDATE、REFERENCES。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有访问表任何列的权限，则返回true（t）；反之返回false（f）。 示例
 
 ```
 SELECT HAS_ANY_COLUMN_PRIVILEGE('139699392458****', 'test' , 'SELECT,INSERT,UPDATE,REFERENCES');
@@ -5125,11 +5337,17 @@ SELECT HAS_ANY_COLUMN_PRIVILEGE('139699392458****', 'test' , 'SELECT,INSERT,UPDA
 --------------------------
 ```
 
-t
+`t`
 
 **HAS_COLUMN_PRIVILEGE**
 
-描述：确认当前用户是否有指定列的特定权限。 参数说明 column：必填，列名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：SELECT、INSERT、UPDATE、REFERENCES。 返回值说明返回BOOLEAN类型，若当前用户有访问列的权限，则返回true（t）；反之返回false（f）。 示例
+描述：确认当前用户是否有指定列的特定权限。
+
+```
+HAS_COLUMN_PRIVILEGE(table, column, privilege)
+```
+
+参数说明 table：必填，表名称。 column：必填，列名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：SELECT、INSERT、UPDATE、REFERENCES。 返回值说明返回BOOLEAN类型，若当前用户有访问列的权限，则返回true（t）；反之返回false（f）。 示例
 
 ```
 SELECT HAS_COLUMN_PRIVILEGE('test' , 'a', 'SELECT,INSERT,UPDATE,REFERENCES');
@@ -5142,19 +5360,24 @@ SELECT HAS_COLUMN_PRIVILEGE('test' , 'a', 'SELECT,INSERT,UPDATE,REFERENCES');
 ----------------------
 ```
 
-t 描述：确认当前用户或指定用户是否有指定数据库的特定权限。
+`t`
+
+**HAS_DATABASE_PRIVILEGE**
+
+描述：确认当前用户或指定用户是否有指定数据库的特定权限。
 
 ```
 HAS_DATABASE_PRIVILEGE([user, ]database, privilege)
 ```
 
-参数说明 user：可选，账号名称或账号ID。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值如下：CREATE、TEMPORARY、TEMP。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有指定数据库的权限，则返回true（t）；反之返回false（f）。 示例 SELECT HAS_DATABASE_PRIVILEGE('glz', 'CREATE,TEMPORARY,TEMP');---替换为自己创建的数据库名称返回结果如下。
+参数说明 user：可选，账号名称或账号ID。 database：必填，数据库名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值如下：CREATE、TEMPORARY、TEMP。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有指定数据库的权限，则返回true（t）；反之返回false（f）。 示例 SELECT HAS_DATABASE_PRIVILEGE('glz', 'CREATE,TEMPORARY,TEMP');---替换为自己创建的数据库名称返回结果如下。
 
 ```
+ has_database_privilege
 ------------------------
 ```
 
-t
+`t`
 
 **HAS_FOREIGN_DATA_WRAPPER_PRIVILEGE**
 
@@ -5164,14 +5387,14 @@ t
 HAS_FOREIGN_DATA_WRAPPER_PRIVILEGE([user, ]fdw, privilege)
 ```
 
-参数说明 user：可选，账号名称或账号ID。 fdw：必填，外部数据封装器名字或ID。 实时数仓 Hologres privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：USAGE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有外部数据包装器的权限，则返回true（t）；反之返回false（f）。 示例 SELECT HAS_FOREIGN_DATA_WRAPPER_PRIVILEGE('dlf_fdw', 'USAGE');--将`dlf_fdw`替换为自己已创建外部数据封装器。 返回结果如下。
+参数说明 user：可选，账号名称或账号ID。 fdw：必填，外部数据封装器名字或ID。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：USAGE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有外部数据包装器的权限，则返回true（t）；反之返回false（f）。 示例 SELECT HAS_FOREIGN_DATA_WRAPPER_PRIVILEGE('dlf_fdw', 'USAGE');--将`dlf_fdw`替换为自己已创建外部数据封装器。 返回结果如下。
 
 ```
  has_foreign_data_wrapper_privilege
 ------------------------------------
 ```
 
-t
+`t`
 
 **HAS_FUNCTION_PRIVILEGE**
 
@@ -5194,7 +5417,7 @@ SELECT has_function_privilege('now()', 'EXECUTE');
 ------------------------
 ```
 
-t
+`t`
 
 **HAS_LANGUAGE_PRIVILEGE**
 
@@ -5217,7 +5440,17 @@ SELECT HAS_LANGUAGE_PRIVILEGE('plpgsql', 'USAGE');
 ------------------------
 ```
 
-t 参数说明 user：可选，账号名称或账号ID。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：CREATE、USAGE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有指定的Schema权限，则返回true（t）；反之返回false（f）。 示例
+`t`
+
+**HAS_SCHEMA_PRIVILEGE**
+
+描述：确认当前用户或指定用户是否有指定的Schema的特定权限。
+
+```
+HAS_SCHEMA_PRIVILEGE([user, ]schema, privilege)
+```
+
+参数说明 user：可选，账号名称或账号ID。 schema：必填，Schema名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：CREATE、USAGE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有指定的Schema权限，则返回true（t）；反之返回false（f）。 示例
 
 ```
 SELECT HAS_SCHEMA_PRIVILEGE('public', 'CREATE,USAGE');
@@ -5226,14 +5459,15 @@ SELECT HAS_SCHEMA_PRIVILEGE('public', 'CREATE,USAGE');
 返回结果如下。
 
 ```
+ has_schema_privilege
 ----------------------
 ```
 
-t
+`t`
 
 **HAS_SERVER_PRIVILEGE**
 
-描述：确认当前用户或指定用户是否有指定外部服务器的特定权限。 实时数仓 Hologres
+描述：确认当前用户或指定用户是否有指定外部服务器的特定权限。
 
 ```
 HAS_SERVER_PRIVILEGE([user, ]server, privilege)
@@ -5252,7 +5486,17 @@ SELECT HAS_SERVER_PRIVILEGE('meta_warehouse_server', 'USAGE');
 ----------------------
 ```
 
-t 描述：确认当前用户或指定用户是否有指定表的特定权限。 参数说明 user：可选，账号名称或账号ID。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：SELECT、INSERT、UPDATE、DELETE、TRUNCATE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有指定表的操作权限，则返回true（t）；反之返回false（f）。 示例
+`t`
+
+**HAS_TABLE_PRIVILEGE**
+
+描述：确认当前用户或指定用户是否有指定表的特定权限。
+
+```
+HAS_TABLE_PRIVILEGE([user, ]table, privilege)
+```
+
+参数说明 user：可选，账号名称或账号ID。 table：必填，表名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：SELECT、INSERT、UPDATE、DELETE、TRUNCATE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有指定表的操作权限，则返回true（t）；反之返回false（f）。 示例
 
 ```
 SELECT HAS_TABLE_PRIVILEGE('test', 'SELECT,INSERT');
@@ -5261,16 +5505,21 @@ SELECT HAS_TABLE_PRIVILEGE('test', 'SELECT,INSERT');
 返回结果如下。
 
 ```
+ has_table_privilege
 ---------------------
 ```
 
-t 描述：确认当前用户或指定用户是否有指定表空间的特定权限。
+`t`
+
+**HAS_TABLESPACE_PRIVILEGE**
+
+描述：确认当前用户或指定用户是否有指定表空间的特定权限。
 
 ```
 HAS_TABLESPACE_PRIVILEGE([user, ]tablespace, privilege)
 ```
 
-参数说明 user：可选，账号名称或账号ID。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：CREATE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有表空间权限，则返回true（t）；反之返回false（f）。 示例
+参数说明 user：可选，账号名称或账号ID。 tablespace：必填，表空间名称。 privilege：必填，权限类型，也可以用逗号分隔列出的多个权限类型。取值为：CREATE。 返回值说明返回BOOLEAN类型，若当前用户或指定用户有表空间权限，则返回true（t）；反之返回false（f）。 示例
 
 ```
 SELECT HAS_TABLESPACE_PRIVILEGE('pg_default', 'CREATE');
@@ -5279,10 +5528,11 @@ SELECT HAS_TABLESPACE_PRIVILEGE('pg_default', 'CREATE');
 返回结果如下。
 
 ```
+ has_table_privilege
 ---------------------
 ```
 
-t
+`t`
 
 **HAS_TYPE_PRIVILEGE**
 
@@ -5298,16 +5548,16 @@ HAS_TYPE_PRIVILEGE([user, ]type, privilege)
 SELECT HAS_TYPE_PRIVILEGE('test', 'USAGE');
 ```
 
-返回结果如下。 实时数仓 Hologres
+返回结果如下。
 
 ```
  has_type_privilege
 --------------------
 ```
 
-t
+`t`
 
-#### 1.4.17. 连接函数
+#### 1.4.17 连接函数
 
 Hologres兼容PostgreSQL，支持使用标准的PostgreSQL语法进行开发。 Hologres已支持的连接函数列表如下。当前Hologres版本支持的函数是PostgreSQL的一个子集，函数的使用方法请参见连接函数。
 
@@ -5352,15 +5602,24 @@ SELECT CURRENT_CATALOG;
  hologrestest
 ```
 
-描述：获取当前数据库名称。 返回值返回当前数据库名称。 示例
+**CURRENT_DATABASE**
+
+描述：获取当前数据库名称。
+
+```
+CURRENT_DATABASE()
+```
+
+返回值返回当前数据库名称。 示例
 
 ```
 SELECT CURRENT_DATABASE();
 ```
 
-实时数仓 Hologres 返回结果如下。
+返回结果如下。
 
 ```
+ current_database
 ------------------
  hologrestest
 ```
@@ -5409,7 +5668,15 @@ SELECT CURRENT_ROLE;
  139699392458****
 ```
 
-描述：获取当前模式名称。 返回值返回当前模式名称。 示例。
+**CURRENT_SCHEMA**
+
+描述：获取当前模式名称。
+
+```
+CURRENT_SCHEMA[()]
+```
+
+返回值返回当前模式名称。 示例。
 
 ```
 SELECT CURRENT_SCHEMA();
@@ -5418,11 +5685,20 @@ SELECT CURRENT_SCHEMA();
 返回结果如下。
 
 ```
+ current_schema
 ----------------
  public
 ```
 
-描述：获取搜索路径中所有模式的名称的数组。 参数说明 FLAG：取值为TRUE或FALSE。 返回值返回当前搜索路径中所有模式的名称的数组。 输入参数为TRUE时，返回的模式名称数组中包含隐式Schema（pg_catalog）。 输入参数为FALSE时，返回的模式名称数组中不包含隐式Schema（pg_catalog）。 示例示例1：
+**CURRENT_SCHEMAS**
+
+描述：获取搜索路径中所有模式的名称的数组。
+
+```
+CURRENT_SCHEMAS(FLAG)
+```
+
+参数说明 FLAG：取值为TRUE或FALSE。 返回值返回当前搜索路径中所有模式的名称的数组。 输入参数为TRUE时，返回的模式名称数组中包含隐式Schema（pg_catalog）。 输入参数为FALSE时，返回的模式名称数组中不包含隐式Schema（pg_catalog）。 示例示例1：
 
 ```
 SELECT CURRENT_SCHEMAS(TRUE);
@@ -5431,11 +5707,12 @@ SELECT CURRENT_SCHEMAS(TRUE);
 返回结果如下。
 
 ```
+   current_schemas
 ---------------------
  {pg_catalog,public}
 ```
 
-实时数仓 Hologres 示例2：
+示例2：
 
 ```
 SELECT CURRENT_SCHEMAS(FALSE);
@@ -5444,6 +5721,7 @@ SELECT CURRENT_SCHEMAS(FALSE);
 返回结果如下。
 
 ```
+   current_schemas
 ---------------------
  {public}
 ```
@@ -5541,7 +5819,7 @@ SELECT INET_SERVER_ADDR();
 INET_SERVER_PORT()
 ```
 
-返回值返回当前服务器的端口。 实时数仓 Hologres 示例
+返回值返回当前服务器的端口。 示例
 
 ```
 SELECT INET_SERVER_PORT();
@@ -5596,8 +5874,9 @@ SELECT PG_BLOCKING_PIDS(1);
 ```
  pg_blocking_pids
 ------------------
- {}
 ```
+
+`{}`
 
 **SESSION_USER**
 
@@ -5657,7 +5936,7 @@ VERSION()
 SELECT VERSION();
 ```
 
-实时数仓 Hologres 返回结果如下。
+返回结果如下。
 
 ```
                                                                                                version
@@ -5666,9 +5945,9 @@ SELECT VERSION();
 2.fix20240305102602.alios7 193811f571966bccce929b0f457df345c4fca5ed)
 ```
 
-### 扩展函数
+### 1.5 扩展函数
 
-**1.5.1. 概览**
+#### 1.5.1 概览
 
 本文为您介绍实时数仓Hologres支持的扩展函数。 Hologres兼容PostgreSQL，支持的函数以及用法同标准的PostgreSQL。 Hologres支持的函数是PostgreSQL的子集。在实际业务场景中，标准的PostgreSQL函数并不能完全满足您的业务需求。因此，Hologres丰富了支持的函数，您可以根据业务需求通过调用函数来简化开发流程。 Hologres支持的扩展函数如下表所示。
 
@@ -5676,18 +5955,18 @@ SELECT VERSION();
 |---|---|---|---|
 | 聚合函数 | APPROXCOUNTDISTINCT _ _ | 是 | 是 |
 | 账号转换函数 | USERDISPLAYNAME _ _ | 不涉及 | 不涉及 |
-|  | HGUSERDISPLAYNAMETOID _ _ _ _ _ | 不涉及 | 不涉及 |
+|   | HGUSERDISPLAYNAMETOID _ _ _ _ _ | 不涉及 | 不涉及 |
 | IP白名单函数 | HGGETIPWHITELIST _ _ _ | 不涉及 | 不涉及 |
-|  | HGSETIPWHITELIST _ _ _ | 不涉及 | 不涉及 |
+|   | HGSETIPWHITELIST _ _ _ | 不涉及 | 不涉及 |
 | Hive兼容函数 | GETJSONOBJECT _ _ | 是 | 否 |
 | MaxCompute兼容函数 | MAXPT _ | 否 | 是 |
 | 向量函数 | PROXIMA | 是 | 否 |
 | 工具函数 | HGCREATETABLELIKE _ _ _ | 不涉及 | 不涉及 |
-|  | HGUPDATEDATABASEPROPERTY _ _ _ | 不涉及 | 不涉及 |
-|  | SETTABLEPROPERTY _ _ | 是 | 是 |
-|  | HGSHARDIDFORDISTRIBUTIONKEY _ _ _ _ _ | 是 | 否 |
+|   | HGUPDATEDATABASEPROPERTY _ _ _ | 不涉及 | 不涉及 |
+|   | SETTABLEPROPERTY _ _ | 是 | 是 |
+|   | HGSHARDIDFORDISTRIBUTIONKEY _ _ _ _ _ | 是 | 否 |
 
-#### 1.5.2. PostGIS地理信息分析
+#### 1.5.2 PostGIS地理信息分析
 
 PostGIS是数据库PostgreSQL的空间扩展，PostGIS可以提供空间对象、空间索引、空间操作函数和空间操作符等空间信息服务功能。本文为您介绍PostGIS在Hologres中的使用方法。
 
@@ -5703,15 +5982,14 @@ PostGIS是数据库PostgreSQL的空间扩展，PostGIS可以提供空间对象�
 create extension if not exists postgis;
 ```
 
-**说明**
-
-如需卸载extension请执行如下命令。
+> **说明：** 不支持将postgis extension创建在pg_catalog schema下。
+> 如需卸载extension请执行如下命令。
 
 ```
 DROP extension postgis;
 ```
 
-在安装完成后，您可以执行如下SQL语句查看当前PostGIS版本。Hologres中目前使用的PostGIS版本是3.0.0。 实时数仓 Hologres
+在安装完成后，您可以执行如下SQL语句查看当前PostGIS版本。Hologres中目前使用的PostGIS版本是3.0.0。
 
 ```
 select postgis_full_version();
@@ -5722,9 +6000,9 @@ select postgis_full_version();
 目前在Hologres中使用PostGIS，支持两类空间数据类型，即几何类型（Geometry Type）和地理类型（Geography Type）。 在实际使用过程中，几何类型（Geometry Type）是使用较频繁的类型，如下内容将以几何类型为例，指导您创建包含Geometry数据类型的表并进行典型空间查询。更多关于地理类型（Geography Type）的参数和使用说明，请参见PostGIS Geography Type。
 1. **创建包含****Geometry****数据类型的表**
 
-**说明**
+> **说明：** 创建包含几何类型的表时，您可以指定创建的几何体类型。包括Point、MultiPoint、Linestring、MultiLinestring、Polygon、MultiPolygon等。
 
-创建包含几何类型的表时，您可以指定创建的几何体类型。包括Point、MultiPoint、Linestring、MultiLinestring、Polygon、MultiPolygon等。 创建不指定几何类型的表。
+创建不指定几何类型的表。
 
 ```
 CREATE TABLE holo_gis_1 ( id int, geom geometry, PRIMARY KEY (id)) ;
@@ -5754,25 +6032,25 @@ insert into holo_gis_2 values (1, ST_GeomFromText('point(116 39)', 4326));
 您可以在创建表并插入数据后，执行矩形范围查询和多边形相交判定两种典型场景的查询。如下示例中，更多关于空间函数的使用说明，请参见空间函数。 矩形范围查询不指定SRID值。
 
 ```
-where ST_Contains(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), geom);
+select st_astext(geom) from holo_gis_1 where ST_Contains(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), geom);
 ```
 
 指定SRID值。
 
 ```
-where ST_Contains(ST_SetSRID(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), 4326), geom);
+select st_astext(geom) from holo_gis_2 where ST_Contains(ST_SetSRID(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), 4326), geom);
 ```
 
 多边形相交判定（在内部或在边界上） 不指定SRID值。
 
 ```
-where ST_Contains(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), geom);
+select st_astext(geom) from holo_gis_1 where ST_Contains(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), geom);
 ```
 
 指定SRID值。
 
 ```
-where ST_Contains(ST_SetSRID(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), 4326), geom);
+select st_astext(geom) from holo_gis_2 where ST_Contains(ST_SetSRID(ST_MakeBox2D(ST_Point(116, 39),ST_Point(117, 40)), 4326), geom);
 ```
 
 **空间函数**
@@ -5783,8 +6061,6 @@ PostGIS为您提供了一些空间函数，每种函数可以将一种数据类�
 |---|---|---|---|---|
 | STLineFromMultiPoint _ | STLineFromMultiPoint(geom) _ | GEOMETRY | ST _LineFromMultiPoint 返回输入多点几何体中的线串。 点的顺序将保留。返回的几何体的空间参考系统标识符 （SRID）与输入几何体的相同。 | V1.3版本HQE支持。 |
 | STMakeEnvelope _ | STMakeEnvelope(xmin, ymin, _ xmax, ymax)STMakeEnvelope(xmin, _ ymin, xmax, ymax, srid) | GEOMETRY子类型的 EMR集群POINT、 LINESTRING或者 POLYGON。 | ST _MakeEnvelope 包络返回一个几何，如下所示：如果输入坐标指定一个点，则返回的几何体是一个点。如果输入坐标指定一条线，则返回的几何为线串。否则，返回的几何为面，其中输入坐标指定框的左下角和右上角。如果提供， 返回的几何体的空间参考系统标识符（SRID）值将设置为输入 SRID 值。 | V1.3版本HQE支持。 |
-
-实时数仓 Hologres
 
 | STMakeLine _ | STMakeLine(geom1, geom2) _ | 子类型 LINESTRING 的GEOMETRY。 | ST _MakeLine从输入几何体创建线串。 | V1.3版本HQE支持。 |
 |---|---|---|---|---|
@@ -5808,8 +6084,6 @@ Geometry Accessors函数
 | STIsCollection _ | STIsCollection(geom) _ | BOOLEAN | 如果输入几何体为下列子类型之一，则 ST _IsCollection返回true：GEOMETRYCOLLECTION、MULTIPOINT、 MULTILINESTRING或者MULTIPOLYGON。 | V1.3版本HQE支持。 |
 | STIsEmpty _ | STIsEmpty(geom) _ | BOOLEAN | 如果输入几何体是空的，则ST _IsEmpty返回true。如果一个几何体不包含点，则该几何体为空。 | V1.3版本HQE支持。 |
 | STIspolyGonCW _ | STIsPolygonCCW(geom) _ | BOOLEAN | 如果输入多边形或多边形是逆时针的，则 ST _IspolyGonCW返回true。如果输入几何是点、线串、 多点或多线串，则返回true。对于几何体集合，如果集合中的所有几何体均为逆时针方向，ST _IspolygonCW将返回 true。 | V1.3版本HQE支持。 |
-
-实时数仓 Hologres
 
 | STIsSimple _ | STIsSimple(geom) _ | BOOLEAN | 如果输入几何体是简单的，则ST _IsSimple返回 true。 | V1.3版本HQE支持。 |
 |---|---|---|---|---|
@@ -5845,8 +6119,6 @@ Spatial Reference System函数
 | 函数 | 函数语法 | 返回类型 | 说明 | 支持的引擎 |
 |---|---|---|---|---|
 
-实时数仓 Hologres
-
 | STSetSRID _ | STSetSRID(geom, srid) _ | GEOMETRY | ST _SetSRID返回一个与输入几何体相同的几何体，只不过使用空间参考系统标识符（SRID）的输入值进行了更新。 | V1.3版本HQE支持。 |
 |---|---|---|---|---|
 | STSRID _ | STSRID(geom) _ | INTEGER | ST _SRID返回输入几何体的空间参考系统标识符 （SRID）。 | V1.3版本HQE支持。 |
@@ -5876,8 +6148,6 @@ Spatial Relationships函数
 | STCoveredBy _ | STCoveredBy(geom1, geom2) _ | BOOLEAN | 如果第一个输入几何体被第二个输入几何体覆盖，则 ST _CoveredBy 返回 true。如果几何体 A 和几何体 B 都是非空的，并且 A 中的每个点均为 B 中的一个点，则前者被后者覆盖。ST _CoveredBy(A, B) 与 ST _Covers(B, A) 等效。 说明通过PQE支持。 | PQE |
 | STCovers _ | STCovers(geom1, geom2) _ | BOOLEAN | 如果第一个输入几何体被第二个输入几何体覆盖，则 ST _Covers 返回 true。如果几何体 A 和几何体 B 都是非空的，并且 B 中的每个点均为 A 中的一个点，则前者覆盖了后者。ST _Covers(A, B) 与 ST _CoveredBy(B, A) 等效。 说明通过PQE支持。 | PQE |
 
-实时数仓 Hologres
-
 | STCrosses _ | STCrosses(geom1, geom2) _ | BOOLEAN | 如果两个输入几何体相互交叉，则 ST _Crosses返回 true。 | 不涉及 |
 |---|---|---|---|---|
 | STDisjoint _ | STDisjoint(geom1, geom2) _ | BOOLEAN | 如果两个输入几何体没有共同点，则 ST _Disjoint 返回 true。 | 不涉及 |
@@ -5897,8 +6167,6 @@ Measurement函数
 | STAzimuth _ | STAzimuth(point1, point2) _ | DOUBLE | ST _Azimuth返回两个输入点的基于北向的笛卡尔方位。 | V1.3版本HQE支持。 |
 | STDistance _ | STDistance(geom1, geom2) _ | DOUBLE | ST _Distance返回两个输入几何体值之间的欧氏距离。 | V1.3版本HQE支持。 |
 | STDistanceSphereS2 _ _ _ | STDistanceSphereS2(x1, y1, x2, _ _ _ y2) | DOUBLE | ST _Distance _Sphere _S2返回两个地理位置的球面距离 （单位：米）。 入参依次为位置1的经度和纬度、位置2的经度和纬度。 说明 Hologres V2.0.8版本支持，暂不支持常量查询。 | HQE |
-
-实时数仓 Hologres
 
 | STLength _ | STLength(geom) _ | DOUBLE | ST _Length返回输入线性几何体的笛卡尔长度。长度单位与用于表示输入几何体坐标的单位相同。对于点、多点和平面几何体，此函数返回零 (0)。当输入为几何体集合时，此函数返回集合中的几何体长度之和。 | V1.3版本HQE支持。 |
 |---|---|---|---|---|
@@ -5933,13 +6201,13 @@ Linear Referencing函数
 |---|---|---|---|---|
 | STLineInterpolatePoint _ | STLineInterpolatePoint(geom, _ fraction) | 子类型POINT的 GEOMETRY。 | ST _LineInterpolatePoint为插值点，即返回一个距离线起点为小数距离的点。 | V1.3版本HQE支持。 |
 
-#### 1.5.3. 漏斗和留存函数（Beta）
+#### 1.5.3 漏斗和留存函数（Beta）
 
 本文将会为您介绍在Hologres中漏斗（windowFunnel）和留存（retention）函数的使用。
 
 **背景信息**
 
-实时数仓 Hologres 漏斗分析是常见的转化分析的方法，是黑客增长中著名的理论模型。它常被用于电商，互联网等行业。它用于反映用户从起点到终点的各个阶段的行为转化率。漏斗分析被广泛应用于用户行为分析和APP数据分析的流量分析、产品目标转化等日常数据运营与数据分析的工作中。
+漏斗分析是常见的转化分析的方法，是黑客增长中著名的理论模型。它常被用于电商，互联网等行业。它用于反映用户从起点到终点的各个阶段的行为转化率。漏斗分析被广泛应用于用户行为分析和APP数据分析的流量分析、产品目标转化等日常数据运营与数据分析的工作中。
 
 **使用限制**
 
@@ -5971,14 +6239,18 @@ create extension flow_analysis;
 创建一张数据表，SQL 语句如下。
 
 ```
-(
+CREATE TABLE IF NOT EXISTS funnel_test
+```
+
+`(`
+
+```
     user_id INT ,
     event_type text,
     event_time TIMESTAMP
-);
 ```
 
-导入数据。该数据为一个用户购买商品的全过程数据，主要路径为浏览页面、点击商品、加入购物车、支付货款。具体表格和SQL语句如下所示。
+); 导入数据。该数据为一个用户购买商品的全过程数据，主要路径为浏览页面、点击商品、加入购物车、支付货款。具体表格和SQL语句如下所示。
 
 | userid _ | eventtype _ | eventtime _ |
 |---|---|---|
@@ -6000,10 +6272,8 @@ create extension flow_analysis;
 | 6 | 点击商品 | 2021-01-31 12:00:00 |
 | 6 | 加入购物车 | 2021-01-31 12:10:00 |
 
-实时数仓 Hologres
-
 ```
-(1,'浏览页面','2021-01-31 11:00:00'), (1,'点击商品','2021-01-31 11:10:00'), (1,'加入购物车','2021-01-31 11:20:00'), (1,'支付货款','2021-01-31 11:30:00'), (2,'加入购物车','2021-01-31 11:00:00'), (2,'支付货款','2021-01-31 11:10:00'), (1,'浏览页面','2021-01-31 11:00:00'), (3,'浏览页面','2021-01-31 11:20:00'), (3,'点击商品','2021-01-31 12:00:00'), (4,'浏览页面','2021-01-31 11:50:00'), (4,'点击商品','2021-01-31 12:00:00'), (5,'浏览页面','2021-01-31 11:50:00'), (5,'点击商品','2021-01-31 12:00:00'), (5,'加入购物车','2021-01-31 11:10:00'), (6,'浏览页面','2021-01-31 11:50:00'), (6,'点击商品','2021-01-31 12:00:00'), (6,'加入购物车','2021-01-31 12:10:00');
+INSERT INTO funnel_test VALUES (1,'浏览页面','2021-01-31 11:00:00'), (1,'点击商品','2021-01-31 11:10:00'), (1,'加入购物车','2021-01-31 11:20:00'), (1,'支付货款','2021-01-31 11:30:00'), (2,'加入购物车','2021-01-31 11:00:00'), (2,'支付货款','2021-01-31 11:10:00'), (1,'浏览页面','2021-01-31 11:00:00'), (3,'浏览页面','2021-01-31 11:20:00'), (3,'点击商品','2021-01-31 12:00:00'), (4,'浏览页面','2021-01-31 11:50:00'), (4,'点击商品','2021-01-31 12:00:00'), (5,'浏览页面','2021-01-31 11:50:00'), (5,'点击商品','2021-01-31 12:00:00'), (5,'加入购物车','2021-01-31 11:10:00'), (6,'浏览页面','2021-01-31 11:50:00'), (6,'点击商品','2021-01-31 12:00:00'), (6,'加入购物车','2021-01-31 12:10:00');
 ```
 
 以30分钟（即1800秒）间隔为例，主要路径为浏览页面、点击商品、加入购物车、支付货款，统计各个用户的漏斗情况。
@@ -6015,14 +6285,14 @@ create extension flow_analysis;
     ,event_time
 ```
 
-`,event_type = '`浏览页面' `,event_type = '`点击商品' `,event_type = '`加入购物车' `,event_type = '`支付货款'
+`,event_type = '`浏览页面`'` `,event_type = '`点击商品`'` `,event_type = '`加入购物车`'` `,event_type = '`支付货款`'`
 
 ```
   ) AS level
-FROM funnel_test GROUP BY user_id ORDER BY user_id ASC ;
+FROM funnel_test GROUP BY user_id ORDER BY user_id ASC
 ```
 
-显示结果：
+; 显示结果：
 
 ```
  user_id | level
@@ -6045,16 +6315,16 @@ FROM funnel_test GROUP BY user_id ORDER BY user_id ASC ;
     ,event_time
 ```
 
-`,event_type = '`浏览页面' `,event_type = '`点击商品' `,event_type = '`加入购物车' `,event_type = '`支付货款'
+`,event_type = '`浏览页面`'` `,event_type = '`点击商品`'` `,event_type = '`加入购物车`'` `,event_type = '`支付货款`'`
 
 ```
   ) AS level
 FROM funnel_test WHERE (event_time >= '2021-01-31 11:00:00')
     AND (event_time <= '2021-01-31 12:00:00')
-GROUP BY user_id ORDER BY user_id ASC ;
+GROUP BY user_id ORDER BY user_id ASC
 ```
 
-显示结果：
+; 显示结果：
 
 ```
  user_id | level
@@ -6068,12 +6338,17 @@ GROUP BY user_id ORDER BY user_id ASC ;
 (6 rows)
 ```
 
-实时数仓 Hologres 一般漏斗图会按照level进行统计，对应的SQL语句如下：
+一般漏斗图会按照level进行统计，对应的SQL语句如下：
 
 ```
     level,
   COUNT(1) AS count_user
-FROM (
+FROM
+```
+
+`(`
+
+```
       user_id,
     windowFunnel(
         1800,
@@ -6081,16 +6356,17 @@ FROM (
       event_time,
 ```
 
-`event_type = '`浏览页面`',` `event_type = '`点击商品`',` `event_type = '`加入购物车`',` `event_type = '`支付货款'
+`event_type = '`浏览页面`',` `event_type = '`点击商品`',` `event_type = '`加入购物车`',` `event_type = '`支付货款`'`
 
 ```
       ) AS level
     FROM    funnel_test
     GROUP BY user_id
-GROUP BY level ORDER BY level ASC ;
+  ) AS basic_table
+GROUP BY level ORDER BY level ASC
 ```
 
-显示结果：
+; 显示结果：
 
 ```
  level | count_user
@@ -6118,27 +6394,28 @@ WITH
           event_time,
 ```
 
-`event_type = '`浏览页面`',` `event_type = '`点击商品`',` `event_type = '`加入购物车`',` `event_type = '`支付货款'
+`event_type = '`浏览页面`',` `event_type = '`点击商品`',` `event_type = '`加入购物车`',` `event_type = '`支付货款`'`
 
 ```
         ) AS level
         FROM funnel_test
         GROUP BY user_id
+      ) AS basic_table
       GROUP BY level
       ORDER BY level ASC
 ```
 
-)
+`)`
 
 ```
     level,
   SUM(count_user) over( ORDER BY level DESC )
 FROM test GROUP BY level,
                  count_user
-ORDER BY level ASC ;
+ORDER BY level ASC
 ```
 
-显示结果：
+; 显示结果：
 
 ```
  level | sum
@@ -6151,7 +6428,7 @@ ORDER BY level ASC ;
 (5 rows)
 ```
 
-实时数仓 Hologres 使用BI即可得到一张漏斗图。
+使用BI即可得到一张漏斗图。
 
 **留存函数**
 
@@ -6170,13 +6447,17 @@ retention(cond1, cond2, ..., cond32);
 使用示例创建一张数据表，以用户访问APP为例，SQL 语句如下：
 
 ```
-(
-    user_id INT ,
-    log_time TIMESTAMP
-);
+CREATE TABLE IF NOT EXISTS login_log
 ```
 
-实时数仓 Hologres 导入相关数据，具体表格和示例语句如下：
+`(`
+
+```
+    user_id INT ,
+    log_time TIMESTAMP
+```
+
+); 导入相关数据，具体表格和示例语句如下：
 
 | userid _ | logtime _ |
 |---|---|
@@ -6208,10 +6489,10 @@ retention(cond1, cond2, ..., cond32);
 | 3301 | 2019-06-15 23:00:00 |
 
 ```
-(1101,'2019-06-21 22:00:00'), (1101,'2019-06-20 22:00:00'), (1101,'2019-06-19 22:00:00'), (1101,'2019-06-17 22:00:00'), (1101,'2019-06-16 22:00:00'), (1101,'2019-06-21 22:00:00'), (1101,'2019-06-21 23:00:00'), (1101,'2019-06-20 23:00:00'), (1101,'2019-06-19 23:00:00'), (1101,'2019-06-17 23:00:00'), (1101,'2019-06-16 23:00:00'), (1101,'2019-06-21 23:00:00'), (4101,'2019-06-20 22:00:00'), (4101,'2019-06-19 22:00:00'), (4101,'2019-06-17 22:00:00'), (4101,'2019-06-16 22:00:00'), (2201,'2019-06-21 22:00:00'), (2201,'2019-06-20 22:00:00'), (2201,'2019-06-21 23:00:00'), (2201,'2019-06-20 23:00:00'), (3301,'2019-06-21 22:00:00'), (3301,'2019-06-19 22:00:00'), (3301,'2019-06-18 23:00:00'), (3301,'2019-06-17 23:00:00'), (3301,'2019-06-16 23:00:00'), (3301,'2019-06-15 23:00:00');
+INSERT INTO login_log VALUES (1101,'2019-06-21 22:00:00'), (1101,'2019-06-20 22:00:00'), (1101,'2019-06-19 22:00:00'), (1101,'2019-06-17 22:00:00'), (1101,'2019-06-16 22:00:00'), (1101,'2019-06-21 22:00:00'), (1101,'2019-06-21 23:00:00'), (1101,'2019-06-20 23:00:00'), (1101,'2019-06-19 23:00:00'), (1101,'2019-06-17 23:00:00'), (1101,'2019-06-16 23:00:00'), (1101,'2019-06-21 23:00:00'), (4101,'2019-06-20 22:00:00'), (4101,'2019-06-19 22:00:00'), (4101,'2019-06-17 22:00:00'), (4101,'2019-06-16 22:00:00'), (2201,'2019-06-21 22:00:00'), (2201,'2019-06-20 22:00:00'), (2201,'2019-06-21 23:00:00'), (2201,'2019-06-20 23:00:00'), (3301,'2019-06-21 22:00:00'), (3301,'2019-06-19 22:00:00'), (3301,'2019-06-18 23:00:00'), (3301,'2019-06-17 23:00:00'), (3301,'2019-06-16 23:00:00'), (3301,'2019-06-15 23:00:00');
 ```
 
-实时数仓 Hologres 如需查询用户在2019-06-17至2019-06-21登录流失情况，则SQL语句如下：
+如需查询用户在2019-06-17至2019-06-21登录流失情况，则SQL语句如下：
 
 ```
     user_id,
@@ -6264,7 +6545,7 @@ FROM login_log GROUP BY user_id ORDER BY user_id ASC;
 (4 rows)
 ```
 
-使用留存函数能便捷地计算用户的留存率。例如我们想计算用户的次日留存、3日留存、7日留存，样例SQL如下： `--` 根据计算数组中`SUM(r[index])`获取`2019-06-15`活跃用户在第2、3、7日的留存数，以此计算留存率。
+使用留存函数能便捷地计算用户的留存率。例如我们想计算用户的次日留存、3日留存、7日留存，样例SQL如下： `--` 根据计算数组中`SUM(r[index])`获取`2019-06-15`活跃用户在第`2`、`3`、`7`日的留存数，以此计算留存率。
 
 ```
     DATE(TIMESTAMP '2019-06-15 00:00:00') AS first_date,
@@ -6279,10 +6560,9 @@ FROM login_log GROUP BY user_id ORDER BY user_id ASC;
 FROM
 ```
 
-`--` 计算`2019-06-15`活跃用户在第2、3、7日的登录情况，1代表登录，0代表未登录。
+`--` 计算`2019-06-15`活跃用户在第`2`、`3`、`7`日的登录情况，`1`代表登录，`0`代表未登录。 `(`
 
 ```
-    (
         WITH
             first_day_table AS ( SELECT TIMESTAMP '2019-06-15 00:00:00' AS first_day)
             user_id,
@@ -6294,27 +6574,28 @@ FROM
                 ) AS r
 ```
 
-`--` 过滤`2019-06-15`活跃用户在后续 1～7 日登录数据
+`--` 过滤`2019-06-15`活跃用户在后续 `1`～`7` 日登录数据
 
 ```
             FROM    login_log
             WHERE   (log_time >= TIMESTAMP '2019-06-15 00:00:00')
             AND     (log_time <= TIMESTAMP '2019-06-15 00:00:00' + INTERVAL '6 day')
             GROUP BY user_id
-GROUP BY first_date ;
+        ) AS basic_table
+GROUP BY first_date
 ```
 
-#### 1.5.4. 聚合视图
+;
 
-聚合视图实现了对单张表在固定维度列上的预聚合能力，通过预聚合和自动的查询重写，使得统计类查询可以利用预聚合的结果加速查询。本文介绍Hologres聚合视图的创建使用、刷新及删除方法。 实时数仓 Hologres
+#### 1.5.4 聚合视图
+
+聚合视图实现了对单张表在固定维度列上的预聚合能力，通过预聚合和自动的查询重写，使得统计类查询可以利用预聚合的结果加速查询。本文介绍Hologres聚合视图的创建使用、刷新及删除方法。
 
 **使用限制**
 
 该功能仅Hologres V0.10及以上版本支持，请在Hologres管控台的实例详情页查看当前实例版本。 在使用聚合视图功能之前，需要Superuser在DB内执行以下语句安装扩展包才可以使用聚合视图。
 
-**重要**
-
-一个DB只需执行一次即可，否则会执行报错。如果创建新的DB，还需要再次执行如下语句。
+> **重要：** 一个DB只需执行一次即可，否则会执行报错。如果创建新的DB，还需要再次执行如下语句。
 
 ```
 CREATE extension aggregate_view;
@@ -6338,9 +6619,10 @@ CALL hg_aggregate_view_create(
     aggregate_funcs,
     aggregate_timestamp_column,
     aggregate_allowed_lateness,
+    aggregate_base_table_ttl
 ```
 
-)
+`)`
 
 **参数说明**
 
@@ -6358,12 +6640,15 @@ CALL hg_aggregate_view_create(
 
 **使用示例**
 
-实时数仓 Hologres
-
 **准备样例数据**
 
 ```
-(
+CREATE TABLE agg_src_table
+```
+
+`(`
+
+```
     event_id INT,
     user_id TEXT,
     uid INT,
@@ -6373,13 +6658,18 @@ CALL hg_aggregate_view_create(
     pv INT,
     charge NUMERIC(15,2),
     event_count INT
-); (1002, 'User10011', 10011, '2020-11-11 00:01:11', 'hebei', 'tangshan', 1, 10,10 ), (1002, 'User10012', 10012, '2020-11-11 00:01:12', 'shandong', 'qingdao', 2, 11,11 ), (1003, 'User10013', 10013, '2020-11-11 00:01:13', 'hunan', 'changsha', 2, 11.9, 11 ), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9 ), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9 );
+```
+
+);
+
+```
+INSERT INTO agg_src_table VALUES (1002, 'User10011', 10011, '2020-11-11 00:01:11', 'hebei', 'tangshan', 1, 10,10 ), (1002, 'User10012', 10012, '2020-11-11 00:01:12', 'shandong', 'qingdao', 2, 11,11 ), (1003, 'User10013', 10013, '2020-11-11 00:01:13', 'hunan', 'changsha', 2, 11.9, 11 ), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9 ), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9 );
 ```
 
 `--`对表初步加工，主要是创建一个`view`并将时间事件截取到小时粒度。
 
 ```
-CREATE VIEW agg_src_view AS
+CREATE VIEW agg_src_view AS SELECT province
         ,city
         ,event_time
         ,date_trunc('hour', event_time) AS event_date
@@ -6423,10 +6713,9 @@ CALL hg_aggregate_view_create(
 ```
   '600 sec',                                           --允许数据晚到600s
   '2592000'                                            --聚合数据保存时间
-    );
 ```
 
-`--`查询视图
+); `--`查询视图
 
 ```
  SELECT * FROM agg_dst_view;
@@ -6458,10 +6747,10 @@ CALL hg_aggregate_view_refresh('aggregate_dst_view','refresh_until_timestamp','d
 
 **使用示例**
 
-如下示例将刷新截止到 `2020-11-11 01:00:00` 之前写入的数据。 实时数仓 Hologres `--`插入新的数据
+如下示例将刷新截止到 `2020-11-11 01:00:00` 之前写入的数据。 `--`插入新的数据
 
 ```
-(1002, 'User10998', 10320, '2020-11-11 00:01:15', 'sichuan', 'chengdu', 2, 3,1 ), (1003, 'User10007', 10343, '2020-11-12 00:01:15', 'zhejiang', 'hangzhou', 7, 2,4 ), (1003, 'User10073', 10221, '2020-11-12 00:01:16', 'anhui', 'huangshan', 3, 8,4 );
+INSERT INTO agg_src_table VALUES (1002, 'User10998', 10320, '2020-11-11 00:01:15', 'sichuan', 'chengdu', 2, 3,1 ), (1003, 'User10007', 10343, '2020-11-12 00:01:15', 'zhejiang', 'hangzhou', 7, 2,4 ), (1003, 'User10073', 10221, '2020-11-12 00:01:16', 'anhui', 'huangshan', 3, 8,4 );
 ```
 
 `--`增量刷新
@@ -6498,7 +6787,7 @@ CALL hg_aggregate_view_range_refresh('aggregate_dst_view','refresh_start_timesta
 
 **使用示例**
 
-如下示例指定将2020-11-11 01:00:00到2020-11-12 01:00:00期间写入的数据进行刷新。 `--`刷新截止到(当前时间-允许晚到区间)
+如下示例指定将2020-11-11 01:00:00到2020-11-12 01:00:00期间写入的数据进行刷新。 `--`刷新截止到`(`当前时间`-`允许晚到区间`)`
 
 ```
 CALL hg_aggregate_view_range_refresh('agg_dst_view','2020-11-11 01:00:00'::timestamptz,'2020-11-12 01:00:00'::timestamptz);
@@ -6524,7 +6813,7 @@ aggregate_dst_view：表示需要删除的聚合视图名。
 
 | 如下示例将删除名称为 | agg_dst_view | 的聚合视图。 |
 |---|---|---|
-| CALL hg_aggregate_view_delete('agg_dst_view'); |  |  |
+| CALL hg_aggregate_view_delete('agg_dst_view'); |   |   |
 
 **使用示例**
 
@@ -6532,10 +6821,13 @@ aggregate_dst_view：表示需要删除的聚合视图名。
 
 **建表并插入样本数据**
 
-实时数仓 Hologres
+```
+CREATE TABLE agg_src_table
+```
+
+`(`
 
 ```
-(
     event_id INT,
     user_id TEXT,
     uid INT,
@@ -6545,13 +6837,18 @@ aggregate_dst_view：表示需要删除的聚合视图名。
     pv INT,
     charge NUMERIC(15,2),
     event_count INT
-); (1002, 'User10011', 10011, '2020-11-11 00:01:11', 'hebei', 'tangshan', 1, 10,10), (1002, 'User10012', 10012, '2020-11-11 00:01:12', 'shandong', 'qingdao', 2, 11,11), (1003, 'User10013', 10013, '2020-11-11 00:01:13', 'hunan', 'changsha', 2, 11.9, 11), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9);
+```
+
+);
+
+```
+INSERT INTO agg_src_table VALUES (1002, 'User10011', 10011, '2020-11-11 00:01:11', 'hebei', 'tangshan', 1, 10,10), (1002, 'User10012', 10012, '2020-11-11 00:01:12', 'shandong', 'qingdao', 2, 11,11), (1003, 'User10013', 10013, '2020-11-11 00:01:13', 'hunan', 'changsha', 2, 11.9, 11), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9), (1002, 'User10012', 10012, '2020-11-11 00:01:14', 'shandong', 'qingdao', 1, 1.1, 9);
 ```
 
 `--` 对表初步加工，主要是创建一个`view`并将时间事件截取到小时粒度。
 
 ```
-CREATE VIEW agg_src_view AS
+CREATE VIEW agg_src_view AS SELECT province
         ,city
         ,event_time
         ,date_trunc('hour', event_time) AS event_date
@@ -6565,9 +6862,9 @@ FROM agg_src_table;
 
 **创建聚合视图**
 
-**说明**
+> **说明：** 对用户ID精确去重，需要开启RoaringBitmap扩展使用rb_count_distinct函数。更多关于RoaringBitmap函数的说明，请参见Roaring Bitmap函数。
 
-对用户ID精确去重，需要开启RoaringBitmap扩展使用rb_count_distinct函数。更多关于RoaringBitmap函数的说明，请参见Roaring Bitmap函数。 `--`创建聚合视图扩展
+`--`创建聚合视图扩展
 
 ```
 CREATE extension aggregate_view;
@@ -6579,7 +6876,7 @@ CREATE extension aggregate_view;
 CREATE extension roaringbitmap;
 ```
 
-`--`创建聚合视图，在`dim`，`city`维度聚合，基于`event_date`日期粒度，计算`event_count`列的`count`、`charge`列的`avg`，`pv`列的`sum`，`user_id`列的`approx_count_distinct`、`uid`列的r `b_count_distinct`算子，刷新时间戳为`event_time`列，累计`600`秒之前的汇聚结果，数据保存`2592000`秒
+`--`创建聚合视图，在`dim`，`city`维度聚合，基于`event_date`日期粒度，计算`event_count`列的`count`、`charge`列的`avg`，`pv`列的`sum`，`user_id`列的`approx_count_distinct`、`uid`列的`r` `b_count_distinct`算子，刷新时间戳为`event_time`列，累计`600`秒之前的汇聚结果，数据保存`2592000`秒
 
 ```
 CALL hg_aggregate_view_create(
@@ -6596,14 +6893,16 @@ CALL hg_aggregate_view_create(
 
 **数据查询和插入处理**
 
-实时数仓 Hologres `--`业务查询语句
+`--`业务查询语句
 
 ```
+SELECT province
         ,city
         ,event_date
         ,event_count
         ,charge
         ,pv
+        ,approx_count_distinct_final(user_id) AS user_id
         ,rb_cardinality(uid) AS uid
 FROM agg_dst_view WHERE event_date > '2020-11-01'::timestamptz AND event_date < '2020-11-12'::timestamptz;
 ```
@@ -6611,10 +6910,10 @@ FROM agg_dst_view WHERE event_date > '2020-11-01'::timestamptz AND event_date < 
 `--`插入新的数据
 
 ```
-(1002, 'User10998', 10320, '2020-11-11 00:01:15', 'sichuan', 'chengdu', 2, 3,1 ), (1003, 'User10007', 10343, '2020-11-12 00:01:15', 'zhejiang', 'hangzhou', 7, 2,4 ), (1003, 'User10073', 10221, '2020-11-12 00:01:16', 'anhui', 'huangshan', 3, 8,4 );
+INSERT INTO agg_src_table VALUES (1002, 'User10998', 10320, '2020-11-11 00:01:15', 'sichuan', 'chengdu', 2, 3,1 ), (1003, 'User10007', 10343, '2020-11-12 00:01:15', 'zhejiang', 'hangzhou', 7, 2,4 ), (1003, 'User10073', 10221, '2020-11-12 00:01:16', 'anhui', 'huangshan', 3, 8,4 );
 ```
 
-`--`刷新截止到(当前表最大时间-允许晚到区间`) '2020-11-12 00:01:16' - '600 sec' = '2020-11-12 00:01:06'`
+`--`刷新截止到`(`当前表最大时间`-`允许晚到区间`) '2020-11-12 00:01:16' - '600 sec' = '2020-11-12 00:01:06'`
 
 ```
 CALL hg_aggregate_view_refresh('agg_dst_view');
@@ -6629,6 +6928,7 @@ CALL hg_aggregate_view_refresh('agg_dst_view', '2020-11-12 01:20:00'::timestampt
 `--`带有近似去重函数的查询语句
 
 ```
+SELECT city
         ,approx_count_distinct_final(approx_count_distinct_merge(user_id)) AS user_id
 FROM agg_dst_view WHERE event_date > '2020-11-11'::timestamptz AND event_date < '2020-11-13'::timestamptz GROUP BY city;
 ```
@@ -6636,6 +6936,7 @@ FROM agg_dst_view WHERE event_date > '2020-11-11'::timestamptz AND event_date < 
 `--`带有精确去重函数的查询语句
 
 ```
+SELECT city
         ,SUM(pv)
         ,rb_cardinality(rb_or_agg(uid)) AS uid
 FROM agg_dst_view WHERE event_date > '2020-11-10'::timestamptz AND event_date < '2020-11-12'::timestamptz GROUP BY city;
@@ -6644,6 +6945,7 @@ FROM agg_dst_view WHERE event_date > '2020-11-10'::timestamptz AND event_date < 
 `--`再聚合查询
 
 ```
+SELECT province
         ,SUM(event_count)
         ,SUM(pv)
         ,approx_count_distinct_final(approx_count_distinct_merge(user_id)) AS user_id
@@ -6657,7 +6959,7 @@ FROM agg_dst_view WHERE event_date > '2020-11-10'::timestamptz AND event_date < 
 CALL hg_aggregate_view_delete('agg_dst_view');
 ```
 
-#### 1.5.5. 向量Proxima
+#### 1.5.5 向量Proxima
 
 Proxima向量检索引擎是运用于大数据领域，实现向量近邻搜索的高性能软件库，相比Fassi等开源产品，稳定性和性能较好，提供了行业相关的基础方法模块，支持图像、 视频及人脸等各种应用场景的搜索。交互式分析Hologres的向量查询功能与Proxima深度整合，为您提供高性能的向量查询服务。本文为您介绍在Hologres中如何使用向量计算功能。
 
@@ -6677,23 +6979,22 @@ Proxima插件是针对数据库级别使用的，一个数据库仅需要安装�
 DROP EXTENSION proxima;
 ```
 
-**重要**
+> **重要：** 不推荐使用 DROP EXTENSION <extension_name> CASCADE; 命令级联卸载Extension。CASCADE（级联）删除命令不仅会删除指定扩展本身，还会一并清除扩展数据（例如PostGIS数据、RoaringBitmap数据、Proxima数据、Binlog数据、BSI数据等）以及依赖该扩展的对象（包括元数据、表、视图、Server数据等）。
 
-不推荐使用 DROP EXTENSION <extension_name> CASCADE; 命令级联卸载Extension。CASCADE（级联）删除命令不仅会删除指定扩展本身，还会一并清除扩展数据（例如PostGIS数据、RoaringBitmap数据、Proxima数据、Binlog数据、BSI数据等）以及依赖该扩展的对象（包括元数据、表、视图、Server数据等）。
 2. 向量查询。
 在Hologres中，向量使用FLOAT4类型的数组表示，向量查询的API场景如下：
 
 **精确查询**
 
-实时数仓 Hologres 以 `pm_xxx` 开头的UDF均为精准查询。 a. 使用精准的API来做Top N的查询，需要您在表中定义好对应的向量字段，示例语句如下。
+以 `pm_xxx` 开头的UDF均为精准查询。 a. 使用精准的API来做Top N的查询，需要您在表中定义好对应的向量字段，示例语句如下。
 
 ```
+CREATE TABLE feature_tb (
     id bigint,
     feature float4[] check(array_ndims(feature) = 1 AND array_length(feature, 1) = 4)
-);
 ```
 
-b. 查询Top N，示例语句如下。
+); b. 查询Top N，示例语句如下。
 
 ```
 SELECT pm_squared_euclidean_distance(feature, '{0.1,0.1,0.1,0.1}') AS distance FROM feature_tb ORDER BY distance ASC limit 10;
@@ -6703,11 +7004,16 @@ SELECT pm_squared_euclidean_distance(feature, '{0.1,0.1,0.1,0.1}') AS distance F
 
 以 `pm_approx` 开头的UDF均为近似查询。 a. 使用近似查询的API来做Top N查询，您需要在表中定义好对应的向量字段，并为对应的字段设置Proxima索引，示例语句如下。
 
-```json
-BEGIN;
+```
+BEGIN; CREATE TABLE feature_tb (
     id bigint,
     feature float4[] check(array_ndims(feature) = 1 AND array_length(feature, 1) = 4)
-); CALL set_table_property('feature_tb', 'proxima_vectors', '{"feature": {"algorithm":"Graph","distance_method":"Euclidean","builder_params": {"min_flush_proxima_row_count" : 1000}, "searcher_init_params":{}}}'); END;
+```
+
+);
+
+```json
+CALL set_table_property('feature_tb', 'proxima_vectors', '{"feature": {"algorithm":"Graph","distance_method":"Euclidean","builder_params": {"min_flush_proxima_row_count" : 1000}, "searcher_init_params":{}}}'); END;
 ```
 
 参数描述如下表所示。
@@ -6719,9 +7025,7 @@ BEGIN;
 
 b. 查询Top N，示例语句如下。
 
-**说明**
-
-近似查询中的第二个参数必须为常量值。
+> **说明：** 近似查询中的第二个参数必须为常量值。
 
 ```
 SELECT pm_approx_euclidean_distance(feature, '{0.1,0.2,0.3,0.4}') AS distance FROM feature_tb ORDER BY distance ASC limit 10 ; //计算内积
@@ -6739,20 +7043,25 @@ SELECT pm_approx_inner_product_distance(feature, '{0.1,0.2,0.3,0.4}') AS distanc
 
 使用Proxima进行向量计算的示例语句如下。
 
-```json
-CREATE extension proxima; BEGIN;
+```
+CREATE extension proxima; BEGIN; CREATE TABLE feature_tb (
     id bigint,
     feature float4[] check(array_ndims(feature) = 1 AND array_length(feature, 1) = 4)
-); CALL set_table_property('feature_tb', 'proxima_vectors', '{"feature":{"algorithm":"Graph","distance_method":"InnerProduct","builder_params": {"min_flush_proxima_row_count" : 1000}, "searcher_init_params":{}}}'); END; INSERT INTO feature_tb SELECT i, array[random(), random(), random(), random()]::float4[] FROM generate_series(1, 10000) i; SELECT pm_approx_inner_product_distance(feature, '{0.1,0.2,0.3,0.4}') AS distance FROM feature_tb ORDER BY distance DESC limit 10 ;
+```
+
+);
+
+```json
+CALL set_table_property('feature_tb', 'proxima_vectors', '{"feature":{"algorithm":"Graph","distance_method":"InnerProduct","builder_params": {"min_flush_proxima_row_count" : 1000}, "searcher_init_params":{}}}'); END; INSERT INTO feature_tb SELECT i, array[random(), random(), random(), random()]::float4[] FROM generate_series(1, 10000) i; SELECT pm_approx_inner_product_distance(feature, '{0.1,0.2,0.3,0.4}') AS distance FROM feature_tb ORDER BY distance DESC limit 10 ;
 ```
 
 **向量计算UDF**
 
-Hologres支持的三种向量距离评估函数如下： 不开方的欧式距离，计算公式如下。 实时数仓 Hologres 开方的欧氏距离，计算公式如下。 内积距离，计算公式如下。
+Hologres支持的三种向量距离评估函数如下： 不开方的欧式距离，计算公式如下。 开方的欧氏距离，计算公式如下。 内积距离，计算公式如下。
 
-**说明**
+> **说明：** 如果您选用欧式距离进行向量计算，不开方的欧式距离与开方的欧式距离相比，可以少一个开方的计算，并且计算出的Top K记录一致。因此，不开方的欧式距离性能更好，在满足功能需求的情况下，一般建议您使用不开方的欧式距离。
 
-如果您选用欧式距离进行向量计算，不开方的欧式距离与开方的欧式距离相比，可以少一个开方的计算，并且计算出的Top K记录一致。因此，不开方的欧式距离性能更好，在满足功能需求的情况下，一般建议您使用不开方的欧式距离。 Hologres支持的向量计算UDF如下： 精准向量计算UDF
+Hologres支持的向量计算UDF如下： 精准向量计算UDF
 
 ```
 float4 pm_euclidean_distance(float4[], float4[]) float4 pm_squared_euclidean_distance(float4[], float4[]) float4 pm_inner_product_distance(float4[], float4[])
@@ -6784,7 +7093,7 @@ float4 pm_approx_euclidean_distance(float4[], float4[]) float4 pm_approx_squared
 
 原因：由于pm_xx_distance(left, right)中，left的维度与right的维度不一致所致。 解决方法：调整pm_xx_distance(left, right)中，left的维度与right的维度一致。
 
-#### 1.5.6. Oracle兼容函数
+#### 1.5.6 Oracle兼容函数
 
 Hologres从V1.3版本开始，通过增加orafce扩展包，引入Oracle兼容函数。本文为您介绍Oracle内置函数在Hologres中的使用方法及支持的函数详情。
 
@@ -6802,9 +7111,9 @@ create extension if not exists orafce;
 DROP EXTENSION orafce;
 ```
 
-| 说明加载orafce插件时会自动创建多个Schema来代替Oracle中的Package，分别为 dbms_alert 、 dbms_assert 、 dbms_output 、 dbms_pipe 、 dbms_random 、 dbms_utility 、 oracle 、 plunit 、 plvchr 、 plvdate 、 p 在您安装Oracle前，请确保您的数据库中没有同名Schema，否则会加载失败。 |  |  |
+| 说明加载orafce插件时会自动创建多个Schema来代替Oracle中的Package，分别为 dbms_alert 、 dbms_assert 、 dbms_output 、 dbms_pipe 、 dbms_random 、 dbms_utility 、 oracle 、 plunit 、 plvchr 、 plvdate 、 p 在您安装Oracle前，请确保您的数据库中没有同名Schema，否则会加载失败。 |   |   |
 |---|---|---|
-|  | p | lv |
+|   | p | lv |
 
 **Oracle函数**
 
@@ -6812,8 +7121,6 @@ Hologres已支持的Oracle函数列表如下。 Date函数
 
 | 函数名称 | 描述 | 用例 | 结果 |
 |---|---|---|---|
-
-实时数仓 Hologres
 
 | addmonths(day date, value int) _ | 返回第一个月份参数加上第二个月份参数，返回类型为DATE。 | SELECT add_months(current_date, 2); | 2022-05-21 |
 |---|---|---|---|
@@ -6837,8 +7144,6 @@ String函数
 | instr(str text, patt text) | 未提供start参数，默认从头开始搜索。 | SELECT instr('Hologres', 'o'); | 2 |
 | plvstr.rvrs(str text, start integer, end integer) | 对输入字符串str从start位置到end位置进行逆序。 | SELECT plvstr.rvrs('Hologres', 5,6); | rg |
 
-实时数仓 Hologres
-
 | plvstr.rvrs(str text, start integer) | 对输入字符串str从start位置到字符串结束进行逆序。 | SELECT plvstr.rvrs('Hologres', 4); | sergo |
 |---|---|---|---|
 | plvstr.rvrs(str text) | 逆序整个字符串。 | SELECT plvstr.rvrs('Hologres'); | sergoloH |
@@ -6861,38 +7166,38 @@ String函数
 | tanh(num double precision) | 双曲正切值。 | SELECT tanh(3); | 0.99505475368673 1 |
 | cosh(num double precision) | 双曲余弦值。 | SELECT cosh(0.2); | 1.02006675561908 |
 
-实时数仓 Hologres
-
 | decode(expression, value, return [,value,return]... [, default]) | 在表达式中寻找一个搜索值，搜索到则返回指定的值；如果没有搜索到，返回默认值。 | CREATE TABLE t1(id int, name varchar(20)); INSERT INTO t1 values(1,'alibaba'); INSERT INTO t1 values(2,'hologres'); SELECT decode(id, 1, 'alibaba', 2, 'hologres', 'not found') from t1; SELECT decode(id, 3, 'alibaba', 4, 'hologres', 'not found') from t1; | hologres alibaba not found not found |
 |---|---|---|---|
 | dump(anyelement) | 返回一个文本值，该文本中包含第一个参数的数据类型代码、以字节计的长度和内部表示。 | SELECT dump('hologres'); | Typ=25 Len=12: 48,0,0,0,104,111,10 8,111,103,114,101, 115 |
 | dump(anyelement, num integer) | 第二个参数表示返回文本值内部表示的进位制。 | SELECT dump('hologres', 10); SELECT dump('hologres', 16); | Typ=25 Len=12: 48,0,0,0,104,111, 108,111,103,114, 101,115 Typ=25 Len=12: 30,0,0,0,68,6f,6c, 6f,67,72,65,73 |
 | nlssort(str text, str text) | 指定排序规则的排序数据函数。 | 创建表格并插入数据。 CREATE TABLE t1 (name text); INSERT INTO t1 VALUES('Anne'), ('anne'), ('Bob'), ('bob'); SELECT * FROM t1 ORDER BY nlssort(name, 'en_US.UTF-8'); SELECT*FROM t1 ORDER BY nlssort(name, 'C'); | anne Anne bob Bob Anne Bob anne bob |
 
-#### 1.5.7. Clickhouse兼容函数
+#### 1.5.7 Clickhouse兼容函数
 
-Hologres已支持部分Clickhouse函数或其同语义函数。本文为您介绍Clickhouse函数在Hologres中的支持情况与使用方法，以及部分常见函数的同语义改写方法。 Clickhouse常用字符串函数与Hologres语法基本一致，包括length、lower、upper、concat、substring、trim等函数，具体函数及使用方法请参见字符串函数。
-
-#### 数学函数
-
-Clickhouse常用数学函数与Hologres语法基本一致，包括cbrt、degrees、exp、ln、log、pi、radians、sign、sqrt等函数，具体函数及使用方法请参见数学函数。
+Hologres已支持部分Clickhouse函数或其同语义函数。本文为您介绍Clickhouse函数在Hologres中的支持情况与使用方法，以及部分常见函数的同语义改写方法。 Clickhouse常用字符串函数与Hologres语法基本一致，包括length、lower、upper、concat、substring、trim等函数，具体函数及使用方法请参见字符串函数。 Clickhouse常用数学函数与Hologres语法基本一致，包括cbrt、degrees、exp、ln、log、pi、radians、sign、sqrt等函数，具体函数及使用方法请参见数学函数。
 
 **类型转换函数**
 
 Hologres从V1.3.36版本起支持如下Clickhouse类型转换函数，暂不支持常量入参。其他数据类型转换场景请使用 `CAST(col AS type)` 或 `col::type` 语法。 建表及数据插入语句如下，函数用例基于此表进行查询。
 
 ```
+CREATE TABLE public.tb1 (
  id bigint NOT NULL,
  id_text text,
  data_date text,
  data_float text,
  data_text text
-); INSERT INTO public.tb1 VALUES (1234,'123','20190102','1.23','hologres');
+```
+
+);
+
+```
+INSERT INTO public.tb1 VALUES (1234,'123','20190102','1.23','hologres');
 ```
 
 **toString(anyelement)**
 
-描述：将任一类型转换为text类型。 返回类型：text。 使用示例：
+描述**：**将任一类型转换为text类型。 返回类型：text。 使用示例：
 
 ```
 SELECT toString(id) from public.tb1;
@@ -6902,11 +7207,11 @@ SELECT toString(id) from public.tb1;
 
 **toInt64(anyelement)**
 
-描述：将其他数字类型转换为bigint类型。
+描述**：**将其他数字类型转换为bigint类型。
 
-**说明**
+> **说明：** 如果非数字类型使用此函数进行转换，数据类型不兼容将会导致报错。
 
-如果非数字类型使用此函数进行转换，数据类型不兼容将会导致报错。 返回类型：bigint。 实时数仓 Hologres 使用示例：
+返回类型：bigint。 使用示例：
 
 ```
 SELECT toInt64(id_text) from public.tb1;
@@ -6916,11 +7221,11 @@ SELECT toInt64(id_text) from public.tb1;
 
 **toInt32(anyelement)**
 
-描述：将其他数字类型转换为int类型。
+描述**：**将其他数字类型转换为int类型。
 
-**说明**
+> **说明：** 如果非数字类型使用此函数进行转换，数据类型不兼容将会导致报错。
 
-如果非数字类型使用此函数进行转换，数据类型不兼容将会导致报错。 返回类型：int。 使用示例：
+返回类型：int。 使用示例：
 
 ```
 SELECT toInt32(id_text) from public.tb1;
@@ -6930,7 +7235,7 @@ SELECT toInt32(id_text) from public.tb1;
 
 **toDate(text)**
 
-描述：将text类型转换为date类型。 返回类型：date。 使用示例： 转换成功。
+描述**：**将text类型转换为date类型。 返回类型：date。 使用示例： 转换成功。
 
 ```
 SELECT toDate(data_date) from public.tb1;
@@ -6956,7 +7261,7 @@ ERROR: *** invalid input syntax for type date ***
 
 **toFloat64(anyelement)**
 
-描述：将其他数字类型转换为double类型。 返回类型：double precision。 使用示例：
+描述**：**将其他数字类型转换为double类型。 返回类型：double precision。 使用示例：
 
 ```
 SELECT toFloat64(data_float) from public.tb1;
@@ -6970,9 +7275,11 @@ SELECT toFloat64(data_float) from public.tb1;
 
 **时间和日期函数**
 
+Hologres更多时间和日期函数及其使用方法请参见时间和日期转换函数。
+
 **toYear、toMonth、toQuarter等**
 
-描述：从时间戳中获取年、月、季度等子字段。 Hologres实现： `extract(field from timestamp)` 或 `date_part(text, timestamp)` ，详情请参见时间日期截取函数。 使用示例：
+描述**：**从时间戳中获取年、月、季度等子字段。 Hologres实现： `extract(field from timestamp)` 或 `date_part(text, timestamp)` ，详情请参见时间日期截取函数。 使用示例：
 
 ```
 SELECT extract(month FROM timestamp '2001-02-16 20:38:40');
@@ -6988,7 +7295,7 @@ SELECT extract(quarter FROM timestamp '2001-02-16 20:38:40');
 
 **addDays、addMonths、addYears等**
 
-描述：将时间戳增加一段时间间隔。 Hologres实现：操作符+ 。 使用示例：
+描述**：**将时间戳增加一段时间间隔。 Hologres实现：操作符`+` 。 使用示例：
 
 ```
 SELECT date '2001-09-28' + interval '1 hour';
@@ -7002,7 +7309,7 @@ SELECT date '2001-09-28' + interval '1 hour';
 
 **subtractDays、subtractMonths、subtractYears等**
 
-实时数仓 Hologres 描述：将时间戳减去一段时间间隔。 Hologres实现：操作符- 。 使用示例：
+描述**：**将时间戳减去一段时间间隔。 Hologres实现：操作符`-` 。 使用示例：
 
 ```
 SELECT date '2001-09-28' - interval '1 day';
@@ -7014,27 +7321,25 @@ SELECT date '2001-09-28' - interval '1 day';
 2001-09-27 00:00:00
 ```
 
-#### 聚合函数
-
 Hologres更多聚合函数及其使用方法请参见通用聚合函数、APPROX_COUNT_DISTINCT、UNIQ、MAX_BY与MIN_BY。
 
 **argMin(x, y)**
 
 描述：计算y列最小值对应x列的值。 Hologres实现：min_by(x, y)。
 
-| 说明当y列最小值对应多个不同的x值，输出其中的最小值。 Hologres V1.3.36版本起支持。 |  |  |
+| 说明当y列最小值对应多个不同的x值，输出其中的最小值。 Hologres V1.3.36版本起支持。 |   |   |
 |---|---|---|
 | 使用示例： | test | 表建表语句请参见示例。 |
-| SELECT min_by(name, cost) FROM test; --返回结果 min_by -------- cc (1 row) |  |  |
+| SELECT min_by(name, cost) FROM test; --返回结果 min_by -------- cc (1 row) |   |   |
 
 **argMax(x, y)**
 
 描述：计算y列最大值对应x列的值。 Hologres实现：max_by(x, y)。
 
-| 说明当y列最大值对应多个不同的x值，输出其中的最大值。 Hologres V1.3.36版本起支持。 |  |  |
+| 说明当y列最大值对应多个不同的x值，输出其中的最大值。 Hologres V1.3.36版本起支持。 |   |   |
 |---|---|---|
 | 使用示例： | test | 表建表语句请参见示例。 |
-| SELECT id, max_by(name, cost) FROM test GROUP BY id; --返回结果 id \| max_by ----+-------- 2 \| bb 1 \| aaa 3 \| c (3 rows) |  |  |
+| SELECT id, max_by(name, cost) FROM test GROUP BY id; --返回结果 id \| max_by ----+-------- 2 \| bb 1 \| aaa 3 \| c (3 rows) |   |   |
 
 **groupArray(anyelement)**
 
@@ -7053,13 +7358,11 @@ CREATE TABLE test_array_agg_int (c1 int); INSERT INTO test_array_agg_int VALUES 
 (1 row)
 ```
 
-#### 数组函数
-
 Hologres更多数组函数及其使用方法请参见数组函数。
 
 **arrayJoin(anyarray)**
 
-描述：将数组的每个元素扩展到单独行。 使用示例： 实时数仓 Hologres
+描述：将数组的每个元素扩展到单独行。 Hologres实现：unnest(anyarray) 。 使用示例：
 
 ```
 SELECT unnest(ARRAY[1,2]);
@@ -7085,12 +7388,12 @@ SELECT array_cat(array_cat(ARRAY[1,2], ARRAY[3,4]), ARRAY[5,6]);
 
 描述：返回数组中去重后的元素组成的新数组。 Hologres实现：array_distinct(anyarray)。
 
-**说明**
+> **说明：** Hologres V1.3.19版本起支持array_distinct函数，暂不支持常量入参。
 
-Hologres V1.3.19版本起支持array_distinct函数，暂不支持常量入参。 使用示例：
+使用示例：
 
 ```
-CREATE TABLE test_array_distinct_text ( c1 text[]);
+CREATE TABLE test_array_distinct_text ( c1 text[]); INSERT INTO test_array_distinct_text
     VALUES (ARRAY['holo', 'hello', 'holo', 'SQL', 'SQL']), (ARRAY[]::text[]);
 SELECT c1, array_distinct (c1) FROM test_array_distinct_text;
 ```
@@ -7109,12 +7412,12 @@ SELECT c1, array_distinct (c1) FROM test_array_distinct_text;
 
 描述：返回数组元素的最小值。 Hologres实现：array_min(anyarray)。
 
-**说明**
+> **说明：** Hologres 1.3.19起支持array_min函数，暂不支持常量入参。
 
-Hologres 1.3.19起支持array_min函数，暂不支持常量入参。 使用示例：
+使用示例：
 
 ```
-CREATE TABLE test_array_min_text ( c1 text[]);
+CREATE TABLE test_array_min_text ( c1 text[]); INSERT INTO test_array_min_text
     VALUES (NULL), (ARRAY['hello', 'holo', 'blackhole', 'array']);
 SELECT c1, array_min (c1) FROM test_array_min_text;
 ```
@@ -7137,9 +7440,9 @@ SELECT c1, array_min (c1) FROM test_array_min_text;
 
 描述：返回数组元素的最大值。 Hologres实现：array_max(anyarray)。
 
-**说明**
+> **说明：** Hologres 1.3.19起支持array_max函数，暂不支持常量入参。
 
-Hologres 1.3.19起支持array_max函数，暂不支持常量入参。 使用示例： 实时数仓 Hologres
+使用示例：
 
 ```
 CREATE TABLE test_array_max_int ( c1 int[]); INSERT INTO test_array_max_int VALUES (NULL), (ARRAY[-2, NULL, -3, -12, -7]); SELECT c1, array_max (c1)FROM test_array_max_int;
@@ -7167,7 +7470,11 @@ CREATE TABLE test_array_max_int ( c1 int[]); INSERT INTO test_array_max_int VALU
 SELECT sum(ele) FROM (SELECT unnest(ARRAY[1,2,4]) AS ele) a;
 ```
 
-`--`返回结果 Hologres更多Bitmap函数及其使用方法请参见Roaring Bitmap函数。
+`--`返回结果
+
+**Bitmap函数**
+
+Hologres更多Bitmap函数及其使用方法请参见Roaring Bitmap函数。
 
 **bitmapToArray(roaringbitmap)**
 
@@ -7223,7 +7530,7 @@ SELECT rb_and_agg(rb_build('{1,2,3}'));
 
 **groupBitmapOrState(roaringbitmap)**
 
-描述：Bitmap的Or聚合计算。 Hologres实现：rb_or_agg(roaringbitmap)。 使用示例： 实时数仓 Hologres
+描述：Bitmap的Or聚合计算。 Hologres实现：rb_or_agg(roaringbitmap)。 使用示例：
 
 ```
 SELECT rb_or_agg(rb_build('{1,2,3}'));
@@ -7261,9 +7568,11 @@ SELECT rb_or_cardinality_agg(rb_build('{1,2,3}'));
 
 描述：返回text对应的64位SipHash值，返回类型为UInt64。 Hologres实现：hg_sip_hash_64(text)。
 
-**说明**
+> **说明：** 返回类型为BIGINT。
+> Hologres V2.0.1版本起支持sipHash64函数。
+> 暂不支持常量入参。
 
-返回类型为BIGINT。 Hologres V2.0.1版本起支持sipHash64函数。 暂不支持常量入参。 使用示例：
+使用示例：
 
 ```
 CREATE TABLE test_hg_sip_hash_64_text (c1 text); INSERT INTO test_hg_sip_hash_64_text VALUES ('abc'); SELECT hg_sip_hash_64 (c1) FROM test_hg_sip_hash_64_text;
@@ -7275,9 +7584,9 @@ CREATE TABLE test_hg_sip_hash_64_text (c1 text); INSERT INTO test_hg_sip_hash_64
 4596069200710135518
 ```
 
-#### 1.5.8. 流量分析函数
+#### 1.5.8 流量分析函数
 
-##### 1.5.8.1. 漏斗分析函数
+##### 1.5.8.1 漏斗分析函数
 
 漏斗分析是常见的转化分析方法，它用于反映用户各个阶段行为的转化率。漏斗分析被广泛应用于用户行为分析和APP数据分析的流量分析、产品目标转化等数据运营与数据分析。本文将为您介绍在Hologres中漏斗分析相关函数的使用。
 
@@ -7299,8 +7608,6 @@ create extension flow_analysis; --开启extension
 | 501286 | 浏览商品 | 2014-11-18 00:00:00 |
 | 501286 | 加入购物车 | 2014-11-18 00:00:00 |
 
-实时数仓 Hologres
-
 | 632347 | 浏览商品 | 2014-11-18 00:00:00 |
 |---|---|---|
 | 814199 | 浏览商品 | 2014-11-18 00:00:00 |
@@ -7318,11 +7625,21 @@ create extension flow_analysis; --开启extension
 对应的建表语句如下所示：
 
 ```
-BEGIN; DROP TABLE IF EXISTS public.user_analysis; (
+BEGIN; DROP TABLE IF EXISTS public.user_analysis; CREATE TABLE IF NOT EXISTS public.user_analysis
+```
+
+`(`
+
+```
     user_id INT NOT NULL ,
       event_type    TEXT ,
     event_time TIMESTAMP NOT NULL
-); call set_table_property('user_analysis', 'distribution_key', 'user_id'); call set_table_property('user_analysis', 'segment_key', 'event_time'); call set_table_property('user_analysis', 'clustering_key', 'event_time'); call set_table_property('user_analysis', 'bitmap_columns', 'event_type'); COMMIT;
+```
+
+);
+
+```
+call set_table_property('user_analysis', 'distribution_key', 'user_id'); call set_table_property('user_analysis', 'segment_key', 'event_time'); call set_table_property('user_analysis', 'clustering_key', 'event_time'); call set_table_property('user_analysis', 'bitmap_columns', 'event_type'); COMMIT;
 ```
 
 **漏斗函数（windowFunnel）**
@@ -7348,7 +7665,7 @@ windowFunnel(window, mode, timestamp, cond1, cond2, ..., condN)
 
 **使用示例**
 
-如果您希望分析一段时间内，用户按照固定转化路径的转化漏斗情况，可以参照如下SQL进行分析，SQL中的各个条件如下： 统计间隔：30分钟（即1800秒） 统计时间段：2014-11-25 00:00:00至2014-11-26 00:00:00 转化路径：浏览商品>收藏商品>加入购物车>购买商品实时数仓 Hologres
+如果您希望分析一段时间内，用户按照固定转化路径的转化漏斗情况，可以参照如下SQL进行分析，SQL中的各个条件如下： 统计间隔：30分钟（即1800秒） 统计时间段：2014-11-25 00:00:00至2014-11-26 00:00:00 转化路径：浏览商品>收藏商品>加入购物车>购买商品
 
 ```
 WITH
@@ -7362,7 +7679,7 @@ WITH
                     ,event_time
 ```
 
-`,event_type = '`浏览商品' `,event_type = '`收藏商品' `,event_type = '`加入购物车' `,event_type = '`购买商品'
+`,event_type = '`浏览商品`'` `,event_type = '`收藏商品`'` `,event_type = '`加入购物车`'` `,event_type = '`购买商品`'`
 
 ```
                     ) AS level
@@ -7370,21 +7687,23 @@ WITH
             WHERE event_time >= TIMESTAMP '2014-11-25 00:00:00'
                 AND event_time < TIMESTAMP '2014-11-26 00:00:00'
             GROUP BY user_id
+            ) AS basic_table
         GROUP BY level
         ORDER BY level ASC )
+SELECT CASE level WHEN 0 THEN '用户总量'
 ```
 
-`WHEN 1 THEN '`浏览商品' `WHEN 2 THEN '`收藏商品' `WHEN 3 THEN '`加入购物车' `WHEN 4 THEN '`购买商品'
+`WHEN 1 THEN '`浏览商品`'` `WHEN 2 THEN '`收藏商品`'` `WHEN 3 THEN '`加入购物车`'` `WHEN 4 THEN '`购买商品`'`
 
 ```
               END
         ,SUM(count_user) over ( ORDER BY level DESC )
 FROM level_detail GROUP BY level
          ,count_user
-ORDER BY level ASC ;
+ORDER BY level ASC
 ```
 
-显示结果如下所示：
+; 显示结果如下所示：
 
 ```
     case    | sum
@@ -7403,7 +7722,7 @@ ORDER BY level ASC ;
 
 **函数说明**
 
-实时数仓 Hologres 该函数将一组条件作为参数，类型为1到32个UInt8类型的参数，用来表示事件是否满足特定条件。
+该函数将一组条件作为参数，类型为1到32个UInt8类型的参数，用来表示事件是否满足特定条件。
 
 **函数语法**
 
@@ -7419,13 +7738,13 @@ retention(cond1, cond2, ..., cond32);
 
 **使用示例**
 
-如果您希望分析从某一天开始，用户的留存情况，可以使用如下SQL进行分析，SQL中的场景如下： 开始分析日期是2014年11月25日。 分别统计了第一天活跃数、次日留存、3日留存和7日留存。 `--` 根据计算数组中`SUM(r[index])`获取`2014-11-25`活跃用户在第2、3、7日的留存数，以此计算留存率
+如果您希望分析从某一天开始，用户的留存情况，可以使用如下SQL进行分析，SQL中的场景如下： 开始分析日期是2014年11月25日。 分别统计了第一天活跃数、次日留存、3日留存和7日留存。 `--` 根据计算数组中`SUM(r[index])`获取`2014-11-25`活跃用户在第`2`、`3`、`7`日的留存数，以此计算留存率
 
 ```
     DATE '2014-11-25 00:00:00' AS "访问日期",
 ```
 
-`SUM(r[1])::NUMERIC AS "`第1天活跃用户`",`
+`SUM(r[1])::NUMERIC AS "`第`1`天活跃用户`",`
 
 ```
     SUM(r[2])::NUMERIC/SUM(r[1])::NUMERIC AS "次日留存",
@@ -7434,10 +7753,9 @@ retention(cond1, cond2, ..., cond32);
 FROM
 ```
 
-`--` 计算`2014-11-25`活跃用户在第2、3、7日的登录情况。r数组表示每天登录情况，1表示登录，0 表示未登录。
+`--` 计算`2014-11-25`活跃用户在第`2`、`3`、`7`日的登录情况。`r`数组表示每天登录情况，`1`表示登录，`0` 表示未登录。 `(`
 
 ```
-    (
         WITH
             first_day_table AS ( SELECT TIMESTAMP '2014-11-25 00:00:00' AS first_day)
             user_id,
@@ -7449,22 +7767,17 @@ FROM
                 ) AS r
 ```
 
-`--` 过滤`2014-11-25`活跃用户在后续1～7日登录数据
+`--` 过滤`2014-11-25`活跃用户在后续`1`～`7`日登录数据
 
 ```
             FROM    public.user_analysis
             WHERE   (event_time >= TIMESTAMP '2014-11-25 00:00:00')
             AND     (event_time <= TIMESTAMP '2014-11-25 00:00:00' + INTERVAL '6 day')
             GROUP BY user_id
+        ) AS basic_table
 ```
 
-`GROUP BY "`访问日期"
-
-```
-;
-```
-
-显示结果如下所示： 访问日期 | 第1天活跃用户 | 次日留存 | 3日留存 | 7日留存
+`GROUP BY "`访问日期`"` ; 显示结果如下所示： 访问日期 | 第`1`天活跃用户 | 次日留存 | 3日留存 | 7日留存
 
 ```
 ------------+---------------+----------+----------+----------
@@ -7476,19 +7789,17 @@ FROM
 
 **函数说明**
 
-留存分析是最常见的典型用户增长分析场景，用户经常需要绘制数据可视化图形，分析用户的留存情况。 基于该场景，Hologres构造了**range_retention_count**和**range_retention_sum**两个函数用于服务该场景。**range_retention_count**返回值为bigint数组，不支持直接读取，但可以作为**range_retention_sum**的输入，**range_retention_sum**返回值为text数组，示例如下：
+留存分析是最常见的典型用户增长分析场景，用户经常需要绘制数据可视化图形，分析用户的留存情况。 基于该场景，Hologres构造了**range_retention_count**和**range_retention_sum**两个函数用于服务该场景。**range_retention_count**返回值为bigint数组，不支持直接读取，但可以作为**range_retention_sum**的输入，**range_retention_sum**返回值为text数组，示例如下： `{`
 
-```json
- {
+```
   "20210306,562574,413024,343126,291178,215240,0,0,0,0,0,0,0,0,0,0,0",
   "20210309,502617,376019,332303,273917,208421,0,0,0,0,0,0,0,0,0,0,0",
    "20210305,550118,412264,357542,297458,216549,0,0,0,0,0,0,0,0,0,0,0",
    "20210307,560659,402810,344581,291851,214705,0,0,0,0,0,0,0,0,0,0,0",
    "20210308,527392,383356,346084,282764,212309,0,0,0,0,0,0,0,0,0,0,0"
- }
 ```
 
-实时数仓 Hologres
+`}`
 
 **函数语法**
 
@@ -7514,6 +7825,7 @@ range_retention_count(is_first,is_active,dt,retention_interval,retention_granula
 WITH tbl_detail AS (
         SELECT range_retention_count(is_first, is_active, dt, ARRAY[1, 3, 7],'day' ) AS detail
         FROM (
+            SELECT user_id, event_time::DATE AS dt
                 , CASE
                     WHEN
                     event_time >= timestamp '2014-11-25 00:00:00'
@@ -7531,7 +7843,7 @@ WITH tbl_detail AS (
                     AND event_time < timestamp '2014-11-25 00:00:00' + INTERVAL '7' day + INTERVAL '7' day   --此处为从'2014-11-25 00:00:00'开
 ```
 
-始的第7天的7日留存，`INTERVAL`需要加2次
+始的第`7`天的`7`日留存，`INTERVAL`需要加`2`次
 
 ```
                     THEN true
@@ -7550,7 +7862,7 @@ WITH tbl_detail AS (
         FROM tbl_detail
 ```
 
-)
+`)` `SELECT s[1] AS` 访问日期
 
 ```
         ,s[3]::numeric / s[2]::numeric AS 第1天
@@ -7559,7 +7871,7 @@ WITH tbl_detail AS (
 FROM tbl_sum ORDER BY s[1];
 ```
 
-显示结果如下所示： 访问日期| 第1天 | 第3天 | 第7天
+显示结果如下所示： 访问日期| 第`1`天 | 第`3`天 | 第`7`天
 
 ```
 ----------+--------------+--------------+--------------
@@ -7573,7 +7885,7 @@ FROM tbl_sum ORDER BY s[1];
 (7 rows)
 ```
 
-##### 1.5.8.2. 明细圈人函数
+##### 1.5.8.2 明细圈人函数
 
 本文将为您介绍明细圈人函数bit_construct和bit_match的具体使用语法。
 
@@ -7581,12 +7893,10 @@ FROM tbl_sum ORDER BY s[1];
 
 在圈人场景中，通常会有通过明细表圈人的需求，例如一个用户有多条记录，不同的记录满足不同的条件，明细圈人通常需要找出满足某些条件组合的用户列表。
 
-| 示例明细表如下，需要在明细表中找出有过 click购物车和 view收藏页行为的user列表（此处满足条件的是user A）。 |  |  |
+| 示例明细表如下，需要在明细表中找出有过 click购物车和 view收藏页行为的user列表（此处满足条件的是user A）。 |   |   |
 |---|---|---|
 | user | action | page |
 | A | click | 购物车 |
-
-实时数仓 Hologres
 
 | B | click | 首页 |
 |---|---|---|
@@ -7598,7 +7908,7 @@ FROM tbl_sum ORDER BY s[1];
 
 **使用限制**
 
-该函数仅Hologres V0.10及以上版本支持，请在Hologres管控台查看当前实例版本。 明细圈人函数在使用之前，需要执行以下语句开启extension。extension是DB级别的函数，一个DB只需执行一次即可，新建DB需要重新执行。
+在Hologres中使用明细圈人函数，具体限制如下： 该函数仅Hologres V0.10及以上版本支持，请在Hologres管控台查看当前实例版本。 明细圈人函数在使用之前，需要执行以下语句开启extension。extension是DB级别的函数，一个DB只需执行一次即可，新建DB需要重新执行。
 
 ```
 CREATE EXTENSION flow_analysis;
@@ -7621,7 +7931,7 @@ bit_construct(
   ....,
 ```
 
-`a6` )
+`a6` `)`
 
 **参数说明**
 
@@ -7643,13 +7953,14 @@ bit_match('expression', bitmask)
 
 **参数说明**
 
-| 参数 |  | 说明 | 示例 |
+| 参数 |   | 说明 | 示例 |
 |---|---|---|---|
-| expression |  | bit _construct函数中的条件表达式，支持 & (and)、 \| (or)、 ! (not)、 ^ (XOR) 和 （） 。 | a&b |
-| bitmask |  | bit _construct构造的bitmap名。 | 无 |
+| expression |   | bit _construct函数中的条件表达式，支持 & (and)、 \| (or)、 ! (not)、 ^ (XOR) 和 （） 。 | a&b |
+| bitmask |   | bit _construct构造的bitmap名。 | 无 |
 
 **使用示例**
 
+使用明细圈人函数，完整语法示例如下：
 1. 开启extension。
 Superuser在DB中执行如下语句开启extension：
 
@@ -7661,18 +7972,22 @@ CREATE EXTENSION flow_analysis;
 如下为一张记录用户购物行为的明细表，该表记录了用户的uid以及购物路径的行为，同时对该表插入部分数据。
 
 ```
-event_time timestamptz, uid bigint, action text, page text, product_code text, from_days int ); insert into ods_app_dwd values('2021-04-03 10:01:30', 274649163, 'click', '购物车', 'MDS', 1); insert into ods_app_dwd values('2021-04-03 10:04:30', 274649163, 'view', '收藏页', 'MDS', 4); insert into ods_app_dwd values('2021-04-03 10:06:30', 274649165, 'click', '购物车', 'MMS', 8); insert into ods_app_dwd values('2021-04-03 10:09:30', 274649165, 'view', '购物车', 'MDS', 10);
+create table ods_app_dwd( event_time timestamptz, uid bigint, action text, page text, product_code text, from_days int
+```
+
+);
+
+```
+insert into ods_app_dwd values('2021-04-03 10:01:30', 274649163, 'click', '购物车', 'MDS', 1); insert into ods_app_dwd values('2021-04-03 10:04:30', 274649163, 'view', '收藏页', 'MDS', 4); insert into ods_app_dwd values('2021-04-03 10:06:30', 274649165, 'click', '购物车', 'MMS', 8); insert into ods_app_dwd values('2021-04-03 10:09:30', 274649165, 'view', '购物车', 'MDS', 10);
 ```
 
 3. 数据查询。
 查询出满足“某个时间范围内将商品既加入购物车又添加至收藏页”条件的精准用户。 您可以使用如下两种方式进行数据查询： 使用WHERE语句查询。
 
-**说明**
-
-在查询语句中WHERE条件筛选后的数据越少，查询性能越好。 实时数仓 Hologres
+> **说明：** 在查询语句中WHERE条件筛选后的数据越少，查询性能越好。
 
 ```
-WITH tbl as (
+WITH tbl as ( SELECT uid, bit_or(bit_construct(
   a := (action='click' and page='购物车'),
   b := (action='view' and page='收藏页'))) as uid_mask
   FROM ods_app_dwd
@@ -7682,6 +7997,8 @@ WHERE event_time > '2021-04-03 10:00:00' AND event_time < '2021-04-04 10:00:00' 
 其中关于SQL语句的释义如下： bit_construct：筛选出加入购物车的用户为条件a，筛选出添加至收藏夹的用户为条件b。 bit_or：将筛选出的条件a和b取或，在该SQL语句示例中，同一个用户只要有一行符合条件，即认为符合条件。 bit_match：a&b取满足条件a和b的交集。 使用HAVING子句调用查询。
 
 ```
+SELECT uid FROM (
+    SELECT uid, bit_or(bit_construct(
       a := (action='click' AND page='购物车'),
       b := (action='view' AND page='收藏页'))) as uid_mask
     FROM ods_app_dwd
@@ -7693,7 +8010,7 @@ WHERE event_time > '2021-04-03 10:00:00' AND event_time < '2021-04-04 10:00:00' 
 ) t
 ```
 
-##### 1.5.8.3. Roaring Bitmap函数
+##### 1.5.8.3 Roaring Bitmap函数
 
 本文将为您介绍在Hologres中Roaring Bitmap函数的具体参数和使用。
 
@@ -7703,7 +8020,7 @@ Roaring Bitmap是一种高效的Bitmap压缩算法，目前已被广泛应用在
 
 **使用限制**
 
-该函数仅Hologres V0.10及以上版本支持，请在Hologres管控台查看当前实例版本。 Roaring Bitmap函数在使用之前，需要执行以下语句开启extension才可以调用。extension是DB级别的函数，一个DB只需执行一次即可，新建DB需要重新执行。
+在Hologres中使用Roaring Bitmap函数，具体限制如下： 该函数仅Hologres V0.10及以上版本支持，请在Hologres管控台查看当前实例版本。 Roaring Bitmap函数在使用之前，需要执行以下语句开启extension才可以调用。extension是DB级别的函数，一个DB只需执行一次即可，新建DB需要重新执行。
 
 ```
 CREATE EXTENSION roaringbitmap;
@@ -7713,78 +8030,77 @@ CREATE EXTENSION roaringbitmap;
 
 Bitmap函数主要包括的函数及说明如下表所示：
 
-| 函数名 | 输入 | 输出 |  |  | 描述 |  |  | 示例 |  |
+| 函数名 | 输入 | 输出 |   |   | 描述 |   |   | 示例 |   |
 |---|---|---|---|---|---|---|---|---|---|
-| rbbuild _ | integer[] | roaringbitmap |  |  | 通过数组创建一个Bitmap。 |  |  | rb_build('{1,2,3,4,5}') |  |
-|  |  |  |  |  |  |  | 一个 。 |  |  |
-| rband _ | roaringbitmap，roaringbitmap | roaringbitmap |  |  | And计算。 |  |  | rb_and(rb_build('{1,2,3}' |  |
-|  |  |  |  |  |  |  |  | ),rb_build('{3,4,5}')) |  |
-| rbor _ | roaringbitmap，roaringbitmap | roaringbitmap |  |  | Or计算。 |  |  | rb_or(rb_build('{1,2,3}') |  |
-|  |  |  |  |  |  |  |  | ,rb_build('{3,4,5}')) |  |
-| rbxor _ | roaringbitmap，roaringbitmap | roaringbitmap |  |  | Xor计算。 |  |  | rb_xor(rb_build('{1,2,3}' |  |
-|  |  |  |  |  |  |  |  | ),rb_build('{3,4,5}')) |  |
-| rbandnot _ | roaringbitmap，roaringbitmap | roaringbitmap |  |  | AndNot计算。 |  |  | rb_andnot(rb_build('{1,2, |  |
-|  |  |  |  |  |  | 算。 |  | 3}'),rb_build('{3,4,5}')) |  |
-| rbcardinality _ | roaringbitmap | integer |  |  | 统计基数。 |  |  | rb_cardinality(rb_build(' |  |
-|  |  |  |  |  |  |  |  | {1,2,3,4,5}')) |  |
-| rbandcardinality _ _ | roaringbitmap，roaringbitmap | integer |  |  | And计算并返回基数。 |  |  | rb_and_cardinality(rb_bui |  |
-|  |  |  |  |  |  | 返回基数。 |  | ld('{1,2,3}'),rb_build('{3, |  |
-|  |  |  |  |  |  |  |  | 4,5}')) |  |
-| rborcardinality _ _ | roaringbitmap，roaringbitmap | integer |  |  | Or计算并返回基数。 |  |  | rb_or_cardinality(rb_buil |  |
-|  |  |  |  |  |  | 回基数。 |  | d('{1,2,3}'),rb_build('{3,4 |  |
-|  |  |  |  |  |  |  |  | ,5}')) |  |
-| rbxorcardinality _ _ | roaringbitmap，roaringbitmap | integer |  |  | Xor计算并返回基数。 |  |  | rb_xor_cardinality(rb_bui |  |
-|  |  |  |  |  |  | 返回基数。 |  | ld('{1,2,3}'),rb_build('{3, |  |
-|  |  |  |  |  |  |  |  | 4,5}')) |  |
+| rbbuild _ | integer[] | roaringbitmap |   |   | 通过数组创建一个Bitmap。 |   |   | rb_build('{1,2,3,4,5}') |   |
+|   |   |   |   |   |   |   | 一个 。 |   |   |
+| rband _ | roaringbitmap，roaringbitmap | roaringbitmap |   |   | And计算。 |   |   | rb_and(rb_build('{1,2,3}' |   |
+|   |   |   |   |   |   |   |   | ),rb_build('{3,4,5}')) |   |
+| rbor _ | roaringbitmap，roaringbitmap | roaringbitmap |   |   | Or计算。 |   |   | rb_or(rb_build('{1,2,3}') |   |
+|   |   |   |   |   |   |   |   | ,rb_build('{3,4,5}')) |   |
+| rbxor _ | roaringbitmap，roaringbitmap | roaringbitmap |   |   | Xor计算。 |   |   | rb_xor(rb_build('{1,2,3}' |   |
+|   |   |   |   |   |   |   |   | ),rb_build('{3,4,5}')) |   |
+| rbandnot _ | roaringbitmap，roaringbitmap | roaringbitmap |   |   | AndNot计算。 |   |   | rb_andnot(rb_build('{1,2, |   |
+|   |   |   |   |   |   | 算。 |   | 3}'),rb_build('{3,4,5}')) |   |
+| rbcardinality _ | roaringbitmap | integer |   |   | 统计基数。 |   |   | rb_cardinality(rb_build(' |   |
+|   |   |   |   |   |   |   |   | {1,2,3,4,5}')) |   |
+| rbandcardinality _ _ | roaringbitmap，roaringbitmap | integer |   |   | And计算并返回基数。 |   |   | rb_and_cardinality(rb_bui |   |
+|   |   |   |   |   |   | 返回基数。 |   | ld('{1,2,3}'),rb_build('{3, |   |
+|   |   |   |   |   |   |   |   | 4,5}')) |   |
+| rborcardinality _ _ | roaringbitmap，roaringbitmap | integer |   |   | Or计算并返回基数。 |   |   | rb_or_cardinality(rb_buil |   |
+|   |   |   |   |   |   | 回基数。 |   | d('{1,2,3}'),rb_build('{3,4 |   |
+|   |   |   |   |   |   |   |   | ,5}')) |   |
+| rbxorcardinality _ _ | roaringbitmap，roaringbitmap | integer |   |   | Xor计算并返回基数。 |   |   | rb_xor_cardinality(rb_bui |   |
+|   |   |   |   |   |   | 返回基数。 |   | ld('{1,2,3}'),rb_build('{3, |   |
+|   |   |   |   |   |   |   |   | 4,5}')) |   |
 
-实时数仓 Hologres
-
-| rbandnotcardinality _ _ | roaringbitmap，roaringbitmap | integer |  |  | AndNot计算并返回基数。 |  | rb_andnot_cardinality(rb_ |  |
+| rbandnotcardinality _ _ | roaringbitmap，roaringbitmap | integer |   |   | AndNot计算并返回基数。 |   | rb_andnot_cardinality(rb_ |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | 算并返回基数。 | build('{1,2,3}'),rb_build(' |  |
-|  |  |  |  |  |  |  | {3,4,5}')) |  |
-| rbisempty _ _ | roaringbitmap | boolean |  |  | 判断是否为空的Bitmap。 |  | rb_is_empty(rb_build('{1, |  |
-|  |  |  |  |  |  | 空的 。 | 2,3,4,5}')) |  |
-| rbequals _ | roaringbitmap，roaringbitmap | boolean |  |  | 判断两个Bitmap是否相等。 |  | rb_equals(rb_build('{1,2, |  |
-|  |  |  |  |  |  | tmap是否相等。 | 3}'),rb_build('{3,4,5}')) |  |
-| rbintersect _ | roaringbitmap，roaringbitmap | boolean |  |  | 判断两个Bitmap是否相交。 |  | rb_intersect(rb_build('{1 |  |
-|  |  |  |  |  |  | tmap是否相交。 | ,2,3}'),rb_build('{3,4,5}') |  |
-|  |  |  |  |  |  |  | ) |  |
-| rbremove _ | roaringbitmap,integer | roaringbitmap |  |  | 从Bitmap移除特定的Offset。 |  | rb_remove(rb_build('{1,2, |  |
-|  |  |  |  |  |  | 移除特定的 。 | 3}'),3) |  |
-| rbflip _ | roaringbitmap,integer,integer | roaringbitmap |  |  | 翻转Bitmap中特定的Offset段。 |  | rb_flip(rb_build('{1,2,3} |  |
-|  |  |  |  |  |  | 中特定的段。 | '),2,3) |  |
-| rbminimum _ | roaringbitmap | integer |  |  | 返回Bitmap中最小的Offset，如果 Bitmap为空则返回-1。 |  | rb_minimum(rb_build('{1,2 |  |
-|  |  |  |  |  |  | 空则返回-1。 | ,3}')) |  |
-| rbmaximum _ | roaringbitmap | integer |  |  | 返回Bitmap中最大的Offset，如果 Bitmap为空则返回0。 |  | rb_maximum(rb_build('{1,2 |  |
-|  |  |  |  |  |  | 空则返回0。 | ,3}')) |  |
-| rbrank _ | roaringbitmap,integer | integer |  |  | 返回Bitmap中小于等于指定Offset的基数。 |  | rb_rank(rb_build('{1,2,3} |  |
-|  |  |  |  |  |  |  | '),3) |  |
-| rbiterate _ | roaringbitmap | setof integer |  |  | 返回Offset List。 |  | rb_iterate(rb_build('{1,2 |  |
-|  |  |  |  |  |  | 。 | ,3}')) |  |
+|   |   |   |   |   |   | 算并返回基数。 | build('{1,2,3}'),rb_build(' |   |
+|   |   |   |   |   |   |   | {3,4,5}')) |   |
+| rbisempty _ _ | roaringbitmap | boolean |   |   | 判断是否为空的Bitmap。 |   | rb_is_empty(rb_build('{1, |   |
+|   |   |   |   |   |   | 空的 。 | 2,3,4,5}')) |   |
+| rbequals _ | roaringbitmap，roaringbitmap | boolean |   |   | 判断两个Bitmap是否相等。 |   | rb_equals(rb_build('{1,2, |   |
+|   |   |   |   |   |   | tmap是否相等。 | 3}'),rb_build('{3,4,5}')) |   |
+| rbintersect _ | roaringbitmap，roaringbitmap | boolean |   |   | 判断两个Bitmap是否相交。 |   | rb_intersect(rb_build('{1 |   |
+|   |   |   |   |   |   | tmap是否相交。 | ,2,3}'),rb_build('{3,4,5}') |   |
+|   |   |   |   |   |   |   | ) |   |
+| rbremove _ | roaringbitmap,integer | roaringbitmap |   |   | 从Bitmap移除特定的Offset。 |   | rb_remove(rb_build('{1,2, |   |
+|   |   |   |   |   |   | 移除特定的 。 | 3}'),3) |   |
+| rbflip _ | roaringbitmap,integer,integer | roaringbitmap |   |   | 翻转Bitmap中特定的Offset段。 |   | rb_flip(rb_build('{1,2,3} |   |
+|   |   |   |   |   |   | 中特定的段。 | '),2,3) |   |
+| rbminimum _ | roaringbitmap | integer |   |   | 返回Bitmap中最小的Offset，如果 Bitmap为空则返回-1。 |   | rb_minimum(rb_build('{1,2 |   |
+|   |   |   |   |   |   | 空则返回-1。 | ,3}')) |   |
+| rbmaximum _ | roaringbitmap | integer |   |   | 返回Bitmap中最大的Offset，如果 Bitmap为空则返回0。 |   | rb_maximum(rb_build('{1,2 |   |
+|   |   |   |   |   |   | 空则返回0。 | ,3}')) |   |
+| rbrank _ | roaringbitmap,integer | integer |   |   | 返回Bitmap中小于等于指定Offset的基数。 |   | rb_rank(rb_build('{1,2,3} |   |
+|   |   |   |   |   |   |   | '),3) |   |
+| rbiterate _ | roaringbitmap | setof integer |   |   | 返回Offset List。 |   | rb_iterate(rb_build('{1,2 |   |
+|   |   |   |   |   |   | 。 | ,3}')) |   |
 
 **Bitmap聚合函数列表**
 
 Bitmap聚合函数主要包括的函数及说明如下表所示：
 
-| 函数名 | 输入数据类型 | 输出数据类型 | 描述 |  | 示例 |  |
+| 函数名 | 输入数据类型 | 输出数据类型 | 描述 |   | 示例 |   |
 |---|---|---|---|---|---|---|
-| rbbuildagg _ _ | integer | roaringbitmap | 将Offset聚合成bitmap。 |  | rb_build_agg(1) |  |
-| rboragg _ _ | roaringbitmap | roaringbitmap | Or聚合计算。 |  | rb_or_agg(rb_build('{1,2, |  |
-|  |  |  |  | 。 | 3}')) |  |
-| rbandagg _ _ | roaringbitmap | roaringbitmap | And聚合计算。 |  | rb_and_agg(rb_build('{1,2 |  |
-|  |  |  |  | 算。 | ,3}')) |  |
-| rbxoragg _ _ | roaringbitmap | roaringbitmap | Xor聚合计算。 |  | rb_xor_agg(rb_build('{1,2 |  |
-|  |  |  |  | 算。 | ,3}')) |  |
-| rborcardinalityagg _ _ _ | roaringbitmap | integer | Or聚合计算并返回其基数。 |  | rb_or_cardinality_agg(rb_ |  |
-|  |  |  |  | 并返回其基数。 | build('{1,2,3}')) |  |
-| rbandcardinalityagg _ _ _ | roaringbitmap | integer | And聚合计算并返回其基数。 |  | rb_and_cardinality_agg(rb |  |
-|  |  |  |  | 算并返回其基数。 | _build('{1,2,3}')) |  |
-| rbxorcardinalityagg _ _ _ | roaringbitmap | integer | Xor聚合计算并返回其基数。 |  | rb_xor_cardinality_agg(rb |  |
-|  |  |  |  | 算并返回其基数。 | _build('{1,2,3}')) |  |
+| rbbuildagg _ _ | integer | roaringbitmap | 将Offset聚合成bitmap。 |   | rb_build_agg(1) |   |
+| rboragg _ _ | roaringbitmap | roaringbitmap | Or聚合计算。 |   | rb_or_agg(rb_build('{1,2, |   |
+|   |   |   |   | 。 | 3}')) |   |
+| rbandagg _ _ | roaringbitmap | roaringbitmap | And聚合计算。 |   | rb_and_agg(rb_build('{1,2 |   |
+|   |   |   |   | 算。 | ,3}')) |   |
+| rbxoragg _ _ | roaringbitmap | roaringbitmap | Xor聚合计算。 |   | rb_xor_agg(rb_build('{1,2 |   |
+|   |   |   |   | 算。 | ,3}')) |   |
+| rborcardinalityagg _ _ _ | roaringbitmap | integer | Or聚合计算并返回其基数。 |   | rb_or_cardinality_agg(rb_ |   |
+|   |   |   |   | 并返回其基数。 | build('{1,2,3}')) |   |
+| rbandcardinalityagg _ _ _ | roaringbitmap | integer | And聚合计算并返回其基数。 |   | rb_and_cardinality_agg(rb |   |
+|   |   |   |   | 算并返回其基数。 | _build('{1,2,3}')) |   |
+| rbxorcardinalityagg _ _ _ | roaringbitmap | integer | Xor聚合计算并返回其基数。 |   | rb_xor_cardinality_agg(rb |   |
+|   |   |   |   | 算并返回其基数。 | _build('{1,2,3}')) |   |
 
 **使用示例**
 
+如下内容将为您介绍Roaring Bitmap函数完整的使用示例。
 1. 加载RoaringBitmap函数插件。
 
 ```
@@ -7799,33 +8115,38 @@ CREATE TABLE public.t1 (id integer, bitmap roaringbitmap);
 ```
 
 3. 使用rb_build函数插入RoaringBitmap的数据。
-`--`数组位置对应的`BIT`值为1
+`--`数组位置对应的`BIT`值为`1`
 
 ```
 INSERT INTO public.t1 SELECT 1,RB_BUILD(ARRAY[1,2,3,4,5,6,7,8,9,200]);
 ```
 
-`--`将输入的多条记录的值对应位置的`BIT`值设置为1，最后聚合为一个`RoaringBitmap`
+`--`将输入的多条记录的值对应位置的`BIT`值设置为`1`，最后聚合为一个`RoaringBitmap`
 
 ```
 INSERT INTO public.t1 SELECT 2,RB_BUILD_AGG(e) FROM GENERATE_SERIES(1,100) e;
 ```
 
 4. 进行Bitmap计算（OR、AND、XOR、ANDNOT）。
-实时数仓 Hologres
 
 ```
-FROM (
+SELECT RB_OR(a.bitmap,b.bitmap) FROM (
+            SELECT  bitmap
             FROM    public.t1
             WHERE   id = 1
         ) AS a
-        ,(
+```
+
+`,(`
+
+```
+            SELECT  bitmap
             FROM    public.t1
             WHERE   id = 2
         ) AS b
-;
 ```
 
+;
 5. 进行Bitmap聚合计算（OR、AND、XOR、BUILD），并生成新的RoaringBitmap类型。
 
 ```
@@ -7844,9 +8165,9 @@ SELECT RB_CARDINALITY(bitmap) FROM public.t1;
 SELECT RB_ITERATE(bitmap) FROM public.t1 WHERE id = 1;
 ```
 
-#### 1.5.9. 聚合函数
+#### 1.5.9 聚合函数
 
-##### 1.5.9.1. APPROX_COUNT_DISTINCT
+##### 1.5.9.1 APPROX_COUNT_DISTINCT
 
 APPROX_COUNT_DISTINCT是聚合函数。本文为您介绍在实时数仓Hologres中APPROX_COUNT_DISTINCT函数的用法。
 
@@ -7854,7 +8175,7 @@ APPROX_COUNT_DISTINCT是聚合函数。本文为您介绍在实时数仓Hologres
 
 | APPROX_COUNT_DISTINCT | 函数用于计算某一列去重后的行数，结果只能返回一个值，并且该值为近似值。 |
 |---|---|
-| APPROX_COUNT_DISTINCT ( <column> ) |  |
+| APPROX_COUNT_DISTINCT ( <column> ) |   |
 
 参数说明如下表所示。
 
@@ -7894,19 +8215,19 @@ ALTER DATABASE dbname SET hg_experimental_approx_count_distinct_precision = 20; 
 SET hg_experimental_approx_count_distinct_precision = 20; SELECT APPROX_COUNT_DISTINCT ( O_CUSTKEY ) FROM ORDERS;
 ```
 
-##### 1.5.9.2. UNIQ
+##### 1.5.9.2 UNIQ
 
 UNIQ是计算非重复值个数的聚合函数，与COUNT DISTINCT函数类似，本文为您介绍在Hologres如何使用UNIQ函数。
 
 **使用限制**
 
-实时数仓 Hologres 仅Hologres V1.3及以上版本支持使用UNIQ函数。
+仅Hologres V1.3及以上版本支持使用UNIQ函数。
 
 **语法**
 
 | UNIQ | 函数用于计算某一列去重后的行数，结果返回一个去重值。 |
 |---|---|
-| UNIQ ( < column > ); |  |
+| UNIQ ( < column > ); |   |
 
 参数说明如下。
 
@@ -7930,7 +8251,7 @@ SELECT UNIQ ( O_CUSTKEY ) FROM ORDERS;
 SELECT O_ORDERSTATUS, UNIQ ( O_CUSTKEY ) FROM ORDERS GROUP BY O_ORDERSTATUS;
 ```
 
-##### 1.5.9.3. MAX_BY与MIN_BY
+##### 1.5.9.3 MAX_BY与MIN_BY
 
 Hologres从V1.3.36版本开始支持MAX_BY与MIN_BY函数，用于获取当某一列（y列）的值为最大值或最小值时，对应着的另外一列（x列）的取值。本文为您介绍MAX_BY 与MIN_BY函数的用法。
 
@@ -7942,9 +8263,7 @@ Hologres从V1.3.36版本开始支持MAX_BY与MIN_BY函数，用于获取当某�
 
 MAX_BY与MIN_BY函数用于比较某一列（y列）取值的大小，当y列取值为最大值或最小值时，返回对应着的另外一列（x列）的取值。语法如下。
 
-**说明**
-
-数字类型按数字大小进行比较，非数字类型按照字典排序进行比较。
+> **说明：** 数字类型按数字大小进行比较，非数字类型按照字典排序进行比较。
 
 ```
 MAX_BY(x, y); MIN_BY(x, y);
@@ -7962,32 +8281,39 @@ MAX_BY(x, y); MIN_BY(x, y);
 **示例数据**
 
 ```
-DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS test; CREATE TABLE IF NOT EXISTS test (
     id int,
     name text,
     cost int
+```
+
 );
+
+```
+INSERT INTO test
     VALUES (1, 'a', 100), (1, 'aa', 200), (1, 'aaa', 300), (2, 'b', 150), (2, 'bb', 300), (3, 'c', 150), (3, 'cc', 50);
 ```
 
 **示例**
 
-使用 `MAX_BY` 函数，通过 `GROUP BY` 对**id**进行分组，查询每组**cost**最大值对应的**name**值。示例语句如下。 实时数仓 Hologres
+使用 `MAX_BY` 函数，通过 `GROUP BY` 对**id**进行分组，查询每组**cost**最大值对应的**name**值。示例语句如下。
 
-| SELECT id, max_by(name, cost) FROM test GROUP BY id; id \| max_by ----+-------- 2 \| bb 1 \| aaa 3 \| c (3 rows) |  |  |
+| SELECT id, max_by(name, cost) FROM test GROUP BY id; id \| max_by ----+-------- 2 \| bb 1 \| aaa 3 \| c (3 rows) |   |   |
 |---|---|---|
 | 使用 | MAX_BY | 函数，查询cost最大值（存在多个）对应的name值。示例语句如下。 |
-| select max_by(name, cost) from test; max_by -------- bb (1 row) |  |  |
+| select max_by(name, cost) from test; max_by -------- bb (1 row) |   |   |
 | 使用 | MIN_BY | 函数，查询cost最小值对应的name值。示例语句如下。 |
-| SELECT min_by(name, cost) FROM test; min_by -------- cc (1 row) |  |  |
+| SELECT min_by(name, cost) FROM test; min_by -------- cc (1 row) |   |   |
 
-#### 1.5.10. 账号与安全函数
+#### 1.5.10 账号与安全函数
 
-##### 1.5.10.1. USER_DISPLAY_NAME
+##### 1.5.10.1 USER_DISPLAY_NAME
 
 USER_DISPLAY_NAME用于转换Hologres账号为邮箱形式或RAM形式的阿里云账号。本文为您介绍在实时数仓Hologres中USER_DISPLAY_NAME的用法。
 
 **命令语法**
+
+USER_DISPLAY_NAME的命令语法如下所示：
 
 ```
 SELECT user_display_name (user_name);
@@ -8011,7 +8337,7 @@ SELECT user_display_name (user_name);
 SELECT user_display_name ('13532241323xxx'); SELECT rolname, user_display_name(rolname) FROM pg_roles;
 ```
 
-##### 1.5.10.2. HG_DISPLAY_NAME_TO _ID
+##### 1.5.10.2 HG_DISPLAY_NAME_TO _ID
 
 HG_DISPLAY_NAME_TO _ID用于转换阿里云账号ID为Hologres账号。本文为您介绍在实时数仓Hologres中HG_DISPLAY_NAME_TO _ID的用法。
 
@@ -8037,11 +8363,11 @@ SELECT hg_display_name_to_id (aliyun_id);
 SELECT hg_display_name_to_id ('RAM$main:subuser');
 ```
 
-实时数仓 Hologres
+#### 1.5.11 Hive兼容函数
 
-#### 1.5.11. Hive兼容函数
+##### 1.5.11.1 JSON函数
 
-##### 1.5.11.1. JSON函数
+本文为您介绍实时数仓Hologres相关的JSON函数。
 
 **GET_JSON_OBJECT**
 
@@ -8060,14 +8386,14 @@ CREATE EXTENSION IF NOT EXISTS hive_compatible SCHEMA <schema_name>; SELECT get_
 
 示例准备示例数据。
 
-| --创建Extension CREATE EXTENSION IF NOT EXISTS hive_compatible SCHEMA pg_catalog; --准备示例数据 BEGIN; CREATE TABLE hive_json_example ( col_json text ); COMMIT; INSERT INTO hive_json_example VALUES ('{"store":{"fruit":[{"weight":8,"type":"apple"}, {"weight":9,"type":"pear"}],"bicycle": {"price":19.95,"color":"red"}},"email":"amy@only_for_json_udf_test.net","owner":"amy"}'); |  |  |  |  |  |  |  |  |  |
+| --创建Extension CREATE EXTENSION IF NOT EXISTS hive_compatible SCHEMA pg_catalog; --准备示例数据 BEGIN; CREATE TABLE hive_json_example ( col_json text ); COMMIT; INSERT INTO hive_json_example VALUES ('{"store":{"fruit":[{"weight":8,"type":"apple"}, {"weight":9,"type":"pear"}],"bicycle": {"price":19.95,"color":"red"}},"email":"amy@only_for_json_udf_test.net","owner":"amy"}'); |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| 示例1：从 col_json 列中查询JSON对象中 $.owner 路径下的数据。 --返回结果为：amy SELECT get_json_object (col_json, '$.owner') FROM hive_json_example; 示例2：从 col_json 列中查询JSON对象中 $.store.bicycle.price 路径下的数据。 --返回结果为：19.95 SELECT get_json_object (col_json, '$.store.bicycle.price') FROM hive_json_example; 示例3：从 col_json 列中查询JSON对象中 $.store.fruit 路径下 fruit 数组的第一个元素（索引为0）。 -- 返回结果为：{"weight":8, "type":"apple"} SELECT get_json_object (col_json, '$.store.fruit[0]') FROM hive_json_example; |  | col_json | 列中查询JSON对象中 | $.owner | 路径下的数据。 |  |  |  |  |
-|  | --返回结果为：amy SELECT get_json_object (col_json, '$.owner') FROM hive_json_example; |  |  |  |  |  |  |  |  |
-|  |  | col_json | 列中查询JSON对象中 | $.store.bicycle.price |  |  |  | 路径下的数据。 |  |
-|  | --返回结果为：19.95 SELECT get_json_object (col_json, '$.store.bicycle.price') FROM hive_json_example; |  |  |  |  |  |  |  |  |
-|  |  | col_json | 列中查询JSON对象中 | $.store.fruit |  | 路径下 | fruit |  | 数组的第一个元素（索引为0）。 |
-|  | -- 返回结果为：{"weight":8, "type":"apple"} SELECT get_json_object (col_json, '$.store.fruit[0]') FROM hive_json_example; |  |  |  |  |  |  |  |  |
+| 示例1：从 col_json 列中查询JSON对象中 $.owner 路径下的数据。 --返回结果为：amy SELECT get_json_object (col_json, '$.owner') FROM hive_json_example; 示例2：从 col_json 列中查询JSON对象中 $.store.bicycle.price 路径下的数据。 --返回结果为：19.95 SELECT get_json_object (col_json, '$.store.bicycle.price') FROM hive_json_example; 示例3：从 col_json 列中查询JSON对象中 $.store.fruit 路径下 fruit 数组的第一个元素（索引为0）。 -- 返回结果为：{"weight":8, "type":"apple"} SELECT get_json_object (col_json, '$.store.fruit[0]') FROM hive_json_example; |   | col_json | 列中查询JSON对象中 | $.owner | 路径下的数据。 |   |   |   |   |
+|   | --返回结果为：amy SELECT get_json_object (col_json, '$.owner') FROM hive_json_example; |   |   |   |   |   |   |   |   |
+|   |   | col_json | 列中查询JSON对象中 | $.store.bicycle.price |   |   |   | 路径下的数据。 |   |
+|   | --返回结果为：19.95 SELECT get_json_object (col_json, '$.store.bicycle.price') FROM hive_json_example; |   |   |   |   |   |   |   |   |
+|   |   | col_json | 列中查询JSON对象中 | $.store.fruit |   | 路径下 | fruit |   | 数组的第一个元素（索引为0）。 |
+|   | -- 返回结果为：{"weight":8, "type":"apple"} SELECT get_json_object (col_json, '$.store.fruit[0]') FROM hive_json_example; |   |   |   |   |   |   |   |   |
 
 示例4：查看非JSON对象变量的数据。 `--`返回值为：`NULL`
 
@@ -8083,16 +8409,28 @@ ROW_TO_JSON函数支持将多个字符串或列（最多50列）拼接成一个J
 
 **说明**
 
-仅Hologres V1.3及以上版本支持ROW_TO_JSON函数，若想要使用该函数您可以通过加入实时数仓Hologres交流群申请升级实例或实例升级，加群方式请参见如何获取更多的在线支持？。 语法实时数仓 Hologres 参数说明 record：是一个行类型的参数，可以是表名、视图名或者查询结果。 示例 `--`准备测试数据
+仅Hologres V1.3及以上版本支持ROW_TO_JSON函数，若想要使用该函数您可以通过加入实时数仓Hologres交流群申请升级实例或实例升级，加群方式请参见如何获取更多的在线支持？。 语法
 
 ```
+SELECT ROW_TO_JSON(record)
+```
+
+参数说明 record：是一个行类型的参数，可以是表名、视图名或者查询结果。 示例 `--`准备测试数据
+
+```
+CREATE TABLE interests_test (
     name text,
     intrests text
+```
+
 );
+
+```
+INSERT INTO interests_test
   VALUES
 ```
 
-`('`张三`', '`唱歌,跳舞`'), ('`李四`', '`踢球,跑步,画画`'), ('`王五`', '`插花,书法,弹琴,睡觉');
+`('`张三`', '`唱歌`,`跳舞`'), ('`李四`', '`踢球`,`跑步`,`画画`'), ('`王五`', '`插花`,`书法`,`弹琴`,`睡觉');
 
 ```
     ROW_TO_JSON(t)
@@ -8109,13 +8447,13 @@ Hologres从V1.3.52版本开始，JSON中的Key支持根据列名生成。 V1.3.5
 row_to_json ------------------------------
 ```
 
-`{"f1":"`张三`","f2":"`唱歌,跳舞`"}` `{"f1":"`李四`","f2":"`踢球,跑步,画画`"}` `{"f1":"`王五`","f2":"`插花,书法,弹琴,睡觉`"}` V1.3.52及以上版本返回结果如下。
+`{"f1":"`张三`","f2":"`唱歌`,`跳舞`"}` `{"f1":"`李四`","f2":"`踢球`,`跑步`,`画画`"}` `{"f1":"`王五`","f2":"`插花`,`书法`,`弹琴`,`睡觉`"}` V1.3.52及以上版本返回结果如下。
 
 ```
 row_to_json ------------------------------
 ```
 
-`"{"name" : "`王五`", "intrests" : "`插花,书法,弹琴,睡觉`"}"` `"{"name" : "`张三`", "intrests" : "`唱歌,跳舞`"}"` `"{"name" : "`李四`", "intrests" : "`踢球,跑步,画画`"}"`
+`"{"name" : "`王五`", "intrests" : "`插花`,`书法`,`弹琴`,`睡觉`"}"` `"{"name" : "`张三`", "intrests" : "`唱歌`,`跳舞`"}"` `"{"name" : "`李四`", "intrests" : "`踢球`,`跑步`,`画画`"}"`
 
 **常见报错**
 
@@ -8123,7 +8461,7 @@ row_to_json ------------------------------
 报错： ERROR：function get_json_object (text, unknown) does not exist 。
 ```
 
-可能原因一在SLPM模式下RAM用户没有创建extension所在Schema的查询权限（例如extension指定创建在名称为**public**的Schema下，RAM用户没有**public**的查询权限）。 解决方法一使用如下命令重新创建extension在**pg_catalog**下，所有账号都可查询。
+可能原因一在SLPM模式下RAM用户没有创建extension所在Schema的查询权限（例如extension指定创建在名称为**public**的Schema下，RAM用户没有**public**的查询权限）。 解决方法一授予RAM用户Schema的查询权限。 使用如下命令重新创建extension在**pg_catalog**下，所有账号都可查询。
 
 ```
 DROP EXTENSION hive_compatible; CREATE EXTENSION hive_compatible schema pg_catalog;
@@ -8137,9 +8475,9 @@ DROP EXTENSION hive_compatible; CREATE EXTENSION hive_compatible schema pg_catal
 
 可能原因一 GET_JSON_OBJECT的第一个参数是常量。 解决方法一第一个参数使用表的列。 可能原因二 GET_JSON_OBJECT的第一个参数含有为NULL的值。 解决方法二将第一个参数为NULL的值删除。
 
-#### 1.5.12. MaxCompute兼容函数
+#### 1.5.12 MaxCompute兼容函数
 
-##### 1.5.12.1. 最大分区函数
+##### 1.5.12.1 最大分区函数
 
 MAX_PT用于查询实时数仓Hologres表最大的分区表名称。
 
@@ -8149,7 +8487,7 @@ MAX_PT用于查询实时数仓Hologres表最大的分区表名称。
 SELECT MAX_PT('<table_name>');
 ```
 
-参数说明如下表所示。 实时数仓 Hologres
+参数说明如下表所示。
 
 | 参数 | 描述 |
 |---|---|
@@ -8161,16 +8499,16 @@ SELECT MAX_PT('<table_name>');
 SELECT MAX_PT('holo_table');
 ```
 
-#### 1.5.13. 工具函数
+#### 1.5.13 工具函数
 
-##### 1.5.13.1. HG_SHARD_ID_FOR_DISTRIBUTION_KEY
+##### 1.5.13.1 HG_SHARD_ID_FOR_DISTRIBUTION_KEY
 
-HG_SHARD_ID_FOR_DISTRIBUTION_KEY用于获取指定键或组合键的数据片ID（Shard ID）。本文为您介绍在实时数仓Hologres中
+HG_SHARD_ID_FOR_DISTRIBUTION_KEY用于获取指定键或组合键的数据片ID（Shard ID）。本文为您介绍在实时数仓Hologres中 HG_SHARD_ID_FOR_DISTRIBUTION_KEY的用法。
 
 **命令语法**
 
 ```
-SELECT HG_SHARD_ID_FOR_DISTRIBUTION_KEY ( 'schemaname.tablename' , columnname [...] ] )
+SELECT HG_SHARD_ID_FOR_DISTRIBUTION_KEY ( 'schemaname.tablename' , columnname [...] ] ) FROM schemaname.tablename
 ```
 
 **参数说明**
@@ -8204,15 +8542,15 @@ SELECT HG_SHARD_ID_FOR_DISTRIBUTION_KEY ( 'public.lineitem', l_shipmode) FROM pu
 ---------------------------------- (10 rows)
 ```
 
-##### 1.5.13.2. HG_UPDATE_DATABASE_PROPERTY
+##### 1.5.13.2 HG_UPDATE_DATABASE_PROPERTY
 
 HG_UPDATE_DATABASE_PROPERTY用于更新数据库的属性。本文为您介绍在实时数仓Hologres中HG_UPDATE_DATABASE_PROPERTY的用法。
 
 **使用限制**
 
-| HG_UPDATE_DATABASE_PROPERTY |  | 更改默认Table Group的s |
+| HG_UPDATE_DATABASE_PROPERTY |   | 更改默认Table Group的s |
 |---|---|---|
-| 和数据库的Owner可以调用 | HG_UPDATE_DATABASE_PROPERTY |  |
+| 和数据库的Owner可以调用 | HG_UPDATE_DATABASE_PROPERTY |   |
 
 **语法**
 
@@ -8225,8 +8563,6 @@ CALL HG_UPDATE_DATABASE_PROPERTY ( 'property', 'value' );
 | 参数 | 描述 |
 |---|---|
 
-实时数仓 Hologres
-
 | property | 属性名称 |
 |---|---|
 | value | 属性值 |
@@ -8235,13 +8571,15 @@ CALL HG_UPDATE_DATABASE_PROPERTY ( 'property', 'value' );
 
 | 示例是将默认Table Group的shard count设置为 | 120 | ，语句如下。 |
 |---|---|---|
-| CALL HG_UPDATE_DATABASE_PROPERTY ( 'shard_count', '120' ); |  |  |
+| CALL HG_UPDATE_DATABASE_PROPERTY ( 'shard_count', '120' ); |   |   |
 
-##### 1.5.13.3. SET_TABLE_PROPERTY
+##### 1.5.13.3 SET_TABLE_PROPERTY
+
+本文为您介绍在实时数仓Hologres中SET_TABLE_PROPERTY的用法。
 
 **函数概述**
 
-SET_TABLE_PROPERTY用于设置表的属性，包括索引、分布列、行存储、列存储以及生命周期等属性。如果您需要对创建的表进行修改、更新和删除，具体操作请参
+SET_TABLE_PROPERTY用于设置表的属性，包括索引、分布列、行存储、列存储以及生命周期等属性。如果您需要对创建的表进行修改、更新和删除，具体操作请参见ALTER TABLE或DROP TABLE。
 
 **命令格式**
 
@@ -8253,9 +8591,12 @@ CALL SET_TABLE_PROPERTY ( table_name, property, value ) WHERE PROPERTY IN
   bitmap_columns
   dictionary_encoding_columns
   time_to_live_in_seconds
+  distribution_key
 ```
 
 **参数说明**
+
+SET_TABLE_PROPERTY参数说明如下表所示。
 
 | 参数 | 描述 |
 |---|---|
@@ -8272,10 +8613,8 @@ CALL SET_TABLE_PROPERTY ( table_name, property, value ) WHERE PROPERTY IN
 
 **使用示例**
 
-实时数仓 Hologres
-
 ```
-BEGIN;
+BEGIN; CREATE TABLE ORDERS (
   O_ORDERKEY              INTEGER NOT NULL,
   O_CUSTKEY        INTEGER NOT NULL,
   O_ORDERSTATUS    TEXT NOT NULL,
@@ -8288,7 +8627,7 @@ BEGIN;
 CALL SET_TABLE_PROPERTY ('ORDERS', 'clustering_key', 'O_ORDERKEY:asc,O_CUSTKEY:asc'); CALL SET_TABLE_PROPERTY ('ORDERS', 'segment_key', 'O_ORDERDATE'); CALL SET_TABLE_PROPERTY ('ORDERS', 'bitmap_columns', 'O_ORDERSTATUS,O_ORDERPRIORITY,O_CLERK,O_SHIPPRIORITY'); CALL SET_TABLE_PROPERTY ('ORDERS', 'dictionary_encoding_columns', 'O_ORDERSTATUS,O_ORDERPRIORITY,O_CLERK,O_SHIPPRIORITY'); CALL SET_TABLE_PROPERTY ('ORDERS', 'time_to_live_in_seconds', '172800'); COMMIT;
 ```
 
-##### 1.5.13.4. HG_CREATE_TABLE_LIKE
+##### 1.5.13.4 HG_CREATE_TABLE_LIKE
 
 本文将为您介绍在实时数仓Hologres中HG_CREATE_TABLE_LIKE函数的具体用法，包括函数简介、参数说明和使用示例，方便您快速了解和使用。
 
@@ -8304,20 +8643,20 @@ CALL HG_CREATE_TABLE_LIKE ( 'table_name', 'query_sql' [, 'partition_clause'])
 
 | HG CREATE TABLE LIKE函数的参数包括 _ _ _ | table_name | 、 | query_sql | 、 | partition_clause | ，具体说明如下表所示。 |
 |---|---|---|---|---|---|---|
-| 参数 | 描述 |  |  |  |  |  |
-| tablename _ | 表名称。您也可以使用Schema限定表名称。 表名称只能是小写英文字母（a~z）、大写英文字母（A~Z）、数字以及下划线（_）的组合，并且以字母开头。 如果表名称有特殊字符，则需要使用双引号（""）转义。由于系统对大小写不敏感，大写字母（A~Z）会被认为是小写字母（a~z）。 |  |  |  |  |  |
-| querysql _ | 执行查询的SQL语句。如果SQL语句中有较多单引号，您可以根据实际使用情况通过如下方式对单引号进行转义： 使用终端或者JDBC等开发工具，推荐您按照如下示例，在SQL语句前后添加两个美元符号（$$），通过 $$query_sql$$ 改写，实现单引号转义。 CALL HG_CREATE_TABLE_LIKE ('table_name', $$query_sql$$ [, 'partition_clause']) 使用HoloWeb中的SQL编辑器，请对SQL语句单引号中的内容再加单引号进行转义。 |  |  |  |  |  |
-| partitionclause _ | 分区表的分区子句。该参数为可选参数。 |  |  |  |  |  |
+| 参数 | 描述 |   |   |   |   |   |
+| tablename _ | 表名称。您也可以使用Schema限定表名称。 表名称只能是小写英文字母（a~z）、大写英文字母（A~Z）、数字以及下划线（_）的组合，并且以字母开头。 如果表名称有特殊字符，则需要使用双引号（""）转义。由于系统对大小写不敏感，大写字母（A~Z）会被认为是小写字母（a~z）。 |   |   |   |   |   |
+| querysql _ | 执行查询的SQL语句。如果SQL语句中有较多单引号，您可以根据实际使用情况通过如下方式对单引号进行转义： 使用终端或者JDBC等开发工具，推荐您按照如下示例，在SQL语句前后添加两个美元符号（$$），通过 $$query_sql$$ 改写，实现单引号转义。 CALL HG_CREATE_TABLE_LIKE ('table_name', $$query_sql$$ [, 'partition_clause']) 使用HoloWeb中的SQL编辑器，请对SQL语句单引号中的内容再加单引号进行转义。 |   |   |   |   |   |
+| partitionclause _ | 分区表的分区子句。该参数为可选参数。 |   |   |   |   |   |
 
 **使用示例**
 
-创建一个普通表
+如下示例将指导您使用HG_CREATE_TABLE_LIKE函数进行一些简单操作。 创建一个普通表 `//`将`holotest`表的`a`、`b`字段生成表`my_table`。
 
 ```
 CALL HG_CREATE_TABLE_LIKE ('my_table', 'select a, b from holotest');
 ```
 
-创建一个分区表
+创建一个分区表 `//`将`holotest`表的`a`、`b`字段生成表`my_table`，并且`a`为分区字段。
 
 ```
 CALL HG_CREATE_TABLE_LIKE ('my_table', 'select a, b from holotest', 'partition by list (a)' );
@@ -8325,16 +8664,16 @@ CALL HG_CREATE_TABLE_LIKE ('my_table', 'select a, b from holotest', 'partition b
 
 使用单引号对查询语句单引号中的内容进行转义
 
-| CALL HG_CREATE_TABLE_LIKE ('holo_table', 'select id,name from my_test where ds =''2020-10-10''' ); |  |  |
+| CALL HG_CREATE_TABLE_LIKE ('holo_table', 'select id,name from my_test where ds =''2020-10-10''' ); |   |   |
 |---|---|---|
 | 使用 | $$query_sql$$ | 对单引号进行转义 |
-| CALL HG_CREATE_TABLE_LIKE ('holo_table', $$select id,name from my_test where ds ='2020-10-10'$$ ); |  |  |
+| CALL HG_CREATE_TABLE_LIKE ('holo_table', $$select id,name from my_test where ds ='2020-10-10'$$ ); |   |   |
 
-### DDL
+### 1.6 DDL
 
-#### 1.6.1. DATABASE
+#### 1.6.1 DATABASE
 
-##### 1.6.1.1. CREATE DATABASE
+##### 1.6.1.1 CREATE DATABASE
 
 CREATE DATABASE语句用于创建数据库。本文介绍在Hologres中CREATE DATABASE的用法。
 
@@ -8342,11 +8681,10 @@ CREATE DATABASE语句用于创建数据库。本文介绍在Hologres中CREATE DA
 
 **使用说明**
 
-创建Hologres数据库。 实时数仓 Hologres
+创建Hologres数据库。
 
-**说明**
-
-开通Hologres实例后，系统自动创建**postgres**数据库。该数据库分配到的资源较少，仅用于管理，开发实际业务建议您新建数据库。 Superuser可以为其他用户创建数据库，并授权该用户为新数据库的Owner，方便用户自行管理和配置该数据库。
+> **说明：** 开通Hologres实例后，系统自动创建**postgres**数据库。该数据库分配到的资源较少，仅用于管理，开发实际业务建议您新建数据库。
+> Superuser可以为其他用户创建数据库，并授权该用户为新数据库的Owner，方便用户自行管理和配置该数据库。
 
 **函数语法**
 
@@ -8364,7 +8702,7 @@ db_name：必填，创建的数据库名称，遵循SQL标识符的一般规则�
 CREATE DATABASE testdb;
 ```
 
-##### 1.6.1.2. ALTER DATABASE
+##### 1.6.1.2 ALTER DATABASE
 
 ALTER DATABASE语句用于修改数据库。本文介绍在Hologres中ALTER DATABASE的用法。
 
@@ -8399,7 +8737,7 @@ ALTER DATABASE <dbname> SET configuration_parameter { TO | = } { value | DEFAULT
 ALTER DATABASE postgres SET timezone='GMT+8:00';
 ```
 
-##### 1.6.1.3. DROP DATABASE
+##### 1.6.1.3 DROP DATABASE
 
 DROP DATABASE语句用于删除数据库。本文介绍在Hologres中DROP DATABASE的用法。
 
@@ -8429,35 +8767,58 @@ db_name：必填，需要被删除的数据库名称。
 DROP DATABASE mydb;
 ```
 
-实时数仓 Hologres
+#### 1.6.2 SCHEMA
 
-#### 1.6.2. SCHEMA
-
-##### 1.6.2.1. CREATE SCHEMA
+##### 1.6.2.1 CREATE SCHEMA
 
 Hologres支持跨Schema创建表。本文为您介绍如何在Hologres中创建Schema，以及跨Schema创建表。
 
 **背景信息**
 
-Hologres兼容PostgreSQL，支持的Schema功能与PostgreSQL相同。 Hologres新增Schema功能后，表的存储结构由 `database.table` 变为 `database.schema.table` 。 Hologres当前版本主要支持创建Schema、重命名Schema以及在Schema中创建表等功能。 在Hologres中，每张表归属于一个Schema，一个数据库可以包含多个Schema，方便您管理。同时，多个用户使用同一个数据库时不会互相干扰。 创建数据库时系统默认创建一个**public** Schema。如果您不创建其它Schema，则在该数据库创建的所有表默认存储在**public** Schema中。您可以执行以下语句查看当前 Hologres实例对象的层级关系如下图所示。
+Hologres兼容PostgreSQL，支持的Schema功能与PostgreSQL相同。 Hologres新增Schema功能后，表的存储结构由 `database.table` 变为 `database.schema.table` 。 Hologres当前版本主要支持创建Schema、重命名Schema以及在Schema中创建表等功能。 在Hologres中，每张表归属于一个Schema，一个数据库可以包含多个Schema，方便您管理。同时，多个用户使用同一个数据库时不会互相干扰。 不同的Schema可以包含相同的表名称或数据类型。 创建数据库时系统默认创建一个**public** Schema。如果您不创建其它Schema，则在该数据库创建的所有表默认存储在**public** Schema中。您可以执行以下语句查看当前 Schema。
+
+```
+select current_schema(); //查看当前Schema。
+```
+
+\d tablename; //查看目标表所属的`Schema`。该语句只适用于终端。 Hologres实例对象的层级关系如下图所示。
 
 **操作步骤**
 
 1. 创建Schema。
-2. 跨Schema创建表。
-您可以使用 `schema.table` 语句，添加Schema名称至表名称之前，即可跨Schema创建表。具体如下：
+在数据库中创建Schema的示例SQL语句如下。
 
 ```
+create schema schemaname; //创建Schema。 set search_path to schemaname; //切换至目标Schema。
+```
+
+create table blink_demo (id text); //在目标`Schema`中创建表。
+
+```
+select current_schema(); //查看当前Schema。
+```
+
+2. 跨Schema创建表。
+您可以使用 `schema.table` 语句，添加Schema名称至表名称之前，即可跨Schema创建表。具体如下： 在目标Schema中为**public** Schema创建表。示例SQL语句如下。
+
+```
+create table public.mytest (
   name text,
   id int);
-set search_path to public;
+```
+
+在**public** Schema中为目标Schema创建表。示例SQL语句如下。
+
+```
+set search_path to public; create table my_schema.mytest (
   name text,
   id int,
   age int
-);
 ```
 
-##### 1.6.2.2. ALTER SCHEMA
+);
+
+##### 1.6.2.2 ALTER SCHEMA
 
 ALTER SCHEMA语句用于修改数据库中的模式。本文为您介绍ALTER SCHEMA的用法及使用限制。
 
@@ -8467,7 +8828,7 @@ ALTER SCHEMA语句用于修改数据库中的模式。本文为您介绍ALTER SC
 
 **语法**
 
-修改模式名称的SQL语句如下。 实时数仓 Hologres
+修改模式名称的SQL语句如下。
 
 ```
 ALTER SCHEMA oldschema RENAME TO newschema;
@@ -8479,7 +8840,9 @@ ALTER SCHEMA oldschema RENAME TO newschema;
 ALTER SCHEMA my_schema RENAME TO new_schema;
 ```
 
-##### 1.6.2.3. IMPORT FOREIGN SCHEMA
+SET search_path TO new_schema; --进入重命名的`Schema`。
+
+##### 1.6.2.3 IMPORT FOREIGN SCHEMA
 
 IMPORT FOREIGN SCHEMA语句用于批量创建外部表。本文为您介绍IMPORT FOREIGN SCHEMA语句的用法和使用限制。
 
@@ -8492,7 +8855,10 @@ IMPORT FOREIGN SCHEMA语句用于批量创建外部表。本文为您介绍IMPOR
 语法如下。
 
 ```
+IMPORT FOREIGN SCHEMA remote_schema
+    [ { LIMIT TO | EXCEPT } ( table_name [, ...] ) ]
     FROM SERVER server_name
+    INTO local_schema
     [ OPTIONS ( option 'value' [, ... ] ) ]
 ```
 
@@ -8506,16 +8872,20 @@ IMPORT FOREIGN SCHEMA语句用于批量创建外部表。本文为您介绍IMPOR
 | localschema _ | Hologres外部表所在的schema名（如public）。 |
 | options | Hologres支持如下两个option： if _table _exist：表示导入时已经存在该表。取值如下： error：默认值，表示已有同名外部表，不再重复创建。 ignore：忽略该同名表，跳过该表的导入，使导入的表不重复。 update：更新并重新导入该表。 if _unsupported _type：表示导入的外部表中存在Hologres不支持的数据类型。取值如下： error：报错，导入失败， 并提示哪些表存在不支持的类型。 skip：默认值，表示跳过导入的存在不支持类型的表，并提示哪些表被跳过。 |
 
-**说明**
-
-Hologres仅支持创建MaxCompute外部表。新建的外部表名称需要同MaxCompute表的名称一致。
+> **说明：** Hologres仅支持创建MaxCompute外部表。新建的外部表名称需要同MaxCompute表的名称一致。
 
 **示例**
 
-在Hologres中批量创建外部表，示例语句如下。 实时数仓 Hologres
+在Hologres中批量创建外部表，示例语句如下。 `//`在`public Schema`中创建一张外部表。
 
 ```
-IMPORT FOREIGN SCHEMA <odpsproject_name> LIMIT TO (bank_data) FROM server odps_server INTO PUBLIC; CREATE Schema testdemo; IMPORT FOREIGN SCHEMA odps_4_holoworkshop LIMIT TO (customer,lightning_cat_industry) FROM server odps_server INTO testdemo; SET search_path TO testdemo;
+IMPORT FOREIGN SCHEMA <odpsproject_name> LIMIT TO (bank_data) FROM server odps_server INTO PUBLIC;
+```
+
+`//`新建`testdemo Schema`，并批量创建外部表。
+
+```
+CREATE Schema testdemo; IMPORT FOREIGN SCHEMA odps_4_holoworkshop LIMIT TO (customer,lightning_cat_industry) FROM server odps_server INTO testdemo; SET search_path TO testdemo;
 ```
 
 \d `//`设定`option`。
@@ -8526,11 +8896,17 @@ IMPORT FOREIGN SCHEMA <odpsproject_name> LIMIT TO (customer) FROM server odps_se
 
 **使用示例**
 
-MaxCompute两层模型。 示例选取MaxCompute公共数据集**public_data**中的表，在Hologres中批量创建外部表。您可以参照公开数据集参考描述，登录并查询数据集。
+MaxCompute两层模型。 示例选取MaxCompute公共数据集**public_data**中的表，在Hologres中批量创建外部表。您可以参照公开数据集参考描述，登录并查询数据集。 示例1：为public schema新建一张外部表，若表存在则更新表。
 
 ```
-(customer)
+IMPORT FOREIGN SCHEMA public_data LIMIT to (customer)
   FROM server odps_server INTO PUBLIC options(if_table_exist 'update');
+```
+
+示例2：为public schema批量新建外部表。
+
+```
+ IMPORT FOREIGN SCHEMA public_data LIMIT to(
   customer,
   customer_address,
   customer_demographics,
@@ -8538,7 +8914,12 @@ MaxCompute两层模型。 示例选取MaxCompute公共数据集**public_data**�
   date_dim,
   warehouse)
   FROM server odps_server INTO PUBLIC options(if_table_exist 'update');
-create schema testdemo;
+```
+
+示例3：新建一个testdemo schema并批量新建外部表。
+
+```
+create schema testdemo; IMPORT FOREIGN SCHEMA public_data LIMIT to(
   customer,
   customer_address,
   customer_demographics,
@@ -8546,10 +8927,21 @@ create schema testdemo;
   date_dim,
   warehouse)
   FROM server odps_server INTO testdemo options(if_table_exist 'update');
-set search_path to testdemo; (customer,
+set search_path to testdemo;
+```
+
+示例4：在public schema批创建外部表，已有外表则报错。
+
+```
+IMPORT FOREIGN SCHEMA public_data LIMIT to (customer,
   customer_address)
   FROM server odps_server INTO PUBLIC options(if_table_exist 'error');
-(customer,
+```
+
+示例5：在public schema批量创建外部表，已有外表则跳过该外部表。
+
+```
+IMPORT FOREIGN SCHEMA public_data LIMIT to (customer,
   customer_address)
   FROM server odps_server INTO PUBLIC options(if_table_exist 'ignore');
 ```
@@ -8558,21 +8950,21 @@ MaxCompute三层模型。
 
 | 基于MaxCompute | odps_hologres | 项目的 | tpch_10g | 这个Schema中的 | odps_region_10g | 表创建Hologres中的外部表。 |
 |---|---|---|---|---|---|---|
-| IMPORT FOREIGN SCHEMA "odps_hologres#tpch_10g" LIMIT to ( odps_region_10g ) FROM SERVER odps_server INTO public OPTIONS(if_table_exist 'error',if_unsupported_type 'error'); |  |  |  |  |  |  |
+| IMPORT FOREIGN SCHEMA "odps_hologres#tpch_10g" LIMIT to ( odps_region_10g ) FROM SERVER odps_server INTO public OPTIONS(if_table_exist 'error',if_unsupported_type 'error'); |   |   |   |   |   |   |
 
 **数据类型映射**
 
 批量创建的MaxCompute外部表与Hologres的数据类型映射，详情请参见批量创建MaxCompute外部表与Hologres的数据类型映射。
 
-##### 1.6.2.4. DROP SCHEMA
+##### 1.6.2.4 DROP SCHEMA
 
 DROP SCHEMA语句用于删除数据库中的模式。本文为您介绍DROP SCHEMA的用法及使用限制。
 
 **使用限制**
 
-**语法**
+您不能删除系统默认创建的命名为**public**的Schema。
 
-实时数仓 Hologres
+**语法**
 
 ```
 DROP SCHEMA [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
@@ -8591,9 +8983,9 @@ DROP SCHEMA [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
 DROP SCHEMA mystuff CASCADE;
 ```
 
-#### 1.6.3. TABLE
+#### 1.6.3 TABLE
 
-##### 1.6.3.1. CREATE TABLE
+##### 1.6.3.1 CREATE TABLE
 
 CREATE TABLE语句用于创建表。本文为您介绍在交互式分析Hologres中CREATE TABLE的用法。
 
@@ -8602,23 +8994,29 @@ CREATE TABLE语句用于创建表。本文为您介绍在交互式分析Hologres
 支持将多个字段设置为primary key（即复合主键）。被设置为primary key的字段是唯一且非空的列或者列组合，同时只能在一个语句里设置多列为表的primary key。 目前primary key不支持Float、Double、Numeric、Array、Json、Date及其他复杂数据类型，不支持修改主键，如需修改主键请重新建表。如下示例指导您将**id**和**ds**设置为表的primary key。 `--`正确示例
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE public.test (
  "id" text NOT NULL,
  "ds" text NOT NULL,
-PRIMARY KEY (id,ds) ); CALL SET_TABLE_PROPERTY('public.test', 'orientation', 'column'); COMMIT;
+PRIMARY KEY (id,ds)
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('public.test', 'orientation', 'column'); COMMIT;
 ```
 
 表名和列名均对大小写不敏感，如需定义大写表名、大写列名、特殊字符表名或列名，可使用双引号（""）进行转义。示例如下：
 
-| create table "TBL" (a int); select relname from pg_class where relname = 'TBL'; insert into "TBL" values (-1977); select * from "TBL"; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null); call set_table_property('tbl', 'clustering_key', '"C1"'); commit; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null, c2 text not null); call set_table_property('tbl', 'clustering_key', '"C1,c2:desc"'); -- set_table_property 见下文 commit; ------------------------------------------------------------------ create table "Tab_$A%*" (a int); select relname from pg_class where relname = 'Tab_$A%*'; insert into "Tab_$A%*" values (-1977); select * from "Tab_$A%*"; IF NOT EXISTS ：在创建表时，如果不存在同名表且语义正确，表创建都会返回成功。如果不指定 IF NOT EXISTS 选项而存在同名表，则返回异常。如果指定 IF NOT EXISTS 选项，Hologres会提示信息，跳过表创建步骤，返回成功，直观的规则如下。 配置项指定if not exists 不指定if not exists NOTICE：relation “xx“already 存在同名表 ERROR：relation is already exists. exists，skippingSUCCEED 不存在同名表 SUCCEED SUCCEED | create table "TBL" (a int); select relname from pg_class where relname = 'TBL'; insert into "TBL" values (-1977); select * from "TBL"; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null); call set_table_property('tbl', 'clustering_key', '"C1"'); commit; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null, c2 text not null); call set_table_property('tbl', 'clustering_key', '"C1,c2:desc"'); -- set_table_property 见下文 commit; ------------------------------------------------------------------ create table "Tab_$A%*" (a int); select relname from pg_class where relname = 'Tab_$A%*'; insert into "Tab_$A%*" values (-1977); select * from "Tab_$A%*"; |  |  |  |  |  |  |  |
+| create table "TBL" (a int); select relname from pg_class where relname = 'TBL'; insert into "TBL" values (-1977); select * from "TBL"; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null); call set_table_property('tbl', 'clustering_key', '"C1"'); commit; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null, c2 text not null); call set_table_property('tbl', 'clustering_key', '"C1,c2:desc"'); -- set_table_property 见下文 commit; ------------------------------------------------------------------ create table "Tab_$A%*" (a int); select relname from pg_class where relname = 'Tab_$A%*'; insert into "Tab_$A%*" values (-1977); select * from "Tab_$A%*"; IF NOT EXISTS ：在创建表时，如果不存在同名表且语义正确，表创建都会返回成功。如果不指定 IF NOT EXISTS 选项而存在同名表，则返回异常。如果指定 IF NOT EXISTS 选项，Hologres会提示信息，跳过表创建步骤，返回成功，直观的规则如下。 配置项指定if not exists 不指定if not exists NOTICE：relation “xx“already 存在同名表 ERROR：relation is already exists. exists，skippingSUCCEED 不存在同名表 SUCCEED SUCCEED | create table "TBL" (a int); select relname from pg_class where relname = 'TBL'; insert into "TBL" values (-1977); select * from "TBL"; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null); call set_table_property('tbl', 'clustering_key', '"C1"'); commit; ------------------------------------------------------------------ begin; create table tbl ("C1" int not null, c2 text not null); call set_table_property('tbl', 'clustering_key', '"C1,c2:desc"'); -- set_table_property 见下文 commit; ------------------------------------------------------------------ create table "Tab_$A%*" (a int); select relname from pg_class where relname = 'Tab_$A%*'; insert into "Tab_$A%*" values (-1977); select * from "Tab_$A%*"; |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  | IF NOT EXISTS |  |  |  |  |  | IF |  |
-|  | 配置项 |  | 指定if not exists |  | 不指定if not exists |  |  |  |
-|  | 存在同名表 |  | NOTICE：relation “xx“already |  | ERROR：relation is already exists. |  |  |  |
-|  |  |  |  | NOTICE：relation “xx“already | ERROR |  |  |  |
-|  |  |  |  |  |  | ERROR |  |  |
-|  |  |  | exists，skippingSUCCEED |  |  |  |  |  |
-|  | 不存在同名表 |  | SUCCEED |  | SUCCEED |  |  |  |
+|   | IF NOT EXISTS |   |   |   |   |   | IF |   |
+|   | 配置项 |   | 指定if not exists |   | 不指定if not exists |   |   |   |
+|   | 存在同名表 |   | NOTICE：relation “xx“already |   | ERROR：relation is already exists. |   |   |   |
+|   |   |   |   | NOTICE：relation “xx“already | ERROR |   |   |   |
+|   |   |   |   |   |   | ERROR |   |   |
+|   |   |   | exists，skippingSUCCEED |   |   |   |   |   |
+|   | 不存在同名表 |   | SUCCEED |   | SUCCEED |   |   |   |
 
 表名的长度不超过64字节，超过64字节将被截断。 不支持修改数据类型，如果必须修改，请重新建表。 行存表必须设置主键，行列共存表必须设置主键，列存表不要求有主键。 orientation、distribution_key、clustering_key、event_time_column属性在建表后不支持更改，如需修改，需要重新建表；bitmap和dictionary属性可以在建表后更改。
 
@@ -8626,24 +9024,33 @@ PRIMARY KEY (id,ds) ); CALL SET_TABLE_PROPERTY('public.test', 'orientation', 'co
 
 **命令格式**
 
-目前Hologres 语法是PostgreSQL的一个子集，支持的建表语法如下。 实时数仓 Hologres
+目前Hologres 语法是PostgreSQL的一个子集，支持的建表语法如下。
 
-**说明**
-
-当前Hologres仅DDL支持事务处理，DML不支持事务处理。
+> **说明：** 当前Hologres仅DDL支持事务处理，DML不支持事务处理。
 
 ```
 begin; create table [if not exists] [schema_name.]table_name ([
-  {
+```
+
+`{`
+
+```
    column_name column_type [column_constraints, [...]]
+   | table_constraints
    [, ...]
-  }
+```
+
+`}`
+
+```
 ]); call set_table_property('<table_name>', property, value); commit;
 ```
 
 **参数说明**
 
-| 列约束 column_constraints 和表约束 table_constraints 的支持情况如下。 |  |  |
+i. column_type：为字段的数据类型，已支持的数据类型可以参见数据类型汇总。
+
+| 列约束 column_constraints 和表约束 table_constraints 的支持情况如下。 |   |   |
 |---|---|---|
 | 参数 | columnconstraints _ | tableconstraints _ |
 | primary key | 支持 | 支持 |
@@ -8653,9 +9060,9 @@ begin; create table [if not exists] [schema_name.]table_name ([
 | check | 不支持 | 不支持 |
 | default | 支持 | 不支持 |
 
-**说明**
+> **说明：** `column_constraints` 不能有多列为 `primary key` ，但 `table_constraints` 允许设置多列为表 `primary key` 。
 
-`column_constraints` 不能有多列为 `primary key` ，但 `table_constraints` 允许设置多列为表 `primary key` 。
+iii. set_table_property为表设置属性，详见下文。
 
 **设置表属性**
 
@@ -8666,9 +9073,9 @@ begin; create table [if not exists] [schema_name.]table_name ([
 call set_table_property('<table_name>', property, value)
 ```
 
-**说明**
+> **说明：** ： `set_table_property` 的调用需要与 `create table` 在同一事务中执行。
 
-： `set_table_property` 的调用需要与 `create table` 在同一事务中执行。 Hologres当前版本支持的设置表属性有以下几种。
+Hologres当前版本支持的设置表属性有以下几种。
 
 ```
 call set_table_property('table_name', 'orientation', '[column | row]'); call set_table_property('table_name', 'clustering_key', '[columnName{:[desc|asc]} [,...]]'); call set_table_property('table_name', 'segment_key', '[columnName [,...]]'); call set_table_property('table_name', 'bitmap_columns', '[columnName [,...]]'); call set_table_property('table_name', 'dictionary_encoding_columns', '[columnName [,...]]'); call set_table_property('table_name', 'time_to_live_in_seconds', '<non_negative_literal>'); call set_table_property('table_name', 'distribution_key', '[columnName[,...]]');
@@ -8683,8 +9090,6 @@ call set_table_property('table_name', 'orientation', '[column | row]'); call set
 | distributionkey _ | 默认为主键，根据业务场景修改。 | 默认为主键。 | 默认为主键。 | 否，如需修改请重新建表。 |
 | clusteringkey _ | 默认为空。 | 默认为主键。 | 默认为空。 | 否，如需修改请重新建表。 |
 | eventtimecolumn _ _ | 默认为第一个非空时间戳字段。 | 不支持。 | 默认为第一个非空时间戳字段。 | 否，如需修改请重新建表。 |
-
-实时数仓 Hologres
 
 | bitmapcolumns _ | 按需使用。 | 不支持。 | 按需使用。 | 是，详情请参见ALTER TABLE。 |
 |---|---|---|---|---|
@@ -8709,17 +9114,22 @@ call set_table_property('tbl', 'orientation', '[column | row |row,column]');
 使用示例 `--`建行存表
 
 ```
-begin;
+begin; create table public.tbl_row (
     a integer NOT NULL,
     b text NOT NULL
     ,PRIMARY KEY (a)
-); call set_table_property('public.tbl_row', 'orientation', 'row'); commit;
+```
+
+);
+
+```
+call set_table_property('public.tbl_row', 'orientation', 'row'); commit;
 ```
 
 `--`建列存表
 
 ```
-begin;
+begin; create table tbl_col (
   a int not null,
   b text not null);
 call set_table_property('tbl_col', 'orientation', 'column'); commit;
@@ -8728,19 +9138,25 @@ call set_table_property('tbl_col', 'orientation', 'column'); commit;
 `--`建行列共存
 
 ```
-begin;
+begin; create table tbl_col_row (
     pk  text  not null,
     col1 text,
     col2 text,
     col3 text,
     PRIMARY KEY (pk));
-call set_table_property('tbl_col_row', 'orientation', 'row,column'); commit; call set_table_property('table_name', 'distribution_key', '[columnName[,...]]');
+call set_table_property('tbl_col_row', 'orientation', 'row,column'); commit;
+```
+
+**distribution_key**
+
+```
+call set_table_property('table_name', 'distribution_key', '[columnName[,...]]');
 ```
 
 **distribution_key**：指定了数据库表分布策略。数据根据**distribution_key**被分配到各个shard上。系统保证**distribution_key**相同的记录会被分配到同一个
 shard上。 columnName部分如设置单列，不要有多余空格。如设置多列，则以逗号分隔，同样不要有多余的空格。
 **distribution_key**指定的列或列组合不支持Float、Double、Numeric、Date、Timestamp、Timestamptz、Array、Json、Serial、Bytea及其他复杂数据类
-型。 当表中有primary key时，**distribution_key**默认为primary key。**distribution_key**必须为primary key或者primary key中的部分字段（不能为空），同一记录的数据只能属于一个shard。当表中没有primary key时，对**distribution_key**没有限制，可以为空（不指定任何列）。如果**distribution_key**为空，即随机 shuffle，数据随机分布到不同shard上。当**distribution_key**对应列的值为空时，当作 `""` （空串）看待。 Hologres中，**distribution_key**是非常重要的分布式概念。合理的设置**distribution_key**可以达到如下效果： 提高性能。不同的Shard可以进行并行计算，从而提高性能。 提高QPS。当您以**distribution_key**做过滤条件时，Hologres可以直接筛选出数据相关的Shard进行扫描。否则，Hologres需要让所有的Shard参与计算，会影响QPS。 提高Join性能。当两张表在同一个Table Group内，并且Join key是**distribution_key**时，那么数据分布已保证表A一个Shard内的数据和表B同一Shard内的数据对应，只需要直接在本节点Join本节点数据（Local Join）即可，可以大大提高执行效率。 实时数仓 Hologres 使用示例
+型。 当表中有primary key时，**distribution_key**默认为primary key。**distribution_key**必须为primary key或者primary key中的部分字段（不能为空），同一记录的数据只能属于一个shard。当表中没有primary key时，对**distribution_key**没有限制，可以为空（不指定任何列）。如果**distribution_key**为空，即随机 shuffle，数据随机分布到不同shard上。当**distribution_key**对应列的值为空时，当作 `""` （空串）看待。 Hologres中，**distribution_key**是非常重要的分布式概念。合理的设置**distribution_key**可以达到如下效果： 提高性能。不同的Shard可以进行并行计算，从而提高性能。 提高QPS。当您以**distribution_key**做过滤条件时，Hologres可以直接筛选出数据相关的Shard进行扫描。否则，Hologres需要让所有的Shard参与计算，会影响QPS。 提高Join性能。当两张表在同一个Table Group内，并且Join key是**distribution_key**时，那么数据分布已保证表A一个Shard内的数据和表B同一Shard内的数据对应，只需要直接在本节点Join本节点数据（Local Join）即可，可以大大提高执行效率。 使用示例
 
 ```
 begin; create table tbl (a int not null, b text not null); call set_table_property('tbl', 'distribution_key', 'a'); commit; begin; create table tbl (a int not null, b text not null); call set_table_property('tbl', 'distribution_key', 'a,b'); commit; begin; create table tbl1(a int not null, b text not null); call set_table_property('tbl1', 'distribution_key', 'a'); create table tbl2(c int not null, d text not null); call set_table_property('tbl2', 'distribution_key', 'c'); commit; select b, count(*) from tbl1 join tbl2 on tbl1.a = tbl2.c group by b;
@@ -8816,7 +9232,7 @@ begin; create table tbl (a int not null, b text not null); call set_table_proper
 call set_table_property('tbl', 'bitmap_columns', '[columnName{:[on|off]}[,...]]');
 ```
 
-其中，参数说明如下表所示： 实时数仓 Hologres
+其中，参数说明如下表所示：
 
 | 参数 | 说明 |
 |---|---|
@@ -8833,7 +9249,7 @@ call set_table_property('tbl', 'bitmap_columns', '[columnName{:[on|off]}[,...]]'
 使用示例 `--`创建`tbl`并设置`bitmap`索引
 
 ```
-begin;
+begin; create table tbl (
   a int not null,
   b text not null);
 call set_table_property('tbl', 'bitmap_columns', 'a:on,b:off'); commit;
@@ -8868,11 +9284,16 @@ call set_table_property('tbl', 'dictionary_encoding_columns', '[columnName{:[on|
 使用示例 `--`创建表`tbl`并设置`dictionary_encoding_columns`索引
 
 ```
-begin;
+begin; create table tbl (
   a int not null,
   b text not null,
   c text not null
-); call set_table_property('tbl', 'dictionary_encoding_columns', 'a:on,b:off,c:auto'); commit; --修改dictionary_encoding_columns索引 call set_table_property('tbl', 'dictionary_encoding_columns', 'a:off');--全量修改 call update_table_property('tbl', 'dictionary_encoding_columns', 'b:off');--增量修改
+```
+
+);
+
+```
+call set_table_property('tbl', 'dictionary_encoding_columns', 'a:on,b:off,c:auto'); commit; --修改dictionary_encoding_columns索引 call set_table_property('tbl', 'dictionary_encoding_columns', 'a:off');--全量修改 call update_table_property('tbl', 'dictionary_encoding_columns', 'b:off');--增量修改
 ```
 
 **time_to_live_in_seconds**
@@ -8882,7 +9303,7 @@ call set_table_property('tbl', 'time_to_live_in_seconds', '<non_negative_literal
 ```
 
 **time_to_live_in_seconds**：表数据的生存时间TTL，单位为秒，必须是非负数字类型，整数或浮点数均可。
-实时数仓 Hologres 注意事项若是没有显示指定TTL，则默认数据永久保留（100年）。 TTL过期时间以数据第一次写入的时间开始计算，而不是数据最后一次修改的时间；当到达TTL后，表数据会在某一段时间内被清除（没有固定时间段），只是数据被清除，表不会被删除。 可以在事务之外单独使用，表示修改表数据生存时间。 TTL功能类似于定期执行 delete from tbl where xxx_time + TTL < now(); ，但是执行该命令比较占资源，并且SQL执行期间会锁表，阻塞其他写入操作，能保证数据一致性。 TTL相比于 delete from tbl where xxx_time + TTL < now(); 几乎不占资源，也不会锁表，但是对于过期的数据不能保证数据一致性。这意味着： 读取过期数据，可能能读到，可能读不到，也可能读到某个历史版本。 修改或删除过期数据，可能正常工作，也可能出现PK重复之类的意外结果。 使用TTL功能，最好要保证不会读取或修改过期的数据，或者对过期数据的一致性不关心。 使用示例 `--`建表时指定`TTL`
+注意事项若是没有显示指定TTL，则默认数据永久保留（100年）。 TTL过期时间以数据第一次写入的时间开始计算，而不是数据最后一次修改的时间；当到达TTL后，表数据会在某一段时间内被清除（没有固定时间段），只是数据被清除，表不会被删除。 可以在事务之外单独使用，表示修改表数据生存时间。 TTL功能类似于定期执行 delete from tbl where xxx_time + TTL < now(); ，但是执行该命令比较占资源，并且SQL执行期间会锁表，阻塞其他写入操作，能保证数据一致性。 TTL相比于 delete from tbl where xxx_time + TTL < now(); 几乎不占资源，也不会锁表，但是对于过期的数据不能保证数据一致性。这意味着： 读取过期数据，可能能读到，可能读不到，也可能读到某个历史版本。 修改或删除过期数据，可能正常工作，也可能出现PK重复之类的意外结果。 使用TTL功能，最好要保证不会读取或修改过期的数据，或者对过期数据的一致性不关心。 使用示例 `--`建表时指定`TTL`
 
 ```
 begin; create table tbl (a int not null, b text not null); call set_table_property('tbl', 'time_to_live_in_seconds', '3.14159'); commit;
@@ -8894,19 +9315,22 @@ begin; create table tbl (a int not null, b text not null); call set_table_proper
 call set_table_property('tbl', 'time_to_live_in_seconds', '86400');
 ```
 
-**说明**
-
-表数据的TTL并不是精确的时间，当超过设置的TTL后，系统会在某一个时间自动删除表数据，所以业务逻辑不能强依赖TTL。若是想精确的删除表数据，可以使用DataWorks，进行调度任务配置来删除数据。
+> **说明：** 表数据的TTL并不是精确的时间，当超过设置的TTL后，系统会在某一个时间自动删除表数据，所以业务逻辑不能强依赖TTL。若是想精确的删除表数据，可以使用DataWorks，进行调度任务配置来删除数据。
 
 **增加注释**
 
 Hologres支持给表、外表、列等增加注释（comment）的功能。 增加注释的使用示例如下： 新建表时添加注释。
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE public."user" (
  "id" text NOT NULL,
  "name" text NOT NULL
-); COMMENT ON TABLE public."user" is '用户属性表'; COMMENT ON COLUMN public."user".id is '身份证号'; COMMENT ON COLUMN public."user".name is '姓名'; COMMIT;
+```
+
+);
+
+```
+COMMENT ON TABLE public."user" is '用户属性表'; COMMENT ON COLUMN public."user".id is '身份证号'; COMMENT ON COLUMN public."user".name is '姓名'; COMMIT;
 ```
 
 已有表添加注释。 `--` 给表增加注释
@@ -8931,49 +9355,49 @@ COMMENT ON FOREIGN TABLE foreign_table IS ' comments on my foreign table';
 
 **查看表结构**
 
-create extension hg_toolkit; --该命令是`DB`级别，一个`DB`执行一次即可
+您可以执行如下命令查看TABLE的具体DDL： create extension hg_toolkit; --该命令是`DB`级别，一个`DB`执行一次即可
 
 ```
 select hg_dump_script('tablename');
 ```
 
-**说明**
-
-也可以通过HoloWeb，在元数据管理模块进行DDL查看。
+> **说明：** 也可以通过HoloWeb，在元数据管理模块进行DDL查看。
 
 **使用示例**
 
 新建普通列存表并指定Primary Key。
 
-**说明**
-
-Distribution Key必须是Primary Key的子集。 实时数仓 Hologres
+> **说明：** Distribution Key必须是Primary Key的子集。
 
 ```
-begin;
+begin; CREATE TABLE tbl (
  "id" bigint NOT NULL,
  "name" text NOT NULL,
  "age" bigint,
  "class" text NOT NULL,
  "reg_timestamp" timestamptz NOT NULL,
-PRIMARY KEY (id,age) ); call set_table_property('tbl', 'orientation', 'column'); call set_table_property('tbl', 'distribution_key', 'id'); call set_table_property('tbl', 'clustering_key', 'age'); call set_table_property('tbl', 'event_time_column', 'reg_timestamp'); call set_table_property('tbl', 'bitmap_columns', 'name,class'); call set_table_property('tbl', 'dictionary_encoding_columns', 'class:auto'); commit;
+PRIMARY KEY (id,age)
+```
+
+);
+
+```
+call set_table_property('tbl', 'orientation', 'column'); call set_table_property('tbl', 'distribution_key', 'id'); call set_table_property('tbl', 'clustering_key', 'age'); call set_table_property('tbl', 'event_time_column', 'reg_timestamp'); call set_table_property('tbl', 'bitmap_columns', 'name,class'); call set_table_property('tbl', 'dictionary_encoding_columns', 'class:auto'); commit;
 ```
 
 新建分区表并指定Primary Key。
 
-**说明**
-
-分区表有主键时，主键里面必须包含分区字段。
+> **说明：** 分区表有主键时，主键里面必须包含分区字段。
 
 ```
-begin;
+begin; CREATE TABLE www (
  name text NOT NULL,
  ds text NOT NULL,
  age text NOT NULL,
 PRIMARY KEY (name,ds)
 ```
 
-)
+`)`
 
 ```
 PARTITION BY LIST(ds); CALL SET_TABLE_PROPERTY('www', 'orientation', 'column'); commit;
@@ -8982,55 +9406,57 @@ PARTITION BY LIST(ds); CALL SET_TABLE_PROPERTY('www', 'orientation', 'column'); 
 新建普通表并设置默认值。 `--`设置当前时间
 
 ```
+CREATE TABLE test(
   id TIMESTAMPTZ DEFAULT now()
-);
 ```
 
-`--`设置数据的默认值
+); `--`设置数据的默认值
 
 ```
+CREATE TABLE products (
     product_no integer,
     name text,
     price FLOAT  DEFAULT 1.99
-);
 ```
+
+);
 
 **HoloWeb可视化新建内部表**
 
 HoloWeb提供可视化一键建表功能，无需写SQL命令就能创建表，步骤如下。
 1. 进入**HoloWeb**页面，详情请参见数据连接。
-2. 在**HoloWeb**页面顶部菜单栏，单击**元数据管理** > 表。
+2. 在**HoloWeb**页面顶部菜单栏，单击**元数据管理** **>** **表**。
 您也可以在**元数据管理**界面的**已登录实例**列表。单击目标数据库，鼠标右击数据库下已创建的目标模式，选择**新建内部表**。
 3. 在**新建内部表**页面，配置各项参数。
 
-|  | 类别 | 参数 | 描述 |
+|   | 类别 | 参数 | 描述 |
 |---|---|---|---|
-|  | 基本属性 | 实例名 | 已登录的实例名称。 |
-|  |  | 数据库 | 当前已登录实例的数据库名称。 |
-|  |  | 表名 | 新建的Hologres内部表名称。 |
-|  |  | 描述 | 新建的Hologres内部表描述。 |
-| 1 | 44 | > 文档版本：20260729 |  |
+|   | 基本属性 | 实例名 | 已登录的实例名称。 |
+|   |   | 数据库 | 当前已登录实例的数据库名称。 |
+|   |   | 表名 | 新建的Hologres内部表名称。 |
+|   |   | 描述 | 新建的Hologres内部表描述。 |
+| 1 | 44 | > 文档版本：20260729 |   |
 
-|  | 时数仓 Hologres |  |  |  |
+|   | 时数仓 Hologres |   |   |   |
 |---|---|---|---|---|
-|  |  | 模式 | 模式名称。 您可以选择默认创建的public模式，也可以选择新建的模式名称。 |  |
-|  | 字段 | 字段名 | 表中每一列的标识。 |  |
-|  |  | 数据类型 | 字段取值的类型。 |  |
-|  |  | 主键 | 表中每条数据的唯一标识。 |  |
-|  |  | 可空 | 字段是否可以设置为空。 |  |
-|  |  | 数组 | 有序的元素序列。 |  |
-|  |  | 描述 | 字段的描述信息。 |  |
-|  |  | 操作 | 包括删除、上移和下移。 |  |
-|  | 属性 | 存储模式 | 包括列存和行存两种存储模式。 默认为列存。 |  |
-|  |  | 生命周期（秒） | 如果数据在指定时间内未被修改，则系统将自动删除数据。 默认生命周期为永久。 |  |
-|  |  | Binlog | 表是否开启Binlog，详情请参见订阅Hologres Binlog。 |  |
-|  |  | Binlog生命周期 | Binlog的生命周期，详情请参见订阅Hologres Binlog。默认生命周期为永久。 |  |
-|  |  | 分布列 | distribution _key，使用详情请参见上文。 |  |
-|  |  | 分段列 | event _time _column ，使用详情请参见上文。 |  |
-|  |  | 聚簇列 | clustering _key，使用详情请参见上文。 |  |
-|  |  | 字典编码列 | dictionary _encoding _columns，使用详情请参见上文。 |  |
-|  |  | 位图列 | bitmap _columns，使用详情请参见上文。 |  |
-|  | 分区表 | 无 | 选择分区字段。 |  |
+|   |   | 模式 | 模式名称。 您可以选择默认创建的public模式，也可以选择新建的模式名称。 |   |
+|   | 字段 | 字段名 | 表中每一列的标识。 |   |
+|   |   | 数据类型 | 字段取值的类型。 |   |
+|   |   | 主键 | 表中每条数据的唯一标识。 |   |
+|   |   | 可空 | 字段是否可以设置为空。 |   |
+|   |   | 数组 | 有序的元素序列。 |   |
+|   |   | 描述 | 字段的描述信息。 |   |
+|   |   | 操作 | 包括删除、上移和下移。 |   |
+|   | 属性 | 存储模式 | 包括列存和行存两种存储模式。 默认为列存。 |   |
+|   |   | 生命周期（秒） | 如果数据在指定时间内未被修改，则系统将自动删除数据。 默认生命周期为永久。 |   |
+|   |   | Binlog | 表是否开启Binlog，详情请参见订阅Hologres Binlog。 |   |
+|   |   | Binlog生命周期 | Binlog的生命周期，详情请参见订阅Hologres Binlog。默认生命周期为永久。 |   |
+|   |   | 分布列 | distribution _key，使用详情请参见上文。 |   |
+|   |   | 分段列 | event _time _column ，使用详情请参见上文。 |   |
+|   |   | 聚簇列 | clustering _key，使用详情请参见上文。 |   |
+|   |   | 字典编码列 | dictionary _encoding _columns，使用详情请参见上文。 |   |
+|   |   | 位图列 | bitmap _columns，使用详情请参见上文。 |   |
+|   | 分区表 | 无 | 选择分区字段。 |   |
 
 4. 在页面右上角，单击**提交表**。提交之后，您可以在左侧对应模式下，刷新出新建的内部表。
 5. （可选）表数据预览
@@ -9038,13 +9464,13 @@ i. 在**已登录实例**列表，双击目标内部表。 ii. 进入表信息�
 6. （可选）DDL预览
 在目标表信息页签，单击**DDL****语句**，则可以预览DDL语句。
 
-###### 1.6.3.1.1. 分布键Distribution Key
+###### 1.6.3.1.1 分布键Distribution Key
 
 如果您的数据表经常需要进行GROUP BY、JOIN操作或为了避免数据倾斜，您可以在建表时设置分布键（Distribution Key），合适的分布键可以帮助数据均匀分布在所有计算节点上，显著提高计算和查询性能。本文为您介绍Hologres中为表设置Distribution Key。
 
 **Distribution Key介绍**
 
-实时数仓 Hologres 在Hologres中，Distribution Key属性指定了表数据的分布策略，系统会保证Distribution Key相同的记录被分配到同一个Shard上。建表时设置语法如下：
+在Hologres中，Distribution Key属性指定了表数据的分布策略，系统会保证Distribution Key相同的记录被分配到同一个Shard上。建表时设置语法如下：
 
 ```
 BEGIN; CREATE TABLE <table_name> (...); call set_table_property('<table_name>', 'distribution_key', '[<columnName>[,...]]'); COMMIT;
@@ -9061,13 +9487,13 @@ Distribution Key是非常重要的分布式概念，合理设置Distribution Key
 
 **使用建议**
 
-Distribution Key设置原则总结如下： Distribution Key尽量选择分布均匀的字段，否则容易因为数据倾斜导致负载倾斜，使得查询效率变低，排查数据倾斜请参见**监控与运维** > **查看****Worker****倾斜关系**章节。 选择 `Group By` 频繁的字段作为Distribution Key。 Join场景中，设置Join字段为Distribution Key，实现Local Join，避免数据Shuffle。同时进行Join的表需要在同一个Table Group内。 不建议为一个表设置多个Distribution Key，建议设置的Distribution Key不超过两个字段。设置多字段为Distribution Key，查询时若没有全部命中，容易出现数据 Shuffle。
+Distribution Key设置原则总结如下： Distribution Key尽量选择分布均匀的字段，否则容易因为数据倾斜导致负载倾斜，使得查询效率变低，排查数据倾斜请参见**监控与运维** **>** **查看****Worker****倾斜关系**章节。 选择 `Group By` 频繁的字段作为Distribution Key。 Join场景中，设置Join字段为Distribution Key，实现Local Join，避免数据Shuffle。同时进行Join的表需要在同一个Table Group内。 不建议为一个表设置多个Distribution Key，建议设置的Distribution Key不超过两个字段。设置多字段为Distribution Key，查询时若没有全部命中，容易出现数据 Shuffle。
 
 **使用限制**
 
 设置Distribution Key需要在建表时设置，建表后如需修改Distribution Key需要重新建表并导入数据。 支持单列或者多列设置为Distribution Key，指定列时如设置单列，命令语句中不要保留多余空格；如设置多个列，则以半角逗号（,）分隔，同样不要保留多余空格。指定多列为Distribution Key时，列的顺序不影响数据的布局和查询性能。 不支持将Float、Double、Numeric、Array、Json及其他复杂数据类型的字段设为Distribution Key。 表设置了主键（PK）时，Distribution Key必须为PK或者PK中的部分字段（不能为空，即不指定任何列），因为要求同一记录的数据只能属于一个Shard。如果没有额外指定Distribution Key，默认将PK设置为Distribution Key。 表未设置PK时，Distribution Key没有限制，可以为空（不指定任何列）。如果为空，即随机Shuffle，数据随机分布到不同Shard上。示例用法如下：
 
-| CALL SET_TABLE_PROPERTY('<tablename>', 'distribution_key', ''); |  |  |  |  |
+| CALL SET_TABLE_PROPERTY('<tablename>', 'distribution_key', ''); |   |   |   |   |
 |---|---|---|---|---|
 | Distribution Key列的值中有 | null | 时，当作 | “” | （空串）看待，即Distribution Key为空。 |
 
@@ -9077,29 +9503,46 @@ Distribution Key指定了表的分布策略。根据实际的业务场景，存�
 
 **设置Distribution Key**
 
-为表设置了Distribution Key之后，数据会根据Distribution Key被分配到各个Shard上，算法为 Hash(distribution_key)%shard_count ，结果为对应的Shard。系统会保证Distribution Key相同的记录会被分配到同一个Shard上，示例如下。 `--`设置a列为`distribution key`，系统会对a列的值做`hash`操作，再取模，即hash(a)%shard_count = shard_id，结果相同的一组数据分布在同一个`Shard`内
+为表设置了Distribution Key之后，数据会根据Distribution Key被分配到各个Shard上，算法为 Hash(distribution_key)%shard_count ，结果为对应的Shard。系统会保证Distribution Key相同的记录会被分配到同一个Shard上，示例如下。 `--`设置`a`列为`distribution key`，系统会对`a`列的值做`hash`操作，再取模，即hash(a)%shard_count = shard_id，结果相同的一组数据分布在同一个`Shard`内
 
 ```
-begin; a int not null, b text not null ); call set_table_property('tbl', 'distribution_key', 'a'); commit;
+begin; create table tbl ( a int not null, b text not null
 ```
 
-`--`设置a、b两列为`distribution key`，系统对`a,b`两个列的值做`hash`操作，再取模，即hash(a,b)%shard_count = shard_id，结果相同的一组数据分布在同一个`Shard`内
+);
 
 ```
-begin;
+call set_table_property('tbl', 'distribution_key', 'a'); commit;
+```
+
+`--`设置`a`、`b`两列为`distribution key`，系统对`a,b`两个列的值做`hash`操作，再取模，即hash(a,b)%shard_count = shard_id，结果相同的一组数据分布在同一个`Shard`内
+
+```
+begin; create table tbl (
   a int not null,
   b text not null
-); call set_table_property('tbl', 'distribution_key', 'a,b'); commit;
 ```
 
-实时数仓 Hologres 数据分布示意图如下： 但在设置Distribution Key时，需要关注设置为Distribution Key字段的数据最好是分布均匀的。Hologres的Shard数和Worker节点数有一定的关联关系，详情请参见基本概念。如果设置了数据分布不均匀的字段作为Distribution Key之后，那么数据会集中分布在某些Shard上，导致大部分的计算集中到部分Worker上，出现长尾效应，查询效率降低。排查以及处理数据的倾斜情况详情请参见《用户指南》的**监控与运维** > **查看****Worker****倾斜关系**章节。
+);
+
+```
+call set_table_property('tbl', 'distribution_key', 'a,b'); commit;
+```
+
+数据分布示意图如下： 但在设置Distribution Key时，需要关注设置为Distribution Key字段的数据最好是分布均匀的。Hologres的Shard数和Worker节点数有一定的关联关系，详情请参见基本概念。如果设置了数据分布不均匀的字段作为Distribution Key之后，那么数据会集中分布在某些Shard上，导致大部分的计算集中到部分Worker上，出现长尾效应，查询效率降低。排查以及处理数据的倾斜情况详情请参见《用户指南》的**监控与运维** **>** **查看****Worker****倾斜关系**章节。
 
 **不设置Distribution Key**
 
 不设置Distribution Key时，数据将会被随机分布在各个Shard，相同的数据可能会在相同Shard，也可能在不同的Shard，示例如下。
 
 ```
---不设置distribution key begin; a int not null, b text not null ); commit;
+--不设置distribution key begin; create table tbl ( a int not null, b text not null
+```
+
+);
+
+```
+commit;
 ```
 
 数据分布示意图如下：
@@ -9109,10 +9552,16 @@ begin;
 为表设置了Distribution Key，那么相同的数据就分布在相同的Shard上，同时对于Group By聚合场景，数据在计算时按照设置的Distribution Key重新分布，因此可以将 Group By频繁的字段设置为Distribution Key，这样数据在Shard内就已经聚合，减少数据在Shard间的重分配，提高查询性能，示例如下。
 
 ```
-begin; a int not null, b int not null ); call set_table_property('agg_tbl', 'distribution_key', 'a'); commit;
+begin; create table agg_tbl ( a int not null, b int not null
 ```
 
-`--`示例查询，对a列做聚合查询
+);
+
+```
+call set_table_property('agg_tbl', 'distribution_key', 'a'); commit;
+```
+
+`--`示例查询，对`a`列做聚合查询
 
 ```
 select a,sum(b) from agg_tbl group by a;
@@ -9122,10 +9571,22 @@ select a,sum(b) from agg_tbl group by a;
 
 **两表关联场景设置Distribution Key**
 
-两表Join字段设置为Distribution Key 在两表关联（Join）的场景中，如果两表的Join字段分别在对应表里都设置为Distribution Key，那么Join字段相同的数据就会分布在相同的Shard，这样就能实现Local Join，从而实现查询加速的效果，示例如下。 实时数仓 Hologres 建表DDL。 `--tbl1`按照a列分布，`tbl2`按照c列分布，当`tbl1`与`tbl2`以`a=c`关联条件`join`时，对应的数据分布在同一个`Shard`内，这种查询可以实现`Local Join`的加速效果
+两表Join字段设置为Distribution Key 在两表关联（Join）的场景中，如果两表的Join字段分别在对应表里都设置为Distribution Key，那么Join字段相同的数据就会分布在相同的Shard，这样就能实现Local Join，从而实现查询加速的效果，示例如下。 建表DDL。 `--tbl1`按照`a`列分布，`tbl2`按照`c`列分布，当`tbl1`与`tbl2`以`a=c`关联条件`join`时，对应的数据分布在同一个`Shard`内，这种查询可以实现`Local Join`的加速效果
 
 ```
-begin; a int not null, b text not null ); call set_table_property('tbl1', 'distribution_key', 'a'); c int not null, d text not null ); call set_table_property('tbl2', 'distribution_key', 'c'); commit;
+begin; create table tbl1( a int not null, b text not null
+```
+
+);
+
+```
+call set_table_property('tbl1', 'distribution_key', 'a'); create table tbl2( c int not null, d text not null
+```
+
+);
+
+```
+call set_table_property('tbl2', 'distribution_key', 'c'); commit;
 ```
 
 查询语句。
@@ -9134,10 +9595,22 @@ begin; a int not null, b text not null ); call set_table_property('tbl1', 'distr
 select * from tbl1 join tbl2 on tbl1.a=tbl2.c;
 ```
 
-数据分布示意图如下。 通过查看执行计划（explain SQL），如下所示执行计划结果中没有 `redistribution` 算子，说明数据没有重分布。 两表Join字段未都设置为Distribution Key 在两表关联（Join）的场景，如果两表Join字段在对应表里未都设置为Distribution Key，那么查询时数据就会在各个Shard Shuffle（执行计划会根据关联的两个表大小，来判断是进行Shuffle还是Broadcast）。如下示例，设置 `tbl1` 的 a 字段为Distribution Key， `tbl2` 的 d 字段为Distribution Key，而Join条件是 `a=c` ， 那么 c 字段就会在每个Shard Shuffle一遍，从而导致查询效率变低。 建表DDL。
+数据分布示意图如下。 通过查看执行计划（explain SQL），如下所示执行计划结果中没有 `redistribution` 算子，说明数据没有重分布。 两表Join字段未都设置为Distribution Key 在两表关联（Join）的场景，如果两表Join字段在对应表里未都设置为Distribution Key，那么查询时数据就会在各个Shard Shuffle（执行计划会根据关联的两个表大小，来判断是进行Shuffle还是Broadcast）。如下示例，设置 `tbl1` 的 `a` 字段为Distribution Key， `tbl2` 的 `d` 字段为Distribution Key，而Join条件是 `a=c` ， 那么 `c` 字段就会在每个Shard Shuffle一遍，从而导致查询效率变低。 建表DDL。
 
 ```
-begin; a int not null, b text not null ); call set_table_property('tbl1', 'distribution_key', 'a'); c int not null, d text not null ); call set_table_property('tbl2', 'distribution_key', 'd'); commit;
+begin; create table tbl1( a int not null, b text not null
+```
+
+);
+
+```
+call set_table_property('tbl1', 'distribution_key', 'a'); create table tbl2( c int not null, d text not null
+```
+
+);
+
+```
+call set_table_property('tbl2', 'distribution_key', 'd'); commit;
 ```
 
 查询语句。
@@ -9146,23 +9619,41 @@ begin; a int not null, b text not null ); call set_table_property('tbl1', 'distr
 select * from tbl1 join tbl2 on tbl1.a=tbl2.c;
 ```
 
-实时数仓 Hologres 数据分布示意图如下。 通过查看执行计划（explain SQL），如下所示执行计划中有 `redistribution` 算子，说明数据进行了重分布，表明Distribution Key设置的不合理，需要重新设置。
+数据分布示意图如下。 通过查看执行计划（explain SQL），如下所示执行计划中有 `redistribution` 算子，说明数据进行了重分布，表明Distribution Key设置的不合理，需要重新设置。
 
 **多表关联场景设置Distribution Key**
 
 多表关联的场景比较复杂，可以遵循如下原则： 每个表的Join字段都相同，那么将Join字段都设置为Distribution Key。 每个表的Join字段不同，优先考虑大表间的Join，将大表的Join字段设置为Distribution Key。 通过以下几种情况举例说明（本文中以三个表Join为例说明，大于三个表的Join情况可以参考本示例）。 三个表的Join字段相同在三个表Join的场景中，三个表的Join字段都相同，那么这种情况是最简单的，可以直接将三个表的Join字段都设置为Distribution Key，实现Local Join的能力。 支持的建表语法：
 
 ```
-begin; a int not null, b text not null ); call set_table_property('join_tbl1', 'distribution_key', 'a'); a int not null, d text not null, e text not null ); call set_table_property('join_tbl2', 'distribution_key', 'a'); a int not null, e text not null, f text not null, g text not null ); call set_table_property('join_tbl3', 'distribution_key', 'a'); commit;
+begin; create table join_tbl1( a int not null, b text not null
+```
+
+);
+
+```
+call set_table_property('join_tbl1', 'distribution_key', 'a'); create table join_tbl2( a int not null, d text not null, e text not null
+```
+
+);
+
+```
+call set_table_property('join_tbl2', 'distribution_key', 'a'); create table join_tbl3( a int not null, e text not null, f text not null, g text not null
+```
+
+);
+
+```
+call set_table_property('join_tbl3', 'distribution_key', 'a'); commit;
 ```
 
 `--3`表`join`查询
 
 ```
-INNER JOIN join_tbl2 ON join_tbl2.a = join_tbl1.a INNER JOIN join_tbl3 ON join_tbl2.a = join_tbl3.a;
+SELECT * FROM join_tbl1 INNER JOIN join_tbl2 ON join_tbl2.a = join_tbl1.a INNER JOIN join_tbl3 ON join_tbl2.a = join_tbl3.a;
 ```
 
-通过查看执行计划（explain SQL），如下所示执行计划中： 没有 `redistribution` 算子，说明数据没有重分布，实现了Local Join。 `exchange` 算子代表文件级别聚合到Shard级别聚合，这样就只需要对应Shard的数据，提升数据的查询效率。 实时数仓 Hologres 三个表的Join字段不同在实际业务中，多表关联时会有Join字段不相同的场景，这个时候可以根据如下原则来设置Distribution Key： 核心优化原则是优先考虑大表间的Join，设置大表的Join字段为Distribution Key；小表因其数据量较少，无需过多考虑。 表数据量大致相同的情况，可以设置Group By频繁的Join字段为Distribution Key。 如下示例，有三个表相互Join，Join的字段不完全一样，这个时候选择大表的Join字段为Distribution Key， `join_tbl_1` 这个表数据量有一千万条， `join_tbl_2` 和 `join_tbl_3` 分别有一百万条，以 `join_tbl_1` 为主要优化对象。 支持的建表语法：
+通过查看执行计划（explain SQL），如下所示执行计划中： 没有 `redistribution` 算子，说明数据没有重分布，实现了Local Join。 `exchange` 算子代表文件级别聚合到Shard级别聚合，这样就只需要对应Shard的数据，提升数据的查询效率。 三个表的Join字段不同在实际业务中，多表关联时会有Join字段不相同的场景，这个时候可以根据如下原则来设置Distribution Key： 核心优化原则是优先考虑大表间的Join，设置大表的Join字段为Distribution Key；小表因其数据量较少，无需过多考虑。 表数据量大致相同的情况，可以设置Group By频繁的Join字段为Distribution Key。 如下示例，有三个表相互Join，Join的字段不完全一样，这个时候选择大表的Join字段为Distribution Key， `join_tbl_1` 这个表数据量有一千万条， `join_tbl_2` 和 `join_tbl_3` 分别有一百万条，以 `join_tbl_1` 为主要优化对象。 支持的建表语法：
 
 ```
 begin;
@@ -9171,36 +9662,56 @@ begin;
 `--join_tbl_1`为`1kw`数据量
 
 ```
-a int not null, b text not null ); call set_table_property('join_tbl_1', 'distribution_key', 'a');
+create table join_tbl_1( a int not null, b text not null
+```
+
+);
+
+```
+call set_table_property('join_tbl_1', 'distribution_key', 'a');
 ```
 
 `--join_tbl_2`为`100w`数据量
 
 ```
-a int not null, d text not null, e text not null ); call set_table_property('join_tbl_2', 'distribution_key', 'a');
+create table join_tbl_2( a int not null, d text not null, e text not null
+```
+
+);
+
+```
+call set_table_property('join_tbl_2', 'distribution_key', 'a');
 ```
 
 `--join_tbl_3`为`100w`数据量
 
 ```
-a int not null, e text not null, f text not null, g text not null ); --call set_table_property('join_tbl_3', 'distribution_key', 'a'); commit;
+create table join_tbl_3( a int not null, e text not null, f text not null, g text not null
+```
+
+);
+
+```
+--call set_table_property('join_tbl_3', 'distribution_key', 'a'); commit;
 ```
 
 `--join key`不相同时，选择大表的`join key`为`distribution key`。
 
 ```
-INNER JOIN join_tbl_2 ON join_tbl_2.a = join_tbl_1.a INNER JOIN join_tbl_3 ON join_tbl_2.d = join_tbl_3.f;
+SELECT * FROM join_tbl_1 INNER JOIN join_tbl_2 ON join_tbl_2.a = join_tbl_1.a INNER JOIN join_tbl_3 ON join_tbl_2.d = join_tbl_3.f;
 ```
 
 通过查看执行计划（explain SQL），如下所示执行计划表明：
 
-| 在 | join_tbl_2 |  | 和 | join_tbl_3 |  |
+| 在 | join_tbl_2 |   | 和 | join_tbl_3 |   |
 |---|---|---|---|---|---|
-| join_tbl_1 |  | 和 | join_tbl_2 |  | 表 |
+| join_tbl_1 |   | 和 | join_tbl_2 |   | 表 |
+
+在 `join_tbl_2` 和 `join_tbl_3` 表之间有 `redistribution` 算子，因为 `join_tbl_3` 是小表，Join字段与Distribution Key不一致，所以数据进行了重分布。 `join_tbl_1` 和 `join_tbl_2` 表之间没有 `redistribution` 算子，因为两表将Join字段都设置为Distribution Key，因此数据不会重分布。
 
 **使用示例**
 
-支持的建表语法： 实时数仓 Hologres `--`设置一个`distribution key`
+支持的建表语法： `--`设置一个`distribution key`
 
 ```
 begin; create table tbl (a int not null, b text not null); call set_table_property('tbl', 'distribution_key', 'a'); commit;
@@ -9218,7 +9729,7 @@ begin; create table tbl (a int not null, b text not null); call set_table_proper
 begin; create table tbl1(a int not null, b text not null); call set_table_property('tbl1', 'distribution_key', 'a'); create table tbl2(c int not null, d text not null); call set_table_property('tbl2', 'distribution_key', 'c'); commit; select b, count(*) from tbl1 join tbl2 on tbl1.a = tbl2.c group by b;
 ```
 
-##### 1.6.3.2. CREATE TABLE AS
+##### 1.6.3.2 CREATE TABLE AS
 
 Hologres从V1.3.21版本开始，支持使用CREATE TABLE AS语句创建表，复制表结构的同时也可以选择复制数据。本文为您介绍在Hologres中CREATE TABLE AS的用法。
 
@@ -9239,30 +9750,30 @@ CREATE TABLE AS的功能为：创建一个与源表结构或者查询Query结果
 
 仅Hologres V1.3.21及以上版本支持 `CREATE TABLE AS` 语句，若您的实例是V1.3.21以下版本，请您升级实例。
 
-| CREATE TABLE AS |  |
+| CREATE TABLE AS |   |
 |---|---|
-| CREATE TABLE AS |  |
+| CREATE TABLE AS |   |
 | 使用 | CREATE TABLE AS |
 
-| 使用 | CREATE TABLE AS |  |
-|---|---|---|
-| CREATE TABLE AS |  | 语句 |
+`CREATE TABLE AS` 语句支持复制表结构，不能复制表属性（主键，索引等）。 `CREATE TABLE AS` 语句支持创建新表时自动同步源表数据，但不保证数据导入的原子性。 使用 `CREATE TABLE AS` 语句时，如果源表中包含VARCHR、BPCHAR、NUMERIC（DECIMAL）、BIT、VARBIT类型的列，那么必须手动在SQL语句中显式指定精度， 否则会提示报错。
 
-`CREATE TABLE AS` 语句支持复制列COMMENT（注释），支持复制Binlog属性，不支持复制表COMMENT。
+| 使用 | CREATE TABLE AS |   |
+|---|---|---|
+| CREATE TABLE AS |   | 语句 |
+
+使用 `CREATE TABLE AS` 语句时，如果源表中包含INTERVAL、TIME、TIMETZ、TIMESTAMP、TIMESTAMPTZ的列，那么不可以对这些列指定精度，否则会提示报错。 `CREATE TABLE AS` 语句支持从分区主表或分区子表创建新的非分区表，只能复制表结构并同步数据（从分区主表复制，会同步所有子表的数据），不支持复制分区结构 （分区键约束、继承关系等）成为一张分区表。 `CREATE TABLE AS` 语句支持复制列COMMENT（注释），支持复制Binlog属性，不支持复制表COMMENT。
 
 **命令语法**
 
 | Hologres中 | CREATE TABLE AS | 的命令语法如下。 |
 |---|---|---|
-| --从一张源表复制一张新表 CREATE TABLE [ IF NOT EXISTS ] <new_table_name> AS TABLE <src_table_name> [ WITH [ NO ] DATA ] --从select query复制一张新表 CREATE TABLE [ IF NOT EXISTS ] <new_table_name> AS <select_query> [ WITH [ NO ] DATA ] |  |  |
+| --从一张源表复制一张新表 CREATE TABLE [ IF NOT EXISTS ] <new_table_name> AS TABLE <src_table_name> [ WITH [ NO ] DATA ] --从select query复制一张新表 CREATE TABLE [ IF NOT EXISTS ] <new_table_name> AS <select_query> [ WITH [ NO ] DATA ] |   |   |
 
 **参数说明**
 
 | 参数 | 说明 |
 |---|---|
 | newtablename _ _ | 创建表的表名称（不能创建外部表），只支持固定字符串，不支持字符拼接或函数生成。 |
-
-实时数仓 Hologres
 
 | [ IF NOT EXISTS ] | 判断新创建的表是否已存在，若存在则跳过。 |
 |---|---|
@@ -9275,10 +9786,16 @@ CREATE TABLE AS的功能为：创建一个与源表结构或者查询Query结果
 将非分区表复制成一张新的非分区表。 准备一张源表和数据。
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE public.src_table (
  "a" int8 NOT NULL,
  "b" text NOT NULL,
-PRIMARY KEY (a) ); CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); CALL SET_TABLE_PROPERTY('public.src_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.src_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.src_table', 'time_to_live_in_seconds', '3153600000'); CALL SET_TABLE_PROPERTY('public.src_table', 'distribution_key', 'a'); CALL SET_TABLE_PROPERTY('public.src_table', 'storage_format', 'segment'); COMMIT; INSERT INTO public.src_table VALUES (1,'qaz'),(2,'wsx');
+PRIMARY KEY (a)
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); CALL SET_TABLE_PROPERTY('public.src_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.src_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.src_table', 'time_to_live_in_seconds', '3153600000'); CALL SET_TABLE_PROPERTY('public.src_table', 'distribution_key', 'a'); CALL SET_TABLE_PROPERTY('public.src_table', 'storage_format', 'segment'); COMMIT; INSERT INTO public.src_table VALUES (1,'qaz'),(2,'wsx');
 ```
 
 场景1：从源表创建新表，并自动同步数据。
@@ -9296,10 +9813,15 @@ SELECT * FROM public.new_table; ------a | b --|----- 1 | qaz 2 | wsx
 查看新表的DDL，可以看到，如果源表有主键、not null属性，复制出的新表将不会继承： `--`新表的`DDL`如下：
 
 ```
-select hg_dump_script('public.new_table'); ------------------------------------------- BEGIN;
+select hg_dump_script('public.new_table'); ------------------------------------------- BEGIN; CREATE TABLE public.new_table (
     a int,
     b text
-); CALL set_table_property('public.new_table', 'orientation', 'column'); CALL set_table_property('public.new_table', 'storage_format', 'orc'); CALL set_table_property('public.new_table', 'bitmap_columns', 'b'); CALL set_table_property('public.new_table', 'dictionary_encoding_columns', 'b:auto'); CALL set_table_property('public.new_table', 'time_to_live_in_seconds', '3153600000'); COMMENT ON TABLE public.new_table IS NULL; END;
+```
+
+);
+
+```
+CALL set_table_property('public.new_table', 'orientation', 'column'); CALL set_table_property('public.new_table', 'storage_format', 'orc'); CALL set_table_property('public.new_table', 'bitmap_columns', 'b'); CALL set_table_property('public.new_table', 'dictionary_encoding_columns', 'b:auto'); CALL set_table_property('public.new_table', 'time_to_live_in_seconds', '3153600000'); COMMENT ON TABLE public.new_table IS NULL; END;
 ```
 
 场景2：从源表创建新表，并自动同步数据。若表已经存在则跳过，数据也不会同步。
@@ -9310,15 +9832,15 @@ CREATE TABLE IF NOT EXISTS public.new_table AS TABLE public.src_table; NOTICE: r
 
 场景3：仅复制表结构，不同步数据。
 
-| CREATE TABLE public.new_table AS TABLE public.src_table WITH NO DATA; |  |  |
+| CREATE TABLE public.new_table AS TABLE public.src_table WITH NO DATA; |   |   |
 |---|---|---|
 | 场景4：复制新表并同步 | select | 查询的数据。 |
-| CREATE TABLE public.new_table_2 AS SELECT * FROM public.src_table WHERE a = 1 ; |  |  |
+| CREATE TABLE public.new_table_2 AS SELECT * FROM public.src_table WHERE a = 1 ; |   |   |
 
-从分区父表或者子表复制出一张新的非分区表，分区表只能复制成非分区表。 实时数仓 Hologres 准备一张分区表、分区子表以及表数据。
+从分区父表或者子表复制出一张新的非分区表，分区表只能复制成非分区表。 准备一张分区表、分区子表以及表数据。
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE public.src_table_partitioned (
  "a" int NOT NULL,
  "b" text ,
 PRIMARY KEY (a) ) PARTITION BY LIST(a); CREATE TABLE public.src_table_child1 PARTITION OF public.src_table_partitioned FOR VALUES IN (1); CREATE TABLE public.src_table_child2 PARTITION OF public.src_table_partitioned FOR VALUES IN (2); CREATE TABLE public.src_table_child3 PARTITION OF public.src_table_partitioned FOR VALUES IN (3); COMMIT; INSERT INTO src_table_child1 VALUES (1,'aaa'); INSERT INTO src_table_child2 VALUES (2,'bbb'); INSERT INTO src_table_child3 VALUES (3,'ccc');
@@ -9342,16 +9864,28 @@ SELECT * FROM public.new_table_2; ---------------------------------a | b --|----
 CREATE TABLE public.new_table_3 AS TABLE public.src_table_child1;
 ```
 
-`--`创建源表
+从Select Query的结果复制一张新表，同时设置新表属性。 `--`创建源表
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE public.src_table (
  "a" int8 NOT NULL,
  "b" text NOT NULL,
-PRIMARY KEY (a) ); CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); COMMIT; BEGIN; CREATE TABLE public.new_table AS select * from public.src_table; CALL SET_TABLE_PROPERTY('public.new_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.new_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.new_table', 'time_to_live_in_seconds', '3153600'); CALL SET_TABLE_PROPERTY('public.new_table', 'distribution_key', 'a'); COMMIT;
+PRIMARY KEY (a)
 ```
 
-##### 1.6.3.3. CREATE TABLE LIKE
+);
+
+```
+CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); COMMIT;
+```
+
+`--`从`select query`创建新表，并设置新表属性，自动同步数据
+
+```
+BEGIN; CREATE TABLE public.new_table AS select * from public.src_table; CALL SET_TABLE_PROPERTY('public.new_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.new_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.new_table', 'time_to_live_in_seconds', '3153600'); CALL SET_TABLE_PROPERTY('public.new_table', 'distribution_key', 'a'); COMMIT;
+```
+
+##### 1.6.3.3 CREATE TABLE LIKE
 
 CREATE TABLE LIKE语句用于创建一个同Select Query结果相同的表。本文为您介绍CREATE TABLE LIKE的用法。
 
@@ -9359,23 +9893,22 @@ CREATE TABLE LIKE语句用于创建一个同Select Query结果相同的表。本
 
 Hologres V0.9及以下版本， `CREATE TABLE LIKE` 语句仅支持复制表结构，不支持复制表属性（主键、索引等）。请在Hologres管理控制台的实例详情页查看当前版本。 Hologres V0.10版本开始，支持 `CREATE TABLE LIKE` 语句复制表结构和表属性（主键、索引等）。但仅限于 `SELECT * FROM TABLE` 语法。通过执行以下命令可以复制表属性：
 
-| SET hg_experimental_enable_create_table_like_properties=true; |  |  |
+| SET hg_experimental_enable_create_table_like_properties=true; |   |   |
 |---|---|---|
 | 使用 | CREATE TABLE LIKE | 创建的表不会自动同步源表的数据。 |
 
 查询语句中的每一个目标列都要有一个不重复的别名，否则建表语句就会生成同列名的语句导致执行报错。示例如下：
 
 ```
-CALL hg_create_table_like('new_table', 'select *, 1 as c, ''a'' as c from src_table'); ERROR: column "c" specified more than once "a" integer, "b" text, "c" integer, "c" text );" PL/pgSQL function hg_create_table_like(text,text) line 22 at EXECUTE
+CALL hg_create_table_like('new_table', 'select *, 1 as c, ''a'' as c from src_table'); ERROR: column "c" specified more than once CONTEXT: SQL statement "create table new_table ( "a" integer, "b" text, "c" integer, "c" text );" PL/pgSQL function hg_create_table_like(text,text) line 22 at EXECUTE
 ```
 
-Hologres 2.0及以上版本的 `CREATE TABLE LIKE` 语句支持复制源表的列注释（COMMENT）和Binlog属性。从Hologres 3.0.33版本开始支持复制表COMMENT。
+Hologres 2.0及以上版本的 `CREATE TABLE LIKE` 语句支持复制源表的列注释（COMMENT）和Binlog属性。从Hologres 3.0.33版本开始支持复制表COMMENT。 `CREATE TABLE LIKE` 语句不支持复制表的动态分区属性。
 
 **普通表**
 
-实时数仓 Hologres
 1. **命令格式**
-`--`复制一张普通表，但不能复制表属性
+在Hologres中，普通表 `CREATE TABLE LIKE` 的命令格式如下： `--`复制一张普通表，但不能复制表属性
 
 ```
 CALL hg_create_table_like('new_table_name', 'select_query');
@@ -9387,18 +9920,19 @@ CALL hg_create_table_like('new_table_name', 'select_query');
 SET hg_experimental_enable_create_table_like_properties=true;--开关参数，session级别 CALL hg_create_table_like('new_table_name', 'select * from old_table_name');
 ```
 
-**说明**
+> **说明：** 通过调用 `hg_create_table_like` ，系统会根据 `select_query` 结果的 `schema` 创建一个表名为 `new_table_name` 的表，但不会插入任何数据。
 
-通过调用 `hg_create_table_like` ，系统会根据 `select_query` 结果的 `schema` 创建一个表名为 `new_table_name` 的表，但不会插入任何数据。
 2. **参数说明**
 
-| new_table_name |  |
+| new_table_name |   |
 |---|---|
 | select_query | ： |
 
-| select * from tablename |  | 时， | CREATE TABLE LIKE |
+`new_table_name` ：要创建表的表名（不支持创建外部表），只支持固定字符串，不支持字符拼接或函数生成等。
+
+| select * from tablename |   | 时， | CREATE TABLE LIKE |
 |---|---|---|---|
-| L语句前后，通过 | $$query_sql$$ |  | 改写（推荐使用该用法 |
+| L语句前后，通过 | $$query_sql$$ |   | 改写（推荐使用该用法 |
 
 下：
 
@@ -9406,10 +9940,11 @@ SET hg_experimental_enable_create_table_like_properties=true;--开关参数，se
 CALL HG_CREATE_TABLE_LIKE ('table_name', $$query_sql$$ [, 'partition_clause'])
 ```
 
+old_table_name：需要复制的原表名。
 3. **使用示例**
 如在Hologres中存在如下源表：
 
-| BEGIN; CREATE TABLE public.src_table ( "a" int8 NOT NULL, "b" text NOT NULL, PRIMARY KEY (a) ); CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); CALL SET_TABLE_PROPERTY('public.src_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.src_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.src_table', 'time_to_live_in_seconds', '3153600000'); CALL SET_TABLE_PROPERTY('public.src_table', 'distribution_key', 'a'); CALL SET_TABLE_PROPERTY('public.src_table', 'storage_format', 'segment'); COMMIT; |  |  |
+| BEGIN; CREATE TABLE public.src_table ( "a" int8 NOT NULL, "b" text NOT NULL, PRIMARY KEY (a) ); CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); CALL SET_TABLE_PROPERTY('public.src_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.src_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.src_table', 'time_to_live_in_seconds', '3153600000'); CALL SET_TABLE_PROPERTY('public.src_table', 'distribution_key', 'a'); CALL SET_TABLE_PROPERTY('public.src_table', 'storage_format', 'segment'); COMMIT; |   |   |
 |---|---|---|
 | 在Hologres中 | CREATE TABLE LIKE | 的示例用法如下： |
 
@@ -9419,33 +9954,31 @@ CALL HG_CREATE_TABLE_LIKE ('table_name', $$query_sql$$ [, 'partition_clause'])
 SET hg_experimental_enable_create_table_like_properties=true; CALL hg_create_table_like('new_table', 'select * from src_table');
 ```
 
-创建一个在源表的基础上再增加字段的表 `--`新增一个同b一样的字段c
+创建一个在源表的基础上再增加字段的表 `--`新增一个同`b`一样的字段`c`
 
 ```
 CALL hg_create_table_like('holo_table_1', $$SELECT *, "b" AS c FROM src_table$$);
 ```
 
-#### 分区表
-
 1. **命令格式**
 
 | 在Hologres中，分区表的 | CREATE TABLE LIKE | 的命令格式如下： |
 |---|---|---|
-| --复制一张分区表，但不能复制表属性 CALL hg_create_table_like('new_table_name', 'select_query', 'partition_clause'); |  |  |
+| --复制一张分区表，但不能复制表属性 CALL hg_create_table_like('new_table_name', 'select_query', 'partition_clause'); |   |   |
 
 2. **参数说明**
 new_table_name：要创建表的表名（不支持创建外部表），只支持固定字符串，不支持字符拼接或函数生成等。
 
-| select _query：查询的SQL语句串。当SQL中的内容完全为 select * from tablename 时， 等。如果SQL语句中有较多单引号，可以将$$符号置于SQL语句前后，通过 $$query_sql$$ | select * from tablename |  | 时， | CREATE TABLE LIKE |
+| select _query：查询的SQL语句串。当SQL中的内容完全为 select * from tablename 时， 等。如果SQL语句中有较多单引号，可以将$$符号置于SQL语句前后，通过 $$query_sql$$ | select * from tablename |   | 时， | CREATE TABLE LIKE |
 |---|---|---|---|---|
-|  |  | $$query_sql$$ |  |  |
-| CALL HG_CREATE_TABLE_LIKE ('table_name', $$query_sql$$ [, 'partition_clause']) |  |  |  |  |
+|   |   | $$query_sql$$ |   |   |
+| CALL HG_CREATE_TABLE_LIKE ('table_name', $$query_sql$$ [, 'partition_clause']) |   |   |   |   |
 
 partition_clause：分区相关的语法定义。用于指定分区键，不会自动创建分区子表，需要手动建分区子表。
 3. **使用示例**
-如在Hologres中存在如下源表： 实时数仓 Hologres
+如在Hologres中存在如下源表：
 
-| BEGIN; CREATE TABLE public.src_table ( "a" int8 NOT NULL, "b" text NOT NULL, PRIMARY KEY (a) ); CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); CALL SET_TABLE_PROPERTY('public.src_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.src_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.src_table', 'time_to_live_in_seconds', '3153600000'); CALL SET_TABLE_PROPERTY('public.src_table', 'distribution_key', 'a'); CALL SET_TABLE_PROPERTY('public.src_table', 'storage_format', 'segment'); COMMIT; |  |  |
+| BEGIN; CREATE TABLE public.src_table ( "a" int8 NOT NULL, "b" text NOT NULL, PRIMARY KEY (a) ); CALL SET_TABLE_PROPERTY('public.src_table', 'orientation', 'column'); CALL SET_TABLE_PROPERTY('public.src_table', 'bitmap_columns', 'b'); CALL SET_TABLE_PROPERTY('public.src_table', 'dictionary_encoding_columns', 'b:auto'); CALL SET_TABLE_PROPERTY('public.src_table', 'time_to_live_in_seconds', '3153600000'); CALL SET_TABLE_PROPERTY('public.src_table', 'distribution_key', 'a'); CALL SET_TABLE_PROPERTY('public.src_table', 'storage_format', 'segment'); COMMIT; |   |   |
 |---|---|---|
 | 在Hologres中使用 | CREATE TABLE LIKE | 创建一张分区表示例如下： |
 
@@ -9464,7 +9997,7 @@ CREATE TABLE new_table_child_20201213 PARTITION OF new_table FOR VALUES IN('2020
 **HoloWeb可视化复制表**
 
 HoloWeb提供可视化复制表功能，无需写SQL命令就能复制表，步骤如下。
-1. 进入**HoloWeb**页面，详情请参见《**Hologres****开发指南》**的**连接开发工具** **> HoloWeb**章节。
+1. 进入**HoloWeb**页面，详情请参见**《****Hologres****开发指南》**的**连接开发工具** **> HoloWeb**章节。
 2. 在**HoloWeb**页面顶部菜单栏，单击**元数据管理**。
 3. 在**元数据管理**页面左侧的**已登录实例**列表，鼠标右击要复制的表，选择**复制表结构**。
 4. 在**复制表结构**页签，配置如下参数。
@@ -9472,13 +10005,13 @@ HoloWeb提供可视化复制表功能，无需写SQL命令就能复制表，步�
 | 类别 | 参数 | 说明 |
 |---|---|---|
 | 目标位置 | 表名 | 目标表的表名称，可自定义命名。默认为：源表_copy。 |
-|  | 描述 | 对目标表的描述，可选择是否配置。 |
-|  | 模式 | 目标表所在的SCHEMA，默认为：public。 |
+|   | 描述 | 对目标表的描述，可选择是否配置。 |
+|   | 模式 | 目标表所在的SCHEMA，默认为：public。 |
 | 高级选项 | 是否同步源表属性 | 选择目标表是否同步源表的属性。 说明仅Hologres V0.10及以上版本实例支持同步源表属性，如果您的实例低于V0.10版本，请选择否或升级实例。 |
 
 5. 单击右上角**提交**，完成表复制。
 
-##### 1.6.3.4. ALTER TABLE
+##### 1.6.3.4 ALTER TABLE
 
 ALTER TABLE语句用于修改表，其中对分区父表的修改会自动应用到分区子表中。本文为您介绍ALTER TABLE的用法。
 
@@ -9492,9 +10025,9 @@ Hologres当前对修改表的支持情况如下： 目前支持对表进行重�
 
 **重命名**
 
-ALTER TABLE语句可以对表进行重命名，如果目标表不存在，或者重命名目标表为已存在的表名称，系统均会返回异常。 实时数仓 Hologres
+ALTER TABLE语句可以对表进行重命名，如果目标表不存在，或者重命名目标表为已存在的表名称，系统均会返回异常。
 
-**说明**
+> **说明：** 目前不支持跨Schema对表进行重命名操作。
 
 使用语法 `--`内部表重命名
 
@@ -9522,7 +10055,7 @@ ALTER FOREIGN TABLE public.foreign_holo_test RENAME TO foreign_holo_test_1;
 
 **增加列**
 
-使用语法 `--`新增一列
+ALTER TABLE语句可以给表增加列，仅支持在表的最后一列之后增加新的列。 使用语法 `--`新增一列
 
 ```
 ALTER TABLE IF EXISTS [schema_name.]<table_name> ADD COLUMN <new_column> <data_type>;
@@ -9544,9 +10077,7 @@ ALTER TABLE IF EXISTS public.holo_test ADD COLUMN id int;
 
 Hologres从V2.0版本开始，支持删除列，具体语法如下。 使用限制仅适用于Hologres V2.0及以上版本，如果您的实例是V2.0以下版本，请升级实例。 若您的表是分区表，仅能删除分区父表的列，无法直接删除分区子表的列。对于分区子表，在父表的列删除后自动删除。此操作开销较高，建议在业务低峰期执行。 仅只有表Owner才能删除列，若您的数据库使用的是简单权限模型，需要设置为developer用户组权限。 设置了Primary Key、Distribution Key、Clustering Key、Event_time_column属性的列无法删除。 不支持删除外部表的列。 删除JSONB相关列后，相关JSONB索引会一并删除。 删除proxima_vector列时，需要指定 `cascade` 参数。 删除Serial列时，如果Sequence是基于这一列创建的，则Sequence会一并被删除。 如果表创建了物化视图，不支持删除源表，也不支持删除源表中被物化视图引用的列。 使用语法
 
-**重要**
-
-Hologres V2.0以下版本不支持删除列。
+> **重要：** Hologres V2.0以下版本不支持删除列。
 
 ```
 set hg_experimental_enable_drop_column = on; --通过该GUC打开功能 ALTER TABLE IF EXISTS <table_name> DROP COLUMN [ IF EXISTS ] <column> [ RESTRICT | CASCADE ]
@@ -9555,13 +10086,19 @@ set hg_experimental_enable_drop_column = on; --通过该GUC打开功能 ALTER TA
 使用示例 `--`建表
 
 ```
-begin;
+begin; CREATE TABLE tbl (
  "id" bigint NOT NULL,
  "name" text NOT NULL,
  "age" bigint,
  "class" text NOT NULL,
  "reg_timestamp" timestamptz NOT NULL,
-PRIMARY KEY (id,age) ); call set_table_property('tbl', 'orientation', 'column'); call set_table_property('tbl', 'distribution_key', 'id'); call set_table_property('tbl', 'clustering_key', 'age'); call set_table_property('tbl', 'event_time_column', 'reg_timestamp'); call set_table_property('tbl', 'bitmap_columns', 'name,class'); call set_table_property('tbl', 'dictionary_encoding_columns', 'class:auto'); commit;
+PRIMARY KEY (id,age)
+```
+
+);
+
+```
+call set_table_property('tbl', 'orientation', 'column'); call set_table_property('tbl', 'distribution_key', 'id'); call set_table_property('tbl', 'clustering_key', 'age'); call set_table_property('tbl', 'event_time_column', 'reg_timestamp'); call set_table_property('tbl', 'bitmap_columns', 'name,class'); call set_table_property('tbl', 'dictionary_encoding_columns', 'class:auto'); commit;
 ```
 
 `--`删除指定列 set hg_experimental_enable_drop_column = on;--Beta阶段，需要通过`GUC`参数打开这个功能
@@ -9570,7 +10107,7 @@ PRIMARY KEY (id,age) ); call set_table_property('tbl', 'orientation', 'column');
 ALTER TABLE IF EXISTS tbl DROP COLUMN name;
 ```
 
-查询表： 实时数仓 Hologres
+查询表：
 
 ```
 SELECT*FROMtbl;
@@ -9586,9 +10123,12 @@ id age class reg_timestamp ----+-----+---------+--------------
 
 Hologres从V1.1版本开始，支持重命名列，具体语法如下。
 
-**说明**
+> **说明：** 如果您的实例是V1.1以下版本，请您升级实例。
+> 若您的表是分区表，由于存在分区子表和父表数据结构一致性的要求，仅支持重命名分区父表的列，不支持单独重命名某个分区子表的列。重命名分区父表的列， 所有子表自动生效。
+> 不支持同时重命名多个表的列名称。
+> 仅只有表Owner才能重命名列，若您的数据库使用的是简单权限模型，需要设置为developer用户组权限。
 
-如果您的实例是V1.1以下版本，请您升级实例。 若您的表是分区表，由于存在分区子表和父表数据结构一致性的要求，仅支持重命名分区父表的列，不支持单独重命名某个分区子表的列。重命名分区父表的列， 所有子表自动生效。 不支持同时重命名多个表的列名称。 仅只有表Owner才能重命名列，若您的数据库使用的是简单权限模型，需要设置为developer用户组权限。 使用语法
+使用语法
 
 ```
 ALTER TABLE [schema_name.]<table_name> RENAME COLUMN <old_column_name> TO <new_column_name>;
@@ -9614,7 +10154,7 @@ ALTER TABLE [schema_name.]<table_name> ALTER COLUMN <column> SET DEFAULT <expres
 ALTER TABLE [schema_name.]<table_name> ALTER COLUMN <column> DROP DEFAULT;
 ```
 
-使用示例 `--`修改表`holo_test`中`id`列的默认值为0
+使用示例 `--`修改表`holo_test`中`id`列的默认值为`0`
 
 ```
 ALTER TABLE holo_test ALTER COLUMN id SET DEFAULT 0;
@@ -9640,15 +10180,13 @@ CALL SET_TABLE_PROPERTY('[schema_name.]<table_name>', 'dictionary_encoding_colum
 CALL UPDATE_TABLE_PROPERTY('[schema_name.]<table_name>', 'dictionary_encoding_columns', '[columnName{:[on|off|auto]}[,...]]');
 ```
 
-**重要**
-
-Hologres V2.0版本起，针对UPDATE_TABLE_PROPERTY语法进行了优化，运行如下语句时，表的 `dictionary_encoding_columns` 属性保持不变。Hologres V2.0以前版本则是会清空表的 `dictionary_encoding_columns` 属性。
+> **重要：** Hologres V2.0版本起，针对UPDATE_TABLE_PROPERTY语法进行了优化，运行如下语句时，表的 `dictionary_encoding_columns` 属性保持不变。Hologres V2.0以前版本则是会清空表的 `dictionary_encoding_columns` 属性。
 
 ```
 CALL UPDATE_TABLE_PROPERTY('<table_name>','dictionary_encoding_columns','');
 ```
 
-实时数仓 Hologres 参数说明
+参数说明
 
 | 参数 | 说明 |
 |---|---|
@@ -9660,21 +10198,33 @@ CALL UPDATE_TABLE_PROPERTY('<table_name>','dictionary_encoding_columns','');
 使用示例对a列显示创建dictionary，b列自动选择是否创建dictionary，c、d两列不创建dictionary。
 
 ```
+CREATE TABLE dwd.holo_test (
  a text NOT NULL,
  b text NOT NULL,
  c text NOT NULL,
  d text
-); CALL UPDATE_TABLE_PROPERTY('dwd.holo_test','dictionary_encoding_columns','a:on,b:auto');
+```
+
+);
+
+```
+CALL UPDATE_TABLE_PROPERTY('dwd.holo_test','dictionary_encoding_columns','a:on,b:auto');
 ```
 
 对a列显式关闭dictionary，系统也会自动给b、c、d字段加上dictionary索引。
 
 ```
+CREATE TABLE dwd.holo_test (
  a text NOT NULL,
  b text NOT NULL,
  c text NOT NULL,
  d text
-); CALL SET_TABLE_PROPERTY('dwd.holo_test','dictionary_encoding_columns','a:off');
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('dwd.holo_test','dictionary_encoding_columns','a:off');
 ```
 
 修改**bitmap_columns**比特编码列 Hologres从V0.9版本开始支持通过执行以下语句修改**bitmap_columns**，无需再重新建表即可修改表属性。 使用语法 `--` 修改`bitmap_columns`（所有版本） `--`修改全量
@@ -9689,9 +10239,7 @@ CALL SET_TABLE_PROPERTY('[schema_name.]<table_name>', 'bitmap_columns', '[column
 CALL UPDATE_TABLE_PROPERTY('[schema_name.]<table_name>', 'bitmap_columns', '[columnName{:[on|off]}[,...]]');
 ```
 
-**重要**
-
-Hologres V2.0版本起，针对UPDATE_TABLE_PROPERTY语法进行了优化，运行如下语句时，表的 `bitmap_columns` 属性保持不变。Hologres V2.0以前版本则是会清空表的 `bitmap_columns` 属性。
+> **重要：** Hologres V2.0版本起，针对UPDATE_TABLE_PROPERTY语法进行了优化，运行如下语句时，表的 `bitmap_columns` 属性保持不变。Hologres V2.0以前版本则是会清空表的 `bitmap_columns` 属性。
 
 ```
 CALL UPDATE_TABLE_PROPERTY('<table_name>','bitmap_columns','');
@@ -9705,24 +10253,36 @@ CALL UPDATE_TABLE_PROPERTY('<table_name>','bitmap_columns','');
 | on | 当前字段打开bitmap _columns。 |
 | off | 当前字段关闭bitmap _columns。 |
 
-实时数仓 Hologres 使用示例对a列启动bitmap索引，对b、c、d不启动bitmap索引。
+使用示例对a列启动bitmap索引，对b、c、d不启动bitmap索引。
 
 ```
+CREATE TABLE dwd.holo_test (
  a text NOT NULL,
  b text NOT NULL,
  c text NOT NULL,
  d text
-); CALL UPDATE_TABLE_PROPERTY('dwd.holo_test','bitmap_columns','a:on');
+```
+
+);
+
+```
+CALL UPDATE_TABLE_PROPERTY('dwd.holo_test','bitmap_columns','a:on');
 ```
 
 对b关闭bitmap索引，系统会自动给a、c、d创建bitmap索引。
 
 ```
+CREATE TABLE dwd.holo_test_1 (
  a text NOT NULL,
  b text NOT NULL,
  c text NOT NULL,
  d text
-); CALL SET_TABLE_PROPERTY('dwd.holo_test_1','bitmap_columns','b:off');
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('dwd.holo_test_1','bitmap_columns','b:off');
 ```
 
 修改表数据的生存时间使用语法
@@ -9737,13 +10297,15 @@ call set_table_property('[schema_name.]<table_name>', 'time_to_live_in_seconds',
 |---|---|
 | timetoliveinseconds _ _ _ _ | 简称TTL，表数据的生存时间，单位为秒，必须是正整数。 |
 
-**说明**
+> **说明：** 表数据生存时间是按照数据写入Hologres开始，超过该指定时间，表数据将会在某个时间内被删除，但并不是精准的时间。
 
-表数据生存时间是按照数据写入Hologres开始，超过该指定时间，表数据将会在某个时间内被删除，但并不是精准的时间。 使用示例
+使用示例
 
 ```
 call set_table_property('dwd.holo_test', 'time_to_live_in_seconds', '600');
 ```
+
+**修改表所在Schema**
 
 Hologres从 V1.3版本开始，支持修改表所在的Schema，例如将表从**schema1**移动至**schema2**，无须重新建表导数据，实现快速表路径切换。 使用语法
 
@@ -9756,6 +10318,7 @@ ALTER TABLE [ IF EXISTS ] [<schema>.]<table_name>
 使用示例将表名称为**tb1**的表从**public**Schema移动至**testschema**Schema下。
 
 ```
+ALTER TABLE IF EXISTS public.tbl
     SET SCHEMA testschema;
 ```
 
@@ -9765,11 +10328,12 @@ HoloWeb提供可视化编辑表功能，无需写SQL命令就能修改表字段�
 1. 进入**HoloWeb**页面，详情请参见HoloWeb简介。
 2. 在**HoloWeb**页面顶部菜单栏，单击**元数据管理**。
 3. 在**元数据管理**页面左侧的**已登录实例**列表，双击要修改的目标表。
-实时数仓 Hologres
 4. 在表的详情页面，可视化修改表的字段和部分表属性。
 5. 单击右上角的**提交表**，完成表修改。
 
-##### 1.6.3.5. DROP TABLE
+##### 1.6.3.5 DROP TABLE
+
+DROP TABLE语句用于删除表。本文为您介绍DROP TABLE用法。
 
 **语法**
 
@@ -9777,7 +10341,7 @@ HoloWeb提供可视化编辑表功能，无需写SQL命令就能修改表字段�
 DROP TABLE [ IF EXISTS ] table_name [, ...];
 ```
 
-**说明**
+> **说明：** `DROP TABLE` 支持一次删除多个表。
 
 参数说明如下表所示。
 
@@ -9786,7 +10350,7 @@ DROP TABLE [ IF EXISTS ] table_name [, ...];
 | IF EXISTS | 如果指定 IF EXISTS ，无论目标表是否存在，执行删除语句后系统都会返回成功。 如果不指定 IF EXISTS ，当目标表不存在时，系统会返回 ERROR: table "non_exist_table" does not exist 报错。 |
 | tablename _ | 需要删除的表名称。 |
 
-|  | "non_exist_table" does not exist |
+|   | "non_exist_table" does not exist |
 |---|---|
 
 **示例**
@@ -9797,7 +10361,7 @@ DROP TABLE [ IF EXISTS ] table_name [, ...];
 DROP TABLE holo_test;
 ```
 
-##### 1.6.3.6. 生成列（3.2内核）
+##### 1.6.3.6 生成列（3.2内核）
 
 生成列（Generated Columns）是由其他列计算得到的特殊的列，分为存储生成列（Stored Generated Columns）和虚拟生成列（Virtual Generated Columns）。 Hologres支持存储生成列，即在数据写入或更新时自动进行计算，并实际占用存储空间。目前暂不支持虚拟生成列。本文为您介绍Hologres中存储生成列的使用方法。
 
@@ -9810,22 +10374,23 @@ DROP TABLE holo_test;
 通过GENERATED ALWAYS AS子句声明生成列，并通过STORED关键字来指定存储生成列。 创建包含生成列的表。
 
 ```
+CREATE TABLE generated_col_t (
     [...,]
     col1 INT,
     col2 INT GENERATED ALWAYS AS (col1 + 1) STORED
-);
 ```
 
-创建包含生成列的逻辑分区表，并将生成列作为分区键。 实时数仓 Hologres
+); 创建包含生成列的逻辑分区表，并将生成列作为分区键。
 
 ```
+CREATE TABLE generated_col_logical_part (
     a TEXT,
     b INT,
     ts TIMESTAMP NOT NULL,
     d TIMESTAMP GENERATED ALWAYS AS (date_trunc('day', ts)) STORED NOT NULL
 ```
 
-)
+`)`
 
 ```
 LOGICAL PARTITION BY LIST(d);
@@ -9833,30 +10398,31 @@ LOGICAL PARTITION BY LIST(d);
 
 **注意事项**
 
-定义生成列时，只支持使用IMMUTABLE的函数或表达式，不支持非IMMUTABLE函数，如CURRENT_DATE、RANDOM等。 定义生成列时，表达式不支持引用其他生成列，不支持对生成列定义 `default` 关键字。 创建分区表时，支持将逻辑分区表的分区键设为生成列，不支持将物理分区表的分区键设为生成列。而分区表中的普通列均支持设为生成列。 支持将生成列设为Hologres各类索引，包括主键、分布键、分段键、聚簇索引、位图索引和字典编码列。 不支持ADD的Column为生成列。 支持DROP生成列。但在生成列未被DROP之前，不支持DROP该生成列的引用列。 支持RENAME生成列名。 DML/DQL时数据写入或更新含生成列的表时，允许不指定生成列或使用 `default` 关键字，但不支持指定生成列直接写入。 数据更新时，如果生成列或其引用的列是分布键（distribution_key），则不支持更新该列。 通过Fixed Plan进行数据更新时，如果主键为生成列，则不支持更新生成列的引用列。 通过Fixed Plan进行部分列更新时，如果生成的列引用多个普通列，则不支持只更新其中的部分列。 其他方式的操作均支持包含生成列的表，包括通过HQE引擎执行的读写、通过Fixed Plan执行的读写以及Copy等方式。 其他操作 CREATE TABLE LIKE创建时，支持原表有生成列，需开启 `hg_experimental_enable_create_table_like_properties` 参数，以保留生成列属性。
+CREATE TABLE时定义生成列时，只支持使用IMMUTABLE的函数或表达式，不支持非IMMUTABLE函数，如CURRENT_DATE、RANDOM等。 定义生成列时，表达式不支持引用其他生成列，不支持对生成列定义 `default` 关键字。 创建分区表时，支持将逻辑分区表的分区键设为生成列，不支持将物理分区表的分区键设为生成列。而分区表中的普通列均支持设为生成列。 创建外部表（CREATE FOREIGN TABLE）时，不支持定义生成列。 支持将生成列设为Hologres各类索引，包括主键、分布键、分段键、聚簇索引、位图索引和字典编码列。 ALTER TABLE时不支持ADD的Column为生成列。 支持DROP生成列。但在生成列未被DROP之前，不支持DROP该生成列的引用列。 支持RENAME生成列名。 DML/DQL时数据写入或更新含生成列的表时，允许不指定生成列或使用 `default` 关键字，但不支持指定生成列直接写入。 数据更新时，如果生成列或其引用的列是分布键（distribution_key），则不支持更新该列。 通过Fixed Plan进行数据更新时，如果主键为生成列，则不支持更新生成列的引用列。 通过Fixed Plan进行部分列更新时，如果生成的列引用多个普通列，则不支持只更新其中的部分列。 其他方式的操作均支持包含生成列的表，包括通过HQE引擎执行的读写、通过Fixed Plan执行的读写以及Copy等方式。 其他操作 CREATE TABLE LIKE创建时，支持原表有生成列，需开启 `hg_experimental_enable_create_table_like_properties` 参数，以保留生成列属性。 CREATE TABLE AS创建时，不支持原表有生成列。
 
 **使用示例**
 
 1. 新建带有生成列的表。
 
 ```
+CREATE TABLE generated_col_t (
     id INT PRIMARY KEY,
     col1 INT,
     col2 INT GENERATED ALWAYS AS (col1 + 1) STORED
-);
 ```
 
+);
 2. 数据导入。
 支持数据导入全部非生成列。示例如下：
 
-| INSERT INTO generated_col_t VALUES (1, 1); INSERT INTO generated_col_t(id, col1) VALUES (2, 2); |  |  |  |  |
+| INSERT INTO generated_col_t VALUES (1, 1); INSERT INTO generated_col_t(id, col1) VALUES (2, 2); |   |   |   |   |
 |---|---|---|---|---|
-| 通过查询命令 | SELECT * FROM generated_col_t; |  |  | 显示结果如下。 |
-| id col1 col2 1 1 2 2 2 3 |  |  |  |  |
-| 支持数据导入时对生成列使用 |  | default | 关键字。示例如下： |  |
-| INSERT INTO generated_col_t VALUES (3, 3, default); INSERT INTO generated_col_t(id, col1, col2) VALUES (4, 4, default); |  |  |  |  |
-| 通过查询命令 | SELECT * FROM generated_col_t; |  |  | 显示结果如下。 |
-| id col1 col2 4 4 5 2 2 3 3 3 4 1 1 2 |  |  |  |  |
+| 通过查询命令 | SELECT * FROM generated_col_t; |   |   | 显示结果如下。 |
+| id col1 col2 1 1 2 2 2 3 |   |   |   |   |
+| 支持数据导入时对生成列使用 |   | default | 关键字。示例如下： |   |
+| INSERT INTO generated_col_t VALUES (3, 3, default); INSERT INTO generated_col_t(id, col1, col2) VALUES (4, 4, default); |   |   |   |   |
+| 通过查询命令 | SELECT * FROM generated_col_t; |   |   | 显示结果如下。 |
+| id col1 col2 4 4 5 2 2 3 3 3 4 1 1 2 |   |   |   |   |
 
 **不支持**对指定生成列进行导入。示例如下：
 
@@ -9877,22 +10443,22 @@ INSERT INTO generated_col_t VALUES (5, 5, 6); INSERT INTO generated_col_t(id, co
 UPDATE generated_col_t SET col1 = 2 WHERE id = 1;
 ```
 
-实时数仓 Hologres
-
-| 通过查询命令 | SELECT * FROM generated_col_t; |  |  | 显示结果如下。 |
+| 通过查询命令 | SELECT * FROM generated_col_t; |   |   | 显示结果如下。 |
 |---|---|---|---|---|
-| id col1 col2 2 2 3 3 3 4 4 4 5 1 2 3 -- 该列数据已发生变化 |  |  |  |  |
-| 支持更新数据时对生成列使用 |  | default | 关键字。示例如下： |  |
-| UPDATE generated_col_t SET col1 = 3, col2 = default WHERE id = 2; |  |  |  |  |
-| 通过查询命令 | SELECT * FROM generated_col_t; |  |  | 显示结果如下。 |
-| id col1 col2 3 3 4 2 3 4 -- 该列数据已发生变化 4 4 5 1 2 3 |  |  |  |  |
+| id col1 col2 2 2 3 3 3 4 4 4 5 1 2 3 -- 该列数据已发生变化 |   |   |   |   |
+| 支持更新数据时对生成列使用 |   | default | 关键字。示例如下： |   |
+| UPDATE generated_col_t SET col1 = 3, col2 = default WHERE id = 2; |   |   |   |   |
+| 通过查询命令 | SELECT * FROM generated_col_t; |   |   | 显示结果如下。 |
+| id col1 col2 3 3 4 2 3 4 -- 该列数据已发生变化 4 4 5 1 2 3 |   |   |   |   |
 
 **不支持**对指定生成列进行更新。示例如下：
 
-| UPDATE generated_col_t SET col2 = 4 WHERE id = 3; |  |  |  |  |  |  |  |  |
+| UPDATE generated_col_t SET col2 = 4 WHERE id = 3; |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-| 重要会返回报错信息 ERROR: column "col2" can only be updated to DEFAULT Detail: Column "col2" is a generated column. |  |  |  |  |  |  |  |  |
+| 重要会返回报错信息 ERROR: column "col2" can only be updated to DEFAULT Detail: Column "col2" is a generated column. |   |   |   |   |   |   |   |   |
 | 过以下SQL查询函数在特定参数类型下是否为 | IMMUTABLE | 。例如： | TO_CHAR | 函数仅在输入为 | TIMESTAMP WITH TIME ZONE | 类型时为 | IMMUTABLE | ，因此在生成列 |
+
+中使用该函数时，必须确保参数类型匹配。
 
 ```
 SELECT n.nspname AS "Schema",
@@ -9906,6 +10472,8 @@ SELECT n.nspname AS "Schema",
   ELSE 'func'
  END AS "Type",
  CASE
+  WHEN p.provolatile = 'i' THEN 'immutable'
+  WHEN p.provolatile = 's' THEN 'stable'
   WHEN p.provolatile = 'v' THEN 'volatile'
  END AS "Volatility",
  CASE
@@ -9932,17 +10500,17 @@ WHERE p.proname OPERATOR(pg_catalog.~) '^(TO_CHAR)$' COLLATE pg_catalog.default
 ORDER BY 1, 2, 4;
 ```
 
-#### 1.6.4. 分区表
+#### 1.6.4 分区表
 
-##### 1.6.4.1. 逻辑分区表（3.2内核）
+##### 1.6.4.1 逻辑分区表（3.2内核）
 
-###### 1.6.4.1.1. CREATE LOGICAL PARTITION TABLE（3.2内核）
+###### 1.6.4.1.1 CREATE LOGICAL PARTITION TABLE（3.2内核）
 
 Hologres 3.2内核版本支持逻辑分区表（LOGICAL PARTITION TABLE），即父表属于物理表，而子表为逻辑概念。本文介绍CREATE LOGICAL PARTITION TABLE的用法。
 
 **使用限制**
 
-仅Hologres 3.2内核版本的实例支持逻辑分区表。 逻辑分区表仅支持 `LIST` 分区，支持选择不超过两列的分区键。 逻辑分区表的分区键支持的类型为：INT、TEXT、VARCHAR、DATE、TIMESTAMP、TIMESTAMPTZ。 逻辑分区表的分区键需要设为非空（NOT NULL）属性。 逻辑分区表的分区键支持生成列。 逻辑分区表单表支持的分区数量上限为5200个，数据库支持的逻辑分区总数上限为20万个。 实时数仓 Hologres 由于逻辑分区表写入数据时会自动创建对应分区，存在以下限制与建议： 建议优化数据写入任务和数据质量，尽可能避免脏数据（如按天分区时避免有非 `00:00:00` 时刻的数据出现），以免分区数量过度膨胀。 建议按分区串行写入，避免同时写入过多分区。 单表的导入任务有如下限制： 批量导入时，单个导入任务支持导入的分区数上限为50个，超出将报错 `Bulkload partition count exceed limit, partition count is xxx, limit is xxx` 。 通过Fixed Plan导入时，单表同时写入的分区数超过30时，新的写入分区请求将触发流控，等待若干秒后自动提交通过Fixed Plan导入时，单表同时写入的分区数超过100时，新的写入分区请求将报错 `mem partition count exceed reject limit` 。 实例/计算组级别有如下流控机制： 每分钟新建分区数超过50时，新的新建分区请求将触发流控，等待若干秒后自动提交。 每分钟新建分区数超过100时，新的新建分区请求将报错 `mem partition count exceed reject limit` 。 内存表中，通过Fixed Plan同时写入的分区总数（单表写入分区数 × Shard数 ÷ Worker数，行列共存表需要再乘2，按表求和）达到500时，新的写入分区请求将触发流控，等待若干秒后自动提交。 内存表中，通过Fixed Plan同时写入的分区总数（单表写入分区数 × Shard数 ÷ Worker数，行列共存表需要再乘2，按表求和）达到5000时，新的写入分区请求将
+仅Hologres 3.2内核版本的实例支持逻辑分区表。 逻辑分区表仅支持 `LIST` 分区，支持选择不超过两列的分区键。 逻辑分区表的分区键支持的类型为：INT、TEXT、VARCHAR、DATE、TIMESTAMP、TIMESTAMPTZ。 逻辑分区表的分区键需要设为非空（NOT NULL）属性。 逻辑分区表的分区键支持生成列。 逻辑分区表单表支持的分区数量上限为5200个，数据库支持的逻辑分区总数上限为20万个。 由于逻辑分区表写入数据时会自动创建对应分区，存在以下限制与建议： 建议优化数据写入任务和数据质量，尽可能避免脏数据（如按天分区时避免有非 `00:00:00` 时刻的数据出现），以免分区数量过度膨胀。 建议按分区串行写入，避免同时写入过多分区。 单表的导入任务有如下限制： 批量导入时，单个导入任务支持导入的分区数上限为50个，超出将报错 `Bulkload partition count exceed limit, partition count is xxx, limit is xxx` 。 通过Fixed Plan导入时，单表同时写入的分区数超过30时，新的写入分区请求将触发流控，等待若干秒后自动提交通过Fixed Plan导入时，单表同时写入的分区数超过100时，新的写入分区请求将报错 `mem partition count exceed reject limit` 。 实例/计算组级别有如下流控机制： 每分钟新建分区数超过50时，新的新建分区请求将触发流控，等待若干秒后自动提交。 每分钟新建分区数超过100时，新的新建分区请求将报错 `mem partition count exceed reject limit` 。 内存表中，通过Fixed Plan同时写入的分区总数（单表写入分区数 × Shard数 ÷ Worker数，行列共存表需要再乘2，按表求和）达到500时，新的写入分区请求将触发流控，等待若干秒后自动提交。 内存表中，通过Fixed Plan同时写入的分区总数（单表写入分区数 × Shard数 ÷ Worker数，行列共存表需要再乘2，按表求和）达到5000时，新的写入分区请求将
 
 ```
 报错 mem partition count exceed reject limit 。
@@ -9952,27 +10520,29 @@ Hologres 3.2内核版本支持逻辑分区表（LOGICAL PARTITION TABLE），即
 
 不建议单分区数据量过小（如小于1亿条），否则查询加速效果不明显，且更容易生成较多小文件。可以选择更大粒度的分区。 如果您需要经常对某分区数据进行整体替换，包括执行TRUNCATE操作或INSERT OVERWRITE操作，建议使用分区表，效果更好，且可以避免大范围的删除操作。 TRUNCATE操作不支持生成Binlog，您需要在Session级别执行 `SET hg_experimental_generate_binlog = off` 命令。 逻辑分区表无需手动创建分区，其分区是否存在取决于分区中是否有数据。当分区中数据均被删除后，分区自动删除。
 
-**说明**
-
-由于Hologres的数据清理为异步操作，因此分区也会异步删除。
+> **说明：** 由于Hologres的数据清理为异步操作，因此分区也会异步删除。
 
 **创建逻辑分区表**
 
 **命令格式**
 
-**说明**
+> **说明：** 逻辑分区表拥有哪些分区，由表中的数据决定。因此，您无需手动创建或删除分区。
 
-逻辑分区表拥有哪些分区，由表中的数据决定。因此，您无需手动创建或删除分区。 `--` 创建逻辑分区父表语句
+`--` 创建逻辑分区父表语句
 
-```xml
+```
 CREATE TABLE [IF NOT EXISTS] [<schema_name>.]<table_name> ([
-  {
-   <column_name> <column_type> [ <column_constraints>, [...]]
-   [, ...]
-  }
 ```
 
-`])`
+`{`
+
+```xml
+   <column_name> <column_type> [ <column_constraints>, [...]]
+   | <table_constraints>
+   [, ...]
+```
+
+`}` `])`
 
 ```xml
 LOGICAL PARTITION BY LIST(<partition_column_1> [, <partition_column_2>]) [WITH(
@@ -9995,15 +10565,11 @@ LOGICAL PARTITION BY LIST(<partition_column_1> [, <partition_column_2>]) [WITH(
 | propertyname _ | 需要对逻辑分区表设置的表属性名称。 |
 | propertyvalue _ | 表属性设置的值。 |
 
-实时数仓 Hologres
-
 **表属性说明**
 
 逻辑分区父表支持如下表属性。
 
-**说明**
-
-由于逻辑分区表的父表为物理表，分区仅为逻辑概念，因此不支持为分区单独设置下列表属性。
+> **说明：** 由于逻辑分区表的父表为物理表，分区仅为逻辑概念，因此不支持为分区单独设置下列表属性。
 
 | 表属性 | 说明 |
 |---|---|
@@ -10026,9 +10592,10 @@ LOGICAL PARTITION BY LIST(<partition_column_1> [, <partition_column_2>]) [WITH(
 
 **使用示例**
 
-将普通列ds设置为分区键。 实时数仓 Hologres
+将普通列ds设置为分区键。
 
 ```
+CREATE TABLE public.hologres_logical_parent_1 (
     a TEXT,
     b INT,
     c TIMESTAMP,
@@ -10042,12 +10609,12 @@ LOGICAL PARTITION BY LIST (ds) WITH (
     partition_require_filter = TRUE,
     binlog_level = 'replica',
     partition_generate_binlog_window = '3 day'
-);
 ```
 
-将生成列ds设置为分区键。
+); 将生成列ds设置为分区键。
 
 ```
+CREATE TABLE public.hologres_logical_parent_2 (
     a TEXT,
     b INT,
     c TIMESTAMP,
@@ -10061,12 +10628,12 @@ LOGICAL PARTITION BY LIST (ds) WITH (
     partition_require_filter = TRUE,
     binlog_level = 'replica',
     partition_generate_binlog_window = '3 day'
-);
 ```
 
-设置两列分区键。
+); 设置两列分区键。
 
 ```
+CREATE TABLE public.hologres_logical_parent_3 (
     a TEXT,
     b INT,
     yy TEXT NOT NULL,
@@ -10075,8 +10642,9 @@ LOGICAL PARTITION BY LIST (yy, mm) WITH (
     orientation = 'column',
     distribution_key = 'b',
     partition_require_filter = TRUE
-);
 ```
+
+);
 
 **逻辑分区表数据管理**
 
@@ -10089,7 +10657,7 @@ LOGICAL PARTITION BY LIST (yy, mm) WITH (
 **写入数据至父表**
 
 ```
-VALUES
+INSERT INTO public.hologres_logical_parent_2 VALUES
     ('a', 1, '2025-03-16 10:00:00'),
     ('b', 2, '2025-03-17 11:00:00'),
     ('c', 3, '2025-03-18 12:00:00'),
@@ -10099,47 +10667,61 @@ VALUES
 
 **清理父表数据**
 
+`--` 使用`DELETE`命令清理
+
 ```
-DELETE FROM public.hologres_logical_parent_2 WHERE ds = '2025-03-20'; SET hg_experimental_generate_binlog = off; TRUNCATE public.hologres_logical_parent_2;
+DELETE FROM public.hologres_logical_parent_2 WHERE ds = '2025-03-20';
+```
+
+`--` 使用`TRUNCATE`命令清理
+
+```
+SET hg_experimental_generate_binlog = off; TRUNCATE public.hologres_logical_parent_2;
 ```
 
 **分区数据管理**
 
-逻辑分区表也支持指定分区进行数据管理操作。 导入数据至逻辑分区。如果待导入的数据与指定的分区不匹配，则忽略不符合指定分区的数据。 实时数仓 Hologres `--` 指定分区并导入
+逻辑分区表也支持指定分区进行数据管理操作。 导入数据至逻辑分区。如果待导入的数据与指定的分区不匹配，则忽略不符合指定分区的数据。 `--` 指定分区并导入
 
 ```
-PARTITION (ds = '2025-03-16') VALUES
+INSERT INTO public.hologres_logical_parent_1 PARTITION (ds = '2025-03-16') VALUES
     ('a', 1, '2025-03-16 10:00:00', '2025-03-16');
 ```
 
 `--` 数据与分区不匹配时，不符合指定分区的数据不写入，不产生报错
 
 ```
-PARTITION (ds = '2025-03-16') VALUES
+INSERT INTO public.hologres_logical_parent_1 PARTITION (ds = '2025-03-16') VALUES
     ('a', 3, '2025-03-16 10:00:00', '2025-03-16'),
     ('b', 2, '2025-03-17 11:00:00', '2025-03-17');
 ```
 
-清理分区数据。 计算组DML自动路由功能暂不支持自动路由指定分区的TRUNCATE，需要使用主（Leader）计算组执行。
+清理分区数据。 计算组DML自动路由功能暂不支持自动路由指定分区的TRUNCATE，需要使用主（Leader）计算组执行。 `--` 使用`DELETE`命令清理
 
 ```
-DELETE FROM public.hologres_logical_parent_1 WHERE ds = '2025-03-16' or ds = '2025-03-17'; SET hg_experimental_generate_binlog = off; TRUNCATE public.hologres_logical_parent_1 PARTITION (ds = '2025-03-16') PARTITION (ds = '2025-03-17');
+DELETE FROM public.hologres_logical_parent_1 WHERE ds = '2025-03-16' or ds = '2025-03-17';
+```
+
+`--` 使用`TRUNCATE`命令清理
+
+```
+SET hg_experimental_generate_binlog = off; TRUNCATE public.hologres_logical_parent_1 PARTITION (ds = '2025-03-16') PARTITION (ds = '2025-03-17');
 ```
 
 **逻辑分区表查询**
 
 与物理分区表不同的是，逻辑分区表支持配置partition_require_filter属性，如果该属性配置为 `TRUE` ，则该逻辑分区表在查询时，查询语句必须包含分区过滤条件。 包含分区过滤条件的逻辑分区表查询。
 
-| SELECT * FROM public.hologres_logical_parent_1 WHERE ds = '2025-03-16'; |  |  |
+| SELECT * FROM public.hologres_logical_parent_1 WHERE ds = '2025-03-16'; |   |   |
 |---|---|---|
 | 不含分区过滤条件的逻辑分区表查询，要求父表的partition require filter属性为 _ _ | FALSE | 。 |
-| SELECT * FROM public.hologres_logical_parent_1; |  |  |
+| SELECT * FROM public.hologres_logical_parent_1; |   |   |
 
 **其他操作**
 
 Hologres提供如下系统表或系统函数，用于查询逻辑分区表的元数据信息。
-**hologres.hg_list_logical_partition('<table_name>')**：列出逻辑分区表的所有分区。
-**hologres.hg_logical_partitioned_table_properties**：当前实例下的所有逻辑分区及对应分区属性配置。
+**hologres.hg_list_logical_partition('<table_name>')****：**列出逻辑分区表的所有分区。
+**hologres.hg_logical_partitioned_table_properties****：**当前实例下的所有逻辑分区及对应分区属性配置。
 使用示例： 查看表的所有逻辑分区。
 
 ```
@@ -10148,14 +10730,17 @@ SELECT * FROM hologres.hg_list_logical_partition ('<schema_name>.<table_name>');
 
 查看表的所有逻辑分区属性配置。
 
-**重要**
+> **重要：** 此处仅显示子分区和父表不一致的配置，如果返回结果为空，表示子分区没有特殊配置。
 
-此处仅显示子分区和父表不一致的配置，如果返回结果为空，表示子分区没有特殊配置。 *
+`*`
 
 ```
 FROM
     hologres.hg_logical_partitioned_table_properties
-WHERE ORDER BY partition DESC;
+WHERE
+    table_namespace = '<schema_name>'
+    AND table_name = '<table_name>'
+ORDER BY partition DESC;
 ```
 
 除上述系统表外，逻辑分区作为物理表，也可兼容其他Hologres系统表，兼容普通表的元数据查询方式。使用示例如下： 查看逻辑分区表的DDL。
@@ -10164,30 +10749,31 @@ WHERE ORDER BY partition DESC;
 SELECT hg_dump_script('<schema_name>.<table_name>');
 ```
 
-查看逻辑分区表的父表属性。 *
+查看逻辑分区表的父表属性。 `*`
 
 ```
-FROM WHERE
+FROM
+    hologres.hg_table_properties
+WHERE
+    table_namespace = '<schema_name>'
     AND table_name = '<table_name>';
 ```
 
 查看逻辑分区表的最大分区。
 
-**说明**
-
-由于逻辑分区表的数据清理和分区清理为异步操作，因此如果您的最大分区数据需要被清空，推荐使用INSERT OVERWRITE进行数据删除操作，否则可能导致 MAX_PT函数的结果不正确。
+> **说明：** 由于逻辑分区表的数据清理和分区清理为异步操作，因此如果您的最大分区数据需要被清空，推荐使用INSERT OVERWRITE进行数据删除操作，否则可能导致 MAX_PT函数的结果不正确。
 
 ```
 SELECT MAX_PT('<schema_name>.<table_name>');
 ```
 
-###### 1.6.4.1.2. ALTER LOGICAL PARTITION TABLE（3.2内核）
+###### 1.6.4.1.2 ALTER LOGICAL PARTITION TABLE（3.2内核）
 
-实时数仓 Hologres Hologres 3.2内核版本支持逻辑分区表（LOGICAL PARTITION TABLE），本文为您介绍如何使用ALTER LOGICAL PARTITION TABLE修改逻辑分区表配置。
+Hologres 3.2内核版本支持逻辑分区表（LOGICAL PARTITION TABLE），本文为您介绍如何使用ALTER LOGICAL PARTITION TABLE修改逻辑分区表配置。
 
 **修改逻辑分区表**
 
-Hologres支持ALTER TABLE语法，非分区表的ALTER TABLE使用详情，请参见ALTER TABLE。逻辑分区表作为物理表，同样支持ALTER TABLE语法，并具备非分区表的
+Hologres支持ALTER TABLE语法，非分区表的ALTER TABLE使用详情，请参见ALTER TABLE。逻辑分区表作为物理表，同样支持ALTER TABLE语法，并具备非分区表的所有ALTER TABLE功能。此外，逻辑分区表还支持按分区修改分区属性。
 
 **修改表属性**
 
@@ -10213,9 +10799,7 @@ ALTER TABLE <table_name> PARTITION(<partition_key> = '<partition_value>') [...] 
 ALTER TABLE <table_name> PARTITION(<partition_key> = '<partition_value>') [...] RESET (<property_name> [, ...]);
 ```
 
-**说明**
-
-与物理分区表相比，逻辑分区表无需创建分区，也无需通过ALTER TABLE语法绑定与解绑分区。
+> **说明：** 与物理分区表相比，逻辑分区表无需创建分区，也无需通过ALTER TABLE语法绑定与解绑分区。
 
 **使用示例**
 
@@ -10224,6 +10808,7 @@ ALTER TABLE <table_name> PARTITION(<partition_key> = '<partition_value>') [...] 
 `--` 创建逻辑分区表
 
 ```
+CREATE TABLE public.hologres_logical_parent_1 (
     a TEXT,
     b INT,
     c TIMESTAMP,
@@ -10237,13 +10822,12 @@ LOGICAL PARTITION BY LIST (ds) WITH (
     partition_require_filter = TRUE,
     binlog_level = 'replica',
     partition_generate_binlog_window = '3 day'
-);
 ```
 
-`--` 写入数据
+); `--` 写入数据
 
 ```
-VALUES
+INSERT INTO public.hologres_logical_parent_1 VALUES
     ('a', 1, '2025-03-16 10:00:00', '2025-03-16'),
     ('b', 2, '2025-03-17 11:00:00', '2025-03-17');
 ```
@@ -10251,7 +10835,7 @@ VALUES
 **修改逻辑分区表的表属性**
 
 ```
-SET (
+ALTER TABLE public.hologres_logical_parent_1 SET (
     partition_expiration_time = '60 day',
     partition_keep_hot_window = '30 day',
     partition_require_filter = FALSE);
@@ -10260,12 +10844,12 @@ SET (
 **修改逻辑分区表多个分区的分区属性**
 
 ```
-PARTITION (ds = '2025-03-16') PARTITION (ds = '2025-03-17') SET (
+ALTER TABLE public.hologres_logical_parent_1 PARTITION (ds = '2025-03-16') PARTITION (ds = '2025-03-17') SET (
     keep_alive = TRUE,
     generate_binlog = 'on');
 ```
 
-###### 1.6.4.1.3. DROP LOGICAL PARTITION TABLE（3.2内核）
+###### 1.6.4.1.3 DROP LOGICAL PARTITION TABLE（3.2内核）
 
 DROP LOGICAL PARTITION TABLE语句用于删除分区表。删除逻辑分区表与删除非分区表的方法完全一致。逻辑分区表不涉及删除分区操作，如需清理分区，只需删除分区数据即可。
 
@@ -10275,9 +10859,7 @@ DROP LOGICAL PARTITION TABLE语句用于删除分区表。删除逻辑分区表�
 DROP TABLE [ IF EXISTS ] table_name [, ...];
 ```
 
-实时数仓 Hologres
-
-**说明**
+> **说明：** `DROP TABLE` 支持一次删除多个表。
 
 参数说明如下表所示。
 
@@ -10294,9 +10876,9 @@ DROP TABLE [ IF EXISTS ] table_name [, ...];
 DROP TABLE holo_test;
 ```
 
-##### 1.6.4.2. 物理分区表
+##### 1.6.4.2 物理分区表
 
-###### 1.6.4.2.1. CREATE PARTITION TABLE
+###### 1.6.4.2.1 CREATE PARTITION TABLE
 
 CREATE PARTITION TABLE语句用于创建分区表。本文为您介绍CREATE PARTITION TABLE的用法。
 
@@ -10308,9 +10890,9 @@ Partition Table，也叫分区表。父表按分区键（Partition Key）的值�
 
 Hologres暂不支持插入数据至分区表父表，只支持插入数据至具体的分区表子表。
 
-**说明**
+> **说明：** 实时计算Flink版支持实时写入数据至Hologres的分区表父表。
 
-实时计算Flink版支持实时写入数据至Hologres的分区表父表。 只有TEXT、VARCHAR以及INT类型的数据才可以作为分区键（Partition Key）。 一个分区规则只能创建一个分区表。 `PARTITION BY` 类型仅支持 `LIST` 分区，切分 `PARTITION BY LIST` 只能取唯一值。 若是表有主键，分区键必须是主键的一个子集。 动态分区管理功能仅Hologres V1.3及以上版本支持，并且暂不支持Date类型作为分区键时的动态分区管理。请在Hologres管理控制台查看当前实例版本，如果您的实例是V1.3以下版本，请升级实例。
+只有TEXT、VARCHAR以及INT类型的数据才可以作为分区键（Partition Key）。 一个分区规则只能创建一个分区表。 `PARTITION BY` 类型仅支持 `LIST` 分区，切分 `PARTITION BY LIST` 只能取唯一值。 若是表有主键，分区键必须是主键的一个子集。 动态分区管理功能仅Hologres V1.3及以上版本支持，并且暂不支持Date类型作为分区键时的动态分区管理。请在Hologres管理控制台查看当前实例版本，如果您的实例是V1.3以下版本，请升级实例。
 
 **注意事项**
 
@@ -10320,15 +10902,19 @@ Hologres暂不支持插入数据至分区表父表，只支持插入数据至具
 
 命令格式。 创建分区表的命令格式如下。 `--`创建分区父表语句
 
-```xml
+```
 CREATE TABLE [if not exists] [<schema_name>.]<table_name> ([
-  {
-   <column_name> <column_type> [ <column_constraints>, [...]]
-   [, ...]
-  }
 ```
 
-`])`
+`{`
+
+```xml
+   <column_name> <column_type> [ <column_constraints>, [...]]
+   | <table_constraints>
+   [, ...]
+```
+
+`}` `])`
 
 ```
 PARTITION BY LIST(<column_name>);
@@ -10346,8 +10932,6 @@ CREATE TABLE [if not exists] [<schema_name>.]<table_name> PARTITION OF <parent_t
 | 参数 | 说明 |
 |---|---|
 
-实时数仓 Hologres
-
 | if not exists | 如果已经存在相同名称的表，不会抛出一个错误，而会发出一个通知，告知表关系已存在。 |
 |---|---|
 | schemaname _ | 表所在的schema名称，若是在同一个schema创建父表和子表，可以不需要指定schema名称。若是需要跨schema创建父表和子表，需要指定schema名称。 |
@@ -10359,21 +10943,27 @@ CREATE TABLE [if not exists] [<schema_name>.]<table_name> PARTITION OF <parent_t
 | parenttable _ | 子表对应的父表名称。 |
 | stringliteral _ | 分区键。 |
 
-支持将TEXT、VARCHAR以及INT类型的数据作为分区键（Partition Key），V1.3.22及以上版本支持将DATE类型设为分区键。 使用示例。 创建分区表的SQL语句示例如下。
+支持将TEXT、VARCHAR以及INT类型的数据作为分区键（Partition Key），V1.3.22及以上版本支持将DATE类型设为分区键。 使用示例。 创建分区表的SQL语句示例如下。 示例1：在public schema下创建不带主键的分区父表和对应的分区子表。
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE public.hologres_parent(
   a text,
   b int,
   c timestamp,
   d text
 ```
 
-)
+`)`
 
 ```
   PARTITION BY LIST(a);
-CALL set_table_property('public.hologres_parent', 'orientation', 'column'); CREATE TABLE public.hologres_child1 PARTITION OF public.hologres_parent FOR VALUES IN('v1'); CREATE TABLE public.hologres_child2 PARTITION OF public.hologres_parent FOR VALUES IN('v2'); CREATE TABLE public.hologres_child3 PARTITION OF public.hologres_parent FOR VALUES IN('v3'); COMMIT; BEGIN;
+CALL set_table_property('public.hologres_parent', 'orientation', 'column'); CREATE TABLE public.hologres_child1 PARTITION OF public.hologres_parent FOR VALUES IN('v1'); CREATE TABLE public.hologres_child2 PARTITION OF public.hologres_parent FOR VALUES IN('v2'); CREATE TABLE public.hologres_child3 PARTITION OF public.hologres_parent FOR VALUES IN('v3'); COMMIT;
+```
+
+示例2：在public schema下创建带主键的分区父表和对应的分区子表。
+
+```
+BEGIN; CREATE TABLE public.hologres_parent_2(
   a text ,
   b int,
   c timestamp,
@@ -10382,7 +10972,7 @@ CALL set_table_property('public.hologres_parent', 'orientation', 'column'); CREA
   primary key(ds,b)
 ```
 
-)
+`)`
 
 ```
   PARTITION BY LIST(ds);
@@ -10410,25 +11000,26 @@ WHERE parent.relname='parent_table_name';
 
 分区子表在绑定父表时，其约束关系如下表所示。其中：
 **与父表保持一致**：即对应的属性分区子表必须和父表保持一致，若不一致，在分区子表绑定（ATTACH）父表时会报错，需要重新创建分区子表。
-实时数仓 Hologres
 **不要求与父表一致**：即对应的属性分区子表可以与父表不一致，如果子表没有显式指定属性，则会继承父表的属性，若是子表显式指定属性，则会保留子表的属性。
 **索引列必须包含父表的索引列**：即分区子表的索引列必须包含父表的索引列，还能显式再指定其他列。
 
 | 分类 | 表属性 | 描述 | create table partition of 时是否继承父表属性 | ATTACH时与父表的约束关系 |
 |---|---|---|---|---|
 | 表属性 | orientation | 表存储格式。 | 继承 | 与父表保持一致。 |
-|  | tablegroup _ | Table Group属性包含Shard Count。 | 继承 | 与父表保持一致。 |
-|  | timetoliveinseco _ _ _ _ nds | 表数据生命周期。 | 继承 | 不要求与父表一致。 子表属性未赋值，继承父表属性。 子表属性已赋值，保留子表属性。 |
+|   | tablegroup _ | Table Group属性包含Shard Count。 | 继承 | 与父表保持一致。 |
+|   | timetoliveinseco _ _ _ _ nds | 表数据生命周期。 | 继承 | 不要求与父表一致。 子表属性未赋值，继承父表属性。 子表属性已赋值，保留子表属性。 |
 | 索引 | primary key | 主键。 | 继承 | 与父表保持一致。 |
-|  | distributionkey _ | 分布键。 | 继承 | 与父表保持一致。 |
-|  | clusteringkey _ | 聚簇索引。 | 继承 | 与父表保持一致。 |
-|  | eventtimecolumn _ _ | 分段键。 | 继承 | 与父表保持一致。 |
-|  | bitmapcolumns _ | 比特编码。 | 继承 | 索引列必须包含父表的索引列。 |
-|  | dictionaryencoding _ columns _ | 字段编码。 | 继承 | 索引列必须包含父表的索引列。 |
-|  | binloglevel _ | 是否开启Binlog。 | 继承 | 与父表保持一致。 |
-|  | proximavectors _ | 向量检索索引。 | 继承 | 索引列必须包含父表的索引列。 |
+|   | distributionkey _ | 分布键。 | 继承 | 与父表保持一致。 |
+|   | clusteringkey _ | 聚簇索引。 | 继承 | 与父表保持一致。 |
+|   | eventtimecolumn _ _ | 分段键。 | 继承 | 与父表保持一致。 |
+|   | bitmapcolumns _ | 比特编码。 | 继承 | 索引列必须包含父表的索引列。 |
+|   | dictionaryencoding _ columns _ | 字段编码。 | 继承 | 索引列必须包含父表的索引列。 |
+|   | binloglevel _ | 是否开启Binlog。 | 继承 | 与父表保持一致。 |
+|   | proximavectors _ | 向量检索索引。 | 继承 | 索引列必须包含父表的索引列。 |
 | 列约束 | nullable | 非空约束。 | 继承 | 与父表保持一致。 |
-|  | default value | 默认值。 | 继承 | 与父表保持一致。 |
+|   | default value | 默认值。 | 继承 | 与父表保持一致。 |
+
+**动态分区管理**
 
 从Hologres V1.3版本开始支持根据用户指定的规则自动增删分区，减少用户管理分区生命周期的负担，系统会根据用户预设的规则定期运行任务，提前创建分区子表和删除过期分区子表。
 
@@ -10438,15 +11029,19 @@ WHERE parent.relname='parent_table_name';
 
 动态分区管理配置既支持在创建分区表时配置动态分区管理属性，也支持建表后修改动态分区管理属性，语法如下所示。 `--` 创建分区表时配置动态分区管理属性
 
-```xml
+```
 BEGIN; CREATE TABLE [if not exists] [<schema_name>.]<table_name> ([
-  {
-   <column_name> <column_type> [ <column_constraints>, [...]]
-   [, ...]
-  }
 ```
 
-`])`
+`{`
+
+```xml
+   <column_name> <column_type> [ <column_constraints>, [...]]
+   | <table_constraints>
+   [, ...]
+```
+
+`}` `])`
 
 ```
 PARTITION BY LIST(<column_name>); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enable', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.time_unit', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.time_zone', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_precreate', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_retention', 'xxx'); COMMIT;
@@ -10457,8 +11052,6 @@ PARTITION BY LIST(<column_name>); CALL set_table_property('[<schema_name>.]<tabl
 ```
 CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enable', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.time_unit', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.time_zone', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_precreate', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_retention', 'xxx');
 ```
-
-实时数仓 Hologres
 
 **参数说明**
 
@@ -10474,7 +11067,7 @@ CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enabl
 
 自动分区表时间单位**time_unit**可以配置为 `day`、`month`、`quarter`、`year` ，自动分区将使用分区父表名加上时间后缀作为新创建分区的表名；分区表名的生成格式形
 
-| 如： {parent_table}_{time_suffix} ， 其中时间后缀将依据自动分区的调度时间和时间单位对应的格式模板生成。具体的对应关系如下。 |  |  |  |
+| 如： {parent_table}_{time_suffix} ， 其中时间后缀将依据自动分区的调度时间和时间单位对应的格式模板生成。具体的对应关系如下。 |   |   |   |
 |---|---|---|---|
 | timeunit _ | 时间后缀格式 | 样例 | 执行时间 |
 | hour | YYYYMMDDHH24 | 2022030117。 | 每个整点的开始，例如2022年3月1日 01:00:01执行任务。 |
@@ -10482,15 +11075,13 @@ CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enabl
 | quarter | YYYYQ | 20221、20222、20223、20224 分别表示2022年的四个季度。 | 每天00:00:01开始，例如2022年3月1日 00:00:01。 |
 | year | YYYY | 2022、2023分别表示2022年、 2023年的分区。 | 每天00:00:01开始，例如2022年3月1日 00:00:01。 |
 
-实时数仓 Hologres
-
 **使用样例**
 
 如下SQL将以天为时间单位，预先创建未来3天的分区，保留近2天的历史分区，并将时区设置为'Asia/Shanghai'。
 
 | 创建分区表 | tbl1 | ： |
 |---|---|---|
-| -- 创建分区表，并配置动态分区管理： BEGIN; CREATE TABLE tbl1 ( c1 text NOT NULL, c2 text ) PARTITION BY LIST (c2); CALL set_table_property ('tbl1', 'auto_partitioning.enable', 'true'); CALL set_table_property ('tbl1', 'auto_partitioning.time_unit', 'DAY'); CALL set_table_property ('tbl1', 'auto_partitioning.time_zone', 'Asia/Shanghai'); CALL set_table_property ('tbl1', 'auto_partitioning.num_precreate', '3'); CALL set_table_property ('tbl1', 'auto_partitioning.num_retention', '2'); COMMIT; |  |  |
+| -- 创建分区表，并配置动态分区管理： BEGIN; CREATE TABLE tbl1 ( c1 text NOT NULL, c2 text ) PARTITION BY LIST (c2); CALL set_table_property ('tbl1', 'auto_partitioning.enable', 'true'); CALL set_table_property ('tbl1', 'auto_partitioning.time_unit', 'DAY'); CALL set_table_property ('tbl1', 'auto_partitioning.time_zone', 'Asia/Shanghai'); CALL set_table_property ('tbl1', 'auto_partitioning.num_precreate', '3'); CALL set_table_property ('tbl1', 'auto_partitioning.num_retention', '2'); COMMIT; |   |   |
 
 b. 待子分区生成后插入数据：
 
@@ -10554,7 +11145,7 @@ call set_table_property('pulbic.tbl1_20220111', 'keep_alive', 'false');
 
 **查看配置动态分区配置和调度情况**
 
-可以使用如下SQL查询当前数据库中配置了分区表和对应的动态分区策略参数。 实时数仓 Hologres
+可以使用如下SQL查询当前数据库中配置了分区表和对应的动态分区策略参数。
 
 ```
     nsp_name AS schema_name,
@@ -10611,8 +11202,6 @@ FROM
 | relowner | 表的Owner。 |
 | schdtime | 计划调度时间。 |
 
-实时数仓 Hologres
-
 | trigtime | 实际触发时间。 |
 |---|---|
 | status | 状态。 |
@@ -10624,9 +11213,9 @@ FROM
 
 对于存量分区表如何开启动态分区？ 对于存量分区表您可以使用如下SQL打开动态分区。
 
-**重要**
+> **重要：** 由于 `auto_partitioning.time_unit` 和 `auto_partitioning.time_zone` 为动态分区功能的核心配置，所以升级后仅允许设置一次，设置后不能再更改。
 
-由于 `auto_partitioning.time_unit` 和 `auto_partitioning.time_zone` 为动态分区功能的核心配置，所以升级后仅允许设置一次，设置后不能再更改。 `-- SQL`样例
+`-- SQL`样例
 
 ```
 BEGIN; CALL set_table_property('auto_part_old', 'auto_partitioning.enable', 'true'); CALL set_table_property('auto_part_old', 'auto_partitioning.time_unit', 'HOUR'); CALL set_table_property('auto_part_old', 'auto_partitioning.time_zone', 'PRC'); CALL set_table_property('auto_part_old', 'auto_partitioning.num_precreate', '4'); CALL set_table_property('auto_part_old', 'auto_partitioning.num_retention', '-1'); CALL set_table_property('auto_part_old', 'auto_partitioning.num_hot', '-1'); COMMIT;
@@ -10634,13 +11223,13 @@ BEGIN; CALL set_table_property('auto_part_old', 'auto_partitioning.enable', 'tru
 
 对于存量表开启动态分区后，历史存在的分区子表是否会受到自动清理逻辑的影响？
 
-| {parent_table}_{time_suffix} |  |
+| {parent_table}_{time_suffix} |   |
 |---|---|
 | 3 | ，但是执行完SQL后分区父表创 |
 
 对于首次创建动态分区的任务，后台默认每10分钟检查一次，因此分区子表会在10分钟内被创建，请稍后查看。
 
-###### 1.6.4.2.2. ALTER PARTITION TABLE
+###### 1.6.4.2.2 ALTER PARTITION TABLE
 
 ALTER PARTITION TABLE语句用于修改分区表。本文为您介绍ALTER PARTITION TABLE的用法。
 
@@ -10656,13 +11245,13 @@ ALTER TABLE [IF EXISTS] table_name RENAME to new_table_name; ALTER TABLE [IF EXI
 
 修改分区表命令的参数说明如下。
 
-| 参数 |  | 描述 |
+| 参数 |   | 描述 |
 |---|---|---|
-| RENAME |  | 重命名分区表。 |
-| ATTACH PARTITION new_partition_name FOR VALUES in |  | 用于将当前表绑定为目标表的分区。说明如下： 绑定分区的规范必须与目标表的分区策略和分区键相对应。 需要绑定的表与目标表的列数量必须相同，并且列类型必须匹配。 需要绑定的表必须具有目标表的所有NOT NULL约束。 如果您添加了一个不接受NULL值的列表分区，除非它是一个表达式，否则您需要添加NOT NULL约束至分区键列。 |
-|  | ATTACH PARTITION new_partition_name FOR VALUES in |  |
-| (<string_literal>) |  |  |
-| DETACH PARTITION partition_name |  | 分离目标表的指定分区。 被分离的分区作为独立表继续存在，但不再与目标表相关联。 |
+| RENAME |   | 重命名分区表。 |
+| ATTACH PARTITION new_partition_name FOR VALUES in |   | 用于将当前表绑定为目标表的分区。说明如下： 绑定分区的规范必须与目标表的分区策略和分区键相对应。 需要绑定的表与目标表的列数量必须相同，并且列类型必须匹配。 需要绑定的表必须具有目标表的所有NOT NULL约束。 如果您添加了一个不接受NULL值的列表分区，除非它是一个表达式，否则您需要添加NOT NULL约束至分区键列。 |
+|   | ATTACH PARTITION new_partition_name FOR VALUES in |   |
+| (<string_literal>) |   |   |
+| DETACH PARTITION partition_name |   | 分离目标表的指定分区。 被分离的分区作为独立表继续存在，但不再与目标表相关联。 |
 
 **使用限制**
 
@@ -10671,22 +11260,20 @@ ALTER TABLE [IF EXISTS] table_name RENAME to new_table_name; ALTER TABLE [IF EXI
 | 分类 | 表属性 | 描述 | create table partition of 时是否继承父表属性 | ATTACH时与父表的约束关系 | DETACH时是否继承父表属性 |
 |---|---|---|---|---|---|
 
-实时数仓 Hologres
-
 | 表属性 | orientation | 表存储格式。 | 继承 | 与父表保持一致。 | 继承 |
 |---|---|---|---|---|---|
-|  | tablegroup _ | Table Group属性包含Shard Count。 | 继承 | 与父表保持一致。 | 继承 |
-|  | timetoliveinseconds _ _ _ _ | 表数据生命周期。 | 继承 | 不要求与父表一致。 子表属性未赋值，继承父表属性。 子表属性已赋值，保留子表属性。 | 继承 |
+|   | tablegroup _ | Table Group属性包含Shard Count。 | 继承 | 与父表保持一致。 | 继承 |
+|   | timetoliveinseconds _ _ _ _ | 表数据生命周期。 | 继承 | 不要求与父表一致。 子表属性未赋值，继承父表属性。 子表属性已赋值，保留子表属性。 | 继承 |
 | 索引 | primary key | 主键。 | 继承 | 与父表保持一致。 | 继承 |
-|  | distribution key | 分布键。 | 继承 | 与父表保持一致。 | 继承 |
-|  | clustering _key（包括列和排序） | 聚簇索引。 | 继承 | 与父表保持一致。 | 继承 |
-|  | eventtimecolumn _ _ | 分段键。 | 继承 | 与父表保持一致。 | 继承 |
-|  | bitmapcolumns _ | 比特编码。 | 继承 | 索引列必须包含父表的索引列。 | 继承 |
-|  | dictionaryencodingcolum _ _ ns | 字段编码。 | 继承 | 索引列必须包含父表的索引列。 | 继承 |
-|  | binloglevel _ | 是否开启Binlog。 | 继承 | 与父表保持一致。 | 继承 |
-|  | proximavectors _ | 向量检索索引。 | 继承 | 索引列必须包含父表的索引列。 | 继承 |
+|   | distribution key | 分布键。 | 继承 | 与父表保持一致。 | 继承 |
+|   | clustering _key（包括列和排序） | 聚簇索引。 | 继承 | 与父表保持一致。 | 继承 |
+|   | eventtimecolumn _ _ | 分段键。 | 继承 | 与父表保持一致。 | 继承 |
+|   | bitmapcolumns _ | 比特编码。 | 继承 | 索引列必须包含父表的索引列。 | 继承 |
+|   | dictionaryencodingcolum _ _ ns | 字段编码。 | 继承 | 索引列必须包含父表的索引列。 | 继承 |
+|   | binloglevel _ | 是否开启Binlog。 | 继承 | 与父表保持一致。 | 继承 |
+|   | proximavectors _ | 向量检索索引。 | 继承 | 索引列必须包含父表的索引列。 | 继承 |
 | 列约束 | nullable | 非空约束。 | 继承 | 与父表保持一致。 | 继承 |
-|  | default value | 默认值。 | 继承 | 与父表保持一致。 | 继承 |
+|   | default value | 默认值。 | 继承 | 与父表保持一致。 | 继承 |
 
 Attach的表必须与目标表具有相同的列，而不能多或者少列。 Attach时列的类型必须匹配。
 
@@ -10695,7 +11282,13 @@ Attach的表必须与目标表具有相同的列，而不能多或者少列。 A
 修改分区表的示例语句如下。 `--`修改分区表的名称
 
 ```
-alter table holo_test rename to my_holo_test; alter table holo_table attach partition my_table for values in ('2015');
+alter table holo_test rename to my_holo_test;
+```
+
+`--`添加`my_table`为`holo_table`的分区表
+
+```
+alter table holo_table attach partition my_table for values in ('2015');
 ```
 
 `--`将`holo_test`从`all_test`分区表中解除绑定，分离为独立表
@@ -10704,16 +11297,21 @@ alter table holo_test rename to my_holo_test; alter table holo_table attach part
 alter table all_test detach partition holo_test;
 ```
 
-您也可以参见如下完整示例进行分区表替换。 实时数仓 Hologres `--` 创建新的分区表
+您也可以参见如下完整示例进行分区表替换。 `--` 创建新的分区表
 
 ```
-begin; drop table if exists "table_20210101_new";
+begin; drop table if exists "table_20210101_new"; CREATE TABLE "table_20210101_new" (
   "colA" integer NOT NULL,
   "colB" text NOT NULL,
   "colC" numeric(38,10) NOT NULL,
   "ds" text NOT NULL,
   "process_time" timestamptz NOT NULL DEFAULT now()
-); call set_table_property('table_20210101_new', 'orientation','column'); call set_table_property('table_20210101_new', 'distribution_key','"colA"'); call set_table_property('table_20210101_new', 'event_time_column','process_time'); commit;
+```
+
+);
+
+```
+call set_table_property('table_20210101_new', 'orientation','column'); call set_table_property('table_20210101_new', 'distribution_key','"colA"'); call set_table_property('table_20210101_new', 'event_time_column','process_time'); commit;
 ```
 
 `---`导入数据
@@ -10752,13 +11350,13 @@ ALTER TABLE table_20210101_new RENAME to table_20210101;
 ALTER TABLE table_parent ATTACH PARTITION table_20210101 FOR VALUES in ("20210101"); commit;
 ```
 
-###### 1.6.4.2.3. DROP PARTITION TABLE
+###### 1.6.4.2.3 DROP PARTITION TABLE
 
 DROP PARTITION TABLE语句用于删除分区表。本文为您介绍DROP PARTITION TABLE的用法。
 
 **使用限制**
 
-删除分区表父表时，默认同时删除分区表子表。
+删除分区表父表时，默认同时删除分区表子表。 `PARTITION TABLE` 为需要删除的目标分区表。
 
 **语法**
 
@@ -10768,7 +11366,7 @@ DROP PARTITION TABLE语句用于删除分区表。本文为您介绍DROP PARTITI
 DROP TABLE [ IF EXISTS ] table_name [, ...];
 ```
 
-**说明**
+> **说明：** `DROP TABLE` 支持一次删除多个表。
 
 参数说明如下表所示。
 
@@ -10777,7 +11375,7 @@ DROP TABLE [ IF EXISTS ] table_name [, ...];
 | IF EXISTS | 如果指定 IF EXISTS ，无论目标表是否存在，执行删除语句后系统都会返回成功。 如果不指定 IF EXISTS ，当目标表不存在时，系统会返回 ERROR: table "non_exist_table" does not exist 报错。 |
 | tablename _ | 需要删除的表名称。 |
 
-|  | "non_exist_table" does not exist |
+|   | "non_exist_table" does not exist |
 |---|---|
 
 **示例**
@@ -10788,7 +11386,7 @@ DROP TABLE [ IF EXISTS ] table_name [, ...];
 DROP TABLE hologres_child2;
 ```
 
-###### 1.6.4.2.4. 动态分区管理（3.2内核）
+###### 1.6.4.2.4 动态分区管理（3.2内核）
 
 Hologres的动态分区功能无需预先设定所有分区信息，可依据创建分区表时配置的动态分区规则，自动创建并管理分区子表。同时，还支持将符合条件的分区数据迁移到低频存储设备，在保证查询性能的同时，有效降低存储费用。
 
@@ -10804,17 +11402,21 @@ Hologres暂不支持插入数据至分区表父表，只支持插入数据至具
 
 **使用WITH语法示例**
 
-实时数仓 Hologres 创建分区表时，配置动态分区管理属性。 `--` 创建分区表时配置动态分区管理属性
+创建分区表时，配置动态分区管理属性。 `--` 创建分区表时配置动态分区管理属性
 
-```xml
+```
 CREATE TABLE [IF NOT EXISTS] [<schema_name>.]<table_name> ([
-  {
-   <column_name> <column_type> [ <column_constraints>, [...]]
-   [, ...]
-  }
 ```
 
-`])`
+`{`
+
+```xml
+   <column_name> <column_type> [ <column_constraints>, [...]]
+   | <table_constraints>
+   [, ...]
+```
+
+`}` `])`
 
 ```
 PARTITION BY LIST(<column_name>) WITH (
@@ -10823,33 +11425,38 @@ PARTITION BY LIST(<column_name>) WITH (
    auto_partitioning_time_zone = 'xxx',
    auto_partitioning_num_precreate = 'xxx',
    auto_partitioning_num_retention = 'xxx'
-);
 ```
 
-创建分区表后，修改动态分区管理属性。 `--` 修改动态分区管理属性
+); 创建分区表后，修改动态分区管理属性。 `--` 修改动态分区管理属性
 
 ```
+ALTER TABLE [<schema_name>.]<table_name> SET (
    auto_partitioning_enable = 'xxx',
    auto_partitioning_time_unit = 'xxx',
    auto_partitioning_time_zone = 'xxx',
    auto_partitioning_num_precreate = 'xxx',
    auto_partitioning_num_retention = 'xxx'
-);
 ```
+
+);
 
 **使用CALL语法示例**
 
 创建分区表时，配置动态分区管理属性。 `--` 创建分区表时配置动态分区管理属性
 
-```xml
+```
 BEGIN; CREATE TABLE [IF NOT EXISTS] [<schema_name>.]<table_name> ([
-  {
-   <column_name> <column_type> [ <column_constraints>, [...]]
-   [, ...]
-  }
 ```
 
-`])`
+`{`
+
+```xml
+   <column_name> <column_type> [ <column_constraints>, [...]]
+   | <table_constraints>
+   [, ...]
+```
+
+`}` `])`
 
 ```
 PARTITION BY LIST(<column_name>); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enable', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.time_unit', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.time_zone', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_precreate', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_retention', 'xxx'); CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.num_retention', 'xxx'); COMMIT;
@@ -10863,51 +11470,47 @@ CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enabl
 
 **参数说明**
 
-**重要**
+> **重要：** 使用 `CREATE TABLE WITH` 语法配置动态分区时，需要将参数名中的 `.` 改为 `_` 。例如使用CREATE TABLE WITH语法配置动态分区时， `auto_partitioning.enable` 参数名需改为 `auto_partitioning_enable` 。
 
-使用 `CREATE TABLE WITH` 语法配置动态分区时，需要将参数名中的 . 改为 _ 。例如使用CREATE TABLE WITH语法配置动态分区时， `auto_partitioning.enable` 参数名需改为 `auto_partitioning_enable` 。
-
-|  | 参数名称 |  |  |  | 是否必选 | 说明 | 是否可更新 |
+|   | 参数名称 |   |   |   | 是否必选 | 说明 | 是否可更新 |
 |---|---|---|---|---|---|---|---|
-|  | auto_partitioning_enable / auto_part itioning.enable |  |  |  |  | 是否启用动态分区管理，取值说明如下： true：启用动态分区管理。 false（默认值）：关闭动态分区管理。 | 是 |
-|  |  | auto_partitioning_enable / | auto_part |  |  |  |  |
-|  | itioning.enable |  |  |  | 否 |  |  |
-|  | auto_partitioning_time_unit / auto_p artitioning.time_unit |  |  |  |  | 动态分区的时间单位，取值说明如下： HOUR DAY MONTH QUARTER YEAR 例如配置为DAY，则将按天进行分区的预创建、删除。 | 否 |
-|  |  | auto_partitioning_time_unit / |  | auto_p |  | MO |  |
-|  |  |  |  |  | 是 |  |  |
+|   | auto_partitioning_enable / auto_part itioning.enable |   |   |   |   | 是否启用动态分区管理，取值说明如下： true：启用动态分区管理。 false（默认值）：关闭动态分区管理。 | 是 |
+|   |   | auto_partitioning_enable / | auto_part |   |   |   |   |
+|   | itioning.enable |   |   |   | 否 |   |   |
+|   | auto_partitioning_time_unit / auto_p artitioning.time_unit |   |   |   |   | 动态分区的时间单位，取值说明如下： HOUR DAY MONTH QUARTER YEAR 例如配置为DAY，则将按天进行分区的预创建、删除。 | 否 |
+|   |   | auto_partitioning_time_unit / |   | auto_p |   | MO |   |
+|   |   |   |   |   | 是 |   |   |
 
-|  | artitioning.time_unit |
+|   | artitioning.time_unit |
 |---|---|
 
-实时数仓 Hologres
-
-|  |  | auto_partitioning_time_zone / auto_p artitioning.time_zone |  |  |  |  | 动态分区时区设置，默认值为当前连接的时区。配置后将按照对应时区时间点进行动态分区管理。 您可以使用如下SQL查看可选的时区和offset等。返回结果中的name列即为timezone值，例如Asia/Shanghai。 SELECT * FROM pg_timezone_names; |  |  |  | 否 |
+|   |   | auto_partitioning_time_zone / auto_p artitioning.time_zone |   |   |   |   | 动态分区时区设置，默认值为当前连接的时区。配置后将按照对应时区时间点进行动态分区管理。 您可以使用如下SQL查看可选的时区和offset等。返回结果中的name列即为timezone值，例如Asia/Shanghai。 SELECT * FROM pg_timezone_names; |   |   |   | 否 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  | auto_partitioning_time_zone / | auto_p |  | 否 | 您可以如Asia |  |  |  |  |
-|  |  | artitioning.time_zone |  |  |  |  |  |  |  |  |  |
-|  |  | auto_partitioning_num_precreate / au to_partitioning.num_precreate |  |  |  |  | 预创建分区的数量，取值说明如下： 0：不进行预创建。 [1, 512]：以当前时间点为基准创建分区，建议该值需要大于等于2，默认值为4。 说明以当前时间为2022-01-10为例， time_unit = DAY，num_precreate = 3 参数配置即表示将创建2022-01-10、2022-01-11、2022-01-12三个分区。 重要预创建分区行为会影响最大分区函数的函数行为，请配置前检查是否依赖MAX _PT函数。 |  |  |  | 是 |
-|  |  |  | auto_partitioning_num_precreate / |  | au |  |  |  |  |  |  |
-|  |  |  |  |  |  | 否 |  |  |  |  |  |
-|  |  | auto_partitioning_num_retention / au |  |  |  |  | 保留历史分区数量，取值说明如下： 0：不保留历史分区。 -1（默认值）：不清理历史分区。 正数：保留N个历史分区，最大值为512。 |  |  |  | 是 |
-|  |  |  | auto_partitioning_num_retention / |  | au |  | 可通过 |  | set hg_ | experimental_auto_part_max_maintained_partitions= |  |
-|  |  | to_partitioning.num_retention |  |  |  | 否 | <value>; |  |  |  |  |
+|   |   |   | auto_partitioning_time_zone / | auto_p |   | 否 | 您可以如Asia |   |   |   |   |
+|   |   | artitioning.time_zone |   |   |   |   |   |   |   |   |   |
+|   |   | auto_partitioning_num_precreate / au to_partitioning.num_precreate |   |   |   |   | 预创建分区的数量，取值说明如下： 0：不进行预创建。 [1, 512]：以当前时间点为基准创建分区，建议该值需要大于等于2，默认值为4。 说明以当前时间为2022-01-10为例， time_unit = DAY，num_precreate = 3 参数配置即表示将创建2022-01-10、2022-01-11、2022-01-12三个分区。 重要预创建分区行为会影响最大分区函数的函数行为，请配置前检查是否依赖MAX _PT函数。 |   |   |   | 是 |
+|   |   |   | auto_partitioning_num_precreate / |   | au |   |   |   |   |   |   |
+|   |   |   |   |   |   | 否 |   |   |   |   |   |
+|   |   | auto_partitioning_num_retention / au |   |   |   |   | 保留历史分区数量，取值说明如下： 0：不保留历史分区。 -1（默认值）：不清理历史分区。 正数：保留N个历史分区，最大值为512。 |   |   |   | 是 |
+|   |   |   | auto_partitioning_num_retention / |   | au |   | 可通过 |   | set hg_ | experimental_auto_part_max_maintained_partitions= |   |
+|   |   | to_partitioning.num_retention |   |   |   | 否 | <value>; |   |   |   |   |
 
-|  | to_partitioning.num_precreate |
+|   | to_partitioning.num_precreate |
 |---|---|
 
 **表名生成规则**
 
-| 动态分区表时间单位 auto_partitioning.time_unit 取值为HOUR、DAY、MONTH、QUARTER、YEAR，动态分区将使用分区父表名加上时间后缀作为新创建分区的表名。格式如： {parent_table}_{time_suffix} ， 其中时间后缀将依据自动分区的调度时间和时间单位对应的格式模板生成。具体的对应关系如下。 |  |  |  |
+| 动态分区表时间单位 auto_partitioning.time_unit 取值为HOUR、DAY、MONTH、QUARTER、YEAR，动态分区将使用分区父表名加上时间后缀作为新创建分区的表名。格式如： {parent_table}_{time_suffix} ， 其中时间后缀将依据自动分区的调度时间和时间单位对应的格式模板生成。具体的对应关系如下。 |   |   |   |
 |---|---|---|---|
 | 时间单位 | 时间后缀格式 | 示例 | 执行时间 |
 | HOUR | YYYYMMDDHH24 | 2024112221。 | 每个整点的开始，例如2024年11月22日 21:00:01执行任务。 |
-|  | YYYY-MM-DD-HH24 | 2024-11-22-21。 |  |
+|   | YYYY-MM-DD-HH24 | 2024-11-22-21。 |   |
 | DAY | YYYYMMDD | 20241122。 | 每天00:00:01开始，例如2024年11月22日 00:00:01。 |
-|  | YYYY-MM-DD | 2024-11-22。 |  |
+|   | YYYY-MM-DD | 2024-11-22。 |   |
 | MONTH | YYYYMM | 202411。 | 每个月的第一天00:00:01开始，例如2024年11月1日的00:00:01。 |
-|  | YYYY-MM | 2024-11。 |  |
+|   | YYYY-MM | 2024-11。 |   |
 | QUARTER | YYYYQ | 20241、20242、20243、20244分别表示 2024年的四个季度。 | 每个季度的第一天00:00:01开始，例如2024年1月1日 00:00:01。 |
-|  | YYYY-Q | 2024-1、2024-2、2024-3、2024-4 分别表示2024年的四个季度。 |  |
+|   | YYYY-Q | 2024-1、2024-2、2024-3、2024-4 分别表示2024年的四个季度。 |   |
 | YEAR | YYYY | 2023、2024分别表示2023年、2024年的分区。 | 每年的第一天00:00:01开始，例如2023年1月1日 00:00:01。 |
 
 **使用示例**
@@ -10917,14 +11520,15 @@ CALL set_table_property('[<schema_name>.]<table_name>', 'auto_partitioning.enabl
 **使用WITH语法示例**
 
 1. 创建分区表 `tbl1` 。
-实时数仓 Hologres `-- 2.1`版本创建分区表，并配置动态分区管理：
+`-- 2.1`版本创建分区表，并配置动态分区管理：
 
 ```
+CREATE TABLE tbl1 (
     c1 TEXT NOT NULL,
     c2 TEXT
 ```
 
-)
+`)`
 
 ```
 PARTITION BY LIST (c2) WITH (
@@ -10933,27 +11537,26 @@ PARTITION BY LIST (c2) WITH (
    auto_partitioning_time_zone = 'Asia/Shanghai',
    auto_partitioning_num_precreate = '3',
    auto_partitioning_num_retention = '2'
-);
 ```
 
+);
 2. 待子分区生成后插入数据。
 
 ```
 INSERT INTO tbl1 (c1, c2) VALUES ('Data 1', '20251211'); INSERT INTO tbl1 (c1, c2) VALUES ('Data 2', '20251212'); INSERT INTO tbl1 (c1, c2) VALUES ('Data 3', '20251213');
 ```
 
-**说明**
+> **说明：** 参数 `20251211` 、 `20251212` 和 `20251213` 需替换为实际生成的分区值。
 
-参数 `20251211` 、 `20251212` 和 `20251213` 需替换为实际生成的分区值。
 3. 查询数据。
 
 ```
 SELECT * FROM tbl1 WHERE c2='20251211';
 ```
 
-**说明**
+> **说明：** 参数 `20251211` 需替换为您所需查询的分区值。
 
-参数 `20251211` 需替换为您所需查询的分区值。 返回结果如下：
+返回结果如下：
 
 ```
 c1 c2 Data 1 20251211
@@ -10963,7 +11566,7 @@ c1 c2 Data 1 20251211
 
 | 创建分区表 | tbl1 | 。 |
 |---|---|---|
-| -- 创建分区表，并配置动态分区管理： BEGIN; CREATE TABLE tbl1 ( c1 TEXT NOT NULL, c2 TEXT ) PARTITION BY LIST (c2); CALL set_table_property ('tbl1', 'auto_partitioning.enable', 'true'); CALL set_table_property ('tbl1', 'auto_partitioning.time_unit', 'DAY'); CALL set_table_property ('tbl1', 'auto_partitioning.time_zone', 'Asia/Shanghai'); CALL set_table_property ('tbl1', 'auto_partitioning.num_precreate', '3'); CALL set_table_property ('tbl1', 'auto_partitioning.num_retention', '2'); COMMIT; |  |  |
+| -- 创建分区表，并配置动态分区管理： BEGIN; CREATE TABLE tbl1 ( c1 TEXT NOT NULL, c2 TEXT ) PARTITION BY LIST (c2); CALL set_table_property ('tbl1', 'auto_partitioning.enable', 'true'); CALL set_table_property ('tbl1', 'auto_partitioning.time_unit', 'DAY'); CALL set_table_property ('tbl1', 'auto_partitioning.time_zone', 'Asia/Shanghai'); CALL set_table_property ('tbl1', 'auto_partitioning.num_precreate', '3'); CALL set_table_property ('tbl1', 'auto_partitioning.num_retention', '2'); COMMIT; |   |   |
 
 2. 待子分区生成后插入数据。
 
@@ -10990,8 +11593,6 @@ c1 c2 Data 1 20251211
 | 2025-12-11 09:00:00 | 执行如上SQL，创建分区表。 | 创建分区父表：tbl1 创建分区子表：tbl1 _20251211、tbl1 _20251212、tbl1 _20251213 |
 | 2025-12-12 00:00:00 | 系统自动创建分区子表。 | 创建分区子表：tbl1 _20251214 |
 | 2025-12-13 00:00:00 | 系统自动创建分区子表。 | 系统创建分区子表：tbl1 _20251215 |
-
-实时数仓 Hologres
 
 | 2025-12-14 00:00:00 | 系统自动创建分区子表，并清理分区子表。 | 创建分区子表：tbl1 _20251216 清理分区子表：tbl1 _20251211 |
 |---|---|---|
@@ -11061,7 +11662,7 @@ FROM
 | crettime _ | 创建时间。 |
 | schdstarttime _ _ | 最近一次计划调度时间。 |
 
-查询结果如下。 实时数仓 Hologres
+查询结果如下。
 
 **查看创建和清除分区子表日志**
 
@@ -11102,24 +11703,24 @@ FROM
 对于存量分区表您可以使用如下SQL开启动态分区。 `-- Hologres V2.1`及以上版本`SQL`示例
 
 ```
+ALTER TABLE auto_part_old SET (
    auto_partitioning_enable = 'true',
    auto_partitioning_time_unit = 'HOUR',
    auto_partitioning_time_zone = 'PRC',
    auto_partitioning_num_precreate = '4',
    auto_partitioning_num_retention = '-1',
    auto_partitioning_num_hot = '-1'
-);
 ```
 
-`-- Hologres`所有版本`SQL`示例
+); `-- Hologres`所有版本`SQL`示例
 
 ```
 BEGIN; CALL set_table_property('auto_part_old', 'auto_partitioning.enable', 'true'); CALL set_table_property('auto_part_old', 'auto_partitioning.time_unit', 'HOUR'); CALL set_table_property('auto_part_old', 'auto_partitioning.time_zone', 'PRC'); CALL set_table_property('auto_part_old', 'auto_partitioning.num_precreate', '4'); CALL set_table_property('auto_part_old', 'auto_partitioning.num_retention', '-1'); COMMIT;
 ```
 
-**重要**
+> **重要：** 和为动态分功能的核心升级后仅允许次后能改
 
-和为动态分功能的核心升级后仅允许次后能改实时数仓 Hologres `auto_partitioning.time_unit` 和 `auto_partitioning.time_zone` 为动态分区功能的核心配置，Hologres升级后仅允许设置一次，设置后不能再更改。
+> `auto_partitioning.time_unit` 和 `auto_partitioning.time_zone` 为动态分区功能的核心配置，Hologres升级后仅允许设置一次，设置后不能再更改。
 
 **存量分区表开启动态分区后，历史存在的分区子表是否会受到自动清理逻辑的影响？**
 
@@ -11129,9 +11730,9 @@ BEGIN; CALL set_table_property('auto_part_old', 'auto_partitioning.enable', 'tru
 
 对于首次创建动态分区地任务，系统默认每10分钟检查一次，因此分区子表会在10分钟内被创建，请稍后查看。
 
-#### 1.6.5. FOREIGN TBALE
+#### 1.6.5 FOREIGN TBALE
 
-##### 1.6.5.1. CREATE FOREIGN TABLE
+##### 1.6.5.1 CREATE FOREIGN TABLE
 
 CREATE FOREIGN TABLE语句用于创建外部表。本文为您介绍CREATE FOREIGN TABLE的用法。
 
@@ -11156,15 +11757,14 @@ SERVER odps_server [ OPTIONS ( option 'value' [, ... ] ) ]
 | SERVER | 连接MaxCompute外部数据源的服务器。 您可以直接调用Hologres底层已创建的名为odps _server的外部表服务器。详细原理请参见Postgres FDW。 |
 | OPTIONS | 您需要指定project _name和table _name。如果您MaxCompute的Project是三层模型模式，您仍使用两层模型的写法调用，则会报错，报错样例如下。 failed to import foreign schema:Table not found - table_xxx MaxCompute两层模型： project _name为MaxCompute的项目名称。 table _name为需要查询的MaxCompute表名称。 MaxCompute三层模型： project _name为MaxCompute的项目名称和Schema名称，格式为 odps_project_name#odps_schema_name 。 table _name为需要查询的MaxCompute表名称。 |
 
-Hologres创建的外部表的字段类型必须与MaxCompute的字段类型一一对应。
-
-**说明**
+> **说明：** Hologres创建的外部表的字段类型必须与MaxCompute的字段类型一一对应。
 
 **示例**
 
 直接查询外部表数据。 Hologres新建外部表后，您可以直接查询MaxCompute外部表数据。示例SQL语句如下。 `--`两层模型模式
 
 ```
+CREATE FOREIGN TABLE src_pt(
   id text,
   pt text)
 SERVER odps_server OPTIONS(project_name '<odps_project>', table_name '<odps_table>');
@@ -11173,17 +11773,19 @@ SERVER odps_server OPTIONS(project_name '<odps_project>', table_name '<odps_tabl
 `--`三层模型模式
 
 ```
+CREATE FOREIGN TABLE src_pt(
   id text,
   pt text)
 SERVER odps_server OPTIONS(project_name '<odps_project>#<odps_schema>', table_name '<odps_table>'); SELECT * FROM src_pt;
 ```
 
-在Hologres中直接查询MaxCompute外部表数据。 导入外部表并查询数据。 您可以导入MaxCompute的数据至Hologres，再进行查询。示例语句如下。 实时数仓 Hologres
+在Hologres中直接查询MaxCompute外部表数据。 导入外部表并查询数据。 您可以导入MaxCompute的数据至Hologres，再进行查询。示例语句如下。
 
 ```
+CREATE FOREIGN TABLE src_pt_odps(
   id text,
   pt text)
-SERVER odps_server OPTIONS (project_name'<odps_project>', table_name'<odps_table>'); BEGIN;
+SERVER odps_server OPTIONS (project_name'<odps_project>', table_name'<odps_table>'); BEGIN; CREATE TABLE src_pt(
  id text,
   pt text);
 COMMIT; INSERT INTO src_pt SELECT * FROM src_pt_odps;
@@ -11195,29 +11797,29 @@ COMMIT; INSERT INTO src_pt SELECT * FROM src_pt_odps;
 
 创建MaxCompute外部表时，MaxCompute与Hologres的数据类型映射如下表所示。
 
-| MaxCompute数据类型 |  | Hologres数据类型 |  |  |  | 是否支持映射 |
+| MaxCompute数据类型 |   | Hologres数据类型 |   |   |   | 是否支持映射 |
 |---|---|---|---|---|---|---|
-| STRING VARCHAR |  | TEXT |  |  |  | 支持 |
-| BIGINT |  | INT8 |  |  |  | 支持 |
-| INT |  | INT4 INT |  |  |  | 支持 |
-| SMALLINT |  | INT2 INT8 说明执行 set |  |  |  | 不支持 |
-|  |  |  | 说明执行 set |  |  |  |
-|  |  |  |  | set |  | 不支持 |
-|  |  |  | hg_enable_convert_type_for_foreign_table = true |  |  |  |
-| TINYINT |  | 无 |  |  |  | 不支持 |
-| FLOAT |  | FLOAT4 REAL |  |  |  | 支持 |
-| DOUBLE |  | FLOAT FLOAT8 |  |  |  | 支持 |
-| BOOLEAN |  | BOOL |  |  |  | 支持 |
-| DATETIME |  | TIMESTAMPTZ |  |  |  | 支持 |
-| DECIMAL |  | NUMERIC |  |  |  | 支持 |
-| CHAR |  | 无 |  |  |  | 不支持 |
-| BINARY |  | 无 |  |  |  | 不支持 |
+| STRING VARCHAR |   | TEXT |   |   |   | 支持 |
+| BIGINT |   | INT8 |   |   |   | 支持 |
+| INT |   | INT4 INT |   |   |   | 支持 |
+| SMALLINT |   | INT2 INT8 说明执行 set |   |   |   | 不支持 |
+|   |   |   | 说明执行 set |   |   |   |
+|   |   |   |   | set |   | 不支持 |
+|   |   |   | hg_enable_convert_type_for_foreign_table = true |   |   |   |
+| TINYINT |   | 无 |   |   |   | 不支持 |
+| FLOAT |   | FLOAT4 REAL |   |   |   | 支持 |
+| DOUBLE |   | FLOAT FLOAT8 |   |   |   | 支持 |
+| BOOLEAN |   | BOOL |   |   |   | 支持 |
+| DATETIME |   | TIMESTAMPTZ |   |   |   | 支持 |
+| DECIMAL |   | NUMERIC |   |   |   | 支持 |
+| CHAR |   | 无 |   |   |   | 不支持 |
+| BINARY |   | 无 |   |   |   | 不支持 |
 
-**说明**
+> **说明：** `DATETIME` 使用东八区时间作为系统的标准时间。取值范围为0000年1月1日～9999年12月31日，精确到毫秒。
+> `TIMESTAMPTZ` 包含时区，取值范围为4713BC～294276AD，精确到微秒。
+> 当MaxCompute数据表中含有Hologres不支持的类型字段时，如果Hologres不访问该字段，则可以正常查询所支持的类型字段。
 
-`DATETIME` 使用东八区时间作为系统的标准时间。取值范围为0000年1月1日～9999年12月31日，精确到毫秒。 `TIMESTAMPTZ` 包含时区，取值范围为4713BC～294276AD，精确到微秒。 当MaxCompute数据表中含有Hologres不支持的类型字段时，如果Hologres不访问该字段，则可以正常查询所支持的类型字段。
-
-##### 1.6.5.2. ALTER FOREIGN TABLE
+##### 1.6.5.2 ALTER FOREIGN TABLE
 
 ALTER FOREIGN TABLE语句用于修改外部表。本文为您介绍如何使用ALTER FOREIGN TABLE，为外部表重命名、增加列及删除列。
 
@@ -11241,11 +11843,11 @@ ALTER FOREIGN TABLE test RENAME TO new_test_table;
 
 **增加列**
 
-使用Hologres创建外部表查询数据时，当MaxCompute表增加字段后，Hologres不会自动更新Schema，需要您在Hologres中手动增加列。 大集群暂不支持使用如下语法增加列，关于大集群增加列的操作请参见IMPORT FOREIGN SCHEMA。
+使用Hologres创建外部表查询数据时，当MaxCompute表增加字段后，Hologres不会自动更新Schema，需要您在Hologres中手动增加列。
 
-**说明**
+> **说明：** 大集群暂不支持使用如下语法增加列，关于大集群增加列的操作请参见IMPORT FOREIGN SCHEMA。
 
-实时数仓 Hologres 语法如下。
+语法如下。
 
 ```
 ALTER FOREIGN TABLE IF EXISTS table_name ADD COLUMN new_column_name data_type;
@@ -11254,6 +11856,7 @@ ALTER FOREIGN TABLE IF EXISTS table_name ADD COLUMN new_column_name data_type;
 示例SQL语句如下。
 
 ```
+ALTER FOREIGN TABLE bank
  ADD COLUMN  cons_conf_idx float8,
  ADD COLUMN  euribor3m float8;
 ```
@@ -11269,11 +11872,12 @@ ALTER FOREIGN TABLE IF EXISTS table_name DROP COLUMN column_name;
 示例SQL语句如下。
 
 ```
+ALTER FOREIGN TABLE bank
  DROP COLUMN  cons_conf_idx,
  DROP COLUMN  euribor3m;
 ```
 
-##### 1.6.5.3. DROP FOREIGN TABLE
+##### 1.6.5.3 DROP FOREIGN TABLE
 
 DROP FOREIGN TABLE语句用于删除外部表。本文为您介绍DROP FOREIGN TABLE的用法。
 
@@ -11300,9 +11904,9 @@ DROP FOREIGN TABLE [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
 DROP FOREIGN TABLE holo_test;
 ```
 
-#### 1.6.6. CAST
+#### 1.6.6 CAST
 
-##### 1.6.6.1. CREATE CAST
+##### 1.6.6.1 CREATE CAST
 
 CREATE CAST用于定义数据类型之间的转换。本文介绍在Hologres中CREATE CAST的用法。
 
@@ -11315,6 +11919,7 @@ CREATE CAST用于定义数据类型之间的转换。本文介绍在Hologres中C
 **函数语法**
 
 ```
+CREATE CAST (source_type AS target_type)
     WITH INOUT
     [ AS ASSIGNMENT | AS IMPLICIT ]
 ```
@@ -11331,15 +11936,13 @@ CREATE CAST用于定义数据类型之间的转换。本文介绍在Hologres中C
 
 **使用示例**
 
-实时数仓 Hologres
-
 | 通常，在Filter中比较字符类型和数值类型时，默认不进行转换。您可以使用 | CREATE CAST | 语句，创建一个支持比较字符类型和数值类型的CAST，示例语句如下。 |
 |---|---|---|
-| -- 1. 建表并插入测试数据 CREATE TABLE test_cast (id TEXT); INSERT INTO test_cast VALUES ('888'); -- 2. 隐式转换前：text 与 integer 无法直接比较，预期报错 SELECT * FROM test_cast WHERE id > 888; -- 3. 创建 text → integer 的全局隐式类型转换 CREATE CAST (TEXT AS INTEGER) WITH INOUT AS IMPLICIT; -- 4. 隐式转换后：id 自动转为 integer 参与比较，查询成功 SELECT * FROM test_cast WHERE id > 888; |  |  |
+| -- 1. 建表并插入测试数据 CREATE TABLE test_cast (id TEXT); INSERT INTO test_cast VALUES ('888'); -- 2. 隐式转换前：text 与 integer 无法直接比较，预期报错 SELECT * FROM test_cast WHERE id > 888; -- 3. 创建 text → integer 的全局隐式类型转换 CREATE CAST (TEXT AS INTEGER) WITH INOUT AS IMPLICIT; -- 4. 隐式转换后：id 自动转为 integer 参与比较，查询成功 SELECT * FROM test_cast WHERE id > 888; |   |   |
 
 更多关于CREATE CAST的详情，请参见PostgreSQL CREATE CAST。
 
-##### 1.6.6.2. DROP CAST
+##### 1.6.6.2 DROP CAST
 
 DROP CAST语句用于删除已定义的类型转换。本文介绍在Hologres中DROP CAST的用法。
 
@@ -11369,11 +11972,11 @@ DROP CAST [ IF EXISTS ] (source_type AS target_type);
 
 **使用示例**
 
-| DROP CAST IF EXISTS (text AS timestamptz); DROP CAST IF EXISTS (text AS integer); |  |  |
+| DROP CAST IF EXISTS (text AS timestamptz); DROP CAST IF EXISTS (text AS integer); |   |   |
 |---|---|---|
 | 多关于 | DROP CAST | 的详情，请参见PostgreSQL DROP CAST。 |
 
-#### 1.6.7. VIEW
+#### 1.6.7 VIEW
 
 Hologres支持基于内部表及外部表创建视图VIEW，您可以使用单张表、多张表或者其他视图来创建视图。本文为您介绍在Hologres中如何创建视图。
 
@@ -11382,7 +11985,7 @@ Hologres支持基于内部表及外部表创建视图VIEW，您可以使用单�
 创建视图的语法格式如下。
 
 ```
-CREATE [TEMP | TEMPORARY] VIEW view_name AS SELECT column1, column2..... WHERE [condition];
+CREATE [TEMP | TEMPORARY] VIEW view_name AS SELECT column1, column2..... FROM table_name WHERE [condition];
 ```
 
 如果TEMPORARY或者TEMP被指定，视图会被创建为一个临时视图。当前会话结束时将会自动删掉临时视图。
@@ -11392,13 +11995,18 @@ CREATE [TEMP | TEMPORARY] VIEW view_name AS SELECT column1, column2..... WHERE [
 1. 创建内部表，示例语句如下。
 
 ```
+create table holo_test (
   amount decimal(10, 2),
   rate decimal(10, 2)
-); (12.12,13.13), (14.14,15.15), (16.16,17.17), (17.1,17), (18.01,19);
+```
+
+);
+
+```
+insert into holo_test values (12.12,13.13), (14.14,15.15), (16.16,17.17), (17.1,17), (18.01,19);
 ```
 
 2. 基于内部表创建视图并查询表数据，示例语句如下。
-实时数仓 Hologres
 
 ```
 create view holo_view as select * from holo_test; select * from holo_view;
@@ -11422,7 +12030,11 @@ create foreign table if not exists holo_foreign_test (
   rate decimal(10, 2))
   server odps_server
   options(project_name '<projectname>', table_name '<odps_name>')
-  );
+```
+
+);
+
+```
 select * from holo_foreign_test limit 2;
 ```
 
@@ -11477,7 +12089,7 @@ drop view <view_name>;
 
 **查看所有视图和视图的DDL**
 
-您可以执行如下命令查看所有视图，如果您通过psql客户端查看所有视图，也可以执行 \dv 进行查看。 实时数仓 Hologres `--sql`命令
+您可以执行如下命令查看所有视图，如果您通过psql客户端查看所有视图，也可以执行 \dv 进行查看。 `--sql`命令
 
 ```
 SELECT n.nspname as "Schema",
@@ -11489,7 +12101,9 @@ FROM pg_catalog.pg_class c
      LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
 WHERE c.relkind IN ('v','')
       AND n.nspname <> 'pg_catalog'
+      AND n.nspname <> 'information_schema'
       AND n.nspname !~ '^pg_toast'
+  AND pg_catalog.pg_table_is_visible(c.oid)
 ORDER BY 1,2;
 ```
 
@@ -11499,9 +12113,9 @@ ORDER BY 1,2;
 create extension hg_toolkit; select public.hg_dump_script('viewname');
 ```
 
-### DML&DQL
+### 1.7 DML&DQL
 
-#### 1.7.1. COPY
+#### 1.7.1 COPY
 
 本文为您介绍在Hologres中如何使用COPY命令进行数据导入与导出。
 
@@ -11513,13 +12127,14 @@ create extension hg_toolkit; select public.hg_dump_script('viewname');
 
 | COPY FROM | 命令用于从客户端的标准输入导入数据至Hologres； | COPY TO | 命令用于导出Hologres数据。 |
 |---|---|---|---|
-| 说明当前COPY命令支持的数据类型与Hologres引擎支持的数据类型一致，详情请参见数据类型汇总。 Hologres仅支持使用 COPY FROM STDIN 命令导入数据和 COPY ( query ) TO STDOUT 命令导出数据。 COPY命令保障数据导入与导出的原子性。FIXED COPY模式由于将表级锁优化为行级锁，因此不保障原子性，当业务出现脏数据时，仅会针对该条数据报错，其余数据可能部分写入或未写入。 |  |  |  |
+| 说明当前COPY命令支持的数据类型与Hologres引擎支持的数据类型一致，详情请参见数据类型汇总。 Hologres仅支持使用 COPY FROM STDIN 命令导入数据和 COPY ( query ) TO STDOUT 命令导出数据。 COPY命令保障数据导入与导出的原子性。FIXED COPY模式由于将表级锁优化为行级锁，因此不保障原子性，当业务出现脏数据时，仅会针对该条数据报错，其余数据可能部分写入或未写入。 |   |   |   |
 
 **命令格式**
 
 Hologres支持的COPY语句格式如下：
 
 ```
+COPY table_name [ ( column_name [, ...] ) ]
     FROM STDIN
     [ [ WITH ] ( option [, ...] ) ]
 COPY { ( query ) }
@@ -11536,6 +12151,7 @@ where option can be one of:
     FORCE_NOT_NULL ( column_name [, ...] )
     ENCODING 'encoding_name'
     STREAM_MODE [ boolean]
+    ON_CONFLICT 'none/ignore/update'
 ```
 
 **参数说明**
@@ -11545,8 +12161,6 @@ where option can be one of:
 | tablename _ | Hologres接收数据的表名称。 |
 | query | 查询语句。 |
 | STDIN | 指定从客户端使用标准输入。 |
-
-实时数仓 Hologres
 
 | STDOUT | 导出至指定客户端。 |
 |---|---|
@@ -11566,9 +12180,10 @@ where option can be one of:
 
 **本地文件导入**
 
-Hologres支持使用COPY命令进行本地文件的导入与导出。更多关于COPY命令的原理与用法请参见PostgreSQL官网COPY。 使用示例： 使用STDIN导入数据至Hologres，命令如下。 实时数仓 Hologres `--`创建`Hologres`表。
+Hologres支持使用COPY命令进行本地文件的导入与导出。更多关于COPY命令的原理与用法请参见PostgreSQL官网COPY。 使用示例： 使用STDIN导入数据至Hologres，命令如下。 `--`创建`Hologres`表。
 
 ```
+CREATE TABLE copy_test (
   id    int,
   age   int,
   name  text
@@ -11587,9 +12202,9 @@ COPY copy_test FROM STDIN WITH DELIMITER AS ',' NULL AS ''; 53444,24,wangming 55
 SELECT * FROM copy_test;
 ```
 
-**说明**
+> **说明：** PSQL客户端仅支持使用STDIN（标准输入）方式导入数据，HoloWeb暂不支持使用命令行方式导入数据。
 
-PSQL客户端仅支持使用STDIN（标准输入）方式导入数据，HoloWeb暂不支持使用命令行方式导入数据。 使用STDIN方式导入CSV格式的文件至Hologres，命令如下。 `--`创建`Hologres`表。
+使用STDIN方式导入CSV格式的文件至Hologres，命令如下。 `--`创建`Hologres`表。
 
 ```
 CREATE TABLE partsupp ( ps_partkey integer NOT NULL,
@@ -11611,17 +12226,17 @@ COPY partsupp FROM STDIN WITH DELIMITER '|' CSV; 1|2|3325|771.64|final theodolit
 SELECT * FROM partsupp;
 ```
 
-**说明**
+> **说明：** PSQL客户端支持使用STDIN导入数据，HoloWeb暂不支持使用命令行方式通过STDIN导入CSV格式的文件。
 
-PSQL客户端支持使用STDIN导入数据，HoloWeb暂不支持使用命令行方式通过STDIN导入CSV格式的文件。 导入本地文件至Hologres，命令如下。
+导入本地文件至Hologres，命令如下。
 
 ```
 psql -U <username> -p <port> -h <endpoint> -d <databasename> -c "COPY <table> FROM STDIN WITH DELIMITER '|' CSV;" <<filename>;
 ```
 
-**说明**
+> **说明：** 由于PSQL客户端支持使用STDIN（标准输入）方式导入数据，因此需要将文件数据转换为标准输入格式。HoloWeb暂不支持使用命令行方式通过STDIN导入本地文件。
 
-由于PSQL客户端支持使用STDIN（标准输入）方式导入数据，因此需要将文件数据转换为标准输入格式。HoloWeb暂不支持使用命令行方式通过STDIN导入本地文件。 参数说明：
+参数说明：
 
 | 参数 | 描述 |
 |---|---|
@@ -11632,7 +12247,7 @@ psql -U <username> -p <port> -h <endpoint> -d <databasename> -c "COPY <table> FR
 | table | Hologres数据库中待导入数据的表名。 |
 | filename | 需要导入的本地文件路径。 示例取值 D:\tmp\copy_test.csv 。 |
 
-如下示例将指导您在PSQL客户端执行命令导入本地文件至Hologres。 实时数仓 Hologres 输入命令导入本地文件copy_test至Hologres。
+如下示例将指导您在PSQL客户端执行命令导入本地文件至Hologres。 输入命令导入本地文件copy_test至Hologres。
 
 ```
 C:\Users\nan>psql -U LTxxx -p 80 -h hgrxxx.hologres.aliyuncs.com -d mydb -c "COPY copy_test from stdin with delimiter ',' ;" <D:\tmp\copy_test.csv
@@ -11664,13 +12279,17 @@ mydb=# select * from copy_test;
 
 **CopyManager导入JDBC客户端文件**
 
-针对JDBC客户端文件，可以使用CopyManager工具进行数据复制。 CopyManager是JDBC针对PostgreSQL的COPY场景封装的API。Hologres兼容PostgreSQL协议，可以直接使用CopyManager进行JDBC客户端文件的导入与导出。更多关于CopyManager的信息请参见JDBC官网文档CopyManager。 使用示例：使用CopyManager导入JDBC客户端的文件至Hologres，代码样例如下。 实时数仓 Hologres
+针对JDBC客户端文件，可以使用CopyManager工具进行数据复制。 CopyManager是JDBC针对PostgreSQL的COPY场景封装的API。Hologres兼容PostgreSQL协议，可以直接使用CopyManager进行JDBC客户端文件的导入与导出。更多关于CopyManager的信息请参见JDBC官网文档CopyManager。 使用示例：使用CopyManager导入JDBC客户端的文件至Hologres，代码样例如下。
 
 ```java
 package com.aliyun.hologram.test.jdbc; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException; import java.sql.*; import java.util.Properties; import org.postgresql.copy.CopyManager; import org.postgresql.core.BaseConnection; public class jdbcCopyFile {
     public static void main(String args[]) throws Exception {
         System.out.println(copyFromFile(getConnection(), "/Users/feng/Workspace/region.tbl", "region"));
-    }
+```
+
+`}`
+
+```
     public static Connection getConnection() throws Exception {
         Class.forName("org.postgresql.Driver");
         String url = "jdbc:postgresql://endpoint:port/dbname";
@@ -11688,16 +12307,20 @@ props.setProperty("password", "BBB");//当前账号的`AccessKey SECRET`，建�
 
 ```
         return DriverManager.getConnection(url, props);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 导入文件至数据库。
-*
+`*` 导入文件至数据库。 `*`
 
 ```
      * @param connection
      * @param filePath
+     * @param tableName
      * @return
      * @throws SQLException
      * @throws IOException
@@ -11720,17 +12343,19 @@ props.setProperty("password", "BBB");//当前账号的`AccessKey SECRET`，建�
                     fileInputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-            }
-        }
-        return count;
-    }
-}
 ```
+
+`}` `}` `}`
+
+```
+        return count;
+```
+
+`}` `}`
 
 **FIXED COPY**
 
-FIXED COPY是使用Fixed Plan优化COPY命令执行的新模式，是Hologres特有的执行引擎优化方式，仅支持导入数据至Hologres。更多关于Fixed Plan的原理请参从Hologres V1.3.17版本起，支持FIXED COPY模式导入数据至Hologres。与未经Fixed Plan优化的COPY命令相比，有如下不同：
+FIXED COPY是使用Fixed Plan优化COPY命令执行的新模式，是Hologres特有的执行引擎优化方式，仅支持导入数据至Hologres。更多关于Fixed Plan的原理请参见Fixed Plan加速SQL执行。 从Hologres V1.3.17版本起，支持FIXED COPY模式导入数据至Hologres。与未经Fixed Plan优化的COPY命令相比，有如下不同：
 
 | 类别 | FIXED COPY | COPY |
 |---|---|---|
@@ -11740,13 +12365,18 @@ FIXED COPY是使用Fixed Plan优化COPY命令执行的新模式，是Hologres特
 | 格式支持 | TEXT、BINARY | TEXT |
 | 主键冲突策略 | NONE（冲突则报错）、UPDATE、 IGNORE | NONE（冲突则报错） |
 
-针对非全列COPY的场景，FIXED COPY的表现如下： 如果COPY写入的列不是全列，则为局部更新，表现如下： 实时数仓 Hologres
+针对非全列COPY的场景，FIXED COPY的表现如下： 如果COPY写入的列不是全列，则为局部更新，表现如下：
 
 ```
 CREATE TABLE t0 (id int NOT NULL, name text, age int, primary key(id)); COPY t0(id, name) FROM STDIN WITH (
   STREAM_MODE TRUE,
   ON_CONFLICT UPDATE);
-id = excluded.id, name = excluded.name;
+```
+
+`--` 上述`COPY`等价与如下`INSERT INTO`
+
+```
+INSERT INTO t0(id, name) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET id = excluded.id, name = excluded.name;
 ```
 
 如果COPY写入的列不是全列，且未参与写入的列包含default value，表现如下：
@@ -11757,10 +12387,10 @@ CREATE TABLE t0 (id int not null, name text, age int DEFAULT 0, primary key(id))
   ON_CONFLICT UPDATE);
 ```
 
-`--` 若`id`数据不存在，`age`列赋值`default value`； `--` 若`id`数据已存在，`age`列不更新
+`--` 上述`COPY`等价与如下`INSERT INTO` `--` 若`id`数据不存在，`age`列赋值`default value`； `--` 若`id`数据已存在，`age`列不更新
 
 ```
-id = excluded.id, name = excluded.name;
+INSERT INTO t0(id, name, age) VALUES(?, ?, default) ON CONFLICT(id) DO UPDATE SET id = excluded.id, name = excluded.name;
 ```
 
 **使用COPY从Hologres中导出数据**
@@ -11771,14 +12401,12 @@ id = excluded.id, name = excluded.name;
 
 | 使用 | \copy | 导出Hologres的数据至本地文件。 |
 |---|---|---|
-| 说明仅支持PSQL客户端使用该方式导出数据。 |  |  |
-| -- 建表 CREATE TABLE copy_to_local ( id int, age int, name text ) ; -- 写入数据 INSERT INTO copy_to_local VALUES (1,1,'a'), (1,2,'b'), (1,3,'c'), (1,4,'d'); -- 查数据 SELECT * FROM copy_to_local; -- 导出数据至本地文件 \copy (SELECT * FROM copy_to_local) TO '/root/localfile.txt'; |  |  |
+| 说明仅支持PSQL客户端使用该方式导出数据。 |   |   |
+| -- 建表 CREATE TABLE copy_to_local ( id int, age int, name text ) ; -- 写入数据 INSERT INTO copy_to_local VALUES (1,1,'a'), (1,2,'b'), (1,3,'c'), (1,4,'d'); -- 查数据 SELECT * FROM copy_to_local; -- 导出数据至本地文件 \copy (SELECT * FROM copy_to_local) TO '/root/localfile.txt'; |   |   |
 
 使用STDOUT导出Hologres数据至本地文件。
 
-**说明**
-
-仅支持PSQL客户端使用该方式导出数据。
+> **说明：** 仅支持PSQL客户端使用该方式导出数据。
 
 ```xml
 psql -U <username> -p <port> -h <endpoint> -d <databasename> -c "COPY (SELECT * FROM <tablename>) TO STDOUT WITH DELIMITER '|' CSV;" > <filename>;
@@ -11792,7 +12420,7 @@ psql -U <username> -p <port> -h <endpoint> -d <databasename> -c "COPY (SELECT * 
 CALL spm_grant('pg_execute_server_program','云账号ID/云邮箱/RAM账号');
 ```
 
-`--DB`使用的是专家权限模型，执行以下语句 `GRANT pg_execute_server_program TO` 云账号`ID/`云邮箱`/RAM`账号; 单次导入至OSS的数据量不能超过5GB。 命令介绍实时数仓 Hologres `COPY TO` 命令：
+`--DB`使用的是专家权限模型，执行以下语句 `GRANT pg_execute_server_program TO` 云账号`ID/`云邮箱`/RAM`账号; 单次导入至OSS的数据量不能超过5GB。 命令介绍 `COPY TO` 命令：
 
 ```
 COPY ( query ) TO { PROGRAM 'command' | STDOUT }
@@ -11803,8 +12431,8 @@ COPY ( query ) TO { PROGRAM 'command' | STDOUT }
 
 | hg_dump_to_oss | 命令（需要与 | COPY TO | 命令组合使用）： |
 |---|---|---|---|
-| COPY (query) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <accessid> --AccessKeySecret <accesskey> --Endpoint <ossendpoint> --BucketName <bucketname> --DirName <dirname> --FileName <filename> --BatchSize <xxx> ' (DELIMITER ',', HEADER true, FORMAT CSV); |  |  |  |
-| 重要 <dirname>前请不要添加斜杠（/）、反斜杠（\）等字符。 |  |  |  |
+| COPY (query) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <accessid> --AccessKeySecret <accesskey> --Endpoint <ossendpoint> --BucketName <bucketname> --DirName <dirname> --FileName <filename> --BatchSize <xxx> ' (DELIMITER ',', HEADER true, FORMAT CSV); |   |   |   |
+| 重要 <dirname>前请不要添加斜杠（/）、反斜杠（\）等字符。 |   |   |   |
 
 参数说明：
 
@@ -11824,11 +12452,11 @@ COPY ( query ) TO { PROGRAM 'command' | STDOUT }
 
 | 在Hologres中 | hg_dump_to_oss | 命令与 | COPY TO | 命令的使用示例如下。 |
 |---|---|---|---|---|
-| -- 将Hologres内部表数据dump到指定OSS COPY (select * from holo_test LIMIT 2) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <access id> --AccessKeySecret <access key> --Endpoint oss- cn-hangzhou-internal.aliyuncs.com --BucketName hologres-demo --DirName holotest/ --FileName file_name --BatchSize 3000' DELIMITER ','; -- 将Hologres外部表数据dump到指定OSS COPY (select * from foreign_holo_test LIMIT 20) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <access id> --AccessKeySecret <access key> -- Endpoint oss-cn-hangzhou-internal.aliyuncs.com --BucketName hologres-demo --DirName holotest/ --FileName file_name --BatchSize 3000' (DELIMITER ',', HEADER true); -- 跨region dump到指定OSS COPY (select * from holo_test_1 LIMIT 20) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <access id> --AccessKeySecret <access key> --Endpoint o ss-cn-beijing-internal.aliyuncs.com --BucketName hologres-demo --DirName holotest/ --FileName file_name --BatchSize 3000' (DELIMITER ',', HEADER true, FORMAT CSV); |  |  |  |  |
+| -- 将Hologres内部表数据dump到指定OSS COPY (select * from holo_test LIMIT 2) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <access id> --AccessKeySecret <access key> --Endpoint oss- cn-hangzhou-internal.aliyuncs.com --BucketName hologres-demo --DirName holotest/ --FileName file_name --BatchSize 3000' DELIMITER ','; -- 将Hologres外部表数据dump到指定OSS COPY (select * from foreign_holo_test LIMIT 20) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <access id> --AccessKeySecret <access key> -- Endpoint oss-cn-hangzhou-internal.aliyuncs.com --BucketName hologres-demo --DirName holotest/ --FileName file_name --BatchSize 3000' (DELIMITER ',', HEADER true); -- 跨region dump到指定OSS COPY (select * from holo_test_1 LIMIT 20) TO PROGRAM 'hg_dump_to_oss --AccessKeyId <access id> --AccessKeySecret <access key> --Endpoint o ss-cn-beijing-internal.aliyuncs.com --BucketName hologres-demo --DirName holotest/ --FileName file_name --BatchSize 3000' (DELIMITER ',', HEADER true, FORMAT CSV); |   |   |   |   |
 
-**说明**
+> **说明：** Hologres支持跨地域导出数据至指定的OSS。例如，可以导出杭州地域的实例数据至北京地域的OSS。
 
-Hologres支持跨地域导出数据至指定的OSS。例如，可以导出杭州地域的实例数据至北京地域的OSS。 实时数仓 Hologres 常见问题常见的报错内容及解决方法如下：
+常见问题常见的报错内容及解决方法如下：
 
 | 报错信息 | 解决方法 |
 |---|---|
@@ -11844,13 +12472,17 @@ Hologres支持跨地域导出数据至指定的OSS。例如，可以导出杭州
 
 **CopyManager导出至JDBC客户端文件**
 
-使用示例：使用CopyManager导出Hologres的数据至JDBC客户端的文件，代码样例如下。 实时数仓 Hologres
+使用示例：使用CopyManager导出Hologres的数据至JDBC客户端的文件，代码样例如下。
 
 ```java
 import org.postgresql.copy.CopyManager; import org.postgresql.core.BaseConnection; import java.io.FileOutputStream; import java.io.IOException; import java.sql.Connection; import java.sql.DriverManager; import java.sql.SQLException; import java.util.Properties; public class copy_to_local_file {
     public static void main(String args[]) throws Exception {
         System.out.println(copyToFile(getConnection(), "/Users/feng/Workspace/region.tbl", "select * from region"));
-    }
+```
+
+`}`
+
+```
     public static Connection getConnection() throws Exception {
         Class.forName("org.postgresql.Driver");
         String url = "jdbc:postgresql://endpoint:port/dbname";
@@ -11868,12 +12500,15 @@ props.setProperty("password", "BBB");//当前账号的`AccessKey SECRET`，建�
 
 ```
         return DriverManager.getConnection(url, props);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 导出数据至`JDBC`客户端文件。
-*
+`*` 导出数据至`JDBC`客户端文件。 `*`
 
 ```
      * @param connection
@@ -11900,15 +12535,17 @@ props.setProperty("password", "BBB");//当前账号的`AccessKey SECRET`，建�
                     fileOutputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-            }
-        }
-        return filePath;
-    }
-}
 ```
 
-#### 1.7.2. INSERT
+`}` `}` `}`
+
+```
+        return filePath;
+```
+
+`}` `}`
+
+#### 1.7.2 INSERT
 
 INSERT语句用于插入新的行数据至表中。本文为您介绍在实时数仓Hologres中如何使用INSERT插入数据。
 
@@ -11917,6 +12554,7 @@ INSERT语句用于插入新的行数据至表中。本文为您介绍在实时�
 您可以插入一个或多个由表达式指定的行，以及插入来自一个查询的零行或多行数据至Hologres。语句如下。
 
 ```
+INSERT INTO table [( column [, ...] )]
    VALUES ( {expression}  [, ...] )
    [, ...] | query}
 ```
@@ -11928,20 +12566,18 @@ INSERT语句用于插入新的行数据至表中。本文为您介绍在实时�
 | schema | 表所在的Schema名称。 |
 | table | 已创建的表名称。 通过Flink写入时可以插入父表并自动路由到子表。从Hologres V1.3版本起，支持符合 FixedPlan的Insert语句直接写入分区表父表，详情请参见Fixed Plan加速SQL执行。 |
 
-实时数仓 Hologres
-
 | column | table表中的某个列的名称。 您也可以使用子域名或者数组下标限定列名称。（指向一个组合列的某些列中插入会让其他域为空）。 |
 |---|---|
 | expression | 赋予相应列的表达式或值。 |
 | query | 需要被插入行的SELECT查询语句。 语法详情请参见SELECT语句。 |
 
-目标列的名称可以以任意顺序列出。如果没有给出列名列表，则有两种确定目标列的可能性。第一种是以被声明的顺序列出该表的所有列。另一种可能性是，如果VALUES子句或者query只提供N个列，则以被声明的顺序列出该表的前N列。VALUES子句或者query提供的值会被从左至右关联到这些显式或者隐式给出的目标列。 每一个没有出现在显式或者隐式列列表中的列都将被默认填充，如果为该列声明过默认值则用默认值填充，否则用空值填充。如果任意列的表达式不是正确的数据类型，将会尝试自动转换类型。
+目标列的名称可以以任意顺序列出。如果没有给出列名列表，则有两种确定目标列的可能性。第一种是以被声明的顺序列出该表的所有列。另一种可能性是，如果VALUES子句或者query只提供N个列，则以被声明的顺序列出该表的前N列。VALUES子句或者query提供的值会被从左至右关联到这些显式或者隐式给出的目标列。 每一个没有出现在显式或者隐式列列表中的列都将被默认填充，如果为该列声明过默认值则用默认值填充，否则用空值填充。如果任意列的表达式不是正确的数据类型，将会尝试自动转换类型。 目前INSERT只支持以下两种数据写入方式：
 
-| INSERT INTO VALUES |  |
+| INSERT INTO VALUES |   |
 |---|---|
-| INSERT INTO rh_holo2mysqltest (cate_id, cate_name) VALUES (3, 'true'), (3, 'fale'), (3, 'trxxue'), (3, 'x'), (4, 'The Dinner Game'); |  |
-| INSERT INTO SELECT |  |
-| INSERT INTO test2 SELECT 2,'two'; |  |
+| INSERT INTO rh_holo2mysqltest (cate_id, cate_name) VALUES (3, 'true'), (3, 'fale'), (3, 'trxxue'), (3, 'x'), (4, 'The Dinner Game'); |   |
+| INSERT INTO SELECT |   |
+| INSERT INTO test2 SELECT 2,'two'; |   |
 
 **技术原理**
 
@@ -11949,9 +12585,10 @@ Hologres表的存储结构分为行存、列存和行列共存，但三者的写
 
 **使用示例**
 
-插入普通表。 实时数仓 Hologres
+插入普通表。
 
 ```
+CREATE TABLE holotest (
     a int,
     b bigint,
     c bool,
@@ -11961,29 +12598,35 @@ Hologres表的存储结构分为行存、列存和行列共存，但三者的写
     h timestamptz,
     i jsonb,
     j int[]
-); INSERT INTO holotest VALUES (1,9223372036854775807,false,123.123456789123,'john','2020-01-01 01:01:01.123456', '2004-10-19 10:23:54+08','{"a":2}',ARRAY[1, 2, 3, 4]);
+```
+
+);
+
+```
+INSERT INTO holotest VALUES (1,9223372036854775807,false,123.123456789123,'john','2020-01-01 01:01:01.123456', '2004-10-19 10:23:54+08','{"a":2}',ARRAY[1, 2, 3, 4]);
 ```
 
 从a表插入数据至b表。
 
 ```
+CREATE TABLE holotest2(
     a int,
     b bigint,
     c bool)
 INSERT INTO holotest2 (a,b,c) SELECT a,b,c FROM holotest;
 ```
 
-插入分区表数据。
+插入分区表数据。 `--`示例：在`public schema`下创建不带主键的分区父表和对应的分区子表
 
 ```
-begin;
+begin; create table public.hologres_parent(
   a text,
   b int,
   c timestamp,
   d text
 ```
 
-)
+`)`
 
 ```
   partition by list(a);
@@ -12000,10 +12643,10 @@ INSERT INTO public.hologres_2022 values('2022',1,now(),'a')
 
 问题一：数据在写入时，为什么监控指标中存储用量上涨非常多，写入完成后存储用量又下降？ 根据写入的技术原理，为了尽可能快的写入数据，后台会先将数据写完，待异步Compaction时再执行压缩和整理，因此会看到在数据写入过程中，数据的存储会一定的膨胀，等数据写入之后，Compaction完成后存储会下降。
 
-| 张表并行执行 insert 命令时，延迟增加。 Plan的 insert 是表锁，并行执行 insert 会导致等锁时间增加，从而造成延迟增加。 写入分区父表报错： ERROR: no partition of relation "<table_name>" found for row |  |  |
+| 张表并行执行 insert 命令时，延迟增加。 Plan的 insert 是表锁，并行执行 insert 会导致等锁时间增加，从而造成延迟增加。 写入分区父表报错： ERROR: no partition of relation "<table_name>" found for row |   |   |
 |---|---|---|
-|  | ERROR: no partition of relation "<table_name>" found for row |  |
-| ERROR: no partition of relation "<table_name>" found for row |  | 。 |
+|   | ERROR: no partition of relation "<table_name>" found for row |   |
+| ERROR: no partition of relation "<table_name>" found for row |   | 。 |
 
 问题原因：分区子表不存在。 解决方法：写入数据前，需创建对应的分区子表，命令示例如下。
 
@@ -12011,13 +12654,17 @@ INSERT INTO public.hologres_2022 values('2022',1,now(),'a')
 create table <child_table_name> partition of <parent_table_name> for values in (<value>);
 ```
 
-实时数仓 Hologres 问题四：在导入数据的时候报错： `Currently inserting into parent table is not supported` 。 报错信息：导入数据时报错： `Currently inserting into parent table is not supported` 。 问题原因：当前Insert的表，是一张分区父表，Hologres不支持直接写入分区父表。 解决方法：需要写入对应的分区子表。
+问题四：在导入数据的时候报错： `Currently inserting into parent table is not supported` 。 报错信息：导入数据时报错： `Currently inserting into parent table is not supported` 。 问题原因：当前Insert的表，是一张分区父表，Hologres不支持直接写入分区父表。 解决方法：需要写入对应的分区子表。
 
-#### 1.7.3. SELECT
+#### 1.7.3 SELECT
+
+本文将会为您介绍在交互式分析（Hologres）中数据查询SELECT的用法。
 
 **命令介绍**
 
-| 参数列表 |  |
+SELECT：从零或更多表中以多种形式的数据查询。主要包含的参数如下表所示：
+
+| 参数列表 |   |
 |---|---|
 | WITH列表 | SELECT列表 |
 | FROM子句 | WHERE子句 |
@@ -12025,34 +12672,38 @@ create table <child_table_name> partition of <parent_table_name> for values in (
 | DISTINCT 子句 | COUNT DISTINCT子句 |
 | UNION子句 | INTERSECT子句 |
 | EXCEPT子句 | ORDER BY子句 |
-| LIMIT子句 |  |
+| LIMIT子句 |   |
 
 **命令格式**
 
+SELECT语句的基本语法具体如下。
+
 ```
-[ WITH with_query [, ...] ]
+[ WITH with_query [, ...] ] SELECT [ALL | DISTINCT [ON (expression [, ...])]]
   * | expression [[AS] output_name] [, ...]
   [FROM from_item [, ...]]
   [WHERE condition]
   [GROUP BY grouping_element [, ...]]
   [HAVING condition [, ...]]
+  [{UNION | INTERSECT | EXCEPT} [ALL] select]
   [ORDER BY expression [ASC | DESC | USING operator] [, ...]]
   [LIMIT {count | ALL}]
 ```
 
-| grouping_element |  | 和 | from_item |  | 包含的内容如 |
+| grouping_element |   | 和 | from_item |   | 包含的内容如 |
 |---|---|---|---|---|---|
-| uping element包含 _ | expression |  |  | expression |  |
+| uping element包含 _ | expression |   |   | expression |   |
 
-from_item包含
+grouping_element包含 `expression expression` 可能是列名、常数、函数或者是列名或常数的任意组合，以及以算术运算符或逐位运算符连接的函数。 from_item包含
 
 ```
-from_item [NATURAL] join_type from_item
+table_name [[AS] alias [( column_alias [, ...] )]] (select) [AS] alias [( column_alias [, ...] )] from_item [NATURAL] join_type from_item
           [ON join_condition | USING ( join_column [, ...] )]
 ```
 
 **命令用法**
 
+SELECT的常用方法如下：
 1. FROM列表中的所有元素都会被计算（ FROM中的每一个元素都是一个真实表或者虚拟表）。如果在FROM列表中指定了多于一个元素，得到的结果做并集。
 2. 如果指定了WHERE子句，所有不满足该条件的行都会被从输出中消除。
 3. 如果指定了 `GROUP BY` 子句或者如果有聚集函数，输出会被组合成由在一个或者多个值上匹配的行构成的分组，并且在其上计算聚集函数的结果。如果出现了HAVING子
@@ -12068,18 +12719,26 @@ INTERSECT操作符返回同时位于两个结果集中的所有行。EXCEPT操�
 
 **WITH列表**
 
-命令简介 WITH列表是位于SELECT之前或者作为SELECT子句的subquery存在，通常位于SELECT之前，用于定义子查询，并为子查询声明一个名字和返回的列名，定义每一个 WITH子句为一个CTE（Common Table Expression），定义语法如下： 实时数仓 Hologres 参数说明
+命令简介 WITH列表是位于SELECT之前或者作为SELECT子句的subquery存在，通常位于SELECT之前，用于定义子查询，并为子查询声明一个名字和返回的列名，定义每一个 WITH子句为一个CTE（Common Table Expression），定义语法如下：
+
+```
+with_query_name [ ( column_name [, ...] ) ] AS ( select )
+```
+
+参数说明
 
 | 参数 | 说明 |
 |---|---|
 | withqueryname _ _ | 指定当前CTE的名字，可以是任意有效的标识符。 |
 | columnname _ | 列表对应着子查询返回值的列名，类似于SELECT子句中的AS的语义，子查询可以是一个常规的SELECT查询。 |
 
-CTE之间通过逗号分隔，后面出现的CTE定义可以引用前面定义的CTE，但是目前暂时不支持递归的CTE调用，在之后的查询中，可以直接将 `with_query_name` 作为一
+CTE之间通过逗号分隔，后面出现的CTE定义可以引用前面定义的CTE，但是目前暂时不支持递归的CTE调用，在之后的查询中，可以直接将 `with_query_name` 作为一个视图（view）出现在查询中，如果没有指定 `column_name` 列表，该view的 `column_name` 为对应子查询返回列的列名，如果指定 `column_name` 列表，则需要使
 
-|  | column_name |
+|   | column_name |
 |---|---|
-| column_name |  |
+| column_name |   |
+
+**SELECT列表**
 
 命令简介 SELECT列表（位于关键词 SELECT和FROM之间）指定构成SELECT语句输出行的表达式。这些表达式可以（并且通常确实会）引用FROM子句中计算得到的列。 参数说明 SELECT的每一个输出列都有一个名称。在一个简单的SELECT中，该名称只用来标记要显示的列，当SELECT为一个大型查询的子查询时，大型查询会把该名称看做子查询产生的虚表的列名。要指定用于输出列的名称，在该列的表达式后面添加 `AS output_name` （可以省略AS，但只能在期望的输出名称不匹配任何PostgreSQL关键词时省略。为了避免和未来增加的关键词冲突，推荐您添加AS或者用双引号引用输出名称）。如果不指定列名，PostgreSQL会自动选择一个名称。如果列的表达式是一个简单的列引用，那么被选择的名称就和该列的名称相同。在使用函数或者类型名称的更复杂的情况中，系统可能会生成诸如 ?column? 之类的名称。 一个输出列的名称可以被用来在 `ORDER BY` 以及 `GROUP BY` 子句中引用该列的值，但是不能用于 WHERE和HAVING子句（在其中必须写出表达式）。 可以在输出列表中写*来取代表达式，它是被选中行的所有列的一种简写方式。还可以写 %table_name*; ，它是只来自那个表的所有列的简写形式。在这些情况中无法用AS指定新的名称，输出行的名称将和表列的名称相同。
 
@@ -12087,20 +12746,18 @@ CTE之间通过逗号分隔，后面出现的CTE定义可以引用前面定义�
 
 命令简介 FROM子句为SELECT 指定一个或者更多源表。如果指定了多个源表，结果将是所有源表的笛卡尔积（交叉连接）。但是通常会增加限定条件（通过 WHERE）来把返回的行限制为该笛卡尔积的一个小子集。 参数说明 FROM子句可以包含下列元素：
 
-|  | 元素 | 说明 |
+|   | 元素 | 说明 |
 |---|---|---|
-|  | tablename _ | 一个现有表或视图的名称（可以限定表的schma模式）。 |
-|  | alias | 一个包含别名的FROM项的替代名称。别名被用于让书写简洁或者消除自连接中的混淆（其中同一个表会被扫描多次）。当提供一个别名时，表或者函数的实际名称会被隐藏。例如，给定 FROM foo AS f ，SELECT的剩余部分就必须以f而不是foo来引用这个 FROM项。 |
-|  | select | 一个子SELECT可以出现在 FROM子句中。这就好像把它的输出创建为一个存在于该SELECT命令期间的临时表。注意子-SELECT必须用圆括号包围，并且必须为它提供一个别名。 |
-|  | functionname _ | 函数调用可以出现在FROM子句中（对于返回结果集合的函数特别有用，但是可以使用任何函数）。这就好像把该函数的输出创建为一个存在于该 SELECT命令期间的临时表。 可以用和表一样的方式提供一个别名。如果写了一个别名，还可以写一个列别名列表来为该函数的组合返回类型的一个或者多个属性提供替代名称， 包括由ORDINALITY（如果有）增加的新列。 通过把多个函数调用包围在 ROWS FROM（。） 中可以把它们整合在单个FROM-子句项中。这样一个项的输出是把每一个函数的第一行串接起来， 然后是每个函数的第二行，以此类推。如果有些函数产生的行比其他函数少，则在缺失数据的地方放上 NULL，这样被返回的总行数总是和产生最多行的函数一样。 |
-|  |  | 包含如下5种类型： [ INNER ] JOIN 对于INNER和OUTER连接类型，必须指定一个连接条件，即 NATURAL、ON join_condition或者 USING （join_column [, ...]） 之一（只能有一种）。其含义见下文。对于 CROSS JOIN ，上述子句不能出现。一个JOIN子句联合两个FROM项（为了方便我们称之为“表“，尽管实际上它们可以是任何类型的FROM项）。如有必要可以使用圆括号确定嵌套的顺序。 在没有圆括号时，JOIN会从左至右嵌套。在任何情况下，JOIN的联合比用逗号分隔FROM-列表项更强。 LEFT [ OUTER ] JOIN LEFT OUTER JOIN 返回被限制过的笛卡尔积中的所有行（即所有通过了其连接条件的组合行），以及左表中每行的一个副本，因为没有右行通过了连接条件。通过在右手列中插入空值，这种左手行会被扩展为连接表的完整行。注意在决定哪些行匹配时，只考虑JOIN子句自身的条件。之后才应用外条件。 RIGHT [ OUTER ] JOIN RIGHT OUTER JOIN 返回所有连接行，外加每一个没有匹配上的右手行（在左端用空值扩展）。这只是为了记号上的方便，因为可以通过交换左右表把它转换成一个 LEFT OUTER JOIN 。 FULL [ OUTER ] JOIN FULL OUTER JOIN 返回所有连接行，外加每一个没有匹配上的左手行（在右端用空值扩展），再外加每一个没有匹配上的右手行（在左端用空值扩展） CROSS JOIN CROSS JOIN 和 INNER JOIN 会产生简单的笛卡尔积，也就是与在FROM列出两个表得到的结果相同，但是要用连接条件（如果有）约束该结果。 CROSS JOIN 与 INNER JOIN ON （TRUE） 等效，也就是说条件不会移除任何行。这些连接类型只是一种记号上的方便，因为没有什么是用纯粹的FROM和 WHERE能做而它们不能做的。 |
-|  |  | ...]） |
-|  | jointype _ |  |
-|  | joincondition _ | join_condition 是一个会得到boolean类型值的表达式（类似于一个WHERE子句），它说明一次连接中哪些行被认为相匹配。 |
-|  | USING ( a, b, ... ) | 形式 USING （a， b...） 的子句是 ON left_table.a = right_table.a AND left_table.b = right_table.b ... 的简写。 还有， USING表示每一对相等列中只有一个会被包括在连接输出中。 |
-|  | NATURAL | 列出在两个表中所有具有相同名称的列的USING的简写。 |
-
-实时数仓 Hologres
+|   | tablename _ | 一个现有表或视图的名称（可以限定表的schma模式）。 |
+|   | alias | 一个包含别名的FROM项的替代名称。别名被用于让书写简洁或者消除自连接中的混淆（其中同一个表会被扫描多次）。当提供一个别名时，表或者函数的实际名称会被隐藏。例如，给定 FROM foo AS f ，SELECT的剩余部分就必须以f而不是foo来引用这个 FROM项。 |
+|   | select | 一个子SELECT可以出现在 FROM子句中。这就好像把它的输出创建为一个存在于该SELECT命令期间的临时表。注意子-SELECT必须用圆括号包围，并且必须为它提供一个别名。 |
+|   | functionname _ | 函数调用可以出现在FROM子句中（对于返回结果集合的函数特别有用，但是可以使用任何函数）。这就好像把该函数的输出创建为一个存在于该 SELECT命令期间的临时表。 可以用和表一样的方式提供一个别名。如果写了一个别名，还可以写一个列别名列表来为该函数的组合返回类型的一个或者多个属性提供替代名称， 包括由ORDINALITY（如果有）增加的新列。 通过把多个函数调用包围在 ROWS FROM（。） 中可以把它们整合在单个FROM-子句项中。这样一个项的输出是把每一个函数的第一行串接起来， 然后是每个函数的第二行，以此类推。如果有些函数产生的行比其他函数少，则在缺失数据的地方放上 NULL，这样被返回的总行数总是和产生最多行的函数一样。 |
+|   |   | 包含如下5种类型： [ INNER ] JOIN 对于INNER和OUTER连接类型，必须指定一个连接条件，即 NATURAL、ON join_condition或者 USING （join_column [, ...]） 之一（只能有一种）。其含义见下文。对于 CROSS JOIN ，上述子句不能出现。一个JOIN子句联合两个FROM项（为了方便我们称之为“表“，尽管实际上它们可以是任何类型的FROM项）。如有必要可以使用圆括号确定嵌套的顺序。 在没有圆括号时，JOIN会从左至右嵌套。在任何情况下，JOIN的联合比用逗号分隔FROM-列表项更强。 LEFT [ OUTER ] JOIN LEFT OUTER JOIN 返回被限制过的笛卡尔积中的所有行（即所有通过了其连接条件的组合行），以及左表中每行的一个副本，因为没有右行通过了连接条件。通过在右手列中插入空值，这种左手行会被扩展为连接表的完整行。注意在决定哪些行匹配时，只考虑JOIN子句自身的条件。之后才应用外条件。 RIGHT [ OUTER ] JOIN RIGHT OUTER JOIN 返回所有连接行，外加每一个没有匹配上的右手行（在左端用空值扩展）。这只是为了记号上的方便，因为可以通过交换左右表把它转换成一个 LEFT OUTER JOIN 。 FULL [ OUTER ] JOIN FULL OUTER JOIN 返回所有连接行，外加每一个没有匹配上的左手行（在右端用空值扩展），再外加每一个没有匹配上的右手行（在左端用空值扩展） CROSS JOIN CROSS JOIN 和 INNER JOIN 会产生简单的笛卡尔积，也就是与在FROM列出两个表得到的结果相同，但是要用连接条件（如果有）约束该结果。 CROSS JOIN 与 INNER JOIN ON （TRUE） 等效，也就是说条件不会移除任何行。这些连接类型只是一种记号上的方便，因为没有什么是用纯粹的FROM和 WHERE能做而它们不能做的。 |
+|   |   | ...]） |
+|   | jointype _ |   |
+|   | joincondition _ | join_condition 是一个会得到boolean类型值的表达式（类似于一个WHERE子句），它说明一次连接中哪些行被认为相匹配。 |
+|   | USING ( a, b, ... ) | 形式 USING （a， b...） 的子句是 ON left_table.a = right_table.a AND left_table.b = right_table.b ... 的简写。 还有， USING表示每一对相等列中只有一个会被包括在连接输出中。 |
+|   | NATURAL | 列出在两个表中所有具有相同名称的列的USING的简写。 |
 
 **WHERE子句**
 
@@ -12118,21 +12775,25 @@ WHERE condition
 
 **GROUP BY子句**
 
+命令简介
+
 | GROUP BY | 将会把所有被选择的行中共享相同分组表达式值的那些行压缩成一个行。可选的 | GROUP BY | 子句的形式： |
 |---|---|---|---|
-| GROUP BY grouping_element [, ...] |  |  |  |
+| GROUP BY grouping_element [, ...] |   |   |   |
 
 参数说明
 
-|  | grouping_element |
+|   | grouping_element |
 |---|---|
-| BY |  |
+| BY |   |
 
-|  | GROUPING SETS、ROLLUP |  |
+`grouping_element` 中使用的expression可以是输入列名、输出列（SELECT列表项）的名称或序号或者由输入列值构成的任意表达式。在出现歧义时， `GROUP` `BY` 名称将被解释为输入列名而不是输出列名。
+
+|   | GROUPING SETS、ROLLUP |   |
 |---|---|---|
-| GROUP BY |  | 子句的子查询间构建一 |
+| GROUP BY |   | 子句的子查询间构建一 |
 
-聚集函数（如果使用）会在组成每一个分组的所有行上进行计算，从而为每一个分组产生一个单独的值（如果有聚集函数但是没有 `GROUP BY` 子句，则查询会被当成是由所有选中行构成的一个单一分组）。传递给每一个聚集函数的行集合可以通过在聚集函数调用附加一个FILTER子句来进一步过滤。当存在一个FILTER子句时，只有那些匹配它的行才会被包括在该聚集函数的输入中。 当存在 `GROUP BY` 子句或者任何聚集函数时， SELECT列表表达式不能引用非分组列（除非它出现在聚集函数中或者它函数依赖于分组列），因为这样做会导致返回非分组列的值时会有多种可能的值。如果分组列是包含非分组列的表的主键（或者主键的子集），则存在函数依赖。 所有的聚集函数都是在HAVING子句或者 SELECT列表中的任何“标量“表达式之前被计算。这意味着一个CASE表达式不能被用来跳过一个聚集表达式的计算。
+如果任何 `GROUPING SETS`、`ROLLUP` 或者CUBE作为分组元素存在，则 `GROUP BY` 子句整体上定义了数个独立的分组集。其效果等效于在具有独立分组集作为它们聚集函数（如果使用）会在组成每一个分组的所有行上进行计算，从而为每一个分组产生一个单独的值（如果有聚集函数但是没有 `GROUP BY` 子句，则查询会被当成是由所有选中行构成的一个单一分组）。传递给每一个聚集函数的行集合可以通过在聚集函数调用附加一个FILTER子句来进一步过滤。当存在一个FILTER子句时，只有那些匹配它的行才会被包括在该聚集函数的输入中。 当存在 `GROUP BY` 子句或者任何聚集函数时， SELECT列表表达式不能引用非分组列（除非它出现在聚集函数中或者它函数依赖于分组列），因为这样做会导致返回非分组列的值时会有多种可能的值。如果分组列是包含非分组列的表的主键（或者主键的子集），则存在函数依赖。 所有的聚集函数都是在HAVING子句或者 SELECT列表中的任何“标量“表达式之前被计算。这意味着一个CASE表达式不能被用来跳过一个聚集表达式的计算。
 
 **CUBE子句**
 
@@ -12166,10 +12827,10 @@ SELECT DISTINCT accountid FROM table;
 
 命令简介 `COUNT DISTINCT` 支持计算去重之后的某一个column的个数，对于该列中出现多次的值只会被计算一次，和COUNT的计算类似，如果该列包含NULL值，它将不会计算在内。 语法说明精确计算的语法示例如下：
 
-| SELECT c1, COUNT(DISTINCT c2) FROM table GROUP BY c1 |  |  |  |  |
+| SELECT c1, COUNT(DISTINCT c2) FROM table GROUP BY c1 |   |   |   |   |
 |---|---|---|---|---|
 | 由于精确计算的 | COUNT DISTINCT | 需要消耗较大的资源，因此交互式分析还支持非精确的 | COUNT DISTINCT | 计算，语法示例如下： |
-| SELECT c1, approx_count_distinct(c2) FROM table GROUP BY c1 |  |  |  |  |
+| SELECT c1, approx_count_distinct(c2) FROM table GROUP BY c1 |   |   |   |   |
 
 **UNION子句**
 
@@ -12179,14 +12840,14 @@ SELECT DISTINCT accountid FROM table;
 select_statement UNION [ ALL | DISTINCT ] select_statement
 ```
 
-实时数仓 Hologres 参数说明
+参数说明
 
-| 参数 | 说明 |  |
+| 参数 | 说明 |   |
 |---|---|---|
-| selectstatement _ | select_statement 是任何没有 ORDER BY、LIMIT、 FOR NO KEY UPDATE、FOR UPDATE、 FOR SHARE 和 FOR KEY SHARE 子句的SELECT语句（如果子表达式被包围在圆括号内， ORDER BY 和LIMIT可以被附着到其上。如果没有圆括号，这些子句将被应用到UNION的结果而不是右手边的表达式上）。 |  |
-| UNION | UNION操作符计算所涉及的SELECT语句所返回的行的并集。如果一至少出现在两个结果集中的一个内，它就会在并集中。作为UNION两个操作数的SELECT语句必须产生相同数量的列并且对应位置上的列必须具有兼容的数据类型。 UNION的结果不会包含重复行，除非指定了ALL选项。ALL会阻止消除重复（因此，UNION ALL通常显著地快于UNION，尽量使用ALL）。 可以写DISTINCT来显式地指定消除重复行的行为。 除非用圆括号指定计算顺序，同一个SELECT语句中的多个UNION操作符会从左至右计算。 |  |
+| selectstatement _ | select_statement 是任何没有 ORDER BY、LIMIT、 FOR NO KEY UPDATE、FOR UPDATE、 FOR SHARE 和 FOR KEY SHARE 子句的SELECT语句（如果子表达式被包围在圆括号内， ORDER BY 和LIMIT可以被附着到其上。如果没有圆括号，这些子句将被应用到UNION的结果而不是右手边的表达式上）。 |   |
+| UNION | UNION操作符计算所涉及的SELECT语句所返回的行的并集。如果一至少出现在两个结果集中的一个内，它就会在并集中。作为UNION两个操作数的SELECT语句必须产生相同数量的列并且对应位置上的列必须具有兼容的数据类型。 UNION的结果不会包含重复行，除非指定了ALL选项。ALL会阻止消除重复（因此，UNION ALL通常显著地快于UNION，尽量使用ALL）。 可以写DISTINCT来显式地指定消除重复行的行为。 除非用圆括号指定计算顺序，同一个SELECT语句中的多个UNION操作符会从左至右计算。 |   |
 
-|  | SHARE |
+|   | SHARE |
 |---|---|
 
 **INTERSECT子句**
@@ -12221,23 +12882,25 @@ select_statement EXCEPT [ ALL | DISTINCT ] select_statement
 
 **ORDER BY子句**
 
+命令简介
+
 | 可选的 | ORDER BY | 子句的形式如下： |
 |---|---|---|
-| ORDER BY expression [ ASC \| DESC \| USING operator ] [ NULLS { FIRST \| LAST } ] [, ...] |  |  |
+| ORDER BY expression [ ASC \| DESC \| USING operator ] [ NULLS { FIRST \| LAST } ] [, ...] |   |   |
 
 参数说明 `ORDER BY` 子句导致结果行被按照指定的表达式排序。如果两行按照最左边的表达式是相等的，则会根据下一个表达式比较它们，以此类推。如果按照所有指定的表达式它们都是相等的，则它们被返回的顺序取决于实现。 每一个expression 可以是输出列（SELECT列表项）的名称或者序号，它也可以是由输入列值构成的任意表达式。 序号指的是输出列的顺序（从左至右）位置。这种特性可以为不具有唯一名称的列定义一个顺序。但这不是必要操作，因为可以使用 AS子句为输出列赋予一个名称。 也可以在ORDER BY子句中使用任意表达式，包括没有出现在SELECT输出列表中的列。因此，下面的语句是合法的：
 
-| SELECT name FROM distributors ORDER BY code; |  |  |
+| SELECT name FROM distributors ORDER BY code; |   |   |
 |---|---|---|
 | 这种特性的一个限制是一个应用在UNION、 INTERSECT或EXCEPT子句结果上的 | ORDER BY | 只能指定输出列名称或序号，但不能指定表达式。 |
 
 如果一个ORDER BY表达式是一个既匹配输出列名称又匹配输入列名称的简单名称，ORDER BY将把它解读成输出列名称。这与在同样情况下GROUP BY会做出的选择相反。这种不一致是为了与SQL标准兼容。 可以为ORDER BY子句中的任何表达式之后增加关键词 ASC（上升）或者DESC（下降）。如果没有指定， ASC被假定为默认值。或者，可以在USING 子句中指定一个特定的排序操作符名称。一个排序操作符必须是某个 B-树操作符族的小于或者大于成员。ASC通常等价于 USING <而DESC通常等价于 USING >（但是一种用户定义数据类型的创建者可以准确地定义默认排序顺序是什么，并且它可能会对应于其他名称的操作符）。
 
-| 后；如果指定 | NULLS FIRST |  |
+| 后；如果指定 | NULLS FIRST |   |
 |---|---|---|
-| NULLS FIRST |  | （因此，默认 |
+| NULLS FIRST |   | （因此，默认 |
 
-或者大于操作符。 注意顺序选项只应用到它们所跟随的表达式上。例如 `ORDER BY x`， `y DESC` 和 `ORDER BY x DESC`，`y DESC` 是不同的。 字符串数据会被根据引用到被排序列上的排序规则排序。根据需要可以通过在 expression中包括一个 COLLATE子句来覆盖，例如 `ORDER BY mycolumn COLLATE`
+如果指定 `NULLS LAST` ，空值会排在非空值之后；如果指定 `NULLS FIRST` ，空值会排在非空值之前。如果都没有指定，在指定或者隐含ASC时的默认行为是 `NULLS` `LAST` ，而指定或者隐含DESC时的默认行为是 `NULLS FIRST` （因此，默认行为是空值大于非空值）。当指定USING时，默认的空值顺序取决于该操作符是否为小于或者大于操作符。 注意顺序选项只应用到它们所跟随的表达式上。例如 `ORDER BY x`， `y DESC` 和 `ORDER BY x DESC`，`y DESC` 是不同的。 字符串数据会被根据引用到被排序列上的排序规则排序。根据需要可以通过在 expression中包括一个 COLLATE子句来覆盖，例如 `ORDER BY mycolumn COLLATE`
 
 ```
 “en_US“ 。
@@ -12245,24 +12908,26 @@ select_statement EXCEPT [ ALL | DISTINCT ] select_statement
 
 **LIMIT子句**
 
-实时数仓 Hologres 命令简介 LIMIT子句由两个独立的子句构成：
+命令简介 LIMIT子句由两个独立的子句构成：
 
 ```
 LIMIT { count | ALL } OFFSET start
 ```
 
-参数说明 count指定要返回的最大行数，而start指定在返回行之前要跳过的行数。在两者都被指定时，在开始计算要返回的count行之前会跳过 start行。 如果count表达式计算为NULL，它会被当成 `LIMIT ALL` ，即没有限制。如果 start计算为 NULL，它会被当作OFFSET 0。 在使用LIMIT时，用一个 `ORDER BY` 子句把结果行约束到一个唯一顺序是个好办法。否则讲得到该查询结果行的一个不可预测的子集 — 可能要求从第 10 到第 20 行， 但是在什么顺序下的第10到第20呢？除非指定 `ORDER BY` ，否则是不知道顺序的。 查询规划器在生成一个查询计划时会考虑LIMIT，因此根据使用的LIMIT和OFFSET，很可能得到不同的计划（得到不同的行序）。所以，使用不同的LIMIT/OFFSET值来
+参数说明 count指定要返回的最大行数，而start指定在返回行之前要跳过的行数。在两者都被指定时，在开始计算要返回的count行之前会跳过 start行。 如果count表达式计算为NULL，它会被当成 `LIMIT ALL` ，即没有限制。如果 start计算为 NULL，它会被当作OFFSET 0。 在使用LIMIT时，用一个 `ORDER BY` 子句把结果行约束到一个唯一顺序是个好办法。否则讲得到该查询结果行的一个不可预测的子集 — 可能要求从第 10 到第 20 行， 但是在什么顺序下的第10到第20呢？除非指定 `ORDER BY` ，否则是不知道顺序的。 查询规划器在生成一个查询计划时会考虑LIMIT，因此根据使用的LIMIT和OFFSET，很可能得到不同的计划（得到不同的行序）。所以，使用不同的LIMIT/OFFSET值来选择一个查询结果的不同子集将会给出不一致的结果，除非用ORDER BY强制一种可预测的结果顺序。这不是一个缺陷，它是SQL不承诺以任何特定顺序（除非使
 
-| ORDER BY |  | 来约束顺序 |
+| ORDER BY |   | 来约束顺序 |
 |---|---|---|
-| 果没有一个 | ORDER BY |  |
+| 果没有一个 | ORDER BY |   |
+
+用 `ORDER BY` 来约束顺序）给出一个查询结果这一事实造成的必然后果。 如果没有一个 `ORDER BY` 来强制选择一个确定的子集，重复执行同样的LIMIT查询甚至可能会返回一个表中行的不同子集。同样，这也不是一种缺陷，再这样一种情况下也无法保证结果的确定性。
 
 **使用示例**
 
 两表JOIN
 
 ```
-distributors d, films f WHERE f.did = d.did
+SELECT f.title, f.did, d.name, f.date_prod, f.kind FROM distributors d, films f WHERE f.did = d.did
 ```
 
 WITH子句
@@ -12286,6 +12951,7 @@ SELECT kind, sum(length) AS total FROM films GROUP BY kind HAVING sum(length) < 
 GROUP BY CUBE
 
 ```
+SELECT l_returnflag
         ,l_shipmode
         ,SUM(l_quantity)
 FROM public.lineitem GROUP BY cube((l_returnflag),(l_shipmode)) ORDER BY l_returnflag
@@ -12295,6 +12961,7 @@ FROM public.lineitem GROUP BY cube((l_returnflag),(l_shipmode)) ORDER BY l_retur
 GROUP BY ROLLUP
 
 ```
+SELECT l_returnflag
         ,l_shipmode
         ,SUM(l_quantity)
 FROM public.lineitem GROUP BY ROLLUP ((l_returnflag),(l_shipmode)) ORDER BY l_returnflag
@@ -12304,6 +12971,7 @@ FROM public.lineitem GROUP BY ROLLUP ((l_returnflag),(l_shipmode)) ORDER BY l_re
 GROUP BY GROUPING SETS
 
 ```
+SELECT l_returnflag
         ,l_shipmode
         ,SUM(l_quantity)
 FROM public.lineitem GROUP BY GROUPING SETS ((l_returnflag,l_shipmode),()) ORDER BY l_returnflag
@@ -12316,7 +12984,7 @@ ORDER BY
 SELECT * FROM distributors ORDER BY name;
 ```
 
-#### 1.7.4. DELETE
+#### 1.7.4 DELETE
 
 DELETE语句用于删除目标表指定列的行数据。本文为您介绍在Hologres中DELETE语句的用法。
 
@@ -12326,7 +12994,10 @@ Hologres暂不支持直接删除分区表父表。您需要删除具体的分区
 
 **语法**
 
+DELETE命令的语法如下所示。
+
 ```
+DELETE FROM table_name [ * ] [ [ AS ] alias ]
     [ WHERE condition  ]
 ```
 
@@ -12334,8 +13005,6 @@ Hologres暂不支持直接删除分区表父表。您需要删除具体的分区
 
 | 参数 | 描述 |
 |---|---|
-
-实时数仓 Hologres
 
 | alias | 别名。目标表的替代名称。 |
 |---|---|
@@ -12346,13 +13015,21 @@ Hologres暂不支持直接删除分区表父表。您需要删除具体的分区
 删除表的示例语句如下。
 
 ```
+CREATE TABLE delete_test (
     id INT PRIMARY KEY,
     a INT,
     b text
-); (1, 10, 'a'), (2, 30, 'b'), (3, 50, ''), (4, 70, null); DELETE FROM delete_test AS dt WHERE dt.a = 10; DELETE FROM delete_test AS dt WHERE dt.b is null; DELETE FROM delete_test AS dt WHERE dt.b='';
 ```
 
-#### 1.7.5. UPDATE
+);
+
+```
+INSERT INTO delete_test VALUES (1, 10, 'a'), (2, 30, 'b'), (3, 50, ''), (4, 70, null); DELETE FROM delete_test AS dt WHERE dt.a = 10; DELETE FROM delete_test AS dt WHERE dt.b is null; DELETE FROM delete_test AS dt WHERE dt.b='';
+```
+
+更多关于DELETE的详情，请参见PostgreSQL DELETE。
+
+#### 1.7.5 UPDATE
 
 UPDATE语句用于更新目标表指定列的行数据。本文为您介绍在Hologres中UPDATE语句的用法。
 
@@ -12362,7 +13039,10 @@ Hologres不支持更新Shard Key。 Hologres不支持直接更新分区表父表
 
 **语法**
 
+UPDATE命令的语法如下所示。
+
 ```
+UPDATE table [ * ] [ [ AS ] alias ]
     SET { column = { expression } |
           ( column [, ...] ) = ( { expression } [, ...] ) } [, ...]
     [ FROM from_list ]
@@ -12382,6 +13062,7 @@ Hologres不支持更新Shard Key。 Hologres不支持直接更新分区表父表
 更新表的示例语句如下。
 
 ```
+CREATE TABLE update_test (
   a text primary key,
   b int not null,
   c text not null,
@@ -12389,13 +13070,15 @@ Hologres不支持更新Shard Key。 Hologres不支持直接更新分区表父表
 INSERT INTO update_test VALUES ('b1', 10, '', ''); UPDATE update_test SET b = b + 10 where a = 'b1'; UPDATE update_test SET c = 'new_' || a, d = null where b = 20; UPDATE update_test SET (b,c,d) = (1, 'test_c', 'test_d'); CREATE TABLE tmp(a int); INSERT INTO tmp VALUES (2); UPDATE update_test SET b = tmp.a FROM tmp;
 ```
 
-#### 1.7.6. INSERT ON CONFLICT
+更多关于UPDATE命令的详情，请参见PostgreSQL官网文档。
+
+#### 1.7.6 INSERT ON CONFLICT
 
 INSERT ON CONFLICT语句用于在指定列插入某行数据时，如果主键存在重复的行数据，则对该数据执行更新或跳过操作。本文为您介绍在Hologres中INSERT ON CONFLICT语句的语法。
 
 **使用限制**
 
-如果系统提示实例版本过低不支持该功能。您可以执行如下命令升级实例至0.8版本。 实时数仓 Hologres
+`INSERT ON CONFLICT` 语句的条件必须包含所有主键。 如果系统提示实例版本过低不支持该功能。您可以执行如下命令升级实例至0.8版本。
 
 ```
 set hg_experimental_enable_insert_on_conflict = on;
@@ -12403,17 +13086,17 @@ set hg_experimental_enable_insert_on_conflict = on;
 
 **应用场景**
 
-使用数据集成或Flink写入数据时，如果需要对主键重复的行数据执行更新或跳过操作，则需进行如下配置： 通过DataWorks的数据集成导入数据数据集成已内置 `INSERT ON CONFLICT` 功能，该功能的实现原理请参见《**DataWorks**的**HoloWrtier**》文档。同时，您需要进行如下配置： 离线同步数据时选择**SDK****（极速写入）**写入模式，并根据业务逻辑选择**写入冲突策略**为**忽略（****Ignore**）或者**更新（****Replace**）。 实时同步数据时**写入冲突策略**选择**忽略（****Ignore**）或者**更新（****Replace**）。
+`INSERT ON CONFLICT` 命令适用于通过SQL方式导入数据的场景。 使用数据集成或Flink写入数据时，如果需要对主键重复的行数据执行更新或跳过操作，则需进行如下配置： 通过DataWorks的数据集成导入数据数据集成已内置 `INSERT ON CONFLICT` 功能，该功能的实现原理请参见**《****DataWorks****的****HoloWrtier****》**文档。同时，您需要进行如下配置： 离线同步数据时选择**SDK****（极速写入）**写入模式，并根据业务逻辑选择**写入冲突策略**为**忽略（****Ignore****）**或者**更新（****Replace****）**。 实时同步数据时**写入冲突策略**选择**忽略（****Ignore****）**或者**更新（****Replace****）**。
 
-**说明**
+> **说明：** 同步数据时，Hologres的表均需要设置主键，才能更新数据。
 
-同步数据时，Hologres的表均需要设置主键，才能更新数据。 通过Flink写入数据通过Flink写入数据默认**写入冲突策略**使用**更新（****Replace**），但是需要您在Hologres建表时设置主键。
+通过Flink写入数据通过Flink写入数据默认**写入冲突策略**使用**更新（****Replace****）**，但是需要您在Hologres建表时设置主键。
 
 **语法**
 
 | INSERT ON CONFLICT | 的语法格式如下。 |
 |---|---|
-| INSERT INTO table_name [ AS alias ] [ ( column_name [, ...] ) ] { VALUES ( { expression } [, ...] ) [, ...] \| query } [ ON CONFLICT [ conflict_target ] conflict_action ] where conflict_target is pk ON CONSTRAINT constraint_name and conflict_action is one of: DO NOTHING DO UPDATE SET { column_name = { expression } \| ( column_name [, ...] ) = ( { expression } [, ...] ) \| ( column_name [, ...] ) = ( sub-SELECT ) } [, ...] [ WHERE condition ] |  |
+| INSERT INTO table_name [ AS alias ] [ ( column_name [, ...] ) ] { VALUES ( { expression } [, ...] ) [, ...] \| query } [ ON CONFLICT [ conflict_target ] conflict_action ] where conflict_target is pk ON CONSTRAINT constraint_name and conflict_action is one of: DO NOTHING DO UPDATE SET { column_name = { expression } \| ( column_name [, ...] ) = ( { expression } [, ...] ) \| ( column_name [, ...] ) = ( sub-SELECT ) } [, ...] [ WHERE condition ] |   |
 
 参数说明如下表所示。
 
@@ -12427,57 +13110,64 @@ set hg_experimental_enable_insert_on_conflict = on;
 
 | INSERT ON CONFLICT | 语句的示例用法如下。 |
 |---|---|
-| create table conflict_1( a int not null primary key, b int , c int); insert into conflict_1 values (1,1,1), (2,3,4); create table conflict_2( a int not null primary key, b int , c int); insert into conflict_2 values(1,5,6); insert into conflict_1 select * from conflict_2 on conflict(a) do update set b = excluded.b; //主键相同时，将表conflict_2的某列数据更新到表conflict_ 1中。 insert into conflict_1 values(2,7,8) on conflict(a) do update set b = excluded.b, c = excluded.c where conflict_1.c = 4; //主键相同时，将表confli ct_2的某一行数据全部插入至表conflict_1中。 insert into conflict_1 select * from conflict_2 on conflict(a) do nothing; //主键相同时，向表conflict_1插入表conflict_2的数据，系统直接跳过表conflict_ 2的数据（即插入数据不成功）。 insert into conflict_1 select * from conflict_2 on conflict do nothing; //do nothing不指定冲突列时，默认冲突列为主键。 insert into conflict_1 select * from conflict_2 on conflict on constraint conflict_1_pkey do update set a = excluded.a; //指定主键constrain的名称 。 insert into tmp1_on_conflict values(1,2,3) on conflict(a) do update set (a, b ,c )= ROW(excluded.*); //更新整行数据。 |  |
+| create table conflict_1( a int not null primary key, b int , c int); insert into conflict_1 values (1,1,1), (2,3,4); create table conflict_2( a int not null primary key, b int , c int); insert into conflict_2 values(1,5,6); insert into conflict_1 select * from conflict_2 on conflict(a) do update set b = excluded.b; //主键相同时，将表conflict_2的某列数据更新到表conflict_ 1中。 insert into conflict_1 values(2,7,8) on conflict(a) do update set b = excluded.b, c = excluded.c where conflict_1.c = 4; //主键相同时，将表confli ct_2的某一行数据全部插入至表conflict_1中。 insert into conflict_1 select * from conflict_2 on conflict(a) do nothing; //主键相同时，向表conflict_1插入表conflict_2的数据，系统直接跳过表conflict_ 2的数据（即插入数据不成功）。 insert into conflict_1 select * from conflict_2 on conflict do nothing; //do nothing不指定冲突列时，默认冲突列为主键。 insert into conflict_1 select * from conflict_2 on conflict on constraint conflict_1_pkey do update set a = excluded.a; //指定主键constrain的名称 。 insert into tmp1_on_conflict values(1,2,3) on conflict(a) do update set (a, b ,c )= ROW(excluded.*); //更新整行数据。 |   |
 
-实时数仓 Hologres
+更多用法请参见PG文档Insert on conflict。
 
-**说明**
+> **说明：** PostgresSQL中，执行 `DO UPDATE` 操作时，数据源不能包含重复数据。
+> 如果数据源包含重复数据，您需要配置 set hg_experimental_affect_row_multiple_times_keep_first = on; ，保留数据源重复数据的第一条。如果不配置上述语句，则会报错 insert into tmp1_on_conflict values(1,2,3),(1,2,3) on conflict(a) do update set (a, b ,c )= ROW(excluded.*); 。
 
-如果数据源包含重复数据，您需要配置 set hg_experimental_affect_row_multiple_times_keep_first = on; ，保留数据源重复数据的第一条。如果不配置上述语
-
-```
-句，则会报错 insert into tmp1_on_conflict values(1,2,3),(1,2,3) on conflict(a) do update set (a, b ,c )= ROW(excluded.*); 。
-```
-
-#### 1.7.7. TRUNCATE
+#### 1.7.7 TRUNCATE
 
 TRUNCATE语句用于清空目标表。本文为您介绍Hologres中TRUNCATE的语法。
 
 **使用限制**
 
-Hologres支持Sequence，但目前仅支持CONTINUE IDENTITY，不支持RESTART IDENTITY。
+`TRUNCATE` 语句的使用限制如下： Hologres支持Sequence，但目前仅支持CONTINUE IDENTITY，不支持RESTART IDENTITY。 Hologres支持对普通表、分区父表及分区子表执行 `TRUNCATE` 语句。 Hologres不支持对外部表执行 `TRUNCATE` 语句。
 
 **语法**
 
 | TRUNCATE | 的语法格式如下。 |
 |---|---|
-| TRUNCATE [ TABLE ] name [, ... ] [CONTINUE IDENTITY ] |  |
+| TRUNCATE [ TABLE ] name [, ... ] [CONTINUE IDENTITY ] |   |
 
 **CONTINUE IDENTITY**参数不修改当前Sequence的值。
 
 **使用示例**
 
-示例一。
+`TRUNCATE` 的使用示例如下。 示例一。
 
 ```
+CREATE TABLE event (
     id int,
     name text,
     tag text
-); INSERT INTO event (id,name,tag) values (23,'buy', 'num'); SELECT * FROM event; TRUNCATE TABLE event ;
+```
+
+);
+
+```
+INSERT INTO event (id,name,tag) values (23,'buy', 'num'); SELECT * FROM event; TRUNCATE TABLE event ;
 ```
 
 示例二。
 
 ```
+CREATE TABLE event_1 (
     id serial,
     name text,
     tag text
-); INSERT INTO event_1 (name,tag) values ('buy', 'num'); SELECT * FROM event_1;
+```
+
+);
+
+```
+INSERT INTO event_1 (name,tag) values ('buy', 'num'); SELECT * FROM event_1;
 #默认为CONTINUE IDENTITY
 TRUNCATE TABLE event_1 CONTINUE IDENTITY;
 ```
 
-#### 1.7.8. Fixed Plan加速SQL执行
+#### 1.7.8 Fixed Plan加速SQL执行
 
 Fixed Plan是Hologres独有的执行引擎优化方式，本文将为您介绍可以被Fixed Plan选中的SQL需要符合的条件和参数配置。
 
@@ -12485,9 +13175,7 @@ Fixed Plan是Hologres独有的执行引擎优化方式，本文将为您介绍�
 
 Fixed Plan是Hologres独有的执行引擎优化方式，传统的SQL执行要经过优化器、协调器、查询引擎、存储引擎等多个组件，而Fixed Plan选择了短路径（Short-Cut）优化执行SQL，绕过了优化器、协调器、部分查询引擎的开销。通过Fixed FrontEnd直接对接Fixed Query Engine，实现SQL执行效率的成倍提升，是支持高吞吐实时写入， 高并发查询的关键优化方法。关于Fixed Plan的介绍请参见产品架构。 在Hologres中，默认走Fixed Plan的场景如下： Flink实时写入数据至Hologres。 DataWorks数据集成实时写入数据至Hologres。 Holo Client写入Hologres。 其余写入场景可根据SQL进行一定的配置让其走Fixed Plan，详情请参见下文。
 
-**说明**
-
-以上场景会默认保证符合条件的SQL走Fixed Plan，但是以上场景的SQL不一定都符合条件即不一定都能走Fixed Plan。
+> **说明：** 以上场景会默认保证符合条件的SQL走Fixed Plan，但是以上场景的SQL不一定都符合条件即不一定都能走Fixed Plan。
 
 **相关GUC参数**
 
@@ -12497,27 +13185,25 @@ GUC列表以下为Fixed Plan需要用到的参数配置，所有参数取值为*
 |---|---|---|---|
 | hgexperimentalenablefixeddispatcher _ _ _ _ | 查看实例的Fixed Plan是否打开。 支持Insert、Update、Delete、PrefixScan场景单行记录的Fixed Plan写入、更新、删除、查询。 | on | 不涉及。 |
 
-实时数仓 Hologres
-
-| hgexperimentalenablefixeddispatcherformult _ _ _ _ _ _ ivalues _ | 控制Insert多行记录的Fixed Plan写入。 说明不保证原子性，即一次性写入多条的时候，如果没报错就是全部正常写入了，如果报错了只会报一条的错误，有可能全部没写入也有可能部分写入了部分没写入，没有写入的部分会将错误反馈给上层应用端，由应用端进行重试。 |  |  | on |  | Hologres从 V1.3.35版本开始，通过该GUC 支持Insert、Update、Delete多行记录的 Fixed Plan写入、更新、删除。 |  |  |  |
+| hgexperimentalenablefixeddispatcherformult _ _ _ _ _ _ ivalues _ | 控制Insert多行记录的Fixed Plan写入。 说明不保证原子性，即一次性写入多条的时候，如果没报错就是全部正常写入了，如果报错了只会报一条的错误，有可能全部没写入也有可能部分写入了部分没写入，没有写入的部分会将错误反馈给上层应用端，由应用端进行重试。 |   |   | on |   | Hologres从 V1.3.35版本开始，通过该GUC 支持Insert、Update、Delete多行记录的 Fixed Plan写入、更新、删除。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| hgexperimentalenablefixeddispatcherautofill _ _ _ _ _ _ series | 支持含有Serial类型列的Fixed Plan写入。建议客户端 session级别打开。 |  |  | off |  | Hologres从 V1.3.25版本开始，该GUC参数的默认值为 on 。 |  |  |  |
-| hgexperimentalenablefixeddispatcherforupd _ _ _ _ _ _ ate | 支持更新（UPDATE）场景的Fixed Plan更新。建议客户端session级别打开。 |  |  |  |  | Hologres从 V1.3.25版本开始， hg_experimental_enable_fixed_d |  |  |  |
-|  |  |  |  |  |  |  | hg_experimental_enable_fixed_d |  |  |
-|  |  |  | an更新。建议客户 |  |  | ispatcher_for_update |  |  |  |
-|  |  |  |  | off |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | set |  |
-|  |  |  |  |  |  | hg_experimental_enable_fixed_dispat |  |  |  |
-|  |  |  |  |  |  | cher_for_multi_values =on 。 |  |  |  |
-| hgexperimentalenablefixeddispatcherfordele _ _ _ _ _ _ te | 支持删除（DELETE）场景的Fixed Plan删除。建议客户端session级别打开。 |  |  |  |  | Hologres从 V1.3.25版本开始， hg_experimental_enable_fixed_d |  |  |  |
-|  |  |  |  |  |  |  | hg_experimental_enable_fixed_d |  |  |
-|  |  |  | n删除。建议客户 |  |  | ispatcher_for_delete |  |  |  |
-|  |  |  |  | off |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | set |  |
-|  |  |  |  |  |  | hg_experimental_enable_fixed_dispat |  |  |  |
-|  |  |  |  |  |  | cher_for_multi_values =on 。 |  |  |  |
-| hgexperimentalenablefixeddispatcherforscan _ _ _ _ _ _ | 支持PrefixScan场景的Fixed Plan查询。 说明 PrefixScan是指多列主键，查询条件只给前面几列主键。目前不支持列存表PrefixScan场景的Fixed Plan查询。 |  |  | off |  | 推荐从1.3.35版本开始使用。 |  |  |  |
-| hgexperimentalenablebhclientcacheonsessio _ _ _ _ _ _ n | 支持更改缓存模式，存在以下两种情况。 on：使用cached on session模式。 off：使用cached on fe模式。 说明 cached on session和cached on fe的区别如下。 cached on session是每个连接拥有自己的Writer、Reader，单连接的吞吐更好，但启动会更慢（每个表第一次进行读或写时需要有启动时间）。 cached on fe是FE（Frontend）节点上所有连接共享Writer、Reader，连接断开后 Writer、Reader不会关闭，所以总体上没有启动时间。 |  |  | off |  | 不涉及。 |  |  |  |
+| hgexperimentalenablefixeddispatcherautofill _ _ _ _ _ _ series | 支持含有Serial类型列的Fixed Plan写入。建议客户端 session级别打开。 |   |   | off |   | Hologres从 V1.3.25版本开始，该GUC参数的默认值为 on 。 |   |   |   |
+| hgexperimentalenablefixeddispatcherforupd _ _ _ _ _ _ ate | 支持更新（UPDATE）场景的Fixed Plan更新。建议客户端session级别打开。 |   |   |   |   | Hologres从 V1.3.25版本开始， hg_experimental_enable_fixed_d |   |   |   |
+|   |   |   |   |   |   |   | hg_experimental_enable_fixed_d |   |   |
+|   |   |   | an更新。建议客户 |   |   | ispatcher_for_update |   |   |   |
+|   |   |   |   | off |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | set |   |
+|   |   |   |   |   |   | hg_experimental_enable_fixed_dispat |   |   |   |
+|   |   |   |   |   |   | cher_for_multi_values =on 。 |   |   |   |
+| hgexperimentalenablefixeddispatcherfordele _ _ _ _ _ _ te | 支持删除（DELETE）场景的Fixed Plan删除。建议客户端session级别打开。 |   |   |   |   | Hologres从 V1.3.25版本开始， hg_experimental_enable_fixed_d |   |   |   |
+|   |   |   |   |   |   |   | hg_experimental_enable_fixed_d |   |   |
+|   |   |   | n删除。建议客户 |   |   | ispatcher_for_delete |   |   |   |
+|   |   |   |   | off |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | set |   |
+|   |   |   |   |   |   | hg_experimental_enable_fixed_dispat |   |   |   |
+|   |   |   |   |   |   | cher_for_multi_values =on 。 |   |   |   |
+| hgexperimentalenablefixeddispatcherforscan _ _ _ _ _ _ | 支持PrefixScan场景的Fixed Plan查询。 说明 PrefixScan是指多列主键，查询条件只给前面几列主键。目前不支持列存表PrefixScan场景的Fixed Plan查询。 |   |   | off |   | 推荐从1.3.35版本开始使用。 |   |   |   |
+| hgexperimentalenablebhclientcacheonsessio _ _ _ _ _ _ n | 支持更改缓存模式，存在以下两种情况。 on：使用cached on session模式。 off：使用cached on fe模式。 说明 cached on session和cached on fe的区别如下。 cached on session是每个连接拥有自己的Writer、Reader，单连接的吞吐更好，但启动会更慢（每个表第一次进行读或写时需要有启动时间）。 cached on fe是FE（Frontend）节点上所有连接共享Writer、Reader，连接断开后 Writer、Reader不会关闭，所以总体上没有启动时间。 |   |   | off |   | 不涉及。 |   |   |   |
 
 GUC使用查看GUC是否开启通过show命令查看GUC是否开启，命令语句如下。
 
@@ -12538,7 +13224,7 @@ set <GUC_name> = <values>;
 ```
 
 **GUC_name**为GUC参数的名称；**values**为GUC参数的值。
-使用示例如下。
+使用示例如下。 `-- insert on conflict`多行记录支持`Fixed Plan`写入
 
 ```
 set hg_experimental_enable_fixed_dispatcher_for_multi_values =on;
@@ -12554,12 +13240,17 @@ alter database <db_name> set <GUC_name> = <values>;
 使用示例如下。 `--DB`级别开启`fixed plan`
 
 ```
+alter database <db_name> set
  hg_experimental_enable_fixed_dispatcher =on;
 ```
 
 **数据类型要求**
 
-表的每一列都不能是MONEY或MONEY ARRAY类型。 进行DML（INSERT、UPDATE、DELETE）操作的列和进行SELECT（select的target列和where里的列都要满足）操作的列支持的类型如下。 BOOLEAN（别名BOOL） SMALLINT 实时数仓 Hologres INTEGER（别名INT或INT4） BIGINT（别名INT8） FLOAT（别名FLOAT4） DOUBLE PRECISION（别名FLOAT8） CHAR(n) VARCHAR(n) BYTEA TEXT（别名VARCHAR） TIMESTAMP WITH TIME ZONE（别名TIMESTAMPTZ） DATE TIMESTAMP DECIMAL（别名NUMERIC） 数组类型 boolean[] smallint[] int4[] int8[] float4[] float8[] char(n)[] varchar(n)[] text[] `--` 写入单行
+表的每一列都不能是MONEY或MONEY ARRAY类型。 进行DML（INSERT、UPDATE、DELETE）操作的列和进行SELECT（select的target列和where里的列都要满足）操作的列支持的类型如下。 BOOLEAN（别名BOOL） SMALLINT INTEGER（别名INT或INT4） BIGINT（别名INT8） FLOAT（别名FLOAT4） DOUBLE PRECISION（别名FLOAT8） CHAR(n) VARCHAR(n) BYTEA JSON和JSONB TEXT（别名VARCHAR） TIMESTAMP WITH TIME ZONE（别名TIMESTAMPTZ） DATE TIMESTAMP DECIMAL（别名NUMERIC） ROARINGBITMAP 数组类型 boolean[] smallint[] int4[] int8[] float4[] float8[] char(n)[] varchar(n)[] text[]
+
+**INSERT场景**
+
+INSERT表达式 Fixed Plan支持以下INSERT表达式。 `--` 写入单行
 
 ```
 insert into table(col1,col2,col3..) values(?,?,?..) on conflict xxx;
@@ -12571,25 +13262,43 @@ insert into table(col1,col2,col3..) values(?,?,?..) on conflict xxx;
 insert into table(col1,col2,col3..) values(?,?,?..),(?,?,?..) on conflict xxx;
 ```
 
-**说明**
+> **说明：** 支持使用INSERT命令写入内部表，不支持外部表。
+> 支持使用INSERT命令写入分区表，Hologres V1.3及以上版本支持写入分区父表。
 
-支持使用INSERT命令写入分区表，Hologres V1.3及以上版本支持写入分区父表。 支持场景如下。
+Insert on conflict单行支持场景如下。
 
 | 支持没有 on conflict 的表达式。 支持含有 on conflict do nothing 支持 on conflict do update ，必须 excluded.col 方式更新。Hologres | on conflict | 的表达式。 |
 |---|---|---|
-|  | on conflict do nothing |  |
-| excluded.col |  |  |
+|   | on conflict do nothing |   |
+| excluded.col |   |   |
 
-使用示例如下。
+支持 `on conflict do update` ，必须更新所有insert的非PK（Primary Key，主键，以下简称PK）列，PK是否更新都可以，并且只能是 `col =` `excluded.col` 方式更新。Hologres V1.3及以上版本支持更新部分非PK列，但是仍仅支持 `col = excluded.col` 方式更新使用示例如下。
 
 ```
-begin;
+begin; create table test_insert_oneline(
   pk1 int,
   pk2 int,
   col1 int,
   col2 int,
   primary key(pk1, pk2)
-); commit; insert into test_insert_oneline values(1,2,3,4) on conflict(pk1,pk2) do update set col1 = excluded.col1, col2 = excluded.col2; insert into test_insert_oneline values(1,2,3,4) on conflict(pk1,pk2) do update set col1 = excluded.col1, col2 = excluded.col2, pk1 = exclu ded.pk1, pk2 = excluded.pk2;
+```
+
+);
+
+```
+commit;
+```
+
+`--update`所有非`PK`列，可以`Fixed Plan`
+
+```
+insert into test_insert_oneline values(1,2,3,4) on conflict(pk1,pk2) do update set col1 = excluded.col1, col2 = excluded.col2;
+```
+
+`--update`所有列`(`包含`PK`和非`PK)`，可以`Fixed Plan`
+
+```
+insert into test_insert_oneline values(1,2,3,4) on conflict(pk1,pk2) do update set col1 = excluded.col1, col2 = excluded.col2, pk1 = exclu ded.pk1, pk2 = excluded.pk2;
 ```
 
 `--`必须`update`所有非`pk`的要`insert`的列，此例子不包含`col2`，仅`Hologres V1.3`仅以上版本支持`Fixed Plan`
@@ -12604,24 +13313,37 @@ insert into test_insert_oneline values(1,2,3,4) on conflict(pk1,pk2) do update s
 insert into test_insert_oneline values(1,2,3,4) on conflict(pk1,pk2) do update set col1 = excluded.col1, col2 = 5;
 ```
 
-| set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into table(col1,col2,col3..) values(?,?,?..),(?,?,?..) on conflict xxx; |  |  |  |  |
+Insert on conflict多行 insert on conflict多行时，表达式如下。
+
+| set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into table(col1,col2,col3..) values(?,?,?..),(?,?,?..) on conflict xxx; |   |   |   |   |
 |---|---|---|---|---|
 | 需要配置GUC参数： | hg_experimental_enable_fixed_dispatcher_for_multi_values=on; | 。Hologres从1.3.35开始，该参数默认为 | on | 。 |
 
-不保证原子性，即一次性写入多条的时候，如果没报错就是全部正常写入了，如果报错了有可能全部没写入也有可能部分写入了部分没写入。 实时数仓 Hologres 写入多行另一种写法表达式如下。
+不保证原子性，即一次性写入多条的时候，如果没报错就是全部正常写入了，如果报错了有可能全部没写入也有可能部分写入了部分没写入。 写入多行另一种写法表达式如下。
 
-| set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into table select unnest(ARRAY[true, false, true]::bool[]), unnest(ARRAY[1,2,3]::int4[]), unnest(ARRAY[1.11,2.222,3]::float4[]) on conflict xxx; |  |  |
+| set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into table select unnest(ARRAY[true, false, true]::bool[]), unnest(ARRAY[1,2,3]::int4[]), unnest(ARRAY[1.11,2.222,3]::float4[]) on conflict xxx; |   |   |
 |---|---|---|
 | 需要配置GUC参数： | hg_experimental_enable_fixed_dispatcher_for_multi_values=on; | 。 |
 
-写入的列不能是数组类型。 使用示例如下。
+写入的列不能是数组类型。 unnest里ARRAY必须显式转换为对应列类型的数组类型。 使用示例如下。
 
 ```
-begin;
+begin; create table test_insert_multiline(
   pk1 int8,
   col1 float4,
   primary key(pk1)
-); commit; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into test_insert_multiline select unnest(ARRAY[1,2,3]::int8[]), unnest(ARRAY[1.11,2.222,3]::float4[]) on conflict do nothing; insert into test_insert_multiline select unnest(ARRAY[1,2,3]), unnest(ARRAY[1.11,2.222,3]) on conflict do nothing;
+```
+
+);
+
+```
+commit; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into test_insert_multiline select unnest(ARRAY[1,2,3]::int8[]), unnest(ARRAY[1.11,2.222,3]::float4[]) on conflict do nothing;
+```
+
+`--unnest`里`ARRAY`没有显式`cast`，不支持`Fixed Plan`
+
+```
+insert into test_insert_multiline select unnest(ARRAY[1,2,3]), unnest(ARRAY[1.11,2.222,3]) on conflict do nothing;
 ```
 
 `--`第一列是`int8,`所以应该`cast`为`int8[],`这里例子是`int4[]`，因此不支持`Fixed Plan`
@@ -12630,15 +13352,20 @@ begin;
 insert into test_insert_multiline select unnest(ARRAY[1,2,3]::int4[]), unnest(ARRAY[1.11,2.222,3]::float4[]) on conflict do nothing;
 ```
 
-局部更新场景 Hologres支持通过主键，对表的部分列更新，Fixed Plan同样支持局部更新场景，需要满足如下条件。 只能是 `col = excluded.col` 方式更新。 带有条件判断的Upsert 为了应对上游数据同PK行的乱序需求，支持类HBase CheckAndPut接口，Hologres支持带有条件判断的 `Insert` 或 `Update` 语句走Fixed Plan，条件如下。 插入单条数据时支持；插入多条数据时，需要设置GUC参数： set hg_experimental_enable_fixed_dispatcher_for_multi_values=on; 。 `where` 条件仅支持单个非PK字段且比较符需在 =、`<>`、>、`>=`、<、`<=`、`IS NULL`、`IS NOT NULL` 范围内，可对该非PK字段使用 `coalesce` 函数。 使用示例如下。
+局部更新场景 Hologres支持通过主键，对表的部分列更新，Fixed Plan同样支持局部更新场景，需要满足如下条件。 Insert的列需要与Update的列一一对应，包括数量和顺序。 只能是 `col = excluded.col` 方式更新。 带有条件判断的Upsert 为了应对上游数据同PK行的乱序需求，支持类HBase CheckAndPut接口，Hologres支持带有条件判断的 `Insert` 或 `Update` 语句走Fixed Plan，条件如下。 插入单条数据时支持；插入多条数据时，需要设置GUC参数： set hg_experimental_enable_fixed_dispatcher_for_multi_values=on; 。 `where` 条件仅支持单个非PK字段且比较符需在 `=`、`<>`、`>`、`>=`、`<`、`<=`、`IS NULL`、`IS NOT NULL` 范围内，可对该非PK字段使用 `coalesce` 函数。 使用示例如下。
 
 ```
-begin;
+begin; create table test_check_and_insert(
   pk int,
   col int,
   scn int,
   primary key(pk)
-); commit; --支持Fixed Plan
+```
+
+);
+
+```
+commit; --支持Fixed Plan
 ```
 
 `--`列已有值和常量比较
@@ -12664,24 +13391,35 @@ insert into test_check_and_insert as old values(1, 1, 1) on conflict (k) do upda
 `--`列已有值和常量比较
 
 ```
-insert into test_check_and_insert as old values(1, 1, 1),(2, 3, 4) on conflict (k) do update set col = excluded.col, scn = excluded.scn wher e old.scn > 3; insert into test_check_and_insert as old select unnest(ARRAY[5,6,7]::int[]), unnest(ARRAY[1,1,1]::int[]), unnest(ARRAY[1,1,1]::int[])on conflict (k) do update set col = excluded.col, scn = excluded.scn where old.scn > 3;
+insert into test_check_and_insert as old values(1, 1, 1),(2, 3, 4) on conflict (k) do update set col = excluded.col, scn = excluded.scn wher e old.scn > 3;
+```
+
+`--`也支持`unnest`写法
+
+```
+insert into test_check_and_insert as old select unnest(ARRAY[5,6,7]::int[]), unnest(ARRAY[1,1,1]::int[]), unnest(ARRAY[1,1,1]::int[])on conflict (k) do update set col = excluded.col, scn = excluded.scn where old.scn > 3;
 ```
 
 Default列表中含有Default列时，可以进行Fixed Plan的条件如下。
 
-| 插入单条数据时支持；插入多条数据时，需要Hologres实例在V1.1.36及 |  |
+| 插入单条数据时支持；插入多条数据时，需要Hologres实例在V1.1.36及 |   |
 |---|---|
-| hg_experimental_enable_fixed_dispatcher_for_multi_values=on; |  |
+| hg_experimental_enable_fixed_dispatcher_for_multi_values=on; |   |
 | Hologres V1.3及以上版本支持有Default列的表 | insert on conflict |
 
-使用示例如下。 实时数仓 Hologres
+Hologres V1.3及以上版本支持有Default列的表 `insert on conflict` 表达式的Fixed Plan。之前版本实例有Default列的表，不支持 `insert on conflict` 表达式的Fixed Plan。 使用示例如下。
 
 ```
-begin;
+begin; create table test_insert_default(
   pk1 int,
   col1 int default 99,
   primary key(pk1)
-); commit; --支持Fixed Plan insert into test_insert_default(pk1) values(1);
+```
+
+);
+
+```
+commit; --支持Fixed Plan insert into test_insert_default(pk1) values(1);
 ```
 
 `--`需要`V1.1.36`及以上版本支持
@@ -12693,35 +13431,53 @@ set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into te
 Serial列表带有自增序列Serial时，支持单条或者多条写入进行Fixed Plan的条件如下。 需要配置GUC参数： set hg_experimental_enable_fixed_dispatcher_autofill_series=on; ，从Hologres V1.3.25版本开始，该GUC参数默认为 `on` 。 插入多条数据时，还需配置GUC参数： set hg_experimental_enable_fixed_dispatcher_for_multi_values=on; 。 有Serial列的表，不支持 `insert on conflict` 表达式的Fixed Plan。 使用示例如下。
 
 ```
-begin;
+begin; create table test_insert_serial(
   pk1 int,
   col1 serial,
   primary key(pk1)
-); commit; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_autofill_series =on; insert into test_insert_serial (pk1) values(1); --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_autofill_series =on; set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into test_insert_serial (pk1) values(1),(2),(3); set hg_experimental_enable_fixed_dispatcher_for_update =on; update table set col1 = ?, col2 = ? where pk1 = ? and pk2 = ?;
 ```
 
-支持更新内部表，不支持更新外部表；支持更新分区子表，不支持更新分区父表；表必须有主键（PK）。
+);
 
-|  | Update |
+```
+commit; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_autofill_series =on; insert into test_insert_serial (pk1) values(1); --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_autofill_series =on; set hg_experimental_enable_fixed_dispatcher_for_multi_values =on; insert into test_insert_serial (pk1) values(1),(2),(3);
+```
+
+**UPDATE场景**
+
+Update表达式 Update时能进行Fixed Plan的表达式如下。
+
+```
+set hg_experimental_enable_fixed_dispatcher_for_update =on; update table set col1 = ?, col2 = ? where pk1 = ? and pk2 = ?;
+```
+
+Update场景使用 Update场景支持进行Fixed Plan的条件如下。 支持更新内部表，不支持更新外部表；支持更新分区子表，不支持更新分区父表；表必须有主键（PK）。
+
+|   | Update |
 |---|---|
-| set hg_experimental_enable_fixed_dispatcher_for_multi_values =on |  |
+| set hg_experimental_enable_fixed_dispatcher_for_multi_values =on |   |
 
 `set` 的列不能是主键（PK）。 where条件里有且只能有全部的PK。
 
-|  | pk in (?,?,?) 或 pk = ANY() |
+|   | pk in (?,?,?) 或 pk = ANY() |
 |---|---|
-| (2,4,5) |  |
+| (2,4,5) |   |
 
-where条件里同一列只能有一个条件（一模一样的视为一个条件）。 使用示例如下。 实时数仓 Hologres
+可以使用 pk in (?,?,?) 或 `pk = ANY()` 一次修改多条。示例： `pk1 in (1,2) and pk2 = any('{3,4}') and pk3 = 5` ，改 `(1,3,5),(1,4,5),(2,3,5),` where条件里同一列只能有一个条件（一模一样的视为一个条件）。 使用示例如下。
 
 ```
-begin;
+begin; create table test_update(
   pk1 int,
   pk2 int,
   col1 int,
   col2 int,
   primary key(pk1, pk2)
-); commit; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1, col2 = 2 where pk1 = 3 and pk2 = 4; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1 where pk1 = 3 and pk2 = 4; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1, col2 = 2 where pk1 in (1,2) and pk2 = any('{3,4}');
+```
+
+);
+
+```
+commit; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1, col2 = 2 where pk1 = 3 and pk2 = 4; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1 where pk1 = 3 and pk2 = 4; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1, col2 = 2 where pk1 in (1,2) and pk2 = any('{3,4}');
 ```
 
 `--pk1`多个过滤条件，不支持`Fixed Plan`
@@ -12739,44 +13495,80 @@ update test_update set col1 = 1, col2 = 2 where pk1 in (1,2) and pk1 = 1;
 `--pk1`多个过滤条件，但过滤条件相同，支持`Fixed Plan`
 
 ```
-set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1, col2 = 2 where pk1 in (1,2) and pk1 in (1,2) and pk2 =4; set hg_experimental_enable_fixed_dispatcher_for_delete =on; delete from table where pk1 = ? and pk2 = ? and pk3 = ?;
+set hg_experimental_enable_fixed_dispatcher_for_update =on; update test_update set col1 = 1, col2 = 2 where pk1 in (1,2) and pk1 in (1,2) and pk2 =4;
 ```
 
-支持Delete内部表，不支持Delete外部表；支持Delete分区子表，不支持Delete分区父表；表必须有主键（PK）。
+**DELETE场景**
 
-| 需要配置GUC参数： hg_experimental_enable_fixed_dispatcher_for_delete=on; 。Hologres从 V1.3.25版本开始，该参数废弃使用，符合条件的 Delete 则会默认走Fixed Plan，但如果是Delete多行时，需要配置GUC参数： set hg_experimental_enable_fixed_dispatcher_for_multi_values =on 。 where 条件里有且只能有全部的PK，从Hologres V1.3版本开始，支持 where 过滤条件的最后一个字段为非PK字段，该非PK字段支持 =、<>、>、>=、<、<=、IS NULL、IS NOT NULL 比较符以及使用 coalesce 函数。 可以使用 pk in (?,?,?) 或 pk = ANY() 一次删除多条。示例： pk1 in (1,2) and pk2 = any('{3,4}') and pk3 = 5 ，删除 (1,3,5),(1,4,5),(2,3,5), (2,4,5) 四条。 |  |
+Delete表达式 Delete时能进行Fixed Plan的表达式如下。
+
+```
+set hg_experimental_enable_fixed_dispatcher_for_delete =on; delete from table where pk1 = ? and pk2 = ? and pk3 = ?;
+```
+
+Delete场景使用 Delete场景支持进行Fixed Plan的条件如下。 支持Delete内部表，不支持Delete外部表；支持Delete分区子表，不支持Delete分区父表；表必须有主键（PK）。
+
+| 需要配置GUC参数： hg_experimental_enable_fixed_dispatcher_for_delete=on; 。Hologres从 V1.3.25版本开始，该参数废弃使用，符合条件的 Delete 则会默认走Fixed Plan，但如果是Delete多行时，需要配置GUC参数： set hg_experimental_enable_fixed_dispatcher_for_multi_values =on 。 where 条件里有且只能有全部的PK，从Hologres V1.3版本开始，支持 where 过滤条件的最后一个字段为非PK字段，该非PK字段支持 =、<>、>、>=、<、<=、IS NULL、IS NOT NULL 比较符以及使用 coalesce 函数。 可以使用 pk in (?,?,?) 或 pk = ANY() 一次删除多条。示例： pk1 in (1,2) and pk2 = any('{3,4}') and pk3 = 5 ，删除 (1,3,5),(1,4,5),(2,3,5), (2,4,5) 四条。 |   |
 |---|---|
-|  | pk in (?,?,?) 或 pk = ANY() |
-| (2,4,5) |  |
+|   | pk in (?,?,?) 或 pk = ANY() |
+| (2,4,5) |   |
 
 同一列只能有一个条件（一模一样的视为一个条件）。 使用示例如下。
 
 ```
-begin;
+begin; create table test_delete(
   pk1 int,
   pk2 int,
   col1 int,
   col2 int,
   primary key(pk1, pk2)
-); commit; set hg_experimental_enable_fixed_dispatcher_for_delete =on; delete from test_delete where pk1 = 1 and pk2 = 2; select col1,col2,col3,... from table where pk1 = ? and pk2 = ? and pk3 = ?;
 ```
 
-支持分区子表，不支持分区父表。 表必须有主键（PK）。 点查（key/value）场景点查场景支持的情况如下。 where条件里有且只能有全部的PK。
+);
+
+```
+commit;
+```
+
+`--`支持`Fixed Plan`，更多场景与`Update`样例一致
+
+```
+set hg_experimental_enable_fixed_dispatcher_for_delete =on; delete from test_delete where pk1 = 1 and pk2 = 2;
+```
+
+**SELECT场景**
+
+SELECT表达式 SELECT时能进行Fixed Plan的表达式如下。
+
+```
+select col1,col2,col3,... from table where pk1 = ? and pk2 = ? and pk3 = ?;
+```
+
+支持Select内部表，不支持外部表。 支持分区子表，不支持分区父表。 表必须有主键（PK）。 点查（key/value）场景点查场景支持的情况如下。 where条件里有且只能有全部的PK。
 
 | 可以使用 | pk in (?,?,?) 或 pk = ANY() |
 |---|---|
 | (2,4,5) | 四条。 |
 
-同一列只能有一个条件（一模一样的视为一个条件）。 如果有limit，limit的值必须 `>0` 。 使用示例如下。 实时数仓 Hologres
+```
+可以使用 pk in (?,?,?) 或 pk = ANY() 一次查多条。示例： pk1 in (1,2) and pk2 = any('{3,4}') and pk3 = 5 ，查 (1,3,5),(1,4,5),(2,3,5),
+```
+
+同一列只能有一个条件（一模一样的视为一个条件）。 如果有limit，limit的值必须 `>0` 。 使用示例如下。
 
 ```
-begin;
+begin; create table test_select(
   pk1 int,
   pk2 int,
   col1 int,
   col2 int,
   primary key(pk1, pk2)
-); commit; --支持Fixed Plan select * from test_select where pk1 = 1 and pk2 = 2;
+```
+
+);
+
+```
+commit; --支持Fixed Plan select * from test_select where pk1 = 1 and pk2 = 2;
 ```
 
 PrefixScan场景 PrefixScan场景表达式 PrefixScan场景是指表有多个主键，查询时按照左匹配原则只查几列主键，查询表达式如下。
@@ -12793,31 +13585,36 @@ select col1,col2,col3,... from table where pk1 = ? and pk2 between ? and ?;--从
 
 PrefixScan使用 PrefixScan的使用条件如下。
 
-| hg_experimental_enable_fixed_dispatcher_for_scan=on; |  |  |
+| hg_experimental_enable_fixed_dispatcher_for_scan=on; |   |   |
 |---|---|---|
 | n Key，且 | where | 语句里必须包含所有的Distribution Key。 |
 
 | where | 语句里有且只有PK的Prefix。PrefixScan从V1.1.48版本开始支持主键最后一列条件设置为范围。 |
 |---|---|
-| 说明 Prefix定义： 若PK为 (pk1,pk2,pk3) ，则 (pk1),(pk1,pk2) 为Prefix。 |  |
+| 说明 Prefix定义： 若PK为 (pk1,pk2,pk3) ，则 (pk1),(pk1,pk2) 为Prefix。 |   |
 
 列存表不支持走PrefixScan。 同一列只能有一个条件（一模一样的视为一个条件）。 如果含有limit条件，limit的值必须大于0。
 
-|  | 说明 PrefixScan一次性返回所有结果行，如果结果的字节数大于 hg_experimental_fixed_scan_bytesize_limit 会报错： scan result size larger than fixed scan size limit ，可以通过配置 hg_experimental_fixed_scan_bytesize_limit 参数设置更符合场景的值，默认值为1048576，即1MB。 |
+|   | 说明 PrefixScan一次性返回所有结果行，如果结果的字节数大于 hg_experimental_fixed_scan_bytesize_limit 会报错： scan result size larger than fixed scan size limit ，可以通过配置 hg_experimental_fixed_scan_bytesize_limit 参数设置更符合场景的值，默认值为1048576，即1MB。 |
 |---|---|
-|  | than fixed scan size limit |
+|   | than fixed scan size limit |
 
 | (pk1,pk2,pk3,pk4) | , Distribution Key为 | pk1,pk3 |
 |---|---|---|
 
 ```
-begin;
+begin; create table test_select_prefix(
   pk1 int,
   pk2 int,
   pk3 int,
   pk4 int,
   primary key(pk1, pk2,pk3,pk4)
-); call set_table_property('test_select_prefix', 'orientation', 'row'); call set_table_property('test_select_prefix', 'distribution_key', 'pk1,pk3'); commit;
+```
+
+);
+
+```
+call set_table_property('test_select_prefix', 'orientation', 'row'); call set_table_property('test_select_prefix', 'distribution_key', 'pk1,pk3'); commit;
 ```
 
 `--`没有包含所有`distribution key`，不能走`fixed plan`
@@ -12846,16 +13643,21 @@ select * from test_select_prefix where pk1 = ? and pk2 = ? and pk3 = ?;
 pk1 in (1,2) and pk2 = 3 <=> scan(1,3),(2,3)两组 pk2 =any('{3,4}') and pk1 in (1,2) <=> scan(1,3),(1,4),(2,3),(2,4)四组
 ```
 
-实时数仓 Hologres 使用示例
+使用示例
 
 ```
-begin;
+begin; create table test_scan(
   pk1 int,
   pk2 int,
   pk3 int,
   col1 int,
   primary key(pk1, pk2, pk3)
-); call set_table_property('test_scan', 'orientation', 'row'); call set_table_property ('test_scan', 'distribution_key', 'pk1,pk2'); commit; INSERT INTO test_scan values (1,2,3,4); --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_scan = on; select * from test_scan where pk1 = 1 and pk2 = 2; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_scan = on; select * from test_scan where pk1 = 1 and pk2 in (2,3); --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_scan = on; select * from test_scan where pk1 = ANY('{3,4}') and pk2 in (2,3);
+```
+
+);
+
+```
+call set_table_property('test_scan', 'orientation', 'row'); call set_table_property ('test_scan', 'distribution_key', 'pk1,pk2'); commit; INSERT INTO test_scan values (1,2,3,4); --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_scan = on; select * from test_scan where pk1 = 1 and pk2 = 2; --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_scan = on; select * from test_scan where pk1 = 1 and pk2 in (2,3); --支持Fixed Plan set hg_experimental_enable_fixed_dispatcher_for_scan = on; select * from test_scan where pk1 = ANY('{3,4}') and pk2 in (2,3);
 ```
 
 `--`支持`fixed plan,pk`最后一列是`range`条件，需要`1.1.48`及以上版本支持
@@ -12884,7 +13686,7 @@ select * from test_scan where pk2 = 2;
 
 **COPY场景**
 
-| Hologres从1.3.17版本开始， COPY 语句支持走Fixed Plan，与非Fixed Plan相比差异如下。 |  |  |
+| Hologres从1.3.17版本开始， COPY 语句支持走Fixed Plan，与非Fixed Plan相比差异如下。 |   |   |
 |---|---|---|
 | 对比项 | Fixed Plan | 非Fixed Plan |
 | 锁类型 | 行锁 | 表锁 |
@@ -12893,7 +13695,7 @@ select * from test_scan where pk2 = 2;
 | 支持类型 | TEXT或BINARY | TEXT |
 | 支持的主键冲突策略 | 支持如下策略： NONE：主键发生冲突报错。 NOTHING：主键发生冲突则对该数据执行跳过操作。 UPDATE：主键发生冲突则对该数据执行更新操作。 | NONE（冲突则报错） |
 
-| COPY 语句新增如下参数。 |  |
+| COPY 语句新增如下参数。 |   |
 |---|---|
 | 参数 | 说明 |
 | streammode _ | 是否走Fixed Plan，取值如下。 true：走Fixed Plan。 false：不走Fixed Plan。 |
@@ -12908,13 +13710,18 @@ COPY table_name(column0,column1,column2) FROM STDIN WITH (
   on_conflict update);
 ```
 
-非全列表现说明。 如果Copy写入的列不是全列，则为局部更新，表现如下： 实时数仓 Hologres
+非全列表现说明。 如果Copy写入的列不是全列，则为局部更新，表现如下：
 
 ```
 CREATE TABLE t0 (id int not null, name text, age int, primary key(id)); COPY t0(id, name) FROM STDIN WITH (
   stream_mode true,
   on_conflict update);
-id = excluded.id, name = excluded.name;
+```
+
+`--` 上述`COPY`等价与如下`INSERT INTO`
+
+```
+INSERT INTO t0(id, name) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET id = excluded.id, name = excluded.name;
 ```
 
 如果Copy写入的列不是全列，且未参与写入的列设置了默认值属性，表现如下：
@@ -12925,10 +13732,10 @@ CREATE TABLE t0 (id int not null, name text, age int DEFAULT 0, primary key(id))
   on_conflict update);
 ```
 
-`--` 若`id`数据不存在，`age`列赋值`default value`； `--` 若`id`数据已存在，`age`列不更新
+`--` 上述`COPY`等价与如下`INSERT INTO` `--` 若`id`数据不存在，`age`列赋值`default value`； `--` 若`id`数据已存在，`age`列不更新
 
 ```
-id = excluded.id, name = excluded.name;
+INSERT INTO t0(id, name, age) VALUES(?, ?, default) ON CONFLICT(id) DO UPDATE SET id = excluded.id, name = excluded.name;
 ```
 
 **验证Fixed Plan**
@@ -12939,9 +13746,11 @@ id = excluded.id, name = excluded.name;
 
 在某些场景上若是已经开启Fixed Plan但还需要做性能调优时，可选择如下方式。 Hologres V1.1.49版本开始针对Fixed Plan点查场景进行了优化，在大规模点查的情况下提升了30%以上吞吐。若有需要请升级实例至V1.1.49及以上版本。 客户端合理的攒批（使用Holo Client会自动攒批），即一次执行SQL命令的数量，实践证明数量为512或者512的倍数性能会更好。
 
-### 高级命令
+### 1.8 高级命令
 
-#### 1.8.1. Auto Analyze
+#### 1.8.1 Auto Analyze
+
+本文将为你介绍Hologres中Auto Analyze的相关机制。
 
 **功能概述**
 
@@ -12949,13 +13758,13 @@ Analyze命令用于收集数据库中表内容的统计信息，优化器会根�
 
 **使用语法**
 
-SHOW hg_enable_start_auto_analyze_worker; -- V1.1语法，查看当前开启/关闭状态 SHOW hg_experimental_enable_start_auto_analyze_worker; -- V0.10语法，查看当前开启/关闭状态开启/关闭语法如下，需要Superuser执行。 `-- DB`级别，执行后整个`DB`生效，`V1.1`开启/关闭语法
+查看是否开启Auto Analyze SHOW hg_enable_start_auto_analyze_worker; -- V1.1语法，查看当前开启`/`关闭状态 SHOW hg_experimental_enable_start_auto_analyze_worker; -- V0.10语法，查看当前开启`/`关闭状态开启/关闭语法如下，需要Superuser执行。 `-- DB`级别，执行后整个`DB`生效，`V1.1`开启`/`关闭语法
 
 ```
 ALTER DATABASE dbname SET hg_enable_start_auto_analyze_worker = ON; -- 开启（默认） ALTER DATABASE dbname SET hg_enable_start_auto_analyze_worker = OFF; -- 关闭
 ```
 
-`-- DB`级别，执行后整个`DB`生效，`V0.10`开启/关闭语法
+`-- DB`级别，执行后整个`DB`生效，`V0.10`开启`/`关闭语法
 
 ```
 ALTER DATABASE dbname SET hg_experimental_enable_start_auto_analyze_worker = ON; -- 开启（默认） ALTER DATABASE dbname SET hg_experimental_enable_start_auto_analyze_worker = OFF; -- 关闭
@@ -12963,33 +13772,33 @@ ALTER DATABASE dbname SET hg_experimental_enable_start_auto_analyze_worker = ON;
 
 **使用限制**
 
-该功能仅Hologres V0.10及以上版本支持，请在Hologres管理控制台的实例详情页查看当前版本。 实时数仓 Hologres 分区表有扫描行数限制，采样数据时默认扫描的最大记录数是224条（16,777,216条），即若所有分区子表的记录数总和超过16,777,216条，会做一定的分区裁剪，只对其中若干分区（总和不超过16,777,216条）进行采样。 分区列统计信息总是全的，不受裁剪影响，但是这可能会影响与分区列同分布的列（例如极端情况是，与分区列数据一样的列）的统计信息，即一部分
+在Hologres中使用Auto Analyze，具体限制如下： 该功能仅Hologres V0.10及以上版本支持，请在Hologres管理控制台的实例详情页查看当前版本。 仅支持Superuser执行开启或关闭Auto Analyze操作。 开启或关闭Auto Analyze的操作仅针对数据库级别生效，不针对单表。 Auto Analyze对分区表的限制如下。 分区子表发生改变，需要Auto Analyze时，会统一Analyze其父表。 分区表有扫描行数限制，采样数据时默认扫描的最大记录数是224条（16,777,216条），即若所有分区子表的记录数总和超过16,777,216条，会做一定的分区裁剪，只对其中若干分区（总和不超过16,777,216条）进行采样。
 
-**说明**
+> **说明：** 分区列统计信息总是全的，不受裁剪影响，但是这可能会影响与分区列同分布的列（例如极端情况是，与分区列数据一样的列）的统计信息，即一部分值采样不到，行数估计可能不准确。
 
-值采样不到，行数估计可能不准确。
-
-| hg_experimental_auto_analyze_max_columns_count |  | 改变此 |
+| hg_experimental_auto_analyze_max_columns_count |   | 改变此 |
 |---|---|---|
-| 而导致Analyze失败。可调整 | auto_analyze_work_memory_mb |  |
+| 而导致Analyze失败。可调整 | auto_analyze_work_memory_mb |   |
+
+Auto Analyze默认最大收集256列的统计信息，如表超过256列，取前256列。可通过调整 `hg_experimental_auto_analyze_max_columns_count` 改变此值。 Auto Analyze默认单个Worker限制的内存是8 GB，如果存在超宽的列，采样可能超出内存而导致Analyze失败。可调整 `auto_analyze_work_memory_mb` 参数改变其大小，但是要注意对系统内存的影响。实例规格越大，Worker数越多，Auto Analyze可用内存限制越大。
 
 **工作原理**
 
-当开始Auto Analyze后，系统后台会定期巡检是否有表需要执行Analyze。 普通表（内部表，包括单表和分区表） 每隔1分钟巡检是否有表的最新动作（主要是INSERT、UPDATE、DELETE等DML操作，可能改变了数据量）。满足以下条件，系统后台触发表的Analyze，收集表的统计信息。 表有DML执行完成且数据条数变化超过当前表的数据条数的10%。若表是分区子表，则是指变化条数超过此分区数据条数的10%。 表的DDL发生变更。例如CREATE TABLE新建表，ALTER TABLE修改表结构等，不包括CALL SET_TABLE_PROPERTY修改表属性。 每隔10分钟检测所有内部表的数据变化，如果满足数据条数变化超过上一次检测的10%，则后台触发该表的Analyze。
+当开始Auto Analyze后，系统后台会定期巡检是否有表需要执行Analyze。 普通表（内部表，包括单表和分区表） 每隔1分钟巡检是否有表的最新动作（主要是INSERT、UPDATE、DELETE等DML操作，可能改变了数据量）。满足以下条件，系统后台触发表的Analyze，收集表的统计信息。 表有DML执行完成且数据条数变化超过当前表的数据条数的10%。若表是分区子表，则是指变化条数超过此分区数据条数的10%。 TRUNCATE TABLE清空表。 表的DDL发生变更。例如CREATE TABLE新建表，ALTER TABLE修改表结构等，不包括CALL SET_TABLE_PROPERTY修改表属性。 每隔10分钟检测所有内部表的数据变化，如果满足数据条数变化超过上一次检测的10%，则后台触发该表的Analyze。
 
-**说明**
+> **说明：** 这一步骤是为了检测到非显式DML（例如通过Flink、数据集成、HoloClient实时写入）更新的数据。
 
-这一步骤是为了检测到非显式DML（例如通过Flink、数据集成、HoloClient实时写入）更新的数据。 外部表当前仅支持Analyze MaxCompute外部表，其他引擎的外部表暂不支持Analyze和Auto Analyze。 每隔4小时定期巡检外部表元数据或数据变化情况。满足以下条件，系统后台触发表的Analyze，收集统计信息。 外部表对应的外部系统的表（例如MaxCompute表）在两次巡检间隔（例如4小时内）改变过，改变的标准是对应MaxCompute表的 `last_modify_time` 处于巡检间隔之间。 巡检和执行在同一个调度任务中，所以下一次巡检调度开始依赖Analyze执行结束，只要离上一次开始巡检的时间满足调度周期，就可以进入下一次巡检。
+外部表当前仅支持Analyze MaxCompute外部表，其他引擎的外部表暂不支持Analyze和Auto Analyze。 每隔4小时定期巡检外部表元数据或数据变化情况。满足以下条件，系统后台触发表的Analyze，收集统计信息。 外部表对应的外部系统的表（例如MaxCompute表）在两次巡检间隔（例如4小时内）改变过，改变的标准是对应MaxCompute表的 `last_modify_time` 处于巡检间隔之间。
 
-**说明**
+> **说明：** 巡检和执行在同一个调度任务中，所以下一次巡检调度开始依赖Analyze执行结束，只要离上一次开始巡检的时间满足调度周期，就可以进入下一次巡检。
 
 **配置参数**
 
-开启Auto Analyze后，系统默认会自动周期性巡检，决定需要执行Analyze的表，并进行采样计算，收集统计信息，对系统资源有一定的消耗。 在某些业务场景下，默认的机制可能不适用于业务场景，例如数据写入更新不频繁场景，可以通过修改默认参数来减少自动Analyze的频率。诸如此类可以根据业务情况更改默认参数，以此达到部分性能调优的目的。 只有Superuser能调整Auto Analyze的默认行为，且都需要数据库级别设置参数，且在下一分钟后生效。
+开启Auto Analyze后，系统默认会自动周期性巡检，决定需要执行Analyze的表，并进行采样计算，收集统计信息，对系统资源有一定的消耗。 在某些业务场景下，默认的机制可能不适用于业务场景，例如数据写入更新不频繁场景，可以通过修改默认参数来减少自动Analyze的频率。诸如此类可以根据业务情况更改默认参数，以此达到部分性能调优的目的。
 
-**说明**
+> **说明：** 只有Superuser能调整Auto Analyze的默认行为，且都需要数据库级别设置参数，且在下一分钟后生效。
 
-使用语法
+使用语法 `--Superuser`修改`Auto Analyze`参数的默认值
 
 ```
 ALTER DATABASE <dbname> SET <GUC>=<values>;
@@ -12998,39 +13807,37 @@ ALTER DATABASE <dbname> SET <GUC>=<values>;
 **dbname**为数据库名称；**GUC**为参数名称；**values**为参数值。
 参数列表
 
-| 参数 | 参数描述 |  | 支持版本 |  |  |  | 默认值 | 使用示例 |  |  |  |
+| 参数 | 参数描述 |   | 支持版本 |   |   |   | 默认值 | 使用示例 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| autovacuumnaptime _ | 巡检是否有表的最新动作的周期，单位是秒（s）。 |  | V1.1.0及以上版本说明需后台调整，如需调整请搜索 （钉钉群号： 32314975）加入实时数仓Hologres交流群申请。 |  |  |  |  | ALTER DATABASE <dbname> SET |  |  |  |
-|  |  |  |  |  |  |  |  |  | ALTER DATABASE <dbname> SET |  |  |
-|  |  |  |  | 说明需后台调整，如需调整请搜索 （钉钉群号： 32314975）加入实时数仓Hologres交流群申请。 |  |  |  | autovacuum_naptime = 60; |  |  |  |
-|  |  |  |  |  |  |  |  |  | ALTER DATABASE <dbname> SET |  |  |
-|  |  |  |  |  |  |  | 60s | autovacuum_naptime = '60s'; |  |  |  |
-|  |  |  |  |  |  |  |  |  | ALTER DATABASE <dbname> SET |  |  |
-|  |  |  |  |  |  |  |  | autovacuum_naptime = |  |  |  |
-|  |  |  |  |  |  |  |  | '10min'; |  |  |  |
-| hgautochecktablechangesinterv _ _ _ _ _ al | 检查所有内部表的数据变化的周期，单位是秒（s）。 |  | V1.1.0及以上版本 |  |  |  | 600s（10min） | --V1.1及以上版本命令语法 ALTER DATABASE <dbname> SET hg_auto_check_table_changes_i nterval = '600s'; --V0.10版本命令语法 ALTER DATABASE <dbname> SET hg_experimental_auto_check_ta ble_changes_interval = '600s'; |  |  |  |
-| hgautocheckforeigntablechang _ _ _ _ _ esinterval _ | 检查所有外部表的数据变化的周期，单位是秒（s）。 |  | V1.1.0及以上版本 |  |  |  | 14400s（4小时） | --V1.1及以上版本命令语法 ALTER DATABASE <dbname> SET hg_auto_check_foreign_table_c hanges_interval = '14400s'; --V0.10版本命令语法 ALTER DATABASE <dbname> SET hg_experimental_auto_check_fo reign_table_changes_interval = '14400s'; |  |  |  |
-
-实时数仓 Hologres
+| autovacuumnaptime _ | 巡检是否有表的最新动作的周期，单位是秒（s）。 |   | V1.1.0及以上版本说明需后台调整，如需调整请搜索 （钉钉群号： 32314975）加入实时数仓Hologres交流群申请。 |   |   |   |   | ALTER DATABASE <dbname> SET |   |   |   |
+|   |   |   |   |   |   |   |   |   | ALTER DATABASE <dbname> SET |   |   |
+|   |   |   |   | 说明需后台调整，如需调整请搜索 （钉钉群号： 32314975）加入实时数仓Hologres交流群申请。 |   |   |   | autovacuum_naptime = 60; |   |   |   |
+|   |   |   |   |   |   |   |   |   | ALTER DATABASE <dbname> SET |   |   |
+|   |   |   |   |   |   |   | 60s | autovacuum_naptime = '60s'; |   |   |   |
+|   |   |   |   |   |   |   |   |   | ALTER DATABASE <dbname> SET |   |   |
+|   |   |   |   |   |   |   |   | autovacuum_naptime = |   |   |   |
+|   |   |   |   |   |   |   |   | '10min'; |   |   |   |
+| hgautochecktablechangesinterv _ _ _ _ _ al | 检查所有内部表的数据变化的周期，单位是秒（s）。 |   | V1.1.0及以上版本 |   |   |   | 600s（10min） | --V1.1及以上版本命令语法 ALTER DATABASE <dbname> SET hg_auto_check_table_changes_i nterval = '600s'; --V0.10版本命令语法 ALTER DATABASE <dbname> SET hg_experimental_auto_check_ta ble_changes_interval = '600s'; |   |   |   |
+| hgautocheckforeigntablechang _ _ _ _ _ esinterval _ | 检查所有外部表的数据变化的周期，单位是秒（s）。 |   | V1.1.0及以上版本 |   |   |   | 14400s（4小时） | --V1.1及以上版本命令语法 ALTER DATABASE <dbname> SET hg_auto_check_foreign_table_c hanges_interval = '14400s'; --V0.10版本命令语法 ALTER DATABASE <dbname> SET hg_experimental_auto_check_fo reign_table_changes_interval = '14400s'; |   |   |   |
 
 | hgexperimentalautoanalyzemax _ _ _ _ columnscount _ _ | 自动收集统计信息的列数，单位是个。 | V1.1.0及以上版本 | 256个 | ALTER DATABASE <dbname> SET hg_experimental_auto_analyze_ max_columns_count =300; |
 |---|---|---|---|---|
 | autoanalyzeworkmemorymb _ _ _ _ | Auto Analyze单个表的内存限制，单位是 MB。 | V1.1.54及以上版本 | 默认单个Worker 8192 MB，即 8GB，实例规格越大，Worker越多，真实内存限制越大。 | Auto Analyze单个表的内存限制修改为 9GB。 ALTER DATABASE <dbname> SETauto_analyze_work_memory_m b =9216; |
 | hgexperimentalautoanalyzestart _ _ _ _ time _ | Auto-Analyze在每天运行的开始时间说明需要与end _time是同一时区，并且start time要小于等于end _time。 | V1.1.54及以上版本 | 00:00 +0800 | 修改为仅需要在0～6点执行Auto- Analyze，白天内外部表数据不变，无需 Analyze的情况。 ALTER DATABASE <dbname> SET hg_experimental_auto_analyz e_start_time = '00:00 +0800'; ALTER DATABASE <dbname> SET hg_experimental_auto_analyz e_end_time = '06:00 +0800'; |
-| hgexperimentalautoanalyzeend _ _ _ _ _ time | Auto Analyze在每天运行的结束时间。 | V1.1.54及以上版本 | 23:59 +0800 |  |
+| hgexperimentalautoanalyzeend _ _ _ _ _ time | Auto Analyze在每天运行的结束时间。 | V1.1.54及以上版本 | 23:59 +0800 |   |
 | autovacuumenabled _ | 表Auto Analyze的开启状态。 | V1.1.54及以上版本 | true，即默认全部开启。 | 关闭某表的Auto Analyze，以后Analyze 将跳过此表。 说明仅支持使用如下命令为 Hologres内部表关闭Auto Analyze。 ALTER TABLE <tablename> SET (autovacuum_enabled = false); |
 
 **常见问题**
 
-表的统计信息是0条问题现象：通过**hologres_statistic.hg_table_statistic**表查看表的统计信息，没有数据。 可能原因： 解决方法：手动触发一次Analyze。
+出现如下情况，代表Auto Analyze工作未正常，请参照解决方法进行处理。 表的统计信息是0条问题现象：通过**hologres_statistic.hg_table_statistic**表查看表的统计信息，没有数据。 可能原因： Auto Analyze没有工作，或者该表不符合Auto Analyze触发条件。 Auto Analyze本身的问题导致，需要具体排查原因。 解决方法：手动触发一次Analyze。
 
 | analyze_timestamp | 过小 |
 |---|---|
 | 问题现象：查询结果中 | analyze_timestamp |
 
-可能原因： 解决方法：先手动触发Analyze，再排查原因。
+问题现象：查询结果中 `analyze_timestamp` 过小（即比当前时间小很多），代表长时间没有进行过Analyze。 可能原因： 某种原因未能正常执行Auto Analyze。 手动关闭过Auto Analyze。 解决方法：先手动触发Analyze，再排查原因。
 
-#### 1.8.2. 订阅Hologres Binlog
+#### 1.8.2 订阅Hologres Binlog
 
 当您需要捕获Hologres数据库事件，用于数据之间的复制、同步或将这些事件作为消息流转发给不同的消费者处理时，Hologres支持Binlog功能，消费Hologres Binlog来提升数据复用能力，缩短数据加工端到端延迟。本文为您介绍在Hologres订阅Hologres Binlog及相关操作。
 
@@ -13040,7 +13847,7 @@ Hologres同传统MySQL数据库一样，支持通过Binlog记录数据库中所�
 
 **使用限制**
 
-仅Hologres V0.9及以上版本支持订阅Hologres Binlog，如果您的实例是V0.9以下版本，请升级实例。 Hologres V0.9以及V0.10版本，已存在的表无法修改表属性开启Binlog，需重新建表。从V1.1版本开始，可以按需开启Binlog。 实时数仓 Hologres Hologres V1.3.14和V1.1.82之前的版本仅支持Superuser消费Binlog，如果使用其他低权限账号消费Binlog会出现没有权限的报错： `permission denied for table` `hg_replication_slot_properties` 。从Hologres V1.3.14和V1.1.82版本开始，若使用Flink消费Binlog，仅需账号具备查询表的权限即可。对于使用JDBC消费 Hologres Binlog需要账号在Replication Role中。 Hologres支持单表级别的Binlog功能，支持行存表和列存表。当前订阅Hologres Binlog支持的情况如下表。
+在Hologres中订阅Hologres Binlog需要注意如下事项： 仅Hologres V0.9及以上版本支持订阅Hologres Binlog，如果您的实例是V0.9以下版本，请升级实例。 Hologres V0.9以及V0.10版本，已存在的表无法修改表属性开启Binlog，需重新建表。从V1.1版本开始，可以按需开启Binlog。 Hologres V1.3.14和V1.1.82之前的版本仅支持Superuser消费Binlog，如果使用其他低权限账号消费Binlog会出现没有权限的报错： `permission denied for table` `hg_replication_slot_properties` 。从Hologres V1.3.14和V1.1.82版本开始，若使用Flink消费Binlog，仅需账号具备查询表的权限即可。对于使用JDBC消费 Hologres Binlog需要账号在Replication Role中。 Hologres支持单表级别的Binlog功能，支持行存表和列存表。当前订阅Hologres Binlog支持的情况如下表。
 
 | Flink分类 | Hologres行存表Binlog | Hologres列存表Binlog | Hologres行列共存表Binlog（从Hologres V1.1版本开始支持） |
 |---|---|---|---|
@@ -13063,20 +13870,20 @@ Binlog记录由Binlog系统字段和用户Table字段组成，具体字段定义
 | ... | ... | ... |
 | usertablecolumnn _ _ _ | 用户自定义 | 用户Table字段。 |
 
-UPDATE操作会产生两条Binlog记录，分别为更新前和更新后的记录。订阅Binlog功能会保证这两条记录是连续的且更新前的Binlog记录在前，更新后的Binlog记录在后。 用户字段的顺序与DDL定义的顺序一致。 Hologres的Binlog可以看作是一张特殊的行存表，**为某张表打开****Binlog****，可以理解为是新创建了一张以** `hg_binlog_lsn` 为**Key,** **业务表原有字**
+UPDATE操作会产生两条Binlog记录，分别为更新前和更新后的记录。订阅Binlog功能会保证这两条记录是连续的且更新前的Binlog记录在前，更新后的Binlog记录在后。 用户字段的顺序与DDL定义的顺序一致。 Hologres的Binlog可以看作是一张特殊的行存表，**为某张表打开****Binlog****，可以理解为是新创建了一张以** `hg_binlog_lsn` **为****Key,** **业务表原有字**
 **段、** `hg_binlog_event_type` **以及** `hg_binlog_timestamp_us` **字段则组合起来作为****Value****的行存表。**Binlog表的字段是固定的，也可以说是强Schema的，用户字段顺
 序与业务表DDL定义的顺序一致。因此建议开启Binlog的表使用行存表或者行列共存表，会使得读Binlog时会有更好的性能。
 
 **开启Binlog**
 
-Hologres中，Binlog功能默认关闭，您可以通过设置表属性**binlog.level**和**binlog.ttl**开启该功能。如下示例开启Binlog，更多关于创建表的参数说明，请参见CREATE
+Hologres中，Binlog功能默认关闭，您可以通过设置表属性**binlog.level**和**binlog.ttl**开启该功能。如下示例开启Binlog，更多关于创建表的参数说明，请参见CREATE TABLE。
 
-**说明**
+> **说明：** 理论上列存表开启Binlog功能的成本要大于行存表。如果您对表的更新比较频繁，建议您使用行存表开启Binlog功能。
 
-理论上列存表开启Binlog功能的成本要大于行存表。如果您对表的更新比较频繁，建议您使用行存表开启Binlog功能。 所有版本支持的语法： 实时数仓 Hologres
+所有版本支持的语法：
 
 ```
-begin;
+begin; create table test_message_src(
   id int primary key,
   title text not null,
   body text);
@@ -13094,9 +13901,9 @@ call set_table_property('test_message_src', 'orientation', 'row');--创建行存
 
 从Hologres V1.1版本开始，可以根据业务需要选择开启/关闭Binlog能力，同时支持配置TTL满足不同业务场景对Binlog保留时间的诉求，已有表无需重新建表就能开启 Binlog，操作方便快捷。
 
-**说明**
+> **说明：** 以下功能仅针对Hologres V1.1及以上版本，如果您的实例是V1.1以下版本，请升级实例。
 
-以下功能仅针对Hologres V1.1及以上版本，如果您的实例是V1.1以下版本，请升级实例。 开启Binlog 可以使用以下语句对已有表开启Binlog并设置Binlog TTL时间。 `--` 设置表属性开启`Binlog`功能
+开启Binlog 可以使用以下语句对已有表开启Binlog并设置Binlog TTL时间。 `--` 设置表属性开启`Binlog`功能
 
 ```
 begin; call set_table_property('<table_name>', 'binlog.level', 'replica'); commit;
@@ -13108,21 +13915,23 @@ begin; call set_table_property('<table_name>', 'binlog.level', 'replica'); commi
 begin; call set_table_property('<table_name>', 'binlog.ttl', '2592000'); commit;
 ```
 
+**table_name**为开启Binlog的表名称。
 关闭Binlog 可以使用以下语句对已开启Binlog的表关闭Binlog。 `--` 设置表属性关闭`Binlog`功能
 
 ```
 begin; call set_table_property('<table_name>', 'binlog.level', 'none'); commit;
 ```
 
+**table_name**为需要关闭Binlog的表名称。
 修改Binlog的TTL 通过以下语句可以对已开启Binlog的表修改TTL，满足业务对Binlog不同保留时间的诉求。
 
-**说明**
-
-Hologres从 V1.3.24版本开始，支持按需开启分区子表的Binlog TTL。如果没有显示修改子表的Binlog TTL，则默认与父表的Binlog TTL保持一致。
+> **说明：** Hologres从 V1.3.24版本开始，支持按需开启分区子表的Binlog TTL。如果没有显示修改子表的Binlog TTL，则默认与父表的Binlog TTL保持一致。
 
 ```
 call set_table_property('<table_name>', 'binlog.ttl', '8640000'); --单位秒
 ```
+
+**table_name**为修改Binlog TTL的表名称。
 
 **查询Binlog**
 
@@ -13132,14 +13941,20 @@ Hologres表的Binlog是一种强Schema格式的数据，如果要查询某个表
 select hg_binlog_lsn,hg_binlog_event_type,hg_binlog_timestamp_us,* from test_message_src;
 ```
 
-查询结果示例如下。 实时数仓 Hologres 当前支持通过Flink、Blink以及JDBC（包括Holo Client）消费Hologres Binlog，详情请参见文档： Flink和Blink实时消费Binlog，请参见Flink/Blink实时消费Hologres Binlog。 有关JDBC如何实时消费Binlog，请参见通过JDBC消费Hologres Binlog。
+查询结果示例如下。
+
+**实时消费Hologres Binlog**
+
+当前支持通过Flink、Blink以及JDBC（包括Holo Client）消费Hologres Binlog，详情请参见文档： Flink和Blink实时消费Binlog，请参见Flink/Blink实时消费Hologres Binlog。 有关JDBC如何实时消费Binlog，请参见通过JDBC消费Hologres Binlog。
 
 **查看开启了Binlog的表**
 
-您可以使用如下SQL查看哪些表开启了Binlog。 *
+您可以使用如下SQL查看哪些表开启了Binlog。 `*`
 
 ```
-FROM WHERE
+FROM
+    hologres.hg_table_properties
+WHERE
     property_key = 'binlog.level'
     AND property_value = 'replica';
 ```
@@ -13158,7 +13973,9 @@ Hologres支持通过 `pg_relation_size` 函数获取表存储空间的大小，�
 SET hg_experimental_generate_binlog=off;
 ```
 
-#### 1.8.3. Flink实时消费Hologres Binlog
+#### 1.8.3 Flink实时消费Hologres Binlog
+
+本文将会为您介绍如何通过Flink实时消费Hologres Binlog。
 
 **注意事项**
 
@@ -13174,9 +13991,10 @@ VVP-2.4及以上版本支持Hologres Connector实时消费Binlog，使用方法�
 
 **源表DDL（非CDC模式）**
 
-该模式下Source消费的Binlog数据是作为普通的Flink数据传递给下游节点的，即所有数据都是作为Insert类型的数据，可以根据业务情况选择如何处理特定 `hg_binlog_event_type` 类型的数据。Hologres表开启Binlog后，在Flink中源表（非CDC模式）使用如下DDL可以实时消费Binlog。 实时数仓 Hologres
+该模式下Source消费的Binlog数据是作为普通的Flink数据传递给下游节点的，即所有数据都是作为Insert类型的数据，可以根据业务情况选择如何处理特定 `hg_binlog_event_type` 类型的数据。Hologres表开启Binlog后，在Flink中源表（非CDC模式）使用如下DDL可以实时消费Binlog。
 
 ```
+create table test_message_src_binlog_table(
   hg_binlog_lsn BIGINT,
   hg_binlog_event_type BIGINT,
   hg_binlog_timestamp_us BIGINT,
@@ -13194,26 +14012,27 @@ VVP-2.4及以上版本支持Hologres Connector实时消费Binlog，使用方法�
   'binlogMaxRetryTimes' = '10',
   'binlogRetryIntervalMs' = '500',
   'binlogBatchReadSize' = '100'
-);
 ```
 
-三个 `binlogxxx` 参数表示Binlog系统字段，命名和类型是固定的不能修改。 其他字段是跟用户字段一一对应，必须是全小写。
+); 三个 `binlogxxx` 参数表示Binlog系统字段，命名和类型是固定的不能修改。 其他字段是跟用户字段一一对应，必须是全小写。
 
 **源表DDL（CDC模式）**
 
 该模式下Source消费的Binlog数据，将根据 `hg_binlog_event_type` 自动为每行数据设置准确的Flink RowKind类型（INTERT、DELETE、UPDATE_BEFORE、 UPDATE_AFTER)，这样就能完成表的数据的镜像同步，类似MySQL和Postgres的CDC功能。
 
-**说明**
+> **说明：** Hologres Binlog源表（CDC模式）暂不支持定义Watermark。如果您需要进行窗口聚合，可以采用非窗口聚合的方式。
 
-Hologres Binlog源表（CDC模式）暂不支持定义Watermark。如果您需要进行窗口聚合，可以采用非窗口聚合的方式。 Hologres表开启Binlog后，在Flink中源表（CDC模式）使用如下DDL可以实时消费Binlog。
+Hologres表开启Binlog后，在Flink中源表（CDC模式）使用如下DDL可以实时消费Binlog。
 
 ```
+create table test_message_src_binlog_table(
   id INTEGER,
   title VARCHAR,
   body VARCHAR
 ) with (
   'connector'='hologres',
   'dbname'='<yourDbname>',//Hologres的DB名
+  'tablename'='<yourTablename>',//Hologres的表名
   'username'='<yourAccessID>',//当前账号的access id
   'password'='<yourAccessSecret>',//当前账号的access key
   'endpoint'='<yourEndpoint>',//Hologres的vpc网络地址
@@ -13222,8 +14041,9 @@ Hologres Binlog源表（CDC模式）暂不支持定义Watermark。如果您需�
   'binlogMaxRetryTimes' = '10',
   'binlogRetryIntervalMs' = '500',
   'binlogBatchReadSize' = '100'
-);
 ```
+
+);
 
 **全增量一体源表**
 
@@ -13241,13 +14061,13 @@ Hologres从V2.0版本起逐步下线Holohub模式。如果您需要升级Hologre
 
 如果您的Flink VVR版本低于8.0.4，您可以直接将Hologres实例升级至V2.0版本。 如果您的Flink VVR版本为8.0.4及以上版本，Hologres会自动将您的Holohub模式的任务切换为JDBC模式。您需要先授予用户**如下权限选项其中之一**，然后再将 Hologres实例升级至V2.0版本。 （选项一）实例的Superuser权限。 （选项二）目标表的Owner权限，CREATE DATABASE权限及实例的Replication Role权限。
 
-#### 1.8.4. 通过JDBC消费Hologres Binlog
+#### 1.8.4 通过JDBC消费Hologres Binlog
 
 本文为您介绍如何通过JDBC和Holo-Client这两种方式消费Hologres Binlog。
 
 **前提条件**
 
-需提前开启和配置Hologres Binlog，详情请参见订阅Hologres Binlog。 需创建hg_binlog extension。 实时数仓 Hologres Hologres V2.0版本前，需要实例的Superuser执行以下语句创建extension才可以使用该功能，extension针对整个DB生效，一个DB只需执行一次，新建DB需要再次执行。 `--`创建
+需提前开启和配置Hologres Binlog，详情请参见订阅Hologres Binlog。 需创建hg_binlog extension。 Hologres V2.0版本前，需要实例的Superuser执行以下语句创建extension才可以使用该功能，extension针对整个DB生效，一个DB只需执行一次，新建DB需要再次执行。 `--`创建
 
 ```
 CREATE extension hg_binlog;
@@ -13265,19 +14085,9 @@ Hologres从 V2.0版本起，无需手动创建extension即可使用。
 
 仅Hologres V1.1及以上版本支持通过JDBC消费Hologres Binlog，如果您的实例是V1.1以下版本，请升级实例。 仅以下数据类型支持消费Hologres Binlog：INTEGER、BIGINT、SMALLINT、TEXT、CHAR(n)、VARCHAR(n)、REAL、DOUBLE PRECISION、BOOLEAN、 NUMERIC(38,8)、DATE、TIME、TIMETZ、TIMESTAMP、TIMESTAMPTZ、BYTEA、JSON、SERIAL、OID、int4[]、int8[]、float4[]、float8[]、boolean[]、 text[]，从HologresV1.3.36版本开始支持JSONB类型。如果表中有以上类型之外的数据类型，会造成消费失败。
 
-**说明**
-
-Hologres从V1.3.36版本开始支持JSONB数据类型消费Hologres Binlog，消费之前需要开启如下GUC参数： `-- Session`级别开启`GUC`
-
-```
-set hg_experimental_enable_binlog_jsonb = on;
-```
-
-`-- DB`级别开启`GUC`
-
-```
-alter database <db_name> set hg_experimental_enable_binlog_jsonb = on;
-```
+> **说明：** Hologres从V1.3.36版本开始支持JSONB数据类型消费Hologres Binlog，消费之前需要开启如下GUC参数：
+> `-- Session`级别开启`GUC` set hg_experimental_enable_binlog_jsonb = on;
+> `-- DB`级别开启`GUC` alter database <db_name> set hg_experimental_enable_binlog_jsonb = on;
 
 同普通连接类似，在使用JDBC进行Binlog的消费时，所消费的每张表的每个Shard都会使用1个Walsender连接，Walsender连接与普通连接独立，互不影响。 Walsenders数也有使用上限，可以通过以下命令查看单个Frontend节点的最大Walsender数（V2.0版本起默认值调整为1000，V1.1.26至V2.0版本之间默认为 100），总的数目需要乘实例的Frontend节点数，不同规格实例的Frontend节点数请参见实例规格概述。
 
@@ -13285,9 +14095,19 @@ alter database <db_name> set hg_experimental_enable_binlog_jsonb = on;
 show max_wal_senders;
 ```
 
-**说明**
+> **说明：** Hologres实例支持的同时消费Binlog的表数量可以通过以下方式计算：表数量`<=(max_wal_senders(100`或`1000) * FrontEnd`节点数`)/`表的`Shard Count` 。
+> 例如：
+> 表a和表b的Shard Count都为20，表c的Shard Count为30，则三张表同时进行消费Binlog占用的Walsenders数量为 `20 + 20 + 30 = 70` 。
+> 表a和表b的Shard Count都为20，表a同时有两个作业在进行Binlog消费，同时进行消费占用的Walsenders数量为 `20 *2 + 20 = 60` 。
+> 一个实例有两个Frontend节点，则其最大Walsenders数为 `100*2 = 200` ，最多支持同时消费10张Shard Count为20的表同时进行消费Binlog。
+> 如果使用JDBC进行Binlog消费的连接数达到上限，会提示 `FATAL: sorry, too many wal senders already` 的错误信息，可以按照如下思路进行排查处理：
+> i. 检查使用JDBC进行Binlog消费的作业，减少其中非必要的Binlog消费。
 
-Hologres实例支持的同时消费Binlog的表数量可以通过以下方式计算：表数量`<=(max_wal_senders(100`或`1000) * FrontEnd`节点数`)/`表的`Shard Count` 。 例如： 表a和表b的Shard Count都为20，表c的Shard Count为30，则三张表同时进行消费Binlog占用的Walsenders数量为 `20 + 20 + 30 = 70` 。 表a和表b的Shard Count都为20，表a同时有两个作业在进行Binlog消费，同时进行消费占用的Walsenders数量为 `20 *2 + 20 = 60` 。 一个实例有两个Frontend节点，则其最大Walsenders数为 `100*2 = 200` ，最多支持同时消费10张Shard Count为20的表同时进行消费Binlog。 如果使用JDBC进行Binlog消费的连接数达到上限，会提示 `FATAL: sorry, too many wal senders already` 的错误信息，可以按照如下思路进行排查处理： i. 检查使用JDBC进行Binlog消费的作业，减少其中非必要的Binlog消费。 ii. 检查Table Group与Shard数设计是否合理，详情请参见Table Group设置最佳实践。 iii. 如连接数仍超出限制，则须考虑扩容实例。 Hologres V2.0.18版本前，只读从实例不支持通过JDBC消费Binlog功能。从V2.0.18版本起，只读从实例支持通过JDBC消费Hologres Binlog，但不支持记录消费进度。
+ii. 检查Table Group与Shard数设计是否合理，详情请参见Table Group设置最佳实践。
+
+> iii. 如连接数仍超出限制，则须考虑扩容实例。
+
+Hologres V2.0.18版本前，只读从实例不支持通过JDBC消费Binlog功能。从V2.0.18版本起，只读从实例支持通过JDBC消费Hologres Binlog，但不支持记录消费进度。
 
 **注意事项**
 
@@ -13298,9 +14118,7 @@ Hologres实例版本和Flink引擎版本不同支持消费Binlog的方式也不�
 | V2.0版本 | 8.0.5及以下版本 | 默认使用JDBC模式，需要为目标表创建Publication、为Publication创建Replication Slot后，再进行目标表的Binlog消费。 |
 | V1.3及以下版本 | 8.0.5及以下版本 | 默认使用Holohub模式，有表的读取权限即可消费Binlog。 |
 
-**说明**
-
-Hologres V2.0版本后不再支持Holohub模式消费Binlog，升级Hologres实例到 V2.0及以上版本之前，建议先升级Flink版本至8.0.5，此后消费Binlog会自动使用 JDBC模式。
+> **说明：** Hologres V2.0版本后不再支持Holohub模式消费Binlog，升级Hologres实例到 V2.0及以上版本之前，建议先升级Flink版本至8.0.5，此后消费Binlog会自动使用 JDBC模式。
 
 **准备工作：创建Publication和Replication Slot**
 
@@ -13320,7 +14138,7 @@ Hologres V2.0版本前，需要先为目标表创建Publication、为Publication
 CREATE PUBLICATION name FOR TABLE table_name;
 ```
 
-参数说明实时数仓 Hologres
+参数说明
 
 | 参数 | 说明 |
 |---|---|
@@ -13371,6 +14189,7 @@ select * from pg_publication_tables;
 查询结果
 
 ```
+        pubname        | schemaname |    tablename
 -----------------------+------------+------------------
  hg_publication_test_1 | public     | test_message_src
 (1 row)
@@ -13396,8 +14215,6 @@ DROP PUBLICATION name;
 ```
 DROP PUBLICATION hg_publication_test_1;
 ```
-
-实时数仓 Hologres
 
 **Replication Slot**
 
@@ -13482,8 +14299,6 @@ select hg_get_logical_replication_slot_parallelism('hg_replication_slot_1');
 hg_get_logical_replication_slot_parallelism ------------------------------------------------
 ```
 
-实时数仓 Hologres
-
 **查询Replication Slot的消费进度（Hologres侧记录的Binlog消费进度）**
 
 语法示例
@@ -13509,9 +14324,9 @@ select * from hologres.hg_replication_progress;
 | parallelindex _ | 并发序号。 |
 | lsn | 当前消费到最后的Binlog序号。 |
 
-**重要**
-
-表hologres.hg_replication_progress在第一次消费Binlog后才会创建。 表hologres.hg_replication_progress实际记录的是用户主动commit的消费位点，需要用户在代码中手动调用commit lsn相关函数来提交Binlog点位信息。 由于该表实际记录的内容完全取决于用户最后一次commit，因此该值并不能完全真实正确地反映用户侧实际的消费位点。因此，建议在消费端自行记录lsn， 并将其作为消费终止时的恢复位点。下述JDBC消费Binlog与Holo-client消费Binlog的示例代码中，均不包含commit lsn的相关代码。 手动Commit Binlog点位信息，仅当使用replication slot消费Binlog时有效。当通过table name消费Binlog时，表hologres.hg_replication_progress中不会记录和保留该点位结果。
+> **重要：** 表hologres.hg_replication_progress在第一次消费Binlog后才会创建。
+> 表hologres.hg_replication_progress实际记录的是用户主动commit的消费位点，需要用户在代码中手动调用commit lsn相关函数来提交Binlog点位信息。 由于该表实际记录的内容完全取决于用户最后一次commit，因此该值并不能完全真实正确地反映用户侧实际的消费位点。因此，建议在消费端自行记录lsn， 并将其作为消费终止时的恢复位点。下述JDBC消费Binlog与Holo-client消费Binlog的示例代码中，均不包含commit lsn的相关代码。
+> 手动Commit Binlog点位信息，仅当使用replication slot消费Binlog时有效。当通过table name消费Binlog时，表hologres.hg_replication_progress中不会记录和保留该点位结果。
 
 **删除Replication Slot**
 
@@ -13533,9 +14348,7 @@ call hg_drop_logical_replication_slot('hg_replication_slot_1');
 1. 添加POM依赖
 使用如下语句添加POM依赖。
 
-**说明**
-
-添加POM依赖，请使用42.2.18及以上版本的JDBC。
+> **说明：** 添加POM依赖，请使用42.2.18及以上版本的JDBC。
 
 ```xml
         <dependency>
@@ -13543,6 +14356,11 @@ call hg_drop_logical_replication_slot('hg_replication_slot_1');
             <artifactId>postgresql</artifactId>
             <version>42.3.8</version>
         </dependency>
+```
+
+<!-- 用于获取表`schema`以及解析`binlog -->`
+
+```xml
         <dependency>
             <groupId>com.alibaba.hologres</groupId>
             <artifactId>holo-client</artifactId>
@@ -13551,7 +14369,6 @@ call hg_drop_logical_replication_slot('hg_replication_slot_1');
 ```
 
 2. Java代码示例
-实时数仓 Hologres
 
 ```java
 import com.alibaba.hologres.client.HoloClient; import com.alibaba.hologres.client.HoloConfig; import com.alibaba.hologres.client.impl.binlog.HoloBinlogDecoder; import com.alibaba.hologres.client.model.Record; import com.alibaba.hologres.client.model.TableSchema; import org.postgresql.PGConnection; import org.postgresql.PGProperty; import org.postgresql.replication.LogSequenceNumber; import org.postgresql.replication.PGReplicationStream; import java.nio.ByteBuffer; import java.sql.Connection; import java.sql.DriverManager; import java.util.Arrays; import java.util.List; import java.util.Properties; public class Test {
@@ -13583,6 +14400,7 @@ import com.alibaba.hologres.client.HoloClient; import com.alibaba.hologres.clien
             int shardId = 0;
             PGConnection pgConnection = connection.unwrap(PGConnection.class);
             PGReplicationStream pgReplicationStream = pgConnection.getReplicationAPI().replicationStream()
+                    .logical()
                     .withSlotName("slot_name")
                     .withSlotOption("table_name","public.test_messsage_src") // 消费的表名
                     .withSlotOption("parallel_index", shardId)
@@ -13628,24 +14446,29 @@ import com.alibaba.hologres.client.HoloClient; import com.alibaba.hologres.clien
                         latestLsn = record.getBinlogLsn();
                         // Do Something
                         System.out.println( "lsn: " + latestLsn + ", record: " + Arrays.toString(record.getValues()));
-                    }
 ```
 
-`//` 保存消费位点
+`}` `//` 保存消费位点
 
 ```
                     currentLsn = latestLsn;
                     pgReplicationStream.forceUpdateStatus();
-                }
-                byteBuffer = pgReplicationStream.readPending();
-            }
-        }
-        // pgReplicationStream.close();
-        // connection.close();
-    }
 ```
 
-创建PGReplicationStream时，需要通过withSlotName指定已创建的Replication Slot名称，withSlotOption可以指定如下参数。 实时数仓 Hologres
+`}`
+
+```
+                byteBuffer = pgReplicationStream.readPending();
+```
+
+`}` `}`
+
+```
+        // pgReplicationStream.close();
+        // connection.close();
+```
+
+`}` 创建PGReplicationStream时，需要通过withSlotName指定已创建的Replication Slot名称，withSlotOption可以指定如下参数。
 
 | 参数 | 是否必须 | 说明 |
 |---|---|---|
@@ -13655,9 +14478,11 @@ import com.alibaba.hologres.client.HoloClient; import com.alibaba.hologres.clien
 | startlsn _ | 否 | 表示从某个lsn之后开始消费Binlog，同时设置优先级高于start _time。 |
 | batchsize _ | 否 | 单次获取的Binlog最大批大小，单位为行，默认值为1024。 |
 
-**说明**
-
-BinlogRecord 是decoder返回的Record类型，可以通过以下接口获取这条数据对应的binlog系统字段，详情见订阅Hologres Binlog。 getBinlogLsn() 获取binlog的序号。 getBinlogTimestamp() 获取Binlog的系统时间戳。 getBinlogEventType() 获取Binlog的事件类型。 消费Binlog之后，用户需要手动Commit点位信息，确保下次Failover能够恢复。
+> **说明：** BinlogRecord 是decoder返回的Record类型，可以通过以下接口获取这条数据对应的binlog系统字段，详情见订阅Hologres Binlog。
+> getBinlogLsn() 获取binlog的序号。
+> getBinlogTimestamp() 获取Binlog的系统时间戳。
+> getBinlogEventType() 获取Binlog的事件类型。
+> 消费Binlog之后，用户需要手动Commit点位信息，确保下次Failover能够恢复。
 
 **使用Holo Client消费Binlog**
 
@@ -13665,9 +14490,7 @@ BinlogRecord 是decoder返回的Record类型，可以通过以下接口获取这
 1. 添加POM依赖
 使用如下语句添加POM依赖。
 
-**说明**
-
-添加POM依赖，推荐使用2.2.10及以上版本的Holo Client，2.2.9及之前的版本存在内存泄露的问题。
+> **说明：** 添加POM依赖，推荐使用2.2.10及以上版本的Holo Client，2.2.9及之前的版本存在内存泄露的问题。
 
 ```xml
 <dependency>
@@ -13679,12 +14502,10 @@ BinlogRecord 是decoder返回的Record类型，可以通过以下接口获取这
 
 2. Java代码示例
 
-|  | import com.alibaba.hologres.client.BinlogShardGroupReader; import com.alibaba.hologres.client.Command; import com.alibaba.hologres.client.HoloClient; import com.alibaba.hologres.client.HoloConfig; import com.alibaba.hologres.client.Subscribe; import com.alibaba.hologres.client.exception.HoloClientException; import com.alibaba.hologres.client.impl.binlog.BinlogOffset; import com.alibaba.hologres.client.model.binlog.BinlogHeartBeatRecord; import com.alibaba.hologres.client.model.binlog.BinlogRecord; import java.util.HashMap; import java.util.Map; public class HoloBinlogExample { public static BinlogShardGroupReader reader; public static void main(String[] args) throws Exception { String username = ""; String password = ""; String url = "jdbc:postgresql://ip:port/database"; String tableName = "test_message_src"; String slotName = "hg_replication_slot_1"; |
+|   | import com.alibaba.hologres.client.BinlogShardGroupReader; import com.alibaba.hologres.client.Command; import com.alibaba.hologres.client.HoloClient; import com.alibaba.hologres.client.HoloConfig; import com.alibaba.hologres.client.Subscribe; import com.alibaba.hologres.client.exception.HoloClientException; import com.alibaba.hologres.client.impl.binlog.BinlogOffset; import com.alibaba.hologres.client.model.binlog.BinlogHeartBeatRecord; import com.alibaba.hologres.client.model.binlog.BinlogRecord; import java.util.HashMap; import java.util.Map; public class HoloBinlogExample { public static BinlogShardGroupReader reader; public static void main(String[] args) throws Exception { String username = ""; String password = ""; String url = "jdbc:postgresql://ip:port/database"; String tableName = "test_message_src"; String slotName = "hg_replication_slot_1"; |
 |---|---|
 
-实时数仓 Hologres
-
-|  | // 创建client的参数 HoloConfig holoConfig = new HoloConfig(); holoConfig.setJdbcUrl(url); holoConfig.setUsername(username); holoConfig.setPassword(password); holoConfig.setBinlogReadBatchSize(128); holoConfig.setBinlogIgnoreDelete(true); holoConfig.setBinlogIgnoreBeforeUpdate(true); holoConfig.setBinlogHeartBeatIntervalMs(5000L); HoloClient client = new HoloClient(holoConfig); // 获取表的shard数 int shardCount = Command.getShardCount(client, client.getTableSchema(tableName)); // 使用map保存每个shard的消费进度, 初始化为0 Map<Integer, Long> shardIdToLsn = new HashMap<>(shardCount); for (int i = 0; i < shardCount; i++) { shardIdToLsn.put(i, 0L); } // 消费binlog的请求，tableName和slotname为必要参数 Subscribe subscribe = Subscribe.newStartTimeBuilder(tableName, slotName) .setBinlogReadStartTime("2021-01-01 12:00:00") .build(); // 创建binlog reader reader = client.binlogSubscribe(subscribe); BinlogRecord record; int retryCount = 0; long count = 0; while(true) { try { if (reader.isCanceled()) { // 根据保存的消费点位重新创建reader reader = client.binlogSubscribe(subscribe); } while ((record = reader.getBinlogRecord()) != null) { // 消费到最新 if (record instanceof BinlogHeartBeatRecord) { // do something continue; } // 处理读取到的binlog record，这里只做打印 System.out.println(record); // 处理之后保存消费点位，异常时可以从此点位恢复 shardIdToLsn.put(record.getShardId(), record.getBinlogLsn()); count++; // 读取成功，重置重试次数 retryCount = 0; } } catch (HoloClientException e) { if (++retryCount > 10) { throw new RuntimeException(e); } // 发生异常时推荐打印warn级别日志 System.out.println(String.format("binlog read failed because %s and retry %s times", e.getMessage(), retryCount)); // 重试期间进行一定时间的等待 Thread.sleep(5000L * retryCount); // 用OffsetBuilder创建Subscribe，从而为每个shard指定起始消费点位 Subscribe.OffsetBuilder subscribeBuilder = Subscribe.newOffsetBuilder(tableName, slotName); for (int i = 0; i < shardCount; i++) { // BinlogOffset通过setSequence指定lsn，通过setTimestamp指定时间，两者同时指定lsn优先级大于时间戳 // 这里根据shardIdToLsn这个Map中保存的消费进度进行恢复 subscribeBuilder.addShardStartOffset(i, new BinlogOffset().setSequence(shardIdToLsn.get(i))); } subscribe = subscribeBuilder.build(); // 关闭reader reader.cancel(); } } } } |
+|   | // 创建client的参数 HoloConfig holoConfig = new HoloConfig(); holoConfig.setJdbcUrl(url); holoConfig.setUsername(username); holoConfig.setPassword(password); holoConfig.setBinlogReadBatchSize(128); holoConfig.setBinlogIgnoreDelete(true); holoConfig.setBinlogIgnoreBeforeUpdate(true); holoConfig.setBinlogHeartBeatIntervalMs(5000L); HoloClient client = new HoloClient(holoConfig); // 获取表的shard数 int shardCount = Command.getShardCount(client, client.getTableSchema(tableName)); // 使用map保存每个shard的消费进度, 初始化为0 Map<Integer, Long> shardIdToLsn = new HashMap<>(shardCount); for (int i = 0; i < shardCount; i++) { shardIdToLsn.put(i, 0L); } // 消费binlog的请求，tableName和slotname为必要参数 Subscribe subscribe = Subscribe.newStartTimeBuilder(tableName, slotName) .setBinlogReadStartTime("2021-01-01 12:00:00") .build(); // 创建binlog reader reader = client.binlogSubscribe(subscribe); BinlogRecord record; int retryCount = 0; long count = 0; while(true) { try { if (reader.isCanceled()) { // 根据保存的消费点位重新创建reader reader = client.binlogSubscribe(subscribe); } while ((record = reader.getBinlogRecord()) != null) { // 消费到最新 if (record instanceof BinlogHeartBeatRecord) { // do something continue; } // 处理读取到的binlog record，这里只做打印 System.out.println(record); // 处理之后保存消费点位，异常时可以从此点位恢复 shardIdToLsn.put(record.getShardId(), record.getBinlogLsn()); count++; // 读取成功，重置重试次数 retryCount = 0; } } catch (HoloClientException e) { if (++retryCount > 10) { throw new RuntimeException(e); } // 发生异常时推荐打印warn级别日志 System.out.println(String.format("binlog read failed because %s and retry %s times", e.getMessage(), retryCount)); // 重试期间进行一定时间的等待 Thread.sleep(5000L * retryCount); // 用OffsetBuilder创建Subscribe，从而为每个shard指定起始消费点位 Subscribe.OffsetBuilder subscribeBuilder = Subscribe.newOffsetBuilder(tableName, slotName); for (int i = 0; i < shardCount; i++) { // BinlogOffset通过setSequence指定lsn，通过setTimestamp指定时间，两者同时指定lsn优先级大于时间戳 // 这里根据shardIdToLsn这个Map中保存的消费进度进行恢复 subscribeBuilder.addShardStartOffset(i, new BinlogOffset().setSequence(shardIdToLsn.get(i))); } subscribe = subscribeBuilder.build(); // 关闭reader reader.cancel(); } } } } |
 |---|---|
 
 使用Holo Client消费Binlog时可以指定如下参数。
@@ -13692,8 +14513,6 @@ BinlogRecord 是decoder返回的Record类型，可以通过以下接口获取这
 | 参数 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|
 | binlogReadBatchSize | 否 | 1024 | 从每个Shard单次获取的Binlog最大批次大小，单位为行。 |
-
-实时数仓 Hologres
 
 | binlogHeartBeatIntervalMs | 否 | -1 | binlogRead发送BinlogHeartBeatRecord的间隔， -1 表示不发送。 当Binlog没有新数据，每间隔binlogHeartBeatIntervalMs会下发一条BinlogHeartBeatRecord，此 record的timestamp表示截止到这个时间这个Shard上的数据都已经消费完成。 |
 |---|---|---|---|
@@ -13704,7 +14523,7 @@ BinlogRecord 是decoder返回的Record类型，可以通过以下接口获取这
 
 消费Binlog并提交消费进度后，发现表hologres.hg_replication_progress不存在，或表中没有消费进度数据，可能原因如下： 消费时不通过Replication Slot进行，即不指定参数withSlotName，该场景不支持记录消费进度。 使用了只读从实例，且该DB是第一次被消费Binlog，此时hologres.hg_replication_progress表创建失败。Hologres V2.0.18版本起已修复，从实例可以正常消费 Binlog。Hologres V2.0.18版本前，需要使用主实例先消费一次Binlog，从实例即可正常消费。 如果不是上述原因，请联系Hologres技术支持处理。
 
-#### 1.8.5. 实时物化视图（Beta）
+#### 1.8.5 实时物化视图（Beta）
 
 实时物化视图将对明细表的数据进行预先聚合，存储为物化视图，通过查询物化视图，减少计算量，显著提升查询性能。本文为您介绍在Hologres中如何使用物化视图。
 
@@ -13724,28 +14543,33 @@ date_trunc('hour', ts) 。
 
 每张明细表最多创建10个物化视图，物化视图数量和资源消耗成正比。 如果基于分区表创建物化视图，物化视图的GROUP BY Key必须包含分区表的分区列，且不能对分区表的子表创建物化视图，只能针对分区表父表创建。
 
-| ATTACH PARTITION |  |  |
+| ATTACH PARTITION |   |   |
 |---|---|---|
 | 持 | DROP COLUMN | 。 |
 
-物化视图的底层数据与明细表的TTL一致，不可以手动设置物化视图的TTL，否则会出现物化视图数据和明细表数据不一致的情况。
+对于创建了物化视图的明细表，暂不支持 `DROP COLUMN` 。 物化视图的底层数据与明细表的TTL一致，不可以手动设置物化视图的TTL，否则会出现物化视图数据和明细表数据不一致的情况。
 
 **支持的聚合函数**
 
-物化视图当前支持如下聚合函数。 SUM AVG MIN MAX RB_BUILD_CARDINALITY_AGG（只支持BIGINT，需创建Extension roaringbitmap）
+物化视图当前支持如下聚合函数。 SUM COUNT AVG MIN MAX RB_BUILD_CARDINALITY_AGG（只支持BIGINT，需创建Extension roaringbitmap）
 
 **SQL示例**
 
-创建实时物化视图实时数仓 Hologres
+创建实时物化视图
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE base_sales(
   day text not null,
   hour int ,
   ts timestamptz,
   amount float,
   pk text not null primary key
-); CALL SET_TABLE_PROPERTY('base_sales', 'mutate_type', 'appendonly');
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('base_sales', 'mutate_type', 'appendonly');
 ```
 
 `--`当实时物化视图被`Drop`后，可以取消明细表的`appendonly`属性，执行以下命令
@@ -13760,12 +14584,15 @@ BEGIN;
 COMMIT; insert into base_sales values(to_char(now(),'YYYYMMDD'),'12',now(),100,'pk1'); insert into base_sales values(to_char(now(),'YYYYMMDD'),'12',now(),200,'pk2'); insert into base_sales values(to_char(now(),'YYYYMMDD'),'12',now(),300,'pk3');
 ```
 
-**说明**
+> **说明：** `mutate_type` ：表示该表的数据变更类型。
+> `appendonly` ：设置为仅追加模式。
+> 在启用 `appendonly` 模式的前提下，Hologres 支持对该表进行高效写入（适用于日志、事件流等仅追加、不可变的场景），这也是创建实时增量刷新物化视图的必要条件。
+> 实时物化视图依赖 WAL（Write-Ahead Logging）捕获数据变更。当表启用 `appendonly` 模式时，Hologres 会自动开启 WAL 写入功能，使物化视图能够监听新增数据并触发自动增量刷新。
 
-`mutate_type` ：表示该表的数据变更类型。 `appendonly` ：设置为仅追加模式。 在启用 `appendonly` 模式的前提下，Hologres 支持对该表进行高效写入（适用于日志、事件流等仅追加、不可变的场景），这也是创建实时增量刷新物化视图的必要条件。 实时物化视图依赖 WAL（Write-Ahead Logging）捕获数据变更。当表启用 `appendonly` 模式时，Hologres 会自动开启 WAL 写入功能，使物化视图能够监听新增数据并触发自动增量刷新。 分区表创建物化视图
+分区表创建物化视图
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE base_sales_p(
   day text not null,
   hour int,
   ts timestamptz,
@@ -13813,17 +14640,22 @@ SELECT schemaname || '.' || matviewname AS mv_full_name, pg_size_pretty(pg_relat
 
 **使用物化视图提升精确UV计算性能**
 
-精确UV计算是计算复杂度非常高的算子，通常是系统的性能瓶颈部分。Hologres支持 `RB_BUILD_CARDINALITY_AGG` 聚合函数，通过利用RoaringBitmap数据结构，可以对BIGINT类数据（通常是表示业务ID字段）进行物化视图预聚合，实现UV统计实时去重，可按照如下方式创建物化视图，当前仅支持BIGINT类字段的聚合去重。 实时数仓 Hologres `--UV`计算依赖`RoaringBitmap`数据类型，需要提前创建`RoaringBitmap extension`
+精确UV计算是计算复杂度非常高的算子，通常是系统的性能瓶颈部分。Hologres支持 `RB_BUILD_CARDINALITY_AGG` 聚合函数，通过利用RoaringBitmap数据结构，可以对BIGINT类数据（通常是表示业务ID字段）进行物化视图预聚合，实现UV统计实时去重，可按照如下方式创建物化视图，当前仅支持BIGINT类字段的聚合去重。 `--UV`计算依赖`RoaringBitmap`数据类型，需要提前创建`RoaringBitmap extension`
 
 ```
-CREATE EXTENSION if not exists roaringbitmap; BEGIN;
+CREATE EXTENSION if not exists roaringbitmap; BEGIN; CREATE TABLE base_sales_r(
   day text not null,
   hour int ,
   ts timestamptz,
   amount float,
   userid bigint,
   pk text not null primary key
-); CALL SET_TABLE_PROPERTY('base_sales_r', 'mutate_type', 'appendonly'); CREATE MATERIALIZED VIEW mv_sales_r AS
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('base_sales_r', 'mutate_type', 'appendonly'); CREATE MATERIALIZED VIEW mv_sales_r AS
     day,
     hour,
     avg(amount) AS amount_avg,
@@ -13837,7 +14669,7 @@ COMMIT; insert into base_sales_r values(to_char(now(),'YYYYMMDD'),'12',now(),100
 
 **使用物化视图支持多维度聚合查询**
 
-| 假设定义了上述的 mv_sales 物化视图，且明细表 base_sales 中当前含有以下明细数据。 |  |  |  |
+| 假设定义了上述的 mv_sales 物化视图，且明细表 base_sales 中当前含有以下明细数据。 |   |   |   |
 |---|---|---|---|
 | Day | Hour | Amount | PK |
 | 20210101 | 12 | 2 | pk1 |
@@ -13846,7 +14678,7 @@ COMMIT; insert into base_sales_r values(to_char(now(),'YYYYMMDD'),'12',now(),100
 
 | 直接查询 | sales_mv | 将会有如下结果。 |
 |---|---|---|
-| postgres=> select * from mv_sales; day \| hour \| amount_avg -----------+---------+-------------- 20210101 \| 12 \| 3 20210101 \| 13 \| 6 |  |  |
+| postgres=> select * from mv_sales; day \| hour \| amount_avg -----------+---------+-------------- 20210101 \| 12 \| 3 20210101 \| 13 \| 6 |   |   |
 
 这时如果想更改查询物化视图的聚合维度，例如使用维度**day**进行avg聚合计算，则得到的会是一个错误的结果，因为avg的avg不等于total的avg。
 
@@ -13860,13 +14692,18 @@ postgres=> select day, avg(amount_avg) from mv_sales group by day;
 这时候一种办法是再建一张以day为维度进行聚合的物化视图，但这样会导致物化视图的数量膨胀，Hologres提供了一种基于聚合中间状态的实现，使得用户仅用一张物化视图，实现不同维度聚合查询。这里以Avg为例，修改聚合视图的定义如下。
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE base_sales(
   day text not null,
   hour int ,
   ts timestamptz,
   amount float,
   pk text not null primary key
-); CALL SET_TABLE_PROPERTY('base_sales', 'mutate_type', 'appendonly'); CREATE MATERIALIZED VIEW mv_sales_partial AS
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('base_sales', 'mutate_type', 'appendonly'); CREATE MATERIALIZED VIEW mv_sales_partial AS
     day,
     hour,
     avg(amount) as avg,
@@ -13876,7 +14713,7 @@ BEGIN;
 COMMIT;
 ```
 
-实时数仓 Hologres 原先的avg聚合函数重新定义为avg_partial聚合函数，amount_avg_partial列存储的是聚合结果的中间状态，查询时需要修改查询函数，将avg聚合函数改写为avg_final 最终聚合函数，声明是对聚合结果中间状态的最终聚合。
+原先的avg聚合函数重新定义为avg_partial聚合函数，amount_avg_partial列存储的是聚合结果的中间状态，查询时需要修改查询函数，将avg聚合函数改写为avg_final 最终聚合函数，声明是对聚合结果中间状态的最终聚合。
 
 ```
 postgres=> select day, avg(avg) as avg_avg, avg_final(amt_avg_partial) as real_avg from mv_sales_partial group by day;
@@ -13898,7 +14735,7 @@ postgres=> select day, avg(avg) as avg_avg, avg_final(amt_avg_partial) as real_a
 
 | 为 | base_sales_table | 设置了TTL，如果数据由于TTL到期被回收掉，那么此时查询明细表的结果如下所示。 |
 |---|---|---|
-| postgres=> SELECT day, hour, avg(amount) AS amount_avg FROM base_sales GROUP BY day, hour; --查询结果 day \| hour \| amount_avg -----------+---------+-------------- 20210101 \| 12 \| 4 20210101 \| 13 \| 6 |  |  |
+| postgres=> SELECT day, hour, avg(amount) AS amount_avg FROM base_sales GROUP BY day, hour; --查询结果 day \| hour \| amount_avg -----------+---------+-------------- 20210101 \| 12 \| 4 20210101 \| 13 \| 6 |   |   |
 
 但是由于被回收的数据，已经物化到了物化视图的数据中，所以查询物化视图时有可能得到的结果如下。
 
@@ -13925,13 +14762,15 @@ postgres=> select * from mv_sales;
 
 查询时不需要显式指定物化视图表名称，可以像之前一样基于基础表进行查询。如果有匹配的物化视图表，优化器会智能路由到最佳的物化视图表来加速查询。在查询时，物化视图表的选择规则如下： 选择包含所有查询列或可以通过间接计算得到的物化视图表。 选择包含原始查询GROUP BY所有列的物化视图表。 当有多个物化视图表符合条件时，选择GROUP BY列字段少的物化视图表。 当前支持智能路由的聚合函数有SUM、COUNT、AVG、MIN和MAX。
 
-#### 1.8.6. 列式JSONB
+#### 1.8.6 列式JSONB
 
-为了提升JSONB数据的查询效率，Hologres从 V1.3版本开始支持对于JSONB类型开启列式存储优化，能够降低JSONB数据的存储大小并加速查询。本文将会为您介绍如下图所示开启JSONB列式存储优化后，系统会在底层自动将JSONB的列转换为强Schema的列式存储，查询JSONB中某一个Value时就可以直接命中指定列，从而提升查询性能。同时因为JSONB中的Value是按列式存储的，在存储层可以达到像普通结构化数据一样的存储和压缩效率，从而有效降低存储，实现降本增效。
+为了提升JSONB数据的查询效率，Hologres从 V1.3版本开始支持对于JSONB类型开启列式存储优化，能够降低JSONB数据的存储大小并加速查询。本文将会为您介绍 Hologres中列式JSONB的使用。
 
-**说明**
+**列式JSONB原理介绍**
 
-JSONB列式存储优化功能对JSON类型数据不适用，实际使用过程中请不要对JSON类型开启列式存储优化。 实时数仓 Hologres
+如下图所示开启JSONB列式存储优化后，系统会在底层自动将JSONB的列转换为强Schema的列式存储，查询JSONB中某一个Value时就可以直接命中指定列，从而提升查询性能。同时因为JSONB中的Value是按列式存储的，在存储层可以达到像普通结构化数据一样的存储和压缩效率，从而有效降低存储，实现降本增效。
+
+> **说明：** JSONB列式存储优化功能对JSON类型数据不适用，实际使用过程中请不要对JSON类型开启列式存储优化。
 
 **使用限制**
 
@@ -13942,49 +14781,58 @@ JSONB列式存储优化功能对JSON类型数据不适用，实际使用过程�
 | -> | text | 通过键获得JSON对象域。 | 操作示例： select '{"a": {"b":"foo"}}'::json->'a' 返回结果： {"b":"foo"} |
 | ->> | text | 以TEXT形式获得JSON对象域。 | 操作示例： select '{"a":1,"b":2}'::json->>'b' 返回结果： 2 |
 
+**列式JSONB使用**
+
+**开启列式JSONB**
+
 通过以下语句对某张表的某个JSONB列打开JSONB列存优化。 `--` 打开`xx`表的`xx`列的`JSONB`列式存储优化
 
 ```
 ALTER TABLE <table_name> ALTER COLUMN <column_name> SET (enable_columnar_type = ON);
 ```
 
-**重要**
+**table_name**为表名称；**column_name**为列名称。
 
-打开JSONB列存优化后，系统在Compaction时将历史数据都转为列存，待Compaction完毕即完成历史数据的列存化。 Compaction会消耗系统资源（比如内存），建议该操作在业务低峰期操作。可以使用 vacuum table_name; 命令强制触发Compaction操作，待vacuum命令执行完毕，Compaction操作就执行完毕了。 Compaction完成后新写入的数据会按照列存存储。
+> **重要：** 打开JSONB列存优化后，系统在Compaction时将历史数据都转为列存，待Compaction完毕即完成历史数据的列存化。
+> Compaction会消耗系统资源（比如内存），建议该操作在业务低峰期操作。可以使用 vacuum table_name; 命令强制触发Compaction操作，待vacuum命令执行完毕，Compaction操作就执行完毕了。
+> Compaction完成后新写入的数据会按照列存存储。
 
 **开启Decimal类型推导**
 
-**重要**
+> **重要：** 开启Decimal类型推导前，请确保已开启JSONB列存优化。
 
-开启Decimal类型推导前，请确保已开启JSONB列存优化。 Hologres从 V2.0.11版本开始，支持将DECIMAL类型的数据进行列存优化。例如如下的JSON数据：
+Hologres从 V2.0.11版本开始，支持将DECIMAL类型的数据进行列存优化。例如如下的JSON数据： `{`
 
 ```json
-{
   "name":"Mike",
   "statistical_period":"2023-01-01 00:00:00+08",
   "balance":123.45
-}
 ```
 
-`balance` 的数据在开启Decimal推导后，也支持按照列存优化。开启方法如下： `--` 打开`xx`表的`xx`列的`Decimal`列存优化
+`}` `balance` 的数据在开启Decimal推导后，也支持按照列存优化。开启方法如下： `--` 打开`xx`表的`xx`列的`Decimal`列存优化
 
 ```
 ALTER TABLE <table_name> ALTER COLUMN <column_name> SET (enable_decimal = ON);
 ```
 
-实时数仓 Hologres Hologres V1.3.37及以上版本支持如下命令。
+**table_name**为表名称；**column_name**为列名称。
 
-**说明**
+**查看某张表的列式JSONB开启情况**
 
-该命令在Hologres V2.0.17及以下版本只支持看 `public` Schema下的表，从2.0.18版本开始支持查看其他Schema下的表开启情况。 `--2.0.17`及以下版本仅支持查看`public schma`的表，`2.0.18`版本可以查询其他`schema`的表
+通过以下语句查看某张表的列式JSONB开启情况。 Hologres V1.3.37及以上版本支持如下命令。
+
+> **说明：** 该命令在Hologres V2.0.17及以下版本只支持看 `public` Schema下的表，从2.0.18版本开始支持查看其他Schema下的表开启情况。
+
+`--2.0.17`及以下版本仅支持查看`public schma`的表，`2.0.18`版本可以查询其他`schema`的表
 
 ```
 select * from hologres.hg_column_options where table_name = '<schema.table_name>';
 ```
 
-Hologres V1.3.10~V1.1.36版本使用如下命令。
+其中**table_name**为表名称。 Hologres V1.3.10~V1.1.36版本使用如下命令。
 
 ```
+SELECT DISTINCT
     a.attnum as num,
     a.attname as name,
     format_type(a.atttypid, a.atttypmod) as type,
@@ -13999,18 +14847,24 @@ LEFT JOIN pg_description com on
     (pgc.oid = com.objoid AND a.attnum = com.objsubid)
 LEFT JOIN pg_attrdef def ON
     (a.attrelid = def.adrelid AND a.attnum = def.adnum)
-WHERE a.attnum > 0 AND pgc.oid = a.attrelid AND NOT a.attisdropped ORDER BY a.attnum;
+WHERE a.attnum > 0 AND pgc.oid = a.attrelid AND pg_table_is_visible(pgc.oid) AND NOT a.attisdropped AND pgc.relname = '<table_name>' ORDER BY a.attnum;
 ```
 
-示例返回结果。 返回结果可以看到某个列的**attoptions**或**option**属性为 `enable_columnar_type = ON` ，则表示已经配置成功。 通过以下命令关闭某张表的某个列的JSONB列存优化。 `--` 关闭`xx`表的`xx`列的`JSONB`列式存储优化
+其中**table_name**为表名称。 示例返回结果。 返回结果可以看到某个列的**attoptions**或**option**属性为 `enable_columnar_type = ON` ，则表示已经配置成功。
+
+**关闭列式JSONB**
+
+通过以下命令关闭某张表的某个列的JSONB列存优化。 `--` 关闭`xx`表的`xx`列的`JSONB`列式存储优化
 
 ```
 ALTER TABLE <table_name> ALTER COLUMN <column_name> SET (enable_columnar_type = OFF);
 ```
 
-**重要**
+**table_name**为表名称；**column_name**为列名称。
 
-关闭JSONB列存优化后，系统在Compaction时将历史数据都转为标准的JSONB存储方式，待Compaction完毕即完成历史数据的转换。 Compaction会消耗系统资源（比如内存），建议在业务低峰期进行该操作。可以使用 vacuum table_name; 命令强制触发Compaction操作，待vacuum命令执行完毕，Compaction操作就执行完毕了。 Compaction完成后，新写入的数据会按照JSONB格式存储。
+> **重要：** 关闭JSONB列存优化后，系统在Compaction时将历史数据都转为标准的JSONB存储方式，待Compaction完毕即完成历史数据的转换。
+> Compaction会消耗系统资源（比如内存），建议在业务低峰期进行该操作。可以使用 vacuum table_name; 命令强制触发Compaction操作，待vacuum命令执行完毕，Compaction操作就执行完毕了。
+> Compaction完成后，新写入的数据会按照JSONB格式存储。
 
 **关闭Decimal类型推导**
 
@@ -14020,13 +14874,13 @@ ALTER TABLE <table_name> ALTER COLUMN <column_name> SET (enable_columnar_type = 
 ALTER TABLE <table_name> ALTER COLUMN <column_name> SET (enable_decimal = OFF);
 ```
 
-**说明**
+**table_name**为表名称；**column_name**为列名称。
 
-Decimal类型推导关闭后，会立刻触发Compaction，将原来已经列存优化后的Decimal类型的数据转换为原有模式。
+> **说明：** Decimal类型推导关闭后，会立刻触发Compaction，将原来已经列存优化后的Decimal类型的数据转换为原有模式。
 
 **设置Bitmap索引**
 
-在Hologres中， `bitmap_columns` 属性指定位图索引，是数据存储之外的独立索引结构，以位图向量结构加速等值比较场景，能够对文件块内的数据进行快速的等值过滤， 适用于等值过滤查询的场景。Hologres从V2.0版本开始支持对开启了列存的JSONB设置Bitmap索引。开启列存JSONB后，系统会解析出int、int[]、bigint、bigint[]、 text、text[]、jsonb这7种数据类型。开启Bitmap索引后，系统会对推导成int、int[]、bigint、bigint[]、text、text[]类型的数据建立Bitmap索引。 使用语法如下： 实时数仓 Hologres
+在Hologres中， `bitmap_columns` 属性指定位图索引，是数据存储之外的独立索引结构，以位图向量结构加速等值比较场景，能够对文件块内的数据进行快速的等值过滤， 适用于等值过滤查询的场景。Hologres从V2.0版本开始支持对开启了列存的JSONB设置Bitmap索引。开启列存JSONB后，系统会解析出int、int[]、bigint、bigint[]、 text、text[]、jsonb这7种数据类型。开启Bitmap索引后，系统会对推导成int、int[]、bigint、bigint[]、text、text[]类型的数据建立Bitmap索引。 使用语法如下：
 
 ```
 call set_table_property('<table_name>', 'bitmap_columns', '[<columnName>{:[on|off]}[,...]]');
@@ -14052,15 +14906,20 @@ DROP TABLE IF EXISTS user_tags;
 `--` 创建数据表
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE IF NOT EXISTS user_tags (
     ds timestamptz,
     tags jsonb
-); COMMIT;
+```
+
+);
+
+```
+COMMIT;
 ```
 
 | 打开 | tags | 列的JSONB列存优化。 |
 |---|---|---|
-| ALTER TABLE user_tags ALTER COLUMN tags SET (enable_columnar_type = ON); |  |  |
+| ALTER TABLE user_tags ALTER COLUMN tags SET (enable_columnar_type = ON); |   |   |
 
 3. 查看JSONB列式存储开启情况。
 
@@ -14081,6 +14940,7 @@ select * from hologres.hg_column_options where table_name = 'user_tags';
 4. 导入数据。
 
 ```
+INSERT INTO user_tags (ds, tags)
     '2022-01-01 00:00:00+08'
     , ('{"id":' || i || ',"first_name" :"Sig",  "gender" :"Male"}')::jsonb
 FROM
@@ -14098,34 +14958,38 @@ VACUUM user_tags;
 
 | 使用如下SQL查询 | id | 为 | 10 | 的 | first_name | 。 |
 |---|---|---|---|---|---|---|
-| SELECT (tags -> 'first_name')::text AS first_name FROM user_tags WHERE (tags -> 'id')::int = 10; |  |  |  |  |  |  |
+| SELECT (tags -> 'first_name')::text AS first_name FROM user_tags WHERE (tags -> 'id')::int = 10; |   |   |   |   |   |   |
 
 7. 通过执行计划检查列存优化是否使用。
-实时数仓 Hologres
 
-| -- 显示详细的统计信息 SET hg_experimental_show_execution_statistics_in_explain = ON; -- 查看执行计划 EXPLAIN ANALYZE SELECT (tags -> 'first_name')::text AS first_name FROM user_tags WHERE (tags -> 'id')::int = 10; |  |  |
+| -- 显示详细的统计信息 SET hg_experimental_show_execution_statistics_in_explain = ON; -- 查看执行计划 EXPLAIN ANALYZE SELECT (tags -> 'first_name')::text AS first_name FROM user_tags WHERE (tags -> 'id')::int = 10; |   |   |
 |---|---|---|
 | 结果中有 | columnar_access_used | ，表示JSONB使用了列存优化。 |
 
 | 针对步骤6中的查询，还可以对 | tags | 设置Bitmap索引，以提升针对某个key等值查询的效率，设置方法如下。 |
 |---|---|---|
-| call set_table_property('user_tags', 'bitmap_columns', 'tags'); |  |  |
+| call set_table_property('user_tags', 'bitmap_columns', 'tags'); |   |   |
 
 9. 通过执行计划检查Bitmap索引是否生效。
 `--` 查看执行计划
 
 ```
+EXPLAIN ANALYZE
     (tags -> 'first_name')::text AS first_name
 FROM
     user_tags
 WHERE (tags -> 'id')::int = 10;
 ```
 
-返回结果如下： 结果中有 `bitmap_used` ，表示使用了Bitmap索引。 使用列式JSONB不仅会降低存储，还会显著提升查询效率。但是列式JSONB并不是所有场景都适用，以下场景不建议使用，否则会事倍功半。
+返回结果如下： 结果中有 `bitmap_used` ，表示使用了Bitmap索引。
+
+**列式JSONB不推荐的使用场景**
+
+使用列式JSONB不仅会降低存储，还会显著提升查询效率。但是列式JSONB并不是所有场景都适用，以下场景不建议使用，否则会事倍功半。
 
 **查询会带出完整JSONB列**
 
-Hologres的列式JSONB方案对于大部分使用场景都有比较好的优化效果，需要注意的是：对于查询结果需要带出完整JSONB列的场景，性能相较于直接存储原始格式的 JSONB会有降低，比如以下SQL： 实时数仓 Hologres `--`建表`DDL`
+Hologres的列式JSONB方案对于大部分使用场景都有比较好的优化效果，需要注意的是：对于查询结果需要带出完整JSONB列的场景，性能相较于直接存储原始格式的 JSONB会有降低，比如以下SQL： `--`建表`DDL`
 
 ```
 CREATE TABLE TBL(key int, json_data jsonb); SELECT json_data FROM TBL WHERE key = 123; SELECT * FROM TBL limit 10;
@@ -14149,12 +15013,14 @@ CREATE TABLE TBL(key int, json_data jsonb); SELECT json_data FROM TBL WHERE key 
 
 `]'`
 
+**列式JSONB最佳实践**
+
 **慢查询诊断**
 
 如果开启列式JSONB后，发现查询性能反而比不开启性能还要差很多，首先排查查询是否带出了完整JSONB列，如果SQL过于复杂，可以使用 `Explain Analyze` 方式来诊断，SQL命令示例如下：
 
 ```
-ALTER TABLE TBL ALTER COLUMN json_data SET (enable_columnar_type = on); Explain Analyze SELECT json_data FROM TBL WHERE key = 123;
+CREATE TABLE TBL(key int, json_data json); --建表DDL ALTER TABLE TBL ALTER COLUMN json_data SET (enable_columnar_type = on); Explain Analyze SELECT json_data FROM TBL WHERE key = 123;
 ```
 
 Explain Analyze的结果中会有Hint的信息，如果在Hint信息中有以下内容则代表查询带出了完整的JSONB列，导致了性能的退化：
@@ -14167,7 +15033,7 @@ Column 'json_data' has enabled columnar jsonb, but the query scanned the entire 
 
 | 将JSONB字段数据转成TEXT格式有不同的写法，但是使用 | ->> | 操作符的性能会更好，比如要获取json data列中的name属性： _ |
 |---|---|---|
-| --性能更好 SELECT json_data->>'name' FROM tbl; --性能一般 SELECT (json_data->'name')::text FROM tbl; |  |  |
+| --性能更好 SELECT json_data->>'name' FROM tbl; --性能一般 SELECT (json_data->'name')::text FROM tbl; |   |   |
 
 如果JSON的某个字段中存储的是TEXT数组，需要判断数组中是否包含特定值，建议使用以下写法：
 
@@ -14181,29 +15047,37 @@ SELECT key FROM tbl WHERE jsonb_to_textarray(json_data->'phones') && ARRAY['1234
 
 开启列式JSONB优化后，原JSONB数据中的字段名都不会再存储了，而只需存储每个字段对应的具体值，且列式化后每列的数据类型都是一样的，列式存储能有比较好的数据压缩率，理论上数据的存储空间会有明显的下降。 但如果JSONB数据中的字段比较稀疏，列数膨胀比较厉害，那么列式化后的每一列都会带来额外的存储开销（列的统计信息、索引等），且如果列式化后每一列的类型都是 TEXT类型，压缩效果就不会很好。所以实际的存储压缩效率与实际业务的数据有关（比如稀疏度等），不一定所有的数据都有很好的压缩效果。
 
-#### 1.8.7. Table Group与Shard Count
+#### 1.8.7 Table Group与Shard Count
 
-##### 1.8.7.1. 基本概念
+##### 1.8.7.1 基本概念
 
-Hologres是一款高性能的、计算存储分离的分布式一站式实时数仓引擎，数据存储在位于底层存储系统的数据分片（又称Shard）上。本文为您介绍Hologres中Table Group和Shard Count的概念。 在Hologres中数据存储在Pangu系统上，Shard表示数据分片，Table Group则是用于管理这些Shard，类似于存储逻辑概念。一个表的数据将会存储在固定的一组Shard 上，数据写入时会按照Distribution Key将数据分发到具体的Shard上。从创建表开始，负责存储表数据的这一组Shard就已经分配好了，Table Group则负责管理这一组 Shard。 Table Group是Hologres特有的一个存储逻辑概念（PostgreSQL无此概念）。Table Group与PostgreSQL中的TABLESPACE是不一样的：TABLESPACE唯一标识了数据库对象的存储位置，类似一个目录的概念。而Table Group代表的是底层的逻辑Shard组。 实时数仓 Hologres Schema是一个标准的数据库概念，而Table Group是一个逻辑存储概念，并非数据库标准。不同Schema下的表可以位于同一个Table Group，即底层使用同一组Shard 存储。 一个DB可以包含一个或者多个Table Group，但是一个DB只能有一个默认Table Group。在创建DB之后，系统会创建一个默认Table Group，可以根据业务情况增加一个DB可以存在多个Table Group，但Table Group之间的Shard互不相交，每个Shard在实例级别拥有单独的编号。 一个Table Group中Shard的数量称为Shard Count。Shard Count在创建Table Group时指定，所以Table Group一旦建立，Shard Count就不能调整，如需调整 Shard负责表数据的存储和查询，系统根据Distribution Key决定表数据分布在哪些Shard，如果没有设置Distribution Key，那么数据就会被随机分配到各个Shard。 一个Table Group中可以有多个Table，即多个Table可以分布在同一组Shard上。但是一个Table只能属于一个Table Group，如果Table Group中没有Table，那么如果Table的数据要从一个Table Group迁移至另外一个Table Group，那么需要重新建表指定Table Group，或者通过迁移函数将数据进行迁移。
+Hologres是一款高性能的、计算存储分离的分布式一站式实时数仓引擎，数据存储在位于底层存储系统的数据分片（又称Shard）上。本文为您介绍Hologres中Table Group和Shard Count的概念。
+
+**Table Group和Shard**
+
+在Hologres中数据存储在Pangu系统上，Shard表示数据分片，Table Group则是用于管理这些Shard，类似于存储逻辑概念。一个表的数据将会存储在固定的一组Shard 上，数据写入时会按照Distribution Key将数据分发到具体的Shard上。从创建表开始，负责存储表数据的这一组Shard就已经分配好了，Table Group则负责管理这一组 Shard。 Table Group是Hologres特有的一个存储逻辑概念（PostgreSQL无此概念）。Table Group与PostgreSQL中的TABLESPACE是不一样的：TABLESPACE唯一标识了数据库对象的存储位置，类似一个目录的概念。而Table Group代表的是底层的逻辑Shard组。 Table Group布局图如下： 通过Table Group布局图，可以看出： Table Group与Schema的区别 Schema是一个标准的数据库概念，而Table Group是一个逻辑存储概念，并非数据库标准。不同Schema下的表可以位于同一个Table Group，即底层使用同一组Shard 存储。 Table Group与数据库（DB）的关系一个DB可以包含一个或者多个Table Group，但是一个DB只能有一个默认Table Group。在创建DB之后，系统会创建一个默认Table Group，可以根据业务情况增加 Table Group或者修改默认Table Group。 不同Table Group的区别一个DB可以存在多个Table Group，但Table Group之间的Shard互不相交，每个Shard在实例级别拥有单独的编号。 Shard Count 一个Table Group中Shard的数量称为Shard Count。Shard Count在创建Table Group时指定，所以Table Group一旦建立，Shard Count就不能调整，如需调整 Shard Count，需要重新创建Table Group并指定Shard数。 Shard与Table的关系 Shard负责表数据的存储和查询，系统根据Distribution Key决定表数据分布在哪些Shard，如果没有设置Distribution Key，那么数据就会被随机分配到各个Shard。 一个Table Group中可以有多个Table，即多个Table可以分布在同一组Shard上。但是一个Table只能属于一个Table Group，如果Table Group中没有Table，那么 Table Group会被系统自动删除。 如果Table的数据要从一个Table Group迁移至另外一个Table Group，那么需要重新建表指定Table Group，或者通过迁移函数将数据进行迁移。
 
 **Shard与计算节点Worker的关系**
 
-在Hologres中，存储引擎（Storage Engine，SE）主要负责管理和处理数据，在DML的功能上，SE提供了单条或者批量的创建、查询、更新、和删除（CRUD操作）访问方法的接口，查询引擎（QE）可以通过这些接口访问Shard上的数据，从而实现数据的高性能写入或者读取。 计算节点Worker、SE、Shard的布局关系图如下。 从图中可以看出Table Group和Shard不仅与数据的存储分布有关系，还与计算Worker有一定的关系： 当创建Table Group并设置Shard数后（如果没有显式设置Table Group和Shard数，那么Hologres会在创建数据库时创建一个默认Table Group并为其设置默认的 Shard Count，详情请参见实例规格概述），每个计算节点Worker会在内部创建多个SE，一个SE负责一个Shard数据的读取和写入。 系统机制会尽量保证每个Worker中的SE数量均匀，这样能够让Worker计算资源均匀分配。 系统会保证一个Table Group内的Shard一定分配给多个Worker，不会出现一个Table Group仅对应一个Worker，其余Worker空置的情况。但如果Table Group的 Shard数较少，但是实例规格较大即Worker较多，则会导致某些Worker无法分配Shard，导致某些Worker空置，因此在设计Shard数时一定要充分考虑业务情况，确保 Worker的个数与实例总的Shard数有一定的均衡关系。 实时数仓 Hologres 从上图中能很容易看出一个问题：假如Table Group的Shard数与Worker个数不成比例关系（如上图 `Table Group 1` 有3个Shard，但是只有2个Worker），那么就一定会存在某个Worker比其他Worker多分配一个SE给Table Group的情况，这样在计算时，就非常容易造成Worker资源倾斜，容易出现计算长尾。因此我们建议若是要修改Shard Count，建议Shard Count与计算Worker成一定的比例关系。如下图所示 `Table Group 1` 和 `Table Group 2` 的Shard数都与Worker个数存在倍数关系， 计算资源能够均匀的分配。 在实际业务中，可能会存在某个Worker因为OOM等原因出现Failover的情况，那么该Worker对应的Shard将会在Worker Failover之后自动挂载在其他Worker上，系统会保证每个Worker新分配得Shard均匀。如下示例，实例一共有4个Worker，2个Table Group共8个Shard，其中每个Worker有2个SE均匀对应Shard，当 `Worker` 4 Failover后，假设 `Worker 4` 对应 `Shard 7` 和 `Shard 8` ，那么 `Shard 7` 和 `Shard 8` 就会被快速分配给其他3个Worker，因为只有2个Shard，所以系统会随机选择2个Worker进行分配，尽量保证Worker的SE数量均匀。
+在Hologres中，存储引擎（Storage Engine，SE）主要负责管理和处理数据，在DML的功能上，SE提供了单条或者批量的创建、查询、更新、和删除（CRUD操作）访问方法的接口，查询引擎（QE）可以通过这些接口访问Shard上的数据，从而实现数据的高性能写入或者读取。 计算节点Worker、SE、Shard的布局关系图如下。 从图中可以看出Table Group和Shard不仅与数据的存储分布有关系，还与计算Worker有一定的关系： 当创建Table Group并设置Shard数后（如果没有显式设置Table Group和Shard数，那么Hologres会在创建数据库时创建一个默认Table Group并为其设置默认的 Shard Count，详情请参见实例规格概述），每个计算节点Worker会在内部创建多个SE，一个SE负责一个Shard数据的读取和写入。 系统机制会尽量保证每个Worker中的SE数量均匀，这样能够让Worker计算资源均匀分配。 系统会保证一个Table Group内的Shard一定分配给多个Worker，不会出现一个Table Group仅对应一个Worker，其余Worker空置的情况。但如果Table Group的 Shard数较少，但是实例规格较大即Worker较多，则会导致某些Worker无法分配Shard，导致某些Worker空置，因此在设计Shard数时一定要充分考虑业务情况，确保 Worker的个数与实例总的Shard数有一定的均衡关系。 从上图中能很容易看出一个问题：假如Table Group的Shard数与Worker个数不成比例关系（如上图 `Table Group 1` 有3个Shard，但是只有2个Worker），那么就一定会存在某个Worker比其他Worker多分配一个SE给Table Group的情况，这样在计算时，就非常容易造成Worker资源倾斜，容易出现计算长尾。因此我们建议若是要修改Shard Count，建议Shard Count与计算Worker成一定的比例关系。如下图所示 `Table Group 1` 和 `Table Group 2` 的Shard数都与Worker个数存在倍数关系， 计算资源能够均匀的分配。 在实际业务中，可能会存在某个Worker因为OOM等原因出现Failover的情况，那么该Worker对应的Shard将会在Worker Failover之后自动挂载在其他Worker上，系统会保证每个Worker新分配得Shard均匀。如下示例，实例一共有4个Worker，2个Table Group共8个Shard，其中每个Worker有2个SE均匀对应Shard，当 `Worker` `4` Failover后，假设 `Worker 4` 对应 `Shard 7` 和 `Shard 8` ，那么 `Shard 7` 和 `Shard 8` 就会被快速分配给其他3个Worker，因为只有2个Shard，所以系统会随机选择2个Worker进行分配，尽量保证Worker的SE数量均匀。
 
 **总结**
 
-Worker数量与Shard数有着非常紧密的联系。合理的设置Table Group与Shard Count，其数据写入和查询分析处理可以得到更大的并行度，将计算资源充分使用，从而从根本上提高数据的存储与计算效率。反之如果Table Group和Shard数制定不当，很容易出现性能不如预期的情况，且无法从根本上调优到最佳性能： 一定范围内Shard数多的Table Group，其数据写入和查询分析处理可以得到更大的并行度。但Shard数也并非越多越好，更多的Shard数需要更多的节点间通信资源、计算资源以及内存资源，在资源不满足的时候，或者Query很小时可能会导致适得其反的效果。 Shard数下限是1，在数据量只有几百几千条等很小的情况下，可以设置Shard数为1。一个Table Group上，Shard数的上限建议是实例的总计算Core数，这样是为了保证每个Shard在计算时，至少可以占据1个Core用于计算。如果Shard数超过计算Core数，那么运行查询时，将有部分Shard无法一直分到CPU资源，可能带来长尾和切换开销。 除Shard数量外，Table Group本身的数量也不是越多越好。每个Shard无论是否正在使用，都会占据一定的内存空间，用于存放表元数据、Schema等信息，在表有写入时则会占据更多内存空间。因此，如果Table Group越多，则实例内总Shard数越多，内存空间占用越大。另外多个表之间有一些特殊的关系（例如需要Local Join）时， 从磁盘上来看，Shard数越多，对于同样的一张表，数据会分的越散，越容易出现小文件，从而文件个数更多。如果表多并且Shard也多，那文件数量就会非常庞大。在查询时Failover时都需要更多的开销，造成查询I/O增多，恢复时间变长。
+Worker数量与Shard数有着非常紧密的联系。合理的设置Table Group与Shard Count，其数据写入和查询分析处理可以得到更大的并行度，将计算资源充分使用，从而从根本上提高数据的存储与计算效率。反之如果Table Group和Shard数制定不当，很容易出现性能不如预期的情况，且无法从根本上调优到最佳性能： 一定范围内Shard数多的Table Group，其数据写入和查询分析处理可以得到更大的并行度。但Shard数也并非越多越好，更多的Shard数需要更多的节点间通信资源、计算资源以及内存资源，在资源不满足的时候，或者Query很小时可能会导致适得其反的效果。 Shard数下限是1，在数据量只有几百几千条等很小的情况下，可以设置Shard数为1。一个Table Group上，Shard数的上限建议是实例的总计算Core数，这样是为了保证每个Shard在计算时，至少可以占据1个Core用于计算。如果Shard数超过计算Core数，那么运行查询时，将有部分Shard无法一直分到CPU资源，可能带来长尾和切换开销。 除Shard数量外，Table Group本身的数量也不是越多越好。每个Shard无论是否正在使用，都会占据一定的内存空间，用于存放表元数据、Schema等信息，在表有写入时则会占据更多内存空间。因此，如果Table Group越多，则实例内总Shard数越多，内存空间占用越大。另外多个表之间有一些特殊的关系（例如需要Local Join）时， 这些表必须要处在同一Table Group下才行。 从磁盘上来看，Shard数越多，对于同样的一张表，数据会分的越散，越容易出现小文件，从而文件个数更多。如果表多并且Shard也多，那文件数量就会非常庞大。在查询时Failover时都需要更多的开销，造成查询I/O增多，恢复时间变长。
 
-##### 1.8.7.2. Table Group与Shard Count操作指南
+##### 1.8.7.2 Table Group与Shard Count操作指南
 
-在Hologres中合理的Table Group选择与Shard Count制定能够从根本上提升数据的存储与计算效率。本文将为您介绍在Hologres中设置Table Group与Shard Count。 Hologres拥有灵活指定Shard和Table Group的特性，相比一些同类产品，具备更加灵活、易用、方便根据具体场景定制化Schema的能力，更加灵活应对业务需求，加上用户对自身业务的理解，能够比较高效、充分地利用Hologres的高性能。推荐设置Table Group基本原则如下： 如无必要不建议新建Table Group，使用默认Table Group即可，规格详情请参见实例规格概述。 对于大规格实例（大于256 Core）建议根据业务情况拆分多个Table Group，以使得业务使用更加均衡。 表的数据量很小但数量很多，可独立出一个小Shard数的Table Group，减小Query启动开销。 需要Join在一起的表（Local Join），必须放在同一个Table Group中。 设置Shard数时，充分考虑Worker个数以及后续的扩容情况，尽量使得Shard数与Worker个数为倍数关系，以此让资源分配更加平衡。 不支持修改已经创建Table Group的Shard数。如果您需要修改Shard数量，请新建Table Group。 不建议Shard数设置过多，否则会导致无法分配计算资源，带来额外开销。Hologres从2.0版本开始，将会默认为单个Table Group的Shard数设置上限，并为整个实例设置Shard数上限，防止出现Shard数设置过多导致无法分配计算资源的问题，当超过约定的Shard总数上限时，会提示异常too many shards in this instance，具体 Shard数上限规则如下： 单个`Table Group`的`Shard`数上限=单个`Table Group`默认`Shard`数 `* 2` 如需调整单Table Group的Shard数上限和实例总Shard数上限，需要使用如下GUC参数取消Shard数上限，但是不建议使用，否则可能会因为Shard数过多导致无法分配计算资源。
+在Hologres中合理的Table Group选择与Shard Count制定能够从根本上提升数据的存储与计算效率。本文将为您介绍在Hologres中设置Table Group与Shard Count。
+
+**Table Group与Shard Count设置建议**
+
+Hologres拥有灵活指定Shard和Table Group的特性，相比一些同类产品，具备更加灵活、易用、方便根据具体场景定制化Schema的能力，更加灵活应对业务需求，加上用户对自身业务的理解，能够比较高效、充分地利用Hologres的高性能。推荐设置Table Group基本原则如下： 如无必要不建议新建Table Group，使用默认Table Group即可，规格详情请参见实例规格概述。 对于大规格实例（大于256 Core）建议根据业务情况拆分多个Table Group，以使得业务使用更加均衡。 数据量过大，可新建独立较大Shard数的Table Group。 表的数据量很小但数量很多，可独立出一个小Shard数的Table Group，减小Query启动开销。 需要Join在一起的表（Local Join），必须放在同一个Table Group中。 不要为每个表都设置一个Table Group。 设置Shard数时，充分考虑Worker个数以及后续的扩容情况，尽量使得Shard数与Worker个数为倍数关系，以此让资源分配更加平衡。 不支持修改已经创建Table Group的Shard数。如果您需要修改Shard数量，请新建Table Group。 不建议Shard数设置过多，否则会导致无法分配计算资源，带来额外开销。Hologres从2.0版本开始，将会默认为单个Table Group的Shard数设置上限，并为整个实例设置Shard数上限，防止出现Shard数设置过多导致无法分配计算资源的问题，当超过约定的Shard总数上限时，会提示异常too many shards in this instance，具体 Shard数上限规则如下： 单个`Table Group`的`Shard`数上限`=`单个`Table Group`默认`Shard`数 `* 2` 实例总的`Shard`数上限`=`单个`Table Group`默认`Shard`数 `* 8` 如需调整单Table Group的Shard数上限和实例总Shard数上限，需要使用如下GUC参数取消Shard数上限，但是不建议使用，否则可能会因为Shard数过多导致无法分配计算资源。
 
 ```
 set hg_experimental_enable_shard_count_cap =off;
 ```
 
-实时数仓 Hologres Shard数上限一览表：
+Shard数上限一览表：
 
 | 计算节点数量 | 默认Shard数（适用于V0.10.31及以上版本） | 单个Table Group的shard count上限（适用于V2.0及以上版本） | 实例总的shard count上限（适用于V2.0及以上版本） |
 |---|---|---|---|
@@ -14226,24 +15100,26 @@ set hg_experimental_enable_shard_count_cap =off;
 ALTER USER "云账号ID" SUPERUSER;
 ```
 
+将新建表放入指定Table Group操作需要账号有新建表权限。
+
+**获取Table Group元数据**
+
 1. 查看默认Table Group
 
 ```
-SELECT * FROM hologres.hg_table_group_properties
+SELECT * FROM hologres.hg_table_group_properties WHERE tablegroup_name IN (
   SELECT tablegroup_name FROM hologres.hg_table_group_properties
   WHERE property_key = 'is_default_tg' AND property_value = '1'
-);
 ```
 
-结果：
+); 结果：
 
-**说明**
-
-结果中**is_default_tg**代表为默认Table Group，**shard_count**代表Table Group对应的Shard数。
+> **说明：** 结果中**is_default_tg**代表为默认Table Group，**shard_count**代表Table Group对应的Shard数。
 
 ```
------------------+------------------+----------------
+tablegroup_name | property_key | property_value -----------------+------------------+----------------
  test_tg_default | tg_version       | 1
+ test_tg_default | table_num        | 1
  test_tg_default | is_default_tg    | 1
  test_tg_default | shard_count      | 3
  test_tg_default | replica_count    | 1
@@ -14254,13 +15130,13 @@ SELECT * FROM hologres.hg_table_group_properties
 2. 查看当前数据库有哪些Table Group
 
 ```
-FROM hologres.hg_table_group_properties GROUP BY tablegroup_name;
+SELECT tablegroup_name FROM hologres.hg_table_group_properties GROUP BY tablegroup_name;
 ```
 
 结果：
 
 ```
------------------
+tablegroup_name -----------------
  test_tg_default
 (1 row)
 ```
@@ -14268,25 +15144,25 @@ FROM hologres.hg_table_group_properties GROUP BY tablegroup_name;
 3. 查看某Table Group设置的Shard数
 
 ```
-WHERE property_key = 'shard_count' AND tablegroup_name ='<tg_name>';
-```
-
-结果： 实时数仓 Hologres
-
-```
-------------- (1 row)
-```
-
-4. 查看某Table Group下有哪些表
-
-```
-SELECT table_namespace AS schema_name, table_name WHERE property_key = 'table_group' AND property_value = '<tg_name>';
+SELECT property_value AS shard_count FROM hologres.hg_table_group_properties WHERE property_key = 'shard_count' AND tablegroup_name ='<tg_name>';
 ```
 
 结果：
 
 ```
--------------+------------
+shard_count ------------- (1 row)
+```
+
+4. 查看某Table Group下有哪些表
+
+```
+SELECT table_namespace AS schema_name, table_name FROM hologres.hg_table_properties WHERE property_key = 'table_group' AND property_value = '<tg_name>';
+```
+
+结果：
+
+```
+schema_name | table_name -------------+------------
  public      | a
 (1 row)
 ```
@@ -14294,22 +15170,23 @@ SELECT table_namespace AS schema_name, table_name WHERE property_key = 'table_gr
 5. 查看某张表所在的Table Group
 
 ```
-WHERE property_key = 'table_group' AND table_name = '<table_name>';
+SELECT property_value AS table_group_name FROM hologres.hg_table_properties WHERE property_key = 'table_group' AND table_name = '<table_name>';
 ```
 
 结果：
 
 ```
-------------------
+table_group_name ------------------
  test_tg_default
 (1 row)
 ```
 
+**新建Table Group**
+
 若是有新上的业务或者需要重新创建Table Group并指定新的Shard数，可以使用以下命令语句。
 
-**说明**
-
-新建Table Group后，原来的表和数据还会在原Table Group中，不会默认迁移到新的Table Group中。 需要将原来表和数据都迁移至新的Table Group或者删除，原Table Group才会失效。
+> **说明：** 新建Table Group后，原来的表和数据还会在原Table Group中，不会默认迁移到新的Table Group中。
+> 需要将原来表和数据都迁移至新的Table Group或者删除，原Table Group才会失效。
 
 ```
 CALL HG_CREATE_TABLE_GROUP ('<new_tg_name>', <shard_count>);
@@ -14322,17 +15199,17 @@ CALL HG_CREATE_TABLE_GROUP ('<new_tg_name>', <shard_count>);
 | newtgname _ _ | Text | 新建的Table Group名。 |
 | shardcount _ | INT4 | Table Group对应的Shard数。 |
 
-使用示例：
+使用示例： `--` 新建一个`Shard`数为`8`的新`Table Group`，命名为`tg_8`
 
 ```
 CALL HG_CREATE_TABLE_GROUP ('tg_8', 8);
 ```
 
-新建一个数据库后，实例会有一个默认Table Group，以及默认的Shard数。详情请参见实例规格概述。若是数据库中有多个Table Group，想要修改默认Table Group，使
+**修改默认Table Group**
 
-**说明**
+新建一个数据库后，实例会有一个默认Table Group，以及默认的Shard数。详情请参见实例规格概述。若是数据库中有多个Table Group，想要修改默认Table Group，使得后续新建的表存放于新的Table Group中，可以使用如下命令语句。
 
-Hologres实例 V0.9及以上版本执行以下命令语句修改默认Table Group，0.9以下版本请先升级到更高版本。
+> **说明：** Hologres实例 V0.9及以上版本执行以下命令语句修改默认Table Group，0.9以下版本请先升级到更高版本。
 
 ```
 CALL HG_UPDATE_DATABASE_PROPERTY ('default_table_group', '<tg_name>');
@@ -14350,13 +15227,20 @@ CALL HG_UPDATE_DATABASE_PROPERTY ('default_table_group', '<tg_name>');
 CALL HG_UPDATE_DATABASE_PROPERTY ('default_table_group', 'tg_8');
 ```
 
-实时数仓 Hologres
+**将新建表放入指定Table Group**
+
+可以通过以下命令语句将新建表，显示放入指定的Table Group中。
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE table_name (
     col type,
   ....
-); CALL SET_TABLE_PROPERTY('table_name', 'table_group', '<tg_name>'); COMMIT;
+```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('table_name', 'table_group', '<tg_name>'); COMMIT;
 ```
 
 参数说明：
@@ -14366,19 +15250,29 @@ BEGIN;
 | tablename _ | TEXT | 新建的表名。 |
 | tgname _ | TEXT | 默认Table Group名称，设置后，其Shard Count为设置的 Table Group的Shard数。 |
 
-使用示例：
+使用示例： `--` 新建表`tbl1`并直接关联名为`tg_8`的`Table Group`
 
 ```
-BEGIN;
+BEGIN; CREATE TABLE tbl1 (
     col1 text
-); CALL SET_TABLE_PROPERTY('tbl1', 'table_group', 'tg_8'); COMMIT;
 ```
+
+);
+
+```
+CALL SET_TABLE_PROPERTY('tbl1', 'table_group', 'tg_8'); COMMIT;
+```
+
+**（Resharding）迁移表至新建Table Group**
 
 在Hologres中，Shard用于提升数据处理的并发度，合理的设置Shard数，有利于提高查询或者写入的性能。一般情况下，Hologres实例默认的shard数已经能满足大部分场景，无需再手动修改。 当实例扩容后，例如32core扩容到128core，该数据库的Shard数不会随着扩容默认更改，因此建议您针对该数据库增加Shard数，以获取更好的性能。如果是该实例下新建的DB，其Shard数为当前规格的默认数量。实例规格与Shard的相关描述，请参见实例规格概述。 当实例扩容或者缩容后，其之前DB的Shard数不会自动随之增加或减少，需要通过命令语句设置Shard数，并重新进行数据导入。Resharding功能用于修改Shard数后，自动实现Rebalance的功能，无需再重新建表导数据，即可将原来的表和数据Resharding到各Shard上，简化操作步骤，实现最优性能。 使用限制仅Hologres V0.10 及以上版本支持Resharding，请前往Hologres管控台的实例详情页查看当前实例版本，如果您的实例是V0.10以下版本，请升级实例目前Resharding是单表级别，当使用Resharding时，需要停止该表的写入（如Flink、数据集成等写入），对表的查询不受影响。V1.1 版本开始，支持 `set table` `readonly` ，实时任务写入自动Failover。 Resharding会消耗CPU资源，且在Resharding过程中会导致存储增加，建议在业务低峰期处理。 如果表开启了Binlog，请在Resharding之前关闭Binlog，待Resharding完成后再开启Binlog，详细操作请参见订阅Hologres Binlog。 暂不支持表字段带有Serial自增序列以及Default值进行Resharding，带Serial字段的表在Resharding时会报错，带Default字段的表Resharding后会丢失Default属性。 表在Resharding时不能有其他的依赖比如view等，若存在请在Resharding前删除相关依赖。 Resharding只适用简单模型，不适用于专家模型。 仅Hologres V2.0及以上版本的Resharding操作支持保留列COMMENTS。如果您的实例版本低于V2.0，请提前备份列COMMENTS，并在Resharding完成后手动设置。 语法示例如果您的实例为V2.0.24及以上版本，推荐使用HoloWeb进行Resharding操作。 如果您的实例版本低于V2.0.24，可以通过以下命令将业务的部分表迁移至新建的Table Group。如果实例版本低于V0.10，请先升级到更高版本。
 
-**说明**
+> **说明：** 在迁移之前，需要有一个新建的Table Group，若是没有新建Table Group，请参见新建Table Group进行新建。
+> 表迁移时需要停止对该表的写入，查询不受影响。
+> 原Table Group的表全部迁移后，原Table Group将会被自动删除。若是因为业务需求需要建立多个Table Group，建议合理设置每个Table Group的Shard 数。
+> 表迁移时，分区表只需要操作父表即可。
 
-在迁移之前，需要有一个新建的Table Group，若是没有新建Table Group，请参见新建Table Group进行新建。 表迁移时需要停止对该表的写入，查询不受影响。 原Table Group的表全部迁移后，原Table Group将会被自动删除。若是因为业务需求需要建立多个Table Group，建议合理设置每个Table Group的Shard 数。 表迁移时，分区表只需要操作父表即可。 `-- V1.1`及以上版本命令语法
+`-- V1.1`及以上版本命令语法
 
 ```
 CALL HG_MOVE_TABLE_TO_TABLE_GROUP('<table_name>','<new_table_group_name>');
@@ -14397,7 +15291,7 @@ CALL HG_UPDATE_TABLE_SHARD_COUNT('<table_name>','<new_table_group_name>');
 | tablename _ | 需要迁移的表名。一次命令仅支持单表迁移，若有多个表， 需要多次执行。分区表只需要操作父表即可。 | newtable _ |
 | tablegroupname _ _ | 新的Table Group名。 | newtg _ |
 
-实时数仓 Hologres 异常处理 Table Resharding过程中，会先将表设为只读状态，而后通过临时表的方式进行Table Group迁移。由于Resharding任务涉及数据导入，可能需要执行较长时间，因此可能会出现多种异常情况，如OOM、手动终止任务等，此时原表会仍处于只读状态，且数据库中出现名为**<initial_table_name>_xxxxxxxx**的临时表，此时需要根据如下情况进行操作： Hologres实例版本低于V2.0.24，请您升级实例。 Hologres实例版本为 V2.0.24及以上： 如果您通过HoloWeb进行Resharding操作，请单击继续运行或取消任务。 如果您通过执行上述命令进行Resharding操作，请按以下步骤操作： a. 如果您希望继续对该表进行Resharding：对中断原因进行处理后，重新对该表运行HG_MOVE_TABLE_TO_TABLE_GROUP命令即可。 b. 如果您希望取消Resharding并恢复初始状态：请依次运行如下命令进行恢复： `--` 取消原表的`readonly`属性
+异常处理 Table Resharding过程中，会先将表设为只读状态，而后通过临时表的方式进行Table Group迁移。由于Resharding任务涉及数据导入，可能需要执行较长时间，因此可能会出现多种异常情况，如OOM、手动终止任务等，此时原表会仍处于只读状态，且数据库中出现名为**<initial_table_name>_xxxxxxxx**的临时表，此时需要根据如下情况进行操作： Hologres实例版本低于V2.0.24，请您升级实例。 Hologres实例版本为 V2.0.24及以上： 如果您通过HoloWeb进行Resharding操作，请单击继续运行或取消任务。 如果您通过执行上述命令进行Resharding操作，请按以下步骤操作： a. 如果您希望继续对该表进行Resharding：对中断原因进行处理后，重新对该表运行HG_MOVE_TABLE_TO_TABLE_GROUP命令即可。 b. 如果您希望取消Resharding并恢复初始状态：请依次运行如下命令进行恢复： `--` 取消原表的`readonly`属性
 
 ```
 CALL set_table_property('schema_name.table_name','readonly','false');
@@ -14415,13 +15309,15 @@ CALL hologres.hg_clear_resharding_temp_tables('schema_name.table_name');
 CALL hologres.hg_internal_clear_resharding_properties('schema_name.table_name');
 ```
 
+**删除Table Group**
+
 可以通过以下命令语句删除空的Table Group。如果Table Group有表存在，则无法删除。
 
 ```
 CALL HG_DROP_TABLE_GROUP('<tg_name>');
 ```
 
-使用示例：
+使用示例： `--`删除名为`tg_8`的`Table Group`
 
 ```
 CALL HG_DROP_TABLE_GROUP('tg_8');
@@ -14433,11 +15329,11 @@ Shard数与Worker个数存在一定的分配关系，详情请参见Shard与计�
 
 **使用最佳实践**
 
-Table Group是比较高级的功能，一般情况下，不建议业务新建Table Group以及修改Shard数。若是因为业务有不同的需求，可以按照最佳实践合理规划，详情请参
+Table Group是比较高级的功能，一般情况下，不建议业务新建Table Group以及修改Shard数。若是因为业务有不同的需求，可以按照最佳实践合理规划，详情请参见Table Group设置最佳实践。
 
 **常见问题**
 
-Resharding是个比较复杂的过程，涉及到创建临时表、修改原始表只读状态、写入目标表、更换表名称和记录同步状态等多个环节，如果中间环节因为某些原因出现异常， 可能造成系统状态不确定等问题，可通过以下方法进行排查。 当出现 `internal error: Get rundown is not allowed in recovering state.` 异常时，说明当前正在更新的表处于Read Only状态，不能执行Insert、Update、
+Resharding是个比较复杂的过程，涉及到创建临时表、修改原始表只读状态、写入目标表、更换表名称和记录同步状态等多个环节，如果中间环节因为某些原因出现异常， 可能造成系统状态不确定等问题，可通过以下方法进行排查。 当出现 `internal error: Get rundown is not allowed in recovering state.` 异常时，说明当前正在更新的表处于Read Only状态，不能执行Insert、Update、 Delete等操作，此时需要退出Read Only状态。
 1. 执行如下命令检索当前处于Read Only状态的表。
 
 ```
@@ -14450,7 +15346,9 @@ select * from hologres.hg_table_properties where property_key ='readonly' and pr
 call set_table_property('<table_name>','readonly','false');
 ```
 
-##### 1.8.7.3. Table Group设置最佳实践
+**table_name**为需要退出Read Only状态的表名称。
+
+##### 1.8.7.3 Table Group设置最佳实践
 
 本文为您介绍Hologres中Table Group和Shard Count选定的基本原则、适用场景、设置策略以及常见问题，以助您获取更优的查询性能。
 
@@ -14466,11 +15364,10 @@ call set_table_property('<table_name>','readonly','false');
 | 40亿行～400亿行 | 80～240 | 256Core以上，考虑创建新的Table Group |
 | 400亿行～4000亿行 | 160～400 | 512Core以上，通常配置多个Table Group |
 
-实时数仓 Hologres
+> **说明：** 上表根据数据量估算的所需Shard数和实例规格的推荐数不是唯一标准，小数据量的表也可以放在多的Shard Count之上，大数据量的表也可以放在单个Shard 上。请您根据实际业务场景选择一个合适的Shard Count，既满足有较高的并发度，带来更高计算效率，又满足数据较集中，从而避免不必要的Shuffle开销。
+> 建议一个Table Group下不要超过10000张表（包括分区子表，不包括外部表），同一个Table Group中的表数量过多，会导致元数据堆积，从而降低DDL操作的执行速度
 
-**说明**
-
-上表根据数据量估算的所需Shard数和实例规格的推荐数不是唯一标准，小数据量的表也可以放在多的Shard Count之上，大数据量的表也可以放在单个Shard 上。请您根据实际业务场景选择一个合适的Shard Count，既满足有较高的并发度，带来更高计算效率，又满足数据较集中，从而避免不必要的Shuffle开销。 建议一个Table Group下不要超过10000张表（包括分区子表，不包括外部表），同一个Table Group中的表数量过多，会导致元数据堆积，从而降低DDL操作的执行速度您可以根据以下Table Group规划的最佳实践，来决定是否需要新建以及如何放置Table Group。 如果您使用Hologres满足下列条件，建议您直接使用默认Table Group即可。Hologres实例升配或降配后，默认Table Group的Shard数不会变，因此可以通过如下命令
+您可以根据以下Table Group规划的最佳实践，来决定是否需要新建以及如何放置Table Group。 规划一：使用默认Table Group 如果您使用Hologres满足下列条件，建议您直接使用默认Table Group即可。Hologres实例升配或降配后，默认Table Group的Shard数不会变，因此可以通过如下命令语句，查看Table Group的Shard数。
 
 ```
 SELECT * FROM hologres.hg_table_group_properties;
@@ -14479,18 +15376,20 @@ SELECT * FROM hologres.hg_table_group_properties;
 `--`结果示例
 
 ```
+ tablegroup_name | property_key  | property_value
 -----------------+---------------+----------------
  test_tg_default | is_default_tg | 1
  test_tg_default | shard_count   | 40
  test_tg_default | tg_version    | 1
+ test_tg_default | table_num     | 1
 (4 rows)
 ```
 
-数据量： 当前默认Table Group的Shard数，符合目前数据量大小的需求。可以使用默认Table Group直接建表。 总体规模： 全部表的数据量规模总和可控，可预估，使用方式没有大的变化。 Local Join： 如果默认Table Group不能满足您的需求，那么您可能需要多个Table Group。通常在如下条件下，在您的实例中可能需要多个Table Group： 数据量已有Table Group的Shard数不适合当前表的预估数据量，例如，数据量小的表一般不适合放在大Table Group中，会造成小文件太多，IO开销变大，数据量大的表一般也不适合放在小Table Group中，造成查询并发度下降。这是最常见的需要划分多个Table Group的原因。 负载分离已有的Table Group容纳的表数量很多，且大多数表需要同时写入，导致实例的负载很高，而即将创建的新表又需要较高的查询和写入吞吐，这时多个Table Group可以实现写入和查询一定程度上的独立，不受其他表写入查询影响（更准确的负载分离请参考计算资源隔离章节）。或者经过问题排查，确定是已有的Table Group无法满足表的相关性业务上有一系列具有独特写入或查询模式的表，且这一系列表之间具有（或未来具有）Local Join的需求（Local Join需要左右表同在一个Table Group才能实现，并且 Join Key是各自的分布列），同时这些表和其他Table Group的表具有很浅的联系或根本没有联系。这种情况下可以创建多个独立的Table Group。也就是说，如果您有一组表之间相关性很强的表，而这组表与其他表相关性很低、联合查询的概率很低，可以考虑创建多个Table Group。 实例资源扩缩容如果实例进行过扩、缩容超过5倍以上，原来定的Shard数很可能不再满足需求，可以考虑更换默认Table Group。Shard数应大于计算节点数，小于实例总Core数的 60%（即计算总Core数）。 如果需要规划多个Table Group，那么最好是能够在压测和生产之前，提前规划好多个Table Group的作用与意义，以及每个表所属的Table Group。规划时可以考虑如下因素： 数据量首先应该考虑的是数据量，也就是大表放更多的Shard，中小表放更少的Shard。 写入性能需求 Shard数和数据写入性能呈一定的正相关性，单个Shard的写入能力是有上限的。Shard越多，写入的并发越多，写入的吞吐越高。因此，如果表有较高RPS的写入需求，那么可能需要增大Shard数。Hologres单Shard将单core打满时，写入RPS为3000-5000条/秒（1KB/条），可以据此估算所需Shard数。考虑到每个shard还需要进行查询等读操作，一般不能使写入打满CPU，因此可以说，使用1/3core的shard，写入RPS为1000条/秒（每条1KB）。因此，举例而言，如果您要求写入RPS 6W/s，每条1KB，则应该选择的Shard数约在60Shard之上，视情况增减。 在建立一个新的Table Group时，需要考虑当前Table Group需要承载的表数量。例如，如果未来放在此Table Group的表很多，并且多数表都需要经常访问，那么 Shard数很小将会存在并发不够的风险。
+数据量： 当前默认Table Group的Shard数，符合目前数据量大小的需求。可以使用默认Table Group直接建表。 总体规模： 全部表的数据量规模总和可控，可预估，使用方式没有大的变化。 Local Join： 需要与已在默认Table Group的表进行高效的Local Join。 规划二：新建Table Group 如果默认Table Group不能满足您的需求，那么您可能需要多个Table Group。通常在如下条件下，在您的实例中可能需要多个Table Group： 数据量已有Table Group的Shard数不适合当前表的预估数据量，例如，数据量小的表一般不适合放在大Table Group中，会造成小文件太多，IO开销变大，数据量大的表一般也不适合放在小Table Group中，造成查询并发度下降。这是最常见的需要划分多个Table Group的原因。 负载分离已有的Table Group容纳的表数量很多，且大多数表需要同时写入，导致实例的负载很高，而即将创建的新表又需要较高的查询和写入吞吐，这时多个Table Group可以实现写入和查询一定程度上的独立，不受其他表写入查询影响（更准确的负载分离请参考计算资源隔离章节）。或者经过问题排查，确定是已有的Table Group无法满足写入和查询需求时，也需要多个Table Group。 表的相关性业务上有一系列具有独特写入或查询模式的表，且这一系列表之间具有（或未来具有）Local Join的需求（Local Join需要左右表同在一个Table Group才能实现，并且 Join Key是各自的分布列），同时这些表和其他Table Group的表具有很浅的联系或根本没有联系。这种情况下可以创建多个独立的Table Group。也就是说，如果您有一组表之间相关性很强的表，而这组表与其他表相关性很低、联合查询的概率很低，可以考虑创建多个Table Group。 实例资源扩缩容如果实例进行过扩、缩容超过5倍以上，原来定的Shard数很可能不再满足需求，可以考虑更换默认Table Group。Shard数应大于计算节点数，小于实例总Core数的 60%（即计算总Core数）。 规划三：多个Table Group放置如果需要规划多个Table Group，那么最好是能够在压测和生产之前，提前规划好多个Table Group的作用与意义，以及每个表所属的Table Group。规划时可以考虑如下因素： 数据量首先应该考虑的是数据量，也就是大表放更多的Shard，中小表放更少的Shard。 写入性能需求 Shard数和数据写入性能呈一定的正相关性，单个Shard的写入能力是有上限的。Shard越多，写入的并发越多，写入的吞吐越高。因此，如果表有较高RPS的写入需求，那么可能需要增大Shard数。Hologres单Shard将单core打满时，写入RPS为3000-5000条/秒（1KB/条），可以据此估算所需Shard数。考虑到每个shard还需要进行查询等读操作，一般不能使写入打满CPU，因此可以说，使用1/3core的shard，写入RPS为1000条/秒（每条1KB）。因此，举例而言，如果您要求写入RPS 6W/s，每条1KB，则应该选择的Shard数约在60Shard之上，视情况增减。 Table Group负载在建立一个新的Table Group时，需要考虑当前Table Group需要承载的表数量。例如，如果未来放在此Table Group的表很多，并且多数表都需要经常访问，那么 Shard数很小将会存在并发不够的风险。
 
 **常见问题**
 
-我有512Core规格实例，主要针对一张实时事件表进行OLAP分析，表规模约200～400亿，该怎么设计Table Group和Shard Count？ 计算负载比较单一，可以使用一个Table Group。512的默认Shard数为160，如果事件表列比较多，例如达到数百列，那么为了加强OLAP分析的并发度，可以适当增大 Shard数。例如更改DB的默认Table Group的Shard数为200，或200以上，以放置事件表。 我有256Core规格实例，有很多张列存表，主要进行毫秒级快速OLAP分析，每张表数据量千万条级别，主要场景为group by多个字段，以及按条件查明细，该怎么设计计算负载比较单一，可以使用一个Table Group解决。256Core规格实例，默认Table Group的Shard数为120，而对于千万级别的表，我们的建议是10-20shard，尤其对于group by等聚合操作，shard越多会有更多的shuffle开销，无法应对毫秒级分析。因此，默认Table Group可能无法应对我们的需求，可以视具体情况，更改DB的默认Table Group的Shard Count为16～40之间，并进行压测，效果会更好。 通过哪些手段排查慢Query是否为Shard Count不合适的原因？ Shard数不合适分为过多和过少两种情况。 Shard数过多，一般会表现为：start query cost高，可以通过explain analyze后的start query cost行看出来；或者表现为shuffle开销大，这点可以通过explain analyze后，查看Redistribution Motion的Max_GetNext_Time的大小来判定。v0.10以上，可以通过慢查询日志查看历史Query的这些开销。 Shard数过少，一般会表现为：长时间计算时CPU也无法打满；或者scan数据的开销比较大（因为并发度不足），这点可以通过explain analyze后，查看Scan Node 的Max_GetNext_Time大小来判定；或者数据写入的性能不足，上文提到Hologres单shard打满单core时，写入RPS为3000-5000，可据此估算Shard数是否过少。 实时数仓 Hologres 我是点查的服务场景，我的QPS还不够高，是不是Shard不够的原因？ 首先要判断是不是别的原因引起的，例如并非点查而是分析查询、未走索引、未做Shard裁剪以及CPU已经打满等原因。当排查完后，不属于上述情况，且单SQL性能达到极致后，如果QPS仍不满足要求，则考虑增大shard数，以增大点查的后端并发。 如何排查Shard倾斜？ Hologres提供了内部字段hg_shard_id，即数据所在的Shard编号。可以通过SQL查看Shard倾斜情况。
+我有512Core规格实例，主要针对一张实时事件表进行OLAP分析，表规模约200～400亿，该怎么设计Table Group和Shard Count？ 计算负载比较单一，可以使用一个Table Group。512的默认Shard数为160，如果事件表列比较多，例如达到数百列，那么为了加强OLAP分析的并发度，可以适当增大 Shard数。例如更改DB的默认Table Group的Shard数为200，或200以上，以放置事件表。 我有256Core规格实例，有很多张列存表，主要进行毫秒级快速OLAP分析，每张表数据量千万条级别，主要场景为group by多个字段，以及按条件查明细，该怎么设计 Table Group和Shard Count？ 计算负载比较单一，可以使用一个Table Group解决。256Core规格实例，默认Table Group的Shard数为120，而对于千万级别的表，我们的建议是10-20shard，尤其对于group by等聚合操作，shard越多会有更多的shuffle开销，无法应对毫秒级分析。因此，默认Table Group可能无法应对我们的需求，可以视具体情况，更改DB的默认Table Group的Shard Count为16～40之间，并进行压测，效果会更好。 通过哪些手段排查慢Query是否为Shard Count不合适的原因？ Shard数不合适分为过多和过少两种情况。 Shard数过多，一般会表现为：start query cost高，可以通过explain analyze后的start query cost行看出来；或者表现为shuffle开销大，这点可以通过explain analyze后，查看Redistribution Motion的Max_GetNext_Time的大小来判定。v0.10以上，可以通过慢查询日志查看历史Query的这些开销。 Shard数过少，一般会表现为：长时间计算时CPU也无法打满；或者scan数据的开销比较大（因为并发度不足），这点可以通过explain analyze后，查看Scan Node 的Max_GetNext_Time大小来判定；或者数据写入的性能不足，上文提到Hologres单shard打满单core时，写入RPS为3000-5000，可据此估算Shard数是否过少。 我是点查的服务场景，我的QPS还不够高，是不是Shard不够的原因？ 首先要判断是不是别的原因引起的，例如并非点查而是分析查询、未走索引、未做Shard裁剪以及CPU已经打满等原因。当排查完后，不属于上述情况，且单SQL性能达到极致后，如果QPS仍不满足要求，则考虑增大shard数，以增大点查的后端并发。 如何排查Shard倾斜？ Hologres提供了内部字段hg_shard_id，即数据所在的Shard编号。可以通过SQL查看Shard倾斜情况。
 
 ```
 SELECT hg_shard_id, COUNT(1) FROM <Table_Name> GROUP BY hg_shard_id ORDER BY COUNT(1) DESC;
@@ -14498,13 +15397,15 @@ SELECT hg_shard_id, COUNT(1) FROM <Table_Name> GROUP BY hg_shard_id ORDER BY COU
 
 如果有Shard上的数据量显著高于其他Shard，则存在数据倾斜，可能需要调整分布列。
 
-### 其他语句
+### 1.9 其他语句
 
-#### 1.9.1. CANCEL QUERY
+#### 1.9.1 CANCEL QUERY
 
 CANCEL QUERY语句用于取消正在执行的查询。本文为您介绍在Hologres中CANCEL QUERY语句的用法。
 
 **语法**
+
+CANCEL QUERY命令的语法如下所示。
 
 ```
 SELECT pg_cancel_backend(pid);
@@ -14524,11 +15425,13 @@ SELECT pid,query FROM pg_stat_activity WHERE length(query) >0;
 select pg_cancel_backend(192910);
 ```
 
-#### 1.9.2. UNNEST
+#### 1.9.2 UNNEST
 
 UNNEST语句用于将数组的行记录展开为列的形式。本文为您介绍在Hologres中UNNEST语句的用法。
 
 **语法**
+
+UNNEST命令的语法如下所示。
 
 ```
 CREATE TABLE T(keys text[], price double); SELECT UNNEST(keys) FROM T WHERE price > 10; SELECT UNNEST(keys), COUNT(1), SUM(price) FROM T GROUP BY UNNEST(keys);
@@ -14544,7 +15447,7 @@ CREATE TABLE T(keys text[], price double); SELECT UNNEST(keys) FROM T WHERE pric
 SELECT UNNEST(ARRAY['1', '1']); CREATE TABLE t(keys text[], value int); INSERT INTO t VALUES(ARRAY['1', '2'], 10), (ARRAY['1', '3'], 20), (ARRAY['1', '1'], 30); SELECT UNNEST(keys), count(1), sum(value) FROM t GROUP BY UNNEST(keys);
 ```
 
-#### 1.9.3. 存储过程（3.2内核）
+#### 1.9.3 存储过程（3.2内核）
 
 存储过程（PROCEDURE）是由一组预编译的SQL语句组成的集合，可以在数据库中进行存储并反复调用。本文为您介绍在Hologres中使用存储过程的方法。
 
@@ -14564,7 +15467,7 @@ Hologres从V3.0版本起支持PL/pgSQL语法的存储过程。
 
 **适用场景**
 
-**复杂的****ETL****任务：**将数据抽取、转换、加载的多个步骤封装在一个原子操作中。
+**复杂的****ETL****任务：**将数据抽取、转换、加载的多个步骤封装在一个原子操作中**。**
 **定时批处理任务：**结合Hologres的定时任务功能，每天凌晨调用存储过程来清理数据、更新状态等。
 **实现特定业务规则**：例如一个用户下单的存储过程，会依次执行：扣减库存、生成订单、增加积分等操作。
 
@@ -14573,8 +15476,6 @@ Hologres从V3.0版本起支持PL/pgSQL语法的存储过程。
 Hologres支持的存储过程语法兼容PostgreSQL，具体语法如下：
 
 **创建存储过程**
-
-实时数仓 Hologres
 
 ```xml
 CREATE [ OR REPLACE ] PROCEDURE
@@ -14630,20 +15531,22 @@ CALL <procedure_name> ([<argument>]);
 
 订单归档存储过程示例。
 1. 创建主订单表和归档表。
-实时数仓 Hologres `--` 创建主订单表（存储当前活跃订单）
+`--` 创建主订单表（存储当前活跃订单）
 
 ```
+CREATE TABLE orders (
     order_id BIGINT PRIMARY KEY,
     user_id BIGINT NOT NULL,
     order_amount DECIMAL(10,2) NOT NULL,
     status TEXT NOT NULL,
     created_time TIMESTAMPTZ DEFAULT NOW(),
-);
+    updated_time TIMESTAMPTZ DEFAULT NOW()
 ```
 
-`--` 创建订单归档表（存储历史过期订单）
+); `--` 创建订单归档表（存储历史过期订单）
 
 ```
+CREATE TABLE orders_archive (
     order_id BIGINT PRIMARY KEY,
     user_id BIGINT NOT NULL,
     order_amount DECIMAL(10,2) NOT NULL,
@@ -14652,24 +15555,18 @@ CALL <procedure_name> ([<argument>]);
     updated_time TIMESTAMPTZ,
 ```
 
-`archive_time TIMESTAMPTZ DEFAULT NOW() --` 新增归档时间字段
+`archive_time TIMESTAMPTZ DEFAULT NOW() --` 新增归档时间字段 ); `--` 创建任务日志表（记录存储过程执行情况）
 
 ```
-);
-```
-
-`--` 创建任务日志表（记录存储过程执行情况）
-
-```
+CREATE TABLE job_log (
     log_id BIGSERIAL PRIMARY KEY,
     job_name TEXT NOT NULL,
     run_time TIMESTAMPTZ DEFAULT NOW(),
     rows_archived INT DEFAULT 0,
     status TEXT DEFAULT 'success'
-);
 ```
 
-`--` 插入测试数据
+); `--` 插入测试数据
 
 ```
 INSERT INTO orders (order_id, user_id, order_amount, status, created_time) VALUES (1, 1001, 150.50, 'completed', NOW() - INTERVAL '5 days'), (2, 1002, 89.99, 'expired', NOW() - INTERVAL '10 days'), (3, 1003, 200.00, 'active', NOW() - INTERVAL '1 day'), (4, 1001, 75.25, 'expired', NOW() - INTERVAL '15 days'), (5, 1004, 300.00, 'completed', NOW() - INTERVAL '3 days'), (6, 1002, 45.50, 'expired', NOW() - INTERVAL '20 days'), (7, 1005, 125.75, 'active', NOW() - INTERVAL '2 hours');
@@ -14682,7 +15579,7 @@ SELECT * FROM orders ORDER BY order_id;
 ```
 
 2. 创建存储过程
-实时数仓 Hologres `--` 创建订单归档存储过程
+`--` 创建订单归档存储过程
 
 ```
 CREATE OR REPLACE PROCEDURE archive_orders() LANGUAGE plpgsql AS ' DECLARE
@@ -14715,6 +15612,7 @@ BEGIN
 `--` 步骤`2:` 从主表中删除已归档的订单（只有成功插入后才删除）
 
 ```
+        DELETE FROM orders
         WHERE status = ''expired'';
 ```
 
@@ -14753,6 +15651,7 @@ BEGIN
 `--` 记录错误日志
 
 ```
+            INSERT INTO job_log (job_name, status)
             VALUES (''archive_orders'', ''failed: '' || error_message);
 ```
 
@@ -14761,9 +15660,10 @@ BEGIN
 ```
             RAISE EXCEPTION ''归档过程失败: %'', error_message;
     END;
-END; ';
+END;
 ```
 
+';
 3. 执行存储过程
 
 ```
@@ -14791,7 +15691,7 @@ SELECT '任务日志' as table_name, * FROM job_log ORDER BY log_id;
 
 **管理存储过程**
 
-查看已创建的存储过程。 实时数仓 Hologres
+查看已创建的存储过程。
 
 ```
     p.proname AS procedure_name,
@@ -14819,7 +15719,7 @@ ORDER BY
 SELECT pg_get_functiondef('<procedure_name>'::regproc);
 ```
 
-#### 1.9.4. 其他SQL语句
+#### 1.9.4 其他SQL语句
 
 实时数仓Hologres兼容PostgreSQL，除了支持创建、查询及更新数据库的表和Schema等对象的SQL语句外，同时还支持其他SQL语句。本文为您介绍Hologres支持的其他SQL语句。 Hologres已支持的其他PostgreSQL功能语句如下表所示，您可以参考PostgreSQL官网文档的用法示例进行使用。
 
@@ -14836,8 +15736,6 @@ SELECT pg_get_functiondef('<procedure_name>'::regproc);
 | CREATE FOREIGN TABLE | 创建外部表，Hologres仅支持创建MaxCompute外部表。 |
 | CREATE GROUP | 创建组。 |
 | CREATE SERVER | 创建外部服务器。 |
-
-实时数仓 Hologres
 
 | CREATE TABLE | 创建表，Hologres仅支持PostgreSQL中 CREATE TABLE 语句的部分功能。其中，不支持的功能如下： UNLOGGED TEMP IF NOT EXISTS LIKE CHECK DEFAULT GENERATED UNIQUE EXCLUDE FOREIGN KEY DEFERRABLE WITH OIDS GLOBAL LOCAL Hologres的PARTITION仅支持LIST类型，并且PARTITION LIST只能取类型为STRING的唯一值。 |
 |---|---|
@@ -14861,18 +15759,14 @@ SELECT pg_get_functiondef('<procedure_name>'::regproc);
 | SELECT | Hologres仅支持PostgreSQL中 SELECT 语句的部分语句功能。其中，不支持的功能如下： 递归查询 TABLESAMPLE LOCKING ONLY |
 | SET | 执行GUC参数。 |
 
-实时数仓 Hologres
-
 | CALL settableproperty('<tablename>', _ _ 'timetoliveinseconds', '<values>'); _ _ _ _ | 设置表数据生命周期，表数据的生存时间TTL的单位为秒，必须是非负数字类型，整数或浮点数均可。使用限制如下： 若是没有显式指定TTL，则默认数据保留永久（100年），从1.3.24版本开始，允许设置的TTL最小值是1天，即86400秒。 TTL过期时间以数据第一次写入的时间为准，而不是数据最后一次修改的时间；当到达TTL后，表数据会在某一段时间内被清除（没有固定时间段），只是数据被清除，表不会被删除。 可以单独执行该语句，表示修改表数据生命周期。 TTL相比于 DELETE FROM 命令几乎不占资源，也不会锁表。但是对于过期的数据不能保证数据一致性。这意味着： 读取过期数据，可能读到或读不到，也可能读到某个历史版本。 修改或删除过期数据，有可能正常工作，也可能出现PK重复之类的意外结果。 所以使用TTL功能，最好要保证不会读取或修改过期的数据，或者对过期数据的一致性不关心。 |
 |---|---|
 
-实时数仓 Hologres
+## 2 API参考
 
-## API参考
+### 2.1 API
 
-### API
-
-#### 2.1.1. ListInstances - 获取实例列表
+#### 2.1.1 ListInstances - 获取实例列表
 
 调用ListInstances接口，用于获取当前用户下的Hologres实例列表。支持按实例ID、实例状态进行筛选，并支持分页查询。
 
@@ -14916,7 +15810,7 @@ GET/POST /api/v1/instances
 | --VpcId | String | vpc-uf66jjbxxxxgvwhki3wna | 虚拟网络ID。 |
 | --VpcInstanceId | String | hgprecn-cn-uqm3xxxxb001- frontend-st | 虚拟网络实例ID。 |
 
-| 实时数仓 Hologres |  |  | 开发指南·API参考 |
+| 实时数仓 Hologres |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14950,19 +15844,19 @@ GET/POST /api/v1/instances
 
 **示例**
 
-请求示例实时数仓 Hologres
+请求示例
 
 ```
 GET /api/v1/instances
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":"100", "RequestId":"EA667AC4-71A4-****-AB8E-05250957BF53", "PageSize":"10", "PageNumber":"1", "HttpStatusCode":"200", "ErrorCode":"500", "InstanceList":[ { "LeaderInstanceId":"holo-cn-****6ebcbc0d", "SuspendReason":"Manual", "ResourceGroupId":"5", "InstanceId":"holo-cn-****2b011c27", "Endpoints":[ { "Type":"Internet", "Endpoint":"hgpostcn-cn-****9ad2d8fb-cn-hangzhou-internal.hologres.aliyuncs.com:80", "VpcId":"vpc-uf66jjb****gvwhki3wna", "VSwitchId":"vsw-bp1jq****s6kp7tc9t983", "Enabled":true, "VpcInstanceId":"hgprecn-cn-uqm3****b001-frontend-st" } ], "InstanceChargeType":"", "Tags":[ { "Value":"tag_value", "Key":"tag_key" } ], "Cpu":17, "Cluster":"HologresSSDHybridTianjiCluster-A-20251127-****", "SupportReplica":true, "EnableHiveAccess":"false", "ExpirationTime":"2022-11-14T16:00:00Z", "CpuArch":"x86_64", "InstanceName":"testread", "Version":"r3.2.16-pvt-7536416", "InstanceStatus":"Running", "CommodityCode":"", "CreationTime":"2023-02-22T07:24:44.637Z", "CpuBrand":"Intel(x86)", "InstanceType":"Standard" } ], "ErrorMessage":"系统异常", "Success":"true" } |  |
+| { "TotalCount":"100", "RequestId":"EA667AC4-71A4-****-AB8E-05250957BF53", "PageSize":"10", "PageNumber":"1", "HttpStatusCode":"200", "ErrorCode":"500", "InstanceList":[ { "LeaderInstanceId":"holo-cn-****6ebcbc0d", "SuspendReason":"Manual", "ResourceGroupId":"5", "InstanceId":"holo-cn-****2b011c27", "Endpoints":[ { "Type":"Internet", "Endpoint":"hgpostcn-cn-****9ad2d8fb-cn-hangzhou-internal.hologres.aliyuncs.com:80", "VpcId":"vpc-uf66jjb****gvwhki3wna", "VSwitchId":"vsw-bp1jq****s6kp7tc9t983", "Enabled":true, "VpcInstanceId":"hgprecn-cn-uqm3****b001-frontend-st" } ], "InstanceChargeType":"", "Tags":[ { "Value":"tag_value", "Key":"tag_key" } ], "Cpu":17, "Cluster":"HologresSSDHybridTianjiCluster-A-20251127-****", "SupportReplica":true, "EnableHiveAccess":"false", "ExpirationTime":"2022-11-14T16:00:00Z", "CpuArch":"x86_64", "InstanceName":"testread", "Version":"r3.2.16-pvt-7536416", "InstanceStatus":"Running", "CommodityCode":"", "CreationTime":"2023-02-22T07:24:44.637Z", "CpuBrand":"Intel(x86)", "InstanceType":"Standard" } ], "ErrorMessage":"系统异常", "Success":"true" } |   |
 
-`XML` 格式实时数仓 Hologres
+`XML` 格式
 
 ```xml
 <TotalCount>100</TotalCount> <RequestId>EA667AC4-71A4-****-AB8E-05250957BF53</RequestId> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>500</ErrorCode> <InstanceList>
@@ -15005,7 +15899,7 @@ GET /api/v1/instances
 |---|---|---|---|
 | 403 | NoPermission | NoPermission | You are not authorized to perform this operation. |
 
-#### 2.1.2. GetInstance - 获取实例详情
+#### 2.1.2 GetInstance - 获取实例详情
 
 调用GetInstance接口，用于获取具体的Hologres实例详情。
 
@@ -15035,7 +15929,7 @@ GET /api/v1/instances/[instanceId]
 | ErrorCode | String | null | 错误码。 |
 | ErrorMessage | String | null | 错误信息。 |
 
-| 开发指南·API参考 |  |  | 实时数仓 Hologres |
+| 开发指南·API参考 |   |   | 实时数仓 Hologres |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15067,7 +15961,7 @@ GET /api/v1/instances/[instanceId]
 | -Version | String | r2.0.34-pvt-5074488 | 版本。 |
 | -SuspendReason | String | manual | 停机原因（manual：手动停机）。 |
 
-| 实时数仓 Hologres |  |  | 开发指南·API参考 |
+| 实时数仓 Hologres |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15094,10 +15988,9 @@ GET /api/v1/instances/[instanceId]
 GET /api/v1/instances/[instanceId]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时数仓 Hologres
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"865A02C2-B374-****-9B34-0CA15DA1AEBD",
  "Instance":{
   "LeaderInstanceId":"holo-cn-b2af****1865475",
@@ -15107,13 +16000,16 @@ GET /api/v1/instances/[instanceId]
   "InstanceChargeType":"PrePaid",
   "Memory":128,
   "Tags":[
-   {
-    "Value":"my_value",
-    "Key":"my_key"
-   }
 ```
 
-`],`
+`{`
+
+```json
+    "Value":"my_value",
+    "Key":"my_key"
+```
+
+`}` `],`
 
 ```json
   "Cpu":32,
@@ -15130,17 +16026,20 @@ GET /api/v1/instances/[instanceId]
   "ZoneId":"cn-qingdao-env17e-am****17001-a",
   "InstanceId":"holo-cn-b2a****b1",
   "Endpoints":[
-   {
+```
+
+`{`
+
+```json
     "Type":"VPCSingleTunnel",
     "Endpoint":"holo-cn-d303****deb8-cn-qingdao-env17e-d01-vpc-st.hologres.intra.env17e.shuguang.com:80",
     "VpcId":"vpc-9gdv****gpo057tpx87j6",
     "VSwitchId":"vsw-9gda****vnxamkw0lagwa",
     "Enabled":true,
     "VpcInstanceId":"holo-cn-908c****97b4-frontend-st"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "InstanceOwner":"123456789",
@@ -15151,15 +16050,22 @@ GET /api/v1/instances/[instanceId]
   "MasterInstanceId":"holo-cn-b2af****1241234",
   "CreationTime":"2024-01-18T03:55:20.592Z",
   "CpuBrand":"intel"
- },
+```
+
+`},`
+
+```json
  "HttpStatusCode":"200",
  "ErrorCode":"null",
  "ErrorMessage":"null",
  "Success":true
-}
 ```
 
-#### 2.1.3. UpdateInstanceName - 修改实例名称
+`}`
+
+#### 2.1.3 UpdateInstanceName - 修改实例名称
+
+调用UpdateInstanceName接口，用于修改实例名称。
 
 **请求头**
 
@@ -15185,7 +16091,7 @@ POST /api/v1/instances/[instanceId]/instanceName
 |---|---|---|---|
 | RequestId | String | C6B55032-D41A-****-9C07- 8BD81C88422E | 请求唯一ID。 |
 
-| 实时数仓 Hologres |  |  | 开发指南·API参考 |
+| 实时数仓 Hologres |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15201,16 +16107,16 @@ POST /api/v1/instances/[instanceId]/instanceName
 请求示例
 
 ```
-POST /api/v1/instances/[instanceId]/instanceName HTTP/1.1 { }
+POST /api/v1/instances/[instanceId]/instanceName HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"C6B55032-D41A-****-9C07-8BD81C88422E", "HttpStatusCode":"200", "Data":true, "ErrorCode":"null", "ErrorMessage":"null", "Success":true } |  |
+| { "RequestId":"C6B55032-D41A-****-9C07-8BD81C88422E", "HttpStatusCode":"200", "Data":true, "ErrorCode":"null", "ErrorMessage":"null", "Success":true } |   |
 
-#### 2.1.4. ListBackupData - 获取快照列表
+#### 2.1.4 ListBackupData - 获取快照列表
 
 调用ListBackupData 接口，用于获取实例的快照列表。
 
@@ -15243,7 +16149,7 @@ GET /api/v1/backups
 | -Id | Long | 199868****448897026 | 快照ID。 |
 | -InstanceId | String | holo-cn-68b1****d05a | 实例ID。 |
 
-| 开发指南·API参考 |  |  | 实时数仓 Hologres |
+| 开发指南·API参考 |   |   | 实时数仓 Hologres |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15270,19 +16176,19 @@ GET /api/v1/backups
 GET /api/v1/backups
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"DCF82B81-727B-****-B07E-917405C74AB2", "HttpStatusCode":"200", "ErrorCode":"500", "ErrorMessage":"UnknownError", "BackupDataList":[ { "Status":"completed", "TriggerType":"manual", "EndTime":"2025-12-10T01:18:04.000+00:00", "InstanceId":"holo-cn-68b1****d05a", "StartTime":"2025-12-10T07:26:25.000+00:00", "DataTime":"2025-12-10T01:16:14.000+00:00", "DataDesc":"备注", "DataPath":"pangu://HologresSSDHybridTianjiCluster-A-20251127-01a4/hologres/backup_datasets/holo-cn-8b74****bc0d/08****", "DataGran":"instance", "DataSize":38356975, "BackupType":"full", "Id":199868****448897026, "ExpireTime":"2025-12-10T07:26:25.000+00:00", "ErrorMessage":"无法创建备份 - 集群资源不足" } ], "Success":true } |  |
+| { "RequestId":"DCF82B81-727B-****-B07E-917405C74AB2", "HttpStatusCode":"200", "ErrorCode":"500", "ErrorMessage":"UnknownError", "BackupDataList":[ { "Status":"completed", "TriggerType":"manual", "EndTime":"2025-12-10T01:18:04.000+00:00", "InstanceId":"holo-cn-68b1****d05a", "StartTime":"2025-12-10T07:26:25.000+00:00", "DataTime":"2025-12-10T01:16:14.000+00:00", "DataDesc":"备注", "DataPath":"pangu://HologresSSDHybridTianjiCluster-A-20251127-01a4/hologres/backup_datasets/holo-cn-8b74****bc0d/08****", "DataGran":"instance", "DataSize":38356975, "BackupType":"full", "Id":199868****448897026, "ExpireTime":"2025-12-10T07:26:25.000+00:00", "ErrorMessage":"无法创建备份 - 集群资源不足" } ], "Success":true } |   |
 
-#### 2.1.5. ListWhitelistRules - 获取实例白名单列表
+#### 2.1.5 ListWhitelistRules - 获取实例白名单列表
 
 调用ListWhitelistRules接口，用于获取指定Hologres实例的白名单列表信息。
 
 **认证方式**
 
-实时数仓 Hologres AK认证（AccessKey）
+AK认证（AccessKey）
 
 **请求头**
 
@@ -15327,13 +16233,16 @@ GET /api/v1/instances/[instanceId]/whitelistRules HTTP/1.1
 GET /api/v1/instances/[instanceId]/whitelistRules HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时数仓 Hologres
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
  "WhitelistRules":[
-  {
+```
+
+`{`
+
+```json
    "Options":"”“",
    "Type":"IP",
    "UserName":"holo_user",
@@ -15341,18 +16250,18 @@ GET /api/v1/instances/[instanceId]/whitelistRules HTTP/1.1
    "Database":"prod_db",
    "LineNumber":1,
    "AuthMethod":"md5"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "HttpStatusCode":"200",
  "ErrorCode":"500",
  "ErrorMessage":"The requested services is xxxxx",
  "Success":true
-}
 ```
+
+`}`
 
 **文档补充说明**
 
@@ -15364,9 +16273,9 @@ GET /api/v1/instances/[instanceId]/whitelistRules HTTP/1.1
 
 API版本：2022-06-01 可见性：Public（公开） 资源归属：调用时自动关联客户端资源所有者（keepClientResourceOwnerId=true）
 
-### API（3.2内核）
+### 2.2 API（3.2内核）
 
-#### 2.2.1. EnableInstanceAudit-启用实例审计日志
+#### 2.2.1 EnableInstanceAudit-启用实例审计日志
 
 调用EnableInstanceAudit接口，启用实例审计功能，用于记录和监控数据库实例的操作行为，便于安全审计和合规性检查。
 
@@ -15395,15 +16304,15 @@ API版本：2022-06-01 可见性：Public（公开） 资源归属：调用时�
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"865A02C2-B374-****-9B34-0CA15DA1AEBD", "HttpStatusCode":"200", "Data":false, "ErrorCode":"500", "ErrorMessage":"", "Success":true } |  |
+| { "RequestId":"865A02C2-B374-****-9B34-0CA15DA1AEBD", "HttpStatusCode":"200", "Data":false, "ErrorCode":"500", "ErrorMessage":"", "Success":true } |   |
 
-`XML` 格式实时数仓 Hologres
+`XML` 格式
 
 ```xml
 <RequestId>865A02C2-B374-****-9B34-0CA15DA1AEBD</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>false</Data> <ErrorCode>500</ErrorCode> <ErrorMessage /> <Success>true</Success>
 ```
 
-#### 2.2.2. DisableInstanceAudit-禁用数据库审计日志
+#### 2.2.2 DisableInstanceAudit-禁用数据库审计日志
 
 调用DisableInstanceAudit接口，用于禁用数据库审计，停止对该实例的审计记录。
 
@@ -15432,22 +16341,22 @@ API版本：2022-06-01 可见性：Public（公开） 资源归属：调用时�
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"865A02C2-B374-****-9B34-0CA15DA1AEBD", "HttpStatusCode":"200", "Data":false, "ErrorCode":"500", "ErrorMessage":"", "Success":true } |  |
+| { "RequestId":"865A02C2-B374-****-9B34-0CA15DA1AEBD", "HttpStatusCode":"200", "Data":false, "ErrorCode":"500", "ErrorMessage":"", "Success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <RequestId>865A02C2-B374-****-9B34-0CA15DA1AEBD</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>false</Data> <ErrorCode>500</ErrorCode> <ErrorMessage /> <Success>true</Success> |  |
+| <RequestId>865A02C2-B374-****-9B34-0CA15DA1AEBD</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>false</Data> <ErrorCode>500</ErrorCode> <ErrorMessage /> <Success>true</Success> |   |
 
-#### 2.2.3. ListEncryptionRules-查询实例表级别加密情况
+#### 2.2.3 ListEncryptionRules-查询实例表级别加密情况
 
 调用ListEncryptionRules，用于查询指定实例的加密规则列表。 该接口用于查询指定实例的加密规则列表。
 
 **注意事项**
 
-| instanceId |  |  | 参数正确填写，且对应实例存在。 方法。 |
+| instanceId |   |   | 参数正确填写，且对应实例存在。 方法。 |
 |---|---|---|---|
-|  | GET |  |  |
-|  |  | /api/v1/instances/[instanceId]/encryptionRules |  |
+|   | GET |   |   |
+|   |   | /api/v1/instances/[instanceId]/encryptionRules |   |
 
 **请求头**
 
@@ -15460,8 +16369,6 @@ GET /api/v1/instances/[instanceId]/encryptionRules HTTP/1.1
 ```
 
 **请求参数**
-
-实时数仓 Hologres
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -15491,12 +16398,12 @@ GET /api/v1/instances/[instanceId]/encryptionRules HTTP/1.1
 GET /api/v1/instances/[instanceId]/encryptionRules HTTP/1.1 &instanceId=holo-instance-12345
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"0000-ABCD-1234-EFGH", "EncryptionRules":[ { "TableName":"table_001", "PropertyValue":"AES256,3ba7163a-a12f-****-b8d8-facc9bd5971c,rolekms,16****8037623020", "TableNamespace":"default", "PropertyKey":"encryption_key" } ], "HttpStatusCode":"200", "ErrorCode":"InvalidParameter", "ErrorMessage":"The parameter is invalid.", "Success":true } |  |
+| { "RequestId":"0000-ABCD-1234-EFGH", "EncryptionRules":[ { "TableName":"table_001", "PropertyValue":"AES256,3ba7163a-a12f-****-b8d8-facc9bd5971c,rolekms,16****8037623020", "TableNamespace":"default", "PropertyKey":"encryption_key" } ], "HttpStatusCode":"200", "ErrorCode":"InvalidParameter", "ErrorMessage":"The parameter is invalid.", "Success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <RequestId>0000-ABCD-1234-EFGH</RequestId> <EncryptionRules> <TableName>table_001</TableName> <PropertyValue>AES256,3ba7163a-a12f-****-b8d8-facc9bd5971c,rolekms,16****8037623020</PropertyValue> <TableNamespace>default</TableNamespace> <PropertyKey>encryption_key</PropertyKey> </EncryptionRules> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>InvalidParameter</ErrorCode> <ErrorMessage>The parameter is invalid.</ErrorMessage> <Success>true</Success> |  |
+| <RequestId>0000-ABCD-1234-EFGH</RequestId> <EncryptionRules> <TableName>table_001</TableName> <PropertyValue>AES256,3ba7163a-a12f-****-b8d8-facc9bd5971c,rolekms,16****8037623020</PropertyValue> <TableNamespace>default</TableNamespace> <PropertyKey>encryption_key</PropertyKey> </EncryptionRules> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>InvalidParameter</ErrorCode> <ErrorMessage>The parameter is invalid.</ErrorMessage> <Success>true</Success> |   |

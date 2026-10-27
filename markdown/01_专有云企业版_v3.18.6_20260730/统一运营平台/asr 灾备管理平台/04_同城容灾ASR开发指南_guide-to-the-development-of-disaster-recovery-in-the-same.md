@@ -5,14 +5,53 @@ doc_version: "20260729"
 pdf_pages: 111
 source_pdf: "04_同城容灾ASR开发指南_guide-to-the-development-of-disaster-recovery-in-the-same.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/asr/zh/guide-to-the-development-of-disaster-recovery-in-the-same.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 灾备管理平台 同城容灾ASR开发指南
 
-灾备管理中心流程说明
+## 目录
 
-## API调用流程说明
+- 1 API调用流程说明
+- 2 准备工作
+  - 2.1 获取AccessKey
+  - 2.2 获取API信息及其Endpoint
+  - 2.3 通过POP网关调用专有云API
+    - 2.3.1 Python版本
+    - 2.3.2 Java版本
+    - 2.3.3 SDK概览
+- 3 错误码信息
+- 4 API参考
+  - 4.1 保护组
+    - 4.1.1 ListProtectionGroup
+    - 4.1.2 ListProtectionGroupStatistics
+    - 4.1.3 ListProtectionGroupStatus
+    - 4.1.4 GetProtectionGroup
+    - 4.1.5 CheckProductInstance
+    - 4.1.6 GetZoneInfo
+  - 4.2 演练计划
+    - 4.2.1 ListProcesses
+    - 4.2.2 ListDrillProcesses
+    - 4.2.3 CloseProcess
+    - 4.2.4 CreateDrillProcess
+    - 4.2.5 GetProcessTrace
+    - 4.2.6 ExecuteProcess
+    - 4.2.7 CreateNextProcess
+    - 4.2.8 GetInstanceStatus
+    - 4.2.9 GetProcessEntry
+    - 4.2.10 CreateDisasterRecoveryProcess
+    - 4.2.11 CreateHdrReverse
+    - 4.2.12 GetDrillPlan
+    - 4.2.13 ListDrillPlan
+    - 4.2.14 GetProcessCheck
+    - 4.2.15 GetPrevProcess
+    - 4.2.16 GetProcessDetail
+    - 4.2.17 SwitchInstance
+    - 4.2.18 SetProcessSwitchStep
+
+流程说明
+
+## 1 API调用流程说明
 
 阿里云专有云支持通过POP网关调用同城容灾管理平台ASR的API。
 
@@ -23,29 +62,30 @@ converter: line-classifier (PyMuPDF)
 **调用步骤**
 
 1. 获取API信息。
+API信息请参见API参考。
 2. 获取AccessKey ID和AccessKey Secret，获取方式请参见获取AccessKey。
 3. 获取同城容灾管理平台ASR的Endpoint和Region ID，获取方式请参见获取API信息及其Endpoint。
 4. 获取同城容灾管理平台ASR的SDK包和SDK核心库，获取方法请参见通过POP网关调用专有云API。
 5. 调用同城容灾管理平台ASR的API接口。
-灾备管理中心
 
-## 准备工作
+## 2 准备工作
 
-### 获取AccessKey
+### 2.1 获取AccessKey
 
-**背景信息**
+> 本文介绍获取AccessKey ID和AccessKey Secret的具体操作。
+> **背景信息**
+> AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号 AccessKey调用接口。
+**获取AccessKey**
+
+> Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号 AccessKey调用接口。
 
 **说明**
 
 只有运营管理员和一级组织管理员可以获取组织AccessKey。
 
-**获取个人账号AccessKey时，请确保登录的用户具备组织备份管理员角**
-
-**色，否则可能导致接口调用失败。**
-
-**获取个人账号AccessKey**
+> **获取个人账号****AccessKey****时，请确保登录的用户具备组织备份管理员角** **色，否则可能导致接口调用失败。**
+> **获取个人账号****AccessKey**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
@@ -55,38 +95,38 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 
 AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-**获取组织AccessKey**
+> **获取组织****AccessKey**
 
 **警告**
 
 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-灾备管理中心
 3. 在左侧导航栏中，选择**资源管理**>**组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取API信息及其Endpoint
+### 2.2 获取API信息及其Endpoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
 **操作步骤**
 
 1. 登录Apsara Uni-manager运维控制台。
-2. 在顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **资源管理**。
-3. 在左侧导航栏中选择**资源管理** > **产品集群运维**。
+2. 在顶部菜单栏选择**平台运维** **>** **飞天基础运维平台** **>** **资源管理**。
+3. 在左侧导航栏中选择**资源管理** **>** **产品集群运维**。
 4. 在搜索框中输入bcmc。
 5. 单击**集群详情**，进入详情页面，选择**终态配置**页签。
 6. 选择kv.conf，单击**显示内容**查看并保存region值。
-灾备管理中心
 7. 选择**服务列表**页签，单击bcmc服务名称，进入服务bcmc详情页。
 8. 获取asr.pop.open.endpoint的值并保存。
 
-### 通过POP网关调用专有云API
+### 2.3 通过POP网关调用专有云API
 
-#### Python版本
+通过POP网关调用专有云API简介
+
+#### 2.3.1 Python版本
 
 **环境要求**
 
@@ -104,11 +144,11 @@ pip install apsarastack_asr20250916.tar.gz
 
 **开发者门户获取 SDK**
 
-1.登录 ASCM 的开发者门户，单击 SDK 示例。 2.SDK 类型下拉选择高级版，选择 Java 语言。 灾备管理中心 3.下方可看到示例代码，点击下载完整工程以获取示例项目及 SDK 包。
+1.登录 ASCM 的开发者门户，单击 SDK 示例。 2.SDK 类型下拉选择高级版，选择 Java 语言。 3.下方可看到示例代码，点击下载完整工程以获取示例项目及 SDK 包。
 
 **导入 SDK 包**
 
-1.通过以下任一方式创建 Maven 项目。 方式一：在 IDEA 中添加一个 Maven 项目。 灾备管理中心方式二：将已有的项目转换为 Maven 项目。 右键单击要转换的项目，并选择**Add Framework Support** ...。 选择 Maven，并单击 OK。 2.在项目根目录下创建 lib 包，将 Java SDK 包放入到 lib 目录下，如下图。 3.在项目目录下的 pom.xml 中，添加 Java SDK 依赖，代码请参考上文中《安装说明代码》部分。 4.查看 IDEA 右侧 Maven 栏，如图所示，表示已成功导入依赖。
+1.通过以下任一方式创建 Maven 项目。 方式一：在 IDEA 中添加一个 Maven 项目。 方式二：将已有的项目转换为 Maven 项目。 右键单击要转换的项目，并选择**Add Framework Support** ...。 选择 Maven，并单击 OK。 2.在项目根目录下创建 lib 包，将 Java SDK 包放入到 lib 目录下，如下图。 3.在项目目录下的 pom.xml 中，添加 Java SDK 依赖，代码请参考上文中《安装说明代码》部分。 4.查看 IDEA 右侧 Maven 栏，如图所示，表示已成功导入依赖。
 
 **代码示例**
 
@@ -120,7 +160,7 @@ pip install apsarastack_asr20250916.tar.gz
 import os import sys from typing import List from alibabacloud_tea_openapi import models as open_api_models from alibabacloud_tea_util import models as util_models from alibabacloud_darabonba_env.client import Client as EnvClient from alibabacloud_tea_console.client import Client as ConsoleClient from alibabacloud_tea_util.client import Client as UtilClient from apsarastackasr20250916.client import Client as SddpClient
 ```
 
-灾备管理中心 _
+`_`
 
 ```python
 from apsarastack_asr20250916 import models as sddp_models class Sample:
@@ -148,7 +188,7 @@ from apsarastack_asr20250916 import models as sddp_models class Sample:
         config.access_key_secret = access_key_secret
 ```
 
-# 您的可用区`ID`
+`#` 您的可用区`ID`
 
 ```python
         config.region_id = region_id
@@ -159,14 +199,13 @@ from apsarastack_asr20250916 import models as sddp_models class Sample:
     ) -> None:
 ```
 
-# 特殊`Header`参数,设置组织`ID`和资源集`ID,`资源隔离使用，请根据实际修改
-# 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-`
+`#` 特殊`Header`参数`,`设置组织`ID`和资源集`ID,`资源隔离使用，请根据实际修改 `#` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-`
 
 ```
 organizationid、x-acs-resourcegroupid
 ```
 
-# 额外参数需使用带`WithOptions`后缀的方法，例：
+`#` 额外参数需使用带`WithOptions`后缀的方法，例：
 
 ```
 describeImagesWithOptions(describeImagesRequest, runtime)
@@ -174,24 +213,23 @@ describeImagesWithOptions(describeImagesRequest, runtime)
             'x-acs-organizationid': '<yourOrganizationId>',
             'x-acs-resourcegroupid': '<yourResourceGroupId>',
             'x-acs-regionId': '<yourRegionId>',
-        }
+```
+
+`}`
+
+```
         extends_params = util_models.ExtendsParameters(
             headers=headers
 ```
 
-)
-# 创建并配置 `runtimeOptions`
+`)` `#` 创建并配置 `runtimeOptions`
 
 ```
         runtime_options = util_models.RuntimeOptions(
             extends_parameters=extends_params
 ```
 
-)
-# 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过运行时参数`igno`
-`reSSL`设置
-# 忽略对 `SSL` 证书的验证
-灾备管理中心
+`)` `#` 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过运行时参数`igno` `reSSL`设置 `#` 忽略对 `SSL` 证书的验证
 
 ```
         runtime_options.ignore_ssl = True
@@ -238,7 +276,7 @@ if __name__ == '__main__':
         config.access_key_secret = access_key_secret
 ```
 
-# 您的可用区`ID`
+`#` 您的可用区`ID`
 
 ```
         config.region_id = region_id
@@ -251,7 +289,7 @@ if __name__ == '__main__':
 client = Sample.create_client('<yourAccessKeyId>', '<yourAccessKeySECRET>', '<yourRegionId>')
 ```
 
-`request.page_number = 1 //` 该参数值为假设值，请您根据实际情况进行填写 `request.page_size = 10 //` 该参数值为假设值，请您根据实际情况进行填写 `request.protection_name = "bcmctest" //` 该参数值为假设值，请您根据实际情况进行填写灾备管理中心
+`request.page_number = 1 //` 该参数值为假设值，请您根据实际情况进行填写 `request.page_size = 10 //` 该参数值为假设值，请您根据实际情况进行填写 `request.protection_name = "bcmctest" //` 该参数值为假设值，请您根据实际情况进行填写
 3. 创建对应 API 的 Request 。方法的命名规则为 API 方法名加上 Request 。例如获取保护组列表接口
 ListProtectionGroup，对应的方法为ListProtectionGroupRequest。
 
@@ -266,23 +304,23 @@ headers = {
             'x-acs-organizationid': '<yourOrganizationId>',
             'x-acs-resourcegroupid': '<yourResourceGroupId>',
             'x-acs-regionId': '<yourRegionId>',
-        }
+```
+
+`}`
+
+```
 extends_params = util_models.ExtendsParameters(
             headers=headers
 ```
 
-)
-# 创建并配置 `runtimeOptions`
+`)` `#` 创建并配置 `runtimeOptions`
 
 ```
  runtime_options = util_models.RuntimeOptions(
             extends_parameters=extends_params
 ```
 
-)
-# 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过运行时参数`ignoreSSL`设
-置
-# 忽略对 `SSL` 证书的验证
+`)` `#` 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过运行时参数`ignoreSSL`设置 `#` 忽略对 `SSL` 证书的验证
 
 ```
 runtime_options.ignore_ssl = True
@@ -300,13 +338,13 @@ response = client.list_protection_group_with_options(request, headers, runtime_o
 except Exception as e:
 ```
 
-# 处理异常
+`#` 处理异常
 
 ```
    logging.error(e)
 ```
 
-#### Java版本
+#### 2.3.2 Java版本
 
 **环境要求**
 
@@ -324,8 +362,6 @@ except Exception as e:
 </dependency>
 ```
 
-灾备管理中心
-
 **安装说明文档**
 
 **开发者门户获取 SDK**
@@ -334,7 +370,7 @@ except Exception as e:
 
 **导入 SDK 包**
 
-1.通过以下任一方式创建 Maven 项目。 方式一：在 IDEA 中添加一个 Maven 项目。 灾备管理中心方式二：将已有的项目转换为 Maven 项目。 右键单击要转换的项目，并选择**Add Framework Support** ...。 选择 Maven，并单击 OK。 2.在项目根目录下创建 lib 包，将 Java SDK 包放入到 lib 目录下，如下图。 3.在项目目录下的 pom.xml 中，添加 Java SDK 依赖，代码请参考上文中《安装说明代码》部分。 4.查看 IDEA 右侧 Maven 栏，如图所示，表示已成功导入依赖。
+1.通过以下任一方式创建 Maven 项目。 方式一：在 IDEA 中添加一个 Maven 项目。 方式二：将已有的项目转换为 Maven 项目。 右键单击要转换的项目，并选择**Add Framework Support** ...。 选择 Maven，并单击 OK。 2.在项目根目录下创建 lib 包，将 Java SDK 包放入到 lib 目录下，如下图。 3.在项目目录下的 pom.xml 中，添加 Java SDK 依赖，代码请参考上文中《安装说明代码》部分。 4.查看 IDEA 右侧 Maven 栏，如图所示，表示已成功导入依赖。
 
 **代码示例**
 
@@ -345,7 +381,7 @@ import com.aliyun.apsarastack.asr20250916.Client; import com.aliyun.apsarastack.
     public static Client createClient() throws Exception {
 ```
 
-灾备管理中心 `//`组织或者`ASCM`用户的`AK/SK`
+`//`组织或者`ASCM`用户的`AK/SK`
 
 ```
         com.aliyun.teaopenapi.models.Config config = new
@@ -369,10 +405,18 @@ com.aliyun.teaopenapi.models.Config()
 ```
         config.endpoint = "<yourEndpoint>";
         return new Client(config);
-    }
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         SwitchInstance();
-    }
+```
+
+`}`
+
+```
     public static void testSwitchInstance() throws Exception {
         Client client = createClient();
         SwitchInstanceRequest switchInstanceRequest = new SwitchInstanceRequest();
@@ -394,6 +438,7 @@ switchInstanceRequest.setProcessId(97); // 该参数值为假设值，请您根�
 
 ```java
         try {
+            SwitchInstanceResponse response =
 client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime);
             System.out.println(new Gson().toJson(response.body));
         } catch (Exception error) {
@@ -403,15 +448,14 @@ client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime);
 
 ```java
             System.out.println(error.getMessage());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **步骤示例**
 
 1. 初始化配置对象com.aliyun.teaopenapi.models.Config 。 Config 对象存放 AccessKeyId、
-AccessKeySecret 、Endpoint 等配置，Endpoint 可以在ASCM的开发者门户查询。 灾备管理中心 `//`组织或者`ASCM`用户的`AK/SK`
+AccessKeySecret 、Endpoint 等配置，Endpoint 可以在ASCM的开发者门户查询。 `//`组织或者`ASCM`用户的`AK/SK`
 
 ```
 com.aliyun.teaopenapi.models.Config config = new com.aliyun.teaopenapi.models.Config()
@@ -465,7 +509,7 @@ switchInstanceRequest.setProcessId(97); // 该参数值为假设值，请您根�
 5. 通过 client 对象获得对应 request 响应 response 。
 
 ```java
-client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime); System.out.println(new Gson().toJson(response.body));
+SwitchInstanceResponse response = client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime); System.out.println(new Gson().toJson(response.body));
 ```
 
 7.使用 catch() 处理报错。
@@ -474,17 +518,17 @@ client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime); Syste
 except Exception as e:
 ```
 
-# 处理异常
+`#` 处理异常
 
 ```
     logging.error(e)
 ```
 
-#### SDK概览
+#### 2.3.3 SDK概览
 
 **概览**
 
-灾备管理中心文档中 SDK 关于 API 的示例代码仅供参考，各 API 的完整使用步骤与参数说明请参见开发者门户 SDK 示例和 OpenAPI 文档。
+文档中 SDK 关于 API 的示例代码仅供参考，各 API 的完整使用步骤与参数说明请参见开发者门户 SDK 示例和 OpenAPI 文档。
 
 **SDK版本**
 
@@ -521,7 +565,7 @@ except Exception as e:
 | ASR.ListProtectionGroup.2025-09-16 | v3.18.6 |
 | ASR.ListProtectionGroupStatistics.2025-09-16 | v3.18.6 |
 
-|  | 灾备管理中心 | 同城容灾管理平台开发指南·准备工作 |  |
+|   | 灾备管理中心 | 同城容灾管理平台开发指南·准备工作 |   |
 |---|---|---|---|
 
 | API名称 | 所在版本 |
@@ -532,9 +576,9 @@ except Exception as e:
 
 **可用性说明**
 
-在之前版本曾提供过的 API 中，有部分已不推荐使用，有部分已废弃不支持。本文主要阐述不推荐使用和已不支持的 API 情况。 对于不推荐使用的 API，并且仍会在 API 参考中阐述该接口的调用方法，IDE 中会带有过时标记。一般情况下，不推荐使用的 API 将不再在后续专有云版本中继续提供支持。 对于已不支持的 API，大部分均不存在替代接口，且不会在 API 参考中阐述该接口的调用方法；少部分已不支持的 API 有功能相似的替代 API 提供使用。 IDEA 会带上过时标记方便开发人员注意到过时 API，新用户不应该再使用这些接口。 灾备管理中心息
+在之前版本曾提供过的 API 中，有部分已不推荐使用，有部分已废弃不支持。本文主要阐述不推荐使用和已不支持的 API 情况。 对于不推荐使用的 API，并且仍会在 API 参考中阐述该接口的调用方法，IDE 中会带有过时标记。一般情况下，不推荐使用的 API 将不再在后续专有云版本中继续提供支持。 对于已不支持的 API，大部分均不存在替代接口，且不会在 API 参考中阐述该接口的调用方法；少部分已不支持的 API 有功能相似的替代 API 提供使用。 IDEA 会带上过时标记方便开发人员注意到过时 API，新用户不应该再使用这些接口。 息
 
-## 错误码信息
+## 3 错误码信息
 
 本章节介绍API接口调用时常见的错误码以及错误信息。 调用ASR API时可能遇到两类错误：SDK调用异常和后端业务执行异常。当请求POP接口出错时，系统会返回相应的错误提示，此类问题通常由接口调用方式不当引起，需根据提示调整请求参数。以下是常见的POP SDK异常说明。
 
@@ -550,7 +594,7 @@ except Exception as e:
 | 400 | InvalidTimeStamp.Expi red | Specified time stamp or date value is expired. | 时间戳已过期。请确保设备时间与服务器时间同步（允许偏差范围：15分钟以内）。 |
 | 413 | PayloadTooLarge | The request payload is too large, the limitation is xxx bytes. | 请求体过大，超出限制（最大允许 xxx 字节）。请减少请求数据大小后重试。 |
 
-对于后端业务异常，一般接口可以正常获取返回信息。然而，此时接口的返回信息中，Success字段显示为 false，同时异常信息将包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。请根据具体的错误信息与同城容灾研发团队联系，以便进行定位和处理。 灾备管理中心息
+对于后端业务异常，一般接口可以正常获取返回信息。然而，此时接口的返回信息中，Success字段显示为 false，同时异常信息将包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。请根据具体的错误信息与同城容灾研发团队联系，以便进行定位和处理。 息
 
 | Success | ErrorCode | ErrorMessage | 错误信息 |
 |---|---|---|---|
@@ -568,23 +612,23 @@ except Exception as e:
 | fasle | skipRecoveryProcessError | Skip recovery process step error! | 跳过恢复步骤失败，请确认是否允许跳过该步骤。 |
 | fasle | recoveryProcessCloseError | Recovery process close error! | 关闭恢复流程失败，请确认流程未处于执行中状态。 |
 
-灾备管理中心息
+息
 
 | fasle | switchInstanceError | switch instance error! | 实例切换操作异常，请检查目标实例状态。 |
 |---|---|---|---|
 | fasle | createHdrReverseError | Create hdr reverse error! | HDR保护组反向切换失败，请检查同步状态。 |
 
-灾备管理中心
+## 4 API参考
 
-## API参考
+这是 API 参考内容
 
-### 保护组
+### 4.1 保护组
 
-#### ListProtectionGroup
+#### 4.1.1 ListProtectionGroup
 
 该接口用于列出保护组的清单, 包括保护组的创建信息、涉及示例信息和当前状态。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于列出保护组的清单, 支持全量进行查询，如果传入参数如PageNumber，支持按照条件进行筛选。
 
@@ -593,6 +637,10 @@ except Exception as e:
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/listProtectionGroup HTTP/1.1
+```
 
 **请求参数**
 
@@ -611,7 +659,7 @@ except Exception as e:
 | Data | Array | {} | 返回数据。 |
 | - ProtectionGrou pId | Integer | 10 | 保护组id |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -634,7 +682,7 @@ except Exception as e:
 | Cost | Long | 20 | 接口耗时，单位：毫秒（ms）。 |
 | TotalCount | Integer | 100 | 列表条目数。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -647,13 +695,12 @@ except Exception as e:
 请求示例
 
 ```
-{ }
+POST /api/pop/v1/listProtectionGroup HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/xxx/",
  "TotalCount":100,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -661,7 +708,11 @@ except Exception as e:
  "PageSize":10,
  "PageNumber":1,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "Instances":"rm-xxx",
    "GmtCreate":1756107183000,
    "Description":"test",
@@ -671,10 +722,9 @@ except Exception as e:
    "CheckStatus":"NORMAL",
    "GmtModified":1756107183000,
    "CreateUid":"999999999"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -682,10 +732,9 @@ except Exception as e:
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -701,13 +750,13 @@ except Exception as e:
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListProtectionGroupStatistics
+#### 4.1.2 ListProtectionGroupStatistics
 
 该接口用于查询保护组的概览信息，包含保护组的切换次数、涉及产品、示例和上次演练时间等。 接口说明
 
-## 准备工作
+**准备工作**
 
-该接口用于查询保护组的概览信息，包含保护组的切换次数、涉及产品、示例和上次演练时间等，使用该接
+该接口用于查询保护组的概览信息，包含保护组的切换次数、涉及产品、示例和上次演练时间等，使用该接口需要传入保护组ID, 可以通过ListProtectionGroup 接口查询。
 
 **请求头**
 
@@ -730,8 +779,6 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -752,7 +799,7 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 | -DrillSuccess | Integer | 10 | 演练成功次数 |
 | -DrillFailure | Integer | 10 | 演练失败次数 |
 
-|  | 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |  |
+|   | 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -772,14 +819,19 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 
 请求示例
 
-```json
-POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1 { "ProtectionGroupIds":"12" }
+```
+POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"ProtectionGroupIds":"12"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -789,14 +841,17 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1 { "ProtectionGroupIds":"
   "SwitchBackCheckCount":10,
   "CrashCount":10,
   "Instances":[
-   {
+```
+
+`{`
+
+```json
     "NormalCount":10,
     "Product":"RDS",
     "AbnormalCount":10
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "DrillPlanCount":10,
@@ -809,16 +864,19 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1 { "ProtectionGroupIds":"
   "DrillFailure":10,
   "RecoveryCheckCount":10,
   "DrillSuccess":10
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -844,7 +902,7 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1 { "ProtectionGroupIds":"
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListProtectionGroupStatus
+#### 4.1.3 ListProtectionGroupStatus
 
 该接口用于列出保护组的状态, 主要用于获取当前保护组的状态是否正常。 接口说明
 
@@ -868,8 +926,6 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 |---|---|---|---|---|---|
 | Protection GroupIds | Strin g | Body | 是 | 10 | 保护组id。 |
 
-灾备管理中心
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -891,26 +947,34 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 
 请求示例
 
-```json
-POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" }
+```
+POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"ProtectionGroupIds":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "Status":"Normal",
    "ProtectionGroupId":10,
    "CanEdit":true
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -918,10 +982,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -931,11 +994,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetProtectionGroup
+#### 4.1.4 GetProtectionGroup
 
 获取保护组的详细信息，包括保护组中包含的产品信息和添加到保护组的实例信息接口说明
 
-## 准备工作
+**准备工作**
 
 调用该接口需要传递ProtectionGroupId 参数，建议先根据ListProtectionGroup的接口获取所有的保护组列表信息，根据实际创建的保护组名字获取对应的ProtectionGroupId 参数。
 
@@ -945,9 +1008,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **请求语法**
 
-**请求参数**
+```
+POST /api/pop/v1/getProtectionGroup HTTP/1.1
+```
 
-灾备管理中心
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -973,7 +1038,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | --Product | String | RDS | 云产品Code。 |
 | -- MasterLocatio n | String | cn-wulan-env10- amtest10000-a | 主节点位置 |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -996,14 +1061,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 请求示例
 
-```json
-{ "ProtectionGroupId":"10" }
+```
+POST /api/pop/v1/getProtectionGroup HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"ProtectionGroupId":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/xx",
  "RequestId":"F0A8A039-930D-5EC1-97C8",
  "Message":"success",
@@ -1012,7 +1082,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
   "Description":"test",
   "AccountId":"999999999",
   "Instances":[
-   {
+```
+
+`{`
+
+```json
     "MasterLocation":"cn-wulan-env10-amtest10000-a",
     "CheckTime":1635143903000,
     "InstanceId":"\"rm-xx\"",
@@ -1022,10 +1096,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
     "Info":"“ ”",
     "ZoneInfo":"cn-wulan-env10-amtest10000-a",
     "Result":"success"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "ProtectionName":"test",
@@ -1034,16 +1107,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
   "CreateUid":"999999999",
   "Id":10,
   "CanEdit":true
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":30,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8</RequestId> <Message>success</Message> <Data>
@@ -1070,11 +1146,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>30</Cost> <Success>true</Success>
 ```
 
-#### CheckProductInstance
+#### 4.1.5 CheckProductInstance
 
 该接口用于检查产品实例状态, 实例是否容灾，根据返回的实例信息可以判断实例是否支持容灾切换。 接口说明
 
-## 准备工作
+**准备工作**
 
 使用该接口时，请确认传入的实例信息归属组织， ASR侧并不进行实例的组织校验，请提前校验，避免越权问题。
 
@@ -1084,9 +1160,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **请求语法**
 
-**请求参数**
+```
+POST /api/pop/v1/checkProductInstance HTTP/1.1
+```
 
-灾备管理中心
+**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1112,46 +1190,53 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | --Message | String | message | 返回信息。 |
 | -CloudProduct | String | RDS | 云产品。 |
 
-灾备管理中心
-
-**示例**
-
 请求示例
 
-```json
-{ "CloudProduct":"RDS", "InstanceIds":"rm-2ze8g2am97624" }
+```
+POST /api/pop/v1/checkProductInstance HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"CloudProduct":"RDS", "InstanceIds":"rm-2ze8g2am97624"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8",
  "Message":"success",
  "Data":{
   "Instances":[
-   {
+```
+
+`{`
+
+```json
     "Message":"message",
     "InstanceId":"rm-2ze8g2am97624",
     "Available":true
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "CloudProduct":"RDS"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8</RequestId> <Message>success</Message> <Data>
@@ -1164,13 +1249,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-灾备管理中心
-
-#### GetZoneInfo
+#### 4.1.6 GetZoneInfo
 
 该接口用于获取创建演练计划时可选的可用区信息。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于获取创建演练计划时可选的可用区信息, 用于保护组创建时获取可选的可用区时使用。
 
@@ -1179,6 +1262,10 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getZoneInfo HTTP/1.1
+```
 
 **返回数据**
 
@@ -1195,27 +1282,33 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | Data | Struct | {} | 返回数据。 |
 | -ZoneInfo | String | cn-wulan-env10- amtest10000-a | 可用区信息。 |
 
-**示例**
+请求示例
 
-灾备管理中心请求示例正常返回示例 `JSON` 格式
+```
+POST /api/pop/v1/getZoneInfo HTTP/1.1
+```
+
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{
   "ZoneInfo":"cn-wulan-env10-amtest10000-a"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1223,21 +1316,25 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-### 演练计划
+### 4.2 演练计划
 
-#### ListProcesses
+#### 4.2.1 ListProcesses
 
 该接口用于列出演练流程的步骤信息，包括流程的类型、执行模式和当前状态。 接口说明
 
-## 准备工作
+**准备工作**
 
-该接口支持查询全部的流程信息，查询所有流程信息时无需传入参数。如果想要单独查询某个流程的信息，需要传入流程的ProcessId参数。该接口专用于升级场景的资源处理，客户使用API可以使用
+该接口支持查询全部的流程信息，查询所有流程信息时无需传入参数。如果想要单独查询某个流程的信息，需要传入流程的ProcessId参数。该接口专用于升级场景的资源处理，客户使用API可以使用 ListDrillProcesses 接口。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 灾备管理中心
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/listProcesses HTTP/1.1
+```
 
 **请求参数**
 
@@ -1263,8 +1360,6 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | -ProcessType | String | DRILL RECOVERY _ | 流程类型。 |
 | - ProtectionNam e | String | test | 保护组名。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - ExecutionMod e | String | MANUAL | 执行模式。 |
@@ -1285,7 +1380,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | TotalCount | Integer | 100 | 列表条目数。 |
 | PageNumber | Integer | 1 | 页码。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1297,13 +1392,12 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 请求示例
 
 ```
-{ }
+POST /api/pop/v1/listProcesses HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/xxx/",
  "TotalCount":100,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -1311,7 +1405,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "PageSize":10,
  "PageNumber":1,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "AccountId":"999999999",
    "EndTime":1756112392000,
    "ProcessStatus":"EXECUTING",
@@ -1326,10 +1424,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
    "PgId":10,
    "ProtectionName":"test",
    "ProcessId":5
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -1337,10 +1434,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1361,11 +1457,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListDrillProcesses
+#### 4.2.2 ListDrillProcesses
 
 该接口用于列出演练流程的步骤信息，包括流程的类型、执行模式和当前状态。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口支持查询全部的演练流程信息，查询所有流程信息时无需传入参数。如果想要单独查询某个流程的信息，需要传入流程的ProcessId参数。
 
@@ -1375,13 +1471,17 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **请求语法**
 
+```
+POST /api/pop/v1/listDrillProcesses HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | 否 | 1 | 流程ID。 |
 
-| 灾备管理中心 |  |  |  | 同城容 | 灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 同城容 | 灾管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1408,8 +1508,6 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | -ProcessStatus | String | EXECUTING | 流程状态 |
 | -AccountId | String | 999999999 | 主账号id |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -CreateUid | String | 999999999 | 创建uid |
@@ -1430,16 +1528,15 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```
-{ }
+POST /api/pop/v1/listDrillProcesses HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/xxx/",
  "TotalCount":100,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -1447,7 +1544,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "PageSize":10,
  "PageNumber":1,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "AccountId":"999999999",
    "EndTime":1756112392000,
    "ProcessStatus":"EXECUTING",
@@ -1462,10 +1563,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
    "PgId":1,
    "ProtectionName":"test",
    "ProcessId":5
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -1473,10 +1573,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "Code":"200",
  "Cost":1000,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1497,11 +1596,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>1000</Cost> <Success>true</Success>
 ```
 
-#### CloseProcess
+#### 4.2.3 CloseProcess
 
 该接口用于关闭流程,在保护组演练流程执行完之后关闭，或者在异常情况下提前关闭流程。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于关闭流程，需要提前获取流程的ProcessId。
 
@@ -1511,13 +1610,15 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **请求语法**
 
+```
+POST /api/pop/v1/closeProcess HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | 是 | 10 | 流程id |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1543,16 +1644,21 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
-```json
-{ "ProcessId":"10", "IsForce":"false" }
+```
+POST /api/pop/v1/closeProcess HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "IsForce":"false"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1561,16 +1667,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
   "ProcessType":"SWITCH",
   "PlanId":10,
   "ProcessId":"10"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1581,19 +1690,23 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateDrillProcess
+#### 4.2.4 CreateDrillProcess
 
 该接口用于针对演练计划创建演练流程，开启流程后，可以进行保护组的切换动作。 接口说明
 
-## 准备工作
+**准备工作**
 
-该接口用于针对演练计划创建演练流程，使用前需要获取演练计划的 PlanId。 灾备管理中心
+该接口用于针对演练计划创建演练流程，使用前需要获取演练计划的 PlanId。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/createDrillProcess HTTP/1.1
+```
 
 **请求参数**
 
@@ -1617,7 +1730,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | -ProcessId | String | 10 | 流程id |
 | -ProcessAction | String | SWITCH CHECK _ | 流程类型 |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1629,14 +1742,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 请求示例
 
-```json
-{ "PlanId":"10" }
+```
+POST /api/pop/v1/createDrillProcess HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1645,16 +1763,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
   "ProcessType":"DRILL_RECOVERY",
   "PlanId":4,
   "ProcessId":"10"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1665,11 +1786,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetProcessTrace
+#### 4.2.5 GetProcessTrace
 
 该接口用于获取流程日志，主要用于获取保护组切换过程中的切换日志。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于获取流程日志，使用该接口前需要获取保护组切换的流程ProcessId和执行切换的接口中返回的的TraceId。
 
@@ -1678,6 +1799,10 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getProcessTrace HTTP/1.1
+```
 
 **请求参数**
 
@@ -1691,8 +1816,6 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | Array | {} | 返回数据。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1714,21 +1837,30 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
-```json
-{ "ProcessId":"10", "TraceId":"1760325130967#rm-jp7lct7rd5l61b7t0#1#615E81E0-82CA-40C3-8AC0-F002591EFC1C" }
+```
+POST /api/pop/v1/getProcessTrace HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "TraceId":"1760325130967#rm-jp7lct7rd5l61b7t0#1#615E81E0-82CA-40C3-8AC0-F002591EFC1C"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "ActionType":"SWITCH",
    "GmtModified":1760325133000,
    "TraceId":"9A506E30-DA33-43D6-AACC-C3F85435D890",
@@ -1736,10 +1868,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
    "StepName":"dr service check",
    "GmtCreated":1760325133000,
    "StepMsg":"dr service status is good"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -1747,10 +1878,9 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1764,13 +1894,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-灾备管理中心
-
-#### ExecuteProcess
+#### 4.2.6 ExecuteProcess
 
 该接口用于开始执行切换流程，主要用于保护组的切换和切回流程中，执行切换和切回的步骤。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于开始执行切换流程，使用该接口前需要提前获取ProcessId 和ProcessAction 参数信息。
 
@@ -1779,6 +1907,10 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/executeProcess HTTP/1.1
+```
 
 **请求参数**
 
@@ -1799,7 +1931,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | ErrorMessage | String | "" | 错误信息。 |
 | ErrorCode | String | 500 | 错误码。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1811,14 +1943,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 请求示例
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH", "Step":"1" }
+```
+POST /api/pop/v1/executeProcess HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH", "Step":"1"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1827,28 +1964,31 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateNextProcess
+#### 4.2.7 CreateNextProcess
 
 该接口用于演练流程进入下一个步骤。 接口说明
 
-## 准备工作
+**准备工作**
 
-该接口用于演练流程进入下一个步骤，调用该接口前需要获取ProcessId、ProcessAction 的信息。 灾备管理中心
+该接口用于演练流程进入下一个步骤，调用该接口前需要获取ProcessId、ProcessAction 的信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/createNextProcess HTTP/1.1
+```
 
 **请求参数**
 
@@ -1882,14 +2022,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 请求示例
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH", "IsForce":"true" }
+```
+POST /api/pop/v1/createNextProcess HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH", "IsForce":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1897,16 +2042,19 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
   "ProcessAction":"SWITCH",
   "ProtectionGroupId":6,
   "ProcessId":"10"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1916,11 +2064,11 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetInstanceStatus
+#### 4.2.8 GetInstanceStatus
 
 该接口用于获取实例状态信息，用于获取保护组的实例主节点位置和RPO 等信息。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于获取加入保护组实例的状态，需要提前获取演练流程的ProcessId 参数。
 
@@ -1929,6 +2077,10 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getInstanceStatus HTTP/1.1
+```
 
 **请求参数**
 
@@ -1944,7 +2096,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-|  | 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1968,7 +2120,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | --InstanceAlias | String | test | 实例别称 |
 | --Info | String | "" | 提示信息 |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1991,8 +2143,6 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 | -StartTime | Long | 1759211487000 | 开始时间。 |
 | -EndTime | Long | 1759211487000 | 结束时间。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -ConsumeTime | String | 120 | 执行耗时。 |
@@ -2002,20 +2152,29 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { "ProtectionGroupIds":"10" 
 
 请求示例
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH" }
+```
+POST /api/pop/v1/getInstanceStatus HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{
   "InstanceActions":[
-   {
+```
+
+`{`
+
+```json
     "ProcessAction":"RECOVERY_CHECK",
     "SyncDelay":"{            \"value\": \"0\",            \"status\": true          }",
     "EndTime":1759211487000,
@@ -2026,13 +2185,16 @@ atus\": true }",
     "Product":"RDS",
     "Step":1,
     "FailoverType":[
-     {
-      "value":"AUTOMATIC",
-      "info":"AutomaticFailover"
-     }
 ```
 
-`],`
+`{`
+
+```json
+      "value":"AUTOMATIC",
+      "info":"AutomaticFailover"
+```
+
+`}` `],`
 
 ```json
     "Info":"\"\"",
@@ -2046,10 +2208,9 @@ atus\": true }",
     "Id":1,
     "SourceIdc":"amtest21",
     "ConsumeTime":"120"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "EndTime":1759211487000,
@@ -2059,16 +2220,19 @@ atus\": true }",
   "ConsumeTime":"120",
   "PrevActionStatus":"[]",
   "ActionStatus":"INIT"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2118,19 +2282,23 @@ atus\": true }",
   <Success>true</Success>
 ```
 
-#### GetProcessEntry
+#### 4.2.9 GetProcessEntry
 
-该接口用于获取演练流程步骤信息，包括实例状态，动作状态，流程步骤等。 灾备管理中心接口说明
+该接口用于获取演练流程步骤信息，包括实例状态，动作状态，流程步骤等。 接口说明
 
-## 准备工作
+**准备工作**
 
-该接口用于获取演练流程步骤信息，使用该接口前需要获取演练计划的 PlanId 参数，可以使用
+该接口用于获取演练流程步骤信息，使用该接口前需要获取演练计划的 PlanId 参数，可以使用 ListDrillPlan 接口获取演练计划的信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getProcessEntry HTTP/1.1
+```
 
 **请求参数**
 
@@ -2152,8 +2320,6 @@ atus\": true }",
 | Cost | Long | 20 | 接口耗时，单位：毫秒（ms）。 |
 | Data | Struct | {} | 返回数据。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - PrevActionStat us | String | [] | 前序动作的状态。 |
@@ -2173,8 +2339,6 @@ atus\": true }",
 | --Result | String | “” | 返回结果。 |
 | -- ConsumeTime | String | 120 | 耗时。 |
 | --TraceId | String | 9A506E30-DA33- 43D6-AACC- C3F85435D890 | 请求记录ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2196,7 +2360,7 @@ atus\": true }",
 | -ProcessStatus | String | FINISH | 流程状态。 |
 | -CurrentStep | String | 1 | 当前步骤。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2208,21 +2372,30 @@ atus\": true }",
 
 请求示例
 
-```json
-{ "PlanId":"10" }
+```
+POST /api/pop/v1/getProcessEntry HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{
   "ProcessAction":"RECOVERY_CHECK",
   "InstanceActions":[
-   {
+```
+
+`{`
+
+```json
     "ProcessAction":"SWITCH",
     "SyncDelay":"{            \"value\": \"0\",            \"status\": true          }",
     "EndTime":1759211487000,
@@ -2242,10 +2415,9 @@ atus\": true }",
     "Id":1,
     "SourceIdc":"amtest21",
     "ConsumeTime":"120"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "EndTime":1759211487000,
@@ -2264,16 +2436,19 @@ atus\": true }",
   "CurrentStep":"1",
   "ProcessId":"1",
   "ConsumeTime":"120"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-灾备管理中心 `XML` 格式
+`XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2328,18 +2503,18 @@ RECOVERY_CHECK</ShowAction>
 t20/C
 ```
 
-t 灾备管理中心
+`t`
 
 ```xml
    <Cost>20</Cost>
    <Success>true</Success>
 ```
 
-#### CreateDisasterRecoveryProcess
+#### 4.2.10 CreateDisasterRecoveryProcess
 
 该接口用于创建故障恢复流程。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于创建故障恢复流程，用于创建保护组后开始故障场景的保护组流程。
 
@@ -2371,7 +2546,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 | ErrorCode | String | 500 | 错误码。 |
 | Path | String | /xxx/ | 请求路径。 |
 
-|  | 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2387,14 +2562,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 
 请求示例
 
-```json
-POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
+```
+POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -2403,16 +2583,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
   "ProcessType":"DRILL_RECOVER",
   "PlanId":18,
   "ProcessId":"16"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2423,11 +2606,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateHdrReverse
+#### 4.2.11 CreateHdrReverse
 
 该接口用于对HDR 保护组切换。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口用于进行HDR保护组的切换，切换前需要获取HDR保护组的演练流程信息。
 
@@ -2436,6 +2619,10 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/createHdrReverse HTTP/1.1
+```
 
 **请求参数**
 
@@ -2450,8 +2637,6 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2468,14 +2653,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 
 请求示例
 
-```json
-{ "ProcessId":"10", "Product":"HDR", "InstanceId":""xxxx"", "RecoverOriginal":"true" }
+```
+POST /api/pop/v1/createHdrReverse HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "Product":"HDR", "InstanceId":""xxxx"", "RecoverOriginal":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -2484,20 +2674,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-灾备管理中心 `XML` 格式
+`XML` 格式
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetDrillPlan
+#### 4.2.12 GetDrillPlan
 
 该接口用于获取演练计划的详细信息，包括演练计划涉及的产品、实例和可用区信息等。 接口说明
 
-## 准备工作
+**准备工作**
 
 该接口需要传入PlanId 参数，使用该接口前可以根据ListDrillPlan接口获取演练计划信息列表，从中得到需要获取详细信息的的PlanId 。
 
@@ -2506,6 +2695,10 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getDrillPlan HTTP/1.1
+```
 
 **请求参数**
 
@@ -2522,7 +2715,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 | Code | String | 200 | 状态码。 200：调用正常。 |
 | Message | String | success | 返回信息。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2546,7 +2739,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 | -PlanName | String | name | 演练计划名 |
 | - ProtectionGrou pId | Integer | 10 | 保护组id |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2567,14 +2760,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 
 请求示例
 
-```json
-{ "PlanId":"10" }
+```
+POST /api/pop/v1/getDrillPlan HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -2593,40 +2791,49 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
   "Id":10,
   "NotInPlanInstanceCount":10,
   "PlanItems":[
-   {
+```
+
+`{`
+
+```json
     "Impacts":"\"product.drill.effect.RDS\"",
     "InstanceId":"rm-bp1162kryivb8****",
     "InstanceAlias":"test",
     "Product":"RDS",
     "Step":1,
     "FailoverType":[
-     {
-      "value":"\"NONEED\"",
-      "info":"\"InstancePrimaryZoneMissMatch\""
-     }
 ```
 
-`],`
+`{`
+
+```json
+      "value":"\"NONEED\"",
+      "info":"\"InstancePrimaryZoneMissMatch\""
+```
+
+`}` `],`
 
 ```json
     "Info":"{}"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "LastTime":1756110161000
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2659,11 +2866,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListDrillPlan
+#### 4.2.13 ListDrillPlan
 
 该接口用于列出当前的演练计划，支持按照计划名称单独查询，查询结果包括演练计划的执行模式、演练可用区场景等信息。 接口说明
 
-## 准备工作
+**准备工作**
 
 <接口使用的前置动作>
 
@@ -2673,7 +2880,9 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 
 **请求语法**
 
-灾备管理中心
+```
+POST /api/pop/v1/listDrillPlan HTTP/1.1
+```
 
 **请求参数**
 
@@ -2700,8 +2909,6 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 | -GmtCreate | Long | 1759211487000 | 创建时间。 |
 | -GmtModified | Long | 1759211487000 | 修改时间。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | - RunningProces sId | Integer | 16 | 运行中的流程id。 |
@@ -2722,17 +2929,20 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 请求示例
 
 ```
-{ }
+POST /api/pop/v1/listDrillPlan HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "Code": "200",
   "Data": {
     "Item": [
-      {
+```
+
+`{`
+
+```json
         "ExecutionMode": "MANUAL",
         "GmtCreate": 1759992973000,
         "GmtModified": 1759992973000,
@@ -2742,8 +2952,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
         "ProtectionGroupName": "123123",
         "RunningProcessId": 6,
         "Zone": "cn-wulan-env128-amtest217002-b"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ExecutionMode": "AUTOMATIC",
         "GmtCreate": 1759211078000,
         "GmtModified": 1759211078000,
@@ -2752,8 +2965,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
         "ProtectionGroupId": 3,
         "ProtectionGroupName": "bcmctest",
         "Zone": "cn-wulan-env128-amtest128001-a"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ExecutionMode": "MANUAL",
         "GmtCreate": 1757578962000,
         "GmtModified": 1757578962000,
@@ -2763,23 +2979,20 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
         "ProtectionGroupName": "es-ab",
         "RunningProcessId": 3,
         "Zone": "cn-wulan-env128-amtest128001-a"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Message": "success",
   "PageNumber": 1,
   "PageSize": 10,
   "RequestId": "AB3E6FFC-6467-4804-832C-E05E7C14D7A8",
   "Success": true,
   "TotalCount": 3
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Code>200</Code> <Data>
@@ -2818,19 +3031,23 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 </Data> <Message>success</Message> <PageNumber>1</PageNumber> <PageSize>10</PageSize> <RequestId>AB3E6FFC-6467-4804-832C-E05E7C14D7A8</RequestId> <Success>true</Success> <TotalCount>3</TotalCount>
 ```
 
-#### GetProcessCheck
+#### 4.2.14 GetProcessCheck
 
 该接口用于获取流程执行检查结果，用于在切换前检查实例的状态，包含同步延迟、主节点位置、是否涉及演练动作等信息。 接口说明
 
-## 准备工作
+**准备工作**
 
-调用该接口前，请确认演练计划流程存在，建议使用ListProcesses在流程信息列表结果中获取 ProcessId。 灾备管理中心
+调用该接口前，请确认演练计划流程存在，建议使用ListProcesses在流程信息列表结果中获取 ProcessId。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getProcessCheck HTTP/1.1
+```
 
 **请求参数**
 
@@ -2854,7 +3071,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 | Data | Struct | {} | 返回数据。 |
 | - PrevActionStat us | String | [] | 前序动作的状态。 |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2878,7 +3095,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 | -- ConsumeTime | String | 120 | 耗时 |
 | --TraceId | String | 9A506E30-DA33- 43D6-AACC- C3F85435D890 | 请求记录ID。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2900,19 +3117,22 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 
 请求示例
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH" }
+```
+POST /api/pop/v1/getProcessCheck HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "Code": "200",
   "Data": {
 ```
-
-灾备管理中心
 
 ```json
     "ActionStatus": "SUCCESS",
@@ -2921,7 +3141,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
     "EndTime": 1760323989000,
     "InstanceActions": {
       "InstanceAction": [
-        {
+```
+
+`{`
+
+```json
           "ActionId": 12,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -2930,7 +3154,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 12,
           "Info": {},
           "InstanceAlias": "rds-mysql80-经典",
@@ -2938,7 +3166,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "SWITCH_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -2948,11 +3180,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1760323988819#rm-jp7r3459uq299j520#1#4F19DE7F-67E5-4F6C-AA06-
 75CBB5DC7C65",
           "ZoneInfo": {
@@ -2961,12 +3201,9 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
               "cn-wulan-env128-amtest217002-b"
 ```
 
-]
+`]` `}` `},` `{`
 
 ```json
-          }
-        },
-        {
           "ActionId": 12,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -2975,12 +3212,14 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
           "FailoverType": {
 ```
 
-灾备管理中心
-
 ```json
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 13,
           "Info": {},
           "InstanceAlias": "mysql-80-vpc",
@@ -2988,7 +3227,11 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "SWITCH_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -2998,11 +3241,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1760323988819#rm-jp72fab594a0x427u#1#4F19DE7F-67E5-4F6C-AA06-
 75CBB5DC7C65",
           "ZoneInfo": {
@@ -3011,17 +3262,9 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
               "cn-wulan-env128-amtest217002-b"
 ```
 
-]
-
-```
-          }
-        }
-```
-
-]
+`]` `}` `}` `]` `},`
 
 ```json
-    },
     "PrevActionStatus": {
       "Item": [
         "{\"actionStatus\":\"finish\",\"actionType\":\"SWITCH_BACK_CHECK\"}",
@@ -3031,20 +3274,22 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
         "{\"actionStatus\":\"finish\",\"actionType\":\"RECOVERY_CHECK\"}"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ProcessStatus": "FINISH",
     "StartTime": 1760323989000
-  },
+```
+
+`},`
+
+```json
   "Message": "success",
   "RequestId": "4F19DE7F-67E5-4F6C-AA06-75CBB5DC7C65",
   "Success": true
-}
 ```
 
-灾备管理中心 `XML` 格式
+`XML` 格式
 
 ```xml
 <Code>200</Code> <Data>
@@ -3101,7 +3346,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
 Fil
 ```
 
-T 灾备管理中心
+`T`
 
 ```xml
    <FailoverType>
@@ -3155,17 +3400,15 @@ T 灾备管理中心
 </Data> <Message>success</Message>
 ```
 
-灾备管理中心
-
 ```xml
 <Message>success</Message> <RequestId>4F19DE7F-67E5-4F6C-AA06-75CBB5DC7C65</RequestId> <Success>true</Success>
 ```
 
-#### GetPrevProcess
+#### 4.2.15 GetPrevProcess
 
 该接口用于获取前一个流程状态，用于获取演练计划上一步的信息，该接口仅获取上一步信息，并不会改变演练计划流程的实际状态。 接口说明
 
-## 准备工作
+**准备工作**
 
 调用该接口前，请确认演练计划流程存在，建议使用ListProcesses在流程信息列表结果中获取 ProcessId。
 
@@ -3174,6 +3417,10 @@ T 灾备管理中心
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/getPrevProcess HTTP/1.1
+```
 
 **请求参数**
 
@@ -3192,7 +3439,7 @@ T 灾备管理中心
 | Message | String | success | 返回信息。 |
 | ErrorMessage | String | "" | 错误信息。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3216,7 +3463,7 @@ T 灾备管理中心
 | --StartTime | Long | 1628265600000 | 开始时间。 |
 | --EndTime | Long | 1628265600000 | 结束时间。 |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3239,7 +3486,7 @@ T 灾备管理中心
 | -ActionUser | String | 999999999 | 执行动作的用户。 |
 | -StartTime | Long | 1759211487000 | 开始时间。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3258,14 +3505,19 @@ T 灾备管理中心
 
 请求示例
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH" }
+```
+POST /api/pop/v1/getPrevProcess HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "Code": "200",
   "Data": {
     "ActionStatus": "SUCCESS",
@@ -3276,10 +3528,9 @@ T 灾备管理中心
     "ExecutionMode": "MANUAL",
     "InstanceActions": {
       "InstanceAction": [
-        {
 ```
 
-灾备管理中心
+`{`
 
 ```json
           "ActionId": 19,
@@ -3290,14 +3541,22 @@ T 灾备管理中心
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 26,
           "InstanceAlias": "rds-mysql57-经典",
           "InstanceId": "rm-jp7lct7rd5l61b7t0",
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "SWITCH_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -3307,11 +3566,19 @@ T 灾备管理中心
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1760324733966#rm-jp7lct7rd5l61b7t0#1#AD59B157-3B17-4C4B-A0BE-
 2A7772BABAD7",
           "ZoneInfo": {
@@ -3320,17 +3587,9 @@ T 灾备管理中心
               "cn-wulan-env128-amtest217002-b"
 ```
 
-]
-
-```
-          }
-        }
-```
-
-]
+`]` `}` `}` `]` `},`
 
 ```json
-    },
     "PlanId": 6,
     "PrevActionStatus": {
       "Item": [
@@ -3338,10 +3597,9 @@ T 灾备管理中心
         "{\"actionStatus\":\"process\",\"actionType\":\"SWITCH\"}"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ProcessAction": "SWITCH",
     "ProcessId": 6,
     "ProcessStatus": "EXECUTING",
@@ -3350,20 +3608,21 @@ T 灾备管理中心
     "ShowAction": "SWITCH_CHECK",
 ```
 
-灾备管理中心
-
 ```json
     "StartTime": 1760324734000,
     "SwitchDirection": "amtest128->amtest217",
     "Zone": "cn-wulan-env128-amtest217002-b"
-  },
+```
+
+`},`
+
+```json
   "Message": "success",
   "RequestId": "DC9C8651-9890-423E-8056-8E81F0B95FEE",
   "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Code>200</Code> <Data>
@@ -3410,8 +3669,6 @@ T 灾备管理中心
    <ZoneInfo>
 ```
 
-灾备管理中心
-
 ```xml
     <Item>cn-wulan-env128-amtest128001-a</Item>
     <Item>cn-wulan-env128-amtest217002-b</Item>
@@ -3437,13 +3694,13 @@ T 灾备管理中心
 </Data> <Message>success</Message> <RequestId>DC9C8651-9890-423E-8056-8E81F0B95FEE</RequestId> <Success>true</Success>
 ```
 
-#### GetProcessDetail
+#### 4.2.16 GetProcessDetail
 
 该接口用于获取流程细节信息，包括演练计划涉及的产品、示例、切换方向、当前执行步骤、前序动作的状态。 接口说明
 
-## 准备工作
+**准备工作**
 
-调用该接口前，请确认演练计划流程存在，使用CreateProcess创建演练流程获取ProcessId，或者使用
+调用该接口前，请确认演练计划流程存在，使用CreateProcess创建演练流程获取ProcessId，或者使用 ListProcesses在流程信息列表结果中获取ProcessId。
 
 **请求头**
 
@@ -3451,13 +3708,17 @@ T 灾备管理中心
 
 **请求语法**
 
+```
+POST /api/pop/v1/getProcessDetail HTTP/1.1
+```
+
 **请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | 是 | 10 | 流程id |
 
-|  | 灾备管理中心 |  |  |  | 同城容 | 灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   |   | 同城容 | 灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3483,7 +3744,7 @@ T 灾备管理中心
 | --ActionId | Integer | 12 | 任务id。 |
 | -- ProcessAction | String | SWITCH | 流程动作。 |
 
-| 同城容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 同城容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3506,7 +3767,7 @@ T 灾备管理中心
 | --FailoverType | Struct | {} | 切换类型。 |
 | ---value | String | AUTOMATIC | 内容。 |
 
-| 灾备管理中心 |  |  | 同城容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 同城容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3529,18 +3790,21 @@ T 灾备管理中心
 | -PlanId | Integer | 16 | 演练计划id |
 | -Zone | String | cn-hangzhou-a | 演练可用区。 |
 
-**示例**
+请求示例
 
-灾备管理中心请求示例
-
-```json
-{ "ProcessId":"10" }
+```
+POST /api/pop/v1/getProcessDetail HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "Code": "200",
   "Data": {
     "ActionStatus": "SUCCESS",
@@ -3551,7 +3815,11 @@ T 灾备管理中心
     "ExecutionMode": "AUTOMATIC",
     "InstanceActions": {
       "InstanceAction": [
-        {
+```
+
+`{`
+
+```json
           "ActionId": 16,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -3560,14 +3828,22 @@ T 灾备管理中心
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 20,
           "InstanceAlias": "rds-mysql80-经典",
           "InstanceId": "rm-jp7r3459uq299j520",
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "RECOVERY_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -3577,21 +3853,30 @@ T 灾备管理中心
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1759211487345#rm-jp7r3459uq299j520#1#E0C7141D-5EBB-4E80-8595-
 C16CF72D81C2"
 ```
 
-灾备管理中心
+```
+C16CF72D81C2
+```
+
+`},` `{`
 
 ```json
-C16CF72D81C2
-        },
-        {
           "ActionId": 16,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -3600,14 +3885,22 @@ C16CF72D81C2
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 21,
           "InstanceAlias": "mysql-80-vpc",
           "InstanceId": "rm-jp72fab594a0x427u",
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "RECOVERY_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -3617,20 +3910,26 @@ C16CF72D81C2
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
-          "TraceId": "1759211487345#rm-jp72fab594a0x427u#1#E0C7141D-5EBB-4E80-8595-
-C16CF72D81C2"
-        }
 ```
 
-]
+`},`
 
 ```json
-    },
+          "TraceId": "1759211487345#rm-jp72fab594a0x427u#1#E0C7141D-5EBB-4E80-8595-
+C16CF72D81C2"
+```
+
+`}` `]` `},`
+
+```json
     "PlanId": 4,
     "PrevActionStatus": {
       "Item": [
@@ -3641,10 +3940,9 @@ C16CF72D81C2"
         "{\"actionStatus\":\"finish\",\"actionType\":\"RECOVERY_CHECK\"}"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ProcessAction": "RECOVERY_CHECK",
     "ProcessId": 4,
     "ProcessStatus": "FINISH",
@@ -3654,19 +3952,22 @@ C16CF72D81C2"
     "StartTime": 1759211487000,
 ```
 
-灾备管理中心 ,
+`,`
 
 ```json
     "SwitchDirection": "amtest217->amtest128",
     "Zone": "cn-wulan-env128-amtest128001-a"
-  },
+```
+
+`},`
+
+```json
   "Message": "success",
   "RequestId": "FD418663-E79E-4196-AB7A-36922FC2D572",
   "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Code>200</Code> <Data>
@@ -3713,8 +4014,6 @@ C16CF72D81C2</TraceId>
   </InstanceAction>
 <InstanceAction>
 ```
-
-灾备管理中心
 
 ```xml
   <InstanceAction>
@@ -3769,8 +4068,6 @@ C16CF72D81C2</TraceId>
  <ProcessId>4</ProcessId>
 ```
 
-灾备管理中心
-
 ```xml
  ProcessId4/ProcessId
  <ProcessStatus>FINISH</ProcessStatus>
@@ -3783,11 +4080,11 @@ C16CF72D81C2</TraceId>
 </Data> <Message>success</Message> <RequestId>FD418663-E79E-4196-AB7A-36922FC2D572</RequestId> <Success>true</Success>
 ```
 
-#### SwitchInstance
+#### 4.2.17 SwitchInstance
 
 该接口用于保护组切换步骤中重试切换容灾实例，按照演练计划的演练场景，进行实例的切换和切回。 接口说明
 
-## 准备工作
+**准备工作**
 
 执行该API前，建议根据 GetProcessDetail 接口获取ProcessId 和ProcessAction 的信息。
 
@@ -3796,6 +4093,10 @@ C16CF72D81C2</TraceId>
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/switchInstance HTTP/1.1
+```
 
 **请求参数**
 
@@ -3811,8 +4112,6 @@ C16CF72D81C2</TraceId>
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -3827,14 +4126,19 @@ C16CF72D81C2</TraceId>
 
 请求示例
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH", "InstanceIds":"rm-hg30ps8hg9vtcqf71r" }
+```
+POST /api/pop/v1/switchInstance HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH", "InstanceIds":"rm-hg30ps8hg9vtcqf71r"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xx/xx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -3843,20 +4147,19 @@ C16CF72D81C2</TraceId>
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### SetProcessSwitchStep
+#### 4.2.18 SetProcessSwitchStep
 
 本API用于在保护组手动批次切换的场景下，手动跳过失败的切换批次，进行下一批次的切换动作。 接口说明
 
-## 准备工作
+**准备工作**
 
 执行该API前，建议根据 GetProcessDetail 接口获取ProcessId 和ProcessAction 的信息，同时确认当前失败的切换步骤批次。
 
@@ -3865,6 +4168,10 @@ C16CF72D81C2</TraceId>
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /api/pop/v1/setProcessSwitchStep HTTP/1.1
+```
 
 **请求参数**
 
@@ -3881,8 +4188,6 @@ C16CF72D81C2</TraceId>
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Code | String | 200 | 状态码。 200：调用正常。 |
@@ -3897,14 +4202,19 @@ C16CF72D81C2</TraceId>
 
 请求示例
 
-```json
-{ "ProcessId":"22", "ProcessAction":"SWITCH", "Step":"2" }
+```
+POST /api/pop/v1/setProcessSwitchStep HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"ProcessId":"22", "ProcessAction":"SWITCH", "Step":"2"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -3914,10 +4224,9 @@ C16CF72D81C2</TraceId>
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>2</Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>

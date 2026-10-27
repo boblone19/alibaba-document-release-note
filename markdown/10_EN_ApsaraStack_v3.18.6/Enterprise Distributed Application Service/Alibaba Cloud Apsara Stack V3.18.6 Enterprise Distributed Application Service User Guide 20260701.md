@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 1118
 source_pdf: "74c9e559f9e02e76_Alibaba Cloud Apsara Stack V3.18.6 Enterprise Distributed Application Service User Guide 20260701.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1EDAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Enterprise%20Distributed%20Application%20Service%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Enterprise Distributed Application Service User Guide 20260701

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 196
 source_pdf: "ffc056899280dc5b_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Web Applica"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Web%20Application%20Firewall-Instance%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) Web Application Firewall-Instance Developer Guide 20260629
@@ -216,7 +216,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace it with your actual RAM role.
 > "sts.aliyuns.com" : Replace it with the actual STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Replace the region ID, AccessKey ID, and AccessKey secret.
@@ -235,6 +235,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual STS endpoint. The general format is
@@ -260,9 +265,15 @@ am Role ARN obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a service. The
 following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
@@ -313,6 +324,8 @@ btained in the previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ## 2 Call examples
 
@@ -379,6 +392,8 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             // TODO Auto-generated catch block
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 ### 2.2 Call examples for SDK for Python
 
@@ -480,6 +495,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<your-endpoint>"// The endpoint of the service.
     request.Version = "<API-version>"// The version of the API.
@@ -489,10 +509,15 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-est parameters
+`}` est parameters
 
 ## 3 Common request parameters
 
@@ -592,6 +617,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 c_mode\": \"single\", \"available_zones\": [\"cn-wulan-env**-****-a\"], \"last_update_time\": \"177580****\", \"instance_id\": \"waf-llk77L15DsS7****Rt\", \"ali_uid\": \"17478691****\", \"instance_make_status\": \"wait\", \"enable_ipv6\": false, \"qps\": 2000, \"detector_node_num\": 2, \"vpc_vs witch_bindings\": [10], \"organization_id\": \"5\", \"cpu_type\": \"mix\", \"oem_cluster_id\": 0, \"name\": \"waf-test-xx\", \"vpc_vswitch\": [ { \"vswitch\": \"vsw-r8ucqpjuv4e7****gojqz\", \"vpc_name\": \"waf_test_1\", \"available_zone\": \"cn-wulan-env**-****-a\", \"vpc\": \"vpcr8uriii23n0r****22vhw\", \"cidr_block\": \"192.168.0.0/16\", \"vswitch _name\": \"waf_test_1\" } ], \"resource_id\": \"4\", \"detector_version\": \"basic\", \"detector_specs\": \"exclusive\", \"arch\": \"x86\", \"instance_status\": \"create\" }"
 ```
 
+`}`
+
 #### 4.1.2 DeleteWAFInstance
 
 Deletes a specified Web Application Firewall (WAF) instance.
@@ -665,7 +692,7 @@ Sample success responses `JSON` format
     "RequestId": "5864CC54-****-****-****-2372D5E8AE7F"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <eagleEyeTraceId>0acd1573****2959d00ca</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>5864CC54-****-****-****-2372D5E8AE7F</asapiRequestId> <RequestId>5864CC54-****-****-****-2372D5E8AE7F</RequestId>
@@ -708,7 +735,7 @@ Sample requests
 https://[Endpoint]/?Action=DescribeWAFInstance &Pagenumber=1 &Pagesize=100 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "eagleEyeTraceId": "0acd1573****995d00ca",
@@ -741,6 +768,11 @@ Sample success responses `JSON` format
           "oem_cluster_id": 78,
           "name": "arm-test-only",
           "vpc_vswitch": [
+```
+
+`{`
+
+```json
               "vswitch": "vsw-r8u7yltsrw7k****4v7yi",
               "vpc_name": "waf_test_3",
               "available_zone": "cn-wulan-****",
@@ -749,7 +781,7 @@ Sample success responses `JSON` format
               "vswitch_name": "waf_ipv6_3"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "resource_id": "4",
@@ -760,7 +792,7 @@ Sample success responses `JSON` format
           "is_latest": true
 ```
 
-`},`
+`},` `{`
 
 ```json
           "tenant_id": 3,
@@ -805,7 +837,7 @@ wua
               "vswitch_name": "waf_ipv6_3"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "resource_id": "4",
@@ -816,7 +848,7 @@ wua
           "is_latest": true
 ```
 
-`},`
+`},` `{`
 
 ```json
           "tenant_id": 3,
@@ -836,6 +868,11 @@ wua
           "oem_cluster_id": 75,
           "name": "arm-test",
           "vpc_vswitch": [
+```
+
+`{`
+
+```json
               "vswitch": "vsw-r8uidyauu7ea3****1aozg",
               "vpc_name": "waf_test_2",
               "available_zone": "cn-wulan-****",
@@ -844,7 +881,7 @@ wua
               "vswitch_name": "waf_ipv6_2"
 ```
 
-`},`
+`},` `{`
 
 ```json
               "vswitch": "vsw-r8u7yltsrw7k****4v7yi",
@@ -855,7 +892,7 @@ wua
               "vswitch_name": "waf_ipv6_3"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "resource_id": "4",
@@ -886,6 +923,11 @@ wua
           "oem_cluster_id": 21,
           "name": "test2-",
           "vpc_vswitch": [
+```
+
+`{`
+
+```json
               "vswitch": "vsw-r8ueszlykuyz****bznoi",
               "vpc_name": "yundune2e_aegis_1",
               "available_zone": "cn-wulan-****",
@@ -894,7 +936,7 @@ wua
               "vswitch_name": "yundune2e_aegis_1"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "resource_id": "4",
@@ -905,7 +947,7 @@ wua
           "is_latest": true
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 4.1.5 CreatePreScaleDownInstance
 
@@ -949,6 +991,11 @@ Sample success responses `JSON` format
         "asapiRequestId": "22EFD81F-CFA1-43AB-B3C4-B45B15EDB2C6",
         "Result": {
             "eni_infos": [
+```
+
+`{`
+
+```json
                     "zone_id": "cn-neimeng-env210-amtest210001-a",
                     "eni_id": "eni-t9v00kmht6bcdoi3f0ss",
                     "eni_name": "user_eni_waf-Sv196XcTOdgJ1ZH3Q5_3",
@@ -968,10 +1015,15 @@ Sample success responses `JSON` format
                     "status": "PRODUCE_SUCCESS"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "ecs_infos": [
+```
+
+`{`
+
+```json
                     "zone_id": "cn-neimeng-env210-amtest210001-a",
                     "instance_id": "i-t9v00kmht6bcdoi4xgk4",
                     "ecs_status": "Running",
@@ -983,18 +1035,20 @@ Sample success responses `JSON` format
                     "status": "PRODUCE_SUCCESS"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "add_infos": []
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "22EFD81F-CFA1-43AB-B3C4-B45B15EDB2C6",
     "success": true
 ```
+
+`}`
 
 #### 4.1.6 CreateScaleDownInstance
 
@@ -1056,6 +1110,11 @@ Sample success responses `JSON` format
       "oem_cluster_id": 41,
       "name": "waf-du-1vpc",
       "vpc_vswitch": [
+```
+
+`{`
+
+```json
           "vswitch": "vsw-zd6omnjy8loo****38gtg",
           "vpc_name": "waf-ipv6-2",
           "available_zone": "cn-wulan-env17e-****-a",
@@ -1064,7 +1123,7 @@ Sample success responses `JSON` format
           "vswitch_name": "waf-ipv6-2-2"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "resource_id": "14",
@@ -1073,6 +1132,8 @@ Sample success responses `JSON` format
       "arch": "x86",
       "instance_status": "scale_down"
 ```
+
+`}` `}`
 
 #### 4.1.7 CreateScaleUpInstance
 
@@ -1138,6 +1199,11 @@ Sample success responses `JSON` format
       "oem_cluster_id": 41,
       "name": "waf-du-1vpc",
       "vpc_vswitch": [
+```
+
+`{`
+
+```json
           "vswitch": "vsw-zd6omnjy8loo****38gtg",
           "vpc_name": "waf-ipv6-2",
           "available_zone": "cn-wulan-e***e-****-a",
@@ -1146,7 +1212,7 @@ Sample success responses `JSON` format
           "vswitch_name": "waf-ipv6-2-2"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "resource_id": "14",
@@ -1155,6 +1221,8 @@ Sample success responses `JSON` format
       "arch": "x86",
       "instance_status": "scale_up"
 ```
+
+`}` `}`
 
 #### 4.1.8 CreateVPCManagement
 
@@ -1191,8 +1259,13 @@ http(s)://[Endpoint]/?Action=CreateVPCManagement &WafInstanceId=waf-PK3kNiAa****
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad20cbc17568904220565319d0093",
@@ -1206,6 +1279,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "requestId": "31E62A5D-B2A4-4E7E-BF09-552982F9D877",
     "success": true
 ```
+
+`}`
 
 #### 4.1.9 CreateSLRGrant
 
@@ -1236,7 +1311,7 @@ Sample requests
 https://[Endpoint]/?Action=CreateSLRGrant &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "eagleEyeTraceId": "0a112077****8315d00cb",
@@ -1246,6 +1321,8 @@ Sample success responses `JSON` format
     "Result": {
       "is_granted": true
 ```
+
+`}` `}`
 
 #### 4.1.10 DescribeSLRGrant
 
@@ -1281,6 +1358,8 @@ Sample success responses `JSON` format
       "is_granted": true
 ```
 
+`}` `}`
+
 #### 4.1.11 DescribeWafQpsQuota
 
 Queries the Web Application Firewall (WAF) QPS quota.
@@ -1311,7 +1390,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeWafQpsQuota &Department=10 &ResourceGroup=10 &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -1320,6 +1399,11 @@ Sample success responses `JSON` format
         "asapiSuccess": true,
         "asapiRequestId": "A435B71A-ACA4-42AE-A1E9-C5FD214481DB",
         "Result": [
+```
+
+`{`
+
+```json
                 "quotaKey": "Qps",
                 "usable": 51500,
                 "total": 80000,
@@ -1329,14 +1413,14 @@ Sample success responses `JSON` format
                 "used": 28500
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "A435B71A-ACA4-42AE-A1E9-C5FD214481DB",
     "success": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <code>200</code> <data>
@@ -1378,7 +1462,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeWafSpecs &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -1435,7 +1519,7 @@ Sample success responses `JSON` format
                     "arch": "arm"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "share": {
@@ -1459,12 +1543,14 @@ Sample success responses `JSON` format
                     "arch": "x86"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
     "requestId": "570FF9BE-FE14-4FC6-ACFE-83D5F12AF17F",
     "success": true
 ```
+
+`}`
 
 #### 4.1.13 DescribeVPCInfo
 
@@ -1510,13 +1596,18 @@ Sample success responses `JSON` format
     "RequestId": "FDC98D3A-****-****-****-B27922D85F62",
     "Result": {
       "data": [
+```
+
+`{`
+
+```json
           "name": "yundune2e_***is_1",
           "description": "yundune2e_aegis_1",
           "cidr_block": "192.168.0.0/16",
           "id": "vpc-zd63ft4p****sx711iqpy"
 ```
 
-`},`
+`},` `{`
 
 ```json
           "name": "vpchub",
@@ -1525,13 +1616,15 @@ Sample success responses `JSON` format
           "id": "vpc-zd64g9jw****naaxs4xlk"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "total_count": 19,
       "page_no": 1,
       "page_size": 50
 ```
+
+`}` `}`
 
 #### 4.1.14 DescribeVSwitchInfo
 
@@ -1577,6 +1670,11 @@ Sample success responses `JSON` format
         "asapiRequestId": "426C3D05-6409-4771-A656-1DB17DAC5CE6",
         "Result": {
             "data": [
+```
+
+`{`
+
+```json
                     "ipv6_cidr_block": "",
                     "enabled_ipv6": false,
                     "available_zone": "cn-wulan-env116-amtest116001-a",
@@ -1588,7 +1686,7 @@ Sample success responses `JSON` format
                     "id": "vsw-ck6hshco9ztdnwolcbyhr"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "total_count": 1,
@@ -1596,12 +1694,14 @@ Sample success responses `JSON` format
             "page_size": 50
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "426C3D05-6409-4771-A656-1DB17DAC5CE6",
     "success": true
 ```
+
+`}`
 
 #### 4.1.15 DescribeWAFAZInfo
 
@@ -1626,7 +1726,7 @@ Sample requests
 https://[Endpoint]/?Action=DescribeWAFAZInfo &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "eagleEyeTraceId": "0a112878****6216d00d2",
@@ -1635,6 +1735,8 @@ Sample success responses `JSON` format
     "RequestId": "E6888BBF-****-****-****-C5D6879673C6",
     "Result": ["cn-wulan-****-a"]
 ```
+
+`}`
 
 #### 4.1.16 DescribeWafENIInfo
 
@@ -1678,6 +1780,11 @@ Sample success responses `JSON` format
         "asapiRequestId": "DBD4****1619",
         "Result": {
             "cn-neimeng-env210-amtest210001-a": [
+```
+
+`{`
+
+```json
                     "zone_id": "z_8a7b...1c2d",
                     "eni_id": "eni_t9v00***gifv",
                     "eni_name": "member_eni_cn-neimeng-env210-amtest210001-a_1_vpc-t9v8*
@@ -1699,7 +1806,7 @@ Sample success responses `JSON` format
                     "status": "PRODUCE_SUCCESS"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "zone_id": "z_8a7b...1c2d",
@@ -1723,12 +1830,14 @@ l***w7ov",
                     "status": "UPGRADE_SUCCESS"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "requestId": "DBD4****1619",
     "success": true
 ```
+
+`}`
 
 ### 4.2 Virtual IP address management
 
@@ -1789,7 +1898,7 @@ https://[Endpoint]/?Action=CreateVpcVip
   &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "eagleEyeTraceId": "0a010a75****93930d00d7",
@@ -1802,6 +1911,8 @@ Sample success responses `JSON` format
       "remark": "waf mark 001",
       "type": "intranet IP"
 ```
+
+`}` `}`
 
 #### 4.2.2 EditInternetVPCVip
 
@@ -1853,6 +1964,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "success": true
 ```
 
+`}`
+
 **Additional notes**
 
 To edit a VPC VIP, you only need to provide the required parameters.
@@ -1890,7 +2003,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteInternetVPCVip &VpcId=vpc-df55o5k********08p &Vip=192.168.1.113 &WafInstanceId=waf-PK3kNiAa********hrR &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -1906,6 +2019,8 @@ Sample success responses `JSON` format
     "requestId": "3114DE32-925F-4317-9ABA-39F7C9D819AB",
     "success": true
 ```
+
+`}`
 
 #### 4.2.4 DescribeVpcVip
 
@@ -1942,7 +2057,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeVpcVip &PageNo=1 &PageSize=50 &VpcId=vpc-4uftp****jtj &LbType=slb &WafInstanceId=waf-9Qj7SN9***Fyj &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -1964,7 +2079,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -1975,7 +2090,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -1986,7 +2101,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -1997,7 +2112,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2008,7 +2123,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2019,7 +2134,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2033,7 +2148,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2044,7 +2159,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2055,7 +2170,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2066,7 +2181,7 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "cloud_instance_id": "",
@@ -2077,12 +2192,14 @@ Sample success responses `JSON` format
                     "type": "vpc IP"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "requestId": "A0459626-4065-4A0F-BD0E-9D47A0C07462",
     "success": true
 ```
+
+`}`
 
 #### 4.2.5 DescribeAliyunVPCVIPAttribute
 
@@ -2115,7 +2232,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeAliyunVPCVIPAttribute &WafInstanceId=waf-Zmn***GZz2 &IpAddress=192.168.1.112 &VpcId=vpc-4uft****jtj &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -2124,6 +2241,11 @@ Sample success responses `JSON` format
         "asapiSuccess": true,
         "asapiRequestId": "2E305F82-2F50-4E95-B980-49452F50E497",
         "Result": [
+```
+
+`{`
+
+```json
                 "cloud_instance_id": "",
                 "avaliable_zone": "cn-neimeng-****-a",
                 "vpc_id": "vpc-t9vlrxj****7ov",
@@ -2137,12 +2259,14 @@ Sample success responses `JSON` format
                 "status": "active"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "2E305F82-2F50-4E95-B980-49452F50E497",
     "success": true
 ```
+
+`}`
 
 #### 4.2.6 DescribeVpc
 
@@ -2187,13 +2311,18 @@ Sample success responses `JSON` format
     "Result": {
       "total": 1,
       "data": [
+```
+
+`{`
+
+```json
           "vpc_id": "vpc-1vixogz97u0k****x9dq",
           "name": "lm-test",
           "cidr": "192.168.0.0/24",
           "desc": "cn-wulan-env1-****"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 **Additional notes**
 
@@ -2232,7 +2361,7 @@ https://[Endpoint]/?Action=DescribeAliyunSite
   &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "eagleEyeTraceId": "0a010a75****16294d00d7",
@@ -2240,11 +2369,16 @@ Sample success responses `JSON` format
     "asapiRequestId": "02BC5253-****-****-****-6DC32CB9EDD5",
     "RequestId": "02BC5253-****-****-****-6DC32CB9EDD5",
     "Result": [
+```
+
+`{`
+
+```json
         "siteId": "cn-***-e***-****",
         "siteName": "cn-**-e**-****"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.2.8 DescribeVSwitch
 
@@ -2298,6 +2432,11 @@ Sample success responses `JSON` format
     "RequestId": "9B8D7D9E-****-****-****-CC1F062D9F26",
     "Result": {
       "data": [
+```
+
+`{`
+
+```json
           "ipv6_cidr_block": "",
           "enabled_ipv6": false,
           "available_zone": "cn-wulan-env1-****-a",
@@ -2309,7 +2448,7 @@ Sample success responses `JSON` format
           "id": "vsw-1violfgo9btq****ynyps"
 ```
 
-`},`
+`},` `{`
 
 ```json
           "ipv6_cidr_block": "",
@@ -2323,13 +2462,15 @@ Sample success responses `JSON` format
           "id": "vsw-1vig1zdh59z7****ypo01"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "total_count": 2,
       "page_no": 1,
       "page_size": 50
 ```
+
+`}` `}`
 
 ### 4.3 Website protection
 
@@ -2439,7 +2580,7 @@ header_config":[]}
   &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "eagleEyeTraceId": "0a010a75****44565d00d7",
@@ -2548,14 +2689,14 @@ Sample success responses `JSON` format
 configuration generation."
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "277B07BB-8796-43EB-803E-5194404C38B6",
     "success": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <code>200</code> <data>
@@ -2623,6 +2764,8 @@ Sample success responses `JSON` format
     "success": true
 ```
 
+`}`
+
 #### 4.3.4 EditEnableDisableWebsite
 
 Enables or disables websites.
@@ -2655,7 +2798,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=EditEnableDisableWebsite &IdIn.1=1 &PolicyAction=enable &IsVpcWebsite=true &WafInstanceId=waf-PK3kNiAa********hrR &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -2671,6 +2814,8 @@ Sample success responses `JSON` format
     "requestId": "5591668A-16F7-4CF6-ABB6-B7A7FAA3C793",
     "success": true
 ```
+
+`}`
 
 #### 4.3.5 CreateSSEConfig
 
@@ -2722,12 +2867,14 @@ Sample success responses `JSON` format
             "url": "/test"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "361C91EF-DAB4-4DAA-A6D2-0C36F309B810",
     "success": true
 ```
+
+`}`
 
 #### 4.3.6 EditSSEConfig
 
@@ -2780,12 +2927,14 @@ HTTP/1.1 200 OK Content-Type:application/json
             "url": "/tests"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "CB99A8BB-2051-49E1-94C0-3FAC8CCC1994",
     "success": true
 ```
+
+`}`
 
 #### 4.3.7 DeleteSSEConfig
 
@@ -2821,8 +2970,13 @@ http(s)://[Endpoint]/?Action=DeleteSSEConfig &SseId=2 &WafInstanceId=waf-PK3kNiA
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad208bd17568902685483838d008d",
@@ -2836,6 +2990,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "requestId": "A0580281-C134-48DC-9034-43E95CFAD862",
     "success": true
 ```
+
+`}`
 
 #### 4.3.8 DescribeSSEConfig
 
@@ -2869,14 +3025,24 @@ http(s)://[Endpoint]/?Action=DescribeSSEConfig &WebsiteId=1 &WafInstanceId=waf-P
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad20cbc17568899226782374d0093",
         "asapiSuccess": true,
         "asapiRequestId": "3B272777-C368-44EA-89D9-A934488A6B4D",
         "Result": [
+```
+
+`{`
+
+```json
                 "tenant_id": 2,
                 "instance_id": "waf-ZmnE441fDdQX1oGZz2",
                 "id": 22,
@@ -2884,12 +3050,14 @@ HTTP/1.1 200 OK Content-Type:application/json
                 "url": "/test"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "3B272777-C368-44EA-89D9-A934488A6B4D",
     "success": true
 ```
+
+`}`
 
 #### 4.3.9 CreateExportWebsite
 
@@ -2922,7 +3090,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateExportWebsite &IdIn.1=1 &IsVpcWebsite=true &WafInstanceId=waf-PK3kNiAa********hrR &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -2935,12 +3103,14 @@ Sample success responses `JSON` format
             "token": "default;export_website;3da73f9c-****"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "471EDC3B-1A92-42C2-A9D8-B2A405559493",
     "success": true
 ```
+
+`}`
 
 #### 4.3.10 DescribeTaskResult
 
@@ -2972,7 +3142,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeTaskResult &Token=default;export_website;3da73f9c-**** &WafInstanceId=waf-PK3kNiAa********hrR &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -2985,12 +3155,14 @@ Sample success responses `JSON` format
 a.intra.env116.shuguang.com/website_2026_04_22_10_52_51.zip?security-token=***"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "16BF4450-6E6E-4447-9A2E-B6A17DA08ADE",
     "success": true
 ```
+
+`}`
 
 #### 4.3.11 DescribeWebsite
 
@@ -3031,8 +3203,13 @@ http(s)://[Endpoint]/?Action=DescribeWebsite &Id=1 &WafInstanceId=waf-CN2Y****7i
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{` `{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0a520d7117570415345731284d008f",
@@ -3040,6 +3217,11 @@ HTTP/1.1 200 OK Content-Type:application/json
         "asapiRequestId": "C9A7FFA9-CA4B-4A60-AD92-0B28040715DB",
         "Result": {
             "items": [
+```
+
+`{`
+
+```json
                     "tenant_id": 2,
                     "proxy_bind_config": {
                         "hash_select_ip_method": "remote_addr_and_port",
@@ -3067,7 +3249,7 @@ HTTP/1.1 200 OK Content-Type:application/json
                             "ssl": false
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "interface": "virtual",
@@ -3080,6 +3262,11 @@ HTTP/1.1 200 OK Content-Type:application/json
                     "is_enabled": true,
                     "backend_config": {
                         "servers": [
+```
+
+`{`
+
+```json
                                 "protocol": "http",
                                 "port": 80,
                                 "health_check_status": "UNKNOWN",
@@ -3088,7 +3275,7 @@ HTTP/1.1 200 OK Content-Type:application/json
                                 "attr": "slb"
 ```
 
-`],`
+`}` `],`
 
 ```json
                         "mask_sensitive_response": [],
@@ -3203,12 +3390,14 @@ HTTP/1.1 200 OK Content-Type:application/json
                     "is_vpc_website": true
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "requestId": "C9A7FFA9-CA4B-4A60-AD92-0B28040715DB",
     "success": true
 ```
+
+`}` `}`
 
 ### 4.4 HTTP flood protection rules
 
@@ -3256,8 +3445,13 @@ http(s)://[Endpoint]/?Action=CreateACLRuleTemplate &WafInstanceId=waf-JJttJ42A**
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad208bd17569730838022549d008d",
@@ -3294,7 +3488,7 @@ HTTP/1.1 200 OK Content-Type:application/json
             "id": 40
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "8FC02475-B0E4-4440-B6B3-2D414433B5E2",
@@ -3346,8 +3540,13 @@ http(s)://[Endpoint]/?Action=EditACLRuleTemplate &Id=1 &Name=test &MatchMethod={
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad20cbc17573212180603067d0093",
@@ -3384,7 +3583,7 @@ HTTP/1.1 200 OK Content-Type:application/json
             "id": 40
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "34ED0C6E-E4BE-43CC-84F0-A923CFF57E7D",
@@ -3439,6 +3638,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "success": true
 ```
 
+`}`
+
 #### 4.4.4 EditEnableDisableACLRuleTemplate
 
 Enables or disables Challenge Collapsar (CC) rules.
@@ -3474,8 +3675,13 @@ http(s)://[Endpoint]/?Action=EditEnableDisableACLRuleTemplate &IdIn.1=1 &PolicyA
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad208bd17573208950813996d008d",
@@ -3489,6 +3695,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "requestId": "E1A719E1-02BF-4FDB-BC33-0082EE26B1E2",
     "success": true
 ```
+
+`}`
 
 #### 4.4.5 CreateACLRule
 
@@ -3530,8 +3738,13 @@ http(s)://[Endpoint]/?Action=CreateACLRule &CCRuleTemplateId=1 &RuleList.1=1.1.1
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad208bd17573189408164915d008d",
@@ -3546,12 +3759,14 @@ HTTP/1.1 200 OK Content-Type:application/json
 configuration generation."
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "BF157943-5652-4E0E-8701-B483638235DF",
     "success": true
 ```
+
+`}`
 
 #### 4.4.6 DescribeACLRule
 
@@ -3587,24 +3802,36 @@ http(s)://[Endpoint]/?Action=DescribeACLRule &AclRuleTemplateId=1 &WafInstanceId
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad20cbc17569716864332022d0093",
         "asapiSuccess": true,
         "asapiRequestId": "4B6F4F07-1164-41A2-B4EF-8FE4D7F9D03E",
         "Result": [
+```
+
+`{`
+
+```json
                 "id": 6755399****,
                 "target": "1.1.1.1"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "4B6F4F07-1164-41A2-B4EF-8FE4D7F9D03E",
     "success": true
 ```
+
+`}`
 
 #### 4.4.7 DeleteACLRuleTarget
 
@@ -3654,6 +3881,8 @@ Sample success responses `JSON` format
     "success": true
 ```
 
+`}`
+
 #### 4.4.8 DeleteClearACLRule
 
 Clears the objects hit by the Challenge Collapsar (CC) rule.
@@ -3687,8 +3916,13 @@ http(s)://[Endpoint]/?Action=DeleteClearACLRule &CCRuleTemplateId=1 &AddToWhiteL
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad20cbc17569738254454919d0093",
@@ -3702,6 +3936,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "requestId": "E27391FD-050A-403D-B0CE-0BE35F4D2D33",
     "success": true
 ```
+
+`}`
 
 #### 4.4.9 CreateACLWhiteList
 
@@ -3747,6 +3983,11 @@ HTTP/1.1 200 OK Content-Type:application/json
         "asapiSuccess": true,
         "asapiRequestId": "E79FA974-40CE-4C69-8A5B-B06CCB882552",
         "Result": [
+```
+
+`{`
+
+```json
                 "tenant_id": 2,
                 "instance_id": "waf-ZmnE441fDdQX1oGZz2",
                 "create_time": "1757318088",
@@ -3755,12 +3996,14 @@ HTTP/1.1 200 OK Content-Type:application/json
                 "target": "1.1.1.1"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "E79FA974-40CE-4C69-8A5B-B06CCB882552",
     "success": true
 ```
+
+`}`
 
 #### 4.4.10 DeleteACLWhiteList
 
@@ -3796,8 +4039,13 @@ http(s)://[Endpoint]/?Action=DeleteACLWhiteList &IdList.1=1 &WafInstanceId=waf-J
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
     "code": 200,
     "data": {
         "eagleEyeTraceId": "0ad208bd17573185136908473d008d",
@@ -3811,6 +4059,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "requestId": "9CA04101-D0CB-48FA-B661-3991BE4449ED",
     "success": true
 ```
+
+`}`
 
 ### 4.5 Custom rules
 
@@ -3888,12 +4138,14 @@ Sample success responses `JSON` format
 onfiguration generation."
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "8013D4E6-7F89-4AF8-A3D6-70B3FD4F169E",
     "success": true
 ```
+
+`}`
 
 #### 4.5.2 EditPolicyRule
 
@@ -3951,7 +4203,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=EditPolicyRule &Pattern={"$AND":[{"infix":{"decoded_path":"1"}}]} &PolicyAction=deny &Comment=1 &ExpireTime=0 &IsGlobal=false &WebsiteIdList=[] &AttackType=-1 &LogOption=drop &RiskLevel=0 &ForbiddenPageConfig=null &Enable=true &WafInstanceId=waf-BI4uAse75as181j3EK &Id=1 &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -3968,12 +4220,14 @@ Sample success responses `JSON` format
 configuration generation."
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "99F50295-ACA2-474A-91CF-3A347974B7F5",
     "success": true
 ```
+
+`}`
 
 #### 4.5.3 DeletePolicyRule
 
@@ -4012,7 +4266,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeletePolicyRule &IdList.1=1 &WafInstanceId=waf-JJttJ42A********eVW &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -4028,12 +4282,14 @@ Sample success responses `JSON` format
             "StatusMessage": "Changes saved to database. Generating configuration"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "10D49BF7-6A61-4B2F-AA1B-9FB6FE1BA467",
     "success": true
 ```
+
+`}`
 
 #### 4.5.4 EditEnableDisablePolicyRule
 
@@ -4066,7 +4322,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=EditEnableDisablePolicyRule &IdIn.1=1 &PolicyAction=disable &WafInstanceId=waf-BI4uAse75as181j3EK &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -4082,6 +4338,8 @@ Sample success responses `JSON` format
     "requestId": "C8FF4C7B-C32C-42A2-BF7E-C53DD5C9C890",
     "success": true
 ```
+
+`}`
 
 #### 4.5.5 DescribeExportPolicyRule
 
@@ -4115,7 +4373,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeExportPolicyRule &IdIn.1=1 &WafInstanceId=waf-BI4uAse75as181j3EK &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -4127,12 +4385,14 @@ Sample success responses `JSON` format
             "url": "https://wafonecs-cn-****"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "2CE85674-FADA-46BF-BC19-0E1D224152EA",
     "success": true
 ```
+
+`}`
 
 ### 4.6 Protection policies
 
@@ -4185,7 +4445,7 @@ Sample request
 https://[Endpoint]/?Action=CreatePolicyGroup &WafInstanceId=waf-5A3b***********RR07 &PolicyGroupName=name &<Common request parameters>
 ```
 
-Sample success response `JSON` format
+Sample success response `JSON` format `{`
 
 ```json
     "code": 200,
@@ -4209,7 +4469,7 @@ Sample success response `JSON` format
                         "utf7",
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
             "response_detection_state": true,
@@ -4605,6 +4865,8 @@ Sample success response `JSON` format
     "success": true,
 ```
 
+`}`
+
 #### 4.6.2 EditPolicyGroup
 
 Edits an attack protection policy.
@@ -4692,14 +4954,14 @@ Sample success response `JSON` format
 onfiguration generation."
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "AD29C005-1CA9-4EF8-B922-F8FC01A38704",
     "success": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <code>200</code> <data>
@@ -4749,7 +5011,7 @@ Sample requests
 https://[Endpoint]/?Action=CreatePolicyGroup &RegionId=cn-wulan-env116-d01 &WafInstanceId=waf-BI4u*********3EK &IdList.1=65 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -4765,6 +5027,8 @@ Sample success responses `JSON` format
     "requestId": "BEB481EA-80DC-42C1-B022-D6777D39A51F",
     "success": true
 ```
+
+`}`
 
 #### 4.6.4 DescribePolicyGroup
 
@@ -4839,7 +5103,7 @@ Sample requests
 https://[Endpoint]/?Action=UploadSSLCert &CertName=cert_name &CertFile={"name":"","content":"bEtrYmdrVFVSb3plY1dMa01BVmZrekhGdGxweVpl"} &KeyFile={"name":"","content":"eElzcEZEaElzaXlqVFBGU1B0ZG9qdm1iSEV1YW16"} &Password=jgXzOoigHGWCLxE &WafInstanceId=waf-JJttJ42A****eVW &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -4873,12 +5137,14 @@ Sample success responses `JSON` format
                 "issuer": "Root CA rsa"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "requestId": "F5C60063-C6B2-46AF-AB2C-E463CBF83C08",
     "success": true
 ```
+
+`}`
 
 #### 4.7.2 DeleteSSLCert
 
@@ -4927,7 +5193,7 @@ Sample success responses `JSON` format
     "success": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <code>200</code> <data>
@@ -4983,6 +5249,11 @@ Sample success responses `JSON` format
         "asapiRequestId": "92FCF82C-B6BA-4542-856D-07AFD06FAA0C",
         "Result": {
             "items": [
+```
+
+`{`
+
+```json
                     "tenant_id": 2,
                     "instance_id": "waf-i1aIsdH****NEg",
                     "create_time": "1777432730",
@@ -4991,12 +5262,17 @@ Sample success responses `JSON` format
                     "name": "test.com, *.test.com",
                     "domains": "['test.com', '*.test.com']",
                     "websites": [
+```
+
+`{`
+
+```json
                             "create_time": "1777367483",
                             "name": "a",
                             "id": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "id": 1,
@@ -5016,12 +5292,14 @@ Sample success responses `JSON` format
                         "issuer": "Root CA rsa"
 ```
 
-`]` `},`
+`}` `}` `]` `}` `},`
 
 ```json
     "requestId": "92FCF82C-B6BA-4542-856D-07AFD06FAA0C",
     "success": true
 ```
+
+`}`
 
 #### 4.7.4 CreateUpdateSSLCert
 
@@ -5059,7 +5337,7 @@ Sample requests
 https://[Endpoint]/?Action=UploadSSLCert &Id=1 &Name=cert_name &CertFile={"name":"","content":"bEtrYmdrVFVSb3plY1dMa01BVmZrekhGdGxweVpl***"} &KeyFile={"name":"","content":"eElzcEZEaElzaXlqVFBGU1B0ZG9qdm1iSEV1YW16***"} &Password=jgXzOoigHGWCLxE &WafInstanceId=waf-JJttJ42A********eVW &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "code": 200,
@@ -5093,12 +5371,14 @@ Sample success responses `JSON` format
                 "issuer": "Root CA rsa"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "requestId": "F5C60063-C6B2-46AF-AB2C-E463CBF83C08",
     "success": true
 ```
+
+`}`
 
 #### 4.7.5 EditCert
 
@@ -5167,12 +5447,14 @@ Sample success responses `JSON` format
                 "issuer": "Root CA rsa"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "requestId": "291BECF9-8BDA-4815-9BE8-62B8D6FD7978",
     "success": true
 ```
+
+`}`
 
 ### 4.8 Vector Search
 

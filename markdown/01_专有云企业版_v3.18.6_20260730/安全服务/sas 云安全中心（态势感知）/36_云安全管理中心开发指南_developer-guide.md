@@ -5,14 +5,139 @@ doc_version: "20260729"
 pdf_pages: 262
 source_pdf: "36_云安全管理中心开发指南_developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/sas/zh/developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云安全中心（态势感知） 云安全管理中心开发指南
 
-## 快速入门
+## 目录
 
-### 开发文档使用说明
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户控制台
+  - 2.2 查看API信息
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取Endpoint
+- 3 调用示例
+  - 3.1 Java SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Java SDK
+      - 3.1.2.2 使用CommonRequest进行调用
+  - 3.2 Python SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Python SDK
+      - 3.2.2.2 使用CommonRequest进行调用
+  - 3.3 Go SDK调用示例
+    - 3.3.1 快速开始
+    - 3.3.2 使用手册
+      - 3.3.2.1 安装Go SDK核心包
+      - 3.3.2.2 使用CommonRequest进行调用
+- 4 API公共参数
+- 5 云安全管理中心（SOC）
+  - 5.1 调用方式
+    - 5.1.1 请求结构
+    - 5.1.2 签名机制
+    - 5.1.3 公共参数
+    - 5.1.4 返回结构
+  - 5.2 安全监控
+    - 5.2.1 DescribeAttacks
+    - 5.2.2 DescribeAlarms
+    - 5.2.3 DescribeVulFrangs
+    - 5.2.4 DescribeHcFrangs
+  - 5.3 运营大屏
+    - 5.3.1 QueryThreats
+    - 5.3.2 QueryThreatChartData
+  - 5.4 威胁事件
+    - 5.4.1 GetSocEvents
+    - 5.4.2 GetSocThreatInfo
+- 6 安全审计
+  - 6.1 DescribeOperatorType
+  - 6.2 CreateEventType
+  - 6.3 DescribeEventType
+  - 6.4 DeleteEventType
+  - 6.5 CreateLogFilter
+  - 6.6 DescribeLogFilter
+  - 6.7 DeleteLogFilter
+  - 6.8 CreateReceiver
+  - 6.9 DescribeReceiver
+  - 6.10 DeleteReceiver
+  - 6.11 CreateRule
+  - 6.12 DescribeRule
+  - 6.13 EnableRule
+  - 6.14 DisableRule
+  - 6.15 DeleteRule
+  - 6.16 CreateTask
+  - 6.17 DescribeTask
+  - 6.18 DescribeSetting
+  - 6.19 ModifySetting
+  - 6.20 DescribeLogType
+  - 6.21 DescribeLogSource
+  - 6.22 DescribeLogCountStat
+  - 6.23 DescribeLog
+  - 6.24 DescribeEventRisk
+  - 6.25 DescribeEventRiskStat
+  - 6.26 DescribeEventTypeStat
+  - 6.27 DescribeEventCountStat
+  - 6.28 DescribeEvent
+  - 6.29 DescribeArchiveCountStat
+  - 6.30 DeleteTask
+  - 6.31 DescribeArchive
+- 7 态势感知
+  - 7.1 资产管理
+    - 7.1.1 DescribeFieldStatistics
+    - 7.1.2 DescribeGroupedTags
+    - 7.1.3 DescribeAllGroups
+    - 7.1.4 DescribeInstanceStatistics
+    - 7.1.5 DescribeCloudProductFieldStatistics
+    - 7.1.6 DescribeCloudCenterInstances
+    - 7.1.7 DescribeSummaryInfo
+  - 7.2 安全评分
+    - 7.2.1 DescribeSecureSuggestion
+  - 7.3 获取告警数据
+    - 7.3.1 DescribeAlarmEventList
+    - 7.3.2 DescribeAlarmEventDetail
+    - 7.3.3 DescribeSuspEvents
+    - 7.3.4 DescribeSuspEventDetail
+  - 7.4 云产品配置检查
+    - 7.4.1 DescribeRiskItemType
+    - 7.4.2 StartBaselineSecurityCheck
+    - 7.4.3 DescribeRiskCheckSummary
+    - 7.4.4 DescribeRiskCheckResult
+    - 7.4.5 DescribeSecurityCheckScheduleConfig
+  - 7.5 漏洞管理
+    - 7.5.1 DescribeVulList
+    - 7.5.2 DescribeVulWhitelist
+    - 7.5.3 DescribeConcernNecessity
+    - 7.5.4 DescribeGroupedVul
+    - 7.5.5 DescribeAutoDelConfig
+    - 7.6.1 DescribeCheckWarningSummary
+    - 7.6.2 DescribeStratety
+    - 7.6.3 DescribeStrategyExecDetail
+    - 7.6.4 DescribeCheckWarnings
+    - 7.6.5 DescribeCheckWarningDetail
+    - 7.6.6 DescribeWarningMachines
+  - 7.7 资产指纹
+    - 7.7.1 DescribePropertyCount
+    - 7.7.2 DescribePropertyPortDetail
+    - 7.7.3 DescribePropertyProcDetail
+    - 7.7.4 DescribePropertyPortItem
+    - 7.7.5 DescribePropertyProcItem
+    - 7.7.6 DescribePropertySoftwareDetail
+    - 7.7.7 DescribePropertySoftwareItem
+    - 7.7.8 DescribePropertyUserDetail
+    - 7.7.9 DescribePropertyUserItem
+    - 7.7.10 DescribeModuleConfig
+  - 7.8 资产暴露
+    - 7.8.1 DescribeExposedInstanceList
+
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -33,7 +158,7 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍如何通过POP网关调用专有云API。
 
@@ -53,18 +178,20 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-` `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户控制台
+### 2.1 登录开发者门户控制台
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户控制台。
 
 **前提条件**
 
@@ -85,11 +212,11 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
+绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
 **启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 查看API信息
+### 2.2 查看API信息
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本，在通过SDK调用API接口时需要填写上述信息。
 
@@ -106,13 +233,13 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 4. 在左侧导航栏中选择目标云产品。在下方API列表中可浏览当前API版本中的所有API接口名称。若当前云
 产品存在多个API版本，可在**版本**下拉列表中，选择目标API版本。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
 **警告**
 
@@ -143,12 +270,12 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -188,11 +315,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -227,15 +359,16 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
-
-**说明**
-
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
@@ -293,24 +426,24 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取Endpoint
+`}` `}`
+
+### 2.5 获取Endpoint
 
 本文介绍如何获取云盾各产品的Endpoint。
 
 **背景信息**
 
-通过POP网关调用API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。您也
+通过POP网关调用API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。您也可以通过如下方法自行获取Endpoint。
 
 **操作步骤**
 
 1. 登录飞天基础运维平台。
-2. 在顶部菜单栏，选择**产品运维** > **飞天基础运维平台**。
+2. 在顶部菜单栏，选择**产品运维** **>** **飞天基础运维平台**。
 3. 在左侧导航栏，单击**产品集群运维**。
-4. 在**产品** | **集群**搜索框输入sas-securityoperationscentercluster，单击**集群详情**。
+4. 在**产品** **|** **集群**搜索框输入sas-securityoperationscentercluster，单击**集群详情**。
 5. 在**服务列表**页签，单击服务名称。
 6. 在**组件列表**页点击 **yundun-soc**组件，单击**注册变量**，搜索yundunsoc.pop.endpoint，对应的值即
 为业务域的Endpoint。
@@ -320,17 +453,17 @@ AccessKeyID、AccessKeySecret。
 ${EndpointPre}.${global:region}.${global:internet-domain}
 ```
 
-## 调用示例
+## 3 调用示例
 
-### Java SDK调用示例
+### 3.1 Java SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取产品名Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 阿里云专有云Java SDK需要1.8及以上的JDK。
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取Endpoint，具体操作，请参见获取Endpoint。 阿里云专有云Java SDK需要1.8及以上的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -384,14 +517,13 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### 使用手册
+`}` `}` `}`
 
-##### 安装Java SDK
+#### 3.1.2 使用手册
+
+##### 3.1.2.1 安装Java SDK
 
 本文介绍如何安装及调用云盾Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
@@ -403,7 +535,7 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 </dependency>
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.1.2.2 使用CommonRequest进行调用
 
 **说明**
 
@@ -415,6 +547,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：调用RPC风格的API**
@@ -454,20 +589,23 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Python SDK调用示例
+`}` `}` `}`
 
-#### 快速开始
+### 3.2 Python SDK调用示例
+
+#### 3.2.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -492,7 +630,7 @@ pip3 install aliyun-python-sdk-core-v3
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
 ```
 
 `request.set_domain('<your-endpoint>')//` 当前产品的服务地址
@@ -504,13 +642,13 @@ request.set_version('<API-version>')// 接口的版本 request.set_action_name('
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.2.2 使用手册
 
-##### 安装Python SDK
+##### 3.2.2.1 安装Python SDK
 
-本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
+本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
 
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -524,7 +662,7 @@ pip install aliyun-python-sdk-core
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.2 使用CommonRequest进行调用
 
 **说明**
 
@@ -536,6 +674,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：调用RPC风格的API**
@@ -549,15 +690,15 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### Go SDK调用示例
+### 3.3 Go SDK调用示例
 
-#### 快速开始
+#### 3.3.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -573,38 +714,44 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化Client实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-
-**说明**
-
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 使用手册
+
+##### 3.3.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 使用CommonRequest进行调用
-
-**说明**
+##### 3.3.2.2 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，可以采用泛用型的API调用方式 （CommonRequest）。使用CommonRequest调用方式可实现任意OpenAPI接口的调用。
 
@@ -614,6 +761,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：使用RPC风格的API**
@@ -627,7 +777,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -635,7 +785,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<YOUR-ENDPOINT>"// 当前产品实际的Endpoint
     request.Version = "<API-version>"// 接口的版本
@@ -645,14 +799,17 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-数
+`}`
 
-## API公共参数
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` 数
+
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -674,13 +831,13 @@ your_access_key_secret}")
 
 **公共返回参数**
 
-API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
+API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。 中心（SOC）
 
-## 云安全管理中心（SOC）
+## 5 云安全管理中心（SOC）
 
-### 调用方式
+### 5.1 调用方式
 
-#### 请求结构
+#### 5.1.1 请求结构
 
 **请求结构说明**
 
@@ -694,7 +851,7 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 
 `Action` ，表示要执行的操作，即接口名。 例如， `Action=GetEcsProtectCount` 表示通过GetEcsProtectCount接口查询ECS保护状态的在线数及异常离线数。
 
-#### 签名机制
+#### 5.1.2 签名机制
 
 云盾服务会对每个访问的请求进行身份验证，所以无论使用HTTP还是HTTPS协议提交请求，都需要在请求中包含签名（Signature）信息。
 
@@ -707,6 +864,8 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 | 接入点 | http://yundunnewsoc-pop.[RegionId].example.com/? |
 | API自定义参数 | Action=GetEcsProtectCount |
 | 公共参数（不包含Signature） | &Timestamp=2016-02-23T12:46:24Z &Format=JSON &AccessKeyId=<yourAccessKeyId> &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2019-07-23 &SignatureVersion=1.0 |
+
+中心（SOC）
 
 | Access Key Secret | <yourAccessKeySecret> |
 |---|---|
@@ -735,13 +894,15 @@ LEW8N4y7Uasop******
 
 5. 将得到的签名值作为 Signature 参数添加到请求参数中，即完成对请求签名的过程。
 
-#### 公共参数
+#### 5.1.3 公共参数
 
 公共参数是指每个API接口都需要使用到的请求参数，包含API版本号、身份验证等信息。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Version | String | 是 | API版本号，为日期形式：YYYY-MM-DD。 取值：2019-07-23 |
+
+中心（SOC）
 
 | AccessKeyId | String | 是 | 阿里云颁发给用户的访问服务所用的密钥 ID。 |
 |---|---|---|---|
@@ -753,7 +914,7 @@ LEW8N4y7Uasop******
 | ResourceOwnerA ccount | String | 否 | 本次API请求访问到的资源拥有者账户，即登录用户名。 |
 | Format | String | 否 | 返回响应的格式。 取值：JSON \| XML 说明默认值为XML。 |
 
-#### 返回结构
+#### 5.1.4 返回结构
 
 云盾API返回结构支持XML和JSON两种格式。用户发送的每次接口调用请求，无论成功与否，系统都会返回一个唯一识别码**RequestId**。
 
@@ -763,29 +924,29 @@ LEW8N4y7Uasop******
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-<!--结果的根结点`-->` <接口名称`+Response>` <!--返回请求标签`-->`
+<!--结果的根结点`-->` `<`接口名称`+Response>` <!--返回请求标签`-->`
 
 ```xml
     <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
 ```
 
-<!--返回结果数据`-->` `</`接口名称`+Response>`
+<!--返回结果数据`-->` `</`接口名称`+Response>` 中心（SOC）
 
 **JSON返回结构示例**
 
+`{`
+
 ```json
-{ "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
+"RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
 ```
 
-`/*` 返回结果数据 `*/`
+`/*` 返回结果数据 `*/` `}`
 
-```
-}
-```
+### 5.2 安全监控
 
-### 安全监控
+#### 5.2.1 DescribeAttacks
 
-#### DescribeAttacks
+通过DescribeAttacks接口，指定条件查询用户侧和平台侧攻击防护列表。
 
 **请求头**
 
@@ -802,7 +963,7 @@ LEW8N4y7Uasop******
 | SourceFro m | Integ er | Query | 否 | 41 | 攻击防护的数据来源。取值： 40：Web应用防火墙。 41：云防火墙。 42：DDoS防护 （aliguard）。 44：流量安全监控 （IDS）。 46：态势感知（暴力破解防护）。 |
 | UserId | Long | Query | 否 | 2956140888888888 | 组织ID。 |
 
-|  |  |  |  | 云安全 | 管理中心开发指南·云安全管理中心（SOC） |
+|   |   |   |   | 云安全 | 管理中心开发指南·云安全管理中心（SOC） |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -821,8 +982,10 @@ LEW8N4y7Uasop******
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 8010791A-3154- 4154-ACB2- 866E56A6**** | 本次调用请求的ID。 |
-| Data | Struct |  | 数据集合。 |
-| -Items | Array |  | 数据列表。 |
+| Data | Struct |   | 数据集合。 |
+| -Items | Array |   | 数据列表。 |
+
+中心（SOC）
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -831,7 +994,7 @@ LEW8N4y7Uasop******
 | --AttackId | Integer | 10154212 | 攻击ID。 |
 | --ProcessState | Integer | 1 | 处理状态。取值： 2：已告警。 1：已防御。 3：清洗中。 4：清洗结束。 |
 | --AttackTrait | String | 1 | 此参数已废弃。 |
-| --SourceFrom | String |  | 攻击防护的数据来源。取值： 40：Web应用防火墙。 41：云防火墙。 42：DDoS防护（aliguard）。 44：流量安全监控（IDS）。 46：态势感知（暴力破解防护）。 |
+| --SourceFrom | String |   | 攻击防护的数据来源。取值： 40：Web应用防火墙。 41：云防火墙。 42：DDoS防护（aliguard）。 44：流量安全监控（IDS）。 46：态势感知（暴力破解防护）。 |
 | --UserId | Long | 295614088888888 8 | 组织ID。 |
 | --UserName | String | 组织A | 组织名称。 |
 | --RaisedTime | Long | 1641548505000 | 攻击时间。 |
@@ -842,7 +1005,7 @@ LEW8N4y7Uasop******
 | --TargetIp | String | 10.0.X.X | 攻击目标IP。 |
 | --AssetName | String | SSH暴力**** | 被攻击资产名称。 |
 
-|  |  |  | 云安全管理中心开发指南·云安全管理中心（SOC） |
+|   |   |   | 云安全管理中心开发指南·云安全管理中心（SOC） |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -861,7 +1024,7 @@ LEW8N4y7Uasop******
 http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeAttacks &DataScope=1 &PageSize=20 &PageNo=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式
 
 ```json
 {"RequestId":"8010791A-3154-4154-ACB2-866E56A6****","Data": {"PageSize":"10","Total":"20","PageNo":"1","Items":[{"UserName":"组织 A","AttackTrait":"1","SourceFrom":"1","AttackType":"1","AttackerIp":"10.0.X.X","AssetName
@@ -874,7 +1037,7 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeAttacks &DataS
 Type":"1","AttackId":"10154212","AttackName":"zz_78****","UserId":"2956140888888888","Ass PublicIps":"172.12.XX.XX","Asset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","TargetIp":"10.0.X.X","RaisedTime":"1641548505000"}]}}
 ```
 
-`XML` 格式
+`XML` 格式中心（SOC）
 
 ```xml
 <RequestId>8010791A-3154-4154-ACB2-866E56A6****</RequestId> <Data>
@@ -903,7 +1066,7 @@ Type":"1","AttackId":"10154212","AttackName":"zz_78****","UserId":"2956140888888
 </Data>
 ```
 
-#### DescribeAlarms
+#### 5.2.2 DescribeAlarms
 
 通过DescribeAlarms接口，指定条件查询用户侧和平台侧安全监控中安全告警列表。
 
@@ -916,6 +1079,8 @@ Type":"1","AttackId":"10154212","AttackName":"zz_78****","UserId":"2956140888888
 | PageSize | Integer | 否 | 10 | 分页查询时，指定每页最多显示的数据条数。 |
 | PageNo | Integer | 否 | 1 | 分页查询时，设置当前页面的页码。 |
 | StartTime | Long | 否 | 1609430400000 | 告警开始发生时间最小值，单位为毫秒。 |
+
+中心（SOC）
 
 | EndTime | Long | 否 | 1645977600000 | 告警开始发生时间最大值，单位为毫秒。 |
 |---|---|---|---|---|
@@ -933,8 +1098,10 @@ Type":"1","AttackId":"10154212","AttackName":"zz_78****","UserId":"2956140888888
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 数据集合。 |
-| Items | Array of Item |  | 数据列表。 |
+| Data | Struct |   | 数据集合。 |
+| Items | Array of Item |   | 数据列表。 |
+
+中心（SOC）
 
 | AlarmId | Integer | 4008888 | 告警ID。 |
 |---|---|---|---|
@@ -951,6 +1118,8 @@ Type":"1","AttackId":"10154212","AttackName":"zz_78****","UserId":"2956140888888
 | ProcessState | Integer | 1 | 处理状态。取值： 1：未处理。 2：已处理。 3：已忽略。 |
 | RaisedTime | Long | 1640931449000 | 告警首次发生时间。单位为毫秒。 |
 | RiskLevel | Integer | 2 | 风险等级范围。取值： 0：提醒。 1：可疑。 2：紧急。 |
+
+中心（SOC）
 
 | SourceFrom | Integer | 20 | 数据来源标识。取值： 20：态势感知/安骑士。 |
 |---|---|---|---|
@@ -969,7 +1138,7 @@ Type":"1","AttackId":"10154212","AttackName":"zz_78****","UserId":"2956140888888
 http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeAlarms &RiskLevels=[0,1,2] &DataScope=1 &PageSize=20 &PageNo=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式中心（SOC）
 
 ```xml
 <RequestId>8010791A-3154-4154-ACB2-866E56A6****</RequestId> <Data>
@@ -1011,13 +1180,17 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeAlarms &RiskLe
 ps":"172.12.XX.XX","Asset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","RaisedTime":"1640931449000","RiskLevel":"2","Detail":"{\"lastTime\": 164 1536460051,\"assetsType\": 0,\"modifiedTime\": \"2022-01-07 14:21:00\"}","LastTime":"1641537619"}]}}
 ```
 
-#### DescribeVulFrangs
+#### 5.2.3 DescribeVulFrangs
+
+通过DescribeVulFrangs接口，根据指定条件查询漏洞。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeVulFran gs | 系统规定参数。取值：DescribeVulFrangs。 |
+
+中心（SOC）
 
 | RiskLevel | Integer | 否 | 1 | 漏洞等级,取值： 0：低危。 1：中危。 2：高危。 |
 |---|---|---|---|---|
@@ -1035,6 +1208,8 @@ ps":"172.12.XX.XX","Asset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","RaisedTime":
 | Keyword | String | 否 | 192.168.XX.XX | 漏洞名称或资产名称、资产IP。 |
 | SourceFrom | Integer | 否 | 1 | 数据来源。取值： 1：安骑士主机漏洞。 |
 
+中心（SOC）
+
 | Asset | String | 否 | ae3ef6ef-8888- 4aee-8bac- 19879e68**** | 漏洞涉及的资产ID。 |
 |---|---|---|---|---|
 | AssetType | String | 否 | ECS | 漏洞受影响资产类型。 如：ECS，SLB，OSS，EIP，RDS。 |
@@ -1043,8 +1218,8 @@ ps":"172.12.XX.XX","Asset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","RaisedTime":
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 数据集合。 |
-| Items | Array of Item |  | 数据列表。 |
+| Data | Struct |   | 数据集合。 |
+| Items | Array of Item |   | 数据列表。 |
 | Asset | String | ae3ef6ef-8888- 4aee-8bac- 19879e68**** | 漏洞涉及的资产ID。 |
 | AssetName | String | zzz 75**** _ | 漏洞影响的资产名称 |
 | AssetPrivateIp s | String | 192.168.XX.XX | 受漏洞影响的资产私网IP。 |
@@ -1056,6 +1231,8 @@ ps":"172.12.XX.XX","Asset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","RaisedTime":
 | ProcessState | Integer | 1 | 处理状态。取值： 1：未处理。 2：已处理。 |
 | RaisedTime | Integer | 2022 | 发生时间。使用yyyy格式。 |
 | RiskLevel | Integer | 1 | 漏洞等级。取值： 0：低危。 1：中危。 2：高危。 |
+
+中心（SOC）
 
 | SourceFrom | Integer | 1 | 数据来源。取值： 1：安骑士主机漏洞。 |
 |---|---|---|---|
@@ -1078,7 +1255,7 @@ ps":"172.12.XX.XX","Asset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","RaisedTime":
 http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &DataScope=1 &PageSize=20 &Page=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式中心（SOC）
 
 ```xml
 <RequestId>8010791A-3154-4154-ACB2-866E56A6****</RequestId> <Data>
@@ -1120,7 +1297,7 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 19879e68****","Id":"75489","RaisedTime":"2022","RiskLevel":"1","LastTime":"1642025151000" VulType":"cve"}]}}
 ```
 
-#### DescribeHcFrangs
+#### 5.2.4 DescribeHcFrangs
 
 通过DescribeHcFrangs接口，根据指定条件查询用户侧安全监控的脆弱性风险（主机配置列表）。
 
@@ -1129,6 +1306,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeHcFran gs | 系统规定参数。取值：DescribeHcFrangs。 |
+
+中心（SOC）
 
 | RiskLevel | Integer | 否 | 1 | 风险等级，取值如下： 0：低危。 1：中危。 2：高危。 |
 |---|---|---|---|---|
@@ -1145,6 +1324,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | Asset | String | 否 | ae3ef6ef-8888- 4aee-8bac- 19879e68**** | 资产ID。 |
 | AssetType | String | 否 | ECS | 资产类型。 如：ECS，SLB，OSS，EIP，RDS。 |
 
+中心（SOC）
+
 | Lang | String | 否 | zh CN _ | 请求和接收消息的语言类型。取值： zh CN：简体中文。 _ zh TW：繁体中文。 _ en US：英文。 _ |
 |---|---|---|---|---|
 
@@ -1152,8 +1333,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 数据集合。 |
-| Items | Array of Item |  | 数据列表。 |
+| Data | Struct |   | 数据集合。 |
+| Items | Array of Item |   | 数据列表。 |
 | Asset | String | ae3ef6ef-8888- 4aee-8bac- 19879e68**** | 风险影响的资产ID。 |
 | AssetName | String | zz 78**** _ | 风险影响的资产名称。 |
 | AssetPrivateIp s | String | 192.168.XX.XX | 风险影响的资产私网IP。 |
@@ -1165,6 +1346,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | Id | Long | 65357 | 记录ID。 |
 | LastFoundTim e | String | 1642042910000 | 最近发现风险时间。单位为毫秒。 |
 | ProcessState | Integer | 2 | 风险处理状态。 取值： 1：已处理。 2：未处理。 |
+
+中心（SOC）
 
 | RiskLevel | Integer | 1 | 风险等级。取值如下： 0：低危。 1：中危。 2：高危。 |
 |---|---|---|---|
@@ -1184,7 +1367,7 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &DataScope=1 &PageSize=20 &Page=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式中心（SOC）
 
 ```xml
 <RequestId>8010791A-3154-4154-ACB2-866E56A6****</RequestId> <Data>
@@ -1229,9 +1412,9 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 -4aee-8bac-19879e68****","Id":"65357","RiskLevel":"1"}]}}
 ```
 
-### 运营大屏
+### 5.3 运营大屏
 
-#### QueryThreats
+#### 5.3.1 QueryThreats
 
 查询运营大屏威胁数据列表。
 
@@ -1241,6 +1424,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 |---|---|---|---|---|
 | Action | String | 是 | QueryThreats | 系统规定参数。取值：QueryThreats。 |
 | FromTime | Long | 否 | 1640944798076 | 威胁开始时间的最小值，单位为毫秒。 |
+
+中心（SOC）
 
 | ToTime | Long | 否 | 1641549603697 | 威胁开始时间的最大值，单位为毫秒。 |
 |---|---|---|---|---|
@@ -1255,6 +1440,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | SrcFrom | String | 否 | 20,40 | 数据来源。可以多值，逗号分割。取值： 20：安骑士。 40：WAF。 41：云防火墙。 44：NDR。 |
 | ThreatType | String | 否 | 进程异常行为 | 告警类型（攻击类型）。取值：非 Web 攻击、精准防御、web攻击、其他、进程异常行为等。 |
 | ThreatName | String | 否 | 可疑编码命令 | 攻击名称。 |
+
+中心（SOC）
 
 | ProcessWay | String | 否 | 1 | 处置方式。取值： 0：放行。 1：拦截。 2：无动作。 3：手动处置。 4：一键封禁。 5：自动处置。 6：告警。 7：丢弃。 8：阻断。 |
 |---|---|---|---|---|
@@ -1274,6 +1461,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | Datas | List | {"lastTime":16415 49724000," logTi __ me":16415497242 87,"process way":" _ "} | 数组存储从Elasticsearch查出来的所有数据。 每个元素是一组数据。 |
 | FromTime | Long | 1641484800000 | 威胁开始时间的最小值，单位为毫秒。 |
 
+中心（SOC）
+
 | HistogramInter val | Long | 0 | 直方图区间。 |
 |---|---|---|---|
 | PageSize | Integer | 10 | 分页查询时，指定每页最多显示的数据条数。 |
@@ -1286,10 +1475,10 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 请求示例
 
 ```
-&CurrentPage=1 &PageSize=10 &FromTime=1641484800000 &ToTime=1641550177290
+http(s)://[Endpoint]/?Action=QueryThreats &CurrentPage=1 &PageSize=10 &FromTime=1641484800000 &ToTime=1641550177290
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ToTime>1641550177290</ToTime> <PageSize>10</PageSize> <RequestId>8010791A-3154-4154-ACB2-866E56A6****</RequestId> <HistogramInterval>0</HistogramInterval> <CurrentPage>1</CurrentPage> <Datas>{"lastTime":1641549724000,"__logTime":1641549724287,"process_way":""}</Datas> <Total>200</Total> <FromTime>1641484800000</FromTime>
@@ -1303,11 +1492,13 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 {\"lastTime\":1641549724000,\"__logTime\":1641549724287,\"process_way\":\"\"}","Total":"2 ","FromTime":"1641484800000"}
 ```
 
-#### QueryThreatChartData
+#### 5.3.2 QueryThreatChartData
 
 查询运营大屏相关图表数据。
 
 **请求参数**
+
+中心（SOC）
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -1325,6 +1516,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | SrcFrom | String | 否 | 20,40 | 数据来源。可以多值，逗号分割。取值： 20：安骑士。 40：WAF。 41：云防火墙。 44：NDR。 |
 | ThreatType | String | 否 | 进程异常行为 | 告警类型（攻击类型）。取值：非 Web 攻击、精准防御、web攻击、其他、进程异常行为等。 |
 
+中心（SOC）
+
 | ThreatName | String | 否 | 可疑编码命令 | 攻击名称。 |
 |---|---|---|---|---|
 | ProcessWay | String | 否 | 1 | 处置方式。取值： 0：放行。 1：拦截。 2：无动作。 3：手动处置。 4：一键封禁。 5：自动处置。 6：告警。 7：丢弃。 8：阻断。 |
@@ -1341,6 +1534,8 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
+中心（SOC）
+
 | Data | List | {"20": {"src from,count":" _ 23507"}} | 数组存储从Elasticsearch查出来的所有数据。 每个元素是一组数据。 |
 |---|---|---|---|
 | RequestId | String | 8010791A-3154- 4154-ACB2- 866E56A6**** | 本次调用请求的ID。 |
@@ -1353,7 +1548,7 @@ http(s)://yundunnewsoc-pop.[RegionId].example.com/?Action=DescribeVulFrangs &Dat
 http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &FromTime=1641484800000 &ToTime=1641550177290
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>8010791A-3154-4154-ACB2-866E56A6****</RequestId> <Data>{"20":{"src_from,count":"23507"}}</Data>
@@ -1365,9 +1560,11 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 {"RequestId":"8010791A-3154-4154-ACB2-866E56A6****","Data":"{\"20\": {\"src_from,count\":\"23507\"}}"}
 ```
 
-### 威胁事件
+### 5.4 威胁事件
 
-#### GetSocEvents
+#### 5.4.1 GetSocEvents
+
+调用GetSocEvents接口获取威胁事件列表。
 
 **授权信息**
 
@@ -1381,7 +1578,7 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+中心（SOC） 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -1396,6 +1593,8 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 | PageNo | Integ er | Quer y | 否 | 1 | 页数，起始为1。 |
 | PageSize | Integ er | Quer y | 否 | 10 | 每页条数，默认10，最大 500。 |
 
+中心（SOC）
+
 | FromTime | Long | Quer y | 否 | 1703575552000 | 查询开始时间，该时间是指事件的判定时间。 |
 |---|---|---|---|---|---|
 | ToTime | Long | Quer y | 否 | 1703575552000 | 查询截止时间，该时间是指事件的判定时间。 |
@@ -1405,6 +1604,8 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 | LoginAkId | Strin g | Quer y | 否 | akabc | 登录akid。 |
 | Types | Strin g | Quer y | 否 | illegalAccount,riskConnec tion | 威胁类型多选,以逗号分隔。 取值说明如下: networkScanning： 网络扫描 exploitVulnerability： 漏洞利用 maliciousSoftware： 恶意软件 networkAttack： 网络攻击 riskConnection： 风险连接 abnormalBehavior： 异常行为 illegalAccount：非法提取 |
 | Tag | Strin g | Quer y | 否 | tag1 | 标签。 |
+
+中心（SOC）
 
 | Killchains | Strin g | Quer y | 否 | delivery,target | 所属攻击阶段多选，以逗号分隔。取值说明如下: delivery： 载荷投递 exploitation： 漏洞利用 installation：后门植入 commadControl：命令控制 lateral：扫描扩散 elevate：权限提升 target： 目标打击 |
 |---|---|---|---|---|---|
@@ -1425,6 +1626,8 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 | ---Ip | String | 127.0.0.1 | ip地址。 |
 | ---Port | Integer | 80 | 端口。 |
 
+中心（SOC）
+
 | ---Location | String | 北京 | 地址。 |
 |---|---|---|---|
 | --DocId | String | 123SDFd343 | 事件id。 |
@@ -1440,6 +1643,8 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 | --Content | String | 事件的备注信息ABC | 备注。 |
 | --Name | String | eventname | 事件名称。 |
 
+中心（SOC）
+
 | --Severity | String | suspicious | 威胁级别多选，以逗号分隔。取值说明如下: information: 信息 suspicious: 可疑 general: 一般 serious: 严重 urgent: 紧急 |
 |---|---|---|---|
 | --SocRuleId | Long | 6001232 | 规则id。 |
@@ -1452,6 +1657,8 @@ http(s)://[Endpoint]/?Action=QueryThreatChartData &CurrentPage=1 &PageSize=10 &F
 | -- SuggestionsKe y | String | soc.rule.suggestion sKey | 处置建议key。 |
 | --HasTraceInfo | Integer | 1 | 是否有溯源信息： 0：无溯源信息 1：有溯源信息 |
 | --UpdateTime | Long | 1703575552000 | 更新时间。 |
+
+中心（SOC）
 
 | -Total | Long | 1000 | 总数。 |
 |---|---|---|---|
@@ -1468,39 +1675,54 @@ https://[Endpoint]/?Action=GetSocEvents&RegionId=cnhangzhou&Lang=zh_CN&OrgScope=
 p=127.0.0.1&Severity=suspicious&Severitys=suspicious,information&AssetName=assetA&LoginAk =akabc&Type=illegalAccount&Types=illegalAccount,riskConnection&Tag=tag1&Killchain=deliver Killchains=delivery,target&Name=eventname
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式中心（SOC）
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Data":{
         "PageSize":10,
         "Total":1000,
         "PageNo":1,
         "Items":[
-            {
+```
+
+`{`
+
+```json
                 "DestIps":[
-                    {
+```
+
+`{`
+
+```json
                         "Ip":"127.0.0.1",
                         "Port":80,
                         "Location":"北京"
-                    }
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "RuleEsIndex":"index1",
                 "EndTime":1703575552000,
                 "SourceIps":[
-                    {
+```
+
+`{`
+
+```json
                         "Ip":"127.0.0.1",
                         "Port":80,
                         "Location":"北京"
-                    }
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "HasTraceInfo":1,
@@ -1528,20 +1750,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
                 "UpdateTime":1703575552000,
                 "Killchain":"delivery",
                 "Tag":"tag1,tag2,tag3"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` 格式
+`}` `]` `}` `}` 中心（SOC） `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetSocEventsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Data>
         <Total>1000</Total>
@@ -1587,11 +1801,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <UpdateTime>1703575552000</UpdateTime>
         </Items>
     </Data>
+</GetSocEventsResponse>
 ```
 
-yundunnextsoc 2019-07-23
+yundunnextsoc 2019-07-23 中心（SOC）
 
-#### GetSocThreatInfo
+#### 5.4.2 GetSocThreatInfo
+
+调用GetSocThreatInfo接口获取威胁信息。
 
 **授权信息**
 
@@ -1625,13 +1842,15 @@ yundunnextsoc 2019-07-23
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
+中心（SOC）
+
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | Data | Struct | { "Domains":[ { "TipFlag":1, "Name":"aa" } ], "DestIps":[ { "AssetType":"ECS", "TipFlag":1, "Ip":"127.0.0.1", "Port":80, "IsInnerIp":false, "AssetId":"一般为 uuid", "Tags":"恶意 ip", "AssetName":"ecs0 01", "Location":"aa" } ], "Md5s":[ { "TipFlag":1, "Name":"aa" } ], "Networks":[ { "TipFlag":1, "Name":"aa" } ], "Procs":[ { "TipFlag":1, "Name":"aa" } ], "FilePaths":[ { "TipFlag":1, "Name":"aa" } ], "SourceIps":[ { "AssetType":"ECS", "TipFlag":1, "Ip":"127.0.0.1", "Port":80, "IsInnerIp":false, "AssetId":"一般为 uuid", "Tags":"恶意 ip", "AssetName":"ecs0 01", "Location":"aa" } ], "FileMd5CountTip": { "Names":"aa", "Count":10 }, "FileNames":[ { "TipFlag":1, "Name":"aa" } ], "DomainCountTip": { "Names":"aa", "Count":10 }, "MaliciousIpTip":{ "Names":"aa", "Count":10 }, "Aks":{ "Names":"aa", "Count":10 } } | 返回结果（一般为json格式）。 |
 | -Tips | List | - | 提示 |
 
-|  |  |  | 云安全管理中心开发指南·云安全管理中心（SOC） |
+|   |   |   | 云安全管理中心开发指南·云安全管理中心（SOC） |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1655,6 +1874,8 @@ yundunnextsoc 2019-07-23
 | --TipFlag | Integer | 1 | 是否命中情报 |
 | --IsInnerIp | Boolean | 1 | 是否是内部ip |
 
+中心（SOC）
+
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --Tags | String | 恶意ip | 标签 |
@@ -1675,6 +1896,8 @@ yundunnextsoc 2019-07-23
 | --TipFlag | Integer | 1 | 是否命中情报 |
 | -Networks | Array | [] | 网络 |
 | --Name | String | aa | 参数值 |
+
+中心（SOC）
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1697,7 +1920,7 @@ yundunnextsoc 2019-07-23
 
 **示例**
 
-请求示例
+请求示例中心（SOC）
 
 ```
 https://[Endpoint]/?Action=GetSocThreatInfo&RegionId=cnhangzhou&Lang=zh_CN&OrgScope=all&Aliuids=123456789,987654321&OrgIds=1,2&OrgFullIds=|1|3|,
@@ -1706,22 +1929,34 @@ https://[Endpoint]/?Action=GetSocThreatInfo&RegionId=cnhangzhou&Lang=zh_CN&OrgSc
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Data":{
         "Domains":[
-            {
-                "TipFlag":1,
-                "Name":"aa"
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "TipFlag":1,
+                "Name":"aa"
+```
+
+`}` `],`
 
 ```json
         "DestIps":[
-            {
+```
+
+`{`
+
+```json
                 "AssetType":"ECS",
                 "TipFlag":1,
                 "Ip":"127.0.0.1",
@@ -1731,57 +1966,74 @@ HTTP/1.1 200 OK Content-Type:application/json {
                 "Tags":"恶意ip",
                 "AssetName":"ecs001",
                 "Location":"aa"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Md5s":[
-            {
-                "TipFlag":1,
-                "Name":"aa"
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "TipFlag":1,
+                "Name":"aa"
+```
+
+`}` `],`
 
 ```json
         "Networks":[
-            {
-                "TipFlag":1,
-                "Name":"aa"
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "TipFlag":1,
+                "Name":"aa"
+```
+
+`}` `],`
 
 ```json
         "Procs":[
-            {
-                "TipFlag":1,
-                "Name":"aa"
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "TipFlag":1,
+                "Name":"aa"
+```
+
+`}` `],`
 
 ```json
         "FilePaths":[
-            {
+```
+
+`{`
+
+```json
                 "TipFlag":1,
 ```
 
+中心（SOC）
+
 ```json
                 "Name":"aa"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "SourceIps":[
-            {
+```
+
+`{`
+
+```json
                 "AssetType":"ECS",
                 "TipFlag":1,
                 "Ip":"127.0.0.1",
@@ -1791,42 +2043,49 @@ HTTP/1.1 200 OK Content-Type:application/json {
                 "Tags":"恶意ip",
                 "AssetName":"ecs001",
                 "Location":"aa"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "FileMd5CountTip":{
             "Names":"aa",
             "Count":10
-        },
-        "FileNames":[
-            {
-                "TipFlag":1,
-                "Name":"aa"
-            }
 ```
 
-`],`
+`},`
+
+```json
+        "FileNames":[
+```
+
+`{`
+
+```json
+                "TipFlag":1,
+                "Name":"aa"
+```
+
+`}` `],`
 
 ```json
         "DomainCountTip":{
             "Names":"aa",
             "Count":10
-        },
+```
+
+`},`
+
+```json
         "MaliciousIpTip":{
             "Names":"aa",
             "Count":10
-        }
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetSocThreatInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Data>
         <SourceIps>
@@ -1839,6 +2098,8 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <AssetId>一般为uuid</AssetId>
             <AssetName>ecs001</AssetName>
 ```
+
+中心（SOC）
 
 ```xml
 ssetaeecs00 /ssetae
@@ -1898,17 +2159,22 @@ ssetaeecs00 /ssetae
             <Count>10</Count>
 ```
 
+中心（SOC）
+
 ```xml
             <Names>
                 <StringItem>aa</StringItem>
             </Names>
         </FileMd5CountTip>
     </Data>
+</GetSocThreatInfoResponse>
 ```
 
-## 安全审计
+## 6 安全审计
 
-### DescribeOperatorType
+### 6.1 DescribeOperatorType
+
+调用DescribeOperatorType接口获取日志操作类型列表。
 
 **请求头**
 
@@ -1936,7 +2202,7 @@ ssetaeecs00 /ssetae
 | -Name | String | build | 操作类型名称。 |
 | -Remark | String | 新建 | 操作类型描述。 |
 
-|  |  |  | 云安全管理中心开发指南·安全审计 |
+|   |   |   | 云安全管理中心开发指南·安全审计 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1951,13 +2217,16 @@ ssetaeecs00 /ssetae
 http(s)://[Endpoint]/?Action=DescribeOperatorType
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "OperatorTypeList":[
-  {
+```
+
+`{`
+
+```json
    "ModifiedTime":1639236844747,
    "CreateTime":1639236844747,
    "Id":10000,
@@ -1965,19 +2234,7 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
    "Name":"build",
 ```
 
-`"Remark":"`新建"
-
-```
-  }
-```
-
-]
-
-```
-}
-```
-
-`XML` 格式
+`"Remark":"`新建`"` `}` `]` `}` `XML` 格式
 
 ```xml
 <RequestId>7E0618A9-D5EF-4220-9471-C42B5E92****</RequestId> <OperatorTypeList>
@@ -1990,7 +2247,7 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 </OperatorTypeList>
 ```
 
-### CreateEventType
+### 6.2 CreateEventType
 
 创建审计事件类型。
 
@@ -2032,7 +2289,7 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 请求示例
 
 ```
-&LogType=5
+http(s)://[Endpoint]/?Action=CreateEventType &LogType=5
 ```
 
 `&Name=`高危查询 `&Remark=`高危数据库查询操作
@@ -2041,10 +2298,9 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 &SourceId=10000
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "EventType":{
   "SourceId":1000,
@@ -2055,11 +2311,11 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
   "Reserved":true,
   "Name":"EVENT_TYPE_NAME__host__account_create",
   "Remark":"EVENT_TYPE_NAME__host__account_create"
- }
-}
 ```
 
-### DescribeEventType
+`}` `}`
+
+### 6.3 DescribeEventType
 
 获取审计事件类型。
 
@@ -2074,7 +2330,7 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 | Action | Strin g | System | 是 | DescribeEventType | 系统规定参数。取值：DescribeEventTyp e 。 |
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 访问源IP地址。 |
 
-| 云安全管理中心 | 开发指南· | 安全审计 |  |  |  |
+| 云安全管理中心 | 开发指南· | 安全审计 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2101,7 +2357,7 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92**** | 本次调用请求的ID。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 
-|  |  |  | 云安全管理中心开发指南·安全审计 |
+|   |   |   | 云安全管理中心开发指南·安全审计 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2111,16 +2367,25 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeEventType
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1,
  "EventTypeList":[
-  {
+```
+
+`{`
+
+```json
    "SourceId":1000,
    "CreateTime":1639236844747,
    "LogType":1,
@@ -2130,16 +2395,11 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
    "Reserved":true,
    "Name":"EVENT_TYPE_NAME__host__account_create",
    "Remark":"EVENT_TYPE_NAME__host__account_create"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-### DeleteEventType
+### 6.4 DeleteEventType
 
 删除审计事件类型。
 
@@ -2169,18 +2429,18 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 请求示例
 
 ```
-&Id=10135
+http(s)://[Endpoint]/?Action=DeleteEventType &Id=10135
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### CreateLogFilter
+`}`
+
+### 6.5 CreateLogFilter
 
 创建审计日志查询过滤条件。
 
@@ -2231,18 +2491,15 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
 | -UserId | String | 1000 | 创建人ID。 |
 | -EventType | Integer | 1 | 审计事件类型。 |
 
-**示例**
-
 请求示例
 
 ```
-&LogType=1 &Name=RDS-scscsc &Type=1
+http(s)://[Endpoint]/?Action=CreateLogFilter &LogType=1 &Name=RDS-scscsc &Type=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "LogFilter":{
   "Type":1,
@@ -2254,13 +2511,11 @@ http(s)://[Endpoint]/?Action=DescribeOperatorType
   "Id":1000,
   "Defaultable":true,
   "Name":"RDS-scscsc"
- }
-}
 ```
 
-Auditprivate 2018-01-16
+`}` `}` Auditprivate 2018-01-16
 
-### DescribeLogFilter
+### 6.6 DescribeLogFilter
 
 获取审计日志查询过滤条件。
 
@@ -2277,7 +2532,7 @@ Auditprivate 2018-01-16
 | LogType | Strin g | Query | 否 | 1 | 日志类型编码。 |
 | SourceId | Long | Query | 否 | 1001 | 日志源ID。 |
 
-| 云安全管理中心 | 开发指南· | 安全审计 |  |  |  |
+| 云安全管理中心 | 开发指南· | 安全审计 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2316,13 +2571,22 @@ Auditprivate 2018-01-16
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeLogFilter
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "LogFilterList":[
-  {
+```
+
+`{`
+
+```json
    "EndTime":1519813584985,
    "Query":"Get",
    "EventType":1,
@@ -2342,16 +2606,11 @@ Auditprivate 2018-01-16
    "Id":1000,
    "Alertable":true,
    "Defaultable":true
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-### DeleteLogFilter
+### 6.7 DeleteLogFilter
 
 删除审计日志查询过滤条件。
 
@@ -2378,18 +2637,18 @@ Auditprivate 2018-01-16
 请求示例
 
 ```
-&Id=1000
+http(s)://[Endpoint]/?Action=DeleteLogFilter &Id=1000
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### CreateReceiver
+`}`
+
+### 6.8 CreateReceiver
 
 创建审计事件告警接收人。
 
@@ -2409,7 +2668,7 @@ Auditprivate 2018-01-16
 | Contact | Strin g | Query | 是 | *****@aliyun.com | 告警接收人人联系方式。 |
 | Name | Strin g | Query | 是 | Jack | 告警接收人姓名。 |
 
-| 云安全管理中心 | 开发指南· | 安全审计 |  |  |  |
+| 云安全管理中心 | 开发指南· | 安全审计 |   |   |   |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Type | Integ er | Query | 是 | 1 | 接收类型编码。取值：1， 表示通过邮件方式告警。 |
@@ -2435,13 +2694,12 @@ Auditprivate 2018-01-16
 请求示例
 
 ```
-&Contact=*****@aliyun.com &EventRiskLevel=1 &Name=Jack &Type=1
+http(s)://[Endpoint]/?Action=CreateReceiver &Contact=*****@aliyun.com &EventRiskLevel=1 &Name=Jack &Type=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "Receiver":{
   "Type":1,
@@ -2453,11 +2711,11 @@ Auditprivate 2018-01-16
   "EventRiskLevel":1,
   "Contact":"*****@aliyun.com",
   "Name":"Jack"
- }
-}
 ```
 
-### DescribeReceiver
+`}` `}`
+
+### 6.9 DescribeReceiver
 
 获取告警接收人。
 
@@ -2478,7 +2736,7 @@ Auditprivate 2018-01-16
 | Name | Strin g | Query | 否 | Jack | 告警接收人姓名。 |
 | SourceNa me | Strin g | Query | 否 | rds-ss12222 | 日志数据源名称。 |
 
-| 云安全管理中心 | 开发指南· | 安全审计 |  |  |  |
+| 云安全管理中心 | 开发指南· | 安全审计 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2505,18 +2763,25 @@ Auditprivate 2018-01-16
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 100 | 数据的总条数。 |
 
-**示例**
+请求示例
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+```
+http(s)://[Endpoint]/?Action=DescribeReceiver
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1,
  "ReceiverList":[
-  {
+```
+
+`{`
+
+```json
    "Type":1,
    "SourceId":1000,
    "CreateTime":1639236844747,
@@ -2526,16 +2791,11 @@ Auditprivate 2018-01-16
    "EventRiskLevel":1,
    "Contact":"*****@aliyun.com",
    "Name":"Jack"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-### DeleteReceiver
+### 6.10 DeleteReceiver
 
 删除审计事件告警接收人。
 
@@ -2562,18 +2822,18 @@ Auditprivate 2018-01-16
 请求示例
 
 ```
-&Id=1000
+http(s)://[Endpoint]/?Action=DeleteReceiver &Id=1000
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### CreateRule
+`}`
+
+### 6.11 CreateRule
 
 创建审计规则。
 
@@ -2597,7 +2857,7 @@ Auditprivate 2018-01-16
 | Remark | Strin g | Query | 否 | remark | 备注。 |
 | Alertable | Boole an | Query | 是 | true | 是否告警。 |
 | EventType Id | Integ er | Query | 是 | 10001 | 审计事件类型编码。 |
-| OperatorT ype | Integ er | Query | 否 |  |  |
+| OperatorT ype | Integ er | Query | 否 |   |   |
 | RuleName | Strin g | Query | 是 | 高危删除 | 审计规则名称。 |
 | StartTime | Strin g | Query | 否 | 1640442436125 | 开始时间，以时间戳格式表述。 |
 | EndTime | Strin g | Query | 否 | 1640442436125 | 结束时间，以时间戳格式表述。 |
@@ -2636,13 +2896,12 @@ Auditprivate 2018-01-16
 请求示例
 
 ```
-&Alertable=true &EventRiskLevel=1 &EventTypeId=10001 &LogType=1
+http(s)://[Endpoint]/?Action=CreateRule &Alertable=true &EventRiskLevel=1 &EventTypeId=10001 &LogType=1
 ```
 
-`&RuleName=`高危删除 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&RuleName=`高危删除 `&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "Rule":{
   "SourceId":1000,
@@ -2661,11 +2920,11 @@ Auditprivate 2018-01-16
   "Alertable":true,
   "Id":1000,
   "Reserved":false
- }
-}
 ```
 
-### DescribeRule
+`}` `}`
+
+### 6.12 DescribeRule
 
 获取审计规则。
 
@@ -2685,7 +2944,7 @@ Auditprivate 2018-01-16
 | Expressio n | Strin g | Query | 否 | action INCLUDE "删除实例" OR action INCLUDE "删除集群" OR action INCLUDE "删除主机" | 审计规则表达式。 |
 | EventRisk Level | Integ er | Query | 否 | 1 | 风险级别编码。 |
 
-| 云安全管理中心 | 开发指南· | 安全审计 |  |  |  |
+| 云安全管理中心 | 开发指南· | 安全审计 |   |   |   |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 
@@ -2711,7 +2970,7 @@ Auditprivate 2018-01-16
 | -Id | Integer | 1000 | 审计规则ID。 |
 | -Alertable | Boolean | true | 是否告警。 |
 
-|  |  |  | 云安全管理中心开发指南·安全审计 |
+|   |   |   | 云安全管理中心开发指南·安全审计 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -Enabled | Boolean | true | 是否启用。 |
@@ -2724,12 +2983,21 @@ Auditprivate 2018-01-16
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeRule
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RuleList":[
-  {
+```
+
+`{`
+
+```json
    "CreateTime":1639236844747,
    "LogType":1,
    "EventTypeId":10001,
@@ -2751,20 +3019,20 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
    "Id":1000,
    "Alertable":true,
    "Reserved":true
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1
-}
 ```
 
-### EnableRule
+`}`
+
+### 6.13 EnableRule
 
 启用审计规则。
 
@@ -2785,17 +3053,21 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92**** | 本次调用请求的ID。 |
 
-**示例**
+请求示例
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
-
-```json
-{
- "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
+```
+http(s)://[Endpoint]/?Action=EnableRule
 ```
 
-### DisableRule
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
+
+```json
+ "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
+```
+
+`}`
+
+### 6.14 DisableRule
 
 禁用审计规则。
 
@@ -2819,15 +3091,15 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DeleteRule
+`}`
+
+### 6.15 DeleteRule
 
 删除审计规则。
 
@@ -2854,18 +3126,18 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
 请求示例
 
 ```
-&Id=1000
+http(s)://[Endpoint]/?Action=DeleteRule &Id=1000
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### CreateTask
+`}`
+
+### 6.16 CreateTask
 
 创建导出任务。
 
@@ -2898,18 +3170,15 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
 | -Type | Integer | 1 | 导出任务类型。 |
 | -Status | Integer | 3 | 任务执行状态：1：准备中2：执行中3：任务成功4：任务失败。 |
 
-**示例**
-
 请求示例
 
 ```
-&Param={"id":421711} &Type=1
+http(s)://[Endpoint]/?Action=CreateTask &Param={"id":421711} &Type=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Task":{
   "Status":3,
   "Type":1,
@@ -2918,12 +3187,17 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
   "Id":1000,
   "Result":"{\"url\":\"https://yundun-auditlog-archive.oss-
 ***.aliyun.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-******.zip?}"
- },
- "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeTask
+`},`
+
+```json
+ "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
+```
+
+`}`
+
+### 6.17 DescribeTask
 
 获取导出任务。
 
@@ -2962,16 +3236,25 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeTask
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1,
  "TaskList":[
-  {
+```
+
+`{`
+
+```json
    "Status":1,
    "Type":1,
    "EndTime":1639236844747,
@@ -2981,16 +3264,11 @@ UDE \"删除主机\"", `"EventTypeName":"`资源管理事件`",`
    "Id":1000,
    "Result":"{\"url\":\"https://yundun-auditlog-archive.oss-cn-neimeng-env30-d01-a.intr
 a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip?}"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-### DescribeSetting
+### 6.18 DescribeSetting
 
 获取安全审计系统设置参数信息。
 
@@ -3011,7 +3289,7 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 |---|---|---|---|
 | SettingList | Array | - | 系统参数信息列表。 |
 
-|  |  |  |  | 云安全管理中心开发指南·安全审计 |  |
+|   |   |   |   | 云安全管理中心开发指南·安全审计 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3026,12 +3304,21 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeSetting
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "SettingList":[
-  {
+```
+
+`{`
+
+```json
    "Type":2,
    "UpdateTime":1639236844747,
    "Value":"-1",
@@ -3039,20 +3326,15 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
    "Name":"max_day_alert_number",
 ```
 
-`"Remark":"`每天发送报警的最大次数"
-
-```
-  }
-```
-
-`],`
+`"Remark":"`每天发送报警的最大次数`"` `}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### ModifySetting
+`}`
+
+### 6.19 ModifySetting
 
 修改安全审计系统设置参数信息。
 
@@ -3077,15 +3359,21 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
 
-```json
-{
- "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
+```
+http(s)://[Endpoint]/?Action=ModifySetting
 ```
 
-### DescribeLogType
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
+
+```json
+ "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
+```
+
+`}`
+
+### 6.20 DescribeLogType
 
 获取日志类型。
 
@@ -3114,29 +3402,33 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeLogType
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "LogTypeList":[
-  {
+```
+
+`{`
+
+```json
    "Type":1,
 ```
 
-`"Remark":"`平台数据库"
-
-```
-  }
-```
-
-`],`
+`"Remark":"`平台数据库`"` `}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeLogSource
+`}`
+
+### 6.21 DescribeLogSource
 
 获取日志源信息。
 
@@ -3177,12 +3469,21 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeLogSource
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "LogSourceList":[
-  {
+```
+
+`{`
+
+```json
    "CreateTime":1639236844747,
    "LogType":1,
    "Enabled":true,
@@ -3190,20 +3491,20 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
    "Alertable":true,
    "Code":"RDS-scscsc",
    "Name":"RDS-scscsc"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":1000,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1
-}
 ```
 
-### DescribeLogCountStat
+`}`
+
+### 6.22 DescribeLogCountStat
 
 获取原始日志统计信息。
 
@@ -3244,35 +3545,36 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 http(s)://[Endpoint]/?Action=DescribeLogCountStat
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "StatList":[
-  {
+```
+
+`{`
+
+```json
    "LogType":1,
    "StatItemList":[
-    {
+```
+
+`{`
+
+```json
      "Capacity":1000.0,
      "Time":1640244151259,
      "Count":1000
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeLog
+`}`
+
+### 6.23 DescribeLog
 
 获取原始日志详细信息。
 
@@ -3293,7 +3595,7 @@ http(s)://[Endpoint]/?Action=DescribeLogCountStat
 | EndTime | Long | Query | 否 | 1639236844747 | 结束时间，以时间戳格式表述。 |
 | PageSize | Integ er | Query | 否 | 20 | 每页最多显示的数据条数。 |
 
-| 云安全管理中心 | 开发指南· | 安全审计 |  |  |  |
+| 云安全管理中心 | 开发指南· | 安全审计 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3328,60 +3630,78 @@ http(s)://[Endpoint]/?Action=DescribeLogCountStat
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
 
-```json
-{
- "LogList":[
-  {
-   "ColumnList":[
-    {
-     "Value":"012",
-     "TokenList":[
-      {
-       "Word":"012",
-       "Delimit":false
-      }
+```
+http(s)://[Endpoint]/?Action=DescribeLog
 ```
 
-`],`
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
+
+```json
+ "LogList":[
+```
+
+`{`
+
+```json
+   "ColumnList":[
+```
+
+`{`
+
+```json
+     "Value":"012",
+     "TokenList":[
+```
+
+`{`
+
+```json
+       "Word":"012",
+       "Delimit":false
+```
+
+`}` `],`
 
 ```json
      "Key":"value"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "LogTime":1640244151259,
    "Source":"1"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "HistogramList":[
-  {
+```
+
+`{`
+
+```json
    "EndTime":1639236844747,
    "StartTime":1639236844747,
    "Completed":true,
    "Count":1000
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1
-}
 ```
 
-### DescribeEventRisk
+`}`
+
+### 6.24 DescribeEventRisk
 
 获取审计事件风险级别信息。
 
@@ -3407,29 +3727,28 @@ http(s)://[Endpoint]/?Action=DescribeLogCountStat
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeEventRisk
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "EventRiskList":[
-  {
+```
+
+`{`
+
+```json
    "Level":0,
 ```
 
-`"Name":"`全局风险"
+`"Name":"`全局风险`"` `}` `]` `}`
 
-```
-  }
-```
-
-]
-
-```
-}
-```
-
-### DescribeEventRiskStat
+### 6.25 DescribeEventRiskStat
 
 按风险等级获取审计事件统计信息。
 
@@ -3455,7 +3774,7 @@ http(s)://[Endpoint]/?Action=DescribeLogCountStat
 | -StatItemList | Array | - | 统计数据。 |
 | -- EventRiskLeve l | Integer | 1 | 风险级别编码。 |
 
-|  | 云安全管理中心开发 | 指南·安全审计 |  |  |  |
+|   | 云安全管理中心开发 | 指南·安全审计 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3473,35 +3792,36 @@ http(s)://[Endpoint]/?Action=DescribeLogCountStat
 http(s)://[Endpoint]/?Action=DescribeEventRiskStat
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "StatList":[
-  {
+```
+
+`{`
+
+```json
    "LogType":1,
    "StatItemList":[
-    {
+```
+
+`{`
+
+```json
      "Capacity":44,
      "Count":1,
      "EventRiskLevel":1
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeEventTypeStat
+`}`
+
+### 6.26 DescribeEventTypeStat
 
 按审计事件类型获取审计事件统计信息。
 
@@ -3542,28 +3862,31 @@ http(s)://[Endpoint]/?Action=DescribeEventRiskStat
 http(s)://[Endpoint]/?Action=DescribeEventTypeStat
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "StatList":[
-  {
+```
+
+`{`
+
+```json
    "Capacity":8991.659,
    "Count":10001,
    "Id":10135,
    "Name":"EVENT_TYPE_NAME__host__account_create",
    "Reserved":true
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeEventCountStat
+`}`
+
+### 6.27 DescribeEventCountStat
 
 获取审计事件统计信息。
 
@@ -3587,7 +3910,7 @@ http(s)://[Endpoint]/?Action=DescribeEventTypeStat
 |---|---|---|---|
 | StatList | Array | - | 审计事件统计数据列表，具体子项说明参见以下参数描述。 |
 
-|  |  |  | 云安全管理中心开发指南·安全审计 |
+|   |   |   | 云安全管理中心开发指南·安全审计 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3607,35 +3930,36 @@ http(s)://[Endpoint]/?Action=DescribeEventTypeStat
 http(s)://[Endpoint]/?Action=DescribeEventCountStat
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "StatList":[
-  {
+```
+
+`{`
+
+```json
    "LogType":1,
    "StatItemList":[
-    {
+```
+
+`{`
+
+```json
      "Capacity":8991,
      "Time":1639929600000,
      "Count":10001
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeEvent
+`}`
+
+### 6.28 DescribeEvent
 
 获取审计事件详细信息。
 
@@ -3664,7 +3988,7 @@ http(s)://[Endpoint]/?Action=DescribeEventCountStat
 | LogAction | Strin g | Query | 否 | EQ:cmd | 操作行为。 |
 | LogOutco me | Strin g | Query | 否 | EQ:result | 结果。 |
 
-|  |  |  |  |  | 云安 | 全管理中心开发指南·安全审计 |  |
+|   |   |   |   |   | 云安 | 全管理中心开发指南·安全审计 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3710,7 +4034,7 @@ http(s)://[Endpoint]/?Action=DescribeEventCountStat
 | TotalCount | Integer | 100 | 数据的总条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 
-|  |  |  | 云安全管理中心开发指南·安全审计 |
+|   |   |   | 云安全管理中心开发指南·安全审计 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -3719,27 +4043,39 @@ http(s)://[Endpoint]/?Action=DescribeEventCountStat
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeEvent
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "HistogramList":[
-  {
+```
+
+`{`
+
+```json
    "EndTime":1639236844747,
    "StartTime":1639236844747,
    "Completed":true,
    "Count":1001
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "EventList":[
-  {
+```
+
+`{`
+
+```json
    "LogMd5":"36c22c2020d473881f8b8bbf1c3eaf08",
    "SourceId":1000,
    "LogTime":1639929600000,
@@ -3764,17 +4100,17 @@ http(s)://[Endpoint]/?Action=DescribeEventCountStat
 
 ```json
    "Id":1000
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "CurrentPage":1
-}
 ```
 
-### DescribeArchiveCountStat
+`}`
+
+### 6.29 DescribeArchiveCountStat
 
 获取日志、事件存档统计信息。
 
@@ -3815,35 +4151,36 @@ http(s)://[Endpoint]/?Action=DescribeEventCountStat
 http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "StatList":[
-  {
+```
+
+`{`
+
+```json
    "LogType":1,
    "StatItemList":[
-    {
+```
+
+`{`
+
+```json
      "Capacity":6.6,
      "Time":1639929600000,
      "Count":3
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DeleteTask
+`}`
+
+### 6.30 DeleteTask
 
 删除导出任务。
 
@@ -3870,18 +4207,18 @@ http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
 请求示例
 
 ```
-&Id=1000
+http(s)://[Endpoint]/?Action=DeleteTask &Id=1000
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****"
-}
 ```
 
-### DescribeArchive
+`}`
+
+### 6.31 DescribeArchive
 
 获取日志、事件存档详细信息。
 
@@ -3908,7 +4245,7 @@ http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
 |---|---|---|---|
 | ArchiveList | Array | - | 存档数据列表，具体子项说明参见以下参数描述。 |
 
-| 云安全管理中心开发 | 指南·安全审计 |  |  |
+| 云安全管理中心开发 | 指南·安全审计 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3929,13 +4266,22 @@ http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeArchive
+```
+
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "TotalCount":100,
  "ArchiveList":[
-  {
+```
+
+`{`
+
+```json
    "Type":1,
    "CompactAlg":1,
    "CreateTime":1639236844747,
@@ -3945,23 +4291,23 @@ http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
    "Sha256":"929724b41deb5adc78764976f0a397109f2602ba5c7dcced2cb26b8d37a97b5d",
    "Name":"NETWORK/20211224153332996-44a9fc6e/EVENT/NETWORK-20211224153332.zip",
    "Md5":"36c22c2020d473881f8b8bbf1c3eaf08"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"7E0618A9-D5EF-4220-9471-C42B5E92****",
  "PageSize":20,
  "CurrentPage":1
-}
 ```
 
-## 态势感知
+`}`
 
-### 资产管理
+## 7 态势感知
 
-#### DescribeFieldStatistics
+### 7.1 资产管理
+
+#### 7.1.1 DescribeFieldStatistics
 
 调用该接口检索资产实例列表。
 
@@ -3977,7 +4323,7 @@ http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| GroupedFields | Struct |  | 资产信息。 |
+| GroupedFields | Struct |   | 资产信息。 |
 | AliYunInstance Count | Integer | 10 | 阿里云实例数量。 |
 | ExposedInstan ceCount | Integer | 10 | 暴露实例数量。 |
 | GeneralAssetC ount | Integer | 10 | 一般实例数量。 |
@@ -4008,7 +4354,7 @@ http(s)://[Endpoint]/?Action=DescribeArchiveCountStat
 http(s)://[Endpoint]/?Action=DescribeFieldStatistics
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7E06****9-D5EF-4220-9471-***5E92719F</RequestId> <GroupedFields>
@@ -4033,10 +4379,9 @@ http(s)://[Endpoint]/?Action=DescribeFieldStatistics
 </GroupedFields>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "7E06****9-D5EF-4220-9471-***5E92719F",
     "GroupedFields": {
         "ProviderCount": 10,
@@ -4057,11 +4402,13 @@ http(s)://[Endpoint]/?Action=DescribeFieldStatistics
         "RegionCount": 10,
         "NotRunningStatusCount": 10,
         "NewInstanceCount": 10
-    }
-}
 ```
 
-#### DescribeGroupedTags
+`}` `}`
+
+#### 7.1.2 DescribeGroupedTags
+
+调用DescribeGroupedTags接口查询资产标签的统计信息。
 
 **请求参数**
 
@@ -4075,7 +4422,7 @@ http(s)://[Endpoint]/?Action=DescribeFieldStatistics
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | Count | Integer | 2 | 当前页显示的数据条数。 |
-| GroupedFileds | Array of GroupedFiled |  | 资产标签的统计信息。 |
+| GroupedFileds | Array of GroupedFiled |   | 资产标签的统计信息。 |
 | Count | String | 2 | 标签对应资产数量。 |
 | Name | String | test | 标签名称。 |
 | TagId | Integer | 5 | 标签ID。 |
@@ -4091,7 +4438,7 @@ http(s)://[Endpoint]/?Action=DescribeFieldStatistics
 http(s)://[Endpoint]/?Action=DescribeGroupedTags
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7E0618A9-D5EF-***-9471-C42B5E92719F</RequestId> <HttpStatusCode>1</HttpStatusCode> <GroupedFileds>
@@ -4101,23 +4448,29 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 </GroupedFileds> <Count>2</Count> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "7E0618A9-D5EF-***-9471-C42B5E92719F",
     "HttpStatusCode": 1,
     "GroupedFileds": {
         "TagId": 5,
         "Count": 2,
         "Name": "test"
-    },
-    "Count": 2,
-    "Success": true
-}
 ```
 
-#### DescribeAllGroups
+`},`
+
+```json
+    "Count": 2,
+    "Success": true
+```
+
+`}`
+
+#### 7.1.3 DescribeAllGroups
+
+调用DescribeAllGroups接口查询所有服务器分组信息。
 
 **请求参数**
 
@@ -4132,7 +4485,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 |---|---|---|---|
 | Count | Integer | 1 | 当前页显示数据数量。 |
 
-| Groups | Array of Group |  | 服务器分组信息。 |
+| Groups | Array of Group |   | 服务器分组信息。 |
 |---|---|---|---|
 | GroupFlag | Integer | 1 | 分组标识。取值： 0：默认分组。 1：其他分组。 |
 | GroupId | Integer | 3 | 分组ID。 |
@@ -4141,7 +4494,13 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeAllGroups
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7E0618A9-****-4220-9471-C42B5E92719F</RequestId> <Groups>
@@ -4151,10 +4510,9 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 </Groups> <Count>1</Count>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "7E0618A9-****-4220-9471-C42B5E92719F",
     "Groups": {
 ```
@@ -4164,12 +4522,17 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 ```json
         "GroupFlag": 1,
         "GroupId": 3
-    },
-    "Count": 1
-}
 ```
 
-#### DescribeInstanceStatistics
+`},`
+
+```json
+    "Count": 1
+```
+
+`}`
+
+#### 7.1.4 DescribeInstanceStatistics
 
 查询资产的风险统计信息。
 
@@ -4187,7 +4550,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of Data |  | 资产风险的统计信息。 |
+| Data | Array of Data |   | 资产风险的统计信息。 |
 | Account | Integer | 1 | 登录账户数量。 |
 | AppNum | Integer | 0 | 应用漏洞数量。 |
 | CmsNum | Integer | 2 | CMS漏洞数量。 |
@@ -4213,7 +4576,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedTags
 http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37-ed73-4c53-b467-***
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</RequestId> <Data>
@@ -4233,10 +4596,9 @@ http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37
 </Data>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
     "Data": {
         "Account": 1,
@@ -4252,11 +4614,11 @@ http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37
         "EmgNum": 0,
         "AppNum": 0,
         "Vul": 4
-    }
-}
 ```
 
-#### DescribeCloudProductFieldStatistics
+`}` `}`
+
+#### 7.1.5 DescribeCloudProductFieldStatistics
 
 获取云产品统计信息。
 
@@ -4270,7 +4632,7 @@ http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| GroupedFields | Struct |  | 云产品统计信息。 |
+| GroupedFields | Struct |   | 云产品统计信息。 |
 | CategoryCount | String | [{"MachineType":1 ,"Count":11}] | 不同类型资产数量的统计信息。其中 MachineType表示资产类型，Count表示资产类型对应的资产数量。 以下为MachineType取值说明： 1：负载均衡。 2：NAT网关。 3：RDS数据库。 4：MongoDB数据库。 |
 | InstanceCount | Integer | 100 | 实例数量。 |
 
@@ -4286,7 +4648,7 @@ http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37
 http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</RequestId> <GroupedFields>
@@ -4296,20 +4658,19 @@ http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics
 </GroupedFields>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
     "GroupedFields": {
         "InstanceCount": 100,
         "CategoryCount": "[{\"MachineType\":1,\"Count\":11}]",
         "RiskInstanceCount": 90
-    }
-}
 ```
 
-#### DescribeCloudCenterInstances
+`}` `}`
+
+#### 7.1.6 DescribeCloudCenterInstances
 
 查询资产中心页面中的资产信息，例如资产实例名称、资产实例所属区域等。
 
@@ -4335,7 +4696,7 @@ http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Instances | Array of Instance |  | 资产详细信息。 |
+| Instances | Array of Instance |   | 资产详细信息。 |
 | AlarmStatus | String | NO | 是否有安全告警。取值： YES：有。 NO：无。 |
 | AssetType | String | ecs | 资产类型。 |
 | AutoSnapshots Level | Integer | 1 | 已废弃。 |
@@ -4383,7 +4744,7 @@ http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics
 | VulStatus | String | YES | 资产实例是否有漏洞问题。取值： YES：有。 NO：无。 |
 | WeakPassword Count | Integer | 2 | 弱密码检测问题数量。 |
 | WeakPassword Status | String | YES | 是否有弱密码问题。取值： YES：有。 NO：无。 |
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 10 | 当前页显示的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 
@@ -4401,7 +4762,7 @@ http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics
 http(s)://[Endpoint]/?Action=DescribeCloudCenterInstances
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Instances>
@@ -4460,10 +4821,9 @@ http(s)://[Endpoint]/?Action=DescribeCloudCenterInstances
 </PageInfo> <RequestId>32A73759-4C0F-4801-****-901223ACEE9A</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Instances": {
         "ProviderId": 1,
         "ProviderAzName": "无",
@@ -4512,22 +4872,28 @@ http(s)://[Endpoint]/?Action=DescribeCloudCenterInstances
         "RegionId": "cn-demo-***-***",
         "Tag": "InternetIp",
         "HcStatus": "NO"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 50,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 10
-    },
 ```
+
+`},`
 
 ```json
     "RequestId": "32A73759-4C0F-4801-****-901223ACEE9A",
     "Success": true
-}
 ```
 
-#### DescribeSummaryInfo
+`}`
+
+#### 7.1.7 DescribeSummaryInfo
 
 调用本接口查询资产的安全评分信息，例如资产的安全分值、已防护资产数量、未防护资产数量。
 
@@ -4550,35 +4916,33 @@ http(s)://[Endpoint]/?Action=DescribeCloudCenterInstances
 | SecurityScore | Integer | 44 | 资产的安全分值。分值说明如下： 95-100：表示资产安全状态良好。 85-94：表示资产存在安全隐患，建议尽快加固安全防护体系。 70-84：表示资产存在较多安全隐患，建议及时加固安全防护体系。 69分以下：表示资产防御黑客入侵的能力很弱，建议尽快加固安全防护体系。 |
 | Success | Boolean | true | 已废弃。 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSummaryInfo
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <AegisClientOnlineCount>127</AegisClientOnlineCount> <RequestId>D40198E1-6EA8-482E-****-D9573D75C0CA</RequestId> <AegisClientOfflineCount>12</AegisClientOfflineCount> <SecurityScore>44</SecurityScore> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "AegisClientOnlineCount": 127,
     "RequestId": "D40198E1-6EA8-482E-****-D9573D75C0CA",
     "AegisClientOfflineCount": 12,
     "SecurityScore": 44,
     "Success": true
-}
 ```
 
-### 安全评分
+`}`
 
-#### DescribeSecureSuggestion
+### 7.2 安全评分
+
+#### 7.2.1 DescribeSecureSuggestion
 
 查询安全分相关的安全风险的处理建议详情。
 
@@ -4595,8 +4959,8 @@ http(s)://[Endpoint]/?Action=DescribeSummaryInfo
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | F35F45B0-5D6B- ****-BE02- A62D0760E840 | 阿里云为该请求生成的唯一标识符。 |
-| Suggestions | Array of Suggestion |  | 安全风险处理列表。 |
-| Detail | Array of Detail |  | 安全风险处理建议的详情。 |
+| Suggestions | Array of Suggestion |   | 安全风险处理列表。 |
+| Detail | Array of Detail |   | 安全风险处理建议的详情。 |
 | Description | String | 您有4台RDS受到影响 | 安全风险处理建议的描述。 |
 | SubType | String | CLOUD HC RDS _ _ | 安全风险待处理项的类型。 |
 | Title | String | RDS-数据库安全策略检查未通过，存在安全风险 | 安全风险待处理项的名称。 |
@@ -4612,7 +4976,7 @@ http(s)://[Endpoint]/?Action=DescribeSummaryInfo
 http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Suggestions>
@@ -4622,17 +4986,16 @@ http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
         <SubType>CLOUD_HC_RDS</SubType>
 ```
 
-`<Description>`您有4台`RDS`受到影响`</Description>` `<Title>RDS-`数据库安全策略检查未通过，存在安全风险`</Title>`
+`<Description>`您有`4`台`RDS`受到影响`</Description>` `<Title>RDS-`数据库安全策略检查未通过，存在安全风险`</Title>`
 
 ```xml
     </Detail>
 </Suggestions> <TotalCount>15</TotalCount> <RequestId>F35F45B0-5D6B-****-BE02-A62D0760E840</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Suggestions": {
         "Points": 40,
         "SuggestType": "SS_ALARM",
@@ -4640,19 +5003,18 @@ http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
             "SubType": "CLOUD_HC_RDS",
 ```
 
-`"Description": "`您有4台`RDS`受到影响`",` `"Title": "RDS-`数据库安全策略检查未通过，存在安全风险"
+`"Description": "`您有`4`台`RDS`受到影响`",` `"Title": "RDS-`数据库安全策略检查未通过，存在安全风险`"` `}` `},`
 
 ```json
-        }
-    },
     "TotalCount": 15,
     "RequestId": "F35F45B0-5D6B-****-BE02-A62D0760E840"
-}
 ```
 
-### 获取告警数据
+`}`
 
-#### DescribeAlarmEventList
+### 7.3 获取告警数据
+
+#### 7.3.1 DescribeAlarmEventList
 
 获取安全告警处理页面的告警事件信息。告警事件分为告警与异常两个维度，一个告警事件包含多个异常事件。
 
@@ -4687,7 +5049,7 @@ http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 1 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -4695,7 +5057,7 @@ http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
 
 | RequestId | String | 28267723-D857- 4DD8-****- 013100000000 | 本次调用请求的ID。 |
 |---|---|---|---|
-| SuspEvents | Array of SuspEvents |  | 告警事件信息。 |
+| SuspEvents | Array of SuspEvents |   | 告警事件信息。 |
 | AlarmEventNa me | String | 执行恶意命令 | 告警事件名称。 |
 | AlarmEventNa meOriginal | String | 恶意命令执行精准防御 | 告警事件原始父名称。 |
 | AlarmEventTy pe | String | 进程异常行为 | 告警事件类型。 |
@@ -4746,7 +5108,7 @@ http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
 http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &PageSize=20
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PageInfo>
@@ -4810,16 +5172,19 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &Pa
 </SuspEvents>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "PageInfo": {
         "TotalCount": 1,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 1
-    },
+```
+
+`},`
+
+```json
     "RequestId": "28267723-D857-4DD8-****-013100000000",
     "SuspEvents": {
         "K8sNodeId": "i-km100o6qy******",
@@ -4878,11 +5243,11 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &Pa
         "SuspiciousEventCount": 1,
         "AlarmUniqueInfo": "8df9******f4211fbf756ef*****",
         "Level": "serious"
-    }
-}
 ```
 
-#### DescribeAlarmEventDetail
+`}` `}`
+
+#### 7.3.2 DescribeAlarmEventDetail
 
 获取告警事件的详细信息。告警事件分为告警与异常两个维度，一个告警事件包含多个异常事件。
 
@@ -4900,7 +5265,7 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &Pa
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 告警事件详情。 |
+| Data | Struct |   | 告警事件详情。 |
 | AlarmEventAli asName | String | 网站后门-发现后门 （Webshell）文件 | 告警类型别名。 |
 | AlarmEventDe sc | String | 黑客入侵服务器后， 为了让恶意后门程序能持久化运行，黑客常常将恶意SHELL脚本写入crontab、 systemd等计划任务。 | 告警事件描述。 |
 | AlarmUniqueIn fo | String | asds************ | 告警事件的唯一标识。 |
@@ -4909,9 +5274,9 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &Pa
 | CanBeDealOnL ine | Boolean | false | 是否支持在线处理告警事件，例如阻断隔离、加白名单、忽略等。取值： true：支持在线处理。 false：不支持在线处理。 |
 |---|---|---|---|
 | CanCancelFaul t | Boolean | false | 能否取消标记为误报。取值： true：可以取消标记为误报。 false：不能取消标记为误报。 |
-| CauseDetails | Array of CauseDetail |  | 告警事件发生的原因（溯源信息）。 |
+| CauseDetails | Array of CauseDetail |   | 告警事件发生的原因（溯源信息）。 |
 | Key | String | item | 溯源信息字段的Key。 |
-| Value | Array of Value |  | 溯源信息字段值。 |
+| Value | Array of Value |   | 溯源信息字段值。 |
 | Name | String | 排查方案 | 溯源信息字段名。 |
 | Type | String | html | 溯源信息字段展示的类型，取值： html。 text。 |
 | Value | String | 请根据上述信息排查您的WEB服务被利用的页面及参数是否存在漏洞，并及时修复。 | 溯源信息字段的值。 |
@@ -4949,7 +5314,7 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &Pa
 http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=8df914418f4211fbf756efe7a6f40cbc &From=sas
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41******-3***-4***-B***-9*********</RequestId> <Data>
@@ -4989,7 +5354,7 @@ controller:demo</ContainerImageName>
     <AlarmUniqueInfo>asds************</AlarmUniqueInfo>
 ```
 
-`<AlarmEventAliasName>`网站后门-发现后门（`Webshell`）文件`</AlarmEventAliasName>`
+`<AlarmEventAliasName>`网站后门`-`发现后门（`Webshell`）文件`</AlarmEventAliasName>`
 
 ```xml
     <Level>serious</Level>
@@ -4999,7 +5364,7 @@ controller:demo</ContainerImageName>
             <Type>html</Type>
 ```
 
-`<Value>`请根据上述信息排查您的`WEB`服务被利用的页面及参数是否存在漏洞，并及时修复。`</Value` > `<Name>`排查方案`</Name>`
+`<Value>`请根据上述信息排查您的`WEB`服务被利用的页面及参数是否存在漏洞，并及时修复。`</Value` `>` `<Name>`排查方案`</Name>`
 
 ```
         </Value>
@@ -5007,10 +5372,9 @@ controller:demo</ContainerImageName>
 </Data>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41******-3***-4***-B***-9*********",
     "Data": {
         "K8sNodeId": "i-km10**********",
@@ -5047,7 +5411,7 @@ ntroller:demo",
         "AlarmUniqueInfo": "asds************",
 ```
 
-`"AlarmEventAliasName": "`网站后门-发现后门（`Webshell`）文件`",`
+`"AlarmEventAliasName": "`网站后门`-`发现后门（`Webshell`）文件`",`
 
 ```json
         "Level": "serious",
@@ -5057,16 +5421,9 @@ ntroller:demo",
                 "Type": "html",
 ```
 
-`"Value": "`请根据上述信息排查您的`WEB`服务被利用的页面及参数是否存在漏洞，并及时修复。 `",` `"Name": "`排查方案"
+`"Value": "`请根据上述信息排查您的`WEB`服务被利用的页面及参数是否存在漏洞，并及时修复。 `",` `"Name": "`排查方案`"` `}` `}` `}` `}`
 
-```
-            }
-        }
-    }
-}
-```
-
-#### DescribeSuspEvents
+#### 7.3.3 DescribeSuspEvents
 
 查询异常事件信息。告警事件分为告警与异常两个维度，一个告警事件包含多个异常事件。
 
@@ -5111,7 +5468,7 @@ ntroller:demo",
 |---|---|---|---|
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | RequestId | String | 43F670F3-AB40- 4E91-****- C57400000000 | 本次调用请求的ID。 |
-| SuspEvents | Array of WarningSumm ary |  | 异常事件信息。 |
+| SuspEvents | Array of WarningSumm ary |   | 异常事件信息。 |
 | Advanced | Boolean | false | 是否是高级版。取值： true：是。 false：否。 |
 | AlarmEventNa me | String | DDoS木马 | 告警事件名称。 |
 | AlarmEventNa meDisplay | String | 无 | 已废弃。 |
@@ -5130,14 +5487,14 @@ ntroller:demo",
 | ContainerImag eName | String | registry.acs.demo. com/acs/aliyun-**- controller:demo | 容器镜像名。 |
 | DataSource | String | aegis suspicious * _ _ ** | 数据来源。 |
 | Desc | String | XorDDoS木马 | 异常事件详情。 |
-| Details | Array of QuaraFile |  | 文案列表。 |
+| Details | Array of QuaraFile |   | 文案列表。 |
 | InfoType | String | download url _ | 图标展示的类型。 |
 | Name | String | 告警描述 | 文案的标题。 |
 | NameDisplay | String | 无 | 已废弃。 |
 | Type | String | html | 文案展示的方式。取值包括： text：文本方式。 html：富文本的方式。 |
 | Value | String | 描述内容 | 文案的内容。 |
 | ValueDisplay | String | 无 | 已废弃。 |
-| EventNotes | Array of EventNote |  | 备注列表。 |
+| EventNotes | Array of EventNote |   | 备注列表。 |
 | Note | String | 备注内容 | 备注内容。 |
 | NoteId | Long | 1 | 备注内容ID。 |
 
@@ -5176,15 +5533,13 @@ ntroller:demo",
 | Uuid | String | bf6b30d3-eea8- 4924-9f0a-*** | 关联实例的唯一标识。 |
 | TotalCount | Integer | 100 | 总数据条数。 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSuspEvents
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>100</TotalCount> <PageSize>20</PageSize> <RequestId>43F670F3-AB40-4E91-****-C57400000000</RequestId> <CurrentPage>1</CurrentPage> <Count>1</Count> <SuspEvents>
@@ -5279,10 +5634,9 @@ controller:demo</ContainerImageName>
 </SuspEvents>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 100,
     "PageSize": 20,
     "RequestId": "43F670F3-AB40-4E91-****-C57400000000",
@@ -5327,7 +5681,7 @@ controller:demo</ContainerImageName>
 lt"
 ```
 
-fl
+`f``l`
 
 ```json
         "CanCancelFault": false,
@@ -5370,10 +5724,9 @@ oller:demo",
             "NameDisplay": "无",
 ```
 
-`"Name": "`告警描述"
+`"Name": "`告警描述`"` `},`
 
 ```json
-        },
         "EventNotes": {
             "NoteId": 1,
 ```
@@ -5382,12 +5735,11 @@ oller:demo",
 
 ```json
             "NoteTime": "2018-12-12 12:00:00"
-        }
-    }
-}
 ```
 
-#### DescribeSuspEventDetail
+`}` `}` `}`
+
+#### 7.3.4 DescribeSuspEventDetail
 
 查询单个异常事件详情。告警事件分为告警与异常两个维度，一个告警事件包含多个异常事件。
 
@@ -5409,7 +5761,7 @@ oller:demo",
 |---|---|---|---|
 | CanBeDealOnL ine | Boolean | true | 是否支持在线处理异常事件。取值包括： true：支持在线处理。 false：不支持在线处理。 |
 | DataSource | String | aegis suspicious * _ _ ** | 异常事件的数据来源。 |
-| Details | Array of QuaraFile |  | 异常事件的详情。 |
+| Details | Array of QuaraFile |   | 异常事件的详情。 |
 | InfoType | String | download url _ | 图标展示的类型。 |
 | Name | String | 告警描述 | 文案的标题。 |
 | Type | String | html | 文案展示的方式。取值包括： text：文本方式。 html：富文本的方式。 |
@@ -5433,15 +5785,13 @@ oller:demo",
 | SasId | String | 无 | 已废弃。 |
 | Uuid | String | B41******-3***- 4***-B***- 9********* | 机器UUID。 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 `<EventDesc>`该文件极有可能是黑客成功入侵网站后种植的，建议您先确认文件合法性并处理`</EventDesc>` `<EventTypeDesc>`网站后门-发现后门`(Webshell)`文件`</EventTypeDesc>`
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式 `<EventDesc>`该文件极有可能是黑客成功入侵网站后种植的，建议您先确认文件合法性并处理`</EventDesc>` `<EventTypeDesc>`网站后门`-`发现后门`(Webshell)`文件`</EventTypeDesc>`
 
 ```xml
 <RequestId>1</RequestId> <OperateErrorCode>quara.Succes</OperateErrorCode> <EventStatus>32</EventStatus> <EventName>WEBSHELL</EventName> <SaleVersion>无</SaleVersion> <IntranetIp>192.168.XX.XX</IntranetIp> <DataSource>aegis_suspicious_***</DataSource> <InstanceName>worker-k8s-for-cs-cb9******</InstanceName> <CanBeDealOnLine>true</CanBeDealOnLine> <OperateMsg>success</OperateMsg> <Uuid>B41******-3***-4***-B***-9*********</Uuid> <Details>
@@ -5460,13 +5810,7 @@ http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas
 </Details> <InternetIp>47.100.XX.XX</InternetIp> <Level>serious</Level> <Id>1</Id> <LastTime> 2018-10-30 11:43:46 </LastTime> <SasId>无</SasId>
 ```
 
-`JSON` 格式
-
-```
-{
-```
-
-`"EventDesc": "`该文件极有可能是黑客成功入侵网站后种植的，建议您先确认文件合法性并处理`",` `"EventTypeDesc": "`网站后门-发现后门`(Webshell)`文件`",`
+`JSON` 格式 `{` `"EventDesc": "`该文件极有可能是黑客成功入侵网站后种植的，建议您先确认文件合法性并处理`",` `"EventTypeDesc": "`网站后门`-`发现后门`(Webshell)`文件`",`
 
 ```json
     "RequestId": 1,
@@ -5490,21 +5834,21 @@ http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas
         "InfoType": "download_url",
 ```
 
-`"Name": "`告警描述"
+`"Name": "`告警描述`"` `},`
 
 ```json
-    },
     "InternetIp": "47.100.XX.XX",
     "Level": "serious",
     "Id": 1,
     "LastTime": "2018-10-30 11:43:46",
     "SasId": "无"
-}
 ```
 
-### 云产品配置检查
+`}`
 
-#### DescribeRiskItemType
+### 7.4 云产品配置检查
+
+#### 7.4.1 DescribeRiskItemType
 
 查看所有云产品配置检测项的类型。每个检测项都对应一个类型。检查项类型包含：身份认证及权限、网络访问控制、日志审计、数据安全、监控告警和基础安全防护。
 
@@ -5520,7 +5864,7 @@ http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| List | Array of ItemType |  | 云产品配置检查项类型的信息。 |
+| List | Array of ItemType |   | 云产品配置检查项类型的信息。 |
 | Id | Long | 1 | 云产品配置检查项的ID。 |
 | Title | String | 身份认证及权限 | 检查类型标题。 |
 | RequestId | String | 3B3F3A90-46A5- ***-A2D8- D68B14262F96 | 本次调用请求的ID。 |
@@ -5533,7 +5877,7 @@ http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas
 http(s)://[Endpoint]/?Action=DescribeRiskItemType
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>3B3F3A90-46A5-***-A2D8-D68B14262F96</RequestId> <List>
@@ -5546,10 +5890,9 @@ http(s)://[Endpoint]/?Action=DescribeRiskItemType
 </List>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "3B3F3A90-46A5-***-A2D8-D68B14262F96",
     "List": {
 ```
@@ -5558,11 +5901,13 @@ http(s)://[Endpoint]/?Action=DescribeRiskItemType
 
 ```json
         "Id": 1
-    }
-}
 ```
 
-#### StartBaselineSecurityCheck
+`}` `}`
+
+#### 7.4.2 StartBaselineSecurityCheck
+
+执行云产品配置检查任务，支持全量检测或对单个检查项进行检查或验证。
 
 **请求参数**
 
@@ -5590,21 +5935,21 @@ http(s)://[Endpoint]/?Action=DescribeRiskItemType
 http(s)://[Endpoint]/?Action=StartBaselineSecurityCheck &Type=check
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>48D2E9A9-A1B0-4295-***-0995757C47E9</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "48D2E9A9-A1B0-4295-***-0995757C47E9"
-}
 ```
 
-#### DescribeRiskCheckSummary
+`}`
+
+#### 7.4.3 DescribeRiskCheckSummary
 
 查看云产品配置检查结果汇总信息，包括检测到的风险项数量、风险率、影响资产数量、上次检测时间以及检测项各个类型的统计数据等。
 
@@ -5622,13 +5967,13 @@ http(s)://[Endpoint]/?Action=StartBaselineSecurityCheck &Type=check
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 291B49F9-1685- 4005-****- 606B6F78740F | 本次调用请求的ID。 |
-| RiskCheckSum mary | Struct |  | 云产品配置检查的结果统计。 |
+| RiskCheckSum mary | Struct |   | 云产品配置检查的结果统计。 |
 | AffectedAsset Count | Integer | 0 | 检查结果中风险项影响的资产数量。 |
 | DisabledRiskC ount | Integer | 0 | 检查不通过的检查项数量。 |
 | EnabledRiskCo unt | Integer | 3 | 检查通过的检查项数量。 |
-| Groups | Array of group |  | 检查项类型的统计信息。 |
+| Groups | Array of group |   | 检查项类型的统计信息。 |
 
-| CountByStatus | Array of statusCount |  | 检查项结果统计。 |
+| CountByStatus | Array of statusCount |   | 检查项结果统计。 |
 |---|---|---|---|
 | Count | Integer | 2 | 检查到的风险项数量。 |
 | Status | String | pass | 完成检查后，检查项的状态。取值： pass：检查通过，表示检查项正常。 failed：检查不通过，表示检查项存在风险。 |
@@ -5641,7 +5986,7 @@ http(s)://[Endpoint]/?Action=StartBaselineSecurityCheck &Type=check
 | PreviousCount | Integer | 0 | 上次检查到的风险项数量。 |
 | PreviousTime | Long | 1545012926000 | 上次检查时间。使用时间戳格式，单位：毫秒。 |
 | RiskCount | Integer | 1 | 检查到的风险项数量。 |
-| RiskLevelCoun t | Array of levelCount |  | 检查项每类危险等级的数量。取值： high：高危。 medium：中危。 low：低危。 |
+| RiskLevelCoun t | Array of levelCount |   | 检查项每类危险等级的数量。取值： high：高危。 medium：中危。 low：低危。 |
 | Count | Integer | 1 | 数量。 |
 | Key | String | medium | 检查项的危险等级。 |
 
@@ -5656,7 +6001,7 @@ http(s)://[Endpoint]/?Action=StartBaselineSecurityCheck &Type=check
 http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>291B49F9-1685-4005-****-606B6F78740F</RequestId> <RiskCheckSummary>
@@ -5690,10 +6035,9 @@ http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
 </RiskCheckSummary>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "291B49F9-1685-4005-****-606B6F78740F",
     "RiskCheckSummary": {
         "DisabledRiskCount": 0,
@@ -5717,17 +6061,19 @@ http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
             "CountByStatus": {
                 "Status": "pass",
                 "Count": 2
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "RiskLevelCount": {
             "Count": 1,
             "Key": "medium"
-        }
-    }
-}
 ```
 
-#### DescribeRiskCheckResult
+`}` `}` `}`
+
+#### 7.4.4 DescribeRiskCheckResult
 
 查询检查项的检测结果，可根据类别或名称进行筛选查询。
 
@@ -5757,7 +6103,7 @@ http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
 |---|---|---|---|
 | Count | Integer | 10 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
-| List | Array of RiskCheckRes ultForDisplay |  | 检查项信息。 |
+| List | Array of RiskCheckRes ultForDisplay |   | 检查项信息。 |
 
 | AffectedCount | Integer | 0 | 受影响资产数量。 |
 |---|---|---|---|
@@ -5766,7 +6112,7 @@ http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
 | RemainingTim e | Integer | 0 | 已废弃。 |
 | RepairStatus | String | disabled | 配置检查项是否支持修复功能。 enabled：支持修复。 disabled：不支持修复。 |
 | RiskAssertTyp e | String | ECS | 受影响的资产类型。 |
-| RiskItemResou rces | Array of RiskItemResou rce |  | 检查项的详情数据。 |
+| RiskItemResou rces | Array of RiskItemResou rce |   | 检查项的详情数据。 |
 | ContentResour ce | Json | { "type": "link", "value": "未开启多因素认证，存在风险\n", "url": "https://***.aliyun.c om/#/secure\n" } | 详情项的内容。 |
 | ResourceNam e | String | bestPractice | 详情项标题。取值： bestPractice：检查描述。 influence：威胁影响。 suggestion：指导方案。 helpResource：帮助资源。 |
 | RiskLevel | String | high | 检查项的风险等级。取值： high：高危。 medium：中危。 low：低危。 |
@@ -5791,7 +6137,7 @@ http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
 http(s)://[Endpoint]/?Action=DescribeRiskCheckResult
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>12</TotalCount> <PageSize>10</PageSize> <PageCount>20</PageCount> <RequestId>AD271C07-4ACE-***-AA9B-F14FD3B7717F</RequestId> <CurrentPage>1</CurrentPage> <List>
@@ -5810,7 +6156,7 @@ http(s)://[Endpoint]/?Action=DescribeRiskCheckResult
     <Sort>1</Sort>
 ```
 
-`<Title>`云平台-主账号双因素认证配置检查`</Title>`
+`<Title>`云平台`-`主账号双因素认证配置检查`</Title>`
 
 ```xml
     <RepairStatus>disabled</RepairStatus>
@@ -5828,10 +6174,9 @@ rl": "https://***.aliyun.com/#/secure\n" }</ContentResource>
 </List> <Count>10</Count>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 12,
     "PageSize": 10,
     "PageCount": 20,
@@ -5853,7 +6198,7 @@ rl": "https://***.aliyun.com/#/secure\n" }</ContentResource>
         "Sort": 1,
 ```
 
-`"Title": "`云平台-主账号双因素认证配置检查`",`
+`"Title": "`云平台`-`主账号双因素认证配置检查`",`
 
 ```json
         "RepairStatus": "disabled",
@@ -5863,13 +6208,17 @@ rl": "https://***.aliyun.com/#/secure\n" }</ContentResource>
             "ContentResource": "{   \"type\": \"link\",   \"value\": \"未开启多因素认证，存
 在风险\\n\", \"url\": \"https://***.aliyun.com/#/secure\\n\" }",
             "ResourceName": "bestPractice"
-        }
-    },
-    "Count": 10
-}
 ```
 
-#### DescribeSecurityCheckScheduleConfig
+`}` `},`
+
+```json
+    "Count": 10
+```
+
+`}`
+
+#### 7.4.5 DescribeSecurityCheckScheduleConfig
 
 查看用户自定义设置的检测周期以及时间段。
 
@@ -5886,7 +6235,7 @@ rl": "https://***.aliyun.com/#/secure\n" }</ContentResource>
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 48D2E9A9-A1B0- 4295-****- 0995757C47E9 | 本次调用请求的ID。 |
-| RiskCheckJobC onfig | Struct |  | 周期检测任务的设置信息。 |
+| RiskCheckJobC onfig | Struct |   | 周期检测任务的设置信息。 |
 | DaysOfWeek | String | 1,2,3 | 检测周期。可取值周一至周日，支持设置多天。 多天之间使用英文逗号隔开。取值： 1：周一。 2：周二。 3：周三。 4：周四。 5：周五。 6：周六。 7：周日。 |
 | EndTime | Integer | 12 | 检测结束时间。取值： 6：在00:00-06:00结束检测。 12：在06:00-12:00结束检测。 18：在12:00-18:00结束检测。 24：在18:00-24:00结束检测。 |
 | StartTime | Integer | 6 | 检测开始时间。取值： 6：在00:00-06:00结束检测。 12：在06:00-12:00结束检测。 18：在12:00-18:00结束检测。 24：在18:00-24:00结束检测。 |
@@ -5899,7 +6248,7 @@ rl": "https://***.aliyun.com/#/secure\n" }</ContentResource>
 http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RiskCheckJobConfig>
@@ -5909,22 +6258,26 @@ http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
 </RiskCheckJobConfig> <RequestId>48D2E9A9-A1B0-4295-****-0995757C47E9</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RiskCheckJobConfig": {
         "DaysOfWeek": "1,2,3",
         "EndTime": 12,
         "StartTime": 6
-    },
-    "RequestId": "48D2E9A9-A1B0-4295-****-0995757C47E9"
-}
 ```
 
-### 漏洞管理
+`},`
 
-#### DescribeVulList
+```json
+    "RequestId": "48D2E9A9-A1B0-4295-****-0995757C47E9"
+```
+
+`}`
+
+### 7.5 漏洞管理
+
+#### 7.5.1 DescribeVulList
 
 调用本接口可以根据漏洞类型查询对应漏洞信息。
 
@@ -5970,7 +6323,7 @@ http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 2 | 查询结果总数。 |
-| VulRecords | Array of VulRecord |  | 漏洞信息。 |
+| VulRecords | Array of VulRecord |   | 漏洞信息。 |
 | AliasName | String | RHSA-2017:0574: gnutls security, bug fix, and enhancement update | 漏洞别名。 |
 | ContainerId | String | 无 | 已废弃。 |
 | ContainerImag eId | String | 无 | 已废弃。 |
@@ -5978,13 +6331,13 @@ http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
 | ContainerInner Path | String | 无 | 已废弃。 |
 | ContainerNam e | String | 无 | 已废弃。 |
 
-| ExtendContent Json | Struct |  | 扩展信息。 |
+| ExtendContent Json | Struct |   | 扩展信息。 |
 |---|---|---|---|
 | AbsolutePath | String | /roo/www/web | 绝对路径。 |
 | AliasName | String | RHSA-2017:0574: gnutls security, bug fix, and enhancement update | 漏洞别名。 |
 | Ip | String | 47.200.XX.XX | 漏洞关联资产的IP地址。优先展示公网IP，若公网IP不存在，则显示私网IP。 |
 | LastTs | Long | 1554189334000 | 最后发现时间的时间戳，单位为毫秒。 |
-| Necessity | Struct |  | 漏洞修复必要性。 |
+| Necessity | Struct |   | 漏洞修复必要性。 |
 | Assets factor _ | String | 1 | 资产因子。 |
 | Cvss factor _ | String | 7.8 | CVSS因子。 |
 | Enviroment fa _ ctor | String | 1.0 | 环境因子。 |
@@ -5996,7 +6349,7 @@ http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
 | OsRelease | String | 7 | 操作系统描述。 |
 | PrimaryId | Long | 111 | 漏洞ID。 |
 
-| RpmEntityList | Array of RpmEntity |  | RPM包列表。 |
+| RpmEntityList | Array of RpmEntity |   | RPM包列表。 |
 |---|---|---|---|
 | FullVersion | String | 3.10.0-693.2.2.el7 | 完整版本号。 |
 | MatchDetail | String | python-perf version less than 0:3.10.0- 693.21.1.el7 | 匹配细节。 |
@@ -6040,7 +6393,13 @@ http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeVulList
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>2</TotalCount> <PageSize>20</PageSize> <RequestId>ECDE6715-6286-40E6-A32D-3094051FD74D</RequestId> <VulRecords>
@@ -6106,13 +6465,13 @@ update</AliasName>
 <Stt
 ```
 
->
+`>`
 
 ```
 l</Stt
 ```
 
->
+`>`
 
 ```xml
             <Status>normal</Status>
@@ -6126,10 +6485,9 @@ l</Stt
 </VulRecords> <CurrentPage>1</CurrentPage>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 2,
     "PageSize": 20,
     "RequestId": "ECDE6715-6286-40E6-A32D-3094051FD74D",
@@ -6150,7 +6508,7 @@ l</Stt
         "AliasName": "RHSA-2017:0574: gnutls security, bug fix, and enhancement update"
 ```
 
-,
+`,`
 
 ```json
         "Status": 1,
@@ -6192,7 +6550,11 @@ ate",
                 "FullVersion": "3.10.0-693.2.2.el7",
                 "MatchDetail": "python-perf version less than 0:3.10.0-693.21.1.el7",
                 "Name": "python-perf"
-            },
+```
+
+`},`
+
+```json
             "cveList": "[\"CVE-2016-8610\", \"CVE-2017-5335\" ]",
             "Necessity": {
                 "Total_score": 7.8,
@@ -6202,14 +6564,17 @@ ate",
                 "Is_calc": 1,
                 "Enviroment_factor": 1,
                 "Assets_factor": 1
-            }
-        }
-    },
-    "CurrentPage": 1
-}
 ```
 
-#### DescribeVulWhitelist
+`}` `}` `},`
+
+```json
+    "CurrentPage": 1
+```
+
+`}`
+
+#### 7.5.2 DescribeVulWhitelist
 
 分页查询漏洞白名单。
 
@@ -6231,7 +6596,7 @@ ate",
 | PageSize | Integer | 10 | 每页最多显示的数据条数。 |
 | RequestId | String | 74F97EF7-B543- 43FD-XXXX- 18456731F9C5 | 本次调用请求的ID。 |
 | TotalCount | Integer | 1 | 总数据条数。 |
-| VulWhitelists | Array of VulWhitelist |  | 漏洞白名单信息。 |
+| VulWhitelists | Array of VulWhitelist |   | 漏洞白名单信息。 |
 | AliasName | String | RHSA-xxxx | 漏洞别名。 |
 | Name | String | oval:com.redh.xxx xx | 漏洞名称。 |
 | Reason | String | 暂不修复 | 加白原因。 |
@@ -6245,7 +6610,7 @@ ate",
 http(s)://[Endpoint]/?Action=DescribeVulWhitelist
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>74F97EF7-B543-43FD-XXXX-18456731F9C5</RequestId> <VulWhitelists>
@@ -6260,10 +6625,9 @@ http(s)://[Endpoint]/?Action=DescribeVulWhitelist
 </VulWhitelists> <CurrentPage>1</CurrentPage>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 1,
     "PageSize": 10,
     "RequestId": "74F97EF7-B543-43FD-XXXX-18456731F9C5",
@@ -6276,12 +6640,17 @@ http(s)://[Endpoint]/?Action=DescribeVulWhitelist
 
 ```json
         "Name": "oval:com.redh.xxxxx"
-    },
-    "CurrentPage": 1
-}
 ```
 
-#### DescribeConcernNecessity
+`},`
+
+```json
+    "CurrentPage": 1
+```
+
+`}`
+
+#### 7.5.3 DescribeConcernNecessity
 
 查询关注的漏洞修复必要性信息。
 
@@ -6307,22 +6676,22 @@ http(s)://[Endpoint]/?Action=DescribeVulWhitelist
 http(s)://[Endpoint]/?Action=DescribeConcernNecessity
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>9139DAF6-5CE0-49A0-XXXX-07243A290F70</RequestId> <ConcernNecessity>[ "asap", "later", "nntf"]</ConcernNecessity>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "9139DAF6-5CE0-49A0-XXXX-07243A290F70",
     "ConcernNecessity": "[ \"asap\", \"later\", \"nntf\"]"
-}
 ```
 
-#### DescribeGroupedVul
+`}`
+
+#### 7.5.4 DescribeGroupedVul
 
 分组查询漏洞信息。
 
@@ -6356,7 +6725,7 @@ http(s)://[Endpoint]/?Action=DescribeConcernNecessity
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | RequestId | String | 0DFCADBA-7065- 42DA-XXXX- 6868B9C2A8CF | 本次调用请求的ID。 |
 | TotalCount | Integer | 2 | 总数据条数。 |
-| GroupedVulIte ms | Array of GroupedVulIte m |  | 分组漏洞信息。 |
+| GroupedVulIte ms | Array of GroupedVulIte m |   | 分组漏洞信息。 |
 | AliasName | String | RHSA-2019:***- Important: polkit security update | 漏洞别名。 |
 
 | AsapCount | Integer | 0 | 修复必要性等级高的漏洞数量。 |
@@ -6378,7 +6747,7 @@ http(s)://[Endpoint]/?Action=DescribeConcernNecessity
 http(s)://[Endpoint]/?Action=DescribeGroupedVul
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>2</TotalCount> <PageSize>20</PageSize> <RequestId>0DFCADBA-7065-42DA-XXXX-6868B9C2A8CF</RequestId> <CurrentPage>1</CurrentPage> <GroupedVulItems>
@@ -6398,10 +6767,9 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 </GroupedVulItems>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 2,
     "PageSize": 20,
     "RequestId": "0DFCADBA-7065-42DA-XXXX-6868B9C2A8CF",
@@ -6417,14 +6785,9 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
         "NntfCount": 59,
 ```
 
-`"Tags": "`需要重启`",` `"Name": "***glibc` 安全和`BUG`修复更新"
+`"Tags": "`需要重启`",` `"Name": "***glibc` 安全和`BUG`修复更新`"` `}` `}`
 
-```
-    }
-}
-```
-
-#### DescribeAutoDelConfig
+#### 7.5.5 DescribeAutoDelConfig
 
 获取漏洞管理设置中失效漏洞自动删除天数配置。
 
@@ -6443,24 +6806,30 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+/?Action=DescribeAutoDelConfig
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>43186B14-5A39-44E0-XXXX-8B24D1EF82CC</RequestId> <Days>7</Days>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "43186B14-5A39-44E0-XXXX-8B24D1EF82CC",
     "Days": 7
-}
 ```
 
-### 基线
+`}`
 
-#### DescribeCheckWarningSummary
+### 7.6 基线
+
+#### 7.6.1 DescribeCheckWarningSummary
 
 查看基线检查的结果统计情况，例如基线检查的服务器数量、基线检查项数量、最近检查通过率等。
 
@@ -6491,7 +6860,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 | PageSize | Integer | 10 | 分页查询时，显示的每页数据的最大条数。 |
 | RequestId | String | 00BD7CE2-284A- 4534-BD09-*** | 本次调用请求的ID。 |
 | TotalCount | Integer | 100 | 基线检查项的总数。 |
-| WarningSumm arys | Array of WarningSumm ary |  | 检查项统计明细。 |
+| WarningSumm arys | Array of WarningSumm ary |   | 检查项统计明细。 |
 
 | CheckCount | Integer | 10 | 基线检查项个数。 |
 |---|---|---|---|
@@ -6520,9 +6889,10 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningSummary &Lang=zh &TypeName=data
 &StrategyId=1 &Uuids=f03259d8-1e81-4fae-bcbb-275fb5****** &CurrentPage=1 &PageSize=20
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeCheckWarningSummary>
    <TotalCount>25</TotalCount>
    <PageSize>20</PageSize>
    <RequestId>DFA6CDC5-E826-4D18-A499-BEF9DA31F1AD</RequestId>
@@ -6564,13 +6934,13 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningSummary &Lang=zh &TypeName=data
       <TypeAlias>系统</TypeAlias>
 ```
 
-`<SubTypeAlias>CentOS Linux 7`合规基线检查-等保三级`</SubTypeAlias>`
+`<SubTypeAlias>CentOS Linux 7`合规基线检查`-`等保三级`</SubTypeAlias>`
 
 ```xml
       <LowWarningCount>0</LowWarningCount>
 ```
 
-`<RiskName>CentOS Linux 7`合规基线检查-等保三级`</RiskName>`
+`<RiskName>CentOS Linux 7`合规基线检查`-`等保三级`</RiskName>`
 
 ```xml
    </WarningSummarys>
@@ -6585,13 +6955,13 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningSummary &Lang=zh &TypeName=data
       <TypeAlias>系统</TypeAlias>
 ```
 
-`<SubTypeAlias>CentOS Linux 7`合规基线检查-等保二级`</SubTypeAlias>`
+`<SubTypeAlias>CentOS Linux 7`合规基线检查`-`等保二级`</SubTypeAlias>`
 
 ```xml
       <LowWarningCount>0</LowWarningCount>
 ```
 
-`<RiskName>CentOS Linux 7`合规基线检查-等保二级`</RiskName>`
+`<RiskName>CentOS Linux 7`合规基线检查`-`等保二级`</RiskName>`
 
 ```xml
    </WarningSummarys>
@@ -6817,13 +7187,13 @@ RikId3/RikId
       <TypeAlias>系统</TypeAlias>
 ```
 
-`<SubTypeAlias>CentOS Linux 6`合规基线检查-等保二级`</SubTypeAlias>`
+`<SubTypeAlias>CentOS Linux 6`合规基线检查`-`等保二级`</SubTypeAlias>`
 
 ```xml
       <LowWarningCount>0</LowWarningCount>
 ```
 
-`<RiskName>CentOS Linux 6`合规基线检查-等保二级`</RiskName>`
+`<RiskName>CentOS Linux 6`合规基线检查`-`等保二级`</RiskName>`
 
 ```xml
    </WarningSummarys>
@@ -6841,13 +7211,13 @@ RikId3/RikId
       <TypeAlias>系统</TypeAlias>
 ```
 
-`<SubTypeAlias>CentOS Linux 6`合规基线检查-等保三级`</SubTypeAlias>`
+`<SubTypeAlias>CentOS Linux 6`合规基线检查`-`等保三级`</SubTypeAlias>`
 
 ```xml
       <LowWarningCount>0</LowWarningCount>
 ```
 
-`<RiskName>CentOS Linux 6`合规基线检查-等保三级`</RiskName>`
+`<RiskName>CentOS Linux 6`合规基线检查`-`等保三级`</RiskName>`
 
 ```xml
    </WarningSummarys>
@@ -6862,13 +7232,13 @@ RikId3/RikId
       <TypeAlias>系统</TypeAlias>
 ```
 
-`<SubTypeAlias>Linux Ubuntu`合规基线检查-等保二级`</SubTypeAlias>`
+`<SubTypeAlias>Linux Ubuntu`合规基线检查`-`等保二级`</SubTypeAlias>`
 
 ```xml
       <LowWarningCount>0</LowWarningCount>
 ```
 
-`<RiskName>Linux Ubuntu`合规基线检查-等保二级`</RiskName>`
+`<RiskName>Linux Ubuntu`合规基线检查`-`等保二级`</RiskName>`
 
 ```xml
    </WarningSummarys>
@@ -6883,13 +7253,13 @@ RikId3/RikId
       <TypeAlias>系统</TypeAlias>
 ```
 
-`<SubTypeAlias>Linux Ubuntu`合规基线检查-等保三级`</SubTypeAlias>`
+`<SubTypeAlias>Linux Ubuntu`合规基线检查`-`等保三级`</SubTypeAlias>`
 
 ```xml
       <LowWarningCount>0</LowWarningCount>
 ```
 
-`<RiskName>Linux Ubuntu`合规基线检查-等保三级`</RiskName>`
+`<RiskName>Linux Ubuntu`合规基线检查`-`等保三级`</RiskName>`
 
 ```xml
    </WarningSummarys>
@@ -6926,19 +7296,23 @@ RikId3/RikId
       <LowWarningCount>0</LowWarningCount>
       <RiskName>Windows 2012 R2安全基线检查</RiskName>
    </WarningSummarys>
+</DescribeCheckWarningSummary>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "TotalCount":25,
  "PageSize":20,
  "RequestId":"DFA6CDC5-E826-4D18-A499-BEF9DA31F1AD",
  "CurrentPage":1,
  "Count":20,
  "WarningSummarys":[
-  {
+```
+
+`{`
+
+```json
    "RiskId":43,
    "LastFoundTime":"2019-04-10 00:33:00",
    "MediumWarningCount":0,
@@ -6957,11 +7331,9 @@ RikId3/RikId
    "RiskName":"CentOS Linux 7安全基线检查\n                                \n
 ```
 
-"
+`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":47,
    "LastFoundTime":"2019-04-10 00:58:11",
    "MediumWarningCount":0,
@@ -6972,17 +7344,15 @@ RikId3/RikId
    "TypeAlias":"系统",
 ```
 
-`"SubTypeAlias":"CentOS Linux 7`合规基线检查-等保三级`",`
+`"SubTypeAlias":"CentOS Linux 7`合规基线检查`-`等保三级`",`
 
 ```json
    "LowWarningCount":0,
 ```
 
-`"RiskName":"CentOS Linux 7`合规基线检查-等保三级"
+`"RiskName":"CentOS Linux 7`合规基线检查`-`等保三级`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":48,
    "LastFoundTime":"2019-04-10 00:58:11",
    "MediumWarningCount":0,
@@ -6993,17 +7363,15 @@ RikId3/RikId
    "TypeAlias":"系统",
 ```
 
-`"SubTypeAlias":"CentOS Linux 7`合规基线检查-等保二级`",`
+`"SubTypeAlias":"CentOS Linux 7`合规基线检查`-`等保二级`",`
 
 ```json
    "LowWarningCount":0,
 ```
 
-`"RiskName":"CentOS Linux 7`合规基线检查-等保二级"
+`"RiskName":"CentOS Linux 7`合规基线检查`-`等保二级`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":3,
    "LastFoundTime":"2019-04-10 08:31:32",
    "MediumWarningCount":0,
@@ -7019,11 +7387,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Redis`安全基线检查"
+`"RiskName":"Redis`安全基线检查`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":19,
    "LastFoundTime":"2019-04-10 08:31:32",
    "MediumWarningCount":0,
@@ -7039,11 +7405,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Linux`系统登录弱口令检测"
+`"RiskName":"Linux`系统登录弱口令检测`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":12,
    "LastFoundTime":"2019-04-10 08:31:32",
    "MediumWarningCount":0,
@@ -7059,11 +7423,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"FTP`匿名登录配置检测"
+`"RiskName":"FTP`匿名登录配置检测`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":13,
    "LastFoundTime":"2019-04-10 06:58:58",
    "MediumWarningCount":0,
@@ -7079,12 +7441,7 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Windows`系统登录弱口令检测"
-
-```
-  },
-  {
-```
+`"RiskName":"Windows`系统登录弱口令检测`"` `},` `{`
 
 ```json
    "RiskId":23,
@@ -7102,11 +7459,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Apache Tomcat` 安全基线检查"
+`"RiskName":"Apache Tomcat` 安全基线检查`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":2,
    "LastFoundTime":"2019-04-10 08:31:32",
    "MediumWarningCount":0,
@@ -7122,11 +7477,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"PostgreSql`登录弱口令检测"
+`"RiskName":"PostgreSql`登录弱口令检测`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":11,
    "LastFoundTime":"2019-04-10 08:31:32",
    "MediumWarningCount":0,
@@ -7142,11 +7495,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"MySQL`弱密码检测"
+`"RiskName":"MySQL`弱密码检测`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":20,
    "LastFoundTime":"2019-04-10 08:31:32",
    "MediumWarningCount":0,
@@ -7162,11 +7513,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"FTP`登录弱口令检测"
+`"RiskName":"FTP`登录弱口令检测`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":17,
    "LastFoundTime":"2019-04-10 06:58:58",
 ```
@@ -7186,11 +7535,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Microsoft SQL Server`登录弱口令检测"
+`"RiskName":"Microsoft SQL Server`登录弱口令检测`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":24,
    "LastFoundTime":"2019-04-10 06:52:05",
    "MediumWarningCount":0,
@@ -7206,11 +7553,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Memcached`安全基线检查"
+`"RiskName":"Memcached`安全基线检查`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":42,
    "LastFoundTime":"2019-02-19 14:59:17",
    "MediumWarningCount":0,
@@ -7227,11 +7572,9 @@ RikId3/RikId
    "LowWarningCount":0,
 ```
 
-`"RiskName":"CentOS Linux 6`安全基线检查"
+`"RiskName":"CentOS Linux 6`安全基线检查`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":49,
    "LastFoundTime":"2019-02-19 14:59:17",
    "MediumWarningCount":0,
@@ -7242,17 +7585,15 @@ RikId3/RikId
    "TypeAlias":"系统",
 ```
 
-`"SubTypeAlias":"CentOS Linux 6`合规基线检查-等保二级`",`
+`"SubTypeAlias":"CentOS Linux 6`合规基线检查`-`等保二级`",`
 
 ```json
    "LowWarningCount":0,
 ```
 
-`"RiskName":"CentOS Linux 6`合规基线检查-等保二级"
+`"RiskName":"CentOS Linux 6`合规基线检查`-`等保二级`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":50,
    "LastFoundTime":"2019-02-19 14:59:17",
    "MediumWarningCount":0,
@@ -7273,17 +7614,15 @@ t"15
    "TypeAlias":"系统",
 ```
 
-`"SubTypeAlias":"CentOS Linux 6`合规基线检查-等保三级`",`
+`"SubTypeAlias":"CentOS Linux 6`合规基线检查`-`等保三级`",`
 
 ```json
    "LowWarningCount":0,
 ```
 
-`"RiskName":"CentOS Linux 6`合规基线检查-等保三级"
+`"RiskName":"CentOS Linux 6`合规基线检查`-`等保三级`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":55,
    "LastFoundTime":"2019-02-19 12:57:23",
    "MediumWarningCount":0,
@@ -7294,17 +7633,15 @@ t"15
    "TypeAlias":"系统",
 ```
 
-`"SubTypeAlias":"Linux Ubuntu`合规基线检查-等保二级`",`
+`"SubTypeAlias":"Linux Ubuntu`合规基线检查`-`等保二级`",`
 
 ```json
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Linux Ubuntu`合规基线检查-等保二级"
+`"RiskName":"Linux Ubuntu`合规基线检查`-`等保二级`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":56,
    "LastFoundTime":"2019-02-19 12:57:23",
    "MediumWarningCount":0,
@@ -7315,17 +7652,15 @@ t"15
    "TypeAlias":"系统",
 ```
 
-`"SubTypeAlias":"Linux Ubuntu`合规基线检查-等保三级`",`
+`"SubTypeAlias":"Linux Ubuntu`合规基线检查`-`等保三级`",`
 
 ```json
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Linux Ubuntu`合规基线检查-等保三级"
+`"RiskName":"Linux Ubuntu`合规基线检查`-`等保三级`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":54,
    "LastFoundTime":"2019-02-19 12:57:23",
    "MediumWarningCount":0,
@@ -7342,11 +7677,9 @@ t"15
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Linux Ubuntu` 安全基线检查"
+`"RiskName":"Linux Ubuntu` 安全基线检查`"` `},` `{`
 
 ```json
-  },
-  {
    "RiskId":51,
    "LastFoundTime":"2019-02-19 12:44:58",
    "MediumWarningCount":0,
@@ -7367,19 +7700,11 @@ t"15
    "LowWarningCount":0,
 ```
 
-`"RiskName":"Windows 2012 R2`安全基线检查"
+`"RiskName":"Windows 2012 R2`安全基线检查`"` `}` `]` `}`
 
-```
-  }
-```
+#### 7.6.2 DescribeStratety
 
-]
-
-```
-}
-```
-
-#### DescribeStratety
+调用DescribeStratety接口查询基线检查策略的设置详情。
 
 **请求参数**
 
@@ -7395,8 +7720,8 @@ t"15
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 16B9826C-B99F- 4F8A-8048- EA81D6D3DE8B | 结果的请求ID。 |
-| Strategies | Array of Strategy |  | 基线检查策略信息。 |
-| ConfigTargets | Array of ConfigTarget |  | 基线检查策略关联分组信息。 |
+| Strategies | Array of Strategy |   | 基线检查策略信息。 |
+| ConfigTargets | Array of ConfigTarget |   | 基线检查策略关联分组信息。 |
 | Flag | String | add | 关联标识。 |
 | Target | String | 1xxx | 关联分组ID。 |
 | TargetType | String | groupId | 关联类型。 |
@@ -7415,7 +7740,13 @@ t"15
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeStratety
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>16B9826C-B99F-4F8A-8048-EA81D6D3DE8B</RequestId> <Strategies>
@@ -7437,10 +7768,9 @@ t"15
 </Strategies>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "16B9826C-B99F-4F8A-8048-EA81D6D3DE8B",
     "Strategies": {
         "CycleStartTime": 6,
@@ -7461,12 +7791,11 @@ t"15
             "Target": "1xxx",
             "TargetType": "groupId",
             "Flag": "add"
-        }
-    }
-}
 ```
 
-#### DescribeStrategyExecDetail
+`}` `}` `}`
+
+#### 7.6.3 DescribeStrategyExecDetail
 
 查询单个基线检测策略执行最近一次检查的结果详情，包括最近一次执行检查的时间、检测出的风险项数量及基线配置风险详情等。
 
@@ -7486,7 +7815,7 @@ t"15
 |---|---|---|---|
 | EndTime | String | 2019-01-08 20:11:20 | 基线检查执行结束时间。使用yyyy-MM-dd HH:mm:ss格式。 |
 | FailCount | Integer | 94 | 基线检查未通过的风险项数量。 |
-| FailedEcsList | Array of FailedEcs |  | 检测出基线风险项的服务器列表。 |
+| FailedEcsList | Array of FailedEcs |   | 检测出基线风险项的服务器列表。 |
 | IP | String | 192.168.XX.XX | 执行基线检查的服务器实例IP地址。 |
 | InstanceName | String | 测试-20180703 | 实例名。 |
 | IntranetIp | String | 192.168.XX.XX | 内网IP。 |
@@ -7508,7 +7837,7 @@ t"15
 http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <EndTime>2019-01-08 20:11:20</EndTime> <RequestId>09322632-4668-4AD9-BD0D-32757DEFBBA6</RequestId> <Percent>100%</Percent> <FailCount>94</FailCount> <StartTime>2019-01-08 19:41:12</StartTime> <SuccessCount>81</SuccessCount> <Source>Manual</Source> <FailedEcsList>
@@ -7519,10 +7848,9 @@ http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1
 </FailedEcsList> <InProcessCount>0</InProcessCount>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "EndTime": "2019-01-08 20:11:20",
     "RequestId": "09322632-4668-4AD9-BD0D-32757DEFBBA6",
     "Percent": "100%",
@@ -7535,12 +7863,17 @@ http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1
         "IP": "192.168.XX.XX",
         "IntranetIp": "192.168.XX.XX",
         "Reason": "Detect timeout"
-    },
-    "InProcessCount": 0
-}
 ```
 
-#### DescribeCheckWarnings
+`},`
+
+```json
+    "InProcessCount": 0
+```
+
+`}`
+
+#### 7.6.4 DescribeCheckWarnings
 
 调用DescribeCheckWarnings接口查询指定风险项和指定服务器下的检查项信息。
 
@@ -7560,7 +7893,7 @@ http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| CheckWarning s | Array of CheckWarning |  | 检查项信息。 |
+| CheckWarning s | Array of CheckWarning |   | 检查项信息。 |
 | CheckId | Long | 1 | 检查项ID。 |
 
 | CheckWarning Id | Long | 10 | 告警数据ID。 |
@@ -7584,7 +7917,7 @@ http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1
 http(s)://[Endpoint]/?Action=DescribeCheckWarnings &RiskId=1 &Uuid=d42f938c-d962-48a0-90f9-05**********
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>100</TotalCount> <CheckWarnings>
@@ -7601,10 +7934,9 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarnings &RiskId=1 &Uuid=d42f938c-d962
 </CheckWarnings> <PageSize>20</PageSize> <RequestId>0DFCADBA-7065-42DA-AF17-6868B9C2A8CF</RequestId> <CurrentPage>1</CurrentPage> <Count>10</Count>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 100,
     "CheckWarnings": {
         "Status": 1,
@@ -7617,15 +7949,20 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarnings &RiskId=1 &Uuid=d42f938c-d962
         "CheckId": 1,
         "CheckWarningId": 10,
         "Level": "high"
-    },
+```
+
+`},`
+
+```json
     "PageSize": 20,
     "RequestId": "0DFCADBA-7065-42DA-AF17-6868B9C2A8CF",
     "CurrentPage": 1,
     "Count": 10
-}
 ```
 
-#### DescribeCheckWarningDetail
+`}`
+
+#### 7.6.5 DescribeCheckWarningDetail
 
 调用DescribeCheckWarningDetail接口查询指定检查项的详细信息。
 
@@ -7661,7 +7998,7 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarnings &RiskId=1 &Uuid=d42f938c-d962
 http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 `<Item>`密码到期警告`</Item>` `<Type>`身份鉴别`</Type>` `<Description>`密码即将过期`</Description>`
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式 `<Item>`密码到期警告`</Item>` `<Type>`身份鉴别`</Type>` `<Description>`密码即将过期`</Description>`
 
 ```xml
 <CheckId>1</CheckId> <RequestId>09969D2C-4FAD-429E-BFBF-9A60DEF8BF6F</RequestId>
@@ -7673,13 +8010,7 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1
 <Level>high</Level>
 ```
 
-`<Advice>`立即修复`</Advice>` `JSON` 格式
-
-```
-{
-```
-
-`"Item": "`密码到期警告`",` `"Type": "`身份鉴别`",` `"Description": "`密码即将过期`",`
+`<Advice>`立即修复`</Advice>` `JSON` 格式 `{` `"Item": "`密码到期警告`",` `"Type": "`身份鉴别`",` `"Description": "`密码即将过期`",`
 
 ```json
     "CheckId": 1,
@@ -7692,13 +8023,9 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1
     "Level": "high",
 ```
 
-`"Advice": "`立即修复"
+`"Advice": "`立即修复`"` `}`
 
-```
-}
-```
-
-#### DescribeWarningMachines
+#### 7.6.6 DescribeWarningMachines
 
 查询执行了基线检查的服务器的信息，包含服务器的ID、服务器名称、检测到的风险项统计数据和风险项状态等信息。
 
@@ -7727,7 +8054,7 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1
 | PageSize | Integer | 10 | 每页最多显示的数据条数。 |
 | RequestId | String | 00BD7CE2-284A- 4534-BD09- FB69836DD750 | 本次调用请求的ID。 |
 | TotalCount | Integer | 100 | 总数据条数。 |
-| WarningMachi nes | Array of WarningMachi ne |  | 产生告警的服务器的信息。 |
+| WarningMachi nes | Array of WarningMachi ne |   | 产生告警的服务器的信息。 |
 | HighWarningC ount | Integer | 10 | 高危检查项的个数。 |
 | InstanceId | String | i- m5ee8b9nr3h30m hb**** | 服务器的实例ID。 |
 | InstanceName | String | aaawebtest | 实例名称。 |
@@ -7750,7 +8077,7 @@ http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1
 http(s)://[Endpoint]/?Action=DescribeWarningMachines &RiskId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>100</TotalCount> <PageSize>10</PageSize> <RequestId>00BD7CE2-284A-4534-BD09-FB69836DD750</RequestId> <CurrentPage>1</CurrentPage> <WarningMachines>
@@ -7768,10 +8095,9 @@ http(s)://[Endpoint]/?Action=DescribeWarningMachines &RiskId=1
 </WarningMachines> <Count>10</Count>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 100,
     "PageSize": 10,
     "RequestId": "00BD7CE2-284A-4534-BD09-FB69836DD750",
@@ -7788,14 +8114,19 @@ http(s)://[Endpoint]/?Action=DescribeWarningMachines &RiskId=1
         "PassCount": 10,
         "IntranetIp": "192.168.XX.XX",
         "LowWarningCount": 3
-    },
-    "Count": 10
-}
 ```
 
-### 资产指纹
+`},`
 
-#### DescribePropertyCount
+```json
+    "Count": 10
+```
+
+`}`
+
+### 7.7 资产指纹
+
+#### 7.7.1 DescribePropertyCount
 
 获取资产指纹的统计信息，即进程、端口、软件、账户和计划任务五种资产指纹的数量统计。
 
@@ -7828,16 +8159,15 @@ http(s)://[Endpoint]/?Action=DescribeWarningMachines &RiskId=1
 http(s)://[Endpoint]/?Action=DescribePropertyCount
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Sca>125</Sca> <User>114</User> <RequestId>7E0618A9-D5EF-4220-9471-C42B5E92****</RequestId> <Port>163</Port> <Software>5073</Software> <Process>367</Process> <Autorun>123</Autorun> <Cron>261</Cron>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Sca": 125,
     "User": 114,
     "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92****",
@@ -7846,10 +8176,11 @@ http(s)://[Endpoint]/?Action=DescribePropertyCount
     "Process": 367,
     "Autorun": 123,
     "Cron": 261
-}
 ```
 
-#### DescribePropertyPortDetail
+`}`
+
+#### 7.7.2 DescribePropertyPortDetail
 
 查询端口列表中一个端口的详细信息。
 
@@ -7869,14 +8200,14 @@ http(s)://[Endpoint]/?Action=DescribePropertyCount
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 5 | 当前页的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 
 | PageSize | Integer | 5 | 每页最多显示的数据条数。 |
 |---|---|---|---|
 | TotalCount | Integer | 762 | 数据的总条数。 |
-| Propertys | Array of PropertyPort |  | 端口信息。 |
+| Propertys | Array of PropertyPort |   | 端口信息。 |
 | BindIp | String | 47.100.XX.XX | 端口绑定的IP地址信息。 |
 | Create | String | 2019-05- 13T10:39Z | 数据的最新采集时间。 |
 | CreateTimesta mp | Long | 1557715141000 | 数据最新采集时间戳。格式：毫秒。 |
@@ -7900,7 +8231,7 @@ http(s)://[Endpoint]/?Action=DescribePropertyCount
 http(s)://[Endpoint]/?Action=DescribePropertyPortDetail
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Propertys>
@@ -7925,10 +8256,9 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortDetail
 </PageInfo> <RequestId> FAA793EF-5B14-4CDD-B3E0-B14D4342C422</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Propertys": {
         "InstanceName": "test-***",
         "Uuid": "50d213b4-3a35-427a-b8a5-04b0c7e1fXX",
@@ -7943,18 +8273,27 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortDetail
         "IntranetIp": "192.168.X.X",
         "CreateTimestamp": 1557715141000,
         "BindIp": "47.100.XX.XX"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 762,
         "PageSize": 5,
         "CurrentPage": 1,
         "Count": 5
-    },
-    "RequestId": "FAA793EF-5B14-4CDD-B3E0-B14D4342C422"
-}
 ```
 
-#### DescribePropertyProcDetail
+`},`
+
+```json
+    "RequestId": "FAA793EF-5B14-4CDD-B3E0-B14D4342C422"
+```
+
+`}`
+
+#### 7.7.3 DescribePropertyProcDetail
 
 获取进程列表中一个进程的详细信息。
 
@@ -7977,12 +8316,12 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortDetail
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 1 | 当前页的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 5 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 1 | 数据的总条数。 |
-| Propertys | Array of PropertyProc |  | 进程的信息。 |
+| Propertys | Array of PropertyProc |   | 进程的信息。 |
 | Cmdline | String | ./8888 | 进程对应启动参数。 |
 | Create | String | 2019-05- 15T11:08Z | 数据的最新采集时间。 |
 | CreateTimesta mp | Long | 1565686951000 | 数据最新采集时间戳。单位：毫秒。 |
@@ -8011,7 +8350,7 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortDetail
 http(s)://[Endpoint]/?Action=DescribePropertyProcDetail
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Propertys>
@@ -8039,10 +8378,9 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcDetail
 </PageInfo> <RequestId>64388374-A309-4191-8606-3346CCA364B0</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Propertys": {
         "Path": "/root/Oracle/Middleware/***/8888",
         "Pname": "start***.s",
@@ -8060,18 +8398,27 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcDetail
         "Cmdline": "./8888",
         "CreateTimestamp": 1565686951000,
         "Md5": "N/A"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 1,
         "PageSize": 5,
         "CurrentPage": 1,
         "Count": 1
-    },
-    "RequestId": "64388374-A309-4191-8606-3346CCA364B0"
-}
 ```
 
-#### DescribePropertyPortItem
+`},`
+
+```json
+    "RequestId": "64388374-A309-4191-8606-3346CCA364B0"
+```
+
+`}`
+
+#### 7.7.4 DescribePropertyPortItem
 
 获取所有端口信息。
 
@@ -8089,12 +8436,12 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcDetail
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 5 | 当前页的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 5 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 163 | 数据的总条数。 |
-| PropertyItems | Array of PropertyItem |  | 端口信息。 |
+| PropertyItems | Array of PropertyItem |   | 端口信息。 |
 | Count | Integer | 495 | 端口对应的服务器数量。 |
 | Port | String | 22 | 监听端口号。 |
 | Proto | String | tcp | 端口对应的网络协议。 |
@@ -8108,9 +8455,10 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcDetail
 http(s)://[Endpoint]/?Action=DescribePropertyPortItem
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribePropertyPortItemResponse>
         <RequestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</RequestId>
         <PropertyItems>
        <Port>22</Port>
@@ -8143,42 +8491,57 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortItem
        <TotalCount>163</TotalCount>
        <CurrentPage>1</CurrentPage>
      </PageInfo>
+</DescribePropertyPortItemResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
   "PropertyItems": [
-      {
+```
+
+`{`
+
+```json
         "Port": "22",
         "Proto": "tcp",
         "Count": 495
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "Port": "111",
         "Proto": "tcp",
         "Count": 43
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "Port": "6000",
         "Proto": "tcp",
         "Count": 2
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "Port": "53",
         "Proto": "tcp",
         "Count": 1
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "Port": "80",
         "Proto": "tcp",
         "Count": 38
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "PageInfo": {
@@ -8186,11 +8549,11 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortItem
       "PageSize": 5,
       "TotalCount": 163,
       "CurrentPage": 1
-    }
-}
 ```
 
-#### DescribePropertyProcItem
+`}` `}`
+
+#### 7.7.5 DescribePropertyProcItem
 
 获取所有进程信息。
 
@@ -8210,12 +8573,12 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortItem
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 5 | 分页查询时，显示的当前页的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 5 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 372 | 数据的总条数。 |
-| PropertyItems | Array of PropertyProcIt em |  | 进程的信息。 |
+| PropertyItems | Array of PropertyProcIt em |   | 进程的信息。 |
 | Count | Integer | 8888 | 进程名对应的服务器数量。 |
 | Name | String | .ss | 进程名称。 |
 | RequestId | String | BD8AD4C6-A169- 4FA3-BA1F- ED40ED52973B | 本次调用请求的ID。 |
@@ -8228,9 +8591,10 @@ http(s)://[Endpoint]/?Action=DescribePropertyPortItem
 http(s)://[Endpoint]/?Action=DescribePropertyProcItem
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribePropertyProcItem>
   <PropertyItems>
         <Name>(sd-**)</Name>
         <Count>7</Count>
@@ -8246,24 +8610,30 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcItem
         <PageSize>2</PageSize>
         <CurrentPage>1</CurrentPage>
   </PageInfo>
+</DescribePropertyProcItem>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "PropertyItems": [
-  {
-   "Name": "(sd-**)",
-   "Count": 7
-  },
-  {
-   "Name": "6Cm***",
-   "Count": 1
-  }
 ```
 
-`],`
+`{`
+
+```json
+   "Name": "(sd-**)",
+   "Count": 7
+```
+
+`},` `{`
+
+```json
+   "Name": "6Cm***",
+   "Count": 1
+```
+
+`}` `],`
 
 ```json
  "RequestId": "BD8AD4C6-A169-4FA3-BA1F-ED40ED52973B",
@@ -8272,11 +8642,11 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcItem
   "TotalCount": 395,
   "PageSize": 2,
   "CurrentPage": 1
- }
-}
 ```
 
-#### DescribePropertySoftwareDetail
+`}` `}`
+
+#### 7.7.6 DescribePropertySoftwareDetail
 
 获取软件列表中一个软件的详细信息。
 
@@ -8299,12 +8669,12 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcItem
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面的显示信息。 |
+| PageInfo | Struct |   | 页面的显示信息。 |
 | Count | Integer | 2 | 显示的当前页的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 2 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 23 | 数据的总条数。 |
-| Propertys | Array of PropertySoftw are |  | 软件的信息。 |
+| Propertys | Array of PropertySoftw are |   | 软件的信息。 |
 | Create | Long | 1565539587000 | 数据的最新采集时间。单位：毫秒。 |
 | CreateTimesta mp | Long | 1565539587000 | 数据的最新采集时间戳。单位：毫秒。 |
 
@@ -8330,7 +8700,7 @@ http(s)://[Endpoint]/?Action=DescribePropertyProcItem
 http(s)://[Endpoint]/?Action=DescribePropertySoftwareDetail
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Propertys>
@@ -8355,10 +8725,9 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareDetail
 </PageInfo> <RequestId>9C5AE850-7140-4DE6-B892-055EB0D9F28A</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Propertys": {
         "InstanceName": "test",
         "Path": "/etc/test",
@@ -8373,18 +8742,27 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareDetail
         "IntranetIp": "192.168.0.1",
         "CreateTimestamp": 1565539587000,
         "Name": "aaa_base"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 23,
         "PageSize": 2,
         "CurrentPage": 1,
         "Count": 2
-    },
-    "RequestId": "9C5AE850-7140-4DE6-B892-055EB0D9F28A"
-}
 ```
 
-#### DescribePropertySoftwareItem
+`},`
+
+```json
+    "RequestId": "9C5AE850-7140-4DE6-B892-055EB0D9F28A"
+```
+
+`}`
+
+#### 7.7.7 DescribePropertySoftwareItem
 
 获取所有软件列表信息.。
 
@@ -8402,17 +8780,15 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareDetail
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 返回结果的页面显示信息。 |
+| PageInfo | Struct |   | 返回结果的页面显示信息。 |
 | Count | Integer | 2 | 返回结果的当前页显示数据条数。 |
 | CurrentPage | Integer | 1 | 返回结果中显示的当前页码。 |
 | PageSize | Integer | 2 | 返回结果中每页显示数据条数。 |
 | TotalCount | Integer | 5037 | 返回数据的总条数。 |
-| PropertyItems | Array of PropertySoftw areItem |  | 返回的软件列表。 |
+| PropertyItems | Array of PropertySoftw areItem |   | 返回的软件列表。 |
 | Count | Integer | 23 | 返回结果中软件资产对应的服务器数量。 |
 | Name | String | aaa base _ | 返回的软件资产名称。 |
 | RequestId | String | 3A85CFCF-05C8- 451A-9E41- C0D5E96BA407 | 本次调用请求的ID。 |
-
-**示例**
 
 请求示例
 
@@ -8420,9 +8796,10 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareDetail
 http(s)://[Endpoint]/?Action=DescribePropertySoftwareItem
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribePropertySoftwareItemResponse>
    <PageInfo>
        <Count>2</Count>
        <PageSize>2</PageSize>
@@ -8438,37 +8815,48 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareItem
        <Count>23</Count>
    </PropertyItems>
    <requestId>3A85CFCF-05C8-451A-9E41-C0D5E96BA407</requestId>
+</DescribePropertySoftwareItemResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "PageInfo": {
       "Count": 2,
       "PageSize": 2,
       "TotalCount": 5037,
       "CurrentPage": 1
-    },
-    "PropertyItems": [
-      {
-        "Name": "a11y-profile-manager-indicator",
-        "Count": 1
-      },
-      {
-        "Name": "aaa_base",
-        "Count": 23
-      }
 ```
 
-`],`
+`},`
+
+```json
+    "PropertyItems": [
+```
+
+`{`
+
+```json
+        "Name": "a11y-profile-manager-indicator",
+        "Count": 1
+```
+
+`},` `{`
+
+```json
+        "Name": "aaa_base",
+        "Count": 23
+```
+
+`}` `],`
 
 ```json
      "requestId": "3A85CFCF-05C8-451A-9E41-C0D5E96BA407"
-}
 ```
 
-#### DescribePropertyUserDetail
+`}`
+
+#### 7.7.8 DescribePropertyUserDetail
 
 获取账号列表中一个账号的详细信息。
 
@@ -8488,12 +8876,12 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareItem
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 返回结果的页面显示信息。 |
+| PageInfo | Struct |   | 返回结果的页面显示信息。 |
 | Count | Integer | 2 | 返回结果的当前页显示数据条数。 |
 | CurrentPage | Integer | 1 | 返回结果中显示的当前页码。 |
 | PageSize | Integer | 2 | 返回结果中每页显示数据条数。 |
 | TotalCount | Integer | 384 | 返回数据的总条数。 |
-| Propertys | Array of PropertyUser |  | 返回的账号详情列表。 |
+| Propertys | Array of PropertyUser |   | 返回的账号详情列表。 |
 | AccountsExpir ationDate | String | 无 | 已废弃。 |
 
 | Create | String | 2022-01- 03T06:43Z | 返回结果中的最新采集时间。使用yyyy-MM- ddTHH:mmZ格式。 |
@@ -8525,7 +8913,7 @@ http(s)://[Endpoint]/?Action=DescribePropertySoftwareItem
 http(s)://[Endpoint]/?Action=DescribePropertyUserDetail
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Propertys>
@@ -8554,10 +8942,9 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserDetail
 </PageInfo> <RequestId>FAA793EF-5B14-4CDD-B3E0-B14D4342C422</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Propertys": {
         "Status": 0,
         "IsRoot": 0,
@@ -8576,18 +8963,27 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserDetail
         "CreateTimestamp": 1565644643000,
         "PasswordExpirationDate": "无",
         "GroupNames": "adm"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 384,
         "PageSize": 2,
         "CurrentPage": 1,
         "Count": 2
-    },
-    "RequestId": "FAA793EF-5B14-4CDD-B3E0-B14D4342C422"
-}
 ```
 
-#### DescribePropertyUserItem
+`},`
+
+```json
+    "RequestId": "FAA793EF-5B14-4CDD-B3E0-B14D4342C422"
+```
+
+`}`
+
+#### 7.7.9 DescribePropertyUserItem
 
 获取资产的账号信息。
 
@@ -8605,12 +9001,12 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserDetail
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 页面显示信息。 |
+| PageInfo | Struct |   | 页面显示信息。 |
 | Count | Integer | 2 | 显示的当前页的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 2 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 114 | 总数据条数。 |
-| PropertyItems | Array of PropertyUserIt em |  | 账号信息。 |
+| PropertyItems | Array of PropertyUserIt em |   | 账号信息。 |
 | Count | Integer | 384 | 账号对应的服务器数量。 |
 | User | String | adm | 账号名称。 |
 | RequestId | String | 76068BE2-F9C4- 4EDD-967B- F503B8CCXXXX | 本次调用请求的ID。 |
@@ -8623,7 +9019,7 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserDetail
 http(s)://[Endpoint]/?Action=DescribePropertyUserItem
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PageInfo>
@@ -8637,25 +9033,30 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserItem
 </PropertyItems>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "PageInfo": {
         "TotalCount": 114,
         "PageSize": 2,
         "CurrentPage": 1,
         "Count": 2
-    },
+```
+
+`},`
+
+```json
     "RequestId": "76068BE2-F9C4-4EDD-967B-F503B8CCXXXX",
     "PropertyItems": {
         "User": "adm",
         "Count": 384
-    }
-}
 ```
 
-#### DescribeModuleConfig
+`}` `}`
+
+#### 7.7.10 DescribeModuleConfig
+
+调用DescribeModuleConfig获取资产指纹模块设置信息。
 
 **请求参数**
 
@@ -8671,11 +9072,11 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserItem
 | Success | Boolean | true | 请求是否成功。 |
 | Count | Integer | 2 | 模块设置信息个数。 |
 | HttpStatusCod e | Integer | 200 | 响应码。 |
-| ModuleConfigL ist | Array |  | 模块设置信息列表。 |
+| ModuleConfigL ist | Array |   | 模块设置信息列表。 |
 | ConfigName | String | timescan | 设置名称。 |
 | ModuleName | String | alihids | 模板名称。 |
 
-| Items | Array |  | 设置项列表。 |
+| Items | Array |   | 设置项列表。 |
 |---|---|---|---|
 | InstanceId | String | lb-xxx | 机器实例ID。 |
 | InstanceName | String | ssxxxxxxxx | 机器实例名称。 |
@@ -8692,7 +9093,7 @@ http(s)://[Endpoint]/?Action=DescribePropertyUserItem
 http(s)://[Endpoint]/?Action=DescribeModuleConfig
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <code>200</code> <data>
@@ -8738,10 +9139,9 @@ http(s)://[Endpoint]/?Action=DescribeModuleConfig
 </data> <requestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</requestId> <success>true</success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "code": 200,
   "data": {
     "Count": 2,
@@ -8755,21 +9155,21 @@ http(s)://[Endpoint]/?Action=DescribeModuleConfig
             "Ip": "2.2.2.2",
             "Region": "cn-qingdao",
             "GroupId": 173
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "InstanceName": "3a04702ca5a0",
             "Uuid": "inet-db626549-870c-4d3e-b0b5-4d8a5c7268a6",
             "Ip": "192.1.2.3",
             "Region": "outside-of-aliyun",
             "GroupId": 343
-          }
 ```
 
-]
+`}` `]` `},` `{`
 
 ```json
-      },
-      {
         "ConfigName": "sysvulfix",
         "ModuleName": "alihids",
         "Items": [{
@@ -8779,38 +9179,34 @@ http(s)://[Endpoint]/?Action=DescribeModuleConfig
             "Ip": "2.2.2.2",
             "Region": "cn-qingdao",
             "GroupId": 173
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "InstanceName": "3a04702ca5a0",
             "Uuid": "inet-db626549-870c-4d3e-b0b5-4d8a5c7268a6",
             "Ip": "192.168.5.3",
             "Region": "outside-of-aliyun",
             "GroupId": 343
-          }
 ```
 
-]
-
-```
-      }
-```
-
-]
+`}` `]` `}` `]` `},`
 
 ```json
-  },
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
   "success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 关于本接口的错误码的详细解释，请查看错误代码表。
 
-### 资产暴露
+### 7.8 资产暴露
 
-#### DescribeExposedInstanceList
+#### 7.8.1 DescribeExposedInstanceList
 
 获取资产暴露列表。
 
@@ -8835,7 +9231,7 @@ http(s)://[Endpoint]/?Action=DescribeModuleConfig
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-| ExposedInstan ces | Array of ExposedInstan ce |  | 资产暴露分析的列表信息。 |
+| ExposedInstan ces | Array of ExposedInstan ce |   | 资产暴露分析的列表信息。 |
 |---|---|---|---|
 | AsapVulCount | Integer | 0 | 暴露在互联网上可被黑客利用的高危漏洞数量。 |
 | ExploitHealthC ount | Integer | 0 | 可被利用基线数量。 |
@@ -8857,7 +9253,7 @@ http(s)://[Endpoint]/?Action=DescribeModuleConfig
 | RegionId | String | cn-hangzhou | 服务器所在区域的ID。 |
 | TotalVulCount | Integer | 0 | 暴露在互联网上可被黑客利用的漏洞总数量。 |
 | Uuid | String | dd803d9e-a337- 4add-9c5b- 7d503e08**** | 服务器UUID。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 2 | 当前页显示的数据条数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -8872,7 +9268,7 @@ http(s)://[Endpoint]/?Action=DescribeModuleConfig
 http(s)://[Endpoint]/?Action=DescribeExposedInstanceList
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PageInfo>
@@ -8905,5 +9301,7 @@ http(s)://[Endpoint]/?Action=DescribeExposedInstanceList
 `JSON` 格式
 
 ```json
-{"PageInfo": {"TotalCount":"2","PageSize":"20","CurrentPage":"1","Count":"2"},"RequestId":"598A4A61- ABA7-456B-8725-7378258276D9","ExposedInstances":[{"GroupName":"未分组","TotalVulCount":"0","ExposureType":"INTERNET_IP","InstanceId":"ibp1g6wxdwps7s9dz****","ExposureComponent":"openssl,openssh","ExposurePort":"22","NntfVulC nt":"0","AsapVulCount":"0","ExploitHealthCount":"0","IntranetIp":"192.168.XX.XX\t","Group ":"9469268","InstanceName":"abc_centos7.2_005\t","Uuid":"dd803d9e-a337-4add-9c5b-7d503e 08****","ExposureIp":"116.12.XX.XX\t","ExposureTypeId":"iew11313a****","InternetIp":"116.12.XX.XX","LaterVulCount":"0","RegionId":"cn-hangzhou"} ]}
+{"PageInfo": {"TotalCount":"2","PageSize":"20","CurrentPage":"1","Count":"2"},"RequestId":"598A4A61- ABA7-456B-8725-7378258276D9","ExposedInstances":[{"GroupName":"未分组","TotalVulCount":"0","ExposureType":"INTERNET_IP","InstanceId":"ibp1g6wxdwps7s9dz****","ExposureComponent":"openssl,openssh","ExposurePort":"22","NntfVulC nt":"0","AsapVulCount":"0","ExploitHealthCount":"0","IntranetIp":"192.168.XX.XX\t","Group ":"9469268","InstanceName":"abc_centos7.2_005\t","Uuid":"dd803d9e-a337-4add-9c5b-7d503e 08****","ExposureIp":"116.12.XX.XX\t","ExposureTypeId":"iew11313a****","InternetIp":"116.12.XX.XX","LaterVulCount":"0","RegionId":"cn-hangzhou"}
 ```
+
+`]}`

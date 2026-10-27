@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 386
 source_pdf: "e5599c91e48fd757_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue Developer Guide 20260108.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20MQ/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Message%20Queue%20Developer%20Guide%2020260108.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Message Queue Developer Guide 20260108
@@ -440,6 +440,9 @@ You can obtain an instance ID from the instance list of a cloud product in the A
 **ApsaraMQ for RocketMQ**.
 3. In the navigation pane on the left, click **Instance List**.
 4. Find the ID in the **Instance ID** column.
+
+**Response parameters**
+
 When you call an API operation to query a list of resource instances for a cloud service, the following parameters are returned by default.
 
 | Name | Description |
@@ -481,6 +484,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -497,6 +505,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. Use the STS credentials to call cloud product APIs. The following example shows how to
 initialize the credential client.
 
@@ -519,7 +528,7 @@ ed in the previous step.
 evant API documentation.
 ```
 
-cloud APIs through a POP gatewa
+`}` `}` cloud APIs through a POP gatewa
 
 ## 2 Calling private cloud APIs through a POP gateway
 
@@ -913,6 +922,8 @@ catch (Exception e) {
     e.printStackTrace();
 ```
 
+`}`
+
 ## 3 API reference
 
 ### 3.1 RocketMQ_API
@@ -1028,7 +1039,7 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
 
 ##### 3.1.3.2 Common response parameters
 
-The HTTP client sends an HTTP request to the backend service of ApsaraMQ for RocketMQ. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format:
+The HTTP client sends an HTTP request to the backend service of ApsaraMQ for RocketMQ. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format: `{`
 
 ```json
     "code": 200,
@@ -1044,7 +1055,7 @@ The HTTP client sends an HTTP request to the backend service of ApsaraMQ for Roc
     "total": 0
 ```
 
-Response parameters: code: the HTTP status code. A value of 200 indicates that the call is successful. Other values indicate that the call fails. currentPage: the page number of the returned page if the request is a paged query. dynamicMessage: the error message. message: the processing result. pageSize: the number of entries returned per page if the request is a paged query. success: indicates whether the call is successful. data: the returned service data. The value is also a JSON string. If the return results of the current request contain service data, you must reverse parse the content in the JSON format. RequestId: the unique ID of the request. The value is a string.
+`}` Response parameters: code: the HTTP status code. A value of 200 indicates that the call is successful. Other values indicate that the call fails. currentPage: the page number of the returned page if the request is a paged query. dynamicMessage: the error message. message: the processing result. pageSize: the number of entries returned per page if the request is a paged query. success: indicates whether the call is successful. data: the returned service data. The value is also a JSON string. If the return results of the current request contain service data, you must reverse parse the content in the JSON format. RequestId: the unique ID of the request. The value is a string.
 
 #### 3.1.4 Common terms
 
@@ -1115,6 +1126,8 @@ This operation uses only common request headers. For more information, see Commo
 | Key | Strin g | Quer y | Yes | TestKey | The tag key. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session when you use Alibaba Cloud Open Notification Service (ONS). This parameter ensures context consistency for message communication. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1126,18 +1139,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryCommonGenRedirectUrl &OnsRegionId=REGION_001 &PreventCache=324234234 &Key=TestKey &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.1.2 QueryTrendFlowLimit
 
@@ -1146,6 +1167,8 @@ Queries trend data for traffic throttling in ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | > Document V | ersion: 2 | 026010 | 8 |   | 4 |
 |---|---|---|---|---|---|
@@ -1172,20 +1195,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12****** &OnsRegionId=Region001 &PreventCache=234234234 &MessageType=RAW
+http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12****** &OnsRegionId=Region001 &PreventCache=234234234 &MessageType=RAW &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -1198,6 +1227,8 @@ Detaches system tags from a specified instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1218,20 +1249,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UnbindSystemTags &OnsRegionId=REGION001 &PreventCache=32424234234 &InstanceId=bastionhost-12****** &TagOwnerUid=123xxxx
+http(s)://[Endpoint]/?Action=UnbindSystemTags &OnsRegionId=REGION001 &PreventCache=32424234234 &InstanceId=bastionhost-12****** &TagOwnerUid=123xxxx &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -1244,6 +1281,8 @@ Creates an instance.
 **Request headers**
 
 This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1268,6 +1307,8 @@ This operation uses common request headers. Special request headers are not requ
 | CpuId | Strin g | Quer y | No | cpu1 | The chip ID. |
 | CpuBrand | Strin g | Quer y | No | Apple M1 | The CPU brand. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1276,17 +1317,24 @@ This operation uses common request headers. Special request headers are not requ
 | Message | String | success | Additional information. |
 | Data | Map | {} | The returned data. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateInstance &OnsRegionId=Region001 &InstanceName=myinstance
+http(s)://[Endpoint]/?Action=CreateInstance &OnsRegionId=Region001 &InstanceName=myinstance &<Common request parameters>
 ```
 
 Sample successful response
 
 ```json
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.1.5 BindSystemTags
 
@@ -1295,6 +1343,8 @@ Attaches system tags to a message queue instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1315,18 +1365,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=BindSystemTags &OnsRegionId=Region001 &PreventCache=34234242 &InstanceId=bastionhost-12****** &Tags=tag1,tag2 &TagOwnerUid=123xxxx
+http(s)://[Endpoint]/?Action=BindSystemTags &OnsRegionId=Region001 &PreventCache=34234242 &InstanceId=bastionhost-12****** &Tags=tag1,tag2 &TagOwnerUid=123xxxx &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.1.6 QuerySystemTagList
 
@@ -1336,6 +1394,8 @@ Queries a list of system tags.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -1344,6 +1404,8 @@ This operation uses common request headers. No special request headers are requi
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | Scope | Strin g | Quer y | No | 11 | The scope of the organization. |
 | TagOwner Uid | Long | Quer y | Yes | 123xxxx | The Alibaba Cloud account ID to which the tag belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1356,20 +1418,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QuerySystemTagList &OnsRegionId=Region001 &PreventCache=3424234 &InstanceId=bastionhost-12****** &TagOwnerUid=123xxxx &Common request parameters
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -1390,6 +1458,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 2321423 | A parameter used to prevent the browser from caching content. This ensures that each request retrieves the latest data from the server. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1397,13 +1467,24 @@ This operation uses only common request headers. For more information, see Commo
 | Code | INTEGER | 200 | The interface status or POP error code. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DeleteInstance &OnsRegionId=Region01 &PreventCache=2321423 &InstanceId=bastionhost-12****** <Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
+
+```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
+ "Code":200,
+ "Success":true
+```
+
+`}`
 
 ###### 3.1.6.1.8 QueryInstanceBaseInfo
 
@@ -1412,6 +1493,8 @@ Queries the basic information about a specified Message Service instance, includ
 **Request headers**
 
 This operation does not have special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1423,6 +1506,8 @@ This operation does not have special request headers. For more information about
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique ID that identifies a client session in Open Notification Service (ONS). It is used to track and manage the message sending and receiving procedure. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1431,10 +1516,12 @@ This operation does not have special request headers. For more information about
 | Message | String | success | Additional information. |
 | Data | Map | {} | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryInstanceBaseInfo &OnsRegionId=REGION_001 &PreventCache=65443334456 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryInstanceBaseInfo &OnsRegionId=REGION_001 &PreventCache=65443334456 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
 Sample success response
@@ -1456,6 +1543,8 @@ This operation uses common request headers. No special request headers are requi
 | EndTime | Long | Quer y | No | 1706668721 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in Alibaba Cloud Open Notification Service (ONS). This ID ensures message ordering and idempotent. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1466,19 +1555,25 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Data | Map | {} | The returned data. |
 
+**Examples**
+
 Example request
 
 ```
-http(s)://[Endpoint]/?Action=QueryInstanceStatistics &OnsRegionId=region123 &PreventCache=6553356777 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryInstanceStatistics &OnsRegionId=region123 &PreventCache=6553356777 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Example response
+Example response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -1492,6 +1587,8 @@ Queries the list of ApsaraMQ for RocketMQ instances.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -1501,6 +1598,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 4534534534 | Prevents the browser from caching the response. This ensures that each request retrieves the latest data from the server. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of an ONS session. This ID is used to track and manage message sending and receiving. |
 | NeedReso urceInfo | Bool ean | Quer y | No | true | Specifies whether to return resource statistics, such as the number of topics and groups in the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1512,19 +1611,25 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 |---|---|---|---|
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryInstanceList &OnsRegionId=REGION12345 &PreventCache=4534534534
+http(s)://[Endpoint]/?Action=QueryInstanceList &OnsRegionId=REGION12345 &PreventCache=4534534534 &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -1538,6 +1643,8 @@ Queries a list of routing instances for ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -1546,6 +1653,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | PreventCa che | Long | Quer y | Yes | 8767767755 | A timestamp used to prevent the browser from returning cached data. This ensures that each request retrieves the latest content. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in the Message Queue service. This ID is used to track and manage message consumption or production sessions. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1556,20 +1665,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &PreventCache=8767767755
+http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &PreventCache=8767767755 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -1582,6 +1697,8 @@ Updates the configuration of an ApsaraMQ for RocketMQ instance.
 **Request headers**
 
 No special request headers are required for this operation. For more information about common request headers, see Common parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1597,6 +1714,8 @@ No special request headers are required for this operation. For more information
 | MaxSendT ps | Long | Quer y | No | 1000 | The maximum number of send requests per second. |
 | MaxReceiv eTps | Long | Quer y | No | 1000 | The maximum number of transaction requests that the system can receive per second. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -1607,19 +1726,25 @@ No special request headers are required for this operation. For more information
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=UpdateInstance &OnsRegionId=hangzhou &PreventCache=24234234 &InstanceId=bastionhost-12****** &Common request parameters
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -1633,6 +1758,8 @@ Checks the status of and permissions on a test instance.
 
 This operation uses common request headers. No special request headers are required. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -1640,6 +1767,8 @@ This operation uses common request headers. No special request headers are requi
 | PreventCa che | Long | Quer y | Yes | 23423424 | Prevents the browser from caching page content. This ensures that each request retrieves the latest data from the server. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | AuthAction Name | Strin g | Quer y | Yes | SessionRefresh | Verify whether the user has the RAM permission action name for the specified operation permission on the instance resource. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1652,18 +1781,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CheckForTestInstance &OnsRegionId=region123 &PreventCache= &InstanceId=bastionhost-12****** &AuthActionName=SessionRefresh &CommonRequestParameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ##### 3.1.6.2 Topic management
 
@@ -1684,6 +1821,8 @@ This operation uses common request headers. No special request headers are requi
 | Topic | Strin g | Quer y | Yes | test | The topic name. |
 | Relation | Integ er | Quer y | Yes | 6 | Specify the type of Topic permission relationship to be verified, including OWNER (OWNER = 1), publish permission (PUB = 2), subscribe permission (SUB = 4), and publish and subscribe permission (PUB SUB = 6). _ |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1695,18 +1834,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CheckFortestTopic &OnsRegionId=REGION01 &PreventCache= &Topic=test &Relation=6
+http(s)://[Endpoint]/?Action=CheckFortestTopic &OnsRegionId=REGION01 &PreventCache= &Topic=test &Relation=6 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.2.2 PageQueryTopicList
 
@@ -1727,6 +1874,8 @@ This operation uses only common request headers. For more information, see Commo
 | Search | Strin g | Quer y | No | 1 1 1 1 1 _ _ _ _ | Search. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in ONS. This ID is used to track and manage message consumption or production sessions. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -1736,18 +1885,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=PageQueryTopicList &OnsRegionId=Region001 &PreventCache=32423424
+http(s)://[Endpoint]/?Action=PageQueryTopicList &OnsRegionId=Region001 &PreventCache=32423424 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.2.3 CreateSubscription
 
@@ -1765,6 +1922,8 @@ This operation uses common request headers. No special request headers are requi
 | ConsumerI d | Strin g | Quer y | Yes | kafka-test | The name of the group. The name must meet the following requirements: It can contain only letters, digits, hyphens (-), and underscores ( ). It must contain at _ least one letter or digit. The length must be 3 to 128 characters. If the name exceeds 128 characters, it is automatically truncated. The group name cannot be modified after it is created. |
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -1776,18 +1935,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCache=2332424232 &ConsumerId=kafka-test &Topic=test
+http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCache=2332424232 &ConsumerId=kafka-test &Topic=test &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.2.4 CreateTopic
 
@@ -1807,6 +1974,8 @@ This operation uses common request headers. No special request headers are requi
 | OrderType | Integ er | Quer y | No | 1 | The order type. |
 | Remark | Strin g | Quer y | No | remark | The remark. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1817,17 +1986,25 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateTopic &OnsRegionId=Region001 &PreventCache=32342342 &Topic=test
+http(s)://[Endpoint]/?Action=CreateTopic &OnsRegionId=Region001 &PreventCache=32342342 &Topic=test &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.2.5 DeleteTopic
 
@@ -1836,6 +2013,8 @@ Deletes a specified message topic.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1847,6 +2026,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1855,17 +2036,23 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteTopic &OnsRegionId=region123 &PreventCache=223432442 &Topic=test
+http(s)://[Endpoint]/?Action=DeleteTopic &OnsRegionId=region123 &PreventCache=223432442 &Topic=test &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format
 
 ```json
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.2.6 DeleteSubscription
 
@@ -1874,6 +2061,8 @@ Deletes a subscription relationship in ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1885,6 +2074,8 @@ This operation uses only common request headers. For more information, see Commo
 | Topic | Strin g | Quer y | No | test | The name of the topic. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1894,17 +2085,22 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries returned. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteSubscription &OnsRegionId=qingdao &PreventCache=2333333 &ConsumerId=kafka-test &Common request parameters
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
 ```
 
 ###### 3.1.6.2.7 QueryTrendTopicInputTps
@@ -1914,6 +2110,8 @@ Queries the trend of Transactions Per Second (TPS) for messages sent to a topic,
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1930,6 +2128,8 @@ This operation uses common request headers. No special request headers are requi
 | OnsSessio nId | Strin g | Quer y | No | ABC123XYZ789 | The unique ID of a client session in Open Notification Service (ONS). This ID is used to track and manage message push sessions. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1939,20 +2139,24 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryTrendTopicInputTps &OnsRegionId=ExampleRegion01 &PreventCache=6454433343 &InstanceId=bastionhost-12****** &Topic=test
+http(s)://[Endpoint]/?Action=QueryTrendTopicInputTps &OnsRegionId=ExampleRegion01 &PreventCache=6454433343 &InstanceId=bastionhost-12****** &Topic=test &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -1966,6 +2170,8 @@ Queries the subscription relationship details for a specified topic, including i
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -1977,6 +2183,8 @@ This operation uses common request headers. No special request headers are requi
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | Identifies the session between the client and the server to ensure context consistency during message transmission. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1984,6 +2192,8 @@ This operation uses common request headers. No special request headers are requi
 | Code | Integer | 200 | The API status or a POP error code. |
 | Message | String | success | Additional information. |
 | Data | Map | {} | The returned data. |
+
+**Examples**
 
 Sample request
 
@@ -1995,9 +2205,11 @@ Sample response
 
 ```json
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -2010,6 +2222,8 @@ Queries the message status of a specified topic. The status includes statistics 
 **Request header**
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2024,6 +2238,8 @@ This operation uses common request headers and does not require special request 
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -2033,20 +2249,24 @@ This operation uses common request headers and does not require special request 
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTopicStatus &OnsRegionId=region1 &PreventCache=1231231231 &Topic=test
+http(s)://[Endpoint]/?Action=QueryTopicStatus &OnsRegionId=region1 &PreventCache=1231231231 &Topic=test &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format
 
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -2059,6 +2279,8 @@ Queries a list of topic names in ApsaraMQ for RocketMQ.
 **Request header**
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2073,6 +2295,8 @@ This operation has no special request headers. For more information about common
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in the Message Queue service. This ID maintains the connection state between the client and the server. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -2081,15 +2305,19 @@ This operation has no special request headers. For more information about common
 | Code | Integer | 200 | The API status or POP error code. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTopicNameList &OnsRegionId=region123 &PreventCache=23132132
+http(s)://[Endpoint]/?Action=QueryTopicNameList &OnsRegionId=region123 &PreventCache=23132132 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
 ```
 
@@ -2106,6 +2334,8 @@ Queries a list of topics by consumer group ID.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2125,20 +2355,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 &PreventCache=2312313 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 &PreventCache=2312313 &InstanceId=bastionhost-12****** &GroupId=1 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2152,6 +2388,8 @@ Queries the list of topics in ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2159,6 +2397,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 23123131 | Prevents the browser from caching content. This ensures that each request retrieves the latest data from the server. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | Topic | Strin g | Quer y | No | test | The topic name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2171,20 +2411,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTopicList &OnsRegionId=RegionUS &PreventCache=23123131
+http(s)://[Endpoint]/?Action=QueryTopicList &OnsRegionId=RegionUS &PreventCache=23123131 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2198,6 +2444,8 @@ Queries information about topics.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2205,6 +2453,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 23134124 | Prevents the client or server from caching the response. This ensures that each request returns the most up-to-date data. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | Topic | Strin g | Quer y | No | test | The topic name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2217,20 +2467,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryTopic &OnsRegionId=hangzhou &PreventCache=23134124
+http(s)://[Endpoint]/?Action=QueryTopic &OnsRegionId=hangzhou &PreventCache=23134124 &<Common request parameters>
 ```
 
-Response examples
+Response examples `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2244,6 +2500,8 @@ Queries the list of subscriptions for ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | 3 |   |   |   | > D | ocument Version: 2026010 |
 |---|---|---|---|---|---|
 
@@ -2252,6 +2510,8 @@ This operation uses only common request headers. For more information, see Commo
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | OnsRegion Id | Strin g | Quer y | Yes | REGION 001 _ | Represents a specific geographic region or logical region identifier, which is used to distinguish different service regions or data center locations. |
 | PreventCa che | Long | Quer y | Yes | 23324124 | A parameter used to prevent the browser from caching content. This ensures that each request retrieves the latest data from the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2265,17 +2525,21 @@ This operation uses only common request headers. For more information, see Commo
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QuerySubscriptionList &OnsRegionId=REGION_001 &PreventCache=23324124
+http(s)://[Endpoint]/?Action=QuerySubscriptionList &OnsRegionId=REGION_001 &PreventCache=23324124 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2289,6 +2553,8 @@ Queries the details of a subscription in ApsaraMQ for RocketMQ.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2299,6 +2565,8 @@ This operation uses common request headers. For more information, see Common req
 | ConsumerI d | Strin g | Quer y | Yes | kafka-test | The consumer ID. |
 | Topic | Strin g | Quer y | Yes | test | The topic name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -2308,20 +2576,25 @@ This operation uses common request headers. For more information, see Common req
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QuerySubscription &OnsRegionId=Region001 &PreventCache=23423424242 &ConsumerId=kafka-test &Topic=test
+http(s)://[Endpoint]/?Action=QuerySubscription &OnsRegionId=Region001 &PreventCache=23423424242 &ConsumerId=kafka-test &Topic=test &<Common request parameters>
 ```
 
 Sample success response
 
 ```json
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2335,6 +2608,8 @@ Queries a list of routing topics in ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see the common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2345,6 +2620,8 @@ This operation uses only common request headers. For more information, see the c
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in Alibaba Cloud Message Service (ONS). |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The data returned. |
@@ -2354,17 +2631,22 @@ This operation uses only common request headers. For more information, see the c
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &PreventCache=34234234234 &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
 ```
 
 `XML` format
@@ -2380,6 +2662,8 @@ Updates the information about a specified topic in ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2399,20 +2683,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateTopicInfo &OnsRegionId=region123 &PreventCache=4353453 &InstanceId=bastionhost-12****** &Topic=test &Remark=remark
+http(s)://[Endpoint]/?Action=UpdateTopicInfo &OnsRegionId=region123 &PreventCache=4353453 &InstanceId=bastionhost-12****** &Topic=test &Remark=remark &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2425,6 +2715,8 @@ Updates the configuration of a topic in ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2445,20 +2737,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The data returned. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=UpdateTopic &OnsRegionId=Region001 &PreventCache=2343243234 &Topic=test
+http(s)://[Endpoint]/?Action=UpdateTopic &OnsRegionId=Region001 &PreventCache=2343243234 &Topic=test &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2472,6 +2770,8 @@ The API interface that updates the subscription relationship.
 
 This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2479,6 +2779,8 @@ This operation uses common request headers. No special request headers are used.
 | PreventCa che | Long | Quer y | Yes | 23423423423 | Prevents the browser or system from using cached data. This ensures that the latest content is retrieved with each request. |
 | ConsumerI d | Strin g | Quer y | Yes | kafka-test | The ID of the consumer. |
 | ReadEnabl e | Bool ean | Quer y | Yes | true | Specifies whether to enable message reading. |
+
+**Response parameters**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -2491,20 +2793,26 @@ This operation uses common request headers. No special request headers are used.
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateSubscription &OnsRegionId=REGION_001 &PreventCache=23423423423 &ConsumerId=kafka-test &ReadEnable=true
+http(s)://[Endpoint]/?Action=UpdateSubscription &OnsRegionId=REGION_001 &PreventCache=23423423423 &ConsumerId=kafka-test &ReadEnable=true &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2518,12 +2826,16 @@ Queries subscription relationships in ApsaraMQ for RocketMQ.
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The ID of the region. |
 | OnsRegion Id | Strin g | Quer y | Yes | Region001 | Identifies the region id. |
 | PreventCa che | Long | Quer y | Yes | 324234243 | A timestamp used to prevent the browser from caching content. This ensures that each request retrieves the latest data from the server. |
 | Search | Strin g | Quer y | Yes | 1 1 1 1 1 _ _ _ _ | Search box. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2536,20 +2848,26 @@ This operation has no special request headers. For more information about common
 | Total | Long | 1 | The total number of entries. |
 |---|---|---|---|
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=SearchSubscription &OnsRegionId=Region001 &PreventCache=324234243 &Search=1_1_1_1_1
+http(s)://[Endpoint]/?Action=SearchSubscription &OnsRegionId=Region001 &PreventCache=324234243 &Search=1_1_1_1_1 &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2565,6 +2883,8 @@ Retrieves a list of clusters for ApsaraMQ for RocketMQ
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -2572,6 +2892,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | OnsRegion Id | Strin g | Quer y | Yes | REGION01 | The unique identifier for a specific region. This parameter distinguishes different service areas or data centers. |
 | PreventCa che | Long | Quer y | No | 3224234 | Prevents the browser or system from caching data. This ensures that each request retrieves the latest content. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2581,6 +2903,8 @@ This operation uses only common request headers. For more information, see Commo
 | Code | Integer | 200 | The API status or a POP error code. |
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
+
+**Examples**
 
 Sample request
 
@@ -2593,7 +2917,11 @@ Sample successful response
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.3.2 QueryClusterCapacity
 
@@ -2603,12 +2931,16 @@ Queries the capacity information of a specified cluster. This information includ
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common Request Parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | OnsRegion Id | Strin g | Quer y | Yes | region123 | The region identifier of the Ons service, which specifies the geographic region where the service is located. |
 | PreventCa che | Long | Quer y | No | 334545775433 | Prevents the browser from caching content. This ensures that each request retrieves the latest data from the server. |
 | Cluster | Strin g | Quer y | Yes | tianji-A-006b | The cluster name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2621,18 +2953,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluster=tianji-A-006b
+http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluster=tianji-A-006b &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ##### 3.1.6.4 Group management
 
@@ -2654,6 +2994,8 @@ This operation uses only common request headers. For more information, see Commo
 | GroupType | Strin g | Quer y | No | ip | The type of the security group. Valid values: normal: a basic security group. enterprise: an advanced security group. |
 | Remark | Strin g | Quer y | No | remark | The remarks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -2665,18 +3007,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The data returned in the response. |
 | Total | Long | 1 | The total number of entries returned. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateGroup &OnsRegionId=hangzhou &PreventCache=32342342 &GroupId=1
+http(s)://[Endpoint]/?Action=CreateGroup &OnsRegionId=hangzhou &PreventCache=32342342 &GroupId=1 &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.4.2 PageQueryGroupList
 
@@ -2685,6 +3035,8 @@ Queries a paginated list of groups in ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | 11 |   |   |   | > D | ocument Version: 2026010 |
 |---|---|---|---|---|---|
@@ -2701,6 +3053,8 @@ This operation uses common request headers. No special request headers are requi
 | Search | Strin g | Quer y | No | 1 1 1 1 1 _ _ _ _ | Search box |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique ID that identifies a session between the client and the server. It is used to maintain message order and session state. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -2712,18 +3066,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventCache=234234234 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventCache=234234234 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.4.3 DeleteGroup
 
@@ -2741,6 +3103,8 @@ This operation uses common request headers. No special request headers are requi
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | GroupId | Strin g | Quer y | Yes | 1 | The application group ID. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -2752,18 +3116,26 @@ This operation uses common request headers. No special request headers are requi
 | Total | Long | 1 | The total number of entries. |
 |---|---|---|---|
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteGroup &OnsRegionId=region123 &PreventCache=324242344 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=DeleteGroup &OnsRegionId=region123 &PreventCache=324242344 &InstanceId=bastionhost-12****** &GroupId=1 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.4.4 QueryGroupIdList
 
@@ -2772,6 +3144,8 @@ Queries a list of all group IDs for a specified instance.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2783,6 +3157,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique session identifier for communication between the client and the server. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -2792,20 +3168,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryGroupIdList &OnsRegionId=region123 &PreventCache=3445345345 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryGroupIdList &OnsRegionId=region123 &PreventCache=3445345345 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2819,6 +3201,8 @@ Queries the complete subscription details for a consumer group.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2829,6 +3213,8 @@ This operation uses common request headers. No special request headers are requi
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | GroupId | Strin g | Quer y | Yes | GID-1 | The group ID. |
 | OnsSessio nId | Strin g | Quer y | No | 1234567890 | Identifies a session connection between the client and the server. This ensures contextual consistency for message communication. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2842,17 +3228,21 @@ This operation uses common request headers. No special request headers are requi
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &PreventCache=1232131231 &InstanceId=bastionhost-12****** &GroupId=GID-1
+http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &PreventCache=1232131231 &InstanceId=bastionhost-12****** &GroupId=GID-1 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -2866,6 +3256,8 @@ Queries a list of consumer groups in ApsaraMQ for RocketMQ.
 
 No special request headers are required for this operation. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -2877,6 +3269,8 @@ No special request headers are required for this operation. For more information
 | GroupId | Strin g | Quer y | No | 1 | The ID of the application group. |
 | GroupType | Strin g | Quer y | No | ip | The group type. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -2886,20 +3280,26 @@ No special request headers are required for this operation. For more information
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=QueryGroupList &OnsRegionId=CN01 &PreventCache=3242431
 ```
 
-Response examples
+Response examples `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -2912,6 +3312,8 @@ Queries the trend data of message consumption, measured in Transactions Per Seco
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2929,6 +3331,8 @@ This operation uses common request headers. No special request headers are requi
 | EndTime | Long | Quer y | No | 1706668721 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | Identifies a session connection between the client and the server. It is used for sequential message processing and state maintenance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -2940,20 +3344,26 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &PreventCache=342342342 &InstanceId=bastionhost-12****** &Topic=test &GroupId=1
+http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &PreventCache=342342342 &InstanceId=bastionhost-12****** &Topic=test &GroupId=1 &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -2967,6 +3377,8 @@ Updates information about a group in ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | 23 |   |   |   | > D | ocument Version: 2026010 |
 |---|---|---|---|---|---|
 
@@ -2979,6 +3391,8 @@ This operation uses only common request headers. For more information, see Commo
 | GroupId | Strin g | Quer y | Yes | 1 | The consumer group ID. |
 | Remark | Strin g | Quer y | Yes | remark | The remarks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -2990,20 +3404,26 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateGroupInfo &OnsRegionId=region123 &PreventCache=423423423 &GroupId=1 &Remark=remark
+http(s)://[Endpoint]/?Action=UpdateGroupInfo &OnsRegionId=region123 &PreventCache=423423423 &GroupId=1 &Remark=remark &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3017,6 +3437,8 @@ Updates the configuration of a specified consumer group in ApsaraMQ for RocketMQ
 
 This operation does not have special request headers. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -3028,6 +3450,8 @@ This operation does not have special request headers. For more information about
 | ReadEnabl e | Bool ean | Quer y | No | true | Specifies whether to enable message reading. |
 | UnitFlag | Bool ean | Quer y | No | 0x80 | The UnitFlag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3037,20 +3461,26 @@ This operation does not have special request headers. For more information about
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=UpdateGroupConsumer &OnsRegionId=region1 &GroupId=1 &Common request parameters
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3066,6 +3496,8 @@ Query cloud information (no paging) API.
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3075,6 +3507,8 @@ This operation uses common request headers and does not require special request 
 | PreventCa che | Long | Quer y | Yes | 342432324 | Prevents the browser or system from caching data to ensure that each request retrieves the latest content. |
 | CloudInfoK ey | Strin g | Quer y | No | anotherExample | An identifier for the related data. |
 | OnsSessio nId | Strin g | Quer y | No | 1234567890 | The unique ID of a client session in the ApsaraMQ for RocketMQ (ONS) service. It maintains the connection state between a producer or consumer and the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3088,15 +3522,21 @@ This operation uses common request headers and does not require special request 
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &PreventCache=342432324
+http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &PreventCache=342432324 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.5.2 UpdateCloudInfo
 
@@ -3105,6 +3545,8 @@ Updates the information about a specified cloud instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3122,6 +3564,8 @@ This operation uses only common request headers. For more information, see Commo
 | ConsoleEn dPoint | Strin g | Quer y | No | https://console.example.c om | The endpoint of the console service. |
 | Remark | Strin g | Quer y | No | remark | The remarks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3132,19 +3576,25 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 |---|---|---|---|
 
+**Examples**
+
 Example request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateCloudInfo &OnsRegionId=region123 &PreventCache=234234234 &CloudId=ffe1********6d6d
+http(s)://[Endpoint]/?Action=UpdateCloudInfo &OnsRegionId=region123 &PreventCache=234234234 &CloudId=ffe1********6d6d &<Common request parameters>
 ```
 
-Example responses
+Example responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3158,6 +3608,8 @@ Deletes information about a specified cloud instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3167,6 +3619,8 @@ This operation uses common request headers. No special request headers are requi
 | PreventCa che | Long | Quer y | Yes | 2312342342 | Instructs the client or server not to cache the response content. This ensures that the latest data is retrieved for each request. |
 | CloudId | Strin g | Quer y | Yes | ffe1********6d6d | The cloud instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3175,17 +3629,23 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteCloudInfo &OnsRegionId=Region001 &PreventCache=2312342342 &CloudId=ffe1********6d6d
+http(s)://[Endpoint]/?Action=DeleteCloudInfo &OnsRegionId=Region001 &PreventCache=2312342342 &CloudId=ffe1********6d6d &<Common request parameters>
 ```
 
 Response example
 
 ```json
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.5.4 CreateCloudInfo
 
@@ -3194,6 +3654,8 @@ Creates a cloud instance for ApsaraMQ for RocketMQ.
 **Request headers**
 
 This API operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3210,6 +3672,8 @@ This API operation uses only common request headers. For more information, see C
 | ConsoleEn dPoint | Strin g | Quer y | Yes | https://console.example.c om | The endpoint of the console service. It is used to access the system administration interface from a browser. |
 | Remark | Strin g | Quer y | Yes | remark | The remark. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3218,17 +3682,25 @@ This API operation uses only common request headers. For more information, see C
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateCloudInfo &OnsRegionId=region123 &CloudName=212e &AddRegionId=1001 &Ak=LTAIpY33******** &Sk=123456 &MqEndPoint=failover://[tcp://host1:61616,tcp://host2:61616] &ConsoleEndPoint=https://console.example.com &Remark=remark
+http(s)://[Endpoint]/?Action=CreateCloudInfo &OnsRegionId=region123 &CloudName=212e &AddRegionId=1001 &Ak=LTAIpY33******** &Sk=123456 &MqEndPoint=failover://[tcp://host1:61616,tcp://host2:61616] &ConsoleEndPoint=https://console.example.com &Remark=remark &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.5.5 QueryCloudInfo
 
@@ -3237,6 +3709,8 @@ Queries a paginated list of Alibaba Cloud services that are related to Message Q
 **Request headers**
 
 This operation does not have special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3250,6 +3724,8 @@ This operation does not have special request headers. For more information about
 | CloudInfoK ey | Strin g | Quer y | No | CREATED AT _ | A unique identifier. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in the Message Queue service. This ID is used to track and manage the session state. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -3259,18 +3735,26 @@ This operation does not have special request headers. For more information about
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryCloudInfo &OnsRegionId=REGION_001 &PreventCache=213123123 &CurrentPage=1 &PageSize=10
+http(s)://[Endpoint]/?Action=QueryCloudInfo &OnsRegionId=REGION_001 &PreventCache=213123123 &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ##### 3.1.6.6 Message management
 
@@ -3281,6 +3765,8 @@ You can use the PushMessage API to push messages to a specified consumer group i
 **Request header**
 
 This operation uses common request headers and has no special request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3295,6 +3781,8 @@ This operation uses common request headers and has no special request headers. F
 | ClientId | Strin g | Quer y | Yes | GID test@@@test _ | The backup client ID. |
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3307,17 +3795,21 @@ This operation uses common request headers and has no special request headers. F
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=PushMessage &OnsRegionId=REGION_001 &PreventCache=324243242 &GroupId=1 &Topic=test &ClientId=GID_test@@@test &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=PushMessage &OnsRegionId=REGION_001 &PreventCache=324243242 &GroupId=1 &Topic=test &ClientId=GID_test@@@test &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Response examples
+Response examples `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3331,6 +3823,8 @@ Downloads the message body of a specified message from a dead-letter queue.
 
 This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3343,6 +3837,8 @@ This operation uses common request headers. No special request headers are used.
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The ID of the Message to be queried, that is, Message ID. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique ID that identifies a client session in the Message Queue service. This ID maintains the connection state between the client and the server. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3354,18 +3850,26 @@ This operation uses common request headers. No special request headers are used.
 |---|---|---|---|
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DownloadMessageBodyInDLQ &OnsRegionId=region123 &PreventCache=6262355332 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=DownloadMessageBodyInDLQ &OnsRegionId=region123 &PreventCache=6262355332 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Sample response (success)
+Sample response (success) `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.6.3 DownloadMessageAllInDLQ
 
@@ -3374,6 +3878,8 @@ Downloads a batch of messages from a dead-letter queue.
 **Request headers**
 
 This API operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3386,6 +3892,8 @@ This API operation uses common request headers. No special request headers are r
 | GroupId | Strin g | Quer y | Yes | GID-01 | The group ID. |
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The identifier for a session between the client and the server in Alibaba Cloud Message Service (ONS). It is used to associate and manage the process of sending and receiving messages. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3402,12 +3910,18 @@ Request example
 http(s)://[Endpoint]/?Action=DownloadMessageAllInDLQ &OnsRegionId=region123 &PreventCache=23423423424 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D**** &Common request parameters
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.6.4 DownloadMessage
 
@@ -3416,6 +3930,8 @@ Download the API interface for the specified message.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3429,6 +3945,8 @@ This operation uses common request headers. No special request headers are requi
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in the ONS service. This ID is used to maintain the connection state of the producer or consumer. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3437,17 +3955,25 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DownloadMessage &OnsRegionId=Region001 &PreventCache=23432432 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=DownloadMessage &OnsRegionId=Region001 &PreventCache=23432432 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.6.5 QueryMessageByPagedTopic
 
@@ -3456,6 +3982,8 @@ Queries a paginated list of messages in a specified topic.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3472,6 +4000,8 @@ This operation uses only common request headers. For more information, see Commo
 | PageSize | Integ er | Quer y | Yes | 10 | The number of rows per page that are set for paging queries. Default value: 10. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique identifier for the current ONS session. This ID is used to track and manage the process of sending and receiving messages. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3484,17 +4014,21 @@ This operation uses only common request headers. For more information, see Commo
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMessageByPagedTopic &OnsRegionId=region123 &Topic=test &BeginTime=1570852800000 &EndTime=1704938400 &PageSize=10
+http(s)://[Endpoint]/?Action=QueryMessageByPagedTopic &OnsRegionId=region123 &Topic=test &BeginTime=1570852800000 &EndTime=1704938400 &PageSize=10 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -3507,6 +4041,8 @@ Performs a paged query for messages in a dead-letter queue (DLQ).
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3524,6 +4060,8 @@ This operation uses only common request headers. For more information, see Commo
 | EndTime | Long | Quer y | No | 1706668721 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique identifier for a session between the client and the server. It is used to track and manage message sending and consumption. |
 
+**Response parameters**
+
 | > Document Versi | on: 20260108 |   | 14 |
 |---|---|---|---|
 
@@ -3536,20 +4074,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The data returned. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryMessageByPagedDLQ &OnsRegionId=region1 &PreventCache=3244523452 &InstanceId=bastionhost-12****** &GroupId=GID-01 &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -3563,6 +4107,8 @@ Queries messages based on message keys.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3575,6 +4121,8 @@ This operation uses common request headers. No special request headers are requi
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in Message Service. This ID distinguishes different producer or consumer sessions. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -3584,20 +4132,24 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMessageByKey &OnsRegionId=region01 &PreventCache=3453434534 &Topic=test &Key=TestKey
+http(s)://[Endpoint]/?Action=QueryMessageByKey &OnsRegionId=region01 &PreventCache=3453434534 &Topic=test &Key=TestKey &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3611,6 +4163,8 @@ Queries the details of a specific message in a dead-letter queue (DLQ) by its me
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3623,6 +4177,8 @@ This operation uses only common request headers. For more information, see Commo
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique identifier for a session or request in ONS. It is used to track and manage the process of sending and receiving messages. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3632,20 +4188,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &PreventCache=5353453533 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &PreventCache=5353453533 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -3659,6 +4221,8 @@ Queries the details of a specific message by its message ID.
 
 This operation uses only common request headers. For more information, see the common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3671,6 +4235,8 @@ This operation uses only common request headers. For more information, see the c
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique session identifier for communication between the client and the service. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3682,16 +4248,20 @@ This operation uses only common request headers. For more information, see the c
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMessageById &OnsRegionId=REGION001 &PreventCache=2342424 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=QueryMessageById &OnsRegionId=REGION001 &PreventCache=2342424 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -3704,6 +4274,8 @@ Queries the trace of a message to track its path through a message queue.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3718,6 +4290,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID for a session or request in ApsaraMQ for RocketMQ (ONS). This ID is used to track and manage the sending and receiving of messages. |
 | NeedDeliv eryResult | Bool ean | Quer y | No | false | Specifies whether a delivery result is required. This is often used to indicate that a process or task needs to return a final result to the caller or system. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -3729,20 +4303,26 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=TraceMessage &OnsRegionId=region123 &PreventCache=23424234234 &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=TraceMessage &OnsRegionId=region123 &PreventCache=23424234234 &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3755,6 +4335,8 @@ Sends messages to ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3769,6 +4351,8 @@ This operation uses common request headers. No special request headers are used.
 | Key | Strin g | Quer y | No | TestKey | The tag key. |
 | Message | Strin g | Quer y | Yes | ***** | The message content. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3779,19 +4363,25 @@ This operation uses common request headers. No special request headers are used.
 | Data | String | [{}] | The returned data. |
 |---|---|---|---|
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=SendMessage &OnsRegionId=region123 &PreventCache=2342342342 &Topic=test &Message=*****
+http(s)://[Endpoint]/?Action=SendMessage &OnsRegionId=region123 &PreventCache=2342342342 &Topic=test &Message=***** &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3805,6 +4395,8 @@ Resends a message in a dead-letter queue.
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3815,6 +4407,8 @@ This operation has no special request headers. For more information about common
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | GroupId | Strin g | Quer y | Yes | 1 | The consumer group ID. |
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3828,17 +4422,21 @@ This operation has no special request headers. For more information about common
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=ResendMessageByIdInDLQ &OnsRegionId=hangzhou &PreventCache=423423424 &InstanceId=bastionhost-12****** &GroupId=1 &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=ResendMessageByIdInDLQ &OnsRegionId=hangzhou &PreventCache=423423424 &InstanceId=bastionhost-12****** &GroupId=1 &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -3854,6 +4452,8 @@ Verifies the RAM permissions in a test environment.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -3862,6 +4462,8 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|---|---|
 | ResourceId | Strin g | Quer y | Yes | eas-r-asdasdasd**** | The resource ID. |
 | AuthAction Name | Strin g | Quer y | Yes | RevokePermission | he system requires users to provide additional authentication information. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3872,18 +4474,25 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CheckFortestRamAction &OnsRegionId=ExampleValue &ResourceId=eas-r-asdasdasd**** &AuthActionName=RevokePermission
+http(s)://[Endpoint]/?Action=CheckFortestRamAction &OnsRegionId=ExampleValue &ResourceId=eas-r-asdasdasd**** &AuthActionName=RevokePermission &<Common request parameters>
 ```
 
 Sample successful response
 
 ```json
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.7.2 DeleteDauthToolByUserId
 
@@ -3893,11 +4502,15 @@ Deletes an authorization tool by user ID.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | UserId | Strin g | Quer y | Yes | agent@ccc-test | The user ID. |
 | SleepSeco nd | Integ er | Quer y | Yes | 3 | Indicates that a program or process sleeps for 3 seconds. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3910,18 +4523,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The data returned. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteDauthToolByUserId &UserId=agent@ccc-test &SleepSecond=3
+http(s)://[Endpoint]/?Action=DeleteDauthToolByUserId &UserId=agent@ccc-test &SleepSecond=3 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.7.3 CreateGroupEmpowerBySub
 
@@ -3930,6 +4551,8 @@ Grants a RAM user permissions on a specified consumer group in ApsaraMQ for Rock
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3942,6 +4565,8 @@ This operation uses only common request headers. For more information, see Commo
 | GroupId | Strin g | Quer y | Yes | 1 | Application group ID. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -3951,18 +4576,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The data returned. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateGroupEmpowerBySub &OnsRegionId=REGION_001 &PreventCache=2343242342 &EmpowerUser=exportUserData &GroupId=1 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=CreateGroupEmpowerBySub &OnsRegionId=REGION_001 &PreventCache=2343242342 &EmpowerUser=exportUserData &GroupId=1 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.7.4 CreateEmpowerBySub
 
@@ -3971,6 +4604,8 @@ Grants permissions on ApsaraMQ for RocketMQ to a specified RAM user.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3984,6 +4619,8 @@ This operation uses only common request headers. For more information, see Commo
 | Relation | Integ er | Quer y | Yes | 6 | The relationship type. Valid values: Equal: Equal to. Unequal: Not equal to. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3993,18 +4630,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCache=34242342 &EmpowerUser=revokeRole &Topic=test &Relation=6
+http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCache=34242342 &EmpowerUser=revokeRole &Topic=test &Relation=6 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.7.5 CreateEmpower
 
@@ -4013,6 +4658,8 @@ Creates an authorization for ApsaraMQ for RocketMQ.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4026,6 +4673,8 @@ This operation uses only common request headers. For more information, see Commo
 | Relation | Integ er | Quer y | Yes | 6 | The relationship for the user group. Valid values: Equal: Equal to. Unequal: Not equal to. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4035,18 +4684,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateEmpower &OnsRegionId=Region001 &PreventCache= &EmpowerUser=revokeRole &Topic=test &Relation=6
+http(s)://[Endpoint]/?Action=CreateEmpower &OnsRegionId=Region001 &PreventCache= &EmpowerUser=revokeRole &Topic=test &Relation=6 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.7.6 QueryGroupEmpowerList
 
@@ -4055,6 +4712,8 @@ Queries the authorization list for a specified instance and consumer group.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4072,20 +4731,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &GroupId=1 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &GroupId=1 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -4099,6 +4764,8 @@ Queries the authorization list for ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4106,6 +4773,8 @@ This operation uses only common request headers. For more information, see the C
 | Topic | Strin g | Quer y | No | test | The topic name. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | OnsSessio nId | Strin g | Quer y | No | 1234567890 | The session ID. It identifies the connection between a client and the server to ensure message ordering and maintain state. |
+
+**Response parameters**
 
 | 73 |   |   | > Document Version: 2026010 |
 |---|---|---|---|
@@ -4119,20 +4788,26 @@ This operation uses only common request headers. For more information, see the C
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryEmpowerList &OnsRegionId=REGION01
+http(s)://[Endpoint]/?Action=QueryEmpowerList &OnsRegionId=REGION01 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -4146,6 +4821,8 @@ Deletes an authorization group in ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4154,6 +4831,8 @@ This operation uses only common request headers. For more information, see Commo
 | EmpowerU ser | Strin g | Quer y | No | user123 | The user who has permissions to view, edit, manage personal account information, and publish content. |
 | GroupId | Strin g | Quer y | Yes | 1 | The ID of the application group. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4166,18 +4845,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCache=32423423424 &GroupId=1 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCache=32423423424 &GroupId=1 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.7.9 DeleteEmpower
 
@@ -4186,6 +4873,8 @@ Deletes the authorization for a specified topic in ApsaraMQ for RocketMQ.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | > Document V | ersion: 2 | 026010 | 8 |   | 17 |
 |---|---|---|---|---|---|
@@ -4199,6 +4888,8 @@ This operation uses only common request headers. For more information, see Commo
 | Topic | Strin g | Quer y | Yes | test | The topic name. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4210,18 +4901,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteEmpower &OnsRegionId=Region001 &PreventCache=63636363 &Topic=test &Common request parameters
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ##### 3.1.6.8 MQTT management API
 
@@ -4233,6 +4932,8 @@ Deletes the specified MQTT group ID.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4243,6 +4944,8 @@ This operation uses only common request headers. For more information, see Commo
 | MqttInstan ceId | Strin g | Quer y | Yes | post-cn-7mz2d****** | The ID of the instance to which the CA certificate is bound, that is, the ID of the MQTT instance. |
 | GroupId | Strin g | Quer y | No | 1 | The ID of the application group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4252,18 +4955,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteMqttGroupId &OnsRegionId=Region001 &PreventCache=123123123 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=DeleteMqttGroupId &OnsRegionId=Region001 &PreventCache=123123123 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.2 SendMqtt
 
@@ -4272,6 +4983,8 @@ The interface that sends messages through the specified MQTT instance.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4287,6 +5000,8 @@ This operation uses only common request headers. For more information, see Commo
 | CleanSessi on | Bool ean | Quer y | No | false | Specifies whether to start a clean session. |
 | Body | Strin g | Quer y | No | An image binary file | The request body. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4296,20 +5011,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=SendMqtt &OnsRegionId=region123 &PreventCache=3423423424 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=SendMqtt &OnsRegionId=region123 &PreventCache=3423423424 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -4322,6 +5043,8 @@ Queries the history of publish and subscribe operations for an MQTT message tran
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4341,6 +5064,8 @@ This operation uses common request headers. For more information, see Common req
 | EndTime | Long | Quer y | No | 1707118672 | The end time. |
 | Period | Long | Quer y | No | 1 | The period. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -4352,20 +5077,26 @@ This operation uses common request headers. For more information, see Common req
 | Data | Map | {} | The data returned. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttMsgTransTask &OnsRegionId=qingdao &PreventCache=23423423 &ConsoleType=DesktopConsole &QueryType=1 &Topic=test &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttMsgTransTask &OnsRegionId=qingdao &PreventCache=23423423 &ConsoleType=DesktopConsole &QueryType=1 &Topic=test &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -4378,6 +5109,8 @@ Creates a storage resource for an MQTT instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4393,6 +5126,8 @@ This operation uses common request headers. No special request headers are requi
 | OrderType | Integ er | Quer y | No | 1 | The order type. |
 | Remark | Strin g | Quer y | No | remark | The remarks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4402,10 +5137,12 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateMqttInstanceStoreResource &OnsRegionId=REGION_001 &PreventCache=234242 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &Topic=test
+http(s)://[Endpoint]/?Action=CreateMqttInstanceStoreResource &OnsRegionId=REGION_001 &PreventCache=234242 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &Topic=test &<Common request parameters>
 ```
 
 Response example
@@ -4413,7 +5150,11 @@ Response example
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.5 CreateMqttInstance
 
@@ -4422,6 +5163,8 @@ Creates a Message Queuing Telemetry Transport (MQTT) instance to enable access t
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4438,6 +5181,8 @@ This operation uses only common request headers. For more information, see Commo
 | MaxUpTps | Long | Quer y | Yes | 150 | The maximum number of upstream transactions per second (TPS). |
 | Independe ntNaming | Bool ean | Quer y | Yes | true | Specifies whether the instance has a namespace. Valid values: true: The instance has an independent namespace. Resource names must be unique within the instance but can be the same across different instances. false: The instance does not have an independent namespace. Resource names must be globally unique, both within the instance and across different instances. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4449,18 +5194,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateMqttInstance &OnsRegionId=region1 &PreventCache=342342342 &MaxConn=5000 &MaxSub=3 &MaxDownTps=150 &MaxUpTps=150 &IndependentNaming=true
+http(s)://[Endpoint]/?Action=CreateMqttInstance &OnsRegionId=region1 &PreventCache=342342342 &MaxConn=5000 &MaxSub=3 &MaxDownTps=150 &MaxUpTps=150 &IndependentNaming=true &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.6 CreateMqttGroupId
 
@@ -4469,6 +5222,8 @@ Creates an MQTT group ID.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4479,6 +5234,8 @@ This operation uses common request headers. No special request headers are requi
 | PreventCa che | Long | Quer y | Yes | 23342342 | Prevents the browser or system from using cached data. This ensures that each request retrieves the latest content. |
 | MqttInstan ceId | Strin g | Quer y | Yes | post-cn-7mz2d****** | The ID of the instance to which the CA certificate is bound, that is, the ID of the MQTT instance. |
 | GroupId | Strin g | Quer y | No | 1 | The application group ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4492,15 +5249,21 @@ This operation uses common request headers. No special request headers are requi
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateMqttGroupId &OnsRegionId=region123 &PreventCache=23342342 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=CreateMqttGroupId &OnsRegionId=region123 &PreventCache=23342342 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.7 PageQueryMqttInstanceStoreResource
 
@@ -4509,6 +5272,8 @@ Performs a paged query on the storage resources of MQTT instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information about common request headers, see Common parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4523,6 +5288,8 @@ This operation uses common request headers. No special request headers are requi
 | CurrentPa ge | Integ er | Quer y | No | 1 | The page number of the current page during paging query. |
 | PageSize | Integ er | Quer y | No | 10 | The number of rows per page that are set for paging queries. |
 | Search | Strin g | Quer y | No | 1 1 1 1 1 _ _ _ _ | The search keyword. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4539,12 +5306,18 @@ Sample request
 http(s)://[Endpoint]/?Action=PageQueryMqttInstanceStoreResource &OnsRegionId=ExampleRegion01 &PreventCache=32423 &MqttInstanceId=post-cn-7mz2d****** &StoreType=oss &InstanceId=bastionhost-12****** <Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.8 PageQueryMqttInstanceList
 
@@ -4553,6 +5326,8 @@ Queries a paginated list of MQTT instances.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4564,6 +5339,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | PageSize | Integ er | Quer y | No | 10 | The number of rows per page that are set for paging queries. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -4573,18 +5350,24 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=PageQueryMqttInstanceList &OnsRegionId=REGION_001 &PreventCache=234234234
+http(s)://[Endpoint]/?Action=PageQueryMqttInstanceList &OnsRegionId=REGION_001 &PreventCache=234234234 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.9 PageQueryMqttGroupId
 
@@ -4593,6 +5376,8 @@ Performs a paged query to retrieve a list of group IDs for MQTT instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4608,6 +5393,8 @@ This operation uses only common request headers. For more information, see Commo
 | IsFuzzy | Bool ean | Quer y | No | false | Indicates that the results or conditions are determinate. |
 | Type | Integ er | Quer y | No | 1 | The type. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -4617,10 +5404,12 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=PageQueryMqttGroupId &OnsRegionId=Region01 &PreventCache=234241212 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=PageQueryMqttGroupId &OnsRegionId=Region01 &PreventCache=234241212 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
 Successful response example
@@ -4628,7 +5417,11 @@ Successful response example
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.10 DeleteMqttInstanceStoreResource
 
@@ -4637,6 +5430,8 @@ Deletes the storage resource for a specified MQTT instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4650,6 +5445,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4659,18 +5456,24 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteMqttInstanceStoreResource &OnsRegionId=region123 &PreventCache=53534342534 &MqttInstanceId=post-cn-7mz2d****** &StoreType=1 &Topic=test
+http(s)://[Endpoint]/?Action=DeleteMqttInstanceStoreResource &OnsRegionId=region123 &PreventCache=53534342534 &MqttInstanceId=post-cn-7mz2d****** &StoreType=1 &Topic=test &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.11 DeleteMqttInstance
 
@@ -4680,12 +5483,16 @@ Deletes the specified MQTT instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | OnsRegion Id | Strin g | Quer y | Yes | region123 | The region identifier of the Ons service, which specifies the geographic region where the service is located. |
 | PreventCa che | Long | Quer y | Yes | 234234324 | Prevents the browser or server from caching data to ensure that each request retrieves the latest content. |
 | MqttInstan ceId | Strin g | Quer y | Yes | post-cn-7mz2d****** | The ID of the instance to which the CA certificate is bound, that is, the ID of the MQTT instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4698,18 +5505,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteMqttInstance &OnsRegionId=region123 &PreventCache=234234324 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=DeleteMqttInstance &OnsRegionId=region123 &PreventCache=234234324 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.8.12 QueryMqttInstanceReport
 
@@ -4718,6 +5533,8 @@ Queries the runtime report statistics for MQTT instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4730,6 +5547,8 @@ This operation uses only common request headers. For more information, see Commo
 | BeginTime | Long | Quer y | Yes | 2022 | The start time. |
 | EndTime | Long | Quer y | Yes | 1706668721 | The end time. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4741,20 +5560,26 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttInstanceReport &OnsRegionId=REGION01 &PreventCache=234234242 &MqttInstanceId=post-cn-7mz2d****** &BeginTime=2022 &EndTime=1706668721
+http(s)://[Endpoint]/?Action=QueryMqttInstanceReport &OnsRegionId=REGION01 &PreventCache=234234242 &MqttInstanceId=post-cn-7mz2d****** &BeginTime=2022 &EndTime=1706668721 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -4768,6 +5593,8 @@ Queries a list of MQTT instances in a specified region.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | > Document V | ersion: 2 | 026010 | 8 |   | 20 |
 |---|---|---|---|---|---|
 
@@ -4777,6 +5604,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsRegion Id | Strin g | Quer y | Yes | Region001 | The ID of the region where Message Service is deployed. It is used to distinguish resources in different regions. |
 | PreventCa che | Long | Quer y | Yes | 23423423 | Prevents the browser from caching content. This ensures that the latest data is retrieved from the server for each request. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of the session. It is used to track and manage the session in Message Service. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4789,16 +5618,20 @@ This operation uses only common request headers. For more information, see Commo
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttInstanceList &OnsRegionId=Region001 &PreventCache=23423423
+http(s)://[Endpoint]/?Action=QueryMqttInstanceList &OnsRegionId=Region001 &PreventCache=23423423 &<Common request parameters>
 ```
 
-Response examples
+Response examples `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -4812,6 +5645,8 @@ Queries the basic information for MQTT instance, such as the instance ID, name, 
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4820,6 +5655,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 34234242 | A timestamp that is used to prevent the browser and system from caching data. This ensures that the latest data is retrieved for each request. |
 |---|---|---|---|---|---|
 | MqttInstan ceId | Strin g | Quer y | Yes | post-cn-7mz2d****** | The ID of the instance to which the CA certificate is bound, that is, the ID of the MQTT instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4830,10 +5667,12 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttInstanceBaseInfo &OnsRegionId=Region001 &PreventCache=34234242 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttInstanceBaseInfo &OnsRegionId=Region001 &PreventCache=34234242 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
 Sample response
@@ -4841,9 +5680,11 @@ Sample response
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -4857,6 +5698,8 @@ Queries all group IDs in a specified for MQTT instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4865,6 +5708,8 @@ This operation uses common request headers. No special request headers are requi
 
 | MqttInstan ceId | Strin g | Quer y | Yes | post-cn-7mz2d****** | The ID of the instance to which the CA certificate is bound, that is, the ID of the MQTT instance. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4875,20 +5720,24 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttGroupIdList &OnsRegionId=REGION_US_01 &PreventCache=763465327325 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttGroupIdList &OnsRegionId=REGION_US_01 &PreventCache=763465327325 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -4902,6 +5751,8 @@ Queries the running status of an MQTT device.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4912,6 +5763,8 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|---|---|
 | ClientId | Strin g | Quer y | No | ClientID | The client ID. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4921,20 +5774,24 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryMqttDeviceRunningInfo &OnsRegionId=region123 &PreventCache=true &MqttInstanceId=post-cn-7mz2d****** &Common request parameters
 ```
 
-Sample successful response
+Sample successful response `JSON` format
 
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -4948,6 +5805,8 @@ Queries statistics and trend data for MQTT connections.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -4960,6 +5819,8 @@ This operation uses common request headers. No special request headers are requi
 | EndTime | Long | Quer y | No | 2022 | The end time. |
 | GroupId | Strin g | Quer y | No | 1 | The group ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4969,20 +5830,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryMqttConnectionSum &OnsRegionId=REGION01 &PreventCache=234235234243 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-Sample responses
+Sample responses `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -4996,6 +5863,8 @@ Queries information about the clients that subscribe to an MQTT topic.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The ID of the region. |
@@ -5007,6 +5876,8 @@ This operation uses common request headers. No special request headers are requi
 | FirstTopic | Strin g | Quer y | No | Technology | The first topic. |
 | SecondTop ic | Strin g | Quer y | No | UserBehavior | The second topic. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -5016,10 +5887,12 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttClientSetByTopic &OnsRegionId=region123 &PreventCache=124241212 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttClientSetByTopic &OnsRegionId=region123 &PreventCache=124241212 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
 Response example
@@ -5027,9 +5900,11 @@ Response example
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -5042,6 +5917,8 @@ Queries information about a collection of online clients based on an MQTT Group 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5056,6 +5933,8 @@ This operation uses only common request headers. For more information, see Commo
 | GroupId | Strin g | Quer y | No | GIG-01 | The group ID. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5065,20 +5944,24 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttClientSetByGroupId &OnsRegionId=REGION_001 &PreventCache=23214142 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttClientSetByGroupId &OnsRegionId=REGION_001 &PreventCache=23214142 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data/> <Code>200</Code> <Success>true</Success>
@@ -5091,6 +5974,8 @@ Queries the MQTT message traces for a specified Trace ID.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5106,6 +5991,8 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|---|---|
 | TraceId | Strin g | Quer y | No | 0a98a334170226880502 075****** | The trace ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5115,10 +6002,12 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttTraceByTraceId &OnsRegionId=hangzhou &PreventCache=324242342 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttTraceByTraceId &OnsRegionId=hangzhou &PreventCache=324242342 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
 Sample successful response
@@ -5126,9 +6015,11 @@ Sample successful response
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5141,6 +6032,8 @@ Queries MQTT messages based on publication information.
 **Request headers**
 
 This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5155,6 +6048,8 @@ This operation uses common request headers. Special request headers are not requ
 | Topic | Strin g | Quer y | No | test | The name of the topic. |
 | ClientId | Strin g | Quer y | No | test | The ID of the client. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The data returned. |
@@ -5164,20 +6059,25 @@ This operation uses common request headers. Special request headers are not requ
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttMsgByPubInfo &OnsRegionId=REGION01 &PreventCache=2342342 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttMsgByPubInfo &OnsRegionId=REGION01 &PreventCache=2342342 &MqttInstanceId=post-cn-7mz2d****** &<Common request parameters>
 ```
 
 Sample responses
 
 ```json
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5190,6 +6090,8 @@ Queries the list of instance storage resource names for MQTT instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5205,6 +6107,8 @@ This operation uses only common request headers. For more information, see Commo
 | StoreType | Integ er | Quer y | Yes | 3 | The type of external storage. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -5214,20 +6118,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreResourceNameList &OnsRegionId=region01 &PreventCache=234234234 &MqttInstanceId=post-cn-7mz2d****** &StoreType=3 &InstanceId=bastionhost-12****** &Common request parameters
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5241,6 +6151,8 @@ Queries the storage instances of an MQTT instance.
 
 This operation uses only common request headers. For more information, see Common parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The ID of the region. |
@@ -5249,6 +6161,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | PreventCa che | Long | Quer y | Yes | 723635625425 | Prevents the browser from caching page content. This ensures that each request retrieves the latest data from the server. |
 | StoreType | Integ er | Quer y | No | 2 | The type of external storage. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5259,20 +6173,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreInstanceList &OnsRegionId=Region001 &PreventCache=723635625425
 ```
 
-Response example
+Response example `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5286,6 +6206,8 @@ Updates the details of a specified MQTT instance.
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The ID of the region. |
@@ -5297,6 +6219,8 @@ This operation uses common request headers and does not require special request 
 | MqttInstan ceName | Strin g | Quer y | Yes | myMqtt | The name of the instance. |
 | Remark | Strin g | Quer y | Yes | remark | The remarks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5306,20 +6230,25 @@ This operation uses common request headers and does not require special request 
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateMqttInstance &OnsRegionId=REGION06 &PreventCache=2424324234 &MqttInstanceId=post-cn-7mz2d****** &MqttInstanceName=myMqtt &Remark=remark
+http(s)://[Endpoint]/?Action=UpdateMqttInstance &OnsRegionId=REGION06 &PreventCache=2424324234 &MqttInstanceId=post-cn-7mz2d****** &MqttInstanceName=myMqtt &Remark=remark &<Common request parameters>
 ```
 
 Sample response
 
 ```json
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5332,6 +6261,8 @@ Changes the instance type for MQTT instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5346,6 +6277,8 @@ This operation uses common request headers. No special request headers are requi
 | MaxDownT ps | Long | Quer y | Yes | 150 | Indicates that the maximum downstream transaction processing rate of the system is 150 transactions per second. |
 | MaxUpTps | Long | Quer y | Yes | 150 | The maximum number of uploaded transactions that the system can process per unit time is 150 per second. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5357,20 +6290,26 @@ This operation uses common request headers. No special request headers are requi
 | Total | Long | 1 | The total number of entries. |
 |---|---|---|---|
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=ChangeMqttInstanceSpec &OnsRegionId=region123 &PreventCache=2342342 &MqttInstanceId=post-cn-7mz2d****** &MaxConn=5000 &MaxSub=5 &MaxDownTps=150 &MaxUpTps=150
+http(s)://[Endpoint]/?Action=ChangeMqttInstanceSpec &OnsRegionId=region123 &PreventCache=2342342 &MqttInstanceId=post-cn-7mz2d****** &MaxConn=5000 &MaxSub=5 &MaxDownTps=150 &MaxUpTps=150 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5384,6 +6323,8 @@ ind an MQTT instance to ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -5394,6 +6335,8 @@ This operation uses only common request headers. For more information, see Commo
 | MqttInstan ceId | Strin g | Quer y | Yes | post-cn-7mz2d****** | The ID of the instance to which the CA certificate is bound, that is, the ID of the MQTT instance. |
 | StoreType | Integ er | Quer y | Yes | 2 | he type of external storage. This is fixed as oss. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5406,16 +6349,20 @@ This operation uses only common request headers. For more information, see Commo
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=BindMqttInstance &OnsRegionId=REGION_001 &PreventCache=3242423 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=BindMqttInstance &OnsRegionId=REGION_001 &PreventCache=3242423 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Code>200</Code> <Success>true</Success>
@@ -5431,6 +6378,8 @@ Retrieves the complete event chain diagram of a message trace based on a query I
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5441,6 +6390,8 @@ This operation uses common request headers. No special request headers are requi
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | QueryId | Strin g | Quer y | Yes | 123 | The unique ID of the query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The ID of the session between the client and the server. This ID is used for ordered message processing and state persistence. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5453,16 +6404,20 @@ This operation uses common request headers. No special request headers are requi
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTraceMapByQueryId &OnsRegionId=REGION01 &PreventCache=3665454 &InstanceId=bastionhost-12****** &QueryId=123
+http(s)://[Endpoint]/?Action=QueryTraceMapByQueryId &OnsRegionId=REGION01 &PreventCache=3665454 &InstanceId=bastionhost-12****** &QueryId=123 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -5476,6 +6431,8 @@ Retrieves the details of a message publishing trace based on a query ID.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5488,6 +6445,8 @@ This operation uses common request headers. No special request headers are requi
 | CurrentPa ge | Integ er | Quer y | No | 1 | The number of the current page. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session when you use Alibaba Cloud Open Notification Service (ONS). This ID is used to track and manage message consumption or production sessions. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5498,19 +6457,25 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 |---|---|---|---|
 
+**Examples**
+
 Example request
 
 ```
 http(s)://[Endpoint]/?Action=QueryPubTraceByQueryId &OnsRegionId=Region001 &PreventCache=231241431 &InstanceId=bastionhost-12****** &QueryId=123 &Common request parameters
 ```
 
-Example responses
+Example responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -5524,6 +6489,8 @@ Queries a paginated list of message traces for a user.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5536,6 +6503,8 @@ This operation uses common request headers. No special request headers are requi
 | CurrentPa ge | Integ er | Quer y | No | 1 | The page number of the current page during paging query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a push notification session in Open Notification Service (ONS). This ID is used to track and manage the lifecycle of a message push. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -5547,18 +6516,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Example request
 
 ```
-http(s)://[Endpoint]/?Action=PageQueryTraceListByUserId &OnsRegionId=Region001 &PreventCache=32423432424 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=PageQueryTraceListByUserId &OnsRegionId=Region001 &PreventCache=32423432424 &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Example of a successful response
+Example of a successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.9.4 DeleteTraceQueryTask
 
@@ -5567,6 +6544,8 @@ The API interface that deletes the message trace query task.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5578,6 +6557,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 | QueryId | Strin g | Quer y | Yes | 27296756265288364915 7096685**** | The query ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5586,17 +6567,25 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteTraceQueryTask &OnsRegionId=REGION_001 &PreventCache=234555333232 &InstanceId=bastionhost-12****** &QueryId=272967562652883649157096685****
+http(s)://[Endpoint]/?Action=DeleteTraceQueryTask &OnsRegionId=REGION_001 &PreventCache=234555333232 &InstanceId=bastionhost-12****** &QueryId=272967562652883649157096685**** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.9.5 QueryTraceByMsgTopic
 
@@ -5605,6 +6594,8 @@ Queries message traces by topic.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5619,6 +6610,8 @@ This operation uses common request headers. No special request headers are requi
 | EndTime | Long | Quer y | Yes | 1706668721 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique ID that identifies a client session in the Message Queue service. This ID is used to track and manage the process of sending and receiving messages. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5628,20 +6621,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryTraceByMsgTopic &OnsRegionId=ExampleRegion01 &PreventCache=231243123423 &InstanceId=bastionhost-12****** &Topic=test &EndTime=1706668721
+http(s)://[Endpoint]/?Action=QueryTraceByMsgTopic &OnsRegionId=ExampleRegion01 &PreventCache=231243123423 &InstanceId=bastionhost-12****** &Topic=test &EndTime=1706668721 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5654,6 +6653,8 @@ Queries a message trace by message key.
 **Request header**
 
 This operation requires only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5669,6 +6670,8 @@ This operation requires only common request headers. For more information, see C
 | EndTime | Long | Quer y | Yes | 1706668721 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in the Message Queue (MSMQ) service. It is used to maintain the connection status between the client and the server. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5680,20 +6683,26 @@ This operation requires only common request headers. For more information, see C
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventCache=342342423 &InstanceId=bastionhost-12****** &Topic=test &MsgKey=ORDERID_100 &EndTime=1706668721
+http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventCache=342342423 &InstanceId=bastionhost-12****** &Topic=test &MsgKey=ORDERID_100 &EndTime=1706668721 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5707,6 +6716,8 @@ Queries the message trace for a specified message ID.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5716,6 +6727,8 @@ This operation uses common request headers. For more information, see Common req
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID of the m essage to query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in the Message Queue service. It maintains the connection status between the client and the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5727,19 +6740,25 @@ This operation uses common request headers. For more information, see Common req
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryTraceByMsgId &OnsRegionId=REGION001 &PreventCache=23232423 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=QueryTraceByMsgId &OnsRegionId=REGION001 &PreventCache=23232423 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D**** &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -5755,6 +6774,8 @@ Checks whether a consumer ID is valid in the test environment.
 
 No special request headers are required for this operation. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5767,6 +6788,8 @@ No special request headers are required for this operation. For more information
 | Relation | Integ er | Quer y | Yes | 6 | The relationship of the user group. Valid values: Equal: Equal to. Unequal: Not equal to. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5776,18 +6799,24 @@ No special request headers are required for this operation. For more information
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CheckFortestConsumerId &OnsRegionId=region123 &PreventCache=2342424 &Relation=6
+http(s)://[Endpoint]/?Action=CheckFortestConsumerId &OnsRegionId=region123 &PreventCache=2342424 &Relation=6 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.10.2 QueryAllConsumerAccumulation
 
@@ -5797,6 +6826,8 @@ Queries the message accumulation status of a specified consumer group across all
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5804,6 +6835,8 @@ This operation uses only common request headers. For more information, see the C
 | Topic | Strin g | Quer y | Yes | test | The topic name. |
 | GroupId | Strin g | Quer y | Yes | GID-test | The group ID. |
 | InstanceId | Strin g | Quer y | No | ccc-test | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5816,18 +6849,26 @@ This operation uses only common request headers. For more information, see the C
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryAllConsumerAccumulation &OnsRegionId=Region001 &Topic=test &GroupId=GID-test &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.10.3 QueryConsumerTimespan
 
@@ -5847,6 +6888,8 @@ This operation uses common request headers. No special request headers are requi
 | Topic | Strin g | Quer y | Yes | test | The name of the topic. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique ID that identifies a client session in the ONS service. It maintains the connection state between the producer or consumer and the server. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5858,20 +6901,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryConsumerTimespan &OnsRegionId=Region001 &PreventCache=464563643 &InstanceId=bastionhost-12****** &GroupId=1 &Topic=test
+http(s)://[Endpoint]/?Action=QueryConsumerTimespan &OnsRegionId=Region001 &PreventCache=464563643 &InstanceId=bastionhost-12****** &GroupId=1 &Topic=test &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -5884,6 +6933,8 @@ Queries the overall status of a specified consumer group. The status includes ke
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the documentation about common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5905,20 +6956,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryConsumerStatus &OnsRegionId=REGION_001 &PreventCache=223435434 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=QueryConsumerStatus &OnsRegionId=REGION_001 &PreventCache=223435434 &InstanceId=bastionhost-12****** &GroupId=1 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -5932,6 +6989,8 @@ Queries the consumption progress of a specified consumer group. This includes de
 
 This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -5944,6 +7003,8 @@ This operation uses common request headers. No special request headers are requi
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | Identifies the session between the client and the server. This session is used for ordered message processing and state management. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -5953,20 +7014,24 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryConsumerProgress &OnsRegionId=hangzhou &PreventCache=23424234242 &lt;Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format
 
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -5979,6 +7044,8 @@ Queries the thread stack information of a consumer in ApsaraMQ for RocketMQ.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5996,6 +7063,8 @@ This operation uses common request headers. No special request headers are requi
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The ID of the session between the client and the server. This parameter ensures message ordering and maintains the session state. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6005,20 +7074,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryConsumerJstackInfo &OnsRegionId=region123 &PreventCache=2342342342 &ClientId=GID_test@@@test
+http(s)://[Endpoint]/?Action=QueryConsumerJstackInfo &OnsRegionId=region123 &PreventCache=2342342342 &ClientId=GID_test@@@test &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6032,6 +7107,8 @@ Queries the connection information for a specified consumer group. The informati
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -6042,6 +7119,8 @@ This operation uses only common request headers. For more information, see Commo
 | GroupId | Strin g | Quer y | Yes | GID-01 | The group ID. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6050,6 +7129,8 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
+
+**Examples**
 
 Sample request
 
@@ -6060,11 +7141,14 @@ http(s)://[Endpoint]/?Action=QueryConsumerConnection &OnsRegionId=region01 &Prev
 Sample success response
 
 ```json
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -6078,6 +7162,8 @@ Queries the message accumulation for a specified consumer group. The response in
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -6088,6 +7174,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | GroupId | Strin g | Quer y | Yes | GID-1 | The ID of the consumer group. |
 | Detail | Bool ean | Quer y | No | true | Details |
+
+**Response parameters**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -6101,17 +7189,21 @@ This operation uses only common request headers. For more information, see Commo
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryConsumerAccumulate &OnsRegionId=region01 &PreventCache=12312313 &GroupId=GID-1
+http(s)://[Endpoint]/?Action=QueryConsumerAccumulate &OnsRegionId=region01 &PreventCache=12312313 &GroupId=GID-1 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -6125,6 +7217,8 @@ Updates the read status of a topic for a specified consumer group.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -6136,6 +7230,8 @@ This operation uses only common request headers. For more information, see Commo
 | ReadEnabl e | Bool ean | Quer y | Yes | true | You can set the message reading switch. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6145,20 +7241,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateConsumerReadableByTopicAndGroup &OnsRegionId=Region001 &Topic=test &GroupId=1 &ReadEnable=true
+http(s)://[Endpoint]/?Action=UpdateConsumerReadableByTopicAndGroup &OnsRegionId=Region001 &Topic=test &GroupId=1 &ReadEnable=true &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6171,6 +7273,8 @@ Resets the consumer offset for ApsaraMQ for RocketMQ.
 **Request headers**
 
 No special request headers are used in this operation. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6185,6 +7289,8 @@ No special request headers are used in this operation. For more information abou
 | Type | Integ er | Quer y | No | 1 | The type. |
 | ResetTime | Long | Quer y | No | 2022-10-29 01:06:24 | The reset time. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6197,17 +7303,21 @@ No special request headers are used in this operation. For more information abou
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=ResetConsumerOffset &OnsRegionId=region123 &PreventCache=2342342342 &InstanceId=bastionhost-12****** &GroupId=1 &Topic=test
+http(s)://[Endpoint]/?Action=ResetConsumerOffset &OnsRegionId=region123 &PreventCache=2342342342 &InstanceId=bastionhost-12****** &GroupId=1 &Topic=test &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6221,6 +7331,8 @@ Queries the latest consumption time for a consumer group on a specific topic and
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -6231,6 +7343,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | Topic | Strin g | Quer y | Yes | test | The topic name. |
 | GroupId | Strin g | Quer y | Yes | 1 | The consumer group ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6244,17 +7358,21 @@ This operation uses only common request headers. For more information, see Commo
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 &Topic=test &GroupId=1
+http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 &Topic=test &GroupId=1 &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6270,6 +7388,8 @@ Resumes a Message Queue (MQ) connector.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Quer y | No | test | The connector name. |
@@ -6281,6 +7401,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsRegion Id | Strin g | Quer y | Yes | Region001 | The region identifier specifies the geographic region where an ONS service resource is located. |
 | PreventCa che | Long | Quer y | Yes | 24234234 | A timestamp used to prevent the browser from caching the response. This ensures that each request retrieves the latest data from the server. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6290,20 +7412,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=ResumeMqConnector &OnsRegionId=Region001 &PreventCache=24234234
+http(s)://[Endpoint]/?Action=ResumeMqConnector &OnsRegionId=Region001 &PreventCache=24234234 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6317,12 +7445,16 @@ Pauses a Message Queue (MQ) connector.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
 | OnsRegion Id | Strin g | Quer y | Yes | REGION01 | The identifier of a specific business group or geographic area. This parameter is used in Message Service to differentiate configurations or resources in different regions. |
 |---|---|---|---|---|---|
 | PreventCa che | Long | Quer y | Yes | 324234234242 | Instructs the client or server not to cache the response. This ensures that each request retrieves the latest data. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6333,18 +7465,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=PauseMqConnector &OnsRegionId=REGION01 &PreventCache=324234234242
 ```
 
-Successful response example
+Successful response example `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.11.3 DeleteDeploymentMqConnector
 
@@ -6353,6 +7493,8 @@ Deletes a deployment connector in Message Queue.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6364,6 +7506,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 23442342432 | Prevents the browser from caching page content. This ensures that each request retrieves the latest data from the server. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6373,18 +7517,24 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteDeploymentMqConnector &OnsRegionId=Region12345 &PreventCache=23442342432
+http(s)://[Endpoint]/?Action=DeleteDeploymentMqConnector &OnsRegionId=Region12345 &PreventCache=23442342432 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.11.4 CreateDeploymentMqConnector
 
@@ -6393,6 +7543,8 @@ Creates a Message Queue deployment connector.
 **Request headers**
 
 This operation uses only common request headers. For more information, see the common request parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6406,6 +7558,8 @@ This operation uses only common request headers. For more information, see the c
 | OnsRegion Id | Strin g | Quer y | Yes | REGION01 | The region ID of the ONS service. This parameter specifies the geographical region where the resource is located. |
 | PreventCa che | Long | Quer y | Yes | 7336353563 | Prevents the client or server from caching the response. This ensures that each request retrieves the latest data directly from the server. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6418,15 +7572,21 @@ This operation uses only common request headers. For more information, see the c
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateDeploymentMqConnector &TargetParams={"key1":"value1", "key2":"value2"} &OnsRegionId=REGION01 &PreventCache=7336353563
+http(s)://[Endpoint]/?Action=CreateDeploymentMqConnector &TargetParams={"key1":"value1", "key2":"value2"} &OnsRegionId=REGION01 &PreventCache=7336353563 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.11.5 DeployDeploymentMqConnector
 
@@ -6435,6 +7595,8 @@ Deploys a Message Queue (MQ) connector.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6446,6 +7608,8 @@ This operation uses common request headers. For more information, see Common req
 | PreventCa che | Long | Quer y | Yes | 234234234 | Prevents the browser from caching page content. This ensures that the latest data is retrieved from the server with each request. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6455,18 +7619,24 @@ This operation uses common request headers. For more information, see Common req
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeployDeploymentMqConnector &OnsRegionId=REGION_001 &PreventCache=234234234
+http(s)://[Endpoint]/?Action=DeployDeploymentMqConnector &OnsRegionId=REGION_001 &PreventCache=234234234 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.11.6 QueryMqConnectorSysResourceName
 
@@ -6476,6 +7646,8 @@ Generates system resource names, such as error-handling topics and consumer grou
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Quer y | No | test | Name |
@@ -6483,6 +7655,8 @@ This operation uses only common request headers. For more information, see Commo
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID. |
 | OnsRegion Id | Strin g | Quer y | Yes | nanjing | The identifier for a specific region. This parameter is used to distinguish between different service areas or data centers. |
 | PreventCa che | Long | Quer y | Yes | 12321313231 | Prevents the browser or system from using cached data. This ensures that each request retrieves the latest content from the source. |
+
+**Response parameters**
 
 | 77 |   |   | > Document Version: 2026010 |
 |---|---|---|---|
@@ -6496,20 +7670,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqConnectorSysResourceName &OnsRegionId=nanjing &PreventCache=12321313231
+http(s)://[Endpoint]/?Action=QueryMqConnectorSysResourceName &OnsRegionId=nanjing &PreventCache=12321313231 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -6523,10 +7703,14 @@ Queries a list of metric details for an MSMQ connector.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | OnsRegion Id | Strin g | Quer y | Yes | REGION 001 _ | The ID of the region. A region is a specific geographic area or data center. |
 | PreventCa che | Long | Quer y | Yes | 2323434235242 | A timestamp used to prevent the browser from using cached data. This ensures that each request retrieves the latest content. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6539,20 +7723,26 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqConnectorMetricsDetailList &OnsRegionId=REGION_001 &PreventCache=2323434235242
+http(s)://[Endpoint]/?Action=QueryMqConnectorMetricsDetailList &OnsRegionId=REGION_001 &PreventCache=2323434235242 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6566,12 +7756,16 @@ Queries a list of Message Queue (MQ) connectors.
 
 This API operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
 | OnsRegion Id | Strin g | Quer y | Yes | REGION 001 _ | The ID of the region. |
 |---|---|---|---|---|---|
 | PreventCa che | Long | Quer y | Yes | 2323432423 | Prevents the browser from caching the content. This ensures that you retrieve the latest data from the server with each request. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6582,20 +7776,24 @@ This API operation uses common request headers. No special request headers are r
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqConnectorInfoList &OnsRegionId=REGION_001 &PreventCache=2323432423
+http(s)://[Endpoint]/?Action=QueryMqConnectorInfoList &OnsRegionId=REGION_001 &PreventCache=2323432423 &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6609,10 +7807,14 @@ Queries the list of deployments for a Message Queue (MQ) connector.
 
 This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | OnsRegion Id | Strin g | Quer y | Yes | REGION01 | The ID of the region where the instance is located. |
 | PreventCa che | Long | Quer y | Yes | 32532545543 | Prevents the browser from caching page content. This forces each request to retrieve the latest data from the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6625,20 +7827,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqConnectorDeploymentList &OnsRegionId=REGION01 &PreventCache=32532545543
+http(s)://[Endpoint]/?Action=QueryMqConnectorDeploymentList &OnsRegionId=REGION01 &PreventCache=32532545543 &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6651,6 +7859,8 @@ Updates the deployment configuration of a Message Queue (MQ) connector.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6673,20 +7883,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=UpdateMqConnectorDeployment &TargetParams={"age": 25, "gender": "male", "location": "Shanghai"} &OnsRegionId=singapore &PreventCache=23423423
+http(s)://[Endpoint]/?Action=UpdateMqConnectorDeployment &TargetParams={"age": 25, "gender": "male", "location": "Shanghai"} &OnsRegionId=singapore &PreventCache=23423423 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -6701,6 +7917,8 @@ Deletes a specified cloud routing task.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6718,18 +7936,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &PreventCache=4535354353
+http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &PreventCache=4535354353 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.2 CreateRouterTask
 
@@ -6764,6 +7990,8 @@ This operation uses only common request headers. For more information, see Commo
 | OffsetFrom GroupId | Strin g | Quer y |   | No | 1001 |   | The group ID from which to start calculating the offset. |   |   |
 | OffsetFrom Timestam p | Long | Quer y |   | No | 1630425600000 |   | The timestamp from which to start calculating the offset. This is a UNIX timestamp in milliseconds. |   |   |
 
+**Response parameters**
+
 | 89 |   |   | > Document Version: 2026010 |
 |---|---|---|---|
 
@@ -6776,17 +8004,23 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateRouterTask &OnsRegionId=region123 &PreventCache=1213123213 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing &DesTopic=user_logon &DesRegion=ap-southeast-1 &OffsetFromType=ExampleValue
+http(s)://[Endpoint]/?Action=CreateRouterTask &OnsRegionId=region123 &PreventCache=1213123213 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing &DesTopic=user_logon &DesRegion=ap-southeast-1 &OffsetFromType=ExampleValue &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
 ###### 3.1.6.12.3 CreateRouterInnerTask
@@ -6796,6 +8030,8 @@ Creates an internal message routing task.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6826,6 +8062,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | NeedDesIn stance | Bool ean | Quer y | Yes | true | You should periodically back up important data from the server to a secure location to prevent data loss or corruption. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -6835,18 +8073,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing &DesTopic=UserLogon &DesRegion=OC &NeedSrcInstance=true &NeedDesInstance=true
+http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing &DesTopic=UserLogon &DesRegion=OC &NeedSrcInstance=true &NeedDesInstance=true &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.4 CreateCloudRouterTask
 
@@ -6855,6 +8101,8 @@ Creates a cross-cloud routing task for cross-cloud communication between message
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6887,6 +8135,8 @@ This operation uses common request headers. No special request headers are requi
 | NeedSrcIn stance | Bool ean | Quer y | No | true | Specifies whether a source instance is required for the operation. This is often used for data migration, replication, or conditional logic. |
 | NeedDesIn stance | Bool ean | Quer y | No | true | An instance object implements user identity verification and system access control. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6898,18 +8148,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateCloudRouterTask &SrcCloudId=1001 &SrcRegion=cn-beijing &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &DesCloudId=CLD123456 &DesRegion=SG &DesTopic=user_logon &OnsRegionId=REGION001 &OffsetFromType=SampleValue &PreventCache=
+http(s)://[Endpoint]/?Action=CreateCloudRouterTask &SrcCloudId=1001 &SrcRegion=cn-beijing &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &DesCloudId=CLD123456 &DesRegion=SG &DesTopic=user_logon &OnsRegionId=REGION001 &OffsetFromType=SampleValue &PreventCache= &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.5 QueryCloudRouterTaskStats
 
@@ -6929,6 +8187,8 @@ This operation uses only common request headers. For more information, see Commo
 | ToDate | Long | Quer y | Yes | 1560134212326 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The ID of a session between the client and the server. This ID is used for sequential message processing and session state maintenance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6940,18 +8200,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryCloudRouterTaskStats &OnsRegionId=REGION01 &PreventCache=true &FromDate=2020-03-06T02:58:16Z &ToDate=1560134212326
+http(s)://[Endpoint]/?Action=QueryCloudRouterTaskStats &OnsRegionId=REGION01 &PreventCache=true &FromDate=2020-03-06T02:58:16Z &ToDate=1560134212326 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.6 QueryCloudRouterTask
 
@@ -6960,6 +8228,8 @@ Queries the details of a specified cloud router task.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | 99 |   |   |   | > D | ocument Version: 2026010 |
 |---|---|---|---|---|---|
@@ -6972,6 +8242,8 @@ This operation uses common request headers. No special request headers are requi
 | CloudRout erTaskId | Strin g | Quer y | No | TR20231001120000 | The ID of the cloud router task. This ID is used to uniquely track and manage the lifecycle and operation records for the task. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a session or connection. This ID is used to track and manage session states in Message Service. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -6983,18 +8255,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=QueryCloudRouterTask &OnsRegionId=region123 &PreventCache=true &Common request parameters
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.7 QueryCloudRouterItems
 
@@ -7003,6 +8283,8 @@ Queries the items of a cloud router task.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7016,6 +8298,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a session between the client and the server when you use Alibaba Cloud Open Notification Service (ONS). This ID is typically generated when the client is initialized or connects to the server. It is used for context tracking and session management during message communication. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -7027,18 +8311,26 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=QueryCloudRouterItems &OnsRegionId=Region001 &PreventCache=343532334 &Common request parameters
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.8 PageQueryCloudRouterTask
 
@@ -7047,6 +8339,8 @@ Performs a paged query to retrieve a list of cloud routing tasks.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7060,6 +8354,8 @@ This operation uses common request headers. For more information, see Common req
 | TaskKey | Strin g | Quer y | No | key1 | The task identifier. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The session ID. It identifies the connection between the client and the server to ensure message ordering and maintain state. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -7071,18 +8367,26 @@ This operation uses common request headers. For more information, see Common req
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=PageQueryCloudRouterTask &OnsRegionId=region123 &PreventCache=3423424324 &CurrentPage=1 &PageSize=10
+http(s)://[Endpoint]/?Action=PageQueryCloudRouterTask &OnsRegionId=region123 &PreventCache=3423424324 &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.9 DeleteRouterTask
 
@@ -7091,6 +8395,8 @@ Deletes the specified routing task.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7101,6 +8407,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 234234234 | A value used to prevent the browser or system from caching data. This ensures that each request retrieves the latest content. |
 | TaskId | Strin g | Quer y | No | 123456 | The task ID. |
 | TaskKey | Strin g | Quer y | No | common | The custom string identifier of the Router task, which can be used as an alternative to TaskId to query, start, stop, or delete cross- region message routing tasks. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7113,18 +8421,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteRouterTask &OnsRegionId=Region001 &PreventCache=234234234
+http(s)://[Endpoint]/?Action=DeleteRouterTask &OnsRegionId=Region001 &PreventCache=234234234 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.10 DeleteRouterInnerTask
 
@@ -7134,6 +8450,8 @@ Deletes the specified task.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7141,6 +8459,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsRegion Id | Strin g | Quer y | Yes | Region001 | The unique ID that identifies a specific geographic area in Message Service. This ID is often used for region- based partition configurations in Message Service. |
 |---|---|---|---|---|---|
 | TaskId | Long | Quer y | Yes | 123456 | The task ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7151,18 +8471,24 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteRouterInnerTask &OnsRegionId=Region001 &TaskId=123456
+http(s)://[Endpoint]/?Action=DeleteRouterInnerTask &OnsRegionId=Region001 &TaskId=123456 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.12.11 QueryRouterTask
 
@@ -7171,6 +8497,8 @@ Queries the status and details of a message routing task.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7183,6 +8511,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | When you use Alibaba Cloud Open Notification Service (ONS), this parameter specifies the unique ID of a client session. This ID ensures the integrity and contextual association of message communication. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7192,20 +8522,24 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryRouterTask &OnsRegionId=REGION01 &PreventCache=78766544
+http(s)://[Endpoint]/?Action=QueryRouterTask &OnsRegionId=REGION01 &PreventCache=78766544 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7218,6 +8552,8 @@ Queries the performance statistics for message routing.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7234,6 +8570,8 @@ This operation uses common request headers. No special request headers are requi
 | ToDate | Long | Quer y | Yes | 1560134212326 | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session when you use Alibaba Cloud Open Notification Service (ONS). This ID associates sent and received messages within the same session. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7243,20 +8581,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryRouterStat &OnsRegionId=EU01 &PreventCache=978654545 &TaskId=123456 &FromDate=1560134212326 &ToDate=1560134212326
+http(s)://[Endpoint]/?Action=QueryRouterStat &OnsRegionId=EU01 &PreventCache=978654545 &TaskId=123456 &FromDate=1560134212326 &ToDate=1560134212326 &<Common request parameters>
 ```
 
-Response examples
+Response examples `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7270,6 +8614,8 @@ Queries details of an internal message routing task, such as its status, source,
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7277,6 +8623,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsRegion Id | Strin g | Quer y | Yes | REGION01 | The identifier of a specific business group or geographic area. This parameter is used in Message Service to differentiate configurations or resources in different regions. |
 |---|---|---|---|---|---|
 | TaskId | Long | Quer y | Yes | 123456 | The task ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7287,10 +8635,12 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryRouterInnerTask &OnsRegionId=REGION01 &TaskId=123456
+http(s)://[Endpoint]/?Action=QueryRouterInnerTask &OnsRegionId=REGION01 &TaskId=123456 &<Common request parameters>
 ```
 
 Sample responses
@@ -7298,9 +8648,11 @@ Sample responses
 ```json
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -7314,6 +8666,8 @@ Queries the runtime statistics of a message routing task, such as Transactions P
 
 This API operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7326,6 +8680,8 @@ This API operation uses only common request headers. For more information, see t
 | ToDate | Long | Quer y | Yes | 2020-03-17T02:26:28Z | The end time. |
 | OnsSessio nId | Strin g | Quer y | No | ABC123XYZ789 | A unique ID that identifies a client session in the ApsaraMQ for RocketMQ service. It is used to maintain the connection status of a producer or consumer. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7335,20 +8691,26 @@ This API operation uses only common request headers. For more information, see t
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryRouterInnerStat &OnsRegionId=hangzhou &PreventCache=3423424 &TaskId=123456 &FromDate=2020-03-06T02:58:16Z &ToDate=2020-03-17T02:26:28Z
+http(s)://[Endpoint]/?Action=QueryRouterInnerStat &OnsRegionId=hangzhou &PreventCache=3423424 &TaskId=123456 &FromDate=2020-03-06T02:58:16Z &ToDate=2020-03-17T02:26:28Z &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -7361,6 +8723,8 @@ Updates a filter rule for message routing.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7375,6 +8739,8 @@ This operation uses only common request headers. For more information, see Commo
 | FilterRule | Strin g | Quer y | Yes | {"field":"status","operator ":"=","value":"active"} | The filter rule. |
 | FilterPrope rty | Strin g | Quer y | No | Date | The condition for filtering fields. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -7386,20 +8752,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateRouterFilterRule &OnsRegionId=hangzhou &PreventCache=23342424234 &FilterRule={"field":"status","operator":"=","value":"active"}
+http(s)://[Endpoint]/?Action=UpdateRouterFilterRule &OnsRegionId=hangzhou &PreventCache=23342424234 &FilterRule={"field":"status","operator":"=","value":"active"} &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7413,6 +8785,8 @@ Updates the configuration of a cloud router task in ApsaraMQ for RocketMQ.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7423,6 +8797,8 @@ This operation uses common request headers. No special request headers are requi
 | FilterType | Strin g | Quer y | No | Tag | The message filtering type. |
 | FilterRule | Strin g | Quer y | Yes | {"field":"status","operator ":"=","value":"active"} | The filter rule. |
 | FilterPrope rty | Strin g | Quer y | No | Status | Filters the role field in the query results, such as administrator or regular user. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7435,20 +8811,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The data returned. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateCloudRouterTask &OnsRegionId=hangzhou &PreventCache=453453535 &FilterRule={"field":"status","operator":"=","value":"active"}
+http(s)://[Endpoint]/?Action=UpdateCloudRouterTask &OnsRegionId=hangzhou &PreventCache=453453535 &FilterRule={"field":"status","operator":"=","value":"active"} &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7462,6 +8844,8 @@ Stops a message routing task.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7469,6 +8853,8 @@ This operation uses common request headers. No special request headers are requi
 | PreventCa che | Long | Quer y | Yes | 342342342 | Prevents the browser from caching page content. This ensures that the latest data is retrieved from the server for each request. |
 | TaskId | Strin g | Quer y | No | 123456 | The task ID. |
 | TaskKey | Strin g | Quer y | No | EX001 | The task key. |
+
+**Response parameters**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -7481,20 +8867,26 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The response data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=StopRouterTask &OnsRegionId=region123 &PreventCache=342342342
+http(s)://[Endpoint]/?Action=StopRouterTask &OnsRegionId=region123 &PreventCache=342342342 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7515,6 +8907,8 @@ This operation uses only common request headers. For more information, see Commo
 | PreventCa che | Long | Quer y | Yes | 234234242 | A timestamp used to prevent the client or server from caching the response. This ensures that each request retrieves the latest content. |
 | CloudRout erTaskId | Strin g | Quer y | No | task12345 | The unique ID of the cloud router task. This ID is used to track and manage a specific routing task. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7527,17 +8921,21 @@ This operation uses only common request headers. For more information, see Commo
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=StopCloudRouterTask &OnsRegionId=shenzhen &PreventCache=234234242
+http(s)://[Endpoint]/?Action=StopCloudRouterTask &OnsRegionId=shenzhen &PreventCache=234234242 &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7551,6 +8949,8 @@ Starts a message routing task.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7560,6 +8960,8 @@ This operation uses common request headers. No special request headers are requi
 | PreventCa che | Long | Quer y | Yes | 4242342 | Prevents the browser or server from using cached data. This ensures that each request retrieves the latest content. |
 | TaskId | Strin g | Quer y | No | 123456 | The task ID. |
 | TaskKey | Strin g | Quer y | No | EX003 | The task key. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7573,17 +8975,21 @@ This operation uses common request headers. No special request headers are requi
 Example request
 
 ```
-http(s)://[Endpoint]/?Action=StartRouterTask &OnsRegionId=Region001 &PreventCache=4242342
+http(s)://[Endpoint]/?Action=StartRouterTask &OnsRegionId=Region001 &PreventCache=4242342 &<Common request parameters>
 ```
 
-Example of a successful response
+Example of a successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7597,6 +9003,8 @@ Starts an internal routing task in ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7604,6 +9012,8 @@ This operation uses only common request headers. For more information, see Commo
 
 | TaskId | Long | Quer y | No | 123456 | The task ID. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7614,20 +9024,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=StartRouterInnerTask &OnsRegionId=REGION01
+http(s)://[Endpoint]/?Action=StartRouterInnerTask &OnsRegionId=REGION01 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7641,12 +9057,16 @@ Starts a cloud routing task in ApsaraMQ for RocketMQ.
 
 This operation uses only common request headers. For more information, see Common parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The ID of the region. |
 | OnsRegion Id | Strin g | Quer y | Yes | Region001 | The identifier of a specific business group or geographic area. This parameter is used in Message Service to differentiate configurations or resources in different regions. |
 | PreventCa che | Long | Quer y | Yes | 3242342342 | A parameter that prevents the browser from caching page content. This ensures that each request retrieves the latest data from the server. |
 | CloudRout erTaskId | Strin g | Quer y | No | task12345 | The unique ID of a routing configuration update task. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7659,20 +9079,26 @@ This operation uses only common request headers. For more information, see Commo
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &PreventCache=3242342342
+http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &PreventCache=3242342342 &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7685,6 +9111,8 @@ This API operation searches for message routing tasks.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7703,6 +9131,8 @@ This operation uses common request headers. No special request headers are requi
 | PageSize | Integ er | Quer y | Yes | 10 | The number of entries to return on each page for a paged query. Default value: 10. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in the ONS service. This ID distinguishes different message session connections. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | [{}] | The returned data. |
@@ -7712,20 +9142,26 @@ This operation uses common request headers. No special request headers are requi
 | Message | String | success | Additional information. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=SearchRouterTask &OnsRegionId=region123 &PreventCache=234234234 &PageNo=1 &PageSize=10
+http(s)://[Endpoint]/?Action=SearchRouterTask &OnsRegionId=region123 &PreventCache=234234234 &PageNo=1 &PageSize=10 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7739,6 +9175,8 @@ Adds an internal routing configuration to ApsaraMQ for RocketMQ.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7746,6 +9184,8 @@ This operation uses common request headers. No special request headers are requi
 | OnsRegion Id | Strin g | Quer y | Yes | REGION01 | The unique ID of a region, such as East China or North China. This ID distinguishes deployments in different geographical areas within Message Service. |
 |---|---|---|---|---|---|
 | OnsAddr | Strin g | Quer y | Yes | 192.168.1.100:9876 | The IP address and port number of a running Open Notification Service (ONS) server. This is used for communication in Message Service. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7756,10 +9196,12 @@ This operation uses common request headers. No special request headers are requi
 | Data | String | [{}] | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=AddRouterInnerConfig &OnsRegionId=REGION01 &OnsAddr=192.168.1.100:9876
+http(s)://[Endpoint]/?Action=AddRouterInnerConfig &OnsRegionId=REGION01 &OnsAddr=192.168.1.100:9876 &<Common request parameters>
 ```
 
 Sample success response
@@ -7767,7 +9209,11 @@ Sample success response
 ```json
  "Total":1,
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ##### 3.1.6.13 VPC management
 
@@ -7778,6 +9224,8 @@ Create an API interface for a single VPC tunnel instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7792,6 +9240,8 @@ This operation uses only common request headers. For more information, see Commo
 | Cluster | Strin g | Quer y | Yes | slbCluster-A-20231203- 005b | The cluster name. |
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7800,17 +9250,23 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateVpcTunnelInstanceSingleTunnel &OnsRegionId=region3 &PreventCache=3223424234 &VpcId=vpc-4uftp58qtzn7t663xajtj &VpcName=Vpc-1 &VSwitchId=vsw-bp1s5fnvk4gn2tws0**** &Cluster=slbCluster-A-20231203-005b &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=CreateVpcTunnelInstanceSingleTunnel &OnsRegionId=region3 &PreventCache=3223424234 &VpcId=vpc-4uftp58qtzn7t663xajtj &VpcName=Vpc-1 &VSwitchId=vsw-bp1s5fnvk4gn2tws0**** &Cluster=slbCluster-A-20231203-005b &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
 Sample response
 
 ```json
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.13.2 DeleteVpcTunnelInstanceSingleTunnel
 
@@ -7819,6 +9275,8 @@ Deletes the specified VPC tunnel instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7832,6 +9290,8 @@ This operation uses only common request headers. For more information, see Commo
 | InstanceId | Strin g | Quer y | Yes | bastionhost-12****** | The instance ID. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7840,17 +9300,25 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information |
 | Data | String | [{}] | The data returned. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DeleteVpcTunnelInstanceSingleTunnel &OnsRegionId=REGION01 &PreventCache=23423424 &VpcId=vpc-4uftp58qtzn7t663xajtj &Cluster=slbCluster-A-20231203-005b &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=DeleteVpcTunnelInstanceSingleTunnel &OnsRegionId=REGION01 &PreventCache=23423424 &VpcId=vpc-4uftp58qtzn7t663xajtj &Cluster=slbCluster-A-20231203-005b &InstanceId=bastionhost-12****** &<Common request parameters>
 ```
 
-Example of a successful response
+Example of a successful response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.13.3 QueryVpcTunnelTunnelSwitch
 
@@ -7859,6 +9327,8 @@ The API that queries the status of the VPC tunnel switch.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7870,6 +9340,8 @@ This operation uses only common request headers. For more information, see Commo
 | TunnelTyp e | Strin g | Quer y | Yes | Any tunnel _ | The tunnel type. |
 | Force | Bool ean | Quer y | Yes | false | Specifies whether to force the operation. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7880,19 +9352,25 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | Additional information. |
 | Data | String | [{}] | The returned data. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryVpcTunnelTunnelSwitch &OnsRegionId=Region001 &PreventCache=342342342 &Cluster=slbCluster-A-20231203-005b &TunnelType=Any_tunnel &Force=false
+http(s)://[Endpoint]/?Action=QueryVpcTunnelTunnelSwitch &OnsRegionId=Region001 &PreventCache=342342342 &Cluster=slbCluster-A-20231203-005b &TunnelType=Any_tunnel &Force=false &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7906,6 +9384,8 @@ Queries a list of individual tunnels in a VPC tunnel instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -7915,6 +9395,8 @@ This operation uses common request headers. No special request headers are requi
 | VSwitchId | Strin g | Quer y | No | vsw- bp1s5fnvk4gn2tws0**** | The vSwitch ID. |
 | Cluster | Strin g | Quer y | Yes | slbCluster-A-20231203- 005b | The cluster name. |
 | InstanceId | Strin g | Quer y | No | bastionhost-12****** | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7926,19 +9408,25 @@ This operation uses common request headers. No special request headers are requi
 | Code | Integer | 200 | The status of the API operation or a POP error code. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryVpcTunnelInstanceSingleTunnelList &OnsRegionId=region123 &PreventCache=2342342 &Cluster=slbCluster-A-20231203-005b
+http(s)://[Endpoint]/?Action=QueryVpcTunnelInstanceSingleTunnelList &OnsRegionId=region123 &PreventCache=2342342 &Cluster=slbCluster-A-20231203-005b &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -7960,6 +9448,8 @@ This operation uses only common request headers. For more information, see Commo
 | OnsRegion Id | Strin g | Quer y | Yes | region123 | The region identifier of the Ons service, which specifies the geographic region where the resource is located. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | A unique ID that identifies a client session in the Message Queue service. It is used to track and manage the sending and receiving of messages. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -7974,13 +9464,17 @@ Sample request
 http(s)://[Endpoint]/?Action=QueryMetaData &OnsRegionId=region123
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -7994,6 +9488,8 @@ Queries common data for a specified region. This data includes configuration inf
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -8003,6 +9499,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID of a client session in Open Notification Service (ONS). It distinguishes different message session connections. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -8011,18 +9509,24 @@ This operation uses only common request headers. For more information, see Commo
 | Message | Map | {} | Additional information. |
 | Data | Map | {} | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryCommonRegionData &OnsRegionId=Region001 &PreventCache=21312313
+http(s)://[Endpoint]/?Action=QueryCommonRegionData &OnsRegionId=Region001 &PreventCache=21312313 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format
 
 ```json
  "Message":{},
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
+
+`}`
 
 ###### 3.1.6.14.3 QueryRegionList
 
@@ -8032,12 +9536,16 @@ Query the list of regions supported by the ApsaraMQ for RocketMQ.
 
 This operation does not have special request headers. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | OnsRegion Id | Strin g | Quer y | Yes | REGION 001 _ | The identifier of a specific business group or geographic area. This parameter is used in Message Service to differentiate configurations or resources in different regions. |
 | PreventCa che | Long | Quer y | Yes | 86676756456465 | Prevents the browser from caching resources and forces each request to retrieve the latest content from the server. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in Message Service. It is used to track and manage the sending and receiving of messages. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8049,19 +9557,25 @@ This operation does not have special request headers. For more information about
 | Code | Integer | 200 | The API status or a POP error code. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=QueryRegionList &OnsRegionId=REGION_001 &PreventCache=86676756456465
+http(s)://[Endpoint]/?Action=QueryRegionList &OnsRegionId=REGION_001 &PreventCache=86676756456465 &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":"[{}]",
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
@@ -8075,12 +9589,16 @@ Retrieves a list of console URLs for each region. You can use these URLs to navi
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | OnsRegion Id | Strin g | Quer y | Yes | REGION 001 _ | The identifier of a specific business group or geographic area. This parameter is used in Message Service to differentiate configurations or resources in different regions. |
 | PreventCa che | Long | Quer y | Yes | true | Prevents the browser from caching content. This ensures that each request retrieves the latest data from the server. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The session ID used to track and manage the user's session status in Open Notification Service (ONS). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8092,19 +9610,25 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | Data | Map | {} | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=QueryRegionConsoleUrlList &OnsRegionId=REGION_001 &PreventCache=true
+http(s)://[Endpoint]/?Action=QueryRegionConsoleUrlList &OnsRegionId=REGION_001 &PreventCache=true &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
@@ -8120,6 +9644,8 @@ Creates a reset task for a specified topic and consumer group.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -8134,6 +9660,8 @@ This operation uses only common request headers. For more information, see Commo
 | OffsetTime stamp | Long | Quer y | Yes | 1696845600 | The UNIX timestamp. |
 | AllUnitInfo | Strin g | Quer y | Yes | {"unit id": "U001", _ "name": "infantry", "attack": 10, "defense": 5, "health": 50} | Information about all unit types. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -8145,10 +9673,12 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCache=24232424324 &GroupId=GID-1 &Topic=123456 &UnitRuleVersion=3.0.0 &OffsetTimestamp=1696845600 &AllUnitInfo={"unit_id": "U001", "name": "infantry", "attack": 10, "defense": 5, "healt h": 50}
+http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCache=24232424324 &GroupId=GID-1 &Topic=123456 &UnitRuleVersion=3.0.0 &OffsetTimestamp=1696845600 &AllUnitInfo={"unit_id": "U001", "name": "infantry", "attack": 10, "defense": 5, "healt h": 50} &<Common request parameters>
 ```
 
 Sample response
@@ -8161,6 +9691,8 @@ Queries the execution status and details of a specified unit reset task.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -8169,6 +9701,8 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|---|---|
 | PreventCa che | Long | Quer y | No | true | Enables the cache prevention feature. This ensures that each request retrieves the latest data from the server and avoids using the local cache. |
 | TaskId | Strin g | Quer y | Yes | 123456 | The task ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8179,20 +9713,26 @@ This operation uses common request headers. For more information, see Common req
 | Data | Map | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=QueryUnitResetTask &OnsRegionId=region1 &TaskId=123456 &Common request parameters
 ```
 
-Sample response
+Sample response `{`
 
 ```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "Message":"success",
  "Total":1,
  "Data":{},
+ "Code":200,
+ "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
@@ -8622,7 +10162,7 @@ Syntax: public ONSClientException() Description: Uses the default exception cons
 
 **using parameters (1)**
 
-Syntax: public ONSClientException(String message) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+Syntax: public ONSClientException(String message) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8632,7 +10172,7 @@ Syntax: public ONSClientException(String message) Description: Uses the exceptio
 
 **using parameters (2)**
 
-Syntax: public ONSClientException(Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+Syntax: public ONSClientException(Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8642,7 +10182,7 @@ Syntax: public ONSClientException(Throwable cause) Description: Uses the excepti
 
 **using parameters (3)**
 
-Syntax: public ONSClientException(String message, Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+Syntax: public ONSClientException(String message, Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8663,7 +10203,7 @@ Syntax: public SendResult() Description: Uses the default constructor to create 
 
 ###### 4.1.5.5.2.2 getMessageId
 
-Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none
+Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8671,7 +10211,7 @@ Syntax: public long getMessageId() Description: Queries the ID of a message that
 
 ###### 4.1.5.5.2.3 getTopic
 
-Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none
+Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8693,11 +10233,13 @@ You can use a producer instance to send regular messages, scheduled messages, or
 
 ###### 4.1.5.5.3.2 send
 
-Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown.
+Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to send. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -8705,7 +10247,7 @@ Syntax: public SendResult send(Message message) Description: Sends a regular mes
 
 ###### 4.1.5.5.3.3 sendOneway
 
-Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker.
+Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8717,7 +10259,7 @@ Response parameters: none
 
 ###### 4.1.5.5.3.4 sendAsync
 
-Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode.
+Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8728,7 +10270,7 @@ Response parameters: none
 
 ###### 4.1.5.5.3.5 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8736,7 +10278,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.5.3.6 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8754,7 +10296,7 @@ Syntax: public void shutdown() Description: Disables a producer instance from se
 
 ###### 4.1.5.5.4.1 send
 
-Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2.
+Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8762,13 +10304,15 @@ Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Obje
 | executer | LocalTransactionExecuter | The local transaction executor. For more information, see the LocalTransactionExecuter class. |
 | arg | Object | A custom parameter. This parameter can be used for the local transaction executor. |
 
+Response parameters
+
 | Parameter | Description |
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
 ###### 4.1.5.5.4.2 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8778,7 +10322,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.5.4.3 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8794,12 +10338,14 @@ Syntax: public void shutdown() Description: Disables a producer instance from se
 
 ###### 4.1.5.5.4.6 LocalTransactionExecuter
 
-execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications.
+execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The transactional message that you want to send. |
 | arg | Object | The custom parameter that is specified by the send method. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -8822,12 +10368,14 @@ The result of a local transaction that corresponds to a half message. The transa
 
 ###### 4.1.5.5.5.1 send
 
-Syntax: SendResult send(Message message, String shardingKey) Description: Sends an ordered message.
+Syntax: SendResult send(Message message, String shardingKey) Description: Sends an ordered message. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The ordered message that you want to send. |
 | shardingKey | String | The selectivity factor for the ordered message. A specific message queue is selected based on the value of the shardingKey parameter. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -8843,7 +10391,7 @@ Syntax: public boolean isStarted() p () Description: Checks whether an instance 
 
 ###### 4.1.5.5.5.3 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8871,7 +10419,7 @@ You can use a consumer instance to subscribe to regular messages, transactional 
 
 ###### 4.1.5.6.2.2 subscribe
 
-Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages.
+Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -8893,7 +10441,7 @@ Response parameters: none
 
 ###### 4.1.5.6.2.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8901,7 +10449,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.6.2.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -8923,12 +10471,14 @@ A consumer registers a message listener to subscribe to messages. Thread securit
 
 ###### 4.1.5.6.3.2 consume
 
-Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to consume. |
 | context | ConsumeContext | The context of the consumption. For more information, see ConsumeContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -8953,6 +10503,8 @@ Syntax: public static Action valueOf(String name) Description: Returns an enumer
 |---|---|---|
 | name | String | The name of the enumerated constant to return. |
 
+Response parameters
+
 | Parameter | Description |
 |---|---|
 | Action | The enumerated constant with the specified name that is returned. |
@@ -8966,7 +10518,7 @@ Exceptions
 
 ###### 4.1.5.6.4.3 values
 
-Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -9001,7 +10553,7 @@ Response parameters: none
 
 ###### 4.1.5.6.6.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -9011,7 +10563,7 @@ Response parameters: none
 
 ###### 4.1.5.6.6.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -9041,12 +10593,14 @@ A consumer registers an ordered message listener to subscribe to ordered message
 
 ###### 4.1.5.6.7.2 consume
 
-Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to consume. |
 | context | ConsumeOrderContext | The context of the consumption. For more information, see ConsumeOrderContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -9067,11 +10621,13 @@ The result of the consumption that is returned for an ordered message. Enumerati
 
 ###### 4.1.5.6.8.2 valueOf
 
-Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
+Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | name | String | The name of the enumerated constant to return. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -9086,7 +10642,7 @@ Exceptions
 
 ###### 4.1.5.6.8.3 values
 
-Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -9112,7 +10668,7 @@ Response parameters: none
 
 ###### 4.1.5.6.9.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -9122,7 +10678,7 @@ Response parameters: none
 
 ###### 4.1.5.6.9.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -9130,7 +10686,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.5.6.9.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -9152,12 +10708,14 @@ A consumer registers a batch message listener to consume multiple messages at a 
 
 ###### 4.1.5.6.10.2 consume
 
-Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The messages that you want to consume. |
 | context | ConsumeContext | The context of the consumption. For more information, see ConsumeContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|

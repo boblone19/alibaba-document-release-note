@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 65
 source_pdf: "e619bdcaf233e7a9_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide 20251106.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide
@@ -359,6 +359,8 @@ GetOverviewRequest getOverviewRequest = sdkManager.getModel(GetOverviewRequest.c
     e.printStackTrace();
 ```
 
+`}`
+
 #### 3.2.4 Handle errors
 
 If the server or SDK encounters an error when you use the Java SDK, the SDK returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Java SDK. You only need to handle server errors based on error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an error returned by the SDK. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
@@ -383,6 +385,8 @@ try {
 } catch (ServerException e) {
     e.printStackTrace();
 ```
+
+`}`
 
 ## 4 API Reference
 
@@ -492,7 +496,7 @@ Sample requests
 GET /openapi/popResource/aso/incident/api/alert/list HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "msg": "\"\"",
@@ -517,6 +521,8 @@ XXXX\",\"service\":\"tianji\",\"serverRole\":\"\",\"hostname\":\"\",\"checkInter
     "version": "v1",
     "errorStack": "\"\""
 ```
+
+`}`
 
 #### 4.1.2 GetAlertList
 
@@ -627,7 +633,7 @@ Sample requests
 GET /openapi/popResource/aso/fullview/popapi/getAlertList HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -638,6 +644,11 @@ Sample success responses `JSON` format
         "pageSize": "15",
         "currentPage": "1",
         "result": [
+```
+
+`{`
+
+```json
                 "lastTime": "1295964673",
                 "cluster": "OssXX-XX-XX",
                 "metricName": "oss_service-cluster_error_code_from_chiji",
@@ -672,6 +683,11 @@ OSS cluster exceeds the threshold 1,000 ms.",
                 "dimensions": "{\\\"cluster\\\":\\\"Oss2L54Cluster-X-XX-XX\\\",\\\"serve
 rrole\\\":\\\"oss-service.OssClusterMonitor#\\\",\\\"host\\\":\\\"vm010017XXXX\\\"}",
                 "contacts": [
+```
+
+`{`
+
+```json
                         "product": "\"\"",
                         "role": "\"\"",
                         "dutyStartTime": "1592358292430",
@@ -693,7 +709,7 @@ rrole\\\":\\\"oss-service.OssClusterMonitor#\\\",\\\"host\\\":\\\"vm010017XXXX\\
                         "levels": "null"
 ```
 
-`]` `]` `},`
+`}` `]` `}` `]` `},`
 
 ```json
     "level": "\"\"",
@@ -789,7 +805,7 @@ Sample requests
 GET /openapi/popResource/aso/inventory/openapi/getOverview HTTP/1.1 OpsProduct: ASOOps
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -805,13 +821,18 @@ Sample success responses `JSON` format
                 "zoneId": "132",
                 "zoneName": "ECS-XX-XX-XX-X",
                 "flavors": [
+```
+
+`{`
+
+```json
                         "flavor": "ecs.sn1ne.8xlarge",
                         "totalAmount": "8",
                         "vendibleAmount": "5",
                         "soldAmount": "3"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
         "rds": {
@@ -825,7 +846,7 @@ Sample success responses `JSON` format
                 "disk_usage": "33.23232"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "sls": {
@@ -837,7 +858,7 @@ Sample success responses `JSON` format
                 "disk_usage": "7.9219303"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "ots": {
@@ -849,7 +870,7 @@ Sample success responses `JSON` format
                 "disk_usage": "10.840136"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "nas": {
@@ -872,7 +893,7 @@ Sample success responses `JSON` format
                 "disk_usage": "11.195"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "level": "\"\"",
@@ -880,6 +901,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.2 GetSlbInventoryInfo
 
@@ -922,7 +945,7 @@ Sample requests
 GET /openapi/popResource/aso/inventory/openapi/getSlbInventoryInfo HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -935,6 +958,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.3 GetEcsInventoryList
 
@@ -982,23 +1007,33 @@ Sample requests
 GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryList HTTP/1.1 OpsProduct: ASOOps
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
     "code": "200",
     "cost": "30",
     "data": [
+```
+
+`{`
+
+```json
             "zoneId": "131",
             "zoneName": "ECS-XX-XX-XX",
             "flavors": [
+```
+
+`{`
+
+```json
                     "flavor": "ecs.mn4v2.2xlarge",
                     "totalAmount": "48",
                     "vendibleAmount": "44",
                     "soldAmount": "4"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
     "level": "\"\"",
@@ -1006,6 +1041,8 @@ Sample success responses `JSON` format
     "message": "\"\"",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.4 GetNasInventoryInfo
 
@@ -1066,6 +1103,8 @@ Sample success responses `JSON` format
     "message": "\"\"",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.5 GetOssInventoryInfo
 
@@ -1132,7 +1171,7 @@ Sample success responses `JSON` format
             "disk_usage": "11.195"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "level": "\"\"",
@@ -1140,6 +1179,8 @@ Sample success responses `JSON` format
     "message": "\"\"",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.6 GetOtsInnerInventoryInfo
 
@@ -1203,7 +1244,7 @@ Sample success responses `JSON` format
             "disk_usage": "10.840136"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "level": "\"\"",
@@ -1211,6 +1252,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.7 GetRdsInventoryInfo
 
@@ -1293,7 +1336,7 @@ Sample success responses `JSON` format
             "mem_total": "200.0"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "level": "\"\"",
@@ -1301,6 +1344,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "\"\""
 ```
+
+`}`
 
 #### 4.2.8 GetSlsInnerInfo
 
@@ -1364,7 +1409,7 @@ Sample success responses `JSON` format
             "disk_usage": "7.9219303"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "level": "\"\"",
@@ -1372,6 +1417,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "\"\""
 ```
+
+`}`
 
 ### 4.3 Resource management
 
@@ -1427,7 +1474,7 @@ Sample requests
 GET /openapi/popResource/aso/cmdb/machines/getMachineList HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "return_subCode": "null",
@@ -1442,6 +1489,8 @@ Sample success responses `JSON` format
     "errorMsg": "null",
     "responseCode": "200"
 ```
+
+`}`
 
 #### 4.3.2 GetClusterListByProduct
 
@@ -1491,7 +1540,7 @@ Sample requests
 GET /openapi/popResource/aso/cmdb/machines/getClusterListByProduct HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "return_subCode": "\"\"",
@@ -1506,6 +1555,8 @@ orkBaseServiceCluster-A-20220209-0014\",\"StandardCloudCluster-A-20220209-0015\"
     "errorMsg": "\"\"",
     "responseCode": "200"
 ```
+
+`}`
 
 #### 4.3.3 GetProductList
 
@@ -1552,7 +1603,7 @@ Sample requests
 GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1 OpsProduct: Common request header
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
     "return_subCode": "null",
@@ -1567,6 +1618,8 @@ Sample success responses `JSON` format
     "errorMsg": "\"\"",
     "responseCode": "200"
 ```
+
+`}`
 
 #### 4.3.4 GetCpuMetrics
 
@@ -1612,11 +1665,17 @@ GET /openapi/popResource/aso/psm/metrics/cpu HTTP/1.1
 
 Sample requests
 
-```json
-GET /openapi/popResource/aso/psm/metrics/cpu HTTP/1.1 OpsProduct: Common request header "action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+GET /openapi/popResource/aso/psm/metrics/cpu HTTP/1.1 OpsProduct: Common request header
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+"action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -1634,6 +1693,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "null"
 ```
+
+`}`
 
 #### 4.3.5 GetDiskMetrics
 
@@ -1679,11 +1740,17 @@ GET /openapi/popResource/aso/psm/metrics/disk HTTP/1.1
 
 Sample requests
 
-```json
-GET /openapi/popResource/aso/psm/metrics/disk HTTP/1.1 OpsProduct: Common request header "action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+GET /openapi/popResource/aso/psm/metrics/disk HTTP/1.1 OpsProduct: Common request header
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+"action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -1701,6 +1768,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "null"
 ```
+
+`}`
 
 #### 4.3.6 GetIoMetrics
 
@@ -1746,11 +1815,17 @@ GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1
 
 Sample requests
 
-```json
-GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1 "hostname": "m54a01212.cloud.a04.amtest11", "startTime": "1638348739166", "endTime": "1638352339166", "action": "util_avg"
+```
+GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+"hostname": "m54a01212.cloud.a04.amtest11", "startTime": "1638348739166", "endTime": "1638352339166", "action": "util_avg"
+```
+
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -1763,6 +1838,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "null"
 ```
+
+`}`
 
 #### 4.3.7 GetLoadMetrics
 
@@ -1808,11 +1885,17 @@ GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1
 
 Sample requests
 
-```json
-GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1 "hostname": "m54a01212.cloud.a04.amtest11", "startTime": "1638348739166", "endTime": "1638352339166", "action": "load1_avg"
+```
+GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+"hostname": "m54a01212.cloud.a04.amtest11", "startTime": "1638348739166", "endTime": "1638352339166", "action": "load1_avg"
+```
+
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -1830,6 +1913,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "null"
 ```
+
+`}`
 
 #### 4.3.8 GetTrafficMetrics
 
@@ -1877,11 +1962,17 @@ GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1
 
 Sample requests
 
-```json
-GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1 OpsProduct: Common request header "action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1 OpsProduct: Common request header
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+"action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -1894,6 +1985,8 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "null"
 ```
+
+`}`
 
 #### 4.3.9 GetMemMetrics
 
@@ -1941,11 +2034,17 @@ GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1
 
 Sample requests
 
-```json
-GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1 OpsProduct: Common request header "action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1 OpsProduct: Common request header
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+"action": "", "endTime": "", "hostname": "", "startTime": ""
+```
+
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "successResponse": "true",
@@ -1963,3 +2062,5 @@ Sample success responses `JSON` format
     "message": "success",
     "key": "null"
 ```
+
+`}`

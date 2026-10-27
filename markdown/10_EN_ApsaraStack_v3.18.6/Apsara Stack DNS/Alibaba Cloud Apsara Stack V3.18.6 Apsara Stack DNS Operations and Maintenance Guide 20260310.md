@@ -5,7 +5,7 @@ doc_version: "20260310"
 pdf_pages: 19
 source_pdf: "380478308b7a9fb8_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Operations and Maintenance Guide 20260310.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%A7%A3%E6%9E%90DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20DNS%20Operations%20and%20Maintenance%20Guide%2020260310.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack DNS Operations and Maintenance Guide
@@ -47,6 +47,9 @@ This topic describes how users such as O&M engineers log on to the Apsara Uni-ma
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -66,6 +69,8 @@ If you enter an invalid password for three consecutive times, the system enables
 ### 2.1 opsDNS management
 
 #### 2.1.1 opsDNS monitoring
+
+**Procedure**
 
 ## 1 Log on to the Apsara Uni-manager Operations Console.
 
@@ -93,6 +98,9 @@ CNAME record to a domain name, remove other records from the domain name. A doma
 5. You cannot add CNAME records to defined zones in the cloud, such as tbsite.net.
 6. You can add domain names only to defined zones in the cloud. You cannot register a
 domain name for a zone outside the cloud.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **opsDNS Management** >
@@ -142,6 +150,9 @@ Find a node that you want to manage and click **Description** in the **Actions**
 #### 2.2.2 Node management (cross-cloud)
 
 The Node Management page displays the DNS servers across clouds. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Tenant DNS Management** >
@@ -214,6 +225,9 @@ You can manage the API system in the Apsara Infrastructure Management Framework 
 **Background information**
 
 To determine whether a service role is running as expected, follow these steps:
+
+**Procedure**
+
 1. In the Apsara Infrastructure Management Framework console, check whether the API is at
 desired state. i. Log on to the Apsara Infrastructure Management Framework console. ii. In the top navigation bar, choose **Tasks > Deployment Summary** to open the
 **Deployment Summary** page.
@@ -227,6 +241,8 @@ command, and check whether the command output is "success". i. Log on to the Aps
 
 #### 3.3.2 Troubleshooting
 
+**Procedure**
+
 1. View logs stored in /home/admin/gdns/logs/.
 2. Check whether the API service is running. If an error occurs when you call an API operation,
 check the log to troubleshoot the error.
@@ -236,6 +252,8 @@ check the log to troubleshoot the error.
 ### 3.4 DNS system
 
 #### 3.4.1 Check whether a server role is normal
+
+**Procedure**
 
 1. In the Apsara Infrastructure Management Framework console, check whether the Apsara
 Stack DNS system is in its final state. i. Log on to the Apsara Infrastructure Management Framework console. ii. In the top navigation bar, choose **Tasks > Deployment Summary**. iii. On the **Deployment Summary** page, click **Deployment Details**. iv. On the **Deployment Details** page, find **dnsProduct**. v. Click **Details** in the **Deployment Progress** column to check whether the
@@ -249,6 +267,8 @@ Figure 2. Cluster Operation and Maintenance Center v. On the Cluster Operation a
 command, and check whether the command output is 0. i. Log on to the Apsara Infrastructure Management Framework console. ii. Choose **Operations > Machine Operations**. iii. Select a server and click **Terminal** to log on to the server. iv. Run the **python /bind/hello/check_health.py|echo $?** command on each server that is assigned with the **bindServerRole#** role and check whether the command output is 0. Figure 3. Verifying the server
 
 #### 3.4.2 Troubleshooting
+
+**Procedure**
 
 1. Check the operational logs of the BIND service that are stored in the
 /var/named/chroot/var/log/ directory, and determine whether errors have occurred.
@@ -277,6 +297,9 @@ results with information that is retrieved from multiple other systems.
 **Background information**
 
 You can view task records and execution results.
+
+**Procedure**
+
 1. Log on to the API server to view database connection details.
 2. Run the **use genesisdns** command of MySQL to log on to the database and then run the
 select * from task command to retrieve the progress and status of each task.

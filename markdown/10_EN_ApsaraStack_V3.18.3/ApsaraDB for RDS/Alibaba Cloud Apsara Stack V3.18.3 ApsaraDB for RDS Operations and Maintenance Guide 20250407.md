@@ -5,7 +5,7 @@ doc_version: "20250407"
 pdf_pages: 41
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 ApsaraDB for RDS Operations and Maintenance Guide 20250407.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20ApsaraDB%20for%20RDS%20Operations%20and%20Maintenance%20Guide%2020250407.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 ApsaraDB for RDS Operations and Maintenance Guide 20250407
@@ -159,6 +159,9 @@ This topic describes how to log on to the ApsaraDB Operations and Maintenance Sy
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from a deployment engineer or an administrator. The URL of the Apsara Uni-manager Operations Console is in the format of ops.asconsole.intranet-domain-id.com. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -180,7 +183,11 @@ If this is the first time you log on to the Apsara Uni-manager Operations Consol
 
 ### 3.1 Homepage
 
-The homepage of ApsaraDB Operations and Maintenance System provides an overview of your databases. You can view the basic information and exceptions, search for instances, and use the advanced search features. Log on to the ApsaraDB Operations and Maintenance System console. On the homepage that is displayed, you can find and handle ApsaraDB RDS alerts in time, and continuously optimize existing metrics. Click the number next to the exception information to view the exception details. For example, if you click **Backup exception** in the **Backup information** section, you can view the all the exceptions on RDS instances on the page that appears. You can click the exceptions and handle them accordingly.
+The homepage of ApsaraDB Operations and Maintenance System provides an overview of your databases. You can view the basic information and exceptions, search for instances, and use the advanced search features.
+
+**Procedure**
+
+Log on to the ApsaraDB Operations and Maintenance System console. On the homepage that is displayed, you can find and handle ApsaraDB RDS alerts in time, and continuously optimize existing metrics. Click the number next to the exception information to view the exception details. For example, if you click **Backup exception** in the **Backup information** section, you can view the all the exceptions on RDS instances on the page that appears. You can click the exceptions and handle them accordingly.
 
 ### 3.2 Instance management
 
@@ -189,6 +196,9 @@ The homepage of ApsaraDB Operations and Maintenance System provides an overview 
 ##### 3.2.1.1 Migrate instances in batch
 
 This topic describes how to migrate multiple instances at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -211,6 +221,9 @@ the details of the migration operations.
 ##### 3.2.1.2 Modify instance parameters in batch
 
 This topic describes how to modify multiple instance parameters at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -233,6 +246,9 @@ You can click **Batch refresh parameter instance successful list** or **Batch re
 ##### 3.2.1.3 Modify DIY parameters in batch
 
 This topic describes how to modify multiple DIY parameters at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -265,6 +281,9 @@ the details of the modified DIY parameters.
 ##### 3.2.1.4 Modify Redis parameters in batch
 
 This topic describes how to modify multiple Redis parameters at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -305,6 +324,9 @@ This topic describes how to manage batch tasks.
 ##### 3.2.1.6 Manage batch task types
 
 This topic describes how to create a type of batch tasks.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -332,6 +354,9 @@ This topic describes how to create a type of batch tasks.
 ##### 3.2.1.7 Manage SQL templates
 
 This topic describes how to create an SQL template.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -360,6 +385,9 @@ This topic describes how to create an SQL template.
 ##### 3.2.2.1 Overview
 
 In the instance list, you can view the information about instances, such as the basic information, data links, databases, and accounts.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 On the Instances page, you can perform the following operations: Click **Batch query** and enter instance names to query multiple instances at a time. Click **Advanced search** and configure parameters such as Database type and Instance status to query instances. Click the name of the instance that you want to view to go to the Basic information page of the instance. You can view the instance information or manage the instance. For more information, see View an instance, Diagnose an instance, Manage emergency response plans, Use the instance dashboard, and Manage instance migration plans.
@@ -367,6 +395,9 @@ On the Instances page, you can perform the following operations: Click **Batch q
 ##### 3.2.2.2 Views instances.
 
 This topic describes how to view information of an instance, such as the basic information and instance performance, on the instance details page.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. Find the required instance and click its name in the **User instance name** column.
@@ -379,6 +410,9 @@ also click the options in the Instance details column to perform operations such
 ##### 3.2.2.3 Instance diagnostics
 
 You can use the instance diagnostics feature to view the performance metrics of an instance.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Instance management** > **Instance List**.
 3. Find the required instance and click its name in the **User instance name** column.
@@ -420,6 +454,9 @@ The performance metrics of an instance vary with the engine, engine version, and
 ##### 3.2.2.4 Manage emergency response plans
 
 This topic describes how to manage emergency response plans for instances.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System** ,
 choose **Instance management > Instance List**.
@@ -434,6 +471,9 @@ the button in the upper part of the page.
 ##### 3.2.2.5 Use the instance dashboard
 
 This topic describes how to view metrics of instances, such as CPU utilization and connection utilization, on the instance dashboard.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System** ,
 choose **Instance management > Instance List**.
@@ -444,6 +484,9 @@ and disk usage of the instances.
 ##### 3.2.2.6 Manage instance migration plans
 
 Instance migration plans can be uploaded by specifying the instances or the IP addresses of hosts. This topic describes how to migrate instances by instance plans.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System** ,
 choose **Instance management > Instance List**.
@@ -470,6 +513,9 @@ You can click **Push success list** or **Deleted list** in the upper part of the
 #### 3.3.1 Create a host
 
 This topic describes how to create a host.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System** ,
 choose **Host management > System host**.
@@ -480,6 +526,9 @@ choose **Host management > System host**.
 #### 3.3.2 Configure hosts in batch
 
 This topic describes how to configure multiple hosts at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, choose **Host management > System host**.
 3. Select the hosts that you want to configure and then click **Batch configuration** in the
@@ -489,6 +538,9 @@ upper part of the page.
 #### 3.3.3 View the details of a host
 
 This topic describes how to view the details of a host.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Host management > System host**.
 3. Search for the host you want to view by its IP address or host name.
@@ -526,6 +578,9 @@ on the page that appears.
 #### 3.4.2 Manage service types
 
 This topic describes how to manage cloud service types.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System.
 2. In the left-side navigation pane, click **Cluster management**.
 3. Click **Service Type Management** in the Cluster management column. The **Service Type**
@@ -535,6 +590,9 @@ Find the target service type and click **Edit** in the **Operation** column to m
 #### 3.4.3 Manage service nodes
 
 This topic describes how to create, modify, or delete a service node.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the Cluster management column, click **Service node management**.
@@ -543,6 +601,9 @@ In the upper part of the page, click **New service node**. In the dialog box tha
 #### 3.4.4 Manage DB configuration templates
 
 This topic describes how to manage DB configuration templates.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the Cluster management column, click **DB configuration template** to go to the **DB**
@@ -552,6 +613,9 @@ In the upper part of the page, click **New DB template**, enter the template inf
 #### 3.4.5 Manage Fangcunshan clusters
 
 This topic describes how to manage Fangcunshan clusters.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the Cluster management column, click **Fangcunshan cluster management** to go to
@@ -569,6 +633,9 @@ column to delete the template.
 #### 3.4.6 Manage locations
 
 This topic describes how to configure the locations of clusters.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the Cluster management column, click **Location** to open the Location page.
@@ -585,6 +652,9 @@ Click **Parameters** next to the required unit, region, zone, or subdomain to ad
 #### 3.5.1 Manage interrupted tasks
 
 This topic describes how to manage interrupted tasks, including user instance tasks, host instance tasks, and host tasks. This topic uses a user instance task as an example to describe how to manage interrupted tasks.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System**
 **console**, click **Task Management**. In the upper-left corner of the **Instance tasks** page,
@@ -866,6 +936,9 @@ on remove other nodes based on your needs.
 #### 6.4.2 Upgrade or restart a cluster
 
 This topic describes how to upgrade or restart a cluster.
+
+**Procedure**
+
 1. Connect to a PerfMaster node and run the following commands to disable its database. If no
 `success` message is returned, repeat the following commands until a `success` message is returned.
 
@@ -957,6 +1030,9 @@ This article describes how to reset node data.
 **Precautions**
 
 This operation deletes all data of a specific node. Monitoring data stored on the node is deleted and cannot be recovered. Proceed with caution.
+
+**Procedure**
+
 1. Connect to the node or Docker container whose data you want to reset and run the
 following command:
 

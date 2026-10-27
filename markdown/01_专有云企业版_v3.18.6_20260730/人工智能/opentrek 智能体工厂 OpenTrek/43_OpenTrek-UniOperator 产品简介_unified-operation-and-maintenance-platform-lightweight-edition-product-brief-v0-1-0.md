@@ -5,22 +5,24 @@ doc_version: "20260729"
 pdf_pages: 11
 source_pdf: "43_OpenTrek-UniOperator 产品简介_unified-operation-and-maintenance-platform-lightweight-edition-product-brief-v0-1-0.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/opentrek/zh/unified-operation-and-maintenance-platform-lightweight-edition-product-brief-v0-1-0.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 智能体工厂 OpenTrek OpenTrek-UniOperator 产品简介
 
-智能体工厂 OpenTrek
+## 目录
 
-## 产品详情
+- 1 产品详情
+- 2 产品价值
+- 3 应用场景
+- 4 功能特性
+- 5 基本概念
 
-## 产品详情
+## 1 产品详情
 
-OpenTrek-UniOperator 是一款面向企业级 Kubernetes 环境的轻量级云管理平台，提供多集群纳管、应用市场、产品部署编排、实例生命周期管理、用户权限管控等一站式运维能力。平台采用 Helm Chart 标准化部署方式，支持在专有云 Kubernetes 环境中快速交付，助力企业在私有化环境中实现高效、统一的产品运维管理。 智能体工厂 OpenTrek
+OpenTrek-UniOperator 是一款面向企业级 Kubernetes 环境的轻量级云管理平台，提供多集群纳管、应用市场、产品部署编排、实例生命周期管理、用户权限管控等一站式运维能力。平台采用 Helm Chart 标准化部署方式，支持在专有云 Kubernetes 环境中快速交付，助力企业在私有化环境中实现高效、统一的产品运维管理。
 
-## 产品价值
-
-## 产品价值
+## 2 产品价值
 
 OpenTrek-UniOperator 具有轻量交付、统一管理、标准化部署、安全可控等核心优势。
 
@@ -38,11 +40,9 @@ OpenTrek-UniOperator 具有轻量交付、统一管理、标准化部署、安�
 
 **安全可控**
 
-基于 JWT 无状态认证与 RBAC 三级角色权限体系（管理员、编辑者、查看者），实现精细化的访问控制。 智能体工厂 OpenTrek
+基于 JWT 无状态认证与 RBAC 三级角色权限体系（管理员、编辑者、查看者），实现精细化的访问控制。
 
-## 应用场景
-
-## 应用场景
+## 3 应用场景
 
 OpenTrek-UniOperator 面向专有云环境下的产品运维管理场景，帮助企业实现多集群环境下产品从导入、部署到运维的全流程管理。
 
@@ -50,11 +50,7 @@ OpenTrek-UniOperator 面向专有云环境下的产品运维管理场景，帮�
 
 **核心能力**
 
-在多 Kubernetes 集群环境下，通过统一运维平台实现产品的集中管理。将产品以 Helm Chart 形式导入应用市场，选择目标集群进行一键部署，平台自动完成预检、组件安装、堆栈校验等全流程编排。部署完成后可在控制台中统一查看所有产品实例的运行状态，并进行版本升级和实例下线等生命周期操作。
-
-## 应用场景
-
-企业在多个专有云集群中部署和运维同类产品的场景。需要将第三方产品快速导入并标准化部署到目标集群的场景。多集群环境下需要统一查看产品实例状态和版本信息的场景。
+在多 Kubernetes 集群环境下，通过统一运维平台实现产品的集中管理。将产品以 Helm Chart 形式导入应用市场，选择目标集群进行一键部署，平台自动完成预检、组件安装、堆栈校验等全流程编排。部署完成后可在控制台中统一查看所有产品实例的运行状态，并进行版本升级和实例下线等生命周期操作。 企业在多个专有云集群中部署和运维同类产品的场景。需要将第三方产品快速导入并标准化部署到目标集群的场景。多集群环境下需要统一查看产品实例状态和版本信息的场景。
 
 **客户价值**
 
@@ -64,19 +60,13 @@ OpenTrek-UniOperator 面向专有云环境下的产品运维管理场景，帮�
 
 **核心能力**
 
-面向无法直连互联网的专有云环境，OpenTrek-UniOperator 提供离线交付能力。安装器支持 Web UI 图形化引导和 CLI 命令行两种部署模式，数据库可选 SQLite（轻量测试）或 MySQL/PostgreSQL（生产环境），支持 linux/amd64 和 linux/arm64 双架构。部署完成后平台自动注册 In-cluster 集群，并通过健康检查接口支持外部监控系统集成。
-
-## 应用场景
-
-金融、政务等强安全要求下的私有化环境产品交付场景。离线或网络受限环境下需要快速部署运维管理平台的场景。需要在 ARM 架构服务器上部署运维管理工具的场景。
+面向无法直连互联网的专有云环境，OpenTrek-UniOperator 提供离线交付能力。安装器支持 Web UI 图形化引导和 CLI 命令行两种部署模式，数据库可选 SQLite（轻量测试）或 MySQL/PostgreSQL（生产环境），支持 linux/amd64 和 linux/arm64 双架构。部署完成后平台自动注册 In-cluster 集群，并通过健康检查接口支持外部监控系统集成。 金融、政务等强安全要求下的私有化环境产品交付场景。离线或网络受限环境下需要快速部署运维管理平台的场景。需要在 ARM 架构服务器上部署运维管理工具的场景。
 
 **客户价值**
 
-轻量级交付、低资源占用、多架构支持，让企业在各种受限环境下都能快速获得统一的运维管理能力，缩短平台上线周期。 智能体工厂 OpenTrek
+轻量级交付、低资源占用、多架构支持，让企业在各种受限环境下都能快速获得统一的运维管理能力，缩短平台上线周期。
 
-## 功能特性
-
-## 功能特性
+## 4 功能特性
 
 OpenTrek-UniOperator 包括集群管理、产品管理、产品实例管理、部署任务管理、镜像仓库配置、用户权限管理六大功能模块，覆盖产品运维全流程。
 
@@ -107,10 +97,6 @@ OpenTrek-UniOperator 包括集群管理、产品管理、产品实例管理、�
 
 **任务管理**
 
-智能体工厂 OpenTrek
-
-## 功能特性
-
 | 功能模块 | 功能描述 |
 |---|---|
 | 多阶段部署编排 | 支持 Pre-installation（预检）、Deploy component（组件部署）、Stack Check（堆栈检查）、Post-installation（后处理）四阶段流程。 |
@@ -140,10 +126,6 @@ OpenTrek-UniOperator 包括集群管理、产品管理、产品实例管理、�
 |---|---|
 | SSO配置 | 管理SAML 2.0单点登录配置，支持外部身份源Idp和应用接入。 |
 
-智能体工厂 OpenTrek
-
-## 功能特性
-
 | 用户管理 | 支持用户的创建、查看、编辑、删除等操作。 默认认证模式为asiam模式，可切换为本地admin账号。 |
 |---|---|
 | 角色权限 | 支持 admin（管理员）、editor（编辑者）、viewer（查看者）三级角色权限体系。 |
@@ -151,11 +133,7 @@ OpenTrek-UniOperator 包括集群管理、产品管理、产品实例管理、�
 | 角色管理 | 维护自定义角色及其权限点。内置角色不可删除，但允许修改其权限点。 |
 | 菜单管理 | 查看菜单详情。 |
 
-智能体工厂 OpenTrek
-
-## 基本概念
-
-## 基本概念
+## 5 基本概念
 
 | 概念 | 说明 |
 |---|---|

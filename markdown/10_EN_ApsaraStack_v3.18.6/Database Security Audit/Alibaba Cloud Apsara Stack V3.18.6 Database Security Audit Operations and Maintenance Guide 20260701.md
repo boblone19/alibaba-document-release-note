@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 29
 source_pdf: "1113405ababc55a3_Alibaba Cloud Apsara Stack V3.18.6 Database Security Audit Operations and Maintenance Guide 20260701"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Database%20Security%20Audit%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Database Security Audit Operations and Maintenance Guide
@@ -110,6 +110,9 @@ No data is available on the audit overview page.
 
 RMAgent is not connected to Database Security Audit. The connection status of RMAgent is abnormal. The application and database are deployed on the same Elastic Compute Service (ECS) instance. RMAgent is not configured to capture loopback packets. RMAgent is deployed on a Windows ECS instance. The application and database are deployed on the same ECS instance, which does not have Npcap installed.
 **Meet the rule audit** is selected as **Audit Options**, and no rules are met.
+
+**Troubleshooting procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Data Security** > **Database Audit**.
 3. On the Database Audit page, find the Database Security Audit instance that you want to
@@ -148,7 +151,11 @@ This topic describes the possible causes and solutions in scenarios where some S
 
 **Possible cause**
 
-Trust rules are configured and met. The number of sessions or SQL statements exceeds the upper limit. The dynamic port feature is enabled for protected Oracle databases. If trust rules are configured for objects such as specific types of operations, client IP addresses, and database users, these objects are not audited. Check whether trust rules are configured. If trust rules are configured for the SQL statements that are not audited, resolve the issue by referring to Solution 1. If the number of sessions or SQL statements exceeds the upper limit supported by the system, no more sessions or SQL statements can be audited. Go to the System Alerts page of the Database Security Audit console and check whether an alert is triggered because the number of sessions or SQL statements exceeds the upper limit. Check whether the version of protected Oracle databases is 9i or 10.1, and whether database servers run on Windows.
+Trust rules are configured and met. The number of sessions or SQL statements exceeds the upper limit. The dynamic port feature is enabled for protected Oracle databases.
+
+**Troubleshooting procedure**
+
+If trust rules are configured for objects such as specific types of operations, client IP addresses, and database users, these objects are not audited. Check whether trust rules are configured. If trust rules are configured for the SQL statements that are not audited, resolve the issue by referring to Solution 1. If the number of sessions or SQL statements exceeds the upper limit supported by the system, no more sessions or SQL statements can be audited. Go to the System Alerts page of the Database Security Audit console and check whether an alert is triggered because the number of sessions or SQL statements exceeds the upper limit. Check whether the version of protected Oracle databases is 9i or 10.1, and whether database servers run on Windows.
 
 **Solution**
 
@@ -167,6 +174,9 @@ This topic describes the possible causes and solutions in scenarios where userna
 **Possible causes**
 
 Database types do not support the audit of usernames and database client information. Persistent connections are established for database sessions. Packet loss occurs during database login. The username resolution feature is not enabled for protected SQL Server databases. The database users configured for protected SQL Server databases do not have the required permissions, or no users are configured for protected SQL Server databases. Short-lived connections are established for SQL Server database sessions. The system management port is inaccessible from SQL Server database servers, or a large number of packets are lost.
+
+**Troubleshooting procedure**
+
 1. Database Security Audit supports a variety of databases, but does not support the audit of
 all database information, such as database client information. Check whether the types of protected databases support the audit of usernames and database client information. Resolve the issue by referring to Solution 1.
 2. In most cases, connection information such as database usernames, client tools,
@@ -202,7 +212,11 @@ This topic describes the possible causes and solutions in scenarios where the nu
 
 **Possible causes**
 
-Packet loss occurs because the size of a single packet exceeds the default forwarding capability of RMAgent. Packet loss occurs because the size of a single packet exceeds the default buffer space of RMAgent. The direct cause is packet loss in result sets. Capture packets to check whether packet loss occurs in the result set, and find the response packet of the relevant statement for analysis. As shown in the preceding figure, packet loss occurs in the response packet of the relevant statement. You can check the following items to troubleshoot the issue: If the size of the original packet is larger than the length that RMAgent can obtain, the packet forwarded by RMAgent is also lost. Check the length of the lost packet in captured packets. If the value is greater than 8192, resolve the issue by referring to Solution 1. If the size of the original packet exceeds the buffer space of RMAgent for receiving packets, the packet forwarded by RMAgent may also be lost. Check the info logs of RMAgent. If the pcap drop field has a value, the buffer space for receiving packets is insufficient and packets are discarded.
+Packet loss occurs because the size of a single packet exceeds the default forwarding capability of RMAgent. Packet loss occurs because the size of a single packet exceeds the default buffer space of RMAgent.
+
+**Troubleshooting procedure**
+
+The direct cause is packet loss in result sets. Capture packets to check whether packet loss occurs in the result set, and find the response packet of the relevant statement for analysis. As shown in the preceding figure, packet loss occurs in the response packet of the relevant statement. You can check the following items to troubleshoot the issue: If the size of the original packet is larger than the length that RMAgent can obtain, the packet forwarded by RMAgent is also lost. Check the length of the lost packet in captured packets. If the value is greater than 8192, resolve the issue by referring to Solution 1. If the size of the original packet exceeds the buffer space of RMAgent for receiving packets, the packet forwarded by RMAgent may also be lost. Check the info logs of RMAgent. If the pcap drop field has a value, the buffer space for receiving packets is insufficient and packets are discarded.
 
 **Solutions**
 
@@ -218,7 +232,11 @@ This topic describes the possible causes and solutions in scenarios where a rule
 
 **Possible causes**
 
-Two similar rules are configured for a database. The priority of Rule A is higher than that of Rule B. Rule A is triggered if the SELECT statement is executed. Rule B is triggered if the SELECT statement is executed for more than 20 rows of data. The priority of Rule A is higher than that of Rule B. When the SELECT statement is executed, only Rule A is triggered and Rule B is not triggered.
+Two similar rules are configured for a database. The priority of Rule A is higher than that of Rule B. Rule A is triggered if the SELECT statement is executed. Rule B is triggered if the SELECT statement is executed for more than 20 rows of data.
+
+**Troubleshooting procedure**
+
+The priority of Rule A is higher than that of Rule B. When the SELECT statement is executed, only Rule A is triggered and Rule B is not triggered.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Data Security** > **Database Audit**.
 3. On the Database Audit page, find the Database Security Audit instance that you want to
@@ -285,6 +303,9 @@ This topic describes the possible causes and solutions in scenarios where no sys
 **Possible cause**
 
 No syslog server is added.
+
+**Troubleshooting procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Data Security** > **Database Audit**.
 3. On the Database Audit page, find the Database Security Audit instance that you want to
@@ -308,6 +329,9 @@ This topic describes the possible causes and solutions in scenarios where a resu
 **Possible causes**
 
 In a result set, the data size per row is large or each row contains more than 1 KB of data, which is the default setting.
+
+**Troubleshooting procedure**
+
 1. Log in to the Apsara Uni-manager Management Console by using the secadmin account.
 2. In the top navigation bar, choose **Security** > **Data Security** > **Database Audit**.
 3. On the Database Audit page, find the Database Security Audit instance that you want to
@@ -328,6 +352,9 @@ This topic describes the possible causes and solutions in scenarios where audit 
 **Possible causes**
 
 The number of online statements reaches the specified cleanup threshold in Database Security Audit. The disk usage of the data center partition reaches the specified cleanup threshold in Database Security Audit.
+
+**Troubleshooting procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Data Security** > **Database Audit**.
 3. On the Database Audit page, find the Database Security Audit instance that you want to

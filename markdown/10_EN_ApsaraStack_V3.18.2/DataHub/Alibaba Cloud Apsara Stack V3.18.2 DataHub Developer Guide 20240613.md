@@ -5,7 +5,7 @@ doc_version: "20240613"
 pdf_pages: 26
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 DataHub Developer Guide 20240613.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Datahub/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20DataHub%20Developer%20Guide%2020240613.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 DataHub Developer Guide 20240613
@@ -143,7 +143,7 @@ To use the SDK for Java in DataHub, you need to configure the SDK as a Maven dep
 
 ### 3.2 Preparations
 
-To access DataHub, you must have an account that is authorized to access DataHub, the AccessKey for the account, and an endpoint of DataHub. If you are using Apsara Stack V2, obtain the endpoint from the CMDB system. If you are using Apsara Stack V3, obtain the endpoint from the Apsara Infrastructure Management Framework console.
+To access DataHub, you must have an account that is authorized to access DataHub, the AccessKey for the account, and an endpoint of DataHub. If you are using Apsara Stack V2, obtain the endpoint from the CMDB system. If you are using Apsara Stack V3, obtain the endpoint from the Apsara Infrastructure Management Framework console. The sample code is shown as follows:
 
 ```
 String accessId = "Your AccessId"; String accessKey = "Your AccessKey"; String endpoint = "http://XXXXXX"; // Specify the endpoint you have obtained. AliyunAccount account = new AliyunAccount(accessId, accessKey); DatahubConfiguration conf = new DatahubConfiguration(account, endpoint);
@@ -161,6 +161,8 @@ DatahubClient client = new DatahubClient(conf);
 
 #### 3.3.1 Create a tuple topic
 
+The sample code is shown as follows:
+
 ```
 RecordSchema schema = new RecordSchema(); schema.addField(new Field("a", FieldType.STRING)); schema.addField(new Field("b", FieldType.BIGINT)); int shardCount = 5; int lifeCycle = 3; String topicName = "topic_example"; String topicDesc = "topic_example_desc"; client.createTopic(projectName, topicName, shardCount, lifeCycle, RecordType.TUPLE, sch ema, topicDesc); // Wait until the shards are in Active status. client.waitForShardReady(projectName, topicName);
 ```
@@ -169,11 +171,15 @@ RecordSchema schema = new RecordSchema(); schema.addField(new Field("a", FieldTy
 
 #### 3.3.2 Obtain the list of shards
 
+The sample code is shown as follows:
+
 ```
 ListShardResult listShardResult = client.listShard(projectName, topicName);
 ```
 
 #### 3.3.3 Write data into DataHub
+
+The sample code is shown as follows:
 
 ```
 List<RecordEntry> recordEntries = new ArrayList<RecordEntry>(); // Write into DataHub starting from any active shard returned by listShardResult. In th is example, start from the first active shard. String shardId = listShardResult.getShards().get(0).getShardId(); RecordEntry entry = new RecordEntry(schema); entry.setString(0, "Test"); entry.setBigint(1, 5L); entry.setShardId(shardId); recordEntries.add(entry); PutRecordsResult result = client.putRecords(projectName, topicName, recordEntries); if (result.getFailedRecordCount() ! = 0) {
@@ -184,13 +190,15 @@ List<RecordEntry> recordEntries = new ArrayList<RecordEntry>(); // Write into Da
 except that the MalformedRecord, NoSuchProject, and NoSuchTopic errors occur.}
 ```
 
+`}`
+
 > **Note:** A request body size cannot exceed 4 MB. For more information, see Data ingestion methods.
 
 #### 3.3.4 Consume data
 
-You can use this SDK to obtain the cursor that points to the first record to be consumed. The cursor type can be **OLDEST**, **LATEST**, or **SYSTEM_TIME**. OLDEST: the cursor that points to the earliest record in DataHub. LATEST: the cursor that points to the latest record in DataHub. SYSTEM_TIME: the cursor that points to the first record ingested after the specified time.
+You can use this SDK to obtain the cursor that points to the first record to be consumed. The cursor type can be **OLDEST**, **LATEST**, or **SYSTEM_TIME**. OLDEST: the cursor that points to the earliest record in DataHub. LATEST: the cursor that points to the latest record in DataHub. SYSTEM_TIME: the cursor that points to the first record ingested after the specified time. The sample code is shown as follows:
 
-```java
+```
 GetCursorResult cursorRs = client.getCursor(projectName, topicName, shardId, GetCursorR equest.CursorType.OLDEST); // If you want to obtain the cursor that points to the earliest record ingested during the last 24 hours, set CursorType to SYSTEM_TIME and set SYSTEM_TIME to System.currentTimeMillis() - 24 * 3600 * 1000 /* ms */. int limit = 100; String cursor = cursorRs.getCursor(); while (true) {
     try {
         GetBlobRecordsResult recordRs = client.getBlobRecords(projectName, topicName, s
@@ -202,6 +210,11 @@ hardId, cursor, limit);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         // The cursor that points to the next record to be consumed is obtained.
         cursor = recordRs.getNextCursor();
     } catch (InvalidCursorException ex) {
@@ -216,9 +229,13 @@ GetCursorRequest.CursorType.OLDEST);
         ex.printStackTrace();
 ```
 
+`}` `}`
+
 ### 3.4 Ingest blob data
 
 #### 3.4.1 Create a blob topic
+
+The sample code is shown as follows:
 
 ```
 int shardCount = 5; int lifeCycle = 3; String topicName = "topic_example"; String topicDesc = "topic_example_desc"; client.createTopic(projectName, topicName, shardCount, lifeCycle, RecordType.BLOB, topi cDesc); // Wait until the shards are in Active status. client.waitForShardReady(projectName, topicName);
@@ -226,11 +243,15 @@ int shardCount = 5; int lifeCycle = 3; String topicName = "topic_example"; Strin
 
 #### 3.4.2 Obtain the list of shards
 
+The sample code is shown as follows:
+
 ```
 ListShardResult listShardResult = client.listShard(projectName, topicName);
 ```
 
 #### 3.4.3 Write data into DataHub
+
+The sample code is shown as follows:
 
 ```
 List<BlobRecordEntry> recordEntries = new ArrayList<BlobRecordEntry>(); // Write into DataHub starting from any active shard returned by listShardResult. In th is example, start from the first active shard. String shardId = listShardResult.getShards().get(0).getShardId(); String data = String.valueOf(System.currentTimeMillis()); BlobRecordEntry entry = new BlobRecordEntry(); entry.setData(data.getBytes()); entry.setShardId(shardId); recordEntries.add(entry); PutBlobRecordsResult result = client.putBlobRecords(projectName, topicName, recordEntri es); if (result.getFailedRecordCount() ! = 0) {
@@ -239,11 +260,15 @@ List<BlobRecordEntry> recordEntries = new ArrayList<BlobRecordEntry>(); // Write
 pic errors occur.
 ```
 
+`}`
+
 > **Note:** A request body size cannot exceed 4 MB.
 
 #### 3.4.4 Consume data
 
-```java
+The sample code is shown as follows:
+
+```
 GetCursorResult cursorRs = client.getCursor(projectName, topicName, shardId, GetCursorR equest.CursorType.OLDEST); // If you want to obtain the cursor that points to the earliest record ingested during the last 24 hours, set CursorType to SYSTEM_TIME and set SYSTEM_TIME to System.currentTimeMillis() - 24 * 3600 * 1000 /* ms */. int size = 100; String endCursor = cursorRes.GetCursor(); while (true) {
     try {
         GetBlobRecordsResult recordRs = client.getBlobRecords(projectName, topicName, s
@@ -255,6 +280,11 @@ hardId, cursor, limit);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         // The cursor that points to the next record to be consumed is obtained.
         cursor = recordRs.getNextCursor();
     } catch (InvalidCursorException ex) {
@@ -269,27 +299,39 @@ GetCursorRequest.CursorType.OLDEST);
         e.printStackTrace();
 ```
 
+`}` `}`
+
 > **Note:** Before being consumed, blob records that have been base64 encoded during ingestion must be decoded.
 
 ### 3.5 Data ingestion methods
 
 #### 3.5.1 Ingest data based on shard IDs
 
-By using this method, you can write data into a specific shard and ensure that data is written into each shard in a specified order.
+By using this method, you can write data into a specific shard and ensure that data is written into each shard in a specified order. The sample code is shown as follows:
 
 ```
 // Create a client. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Specify records to be ingested by DataHub. RecordSchema schema = client.getTopic("projectName", "topicName").getRecordSchema(); List<RecordEntry> recordEntries = new ArrayList<~>(); RecordEntry entry = new RecordEntry(schema); for (int i=0; i<entry.getFieldCount(); i++) {
     entry.setBigint(i, 1);
+```
+
+`}`
+
+```
 // Write into DataHub starting from any active shard returned by listShardResult. In th is example, start from the first active shard. String shardId = listShardResult.getShards().get(0).getShardId(); entry.setShardId(shardId); recordEntries.add(entry); // Write data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
 #### 3.5.2 Ingest data based on hash values
 
-Specify a 128-bit hash value produced by MD5 message-digest algorithm. Use the hash value to map associated records to a shard based on the hash key range of the shards. You cannot specify the ingestion order of records by using this method.
+Specify a 128-bit hash value produced by MD5 message-digest algorithm. Use the hash value to map associated records to a shard based on the hash key range of the shards. You cannot specify the ingestion order of records by using this method. The sample code is shown as follows:
 
 ```
 // Create a client. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Specify records to be ingested by DataHub. RecordSchema schema = client.getTopic("projectName", "topicName").getRecordSchema(); List<RecordEntry> recordEntries = new ArrayList<~>(); RecordEntry entry = new RecordEntry(schema); for (int i=0; i<entry.getFieldCount(); i++) {
     entry.setBigint(i, 1);
+```
+
+`}`
+
+```
 entry.setHashKey("7FFFFFFFFFFFFFFD7FFFFFFFFFFFFFFD"); recordEntries.add(entry); // Write the data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
@@ -300,6 +342,11 @@ Specify a partition key as a string. DataHub creates an MD5 hash from the string
 ```
 // Create a client. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Specify records to be ingested by DataHub. RecordSchema schema = client.getTopic("projectName", "topicName").getRecordSchema(); List<RecordEntry> recordEntries = new ArrayList<~>(); RecordEntry entry = new RecordEntry(schema); for (int i=0; i<entry.getFieldCount(); i++) {
     entry.setBigint(i, 1);
+```
+
+`}`
+
+```
 entry.setPartitionKey("TestPartitionKey"); recordEntries.add(entry); // Write the data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
@@ -308,6 +355,8 @@ entry.setPartitionKey("TestPartitionKey"); recordEntries.add(entry); // Write th
 #### 3.6.1 Create a DataConnector for MaxCompute
 
 **MaxCompute**
+
+The sample code is shown as follows:
 
 ```java
 public void createDataConnector () {
@@ -354,6 +403,8 @@ ConnectorType.SINK_ODPS, shard);
     System.out.println(getDataConnectorShardStatusResult.getLastErrorMessage());
 ```
 
+`}`
+
 #### 3.6.2 Create a DataConnector for AnalyticDB or ApsaraDB RDS for MySQL
 
 **or ApsaraDB RDS for MySQL**
@@ -396,6 +447,8 @@ ConnectorType.SINK_ADS, shard);
     System.out.println(getDataConnectorShardStatusResult.getCurSequence());
     System.out.println(getDataConnectorShardStatusResult.getLastErrorMessage());
 ```
+
+`}`
 
 > **Note:** VPC-based DataConnectors cannot be created by using an SDK and must be created in the console.
 
@@ -453,6 +506,8 @@ r Python
 | Double | An 8-byte double-precision floating point. | -1.0 10 308 to 1.0 10 308 |
 | TimeStamp | A timestamp. | It is accurate to milliseconds. |
 
+The sample code is shown as follows:
+
 ```
 topic = Topic(name=topic_name) topic.project_name = project_name topic.shard_count = 3 topic.life_cycle = 7 topic.record_type = RecordType.TUPLE topic.record_schema = RecordSchema.from_lists(['bigint_field', 'string_field', 'double_ field', 'bool_field', 'time_field'], [Fie ldType.BIGINT, FieldType.STRING, FieldType.DOUBLE, FieldType.BOOLEAN, FieldType.TIMESTAMP]) try:
     dh.create_topic(topic)
@@ -468,7 +523,7 @@ except Exception, e:
 
 **Create a blob topic**
 
-In a blob topic, a chunk of binary data is stored as a record. Records written into DataHub are Base64 encoded. r Python
+In a blob topic, a chunk of binary data is stored as a record. Records written into DataHub are Base64 encoded. The sample code is shown as follows: r Python
 
 ```
 topic = Topic(name=topic_name) topic.project_name = project_name topic.shard_count = 3 topic.life_cycle = 7 topic.record_type = RecordType.BLOB try:
@@ -631,6 +686,8 @@ You can call the ListShard operation to obtain details about all shards. The sam
     "RightShardId": "string"
 ```
 
+`}`
+
 ### 5.3 Split a shard
 
 You can split a shard by using an SDK or in the console. You can specify the shard by setting a shard ID and a 128-bit hash key value. After the shard is split into two child shards, the IDs and key values of the child shards are returned. The status of the parent shard is changed to Deactivated. For example, before the split operation, the parent shard details are shown as follows:
@@ -683,11 +740,13 @@ to a topic schema
 
 ### 6.1 Insert a column
 
-This section describes how to insert columns to a topic schema.
+This section describes how to insert columns to a topic schema. The sample code is shown as follows:
 
 ```
 // Specify a DataHub account. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Insert a bigint column to the topic schema. client.appendField(new AppendFieldRequest(projectName, topicName, new Field("test", Fie ldType.BIGINT))); // If you have created a DataConnector for MaxCompute, call the following operation. client.appendDataConnectorField(new AppendDataConnectorFieldRequest(projectName, topicN ame, ConnectorType.SINK_ODPS, "test"));
 ```
+
+`}`
 
 > **Note:** DataHub supports inserting columns only. Modifying or deleting columns is not supported.
 > The operation can only be performed on a DataConnector for MaxCompute: **Insert** **a column in MaxCompute > Insert a corresponding column in DataHub >** **Modify the corresponding DataConnector configuration**.

@@ -5,7 +5,7 @@ doc_version: "20251107"
 pdf_pages: 362
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Operations Console User Guide 20251107.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Uni-manager%20Operations%20Console%20User%20Guide%2020251107.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Operations Console User Guide 20251107
@@ -224,6 +224,8 @@ This topic describes the management framework of the Apsara Uni-manager Operatio
 
 **Management framework of the Apsara Uni-manager Operations**
 
+**Console**
+
 Alibaba Cloud Apsara Stack adopts the ISO 20000 standard and references the methods regulated by the Information Technology Service Standards (ITSS) and ITIL frameworks to build the management framework of the Apsara Uni-manager Operations Console. The following figure shows the management framework of the Apsara Uni-manager Operations Console. Figure 1. Apsara Uni-manager Operations Console Based on ITIL and ISO 20000, the management framework of the Apsara Uni-manager Operations Console uses management support tools to adapt to various management modes in a process-oriented, normalized, and standardized manner. This has implemented the systematic management of the overall process of operations services The management framework of the Apsara Uni-manager Operations Console provides the full lifecycle management methods, management standards, management modes, management supporting tools, management objects, and process-based management methods of IT operations services. The Apsara Uni-manager Operations Console defines various entities involved in operations activities and relationships between these entities. Relevant entities are well organized and coordinated based on the Apsara Uni-manager Operations Console and can provide different levels of operations services based on the service agreements.
 
 **Apsara Uni-manager Operations Console**
@@ -239,6 +241,9 @@ In addition to tools, process assurance and personnel management are essential t
 ### 2.1 Prepare an operations account
 
 Before you perform O&M operations in the Apsara Uni-manager Operations Console, make sure that you have obtained an operations account that has the necessary permissions to perform O&M operations from the role administrator.
+
+**Procedure**
+
 1. The role administrator logs on to the Apsara Uni-manager Operations Console.
 2. The role administrator creates a role to be assigned to the operations account. For more
 information about how to create a role, see Role management.
@@ -258,6 +263,9 @@ This topic describes how users such as O&M engineers log on to the Apsara Uni-ma
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -393,6 +401,9 @@ Alerts are triggered if exceptions or faults occur in cloud infrastructure or cl
 **Prerequisites**
 
 You have obtained the permissions of a system administrator.
+
+**Procedure**
+
 1. The system triggers alerts if collected monitoring data matches alert rules. The alert
 information varies based on the alert rule configuration.
 2. Log on to the Apsara Uni-manager Operations Console.
@@ -450,6 +461,9 @@ In the Apsara Uni-manager Operations Console, you can perform quick inspections 
 **Prerequisites**
 
 You have obtained the permissions of a system administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. (Optional) Create a custom inspection scenario.
 i. In the top navigation bar, choose **Monitor&Alarms** > **Inspections** > **Inspection**
@@ -465,7 +479,11 @@ ii. On the **Inspection scenario** tab, click **Create a new inspection scenario
 iv. Return to the **Inspection scenario** tab. If the inspection scenario is displayed in the list, the inspection scenario is created.
 3. In the top navigation bar, choose **Monitor&Alarms** > **Inspections** > **All Inspections**.
 4. After you select an inspection scenario, click **Immediate inspection**. If you want to receive
-inspection notifications, click Configuration next to Email notification on the Inspection notice page. Then, click **Execute** to trigger an inspection. You can configure multiple email addresses. Separate email addresses with semicolons (;). If you are prompted that notifications cannot be sent because notification channels are not configured, you can configure a notification channel on the
+inspection notifications, click Configuration next to Email notification on the Inspection notice page. Then, click **Execute** to trigger an inspection.
+
+**Note**
+
+You can configure multiple email addresses. Separate email addresses with semicolons (;). If you are prompted that notifications cannot be sent because notification channels are not configured, you can configure a notification channel on the
 **Inspection notice**page. If you do not want to receive notifications, you can
 directly click **Execute**to trigger an inspection.
 5. Wait for the inspection to complete. The progress is displayed on the page. After the
@@ -489,6 +507,9 @@ You can use this module to archive the key metadata of Apsara Stack. The archive
 **Prerequisites**
 
 You have obtained the permissions of a system configuration administrator for the Apsara Uni-manager Operations Console. Only the metadata of Apsara Distributed File System and OPS DNS can be archived. This topic describes how to archive the metadata of Apsara Distributed File System.
+
+**Procedure**
+
 1. Make preparations before archiving.
 Prepare the following machines: Prepare an independent buffer server as the archive server. If no buffer server is available, select a physical server that has a large disk capacity and good network performance. Otherwise, the security of the archived data cannot be ensured.
 
@@ -578,6 +599,9 @@ The system allows administrators to configure user logon methods based on busine
 **Prerequisites**
 
 You have obtained the permissions of a security administrator for the Apsara Uni-manager Operations Console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Access Control** > **Security**
 **Strategy**.
@@ -635,6 +659,9 @@ Security auditors can audit, track, and analyze the operations of users includin
 **Prerequisites**
 
 You have obtained the permissions of a security auditor.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Security Audit** > **Operation**
 **Audit**.
@@ -663,6 +690,9 @@ You can create a user and assign the user different roles to meet different requ
 **Prerequisites**
 
 You have obtained the permissions of a role administrator for the Apsara Uni-manager Operations Console. A custom role, if required, is created. A logon policy is configured.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **User Authorities**.
 3. Create a department.
@@ -713,6 +743,9 @@ This topic lists the following consoles for monitoring management: TianjiMon Tia
 **services**
 
 This topic describes how to view the basic monitoring information and business metrics of all cloud services in the Apsara Uni-manager Operations Console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -725,6 +758,9 @@ On the Product Monitoring page, you can perform the following operations based o
 **service monitoring**
 
 This topic describes how to configure business metrics for monitoring cloud services in the Apsara Uni-manager Operations Console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -774,6 +810,9 @@ Configuration page, configure the parameters that are described in the following
 ###### 4.1.1.1.3 Configure alert rules
 
 On the Alert Rules page, you can view and manage alert rules for monitoring all cloud services. This topic describes how to configure an alert rule.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -821,6 +860,9 @@ parameters that are described in the following table and click **Submit**.
 ###### 4.1.1.1.4 Alert history
 
 The Alert History page displayed all the alert information about project monitoring for clusters and services.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -840,6 +882,9 @@ The read and write dashboard displays the impacts of the metrics of Apsara Stack
 **Prerequisites**
 
 You have the permissions of the cloud platform monitoring administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -847,6 +892,9 @@ You have the permissions of the cloud platform monitoring administrator.
 In the upper part of the Read/Write Dashboard page, you can select a time period to check data changes.
 **OTS capacity**: displays the following metrics: **Current OTS water level**, **Total QPS**,
 **Write success rate**, and **Write delay**.
+
+**Note**
+
 **Current OTS water level**: the ratio of the current queries per second (QPS) to
 the maximum QPS supported in theory.
 **Total QPS**: the sum of the QPS of all monitoring systems.
@@ -870,7 +918,11 @@ data writes. This section displays the name, monitoring system, and number of da
 
 1. On the Read/Write Dashboard page, click **Throttle control** in the upper-right corner.
 2. In the Throttle control panel, click **Edit** and modify the settings in the Cloud Product Control
-and **Monitoring indicator blacklist** sections. Modify the cloud service control setting Select **Allow adding monitoring metrics** or **Do not add monitoring indicators**. You cannot specify the cloud service to which the throttling policy applies. The throttling policy applies to all cloud services. The setting in the Cloud Product Control section takes effect for all TianjiMon metrics. By default, Allow adding monitoring metrics is selected. If you select Do not add monitoring indicators, the metrics of cloud services can no longer be added to Tablestore. The metrics that are already added to Tablestore are not affected. Add a metric to the metric blacklist If a metric is added to the metric blacklist in the throttling policy, the data of this metric is no longer written to Tablestore. a. Click **Add Indicator**. The **Add indicator blacklist** dialog box appears. b. Configure the **Monitoring Platform** and **Project** parameters and select a metric.
+and **Monitoring indicator blacklist** sections. Modify the cloud service control setting Select **Allow adding monitoring metrics** or **Do not add monitoring indicators**. You cannot specify the cloud service to which the throttling policy applies. The throttling policy applies to all cloud services. The setting in the Cloud Product Control section takes effect for all TianjiMon metrics. By default, Allow adding monitoring metrics is selected. If you select Do not add monitoring indicators, the metrics of cloud services can no longer be added to Tablestore. The metrics that are already added to Tablestore are not affected. Add a metric to the metric blacklist
+
+**Note**
+
+If a metric is added to the metric blacklist in the throttling policy, the data of this metric is no longer written to Tablestore. a. Click **Add Indicator**. The **Add indicator blacklist** dialog box appears. b. Configure the **Monitoring Platform** and **Project** parameters and select a metric.
 
 > **Note:** **Monitoring Platform**: the monitoring platform whose metrics you want to add to the metric blacklist. Valid values: CMS and TIANJIMON.
 > **Project**: the project in the monitoring platform whose metrics you want to add to the metric blacklist. Example: tjm_tianji. After you select a project, the metrics of the project are displayed. Then, you can select a metric based on the current traffic of metrics.
@@ -881,6 +933,9 @@ c. Click **OK**. The selected metric is added to the metric blacklist. Remove a 
 ###### 4.1.1.2.2 Customize a dashboard
 
 You can customize a dashboard to display the metrics for business monitoring and application monitoring on the same page in real time. You can drag elements to customize a dashboard in a visualized manner. You can also specify multiple conditions to query data and display the queried data in multiple types of charts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -1001,6 +1056,9 @@ Click the **Last 1 Hour** drop-down list in the upper-right corner to select or 
 ###### 4.1.1.2.3 Configure a data source for dashboards
 
 This topic describes how to add an API data source for dashboards to manage API data services in a visualized manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Monitor Management** >
 **Tianjimon**.
@@ -1074,6 +1132,9 @@ This topic describes the overview of alerts by region, alert source, and cloud s
 **Prerequisites**
 
 System administrator permissions are granted.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Alerts** > **Alert Overview**.
 3. The Alert Overview page consists of the following five sections that analyze and collect
@@ -1092,6 +1153,9 @@ You can view the details of all current alerts and change the status of alerts i
 **Prerequisites**
 
 System administrator permissions are granted.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Alerts** > **Alerts**.
 3. The system enters the **Not Disabled** tab. You can view the unclosed alerts on this tab. The
@@ -1147,6 +1211,9 @@ The Policy Management module allows you to configure alert contacts, contact gro
 **Manage contacts**
 
 You can query, add, modify, or delete alert contacts based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Alerts** > **Alert Settings**.
 3. In the left-side navigation pane, click **Policy Management**.
@@ -1174,6 +1241,9 @@ You can query, add, modify, or delete alert contact groups based on your busines
 **Prerequisites**
 
 Alert contacts are created.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Alerts** > **Alert Settings**.
 3. In the left-side navigation pane, click **Policy Management**.
@@ -1218,6 +1288,9 @@ following table describes the parameters.
 **TTL of alert data**
 
 By default, alert data is stored for seven days due to the specifications of the base database. If alert data of a product needs to be stored for a longer period of time, you can modify the retention period for the product. However, the alert data size cannot exceed the upper limit.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Alerts** > **Alert Settings**.
 3. In the left-side navigation pane, click **Policy Management**.
@@ -1273,6 +1346,9 @@ following table and click **OK**.
 ##### 4.2.3.2 Alert templates
 
 For Ant Financial Service products that are deployed on the PaaS platform, you can upload alert templates to configure or modify the rules that are used to trigger alerts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Alerts** > **Alert Settings**.
 3. In the left-side navigation pane, click **Alert Templates**.
@@ -1349,6 +1425,9 @@ The alert masking feature allows you to mask alerts reported during a specific p
 **Prerequisites**
 
 The permissions on the alert masking menu are obtained.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Alarm Management** > **Alert**
 **Settings**.
@@ -1414,6 +1493,9 @@ This topic describes how to modify the settings of an alert rule, including the 
 **Background information**
 
 Alert rules can be configured for only TianjiMon. Only alert rules that contain numbers can be modified. After a verified alert rule takes effect, all alerts that use the rule are affected. If the settings of an alert rule are improperly modified, risks may occur. The risks include a surge in the number of alerts and no generated alerts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Alerts** > **Alert Settings**.
 3. In the left-side navigation pane, click **Alert Rule Settings**.
@@ -1474,6 +1556,9 @@ This topic describes the inspections supported by the system in various scenario
 **Prerequisites**
 
 The system administrator permissions of the Apsara Uni-manager Operations Console are obtained. Custom inspection settings are configured before you enable a custom inspection. For more information, see Inspection scenario configuration.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Inspections** > **All Inspections**.
 3. Select an inspection scenario. The system supports quick checks for a variety of inspection
@@ -1513,6 +1598,9 @@ schedule that you configure.
 #### 4.3.2 Inspection dashboard
 
 This topic describes how to view statistics on executed inspection scenarios over a period of time.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Inspections** > **Inspection**
 **Dashboard**.
@@ -1637,6 +1725,9 @@ This topic describes how to configure an email address to receive inspection not
 **Prerequisites**
 
 The ANS component is added and a notification channel is configured.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor & Alarms** > **Inspections** > **Inspection**
 **Notifications**.
@@ -1654,6 +1745,9 @@ The ANS component is added and a notification channel is configured.
 
 1. In the **Inspection notice** section, click **Close**.
 2. In the message that appears, click **OK**.
+
+**Note**
+
 After you disable a channel, the configured email address is cleared, and inspection results are no longer sent by using the channel.
 
 ### 4.4 Event Center
@@ -1679,6 +1773,9 @@ The event list feature is a tool that converges alert data. This allows you to u
 **Usage notes**
 
 Event Center serves as a tool only for managing alert information about cloud services. You can determine the importance of alert information based on your business requirements. You can also view preset grading rules at the earliest opportunity and go to the Event Grading page to configure custom rules based on your business requirements. Pay attention to the alert information. To help you better perform risk monitoring and emergency response, Alibaba Cloud provides Event Center to manage alert information. This tool uses custom rules to converge, merge, and comprehensively grade all alert information in the Alerts module to generate emergency events. You can configure event grading rules based on the following logic: You can specify importance levels for cloud services. The alerts of key cloud services generate events of a higher level. Events can be graded based on the alert levels of cloud services, the proportion of abnormal instances, and the highest level among multiple alert levels. The alert information of cloud services is graded by instance and instance cluster. Instances include service instances, work software, management software, and worker nodes. Events are classified into the following levels: L1: critical events. When a critical event occurs, the overall features of a cloud platform become unavailable. L2: major events. When a major event occurs, the overall features of a cloud service become unavailable, and a wide range of related hardware and software resources, cloud service instances that are provided, and dependent service instances are abnormal. L3: significant events. When a significant event occurs, the overall features of a cloud service are abnormal, and the overall features of a worker service role cluster are abnormal, or some dependent service instances are abnormal. L4: general events. When a general event occurs, global exceptions occur in the control service of a cloud service, or a few exceptions occur in worker clusters or dependent service instances. L5: routine events. When a routine event occurs, exceptions occur in a single cloud service instance, work software instance, work resource node, or management software instance. Handle the routine event at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Event Center** > **Event List**.
 3. By default, the Event List page displays events whose **Event Level** is L1, L2, L3, L4, or L5
@@ -1696,8 +1793,15 @@ a. Click **Mark**. In the Classification mark dialog box, configure the followin
 
 > **Note:** If your event cause is unavailable in the drop-down list, you can configure the event cause on the Configuration Management page in Event Center. For more information, see Configuration Management.
 
-Reason for details: the detailed reason for closing the event. b. Click Confirm. After the event is marked, you can view the mark content on the event details page. In the upper-right corner of the page, click **Response** to respond to the event or to close the event. Respond to the event: Click Response and select **Response event**. Then, the event enters the Processing state. Close the event: Click Response and select **Direct statement**. In the dialog box that appears, configure the parameters and click Confirm. Then, the event enters the Closed state. After you respond to an event, you can **transfer** or **close** the event. On the **Event Details** tab, you can view the event details in sections, such as **Basic**
+Reason for details: the detailed reason for closing the event. b. Click Confirm. After the event is marked, you can view the mark content on the event details page. In the upper-right corner of the page, click **Response** to respond to the event or to close the event. Respond to the event: Click Response and select **Response event**. Then, the event enters the Processing state. Close the event: Click Response and select **Direct statement**. In the dialog box that appears, configure the parameters and click Confirm. Then, the event enters the Closed state.
+
+**Note**
+
+After you respond to an event, you can **transfer** or **close** the event. On the **Event Details** tab, you can view the event details in sections, such as **Basic**
 **properties**, **Event handling**, and **Associated subevents**.
+
+**Note**
+
 In the **Associated subevents** section, you can perform the following operations: In the upper-right corner, select the check box to view only the events that are in the **Alarming** state. Find the sub-event that you want to view and click the value in the **Title** column. In the panel that appears, you can view the sub-event details on the
 **Details**, **Alarm history**, and **Original information** tabs. Click **View ASO**
 **alerts** to go to the **Alert Details** page and view the alert details.
@@ -1739,10 +1843,17 @@ importance levels: A, B, and C. The importance levels are displayed in three col
 generate a new event. The levels of events are determined based on the proportion of abnormal instances. The following instance categories are supported: cloud service instances, work and management software instances, and worker node instances.
 3. Highest level-based event merging: The system merges multiple events that have the same
 event object to generate a new event.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **Event Center** > **Event Grading**.
 3. In the **Map an Alert to an Event** step, click the desired policy.
-i. In the policy details panel, view the details of the event into which the alert is converted. The details include **Basic information**, **Matching Condition**, and **Grading rules**. Move the pointer over the**Note** icon next to the Importance level of cloud product: A, Importance level of cloud product: B, or Importance level of cloud product: C column. The names of services in the non-sales area under the corresponding level are displayed. Click **View Details** to view the importance levels of cloud services. ii. Click **Modify** to modify the event levels that correspond to cloud service importance levels and alert levels. Then, click **Save**.
+i. In the policy details panel, view the details of the event into which the alert is converted. The details include **Basic information**, **Matching Condition**, and **Grading rules**.
+
+**Note**
+
+Move the pointer over the**Note** icon next to the Importance level of cloud product: A, Importance level of cloud product: B, or Importance level of cloud product: C column. The names of services in the non-sales area under the corresponding level are displayed. Click **View Details** to view the importance levels of cloud services. ii. Click **Modify** to modify the event levels that correspond to cloud service importance levels and alert levels. Then, click **Save**.
 4. In the **Determine the Level of Instance-grade Events** step, click the desired policy.
 i. In the policy details panel, view proportion-based correlation details. The details include
 **Basic information**, **Matching Condition**, and **Grading rules**.
@@ -1782,6 +1893,9 @@ You can view all events of the cloud platform from the perspective of cloud serv
 **Prerequisites**
 
 By default, the Event Chart module is not displayed. If you want to display the Event Chart module, click **User Authorities** in the top navigation bar. Then, click Menu Management in the left-side navigation pane to configure the related settings.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **General** > **Event Center** > **Event Chart**.
 3. View the events of the cloud platform from the perspective of cloud services.
@@ -1796,6 +1910,9 @@ The service resource topologies for only some abnormal events are provided on th
 #### 4.4.5 Configuration Management
 
 You can configure O&M modes, service importance level mappings, and event causes in a centralized way.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Monitor&Alarms** > **EventCenter** > **Configuration**
 **Management**.
@@ -1838,6 +1955,9 @@ This topic describes modules related to resource management.
 ##### 5.1.1.1 Product & Cluster O&M
 
 The Product & Cluster O&M page displays the status and statistical data of products. The statistical data includes the number of clusters, and the hierarchical relationship between products and their related resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**. By default, the **Product & Cluster O&M** page appears.
@@ -1864,6 +1984,9 @@ The following table describes the parameters in the list.
 ###### 5.1.1.1.1 Cluster details
 
 On the cluster details page, you can view the basic information about a cluster, services in a cluster, machines, desired-state configurations, operation records, and resource details.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**. By default, the **Product & Cluster O&M** page appears.
@@ -1915,6 +2038,9 @@ In the Projects list, click the value in the Instance Status column, and then cl
 ###### 5.1.1.1.2 Component details
 
 This topic describes how to view the basic information and details of components.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**. By default, the **Product & Cluster O&M** page appears.
@@ -1955,6 +2081,9 @@ Details of components deployed on Apsara Infrastructure Management and the PaaS 
 ##### 5.1.1.2 Machine management
 
 The Machine Management module allows you to view the basic information about machines and the components deployed on machines.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**.
@@ -2002,6 +2131,9 @@ favorites, you can view the machine on the Resource Tags page. Click the icon to
 
 The machine details page displays tabs including **Basic Information**, **Component**
 **Deployment Topology**, **Components**, **VM**, **Taints**, and **Labels**.
+
+**Note**
+
 The **VM** tab is displayed only if a VM exists on the machine.
 
 > The **Taints** and **Labels** tabs are displayed only if the machine is a Kubernetes node.
@@ -2034,7 +2166,11 @@ The **VM** tab is displayed only if a VM exists on the machine.
 **Component Deployment Topology**: displays the services and components that are
 affected by VMs or physical machines by product and cluster. The card displays the status data of VMs and server roles. The icons on the left of the names of clusters, VMs, machines, services, and components that have not reached the desired state are orange. The icons are blue when clusters, VMs, machines, services, and components have reached the desired state. If the number of cards is less than nine, cards are displayed in three columns and N rows. If the number of cards is greater than eight, cards are displayed in grid layout. Cards are displayed from the upper-left corner in sequence. By default, the information of the first machine in the first cluster is displayed, and the information of other machines is hidden. If you do not select **Only display objects with abnormal status**, the status data of all VMs and server roles is displayed. The drop-down list in the search box on the right side displays the dependencies of clusters, machines, services, and components. After you select a node, the corresponding node in the topology is located and highlighted. Click the icon to unfold the card. Click the icon to fold the card. You can move the pointer over the machine name to view the node status and IP address of the machine. Click the icon next to the node status or click **Details** next to the machine name to go to the machine details page. Click **Terminal** next to the machine name to go to the machine logon page. You can move the pointer over the component name to view the component node status and instance status. Click the icon next to Node Status or Instance Status, or click **Details** next to the component name to go to the component details page.
 **Components**: displays the information about components deployed on the machine,
-including the component status, actions, and metrics. If the machine is a Kubernetes node, pods that run the components deployed on the PaaS base are displayed. Above the list of components, you can filter components by status, action, action status, and instance name. Click **View** in the Component Metrics column of the desired component to view the information about component metrics, machine metrics, and system service metrics. Click **Restart** in the Actions column of the desired component to restart the component.
+including the component status, actions, and metrics.
+
+**Note**
+
+If the machine is a Kubernetes node, pods that run the components deployed on the PaaS base are displayed. Above the list of components, you can filter components by status, action, action status, and instance name. Click **View** in the Component Metrics column of the desired component to view the information about component metrics, machine metrics, and system service metrics. Click **Restart** in the Actions column of the desired component to restart the component.
 
 > **Note:** You can start only the components deployed on Apsara Infrastructure Management.
 
@@ -2074,6 +2210,9 @@ On the machine details page, click **Machine Management** in the upper-right cor
 ##### 5.1.1.3 Resource tags
 
 iii. After the post-handling task is complete, click **Complete Repair** in the lowerleft corner of the page. The Resource Tags module allows you to use tags to view and manage resources that you iv. In the dialog box that appears, enter **FINISHREPAIR** and click **OK**. The machine is repaired. pay attention to in a centralized manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**.
@@ -2136,6 +2275,9 @@ This topic describes the panorama of products and the topological relationships 
 ##### 5.1.2.1 Product topology
 
 This module displays product status and resource statistics by product in a hierarchy. The information includes the relationships between products and related resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Platform Blueprint**. By default, the **Product topology** page appears.
@@ -2165,6 +2307,9 @@ details page. The following section describes the topologies of products deploye
 ##### 5.1.2.2 Hardware topology
 
 On the Hardware topology page, you can view the topological relationships among the network devices, racks, and physical machines in a data center.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Platform Blueprint**.
@@ -2196,6 +2341,9 @@ This topic describes the basic information about Kubernetes clusters and nodes a
 ##### 5.1.3.1 Cluster overview
 
 You can view the resource usage of O&M Kubernetes clusters, including CPU utilization, memory usage, pod usage, and storage usage of the logical volumes. O&M Kubernetes clusters are the Kubernetes clusters that are created and managed by Apsara Infrastructure Management.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Kubernetes Cluster Management**. By default, the **Kubernetes**
@@ -2214,6 +2362,9 @@ and nodes of a cluster.
 ##### 5.1.3.2 Node management
 
 You can view the basic information about nodes deployed on the platform, including the node name, status, IP address, role, resource usage, labels, and taints. You can also view node performance data, log on to a machine, go to the Machine Status Panel page, and view machine details.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Kubernetes Cluster Management**.
@@ -2273,6 +2424,9 @@ If you want to use the disk replacement feature to replace a disk online, the fo
 **Background information**
 
 If you ignore the error messages and forcibly replace the disk, data loss may occur. You can use the disk replacement feature to handle only damaged disks that are reported by Apsara Distributed File System. You can use the disk replacement feature to replace only damaged data disks. If you do not replace the disks with new disks, the maintenance process is interrupted. The data disks of Apsara Infrastructure Management, MaxCompute, Object Storage Service (OSS), and Simple Log Service can be repaired.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Hardware O&M**. By default, the **Disk Repair** page is displayed.
@@ -2311,6 +2465,9 @@ If you want to use the disk replacement feature to replace a disk online, the fo
 **Background information**
 
 If you ignore the error messages and forcibly replace the disk, data loss may occur. You can use the disk replacement feature to handle only damaged disks that are reported by PANGU. You can use the disk replacement feature to replace only damaged data disks. If you do not replace the disks with new disks, the maintenance process is interrupted. The data disks of Apsara Infrastructure Management, ODPS, Object Storage Service (OSS), and Simple Log Service (SLS) can be repaired.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Hardware O&M**. By default, the **Disk Repair** page appears.
@@ -2335,6 +2492,9 @@ Related operations: Start to replace the disk: Click **Start Replacement**. Comp
 ###### 5.1.4.1.3 Repair history
 
 This topic describes how to view a list of all repair records. You can view the machines and hard disks that were repaired and their repair results.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Hardware O&M** to go to the **Disk Repair** page.
@@ -2388,6 +2548,9 @@ This topic describes the modules related to O&M tools.
 ##### 5.1.5.1 Task management
 
 You can view the details of tasks running on Apsara Infrastructure Management and the PaaS base.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > O&M Tools**. By default, the **Task Dashboard** page appears.
@@ -2439,6 +2602,9 @@ Details of a task on the PaaS base
 ##### 5.1.5.2 Service management
 
 This topic describes how to manage the services deployed on Apsara Infrastructure Management and the corresponding service templates.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > O&M Tools**.
@@ -2446,6 +2612,9 @@ This topic describes how to manage the services deployed on Apsara Infrastructur
 4. On the **Service Management** page, select a service from the **Service** drop-down list.
 Then, the instances and templates of the selected service are displayed on the **Service**
 **Instances** and **Service Template** tabs.
+
+**Note**
+
 After you remove the service from all clusters, you can click**Delete Service**to delete the service.
 5. On the **Service Instances** tab, the information of each instance is displayed in the **Where**
 **Instance In Cluster**, **Status**, and **Component Statistics (Ready/Total)** columns. You
@@ -2484,6 +2653,9 @@ Enter a template name in the Template search box to filter **service templates**
 ##### 5.1.5.3 VM dashboard
 
 The VM dashboard displays the Docker VMs pulled and managed by Apsara Infrastructure Management in the environment.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > O&M Tools**.
@@ -2507,6 +2679,9 @@ The VM dashboard displays the Docker VMs pulled and managed by Apsara Infrastruc
 **variables**
 
 You can view the service variables registered with products and the corresponding content.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > O&M Tools**.
@@ -2523,6 +2698,9 @@ Click the **show****or****hide** icon in the **Service Registration** column of 
 ##### 5.1.5.5 Resource dashboard
 
 The resource dashboard displays the instances of resources such as Domain Name System (DNS) and virtual IP addresses (VIPs) requested by using Apsara Infrastructure Management.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > O&M Tools**.
@@ -2591,6 +2769,9 @@ Web client logon includes server logon, database logon, and switch logon.
 ###### 5.1.6.1.1 Server logon
 
 You can search for containers, VMs, and physical machines by different conditions and log on to the containers, VMs, and physical machines to perform O&M operations. You can also log on to the control nodes of OPS1, OPS2, OPS3, and OPS4 to perform O&M operations.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Web Terminal**. The **Server Logon** page appears by default.
@@ -2607,7 +2788,11 @@ a. Click the icon in the Docker column to refresh the column and try to obtain t
 > The status of the container is abnormal.
 > The server role is in the process form and does not have a docker container.
 
-b. Click **Log on to docker** to log on to the docker. In the **Docker** column, click **docker logs** and **docker inspection report** to view the logs and inspection report of the container. Log on to the web terminal page and click the node to which you want to log on. You can also click the icon and select an account in the dialog box. By default, the ops account is selected.
+b. Click **Log on to docker** to log on to the docker.
+
+**Note**
+
+In the **Docker** column, click **docker logs** and **docker inspection report** to view the logs and inspection report of the container. Log on to the web terminal page and click the node to which you want to log on. You can also click the icon and select an account in the dialog box. By default, the ops account is selected.
 
 > **Note:** If a message indicating that you have not installed the required certificate appears, install a certificate for the corresponding region by following the instructions in the Installation Guide mentioned in the message.
 
@@ -2645,6 +2830,9 @@ Click **File operations** to upload and download files. Click **File Upload**. Y
 ###### 5.1.6.1.2 Database logon
 
 This topic describes how to log on to databases that are used by server roles of services and perform related operations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Web Terminal**.
@@ -2682,6 +2870,9 @@ Enter the password as prompted. You can log on to the vSwitch only if you enter 
 ##### 5.1.6.2 Account authorization
 
 You can view the information about temporary account authorization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Web Terminal**.
@@ -2746,6 +2937,9 @@ You can manage the CLI commands that are run by using web clients.
 ##### 5.1.6.4 Operation records
 
 This topic describes how to view O&M operations performed by using web clients.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Web Terminal**.
@@ -2807,6 +3001,9 @@ By analyzing the capacity usage of each service and understanding unique usage p
 #### 5.3.1 Capacity Overview
 
 This topic describes how to view the overall capacity usage and capacity exceptions in each cloud service to help you quickly identify errors.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Capacity**
 **Overview**.
@@ -2832,6 +3029,9 @@ services, and then click **Export** to export the capacity data to your on-premi
 ##### 5.3.2.1 ECS
 
 You can view the Elastic Compute Service (ECS) capacity to obtain the usage and trend of ECS resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Compute Capacity**.
 3. In the left-side navigation pane, choose **Compute Capacity > ECS**.
@@ -2844,7 +3044,11 @@ In the **Capacity Allocation Rate Trend** section, you can view the trend chart 
 5. On the **Cluster Capacity** tab in the lower part of the page, click **Advanced Filter** to filter
 the list by **Cluster**, **Cluster Type**, **Zone**, and **CPU** to obtain the desired capacity data. Click the up and down arrow icon in the **vCPU Allocation Rate**, **Memory Allocation**
 **Rate**, or **GPU Allocation Rate** column to sort cluster capacity data in descending order
-or ascending order. When the distribution rate exceeds the water level warning threshold (80%), the value is highlighted. You cannot specify a custom water level warning threshold. Click **Details** in the **Capacity Planning Formula** column of a desired cluster to obtain the detailed capacity planning formula. Click **Export** to export the cluster capacity data to your on-premises machine.
+or ascending order.
+
+**Note**
+
+When the distribution rate exceeds the water level warning threshold (80%), the value is highlighted. You cannot specify a custom water level warning threshold. Click **Details** in the **Capacity Planning Formula** column of a desired cluster to obtain the detailed capacity planning formula. Click **Export** to export the cluster capacity data to your on-premises machine.
 6. On the **Specification Inventory** tab, you can filter the list by **Specification** to query the
 specifications of desired instance types. Fuzzy search is supported. Click the up and down arrow icon in the **Instances That Can Be Created** or **Created**
 **Instances** column to sort the instance types in ascending or descending order.
@@ -2855,6 +3059,9 @@ Click the name of the **instance type** to view the cluster details within the i
 ##### 5.3.3.1 SLB
 
 You can view the Server Load Balancer (SLB) capacity to obtain the usage and trend of SLB resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Network Capacity**.
 3. In the left-side navigation pane, click **SLB**.
@@ -2878,6 +3085,9 @@ cluster from the **Cluster** drop-down list. Click **Export** to export the capa
 ##### 5.3.4.1 EBS
 
 You can view the Elastic Block Storage (EBS) capacity to obtain the usage and trend of EBS resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation pane, click **EBS**.
@@ -2888,7 +3098,11 @@ In the **Physical Capacity Overview** section, you can view the capacity data of
 **Type**, **Specification**, and **CPU** to view the desired capacity data.
 Click the up and down arrow icon in the **Physical Capacity Usage**, **Logical Capacity**
 **Usage**, or **Inventory Capacity Allocation Rate** column to sort data in ascending or
-descending order. Physical capacity: the total physical capacity that is reported by Apsara Distributed File System.
+descending order.
+
+**Note**
+
+Physical capacity: the total physical capacity that is reported by Apsara Distributed File System.
 
 > Logical capacity: the maximum amount of data that you can write into disks.
 > Inventory capacity: the total capacity of cloud disks that you can create.
@@ -2898,6 +3112,9 @@ Click **Export** to export the capacity data to your on-premises machine.
 ##### 5.3.4.2 OSS
 
 You can view the Object Storage Service (OSS) capacity to obtain the usage and availability of OSS resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation pane, click **OSS**.
@@ -2908,6 +3125,9 @@ In the **Physical Capacity Overview** section, you can view the capacity data of
 **Cluster**, **Zone**, **Storage Type**, and **CPU** to view the desired capacity data.
 Click the up and down arrow icon in the **Physical Capacity Usage** or **Logical Capacity**
 **Usage** column to sort data in ascending or descending order.
+
+**Note**
+
 Physical capacity: the total physical capacity that is reported by Apsara Distributed File System.
 
 > Logical capacity: the maximum amount of data that you can write into disks.
@@ -2917,6 +3137,9 @@ Click **Export** to export the capacity data to your on-premises machine.
 ##### 5.3.4.3 Tablestore
 
 On the Tablestore page, you can view Tablestore storage capacity. This enables you to understand the usage and availability of relevant resources and perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation bar, click **Tablestore**.
@@ -2926,6 +3149,9 @@ In the **Physical Capacity Overview** section, you can view the capacity data of
 5. In the lower part of the page that appears, click **Advanced Filter** of the **Capacity Details**
 section. You can combine **Cluster**, **Zone**, **Storage Type**, and **CPU** to search for a desired cluster and view its storage capacity details. Click the up and down arrow icon in the **Physical Capacity Usage** or **Logical Capacity**
 **Usage** column to sort data in ascending or descending order.
+
+**Note**
+
 Physical capacity: the total physical capacity reported by the Apsara Distributed File System.
 
 > Logical capacity: the maximum volume of data that can be written onto the disks.
@@ -2935,6 +3161,9 @@ Click **Export** to export the capacity details to your on-premises computer.
 ##### 5.3.4.4 Simple Log Service
 
 Viewing the Simple Log Service storage capacity helps you gain insights into the current resource usage and residual resources, which allows you to undertake targeted O&M operations that align with actual needs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation pane, click **Simple Log Service**.
@@ -2945,6 +3174,9 @@ In the **Physical Capacity Overview** section, you can view the capacity data of
 **Cluster**, **Zone**, **Storage Type**, and **CPU** to view the desired capacity data.
 Click the up and down arrow icon in the **Physical Capacity Usage** or **Logical Capacity**
 **Usage** column to sort data in ascending or descending order.
+
+**Note**
+
 Physical capacity: the total physical capacity reported by the Apsara Distributed File System.
 
 > Logical capacity: the maximum volume of data that can be written onto the disks.
@@ -2954,6 +3186,9 @@ Click **Export** to export the capacity data to your on-premises machine.
 ##### 5.3.4.5 NAS
 
 Viewing the Apsara File Storage NAS (NAS) storage capacity helps you gain insights into the current resource usage and residual resources, which allows you to undertake targeted O&M operations that align with actual needs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation pane, click **NAS**.
@@ -2967,6 +3202,9 @@ Click the up and down arrow icon in the **Pangu water level utilization rate** c
 ##### 5.3.4.6 CPFS file system
 
 You can view the capacity data of a Cloud Parallel File Storage (CPFS) file system to understand the used and unused resources of a service. Then, you can perform O&M based on your requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation pane, click **Apsara File Storage CPFS**.
@@ -2974,7 +3212,11 @@ You can view the capacity data of a Cloud Parallel File Storage (CPFS) file syst
 **Overview** and **Physical capacity usage trends** sections.
 In the **Physical Capacity Overview** section, you can view the capacity data of all-flash clusters and hybrid clusters, including the total capacity, used capacity, and capacity usage. In the **Physical capacity usage trends** section, you can view the trend charts that show the physical capacity usage of all all-flash clusters, all hybrid clusters, or a single cluster within different periods of time. Move the pointer over a time node to view the corresponding capacity data.
 5. In the **Capacity Details** section of the CPFS Capacity page, click **Advanced Filter** and
-search for a cluster by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the up or down arrow next to **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity Allocation Rate** to sort data in ascending or descending order. Physical capacity: the total capacity of available hardware.
+search for a cluster by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the up or down arrow next to **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity Allocation Rate** to sort data in ascending or descending order.
+
+**Note**
+
+Physical capacity: the total capacity of available hardware.
 
 > Logical capacity: the maximum amount of data that you can write into disks.
 > Inventory capacity: the total capacity of disks that you can create.
@@ -2984,6 +3226,9 @@ Click **Export** to export the capacity data to your on-premises machine.
 ##### 5.3.4.7 APFS file system
 
 You can view the capacity of an Apple File System (APFS) file system to understand the used and unused resources of a service. Then, you can perform O&M based on your requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Storage Capacity**.
 3. In the left-side navigation pane, click **Apsara File Storage APFS**.
@@ -2991,7 +3236,11 @@ You can view the capacity of an Apple File System (APFS) file system to understa
 **Overview** and **Physical capacity usage trends** sections.
 In the **Physical Capacity Overview** section, you can view the capacity data of all-flash clusters and hybrid clusters, including the total capacity, used capacity, and capacity usage. In the **Physical capacity usage trends** section, you can view the trend charts that show the physical capacity usage of all all-flash clusters, all hybrid clusters, or a single cluster within different periods of time. Move the pointer over a time node to view the corresponding capacity data.
 5. In the **Capacity Details** section of the APFS Capacity page, click **Advanced Filter** and
-search for a cluster by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the up or down arrow next to **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity Allocation Rate** to sort data in ascending or descending order. Physical capacity: the total capacity of available hardware.
+search for a cluster by **Cluster**, **Zone**, **Storage Type**, and **CPU**. Click the up or down arrow next to **Physical Capacity Usage**, **Logical Capacity Usage**, or **Inventory Capacity Allocation Rate** to sort data in ascending or descending order.
+
+**Note**
+
+Physical capacity: the total capacity of available hardware.
 
 > Logical capacity: the maximum amount of data that you can write into disks.
 > Inventory capacity: the total capacity of disks that you can create.
@@ -3005,6 +3254,9 @@ Click **Export** to export the capacity data to your on-premises machine.
 #### Storage Capacity
 
 You can view the storage capacity of Apsara Infrastructure Management to obtain the usage and availability of the relevant resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **Capacity** > **Base Capacity**.
 3. In the left-side navigation pane, click **Apsara Infrastructure Management Storage**
@@ -3021,6 +3273,9 @@ Click the up and down arrow icon in the **Pangu water level utilization rate** c
 **Infrastructure Management**
 
 On the Host capacity page, you can view statistics information such as the capacity of all hosts and usage balance information, and the capacity usage list of each scheduling domain. The scheduling domains are divided by Access Switch (ASW).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Base Capacity**.
 3. In the left-side navigation pane, click **Tianji Docker Host Capacity**.
@@ -3064,6 +3319,9 @@ CloudMonitor console. For more information, see the CloudMonitor documentation.
 ##### 5.3.6.1 RDS
 
 You can view data on the MySQL capacity page to obtain the usage and availability of ApsaraDB RDS (RDS) resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3098,6 +3356,9 @@ descending order. Click **Export** to export the capacity data to your on-premis
 ##### 5.3.6.2 ApsaraDB RDS for PostgreSQL
 
 You can view the capacity of the ApsaraDB RDS for PostgreSQL service to obtain the usage and availability of the service resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3135,6 +3396,9 @@ descending order. Click **Export** to export the capacity data to your on-premis
 ##### 5.3.6.3 Redis
 
 You can view the capacity of the ApsaraDB for Redis service to obtain the usage and availability of the service resources. This helps you perform O&M operations based on your business requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3210,6 +3474,9 @@ You can click **Export** to export the capacity data to your computer.
 ##### 5.3.6.5 AnalyticDB for PostgreSQL
 
 You can view the capacity of AnalyticDB for PostgreSQL to understand the used and unused resources of the service. Then, you can perform O&M based on your requirements.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3248,6 +3515,9 @@ You can click **Export** to export the capacity data to your computer.
 ##### 5.3.6.6 PolarDB for PostgreSQL
 
 You can view the capacity of PolarDB for PostgreSQL to understand the used and unused resources of the service. Then, you can perform O&M based on your requirements.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3285,6 +3555,9 @@ You can click **Export** to export the capacity data to your computer.
 ##### 5.3.6.7 PolarDB-X
 
 You can view the capacity of PolarDB-X to understand the used and unused resources of the service. Then, you can perform O&M based on your requirements.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3299,6 +3572,9 @@ capacity details of the clusters by **Cluster** and **CPU**. When the allocation
 ##### 5.3.6.8 OceanBase
 
 You can view the capacity of ApsaraDB for OceanBase to understand the used and unused resources of the service. Then, you can perform O&M based on your requirements.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Database**
 **Capacity**.
@@ -3315,6 +3591,9 @@ You can click **Export** to export the capacity data to your computer.
 ##### 5.3.7.1 ApsaraMQ for Kafka
 
 You can view the capacity of the ApsaraMQ for Kafka service to obtain the usage of the service resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Capacity** > **Middleware**
 **Capacity**.
@@ -3411,6 +3690,9 @@ the log cleanup rule.
 ##### 5.4.1.2 Plans
 
 This topic describes the execution plans of log cleanup rules, including how to query the disk usage of containers or physical machines and how to clear logs in execution plans.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **O&M Change** > **Log Cleanup**.
 3. In the left-side navigation pane, click **Plans**.
@@ -3467,6 +3749,9 @@ The following types of base plans are supported: Workflow: For more information,
 ###### 5.4.2.1.1 Workflow types
 
 Base plans of the workflow type are preset O&M actions that are orchestrated by the process engine. This topic describes how to execute a plan of the workflow type, view execution history of plans, and view the details of a plan.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **O&M Change** > **Plan Management**.
 3. In the left-side navigation pane, click **Base Plans**.
@@ -3520,6 +3805,9 @@ Base plans of the link type are used to resolve issues in specific O&M scenarios
 ###### 5.4.2.1.2.1 VM transfer
 
 This topic describes how to migrate VMs between Docker hosts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **O&M Change** > **Plan**
 **Management**.
@@ -3561,7 +3849,11 @@ a. Click **Scheduling trial**. In the **Operation confirmation** dialog box, spe
 > view the cause of the failure.
 > To change the destination host, click **Replace the target host** in the Operation column. In the dialog box that appears, select a host from the **Destination host** drop-down list, and click **Confirm**.
 
-b. Click **Next Step**. d. Perform the migration. Before the migration starts, you can click **Termination** in the lower part of the page to stop the migration. After the migration starts, you cannot stop the migration. You must wait until the migration is complete. a. In the **Perform migration** step, click **Perform migration**. In the message that appears, click **OK**.
+b. Click **Next Step**. d. Perform the migration.
+
+**Note**
+
+Before the migration starts, you can click **Termination** in the lower part of the page to stop the migration. After the migration starts, you cannot stop the migration. You must wait until the migration is complete. a. In the **Perform migration** step, click **Perform migration**. In the message that appears, click **OK**.
 
 > **Note:** If the migration is in the **Failed** state, move the pointer over the
 > icon to
@@ -3573,6 +3865,9 @@ b. When the migration is in the **Passed** state, click **Complete**.
 ###### 5.4.2.1.2.2 Docker host switchover
 
 This topic describes how to switch over primary and secondary Docker hosts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **O&M Change** > **Plan Management**.
 3. In the left-side navigation pane, click **Base Plans**.
@@ -3588,6 +3883,9 @@ In the Operation and Maintenance section a. You can select the source and destin
 ###### 5.4.2.1.2.3 NC scale-in
 
 This topic describes how to scale in an SRG of the worker type.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **O&M Change** > **Plan Management**.
 3. In the left-side navigation pane, click **Base Plans**.
@@ -3605,7 +3903,11 @@ In the Operation and Maintenance section a. Select the destination cluster and d
 > scalable == true
 > The machine group must contain machines other than Docker hosts.
 
-b. Click **Submit** and then confirm the operation. c. The physical machine scale-out task is submitted. You can view the scale-out task in the following way: Choose **Platform O&M >**
+b. Click **Submit** and then confirm the operation. c. The physical machine scale-out task is submitted.
+
+**Note**
+
+You can view the scale-out task in the following way: Choose **Platform O&M >**
 **Apsara Infrastructure Management > Resources > Machine Management**.
 On the Machines page, click **Advanced Filter**, select In O&M from the **Status** drop-down list, and then click Search to check the scale-in condition.
 
@@ -3622,7 +3924,19 @@ go to the Plan Details page.
 6. The Plan Details page includes two sections: Basic Information and Operation and
 Maintenance. The Basic Information section includes the following fields: **Plan ID**, **Plan Name**, **Plan**
 **Type**,**Risk Grade**,**Version**, and **Scene Description**.
-In the Operation and Maintenance section a. You can select Destination Cluster and Destination SRG. The destination SRG must meet the following requirements: It is defined in the cluster desired state file machine_group.conf. scalable == true The machine group must contain machines, so that the system can randomly select one of them as the benchmark machine for scale-out. b. Select machines from the Available Machines list and click the icon to add them to the Selected Machines list. The selected machines must meet the following requirements: They belong to the default cluster. They are in the Good state and have no actions performed. c. Click **Submit** and then confirm the operation. d. The physical machine scale-out task is submitted. You can view the scale-out task in the following way: Choose **Platform O&M >**
+In the Operation and Maintenance section a. You can select Destination Cluster and Destination SRG.
+
+**Note**
+
+The destination SRG must meet the following requirements: It is defined in the cluster desired state file machine_group.conf. scalable == true The machine group must contain machines, so that the system can randomly select one of them as the benchmark machine for scale-out. b. Select machines from the Available Machines list and click the icon to add them to the Selected Machines list.
+
+**Note**
+
+The selected machines must meet the following requirements: They belong to the default cluster. They are in the Good state and have no actions performed. c. Click **Submit** and then confirm the operation. d. The physical machine scale-out task is submitted.
+
+**Note**
+
+You can view the scale-out task in the following way: Choose **Platform O&M >**
 **Apsara Infrastructure Management > Resources > Machine Management**.
 On the Machines page, click **Advanced Filter**, select In O&M from the **Status** drop-down list, and then click Search to check the scale-out condition.
 
@@ -3639,7 +3953,15 @@ column to go to the Plan Details page.
 6. The Plan Details page includes two sections: Basic Information and Operation and
 Maintenance. The Basic Information section includes the following fields: **Plan ID**, **Plan Name**, **Plan**
 **Type**,**Risk Grade**,**Version**, and **Scene Description**.
-In the Operation and Maintenance section a. Select the destination cluster and destination SRG, select the machines that you want to scale in from the Available Machines list, and click the icon to add them to the Selected Machines list. You can only scale in tianji clusters. The machine group must meet the following requirements: It is defined in the cluster desired state file machine_group.conf. scalable == true The name (which is case-insensitive) starts with DockerHost#. b. Click **Submit** and then confirm the operation. c. The Docker host scale-in task is submitted. No running VMs are allowed on the machine to be scaled in. You can view the scale-out task in the following way: Choose **Platform O&M**
+In the Operation and Maintenance section a. Select the destination cluster and destination SRG, select the machines that you want to scale in from the Available Machines list, and click the icon to add them to the Selected Machines list.
+
+**Note**
+
+You can only scale in tianji clusters. The machine group must meet the following requirements: It is defined in the cluster desired state file machine_group.conf. scalable == true The name (which is case-insensitive) starts with DockerHost#. b. Click **Submit** and then confirm the operation. c. The Docker host scale-in task is submitted.
+
+**Note**
+
+No running VMs are allowed on the machine to be scaled in. You can view the scale-out task in the following way: Choose **Platform O&M**
 
 **> Apsara Infrastructure Management > Resources > Machine**
 
@@ -3649,6 +3971,9 @@ from the **Status** drop-down list, and then click Search to check the scale-in 
 ###### 5.4.2.1.2.6 Docker host scale-out
 
 This topic describes how to scale out the DockerHost#Buffer machine group of the tianji cluster.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform O&M** > **O&M Change** > **Plan Management**.
 3. In the left-side navigation pane, click **Base Plans**.
@@ -3667,6 +3992,8 @@ On the Machines page, click **Advanced Filter**, select In O&M from the **Status
 
 This topic describes how to start up and shut down all the software programs and physical machines in a cluster.
 
+**Procedure**
+
 **Warning**
 
 This is a high-risk operation and will shut down services. Generally, the shutdown operation must be performed in the required sequence. Contact on-site engineers or GTS for assistance.
@@ -3680,7 +4007,11 @@ Actions column to go to the Plan Details page.
 6. The Plan Details page includes two sections: Basic Information and Operation and
 Maintenance. The Basic Information section includes the following fields: **Plan ID**, **Plan Name**, **Plan**
 **Type**,**Risk Grade**,**Version**, and **Scene Description**.
-In the Operation and Maintenance section You can select the doing,pending,approved, and done states to filter clusters. a. You can click **Add Clusters for Shutdown**. In the Add Clusters for Shutdown dialog box, selectclustersand click**OK**. b. Confirm the operation. c. The shutdown task is submitted. If you shut down the tianji cluster, the environment cannot be connected. You must contact Alibaba Cloud technical support to start the cluster. d. Select the clusters in the cluster list table and then click **Batch Start** to start the clusters. e. Confirm the operation. f. The cluster startup task is submitted.
+In the Operation and Maintenance section You can select the doing,pending,approved, and done states to filter clusters. a. You can click **Add Clusters for Shutdown**. In the Add Clusters for Shutdown dialog box, selectclustersand click**OK**. b. Confirm the operation. c. The shutdown task is submitted.
+
+**Note**
+
+If you shut down the tianji cluster, the environment cannot be connected. You must contact Alibaba Cloud technical support to start the cluster. d. Select the clusters in the cluster list table and then click **Batch Start** to start the clusters. e. Confirm the operation. f. The cluster startup task is submitted.
 
 #### 5.4.3 Process approval
 
@@ -3696,6 +4027,9 @@ This topic describes the modules of the Process Approval module.
 ##### 5.4.3.1 My submission
 
 On the **My submission** page, you can view the details of O&M workflows that are submitted by the current user. You can also revoke submitted O&M workflows on this page.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **O&M Change** > **Process**
 **Approval**.
@@ -3715,6 +4049,9 @@ been submitted. You can also click **Advanced Filter** to filter workflows by **
 ##### 5.4.3.2 My approval
 
 The **Pending Approval** page enables users to access and manage O&M workflows awaiting their approval. From this page, users can approve, reject, or delegate these workflows as needed.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **O&M Change** > **Process**
 **Approval**.
@@ -3760,6 +4097,9 @@ Find the patch package that you want to view and click **Details** in the **Oper
 ##### 5.4.4.2 Product version management
 
 On the Product Version Management page, you can view the details of product versions and component versions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **O&M Change** > **Version**
 **Management**.
@@ -3897,6 +4237,9 @@ This topic describes thelog query feature that is designed to facilitate efficie
 **Prerequisites**
 
 You are granted the read and write permissions on Log Center.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Log Center** > **Log Query**.
 3. Filter log data by a combination of **Products**, **Link TraceId**, **Query Parameters**, **Time**
@@ -3921,6 +4264,9 @@ This topic describes the log transfer feature designed to transfer logs from SLS
 **Prerequisites**
 
 You are granted the read and write permissions on Log Center.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Log Center** > **Log Dump**.
 3. Select the transfer type.
@@ -4014,6 +4360,9 @@ This topic describes the real-time log monitoring feature, which enables users t
 **Prerequisites**
 
 You are granted the read and write permissions on Log Center.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Log Center** > **Log Monitor**.
 3. **Log Capacity**
@@ -4077,6 +4426,9 @@ This topic lists the following consoles that support security audit: ActionTrail
 ##### 7.1.1.1 Console-based Audit
 
 You can query the records of operations that are performed in the console by users. By default, the operation records in the previous 24 hours are displayed.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Security Audit** > **Operation**
 **Audit**.
@@ -4093,6 +4445,9 @@ Export All: Select the check box next to Time and click **Export** above the lis
 ##### 7.1.1.2 CLI-based Audit
 
 t You can view the records of operations that are performed in the CLI by users on servers or containers. By default, the operations logs of the previous 24 hours are displayed. You can query the operation records that were generated up to one week ago.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Security Audit** > **Operation**
 **Audit**.
@@ -4310,6 +4665,9 @@ You can view and manage the CIDR block whitelist, virtual private cloud (VPC) wh
 **Background information**
 
 The CIDR block whitelist is used to manage access to virtual IP addresses (VIPs) of classic networks by using AccessKey pairs of Alibaba Cloud accounts. Only users that use CIDR blocks in the whitelist can access VIPs of classic networks and call API operations by using Alibaba Cloud accounts. The VPC whitelist is used to manage access to AnyTunnel VIPs. Only VPCs in the whitelist can access specific AnyTunnel VIPs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Network Security** >
 **Network Security Management Center**.
@@ -4357,6 +4715,8 @@ View the scope of backend servers that can be attached to the SLB instance on th
 
 > **Important:** This operation is risky. Check with the on-site security manager before modify the policy.
 
+**Note**
+
 The format of the policy attribute is {"$AliUid":["cidr1", "cidr2"]}.
 
 > By default, you can attach only resources that belong to the tenant, such as Elastic Compute Service (ECS) resources. After this, you can attach user resources such as offline data centers and server NC.
@@ -4371,6 +4731,9 @@ t
 **Background information**
 
 Classic network VIP protection: By using the ACL capability of SLB, classic network VIPs can only be accessed by the base classic network. AnyTunnel VIP protection: For AnyTunnel VIPs provided by the platform, you can configure a VPC whitelist by using the ACL capability of SLB to allow access only from trusted VPCs.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Network Security** >
 **Network Security Management Center**.
@@ -4465,6 +4828,9 @@ t
 ###### 7.4.1.1.3 Device network access management
 
 This topic describes how to manage device network access to Apsara Stack.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Network Security** >
 **Network Security Management Center**.
@@ -4498,6 +4864,9 @@ appears, configure the parameters as described in Step 6 and click **OK**.
 ##### 7.5.1.1 Password management for root users
 
 On the root Password Management page, you can manage passwords for the root users of all physical servers and Kernel-based Virtual Machines (KVMs) in the Apsara Stack environment, including updating and rotating passwords.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Account Security** > **Linux**
 **Account Management**.
@@ -4505,7 +4874,11 @@ On the root Password Management page, you can manage passwords for the root user
 4. On the **Password management** tab, perform the following operations to view information
 about all physical servers and KVMs in the Apsara Stack environment: Query the information about a physical server or KVM. t a. You can filter physical servers or KVMs by **Product**, **Server Name**, **IP**, and **Password**
 **status**. The following figure provides an example on the information about physical
-servers and KVMs that you can view on the Password management tab. When **Password status** of a physical server or KVM is **Disengaging from the**
+servers and KVMs that you can view on the Password management tab.
+
+**Note**
+
+When **Password status** of a physical server or KVM is **Disengaging from the**
 **Nano Tube** or **Mismatch**, the **Rotation Period** and **Next Rotation Time**
 parameters do not take effect. b. If you click the icon next to a password in the **Password** column, the password is displayed in plaintext for 10 seconds. Update a password To update the password of a physical server or KVM, perform the following operations: Find the desired physical server or KVM and click **Update password** in the **Operation** column. In the Update password dialog box, specify the new password that you want to use for the physical server or KVM in the Password field, enter the password again in the Confirm Password field, and then click **OK**. To update the passwords of multiple physical servers or KVMs at a time, perform the following operations: Select the desired physical servers or KVMs and click **Batch**
 **update** in the lower part of the page. In the Update password dialog box, specify the
@@ -4554,6 +4927,9 @@ This feature allows you to view and manage SSH keys on physical machines, KVMs, 
 **Prerequisites**
 
 You have obtained the permissions to manage SSH keys on the hosts. The Tianji-sshtunnel service is in desired state.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Account Security** > **Linux**
 **Account Management**.
@@ -4591,6 +4967,9 @@ t
 ##### 7.5.1.3 System user management
 
 You can manage users, passwords, and SSH keys of Linux operating system on physical servers and containers, including granting, canceling, disabling, enabling, and creating temporary system users.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Account Security** > **Linux**
 **Account Management**.
@@ -4763,6 +5142,9 @@ You have obtained the permission to operate the task execution records of the ho
 **Background information**
 
 You may need to manage SSH key pairs across multiple regions. In this case, a rotation task have subtasks. The name of a subtask is suffixed with the region where the SSH key pair is used. You can distinguish subtasks by the suffix. You can also use the subtask name to identify the parent rotation task to which the subtask belongs. A subtask is always synchronized with its parent task in status. The subtask status cannot be manually modified. All execution stages of a parent task are displayed after the task is created. The execution stages of a subtask are fully displayed only after all stages of the parent task are complete. When the parent task is running, you can view only the completed stages and the ongoing stage of the subtask.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Account Security** > **Linux**
 **Account Management**.
@@ -4803,6 +5185,8 @@ generated to roll back the key to the target key pair.
 
 **Perform canary configurations**
 
+**Note**
+
 If the task type is **SSH key rotation** and the **Grayscale remove the original private**
 **key** phase is selected, you can configure canary tasks. For more information, see Task
 template management.
@@ -4833,6 +5217,9 @@ operations: Click **Retry** in the **Operation** column that corresponds to an i
 ##### 7.5.2.1 Account ACL control
 
 A platform account has a wide range of permissions. You can use the account access control list (ACL) control feature to limit the permissions of a platform account to avoid security risks. This way, the account can be used only within the network on the platform.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Account Security** > **Cloud**
 **Product Account Management**.
@@ -4893,6 +5280,9 @@ includes **Call Source**, **Client observation mode**, **Authentication method**
 ###### 7.5.2.2.1 ACL
 
 The Account ACL control page displays the whitelist policies associated with platform accounts. If you want to examine the specifics of an API control policy, simply click its ID.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security** > **Account Security** > **Cloud Product**
 **Account Management**.
@@ -4905,6 +5295,9 @@ details of the API control policy. t
 ###### 7.5.2.2.2 O&M
 
 You can manage the O&M switch for service boundaries.
+
+**Procedure**
+
 1. Log to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security** > **Account Security** > **Cloud Product**
 **Account Management**.
@@ -4922,6 +5315,9 @@ accounts. The system records the failed authentication logs and allows the reque
 #### 7.6.1 Security policies
 
 You can modify the account policies and password policies of the current account in the Security Policies module.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Access Control** > **Security**
 **Strategy**.
@@ -5029,6 +5425,9 @@ To make user logons more secure, you can configure two-factor authentication for
 The Apsara Uni-manager Operations Console supports only **multi-factor authentication**
 **(MFA)**. After you enable two-factor authentication and add a key, you can use the random
 verification code generated by the authentication app for logon. This ensures the security of your account.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Security Management** > **Access Control** > **Two-**
 **factor Authentication**.
@@ -5050,6 +5449,9 @@ If you select **No Authentication**, two-factor authentication is disabled and a
 ### 8.1 Custom settings
 
 The feature allows you to customize the login page and platform logo.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Config**.
 3. In the left-side navigation pane, click **Personalized configuration**.
@@ -5077,6 +5479,9 @@ This operation is irreversible. Proceed with caution.
 **Prerequisites**
 
 You have the administrator permissions. For formal authorization, you must enter the authorization code to view the authorization information. You can obtain the authorization code from the authorization letter appended to the project contract or by contacting the customer business manager (CBM) of your project.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Config**.
 3. In the left-side navigation pane, click **Authorization Information**.
@@ -5211,6 +5616,8 @@ channel.
 
 > You can view the message push records of the platform.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Notification Management** > **Push History**.
@@ -5230,6 +5637,9 @@ If multiple regions exist in the current environment, the multi-region configura
 **Prerequisites**
 
 Before you add regions, make sure that the following conditions are met: The networks between regions are connected and the regions share accounts that have the same usernames and passwords. You are granted the permissions of a multi-region configuration administrator or a super administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **More > System Config**.
 3. In the left-side navigation pane, click **Region Coordinate Management**.
@@ -5282,6 +5692,9 @@ This topic describes how to configure archived items of products.
 **Prerequisites**
 
 The archive server is configured. Archived products are added. For more information, see Management of archived products.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Config**.
 3. In the left-side navigation pane, choose **Archive management** > **Archive Settings**.
@@ -5320,6 +5733,9 @@ This topic describes how to view the archiving details of each archived item.
 **Prerequisites**
 
 Archiving settings are configured and an archive operation is triggered.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **System Config**.
 3. In the left-side navigation pane, choose **Archive management** > **Archive Details**.
@@ -5670,7 +6086,11 @@ You have the administrator permissions. You can create up to five levels of depa
 4. On the left side of the Departments page, you can view the tree structure of all
 departments. You can also view the information about all users and user groups in each department by clicking the department name.
 5. In the catalog tree on the left, select the department to which you want to add a sub-
-department and click **Add Department** in the right section. In the Add Department dialog box, enter a value in the **Department Name** field, and click **OK**. Then, you can view the created department in the catalog tree. The **Department Name** parameter can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+department and click **Add Department** in the right section. In the Add Department dialog box, enter a value in the **Department Name** field, and click **OK**. Then, you can view the created department in the catalog tree.
+
+**Note**
+
+The **Department Name** parameter can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
 
 **Related operations**
 
@@ -5717,6 +6137,9 @@ In multi-region scenarios, a region is managed by its administrators. After admi
 **Limits**
 
 Only departments at tier 1 can be associated with regions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **User Authorities**.
 3. In the left-side navigation pane, click **Department Region association**.
@@ -5810,6 +6233,8 @@ Some global faults in Apsara Stack, such as MiniRDS faults, faults of the physic
 | Detection of alert link faults | Detects features in the Apsara Uni-manager Management Console, including homepage logon, user authentication, and alerting. Detects TianjiMon features and sends alerts when data output faults or alert output faults occur. |
 | Alert viewing and sending | Supports on-site registration of alert callback gateways to send alerts from the out-of-band network when exceptions are detected. Provides a simple data viewing page. |
 
+**Procedure**
+
 1. Log on to theApsara Uni-manager Operations Console in emergency mode.
 2. In the top navigation bar, click **Failure emergency**.
 3. In the left-side navigation pane, click **Watchdog Monitoring Alert**.
@@ -5827,6 +6252,9 @@ Search for alert ID/alert information field, enter a keyword to search for an al
 ### 10.2 Scenario diagnostics
 
 This topic describes the preset fault scenarios. You can select a scenario to trigger a diagnostics plan.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console in emergency mode.
 2. In the top navigation bar, click **Failure emergency**.
 3. In the left-side navigation pane, click **Scenario Diagnosis**.
@@ -5887,6 +6315,9 @@ Find the emergency plan that you want to view and click **Details** in the **Ope
 #### 10.4.1 Server logon
 
 On the Server logon page, you can query and log on to servers.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console in emergency mode.
 2. In the top navigation bar, click **Failure emergency**.
 3. In the left-side navigation pane, choose **Emergency Web Terminal** > **Server Login**.
@@ -5901,6 +6332,9 @@ icon. In the CLI window, enter Linux commands to perform related operations.
 #### 10.4.2 Database logon
 
 On the Database logon page, you can query and log on to the metadatabases that are requested by services.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console in emergency mode.
 2. In the top navigation bar, click **Failure emergency**.
 3. In the left-side navigation pane, choose **Emergency Web Terminal** > **Database Login****.**

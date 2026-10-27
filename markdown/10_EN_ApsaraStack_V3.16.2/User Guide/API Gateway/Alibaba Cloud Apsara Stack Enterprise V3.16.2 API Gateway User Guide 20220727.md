@@ -5,7 +5,7 @@ doc_version: "20220727"
 pdf_pages: 120
 source_pdf: "bbaef8695daa5ec8_Alibaba Cloud Apsara Stack Enterprise V3.16.2 API Gateway User Guide 20220727.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20API%20Gateway%20User%20Guide%2020220727.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 API Gateway User Guide
@@ -85,7 +85,7 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 
 ## 1 What is API Gateway?
 
-API Gateway provides a comprehensive suite of API hosting services that help you share capabilities, services, and data with partners in the form of APIs. API Gateway provides multiple security mechanisms to secure APIs and reduce the risks arising from open APIs. These mechanisms include protection against replay attacks, request encryption, identity authentication, permission management, and throttling. API Gateway provides API lifecycle management that allows you to define, publish, and unpublish APIs. This improves API management and iteration efficiency. API Gateway allows enterprises to reuse and share their capabilities with each other so that they can focus on their core business. ay console
+API Gateway provides a comprehensive suite of API hosting services that help you share capabilities, services, and data with partners in the form of APIs. API Gateway provides multiple security mechanisms to secure APIs and reduce the risks arising from open APIs. These mechanisms include protection against replay attacks, request encryption, identity authentication, permission management, and throttling. API Gateway provides API lifecycle management that allows you to define, publish, and unpublish APIs. This improves API management and iteration efficiency. API Gateway allows enterprises to reuse and share their capabilities with each other so that they can focus on their core business. API Gateway ay console
 
 ## 2 Log on to the API Gateway console
 

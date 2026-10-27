@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 14
 source_pdf: "15ec2af985e548d4_Alibaba Cloud Apsara Stack V3.18.6 ApsaraStack Parallel File System User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E8%A1%8C%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8APFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraStack%20Parallel%20File%20System%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # ApsaraStack Parallel File System User Guide 20260701
@@ -34,7 +34,12 @@ ApsaraStack Parallel File System (APFS) is a cloud-defined, distributed parallel
 
 ### 2.1 Log on to the APFS console
 
+**Prerequisites**
+
 The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. On the login page, enter your username and password.
@@ -55,6 +60,8 @@ operations based on your login scenario: You log on to the Apsara Uni-manager Ma
 Parallel File System (APFS) console.
 
 ### 2.2 Create an APFS file system
+
+**Procedure**
 
 1. Log on to the ApsaraStack Parallel File System (APFS) console.
 2. On the APFS page, click **Create File System** in the upper-left corner.
@@ -88,7 +95,12 @@ This topic describes the limits of ApsaraStack Parallel File System (APFS). Only
 
 **View an APFS file system**
 
+**Prerequisites**
+
 An ApsaraStack Parallel File System (APFS) file system is created. For more information, see Create an APFS file system.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. On the APFS page, you can search for a file system by **File System ID** or **File System**
 **Name**.
@@ -103,7 +115,12 @@ the file system.
 
 **Delete an APFS file system**
 
+**Prerequisites**
+
 Before you delete an APFS file system, the file system is unmounted from the mount target. Deleted APFS file systems cannot be restored. Make sure that you back up the data stored in an APFS file system before you delete it. After you delete an APFS file system, resources of the file system are not immediately released. The disk space occupied by the file system is released seven days later.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. On the APFS page, find the file system that you want to delete and click **Delete** in the
 **Actions** column.
@@ -120,9 +137,14 @@ the pointer over the **File System ID/Name** column, and click the icon.
 
 ### 3.2 Scale up an APFS file system
 
+**Prerequisites**
+
 1. An ApsaraStack Parallel File System (APFS) file system is created. For more information, see
 Create an APFS file system.
 2. No data is being read from or written to the APFS file system.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. On the APFS page, find the file system that you want to scale up and click **Scale Up** in the
 Actions column.
@@ -135,7 +157,14 @@ parameter.
 
 ### 3.3 Resource monitoring
 
-This topic describes how to view monitoring metrics and create alert rules for ApsaraStack Parallel File System (APFS) resources. An APFS file system is created. For more information, see Create an APFS file system.
+This topic describes how to view monitoring metrics and create alert rules for ApsaraStack Parallel File System (APFS) resources.
+
+**Prerequisites**
+
+An APFS file system is created. For more information, see Create an APFS file system.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. Click **APFS**, and then click the ID or name of a file system or click **Details** in the Actions
 column to go to the File System Details page.
@@ -153,8 +182,15 @@ This topic describes how to configure data replication between ApsaraStack Paral
 
 **Scenarios**
 
-Data replication from APFS to OSS: The data stored in an APFS file system is replicated to an OSS bucket for data backup. Data that is infrequently accessed can be transferred to and stored in an OSS bucket to reduce storage costs. Data replication from OSS to APFS: OSS supports multiple data importing methods. You can use this feature to import data from on-premises databases or other systems into an OSS bucket, and then replicate the data from the OSS bucket to an APFS file system. This data replication method improves data transmission efficiency. You can replicate large amounts of data that was accumulated and stored in an OSS bucket to an APFS file system for AI training and other purposes. The Resource Access Management (RAM) role AliyunOSSPrivateCloudDrsSyncRole is granted to your organization. For more information, see the **Service-linked role** topic of
+Data replication from APFS to OSS: The data stored in an APFS file system is replicated to an OSS bucket for data backup. Data that is infrequently accessed can be transferred to and stored in an OSS bucket to reduce storage costs. Data replication from OSS to APFS: OSS supports multiple data importing methods. You can use this feature to import data from on-premises databases or other systems into an OSS bucket, and then replicate the data from the OSS bucket to an APFS file system. This data replication method improves data transmission efficiency. You can replicate large amounts of data that was accumulated and stored in an OSS bucket to an APFS file system for AI training and other purposes.
+
+**Prerequisites**
+
+The Resource Access Management (RAM) role AliyunOSSPrivateCloudDrsSyncRole is granted to your organization. For more information, see the **Service-linked role** topic of
 **Configurations** in **Apsara Uni-manager Management Console User Guide** .
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. On the APFS page, click the ID or name of the file system for data replication or click
 **Details** in the **Actions** column to go to the File System Details page. On the page that

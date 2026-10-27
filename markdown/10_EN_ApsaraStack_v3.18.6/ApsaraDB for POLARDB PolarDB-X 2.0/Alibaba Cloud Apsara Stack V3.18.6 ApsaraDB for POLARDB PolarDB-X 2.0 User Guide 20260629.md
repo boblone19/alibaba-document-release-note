@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 198
 source_pdf: "0670f9dc635ba0a9_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/PolarDB-X/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260629
@@ -2197,6 +2197,8 @@ ts and security
 
 **Change the protected endpoint for SSL encryption**
 
+**Note**
+
 After you apply for a public endpoint, you can set the public endpoint to a protected endpoint. For more information about how to apply for a public endpoint, see Apply for a public endpoint.
 1. Log in to the PolarDB Converged Edition (Centralized & Distributed) console.
 
@@ -2764,7 +2766,11 @@ Create an alert rule that triggers alerts for a cloud service based on specified
 
 **Background information**
 
-During its effective period, an alert rule checks at a default detection frequency if a metric exceeds the specified threshold. If a metric exceeds the threshold and becomes abnormal, an alert is sent to the specified alert contacts or other alert processing platforms. The minimum alert detection frequency is once per minute.
+During its effective period, an alert rule checks at a default detection frequency if a metric exceeds the specified threshold. If a metric exceeds the threshold and becomes abnormal, an alert is sent to the specified alert contacts or other alert processing platforms.
+
+**Note**
+
+The minimum alert detection frequency is once per minute.
 
 **Procedure**
 

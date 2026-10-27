@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 104
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for Redis Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for Redis Developer Guide 20220928
@@ -739,7 +739,7 @@ The Apsara Stack API (ASAPI) allows you to call API operations by sending HTTP G
 https://public.asapi.aliyuns.com/asapi/v3?Action=GetOrganizationList&Product=ascm&Version=2 019-05-10&Id=<Organization ID>&<Common parameters>
 ```
 
-`https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of the ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation to call. `Id` : the ID of the organization. `<Common parameters>` : the common parameters specified in the system. SDK by using ASAPI Protocol The ASAPI supports only HTTPS. Endpoint For more information about how to obtain an endpoint, see Generate an endpoint for the ASAPI. To specify an API operation, use the `Action, Product, and Version` parameters. For example, set `Action` to GetOrganizationList, Product to ascm, and Version to 2019-05-10. You must also specify other operation-specific parameters and common parameters. For more information, see Common parameters.
+`https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of the ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation to call. `Id` : the ID of the organization. `<Common parameters>` : the common parameters specified in the system. SDK by using ASAPI Protocol The ASAPI supports only HTTPS. Endpoint For more information about how to obtain an endpoint, see Generate an endpoint for the ASAPI. Parameter To specify an API operation, use the `Action, Product, and Version` parameters. For example, set `Action` to GetOrganizationList, Product to ascm, and Version to 2019-05-10. You must also specify other operation-specific parameters and common parameters. For more information, see Common parameters.
 
 ##### 1.1.5.3 Request signatures
 
@@ -1123,7 +1123,7 @@ When you use API operations to access resources as a Resource Access Management 
 
 #### 2.7.1 CreateInstance
 
-You can call this operation to create an instance. For more information, see Instance specifications. Request parameters Request parameters
+Description You can call this operation to create an instance. For more information, see Instance specifications. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1182,7 +1182,7 @@ Sample responses `{`
 
 #### 2.7.2 DeleteInstance
 
-You can call this operation to delete a specified instance. This instance that you want to release must be in the following status: The instance is in the running state. The instance is not locked. Not e You cannot delete a subscription instance until the instance expires. Request parameters Request parameters
+Description You can call this operation to delete a specified instance. This instance that you want to release must be in the following status: The instance is in the running state. The instance is not locked. Not e You cannot delete a subscription instance until the instance expires. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1212,7 +1212,7 @@ Sample response `{`
 
 #### 2.7.3 ModifyInstanceSpec
 
-You can call this operation to change the specifications of a specified instance. For more information about instance specifications, see Instance types. Request parameters Request parameters
+Description You can call this operation to change the specifications of a specified instance. For more information about instance specifications, see Instance types. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1252,7 +1252,7 @@ Sample response `{`
 
 #### 2.8.1 DescribeInstanceAttribute
 
-You can call this operation to query details of a specified instance. Request parameters Request parameters
+Description You can call this operation to query details of a specified instance. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1345,7 +1345,7 @@ e.com.com",
 
 #### 2.8.2 DescribeInstances
 
-You can call this operation to query one or more instances under a specified account. Request parameters Request parameters
+Description You can call this operation to query one or more instances under a specified account. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1451,7 +1451,7 @@ e.com",
 
 #### 2.8.3 DescribeRegions
 
-You can call this operation to query regions where you can create instances. Request parameters Request parameters
+Description You can call this operation to query regions where you can create instances. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1510,7 +1510,7 @@ Sample response `{`
 
 #### 2.8.4 DescribeSecurityIps
 
-You can call this operation to query the list of IP addresses or CIDR blocks that you can use to connect to an instance. Request parameters Request parameters
+Description You can call this operation to query the list of IP addresses or CIDR blocks that you can use to connect to an instance. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1557,7 +1557,7 @@ Sample response `{`
 
 #### 2.8.5 FlushInstance
 
-You can call this operation to clear data stored on an instance. The cleared data cannot be restored. This is an asynchronous operation. After you call this operation, the system returns the result immediately. The system clears data in the background. Request parameters Request parameters
+Description You can call this operation to clear data stored on an instance. The cleared data cannot be restored. This is an asynchronous operation. After you call this operation, the system returns the result immediately. The system clears data in the background. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1587,7 +1587,7 @@ Sample response `{`
 
 #### 2.8.6 ModifyInstanceAttribute
 
-You can call this operation to modify attributes of an instance, such as the name or the password of the instance. Request parameters Request parameters
+Description You can call this operation to modify attributes of an instance, such as the name or the password of the instance. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1622,7 +1622,7 @@ Sample response `{`
 
 #### 2.8.7 ModifyInstanceMaintainTime
 
-You can call this operation to modify maintenance time for an instance. Alibaba Cloud may perform routine maintenance for the instance during the specified maintenance time. Request parameters Request parameters
+Description You can call this operation to modify maintenance time for an instance. Alibaba Cloud may perform routine maintenance for the instance during the specified maintenance time. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1654,7 +1654,7 @@ Sample response `{`
 
 #### 2.8.8 ModifyInstanceNetExpireTime
 
-You can call this operation to prolong the maximum period where the IP address in a classic network is retained if you switch an instance from the classic network to a Virtual Private Cloud (VPC) and retain the IP address in the classic network. Request parameters Request parameters
+Description You can call this operation to prolong the maximum period where the IP address in a classic network is retained if you switch an instance from the classic network to a Virtual Private Cloud (VPC) and retain the IP address in the classic network. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1686,7 +1686,7 @@ Sample response `{`
 
 #### 2.8.9 ModifySecurityIps
 
-You can call this operation to set the IP whitelist for an instance, so that only authorized ECS IP addresses or CIDR blocks can be used to connect to the instance. Request parameters Request parameters
+Description You can call this operation to set the IP whitelist for an instance, so that only authorized ECS IP addresses or CIDR blocks can be used to connect to the instance. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1721,7 +1721,7 @@ Sample response `{`
 
 #### 2.8.10 SwitchNetwork
 
-You can call this operation to switch the network type of an instance. You can switch an instance from a classic network to a Virtual Private Cloud (VPC). Request parameters Request parameters
+Description You can call this operation to switch the network type of an instance. You can switch an instance from a classic network to a Virtual Private Cloud (VPC). Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1764,7 +1764,7 @@ Sample response `{`
 
 #### 2.9.1 CreateBackup
 
-You can call this operation to create a backup. This is an asynchronous operation. After you call this operation, the system returns the result immediately. The system creates the backup in the background. Request parameters Request parameters
+Description You can call this operation to create a backup. This is an asynchronous operation. After you call this operation, the system returns the result immediately. The system creates the backup in the background. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1794,7 +1794,7 @@ Sample response `{`
 
 #### 2.9.2 ModifyBackupPolicy
 
-You can call this operation to modify a backup policy. Request parameters
+Description You can call this operation to modify a backup policy. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1826,7 +1826,7 @@ Sample responses `{`
 
 #### 2.9.3 DescribeBackupPolicy
 
-You can call this operation to query a backup policy that you have specified. You can query the backup details of an instance, such as the backup cycle and backup time. Request parameters Request parameters
+Description You can call this operation to query a backup policy that you have specified. You can query the backup details of an instance, such as the backup cycle and backup time. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1863,7 +1863,7 @@ Sample response `{`
 
 #### 2.9.4 DescribeBackups
 
-You can call this operation to query the details of a backup file, such as the backup start time, file size, backup mode, and download address. Request parameters Request parameters
+Description You can call this operation to query the details of a backup file, such as the backup start time, file size, backup mode, and download address. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1935,7 +1935,7 @@ Sample responses `{` `{`
 
 #### 2.9.5 RestoreInstance
 
-You can call this operation to restore data to a primary instance based on a backup set. Not e Calling this operation will cause overwriting data on the specified instance with backup data. Proceed with caution. Request parameters Request parameters
+Description You can call this operation to restore data to a primary instance based on a backup set. Not e Calling this operation will cause overwriting data on the specified instance with backup data. Proceed with caution. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1971,7 +1971,7 @@ Sample response `{`
 
 #### 2.10.1 DescribeMonitorItems
 
-You can call this operation to query available monitoring metrics. The result is returned in the <parameter:unit> format. Request parameters Request parameters
+Description You can call this operation to query available monitoring metrics. The result is returned in the <parameter:unit> format. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2069,7 +2069,7 @@ Sample response `{`
 
 #### 2.11.1 DescribeInstanceConfig
 
-You can call this operation to query parameters of an instance. Request parameters Request parameters
+Description You can call this operation to query parameters of an instance. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2103,7 +2103,7 @@ Sample response `{`
 
 #### 2.11.2 ModifyInstanceConfig
 
-You can call this operation to modify a parameter of an instance. Request parameters Request parameters
+Description You can call this operation to modify a parameter of an instance. Request parameters Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|

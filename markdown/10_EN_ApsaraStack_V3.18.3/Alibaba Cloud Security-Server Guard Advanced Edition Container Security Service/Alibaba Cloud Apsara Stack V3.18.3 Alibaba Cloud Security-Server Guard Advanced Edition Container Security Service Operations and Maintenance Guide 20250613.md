@@ -5,7 +5,7 @@ doc_version: "20250613"
 pdf_pages: 27
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Operations and Maintenance Guide 20250613.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20Operations%20and%20Maintenance%20Guide%2020250613.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Operations and Maintenance Guide 20250613

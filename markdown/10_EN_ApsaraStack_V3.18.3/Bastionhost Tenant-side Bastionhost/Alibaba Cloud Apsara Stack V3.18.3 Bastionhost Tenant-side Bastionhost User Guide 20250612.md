@@ -5,7 +5,7 @@ doc_version: "20250612"
 pdf_pages: 65
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Bastionhost Tenant-side Bastionhost User Guide 20250612.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%A0%A1%E5%9E%92%E6%9C%BA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Bastionhost%20Tenant-side%C2%A0Bastionhost%20User%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Bastionhost Tenant-side Bastionhost User Guide 20250612
@@ -168,6 +168,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -187,6 +190,9 @@ operations in the following scenarios: It is the first time that you log on to t
 ### 2.3 Upgrade a bastion host
 
 If the current bastion host cannot meet your business requirements, you can upgrade your bastion host on the Bastionhost page. This topic describes how to upgrade a bastion host.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console. For more information, see Log on
 to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
@@ -225,6 +231,9 @@ This topic describes how to deploy a bastion host.
 **Prerequisites**
 
 Your account is granted the permissions on the cloud resources of a department. For example, your account has the permissions of the department administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console. For more information, see Log on
 to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > O&M Audit > Tenant-side Bastionhost**.
@@ -258,6 +267,9 @@ This topic describes how to log on to Bastionhost from the Apsara Uni-manager Ma
 **Background information**
 
 Make sure that your account has the permissions on the cloud resources of a department. For example, you have the permissions of the administrator role in a department. The first time you log on to Bastionhost, you must change the default password of the super administrator. You can obtain the default password from the technical support engineers.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **O&M Audit** > **Tenant-side Bastionhost**.
 3. On the **Tenant-side Bastionhost** page**,** select a region from the **Region** drop-down list
@@ -281,6 +293,8 @@ The client that you use can access the bastion host. The access address of the b
 | Audit administrator | An auditor can use this account to audit O&M operations. This account is created by the super administrator on the User Management page. |
 | System administrator | A system administrator can use this account to manage bastion hosts. This account is created by the super administrator on the User Management page. |
 | O&M engineer | An O&M engineer can use this account to manage hosts. This account is created by the super administrator on the User Management page. |
+
+**Procedure**
 
 1. Open your Google Chrome browser.
 2. In the address bar, enter the access address of the bastion host in the https://
@@ -326,6 +340,7 @@ This topic describes how to enable the department management feature.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **System** > **System Configuration**.
 4. On the **Feature Settings** tab of the **System Settings** page, set Status to Enable in the
 Department Management section and click **Save**.
@@ -335,8 +350,12 @@ Department Management section and click **Save**.
 **Prerequisites**
 
 The department management feature is enabled. For more information, see Enable department management.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. In the left-side navigation pane, click **Users**.
 4. On the **Departments** page, click **Create Department**.
 5. In the **Create Department** dialog box, select a parent department, enter a department
@@ -352,6 +371,7 @@ A department is created. For more information, see Create a department.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. In the left-side navigation pane, click **Users**.
 4. On the **Departments** page, find the department whose name you want to modify and click
 its name.
@@ -362,6 +382,7 @@ its name.
 The security codes of a department are classified into KeyA security codes and KeyB security codes. KeyA and KeyB security codes are used to encrypt files that contain data to be exported from the department.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. In the left-side navigation pane, click **Users**.
 4. On the **Departments** page, find the department whose security codes you want to manage
 and click **Manage** in the **Security Code** column.
@@ -377,6 +398,7 @@ and click **Manage** in the **Security Code** column.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. In the left-side navigation pane, click **Users**.
 4. On the **Departments** page, find the department that you want to delete and click **Delete**
 **Department**.
@@ -394,6 +416,7 @@ On the User Management page, you can create, import, and export users. You can a
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **User Management**.
 4. On the **User Management** page, click **Add User**.
 5. On the **Add User** page, configure the parameters and click **Create**.
@@ -425,6 +448,7 @@ the **Authentication Mode** parameter, select **Other Options**, and then click 
 This topic describes how to export users.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **User Management**.
 4. On the **User Management** page, click **Export User**.
 5. In the **Export User** dialog box, click **Export**.
@@ -435,6 +459,7 @@ The result file will be compressed into a ZIP file. You can specify whether to e
 This topic describes how to search for, delete, lock, unlock, and configure users.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **User Management**.
 4. On the **User Management** page, manage users.
 
@@ -456,6 +481,7 @@ In the user group management module, you can perform operations such as creating
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **User Group Management**.
 4. On the **User Group Management** page, click **Create User Group**.
 5. On the **Create User Group** page, select a department, enter a user group name, and then
@@ -465,6 +491,7 @@ click **Create User Group**.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **User Group Management**.
 4. On the **User Group Management** page, manage user groups.
 
@@ -485,6 +512,7 @@ Dynamic tokens are used for two-factor authentication. This topic describes how 
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **Dynamic Token Management**.
 4. On the **Dynamic Token Management** page, click **Import Token File**.
 
@@ -492,6 +520,7 @@ Dynamic tokens are used for two-factor authentication. This topic describes how 
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **Dynamic Token Management**.
 4. On the **Dynamic Token Management** page, find the token that you want to bind with a
 user and click **Bind to User** in the **Actions** column.
@@ -502,6 +531,7 @@ After you select a user who needs to use the token for two-factor authentication
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **User** > **Dynamic Token Management**.
 4. On the **Dynamic Token Management** page, manage dynamic tokens.
 
@@ -528,6 +558,7 @@ This topic describes how to create and import a host.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Management**.
 4. On the **Host Management** page, click **Add Host**.
 5. On the **Add Host** page, configure the parameters and click **Create Host**.
@@ -536,6 +567,7 @@ This topic describes how to create and import a host.
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Management**.
 4. On the **Host Management** page, click **Import Host**.
 5. On the **Import Host** page, upload the file that is exported from the current system, or click
@@ -547,6 +579,7 @@ the template to the system. Specify **Other Options** and click **Import Host**.
 This topic describes how to export host information.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Management**.
 4. On the **Host Management** page, find the host whose information you want to export and
 click **Export Host**. The exported information includes the host IP address, hostname, operating system, username and password used to log on to the host, host group, host network, and host code. You can directly import the file that contains the exported host information into Bastionhost. You can export the information about a host by repeating the preceding operations and then modify the information about multiple hosts and host accounts at the same time.
@@ -556,6 +589,7 @@ click **Export Host**. The exported information includes the host IP address, ho
 A host account can be used to log on to the required host and application for management. This topic describes how to create a host account.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Management**.
 4. On the **Host Management** page, find the host that you want to manage and click the
 number in the Host Accounts column.
@@ -578,6 +612,7 @@ number in the Host Accounts column.
 This topic describes how to associate a host with a shared account.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Management**.
 4. On the **Host Management** page, find the host that you want to associate with a shared
 account and click the number in the Shared Accounts column.
@@ -589,6 +624,7 @@ account and click the number in the Shared Accounts column.
 This topic describes how to search for, enable, and disable hosts, and modify information about hosts.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Management**.
 4. On the **Host Management** page, manage hosts.
 
@@ -608,6 +644,7 @@ This topic describes how to search for, enable, and disable hosts, and modify in
 This topic describes how to search for a host account.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Account Management**.
 4. On the **Host Account** tab of the **Host Management** page, specify search conditions to
 search for a host account. In the host account list, you can search for a host account by host IP address, hostname, username, protocol, department, and logon mode. You can click **Advanced Search** to search for a host account based on the start time and end time of O&M operations.
@@ -617,6 +654,7 @@ search for a host account. In the host account list, you can search for a host a
 This topic describes how to delete a host account.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Account Management**.
 4. On the **Host Account** tab of the **Account Management** page, select the host account
 that you want to delete and click **Delete**.
@@ -626,6 +664,7 @@ that you want to delete and click **Delete**.
 Users who have the permissions on a shared account can use the shared account to log on to multiple hosts that are associated with the shared account, which reduces the workload of creating accounts for hosts. This topic describes how to create a shared account.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Account Management**.
 4. On the **Shared Account** tab of the **Account Management** page, click **Create Shared**
 **Account**.
@@ -659,6 +698,7 @@ To remove an associated host, select the host that you want to remove and click
 This topic describes how to search for, delete, and modify shared accounts.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Account Management**.
 4. On the **Shared Account** tab of the **Account Management** page, search for, delete, or
 modify shared accounts.
@@ -686,6 +726,7 @@ then click **Create Host Group**.
 This topic describes how to add a host to a host group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Group Management**.
 4. On the **Host Group Management** page, find the host group to which you want to add a
 host and click **Add Host** in the **Actions** column.
@@ -698,6 +739,7 @@ To remove a host, select the host and click **Disassociate**.
 This topic describes how to search for, modify, and delete a host group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Server Group Management**.
 4. On the **Host Group Management** page, search for, delete, or modify a host group.
 
@@ -724,6 +766,7 @@ name, and then click **Create Account Group**.
 This topic describes how to add host accounts to an account group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Account Management**.
 4. On the **Account Group Management** page, find the account group to which you want to
 add host accounts and click **Add Host Account** in the **Actions** column.
@@ -738,6 +781,7 @@ click **Add**. To remove a host account, select the host account that you want t
 This topic describes how to search for, modify, and delete an account group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Account Management**.
 4. On the **Account Group Management** page, search for, delete, or modify an account
 group.
@@ -757,8 +801,12 @@ This topic describes how to create an application center.
 **Background information**
 
 If the application server runs the Windows operating system, you can use a RemoteAPP to publish applications. The Windows operating system does not limit the access permissions of applications. O&M engineers may access the local file directory of the application server by using published applications during application O&M. You can determine whether to use this feature based on your security and risk management requirements. If you want to use the feature, refer to the following security hardening suggestions. Deploy the application server in an independent network and apply strict access control policies. This way, the application server cannot access servers or network devices on which the application server has no permissions. Do not store sensitive information, such as business operation data and personal information, on the application server. Use accounts with limited permissions to publish applications. Separately publish important applications on different application servers to significantly reduce risks. Grant the permissions to publish applications only to required accounts. Do not grant the permissions to unnecessary accounts. Audit all session logs of application publishing by using Bastionhost on a regular basis. Regularly update the application server and perform necessary security hardening on the application server.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Application Management**.
 4. On the **Application Center** tab of the **Application Management** page, click **Create**
 **Application Center**.
@@ -790,6 +838,7 @@ This topic describes how to create an application center tool.
 An application center is created. For more information, see Create an application center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Application Management**.
 4. On the **Application Center Tools** tab of the **Application Management** page, click
 **Create Application Center Tool**.
@@ -806,6 +855,9 @@ This topic describes how to create or import an application.
 **Prerequisites**
 
 An application center is created. For more information, see Create an application center. An application center tool is created. For more information, see Create application center tools.
+
+**Procedure**
+
 1. Log on to Bastionhost from the Apsara Uni-manager Management Console. For more
 information, see Log on to Bastionhost from the Apsara Uni-manager Management Console.
 2. Choose **Assets** > **Application Management**.
@@ -845,6 +897,7 @@ You can also click **download a template file**, fill out the template in the sp
 This topic describes how to export an application.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Assets** > **Application Management**.
 4. On the **Applications** tab of the **Application Management** page, click **Export**
 **Application**.
@@ -858,6 +911,7 @@ This topic describes how to export an application.
 Application account groups are used to group applications and facilitate batch authorization for applications. This topic describes how to manage application account groups.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Asset** > **Application Account Group Management**.
 4. On the **Application Account Group Management** page, click **Create Application**
 **Account Group**.
@@ -871,6 +925,7 @@ application account group name, and then click **Create Application Account Grou
 This topic describes how to add members to an application account group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Asset** > **Application Account Group Management**.
 4. On the **Application Account Group Management** page, find the application account
 group to which you want to add a member and click **Add Member** in the **Actions** column.
@@ -884,6 +939,7 @@ to add and click **Add**. To remove an application account, select the applicati
 This topic describes how to search for, modify, and delete an application account group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Asset** > **Application Account Group Management**.
 4. On the **Application Account Group Management** page, search for, delete, or modify an
 application account group.
@@ -903,6 +959,7 @@ application account group.
 O&M rules associate users with host assets in Bastionhost. You can use the O&M authorization feature to allow users to access only hosts on which the users have O&M permissions. This topic describes how to create an O&M rule.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Authorization** > **O&M Rules**.
 4. On the **O&M Rules** page, click **Create O&M Rule**.
 5. On the **Create O&M Rule** page, configure the Rule Name and Rule Validity Period
@@ -924,6 +981,7 @@ The result file will be compressed into a ZIP file. You can specify whether to e
 This topic describes how to manage O&M rules.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Authorization** > **O&M Rules**.
 4. On the **O&M Rules** page, manage O&M rules.
 
@@ -947,6 +1005,7 @@ This topic describes how to manage O&M rules.
 Review rules can be used to review hosts or O&M rules. You can specify reviewers for review rules and set the review type to command review or secondary review for O&M operations. After you specify reviewers and review objects, the host commands or O&M rules that are specified in the review rule can be reviewed by only the specified reviewers. This topic describes how to create a review rule.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Authorization** > **Approval Rules**.
 4. On the **Review Rules** page, click **Create Review Rule**.
 5. On the **Create Review Rule** page, configure the Rule Name, Review Type, Reviewer, and
@@ -957,6 +1016,7 @@ Review Object parameters and click **Create Review Rule**.
 This topic describes how to delete a review rule.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Authorization** > **Approval Rules**.
 4. On the **Review Rules** page, select the rule that you want to delete and click **Delete**.
 5. In the **Delete Review Rule** dialog box, click **OK**.
@@ -977,6 +1037,7 @@ Review of unauthorized logons is to review the relationship between a host and a
 This topic describes how to search for and delete review entries.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Authorization** > **Unauthorized Logon Review**.
 4. On the **Review of Unauthorized Logons** page, search for or delete review entries.
 
@@ -992,6 +1053,7 @@ This topic describes how to search for and delete review entries.
 Host command policies are used to control commands that you run when you perform O&M operations on the SSH, Telnet, and Rlogin character protocols. This topic describes how to create a host command policy.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Policy** > **Server Command Policy**.
 4. On the **Host Command Policies** page, click **Create Policy**.
 5. On the **Create Host Command Policy** page, configure the parameters based on the
@@ -1013,8 +1075,12 @@ This topic describes how to associate an O&M rule with a host command policy.
 **Prerequisites**
 
 A host command policy is created. For more information, see Create a host command policy. An O&M rule is created. For more information, see Create an O&M rule.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Policy** > **Server Command Policy**.
 4. On the **Host Command Policies** page, find the policy with which you want to associate an
 O&M rule and click **Associate O&M Rule** in the **Actions** column.
@@ -1026,6 +1092,7 @@ policy and click **Add**. After the association, users authorized by the O&M rul
 This topic describes how to modify, copy, and delete a policy.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Policy** > **Server Command Policy**.
 4. On the **Host Command Policies** page, manage policies.
 
@@ -1045,8 +1112,12 @@ This topic describes how to modify, copy, and delete a policy.
 ##### 3.9.1.1 Search for audit sessions
 
 This topic describes how to use the search feature to search for audit sessions that meet specific conditions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Audit** > **Session Audit**.
 4. On the **All Sessions**, **Ticket Sessions**, and **Application Sessions** tabs of the **Session**
 **Audit** page, click **Display More Search Conditions**.
@@ -1056,8 +1127,12 @@ the session logs that meet the conditions.
 ##### 3.9.1.2 View all sessions
 
 Session auditing records the session logs of operations that are performed on hosts by O&M engineers. This topic describes how to view all sessions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Audit** > **Session Audit**.
 4. On the **All Sessions** tab of the **Session Audit** page, view the session audit logs of
 characters, graphics, files, and applications. You can select a session and perform more audit operations on the session. View session details: Click **Details** in the Actions column to view the details of the session. Download the session file: Click **Download** in the Actions column to download the session file to your on-premises machine. After you download the session file, you can use an offline player to play the audit video. Play the session logs: Click **Play** in the Actions column to view the playback of the session audit on a web page. Online play supports functionalities such as log playback, command recording, and search.
@@ -1067,6 +1142,7 @@ characters, graphics, files, and applications. You can select a session and perf
 Application sessions are used to record the process of application O&M sessions. You can play sessions as videos. This topic describes how to view application sessions.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Audit** > **Session Audit**.
 4. On the **Application Sessions** tab of the **Session Audit** page, view application sessions.
 You can select a session and perform more audit operations on the session. View session details: Click **Details** in the Actions column to view the details of the session. Download the session file: Click **Download** in the Actions column to download the session file to your on-premises machine. After you download the session file, you can use an offline player to play the session. Play back the session: Click **Play** in the Actions column to view the playback of the session audit on a web page. Online play supports functionalities such as log playback, command recording, and search.
@@ -1076,6 +1152,7 @@ You can select a session and perform more audit operations on the session. View 
 Ticket sessions are used to record the process of O&M sessions that are established by using tickets. Video playback of ticket sessions is supported. This topic describes how to view ticket sessions.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Audit** > **Session Audit**.
 4. On the **Ticket Sessions** tab of the **Session Audit** page, view ticket sessions.
 You can select a session and perform more audit operations on the session. View the details of a session: Click **Details** in the Actions column to view the details of a session. Download a session file: Click **Download** in the Actions column to download the session file to your computer. After you download the session file, you can use an offline player to play back the session. Play back a session: Click **Play** in the Actions column to play back and audit a session on a web page. Online playback supports features such as log playback, command recording, and search.
@@ -1085,6 +1162,7 @@ You can select a session and perform more audit operations on the session. View 
 Auditors can search for key events in a session to locate the related complete session. This topic describes how to search for key events such as character commands and graphic texts in a session.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Audit** > **Event Audit**.
 4. On the **Event Audit** page, click an event tab based on your business requirements.
 **Commands**: You can view the audit logs of character command operations when you
@@ -1106,6 +1184,7 @@ session details.
 Audit rules are used to specify the audit data that auditors can audit. Auditors can view only the audit data that is generated when users perform O&M operations on assets that are specified in an audit rule. This topic describes how to create an audit rule.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Audit** > **Audit Rules**.
 4. On the **Audit Rules** page, click **Create Audit Rule**.
 5. On the **Create Audit Rule** page, enter a rule name, select an auditor and the assets that
@@ -1132,6 +1211,7 @@ If an O&M engineer needs to perform O&M operations on a host on which the O&M en
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Ticket** > **My Tickets**.
 4. On the **My Tickets** page, click **Create Ticket**.
 5. On the **Create Ticket** page, add an asset, specify the validity period and description for
@@ -1142,6 +1222,7 @@ the ticket, and then click **Create Ticket**. After you create the ticket, the t
 Only a Bastionhost administrator has the permissions to review tickets. After an O&M engineer submits a ticket, a Bastionhost administrator must review the ticket.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **Ticket** > **Ticket Approval**.
 4. On the **Ticket Review** page, select the ticket that you want to review and approve or
 reject the ticket. Click **Approve** to approve a ticket. If a ticket is in the Pending state, you can click the ticket number or click Details in the Actions column of the ticket to modify the ticket. Click **Deny**to reject a ticket.
@@ -1155,6 +1236,7 @@ reject the ticket. Click **Approve** to approve a ticket. If a ticket is in the 
 This topic describes how to configure Bastionhost Assistant.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **O&M** > **Server O&M**.
 4. On the **Host O&M** or **Application O&M** tab, click **Bastionhost Assistant** in the
 description.
@@ -1167,6 +1249,7 @@ description.
 This topic describes how to configure web-based O&M settings.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **O&M** > **Server O&M**.
 4. In the upper-right corner of the **Host O&M** page, click **Web-based O&M Settings**.
 5. In the **Web-based O&M Settings** dialog box, click a protocol tab, configure the settings,
@@ -1177,6 +1260,7 @@ and then click **Save**.
 This topic describes how to perform O&M operations on hosts.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **O&M** > **Server O&M**.
 4. On the **Host O&M** tab, find the host on which you want to perform O&M operations and
 click the icon in the **Logon** column.
@@ -1195,6 +1279,7 @@ operations and click the icon in the **Logon** column.
 If tickets have been approved by the administrator and the tickets are within the validity period, you can access an asset and perform O&M operations on the tickets. This topic describes how to perform O&M operations on tickets.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **O&M** > **Server O&M**.
 4. On the **Ticket O&M** tab, find the ticket on which you want to perform O&M operations and
 click **Details** in the **Details** column.
@@ -1206,6 +1291,7 @@ click **Details** in the **Details** column.
 You can use the quick O&M feature to find the hosts to which you recently logged on for multiple times. The feature is suitable for scenarios in which you need to frequently log on to specific hosts for O&M. This topic describes how to perform quick O&M.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **O&M** > **Server O&M**.
 4. On the **Host O&M** page, enter the hostname, host IP address, or logon name in the upper-
 left search box. The system automatically filters the information about the host that you query.
@@ -1217,6 +1303,7 @@ can log on to the host.
 This topic describes how to perform HTML5-based O&M.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. and choose **O&M**
+**Audit > Tenant-side Bastionhost**.
 3. Choose **O&M** > **Server O&M**.
 4. On the **Host O&M** tab, find the host on which you want to perform O&M operations and
 click the icon in the **Logon** column. If you perform HTML5-based O&M, you do not need to install Bastionhost Assistant or a client tool. HTML5-based O&M supports Telnet-, SSH-, RDP-, VNC-, Rlogin-, and SFTP-based O&M. The following operations are not supported during RDP-based O&M: printer and drive mapping, file upload and download by using clipboard, resolution control, and ZMODEM transmission.
@@ -1394,6 +1481,9 @@ This topic describes how to configure a network for Bastionhost.
 **Background information**
 
 The network settings that you configure for Bastionhost can ensure the network connectivity of Bastionhost.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Network Configuration**.
@@ -1407,6 +1497,9 @@ This topic describes how to configure web settings for Bastionhost.
 **Background information**
 
 The web settings that you configure for Bastionhost and the HTTPS service that you enable can ensure the security of Bastionhost.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Network Configuration**.
@@ -1418,6 +1511,9 @@ You can configure the following items: Enable or disable national secret communi
 ##### 3.13.2.1 Configure security settings
 
 This topic describes how to configure security policies for user logons.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Authentication Management**.
@@ -1431,6 +1527,9 @@ This topic describes how to configure remote authentication.
 **Background information**
 
 Bastionhost supports remote authentication methods such as Active Directory (AD), Lightweight Directory Access Protocol (LDAP), and Remote Authentication Dial-In User Service (RADIUS). The remote authentication methods can be used to manage users and passwords in a unified manner to ensure the security of Bastionhost.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Authentication Management**.
@@ -1446,6 +1545,9 @@ This topic describes how to configure two-factor authentication.
 **Background information**
 
 The two-factor authentication mechanism uses SMS passwords and OTP app tokens to control the risk of account password leaks and prevent account abuse for O&M engineers. After twofactor authentication is enabled, O&M engineers must perform the following operations to log on to Bastionhost: Enter the account password. After the password is verified, enter an authentication password to log on to Bastionhost.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Authentication Management**.
@@ -1461,6 +1563,9 @@ This topic describes how to configure O&M management settings, including unautho
 **Background information**
 
 You can specify items such as the logon method and logon duration for O&M engineers by configuring O&M management settings to ensure O&M security.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **System Configuration**.
@@ -1497,6 +1602,9 @@ This topic describes how to configure alert settings for Bastionhost.
 **Background information**
 
 In Bastionhost, alert notifications for operations performed by users are sent by email or Syslog. This allows managers to receive related notifications and handle alerts at the earliest opportunity based on actual conditions.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **System Configuration**.
@@ -1508,6 +1616,9 @@ alert. In the Alert Notification Settings section, you can select whether to ena
 **interfaces**
 
 This topic describes how to configure the language and user interfaces (UIs) for Bastionhost.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **System Configuration**.
@@ -1517,6 +1628,9 @@ the language and background. In the Language Settings section, you can configure
 ##### 3.13.3.4 Configure features
 
 This topic describes how to configure the features of Bastionhost.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **System Configuration**.
@@ -1539,6 +1653,9 @@ Commands parameters and click **Create**.
 ##### 3.13.4.1 Archive data
 
 Storage management allows you to view the disk size of Bastionhost and manage the data information in Bastionhost. This topic describes how to use the data archiving feature.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Storage Management**.
@@ -1547,7 +1664,11 @@ In the **Data Disk Usage** section, view the usage of data disks. In the **Video
 
 ##### 3.13.4.2 Back up logs
 
-You can use the log backup feature to back up operation logs and session logs. You can also download backup logs and save them to your on-premises machine. This allows managers to view the logs in the future. 1.
+You can use the log backup feature to back up operation logs and session logs. You can also download backup logs and save them to your on-premises machine. This allows managers to view the logs in the future.
+
+**Procedure**
+
+1.
 2. Choose **System** > **Storage Management**.
 3. On the **Storage Settings** page, click **Log Backup**.
 4. On the **Log Backup** tab, you can configure the Time Range, Description, and Content
@@ -1564,7 +1685,11 @@ logs. Click the Operation Log Settings tab. On this tab, you can configure the p
 
 #### 3.13.6 View system reports
 
-This topic describes how to view system reports. 1.
+This topic describes how to view system reports.
+
+**Procedure**
+
+1.
 2. Choose **System** > **System Reports**.
 3. On the **System Reports** page, view information about system reports.
 You can view information about the following types of system reports.
@@ -1607,6 +1732,9 @@ The valid Bastionhost upgrade package is obtained.
 **Background information**
 
 Upgrading the Bastionhost system version makes the running of Bastionhost more stable.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Local Maintenance**.
@@ -1620,6 +1748,9 @@ This topic describes how to back up and restore system settings.
 **Background information**
 
 If you want to replace the current bastion host, you can back up the system settings of the current bastion host and restore the system settings for the new bastion host to implement rapid deployment of bastion hosts.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Local Maintenance**.
@@ -1635,6 +1766,9 @@ This topic describes how to synchronously push and receive system settings.
 **Background information**
 
 If you enable system setting pushing, Bastionhost periodically pushes the system settings of the current bastion host to the destination bastion host. The feature of synchronously pushing and receiving system settings enables other bastion hosts to use the same system settings as those of the current bastion host, which helps achieve rapid deployment of multiple bastion hosts at a time.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Local Maintenance**.
@@ -1665,6 +1799,9 @@ This topic describes how to view debugging logs.
 **Background information**
 
 If issues such as a running failure occur on a bastion host, you can view debugging logs to locate the root cause of the issue.
+
+**Procedure**
+
 1. Log on to Bastionhost. For more information, see Log on to Bastionhost from the Apsara
 Uni-manager Management Console.
 2. Choose **System** > **Local Maintenance**.

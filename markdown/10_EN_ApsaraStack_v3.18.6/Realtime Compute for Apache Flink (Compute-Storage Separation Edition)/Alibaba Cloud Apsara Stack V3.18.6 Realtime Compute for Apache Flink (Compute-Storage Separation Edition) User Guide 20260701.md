@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 524
 source_pdf: "7b13c149aeee2b2f_Alibaba Cloud Apsara Stack V3.18.6 Realtime Compute for Apache Flink (Compute-Storage Separation Edi"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97FLink/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide 20260701
@@ -7625,7 +7625,11 @@ ZooKeeper service that is used by your Kafka cluster.
 2. Run a command based on the information about your Kafka cluster to obtain the metadata
 of your Kafka broker. In most cases, you can run the `get /brokers/ids/0` command to obtain the metadata of Kafka brokers. The endpoints of Kafka brokers are specified in the endpoints field and are obtained by the Kafka client when the Kafka client connects to the Kafka brokers. The following figure shows the endpoints of Kafka brokers.
 3. Run commands such as ping or telnet to test the connectivity to the returned endpoint. If
-the endpoint is inaccessible, contact the O&M engineers of Kafka to configure the listeners and advertised.listeners properties of the Kafka broker for Realtime Compute for Apache Flink. For more information about how the Kafka client is connected to a Kafka broker, see Troubleshoot Connectivity.
+the endpoint is inaccessible, contact the O&M engineers of Kafka to configure the listeners and advertised.listeners properties of the Kafka broker for Realtime Compute for Apache Flink.
+
+**Note**
+
+For more information about how the Kafka client is connected to a Kafka broker, see Troubleshoot Connectivity.
 
 **Syntax**
 

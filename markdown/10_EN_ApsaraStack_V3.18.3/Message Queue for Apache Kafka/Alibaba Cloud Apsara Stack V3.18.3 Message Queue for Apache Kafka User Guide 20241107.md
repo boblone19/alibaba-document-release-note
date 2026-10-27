@@ -5,7 +5,7 @@ doc_version: "20241107"
 pdf_pages: 45
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Message Queue for Apache Kafka User Guide 20241107.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97kafka/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Message%20Queue%20for%20Apache%20Kafka%20User%20Guide%2020241107.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Message Queue for Apache Kafka User Guide 20241107
@@ -93,7 +93,14 @@ ApsaraMQ for Kafka provides a rich application ecosystem that covers the followi
 
 **Kafka console**
 
-This topic describes how to log on to the ApsaraMQ for Kafka console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+This topic describes how to log on to the ApsaraMQ for Kafka console.
+
+**Prerequisites**
+
+The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -126,6 +133,7 @@ Enter a six-digit MFA verification code and click **Authenticate**.
 In ApsaraMQ for Kafka, topics are used to store messages published by producers. Before you send and receive messages, you must create a topic.
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, click **Create a Topic**.
 5. In the **Create a Topic** dialog box, follow the on-screen instructions to configure the
@@ -140,8 +148,12 @@ parameters and click **OK**. The following table describes the parameters.
 #### 2.2.2 Send messages
 
 After you create a topic, you can send messages to the topic in the ApsaraMQ for Kafka console.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, find the topic that you want to manage and click **Send**
 **message** in the **Operation** column.
@@ -165,6 +177,7 @@ Up to 30 messages whose total size does not exceed 10 MB can be returned in a qu
 
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Message query** tab.
 4. On the **Message query** tab, click **Query by site**, enter or select the topic, partition, and
 consumer offset, and then click **Query**. The queried message is displayed on the **Message query** tab.
@@ -186,6 +199,7 @@ click **Download message** next to **Key** or **Value**.
 
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Message query** tab.
 4. On the **Message query** tab, click **Query by time**, enter or select the topic, partition, and
 time, and then click **Query**. The queried message is displayed on the **Message query** tab.
@@ -267,6 +281,7 @@ After you scale out an instance, existing topics are not automatically distribut
 > **Warning:** After you release an instance, all data in the instance is deleted and cannot be restored. Proceed with caution.
 
 1. On the **Instances** page, find the instance that you want to manage and click **Release** in
+the **Operation** column.
 2. In the message that appears, click **OK**.
 
 #### 2.3.2 Configure instance relationships
@@ -289,7 +304,14 @@ The organization administrator and resource auditor automatically have the permi
 
 **Configurations**
 
-Each instance can belong only to one resource group. After you specify a resource group for an instance, you cannot change the resource group. The permissions to query the instance relationship list and configure instance relationships are granted to the logon user.
+Each instance can belong only to one resource group. After you specify a resource group for an instance, you cannot change the resource group.
+
+**Prerequisites**
+
+The permissions to query the instance relationship list and configure instance relationships are granted to the logon user.
+
+**Procedure**
+
 1. Use the admin account to log on to the ApsaraMQ for Kafka console. For more information,
 see Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instance Relationship Configuration**.
@@ -301,14 +323,22 @@ instance belongs and click **OK**. On the **Instance relationship configuration*
 
 #### 2.3.3 Obtain the endpoint of an instance
 
-This topic describes how to obtain the endpoint of an ApsaraMQ for Kafka instance. The instance relationships are configured. For more information, see Configure instance relationships. A virtual IP address (VIP) is created. For more information, see Create a VIP.
+This topic describes how to obtain the endpoint of an ApsaraMQ for Kafka instance.
+
+**Prerequisites**
+
+The instance relationships are configured. For more information, see Configure instance relationships. A virtual IP address (VIP) is created. For more information, see Create a VIP.
 
 **Background information**
 
 ApsaraMQ for Kafka allows you to use endpoints to connect to the following ports: 8080: You can use this port when you connect to an instance in a virtual private cloud (VPC). Simple Authentication and Security Layer (SASL) authentication is not supported. 8081: You can use this port when you connect to an instance in a VPC. SASL authentication is supported. The PLAINTEXT mechanism is used to authenticate client identities, and the Secure Sockets Layer (SSL) encryption method is used during message transmission. 8088: You can use this port when you connect to an instance in a VPC. SASL authentication is supported. The PLAINTEXT mechanism is used to authenticate client identities.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. On the **Access point information** tab of the **Instance details** page, view the endpoint of
 the instance.
 
@@ -317,8 +347,12 @@ the instance.
 #### 2.4.1 Create topics
 
 In ApsaraMQ for Kafka, topics are used to store messages published by producers. Before you send and receive messages, you must create a topic.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, click **Create a Topic**.
 5. In the **Create a Topic** dialog box, follow the on-screen instructions to configure the
@@ -333,6 +367,9 @@ parameters and click **OK**. The following table describes the parameters.
 #### 2.4.2 View the list of topics
 
 This topic describes how to view the list of topics.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
 3. On the **Instance details page**, click the **Topic management** tab.
@@ -341,8 +378,12 @@ This topic describes how to view the list of topics.
 #### 2.4.3 View partition status in a topic
 
 After you create a topic, you can view the status of each partition in the topic.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, find the topic that you want to manage and click
 **Partition status** in the **Operation** column.
@@ -358,8 +399,12 @@ In the **Partition status** panel, the status of all partitions in the topic is 
 #### 2.4.4 View the subscriptions of a topic
 
 After you create a topic, you can view the online consumer groups that subscribe to the topic.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, find the topic that you want to manage and click
 **Subscription relationship** in the **Operation** column.
@@ -375,8 +420,12 @@ In the panel that appears, you can view all consumer groups that subscribe to th
 #### 2.4.5 Modify topic configurations
 
 After you create a topic, you can modify the configurations of the topic.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, find the topic that you want to manage and choose **... >**
 **topic configuration** in the **Operation** column.
@@ -394,8 +443,12 @@ and click **Modify** next to the configuration item. Then, specify a new value, 
 **topic**
 
 After you create a topic, you can increase the number of partitions in the topic. ApsaraMQ for Kafka does not allow you to decrease the number of partitions in a topic. If you want to decrease the number of partitions in a topic, you can delete the topic and create another topic that has the required number of partitions.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, find the topic that you want to manage and choose
 
@@ -408,10 +461,13 @@ After you create a topic, you can increase the number of partitions in the topic
 #### 2.4.7 Configure topic parameters
 
 This topic describes how to configure the parameters of a topic.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
-4.
+the **Operation** column. 4.
 5. On the **Instance details page**, click the **Topic management** tab.
 6. On the **Topic management** tab, find the topic that you want to manage and choose **... >**
 **topic configuration** in the **Operation** column.
@@ -432,9 +488,13 @@ to modify. Then, specify a value in the field that appears and click **OK**. The
 #### 2.5.1 View the list of consumer groups
 
 This topic describes how to view the list of consumer groups.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. On the **Instance details page**, click the **Group management** tab.
 5. On the **Group management** tab, view the list of consumer groups.
 
@@ -443,9 +503,13 @@ This topic describes how to view the list of consumer groups.
 **consumer group**
 
 This topic describes how to view the consumer status of a consumer group.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. On the **Instance details page**, click the **Group management** tab.
 5. On the **Group management** tab, find the consumer group that you want to manage and
 click **Consumption status** in the **Operation** column. In the **Consumption status** panel, the status of all consumers in the consumer group is displayed.
@@ -474,7 +538,11 @@ the topic list of the **Consumption status** panel and click **Details** in the 
 
 **consumer group**
 
-If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. You can reset the consumer offset to skip accumulated or undesired messages or consume messages stored after a point in time, regardless of whether the messages stored before this point in time are consumed. All consumers in the consumer group for which you want to reset the consumer offset are stopped.
+If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. You can reset the consumer offset to skip accumulated or undesired messages or consume messages stored after a point in time, regardless of whether the messages stored before this point in time are consumed.
+
+**Prerequisites**
+
+All consumers in the consumer group for which you want to reset the consumer offset are stopped.
 
 > **Important:** ApsaraMQ for Kafka does not allow you to reset consumer offsets for online consumers.
 > After you stop a consumer, the broker determines the consumer is stopped only after the time specified by the `ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG` parameter elapses. Default value of the parameter: 10000 milliseconds.
@@ -486,9 +554,13 @@ ApsaraMQ for Kafka allows you to reset consumer offsets by using one of the foll
 > **Important:** This method changes only the consumer offset. The accumulated messages are not deleted.
 
 Start consumption at a specific point in time: You can reset the offset of a consumer group to a point in time "t" that is in the past or future. The point in time "t" is a point in time when a message is stored. After the reset, the consumer group subscribes to messages stored after the "t" time point.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. On the **Instance details page**, click the **Group management** tab.
 5. On the **Group management** tab, find the consumer group that you want to manage and
 click **Reset consumption point** in the **Operation** column.
@@ -500,6 +572,9 @@ list, specify a method used to reset the consumer offset, and then click **OK**.
 **parameters**
 
 This topic describes how to configure the parameters of an ApsaraMQ for Kafka instance. After you modify the parameters of an ApsaraMQ for Kafka instance, the running of the instance is affected. Confirm before you modify instance parameters.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instances** page, find the instance whose parameters you want to modify and click
 **Parameter configuration** in the **Operation** column.
@@ -539,6 +614,7 @@ following table.
 After you create a topic, you can send messages to the topic in the ApsaraMQ for Kafka console.
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Topic management** tab.
 4. On the **Topic management** tab, find the topic that you want to manage and click **Send**
 **message** in the **Operation** column.
@@ -562,6 +638,7 @@ Up to 30 messages whose total size does not exceed 10 MB can be returned in a qu
 
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Message query** tab.
 4. On the **Message query** tab, click **Query by site**, enter or select the topic, partition, and
 consumer offset, and then click **Query**. The queried message is displayed on the **Message query** tab.
@@ -581,6 +658,7 @@ click **Download message** next to **Key** or **Value**.
 
 1. Log on to the ApsaraMQ for Kafka console.
 2. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 3. On the **Instance details page**, click the **Message query** tab.
 4. On the **Message query** tab, click **Query by time**, enter or select the topic, partition, and
 time, and then click **Query**. The queried message is displayed on the **Message query** tab.
@@ -604,7 +682,14 @@ The access control list (ACL) feature of ApsaraMQ for Kafka allows you to grant 
 
 **Usage notes**
 
-After you enable the ACL feature for an ApsaraMQ for Kafka instance, ApsaraMQ for Kafka is restarted. Before you enable the ACL feature, make sure that this operation does not affect your business. A virtual IP address (VIP) is created. For more information, see Create VIPs.
+After you enable the ACL feature for an ApsaraMQ for Kafka instance, ApsaraMQ for Kafka is restarted. Before you enable the ACL feature, make sure that this operation does not affect your business.
+
+**Prerequisites**
+
+A virtual IP address (VIP) is created. For more information, see Create VIPs.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instances** page, find the instance that you want to manage and click **Details** in the
@@ -615,10 +700,18 @@ click **Enable ACL**.
 
 #### 2.8.2 Create SASL users
 
-This topic describes how to create a Simple Authentication and Security Layer (SASL) user. The ACL feature is enabled for the ApsaraMQ for Kafka instance. For more information, see Enable ACL.
+This topic describes how to create a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+The ACL feature is enabled for the ApsaraMQ for Kafka instance. For more information, see Enable ACL.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. Click the **SASL user** tab.
 5. On the **SASL User** tab, click **Create a SASL user** .
 6. In the **Create a SASL user** dialog box, configure the parameters and click **OK**. The
@@ -634,10 +727,18 @@ following table describes the parameters.
 
 #### 2.8.3 Grant permissions to SASL users
 
-This topic describes how to grant permissions to a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
+This topic describes how to grant permissions to a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+A SASL user is created. For more information, see Create SASL users.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. Click the **SASL permissions** tab.
 5. On the **SASL permissions** tab, click **Create an ACL**.
 6. In the **Create an ACL** dialog box, configure the parameters and click **OK**. The following
@@ -655,10 +756,18 @@ table describes the parameters.
 
 #### 2.8.4 Change the passwords of SASL users
 
-This topic describes how to change the password of a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
+This topic describes how to change the password of a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+A SASL user is created. For more information, see Create SASL users.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. Click the **SASL user** tab.
 5. On the **SASL user** tab, find the SASL user whose password you want to change and click
 **Modify** in the **Operation** column.
@@ -666,10 +775,18 @@ This topic describes how to change the password of a Simple Authentication and S
 
 #### 2.8.5 Delete SASL users
 
-This topic describes how to delete a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
+This topic describes how to delete a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+A SASL user is created. For more information, see Create SASL users.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. Click the **SASL user** tab.
 5. On the **SASL user** tab, find the SASL user that you want to delete and click **Delete** in the
 **Operation** column.
@@ -677,10 +794,18 @@ This topic describes how to delete a Simple Authentication and Security Layer (S
 
 #### 2.8.6 Delete the permissions of SASL users
 
-This topic describes how to delete the permissions that are granted to a Simple Authentication and Security Layer (SASL) user. Permissions are granted to the SASL user. For more information, see Grant permissions to SASL users.
+This topic describes how to delete the permissions that are granted to a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+Permissions are granted to the SASL user. For more information, see Grant permissions to SASL users.
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. Click the **SASL permissions** tab.
 5. On the **SASL permissions** tab, specify the query conditions to query the permissions that
 you want to delete and click **Query**.
@@ -703,9 +828,13 @@ If you want to create a VIP of the AnyTunnel type, set the **Network Type** para
 #### 2.9.2 Delete VIPs
 
 This topic describes how to delete a virtual IP address (VIP).
+
+**Procedure**
+
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Instances**.
 3. On the **Instance List** page, find the instance that you want to manage and click **Details** in
+the **Operation** column.
 4. On the **Access point information** tab of the **Instance details** page, click **Delete**.
 5. In the **Confirm deletion** dialog box, enter
 `confirm` and click **OK**.
@@ -716,7 +845,11 @@ This topic describes how to delete a virtual IP address (VIP).
 
 #### 2.10.1 Solution introduction
 
-ApsaraMQ for Kafka provides zone-disaster recovery capabilities for financial business that has high data stability and regulatory requirements. In the zone-disaster recovery solution provided by ApsaraMQ for Kafka, a primary cluster and a secondary cluster are deployed in two data centers that reside in the same zone. The primary cluster provides external services, and the KafkaReplicator component synchronizes data from the primary cluster to the secondary cluster. If both clusters run as expected, all data in the primary cluster, including messages and consumer offsets, are backed up to the secondary cluster. When faults, such as business cannot be restored in a short period of time due to damaged software or hardware and the data center is rebuilt due to a fire or natural disaster, occur in the primary cluster, you can use the ApsaraMQ for Kafka console or the Application Service Registration (ASR) mechanism to switch business from the primary cluster to the secondary cluster to provide external services.
+ApsaraMQ for Kafka provides zone-disaster recovery capabilities for financial business that has high data stability and regulatory requirements.
+
+**Description**
+
+In the zone-disaster recovery solution provided by ApsaraMQ for Kafka, a primary cluster and a secondary cluster are deployed in two data centers that reside in the same zone. The primary cluster provides external services, and the KafkaReplicator component synchronizes data from the primary cluster to the secondary cluster. If both clusters run as expected, all data in the primary cluster, including messages and consumer offsets, are backed up to the secondary cluster. When faults, such as business cannot be restored in a short period of time due to damaged software or hardware and the data center is rebuilt due to a fire or natural disaster, occur in the primary cluster, you can use the ApsaraMQ for Kafka console or the Application Service Registration (ASR) mechanism to switch business from the primary cluster to the secondary cluster to provide external services.
 
 **Architecture**
 
@@ -728,7 +861,11 @@ After you create a zone-disaster recovery cluster, you must change the virtual I
 
 #### 2.10.2 Create replica clusters
 
-This topic describes how to create a replica cluster and establish a replication relationship to provide disaster recovery capabilities by using ApsaraMQ for Kafka instances. Two ApsaraMQ for Kafka instances are deployed. One of the instances is used in production environments and the other is used in zone-disaster recovery environments. Make sure that KafkaReplicator is deployed in the clusters to which the instances belong. If KafkaReplicator is not deployed, contact ApsaraMQ for Kafka technical support to deploy it.
+This topic describes how to create a replica cluster and establish a replication relationship to provide disaster recovery capabilities by using ApsaraMQ for Kafka instances.
+
+**Prerequisites**
+
+Two ApsaraMQ for Kafka instances are deployed. One of the instances is used in production environments and the other is used in zone-disaster recovery environments. Make sure that KafkaReplicator is deployed in the clusters to which the instances belong. If KafkaReplicator is not deployed, contact ApsaraMQ for Kafka technical support to deploy it.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Replica Clusters**.
 3. On the **Disaster Recovery** page, click **Create a disaster recovery cluster**.
@@ -782,7 +919,14 @@ ions
 
 #### 3.1.1 Create topics
 
-This topic describes how to create a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to create a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -816,7 +960,11 @@ __consumer_offsets test
 
 #### 3.1.2 Send messages
 
-This topic describes how to send messages to a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to send messages to a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -850,7 +998,11 @@ to send messages by enabling logging for debugging.
 
 #### 3.1.3 Consume messages
 
-This topic describes how to consume messages from a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to consume messages from a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -925,7 +1077,14 @@ __consumer_offsets test
 
 #### 3.2.2 View the status of a topic
 
-This topic describes how to view the status of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the status of a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -972,7 +1131,14 @@ Isr: 1003,1002,1001
 
 #### 3.2.3 View the current offset of a partition
 
-The current offset of a partition is the latest message that is sent to the consumer by the ApsaraMQ for Kafka broker. This topic describes how to view the current offset of a partition. The information about the master node in ApsaraMQ for Kafka is obtained.
+The current offset of a partition is the latest message that is sent to the consumer by the ApsaraMQ for Kafka broker. This topic describes how to view the current offset of a partition.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -1005,7 +1171,14 @@ Value 16761
 
 #### 3.2.4 View the list of topics
 
-This topic describes how to view the list of topics. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the list of topics.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -1030,7 +1203,14 @@ CMDTest __consumer_offsets demo test test1 test2
 
 **topic**
 
-After you create a topic, you can increase the number of partitions in the topic. ApsaraMQ for Kafka does not allow you to decrease the number of partitions in a topic. If you want to decrease the number of partitions in a topic, you can delete the topic and create another topic that has the required number of partitions. The information about the master node in ApsaraMQ for Kafka is obtained.
+After you create a topic, you can increase the number of partitions in the topic. ApsaraMQ for Kafka does not allow you to decrease the number of partitions in a topic. If you want to decrease the number of partitions in a topic, you can delete the topic and create another topic that has the required number of partitions.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -1098,6 +1278,9 @@ Isr: 1002,1003,1001
 #### 3.2.6 Modify topic configurations
 
 If the configurations of a topic do not meet your business requirements, you can modify the configurations of the topic. ions The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -1179,7 +1362,14 @@ ions
 
 **consumer group**
 
-This topic describes how to view the consumer status of a consumer group. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the consumer status of a consumer group.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -1234,7 +1424,14 @@ test 2 16516 16516 0 -
 
 #### 3.3.2 View the list of consumer groups
 
-This topic describes how to view the list of consumer groups. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the list of consumer groups.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -1261,7 +1458,11 @@ ions
 
 #### 3.4.1 Send messages
 
-This topic describes how to send messages to a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to send messages to a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -1292,7 +1493,11 @@ to send messages by enabling logging for debugging.
 
 #### 3.4.2 Consume messages
 
-This topic describes how to consume messages from a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to consume messages from a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 

@@ -5,7 +5,7 @@ doc_version: "20241028"
 pdf_pages: 436
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Data Management Developer Guide 20241028.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86DMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Data%20Management%20Developer%20Guide%2020241028.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Data Management Developer Guide 20241028
@@ -387,7 +387,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role.
 > <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -406,6 +406,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the endpoint of STS. The format of an STS endpoin
@@ -430,9 +435,15 @@ e RAM role.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the `DescribeZones` operation of ECS:
 
@@ -577,6 +588,11 @@ secretKey);
             GetOpLogResponse response = client.getAcsResponse(request);
             System.out.println("RequestId: " + response.getRequestId());
             System.out.println("OpLogCount: " + response.getTotalCount());
+```
+
+`}`
+
+```java
         catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
@@ -584,6 +600,8 @@ secretKey);
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 ### 3.2 Use SDK
 
@@ -719,6 +737,8 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
+`}`
+
 #### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
@@ -815,7 +835,7 @@ t add the SecurityToken field in the request parameters.
             e.printStackTrace();
 ```
 
-or SDK for Python
+`}` `}` `}` or SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -1141,9 +1161,15 @@ eyID>", "<yourAccessKeySecret>")
  response, err := client.GetOpLog(request)
  if err != nil {
   fmt.Print(err.Error())
+```
+
+`}`
+
+```
  fmt.Printf("response is %#v\n", response)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -1233,6 +1259,8 @@ response,err := Client.DescribeInstances(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 After you send a request, if an error occurs on the SDK side and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain the error message in a `ClientError` of DMS SDK for Go:
@@ -1259,6 +1287,8 @@ response, err := Client.ListInstances(request) if clientError, ok := err.(*error
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
 ```
+
+`}`
 
 **ServerError**
 
@@ -1287,6 +1317,8 @@ response, err := Client.DescribeInstances(request) if serverError, ok := err.(*e
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 #### 5.2.5 Use CommonRequest to call API operations
 
@@ -1328,6 +1360,11 @@ func main() {
         "<yourAccessKeySecret>") // Specify the AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<dms-enterprise.aliyuncs.com>" // Specify the endpoint of the ser
@@ -1373,6 +1410,11 @@ e instance ID. If you want to modify, delete, or query the details of an instanc
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
@@ -1531,12 +1573,14 @@ Sample success responses `XML` format
 </RegisterUserResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success": true
 ```
+
+`}`
 
 #### 6.2.2 DisableUser
 
@@ -1582,12 +1626,14 @@ Sample success responses `XML` format
 </DisableUserResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success":true
 ```
+
+`}`
 
 #### 6.2.3 EnableUser
 
@@ -1632,12 +1678,14 @@ Sample success responses `XML` format
 </EnableUserResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success": true
 ```
+
+`}`
 
 #### 6.2.4 UpdateUser
 
@@ -1682,12 +1730,14 @@ Sample success responses `XML` format
 <RequestId>E9BEBF41-4F69-4605-A5D5-A67955173941</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "E9BEBF41-4F69-4605-A5D5-A67955173941",
   "Success": true
 ```
+
+`}`
 
 #### 6.2.5 DeleteUser
 
@@ -1735,12 +1785,14 @@ Sample success responses `XML` format
 </DeleteUserResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success":true
 ```
+
+`}`
 
 #### 6.2.6 ListUsers
 
@@ -1837,6 +1889,11 @@ Sample success responses `XML` format
 ```json
   "UserList": {
     "User": [
+```
+
+`{`
+
+```json
         "RoleIdList": {
           "RoleIds": [
 ```
@@ -1859,7 +1916,7 @@ Sample success responses `XML` format
         "Uid": "111"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "RoleIdList": {
@@ -1885,13 +1942,15 @@ Sample success responses `XML` format
         "Uid": "111"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 2,
   "RequestId": "2D346B20-BF4A-4C96-8295-DE8EB9BF5B90",
   "Success": true
 ```
+
+`}`
 
 #### 6.2.7 ListUserTenants
 
@@ -1943,17 +2002,22 @@ Sample success responses `XML` format
 </TenantList>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "CA1F4A4D-EE49-472F-8DF9-F537101E263A",
   "TenantList": [
+```
+
+`{`
+
+```json
       "Status": "ACTIVE",
       "TenantName": "test1",
       "Tid": -1
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Status": "IN_ACTIVE",
@@ -1961,7 +2025,7 @@ Sample success responses `XML` format
       "Tid": -2
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Status": "IN_ACTIVE",
@@ -1969,7 +2033,7 @@ Sample success responses `XML` format
       "Tid": -3
 ```
 
-`]`
+`}` `]` `}`
 
 #### 6.2.8 GetUserActiveTenant
 
@@ -2015,7 +2079,7 @@ Sample success responses `XML` format
 </Tenant> <RequestId>E20EAB9F-A3DB-42EC-BD0C-102A886340F5</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "Tenant": {
@@ -2030,6 +2094,8 @@ Sample success responses `XML` format
   "RequestId": "E20EAB9F-A3DB-42EC-BD0C-102A886340F5",
   "Success": true
 ```
+
+`}`
 
 #### 6.2.9 GetUser
 
@@ -2138,6 +2204,8 @@ Sample success responses `XML` format
   "Success": true
 ```
 
+`}`
+
 ### 6.3 Instance management
 
 #### 6.3.1 RegisterInstance
@@ -2207,12 +2275,14 @@ Sample success responses `XML` format
 </RegisterInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "F4E2A94B-604F-43FF-93E7-F4EE3DCF412E",
     "Success": true
 ```
+
+`}`
 
 **SDK for Python example**
 
@@ -2333,7 +2403,7 @@ Sample success responses `XML` format
 <TotalCount>7</TotalCount> <RequestId>98D35416-2B92-4CE5-8FD2-B1E61E165536</RequestId> <Success>true</Success> <InstanceList> </InstanceList>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "TotalCount": 7,
@@ -2343,7 +2413,7 @@ Sample success responses `XML` format
     "Instance": [
 ```
 
-`]`
+`]` `}` `}`
 
 #### 6.3.3 GetInstance
 
@@ -2468,6 +2538,8 @@ Sample success responses `XML` format
   "Success": true
 ```
 
+`}`
+
 #### 6.3.4 UpdateInstance
 
 Updates the information about a database instance and checks the connectivity of the instance. Before you call this operation to update the information about an instance, we recommend that you call the GetInstance operation to obtain the complete information about the instance. Then, you can set the required parameters based on the information that you obtain.
@@ -2528,12 +2600,14 @@ Sample success responses `XML` format
 <RequestId>E9BEBF41-4F69-4605-A5D5-A67955173941</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "E9BEBF41-4F69-4605-A5D5-A67955173941",
   "Success": true
 ```
+
+`}`
 
 #### 6.3.5 DeleteInstance
 
@@ -2862,7 +2936,7 @@ Database name: dmstest_prod_database@dmstest.rds...(test)</OpContent>
 </OpLogDetails> <TotalCount>22</TotalCount> <RequestId>47D56208-DB1D-4FD3-BE32-300E43185488</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "OpLogDetails": {
@@ -3056,6 +3130,8 @@ Database name: dmstest_prod_database@dmstest.rds...(test)",
     "Success": true
 ```
 
+`}`
+
 **SDK sample code**
 
 For information about how to use an SDK, see Get started with DMS SDK for Python. Sample code:
@@ -3193,17 +3269,27 @@ are reviewed by an administrator.</Comment>
 </WorkFlowTemplates>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "41067071-0243-4AAB-B3CF-4DE6D54F53B4",
   "Success": true,
   "WorkFlowTemplates": {
     "WorkFlowTemplate": [
+```
+
+`{`
+
+```json
         "Comment": "The system-defined approval workflow. Only an administrator is
 included in the approval workflow to review requests.",
         "WorkFlowNodes": {
           "WorkFlowNode": [
+```
+
+`{`
+
+```json
               "Comment": "The system-defined node that is dynamically generated. Request
 s are reviewed by an administrator.",
               "NodeName": "Admin",
@@ -3274,11 +3360,16 @@ requests are reviewed by an administrator.</Comment>
 </WorkFlowNodes> <RequestId>CFD8FE00-36D9-4C1B-940D-65A7B73D9066</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "WorkFlowNodes": {
     "WorkflowNode": [
+```
+
+`{`
+
+```json
         "Comment": "This is a system-defined node that is dynamically generated. All re
 quests are reviewed by an administrator.",
         "NodeName": "Admin",
@@ -3288,12 +3379,14 @@ quests are reviewed by an administrator.",
           "AuditUser": []
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
   "RequestId": "CFD8FE00-36D9-4C1B-940D-65A7B73D9066",
   "Success": true
 ```
+
+`}`
 
 ### 6.6 Metadata of databases and tables
 
@@ -3396,6 +3489,11 @@ Sample success responses `XML` format
   "RequestId": "E0D21075-CD3E-4D98-8264-FD8AD04A63B6",
   "SearchDatabaseList": {
     "SearchDatabase": [
+```
+
+`{`
+
+```json
         "Encoding": "utf8mb4",
         "Host": "pc-xxx.mysql.polardb.rds.aliyuncs.com",
         "DbType": "polardb",
@@ -3431,11 +3529,13 @@ database]",
         "SchemaName": "xxx_0000"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.6.2 SearchTable
 
@@ -3531,6 +3631,11 @@ atabase]</DBSearchName>
 ```json
   "SearchTableList": {
     "SearchTable": [
+```
+
+`{`
+
+```json
         "TableGuid" : "IDB_L_9032.db-test.yuyang_test",
         "Logic": false,
         "TableSchemaName": "xxx_0000",
@@ -3564,13 +3669,15 @@ offline database]",
         "TableId": 18396767
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 1,
   "RequestId": "1489257F-1B5D-4B5B-89EF-923C12CEEBD1",
   "Success": true
 ```
+
+`}`
 
 #### 6.6.3 ListDatabases
 
@@ -3662,6 +3769,11 @@ Sample success responses `XML` format
   "Success": true,
   "DatabaseList": {
     "Database": [
+```
+
+`{`
+
+```json
         "Encoding": "utf8",
         "Host": "pc-xxx.rwlb.rds.aliyuncs.com",
         "InstanceId": 24710,
@@ -3692,7 +3804,7 @@ Sample success responses `XML` format
         "SchemaName": "xxx_test"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.6.4 ListLogicDatabases
 
@@ -3786,6 +3898,11 @@ Sample success responses `XML` format
   "RequestId": "BAD154C0-DA38-48FA-97AB-E72912EEAA24",
   "LogicDatabaseList": {
     "LogicDatabase": [
+```
+
+`{`
+
+```json
         "Logic": true,
         "OwnerNameList": {
           "OwnerNames": [
@@ -3810,7 +3927,7 @@ Sample success responses `XML` format
         "SchemaName": "test_db"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Logic": true,
@@ -3841,11 +3958,13 @@ Sample success responses `XML` format
         "SchemaName": "idb_test"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.6.5 ListTables
 
@@ -3983,7 +4102,7 @@ Sample success responses `XML` format
         "TableId": 18396363
 ```
 
-`},`
+`},` `{`
 
 ```json
         "TableSchemaName": "yuyang_test",
@@ -4015,7 +4134,7 @@ Sample success responses `XML` format
         "TableId": 18390459
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 12,
@@ -4104,6 +4223,11 @@ Sample success responses `XML` format
   "RequestId": "F1E6484F-9DF1-4406-9BDE-0861C4629B69",
   "LogicTableList": {
     "LogicTable": [
+```
+
+`{`
+
+```json
         "Logic": true,
         "OwnerNameList": {
           "OwnerNames": [
@@ -4132,11 +4256,13 @@ Sample success responses `XML` format
         "TableId": 3057
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.6.7 ListColumns
 
@@ -4245,6 +4371,11 @@ Sample success responses `XML` format
 ```json
   "ColumnList": {
     "Column": [
+```
+
+`{`
+
+```json
         "ColumnId": 314036829,
         "DataScale": 0,
         "Sensitive": false,
@@ -4257,7 +4388,7 @@ Sample success responses `XML` format
         "Nullable": false
 ```
 
-`},`
+`},` `{`
 
 ```json
         "ColumnId": 314036830,
@@ -4271,7 +4402,7 @@ Sample success responses `XML` format
         "Nullable": false
 ```
 
-`},`
+`},` `{`
 
 ```json
         "ColumnId": 314036831,
@@ -4285,7 +4416,7 @@ Sample success responses `XML` format
         "Nullable": false
 ```
 
-`},`
+`},` `{`
 
 ```json
         "ColumnId": 314036832,
@@ -4299,7 +4430,7 @@ Sample success responses `XML` format
         "Nullable": true
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "RequestId": "0AD9AC55-5873-474A-9F33-4285806A3619",
@@ -4366,6 +4497,11 @@ Sample success responses `XML` format
   "RequestId": "1F4DE2F1-5B47-462A-A973-E02EB7AF386B",
   "IndexList": {
     "Index": [
+```
+
+`{`
+
+```json
         "IndexComment": "",
         "IndexType": "Primary",
         "IndexName": "PRIMARY",
@@ -4373,11 +4509,13 @@ Sample success responses `XML` format
         "TableId": 18396274
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.6.9 GetDatabase
 
@@ -4504,6 +4642,8 @@ rchName>
   "Success": true
 ```
 
+`}`
+
 #### 6.6.10 GetLogicDatabase
 
 Queries the details about a logical database.
@@ -4607,6 +4747,8 @@ Sample success responses `XML` format
   "Success": true
 ```
 
+`}`
+
 #### 6.6.11 GetMetaTableDetailInfo
 
 Queries the details of a table. These details include columns and indexes.
@@ -4708,6 +4850,11 @@ Sample success responses `XML` format
   "RequestId": "E881CB2F-DE42-42E5-90EB-8B3173DCB9B9",
   "DetailInfo": {
     "ColumnList": [
+```
+
+`{`
+
+```json
         "ColumnId": 191234849,
         "ColumnName": "id",
         "Description": "test",
@@ -4719,7 +4866,7 @@ Sample success responses `XML` format
         "Nullable": false
 ```
 
-`},`
+`},` `{`
 
 ```json
         "ColumnId": 191234850,
@@ -4731,7 +4878,7 @@ Sample success responses `XML` format
         "Nullable": false
 ```
 
-`},`
+`},` `{`
 
 ```json
         "ColumnId": 191234851,
@@ -4743,10 +4890,15 @@ Sample success responses `XML` format
         "Nullable": false
 ```
 
-`],`
+`}` `],`
 
 ```json
     "IndexList": [
+```
+
+`{`
+
+```json
         "IndexName": "PRIMARY",
         "IndexId": 33008763,
         "IndexColumns": [
@@ -4760,11 +4912,13 @@ Sample success responses `XML` format
         "IndexType": "Primary"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.6.12 GetTableDBTopology
 
@@ -4865,50 +5019,65 @@ Sample success responses `XML` format
     "TableName": "yuyang_test",
     "TableGuid": "IDB_L_9032.db-test.yuyang_test",
     "DataSourceList": [
+```
+
+`{`
+
+```json
         "DatabaseList": [
+```
+
+`{`
+
+```json
             "DbId": 489347,
             "DbName": "db-test",
             "TableList": [
+```
+
+`{`
+
+```json
                 "TableId": 151977811,
                 "TableName": "yuyang_test_0000"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "TableId": 151977812,
                 "TableName": "yuyang_test_0001"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "TableId": 151977813,
                 "TableName": "yuyang_test_0002"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "TableId": 151977814,
                 "TableName": "yuyang_test_0003"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "TableId": 151977815,
                 "TableName": "yuyang_test_0004"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "EnvType": "dev",
             "DbType": "polardb"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Port": 3306,
@@ -4916,11 +5085,13 @@ Sample success responses `XML` format
         "DbType": "polardb"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.6.13 GetMetaTableColumn
 
@@ -4992,7 +5163,7 @@ Sample success responses `XML` format
 </GetMetaTableColumnResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId": "2B581A5E-D4FE-4F77-BADE-DD944D7BEBE2",
@@ -5014,6 +5185,8 @@ Sample success responses `XML` format
  "ErrorMessage": "UnknownError",
  "Success": "true"
 ```
+
+`}`
 
 #### 6.6.14 SyncDatabaseMeta
 
@@ -5059,6 +5232,8 @@ Sample success responses `XML` format
   "Success": true
 ```
 
+`}`
+
 #### 6.6.15 SyncInstanceMeta
 
 Synchronizes the metadata of all database dictionaries in an instance.
@@ -5096,12 +5271,14 @@ Sample success responses `XML` format
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
 ```
+
+`}`
 
 #### 6.6.16 GetPhysicalDatabase
 
@@ -5186,8 +5363,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetPhysicalDatabaseResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "4EE2B004-9131-44B7-B6EE-6151B6329F68",
   "Database" : {
     "SearchName" : "film@rm-uf64e.mysql.rds.aliyuncs.com:3306",
@@ -5214,11 +5396,13 @@ HTTP/1.1 200 OK Content-Type:application/json
       "OwnerIds" : [ 26000 ]
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Success" : true
 ```
+
+`}`
 
 #### 6.6.17 GetTableTopology
 
@@ -5300,8 +5484,13 @@ go]</DbSearchName>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "7A7F0E34-8E21-4CF7-93C8-27212B122145",
   "TableTopology" : {
     "TableName" : "big_table",
@@ -5331,6 +5520,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 ```json
   "Success" : true
 ```
+
+`}`
 
 ### 6.7 Ticket operations
 
@@ -5376,12 +5567,14 @@ Sample success responses `XML` format
 <RequestId>427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.1.2 CloseOrder
 
@@ -5420,12 +5613,14 @@ Sample success responses `XML` format
 <RequestId>427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.1.3 GetApprovalDetail
 
@@ -5538,6 +5733,11 @@ Sample success responses `XML` format
     "Title": "Data export ticket-737047",
     "WorkflowNodes": {
       "WorkflowNode": [
+```
+
+`{`
+
+```json
           "OperatorId": 104442,
           "WorkflowInsCode": "APPROVED",
           "OperateComment": "Reason: approved",
@@ -5553,12 +5753,14 @@ Sample success responses `XML` format
           "NodeName": "DBA"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
   "RequestId": "FE8EE2F1-4880-46BC-A704-5CF63EAF9A04",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.1.4 GetOrderBaseInfo
 
@@ -5762,13 +5964,18 @@ Sample success responses `XML` format
 </Orders> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "TotalCount": 5,
   "RequestId": "7AC17A86-9E6F-484B-AE8D-F9416986A108",
   "Orders": {
     "Order": [
+```
+
+`{`
+
+```json
         "StatusCode": "success",
         "PluginType": "DC_COMMON",
         "Committer": "xxx[RAM user]",
@@ -5798,7 +6005,7 @@ Sample success responses `XML` format
         "CommitterId": 104442
 ```
 
-`},`
+`},` `{`
 
 ```json
         "StatusCode": "closed",
@@ -5813,7 +6020,7 @@ supported.",
         "CommitterId": 104442
 ```
 
-`},`
+`},` `{`
 
 ```json
         "StatusCode": "new",
@@ -5827,7 +6034,7 @@ supported.",
         "CommitterId": 104442
 ```
 
-`},`
+`},` `{`
 
 ```json
         "StatusCode": "success",
@@ -5841,11 +6048,13 @@ supported.",
         "CommitterId": 104442
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.1.6 SubmitOrderApproval
 
@@ -5890,6 +6099,8 @@ Sample success responses `XML` format
   "Success": true
 ```
 
+`}`
+
 ##### 6.7.1.7 CreateOrder
 
 Creates a ticket.
@@ -5932,6 +6143,11 @@ o change data. Valid values: TEXT and ATTACHMENT.
 to roll back the data change. Valid values: TEXT and ATTACHMENT.
     "attachmentName" : // The name of the attachment that contains the SQL statements u
 sed to change data.
+```
+
+`}`
+
+```json
 # Change data without locking tables.
 "pluginParam" : {
     "classify" : "test",
@@ -5941,6 +6157,11 @@ nts to be executed to change data.
       "dbId": 179694, // The ID of the database for which you want to change data.
       "logic" : false
     } ]
+```
+
+`}`
+
+```json
 # Clear historical data.
 "pluginParam" : {
     "duration" : 10, // The duration of the task that is run to clear historical data.
@@ -5968,6 +6189,11 @@ data.
       "remainDays" : 60, // The retention period of historical data.
       "tableName" : "base_app" // The name of the table.
     } ]
+```
+
+`}`
+
+```json
 # Change schemas.
 "pluginParam": {
     "title": "test", // The name of the ticket.
@@ -5975,6 +6201,11 @@ data.
     "dbId": 118989, // The database to which changes are made.
     "logic": false, // Specifies whether the database is a logical database.
     "relatedIds": [], // The IDs of the stakeholders that are involved in the ticket.
+```
+
+`}`
+
+```json
 # Export data.
 "pluginParam" : {
   "classify": "Reason", // The purpose of the ticket.
@@ -5987,6 +6218,8 @@ of affected rows.
   "ignoreAffectRowsReason": "" // The reason for ignoring the precheck on the number of
 affected rows.
 ```
+
+`}`
 
 **Response parameters**
 
@@ -6016,7 +6249,7 @@ Sample success responses `XML` format
 </CreateOrderResult> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D",
@@ -6029,6 +6262,8 @@ Sample success responses `XML` format
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.7.2 Data changes
 
@@ -6073,12 +6308,14 @@ Sample success responses `XML` format
 <RequestId>7133DF67-5B25-460F-8285-C4CC93472C2F</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "7133DF67-5B25-460F-8285-C4CC93472C2F",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.2.2 GetDataCorrectBackupFiles
 
@@ -6122,7 +6359,7 @@ Sample success responses `XML` format
 Expires=1574382979&amp;OSSAccessKeyId=wSa97B52GzF****&amp;Signature=ykWSysajKcQjXjG0X4ApO lIXQ%3D</FileUrl> </DataCorrectBackupFiles> <RequestId>4AFF4109-FEFB-44E8-96A3-923B1FA8C46E</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "DataCorrectBackupFiles": {
@@ -6137,6 +6374,8 @@ Expires=1574382979&OSSAccessKeyId=wSa97B52GzF****&Signature=ykWSysajKcQjXjG0X4Ap
   "RequestId": "4AFF4109-FEFB-44E8-96A3-923B1FA8C46E",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.2.3 GetDataCorrectOrderDetail
 
@@ -6240,25 +6479,30 @@ actual number of affected rows is subject to the SQL statement that is executed.
   "DataCorrectOrderDetail": {
     "PreCheckDetail": {
       "TaskCheckDO": [
+```
+
+`{`
+
+```json
           "CheckStatus": "SUCCESS",
           "CheckStep": "SQL_PARSE"
 ```
 
-`},`
+`},` `{`
 
 ```json
           "CheckStatus": "SUCCESS",
           "CheckStep": "SQL_TYPE_CHECK"
 ```
 
-`},`
+`},` `{`
 
 ```json
           "CheckStatus": "SUCCESS",
           "CheckStep": "PERMISSION_CHECK"
 ```
 
-`},`
+`},` `{`
 
 ```json
           "CheckStatus": "SUCCESS",
@@ -6267,7 +6511,7 @@ actual number of affected rows is subject to the SQL statement that is executed.
           "CheckStep": "ROW_CHECK"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "OrderDetail": {
@@ -6280,11 +6524,13 @@ actual number of affected rows is subject to the SQL statement that is executed.
       "IgnoreAffectRowsReason": ""
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.2.4 CreateFreeLockCorrectOrder
 
@@ -6351,12 +6597,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateFreeLockCorrectOrderResponse
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "Success" : true,
   "CreateOrderResult" : [ "134****" ]
 ```
+
+`}`
 
 ##### 6.7.2.5 CreateDataCorrectOrder
 
@@ -6422,12 +6675,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateDataCorrectOrderResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "Success" : true,
   "CreateOrderResult" : [ "142****" ]
 ```
+
+`}`
 
 ##### 6.7.2.6 GetDataCronClearTaskDetailList
 
@@ -6486,8 +6746,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetDataCronClearTaskDetailListResp
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "C1D39814-9808-47F8-AFE0-AF167239AC9B",
   "Success" : true,
   "DataCronClearTaskDetailList" : [ {
@@ -6498,6 +6763,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   } ],
   "TotalCount" : 1
 ```
+
+`}`
 
 ##### 6.7.2.7 GetDataCorrectTaskDetail
 
@@ -6548,8 +6815,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <RequestId>B5FD0BC8-2D90-4478-B8EC-
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "B5FD0BC8-2D90-4478-B8EC-A0E92E0B1773",
   "Success" : true,
   "DataCorrectTaskDetail" : {
@@ -6558,6 +6830,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "ActualAffectRows" : 1,
     "CreateTime" : "2021-03-05 15:08:55"
 ```
+
+`}` `}`
 
 ##### 6.7.2.8 GetDataCorrectSQLFile
 
@@ -6602,8 +6876,13 @@ hangzhou.aliyuncs.com/uplJMIpQ%3D</FileUrl>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "FileUrl" : "https://dms-idb-hangzhou.oss-cn-hangzhou.aliyuncs.com/uplJMIpQ%3D",
   "RequestId" : "386EAA20-67FB-4D06-B7BF-2ABA11241185",
   "Success" : true
@@ -6672,12 +6951,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateDataCronClearOrderResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "Success" : true,
   "CreateOrderResult" : [ 1341532 ]
 ```
+
+`}`
 
 ##### 6.7.2.10 CreateDataImportOrder
 
@@ -6750,12 +7036,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateDataImportOrderResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "Success" : true,
   "CreateOrderResult" : [ "1****" ]
 ```
+
+`}`
 
 #### 6.7.3 Schema design
 
@@ -6800,13 +7093,15 @@ Sample success responses `XML` format
 <RequestId>78C93646-D9B1-4E6E-B5FD-C69F94A7905A</RequestId> <Success>true</Success> <TaskId>13424</TaskId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "78C93646-D9B1-4E6E-B5FD-C69F94A7905A",
   "Success": true,
   "TaskId": 13424
 ```
+
+`}`
 
 ##### 6.7.3.2 ListDDLPublishRecords
 
@@ -6935,8 +7230,13 @@ Scripts>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "AEF89401-5456-431A-9709-2C6C45657B51",
   "Success" : true,
   "DDLPublishRecordList" : [ {
@@ -7019,12 +7319,14 @@ Sample success responses `XML` format
 <RequestId>FE8EE2F1-4880-46BC-A704-5CF63EAF9A04</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "FE8EE2F1-4880-46BC-A704-5CF63EAF9A04",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.4.2 GetDataExportDownloadURL
 
@@ -7090,6 +7392,8 @@ Expires=1574384313&OSSAccessKeyId=wSa97B52GzF****&Signature=HQQWBRSKiVV6cupugh1/
   "RequestId": "4BF24EA5-9013-4C85-AE68-6C23AF5E0097",
   "Success": true
 ```
+
+`}`
 
 ##### 6.7.4.3 GetDataExportOrderDetail
 
@@ -7185,12 +7489,14 @@ odular database</Database>
       "EnvType": "product"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "RequestId": "78C93646-D9B1-4E6E-B5FD-C69F94A7905A",
   "Success": true
 ```
+
+`}`
 
 #### 6.7.5 Database and table synchronization
 
@@ -7284,8 +7590,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetStructSyncOrderDetailResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "CA4E966B-1A57-4230-B0BB-CBB9CAF2CEDC",
   "StructSyncOrderDetail" : {
     "SourceDatabaseInfo" : {
@@ -7324,6 +7635,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 ```json
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.5.2 GetStructSyncExecSqlDetail
 
@@ -7400,8 +7713,13 @@ uxxxxxxxx.mysql.rds.aliyuncs.com:3306 ******/
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "StructSyncExecSqlDetail" : {
     "ExecSql" : "/****** Destination database: film@rm-
 uxxxxxxxx.mysql.rds.aliyuncs.com:3306 ******/\n\n/* origin table[data_modify] exist, ta rget table[data_modify] not exist */\n/* generate [data_modify] create table sql */\ncr eate table `data_modify` (\n `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key',\n `name` varchar(256) NOT NULL COMMENT 'Name',\n `phone` varchar(32) D EFAULT NULL COMMENT 'Phone number',\n `sex` varchar(32) DEFAULT NULL COMMENT 'Gender',\n `email` varchar(256) DEFAULT NULL COMMENT 'Email address',\n `user_desc` varchar(1024) DEFAULT NULL COMMENT 'Remarks',\n PRIMARY KEY (`id`)\n) DEFAULT CHARSET= utf8 COMMENT='Test table for data change';\n\n/* origin table[task_data] exist, target table[task_data] not exist */\n/* generate [task_data] create table sql */\ncreate tabl e `task_data` (\n `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary ke y',\n `gmt_create` datetime NOT NULL COMMENT 'Creation time',\n `gmt_modified` dateti me NOT NULL COMMENT 'Modification time',\n `content` text COMMENT 'Test data',\n PRIM ARY KEY (`id`)\n) DEFAULT CHARSET=utf8mb4 COMMENT='Test table for task orchestration';\n\n\n\n",
@@ -7414,6 +7732,8 @@ uxxxxxxxx.mysql.rds.aliyuncs.com:3306 ******/\n\n/* origin table[data_modify] ex
   "RequestId" : "1E4E71DA-9346-4254-B19D-BC5FF6BF34EC",
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.5.3 ExecuteStructSync
 
@@ -7459,11 +7779,18 @@ HTTP/1.1 200 OK Content-Type:application/xml <ExecuteStructSyncResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "4E1D2B4D-3E53-4ABC-999D-1D2520B3471A",
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.5.4 GetStructSyncJobAnalyzeResult
 
@@ -7565,8 +7892,13 @@ Script>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "StructSyncJobAnalyzeResult" : {
     "ResultList" : [ {
       "SourceTableName" : "data_modify",
@@ -7594,6 +7926,8 @@ st */\n/* generate [data_modify] create table sql */\ncreate table `data_modify`
   "RequestId" : "472C5F33-198B-4A41-BF83-B2322636B583",
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.5.5 SubmitStructSyncOrderApproval
 
@@ -7639,12 +7973,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <SubmitStructSyncOrderApprovalRespo
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "72768811-B970-4733-85BE-A8659613BF23",
   "WorkflowInstanceId" : 1000000,
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.5.6 CreateStructSyncOrder
 
@@ -7709,12 +8050,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateStructSyncOrderResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "CreateOrderResult" : [ 2000000 ],
   "RequestId" : "0DF19315-DCAF-4376-8006-1CEB0BBC6B13",
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.5.7 GetStructSyncJobDetail
 
@@ -7778,8 +8126,13 @@ hemas of tables is generated.</Message>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "C29D0A5F-BB9B-4CB9-A6B7-19B5433983CA",
   "StructSyncJobDetail" : {
     "JobStatus" : "COMPARE_FINISH",
@@ -7796,6 +8149,8 @@ emas of tables is generated.",
 ```json
   "Success" : true
 ```
+
+`}`
 
 #### 6.7.6 SQL review
 
@@ -7875,8 +8230,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetSQLReviewCheckResultStatusRespo
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "E1ABE358-14A0-4DFA-9776-1A3CB59192DF",
   "CheckResultStatus" : {
     "SQLReviewResult" : {
@@ -7896,11 +8256,13 @@ HTTP/1.1 200 OK Content-Type:application/json
       "CheckPass" : 3
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.6.2 CreateSQLReviewOrder
 
@@ -7954,14 +8316,21 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateSQLReviewOrderResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "Success" : true,
   "ErrorMessage" : "UnknownError",
   "ErrorCode" : "UnknownError",
   "CreateOrderResult" : [ 1423532 ]
 ```
+
+`}`
 
 ##### 6.7.6.3 ListSQLReviewOriginSQL
 
@@ -8044,8 +8413,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <ListSQLReviewOriginSQLResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "ErrorCode" : "UnknownError",
   "ErrorMessage" : "UnknownError",
@@ -8064,6 +8438,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "SQLReviewQueryKey" : "a57e54ec5433475ea3082d882fdb89c5"
   } ]
 ```
+
+`}`
 
 #### 6.7.7 File upload
 
@@ -8118,12 +8494,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateUploadOSSFileJobResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "JobKey" : "7000005000007000009000000",
   "RequestId" : "44355324-9534-4AF4-B7AA-8EDE3C767889",
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.7.2 GetUserUploadFileJob
 
@@ -8198,8 +8581,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetUserUploadFileJobResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "22FFF57C-6E85-4C3D-90AF-C1BFE79E1FAF",
   "UploadFileJobDetail" : {
     "JobStatus" : "INIT",
@@ -8218,6 +8606,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 ```json
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.7.3 CreateUploadFileJob
 
@@ -8266,12 +8656,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <CreateUploadFileJobResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "JobKey" : "761f18031635736380812****",
   "RequestId" : "E103C5F9-DE47-53F2-BF34-D71DF38F****",
   "Success" : true
 ```
+
+`}`
 
 #### 6.7.8 Permission application
 
@@ -8346,8 +8743,13 @@ bp18anxxxxxxxt48z.gpdb.rds.aliyuncs.com:3432</SearchName>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "OwnerApplyOrderDetail" : {
     "ApplyType" : "DB",
     "Resources" : [ {
@@ -8373,6 +8775,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "RequestId" : "6976762B-AEA4-4EF0-9C42-46EC5477D780",
   "Success" : true
 ```
+
+`}`
 
 ##### 6.7.8.2 GetPermApplyOrderDetail
 
@@ -8467,8 +8871,13 @@ bpxxxxxxxxffxxxxxxi.mysql.rds.aliyuncs.com:3306</SearchName>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "PermApplyOrderDetail" : {
     "ApplyType" : "DB",
     "PermType" : 1,
@@ -8499,6 +8908,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "RequestId" : "806FBC5B-2AED-401C-9E00-0B91C1DB2F1A",
   "Success" : true
 ```
+
+`}`
 
 ### 6.8 SQL task management
 
@@ -8576,8 +8987,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <ListDBTaskSQLJobResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "F6C47680-8D2D-43A4-8902-F2740D71A398",
   "Success" : true,
   "ErrorMessage" : "UnknownError",
@@ -8595,6 +9011,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   } ],
   "TotalCount" : 1
 ```
+
+`}`
 
 #### 6.8.2 ListDBTaskSQLJobDetail
 
@@ -8675,8 +9093,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <ListDBTaskSQLJobDetailResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "3F044E33-FE09-58F1-8C61-A0F612EC****",
   "Success" : true,
   "ErrorMessage" : "JobId is mandatory for this action.",
@@ -8696,6 +9119,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   } ],
   "TotalCount" : 1
 ```
+
+`}`
 
 ### 6.9 Permission management
 
@@ -8744,12 +9169,14 @@ Sample success responses `XML` format
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
 ```
+
+`}`
 
 #### 6.9.2 ListDatabaseUserPermssions
 
@@ -8863,12 +9290,22 @@ Sample success responses `XML` format
 ```json
   "UserPermissions": {
     "UserPermission": [
+```
+
+`{`
+
+```json
         "Logic": false,
         "UserNickName": "xxx",
         "DsType": "DATABASE",
         "Alias": "beihe_ent_prod",
         "PermDetails": {
           "PermDetail": [
+```
+
+`{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390915",
               "PermType": "QUERY",
@@ -8876,7 +9313,7 @@ Sample success responses `XML` format
               "CreateDate": "2019-11-21 15:07:45"
 ```
 
-`},`
+`},` `{`
 
 ```json
               "ExpireDate": "2020-10-31 00:00:00",
@@ -8886,7 +9323,7 @@ Sample success responses `XML` format
               "CreateDate": "2019-11-21 15:07:45"
 ```
 
-`},`
+`},` `{`
 
 ```json
               "ExpireDate": "2020-10-31 00:00:00",
@@ -8896,7 +9333,7 @@ Sample success responses `XML` format
               "CreateDate": "2019-11-21 15:07:45"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "InstanceId": 1434,
@@ -8908,13 +9345,15 @@ Sample success responses `XML` format
         "SchemaName": "xxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 1,
   "RequestId": "68075D06-7406-4887-83A7-F558A4D28C13",
   "Success": true
 ```
+
+`}`
 
 #### 6.9.3 SetOwners
 
@@ -8956,12 +9395,14 @@ Sample success responses `XML` format
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
 ```
+
+`}`
 
 #### 6.9.4 ListUserPermissions
 
@@ -9072,12 +9513,22 @@ Sample success responses `XML` format
 ```json
   "UserPermissions": {
     "UserPermission": [
+```
+
+`{`
+
+```json
         "Logic": false,
         "UserNickName": "xxx",
         "DsType": "DATABASE",
         "Alias": "xxx_ent_dev",
         "PermDetails": {
           "PermDetail": [
+```
+
+`{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390913",
               "PermType": "EXPORT",
@@ -9085,7 +9536,7 @@ Sample success responses `XML` format
               "CreateDate": "2019-11-21 15:07:45"
 ```
 
-`},`
+`},` `{`
 
 ```json
               "ExpireDate": "2020-10-31 00:00:00",
@@ -9095,7 +9546,7 @@ Sample success responses `XML` format
               "CreateDate": "2019-11-21 15:07:45"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "InstanceId": 24671,
@@ -9107,13 +9558,15 @@ Sample success responses `XML` format
         "SchemaName": "xxx_ent_dev"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 6,
   "RequestId": "C51420E3-144A-4A94-B473-8662FCF4AD10",
   "Success": true
 ```
+
+`}`
 
 #### 6.9.5 GrantUserPermission
 
@@ -9160,12 +9613,14 @@ Sample success responses `XML` format
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
 ```
+
+`}`
 
 ### 6.10 Security management
 
@@ -9267,6 +9722,11 @@ Sample success responses `XML` format
   "RequestId": "0E714EF1-E617-4BBC-A3D2-9552063BA942",
   "SensitiveColumnList": {
     "SensitiveColumn": [
+```
+
+`{`
+
+```json
         "TableName": "yuyang_test",
         "ColumnName": "c1",
         "ColumnCount": 0,
@@ -9274,7 +9734,7 @@ Sample success responses `XML` format
         "SchemaName": "testdb"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "TableName": "yuyang_test_luanma",
@@ -9284,7 +9744,7 @@ Sample success responses `XML` format
         "SchemaName": "testdb"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "TableName": "yuyang_test",
@@ -9294,7 +9754,7 @@ Sample success responses `XML` format
         "SchemaName": "testdb"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "TableName": "yuyang_test_luanma",
@@ -9304,7 +9764,7 @@ Sample success responses `XML` format
         "SchemaName": "testdb"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "TableName": "yuyang_test_json",
@@ -9314,11 +9774,13 @@ Sample success responses `XML` format
         "SchemaName": "test_demo"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.10.2 ListSensitiveColumnsDetail
 
@@ -9394,6 +9856,11 @@ Sample success responses `XML` format
   "RequestId": "7629888F-C9FB-4D16-A7D3-B443FE06FBD4",
   "SensitiveColumnsDetailList": {
     "SensitiveColumnsDetail": [
+```
+
+`{`
+
+```json
         "TableName": "king_info",
         "ColumnName": "mobile",
         "ColumnType": "varchar(64)",
@@ -9406,11 +9873,13 @@ Sample success responses `XML` format
         "DbType": "mysql"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Success": true
 ```
+
+`}`
 
 #### 6.10.3 ChangeColumnSecLevel
 
@@ -9462,11 +9931,18 @@ HTTP/1.1 200 OK Content-Type:application/xml <ChangeColumnSecLevelResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "C51420E3-144A-4A94-B473-8662FCF4AD10",
   "Success" : false
 ```
+
+`}`
 
 #### 6.10.4 AddDesensitizationRule
 
@@ -9516,13 +9992,20 @@ HTTP/1.1 200 OK Content-Type:application/xml <AddDesensitizationRuleResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "ErrorCode" : "UnknownError",
   "ErrorMessage" : "UnknownError",
   "Success" : true
 ```
+
+`}`
 
 #### 6.10.5 ListDesensitizationRule
 
@@ -9600,8 +10083,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <ListDesensitizationRuleResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "TotalCount" : 1,
   "RequestId" : "E76DD2E7-EBAC-5724-B163-19AAC233F8F2",
   "ErrorCode" : "UnknownError",
@@ -9620,6 +10108,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "RuleId" : 23
   } ]
 ```
+
+`}`
 
 #### 6.10.6 ModifyDesensitizationStrategy
 
@@ -9675,8 +10165,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <ModifyDesensitizationStrategyRespo
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "283C461F-11D8-48AA-B695-DF092DA32AF3",
   "ErrorCode" : "UnknownError",
   "ErrorMessage" : "UnknownError",
@@ -9776,7 +10271,7 @@ Updates the constants for a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "C4CCC000-C193-5A32-B701-573F497BF729",
@@ -9784,6 +10279,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.2 DeleteTaskFlow
 
@@ -9808,7 +10305,7 @@ Deletes a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "9AFE13F6-A4FD-581B-BFDE-B63B1CDC2336",
@@ -9816,6 +10313,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.3 OfflineTaskFlow
 
@@ -9840,7 +10339,7 @@ Unpublishes a published task flow in Data Management (DMS).
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "A8FE12AA-300D-5FDF-806F-C2CB99161F32",
@@ -9848,6 +10347,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.4 ListTaskFlow
 
@@ -9892,6 +10393,11 @@ Sample success responses `JSON` format
   "Success": true,
   "TaskFlowList": {
     "TaskFlow": [
+```
+
+`{`
+
+```json
         "Id": 0,
         "CreatorId": "51****",
         "CreatorNickName": "Creator_NickName",
@@ -9902,7 +10408,7 @@ Sample success responses `JSON` format
         "LatestInstanceTime": "2022-04-13"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.5 GetTaskInstanceRelation
 
@@ -9952,6 +10458,11 @@ Sample success responses `JSON` format
   "Success": true,
   "NodeList": {
     "Node": [
+```
+
+`{`
+
+```json
         "Id": 14059,
         "NodeId": 14059,
         "NodeName": "Spark SQL-1",
@@ -9963,7 +10474,7 @@ Sample success responses `JSON` format
         "EndTime": "2021-11-11 14:38:57"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.6 ListTaskFlowInstance
 
@@ -10022,6 +10533,11 @@ Sample success responses `JSON` format
   "Success": true,
   "DAGInstanceList": {
     "DAGInstance": [
+```
+
+`{`
+
+```json
         "Id": 9234,
         "BusinessTime": "2021-11-10 14:37:26",
         "EndTime": "2021-11-11 14:38:57",
@@ -10035,11 +10551,13 @@ Sample success responses `JSON` format
         "DagVersion": "[]"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 1
 ```
+
+`}`
 
 #### 6.12.7 ListDAGVersions
 
@@ -10079,7 +10597,7 @@ Queries the published versions of a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "C7775630-7901-51B9-8782-9B585EC0799A",
@@ -10089,6 +10607,11 @@ Sample success responses `JSON` format
   "TotalCount": 1,
   "DagVersionList": {
     "DagVersion": [
+```
+
+`{`
+
+```json
         "DagName": "Spark SQL",
         "DagOwnerId": "51****",
         "DagOwnerNickName": "name",
@@ -10097,7 +10620,7 @@ Sample success responses `JSON` format
         "LastVersionId": 0
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.8 ReDeployLhDagVersion
 
@@ -10124,7 +10647,7 @@ Redeploys the published versions of a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "035C92E0-2EAD-50E5-A6DD-550F5F73D7CE",
@@ -10133,6 +10656,8 @@ Sample success responses `JSON` format
   "Success": true,
   "DeployId": 15990
 ```
+
+`}`
 
 #### 6.12.9 UpdateScenario
 
@@ -10170,6 +10695,8 @@ Sample success responses `JSON` format
   "Success": true
 ```
 
+`}`
+
 #### 6.12.10 ResumeTaskFlowInstance
 
 Resumes a suspended task flow instance.
@@ -10197,7 +10724,7 @@ Resumes a suspended task flow instance.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "7FF2E325-763F-5E27-9157-C3CFA02F4CBF",
@@ -10205,6 +10732,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.11 UpdateTaskContent
 
@@ -10236,7 +10765,7 @@ You can call this operation to modify node configurations.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "39557312-28D5-528F-9554-80C0700EB489",
@@ -10244,6 +10773,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.12 ListTaskFlowsByPage
 
@@ -10296,6 +10827,11 @@ Sample success responses `JSON` format
   "Success": true,
   "TaskFlowList": {
     "TaskFlow": [
+```
+
+`{`
+
+```json
         "Id": 0,
         "DagName": "poc_task_test",
         "Description": "test",
@@ -10308,11 +10844,13 @@ Sample success responses `JSON` format
         "LatestInstanceTime": "2022-04-13"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 24
 ```
+
+`}`
 
 #### 6.12.13 ListScenarios
 
@@ -10344,7 +10882,7 @@ Queries a list of business scenarios.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "7FAD400F-7A5C-4193-8F9A-39D86C4F0231",
@@ -10352,13 +10890,18 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true,
   "ScenarioList": [
+```
+
+`{`
+
+```json
       "Id": 0,
       "ScenarioName": "test",
       "CreatorId": "23***",
       "Description": "test"
 ```
 
-`]`
+`}` `]`
 
 #### 6.12.14 UpdateTaskConfig
 
@@ -10372,7 +10915,7 @@ Updates the advanced configurations of a task node.
 | NodeId | string | Yes | The task node ID. | 43**** |
 | NodeConfig | string | Yes | The advanced configurations of the task node. The value must be a JSON string. | { "rerun":{ "rerunEnable":tru e, "rerunCount":1, "rerunInterval":1 0 } } |
 
-The following sample code provides an example on how to specify NodeConfig:
+The following sample code provides an example on how to specify NodeConfig: `{`
 
 ```json
     "rerun":{ // required.
@@ -10380,6 +10923,8 @@ The following sample code provides an example on how to specify NodeConfig:
         "rerunCount":1, // The number of reruns allowed.
         "rerunInterval":10 // The interval between reruns.
 ```
+
+`}` `}`
 
 **Response parameters**
 
@@ -10395,7 +10940,7 @@ The following sample code provides an example on how to specify NodeConfig:
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "F4E2A94B-604F-43FF-93E7-F4EE3DCF412E",
@@ -10403,6 +10948,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.15 ListTaskFlowConstants
 
@@ -10433,7 +10980,7 @@ Queries the constants for a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "028BF827-3801-5869-8548-F4A039256304",
@@ -10442,11 +10989,16 @@ Sample success responses `JSON` format
   "Success": true,
   "DagConstants": {
     "DagConstant": [
+```
+
+`{`
+
+```json
         "Key": "example",
         "Value": "0"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 6.12.16 BackFill
 
@@ -10489,7 +11041,7 @@ BackFillDate must be specified if you specify a date for data backfill. BackFill
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "7FAD400F-7A5C-4193-8F9A-39D86C4F0231",
@@ -10498,6 +11050,8 @@ Sample success responses `JSON` format
   "Success": true,
   "NodeId": 0
 ```
+
+`}`
 
 #### 6.12.17 UpdateTaskTimeVariables
 
@@ -10525,7 +11079,7 @@ Updates time variables for a task node.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "39557312-28D5-528F-9554-80C0700EB489",
@@ -10563,7 +11117,7 @@ Queries the time variables for a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "EC12A3BE-149F-5365-AF33-12CC8C963923",
@@ -10572,11 +11126,16 @@ Sample success responses `JSON` format
   "Success": true,
   "TimeVariables": {
     "timeVariable": [
+```
+
+`{`
+
+```json
         "Name": "time_test",
         "Pattern": "2018-09-26|+7h"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.19 UpdateTaskFlowTimeVariables
 
@@ -10611,14 +11170,14 @@ e offset points based on the data timestamp. You can specify the format by using
             "pattern":"yyyy-MM-dd|+0d"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name":"test",
             "pattern":"yyyy-MM-dd|+0d"
 ```
 
-`]`
+`}` `]` `}`
 
 **Response parameters**
 
@@ -10632,7 +11191,7 @@ e offset points based on the data timestamp. You can specify the format by using
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "39557312-28D5-528F-9554-80C0700EB489",
@@ -10640,6 +11199,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.20 UpdateTaskFlowCooperators
 
@@ -10668,7 +11229,7 @@ Updates the IDs of the users that are involved in a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "D05B3EE1-B6D3-5B17-8CA6-A8054828E5B2",
@@ -10676,6 +11237,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.21 CreateScenario
 
@@ -10702,7 +11265,7 @@ Creates a business scenario. You can group task flows by business scenario.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "4E1D2B4D-3E53-4ABC-999D-1D2520B3471A",
@@ -10711,6 +11274,8 @@ Sample success responses `JSON` format
   "Success": true,
   "ScenarioId": 0
 ```
+
+`}`
 
 #### 6.12.22 DeleteScenario
 
@@ -10739,7 +11304,7 @@ When you call this operation, make sure that no task flows are grouped in the bu
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "12***",
@@ -10747,6 +11312,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.23 UpdateSLARules
 
@@ -10783,7 +11350,7 @@ SLA rules take effect after task flows are deployed and published.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "88E053F7-347B-52DD-A186-1F340EEC0C27",
@@ -10791,6 +11358,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.24 GetRuleNumLimitOfSLA
 
@@ -10818,7 +11387,7 @@ Queries the maximum number of custom service level agreement (SLA) rules for tas
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "D05B3EE1-B6D3-5B17-8CA6-A8054828E5B2",
@@ -10827,6 +11396,8 @@ Sample success responses `JSON` format
   "Success": true,
   "RuleNumLimit": 12
 ```
+
+`}`
 
 #### 6.12.25 GetIntervalLimitOfSLA
 
@@ -10858,7 +11429,7 @@ The scheduling cycle of a task flow must be greater than the minimum scheduling 
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "5B96E35F-A58E-5399-9041-09CF9A1E46EA",
@@ -10867,6 +11438,8 @@ Sample success responses `JSON` format
   "Success": true,
   "IntervalLimit": 59
 ```
+
+`}`
 
 #### 6.12.26 ListDefaultSLARules
 
@@ -10909,6 +11482,11 @@ Sample success responses `JSON` format
   "Success": true,
   "SLARuleList": {
     "SLARule": [
+```
+
+`{`
+
+```json
         "Id": 1,
         "DagId": 0,
         "NodeId": 0,
@@ -10916,7 +11494,7 @@ Sample success responses `JSON` format
         "IntervalMinutes": 1080
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.27 ListTaskFlowCooperators
 
@@ -10958,13 +11536,18 @@ Sample success responses `JSON` format
   "Success": true,
   "CooperatorList": {
     "Cooperator": [
+```
+
+`{`
+
+```json
         "NickName": "name",
         "Email": "t***@XX.com",
         "LoginName": "name",
         "UserId": "123"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.28 ListSLARules
 
@@ -11007,6 +11590,11 @@ Sample success responses `JSON` format
   "Success": true,
   "SLARuleList": {
     "SLARule": [
+```
+
+`{`
+
+```json
         "Id": 2,
         "DagId": 0,
         "NodeId": 1,
@@ -11014,7 +11602,7 @@ Sample success responses `JSON` format
         "IntervalMinutes": 1080
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.29 GetTask
 
@@ -11071,18 +11659,18 @@ e offset points based on the data timestamp. You can specify the format by using
             "pattern":"yyyy-MM-dd|+0d"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name":"test",
             "pattern":"yyyy-MM-dd|+0d"
 ```
 
-`]`
+`}` `]` `}`
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "7838266C-E17B-58F4-B072-4DC356B58258",
@@ -11103,6 +11691,8 @@ Sample success responses `JSON` format
     "GraphParam": "{\"
 {\\\"x\\\":0,\\\"y\\\":0,\\\"layoutType\\\":\\\"Horizontal\\\"}\", \"id\": 51***}"
 ```
+
+`}` `}`
 
 #### 6.12.30 MoveTaskFlowToScenario
 
@@ -11130,7 +11720,7 @@ Migrates a task flow to a business scenario.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "D85FD18C-4322-5D49-8C14-5A10E668F86C",
@@ -11138,6 +11728,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.31 GetTaskFlowNotification
 
@@ -11168,7 +11760,7 @@ Queries the notification settings for a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "F19D575F-EBEA-5683-AFA3-A8F6D9A7DE03",
@@ -11180,6 +11772,8 @@ Sample success responses `JSON` format
     "DagNotificationSuccess": true,
     "DagNotificationSla": true
 ```
+
+`}` `}`
 
 #### 6.12.32 UpdateTaskName
 
@@ -11207,7 +11801,7 @@ Updates the name of a task node.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "C4604178-3BE1-5973-ACF0-7D561AEEF3A8",
@@ -11215,6 +11809,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.33 UpdateTaskOutput
 
@@ -11236,16 +11832,21 @@ Only task nodes such as SQL Assignment for Single Instance, Script, and ECS remo
 
 **SQL Assignment for Single Instance**
 
-Example of NodeOutput:
+Example of NodeOutput: `{`
 
 ```json
     "outputs":[
 ```
 
-`/*`
+`{` `/*`
+
+```
+            The variable extraction settings.
+```
+
+`{`
 
 ```json
-            The variable extraction settings.
                 "row":0, // The rows. A value of -1 specifies all rows.
                 "column":-1, // The columns. A value of -1 specifies all columns.
 ```
@@ -11264,7 +11865,7 @@ returned value of the variable is a string.
                 "combiner":","
 ```
 
-`*/`
+`}` `*/`
 
 ```json
             "extractMethod":"{\"row\":0,\"column\":-1,\"combiner\":\",\"}",
@@ -11272,7 +11873,7 @@ returned value of the variable is a string.
             "description":"For demo" // The description of the variable.
 ```
 
-`]`
+`}` `]` `}`
 
 **Script or ECS remote commands**
 
@@ -11285,7 +11886,7 @@ Example of NodeOutput:
             "description":"demo desc" // The description of the variable.
 ```
 
-`]`
+`}` `]` `}`
 
 **Response parameters**
 
@@ -11299,7 +11900,7 @@ Example of NodeOutput:
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "AB524768-8A5F-523A-91BD-1147187FCD62",
@@ -11340,7 +11941,7 @@ This operation is used for multi-condition query. You can call this operation to
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "21234B66-6859-5558-9E5B-006EFE915CD0",
@@ -11348,6 +11949,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.35 ListTaskFlowEdgesByCondition
 
@@ -11388,7 +11991,7 @@ This operation is used for multi-condition query. You can call this operation to
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "D86249CD-422F-5ACF-85BA-9187C986AE0B",
@@ -11397,12 +12000,17 @@ Sample success responses `JSON` format
   "Success": true,
   "Edges": {
     "Edge": [
+```
+
+`{`
+
+```json
         "Id": 0,
         "NodeEnd": 0,
         "NodeFrom": 0
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.36 AddTaskFlowEdges
 
@@ -11444,7 +12052,7 @@ flow specified by DagId.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "E5EE2B9E-2F95-57FA-B284-CB441CEE49D6",
@@ -11455,7 +12063,7 @@ Sample success responses `JSON` format
     "EdgeId": [
 ```
 
-`]`
+`]` `}` `}`
 
 #### 6.12.37 UpdateTaskFlowNameAndDesc
 
@@ -11484,7 +12092,7 @@ Updates the name and description of a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "F73CCB9D-0CF3-5D3D-97B0-D852A8022663",
@@ -11553,6 +12161,11 @@ Sample success responses `JSON` format
     "DagName": "test",
     "Nodes": {
       "Node": [
+```
+
+`{`
+
+```json
           "DagId": 0,
           "NodeId": 0,
           "NodeName": "test",
@@ -11566,23 +12179,30 @@ Sample success responses `JSON` format
 {\\\"x\\\":541,\\\"y\\\":322,\\\"layoutType\\\":\\\"Horizontal\\\"}"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Edges": {
       "Edge": [
+```
+
+`{`
+
+```json
           "DagId": 0,
           "Id": 0,
           "NodeEnd": 0,
           "NodeFrom": 0
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Status": 2,
     "CanEdit": true
 ```
+
+`}` `}`
 
 #### 6.12.39 UpdateTaskFlowEdges
 
@@ -11621,7 +12241,7 @@ An edge can be updated only when the following conditions are met:
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "93FC1AE1-EC54-52B1-B146-650180FB82E8",
@@ -11629,6 +12249,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.40 UpdateTaskFlowOwner
 
@@ -11660,7 +12282,7 @@ The new owner of the task flow must belong to the same tenant as the previous ow
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "482C61C1-2537-5BFB-8E58-34D9F17AD3C3",
@@ -11668,6 +12290,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.41 UpdateTaskFlowSchedule
 
@@ -11702,11 +12326,14 @@ When you configure a timed scheduling task flow, you can choose between scheduli
 
 **Scheduling by the day:**
 
+`{`
+
 ```json
     "triggerType":"0",
     "dateTime":"00:00"
 ```
 
+`}`
 **Scheduling by the week:** "1" for Sunday, "2" for Monday, ..., and "7" for Saturday.
 
 ```json
@@ -11722,7 +12349,11 @@ When you configure a timed scheduling task flow, you can choose between scheduli
     "weekTime":"00:00"
 ```
 
+`}`
+
 **Scheduling by the month:**
+
+`{`
 
 ```json
     "triggerType":"0",
@@ -11730,12 +12361,18 @@ When you configure a timed scheduling task flow, you can choose between scheduli
     "MonthTime":"00:00"
 ```
 
+`}`
+
 **Scheduling only once:**
+
+`{`
 
 ```json
     "triggerType":"1",
     "specificTime":"2022-09-02 00:00"
 ```
+
+`}`
 
 **Parameter description**
 
@@ -11752,6 +12389,11 @@ When you configure an **event scheduling** task flow, you can subscribe to task 
 vent scheduling.
     "deps":[ // The configurations of task flows or task nodes to which the task flow i
 s subscribed.
+```
+
+`{`
+
+```json
             "eventType":1, // The type of the subscription. A value of 0 specifies
 subscription to task flows. A value of 1 specifies subscription to task nodes.
             "lisDagId":12345, // The task flow to which the subscribed task node
@@ -11759,26 +12401,28 @@ belongs.
             "lisNodeId":2134 // The ID of the subscribed task node.
 ```
 
-`},`
+`},` `{`
 
 ```json
             "eventType":0,
             "lisDagId":12343 // The ID of the subscribed task flow.
 ```
 
-`},`
+`},` `{`
 
 ```json
             "eventType":0,
             "lisDagId":23456
 ```
 
-`],`
+`}` `],`
 
 ```json
     "maxWait":21600 // The maximum waiting time before all the preceding subscribed tas
 k flows or task nodes are run.
 ```
+
+`}`
 
 **Response parameters**
 
@@ -11794,7 +12438,7 @@ k flows or task nodes are run.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "7BF38A13-C181-5B5E-97F1-8643F8A10093",
@@ -11802,6 +12446,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "InvalidParameterValid",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.42 UpdateTaskFlowRelations
 
@@ -11837,7 +12483,7 @@ You can call this operation to perform a full update. For information about how 
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "15D9E71C-405B-57D7-BE6E-707C2C7A8E0B",
@@ -11882,6 +12528,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.44 ListTasksInTaskFlow
 
@@ -11930,6 +12578,11 @@ sions.",
   "Success": true,
   "Tasks": {
     "Task": [
+```
+
+`{`
+
+```json
         "NodeName": "Cross-Database Spark SQL-1",
         "NodeType": "SPARK_SQL",
         "NodeContent": "{     \"dbId\":123456, // The database ID.     \"sql\":\"/*
@@ -11945,7 +12598,7 @@ ble extraction settings. { \"row\":0, // The rows. A value o f -1 specifies all 
         "NodeId": "92***"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.12.45 CreateTaskFlow
 
@@ -11977,7 +12630,7 @@ DagName is unique to each task flow. If DagName that you specify already exists,
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "19DA51A9-AC3E-5C36-8351-07EBCD2B89A1",
@@ -11986,6 +12639,8 @@ Sample success responses `JSON` format
   "Success": true,
   "DagId": 0
 ```
+
+`}`
 
 #### 6.12.46 SuspendTaskFlowInstance
 
@@ -12013,7 +12668,7 @@ Suspends a task flow instance that is running.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "028BF827-3801-5869-8548-F4A039256305",
@@ -12021,6 +12676,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.47 ReRunTaskFlowInstance
 
@@ -12058,6 +12715,8 @@ Sample success responses `JSON` format
   "Success": true
 ```
 
+`}`
+
 #### 6.12.48 MakeTaskFlowInstanceSuccess
 
 Sets the state of a task flow to Successful.
@@ -12084,7 +12743,7 @@ Sets the state of a task flow to Successful.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "028BF827-3801-5869-8548-F4A039256304",
@@ -12092,6 +12751,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "UnknownError",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.49 DeleteTask
 
@@ -12118,7 +12779,7 @@ Deletes a task node from a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "3B460770-40D9-5F07-B68A-173D1D708B72",
@@ -12126,6 +12787,8 @@ Sample success responses `JSON` format
   "ErrorMessage": "Unknown server error",
   "Success": true
 ```
+
+`}`
 
 #### 6.12.50 PublishAndDeployTaskFlow
 
@@ -12152,7 +12815,7 @@ Publishes and deploys a task flow.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "A7160423-2A83-592B-97E2-D8AE7B11C520",
@@ -12161,6 +12824,8 @@ Sample success responses `JSON` format
   "Success": true,
   "DeployId": 0
 ```
+
+`}`
 
 #### 6.12.51 StopTaskFlowInstance
 
@@ -12195,6 +12860,8 @@ Sample success responses `JSON` format
   "Success": true
 ```
 
+`}`
+
 #### 6.12.52 CreateTask
 
 Creates a task node for a task flow.
@@ -12218,7 +12885,7 @@ Parameters for node configurations The configurations of a task node vary based 
 
 **Single Instance SQL**
 
-DagId NodeName NodeType: 1 NodeParam GraphParam NodeContent:
+DagId NodeName NodeType: 1 NodeParam GraphParam NodeContent: `{`
 
 ```json
     "dbId":123456, // The database ID.
@@ -12226,6 +12893,8 @@ DagId NodeName NodeType: 1 NodeParam GraphParam NodeContent:
 current task node. */", // The SQL statements.
     "dbType":"lindorm_sql" // The type of the database.
 ```
+
+`}`
 
 **Script**
 
@@ -12238,7 +12907,7 @@ DagId NodeName NodeType: 28 NodeParam GraphParam NodeOutput:
             "description":"demo desc" // The description of the variable.
 ```
 
-`]` NodeContent:
+`}` `]` `}` NodeContent: `{`
 
 ```json
     "regionId":"cn-hangzhou", // The region ID.
@@ -12250,11 +12919,11 @@ DagId NodeName NodeType: 28 NodeParam GraphParam NodeOutput:
         "-n1 value1"
 ```
 
-`]`
+`]` `}`
 
 **Lock-free Data Change**
 
-DagId NodeName NodeType: 24 NodeParam GraphParam NodeContent:
+DagId NodeName NodeType: 24 NodeParam GraphParam NodeContent: `{`
 
 ```json
     "dbId":123456, // The database ID.
@@ -12262,6 +12931,8 @@ DagId NodeName NodeType: 24 NodeParam GraphParam NodeContent:
 current task node. */", // The SQL statements.
     "dbType":"polardb" // The type of the database.
 ```
+
+`}`
 
 **SQL Assignment for Single Instance**
 
@@ -12273,15 +12944,20 @@ DagId NodeName NodeType: 32 NodeParam GraphParam NodeOutput:
 
 `/*`
 
-```json
+```
             // The variable extraction settings.
+```
+
+`{`
+
+```json
                 "row":0, // The rows. A value of -1 specifies all rows.
                 "column":-1, // The columns. A value of -1 specifies all columns.
                 "combiner":"," // The delimiter. If you select all rows or columns, you
 must specify a delimiter. The returned value of the variable is a string.
 ```
 
-`*/`
+`}` `*/`
 
 ```json
             "extractMethod":"{\"row\":0,\"column\":-1,\"combiner\":\",\"}",
@@ -12289,7 +12965,7 @@ must specify a delimiter. The returned value of the variable is a string.
             "description":"For demo" // The description of the variable.
 ```
 
-`]` NodeContent:
+`}` `]` `}` NodeContent: `{`
 
 ```json
     "dbId":123456, // The database ID.
@@ -12297,6 +12973,8 @@ must specify a delimiter. The returned value of the variable is a string.
 current task node. Only SELECT statements are supported. By default, the maximum number of rows returned is 30. *", // The SQL statements.
     "dbType":"lindorm_cql" // The type of the database.
 ```
+
+`}`
 
 **Check for Task Flow Dependency**
 
@@ -12317,9 +12995,11 @@ fies that the task flow passes the dependency check after the last node on which
 ch the current task flow depends is successful.
 ```
 
+`}`
+
 **Check Whether Data Exists in Table After Specified Time**
 
-DagId NodeName NodeType: 2 NodeParam GraphParam NodeContent:
+DagId NodeName NodeType: 2 NodeParam GraphParam NodeContent: `{`
 
 ```json
     "dependentDAGId":132, // The ID of the dependent task flow if the current task flow
@@ -12338,7 +13018,7 @@ ch the current task flow depends is successful.
 
 **SQL Status Check**
 
-DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent:
+DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: `{`
 
 ```json
     "dbId":123456,
@@ -12346,6 +13026,8 @@ DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent:
 current task node. */ \n\n select 1 from abc",
     "dbType":"lindorm_cql"
 ```
+
+`}`
 
 **Response parameters**
 
@@ -12362,7 +13044,7 @@ current task node. */ \n\n select 1 from abc",
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "CFD8FE00-36D9-4C1B-940D-65A7B73D9066",
@@ -12371,6 +13053,8 @@ Sample success responses `JSON` format
   "Success": true,
   "NodeId": 0
 ```
+
+`}`
 
 ### 6.13 Logical databases and tables
 
@@ -12454,8 +13138,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <RequestId>C5B8E84B-42B6-4374-AD5A-
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId" : "C5B8E84B-42B6-4374-AD5A-6264E1753378",
   "Success" : true,
   "ErrorMessage" : "UnknownError",
@@ -12480,6 +13169,8 @@ HTTP/1.1 200 OK Content-Type:application/json
       "InstanceSource" : "RDS"
     } ]
 ```
+
+`}` `}`
 
 ## 7 Appendixes
 
@@ -12611,6 +13302,8 @@ le in the preceding step.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Sample requests**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -12662,6 +13355,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

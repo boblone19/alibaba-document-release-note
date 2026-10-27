@@ -5,18 +5,62 @@ doc_version: "20260729"
 pdf_pages: 96
 source_pdf: "06_开发指南_enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/cbs/zh/enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 数据库备份DBS 开发指南
 
-## API参考
+## 目录
 
-### API概览
+- 1 API参考
+  - 1.1 API概览
+  - 1.2 备份计划
+    - 1.2.1 创建备份计划
+    - 1.2.2 配置备份计划
+    - 1.2.3 查看备份计划
+    - 1.2.4 启动备份计划
+    - 1.2.5 暂停备份计划
+    - 1.2.6 修改备份对象
+    - 1.2.7 修改数据库备份源
+    - 1.2.8 修改备份计划名称
+    - 1.2.9 修改备份时间
+    - 1.2.10 查看可恢复时间段详情
+    - 1.2.11 查看备份计划计费信息
+  - 1.3 备份任务
+    - 1.3.1 查看全量备份任务列表
+    - 1.3.2 查看增量备份任务列表
+  - 1.4 恢复任务
+    - 1.4.1 创建恢复任务
+    - 1.4.2 启动恢复任务
+    - 1.4.3 查看恢复任务列表
+  - 1.5 备份网关
+    - 1.5.1 查看备份网关列表
+  - 1.6 备份集下载
+    - 1.6.1 查看备份集下载列表
+    - 1.6.2 设置备份集下载规则
+    - 1.6.3 创建全量备份集下载任务
+    - 1.6.4 创建增量备份集下载任务
+    - 1.7.1 查看任务标准化错误码信息
+    - 1.7.2 查看DBS运行节点网段
+    - 1.7.3 查看预检查进度列表
+    - 1.7.4 PhysicalDeleteResource
+    - 1.7.5 LogicalDeleteResource
+    - 1.7.6 DescribeOssStsToken
+    - 1.7.7 DescribeBackupInstances
+    - 1.7.8 ConfigureDuplicaitonBackupPlan
+    - 1.7.9 CheckResource
+- 2 SDK参考
+  - 2.1 SDK概览
+  - 2.2 通过Maven依赖使用DBS JAVA SDK
+  - 2.3 获取AccessKey
+
+## 1 API参考
+
+### 1.1 API概览
 
 数据库备份DBS提供以下相关API接口。
 
-### 备份计划
+**备份计划**
 
 | API | 描述 |
 |---|---|
@@ -32,14 +76,14 @@ converter: line-classifier (PyMuPDF)
 | DescribeRestoreRangeInfo | 查看可恢复时间段详情 |
 | DescribeBackupPlanBilling | 查看备份计划计费信息 |
 
-### 备份任务
+**备份任务**
 
 | API | 描述 |
 |---|---|
 | DescribeFullBackupList | 查看全量备份任务列表 |
 | DescribeIncrementBackupList | 查看增量备份任务列表 |
 
-### 恢复任务
+**恢复任务**
 
 | API | 描述 |
 |---|---|
@@ -47,11 +91,13 @@ converter: line-classifier (PyMuPDF)
 | StartRestoreTask | 启动恢复任务 |
 | DescribeRestoreTaskList | 查看恢复任务列表 |
 
-### 备份网关
+**备份网关**
 
 | API | 描述 |
 |---|---|
 | DescribeBackupGatewayList | 查看备份网关列表 |
+
+**备份集下载**
 
 | API | 描述 |
 |---|---|
@@ -68,9 +114,9 @@ converter: line-classifier (PyMuPDF)
 | DescribeNodeCidrList | 查看DBS运行节点网段 |
 | DescribePreCheckProgressList | 查看预检查进度列表 |
 
-### 备份计划
+### 1.2 备份计划
 
-#### 创建备份计划
+#### 1.2.1 创建备份计划
 
 通过调用CreateBackupPlan创建一个DBS备份计划。
 
@@ -90,7 +136,7 @@ converter: line-classifier (PyMuPDF)
 | UsedTime | Integ er | Query | 否 | 1 | 指定购买时长。 此参数专有云API为固定取值，无需设置。 |
 | PayType | Strin g | Query | 否 | prepay | 支付方式，专有云下默认 prepay（预付费）。 |
 
-| 开发指南·API参 | 考 |  |  |  | 数据库备份 |
+| 开发指南·API参 | 考 |   |   |   | 数据库备份 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -114,7 +160,7 @@ converter: line-classifier (PyMuPDF)
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 | OrderId | String | 21437345592**** | 订单ID。 |
 
-| 数据库备份 |  |  | 开发指南·API参考 |
+| 数据库备份 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | Success | Boolean | true | 请求是否成功，返回值如下： true ：请求成功 false ：请求失败 |
@@ -128,10 +174,9 @@ converter: line-classifier (PyMuPDF)
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateBackupPlan &InstanceClass=micro &DatabaseType=MySQL &BackupMethod=logical
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7BCF6D62-885F-5A4A-91A1-679760E7****",
  "HttpStatusCode":200,
  "BackupPlanId":"dbsrhahrsu2****",
@@ -139,26 +184,23 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateBackupPlan &InstanceCla
  "OrderId":"21437345592****",
  "Success":true,
  "ErrCode":"Param.NotFound"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>7BCF6D62-885F-5A4A-91A1-679760E7****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbsrhahrsu2****</BackupPlanId> <ErrMessage>The specified parameter %s value is not valid.</ErrMessage> <OrderId>21437345592****</OrderId> <Success>true</Success> <ErrCode>Param.NotFound</ErrCode>
 ```
 
-#### 配置备份计划
+#### 1.2.2 配置备份计划
 
 调用ConfigureBackupPlan接口配置一个DBS备份计划。
 
 **描述**
 
-配置一个DBS备份计划。 创建备份计划（CreateBackupPlan）接口调用后，DBS实例会开始生产，一般需要等待
+配置一个DBS备份计划。
 
-**说明**
-
-5s，才能调用配置备份计划（ConfigureBackupPlan）接口。
+> **说明：** 创建备份计划（CreateBackupPlan）接口调用后，DBS实例会开始生产，一般需要等待 5s，才能调用配置备份计划（ConfigureBackupPlan）接口。
 
 **请求参数**
 
@@ -219,26 +261,26 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateBackupPlan &InstanceCla
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ConfigureBackupPlan &BackupPlanId=dbstooi0******* &BackupPlanName=dbstooi0******* &SourceEndpointInstanceType=rds
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>F1FB49D4-B504-47F1-9F43-D7EAB33F****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbstooi01ex****</BackupPlanId> <ErrMessage>The specified parameter %s value is not valid.</ErrMessage> <Success>true</Success> <ErrCode>Param.NotFound</ErrCode>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "F1FB49D4-B504-47F1-9F43-D7EAB33F****",
     "HttpStatusCode": 200,
     "BackupPlanId": "dbstooi01ex****",
     "ErrMessage": "The specified parameter %s value is not valid.",
     "Success": true,
     "ErrCode": "Param.NotFound"
-}
 ```
 
-#### 查看备份计划
+`}`
+
+#### 1.2.3 查看备份计划
 
 调用DescribeBackupPlanList接口查看一个DBS备份计划。
 
@@ -265,8 +307,8 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ConfigureBackupPlan &BackupPl
 | ErrCode | String | Param.NotFound | 错误码。 |
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Items | Array of BackupPlanDe tail |  | 备份计划详情。 |
-| BackupPlanDe tail |  |  |  |
+| Items | Array of BackupPlanDe tail |   | 备份计划详情。 |
+| BackupPlanDe tail |   |   |   |
 | BackupGatewa yId | Long | 827362187368736 | 备份网关ID。 |
 
 | BackupMethod | String | logical | 备份方式，返回值如下： logical：逻辑备份 physical：物理备份 |
@@ -325,7 +367,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ConfigureBackupPlan &BackupPl
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupPlanList &BackupPlanId=dbstooi01ex****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PageSize>30</PageSize> <RequestId>4F1888AC-1138-4995-B9FE-D2734F61****</RequestId> <PageNum>0</PageNum> <HttpStatusCode>200</HttpStatusCode> <TotalElements>1</TotalElements> <Items>
@@ -364,7 +406,6 @@ Schema 名", "TableIncludes":[{ "TableName":"待备份表表名" }],
 `JSON` 格式
 
 ```json
-{
  "PageSize": 30,
  "RequestId": "4F1888AC-1138-4995-B9FE-D2734F61****",
  "PageNum": 0,
@@ -372,7 +413,11 @@ Schema 名", "TableIncludes":[{ "TableName":"待备份表表名" }],
  "TotalElements": 1,
  "Items": {
   "BackupPlanDetail": [
-   {
+```
+
+`{`
+
+```json
     "BackupPlanName": "dbXXXXX7ltj",
     "BackupMethod": "logical",
     "BackupPlanCreateTime": 1583000,
@@ -400,19 +445,18 @@ Schema 名", "TableIncludes":[{ "TableName":"待备份表表名" }],
     "SourceEndpointInstanceType": "RDS",
     "SourceEndpointUserName": "test",
     "DuplicationInfrequentAccessPeriod": 180
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "TotalPages": 1,
  "Success": true
-}
 ```
 
-#### 启动备份计划
+`}`
+
+#### 1.2.4 启动备份计划
 
 调动StartBackupPlan接口启动一个DBS备份计划。
 
@@ -447,7 +491,7 @@ Schema 名", "TableIncludes":[{ "TableName":"待备份表表名" }],
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StartBackupPlan &BackupPlanId=dbstooi01******
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbstooi01******</BackupPlanId> <Success>true</Success>
@@ -456,15 +500,15 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StartBackupPlan &BackupPlanId
 `JSON` 格式
 
 ```json
-{
  "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
  "HttpStatusCode": 200,
  "BackupPlanId": "dbstooi01******",
  "Success": true
-}
 ```
 
-#### 暂停备份计划
+`}`
+
+#### 1.2.5 暂停备份计划
 
 调用StopBackupPlan接口暂停一个DBS备份计划。
 
@@ -499,24 +543,24 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StartBackupPlan &BackupPlanId
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StopBackupPlan &BackupPlanId=dbstooi01**** &StopMethod=ALL
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbs1h****usfa</BackupPlanId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
     "HttpStatusCode": 200,
     "BackupPlanId": "dbs1h****usfa",
     "Success": true
-}
 ```
 
-#### 修改备份对象
+`}`
+
+#### 1.2.6 修改备份对象
 
 调用ModifyBackupObjects接口，修改一个DBS备份计划的备份对象。
 
@@ -534,50 +578,35 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StopBackupPlan &BackupPlanId=
 
 **请求参数补充说明**
 
-BackupObjects的定义格式为JSON字符串，定义如下： [
-
-```
-    {
-```
-
-`"DBName":"`待备份库名`",` `"SchemaName":"`待备份 `Schema` 名`",`
+BackupObjects的定义格式为JSON字符串，定义如下： `[` `{` `"DBName":"`待备份库名`",` `"SchemaName":"`待备份 `Schema` 名`",`
 
 ```json
         "TableIncludes":[{
 ```
 
-`"TableName":"`待备份表表名"
+`"TableName":"`待备份表表名`"`
 
 ```json
         }],
         "TableExcludes":[{
 ```
 
-`"TableName":"`待备份库名不需要备份表的表名"
+`"TableName":"`待备份库名不需要备份表的表名`"` `}]` `}` `]` 当用户只配置了 `DBName` ，不配置其他子对象的规则，那么表示迁移这个数据库下面的所有对象。 当用户配置了 `DBName` ，且配置了部分对象的规则，那么不配置的对象默认不迁移。各种对象名的定义可以支持如下的正则表达式： 点号 `.` ：表示匹配除 \r\n 之外的任何单个字符。 星号 `*` ：表示匹配前面子表达式任意次， `h.llo` 匹配 `hll` o、 `heeeello` 等字符串。 问号 ? ：表示匹配前面子表达式零次或1次， h.?llo 匹配 `hllo` 、 `hello` ，但不能匹配 `haello` 。
 
-```
-        }]
-    }
-```
-
-] 当用户只配置了 `DBName` ，不配置其他子对象的规则，那么表示迁移这个数据库下面的所有对象。 当用户配置了 `DBName` ，且配置了部分对象的规则，那么不配置的对象默认不迁移。各种对象名的定义可以支持如下的正则表达式： 点号 . ：表示匹配除 \r\n 之外的任何单个字符。 星号 * ：表示匹配前面子表达式任意次， `h.llo` 匹配 `hll` o、 `heeeello` 等字符串。 问号 ? ：表示匹配前面子表达式零次或1次， h.?llo 匹配 `hllo` 、 `hello` ，但不能匹配 `haello` 。
-
-|  | [characters] |
+|   | [characters] |
 |---|---|
-| hallo |  |
+| hallo |   |
 
-负值字符集合 [^characters] ：表示不匹配方括号内任意一个字符，例如 h[^ae]llo 匹配 `hcllo` 、 `hdllo` ，但是不能匹配 `hallo` 、 `hello` 。
+字符集合 `[characters]` ：表示匹配方括号内任意一个字符，例如 `h[aello]` 匹负值字符集合 [^characters] ：表示不匹配方括号内任意一个字符，例如 h[^ae]llo 匹配 `hcllo` 、 `hdllo` ，但是不能匹配 `hallo` 、 `hello` 。
 
-| 范围 | [character1-character2] |  |  |  |
+| 范围 | [character1-character2] |   |   |   |
 |---|---|---|---|---|
-| [0-9] |  |  |  |  |
-|  |  | 、 | [a-z] | 。 |
+| [0-9] |   |   |   |   |
+|   |   | 、 | [a-z] | 。 |
 
-`SchemaName` 和 `NewSchemaName` 只用于MSSQL，其他数据库的库名定义使
+字符范围 `[character1-character2]` ：表示 `character1-character2` 范围内的字符都可以匹配，
 
-**说明**
-
-用 `DBName` 和 `NewDBName` 参数。
+> **说明：** `SchemaName` 和 `NewSchemaName` 只用于MSSQL，其他数据库的库名定义使用 `DBName` 和 `NewDBName` 参数。
 
 **返回数据**
 
@@ -599,24 +628,26 @@ BackupObjects的定义格式为JSON字符串，定义如下： [
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupObjects &BackupObjects=[ { "DBName":"17xxx92xxxx374", "SchemaName":"gy9xnj8xxxxxx", "TableInclu des":[{ "TableName":"test1" }], "TableExcludes":[{ "TableName":"test2" }] } ] &BackupPlanId=dbs1h****usfa
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbs1h****usfa</BackupPlanId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
  "HttpStatusCode": 200,
  "BackupPlanId": "dbs1h****usfa",
  "Success": true
-}
 ```
 
-#### 修改数据库备份源
+`}`
+
+#### 1.2.7 修改数据库备份源
+
+调用ModifyBackupSourceEndpoint接口，修改数据库备份源。
 
 **请求参数**
 
@@ -666,25 +697,25 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupObjects &BackupOb
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupSourceEndpoint &BackupPlanId=dbs1h****usfa &SourceEndpointInstanceType=RDS
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbs1h****usfa</BackupPlanId> <NeedPrecheck>false</NeedPrecheck> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
  "HttpStatusCode": 200,
  "BackupPlanId": "dbs1h****usfa",
  "NeedPrecheck": false,
  "Success": true
-}
 ```
 
-#### 修改备份计划名称
+`}`
+
+#### 1.2.8 修改备份计划名称
 
 调用ModifyBackupPlanName接口，修改一个备份计划名称。
 
@@ -719,24 +750,24 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupSourceEndpoint &B
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupPlanName &BackupPlanId=dbstooi0**** &BackupPlanName=dbstooi0****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbstooi0****</BackupPlanId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
  "HttpStatusCode": 200,
  "BackupPlanId": "dbstooi0****",
  "Success": true
-}
 ```
 
-#### 修改备份时间
+`}`
+
+#### 1.2.9 修改备份时间
 
 调用ModifyBackupStrategy接口，修改一个DBS备份计划的备份时间。
 
@@ -774,25 +805,25 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupPlanName &BackupP
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupStrategy &BackupPeriod=Monday &BackupPlanId=dbstooi01****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbstooi01****</BackupPlanId> <NeedPrecheck>false</NeedPrecheck> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
  "HttpStatusCode": 200,
  "BackupPlanId": "dbstooi01****",
  "NeedPrecheck": false,
  "Success": true
-}
 ```
 
-#### 查看可恢复时间段详情
+`}`
+
+#### 1.2.10 查看可恢复时间段详情
 
 调用DescribeRestoreRangeInfo接口，查看一个备份计划可恢复时间段详情。
 
@@ -817,12 +848,12 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupStrategy &BackupP
 | ErrCode | String | Param.NotFound | 错误码。 |
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Items | Array of DBSRecoverRa nge |  | 可恢复时间段信息。 |
-| DBSRecoverRa nge |  |  |  |
+| Items | Array of DBSRecoverRa nge |   | 可恢复时间段信息。 |
+| DBSRecoverRa nge |   |   |   |
 | BeginTimesta mpForRestore | Long | 1554560477000 | 可恢复开始时间，取值：1554560477000。 |
 | EndTimestamp ForRestore | Long | 1554560477000 | 可恢复结束时间，取值：1554560477000。 |
-| FullBackupList | Array of FullBackupDet ail |  | 当RangeType为point时，该字段展示这个时间段范围内所有的权利。备份点信息。 |
-| FullBackupDet ail |  |  |  |
+| FullBackupList | Array of FullBackupDet ail |   | 当RangeType为point时，该字段展示这个时间段范围内所有的权利。备份点信息。 |
+| FullBackupDet ail |   |   |   |
 | BackupSetId | String | dbs1hvb***** | 备份集ID。 |
 | EndTime | Long | 1554560477000 | 全量备份结束时间。取值：1554560477000。 |
 | StartTime | Long | 1554560477000 | 全量备份开始时间。取值：1554560477000。 |
@@ -842,7 +873,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupStrategy &BackupP
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreRangeInfo &BackupPlanId=dbstooi0**** &BeginTimestampForRestore=1554560477000 &EndTimestampForRestore=1554560477000
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <HttpStatusCode>200</HttpStatusCode> <RequestId>7A851299-A739-4801-B4BC-FC30A535****</RequestId> <Items>
@@ -866,7 +897,6 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreRangeInfo &Bac
 `JSON` 格式
 
 ```json
-{
     "HttpStatusCode": 200,
     "RequestId": "7A851299-A739-4801-B4BC-FC30A535****",
     "Items": {
@@ -874,27 +904,28 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreRangeInfo &Bac
             "BeginTimestampForRestore": 1554560477000,
             "EndTimestampForRestore": 1554560477000,
             "FullBackupList": [
-                {
+```
+
+`{`
+
+```json
                     "FullBackupDetail": {
                         "BackupSetId": "dbs1hvb*****",
                         "EndTime": 1554560477000,
                         "StartTime": 1554560477000
-                    }
-                }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
             "RangeType": "point",
             "SourceEndpointInstanceID": "rm-bp1p8c*****",
             "SourceEndpointInstanceType": "rm-bp1p8c*****"
-        }
-    }
-}
 ```
 
-#### 查看备份计划计费信息
+`}` `}` `}`
+
+#### 1.2.11 查看备份计划计费信息
 
 调用DescribeBackupPlanBilling接口，查看备份计划计费信息。
 
@@ -915,7 +946,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreRangeInfo &Bac
 | ErrCode | String | InvalidParameter | 错误码。 |
 | ErrMessage | String | This backupPlan can't support this action | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Item | Struct |  | 备份计划计费信息列表。 |
+| Item | Struct |   | 备份计划计费信息列表。 |
 | BuyChargeTyp e | String | PREPAY | 实例类型，返回值如下： PREPAY POSTPAY |
 | BuyCreateTim estamp | Long | 1634700238000 | 实例购买时间，格式为时间戳。 |
 | BuyExpiredTi mestamp | Long | 1716220800000 | 实例到期时间。 说明该参数仅在BuyChargeType 选择PREPAY时显示。 |
@@ -943,7 +974,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreRangeInfo &Bac
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupPlanBilling &BackupPlanId=dbssl67c7mx****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Item>
@@ -961,7 +992,6 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupPlanBilling &Ba
 `JSON` 格式
 
 ```json
-{
     "Item": {
         "IsExpired": false,
         "BuyExpiredTimestamp": 1716220800000,
@@ -971,16 +1001,21 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupPlanBilling &Ba
         "ContStorageSize": 60391430,
         "BuySpec": "small",
         "BuyChargeType": "PREPAY"
-    },
+```
+
+`},`
+
+```json
     "RequestId": "B38B76CB-DCA0-5B84-A4D6-7BDC7FBF****",
     "HttpStatusCode": 200,
     "Success": true
-}
 ```
 
-### 备份任务
+`}`
 
-#### 查看全量备份任务列表
+### 1.3 备份任务
+
+#### 1.3.1 查看全量备份任务列表
 
 调用DescribeFullBackupList接口查看DBS全量备份任务列表。
 
@@ -1006,8 +1041,8 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupPlanBilling &Ba
 | ErrCode | String | Param.NotFound | 错误码。 |
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Items | Array of FullBackupFile |  | 全量备份任务详情。 |
-| FullBackupFile |  |  |  |
+| Items | Array of FullBackupFile |   | 全量备份任务详情。 |
+| FullBackupFile |   |   |   |
 | BackupObjects | String | [{\"DBName\":\"tes t\"}] | 备份对象。 |
 | BackupSetExpi redTime | Long | 1646813439000 | 备份集保留到期时间。取值1554560477000。 |
 | BackupSetId | String | 1ibh2f5u**** | 备份集ID。 |
@@ -1037,7 +1072,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupPlanBilling &Ba
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeFullBackupList &BackupPlanId=dbstooi01****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>636BC118-6080-4119-A6B5-C199CEC1****</RequestId> <PageSize>30</PageSize> <PageNum>0</PageNum> <HttpStatusCode>200</HttpStatusCode> <TotalElements>1</TotalElements> <TotalPages>1</TotalPages> <Items>
@@ -1057,10 +1092,9 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeFullBackupList &Backu
 </Items> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "636BC118-6080-4119-A6B5-C199CEC1****",
  "PageSize": 30,
  "PageNum": 0,
@@ -1069,7 +1103,11 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeFullBackupList &Backu
  "TotalPages": 1,
  "Items": {
   "FullBackupFile": [
-   {
+```
+
+`{`
+
+```json
     "SourceEndpointIpPort": "100.X.X.10:33204",
     "StorageMethod": "Standard",
     "BackupObjects": "[{\"DBName\":\"test_y\"}]",
@@ -1081,18 +1119,15 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeFullBackupList &Backu
     "BackupSetExpiredTime": 1646813439000,
     "BackupSetId": "1ibh2f5u****",
     "BackupStatus": "finish"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "Success": true
-}
 ```
 
-#### 查看增量备份任务列表
+#### 1.3.2 查看增量备份任务列表
 
 调用DescribeIncrementBackupList接口查看DBS增量备份任务列表。
 
@@ -1119,8 +1154,8 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeFullBackupList &Backu
 
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 |---|---|---|---|
-| Items | Array of IncrementBac kupFile |  | 增量备份任务详情。 |
-| IncrementBac kupFile |  |  |  |
+| Items | Array of IncrementBac kupFile |   | 增量备份任务详情。 |
+| IncrementBac kupFile |   |   |   |
 | BackupSetExpi redTime | Long | 1710468872000 | 备份集保留到期时间。取值1554560477000。 |
 | BackupSetId | String | mysql-bin.00**** | 备份集ID。 |
 | BackupSetJobI d | String | 1hv5g9wk4**** | 备份集的JobID。 |
@@ -1147,7 +1182,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeFullBackupList &Backu
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeIncrementBackupList &BackupPlanId=dbsqdss5tmh****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>8D26CA51-35B8-5155-8818-F40C2F27****</RequestId> <PageSize>30</PageSize> <PageNum>0</PageNum> <HttpStatusCode>200</HttpStatusCode> <TotalElements>138</TotalElements> <TotalPages>5</TotalPages> <Items>
@@ -1167,7 +1202,6 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeIncrementBackupList &
 `JSON` 格式
 
 ```json
-{
     "RequestId": "8D26CA51-35B8-5155-8818-F40C2F27****",
     "PageSize": 30,
     "PageNum": 0,
@@ -1176,7 +1210,11 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeIncrementBackupList &
     "TotalPages": 5,
     "Items": {
         "IncrementBackupFile": [
-            {
+```
+
+`{`
+
+```json
                 "SourceEndpointIpPort": "172.XX.103.1:43XX",
                 "EndTime": 1647396866000,
                 "BackupSetJobId": "1hv5g9wk4****",
@@ -1185,20 +1223,19 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeIncrementBackupList &
                 "BackupSetExpiredTime": 1710468872000,
                 "BackupSetId": "mysql-bin.00****",
                 "BackupStatus": "COMPLETED"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "Success": true
-}
 ```
 
-### 恢复任务
+`}`
 
-#### 创建恢复任务
+### 1.4 恢复任务
+
+#### 1.4.1 创建恢复任务
 
 调用CreateRestoreTask接口，创建DBS恢复任务。
 
@@ -1248,32 +1285,30 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeIncrementBackupList &
 | RestoreTaskId | String | s102h***** | 恢复任务ID。 |
 | Success | Boolean | true | 请求是否成功，返回值如下： true：请求成功 false：请求失败 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateRestoreTask &BackupPlanId=dbs1hvb0ww**** &DestinationEndpointInstanceType=RDS &RestoreTaskName=test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RestoreTaskId>s102h*****</RestoreTaskId> <RequestId>60AF7C5D-EF4D-4D48-8FD5-C0823FDF****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RestoreTaskId": "s102h*****",
  "RequestId": "60AF7C5D-EF4D-4D48-8FD5-C0823FDF****",
  "HttpStatusCode": 200,
  "Success": true
-}
 ```
 
-#### 启动恢复任务
+`}`
+
+#### 1.4.2 启动恢复任务
 
 调用StartRestoreTask接口，启动一个DBS恢复任务。
 
@@ -1305,24 +1340,24 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateRestoreTask &BackupPlan
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StartRestoreTask &RestoreTaskId=s102h7rf****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RestoreTaskId>s102h7rf****</RestoreTaskId> <RequestId>60AF7C5D-EF4D-4D48-8FD5-C0823FDF****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RestoreTaskId": "s102h7rf****",
  "RequestId": "60AF7C5D-EF4D-4D48-8FD5-C0823FDF****",
  "HttpStatusCode": 200,
  "Success": true
-}
 ```
 
-#### 查看恢复任务列表
+`}`
+
+#### 1.4.3 查看恢复任务列表
 
 调用DescribeRestoreTaskList接口，查看DBS恢复任务列表。
 
@@ -1345,8 +1380,8 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StartRestoreTask &RestoreTask
 | ErrCode | String | Param.NotFound | 错误码。 |
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Items | Array of RestoreTaskD etail |  | 备份计划详情。 |
-| RestoreTaskD etail |  |  |  |
+| Items | Array of RestoreTaskD etail |   | 备份计划详情。 |
+| RestoreTaskD etail |   |   |   |
 | BackupGatewa yId | Long | 0 | 备份网关ID。 |
 | BackupPlanId | String | dbssl67c7mx**** | 备份计划ID。 |
 
@@ -1391,7 +1426,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=StartRestoreTask &RestoreTask
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreTaskList
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1A999262-DB3F-5368-AA6E-61AFDA8E****</RequestId> <PageSize>30</PageSize> <PageNum>0</PageNum> <HttpStatusCode>200</HttpStatusCode> <TotalElements>2</TotalElements> <TotalPages>1</TotalPages> <Items>
@@ -1442,18 +1477,17 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreTaskList
 
 `JSON` 格式
 
-| { "RequestId": "1A999262-DB3F-5368-AA6E-61AFDA8E****", "PageSize": 30, "PageNum": 0, "HttpStatusCode": 200, "TotalElements": 2, "TotalPages": 1, "Items": { "RestoreTaskDetail": [ { "RestoreDir": "", "FullStruAfterRestoreProgress": 0, "FullStruforeRestoreProgress": 0, "BackupSetId": "1jy2oe65x****", "RestoreStatus": "check pass", _ "DestinationEndpointInstanceType": "RDS", "RestoreTime": 1636567334000, "DestinationEndpointRegion": "cn-hangzhou", "FullDataRestoreProgress": 0, "RestoreTaskId": "1jefy7ewt****", "DestinationEndpointIpPort": "127.XX.0.1:33XX", "DestinationEndpointUserName": "", "RestoreObjects": " [{\"DBName\":\"rds1 wyp\",\"NewDBName\":\"rds1 wyp\"}]", _ _ "RestoreTaskName": "cbs34s6****", "BackupPlanId": "dbssl67c7mx****", "RestoreTaskCreateTime": 1636623886000, "BackupGatewayId": 0 }, { "RestoreDir": "", "FullStruAfterRestoreProgress": 100, "FullStruforeRestoreProgress": 100, "BackupSetId": "sl67c7mx****", "RestoreStatus": "finish", "DestinationEndpointInstanceType": "RDS", "RestoreTime": 1634720897000, "DestinationEndpointRegion": "cn-shanghai", "FullDataRestoreProgress": 100, "RestoreTaskId": "vbhy7r7o****", "ContinuousRestoreProgress": 100, "DestinationEndpointIpPort": "172.XX.0.1:46XX", "DestinationEndpointUserName": "rdsdt dbsacct", _ "RestoreObjects": " [{\"DBName\":\"rds1 wyp\",\"NewDBName\":\"rds1 wyp\"}]", _ _ "RestoreTaskName": "cbs4225****", "BackupPlanId": "dbssl67c7mx****", "RestoreTaskCreateTime": 1634721021000, "BackupGatewayId": 0, "DestinationEndpointInstanceID": "rm-uf6d8gt9vwvrc****", "RestoreTaskFinishTime": 1634721478000 } ] }, |  |
+| { "RequestId": "1A999262-DB3F-5368-AA6E-61AFDA8E****", "PageSize": 30, "PageNum": 0, "HttpStatusCode": 200, "TotalElements": 2, "TotalPages": 1, "Items": { "RestoreTaskDetail": [ { "RestoreDir": "", "FullStruAfterRestoreProgress": 0, "FullStruforeRestoreProgress": 0, "BackupSetId": "1jy2oe65x****", "RestoreStatus": "check pass", _ "DestinationEndpointInstanceType": "RDS", "RestoreTime": 1636567334000, "DestinationEndpointRegion": "cn-hangzhou", "FullDataRestoreProgress": 0, "RestoreTaskId": "1jefy7ewt****", "DestinationEndpointIpPort": "127.XX.0.1:33XX", "DestinationEndpointUserName": "", "RestoreObjects": " [{\"DBName\":\"rds1 wyp\",\"NewDBName\":\"rds1 wyp\"}]", _ _ "RestoreTaskName": "cbs34s6****", "BackupPlanId": "dbssl67c7mx****", "RestoreTaskCreateTime": 1636623886000, "BackupGatewayId": 0 }, { "RestoreDir": "", "FullStruAfterRestoreProgress": 100, "FullStruforeRestoreProgress": 100, "BackupSetId": "sl67c7mx****", "RestoreStatus": "finish", "DestinationEndpointInstanceType": "RDS", "RestoreTime": 1634720897000, "DestinationEndpointRegion": "cn-shanghai", "FullDataRestoreProgress": 100, "RestoreTaskId": "vbhy7r7o****", "ContinuousRestoreProgress": 100, "DestinationEndpointIpPort": "172.XX.0.1:46XX", "DestinationEndpointUserName": "rdsdt dbsacct", _ "RestoreObjects": " [{\"DBName\":\"rds1 wyp\",\"NewDBName\":\"rds1 wyp\"}]", _ _ "RestoreTaskName": "cbs4225****", "BackupPlanId": "dbssl67c7mx****", "RestoreTaskCreateTime": 1634721021000, "BackupGatewayId": 0, "DestinationEndpointInstanceID": "rm-uf6d8gt9vwvrc****", "RestoreTaskFinishTime": 1634721478000 } ] }, |   |
 |---|---|
-| 9 > 文档版本：2026072 |  |
+| 9 > 文档版本：2026072 |   |
 
 ```json
     "Success": true
-}
 ```
 
-### 备份网关
+### 1.5 备份网关
 
-#### 查看备份网关列表
+#### 1.5.1 查看备份网关列表
 
 调用DescribeBackupGatewayList接口，查看DBS备份网关列表。
 
@@ -1478,8 +1512,8 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreTaskList
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Items | Array of BackupGatewa y |  | 备份网关详情。 |
-| BackupGatewa y |  |  |  |
+| Items | Array of BackupGatewa y |   | 备份网关详情。 |
+| BackupGatewa y |   |   |   |
 | BackupGatewa yCreateTime | Long | 1554560477000 | 备份网关创建时间。 |
 | BackupGatewa yId | String | 2321313*** | 备份网关ID。 |
 | BackupGatewa yStatus | String | ONLINE | 备份网关状态，返回值如下： ONLINE：在线 OFFLINE：离线 STOPPED：停止 UPGRADING：升级中 |
@@ -1507,16 +1541,15 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeRestoreTaskList
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupGatewayList &Region=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PageSize>30</PageSize> <RequestId>46361705-8531-492F-807E-A97E482D****</RequestId> <PageNum>0</PageNum> <HttpStatusCode>200</HttpStatusCode> <TotalElements>0</TotalElements> <Items> </Items> <TotalPages>0</TotalPages> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "PageSize": 30,
  "RequestId": "46361705-8531-492F-807E-A97E482D****",
  "PageNum": 0,
@@ -1524,15 +1557,20 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupGatewayList &Re
  "TotalElements": 0,
  "Items": {
   "BackupGateway": []
- },
- "TotalPages": 0,
- "Success": true
-}
 ```
 
-### 备份集下载
+`},`
 
-#### 查看备份集下载列表
+```json
+ "TotalPages": 0,
+ "Success": true
+```
+
+`}`
+
+### 1.6 备份集下载
+
+#### 1.6.1 查看备份集下载列表
 
 调用DescribeBackupSetDownloadTaskList接口查看DBS备份集下载列表。
 
@@ -1555,8 +1593,8 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupGatewayList &Re
 | ErrCode | String | Param.NotFound | 错误码。 |
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Items | Array of BackupSetDow nloadTaskDeta il |  | 备份计划详情。 |
-| BackupSetDow nloadTaskDeta il |  |  |  |
+| Items | Array of BackupSetDow nloadTaskDeta il |   | 备份计划详情。 |
+| BackupSetDow nloadTaskDeta il |   |   |   |
 
 | BackupGatewa yId | Long | 123 | 备份集备份网关，仅自动下载有值。 |
 |---|---|---|---|
@@ -1595,7 +1633,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupGatewayList &Re
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeBackupSetDownloadTaskList &BackupPlanId = dbssl67c7mx****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>FB9C5B62-15CA-5B72-B0F5-F0BDD165****</RequestId> <PageSize>30</PageSize> <PageNum>0</PageNum> <HttpStatusCode>200</HttpStatusCode> <TotalElements>1</TotalElements> <TotalPages>1</TotalPages> <Items>
@@ -1624,7 +1662,6 @@ gzhou.XXX.com/example345</BackupSetDownloadInternetUrl>
 `JSON` 格式
 
 ```json
-{
     "RequestId": "FB9C5B62-15CA-5B72-B0F5-F0BDD165****",
     "PageSize": 30,
     "PageNum": 0,
@@ -1633,7 +1670,11 @@ gzhou.XXX.com/example345</BackupSetDownloadInternetUrl>
     "TotalPages": 1,
     "Items": {
         "BackupSetDownloadTaskDetail": [
-            {
+```
+
+`{`
+
+```json
                 "BackupSetDbType": "MySQL",
                 "BackupSetDownloadCreateTime": 1641545488000,
                 "BackupSetDownloadTaskName": "1h7zrxja0****-ManualFull",
@@ -1651,18 +1692,17 @@ oss-cn-hangzhou.XXX.com/example345",
                 "BackupSetDataFormat": "CSV",
                 "BackupPlanId": "sl67c7mx****",
                 "BackupSetDataSize": 151
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "Success": true
-}
 ```
 
-#### 设置备份集下载规则
+`}`
+
+#### 1.6.2 设置备份集下载规则
 
 调用ModifyBackupSetDownloadRules接口可以开启、修改、关闭自动下载功能。
 
@@ -1705,24 +1745,24 @@ oss-cn-hangzhou.XXX.com/example345",
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupSetDownloadRules &BackupPlanId=dbstooi01****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupPlanId>dbstooi01e****</BackupPlanId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
   "HttpStatusCode": 200,
   "BackupPlanId": "dbstooi01e****",
   "Success": true
-}
 ```
 
-#### 创建全量备份集下载任务
+`}`
+
+#### 1.6.3 创建全量备份集下载任务
 
 调用CreateFullBackupSetDownload接口，创建并启动全量备份集下载任务。
 
@@ -1757,26 +1797,26 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=ModifyBackupSetDownloadRules 
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateFullBackupSetDownload &BackupSetId=dbs1hv*****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <BackupSetDownloadTaskId>dbstooi01e*****</BackupSetDownloadTaskId> <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrMessage>The specified parameter %s value is not valid.</ErrMessage> <Success>true</Success> <ErrCode>Param.NotFound</ErrCode>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "BackupSetDownloadTaskId": "dbstooi01e*****",
     "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
     "HttpStatusCode": 200,
     "ErrMessage": "The specified parameter %s value is not valid.",
     "Success": true,
     "ErrCode": "Param.NotFound"
-}
 ```
 
-#### 创建增量备份集下载任务
+`}`
+
+#### 1.6.4 创建增量备份集下载任务
 
 调用CreateIncrementBackupSetDownload接口，创建并启动增量备份集下载任务。
 
@@ -1812,26 +1852,26 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateFullBackupSetDownload &
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateIncrementBackupSetDownload &BackupSetId=dbstooi01e***** &BackupSetName=test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>D6E068C3-25BC-455A-85FE-45F0B22E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <BackupSetDownloadTaskId>dbstooi01e*****</BackupSetDownloadTaskId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "D6E068C3-25BC-455A-85FE-45F0B22E****",
   "HttpStatusCode": 200,
   "BackupSetDownloadTaskId": "dbstooi01e*****",
   "Success": true
-}
 ```
 
-### 其他
+`}`
 
-#### 查看任务标准化错误码信息
+### 1.7 其他
+
+#### 1.7.1 查看任务标准化错误码信息
 
 调用DescribeJobErrorCode接口，查看DBS任务标准化错误码信息。
 
@@ -1854,7 +1894,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateIncrementBackupSetDownl
 | ErrMessage | String | The specified parameter %s value is not valid. | 错误信息。 |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
-| Item | Struct |  | 错误码信息。 |
+| Item | Struct |   | 错误码信息。 |
 | ErrorCode | String | failed | 错误码。 |
 | ErrorMessage | String | Describe preCheck progress failed. | 标准化错误信息。 |
 | JobId | String | tooi0**** | 全量备份或者恢复任务ID。 |
@@ -1872,7 +1912,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=CreateIncrementBackupSetDownl
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeJobErrorCode &TaskId=dbstooi0****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Item>
@@ -1884,18 +1924,24 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeJobErrorCode &TaskId=
 `JSON` 格式
 
 ```json
-{
  "Item": {
   "Language": "en",
   "JobId": "tooi0****"
- },
+```
+
+`},`
+
+```json
  "RequestId": "1FC2F86D-AFF4-4ED9-BB25-ADDE196C****",
  "HttpStatusCode": 200,
  "Success": true
-}
 ```
 
-#### 查看DBS运行节点网段
+`}`
+
+#### 1.7.2 查看DBS运行节点网段
+
+调用DescribeNodeCidrList接口，查看DBS运行节点网段列表。
 
 **请求参数**
 
@@ -1928,7 +1974,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeJobErrorCode &TaskId=
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeNodeCidrList &Region=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>5B352E69-E7B1-4EA7-BB8E-29FFE969****</RequestId> <InternetIPs>
@@ -1944,7 +1990,6 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeNodeCidrList &Region=
 `JSON` 格式
 
 ```json
-{
  "RequestId": "5B352E69-E7B1-4EA7-BB8E-29FFE969****",
  "InternetIPs": {
   "InternetIP": [
@@ -1952,10 +1997,9 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeNodeCidrList &Region=
    "47.X.X.0/24"
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "HttpStatusCode": 200,
  "IntranetIPs": {
   "IntranetIP": [
@@ -1964,15 +2008,15 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeNodeCidrList &Region=
    "10.X.X.0/24"
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "Success": true
-}
 ```
 
-#### 查看预检查进度列表
+`}`
+
+#### 1.7.3 查看预检查进度列表
 
 调用DescribePreCheckProgressList接口，查看备份计划预检查进度和恢复任务预检查进度。
 
@@ -1992,9 +2036,9 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeNodeCidrList &Region=
 |---|---|---|---|
 | ErrCode | String | Param.NotFound | 错误码。 |
 
-| Items | Array of PreCheckProgr essDetail |  | 进度明细列表。 |
+| Items | Array of PreCheckProgr essDetail |   | 进度明细列表。 |
 |---|---|---|---|
-| PreCheckProgr essDetail |  |  |  |
+| PreCheckProgr essDetail |   |   |   |
 | BootTime | Long | 1583734969000 | 启动时间，取值：1554560477000。 |
 | ErrMsg | String | java.lang.RuntimeE xception: Could not find any schema ...... | 异常信息。 |
 | FinishTime | Long | 1583734969000 | 完成时间，取值：1554560477000。 |
@@ -2020,7 +2064,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribeNodeCidrList &Region=
 http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribePreCheckProgressList
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Status>failed</Status> <Progress>20</Progress> <RequestId>C4A45FE1-A903-470D-B113-F12A4DF9****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Items>
@@ -2038,33 +2082,35 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribePreCheckProgressList
 `JSON` 格式
 
 ```json
-{
  "Status": "failed",
  "Progress": 20,
  "RequestId": "C4A45FE1-A903-470D-B113-F12A4DF9****",
  "HttpStatusCode": 200,
  "Items": {
   "PreCheckProgressDetail": [
-   {
+```
+
+`{`
+
+```json
     "Names": "CHECK_MYSQL_PASSOWRD_FORMAT_DETAIL",
     "Item": "CHECK_MYSQL_PASSOWRD_FORMAT",
     "OrderNum": "90",
     "State": "init",
     "BootTime": 1583734969000,
     "JobId": "uvk8f6fx****"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "ErrMessage": "java.lang.RuntimeException: Could not find any schema ......",
  "Success": true
-}
 ```
 
-#### PhysicalDeleteResource
+`}`
+
+#### 1.7.4 PhysicalDeleteResource
 
 物理删除数据库备份服务中的资源。
 
@@ -2084,7 +2130,7 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribePreCheckProgressList
 | Hid | Long | Query | 是 | 1001 | 唯一识别号 |
 | Country | Strin g | Query | 是 | CN | 所属国家，默认：CN。 |
 
-| 开发指南·API参 | 考 |  |  |  | 数据库备份 |
+| 开发指南·API参 | 考 |   |   |   | 数据库备份 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2122,10 +2168,9 @@ http(s)://dbs-api.cn-hangzhou.aliyuncs.com/?Action=DescribePreCheckProgressList
 http(s)://[Endpoint]/?Action=PhysicalDeleteResource &Invoker=admin &Pk=259258662544****** &Bid=26842 &Hid=1001 &Country=CN &TaskIdentifier=001 &TaskExtraData={"retry_count": 3, "timeout": 60, "priority": "high"} &GmtWakeup=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "GmtWakeup":"",
  "Hid":"",
  "Invoker":"admin",
@@ -2137,10 +2182,11 @@ http(s)://[Endpoint]/?Action=PhysicalDeleteResource &Invoker=admin &Pk=259258662
  "Bid":"26842",
  "Interrupt":false,
  "Success":true
-}
 ```
 
-#### LogicalDeleteResource
+`}`
+
+#### 1.7.5 LogicalDeleteResource
 
 逻辑删除数据库备份服务中的指定资源。
 
@@ -2154,7 +2200,7 @@ http(s)://[Endpoint]/?Action=PhysicalDeleteResource &Invoker=admin &Pk=259258662
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | 否 | cn-hangzhou | 地域ID。 |
 
-| ·API |  |  |  |  |  |
+| ·API |   |   |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2182,7 +2228,7 @@ http(s)://[Endpoint]/?Action=PhysicalDeleteResource &Invoker=admin &Pk=259258662
 | Hid | Long | 123456 | 唯一识别号 |
 | Country | String | 中国 | 国家或地区。 |
 
-| 数据库备份 |  |  | 开发指南·API参考 |
+| 数据库备份 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | TaskIdentifier | String | 示例值 | 任务标识符 |
@@ -2199,10 +2245,9 @@ http(s)://[Endpoint]/?Action=PhysicalDeleteResource &Invoker=admin &Pk=259258662
 http(s)://[Endpoint]/?Action=LogicalDeleteResource &Invoker=admin &Pk=259258662544****** &Bid=26842 &Hid=9999 &Country=CN &TaskIdentifier=EX12345 &TaskExtraData={"retryCount": 3, "timeout": 60} &GmtWakeup=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "GmtWakeup":"07:30",
  "Hid":"",
  "Invoker":"admin",
@@ -2214,10 +2259,11 @@ http(s)://[Endpoint]/?Action=LogicalDeleteResource &Invoker=admin &Pk=2592586625
  "Bid":"26842",
  "Interrupt":false,
  "Success":true
-}
 ```
 
-#### DescribeOssStsToken
+`}`
+
+#### 1.7.6 DescribeOssStsToken
 
 提供OSS STS Token以实现安全的对象存储访问。
 
@@ -2243,7 +2289,7 @@ http(s)://[Endpoint]/?Action=LogicalDeleteResource &Invoker=admin &Pk=2592586625
 | Message | String | success | 附加信息。 |
 | Code | String | 200 | 接口状态或POP错误码。 |
 
-| 数据库备份 |  |  | 开发指南·API参考 |
+| 数据库备份 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2256,11 +2302,11 @@ http(s)://[Endpoint]/?Action=LogicalDeleteResource &Invoker=admin &Pk=2592586625
 | EnvMode | String | Production | 表示当前环境为生产环境，是正式对外提供服务的环境。 |
 | ClientType | String | 1 | 客户端类型。 |
 
-|  | test- |
+|   | test- |
 |---|---|
-| test/prefix |  |
+| test/prefix |   |
 
-|  | prefix |
+|   | prefix |
 |---|---|
 
 **示例**
@@ -2271,10 +2317,9 @@ http(s)://[Endpoint]/?Action=LogicalDeleteResource &Invoker=admin &Pk=2592586625
 http(s)://[Endpoint]/?Action=DescribeOssStsToken
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "SecurityToken":"********",
  "ClientType":"1",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -2286,10 +2331,11 @@ http(s)://[Endpoint]/?Action=DescribeOssStsToken
  "OssPrefix":"test-prefix/hello-prefix",
  "Code":"200",
  "Success":true
-}
 ```
 
-#### DescribeBackupInstances
+`}`
+
+#### 1.7.7 DescribeBackupInstances
 
 查询数据库备份实例列表。
 
@@ -2332,7 +2378,7 @@ http(s)://[Endpoint]/?Action=DescribeOssStsToken
 | Message | String | success | 附加信息。 |
 | TotalBackupIn stanceCount | Integer | 5 | 表示当前系统中总共存在的备份实例数量为5 个。 |
 
-| 开发指南·API参考 |  |  | 数据库备份 |
+| 开发指南·API参考 |   |   | 数据库备份 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | PageNumber | Integer | 1 | 页码。 |
@@ -2347,17 +2393,20 @@ http(s)://[Endpoint]/?Action=DescribeOssStsToken
 http(s)://[Endpoint]/?Action=DescribeBackupInstances
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "TotalBackupInstanceCount":5,
  "PageSize":10,
  "PageNumber":1,
  "BackupInstances":[
-  {
+```
+
+`{`
+
+```json
    "Status":"1",
    "CreateTime":"2022",
    "OssBucket":"liveBucket****",
@@ -2369,18 +2418,18 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstances
    "JobId":"72dcd26b-f12d-4c27-b3af-18f6aed5****",
    "DbType":"MySQL",
    "Name":"test"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalPages":1,
  "Success":true
-}
 ```
 
-#### ConfigureDuplicaitonBackupPlan
+`}`
+
+#### 1.7.8 ConfigureDuplicaitonBackupPlan
 
 配置数据库复制备份计划。
 
@@ -2407,7 +2456,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstances
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-| 开发指南·API参考 |  |  | 数据库备份 |
+| 开发指南·API参考 |   |   | 数据库备份 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2424,18 +2473,18 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstances
 http(s)://[Endpoint]/?Action=ConfigureDuplicaitonBackupPlan &Bid=26842 &DatabaseType=MySQL &StorageRegion=cn-hangzhou &DatabaseRegion=cn-hangzhou &BackupPlanName=dbstooi0******* &SourceEndpointInstanceID=rm-bp1imrtn6fq7h**** &ResourceOwnerId=345678912345
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "BackupPlanId":"dbs1h****usfa",
  "Success":true
-}
 ```
 
-#### CheckResource
+`}`
+
+#### 1.7.9 CheckResource
 
 用于验证数据库备份服务中资源的可用性及状态。
 
@@ -2449,7 +2498,7 @@ http(s)://[Endpoint]/?Action=ConfigureDuplicaitonBackupPlan &Bid=26842 &Database
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | 否 | cn-hangzhou | 地域ID。 |
 
-| 数据库备份 |  |  |  |  | 开发指南·API参考 |
+| 数据库备份 |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2475,7 +2524,7 @@ http(s)://[Endpoint]/?Action=ConfigureDuplicaitonBackupPlan &Bid=26842 &Database
 |---|---|---|---|
 | Interrupt | Boolean | false | 是否中断 |
 
-| 开发指南·API参考 |  |  | 数据库备份 |
+| 开发指南·API参考 |   |   | 数据库备份 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2499,13 +2548,12 @@ http(s)://[Endpoint]/?Action=ConfigureDuplicaitonBackupPlan &Bid=26842 &Database
 请求示例
 
 ```
-&Invoker=admin &Pk=259258662544****** &Bid=26842 &Hid=1001 &Country=CN &TaskIdentifier=001 &TaskExtraData={"retry_count": 3, "timeout": 60} &GmtWakeup=
+http(s)://[Endpoint]/?Action=CheckResource &Invoker=admin &Pk=259258662544****** &Bid=26842 &Hid=1001 &Country=CN &TaskIdentifier=001 &TaskExtraData={"retry_count": 3, "timeout": 60} &GmtWakeup=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "GmtWakeup":"08:00",
  "Hid":"",
  "TaskIdentifier":"USER_LOGIN",
@@ -2520,12 +2568,13 @@ http(s)://[Endpoint]/?Action=ConfigureDuplicaitonBackupPlan &Bid=26842 &Database
  "Prompt":"OK",
  "Pk":"1728240534507590",
  "Bid":"26842"
-}
 ```
 
-## SDK参考
+`}`
 
-### SDK概览
+## 2 SDK参考
+
+### 2.1 SDK概览
 
 **SDK最新版本号**
 
@@ -2535,7 +2584,7 @@ http(s)://[Endpoint]/?Action=ConfigureDuplicaitonBackupPlan &Bid=26842 &Database
 
 PHP Composer：https://packagist.org/packages/alibabacloud/sdk SDK Github：https://github.com/aliyun/openapi-sdk-php Python Pypi：https://pypi.org/project/aliyun-python-sdk-dbs/ SDK Github：https://github.com/aliyun/aliyun-openapi-python-sdk Java Maven：https://oss.sonatype.org/#nexus-search;quick~aliyun-java-sdk-dbs SDK Github：https://github.com/aliyun/aliyun-openapi-java-sdk C++ SDK Github：https://github.com/aliyun/aliyun-openapi-cpp-sdk Go SDK Github：https://github.com/aliyun/alibaba-cloud-sdk-go C# Nuget：https://www.nuget.org/packages/aliyun-net-sdk-dbs/ SDK Github：https://github.com/aliyun/aliyun-openapi-net-sdk
 
-### 通过Maven依赖使用DBS JAVA
+### 2.2 通过Maven依赖使用DBS JAVA SDK
 
 **SDK**
 
@@ -2569,6 +2618,8 @@ IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", "accsessKeyId"
 IAcsClient client = new DefaultAcsClient(profile);
 ```
 
+**调用创建备份计划（CreateBackupPlan）的示例**
+
 `//`声明一个`request`对象
 
 ```
@@ -2593,17 +2644,18 @@ CreateBackupPlanResponse response = client.getAcsResponse(req);
 String backupPlanId=response.getBackupPlanId();
 ```
 
-### 获取AccessKey
+### 2.3 获取AccessKey
+
+您可以在Apsara Stack控制台上获取Accesskey。
 
 **获取部门Accesskey**
 
 获取部门Accesskey的方法如下：
 1. 管理员登录Apsara Stack控制台。
-2. 进入**云管控中心** > **用户中心** > **部门管理**页面。
+2. 进入**云管控中心** **>** **用户中心** **>** **部门管理**页面。
 3. 选择待获取Accesskey的部门，单击**获取****accesskey**，可以获取到该部门AccessKey。
-一级部门的Accesskey为系统自动分配，下级部门使用一级部门的Accesskey。
 
-**说明**
+> **说明：** 一级部门的Accesskey为系统自动分配，下级部门使用一级部门的Accesskey。
 
 **获取个人账号Accesskey**
 

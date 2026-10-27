@@ -5,7 +5,7 @@ doc_version: "20240307"
 pdf_pages: 107
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 ApsaraDB for Redis Developer Guide 20240307.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Redis/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020240307.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 ApsaraDB for Redis Developer Guide 20240307
@@ -243,6 +243,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -259,6 +264,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. You can use STS to make API calls. The following sample code demonstrates how to call
 ECS API operations.
 
@@ -268,6 +274,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("asapi_test");
   // Call ECS API operations.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -281,6 +292,8 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
+
+`}`
 
 ### 1.2 Use POP to make API calls
 
@@ -386,7 +399,7 @@ he SecurityToken parameter to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -448,6 +461,8 @@ he x-acs-security-token parameter to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 > **Important:** If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
 #### 1.2.3 SDK for Go
@@ -501,10 +516,15 @@ ecurityToken parameter to the header.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. The following sample code shows how to call API operations:
+`}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. The following sample code shows how to call API operations:
 
 ```java
 package main import (
@@ -543,8 +563,15 @@ acs-security-token parameter to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Configure proxies**
 
@@ -565,7 +592,7 @@ nt variable.
 nment variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -630,6 +657,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. For the modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2014-05-26")
     request.set_action_name("DescribeInstances")
@@ -997,7 +1029,13 @@ The following sample code shows how to use Apsara Stack SDK for Node.js to make 
 ecurityToken parameter to the header.
     // "SecurityToken": "<your-securitytoken>",
       "<The name of the operation-specific parameter required by the API operation>": "
-<The value of the operation-specific parameter>" // 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the xacs-security-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
+<The value of the operation-specific parameter>"
+```
+
+`}`
+
+```
+// 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the xacs-security-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
   const res = await AsapiClient.doRequest(cnofig.API_GATEWAY, params, {
     method: 'POST', // The request method.
     formatParams: false, // Specifies whether to format parameters and capitalize the f
@@ -1089,6 +1127,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 eplace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 3. Use equal signs ( `=` ) to connect the encoded request parameters and their values.
 4. Use ampersands ( `&` ) to connect the encoded request parameters. These parameters
 must be arranged in the same order as those in Step 1. Then, a canonicalized query string that follows the request structure is obtained. For more information, see Request structure.
@@ -1184,6 +1223,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 "%20").replace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 2. Predefine the time format for the `Timestamp` parameter. Specify the `Timestamp`
 parameter in the ISO 8601 format. The time must be in UTC+0.
 
@@ -1194,6 +1234,7 @@ private static final String ISO8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"; pr
     return df.format(date);
 ```
 
+`}`
 3. Create a request string.
 
 ```
@@ -1202,6 +1243,11 @@ final String HTTP_METHOD = "GET"; Map parameters = new HashMap(); // Specify req
     canonicalizedQueryString.append("&")
     .append(percentEncode(key)).append("=")
     .append(percentEncode(parameters.get(key)));
+```
+
+`}`
+
+```
 //Encode the canonicalized query string. stringToSign.append(percentEncode( canonicalizedQueryString.toString().substring(1)));
 ```
 
@@ -1265,13 +1311,15 @@ If a request is successful, the request ID and operation-specific parameter valu
       "cuserId":"aliyuntest"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "requestId":"xxxxxxxxxxxxxx",
   "success":true,
   "message":"success"
 ```
+
+`}`
 
 **Sample error responses**
 
@@ -1286,6 +1334,8 @@ If a request fails, the following information is returned. For more information,
     "asapiErrorMessage": "Failed to ....", // The error message provided by ASAPI.
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by ASAPI.
 ```
+
+`}`
 
 ## 2 API reference
 
@@ -1425,6 +1475,8 @@ JSON format `{`
 "RequestId": "4C4fdsf38-3910-447D-87AD-AC078932216", /* The result data returned */
 ```
 
+`}`
+
 **Sample error response**
 
 When an error occurs during an API call, no result data is returned. You can locate the cause of the error by referencing the attached list of error codes. If an error occurs when you call an operation over HTTP, an HTTP status code in the `4xx` or `5xx` format is returned. The returned message body includes the specific error code and error message. The message body also contains a globally unique request ID called RequestId and a target site ID called HostId. If you cannot locate the cause, request Apsara Stack customer service, and provide the HostId and RequestId for troubleshooting.
@@ -1438,6 +1490,8 @@ JSON format `{`
 ```json
 "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
+
+`}`
 
 ### 2.5 Request signatures
 
@@ -1641,6 +1695,8 @@ JSON format `{`
 "InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb"
 ```
 
+`}`
+
 #### 2.7.2 DeleteInstance
 
 Deletes a specified instance. The instance must be in the **running** state.
@@ -1680,6 +1736,8 @@ JSON format `{`
 ```json
     "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D190D2"
 ```
+
+`}`
 
 #### 2.7.3 ModifyInstanceSpec
 
@@ -1724,6 +1782,8 @@ JSON format `{`
     "RequestId": "A4828C10-AF0A-4CD7-8FBE-737C6CC1193E",
     "OrderId": "20722623431****"
 ```
+
+`}`
 
 ### 2.8 Manage instances
 
@@ -1898,7 +1958,7 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
        "Key": "Type"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ArchitectureType": "standard",
@@ -1923,11 +1983,13 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
     "RegionId": "cn-hangzhou"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "D67A69DF-C1FC-4B01-B239-B17888CCFD2A"
 ```
+
+`}`
 
 #### 2.8.2 DescribeInstances
 
@@ -2047,7 +2109,7 @@ mple.com",
 "ChargeType":" PostPaid"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber" : 1,
@@ -2055,6 +2117,8 @@ mple.com",
     "TotalCount" : 1,
     "RequestId" : "969D0A1D-C91A-4837-9F70-49785DF9BDCE"
 ```
+
+`}`
 
 #### 2.8.3 DescribeRegions
 
@@ -2140,11 +2204,13 @@ n-hangzhou-b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-
                 "LocalName": "China (Hangzhou)"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "AD425AD3-CC7B-4EE2-A5CB-2F61BA73****"
 ```
+
+`}`
 
 #### 2.8.4 DescribeSecurityIps
 
@@ -2225,11 +2291,13 @@ JSON format `{`
                 "SecurityIpGroupName": "rds_replica_group"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "EFC9161F-15E3-4A6E-8A99-C09916D1****"
 ```
+
+`}`
 
 #### 2.8.5 FlushInstance
 
@@ -2272,6 +2340,8 @@ JSON format `{`
 ```json
   "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E7"
 ```
+
+`}`
 
 #### 2.8.6 ModifyInstanceAttribute
 
@@ -2359,6 +2429,8 @@ JSON format `{`
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76"
 ```
 
+`}`
+
 #### 2.8.8 ModifyInstanceNetExpireTime
 
 Extends the retention period of the classic network endpoint of a KVStore for Redis instance. You can call this operation after you change the network type of the KVStore for Redis instance from classic network to VPC with the classic network endpoint retained.
@@ -2401,6 +2473,8 @@ JSON format `{`
     "RequestId": "9C4AF387-1EA3-4C84-8013-3F6B973EDDF5",
 ```
 
+`}`
+
 #### 2.8.9 ModifySecurityIps
 
 Modifies the IP addresses in a whitelist of a KVStore for Redis instance.
@@ -2442,6 +2516,8 @@ JSON format `{`
 ```json
     "RequestId" : "AAAF99B1-69ED-4E80-8CD5-272C09E4****"
 ```
+
+`}`
 
 #### 2.8.10 SwitchNetwork
 
@@ -2492,6 +2568,8 @@ JSON format `{`
     "requestId": "F0997EE8-F4C2-4503-9168-85177ED78C70"
 ```
 
+`}`
+
 ### 2.9 Backup and recovery
 
 #### 2.9.1 CreateBackup
@@ -2538,6 +2616,8 @@ JSON format `{`
     "BackupJobID": "1162****"
 ```
 
+`}`
+
 #### 2.9.2 ModifyBackupPolicy
 
 Modifies the backup policy of a KVStore for Redis instance.
@@ -2583,6 +2663,8 @@ JSON format `{`
 ```json
     "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 #### 2.9.3 DescribeBackupPolicy
 
@@ -2634,6 +2716,8 @@ JSON format `{`
  "PreferredBackupTime": "19:00Z-20:00Z",
  "BackupRetentionPeriod": "7"
 ```
+
+`}`
 
 #### 2.9.4 DescribeBackups
 
@@ -2750,7 +2834,7 @@ hangzhou.aliyuncs.com/********",
                 "BackupStatus": "Success"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 2.9.5 RestoreInstance
 
@@ -2792,6 +2876,8 @@ JSON format `{`
 ```json
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 ### 2.10 Manage monitoring
 
@@ -2865,11 +2951,13 @@ JSON format `{`
                 "Unit" : "Counts/s"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId" : "B906A893-58A3-4644-AC2D-A2C9B08706C1"
 ```
+
+`}`
 
 #### 2.10.2 DescribeHistoryMonitorValues
 
@@ -2926,6 +3014,8 @@ JSON format `{`
     "RequestId": "689E8093-3094-4DC2-A2A2-30D40097****"
 ```
 
+`}`
+
 ### 2.11 Manage parameters
 
 #### 2.11.1 DescribeInstanceConfig
@@ -2972,6 +3062,8 @@ JSON format `{`
 cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplistentries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-int set-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabledcommands\":\"flushall\"}"
 ```
 
+`}`
+
 #### 2.11.2 ModifyInstanceConfig
 
 Modifies configuration parameters of a KVStore for Redis instance.
@@ -3014,6 +3106,8 @@ JSON format `{`
 ```json
   "requestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 ### 2.12 Appendixes
 

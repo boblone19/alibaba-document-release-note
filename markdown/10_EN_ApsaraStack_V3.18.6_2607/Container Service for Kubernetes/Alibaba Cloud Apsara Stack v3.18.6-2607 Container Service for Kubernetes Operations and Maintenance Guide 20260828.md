@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 26
 source_pdf: "ffaac6cd8d8b6e45_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Operations and Maintenance "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Operations and Maintenance Guide 20260828

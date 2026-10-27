@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 82
 source_pdf: "1d31861317b4e528_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20Dev%20Operations%20and%20Maintenance%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260902

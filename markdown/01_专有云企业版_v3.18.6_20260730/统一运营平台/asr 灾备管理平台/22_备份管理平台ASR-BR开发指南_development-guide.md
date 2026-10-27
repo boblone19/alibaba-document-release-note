@@ -5,20 +5,319 @@ doc_version: "20260729"
 pdf_pages: 362
 source_pdf: "22_备份管理平台ASR-BR开发指南_development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/asr/zh/development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 灾备管理平台 备份管理平台ASR-BR开发指南
 
-灾备管理中心说明
+## 目录
 
-## API调用流程说明
+- 1 API调用流程说明
+- 2 准备工作
+  - 2.1 获取AccessKey
+  - 2.2 获取API信息及其Endpoint
+  - 2.3 通过POP网关调用专有云API
+- 3 Java SDK调用示例
+  - 3.1 安装Java SDK
+  - 3.2 设置身份验证凭证
+  - 3.3 发起调用请求
+  - 3.4 错误处理
+- 4 API参考
+  - 4.1 初始化云实例信息
+    - 4.1.1 InitCloudInfo
+  - 4.2 备份仓库
+    - 4.2.1 CreateBackupVault
+    - 4.2.2 DescribeVaultUseageDetail
+    - 4.2.3 DescribeBackupVault
+    - 4.2.4 DescribeBackupVaultList
+  - 4.3 备份计划
+    - 4.3.1 安装ECS客户端
+      - 4.3.1.1 InstallEcsClient
+    - 4.3.2 创建备份计划
+      - 4.3.2.1 CreateAdbBackupPlan
+      - 4.3.2.2 CreateDrdsBackupPlan
+      - 4.3.2.3 CreateEsBackupPlan
+      - 4.3.2.4 CreateEcsBackupPlan
+      - 4.3.2.5 CreateEcsSnapshotBackupPlan
+      - 4.3.2.6 CreateNasBackupPlan
+      - 4.3.2.7 CreateOdpsBackupPlan
+      - 4.3.2.8 CreateOssBackupPlan
+      - 4.3.2.9 CreateRdsBackupPlan
+    - 4.3.3 管理备份计划
+      - 4.3.3.1 DeleteBackupPlan
+      - 4.3.3.2 DescribeBackupPlanList
+      - 4.3.3.3 DescribeBackupPlan
+      - 4.3.3.4 DisableBackupPlan
+      - 4.3.3.5 EnableBackupPlan
+      - 4.3.3.6 ExecuteBackupPlan
+      - 4.3.3.7 ModifyBackupPolicy
+  - 4.4 备份记录
+    - 4.4.1 DescribeBackupInstanceRecordList
+  - 4.5 恢复任务
+    - 4.5.1 创建恢复任务
+      - 4.5.1.1 CreateAdbRecoveryTask
+      - 4.5.1.2 CreateDrdsRecoveryTask
+      - 4.5.1.3 CreateEcsRecoveryTask
+      - 4.5.1.4 CreateEcsSnapshotRecoveryTask
+      - 4.5.1.5 CreateEsRecoveryTask
+      - 4.5.1.6 CreateNasRecoveryTask
+      - 4.5.1.7 CreateOdpsRecoveryTask
+      - 4.5.1.8 CreateOssRecoveryTask
+      - 4.5.1.9 CreateRdsRecoveryTask
+    - 4.5.2 管理恢复任务
+      - 4.5.2.1 DescribeRecoverableDiskList
+      - 4.5.2.2 DescribeRecoverableDrdsDbEngine
+      - 4.5.2.3 DescribeRecoverableDrdsDbSepc
+      - 4.5.2.4 DescribeRecoverableInstanceList
+      - 4.5.2.5 DescribeRecoverableInstanceRecordList
+      - 4.5.2.6 DescribeRecoveryTaskList
+      - 4.5.2.7 DescribeRecoveryTask
+      - 4.5.2.8 DisableRecoveryTask
+      - 4.5.2.9 EnableRecoveryTask
+      - 4.5.2.10 RestartRecoveryTask
+      - 4.5.2.11 DescribeAvailableRecoveryTime
+  - 4.6 VMware备份、恢复、迁移
+    - 4.6.1 CreateVmwareBackupPlan
+    - 4.6.2 CreateVmwareLocalRecovery
+    - 4.6.3 CreateVmwareRestoreToCloud
+    - 4.6.4 DescribeVmwareBackupPlanList
+    - 4.6.5 DescribeVmwareBackupPlan
+  - 4.7 vCenter管理
+    - 4.7.1 AddVCenter
+    - 4.7.2 ModifyvCenterInfo
+    - 4.7.3 DeleteVCenter
+    - 4.7.4 DescribeVCenterComputeResourceList
+    - 4.7.5 DescribeVCenterDataCenterList
+    - 4.7.6 DescribeVCenterList
+    - 4.7.7 DescribeVCenterNetworkList
+    - 4.7.8 DescribeVCenterRegisterCode
+    - 4.7.9 DescribeVCenterStorageResourceList
+  - 4.8 存储池管理
+    - 4.8.1 DescribeStoragePoolList
+- 5 错误码
+  - 5.1 数据面
+    - 5.1.1 Data_Execution_Layer_Error
+  - 5.2 DBS
+    - 5.2.1 Dbaas
+      - 5.2.1.1 DBS-Dbaas-AccessInfoInvalidResourceStorageConfig
+      - 5.2.1.2 DBS-Dbaas-AccessInfoStorageInitFailed
+      - 5.2.1.3 DBS-Dbaas-BackupDataQueryFailed
+      - 5.2.1.4 DBS-Dbaas-BackupDataSourceInstanceNotFound
+      - 5.2.1.5 DBS-Dbaas-BackupJobAlreadyExists
+      - 5.2.1.6 DBS-Dbaas-BackupJobAlreadyFinished
+      - 5.2.1.7 DBS-Dbaas-BackupJobInstanceNotFound
+      - 5.2.1.8 DBS-Dbaas-BackupJobInternalError
+      - 5.2.1.9 DBS-Dbaas-BackupJobInvalidParameters
+      - 5.2.1.10 DBS-Dbaas-BackupJobNotFound
+      - 5.2.1.11 DBS-Dbaas-BackupJobPolicyNotFound
+      - 5.2.1.12 DBS-Dbaas-BackupJobStrategySyncing
+      - 5.2.1.13 DBS-Dbaas-BackupPolicyDescribeFailed
+      - 5.2.1.14 DBS-Dbaas-BackupPolicyHandlerNotFound
+      - 5.2.1.15 DBS-Dbaas-BackupPolicyInstanceNotFound
+      - 5.2.1.16 DBS-Dbaas-BackupPolicyModifyFailed
+      - 5.2.1.17 DBS-Dbaas-BackupPolicyRetentionModifyFailed
+      - 5.2.1.18 DBS-Dbaas-BackupPolicyUserNotFound
+      - 5.2.1.19 DBS-Dbaas-ClusterBackupClusterNotFound
+      - 5.2.1.20 DBS-Dbaas-ClusterBackupUserNotFound
+      - 5.2.1.21 DBS-Dbaas-RestoreArchiveLogUnavailable
+      - 5.2.1.22 DBS-Dbaas-RestoreBackupInvalid
+      - 5.2.1.23 DBS-Dbaas-RestoreQueryFailed
+      - 5.2.1.24 DBS-Dbaas-RestoreSourceInstanceNotFound
+      - 5.2.1.25 DBS-Dbaas-RestoreTimeQueryFailed
+    - 5.2.2 Gareth
+      - 5.2.2.1 DBS-Gareth-ObjectNotFound
+      - 5.2.2.2 DBS-Gareth-FileTooLarge
+      - 5.2.2.3 DBS-Gareth-NetworkError
+      - 5.2.2.4 DBS-Gareth-NetworkTimeout
+      - 5.2.2.5 DBS-Gareth-StorageThrottled
+      - 5.2.2.6 DBS-Gareth-BucketFull
+      - 5.2.2.7 DBS-Gareth-DiskFull
+      - 5.2.2.8 DBS-Gareth-StorageAccessDenied
+      - 5.2.2.9 DBS-Gareth-BucketNotFound
+    - 5.2.3 REP
+      - 5.2.3.1 DBS-REP-JobTerminated
+      - 5.2.3.2 DBS-REP-InternalConfigError
+      - 5.2.3.3 DBS-REP-SubJobFailed
+      - 5.2.3.4 DBS-REP-ReplicationFailed
+      - 5.2.3.5 DBS-REP-SrcBaksetNotAvailable
+      - 5.2.3.6 DBS-REP-SrcFileLost
+  - 5.3 ASRBR
+    - 5.3.1 SYSTEM
+      - 5.3.1.1 ASRBR-SYSTEM-LicenseQuotaExceeded
+      - 5.3.1.2 ASRBR-SYSTEM-LicenseValidationFailed
+      - 5.3.1.3 ASRBR-SYSTEM-LicenseConfigBelowLowerLimit
+      - 5.3.1.4 ASRBR-SYSTEM-LicenseConfigExceedsTotalQuota
+      - 5.3.1.5 ASRBR-SYSTEM-PhysicalMachineInfoQueryFailed
+      - 5.3.1.6 ASRBR-SYSTEM-CrossRegionRecoveryNeedAdvancedLicense
+      - 5.3.1.7 ASRBR-SYSTEM-HbrInitializeFailed
+    - 5.3.2 VAULT
+      - 5.3.2.1 ASRBR-VAULT-VaultCapacityExceeded
+      - 5.3.2.2 ASRBR-VAULT-TrashBucketCannotBeVault
+      - 5.3.2.3 ASRBR-VAULT-VaultDeletionBlocked
+      - 5.3.2.4 ASRBR-VAULT-KmsServiceUnavailable
+      - 5.3.2.5 ASRBR-VAULT-KmsKeyNotEnabled
+      - 5.3.2.6 ASRBR-VAULT-KmsKeySpecNotMatch
+      - 5.3.2.7 ASRBR-VAULT-KmsKeyUsageNotMatch
+      - 5.3.2.8 ASRBR-VAULT-TrashBucketImmutable
+      - 5.3.2.9 ASRBR-VAULT-BucketAlreadyUsed
+      - 5.3.2.10 ASRBR-VAULT-ExistingBucketRequired
+      - 5.3.2.11 ASRBR-VAULT-BucketCreationFailed
+      - 5.3.2.12 ASRBR-VAULT-HbrVaultCreationFailed
+      - 5.3.2.13 ASRBR-VAULT-ReplicationVaultCapacityTooSmall
+      - 5.3.2.14 ASRBR-VAULT-StorageMediumLockUnsupported
+      - 5.3.2.15 ASRBR-VAULT-TrashBucketRequired
+    - 5.3.3 BACKUP
+      - 5.3.3.1 ASRBR-BACKUP-UserCancelledBackupJob
+      - 5.3.3.2 ASRBR-BACKUP-SyncBackupJobResultTimeout
+      - 5.3.3.3 ASRBR-BACKUP-CurrentJobIsBlocked
+      - 5.3.3.4 ASRBR-BACKUP-InvalidFullBackupCycle
+      - 5.3.3.5 ASRBR-BACKUP-InvalidLogRetentionPeriod
+      - 5.3.3.6 ASRBR-BACKUP-InvalidBackupRetentionPeriod
+      - 5.3.3.7 ASRBR-BACKUP-InvalidBackupCycle
+      - 5.3.3.8 ASRBR-BACKUP-InstanceCountExceeded
+      - 5.3.3.9 ASRBR-BACKUP-NoAvailableLogBackup
+      - 5.3.3.10 ASRBR-BACKUP-LocalFailRemoteMarkFail
+      - 5.3.3.11 ASRBR-BACKUP-DbProductItselfBackupFailed
+      - 5.3.3.12 ASRBR-BACKUP-DbProductLogicBackupFail
+      - 5.3.3.13 ASRBR-BACKUP-ModifyPolicyFailed
+      - 5.3.3.14 ASRBR-BACKUP-HbrBackupJobUnavailable
+      - 5.3.3.15 ASRBR-BACKUP-ExecuteBackupJobFailed
+      - 5.3.3.16 ASRBR-BACKUP-BackupSetInfoUnavailable
+      - 5.3.3.17 ASRBR-BACKUP-BackupJobStatusUnmapped
+      - 5.3.3.18 ASRBR-BACKUP-BackupSetStatusFailed
+      - 5.3.3.19 ASRBR-BACKUP-BackupInstanceCheckFailed
+      - 5.3.3.20 ASRBR-BACKUP-DeleteBackupPlanFailed
+      - 5.3.3.21 ASRBR-BACKUP-HbrBackupPlanCreationFailed
+      - 5.3.3.22 ASRBR-BACKUP-InstanceStillBound
+      - 5.3.3.23 ASRBR-BACKUP-InvalidAdvancedRetentionPolicy
+      - 5.3.3.24 ASRBR-BACKUP-DbsLogicalStorageNotFound
+      - 5.3.3.25 ASRBR-BACKUP-DbsLogicalPlanNotReady
+      - 5.3.3.26 ASRBR-BACKUP-DbsLogicalJobNotFound
+      - 5.3.3.27 ASRBR-BACKUP-BackupTimesExceeded
+    - 5.3.4 RESTORE
+      - 5.3.4.1 ASRBR-RESTORE-InstanceCountExceeded
+      - 5.3.4.2 ASRBR-RESTORE-RestoreToExistingInstanceFailed
+      - 5.3.4.3 ASRBR-RESTORE-RecoveryPlanInUse
+      - 5.3.4.4 ASRBR-RESTORE-TargetInstanceAlreadyExists
+      - 5.3.4.5 ASRBR-RESTORE-TargetInstanceNotFound
+      - 5.3.4.6 ASRBR-RESTORE-InvalidRecoveryTimestampFormat
+      - 5.3.4.7 ASRBR-RESTORE-RecoveryPolicyInUse
+    - 5.3.5 INSTANCE
+      - 5.3.5.1 ASRBR-INSTANCE-ProductInstanceInfoQueryFail
+      - 5.3.5.2 ASRBR-INSTANCE-OdpsMmaSourceNotReady
+      - 5.3.5.3 ASRBR-INSTANCE-OdpsMmaSourceNotFound
+      - 5.3.5.4 ASRBR-INSTANCE-MmaBackupJobQueryFailed
+      - 5.3.5.5 ASRBR-INSTANCE-MmaBackupJobFailed
+      - 5.3.5.6 ASRBR-INSTANCE-MmaBackupJobCreateFailed
+      - 5.3.5.7 ASRBR-INSTANCE-EsSnapshotQueryFailed
+      - 5.3.5.8 ASRBR-INSTANCE-EsAuthenticationFailed
+      - 5.3.5.9 ASRBR-INSTANCE-OdpsProjectEmpty
+      - 5.3.5.10 ASRBR-INSTANCE-OdpsConfigInvalid
+      - 5.3.5.11 ASRBR-INSTANCE-OdpsDataTypeVersionUnsupported
+      - 5.3.5.12 ASRBR-INSTANCE-OdpsExternalTableCreateFailed
+      - 5.3.5.13 ASRBR-INSTANCE-OdpsRestoreTaskStopUnsupported
+      - 5.3.5.14 ASRBR-INSTANCE-InstanceNotFound
+      - 5.3.5.15 ASRBR-INSTANCE-OtsBackupTimeConflict
+      - 5.3.5.16 ASRBR-INSTANCE-RdsHasExistingDrdsPlan
+      - 5.3.5.17 ASRBR-INSTANCE-DrdsRdsSubInstanceAlreadyBound
+      - 5.3.5.18 ASRBR-INSTANCE-DiskNotBelongToInstance
+      - 5.3.5.19 ASRBR-INSTANCE-EcsImageSizeExceedsSystemDisk
+      - 5.3.5.20 ASRBR-INSTANCE-OdpsDeleteBlockedByRunningJob
+      - 5.3.5.21 ASRBR-INSTANCE-OdpsDeletedMetaCleanupFailed
+      - 5.3.5.22 ASRBR-INSTANCE-OdpsTempTableDeleteFailed
+      - 5.3.5.23 ASRBR-INSTANCE-OtsClusterNameFormatInvalid
+      - 5.3.5.24 ASRBR-INSTANCE-OtsTiangongCnameSetupFailed
+      - 5.3.5.25 ASRBR-INSTANCE-OtsTiangongVpcQueryFailed
+      - 5.3.5.26 ASRBR-INSTANCE-SingleDiskRequiredForRestore
+      - 5.3.5.27 ASRBR-INSTANCE-OtsTableBackupJobNotExecuted
+      - 5.3.5.28 ASRBR-INSTANCE-OtsAllTableBackupFailed
+    - 5.3.6 STORAGE
+      - 5.3.6.1 ASRBR-STORAGE-StoragePoolExceedsGroupCapacity
+      - 5.3.6.2 ASRBR-STORAGE-UrlResolutionFailed
+      - 5.3.6.3 ASRBR-STORAGE-UrlIpAddressInRestrictedRange
+      - 5.3.6.4 ASRBR-STORAGE-IpAddressInRestrictedRange
+      - 5.3.6.5 ASRBR-STORAGE-StoragePoolAccessDenied
+      - 5.3.6.6 ASRBR-STORAGE-TrashBucketCreationForbidden
+      - 5.3.6.7 ASRBR-STORAGE-OrganizationIdCountExceeded
+      - 5.3.6.8 ASRBR-STORAGE-TrashBucketRequired
+      - 5.3.6.9 ASRBR-STORAGE-StorageAccessTripleAlreadyExists
+      - 5.3.6.10 ASRBR-STORAGE-IpAddressConflictWithOtherGroup
+      - 5.3.6.11 ASRBR-STORAGE-StoragePoolDeleteFailed
+      - 5.3.6.12 ASRBR-STORAGE-StoragePoolGroupUpdateFailed
+      - 5.3.6.13 ASRBR-STORAGE-StoragePoolCannotUnauthorize
+      - 5.3.6.14 ASRBR-STORAGE-StoragePoolGroupNotEmpty
+      - 5.3.6.15 ASRBR-STORAGE-SourcePoolGroupReplicationUnsupported
+    - 5.3.7 COMMON
+      - 5.3.7.1 ASRBR-COMMON-PermissionUserRoleUnauthorized
+      - 5.3.7.2 ASRBR-COMMON-EndpointUnreachable
+    - 5.3.8 GENERIC
+      - 5.3.8.1 ASRBR-GENERIC-MissingParam
+      - 5.3.8.2 ASRBR-GENERIC-InvalidParam
+      - 5.3.8.3 ASRBR-GENERIC-NotFoundResource
+      - 5.3.8.4 ASRBR-GENERIC-InvalidStateForOperation
+      - 5.3.8.5 ASRBR-GENERIC-ResourceAlreadyExists
+      - 5.3.8.6 ASRBR-GENERIC-PermissionDenied
+      - 5.3.8.7 ASRBR-GENERIC-OperationNotSupported
+      - 5.3.8.8 ASRBR-GENERIC-SystemError
+    - 5.3.9 API
+      - 5.3.9.1 ASRBR-API-ApiTaskQueryTimeout
+      - 5.3.9.2 ASRBR-API-CallAdbApiFailed
+      - 5.3.9.3 ASRBR-API-CallOssApiFailed
+      - 5.3.9.4 ASRBR-API-CallEcsApiFailed
+      - 5.3.9.5 ASRBR-API-CallRdsApiFailed
+      - 5.3.9.6 ASRBR-API-CallNasApiFailed
+      - 5.3.9.7 ASRBR-API-CallVpcApiFailed
+      - 5.3.9.8 ASRBR-API-CallPolardbApiFailed
+      - 5.3.9.9 ASRBR-API-CallPolardbxApiFailed
+      - 5.3.9.10 ASRBR-API-CallPolardbLocalApiFailed
+      - 5.3.9.11 ASRBR-API-CallMongodbApiFailed
+      - 5.3.9.12 ASRBR-API-CallRedisApiFailed
+      - 5.3.9.13 ASRBR-API-CallDrdsApiFailed
+      - 5.3.9.14 ASRBR-API-CallGpdbApiFailed
+      - 5.3.9.15 ASRBR-API-CallOdpsApiFailed
+      - 5.3.9.16 ASRBR-API-CallOtsApiFailed
+      - 5.3.9.17 ASRBR-API-CallEsApiFailed
+      - 5.3.9.18 ASRBR-API-CallAscmApiFailed
+      - 5.3.9.19 ASRBR-API-CallS3ApiFailed
+      - 5.3.9.20 ASRBR-API-CallKmsApiFailed
+      - 5.3.9.21 ASRBR-API-CallBackendStorageApiFailed
+      - 5.3.9.22 ASRBR-API-CallTianjiApiFailed
+      - 5.3.9.23 ASRBR-API-CallOmsApiFailed
+      - 5.3.9.24 ASRBR-API-CallTianjiMonApiFailed
+      - 5.3.9.25 ASRBR-API-CallHbrApiFailed
+      - 5.3.9.26 ASRBR-API-CallCloudDnsApiFailed
+      - 5.3.9.27 ASRBR-API-CallCmsApiFailed
+      - 5.3.9.28 ASRBR-API-CallAasApiFailed
+      - 5.3.9.29 ASRBR-API-CallAnyBackupApiFailed
+      - 5.3.9.30 ASRBR-API-CallGwsApiFailed
+      - 5.3.9.31 ASRBR-API-CallOssChijiApiFailed
+      - 5.3.9.32 ASRBR-API-CallRamApiFailed
+      - 5.3.9.33 ASRBR-API-CallStsApiFailed
+      - 5.3.9.34 ASRBR-API-CallDeDuplicationApiFailed
+      - 5.3.9.35 ASRBR-API-ApiQueryResultEmpty
+      - 5.3.9.36 ASRBR-API-CallDownstreamApiFailed
+  - 5.4 HBRC
+    - 5.4.1 HBRC-COM-InternalError
+    - 5.4.2 HBRC-COM-SendMqMessageError
+    - 5.4.3 HBRC-SNAP-CannotDeleteLatestSnapshot
+    - 5.4.4 HBRC-SNAP-SnapshotNotExist
+    - 5.4.5 HBRC-UDM-CreateConsistentSnapshotGroupFailed
+    - 5.4.6 HBRC-UDM-CreateNativeEbsSnapshotError
+    - 5.4.7 HBRC-UDM-NoRunningDiskBackupJobs
+    - 5.4.8 HBRC-JOB-AgentReportTimeout
+
+## 1 API调用流程说明
+
+阿里云专有云支持通过POP网关调用备份管理平台ASR-BR的API。
 
 **流程图**
+
+备份管理平台ASR-BR的API调用流程如下图所示。
 
 **调用步骤**
 
 1. 获取API信息。
+API信息请参见API参考。
 2. 获取AccessKey ID和AccessKey Secret，获取方式请参见获取AccessKey。
 3. 获取备份管理平台ASR-BR的Endpoint和Region ID，获取方式请参见获取API信息及其Endpoint。
 4. 获取备份管理平台ASR-BR的SDK包和SDK核心库，获取方法请参见通过POP网关调用专有云API。
@@ -26,34 +325,37 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
+调用API的用户必须具有组织备份管理员角色，如果需要为用户添加角色，请参见备份管理平台ASR-
+
 | 请参见 | 备份管理平台ASR- |
 |---|---|
+
+BR用户指南中的**系统管理** > **权限管理**操作。
 
 | BR用户指南 | 中的 |
 |---|---|
 
-|  | > |
+|   | > |
 |---|---|
 
-灾备管理中心
+## 2 准备工作
 
-## 准备工作
+### 2.1 获取AccessKey
 
-### 获取AccessKey
+> 本文介绍获取AccessKey ID和AccessKey Secret的具体操作。
+> **背景信息**
+> AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。
 
-**背景信息**
+**获取AccessKey**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号 AccessKey调用接口。
+> Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号 AccessKey调用接口。
 
 **说明**
 
 只有运营管理员和一级组织管理员可以获取组织AccessKey。
 
-**获取个人账号AccessKey时，请确保登录的用户具备组织备份管理员角**
-
-**色，否则可能导致接口调用失败。**
-
-**获取个人账号AccessKey**
+> **获取个人账号****AccessKey****时，请确保登录的用户具备组织备份管理员角** **色，否则可能导致接口调用失败。**
+> **获取个人账号****AccessKey**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
@@ -63,20 +365,19 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 
 AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-**获取组织AccessKey**
+> **获取组织****AccessKey**
 
 **警告**
 
 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-灾备管理中心
 3. 在左侧导航栏中，选择**资源管理**>**组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取API信息及其Endpoint
+### 2.2 获取API信息及其Endpoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -87,15 +388,14 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 **操作步骤**
 
 1. 登录Apsara Uni-manager运营控制台。
-2. 在顶部菜单栏选择**产品** > **开发工具** **> API****与工具** > **开发者门户**。
+2. 在顶部菜单栏选择**产品** **>** **开发工具** **> API****与工具** **>** **开发者门户**。
 3. 在**开发者门户**页面，选择**API****集成** > **API****调试**。
 4. 在左侧导航栏中选择**灾备管理平台**。
 5. 在**版本**下拉列表中，选择目标API版本。
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取ASR-BR的POP Endpoint和RegionId等接口信息。
-灾备管理中心
 
-### 通过POP网关调用专有云API
+### 2.3 通过POP网关调用专有云API
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式（RPC或ROA）。
 
@@ -104,12 +404,14 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！ RPC调用，示例接口信息：产品（ASR-BR）、接口（CreateAdbBackupPlan）、版本（2021-10- 15）。 调用示例如下： 灾备管理中心
+**CommonRequest调用示例**
+
+RPC调用，示例接口信息：产品（ASR-BR）、接口（CreateAdbBackupPlan）、版本（2021-10- 15）。 调用示例如下：
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class CreateAdbBackupPlan {
     public static void main(String[] args) {
 ```
 
@@ -150,15 +452,12 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（ASR-BR）接口（CreateAdbBackupPlan）版本（2021-10-15）。 调用示例如下： 灾备管理中心
+`}` `}` `}` ROA调用，示例接口信息：产品（ASR-BR）接口（CreateAdbBackupPlan）版本（2021-10-15）。 调用示例如下：
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class CreateAdbBackupPlan {
     public static void main(String[] args) {
 ```
 
@@ -197,10 +496,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **重要**
 
@@ -216,11 +514,13 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-灾备管理中心用示例
+用示例
 
-## Java SDK调用示例
+## 3 Java SDK调用示例
 
-### 安装Java SDK
+### 3.1 安装Java SDK
+
+本文介绍如何安装备份管理平台ASR-BR的Java SDK。
 
 **环境准备**
 
@@ -250,35 +550,25 @@ clientConfig.setIgnoreSSLCerts(true)
 </dependencies>
 ```
 
-### 设置身份验证凭证
+### 3.2 设置身份验证凭证
 
 使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 Java SDK支持通过AccessKey进行身份验证，获取AccessKey ID和AccessKey Secret的方法请参见获取AccessKey，获取Endpoint的方法请参见获取Endpoint，获取Region ID的方法请参见获取Region ID。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
 **重要**
 
-请确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。 灾备管理中心用示例 `//`配置请求`Endpoint`
+请确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。 用示例 `//`配置请求`Endpoint`
 
 ```
 DefaultProfile.addEndpoint(
 ```
 
-`"<RegionId>", //`请替换为您实际的地域`ID` `"<Endpoint>" //`请替换为您实际的产品请求域名
-
-```
-);
-```
-
-`//`配置身份验证凭证
+`"<EndpointName>", //`请替换为您实际的`Endpoint`名称：`ASRBR` `"<RegionId>", //`请替换为您实际的地域`ID` `"<ProductCode>", //`请替换为您实际的产品`CODE`：`ASRBR` `"<Endpoint>" //`请替换为您实际的产品请求域名 ); `//`配置身份验证凭证
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
 ```
 
-`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` `"<yourAccessKeySecret>" //` 请替换为您实际的`AccessKey Secret`
-
-```
-);
-```
+`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` `"<yourAccessKeySecret>" //` 请替换为您实际的`AccessKey Secret` );
 
 **说明**
 
@@ -288,13 +578,12 @@ DefaultProfile profile = DefaultProfile.getProfile(
 中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 均为可变参
 ```
 
-数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。 请使用具备组织备份管理员角色的用户调用备份管理平台ASR-BR的API。
 
-### 发起调用请求
+### 3.3 发起调用请求
 
-本文介绍如何使用Java SDK发起请求。
-
-**操作步骤**
+> 本文介绍如何使用Java SDK发起请求。
+> **操作步骤**
 
 1. 新建一个AcsClient。
 
@@ -303,7 +592,7 @@ DefaultAcsClient client = new DefaultAcsClient(profile);
 ```
 
 2. 创建请求。
-请求类的命名规范为${apiName}Request，其中**${apiName}**为API名称，例
+请求类的命名规范为${apiName}Request，其中**${apiName}**为API名称，例如CreateEcsSnapshotBackupPlan。
 
 ```
 CreateEcsSnapshotBackupPlanRequest request = new CreateEcsSnapshotBackupPlanRequest();
@@ -324,10 +613,10 @@ AcsResponse response = client.getAcsResponse(request);
 import com.alibaba.fastjson.JSON; import com.aliyuncs.AcsResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.asrbr.model.v20211015.*; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.profile.DefaultProfile;
 ```
 
-灾备管理中心用示例
+用示例
 
 ```java
-import java.util.ArrayList; import java.util.HashMap; import java.util.List; import java.util.Map;
+import java.util.ArrayList; import java.util.HashMap; import java.util.List; import java.util.Map; public class TestBackupApi {
     public static void main(String[] args) throws ClientException {
 ```
 
@@ -337,25 +626,13 @@ import java.util.ArrayList; import java.util.HashMap; import java.util.List; imp
         DefaultProfile.addEndpoint(
 ```
 
-`"<RegionId>", //`请替换为您实际的地域`ID` `"<Endpoint>" //`请替换为您实际的产品请求域名
-
-```
-        );
-```
-
-`//`配置身份验证凭证
+`"<EndpointName>", //`请替换为您实际的`Endpoint`名称：`ASRBR` `"<RegionId>", //`请替换为您实际的地域`ID` `"<ProductCode>", //`请替换为您实际的产品`CODE`：`ASRBR` `"<Endpoint>" //`请替换为您实际的产品请求域名 ); `//`配置身份验证凭证
 
 ```
         DefaultProfile profile = DefaultProfile.getProfile(
 ```
 
-`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKeySecret`
-
-```
-        );
-```
-
-`//`构建调用`Client`
+`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKeySecret` ); `//`构建调用`Client`
 
 ```
         DefaultAcsClient client = new DefaultAcsClient(profile);
@@ -399,21 +676,23 @@ CreateEcsSnapshotBackupPlanRequest() ;
 
 ```
         AcsResponse response = client.getAcsResponse(request);
-    }
-}
 ```
 
-灾备管理中心用示例
+`}` `}` 用示例
 
-### 错误处理
+### 3.4 错误处理
 
-在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要根据Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 ServerException是服务端错误信息。 ClientException是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
+> 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。
+> 一般情况下，您不需要根据Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。
+> ServerException是服务端错误信息。
+> ClientException是SDK端错误信息。
+> 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
+> 如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
 
 ```
 try {
@@ -435,16 +714,17 @@ try {
     e.printStackTrace();
 } catch (ServerException e) {
     e.printStackTrace();
-}
 ```
 
-灾备管理中心
+`}`
 
-## API参考
+## 4 API参考
 
-### 初始化云实例信息
+### 4.1 初始化云实例信息
 
-#### InitCloudInfo
+#### 4.1.1 InitCloudInfo
+
+调用InitCloudInfo初始化云实例信息。
 
 **请求头**
 
@@ -468,14 +748,12 @@ try {
 | success | Boolean | true | 本次请求是否成功。 |
 | code | String | 200 | 状态码。 200：调用正常。 |
 
-灾备管理中心
-
 | errorMessage | String | InternalFailure | 错误提示信息。 |
 |---|---|---|---|
 | errorCode | String | 500 | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| cloudInfo | Struct |  | 云实例信息。 |
+| cloudInfo | Struct |   | 云实例信息。 |
 | -cloudId | String | d202309c-0c20- 44e2-9e02- bacf****** | 云实例ID。 |
 
 **示例**
@@ -483,37 +761,41 @@ try {
 请求示例
 
 ```
-&ClientToken=123e4567********55440000 &AccessKey=wsdf2321df****** &AccessSecret=wuqyewyriuiwe*****
+http(s)://[Endpoint]/?Action=InitCloudInfo &ClientToken=123e4567********55440000 &AccessKey=wsdf2321df****** &AccessSecret=wuqyewyriuiwe*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "CloudInfo":{
   "CloudId":"d202309c-0c20-44e2-9e02-bacf******"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"InternalFailure",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <CloudInfo>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <CloudInfo>
  <CloudId>d202309c-0c20-44e2-9e02-bacf******</CloudId>
 </CloudInfo> <ErrorCode>500</ErrorCode> <ErrorMessage>InternalFailure</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-### 备份仓库
+### 4.2 备份仓库
 
-#### CreateBackupVault
+#### 4.2.1 CreateBackupVault
+
+调用CreateBackupVault创建备份仓库。
 
 **请求头**
 
@@ -531,7 +813,7 @@ try {
 | StorageSp ace | Long | Body | 是 | 2048 | 存储空间大小，单位： byte。 |
 | StorageId | Strin g | Body | 是 | 123e4567-e89b-12d3- a456-4266********* | 存储池ID。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | UseHttps | Integ er | Body | 否 | 1 | 是否是https仓库。 |
@@ -549,12 +831,10 @@ try {
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 32 | 接口耗时，单位毫秒（ms）。 |
-| backupVaultIn ner | Struct |  | 备份仓库信息。 |
+| backupVaultIn ner | Struct |   | 备份仓库信息。 |
 | -products | String | OSS | 支持存储的备份产品。 |
 | -vaultId | String | efa6d59b- 83492342399***** ****** | 仓库ID。 |
 | -vaultName | String | asrbr vault _ | 备份仓库名称。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -574,14 +854,14 @@ try {
 请求示例
 
 ```
-&ClientToken=123e4567********55440000 &StorageId=123e4567-e89b-12d3-a456-4266*********
+http(s)://[Endpoint]/?Action=CreateBackupVault &ClientToken=123e4567********55440000 &VaultName=asrbr_vault &InstanceType=OSS &StorageSpace=2048 &StorageId=123e4567-e89b-12d3-a456-4266*********
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupVaultInner":{
   "Status":"success",
   "OrganizationName":"test",
   "Products":"OSS",
@@ -595,34 +875,42 @@ try {
   "StorageName":"storage pool",
   "StorageSpace":"2048",
   "Ctime":1677825909000
- },
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":32,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupVaultInner>
  <Status>success</Status>
  <OrganizationName>test</OrganizationName>
  <Products>OSS</Products>
+ <VaultName>asrbr_vault</VaultName>
  <OrganizationId>2</OrganizationId>
  <Creator>ascm-org-16678***********</Creator>
  <VaultId>efa6d59b-83492342399***********</VaultId>
  <StorageId>efa6d59b-8288-48c2-8ef5-46***********</StorageId>
+ <VaultType>OSS</VaultType>
  <OssEndpoint>oss-cn-hangzhou*********</OssEndpoint>
+ <StorageName>storage pool</StorageName>
+ <StorageSpace>2048</StorageSpace>
  <Ctime>1677825909000</Ctime>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>32</Cost> <Success>true</Success>
+</BackupVaultInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>32</Cost> <Success>true</Success>
 ```
 
-#### DescribeVaultUseageDetail
+#### 4.2.2 DescribeVaultUseageDetail
 
-灾备管理中心
+调用DescribeVaultUseageDetail查看仓库使用详情。
 
 **请求头**
 
@@ -641,7 +929,7 @@ try {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  | 返回数据。 |
+| Data | Array |   | 返回数据。 |
 | -VaultName | String | backup-vault | 仓库名称。 |
 | - OrganizationId | Integer | 4 | 组织ID。 |
 | - OrganizationN ame | String | current-org | 组织名称。 |
@@ -651,7 +939,7 @@ try {
 | - ParentOrganiz ationName | String | backup-test | 上级组织名称。 |
 | - RootOrganizati onId | Integer | 1 | 根组织ID。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -672,10 +960,9 @@ try {
 http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Message":"success",
  "PageNum":1,
@@ -688,14 +975,18 @@ http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
   "VaultName":"backup-vault",
   "ParentOrganizationName":"backup-test",
   "OrganizationId":4,
- },
+  "AvailableStorageCapacity":102400000
+```
+
+`},`
+
+```json
  "TotalSize":1,
  "Code":"200",
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Message>success</Message> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
@@ -703,13 +994,16 @@ http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
  <RootOrganizationId>1</RootOrganizationId>
  <UsedStorageCapacity>204800000</UsedStorageCapacity>
  <ParentOrganizationId>2</ParentOrganizationId>
+ <VaultName>backup-vault</VaultName>
  <ParentOrganizationName>backup-test</ParentOrganizationName>
  <OrganizationId>4</OrganizationId>
  <AvailableStorageCapacity>102400000</AvailableStorageCapacity>
 </Data> <TotalSize>1</TotalSize> <Code>200</Code> <Success>true</Success>
 ```
 
-#### DescribeBackupVault
+#### 4.2.3 DescribeBackupVault
+
+调用DescribeBackupVault查看备份仓库。
 
 **请求头**
 
@@ -731,8 +1025,6 @@ http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
 | success | Boolean | true | 本次请求是否成功。 |
 | code | String | 200 | 状态码。 200：调用正常。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | errorMessage | String | Not Found Backup Vault for current operate. | 错误提示信息。 |
@@ -752,7 +1044,7 @@ http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
 | -organizationId | Integer | 2 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -773,7 +1065,7 @@ http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
 | -vaultTag | String | BACKUP | 备份仓库标签。 BACKUP：仅用于备份 ARCHIVE: 用于备份+归档 RESTORE: 用于归档恢复 |
 | -immutable | Boolean | true | 是否开启备份锁定。true：开启备份锁定； false：未开启备份锁定。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -785,18 +1077,18 @@ http(s)://[Endpoint]/?Action=DescribeVaultUseageDetail
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeBackupVault
+http(s)://[Endpoint]/?Action=DescribeBackupVault &VaultId=c59f9c6b-effd-4d5c-841b-c14d9****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
+ "backupVaultInner":{
   "ossEndpoint":"oss-cn-hangzhou*********",
   "storageLocation":"LOCAL",
   "lastModifier":"admin",
@@ -824,27 +1116,36 @@ http(s)://[Endpoint]/?Action=DescribeBackupVault
   "vaultName":"backup-vault",
   "useHttps":1,
   "status":"success"
- },
- "errorMessage":"Not Found Backup Vault for current operate.",
-}
 ```
 
-`XML` 格式灾备管理中心
+`},`
+
+```json
+ "errorMessage":"Not Found Backup Vault for current operate.",
+ "errorCode":"BackupVaultNotFound"
+```
+
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <backupVaultInner>
  <ossEndpoint>oss-cn-hangzhou*********</ossEndpoint>
+ <storageLocation>LOCAL</storageLocation>
  <lastModifier>admin</lastModifier>
  <description>test</description>
  <mtime>1705403404000</mtime>
  <replicationVaultNum>5</replicationVaultNum>
  <products>[&quot;OSS&quot;, &quot;ECS&quot;, &quot;VMWARE&quot;, &quot;ADB&quot;]</pro
 ducts>
+ <storageName>storage pool</storageName>
  <organizationId>2</organizationId>
  <storagePoolCapacity>10</storagePoolCapacity>
+ <storageSpace>20</storageSpace>
  <ctime>1677825909000</ctime>
  <storagePoolUsedCapacity>612</storagePoolUsedCapacity>
+ <vaultTag>BACKUP</vaultTag>
  <storageId>efa6d59b-8288-48c2-8ef5-46***********</storageId>
+ <vaultType>OSS</vaultType>
  <creator>ascm-org-16678***********</creator>
  <organizationName>test</organizationName>
  <usedCapacityPercentage>0.0000%</usedCapacityPercentage>
@@ -853,12 +1154,13 @@ ducts>
  <immutableRetention>10</immutableRetention>
  <storagePoolPercentage>0.0000%</storagePoolPercentage>
  <immutable>true</immutable>
+ <vaultName>backup-vault</vaultName>
  <useHttps>1</useHttps>
  <status>success</status>
-<errorMessage>Not Found Backup Vault for current operate.</errorMessage> <errorCode>BackupVaultNotFound</errorCode>
+</backupVaultInner> <errorMessage>Not Found Backup Vault for current operate.</errorMessage> <errorCode>BackupVaultNotFound</errorCode>
 ```
 
-#### DescribeBackupVaultList
+#### 4.2.4 DescribeBackupVaultList
 
 查看备份仓库列表
 
@@ -872,7 +1174,7 @@ ducts>
 |---|---|---|---|---|---|
 | Organizati onId | Integ er | Query | 否 | 1 | 组织ID |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -893,8 +1195,6 @@ ducts>
 |---|---|---|---|
 | data | Array | success | 返回数据。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -products | List | [ "OSS", "ECS", "VMWARE", "ADB" ] | 支持备份产品。 |
@@ -913,8 +1213,6 @@ ducts>
 | -creator | String | ascm-org- 16678*********** | 创建人。 |
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 | -usedCapacity | String | 1024 | 使用空间，单位：byte。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -950,16 +1248,19 @@ ducts>
 http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
  "totalSize":50,
  "data":[
-  {
+```
+
+`{`
+
+```json
    "bucketName":"lengjuetest",
    "ossEndpoint":"oss-cn-hangzhou*********",
    "storageLocation":"local",
@@ -987,10 +1288,9 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
    "vaultName":"backup-vault",
    "authority":"newratings.default.svc.cluster.local",
    "status":"success"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "requestId":"C8B26B44-0189-443E-9816-*******",
@@ -999,15 +1299,15 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
  "errorCode":"BackupVaultNotFound",
  "pageSize":10,
  "pageNum":1
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <totalSize>50</totalSize> <data>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <totalSize>50</totalSize> <data>
  <bucketName>lengjuetest</bucketName>
  <ossEndpoint>oss-cn-hangzhou*********</ossEndpoint>
+ <storageLocation>local</storageLocation>
  <description>test</description>
  <replicationVaultNum>56</replicationVaultNum>
  <ddrType>HBR</ddrType>
@@ -1017,9 +1317,13 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
             &quot;VMWARE&quot;,
             &quot;ADB&quot;
 ]</products>
+  <storageName>storage pool</storageName>
   <organizationId>12</organizationId>
+  <storageSpace>200</storageSpace>
   <ctime>1677825909000</ctime>
+  <vaultTag>BACKUP</vaultTag>
   <storageId>efa6d59b-8288-48c2-8ef5-46***********</storageId>
+  <vaultType>OSS</vaultType>
   <creator>ascm-org-16678***********</creator>
   <organizationName>test</organizationName>
   <usedCapacityPercentage>32</usedCapacityPercentage>
@@ -1029,6 +1333,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
   <errorMessage>failed</errorMessage>
   <storagePoolPercentage>55</storagePoolPercentage>
   <immutable>true</immutable>
+  <vaultName>backup-vault</vaultName>
   <authority>newratings.default.svc.cluster.local</authority>
   <status>success</status>
  </data>
@@ -1040,13 +1345,13 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
  <pageNum>1</pageNum>
 ```
 
-### 备份计划
+### 4.3 备份计划
 
-#### 安装ECS客户端
+#### 4.3.1 安装ECS客户端
 
-##### InstallEcsClient
+##### 4.3.1.1 InstallEcsClient
 
-灾备管理中心
+调用InstallEcsClient安装ECS文件备份客户端。
 
 **请求头**
 
@@ -1075,13 +1380,13 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 | errorCode | String | 500 | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 |---|---|---|---|
-| data | Struct |  | 客户端信息。 |
+| data | Struct |   | 客户端信息。 |
 | -errorCode | String | 500 | 错误码 |
 | -errorMessage | String | false | 接口返回错误信息 |
 | -exitCode | String | 400 | 退出code |
@@ -1094,13 +1399,12 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 请求示例
 
 ```
-&ClientToken=123e4567********55440000
+http(s)://[Endpoint]/?Action=InstallEcsClient &ClientToken=123e4567********55440000 &InstanceId=i-rtstedsfsd********
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -1111,18 +1415,21 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
   "errorCode":"500",
   "exitCode":"400",
   "status":"RUNNING"
- },
+```
+
+`},`
+
+```json
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
  "errorMessage":"InternalFailure",
  "errorCode":"500"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <data>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <data>
  <invokeId>t-rg43883drsg8ow</invokeId>
  <output>success</output>
  <errorMessage>false</errorMessage>
@@ -1132,9 +1439,11 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 </data> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>InternalFailure</errorMessage> <errorCode>500</errorCode>
 ```
 
-#### 创建备份计划
+#### 4.3.2 创建备份计划
 
-##### CreateAdbBackupPlan
+##### 4.3.2.1 CreateAdbBackupPlan
+
+调用CreateAdbBackupPlan创建ADB备份计划。
 
 **请求头**
 
@@ -1146,7 +1455,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 |---|---|---|---|---|---|
 | Organizati onId | Integ er | Query | 否 | 1 | 组织ID |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Resource GroupId | Integ er | Query | 否 | 2 | 资源集ID |
@@ -1163,7 +1472,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 |---|---|---|---|
 | requestId | String | C8B26B44-0189- 443E-9816-******* | 请求ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1174,7 +1483,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 32 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | adb-test | 备份计划名称。 |
 | -status | String | CREATING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
@@ -1182,7 +1491,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupVaultList
 | -instanceType | String | ADB | 实例类型。 OSS、ECS、NAS、ADB、RDS、 PolarDB-X、MaxCompute、Elasticsearch及 VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1211,10 +1520,9 @@ http(s)://[Endpoint]/?Action=CreateAdbBackupPlan &ClientToken=123e4567********55
 &BackupInstance={"instanceId": "am-c3kn4r00sh*****" } &BackupPolicy=[ { "preferredBackupPeriod": [ "Thursday","Sunday" ], "preferredBackupTime": "19:00Z-20:00Z", "backupRetentionPeriod": 7, "preferredCycleType": "BY_WEEK", "vaultId": "47c5862e-978b-*******" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":32,
@@ -1222,6 +1530,7 @@ http(s)://[Endpoint]/?Action=CreateAdbBackupPlan &ClientToken=123e4567********55
  "success":true,
  "errorMessage":"failed",
  "errorCode":"403",
+ "backupPlanInner":{
   "creator":"ascm-org-****",
   "organizationName":"test",
   "lastResult":"NOT_RUN",
@@ -1237,30 +1546,33 @@ http(s)://[Endpoint]/?Action=CreateAdbBackupPlan &ClientToken=123e4567********55
   "ctime":1677825909000,
   "planId":"108e46be-c321-4694-9c2d-b478b*******",
   "status":"CREATING"
- }
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>32</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode>
+<path>/asrbr/*/*</path> <code>200</code> <cost>32</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode> <backupPlanInner>
  <creator>ascm-org-****</creator>
  <organizationName>test</organizationName>
  <lastResult>NOT_RUN</lastResult>
+ <instanceType>ADB</instanceType>
  <regionName>cn-hangzhou*****</regionName>
  <nextBackupTime>1677825909000</nextBackupTime>
  <creatorId>5612</creatorId>
  <planName>adb-test</planName>
  <mtime>1677825909000</mtime>
+ <backupType>ECS_FILE</backupType>
  <organizationId>12</organizationId>
  <regionId>cn-hangzhou******</regionId>
  <ctime>1677825909000</ctime>
  <planId>108e46be-c321-4694-9c2d-b478b*******</planId>
  <status>CREATING</status>
+</backupPlanInner>
 ```
 
-##### CreateDrdsBackupPlan
+##### 4.3.2.2 CreateDrdsBackupPlan
+
+调用CreateDrdsBackupPlan创建PolarDB-X备份计划。
 
 **请求头**
 
@@ -1293,21 +1605,21 @@ http(s)://[Endpoint]/?Action=CreateAdbBackupPlan &ClientToken=123e4567********55
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | PolarDB-X备份计划 | 备份计划名称。 |
 | -status | String | CREATING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -instanceType | String | PolarDB-X | 实例类型。包含OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | NOT RUN _ | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
 | -organizationId | Integer | 12 | 组织ID。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1331,15 +1643,21 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
 `&PlanName=PolarDB-X`备份计划
 
 ```json
+&BackupInstance={
         "instanceId": "drdsusrz38g****",
-} &BackupPolicy=[ { "backupMode":"CONSISTENT", "preferredBackupPeriod": [ "Monday", "Frid ay" ], "preferredBackupTime":"19:00Z-20:00Z" , "backupRetentionPeriod": 7, "preferredCycleType": "BY_WEEK", "vaultId": "47c5862e-978b-48fc-a********" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}`
 
 ```json
-{
+&BackupPolicy=[ { "backupMode":"CONSISTENT", "preferredBackupPeriod": [ "Monday", "Frid ay" ], "preferredBackupTime":"19:00Z-20:00Z" , "backupRetentionPeriod": 7, "preferredCycleType": "BY_WEEK", "vaultId": "47c5862e-978b-48fc-a********" } ]
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"CREATING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -1356,21 +1674,27 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
   "BackupType":"",
   "LastResult":"NOT_RUN",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"PolarDB-X"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>CREATING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -1381,12 +1705,16 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>NOT_RUN</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed </ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <InstanceType>PolarDB-X</InstanceType>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed </ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateEsBackupPlan
+##### 4.3.2.3 CreateEsBackupPlan
+
+调用CreateEsBackupPlan创建Elasticsearch备份计划。
 
 **请求头**
 
@@ -1399,8 +1727,6 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
 | Organizati onId | Integ er | Query | 否 | 12 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 32 | 资源集ID |
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1418,7 +1744,7 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
 | success | Boolean | true | 本次请求是否成功。 |
 | code | String | 200 | 状态码。 200：调用正常。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1427,15 +1753,13 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | Elasticsearch备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -instanceType | String | Elasticsearch | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1454,19 +1778,23 @@ http(s)://[Endpoint]/?Action=CreateDrdsBackupPlan &ClientToken=123e4567********5
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********55440000 &PlanName=Elasticsearch备份
+http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********55440000 &PlanName=Elasticsearch备份 &BackupInstance= {
         "instanceId": "source-6-8-*********",
         "userName":"admin",
         "passWord":"*******"
-    }
+```
+
+`}`
+
+```json
 &BackupPolicy=[ { "preferredBackupPeriod": [ 1 ], "preferredBackupTime": 1666072782336, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a****", "preferredBackupPeriodFull": [ 3 ], vaultId:"213aawwwq"} ]
 ```
 
-&公共请求参数正常返回示例灾备管理中心 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"RUNNING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -1483,21 +1811,27 @@ http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********554
   "BackupType":"",
   "LastResult":"SUCCESS",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"Elasticsearch"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -1508,13 +1842,16 @@ http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********554
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
  <InstanceType>Elasticsearch</InstanceType>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateEcsBackupPlan
+##### 4.3.2.4 CreateEcsBackupPlan
+
+调用CreateEcsBackupPlan创建ECS备份计划。
 
 **请求头**
 
@@ -1529,7 +1866,7 @@ http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********554
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | PlanName | Strin g | Query | 是 | ECS文件备份计划 | 备份计划名称。 |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | ECS备份计划 | 描述 |
@@ -1547,14 +1884,14 @@ http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********554
 | errorMessage | String | failed | 错误提示信息。 |
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | ECS文件备份计划 | 备份计划名称。 |
 | -status | String | CREATING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
@@ -1562,8 +1899,6 @@ http(s)://[Endpoint]/?Action=CreateEsBackupPlan &ClientToken=123e4567********554
 | -instanceType | String | ECS | 实例类型。包含OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | NOT RUN _ | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1587,6 +1922,7 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
 `&PlanName=ECS`文件备份计划
 
 ```json
+&BackupInstance={
         "instanceId": "i-nn901lg2s5pb*****",
         "prefix": "/",
         "excludeFileList": [
@@ -1597,15 +1933,19 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
 
 ```json
         "speedLimit": "6:12:5120|12:18:2560"
-    }
+```
+
+`}`
+
+```json
 &BackupPolicy=[ { "preferredBackupPeriod": [ 1 ], "preferredBackupTime": 1666062748312, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a831***" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"CREATING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -1626,21 +1966,27 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
   "BackupType":"ECS_FILE",
   "LastResult":"NOT_RUN",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"ECS"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>CREATING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -1655,12 +2001,16 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType>ECS_FILE</BackupType>
  <LastResult>NOT_RUN</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <InstanceType>ECS</InstanceType>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateEcsSnapshotBackupPlan
+##### 4.3.2.5 CreateEcsSnapshotBackupPlan
+
+调用CreateEcsSnapshotBackupPlan备份ECS快照。
 
 **请求头**
 
@@ -1675,7 +2025,7 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | PlanName | Strin g | Query | 是 | ECS快照备份 | 备份计划名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | ECS快照备份任务 | 描述 |
@@ -1695,12 +2045,12 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | ECS快照备份 | 备份计划名称。 |
 | -status | String | CREATING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
@@ -1711,7 +2061,7 @@ http(s)://[Endpoint]/?Action=CreateEcsBackupPlan &ClientToken=123e4567********55
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -regionId | String | cn-hangzhou****** | 区域ID。 |
@@ -1734,16 +2084,21 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotBackupPlan &ClientToken=123e4567**
 `&PlanName=ECS`快照备份
 
 ```json
+&BackupInstance= {
         "instanceId": "i-nn901lg2uex8******",
-    }
+```
+
+`}`
+
+```json
 &BackupPolicy=[ { "preferredBackupPeriod": [ 3 ], "preferredBackupTime": 1666072782336, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a****" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"CREATING",
   "OrganizationName":"test",
   "ResourceGroupId":3,
@@ -1767,22 +2122,27 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotBackupPlan &ClientToken=123e4567**
   "RegionId":"cn-hangzhou******",
   "InstanceType":"ECS",
   "ResourceGroupName":"ResourceSet(test)"
- },
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>CREATING</Status>
  <OrganizationName>test</OrganizationName>
  <ResourceGroupId>3</ResourceGroupId>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -1793,13 +2153,17 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotBackupPlan &ClientToken=123e4567**
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType>ECS_DISK</BackupType>
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
+ <InstanceType>ECS</InstanceType>
  <ResourceGroupName>ResourceSet(test)</ResourceGroupName>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateNasBackupPlan
+##### 4.3.2.6 CreateNasBackupPlan
+
+调用CreateNasBackupPlan创建NAS备份计划。
 
 **请求头**
 
@@ -1812,8 +2176,6 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotBackupPlan &ClientToken=123e4567**
 | Organizati onId | Integ er | Query | 否 | 12 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 23 | 资源集ID |
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1833,22 +2195,18 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotBackupPlan &ClientToken=123e4567**
 | errorMessage | String | failed | 错误提示信息。 |
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | NAS备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -instanceType | String | NAS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | SUCCESS | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1868,18 +2226,22 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotBackupPlan &ClientToken=123e4567**
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55440000 &PlanName=NAS备份
+http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55440000 &PlanName=NAS备份 &BackupInstance={
         "instanceId": "171a64******",
         "prefix": "/"
-    }
+```
+
+`}`
+
+```json
 &BackupPolicy=[ { "preferredBackupPeriod": [ 3 ], "preferredBackupTime": 1666072782336, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a831*****" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"RUNNING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -1896,21 +2258,27 @@ http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55
   "BackupType":"",
   "LastResult":"SUCCESS",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"NAS"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -1921,12 +2289,16 @@ http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <InstanceType>NAS</InstanceType>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateOdpsBackupPlan
+##### 4.3.2.7 CreateOdpsBackupPlan
+
+调用CreateOdpsBackupPlan创建MaxCompute备份计划。
 
 **请求头**
 
@@ -1941,7 +2313,7 @@ http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | PlanName | Strin g | Query | 是 | MaxCompute备份 | 备份计划名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | test | 描述 |
@@ -1963,16 +2335,14 @@ http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55
 |---|---|---|---|
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | MaxCompute备份 | 备份计划名称。 |
 | -status | String | CREATING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -instanceType | String | MaxCompute | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | SUCCESS | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1990,19 +2360,23 @@ http(s)://[Endpoint]/?Action=CreateNasBackupPlan &ClientToken=123e4567********55
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********55440000 &PlanName=MaxCompute备份
+http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********55440000 &PlanName=MaxCompute备份 &BackupInstance={
         "instanceId": "bigdata****",
         "specifyProject":"test",
         "dataTypeVersion":"2.0"
-    }
+```
+
+`}`
+
+```json
 &BackupPolicy=[ { "preferredBackupPeriod": [ 3 ], "preferredBackupTime": 1666072782336, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a831*****" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"CREATING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -2019,21 +2393,27 @@ http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********5
   "BackupType":"",
   "LastResult":"SUCCESS",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"MaxCompute"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>CREATING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -2044,12 +2424,16 @@ http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********5
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <InstanceType>MaxCompute</InstanceType>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateOssBackupPlan
+##### 4.3.2.8 CreateOssBackupPlan
+
+调用CreateOssBackupPlan创建OSS备份计划。
 
 **请求头**
 
@@ -2064,7 +2448,7 @@ http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********5
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | PlanName | Strin g | Query | 是 | OSS备份 | 备份计划名称。 |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | test | 描述 |
@@ -2083,22 +2467,20 @@ http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********5
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | OSS备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -instanceType | String | OSS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | SUCCESS | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
 | -organizationId | Integer | 12 | 组织ID。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2116,18 +2498,22 @@ http(s)://[Endpoint]/?Action=CreateOdpsBackupPlan &ClientToken=123e4567********5
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55440000 &PlanName=OSS备份
+http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55440000 &PlanName=OSS备份 &BackupInstance={
         "instanceId": "bucket-*****",
         "prefix": "/test"
-    }
-{ "preferredBackupPeriod": [ 1 ], "preferredBackupTime": 1666169989013, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a831*******" }
 ```
 
-] &公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}`
 
 ```json
-{
+&BackupPolicy=[ { "preferredBackupPeriod": [ 1 ], "preferredBackupTime": 1666169989013, "backupRetentionPeriod": 7, "preferredCycleType": "BY_DAY", "vaultId": "47c5862e-978b-4 8fc-a831*******" }
+```
+
+`]` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
+
+```json
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"RUNNING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -2144,21 +2530,27 @@ http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55
   "BackupType":"",
   "LastResult":"SUCCESS",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"OSS"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -2169,12 +2561,16 @@ http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <InstanceType>OSS</InstanceType>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateRdsBackupPlan
+##### 4.3.2.9 CreateRdsBackupPlan
+
+调用CreateRdsBackupPlan创建RDS备份计划。
 
 **请求头**
 
@@ -2189,7 +2585,7 @@ http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | PlanName | Strin g | Query | 是 | RDS备份 | 备份计划名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | test | 描述 |
@@ -2211,16 +2607,14 @@ http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55
 |---|---|---|---|
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | RDS备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -instanceType | String | RDS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | SUCCESS | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2238,17 +2632,21 @@ http(s)://[Endpoint]/?Action=CreateOssBackupPlan &ClientToken=123e4567********55
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55440000 &PlanName=RDS备份
+http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55440000 &PlanName=RDS备份 &BackupInstance={
         "instanceId": "rm-c3kkw34*********",
-    }
+```
+
+`}`
+
+```json
 &BackupPolicy=[ { "preferredBackupPeriod": [ "Thursday","Sunday" ], "preferredBackupTime": "19:00Z-20:00Z", "backupRetentionPeriod": 7, "preferredCycleType": "BY_WEEK", "vaultId": "df4d9ba9-9a15-4c96-981b-d2******" } ]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"RUNNING",
   "OrganizationName":"test",
   "VaultName":"backup-vault",
@@ -2265,38 +2663,50 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
   "BackupType":"",
   "LastResult":"SUCCESS",
   "RegionId":"cn-hangzhou******",
- },
+  "InstanceType":"RDS"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-********</Creator>
  <PlanName>RDS备份</PlanName>
+ <VaultId>c59f9c6b-effd-4d5c-841b-c14d9****
+ </VaultId>
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <InstanceType>RDS</InstanceType>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### 管理备份计划
+#### 4.3.3 管理备份计划
 
-##### DeleteBackupPlan
+##### 4.3.3.1 DeleteBackupPlan
+
+调用DeleteBackupPlan删除备份计划。
 
 **请求头**
 
@@ -2311,8 +2721,6 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 | PlanId | Strin g | Query | 是 | 108e46be-c321-4694- 9c2d-b478b******* | 备份计划ID。 |
 | InstanceId | Strin g | Query | 否 | rm-ss23d7fgd******** | 实例ID。 |
 
-灾备管理中心
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2324,7 +2732,7 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| data | Struct |  | 返回结果。 |
+| data | Struct |   | 返回结果。 |
 | -result | Boolean | true | 删除备份计划结果。 true：成功 false：失败 |
 
 **示例**
@@ -2332,35 +2740,39 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 请求示例
 
 ```
-&PlanId=108e46be-c321-4694-9c2d-b478b*******
+http(s)://[Endpoint]/?Action=DeleteBackupPlan &PlanId=108e46be-c321-4694-9c2d-b478b*******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Data":{
   "Result":true
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
  <Result>true</Result>
 </Data> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeBackupPlanList
+##### 4.3.3.2 DescribeBackupPlanList
+
+调用DescribeBackupPlanList查看备份计划列表。
 
 **请求头**
 
@@ -2374,8 +2786,6 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 | Resource GroupId | Integ er | Query | 否 | 22 | 资源集ID |
 | PlanId | Strin g | Query | 否 | 108e46be-c321-4694- 9c2d-b478b******* | 备份计划ID。 |
 | InstanceT ype | Strin g | Query | 否 | OSS | 实例类型。包括OSS、 ECS、NAS、ADB、RDS、 PolarDB-X、 MaxCompute、 Elasticsearch及 VMware。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2391,16 +2801,14 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回结果。 |
+| data | Array |   | 返回结果。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划信息。 |
 | -planName | String | OSS备份 | 备份计划名称。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | ECS备份类型，只有ECS时必填。 ECS DISK：云盘备份 _ ECS FILE：文件备份 _ |
+| -backupType | String |   | ECS备份类型，只有ECS时必填。 ECS DISK：云盘备份 _ ECS FILE：文件备份 _ |
 | -instanceType | String | OSS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | SUCCESS | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
@@ -2410,7 +2818,7 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 | -regionName | String | cn-hangzhou****** | 区域名称。 |
 | - resourceGroup Id | Integer | 4 | 资源集ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2433,7 +2841,7 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | pageNum | Integer | 1 | 分页页数。 |
@@ -2448,10 +2856,9 @@ http(s)://[Endpoint]/?Action=CreateRdsBackupPlan &ClientToken=123e4567********55
 http(s)://[Endpoint]/?Action=DescribeBackupPlanList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -2476,23 +2883,27 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
   "RegionId":"cn-hangzhou******",
   "InstanceType":"OSS",
   "ResourceGroupName":"ResourceSet(test)"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"BackupPlanNotFound",
  "ErrorMessage":"Not Found BackupPlan for current operate.",
  "TotalSize":50,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
  <ResourceGroupId>4</ResourceGroupId>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -2503,13 +2914,15 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
+ <InstanceType>OSS</InstanceType>
  <ResourceGroupName>ResourceSet(test)</ResourceGroupName>
-</Data> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</Data> <ErrorCode>BackupPlanNotFound</ErrorCode> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeBackupPlan
+##### 4.3.3.3 DescribeBackupPlan
 
 查看备份计划详情
 
@@ -2525,8 +2938,6 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
 | Resource GroupId | Integ er | Query | 否 | 2 | 资源集ID |
 | PlanId | Strin g | Query | 是 | d202309c-0c20-44e2- 9e02-bacf****** | 备份计划ID。 |
 
-灾备管理中心
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2538,15 +2949,13 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
 | errorCode | String | BackupPlanNotFou nd | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanDe tailInner | Struct |  | 备份计划详情。 |
-| - backupPolicyLi st | Array |  | 备份策略集合 |
+| backupPlanDe tailInner | Struct |   | 备份计划详情。 |
+| - backupPolicyLi st | Array |   | 备份策略集合 |
 | -- preferredBack upPeriod | String | ["2"] | 备份周期。 RDS、DRDS：["SUNDAY"、 "MONDAY"]，每周日、周三备份。 其他产品： ["2"]，2天或小时。 |
 | -- preferredBack upPeriodFull | String | ["7"] | 全量备份备份周期。 |
 | -- backupRetenti onPeriod | Integer | 14 | 备份保存时长。单位：天。 |
 | --policyType | String | INCREMENTAL | 备份策略类型： 全量备：FULL。 增量备份：INCREMENTAL。 全量+增量：FULL INCREMENTAL。 _ |
 | -- preferredBack upTime | String | 1677815157665 | 备份执行时间，UTC时间。 RDS、DRDS： 10:00Z-11:00Z(UTC时间)。 其他： 1677576600519，单位毫秒（ms）。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2561,8 +2970,6 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
 | -planName | String | NAS备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行。 _ CREATING：创建中。 CREATED：创建成功。 STARTING：启动中。 RUNNING：运行中 BACKING UP：备份中。 _ STOPPING：停止中 STOPPED：已停止。 DELETED： 已删除。 DELETING：删除中。 |
 | -backupType | String | ECSFILE | 备份类型。 ECSFILE：ECS文件。 ECSDISK：ECS云盘。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2581,12 +2988,12 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 | -mtime | Long | 1677825909000 | 修改时间，单位毫秒（ms）。 |
 
-|  | 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |  |
+|   | 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -instance | Struct |  | 备份实例信息。 |
+| -instance | Struct |   | 备份实例信息。 |
 | --whitelist | String | "*bacup- test,*temp-table" | 白名单列表 |
 | --blacklist | String | "temp-arst,black- tes" | 黑名单列表 |
 | --instanceId | String | 1ase4****** | 实例ID。 |
@@ -2600,23 +3007,21 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlanList
 | -- specifyProject | String | test | 指定备份项目 |
 | -- tempTablePref ix | String | awd | 临时表名前缀，表名大小写不敏感，不能有特殊字符，只能包含a~z、A~Z、数字和下划线 （ ）。建议以字母开头，名称的长度不超过64 _ 字节。 |
 
-**示例**
-
-请求示例灾备管理中心
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeBackupPlan &PlanId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
+ "backupPlanDetailInner":{
   "creator":"ascm-org-********",
   "resourceGroupName":"ResourceSet(test)",
   "organizationName":"test",
@@ -2631,6 +3036,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlan &PlanId=d202309c-0c20-44e2-9e02-
   "lastBackupTime":1677825909000,
   "organizationId":12,
   "regionId":"cn-hangzhou******",
+  "-backupPolicyList":{
    "preferredBackupPeriod":"[\"2\"]",
    "preferredBackupTime":"1677815157665",
    "vaultName":"asd",
@@ -2642,10 +3048,16 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlan &PlanId=d202309c-0c20-44e2-9e02-
    "backupRetentionPeriod":14,
    "preferredBackupPeriodFull":"[\"7\"]",
    "preferredCycleType":"BY_INTERVAL",
-  },
+   "preferredBackupType":"BY_TIME"
+```
+
+`},`
+
+```json
   "ctime":1677825909000,
   "planId":"d202309c-0c20-44e2-9e02-bacf******",
   "resourceGroupId":4,
+  "-instance":{
    "tempTablePrefix":"awd",
    "instanceId":"1ase4******",
    "consistentLevel":"CRASH",
@@ -2655,63 +3067,78 @@ http(s)://[Endpoint]/?Action=DescribeBackupPlan &PlanId=d202309c-0c20-44e2-9e02-
    "cloudDiskList":"[\"d-sddgerttr224******\"]",
 ```
 
-灾备管理中心
-
 ```json
    "blacklist":"\"temp-arst,black-tes\"",
    "whitelist":"\"*bacup-test,*temp-table\"",
    "speedLimit":"8:10:10240|12:18:5120",
    "instanceBackupType":"UDM_ECS",
    "specifyProject":"test"
-  },
-  "status":"RUNNING"
- },
- "errorMessage":"Not Found BackupPlan for current operate.",
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "status":"RUNNING"
+```
+
+`},`
+
+```json
+ "errorMessage":"Not Found BackupPlan for current operate.",
+ "errorCode":"BackupPlanNotFound"
+```
+
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <backupPlanDetailInner>
  <creator>ascm-org-********</creator>
  <resourceGroupName>ResourceSet(test)</resourceGroupName>
  <organizationName>test</organizationName>
  <lastResult>SUCCESS</lastResult>
+ <instanceType>NAS</instanceType>
  <regionName>cn-hangzhou******</regionName>
  <nextBackupTime>1677825909000</nextBackupTime>
  <creatorId>5612</creatorId>
  <planName>NAS备份</planName>
  <mtime>1677825909000</mtime>
+ <backupType>ECSFILE</backupType>
  <lastBackupTime>1677825909000</lastBackupTime>
  <organizationId>12</organizationId>
  <regionId>cn-hangzhou******</regionId>
+ <-backupPolicyList>
   <preferredBackupPeriod>[&quot;2&quot;]</preferredBackupPeriod>
   <preferredBackupTime>1677815157665</preferredBackupTime>
+  <vaultName>asd</vaultName>
   <logBackupRetentionPeriod>2</logBackupRetentionPeriod>
+  <vaultId>1231---231231231236</vaultId>
+  <backupMode>normal</backupMode>
   <policyType>INCREMENTAL</policyType>
+  <storagePosition>LOCAL</storagePosition>
   <backupRetentionPeriod>14</backupRetentionPeriod>
   <preferredBackupPeriodFull>[&quot;7&quot;]</preferredBackupPeriodFull>
   <preferredCycleType>BY_INTERVAL</preferredCycleType>
   <preferredBackupType>BY_TIME</preferredBackupType>
+ </-backupPolicyList>
  <ctime>1677825909000</ctime>
  <planId>d202309c-0c20-44e2-9e02-bacf******</planId>
  <resourceGroupId>4</resourceGroupId>
+ <-instance>
   <tempTablePrefix>awd</tempTablePrefix>
+  <instanceId>1ase4******</instanceId>
 ```
-
-灾备管理中心
 
 ```
 staced ase
 ```
 
-/
+`/`
 
 ```xml
 staced
   <consistentLevel>CRASH</consistentLevel>
   <instanceResourcesType>CATALOG</instanceResourcesType>
+  <instanceName>1ase4******</instanceName>
   <prefix>/root/</prefix>
   <cloudDiskList>[&quot;d-sddgerttr224******&quot;]</cloudDiskList>
   <blacklist>&quot;temp-arst,black-tes&quot;</blacklist>
@@ -2720,11 +3147,16 @@ staced
    <speedLimit>8:10:10240|12:18:5120</speedLimit>
    <instanceBackupType>UDM_ECS</instanceBackupType>
    <specifyProject>test</specifyProject>
+  </-instance>
   <status>RUNNING</status>
+ </backupPlanDetailInner>
  <errorMessage>Not Found BackupPlan for current operate.</errorMessage>
+ <errorCode>BackupPlanNotFound</errorCode>
 ```
 
-##### DisableBackupPlan
+##### 4.3.3.4 DisableBackupPlan
+
+调用DisableBackupPlan停止备份计划。
 
 **请求头**
 
@@ -2747,7 +3179,7 @@ staced
 | code | String | 200 | 状态码。 200：调用正常。 |
 | errorMessage | String | Not Found BackupPlan for current operate. | 错误提示信息。 |
 
-|  | 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |  |
+|   | 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2755,7 +3187,7 @@ staced
 | errorCode | String | BackupPlanNotFou nd | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 计划详情。 |
+| backupPlanInn er | Struct |   | 计划详情。 |
 | -result | Boolean | true | 请求结果。 true：成功 false：失败 |
 | -planId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
 | -state | String | STOPPED | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
@@ -2765,37 +3197,43 @@ staced
 请求示例
 
 ```
-&PlanId=d202309c-0c20-44e2-9e02-bacf******
+http(s)://[Endpoint]/?Action=DisableBackupPlan &PlanId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "State":"STOPPED",
   "PlanId":"d202309c-0c20-44e2-9e02-bacf******",
   "Result":true
- },
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"BackupPlanNotFound",
  "ErrorMessage":"Not Found BackupPlan for current operate.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <State>STOPPED</State>
  <PlanId>d202309c-0c20-44e2-9e02-bacf******</PlanId>
  <Result>true</Result>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>BackupPlanNotFound</ErrorCode> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### EnableBackupPlan
+##### 4.3.3.5 EnableBackupPlan
+
+调用EnableBackupPlan启动备份计划。
 
 **请求头**
 
@@ -2813,7 +3251,7 @@ staced
 |---|---|---|---|
 | RequestId | String | C8B26B44-0189- 443E-9816-******* | 请求ID。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2824,7 +3262,7 @@ staced
 | ErrorCode | String | BackupPlanNotFou nd | 错误码。 |
 | Path | String | /asrbr/*/* | 请求路径。 |
 | Cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| BackupPlanInn er | Struct |  | 备份计划详情。 |
+| BackupPlanInn er | Struct |   | 备份计划详情。 |
 | -Result | Boolean | true | 请求结果。 true：成功 false：失败 |
 | -PlanId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
 | -State | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
@@ -2834,37 +3272,43 @@ staced
 请求示例
 
 ```
-&PlanId=d202309c-0c20-44e2-9e02-bacf******
+http(s)://[Endpoint]/?Action=EnableBackupPlan &PlanId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例灾备管理中心 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "State":"RUNNING",
   "PlanId":"d202309c-0c20-44e2-9e02-bacf******",
   "Result":true
- },
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"BackupPlanNotFound",
  "ErrorMessage":"Not Found BackupPlan for current operate.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <State>RUNNING</State>
  <PlanId>d202309c-0c20-44e2-9e02-bacf******</PlanId>
  <Result>true</Result>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>BackupPlanNotFound</ErrorCode> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### ExecuteBackupPlan
+##### 4.3.3.6 ExecuteBackupPlan
+
+调用ExecuteBackupPlan立即执行备份计划。
 
 **请求头**
 
@@ -2878,7 +3322,7 @@ staced
 | Resource GroupId | Integ er | Query | 否 | 322 | 资源集ID |
 | PlanId | Strin g | Query | 是 | d202309c-0c20-44e2- 9e02-bacf****** | 备份计划ID。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2896,11 +3340,9 @@ staced
 | errorCode | String | BackupPlanNotFou nd | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划详情。 |
+| backupPlanInn er | Struct |   | 备份计划详情。 |
 | -result | Boolean | true | 请求结果。 true：成功 false：失败 |
 | -planId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2911,13 +3353,12 @@ staced
 请求示例
 
 ```
-&PlanId=d202309c-0c20-44e2-9e02-bacf******
+http(s)://[Endpoint]/?Action=ExecuteBackupPlan &PlanId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -2925,23 +3366,25 @@ staced
  "success":true,
  "errorMessage":"Not Found BackupPlan for current operate.",
  "errorCode":"BackupPlanNotFound",
+ "backupPlanInner":{
   "result":true,
   "planId":"d202309c-0c20-44e2-9e02-bacf******",
   "state":"RUNNING"
- }
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>Not Found BackupPlan for current operate.</errorMessage>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>Not Found BackupPlan for current operate.</errorMessage> <errorCode>BackupPlanNotFound</errorCode> <backupPlanInner>
  <result>true</result>
  <planId>d202309c-0c20-44e2-9e02-bacf******</planId>
  <state>RUNNING</state>
+</backupPlanInner>
 ```
 
-##### ModifyBackupPolicy
+##### 4.3.3.7 ModifyBackupPolicy
+
+调用ModifyBackupPolicy修改备份策略。
 
 **请求头**
 
@@ -2954,8 +3397,6 @@ staced
 | Organizati onId | Integ er | Query | 否 | 12 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 32 | 资源集ID |
 | PlanId | Strin g | Query | 是 | d202309c-0c20-44e2- 9e02-bacf****** | 备份计划ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2972,12 +3413,12 @@ staced
 | errorCode | String | BackupPlanNotFou nd | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanDe tailInner | Struct |  | 备份计划详情。 |
-| - backupPolicyLi st | Array |  | 备份策略集合 |
+| backupPlanDe tailInner | Struct |   | 备份计划详情。 |
+| - backupPolicyLi st | Array |   | 备份策略集合 |
 | -- preferredBack upPeriod | String | 2 | 备份周期。 RDS、PolarDB-X：["SUNDAY"、 "MONDAY"]，每周日、周三备份其他产品：["2"]，2天或小时 |
 | -- preferredBack upPeriodFull | String | 7 | 全量备份备份周期。 |
 | -- backupRetenti onPeriod | Integer | 14 | 备份保存时长。单位：天。 |
@@ -2988,8 +3429,6 @@ staced
 | --vaultId | String | c59f9c6b-effd- 4d5c-841b- c14d9a686a26 | 仓库ID |
 | --vaultName | String | lengjuetest | 仓库名称 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -- storagePositio n | String | LOCATION | 存储位置，用于判断本地/异地策略。 LOCATION：本地 REMOTE：异地 PUBLIC CLOUD：阿里公共云 _ |
@@ -2998,11 +3437,9 @@ staced
 | -planId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
 | -planName | String | NAS备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED：已删除 DELETING：删除中 |
-| -backupType | String |  | ECS备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件 _ ECS DISK：ECS云盘 _ |
+| -backupType | String |   | ECS备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件 _ ECS DISK：ECS云盘 _ |
 | -instanceType | String | NAS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3020,21 +3457,21 @@ staced
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-bacf****** { "preferredBackupPeriod":[ 1 ], "preferredBackupTime":1669918794351, "backupRetentionPeriod":10, "preferredBackupPeriodFull":[ 8 ], "preferredCycleType":"BY_DAY","vaultId":"123asqwqweqw*****"}
+http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-bacf****** &BackupPolicy=[ { "preferredBackupPeriod":[ 1 ], "preferredBackupTime":1669918794351, "backupRetentionPeriod":10, "preferredBackupPeriodFull":[ 8 ], "preferredCycleType":"BY_DAY","vaultId":"123asqwqweqw*****"}
 ```
 
-] &公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`]` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
+ "backupPlanDetailInner":{
   "creator":"ascm-org-********",
   "resourceGroupName":"ResourceSet(test)",
   "organizationName":"test",
@@ -3048,6 +3485,7 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
   "backupType":"",
   "organizationId":12,
   "regionId":"cn-hangzhou******",
+  "-backupPolicyList":{
    "preferredBackupPeriod":"2",
    "preferredBackupTime":"1677825909000",
    "vaultName":"lengjuetest",
@@ -3059,51 +3497,66 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
    "backupRetentionPeriod":14,
    "preferredBackupPeriodFull":"7",
    "preferredCycleType":"BY_INTERVAL",
-  },
+   "preferredBackupType":"BY_TIME"
+```
+
+`},`
+
+```json
   "ctime":1677825909000,
   "planId":"d202309c-0c20-44e2-9e02-bacf******",
   "resourceGroupId":4,
   "status":"RUNNING"
- },
- "errorMessage":"Not Found BackupPlan for current operate.",
-}
 ```
 
-`XML` 格式灾备管理中心
+`},`
+
+```json
+ "errorMessage":"Not Found BackupPlan for current operate.",
+ "errorCode":"BackupPlanNotFound"
+```
+
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <backupPlanDetailInner>
  <creator>ascm-org-********</creator>
  <resourceGroupName>ResourceSet(test)</resourceGroupName>
  <organizationName>test</organizationName>
  <lastResult>1</lastResult>
+ <instanceType>NAS</instanceType>
  <regionName>cn-hangzhou******</regionName>
  <nextBackupTime>1677825909000</nextBackupTime>
  <creatorId>5612</creatorId>
  <planName>NAS备份</planName>
  <mtime>1677825909000</mtime>
+ <backupType  />
  <organizationId>12</organizationId>
  <regionId>cn-hangzhou******</regionId>
+ <-backupPolicyList>
   <preferredBackupPeriod>2</preferredBackupPeriod>
   <preferredBackupTime>1677825909000</preferredBackupTime>
+  <vaultName>lengjuetest</vaultName>
   <logBackupRetentionPeriod>23</logBackupRetentionPeriod>
   <vaultId>c59f9c6b-effd-4d5c-841b-c14d9a686a26</vaultId>
+  <backupMode>ALL</backupMode>
   <policyType>INCREMENTAL</policyType>
   <storagePosition>LOCATION</storagePosition>
   <backupRetentionPeriod>14</backupRetentionPeriod>
   <preferredBackupPeriodFull>7</preferredBackupPeriodFull>
   <preferredCycleType>BY_INTERVAL</preferredCycleType>
   <preferredBackupType>BY_TIME</preferredBackupType>
+ </-backupPolicyList>
  <ctime>1677825909000</ctime>
  <planId>d202309c-0c20-44e2-9e02-bacf******</planId>
  <resourceGroupId>4</resourceGroupId>
  <status>RUNNING</status>
-<errorMessage>Not Found BackupPlan for current operate.</errorMessage>
+</backupPlanDetailInner> <errorMessage>Not Found BackupPlan for current operate.</errorMessage> <errorCode>BackupPlanNotFound</errorCode>
 ```
 
-### 备份记录
+### 4.4 备份记录
 
-#### DescribeBackupInstanceRecordList
+#### 4.4.1 DescribeBackupInstanceRecordList
 
 调用DescribeBackupInstanceRecordList查看备份实例记录列表。
 
@@ -3112,8 +3565,6 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3132,13 +3583,13 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | -recordId | Integer | 1 | 记录ID。 |
 | -planId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
 | -planRecordId | String | fghres26s58-0189- 4sdf-88hj-******* | 备份计划记录ID。 |
 | -backupMode | String | QUICK | DRDS备份模式。 CONSISTENCY：一致性备份。 QUICK：快速备份。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3157,8 +3608,6 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
 | -snapshotHash | String | b0f20b06ab5****** *****322e34faa9a | 快照Hash值。 |
 | -vaultId | String | 4a0b3d3d********7 9a12620b | 备份仓库ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -result | String | SUCCESS | 备份记录结果。 IN QUEUE(0)：队列中 _ BACKUPING(1)：备份中 SUCCESS(2)：备份完成 FAILED(3)：备份失败 UNABLE(4)：过期失效 PARTIAL COMPLETE(5)：备份部分完成 _ BLOCKED(6)：阻塞 DELETED(7)：已删除 DELETEDING(8)：删除中 DELETED FAILED(9)：删除失败 _ CANCELED(10)： 已取消 EXECUTE INIT(11)：立即备份初始化状态 _ |
@@ -3173,7 +3622,7 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3191,10 +3640,9 @@ http(s)://[Endpoint]/?Action=ModifyBackupPolicy &PlanId=d202309c-0c20-44e2-9e02-
 http(s)://[Endpoint]/?Action=DescribeBackupInstanceRecordList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":100,
@@ -3222,53 +3670,61 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstanceRecordList
   "containSystemDisk":0,
   "beginTime":1677825909000,
   "endTime":1677825909000
- },
+```
+
+`},`
+
+```json
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
  "errorMessage":"failed",
  "errorCode":"403",
  "pageSize":10,
  "pageNum":1
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>100</cost> <totalSize>20</totalSize> <data>
+<path>/asrbr/*/*</path> <code>200</code> <cost>100</cost> <totalSize>20</totalSize> <data>
  <replication  />
  <snapshotId>s-000020swb2**********</snapshotId>
  <instanceName>rm-sf234dsfellre0******</instanceName>
  <vaultId>4a0b3d3d********79a12620b</vaultId>
  <snapshotHash>b0f20b06ab5***********322e34faa9a</snapshotHash>
+ <storageLocation>REMOTE</storageLocation>
+ <backupType>ECS_FILE</backupType>
  <recordId>1</recordId>
  <result>SUCCESS</result>
  <planRecordId>fghres26s58-0189-4sdf-88hj-*******</planRecordId>
+ <backupDataType>string</backupDataType>
  <instanceId>rm-sf234dsfellre0******</instanceId>
  <size>1024</size>
+ <backupMode>QUICK</backupMode>
  <ctime>1677825909000</ctime>
  <progress>10000</progress>
  <planId>d202309c-0c20-44e2-9e02-bacf******</planId>
  <expireDate>1677825909000</expireDate>
  <expireStatus>0</expireStatus>
+ <containSystemDisk>0</containSystemDisk>
  <beginTime>1677825909000</beginTime>
  <endTime>1677825909000</endTime>
 </data> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode> <pageSize>10</pageSize> <pageNum>1</pageNum>
 ```
 
-### 恢复任务
+### 4.5 恢复任务
 
-#### 创建恢复任务
+#### 4.5.1 创建恢复任务
 
-##### CreateAdbRecoveryTask
+##### 4.5.1.1 CreateAdbRecoveryTask
+
+调用CreateAdbRecoveryTask创建ADB恢复任务。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3289,7 +3745,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstanceRecordList
 | code | String | 200 | 状态码。 200：调用正常。 |
 | errorMessage | String | failed | 错误提示信息。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3297,7 +3753,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstanceRecordList
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 32 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | adb-task | 恢复任务名称。 |
 | -instanceType | String | ADB | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -3309,7 +3765,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstanceRecordList
 | -regionId | String | cn-hangzhou****** | 区域ID。 |
 | -regionName | String | cn-hangzhou***** | 区域名称。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3327,7 +3783,7 @@ http(s)://[Endpoint]/?Action=DescribeBackupInstanceRecordList
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********55440000 &TaskName=adb-task
+http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********55440000 &TaskName=adb-task &RecoveryInstance={
         "instanceId":"am-c3k97d2k8yn***",
         "recordId":"1",
         "recoveryInstanceName":"adb-restore",
@@ -3336,13 +3792,11 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
         "organizationId":2,
         "resourceGroupId":4,
         "zoneId":"azone-********"
-    }
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":32,
@@ -3368,16 +3822,16 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
   "endTime":1677825909000,
   "taskId":"d202309c-0c20-44e2-9e02-bacf******",
   "status":"RECOVERYING"
- }
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>32</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode> <recoveryTaskInner>
+<path>/asrbr/*/*</path> <code>200</code> <cost>32</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode> <recoveryTaskInner>
  <creator>ascm-org-****</creator>
+ <instanceNum>1</instanceNum>
  <organizationName>test</organizationName>
+ <instanceType>ADB</instanceType>
  <regionName>cn-hangzhou*****</regionName>
  <creatorId>5612</creatorId>
  <mtime>1677825909000</mtime>
@@ -3394,7 +3848,9 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
 </recoveryTaskInner>
 ```
 
-##### CreateDrdsRecoveryTask
+##### 4.5.1.2 CreateDrdsRecoveryTask
+
+调用CreateDrdsRecoveryTask创建PolarDB-X恢复任务。
 
 **请求头**
 
@@ -3409,7 +3865,7 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | TaskName | Strin g | Query | 是 | PolarDB-X恢复 | 恢复任务名称。 |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | DRDS恢复计划 | 描述 |
@@ -3427,13 +3883,13 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-|  | 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |  |
+|   | 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | cost | Long | 10 | 接口耗时，单位毫秒（ms）。 |
-| RecoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| RecoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | PolarDB-X恢复 | 恢复任务名称。 |
 | -instanceType | String | PolarDB-X | 实例类型。包含OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -3441,13 +3897,13 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou***** | 区域ID。 |
 | -regionName | String | cn-hangzhou***** | 区域名称。 |
 | -creator | String | ascm-org-**** | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3463,13 +3919,12 @@ http(s)://[Endpoint]/?Action=CreateAdbRecoveryTask &ClientToken=123e4567********
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=PolarDB-X恢复 "instanceId":"drdsusrz308***", "recordId":"1", "recoveryInstanceName":"drdsrestore-test", "vpcId":"vpc-q1fxs39dm3cc2wk6jcut0", "vSwitchId":"vsw-q1flt5ccjklh38qxm51pz", "organizationId":2, "resourceGroupId":4, "dbInstanceSpec":"mysql.x4.large.2", "dbInstanceStorage":200, "engine":"mysql", "engineVersion":"5.7", "zoneId":"azone-atest-0923421" }
+http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=PolarDB-X恢复 &RecoveryInstance={ "instanceId":"drdsusrz308***", "recordId":"1", "recoveryInstanceName":"drdsrestore-test", "vpcId":"vpc-q1fxs39dm3cc2wk6jcut0", "vSwitchId":"vsw-q1flt5ccjklh38qxm51pz", "organizationId":2, "resourceGroupId":4, "dbInstanceSpec":"mysql.x4.large.2", "dbInstanceStorage":200, "engine":"mysql", "engineVersion":"5.7", "zoneId":"azone-atest-0923421"
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":10,
@@ -3495,16 +3950,16 @@ http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567*******
   "endTime":1677825909000,
   "taskId":"d202309c-0c20-44e2-9e02-bacf******",
   "status":"RECOVERYING"
- }
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>10</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode> <RecoveryTaskInner>
+<path>/asrbr/*/*</path> <code>200</code> <cost>10</cost> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>403</errorCode> <RecoveryTaskInner>
  <creator>ascm-org-****</creator>
+ <instanceNum>1</instanceNum>
  <organizationName>test</organizationName>
+ <instanceType>PolarDB-X</instanceType>
  <regionName>cn-hangzhou*****</regionName>
  <creatorId>5612</creatorId>
  <mtime>1677825909000</mtime>
@@ -3521,7 +3976,9 @@ http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567*******
 </RecoveryTaskInner>
 ```
 
-##### CreateEcsRecoveryTask
+##### 4.5.1.3 CreateEcsRecoveryTask
+
+调用CreateEcsRecoveryTask创建ECS恢复任务。
 
 **请求头**
 
@@ -3536,7 +3993,7 @@ http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567*******
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | TaskName | Strin g | Query | 是 | ecs-task | 恢复任务名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | TaskType | Strin g | Query | 否 | REGULAR | 任务类型 |
@@ -3557,11 +4014,9 @@ http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567*******
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 10 | 接口耗时，单位毫秒（ms）。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | ecs-task | 恢复任务名称。 |
 | -instanceType | String | ECS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -3576,7 +4031,7 @@ http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567*******
 | -creatorId | Integer | 5612 | 创建人ID。 |
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3591,17 +4046,16 @@ http(s)://[Endpoint]/?Action=CreateDrdsRecoveryTask &ClientToken=123e4567*******
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=ecs-task
+http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=ecs-task &RecoveryInstance={
         "recordId":"1",
         "instanceId":"i-q1f01emdyy9a*******",
         "targetPrefix":"/",
-    }
+        "recoveryInstanceId":"i-q1f01em9an***"
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -3621,19 +4075,23 @@ http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou*****",
   "Deleted":0,
- },
+  "InstanceType":"ECS"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":10,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/* </Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType>ECS_FILE</RecoveryType>
@@ -3645,15 +4103,19 @@ http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-******</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>ecs-task</TaskName>
  <RegionName>cn-hangzhou*****</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou*****</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>ECS</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>10</Cost> <Success>true</Success>
 ```
 
-##### CreateEcsSnapshotRecoveryTask
+##### 4.5.1.4 CreateEcsSnapshotRecoveryTask
+
+调用CreateEcsSnapshotRecoveryTask恢复ECS快照。
 
 **请求头**
 
@@ -3666,8 +4128,6 @@ http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********
 | Organizati onId | Integ er | Query | 否 | 12 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 13 | 资源集ID |
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3686,7 +4146,7 @@ http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********
 | success | Boolean | true | 本次请求是否成功。 |
 | code | String | 200 | 状态码。 200：调用正常。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3695,7 +4155,7 @@ http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | ECS快照恢复 | 恢复任务名称。 |
 | -instanceType | String | ECS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -3706,7 +4166,7 @@ http(s)://[Endpoint]/?Action=CreateEcsRecoveryTask &ClientToken=123e4567********
 | -recoveryType | String | ECS DISK _ | 恢复类型。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3731,18 +4191,18 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
 `&TaskName=ECS`快照恢复
 
 ```json
+&RecoveryInstance={
         "recordId":"3",
         "instanceId":"i-q1f01emdyy9a*******",
         "recoveryInstanceId":"i-q1f01gxfpx1***",
         "diskId":"d-q1f01emdyy9a****",
         "diskCategory":"cloud_efficiency",
-    }
+        "recoveryInstanceName":"test-backup"
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -3766,19 +4226,23 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"ECS"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType>ECS_DISK</RecoveryType>
@@ -3789,15 +4253,17 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-******</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>ECS快照恢复</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>ECS</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateEsRecoveryTask
+##### 4.5.1.5 CreateEsRecoveryTask
 
 调用CreateEsRecoveryTask创建Elasticsearch恢复任务。
 
@@ -3814,7 +4280,7 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | TaskName | Strin g | Query | 是 | Elasticsearch恢复任务 | 恢复任务名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | TaskType | Strin g | Query | 否 | REGULAR | 恢复类型： 常规恢复：REGULAR 灾难恢复：DISASTER |
@@ -3835,11 +4301,9 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | Elasticsearch恢复任务 | 恢复任务名称。 |
 | -instanceType | String | Elasticsearch | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -3847,14 +4311,14 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 | -regionName | String | cn-hangzhou- ******** | 区域名称。 |
 | -creator | String | ascm-org- ********** | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3869,16 +4333,15 @@ http(s)://[Endpoint]/?Action=CreateEcsSnapshotRecoveryTask &ClientToken=123e4567
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=Elasticsearch恢复任务
+http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=Elasticsearch恢复任务 &RecoveryInstance={
         "recordId":"1",
         "instanceId":"source-6-8-*********",
-    }
+        "recoveryInstanceId":"target-6-8-*****"
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -3898,19 +4361,23 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"Elasticsearch"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/* </Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -3921,6 +4388,7 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-**********</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>Elasticsearch恢复任务</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
@@ -3930,7 +4398,9 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateNasRecoveryTask
+##### 4.5.1.6 CreateNasRecoveryTask
+
+调用CreateNasRecoveryTask创建NAS恢复任务。
 
 **请求头**
 
@@ -3943,8 +4413,6 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
 | Organizati onId | Integ er | Query | 否 | 23 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 31 | 资源集ID |
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3966,13 +4434,13 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | NAS恢复 | 恢复任务名称。 |
 | -instanceType | String | NAS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -3980,13 +4448,13 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 | -regionName | String | cn-hangzhou- ******** | 区域名称。 |
 | -creator | String | ascm-org-******* | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4002,17 +4470,16 @@ http(s)://[Endpoint]/?Action=CreateEsRecoveryTask &ClientToken=123e4567********5
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********55440000 &TaskName=NAS恢复
+http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********55440000 &TaskName=NAS恢复 &RecoveryInstance={
         "recordId":"1",
         "instanceId":"15bf74****",
         "targetPrefix":"/",
-    }
+        "recoveryInstanceId":"19d824****"
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -4032,19 +4499,23 @@ http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"NAS"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -4055,15 +4526,17 @@ http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-*******</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>NAS恢复</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>NAS</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateOdpsRecoveryTask
+##### 4.5.1.7 CreateOdpsRecoveryTask
 
 调用CreateOdpsRecoveryTask创建MaxCompute恢复任务。
 
@@ -4080,7 +4553,7 @@ http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | TaskName | Strin g | Query | 是 | MaxCompute恢复 | 恢复任务名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | TaskType | Strin g | Query | 否 | REGULAR | 恢复类型： 常规恢复：REGULAR 灾难恢复：DISASTER |
@@ -4101,11 +4574,9 @@ http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | MaxCompute恢复 | 恢复任务名称。 |
 | -instanceType | String | MaxCompute | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -4113,14 +4584,14 @@ http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 | -regionName | String | cn-hangzhou- ******** | 区域名称。 |
 | -creator | String | ascm-org- ************** | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4135,17 +4606,15 @@ http(s)://[Endpoint]/?Action=CreateNasRecoveryTask &ClientToken=123e4567********
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=MaxCompute恢复
+http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=MaxCompute恢复 &RecoveryInstance={
         "recordId":"3",
         "instanceId":"odps-q1f01em****",
         "recoveryInstanceId":"odps-q1f01gxfp*******"
-    }
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -4165,19 +4634,23 @@ http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567*******
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"MaxCompute"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -4188,15 +4661,19 @@ http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567*******
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-**************</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>MaxCompute恢复</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>MaxCompute</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateOssRecoveryTask
+##### 4.5.1.8 CreateOssRecoveryTask
+
+调用CreateOssRecoveryTask创建OSS恢复任务。
 
 **请求头**
 
@@ -4211,7 +4688,7 @@ http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567*******
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | TaskName | Strin g | Query | 是 | OSS恢复 | 恢复任务名称。 |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | TaskType | Strin g | Query | 否 | REGULAR | 恢复类型： 常规恢复：REGULAR 灾难恢复：DISASTER |
@@ -4231,13 +4708,13 @@ http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567*******
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | OSS恢复 | 恢复任务名称。 |
 | -instanceType | String | OSS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -4245,13 +4722,13 @@ http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567*******
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 | -regionName | String | cn-hangzhou- ******** | 区域名称。 |
 | -creator | String | ascm-org-********* | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4267,19 +4744,17 @@ http(s)://[Endpoint]/?Action=CreateOdpsRecoveryTask &ClientToken=123e4567*******
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********55440000 &TaskName=OSS恢复
+http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********55440000 &TaskName=OSS恢复 &RecoveryInstance={
         "instanceId":"bucket-test*****",
         "recordId":"1",
         "recoveryInstanceName":"restore-****",
         "recoveryInstanceId":"restore-****",
         "targetPrefix":"recovery/"
-    }
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -4299,19 +4774,23 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"OSS"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -4323,15 +4802,19 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-*********</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>OSS恢复</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>OSS</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### CreateRdsRecoveryTask
+##### 4.5.1.9 CreateRdsRecoveryTask
+
+调用CreateRdsRecoveryTask创建RDS恢复任务。
 
 **请求头**
 
@@ -4344,8 +4827,6 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
 | Organizati onId | Integ er | Query | 否 | 32 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 21 | 资源集ID |
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4365,7 +4846,7 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
 | code | String | 200 | 状态码。 200：调用正常。 |
 | errorMessage | String | failed | 错误提示信息。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4373,7 +4854,7 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | RDS恢复 | 恢复任务名称。 |
 | -instanceType | String | RDS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -4381,11 +4862,11 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 | -regionName | String | cn-hangzhou- ******** | 区域名称。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4403,7 +4884,7 @@ http(s)://[Endpoint]/?Action=CreateOssRecoveryTask &ClientToken=123e4567********
 请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=RDS恢复
+http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********55440000 &TaskName=RDS恢复 &RecoveryInstance={
         "instanceId":"rm-c3ksc7g4*******",
         "recordId":"1",
         "recoveryInstanceName":"rds-restore",
@@ -4412,13 +4893,11 @@ http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********
         "organizationId":2,
         "resourceGroupId":4,
         "zoneId":"zone-a-**********"
-    }
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -4438,19 +4917,23 @@ http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"RDS"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -4461,17 +4944,21 @@ http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-**********</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>RDS恢复</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>RDS</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### 管理恢复任务
+#### 4.5.2 管理恢复任务
 
-##### DescribeRecoverableDiskList
+##### 4.5.2.1 DescribeRecoverableDiskList
+
+调用DescribeRecoverableDiskList查看可恢复云盘列表。
 
 **请求头**
 
@@ -4487,9 +4974,7 @@ http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  | 返回数据。 |
-
-灾备管理中心
+| Data | Array |   | 返回数据。 |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4507,7 +4992,7 @@ http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********
 | ErrorMessage | String | The request is missing a ecsRecordId parameter. | 错误提示信息。 |
 | ErrorCode | String | MissingParam.EcsR ecordId | 错误码。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4523,10 +5008,9 @@ http(s)://[Endpoint]/?Action=CreateRdsRecoveryTask &ClientToken=123e4567********
 http(s)://[Endpoint]/?Action=DescribeRecoverableDiskList &RecordId=3
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Data":{
@@ -4542,27 +5026,34 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDiskList &RecordId=3
   "StorageLocation":"LOCAL",
   "BackupDataType":"FULL",
   "DiskId":"d-asdfew134ss*********"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"MissingParam.EcsRecordId",
  "ErrorMessage":"The request is missing a ecsRecordId parameter.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+ <DiskType>system</DiskType>
  <ConsistentLevel>CRASH</ConsistentLevel>
+ <StorageSpace>2048000000</StorageSpace>
  <DiskCategory>cloud_efficiency</DiskCategory>
  <DiskName>系统盘</DiskName>
+ <StorageLocation>LOCAL</StorageLocation>
+ <BackupDataType>FULL</BackupDataType>
  <DiskId>d-asdfew134ss*********</DiskId>
 </Data> <ErrorCode>MissingParam.EcsRecordId</ErrorCode> <ErrorMessage>The request is missing a ecsRecordId parameter.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeRecoverableDrdsDbEngine
+##### 4.5.2.2 DescribeRecoverableDrdsDbEngine
 
 调用DescribeRecoverableDrdsDbEngine查看可恢复PolarDB-X DB引擎。
 
@@ -4582,11 +5073,9 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDiskList &RecordId=3
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | - engineVersion s | String | 5.6 | 引擎版本，支持5.6、5.7版本。 |
 | -engine | String | mysql | 引擎类型，仅支持mysql。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4603,37 +5092,39 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDiskList &RecordId=3
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbEngine
+http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbEngine &InstanceId=drdswesd******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Data":{
   "Engine":"mysql",
   "EngineVersions":"5.6"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"InstanceIdIsNull",
  "ErrorMessage":"The parameter of instanceId is null.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
  <Engine>mysql</Engine>
  <EngineVersions>5.6</EngineVersions>
-</Data> <ErrorMessage>The parameter of instanceId is null.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</Data> <ErrorCode>InstanceIdIsNull</ErrorCode> <ErrorMessage>The parameter of instanceId is null.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeRecoverableDrdsDbSepc
+##### 4.5.2.3 DescribeRecoverableDrdsDbSepc
 
 调用DescribeRecoverableDrdsDbSepc查看可恢复PolarDB-X DB规格。
 
@@ -4655,10 +5146,8 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbEngine
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | - dbInstanceCla ss | String | mysql.x4.****** | db实例类型。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4680,16 +5169,15 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbEngine
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbSepc &NetworkType=CLASSIC &Engine=mysql &EngineVersion=5.7
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -4702,17 +5190,22 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbSepc &NetworkType=CLASSIC 
   "storageStep":5,
   "category":"HighAvailability",
   "networkType":"VPC",
- },
+  "maxStorage":2000
+```
+
+`},`
+
+```json
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
  "errorMessage":"The request is missing a DbInstanceSpec parameter.",
-}
+ "errorCode":"MissingParam.DbInstanceSpec"
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
  <engineVersion>5.7</engineVersion>
  <availableStatus>1</availableStatus>
  <dbInstanceClass>mysql.x4.******</dbInstanceClass>
@@ -4722,9 +5215,9 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbSepc &NetworkType=CLASSIC 
 </Data> <ErrorCode>MissingParam.DbInstanceSpec</ErrorCode> <ErrorMessage>The request is missing a DbInstanceSpec parameter.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeRecoverableInstanceList
+##### 4.5.2.4 DescribeRecoverableInstanceList
 
-调用DescribeRecoverableInstanceList查看可恢复实例列表。 灾备管理中心
+调用DescribeRecoverableInstanceList查看可恢复实例列表。
 
 **请求头**
 
@@ -4746,11 +5239,9 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbSepc &NetworkType=CLASSIC 
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | -formerName | String | 测试实例 | 实例曾用名。 |
 | -instanceId | String | test-bucket | 实例ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4771,13 +5262,12 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableDrdsDbSepc &NetworkType=CLASSIC 
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
+http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList &InstanceType=OSS
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -4788,28 +5278,27 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
   "instanceId":"test-bucket",
 ```
 
-`"formerName":"`测试实例"
+`"formerName":"`测试实例`"` `},`
 
 ```json
- },
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
  "errorMessage":"The request is missing a recoveryType parameter.",
  "errorCode":"MissingParam.RecoveryType",
  "pageSize":10,
  "pageNum":1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <totalSize>50</totalSize> <data>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <totalSize>50</totalSize> <data>
  <metaInfo>&quot;metaInfo&quot;: {
                     &quot;architecture&quot;: &quot;x86_64&quot;,
                     &quot;clusterId&quot;: &quot;&quot;,
                     &quot;zoneId&quot;: &quot;cn-qingdao-env17-amtest17001-a&quot;
                 }</metaInfo>
+  <instanceId>test-bucket</instanceId>
   <formerName>测试实例</formerName>
  </data>
  <requestId>C8B26B44-0189-443E-9816-*******</requestId>
@@ -4820,7 +5309,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
  <pageNum>1</pageNum>
 ```
 
-##### DescribeRecoverableInstanceRecordList
+##### 4.5.2.5 DescribeRecoverableInstanceRecordList
 
 调用DescribeRecoverableInstanceRecordList查看可以恢复实例记录列表。
 
@@ -4829,8 +5318,6 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4847,13 +5334,13 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | - instanceResou rcesType | String | rds | 实例资源类型 |
 | -recordId | String | ASD26B44-0189- 443E-9816-******* | 记录ID。 |
 | -planId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
 | -planRecordId | String | fghres26s58-0189- 4sdf-88hj-******* | 备份计划记录ID。 |
 
-|  | 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |  |
+|   | 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4873,8 +5360,6 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
 | -snapshotHash | String | b0f20b06ab5219** ********847a2322e 34faa9a | 快照Hash值。 |
 | -vaultId | String | 4a0b3d3d- 2********79a12620 b | 备份仓库ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -result | String | SUCCESS | 备份记录结果。 INQUEUE(0)：队列中 BACKUPING(1)：备份中 SUCCESS(2)：备份完成 FAILED(3)：备份失败 UNABLE(4)：过期失效 PARTIAL COMPLETE(5)：备份部分完成 _ BLOCKED(6)：阻塞 DELETED(7)：已删除 DELETEDING(8)：删除中 DELETEDFAILED(9)：删除失败 CANCELED(10)： 已取消 EXECUTE INIT(11)：立即备份初始化状态 _ |
@@ -4890,7 +5375,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 | pageNum | Integer | 1 | 分页页数。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | pageSize | Integer | 10 | 每页返回的数据个数。 |
@@ -4901,13 +5386,12 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceList
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
+http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList &InstanceId=i-edsewr32********* &InstanceType=ECS
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -4933,20 +5417,24 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
   "RecordId":"ASD26B44-0189-443E-9816-*******",
   "StorageLocation":"REMOTE",
   "JobId":"j-sa33ds4345*******",
- },
+  "ContainSystemDisk":1
+```
+
+`},`
+
+```json
  "ErrorCode":"MissingParam.RecoveryType",
  "ErrorMessage":"The request is missing a recoveryType parameter.",
  "TotalSize":50,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <Progress>10000</Progress>
  <PlanRecordId>fghres26s58-0189-4sdf-88hj-*******</PlanRecordId>
  <EndTime>1677825909000</EndTime>
@@ -4954,6 +5442,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
  <InstanceId>rm-sf234dsfellre0******</InstanceId>
  <Size>1024</Size>
  <PlanId>d202309c-0c20-44e2-9e02-bacf******</PlanId>
+ <BackupMode>QUICK</BackupMode>
  <ExpireStatus>0</ExpireStatus>
  <BeginTime>1677825909000</BeginTime>
  <Prefix>/root/</Prefix>
@@ -4964,11 +5453,15 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
  <SnapshotId>s-000020swb2p**********</SnapshotId>
  <Ctime>1677825909000</Ctime>
  <RecordId>ASD26B44-0189-443E-9816-*******</RecordId>
+ <StorageLocation>REMOTE</StorageLocation>
  <JobId>j-sa33ds4345*******</JobId>
+ <ContainSystemDisk>1</ContainSystemDisk>
 </Data> <ErrorCode>MissingParam.RecoveryType</ErrorCode> <ErrorMessage>The request is missing a recoveryType parameter.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeRecoveryTaskList
+##### 4.5.2.6 DescribeRecoveryTaskList
+
+调用DescribeRecoveryTaskList查看恢复任务列表。
 
 **请求头**
 
@@ -4980,8 +5473,6 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
 |---|---|---|---|---|---|
 | Organizati onId | Integ er | Query | 否 | 21 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 22 | 资源集ID |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4996,12 +5487,12 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | ECS恢复 | 恢复任务名称。 |
 | -instanceType | String | ECS | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -status | String | SUCCESS | 恢复任务状态。 NOT RUN：未运行 _ RECOVERYING：恢复中 FAILED：恢复失败 SUCCESS：成功 STOPPED： 停止 PART FINISHED：部分成功 _ |
@@ -5019,7 +5510,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
 | -endTime | Long | 1677825909000 | 结束时间，单位毫秒（ms）。 |
 | -mtime | Long | 1677825909000 | 修改时间，单位毫秒（ms）。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5045,10 +5536,9 @@ http(s)://[Endpoint]/?Action=DescribeRecoverableInstanceRecordList
 http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -5073,22 +5563,27 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
   "endTime":1677825909000,
   "taskId":"d202309c-0c20-44e2-9e02-bacf******",
   "status":"SUCCESS"
- },
+```
+
+`},`
+
+```json
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
  "errorMessage":"The product does not support.",
  "errorCode":"ProductNotSupport",
  "pageSize":10,
  "pageNum":1
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <totalSize>50</totalSize> <data>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <totalSize>50</totalSize> <data>
  <creator>ascm-org-******</creator>
+ <instanceNum>1</instanceNum>
  <organizationName>test</organizationName>
+ <instanceType>ECS</instanceType>
  <regionName>cn-hangzhou*****</regionName>
  <creatorId>5612</creatorId>
  <description>test</description>
@@ -5107,7 +5602,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 </data> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>The product does not support.</errorMessage> <errorCode>ProductNotSupport</errorCode> <pageSize>10</pageSize> <pageNum>1</pageNum>
 ```
 
-##### DescribeRecoveryTask
+##### 4.5.2.7 DescribeRecoveryTask
 
 查看恢复任务
 
@@ -5123,8 +5618,6 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 | Resource GroupId | Integ er | Query | 否 | 22 | 资源集ID |
 | TaskId | Strin g | Query | 是 | d202309c-0c20-44e2- 9e02-bacf****** | 恢复任务ID。 |
 
-灾备管理中心
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5136,8 +5629,8 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 | errorCode | String | MissingParam.Task Id | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
-| - recoveryInstan ces | Array |  | 恢复实例集合。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
+| - recoveryInstan ces | Array |   | 恢复实例集合。 |
 | --instanceId | String | i- sidllewqw12******* | 原实例ID。 |
 | -- instanceName | String | i- sidllewqw12******* | 原实例名称。 |
 | -- recoveryInstan ceId | String | i- wdlsfgolpo9******* | 恢复实例ID。 |
@@ -5147,7 +5640,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 | --regionName | String | cn-hangzhou***** | 区域名称。 |
 | -- organizationId | Integer | 12 | 组织ID。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5163,8 +5656,6 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | ECS恢复 | 恢复任务名称。 |
 | -instanceType | String | ECS | 实例类型。 OSS、ECS、NAS、ADB、RDS、 DRDS、ODPS、ES（ElasticSearch）及 VMware。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5183,7 +5674,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 | -deleted | Integer | 0 | 是否删除。 0：否。 1：是。 |
 | -beginTime | Long | 1677825909000 | 开始时间，单位毫秒（ms）。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5200,10 +5691,9 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTaskList
 http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -5221,6 +5711,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
   "description":"test",
   "mtime":1677825909000,
   "recoveryType":"ECS_FILE",
+  "-recoveryInstances":{
    "backupPlanRecordId":"2",
    "resourceGroupName":"ResourceSet(test)",
    "organizationName":"test",
@@ -5237,7 +5728,11 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
    "beginTime":1677825909000,
    "endTime":1677825909000,
    "recoveryInstanceName":"i-wdlsfgolpo9*******"
-  },
+```
+
+`},`
+
+```json
   "organizationId":12,
   "taskType":"REGULAR",
   "deleted":0,
@@ -5249,21 +5744,22 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
   "endTime":1677825909000,
   "taskId":"d202309c-0c20-44e2-9e02-bacf******",
   "status":"SUCCESS"
- }
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-******* </requestId> <success>true</success> <errorMessage>The request is missing a taskId parameter.</errorMessage> <errorCode>MissingParam.TaskId</errorCode> <recoveryTaskInner>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <requestId>C8B26B44-0189-443E-9816-******* </requestId> <success>true</success> <errorMessage>The request is missing a taskId parameter.</errorMessage> <errorCode>MissingParam.TaskId</errorCode> <recoveryTaskInner>
  <creator>ascm-org-******</creator>
+ <instanceNum>1</instanceNum>
  <organizationName>test</organizationName>
+ <instanceType>ECS</instanceType>
  <regionName>cn-hangzhou*****</regionName>
  <creatorId>5612</creatorId>
  <description>test</description>
  <mtime>1677825909000</mtime>
  <recoveryType>ECS_FILE</recoveryType>
+ <-recoveryInstances>
   <backupPlanRecordId>2</backupPlanRecordId>
   <resourceGroupName>ResourceSet(test)</resourceGroupName>
   <organizationName>test</organizationName>
@@ -5280,6 +5776,7 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
   <beginTime>1677825909000</beginTime>
   <endTime>1677825909000</endTime>
   <recoveryInstanceName>i-wdlsfgolpo9*******</recoveryInstanceName>
+ </-recoveryInstances>
  <organizationId>12</organizationId>
  <taskType>REGULAR</taskType>
  <deleted>0</deleted>
@@ -5294,9 +5791,9 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
 </recoveryTaskInner>
 ```
 
-##### DisableRecoveryTask
+##### 4.5.2.8 DisableRecoveryTask
 
-灾备管理中心
+调用DisableRecoveryTask停止恢复任务。
 
 **请求头**
 
@@ -5321,10 +5818,8 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
 | errorCode | String | RecoveryTaskIsNull | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -status | String | STOPPED | 恢复任务状态。 NOT RUN：未运行 _ RECOVERYING：恢复中 FAILED：恢复失败 SUCCESS：成功 STOPPED： 停止 STOPPING：停止中 PART FINISHED：部分成功 _ |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5338,38 +5833,42 @@ http(s)://[Endpoint]/?Action=DescribeRecoveryTask &TaskId=d202309c-0c20-44e2-9e0
 http(s)://[Endpoint]/?Action=DisableRecoveryTask &TaskId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
   "Status":"STOPPED",
   "TaskId":"d202309c-0c20-44e2-9e02-bacf******"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"RecoveryTaskIsNull",
  "ErrorMessage":"The parameter of recoveryTask is null.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>STOPPED</Status>
  <TaskId>d202309c-0c20-44e2-9e02-bacf******</TaskId>
 </RecoveryTaskInner> <ErrorCode>RecoveryTaskIsNull</ErrorCode> <ErrorMessage>The parameter of recoveryTask is null.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### EnableRecoveryTask
+##### 4.5.2.9 EnableRecoveryTask
+
+调用EnableRecoveryTask启动恢复任务。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 灾备管理中心
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -5390,46 +5889,48 @@ http(s)://[Endpoint]/?Action=DisableRecoveryTask &TaskId=d202309c-0c20-44e2-9e02
 | errorCode | String | RecoveryTaskIsNull | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -status | String | RECOVERYING | 恢复任务状态。 NOT RUN：未运行 _ RECOVERYING：恢复中 FAILED：恢复失败 SUCCESS：成功 STOPPED： 停止 PART FINISHED：部分成功 _ |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 
-**示例**
-
-灾备管理中心请求示例
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=EnableRecoveryTask &TaskId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
   "Status":"RECOVERYING",
   "TaskId":"d202309c-0c20-44e2-9e02-bacf******"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"RecoveryTaskIsNull",
  "ErrorMessage":"The parameter of recoveryTask is null.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <TaskId>d202309c-0c20-44e2-9e02-bacf******</TaskId>
 </RecoveryTaskInner> <ErrorCode>RecoveryTaskIsNull</ErrorCode> <ErrorMessage>The parameter of recoveryTask is null.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### RestartRecoveryTask
+##### 4.5.2.10 RestartRecoveryTask
+
+调用RestartRecoveryTask重试恢复任务。
 
 **请求头**
 
@@ -5441,7 +5942,7 @@ http(s)://[Endpoint]/?Action=EnableRecoveryTask &TaskId=d202309c-0c20-44e2-9e02-
 |---|---|---|---|---|---|
 | Organizati onId | Integ er | Query | 否 | 32 | 组织ID |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5460,46 +5961,48 @@ http(s)://[Endpoint]/?Action=EnableRecoveryTask &TaskId=d202309c-0c20-44e2-9e02-
 | errorCode | String | RecoveryTaskIsNull | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务详情。 |
+| recoveryTaskI nner | Struct |   | 恢复任务详情。 |
 | -status | String | RECOVERYING | 恢复任务状态。 NOT RUN：未运行 _ RECOVERYING：恢复中 FAILED：恢复失败 SUCCESS：成功 STOPPED： 停止 PART FINISHED：部分成功 _ |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=RestartRecoveryTask &TaskId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
   "Status":"RECOVERYING",
   "TaskId":"d202309c-0c20-44e2-9e02-bacf******"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"RecoveryTaskIsNull",
  "ErrorMessage":"The parameter of recoveryTask is null.",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <TaskId>d202309c-0c20-44e2-9e02-bacf******</TaskId>
 </RecoveryTaskInner> <ErrorCode>RecoveryTaskIsNull</ErrorCode> <ErrorMessage>The parameter of recoveryTask is null.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-##### DescribeAvailableRecoveryTime
+##### 4.5.2.11 DescribeAvailableRecoveryTime
 
 调用DescribeAvailableRecoveryTime查看RDS可恢复时间。
 
@@ -5514,7 +6017,7 @@ http(s)://[Endpoint]/?Action=RestartRecoveryTask &TaskId=d202309c-0c20-44e2-9e02
 | Organizati onId | Integ er | Query | 否 | 32 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 12 | 资源集ID |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5533,58 +6036,61 @@ http(s)://[Endpoint]/?Action=RestartRecoveryTask &TaskId=d202309c-0c20-44e2-9e02
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTimeI nner | Struct |  | 返回结果。 |
+| recoveryTimeI nner | Struct |   | 返回结果。 |
 | -instanceId | String | rm- ad2343er******* | 实例ID。 |
 | - recoveryBegin Time | Long | 1677825909000 | 恢复起始时间。 |
 | - recoveryEndTi me | Long | 1677825909000 | 恢复截止时间。 |
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAvailableRecoveryTime &Location=REMOTE
+http(s)://[Endpoint]/?Action=DescribeAvailableRecoveryTime &InstanceId=rm-ad23dsflkj43******* &Location=REMOTE
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTimeInner":{
   "RecoveryEndTime":1677825909000,
   "RecoveryBeginTime":1677825909000,
- },
+  "InstanceId":"rm-ad2343er*******"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTimeInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTimeInner>
  <RecoveryEndTime>1677825909000</RecoveryEndTime>
  <RecoveryBeginTime>1677825909000</RecoveryBeginTime>
  <InstanceId>rm-ad2343er*******</InstanceId>
 </RecoveryTimeInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-### VMware备份、恢复、迁移
+### 4.6 VMware备份、恢复、迁移
 
-#### CreateVmwareBackupPlan
+#### 4.6.1 CreateVmwareBackupPlan
+
+调用CreateVmwareBackupPlan创建VMware备份计划。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5597,8 +6103,6 @@ http(s)://[Endpoint]/?Action=DescribeAvailableRecoveryTime &Location=REMOTE
 | BackupPol icy | Json | Body | 是 | { "preferredBackupPeriod" :[ 1 ], "preferredBackupTime": 1669800995050, "vaultId":"952dab58- c8a1-4868-89b4- 67*****", "backupRetentionPeriod ":7 } | 备份策略。 preferredBackupPerio d：备份周期，取值为整数，例如取值为1表示每天备份一次。 preferredBackupTime ：备份执行时间。 backupRetentionPerio d：备份保留时长，单位为天。 vaultId：备份仓库ID。 |
 | Increment alPolicy | Json | Body | 否 | { "preferredBackupPeriod" :[ 1 ], "preferredBackupTime": 1669800995050, "vaultId":"952dab58- c8a1-4868-89b4- 67*****", "backupRetentionPeriod ":7 } | 增量备份策略 |
 
-灾备管理中心
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5610,13 +6114,11 @@ http(s)://[Endpoint]/?Action=DescribeAvailableRecoveryTime &Location=REMOTE
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| backupPlanInn er | Struct |  | 备份计划信息。 |
+| backupPlanInn er | Struct |   | 备份计划信息。 |
 | -planId | String | 108e46be-c321- 4694-9c2d- b478b******* | 备份计划ID。 |
 | -planName | String | VMware备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED：已删除 DELETING：删除中 |
-| -backupType | String |  | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
-
-灾备管理中心
+| -backupType | String |   | 备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5634,18 +6136,22 @@ http(s)://[Endpoint]/?Action=DescribeAvailableRecoveryTime &Location=REMOTE
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 | -mtime | Long | 1677825909000 | 修改时间，单位毫秒（ms）。 |
 
-**示例**
-
-请求示例灾备管理中心
+请求示例
 
 ```json
-http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567********55440000 &PlanName=VMware备份
+http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567********55440000 &PlanName=VMware备份 &BackupInstance={
         "datacenterName":"datacenter",
         "instanceName":"smj_an23_x86",
         "clusterName":"asrbr_cluster",
         "vcenterId":"90c83761-148b-4aa9-968c-4******",
         "serverId":"svr-00001xuhgg******"
-    }
+```
+
+`}`
+
+```json
+&BackupPolicy={
+        "preferredBackupPeriod":[
 ```
 
 `],`
@@ -5653,14 +6159,14 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
 ```json
         "preferredBackupTime":1669800995050,
         "vaultId":"952dab58-c8a1-4868-89b4-67*****",
-    }
+        "backupRetentionPeriod":7
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "BackupPlanInner":{
   "Status":"RUNNING",
   "OrganizationName":"test",
   "ResourceGroupId":3,
@@ -5680,22 +6186,28 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
   "RegionId":"cn-hangzhou******",
   "InstanceType":"VMware",
   "ResourceGroupName":"ResourceSet(test)"
- },
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <BackupPlanInner>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
  <ResourceGroupId>3</ResourceGroupId>
+ <VaultName>backup-vault
+ </VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>108e46be-c321-4694-9c2d-b478b*******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -5706,13 +6218,17 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
+ <InstanceType>VMware</InstanceType>
  <ResourceGroupName>ResourceSet(test)</ResourceGroupName>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</BackupPlanInner> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateVmwareLocalRecovery
+#### 4.6.2 CreateVmwareLocalRecovery
+
+调用CreateVmwareLocalRecovery创建VMware本地恢复。
 
 **请求头**
 
@@ -5724,8 +6240,6 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
 |---|---|---|---|---|---|
 | Organizati onId | Integ er | Query | 否 | 32 | 组织ID |
 | Resource GroupId | Integ er | Query | 否 | 41 | 资源集ID |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5741,7 +6255,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
 | requestId | String | C8B26B44-0189- 443E-9816-******* | 请求ID。 |
 | success | Boolean | true | 本次请求是否成功。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5751,7 +6265,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | VMware本地恢复 | 恢复任务名称。 |
 | -instanceType | String | VMware | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -5759,9 +6273,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
-
-灾备管理中心
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5777,7 +6289,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareBackupPlan &ClientToken=123e4567*******
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567********55440000
@@ -5786,6 +6298,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
 `&TaskName=VMware`本地恢复
 
 ```json
+&RecoveryInstance={
         "recordId":2,
         "path":{
             "computeResourceName":"asrbrDatacenter/host/asrbrCluster",
@@ -5796,19 +6309,20 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
             "datastoreName":"asrbrDatacenter/host/asrbrCluster/Resources/Datastore***",
             "datastoreId":"datastore-*****",
             "folderId":"group-******"
-        },
+```
+
+`},`
+
+```json
         "instanceId":"52e53ab8-2f7d-0385-f662-1e******",
         "instanceName":"smj_an23*****",
         "vcenterId":"90c83761-148b-4aa9-968c-4fb8********",
         "serverId":"svr-00001xuhgga*********"
-    }
-}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -5832,19 +6346,23 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"VMware"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -5855,15 +6373,17 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-*********</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>VMware本地恢复</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>VMware</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateVmwareRestoreToCloud
+#### 4.6.3 CreateVmwareRestoreToCloud
 
 调用CreateVmwareRestoreToCloud创建VMware恢复上云。
 
@@ -5880,7 +6400,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
 | ClientToke n | Strin g | Query | 是 | 123e4567********55440 000 | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 ClientToken只支持ASCII 字符，且不能超过64个字符。 |
 | TaskName | Strin g | Query | 是 | VMware恢复上云 | 恢复任务名称。 |
 
-| 备份管理平台开 | 发指南·A | PI参考 |  |  | 灾备管理中心 |
+| 备份管理平台开 | 发指南·A | PI参考 |   |   | 灾备管理中心 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Descriptio n | Strin g | Body | 否 | test | 描述 |
@@ -5897,13 +6417,13 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| recoveryTaskI nner | Struct |  | 恢复任务信息。 |
+| recoveryTaskI nner | Struct |   | 恢复任务信息。 |
 | -taskId | String | d202309c-0c20- 44e2-9e02- bacf****** | 恢复任务ID。 |
 | -taskName | String | VMware恢复上云 | 恢复任务名称。 |
 | -instanceType | String | VMware | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
@@ -5911,13 +6431,13 @@ http(s)://[Endpoint]/?Action=CreateVmwareLocalRecovery &ClientToken=123e4567****
 | -instanceNum | Integer | 1 | 实例数量。 |
 | -organizationId | Integer | 12 | 组织ID。 |
 | - organizationN ame | String | test | 组织名称。 |
-| -recoveryType | String |  | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
+| -recoveryType | String |   | 恢复类型。当实例类型为ECS时显示。 ECS FILE：ECS文件。 _ ECS DISK：ECS云盘。 _ |
 | -regionId | String | cn-hangzhou- ******** | 区域ID。 |
 | -regionName | String | cn-hangzhou- ******** | 区域名称。 |
 | -creator | String | ascm-org-********* | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5939,6 +6459,7 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
 `&TaskName=VMware`恢复上云
 
 ```json
+&RecoveryInstance={
         "recordId":2,
         "securityGroupId":"sg-q1f01emdyy96*****",
         "organizationId":4,
@@ -5950,13 +6471,12 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
         "restoreHostName":"restoretoecs",
         "resourceGroupId":3,
         "diskCategory":"cloud_efficiency",
-    }
+        "recoveryInstanceName":"restoretoecs"
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "RecoveryTaskInner":{
@@ -5980,19 +6500,23 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
   "Ctime":1677825909000,
   "RegionId":"cn-hangzhou-********",
   "Deleted":0,
- },
+  "InstanceType":"VMware"
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <RecoveryTaskInner>
  <Status>RECOVERYING</Status>
  <OrganizationName>test</OrganizationName>
  <RecoveryType  />
@@ -6003,15 +6527,17 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
  <Mtime>1677825909000</Mtime>
  <OrganizationId>12</OrganizationId>
  <Creator>ascm-org-*********</Creator>
+ <InstanceNum>1</InstanceNum>
  <TaskName>VMware恢复上云</TaskName>
  <RegionName>cn-hangzhou-********</RegionName>
  <Ctime>1677825909000</Ctime>
  <RegionId>cn-hangzhou-********</RegionId>
  <Deleted>0</Deleted>
+ <InstanceType>VMware</InstanceType>
 </RecoveryTaskInner> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVmwareBackupPlanList
+#### 4.6.4 DescribeVmwareBackupPlanList
 
 调用DescribeVmwareBackupPlanList查看VMware备份计划列表。
 
@@ -6032,21 +6558,17 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | -planId | String | d202309c-0c20- 44e2-9e02- bacf****** | 备份计划ID。 |
 | -planName | String | VMware备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
-| -backupType | String |  | ECS备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件 _ ECS DISK：ECS云盘 _ |
+| -backupType | String |   | ECS备份类型。当实例类型为ECS时显示。 ECS FILE：ECS文件 _ ECS DISK：ECS云盘 _ |
 | -instanceType | String | VMware | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
 | -lastResult | String | SUCCESS | 最近一次备份结果。 NOT RUN：未运行 _ BACKUPING：运行中 SUCCESS：成功 PART FINISHED：部分完成 _ FAILED：失败 MIGRATING：迁移中 BLOCKED：已阻塞 |
 | -organizationId | Integer | 12 | 组织ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -6068,8 +6590,6 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 | pageNum | Integer | 1 | 分页页数。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | pageSize | Integer | 10 | 每页返回的数据个数。 |
@@ -6083,10 +6603,9 @@ http(s)://[Endpoint]/?Action=CreateVmwareRestoreToCloud &ClientToken=123e4567***
 http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -6111,23 +6630,27 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
   "RegionId":"cn-hangzhou******",
   "InstanceType":"VMware",
   "ResourceGroupName":"ResourceSet(test)"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"BackupPlanNotFound",
  "ErrorMessage":"Not Found BackupPlan for current operate.",
  "TotalSize":10,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <Status>RUNNING</Status>
  <OrganizationName>test</OrganizationName>
  <ResourceGroupId>4</ResourceGroupId>
+ <VaultName>backup-vault</VaultName>
  <CreatorId>5612</CreatorId>
  <PlanId>d202309c-0c20-44e2-9e02-bacf******</PlanId>
  <Mtime>1677825909000</Mtime>
@@ -6138,13 +6661,17 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
  <NextBackupTime>1677825909000</NextBackupTime>
  <RegionName>cn-hangzhou******</RegionName>
  <Ctime>1677825909000</Ctime>
+ <BackupType  />
  <LastResult>SUCCESS</LastResult>
  <RegionId>cn-hangzhou******</RegionId>
+ <InstanceType>VMware</InstanceType>
  <ResourceGroupName>ResourceSet(test)</ResourceGroupName>
-</Data> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <TotalSize>10</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+</Data> <ErrorCode>BackupPlanNotFound</ErrorCode> <ErrorMessage>Not Found BackupPlan for current operate.</ErrorMessage> <TotalSize>10</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVmwareBackupPlan
+#### 4.6.5 DescribeVmwareBackupPlan
+
+调用DescribeVmwareBackupPlan查看VMware备份计划。
 
 **请求头**
 
@@ -6156,8 +6683,6 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
 |---|---|---|---|---|---|
 | Organizati onId | Integ er | Quer y | 否 | 1 | 组织ID |
 | ResourceG roupId | Integ er | Quer y | 否 | 2 | 资源集ID |
-
-灾备管理中心
 
 | PlanId | Strin g | Quer y | 是 | d202309c-0c20-44e2- 9e02-bacf****** | 备份计划ID。 |
 |---|---|---|---|---|---|
@@ -6173,13 +6698,11 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
 | errorCode | String | BackupPlanNotFou nd | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| data | Struct |  | 返回数据。 |
-| - backupPolicyLi st | Array |  | 备份策略集合 |
+| data | Struct |   | 返回数据。 |
+| - backupPolicyLi st | Array |   | 备份策略集合 |
 | -- preferredBack upPeriod | String | 2 | 备份周期。 RDS、PolarDB-X：["SUNDAY"、 "MONDAY"]，每周日、周三备份其他产品：["2"]，2天或小时 |
 | -- preferredBack upPeriodFull | String | 7 | 全量备份备份周期。 |
 | -- backupRetenti onPeriod | Integer | 14 | 备份保存时长。单位：天。 |
-
-灾备管理中心
 
 | --policyType | String | INCREMENTAL | 备份策略类型。 全量备份：FULL 增量备份：INCREMENTAL 全量+增量：FULL INCREMENTAL _ |
 |---|---|---|---|
@@ -6192,9 +6715,7 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
 | -planName | String | VMware备份 | 备份计划名称。 |
 | -status | String | RUNNING | 备份计划状态。 NOT RUN：没有运行 _ CREATING：创建中 CREATED：创建成功 STARTING：启动中 RUNNING：运行中 BACKING UP：备份中 _ STOPPING：停止中 STOPPED：已停止 DELETED： 已删除 DELETING：删除中 |
 
-灾备管理中心
-
-| -backupType | String |  | ECS备份类型。当实例类型为ECS时展示。 ECS FILE：ECS文件 _ ECS DISK：ECS云盘 _ |
+| -backupType | String |   | ECS备份类型。当实例类型为ECS时展示。 ECS FILE：ECS文件 _ ECS DISK：ECS云盘 _ |
 |---|---|---|---|
 | -instanceType | String | VMware | 实例类型。包括OSS、ECS、NAS、ADB、 RDS、PolarDB-X、MaxCompute、 Elasticsearch及VMware。 |
 | - nextBackupTi me | Long | 1677825909000 | 下次备份时间，单位毫秒（ms）。 |
@@ -6208,12 +6729,10 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
 | -creator | String | ascm-org-******** | 创建人。 |
 | -creatorId | Integer | 5612 | 创建人ID。 |
 
-灾备管理中心
-
 | -ctime | Long | 1677825909000 | 创建时间，单位毫秒（ms）。 |
 |---|---|---|---|
 | -mtime | Long | 1677825909000 | 修改时间，单位毫秒（ms）。 |
-| -instance | Struct |  | 备份实例。 |
+| -instance | Struct |   | 备份实例。 |
 | --instanceId | String | vm- as312wer1****** | 实例ID。 |
 | -- instanceName | String | vm- as312wer1****** | 实例名称。 |
 
@@ -6225,10 +6744,9 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlanList
 http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2-9e02-bacf******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":20,
@@ -6246,6 +6764,7 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
   "backupType":"",
   "organizationId":12,
   "regionId":"cn-hangzhou******",
+  "-backupPolicyList":{
    "preferredBackupPeriod":"2",
    "preferredBackupTime":"1677825909000",
    "vaultName":"ASRBR",
@@ -6254,60 +6773,83 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
    "backupRetentionPeriod":14,
    "preferredBackupPeriodFull":"7",
    "preferredCycleType":"BY_INTERVAL",
-  },
+   "preferredBackupType":"BY_TIME"
+```
+
+`},`
+
+```json
   "ctime":1677825909000,
   "planId":"d202309c-0c20-44e2-9e02-bacf******",
   "resourceGroupId":4,
+  "-instance":{
    "instanceId":"vm-as312wer1******",
-  },
+   "instanceName":"vm-as312wer1******"
+```
+
+`},`
+
+```json
   "status":"RUNNING"
- },
+```
+
+`},`
+
+```json
  "requestId":"C8B26B44-0189-443E-9816-*******",
  "success":true,
  "errorMessage":"Not Found BackupPlan for current operate.",
-}
+ "errorCode":"BackupPlanNotFound"
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<code>200</code> <cost>20</cost> <data>
+<path>/asrbr/*/*</path> <code>200</code> <cost>20</cost> <data>
  <creator>ascm-org-********</creator>
  <resourceGroupName>ResourceSet(test)</resourceGroupName>
  <organizationName>test</organizationName>
  <lastResult>SUCCESS</lastResult>
+ <instanceType>VMware</instanceType>
  <regionName>cn-hangzhou******</regionName>
  <nextBackupTime>1677825909000</nextBackupTime>
  <creatorId>5612</creatorId>
  <planName>VMware备份</planName>
  <mtime>1677825909000</mtime>
+ <backupType  />
  <organizationId>12</organizationId>
  <regionId>cn-hangzhou******</regionId>
+ <-backupPolicyList>
   <preferredBackupPeriod>2</preferredBackupPeriod>
   <preferredBackupTime>1677825909000</preferredBackupTime>
+  <vaultName>ASRBR</vaultName>
+  <vaultId>d202309c-0c20-44e2-9e02-</vaultId>
   <policyType>INCREMENTAL</policyType>
   <backupRetentionPeriod>14</backupRetentionPeriod>
   <preferredBackupPeriodFull>7</preferredBackupPeriodFull>
   <preferredCycleType>BY_INTERVAL</preferredCycleType>
   <preferredBackupType>BY_TIME</preferredBackupType>
+ </-backupPolicyList>
  <ctime>1677825909000</ctime>
  <planId>d202309c-0c20-44e2-9e02-bacf******</planId>
  <resourceGroupId>4</resourceGroupId>
+ <-instance>
   <instanceId>vm-as312wer1******</instanceId>
   <instanceName>vm-as312wer1******</instanceName>
+ </-instance>
  <status>RUNNING</status>
-</data> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>Not Found BackupPlan for current operate.</errorMessage>
+</data> <requestId>C8B26B44-0189-443E-9816-*******</requestId> <success>true</success> <errorMessage>Not Found BackupPlan for current operate.</errorMessage> <errorCode>BackupPlanNotFound</errorCode>
 ```
 
-### vCenter管理
+### 4.7 vCenter管理
 
-#### AddVCenter
+#### 4.7.1 AddVCenter
 
 添加vCenter
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 灾备管理中心
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -6331,10 +6873,10 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 32 | 接口耗时，单位毫秒（ms）。 |
-| vcenterInfo | Struct |  | vCenter信息。 |
+| vcenterInfo | Struct |   | vCenter信息。 |
 | -host | String | 192.168.*.* | vCenter主机地址。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6349,13 +6891,12 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 请求示例
 
 ```
-&ClientToken=123e4567-e89b-12d3-a456-426655440000 &Host=192.168.*.* &Password=*********** &UserName=admin*********
+http(s)://[Endpoint]/?Action=AddVCenter &ClientToken=123e4567-e89b-12d3-a456-426655440000 &Host=192.168.*.* &Password=*********** &UserName=admin*********
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "path":"/asrbr/*/*",
  "code":"200",
  "cost":32,
@@ -6369,17 +6910,15 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
   "host":"192.168.*.*",
   "userName":"admin*********",
   "serverId":"svr-00001xuhggafmr********"
- }
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `}` `XML` 格式
 
 ```xml
 <Path>/asrbr/*/*</Path><RequestId>C8B26B44-0189-443E-9816-*******</RequestId><VcenterIn fo><-vCenterId>90c83761-148b-4aa9-968c-4fb84*****</-vCenterId><-ServerStatus>ACTIVE</-S erverStatus><-Host>192.168.*.*</-Host><-ServerId>svr-00001xuhggafmr********</-ServerId> <-UserName>admin*********</-UserName></VcenterInfo><ErrorCode>403</ErrorCode><ErrorMess age>failed</ErrorMessage><Code>200</Code><Cost>32</Cost><Success>true</Success>
 ```
 
-#### ModifyvCenterInfo
+#### 4.7.2 ModifyvCenterInfo
 
 修改vCenter信息
 
@@ -6408,7 +6947,7 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 | errorMessage | String | The vcenter not found. | 错误提示信息。 |
 | errorCode | String | VcenterNotExists | 错误码。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6422,13 +6961,12 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 请求示例
 
 ```
-&VCenterId=98357fa5-****-4bd8-9787-3e614cc**** &Host=192.168.*.* &Password=************ &UserName=admin*********
+http(s)://[Endpoint]/?Action=ModifyvCenterInfo &VCenterId=98357fa5-****-4bd8-9787-3e614cc**** &Host=192.168.*.* &Password=************ &UserName=admin*********
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Data":"success",
@@ -6437,20 +6975,21 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
  "Code":"200",
  "Cost":"20",
  "Success":"true"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>success</Data> <ErrorCode>VcenterNotExists</ErrorCode> <ErrorMessage>The vcenter not found.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>success</Data> <ErrorCode>VcenterNotExists</ErrorCode> <ErrorMessage>The vcenter not found.</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DeleteVCenter
+#### 4.7.3 DeleteVCenter
+
+调用DeleteVCenter删除vCenter。
 
 **请求头**
 
-灾备管理中心该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -6471,7 +7010,7 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 | errorCode | String | 403 | 错误码。 403：没有权限。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| data | Struct |  | 返回结果。 |
+| data | Struct |   | 返回结果。 |
 | -result | Boolean | true | 删除结果。 true：成功 false：失败 |
 
 **示例**
@@ -6479,35 +7018,37 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 请求示例
 
 ```
-&vCenterId=90c83761-148b-4aa9-968c-4fb84*****
+http(s)://[Endpoint]/?Action=DeleteVCenter &vCenterId=90c83761-148b-4aa9-968c-4fb84*****
 ```
 
-&公共请求参数灾备管理中心正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Data":{
   "Result":true
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"403",
  "ErrorMessage":"failed",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
  <Result>true</Result>
 </Data> <ErrorCode>403</ErrorCode> <ErrorMessage>failed</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVCenterComputeResourceList
+#### 4.7.4 DescribeVCenterComputeResourceList
 
 调用DescribeVCenterComputeResourceList查看vCenter计算资源列表。
 
@@ -6524,7 +7065,7 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 | VCenterId | Strin g | Query | 是 | 98357fa5-bd33-4bd8- 9787-3e614cc1dbad | VCenterID |
 | DataCent erPath | Strin g | Query | 是 | asrbrDatacenter | 数据中心地址。 |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -6545,18 +7086,16 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 | pageNum | Integer | 1 | 分页页数。 |
 | pageSize | Integer | 10 | 每页返回的数据个数。 |
 | totalSize | Integer | 50 | 总数据量。 |
-| data | Struct |  | 返回数据。 |
-| -inventories | Array |  | 资源列表。 |
+| data | Struct |   | 返回数据。 |
+| -inventories | Array |   | 资源列表。 |
 | --moId | String | domain-c8 | 模块ID。 |
 | -- computeResou rceName | String | asrbr集群 | 计算资源名称。 |
 | -- computeResou rcePath | String | asrbrDatacenter/ho st/asrbr集群 | 计算资源路径。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --type | String | ClusterComputeRe source | 资源类型。 |
-| --properties | Struct |  | 属性信息。 |
+| --properties | Struct |   | 属性信息。 |
 | ---hasHost | Boolean | true | 是否有地址。 |
 | --- resourcePoolId | String | resgroup-***** | 资源池ID。 |
 | -totalCount | String | 50 | 总数据量。 |
@@ -6566,13 +7105,12 @@ http(s)://[Endpoint]/?Action=DescribeVmwareBackupPlan &PlanId=d202309c-0c20-44e2
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357fa5-bd33-4bd8-9787-3e614cc1dbad
+http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357fa5-bd33-4bd8-9787-3e614cc1dbad &DataCenterPath=asrbrDatacenter
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -6587,22 +7125,23 @@ http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357
    "--Properties":{
     "HasHost":true,
     "ResourcePoolId":"resgroup-*****"
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "ErrorCode":"VcenterIdIsEmpty",
  "ErrorMessage":"The parameter of vcenterId is empty.",
  "TotalSize":50,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-灾备管理中心 `XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <TotalCount>50</TotalCount>
  <-Inventories>
   <Type>ClusterComputeResource</Type>
@@ -6617,7 +7156,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357
 </Data> <ErrorCode>VcenterIdIsEmpty</ErrorCode> <ErrorMessage>The parameter of vcenterId is empty.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVCenterDataCenterList
+#### 4.7.5 DescribeVCenterDataCenterList
 
 调用DescribeVCenterDataCenterList查看vCenter数据中心列表。
 
@@ -6639,7 +7178,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357
 |---|---|---|---|
 | requestId | String | C8B26B44-0189- 443E-9816-******* | 请求ID。 |
 
-|  | 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |  |
+|   | 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6653,17 +7192,17 @@ http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357
 | pageNum | Integer | 1 | 分页页数。 |
 | pageSize | Integer | 10 | 每页返回的数据个数。 |
 | totalSize | Integer | 5 | 总数据量。 |
-| data | Struct |  | 返回数据。 |
-| -inventories | Array |  | 资源列表。 |
+| data | Struct |   | 返回数据。 |
+| -inventories | Array |   | 资源列表。 |
 | --moId | String | datacenter-3 | 模块ID。 |
 | -- dataCenterPat h | String | asrbrDatacenter | 数据中心地址。 |
 | -- dataCenterNa me | String | asrbrDatacenter | 数据中心名称。 |
 | --type | String | Datacenter | 资源类型。 |
-| --properties | Struct |  | 属性信息。 |
+| --properties | Struct |   | 属性信息。 |
 | ---folderId | String | group-v4 | 文件夹ID。 |
 | ---hasHost | Boolean | false | 是否有地址。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6678,10 +7217,9 @@ http(s)://[Endpoint]/?Action=DescribeVCenterComputeResourceList &VCenterId=98357
 http(s)://[Endpoint]/?Action=DescribeVCenterDataCenterList &VCenterId=v-test12s****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -6696,22 +7234,23 @@ http(s)://[Endpoint]/?Action=DescribeVCenterDataCenterList &VCenterId=v-test12s*
    "--Properties":{
     "FolderId":"group-v4",
     "HasHost":false
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "ErrorCode":"VcenterIdIsEmpty",
  "ErrorMessage":"The parameter of vcenterId is empty.",
  "TotalSize":5,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <TotalCount>5</TotalCount>
  <-Inventories>
   <Type>Datacenter</Type>
@@ -6726,7 +7265,9 @@ http(s)://[Endpoint]/?Action=DescribeVCenterDataCenterList &VCenterId=v-test12s*
 </Data> <ErrorCode>VcenterIdIsEmpty</ErrorCode> <ErrorMessage>The parameter of vcenterId is empty.</ErrorMessage> <TotalSize>5</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVCenterList
+#### 4.7.6 DescribeVCenterList
+
+调用DescribeVCenterList查看vCenter集合。
 
 **请求头**
 
@@ -6746,11 +7287,9 @@ http(s)://[Endpoint]/?Action=DescribeVCenterDataCenterList &VCenterId=v-test12s*
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 返回数据。 |
+| data | Array |   | 返回数据。 |
 | -host | String | 192.168.*.* | vCenter地址。 |
 | -serverId | String | svr- 00001xuhggafmr** ***** | vCenter服务ID。 |
 | -serverStatus | String | ACTIVE | vCenter服务状态。 UNKNOWN：未知状态 ACTIVE：活跃状态 |
@@ -6769,16 +7308,15 @@ http(s)://[Endpoint]/?Action=DescribeVCenterDataCenterList &VCenterId=v-test12s*
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVCenterList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -6789,20 +7327,23 @@ http(s)://[Endpoint]/?Action=DescribeVCenterList
   "UserName":"admin*********",
   "ServerStatus":"ACTIVE",
   "Host":"192.168.*.*"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"VcenterNotExists",
  "ErrorMessage":"The vcenter not found.",
  "TotalSize":50,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <vCenterId>90c83761********444daa69</vCenterId>
  <ServerId>svr-00001xuhggafmr*******</ServerId>
  <UserName>admin*********</UserName>
@@ -6811,13 +7352,13 @@ http(s)://[Endpoint]/?Action=DescribeVCenterList
 </Data> <ErrorCode>VcenterNotExists</ErrorCode> <ErrorMessage>The vcenter not found.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVCenterNetworkList
+#### 4.7.7 DescribeVCenterNetworkList
 
 调用DescribeVCenterNetworkList查看vCenter网络列表。
 
 **请求头**
 
-灾备管理中心该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -6842,10 +7383,10 @@ http(s)://[Endpoint]/?Action=DescribeVCenterList
 | pageNum | Integer | 1 | 分页页数。 |
 | pageSize | Integer | 10 | 每页返回的数据个数。 |
 | totalSize | Integer | 1 | 总数据量。 |
-| data | Struct |  | 返回数据。 |
-| -inventories | Array |  | 资源列表。 |
+| data | Struct |   | 返回数据。 |
+| -inventories | Array |   | 资源列表。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6854,7 +7395,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterList
 | --name | String | VM Network | 网络名称。 |
 | --path | String | asrbrDatacenter/ho st/asrbr集群/Resources/VM Network | 网络地址。 |
 | --type | String | Network | 资源类型。 |
-| --properties | Struct |  | 属性信息。 |
+| --properties | Struct |   | 属性信息。 |
 | ---hasHost | Boolean | true | 是否有地址。 |
 | ---capacity | String | 3840506068992 | 存储规格。 |
 | ---freeSpace | String | 2294717349888 | 剩余空间。 |
@@ -6868,10 +7409,9 @@ http(s)://[Endpoint]/?Action=DescribeVCenterList
 http(s)://[Endpoint]/?Action=DescribeVCenterNetworkList &VCenterId=0ac81caa17085845910127329e0034 &ClusterNamePath=asrbrDatacenter/host/asrbr集群
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -6887,22 +7427,23 @@ http(s)://[Endpoint]/?Action=DescribeVCenterNetworkList &VCenterId=0ac81caa17085
     "Capacity":"3840506068992",
     "FreeSpace":"2294717349888",
     "HasHost":true
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "ErrorCode":"VcenterNotExists",
  "ErrorMessage":"The vcenter not found.",
  "TotalSize":1,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <TotalCount>1</TotalCount>
  <-Inventories>
   <Path>asrbrDatacenter/host/asrbr集群/Resources/VM Network</Path>
@@ -6918,7 +7459,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterNetworkList &VCenterId=0ac81caa17085
 </Data> <ErrorCode>VcenterNotExists</ErrorCode> <ErrorMessage>The vcenter not found.</ErrorMessage> <TotalSize>1</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVCenterRegisterCode
+#### 4.7.8 DescribeVCenterRegisterCode
 
 调用DescribeVCenterRegisterCode查看vCenter注册码。
 
@@ -6940,7 +7481,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterNetworkList &VCenterId=0ac81caa17085
 | requestId | String | C8B26B44-0189- 443E-9816-******* | 请求ID。 |
 | success | Boolean | true | 本次请求是否成功。 |
 
-| 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6950,7 +7491,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterNetworkList &VCenterId=0ac81caa17085
 | errorCode | String | 500 | 错误码。 |
 | path | String | /asrbr/*/* | 请求路径。 |
 | cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | -expireTime | Long | 1677825909000 | 过期时间，单位毫秒（ms）。 |
 | -rabbitMqHost | String | cn-hangzhou.hbr- mq****** | 注册码获取地址。 |
 | -rabbitMqPort | Long | 5628 | 注册码获取端口。 |
@@ -6964,10 +7505,9 @@ http(s)://[Endpoint]/?Action=DescribeVCenterNetworkList &VCenterId=0ac81caa17085
 http(s)://[Endpoint]/?Action=DescribeVCenterRegisterCode
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "Data":{
@@ -6975,19 +7515,22 @@ http(s)://[Endpoint]/?Action=DescribeVCenterRegisterCode
   "Token":"00YN*****",
   "ExpireTime":1677825909000,
   "RabbitMqPort":5628
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"InternalFailure",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <Data>
  <RabbitMqHost>cn-hangzhou.hbr-mq******</RabbitMqHost>
  <Token>00YN*****</Token>
  <ExpireTime>1677825909000</ExpireTime>
@@ -6995,7 +7538,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterRegisterCode
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>InternalFailure</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### DescribeVCenterStorageResourceList
+#### 4.7.9 DescribeVCenterStorageResourceList
 
 调用DescribeVCenterStorageResourceList查看vCenter存储资源列表。
 
@@ -7011,7 +7554,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterRegisterCode
 | Resource GroupId | Integ er | Query | 否 | 13 | 资源集ID |
 | VCenterId | Strin g | Query | 是 | 0ac81caa170858459101 27329e0034 | VCenterID |
 
-| 灾备管理中心 |  |  |  | 备 | 份管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 备 | 份管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -7032,18 +7575,16 @@ http(s)://[Endpoint]/?Action=DescribeVCenterRegisterCode
 | pageNum | Integer | 1 | 分页页数。 |
 | pageSize | Integer | 10 | 每页返回的数据个数。 |
 | totalSize | Integer | 1 | 总数据量。 |
-| data | Struct |  | 返回数据。 |
-| -inventories | Array |  | 资源列表。 |
+| data | Struct |   | 返回数据。 |
+| -inventories | Array |   | 资源列表。 |
 | --datastoreId | String | datastore-14 | 存储ID。 |
 | --name | String | datastore | 存储名称。 |
 | -- datastoreNam e | String | asrbrDatacenter/ho st/asrbr集群/Resources/datas tore | 存储路径。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --type | String | Datastore | 资源类型。 |
-| --properties | Struct |  | 属性信息。 |
+| --properties | Struct |   | 属性信息。 |
 | ---hasHost | Boolean | false | 是否有地址。 |
 | ---capacity | String | 3840506068992 | 存储规格，单位：byte。 |
 | ---freeSpace | String | 2294717349888 | 剩余空间，单位：byte。 |
@@ -7057,10 +7598,9 @@ http(s)://[Endpoint]/?Action=DescribeVCenterRegisterCode
 http(s)://[Endpoint]/?Action=DescribeVCenterStorageResourceList &VCenterId=0ac81caa17085845910127329e0034 &ClusterNamePath=asrbrDatacenter/host/asrbr集群
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
@@ -7076,22 +7616,23 @@ http(s)://[Endpoint]/?Action=DescribeVCenterStorageResourceList &VCenterId=0ac81
     "Capacity":"3840506068992",
     "FreeSpace":"2294717349888",
     "HasHost":false
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "ErrorCode":"VcenterNotExists",
  "ErrorMessage":"The vcenter not found.",
  "TotalSize":1,
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
+<Path>/asrbr/*/*</Path> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <Data>
  <TotalCount>1</TotalCount>
  <-Inventories>
   <Type>Datastore</Type>
@@ -7107,9 +7648,11 @@ http(s)://[Endpoint]/?Action=DescribeVCenterStorageResourceList &VCenterId=0ac81
 </Data> <ErrorCode>VcenterNotExists</ErrorCode> <ErrorMessage>The vcenter not found.</ErrorMessage> <TotalSize>1</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-### 存储池管理
+### 4.8 存储池管理
 
-#### DescribeStoragePoolList
+#### 4.8.1 DescribeStoragePoolList
+
+调用DescribeStoragePoolList查看存储池列表。
 
 **请求头**
 
@@ -7125,10 +7668,10 @@ http(s)://[Endpoint]/?Action=DescribeVCenterStorageResourceList &VCenterId=0ac81
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| StoragePool | Array |  | 存储池信息。 |
+| StoragePool | Array |   | 存储池信息。 |
 | -StorageId | String | efa6d59b-8288- 48c2-8ef5- 46*********** | 存储池ID。 |
 
-|  | 灾备管理中心 |  |  | 备份管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 备份管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7151,7 +7694,7 @@ http(s)://[Endpoint]/?Action=DescribeVCenterStorageResourceList &VCenterId=0ac81
 | Path | String | /asrbr/*/* | 请求路径。 |
 | Cost | Long | 20 | 接口耗时，单位毫秒（ms）。 |
 
-| 备份管理平台开发指 | 南·API参考 |  | 灾备管理中心 |
+| 备份管理平台开发指 | 南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7168,11 +7711,11 @@ http(s)://[Endpoint]/?Action=DescribeVCenterStorageResourceList &VCenterId=0ac81
 http(s)://[Endpoint]/?Action=DescribeStoragePoolList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Path":"/asrbr/*/*",
+ "StoragePool":{
   "StorageType":"OSS",
 ```
 
@@ -7187,7 +7730,12 @@ http(s)://[Endpoint]/?Action=DescribeStoragePoolList
   "RegionId":"cn-hangzhou*****",
   "UsedCapacity":8695761428,
   "StorageId":"efa6d59b-8288-48c2-8ef5-46***********",
- },
+  "Name":"storage pool"
+```
+
+`},`
+
+```json
  "RequestId":"C8B26B44-0189-443E-9816-*******",
  "PageNum":1,
  "PageSize":10,
@@ -7197,32 +7745,33 @@ http(s)://[Endpoint]/?Action=DescribeStoragePoolList
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
+<Path>/asrbr/*/*</Path> <StoragePool>
+ <StorageType>OSS</StorageType>
  <Description>存储数据</Description>
  <Endpoint>oss-cn-hangzhou*********</Endpoint>
+ <StorageCapacity>20</StorageCapacity>
  <Authority>owner</Authority>
  <AccessKeyId>sdflee123********</AccessKeyId>
  <TrashBucket>trusn-des12fr*******</TrashBucket>
  <RegionId>cn-hangzhou*****</RegionId>
  <UsedCapacity>8695761428</UsedCapacity>
  <StorageId>efa6d59b-8288-48c2-8ef5-46***********</StorageId>
-<RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <ErrorCode>StoragePoolNotFound</ErrorCode> <ErrorMessage>Not Found StoragePool for current operate.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+ <Name>storage pool</Name>
+</StoragePool> <RequestId>C8B26B44-0189-443E-9816-*******</RequestId> <PageNum>1</PageNum> <PageSize>10</PageSize> <ErrorCode>StoragePoolNotFound</ErrorCode> <ErrorMessage>Not Found StoragePool for current operate.</ErrorMessage> <TotalSize>50</TotalSize> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-灾备管理中心
+## 5 错误码
 
-## 错误码
+### 5.1 数据面
 
-### 数据面
+#### 5.1.1 Data_Execution_Layer_Error
 
-#### Data_Execution_Layer_Error
-
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7239,21 +7788,20 @@ A
 **解决方案**
 
 1. 根据产品类型确定对应的数据面服务，例如OSS、NAS产品对应hbr-agent.Agent#、ECS快照对应hbr-
+agent.Backupworker#等。
 2. 登录数据面服务节点，查看对应服务的日志，定位备份任务失败的具体原因。
 3. 根据日志中的错误信息进行处理，处理完成后等待下一次备份周期自动重试，或在ASRBR控制台手动触
 发备份。
 
-### DBS
+### 5.2 DBS
 
-#### Dbaas
+#### 5.2.1 Dbaas
 
-##### DBS-Dbaas-
+##### 5.2.1.1 DBS-Dbaas-AccessInfoInvalidResourceStorageConfig
 
 **AccessInfoInvalidResourceStorageConfig**
 
-## 错误码
-
-##### DBS-Dbaas-AccessInfoInvalidResourceStorageConfig
+**错误码**
 
 **错误信息**
 
@@ -7265,17 +7813,19 @@ A
 
 **置信等级**
 
-灾备管理中心 B
+B
 
-**排查方式**
+> **排查方式**
+
+查看DBAAS服务日志中该异常的完整cause堆栈，查看具体的错误原因。
 
 **解决方案**
 
 序列化异常：检查ObjectMapper配置及selector结构定义是否发生不兼容变更。
 
-##### DBS-Dbaas-AccessInfoStorageInitFailed
+##### 5.2.1.2 DBS-Dbaas-AccessInfoStorageInitFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7289,7 +7839,7 @@ A
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看DBAAS服务日志中该异常的完整cause堆栈。
 2. 检查数据库连接池状态与access_info表唯一键约束是否冲突。
@@ -7298,9 +7848,9 @@ B
 
 数据库异常：排查连接池状态、唯一键冲突记录，清理异常数据后重试。
 
-##### DBS-Dbaas-BackupDataQueryFailed
+##### 5.2.1.3 DBS-Dbaas-BackupDataQueryFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7314,22 +7864,22 @@ describeUnifyBackupList委托具体IRestoreService实现查询备份列表时抛
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看服务日志获取原始异常cause及涉及的dbType/kindCode/sceneType组合。
 2. 结合具体IRestoreService实现（按dbType区分）进一步排查下游依赖（如备份集表、复制表）是否正
-常。 灾备管理中心
+常。
 3. 必要时调用相关运维工具核对底层存储/元数据服务状态。
 
 **解决方案**
 
 根据具体下游异常处理： 数据缺失，需检查备份任务是否正常执行。 服务异常，需等下游恢复后重试。
 
-##### DBS-Dbaas-
+##### 5.2.1.4 DBS-Dbaas-BackupDataSourceInstanceNotFound
 
 **BackupDataSourceInstanceNotFound**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7343,7 +7893,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 确认instanceName 在该region下是否真实存在。
 2. 针对异地恢复场景，检查replication_bakset表中是否存在对应源实例的复制备份集记录。
@@ -7353,9 +7903,9 @@ B
 
 实例确实不存在时，引导用户确认实例状态。如为异地场景元数据缺失，需检查复制链路是否正常完成备份集注册。
 
-##### DBS-Dbaas-BackupJobAlreadyExists
+##### 5.2.1.5 DBS-Dbaas-BackupJobAlreadyExists
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7371,11 +7921,11 @@ A
 
 **解决方案**
 
-灾备管理中心查询该实例已存在的备份任务状态，等待其结束后再发起新任务。
+查询该实例已存在的备份任务状态，等待其结束后再发起新任务。
 
-##### DBS-Dbaas-BackupJobAlreadyFinished
+##### 5.2.1.6 DBS-Dbaas-BackupJobAlreadyFinished
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7393,9 +7943,9 @@ A
 
 无需重复处理，可直接查询该missionId对应任务的最终状态确认结果。如需重新备份，应使用新的 missionId发起请求。
 
-##### DBS-Dbaas-BackupJobInstanceNotFound
+##### 5.2.1.7 DBS-Dbaas-BackupJobInstanceNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7409,7 +7959,7 @@ A
 
 B
 
-**排查方式**
+> **排查方式**
 
 核对请求中的实例标识是否正确，实例是否仍然存在。
 
@@ -7417,13 +7967,13 @@ B
 
 确认实例信息后重试。实例已释放的场景需引导用户重新创建实例。
 
-##### DBS-Dbaas-BackupJobInternalError
+##### 5.2.1.8 DBS-Dbaas-BackupJobInternalError
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-备份任务内部错误。 灾备管理中心
+备份任务内部错误。
 
 **原因分析**
 
@@ -7433,7 +7983,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看服务日志获取具体异常堆栈及涉及的
 Handler（InstanceBakJobHandler/ClusterBakJobHandler）。
@@ -7444,9 +7994,9 @@ Handler（InstanceBakJobHandler/ClusterBakJobHandler）。
 
 根据具体异常原因分类处理： 若为偶发异常可重试。 持续复现需上报研发定位代码逻辑问题。
 
-##### DBS-Dbaas-BackupJobInvalidParameters
+##### 5.2.1.9 DBS-Dbaas-BackupJobInvalidParameters
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7460,7 +8010,7 @@ Handler（InstanceBakJobHandler/ClusterBakJobHandler）。
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对backupType是否为接口支持的取值。
 2. 核对planBackupTime时间格式，forceSnapshot与其他参数的组合是否符合业务约束。
@@ -7469,13 +8019,13 @@ B
 
 按接口文档修正参数取值和组合后重新提交请求。
 
-##### DBS-Dbaas-BackupJobNotFound
+##### 5.2.1.10 DBS-Dbaas-BackupJobNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-备份任务不存在。 灾备管理中心
+备份任务不存在。
 
 **原因分析**
 
@@ -7485,15 +8035,17 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
+
+核对传入的backupJobId是否正确，任务是否仍在保留期内。
 
 **解决方案**
 
 确认任务ID后重试。任务记录确实已清理时，无法再查询历史状态。
 
-##### DBS-Dbaas-BackupJobPolicyNotFound
+##### 5.2.1.11 DBS-Dbaas-BackupJobPolicyNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7507,7 +8059,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 核对该实例/集群是否已配置对应policyLevel的备份策略。
 
@@ -7515,9 +8067,9 @@ B
 
 先通过CreateBackupPolicy/ModifyBackupPolicy配置备份策略，再重新发起备份任务。
 
-##### DBS-Dbaas-BackupJobStrategySyncing
+##### 5.2.1.12 DBS-Dbaas-BackupJobStrategySyncing
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7533,11 +8085,11 @@ A
 
 **解决方案**
 
-灾备管理中心等待策略同步完成后重新发起备份任务。如长时间未完成同步，需排查DAG侧策略同步链路是否卡住。
+等待策略同步完成后重新发起备份任务。如长时间未完成同步，需排查DAG侧策略同步链路是否卡住。
 
-##### DBS-Dbaas-BackupPolicyDescribeFailed
+##### 5.2.1.13 DBS-Dbaas-BackupPolicyDescribeFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7551,7 +8103,7 @@ A
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看服务日志获取原始异常堆栈。
 2. 核对该实例/集群关联的策略数据是否完整、格式是否正常。
@@ -7560,11 +8112,11 @@ B
 
 按异常原因修复对应数据或重试。如为下游依赖异常，需等下游恢复后重试。
 
-##### DBS-Dbaas-
+##### 5.2.1.14 DBS-Dbaas-BackupPolicyHandlerNotFound
 
 **BackupPolicyHandlerNotFound**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7580,7 +8132,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 检查请求中的DbType是否为小写，是否存在大小写混用（如MySQL、PolarDB）。
 2. 该实例不支持备份，无法进行备份，通过备份产品文档查询哪些实例支持备份。
@@ -7588,14 +8140,13 @@ B
 **解决方案**
 
 1. 将DbType统一改为小写后重试。
-灾备管理中心
 2. 该实例不支持备份。
 
-##### DBS-Dbaas-
+##### 5.2.1.15 DBS-Dbaas-BackupPolicyInstanceNotFound
 
 **BackupPolicyInstanceNotFound**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7612,7 +8163,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对请求中的instanceName/clusterName 拼写是否正确，实例是否真实存在于该region。
 2. 检查policyLevel参数是否与实例真实类型（实例级/集群级）一致。
@@ -7622,9 +8173,9 @@ B
 
 确认实例信息无误后重试。若实例已释放，需引导用户重新创建实例后再配置备份策略。
 
-##### DBS-Dbaas-BackupPolicyModifyFailed
+##### 5.2.1.16 DBS-Dbaas-BackupPolicyModifyFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7638,23 +8189,20 @@ modifyBackupPolicy在调用具体Handler执行策略修改逻辑时捕获到通�
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看DBAAS服务日志中modifyBackupPolicy相关的error日志，获取原始异常cause。
 2. 结合message中透传的原始异常信息，定位是数据库写入失败还是下游服务（如DAG）调用失败。
-灾备管理中心
 
 **解决方案**
 
 根据具体cause处理： 数据库异常，检查连接与数据一致性。 下游调用失败，检查下游服务状态后重试。
 
-##### DBS-Dbaas-
+##### 5.2.1.17 DBS-Dbaas-BackupPolicyRetentionModifyFailed
 
 **BackupPolicyRetentionModifyFailed**
 
-## 错误码
-
-##### DBS-Dbaas-BackupPolicyRetentionModifyFailed
+**错误码**
 
 **错误信息**
 
@@ -7668,7 +8216,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看服务日志获取具体异常原因。
 2. 核对该用户/region下是否已存在对应的额外备份策略记录。
@@ -7677,9 +8225,9 @@ B
 
 如策略记录不存在，需先确认策略初始化流程是否正常执行。 如为更新失败，检查数据库状态后重试。
 
-##### DBS-Dbaas-BackupPolicyUserNotFound
+##### 5.2.1.18 DBS-Dbaas-BackupPolicyUserNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7693,21 +8241,20 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对请求中的callerBid、userId、regionCode是否与实际账号信息一致。
 2. 检查用户是否已在对应region完成同步/注册。
-灾备管理中心
 
 **解决方案**
 
 确认用户账号信息正确后重试。如用户确实未同步，需先完成用户数据同步。
 
-##### DBS-Dbaas-
+##### 5.2.1.19 DBS-Dbaas-ClusterBackupClusterNotFound
 
 **ClusterBackupClusterNotFound**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7721,7 +8268,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对clusterName是否正确。
 2. 检查集群拓扑服务中该集群的元数据是否完整。
@@ -7730,9 +8277,9 @@ B
 
 确认集群信息无误后重试。拓扑数据缺失需排查集群拓扑同步链路。
 
-##### DBS-Dbaas-ClusterBackupUserNotFound
+##### 5.2.1.20 DBS-Dbaas-ClusterBackupUserNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7746,20 +8293,20 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对请求中的callerBid、userId是否正确。
 2. 确认该用户是否已在对应region完成同步。
 
 **解决方案**
 
-核实用户信息后重试。用户数据未同步时，需先完成用户同步流程。 灾备管理中心
+核实用户信息后重试。用户数据未同步时，需先完成用户同步流程。
 
-##### DBS-Dbaas-
+##### 5.2.1.21 DBS-Dbaas-RestoreArchiveLogUnavailable
 
 **RestoreArchiveLogUnavailable**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7773,7 +8320,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对目标恢复时间点与全量备份集的一致性时间（consistentTime）之间是否存在完整的归档日志链。
 2. 结合message中透传的下游downstreamCode/downstreamMessage定位具体下游异常原因。
@@ -7782,9 +8329,9 @@ B
 
 若归档日志确实缺失（链路断裂），需调整恢复时间点到有完整日志覆盖的范围。 若为下游异常，等待下游恢复后重试。
 
-##### DBS-Dbaas-RestoreBackupInvalid
+##### 5.2.1.22 DBS-Dbaas-RestoreBackupInvalid
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7798,18 +8345,18 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 核对该备份集在备份集表中的状态字段，确认是否为已完成且可用状态。
 2. 查看该备份集对应的原始备份任务是否正常结束。
 
 **解决方案**
 
-如备份集状态异常，需重新触发一次全量备份，使用新生成的可用备份集进行恢复。 灾备管理中心
+如备份集状态异常，需重新触发一次全量备份，使用新生成的可用备份集进行恢复。
 
-##### DBS-Dbaas-RestoreQueryFailed
+##### 5.2.1.23 DBS-Dbaas-RestoreQueryFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7823,7 +8370,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 结合结果中的ErrorMessage字段查看原始异常描述。
 2. 核对该实例对应的dbType/kindCode所使用的具体IRestoreService实现是否存在已知问题。
@@ -7833,11 +8380,11 @@ B
 
 根据原始异常信息处理： 参数问题，需修正后重试。 下游依赖异常，需等待恢复或联系下游负责人排查。
 
-##### DBS-Dbaas-
+##### 5.2.1.24 DBS-Dbaas-RestoreSourceInstanceNotFound
 
 **RestoreSourceInstanceNotFound**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7851,18 +8398,18 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 确认待恢复的源实例名称、region是否正确。
 2. 异地恢复场景下检查复制备份集表中是否存在对应源实例记录。
 
 **解决方案**
 
-核实实例信息后重试。若为异地场景元数据缺失，需排查复制备份链路。 灾备管理中心
+核实实例信息后重试。若为异地场景元数据缺失，需排查复制备份链路。
 
-##### DBS-Dbaas-RestoreTimeQueryFailed
+##### 5.2.1.25 DBS-Dbaas-RestoreTimeQueryFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7876,7 +8423,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看服务日志获取原始异常cause。
 2. 核对describeBeginDateTime/describeEndDateTime时间范围是否合理（结束时间不早于开始时
@@ -7887,11 +8434,11 @@ B
 
 修正不合理的时间范围参数后重试。如为下游服务异常，等待恢复后重试。
 
-#### Gareth
+#### 5.2.2 Gareth
 
-##### DBS-Gareth-ObjectNotFound
+##### 5.2.2.1 DBS-Gareth-ObjectNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7908,13 +8455,13 @@ A
 **解决方案**
 
 1. 确认本地备份集是否被过期删除：如果当前时间，本地备份集产生时间大于本地备份策略保存时间，则有
-可能因为本地备份集已过期被系统删除。如果因为备份任务积压导致过期删除，考虑修改备份策略，降低备份频率。 灾备管理中心
+可能因为本地备份集已过期被系统删除。如果因为备份任务积压导致过期删除，考虑修改备份策略，降低备份频率。
 2. 排查删除原因：查看存储桶生命周期规则（Lifecycle Policy），判断是否自动删除了对象。检查是否有
 人为删除操作或清理脚本影响。
 
-##### DBS-Gareth-FileTooLarge
+##### 5.2.2.2 DBS-Gareth-FileTooLarge
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7933,11 +8480,11 @@ A
 
 **解决方案**
 
-确认存储服务限制： 查询目标存储服务的单文件大小限制（如S3最大5TB、某些归档存储最大10GB）. 查看本地备份集是否大于目标存储服务的单文件大小限制。
+确认存储服务限制： 在ASRBR页面查询本地备份集大小。 查询目标存储服务的单文件大小限制（如S3最大5TB、某些归档存储最大10GB）. 查看本地备份集是否大于目标存储服务的单文件大小限制。
 
-##### DBS-Gareth-NetworkError
+##### 5.2.2.3 DBS-Gareth-NetworkError
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7953,13 +8500,12 @@ A
 5. 防火墙/安全组阻断：访问被本地或云端安全规则阻止。
 6. 网络配置错误：代理、VPN、VPC等网络配置导致存储服务不可访问。
 7. 丢包率过高：大量数据包丢失导致连接不稳定。
-灾备管理中心
 
 **置信等级**
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看任务与系统日志：检查错误发生时的日志，确认是连接失败、握手错误还是DNS问题。
 2. 网络连通性测试：使用ping/traceroute /mtr测试到存储服务端点的连通性与延迟。
@@ -7969,9 +8515,9 @@ B
 6. 网络配置确认：如果任务运行在VPC或使用VPN/代理，确认这些连接配置无误并允许访问存储端点。
 7. 丢包测试：使用iperf或网络监测工具查看传输丢包率是否异常。
 
-##### DBS-Gareth-NetworkTimeout
+##### 5.2.2.4 DBS-Gareth-NetworkTimeout
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -7991,7 +8537,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看任务与网络日志：检查备份任务日志，确认超时发生的具体阶段（连接、传输、结束）；查看系统网
 络监控是否有丢包、延迟异常。
@@ -8004,16 +8550,15 @@ B
 
 **解决方案**
 
-灾备管理中心
 1. 优化网络链路：采用专线或高速通道，减少跨区域网络延迟；使用CDN或边缘存储节点，缩短访问路径。
 2. 调整备份策略：降低备份并发数和单次数据量，减少网络压力。
 3. 检查存储服务状态：确认存储服务端没有故障或限速。
 4. 增加超时设置：在备份任务中适当增加网络超时阈值，避免在大文件传输中途终止。
 5. 网络故障恢复后重试：网络恢复正常后重新执行备份任务。
 
-##### DBS-Gareth-StorageThrottled
+##### 5.2.2.5 DBS-Gareth-StorageThrottled
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8033,7 +8578,7 @@ B
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看DBS与存储服务日志：分析限速的具体时间点与触发场景；检查是否出现HTTP状态码如 429 Too
 Many Requests、503 Slow Down等。
@@ -8051,13 +8596,11 @@ Limiting）以避免触发服务端限流。
 2. 分区或分桶备份：将数据分散到多个存储桶，降低单桶访问压力。
 3. 重试机制：在备份脚本或配置中加入指数退避重试，减少限速后任务终止的风险。
 
-##### DBS-Gareth-BucketFull
+##### 5.2.2.6 DBS-Gareth-BucketFull
 
-## 错误码
+**错误码**
 
-灾备管理中心
-
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8084,9 +8627,9 @@ s3 ls、ossutil du）获取桶内文件占用空间。
 类产品删除备份记录后，需要等待备份软件完成GC后，才能释放存储空间）。
 4. 重试备份：在释放或扩充空间后，重新执行备份任务。
 
-##### DBS-Gareth-DiskFull
+##### 5.2.2.7 DBS-Gareth-DiskFull
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8108,12 +8651,11 @@ A
 1. 检查磁盘使用情况：使用df -h或存储管理工具查看磁盘容量；确认磁盘已满或接近满负荷。
 2. 清理不必要文件：清理日志。
 3. 监控磁盘容量：配置磁盘使用率告警，提前预防磁盘满导致任务失败。
-灾备管理中心
 4. 重试任务：清理后重新执行备份任务。
 
-##### DBS-Gareth-StorageAccessDenied
+##### 5.2.2.8 DBS-Gareth-StorageAccessDenied
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8132,7 +8674,7 @@ A
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 查看备份服务的访问日志：在备份服务的访问日志中，查看访问拒绝的详细原因（会标明是权限不足、策
 略冲突或资源不存在）。
@@ -8153,11 +8695,10 @@ external account）。
 3. 调整资源策略：在存储桶ACL或策略中加入备份引擎的访问主体，并检查网络/VPC/IP限制。
 4. 配置跨账号授权：在跨账号场景下，确保正确配置Bucket Policy。
 5. 重新测试：修改后使用CLI或SDK验证访问正常，再重启或重试备份任务。
-灾备管理中心
 
-##### DBS-Gareth-BucketNotFound
+##### 5.2.2.9 DBS-Gareth-BucketNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8175,11 +8716,11 @@ A
 
 确认存储桶存在性：登录存储服务管理控制台或通过API查询，确认该存储桶是否仍存在。如果不存在需要创建新的备份仓库，将备份计划指定到新的备份仓库。
 
-#### REP
+#### 5.2.3 REP
 
-##### DBS-REP-JobTerminated
+##### 5.2.3.1 DBS-REP-JobTerminated
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8199,11 +8740,11 @@ A
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 检查操作审计、任务变更记录和控制台操作日志，确认是否有人为取消或策略变更触发终止。
 2. 根据taskId查询dbs-workflow/dbs-sauron/dbs-gareth侧任务状态，确认是否已返回TERMINATED或
-被取消。 灾备管理中心
+被取消。
 3. 查看Job当前状态、进入WAIT_TERMINATE的原因及errMsg中的原始错误信息，定位最早的终止触发
 点。
 
@@ -8213,9 +8754,9 @@ B
 2. 若终止并非预期，确认源备份集仍可用、目标地域配置正确后，重新触发跨地域复制。
 3. 若为执行环境中断导致，检查相关容器/调度日志，确认环境恢复后再重试。
 
-##### DBS-REP-InternalConfigError
+##### 5.2.3.2 DBS-REP-InternalConfigError
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8237,7 +8778,7 @@ JsonProcessingException。
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 根据eventId/custinsId查询Job的context字段，确认JSON可解析且关键字段完整。
 2. 检查bakhistory.slaveStatus、downloadUrl、archiveOwnerid、type等字段是否完整、格式是否正
@@ -8253,13 +8794,11 @@ parse json failed"”或相关“eventId”，定位具体缺失字段。
 2. 若上下文来自上游创建逻辑，需同步排查dbs-dbaas/dbs-dag-controller的任务生成参数是否正确。
 3. 若为存储配置问题，核实对应存储账号、region、storageType配置是否与实际资源一致。
 
-##### DBS-REP-SubJobFailed
+##### 5.2.3.3 DBS-REP-SubJobFailed
 
-## 错误码
+**错误码**
 
-灾备管理中心
-
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8279,7 +8818,7 @@ parse json failed"”或相关“eventId”，定位具体缺失字段。
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 在任务的resultMessage JSON中读取errorMessage.subJobsError，确认失败的子任务ID及其错误原
 因。
@@ -8295,9 +8834,9 @@ B
 3. 针对源文件丢失：确认源端备份集的保留策略，若文件已不可恢复则需重新生成源备份后再发起复制。
 4. 针对超时：评估是否需要对数据量特别大的分片单独调整超时配置，或将任务拆分为更小粒度。
 
-##### DBS-REP-ReplicationFailed
+##### 5.2.3.4 DBS-REP-ReplicationFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8307,7 +8846,6 @@ B
 
 DBS-REP-ReplicationFailed是Physical物理备份复制和Snapshot快照复制场景下的兜底错误码。当任务失败但异常类型不属于TerminatedException、FailedException、JsonProcessingException等已知分类时，deriveErrorCode会统一归类为该错误码：
 1. 未知运行时异常：网络超时、RPC调用异常、数据库访问异常等未被特殊处理的RuntimeException。
-灾备管理中心
 2. 重试次数超限：快照复制场景下任务重试次数超过MAX_RETRY，系统主动放弃并标记为复制失败。
 3. 下游存储/转储组件异常：dbs-gareth转储、ECS/HBR快照复制等下游组件返回的错误未被识别为特定错
 误码。
@@ -8317,7 +8855,7 @@ DBS-REP-ReplicationFailed是Physical物理备份复制和Snapshot快照复制场
 
 B
 
-**排查方式**
+> **排查方式**
 
 1. 优先查看errMsg中的errorMessage字段（通常携带原始异常消息，如e.getMessage()），据此判断根
 因方向。
@@ -8335,9 +8873,9 @@ B
 3. 若该场景出现频率较高，建议在BaseHandler.deriveErrorCode() 中补充对应异常类型的显式映射，避
 免持续落入兜底错误码，便于后续统计和自动化排查。
 
-##### DBS-REP-SrcBaksetNotAvailable
+##### 5.2.3.5 DBS-REP-SrcBaksetNotAvailable
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8359,9 +8897,9 @@ B
 
 **置信等级**
 
-B 灾备管理中心
+B
 
-**排查方式**
+> **排查方式**
 
 1. 根据backupsetId/hisId/custinsId查询bakdb中bakhistory记录，确认记录是否存在、
 canReplicate()/isAvail/taskFrom字段取值。
@@ -8379,9 +8917,9 @@ avail, skip"）定位具体触发分支。
 复制。
 5. 内部临时备份：不要使用内部临时备份作为复制源，选择正式备份集重新发起异地备份复制。
 
-##### DBS-REP-SrcFileLost
+##### 5.2.3.6 DBS-REP-SrcFileLost
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8401,7 +8939,7 @@ avail, skip"）定位具体触发分支。
 
 B
 
-**排查方式（可选）**
+> **排查方式（可选）**
 
 1. 对于物理备份：在源端存储中直接验证downloadUrl对应的对象是否存在（如OSS对象路径）；检查备
 份保留策略和清理任务日志，确认文件何时被删除。
@@ -8412,19 +8950,19 @@ replication-service日志中"snapshot is already delete, skip copy"的触发时�
 **解决方案**
 
 1. 物理备份文件丢失：确认备份数据是否被生命周期或清理任务删除；如数据已不可恢复，重新触发备份生
-成新的源备份集后再发起复制。 灾备管理中心
+成新的源备份集后再发起复制。
 2. 源快照丢失：若快照已删除，需在源地域重新执行本地快照备份后，再触发跨地域复制。
 3. 优化保留策略：将备份文件/快照保留时长设置为大于跨地域复制预计耗时，防止复制未完成时源数据被
 清理。
 4. 元数据修复：若数据实际存在但路径记录错误，修正备份集downloadUrl或快照ID后重试。
 
-### ASRBR
+### 5.3 ASRBR
 
-#### SYSTEM
+#### 5.3.1 SYSTEM
 
-##### ASRBR-SYSTEM-LicenseQuotaExceeded
+##### 5.3.1.1 ASRBR-SYSTEM-LicenseQuotaExceeded
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8444,9 +8982,9 @@ B
 2. 扩充配额：联系管理员扩充当前组织的License配额。
 3. 重新操作：配额充足后重新提交请求。
 
-##### ASRBR-SYSTEM-LicenseValidationFailed
+##### 5.3.1.2 ASRBR-SYSTEM-LicenseValidationFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8463,15 +9001,14 @@ B
 **解决方案**
 
 1. 确认License有效性：检查当前环境的License是否在有效期内且与环境匹配。
-灾备管理中心
 2. 重新导入：若License已过期或不匹配，重新获取正确的License并导入。
 3. 联系管理员：若无法解决，联系管理员协助排查License校验链路。
 
-##### ASRBR-SYSTEM-
+##### 5.3.1.3 ASRBR-SYSTEM-LicenseConfigBelowLowerLimit
 
 **LicenseConfigBelowLowerLimit**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8491,13 +9028,11 @@ B
 2. 调整至合规值：将分配值设置为不低于子组织中最大分配值。
 3. 先回收再调整：若确需减小，先回收子组织的部分额度后再操作。
 
-##### ASRBR-SYSTEM-
+##### 5.3.1.4 ASRBR-SYSTEM-LicenseConfigExceedsTotalQuota
 
 **LicenseConfigExceedsTotalQuota**
 
-## 错误码
-
-##### ASRBR-SYSTEM-LicenseConfigExceedsTotalQuota
+**错误码**
 
 **错误信息**
 
@@ -8517,16 +9052,13 @@ B
 
 1. 调小分配值：确保总分配量不超过可用总额度。
 2. 回收其他组织额度：释放其他子组织的部分额度后再分配。
-灾备管理中心
 3. 扩充总License：若总额度不足，联系管理员扩充License总量。
 
-##### ASRBR-SYSTEM-
+##### 5.3.1.5 ASRBR-SYSTEM-PhysicalMachineInfoQueryFailed
 
 **PhysicalMachineInfoQueryFailed**
 
-## 错误码
-
-##### ASRBR-SYSTEM-PhysicalMachineInfoQueryFailed
+**错误码**
 
 **错误信息**
 
@@ -8549,13 +9081,11 @@ A
 2. 确认当前账号具备查看物理机信息所需的权限。
 3. 稍后重试；若持续失败请联系管理员排查运维服务。
 
-##### ASRBR-SYSTEM-
+##### 5.3.1.6 ASRBR-SYSTEM-CrossRegionRecoveryNeedAdvancedLicense
 
 **CrossRegionRecoveryNeedAdvancedLicense**
 
-## 错误码
-
-##### ASRBR-SYSTEM-CrossRegionRecoveryNeedAdvancedLicense
+**错误码**
 
 **错误信息**
 
@@ -8572,14 +9102,13 @@ B
 **解决方案**
 
 1. 确认本次恢复是否为跨地域恢复：核对源环境备份计划所属地域与当前环境地域是否一致。
-灾备管理中心
 2. 若确需跨地域恢复：为当前环境购买并开通 ASR-BR 高级版授权后重新发起恢复。
 3. 若地域配置有误：在与源环境一致的地域执行恢复。
 4. 注意，阻断发生时恢复库会被清理，处理授权后需重新触发完整恢复流程。
 
-##### ASRBR-SYSTEM-HbrInitializeFailed
+##### 5.3.1.7 ASRBR-SYSTEM-HbrInitializeFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8600,11 +9129,11 @@ B
 3. 若无法明确原因，联系产品研发协助排查。
 4. 问题解决后，重新触发相关操作。
 
-#### VAULT
+#### 5.3.2 VAULT
 
-##### ASRBR-VAULT-VaultCapacityExceeded
+##### 5.3.2.1 ASRBR-VAULT-VaultCapacityExceeded
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8619,7 +9148,7 @@ B
 
 **置信等级**
 
-A 灾备管理中心
+A
 
 **解决方案**
 
@@ -8633,9 +9162,9 @@ A 灾备管理中心
 1. 等待过期备份记录自动过期，或在产品支持的情况下手动删除不再需要的备份记录，持续释放空间。
 2. 在引用该仓库的备份计划中适当缩短保留时长，减少长期空间占用。
 
-##### ASRBR-VAULT-TrashBucketCannotBeVault
+##### 5.3.2.2 ASRBR-VAULT-TrashBucketCannotBeVault
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8653,9 +9182,9 @@ A
 
 改选一个未配置为回收站的普通Bucket作为备份仓库。
 
-##### ASRBR-VAULT-VaultDeletionBlocked
+##### 5.3.2.3 ASRBR-VAULT-VaultDeletionBlocked
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8676,11 +9205,10 @@ A
 1. 若存在关联的备份计划：进入【备份计划】列表，查找并删除所有引用该仓库的备份计划。
 2. 若仓库内存在未过期的备份数据：等待数据自动过期或在产品支持的情况下手动删除未过期的备份记录。
 3. 确认无任何依赖与未过期数据后，重新执行删除备份仓库操作。
-灾备管理中心
 
-##### ASRBR-VAULT-KmsServiceUnavailable
+##### 5.3.2.4 ASRBR-VAULT-KmsServiceUnavailable
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8701,9 +9229,9 @@ A
 3. 重新执行：待KMS恢复正常后重新创建加密仓库或重试操作。如长期不可用，请联系管理员排查KMS服
 务。
 
-##### ASRBR-VAULT-KmsKeyNotEnabled
+##### 5.3.2.5 ASRBR-VAULT-KmsKeyNotEnabled
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8723,11 +9251,9 @@ A
 2. 更换密钥：或改选一个处于启用状态的可用密钥。
 3. 重新执行：确认密钥可用后，重新创建加密备份仓库。
 
-##### ASRBR-VAULT-KmsKeySpecNotMatch
+##### 5.3.2.6 ASRBR-VAULT-KmsKeySpecNotMatch
 
-## 错误码
-
-灾备管理中心
+**错误码**
 
 **错误信息**
 
@@ -8747,9 +9273,9 @@ A
 2. 调整加密配置：或按密钥实际规格调整备份加密的算法配置。
 3. 重新执行：确认KeySpec与算法匹配后，重新创建加密备份仓库。
 
-##### ASRBR-VAULT-KmsKeyUsageNotMatch
+##### 5.3.2.7 ASRBR-VAULT-KmsKeyUsageNotMatch
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8769,9 +9295,9 @@ A
 2. 新建密钥：或新建一个用途为加密/解密的密钥。
 3. 重新执行：确认密钥用途正确后，重新创建加密备份仓库。
 
-##### ASRBR-VAULT-TrashBucketImmutable
+##### 5.3.2.8 ASRBR-VAULT-TrashBucketImmutable
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8779,7 +9305,7 @@ A
 
 **原因分析**
 
-修改存储池配置时，系统发现该存储池已设置回收站Bucket，而本次请求试图改动它（置空或改为不同值）。回收站Bucket一经设置不可修改，因此拒绝本次修改并记录本错误码。 灾备管理中心
+修改存储池配置时，系统发现该存储池已设置回收站Bucket，而本次请求试图改动它（置空或改为不同值）。回收站Bucket一经设置不可修改，因此拒绝本次修改并记录本错误码。
 
 **置信等级**
 
@@ -8790,9 +9316,9 @@ A
 1. 修改存储池时，保持回收站Bucket配置与已设置的值一致，不要改动。
 2. 若确需变更回收站Bucket，请评估影响后通过重建存储池等方式处理。
 
-##### ASRBR-VAULT-BucketAlreadyUsed
+##### 5.3.2.9 ASRBR-VAULT-BucketAlreadyUsed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8811,9 +9337,9 @@ A
 1. 更换一个未被任何备份仓库使用的Bucket重新创建备份仓库。
 2. 若需要复用该Bucket，请先删除占用该Bucket的备份仓库。
 
-##### ASRBR-VAULT-ExistingBucketRequired
+##### 5.3.2.10 ASRBR-VAULT-ExistingBucketRequired
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8833,12 +9359,11 @@ A
 
 1. 创建备份仓库前，确认所选Bucket已存在于底层对象存储，并填写正确的Bucket名称。
 2. 配置回收站Bucket时，确认对应Bucket已存在于底层对象存储。
-灾备管理中心
 3. 如确需使用新Bucket，请先在底层对象存储中创建后再返回配置。
 
-##### ASRBR-VAULT-BucketCreationFailed
+##### 5.3.2.11 ASRBR-VAULT-BucketCreationFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8859,9 +9384,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系存储管理员协助排查。
 4. 问题解决后，重新发起备份仓库创建。
 
-##### ASRBR-VAULT-HbrVaultCreationFailed
+##### 5.3.2.12 ASRBR-VAULT-HbrVaultCreationFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8869,7 +9394,7 @@ B
 
 **原因分析**
 
-创建备份仓库时，ASRBR管控需要在HBR-Console中创建对应的Vault。当HBR-Console未返回
+创建备份仓库时，ASRBR管控需要在HBR-Console中创建对应的Vault。当HBR-Console未返回 VaultId、返回错误或调用抛出异常时，记录本错误码。
 
 **置信等级**
 
@@ -8881,15 +9406,12 @@ B
 2. 常见原因包括：HBR-Console服务不可用、Bucket配额不足、仓库配置异常。
 3. 若无法明确原因，提取请求参数与响应内容，联系产品研发协助排查。
 4. 问题解决后，重新发起备份仓库创建。
-灾备管理中心
 
-##### ASRBR-VAULT-
+##### 5.3.2.13 ASRBR-VAULT-ReplicationVaultCapacityTooSmall
 
 **ReplicationVaultCapacityTooSmall**
 
-## 错误码
-
-##### ASRBR-VAULT-ReplicationVaultCapacityTooSmall
+**错误码**
 
 **错误信息**
 
@@ -8908,11 +9430,11 @@ A
 1. 将镜像仓库容量设置为大于源仓库容量。
 2. 调整容量后重新发起镜像仓库创建。
 
-##### ASRBR-VAULT-
+##### 5.3.2.14 ASRBR-VAULT-StorageMediumLockUnsupported
 
 **StorageMediumLockUnsupported**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -8931,11 +9453,9 @@ B
 1. 确认当前备份仓库使用的存储介质是否支持不可变备份（WORM）。
 2. 如需使用备份锁定，改用支持WORM的存储介质创建备份仓库。
 
-##### ASRBR-VAULT-TrashBucketRequired
+##### 5.3.2.15 ASRBR-VAULT-TrashBucketRequired
 
-## 错误码
-
-灾备管理中心
+**错误码**
 
 **错误信息**
 
@@ -8954,13 +9474,15 @@ A
 1. 在创建重删备份仓库前，先在对应存储池中配置回收站Bucket。
 2. 回收站Bucket配置完成后，重新创建重删备份仓库。
 
-#### BACKUP
+#### 5.3.3 BACKUP
 
-##### ASRBR-BACKUP-UserCancelledBackupJob
+##### 5.3.3.1 ASRBR-BACKUP-UserCancelledBackupJob
 
-## 错误码
+**错误码**
 
 **错误信息**
+
+备份任务在ASRBR管控平台被用户手动取消。
 
 **原因分析**
 
@@ -8979,13 +9501,11 @@ A
 2. 若取消属误操作，请前往ASRBR管控平台对应实例的备份计划页面，单击“手工备份”，手动重新触发一
 次备份任务。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.2 ASRBR-BACKUP-SyncBackupJobResultTimeout
 
 **SyncBackupJobResultTimeout**
 
-## 错误码
-
-灾备管理中心
+**错误码**
 
 **错误信息**
 
@@ -9011,9 +9531,9 @@ A
 3. 检查管控节点到备份执行服务之间的网络连通性，确认未被防火墙或安全组阻断；网络修复后重新触发备
 份任务。
 
-##### ASRBR-BACKUP-CurrentJobIsBlocked
+##### 5.3.3.3 ASRBR-BACKUP-CurrentJobIsBlocked
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9032,13 +9552,13 @@ A
 1. 等待当前任务执行完成后，下次周期备份可正常进行。
 2. 如需立即执行，可先停止当前任务（前提是对应产品类型支持停止操作），然后手动发起备份。
 
-##### ASRBR-BACKUP-InvalidFullBackupCycle
+##### 5.3.3.4 ASRBR-BACKUP-InvalidFullBackupCycle
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-备份策略的全量备份周期配置无效。 灾备管理中心
+备份策略的全量备份周期配置无效。
 
 **原因分析**
 
@@ -9059,9 +9579,9 @@ B
 3. 调整全量备份周期，使其大于备份周期且为备份周期的整数倍
 4. 调整全量备份周期，使其不超过备份保存时长。
 
-##### ASRBR-BACKUP-InvalidLogRetentionPeriod
+##### 5.3.3.5 ASRBR-BACKUP-InvalidLogRetentionPeriod
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9083,15 +9603,15 @@ A
 2. 确认日志保留时长不超过数据备份保留时长。
 3. 调整后重新配置备份策略。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.6 ASRBR-BACKUP-InvalidBackupRetentionPeriod
 
 **InvalidBackupRetentionPeriod**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-灾备管理中心备份策略的备份保留时长无效。
+备份策略的备份保留时长无效。
 
 **原因分析**
 
@@ -9109,9 +9629,9 @@ A
 
 按照原因分析逐项排查并修正备份策略。
 
-##### ASRBR-BACKUP-InvalidBackupCycle
+##### 5.3.3.7 ASRBR-BACKUP-InvalidBackupCycle
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9132,9 +9652,9 @@ A
 
 按照原因分析逐项排查并修正备份策略。
 
-##### ASRBR-BACKUP-InstanceCountExceeded
+##### 5.3.3.8 ASRBR-BACKUP-InstanceCountExceeded
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9146,16 +9666,16 @@ A
 
 **置信等级**
 
-灾备管理中心 A
+A
 
 **解决方案**
 
 1. 按照现有限制调整实例数量，确保单个备份计划内的实例总数不超过上限。
 2. 如确有提升上限的需求，可联系研发同学通过修改数据库方式进行调整。
 
-##### ASRBR-BACKUP-NoAvailableLogBackup
+##### 5.3.3.9 ASRBR-BACKUP-NoAvailableLogBackup
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9180,9 +9700,9 @@ A
 3. 若该错误反复出现且确认上述两项均已满足，则说明日志备份链路存在异常，请联系产品技术支持协助排
 查日志备份链路状态。
 
-##### ASRBR-BACKUP-LocalFailRemoteMarkFail
+##### 5.3.3.10 ASRBR-BACKUP-LocalFailRemoteMarkFail
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9199,15 +9719,14 @@ B
 **解决方案**
 
 1. 查看同一备份计划中对应的本地备份记录，确认本地备份失败的具体原因。
-灾备管理中心
 2. 可通过本地备份记录的错误码、错误信息及TraceId查询日志，进一步定位问题。
 3. 解决本地备份失败原因后，重新触发备份任务，异地备份将自动随本地备份成功而恢复。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.11 ASRBR-BACKUP-DbProductItselfBackupFailed
 
 **DbProductItselfBackupFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9227,11 +9746,11 @@ A
 2. 如无法自行定位，可联系对应数据库产品的技术支持人员协助排查。
 3. 问题解决后，等待下一次备份周期自动重试，或手动触发备份。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.12 ASRBR-BACKUP-DbProductLogicBackupFail
 
 **DbProductLogicBackupFail**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9250,11 +9769,10 @@ B
 1. 通过备份记录的TraceId查询系统日志，定位DBS逻辑备份引擎的具体错误详情。
 2. 也可前往DBS产品侧控制台，查看对应逻辑备份计划的执行情况。
 3. 问题解决后，等待下一次备份周期自动重试，或手动触发备份。
-灾备管理中心
 
-##### ASRBR-BACKUP-ModifyPolicyFailed
+##### 5.3.3.13 ASRBR-BACKUP-ModifyPolicyFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9276,11 +9794,11 @@ B
 3. 问题解决后，在ASRBR控制台重新提交策略变更；若为删除实例连带的停止策略失败，可重新触发删除
 操作。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.14 ASRBR-BACKUP-HbrBackupJobUnavailable
 
 **HbrBackupJobUnavailable**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9300,7 +9818,6 @@ B
 
 **解决方案**
 
-灾备管理中心
 1. 通过备份实例日志中的traceId 检索管控日志，确认调用DescribeBackupJobs时使用的 hbrPlanId、时
 间窗与HBR返回内容。
 2. 前往HBR-Console侧核对对应hbrPlanId的Job是否存在，以及其CreatedTime是否落在同步时间窗内。
@@ -9308,9 +9825,9 @@ B
 时钟漂移：统一管控节点与HBR节点的时区或时间。 plan缺失或策略下发失败：检查策略下发链路是否成功。 Job被人工删除：确认是否需要重新触发备份。
 4. 处理后等待下一次备份周期自动恢复，或手动重新触发备份。
 
-##### ASRBR-BACKUP-ExecuteBackupJobFailed
+##### 5.3.3.15 ASRBR-BACKUP-ExecuteBackupJobFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9330,11 +9847,11 @@ B
 2. 根据下游返回的错误信息排查具体失败原因。
 3. 处理后在ASRBR控制台重新发起手工备份或等待下一次计划周期自动重试。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.16 ASRBR-BACKUP-BackupSetInfoUnavailable
 
 **BackupSetInfoUnavailable**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9347,7 +9864,6 @@ ASRBR管控在同步备份记录时，会调用产品侧或备份引擎的查询
 复。
 2. 备份策略配置异常（如计划已被产品侧删除或暂停），导致预期的备份集未被产生。
 3. 产品侧接口调用成功但返回空数据，可能是查询条件不匹配（如时间窗偏差）。
-灾备管理中心
 
 **置信等级**
 
@@ -9361,13 +9877,15 @@ B
 3. 前往产品侧控制台确认备份计划是否正常运行、是否有对应时间段的备份集产生。
 4. 若为查询条件不匹配（如时间窗偏差），检查管控与产品侧的时钟是否一致。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.17 ASRBR-BACKUP-BackupJobStatusUnmapped
 
 **BackupJobStatusUnmapped**
 
-## 错误码
+**错误码**
 
 **错误信息**
+
+产品侧或备份引擎返回的备份任务状态不在ASRBR定义的状态枚举范围内。
 
 **原因分析**
 
@@ -9386,9 +9904,9 @@ B
 动恢复。
 4. 若持续复现，请将产品名称、返回的原始状态值、traceId提供给研发，推动版本适配。
 
-##### ASRBR-BACKUP-BackupSetStatusFailed
+##### 5.3.3.18 ASRBR-BACKUP-BackupSetStatusFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9396,7 +9914,7 @@ B
 
 **原因分析**
 
-灾备管理中心 ASRBR管控在同步备份集记录时，解析产品侧返回的备份集状态字段，发现该备份集已被产品侧标记为失败。这是产品侧/备份引擎明确反馈“该备份任务执行失败”的兆底错误码，具体失败原因由产品侧决定。涉及的场景包括：
+ASRBR管控在同步备份集记录时，解析产品侧返回的备份集状态字段，发现该备份集已被产品侧标记为失败。这是产品侧/备份引擎明确反馈“该备份任务执行失败”的兆底错误码，具体失败原因由产品侧决定。涉及的场景包括：
 1. Heimdallr 异地备份引擎返回备份集状态为FAILED或LOST（备份集丢失）。
 2. DBS统一备份接口返回备份集backupStatus为ERROR。
 3. DRDS跨区域备份集BackupSetStatus为FAILED。
@@ -9415,11 +9933,11 @@ B
 3. 根据产品侧的错误信息进行处理，处理完成后等待下一次备份周期自动重试或在ASRBR控制台手动触发
 备份。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.19 ASRBR-BACKUP-BackupInstanceCheckFailed
 
 **BackupInstanceCheckFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9441,7 +9959,6 @@ GPDB存储模式不符、ADB节点规格不在白名单等。
 6. 引擎或版本不支持（InstanceVersionNotSupported）：目标引擎/版本不在支持列表或该引擎不支持所
 选的逻辑备份方式（如SQLServer、PostgreSQL的逻辑备份）。
 7. ECS文件备份未安装备份客户端：ECS实例未安装HBR备份客户端（Agent）或客户端不在线。
-灾备管理中心
 8. 云桌面存储卷已加密（VolumeEncryptionEnabled）：无影云桌面存储卷开启了加密，不支持备份。
 9. 实例已被占用：DRDS的RDS子实例已被其他备份计划绑定（DrdsRdsSubInstanceAlreadyBound）
 或该RDS已存在DRDS备份计划（RdsHasExistingDrdsPlan）。
@@ -9470,9 +9987,9 @@ B
 查。
 9. 修正后重新提交备份计划创建/修改请求。
 
-##### ASRBR-BACKUP-DeleteBackupPlanFailed
+##### 5.3.3.20 ASRBR-BACKUP-DeleteBackupPlanFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9491,15 +10008,16 @@ B
 1. 通过备份实例日志的traceId查询系统日志，定位调用的下游删除接口与返回的错误信息。
 2. 确认目标实例状态是否正常、是否存在阻止删除的关联资源。
 3. 问题解决后，重新发起删除操作。
-灾备管理中心
 
-##### ASRBR-BACKUP-
+##### 5.3.3.21 ASRBR-BACKUP-HbrBackupPlanCreationFailed
 
 **HbrBackupPlanCreationFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
+
+在HBR-Console中创建备份计划失败。
 
 **原因分析**
 
@@ -9529,11 +10047,9 @@ ECS Agent）或云助手未激活等信息时，在目标ECS上安装并启动HB
 5. 若无法明确原因，提取请求参数与响应内容，联系产品研发协助排查。
 6. 问题解决后，重新触发备份计划创建。
 
-##### ASRBR-BACKUP-InstanceStillBound
+##### 5.3.3.22 ASRBR-BACKUP-InstanceStillBound
 
-## 错误码
-
-灾备管理中心
+**错误码**
 
 **错误信息**
 
@@ -9553,13 +10069,11 @@ B
 2. 先将计划下的实例逐个解绑。
 3. 确认计划下已无绑定实例后，重新发起删除操作。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.23 ASRBR-BACKUP-InvalidAdvancedRetentionPolicy
 
 **InvalidAdvancedRetentionPolicy**
 
-## 错误码
-
-##### ASRBR-BACKUP-InvalidAdvancedRetentionPolicy
+**错误码**
 
 **错误信息**
 
@@ -9583,13 +10097,11 @@ B
 3. 确保保留时长满足递减关系：按年保留时长 > 按月保留时长 > 按周保留时长 > 基础保留时长。
 4. 调整后重新提交备份计划。
 
-##### ASRBR-BACKUP-
+##### 5.3.3.24 ASRBR-BACKUP-DbsLogicalStorageNotFound
 
 **DbsLogicalStorageNotFound**
 
-## 错误码
-
-灾备管理中心
+**错误码**
 
 **错误信息**
 
@@ -9613,9 +10125,9 @@ B
 3. 若为异地存储实体缺失，确认DBS侧是否已完成异地存储注册。
 4. 问题解决后，重新发起备份策略修改。
 
-##### ASRBR-BACKUP-DbsLogicalPlanNotReady
+##### 5.3.3.25 ASRBR-BACKUP-DbsLogicalPlanNotReady
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9636,11 +10148,11 @@ B
 1. 可能为暂时性问题（DBS初始化中），等待下一轮同步即可自动恢复。
 2. 若持续出现，通过traceId查询系统日志，确认DBS侧计划的实际状态与失败原因。
 3. 前往DBS产品侧确认该逻辑备份计划的状态，排查源端连接或配置问题后，等待计划状态恢复为
-running。 灾备管理中心
+running。
 
-##### ASRBR-BACKUP-DbsLogicalJobNotFound
+##### 5.3.3.26 ASRBR-BACKUP-DbsLogicalJobNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9664,9 +10176,9 @@ B
 3. 若计划确实已被删除，管控侧需同步清理该计划的关联状态。
 4. 若为查询异常，确认DBS服务状态正常后重试。
 
-##### ASRBR-BACKUP-BackupTimesExceeded
+##### 5.3.3.27 ASRBR-BACKUP-BackupTimesExceeded
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9682,18 +10194,17 @@ B
 
 **解决方案**
 
-灾备管理中心
 1. 检查该PolarDB实例近期的备份触发情况，确认是否存在过于频繁的手动备份或备份策略配置的周期过
 密。
 2. 适当降低备份频率或等待一段时间后再重新触发备份。
 3. 如需了解该实例在产品侧的具体备份次数限制，可咨询PolarDB产品侧。确认次数恢复后，等待下一次备
 份周期自动重试或在控制台手动重试。
 
-#### RESTORE
+#### 5.3.4 RESTORE
 
-##### ASRBR-RESTORE-InstanceCountExceeded
+##### 5.3.4.1 ASRBR-RESTORE-InstanceCountExceeded
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9713,13 +10224,11 @@ A
 2. 或分批创建多个恢复任务。
 3. 调整后重新提交。
 
-##### ASRBR-RESTORE-
+##### 5.3.4.2 ASRBR-RESTORE-RestoreToExistingInstanceFailed
 
 **RestoreToExistingInstanceFailed**
 
-## 错误码
-
-##### ASRBR-RESTORE-RestoreToExistingInstanceFailed
+**错误码**
 
 **错误信息**
 
@@ -9735,14 +10244,13 @@ B
 
 **解决方案**
 
-灾备管理中心
 1. 核对目标实例的类型、版本、规格是否与备份源兼容。
 2. 确认目标实例状态正常且容量足够。
 3. 修正目标实例配置后重新提交或改为恢复至新实例。
 
-##### ASRBR-RESTORE-RecoveryPlanInUse
+##### 5.3.4.3 ASRBR-RESTORE-RecoveryPlanInUse
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9761,11 +10269,11 @@ A
 1. 进入恢复计划详情，解除该计划下所有已绑定的恢复资源。
 2. 确认无绑定资源后重新执行删除恢复计划操作。
 
-##### ASRBR-RESTORE-
+##### 5.3.4.4 ASRBR-RESTORE-TargetInstanceAlreadyExists
 
 **TargetInstanceAlreadyExists**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9786,13 +10294,11 @@ A
 2. 若采用自动命名仍持续冲突，请稍后重试或人工指定实例名称。
 3. 若希望恢复到已有实例，请将恢复方式改为"恢复至已有实例"。
 
-##### ASRBR-RESTORE-TargetInstanceNotFound
+##### 5.3.4.5 ASRBR-RESTORE-TargetInstanceNotFound
 
-## 错误码
+**错误码**
 
-灾备管理中心
-
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9813,13 +10319,11 @@ A
 1. 核对目标实例名称是否正确，并确认实例存在且处于可访问状态。
 2. 若实例已删除，请先创建对应实例或将恢复方式改为"恢复至新实例"。
 
-##### ASRBR-RESTORE-
+##### 5.3.4.6 ASRBR-RESTORE-InvalidRecoveryTimestampFormat
 
 **InvalidRecoveryTimestampFormat**
 
-## 错误码
-
-##### ASRBR-RESTORE-InvalidRecoveryTimestampFormat
+**错误码**
 
 **错误信息**
 
@@ -9838,13 +10342,13 @@ A
 1. 核对传入的恢复时间点格式是否正确（应为符合要求的UTC时间格式）。
 2. 参照接口文档修正时间点格式后重新提交恢复任务。
 
-##### ASRBR-RESTORE-RecoveryPolicyInUse
+##### 5.3.4.7 ASRBR-RESTORE-RecoveryPolicyInUse
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-恢复策略仍被恢复计划关联，无法删除。 灾备管理中心
+恢复策略仍被恢复计划关联，无法删除。
 
 **原因分析**
 
@@ -9860,15 +10364,13 @@ A
 2. 先解除关联或删除相关恢复计划。
 3. 确认无关联后，重新发起删除操作。
 
-#### INSTANCE
+#### 5.3.5 INSTANCE
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.1 ASRBR-INSTANCE-ProductInstanceInfoQueryFail
 
 **ProductInstanceInfoQueryFail**
 
-## 错误码
-
-##### ASRBR-INSTANCE-ProductInstanceInfoQueryFail
+**错误码**
 
 **错误信息**
 
@@ -9890,15 +10392,15 @@ primaryKey等）与返回内容。
 3. 确认管控使用的AK/角色是否具备调用该产品对应接口的权限。
 4. 问题解决后，等待下一次同步周期自动重试或在ASRBR控制台重新触发相关操作。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.2 ASRBR-INSTANCE-OdpsMmaSourceNotReady
 
 **OdpsMmaSourceNotReady**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-灾备管理中心 MMA数据源未就绪。
+MMA数据源未就绪。
 
 **原因分析**
 
@@ -9914,11 +10416,11 @@ B
 2. 如长时间未就绪，检查MMA服务是否正常运行、ODPS项目访问权限是否正确。
 3. 数据源加载完成后重新触发备份任务。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.3 ASRBR-INSTANCE-OdpsMmaSourceNotFound
 
 **OdpsMmaSourceNotFound**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9938,15 +10440,15 @@ A
 2. 如数据源被误删，需重新创建MMA数据源配置。
 3. 核对ODPS项目和Endpoint信息是否与MMA数据源注册时一致。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.4 ASRBR-INSTANCE-MmaBackupJobQueryFailed
 
 **MmaBackupJobQueryFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-MMA备份任务查询失败。 灾备管理中心
+MMA备份任务查询失败。
 
 **原因分析**
 
@@ -9963,9 +10465,9 @@ B
 3. 如任务记录已不存在，可重新触发备份任务。
 4. 如问题反复出现，建议排查MMA服务端的稳定性。
 
-##### ASRBR-INSTANCE-MmaBackupJobFailed
+##### 5.3.5.5 ASRBR-INSTANCE-MmaBackupJobFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9986,11 +10488,11 @@ B
 3. 验证ODPS项目访问权限和网络连通性。
 4. 如个别表失败，可尝试重新触发备份或排查该表的数据异常。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.6 ASRBR-INSTANCE-MmaBackupJobCreateFailed
 
 **MmaBackupJobCreateFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -9998,7 +10500,7 @@ MMA备份任务创建失败。
 
 **原因分析**
 
-灾备管理中心系统通过MMA组件创建MaxCompute备份任务时失败。 可能原因：MMA服务异常、数据源配置不正确、ODPS 项目权限不足或MMA任务队列已满。
+系统通过MMA组件创建MaxCompute备份任务时失败。 可能原因：MMA服务异常、数据源配置不正确、ODPS 项目权限不足或MMA任务队列已满。
 
 **置信等级**
 
@@ -10011,9 +10513,9 @@ B
 3. 查看MMA服务端日志，确认具体失败原因。
 4. 如因任务队列满导致失败，等待现有任务完成后重试。
 
-##### ASRBR-INSTANCE-EsSnapshotQueryFailed
+##### 5.3.5.7 ASRBR-INSTANCE-EsSnapshotQueryFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10034,9 +10536,9 @@ A
 3. 验证备份系统与ES实例之间的网络连通性。
 4. 如问题持续，可尝试在ES端手动执行快照状态查询（GET _snapshot//_all）以排查根因。
 
-##### ASRBR-INSTANCE-EsAuthenticationFailed
+##### 5.3.5.8 ASRBR-INSTANCE-EsAuthenticationFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10044,7 +10546,7 @@ ES认证失败。
 
 **原因分析**
 
-系统在连接Elasticsearch实例时，使用配置的用户名和密码进行认证失败。 可能原因：用户名或密码错误、ES实例开启了安全认证但未正确配置凭据或ES实例的认证策略发生变更。 灾备管理中心
+系统在连接Elasticsearch实例时，使用配置的用户名和密码进行认证失败。 可能原因：用户名或密码错误、ES实例开启了安全认证但未正确配置凭据或ES实例的认证策略发生变更。
 
 **置信等级**
 
@@ -10056,9 +10558,9 @@ A
 2. 确认目标ES实例的安全认证已正确开启且所用账号具备快照相关权限。
 3. 如密码已变更，请更新备份计划中的凭据配置后重试。
 
-##### ASRBR-INSTANCE-OdpsProjectEmpty
+##### 5.3.5.9 ASRBR-INSTANCE-OdpsProjectEmpty
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10080,9 +10582,9 @@ A
 2. 确认项目配置完整，未遗漏必填字段。
 3. 修正项目配置后重新创建备份计划。
 
-##### ASRBR-INSTANCE-OdpsConfigInvalid
+##### 5.3.5.10 ASRBR-INSTANCE-OdpsConfigInvalid
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10099,17 +10601,14 @@ B
 **解决方案**
 
 1. 核对ODPS的AccessKey、SecretKey是否正确且有效。
-灾备管理中心
 2. 检查Endpoint与项目名是否填写正确。
 3. 确认该AK/SK具备访问目标项目的权限后重新提交。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.11 ASRBR-INSTANCE-OdpsDataTypeVersionUnsupported
 
 **OdpsDataTypeVersionUnsupported**
 
-## 错误码
-
-##### ASRBR-INSTANCE-OdpsDataTypeVersionUnsupported
+**错误码**
 
 **错误信息**
 
@@ -10129,13 +10628,11 @@ A
 2. 升级前请评估对现有业务的影响，必要时咨询ODPS管理员。
 3. 升级完成后重新创建备份计划。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.12 ASRBR-INSTANCE-OdpsExternalTableCreateFailed
 
 **OdpsExternalTableCreateFailed**
 
-## 错误码
-
-##### ASRBR-INSTANCE-OdpsExternalTableCreateFailed
+**错误码**
 
 **错误信息**
 
@@ -10153,16 +10650,13 @@ B
 
 1. 检查外部存储（OSS）的路径、AK/SK与访问权限是否正确。
 2. 确认ODPS项目已开通创建外部表所需的权限/插件。
-灾备管理中心
 3. 确认网络连通后重新执行，若仍失败请联系管理员排查。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.13 ASRBR-INSTANCE-OdpsRestoreTaskStopUnsupported
 
 **OdpsRestoreTaskStopUnsupported**
 
-## 错误码
-
-##### ASRBR-INSTANCE-OdpsRestoreTaskStopUnsupported
+**错误码**
 
 **错误信息**
 
@@ -10182,9 +10676,9 @@ A
 2. 如需重新恢复，请在任务完成后重新发起。
 3. 若任务长时间异常挂起，请联系管理员排查。
 
-##### ASRBR-INSTANCE-InstanceNotFound
+##### 5.3.5.14 ASRBR-INSTANCE-InstanceNotFound
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10206,11 +10700,10 @@ B
 1. 核对实例ID或名称是否正确。
 2. 确认实例未被删除且在当前组织内可见。
 3. 若为同步延迟，请稍后重试。
-灾备管理中心
 
-##### ASRBR-INSTANCE-OtsBackupTimeConflict
+##### 5.3.5.15 ASRBR-INSTANCE-OtsBackupTimeConflict
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10229,11 +10722,11 @@ A
 1. 调整增量备份或全量备份的执行时间，使二者在分或秒上至少有一个不同。
 2. 调整后重新提交备份策略。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.16 ASRBR-INSTANCE-RdsHasExistingDrdsPlan
 
 **RdsHasExistingDrdsPlan**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10252,15 +10745,11 @@ A
 1. 查看该RDS所属的DRDS备份计划，复用或调整其策略以覆盖该实例的备份需求。
 2. 如确需为该RDS单独创建备份计划，请先从对应的DRDS备份计划中移除该实例。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.17 ASRBR-INSTANCE-DrdsRdsSubInstanceAlreadyBound
 
 **DrdsRdsSubInstanceAlreadyBound**
 
-## 错误码
-
-##### ASRBR-INSTANCE-DrdsRdsSubInstanceAlreadyBound
-
-灾备管理中心
+**错误码**
 
 **错误信息**
 
@@ -10279,11 +10768,11 @@ A
 1. 查找该DRDS下挂的RDS实例，确认是否已存在RDS级别的备份计划。
 2. 如需保留DRDS备份计划，请先删除冲突的RDS备份计划后再创建。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.18 ASRBR-INSTANCE-DiskNotBelongToInstance
 
 **DiskNotBelongToInstance**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10303,13 +10792,11 @@ B
 2. 前往ECS产品侧确认实例的云盘挂载情况。
 3. 修正云盘选择后重新提交。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.19 ASRBR-INSTANCE-EcsImageSizeExceedsSystemDisk
 
 **EcsImageSizeExceedsSystemDisk**
 
-## 错误码
-
-##### ASRBR-INSTANCE-EcsImageSizeExceedsSystemDisk
+**错误码**
 
 **错误信息**
 
@@ -10317,7 +10804,7 @@ B
 
 **原因分析**
 
-灾备管理中心创建ECS整机恢复任务时，系统会校验恢复镜像大小与目标系统盘容量。当镜像大小超过系统盘容量时，无法完成恢复，记录本错误码。
+创建ECS整机恢复任务时，系统会校验恢复镜像大小与目标系统盘容量。当镜像大小超过系统盘容量时，无法完成恢复，记录本错误码。
 
 **置信等级**
 
@@ -10328,13 +10815,11 @@ A
 1. 确认目标实例的系统盘容量，使其不小于恢复镜像大小。
 2. 调大目标系统盘容量或选择系统盘容量满足要求的目标实例后，重新发起恢复。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.20 ASRBR-INSTANCE-OdpsDeleteBlockedByRunningJob
 
 **OdpsDeleteBlockedByRunningJob**
 
-## 错误码
-
-##### ASRBR-INSTANCE-OdpsDeleteBlockedByRunningJob
+**错误码**
 
 **错误信息**
 
@@ -10354,13 +10839,11 @@ B
 2. 等待相关备份任务执行完成或先停止对应任务。
 3. 确认无进行中的任务后，重新发起删除操作。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.21 ASRBR-INSTANCE-OdpsDeletedMetaCleanupFailed
 
 **OdpsDeletedMetaCleanupFailed**
 
-## 错误码
-
-##### ASRBR-INSTANCE-OdpsDeletedMetaCleanupFailed
+**错误码**
 
 **错误信息**
 
@@ -10368,7 +10851,7 @@ B
 
 **原因分析**
 
-ODPS备份清理阶段，系统需要将本次已删除的表/分区元数据记录并入库。 当写入已删除表/分区的中间文件失败，或将已删除分区入库失败时，记录本错误码。该错误不阻断主流程， 但会导致对应清理动作未完成。 灾备管理中心
+ODPS备份清理阶段，系统需要将本次已删除的表/分区元数据记录并入库。 当写入已删除表/分区的中间文件失败，或将已删除分区入库失败时，记录本错误码。该错误不阻断主流程， 但会导致对应清理动作未完成。
 
 **置信等级**
 
@@ -10381,11 +10864,11 @@ B
 3. 若无法明确原因，提取日志内容联系ODPS备份负责人协助排查。
 4. 问题解决后，等待下一次备份周期自动重试。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.22 ASRBR-INSTANCE-OdpsTempTableDeleteFailed
 
 **OdpsTempTableDeleteFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10405,11 +10888,11 @@ B
 2. 前往MaxCompute侧确认临时表是否残留，必要时手动清理。
 3. 若无法明确原因，提取日志内容联系产品研发协助排查。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.23 ASRBR-INSTANCE-OtsClusterNameFormatInvalid
 
 **OtsClusterNameFormatInvalid**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10417,7 +10900,7 @@ OTS集群名称格式非法。
 
 **原因分析**
 
-OTS备份时，管控需要根据集群名称拼接集群域名或从TianJi查询集群可用区。 当集群名称为空、按分隔符拆分后段数不足或遍历相关产品仍无法从TianJi获取到可用区时，记录本错误码。 灾备管理中心
+OTS备份时，管控需要根据集群名称拼接集群域名或从TianJi查询集群可用区。 当集群名称为空、按分隔符拆分后段数不足或遍历相关产品仍无法从TianJi获取到可用区时，记录本错误码。
 
 **置信等级**
 
@@ -10429,11 +10912,11 @@ B
 2. 通过traceId查询日志，确认从天基获取集群信息的返回内容。
 3. 若无法明确原因，提取集群名称与日志内容联系OTS产品负责人协助排查。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.24 ASRBR-INSTANCE-OtsTiangongCnameSetupFailed
 
 **OtsTiangongCnameSetupFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10453,11 +10936,11 @@ B
 2. 常见原因包括：域名信息缺失、PrivateZone配置异常、DNS解析服务不可用。
 3. 若无法明确原因，提取请求参数与响应内容，联系OTS/DNS相关负责人协助排查。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.25 ASRBR-INSTANCE-OtsTiangongVpcQueryFailed
 
 **OtsTiangongVpcQueryFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10469,7 +10952,7 @@ B
 
 **置信等级**
 
-灾备管理中心 B
+B
 
 **解决方案**
 
@@ -10477,13 +10960,11 @@ B
 2. 确认asrbr-backup所在VPC的配置是否正确（VPC名称、VpcId、交换机）。
 3. 若无法明确原因，提取请求参数与响应内容，联系VPC/网络负责人协助排查。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.26 ASRBR-INSTANCE-SingleDiskRequiredForRestore
 
 **SingleDiskRequiredForRestore**
 
-## 错误码
-
-##### ASRBR-INSTANCE-SingleDiskRequiredForRestore
+**错误码**
 
 **错误信息**
 
@@ -10502,13 +10983,11 @@ A
 1. 每个云盘恢复任务仅指定一块云盘。
 2. 如需恢复多块云盘，分别创建多个单盘恢复任务。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.27 ASRBR-INSTANCE-OtsTableBackupJobNotExecuted
 
 **OtsTableBackupJobNotExecuted**
 
-## 错误码
-
-##### ASRBR-INSTANCE-OtsTableBackupJobNotExecuted
+**错误码**
 
 **错误信息**
 
@@ -10520,7 +10999,7 @@ OTS实例备份任务已结束，但其中某张表的备份任务始终未被�
 
 **置信等级**
 
-B 灾备管理中心
+B
 
 **解决方案**
 
@@ -10530,11 +11009,11 @@ B 灾备管理中心
 3. 问题处理完成后，等待下一次备份周期自动重试或在ASRBR控制台重新触发该OTS实例的备份，确认该
 表能够被正常备份。
 
-##### ASRBR-INSTANCE-
+##### 5.3.5.28 ASRBR-INSTANCE-OtsAllTableBackupFailed
 
 **OtsAllTableBackupFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10555,19 +11034,17 @@ B
 的权限、网络链路是否正常。
 3. 共性问题处理完成后，等待下一次备份周期自动重试或在ASRBR控制台重新触发该OTS实例的备份。
 
-#### STORAGE
+#### 5.3.6 STORAGE
 
-##### ASRBR-STORAGE-
+##### 5.3.6.1 ASRBR-STORAGE-StoragePoolExceedsGroupCapacity
 
 **StoragePoolExceedsGroupCapacity**
 
-## 错误码
-
-##### ASRBR-STORAGE-StoragePoolExceedsGroupCapacity
+**错误码**
 
 **错误信息**
 
-存储池容量超过所属存储池组的可用容量上限。 灾备管理中心
+存储池容量超过所属存储池组的可用容量上限。
 
 **原因分析**
 
@@ -10583,9 +11060,9 @@ A
 2. 扩大组容量：若业务确需更大容量，先扩大存储池组的总容量上限。
 3. 重新提交：调整完成后重新提交配置。
 
-##### ASRBR-STORAGE-UrlResolutionFailed
+##### 5.3.6.2 ASRBR-STORAGE-UrlResolutionFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10609,13 +11086,11 @@ A
 3. 检查网络：确认ASR-BR服务所在节点能够正常访问DNS服务器进行域名解析。
 4. 重试操作：如为临时性DNS故障，等待网络恢复后重新提交
 
-##### ASRBR-STORAGE-
+##### 5.3.6.3 ASRBR-STORAGE-UrlIpAddressInRestrictedRange
 
 **UrlIpAddressInRestrictedRange**
 
-## 错误码
-
-##### ASRBR-STORAGE-UrlIpAddressInRestrictedRange
+**错误码**
 
 **错误信息**
 
@@ -10623,7 +11098,7 @@ URL解析后的IP地址属于受限内网网段，禁止访问。
 
 **原因分析**
 
-灾备管理中心创建或修改存储池组时，用户提供的Endpoint为URL/域名格式，系统对用户提供的URL进行DNS解析以获取真实IP地址（防止进制绕过等攻击方式），然后校验该IP是否在内网管理网段黑名单中。当解析后的IP命中受限网段时，出于SSRF安全策略拦截本次请求。
+创建或修改存储池组时，用户提供的Endpoint为URL/域名格式，系统对用户提供的URL进行DNS解析以获取真实IP地址（防止进制绕过等攻击方式），然后校验该IP是否在内网管理网段黑名单中。当解析后的IP命中受限网段时，出于SSRF安全策略拦截本次请求。
 
 **置信等级**
 
@@ -10633,11 +11108,11 @@ A
 
 （1）检查域名解析：使用nslookup或dig命令确认该URL/域名解析到的真实IP地址。 （2）更换Endpoint：将Endpoint更换为DNS解析后不在受限内网网段范围内的合法地址。 （3）排查DNS劫持：如果域名解析到非预期的内网IP，请检查DNS配置是否存在异常或被劫持。 （4）联系管理员：如确认为误拦截，请联系安全工程师核查Skyline黑名单配置或添加白名单。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.4 ASRBR-STORAGE-IpAddressInRestrictedRange
 
 **IpAddressInRestrictedRange**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10657,15 +11132,15 @@ A
 2. 更换地址：将该Endpoint更换为不在受限内网网段范围内的合法地址。
 3. 联系管理员：如确认为误拦截，请联系安全工程师核查Skyline黑名单配置或添加白名单。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.5 ASRBR-STORAGE-StoragePoolAccessDenied
 
 **StoragePoolAccessDenied**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-存储池操作失败，提供的AccessKey无权限访问目标存储。 灾备管理中心
+存储池操作失败，提供的AccessKey无权限访问目标存储。
 
 **原因分析**
 
@@ -10684,11 +11159,11 @@ A
 2. 授予权限：为该AK/SK授予对目标Bucket的完全读写权限。
 3. 重新提交：权限配置正确后重新提交操作。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.6 ASRBR-STORAGE-TrashBucketCreationForbidden
 
 **TrashBucketCreationForbidden**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10708,15 +11183,15 @@ A
 1. 提升权限：修改存储池的AK、SK，使用权限更完整（包括创建Bucket权限）的凭据。
 2. 指定已有Bucket：在trash bucket中填写一个已存在的Bucket名称。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.7 ASRBR-STORAGE-OrganizationIdCountExceeded
 
 **OrganizationIdCountExceeded**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-灾备管理中心组织ID数量超过限制。
+组织ID数量超过限制。
 
 **原因分析**
 
@@ -10731,9 +11206,9 @@ A
 1. 精简请求中的组织ID列表，使其不超过系统限制。
 2. 若确需关联多个组织，可分批调用接口逐步添加。
 
-##### ASRBR-STORAGE-TrashBucketRequired
+##### 5.3.6.8 ASRBR-STORAGE-TrashBucketRequired
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10754,13 +11229,11 @@ A
 HBR-Storage过期碎片清理的过期数据碎片回收方式，均设置为非回收至Trash Bucket的选项。
 2. 配置Trash Bucket：为当前存储池指定一个可用的trash bucket后重新提交操作。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.9 ASRBR-STORAGE-StorageAccessTripleAlreadyExists
 
 **StorageAccessTripleAlreadyExists**
 
-## 错误码
-
-##### ASRBR-STORAGE-StorageAccessTripleAlreadyExists
+**错误码**
 
 **错误信息**
 
@@ -10768,7 +11241,7 @@ HBR-Storage过期碎片清理的过期数据碎片回收方式，均设置为非
 
 **原因分析**
 
-灾备管理中心创建存储池时，系统通过唯一性校验（checkUniqueness）发现当前 AccessKey + SecretKey + Endpoint三元组已被另一个存储池使用。同一三元组不允许重复注册。
+创建存储池时，系统通过唯一性校验（checkUniqueness）发现当前 AccessKey + SecretKey + Endpoint三元组已被另一个存储池使用。同一三元组不允许重复注册。
 
 **置信等级**
 
@@ -10779,13 +11252,11 @@ A
 1. 检查已有存储池：确认是否已存在使用相同AK/SK/Endpoint的存储池，避免重复创建。
 2. 更换凭据：若确需新建，请使用不同的AccessKey或Endpoint进行注册。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.10 ASRBR-STORAGE-IpAddressConflictWithOtherGroup
 
 **IpAddressConflictWithOtherGroup**
 
-## 错误码
-
-##### ASRBR-STORAGE-IpAddressConflictWithOtherGroup
+**错误码**
 
 **错误信息**
 
@@ -10804,11 +11275,11 @@ A
 1. 核对当前存储池组的Endpoint 配置，确认其解析到的IP是否预期所属。
 2. 调整Endpoint或IP，使其与现有存储池组的IP列表不重叠后重新提交。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.11 ASRBR-STORAGE-StoragePoolDeleteFailed
 
 **StoragePoolDeleteFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10820,7 +11291,6 @@ ASRBR管控在删除存储池前会校验该存储池是否仍被其他资源占
 1. 该存储池下仍存在未删除的备份仓库。
 2. 该存储池仍被元数据自备份策略引用。
 3. 该存储池仍存在未过期的元数据自备份记录。
-灾备管理中心
 
 **置信等级**
 
@@ -10835,11 +11305,11 @@ B
 4. 若为未过期的自备份记录占用：等待相关自备份记录过期或按策略清理后再重试。
 5. 确认存储池已无任何依赖后，重新发起删除操作。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.12 ASRBR-STORAGE-StoragePoolGroupUpdateFailed
 
 **StoragePoolGroupUpdateFailed**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10862,15 +11332,15 @@ Endpoint。
 3. 若无需变更Endpoint：保持Endpoint不变，仅修改名称、存储空间、带宽、存储介质等属性后重新提
 交。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.13 ASRBR-STORAGE-StoragePoolCannotUnauthorize
 
 **StoragePoolCannotUnauthorize**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-灾备管理中心无法取消存储池对组织的授权。
+无法取消存储池对组织的授权。
 
 **原因分析**
 
@@ -10887,11 +11357,11 @@ A
 3. 或在授权列表中保留该组织的授权，不将其移除。
 4. 处理后重新提交存储池授权修改。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.14 ASRBR-STORAGE-StoragePoolGroupNotEmpty
 
 **StoragePoolGroupNotEmpty**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10911,21 +11381,21 @@ B
 2. 先将存储池组内的存储池移除。
 3. 确认存储池组内已无存储池后，重新发起删除操作。
 
-##### ASRBR-STORAGE-
+##### 5.3.6.15 ASRBR-STORAGE-SourcePoolGroupReplicationUnsupported
 
 **SourcePoolGroupReplicationUnsupported**
 
-## 错误码
-
-##### ASRBR-STORAGE-SourcePoolGroupReplicationUnsupported
+**错误码**
 
 **错误信息**
 
-灾备管理中心源端存储池组不支持创建镜像仓库。
+> 源端存储池组不支持创建镜像仓库。
 
 **原因分析**
 
-为某个备份仓库配置镜像仓库时，系统会先查询该源端仓库所在存储池组是否具备跨域/云复制能力。 当该存储池组存在，但未完成复制授权（即数据库中缺少复制云ID、复制OSS Region、复制OSS Location三要素之一）时，判定源端存储池组不支持创建镜像仓库，记录本错误码。常见根因：
+> 为某个备份仓库配置镜像仓库时，系统会先查询该源端仓库所在存储池组是否具备跨域/云复制能力。
+> 当该存储池组存在，但未完成复制授权（即数据库中缺少复制云ID、复制OSS Region、复制OSS Location三要素之一）时，判定源端存储池组不支持创建镜像仓库，记录本错误码。常见根因：
+
 1. 源端仓库所在的存储池组从未执行过跨域/云复制授权，数据库中复制三要素为空。
 2. 该存储池组的复制授权信息被清空或未配置完整。
 
@@ -10940,15 +11410,13 @@ Region、复制OSS Location）。
 2. 使用root组织前往存储池组管理页面，对源端仓库所在的存储池组执行跨域/云复制授权。
 3. 授权配置完成后，重新发起镜像仓库创建请求。
 
-#### COMMON
+#### 5.3.7 COMMON
 
-##### ASRBR-COMMON-
+##### 5.3.7.1 ASRBR-COMMON-PermissionUserRoleUnauthorized
 
 **PermissionUserRoleUnauthorized**
 
-## 错误码
-
-##### ASRBR-COMMON-PermissionUserRoleUnauthorized
+**错误码**
 
 **错误信息**
 
@@ -10971,11 +11439,10 @@ B
 2. 确认当前账号操作的是自己管辖范围内的组织或资源。
 3. 使用具备相应权限的角色账号重新登录后再执行操作。
 4. 若鉴权链路异常，刷新登录态后重试。
-灾备管理中心
 
-##### ASRBR-COMMON-EndpointUnreachable
+##### 5.3.7.2 ASRBR-COMMON-EndpointUnreachable
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -10998,11 +11465,11 @@ B
 2. 检查网络连通性与DNS解析，确认防火墙或安全组放行管控到Endpoint的访问。
 3. 确认目标对象服务运行正常、鉴权信息有效后重新执行操作。
 
-#### GENERIC
+#### 5.3.8 GENERIC
 
-##### ASRBR-GENERIC-MissingParam
+##### 5.3.8.1 ASRBR-GENERIC-MissingParam
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11010,6 +11477,7 @@ B
 
 **原因分析**
 
+ASRBR管控在校验入参时发现请求缺失必填字段。触发场景分两类：
 1. 控制台/OpenAPI调用报错：用户在控制台或通过OpenAPI发起请求（如创建备份计划、修改策略、执行
 恢复）时，请求体未提供必填字段。
 2. 系统任务报错：备份或恢复事件的内部流转过程中存在传参异常，某个必填字段为空导致后续流程无法继
@@ -11021,15 +11489,14 @@ B
 
 **解决方案**
 
-灾备管理中心
 1. 若为控制台/OpenAPI调用：查看错误消息中列出的参数名，检查请求体是否遗漏对应参数，补齐后重新
 发起请求。
 2. 若为系统任务：通过备份/恢复事件的traceId检索日志，结合errorCode和errorMessage定位参数缺失
 的调用链。
 
-##### ASRBR-GENERIC-InvalidParam
+##### 5.3.8.2 ASRBR-GENERIC-InvalidParam
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11053,9 +11520,9 @@ B
 2. 若为系统任务：通过traceId查询日志，结合errorCode和errorMessage定位具体不合法的字段及其来
 源调用链。
 
-##### ASRBR-GENERIC-NotFoundResource
+##### 5.3.8.3 ASRBR-GENERIC-NotFoundResource
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11073,15 +11540,14 @@ B
 
 **解决方案**
 
-灾备管理中心
 1. 若为控制台/OpenAPI调用：核对错误消息中提示的资源标识，前往对应管理页面确认资源是否存在、是
 否已被删除。
 2. 若为系统任务：通过traceId检索日志，进一步通过errorCode、errorMessage定位缺失的具体资源及
 所在业务流程。
 
-##### ASRBR-GENERIC-InvalidStateForOperation
+##### 5.3.8.4 ASRBR-GENERIC-InvalidStateForOperation
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11105,9 +11571,9 @@ B
 2. 若为系统任务：通过traceId查询日志，结合errorCode和errorMessage定位状态冲突发生的具体环
 节。
 
-##### ASRBR-GENERIC-ResourceAlreadyExists
+##### 5.3.8.5 ASRBR-GENERIC-ResourceAlreadyExists
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11126,13 +11592,13 @@ B
 **解决方案**
 
 1. 若为控制台/OpenAPI调用：根据错误消息中返回的资源名称，前往对应管理页面确认是否已存在同名资
-源；如有必要，调整命名后重新提交或直接复用现有资源。 灾备管理中心
+源；如有必要，调整命名后重新提交或直接复用现有资源。
 2. 若为系统任务：通过traceId检索日志，结合errorCode和errorMessage确认是否为重复触发或幂等控
 制问题。
 
-##### ASRBR-GENERIC-PermissionDenied
+##### 5.3.8.6 ASRBR-GENERIC-PermissionDenied
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11140,6 +11606,7 @@ B
 
 **原因分析**
 
+ASRBR管控在鉴权阶段发现当前主体无权执行目标操作。常见于：
 1. 控制台/OpenAPI调用报错：用户使用的账号未被授权对应功能或授权范围不覆盖该资源（如跨组织操
 作、只读账号发起写操作）。
 2. 系统任务报错：后台服务使用的AK/角色没有下游产品的调用权限。
@@ -11155,9 +11622,9 @@ B
 2. 若为系统任务：通过traceId查询日志，进一步通过errorCode、errorMessage定位被拒绝鉴权的具体
 接口与主体，检查后台账号/角色配置。
 
-##### ASRBR-GENERIC-OperationNotSupported
+##### 5.3.8.7 ASRBR-GENERIC-OperationNotSupported
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11178,11 +11645,11 @@ B
 1. 若为控制台/OpenAPI调用：查看错误消息中携带的资源标识，参照产品能力边界文档确认是否支持该操
 作，改用受支持的操作方式或更换资源。
 2. 若为系统任务：通过traceId查询日志，进一步通过errorCode、errorMessage分析被拒绝的具体动作
-与资源能力差异。 灾备管理中心
+与资源能力差异。
 
-##### ASRBR-GENERIC-SystemError
+##### 5.3.8.8 ASRBR-GENERIC-SystemError
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11190,7 +11657,7 @@ B
 
 **原因分析**
 
-SystemError是所有未预期错误的统称。当代码中未匹配到任何具体业务错误码或捕获到未分类的异常时， 此错误码不表示具体业务原因，必须结合日志分析。常见来源包括：依赖服务不可用、数据库访问失败、序列化异常、空指针等运行时异常。
+SystemError是所有未预期错误的统称。当代码中未匹配到任何具体业务错误码或捕获到未分类的异常时， 会将其归为SystemError。 此错误码不表示具体业务原因，必须结合日志分析。常见来源包括：依赖服务不可用、数据库访问失败、序列化异常、空指针等运行时异常。
 
 **置信等级**
 
@@ -11203,11 +11670,11 @@ B
 NPE等），针对具体原因处理。
 3. 若为偶发问题，可先重试。若持续复现，请将traceId与日志片段提供给运维/研发进一步排查。
 
-#### API
+#### 5.3.9 API
 
-##### ASRBR-API-ApiTaskQueryTimeout
+##### 5.3.9.1 ASRBR-API-ApiTaskQueryTimeout
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11226,11 +11693,10 @@ B
 1. 通过traceId查询系统日志，确认轮询的任务ID与最后一次获取到的progress值。
 2. 前往HBR服务侧确认该任务的实际执行状态，是否处于卡住或排队中。
 3. 若为临时性网络抖动，等待后重新触发操作即可。若任务持续未完成，联系HBR产品负责人协助排查。
-灾备管理中心
 
-##### ASRBR-API-CallAdbApiFailed
+##### 5.3.9.2 ASRBR-API-CallAdbApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11251,9 +11717,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系ADB产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallOssApiFailed
+##### 5.3.9.3 ASRBR-API-CallOssApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11261,7 +11727,7 @@ B
 
 **原因分析**
 
-涉及的业务动作包括：存储桶的创建/删除/容量设置/ACL 查询、对象上传/下载/删除/存在检查、桶策略/生命周期/合规保留/跨区域复制规则管理等。 当OSS返回服务端异常（ServiceException）、客户端异常（ClientException）或STS临时凭证获取失败时，记录本错误码。
+ASRBR管控在执行存储相关操作时，调用OSS（对象存储）SDK失败。 涉及的业务动作包括：存储桶的创建/删除/容量设置/ACL 查询、对象上传/下载/删除/存在检查、桶策略/生命周期/合规保留/跨区域复制规则管理等。 当OSS返回服务端异常（ServiceException）、客户端异常（ClientException）或STS临时凭证获取失败时，记录本错误码。
 
 **置信等级**
 
@@ -11273,12 +11739,11 @@ B
 2. 常见原因包括：Bucket不存在或已删除、AccessKey/STS凭证无效或权限不足、网络连通性异常、
 Bucket容量达到上限。
 3. 若无法明确原因，提取请求参数与响应内容，联系OSS产品负责人或存储管理员协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallEcsApiFailed
+##### 5.3.9.4 ASRBR-API-CallEcsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11299,9 +11764,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系ECS产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallRdsApiFailed
+##### 5.3.9.5 ASRBR-API-CallRdsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11320,12 +11785,11 @@ B
 1. 通过traceId查询系统日志，定位具体调用的RDS接口名称与返回的errorCode、errorMessage。
 2. 根据错误信息初步判断原因（如实例不存在、权限不足、策略参数超限、RDS服务不可用等）。
 3. 若无法明确原因，提取请求参数与响应内容，联系RDS产品负责人协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallNasApiFailed
+##### 5.3.9.6 ASRBR-API-CallNasApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11346,9 +11810,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系NAS产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallVpcApiFailed
+##### 5.3.9.7 ASRBR-API-CallVpcApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11368,11 +11832,10 @@ B
 2. 根据错误信息初步判断原因（如VPC/VSwitch不存在、可用IP不足、权限不足等）。
 3. 若无法明确原因，提取请求参数与响应内容，联系VPC/网络产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
-灾备管理中心
 
-##### ASRBR-API-CallPolardbApiFailed
+##### 5.3.9.8 ASRBR-API-CallPolardbApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11393,9 +11856,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系PolarDB产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallPolardbxApiFailed
+##### 5.3.9.9 ASRBR-API-CallPolardbxApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11415,11 +11878,10 @@ B
 2. 根据错误信息初步判断原因（如实例不存在、拓扑信息异常、权限不足等）。
 3. 若无法明确原因，提取请求参数与响应内容，联系PolarDB-X产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
-灾备管理中心
 
-##### ASRBR-API-CallPolardbLocalApiFailed
+##### 5.3.9.10 ASRBR-API-CallPolardbLocalApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11440,9 +11902,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系PolarDB Local产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallMongodbApiFailed
+##### 5.3.9.11 ASRBR-API-CallMongodbApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11462,11 +11924,10 @@ B
 2. 根据错误信息初步判断原因（如实例不存在或已释放、权限不足、MongoDB服务不可用等）。
 3. 若无法明确原因，提取请求参数与响应内容，联系MongoDB产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
-灾备管理中心
 
-##### ASRBR-API-CallRedisApiFailed
+##### 5.3.9.12 ASRBR-API-CallRedisApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11487,9 +11948,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系Redis产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallDrdsApiFailed
+##### 5.3.9.13 ASRBR-API-CallDrdsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11508,12 +11969,11 @@ B
 1. 通过traceId查询系统日志，定位具体调用的DRDS接口与返回的errorCode、errorMessage。
 2. 根据错误信息初步判断原因（如实例不存在、策略参数错误、权限不足、DRDS服务不可用等）。
 3. 若无法明确原因，提取请求参数与响应内容，联系DRDS产品负责人协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallGpdbApiFailed
+##### 5.3.9.14 ASRBR-API-CallGpdbApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11534,9 +11994,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系GPDB产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallOdpsApiFailed
+##### 5.3.9.15 ASRBR-API-CallOdpsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11555,12 +12015,11 @@ B
 1. 通过traceId查询系统日志，定位具体调用的接口与返回的errorCode、errorMessage。
 2. 常见原因：MMA Token过期需刷新、ABM服务不可用、ODPS项目配置异常、网络连通性问题。
 3. 若无法明确原因，提取请求参数与响应内容，联系MaxCompute/MMA产品负责人协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallOtsApiFailed
+##### 5.3.9.16 ASRBR-API-CallOtsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11581,9 +12040,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系OTS产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallEsApiFailed
+##### 5.3.9.17 ASRBR-API-CallEsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11601,13 +12060,13 @@ B
 
 1. 通过traceId查询系统日志，定位具体调用的ES接口与返回的错误内容。
 2. 常见原因：ES实例用户名/密码错误（Unauthorized）、快照仓库不存在或配置异常、ES实例状态不正
-常、网络异常。 灾备管理中心
+常、网络异常。
 3. 若无法明确原因，提取请求参数与响应内容，联系ES产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallAscmApiFailed
+##### 5.3.9.18 ASRBR-API-CallAscmApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11628,9 +12087,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系ASCM/飞天平台负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallS3ApiFailed
+##### 5.3.9.19 ASRBR-API-CallS3ApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11638,7 +12097,7 @@ B
 
 **原因分析**
 
-涉及的业务动作包括：列出/创建/删除Bucket、检查Bucket是否存在、获取Bucket ACL、上传/下载/删除/ 列出对象、获取对象元信息等。 当S3 SDK抛出S3Exception（服务端错误，如权限拒绝、Bucket不存在）或通用客户端异常（网络错误） 时，记录本错误码。
+ASRBR管控在执行S3兼容存储操作时，调用AWS S3 SDK失败。 涉及的业务动作包括：列出/创建/删除Bucket、检查Bucket是否存在、获取Bucket ACL、上传/下载/删除/ 列出对象、获取对象元信息等。 当S3 SDK抛出S3Exception（服务端错误，如权限拒绝、Bucket不存在）或通用客户端异常（网络错误） 时，记录本错误码。
 
 **置信等级**
 
@@ -11648,13 +12107,12 @@ B
 
 1. 通过traceId查询系统日志，定位具体调用的S3操作与返回的errorCode、errorMessage。
 2. 常见原因：S3凭证无效或权限不足、Bucket名称不存在、网络连通性异常、S3兼容存储服务不可用。
-灾备管理中心
 3. 若无法明确原因，提取请求参数与响应内容，联系存储管理员协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallKmsApiFailed
+##### 5.3.9.20 ASRBR-API-CallKmsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11675,9 +12133,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系KMS产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallBackendStorageApiFailed
+##### 5.3.9.21 ASRBR-API-CallBackendStorageApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11685,7 +12143,7 @@ B
 
 **原因分析**
 
-后端存储层封装了OSS和S3两种实现，涉及的业务动作包括：存储桶的创建/删除/ACL查询/容量管理、对象上传/下载/删除/列出、桶策略/统计信息管理，以及存储池连通性校验与备份仓库初始化。 当底层OSS或S3调用失败后，异常被统一封装为本错误码。
+ASRBR管控在执行存储操作时，调用统一后端存储抽象层接口失败。 后端存储层封装了OSS和S3两种实现，涉及的业务动作包括：存储桶的创建/删除/ACL查询/容量管理、对象上传/下载/删除/列出、桶策略/统计信息管理，以及存储池连通性校验与备份仓库初始化。 当底层OSS或S3调用失败后，异常被统一封装为本错误码。
 
 **置信等级**
 
@@ -11695,13 +12153,12 @@ B
 
 1. 通过traceId查询系统日志，定位具体调用的存储操作与底层返回的errorCode、errorMessage。
 2. 常见原因：存储凭证无效或权限不足、Bucket不存在、网络连通性异常、存储服务不可用。
-灾备管理中心
 3. 若无法明确原因，提取请求参数与响应内容，联系存储管理员协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallTianjiApiFailed
+##### 5.3.9.22 ASRBR-API-CallTianjiApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11709,7 +12166,7 @@ B
 
 **原因分析**
 
-涉及的业务动作包括：获取服务注册变量（如cluLocation）、获取指定集群下机器列表、获取ASRBR项目集群列表、获取OSS集群信息（判断是否为CDS集群）等。 当TianJi HTTP接口响应状态码非200、请求超时或网络异常时，记录本错误码。
+ASRBR管控在执行运维管理相关操作时，调用Tianji平台接口失败。 涉及的业务动作包括：获取服务注册变量（如cluLocation）、获取指定集群下机器列表、获取ASRBR项目集群列表、获取OSS集群信息（判断是否为CDS集群）等。 当TianJi HTTP接口响应状态码非200、请求超时或网络异常时，记录本错误码。
 
 **置信等级**
 
@@ -11722,9 +12179,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系TianJi平台负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallOmsApiFailed
+##### 5.3.9.23 ASRBR-API-CallOmsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11743,12 +12200,11 @@ B
 1. 通过traceId查询系统日志，定位具体调用的OMS接口与返回的errorCode、errorMessage。
 2. 常见原因：OMS服务不可用、计量数据格式异常、鉴权失败。
 3. 若无法明确原因，提取请求参数与响应内容，联系OMS产品负责人协助排查。
-灾备管理中心
 4. 问题解决后，等待下一次计量上报周期自动重试。
 
-##### ASRBR-API-CallTianjiMonApiFailed
+##### 5.3.9.24 ASRBR-API-CallTianjiMonApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11769,9 +12225,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系TianJi监控/CMS负责人协助排查。
 4. 问题解决后，等待下一次监控采集周期自动重试。
 
-##### ASRBR-API-CallHbrApiFailed
+##### 5.3.9.25 ASRBR-API-CallHbrApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11791,11 +12247,10 @@ B
 2. 常见原因：HBR Agent不在线或版本不兼容、Client ID不存在、HBR服务不可用。
 3. 若无法明确原因，提取请求参数与响应内容，联系HBR产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
-灾备管理中心
 
-##### ASRBR-API-CallCloudDnsApiFailed
+##### 5.3.9.26 ASRBR-API-CallCloudDnsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11816,9 +12271,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系CloudDns/PrivateZone负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallCmsApiFailed
+##### 5.3.9.27 ASRBR-API-CallCmsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11826,7 +12281,7 @@ B
 
 **原因分析**
 
-涉及的业务动作包括：上报备份监控数据到CMS、查询CMS监控指标列表。 当CMS接口返回服务端错误、鉴权失败或网络异常时，记录本错误码。
+ASRBR管控在执行监控告警相关操作时，调用CMS（云监控）接口失败。 涉及的业务动作包括：上报备份监控数据到CMS、查询CMS监控指标列表。 当CMS接口返回服务端错误、鉴权失败或网络异常时，记录本错误码。
 
 **置信等级**
 
@@ -11838,11 +12293,10 @@ B
 2. 常见原因：CMS服务不可用、监控命名空间或指标名称配置错误、鉴权失败。
 3. 若无法明确原因，提取请求参数与响应内容，联系CMS/云监控负责人协助排查。
 4. 问题解决后，等待下一次上报/采集周期自动重试。
-灾备管理中心
 
-##### ASRBR-API-CallAasApiFailed
+##### 5.3.9.28 ASRBR-API-CallAasApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11863,11 +12317,13 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系AAS/账号认证服务负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallAnyBackupApiFailed
+##### 5.3.9.29 ASRBR-API-CallAnyBackupApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
+
+调用AnyBackup接口失败。
 
 **原因分析**
 
@@ -11882,12 +12338,11 @@ B
 1. 通过traceId查询系统日志，定位具体调用的AnyBackup接口与返回的error内容。
 2. 常见原因：AnyBackup服务不可达（URL不可用）、接口返回业务错误、认证信息异常。
 3. 若无法明确原因，提取请求参数与响应内容，联系AnyBackup/爱数产品负责人协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallGwsApiFailed
+##### 5.3.9.30 ASRBR-API-CallGwsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11908,9 +12363,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系GWS/无影云桌面产品负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallOssChijiApiFailed
+##### 5.3.9.31 ASRBR-API-CallOssChijiApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11929,12 +12384,11 @@ B
 1. 通过traceId查询系统日志，定位调用GetBucketQuotaRangeBatch时的请求参数与返回内容。
 2. 常见原因：OSS赤骥内部服务不可用、Bucket名称不存在、网络连通性问题。
 3. 若无法明确原因，提取请求参数与响应内容，联系OSS赤骥/存储平台负责人协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallRamApiFailed
+##### 5.3.9.32 ASRBR-API-CallRamApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11942,7 +12396,7 @@ B
 
 **原因分析**
 
-涉及的业务动作包括：列出/获取/创建角色、创建策略、绑定/解绑策略、查询角色策略列表。 典型场景为创建备份计划或备份仓库时，需要初始化STS服务角色（如ADB/PolarDB备份角色）。 当RAM接口返回服务端错误（如角色不存在、策略已绑定）、鉴权失败或网络异常时，记录本错误码。
+ASRBR管控在执行权限或角色管理时，调用RAM（访问控制）OpenAPI失败。 涉及的业务动作包括：列出/获取/创建角色、创建策略、绑定/解绑策略、查询角色策略列表。 典型场景为创建备份计划或备份仓库时，需要初始化STS服务角色（如ADB/PolarDB备份角色）。 当RAM接口返回服务端错误（如角色不存在、策略已绑定）、鉴权失败或网络异常时，记录本错误码。
 
 **置信等级**
 
@@ -11955,9 +12409,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系RAM/权限管理负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallStsApiFailed
+##### 5.3.9.33 ASRBR-API-CallStsApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -11976,12 +12430,11 @@ B
 1. 通过 traceId 查询系统日志，定位STS AssumeRole调用返回的errorCode、errorMessage。
 2. 常见原因：服务角色不存在或未配置信任策略、权限策略不足、STS服务不可用。
 3. 若无法明确原因，提取请求参数与响应内容，联系STS/RAM负责人协助排查。
-灾备管理中心
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallDeDuplicationApiFailed
+##### 5.3.9.34 ASRBR-API-CallDeDuplicationApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12002,9 +12455,9 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系HBR重删服务负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-##### ASRBR-API-ApiQueryResultEmpty
+##### 5.3.9.35 ASRBR-API-ApiQueryResultEmpty
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12020,11 +12473,11 @@ B
 
 **解决方案**
 
-（1）通过traceId查询系统日志，定位具体调用的接口与查询参数。 （2）确认查询的目标资源是否存在、查询条件（实例ID、账号等）是否正确。 （3）若无法明确原因，提取请求参数与响应内容，联系对应产品负责人协助排查。 （4）问题解决后，重新触发相关操作。 灾备管理中心
+（1）通过traceId查询系统日志，定位具体调用的接口与查询参数。 （2）确认查询的目标资源是否存在、查询条件（实例ID、账号等）是否正确。 （3）若无法明确原因，提取请求参数与响应内容，联系对应产品负责人协助排查。 （4）问题解决后，重新触发相关操作。
 
-##### ASRBR-API-CallDownstreamApiFailed
+##### 5.3.9.36 ASRBR-API-CallDownstreamApiFailed
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12048,11 +12501,11 @@ B
 3. 若无法明确原因，提取请求参数与响应内容，联系对应下游服务负责人协助排查。
 4. 问题解决后，重新触发相关操作。
 
-### HBRC
+### 5.4 HBRC
 
-#### HBRC-COM-InternalError
+#### 5.4.1 HBRC-COM-InternalError
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12070,7 +12523,6 @@ HBR-Console服务内部错误。
 4. 数据源配置异常：系统数据库连接初始化失败，可能是数据库配置缺失或数据库实例不可达。
 5. 系统配置缺失：读取系统级配置项时未找到必要的数据，可能是部署环境配置不完整。
 6. 备份任务执行异常：备份任务在下发执行阶段遇到了未预期的异常，导致任务状态无法正常更新。
-灾备管理中心
 7. 未预期的系统异常：请求处理过程中发生了未被特定错误码覆盖的异常，由全局异常处理器统一捕获并返
 回此错误码。
 
@@ -12088,9 +12540,9 @@ B
 4. 若以上排查均未发现问题，或错误无明确触发场景，则联系技术支持，提供服务端日志中的
 RequestId/traceId以便进一步定位。
 
-#### HBRC-COM-SendMqMessageError
+#### 5.4.2 HBRC-COM-SendMqMessageError
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12111,15 +12563,15 @@ B
 3. 确认目标队列是否存在、是否可正常收发消息。
 4. 消息队列恢复后，重新触发备份任务。
 
-#### HBRC-SNAP-
+#### 5.4.3 HBRC-SNAP-CannotDeleteLatestSnapshot
 
 **CannotDeleteLatestSnapshot**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-无法删除最新的快照。 灾备管理中心
+无法删除最新的快照。
 
 **原因分析**
 
@@ -12133,9 +12585,9 @@ B
 
 该最新快照为最近的可恢复点，不支持删除。如需清理历史快照，请选择非最新的快照进行删除。
 
-#### HBRC-SNAP-SnapshotNotExist
+#### 5.4.4 HBRC-SNAP-SnapshotNotExist
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12158,13 +12610,11 @@ B
 2. 前往ECS产品侧查看对应的快照信息，确认该快照是否仍然存在、是否已被删除或过期清理。
 3. 若快照已不存在，改用其他有效的快照重新发起操作。
 
-#### HBRC-UDM-
+#### 5.4.5 HBRC-UDM-CreateConsistentSnapshotGroupFailed
 
 **CreateConsistentSnapshotGroupFailed**
 
-## 错误码
-
-#### HBRC-UDM-CreateConsistentSnapshotGroupFailed
+**错误码**
 
 **错误信息**
 
@@ -12172,7 +12622,7 @@ B
 
 **原因分析**
 
-当备份计划要求创建一致性快照组（应用一致或文件系统一致）时，系统会为实例的多块磁盘创建一致性快照组。 灾备管理中心专有云场景下，若一致性快照组创建失败，任务不降级为普通快照而直接判为失败并记录本错误码。常见于磁盘不支持快照组、实例磁盘数量或类型不满足要求、应用一致所需的权限（RAM角色）未绑定，或云平台创建快照组接口调用失败。
+当备份计划要求创建一致性快照组（应用一致或文件系统一致）时，系统会为实例的多块磁盘创建一致性快照组。 专有云场景下，若一致性快照组创建失败，任务不降级为普通快照而直接判为失败并记录本错误码。常见于磁盘不支持快照组、实例磁盘数量或类型不满足要求、应用一致所需的权限（RAM角色）未绑定，或云平台创建快照组接口调用失败。
 
 **置信等级**
 
@@ -12187,11 +12637,11 @@ B
 3. 若为应用一致性备份，确认实例已绑定所需的RAM角色。
 4. 若无需一致性快照，调整备份计划取消一致性快照组要求后重试，否则修复上述条件后重新触发备份。
 
-#### HBRC-UDM-
+#### 5.4.6 HBRC-UDM-CreateNativeEbsSnapshotError
 
 **CreateNativeEbsSnapshotError**
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12212,13 +12662,13 @@ B
 3. 确认备份所用凭证是否具备创建快照的权限。
 4. 问题解决后，重新触发备份任务。
 
-#### HBRC-UDM-NoRunningDiskBackupJobs
+#### 5.4.7 HBRC-UDM-NoRunningDiskBackupJobs
 
-## 错误码
+**错误码**
 
 **错误信息**
 
-整机备份执行失败，所有云盘备份任务均未能正常启动。 灾备管理中心
+整机备份执行失败，所有云盘备份任务均未能正常启动。
 
 **原因分析**
 
@@ -12241,9 +12691,9 @@ B
 4. 若提示系统内部错误，则稍后重试备份任务或者联系技术支持，提供服务端日志中的RequestId/traceId
 以便进一步定位。
 
-#### HBRC-JOB-AgentReportTimeout
+#### 5.4.8 HBRC-JOB-AgentReportTimeout
 
-## 错误码
+**错误码**
 
 **错误信息**
 
@@ -12263,7 +12713,7 @@ A
 
 **解决方案**
 
-根据jobId在HBR-Console服务端日志中检索该任务的Agent 上报记录，判断任务生命周期内是否收到过 Agent 的进度上报，以此区分故障方向。 灾备管理中心
+根据jobId在HBR-Console服务端日志中检索该任务的Agent 上报记录，判断任务生命周期内是否收到过 Agent 的进度上报，以此区分故障方向。
 1. 若整个任务生命周期内从未收到Agent上报，则检查物理机上备份Agent是否在运行、日志中是否有异常
 退出记录，同时检查物理机到消息队列的网络连通性与鉴权配置，恢复后重新触发备份计划。
 2. 若Agent有上报但任务停留在执行中状态未能续命至终态，则结合Agent端的执行日志排查问题，处理完

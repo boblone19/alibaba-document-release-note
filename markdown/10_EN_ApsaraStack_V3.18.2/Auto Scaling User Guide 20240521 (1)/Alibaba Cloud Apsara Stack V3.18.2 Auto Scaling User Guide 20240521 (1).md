@@ -5,7 +5,7 @@ doc_version: "20240521"
 pdf_pages: 58
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Auto Scaling User Guide 20240521 (1).pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/ESS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Auto%20Scaling%20User%20Guide%2020240521%20%281%29.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Auto Scaling User Guide 20240521 (1)
@@ -203,6 +203,9 @@ Before you use Auto Scaling to manage a group of instances that fall into the sa
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -236,6 +239,9 @@ If the network type of the SLB instance is classic network, and that of the scal
 The health check feature is enabled for the SLB instance. For more information, see the
 **Configure health checks** topic of Server Load Balancer User Guide.
 If you want to attach an ApsaraDB RDS instance to a scaling group, make sure that the following requirements are met: You have one or more ApsaraDB RDS instances that are in the **Running** state. For more information, see the **What is ApsaraDB RDS?** topic of ApsaraDB RDS User Guide. The ApsaraDB RDS instance and the scaling group belong to the same organization, resource set, and region.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -281,6 +287,9 @@ A security group is available in the virtual private cloud (VPC) where your scal
 **Background information**
 
 You can create only a limited number of scaling configurations for a scaling group. For more information, see the **Limits** topic in **Auto Scaling Product Introduction**.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -331,6 +340,9 @@ This topic describes how to enable a scaling group. Auto Scaling can trigger sca
 **Prerequisites**
 
 The scaling group is in the **Disable** state. The scaling group has a scaling configuration that is in the **Enable** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -348,6 +360,9 @@ This topic describes how to create a scaling rule. You can specify the number of
 **Background information**
 
 You can create only a limited number of scaling rules for a scaling group. For more information, see the **Limits** topic in **Auto Scaling Product Introduction**. If the total number of instances in a scaling group is out of the specified range after a scaling rule is executed, Auto Scaling creates or removes a specific number of instances to keep the total number within the specified range.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -376,6 +391,9 @@ This topic describes how to create a scheduled task. If your business workloads 
 **Background information**
 
 A scheduled task allows Auto Scaling to execute a scaling rule at the specified point in time. This way, computing resources can be automatically scaled to meet your business requirements and minimize the costs of resources. You can also specify an interval at which a scheduled task is executed to cope with the changes of business workloads in an efficient manner. If multiple scheduled tasks need to be executed within the same minute, Auto Scaling executes the most recently created scheduled task.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Scheduled Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -404,6 +422,9 @@ On the Scheduled Tasks page, the scheduled task that you created appears. You ca
 **task**
 
 This topic describes how to create an event-triggered task. If your business workloads are unpredictable or may surge unexpectedly, you can create an event-triggered task. You must specify a metric that is monitored by CloudMonitor in an event-triggered task. After you create and enable an event-triggered task, Auto Scaling collects data for the specified metric in real time and CloudMonitor triggers an alert when the specified condition is met. Then, Auto Scaling executes the scaling rule that is associated with the event-triggered task to scale instances in your scaling group.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Event-Triggered Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -444,6 +465,9 @@ A virtual private cloud (VPC) and a vSwitch are created. For more information, s
 To associate your scaling group with an ApsaraDB RDS instance, make sure that the following requirements are met: You have one or more ApsaraDB RDS instances that are in the **Running** state. For more information about ApsaraDB RDS, see the **What is ApsaraDB RDS?** topic in **ApsaraDB**
 **RDS Product Introduction**.
 The ApsaraDB RDS instance and the scaling group are in the same organization, resource set, and region.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -484,6 +508,9 @@ This topic describes how to enable a scaling group. Auto Scaling can trigger sca
 **Prerequisites**
 
 The scaling group is in the **Disable** state. The scaling group has a scaling configuration that is in the **Enable** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -497,6 +524,9 @@ The status of the scaling group is changed from **Disable** to **Enable** in the
 ### 4.3 View scaling groups
 
 This topic describes how to view the list of scaling groups and the information about a specific scaling group.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -547,6 +577,9 @@ This topic describes how to disable a scaling group that you no longer need.
 **Prerequisites**
 
 Make sure that the scaling group that you want to disable does not have scaling activities in progress. The scaling group is in the **Enable** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -565,6 +598,9 @@ This topic describes how to permanently delete a scaling group. When you delete 
 **Prerequisites**
 
 The scaling group is no longer needed.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -580,6 +616,9 @@ After you delete the scaling group and refresh the Scaling Groups page, the scal
 ### 5.1 Query instances
 
 After instances are added to a scaling group, you can query the information such as the instance list, number of instances in the scaling group, and cooldown period of instances.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -624,6 +663,9 @@ The instances that you want to add to a scaling group must meet the following re
 
 You can manually add instances to a scaling group even before the cooldown time expires. If the number of instances in the scaling group is greater than the maximum number of instances after you manually add instances to the scaling group, you cannot add the instances. The instance types of the instances that you want to manually add to a scaling group can be different from the instance types specified in the scaling configuration that is in the
 **Enable** state of the scaling group.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -647,6 +689,9 @@ This topic describes how to put an instance into the Standby state. Auto Scaling
 **Background information**
 
 After you put an instance into the Standby state, the following rules apply: The instance remains in the Standby state until you manually move it out of the Standby state. Auto Scaling stops managing the lifecycle of the instance. You must manually manage the lifecycle of the instance. If a scale-in activity is triggered, Auto Scaling does not remove the instance from the scaling group. When the instance is stopped or restarted, the health check status of the instance is not updated. To release the instance, you must first remove the instance from the scaling group. If you delete the scaling group, the instance is automatically removed from the Standby state and subsequently released. You can perform the following operations on the instance: stop the instance, restart the instance, change the instance type, and change the OS.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -667,6 +712,9 @@ You can move an instance out of the Standby state to reuse the instance.
 **Background information**
 
 After you move an instance out of the Standby state, the following rules apply: The instance enters the In Service state. When the instance is stopped or restarted, the health status of the instance is updated. Auto Scaling continues to manage the lifecycle of the instance, and can remove the instance from the scaling group during a scale-in activity.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -687,6 +735,9 @@ If you do not want an instance to be removed from your scaling group, you can pu
 **Background information**
 
 After you put an instance into the Protected state, the following rules apply: The instance remains in the Protected state until you manually move it out of the Protected state. If a scale-in activity is triggered, Auto Scaling does not remove the instance from the scaling group. The instance can be released only after you move it out of the Protected state. When the instance is stopped or restarted, the health check status of the instance is not updated.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -703,6 +754,9 @@ column.
 **Protected state**
 
 You can move an instance out of the Protected state. This way, Auto Scaling manages the lifecycle of the instance.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -727,6 +781,9 @@ Before you manually remove an instance from a scaling group, make sure that the 
 **Background information**
 
 You can manually remove an instance from a scaling group without the need to wait for the cooldown time to expire. After you remove an instance from a scaling group, the number of instances in the scaling group must be greater than or equal to the minimum number of instances allowed. Otherwise, you cannot remove the instance from the scaling group.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -749,6 +806,9 @@ Before you delete an instance in a scaling group, make sure that the following c
 **Background information**
 
 You can manually remove an instance from a scaling group and delete the instance without the need to wait for the cooldown time to expire. After you remove an instance from a scaling group and delete the instance, the number of instances in the scaling group must be greater than or equal to the minimum number of instances allowed. Otherwise, you cannot delete the instance.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -771,6 +831,8 @@ You can create a scaling configuration for a scaling group. When a scale-out is 
 
 A security group is available in the virtual private cloud (VPC) where your scaling group for which you want to create a scaling configuration resides. For more information, see the
 **Create a security group** topic in ECS User Guide of Apsara Stack Documentation Center.
+
+**Procedure**
 
 > **Important:** You can create only a limited number of scaling configurations for a scaling group. For more information, see the **Limits** topic of the **Notes** chapter in Auto Scaling User Guide.
 
@@ -819,6 +881,9 @@ After the scaling configuration is created, the scaling configuration enters the
 ### 6.2 View scaling configurations
 
 This topic describes how to view scaling configurations.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 s
@@ -832,6 +897,9 @@ On the Scaling Configuration Sources tab, you can view information about the sca
 ### 6.3 Modify a scaling configuration
 
 This topic describes how to modify a scaling configuration. You can modify the information about a scaling configuration based on your business requirements.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -846,6 +914,9 @@ For more information about the parameters of the scaling configuration, see Crea
 ### 6.4 Apply a scaling configuration
 
 This topic describes how to apply a scaling configuration. You can create multiple scaling configurations for a scaling group and apply one of the scaling configurations based on your business requirements.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -866,6 +937,9 @@ This topic describes how to delete a scaling configuration that you no longer re
 **Prerequisites**
 
 The scaling configuration is in the **Disable** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -889,6 +963,9 @@ A scaling activity may be in one of the following states: **Rejected**, **Execut
 **Partially Succeeded**, and **Failed**. If a scaling activity enters the **Rejected**, **Partially**
 **Succeeded**, or **Failed** state, you view the **Description/Reason** column or the **Status**
 **Information** column of the scaling activity to rectify the exception that occurred.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -930,6 +1007,9 @@ A scaling rule specifies the specific action performed in a scale-out or scale-i
 **Background information**
 
 You can create only a limited number of scaling rules for a scaling group. For information about the scaling rule quota, see the **Limits** topic in the **Notes** chapter of Auto Scaling Use r Guide. If the addition or removal of a specific number of instances causes the total number of instances in a scaling group to drop below the designated lower limit or exceed the designated upper limit, Auto Scaling automatically adjusts the number of instances to be added or removed. This ensures that the total number of instances in the scaling group maintains between the lower and upper limits.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -959,6 +1039,9 @@ rule based on your business requirements.
 ### 8.2 View scaling rules
 
 This topic describes how to view scaling rules.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -975,6 +1058,9 @@ On the Scaling Rules tab, you can manage the scaling rules. For example, you can
 ### 8.3 Modify a scaling rule
 
 This topic describes how to modify a scaling rule. You can modify the information about a scaling rule, such as the rule name, action that is specified in the rule, and cooldown time.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -996,6 +1082,9 @@ The scaling group for which the scaling rule is created is in the **Enable** sta
 **Background information**
 
 If the total number of instances in a scaling group is out of the specified range after a scaling rule is executed, Auto Scaling creates or removes a specific number of instances to keep the total number within the specified range. Auto Scaling allows you to manually execute scaling rules. You can also associate scaling rules with scheduled tasks or event-triggered tasks to enable auto scaling. For information about how to create scheduled tasks and event-triggered tasks, see Create a scheduled task and Create an event-triggered task.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1011,6 +1100,9 @@ On the **Scaling Activity** tab, a scaling activity is generated. You can view t
 ### 8.5 Delete a scaling rule
 
 This topic describes how to delete a scaling rule that you no longer require.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, click **Scaling Groups**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1028,6 +1120,8 @@ If your business workloads have specific patterns, you can create scheduled task
 **Background information**
 
 A scheduled task is a predefined task that triggers the automatic execution of a scaling rule at the specified point in time. It ensures an automatic scaling of computing resources to fulfill your business demands at a minimum cost. You can specify a time window for a scheduled task to repeatedly run at the specified point in time. This enhances the adaptability of the scheduled task and effectively addresses the demands of your business. If multiple scheduled tasks need to be complete within one minute, Auto Scaling will execute the most recent scheduled task.
+
+**Procedure**
 
 > **Note:** Before you create a scheduled task, make sure that a scaling group and scaling rule are created. For more information, see Create scaling groups and Create a scaling rule.
 
@@ -1062,6 +1156,9 @@ requirements.
 ### 9.2 View scheduled tasks
 
 This topic describes how to view scheduled tasks.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Scheduled Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1088,6 +1185,9 @@ want to manage.
 ### 9.3 Modify a scheduled task
 
 This topic describes how to modify a scheduled task. You can modify the information about a scheduled task, such as the scheduled task name and description, point in time at which the scheduled task is executed, resource for which the scheduled task is created, scaling rule that is specified in the scheduled task, and timeout period during which Auto Scaling can retry the scheduled task.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Scheduled Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1104,6 +1204,9 @@ This topic describes how to disable a scheduled task that you no longer require.
 **Prerequisites**
 
 The scheduled task is in the **Running** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Scheduled Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1122,6 +1225,9 @@ This topic describes how to enable a scheduled task. You can enable a scheduled 
 **Prerequisites**
 
 The scheduled task is in the **Stop** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Scheduled Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1136,6 +1242,9 @@ The status of the scheduled task changes from **Stop** to **Running** in the **S
 ### 9.6 Delete a scheduled task
 
 This topic describes how to permanently delete a scheduled task that you no longer require.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Scheduled Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1150,6 +1259,9 @@ This topic describes how to permanently delete a scheduled task that you no long
 **task**
 
 This topic describes how to create an event-triggered task. If your business workloads are unpredictable or may surge unexpectedly, you can create an event-triggered task. You must specify a metric that is monitored by CloudMonitor in an event-triggered task. After you create and enable an event-triggered task, Auto Scaling collects data for the specified metric in real time and CloudMonitor triggers an alert when the specified condition is met. Then, Auto Scaling executes the scaling rule that is associated with the event-triggered task to scale instances in your scaling group.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Event-Triggered Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1180,6 +1292,9 @@ On the Event-triggered Tasks page, the event-triggered task that you created app
 ### 10.2 View event-triggered tasks
 
 This topic describes how to view event-triggered tasks.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Event-Triggered Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1199,6 +1314,9 @@ You can select multiple filter options to narrow down the search results.
 **task**
 
 This topic describes how to modify an event-triggered task. You can modify the information about an event-triggered task, such as the task name and description, metric that is specified in the task, and statistical method.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Event-driven Tasks > Alert Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1226,6 +1344,9 @@ This topic describes how to disable an event-triggered task. You can disable an 
 **Prerequisites**
 
 The event-triggered task is in the **Normal** or **Insufficient Data** state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Event-Triggered Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1242,6 +1363,9 @@ This topic describes how to enable an event-triggered task. You can enable an ev
 **Prerequisites**
 
 The event-triggered task is in the Disable state.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Event-Triggered Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1254,6 +1378,9 @@ and click **Enable** in the **Actions** column.
 **task**
 
 This topic describes how to permanently delete an event-triggered task that you no longer require.
+
+**Procedure**
+
 1. Log on to Auto Scaling.
 2. In the left-side navigation pane, choose **Scaling Tasks > Event-Triggered Tasks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.

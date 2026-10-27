@@ -5,16 +5,150 @@ doc_version: "20260729"
 pdf_pages: 222
 source_pdf: "09_开发指南_enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apsara_stack_dns/zh/enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 专有云DNS 开发指南
 
-专有云DNS
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+- 3 通过POP网关调用专有云API
+  - 3.1 调用前置
+  - 3.2 Java版
+  - 3.3 Go版
+  - 3.4 Python版
+- 4 API参考
+    - 4.1.1 使用方式
+    - 4.1.2 支持形式
+    - 4.1.4 时间格式
+  - 4.2 API概述
+  - 4.3 SDK使用要求
+    - 4.3.1 获取AccessKey
+    - 4.3.2 获取EndPoint
+  - 4.4 SDK示例
+    - 4.4.1 创建Client
+    - 4.4.2 云内API参考
+      - 4.4.2.1 备节点切换主节点：TransferLeadership
+      - 4.4.2.2 查询DnsGtmAgent探测节点：DescribeDnsGtmAgents
+      - 4.4.2.3 删除PrivateDefaultForward租户默认转发域名：DeletePrivateDefaultForwardZone
+      - 4.4.2.4 修改PrivateZone租户内网域名的解析记录：UpdatePrivateZoneRecord
+      - 4.4.2.5 添加GlobalLine全局线路：AddGlobalLine
+      - 4.4.2.6 修改GlobalZone全局内网域名的解析记录：UpdateGlobalZoneRecord
+      - 4.4.2.7 查询PrivateForwardZone租户转发配置列表：DescribePrivateForwardZones
+      - 4.4.2.8 删除RecursorAcl递归ACL配置：DeleteRecursorAcl
+      - 4.4.2.9 解除租户内网域名绑定的VPC：DeleteZoneVpc
+      - 4.4.2.10 查询节点管理列表：DescribeNodes
+      - 4.4.2.11 添加PrivateDefaultForwardZone租户默认转发配置：AddPrivateDefaultForwardZone
+      - 4.4.2.12 清除缓存：FlushCache
+      - 4.4.2.13 查询DnsGtmAddressPool地址池列表：DescribeDnsGtmAddressPools
+      - 4.4.2.14 删除DnsGtmAddressPool地址池：DeleteDnsGtmAddressPool
+      - 4.4.2.15 修改PrivateDefaultForwardZone租户默认转发配置的备注：UpdatePrivateDefaultForwardZoneRemark
+      - 4.4.2.16 添加GlobalZone解析记录: AddGlobalZoneRecord
+      - 4.4.2.17 删除PrivateForwardZone租户转发域名：DeletePrivateForwardZone
+      - 4.4.2.18 查询GlobalForwardZone全局转发域名列表：DescribeGlobalForwardZones
+      - 4.4.2.19 查询ResolveConf全局递归配置：DescribeResolveConf
+      - 4.4.2.20 查询PrivateLine私有线路列表：DescribePrivateLines
+      - 4.4.2.21 修改PrivateLine私有线路：UpdatePrivateLine
+      - 4.4.2.22 查询和VPC私有域名冲突的域名：DescribeConflictPrivateZones
+      - 4.4.2.23 删除DnsGtmMonitor地址池健康检查 ：DeleteDnsGtmMonitor
+      - 4.4.2.24 删除PrivateZone租户内网域名：DeletePrivateZone
+      - 4.4.2.25 查询DnsGtmMonitor地址池健康检查：DescribeDnsGtmMonitor
+      - 4.4.2.26 添加PrivateLine私有线路：AddPrivateLine
+      - 4.4.2.27 查询DnsGtmAccessStrategy访问策略列表：DescribeDnsGtmAccessStrategies
+      - 4.4.2.28 修改PrivateForwardZone租户转发域名：UpdatePrivateForwardZone
+      - 4.4.2.29 添加GlobalForwardZone全局转发域名：AddGlobalForwardZone
+      - 4.4.2.30 查询和云内全局域名冲突的域名：DescribeConflictGlobalZones
+      - 4.4.2.31 修改PrivateZoneRecord租户内网域名解析记录的备注：UpdatePrivateZoneRecordRemark
+      - 4.4.2.32 修改DnsGtmInstance调度实例：UpdateDnsGtmInstance
+      - 4.4.2.33 添加DnsGtmAccessStrategy访问策略：AddDnsGtmAccessStrategy
+      - 4.4.2.34 修改DnsGtmInstance调度实例备注：UpdateDnsGtmInstanceRemark
+      - 4.4.2.35 设置全局默认转发配置：SetGlobalDefaultForward
+      - 4.4.2.36 查询PrivateDefaultForwardZone租户默认转发配置：DescribePrivateDefaultForwardZones
+      - 4.4.2.37 查询GlobalZone全局内网域名列表：DescribeGlobalZones
+      - 4.4.2.38 查询GlobalZoneRecord全局内网域名的解析记录：DescribeGlobalZoneRecords
+      - 4.4.2.39 修改GlobalLine全局线路：UpdateGlobalLine
+      - 4.4.2.40 设置Recursor递归：EnableRecursor
+      - 4.4.2.41 查询GlobalLine全局线路列表：DescribeGlobalLines
+      - 4.4.2.42 查询节点qps信息：DescribeMetrics
+      - 4.4.2.43 查询DNS服务的anycast地址：DescribeDNSServerAddrs
+      - 4.4.2.44 修改GlobalZone全局内网域名备注：UpdateGlobalZoneRemark
+      - 4.4.2.45 查询GlobalDefaultForward全局默认转发配置：DescribeGlobalDefaultForward
+      - 4.4.2.46 添加GlobalZone全局内网域名：AddGlobalZone
+      - 4.4.2.47 修改PrivateZone租户内网域名备注：UpdatePrivateZoneRemark
+      - 4.4.2.48 添加DnsGtmMonitor地址池健康检查：AddDnsGtmMonitor
+      - 4.4.2.49 修改DnsGtmAddressPool地址池：UpdateDnsGtmAddressPool
+      - 4.4.2.50 修改PrivateLine私有线路优先级：UpdatePrivateLinePriority
+      - 4.4.2.51 删除DnsGtmInstance调度实例：DeleteDnsGtmInstance
+      - 4.4.2.52 修改GlobalLine优先级：UpdateGlobalLinePriority
+      - 4.4.2.53 创建DnsGtmInstance调度实例：AddDnsGtmInstance
+      - 4.4.2.54 查询缓存：DescribeCache
+      - 4.4.2.55 查询DnsGtmInstance调度实例列表：DescribeDnsGtmInstances
+      - 4.4.2.56 开启应急组：EnableEmergencyGroup
+      - 4.4.2.57 关闭应急组：DisableEmergencyGroup
+      - 4.4.2.58 修改GlobalZone全局内网域名：AddGlobalZone
+      - 4.4.2.59 修改RecursorAcl递归ACL备注：UpdateRecursorAclRemark
+      - 4.4.2.60 修改GlobalForward域名：UpdateGlobalForwardZone
+      - 4.4.2.61 添加PrivateZone租户内网域名：AddPrivateZone
+      - 4.4.2.62 添加PrivateForward转发域名：AddPrivateForwardZone
+      - 4.4.2.63 修改DnsGtmAccessStrategy访问策略： UpdateDnsGtmAccessStrategy
+      - 4.4.2.64 修改GlobalForwardZone备注：UpdateGlobalForwardZoneRemark
+      - 4.4.2.65 删除PrivateLine私有线路：DeletePrivateLine
+      - 4.4.2.66 租户内网域名绑定VPC：BindZoneVpc
+      - 4.4.2.67 删除DnsGtmAccessStrategy：DeleteDnsGtmAccessStrategy
+      - 4.4.2.68 删除GlobalForward域名：DeleteGlobalForwardZone
+      - 4.4.2.69 修改GlobalZone：UpdateGlobalZone
+      - 4.4.2.70 修改RecursorAcl：UpdateRecursorAcl
+      - 4.4.2.71 修改GlobalZone解析记录的备注：UpdateGlobalZoneRecordRemark
+      - 4.4.2.72 查询RecursorAcl策略列表：DescribeRecursorAcls
+      - 4.4.2.73 查询PrivateZones租户内网域名：DescribePrivateZones
+      - 4.4.2.74 添加RecursorAcl：AddRecursorAcl
+      - 4.4.2.75 修改地址池健康检查：UpdateDnsGtmMonitor
+      - 4.4.2.76 查询PrivateZone解析记录列表：DescribePrivateZoneRecords
+      - 4.4.2.77 查询GlobalZone的列表：DescribeGlobalZones
+      - 4.4.2.78 查询日志管理：DescribeDnsGtmLogs
+      - 4.4.2.79 删除GlobalZone：DeleteGlobalZone
+      - 4.4.2.80 修改节点：UpdateNode
+      - 4.4.2.81 添加PrivateZone解析记录: AddPrivateZoneRecord
+      - 4.4.2.82 添加地址池：AddDnsGtmAddressPool
+      - 4.4.2.83 修改PrivateForwardZone备注：UpdatePrivateForwardZoneRemark
+      - 4.4.2.84 租户转发域名绑定VPC：BindForwardZoneVpc
+      - 4.4.2.85 解除租户转发配置绑定的VPC：DeleteForwardZoneVpc
+      - 4.4.2.86 修改租户默认转发配置: UpdatePrivateDefaultForwardZone
+      - 4.4.2.87 删除GlobalLine记录：DeleteGlobalLine
+      - 4.4.2.88 删除GlobalZone解析记录: DeleteGlobalZoneRecord
+      - 4.4.2.89 删除PrivateZone租户内网域名的解析记录：DeletePrivateZoneRecord
+    - 4.4.3 跨云API参考
+      - 4.4.3.1 查询节点管理列表：DescribeNodes
+      - 4.4.3.2 修改UniversalLine跨云解析线路的优先级：UpdateUniversalLinePriority
+      - 4.4.3.3 开启应急组：EnableEmergencyGroup
+      - 4.4.3.4 添加UniversalZone全局共享域名：AddUniversalZone
+      - 4.4.3.5 修改UniversalZoneRecord跨云共享域名解析记录的备注：UpdateUniversalZoneRecordRemark
+      - 4.4.3.6 关闭应急组：DisableEmergencyGroup
+      - 4.4.3.7 修改UniversalZone跨云共享域名的备注：UpdateUniversalZoneRemark
+      - 4.4.3.8 删除UniversalLine跨云解析线路：DeleteUniversalLine
+      - 4.4.3.9 修改UniversalLine跨云解析线路：UpdateUniversalLine
+      - 4.4.3.10 修改UniversalZoneRecord跨云共享域名的解析记录：UpdateUniversalZoneRecord
+      - 4.4.3.11 修改节点：UpdateNode
+      - 4.4.3.12 删除UniversalZone跨云共享域名：DeleteUniversalZone
+      - 4.4.3.13 备节点切换主节点：TransferLeadership
+      - 4.4.3.14 查询UniversalLine跨云解析线路列表：DescribeUniversalLines
+      - 4.4.3.15 添加UniversalLine跨云解析线路：AddUniversalLine
+      - 4.4.3.16 删除UniversalZone解析记录: DeleteUniversalZoneRecord
+      - 4.4.3.17 获取UniversalZone解析列表: DescribeUniversalZoneRecords
+      - 4.4.3.18 获取UniversalZone列表: DescribeUniversalZones
+      - 4.4.3.19 添加UniversalZone解析记录: AddUniversalZoneRecord
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,18 +165,15 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-专有云DNS
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
 **流程图**
-
-专有云DNS
 
 **调用步骤**
 
@@ -53,24 +184,24 @@ converter: line-classifier (PyMuPDF)
 
 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
 **说明**
 
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-` `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
 4. 获取对应的API参考文档。
-专有云DNS 您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-专有云DNS
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -88,17 +219,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 专有云DNS AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -113,24 +242,20 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
-专有云DNS
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -171,7 +296,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 2. 在顶部的菜单栏中，选择**产品** > **开发与工具** > **开发与运维** > **API****网关**。
 3. 在左侧导航栏中，单击**实例**。
 4. 在实例列表中查看**实例****ID**。
-专有云DNS
 
 **返回参数**
 
@@ -184,7 +308,7 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -197,7 +321,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-专有云DNS
 
 ```
 public static void main(String[] args) {
@@ -224,7 +347,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -246,11 +374,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，下列代码以ECS为示例。
-专有云DNS
 
 ```
 public static void main(String[] args) {
@@ -262,7 +389,12 @@ public static void main(String[] args) {
 
 ```
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -274,14 +406,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-专有云DNS
+`}`
 
-## 通过POP网关调用专有云API
+## 3 通过POP网关调用专有云API
 
-### 调用前置
+### 3.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -305,7 +436,6 @@ public static void main(String[] args) {
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。 您也可以自行获取Endpoint，本文以API网关为例为您介绍获取云产品业务域Endpoint的方法。
 1. 登录Apsara Uni-manager运维控制台。
-专有云DNS
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在服务注册变量大盘页面，单击**高级筛选**。
@@ -317,19 +447,18 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见本手册**准备工作**下的**获取公共****Header****参数**章节。
 
-### Java版
+### 3.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
 **前提条件**
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
+**服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -340,7 +469,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     public static void main(String[] args) {
 ```
 
-专有云DNS `//` 创建`DefaultAcsClient`实例并初始化。
+`//` 创建`DefaultAcsClient`实例并初始化。
 
 ```xml
         DefaultProfile profile = DefaultProfile.getProfile("<your-regionid>", "
@@ -431,13 +560,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -456,16 +585,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrMsg:" + e.getErrMsg());
 ```
 
-专有云DNS
-
 ```java
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -544,7 +668,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.setSysAction("GetNamespaceList");
 ```
 
-`//`必填值，调用来源说明专有云DNS `//` 必填值，调用来源说明
+`//`必填值，调用来源说明 `//` 必填值，调用来源说明
 
 ```
         request.putHeadParameter("x-acs-caller-sdk-source", "ApiTestDemo");
@@ -556,19 +680,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -592,10 +716,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **重要**
 
@@ -611,7 +734,7 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Go版
+### 3.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -619,11 +742,8 @@ clientConfig.setIgnoreSSLCerts(true)
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发**
 **工具** > **API****与工具** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
-专有云DNS
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -631,7 +751,7 @@ clientConfig.setIgnoreSSLCerts(true)
 
 **CommonRequest调用示例**
 
-RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下： 专有云DNS
+RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下：
 
 ```java
 package main import (
@@ -640,7 +760,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -684,19 +804,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 专有云DNS
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 package main import (
@@ -706,7 +829,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -751,37 +874,41 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 专有云DNS
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下：
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -813,9 +940,7 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-专有云DNS
-
-### Python版
+### 3.4 Python版
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -824,9 +949,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发**
 **工具** > **API****与工具** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -840,7 +963,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -849,13 +972,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -864,13 +981,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -880,36 +997,39 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-专有云DNS
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -918,7 +1038,7 @@ SecurityToken>"};
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -930,14 +1050,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -956,15 +1075,13 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-专有云DNS
-
-**忽略证书**
+> **忽略证书**
 
 **重要**
 
@@ -975,7 +1092,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -985,29 +1102,29 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-) 专有云DNS
+`)`
 
-## API参考
+## 4 API参考
 
-### 简介
+### 4.1 简介
 
-#### 使用方式
+#### 4.1.1 使用方式
 
 通过用户AK/SK进行调用，具体调用方式可以使用各语言的SDK，也可以自己依据POP网关提供的签名说明，自己编写Clitent进行调用。
 
-#### 支持形式
+#### 4.1.2 支持形式
 
 主账号AK/SK 主账号临时AK/SK Ram子账号AK/SK Ram子账号临时AK/SK
 
-#### 说明
+#### 4.1.3 说明
 
 AK是AccessKeyId，识别用户用的。 SK是AccessKeySerect，计算请求签名时用的密钥。
 
-#### 时间格式
+#### 4.1.4 时间格式
 
 除非API有特殊说明，时间字符串为UTC+0时间，格式为YYYY-MM-DDTHH:mm:ssZ，例如：2018-01- 16T09:00:01Z，对应UT+8时间为2018-01-16 17:00:01。
 
-### API概述
+### 4.2 API概述
 
 当前版本共输出六个API接口，列表如下：
 
@@ -1020,19 +1137,17 @@ AK是AccessKeyId，识别用户用的。 SK是AccessKeySerect，计算请求签�
 | UpdateGlobalRrSet | 更新全局RrSet |
 | RemarkGlobalRrSet | 备注全局RrSet |
 
-### SDK使用要求
+### 4.3 SDK使用要求
 
-#### 获取AccessKey
+#### 4.3.1 获取AccessKey
 
-AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。 专有云DNS
+AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -1047,40 +1162,35 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
-专有云DNS
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-#### 获取EndPoint
+#### 4.3.2 获取EndPoint
 
 **操作步骤**
 
 1. 管理员登录天基控制台。
-2. 在上方的导航栏中选择**运维** > **集群运维**，进入**集群运维**页面。
+2. 在上方的导航栏中选择**运维** **>** **集群运维**，进入**集群运维**页面。
 3. 在**Project**下拉菜单中选择dnsProduct。
 4. 单击dnsService后面的**详情**。
 5. 在下列出的两台服务器中选择一台，单击**终端**进入控制台。
-专有云DNS
 6. 运行指令 `sudo docker ps -l` ，获取当前运行的container id。
 7. 运行指令 sudo docker inspect ${container id} |grep env ，获取当前环境的endpoint值。
 其中，pop_out_endpoint对应的value值（api.开头的字符串）即为endpoint。
 
-### SDK示例
+### 4.4 SDK示例
 
-#### 创建Client
+#### 4.4.1 创建Client
 
 通过regionId, accessKey, accessKeySecret创建Client：
 
@@ -1129,19 +1239,15 @@ cret}");
 4.    }
 ```
 
-#### 云内API参考
+#### 4.4.2 云内API参考
 
-##### 备节点切换主节点：TransferLeadership
+##### 4.4.2.1 备节点切换主节点：TransferLeadership
 
 调用TransferLeadership接口将备节点切换成主节点。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1164,26 +1270,22 @@ cret}");
 http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"343778269185",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 查询DnsGtmAgent探测节点：
+##### 4.4.2.2 查询DnsGtmAgent探测节点：DescribeDnsGtmAgents
 
 **DescribeDnsGtmAgents**
 
@@ -1204,7 +1306,7 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 1 | 探测节点的ID。 |
 | -Ip | String | 127.0.0.1 | 探测节点的IP。 |
 | -Dimension | String | ["region","vpcId","z one"], | 探测范围。取值： region：region信息。 vpcId：VPC信息。 zone：区信息。 |
@@ -1214,7 +1316,7 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 | Message | String | error message | 异常请求的信息。 |
 | Code | String | error code | 异常请求的编码。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1231,10 +1333,9 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
@@ -1245,13 +1346,16 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
   "AssignedTaskCount":0,
   "Id":"1",
   "Dimension":"[\"region\",\"vpcId\",\"zone\"],"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1263,9 +1367,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-专有云DNS
-
-##### 删除PrivateDefaultForward租户默认转发域名：
+##### 4.4.2.3 删除PrivateDefaultForward租户默认转发域名：DeletePrivateDefaultForwardZone
 
 **DeletePrivateDefaultForwardZone**
 
@@ -1298,24 +1400,22 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
 http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改PrivateZone租户内网域名的解析记录：
+##### 4.4.2.4 修改PrivateZone租户内网域名的解析记录：UpdatePrivateZoneRecord
 
 **UpdatePrivateZoneRecord**
 
@@ -1333,22 +1433,16 @@ http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone
 | ZoneId | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 租户内网域名的ID。 |
 | Name | Strin g | Body | 否 | www | 解析记录的名称。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | 是 | A | 记录类型。取值说明： A：将域名指向一个IPV4 地址。 AAAA：将域名指向一个 IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制 255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针， 通常用于 ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的 DNS服务器解析。 |
 | Ttl | Integ er | Body | 是 | 300 | 记录缓存时间。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
-| RDatas | Repe atList | Body | 是 |  | 记录值集合。 |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 值。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| RDatas | Repe atList | Body | 是 |   | 记录值集合。 |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 值。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 解析线路列表。 |
 | Remark | Strin g | Body | 否 | remark | 备注。 |
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1365,34 +1459,28 @@ http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone
 http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
 ```
 
-##### 添加GlobalLine全局线路：AddGlobalLine
+##### 4.4.2.5 添加GlobalLine全局线路：AddGlobalLine
 
 调用AddGlobalLine接口添加全局线路。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1418,24 +1506,22 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord
 http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改GlobalZone全局内网域名的解析记录：
+##### 4.4.2.6 修改GlobalZone全局内网域名的解析记录：UpdateGlobalZoneRecord
 
 **UpdateGlobalZoneRecord**
 
@@ -1453,22 +1539,16 @@ http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1
 | ZoneId | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 全局内网域名的ID。 |
 | Name | Strin g | Body | 否 | www | 解析记录的名称。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | 是 | A | 记录类型。取值说明： A：将域名指向一个IPV4 地址。 AAAA：将域名指向一个 IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制 255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针， 通常用于 ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的 DNS服务器解析。 |
 | Ttl | Integ er | Body | 是 | 300 | 记录缓存时间。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
-| RDatas | Repe atList | Body | 是 |  | 记录值集合。 |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 值。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| RDatas | Repe atList | Body | 是 |   | 记录值集合。 |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 值。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 线路列表。 |
 | Remark | Strin g | Body | 否 | remark | 备注。 |
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1485,34 +1565,26 @@ http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1
 http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 查询PrivateForwardZone租户转发配置列表：
+##### 4.4.2.7 查询PrivateForwardZone租户转发配置列表：DescribePrivateForwardZones
 
 **DescribePrivateForwardZones**
 
 调用DescribePrivateForwardZones接口查询租户转发配置列表。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 专有云DNS
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1525,10 +1597,10 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Forwarders | String | ["1.1.1.1"] | 转发目的IP列表。 |
-| - RegionAndVpc s | Array |  | 已经绑定的VPC信息和Region信息。 |
-| --Vpcs | Array |  | 已经绑定的VPC信息。 |
+| - RegionAndVpc s | Array |   | 已经绑定的VPC信息和Region信息。 |
+| --Vpcs | Array |   | 已经绑定的VPC信息。 |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | VPC的ID。 |
 | ---Name | String | vpc-name | VPC的名称。 |
 | --RegionId | String | cn-region-env1- d01 | VPC的region信息。 |
@@ -1538,7 +1610,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 | -VpcCount | Integer | 1 | 已关联VPC个数。 |
 | -Remark | String | remark | 备注。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -ForwardMode | String | FORWARD ONLY _ | 转发模式。取值说明： FORWARD ONLY: 全部转发模式(建议)-全部 _ 请求只做转发(不作任何递归)。 FORWARD FIRST:优先转发模式-转发失败降 _ 级到互联网递归。 |
@@ -1559,12 +1631,9 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -1579,18 +1648,29 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":""
-  },
-  "Name":"com.",
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+   "RegionId":""
+```
+
+`},`
+
+```json
+  "Name":"com.",
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1616,7 +1696,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 删除RecursorAcl递归ACL配置：
+##### 4.4.2.8 删除RecursorAcl递归ACL配置：DeleteRecursorAcl
 
 **DeleteRecursorAcl**
 
@@ -1638,7 +1718,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | Message | String | error message | 异常请求的信息。 |
@@ -1653,24 +1733,22 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 http(s)://[Endpoint]/?Action=DeleteRecursorAcl
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 解除租户内网域名绑定的VPC：DeleteZoneVpc
+##### 4.4.2.9 解除租户内网域名绑定的VPC：DeleteZoneVpc
 
 调用DeleteZoneVpc接口，解除租户内网域名绑定的VPC。
 
@@ -1683,13 +1761,11 @@ http(s)://[Endpoint]/?Action=DeleteRecursorAcl
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | 是 |  | 解绑的VPC列表。 |
-| -Id | Strin g |  | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
-| -Name | Strin g |  | 否 | vpc-name | VPC的名称。 |
+| Vpcs | Repe atList | Body | 是 |   | 解绑的VPC列表。 |
+| -Id | Strin g |   | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
+| -Name | Strin g |   | 否 | vpc-name | VPC的名称。 |
 | RegionId | Strin g | Body | 是 | cn-region-env1-d01 | VPC的region信息。 |
 | Id | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 租户内网域名的ID。 |
 
@@ -1709,25 +1785,21 @@ http(s)://[Endpoint]/?Action=DeleteRecursorAcl
 http(s)://[Endpoint]/?Action=DeleteZoneVpc
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-专有云DNS
-
-##### 查询节点管理列表：DescribeNodes
+##### 4.4.2.10 查询节点管理列表：DescribeNodes
 
 调用DescribeNodes接口查询节点管理列表。
 
@@ -1746,7 +1818,7 @@ http(s)://[Endpoint]/?Action=DeleteZoneVpc
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -AnycastAddr | String | 10.1.0.12,10.1.0.13 | anycast服务地址。 |
 | -Id | String | 343778269185 | 节点ID。 |
 | -LocalAddr | String | 10.1.24.1 | 节点IP。 |
@@ -1755,8 +1827,6 @@ http(s)://[Endpoint]/?Action=DeleteZoneVpc
 | -Role | String | leader | 节点角色类型。取值说明： leader：leader节点（选举节点）。 follower ：follower节点（选举节点）。 learner：learner节点（非选举节点）。 candidate：异常状态节点。 |
 | -Index | Integer | 1 | 最新同步logid。 |
 | -IsOnline | Boolean | true | 工作状态。取值说明： true：正常。 false：离线。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1776,10 +1846,9 @@ http(s)://[Endpoint]/?Action=DeleteZoneVpc
 http(s)://[Endpoint]/?Action=DescribeNodes
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
@@ -1795,12 +1864,9 @@ http(s)://[Endpoint]/?Action=DescribeNodes
   "RegionId":"cn-region-env1-d01",
   "LocalAddr":"10.1.24.1",
   "IsOnline":true
- },
- "Code":"error code"
-}
 ```
 
-专有云DNS `XML` 格式
+`},`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -1819,7 +1885,7 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 </Data> <Code>error code </Code>
 ```
 
-##### 添加PrivateDefaultForwardZone租户默认转发
+##### 4.4.2.11 添加PrivateDefaultForwardZone租户默认转发配置：AddPrivateDefaultForwardZone
 
 **配置：AddPrivateDefaultForwardZone**
 
@@ -1857,26 +1923,22 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 清除缓存：FlushCache
+##### 4.4.2.12 清除缓存：FlushCache
 
 调用FlushCache接口清除缓存。
 
@@ -1908,23 +1970,21 @@ http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone
 http(s)://[Endpoint]/?Action=FlushCache
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
 ```
 
-##### 查询DnsGtmAddressPool地址池列表：
+##### 4.4.2.13 查询DnsGtmAddressPool地址池列表：DescribeDnsGtmAddressPools
 
 **DescribeDnsGtmAddressPools**
 
@@ -1948,11 +2008,9 @@ http(s)://[Endpoint]/?Action=FlushCache
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
-| -Addrs | Array |  |  |
+| Data | Array |   |   |
+| -Addrs | Array |   |   |
 | --Value | String | 1.1.1.1 | 地址值。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1984,10 +2042,9 @@ http(s)://[Endpoint]/?Action=FlushCache
 http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "MonitoredAddressCount":1,
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
@@ -2001,18 +2058,25 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
    "Mode":"SMART",
    "Value":"1.1.1.1",
    "Available":true
-  },
+```
+
+`},`
+
+```json
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <MonitoredAddressCount>1</MonitoredAddressCount> <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2032,7 +2096,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 删除DnsGtmAddressPool地址池：
+##### 4.4.2.14 删除DnsGtmAddressPool地址池：DeleteDnsGtmAddressPool
 
 **DeleteDnsGtmAddressPool**
 
@@ -2055,7 +2119,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | Message | String | error message | 异常请求的信息。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2071,24 +2135,22 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改PrivateDefaultForwardZone租户默认转发
+##### 4.4.2.15 修改PrivateDefaultForwardZone租户默认转发配置的备注：UpdatePrivateDefaultForwardZoneRemark
 
 **配置的备注：**
 
@@ -2099,10 +2161,6 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2126,24 +2184,22 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool
 http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 添加GlobalZone解析记录:
+##### 4.4.2.16 添加GlobalZone解析记录: AddGlobalZoneRecord
 
 **AddGlobalZoneRecord**
 
@@ -2160,22 +2216,16 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-
 | ZoneId | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 全局内网域名的ID。 |
 | Name | Strin g | Body | 否 | www | 记录名称。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | 是 | A | 记录类型。取值说明： A：将域名指向一个IPV4 地址。 AAAA：将域名指向一个 IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制 255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针， 通常用于 ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的 DNS服务器解析。 |
 | Ttl | Integ er | Body | 是 | 300 | 记录缓存时间。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
 | Remark | Strin g | Body | 否 | 备注 | 解析记录备注。 |
-| RDatas | Repe atList | Body | 是 |  | 记录值集合。 |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 值。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| RDatas | Repe atList | Body | 是 |   | 记录值集合。 |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 值。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 解析线路。 |
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2192,36 +2242,28 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-
 http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 删除PrivateForwardZone租户转发域名：
+##### 4.4.2.17 删除PrivateForwardZone租户转发域名：DeletePrivateForwardZone
 
 **DeletePrivateForwardZone**
 
 调用DeletePrivateForwardZone接口删除租户转发域名。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2244,26 +2286,22 @@ http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl
 http(s)://[Endpoint]/?Action=DeletePrivateForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 查询GlobalForwardZone全局转发域名列表：
+##### 4.4.2.18 查询GlobalForwardZone全局转发域名列表：DescribeGlobalForwardZones
 
 **DescribeGlobalForwardZones**
 
@@ -2285,17 +2323,17 @@ http(s)://[Endpoint]/?Action=DeletePrivateForwardZone
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Forwarders | String | ["1.1.1.1"] | 转发目的IP列表。 |
-| - RegionAndVpc s | Array |  | 已经绑定的VPC信息和Region信息。 |
-| --Vpcs | Array |  | 已经绑定的VPC信息。 |
+| - RegionAndVpc s | Array |   | 已经绑定的VPC信息和Region信息。 |
+| --Vpcs | Array |   | 已经绑定的VPC信息。 |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | VPC的ID。 |
 | ---Name | String | vpc-name | VPC的名称。 |
 | --RegionId | String | cn-region-env1- d01 | VPC的region信息。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 转发域名ID。 |
 | -Name | String | com. | 转发域名名称。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2321,12 +2359,9 @@ http(s)://[Endpoint]/?Action=DeletePrivateForwardZone
 http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2341,18 +2376,29 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":"cn-region-env1-d01"
-  },
-  "Name":"com.",
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+   "RegionId":"cn-region-env1-d01"
+```
+
+`},`
+
+```json
+  "Name":"com.",
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2378,7 +2424,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 查询ResolveConf全局递归配置：
+##### 4.4.2.19 查询ResolveConf全局递归配置：DescribeResolveConf
 
 **DescribeResolveConf**
 
@@ -2395,8 +2441,6 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | Code | String | error code | 异常请求的编码。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Enable | Boolean | true | 递归设置。取值说明： true：允许递归。 false：不允许递归。 |
@@ -2409,25 +2453,23 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 http(s)://[Endpoint]/?Action=DescribeResolveConf
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "UpdateTime":"1702460677",
  "Enable":true,
  "UpdateTimestamp":1702460677,
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <UpdateTime>1702460677</UpdateTime> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
-##### 查询PrivateLine私有线路列表：
+##### 4.4.2.20 查询PrivateLine私有线路列表：DescribePrivateLines
 
 **DescribePrivateLines**
 
@@ -2442,8 +2484,6 @@ http(s)://[Endpoint]/?Action=DescribeResolveConf
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Ip | Strin g | Body | 否 | 1.1.1.1 | 查询IP，IPV4支持模糊查询，IPV6只支持精确查询。 |
@@ -2456,7 +2496,7 @@ http(s)://[Endpoint]/?Action=DescribeResolveConf
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -V4Addresses | String | ["1.1.1.1"] | IPV4地址列表。 |
 | -V6Addresses | String | ["2400:3200::7777 "] | IPV6地址列表。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 地址池ID。 |
@@ -2467,7 +2507,7 @@ http(s)://[Endpoint]/?Action=DescribeResolveConf
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | Message | String | error message | 异常请求的信息。 |
 
-|  | 专有云DNS |  |  | 开发指南·API参考 |  |
+|   | 专有云DNS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2485,10 +2525,9 @@ http(s)://[Endpoint]/?Action=DescribeResolveConf
 http(s)://[Endpoint]/?Action=DescribePrivateLines
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
@@ -2501,13 +2540,16 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2522,7 +2564,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 修改PrivateLine私有线路：
+##### 4.4.2.21 修改PrivateLine私有线路：UpdatePrivateLine
 
 **UpdatePrivateLine**
 
@@ -2544,8 +2586,6 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
 
 **返回数据**
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -2561,34 +2601,26 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
 http(s)://[Endpoint]/?Action=UpdatePrivateLine
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 查询和VPC私有域名冲突的域名：
+##### 4.4.2.22 查询和VPC私有域名冲突的域名：DescribeConflictPrivateZones
 
 **DescribeConflictPrivateZones**
 
 调用DescribeConflictPrivateZones接口查询和VPC私有域名冲突的域名。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 专有云DNS
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2598,7 +2630,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateLine
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 域名ID。 |
 | -Name | String | com. | 域名名称。 |
 | -IsForward | Boolean | true | 是否是转发域名。取值说明： true：是。 false：不是。 |
@@ -2615,23 +2647,23 @@ http(s)://[Endpoint]/?Action=UpdatePrivateLine
 http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Data":{
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "IsForward":true,
   "Name":"com."
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
@@ -2643,7 +2675,7 @@ http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 删除DnsGtmMonitor地址池健康检查：
+##### 4.4.2.23 删除DnsGtmMonitor地址池健康检查：
 
 **DeleteDnsGtmMonitor**
 
@@ -2664,8 +2696,6 @@ http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -2681,34 +2711,26 @@ http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 http(s)://[Endpoint]/?Action=DeleteDnsGtmMonitor
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 删除PrivateZone租户内网域名：
+##### 4.4.2.24 删除PrivateZone租户内网域名：DeletePrivateZone
 
 **DeletePrivateZone**
 
 调用DeletePrivateZone接口删除租户内网域名。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 专有云DNS
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2731,26 +2753,22 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmMonitor
 http(s)://[Endpoint]/?Action=DeletePrivateZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 查询DnsGtmMonitor地址池健康检查：
+##### 4.4.2.25 查询DnsGtmMonitor地址池健康检查：DescribeDnsGtmMonitor
 
 **DescribeDnsGtmMonitor**
 
@@ -2772,13 +2790,11 @@ http(s)://[Endpoint]/?Action=DeletePrivateZone
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -AgentIds | String | ["agent- id1","agent-id1"] | 探测节点的ID列表。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 健康检查的ID。 |
 | -ProtocolType | String | HTTP | 探测类型。取值说明： ICMP：ICMP类型探测。 TCP：TCP类型探测。 UDP：UDP类型探测。 HTTP：HTTP类型探测。 HTTPS：HTTPS类型探测。 |
 | -Enable | String | true | 是否开启。取值说明： true：开启探测。 false: 关闭探测。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2803,12 +2819,9 @@ http(s)://[Endpoint]/?Action=DeletePrivateZone
 http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2822,13 +2835,16 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Interval":15
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2848,15 +2864,9 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 添加PrivateLine私有线路：AddPrivateLine
+##### 4.4.2.26 添加PrivateLine私有线路：AddPrivateLine
 
 调用AddPrivateLine接口添加私有线路。
-
-**请求头**
-
-专有云DNS 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2883,24 +2893,20 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
 http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-region-env1-d01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 查询DnsGtmAccessStrategy访问策略列表：
+##### 4.4.2.27 查询DnsGtmAccessStrategy访问策略列表：DescribeDnsGtmAccessStrategies
 
 **DescribeDnsGtmAccessStrategies**
 
@@ -2923,10 +2929,10 @@ http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | 线路列表。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2945,7 +2951,7 @@ http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-
 | - FailoverMinAv ailableAddrNu m | Integer | 1 | 备地址池最小可用地址数量。 |
 | - FailoverAvaila bleAddrNum | Integer | 2 | 备地址池当前可用地址数量。 |
 
-|  | 开发指南·API参考 |  |  | 专有云DN | S |
+|   | 开发指南·API参考 |   |   | 专有云DN | S |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2969,12 +2975,9 @@ http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-
 http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2996,13 +2999,16 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "GtmInstanceId":"56bab908-04e0-44ee-b126-1cbdbcd24507",
   "InUseGtmAddressPoolId":"b42155a3-029f-4d56-bfcb-0c82657dc7c7"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -3030,7 +3036,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 修改PrivateForwardZone租户转发域名：
+##### 4.4.2.28 修改PrivateForwardZone租户转发域名：UpdatePrivateForwardZone
 
 **UpdatePrivateForwardZone**
 
@@ -3047,7 +3053,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 | Id | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 租户转发域名的ID。 |
 | Name | Strin g | Body | 是 | com. | 租户转发域名的名称。 |
 
-| 专有云DNS |  |  |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3073,24 +3079,22 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 http(s)://[Endpoint]/?Action=UpdatePrivateForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 添加GlobalForwardZone全局转发域名：
+##### 4.4.2.29 添加GlobalForwardZone全局转发域名：AddGlobalForwardZone
 
 **AddGlobalForwardZone**
 
@@ -3117,32 +3121,26 @@ http(s)://[Endpoint]/?Action=UpdatePrivateForwardZone
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 转发域名ID。 |
 
-**示例**
-
-专有云DNS 请求示例
-
 ```
 http(s)://[Endpoint]/?Action=AddGlobalForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 查询和云内全局域名冲突的域名：
+##### 4.4.2.30 查询和云内全局域名冲突的域名：DescribeConflictGlobalZones
 
 **DescribeConflictGlobalZones**
 
@@ -3162,15 +3160,13 @@ http(s)://[Endpoint]/?Action=AddGlobalForwardZone
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
-
-专有云DNS
+| Data | Array |   |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 域名ID。 |
 | -Name | String | com. | 域名名称。 |
-| -IsForward | Boolean |  | 是否是转发域名。取值说明： true：是。 false：不是。 |
+| -IsForward | Boolean |   | 是否是转发域名。取值说明： true：是。 false：不是。 |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | TotalItems | Integer | 10 | 总数。 |
 | Message | String | error message | 异常请求的信息。 |
@@ -3184,23 +3180,25 @@ http(s)://[Endpoint]/?Action=AddGlobalForwardZone
 http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Data":{
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "IsForward":"",
   "Name":"com."
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
@@ -3211,7 +3209,7 @@ http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 修改PrivateZoneRecord租户内网域名解析记录的
+##### 4.4.2.31 修改PrivateZoneRecord租户内网域名解析记录的备注：UpdatePrivateZoneRecordRemark
 
 **备注：UpdatePrivateZoneRecordRemark**
 
@@ -3237,32 +3235,26 @@ http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 解析记录备注。 |
 
-**示例**
-
-请求示例专有云DNS
-
 ```
 http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改DnsGtmInstance调度实例：
+##### 4.4.2.32 修改DnsGtmInstance调度实例：UpdateDnsGtmInstance
 
 **UpdateDnsGtmInstance**
 
@@ -3282,10 +3274,6 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark
 | Ttl | Integ er | Body | 是 | 300 | 缓存时间。 |
 | Prefix | Strin g | Body | 是 | www | 调度域名。 |
 
-专有云DNS
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -3301,34 +3289,26 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark
 http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
 ```
 
-##### 添加DnsGtmAccessStrategy访问策略：
+##### 4.4.2.33 添加DnsGtmAccessStrategy访问策略：AddDnsGtmAccessStrategy
 
 **AddDnsGtmAccessStrategy**
 
 调用AddDnsGtmAccessStrategy接口添加访问策略。
-
-**请求头**
-
-专有云DNS 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3343,10 +3323,6 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance
 | FailoverMi nAvailable AddrNum | Integ er | Body | 否 | 1 | 备地址池最小可用地址数量。 |
 | Specified GtmAddre ssPool | Strin g | Body | 否 | DEFAULT | 手动指定当前使用的地址池。取值说明： DEFAULT：主地址池。 FAILOVER：备地址池。 |
 | SwitchMo de | Strin g | Body | 是 | BY HAND _ | 生效地址池切换策略。取值说明： BY HAND：手动。 _ BY PROBE RESULT： _ _ 自动。 |
-
-专有云DNS
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3363,34 +3339,26 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance
 http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改DnsGtmInstance调度实例备注：
+##### 4.4.2.34 修改DnsGtmInstance调度实例备注：UpdateDnsGtmInstanceRemark
 
 **UpdateDnsGtmInstanceRemark**
 
 调用UpdateDnsGtmInstanceRemark接口修改调度实例备注。
-
-**请求头**
-
-专有云DNS 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3414,24 +3382,22 @@ http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy
 http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 设置全局默认转发配置：
+##### 4.4.2.35 设置全局默认转发配置：SetGlobalDefaultForward
 
 **SetGlobalDefaultForward**
 
@@ -3456,30 +3422,24 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | Code | String | error code | 异常请求的编码。 |
 
-**示例**
-
-专有云DNS 请求示例
-
 ```
 http(s)://[Endpoint]/?Action=SetGlobalDefaultForward
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
 ```
 
-##### 查询PrivateDefaultForwardZone租户默认转发
+##### 4.4.2.36 查询PrivateDefaultForwardZone租户默认转发配置：DescribePrivateDefaultForwardZones
 
 **配置：DescribePrivateDefaultForwardZones**
 
@@ -3501,16 +3461,16 @@ http(s)://[Endpoint]/?Action=SetGlobalDefaultForward
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Forwarders | String | ["1.1.11.1"] | 转发目的IP列表。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| - RegionAndVpc s | Array |  | 已绑定的VPC和Region信息。 |
-| --Vpcs | Array |  | 已绑定的VPC信息。 |
+| - RegionAndVpc s | Array |   | 已绑定的VPC和Region信息。 |
+| --Vpcs | Array |   | 已绑定的VPC信息。 |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | VPC的ID。 |
 | ---Name | String | vpc-name | VPC的name。 |
 | --RegionId | String | cn-region-env1- d01 | VPC所属的region的ID。 |
@@ -3526,7 +3486,7 @@ http(s)://[Endpoint]/?Action=SetGlobalDefaultForward
 | Code | String | error code | 异常请求的编码。 |
 | TotalItems | Integer | 10 | 总数。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3542,10 +3502,9 @@ http(s)://[Endpoint]/?Action=SetGlobalDefaultForward
 http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
@@ -3562,17 +3521,28 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":"cn-region-env1-d01"
-  },
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+   "RegionId":"cn-region-env1-d01"
+```
+
+`},`
+
+```json
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -3598,7 +3568,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 查询GlobalZone全局内网域名列表：
+##### 4.4.2.37 查询GlobalZone全局内网域名列表：DescribeGlobalZones
 
 **DescribeGlobalZones**
 
@@ -3615,8 +3585,6 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 | PageNum ber | Integ er | Body | 否 | 1 | 页数。 |
 | PageSize | Integ er | Body | 否 | 10 | 每页显示数量。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | 否 | com. | 查询域名名称（按照包含匹配）。 |
@@ -3625,7 +3593,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Masters | String | ["1.1.1.1:53","2.2.2. 2:53"] | 主域名DNS服务地址。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 域名ID。 |
 | -Name | String | com. | 域名名称。 |
@@ -3639,7 +3607,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 | - UpdateTimest amp | Long | 1702460677 | 修改时间戳（秒）。 |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3658,10 +3626,9 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 http(s)://[Endpoint]/?Action=DescribeGlobalZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
@@ -3678,13 +3645,16 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
   "Name":"com.",
   "KeyAlgorithm":"HMAC-SHA512",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
@@ -3703,7 +3673,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 查询GlobalZoneRecord全局内网域名的解析记
+##### 4.4.2.38 查询GlobalZoneRecord全局内网域名的解析记录：DescribeGlobalZoneRecords
 
 **录：DescribeGlobalZoneRecords**
 
@@ -3722,15 +3692,11 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 | PageSize | Integ er | Body | 否 | 10 | 每页显示数量。 |
 | Name | Strin g | Body | 否 | name | 查询名称（按照包含匹配）。 |
 
-**返回数据**
-
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | 全局线路ID列表。 |
-| -RDatas | Array |  |  |
+| -RDatas | Array |   |   |
 | --Value | String | 1.1.1.1 | 值。 |
 | --LbaWeight | String | 100 | 权重。非权重类型不用填写。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 解析记录ID。 |
@@ -3761,12 +3727,9 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -3777,7 +3740,11 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
   "-RDatas":{
    "LbaWeight":"100",
    "Value":"1.1.1.1"
-  },
+```
+
+`},`
+
+```json
   "LineIds":"[\"default\"]",
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
@@ -3785,13 +3752,16 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
   "CreateTimestamp":1702460677,
   "Name":"www",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -3815,7 +3785,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 修改GlobalLine全局线路：UpdateGlobalLine
+##### 4.4.2.39 修改GlobalLine全局线路：UpdateGlobalLine
 
 调用UpdateGlobalLine接口修改全局线路。
 
@@ -3831,8 +3801,6 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 | Name | Strin g | Body | 是 | name | 线路名称。 |
 | Priority | Integ er | Body | 是 | 1 | 线路优先级。1优先级最高，数值越大优先级越低。 |
 | V4Addres ses | Strin g | Body | 否 | ["1.1.1.1","2.2.2.2"] | ipv4地址列表（ipv4和ipv6 最少填写一个）。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3855,30 +3823,24 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 http(s)://[Endpoint]/?Action=UpdateGlobalLine
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId /> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 设置Recursor递归：EnableRecursor
+##### 4.4.2.40 设置Recursor递归：EnableRecursor
 
-专有云DNS 调用EnableRecursor接口设置递归。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用EnableRecursor接口设置递归。
 
 **请求参数**
 
@@ -3901,30 +3863,24 @@ http(s)://[Endpoint]/?Action=UpdateGlobalLine
 http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
 ```
 
-##### 查询GlobalLine全局线路列表：
+##### 4.4.2.41 查询GlobalLine全局线路列表：DescribeGlobalLines
 
 **DescribeGlobalLines**
 
-专有云DNS 调用DescribeGlobalLines接口查询全局线路列表。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用DescribeGlobalLines接口查询全局线路列表。
 
 **请求参数**
 
@@ -3939,7 +3895,7 @@ http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -V4Addresses | String | ["1.1.1.1"] | IPV4地址列表。 |
 | -V6Addresses | String | ["2400:3200::7777 "] | IPV6地址列表。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 线路的ID。 |
@@ -3949,7 +3905,7 @@ http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
 | - UpdateTimest amp | Long | 1702460677 | 修改时间戳（秒）。 |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3968,10 +3924,9 @@ http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
 http(s)://[Endpoint]/?Action=DescribeGlobalLines
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
@@ -3984,13 +3939,16 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -4005,7 +3963,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 查询节点qps信息：DescribeMetrics
+##### 4.4.2.42 查询节点qps信息：DescribeMetrics
 
 调用DescribeMetrics接口查询qps信息。
 
@@ -4017,7 +3975,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 343778269185 | 节点ID。 |
 | -CmdAddr | String | 10.200.2.12:80 | 解析节点IP和端口。 |
 | -QPS | String | 1 | qps信息。 |
@@ -4026,7 +3984,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 | PageNumber | Integer | 1 | 页数。 |
 | PageSize | Integer | 10 | 每页显示数量。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4042,10 +4000,9 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 http(s)://[Endpoint]/?Action=DescribeMetrics
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
@@ -4055,12 +4012,15 @@ http(s)://[Endpoint]/?Action=DescribeMetrics
   "QPS":"1",
   "CmdAddr":"10.200.2.12:80",
   "Id":"343778269185"
- },
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -4070,9 +4030,7 @@ http(s)://[Endpoint]/?Action=DescribeMetrics
 </Data> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 查询DNS服务的anycast地址：
+##### 4.4.2.43 查询DNS服务的anycast地址：DescribeDNSServerAddrs
 
 **DescribeDNSServerAddrs**
 
@@ -4105,18 +4063,16 @@ http(s)://[Endpoint]/?Action=DescribeMetrics
 http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Addrs":"[\"10.200.0.12\", \"10.200.0.13\"]",
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <Addrs> [&quot;10.200.0.12&quot;, &quot;10.200.0.13&quot;]</Addrs>
@@ -4128,7 +4084,7 @@ http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
  </Code>
 ```
 
-##### 修改GlobalZone全局内网域名备注：
+##### 4.4.2.44 修改GlobalZone全局内网域名备注：UpdateGlobalZoneRemark
 
 **UpdateGlobalZoneRemark**
 
@@ -4162,24 +4118,22 @@ http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
 http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
 ```
 
-&公共请求参数专有云DNS 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 查询GlobalDefaultForward全局默认转发配置：
+##### 4.4.2.45 查询GlobalDefaultForward全局默认转发配置：DescribeGlobalDefaultForward
 
 **DescribeGlobalDefaultForward**
 
@@ -4199,11 +4153,9 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
 | UpdateTimest amp | Long | 1702460677 | 修改时间戳（秒）。 |
 | Enable | Boolean | true | 默认转发是否开启。取值说明： true：开启。 false：关闭。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| ForwardMode | String |  | 转发模式。取值说明： FORWARD ONLY:全部转发模式(建议)-全部 _ 请求只做转发(不作任何递归)。 FORWARD FIRST:优先转发模式-转发失败降 _ 级到互联网递归。 |
+| ForwardMode | String |   | 转发模式。取值说明： FORWARD ONLY:全部转发模式(建议)-全部 _ 请求只做转发(不作任何递归)。 FORWARD FIRST:优先转发模式-转发失败降 _ 级到互联网递归。 |
 
 **示例**
 
@@ -4213,26 +4165,24 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
 http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "ForwardMode":"",
  "Forwarders":"[\"2.2.2.2\",\"3.3.3.3\"]",
  "Enable":true,
  "UpdateTimestamp":1702460677,
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <ForwardMode /> <Forwarders>[&quot;2.2.2.2&quot;,&quot;3.3.3.3&quot;]</Forwarders> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
-##### 添加GlobalZone全局内网域名：
+##### 4.4.2.46 添加GlobalZone全局内网域名：AddGlobalZone
 
 **AddGlobalZone**
 
@@ -4243,8 +4193,6 @@ http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4267,26 +4215,22 @@ http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
 http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com.
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 修改PrivateZone租户内网域名备注：
+##### 4.4.2.47 修改PrivateZone租户内网域名备注：UpdatePrivateZoneRemark
 
 **UpdatePrivateZoneRemark**
 
@@ -4320,24 +4264,19 @@ http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com.
 http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
-
-专有云DNS `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 添加DnsGtmMonitor地址池健康检查：
+##### 4.4.2.48 添加DnsGtmMonitor地址池健康检查：AddDnsGtmMonitor
 
 **AddDnsGtmMonitor**
 
@@ -4355,8 +4294,6 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
 | GtmAddre ssPoolId | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 地址池ID。 |
 | Enable | Boole an | Body | 是 | true | 是否开启。取值说明： true：开启探测。 false: 关闭探测。 |
 | MonitorEx tendInfo | Json | Body | 否 | {"code":200,"path":"ind ex.htm","host":"aliyun.c om"} | 扩展信息，各协议检查所需参数： HTTP(S)： port：检查端口。 host：Host设置。 path：URL路径。 code：返回码大于多少报错。 TCP(UDP)： port：检查端口。 ICMP：不填写。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4382,24 +4319,22 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
 http(s)://[Endpoint]/?Action=AddDnsGtmMonitor
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改DnsGtmAddressPool地址池：
+##### 4.4.2.49 修改DnsGtmAddressPool地址池：UpdateDnsGtmAddressPool
 
 **UpdateDnsGtmAddressPool**
 
@@ -4417,15 +4352,13 @@ http(s)://[Endpoint]/?Action=AddDnsGtmMonitor
 | Name | Strin g | Body | 是 | name | 地址池名称。 |
 | Type | Strin g | Body | 是 | A | 地址池类型。取值说明： A：IPV4地址。 AAAA：IPV6地址。 CNAME：域名。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
-| Addr | Repe atList | Body | 是 |  |  |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 地址值。 |
-
-专有云DNS
+| Addr | Repe atList | Body | 是 |   |   |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 地址值。 |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| -Mode | Strin g |  | 是 | SMART | 模式。取值说明： SMART：智能返回。 ONLINE：永远在线。 OFFLINE：永远离线。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| -Mode | Strin g |   | 是 | SMART | 模式。取值说明： SMART：智能返回。 ONLINE：永远在线。 OFFLINE：永远离线。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 
 **返回数据**
 
@@ -4444,24 +4377,22 @@ http(s)://[Endpoint]/?Action=AddDnsGtmMonitor
 http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改PrivateLine私有线路优先级：
+##### 4.4.2.50 修改PrivateLine私有线路优先级：UpdatePrivateLinePriority
 
 **UpdatePrivateLinePriority**
 
@@ -4495,24 +4426,22 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool
 http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority
 ```
 
-&公共请求参数专有云DNS 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 删除DnsGtmInstance调度实例：
+##### 4.4.2.51 删除DnsGtmInstance调度实例：DeleteDnsGtmInstance
 
 **DeleteDnsGtmInstance**
 
@@ -4548,24 +4477,22 @@ http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority
 http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改GlobalLine优先级：
+##### 4.4.2.52 修改GlobalLine优先级：UpdateGlobalLinePriority
 
 **UpdateGlobalLinePriority**
 
@@ -4580,8 +4507,6 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | 是 | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | 线路ID。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4604,26 +4529,22 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance
 http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 创建DnsGtmInstance调度实例：
+##### 4.4.2.53 创建DnsGtmInstance调度实例：AddDnsGtmInstance
 
 **AddDnsGtmInstance**
 
@@ -4659,18 +4580,16 @@ http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority
 http(s)://[Endpoint]/?Action=AddDnsGtmInstance
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-##### 查询缓存：DescribeCache
+`}`
+
+##### 4.4.2.54 查询缓存：DescribeCache
 
 调用DescribeCache接口查询缓存。
 
@@ -4689,14 +4608,14 @@ http(s)://[Endpoint]/?Action=AddDnsGtmInstance
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -RRset | Array |  |  |
+| -RRset | Array |   |   |
 | --Rdatas | String | ["10.200.0.4"] | 缓存解析列表。 |
 | --Name | String | com. | 缓存域名名称。 |
 | --Type | String | A | 缓存记录类型。取值说明： A：将域名指向一个IPV4地址。 AAAA：将域名指向一个IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针， 通常用于 ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的DNS服务器解析。 |
@@ -4715,27 +4634,31 @@ http(s)://[Endpoint]/?Action=AddDnsGtmInstance
 http(s)://[Endpoint]/?Action=DescribeCache
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Data":{
   "-RRset":{
    "Type":"A",
    "Rdatas":"[\"10.200.0.4\"]",
    "Ttl":"300",
    "Name":"com."
-  },
-  "CmdAddr":"10.200.2.12:80",
-  "Id":"343778269185"
- },
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "CmdAddr":"10.200.2.12:80",
+  "Id":"343778269185"
+```
+
+`},`
+
+```json
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
@@ -4750,7 +4673,7 @@ http(s)://[Endpoint]/?Action=DescribeCache
 </Data> <Code>error code</Code>
 ```
 
-##### 查询DnsGtmInstance调度实例列表：
+##### 4.4.2.55 查询DnsGtmInstance调度实例列表：DescribeDnsGtmInstances
 
 **DescribeDnsGtmInstances**
 
@@ -4766,7 +4689,7 @@ http(s)://[Endpoint]/?Action=DescribeCache
 |---|---|---|---|---|---|
 | Name | Strin g | Body | 否 | name | 调度实例名称（按照包含匹配）。 |
 
-| DNS |  |  |  |  | ·API |
+| DNS |   |   |   |   | ·API |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4778,7 +4701,7 @@ http(s)://[Endpoint]/?Action=DescribeCache
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 调度实例ID。 |
 | -Name | String | name | 调度实例名称。 |
 | -ZoneId | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 归属调度域的域名ID。 |
@@ -4793,7 +4716,7 @@ http(s)://[Endpoint]/?Action=DescribeCache
 | TotalItems | Integer | 10 | 总数。 |
 | PageNumber | Integer | 1 | 页数。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4808,10 +4731,9 @@ http(s)://[Endpoint]/?Action=DescribeCache
 http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
@@ -4826,13 +4748,16 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
   "Ttl":300,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -4849,7 +4774,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 开启应急组：EnableEmergencyGroup
+##### 4.4.2.56 开启应急组：EnableEmergencyGroup
 
 调用EnableEmergencyGroup接口开启应急组。
 
@@ -4871,31 +4796,25 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
 | Message | String | error message | 异常请求的信息。 |
 | Code | String | error code | 异常请求的编码。 |
 
-**示例**
-
-专有云DNS 请求示例
-
 ```
 http(s)://[Endpoint]/?Action=EnableEmergencyGroup
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
 ```
 
-##### 关闭应急组：DisableEmergencyGroup
+##### 4.4.2.57 关闭应急组：DisableEmergencyGroup
 
 调用DisableEmergencyGroup接口关闭应急组。
 
@@ -4919,23 +4838,17 @@ http(s)://[Endpoint]/?Action=EnableEmergencyGroup
 http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 ```
 
-正常返回示例 `JSON` 格式专有云DNS
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### 修改GlobalZone全局内网域名：
+##### 4.4.2.58 修改GlobalZone全局内网域名：AddGlobalZone
 
 **AddGlobalZone**
 
@@ -4955,10 +4868,6 @@ http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 | KeyAlgorit hm | Strin g | Body | 否 | HMAC-SHA512 | TSIG密钥算法。（TSIG密钥名称、TSIG密钥算法、 TSIG密钥值需要都填写或都不填写。） |
 | KeySecret | Strin g | Body | 否 | Ok1qR5IW1ajVka5cHPEJ QIXfLyx5V3PSkFBROAzO n21JumDq6nIpoj6H8rfj5 Uo+Ok55ZWQ0Wgrf302 fDscHLw== | TSIG密钥值。（TSIG密钥名称、TSIG密钥算法、 TSIG密钥值需要都填写或都不填写。） |
 
-**返回数据**
-
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -4974,36 +4883,28 @@ http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 http(s)://[Endpoint]/?Action=AddGlobalZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"\terror code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code> error code</Code>
 ```
 
-##### 修改RecursorAcl递归ACL备注：
+##### 4.4.2.59 修改RecursorAcl递归ACL备注：UpdateRecursorAclRemark
 
 **UpdateRecursorAclRemark**
 
 调用UpdateRecursorAclRemark接口修改递归ACL备注。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5027,26 +4928,22 @@ http(s)://[Endpoint]/?Action=AddGlobalZone
 http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 修改GlobalForward域名：
+##### 4.4.2.60 修改GlobalForward域名：UpdateGlobalForwardZone
 
 **UpdateGlobalForwardZone**
 
@@ -5075,32 +4972,26 @@ http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 转发域名ID。 |
 
-**示例**
-
-专有云DNS 请求示例
-
 ```
 http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 添加PrivateZone租户内网域名：
+##### 4.4.2.61 添加PrivateZone租户内网域名：AddPrivateZone
 
 **AddPrivateZone**
 
@@ -5124,7 +5015,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | Message | String | error message | 异常请求的信息。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | Code | String | error code | 异常请求的编码。 |
@@ -5138,24 +5029,22 @@ http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone
 http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-d01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 添加PrivateForward转发域名：
+##### 4.4.2.62 添加PrivateForward转发域名：AddPrivateForwardZone
 
 **AddPrivateForwardZone**
 
@@ -5169,8 +5058,6 @@ http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5196,24 +5083,20 @@ http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-
 http(s)://[Endpoint]/?Action=AddPrivateForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 修改DnsGtmAccessStrategy访问策略：
+##### 4.4.2.63 修改DnsGtmAccessStrategy访问策略： UpdateDnsGtmAccessStrategy
 
 **UpdateDnsGtmAccessStrategy**
 
@@ -5235,7 +5118,7 @@ http(s)://[Endpoint]/?Action=AddPrivateForwardZone
 | DefaultGt mAddress PoolId | Strin g | Body | 否 | b42155a3-029f-4d56- bfcb-0c82657dc7c7 | 主地址池ID。 |
 | DefaultMi nAvailable AddrNum | Integ er | Body | 否 | 1 | 主地址池最小可用地址数量。 |
 
-| 专有云DNS |  |  |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5263,24 +5146,21 @@ http(s)://[Endpoint]/?Action=AddPrivateForwardZone
 http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy
 ```
 
-&公共请求参数正常返回示例专有云DNS `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
-##### 修改GlobalForwardZone备注：
+##### 4.4.2.64 修改GlobalForwardZone备注：UpdateGlobalForwardZoneRemark
 
 **UpdateGlobalForwardZoneRemark**
 
@@ -5306,34 +5186,26 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 全局转发域名ID。 |
 
-专有云DNS
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 删除PrivateLine私有线路：DeletePrivateLine
+##### 4.4.2.65 删除PrivateLine私有线路：DeletePrivateLine
 
 调用DeletePrivateLine接口删除私有线路。
 
@@ -5355,7 +5227,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark
 | Message | String | error message | 异常请求的信息。 |
 | Code | String | error code | 异常请求的编码。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5370,24 +5242,22 @@ http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark
 http(s)://[Endpoint]/?Action=DeletePrivateLine
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 租户内网域名绑定VPC：BindZoneVpc
+##### 4.4.2.66 租户内网域名绑定VPC：BindZoneVpc
 
 调用BindZoneVpc接口，租户内网域名绑定VPC。
 
@@ -5399,12 +5269,12 @@ http(s)://[Endpoint]/?Action=DeletePrivateLine
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | 是 |  | 绑定的VPC列表。 |
-| -Id | Strin g |  | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
-| -Name | Strin g |  | 否 | vpc-name | VPC的名称。 |
+| Vpcs | Repe atList | Body | 是 |   | 绑定的VPC列表。 |
+| -Id | Strin g |   | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
+| -Name | Strin g |   | 否 | vpc-name | VPC的名称。 |
 | RegionId | Strin g | Body | 是 | cn-region-env1-d01 | VPC的region信息。 |
 
-| 专有云DNS |  |  |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5427,35 +5297,27 @@ http(s)://[Endpoint]/?Action=DeletePrivateLine
 http(s)://[Endpoint]/?Action=BindZoneVpc
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### 删除DnsGtmAccessStrategy：
+##### 4.4.2.67 删除DnsGtmAccessStrategy：DeleteDnsGtmAccessStrategy
 
 **DeleteDnsGtmAccessStrategy**
 
 调用DeleteDnsGtmAccessStrategy接口删除调度实例。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5478,32 +5340,26 @@ http(s)://[Endpoint]/?Action=BindZoneVpc
 http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 删除GlobalForward域名：
+##### 4.4.2.68 删除GlobalForward域名：DeleteGlobalForwardZone
 
 **DeleteGlobalForwardZone**
 
-专有云DNS 调用DeleteGlobalForwardZone接口删除全局转发域名。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+调用DeleteGlobalForwardZone接口删除全局转发域名。
 
 **请求参数**
 
@@ -5528,26 +5384,22 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy
 http(s)://[Endpoint]/?Action=DeleteGlobalForwardZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-专有云DNS
-
-##### 修改GlobalZone：UpdateGlobalZone
+##### 4.4.2.69 修改GlobalZone：UpdateGlobalZone
 
 调用UpdateGlobalZone接口修改全局内网域名。
 
@@ -5575,34 +5427,26 @@ http(s)://[Endpoint]/?Action=DeleteGlobalForwardZone &Id=56bab908-04e0-44ee-b126
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 域名ID。 |
 
-专有云DNS
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=UpdateGlobalZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Name=com.
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 修改RecursorAcl：UpdateRecursorAcl
+##### 4.4.2.70 修改RecursorAcl：UpdateRecursorAcl
 
 调用UpdateRecursorAcl接口，修改递归ACL策略。
 
@@ -5618,10 +5462,6 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZone &Id=56bab908-04e0-44ee-b126-1cbdbc
 | Name | Strin g | Body | 是 | 策略名称。 | ACL策略名称。 |
 | Policy | Strin g | Body | 是 | true | 允许递归。取值说明： true：允许递归。 false：不允许递归。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 线路ID列表。 |
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5644,34 +5484,26 @@ http(s)://[Endpoint]/?Action=UpdateRecursorAcl &Id=e8605e05-4320-4ef5-983d-c5dd4
 &Policy=true &LineIds=["default"]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 修改GlobalZone解析记录的备注：
+##### 4.4.2.71 修改GlobalZone解析记录的备注：UpdateGlobalZoneRecordRemark
 
 **UpdateGlobalZoneRecordRemark**
 
 调用UpdateGlobalZoneRecordRemark接口修改全局内网的域名解析记录的备注。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 专有云DNS
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5695,26 +5527,22 @@ http(s)://[Endpoint]/?Action=UpdateRecursorAcl &Id=e8605e05-4320-4ef5-983d-c5dd4
 http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-专有云DNS
-
-##### 查询RecursorAcl策略列表：
+##### 4.4.2.72 查询RecursorAcl策略列表：DescribeRecursorAcls
 
 **DescribeRecursorAcls**
 
@@ -5736,7 +5564,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | 请求线路ID列表。 |
 | -Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | ACL策略名称。 |
 | -Name | String | name | ACL策略名称。 |
@@ -5745,7 +5573,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee
 | - CreateTimesta mp | Long | 1702460677 | 创建时间戳（秒）。 |
 | - UpdateTimest amp | Long | 1702460677 | 修改时间戳（秒）。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5765,10 +5593,9 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee
 http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error messga",
  "PageSize":10,
@@ -5781,13 +5608,16 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
   "CreateTimestamp":1702460677,
   "Name":"name",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error messga</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -5801,7 +5631,7 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 查询PrivateZones租户内网域名：
+##### 4.4.2.73 查询PrivateZones租户内网域名：DescribePrivateZones
 
 **DescribePrivateZones**
 
@@ -5825,14 +5655,12 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
-
-专有云DNS
+| Data | Array |   |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| - RegionAndVpc s | Array |  | 关联的VPC列表和region信息。 |
-| --Vpcs | Array |  | 关联的VPC列表。 |
+| - RegionAndVpc s | Array |   | 关联的VPC列表和region信息。 |
+| --Vpcs | Array |   | 关联的VPC列表。 |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | VPC的ID。 |
 | ---Name | String | vpc-name | VPC的名称。 |
 | --RegionId | String | cn-region-env1- d01 | VPC对应的region信息。 |
@@ -5849,7 +5677,7 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 | TotalItems | Integer | 10 | 总数。 |
 | PageNumber | Integer | 1 | 页数。 |
 
-|  | 开发指南·API参考 |  |  | 专有云DN | S |
+|   | 开发指南·API参考 |   |   | 专有云DN | S |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5866,10 +5694,9 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 http(s)://[Endpoint]/?Action=DescribePrivateZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
@@ -5886,18 +5713,29 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":"cn-region-env1-d01"
-  },
-  "Name":"com.",
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+   "RegionId":"cn-region-env1-d01"
+```
+
+`},`
+
+```json
+  "Name":"com.",
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId> 101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId>
@@ -5926,7 +5764,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
  <Code>error code</Code>
 ```
 
-##### 添加RecursorAcl：AddRecursorAcl
+##### 4.4.2.74 添加RecursorAcl：AddRecursorAcl
 
 调用AddRecursorAcl接口查询递归ACL策略。
 
@@ -5943,10 +5781,6 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
 | LineIds | Strin g | Body | 是 | ["default"] | 请求来源。 |
 | Remark | Strin g | Body | 否 | remark | 备注。 |
 
-**返回数据**
-
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -5962,24 +5796,22 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
 http(s)://[Endpoint]/?Action=AddRecursorAcl
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
-##### 修改地址池健康检查：UpdateDnsGtmMonitor
+##### 4.4.2.75 修改地址池健康检查：UpdateDnsGtmMonitor
 
 调用UpdateDnsGtmMonitor接口修改地址池健康检查。
 
@@ -5991,8 +5823,6 @@ http(s)://[Endpoint]/?Action=AddRecursorAcl
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6012,7 +5842,7 @@ http(s)://[Endpoint]/?Action=AddRecursorAcl
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 
-|  | 开发指南·API参考 |  |  | 专有云DN | S |
+|   | 开发指南·API参考 |   |   | 专有云DN | S |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6029,24 +5859,22 @@ http(s)://[Endpoint]/?Action=AddRecursorAcl
 http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 查询PrivateZone解析记录列表：
+##### 4.4.2.76 查询PrivateZone解析记录列表：DescribePrivateZoneRecords
 
 **DescribePrivateZoneRecords**
 
@@ -6062,7 +5890,7 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 |---|---|---|---|---|---|
 | ZoneId | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 租户内网域名的ID。 |
 
-|  | 专有云DNS |  |  |  |  | 开发指南·API参考 |  |
+|   | 专有云DNS |   |   |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -6075,9 +5903,9 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | 私有线路ID集合。 |
-| -RDatas | Array |  |  |
+| -RDatas | Array |   |   |
 | --Value | String | 1.1.1.1 | 值。 |
 | --LbaWeight | Integer | 100 | 权重。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 记录ID。 |
@@ -6085,8 +5913,6 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 | -CallerUid | String | 126760529569940 0 | 系统参数。 |
 | -ZoneId | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 租户内网域名的ID。 |
 | -ZoneName | String | com. | 租户内网域名的名称。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -6114,10 +5940,9 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44ee-b126-1cbdbcd24507
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
@@ -6135,17 +5960,24 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
   "-RDatas":{
    "LbaWeight":100,
    "Value":"1.1.1.1"
-  },
+```
+
+`},`
+
+```json
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -6169,7 +6001,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 查询GlobalZone的列表：
+##### 4.4.2.77 查询GlobalZone的列表：DescribeGlobalZones
 
 **DescribeGlobalZones**
 
@@ -6187,13 +6019,9 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
 | PageSize | Integ er | Body | 否 | 10 | 每页显示数量。 |
 | Name | Strin g | Body | 否 | com | 域名名称（按照包含匹配）。 |
 
-**返回数据**
-
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 域名的ID。 |
 | -Name | String | com. | 域名的名称。 |
 | -RecordCount | Integer | 1 | 解析记录集总数。 |
@@ -6216,11 +6044,9 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
 http(s)://[Endpoint]/?Action=DescribeGlobalZones
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
  "PageNumber":1,
@@ -6232,13 +6058,16 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
   "CreateTimestamp":1702460677,
   "Name":"com.",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
@@ -6252,7 +6081,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 查询日志管理：DescribeDnsGtmLogs
+##### 4.4.2.78 查询日志管理：DescribeDnsGtmLogs
 
 调用DescribeDnsGtmLogs接口查询日志管理。
 
@@ -6266,11 +6095,9 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 |---|---|---|---|---|---|
 | Keyword | Strin g | Body | 否 | keyword | 搜索关键字。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| EventType | Strin g | Body | 否 |  | 查询行为类型。取值说明： 主备地址池切换： addresspool-switch。 地址池不可用： addresspool-became- unavailable。 地址池恢复可用： addresspool-became- available。 地址不可用：address- became-unavailable。 地址恢复可用： address-became- available。 |
+| EventType | Strin g | Body | 否 |   | 查询行为类型。取值说明： 主备地址池切换： addresspool-switch。 地址池不可用： addresspool-became- unavailable。 地址池恢复可用： addresspool-became- available。 地址不可用：address- became-unavailable。 地址恢复可用： address-became- available。 |
 | StartTime stamp | Long | Body | 否 | 1707363894 | 开始时间戳（秒）。 |
 | EndTimest amp | Long | Body | 否 | 1707363894 | 结束时间戳（秒）。 |
 | PageNum ber | Integ er | Body | 否 | 1 | 页数。 |
@@ -6280,16 +6107,14 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 日志的ID。 |
 | -Target | String | 对象 | 对象。 |
 | - CreateTimesta mp | Long | 1707363894 | 时间。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -EventType | String |  | 行为类型。取值说明： 主备地址池切换：addresspool-switch。 地址池不可用：addresspool-became- unavailable。 地址池恢复可用：addresspool-became- available。 地址不可用：address-became- unavailable。 地址恢复可用：address-became- available。 |
+| -EventType | String |   | 行为类型。取值说明： 主备地址池切换：addresspool-switch。 地址池不可用：addresspool-became- unavailable。 地址池恢复可用：addresspool-became- available。 地址不可用：address-became- unavailable。 地址恢复可用：address-became- available。 |
 | -Detail | String | detail | 内容。 |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 | Message | String | error message | 异常请求的信息。 |
@@ -6306,12 +6131,9 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -6320,13 +6142,16 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "CreateTimestamp":1707363894,
   "Detail":"detail"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -6338,7 +6163,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 删除GlobalZone：DeleteGlobalZone
+##### 4.4.2.79 删除GlobalZone：DeleteGlobalZone
 
 调用DeleteGlobalZone接口删除全局内网域名。
 
@@ -6357,8 +6182,6 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -6374,34 +6197,28 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 http(s)://[Endpoint]/?Action=DeleteGlobalZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-##### 修改节点：UpdateNode
+##### 4.4.2.80 修改节点：UpdateNode
 
 调用UpdateNode接口修改节点。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6427,24 +6244,22 @@ http(s)://[Endpoint]/?Action=DeleteGlobalZone
 http(s)://[Endpoint]/?Action=UpdateNode
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"343778269185",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### 添加PrivateZone解析记录:
+##### 4.4.2.81 添加PrivateZone解析记录: AddPrivateZoneRecord
 
 **AddPrivateZoneRecord**
 
@@ -6462,15 +6277,13 @@ http(s)://[Endpoint]/?Action=UpdateNode
 | Name | Strin g | Body | 否 | www | 记录名称。 |
 | Type | Strin g | Body | 是 | A | 记录类型。取值说明： A：将域名指向一个IPV4 地址。 AAAA：将域名指向一个 IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制 255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针， 通常用于 ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的 DNS服务器解析。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Ttl | Integ er | Body | 是 | 300 | 记录缓存时间。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
-| RDatas | Repe atList | Body | 是 |  |  |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 值。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| RDatas | Repe atList | Body | 是 |   |   |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 值。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 解析线路列表。 |
 
 **返回数据**
@@ -6484,30 +6297,28 @@ http(s)://[Endpoint]/?Action=UpdateNode
 
 **示例**
 
-请求示例专有云DNS
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &LbaStrategy=ALL_RR &RDatas= &LineIds=["default"]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 添加地址池：AddDnsGtmAddressPool
+##### 4.4.2.82 添加地址池：AddDnsGtmAddressPool
 
 调用AddDnsGtmAddressPool接口，添加地址池。
 
@@ -6522,15 +6333,13 @@ http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &Lba
 | Name | Strin g | Body | 是 | name | 地址池名称。 |
 | Type | Strin g | Body | 是 | A | 地址池类型。取值说明： A：IPV4地址。 AAAA：IPV6地址。 CNAME：域名。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
-| Addr | Repe atList | Body | 是 |  |  |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 地址值。 |
-| -Mode | Strin g |  | 是 | SMART | 模式。取值说明： SMART：智能返回。 ONLINE：永远在线。 OFFLINE：永远离线。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| Addr | Repe atList | Body | 是 |   |   |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 地址值。 |
+| -Mode | Strin g |   | 是 | SMART | 模式。取值说明： SMART：智能返回。 ONLINE：永远在线。 OFFLINE：永远离线。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 
 **返回数据**
 
@@ -6549,24 +6358,20 @@ http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &Lba
 http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrategy=ALL_RR &Addr=
 ```
 
-&公共请求参数正常返回示例专有云DNS `JSON` 格式
-
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 修改PrivateForwardZone备注：
+##### 4.4.2.83 修改PrivateForwardZone备注：UpdatePrivateForwardZoneRemark
 
 **UpdatePrivateForwardZoneRemark**
 
@@ -6592,34 +6397,26 @@ http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrateg
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 租户默认转发配置的ID。 |
 
-专有云DNS
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-##### 租户转发域名绑定VPC：BindForwardZoneVpc
+##### 4.4.2.84 租户转发域名绑定VPC：BindForwardZoneVpc
 
 调用BindForwardZoneVpc给租户转发域名绑定VPC。
 
@@ -6631,12 +6428,12 @@ http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | 是 |  | 绑定的VPC列表。 |
-| -Id | Strin g |  | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
-| -Name | Strin g |  | 否 | vpc-name | VPC的名称。 |
+| Vpcs | Repe atList | Body | 是 |   | 绑定的VPC列表。 |
+| -Id | Strin g |   | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
+| -Name | Strin g |   | 否 | vpc-name | VPC的名称。 |
 | RegionId | Strin g | Body | 是 | cn-region-env1-d01 | region信息。 |
 
-|  | 开发指南·API参 | 考 |  |  |  | 专有云DN | S |
+|   | 开发指南·API参 | 考 |   |   |   | 专有云DN | S |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -6659,23 +6456,21 @@ http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44
 http(s)://[Endpoint]/?Action=BindForwardZoneVpc
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### 解除租户转发配置绑定的VPC：
+##### 4.4.2.85 解除租户转发配置绑定的VPC：DeleteForwardZoneVpc
 
 **DeleteForwardZoneVpc**
 
@@ -6683,17 +6478,11 @@ http(s)://[Endpoint]/?Action=BindForwardZoneVpc
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | 是 |  |  |
-| -Id | Strin g |  | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
-| -Name | Strin g |  | 否 | vpc-name | VPC的名称。 |
+| Vpcs | Repe atList | Body | 是 |   |   |
+| -Id | Strin g |   | 是 | vpc- 9gd80vqxu8zq5j5st90yx | VPC的ID。 |
+| -Name | Strin g |   | 否 | vpc-name | VPC的名称。 |
 | RegionId | Strin g | Body | 是 | cn-region-env1-d01 | VPC的region信息。 |
 | Id | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 租户转发配置的ID。 |
 
@@ -6713,23 +6502,21 @@ http(s)://[Endpoint]/?Action=BindForwardZoneVpc
 http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env1-d01 &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### 修改租户默认转发配置:
+##### 4.4.2.86 修改租户默认转发配置: UpdatePrivateDefaultForwardZone
 
 **UpdatePrivateDefaultForwardZone**
 
@@ -6757,34 +6544,26 @@ http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 租户默认转发配置的ID。 |
 
-专有云DNS
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 删除GlobalLine记录：DeleteGlobalLine
+##### 4.4.2.87 删除GlobalLine记录：DeleteGlobalLine
 
 调用DeleteGlobalLine接口删除全局线路。
 
@@ -6806,7 +6585,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
 | Message | String | error message | 异常请求的信息。 |
 | Code | String | error code | 异常请求的编码。 |
 
-| 开发指南·API参考 |  |  | 专有云DN |
+| 开发指南·API参考 |   |   | 专有云DN |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6821,24 +6600,22 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
 http(s)://[Endpoint]/?Action=DeleteGlobalLine
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 删除GlobalZone解析记录:
+##### 4.4.2.88 删除GlobalZone解析记录: DeleteGlobalZoneRecord
 
 **DeleteGlobalZoneRecord**
 
@@ -6859,8 +6636,6 @@ http(s)://[Endpoint]/?Action=DeleteGlobalLine
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -6876,24 +6651,22 @@ http(s)://[Endpoint]/?Action=DeleteGlobalLine
 http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1cbdbcd2
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 删除PrivateZone租户内网域名的解析记录：
+##### 4.4.2.89 删除PrivateZone租户内网域名的解析记录：DeletePrivateZoneRecord
 
 **DeletePrivateZoneRecord**
 
@@ -6902,10 +6675,6 @@ http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6928,28 +6697,24 @@ http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1
 http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-专有云DNS
+#### 4.4.3 跨云API参考
 
-#### 跨云API参考
-
-##### 查询节点管理列表：DescribeNodes
+##### 4.4.3.1 查询节点管理列表：DescribeNodes
 
 调用DescribeNodes接口查询节点管理列表。
 
@@ -6968,7 +6733,7 @@ http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -AnycastAddr | String | 10.1.0.12,10.1.0.13 | anycast服务地址。 |
 | -Id | String | 343778269185 | 节点ID。 |
 | -LocalAddr | String | 10.1.24.1 | 节点IP。 |
@@ -6976,8 +6741,6 @@ http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
 | -Description | String | description | 描述。 |
 | -Role | String | leader | 节点角色类型。取值说明： leader：leader节点（选举节点）。 follower ：follower节点（选举节点）。 learner：learner节点（非选举节点）。 candidate：异常状态节点。 |
 | -Index | Integer | 1 | 最新同步logid。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -6998,11 +6761,9 @@ http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
 http(s)://[Endpoint]/?Action=DescribeNodes
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
  "PageNumber":1,
@@ -7019,12 +6780,15 @@ http(s)://[Endpoint]/?Action=DescribeNodes
   "CmdServicePort":"",
   "LocalAddr":"10.1.24.1",
   "IsOnline":true
- },
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -7045,9 +6809,7 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 </Data> <Code>error code </Code>
 ```
 
-专有云DNS
-
-##### 修改UniversalLine跨云解析线路的优先级：
+##### 4.4.3.2 修改UniversalLine跨云解析线路的优先级：UpdateUniversalLinePriority
 
 **UpdateUniversalLinePriority**
 
@@ -7081,24 +6843,19 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
-
-专有云DNS `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 开启应急组：EnableEmergencyGroup
+##### 4.4.3.3 开启应急组：EnableEmergencyGroup
 
 调用EnableEmergencyGroup接口开启应急组。
 
@@ -7128,24 +6885,20 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority
 http(s)://[Endpoint]/?Action=EnableEmergencyGroup
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
 
-##### 添加UniversalZone全局共享域名：
+##### 4.4.3.4 添加UniversalZone全局共享域名：AddUniversalZone
 
 **AddUniversalZone**
 
@@ -7170,34 +6923,26 @@ http(s)://[Endpoint]/?Action=EnableEmergencyGroup
 | Code | String | error code | 异常请求的编码。 |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 域名ID。 |
 
-专有云DNS
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=AddUniversalZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改UniversalZoneRecord跨云共享域名解析记录
+##### 4.4.3.5 修改UniversalZoneRecord跨云共享域名解析记录的备注：UpdateUniversalZoneRecordRemark
 
 **的备注：UpdateUniversalZoneRecordRemark**
 
@@ -7216,8 +6961,6 @@ http(s)://[Endpoint]/?Action=AddUniversalZone
 
 **返回数据**
 
-专有云DNS
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
@@ -7233,34 +6976,26 @@ http(s)://[Endpoint]/?Action=AddUniversalZone
 http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 关闭应急组：DisableEmergencyGroup
+##### 4.4.3.6 关闭应急组：DisableEmergencyGroup
 
 调用DisableEmergencyGroup接口关闭应急组。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -7276,24 +7011,22 @@ http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark
 http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
 
-##### 修改UniversalZone跨云共享域名的备注：
+##### 4.4.3.7 修改UniversalZone跨云共享域名的备注：UpdateUniversalZoneRemark
 
 **UpdateUniversalZoneRemark**
 
@@ -7304,8 +7037,6 @@ http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7329,30 +7060,24 @@ http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-##### 删除UniversalLine跨云解析线路：
+`}`
+
+##### 4.4.3.8 删除UniversalLine跨云解析线路：DeleteUniversalLine
 
 **DeleteUniversalLine**
 
 调用DeleteUniversalLine接口删除跨云解析线路。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7375,18 +7100,16 @@ http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark
 http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"\terror message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message> error message</Message>
@@ -7395,9 +7118,7 @@ http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
  <Code>error code</Code>
 ```
 
-专有云DNS
-
-##### 修改UniversalLine跨云解析线路：
+##### 4.4.3.9 修改UniversalLine跨云解析线路：UpdateUniversalLine
 
 **UpdateUniversalLine**
 
@@ -7428,30 +7149,28 @@ http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 
 **示例**
 
-请求示例专有云DNS
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=name &Priority=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改UniversalZoneRecord跨云共享域名的解析
+##### 4.4.3.10 修改UniversalZoneRecord跨云共享域名的解析记录：UpdateUniversalZoneRecord
 
 **记录：UpdateUniversalZoneRecord**
 
@@ -7474,15 +7193,11 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 | Type | Strin g | Body | 是 | A | 记录类型。取值说明： A：将域名指向一个IPV4 地址。 AAAA：将域名指向一个 IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制 255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针， 通常用于 ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的 DNS服务器解析。 |
 | Ttl | Integ er | Body | 是 | 300 | 记录缓存时间。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
-| RDatas | Repe atList | Body | 是 |  | 记录值集合。 |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 值。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。非权重类型不用填写。 |
+| RDatas | Repe atList | Body | 是 |   | 记录值集合。 |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 值。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。非权重类型不用填写。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 线路列表。 |
 | Remark | Strin g | Body | 否 | remark | 备注。 |
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -7499,34 +7214,26 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecord
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 修改节点：UpdateNode
+##### 4.4.3.11 修改节点：UpdateNode
 
 调用UpdateNode接口修改节点。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7552,24 +7259,22 @@ http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecord
 http(s)://[Endpoint]/?Action=UpdateNode
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"343778269185",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### 删除UniversalZone跨云共享域名：
+##### 4.4.3.12 删除UniversalZone跨云共享域名：DeleteUniversalZone
 
 **DeleteUniversalZone**
 
@@ -7602,24 +7307,20 @@ http(s)://[Endpoint]/?Action=UpdateNode
 http(s)://[Endpoint]/?Action=DeleteUniversalZone
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 备节点切换主节点：TransferLeadership
+##### 4.4.3.13 备节点切换主节点：TransferLeadership
 
 调用TransferLeadership接口将备节点切换成主节点。
 
@@ -7642,32 +7343,26 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZone
 | Message | String | error message | 异常请求的信息。 |
 | Code | String | error code | 异常请求的编码。 |
 
-**示例**
-
-请求示例专有云DNS
-
 ```
 http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"343778269185",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### 查询UniversalLine跨云解析线路列表：
+##### 4.4.3.14 查询UniversalLine跨云解析线路列表：DescribeUniversalLines
 
 **DescribeUniversalLines**
 
@@ -7686,13 +7381,9 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 | PageNum ber | Integ er | Body | 否 | 1 | 页数。 |
 | PageSize | Integ er | Body | 否 | 10 | 每页显示数量。 |
 
-专有云DNS
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -V4Addresses | String | ["1.1.1.1"] | IPV4地址列表。 |
 | -V6Addresses | String | ["2400:3200::7777 "] | IPV6地址列表。 |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | 线路的ID。 |
@@ -7715,11 +7406,9 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 http(s)://[Endpoint]/?Action=DescribeUniversalLines
 ```
 
-&公共请求参数正常返回示例专有云DNS `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
@@ -7731,13 +7420,16 @@ http(s)://[Endpoint]/?Action=DescribeUniversalLines
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -7752,19 +7444,13 @@ http(s)://[Endpoint]/?Action=DescribeUniversalLines
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### 添加UniversalLine跨云解析线路：
+##### 4.4.3.15 添加UniversalLine跨云解析线路：AddUniversalLine
 
 **AddUniversalLine**
 
 调用AddUniversalLine接口添加跨云解析线路。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-专有云DNS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7790,24 +7476,22 @@ http(s)://[Endpoint]/?Action=DescribeUniversalLines
 http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### 删除UniversalZone解析记录:
+##### 4.4.3.16 删除UniversalZone解析记录: DeleteUniversalZoneRecord
 
 **DeleteUniversalZoneRecord**
 
@@ -7840,24 +7524,22 @@ http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1
 http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983d-c5dd4 8d05b49
 ```
 
-&公共请求参数正常返回示例专有云DNS `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### 获取UniversalZone解析列表:
+##### 4.4.3.17 获取UniversalZone解析列表: DescribeUniversalZoneRecords
 
 **DescribeUniversalZoneRecords**
 
@@ -7880,11 +7562,11 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | 解析线路。 |
-| -RDatas | Array |  |  |
+| -RDatas | Array |   |   |
 
-|  | 专有云DNS |  |  | 开发指南·API参考 |  |
+|   | 专有云DNS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7900,8 +7582,6 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983
 | -LbaStrategy | String | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址（非权重）。 _ RATIO：按权重返回地址（权重）。 |
 | -Remark | String | 备注 | 备注。 |
 | - CreateTimesta mp | Long | 1702460677 | 创建时间戳（秒）。 |
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -7921,12 +7601,9 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983
 http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-44ee-b12 6-1cbdbcd24507&PageNumber=1&PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式专有云DNS
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -7937,7 +7614,11 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
   "-RDatas":{
    "LbaWeight":"100",
    "Value":"1.1.1.1"
-  },
+```
+
+`},`
+
+```json
   "LineIds":"[\"default\"]",
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
@@ -7946,16 +7627,14 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
   "Name":"www",
 ```
 
-`"Remark":"`备注"
+`"Remark":"`备注`"` `},`
 
 ```json
- },
  "TotalItems":10,
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -7977,9 +7656,7 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-专有云DNS
-
-##### 获取UniversalZone列表:
+##### 4.4.3.18 获取UniversalZone列表: DescribeUniversalZones
 
 **DescribeUniversalZones**
 
@@ -8001,17 +7678,17 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | 域名ID。 |
 | -Name | String | com. | 域名名称。 |
 | -RecordCount | Integer | 1 | 解析记录集总数。 |
-| - GtmInstanceC ount | Integer |  | 无效字段。 |
+| - GtmInstanceC ount | Integer |   | 无效字段。 |
 | -Remark | String | 备注 | 备注。 |
 | - CreateTimesta mp | Long | 1702460677 | 创建时间戳（秒）。 |
 | - UpdateTimest amp | Long | 1702460677 | 修改时间戳（秒）。 |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | 请求ID。 |
 
-| 专有云DNS |  |  | 开发指南·API参考 |
+| 专有云DNS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -8030,10 +7707,9 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
 http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
  "Message":"error message",
@@ -8047,16 +7723,14 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
   "Name":"com.",
 ```
 
-`"Remark":"`备注"
+`"Remark":"`备注`"` `},`
 
 ```json
- },
  "TotalItems":10,
  "Code":"error code"
-}
 ```
 
-`XML` 格式专有云DNS
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
@@ -8070,7 +7744,7 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### 添加UniversalZone解析记录:
+##### 4.4.3.19 添加UniversalZone解析记录: AddUniversalZoneRecord
 
 **AddUniversalZoneRecord**
 
@@ -8087,22 +7761,16 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 | ZoneId | Strin g | Body | 是 | 56bab908-04e0-44ee- b126-1cbdbcd24507 | 域名ID。 |
 | Name | Strin g | Body | 否 | www | 记录名称。 |
 
-专有云DNS
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | 是 | A | 记录类型。取值说明： A：将域名指向一个IPV4 地址。 AAAA：将域名指向一个 IPV46。 CNAME：将域名指向另一个域名。 MX：将域名指向邮件服务器地址。 TXT：文本长度限制 255，通常做SPF记录 (反垃圾邮件)。 PTR：记录IP地址反向解析的域名。 SRV：记录提供特定的服务的服务器。 NAPRT：记录域名权威指针，通常用于ENUM。 CAA：为域名设置证书分发机构授权信息。 NS：将于明指向指定的 DNS服务器解析。 |
 | Ttl | Integ er | Body | 是 | 300 | 记录的缓存时间。 |
 | LbaStrate gy | Strin g | Body | 是 | ALL RR _ | 负载均衡策略。取值说明： ALL RR：返回全部地址 _ （非权重）。 RATIO：按权重返回地址 （权重）。 |
 | Remark | Strin g | Body | 否 | 备注 | 备注。 |
-| RDatas | Repe atList | Body | 是 |  | 记录值集合。 |
-| -Value | Strin g |  | 是 | 1.1.1.1 | 值。 |
-| - LbaWeigh t | Integ er |  | 否 | 100 | 权重。 |
+| RDatas | Repe atList | Body | 是 |   | 记录值集合。 |
+| -Value | Strin g |   | 是 | 1.1.1.1 | 值。 |
+| - LbaWeigh t | Integ er |   | 否 | 100 | 权重。 |
 | LineIds | Strin g | Body | 是 | ["default"] | 解析线路。 |
-
-**返回数据**
-
-专有云DNS
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8119,18 +7787,16 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 http(s)://[Endpoint]/?Action=AddUniversalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"error code"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>

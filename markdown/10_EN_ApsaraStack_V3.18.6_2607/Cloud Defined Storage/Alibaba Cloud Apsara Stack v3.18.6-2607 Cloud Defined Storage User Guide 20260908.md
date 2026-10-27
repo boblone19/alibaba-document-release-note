@@ -5,7 +5,7 @@ doc_version: "20260908"
 pdf_pages: 1032
 source_pdf: "1eac634936a2d2d8_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage User Guide 20260908.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20User%20Guide%2020260908.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage User Guide 20260908
@@ -2645,7 +2645,11 @@ Zone-redundant storage stores redundant copies of your data across multiple AZs 
 
 > **Important:** Zone-redundant storage replicates data within a specific region. If the entire region becomes unavailable, the data will be inaccessible. For maximum availability, use cross-region replication to back up your data.
 
-OSS offers two zone-redundant disaster recovery solutions: a two-AZ solution and a three-AZ solution. For more information about the architecture of the two zone-redundant disaster recovery solutions, see the "Zone-redundant disaster recovery" topic in the CDS Product Whitepaper.
+OSS offers two zone-redundant disaster recovery solutions: a two-AZ solution and a three-AZ solution.
+
+**Note**
+
+For more information about the architecture of the two zone-redundant disaster recovery solutions, see the "Zone-redundant disaster recovery" topic in the CDS Product Whitepaper.
 
 | Aspect | Two-AZ zone redundancy | Three-AZ zone redundancy |
 |---|---|---|
@@ -4694,6 +4698,9 @@ i. Log in to the Apsara Uni-manager Management Console ii. In the top navigation
 4. Find the disk that you want to resize, move the pointer over the
 icon in the **Actions** column, and then select **Resize Disk**.
 5. Optional. Select a service catalog and click **OK**.
+
+**Note**
+
 Service catalogs are used to manage the specifications of specific services in an enterprise or organization. This option is available only if a service catalog is configured and activated for the current organization or user in service management. For more information about service management, see the **Service catalogs** topic in **Apsara Uni-manager Management Console User Guide** .
 6. In the **Resize Disk** dialog box, select a resizing method and specify the new capacity.
 Offline Resizing: After a disk is resized offline, you must restart the associated ECS instance in the ECS console or by calling the RebootInstance API operation for the new disk capacity to take effect. Online Resizing: After a disk is resized online, you do not need to restart the ECS instance to which the disk is attached for the new disk capacity to take effect. Premium performance disks, standard performance disks, ultra disks, and standard SSDs can be resized.
@@ -4775,6 +4782,8 @@ i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigatio
 |   |   | Encryption Key | No | The key used to encrypt the disk. This parameter is required if you set the Encryption parameter to Yes. Note If no key is available, you must create a key in Key Management Service (KMS). |
 |   |   | Use Snapshot | No | Specifies whether to create the disk based on a snapshot. If you selectY es, you must specify a snapshot. The size of the created disk depends on the size of the specified snapshot. If the disk size that you specify is greater than the snapshot size, the disk is created with the size you specify. If the disk size that you specify is smaller than the snapshot size, the disk is created with the snapshot size. |
 
+**Note**
+
 For more information, see Create a disk.
 6. Confirm the configurations and click **Submit**.
 7. In the message that appears, click **OK**.
@@ -4805,6 +4814,8 @@ In the scenarios that require data security and regulatory compliance, you can e
 The following methods are supported to encrypt a system disk: Method 1: Enable system disk encryption when you create an ECS instance. This method is supported only for premium performance disks and standard performance disks. Method 2: Encrypt a custom image and use it to create an ECS instance. The system disk of the created ECS instance is automatically encrypted. This method is supported for all disk categories.
 
 **Method 1: Enable system disk encryption when you create an ECS instance**
+
+**Note**
 
 This method is supported only for premium performance disks and standard performance disks.
 1. Log in to the ECS console.
@@ -4900,7 +4911,11 @@ A disk is in the **Running** or **Available** state. The disk in the **Available
 
 **Billing**
 
-The replica uses the pay-as-you-go billing method. Bills are generated only after the administrator configures billing rules in the operation center. For more information about billing rules, see the topics under **Operations > Pricing > Manage billing configurations** in Apsara Uni-manager Management Console User Guide in Apsara Stack Documentation Center.
+The replica uses the pay-as-you-go billing method.
+
+**Note**
+
+Bills are generated only after the administrator configures billing rules in the operation center. For more information about billing rules, see the topics under **Operations > Pricing > Manage billing configurations** in Apsara Uni-manager Management Console User Guide in Apsara Stack Documentation Center.
 1. Log on to the ECS console.
 2. In the navigation pane on the left, choose **Storage & Snapshots > Disks**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -5033,6 +5048,9 @@ i. Log in to the Apsara Uni-manager Management Console ii. In the top navigation
 4. Find the disk whose category you want to change, move the pointer over the
 icon in the **Actions** column, and then click **Change Disk Category**.
 5. Optional. Select a service catalog and click **OK**.
+
+**Note**
+
 Service catalogs are used to manage the specifications of specific services in an enterprise or organization. This option is available only if a service catalog is configured and activated for the current organization or user in service management. For more information about service management, see the **Service catalogs** topic in **Apsara Uni-manager Management Console User Guide** .
 6. In the **Change Disk Category** dialog box, select a disk category from the **New Disk Category** drop-down list.
 7. Click **OK** to submit the disk category change task. When the task is in progress, you can click **View Task** in the **Status** column to go to the
@@ -5306,6 +5324,9 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 3. In the top navigation bar, select an organization, a resource set, and a region.
 4. On the **Disk Snapshots** tab, find the snapshot that you want to share and click **Share Snapshot** in the **Actions** column.
 5. In the **Share Snapshot** dialog box, select the level-1 organizations to which you want to share the snapshot for the **Organization** parameter.
+
+**Note**
+
 If you cannot obtain the organization list due to lack of permissions, you can enter the UID of a level-1 organization.
 6. Click **OK**.
 
@@ -6568,7 +6589,11 @@ You need to select the region in which the primary disk in the replicate pair re
 2. On the **Primary Site** tab of the **Async Replication** page, find the replication pair to which the faulty primary disk belongs, move the pointer over
 the icon in the **Actions** column, and then click **Perform Failover**.
 3. In the **Are you sure that you want to perform a failover?** message, read the notes and click **OK**.
-After the failover feature is enabled, the state of the replication pair changes to **Failed Over**. Before you cancel a failover, make sure that the primary disk is available. Otherwise, the failover may fail to be canceled. In addition, after the failover is canceled, the replication pair is stopped. You must manually activate the replication pair.
+After the failover feature is enabled, the state of the replication pair changes to **Failed Over**.
+
+**Note**
+
+Before you cancel a failover, make sure that the primary disk is available. Otherwise, the failover may fail to be canceled. In addition, after the failover is canceled, the replication pair is stopped. You must manually activate the replication pair.
 
 > After the failover is complete, you can move the pointer over the
 > icon and click **Cancel Failover**. In the message that appears, click
@@ -8101,6 +8126,8 @@ Run Windows PowerShell or Command Prompt as an administrator. Go to the `logtail
 ```
 .\logtail_installer.exe install ${region}
 ```
+
+**Note**
 
 You must replace ${region} in the command with the actual endpoint. For more information about endpoints, see View the endpoint of a project.
 
@@ -13785,7 +13812,11 @@ wait for about two minutes and then manually refresh. A status of OK indicates t
 
 **Other cloud or on-premises servers**
 
-This method applies when the server is from another cloud provider or is an on-premises server. If the server is an Alibaba Cloud ECS instance, but the ECS instance and the project belong to different Alibaba Cloud accounts and are in different regions, it can also be treated as an on-premises server. You must manually download the installation package, use the public network or transfer acceleration method in the installation command, and configure a user ID. For server limits, see Supported Linux operating systems.
+This method applies when the server is from another cloud provider or is an on-premises server. If the server is an Alibaba Cloud ECS instance, but the ECS instance and the project belong to different Alibaba Cloud accounts and are in different regions, it can also be treated as an on-premises server. You must manually download the installation package, use the public network or transfer acceleration method in the installation command, and configure a user ID.
+
+**Note**
+
+For server limits, see Supported Linux operating systems.
 
 **Perform the following operations:**
 
@@ -15390,6 +15421,8 @@ logging.config.dictConfig(conf)
 # Use the logger
 logger = logging.getLogger('sls') logger.info("Hello world")
 ```
+
+**Note**
 
 If you want to instantiate an object of the `aliyun.log.QueuedLogHandler` class, pass named parameters to the constructor. For more information, see aliyun.log.QueuedLogHandler.
 
@@ -21900,6 +21933,9 @@ Log Service allows you to render query and analysis results into visualized char
 
 Indexes are configured and the analysis feature is enabled. To enable the analysis feature, turn on **Enable Analytics** for the fields in the **Search &**
 **Analysis** panel. For more information, see Configure indexes.
+
+**Note**
+
 Before you configure charts, we recommend that you are familiar with the log analysis feature. For more information, see Log analysis overview.
 
 > You must specify an analytic statement in a query statement. Log Service cannot display charts based on query results.
@@ -33227,7 +33263,11 @@ str: iZbp1a65x3r1vhpe94fi2qZ regex_split: ["iZbp", "a", "x", "r", "vhpe", "fi", 
 
 ###### 4.5.8.7.9 Grok function
 
-This topic describes the syntax and parameters of the Grok function. This topic also provides examples on how to use the function. Regular expression functions are complicated. We recommend that you use the Grok function instead of regular expression functions. For more information, see Regular expression functions. You can use the Grok function together with regular expression functions. Examples:
+This topic describes the syntax and parameters of the Grok function. This topic also provides examples on how to use the function.
+
+**Description**
+
+Regular expression functions are complicated. We recommend that you use the Grok function instead of regular expression functions. For more information, see Regular expression functions. You can use the Grok function together with regular expression functions. Examples:
 
 ```
 e_match("content", grok(r"\w+: (%{IP})")) # The Grok pattern matches the abc: 192.0.2.0 or xyz: 192.0.2.2 pattern of a log. e_match("content", grok(r"\w+: (%{IP})", escape=True)) # The Grok pattern does not match the abc: 192.0.2.0 pattern of log data but matches th e \w+: 192.0.2.0 pattern of log data.
@@ -49293,7 +49333,11 @@ very This is your first time logging on to the Apsara Uni-manager Management Con
 
 **You have enabled MFA and bound an MFA device.**
 
-Enter a six-digit MFA verification code and click **Authenticate**. For more information about how to bind and enable MFA, see **Manage MFA in MFA of** **Apsara Uni-manager Management Console User**
+Enter a six-digit MFA verification code and click **Authenticate**.
+
+**Note**
+
+For more information about how to bind and enable MFA, see **Manage MFA in MFA of** **Apsara Uni-manager Management Console User**
 **Guide**.
 5. In the top navigation bar, choose **Products > Storage > Hybrid Disaster Recovery**.
 6. Select an organization and a region, and then click **Access as Administrator** to go to the HDR console.

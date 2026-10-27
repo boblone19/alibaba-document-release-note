@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 54
 source_pdf: "bbb612f7cc54680b_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Web Applica"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Web%20Application%20Firewall-Instance%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) Web Application Firewall-Instance User Guide 20260629
@@ -78,6 +78,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from a deployment engineer. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar of your
 browser and press the Enter key.
 2. Enter your username and password.
@@ -117,6 +120,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -152,6 +158,9 @@ For more information about how to view the overall protection information, see P
 ## 3 Create an instance
 
 This topic describes how to create a Web Application Firewall (WAF) instance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Security**. Then, choose **Application Security > Web**
 **Application Firewall - Instance-Based**. On the **Web Application Firewall** page, select
@@ -191,7 +200,11 @@ Specify the columns that you want to view in the instance list In the upper-righ
 **Protection**. Click **VPC Management** in the **Operation** column of a WAF instance to add
 or remove VPCs. Scale out or scale in the instance On the Web Application Firewall page, find the instance that you want to manage and click
 **Scale Up** or **Scale Down** in the **Operation** column. In the panel that appears, modify the
-Number of Detection Engines parameter and click OK. The Number of Detection Engines parameter specifies the number of detection engines in a single zone. Valid values of this parameter: 2 to 16. Release the instance On the Web Application Firewall page, find the instance that you want to release and click
+Number of Detection Engines parameter and click OK.
+
+**Note**
+
+The Number of Detection Engines parameter specifies the number of detection engines in a single zone. Valid values of this parameter: 2 to 16. Release the instance On the Web Application Firewall page, find the instance that you want to release and click
 **Release** in the **Operation** column. In the dialog box that appears, enter **Confirm Release**
 and click **OK**.
 
@@ -210,6 +223,9 @@ on
 ### 4.1 Protection overview
 
 The Overview page displays information including attack statistics, the geographical distribution of attackers, the total number of requests, and the number of blocked requests. You can also view information about the attacks. Then, you can configure protection rules to protect your web services. This topic describes how to view the Web Application Firewall (WAF) protection overview.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -222,6 +238,9 @@ Requests: displays the total number of requests. Attacks: displays the total num
 ### 4.2 Access status monitoring
 
 Web Application Firewall (WAF) monitors access to web services. Security administrators can analyze the service access information to detect vulnerabilities and improve the security of the web services. This topic describes how to view access information of web services.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Security**. Then, choose **Application Security > Web**
 **Application Firewall - Instance-Based**. On the **Web Application Firewall** page, select
@@ -325,6 +344,9 @@ After you complete the preceding configurations, you can view the trends of your
 ### 5.1 Attack detection logs
 
 You can use attack detection logs to analyze attacks on your web services. You can update your protection policies and custom rules and fix web service vulnerabilities based on the analysis results. This helps enhance the security of your web services. This topic describes how to view attack detection logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -359,6 +381,9 @@ Add an HTTP flood attack to the blacklist Find the HTTP flood attack that you wa
 ### 5.3 System operation logs
 
 This topic describes how to view system operation logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -376,6 +401,9 @@ you created and click the icon in the **Actions** column.
 ### 5.4 Access logs
 
 This topic describes how to view access logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -392,6 +420,8 @@ you created and click the icon in the **Actions** column.
 
 ### 5.5 Log download management
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -404,6 +434,9 @@ On the Log Download Management page, you can perform the following operations: D
 ### 5.6 Query logs by IP address
 
 If you want to check whether an IP address hits a rule that you configure in your Web Application Firewall (WAF) instance, you must query data from multiple sources. This topic describes how to automatically identify rules that are hit by an IP address.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -424,6 +457,9 @@ icon in the **Actions** column to view the details.
 #### 6.1.1 Manage websites
 
 This topic describes how to add an Internet website to Web Application Firewall (WAF).
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Security**. Then, choose **Application Security > Web**
 **Application Firewall - Instance-Based**. On the **Web Application Firewall** page, select
@@ -501,6 +537,9 @@ View and modify protection settings Find the protected website whose protection 
 #### 6.1.2 Manage VIPs
 
 You can add a virtual IP address (VIP), a VIP in a virtual private cloud (VPC), or an elastic IP address (EIP) to instance-based Web Application Firewall (WAF). The VIP that you add to WAF can be used as the downstream node of a VPC-connected website that you add to WAF. This topic describes how to add a VIP in a VPC to WAF and how to manage the VIP.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Security**. Then, choose **Application Security > Web**
 **Application Firewall - Instance-Based**. On the **Web Application Firewall** page, select
@@ -567,6 +606,8 @@ By default, you can configure five types of protection policies.
 | Policy for Internet enterprises | Internet website services | Blocks high-risk attacks but does not detect Active Server Pages (ASP) code injections or module injections. |
 | Policy for financial institutions | Financial website services | Allows and records command injections, blocks high-risk attacks, but does not detect ASP code injections or module injections. |
 | Policy in observation mode | Scenarios in which attacks only need to be recorded | Allows and records all requests. |
+
+**Procedure**
 
 You can perform the following steps to configure protection policies based on your business requirements:
 1. Log on to the Apsara Uni-manager Management Console.
@@ -819,6 +860,9 @@ i. On the **SSL Certificate** tab, click Upload SSL Certificate. On the **CA Cer
 ### 6.9 Data masking
 
 Web Application Firewall (WAF) allows you to configure data masking policies to mask sensitive data before the sensitive data is displayed. The sensitive data includes ID card numbers, dates of birth, bank card numbers, and passwords.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -855,6 +899,9 @@ You can view and manage online backups in the online backup list. Select the onl
 ### 7.2 Instance system settings
 
 Instance-based Web Application Firewall (WAF) allows you to configure global system settings to enable or disable the global protection engine, specify an internal-facing Server Load Balancer (SLB) instance as the downstream service, and configure shared virtual IP addresses. This topic describes how to configure global system settings.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Security**. Then, choose **Application Security > Web**
 **Application Firewall - Instance-Based**. On the **Web Application Firewall** page, select
@@ -885,6 +932,9 @@ the following table.
 #### 8.1.1 Loads
 
 This topic describes how to view the loads on Web Application Firewall (WAF) nodes. The loads include CPU utilization and memory usage. You can identify faults based on the loads and check whether a scale-out is required.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -912,6 +962,9 @@ want to manage and click its name in the **WAF Instance Name** column or **Conso
 #### 8.1.3 Detection status
 
 This topic describes how to view the number of requests detected by Web Application Firewall (WAF) nodes per second and the average detection time of the WAF nodes.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -922,6 +975,8 @@ want to manage and click its name in the **WAF Instance Name** column or **Conso
 In the Detection Status section, you can view the number of requests detected by WAF nodes per second and the average detection time of the WAF nodes. In the Requests Detected per Second section and the Average Detection Time section, you can view the changes over a specific period of time.
 
 #### 8.1.4 Forwarding status
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
@@ -935,6 +990,9 @@ want to manage and click its name in the **WAF Instance Name** column or **Conso
 #### 8.1.5 Disk status
 
 This topic describes how to view the disk information about Web Application Firewall (WAF) nodes. You can identify faults based on the disk information and check whether a scale-out is required.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -949,6 +1007,9 @@ writes over a specific period of time.
 #### 8.1.6 Historical data query
 
 This topic describes how to query the historical data of Web Application Firewall (WAF) nodes.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the
@@ -964,6 +1025,9 @@ usage, and disk usage of the node. In the **Historical Traffic Monitoring Data**
 ### 8.2 System firmware information
 
 This topic describes how to query the system firmware information of Web Application Firewall (WAF).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security > Application Security > Web Application**
 **Firewall - Instance**. On the **Web Application Firewall** page, select a region from the

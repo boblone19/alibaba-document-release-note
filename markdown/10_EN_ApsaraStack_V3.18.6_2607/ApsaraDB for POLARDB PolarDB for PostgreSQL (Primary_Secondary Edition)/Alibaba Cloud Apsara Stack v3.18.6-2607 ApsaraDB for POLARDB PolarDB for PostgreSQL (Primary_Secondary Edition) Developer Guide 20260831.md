@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 158
 source_pdf: "26220dd7f4d68d5e_Secondary Edition) Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary/Secondary%20Edition%29%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/Secondary Edition) Developer Guide 20260831
@@ -366,7 +366,11 @@ JSON format
 
 #### 1.3.1 CreateDBInstance
 
+**Description**
+
 Creates a PolarDB instance. For more information about instance types, see Instance types in Appendix.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -417,12 +421,16 @@ JSON format
 
 #### 1.3.2 DeleteDBInstance
 
+**Description**
+
 Releases a PolarDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not manually locked. The instance is a pay-as-you-go primary instance, read-only instance, disaster recovery instance, or temporary instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDBInstance. |
 | DBInstanceI d | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -452,12 +460,16 @@ JSON format
 
 #### 1.3.3 RestartDBInstance
 
+**Description**
+
 Restarts an instance. The instance will be restarted in 10 seconds. If a large number of transactions must be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, make sure that the following requirements are met: The instance is in use. The instance does not have ongoing backup tasks.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to RestartDBInstance. |
 | DBInstanceI d | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -479,7 +491,11 @@ JSON format
 
 #### 1.3.4 DescribeDBInstanceAttribute
 
+**Description**
+
 Queries the attributes of instances.
+
+**Request parameters**
 
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
@@ -591,6 +607,8 @@ JSON format
 
 #### 1.3.5 DescribeDBInstances
 
+**Description**
+
 Queries a list of instances or Resource Access Management (RAM)-authorized instances.
 
 | Parameter | Type | Requi red | Example | Description |
@@ -685,7 +703,11 @@ JSON format
 
 #### 1.3.6 ModifyDBInstanceSpec
 
+**Description**
+
 Modifies the configurations of an instance, such as the instance type or storage capacity. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance does not have ongoing backup tasks. One of the DBInstanceClass and DBInstanceStorage parameters is specified. The new storage capacity is at least 1.1 times the used storage space. The instance is a primary instance or read-only instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -701,6 +723,8 @@ Modifies the configurations of an instance, such as the instance type or storage
 | EffectiveTime | String | No | Immediate | The effective time. Valid values: Immediate: The configuration changes immediately take effect. MaintainTime: The configuration changes take effect within the maintenance window. Default value: Immediate. |
 |---|---|---|---|---|
 | OwnerAccount | String | No | testuser@aliyun. com | The Apsara Stack tenant account. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -734,7 +758,11 @@ JSON format
 
 #### 1.3.7 AllocateInstancePublicConnection
 
+**Description**
+
 Applies for a public endpoint for an instance.
+
+**Request parameters**
 
 | Parameter | Typ e | Requir ed | Description |
 |---|---|---|---|
@@ -742,6 +770,8 @@ Applies for a public endpoint for an instance.
 | DBInstanceId | Strin g | Yes | The instance ID. |
 | ConnectionString Prefix | Strin g | Yes | The prefix of the public endpoint. |
 | Port | Strin g | Yes | The public port to be used by the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -771,13 +801,19 @@ JSON format
 
 #### 1.3.8 ReleaseInstancePublicConnection
 
+**Description**
+
 Releases the public endpoint of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to ReleaseInstancePublicConnection. |
 | DBInstanceId | String | Yes | The instance ID. |
 | CurrentConnection String | String | Yes | The public endpoint. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -807,7 +843,11 @@ JSON format
 
 #### 1.3.9 SwitchDBInstanceNetType
 
+**Description**
+
 You can call this operation to switch the network type of an instance between internal and public networks. After switching, the endpoint of the instance changes. You must modify the endpoint in the code and restart the application. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The number of times that you have switched the instance between its internal and public endpoints within the last 24 hours does not reach 20.
+
+**Request parameters**
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -815,11 +855,17 @@ You can call this operation to switch the network type of an instance between in
 | DBInstanceId | String | Yes | The instance ID. |
 | ConnectionString Prefix | String | Yes | The unique endpoint to be used. It can be up to 30 characters in length and can contain lowercase letters, digits, and hyphens (-). It must start with a letter. |
 
+**Response parameters**
+
 For more information, see Common response parameters.
 
 #### 1.3.10 DescribeDBInstanceNetInfo
 
+**Description**
+
 Queries the connection information of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -827,6 +873,8 @@ Queries the connection information of an instance.
 
 | DBInstanceI d | Strin g | Yes | The instance ID. |
 |---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -847,6 +895,8 @@ DBInstanceNetInfo parameters
 
 #### 1.3.11 ModifyDBInstanceConnectionString
 
+**Description**
+
 Modifies the endpoint and port of an instance. PolarDB provides the internal and public endpoints for an instance and allows both endpoint types to coexist in a specific access mode.
 
 | Parameter | Ty pe | Requi red | Description |
@@ -857,11 +907,17 @@ Modifies the endpoint and port of an instance. PolarDB provides the internal and
 | ConnectionStringP refix | Str ing | No | The endpoint to be used by the instance. |
 | Port | Str ing | No | The port to be used by the instance. |
 
+**Response parameters**
+
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 #### 1.3.12 ModifyDBInstanceConnectionMode
 
+**Description**
+
 Changes the access mode of an instance. PolarDB supports the following access modes: Standard access mode Secure access mode
+
+**Request parameters**
 
 | Parameter | Typ e | Require d | Description |
 |---|---|---|---|
@@ -873,9 +929,13 @@ This operation returns only common response parameters. For more information abo
 
 #### 1.3.13 ModifyDBInstanceNetworkType
 
+**Description**
+
 Switches the network type of an instance between virtual private cloud (VPC) and classic network.
 
 > **Note:** Only the classic network instances whose ConnectionMode is Safety can have their network type switched to VPC.
+
+**Request parameters**
 
 | Parameter | T y p e | Requi red | Description |
 |---|---|---|---|
@@ -888,16 +948,24 @@ Switches the network type of an instance between virtual private cloud (VPC) and
 | PrivateIpAddres s | St ri n g | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |
 |---|---|---|---|
 
+**Response parameters**
+
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 #### 1.3.14 DescribeDBInstanceIPArrayList
 
+**Description**
+
 Queries the IP address whitelist of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceIPArrayList. |
 | DBInstanceI d | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -916,7 +984,11 @@ DBInstanceIPArray parameters
 
 #### 1.3.15 ModifySecurityIps
 
+**Description**
+
 Modifies the IP address whitelist of an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not locked by the system.
+
+**Request parameters**
 
 | Parameter | Ty pe | Requ ired | Description |
 |---|---|---|---|
@@ -952,11 +1024,17 @@ JSON format
 
 #### 1.3.16 DescribeRegions
 
+**Description**
+
 Queries available regions and zones. You must call the DescribeRegions operation to query available regions before you call the CreateDBInstance operation.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeRegions. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1003,12 +1081,16 @@ JSON format
 
 #### 1.3.17 DescribeDBInstanceHAConfig
 
+**Description**
+
 Queries the zone information and data replication status of an instance.
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceHAConfig. |
 | DBInstanceI d | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1034,15 +1116,21 @@ NodeInfo parameters
 
 #### 1.3.18 MigrateToOtherZone
 
+**Description**
+
 Migrates an instance from one zone to another. For example, if Instance 1 resides in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
 
 > **Note:** In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to MigrateToOtherZone. |
 | DBInstanceId | String | Yes | The instance ID. |
 | ZoneId | String | Yes | The zone ID of the instance. You can call the DescribeRegions operation to query available zones. |
+
+**Response parameters**
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
@@ -1070,12 +1158,18 @@ JSON format
 
 #### 1.3.19 PurgeDBInstanceLog
 
+**Description**
+
 Clears all binlogs of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to PurgeDBInstanceLog. |
 | DBInstanceId | String | Yes | The instance ID. |
+
+**Response parameters**
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
@@ -1103,13 +1197,19 @@ JSON format
 
 #### 1.3.20 ModifyDBInstanceDescription
 
+**Description**
+
 Modifies the description of an instance to help identify the instance. For example, you can modify the description of an instance to Alibaba_Cloud_testing_environment_instance.
+
+**Request parameters**
 
 | Parameter | Typ e | Requir ed | Description |
 |---|---|---|---|
 | Action | Strin g | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceDescription. |
 | DBInstanceId | Strin g | Yes | The instance ID. |
 | DBInstanceDesc ription | Stin g | Yes | The description of the instance. |
+
+**Response parameters**
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
@@ -1137,13 +1237,19 @@ JSON format
 
 #### 1.3.21 ModifyDBInstanceMaintainTime
 
+**Description**
+
 Modifies the maintenance window of an instance. You can set the maintenance window to offpeak hours. Apsara Stack performs routine maintenance during the maintenance window to minimize the impacts on your business.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceMaintainTime. |
 | DBInstanceI d | String | Yes | The instance ID. |
 | MaintainTim e | String | Yes | The maintenance window of the instance. Valid values: 22:00Z-02:00Z 02:00Z-06:00Z 06:00Z-10:00Z 10:00Z-14:00Z 14:00Z-18:00Z 18:00Z-22:00Z |
+
+**Response parameters**
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
@@ -1171,7 +1277,11 @@ JSON format
 
 #### 1.3.22 ModifyDBInstanceHAConfig
 
+**Description**
+
 Modifies the data replication mode and high availability switching rules of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1180,11 +1290,17 @@ Modifies the data replication mode and high availability switching rules of an i
 | SyncMode | String | Yes | The synchronization mode of the instance. Valid values: Semi- sync and Async. |
 | HAMode | String | Yes | The high availability mode of the instance. Valid values: RPO: Data persistence prevails. RTO: Instance availability prevails. |
 
+**Response parameters**
+
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 #### 1.3.23 SwitchDBInstanceHA
 
+**Description**
+
 Switches between the primary and secondary instances. PolarDB instances are composed of primary and secondary instances distributed across different servers. The primary instance bears the service traffic.
+
+**Request parameters**
 
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
@@ -1195,11 +1311,17 @@ Switches between the primary and secondary instances. PolarDB instances are comp
 | NodeId | String | Yes | The unique ID of the primary or secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the value of this parameter. |
 | Force | String | Yes | Specifies whether to forcibly switch between the primary and secondary instances. Valid values: Yes and No. Default value: No. |
 
+**Response parameters**
+
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 #### 1.3.24 CreateReadOnlyDBInstance
 
+**Description**
+
 Creates a read-only instance for a primary instance. Before you call this operation, make sure that the following requirements are met: The primary instance is in the Running state, but not in the Failover state. The read-only instance and the primary instance are in the same region. A primary instance can have up to five read-only instances.
+
+**Request parameters**
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1222,6 +1344,8 @@ Creates a read-only instance for a primary instance. Before you call this operat
 
 |   | 1000 |
 |---|---|
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1258,12 +1382,18 @@ JSON format
 
 #### 1.3.25 DescribeDBInstanceSSL
 
+**Description**
+
 Queries the SSL link of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceSSL. |
 | DBInstanceId | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1275,7 +1405,11 @@ Queries the SSL link of an instance.
 
 #### 1.3.26 ModifyDBInstanceSSL
 
+**Description**
+
 Modifies the SSL link of a PolarDB instance.
+
+**Request parameters**
 
 | Parameter | Typ e | Req uire d | Description |
 |---|---|---|---|
@@ -1285,6 +1419,8 @@ Modifies the SSL link of a PolarDB instance.
 | Connection String | Strin g | Yes | The connection string of the instance. Each instance can have only one connection string protected by the SSL certificate. The SSL certificate can be created or updated for the connection string. |
 |---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
@@ -1292,12 +1428,18 @@ Modifies the SSL link of a PolarDB instance.
 
 #### 1.3.27 DescribeDBInstanceTDE
 
+**Description**
+
 Queries the Transparent Data Encryption (TDE) status of a PolarDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceTDE. |
 | DBInstanceId | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1314,7 +1456,11 @@ DataBase
 
 #### 1.3.28 ModifyDBInstanceTDE
 
+**Description**
+
 Modifies the Transparent Data Encryption (TDE) status of a PolarDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1323,15 +1469,21 @@ Modifies the Transparent Data Encryption (TDE) status of a PolarDB instance.
 | TDEStatus | String | Yes | Specifies whether to enable TDE for the instance. Valid values: Enabled and Disabled. |
 | DBName | String | No | The database name. You can specify up to 50 database names in a single request. Separate multiple names with commas (,). |
 
+**Response parameters**
+
 For more information, see Common response parameters.
 
 ### 1.4 Database management
 
 #### 1.4.1 CreateDatabase
 
+**Description**
+
 Creates a database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance.
 
 > **Note:** This operation is not supported for PolarDB. You can create databases in PolarDB instances by executing a CREATE DATABASE statement.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1340,6 +1492,8 @@ Creates a database in an instance. Before you call this operation, make sure tha
 | DBName | String | Yes | The unique name of the database. The name can be up to 64 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. _ |
 | CharacterSet Name | String | Yes | The character set that is used by the database. You can view the character set on the Databases tab of the instance details page. |
 | DBDescriptio n | String | No | The description of the instance. It must be 2 to 256 characters in length. The description cannot start with http:// or https://. The description can contain letters, digits, underscores ( ), and hyphens (-). It must start with a letter. _ |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1365,15 +1519,21 @@ JSON format
 
 #### 1.4.2 DeleteDatabase
 
+**Description**
+
 Deletes a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance.
 
 > **Note:** This operation is not supported for PolarDB. You can delete databases from PolarDB instances by executing a DROP DATABASE statement.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDatabase. |
 | DBInstance Id | String | Yes | The instance ID. |
 | DBName | String | Yes | The database name. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1401,7 +1561,11 @@ JSON format
 
 #### 1.4.3 DescribeDatabases
 
+**Description**
+
 Queries a list of databases of an instance and the information about a database. If you specify invalid request parameters, an error message is returned and the returned data is empty.
+
+**Request parameters**
 
 | Parame ter | Type | Requ ired | Description |
 |---|---|---|---|
@@ -1409,6 +1573,8 @@ Queries a list of databases of an instance and the information about a database.
 | DBInsta nceId | String | Yes | The instance ID. |
 | DBName | String | No | The database name. |
 | DBStatu s | String | No | The database status. Valid values: Creating Running Deleting |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1472,6 +1638,8 @@ JSON format
 
 #### 1.4.4 ModifyDBDescription
 
+**Description**
+
 Modifies the description of a database to help identify the database. For example, you can change the description of a database to Database A for the Alibaba Cloud testing environment.
 
 | Parameter | Type | Required | Description |
@@ -1480,6 +1648,8 @@ Modifies the description of a database to help identify the database. For exampl
 | DBInstanceId | String | Yes | The instance ID. |
 | DBName | String | Yes | The database name. |
 | DBDescription | String | Yes | The new description of the database. |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1507,7 +1677,11 @@ JSON format
 
 #### 1.5.1 CreateAccount
 
+**Description**
+
 Creates an account for a database. In the same instance, one account can manage multiple databases by using different permissions. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The instance is not locked. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance.
+
+**Request parameters**
 
 | Parameter | Typ e | Req uire d | Description |
 |---|---|---|---|
@@ -1517,6 +1691,8 @@ Creates an account for a database. In the same instance, one account can manage 
 | AccountPassw ord | Strin g | Yes | The password for the account. It must be 6 to 32 characters in length and can contain letters, digits, and underscores ( ). _ |
 | AccountType | Strin g | No | The account type. Valid values: Normal and Super. Default value: Normal. PolarDB can have only one initial account. You must use the initial account to log on to the database and create other types of accounts. |
 | AccountDescr iption | Strin g | No | The account description. It must be 2 to 256 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, underscores ( ), and hyphens (-). _ |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1542,13 +1718,19 @@ JSON format
 
 #### 1.5.2 DeleteAccount
 
+**Description**
+
 Deletes a database account of an instance. Before you call this operation, make sure that the instance is in the Running state.
+
+**Request parameters**
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteAccount. |
 | DBInstanceI d | String | Yes | The instance ID. |
 | AccountNam e | String | Yes | The unique name of the account. The name can be up to 16 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. For _ more information about invalid characters, see Forbidden keywords. |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1574,13 +1756,19 @@ JSON format
 
 #### 1.5.3 DescribeAccounts
 
+**Description**
+
 Queries a list of accounts for a database in an instance and the information about an account.
+
+**Request parameters**
 
 | Parameter | Typ e | Required | Description |
 |---|---|---|---|
 | Action | Stri ng | Yes | The operation that you want to perform. Set the value to DescribeAccounts. |
 | DBInstance Id | Stri ng | Yes | The instance ID. |
 | AccountNa me | Stri ng | Yes | The account name. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1636,7 +1824,11 @@ JSON format
 
 #### 1.5.4 GrantAccountPrivilege
 
+**Description**
+
 Grants database access permissions to an account. An account can be associated with one or more databases. If the specified account already has access permissions on the specified database, the operation directly returns a success response. Before you call this operation, make sure that the instance is in the running state.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1647,6 +1839,8 @@ Grants database access permissions to an account. An account can be associated w
 | DBName | String | Yes | The name of the database to be accessed by the account. |
 |---|---|---|---|
 | AccountPrivileg e | String | Yes | The permissions of the account. Valid values: ReadOnly and ReadWrite. |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1672,7 +1866,11 @@ JSON format
 
 #### 1.5.5 RevokeAccountPrivilege
 
+**Description**
+
 Revokes database access permissions from an account. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state.
+
+**Request parameters**
 
 | Paramete r | Type | Requi red | Description |
 |---|---|---|---|
@@ -1682,6 +1880,8 @@ Revokes database access permissions from an account. Before you call this operat
 |---|---|---|---|
 | AccountNa me | String | Yes | The account name. |
 | DBName | String | Yes | The database name. |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1707,7 +1907,11 @@ JSON format
 
 #### 1.5.6 ModifyAccountDescription
 
+**Description**
+
 Modifies the description of an account to help identify the account. For example, you can change the description of an account to Account A for the Alibaba Cloud testing environment.
+
+**Request parameters**
 
 | Parameter | Typ e | Require d | Description |
 |---|---|---|---|
@@ -1717,6 +1921,8 @@ Modifies the description of an account to help identify the account. For example
 |---|---|---|---|
 | AccountName | Stri ng | Yes | The unique name of the account. The name can be up to 16 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. For more _ information about invalid characters, see Forbidden keywords. |
 | AccountDescr iption | Stri ng | Yes | The new description of the account. It must be 2 to 256 characters in length and cannot start with http:// or https://. It must start with a letter. It can contain letters, digits, underscores ( ), and hyphens (-). _ |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1744,6 +1950,8 @@ JSON format
 
 #### 1.5.7 ResetAccountPassword
 
+**Description**
+
 Resets the password of an account for an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state and not locked.
 
 | Parameter | Type | Required | Description |
@@ -1752,6 +1960,8 @@ Resets the password of an account for an instance. Before you call this operatio
 | DBInstanceId | Strin g | Yes | The instance ID. |
 | AccountNam e | Strin g | Yes | The account name. |
 | AccountPass word | Strin g | Yes | The new password of the account. It must be 6 to 32 characters in length and can contain letters, digits, and underscores ( ). _ |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -1777,6 +1987,8 @@ JSON format
 
 #### 1.5.8 ResetAccount
 
+**Description**
+
 You can call this operation to reset the initial account of an instance.
 
 | 0 |   |   | > Document Version: 2026083 |
@@ -1789,6 +2001,8 @@ You can call this operation to reset the initial account of an instance.
 | AccountNam e | Strin g | Yes | The account username. |
 | AccountPass word | Strin g | Yes | The password. |
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
@@ -1797,7 +2011,11 @@ You can call this operation to reset the initial account of an instance.
 
 #### 1.6.1 CreateBackup
 
+**Description**
+
 Creates a backup. You can create up to 10 backups for an instance in a single day. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The last backup is complete.
+
+**Request parameters**
 
 | Paramet er | Type | Req uire d | Description |
 |---|---|---|---|
@@ -1809,6 +2027,8 @@ Creates a backup. You can create up to 10 backups for an instance in a single da
 |---|---|---|---|
 | DBName | String | No | The name of the database for logical single-database backup. This parameter takes effect only when BackupMethod is set to Logical and BackupStrategy is set to db. |
 | BackupTy pe | String | No | The backup type. Valid values: Auto: specifies whether it is a full backup or an incremental backup through automatic calculation. FullBackup: specifies a full backup. Default value: Auto. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1836,7 +2056,11 @@ JSON format
 
 #### 1.6.2 CloneDBInstance
 
+**Description**
+
 Clones a new instance from an existing instance by using data from either a backup file or a specific point in time. The new instance inherits the whitelist, SQL audit, alert threshold, backup, and parameter settings from the original instance. The data in the new instance is the same as that in the backup file. The clone feature is available only for PolarDB for MySQL instances. The new instance handles database account information based on the following rules: If the original instance is cloned by using a privileged account, the new instance inherits that privileged account. If the original instance is cloned by using a standard account, the new instance inherits the account information from the backup file or the specified point in time.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1859,11 +2083,15 @@ Clones a new instance from an existing instance by using data from either a back
 
 #### 1.6.3 DescribeBackups
 
+**Description**
+
 Queries the backup sets of an instance. Only backup sets in the Success state can be used for database restoration. PolarDB allows you to download backup files. A null value of DownloadLink indicates that no URL is available for downloading a backup file. A non-null value of DownloadLink provides a URL for downloading a backup file by using wget (enclose the URL in double quotation marks), a web browser, or a custom program. The URL expires at the time specified by LinkExpiredTime. Download the backup file before it expires. If you attempt to download a backup file by using an expired URL, the following error code is returned:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?><Error><Code>AccessDenied</Code> <Message>Request has expired.</Message><Expires>2012-12-25T09:47:52.000Z</Expires><Se rverTime>2012-12-25T09:49:00.000Z</ServerTime> <RequestId>50D9768CA801C2F102005C70</RequestId><HostId>oss-test.aliyuninc.com</HostId></Error>
 ```
+
+**Request parameters**
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -1879,6 +2107,8 @@ Queries the backup sets of an instance. Only backup sets in the Success state ca
 | PageSize | Integ er | No | The number of entries per page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integ er | No | The page number. Pages start from page 1. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> |   | For more information, see Common response parameters. |
@@ -1893,12 +2123,16 @@ Queries the backup sets of an instance. Only backup sets in the Success state ca
 
 Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to CreateTempDBInstance. |
 | DBInstance Id | String | Yes | The instance ID. |
 | BackupId | Integer | No | The backup set ID. |
 | RestoreTim e | String | No | The point in time to which the temporary instance is to be restored. The time must be within the last seven days and at least 30 minutes before the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2011-06-11T16:00:00Z. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1927,12 +2161,18 @@ JSON format
 
 #### 1.6.5 DescribeBackupPolicy
 
+**Description**
+
 Queries the backup policy configured for an instance. PolarDB periodically backs up an instance based on the user-defined system configuration.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeBackupPolicy. |
 | DBInstanceId | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1959,9 +2199,13 @@ PolarDB for MySQL Cluster Edition PolarDB for PostgreSQL Primary/Standby Edition
 
 This operation uses only common request headers. For more information, see common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | In | Required | Example | Description |
 |---|---|---|---|---|---|
 | DBInstanc eId | Strin g | Quer y | Yes | rm-wq64n542y9j****** | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2026,7 +2270,11 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 #### 1.6.7 ModifyBackupPolicy
 
+**Description**
+
 Modifies the backup policy configured for an instance. PolarDB periodically backs up an instance based on the user-defined system configuration.
+
+**Request parameters**
 
 | Parameter | Type | Requ ired | Description |
 |---|---|---|---|
@@ -2039,6 +2287,8 @@ Modifies the backup policy configured for an instance. PolarDB periodically back
 |---|---|---|---|
 | BackupLog | String | No | Specifies whether to enable log backup. Valid values: Enable and Disabled. Default value: Enable. |
 | LogBackupRetention Period | String | No | The log backup retention period. It cannot exceed BackupRetentionPeriod. Unit: days. Valid values: 1 to 30. This parameter takes effect only when BackupLog is set to Enable. This parameter is supported only for PolarDB for MySQL, PolarDB for PostgreSQL, or PolarDB for PPAS instances. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2066,13 +2316,19 @@ JSON format
 
 #### 1.6.8 RestoreDBInstance
 
+**Description**
+
 Restores an instance from a backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to RestoreDBInstance. |
 | DBInstanceId | String | Yes | The instance ID. |
 | BackupId | Integer | Yes | The backup set ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2102,11 +2358,15 @@ JSON format
 
 Deletes data backup files that have been stored for longer than seven days or longer than the log backup retention period. This operation deletes only the specified backup sets of a specific instance. It does not delete the backup sets of associated instances, such as read-only, disaster recovery, or cloned instances. Before you call this operation, make sure that the instance is in the Running state.
 
+**Request parameters**
+
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteBackup. |
 | DBInstanc eId | String | Yes | The instance ID. |
 | BackupId | String | Yes | The backup set ID. You can call the DescribeBackups operation to query backup set IDs. You can specify up to 100 backup set IDs in a single request. Separate multiple IDs with commas (,). Among the query results of DescribeBackups, you can delete only backup sets that are in the enabled state. |
+
+**Response parameters**
 
 For more information, see Common response parameters.
 
@@ -2119,6 +2379,8 @@ Uninstalls a plugin.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2138,6 +2400,8 @@ This operation uses common request headers. For more information, see Common req
 | Extensions | Strin g | Quer y | Yes | pase,hstore | The plug-ins to be uninstalled. Separate multiple plug-ins with commas (,). |
 |---|---|---|---|---|---|
 | DBNames | Strin g | Quer y | Yes | auto test db _ _ | The name of the database in the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2202,6 +2466,8 @@ Updates a plugin.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | Action | Strin g | Syst em | Yes | UpdateExtensions | The operation that you want to perform. Set the value to UpdateExtensions. |
@@ -2218,6 +2484,8 @@ This operation uses common request headers. For more information, see Common req
 | DBInstanc eId | Strin g | Quer y | Yes | pc-**************** | The ID of the instance. |
 | Extensions | Strin g | Quer y | Yes | postgres fdw _ | The plugins to be updated. Separate multiple plugins with commas (,). |
 | DBNames | Strin g | Quer y | Yes | auto test db _ _ | The name of the database in the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2283,6 +2551,8 @@ Queries details of an installed plugin.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | 0 |   |   |   | > D | ocument Version: 2026083 |
 |---|---|---|---|---|---|
 
@@ -2302,6 +2572,8 @@ This operation uses common request headers. For more information, see Common req
 | Extension Name | Strin g | Quer y | No | address standardizer _ | The name of the plugin. |
 |---|---|---|---|---|---|
 | DBName | Strin g | Quer y | Yes | testdb | The name of the database. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2448,6 +2720,8 @@ Installs plugins.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | Action | Strin g | Syst em | Yes | CreateExtensions | The operation that you want to perform. Set the value to CreateExtensions. |
@@ -2468,6 +2742,8 @@ This operation uses common request headers. For more information, see Common req
 | SourceDB Name | Strin g | Quer y | No | testdb1 | This parameter is invalid. |
 |---|---|---|---|---|---|
 | AccountNa me | Strin g | Quer y | Yes | test acc _ | The name of the account. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2538,10 +2814,14 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 You can call this operation to query the disk space usage of an instance. When this operation is called, the system returns the amount of space occupied by the specified instance. The DBInstanceId parameter is used to obtain instance resource usage information.
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeResourceUsage. |
 | DBInstanceId | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2557,9 +2837,13 @@ You can call this operation to query the disk space usage of an instance. When t
 
 #### 1.8.2 DescribeDBInstancePerformance
 
+**Description**
+
 Queries the performance metrics of an instance over a period of time based on the performance parameters. The output format depends on the length of the query time range: If the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. If the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. If the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals.
 
 > **Note:** If the instance space usage key is MySQL_SpaceUsage, performance metric data can be queried only when the query time range is less than or equal to one day.
+
+**Request parameters**
 
 | Paramet er | Type | Requir ed | Description |
 |---|---|---|---|
@@ -2568,6 +2852,8 @@ Queries the performance metrics of an instance over a period of time based on th
 | Key | Intege r | Yes | The performance metrics. Separate multiple metrics with commas (,). |
 | StartTime | String | Yes | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. Example: 2012-06-11T15:00Z. |
 | EndTime | String | Yes | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. Example: 2012-06-11T15:00Z. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2613,12 +2899,18 @@ JSON format
 
 #### 1.8.3 DescribeDBInstanceMonitor
 
+**Description**
+
 You can call this operation to query the monitoring behavior of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceMonitor. |
 | DBInstance Id | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2627,7 +2919,11 @@ You can call this operation to query the monitoring behavior of an instance.
 
 #### 1.8.4 ModifyDBInstanceMonitor
 
+**Description**
+
 You can call this operation to modify the monitoring behavior of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2637,6 +2933,8 @@ You can call this operation to modify the monitoring behavior of an instance.
 | Period | String | Yes | The monitoring data collection interval. Unit: seconds. Valid values: 60 and 300. Default value: 300. |
 |---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
@@ -2645,13 +2943,19 @@ You can call this operation to modify the monitoring behavior of an instance.
 
 #### 1.9.1 DescribeParameterTemplates
 
+**Description**
+
 Queries a list of parameter templates. The list includes parameter names, default parameter values, whether the parameters can be modified, whether the database must be restarted for the parameters to take effect, and regular expressions that act as parameter validation rules.
+
+**Request parameters**
 
 | Paramete r | Typ e | Requi red | Description |
 |---|---|---|---|
 | Action | Strin g | Yes | The operation that you want to perform. Set the value to DescribeParameterTemplates. |
 | Engine | Strin g | Yes | The database engine. Set the value to PolarDB PG. _ |
 | EngineVer sion | Strin g | Yes | The database engine version. Valid values: 14 16 |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2699,12 +3003,18 @@ JSON format
 
 #### 1.9.2 DescribeParameters
 
+**Description**
+
 Queries the parameter settings of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeParameters. |
 | DBInstanceId | String | Yes | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type |   | Description |   |   |
 |---|---|---|---|---|---|
@@ -2763,6 +3073,8 @@ JSON format
 
 #### 1.9.3 ModifyParameter
 
+**Description**
+
 Modifies the parameters of an instance. After you submit the parameter modification request, PolarDB starts a task to apply the new parameter values to the instance. If a database restart is required for a new parameter value to take effect, PolarDB restarts the database. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. Parameter values fall into the following categories: Numeric range (1-65535): The minimum and maximum values are extracted by using regular expressions. Input parameters are validated against this range and must also be a multiple of a specific factor. Fixed values (utf8, gbk, and latin1): The valid values are extracted by using regular expressions. Input parameters are validated against these fixed values. Other: Values in this category must match a defined regular expression. Before the task is started, PolarDB performs the following parameter checks:
 1. Checks whether the parameters exist.
 2. Checks whether the parameters can be modified.
@@ -2773,6 +3085,8 @@ If a parameter is invalid, PolarDB returns the 400 HTTP status code and informat
 {"HttpStatusCode":400, "Code":"InvalidParameter.Format", "Message":"Specified parameter is not valid. [auto_increment_increment:a,character_set_client:41]"}
 ```
 
+**Request parameters**
+
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
 
@@ -2781,6 +3095,8 @@ If a parameter is invalid, PolarDB returns the 400 HTTP status code and informat
 | DBInstanceI d | String | Yes | The instance ID. |
 | Parameters | String | Yes | The JSON string of the parameters and their values. The parameter values must be of the string type. {"auto increment increment":"1", _ _ "character set client":"utf8"}. _ _ |
 | Forcerestart | String | No | Specifies whether to forcibly restart the database. Valid values: true and false. If a parameter can take effect only after a database restart, Forcerestart must be set to true. Otherwise, the parameter modification does not take effect. Default value: false. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2810,7 +3126,11 @@ JSON format
 
 #### 1.10.1 DescribeSlowLogs
 
+**Description**
+
 Queries the slow log summary of a database in an instance over a period of time. This operation supports pagination.
+
+**Request parameters**
 
 | Paramet er | Type | Required | Description |
 |---|---|---|---|
@@ -2863,7 +3183,11 @@ JSON format
 
 #### 1.10.2 DescribeSlowLogRecords
 
+**Description**
+
 Queries the slow log details of a database in an instance over a period of time.
+
+**Request parameters**
 
 | Paramet er | Type | Requir ed | Description |
 |---|---|---|---|
@@ -2876,6 +3200,8 @@ Queries the slow log details of a database in an instance over a period of time.
 | DBName | String | No | The database name. |
 | PageSize | Integer | No | The number of entries per page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNum ber | Integer | No | The page number. Pages start from page 1. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2933,7 +3259,11 @@ JSON format
 
 #### 1.10.3 DescribeErrorLogs
 
+**Description**
+
 Queries the error logs generated for an instance over a period of time.
+
+**Request parameters**
 
 | Paramete r | Ty pe | Requ ired | Description |
 |---|---|---|---|
@@ -2945,6 +3275,8 @@ Queries the error logs generated for an instance over a period of time.
 | EndTime | Stri ng | Yes | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time. Example: 2011- 05-30T20:10Z. |
 | PageSize | Inte ger | No | The number of entries per page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNum ber | Inte ger | No | The page number. Pages start from page 1. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2987,7 +3319,11 @@ ational message only; no user action is required",
 
 #### 1.10.4 DescribeSQLCollectorPolicy
 
+**Description**
+
 Checks whether the SQL collection feature is enabled for a PolarDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2996,6 +3332,8 @@ Checks whether the SQL collection feature is enabled for a PolarDB instance.
 | DBInstanceId | String | Yes | The instance ID. |
 |---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> |   | For more information, see Common response parameters. |
@@ -3003,7 +3341,11 @@ Checks whether the SQL collection feature is enabled for a PolarDB instance.
 
 #### 1.10.5 ModifySQLCollectorPolicy
 
+**Description**
+
 Enables or disables the SQL collection feature for an instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3011,11 +3353,17 @@ Enables or disables the SQL collection feature for an instance.
 | DBInstanceId | Strin g | Yes | The instance ID. |
 | SQLCollector Status | Strin g | Yes | Specifies whether to enable the SQL collection feature. Valid values: Enable and Disabled. |
 
+**Response parameters**
+
 For more information, see Common response parameters.
 
 #### 1.10.6 DescribeSQLLogRecords
 
+**Description**
+
 Queries the SQL audit logs of an instance.
+
+**Request parameters**
 
 | > Document V | ersion: | 20260831 | 11 |
 |---|---|---|---|
@@ -3032,6 +3380,8 @@ Queries the SQL audit logs of an instance.
 | EndTime | Stri ng | Yes | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The end time must be later than the start time. |
 | PageSize | Inte ger | No | The number of entries per page. Valid values: 30, 50, 100, and 200. Default value: 100. |
 | PageNumb er | Inte ger | No | The page number. Pages start from page 1. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3124,6 +3474,8 @@ Queries a list of SQL audit log files of an instance.
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSQLLogFiles. |
 | DBInstanceI d | String | Yes | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> |   | For more information, see Common response parameters. |
@@ -3150,13 +3502,19 @@ Parameters in LogFile
 
 #### 1.11.1 CreateUploadPathForSQLServer
 
+**Description**
+
 Creates a username and a password for the file server and generates the upload path. You can then use these credentials to upload your data files to the specified path. After the upload is complete, call the data import operation to migrate external data.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to CreateUploadPathForSQLServer. |
 | DBInstanceId | String | Yes | The instance ID. |
 | DBName | String | Yes | The database name. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3199,7 +3557,11 @@ JSON format
 
 #### 1.11.2 ImportDatabaseBetweenInstances
 
+**Description**
+
 Migrates data from a PolarDB instance. This operation is supported only for dedicated PolarDB for MySQL instances. PolarDB for MySQL instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The source instance is in the running state. The databases to be migrated in the source instance are in the running state. The destination instance is not locked. The reserved storage space of the destination instance is greater than the space calculated by the following formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Databases to be migrated exist in both the source and destination instances and are activated.
+
+**Request parameters**
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -3245,7 +3607,11 @@ JSON format
 
 #### 1.11.3 CancelImport
 
+**Description**
+
 Cancels a migration from a PolarDB for MySQL instance. Migrations from PolarDB for MySQL instances can be canceled.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3254,6 +3620,8 @@ Cancels a migration from a PolarDB for MySQL instance. Migrations from PolarDB f
 
 | ImportId | Integer | Yes | The migration task ID. |
 |---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3283,6 +3651,8 @@ JSON format
 
 #### 1.12.1 AddTagsToResource
 
+**Description**
+
 Adds existing or newly created tags to instances. Each tag consists of a tag key and a tag value. The tag key cannot be blank, but the tag value can. The tag keys and tag values cannot start with aliyun. The tag keys and tag values are not case-sensitive. The maximum length of a tag key is 64 characters and the maximum length of a tag value is 128 characters. Each instance can have a maximum of 10 tags. Tag keys must be unique for each tag added to an instance. If tags with duplicate tag keys are added to an instance, the last tag added takes precedence.
 
 | Parameter | Type | Required | Description |
@@ -3292,13 +3662,19 @@ Adds existing or newly created tags to instances. Each tag consists of a tag key
 | DBInstanceId | String | Yes | The ID of the instance to which a tag is to be added. You can specify up to 30 instance IDs in a single request. Separate multiple IDs with commas (,) Format: instance1,instance2,instance3. |
 | Tags | Json String | Yes | The tag to be added. Each tag consists of a tag key and a tag value. You can specify up to five tag pairs in a single request. The tag key is required, and the tag value is optional. Format example: {"key1":"value1","key2":""}. |
 
+**Response parameters**
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
 #### 1.12.2 DescribeTags
 
+**Description**
+
 Queries the tags that are added to a PolarDB instance within an account. If an instance ID is specified, all tags added to the instance are returned, regardless of other filter criteria. If only a tag key is specified, all matching tags are returned. If both a tag key and a tag value are specified, only tags that match both criteria are returned.
+
+**Request parameters**
 
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
@@ -3308,6 +3684,8 @@ Queries the tags that are added to a PolarDB instance within an account. If an i
 |---|---|---|---|
 | DBInstanc eId | String | No | The instance ID. If this parameter is specified, all the other filter criteria are ignored. |
 | Tags | Json String | No | The tag to be queried. Each tag consists of a tag key and a tag value. The tag key is required, and the tag value is optional. Format: {"key1":"value1"}. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3330,7 +3708,11 @@ DBInstanceId
 
 #### 1.12.3 RemoveTagsFromResource
 
+**Description**
+
 You can call this operation to remove tags from an instance. This operation must meet the following requirements: A maximum of 10 tags can be removed in a single request. If a tag is removed from all instances to which the tag is added, the tag is automatically deleted. If the TagKey of a key is provided without a TagValue, all tags matching the TagKey are removed.
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3338,6 +3720,8 @@ You can call this operation to remove tags from an instance. This operation must
 | RegionId | String | Yes | The region ID. |
 | DBInstanceI d | String | Yes | The instance ID. |
 | Tags | Json String | Yes | The tag pair to be removed. This parameter must include a TagKey, but does not need to include a corresponding TagValue. The tag key is required, and the tag value is optional. Format: {"key1":"value1"}. |
+
+**Response parameters**
 
 | Parameter | Type | Description |
 |---|---|---|

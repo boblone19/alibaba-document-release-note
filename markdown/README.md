@@ -1,6 +1,6 @@
 # 阿里专有云 Apsara Stack · Markdown 文档索引
 
-共 **1248 份纯文本 Markdown**（无插图；部首字形/页脚/正文空格均已归一）。生成：2026-10-21 17:17 CST。
+共 **1248 份纯文本 Markdown**（无插图；部首字形/页脚/正文空格均已归一）。生成：2026-10-27 10:17 CST。
 
 | 语言 | 版本 | 份数 |
 |---|---|---|
@@ -1005,7 +1005,7 @@
 | 中文 | 网络服务 | 专有云DNS | 运维指南 | 20 | 20260729 | [11_运维指南_enterprise-operation-guide](markdown/01_专有云企业版_v3.18.6_20260730/网络服务/apsara_stack_dns 专有云DNS/11_运维指南_enterprise-operation-guide.md) |
 | 中文 | 交付服务 | 专有云部署服务 | 部署指南 | 569 | 20260729 | [01_部署指南_same.md](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/01_部署指南_same.md) |
 | 中文 | 交付服务 | 专有云部署服务 | JOK版本说明书 | 5 | 20260729 | [02_JOK版本说明书_jok-version-instructio](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/02_JOK版本说明书_jok-version-instruction.md) |
-| 中文 | 交付服务 | 专有云部署服务 | JOK部署指南 | 12 | 20260729 | [03_JOK部署指南_jok-deployment-guide.md](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/03_JOK部署指南_jok-deployment-guide.md) |
+| 中文 | 交付服务 | 专有云部署服务 | JOK部署指南 | 13 | 20260729 | [03_JOK部署指南_jok-deployment-guide.md](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/03_JOK部署指南_jok-deployment-guide.md) |
 | 中文 | 交付服务 | 专有云部署服务 | JOK使用指南 | 21 | 20260729 | [04_JOK使用指南_jok-use-guide.md](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/04_JOK使用指南_jok-use-guide.md) |
 | 中文 | 交付服务 | 专有云部署服务 | ASI使用指南 | 49 | 20260729 | [05_ASI使用指南_delivery-services.md](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/05_ASI使用指南_delivery-services.md) |
 | 中文 | 交付服务 | 专有云部署服务 | ASI部署指南 | 8 | 20260729 | [06_ASI部署指南_empty-manual.md](markdown/01_专有云企业版_v3.18.6_20260730/交付服务/asdelivery 专有云部署服务/06_ASI部署指南_empty-manual.md) |
@@ -1180,7 +1180,7 @@
 | 中文 | 存储服务 | 文件存储NAS | 开发指南 | 120 | 20260729 | [07_开发指南_enterprise-developer-guide](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/nas 文件存储NAS/07_开发指南_enterprise-developer-guide.md) |
 | 中文 | 存储服务 | 文件存储NAS | 运维指南 | 34 | 20260729 | [08_运维指南_enterprise-operation-guide](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/nas 文件存储NAS/08_运维指南_enterprise-operation-guide.md) |
 | 中文 | 应用服务 | 日志服务 | 产品简介 | 12 | 20260729 | [03_产品简介_enterprise-ascm-product-in](markdown/01_专有云企业版_v3.18.6_20260730/应用服务/sls 日志服务/03_产品简介_enterprise-ascm-product-introduction.md) |
-| 中文 | 应用服务 | 日志服务 | 用户指南 | 707 | 20260813 | [06_用户指南_enterprise-ascm-user-guide](markdown/01_专有云企业版_v3.18.6_20260730/应用服务/sls 日志服务/06_用户指南_enterprise-ascm-user-guide.md) |
+| 中文 | 应用服务 | 日志服务 | 用户指南 | 706 | 20260813 | [06_用户指南_enterprise-ascm-user-guide](markdown/01_专有云企业版_v3.18.6_20260730/应用服务/sls 日志服务/06_用户指南_enterprise-ascm-user-guide.md) |
 | 中文 | 应用服务 | 日志服务 | 开发指南 | 407 | 20260813 | [07_开发指南_enterprise-ascm-developer-](markdown/01_专有云企业版_v3.18.6_20260730/应用服务/sls 日志服务/07_开发指南_enterprise-ascm-developer-guide.md) |
 | 中文 | 应用服务 | 日志服务 | 运维指南 | 23 | 20260729 | [08_运维指南_enterprise-ascm-operation-](markdown/01_专有云企业版_v3.18.6_20260730/应用服务/sls 日志服务/08_运维指南_enterprise-ascm-operation-guide.md) |
 | 中文 | 人工智能 | 智能体工厂 OpenTrek | AgentRuntime产品简介 | 13 | 20260729 | [02_AgentRuntime产品简介_agent-runtime-](markdown/01_专有云企业版_v3.18.6_20260730/人工智能/opentrek 智能体工厂 OpenTrek/02_AgentRuntime产品简介_agent-runtime-apsarastack-product-introduction.md) |
@@ -1212,7 +1212,7 @@
 | 中文 | 存储服务 | 混合云存储CDS | 产品简介 | 37 | 20260730 | [01_产品简介_product-introduction.md](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/01_产品简介_product-introduction.md) |
 | 中文 | 存储服务 | 混合云存储CDS | 用户指南 | 939 | 20260813 | [05_用户指南_test.md](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/05_用户指南_test.md) |
 | 中文 | 存储服务 | 混合云存储CDS | 开发指南 | 1675 | 20260813 | [08_开发指南_development-guide.md](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/08_开发指南_development-guide.md) |
-| 中文 | 存储服务 | 混合云存储CDS | 运维指南 | 327 | 20260730 | [09_运维指南_o-m-guide-1.md](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/09_运维指南_o-m-guide-1.md) |
+| 中文 | 存储服务 | 混合云存储CDS | 运维指南 | 328 | 20260730 | [09_运维指南_o-m-guide-1.md](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/09_运维指南_o-m-guide-1.md) |
 | 中文 | 存储服务 | 混合云存储CDS | CPFS产品简介 | 9 | 20260729 | [43_CPFS产品简介_cpfs-product-introduct](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/43_CPFS产品简介_cpfs-product-introduction.md) |
 | 中文 | 存储服务 | 混合云存储CDS | CPFS用户指南 | 13 | 20260729 | [45_CPFS用户指南_user-guide1.md](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/45_CPFS用户指南_user-guide1.md) |
 | 中文 | 存储服务 | 混合云存储CDS | CPFS开发指南 | 38 | 20260729 | [46_CPFS开发指南_cpfs-development-guide](markdown/01_专有云企业版_v3.18.6_20260730/存储服务/hcs_hgw 混合云存储CDS/46_CPFS开发指南_cpfs-development-guide.md) |

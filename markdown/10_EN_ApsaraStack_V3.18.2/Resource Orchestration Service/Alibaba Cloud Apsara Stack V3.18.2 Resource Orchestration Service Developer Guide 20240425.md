@@ -5,7 +5,7 @@ doc_version: "20240425"
 pdf_pages: 68
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Resource Orchestration Service Developer Guide 20240425.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B5%84%E6%BA%90%E7%BC%96%E6%8E%92/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Resource%20Orchestration%20Service%20Developer%20Guide%2020240425.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Resource Orchestration Service Developer Guide 20240425
@@ -175,6 +175,8 @@ HTTP/1.1 201 Created Date: Fri, 11 Sep 2015 05:28:48 GMT Content-Type: applicati
     "Name":"myStack"
 ```
 
+`}`
+
 **Sample error responses**
 
 ```
@@ -187,6 +189,8 @@ HTTP/1.1 409 Conflict Content-Type: application/json; charset=UTF-8 Content-Leng
     "Message" : "The Stack (test_link_044) already exists.",
     "Code" : "StackExists"
 ```
+
+`}`
 
 **Common errors**
 
@@ -357,7 +361,7 @@ POST http://ros.example.com/stacks HTTP/1.1 x-acs-signature-method: HMAC-SHA1 Au
   "TimeoutMins": 15
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 201 Created Date: Fri, 11 Sep 2015 05:28:48 GMT Content-Type: application/json Content-Length: 155 Connection: close Access-Control-Allow-Origin: * Access-Control-Allow-Methods: POST, GET, OPTIONS Access-Control-Allow-Headers: X-Requested-With, X-Sequence, _aop_secret, _aop_signature Access-Control-Max-Age: 172800 X-Acs-Request-Id: 14*****2-B**8-4**4-B**E-5********66C Server: Jetty(7.2.2.v20101205)
@@ -369,6 +373,8 @@ HTTP/1.1 201 Created Date: Fri, 11 Sep 2015 05:28:48 GMT Content-Type: applicati
     "Id":"b4****3c-4**4-4**7-a**5-c3********16",
     "Name":"m***ack"
 ```
+
+`}`
 
 ##### 1.1.4.2 Delete a stack
 
@@ -478,7 +484,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:29:18 GMT Content-Type: application/js
             "resources" : {}
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Template" : {
@@ -489,7 +495,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:29:18 GMT Content-Type: application/js
                     "get_attr" : ["secret1", "value"]
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
         "Resources" : {
@@ -511,7 +517,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:29:18 GMT Content-Type: application/js
                     "sequence" : "octdigits"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "securet2" : {
@@ -520,7 +526,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:29:18 GMT Content-Type: application/js
                     "length" : 10
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
         "ROSTemplateFormatVersion" : "2015-09-01"
@@ -589,6 +595,8 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:29:18 GMT Content-Type: application/js
 ```
 etadata :{}
 ```
+
+`}`
 
 ##### 1.1.4.4 Query stacks
 
@@ -684,11 +692,13 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:28:06 GMT Content-Type: application/js
       "Name" : "hope_test_Scalin****up"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "PageSize" : 2
 ```
+
+`}`
 
 ##### 1.1.4.5 Query the information about a stack
 
@@ -777,13 +787,15 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:29:18 GMT Content-Type: application/js
                     "value"
 ```
 
-`]` `],`
+`]` `}` `}` `],`
 
 ```json
     "Parameters" : {
         "ALIYUN::StackId" : "3********1-a**b-4**4-a**1-9********ea9",
         "ALIYUN::StackName" : "m****ck"
 ```
+
+`}` `}`
 
 ##### 1.1.4.6 Preview a stack
 
@@ -857,7 +869,7 @@ POST http://ros.example.com/stacks/preview HTTP/1.1 x-acs-signature-method: HMAC
   "TimeoutMins": 15
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 201 Created Date: Fri, 11 Sep 2015 05:28:48 GMT Content-Type: application/json Content-Length: 155 Connection: close Access-Control-Allow-Origin: * Access-Control-Allow-Methods: POST, GET, OPTIONS Access-Control-Allow-Headers: X-Requested-With, X-Sequence, _aop_secret, _aop_signature Access-Control-Max-Age: 172800 X-Acs-Request-Id: 1*****E2-B**8-4**4-B**E-5********66C Server: Jetty(7.2.2.v20101205)
@@ -974,11 +986,13 @@ HTTP/1.1 201 Created Date: Fri, 11 Sep 2015 05:28:48 GMT Content-Type: applicati
             "Metadata":{
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "Name":"upda**_test_0040"
 ```
+
+`}`
 
 ##### 1.1.4.7 Update a stack
 
@@ -1055,7 +1069,7 @@ PUT http://ros.example.com/stacks/myStack/28087440-3701-40ef-bbe8-6e80787d307f H
   "TimeoutMins": 15
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Date: Wed, 04 Jan 2017 08:13:24 GMT Content-Type: application/json Content-Length: 155 Connection: close Access-Control-Allow-Origin: * Access-Control-Allow-Methods: POST, GET, OPTIONS Access-Control-Allow-Headers: X-Requested-With, X-Sequence, _aop_secret, _aop_signature Access-Control-Max-Age: 172800 X-Acs-Request-Id: 1******2-B**8-4**4-B**E-5********66C Server: Jetty(7.2.2.v20101205)
@@ -1067,6 +1081,8 @@ HTTP/1.1 200 OK Date: Wed, 04 Jan 2017 08:13:24 GMT Content-Type: application/js
     "Id":"b******c-4**4-4**7-a**5-c********316",
     "Name":"myStack"
 ```
+
+`}`
 
 #### 1.1.5 Resource operations
 
@@ -1131,7 +1147,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
     "Name":"secret1"
 ```
 
-`]`
+`}` `]`
 
 ##### 1.1.5.2 Query the information about a resource
 
@@ -1194,6 +1210,8 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
     "Name":"secret1"
 ```
 
+`}`
+
 ##### 1.1.5.3 Query resource types
 
 You can call this operation to query supported resource types.
@@ -1249,7 +1267,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
     "ALIYUN::ECS::SecurityGroupEgress"
 ```
 
-`]`
+`]` `}`
 
 ##### 1.1.5.4 Query the information about a resource type
 
@@ -1302,7 +1320,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
       "description" : "The id of load balance generated"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "SupportStatus" : {
@@ -1359,7 +1377,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
             "intranet"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
       "description" : "The type of address.",
@@ -1384,7 +1402,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
             "min" : 1
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
       "description" : "The bandwidth in Mbps of network.",
@@ -1536,7 +1554,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
       "Description" : "The display name of load balance."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs" : {
@@ -1545,7 +1563,7 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
       "Description" : "The id of load balance generated"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources" : {
@@ -1590,6 +1608,8 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
         "LoadBalancerName" : {
           "Ref" : "LoadBalancerName"
 ```
+
+`}` `}` `}` `}`
 
 #### 1.1.6 Template operations
 
@@ -1642,7 +1662,7 @@ GET http://ros.example.com/validate HTTP/1.1 x-acs-signature-method: HMAC-SHA1 A
     "ROSTemplateFormatVersion" : "2015-09-01"
 ```
 
-Sample responses
+`}` `}` Sample responses
 
 ```
 HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/json; charset=UTF-8 Content-Length: 1694 Connection: close Vary: Accept-Encoding Access-Control-Allow-Origin: * Access-Control-Allow-Methods: POST, GET, OPTIONS Access-Control-Allow-Headers: X-Requested-With, X-Sequence, _aop_secret, _aop_signature Access-Control-Max-Age: 172800 X-Acs-Request-Id: A******2-C**7-4**0-9**2-D********385 Server: Jetty(7.2.2.v20101205)
@@ -1659,6 +1679,8 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
 ```json
   "Description" : "No description"
 ```
+
+`}`
 
 ##### 1.1.6.2 Query the information about a template
 
@@ -1724,11 +1746,13 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:30:12 GMT Content-Type: application/js
       "DependsOn" : "str2"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Description" : "Simple template to deploy a single compute instance"
 ```
+
+`}`
 
 #### 1.1.7 Other operations
 
@@ -1821,13 +1845,13 @@ HTTP/1.1 200 OK Date: Fri, 11 Sep 2015 05:31:53 GMT Content-Type: application/js
       "ResourcePhysicalId" : "2******f-c**1-4**7-8**9-5********cc4"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "PageSize" : 2
 ```
 
-ck SDK by ASAPI
+`}` ck SDK by ASAPI
 
 ## 2 Use Apsara Stack SDK by ASAPI
 
@@ -1995,6 +2019,8 @@ public void callAsapiServerThroughAscm(){
     System.out.println(result);
 ```
 
+`}`
+
 **Header parameters**
 
 | Parameter | Description |
@@ -2122,3 +2148,5 @@ public void DescribeMetricLastTest(){
     String strResult = asClient.doPost("{asApi endpoint}", params);
     logger.info(strResult);
 ```
+
+`}`

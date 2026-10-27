@@ -5,7 +5,7 @@ doc_version: "20231124"
 pdf_pages: 84
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 IPv6 Gateway Developer Guide 20231124.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/IPV6/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20IPv6%20Gateway%20Developer%20Guide%2020231124.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 IPv6 Gateway Developer Guide 20231124
@@ -281,6 +281,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -297,6 +302,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. You can use STS to make API calls. The following sample code demonstrates how to call
 ECS API operations.
 
@@ -306,6 +312,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("asapi_test");
   // Call ECS API operations.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -320,7 +331,7 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
 
-e API calls
+`}` e API calls
 
 ## 3 Use POP to make API calls
 
@@ -424,7 +435,7 @@ e API calls
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -488,7 +499,7 @@ he x-acs-security-token parameter to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-e API calls
+`}` `}` `}` e API calls
 
 > **Important:** If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
@@ -543,10 +554,15 @@ ecurityToken parameter to the header.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. The following sample code shows how to call API operations: e API calls
+`}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. The following sample code shows how to call API operations: e API calls
 
 ```java
 package main import (
@@ -585,8 +601,15 @@ acs-security-token parameter to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Configure proxies**
 
@@ -607,7 +630,7 @@ nt variable.
 nment variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -674,6 +697,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. For the modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2014-05-26")
     request.set_action_name("DescribeInstances")
@@ -1046,7 +1074,13 @@ ake API calls The following sample code shows how to use Apsara Stack SDK for No
 ecurityToken parameter to the header.
     // "SecurityToken": "<your-securitytoken>",
       "<The name of the operation-specific parameter required by the API operation>": "
-<The value of the operation-specific parameter>" // 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the xacs-security-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
+<The value of the operation-specific parameter>"
+```
+
+`}`
+
+```
+// 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the xacs-security-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
   const res = await AsapiClient.doRequest(cnofig.API_GATEWAY, params, {
     method: 'POST', // The request method.
     formatParams: false, // Specifies whether to format parameters and capitalize the f
@@ -1124,9 +1158,16 @@ acsClient.getAcsResponse(request);
             for (DescribeImagesResponse.Image image: images) {
                 System.out.println(image.getImageId());
                 System.out.println(image.getImageName());
+```
+
+`}`
+
+```
         } catch (Exception e) {
             e.printStackTrace();
 ```
+
+`}`
 
 **Header parameters**
 
@@ -1286,6 +1327,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 "%20").replace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 2. Predefine the time format for the `Timestamp` parameter. Specify the `Timestamp`
 parameter in the ISO 8601 format. The time must be in UTC+0.
 
@@ -1296,6 +1338,7 @@ private static final String ISO8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"; pr
     return df.format(date);
 ```
 
+`}`
 3. Create a request string.
 ake API calls
 
@@ -1305,6 +1348,11 @@ final String HTTP_METHOD = "GET"; Map parameters = new HashMap(); // Specify req
     canonicalizedQueryString.append("&")
     .append(percentEncode(key)).append("=")
     .append(percentEncode(parameters.get(key)));
+```
+
+`}`
+
+```
 //Encode the canonicalized query string. stringToSign.append(percentEncode( canonicalizedQueryString.toString().substring(1)));
 ```
 
@@ -1371,13 +1419,15 @@ If a request is successful, the request ID and operation-specific parameter valu
       "cuserId":"aliyuntest"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "requestId":"xxxxxxxxxxxxxx",
   "success":true,
   "message":"success"
 ```
+
+`}`
 
 **Sample error responses**
 
@@ -1392,6 +1442,8 @@ If a request fails, the following information is returned. For more information,
     "asapiErrorMessage": "Failed to ....", // The error message provided by ASAPI.
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by ASAPI.
 ```
+
+`}`
 
 ## 5 API references
 
@@ -1597,6 +1649,8 @@ JSON format `{`
       /*Returned data*/
 ```
 
+`}`
+
 ### 5.5 IPv6 gateways
 
 #### 5.5.1 CreateIpv6Gateway
@@ -1645,6 +1699,8 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
     "Ipv6GatewayId": "ipv6gw-hp3y0l3ln89j8cdvf****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1780,13 +1836,15 @@ Sample success responses `XML` format
                 "Ipv6GatewayId": "ipv6gw-hp33p10bdbt77xxxxxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "TotalCount": 2,
     "PageSize": 10,
     "RequestId": "E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
 ```
+
+`}`
 
 #### 5.5.3 DescribeIpv6GatewayAttribute
 
@@ -1865,6 +1923,8 @@ Sample success responses `XML` format
     "Spec": "Small"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1915,6 +1975,8 @@ Sample success responses `XML` format
  "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1964,6 +2026,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2097,6 +2161,8 @@ Sample success responses `XML` format
         "Name": "rulename"
 ```
 
+`}` `}`
+
 #### 5.5.8 CreateIpv6EgressOnlyRule
 
 Creates an egress-only rule for an IPv6 address.
@@ -2148,6 +2214,8 @@ Sample success responses `XML` format
     "Ipv6EgressRuleId": "ipv6py-hp3w98rmlbqp01245****",
     "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2250,6 +2318,8 @@ Sample success responses `XML` format
     "Ipv6AddressId": "ipv6-123456****"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -2300,6 +2370,8 @@ Sample success responses `XML` format
  "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -2346,6 +2418,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "E07E0FE6-5C21-405F-AF82-7613AA81EF92"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2479,6 +2553,8 @@ Sample success responses `XML` format
             "InternetChargeType": "PayByTraffic"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -2529,6 +2605,8 @@ Sample success response `XML` format
 ```json
  "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
+
+`}`
 
 **Error code**
 

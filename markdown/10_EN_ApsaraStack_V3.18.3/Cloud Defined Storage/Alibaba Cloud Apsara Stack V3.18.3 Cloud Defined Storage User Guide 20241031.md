@@ -5,7 +5,7 @@ doc_version: "20241031"
 pdf_pages: 832
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Defined Storage User Guide 20241031.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Defined%20Storage%20User%20Guide%2020241031.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Defined Storage User Guide 20241031
@@ -4476,7 +4476,11 @@ You need to select the region in which the primary disk in the replicate pair is
 5. Find the replication pair to which the faulty primary disk belongs, move the pointer over the
 icon in the **Actions** column, and then click **Failover**.
 6. In the **Failover** dialog box, read the notes and click **OK**.
-Asynchronous replication is suspended during a failover. To prevent data loss, we recommend that you use the failover sub-feature only when your primary disk fails. After the failover sub-feature is enabled, the state of the replication pair changes to **Failover Completed**. To continue your business, you can attach the secondary disk to a temporary ECS instance and fail over to the secondary disk. Before you cancel a failover, make sure that the primary disk is available. Otherwise, the failover may fail to be canceled. In addition, after the failover is canceled, the replication pair is stopped. You must manually activate the replication pair.
+Asynchronous replication is suspended during a failover. To prevent data loss, we recommend that you use the failover sub-feature only when your primary disk fails. After the failover sub-feature is enabled, the state of the replication pair changes to **Failover Completed**. To continue your business, you can attach the secondary disk to a temporary ECS instance and fail over to the secondary disk.
+
+**Note**
+
+Before you cancel a failover, make sure that the primary disk is available. Otherwise, the failover may fail to be canceled. In addition, after the failover is canceled, the replication pair is stopped. You must manually activate the replication pair.
 
 > After the failover is complete, move the pointer over the
 > icon, click **Cancel Failover**, and then click **OK**.
@@ -5995,6 +5999,8 @@ Run Windows PowerShell or Command Prompt as an administrator. Go to the `logtail
 ```
 ./logtail_installer.exe. install ${region}
 ```
+
+**Note**
 
 You must replace ${region} in the command with the actual endpoint. For more information about endpoints, see View the endpoint of a project.
 
@@ -11735,6 +11741,8 @@ logging.config.dictConfig(conf)
 # Use the logger
 logger = logging.getLogger('sls') logger.info("Hello world")
 ```
+
+**Note**
 
 If you want to instantiate an object of the `aliyun.log.QueuedLogHandler` class, pass named parameters to the constructor. For more information, see aliyun.log.QueuedLogHandler.
 
@@ -17910,6 +17918,9 @@ Log Service allows you to render query and analysis results into visualized char
 
 Indexes are configured and the analysis feature is enabled. To enable the analysis feature, turn on **Enable Analytics** for the fields in the **Search &**
 **Analysis** panel. For more information, see Configure indexes.
+
+**Note**
+
 Before you configure charts, we recommend that you are familiar with the log analysis feature. For more information, see Log analysis overview.
 
 > You must specify an analytic statement in a query statement. Log Service cannot display charts based on query results.
@@ -29241,7 +29252,11 @@ str: iZbp1a65x3r1vhpe94fi2qZ regex_split: ["iZbp", "a", "x", "r", "vhpe", "fi", 
 
 ###### 4.5.8.7.9 Grok function
 
-This topic describes the syntax and parameters of the Grok function. This topic also provides examples on how to use the function. Regular expression functions are complicated. We recommend that you use the Grok function instead of regular expression functions. For more information, see Regular expression functions. You can use the Grok function together with regular expression functions. Examples:
+This topic describes the syntax and parameters of the Grok function. This topic also provides examples on how to use the function.
+
+**Description**
+
+Regular expression functions are complicated. We recommend that you use the Grok function instead of regular expression functions. For more information, see Regular expression functions. You can use the Grok function together with regular expression functions. Examples:
 
 ```
 e_match("content", grok(r"\w+: (%{IP})")) # The Grok pattern matches the abc: 192.0.2.0 or xyz: 192.0.2.2 pattern of a log. e_match("content", grok(r"\w+: (%{IP})", escape=True)) # The Grok pattern does not match the abc: 192.0.2.0 pattern of log data but matches th e \w+: 192.0.2.0 pattern of log data.

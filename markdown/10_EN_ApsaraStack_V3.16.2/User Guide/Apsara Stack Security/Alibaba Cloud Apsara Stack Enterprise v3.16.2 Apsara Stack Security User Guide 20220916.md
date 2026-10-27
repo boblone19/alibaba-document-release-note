@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 321
 source_pdf: "c0c84e8a2872a180_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security User Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Apsara%20Stack%20Security%20User%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security User Guide
@@ -348,14 +348,14 @@ If you do not have an account that assumes the required role, contact the admini
 
 ### 3.2 Log on to Apsara Stack Security Center
 
-Center This topic describes how to log on to Apsara Stack Security Center. Prerequisites q Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+Center This topic describes how to log on to Apsara Stack Security Center. Prerequisites q Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click Log On.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
-in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
+in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Securit y > Alibaba Cloud Securit y.
 6. On the Apsara St ack Securit y Cent er page, select a value for Region.
 7. Click Access wit h Aut horized Role to access Apsara Stack Security Center.
@@ -371,7 +371,7 @@ This topic introduces the basic concepts related to Threat Detection Service (TD
 
 #### 4.2.1 View security overview information
 
-This topic describes how to view security statistics, attack trends, and network traffic information on the Apsara Stack platform. Context The Securit y Overview tab provides an overview of detected security events, the latest threats, and inherent vulnerabilities of the system. A security administrator can view information on the Securit y Overview tab to better understand the security posture of the system.
+This topic describes how to view security statistics, attack trends, and network traffic information on the Apsara Stack platform. Context The Securit y Overview tab provides an overview of detected security events, the latest threats, and inherent vulnerabilities of the system. A security administrator can view information on the Securit y Overview tab to better understand the security posture of the system. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -398,7 +398,7 @@ This topic describes how to view security alerts on the Security Alerts page. e
 Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Securit y Alert s.
 4. (Optional)Specify filter conditions to search for security alerts.
-If you want to view all alerts, do not specify the conditions.
+Not e If you want to view all alerts, do not specify the conditions.
 
 | Filter condition | Description |
 |---|---|
@@ -412,7 +412,7 @@ If you want to view all alerts, do not specify the conditions.
 
 #### 4.3.2 Manage quarantined files
 
-This topic describes how to manage threat files that are quarantined by the system. The system deletes a quarantined file 30 days after the file is quarantined. You can restore the file before it is deleted.
+This topic describes how to manage threat files that are quarantined by the system. The system deletes a quarantined file 30 days after the file is quarantined. You can restore the file before it is deleted. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -425,17 +425,17 @@ Not ice Before you restore a quarantined file, make sure that the file is normal
 
 #### 4.3.3 Configure security alerts
 
-This topic describes how to configure security alerts, which allow you to specify approved logon locations and web directories to scan.
+This topic describes how to configure security alerts, which allow you to specify approved logon locations and web directories to scan. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Securit y Alert s.
 4. In the upper-right corner of the Alert s page, click Set t ings.
-In the Set t ings panel, you can perform the following operations: Add an approved logon locat ion a. Click Management to the right of Login Locat ion. e b. In the Management - Login Locat ion panel, select the logon location that you want to add and select the servers that allow logons from the added location. c. Click Ok. Threat Detection Service (TDS) allows you to edit and delet e added logon locations. Find the required logon location and click Edit on the right to change the servers that allow logons from this location. Find the required logon location and click Delet e on the right to delete the logon location. Conf igure advanced logon set t ings When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After you configure these settings, alerts are triggered if your assets receive logon requests that do not meet the requirements. The procedure to configure advanced logon settings is similar to that to configure approved logon locat ions. You can follow the preceding procedure to add, edit , or delet e advanced logon settings. e On the right of Common Login IPs, turn on or off Uncommon IP Alert. After the switch is turned on, alerts are triggered if your assets receive logon requests from unapproved IP addresses. On the right of Common Login T ime, turn on or off Uncommon Time Alert. After the switch is turned on, alerts are triggered if your assets receive logon requests at unapproved time. On the right of Common Login Account s, turn on or off Uncommon Account Alert. After the switch is turned on, alerts are triggered if your assets receive logon requests from unapproved accounts. Add a web direct ory t o scan e Apsara Stack Security automatically scans web directories of your servers and runs dynamic and static scan tasks. You can also manually add other web directories of your servers. a. On the right of Add Scan T arget s, click Management . b. Enter a valid web directory and select the servers on which the directory is scanned. The web directory is added to the scan list. Root directories are not allowed. This ensures performance and efficiency. c. Click Ok.
+In the Set t ings panel, you can perform the following operations: Add an approved logon locat ion a. Click Management to the right of Login Locat ion. e b. In the Management - Login Locat ion panel, select the logon location that you want to add and select the servers that allow logons from the added location. c. Click Ok. Threat Detection Service (TDS) allows you to edit and delet e added logon locations. Find the required logon location and click Edit on the right to change the servers that allow logons from this location. Find the required logon location and click Delet e on the right to delete the logon location. Conf igure advanced logon set t ings Not e When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After you configure these settings, alerts are triggered if your assets receive logon requests that do not meet the requirements. The procedure to configure advanced logon settings is similar to that to configure approved logon locat ions. You can follow the preceding procedure to add, edit , or delet e advanced logon settings. e On the right of Common Login IPs, turn on or off Uncommon IP Alert. After the switch is turned on, alerts are triggered if your assets receive logon requests from unapproved IP addresses. On the right of Common Login T ime, turn on or off Uncommon Time Alert. After the switch is turned on, alerts are triggered if your assets receive logon requests at unapproved time. On the right of Common Login Account s, turn on or off Uncommon Account Alert. After the switch is turned on, alerts are triggered if your assets receive logon requests from unapproved accounts. Add a web direct ory t o scan e Apsara Stack Security automatically scans web directories of your servers and runs dynamic and static scan tasks. You can also manually add other web directories of your servers. a. On the right of Add Scan T arget s, click Management . b. Enter a valid web directory and select the servers on which the directory is scanned. The web directory is added to the scan list. Not e Root directories are not allowed. This ensures performance and efficiency. c. Click Ok.
 
 ### 4.4 Attack analysis
 
-This topic describes the statistics provided by the attack analysis feature. The statistics include the total number of attacks, distribution of attack types, top five attack sources, top five attacked assets, and an attack list. Background information The attack analysis feature provides basic attack detection and prevention capabilities in Apsara Stack Security Center. We recommend that you optimize firewalls and enhance business security to develop a more fine-grained and in-depth defense system. On the At t ack Awareness page, you can specify a time range to view these attack details. You can view the attack analysis statistics of the current day, last 7 days, or last 15 days. You can also set Time Range to Cust om to view the statistics of a time range within the last 30 days. At t acks: the total number of attacks detected in your assets within a specified time range. At t ack T ype Dist ribut ion: the attack types and the number of attacks for each type. T op 5 At t ack Sources: the top five IP addresses from which the most attacks are launched. T op 5 At t ack Asset s: the top five assets that are attacked the most frequently. At t ack list : the details about each attack. The details include the attack time, source IP address, attacked asset, attack type, and total number of attacks. The attack list displays a maximum of 10,000 attacks. You can specify T ime Range to view details about the attacks that occur over the specified time range. Paramet ers in t he at t ack list e
+This topic describes the statistics provided by the attack analysis feature. The statistics include the total number of attacks, distribution of attack types, top five attack sources, top five attacked assets, and an attack list. Background information The attack analysis feature provides basic attack detection and prevention capabilities in Apsara Stack Security Center. We recommend that you optimize firewalls and enhance business security to develop a more fine-grained and in-depth defense system. On the At t ack Awareness page, you can specify a time range to view these attack details. You can view the attack analysis statistics of the current day, last 7 days, or last 15 days. You can also set Time Range to Cust om to view the statistics of a time range within the last 30 days. At t acks: the total number of attacks detected in your assets within a specified time range. At t ack T ype Dist ribut ion: the attack types and the number of attacks for each type. T op 5 At t ack Sources: the top five IP addresses from which the most attacks are launched. T op 5 At t ack Asset s: the top five assets that are attacked the most frequently. At t ack list : the details about each attack. The details include the attack time, source IP address, attacked asset, attack type, and total number of attacks. Not e The attack list displays a maximum of 10,000 attacks. You can specify T ime Range to view details about the attacks that occur over the specified time range. Paramet ers in t he at t ack list e
 
 | Parameter | Description |
 |---|---|
@@ -506,7 +506,7 @@ Threat Detection Service (TDS) provides the cloud service check feature. This fe
 Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Cloud Service Check.
 4. On the Cloud Service Check page, click Check Now to check whether the configurations of all
-your cloud services contain risks and the number of affected assets. Do not perform other operations until the check is complete. After the check is complete, the detected risks are listed based on risk severities in descending order. Automatic checks
+your cloud services contain risks and the number of affected assets. Not e Do not perform other operations until the check is complete. After the check is complete, the detected risks are listed based on risk severities in descending order. Automatic checks
 1. Log on to Apsara Stack Security Center.
 e
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
@@ -533,24 +533,24 @@ e View t he st at ist ics of t he last check You can view the total number of at
 Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Cloud Service Check.
 4. On the Cloud Service Check page, handle the configuration risks detected on your cloud services.
-Verif y t he conf igurat ions af t er modif icat ion e If you have modified the configurations for which risks are detected, find the check item in the check item list and click Verif y in the Actions column to check whether the new configurations are at risk. Add check it ems t o a whit elist If you trust a check item for which risks are detected, find the check item in the check item list and click Whit elist in the Actions column to add the check item to a whitelist. Then, the state of the check item is displayed as Ignored in the Severity/Affected Assets column. Ignored check items are not counted in the total number of at-risk items in the At -Risk It ems section. In the check item list, you can click Remove to remove the ignored check items from the whitelist. Af t er you add a check it em t o t he whit elist , t he risk t hat is det ect ed f or t he check it em is ignored only f or t his t ime. If t he risk is det ect ed again, Apsara St ack Securit y st ill displays t he check result of t his check it em.
+Verif y t he conf igurat ions af t er modif icat ion e If you have modified the configurations for which risks are detected, find the check item in the check item list and click Verif y in the Actions column to check whether the new configurations are at risk. Add check it ems t o a whit elist If you trust a check item for which risks are detected, find the check item in the check item list and click Whit elist in the Actions column to add the check item to a whitelist. Then, the state of the check item is displayed as Ignored in the Severity/Affected Assets column. Ignored check items are not counted in the total number of at-risk items in the At -Risk It ems section. In the check item list, you can click Remove to remove the ignored check items from the whitelist. Not e Af t er you add a check it em t o t he whit elist , t he risk t hat is det ect ed f or t he check it em is ignored only f or t his t ime. If t he risk is det ect ed again, Apsara St ack Securit y st ill displays t he check result of t his check it em.
 
 ### 4.6 Assets
 
 #### 4.6.1 View the security status of a server
 
-The Assets page displays security information about each protected server. The information includes the virtual private could (VPC) where each server resides, server status, and risk status. This topic describes how to search for specific servers and view the security status of these servers. This topic also describes how to specify search conditions and select the items that you want to display on the Assets page.
+The Assets page displays security information about each protected server. The information includes the virtual private could (VPC) where each server resides, server status, and risk status. This topic describes how to search for specific servers and view the security status of these servers. This topic also describes how to specify search conditions and select the items that you want to display on the Assets page. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Asset s.
 e
 4. On the Server(s) tab of the Assets page, view the security status of each server.
-You can perform the following operations: Filt er servers by st at us In All Servers, you can view the numbers of all servers, risky servers, unprotected servers, new servers, and servers that are shut down. To view the security information about a server, you must click the name of the server or click Fix in the Act ions column. For more information, see View the details of a single asset. You can click Risk Servers, Unprot ect ed Servers, Shut down Server(s), or New Server(s) to view security information about specific servers. Filt er servers by group You can click Server Group to view the numbers of all servers, servers that are at risk, and unprotected servers in each server group. You can also view the total number of server groups. To manage server groups, you can click Manage or Delet e in the Actions column. For more information, see Manage asset groups. You can find a server group and click the number in the Servers, Risk, or Unprot ect ed column to view the security information about specific servers in this group. Filt er servers by VPC ID e You can click VPC to view the numbers of all servers, servers that are at risk, and unprotected servers in each VPC. You can also view the total number of VPCs. You can find a VPC and click the number in the Servers, Risk, or Unprot ect ed column to view the security information about specific servers in this VPC. Filt er servers by t ag In the navigation tree, you can click a tag to view the security information about servers to which the tag is added. Filt er servers by condit ion If you click All Servers, Server Group, VPC, or a tag in the navigation tree, you can specify filter conditions above the right-side list to search for specific servers. Use one filter condition to search for specific servers: You can select a filter condition and select or enter keywords to search for specific servers. The filter conditions include Int ernet IP, Privat e IP, Inst ance name, Syst em, Baseline problems, Vul problems, Alert problems, Risk St at us, Online or Of f line, T ag, Group name, OS, and Is t here a snapshot risk. You can specify multiple filter conditions at a time and specify a Boolean operator for the conditions. The following list describes the Boolean operators: Boolean operators: AND: specifies the AND logical relation for the conditions. OR: specifies the OR logical relation for the conditions. If you want to search for servers that meet at least one of the filter conditions, you must set the Boolean operator to OR. If a filter condition requires you to enter a keyword, you must enter the keyword and click the Search icon. Results are displayed only after you click the Search icon. Use multiple filter conditions to search for specific servers: If you select multiple filter conditions, they are all applied to search for specific servers. You can also click Server Group, VPC, or a tag, and use the search box above the asset list to search for specific servers. Save f requent ly used f ilt er condit ions e You can save the filter conditions that are applied as frequently used search conditions. To save the conditions, click Save above the right-side list, and enter a name in the Save condit ion dialog box. Then, you can select the saved conditions from the Frequent ly used search condit ions drop-down list on the right of the Search icon. Cust omize displayed it ems On the Asset s page, you can click the icon in the upper-right corner. Then, you can select the items that you want to display on the Assets page.
+You can perform the following operations: Filt er servers by st at us In All Servers, you can view the numbers of all servers, risky servers, unprotected servers, new servers, and servers that are shut down. To view the security information about a server, you must click the name of the server or click Fix in the Act ions column. For more information, see View the details of a single asset. You can click Risk Servers, Unprot ect ed Servers, Shut down Server(s), or New Server(s) to view security information about specific servers. Filt er servers by group You can click Server Group to view the numbers of all servers, servers that are at risk, and unprotected servers in each server group. You can also view the total number of server groups. To manage server groups, you can click Manage or Delet e in the Actions column. For more information, see Manage asset groups. You can find a server group and click the number in the Servers, Risk, or Unprot ect ed column to view the security information about specific servers in this group. Filt er servers by VPC ID e You can click VPC to view the numbers of all servers, servers that are at risk, and unprotected servers in each VPC. You can also view the total number of VPCs. You can find a VPC and click the number in the Servers, Risk, or Unprot ect ed column to view the security information about specific servers in this VPC. Filt er servers by t ag In the navigation tree, you can click a tag to view the security information about servers to which the tag is added. Filt er servers by condit ion If you click All Servers, Server Group, VPC, or a tag in the navigation tree, you can specify filter conditions above the right-side list to search for specific servers. Use one filter condition to search for specific servers: You can select a filter condition and select or enter keywords to search for specific servers. The filter conditions include Int ernet IP, Privat e IP, Inst ance name, Syst em, Baseline problems, Vul problems, Alert problems, Risk St at us, Online or Of f line, T ag, Group name, OS, and Is t here a snapshot risk. Not e You can specify multiple filter conditions at a time and specify a Boolean operator for the conditions. The following list describes the Boolean operators: Boolean operators: AND: specifies the AND logical relation for the conditions. OR: specifies the OR logical relation for the conditions. If you want to search for servers that meet at least one of the filter conditions, you must set the Boolean operator to OR. If a filter condition requires you to enter a keyword, you must enter the keyword and click the Search icon. Results are displayed only after you click the Search icon. Use multiple filter conditions to search for specific servers: If you select multiple filter conditions, they are all applied to search for specific servers. You can also click Server Group, VPC, or a tag, and use the search box above the asset list to search for specific servers. Save f requent ly used f ilt er condit ions e You can save the filter conditions that are applied as frequently used search conditions. To save the conditions, click Save above the right-side list, and enter a name in the Save condit ion dialog box. Then, you can select the saved conditions from the Frequent ly used search condit ions drop-down list on the right of the Search icon. Cust omize displayed it ems On the Asset s page, you can click the icon in the upper-right corner. Then, you can select the items that you want to display on the Assets page.
 
 #### 4.6.2 View the security status of cloud services
 
-The Assets page displays the security information about each protected cloud service. The information includes the at-risk services and the types of services such as Server Load Balancer (SLB) and NAT Gateway. This topic describes how to configure search conditions to view the security status of cloud services.
+The Assets page displays the security information about each protected cloud service. The information includes the at-risk services and the types of services such as Server Load Balancer (SLB) and NAT Gateway. This topic describes how to configure search conditions to view the security status of cloud services. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -574,6 +574,7 @@ The Assets page provides details about all assets. These details include basic i
 | Baseline Risks | Displays the results of a baseline check on an asset. | √ | X |
 | Asset Fingerprints | Displays the details of asset fingerprints for an asset. | √ | X |
 
+Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -585,7 +586,7 @@ e On the asset details page, click the Basic Inf ormat ion, Vulnerabilit ies, Al
 
 #### 4.6.4 Enable and disable server protection
 
-This topic describes how to enable and disable server protection.
+This topic describes how to enable and disable server protection. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -594,11 +595,11 @@ Management section, click T hreat Det ect ion.
 servers. Enable server prot ect ion Select one or more servers where the agent is in the Close state, and choose More Operat ions
 > T urn on prot ect ion.
 
-After server protection is enabled, the status in the Agent column changes to Enable. Disable server prot ect ion If you confirm that a server does not require protection from Apsara Stack Security, you can disable protection for the server. Select one or more servers where the agent is in the Enable state, and choose More Operat ions > Suspend Prot ect ion. After server protection is disabled, Apsara Stack Security stops protecting your servers. For example, Apsara Stack Security no longer detects vulnerabilities or generates alerts for detected risks. We recommend that you proceed with caution. After server protection is disabled, the status of the agent on your servers changes to Close.
+After server protection is enabled, the status in the Agent column changes to Enable. Disable server prot ect ion If you confirm that a server does not require protection from Apsara Stack Security, you can disable protection for the server. Select one or more servers where the agent is in the Enable state, and choose More Operat ions > Suspend Prot ect ion. Not e After server protection is disabled, Apsara Stack Security stops protecting your servers. For example, Apsara Stack Security no longer detects vulnerabilities or generates alerts for detected risks. We recommend that you proceed with caution. After server protection is disabled, the status of the agent on your servers changes to Close.
 
 #### 4.6.5 Perform a quick security check
 
-e The Server(s) tab of the Assets page allows you to run security checks. You can dispatch security check tasks to scan for vulnerabilities, baseline risks, or webshells, and collect asset fingerprints on a specific server. The asset fingerprints are ports, software, processes, and accounts. This topic describes how to perform a security check on servers.
+e The Server(s) tab of the Assets page allows you to run security checks. You can dispatch security check tasks to scan for vulnerabilities, baseline risks, or webshells, and collect asset fingerprints on a specific server. The asset fingerprints are ports, software, processes, and accounts. This topic describes how to perform a security check on servers. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -618,7 +619,7 @@ This topic describes how to create, modify, delete, and replace server groups. C
 Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Asset s.
 4. On the Server(s) tab of the page that appears, click Server Group in the navigation tree.
-By default, the assets that are not grouped are in the Def ault group.
+Not e By default, the assets that are not grouped are in the Def ault group.
 5. Click Add Group.
 6. In the Add Group dialog box, configure parameters for the new group.
 To configure the parameters, perform the following steps: e i. Enter a name for the new group in the Group name field. ii. Add servers to the new group. You can add servers in the Default group to the new group. You can also move servers from another group to the new group. To add or move servers, select Def ault or other groups in the Asset Group section, and select or clear the check boxes that correspond to the required servers in the asset list in the right area of the section.
@@ -630,7 +631,7 @@ Management section, click T hreat Det ect ion.
 3. In the left-side navigation pane, click Asset s.
 4. On the Server(s) tab of the page that appears, click Server Group in the navigation tree.
 5. Find the server group that you want to modify or delete. In the Actions column, click Manage or
-Delet e. You can perform the following operations based on your business requirements: e Modif y t he group a. In the Actions column, click Manage. The Group dialog box appears. b. In the Group dialog box, select the group in the Asset Group section. c. In the right area of the section, clear the check boxes that correspond to the required servers in the asset list. d. Click OK. The server group is modified. Delet e t he group In the Actions column, click Delet e. In the message that appears, click OK. After you delete a group, servers in this group are moved to the Def ault group. Replace a server group You can add servers to a server group to manage multiple servers at a time. We recommend that you add the same types of servers to a server group. For example, if you configure a baseline check template, you can specify a server group and apply the template to all servers in the group. You can also filter and view servers based on server groups. To add servers to a specific server group, perform the following steps:
+Delet e. You can perform the following operations based on your business requirements: e Modif y t he group a. In the Actions column, click Manage. The Group dialog box appears. b. In the Group dialog box, select the group in the Asset Group section. c. In the right area of the section, clear the check boxes that correspond to the required servers in the asset list. d. Click OK. The server group is modified. Delet e t he group In the Actions column, click Delet e. In the message that appears, click OK. Not e After you delete a group, servers in this group are moved to the Def ault group. Replace a server group You can add servers to a server group to manage multiple servers at a time. We recommend that you add the same types of servers to a server group. For example, if you configure a baseline check template, you can specify a server group and apply the template to all servers in the group. You can also filter and view servers based on server groups. To add servers to a specific server group, perform the following steps:
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -650,7 +651,7 @@ This topic introduces asset importance tags and describes how to create, modify,
 | General Assets | 1 | Assets that are related to non-crucial business and are highly replaceable. Virus intrusion into the assets causes less impact on the system. |
 | Test Assets | 0.5 | Assets for functional or performance tests, or assets that can cause less impact on the system. |
 
-If you do not add asset importance tags, the General Asset s tag is automatically added to each asset. This tag indicates that the asset importance score is 1. Create a custom tag
+Not e If you do not add asset importance tags, the General Asset s tag is automatically added to each asset. This tag indicates that the asset importance score is 1. Create a custom tag
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -663,7 +664,7 @@ e
 7. In the Asset Group section, select a server group. Then, select the required servers to add the new
 tag to the selected servers in the right area of the section.
 8. Click OK.
-In the asset list of the Server(s) or Cloud Service tab, you can click the icon in the T ag column to add the new tag to an asset. You can add multiple tags to one asset. All tags of an asset are displayed in the T ag column. Modify or delete a custom tag The following procedure describes how to modify or delete a custom tag. When you modify a tag, you can rename the tag or adjust the servers to which the tag is added.
+In the asset list of the Server(s) or Cloud Service tab, you can click the icon in the T ag column to add the new tag to an asset. Not e You can add multiple tags to one asset. All tags of an asset are displayed in the T ag column. Modify or delete a custom tag The following procedure describes how to modify or delete a custom tag. When you modify a tag, you can rename the tag or adjust the servers to which the tag is added.
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -674,7 +675,7 @@ Perform the following operations to modify or delete a tag: e Modif y a t ag a. 
 
 ### 4.7 Application whitelist
 
-The application whitelist feature prevents unauthorized programs from running on your servers and provides a trusted running environment for your servers. Context The application whitelist feature allows you to apply application whitelist policies to your servers that require special protection. Apsara Stack Security identifies trusted, suspicious, and malicious programs based on the policies. Then, you can add the identified programs to an application whitelist based on your business requirements. This prevents unauthorized programs from running. This feature protects your servers from untrusted and malicious programs and improves resource usage. After you create an application whitelist policy, you can apply it to a server that requires special protection. Then, Apsara Stack Security scans for suspicious or malicious programs on the server and generates alerts for the programs that are not in the application whitelist. If a program that is not in the application whitelist starts, an alert is generated. The program may be a normal program that is newly started or a malicious program that is inserted into your compromised server. If the program is a normal program, a frequently used program, or a thirdparty program installed by you, we recommend that you add the program to the application whitelist. After you add the program to the application whitelist, Apsara Stack Security no longer generates alerts for this program the next time the program starts. If the program is malicious, we recommend that you immediately delete this program and check whether the configuration files such as cron tasks are tampered with. e Step 1: Create an application whitelist policy
+The application whitelist feature prevents unauthorized programs from running on your servers and provides a trusted running environment for your servers. Context The application whitelist feature allows you to apply application whitelist policies to your servers that require special protection. Apsara Stack Security identifies trusted, suspicious, and malicious programs based on the policies. Then, you can add the identified programs to an application whitelist based on your business requirements. This prevents unauthorized programs from running. This feature protects your servers from untrusted and malicious programs and improves resource usage. After you create an application whitelist policy, you can apply it to a server that requires special protection. Then, Apsara Stack Security scans for suspicious or malicious programs on the server and generates alerts for the programs that are not in the application whitelist. Not e If a program that is not in the application whitelist starts, an alert is generated. The program may be a normal program that is newly started or a malicious program that is inserted into your compromised server. If the program is a normal program, a frequently used program, or a thirdparty program installed by you, we recommend that you add the program to the application whitelist. After you add the program to the application whitelist, Apsara Stack Security no longer generates alerts for this program the next time the program starts. If the program is malicious, we recommend that you immediately delete this program and check whether the configuration files such as cron tasks are tampered with. e Step 1: Create an application whitelist policy
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -709,7 +710,7 @@ Management section, click T hreat Det ect ion.
 6. In the Add Server panel, configure the parameters.
 e In the Add Server panel, configure the following parameters: Whit elist Policy: Select the created application whitelist policy from the drop-down list. Event Handling: The default value is Alert , which indicates that Apsara Stack Security generates an alert when a suspicious program is detected. If a program that is not in the application whitelist starts, Apsara Stack Security automatically generates an alert. You can click the number in the Suspicious Event s column to go to the Alert s tab of the server details page and view the alert details. Servers: Select the server to which you want to apply the application whitelist policy. You can select multiple servers. To search for a server, enter the server name in the Servers search box and click the search icon. Fuzzy match is supported.
 7. Click OK. The application whitelist policy is applied to the selected servers.
-After the application whitelist is created, you can view the protected servers and the name of the application whitelist policy in the server list on the Servers tab. The Servers tab displays the following information of a protected server: Server Name/IP: the name and IP address of the server to which the application whitelist policy is applied. Whit elist Policy: the name of the application whitelist policy that is applied to the server. Suspicious Event s: the number of programs that are not in the application whitelist and have started. If a suspicious program starts on the server, Apsara Stack Security detects the program and generates an alert. Event Handling: The default value is Alert , which indicates that Apsara Stack Security generates an alert when a suspicious program is detected. If a program that is not in the application whitelist starts, Apsara Stack Security automatically generates an alert. You can click the number in the Suspicious Event s column to go to the Alert s tab of the server details page and view the alert details. Act ions: After you click Delet e in the Act ions column, the server is removed from the application whitelist policy. After you click Delete in the Actions column, the application whitelist policy becomes invalid for the server. In this case, if a program that is added to the application whitelist starts on this server, Apsara Stack Security generates an alert. Add a program to or remove a program from an application whitelist After you configure an application whitelist policy for your server, you can view the detailed information in the server list on the Servers tab. The information includes the details of the protected server and the name of the application whitelist policy that is applied to the server. You can click a policy name in the Whit elist Policy column to view the programs running on the server. You can also view the numbers of trusted, suspicious, and malicious programs and their detailed information. The following information about each program on the server is displayed: T ype: the type of the program. Programs are classified into trusted, suspicious, and malicious programs. Process Name: the name of the program. Hash: the hash function of the program. A hash function is used to identify whether a program is e unique. This helps protect servers against malicious programs. Pat h: the file path of the program on the server. Degree of T rust abilit y: the degree of trustability for the program. The value of this parameter is determined by Apsara Stack Security. Valid values: 0%, 60%, and 100%. The value 0% indicates malicious programs, 60% indicates suspicious programs, and 100% indicates trusted programs. We recommend that you handle the program whose Degree of Trustability is 0% at the earliest opportunity. Act ions: the operations that can be performed on the program. You can determine whether to add the program to the whitelist based on the services deployed on your server. You can perform the following operations: Add t o Whit elist : If you trust the program, add it to the whitelist. Remove f rom Whit elist : After you remove the program from the whitelist, Apsara Stack Security identifies the program as untrusted. If this program starts, Apsara Stack Security generates an alert.
+After the application whitelist is created, you can view the protected servers and the name of the application whitelist policy in the server list on the Servers tab. The Servers tab displays the following information of a protected server: Server Name/IP: the name and IP address of the server to which the application whitelist policy is applied. Whit elist Policy: the name of the application whitelist policy that is applied to the server. Suspicious Event s: the number of programs that are not in the application whitelist and have started. If a suspicious program starts on the server, Apsara Stack Security detects the program and generates an alert. Event Handling: The default value is Alert , which indicates that Apsara Stack Security generates an alert when a suspicious program is detected. If a program that is not in the application whitelist starts, Apsara Stack Security automatically generates an alert. You can click the number in the Suspicious Event s column to go to the Alert s tab of the server details page and view the alert details. Act ions: After you click Delet e in the Act ions column, the server is removed from the application whitelist policy. After you click Delete in the Actions column, the application whitelist policy becomes invalid for the server. In this case, if a program that is added to the application whitelist starts on this server, Apsara Stack Security generates an alert. Add a program to or remove a program from an application whitelist After you configure an application whitelist policy for your server, you can view the detailed information in the server list on the Servers tab. The information includes the details of the protected server and the name of the application whitelist policy that is applied to the server. You can click a policy name in the Whit elist Policy column to view the programs running on the server. You can also view the numbers of trusted, suspicious, and malicious programs and their detailed information. The following information about each program on the server is displayed: T ype: the type of the program. Programs are classified into trusted, suspicious, and malicious programs. Process Name: the name of the program. Hash: the hash function of the program. A hash function is used to identify whether a program is e unique. This helps protect servers against malicious programs. Pat h: the file path of the program on the server. Degree of T rust abilit y: the degree of trustability for the program. The value of this parameter is determined by Apsara Stack Security. Valid values: 0%, 60%, and 100%. The value 0% indicates malicious programs, 60% indicates suspicious programs, and 100% indicates trusted programs. Not e We recommend that you handle the program whose Degree of Trustability is 0% at the earliest opportunity. Act ions: the operations that can be performed on the program. You can determine whether to add the program to the whitelist based on the services deployed on your server. You can perform the following operations: Add t o Whit elist : If you trust the program, add it to the whitelist. Remove f rom Whit elist : After you remove the program from the whitelist, Apsara Stack Security identifies the program as untrusted. If this program starts, Apsara Stack Security generates an alert.
 
 ### 4.8 Vulnerability scan
 
@@ -719,7 +720,7 @@ This topic describes how to get started with the vulnerability scan feature. The
 1. Configure the following detection items and the required cycles based on your environment
 requirements: Overall Monitoring: Configure detection features and the monitoring cycle of each detection feature. For more information, see Configure overall monitoring. Basic Monitoring: Configure Weak Password Vulnerability Monitoring, Operation Security Vulnerability Monitoring, CMS Application Vulnerability Monitoring, and Baseline Monitoring. For more information, see Configure basic monitoring. Web Monitoring: Configure the monitoring cycle and the types of web vulnerabilities that you want to monitor. For more information, see Configure web monitoring. Whitelist: Add the assets that do not require detection to the whitelist. For more information, see Configure a whitelist.
 2. Import assets that require vulnerability scans.
-Import internal assets: Configure a scan engine to import your internal assets in virtual private clouds (VPCs). For more information, see Configure a scan engine for internal assets. Import Internet assets: Import your Internet assets. For more information, see Import assets. The number of imported assets cannot exceed the specified upper limit.
+Import internal assets: Configure a scan engine to import your internal assets in virtual private clouds (VPCs). For more information, see Configure a scan engine for internal assets. Import Internet assets: Import your Internet assets. For more information, see Import assets. Not e The number of imported assets cannot exceed the specified upper limit.
 3. View and confirm the results of vulnerability scans.
 View the overall information to obtain the results of vulnerability scans. For more information, see View the information on the Overview page. e View and confirm vulnerability risks. For more information, see Manage security vulnerabilities. View and confirm host compliance risks. For more information, see Manage host compliance risks.
 4. Generate vulnerability scan reports.
@@ -727,7 +728,7 @@ Generate reports to audit the vulnerabilities and baseline risks on assets on a 
 
 #### 4.8.2 View the information on the Overview page
 
-This topic describes the overall results of vulnerability scans. Security administrators can understand the vulnerability situation based on the overall results. Context The vulnerability scan feature can identify the following vulnerabilities: web security vulnerabilities, content management system (CMS) application vulnerabilities, weak password vulnerabilities, O&M security vulnerabilities, and baseline security vulnerabilities.
+This topic describes the overall results of vulnerability scans. Security administrators can understand the vulnerability situation based on the overall results. Context The vulnerability scan feature can identify the following vulnerabilities: web security vulnerabilities, content management system (CMS) application vulnerabilities, weak password vulnerabilities, O&M security vulnerabilities, and baseline security vulnerabilities. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -752,7 +753,7 @@ e
 
 ##### 4.8.3.1 View the results of asset analysis
 
-e This topic describes how to view the analysis results of websites and hosts. Context The asset analysis feature allows you to view the analysis results of websites and hosts. For the websites, you can view Web Service, Open Source Framework, and Device Type. For the hosts, you can view Host Port, Host Service, and Operation System.
+e This topic describes how to view the analysis results of websites and hosts. Context The asset analysis feature allows you to view the analysis results of websites and hosts. For the websites, you can view Web Service, Open Source Framework, and Device Type. For the hosts, you can view Host Port, Host Service, and Operation System. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -763,7 +764,7 @@ e
 
 ##### 4.8.3.2 Import assets
 
-This topic describes how to import Internet assets. Context The vulnerability scan feature works only on imported assets. If you want to scan the vulnerabilities of your assets, you must import your assets. The assets that the feature supports include Internet assets and internal assets. The internal assets refer to the assets in a virtual private cloud (VPC). To import internal assets, you must add a scan engine. For more information, see Configure a scan engine for internal assets. To import Internet assets, perform the operations provided in this topic.
+This topic describes how to import Internet assets. Context The vulnerability scan feature works only on imported assets. If you want to scan the vulnerabilities of your assets, you must import your assets. The assets that the feature supports include Internet assets and internal assets. The internal assets refer to the assets in a virtual private cloud (VPC). To import internal assets, you must add a scan engine. For more information, see Configure a scan engine for internal assets. To import Internet assets, perform the operations provided in this topic. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -771,7 +772,7 @@ Management section, click Cloud Securit y Scanner.
 4. On the Asset page, click the Asset Import tab to view imported assets.
 e
 5. Click Asset Import . On the Public net work asset Import page, create an asset import task.
-i. In the Import Asset section, select Manual Import and enter the required assets in the field. Then, read and select the disclaimer. You can enter domain names, URLs, IP addresses, and CIDR blocks. You can enter the information about multiple assets at a time. Press Enter after you enter the information about one asset. You cannot enter the information about the assets in VPCs. The number of imported assets must be less than the number of remaining assets supported by the platform. For example, if the number of remaining assets supported by the platform is 100 and 90 assets are entered, all the assets can be scanned. If 110 assets are entered, only 100 assets can be scanned, and the 10 assets that remain cannot be scanned. ii. In the Asset Inf o section, group the imported assets and configure an owner and a tag for the assets. Asset Group: Select a group from the drop-down list. You can click the icon to create, edit, or delete a group. Person in charge: Select an owner from the drop-down list. You can click the icon to create, edit, or delete an owner. Asset T ag: Click Add T ag to add a tag to the imported assets. e iii. In the Import Set section, select the operations that you want to perform after the assets are imported.
+i. In the Import Asset section, select Manual Import and enter the required assets in the field. Then, read and select the disclaimer. You can enter domain names, URLs, IP addresses, and CIDR blocks. You can enter the information about multiple assets at a time. Press Enter after you enter the information about one asset. You cannot enter the information about the assets in VPCs. The number of imported assets must be less than the number of remaining assets supported by the platform. Not e For example, if the number of remaining assets supported by the platform is 100 and 90 assets are entered, all the assets can be scanned. If 110 assets are entered, only 100 assets can be scanned, and the 10 assets that remain cannot be scanned. ii. In the Asset Inf o section, group the imported assets and configure an owner and a tag for the assets. Asset Group: Select a group from the drop-down list. You can click the icon to create, edit, or delete a group. Person in charge: Select an owner from the drop-down list. You can click the icon to create, edit, or delete an owner. Asset T ag: Click Add T ag to add a tag to the imported assets. e iii. In the Import Set section, select the operations that you want to perform after the assets are imported.
 
 | Operation |   | Description |
 |---|---|---|
@@ -855,7 +856,7 @@ ii. Click Export to export the asset list to an EXCEL file. iii. Select one or m
 
 ##### 4.8.3.4 Manage asset availability
 
-e This topic describes how to manage the availability of assets. Context If hosts or websites are used for a long period of time, they may become unavailable due to errors. Availability monitoring allows a security administrator to discover unavailable assets. Then, the security administrator can troubleshoot the issues that cause the assets to become unavailable. Availability monitoring supports the following methods: HTTP monitoring: This method is used to monitor websites. PING monitoring: This method is used to monitor hosts.
+e This topic describes how to manage the availability of assets. Context If hosts or websites are used for a long period of time, they may become unavailable due to errors. Availability monitoring allows a security administrator to discover unavailable assets. Then, the security administrator can troubleshoot the issues that cause the assets to become unavailable. Availability monitoring supports the following methods: HTTP monitoring: This method is used to monitor websites. PING monitoring: This method is used to monitor hosts. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -887,7 +888,7 @@ You can manage more than one availability monitoring task in the monitoring task
 
 ##### 4.8.3.5 Manage custom update detection tasks
 
-This topic describes how to manage custom update detection tasks.
+This topic describes how to manage custom update detection tasks. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -909,7 +910,7 @@ iii. Click Save.
 
 ##### 4.8.4.1 Manage vulnerabilities
 
-This topic describes how to view and handle the vulnerabilities that are detected by the vulnerability scan feature. Context On the Securit y Vulnerabilit y tab, security administrators can view the vulnerabilities that are detected by the vulnerability scan feature.
+This topic describes how to view and handle the vulnerabilities that are detected by the vulnerability scan feature. Context On the Securit y Vulnerabilit y tab, security administrators can view the vulnerabilities that are detected by the vulnerability scan feature. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -941,7 +942,7 @@ e
 
 ##### 4.8.4.3 Create a custom risk detection task
 
-This topic describes how to create a custom risk detection task.
+This topic describes how to create a custom risk detection task. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -990,7 +991,7 @@ Result After the report is created, it appears in the report list on the Report 
 
 ##### 4.8.5.2 Delete multiple reports at a time
 
-This topic describes how to delete multiple reports at a time. Context You can delete multiple reports that you no longer need at a time to save storage space.
+This topic describes how to delete multiple reports at a time. Context You can delete multiple reports that you no longer need at a time to save storage space. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -1003,7 +1004,7 @@ Management section, click Cloud Securit y Scanner.
 
 ##### 4.8.6.1 Configure overall monitoring
 
-This topic describes how to configure overall monitoring for the vulnerability scan feature. Overall monitoring includes Asset Monitoring Configuration, Base Risk Monitoring Configuration, External Risk Monitoring Configuration, and Scan Configuration. Context Overall monitoring allows you to configure detection features and the monitoring cycle for each detection feature.
+This topic describes how to configure overall monitoring for the vulnerability scan feature. Overall monitoring includes Asset Monitoring Configuration, Base Risk Monitoring Configuration, External Risk Monitoring Configuration, and Scan Configuration. Context Overall monitoring allows you to configure detection features and the monitoring cycle for each detection feature. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner. e
@@ -1070,14 +1071,14 @@ iii. Click Save.
 
 ##### 4.8.6.2 Configure basic monitoring
 
-This topic describes how to configure basic monitoring. Context Basic monitoring includes Weak Password Vulnerability Monitoring, Operation Security Vulnerability Monitoring, CMS Application Vulnerability Monitoring, and Baseline Monitoring.
+This topic describes how to configure basic monitoring. Context Basic monitoring includes Weak Password Vulnerability Monitoring, Operation Security Vulnerability Monitoring, CMS Application Vulnerability Monitoring, and Baseline Monitoring. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner. e
 3. In the left-side navigation pane, click Conf igurat ion.
 4. On the Conf igurat ion page, click the Monit oring Conf igurat ion tab.
 5. Click the Basic Monit oring tab. Then, click Weak Password Vulnerabilit y Monit oring to
-configure rules to monitor weak passwords. By default, all monitoring items on weak passwords use the default weak password library. To disable a monitoring item, perform the following step: Find the monitoring item and click the icon in the Operat ion column. To enable a monitoring item, perform the following step: Find the monitoring item and click the icon in the Operat ion column. To specify custom weak passwords for a monitoring item, perform the following steps. In this example, MySQL Weak Password Vulnerabilit y is used. a. In the Def ault Weak Password column, turn off the switch. The switch status changes to . b. In the Operat ion column, click the icon. c. In the Cust omize MySQL Weak Password dialog box, specify custom weak passwords. d. Click Yes. To apply the same custom weak passwords to multiple monitoring items, perform the following steps: a. In the Def ault Weak Password column, turn off the switches for the monitoring items to which you want to apply the same custom weak passwords. The switch status changes to . If you want to apply a custom weak password to a monitoring item, you must turn off the switch in the Default Weak Password column of the monitoring item. b. Click T ailored Overall Weak Password. c. In the T ailored Overall Weak Password dialog box, specify custom weak passwords. d. Click Yes. e
+configure rules to monitor weak passwords. By default, all monitoring items on weak passwords use the default weak password library. To disable a monitoring item, perform the following step: Find the monitoring item and click the icon in the Operat ion column. To enable a monitoring item, perform the following step: Find the monitoring item and click the icon in the Operat ion column. To specify custom weak passwords for a monitoring item, perform the following steps. In this example, MySQL Weak Password Vulnerabilit y is used. a. In the Def ault Weak Password column, turn off the switch. The switch status changes to . b. In the Operat ion column, click the icon. c. In the Cust omize MySQL Weak Password dialog box, specify custom weak passwords. d. Click Yes. To apply the same custom weak passwords to multiple monitoring items, perform the following steps: a. In the Def ault Weak Password column, turn off the switches for the monitoring items to which you want to apply the same custom weak passwords. The switch status changes to . Not e If you want to apply a custom weak password to a monitoring item, you must turn off the switch in the Default Weak Password column of the monitoring item. b. Click T ailored Overall Weak Password. c. In the T ailored Overall Weak Password dialog box, specify custom weak passwords. d. Click Yes. e
 6. Click Operat ion Securit y Vulnerabilit y Monit oring and configure O&M vulnerability monitoring.
 
 | No. | Description |
@@ -1111,13 +1112,13 @@ iii. Click Yes.
 
 ##### 4.8.6.3 Configure web monitoring
 
-This topic describes how to configure web monitoring. Context Web monitoring allows you to configure monitoring items for monitoring web vulnerabilities. You can also configure conditions to block website crawlers.
+This topic describes how to configure web monitoring. Context Web monitoring allows you to configure monitoring items for monitoring web vulnerabilities. You can also configure conditions to block website crawlers. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
 3. In the left-side navigation pane, click Conf igurat ion.
 4. On the Monit oring Conf igurat ion tab, click the Web Monit oring tab to view existing rules.
-Def ault rule is created by the system. You can only view details of the default rule, but cannot modify or delete it.
+Not e Def ault rule is created by the system. You can only view details of the default rule, but cannot modify or delete it.
 5. Create a web monitoring rule.
 i. Click Add Rule. ii. On the Add Web Monit oring Rule page, configure the following parameters.
 
@@ -1154,13 +1155,13 @@ e iii. Click Yes.
 
 ##### 4.8.6.4 Configure a whitelist
 
-This topic describes how to configure a whitelist. Context Apsara Stack Security does not scan the assets that are added to a whitelist. Before you add assets to a whitelist, make sure that the assets are secure.
+This topic describes how to configure a whitelist. Context Apsara Stack Security does not scan the assets that are added to a whitelist. Before you add assets to a whitelist, make sure that the assets are secure. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
 3. In the left-side navigation pane, click Conf igurat ion.
 4. On the Configuration page, click the Monit oring Conf igurat ion tab. Then, click the Whit elist tab
-to view the assets that are added to a whitelist. By default, the whitelist feature is enabled. If you do not want to use the whitelist feature, turn off the switch in the upper-right corner.
+to view the assets that are added to a whitelist. Not e By default, the whitelist feature is enabled. If you do not want to use the whitelist feature, turn off the switch in the upper-right corner.
 5. Add assets to a whitelist.
 i. Click Add. e ii. In the Add Whit elist dialog box, configure the parameters. If you select Asset Group for the Whit elist parameter, select a group from the second drop-down list. The assets in this group are added to the whitelist. If you select Cust omizat ion for the Whit elist parameter, enter the IP addresses or URLs that you want to add to the whitelist in the field that appears. iii. Click Yes.
 6. Manage the assets that are added to a whitelist.
@@ -1168,7 +1169,7 @@ Remove an asset from a whitelist Find the asset and click the icon in the Operat
 
 ##### 4.8.6.5 Configure a scan engine for internal assets
 
-This topic describes how to configure a scan engine for internal assets, such as the assets of a virtual private cloud (VPC). Context You must add a scan engine for a VPC before you can scan for vulnerabilities on the assets of the VPC.
+This topic describes how to configure a scan engine for internal assets, such as the assets of a virtual private cloud (VPC). Context You must add a scan engine for a VPC before you can scan for vulnerabilities on the assets of the VPC. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click Cloud Securit y Scanner.
@@ -1184,7 +1185,7 @@ list.
 
 ### 4.9 Create a security report
 
-Security reports help monitor the security status of your assets. You can specify the content, types of statistics, and email addresses of recipients to create a security report. This topic describes how to create a security report.
+Security reports help monitor the security status of your assets. You can specify the content, types of statistics, and email addresses of recipients to create a security report. This topic describes how to create a security report. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Securit y
 Management section, click T hreat Det ect ion.
@@ -1205,7 +1206,7 @@ System
 
 ### 5.1 View traffic trends
 
-This topic describes how to view the network traffic trends and the statistics about inbound and outbound traffic. Context The security administrator can analyze traffic trends and obtain the traffic rate, peaks, and troughs. The security administrator can also view the top five IP addresses that have the largest volume of traffic and identify malicious IP addresses.
+This topic describes how to view the network traffic trends and the statistics about inbound and outbound traffic. Context The security administrator can analyze traffic trends and obtain the traffic rate, peaks, and troughs. The security administrator can also view the top five IP addresses that have the largest volume of traffic and identify malicious IP addresses. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Net work
 Securit y > Net work T raf f ic Monit oring.
@@ -1218,7 +1219,7 @@ icon to export traffic trends as a PDF file.
 
 ### 5.2 View traffic at the Internet border
 
-This topic describes how to view traffic at the Internet border. You can obtain up-to-date information about network security. Prerequisites The Network Traffic Monitoring System module is purchased and deployed at the egress (ISW) of Apsara Stack. T his module is used t o audit , analyze, and manage bot h inbound and out bound t raf f ic at Int ernet borders. ng System Context You can use traffic information to identify abnormal Internet traffic and block malicious requests.
+This topic describes how to view traffic at the Internet border. You can obtain up-to-date information about network security. Prerequisites The Network Traffic Monitoring System module is purchased and deployed at the egress (ISW) of Apsara Stack. T his module is used t o audit , analyze, and manage bot h inbound and out bound t raf f ic at Int ernet borders. ng System Context You can use traffic information to identify abnormal Internet traffic and block malicious requests. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Then, click Net work
 T raf f ic Monit oring Syst em in the Net work Securit y section.
@@ -1238,7 +1239,7 @@ If Inbound is specified, you can view abnormal traffic on the By Dest inat ion I
 
 ### 5.3 View traffic at the internal network border
 
-network border This topic describes how to view the traffic at the internal network border. You can obtain up-to-date information about network security based on the traffic. Prerequisites The Network Traffic Monitoring System module is purchased and deployed at the ingress (CSW) of Apsara Stack. You can use t his module t o audit , analyze, and manage inbound and out bound t raf f ic t hat is rout ed over leased lines bet ween dat a cent ers and virt ual privat e clouds (VPCs). Context You can identify abnormal traffic from the internal network based on traffic information and block malicious requests.
+network border This topic describes how to view the traffic at the internal network border. You can obtain up-to-date information about network security based on the traffic. Prerequisites The Network Traffic Monitoring System module is purchased and deployed at the ingress (CSW) of Apsara Stack. You can use t his module t o audit , analyze, and manage inbound and out bound t raf f ic t hat is rout ed over leased lines bet ween dat a cent ers and virt ual privat e clouds (VPCs). Context You can identify abnormal traffic from the internal network based on traffic information and block malicious requests. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Net work
 Securit y > Net work T raf f ic Monit oring.
@@ -1262,7 +1263,7 @@ T raf f ic St at ist ics The Visit s t o IP section includes Source IPs, Dest in
 
 ### 5.4 Create packet capture tasks
 
-This topic describes how to create a packet capture task. You can enable the packet capture feature to capture network data packets of IP addresses and ports, and then analyze the packets. This way, you can diagnose faults, analyze attacks, and identify security risks to network communications.
+This topic describes how to create a packet capture task. You can enable the packet capture feature to capture network data packets of IP addresses and ports, and then analyze the packets. This way, you can diagnose faults, analyze attacks, and identify security risks to network communications. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Then, click Net work
 T raf f ic Monit oring Syst em in the Net work Securit y section.
@@ -1535,7 +1536,7 @@ This topic describes how to view the details about the security of servers on th
 
 #### 6.2.1 Manage listening ports
 
-This topic describes how to view information about the listening port of a server. The information helps you identify suspicious listening behavior. Context This topic is suitable for the following scenarios: Check for servers that listen on a specific port. Check for ports that a specific server listens.
+This topic describes how to view information about the listening port of a server. The information helps you identify suspicious listening behavior. Context This topic is suitable for the following scenarios: Check for servers that listen on a specific port. Check for ports that a specific server listens. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1545,7 +1546,7 @@ and server information. You can search for a port by using the port number, serv
 
 #### 6.2.2 Manage software versions
 
-This topic describes how to regularly view and collect the software version information about a server. This helps you check your software assets. Context This topic covers the following scenarios: Check for software assets that are installed without authorization. Check for outdated software assets. Locate affected assets if vulnerabilities are detected.
+This topic describes how to regularly view and collect the software version information about a server. This helps you check your software assets. Context This topic covers the following scenarios: Check for software assets that are installed without authorization. Check for outdated software assets. Locate affected assets if vulnerabilities are detected. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Server Securit y >
 Sever Guard.
@@ -1557,7 +1558,7 @@ software. You can click the icon in the upper-right corner to download a softwar
 
 #### 6.2.3 Manage processes
 
-This topic describes how to regularly collect the process information on a server and record changes. This way, you can view process information and historical process changes. Context This task is suitable for the following scenarios: Check for servers on which a specific process runs. Check for processes that run on a specific server.
+This topic describes how to regularly collect the process information on a server and record changes. This way, you can view process information and historical process changes. Context This task is suitable for the following scenarios: Check for servers on which a specific process runs. Check for processes that run on a specific server. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1569,7 +1570,7 @@ startup parameters.
 
 #### 6.2.4 Manage account information
 
-This topic describes how to regularly collect the account information on a server and record the changes to the accounts. This way, you can check your accounts and view historical changes to your accounts. Context You can use the information collected in this topic for the following scenarios: Check for servers on which a specific account is created. Check for accounts that are created on a server.
+This topic describes how to regularly collect the account information on a server and record the changes to the accounts. This way, you can check your accounts and view historical changes to your accounts. Context You can use the information collected in this topic for the following scenarios: Check for servers on which a specific account is created. Check for accounts that are created on a server. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1582,7 +1583,7 @@ group.
 
 #### 6.2.5 Manage scheduled tasks
 
-This topic describes how to view scheduled tasks on servers.
+This topic describes how to view scheduled tasks on servers. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1594,7 +1595,7 @@ You can search for a task by using the task path, server name, or IP address.
 
 #### 6.2.6 Set the fingerprint collection frequency
 
-You can set the frequency at which the data of running processes, system accounts, listening ports, and software versions is collected.
+You can set the frequency at which the data of running processes, system accounts, listening ports, and software versions is collected. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1615,9 +1616,9 @@ This topic describes how to handle Linux software vulnerabilities. Context Apsar
 section, click Server Guard.
 3. In the left-side navigation pane, click Vulnerabilit ies.
 4. On the Linux Sof t ware tab of the page that appears, view the detected Linux software
-vulnerabilities. You can search for a specific vulnerability by using the search and filter features.
+vulnerabilities. Not e You can search for a specific vulnerability by using the search and filter features.
 5. Find a vulnerability and click its name. In the panel that appears, you can view the details about the
-vulnerability and the servers that are affected by the vulnerability. You can find affected servers by using the search and filter features. Det ail: This tab displays the basic information about the vulnerability, including the name, Common Vulnerability Scoring System (CVSS) score, description, and solution. Pending vulnerabilit y: This tab displays the servers that are affected by the vulnerability.
+vulnerability and the servers that are affected by the vulnerability. Not e You can find affected servers by using the search and filter features. Det ail: This tab displays the basic information about the vulnerability, including the name, Common Vulnerability Scoring System (CVSS) score, description, and solution. Pending vulnerabilit y: This tab displays the servers that are affected by the vulnerability.
 6. Handle the vulnerability based on its impact.
 Actions on vulnerabilities
 
@@ -1633,16 +1634,16 @@ You can handle a vulnerability for one or more affected servers at a time. To ha
 
 ##### 6.3.1.2 Handle Windows system vulnerabilities
 
-This topic describes how to handle Windows system vulnerabilities. Context Apsara Stack Security automatically checks whether the latest Microsoft updates are installed on your servers, and notifies you of the detected vulnerabilities. Apsara Stack Security also automatically detects and fixes major vulnerabilities on your servers.
+This topic describes how to handle Windows system vulnerabilities. Context Apsara Stack Security automatically checks whether the latest Microsoft updates are installed on your servers, and notifies you of the detected vulnerabilities. Apsara Stack Security also automatically detects and fixes major vulnerabilities on your servers. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
 3. In the left-side navigation pane, click Vulnerabilit ies. On the page that appears, click the
 Windows Syst em tab.
 4. View the detected Windows system vulnerabilities.
-You can search for a specific vulnerability by using the search and filter features.
+Not e You can search for a specific vulnerability by using the search and filter features.
 5. Find a vulnerability and click its name. In the panel that appears, you can view details about the
-vulnerability and the servers that are affected by the vulnerability. You can find affected servers by using the search and filter features. Det ail: This tab displays the basic information about the vulnerability, including the name, Common Vulnerability Scoring System (CVSS) score, description, and solution. Pending vulnerabilit y: This tab displays the servers that are affected by the vulnerability.
+vulnerability and the servers that are affected by the vulnerability. Not e You can find affected servers by using the search and filter features. Det ail: This tab displays the basic information about the vulnerability, including the name, Common Vulnerability Scoring System (CVSS) score, description, and solution. Pending vulnerabilit y: This tab displays the servers that are affected by the vulnerability.
 6. Handle the vulnerability based on its impact. describes the actions.
 Actions on vulnerabilities
 
@@ -1657,16 +1658,16 @@ You can handle a vulnerability for one or more affected servers at a time. To ha
 
 ##### 6.3.1.3 Handle Web-CMS vulnerabilities
 
-This topic describes how to handle Web-CMS vulnerabilities. Context The feature of Web-CMS vulnerability detection obtains information about the latest vulnerabilities and provides patches in the cloud. This helps you detect and fix vulnerabilities.
+This topic describes how to handle Web-CMS vulnerabilities. Context The feature of Web-CMS vulnerability detection obtains information about the latest vulnerabilities and provides patches in the cloud. This helps you detect and fix vulnerabilities. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
 3. In the left-side navigation pane, click Vulnerabilit ies. On the page that appears, click the Web
 CMS tab.
 4. View all detected vulnerabilities.
-You can search for a specific vulnerability by using the search and filter features.
+Not e You can search for a specific vulnerability by using the search and filter features.
 5. Find a vulnerability and click its name. In the panel that appears, you can view details about the
-vulnerability and the servers that are affected by the vulnerability. You can find affected servers by using the search and filter features.
+vulnerability and the servers that are affected by the vulnerability. Not e You can find affected servers by using the search and filter features.
 6. Handle the vulnerability based on its impact. describes the actions.
 Actions on vulnerabilities
 
@@ -1681,7 +1682,7 @@ You can handle a vulnerability for one or more affected servers at one time. To 
 
 ##### 6.3.1.4 Handle urgent vulnerabilities
 
-This topic describes how to handle urgent vulnerabilities. Context Apsara Stack Security automatically detects vulnerabilities on servers, such as the unauthorized Redis access vulnerability and Struts S2-052 vulnerability, and generates alerts for detected vulnerabilities. After you fix a vulnerability, you can also check whether the fix is successful.
+This topic describes how to handle urgent vulnerabilities. Context Apsara Stack Security automatically detects vulnerabilities on servers, such as the unauthorized Redis access vulnerability and Struts S2-052 vulnerability, and generates alerts for detected vulnerabilities. After you fix a vulnerability, you can also check whether the fix is successful. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1703,7 +1704,7 @@ You can handle a vulnerability for one or more affected assets at a time. To han
 
 ##### 6.3.1.5 Configure vulnerability handling policies
 
-You can enable or disable automatic detection for different types of vulnerabilities and enable vulnerability detection for specific servers. You can also set a duration during which invalid vulnerabilities are retained and configure a vulnerability whitelist. Context A vulnerability whitelist allows you to ignore specific vulnerabilities. You can add multiple vulnerabilities in the vulnerability list to the whitelist. The system does not detect vulnerabilities that are added to the whitelist. You can configure the vulnerability whitelist on the vulnerability settings page.
+You can enable or disable automatic detection for different types of vulnerabilities and enable vulnerability detection for specific servers. You can also set a duration during which invalid vulnerabilities are retained and configure a vulnerability whitelist. Context A vulnerability whitelist allows you to ignore specific vulnerabilities. You can add multiple vulnerabilities in the vulnerability list to the whitelist. The system does not detect vulnerabilities that are added to the whitelist. You can configure the vulnerability whitelist on the vulnerability settings page. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1715,7 +1716,7 @@ handling policies. In the panel that appears, perform the following operations: 
 
 ##### 6.3.2.1 Baseline check overview
 
-The baseline check feature automatically checks the security configurations on servers and provides detailed check results and suggestions for baseline reinforcement. After you enable the baseline check feature, Apsara Stack Security automatically checks for risks related to the operating systems, accounts, databases, passwords, and security compliance configurations of your servers, and provides reinforcement suggestions. For more information, see Baselines. By default, a full baseline check is automatically performed from 00:00 to 06:00 every day. You can create and manage scan policies for baseline checks. When you create or modify a policy, you can specify the baselines, interval, and time period, and select the servers to which you want to apply this policy. For more information, see Add a custom baseline check policy. Precautions By default, the following baselines are disabled. To check these baselines, make sure that these baselines do not affect your business and select them when you customize a scan policy. Baselines related to weak passwords for specific applications such as MySQL, PostgreSQL, and SQL Server If these baselines are enabled, the system attempts to log on to servers with weak passwords. The logon attempts consume server resources and generate a large number of logon failure records. Baselines related to China classified protection of cybersecurity Baselines related to the Center for Internet Security (CIS) standard Baselines
+The baseline check feature automatically checks the security configurations on servers and provides detailed check results and suggestions for baseline reinforcement. Description After you enable the baseline check feature, Apsara Stack Security automatically checks for risks related to the operating systems, accounts, databases, passwords, and security compliance configurations of your servers, and provides reinforcement suggestions. For more information, see Baselines. By default, a full baseline check is automatically performed from 00:00 to 06:00 every day. You can create and manage scan policies for baseline checks. When you create or modify a policy, you can specify the baselines, interval, and time period, and select the servers to which you want to apply this policy. For more information, see Add a custom baseline check policy. Precautions By default, the following baselines are disabled. To check these baselines, make sure that these baselines do not affect your business and select them when you customize a scan policy. Baselines related to weak passwords for specific applications such as MySQL, PostgreSQL, and SQL Server Not e If these baselines are enabled, the system attempts to log on to servers with weak passwords. The logon attempts consume server resources and generate a large number of logon failure records. Baselines related to China classified protection of cybersecurity Baselines related to the Center for Internet Security (CIS) standard Baselines
 
 | Category | Baseline |
 |---|---|
@@ -1752,7 +1753,7 @@ panel, create, modify, or delete a baseline check policy. You can also modify th
 | Check It ems | Select the baseline items that need to be checked from the following categories: High risk exploit, Container security, CIS and China's Protection of Cybersecurity, Best security practices, and Weak password. |
 | Servers | Select the server groups to which you want to apply the baseline check policy. Not e By default, newly purchased servers are added to the Def ault group under Asset Groups. To apply this policy to the newly purchased servers, select Def ault . |
 
-Click Edit or Delet e next to the created policy to modify or delete it. You cannot restore a policy after you delete it. Find the Def ault policy and click Edit in the Act ions column to modify the server groups to which the default policy is applied. You cannot delete the default policy or modify the baseline items of the default policy. You can only modify the server groups to which the default policy is applied. In the lower part of the Manage Policies panel, specify the baseline check levels. Valid values: High, Medium, and Low.
+Click Edit or Delet e next to the created policy to modify or delete it. Not e You cannot restore a policy after you delete it. Find the Def ault policy and click Edit in the Act ions column to modify the server groups to which the default policy is applied. Not e You cannot delete the default policy or modify the baseline items of the default policy. You can only modify the server groups to which the default policy is applied. In the lower part of the Manage Policies panel, specify the baseline check levels. Valid values: High, Medium, and Low.
 5. Click Ok.
 
 ##### 6.3.2.3 View baseline check results and handle baseline risks
@@ -1780,7 +1781,7 @@ Find the asset that you want to handle and click View in the Act ions column to 
 1. Find the baseline that you want to handle and click it. In the panel that appears, find the asset that
 you want to handle and click View in the Act ions column to view the details about the risk items. You can view the check items of the asset and the statuses of the check items. The status can be Passed or Failed.
 2. To view the details, click Det ails in the Actions column of the check items.
-We recommend that you follow the suggestions to handle risk items whose status is Failed at the earliest opportunity, especially high-risk items. Handle baseline risks In the At-Risk Items panel, handle baseline risks. Add check it ems t o t he whit elist If you want to disable alerts for a check item, click Whit elist to add the check item to the whitelist. Check items in the whitelist do not trigger alerts. You can also select multiple check items and click Whit elist in the lower-left corner to add the check items to the whitelist at a time. Fix risks You can fix only the baseline risks that are detected based on the Alibaba Cloud standard at a time. You can select multiple servers on which the same baseline risk is detected and fix the risk. Not ice Risk fixing may cause service interruptions. We recommend that you back up your service data before risk fixing. Remove check it ems f rom t he whit elist If you want to enable alerts for a check item in the whitelist, you can click Remove to remove the check item from the whitelist. You can remove one or more check items from the whitelist at a time. After a check item is removed from the whitelist, the check item triggers alerts again. Verif y t he f ix of a baseline risk If you do not manually perform the verification, Apsara Stack Security automatically verifies the fix based on the detection interval specified in the baseline check policy.
+Not e We recommend that you follow the suggestions to handle risk items whose status is Failed at the earliest opportunity, especially high-risk items. Handle baseline risks In the At-Risk Items panel, handle baseline risks. Add check it ems t o t he whit elist If you want to disable alerts for a check item, click Whit elist to add the check item to the whitelist. Check items in the whitelist do not trigger alerts. Not e You can also select multiple check items and click Whit elist in the lower-left corner to add the check items to the whitelist at a time. Fix risks You can fix only the baseline risks that are detected based on the Alibaba Cloud standard at a time. You can select multiple servers on which the same baseline risk is detected and fix the risk. Not ice Risk fixing may cause service interruptions. We recommend that you back up your service data before risk fixing. Remove check it ems f rom t he whit elist If you want to enable alerts for a check item in the whitelist, you can click Remove to remove the check item from the whitelist. You can remove one or more check items from the whitelist at a time. After a check item is removed from the whitelist, the check item triggers alerts again. Verif y t he f ix of a baseline risk If you do not manually perform the verification, Apsara Stack Security automatically verifies the fix based on the detection interval specified in the baseline check policy.
 
 ### 6.4 Intrusion prevention
 
@@ -1812,7 +1813,7 @@ If Server Guard detects sensitive file tampering, suspicious processes, webshell
 
 ##### 6.4.1.2 View and handle alert events
 
-This topic describes how to view and handle detected alert events on the Intrusions page. Background information After alert events are detected, the alerts events are displayed on the Int rusions page in Apsara Stack Security Center. If the detected alert events are not handled, they are displayed in the Unhandled Alert s list on the Int rusions page. After the alert events are handled, the status of the alert events changes from Unhandled Alert s to Handled. Apsara Stack Security Center retains the records of Unhandled Alert s and Handled on the Int rusions page. By default, the records of Unhandled Alert s are displayed. View alert events
+This topic describes how to view and handle detected alert events on the Intrusions page. Background information After alert events are detected, the alerts events are displayed on the Int rusions page in Apsara Stack Security Center. If the detected alert events are not handled, they are displayed in the Unhandled Alert s list on the Int rusions page. After the alert events are handled, the status of the alert events changes from Unhandled Alert s to Handled. Not e Apsara Stack Security Center retains the records of Unhandled Alert s and Handled on the Int rusions page. By default, the records of Unhandled Alert s are displayed. View alert events
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1824,7 +1825,7 @@ the alert events. Handle alert events
 section, click Server Guard.
 3. In the left-side navigation pane, click Int rusions.
 4. On the Int rusions page, find the alert event that you want to handle and click Handle in the
-Act ions column. In the dialog box that appears, configure Process Method and click Process Now. If the alert event is related to multiple exceptions, the panel that shows alert event details appears after you click Handle. You can handle the exceptions in the panel. Ignore: If you ignore the alert event, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. Add T o Whit elist : If the alert event is a false positive, you can add the alert event to the whitelist. Then, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. In the Handled list, you can click Cancel whit elist to remove the alert event from the whitelist. When Server Guard generates a false alert on a normal process, this alert is considered a false positive. A common false positive is a suspicious process t hat sends T CP packet s. The false positive notifies you that suspicious scans on other devices are detected on your servers. Bat ch unhandled: This method allows you to batch handle multiple alert events. Before you batch handle multiple alert events, we recommend that you view the details about the alert events.
+Act ions column. In the dialog box that appears, configure Process Method and click Process Now. Not e If the alert event is related to multiple exceptions, the panel that shows alert event details appears after you click Handle. You can handle the exceptions in the panel. Ignore: If you ignore the alert event, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. Add T o Whit elist : If the alert event is a false positive, you can add the alert event to the whitelist. Then, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. In the Handled list, you can click Cancel whit elist to remove the alert event from the whitelist. Not e When Server Guard generates a false alert on a normal process, this alert is considered a false positive. A common false positive is a suspicious process t hat sends T CP packet s. The false positive notifies you that suspicious scans on other devices are detected on your servers. Bat ch unhandled: This method allows you to batch handle multiple alert events. Before you batch handle multiple alert events, we recommend that you view the details about the alert events.
 5. (Optional)If you confirm that one or more alert events are false positives or need to be ignored, go
 to the Int rusions page. Then, select the alert events and click Ignore Once or Whit elist . Export alert events
 1. Log on to Apsara Stack Security Center.
@@ -1838,7 +1839,7 @@ The alert list is downloaded to your computer.
 
 ##### 6.4.1.3 View exceptions related to an alert
 
-Server Guard supports automatic analysis of exceptions related to an alert. You can click an alert name in the alert list to view and handle all exceptions that are related to the alert. You can also view the results of automatic attack tracing to analyze the exceptions. Context Security Center automatically associates alerts with exceptions in real time to detect potential threats. Exceptions related to an alert are listed in chronological order. This allows you to analyze and handle the exceptions to improve the emergency response mechanism of your system. An automatically correlated alert is identified by the icon.
+Server Guard supports automatic analysis of exceptions related to an alert. You can click an alert name in the alert list to view and handle all exceptions that are related to the alert. You can also view the results of automatic attack tracing to analyze the exceptions. Context Security Center automatically associates alerts with exceptions in real time to detect potential threats. Exceptions related to an alert are listed in chronological order. This allows you to analyze and handle the exceptions to improve the emergency response mechanism of your system. An automatically correlated alert is identified by the icon. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1850,7 +1851,7 @@ exceptions. View alert details You can view the assets that are affected by the 
 
 ##### 6.4.1.4 Use the file quarantine feature
 
-Sever Guard can quarantine malicious files. Quarantined files are listed in the Quarantine panel of the Intrusions page. You can restore a quarantined file with a few clicks. However, 30 days after a file is quarantined, the system automatically deletes the file. This topic describes how to view and restore quarantined files.
+Sever Guard can quarantine malicious files. Quarantined files are listed in the Quarantine panel of the Intrusions page. You can restore a quarantined file with a few clicks. However, 30 days after a file is quarantined, the system automatically deletes the file. This topic describes how to view and restore quarantined files. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1860,13 +1861,13 @@ In the Quarant ine panel, you can perform the following operations: View informa
 
 ##### 6.4.1.5 Configure alerts
 
-This topic describes how to configure alerts. You can specify approved logon locations and customize web directories to scan. Context Server Guard supports advanced logon settings. You can configure more fine-grained logon detection rules. For example, you can specify approved logon IP addresses, logon time ranges, and logon accounts to block unauthorized requests that are sent to your assets.
+This topic describes how to configure alerts. You can specify approved logon locations and customize web directories to scan. Context Server Guard supports advanced logon settings. You can configure more fine-grained logon detection rules. For example, you can specify approved logon IP addresses, logon time ranges, and logon accounts to block unauthorized requests that are sent to your assets. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
 3. In the left-side navigation pane, click Int rusions.
 4. In the upper-right corner of the page that appears, click Set t ings.
-Configure the parameters on different tabs. Add an approved logon locat ion a. In the Login Locat ion section, click Management on the right. b. Select the logon location that you want to specify as the approved logon location and select the servers that allow logons from the specified location. c. Click Ok. Server Guard allows you to edit or delet e approved logon locations that you have specified. To change the servers that allow logons from an approved location, find the approved location and click Edit on the right. To delete an approved logon location, find the logon location and click Delet e on the right. Conf igure advanced logon set t ings When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After the advanced logon settings are configured, Server Guard generates alerts if your assets receive unauthorized logon requests. The procedure of configuring advanced logon settings is similar to the procedure of configuring Login Locat ion. You can add, edit , or delet e advanced logon settings in a similar manner. Turn on or turn off Uncommon IP Alert to the right of Common Login IPs. If you turn on Uncommon IP Alert and your assets receive logon requests from unapproved IP addresses, alerts are triggered. Turn on or turn off Uncommon Time Alert to the right of Common Login T ime. If you turn on Uncommon Time Alert and your assets receive logon requests during unapproved time ranges, alerts are triggered. Turn on or turn off Uncommon Account Alert to the right of Common Login Account s. If you turn on Uncommon Account Alert and your assets receive logon requests from unapproved accounts, alerts are triggered. Add web direct ories t o scan Server Guard automatically scans web directories of data assets in your servers and runs dynamic and static scan tasks. You can also manually add other web directories. a. In the Add Scan T arget s section, click Management on the right. b. Specify a valid web directory and select the servers on which the specified web directory is scanned. To ensure the scan performance and efficiency, we recommend that you do not specify a root directory. c. Click Ok.
+Configure the parameters on different tabs. Add an approved logon locat ion a. In the Login Locat ion section, click Management on the right. b. Select the logon location that you want to specify as the approved logon location and select the servers that allow logons from the specified location. c. Click Ok. Server Guard allows you to edit or delet e approved logon locations that you have specified. To change the servers that allow logons from an approved location, find the approved location and click Edit on the right. To delete an approved logon location, find the logon location and click Delet e on the right. Conf igure advanced logon set t ings Not e When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After the advanced logon settings are configured, Server Guard generates alerts if your assets receive unauthorized logon requests. The procedure of configuring advanced logon settings is similar to the procedure of configuring Login Locat ion. You can add, edit , or delet e advanced logon settings in a similar manner. Turn on or turn off Uncommon IP Alert to the right of Common Login IPs. If you turn on Uncommon IP Alert and your assets receive logon requests from unapproved IP addresses, alerts are triggered. Turn on or turn off Uncommon Time Alert to the right of Common Login T ime. If you turn on Uncommon Time Alert and your assets receive logon requests during unapproved time ranges, alerts are triggered. Turn on or turn off Uncommon Account Alert to the right of Common Login Account s. If you turn on Uncommon Account Alert and your assets receive logon requests from unapproved accounts, alerts are triggered. Add web direct ories t o scan Server Guard automatically scans web directories of data assets in your servers and runs dynamic and static scan tasks. You can also manually add other web directories. a. In the Add Scan T arget s section, click Management on the right. b. Specify a valid web directory and select the servers on which the specified web directory is scanned. Not e To ensure the scan performance and efficiency, we recommend that you do not specify a root directory. c. Click Ok.
 
 ##### 6.4.1.6 Cloud threat detection
 
@@ -1886,7 +1887,7 @@ The cloud threat detection feature provided by Server Guard is integrated with w
 | Computer virus | A computer virus inserts malicious code into normal programs and replicates the code to infect the whole system. |
 | Malicious program | A malicious program may pose threats to system and data security. |
 
-Benefits Self -developed and cont rollable: The cloud threat detection feature is based on deep learning, machine learning, and big data analytics with a large number of attack and defense practices. The feature uses multiple detection engines to dynamically protect your assets against viruses. Light weight : The cloud threat detection feature consumes only 1% of CPU resources and 50 MB of memory. Dynamic: The cloud threat detection feature dynamically retrieves startup logs of processes to monitor the startup of viruses. Easy t o manage: You can manage all servers and view their status at any time in the Security Center console. Threat detection limits Apsara Stack Security Center allows you to detect and process security alerts, scan for and fix vulnerabilities, analyze attacks, and check security settings. Apsara Stack Security Center can analyze alerts and automatically trace attacks. This allows you to protect your assets. Apsara Stack Security supports a wide range of protection features. We recommend that you install the latest system patches on your assets. We also recommend that you use security services, such as Cloud Firewall and Web Application Firewall (WAF), to better protect your assets against attacks. Attacks and viruses are evolving, and security breaches may occur in various business environments. We recommend that you use the alerting, vulnerability detection, baseline check, and configuration assessment features provided by Apsara Stack Security to better protect your assets against attacks.
+Benefits Self -developed and cont rollable: The cloud threat detection feature is based on deep learning, machine learning, and big data analytics with a large number of attack and defense practices. The feature uses multiple detection engines to dynamically protect your assets against viruses. Light weight : The cloud threat detection feature consumes only 1% of CPU resources and 50 MB of memory. Dynamic: The cloud threat detection feature dynamically retrieves startup logs of processes to monitor the startup of viruses. Easy t o manage: You can manage all servers and view their status at any time in the Security Center console. Threat detection limits Apsara Stack Security Center allows you to detect and process security alerts, scan for and fix vulnerabilities, analyze attacks, and check security settings. Apsara Stack Security Center can analyze alerts and automatically trace attacks. This allows you to protect your assets. Apsara Stack Security supports a wide range of protection features. We recommend that you install the latest system patches on your assets. We also recommend that you use security services, such as Cloud Firewall and Web Application Firewall (WAF), to better protect your assets against attacks. Not e Attacks and viruses are evolving, and security breaches may occur in various business environments. We recommend that you use the alerting, vulnerability detection, baseline check, and configuration assessment features provided by Apsara Stack Security to better protect your assets against attacks.
 
 #### 6.4.2 Website tamper-proofing
 
@@ -1900,11 +1901,11 @@ Tamper protection monitors website directories in real time, restores modified f
 | CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, and 7.6 | 2.6.32-x 3.10.0-x |
 | Ubuntu | 14, 16, and 18 | 3.13.0-32-generic 3.13.0-86-generic 4.4.0-62-generic 4.4.0-63-generic 4.4.0-93-generic 4.4.0-151-generic 4.4.0-117-generic 4.15.0-23-generic 4.15.0-42-generic 4.15.0-45-generic 4.15.0-52-generic |
 
-The preceding table lists kernel versions supported by tamper protection. Servers that use an unsupported kernel version cannot use tamper protection. Make sure that your server uses a supported kernel version. If a kernel version is not supported, you must upgrade it to a supported version. Otherwise, you cannot add processes to the whitelist. Before you upgrade the server kernel, back up your asset data.
+Not e The preceding table lists kernel versions supported by tamper protection. Servers that use an unsupported kernel version cannot use tamper protection. Make sure that your server uses a supported kernel version. If a kernel version is not supported, you must upgrade it to a supported version. Otherwise, you cannot add processes to the whitelist. Before you upgrade the server kernel, back up your asset data.
 
 ##### 6.4.2.2 Configure tamper protection
 
-The Server Security feature allows you to configure tamper protection for web pages. Limits For each server, you can add a maximum of 10 directories for protection. If you want to add directories that are on a Windows server, the directories must meet the following requirements: The size of each directory does not exceed 20 GB. Each directory contains no more than 2,000 folders. The number of directory levels does not exceed 20. The size of each file does not exceed 3 MB. If you want to add directories that are on a Linux server, the directories must meet the following requirements: The size of each directory does not exceed 20 GB. Each directory contains no more than 3,000 folders. The number of directory levels does not exceed 20. The size of each file does not exceed 3 MB. Before you add a directory for protection, make sure that the directory meets the preceding requirements. We recommend that you exclude file formats that do not require protection, such as LOG, PNG, JPG, M P4, AVI, and MP3. Multiple file formats can be separated by semicolons (;).
+The Server Security feature allows you to configure tamper protection for web pages. Limits For each server, you can add a maximum of 10 directories for protection. If you want to add directories that are on a Windows server, the directories must meet the following requirements: The size of each directory does not exceed 20 GB. Each directory contains no more than 2,000 folders. The number of directory levels does not exceed 20. The size of each file does not exceed 3 MB. If you want to add directories that are on a Linux server, the directories must meet the following requirements: The size of each directory does not exceed 20 GB. Each directory contains no more than 3,000 folders. The number of directory levels does not exceed 20. The size of each file does not exceed 3 MB. Before you add a directory for protection, make sure that the directory meets the preceding requirements. We recommend that you exclude file formats that do not require protection, such as LOG, PNG, JPG, M P4, AVI, and MP3. Multiple file formats can be separated by semicolons (;). Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -1932,9 +1933,9 @@ The following table describes the parameters that you must configure if you sele
 | Local Backup Directory | The default path in which backup files of the protected directories are stored. By default, Apsara Stack Security assigns /usr/local/aegis/bak to Linux servers and C:\Program Files (x86)\Alibaba\Aegis\bak to Windows servers. You can change the default path based on your business requirements. |
 
 8. Click Enable Prot ect ion.
-After you enable this feature for a server, the server name is displayed on the Management tab of the T amper Prot ect ion page. By default, tamper protection is in the Of f state for the server. To enable tamper protection for the server, you must t urn on the switch in the Protection column on the T amper Prot ect ion page.
+After you enable this feature for a server, the server name is displayed on the Management tab of the T amper Prot ect ion page. Not e By default, tamper protection is in the Of f state for the server. To enable tamper protection for the server, you must t urn on the switch in the Protection column on the T amper Prot ect ion page.
 9. On the T amper Prot ect ion page, find the server that you add. Then, click the Management tab
-and turn on the switch in the Prot ect ion column to enable tamper protection for the server. By default, tamper protection is in the Of f state for the server. To enable tamper protection for the server, you must turn on the switch in the Protection column on the T amper Prot ect ion page. After tamper protection is enabled, the status of the server changes to Running. If the status of the server is Except ion, move the pointer over Except ion in the Status column to view the cause and click Ret ry to enable tamper protection again. What to do next After you enable tamper protection for a server, you can go to the Alert s page and select Webpage Tampering from the alert type drop-down list to view the alerts generated upon tampering events. Tamper protection does not take effect immediately after you configure the protected directory, and you can still write files to the directory. In this case, you must go to the Management page, disable Prot ect ion for the server where the directory is located, and then enable Prot ect ion again. Handling suggestions for abnormal protection states
+and turn on the switch in the Prot ect ion column to enable tamper protection for the server. Not e By default, tamper protection is in the Of f state for the server. To enable tamper protection for the server, you must turn on the switch in the Protection column on the T amper Prot ect ion page. After tamper protection is enabled, the status of the server changes to Running. If the status of the server is Except ion, move the pointer over Except ion in the Status column to view the cause and click Ret ry to enable tamper protection again. What to do next After you enable tamper protection for a server, you can go to the Alert s page and select Webpage Tampering from the alert type drop-down list to view the alerts generated upon tampering events. Not e Tamper protection does not take effect immediately after you configure the protected directory, and you can still write files to the directory. In this case, you must go to the Management page, disable Prot ect ion for the server where the directory is located, and then enable Prot ect ion again. Handling suggestions for abnormal protection states
 
 | State | Description | Suggestion |
 |---|---|---|
@@ -1948,7 +1949,7 @@ and turn on the switch in the Prot ect ion column to enable tamper protection fo
 This topic describes how to view the status of tamper protection for your assets. Context The tamper protection feature monitors changes to the files in website directories in real time and blocks suspicious file changes. To view the status of and details about the tamper protection feature, you must log on to Apsara Stack Security Center and choose Server Securit y > Int rusion Prevent ion
 > File T amper Prot ect ion. The following information is displayed:
 
-Tamper protection overview You can view the numbers of files that are changed on the current day and in the last 15 days, the number of protected servers, and the number of protected directories. Distribution of protected file types Protected file types include TXT, PNG, MSI, and ZIP. You can also add more types of files for tamper protection based on your business requirements. All types of files for tamper protection can be added. Top five files This section shows the names and paths of the top five files that are ranked based on the number of changes to files in descending order in the last 15 days. Tamper protection alerts This section lists the alerts generated for blocked suspicious changes to files for your assets. You can view details about the alerts, including the severity, alert name, affected assets, paths of files with suspicious changes, and protection status. If an alert is reported more than 100 times, we recommend that you handle the alert at your earliest opportunity. Only alerts at the Medium level are displayed in the console. Only alerts in the Def ended state are displayed. These alerts are triggered when the tamper protection feature blocks suspicious processes that attempt to modify files without authorization.
+Tamper protection overview You can view the numbers of files that are changed on the current day and in the last 15 days, the number of protected servers, and the number of protected directories. Distribution of protected file types Protected file types include TXT, PNG, MSI, and ZIP. You can also add more types of files for tamper protection based on your business requirements. Not e All types of files for tamper protection can be added. Top five files This section shows the names and paths of the top five files that are ranked based on the number of changes to files in descending order in the last 15 days. Tamper protection alerts This section lists the alerts generated for blocked suspicious changes to files for your assets. You can view details about the alerts, including the severity, alert name, affected assets, paths of files with suspicious changes, and protection status. Not e If an alert is reported more than 100 times, we recommend that you handle the alert at your earliest opportunity. Only alerts at the Medium level are displayed in the console. Only alerts in the Def ended state are displayed. These alerts are triggered when the tamper protection feature blocks suspicious processes that attempt to modify files without authorization.
 
 #### 6.4.3 Configure the antivirus feature
 
@@ -1987,7 +1988,7 @@ The log retrieval function provided by Server Security allows you to manage logs
 
 #### 6.5.2 Query logs
 
-This topic describes how to search for and view server logs.
+This topic describes how to search for and view server logs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2150,7 +2151,7 @@ The log retrieval feature supports multiple search conditions. You can add multi
 
 #### 6.6.1 Install the Server Guard agent
 
-This topic describes how to install the Server Guard agent. Context To use the protection features provided by Server Guard, you must install the Server Guard agent on the operating system of your server.
+This topic describes how to install the Server Guard agent. Context To use the protection features provided by Server Guard, you must install the Server Guard agent on the operating system of your server. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2163,7 +2164,7 @@ Windows a. In the left-side pane of the page, click Click t o download to downlo
 
 #### 6.6.2 Manage protection modes
 
-This topic describes how to manage protection modes for a server to improve the performance and security of the server.
+This topic describes how to manage protection modes for a server to improve the performance and security of the server. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2176,13 +2177,13 @@ Configure protection modes for servers. Business First Mode: In this mode, the p
 
 ### 7.1 Create and grant permissions to a security administrator account
 
-security administrator account The physical server security feature is used to ensure the security of physical servers on the platform side. This feature requires you to use a dedicated security administrator account for the platform. This topic describes how to create and grant permissions to a security administrator account.
+security administrator account The physical server security feature is used to ensure the security of physical servers on the platform side. This feature requires you to use a dedicated security administrator account for the platform. This topic describes how to create and grant permissions to a security administrator account. Procedure
 1. Log on to the Apsara Uni-manager Management Console as a system administrator.
 For more information, see the "Log on t o t he Apsara Uni-manager Management Console" topic of Apsara Uni-manager Management Console User Guide.
 2. Create a dedicated organization that is used to manage the security of physical servers, and obtain
 the primary key of the organization. Not ice Make sure that the organization is used only to manage the security of physical servers. Do not add Elastic Compute Service (ECS) instances to the organization. i. Create the dedicated organization. For more information, see Ent erprise Cent er > Organizat ion Management > Creat e Organizat ion in Apsara Uni-manager Management Console User Guide. ii. Obtain the primary key of the newly created organization. For more information, see Ent erprise Cent er > Organizat ion Management > Obt ain t he AccessKey pair of an organizat ion in Apsara Uni-manager Management Console User Guide.
 3. Create a dedicated account to manage the security of physical servers.
-For more information, see Ent erprise Cent er > User Management > Syst em User Management > Creat e User in Apsara Uni-manager Management Console User Guide. When you create the account, take note of the following points for the organizat ion and role: In the Organizat ion section, select the organization that is created in the previous step. In the Role section, select Plat f orm Securit y Conf igurat ion Administ rat or and Securit y Syst em Conf igurat ion Administ rat or.
+For more information, see Ent erprise Cent er > User Management > Syst em User Management > Creat e User in Apsara Uni-manager Management Console User Guide. Not e When you create the account, take note of the following points for the organizat ion and role: In the Organizat ion section, select the organization that is created in the previous step. In the Role section, select Plat f orm Securit y Conf igurat ion Administ rat or and Securit y Syst em Conf igurat ion Administ rat or.
 4. Log on to Apsara Stack Security Center by using the newly created account.
 For more information, see Log on to Apsara Stack Security Center.
 5. Add the primary key of the newly created organization to the protection configuration of
@@ -2199,15 +2200,15 @@ For more information about the Apsara Stack tenant account, see Create and grant
 section, click Server Guard.
 3. In the left-side navigation pane, choose Physical Server Securit y > Servers.
 4. In the left-side group pane, manage sever groups.
-Create a group. Click the Add Subgroup icon next to All Servers or a specific group, enter a group name, and click OK. The system supports a maximum of three levels of groups. Modify a group. Click the Modify Group Name icon next to the target group, enter a new name, and click OK. Delete a group. Click the Delete icon next to the target group. In the message that appears, click OK. After you delete a group, all servers in the group are automatically moved to the def ault group. Sort groups. Click Manage Groups to sort groups in descending order by priority.
+Create a group. Click the Add Subgroup icon next to All Servers or a specific group, enter a group name, and click OK. Not e The system supports a maximum of three levels of groups. Modify a group. Click the Modify Group Name icon next to the target group, enter a new name, and click OK. Delete a group. Click the Delete icon next to the target group. In the message that appears, click OK. Not e After you delete a group, all servers in the group are automatically moved to the def ault group. Sort groups. Click Manage Groups to sort groups in descending order by priority.
 5. Change the server group of specific physical servers.
 i. Select servers from the list on the right. ii. Click Change Group. iii. In the Change Group dialog box that appears, select a group from the drop-down list. iv. Click OK.
 
 #### 7.2.2 Manage physical servers
 
-This topic describes how to manage servers. On the Servers page, you can view the status of servers protected by Server Guard.
+This topic describes how to manage servers. On the Servers page, you can view the status of servers protected by Server Guard. Procedure
 1. Log on to Apsara Stack Security Center.
-For more information about the Apsara Stack tenant account, see Create and grant permissions to a security administrator account.
+Not e For more information about the Apsara Stack tenant account, see Create and grant permissions to a security administrator account.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
 3. In the left-side navigation pane, click Servers.
@@ -2269,7 +2270,7 @@ If Server Guard detects sensitive file tampering, suspicious processes, webshell
 
 #### 7.3.2 View and handle alert events
 
-This topic describes how to view and handle detected alert events on the Intrusions page. Background information After alert events are detected, the alerts events are displayed on the Int rusions page in Apsara Stack Security Center. If the detected alert events are not handled, they are displayed in the Unhandled Alert s list on the Int rusions page. After the alert events are handled, the status of the alert events changes from Unhandled Alert s to Handled. Apsara Stack Security Center retains the records of Unhandled Alert s and Handled on the Int rusions page. By default, the records of Unhandled Alert s are displayed. View alert events
+This topic describes how to view and handle detected alert events on the Intrusions page. Background information After alert events are detected, the alerts events are displayed on the Int rusions page in Apsara Stack Security Center. If the detected alert events are not handled, they are displayed in the Unhandled Alert s list on the Int rusions page. After the alert events are handled, the status of the alert events changes from Unhandled Alert s to Handled. Not e Apsara Stack Security Center retains the records of Unhandled Alert s and Handled on the Int rusions page. By default, the records of Unhandled Alert s are displayed. View alert events
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2281,7 +2282,7 @@ the alert events. Handle alert events
 section, click Server Guard.
 3. In the left-side navigation pane, click Int rusions.
 4. On the Int rusions page, find the alert event that you want to handle and click Handle in the
-Act ions column. In the dialog box that appears, configure Process Method and click Process Now. If the alert event is related to multiple exceptions, the panel that shows alert event details appears after you click Handle. You can handle the exceptions in the panel. Ignore: If you ignore the alert event, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. Add T o Whit elist : If the alert event is a false positive, you can add the alert event to the whitelist. Then, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. In the Handled list, you can click Cancel whit elist to remove the alert event from the whitelist. When Server Guard generates a false alert on a normal process, this alert is considered a false positive. A common false positive is a suspicious process t hat sends T CP packet s. The false positive notifies you that suspicious scans on other devices are detected on your servers. Bat ch unhandled: This method allows you to batch handle multiple alert events. Before you batch handle multiple alert events, we recommend that you view the details about the alert events.
+Act ions column. In the dialog box that appears, configure Process Method and click Process Now. Not e If the alert event is related to multiple exceptions, the panel that shows alert event details appears after you click Handle. You can handle the exceptions in the panel. Ignore: If you ignore the alert event, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. Add T o Whit elist : If the alert event is a false positive, you can add the alert event to the whitelist. Then, the status of the alert event changes to Handled. Server Guard no longer generates alerts for the event. In the Handled list, you can click Cancel whit elist to remove the alert event from the whitelist. Not e When Server Guard generates a false alert on a normal process, this alert is considered a false positive. A common false positive is a suspicious process t hat sends T CP packet s. The false positive notifies you that suspicious scans on other devices are detected on your servers. Bat ch unhandled: This method allows you to batch handle multiple alert events. Before you batch handle multiple alert events, we recommend that you view the details about the alert events.
 5. (Optional)If you confirm that one or more alert events are false positives or need to be ignored, go
 to the Int rusions page. Then, select the alert events and click Ignore Once or Whit elist . Export alert events
 1. Log on to Apsara Stack Security Center.
@@ -2295,7 +2296,7 @@ The alert list is downloaded to your computer.
 
 #### 7.3.3 View exceptions related to an alert
 
-Server Guard supports automatic analysis of exceptions related to an alert. You can click an alert name in the alert list to view and handle all exceptions that are related to the alert. You can also view the results of automatic attack tracing to analyze the exceptions. Context Security Center automatically associates alerts with exceptions in real time to detect potential threats. Exceptions related to an alert are listed in chronological order. This allows you to analyze and handle the exceptions to improve the emergency response mechanism of your system. An automatically correlated alert is identified by the icon.
+Server Guard supports automatic analysis of exceptions related to an alert. You can click an alert name in the alert list to view and handle all exceptions that are related to the alert. You can also view the results of automatic attack tracing to analyze the exceptions. Context Security Center automatically associates alerts with exceptions in real time to detect potential threats. Exceptions related to an alert are listed in chronological order. This allows you to analyze and handle the exceptions to improve the emergency response mechanism of your system. An automatically correlated alert is identified by the icon. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2307,7 +2308,7 @@ exceptions. View alert details You can view the assets that are affected by the 
 
 #### 7.3.4 Use the file quarantine feature
 
-Sever Guard can quarantine malicious files. Quarantined files are listed in the Quarantine panel of the Intrusions page. You can restore a quarantined file with a few clicks. However, 30 days after a file is quarantined, the system automatically deletes the file. This topic describes how to view and restore quarantined files.
+Sever Guard can quarantine malicious files. Quarantined files are listed in the Quarantine panel of the Intrusions page. You can restore a quarantined file with a few clicks. However, 30 days after a file is quarantined, the system automatically deletes the file. This topic describes how to view and restore quarantined files. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2317,13 +2318,13 @@ In the Quarant ine panel, you can perform the following operations: View informa
 
 #### 7.3.5 Configure alerts
 
-This topic describes how to configure alerts. You can specify approved logon locations and customize web directories to scan. Context Server Guard supports advanced logon settings. You can configure more fine-grained logon detection rules. For example, you can specify approved logon IP addresses, logon time ranges, and logon accounts to block unauthorized requests that are sent to your assets.
+This topic describes how to configure alerts. You can specify approved logon locations and customize web directories to scan. Context Server Guard supports advanced logon settings. You can configure more fine-grained logon detection rules. For example, you can specify approved logon IP addresses, logon time ranges, and logon accounts to block unauthorized requests that are sent to your assets. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
 3. In the left-side navigation pane, click Int rusions.
 4. In the upper-right corner of the page that appears, click Set t ings.
-Configure the parameters on different tabs. Add an approved logon locat ion a. In the Login Locat ion section, click Management on the right. b. Select the logon location that you want to specify as the approved logon location and select the servers that allow logons from the specified location. c. Click Ok. Server Guard allows you to edit or delet e approved logon locations that you have specified. To change the servers that allow logons from an approved location, find the approved location and click Edit on the right. To delete an approved logon location, find the logon location and click Delet e on the right. Conf igure advanced logon set t ings When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After the advanced logon settings are configured, Server Guard generates alerts if your assets receive unauthorized logon requests. The procedure of configuring advanced logon settings is similar to the procedure of configuring Login Locat ion. You can add, edit , or delet e advanced logon settings in a similar manner. Turn on or turn off Uncommon IP Alert to the right of Common Login IPs. If you turn on Uncommon IP Alert and your assets receive logon requests from unapproved IP addresses, alerts are triggered. Turn on or turn off Uncommon Time Alert to the right of Common Login T ime. If you turn on Uncommon Time Alert and your assets receive logon requests during unapproved time ranges, alerts are triggered. Turn on or turn off Uncommon Account Alert to the right of Common Login Account s. If you turn on Uncommon Account Alert and your assets receive logon requests from unapproved accounts, alerts are triggered. Add web direct ories t o scan Server Guard automatically scans web directories of data assets in your servers and runs dynamic and static scan tasks. You can also manually add other web directories. a. In the Add Scan T arget s section, click Management on the right. b. Specify a valid web directory and select the servers on which the specified web directory is scanned. To ensure the scan performance and efficiency, we recommend that you do not specify a root directory. c. Click Ok.
+Configure the parameters on different tabs. Add an approved logon locat ion a. In the Login Locat ion section, click Management on the right. b. Select the logon location that you want to specify as the approved logon location and select the servers that allow logons from the specified location. c. Click Ok. Server Guard allows you to edit or delet e approved logon locations that you have specified. To change the servers that allow logons from an approved location, find the approved location and click Edit on the right. To delete an approved logon location, find the logon location and click Delet e on the right. Conf igure advanced logon set t ings When you configure advanced logon settings, you can specify the IP addresses, accounts, and time ranges that are allowed for logons to your assets. After the advanced logon settings are configured, Server Guard generates alerts if your assets receive unauthorized logon requests. The procedure of configuring advanced logon settings is similar to the procedure of configuring Login Locat ion. You can add, edit , or delet e advanced logon settings in a similar manner. Turn on or turn off Uncommon IP Alert to the right of Common Login IPs. If you turn on Uncommon IP Alert and your assets receive logon requests from unapproved IP addresses, alerts are triggered. Turn on or turn off Uncommon Time Alert to the right of Common Login T ime. If you turn on Uncommon Time Alert and your assets receive logon requests during unapproved time ranges, alerts are triggered. Turn on or turn off Uncommon Account Alert to the right of Common Login Account s. If you turn on Uncommon Account Alert and your assets receive logon requests from unapproved accounts, alerts are triggered. Add web direct ories t o scan Server Guard automatically scans web directories of data assets in your servers and runs dynamic and static scan tasks. You can also manually add other web directories. a. In the Add Scan T arget s section, click Management on the right. b. Specify a valid web directory and select the servers on which the specified web directory is scanned. Not e To ensure the scan performance and efficiency, we recommend that you do not specify a root directory. c. Click Ok.
 
 #### 7.3.6 Cloud threat detection
 
@@ -2340,13 +2341,13 @@ The cloud threat detection feature provided by Server Guard is integrated with w
 | Computer virus | A computer virus inserts malicious code into normal programs and replicates the code to infect the whole system. |
 | Malicious program | A malicious program may pose threats to system and data security. |
 
-Benefits Self -developed and cont rollable: The cloud threat detection feature is based on deep learning, machine learning, and big data analytics with a large number of attack and defense practices. The feature uses multiple detection engines to dynamically protect your assets against viruses. Light weight : The cloud threat detection feature consumes only 1% of CPU resources and 50 MB of memory. Dynamic: The cloud threat detection feature dynamically retrieves startup logs of processes to monitor the startup of viruses. Easy t o manage: You can manage all servers and view their status at any time in the Security Center console. Threat detection limits Apsara Stack Security Center allows you to detect and process security alerts, scan for and fix vulnerabilities, analyze attacks, and check security settings. Apsara Stack Security Center can analyze alerts and automatically trace attacks. This allows you to protect your assets. Apsara Stack Security supports a wide range of protection features. We recommend that you install the latest system patches on your assets. We also recommend that you use security services, such as Cloud Firewall and Web Application Firewall (WAF), to better protect your assets against attacks. Attacks and viruses are evolving, and security breaches may occur in various business environments. We recommend that you use the alerting, vulnerability detection, baseline check, and configuration assessment features provided by Apsara Stack Security to better protect your assets against attacks.
+Benefits Self -developed and cont rollable: The cloud threat detection feature is based on deep learning, machine learning, and big data analytics with a large number of attack and defense practices. The feature uses multiple detection engines to dynamically protect your assets against viruses. Light weight : The cloud threat detection feature consumes only 1% of CPU resources and 50 MB of memory. Dynamic: The cloud threat detection feature dynamically retrieves startup logs of processes to monitor the startup of viruses. Easy t o manage: You can manage all servers and view their status at any time in the Security Center console. Threat detection limits Apsara Stack Security Center allows you to detect and process security alerts, scan for and fix vulnerabilities, analyze attacks, and check security settings. Apsara Stack Security Center can analyze alerts and automatically trace attacks. This allows you to protect your assets. Apsara Stack Security supports a wide range of protection features. We recommend that you install the latest system patches on your assets. We also recommend that you use security services, such as Cloud Firewall and Web Application Firewall (WAF), to better protect your assets against attacks. Not e Attacks and viruses are evolving, and security breaches may occur in various business environments. We recommend that you use the alerting, vulnerability detection, baseline check, and configuration assessment features provided by Apsara Stack Security to better protect your assets against attacks.
 
 ### 7.4 Server fingerprints
 
 #### 7.4.1 Manage listening ports
 
-This topic describes how to view information about the listening port of a server. The information helps you identify suspicious listening behavior. Context This topic is suitable for the following scenarios: Check for servers that listen on a specific port. Check for ports that a specific server listens.
+This topic describes how to view information about the listening port of a server. The information helps you identify suspicious listening behavior. Context This topic is suitable for the following scenarios: Check for servers that listen on a specific port. Check for ports that a specific server listens. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2356,7 +2357,7 @@ and server information. You can search for a port by using the port number, serv
 
 #### 7.4.2 Manage software versions
 
-This topic describes how to regularly view and collect the software version information about a server. This helps you check your software assets. Context This topic covers the following scenarios: Check for software assets that are installed without authorization. Check for outdated software assets. Locate affected assets if vulnerabilities are detected.
+This topic describes how to regularly view and collect the software version information about a server. This helps you check your software assets. Context This topic covers the following scenarios: Check for software assets that are installed without authorization. Check for outdated software assets. Locate affected assets if vulnerabilities are detected. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Server Securit y >
 Sever Guard.
@@ -2368,7 +2369,7 @@ software. You can click the icon in the upper-right corner to download a softwar
 
 #### 7.4.3 Manage processes
 
-This topic describes how to regularly collect the process information on a server and record changes. This way, you can view process information and historical process changes. Context This task is suitable for the following scenarios: Check for servers on which a specific process runs. Check for processes that run on a specific server.
+This topic describes how to regularly collect the process information on a server and record changes. This way, you can view process information and historical process changes. Context This task is suitable for the following scenarios: Check for servers on which a specific process runs. Check for processes that run on a specific server. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2380,7 +2381,7 @@ startup parameters.
 
 #### 7.4.4 Manage account information
 
-This topic describes how to regularly collect the account information on a server and record the changes to the accounts. This way, you can check your accounts and view historical changes to your accounts. Context You can use the information collected in this topic for the following scenarios: Check for servers on which a specific account is created. Check for accounts that are created on a server.
+This topic describes how to regularly collect the account information on a server and record the changes to the accounts. This way, you can check your accounts and view historical changes to your accounts. Context You can use the information collected in this topic for the following scenarios: Check for servers on which a specific account is created. Check for accounts that are created on a server. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2393,7 +2394,7 @@ group.
 
 #### 7.4.5 Manage scheduled tasks
 
-This topic describes how to view scheduled tasks on servers.
+This topic describes how to view scheduled tasks on servers. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
@@ -2579,9 +2580,9 @@ The log retrieval feature supports multiple search conditions. You can add multi
 
 #### 7.5.3 Query logs
 
-This topic describes how to search for and view physical server logs.
+This topic describes how to search for and view physical server logs. Procedure
 1. Log on to Apsara Stack Security Center.
-For more information about the Apsara Stack tenant account, see Create and grant permissions to a security administrator account.
+Not e For more information about the Apsara Stack tenant account, see Create and grant permissions to a security administrator account.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Server Securit y
 section, click Server Guard.
 3. In the left-side navigation pane, click Log Ret rieval.
@@ -2594,9 +2595,9 @@ Reset : Click Reset to clear the search condition configurations. Save Search: C
 
 ### physical servers
 
-This topic describes how to configure security settings for physical servers. You can enable or disable periodic trojan scans. You can also specify the working mode of the Server Guard agent.
+This topic describes how to configure security settings for physical servers. You can enable or disable periodic trojan scans. You can also specify the working mode of the Server Guard agent. Procedure
 1. Log on to Apsara Stack Security Center.
-For more information about the Apsara Stack tenant account, see Create and grant permissions to a security administrator account.
+Not e For more information about the Apsara Stack tenant account, see Create and grant permissions to a security administrator account.
 2. In the left-side navigation pane, choose Physical Server Securit y > Set t ings.
 3. Enable periodic trojan scans for physical servers.
 i. In the Trojan Scan section, click Manage. ii. In the All Servers section, select the physical servers on which you want to perform periodic trojan scans. Then, click the rightwards arrow. iii. Click OK.
@@ -2621,7 +2622,7 @@ For more information about how to view the protection overview, see View protect
 
 #### 8.2.1 View protection overview
 
-This topic describes how to view the Web Application Firewall (WAF) protection overview. Context The Detection Overview page displays information such as the statistics of previous attacks, the geographical distribution of attackers, the total number of requests, and the number of blocked requests. You can also view details about the attacks. This way, you can customize rules to protect your web services.
+This topic describes how to view the Web Application Firewall (WAF) protection overview. Context The Detection Overview page displays information such as the statistics of previous attacks, the geographical distribution of attackers, the total number of requests, and the number of blocked requests. You can also view details about the attacks. This way, you can customize rules to protect your web services. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -2642,13 +2643,13 @@ Securit y section, click Web Applicat ion Firewall.
 
 #### 8.3.1 View attack detection logs
 
-This topic describes how to view attack detection logs. Context These logs allow you to analyze attacks on your web services. You can update the protection policies and custom rules, and fix the web service vulnerabilities based on the analysis results.
+This topic describes how to view attack detection logs. Context These logs allow you to analyze attacks on your web services. You can update the protection policies and custom rules, and fix the web service vulnerabilities based on the analysis results. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
 3. In the left-side navigation pane, choose Det ect ion Logs > At t ack Det ect ion Logs.
 4. Click Filt er, specify filter conditions, and then click OK.
-If you specify multiple conditions, they are evaluated by using a logical AND. The system returns the required logs only when all the conditions are met.
+Not e If you specify multiple conditions, they are evaluated by using a logical AND. The system returns the required logs only when all the conditions are met.
 5. View the attack detection logs.
 
 #### 8.3.2 View HTTP flood protection logs
@@ -2659,13 +2660,13 @@ This topic describes how to view HTTP flood protection logs. Context These logs 
 Securit y section, click Web Applicat ion Firewall.
 3. In the left-side navigation pane, choose Det ect ion Logs > HT T P Flood Det ect ion Logs.
 4. Click Filt er, specify filter conditions, and then click OK.
-If you specify multiple conditions, they are evaluated by using a logical AND. The system returns the required logs only when all the conditions are met.
+Not e If you specify multiple conditions, they are evaluated by using a logical AND. The system returns the required logs only when all the conditions are met.
 5. View the HTTP flood detection logs.
 The blocked HTTP flood attacks, related rules, and attack time are displayed.
 
 #### 8.3.3 View bot verification logs
 
-This topic describes how to view bot verification logs. Context Bot verification logs can be used to analyze bot attacks on web services. You can update bot management rules based on the analysis results to improve the security of your web services.
+This topic describes how to view bot verification logs. Context Bot verification logs can be used to analyze bot attacks on web services. You can update bot management rules based on the analysis results to improve the security of your web services. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the top navigation bar, move the pointer over Securit y and choose Applicat ion Securit y >
 Web Applicat ion Firewall.
@@ -2678,7 +2679,7 @@ Logs. The log list displays the log content, verification result, rule name, sou
 
 #### 8.3.4 View system operation logs
 
-This topic describes how to view system operation logs.
+This topic describes how to view system operation logs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -2688,13 +2689,13 @@ The usernames, content, IP addresses, and creation time are displayed.
 
 #### 8.3.5 View access logs
 
-This topic describes how to view access logs.
+This topic describes how to view access logs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
 3. In the left-side navigation pane, choose Det ect ion Logs > Access Log.
 4. Click Filt er, specify filter conditions, and then click OK.
-If you specify multiple conditions, they are evaluated by using a logical AND. The system returns the required logs only when all the conditions are met.
+Not e If you specify multiple conditions, they are evaluated by using a logical AND. The system returns the required logs only when all the conditions are met.
 5. View the access logs.
 The requested addresses, destination IP addresses, source IP addresses, methods, response status codes, and time are displayed.
 
@@ -2702,7 +2703,7 @@ The requested addresses, destination IP addresses, source IP addresses, methods,
 
 #### 8.4.1 Configure protection policies
 
-This topic describes how to configure Web Application Firewall (WAF) protection policies. Context WAF provides a default protection policy. You can also customize protection policies to suit your business requirements.
+This topic describes how to configure Web Application Firewall (WAF) protection policies. Context WAF provides a default protection policy. You can also customize protection policies to suit your business requirements. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -2733,11 +2734,11 @@ For example, perform the following steps to configure modules in the At t ack De
 
 iii. Click OK.
 6. Manage protection policies.
-To delete a protection policy, select the protection policy. Then, in the upper-right corner, choose More > Delet e Select ed Prot ect ion Policies. In the message that appears, click OK. You cannot delete the default protection policy.
+To delete a protection policy, select the protection policy. Then, in the upper-right corner, choose More > Delet e Select ed Prot ect ion Policies. In the message that appears, click OK. Not e You cannot delete the default protection policy.
 
 #### 8.4.2 Create a custom rule
 
-This topic describes how to create a custom rule for Web Application Firewall (WAF). Context You can create custom rules to meet different requirements for intrusion detection. You can create, edit, or delete custom rules as an administrator. You can use custom rules to filter out requests that meet specific conditions. Multiple custom rules are evaluated by using a logical OR. If two custom rules use the same conditions but trigger different actions such as blocking traffic or allowing traffic, WAF runs the first rule.
+This topic describes how to create a custom rule for Web Application Firewall (WAF). Context You can create custom rules to meet different requirements for intrusion detection. You can create, edit, or delete custom rules as an administrator. You can use custom rules to filter out requests that meet specific conditions. Multiple custom rules are evaluated by using a logical OR. If two custom rules use the same conditions but trigger different actions such as blocking traffic or allowing traffic, WAF runs the first rule. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -2804,7 +2805,7 @@ Search for a rule. Click Filt er. In the Filt er It em panel, specify filter con
 
 #### 8.4.4 Configure the HTTP flood whitelist
 
-This topic describes how to configure the HTTP flood whitelist. Context If a request source is trusted, you can add this request source to the HTTP flood whitelist to allow all requests from this source.
+This topic describes how to configure the HTTP flood whitelist. Context If a request source is trusted, you can add this request source to the HTTP flood whitelist to allow all requests from this source. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -2871,19 +2872,19 @@ You can also click Edit in the Act ions column to modify the bot management rule
 
 #### 8.4.6 Manage SSL certificates
 
-This topic describes how to upload or delete SSL certificates. Context After you upload an SSL certificate on the Cert if icat e Management page, you can select this certificate when you add an HTTPS website for protection on the Prot ect ion Sit e Management page. When you add an HTTPS website for protection on the Prot ect ion Sit e Management page, you must select the SSL certificate that corresponds to the domain of the HTTPS website.
+This topic describes how to upload or delete SSL certificates. Context After you upload an SSL certificate on the Cert if icat e Management page, you can select this certificate when you add an HTTPS website for protection on the Prot ect ion Sit e Management page. Not e When you add an HTTPS website for protection on the Prot ect ion Sit e Management page, you must select the SSL certificate that corresponds to the domain of the HTTPS website. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
 3. In the left-side navigation pane, choose Prot ect ion Conf igurat ion > Cert if icat e Management .
 4. Upload a new certificate.
-i. Click Upload SSL Cert if icat e. ii. In the Name field, enter a name f or t he new cert if icat e. We recommend that you enter the domain name for easier management. If your Certificate Authority (CA) certificate and private key are in the same file, select Include privat e key in cert if icat e f ile. iii. In the File section, upload the CA certificate file and private key file. iv. Configure Cert if icat e Password. v. Click Conf irm.
+i. Click Upload SSL Cert if icat e. ii. In the Name field, enter a name f or t he new cert if icat e. We recommend that you enter the domain name for easier management. Not e If your Certificate Authority (CA) certificate and private key are in the same file, select Include privat e key in cert if icat e f ile. iii. In the File section, upload the CA certificate file and private key file. iv. Configure Cert if icat e Password. v. Click Conf irm.
 5. (Optional)Delete the uploaded SSL certificate.
 You can delete expired SSL certificates. i. In the SSL certificate list, select the certificate that you want to delete. ii. Choose More > Delet e select ed SSL cert if icat e. iii. In the message that appears, click OK.
 
 #### 8.4.7 Add Internet websites for protection
 
-This topic describes how to add Internet websites to Web Application Firewall (WAF). Context WAF can protect the following types of websites: Internet websites. Virtual Private Cloud (VPC) websites. For more information about how to add VPC websites to WAF, see Add a VPC website for protection.
+This topic describes how to add Internet websites to Web Application Firewall (WAF). Context WAF can protect the following types of websites: Internet websites. Virtual Private Cloud (VPC) websites. For more information about how to add VPC websites to WAF, see Add a VPC website for protection. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -2922,7 +2923,7 @@ Specify the Internet website that you want WAF to protect. WAF can protect both 
 |   | Response | The content to return. For example, you can upload an image for the Response parameter. If a user visits the website, WAF returns the uploaded image. |
 
 7. In the Protection Policy step, configure parameters and click Next. Then, go to the Finish step.
-You can configure a protection policy only if you set Request Processing Met hod to Forward t o Backend Server.
+Not e You can configure a protection policy only if you set Request Processing Met hod to Forward t o Backend Server.
 
 | Parameter | Description |
 |---|---|
@@ -2931,7 +2932,7 @@ You can configure a protection policy only if you set Request Processing Met hod
 
 #### 8.4.8 Add VPC websites for protection
 
-This topic describes how to add virtual private cloud (VPC) websites to Web Application Firewall (WAF) for protection. Context WAF can protect the following types of websites: Internet websites. For more information about how to add an Internet website for protection, see Add an Internet website for protection. VPC websites.
+This topic describes how to add virtual private cloud (VPC) websites to Web Application Firewall (WAF) for protection. Context WAF can protect the following types of websites: Internet websites. For more information about how to add an Internet website for protection, see Add an Internet website for protection. VPC websites. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Applicat ion
 Securit y > Web Applicat ion Firewall.
@@ -2985,10 +2986,10 @@ Specify the VPC website that you want WAF to protect. WAF can protect both HTTP 
 
 #### 8.4.9 Verify the configurations of a website on your on-premises server
 
-your on-premises server This topic describes how to verify the configurations of a website on your on-premises server. Context Before you use Web Application Firewall (WAF) to scrub traffic destined for a website, we recommend that you verify the configurations of the website on your on-premises server. After you add the virtual IP address and the domain of a website to the hosts file on your on-premises server, the request to access the domain from a local browser passes through WAF first.
+your on-premises server This topic describes how to verify the configurations of a website on your on-premises server. Context Before you use Web Application Firewall (WAF) to scrub traffic destined for a website, we recommend that you verify the configurations of the website on your on-premises server. After you add the virtual IP address and the domain of a website to the hosts file on your on-premises server, the request to access the domain from a local browser passes through WAF first. Procedure
 1. Log on to Apsara Stack Security Center.
 2. Add the virtual IP address and domain name to the hosts file on your on-premises server.
-If your computer runs Windows 7, the hosts file is stored in the following path: C:\Windows\Syst em32\drivers\etc\hosts. i. Open the hosts file by using a text editor, such as Notepad. ii. Add the following content to the end of the file: <The virtual IP address that is assigned by WAF ><Protected domain name>. The IP address preceding the domain name is the virtual IP address that is assigned by WAF.
+If your computer runs Windows 7, the hosts file is stored in the following path: C:\Windows\Syst em32\drivers\etc\hosts. i. Open the hosts file by using a text editor, such as Notepad. ii. Add the following content to the end of the file: <The virtual IP address that is assigned by WAF ><Protected domain name>. Not e The IP address preceding the domain name is the virtual IP address that is assigned by WAF.
 3. Ping the protected domain name from your on-premises server.
 The returned IP address must be the virtual IP address that is assigned by WAF in the hosts file. If the returned IP address is still the IP address of the origin server, refresh the local Domain Name System (DNS) cache.
 4. Enter the domain name in the address bar of your browser and press Enter.
@@ -2998,7 +2999,7 @@ Simulate a web attack request and check whether WAF blocks the request. For exam
 
 #### 8.4.10 Modify DNS resolution settings
 
-This topic describes how to modify the Domain Name System (DNS) resolution settings to connect your website to Web Application Firewall (WAF). Context Before you can modify the DNS resolution settings, you must verify the settings on your computer and make sure that the settings are correct. Then, the traffic destined for your website can be redirected to WAF after you modify the settings. The domain name of a protected website may not be resolved by a DNS provider. For example, a website may use a Server Load Balancer (SLB) instance to connect to the Internet. In this case, you can perform the following operation to protect the website by using WAF: Specify the virtual IP address that WAF assigns to your website as the back-to-origin IP address of the SLB instance.
+This topic describes how to modify the Domain Name System (DNS) resolution settings to connect your website to Web Application Firewall (WAF). Context Before you can modify the DNS resolution settings, you must verify the settings on your computer and make sure that the settings are correct. Then, the traffic destined for your website can be redirected to WAF after you modify the settings. The domain name of a protected website may not be resolved by a DNS provider. For example, a website may use a Server Load Balancer (SLB) instance to connect to the Internet. In this case, you can perform the following operation to protect the website by using WAF: Specify the virtual IP address that WAF assigns to your website as the back-to-origin IP address of the SLB instance. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -3008,13 +3009,13 @@ Management .
 icon in the Act ions column.
 5. On the Basic Inf ormat ion tab, record the virtual IP address assigned to the website.
 6. Log on to the console of the DNS provider and find the DNS resolution settings for the domain
-name of the website. Then, change the IP address in the A record to the virtual IP address assigned to the website. We recommend that you set the TTL to 600 seconds in DNS resolution settings. The larger the TTL is, the longer it takes to synchronize and update DNS records.
+name of the website. Then, change the IP address in the A record to the virtual IP address assigned to the website. Not e We recommend that you set the TTL to 600 seconds in DNS resolution settings. The larger the TTL is, the longer it takes to synchronize and update DNS records.
 
 ### 8.5 System management
 
 #### 8.5.1 View the load status of nodes
 
-This topic describes how to view the load status of Web Application Firewall (WAF) nodes. The status information includes CPU utilization and memory usage. You can identify faults based on the status and check whether scale-out or scale-up is required.
+This topic describes how to view the load status of Web Application Firewall (WAF) nodes. The status information includes CPU utilization and memory usage. You can identify faults based on the status and check whether scale-out or scale-up is required. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -3048,7 +3049,7 @@ Securit y section, click Web Applicat ion Firewall.
 
 #### 8.5.3 View the disk status of nodes
 
-This topic describes how to view the disk status of Web Application Firewall (WAF) nodes. You can identify faults based on the status and check whether scale-out or scale-up is required.
+This topic describes how to view the disk status of Web Application Firewall (WAF) nodes. You can identify faults based on the status and check whether scale-out or scale-up is required. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -3058,7 +3059,7 @@ In the Disk Status section, you can view the disk I/O and disk usage of WAF node
 
 #### 8.5.4 Configure alerts
 
-This topic describes how to add a syslog server to Web Application Firewall (WAF). After the syslog server is added, WAF alert logs can be pushed to the syslog server over the syslog protocol.
+This topic describes how to add a syslog server to Web Application Firewall (WAF). After the syslog server is added, WAF alert logs can be pushed to the syslog server over the syslog protocol. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -3082,7 +3083,7 @@ icon in the Operat ion column to test whether alerts are sent. If a message appe
 
 #### 8.5.5 Configure alert thresholds
 
-This topic describes how to configure alert thresholds.
+This topic describes how to configure alert thresholds. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Applicat ion
 Securit y section, click Web Applicat ion Firewall.
@@ -3114,7 +3115,7 @@ ter (SOC)
 
 ### 9.1 Use the Operations Center module
 
-module The Operations Center module provides data security-related details of Apsara Stack. Security administrators can use this module to obtain the information about network attacks and defenses. This helps improve network security performance.
+module The Operations Center module provides data security-related details of Apsara Stack. Security administrators can use this module to obtain the information about network attacks and defenses. This helps improve network security performance. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3154,7 +3155,7 @@ The Threat Monitoring page displays the following information: Newly Det ect ed 
 
 #### 9.3.1 View threat events
 
-This topic describes how to view threat events. Security administrators can obtain threat details based on these events and ensure network security.
+This topic describes how to view threat events. Security administrators can obtain threat details based on these events and ensure network security. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Securit y Operat ions Cent er.
@@ -3182,7 +3183,7 @@ Securit y > Securit y Operat ions Cent er.
 3. In the left-side navigation pane, choose Risk Analysis > Vulnerabilit y Analysis.
 4. On the Vulnerabilit y Analysis page, click Plat f orm.
 5. On the Plat f orm Baseline tab, specify the search conditions for platform baseline risks and click
-the icon. If you do not specify search conditions, all platform baseline risks are automatically displayed.
+the icon. Not e If you do not specify search conditions, all platform baseline risks are automatically displayed.
 
 | Search condition | Description |
 |---|---|
@@ -3200,7 +3201,7 @@ Securit y section, click Securit y Operat ions Cent er.
 5. On the T enant tab, click the Vulnerabilit ies or Server Conf igurat ions tab.
 The Vulnerabilit ies tab provides information about vulnerabilities. The Server Conf igurat ions tab provides information about server baseline risks.
 6. Specify search conditions for vulnerabilities or server baseline risks and click the
-icon. If you do not specify search conditions, all vulnerabilities or server baseline risks are automatically displayed.
+icon. Not e If you do not specify search conditions, all vulnerabilities or server baseline risks are automatically displayed.
 
 | Search condition | Description |
 |---|---|
@@ -3224,7 +3225,7 @@ You can view the following information on this page: View the average traffic an
 
 #### 9.3.4 View threat intelligence
 
-This topic describes how to view the overall situation and statistics of threats to your assets within the last 30 days.
+This topic describes how to view the overall situation and statistics of threats to your assets within the last 30 days. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Securit y Operat ions Cent er.
@@ -3236,7 +3237,7 @@ by the threat intelligence module. You can perform the following operations: Sea
 
 #### 9.4.1 View tenant assets
 
-This topic describes how to view the assets of tenants. The assets include Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, Object Storage Service (OSS) buckets, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs).
+This topic describes how to view the assets of tenants. The assets include Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, Object Storage Service (OSS) buckets, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs). Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Securit y Operat ions Cent er.
@@ -3244,7 +3245,7 @@ Securit y > Securit y Operat ions Cent er.
 4. On the T enant Asset s tab, you can view statistics in the Asset s, New T enant s in t he Last 24
 Hours, and Int ernet Asset s sections.
 5. Select the required service and specify search conditions to view a specific asset. Service example:
-Elast ic Comput e Service (ECS). You can also enter an IP address or instance name in the search box to search for an asset. If you do not specify search conditions, all assets are automatically displayed
+Elast ic Comput e Service (ECS). You can also enter an IP address or instance name in the search box to search for an asset. Not e If you do not specify search conditions, all assets are automatically displayed
 
 | Search condition | Description |
 |---|---|
@@ -3260,13 +3261,13 @@ ter (SOC) To export the asset information, click the icon.
 
 #### 9.4.2 View platform assets
 
-This topic describes how to view the protection information about physical machines on which platform assets are deployed. Security administrators can locate issues and obtain handling suggestions based on the information.
+This topic describes how to view the protection information about physical machines on which platform assets are deployed. Security administrators can locate issues and obtain handling suggestions based on the information. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
 3. In the left-side navigation pane, choose Asset s > Plat f orm Asset s.
 4. On the Server Securit y tab of the Plat f orm Asset s page, search for a specific asset.
-The asset is displayed in the platform asset list. By default, all assets are displayed.
+The asset is displayed in the platform asset list. Not e By default, all assets are displayed.
 5. Click the name of the asset. On the page that appears, view the information on the Servers and
 Suspicious Process tabs. If a large number of alerts are displayed, you can specify the Dat a Source, Reminder, Warning, Urgency, Handling St at us, Alert T ype, or St art t ime and End t ime parameter to filter a specific alert. When you handle an alert, click the alert name to go to the Det ails page. You can view Af f ect ed Asset , Occurred At , and End At . You can also view the details of the alert and the handling suggestion in the Relat ed Except ions section.
 
@@ -3274,7 +3275,7 @@ Suspicious Process tabs. If a large number of alerts are displayed, you can spec
 
 #### 9.5.1 View the information on the Log Overview page
 
-page This topic describes how to view the logs that are displayed in the widgets on the Log Overview page.
+page This topic describes how to view the logs that are displayed in the widgets on the Log Overview page. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3284,7 +3285,7 @@ The Log Overview page displays the widgets of the logs that you add. You can mod
 
 #### 9.5.2 Query raw logs
 
-Security Operations Center (SOC) allows you to query raw logs. Raw logs contain information that is required for debugging. Security administrators can use these raw logs to troubleshoot system failures. This topic describes how to query raw logs.
+Security Operations Center (SOC) allows you to query raw logs. Raw logs contain information that is required for debugging. Security administrators can use these raw logs to troubleshoot system failures. This topic describes how to query raw logs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3326,7 +3327,7 @@ You can also expand a display field to view the top 5 values of the field.
 
 #### 9.5.3 View platform logs
 
-Platform logs record information about Apsara Stack Security. Security administrators can use these logs to troubleshoot issues that occur on Apsara Stack Security. This topic describes how to view platform logs.
+Platform logs record information about Apsara Stack Security. Security administrators can use these logs to troubleshoot issues that occur on Apsara Stack Security. This topic describes how to view platform logs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3407,7 +3408,7 @@ After the log source is created, the log source is displayed in the log source l
 
 ##### 9.5.5.2 Configure a log parsing template
 
-Security Operations Center (SOC) provides the log parsing feature. Security administrators can configure log parsing templates based on their business requirements to manage logs in an efficient manner.
+Security Operations Center (SOC) provides the log parsing feature. Security administrators can configure log parsing templates based on their business requirements to manage logs in an efficient manner. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3422,7 +3423,7 @@ The log parsing template that you create is displayed in the log parsing list. Y
 
 ##### 9.5.5.3 Configure log forwarding
 
-Security Operations Center (SOC) provides the log forwarding feature. Security administrators can forward logs based on their business requirements and view logs in a timely manner.
+Security Operations Center (SOC) provides the log forwarding feature. Security administrators can forward logs based on their business requirements and view logs in a timely manner. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3441,7 +3442,7 @@ Securit y section, click Securit y Operat ions Cent er.
 
 ### 9.6 Use the Reports module
 
-This topic describes how to create a report task. After you create a report task, the system sends reports to the specified email addresses at specified intervals.
+This topic describes how to create a report task. After you create a report task, the system sends reports to the specified email addresses at specified intervals. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3464,7 +3465,7 @@ Result In the report task list, you can download, edit, and delete the newly cre
 
 #### 9.7.1 Create an analysis rule
 
-You can use analysis rules to perform comprehensive association analysis on a large number of logs. You can also trace attack paths of multi-phase attacks based on the detected high risks. This way, security administrators can obtain helpful risk information in an efficient and quick manner and the efficiency of security operations is improved. This topic describes how to create a custom analysis rule. Security Operations Center (SOC) provides built-in rules based on common business requirements. You can only view the details of the built-in rules but cannot modify the rules. If the built-in rules cannot meet your business requirements, you can perform the following steps to create a rule:
+You can use analysis rules to perform comprehensive association analysis on a large number of logs. You can also trace attack paths of multi-phase attacks based on the detected high risks. This way, security administrators can obtain helpful risk information in an efficient and quick manner and the efficiency of security operations is improved. This topic describes how to create a custom analysis rule. Procedure Security Operations Center (SOC) provides built-in rules based on common business requirements. You can only view the details of the built-in rules but cannot modify the rules. If the built-in rules cannot meet your business requirements, you can perform the following steps to create a rule:
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3500,7 +3501,7 @@ The created rule is displayed in the rule list. You can click Edit or Delet e in
 
 #### 9.7.2 Create a blocking rule
 
-This topic describes how to manually block requests for a specific IP address with a few clicks.
+This topic describes how to manually block requests for a specific IP address with a few clicks. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3536,7 +3537,7 @@ A security audit refers to the systemic and independent inspection and verificat
 
 ##### 9.8.1.2 View the summary information about security audit
 
-audit This topic describes how to view the summary information about security audit. Context ter (SOC) The Overview tab provides reports on the raw log trend, audit event trend, audit risk distribution, and security event distribution. The reports are displayed in run charts or pie charts to help security administrators analyze the trend of risks in your cloud services. On the Overview tab, security administrators can check the number of logs and the storage usage in a specific time range.
+audit This topic describes how to view the summary information about security audit. Context ter (SOC) The Overview tab provides reports on the raw log trend, audit event trend, audit risk distribution, and security event distribution. The reports are displayed in run charts or pie charts to help security administrators analyze the trend of risks in your cloud services. On the Overview tab, security administrators can check the number of logs and the storage usage in a specific time range. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3549,7 +3550,7 @@ i. Specify End T ime as the end of the time range to query. ii. In Audit T ype, 
 
 ##### 9.8.1.3 Query audit events
 
-This topic describes how to query audit events. Context On the Audit Query tab, you can view the details of audit events, including the log creation time, audit type, audit object, action type, risk level, and log content. The system matches the logs that are collected by a security audit module against audit rules. If the log content matches the regular expression in an audit rule, an audit event is reported.
+This topic describes how to query audit events. Context On the Audit Query tab, you can view the details of audit events, including the log creation time, audit type, audit object, action type, risk level, and log content. The system matches the logs that are collected by a security audit module against audit rules. If the log content matches the regular expression in an audit rule, an audit event is reported. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3575,15 +3576,15 @@ Download the exported file for analysis. For more information, see Manage export
 
 ##### 9.8.1.5 View the number of logs
 
-This topic describes how to view and manage log sources. Context You can view the number of logs and specify whether to show logs by log type or log source. The Log Types tab provides the number of all logs for a specific audit object of a specific device instance. The Log Sources tab provides the number of logs for all audit objects of a specific device instance.
+This topic describes how to view and manage log sources. Context You can view the number of logs and specify whether to show logs by log type or log source. The Log Types tab provides the number of all logs for a specific audit object of a specific device instance. The Log Sources tab provides the number of logs for all audit objects of a specific device instance. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
 3. In the left-side navigation pane, choose Operat ions > Securit y Audit .
 4. On the Securit y Audit page, click the Log T ypes tab to view the number of logs by audit object.
-You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each audit object. If you do not want to display the logs for an audit object, perform the following steps: i. Find the audit object and click Hide in the Act ions column. ii. In the Note message, click Conf irm. The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
+You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each audit object. If you do not want to display the logs for an audit object, perform the following steps: i. Find the audit object and click Hide in the Act ions column. ii. In the Note message, click Conf irm. Not e The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
 5. Click the Log Sources tab and view the number of logs for each device instance.
-ter (SOC) You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each device instance. If you do not want to display the logs for an audit object from a specific device instance, perform the following steps: i. Find the device instance and click Hide in the Act ions column. ii. In the message that appears, click OK. The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
+ter (SOC) You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each device instance. If you do not want to display the logs for an audit object from a specific device instance, perform the following steps: i. Find the device instance and click Hide in the Act ions column. ii. In the message that appears, click OK. Not e The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
 
 ##### 9.8.1.6 Policy settings
 
@@ -3596,7 +3597,7 @@ This topic describes how to create, modify, or delete an audit rule. Context If 
 | ^\d{5,12}$ | Matches the consecutive numbers from the fifth number to the twelfth number. |
 | load file\( _ | Matches the "load file(" string. _ |
 
-The security audit module defines the default audit rule based on the string that is generated in the log. This applies when an audit event is reported. A security administrator can also customize audit rules based on the string that is generated in the log. This applies when the system encounters an attack.
+The security audit module defines the default audit rule based on the string that is generated in the log. This applies when an audit event is reported. A security administrator can also customize audit rules based on the string that is generated in the log. This applies when the system encounters an attack. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3610,7 +3611,7 @@ You can create, query, disable, enable, and delete audit rules. Query audit rule
 
 ###### 9.8.1.6.2 Configure alert recipients
 
-This topic describes how to configure the recipients of alerts on audit events. Context After you specify an alert recipient, the system sends a report to the email address of the alert recipient when an audit event occurs.
+This topic describes how to configure the recipients of alerts on audit events. Context After you specify an alert recipient, the system sends a report to the email address of the alert recipient when an audit event occurs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3624,7 +3625,7 @@ Search for alert recipients Specify Audit T ype, Audit T arget , and Risk Level,
 
 ###### 9.8.1.6.3 Query the archives of audit events and raw logs
 
-logs This topic describes how to query and download the archives of audit events and raw logs. Context You can download the archives of events and logs to analyze audit events. This ensures the security of the Apsara Stack environment.
+logs This topic describes how to query and download the archives of audit events and raw logs. Context You can download the archives of events and logs to analyze audit events. This ensures the security of the Apsara Stack environment. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3636,7 +3637,7 @@ i. Specify Audit T ype and Archiving T ype. ii. Specify a time range to query. i
 
 ###### 9.8.1.6.4 Download exported audit events or logs
 
-This topic describes how to download exported audit events or logs. Context You can export audit events or logs on the Audit Query or Raw Log tab of the Security Audit page. After you export audit events or logs, you can manage the export tasks on the Exporting tab.
+This topic describes how to download exported audit events or logs. Context You can export audit events or logs on the Audit Query or Raw Log tab of the Security Audit page. After you export audit events or logs, you can manage the export tasks on the Exporting tab. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3650,7 +3651,7 @@ To delete an export task, click Delet e.
 
 ###### 9.8.1.6.5 Modify system settings
 
-This topic describes how to configure system parameters for security audit. Context You can configure system parameters to specify the maximum number of system alerts per day and the maximum number of audits per day for raw logs.
+This topic describes how to configure system parameters for security audit. Context You can configure system parameters to specify the maximum number of system alerts per day and the maximum number of audits per day for raw logs. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3662,7 +3663,7 @@ Securit y section, click Securit y Operat ions Cent er.
 
 #### 9.8.2 Configure the log storage policy
 
-Security Operations Center (SOC) allows you to create a custom log storage policy based on your business requirements. This topic describes how to configure the log storage policy.
+Security Operations Center (SOC) allows you to create a custom log storage policy based on your business requirements. This topic describes how to configure the log storage policy. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3678,7 +3679,7 @@ ter (SOC) SOC provisions default values for the log storage policy. If the defau
 
 #### 9.8.3 Add custom IP addresses and locations
 
-This topic describes how to add custom IP addresses and locations. You can customize internal IP addresses based on your network plan. After you configure the internal IP addresses, IP addresses from the public address library do not match the addresses outside China.
+This topic describes how to add custom IP addresses and locations. You can customize internal IP addresses based on your network plan. After you configure the internal IP addresses, IP addresses from the public address library do not match the addresses outside China. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Securit y Operat ions Cent er.
@@ -3695,7 +3696,7 @@ The added IP address is displayed in the IP address list. You can perform the fo
 
 #### 10.1.1 Overview
 
-In DDoS attacks, attackers exploit the client/server architecture to combine multiple computers into a platform that can launch attacks on one or more targets. This significantly increases the threat of attacks. The following section describes common DDoS attacks: Net work-layer at t acks: A typical example is UDP reflection attacks, such as NTP flood. When this type of attacks are launched, the network of the victim is congested by heavy traffic. As a result, the victim cannot respond to user requests. T ransport -layer at t acks: Typical examples include SYN flood and connection flood. When this type of attacks are launched, a large number of connection resources of the target server are consumed. As a result, the server rejects service requests. Session-layer at t acks: A typical example is SSL flood. These attacks consume the SSL session resources of a server to cause denial of service. Applicat ion-layer at t acks: Typical examples include DNS flood, HTTP flood, and NTP flood. When this type of attacks are launched, a large number of connection resources of the target server are consumed. As a result, the server rejects service requests. Apsara Stack Security can redirect, scrub, and re-inject attack traffic to protect your server against DDoS attacks and ensure normal business operations. Apsara Stack Security cannot scrub the traffic between internal networks.
+In DDoS attacks, attackers exploit the client/server architecture to combine multiple computers into a platform that can launch attacks on one or more targets. This significantly increases the threat of attacks. The following section describes common DDoS attacks: Net work-layer at t acks: A typical example is UDP reflection attacks, such as NTP flood. When this type of attacks are launched, the network of the victim is congested by heavy traffic. As a result, the victim cannot respond to user requests. T ransport -layer at t acks: Typical examples include SYN flood and connection flood. When this type of attacks are launched, a large number of connection resources of the target server are consumed. As a result, the server rejects service requests. Session-layer at t acks: A typical example is SSL flood. These attacks consume the SSL session resources of a server to cause denial of service. Applicat ion-layer at t acks: Typical examples include DNS flood, HTTP flood, and NTP flood. When this type of attacks are launched, a large number of connection resources of the target server are consumed. As a result, the server rejects service requests. Apsara Stack Security can redirect, scrub, and re-inject attack traffic to protect your server against DDoS attacks and ensure normal business operations. Not e Apsara Stack Security cannot scrub the traffic between internal networks.
 
 #### 10.1.2 View and configure DDoS mitigation policies
 
@@ -3725,14 +3726,14 @@ scrubbing policies. ts
 
 #### 10.1.3 View DDoS traffic scrubbing events
 
-This topic describes how to view DDoS traffic scrubbing events. Context Apsara Stack Security reports security events to Apsara Stack Security Center during and after traffic scrubbing.
+This topic describes how to view DDoS traffic scrubbing events. Context Apsara Stack Security reports security events to Apsara Stack Security Center during and after traffic scrubbing. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, choose Securit y > Net work Securit y >
 T raf f ic Scrubbing.
 3. In the left-side navigation pane, click Net work Prot ect ion. On the Ant i-DDoS page, view anti-
 DDoS statistics.
 4. (Optional)In the DDoS At t ack T raf f ic Scrubbing section, specify search conditions and click
-Search. If you want to view all traffic scrubbing events, skip this step.
+Search. Not e If you want to view all traffic scrubbing events, skip this step.
 
 | Search condition | Description |
 |---|---|
@@ -3778,7 +3779,7 @@ If you want to grant permissions on a single instance or bucket, turn on the swi
 | Sensit ive dat a sampling | The number of sensitive data samples to reserve after SDDP detects sensitive data. If you turn on the switch in Ident if y permissions, you must also specify this parameter. If SDDP detects sensitive data in a data asset, SDDP collects samples of the detected data. You can use the sensitive data samples for further analysis. Valid values: 0, 5, and 10. |
 | Audit log archiving | The duration to retain the audit logs of selected data assets. If you turn on the switch in Audit permissions, you must also specify this parameter. Valid values: 30 days, 90 days, and 180 days. Not e You do not need to activate Log Service to archive the audit logs generated by SDDP. |
 
-If you want to grant permissions on multiple instances or buckets at the same time, perform the following steps: a. Select the required instances or buckets and click Bat ch operat ion. ts b. In the Bat ch processing f or select ed asset s dialog box, turn on the switches of detection, audit, masking, and OCR permissions, and configure the parameters that remain. c. Click Ok. After SDDP is authorized, SDDP scans the OSS buckets to detect sensitive data. If SDDP scans an OSS bucket for the first time, SDDP automatically performs a full scan. In the list of OSS buckets on which SDDP has access permissions, you can modify or revoke permissions on the OSS buckets. If you revoke permissions on an OSS bucket, SDDP no longer scans the OSS bucket. SDDP scans only the accessible OSS buckets and analyzes the risks of sensitive data detected in these OSS buckets. Authorize SDDP to access ApsaraDB RDS instances
+If you want to grant permissions on multiple instances or buckets at the same time, perform the following steps: a. Select the required instances or buckets and click Bat ch operat ion. ts b. In the Bat ch processing f or select ed asset s dialog box, turn on the switches of detection, audit, masking, and OCR permissions, and configure the parameters that remain. c. Click Ok. After SDDP is authorized, SDDP scans the OSS buckets to detect sensitive data. If SDDP scans an OSS bucket for the first time, SDDP automatically performs a full scan. In the list of OSS buckets on which SDDP has access permissions, you can modify or revoke permissions on the OSS buckets. If you revoke permissions on an OSS bucket, SDDP no longer scans the OSS bucket. Not e SDDP scans only the accessible OSS buckets and analyzes the risks of sensitive data detected in these OSS buckets. Authorize SDDP to access ApsaraDB RDS instances
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Dat a Securit y
 section, click Sensit ive Dat a Discovery and Prot ect ion.
@@ -3807,7 +3808,7 @@ ts
 | Audit log archiving | The duration to retain the audit logs of selected data assets. If you turn on the switch in Audit permissions, you must also specify this parameter. Valid values: 30 days, 90 days, and 180 days. |
 
 9. Click Ok.
-If the authorization fails, check whether the username and password are correct. After SDDP is authorized, SDDP scans the databases to detect sensitive data. In the list of databases on which SDDP has access permissions, you can modify or revoke permissions on the databases. You can modify only the username and password of a valid database account. If you revoke permissions on a database, SDDP no longer scans the database. Authorize SDDP to access PolarDB-X databases
+Not e If the authorization fails, check whether the username and password are correct. After SDDP is authorized, SDDP scans the databases to detect sensitive data. In the list of databases on which SDDP has access permissions, you can modify or revoke permissions on the databases. You can modify only the username and password of a valid database account. If you revoke permissions on a database, SDDP no longer scans the database. Authorize SDDP to access PolarDB-X databases
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Dat a Securit y
 section, click Sensit ive Dat a Discovery and Prot ect ion.
@@ -3831,7 +3832,7 @@ and masking permissions, and configure the parameters that remain.
 | Audit log archiving | The duration to retain the audit logs of selected data assets. If you turn on the switch in Audit permissions, you must also specify this parameter. Valid values: 30 days, 90 days, and 180 days. |
 
 9. Click Ok.
-If the authorization fails, check whether the username and password are correct. After SDDP is authorized, SDDP scans the databases to detect sensitive data. In the list of databases on which SDDP has access permissions, you can modify or revoke permissions on the databases. You can modify only the username and password of a valid database account. If you revoke permissions on a database, SDDP no longer scans the database. Authorize SDDP to access Tablestore instances You can authorize SDDP to access one or more Tablestore instances.
+Not e If the authorization fails, check whether the username and password are correct. After SDDP is authorized, SDDP scans the databases to detect sensitive data. In the list of databases on which SDDP has access permissions, you can modify or revoke permissions on the databases. You can modify only the username and password of a valid database account. If you revoke permissions on a database, SDDP no longer scans the database. Authorize SDDP to access Tablestore instances You can authorize SDDP to access one or more Tablestore instances.
 1. Log on to Apsara Stack Security Center.
 ts
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Dat a Securit y
@@ -3916,7 +3917,7 @@ ts
 
 If you want to grant permissions on multiple instances or buckets at the same time, perform the following steps: a. Select the required instances or buckets and click Bat ch operat ion. b. In the Bat ch processing f or select ed asset s dialog box, turn on the switches of detection, audit, and masking permissions, and configure the parameters that remain.
 6. Click Ok.
-If the authorization fails, check whether the permission parameters are correctly configured and whether the SDDP account is added to the project. After SDDP is authorized, SDDP scans the projects to detect sensitive data. In the list of projects on which SDDP has access permissions, you can revoke permissions on the projects. If you revoke permissions on a project, SDDP no longer scans the project. Authorize SDDP to access AnalyticDB for MySQL clusters or AnalyticDB for PostgreSQL instances
+Not e If the authorization fails, check whether the permission parameters are correctly configured and whether the SDDP account is added to the project. After SDDP is authorized, SDDP scans the projects to detect sensitive data. In the list of projects on which SDDP has access permissions, you can revoke permissions on the projects. If you revoke permissions on a project, SDDP no longer scans the project. Authorize SDDP to access AnalyticDB for MySQL clusters or AnalyticDB for PostgreSQL instances
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Dat a Securit y
 section, click Sensit ive Dat a Discovery and Prot ect ion.
@@ -4006,7 +4007,7 @@ section, click Sensit ive Dat a Discovery and Prot ect ion.
 account management .
 4. Click the tab that displays the required data source. In this example, click the RDS tab.
 5. (Optional)Specify filter conditions to search for an ApsaraDB RDS instance.
-If you want to view all ApsaraDB RDS instances, skip this step.
+Not e If you want to view all ApsaraDB RDS instances, skip this step.
 
 | Filter condition | Description |
 |---|---|
@@ -4147,18 +4148,18 @@ detection rules that are most frequently hit, and the list of tables in which th
 
 ##### 10.2.3.3 Query sensitive data
 
-The Sensitive data search page displays all the sensitive data that is detected in your data assets. You can specify one or more types of sensitive data to query and view the distribution of the sensitive data across your data assets. This topic describes how to query sensitive data.
+The Sensitive data search page displays all the sensitive data that is detected in your data assets. You can specify one or more types of sensitive data to query and view the distribution of the sensitive data across your data assets. This topic describes how to query sensitive data. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
 3. In the left-side navigation pane, choose Sensit ive Dat a Ident if icat ion > Sensit ive dat a
 search. ts
 4. On the Sensit ive dat a search page, specify filter conditions based on your business requirements.
-Sensitive Data Discovery and Protection (SDDP) provides the following filter conditions: Hit dat a: the type of sensitive data. You can select multiple data types, such as email addresses and mobile phone numbers. Ent er f ile name t o search or Ent er t able name t o search: the name of the object or table in which the sensitive data is detected. Fuzzy match is supported. Region: the region where the data assets reside. Bucket , Inst ance, or Project : the name of the bucket, instance, or project in which the sensitive data is detected. If you specify multiple filter conditions, SDDP returns the sensitive data that meets all the specified filter conditions.
+Sensitive Data Discovery and Protection (SDDP) provides the following filter conditions: Hit dat a: the type of sensitive data. You can select multiple data types, such as email addresses and mobile phone numbers. Ent er f ile name t o search or Ent er t able name t o search: the name of the object or table in which the sensitive data is detected. Fuzzy match is supported. Region: the region where the data assets reside. Bucket , Inst ance, or Project : the name of the bucket, instance, or project in which the sensitive data is detected. Not e If you specify multiple filter conditions, SDDP returns the sensitive data that meets all the specified filter conditions.
 5. Click Search.
 In the result list of the Sensit ive dat a search page, you can view the information about the objects or tables in which the sensitive data is detected. You can group the objects or sort the tables by using the following methods: Group object s by sensit ivit y level On the OSS-f ile tab, set the Sensit ivit y level parameter to S1, S2, or S3 to display the objects that contain sensitive data by sensitivity level. Sort t ables based on t he t ot al number of rows or sensit ive f ields in ascending or descending order On a tab such as the RDS-t able tab, click the icon to the right of T ot al number of rows or Sensit ive column. This way, tables that contain sensitive data are sorted based on the total number of rows or sensitive fields in ascending or descending order. The first time you click the icon, the tables are sorted in descending order. The next time you click the icon, the tables are sorted in ascending order.
 6. Find the object or table that contains sensitive data. To view the details of sensitive data in an
-object, click Det ails in the Operat ion column. To view the details of sensitive data in a table, click Column det ails in the Operat ion column. In the Hit query panel for a bucket or the Column det ails panel for a table, you can view the following details of all the sensitive data that is detected in the object or table: Column name: the name of the sensitive field that is detected in the table. This parameter is displayed only in the Column det ails panel for a table in an ApsaraDB RDS instance, MaxCompute project, self-managed database that is hosted on an Elastic Compute Service (ECS) instance, PolarDB-X database, Tablestore instance, AnalyticDB for MySQL cluster, or AnalyticDB for PostgreSQL instance. This parameter is not displayed in the Hit query panel for an OSS bucket. Hit Rule: the type and name of the sensitive data detection rule that is hit. Sensit ivit y level: the sensitivity level of the detected sensitive data. Number of hit s: the number of times that the sensitive data detection rule is hit in the object. ts This parameter is displayed in the Hit query panel for an OSS bucket. Dat a Sampling: the samples that are collected from the sensitive data. To configure the Sensit ive dat a sampling parameter, perform the following operations: Choose Securit y > Dat a Securit y > Sensit ive Dat a Discovery and Prot ect ion. Then, choose Dat a prot ect ion aut horizat ion > Data Asset authorization. On the Cloud host ing page, set the Sensitive data sampling parameter to 0, 5, or 10. The number of samples displayed in Data Sampling does not exceed the value of Sensit ive dat a sampling that you configure when you authorize SDDP to protect your data assets.
+object, click Det ails in the Operat ion column. To view the details of sensitive data in a table, click Column det ails in the Operat ion column. In the Hit query panel for a bucket or the Column det ails panel for a table, you can view the following details of all the sensitive data that is detected in the object or table: Column name: the name of the sensitive field that is detected in the table. Not e This parameter is displayed only in the Column det ails panel for a table in an ApsaraDB RDS instance, MaxCompute project, self-managed database that is hosted on an Elastic Compute Service (ECS) instance, PolarDB-X database, Tablestore instance, AnalyticDB for MySQL cluster, or AnalyticDB for PostgreSQL instance. This parameter is not displayed in the Hit query panel for an OSS bucket. Hit Rule: the type and name of the sensitive data detection rule that is hit. Sensit ivit y level: the sensitivity level of the detected sensitive data. Number of hit s: the number of times that the sensitive data detection rule is hit in the object. ts This parameter is displayed in the Hit query panel for an OSS bucket. Dat a Sampling: the samples that are collected from the sensitive data. To configure the Sensit ive dat a sampling parameter, perform the following operations: Choose Securit y > Dat a Securit y > Sensit ive Dat a Discovery and Prot ect ion. Then, choose Dat a prot ect ion aut horizat ion > Data Asset authorization. On the Cloud host ing page, set the Sensitive data sampling parameter to 0, 5, or 10. The number of samples displayed in Data Sampling does not exceed the value of Sensit ive dat a sampling that you configure when you authorize SDDP to protect your data assets.
 
 ##### 10.2.3.4 Manage scan tasks
 
@@ -4208,7 +4209,7 @@ ts
 | Rules | The content of the detection rule. The content is used to match sensitive fields or text. You must set the Met hod parameter and enter the keyword that is used to detect sensitive data in the Keyword/regex mat ch cont ent field. If you want to create a custom detection rule to detect the mobile phone number 1331234****, you must set the Met hod parameter to Cont ains and enter 1331234**** in the Keywords/regex mat ch cont ent field. Not e The keyword must be a precise value, such as a specific mobile phone number, email address, or ID card number. After a detection rule is created, the detection rule appears in the rule list. However, the rule list does not display the details of the rule. You can click Det ails in the Operation column to view the details of the detection rule. |
 
 5. Click Enable or Save.
-Enable: If you click Enable, the detection rule is created and enabled. SDDP starts to detect sensitive data based on the detection rule. Save: If you click Save, the detection rule is created but is not enabled. To enable the detection rule, you must turn on the switch in the Status column for the detection rule in the rule list. SDDP detects sensitive data based on all sensitive data detection rules that are enabled. A detection rule takes effect after it is created and enabled. If you want to temporarily exclude specific data from sensitive data, you can disable the specific detection rule. After you disable a detection rule, SDDP no longer detects sensitive data based on the detection rule. We recommend that you enable all detection rules to reduce risks. You can modify and delete custom detection rules. You can view built-in detection rules but cannot modify or delete them. View built-in detection rules The built-in detection rules that SDDP provides apply to various types of common sensitive data, such as mobile phone numbers and ID card numbers. You can view all information about a built-in detection rule, such as the rule type, rule name, and sensitivity level. You cannot view the rule definition. To view built-in detection rules, perform the following steps: ts
+Enable: If you click Enable, the detection rule is created and enabled. SDDP starts to detect sensitive data based on the detection rule. Save: If you click Save, the detection rule is created but is not enabled. To enable the detection rule, you must turn on the switch in the Status column for the detection rule in the rule list. Not e SDDP detects sensitive data based on all sensitive data detection rules that are enabled. A detection rule takes effect after it is created and enabled. If you want to temporarily exclude specific data from sensitive data, you can disable the specific detection rule. After you disable a detection rule, SDDP no longer detects sensitive data based on the detection rule. We recommend that you enable all detection rules to reduce risks. You can modify and delete custom detection rules. You can view built-in detection rules but cannot modify or delete them. View built-in detection rules The built-in detection rules that SDDP provides apply to various types of common sensitive data, such as mobile phone numbers and ID card numbers. You can view all information about a built-in detection rule, such as the rule type, rule name, and sensitivity level. You cannot view the rule definition. To view built-in detection rules, perform the following steps: ts
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
@@ -4255,7 +4256,7 @@ ts
 6. View the list of built-in detection models.
 You can view the information of built-in detection models, such as the names of the models.
 7. Find a built-in detection model and click Det ails in the Act ions column to view the information of
-the model. You cannot modify or delete built-in detection models. Create a custom detection model
+the model. Not e You cannot modify or delete built-in detection models. Create a custom detection model
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
@@ -4313,7 +4314,7 @@ column.
 
 ##### 10.2.4.1 View permission statistics
 
-ts This topic describes how to view permission statistics. Context On the Permission Management page, you can view the overall permission distribution of Apsara Stack. You can also identify vulnerable accounts and users, and troubleshoot and handle security issues at your earliest opportunity.
+ts This topic describes how to view permission statistics. Context On the Permission Management page, you can view the overall permission distribution of Apsara Stack. You can also identify vulnerable accounts and users, and troubleshoot and handle security issues at your earliest opportunity. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
@@ -4325,14 +4326,14 @@ You can view the statistics on the users, accounts, and anomalous events that ar
 
 ##### 10.2.4.2 View the permissions of an account
 
-This topic describes how to view the permissions of an account. Context You can search for an account and view its information. This way, you can quickly find the owner of sensitive data.
+This topic describes how to view the permissions of an account. Context You can search for an account and view its information. This way, you can quickly find the owner of sensitive data. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Dat a Securit y
 section, click Sensit ive Dat a Discovery and Prot ect ion.
 3. In the left-side navigation pane, choose Dat a Permissions > Permission Search.
 ts
 4. Search for a specific account.
-To search for an account, perform the following steps: i. Select Depart ment or Employee from the drop-down list. ii. Enter a keyword, such as a department name or an account. iii. Click Search. You can view the search results in the Display Name column. You can also click a department in the Department Name column. All accounts of the department are displayed in the Display Name column.
+To search for an account, perform the following steps: i. Select Depart ment or Employee from the drop-down list. ii. Enter a keyword, such as a department name or an account. iii. Click Search. You can view the search results in the Display Name column. Not e You can also click a department in the Department Name column. All accounts of the department are displayed in the Display Name column.
 5. In the Display Name column, click the account whose details you want to view.
 6. View information in the Personal Inf ormat ion and Account Inf ormat ion sections on the right.
 Personal Inf ormat ion You can view the contact information about the account owner. You can also view the numbers of confirmed anomalous events that are related to permission access and excluded anomalous events that are related to permission access. Account Inf ormat ion You can view the accounts that the owner can use and the details of each account. The details include the account type, time when the accounts are created, and Apsara Stack services that the accounts can access. You can click View Account Permissions in the Actions column of an account to view the resources, resource types, resource paths, and operation permissions.
@@ -4341,14 +4342,14 @@ Personal Inf ormat ion You can view the contact information about the account ow
 
 ##### 10.2.5.1 View data flows in DataHub
 
-This topic describes how to view data flows in DataHub. Context DataHub is a platform that is designed to process streaming data. You can publish and subscribe to streaming data in DataHub. You can also distribute the data to other platforms. DataHub allows you to analyze streaming data and build applications based on the streaming data. ts On the Dat aHub page, you can view the details of data flows in DataHub. The details include the relationships between DataHub projects and topics, and the relationships among topics, subscribed applications, and archive sources.
+This topic describes how to view data flows in DataHub. Context DataHub is a platform that is designed to process streaming data. You can publish and subscribe to streaming data in DataHub. You can also distribute the data to other platforms. DataHub allows you to analyze streaming data and build applications based on the streaming data. ts On the Dat aHub page, you can view the details of data flows in DataHub. The details include the relationships between DataHub projects and topics, and the relationships among topics, subscribed applications, and archive sources. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, choose Securit y > Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
 3. In the left-side navigation pane of the Sensitive Data Discovery and Protection page, choose Dat a
 Flow Monit oring > Dat aHub.
 4. In the search box, enter a keyword and select a department from the drop-down list. Enter a topic
-keyword in the Dat aHub T opic Search field and click Search. You can also click the required project in the Project Name column and click the required topic in the T opic Name column. In the Project Inf ormat ion and T opic Inf ormat ion sections, you can view the information about the project and the topic. Project Inf ormat ion Displays information such as the project name, Apsara Stack account, creator, creation time, and number of topics. T opic Inf ormat ion Displays information such as the topic name, Apsara Stack account, creator, creation time, and topic type.
+keyword in the Dat aHub T opic Search field and click Search. Not e You can also click the required project in the Project Name column and click the required topic in the T opic Name column. In the Project Inf ormat ion and T opic Inf ormat ion sections, you can view the information about the project and the topic. Project Inf ormat ion Displays information such as the project name, Apsara Stack account, creator, creation time, and number of topics. T opic Inf ormat ion Displays information such as the topic name, Apsara Stack account, creator, creation time, and topic type.
 5. Click View Subscript ions to view the subscription list.
 The subscription list provides information such as the subscription name, Apsara Stack account of the creator, display name, name of the subscribed application, and contact for the application. ts i. Enter a keyword and select a department from the drop-down list. ii. In the Subscript ion Name field, enter a keyword. iii. Click Search to search for the required DataHub topic.
 6. Click View Archives to view the archive list.
@@ -4358,7 +4359,7 @@ The archive list provides information such as the name of the connected instance
 
 ##### 10.2.6.1 Create a static masking task
 
-This topic describes how to create a static masking task and run the task to mask sensitive data.
+This topic describes how to create a static masking task and run the task to mask sensitive data. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
@@ -4426,7 +4427,7 @@ vii. Click Submit . After you create the masking task, you can view the task in 
 
 ##### 10.2.6.2 View dynamic data masking tasks
 
-Sensitive Data Discovery and Protection (SDDP) provides the dynamic data masking feature. You can call the ExecDatamask operation to dynamically mask sensitive data. Context ts When you call this operation, you must specify the ID of the data masking template to use. Static data masking and dynamic data masking can use the same template. To obtain the template ID, perform the following operations: Log on to Apsara Stack Security Center. In the top navigation bar, choose Securit y > Dat a Securit y > Sensit ive Dat a Discovery and Prot ect ion. In the left-side navigation pane, choose Sensit ive Dat a Desensit izat ion > Desensitization Template. You can also create custom data masking templates. For more information, see Create a data masking template. Limits Before you can call the ExecDatamask operation to dynamically mask sensitive data, make sure that the size of the sensitive data is less than 2 MB. The `Data` parameter specifies the size. View the call history of the ExecDatamask operation Log on to Apsara Stack Security Center. In the top navigation bar, choose Securit y > Dat a Securit y > Sensit ive Dat a Discovery and Prot ect ion. In the left-side navigation pane, choose Sensit ive Dat a Desensit izat ion > Dynamic desensitization. On the page that appears, you can view the call history of the ExecDatamask operation. Each record includes the name of the operation, the UID of the Apsara Stack tenant account or RAM user that called the operation, the IP address from which the call is initiated, the points in time at which the operation was first and last called, and the total number of calls. Only one record is generated for calls that are initiated by the same Apsara Stack tenant account or RAM user from the same IP address. In this case, the cumulative number of calls is recorded.
+Sensitive Data Discovery and Protection (SDDP) provides the dynamic data masking feature. You can call the ExecDatamask operation to dynamically mask sensitive data. Context ts When you call this operation, you must specify the ID of the data masking template to use. Static data masking and dynamic data masking can use the same template. To obtain the template ID, perform the following operations: Log on to Apsara Stack Security Center. In the top navigation bar, choose Securit y > Dat a Securit y > Sensit ive Dat a Discovery and Prot ect ion. In the left-side navigation pane, choose Sensit ive Dat a Desensit izat ion > Desensitization Template. You can also create custom data masking templates. For more information, see Create a data masking template. Limits Before you can call the ExecDatamask operation to dynamically mask sensitive data, make sure that the size of the sensitive data is less than 2 MB. The `Data` parameter specifies the size. View the call history of the ExecDatamask operation Log on to Apsara Stack Security Center. In the top navigation bar, choose Securit y > Dat a Securit y > Sensit ive Dat a Discovery and Prot ect ion. In the left-side navigation pane, choose Sensit ive Dat a Desensit izat ion > Dynamic desensitization. On the page that appears, you can view the call history of the ExecDatamask operation. Each record includes the name of the operation, the UID of the Apsara Stack tenant account or RAM user that called the operation, the IP address from which the call is initiated, the points in time at which the operation was first and last called, and the total number of calls. Not e Only one record is generated for calls that are initiated by the same Apsara Stack tenant account or RAM user from the same IP address. In this case, the cumulative number of calls is recorded.
 
 ##### 10.2.6.3 Create a data masking template
 
@@ -4451,7 +4452,7 @@ ts
 |---|---|
 | Rule list | The rules that are used to mask sensitive data. To configure a rule, select a sensitive data type or enter a field that you want to mask and specify a data masking algorithm. SDDP supports the following data masking algorithms: Hashing Redaction Substitution Rounding Encryption Shuffling Data decryption For more information, see Configure data masking algorithms. You can configure multiple rules in a template. To configure more rules, click Increase algorit hm. |
 
-Manage data masking templates Edit a dat a masking t emplat e To edit a data masking template, find the template on the Desensit izat ion T emplat e page and click Edit in the Actions column. In the Edit panel, modify the description or rules of the data masking template. ts Delet e a dat a masking t emplat e To delete a data masking template that you no longer use, find the template on the Desensit izat ion T emplat e page and click Delet e in the Actions column. If you delete a data masking template, it cannot be restored. Proceed with caution.
+Manage data masking templates Edit a dat a masking t emplat e To edit a data masking template, find the template on the Desensit izat ion T emplat e page and click Edit in the Actions column. In the Edit panel, modify the description or rules of the data masking template. ts Delet e a dat a masking t emplat e To delete a data masking template that you no longer use, find the template on the Desensit izat ion T emplat e page and click Delet e in the Actions column. Not e If you delete a data masking template, it cannot be restored. Proceed with caution.
 
 ##### 10.2.6.4 Configure data masking algorithms
 
@@ -4523,7 +4524,7 @@ Sensit ive Dat a Discovery and Prot ect ion.
 3. In the left-side navigation pane, choose Sensit ive Dat a Desensit izat ion > Desensit izat ion
 algorit hm. On the Desensit izat ion algorit hm page, click the Hashing tab.
 4. Specify a salt value for each algorithm.
-In cryptography, you can insert a specific string to a fixed position of a password to generate a hash value that is different from that of the original password. This process is called salting. A salt value is the specific string that you insert. ts
+Not e In cryptography, you can insert a specific string to a fixed position of a password to generate a hash value that is different from that of the original password. This process is called salting. A salt value is the specific string that you insert. ts
 5. In the Desensit izat ion Algorit hm T est panel, enter the original value and click T est to check
 whether the algorithm works.
 6. After the test is complete, click Submit .
@@ -4545,7 +4546,7 @@ Sensit ive Dat a Discovery and Prot ect ion.
 3. In the left-side navigation pane, choose Sensit ive Dat a Desensit izat ion > Desensit izat ion
 algorit hm. On the Desensit izat ion algorit hm page, click the Replacement tab.
 4. Configure the parameters.
-ts By default, SDDP provides multiple common substitution algorithms, such as ID Card Number Mapping Replacement and Telephone Number Random Replacement. If you want to customize a mapping table, click the required mapping table, replace the original content with your own mapping table, and then click Save. If you want to customize an algorithm, click Add Replacement Desensit izat ion Algorit hm and specify the interval and mapping table.
+ts Not e By default, SDDP provides multiple common substitution algorithms, such as ID Card Number Mapping Replacement and Telephone Number Random Replacement. If you want to customize a mapping table, click the required mapping table, replace the original content with your own mapping table, and then click Save. If you want to customize an algorithm, click Add Replacement Desensit izat ion Algorit hm and specify the interval and mapping table.
 5. In the Desensit izat ion Algorit hm T est panel, enter the original value and click T est to check
 whether the algorithm works.
 6. After the configuration is complete, click Save.
@@ -4625,12 +4626,12 @@ parameters. Select the asset whose report you want to export from the Asset drop
 
 #### 10.2.8 Grant access permissions
 
-Before you use Sensitive Data Discovery and Protection (SDDP), you must grant access permissions to SDDP. This topic describes how to authorize SDDP to access the data of your department. Prerequisites The name and AccessKey pair of your department are obtained before you grant access permissions on the department. For more information, see the "Obtain the AccessKey pair of an organization" topic in Apsara Uni-manager Management Console User Guide. To find the topic, choose Ent erprise > Organizat ions > Obt ain t he AccessKey pair of an organizat ion. Context Before you use SDDP, you must complete the following operations: Authorize SDDP to access the data of your department. Authorize SDDP to access the data of Apsara Stack services of your department. The services include MaxCompute, Object Storage Service (OSS), and Tablestore.
+Before you use Sensitive Data Discovery and Protection (SDDP), you must grant access permissions to SDDP. This topic describes how to authorize SDDP to access the data of your department. Prerequisites The name and AccessKey pair of your department are obtained before you grant access permissions on the department. For more information, see the "Obtain the AccessKey pair of an organization" topic in Apsara Uni-manager Management Console User Guide. To find the topic, choose Ent erprise > Organizat ions > Obt ain t he AccessKey pair of an organizat ion. Context Before you use SDDP, you must complete the following operations: Authorize SDDP to access the data of your department. Authorize SDDP to access the data of Apsara Stack services of your department. The services include MaxCompute, Object Storage Service (OSS), and Tablestore. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Dat a Securit y >
 Sensit ive Dat a Discovery and Prot ect ion.
 3. In the left-side navigation pane, click Aut horizat ion.
-If SDDP is not authorized to access the data of your department, the Aut horizat ion page appears. You must configure the parameters on this page. ts
+Not e If SDDP is not authorized to access the data of your department, the Aut horizat ion page appears. You must configure the parameters on this page. ts
 4. In the Add Aut horizat ion section, authorize SDDP to access the data of your department.
 i. In the Depart ment drop-down list, enter a keyword and select the department. ii. Configure Depart ment AccessKey ID and Depart ment AccessKey Secret . iii. Click Submit .
 5. In the Aut horized Account Inf ormat ion section, view the departments that SDDP is authorized
@@ -4640,7 +4641,7 @@ to access.
 
 #### 10.3.1 View the information about applications in Container Service for Kubernetes
 
-in Container Service for Kubernetes This topic describes how to view the detailed information about applications in Container Service for Kubernetes (ACK).
+in Container Service for Kubernetes This topic describes how to view the detailed information about applications in Container Service for Kubernetes (ACK). Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the top navigation bar, move the pointer over Securit y and choose Server Securit y >
 Cont ainer Prot ect ion.
@@ -4654,7 +4655,7 @@ ts You can view Vulnerabilit ies, Alert s, and Pods of the application. You can 
 
 #### 10.3.2 View Container Registry images
 
-This topic describes how to view Container Registry images.
+This topic describes how to view Container Registry images. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the top navigation bar, move the pointer over Securit y and choose Server Securit y >
 Cont ainer Prot ect ion.
@@ -4668,7 +4669,7 @@ You can view Image Syst em Vul, Image Applicat ion Vul, Image Baseline Check, an
 
 #### 10.3.3 Use the feature of image security scan
 
-Container Service for Kubernetes (ACK) allows you to scan Container Registry repositories. You can scan for image vulnerabilities, baseline risks, and malicious samples. Context The feature of image security scan can detect and identify high-risk system vulnerabilities, application vulnerabilities, malicious samples, configuration risks, and sensitive data. Vulnerabilities may exist in the basic system software, middleware, web applications, and databases that are in your images. The vulnerabilities include mining programs and backdoor programs. Containers that run based on vulnerable images pose threats to your assets. The feature allows you to check whether image vulnerabilities and malicious samples exist in your vulnerable assets, and provides suggestions on vulnerability fixing. This feature provides end-to-end vulnerability management capabilities and allows you to fix image vulnerabilities in a convenient manner.
+Container Service for Kubernetes (ACK) allows you to scan Container Registry repositories. You can scan for image vulnerabilities, baseline risks, and malicious samples. Context The feature of image security scan can detect and identify high-risk system vulnerabilities, application vulnerabilities, malicious samples, configuration risks, and sensitive data. Vulnerabilities may exist in the basic system software, middleware, web applications, and databases that are in your images. The vulnerabilities include mining programs and backdoor programs. Containers that run based on vulnerable images pose threats to your assets. The feature allows you to check whether image vulnerabilities and malicious samples exist in your vulnerable assets, and provides suggestions on vulnerability fixing. This feature provides end-to-end vulnerability management capabilities and allows you to fix image vulnerabilities in a convenient manner. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the top navigation bar, move the pointer over Securit y and choose Server Securit y >
 Cont ainer Prot ect ion.
@@ -4684,7 +4685,7 @@ Operat ion column of the malicious sample.
 
 #### 10.3.4 Use the Intrusion alert feature
 
-Container Service for Kubernetes (ACK) allows you to monitor nodes and containers in ACK clusters. You can use this feature to monitor and block risks such as trojans, external intrusions, supply chain attacks, and container escapes that are caused by privilege escalation. Context The intrusion alert feature is developed based on the big data alerting model that is provided by Alibaba Cloud. This feature provides comprehensive intrusion detection capabilities that can inform you of risks in ACK and block external risks in an efficient manner.
+Container Service for Kubernetes (ACK) allows you to monitor nodes and containers in ACK clusters. You can use this feature to monitor and block risks such as trojans, external intrusions, supply chain attacks, and container escapes that are caused by privilege escalation. Context The intrusion alert feature is developed based on the big data alerting model that is provided by Alibaba Cloud. This feature provides comprehensive intrusion detection capabilities that can inform you of risks in ACK and block external risks in an efficient manner. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the top navigation bar, move the pointer over Securit y and choose Server Securit y >
 Cont ainer Prot ect ion.
@@ -4719,7 +4720,7 @@ configurations
 
 #### 11.1.1 Create an IPS rule for traffic monitoring
 
-This topic describes how to create an intrusion prevention system (IPS) rule for traffic monitoring in Cloud Firewall. Cloud Firewall has built-in IPS rules. This topic describes how to create custom IPS rules based on your business requirements and network environment.
+This topic describes how to create an intrusion prevention system (IPS) rule for traffic monitoring in Cloud Firewall. Cloud Firewall has built-in IPS rules. This topic describes how to create custom IPS rules based on your business requirements and network environment. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Alibaba Cloud Securit y.
@@ -4752,7 +4753,7 @@ Securit y > Alibaba Cloud Securit y.
 
 #### 11.1.2 Create an IDS rule for traffic monitoring
 
-This topic describes how to create an intrusion detection system (IDS) rule for traffic monitoring.
+This topic describes how to create an intrusion detection system (IDS) rule for traffic monitoring. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -4784,7 +4785,7 @@ nfigurations
 
 #### 11.1.3 Manage IDS rules for traffic monitoring
 
-This topic describes how to view, enable, and disable intrusion detection system (IDS) rules for traffic monitoring. Context On the T raf f ic Monit oring IDS Rules tab, you can view the built-in and custom IDS rules. You can also enable or disable the rules based on your business requirements.
+This topic describes how to view, enable, and disable intrusion detection system (IDS) rules for traffic monitoring. Context On the T raf f ic Monit oring IDS Rules tab, you can view the built-in and custom IDS rules. You can also enable or disable the rules based on your business requirements. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Alibaba Cloud Securit y.
@@ -4795,7 +4796,7 @@ nfigurations In the list of IDS rules, you can view rule details, enable rules, 
 
 #### 11.1.4 Specify custom thresholds for DDoS traffic scrubbing policies and traffic redirection
 
-scrubbing policies and traffic redirection This topic describes how to specify custom thresholds for DDoS traffic scrubbing policies and traffic redirection. Default thresholds are provided. If you want to specify custom thresholds, perform the following steps:
+scrubbing policies and traffic redirection This topic describes how to specify custom thresholds for DDoS traffic scrubbing policies and traffic redirection. Default thresholds are provided. If you want to specify custom thresholds, perform the following steps: Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -4816,17 +4817,17 @@ Securit y section, click Alibaba Cloud Securit y.
 5. In the overview section, you can view the total number of vulnerabilit y libraries, number of
 baselines, number of host except ions, and the available engines.
 6. View the vulnerability list.
-i. Click the Vulnerabilit ies tab. ii. In the overview section, you can view the total number of Linux vulnerabilit ies, total number of Windows vulnerabilit ies, total number of Web-CMS vulnerabilit ies, and total number of urgent vulnerabilit ies. iii. Specify search conditions to search for the vulnerabilities that you want to view. If you want to view all vulnerabilities, skip this step. In the vulnerability list, you can view the vulnerabilit y name, CVE ID, vulnerabilit y t ype, operat ing syst em, updat e t ime, and st at us.
+i. Click the Vulnerabilit ies tab. ii. In the overview section, you can view the total number of Linux vulnerabilit ies, total number of Windows vulnerabilit ies, total number of Web-CMS vulnerabilit ies, and total number of urgent vulnerabilit ies. iii. Specify search conditions to search for the vulnerabilities that you want to view. Not e If you want to view all vulnerabilities, skip this step. In the vulnerability list, you can view the vulnerabilit y name, CVE ID, vulnerabilit y t ype, operat ing syst em, updat e t ime, and st at us.
 7. View the baseline list.
-i. Click the Baselines tab. ii. In the overview section, you can view the numbers of baseline types and the number of check items. iii. Specify search conditions to view the baselines that meet the search conditions If you want to view all baselines, skip this step. In the baseline list, you can view the baseline t ype, check it em cat egory, check it em name, risk level, updat e t ime, and st at us.
+i. Click the Baselines tab. ii. In the overview section, you can view the numbers of baseline types and the number of check items. iii. Specify search conditions to view the baselines that meet the search conditions Not e If you want to view all baselines, skip this step. In the baseline list, you can view the baseline t ype, check it em cat egory, check it em name, risk level, updat e t ime, and st at us.
 8. View the host exception list.
-i. Click the Server Except ions tab. ii. In the overview section, you can view the number of rule alert subcat egories, the number of webshells, and the number of malicious viruses. iii. Specify search conditions to search for the host exceptions that you want to view. If you want to view all exceptions, skip this step. In the host exception list, you can view the subcat egory name, rule cat egory, risk level, updat e t ime, source, and st at us. nfigurations
+i. Click the Server Except ions tab. ii. In the overview section, you can view the number of rule alert subcat egories, the number of webshells, and the number of malicious viruses. iii. Specify search conditions to search for the host exceptions that you want to view. Not e If you want to view all exceptions, skip this step. In the host exception list, you can view the subcat egory name, rule cat egory, risk level, updat e t ime, source, and st at us. nfigurations
 
 ### 11.2 Threat intelligence
 
 #### 11.2.1 View the Overview page
 
-This topic describes how to view the overall situation and statistics about threats to your assets over the last 30 days on the Overview page. Prerequisites The service conf igurat ion feature is enabled. For more information, see Enable the service configuration feature.
+This topic describes how to view the overall situation and statistics about threats to your assets over the last 30 days on the Overview page. Prerequisites The service conf igurat ion feature is enabled. For more information, see Enable the service configuration feature. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Alibaba Cloud Securit y.
@@ -4836,7 +4837,7 @@ by the threat intelligence module. On the Overview page, you can perform the fol
 
 #### 11.2.2 Search for and view the information about a suspicious or malicious IP address
 
-a suspicious or malicious IP address The threat intelligence module allows you to search for threat intelligence. This module helps you handle suspicious or malicious IP addresses at the earliest opportunity. nfigurations Prerequisites The service conf igurat ion feature is enabled. For more information, see Enable the service configuration feature.
+a suspicious or malicious IP address The threat intelligence module allows you to search for threat intelligence. This module helps you handle suspicious or malicious IP addresses at the earliest opportunity. nfigurations Prerequisites The service conf igurat ion feature is enabled. For more information, see Enable the service configuration feature. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 Securit y > Alibaba Cloud Securit y.
@@ -4848,7 +4849,7 @@ T hreat Overview, IP Det ails, and Analysis of At t ack Risk Degree of the IP ad
 
 #### 11.2.3 Enable the service configuration feature
 
-The threat intelligence module integrates threat monitoring and big data analysis. You can use these features to obtain information about the latest developments in the threat intelligence field. After you enable the service configuration feature, the system starts to monitor and collect threat intelligence. This topic describes how to enable the service configuration feature.
+The threat intelligence module integrates threat monitoring and big data analysis. You can use these features to obtain information about the latest developments in the threat intelligence field. After you enable the service configuration feature, the system starts to monitor and collect threat intelligence. This topic describes how to enable the service configuration feature. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y. Choose Global Plat f orm
 nfigurations Securit y > Alibaba Cloud Securit y.
@@ -4862,7 +4863,7 @@ After you turn on Act ivat ion st at us, the system starts to monitor and collec
 
 #### 11.3.1 Configure alert contacts
 
-This topic describes how to configure and manage alert contacts. Context Apsara Stack Security sends alert notifications to alert contacts by text message or email. If the detected information matches an alert rule, Apsara Stack Security sends an alert notification to the alert contacts.
+This topic describes how to configure and manage alert contacts. Context Apsara Stack Security sends alert notifications to alert contacts by text message or email. If the detected information matches an alert rule, Apsara Stack Security sends an alert notification to the alert contacts. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -4907,7 +4908,7 @@ The system updates feature allows you to manually or automatically update the Ap
 
 #### 11.4.2 Enable automatic update check and update rule libraries
 
-update rule libraries This topic describes how to enable automatic download of update packages and update rule libraries. Context If the Apsara Stack environment can connect to the Internet, you can enable automatic download of update packages to update the rule libraries.
+update rule libraries This topic describes how to enable automatic download of update packages and update rule libraries. Context If the Apsara Stack environment can connect to the Internet, you can enable automatic download of update packages to update the rule libraries. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -4942,7 +4943,7 @@ i. Click Manually import of f line upgrade packages. ii. In the Manually import 
 
 #### 11.4.4 Roll back a rule library
 
-This topic describes how to roll back a rule library to a previous version. Context If an error occurs with an updated rule library, you can roll back the library to a previous version to prevent service interruption.
+This topic describes how to roll back a rule library to a previous version. Context If an error occurs with an updated rule library, you can roll back the library to a previous version to prevent service interruption. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -4953,7 +4954,7 @@ Securit y section, click Alibaba Cloud Securit y.
 
 #### 11.4.5 View the update history of a rule library
 
-This topic describes how to view the update history of a rule library. Context You can view the update history of a rule library. This way, if an error occurs with the latest version, you can identify the issue and roll back the rule library to an earlier version.
+This topic describes how to view the update history of a rule library. Context You can view the update history of a rule library. This way, if an error occurs with the latest version, you can identify the issue and roll back the rule library to an earlier version. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y. nfigurations
@@ -4976,7 +4977,7 @@ Standard mode
 2. In the left-side navigation pane, choose Operat ion > Upgrade packages.
 3. In the Upgrade Mode section on the Upgrade packages page, click St andard Mode.
 4. In the Ident if ier of Apsara St ack Securit y Version search box, enter the version of Apsara
-nfigurations Stack Security to which you want to update and click Obt ain Rule Package to obtain update packages. For more information about how to obtain the version identifier of Apsara Stack Security, click How t o Obt ain Upgrade Package below the search box. If you use Apsara Stack Security V3.12, V3.13, or V3.14, you must enter the version identifier of Apsara Stack Security in the Identifier of Apsara Stack Security Version search box to obtain update packages.
+nfigurations Stack Security to which you want to update and click Obt ain Rule Package to obtain update packages. Not e For more information about how to obtain the version identifier of Apsara Stack Security, click How t o Obt ain Upgrade Package below the search box. If you use Apsara Stack Security V3.12, V3.13, or V3.14, you must enter the version identifier of Apsara Stack Security in the Identifier of Apsara Stack Security Version search box to obtain update packages.
 5. In the Download Upgrade Package section, find the update packages that you want to
 download and click Download in the Operat ion column. After the update packages are downloaded, upload the update packages to Apsara Stack Security Center. In Apsara Stack Security Center, perform update-related operations to complete the update. Advanced mode
 1. Log on to the Security Center consoleSecurity Center console.
@@ -4991,7 +4992,7 @@ Version from the drop-down list on the left and select the version of the update
 
 ##### 11.5.1.1 Add a CIDR block for traffic monitoring
 
-This topic describes how to add a CIDR block for traffic monitoring. Network Traffic Monitoring System of Apsara Stack Security monitors the traffic of a specific CIDR block. Context CIDR blocks are configured for Network Traffic Monitoring System. Security administrators can change the CIDR blocks for traffic monitoring based on business requirements. The settings of CIDR blocks apply only to a data center that is deployed in the region to which the specific CIDR block belongs. Changes to CIDR block settings immediately take effect without the intervention of security administrators. If you add the same CIDR block on the traffic collection CIDR block setting page and region setting page, make sure that you select the same region on both pages. nfigurations
+This topic describes how to add a CIDR block for traffic monitoring. Network Traffic Monitoring System of Apsara Stack Security monitors the traffic of a specific CIDR block. Context CIDR blocks are configured for Network Traffic Monitoring System. Security administrators can change the CIDR blocks for traffic monitoring based on business requirements. The settings of CIDR blocks apply only to a data center that is deployed in the region to which the specific CIDR block belongs. Not e Changes to CIDR block settings immediately take effect without the intervention of security administrators. If you add the same CIDR block on the traffic collection CIDR block setting page and region setting page, make sure that you select the same region on both pages. nfigurations
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -4999,12 +5000,12 @@ Securit y section, click Alibaba Cloud Securit y.
 4. On the Global Set t ings page, click the T raf f ic Collect ion IP Range tab.
 5. Click Add.
 6. In the Add CIDR Block f or Monit oring dialog box, configure parameters.
-CIDR Block: Enter a CIDR block for traffic monitoring. Make sure the CIDR block that you enter is valid and unique. Region: Select the region of the data center.
+CIDR Block: Enter a CIDR block for traffic monitoring. Not e Make sure the CIDR block that you enter is valid and unique. Region: Select the region of the data center.
 7. Click OK.
 
 ##### 11.5.1.2 Manage CIDR blocks for traffic monitoring
 
-This topic describes how to modify or delete CIDR blocks for traffic monitoring.
+This topic describes how to modify or delete CIDR blocks for traffic monitoring. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5019,7 +5020,7 @@ Modify the CIDR block for traffic monitoring Click Modif y to modify the region 
 
 ##### 11.5.2.1 Add a CIDR block for a region
 
-This topic describes how to add CIDR blocks for regions that are detected and reported by using Server Guard. Context Region settings are used for region detection of the Server Guard agent. Server Guard servers automatically detect and match the regions of servers based on the IP address information that is reported by the Server Guard agent. You can change the region of a CIDR block. After you change the region, you must also change the region for all assets in the CIDR block on the Asset Overview page.
+This topic describes how to add CIDR blocks for regions that are detected and reported by using Server Guard. Context Region settings are used for region detection of the Server Guard agent. Server Guard servers automatically detect and match the regions of servers based on the IP address information that is reported by the Server Guard agent. Not e You can change the region of a CIDR block. After you change the region, you must also change the region for all assets in the CIDR block on the Asset Overview page. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5027,13 +5028,13 @@ Securit y section, click Alibaba Cloud Securit y.
 4. On the Global Set t ings page, click the Region tab.
 5. Click Add.
 6. In the Add CIDR Block dialog box, configure parameters.
-CIDR Block: Enter a CIDR block for the region. Enter a valid CIDR block. You cannot enter a CIDR block that is configured for the region. Region: Select a region.
+CIDR Block: Enter a CIDR block for the region. Not e Enter a valid CIDR block. You cannot enter a CIDR block that is configured for the region. Region: Select a region.
 7. Click Conf irm.
 nfigurations
 
 ##### 11.5.2.2 Manage CIDR blocks for a region
 
-This topic describes how to modify or delete CIDR blocks for a region.
+This topic describes how to modify or delete CIDR blocks for a region. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5046,7 +5047,7 @@ Modify the CIDR block for the region Click Modif y to modify the CIDR block for 
 
 #### 11.5.3 Configure whitelists
 
-This topic describes how to configure the whitelist for the feature that blocks brute-force attacks in Server Guard, and how to configure the whitelists in Threat Detection Service (TDS). These whitelists consist of IP addresses allowed by server brute-force attack blocking, IP addresses allowed by application attack blocking, and IP addresses allowed by web attack blocking. Context If a normal request is identified as an attack by the attack blocking feature of TDS or the unusual logon detection feature of Server Guard, you can add the source IP address of the request to a whitelist to prevent further false positives. Make sure that the IP addresses in the whitelist are trusted.
+This topic describes how to configure the whitelist for the feature that blocks brute-force attacks in Server Guard, and how to configure the whitelists in Threat Detection Service (TDS). These whitelists consist of IP addresses allowed by server brute-force attack blocking, IP addresses allowed by application attack blocking, and IP addresses allowed by web attack blocking. Context If a normal request is identified as an attack by the attack blocking feature of TDS or the unusual logon detection feature of Server Guard, you can add the source IP address of the request to a whitelist to prevent further false positives. Not e Make sure that the IP addresses in the whitelist are trusted. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5067,7 +5068,7 @@ If you want to delete an existing whitelist, click Delet e in the Actions column
 
 #### 11.5.4 Configure policies that are used to block attacks
 
-attacks This topic describes how to enable web attack blocking and brute-force attack blocking. Context The attack blocking features protect your servers against web attacks and brute-force attacks.
+attacks This topic describes how to enable web attack blocking and brute-force attack blocking. Context The attack blocking features protect your servers against web attacks and brute-force attacks. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5075,11 +5076,11 @@ Securit y section, click Alibaba Cloud Securit y.
 nfigurations
 4. On the Global Set t ings page, click the Policy Conf igurat ion tab.
 5. Turn on or off the switches in the Actions column to enable or disable Web At t ack Blocking or
-Brut e-Force At t ack Blocking. In the Actions column, a red switch indicates that a feature is disabled. A green switch indicates that a feature is enabled. After you disable the blocking feature for an attack type, Apsara Stack Security only generates alerts for this type of attacks.
+Brut e-Force At t ack Blocking. Not e In the Actions column, a red switch indicates that a feature is disabled. A green switch indicates that a feature is enabled. After you disable the blocking feature for an attack type, Apsara Stack Security only generates alerts for this type of attacks.
 
 #### 11.5.5 Block IP addresses
 
-This topic describes how to manually block requests for an IP address with a few clicks.
+This topic describes how to manually block requests for an IP address with a few clicks. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5107,7 +5108,7 @@ locations
 
 ##### 11.5.6.1 Add custom IP addresses and locations
 
-This topic describes how to add custom IP addresses and locations. You can customize internal IP addresses based on your network plan. After you configure the internal IP addresses, IP addresses from the public address library do not match the addresses outside China.
+This topic describes how to add custom IP addresses and locations. You can customize internal IP addresses based on your network plan. After you configure the internal IP addresses, IP addresses from the public address library do not match the addresses outside China. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5120,7 +5121,7 @@ If you want to add multiple IP addresses and locations at a time, click Bat ch U
 
 ##### 11.5.6.2 Manage custom IP addresses and locations
 
-This topic describes how to modify and delete custom IP addresses and locations.
+This topic describes how to modify and delete custom IP addresses and locations. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5134,7 +5135,7 @@ To change a custom IP address and a location: Click Modif y. In the Modif y dial
 
 #### 11.6.1 Inspect services
 
-This topic describes how to inspect services such as Cloud Firewall and Network Traffic Monitoring System in Apsara Stack Security Center. You can monitor the status and features of the services.
+This topic describes how to inspect services such as Cloud Firewall and Network Traffic Monitoring System in Apsara Stack Security Center. You can monitor the status and features of the services. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5150,7 +5151,7 @@ nfigurations
 
 #### 11.7.1 View and modify an Apsara Stack tenant account
 
-account This topic describes how to view and modify the information about your Apsara Stack tenant account that is bound to the system. Context All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
+account This topic describes how to view and modify the information about your Apsara Stack tenant account that is bound to the system. Context Not e All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.
@@ -5163,7 +5164,7 @@ In the Actions column, click Det ails to view the details of your Apsara Stack t
 
 #### 11.7.2 Add an Alibaba Cloud account
 
-This topic describes how to add an Alibaba Cloud account in Apsara Stack Security Center. After you add the account, you can use features in a hybrid cloud. Context After you add an Alibaba Cloud account in Apsara Stack Security Center, you can manage the Anti- DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud.
+This topic describes how to add an Alibaba Cloud account in Apsara Stack Security Center. After you add the account, you can use features in a hybrid cloud. Context After you add an Alibaba Cloud account in Apsara Stack Security Center, you can manage the Anti- DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. Procedure
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click Securit y.In the Global Plat f orm
 Securit y section, click Alibaba Cloud Securit y.

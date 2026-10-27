@@ -5,7 +5,7 @@ doc_version: "20250529"
 pdf_pages: 38
 source_pdf: "41ad4128af759968_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Security Security Administrator Guide 20250529.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E5%9F%BA%E7%A1%80%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Security%20Security%20Administrator%20Guide%2020250529.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Security Security Administrator Guide 20250529
@@ -76,6 +76,9 @@ Cloud Security Operations Center is an operations platform for Apsara Stack Secu
 **Prerequisites**
 
 The URL, username, and password that are required to log on to the Apsara Uni-manager Operations Console are obtained from the deployment personnel or administrators. The URL of the Apsara Uni-manager Operations Console is in the format of regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the URL. Then, press the Enter key.
 
@@ -101,6 +104,9 @@ On the **Cloud Security Operations Center** page, you can view the following inf
 **data**
 
 You can use the system monitoring feature to monitor integrated cloud services and identify exceptions in the cloud services at the earliest opportunity. This facilitates service O&M. This topic describes how to view the system monitoring data.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Monitoring and Alerting** > **System Monitoring**.
 3. On the page that appears, view the monitoring overview and monitoring data of cloud
@@ -117,6 +123,9 @@ services. On the **Monitoring Overview** tab, view the following information. Ov
 **data**
 
 You can use the business monitoring feature to monitor the statuses of integrated cloud services. This topic describes how to view the business monitoring data.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Monitoring and Alerting** > **Monitoring**.
 3. On the page that appears, view the business monitoring data of Apsara Stack Security
@@ -133,6 +142,9 @@ This topic describes how to configure and manage alert contacts.
 **Background information**
 
 Apsara Stack Security sends alert notifications to alert contacts by text message or email. If the detected information matches an alert rule, Apsara Stack Security sends an alert notification to the alert contacts.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**.In the **Global**
 **Platform Security** section, click **Alibaba Cloud Security**.
@@ -148,6 +160,9 @@ In the contact list, find a contact whose information you want to modify and cli
 ### 4.1 Manage middleware
 
 Cloud Security Operations Center allows you to manage middleware such as Diamond, Tair, ScheduleX, Dubbo, OpenAPI, and MetaQ. This topic describes how to manage Apsara Stack Security middleware.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **O&M management** > **Middleware**
 **Management**.
@@ -279,6 +294,9 @@ On the **Blocking Policy Management** tab, click **Create Blocking Policy**. In 
 #### 5.2.1 View O&M logs
 
 O&M logs include the resource utilization and mirrored traffic logs of Network Detection and Response (NDR). This topic describes how to view the O&M logs of NDR.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services** > **Network Detection and**
 **Response** > **O&M Logs**.
@@ -288,6 +306,9 @@ day, last 7 days, last 30 days, or a custom time range. The O&M log list display
 #### 5.2.2 View the node status
 
 You can view a Network Detection and Response (NDR) node and the status trend of the node. This topic describes how to view the status of an NDR node.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services** > **Network Detection and**
 **Response** > **Node Status**.
@@ -297,6 +318,9 @@ status trend of the node. You can view the status trend of the node from the fol
 #### 5.2.3 Configure features
 
 You can enable or disable features such as malicious IP address filtering and interaction with Anti-DDoS Pro or Anti-DDoS Premium. This topic describes how to configure the features.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services** > **Network Detection and**
 **Response** > **Feature Configuration**.
@@ -308,6 +332,9 @@ and **DDoS anti-DDoS** to enable or disable the features. By default, **Maliciou
 #### 5.3.1 Manage resources
 
 This topic describes how to manage resources. You can register and initialize resources.
+
+**Procedure**
+
 1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side**
 **KMS O&M**.
@@ -353,6 +380,9 @@ ii. On the **Resources** tab, find the HSM that you want to disable and click **
 #### 5.3.2 Manage tasks
 
 This topic describes how to view existing tasks on the Tasks tab.
+
+**Procedure**
+
 1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side**
 **KMS O&M**.
@@ -460,6 +490,9 @@ After a user quota is created or modified, the system generates an O&M event. Yo
 #### 5.3.5 Configure global quotas
 
 This topic describes how to configure global quotas.
+
+**Procedure**
+
 1. Log on to the KMS O&M platform.
 2. In the left-side navigation pane, choose **O&M Management > Global Quotas**.
 3. On the **Global Quotas** tab, find the required Hardware Security Module (HSM) and click
@@ -482,6 +515,9 @@ By default, TASS Crypto Engine hardware security modules (HSMs) do not support S
 **Warning**
 
 By default, this feature is disabled. After this feature is enabled, TASS Crypto Engine HSMs support the SM2 and SM4 algorithms. Use of this feature outside the Chinese mainland must comply with all applicable local laws and regulations. Enable this feature with caution.
+
+**Procedure**
+
 1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side**
 **KMS O&M**.
@@ -508,6 +544,9 @@ Rule databases can be synchronized from Alibaba Cloud through online upgrade or 
 **version of Apsara Stack Security**
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update feature libraries or the version of Apsara Stack Security. This topic describes how to update feature libraries or the version of Apsara Stack Security.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -555,6 +594,9 @@ Batch upgrade: On the **Version Upgrade** tab, click **One-click upgrade**. Upda
 ### 7.1 View end-to-end logs
 
 This topic describes how to use the end-to-end log tracing feature to view end-to-end logs in the Logstore of Apsara Stack Security.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Log Diagnostics** > **End-to-end Log Tracing**.
 3. On the **End-to-end Link Log** page, view the end-to-end logs.
@@ -571,6 +613,9 @@ You can use the following search conditions to query end-to-end logs.
 **feature**
 
 This topic describes how to use the quick diagnostics feature to create a diagnostic task to identify issues on a service.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Log Diagnostics** > **Quick Diagnostics**.
 3. On the **One-click diagnosis** page, click **Create diagnostic tasks**. In the panel that
@@ -632,6 +677,9 @@ This topic describes how to view the summary information about security audit.
 **Background information**
 
 The **Overview** tab provides reports on the raw log trend, audit event trend, audit risk distribution, and security event distribution. The reports are displayed in run charts or pie charts to help security administrators analyze the trend of risks in your cloud services. On the **Overview** tab, security administrators can check the number of logs and the storage usage in a specific time range.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **Security Management**, and choose **Security Audit >**
 **Apsara Stack Security - Security Audit** .
@@ -652,6 +700,9 @@ This topic describes how to query audit events.
 **Background information**
 
 On the **Audit Query** tab, you can view the details of audit events, including the log creation time, audit type, audit object, action type, risk level, and log content. The system matches the logs that are collected by a security audit module against audit rules. If the log content matches an audit rule, an audit event is reported.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **Security Management** and choose **Security Audit >**
 **Apsara Stack Security - Security Audit** .
@@ -679,6 +730,9 @@ This topic describes how to view raw audit logs.
 **Background information**
 
 On the **Raw Log** tab, you can view the raw logs that are generated by a running audit object. Raw logs contain information that is required for debugging. Security administrators can use these raw logs to troubleshoot system failures.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**.In the **Global**
 **Platform Security** section, click **Security Operations Center**.
@@ -692,6 +746,9 @@ Download the exported file for analysis. For more information, see Manage export
 ### 8.5 View the number of logs
 
 This topic describes how to view and manage log sources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **Security Management** and choose **Security Audit >**
 **Apsara Stack Security - Security Audit** .
@@ -769,6 +826,9 @@ This topic describes how to configure the recipients of alerts on audit events.
 **Background information**
 
 After you specify an alert recipient, the system sends a report to the email address of the alert recipient when an audit event occurs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **Security Management** and choose **Security Audit >**
 **Apsara Stack Security - Security Audit** .
@@ -798,6 +858,9 @@ This topic describes how to query and download the archives of audit events and 
 **Background information**
 
 You can download the archives of events and logs to analyze audit events. This ensures the security of the Apsara Stack environment.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **Security Management** and choose **Security Audit >**
 **Apsara Stack Security - Security Audit** .
@@ -815,6 +878,9 @@ This topic describes how to download exported audit events or logs.
 **Background information**
 
 You can export audit events or logs on the **Audit Query** or **Raw Log** tab of the Security Audit page. After you export audit events or logs, you can manage the export tasks on the Exporting tab.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**.In the **Global**
 **Platform Security** section, click **Security Operations Center**.
@@ -832,6 +898,9 @@ This topic describes how to configure system parameters for security audit.
 **Background information**
 
 You can configure system parameters to specify the maximum number of system alerts per day and the maximum number of audits per day for raw logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click **Security Management** and choose **Security Audit >**
 **Apsara Stack Security - Security Audit** .

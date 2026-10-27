@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 39
 source_pdf: "a5de1b840e361908_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek-Ops  User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/OpenTrek-Ops/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek-Ops%20%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # OpenTrek-Ops User Guide 20260630
@@ -49,7 +49,11 @@ complex operations scenarios.
 **Skill asset management**: The platform manages, reviews, and distributes agent skills in
 a unified manner to enable capability reuse.
 **Ops governance**: OpenTrek-Ops comprehensively monitors agent running status, token
-consumption, and error rates. You have obtained the access URL, username, and password of the OpenTrek-Ops platform from the administrator. We recommend that you use the Chrome browser.
+consumption, and error rates.
+
+**Prerequisites**
+
+You have obtained the access URL, username, and password of the OpenTrek-Ops platform from the administrator. We recommend that you use the Chrome browser.
 
 **User roles**
 
@@ -76,7 +80,14 @@ This topic describes how users log in to and log out of the OpenTrek-Ops platfor
 
 **Scenarios**
 
-Logging in and logging out are basic operations for using the OpenTrek-Ops platform, applicable to the following scenarios: Ops personnel access the platform daily to perform routine operations. Administrators configure and manage the system. Users securely log out of the system after completing their operations. You have obtained the endpoint, username, and password of the OpenTrek-Ops platform from the administrator. The administrator provides the endpoint of the OpenTrek-Ops platform. We recommend that you use the Chrome browser.
+Logging in and logging out are basic operations for using the OpenTrek-Ops platform, applicable to the following scenarios: Ops personnel access the platform daily to perform routine operations. Administrators configure and manage the system. Users securely log out of the system after completing their operations.
+
+**Prerequisites**
+
+You have obtained the endpoint, username, and password of the OpenTrek-Ops platform from the administrator. The administrator provides the endpoint of the OpenTrek-Ops platform. We recommend that you use the Chrome browser.
+
+**Procedure**
+
 1. Open a browser.
 2. In the address bar, enter the endpoint of the OpenTrek-Ops platform and press Enter.
 3. Enter the correct username and password.
@@ -104,7 +115,14 @@ This topic describes the features and metrics of the Overview page in the OpenTr
 
 **Scenarios**
 
-Operation Overview is the homepage dashboard of the platform, applicable to the following scenarios: Perform daily operations inspections to quickly understand the overall health status of the platform. Monitor the running trends of agents and token consumption to evaluate resource usage efficiency. View model performance metrics to analyze the response time and processing capacity of different models. Monitor the infrastructure status to promptly discover and troubleshoot service exceptions. You have logged in to the OpenTrek-Ops platform as a tenant administrator.
+Operation Overview is the homepage dashboard of the platform, applicable to the following scenarios: Perform daily operations inspections to quickly understand the overall health status of the platform. Monitor the running trends of agents and token consumption to evaluate resource usage efficiency. View model performance metrics to analyze the response time and processing capacity of different models. Monitor the infrastructure status to promptly discover and troubleshoot service exceptions.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform as a tenant administrator.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 After a successful login, the system directs you to the **Overview** page by default.
 2. On the **Overview** page, you can view the following core modules:
@@ -136,7 +154,14 @@ This topic describes how to manage agents in the OpenTrek-Ops platform. You can 
 
 **Scenarios**
 
-Agent management is a core feature of the platform, applicable to the following scenarios: Create new operations agents to automate specific operational tasks. Manage the configuration and running status of existing agents to ensure that the agents run normally. Allocate and manage agent resources for different teams to optimize resource allocation. View agent execution records to analyze agent performance and troubleshoot issues. You have logged in to the OpenTrek-Ops platform. You have the tenant administrator role or a role with agent creation permissions.
+Agent management is a core feature of the platform, applicable to the following scenarios: Create new operations agents to automate specific operational tasks. Manage the configuration and running status of existing agents to ensure that the agents run normally. Allocate and manage agent resources for different teams to optimize resource allocation. View agent execution records to analyze agent performance and troubleshoot issues.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform. You have the tenant administrator role or a role with agent creation permissions.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. In the left-side navigation pane, select **Ops Center** > **Agent Management**.
 On the **Agent Management** page, you can obtain the following information: View the total number of agents. Use the search box to search for a target agent by agent name. Use the **All Creators** drop-down list to filter the agent list by creator. Use the **All Statuses** drop-down list to filter the agent list by status. Use the **All Teams** drop-down list to filter the agent list by team. Click the view switch button to switch between the grid view and the list view. Click the refresh button to refresh the agent list data. View agent cards, which display information such as the agent icon, name, type label, team, creator, and running status.
@@ -190,6 +215,9 @@ This topic describes how to manage agent teams in the OpenTrek-Ops platform. You
 **Scenarios**
 
 The agent team feature applies to the following scenarios: Build a multi-role operations team to enable seamless collaboration on complex operational tasks. Manage the team member agents and permissions to ensure effective management of team members. Coordinate task assignment for agents within the team to improve team collaboration efficiency. Form a dedicated operations team for a specific project or business scenario. tion Center You have logged in to the OpenTrek-Ops platform. You obtained the tenant administrator role or a role with the permission to create agent teams.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. In the left-side navigation pane, choose **Ops Center** > **Agent Team**.
 On the **Agent Team** page, you can obtain the following information: Use the search box to search for a target team by team name. Click the **Create Team** button to create an agent team. View a team card, which displays information such as the team name, the number of members, and the creator. Click a team card to go to the team details page and view the member list.
@@ -277,7 +305,14 @@ This topic describes how to view the operation history of agents and teams.
 
 **Scenarios**
 
-After performing Ops operations on agents, such as restart, upgrade, scaling, and skill synchronization, you can view the execution status and results on the Operation History page. You have logged in to the OpenTrek-Ops platform. You have the tenant administrator role or a role with the permission to create agent teams.
+After performing Ops operations on agents, such as restart, upgrade, scaling, and skill synchronization, you can view the execution status and results on the Operation History page.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform. You have the tenant administrator role or a role with the permission to create agent teams.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. In the left-side navigation pane, choose **Ops Center** > **Change History** to go to the
 **Operation History** page.
@@ -318,7 +353,14 @@ This topic describes how to manage skills in the OpenTrek-Ops platform. The oper
 
 **Scenarios**
 
-The skill management feature applies to the following scenarios: Manage and publish skills for agents in a unified manner to standardize capabilities. Review the security and compliance of skills to ensure skill quality. Encapsulate common capabilities into skills for multiple agents to reuse, improving development efficiency. Manage the version and lifecycle of skills to achieve continuous iteration and optimization. You have logged in to the OpenTrek-Ops platform. You have the tenant administrator role or a role with the skill creation permission.
+The skill management feature applies to the following scenarios: Manage and publish skills for agents in a unified manner to standardize capabilities. Review the security and compliance of skills to ensure skill quality. Encapsulate common capabilities into skills for multiple agents to reuse, improving development efficiency. Manage the version and lifecycle of skills to achieve continuous iteration and optimization.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform. You have the tenant administrator role or a role with the skill creation permission.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. In the left-side navigation pane, choose **Asses**>**Skills**.
 On the **Skills** page, you can obtain the following information: View the total number of skills, the number of enabled skills, the number of disabled skills, and the total number of installations. Use the search box to search for a target skill by skill name. Use the category filter to filter skills by All, Efficiency Tools, Data Analysis, Content Creation, Development Tools, or Other. Click **Create Skill** to create a new skill. Center View skill cards. which display information such as the skill icon, name, description, version number, update time, and enablement status.
@@ -371,7 +413,11 @@ This topic describes how to manage Model Context Protocol (MCP) servers in the O
 
 **Scenarios**
 
-In the OpenTrek-Ops platform, users manage the full lifecycle of MCP configurations in the asset center. This includes creating, editing, deleting, and managing versions of MCP configurations. This section applies to the following scenarios: Manage MCP servers in a unified manner to integrate agents with external systems. Configure MCP server connection parameters to ensure that agents can access external tools and services. Manage the lifecycle of MCP servers, including creating, editing, enabling, disabling, and deleting servers. The current user has logged in to the OpenTrek-Ops platform. The current user has the permissions to access MCP management in the asset center. Center
+In the OpenTrek-Ops platform, users manage the full lifecycle of MCP configurations in the asset center. This includes creating, editing, deleting, and managing versions of MCP configurations. This section applies to the following scenarios: Manage MCP servers in a unified manner to integrate agents with external systems. Configure MCP server connection parameters to ensure that agents can access external tools and services. Manage the lifecycle of MCP servers, including creating, editing, enabling, disabling, and deleting servers.
+
+**Prerequisites**
+
+The current user has logged in to the OpenTrek-Ops platform. The current user has the permissions to access MCP management in the asset center. Center
 1. Log on to the OpenTrek-Ops platform.
 2. In the left-side navigation pane, choose **Assets** > **MCP**.
 On the **MCP** page, you can obtain the following information: View the numbers of enabled and disabled MCP servers. Use the search box to find target MCP servers. View the MCP list, which includes the name, description, server type, source, status, and number of tools.
@@ -427,7 +473,14 @@ This topic describes the features and configurations of the Agent Infra module i
 
 **Scenarios**
 
-The Agent Infra feature applies to the following scenarios: Manage the infrastructure services that the agent depends on to ensure the stability of the agent runtime environment. Monitor the infrastructure status to detect and troubleshoot service faults promptly. Configure the infrastructure connection parameters to optimize service performance and resource utilization. Manage the integration and configuration of underlying services such as LLM Service, Redis, Object Storage Service (OSS), and PostgreSQL. You have logged in to the OpenTrek-Ops platform as a tenant administrator.
+The Agent Infra feature applies to the following scenarios: Manage the infrastructure services that the agent depends on to ensure the stability of the agent runtime environment. Monitor the infrastructure status to detect and troubleshoot service faults promptly. Configure the infrastructure connection parameters to optimize service performance and resource utilization. Manage the integration and configuration of underlying services such as LLM Service, Redis, Object Storage Service (OSS), and PostgreSQL.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform as a tenant administrator.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. In the left-side navigation pane, choose **Assets**>**Agent Infra**.
 On the **Agent Infra** page, you can obtain the following information: View information such as the names and types of model services, Kubernetes clusters, AI gateways, and data storage infrastructure.
@@ -502,7 +555,14 @@ This topic describes how to manage tenants in the OpenTrek-Ops platform.
 
 **Scenarios**
 
-The organization/tenant management feature applies to the following scenarios: Isolate resources and manage permissions in multi-tenancy environments to ensure independence among different tenants. Create dedicated tenants for different departments or business units to enable hierarchical management. Manage the tenant lifecycle, including creating, enabling, disabling, and deleting tenants. Configure the connection between tenants and the cloud platform to enable unified resource scheduling. You have log in to the OpenTrek-Ops platform. You have the system administrator permissions.
+The organization/tenant management feature applies to the following scenarios: Isolate resources and manage permissions in multi-tenancy environments to ensure independence among different tenants. Create dedicated tenants for different departments or business units to enable hierarchical management. Manage the tenant lifecycle, including creating, enabling, disabling, and deleting tenants. Configure the connection between tenants and the cloud platform to enable unified resource scheduling.
+
+**Prerequisites**
+
+You have log in to the OpenTrek-Ops platform. You have the system administrator permissions.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. The system displays the **Organization Management** page by default. On this page, you
 can view the tenant list, involving the following fields:
@@ -553,7 +613,11 @@ This topic describes how to manage cloud platform configurations in the OpenTrek
 
 **Scenarios**
 
-The cloud platform management feature applies to the following scenarios: Configure and manage cloud platform resources and notification channels connected to the OpenTrek-Ops platform. Configure the push targets for agent running statuses and for alert messages. Implement unified management and resource scheduling in a multi-cloud platform environment. Enable real-time push notifications for O&M messages to ensure that Ops personnel obtain key information promptly. Configure multiple notification channels, such as DingTalk, email, and SMS, to meet the notification requirements of different scenarios. Manage cloud platform connection information and authentication credentials to ensure the stability of data interoperability. You have logged in to the OpenTrek-Ops platform. You have the system administrator permissions.
+The cloud platform management feature applies to the following scenarios: Configure and manage cloud platform resources and notification channels connected to the OpenTrek-Ops platform. Configure the push targets for agent running statuses and for alert messages. Implement unified management and resource scheduling in a multi-cloud platform environment. Enable real-time push notifications for O&M messages to ensure that Ops personnel obtain key information promptly. Configure multiple notification channels, such as DingTalk, email, and SMS, to meet the notification requirements of different scenarios. Manage cloud platform connection information and authentication credentials to ensure the stability of data interoperability.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform. You have the system administrator permissions.
 
 **Cloud platform management**
 
@@ -610,7 +674,14 @@ enant management
 
 ## 7 Multi-tenant management
 
-This topic describes how to switch and manage tenants. You have logged in to the OpenTrek-Ops platform as a tenant administrator.
+This topic describes how to switch and manage tenants.
+
+**Prerequisites**
+
+You have logged in to the OpenTrek-Ops platform as a tenant administrator.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. Click the current tenant at the bottom of the left-side menu to switch tenants. The system
 isolates resources for different tenants to ensure independence.
@@ -624,6 +695,9 @@ Click **Confirm Authorization**, and then click **Back** in the upper-right corn
 ## 8 AI Assistant
 
 You can implement automated operations management with the AI Assistant. This topic describes how to use the AI Assistant.
+
+**Procedure**
+
 1. Log in to the OpenTrek-Ops platform.
 2. Click the icon in the lower-right corner of the interface to open the AI Assistant.
 3. Enter your question in the input box of the AI Assistant and click

@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 18
 source_pdf: "2cc83aabe2c25036_Alibaba Cloud Apsara Stack V3.18.6 ApsaraStack Parallel File System Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E8%A1%8C%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8APFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraStack%20Parallel%20File%20System%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # ApsaraStack Parallel File System Operations and Maintenance Guide

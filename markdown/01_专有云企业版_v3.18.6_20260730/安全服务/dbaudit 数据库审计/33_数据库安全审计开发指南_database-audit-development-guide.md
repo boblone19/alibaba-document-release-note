@@ -5,14 +5,76 @@ doc_version: "20260729"
 pdf_pages: 100
 source_pdf: "33_数据库安全审计开发指南_database-audit-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/dbaudit/zh/database-audit-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 数据库审计 数据库安全审计开发指南
 
-## 快速入门
+## 目录
 
-### API调用流程说明
+- 1 快速入门
+  - 1.1 API调用流程说明
+  - 1.2 开发文档使用说明
+- 2 准备工作
+  - 2.1 登录开发者门户
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取公共Header参数
+- 3 调用示例
+  - 3.1 Java SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Java SDK
+      - 3.1.2.2 设置身份验证凭证
+      - 3.1.2.3 请求连接配置
+      - 3.1.2.4 发起调用
+      - 3.1.2.5 错误处理
+      - 3.1.2.6 使用CommonRequest进行调用
+  - 3.2 Python SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Python SDK
+      - 3.2.2.2 设置身份验证凭证
+      - 3.2.2.3 设置HTTPS请求
+      - 3.2.2.4 发起调用
+      - 3.2.2.5 错误处理
+      - 3.2.2.6 使用CommonRequest进行调用
+  - 3.3 Go SDK调用示例
+    - 3.3.1 快速开始
+    - 3.3.2 使用手册
+      - 3.3.2.1 安装Go SDK核心包
+      - 3.3.2.2 设置身份验证凭证
+      - 3.3.2.3 发起调用
+      - 3.3.2.4 错误处理
+      - 3.3.2.5 使用CommonRequest进行调用
+- 4 API公共参数
+- 5 数据库审计
+  - 5.1 数据库
+    - 5.1.1 ListSupportDbTypesForDataSource
+    - 5.1.2 ListDataSources
+    - 5.1.3 CreateDataSource
+    - 5.1.4 ModifyDataSource
+    - 5.1.5 DeleteDataSource
+  - 5.2 Agent
+    - 5.2.1 GetAgentList
+  - 5.3 风险规则
+    - 5.3.1 GetRuleList
+    - 5.3.2 EnableRulesForThisDB
+    - 5.3.3 DisableRulesForThisDB
+    - 5.4.1 GetDBAuditCount
+    - 5.4.2 GetAuditSearchList
+    - 5.4.3 GetFailedSqlList
+    - 5.4.4 GetSessionSearchList
+    - 5.4.5 GetFailedSessionList
+    - 5.4.6 GetRiskSqlSearchList
+    - 5.4.7 GetRiskBitsList
+    - 5.4.8 GetApiSearchConditionResult
+- 6 错误代码表
+
+## 1 快速入门
+
+### 1.1 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍如何通过POP网关调用专有云API。
 
@@ -23,23 +85,22 @@ converter: line-classifier (PyMuPDF)
 1. 获取AccessKey。
 获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
-|  | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |  |  |
+|   | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |   |   |
 |---|---|---|---|
-|  |  | <x-acs- |  |
+|   |   | <x-acs- |   |
 
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-### 开发文档使用说明
+### 1.2 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -60,9 +121,11 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户
+### 2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -72,31 +135,29 @@ converter: line-classifier (PyMuPDF)
 
 1. 在浏览器地址栏中，输入Apsara Uni-manager运营控制台的服务域名地址，按回车键。
 
-**说明**
+> **说明：** 单击页面右上角的当前语言可以切换其它语言。
 
-单击页面右上角的当前语言可以切换其它语言。 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. 输入正确的用户名及密码。
 
-**说明**
+> **说明：** 请向运营管理员获取登录控制台的用户名和密码。
+> 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 
-请向运营管理员获取登录控制台的用户名和密码。 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 3. 勾选**我已阅读并同意产品服务协议、隐私协议、用户协议**。
 
 **说明**
 
 登录页展示的链接文字为文档标题，单击链接文字，可查看协议的详细内容。
-**产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布，
-则不需要执行该操作。
+
+> **产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布， 则不需要执行该操作。
+
 4. 单击**账号登录**/**授权登录**。
 
-**说明**
+> **说明：** “授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 
-“授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 5. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 
-**说明**
-
-公网场景下，登录入口默认强制开启多因素认证。
+> **说明：** 公网场景下，登录入口默认强制开启多因素认证。
 
 **开启MFA后的首次登录**
 
@@ -107,7 +168,7 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 输入6位MFA码后单击**认证**。
 6. 在页面上方的菜单栏，选择**产品** > **开发工具** > **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 通过POP网关调用API需要您了解产品开放API接口的相关信息，本文为您介绍获取云产品的Endpoint的两种方式。
 
@@ -115,9 +176,7 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 
 为了使专有云保持与公共云相同的使用方式，使您拥有更方便，更一致的体验，建议通过POP网关调用专有云API。
 
-**说明**
-
-Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
+> **说明：** Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
 
 **操作步骤**
 
@@ -144,17 +203,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 7. 单击 `apigateway` 服务**Service Registration**列的文本信息，在弹出的**注册变量**对话框中，查看
 apigateway.openapi.endpoint值，即 `Endpoint` 。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey。使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey。使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -172,11 +229,9 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
-
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -190,9 +245,15 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 获取STS Accesskey三元组。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <yourRoleSessionName>：请替换为您当前实际的会话名称。 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。 <yourRoleArn>：请替换为您实际的RAM Role。 "sts.aliyuns.com" ：请替换为实际的STS Endpoint。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <yourRoleSessionName>：请替换为您当前实际的会话名称。
+> 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。
+> <yourRoleArn>：请替换为您实际的RAM Role。
+> "sts.aliyuns.com" ：请替换为实际的STS Endpoint。
 
 ```
 public static void main(String[] args) {
@@ -216,11 +277,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -255,16 +321,25 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。
+> <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。
+> <yourStsToken>：请替换为实际STS三元组中的SecurityToken。
+> <yourResourceGroupID>：请替换为您实际的资源集ID。
+> <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -321,11 +396,11 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取公共Header参数
+`}` `}`
+
+### 2.5 获取公共Header参数
 
 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
 
@@ -373,11 +448,11 @@ AccessKeyID、AccessKeySecret。
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-## 调用示例
+## 3 调用示例
 
-### Java SDK调用示例
+### 3.1 Java SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取产品名Java SDK并开始调用。
 
@@ -396,9 +471,14 @@ AccessKeyID、AccessKeySecret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your-region-id>，请替换为您实际的地域ID。 <your-access-key-id>，请替换为您实际的AccessKey ID。 <your-access-key-secret>>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您当前产品实际的Endpoint。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your-region-id>，请替换为您实际的地域ID。
+> <your-access-key-id>，请替换为您实际的AccessKey ID。
+> <your-access-key-secret>>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您当前产品实际的Endpoint。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -437,14 +517,13 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### 使用手册
+`}` `}` `}`
 
-##### 安装Java SDK
+#### 3.1.2 使用手册
+
+##### 3.1.2.1 安装Java SDK
 
 本文介绍如何安装及调用云盾Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
@@ -456,13 +535,11 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 </dependency>
 ```
 
-##### 设置身份验证凭证
+##### 3.1.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取Accesskey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。 目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取Accesskey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**说明**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **说明：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -470,17 +547,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 `"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret`
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
-
-##### 请求连接配置
+##### 3.1.2.3 请求连接配置
 
 本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 `//` 获取`HttpClientConfig`对象
+`//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -492,31 +573,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -540,7 +621,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-##### 发起调用
+##### 3.1.2.4 发起调用
 
 本文介绍如何使用产品名Java SDK发起请求。
 
@@ -565,7 +646,7 @@ DescribeInstancesRequest request = new DescribeInstancesRequest();
 request.setPageSize(10); request.setPageNumber(1);
 ```
 
-`//` 特殊`Header`参数,设置组织`ID`和资源集`ID,`资源隔离使用
+`//` 特殊`Header`参数`,`设置组织`ID`和资源集`ID,`资源隔离使用
 
 ```
 request.putHeadParameter("x-acs-organizationid", "1"); request.putHeadParameter("x-acs-resourcegroupid", "");
@@ -578,15 +659,18 @@ DescribeInstancesResponse response; try {
     response = client.getAcsResponse(request);
     for (DescribeInstancesResponse.Instance instance:response.getInstances()) {
         System.out.println(instance.getPublicIpAddress());
-    }
+```
+
+`}`
+
+```
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
-}
 ```
 
-正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
+`}` 正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
 
 ```
 instanceStatus := response.getStatus()
@@ -598,7 +682,7 @@ instanceStatus := response.getStatus()
 HttpResponse response = client.doAction(request);
 ```
 
-##### 错误处理
+##### 3.1.2.5 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -639,10 +723,11 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-##### 使用CommonRequest进行调用
+`}`
+
+##### 3.1.2.6 使用CommonRequest进行调用
 
 **前提条件**
 
@@ -753,13 +838,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -777,12 +862,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` `}` `}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -873,10 +955,10 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID` t `tH` `dP` t
+`//` 非必填`,`资源集`ID` `t` `tH` `dP` `t` `("`
 
 ```
-(" id"
+id"
 ```
 
 `"<`
@@ -889,13 +971,13 @@ id>")
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -919,20 +1001,23 @@ id>")
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### Python SDK调用示例
+`}` `}` `}`
 
-#### 快速开始
+### 3.2 Python SDK调用示例
+
+#### 3.2.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 获取到Endpoint。具体操作，请参见获取Endpoint。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -951,14 +1036,18 @@ pip3 install aliyun-python-sdk-core-v3
 在创建Client实例时，您需要获取Region ID、AccessKey ID和AccessKey Secret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your_region_id>，请替换为您实际的地域ID。
+> <your_access_key_id>，请替换为您实际的AccessKey ID。
+> <your_access_key_secret>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您实际的产品访问地址。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
 ```
 
 `request.set_domain('<your-endpoint>')//` 当前产品的服务地址
@@ -970,13 +1059,13 @@ request.set_version('<API-version>')// 接口的版本 request.set_action_name('
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.2.2 使用手册
 
-##### 安装Python SDK
+##### 3.2.2.1 安装Python SDK
 
-本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
+本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
 
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -990,23 +1079,21 @@ pip install aliyun-python-sdk-core
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### 设置身份验证凭证
+##### 3.2.2.2 设置身份验证凭证
 
-当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危
+当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-害您的信息安全。
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-##### 设置HTTPS请求
+##### 3.2.2.3 设置HTTPS请求
 
-Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
-**说明**
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
@@ -1024,7 +1111,7 @@ pip install pyopenssl
 request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -1034,9 +1121,9 @@ request = DescribeInstancesRequest() request.set_protocol_type("https")
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-##### 发起调用
+##### 3.2.2.4 发起调用
 
 本节介绍如何使用Python SDK发起请求。
 
@@ -1066,7 +1153,7 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-##### 错误处理
+##### 3.2.2.5 错误处理
 
 在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -1082,8 +1169,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -1091,7 +1177,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.6 使用CommonRequest进行调用
 
 **前提条件**
 
@@ -1114,7 +1200,7 @@ except ServerException as e:
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -1123,13 +1209,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -1138,13 +1218,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -1154,44 +1234,37 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
 ```
 
-t th d
-
-```
-(h
-```
-
-d )
+`}` `t` `t``h` `d` `(h` `d` `)`
 
 ```
     request.set_headers(headers)
@@ -1202,7 +1275,7 @@ d )
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -1214,14 +1287,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -1240,7 +1312,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
@@ -1248,16 +1320,16 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用
 
 **忽略证书**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -1267,11 +1339,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-)
+`)`
 
-### Go SDK调用示例
+### 3.3 Go SDK调用示例
 
-#### 快速开始
+#### 3.3.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
@@ -1294,41 +1366,57 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your_region_id>，请替换为您实际的地域ID。
+> <your_access_key_id>，请替换为您实际的AccessKey ID。
+> <your_access_key_secret>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您实际的产品访问地址。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 使用手册
+
+##### 3.3.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 设置身份验证凭证
+##### 3.3.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。
 
-**重要**
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
 
-害您的阿里云账号的信息安全。 以下代码以ECS为例，展示初始化ecsClient实例。 `//` 初始化`ecsClient`实例
+以下代码以ECS为例，展示初始化ecsClient实例。 `//` 初始化`ecsClient`实例
 
 ```
 ecsClient, err := ecs.NewClientWithAccessKey(
@@ -1340,13 +1428,9 @@ ecsClient, err := ecs.NewClientWithAccessKey(
         "<yourAccessKeySecret>")        // 请替换为您实际的AccessKey Secret
 ```
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-留。
-
-##### 发起调用
+##### 3.3.2.3 发起调用
 
 本文介绍如何使用阿里云产品名Go SDK发起调用。 以下步骤以ECS为例，展示使用ECS Go SDK发起调用。
 1. 导入云产品SDK。
@@ -1356,15 +1440,14 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ecs
 ```
 
 2. 新建一个产品名Client，该client中包含产品名的所有API。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-保留。 `ecsClient,err := <ecs>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `ecsClient.Domain = "ecs.aliyuns.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
+`ecsClient,err := <ecs>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `ecsClient.Domain = "ecs.aliyuns.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
 
-| xxx.CreateXXXRequest |  | 方法创建一个请求。 |
+| xxx.CreateXXXRequest |   | 方法创建一个请求。 |
 |---|---|---|
-| 法的命名规范为 |  |  |
+| 法的命名规范为 |   |   |
 
 **${service}**为产品名称(小写)。例如ecs。
 **${apiName}**为API名称，例如DescribeInstances。
@@ -1379,7 +1462,7 @@ request := ecs.CreateDescribeInstanceAttributeRequest() request.InstanceId = ""
 response, err := ecsClient.DescribeInstanceAttribute(request)
 ```
 
-##### 错误处理
+##### 3.3.2.4 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
@@ -1395,16 +1478,17 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
 当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个 `ClientError` 。 以下以ECS为例，您可以通过以下代码来判断并获取 `ClientError` 中的错误信息：
 
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" //ecs请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" //ecs请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1422,20 +1506,21 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
     clientError.Message()
 ```
 
-`//` 获取原始错误(可能为`nil)`
+`//` 获取原始错误`(`可能为`nil)`
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
 当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从 Response中获得原始的HTTP应答。 以下以ECS为例，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息：
 
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" //ecs请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" //ecs请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 ```
 response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1457,10 +1542,11 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
 
-##### 使用CommonRequest进行调用
+`}`
+
+##### 3.3.2.5 使用CommonRequest进行调用
 
 **前提条件**
 
@@ -1486,7 +1572,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1530,19 +1616,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 package main import (
@@ -1552,7 +1641,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -1597,17 +1686,22 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
@@ -1618,16 +1712,15 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -1645,9 +1738,9 @@ client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpPro
 
 **设置**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。 `//` 设置请求 `HTTPSInsecure`（只影响当前）
+`//` 设置请求 `HTTPSInsecure`（只影响当前）
 
 ```
 request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure := request.GetHTTPSInsecure() // 获取请求 HTTPSInsecure
@@ -1661,7 +1754,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 
 数
 
-## API公共参数
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -1685,11 +1778,11 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 
 API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
 
-## 数据库审计
+## 5 数据库审计
 
-### 数据库
+### 5.1 数据库
 
-#### ListSupportDbTypesForDataSource
+#### 5.1.1 ListSupportDbTypesForDataSource
 
 调用ListSupportDbTypesForDataSource接口查询数据库审计系统支持的数据库类型。
 
@@ -1721,35 +1814,34 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListSupportDbTypesForDataSource &RegionId=cn-hangzhou &InstanceId=dbaudit-****
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "DbTypes":[
-        {
-            "DbVersions":[
-                {
-                    "DbVersion":5700,
-                    "DbVersionName":"5.7"
-                }
 ```
 
-`],`
+`{`
+
+```json
+            "DbVersions":[
+```
+
+`{`
+
+```json
+                    "DbVersion":5700,
+                    "DbVersionName":"5.7"
+```
+
+`}` `],`
 
 ```json
             "DbType":3,
             "DbTypeName":"Mysql"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
 <ListSupportDbTypesForDataSourceResponse>
@@ -1769,7 +1861,9 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListSupportDbTypesForData
 </ListSupportDbTypesForDataSourceResponse>
 ```
 
-#### ListDataSources
+#### 5.1.2 ListDataSources
+
+调用ListDataSources接口查询已添加审计的数据库列表。
 
 **请求参数**
 
@@ -1805,13 +1899,16 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListSupportDbTypesForData
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListDataSources &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "DataSources":[
-        {
+```
+
+`{`
+
+```json
             "DbVersion":5700,
             "CreateTime":"2019-06-06 00:00:00",
             "DbId":1,
@@ -1823,18 +1920,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListDataSources &RegionId
             "DbVersionName":"5.7",
             "DbType":3,
             "DbTypeName":"Mysql"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
+<ListDataSourcesResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <DataSources>
         <info>
@@ -1850,9 +1941,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListDataSources &RegionId
             <CreateTime>2019-06-06 00:00:00</CreateTime>
         </info>
     </DataSources>
+</ListDataSourcesResponse>
 ```
 
-#### CreateDataSource
+#### 5.1.3 CreateDataSource
+
+调用CreateDataSource接口创建要审计的数据库信息。
 
 **请求参数**
 
@@ -1886,19 +1980,15 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=CreateDataSource &RegionI
 &DbType=32 &DbVersion=6 &DbAddresses=192.168.XX.XX
 ```
 
-正常返回示例 `JSON` 格式
-
-```
-{}
-```
-
-`XML` 格式
+正常返回示例 `JSON` 格式 `{}` `XML` 格式
 
 ```xml
 <CreateDataSourceResponse></CreateDataSourceResponse>
 ```
 
-#### ModifyDataSource
+#### 5.1.4 ModifyDataSource
+
+调用ModifyDataSource接口修改已审计的数据库信息。
 
 **请求参数**
 
@@ -1932,13 +2022,16 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ModifyDataSource &RegionI
 &DbVersion=6 &DbAddresses=192.168.XX.XX
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "DataSources":[
-        {
+```
+
+`{`
+
+```json
             "DbVersion":5700,
             "CreateTime":"2019-06-06 00:00:00",
             "DbId":1,
@@ -1950,22 +2043,17 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ModifyDataSource &RegionI
             "DbVersionName":"5.7",
             "DbType":3,
             "DbTypeName":"Mysql"
-        }
 ```
 
-]
-
-```
-}
-```
-
-{} `XML` 格式
+`}` `]` `}` {} `XML` 格式
 
 ```xml
 <ModifyDataSourceResponse></ModifyDataSourceResponse>
 ```
 
-#### DeleteDataSource
+#### 5.1.5 DeleteDataSource
+
+调用DeleteDataSource接口在数据库审计系统中删除数据源。
 
 **请求参数**
 
@@ -1990,21 +2078,17 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ModifyDataSource &RegionI
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DeleteDataSource &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1
 ```
 
-正常返回示例 `JSON` 格式
-
-```
-{}
-```
-
-`XML` 格式
+正常返回示例 `JSON` 格式 `{}` `XML` 格式
 
 ```xml
 <DeleteDataSourceResponse></DeleteDataSourceResponse>
 ```
 
-### Agent
+### 5.2 Agent
 
-#### GetAgentList
+#### 5.2.1 GetAgentList
+
+调用GetAgentList接口查询已安装的Agent的运行信息。
 
 **请求参数**
 
@@ -2042,15 +2126,19 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DeleteDataSource &RegionI
 请求示例
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAgentList &RegionId=cn-hangzhou &InstanceId=dbaudit-****
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAgentList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &AgentIp=192.168.XX.XX &AgentStatus=0
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
-        {
+    "AgentList":[
+```
+
+`{`
+
+```json
             "AgentOs":"redhat6",
             "AgentStatus":"1",
             "AgentVersion":"3.2.5.3",
@@ -2061,32 +2149,39 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAgentList &RegionId=cn
             "AgentMem":"3",
             "SendPacketCount":"10000",
             "FirstLoginTime":"2020-09-01 00:00:00"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
+<GetAgentListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
+    <AgentList>
         <info>
+            <AgentIp>192.168.194.185</AgentIp>
+            <AgentOs>redhat6</AgentOs>
+            <AgentVersion>3.2.5.3</AgentVersion>
+            <AgentCpu>3</AgentCpu>
+            <AgentMem>3</AgentMem>
             <SendPacketCount>10000</SendPacketCount>
             <SendPackets>100</SendPackets>
+            <AgentStatus>1</AgentStatus>
             <FirstLoginTime>2020-09-01 00:00:00</FirstLoginTime>
             <LastActiveTime>2020-09-01 00:00:00</LastActiveTime>
         </info>
+    </AgentList>
+</GetAgentListResponse>
 ```
 
 **错误码**
 
-### 风险规则
+关于本接口的错误码的详细解释，请查看错误代码表。
 
-#### GetRuleList
+### 5.3 风险规则
+
+#### 5.3.1 GetRuleList
+
+调用GetRuleList接口查询数据库审计各规则组包含的规则的简要信息。
 
 **请求参数**
 
@@ -2121,20 +2216,22 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAgentList &RegionId=cn
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRuleList &RegionId=cn-hangzhou &InstanceId=dbaudit-****
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "RuleGroupList":[
-        {
 ```
 
-`"GroupName":"`规则组`1",`
+`{` `"GroupName":"`规则组`1",`
 
 ```json
             "RuleList":[
-                {
+```
+
+`{`
+
+```json
                     "SysDefn":"0",
                     "RuleId":"2000001",
                     "RiskLevel":"3",
@@ -2144,25 +2241,18 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRuleList &RegionId=cn-
 
 ```json
                     "RiskType":"5"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "GroupId":"1001"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
+<GetRuleListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <RuleGroupList>
         <info>
@@ -2183,9 +2273,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRuleList &RegionId=cn-
             </RuleList>
         </info>
     </RuleGroupList>
+</GetRuleListResponse>
 ```
 
-#### EnableRulesForThisDB
+#### 5.3.2 EnableRulesForThisDB
+
+调用EnableRulesForThisDB接口启用数据库的规则。
 
 **请求参数**
 
@@ -2211,19 +2304,15 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRuleList &RegionId=cn-
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=EnableRulesForThisDB &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1 &RuleIds=94,106
 ```
 
-正常返回示例 `JSON` 格式
-
-```
-{}
-```
-
-`XML` 格式
+正常返回示例 `JSON` 格式 `{}` `XML` 格式
 
 ```xml
 <EnableRulesForThisDBResponse></EnableRulesForThisDBResponse>
 ```
 
-#### DisableRulesForThisDB
+#### 5.3.3 DisableRulesForThisDB
+
+调用DisableRulesForThisDB接口禁用数据库的规则。
 
 **请求参数**
 
@@ -2247,21 +2336,17 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=EnableRulesForThisDB &Reg
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DisableRulesForThisDB &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1 &RuleIds=94,106
 ```
 
-正常返回示例 `JSON` 格式
-
-```
-{}
-```
-
-`XML` 格式
+正常返回示例 `JSON` 格式 `{}` `XML` 格式
 
 ```xml
 <DisableRulesForThisDBResponse></DisableRulesForThisDBResponse>
 ```
 
-### 审计
+### 5.4 审计
 
-#### GetDBAuditCount
+#### 5.4.1 GetDBAuditCount
+
+调用GetDBAuditCount接口查询各库审计量信息。
 
 **请求参数**
 
@@ -2296,10 +2381,9 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DisableRulesForThisDB &Re
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetDBAuditCount &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "AuditInfo":{
         "SqlCount":10000,
@@ -2309,13 +2393,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetDBAuditCount &RegionId
         "CurrentSessionCount":40000,
         "CurrentFailSessionCount":10000,
         "CurrentRiskCount":10000
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
+<GetDBAuditCountResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <AuditInfo>
         <RunTime>10000</RunTime>
@@ -2326,9 +2409,10 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetDBAuditCount &RegionId
         <CurrentFailSessionCount>10000</CurrentFailSessionCount>
         <CurrentRiskCount>10000</CurrentRiskCount>
     </AuditInfo>
+</GetDBAuditCountResponse>
 ```
 
-#### GetAuditSearchList
+#### 5.4.2 GetAuditSearchList
 
 调用GetAuditSearchList接口查询连接数据库时执行的语句被审计的日志列表。
 
@@ -2395,15 +2479,18 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetDBAuditCount &RegionId
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAuditSearchList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &RiskLevels=1,3,5 &KeyWords=select,update
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiAuditSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dbsessionid":"0E320477",
                 "Machinename":"compute-internal",
                 "Dbuser":"root",
@@ -2435,19 +2522,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAuditSearchList &Regio
                 "Appclientip":"111.164.XX.XX",
                 "Sessionid":"0E320477",
                 "RiskLevel":"1"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` 格式
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
+<GetAuditSearchListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiAuditSearchResult>
         <FinalSize>10000</FinalSize>
@@ -2483,9 +2563,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAuditSearchList &Regio
             </info>
         </Data>
     </ApiAuditSearchResult>
+</GetAuditSearchListResponse>
 ```
 
-#### GetFailedSqlList
+#### 5.4.3 GetFailedSqlList
+
+调用GetFailedSqlList接口查询数据库连接失败语句的列表。
 
 **请求参数**
 
@@ -2544,15 +2627,18 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAuditSearchList &Regio
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSqlList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &AckNum=100002
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiAuditSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dbuser":"root",
                 "Dbclient":"192.168.XX.XX",
                 "Responsetext":"Table G_STATUS doesn't exist",
@@ -2573,19 +2659,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSqlList &RegionI
                 "Dbinstancename":"INS",
                 "Capturetime":"2020-05-24 14:17:26",
                 "Sessionid":"1062887119822061570"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` 格式
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
+<GetFailedSqlListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiAuditSearchResult>
         <FinalSize>10000</FinalSize>
@@ -2614,9 +2693,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSqlList &RegionI
             </info>
         </Data>
     </ApiAuditSearchResult>
+</GetFailedSqlListResponse>
 ```
 
-#### GetSessionSearchList
+#### 5.4.4 GetSessionSearchList
+
+调用GetSessionSearchList接口查询连接数据库的会话列表。
 
 **请求参数**
 
@@ -2665,15 +2747,18 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSqlList &RegionI
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetSessionSearchList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiSessionSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dback":"0",
                 "Dbuser":"root",
                 "Dbclient":"192.168.XX.XX",
@@ -2687,19 +2772,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetSessionSearchList &Reg
                 "Dbackmessage":"",
                 "Dbserver":"100.100.XX.XX",
                 "Sessionid":"1062887119822061570"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` 格式
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
+<GetSessionSearchListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiSessionSearchResult>
         <FinalSize>10000</FinalSize>
@@ -2721,9 +2799,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetSessionSearchList &Reg
             </info>
         </Data>
     </ApiSessionSearchResult>
+</GetSessionSearchListResponse>
 ```
 
-#### GetFailedSessionList
+#### 5.4.5 GetFailedSessionList
+
+调用GetFailedSessionList接口查询数据库登录失败的会话列表。
 
 **请求参数**
 
@@ -2768,13 +2849,16 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetSessionSearchList &Reg
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSessionList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "SessionList":[
-        {
+```
+
+`{`
+
+```json
             "Clientmac":"0EB6EF12****",
             "Programnm":"libmysql",
             "Dbackmessage":"Access denied for user 'root'@ (using password: YES)",
@@ -2786,18 +2870,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSessionList &Reg
             "Serverport":"3306",
             "Connecttime":"2020-05-24 14:00:00",
             "Sid":"test"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
+<GetFailedSessionListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <SessionList>
         <info>
@@ -2815,9 +2893,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSessionList &Reg
 </Dbackmessage>
         </info>
     </SessionList>
+</GetFailedSessionListResponse>
 ```
 
-#### GetRiskSqlSearchList
+#### 5.4.6 GetRiskSqlSearchList
+
+调用GetRiskSqlSearchList接口，查询有风险的SQL语句。
 
 **请求参数**
 
@@ -2878,21 +2959,24 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSessionList &Reg
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskSqlSearchList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &RiskLevels=1,3,5 &RiskTypes=5
 ```
 
-`&RuleName=`批量查询规则1
+`&RuleName=`批量查询规则`1`
 
 ```
 &ExcuteResult=0
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiRiskSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dbuser":"root",
                 "Dbclient":"192.168.XX.XX",
                 "Responsetext":"",
@@ -2911,22 +2995,10 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskSqlSearchList &Reg
                 "RiskType":"5",
 ```
 
-`"RuleName":"`批量查询规则`1"`
-
-```
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-`XML` 格式
+`"RuleName":"`批量查询规则`1"` `}` `]` `}` `}` `XML` 格式
 
 ```xml
+<GetRiskSqlSearchListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiRiskSearchResult>
         <FinalSize>10000</FinalSize>
@@ -2956,9 +3028,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskSqlSearchList &Reg
             </info>
         </Data>
     </ApiRiskSearchResult>
+</GetRiskSqlSearchListResponse>
 ```
 
-#### GetRiskBitsList
+#### 5.4.7 GetRiskBitsList
+
+调用GetRiskBitsList接口查询规则命中的数据统计。
 
 **请求参数**
 
@@ -2996,13 +3071,16 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskSqlSearchList &Reg
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskBitsList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &RiskLevel=5 &RiskType=5
 ```
 
-`&RuleName=`批量操作删除规则1 正常返回示例 `JSON` 格式
+`&RuleName=`批量操作删除规则`1` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiRiskHitList":[
-        {
+```
+
+`{`
+
+```json
             "HitCount":"35",
             "RuleId":"2000001",
             "RiskLevel":"1",
@@ -3012,18 +3090,12 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskBitsList &RegionId
 
 ```json
             "RiskType":"5"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
+<GetRiskBitsListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiRiskHitList>
         <info>
@@ -3038,9 +3110,10 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskBitsList &RegionId
             <HitCount>35</HitCount>
         </info>
     </ApiRiskHitList>
+</GetRiskBitsListResponse>
 ```
 
-#### GetApiSearchConditionResult
+#### 5.4.8 GetApiSearchConditionResult
 
 调用GetApiSearchConditionResult接口查询语句检索可用的检索条件。
 
@@ -3074,22 +3147,24 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskBitsList &RegionId
 https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetApiSearchConditionResult &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &Dbid=1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "Conditions":[
-      {
-        "DbClientList":"192.168.XX.XX",
-        "DbUserList":"root",
-      }
-}
 ```
 
-`XML` 格式
+`{`
+
+```json
+        "DbClientList":"192.168.XX.XX",
+        "DbUserList":"root",
+```
+
+`}` `}` `XML` 格式
 
 ```xml
+<GetApiSearchConditionResultResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <Conditions>
         <DbClientList>
@@ -3099,9 +3174,10 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetApiSearchConditionResu
             <info>root</info>
         </DbUserList>
     </Conditions>
+</GetApiSearchConditionResultResponse>
 ```
 
-## 错误代码表
+## 6 错误代码表
 
 本文介绍云盾API返回的错误代码信息。 表 1. 云盾通用错误代码
 
@@ -3283,7 +3359,7 @@ https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetApiSearchConditionResu
 | yd.error.audit.LogSource.Name LengthWrong | 【名称】长度不能超过200字符 | 请检查请求参数后重试。 |
 | yd.error.audit.LogSource.Enabl eEmpty | 【是否启用】不能为空 | 请检查请求参数后重试。 |
 
-| 数据库安全审计开发指南·错误代码表 |  |  |
+| 数据库安全审计开发指南·错误代码表 |   |   |
 |---|---|---|
 
 | yd.error.audit.LogSource.Alertt AbleEmpty | 【是否告警】不能为空 | 请检查请求参数后重试。 |

@@ -5,7 +5,7 @@ doc_version: "20241025"
 pdf_pages: 49
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Firewall User Guide 20241025.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Security%20Firewall%20User%20Guide%2020241025.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Firewall User Guide 20241025
@@ -114,6 +114,9 @@ The access control feature allows you to configure access control policies for t
 **Background information**
 
 The Internet firewall supports **outbound policies** and **inbound policies**. In this topic, IP address books, port address books, and domain address books are used. For more information about how to create these types of address books, see Manage address books.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Cloud Firewall**. On the **Cloud Firewall** page, select a
@@ -155,6 +158,9 @@ This topic describes how to view the policy groups of an internal firewall, conf
 **Background information**
 
 On the **Internal Firewall** tab, you can view custom policy groups and security groups that are synchronized from ECS. For more information about how to create a custom policy group, see Create a policy group.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**.In the **Network**
 **Security** section, click **Cloud Firewall**.
@@ -244,6 +250,9 @@ IDC-VPC firewalls are not automatically created. Before you create an access con
 **Background information**
 
 By default, an IDC-VPC firewall allows all traffic. If you want to control traffic between a data center and a VPC, you can create an access control policy to deny traffic from suspicious or malicious sources. You can also allow traffic from trusted sources and deny traffic from all other sources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Cloud Firewall**. On the **Cloud Firewall** page, select a
@@ -329,6 +338,9 @@ information about the address books in the downloaded file. You can enter the in
 ### 3.2 View the traffic blocked by IPS
 
 This topic describes how to view the details about Internet and VPC attacks that are blocked by the intrusion prevention system (IPS) feature of Cloud Firewall.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. Choose **Network**
 **Security > Cloud Firewall**.
@@ -383,6 +395,9 @@ current security group depends, and dependent security groups indicate the secur
 **addresses for the Internet firewall**
 
 If new IP addresses are not displayed in the IP address list of the Internet firewall, you can manually synchronize information about the IP addresses for the Internet firewall. This topic describes how to manually synchronize information about IP addresses for the Internet firewall.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Cloud Firewall**. On the **Cloud Firewall** page, select a
@@ -409,7 +424,11 @@ A virtual private cloud (VPC) firewall is a distributed firewall that can detect
 
 **Background information**
 
-A VPC firewall can be created only between two connected VPCs. VPCs can be connected by using Express Connect or Cloud Enterprise Network (CEN). 1. 2. 3.
+A VPC firewall can be created only between two connected VPCs. VPCs can be connected by using Express Connect or Cloud Enterprise Network (CEN).
+
+**Procedure**
+
+1. 2. 3.
 4. On the **Firewall Switches** page, click the **VPC-VPC** tab. Find the required instance and
 click **Create** in the Actions column.
 
@@ -432,7 +451,11 @@ If Firewall Status of the VPC firewall changes to **Enabled**, the VPC firewall 
 
 #### 3.4.3 Create an IDC-VPC firewall
 
-An IDC-VPC firewall can detect the traffic between a data center and a virtual private cloud (VPC). Cloud Firewall allows you to control traffic by using IDC-VPC firewalls. This topic describes how to create an IDC-VPC firewall. 1. 2. 3.
+An IDC-VPC firewall can detect the traffic between a data center and a virtual private cloud (VPC). Cloud Firewall allows you to control traffic by using IDC-VPC firewalls. This topic describes how to create an IDC-VPC firewall.
+
+**Procedure**
+
+1. 2. 3.
 4. On the **Firewall Switches** page, click the **IDC-VPC** tab. In the upper-right corner of the
 tab, click **Create**.
 
@@ -464,6 +487,9 @@ If the status of the IDC-VPC firewall changes to **Enabled**, the IDC-VPC firewa
 **prevention policies**
 
 Cloud Firewall uses a built-in threat detection engine to defend against intrusions and common cyberattacks. It provides virtual patches to protect against vulnerabilities and intelligently block intrusion attempts.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. Choose **Network**
 **Security > Cloud Firewall**.
@@ -483,6 +509,9 @@ Virtual patches are installation-free. You can use them to protect against commo
 ### 3.6 View event logs
 
 All traffic that passes through Cloud Firewall is recorded on the Log Audit page. The logs are classified into traffic logs and event logs. You can use the logs to audit your network traffic in real time and take specific actions. This topic describes how to view event logs.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**.In the **Network**
 **Security** section, click **Cloud Firewall**.
@@ -506,7 +535,11 @@ threat type, traffic direction (inbound or outbound), source IP address, destina
 
 ### 3.7 View traffic logs
 
-All traffic that passes through Cloud Firewall is recorded on the Log Audit page. The logs are classified into traffic logs and event logs. You can use the logs to audit your network traffic in real time and take specific actions. This topic describes how to view traffic logs. 1.
+All traffic that passes through Cloud Firewall is recorded on the Log Audit page. The logs are classified into traffic logs and event logs. You can use the logs to audit your network traffic in real time and take specific actions. This topic describes how to view traffic logs.
+
+**Procedure**
+
+1.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. Choose **Network**
 **Security > Cloud Firewall**.
 3. In the left-side navigation pane, click **Traffic Log**.
@@ -548,6 +581,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -615,6 +651,9 @@ After you create a custom IPS rule, you can perform the following operations on 
 #### 4.3.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -638,6 +677,9 @@ If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbi
 #### 4.3.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -658,6 +700,8 @@ You can view vulnerabilities, baselines, and server exceptions on the Server Gua
 #### 4.3.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
+
+**Procedure**
 
 > **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
@@ -735,6 +779,9 @@ see Update the feature library or the version of Apsara Stack Security.
 **of Apsara Stack Security**
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update feature libraries or the version of Apsara Stack Security. This topic describes how to update feature libraries or the version of Apsara Stack Security.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -821,6 +868,9 @@ download and click **Download** in the **Operation** column. After the update pa
 #### 4.6.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -833,6 +883,9 @@ disable the attack blocking feature. After you disable the attack blocking featu
 #### 4.6.2 Add a Server Guard account
 
 After you add a Server Guard account, you can use the account to configure and manage Server Guard and Web Application Firewall (WAF) resources. This topic describes how to add a Server Guard account.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -853,6 +906,9 @@ Installed on Physical Machines dialog box, configure the parameters and click **
 ### 4.7 Cloud Firewall monitoring
 
 You can use the Cloud Firewall monitoring feature to monitor the status of Cloud Firewall, detect abnormal traffic, and handle abnormal events at the earliest opportunity. This topic describes how to perform system inspection and service monitoring.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -879,7 +935,11 @@ a. In the **Traffic Forwarding Configuration - Service CIDR Block** section, cli
 | Type | The type of the CIDR block for traffic redirection. Value values: Test and Business. |
 | Service Description | The service-related description. |
 
-After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
+After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections.
+
+**Note**
+
+In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
 
 > icon to manually refresh the check frequency for the CIDR block.
 
@@ -908,6 +968,8 @@ This topic describes how to view and modify the information about your Apsara St
 
 > **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -919,7 +981,11 @@ tenant account. i. Find your Apsara Stack tenant account and click **Revised** i
 
 #### 4.8.2 Manage Alibaba Cloud accounts
 
-After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
+After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center.
+
+**Procedure**
+
+To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**

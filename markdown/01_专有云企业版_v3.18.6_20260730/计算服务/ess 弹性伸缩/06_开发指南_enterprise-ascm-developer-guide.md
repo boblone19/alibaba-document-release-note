@@ -5,16 +5,148 @@ doc_version: "20260729"
 pdf_pages: 339
 source_pdf: "06_开发指南_enterprise-ascm-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/ess/zh/enterprise-ascm-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 弹性伸缩 开发指南
 
-弹性伸缩 ESS
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取公共Header参数
+  - 2.6 获取弹性伸缩的SDK包
+- 3 Java SDK调用示例
+  - 3.1 快速开始
+  - 3.2 使用手册
+    - 3.2.1 安装Java SDK
+    - 3.2.2 设置身份验证凭证
+    - 3.2.3 请求连接配置
+    - 3.2.4 发起调用
+    - 3.2.5 错误处理
+    - 3.2.6 使用CommonRequest进行调用
+- 4 Python SDK调用示例
+  - 4.1 快速开始
+  - 4.2 使用手册
+    - 4.2.1 安装Python SDK
+    - 4.2.2 设置身份验证凭证
+    - 4.2.3 设置HTTPS请求
+    - 4.2.4 发起调用
+    - 4.2.5 错误处理
+    - 4.2.6 使用CommonRequest进行调用
+- 5 Go SDK调用示例
+  - 5.1 快速开始
+  - 5.2 使用手册
+    - 5.2.1 安装Go SDK核心包
+    - 5.2.2 设置身份验证凭证
+    - 5.2.3 发起调用
+    - 5.2.4 错误处理
+    - 5.2.5 使用CommonRequest进行调用
+- 6 API参考
+  - 6.1 API使用须知
+  - 6.2 调用方式
+  - 6.3 请求结构
+  - 6.4 公共参数
+  - 6.5 返回结果
+    - 6.5.1 成功结果
+    - 6.5.2 错误结果
+  - 6.6 签名机制
+  - 6.7 伸缩组
+    - 6.7.1 CreateScalingGroup
+    - 6.7.2 ModifyScalingGroup
+    - 6.7.3 EnableScalingGroup
+    - 6.7.4 DisableScalingGroup
+    - 6.7.5 DeleteScalingGroup
+    - 6.7.6 DescribeScalingGroups
+    - 6.7.7 DescribeScalingInstances
+    - 6.7.8 DescribeScalingActivityDetail
+    - 6.7.9 DescribeScalingActivities
+    - 6.7.10 AttachDBInstances
+    - 6.7.11 DetachDBInstances
+    - 6.7.12 SetGroupDeletionProtection
+    - 6.7.13 ResumeProcesses
+    - 6.7.14 SuspendProcesses
+    - 6.7.15 AttachVServerGroups
+    - 6.7.16 DetachVServerGroups
+    - 6.7.17 AttachAlbServerGroups
+    - 6.7.18 DetachAlbServerGroups
+    - 6.7.19 AttachLoadBalancers
+    - 6.7.20 DetachLoadBalancers
+  - 6.8 伸缩配置
+    - 6.8.1 CreateScalingConfiguration
+    - 6.8.2 DescribeScalingConfigurations
+    - 6.8.3 ModifyScalingConfiguration
+    - 6.8.4 DeleteScalingConfiguration
+    - 6.8.5 CreateEciScalingConfiguration
+    - 6.8.6 DescribeEciScalingConfigurations
+    - 6.8.7 ModifyEciScalingConfiguration
+    - 6.8.8 DeleteEciScalingConfiguration
+  - 6.9 伸缩规则
+    - 6.9.1 CreateScalingRule
+    - 6.9.2 ModifyScalingRule
+    - 6.9.3 DescribeScalingRules
+    - 6.9.4 DeleteScalingRule
+  - 6.10 触发任务
+    - 6.10.1 ExecuteScalingRule
+    - 6.10.2 ScaleWithAdjustment
+    - 6.10.3 AttachInstances
+    - 6.10.4 RemoveInstances
+    - 6.10.5 DetachInstances
+  - 6.11 定时任务
+    - 6.11.1 CreateScheduledTask
+    - 6.11.2 ModifyScheduledTask
+    - 6.11.3 DescribeScheduledTasks
+    - 6.11.4 DeleteScheduledTask
+  - 6.12 报警任务
+    - 6.12.1 CreateAlarm
+    - 6.12.2 DescribeAlarms
+    - 6.12.3 ModifyAlarm
+    - 6.12.4 EnableAlarm
+    - 6.12.5 DisableAlarm
+    - 6.12.6 DeleteAlarm
+  - 6.13 生命周期挂钩
+    - 6.13.1 CreateLifecycleHook
+    - 6.13.2 ModifyLifecycleHook
+    - 6.13.3 RecordLifecycleActionHeartbeat
+    - 6.13.4 DescribeLifecycleHooks
+    - 6.13.5 DescribeLifecycleActions
+    - 6.13.6 CompleteLifecycleAction
+    - 6.13.7 DeleteLifecycleHook
+  - 6.14 事件通知
+    - 6.14.1 CreateNotificationConfiguration
+    - 6.14.2 ModifyNotificationConfiguration
+    - 6.14.3 DescribeNotificationConfigurations
+    - 6.14.4 DescribeNotificationTypes
+    - 6.14.5 DeleteNotificationConfiguration
+    - 6.15.1 EnterStandby
+    - 6.15.2 ExitStandby
+    - 6.15.3 SetInstancesProtection
+    - 6.15.4 SetInstanceHealth
+    - 6.15.5 RebalanceInstances
+    - 6.16.1 DescribeRegions
+    - 6.17.1 TagResources
+    - 6.17.2 ListTagResources
+    - 6.17.3 UntagResources
+    - 6.17.4 ListTagKeys
+    - 6.17.5 ListTagValues
+    - 6.18.1 DescribeLimitation
+  - 6.19 错误代码表
+    - 6.19.1 客户端错误
+    - 6.19.2 服务器端错误
+  - 6.20 如何保证幂等性
+  - 7.1 STS概要
+    - 7.1.1 什么是STS
+    - 7.1.2 AssumeRole
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,50 +163,50 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-弹性伸缩 ESS
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公共云更一致的体验，自企业版V3.16.0 开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
 **流程图**
-
-弹性伸缩 ESS
 
 **调用步骤**
 
 1. 获取AccessKey。
 获取调用时所需要的AccessKey参数，详情请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 获取调用时所需要的RegionID参数，获取方式请参见获取弹性伸缩的Endpoint。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
-**说明**
-
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-|  | resourcegroupid> |
+> **说明：** 调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-`
+
+|   | resourcegroupid> |
 |---|---|
 
-不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+> `resourcegroupid>` ，指定资源所属的组织和资源集，实现实例资源的隔离查询。
+> 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。
+> 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+
 4. 获取对应的API参考文档。
-弹性伸缩 ESS 您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法，请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法，请参见开发文档使用说明。
 5. 获取云产品的Endpoint。
 6. 获取云产品SDK并调用云产品API。
-弹性伸缩 ESS
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户
+### 2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -86,26 +218,26 @@ converter: line-classifier (PyMuPDF)
 2. 输入正确的用户名及密码。
 请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 管理员强制开启MFA后的首次登录： a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b. 按照步骤2重新输入账号和密码，单击**登录**。 c. 输入6位MFA码后单击**认证**。 您已开启并绑定MFA： 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开** **启虚拟****MFA****设备》**章节。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
-**启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
 **背景信息**
 
-Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。 弹性伸缩 ESS
+Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
 
 **操作步骤**
 
@@ -117,17 +249,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密的方法，来验证某个请求发送者的身份。其中，AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret以及Security Token。获取方式， Apsara Uni-manager运营控制台提供了个人账号AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足。 弹性伸缩 ESS 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密的方法，来验证某个请求发送者的身份。其中，AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret以及Security Token。获取方式， 请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人账号AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足。
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -142,40 +272,41 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的操作方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何使用STS方式，调用专有云的产品API。
 
 **背景信息**
 
-弹性伸缩 ESS 阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限的管理服务。您可以选择使用STS方式，调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret以及SecurityToken三元组组成，使用STS方式调
+阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限的管理服务。您可以选择使用STS方式，调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret以及SecurityToken三元组组成，使用STS方式调用云产品API时，三元组缺一不可。关于更多STS内容，请参见什么是STS。
 
 **操作步骤**
 
 1. 获取用户角色的RAM Role。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看RAM Role。
 2. 获取STS Accesskey三元组。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下所示： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourRoleSessionName>，请替换为您当前实际的会话名称。 <yourRoleArn>，请替换为您实际的RAM Role。 "sts.aliyuns.com" ，请替换为实际的STS Endpoint。 弹性伸缩 ESS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下所示：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourRoleSessionName>，请替换为您当前实际的会话名称。
+> <yourRoleArn>，请替换为您实际的RAM Role。
+> "sts.aliyuns.com" ，请替换为实际的STS Endpoint。
 
 ```
 public static void main(String[] args) {
@@ -199,11 +330,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -238,17 +374,26 @@ vpc.${global:region}.${global:internet-domain}
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以弹性伸缩的CreateScalingGroup接口为示
-例。 弹性伸缩 ESS 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
+例。
 
-**说明**
-
-保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourStsAccesskeyID>，请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>，请替换为您实际的STS Accesskey Secret。 <yourStsToken>，请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourStsAccesskeyID>，请替换为您实际的STS Accesskey ID。
+> <yourStsAccessKeySecret>，请替换为您实际的STS Accesskey Secret。
+> <yourStsToken>，请替换为实际STS三元组中的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -305,12 +450,13 @@ AccessKeyID、AccessKeySecret
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
 ```
 
-### 获取公共Header参数
+`}`
 
-弹性伸缩 ESS 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
+### 2.5 获取公共Header参数
+
+调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
 
 **Header参数描述**
 
@@ -325,23 +471,23 @@ AccessKeyID、AccessKeySecret
 
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏中，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **地域管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **地域管理**。
 4. 单击目标组织名称。
 5. 在右侧**Region****列表**中查看Region ID。
 
 **获取组织ID**
 
-组织ID需要通过API进行获取，获取方式，请参见《**Apsara Uni-manager****运营控制台开发指南》**中的《**GetOrganizationList**》章节。
+组织ID需要通过API进行获取，获取方式，请参见**《****Apsara Uni-manager****运营控制台开发指南》**中的**《****GetOrganizationList****》**章节。
 
 **获取资源集ID**
 
-资源集ID需要通过API进行获取，获取方式，请参见《**Apsara Uni-manager****运营控制台开发指南》**中的《**ListResourceGroup**》章节。
+资源集ID需要通过API进行获取，获取方式，请参见**《****Apsara Uni-manager****运营控制台开发指南》**中的**《****ListResourceGroup****》**章节。
 
 **获取实例ID**
 
 实例ID可以通过Apsara Uni-manager运营控制台中的云产品实例列表进行获取，本文中以弹性伸缩为例，获取步骤如下：
 1. 登录Apsara Uni-manager运营控制台。
-2. 在顶部的菜单栏中，选择**产品** > **弹性计算** > **弹性伸缩**。
+2. 在顶部的菜单栏中，选择**产品** **>** **弹性计算** **>** **弹性伸缩**。
 3. 在左侧导航栏中，单击**实例**。
 4. 在实例列表中查看**实例****ID**。
 
@@ -356,9 +502,7 @@ AccessKeyID、AccessKeySecret
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-弹性伸缩 ESS
-
-### 获取弹性伸缩的SDK包
+### 2.6 获取弹性伸缩的SDK包
 
 通过POP网关调用专有云API时，您需要使用弹性伸缩的SDK。本文为您介绍如何获取阿里云开发工具包 （SDK）。
 
@@ -370,19 +514,17 @@ AccessKeyID、AccessKeySecret
 
 目前SDK工具包支持Java、Python、Go等多种语言，您可以前往弹性伸缩开发工具包（SDK）中选择对应版本。
 
-**重要**
+> **重要：** 推荐您使用 Java、Python、Go三种语言的SDK工具包，使用其他语言的SDK工具包可能会发生不兼容的情况。
 
-推荐您使用 Java、Python、Go三种语言的SDK工具包，使用其他语言的SDK工具包可能会发生不兼容的情况。 弹性伸缩 ESS
+## 3 Java SDK调用示例
 
-## Java SDK调用示例
-
-### 快速开始
+### 3.1 快速开始
 
 本节为您介绍如何获取弹性伸缩的Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体获取弹性伸缩的Endpoint，具体操作，请参见获取弹性伸缩的Endpoint。 阿里云专有云Java SDK需要1.8及以上版本的JDK。
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参获取AccessKey。 获取弹性伸缩的Endpoint，具体操作，请参见获取弹性伸缩的Endpoint。 阿里云专有云Java SDK需要1.8及以上版本的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -395,9 +537,18 @@ AccessKeyID、AccessKeySecret
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际产品的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下所示： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <Product>，请替换为您实际的产品名称。 <Endpoint>，请替换为您当前产品实际的Endpoint。 <readTimeout>，请您根据实际情况设置读取超时时间，单位为毫秒。 <connectionTimeout>，请您根据实际情况设置连接超时时间，单位为毫秒。 <maxRequestsPerHost>，请您根据实际情况设置每个主机的最大请求数。 <maxRequests>，请您根据实际情况设置最大请求数。 <http://192.168.XX:33XX>，请替换为您实际的代理IP和相应端口。
+> **说明：** 以下代码示例中可变参数均需替换为您实际产品的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下所示：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <Product>，请替换为您实际的产品名称。
+> <Endpoint>，请替换为您当前产品实际的Endpoint。
+> <readTimeout>，请您根据实际情况设置读取超时时间，单位为毫秒。
+> <connectionTimeout>，请您根据实际情况设置连接超时时间，单位为毫秒。
+> <maxRequestsPerHost>，请您根据实际情况设置每个主机的最大请求数。
+> <maxRequests>，请您根据实际情况设置最大请求数。
+> <http://192.168.XX:33XX>，请替换为您实际的代理IP和相应端口。
 
 ```java
  import com.aliyuncs.profile.DefaultProfile;
@@ -409,8 +560,6 @@ AccessKeyID、AccessKeySecret
  public class Main {
 publicstaticvoidmain(String[]args){
 ```
-
-弹性伸缩 ESS
 
 ```
      public static void main(String[] args) {
@@ -460,7 +609,7 @@ publicstaticvoidmain(String[]args){
         clientConfig.setProtocolType(ProtocolType.HTTP);             // 设置请求协议，默
 ```
 
-认`HTTP`（可选） `/*` 设置代理(可选)，替换为代理`IP`和`Port`
+认`HTTP`（可选） `/*` 设置代理`(`可选`)`，替换为代理`IP`和`Port`
 
 ```
         clientConfig.setHttpProxy("http://192.168.XX:33XX");
@@ -505,21 +654,24 @@ publicstaticvoidmain(String[]args){
         DescribeScalingGroupsResponse response;
         try {
             response = client.getAcsResponse(request);
-            }
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
-        }
-     }
- }
 ```
 
-### 使用手册
+`}` `}` `}`
 
-#### 安装Java SDK
+### 3.2 使用手册
 
-弹性伸缩 ESS 本文为您介绍如何安装及调用弹性伸缩的Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，您可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用弹性伸缩的开发工具包，您必须安装阿里云Java SDK核心库以及弹性伸缩的Java SDK。SDK核心库推荐使用4.5.17及以上版本，Java SDK的版本为2.1.1。 以使用弹性伸缩的Java SDK为例，您需要安装阿里云Java SDK核心库和弹性伸缩 Java SDK，并在 pom.xml文件中添加以下依赖即可。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
+#### 3.2.1 安装Java SDK
+
+本文为您介绍如何安装及调用弹性伸缩的Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，您可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用弹性伸缩的开发工具包，您必须安装阿里云Java SDK核心库以及弹性伸缩的Java SDK。SDK核心库推荐使用4.5.17及以上版本，Java SDK的版本为2.1.1。 以使用弹性伸缩的Java SDK为例，您需要安装阿里云Java SDK核心库和弹性伸缩 Java SDK，并在 pom.xml文件中添加以下依赖即可。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -533,31 +685,33 @@ publicstaticvoidmain(String[]args){
 </dependency>
 ```
 
-#### 设置身份验证凭证
+#### 3.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文为您介绍了目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的具体方法，请参见获取 AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。 请您确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文为您介绍了如何设置身份验证凭证。 目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的具体方法，请参见获取 AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-会危害您的信息安全。
+> **重要：** 请您确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
 ```
 
-`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret` 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret`
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-留。
+#### 3.2.3 请求连接配置
 
-#### 请求连接配置
+本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。 弹性伸缩 ESS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 `//` 获取`HttpClientConfig`对象
+`//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -569,31 +723,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -617,7 +771,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### 发起调用
+#### 3.2.4 发起调用
 
 本文为您介绍如何使用弹性伸缩的Java SDK发起请求。
 
@@ -630,7 +784,7 @@ IAcsClient client = new DefaultAcsClient(profile);
 ```
 
 2. 创建请求。
-请求类的命名规范为 ${apiName}Request ，其中**${apiName}**为API名称，例在引入多个产品SDK时，有可能存在Request类同名的情况，请注意按照package区分。 弹性伸缩 ESS
+请求类的命名规范为 ${apiName}Request ，其中**${apiName}**为API名称，例如CreateScalingGroup。 在引入多个产品SDK时，有可能存在Request类同名的情况，请注意按照package区分。
 
 ```
 CreateScalingGroupRequest request = new CreateScalingGroupRequest();
@@ -651,16 +805,17 @@ request.putHeadParameter("x-acs-organizationid", "1"); request.putHeadParameter(
 3. 发起调用并处理应答。
 
 ```java
-CreateScalingGroupRequest request = new CreateScalingGroupRequest(); request.setRegionId("cn-hangzhou"); request.setMinSize("0"); request.setMaxSize(1); try { client.getCreateScalingGroupResponse(request);
+CreateScalingGroupRequest request = new CreateScalingGroupRequest(); request.setRegionId("cn-hangzhou"); request.setMinSize("0"); request.setMaxSize(1); try {
+    CreateScalingGroupResponse response =
+client.getCreateScalingGroupResponse(request);
     System.out.println(response.getScalingGroups());
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
-}
 ```
 
-正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
+`}` 正常情况下，应答中的所有字段，都会被反序列化到response中，您可以直接调用 `response.getXXX()` 来获得应答中的字段。
 
 ```java
 System.out.println(response.getScalingGroups());
@@ -672,7 +827,7 @@ System.out.println(response.getScalingGroups());
 HttpResponse response = client.doAction(request);
 ```
 
-#### 错误处理
+#### 3.2.5 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -680,7 +835,7 @@ HttpResponse response = client.doAction(request);
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-如果您需要对SDK的错误进行处理，可以参考如下示例编写代码： 弹性伸缩 ESS
+如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
 
 ```
 try {
@@ -713,10 +868,11 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-#### 使用CommonRequest进行调用
+`}`
+
+#### 3.2.6 使用CommonRequest进行调用
 
 当您要调用的弹性伸缩的某个API没有提供SDK时，或者提供的SDK中的请求Request参数和返回 Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用 CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -726,18 +882,28 @@ CommonRequest的特点如下所示：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如查看伸缩活动的API接口**DescribeScalingActivities**，在发起CommonRequest请求时，要使用 `request.ApiName = "DescribeScalingActivities"` 来指定API名称。
 
 **示例：调用RPC风格的API**
 
-以下代码为弹性伸缩的**CreateScalingGroup**接口获取实例状态列表的调用示例。 弹性伸缩 ESS 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+以下代码为弹性伸缩的**CreateScalingGroup**接口获取实例状态列表的调用示例。
 
-**说明**
-
-留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP和相应端口。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP和相应端口。
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class CreateScalingGroup {
     public static void main(String[] args) {
 ```
 
@@ -797,13 +963,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-caller-sdk-source","ApiTestDemo");// 必填，调用来
 ```
 
-源说明 "<yourRegionID>");//非必填(企业版
+源说明 "<yourRegionID>");//非必填`(`企业版
 
 ```
 requestputHeadParameter("x-acs-regionid"
 ```
-
-弹性伸缩 ESS
 
 ```
         request.putHeadParameter(xacsregionid, <yourRegionID>);// 非必填(企业版
@@ -815,7 +979,7 @@ requestputHeadParameter("x-acs-regionid"
         // request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// 非必填（修
 ```
 
-改、删除、查询单实例详情时需要）,请替换为您实际的实例`ID`
+改、删除、查询单实例详情时需要）`,`请替换为您实际的实例`ID`
 
 ```
         /**
@@ -839,22 +1003,22 @@ requestputHeadParameter("x-acs-regionid"
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-弹性伸缩 ESS
+`}` `}` `}`
 
-## Python SDK调用示例
+## 4 Python SDK调用示例
 
-### 快速开始
+### 4.1 快速开始
 
 本文为您介绍如何获取弹性伸缩的Python SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret 获取弹性伸缩的Endpoint，具体操作，请参见获取弹性伸缩的Endpoint。
+使用阿里云专有云Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret 信息。具体操作，请参见获取AccessKey。 获取弹性伸缩的Endpoint，具体操作，请参见获取弹性伸缩的Endpoint。
+
+**安装Python SDK**
+
 1. 安装SDK核心库。
 如果您使用的是Python 2.x.x，请执行以下命令，安装阿里云SDK核心库：
 
@@ -888,11 +1052,13 @@ pip3 install aliyun-python-sdk-ess
 在创建Client实例时，您需要获取Region ID、AccessKey ID以及AccessKey Secret信息。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下所示： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <ess.aliyuncs.com>，请替换为您实际的产品访问地址。 弹性伸缩 ESS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下所示：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <ess.aliyuncs.com>，请替换为您实际的产品访问地址。
 
 ```python
 #!/usr/bin/env python
@@ -914,6 +1080,7 @@ acces_secret = '<yourAccessKeySecret>' # 请替换为您实际的AccessKey Secre
 # create client
 region_provider.modify_point(product_name, region_id, endpoint) clt = client.AcsClient(access_key, acces_secret, region_id)
 # setup request
+request = CreateScalingGroupRequest()
 ```
 
 `request.set_accept_format('json') #` 设置返回数据格式
@@ -923,9 +1090,9 @@ region_provider.modify_point(product_name, region_id, endpoint) clt = client.Acs
 response = clt.do_action_with_exception(request) print response
 ```
 
-### 使用手册
+### 4.2 使用手册
 
-#### 安装Python SDK
+#### 4.2.1 安装Python SDK
 
 本文为您介绍如何安装及调用弹性伸缩的Python SDK。
 
@@ -933,17 +1100,14 @@ response = clt.do_action_with_exception(request) print response
 
 阿里云专有云Python SDK支持Python 2.7、Python 3.x环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
-
-使用产品的开发工具包，必须安装阿里云Python SDK核心库。例如，如果您想使用弹性伸缩的Python SDK，您需要安装阿里云Python SDK核心库和弹性伸缩的Python SDK。
+> **说明：** 使用产品的开发工具包，必须安装阿里云Python SDK核心库。例如，如果您想使用弹性伸缩的Python SDK，您需要安装阿里云Python SDK核心库和弹性伸缩的Python SDK。
 
 **操作步骤**
 
 本文以使用Python 2.7或Python 3.x为例。
 
-**重要**
+> **重要：** Python代码的最后一行需要添加空行，否则会引起提示性的告警。
 
-Python代码的最后一行需要添加空行，否则会引起提示性的告警。
 1. 执行以下命令安装阿里云SDK核心库。
 如果您使用的是Python 2.7或Python 3.x，请执行以下命令安装阿里云SDK核心库：
 
@@ -957,37 +1121,25 @@ pip install aliyun-python-sdk-core
 pip install aliyun-python-sdk-ess==2.3.19
 ```
 
-弹性伸缩 ESS
+> **说明：** `aliyun-python-sdk-ess` 的版本为2.3.19作为示例，最新版本请以SDK的发布版本为准。
 
-**说明**
+#### 4.2.2 设置身份验证凭证
 
-`aliyun-python-sdk-ess` 的版本为2.3.19作为示例，最新版本请以SDK的发布版本为准。
+当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的具体方法，请参见获取 AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-#### 设置身份验证凭证
-
-当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的具体方法，请参见获取 AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。 请您确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将
-
-**重要**
-
-会危害您的信息安全。
+> **重要：** 请您确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-留。
-
-#### 设置HTTPS请求
+#### 4.2.3 设置HTTPS请求
 
 Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
-**说明**
-
-产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
@@ -995,23 +1147,21 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 
 | 行 | python -c "import ssl" | 检查Pyth |
 |---|---|---|
-| ImportError: No module named ssl |  |  |
+| ImportError: No module named ssl |   |   |
 
-若没有OpenSSL，运行以下命令安装： `pip install pyopenssl # Python 2`使用此命令。
+运行 `python -c "import ssl"` 检查Python环境是否支持OpenSSL。运行后，如果没有出若没有OpenSSL，运行以下命令安装： `pip install pyopenssl # Python 2`使用此命令。
 
-**说明**
-
-若本地环境为Python 3，则运行 `pip3 install pyopenssl` 命令。
+> **说明：** 若本地环境为Python 3，则运行 `pip3 install pyopenssl` 命令。
 
 **设置单个请求的HTTP/HTTPS协议**
 
-参考以下代码示例为一个接口设置HTTPS调用： 弹性伸缩 ESS
+参考以下代码示例为一个接口设置HTTPS调用：
 
 ```java
 import DescribeInstancesRequest request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -1021,15 +1171,16 @@ import DescribeInstancesRequest request = DescribeInstancesRequest() request.set
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-#### 发起调用
+#### 4.2.4 发起调用
 
 本文为您介绍如何使用弹性伸缩的Python SDK发起请求。
 
 **操作步骤**
 
 1. 导入弹性伸缩的SDK。
+以**DescribeScalingGroups**接口为例。
 
 ```python
 from aliyunsdkcore import client from aliyunsdkcore.profile import region_provider from aliyunsdkess.request.v20140828 import DescribeScalingGroupsRequest
@@ -1044,7 +1195,7 @@ client.region_provider.modify_point(product_name, region_id, endpoint) clt = cli
 3. 创建Request对象。
 
 ```
-request.set_accept_format('json')
+request = DescribeScalingGroupsRequest() request.set_accept_format('json')
 ```
 
 4. 发起调用并打印返回结果。
@@ -1053,7 +1204,7 @@ request.set_accept_format('json')
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### 错误处理
+#### 4.2.5 错误处理
 
 在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -1061,7 +1212,7 @@ response = clt.do_action_with_exception(request) print response
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
 ```
 
-弹性伸缩 ESS 如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
+如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
 
 ```
 try:
@@ -1069,8 +1220,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -1078,7 +1228,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### 使用CommonRequest进行调用
+#### 4.2.6 使用CommonRequest进行调用
 
 当您要调用的弹性伸缩的API没有提供SDK时，或者提供的SDK中的请求Request参数以及返回Response 值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -1088,24 +1238,34 @@ CommonRequest的特点如下所示：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在弹性伸缩的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如查看伸缩活动的API接口**DescribeScalingActivities**，在发起CommonRequest请求时，要使用 `request.ApiName = "DescribeScalingActivities"` 来指定API名称。
 
 **示例：调用RPC风格的API**
 
-以下代码为弹性伸缩的**CreateScalingGroup**接口获取实例状态列表的调用示例： 弹性伸缩 ESS 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+以下代码为弹性伸缩的**CreateScalingGroup**接口获取实例状态列表的调用示例：
 
-**说明**
-
-留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <ess.aliyuncs.com>，请替换为您实际的产品访问地址。 弹性伸缩 ESS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
+> <ess.aliyuncs.com>，请替换为您实际的产品访问地址。
 
 ```
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
 ```
 
-# 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
+`#` 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
 
 ```
-client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('ess') request.set_version('2014-08-28')
+client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('ess') request.set_action_name('CreateScalingGroup') request.set_version('2014-08-28')
 ```
 
 `request.set_domain('<ess.aliyuncs.com>') #`产品访问域名，当前为示例值，请替换为您实际的产品访问地址
@@ -1117,8 +1277,7 @@ action_name='CreateScalingGroup',version='2014-08-28',domain='ess.aliyuncs.com')
 ######
 ```
 
-# 设置请求协议类型，支持`https`或`http`，默认为`http`
-# 设置`https`方法如下：
+`#` 设置请求协议类型，支持`https`或`http`，默认为`http` `#` 设置`https`方法如下：
 
 ```bash
 # request.set_protocol_type('https')
@@ -1127,61 +1286,58 @@ request.set_accept_format('json') request.set_method('POST') request.add_query_p
 ######
 ```
 
-# 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段
-# 调用方法如下：
+`#` 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段 `#` 调用方法如下：
 
 ```bash
 # request.add_query_param("SecurityToken", "<yourSecurityToken>");
 ```
 
-# 请替换为您实际的`SecurityToken`
+`#` 请替换为您实际的`SecurityToken`
 
 ```
 ######
 ```
 
-# 非必填，请替换为您实际的资源集`ID`
+`#` 非必填，请替换为您实际的资源集`ID`
 
 ```
 request.add_header("x-acs-resourcegroupid", "<yourResourceGroupID>")
 ```
 
-# 必填，请替换为您实际的组织`ID`
+`#` 必填，请替换为您实际的组织`ID`
 
 ```
 request.add_header("x-acs-organizationid", "<yourOrganizationID>")
 ```
 
-# 必填，调用来源说明
+`#` 必填，调用来源说明
 
 ```
 request.add_header("x-acs-caller-sdk-source","ApiTestDemo")
 ```
 
-# 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
+`#` 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
 
 ```
 request.add_header("x-acs-regionid", "<yourRegionID>")
 ```
 
-# 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
+`#` 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
 
 ```python
 # request.add_header("x-acs-instanceid", "<yourInstanceID>")
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-弹性伸缩 ESS
+## 5 Go SDK调用示例
 
-## Go SDK调用示例
-
-### 快速开始
+### 5.1 快速开始
 
 阿里云Go SDK让您无需进行复杂编程即可访问。本文为您介绍如何获取阿里云弹性伸缩的Go SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Go SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具获取弹性伸缩的Endpoint，具体操作，请参见获取弹性伸缩的Endpoint。
+使用阿里云专有云Go SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取弹性伸缩的Endpoint，具体操作，请参见获取弹性伸缩的Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -1197,11 +1353,13 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化Client实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <Endpoint>，请替换为您实际的Endpoint。 弹性伸缩 ESS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <Endpoint>，请替换为您实际的Endpoint。
 
 ```java
 package main import (
@@ -1210,7 +1368,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1233,10 +1391,9 @@ func main() {
 
 ```
         panic(err)
-    }
 ```
 
-`//` 创建`API`请求并设置参数
+`}` `//` 创建`API`请求并设置参数
 
 ```
     request := ess.CreateDescribeScalingGroupsRequest()
@@ -1261,34 +1418,38 @@ func main() {
 
 ```
         panic(err)
-    }
-    fmt.Println(response)
-}
 ```
 
+`}`
+
+```
+    fmt.Println(response)
+```
+
+`}`
 4. （可选）切换HTTP/HTTPS协议。
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### 使用手册
+### 5.2 使用手册
 
-#### 安装Go SDK核心包
+#### 5.2.1 安装Go SDK核心包
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### 设置身份验证凭证
+#### 5.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文为您介绍了目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的具体方法，请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。 弹性伸缩 ESS 请您确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文为您介绍了如何设置身份验证凭证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的具体方法，请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。
 
-**重要**
+> **重要：** 请您确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
 
-会危害您的阿里云账号的信息安全。 以下代码以弹性伸缩为例，展示初始化essClient实例的方法。 `//` 初始化`ecsClient`实例
+以下代码以弹性伸缩为例，展示初始化essClient实例的方法。 `//` 初始化`ecsClient`实例
 
 ```
 essClient, err := ess.NewClientWithAccessKey(
@@ -1300,13 +1461,9 @@ essClient, err := ess.NewClientWithAccessKey(
         "<yourAccessKeySecret>")        // 请替换为您实际的AccessKey Secret
 ```
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-留。
-
-#### 发起调用
+#### 5.2.3 发起调用
 
 本文介绍使用弹性伸缩的Go SDK发起调用的方法。 以下步骤以弹性伸缩为例，展示使用弹性伸缩的Go SDK发起调用的方法。
 1. 导入弹性伸缩的Go SDK。
@@ -1316,15 +1473,14 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ess
 ```
 
 2. 新建一个AcsClient，该client中包含产品名的所有API。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-保留。 `essClient,err := <ess>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `essClient.Domain = "ess.aliyuncs.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
+`essClient,err := <ess>.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret` `essClient.Domain = "ess.aliyuncs.com" //`设置请求域名地址，当前为示例值，请求根据实际请求地址替换。
 
-| xxx.CreateXXXRequest |  | 方法创建一个请求。 |
+| xxx.CreateXXXRequest |   | 方法创建一个请求。 |
 |---|---|---|
-| 法的命名规范为 |  |  |
+| 法的命名规范为 |   |   |
 
 **${service}**为产品名称(小写)。例如ess。
 **${apiName}**为API名称，例如DescribeScalingGroups。
@@ -1339,9 +1495,9 @@ request := ess.CreateDescribeScalingGroupsAttributeRequest() request.InstanceId 
 response, err := essClient.DescribeScalingGroupsAttribute(request)
 ```
 
-#### 错误处理
+#### 5.2.4 错误处理
 
-阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。 弹性伸缩 ESS
+阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
 **简单处理异常**
 
@@ -1355,16 +1511,17 @@ response,err := essClient.DescribeScalingGroups(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
 当SDK内部的任意调用出现error且无法自动化处理时，SDK会返回一个 `ClientError` 。 以下以弹性伸缩的**DescribeScalingGroups**接口为例，您可以通过以下代码来判断并获取 `ClientError` 中的错误信息：
 
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，具体引入方法请参见： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ess" //请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，具体引入方法请参见： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ess" //请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 ```
 response, err := essClient.DescribeScalingGroups(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1382,20 +1539,21 @@ response, err := essClient.DescribeScalingGroups(request) if clientError, ok := 
     clientError.Message()
 ```
 
-`//` 获取原始错误(可能为`nil)`
+`//` 获取原始错误`(`可能为`nil)`
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
-当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从 Response中获得原始的HTTP应答。 以下以弹性伸缩的**DescribeScalingGroups**接口为例，您可以通过以下代码来判断并获取ServerError 以及Response中的错误信息： 弹性伸缩 ESS
+当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从 Response中获得原始的HTTP应答。 以下以弹性伸缩的**DescribeScalingGroups**接口为例，您可以通过以下代码来判断并获取ServerError 以及Response中的错误信息：
 
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，具体引入方法请参见： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ess" //请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，具体引入方法请参见： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/ess" //请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 ```
 response, err := essClient.DescribeScalingGroups(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1417,10 +1575,11 @@ response, err := essClient.DescribeScalingGroups(request) if serverError, ok := 
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
 
-#### 使用CommonRequest进行调用
+`}`
+
+#### 5.2.5 使用CommonRequest进行调用
 
 当您要调用的弹性伸缩的某个API没有提供SDK时，或者提供的SDK中的请求Request参数以及返回 Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用 CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -1430,15 +1589,25 @@ CommonRequest的特点如下所示：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在弹性伸缩的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如查看伸缩活动的API接口**DescribeScalingActivities**，在发起CommonRequest请求时，要使用 `request.ApiName = "DescribeScalingActivities"` 来指定API名称。
 
 **示例：调用RPC风格的API**
 
-以下代码为弹性伸缩的**DescribeScalingActivities**接口获取实例状态列表的调用示例： 弹性伸缩 ESS 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+以下代码为弹性伸缩的**DescribeScalingActivities**接口获取实例状态列表的调用示例：
 
-**说明**
-
-留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <ess.aliyuncs.com>，请替换为您实际的产品访问请求地址。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 弹性伸缩 ESS
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <ess.aliyuncs.com>，请替换为您实际的产品访问请求地址。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
 
 ```java
 package main import (
@@ -1447,7 +1616,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1459,19 +1628,29 @@ func main() {
 ```
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
 ```
 
-`request.Domain = "<ess.aliyuncs.com>" //` 请求访问地址,当前为示例值,请根据实际请求地址替换
+`request.Domain = "<ess.aliyuncs.com>" //` 请求访问地址`,`当前为示例值`,`请根据实际请求地址替换
 
 ```
     request.Product = "ess"
     request.Version = "2014-08-28"
 ```
 
-`//` 因为是`RPC`接口，因此需指定`APIName(Action)` `//` 业务参数
+`//` 因为是`RPC`接口，因此需指定`APIName(Action)`
+
+```
+    request.ApiName = "DescribeScalingGroups"
+```
+
+`//` 业务参数
 
 ```
     request.QueryParams["PageNumber"] = "1"
@@ -1508,16 +1687,19 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-弹性伸缩 ESS
+`}`
 
-## API参考
+```
+    fmt.Print(response.GetHttpContentString())
+```
 
-### API使用须知
+`}`
+
+## 6 API参考
+
+### 6.1 API使用须知
 
 在调用弹性伸缩OpenAPI之前，您需要在弹性伸缩控制台将OpenAPI权限授予弹性伸缩。 如果不符合条件，将出现异常，如下表所示。表 1. 错误说明
 
@@ -1526,15 +1708,15 @@ func main() {
 | 403 | Forbidden.Unsubscribe d | Do not have permission to access this API. | 您未开通弹性伸缩，无权调用该API。 |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 您未向弹性伸缩完整授权 OpenAPI接口。 |
 
-### 调用方式
+### 6.2 调用方式
 
 对弹性伸缩API接口调用是通过向弹性伸缩API的服务端地址发送HTTP GET请求，并按照接口说明在请求中加入相应请求参数来完成的。根据请求的处理情况，系统会返回处理结果。
 
-### 请求结构
+### 6.3 请求结构
 
 本章节介绍发起API请求的结构。 服务地址通信协议支持通过HTTP或HTTPS通道进行请求通信。为了获得更高的安全性，推荐您使用HTTPS通道发送请求。 请求方法支持HTTP GET方法发送请求，这种方式的请求参数需要包含在请求的URL中。 请求参数每个请求都需要指定要执行的操作，即Action参数（例如CreateScalingGroup），并且每个操作都需要包含公共请求参数和指定操作所特有的请求参数。 字符编码请求及返回结果都使用UTF-8字符集进行编码。
 
-### 公共参数
+### 6.4 公共参数
 
 **公共请求参数**
 
@@ -1542,8 +1724,6 @@ func main() {
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
-
-弹性伸缩 ESS
 
 | Format | Strin g | 否 | 返回参数的语言类型，仅支持JSON。 |
 |---|---|---|---|
@@ -1554,56 +1734,49 @@ func main() {
 | Action | Strin g | 是 | API的名称。 |
 | Product | Strin g | 是 | 接口对应的产品名称，取值：Ess。 |
 
+**公共Header参数**
+
 | 名称 | 描述 |
 |---|---|
 | x-acs-organizationId | Apsara Uni-manager运营控制台上的组织ID，获取方式，请参见获取组织 ID。 |
 | x-acs-resourcegroupId | Apsara Uni-manager运营控制台上的资源集ID，获取方式，请参见获取资源集ID。 |
 | x-acs-instanceId | 进行操作的实例ID，获取方式，请参见获取实例ID。 |
 
-**说明**
-
-在调用弹性伸缩API接口时，您需要在调用代码的请求头Header中添加**x-acs-organizationid**、**x-**
-**acs-resourcegroupid**、**x-acs-instanceid**等参数的实际值，用于指定当前实例的实例ID（在创
-建实例和查询实例列表的场景下，实例ID不存在），及其所属的组织和资源集。若未添加相关Header 参数实际值，调用时则会默认指向root组织和root资源集。
+> **说明：** 在调用弹性伸缩API接口时，您需要在调用代码的请求头Header中添加**x-acs-organizationid**、**x-** **acs-resourcegroupid**、**x-acs-instanceid**等参数的实际值，用于指定当前实例的实例ID（在创建实例和查询实例列表的场景下，实例ID不存在），及其所属的组织和资源集。若未添加相关Header 参数实际值，调用时则会默认指向root组织和root资源集。
 
 **公共返回参数**
 
-API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx HTTP或5xx HTTP状态码代表调用失败。 弹性伸缩 ESS 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
+API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx HTTP或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
 
-### 返回结果
+### 6.5 返回结果
 
-#### 成功结果
+#### 6.5.1 成功结果
 
-调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功；返回4xx或5xx的HTTP 状态码代表调用失败。调用成功返回的数据格式主要有XML和JSON两种。外部系统可以在请求时传入参数来制定返回的数据格式，默认为XML格式。 本文档中的返回示例为了便于查看，做了格式化处理，实际返回结果没有进行换行、缩进
+调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功；返回4xx或5xx的HTTP 状态码代表调用失败。调用成功返回的数据格式主要有XML和JSON两种。外部系统可以在请求时传入参数来制定返回的数据格式，默认为XML格式。
 
-**说明**
+> **说明：** 本文档中的返回示例为了便于查看，做了格式化处理，实际返回结果没有进行换行、缩进等处理。
 
-等处理。 XML示例： XML返回结果包括请求是否成功信息和具体的业务数据。
+XML示例： XML返回结果包括请求是否成功信息和具体的业务数据。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-<!--结果的根结点`-->` <接口名称`+Response>` <!--返回请求标签`-->`
+<!--结果的根结点`-->` `<`接口名称`+Response>` <!--返回请求标签`-->`
 
 ```xml
     <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
 ```
 
-<!--返回结果数据`-->` `</`接口名称`+Response>` JSON示例
+<!--返回结果数据`-->` `</`接口名称`+Response>` JSON示例 `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
 ```
 
-`/*` 返回结果数据 `*/`
+`/*` 返回结果数据 `*/` `}`
 
-```
-}
-```
-
-#### 错误结果
+#### 6.5.2 错误结果
 
 调用接口出错后，将不会返回结果数据。调用方可根据各个接口定义的错误码或附表客户端错误以及服务器端错误来定位错误原因。 当调用出错时，HTTP请求返回一个4xx或5xx的HTTP状态码。返回的消息体中是具体的错误代码及错误信息。另外还包含一个全局唯一的请求ID：RequestId和一个您该次请求访问的站点ID：HostId。 XML示例
 
@@ -1616,35 +1789,35 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 </Error>
 ```
 
-JSON示例弹性伸缩 ESS
+JSON示例 `{`
 
 ```json
-{
     "RequestId": "8906582E-6722-409A-A6C4-0E7863B733A5",
     "HostId": "ess.example.com",
     "Code": "UnsupportedOperation",
     "Message": "The specified action is not supported."
-}
 ```
 
-### 签名机制
+`}`
+
+### 6.6 签名机制
 
 本章节介绍如何在访问过程中使用签名机制标识身份。 弹性伸缩会对每个访问的请求进行身份验证，因此使用HTTP或者HTTPS协议提交请求时，都需要在请求中包含签名（Signature）信息。弹性伸缩使用AccessKey ID和AccessKey Secret进行对称加密，以验证请求发送者的身份。您可以在Apsara Stack控制台中获取AccessKey ID和AccessKey Secret，获取方式请参见获取AccessKey。其中AccessKey ID用于标识访问者的身份，AccessKey Secret用于加密签名字符串和服务器端验证签名字符串，必须严格保密。 在访问时，请按照下面的步骤对请求进行签名处理：
 1. 使用请求参数构造规范化的请求字符串（Canonicalized Query String）。
-i. 按照参数名称的字母顺序对请求中所有的请求参数进行排序，其中请求参数包括文档中描述的公共请求参数和给定请求接口的自定义参数，但不能包括公共请求参数中提到的Signature参数本身。 当使用GET方法提交请求时，这些参数是请求URL中的参数部分，即URL中 ? 之后由 & 连接的部分。 ii. 对每个请求参数的名称和值进行编码。 名称和值要使用UTF-8字符集进行URL编码，URL编码的编码规则是： 不编码字符A-Z、a-z、0-9以及字符连接号（-）、下划线（_）、点号（.）和波浪线（~）。
+i. 按照参数名称的字母顺序对请求中所有的请求参数进行排序，其中请求参数包括文档中描述的公共请求参数和给定请求接口的自定义参数，但不能包括公共请求参数中提到的Signature参数本身。 当使用GET方法提交请求时，这些参数是请求URL中的参数部分，即URL中 ? 之后由 `&` 连接的部分。 ii. 对每个请求参数的名称和值进行编码。 名称和值要使用UTF-8字符集进行URL编码，URL编码的编码规则是： 不编码字符A-Z、a-z、0-9以及字符连接号（-）、下划线（_）、点号（.）和波浪线（~）。
 
-| 成 | %XY |  |  |  |
+| 成 | %XY |   |   |   |
 |---|---|---|---|---|
-| %22 |  |  |  |  |
-|  |  | 。 |  |  |
-|  |  |  | 成 %XY%ZA… |  |
-|  |  |  | %20 | ，而不 |
+| %22 |   |   |   |   |
+|   |   | 。 |   |   |
+|   |   |   | 成 %XY%ZA… |   |
+|   |   |   | %20 | ，而不 |
 
-一般支持URL编码的库（例如Java中的java.net.URLEncoder）都按
+其他字符编码成 %XY 的格式，其中 `XY` 是字符对应ASCII码的16进制表示。例如，英文的双引号对应的编码是 %22 。
 
-**说明**
+> **说明：** 一般支持URL编码的库（例如Java中的java.net.URLEncoder）都按照 `application/x-www-form-urlencoded` 的MIME类型规则进行编码。实现时可以直接使用这类方式进行编码，将编码后的字符串中的加号（+）替换成 %20 、星号（*）替换成 %2A 、 %7E 替换回波浪线（~），即可得到上述规则描述的编码字符串。
 
-照 `application/x-www-form-urlencoded` 的MIME类型规则进行编码。实现时可以直接使用这类方式进行编码，将编码后的字符串中的加号（+）替换成 %20 、星号（*）替换成 %2A 、 %7E 替换回波浪线（~），即可得到上述规则描述的编码字符串。 iii. 使用英文等号（=）连接编码后的参数名称和值。 iv. 将英文等号（=）连接得到的字符串按参数名称的字母顺序使用and（&）符号连接，即得到规范化请求字符串。
+iii. 使用英文等号（=）连接编码后的参数名称和值。 iv. 将英文等号（=）连接得到的字符串按参数名称的字母顺序使用and（&）符号连接，即得到规范化请求字符串。
 2. 使用构造出的规范化字符串，按照以下规则构造用于计算签名的字符串。
 
 ```
@@ -1657,9 +1830,8 @@ i. 按照参数名称的字母顺序对请求中所有的请求参数进行排�
 3. 按照RFC2104的定义，使用构造出的用于计算签名的字符串计算签名HMAC值。
 计算签名时使用的Key就是用户持有的AccessKey Secret并加上一个and（&）字符（ASCII为38）， 使用的哈希算法是SHA1。
 4. 按照Base64编码规则将HMAC值编码成字符串，即得到签名值（Signature）。
-弹性伸缩 ESS
 5. 将得到的签名值作为Signature参数添加到请求参数中，即完成请求签名的过程。
-得到的签名值在作为最后的请求参数值提交给ECS服务器的时候，要和其他参数一样，按照RFC3986的规则进行URL编码。
+得到的签名值在作为最后的请求参数值提交给ECS服务器的时候，要和其他参数一样，按照RFC3986的规则进行URL编码。 以DescribeScalingGroups为例，签名前的请求URL为：
 
 ```
 http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKeyId=testid&Action=DescribeScalingGroups&SignatureMeth =HMAC-SHA1&RegionId=cn-qingdao&SignatureNonce=1324fd0e-e2bb-4bb1-917cbd6e437f****&SignatureVersion=1.0&Version=2014-08-28
@@ -1679,13 +1851,15 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 
 请求URL中增加了Signature参数。
 
-### 伸缩组
+### 6.7 伸缩组
 
-#### CreateScalingGroup
+#### 6.7.1 CreateScalingGroup
+
+调用CreateScalingGroup创建一个伸缩组。
 
 **接口说明**
 
-伸缩组是具有相同应用场景的ECS实例的集合。 最多支持在一个地域下创建50个伸缩组。 伸缩组创建成功后不会立即生效。您需要先调用API EnableScalingGroup接口启用伸缩组，伸缩组才能触发伸缩活动和执行伸缩规则。 伸缩组关联的负载均衡实例和关联的RDS实例必须在同一个地域。更多信息，请参见云服务器ECS文档中的地域与可用区章节。 如果您为伸缩组关联了负载均衡实例，伸缩组会自动将加入伸缩组的ECS实例添加到负载均衡实例的后端服务器组。ECS实例在加入负载均衡实例的后端服务器组后，权重默认为50。负载均衡实例需要满足以下条件： 该负载均衡实例的状态必须是active，您可以调用 API DescribeLoadBalancers接口查看指定负载均衡实例的状态。 该负载均衡实例配置的所有监听端口必须开启健康检查，否则伸缩组创建失败。 如果您为伸缩组关联了RDS实例，伸缩组会自动将加入伸缩组的ECS实例的内网IP添加到RDS实例的访问白名单。RDS实例需要满足以下条件： 该RDS实例的状态必须是Running，您可以调用API DescribeDBInstances接口查看指定RDS实例的状态。 弹性伸缩 ESS 该RDS实例访问白名单的IP数不能超过上限值。更多信息，请参见云数据库RDS文档中的设置白名单相关内容。 如果伸缩组的MultiAZPolicy设置为COST_OPTIMIZED： 当指定OnDemandBaseCapacity、OnDemandPercentageAboveBaseCapacity参数时，即指定成本优化策略下的实例分配方式，在扩缩容时将优先满足该实例分配方式。 当不指定OnDemandBaseCapacity、OnDemandPercentageAboveBaseCapacity参数时，成本优化策略下将仅按照成本最低的方式进行实例创建。
+伸缩组是具有相同应用场景的ECS实例的集合。 最多支持在一个地域下创建50个伸缩组。 伸缩组创建成功后不会立即生效。您需要先调用API EnableScalingGroup接口启用伸缩组，伸缩组才能触发伸缩活动和执行伸缩规则。 伸缩组关联的负载均衡实例和关联的RDS实例必须在同一个地域。更多信息，请参见云服务器ECS文档中的地域与可用区章节。 如果您为伸缩组关联了负载均衡实例，伸缩组会自动将加入伸缩组的ECS实例添加到负载均衡实例的后端服务器组。ECS实例在加入负载均衡实例的后端服务器组后，权重默认为50。负载均衡实例需要满足以下条件： 该负载均衡实例的状态必须是active，您可以调用 API DescribeLoadBalancers接口查看指定负载均衡实例的状态。 该负载均衡实例配置的所有监听端口必须开启健康检查，否则伸缩组创建失败。 如果您为伸缩组关联了RDS实例，伸缩组会自动将加入伸缩组的ECS实例的内网IP添加到RDS实例的访问白名单。RDS实例需要满足以下条件： 该RDS实例的状态必须是Running，您可以调用API DescribeDBInstances接口查看指定RDS实例的状态。 该RDS实例访问白名单的IP数不能超过上限值。更多信息，请参见云数据库RDS文档中的设置白名单相关内容。 如果伸缩组的MultiAZPolicy设置为COST_OPTIMIZED： 当指定OnDemandBaseCapacity、OnDemandPercentageAboveBaseCapacity参数时，即指定成本优化策略下的实例分配方式，在扩缩容时将优先满足该实例分配方式。 当不指定OnDemandBaseCapacity、OnDemandPercentageAboveBaseCapacity参数时，成本优化策略下将仅按照成本最低的方式进行实例创建。
 
 **请求参数**
 
@@ -1700,16 +1874,12 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 | LaunchTemplate Version | String | 否 | Default | 实例启动模板的版本，取值范围： 固定的模板版本号。 Default：始终使用模板默认版本。 Latest：始终使用模板最新版本。 |
 | InstanceId | String | 否 | i-28wt4**** | ECS实例的ID。创建伸缩组时，将从指定的实例获取所需的配置信息，并自动创建伸缩配置。 |
 
-弹性伸缩 ESS
-
 | DefaultCooldow n | Integer | 否 | 300 | 一次伸缩活动（添加或移出ECS实例）结束后的一段冷却时间。取值范围： 0~86400，单位：秒。 默认值：300。 说明冷却时间内，该伸缩组不执行其他的伸缩活动，仅针对云监控报警任务触发的伸缩活动有效。 |
 |---|---|---|---|---|
 | LoadBalancerIds | String | 否 | ["lb- bp1u7etiogg38y vwz****", "lb- bp168cqrux9ai9l 7f****", "lb- bp1jv3m9zvj22u fxp****"] | 负载均衡实例ID。取值可以是由多台负载均衡实例ID组成一个JSON数组，最多支持 5个ID，ID之间用半角逗号（,）隔开。 |
 | DBInstanceIds | String | 否 | ["rm- bp142f86de0t7* ***", "rm- bp18l1z42ar4o* ***", "rm- bp1lqr97h4aqk* ***"] | RDS实例ID。取值可以是由多台RDS实例 ID组成一个JSON数组，最多支持8个 ID，ID之间用半角逗号（,）隔开。 |
 | RemovalPolicy.1 | String | 否 | OldestScalingCo nfiguration | 指定实例移出策略的第一段筛选策略。更多详情，请参见移出策略相关内容。取值范围： OldestInstance：移出最早加入伸缩组的ECS实例。 NewestInstance：移出最新加入伸缩组的ECS实例。 OldestScalingConfiguration：移出最早伸缩配置创建的ECS实例。 仅当RemovalPolicy.1和 RemovalPolicy.2均未设置取值时，RemovalPolicy.1的默认值为 OldestScalingConfiguration。 |
 | RemovalPolicy.2 | String | 否 | OldestInstance | 指定实例移出策略的第二段筛选策略，不允许与RemovalPolicy.1取值相同。更多详情，请参见移出策略相关内容。取值范围： OldestInstance：移出最早加入伸缩组的ECS实例。 NewestInstance：移出最新加入伸缩组的ECS实例。 OldestScalingConfiguration：移出最早伸缩配置创建的ECS实例。 仅当RemovalPolicy.1和 RemovalPolicy.2均未设置取值时，RemovalPolicy.2的默认值为 OldestInstance。 |
-
-弹性伸缩 ESS
 
 | VSwitchId | String | 否 | vsw- 5le3tkkyc8b7jhr 2g**** | 创建VPC类型的伸缩组时，指定的虚拟交换机ID。 |
 |---|---|---|---|---|
@@ -1721,8 +1891,6 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 | OnDemandPerce ntageAboveBase Capacity | Integer | 否 | 20 | 伸缩组满足最小按量实例数 （OnDemandBaseCapacity）要求后， 超出的实例中按量实例应占的比例，取值范围：0～100。 |
 | DesiredCapacity | Integer | 否 | 5 | 伸缩组内ECS实例的期望数量，伸缩组会自动将ECS实例数量维持在期望实例数。 取值不得大于MaxSize，且不得小于 MinSize。 |
 
-弹性伸缩 ESS
-
 | GroupDeletionPr otection | Boolean | 否 | true | 是否开启伸缩组删除保护。取值范围： true：开启伸缩组删除保护，此时不能删除该伸缩组。 false：关闭伸缩组删除保护。 默认值：false。 |
 |---|---|---|---|---|
 | GroupType | String | 否 | ECS | 伸缩组管理的实例类型。取值范围： ECS：伸缩组内管理的伸缩为ECS实例。 ECI：伸缩组内管理的伸缩为ECI实例。 默认值：ECS。 |
@@ -1730,11 +1898,9 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 | AzBalance | Boolean | 否 | false | 伸缩组的容量是否在多个可用区间均衡分布（仅当 MultiAZPolicy 参数取值为 COMPOSABLE 策略时生效），取值范围： true：伸缩组的容量在多个可用区间均衡分布。 false：伸缩组的容量不在多个可用区间均衡分布。 默认值：false。 |
 | AllocationStrate gy | String | 否 | priority | 容量分配策略，决定了伸缩组如何选择可用的实例规格类型满足容量。容量分布策略同时对按量容量生效（仅当 MultiAZPolicy 参数取值为 COMPOSABLE 策略时生效）。取值范围： priority：按照配置的实例规格的顺序创建实例。 lowestPrice：按照实例规格单位vCpu 价格从低到高创建实例。 默认值：priority。 |
 
-|  | MultiAZPolicy |
+|   | MultiAZPolicy |
 |---|---|
-| COMPOSABLE |  |
-
-弹性伸缩 ESS
+| COMPOSABLE |   |
 
 | VSwitchIds.N | RepeatL ist | 否 | vsw- 5le3tkkyc8b7jhr 2g**** | 一台或多台虚拟交换机的ID，N的取值范围：1~5。 如果您使用了VSwitchIds.N参数，VSwitchId参数将被忽略。 只有当伸缩组网络类型为VPC时，当前参数才生效。指定虚拟交换机所属的 VPC必须和伸缩组所属的VPC相同。 虚拟交换机可以来自多个可用区。虚拟交换机的优先级按照数字升序排序，1 表示最高优先级。当优先级较高的虚拟交换机所在可用区无法创建ECS实例时，自动选择下一优先级的虚拟交换机创建ECS实例。 |
 |---|---|---|---|---|
@@ -1742,8 +1908,6 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 | LifecycleHook.N. LifecycleHookNa me | String | 否 | lifecycle hook _ | 生命周期挂钩名称，用于指定生命周期挂钩，不支持修改。 |
 | LifecycleHook.N. LifecycleTransiti on | String | 否 | SCALE OUT _ | 生命周期挂钩适用的伸缩活动类型，取值范围： SCALE OUT：伸缩组弹性扩张活动。 _ SCALE IN：伸缩组弹性收缩活动。 _ |
 | LifecycleHook.N. NotificationMeta data | String | 否 | Test | 伸缩活动的等待状态的固定字符串信息。 参数长度不能超过128个字符。弹性伸缩每次推送消息到通知对象时，会同时发送您预先指定的NotificationMetadata参数值，便于管理和标记不同类别的通知信息。当您同时指定了NotificationArn参数时，NotificationMetadata参数方可生效。 |
-
-弹性伸缩 ESS
 
 | LifecycleHook.N. NotificationArn | String | 否 | acs:ess:cn- hangzhou-env1- d01:111111111 1:queue/queue2 d01d | 生命周期挂钩通知对象标识符，支持消息服务MNS队列或主题，参数取值格式： acs:ess:{region}:{account-id}: {resource-relative-id}。 region：伸缩组所在的地域。 account-id：阿里云账号ID。 例如： MNS队列：acs:ess:{region}: {account- id}:queue/{queuename}。 MNS主题：acs:ess:{region}: {account-id}:topic/{topicname}。 |
 |---|---|---|---|---|
@@ -1755,14 +1919,10 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 | Tag.N.Key | String | 否 | Department | 伸缩组的标签键。 |
 | Tag.N.Value | String | 否 | Finance | 伸缩组的标签值。 |
 
-弹性伸缩 ESS
-
 | Tag.N.Propagate | Boolean | 否 | false | 标识该标签是否为可传播标签，取值范围： true：伸缩组上的标签只会传播到新创建的实例上，而不会传播到已经在伸缩组中运行的实例上。 false：伸缩组上的标签不会传播到实例上。 默认值：false。 |
 |---|---|---|---|---|
 | LaunchTemplate Override.N.Insta nceType | String | 否 | ecs.c5.xlarge | 当您需要伸缩组按照实例规格容量进行伸缩时，请同时指定本参数和 LaunchTemplateOverride.N.Weighte dCapacity。 本参数用于指定实例规格，会覆盖启动模板中的实例规格。您可以指定N个本参数， 扩展启动模板支持N个实例规格。N的取值范围：1~10。 说明仅当 LaunchTemplateId参数指定了启动模板时，本参数生效。 InstanceType的取值范围：在售的ECS实例规格，请参见云服务器ECS文档中的实例规格族章节。 |
 | LaunchTemplate Override.N.Weig htedCapacity | Integer | 否 | 4 | 当您需要伸缩组按照实例规格容量进行伸缩时，在指定 LaunchTemplateOverride.N.Instance Type后，再指定本参数。两个参数一一对应，N需要保持一致。 本参数用于指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。权重越大，满足期望容量所需的本实例规格的实例数量越少。 由于每个实例规格的vCPU个数、内存大小等性能指标会有差异，您可以根据自身需求，给不同的实例规格配置不同的权重。 例如： 当前容量：0。 期望容量：6。 ecs.c5.xlarge规格容量：4。 为满足期望容量，伸缩组将为用户扩容2台 ecs.c5.xlarge实例。 说明扩容时伸缩组的容量不得超过最大容量与实例规格的最大权重之和。 WeightedCapacity的取值范围： 1~500。 |
-
-弹性伸缩 ESS
 
 | AlbServerGroup. N.AlbServerGrou pId | String | 否 | sgp- ddwb0y0g6y9bj m**** | ALB服务器组ID。 N为ALB服务器组的编号。一个伸缩组支持关联的ALB服务器组数量有限，如需查看或手动申请提升配额值，请前往配额中心。 |
 |---|---|---|---|---|
@@ -1778,27 +1938,29 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
 http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggroup**** &LaunchTemplateId=lt-m5e3ofjr1zn1aw7**** &LaunchTemplateVersion=Default &InstanceId=i-28wt4**** &RegionId=cn-qingdao-env17-d01 &MinSize=2 &MaxSize=20 &DefaultCooldown=300 &LoadBalancerIds=["lb-bp1u7etiogg38yvwz****", "lb-bp168cqrux9ai9l7f****", "lb-bp1jv3m9z vj22ufxp****"] &DBInstanceIds=["rm-bp142f86de0t7****", "rm-bp18l1z42ar4o****", "rm-bp1lqr97h4aqk****"] &RemovalPolicy.1=OldestScalingConfiguration &RemovalPolicy.2=OldestInstance &VSwitchId=vsw-bp14zolna43z266bq**** &MultiAZPolicy=PRIORITY &HealthCheckType=ECS &ScalingPolicy=recycle &ClientToken=123e4567-e89b-12d3-a456-42665544**** &OnDemandBaseCapacity=30 &OnDemandPercentageAboveBaseCapacity=20 &DesiredCapacity=5 &GroupDeletionProtection=true &GroupType=ECS &ContainerGroupId=eci-uf6fonnghi50u374**** &VSwitchIds=["vsw-bp14zolna43z266bq****"] &LifecycleHook= [{"DefaultResult":"CONTINUE","LifecycleHookName":"lifecyclehook****","LifecycleTransition "SCALE_OUT","NotificationMetadata":"Test","NotificationArn":"acs:ess:cn-hangzhou-env17d01:1111111111:queue/queue2","HeartbeatTimeout":600}] &VServerGroup=[{"VServerGroupAttribute":[{"VServerGroupId":"rspbp1443g77****","Weight":100,"Port":22}],"LoadBalancerId":"lb-bp1u7etiogg38yvwz****"}] &Tag=[{"Key":"Department","Value":"Finance","Propagate":false}] &LaunchTemplateOverride=[{"InstanceType":"ecs.c5.xlarge","WeightedCapacity":4}] &AlbServerGroup=[{"AlbServerGroupId":"sgp-ddwb0y0g6y9bjm****","Weight":100,"Port":22}] &AzBalance=false &AllocationStrategy=priority
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingGroupId>asg-bp14wlu85wrpchm0****</ScalingGroupId>
+</CreateScalingGroupResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingGroupId": "asg-bp14wlu85wrpchm0****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -1813,8 +1975,6 @@ http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggr
 | 400 | InvalidLoadBalancerId. IncorrectInstanceNetw orkType | The network type of the instance in specified Load Balancer does not support this action. | 指定的负载均衡实例内搭载的ECS实例的网络类型与伸缩组的网络类型必须一致。 |
 | 400 | InvalidLoadBalancerId. RegionMismatch | The specified Load Balancer and the specified scaling group are not in the same Region. | 指定的负载均衡实例与伸缩组必须在同一地域。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidLoadBalancerId. VPCMismatch | The specified virtual switch and the instance in specified Load Balancer are not in the same VPC. | 伸缩组内的负载均衡实例搭载的ECS实例与虚拟交换机应该在同一个VPC 中。 |
 |---|---|---|---|
 | 400 | InvalidParameter | The specified value of parameter "ScalingPolicy" is not valid. | 指定的回收模式参数不存在。 |
@@ -1828,8 +1988,6 @@ http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggr
 | 404 | InvalidLoadBalancerId. NotFound | The specified Load Balancer does not exist. | 指定的负载均衡实例不存在。 |
 | 404 | InvalidRegionId.NotFou nd | The specified region does not exist. | 指定的地域不存在。 |
 
-弹性伸缩 ESS
-
 | 404 | InvalidVSwitchId.NotFo und | The specified virtual switch does not exist. | 指定的虚拟交换机不存在。 |
 |---|---|---|---|
 | 400 | LaunchTemplateVersio nSet.NotFound | The specific version of launch template is not exist. | 实例启动模板指定版本不存在。 |
@@ -1839,19 +1997,21 @@ http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggr
 | 400 | TemplateMissingPara meter.SecurityGroup | The input parameter "SecurityGroup" that is mandatory for processing this request is not supplied. | 实例启动模板指定版本缺少安全组信息。 |
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | 指定实例启动模板固定版本号为非数字。 |
 
-#### ModifyScalingGroup
+#### 6.7.2 ModifyScalingGroup
+
+调用ModifyScalingGroup修改一个伸缩组。
 
 **接口说明**
 
 不支持修改以下参数： RegionId LoadBalancerId
 
-**说明**
+> **说明：** 如果需要修改负载均衡实例，请参见API AttachLoadBalancers和 DetachLoadBalancers接口。
 
-弹性伸缩 ESS DBInstanceId 如果需要修改RDS实例，请使用API AttachDBInstances和DetachDBInstances接
+DBInstanceId
 
-**说明**
+> **说明：** 如果需要修改RDS实例，请使用API AttachDBInstances和DetachDBInstances接口。
 
-口。 当伸缩组的状态为Active或Inactive时才能调用该接口。 启用新的伸缩配置不会影响通过早前伸缩配置创建并正在运行的ECS实例。 如果修改了MaxSize，导致伸缩组的ECS实例数超过最大容量（MaxSize），伸缩组会自动移出ECS实例，使得伸缩组的ECS实例数等于MaxSize。 如果修改了MinSize，导致伸缩组的ECS实例数低于最小容量（MinSize），伸缩组会自动加入ECS实例，使得伸缩组的ECS实例数等于MinSize。
+当伸缩组的状态为Active或Inactive时才能调用该接口。 启用新的伸缩配置不会影响通过早前伸缩配置创建并正在运行的ECS实例。 如果修改了MaxSize，导致伸缩组的ECS实例数超过最大容量（MaxSize），伸缩组会自动移出ECS实例，使得伸缩组的ECS实例数等于MaxSize。 如果修改了MinSize，导致伸缩组的ECS实例数低于最小容量（MinSize），伸缩组会自动加入ECS实例，使得伸缩组的ECS实例数等于MinSize。
 
 **请求参数**
 
@@ -1864,8 +2024,6 @@ http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggr
 | MaxSize | Integer | 否 | 99 | 伸缩组内ECS实例台数的最大值，取值范围：0~1000。 当伸缩组内ECS实例数大于 MaxSize 时，弹性伸缩会自动移出 ECS实例。 |
 | DefaultCooldow n | Integer | 否 | 600 | 一次伸缩活动（添加或移出ECS实例）结束后的一段冷却时间。取值范围： 0~86400，单位：秒。 冷却时间内，该伸缩组不执行其它的伸缩活动，仅针对云监控报警任务触发的伸缩活动有效。 |
 
-弹性伸缩 ESS
-
 | RemovalPolicy.1 | String | 否 | OldestScalingCo nfiguration | 指定实例移出策略的第一段筛选策略，取值范围： OldestInstance：移出最早加入伸缩组的ECS实例。 NewestInstance：移出最新加入伸缩组的ECS实例。 OldestScalingConfiguration：移出最早伸缩配置创建的ECS实例。 |
 |---|---|---|---|---|
 | RemovalPolicy.2 | String | 否 | NewestInstance | 指定实例移出策略的第二段筛选策略，取值范围： OldestInstance：移出最早加入伸缩组的ECS实例。 NewestInstance：移出最新加入伸缩组的ECS实例。 OldestScalingConfiguration：移出最早伸缩配置创建的ECS实例。 |
@@ -1877,19 +2035,15 @@ http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggr
 | OnDemandPerce ntageAboveBase Capacity | Integer | 否 | 20 | 伸缩组满足最小按量实例数 （OnDemandBaseCapacity）要求后， 超出的实例中按量实例应占的比例，取值范围：0～100。 |
 | DesiredCapacity | Integer | 否 | 5 | 伸缩组内ECS实例的期望数量，伸缩组会自动将ECS实例数量维持在期望实例数。 取值不得大于 MaxSize ，且不得小于 MinSize 。 |
 
-|  | MaxSize |
+|   | MaxSize |
 |---|---|
-| MinSize |  |
-
-弹性伸缩 ESS
+| MinSize |   |
 
 | GroupDeletionPr otection | Boolean | 否 | true | 是否开启伸缩组删除保护。取值范围： true：开启伸缩组删除保护，此时不能删除该伸缩组。 false：关闭伸缩组删除保护。 |
 |---|---|---|---|---|
 | MultiAZPolicy | String | 否 | PRIORITY | 多可用区伸缩组ECS实例扩缩容策略。取值范围： PRIORITY：根据虚拟交换机 （VSwitchIds.N）的优先级进行扩缩容。弹性伸缩优先在优先级最高的交换机所在可用区尝试扩缩容，如果无法扩缩容，则自动在下一优先级的交换机所在可用区进行扩缩容。 BALANCE：在伸缩组指定的多可用区之间均匀分配ECS实例。如果由于库存不足等原因可用区之间变得不平衡，您可以通过API RebalanceInstance平衡资源。 |
 | VSwitchIds.N | RepeatL ist | 否 | vsw- bp1oo2a7isyrb8i gf**** | 一台或多台虚拟交换机的ID，N的取值范围：1~5。 只有当伸缩组网络类型为VPC时，当前参数才生效。指定虚拟交换机所属的 VPC必须和伸缩组所属的VPC相同。 虚拟交换机可以来自多个可用区。虚拟交换机的优先级按照数字升序排序，1 表示最高优先级。当优先级较高的虚拟交换机所在可用区无法创建ECS实例时，自动选择下一优先级的虚拟交换机创建ECS实例。 |
 | LaunchTemplate Override.N.Insta nceType | String | 否 | ecs.c5.xlarge | 当您需要伸缩组按照实例规格容量进行伸缩时，请同时指定本参数和 LaunchTemplateOverride.N.Weighte dCapacity。 本参数用于指定实例规格，会覆盖启动模板中的实例规格。您可以指定N个本参数， 扩展启动模板支持N个实例规格。N的取值范围：1~10。 说明仅当 LaunchTemplateId参数指定了启动模板时，本参数生效。 InstanceType的取值范围：ECS实例支持的实例规格，请参见云服务器ECS文档中的实例规格族&实例规格简介章节。 |
-
-弹性伸缩 ESS
 
 | LaunchTemplate Override.N.Weig htedCapacity | Integer | 否 | 4 | 当您需要伸缩组按照实例规格容量进行伸缩时，在指定 LaunchTemplateOverride.N.Instance Type后，再指定本参数。两个参数一一对应，N需要保持一致。 本参数用于指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。 权重越大，满足期望容量所需的本实例规格的实例数量越少。 由于每个实例规格的vCPU个数、内存大小等性能指标会有差异，您可以根据自身需求，给不同的实例规格配置不同的权重。 例如： 当前容量：0。 期望容量：6。 ecs.c5.xlarge规格容量：4。 为满足期望容量，伸缩组将为用户扩容2台 ecs.c5.xlarge实例。 说明扩容时伸缩组的容量不得超过最大容量与实例规格的最大权重之和。 WeightedCapacity的取值范围： 1~500。 |
 |---|---|---|---|---|
@@ -1902,25 +2056,27 @@ http(s)://ess.example.com/?Action=CreateScalingGroup &ScalingGroupName=scalinggr
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
 http(s)://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &ScalingGroupName=scalinggroup**** &MinSize=1 &MaxSize=99 &DefaultCooldown=600 &RemovalPolicy.1=OldestScalingConfiguration &RemovalPolicy.2=NewestInstance &ActiveScalingConfigurationId=asc-bp17pelvl720x5ub**** &HealthCheckType=ECS &LaunchTemplateId=lt-m5e3ofjr1zn1aw7**** &LaunchTemplateVersion=Default &OnDemandBaseCapacity=30 &OnDemandPercentageAboveBaseCapacity=20 &DesiredCapacity=5 &GroupDeletionProtection=true &MultiAZPolicy=PRIORITY &VSwitchIds=["vsw-bp1oo2a7isyrb8igf****"] &LaunchTemplateOverride=[{"InstanceType":"ecs.c5.xlarge","WeightedCapacity":4}]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyScalingGroupResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -1929,8 +2085,6 @@ http(s)://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffog
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 账号下不存在指定的伸缩组。 |
 | 400 | InvalidScalingGroupNa me.Duplicate | The specified value of parameter <parameter name> is duplicated. | 伸缩组名已存在。 |
 | 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | 伸缩组中不存在指定的伸缩配置。 |
-
-弹性伸缩 ESS
 
 | 400 | InvalidScalingConfigur ationId.InstanceTypeM ismatch | The specified scaling configuration and existing active scaling configuration have different instance type. | 指定的伸缩配置的实例规格与当前生效的伸缩配置的实例规格不匹配。 |
 |---|---|---|---|
@@ -1942,17 +2096,17 @@ http(s)://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffog
 | 400 | TemplateMissingPara meter.SecurityGroup | The input parameter "SecurityGroup" that is mandatory for processing this request is not supplied. | 指定的实例启动模板版本缺少安全组信息。 |
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | 指定的实例启动模板固定版本号应该是数字。 |
 
-#### EnableScalingGroup
+#### 6.7.3 EnableScalingGroup
 
-弹性伸缩 ESS
+调用EnableScalingGroup启用一个伸缩组。
 
 **接口说明**
 
-当伸缩组处于Inactive状态，且伸缩组配置了组内实例的配置信息来源（伸缩配置、启动模板或者在创建伸缩组时指定的ECS实例）时，才可以调用该接口来启用伸缩组。否则，会调用失败。 一个伸缩组在同一时刻有且只有一个生效的实例配置信息来源。在调用接口时，您可以为
+当伸缩组处于Inactive状态，且伸缩组配置了组内实例的配置信息来源（伸缩配置、启动模板或者在创建伸缩组时指定的ECS实例）时，才可以调用该接口来启用伸缩组。否则，会调用失败。
 
-**说明**
+> **说明：** 一个伸缩组在同一时刻有且只有一个生效的实例配置信息来源。在调用接口时，您可以为伸缩组指定伸缩配置或启动模板。如果调用该接口前您已经为伸缩组配置了实例配置信息来源，在调用时再指定伸缩配置或启动模板会覆盖原有的配置信息。
 
-伸缩组指定伸缩配置或启动模板。如果调用该接口前您已经为伸缩组配置了实例配置信息来源，在调用时再指定伸缩配置或启动模板会覆盖原有的配置信息。 当该接口指定了加入伸缩组的ECS实例（InstanceId.N），调用该接口后，弹性伸缩会判断在加入ECS实例后伸缩组的ECS实例数量（Total Capactiy）是否在最小值（MinSize）和最大值（MaxSize）之间： 如果伸缩组的Total Capactiy小于MinSize，调用成功后，弹性伸缩服务会自动创建差额的按量付费的 ECS实例。例如：创建伸缩组时，指定MinSize为5，在启用伸缩组的InstanceId.N参数中指定2台已有ECS实例，则弹性伸缩在加入2台已有ECS实例之后，再自动创建3台ECS实例。 如果伸缩组的Total Capactiy大于MaxSize，则调用失败。
+当该接口指定了加入伸缩组的ECS实例（InstanceId.N），调用该接口后，弹性伸缩会判断在加入ECS实例后伸缩组的ECS实例数量（Total Capactiy）是否在最小值（MinSize）和最大值（MaxSize）之间： 如果伸缩组的Total Capactiy小于MinSize，调用成功后，弹性伸缩服务会自动创建差额的按量付费的 ECS实例。例如：创建伸缩组时，指定MinSize为5，在启用伸缩组的InstanceId.N参数中指定2台已有ECS实例，则弹性伸缩在加入2台已有ECS实例之后，再自动创建3台ECS实例。 如果伸缩组的Total Capactiy大于MaxSize，则调用失败。
 
 **请求参数**
 
@@ -1964,14 +2118,10 @@ http(s)://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffog
 | InstanceId.N | RepeatL ist | 否 | i-283vv**** | InstanceId.N为启用后需要加入伸缩组的 ECS实例的ID，N的取值范围：1～20。 指定加入伸缩组的ECS实例需要满足以下条件： 必须与伸缩组在同一个地域。 必须处于Running状态。 不能已加入到其他伸缩组中。 付费方式为包年包月、按量付费或抢占式实例。 如果伸缩组指定VswitchID，则不支持 Classic类型的ECS实例加入伸缩组，也不支持其他VPC的ECS实例加入伸缩组。 如果伸缩组没有指定VswitchID，则不支持VPC类型的ECS实例加入伸缩组。 |
 | LoadBalancerWe ight.N | RepeatL ist | 否 | 50 | LoadBalancerWeight.N为对应ECS实例后端服务器的权重，N的取值范围：1～ 20，该参数取值范围：1~100。 默认值：50 |
 
-弹性伸缩 ESS
-
 | LaunchTemplate Id | String | 否 | lt- m5e3ofjr1zn1aw 7**** | 实例启动模板的ID，用于指定伸缩组从实例启动模板获取启动配置信息。 |
 |---|---|---|---|---|
 | LaunchTemplate Version | String | 否 | Default | 实例启动模板的版本，取值范围： 固定的模板版本号。 Default：始终使用模板默认版本。 Latest：始终使用模板最新版本。 |
 | LaunchTemplate Override.N.Insta nceType | String | 否 | ecs.c5.xlarge | 当您需要伸缩组按照实例规格容量进行伸缩时，请同时指定本参数和 LaunchTemplateOverride.N.Weighte dCapacity。 本参数用于指定实例规格，会覆盖启动模板中的实例规格。您可以指定N个本参数， 扩展启动模板支持N个实例规格。N的取值范围：1~10。 说明仅当 LaunchTemplateId参数指定了启动模板时，本参数生效。 InstanceType的取值范围：在售的ECS实例规格，请参见云服务器ECS文档中的实例规格族章节。 |
-
-弹性伸缩 ESS
 
 | LaunchTemplate Override.N.Weig htedCapacity | Integer | 否 | 4 | 当您需要伸缩组按照实例规格容量进行伸缩时，先指定 LaunchTemplateOverride.N.Instance Type，再指定本参数。两个参数一一对应，N需要保持一致。 本参数用于指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。权重越大，满足期望容量所需的本实例规格的实例数量越少。 由于每个实例规格的vCPU个数、内存大小等性能指标会有差异，您可以根据自身需求，给不同的实例规格配置不同的权重。 例如： 当前容量：0 期望容量：6 ecs.c5.xlarge规格容量：4 为满足期望容量，伸缩组将为用户扩容2台 ecs.c5.xlarge实例。 说明扩容时伸缩组的容量不得超过最大容量与实例规格的最大权重之和。 WeightedCapacity的取值范围： 1~500。 |
 |---|---|---|---|---|
@@ -1990,19 +2140,21 @@ http(s)://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffog
 http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &InstanceId.1=i-283vv****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<EnableScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</EnableScalingGroupResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2017,8 +2169,6 @@ http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfda
 | 404 | InvalidInstanceId.NotF ound | Instance “XXX” does not exist. | 指定的ECS实例在该用户账号下不存在。 |
 | 400 | InvalidInstanceId. RegionMismatch | Instance “XXX” and the specified scaling group are not in the same Region. | 指定的ECS实例与伸缩组所处的地域不匹配。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidInstanceId. InstanceTypeMismatch | Instance “XXX” and existing active scaling configuration have different instance type. | 指定的 ECS 实例与伸缩配置的实例规格不匹配。 |
 |---|---|---|---|
 | 400 | IncorrectInstanceStatu s | The current status of instance “XXX” does not support this action. | 指定的ECS实例为非 running状态。 |
@@ -2031,8 +2181,6 @@ http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfda
 | 400 | InvalidLoadBalancerId. VPCMismatch | The specified virtual switch and the instance in specified Load Balancer are not in the same VPC. | 指定的伸缩组的负载均衡实例含有的ECS实例与 VSwitchId不在同一个 VPC当中。 |
 | 400 | IncorrectDBInstanceSt atus | The current status of DB instance “XXX” does not support this action. | 指定的RDS实例未处于 running状态。 |
 
-弹性伸缩 ESS
-
 | 400 | IncorrectCapacity.Max Size | To attach the instances, the total capacity will be greater than the max size. | 加入的 ECS 实例数使得 Total Capacity超过 MaxSize。 |
 |---|---|---|---|
 | 400 | LaunchTemplateVersio nSet.NotFound | The specific version of launch template is not exist. | 实例启动模板指定版本不存在。 |
@@ -2042,15 +2190,15 @@ http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfda
 | 400 | TemplateMissingPara meter.SecurityGroup | The input parameter "SecurityGroup" that is mandatory for processing this request is not supplied. | 实例启动模板指定版本缺少安全组信息。 |
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | 指定实例启动模板固定版本号为非数字。 |
 
-#### DisableScalingGroup
+#### 6.7.4 DisableScalingGroup
+
+调用DisableScalingGroup停用一个伸缩组。
 
 **接口说明**
 
 停用伸缩组之前发生的伸缩活动，会继续完成，而之后触发的伸缩活动会直接拒绝。 当伸缩组为Active状态，才可以调用该接口。
 
 **请求参数**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2071,19 +2219,21 @@ http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfda
 http://ess.example.com/?Action=DisableScalingGroup &ScalingGroupId=dmIDKNcyWfzncX9MWX1****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DisableScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DisableScalingGroupResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2091,9 +2241,9 @@ http://ess.example.com/?Action=DisableScalingGroup &ScalingGroupId=dmIDKNcyWfznc
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组在当前账号下不存在。 |
 
-#### DeleteScalingGroup
+#### 6.7.5 DeleteScalingGroup
 
-弹性伸缩 ESS
+调用DeleteScalingGroup删除一个伸缩组。
 
 **接口说明**
 
@@ -2121,19 +2271,21 @@ http://ess.example.com/?Action=DisableScalingGroup &ScalingGroupId=dmIDKNcyWfznc
 http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX9MWX1****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScalingGroupResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2143,7 +2295,9 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 您并未向弹性伸缩完整授权Open API接口。 |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | 指定的伸缩组中存在ECS 实例。 |
 
-#### DescribeScalingGroups
+#### 6.7.6 DescribeScalingGroups
+
+调用DescribeScalingGroups查询伸缩组。
 
 **接口说明**
 
@@ -2155,8 +2309,6 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 |---|---|---|---|---|
 | Action | String | 是 | DescribeScaling Groups | 系统规定参数。取值： DescribeScalingGroups。 |
 | RegionId | String | 是 | cn-qingdao- env17-d01 | 伸缩组所属地域的ID。 |
-
-弹性伸缩 ESS
 
 | PageNumber | Integer | 否 | 1 | 伸缩组列表的页码。起始值：1。 默认值：1。 |
 |---|---|---|---|---|
@@ -2171,8 +2323,6 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | ScalingGroupNa me.7 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.7为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
 | ScalingGroupNa me.8 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.8为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
 
-弹性伸缩 ESS
-
 | ScalingGroupNa me.9 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.9为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
 |---|---|---|---|---|
 | ScalingGroupNa me.10 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.10为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
@@ -2186,8 +2336,6 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | ScalingGroupNa me.18 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.18为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
 | ScalingGroupNa me.19 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.19为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
 
-弹性伸缩 ESS
-
 | ScalingGroupNa me.20 | String | 否 | dyrSuvBOtO1dE dIlIbp**** | ScalingGroupName.20为待查询的伸缩组的名称。查询结果会忽略失效的伸缩组名称，并且不报错。 |
 |---|---|---|---|---|
 | GroupType | String | 否 | ECS | 伸缩组管理的实例类型。取值范围： ECS：伸缩组内管理的伸缩为ECS实例。 ECI：伸缩组内管理的伸缩为ECI实例。 默认值：ECS。 |
@@ -2200,15 +2348,13 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 10 | 每页行数。 |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
-| ScalingGroups | Array of ScalingGroup |  | 伸缩组信息的集合。 |
-| ScalingGroup |  |  |  |
+| ScalingGroups | Array of ScalingGroup |   | 伸缩组信息的集合。 |
+| ScalingGroup |   |   |   |
 | ActiveCapacity | Integer | 1 | 已成功加入伸缩组，并正常运行的ECS实例数量。 |
 | ActiveScalingC onfigurationId | String | asc- bp1et2qekq3ojr33* *** | 伸缩组内生效的伸缩配置的ID。 |
-| AlbServerGrou ps | Array of AlbServerGrou p |  | ALB服务器组的相关信息集合。 |
-| AlbServerGrou p |  |  |  |
+| AlbServerGrou ps | Array of AlbServerGrou p |   | ALB服务器组的相关信息集合。 |
+| AlbServerGrou p |   |   |   |
 | AlbServerGrou pId | String | sgp- ddwb0y0g6y9bjm* *** | ALB服务器组的ID。 |
-
-弹性伸缩 ESS
 
 | Port | Integer | 80 | 弹性伸缩将ECS实例添加到ALB服务器组后，ECS实例使用的端口号。 |
 |---|---|---|---|
@@ -2222,14 +2368,12 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | DesiredCapaci ty | Integer | 5 | 伸缩组内ECS实例的期望数量，伸缩组会自动将 ECS实例数量维持在期望实例数。 |
 | GroupDeletion Protection | Boolean | true | 是否开启了伸缩组删除保护。可能值： true：开启伸缩组删除保护，此时不能删除该伸缩组。 false：关闭伸缩组删除保护。 |
 
-弹性伸缩 ESS
-
 | GroupType | String | ECS | 伸缩组管理的实例类型。 |
 |---|---|---|---|
 | HealthCheckT ype | String | ECS | 伸缩组的健康检查方式，可能值： NONE：不做健康检查。 ECS：对伸缩组内的ECS实例做健康检查。 |
 | LaunchTempla teId | String | lt- m5e3ofjr1zn1aw7* *** | 伸缩组使用的实例启动模板的ID。 |
-| LaunchTempla teOverrides | Array of LaunchTempla teOverride |  | 扩展启动模板的实例规格信息。 |
-| LaunchTempla teOverride |  |  |  |
+| LaunchTempla teOverrides | Array of LaunchTempla teOverride |   | 扩展启动模板的实例规格信息。 |
+| LaunchTempla teOverride |   |   |   |
 | InstanceType | String | ecs.c5.xlarge | 指定的实例规格，会覆盖启动模板中的实例规格。 |
 | WeightedCapa city | Integer | 4 | 指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。权重越大，满足期望容量所需的本实例规格的实例数量越少。 |
 | LaunchTempla teVersion | String | Default | 伸缩组使用的实例启动模板的版本。 |
@@ -2239,8 +2383,6 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | MinSize | Integer | 1 | 伸缩组内ECS实例台数的最小值。 |
 | ModificationTi me | String | 2014-08- 14T10:58Z | 修改时间。 |
 | MonitorGroupI d | String | 1497**** | 伸缩组关联的云监控应用分组ID。 |
-
-弹性伸缩 ESS
 
 | MultiAZPolicy | String | PRIORITY | 多可用区伸缩组ECS实例扩缩容策略。可能值： PRIORITY：根据您定义的虚拟交换机 （VSwitchIds.N）扩缩容。当优先级较高的虚拟交换机所在可用区无法创建ECS实例时， 自动使用下一优先级的虚拟交换机创建ECS实例。 COST OPTIMIZED：按vCPU单价从低到高 _ 进行尝试创建。当伸缩配置设置了抢占式计费方式的多实例规格时，优先创建对应抢占式计费实例。当抢占式计费实例由于库存等原因无法创建时，自动尝试以按量付费的方式创建。 说明 COST OPTIMIZED仅在伸 _ 缩配置设置了多实例规格或者选用了抢占式实例的情况下生效。 BALANCE：在伸缩组指定的多可用区之间均匀分配ECS实例。如果由于库存不足等原因可用区之间变得不平衡，您可以调用API RebalanceInstance接口平衡资源。 |
 |---|---|---|---|
@@ -2253,8 +2395,6 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | RemovalPolici es | List | OldestScalingConfi guration | ECS实例移出伸缩组的策略的集合。可能值： OldestInstance：取最早创建的ECS实例。 NewestInstance：取最新创建的实例。 OldestScalingConfiguration：取最早伸缩配置创建的ECS实例。 |
 | RemovingCap acity | Integer | 0 | 正在移出伸缩组的ECS实例的数量。 |
 | RemovingWait Capacity | Integer | 1 | 伸缩组中处于移除挂起状态的ECS实例的数量。 |
-
-弹性伸缩 ESS
 
 | ScalingGroupI d | String | asg- bp14wlu85wrpchm 0**** | 伸缩组的ID。 |
 |---|---|---|---|
@@ -2270,14 +2410,12 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | TotalCapacity | Integer | 1 | 当伸缩组设置了实例规格权重，表示伸缩组内所有ECS实例的加权容量总和。否则，表示伸缩组内所有ECS实例的数量。 |
 | TotalInstanceC ount | Integer | 1 | 伸缩组内所有ECS实例的数量。 |
 
-弹性伸缩 ESS
-
-| VServerGroup s | Array of VServerGroup |  | 后端服务器组列表。 |
+| VServerGroup s | Array of VServerGroup |   | 后端服务器组列表。 |
 |---|---|---|---|
-| VServerGroup |  |  |  |
+| VServerGroup |   |   |   |
 | LoadBalancerI d | String | 147b46d767c-cn- qingdao-cm5**** | 后端服务器组所属的负载均衡实例的ID。 |
-| VServerGroup Attributes | Array of VServerGroup Attribute |  | 后端服务器组属性。 |
-| VServerGroup Attribute |  |  |  |
+| VServerGroup Attributes | Array of VServerGroup Attribute |   | 后端服务器组属性。 |
+| VServerGroup Attribute |   |   |   |
 | Port | Integer | 22 | 负载均衡实例对外提供服务的端口号。 |
 | VServerGroupI d | String | rsp-bp12bjrny**** | 后端服务器组的ID。 |
 | Weight | Integer | 1 | 后端服务器组的权重。 |
@@ -2288,15 +2426,16 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
 http(s)://ess.example.com/?Action=DescribeScalingGroups &RegionId=cn-qingdao-env17-d01 &PageNumber=1 &PageSize=10 &ScalingGroupName=scalinggroup**** &ScalingGroupName.1=scalinggroup**** &ScalingGroupName.2=scalinggroup**** &ScalingGroupName.3=scalinggroup**** &ScalingGroupName.4=scalinggroup**** &ScalingGroupName.5=scalinggroup**** &ScalingGroupName.6=scalinggroup**** &ScalingGroupName.7=scalinggroup**** &ScalingGroupName.8=scalinggroup**** &ScalingGroupName.9=scalinggroup**** &ScalingGroupName.10=scalinggroup**** &ScalingGroupName.11=scalinggroup**** &ScalingGroupName.12=scalinggroup**** &ScalingGroupName.13=scalinggroup**** &ScalingGroupName.14=scalinggroup**** &ScalingGroupName.15=scalinggroup**** &ScalingGroupName.16=scalinggroup**** &ScalingGroupName.17=scalinggroup**** &ScalingGroupName.18=scalinggroup**** &ScalingGroupName.19=scalinggroup**** &ScalingGroupName.20=scalinggroup**** &GroupType=ECS &ScalingGroupId=["asg-bp14wlu85wrpchm0****"]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScalingGroupsResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <TotalCount>1</TotalCount>
       <PageSize>10</PageSize>
@@ -2331,19 +2470,23 @@ onfigurationId>
                   </RemovalPolicies>
             </ScalingGroup>
       </ScalingGroups>
+</DescribeScalingGroupsResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "TotalCount": 1,
     "PageSize": 10,
     "PageNumber": 1,
     "ScalingGroups": {
         "ScalingGroup": [
-            {
+```
+
+`{`
+
+```json
                 "ScalingGroupId": "asg-bp14wlu85wrpchm0****",
                 "ScalingGroupName": "b8pYCVbIV5k9cz4PWpbe****",
                 "RegionId": "cn-qingdao-env17-d01",
@@ -2358,10 +2501,9 @@ onfigurationId>
                         "lb-bp19byhscefk3x0li****"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "PendingCapacity": 0,
                 "TotalCapacity": 0,
                 "ActiveCapacity": 0,
@@ -2372,10 +2514,9 @@ onfigurationId>
                         "rm-bp52316qzhbg6****"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "VSwitchId": "vsw-bp1whw2u46cn8zubm****",
                 "RemovalPolicies": {
                     "RemovalPolicy": [
@@ -2383,27 +2524,15 @@ onfigurationId>
                         "OldestInstance"
 ```
 
-]
+`]` `}` `}` `]` `}` `}`
 
-```
-                }
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-#### DescribeScalingInstances
+#### 6.7.7 DescribeScalingInstances
 
 调用DescribeScalingInstances查询伸缩组内ECS实例的列表，并列出ECS实例的信息。
 
 **接口说明**
 
-您可以通过指定伸缩组ID查询该伸缩组内ECS实例的列表，查询时可以指定伸缩配置ID、健康状态、生命周期状态、创建类型进行过滤。 弹性伸缩 ESS
+您可以通过指定伸缩组ID查询该伸缩组内ECS实例的列表，查询时可以指定伸缩配置ID、健康状态、生命周期状态、创建类型进行过滤。
 
 **请求参数**
 
@@ -2419,8 +2548,6 @@ onfigurationId>
 | PageNumber | Integer | 否 | 1 | ECS实例列表的页码，起始值：1。 默认值：1。 |
 | PageSize | Integer | 否 | 10 | 分页查询时设置的每页行数，最大值： 50。 默认值：10。 |
 
-弹性伸缩 ESS
-
 | ScalingActivityId | String | 否 | asa- bp1c9djwrgxjyk 31**** | 伸缩活动的ID。 |
 |---|---|---|---|---|
 | InstanceId.N | RepeatL ist | 否 | i- bp109k5j3dum1 ce6**** | InstanceId.N为ECS实例的ID，N的取值范围：1～20。返回查询结果时忽略失效的InstanceId，并且不报错。 |
@@ -2432,15 +2559,13 @@ onfigurationId>
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 10 | 每页行数。 |
 | RequestId | String | E481B3F5-F290- 4F3E-AB40- F980FB8E**** | 请求ID。 |
-| ScalingInstanc es | Array of ScalingInstanc e |  | ECS实例信息组成的集合。 |
-| ScalingInstanc e |  |  |  |
+| ScalingInstanc es | Array of ScalingInstanc e |   | ECS实例信息组成的集合。 |
+| ScalingInstanc e |   |   |   |
 | CreatedTime | String | 2019-03- 06T08:06:39Z | ECS实例加入伸缩组的时间，精确到秒。 |
 | CreationTime | String | 2019-03- 06T08:06Z | 加入伸缩组的时间。 |
 | CreationType | String | AutoCreated | ECS实例的创建类型，可能值： AutoCreated：伸缩组根据伸缩配置和伸缩规则自动创建的ECS实例。 Attached：不是通过弹性伸缩服务创建，而是手动添加到伸缩组中的ECS实例。 |
 | Entrusted | Boolean | false | 手动添加ECS实例到伸缩组时，是否将ECS实例托管给伸缩组，托管状态的手动添加ECS实例， 在移除伸缩组（不包括手动移除）时，将执行释放操作。可能值： true：将ECS实例托管给伸缩组。 false：不将ECS实例托管给伸缩组。 |
 | HealthStatus | String | Healthy | 在伸缩组中的健康状态，可能值： Healthy：健康的ECS实例。 Unhealthy：不健康的ECS实例。 |
-
-弹性伸缩 ESS
 
 | InstanceId | String | i-283vv**** | ECS实例的ID。 |
 |---|---|---|---|
@@ -2458,8 +2583,6 @@ onfigurationId>
 | TotalCount | Integer | 1 | ECS实例的总数。 |
 | TotalSpotCoun t | Integer | 4 | 说明该参数未开放使用。 |
 
-弹性伸缩 ESS
-
 **示例**
 
 请求示例
@@ -2468,9 +2591,10 @@ onfigurationId>
 https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScalingInstancesResponse>
       <RequestId>E481B3F5-F290-4F3E-AB40-F980FB8E****</RequestId>
       <TotalCount>1</TotalCount>
       <PageNumber>1</PageNumber>
@@ -2487,19 +2611,23 @@ https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-en
                   <ScalingGroupId>asg-****</ScalingGroupId>
             </ScalingInstance>
       </ScalingInstances>
+</DescribeScalingInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E481B3F5-F290-4F3E-AB40-F980FB8E****",
     "TotalCount": 1,
     "PageNumber": 1,
     "PageSize": 50,
     "ScalingInstances": {
         "ScalingInstance": [
-            {
+```
+
+`{`
+
+```json
                 "ScalingConfigurationId": "asc-****",
                 "CreationType": "AutoCreated",
                 "InstanceId": "i-28sov****",
@@ -2508,19 +2636,11 @@ https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-en
                 "LifecycleState": "InService",
                 "Entrusted": "false",
                 "ScalingGroupId": "asg-****"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-弹性伸缩 ESS
-
-#### DescribeScalingActivityDetail
+#### 6.7.8 DescribeScalingActivityDetail
 
 调用DescribeScalingActivityDetail查询一个伸缩活动的详细信息。
 
@@ -2547,23 +2667,25 @@ https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-en
 http(s)://ess.example.com/?Action=DescribeScalingActivityDetail &ScalingActivityId=asa-bp1c9djwrgxjyk31****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScalingActivityDetailResponse>
       <RequestId>B13527BF-1FBD-4334-A512-20F5E9D3****</RequestId>
       <ScalingActivityId>asa-bp1c9djwrgxjyk31****</ScalingActivityId>
       <Detail>new ECS instances \"i-bp16t2cgmiiymeqv****\" are created.</Detail>
+</DescribeScalingActivityDetailResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B13527BF-1FBD-4334-A512-20F5E9D3****",
     "ScalingActivityId": "asa-bp1c9djwrgxjyk31****",
     "Detail": "new ECS instances \"i-bp16t2cgmiiymeqv****\" are created."
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2571,7 +2693,9 @@ http(s)://ess.example.com/?Action=DescribeScalingActivityDetail &ScalingActivity
 |---|---|---|---|
 | 400 | InvalidParameter | The input parameter "ScalingActivityId" that is mandatory for processing this request is not supplied | 没有提供待查询伸缩活动的ID。 |
 
-#### DescribeScalingActivities
+#### 6.7.9 DescribeScalingActivities
+
+调用DescribeScalingActivities查询伸缩活动。
 
 **接口说明**
 
@@ -2587,8 +2711,6 @@ http(s)://ess.example.com/?Action=DescribeScalingActivityDetail &ScalingActivity
 | PageSize | Integer | 否 | 50 | 分页查询时设置的每页行数，最大值： 50。 默认值：10。 |
 | ScalingGroupId | String | 否 | AG6CQdPU8OKd wLjgZcJ**** | 伸缩组的ID。 |
 
-弹性伸缩 ESS
-
 | StatusCode | String | 否 | Successful | 伸缩活动的状态，取值范围： Successful：执行成功的伸缩活动。 Warning：部分执行成功的伸缩活动。 Failed：执行失败的伸缩活动。 InProgress：正在执行的伸缩活动。 Rejected：执行伸缩活动请求被拒绝。 |
 |---|---|---|---|---|
 | ScalingActivityId .N | RepeatL ist | 否 | asa- bp161xudmuxdz ofe**** | ScalingActivityId.N为待查询伸缩活动的 ID，N的取值范围：1～20。 说明调用该API 时，ScalingGroupId或 ScalingActivityId.N参数必选。 |
@@ -2599,16 +2721,14 @@ http(s)://ess.example.com/?Action=DescribeScalingActivityDetail &ScalingActivity
 |---|---|---|---|
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 50 | 每页行数。 |
-| ScalingActiviti es | Array of ScalingActivity |  | 伸缩活动信息组成的集合。 |
-| ScalingActivity |  |  |  |
+| ScalingActiviti es | Array of ScalingActivity |   | 伸缩活动信息组成的集合。 |
+| ScalingActivity |   |   |   |
 | AttachedCapa city | String | 1 | 执行完伸缩活动后，伸缩组中用户手动添加的实例的总数。 |
 | AutoCreatedC apacity | String | 1 | 执行完伸缩活动后，伸缩组中由伸缩组负责自动创建的实例的总数。 |
 | Cause | String | A user requests to execute scaling rule "asr- 1kx06p7kys0e6cy2 ****", changing the Total Capacity from "0" to "1". | 触发伸缩活动的原因。 |
 | Description | String | Add "1" ECS instance | 伸缩活动的描述信息。 |
 | EndTime | String | 2014-08- 17T12:39Z | 伸缩活动的结束时间。 |
 | Progress | Integer | 100 | 伸缩活动的运行进度。 |
-
-弹性伸缩 ESS
 
 | ScalingActivity Id | String | ebta5WbUzC8gcw UWvfch**** | 伸缩活动的ID。 |
 |---|---|---|---|
@@ -2629,9 +2749,10 @@ http(s)://ess.example.com/?Action=DescribeScalingActivityDetail &ScalingActivity
 http://ess.example.com/?Action=DescribeScalingActivities &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScalingActivitiesResponse>
       <RequestId>8FAAE99E-EB43-4838-85AD-93F62454904C</RequestId>
       <TotalCount>1</TotalCount>
       <PageNumber>1</PageNumber>
@@ -2650,12 +2771,12 @@ tal Capacity from "0" to "1".</Cause>
                   <StatusMessage>"1" ECS instances is added. </StatusMessage>
             </ScalingActivity>
       </ScalingActivities>
+</DescribeScalingActivitiesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
         "RequestId": "8FAAE99E-EB43-4838-85AD-93F62454904C",
         "TotalCount": 1,
         "PageNumber": 1,
@@ -2672,16 +2793,17 @@ Total Capacity from \"0\" to \"1\".",
                 "StartTime": "2014-08-17T12:39Z",
                 "StatusCode": "Successful",
                 "StatusMessage": "\"1\" ECS instances is added."
-            }
-        }
-}
 ```
 
-#### AttachDBInstances
+`}` `}` `}`
+
+#### 6.7.10 AttachDBInstances
+
+调用AttachDBInstances添加一个或多个RDS实例。
 
 **接口说明**
 
-向伸缩组添加RDS实例时需要满足以下条件： RDS实例与伸缩组必须属于同一账号。 弹性伸缩 ESS RDS实例必须处于未锁定状态，关于锁定策略，请参见弹性伸缩的使用限制章节。 RDS实例必须处于运行中状态。 添加RDS实例后，RDS IP白名单的default分组中包含的IP不能超过1000条。关于IP白名单，请参见云数据库RDS中的通过客户端、命令行连接RDS MySQL实例章节。
+向伸缩组添加RDS实例时需要满足以下条件： RDS实例与伸缩组必须属于同一账号。 RDS实例必须处于未锁定状态，关于锁定策略，请参见弹性伸缩的使用限制章节。 RDS实例必须处于运行中状态。 添加RDS实例后，RDS IP白名单的default分组中包含的IP不能超过1000条。关于IP白名单，请参见云数据库RDS中的通过客户端、命令行连接RDS MySQL实例章节。
 
 **请求参数**
 
@@ -2708,19 +2830,21 @@ Total Capacity from \"0\" to \"1\".",
 http(s)://ess.example.com/?Action=AttachDBInstances &ScalingGroupId=asg-bp1avr6ensitts3w**** &ForceAttach=false &ClientToken=123e4567-e89b-12d3-a456-42665544**** &DBInstance=["rm-bp12cy3****"] &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 弹性伸缩 ESS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<AttachDBInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</AttachDBInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2733,14 +2857,14 @@ http(s)://ess.example.com/?Action=AttachDBInstances &ScalingGroupId=asg-bp1avr6e
 | 400 | QuotaExceeded.DBInst anceSecurityIP | Security IP quota exceeded in DB instance "%s". | RDS实例后端IP白名单个数超出配额。 |
 | 400 | InvalidInstanceIds.Priv ateIpNotFound | Can not find all private ips of instances in specific scaling group. | 无法获取组内RDS实例的私网IP。 |
 
-#### DetachDBInstances
+#### 6.7.11 DetachDBInstances
+
+调用DetachDBInstances移除一个或多个RDS实例。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | Action | String | 是 | DetachDBInstan ces | 系统规定参数，取值： DetachDBInstances。 |
 |---|---|---|---|---|
@@ -2764,19 +2888,21 @@ http(s)://ess.example.com/?Action=AttachDBInstances &ScalingGroupId=asg-bp1avr6e
 http(s)://ess.example.com/?Action=DetachDBInstances &ScalingGroupId=asg-bp1igpak5ft1flyp**** &ForceDetach=false &ClientToken=123e4567-e89b-12d3-a456-42665544**** &DBInstance=["rm-bp12cy3****"] &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DetachDBInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</DetachDBInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2785,7 +2911,7 @@ http(s)://ess.example.com/?Action=DetachDBInstances &ScalingGroupId=asg-bp1igpak
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 账号下不存在指定的伸缩组。 |
 | 400 | InvalidDBInstanceId.N otFound | DB instance "%s" does not exist. | 不存在指定的RDS实例。 |
 
-#### SetGroupDeletionProtection
+#### 6.7.12 SetGroupDeletionProtection
 
 调用SetGroupDeletionProtection为伸缩组开启或关闭删除保护。
 
@@ -2800,8 +2926,6 @@ http(s)://ess.example.com/?Action=DetachDBInstances &ScalingGroupId=asg-bp1igpak
 
 **返回数据**
 
-弹性伸缩 ESS
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | CCC29E24-3AEC- 4F2C-8A14- 78B14FA7**** | 请求ID。 |
@@ -2814,19 +2938,21 @@ http(s)://ess.example.com/?Action=DetachDBInstances &ScalingGroupId=asg-bp1igpak
 http(s)://ess.example.com/?Action=SetGroupDeletionProtection &GroupDeletionProtection=true &ScalingGroupId=asg-bp1igpak5ft1flyp**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<SetGroupDeletionProtectionResponse>
       <RequestId>CCC29E24-3AEC-4F2C-8A14-78B14FA7****</RequestId>
+</SetGroupDeletionProtectionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "CCC29E24-3AEC-4F2C-8A14-78B14FA7****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2835,14 +2961,14 @@ http(s)://ess.example.com/?Action=SetGroupDeletionProtection &GroupDeletionProte
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 伸缩组不存在。 |
 | 400 | InvalidOperation.Confli ct | Specific operation may conflicts with other operations, please retry later. | 操作冲突，请稍后再试。 |
 
-#### ResumeProcesses
+#### 6.7.13 ResumeProcesses
+
+调用ResumeProcesses恢复伸缩组中被暂停的流程。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | Action | String | 是 | ResumeProcess es | 系统规定参数。取值： ResumeProcesses。 |
 |---|---|---|---|---|
@@ -2865,19 +2991,21 @@ http(s)://ess.example.com/?Action=SetGroupDeletionProtection &GroupDeletionProte
 http(s)://ess.example.com/?Action=ResumeProcesses &ScalingGroupId=asg-bp15oubotmrq11xe**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Process=["ScaleIn"] &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ResumeProcessesResponse>
     <RequestId>E38EB733-D714-4658-8A5F-0688AB68****</RequestId>
+</ResumeProcessesResponse>
 ```
 
-弹性伸缩 ESS `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "E38EB733-D714-4658-8A5F-0688AB68****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2886,7 +3014,9 @@ http(s)://ess.example.com/?Action=ResumeProcesses &ScalingGroupId=asg-bp15oubotm
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 账号下不存在指定的伸缩组。 |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | 指定的参数非法。 |
 
-#### SuspendProcesses
+#### 6.7.14 SuspendProcesses
+
+调用SuspendProcesses暂停伸缩组中的指定流程。
 
 **请求参数**
 
@@ -2896,8 +3026,6 @@ http(s)://ess.example.com/?Action=ResumeProcesses &ScalingGroupId=asg-bp15oubotm
 | Process.N | RepeatL ist | 是 | ScaleIn | 需要暂停的活动类型，N的取值范围： 1~100。取值范围： ScaleIn：缩容流程。 ScaleOut：扩容流程。 HealthCheck：健康检查 。 AlarmNotification：报警任务。 ScheduledAction：定时任务。 目前支持暂停5种活动类型，如果您指定超过以上5种，会自动去掉重复的活动类型。 |
 | ScalingGroupId | String | 是 | asg- bp15oubotmrq1 1xe**** | 伸缩组的ID。 |
 | ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息，请参见弹性伸缩中的如何保证幂等性章节。 |
-
-弹性伸缩 ESS
 
 | RegionId | String | 否 | cn-hangzhou- env17-d01 | 伸缩组所属的地域ID。 |
 |---|---|---|---|---|
@@ -2916,19 +3044,21 @@ http(s)://ess.example.com/?Action=ResumeProcesses &ScalingGroupId=asg-bp15oubotm
 http(s)://ess.example.com/?Action=SuspendProcesses &ScalingGroupId=asg-bp15oubotmrq11xe**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Process=["ScaleIn"] &RegionId=cn-hangzhou-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<SuspendProcessesResponse>
     <RequestId>3E2033F0-03B4-419D-BCE2-C2339DB5****</RequestId>
+</SuspendProcessesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "3E2033F0-03B4-419D-BCE2-C2339DB5****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2937,13 +3067,13 @@ http(s)://ess.example.com/?Action=SuspendProcesses &ScalingGroupId=asg-bp15oubot
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 账号下不存在指定的伸缩组。 |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | 指定的参数非法。 |
 
-#### AttachVServerGroups
+#### 6.7.15 AttachVServerGroups
 
-调用AttachVServerGroups添加负载均衡实例下的一个或者多个虚拟服务器组。 弹性伸缩 ESS
+调用AttachVServerGroups添加负载均衡实例下的一个或者多个虚拟服务器组。
 
 **接口说明**
 
-向伸缩组添加虚拟服务器组时需要满足以下条件： 负载均衡实例与伸缩组必须属于同一账号。 负载均衡实例与伸缩组必须处于同一地域。 负载均衡实例必须处于运行中状态。 负载均衡实例至少配置有一个监听且必须开启健康检查。 如果负载均衡实例与伸缩组的网络类型均为VPC，必须处于同一VPC。 当伸缩组的网络类型为VPC，负载均衡实例的网络类型为经典网络时，如果虚拟服务器组包含VPC实例， 该实例必须与伸缩组处于同一VPC。 待添加虚拟服务器组必须属于对应的负载均衡实例。 不超过伸缩组内虚拟服务器组的限额，具体限额请参见专有云文档中心《弹性伸缩用户指南》文档中的使章节。
+向伸缩组添加虚拟服务器组时需要满足以下条件： 负载均衡实例与伸缩组必须属于同一账号。 负载均衡实例与伸缩组必须处于同一地域。 负载均衡实例必须处于运行中状态。 负载均衡实例至少配置有一个监听且必须开启健康检查。 如果负载均衡实例与伸缩组的网络类型均为VPC，必须处于同一VPC。 当伸缩组的网络类型为VPC，负载均衡实例的网络类型为经典网络时，如果虚拟服务器组包含VPC实例， 该实例必须与伸缩组处于同一VPC。 待添加虚拟服务器组必须属于对应的负载均衡实例。 不超过伸缩组内虚拟服务器组的限额，具体限额请参见专有云文档中心《弹性伸缩用户指南》文档中的**使** 章节。
 
 **用须知 > 使用限制**
 
@@ -2955,28 +3085,26 @@ http(s)://ess.example.com/?Action=SuspendProcesses &ScalingGroupId=asg-bp15oubot
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  |  |  | 说明 |  |  |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   |   |   | 说明 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Action | Strin g | Query | 是 | AttachVServerGroups |  |  |  | 系统规定参数，取值： AttachVServerGroup s 。 |  |  |  |  |
-| RegionId | Strin g | Query | 是 | cn-hangzhou-env17-d01 |  |  |  | 伸缩组所属地域的ID， 如 cn-hangzhou- env17-d01 、 cn- shanghai-env17- d01 。 |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | cn-hangzhou- |  |  |  |
-|  |  |  |  |  |  | -env17-d01 |  | env17-d01 |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 、 | cn- |  |
-|  |  |  |  |  |  |  |  | d01 |  |  |  |  |
-| ScalingGr oupId | Strin g | Query | 是 | asg- bp18p2yfxow2dloq**** |  |  |  | 伸缩组的ID。 |  |  |  |  |
-| ClientToke n | Strin g | Query | 否 | 123e4567-e89b-12d3- a456-42665544**** |  |  |  | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息， 请参见公共云文档中心 《弹性伸缩开发参考》 文 _ _ 档中的API参考（2014- 08-28）> 如何保证幂等性章节。 |  |  |  |  |
-
-弹性伸缩 ESS
+| Action | Strin g | Query | 是 | AttachVServerGroups |   |   |   | 系统规定参数，取值： AttachVServerGroup s 。 |   |   |   |   |
+| RegionId | Strin g | Query | 是 | cn-hangzhou-env17-d01 |   |   |   | 伸缩组所属地域的ID， 如 cn-hangzhou- env17-d01 、 cn- shanghai-env17- d01 。 |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | cn-hangzhou- |   |   |   |
+|   |   |   |   |   |   | -env17-d01 |   | env17-d01 |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 、 | cn- |   |
+|   |   |   |   |   |   |   |   | d01 |   |   |   |   |
+| ScalingGr oupId | Strin g | Query | 是 | asg- bp18p2yfxow2dloq**** |   |   |   | 伸缩组的ID。 |   |   |   |   |
+| ClientToke n | Strin g | Query | 否 | 123e4567-e89b-12d3- a456-42665544**** |   |   |   | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息， 请参见公共云文档中心 《弹性伸缩开发参考》 文 _ _ 档中的API参考（2014- 08-28）> 如何保证幂等性章节。 |   |   |   |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ForceAtta ch | Boole an | Query | 否 | false | 是否将当前伸缩组内的ECS 实例添加到新增的虚拟服务器组。 true：添加。 false：不添加。 默认值：false。 |
 | VServerGr oup | Repe atList | Query | 是 | VServerGroup | 虚拟服务器组。 |
-| - VServerGr oupAttribu te | Repe atList |  | 否 | VServerGroupAttribute | 虚拟服务器组属性。 |
-| -- VServerGr oupId | Strin g |  | 否 | rsp-bp1jp1rge**** | 虚拟服务器组的ID。 |
-| --Weight | Integ er |  | 否 | 100 | 弹性伸缩将ECS实例添加到虚拟服务器组时设置的权重，取值范围：0~100。 默认值：50。 |
-| --Port | Integ er |  | 否 | 22 | 弹性伸缩将ECS实例添加到虚拟服务器组时使用的端口号，取值范围： 1~65535。 |
-| - LoadBalan cerId | Strin g |  | 否 | lb- bp1u7etiogg38yvwz**** | 虚拟服务器组所属负载均衡实例的ID。 |
+| - VServerGr oupAttribu te | Repe atList |   | 否 | VServerGroupAttribute | 虚拟服务器组属性。 |
+| -- VServerGr oupId | Strin g |   | 否 | rsp-bp1jp1rge**** | 虚拟服务器组的ID。 |
+| --Weight | Integ er |   | 否 | 100 | 弹性伸缩将ECS实例添加到虚拟服务器组时设置的权重，取值范围：0~100。 默认值：50。 |
+| --Port | Integ er |   | 否 | 22 | 弹性伸缩将ECS实例添加到虚拟服务器组时使用的端口号，取值范围： 1~65535。 |
+| - LoadBalan cerId | Strin g |   | 否 | lb- bp1u7etiogg38yvwz**** | 虚拟服务器组所属负载均衡实例的ID。 |
 
 **返回数据**
 
@@ -2989,18 +3117,22 @@ http(s)://ess.example.com/?Action=SuspendProcesses &ScalingGroupId=asg-bp15oubot
 请求示例
 
 ```
-http(s)://ess.example.com/?Action=AttachVServerGroups &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &VServerGroup=VServerGroup
+http(s)://ess.example.com/?Action=AttachVServerGroups &Action=AttachVServerGroups &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &VServerGroup=VServerGroup
 ```
 
-&公共请求参数弹性伸缩 ESS 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
@@ -3021,13 +3153,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidLoadBalancerId. VPCMismatch | The specified virtual switch and the instance in the load balancer "%s" are not in the same VPC. | 负载均衡实例与伸缩组不在同一VPC下。 |
 | 400 | InvalidVServerGroupId. ForLoadBalancer | Invalid VServerGroupId For LoadBalancer "%s". | VServerGroupId对应的虚拟服务器组不属于指定的负载均衡实例。 |
 
-弹性伸缩 ESS
-
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | QuotaExceeded.VServ erGroup | VServerGroup quota exceeded in the specified scaling group. | 当前伸缩组内可配置的虚拟服务器组个数达到上限。 |
 
-#### DetachVServerGroups
+#### 6.7.16 DetachVServerGroups
+
+调用DetachVServerGroups移除一个或者多个虚拟服务器组。
 
 **接口说明**
 
@@ -3035,19 +3167,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **请求参数**
 
-| 名称 | 类型 | 是否必选 | 示例值 |  | 描述 |  |  |  |
+| 名称 | 类型 | 是否必选 | 示例值 |   | 描述 |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-| Action | String | 是 | DetachVServerG roups |  | 系统规定参数，取值： DetachVServerGroups。 |  |  |  |
-| RegionId | String | 是 | cn-hangzhou- env17-d01 |  | 伸缩组所属地域的ID，如 cn- hangzhou-env17-d01 、 cn- shanghai-env17-d01 。更多信息，请参见新云上手指南中的地域和可用区章节。 |  |  |  |
-|  |  |  |  |  |  | cn- |  |  |
-|  |  |  |  |  | hangzhou-env17-d01 |  |  |  |
-|  |  |  |  |  |  |  | cn- |  |
-|  |  |  |  |  | shanghai-env17-d01 |  |  |  |
-| ScalingGroupId | String | 是 | asg- bp1fo0dbtsbmq a9h**** |  | 伸缩组的ID。 |  |  |  |
-| ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** |  | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息，请参见弹性伸缩中的如何保证幂等性章节。 |  |  |  |
-| VServerGroup.N. LoadBalancerId | String | 否 | lb- bp1p90y3ya9h8 s62d**** |  | 虚拟服务器组所属负载均衡实例的ID。 N为负载均衡实例编号，取值范围： 1~5。 |  |  |  |
-
-弹性伸缩 ESS
+| Action | String | 是 | DetachVServerG roups |   | 系统规定参数，取值： DetachVServerGroups。 |   |   |   |
+| RegionId | String | 是 | cn-hangzhou- env17-d01 |   | 伸缩组所属地域的ID，如 cn- hangzhou-env17-d01 、 cn- shanghai-env17-d01 。更多信息，请参见新云上手指南中的地域和可用区章节。 |   |   |   |
+|   |   |   |   |   |   | cn- |   |   |
+|   |   |   |   |   | hangzhou-env17-d01 |   |   |   |
+|   |   |   |   |   |   |   | cn- |   |
+|   |   |   |   |   | shanghai-env17-d01 |   |   |   |
+| ScalingGroupId | String | 是 | asg- bp1fo0dbtsbmq a9h**** |   | 伸缩组的ID。 |   |   |   |
+| ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** |   | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息，请参见弹性伸缩中的如何保证幂等性章节。 |   |   |   |
+| VServerGroup.N. LoadBalancerId | String | 否 | lb- bp1p90y3ya9h8 s62d**** |   | 虚拟服务器组所属负载均衡实例的ID。 N为负载均衡实例编号，取值范围： 1~5。 |   |   |   |
 
 | VServerGroup.N. VServerGroupAtt ribute.N.VServer GroupId | String | 否 | rsp- bp1jp1rge**** | 虚拟服务器组ID。其中： 第一个N为负载均衡实例编号，取值范围：1~5。 第二个N为负载均衡实例下虚拟服务器组的编号，取值范围：1~5。 |
 |---|---|---|---|---|
@@ -3068,19 +3198,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &VServerGroup.1.LoadBalancerId=lb-bp1p90y3ya9h8s62d**** &VServerGroup.1.VServerGroupAttribute.1.VServerGroupId=rsp-bp1jp1rge**** &VServerGroup.1.VServerGroupAttribute.1.Port=22
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DetachVServerGroupsResponse>
     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</DetachVServerGroupsResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3091,7 +3223,7 @@ http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env1
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | 参数值不合法。 |
 | 400 | MissingParameter | The input parameter "%s" that is mandatory for processing this request is not supplied. | 缺少必要的参数。 |
 
-#### AttachAlbServerGroups
+#### 6.7.17 AttachAlbServerGroups
 
 调用AttachAlbServerGroups向伸缩组添加一个或多个ALB服务器组。
 
@@ -3104,8 +3236,6 @@ http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env1
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | AttachAlbServer Groups | 系统规定参数。取值： AttachAlbServerGroups。 |
-
-弹性伸缩 ESS
 
 | AlbServerGroup. N.AlbServerGrou pId | String | 是 | sgp- ddwb0y0g6y9bj m**** | ALB服务器组的ID。 N为ALB服务器组的编号。一个伸缩组支持关联的ALB服务器组数量有限，如需查看或手动申请提升配额值，请前往配额中心控制台查看。 |
 |---|---|---|---|---|
@@ -3121,8 +3251,6 @@ http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env1
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
 |---|---|---|---|
 | ScalingActivity Id | String | asa- 2ze6wxj8vsohn6j9* *** | 添加ALB服务器组，并将伸缩组内的ECS实例添加到该ALB服务器组时，伸缩活动的ID。仅当 ForceAttach 取值为 true 时，返回该参数。 |
@@ -3135,21 +3263,23 @@ http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env1
 http(s)://ess.example.com/?Action=AttachAlbServerGroups &AlbServerGroup.1.AlbServerGroupId=sgp-ddwb0y0g6y9bjm**** &AlbServerGroup.1.Port=22 &AlbServerGroup.1.Weight=100 &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<AttachAlbServerGroupsResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-2ze6wxj8vsohn6j9****</ScalingActivityId>
+</AttachAlbServerGroupsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-2ze6wxj8vsohn6j9****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3158,9 +3288,9 @@ http(s)://ess.example.com/?Action=AttachAlbServerGroups &AlbServerGroup.1.AlbSer
 | 400 | AlbServerGroup.NotExi st | The ServerGroup "%s" do(es) not exist. | 账号下不存在指定的ALB 服务器组。 |
 | 400 | AlbServerGroup.Alread yAttached | The ALB ServerGroups are already attached. | 当前ALB服务器组已经添加到伸缩组中。 |
 
-#### DetachAlbServerGroups
+#### 6.7.18 DetachAlbServerGroups
 
-弹性伸缩 ESS 调用DetachAlbServerGroups从伸缩组移出一个或多个ALB服务器组。
+调用DetachAlbServerGroups从伸缩组移出一个或多个ALB服务器组。
 
 **请求参数**
 
@@ -3181,8 +3311,6 @@ http(s)://ess.example.com/?Action=AttachAlbServerGroups &AlbServerGroup.1.AlbSer
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
 | ScalingActivity Id | String | asa- 2ze6wxj8vsohn6j9* *** | 移出ALB服务器组，并移出该ALB服务器组内的 ECS实例时，伸缩活动的ID。仅当 ForceDetach 取值为 true 时，返回该参数。 |
 
-弹性伸缩 ESS
-
 **示例**
 
 请求示例
@@ -3191,21 +3319,23 @@ http(s)://ess.example.com/?Action=AttachAlbServerGroups &AlbServerGroup.1.AlbSer
 http(s)://ess.example.com?Action=DetachAlbServerGroups &AlbServerGroup.1.AlbServerGroupId=sgp-ddwb0y0g6y9bjm**** &AlbServerGroup.1.Port=22 &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DetachAlbServerGroupsResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-2ze6wxj8vsohn6j9****</ScalingActivityId>
+</DetachAlbServerGroupsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-2ze6wxj8vsohn6j9****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3213,11 +3343,13 @@ http(s)://ess.example.com?Action=DetachAlbServerGroups &AlbServerGroup.1.AlbServ
 |---|---|---|---|
 | 400 | AlbServerGroup.NotAtt ached | The ALB server groups are not attached to specific ScalingGroup. | 当前ALB服务器组未添加到伸缩组中。 |
 
-#### AttachLoadBalancers
+#### 6.7.19 AttachLoadBalancers
+
+调用AttachLoadBalancers添加一个或多个负载均衡实例。
 
 **接口说明**
 
-向伸缩组添加负载均衡实例时需要满足以下条件： 负载均衡实例与伸缩组必须属于同一账号。 负载均衡实例与伸缩组必须处于同一地域。 负载均衡实例必须处于运行中状态。 负载均衡实例至少配置有一个监听且必须开启健康检查。 如果负载均衡实例与伸缩组的网络类型均为VPC，必须处于同一VPC。 当伸缩组的网络类型为VPC，负载均衡实例的网络类型为经典网络时，如果负载均衡实例后端服务器中包含VPC实例，该实例必须与伸缩组处于同一VPC。 不超过伸缩组关联负载均衡实例的限额，具体限额，请参见弹性伸缩中的使用限制章节。 弹性伸缩 ESS
+向伸缩组添加负载均衡实例时需要满足以下条件： 负载均衡实例与伸缩组必须属于同一账号。 负载均衡实例与伸缩组必须处于同一地域。 负载均衡实例必须处于运行中状态。 负载均衡实例至少配置有一个监听且必须开启健康检查。 如果负载均衡实例与伸缩组的网络类型均为VPC，必须处于同一VPC。 当伸缩组的网络类型为VPC，负载均衡实例的网络类型为经典网络时，如果负载均衡实例后端服务器中包含VPC实例，该实例必须与伸缩组处于同一VPC。 不超过伸缩组关联负载均衡实例的限额，具体限额，请参见弹性伸缩中的使用限制章节。
 
 **请求参数**
 
@@ -3237,8 +3369,6 @@ http(s)://ess.example.com?Action=DetachAlbServerGroups &AlbServerGroup.1.AlbServ
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
 | ScalingActivity Id | String | asa- bp140qd7mak8k63 f**** | 伸缩活动的ID。 仅当 Async=true 时返回该值。您可使用API DescribeScalingActivities 遍历查询返回的伸缩活动ID，查看伸缩活动的执行状态。 |
 
-弹性伸缩 ESS
-
 **示例**
 
 请求示例
@@ -3247,21 +3377,23 @@ http(s)://ess.example.com?Action=DetachAlbServerGroups &AlbServerGroup.1.AlbServ
 http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05gfs**** &ScalingGroupId=asg-bp1avr6ensitts3w****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<AttachLoadBalancersResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-bp140qd7mak8k63f****</ScalingActivityId>
+</AttachLoadBalancersResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-bp140qd7mak8k63f****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3273,8 +3405,6 @@ http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05
 | 404 | InvalidLoadBalancerId. NotFound | The load balancer "%s" does not exist. | 不存在指定的负载均衡实例。 |
 | 400 | InvalidLoadBalancerId. RegionMismatch | The load balancer "%s" and the specified scaling group are not in the same Region. | 负载均衡实例与伸缩组不在同一地域。 |
 
-弹性伸缩 ESS
-
 | 400 | IncorrectLoadBalancer Status | The current status of the load balancer "%s" does not support this action. | 当前负载均衡实例状态不支持此操作。 |
 |---|---|---|---|
 | 400 | IncorrectLoadBalancer HealthCheck | The current health check type of the load balancer "%s" does not support this action. | 当前负载均衡实例未开启健康检查。 |
@@ -3282,7 +3412,9 @@ http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05
 | 400 | QuotaExceeded.Backe ndServer | Backend server quota exceeded in the load balancer "%s". | 负载均衡实例后端服务器数量超出限额。 |
 | 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | 未找到当前伸缩组启用的伸缩配置。 |
 
-#### DetachLoadBalancers
+#### 6.7.20 DetachLoadBalancers
+
+调用DetachLoadBalancers移除一个或多个负载均衡实例。
 
 **请求参数**
 
@@ -3292,8 +3424,6 @@ http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05
 | LoadBalancer.N | RepeatL ist | 是 | lb- 2zeur05gfs**** | 负载均衡实例的ID，单次最多支持移除5个负载均衡实例。 |
 | ScalingGroupId | String | 是 | asg- bp1ffogfdauy0jw 0**** | 伸缩组的ID。 |
 | ForceDetach | Boolean | 否 | false | 是否移除负载均衡实例后端服务器中属于当前伸缩组的ECS实例。取值范围： true：移除ECS实例。 false：不移除ECS实例。 默认值：false。 |
-
-弹性伸缩 ESS
 
 | ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息，请参见弹性伸缩中的如何保证幂等性章节。 |
 |---|---|---|---|---|
@@ -3315,21 +3445,23 @@ http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05
 http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &ForceDetach=false &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Async=false &LoadBalancer=["lb-2zeur05gfs****"] &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DetachLoadBalancersResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-bp140qd7mak8k63f****</ScalingActivityId>
+</DetachLoadBalancersResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-bp140qd7mak8k63f****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3339,17 +3471,17 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 账号下不存在指定的伸缩组。 |
 | 404 | InvalidLoadBalancerId. NotFound | The Load Balancer "%s" does not exist. | 伸缩组中不存在指定的负载均衡实例。 |
 
-### 伸缩配置
+### 6.8 伸缩配置
 
-#### CreateScalingConfiguration
+#### 6.8.1 CreateScalingConfiguration
+
+调用CreateScalingConfiguration创建一个伸缩配置。
 
 **接口说明**
 
-伸缩配置用来指定弹性扩张时使用的ECS实例模板，支持以下实例配置方式： InstancePatternInfo.N：智能配置模式，无需指定具体的实例规格，只需根据业务需求指定实例的 vCPU核数、内存大小、规格族级别以及最高价格，系统会自动筛选符合要求的实例规格，并优先选择价格最低的实例规格创建ECS实例。该模式仅适用于网络类型为专有网络的伸缩组，能够有效降低扩容时实例规格库存不足的情况。 InstanceType：指定一种实例规格。 InstanceTypes.N：指定多种实例规格。 InstanceTypeOverride.N：指定多种实例规格，并为不同的实例规格配置权重。 Cpu和Memory：指定CPU和内存定义实例规格的范围。该方式仅适用于扩缩容策略为成本优化策略的伸缩组，且伸缩配置未指定实例规格的场景。 弹性伸缩 ESS InstanceType、InstanceTypes.N、InstanceTypeOverride.N、Cpu和Memory这
+伸缩配置用来指定弹性扩张时使用的ECS实例模板，支持以下实例配置方式： InstancePatternInfo.N：智能配置模式，无需指定具体的实例规格，只需根据业务需求指定实例的 vCPU核数、内存大小、规格族级别以及最高价格，系统会自动筛选符合要求的实例规格，并优先选择价格最低的实例规格创建ECS实例。该模式仅适用于网络类型为专有网络的伸缩组，能够有效降低扩容时实例规格库存不足的情况。 InstanceType：指定一种实例规格。 InstanceTypes.N：指定多种实例规格。 InstanceTypeOverride.N：指定多种实例规格，并为不同的实例规格配置权重。 Cpu和Memory：指定CPU和内存定义实例规格的范围。该方式仅适用于扩缩容策略为成本优化策略的伸缩组，且伸缩配置未指定实例规格的场景。
 
-**说明**
-
-四种方式不能同时指定。如果指定了InstanceTypes.N，InstanceType将被忽略，但 InstanceType或InstanceTypes.N可以与InstancePatternInfo.N同时指定，与 InstancePatternInfo.N同时指定时，弹性伸缩优先使用您指定的实例规格扩容，当指定的实例规格无库存时，再使用符合InstancePatternInfo.N配置的实例规格。
+> **说明：** InstanceType、InstanceTypes.N、InstanceTypeOverride.N、Cpu和Memory这四种方式不能同时指定。如果指定了InstanceTypes.N，InstanceType将被忽略，但 InstanceType或InstanceTypes.N可以与InstancePatternInfo.N同时指定，与 InstancePatternInfo.N同时指定时，弹性伸缩优先使用您指定的实例规格扩容，当指定的实例规格无库存时，再使用符合InstancePatternInfo.N配置的实例规格。
 
 **请求参数**
 
@@ -3365,8 +3497,6 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | DeploymentSetI d | String | 否 | ds- bp1frxuzdg87zh 4pz**** | ECS实例所属的部署集的ID。 |
 | SecurityGroupId | String | 否 | sg-280ih**** | ECS实例所属的安全组的ID，同一个安全组内的ECS实例可以互相访问。 |
 
-弹性伸缩 ESS
-
 | IoOptimized | String | 否 | optimized | 是否为I/O优化实例。已停售的实例规格实例默认值是none，其他实例规格默认值是 optimized。取值范围： none：非I/O优化实例。 optimized：I/O优化实例。 |
 |---|---|---|---|---|
 | InternetMaxBan dwidthIn | Integer | 否 | 100 | 公网入带宽最大值，单位：Mbps (Mega bit per second)，取值范围：1~200。 如果您没有指定该参数，则入带宽将自动被设置为200 Mbps。 |
@@ -3375,8 +3505,6 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | SystemDisk.Size | Integer | 否 | 100 | 系统盘的大小，单位：GiB。取值范围： cloud：20~500。 cloud efficiency：20~500。 _ cloud ssd：20~500。 _ ephemeral ssd：20~500。 _ 默认值：max{40, ImageSize}。 指定该参数后，系统盘大小必须大于等于 max{20, ImageSize}。 |
 | SystemDisk.Disk Name | String | 否 | cloud ssdSyste _ m | 系统盘的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以 http:// 和 https:// 开头。 可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
 | SystemDisk.Des cription | String | 否 | Test system disk. | 系统盘的描述。长度为2~256个英文或中文字符，不能以 http:// 和 https:// 开头。 |
-
-弹性伸缩 ESS
 
 | SystemDisk.Auto SnapshotPolicyId | String | 否 | sp- bp12m37ccmxv bmi5**** | 系统盘使用的自动快照策略ID。 |
 |---|---|---|---|---|
@@ -3388,8 +3516,6 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | RamRoleName | String | 否 | RamRoleTest | ECS实例的RAM角色名称。RAM角色名称由RAM提供和维护，您可调用API ListRoles查询可用的RAM角色。创建 RAM角色的方法请参见API CreateRole。 |
 | SecurityEnhance mentStrategy | String | 否 | Active | 是否开启安全加固。取值范围： Active：启用安全加固，只对公共镜像生效。 Deactive：不启用安全加固，对所有镜像类型生效。 |
 
-弹性伸缩 ESS
-
 | InstanceName | String | 否 | Instance**** | 使用本伸缩配置自动创建的ECS实例的名称。 |
 |---|---|---|---|---|
 | HostName | String | 否 | Host**** | 云服务器的主机名。半角句号（.）或短划线（-）不能作为首尾字符，不能连续使用半角句号（.）或短划线（-）。另外，不同类型实例的命名要求如下： Windows实例：主机名长度为2~15字符，可以包含大小写字母、数字和短划线（-）。不能包含半角句号（.），不能全是数字。 其他类型实例（例如Linux等）：主机名长度为2~64字符，可以包含多个半角句号（.）。两个半角句号（.）之间为一段，每段可以包含大小写字母、数字和短划线（-）。 |
@@ -3400,16 +3526,12 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。 只支持ASCII字符，且不能超过64个字符。更多信息，请参见云服务器ECS文档中的如何保证幂等性章节。 |
 | Ipv6AddressCou nt | Integer | 否 | 1 | 为弹性网卡指定随机生成的IPv6地址数量。 |
 
-弹性伸缩 ESS
-
 | CreditSpecificati on | String | 否 | Standard | 指定突发性能实例的运行模式。取值范围： Standard：标准模式。 Unlimited：无性能约束模式。 更多信息，请参见云服务器ECS文档中的突发性能实例概述下的性能模式章节。 |
 |---|---|---|---|---|
 | ImageFamily | String | 否 | hangzhou-daily- update | 镜像族系名称，通过设置该参数来获取当前镜像族系内最新可用的自定义镜像，用于创建实例。如果已经设置了参数 ImageId，则不能设置该参数。 |
 | DedicatedHostId | String | 否 | dh- bp67acfmxazb4 p**** | 是否在专有宿主机上创建ECS实例。由于专有宿主机不支持创建抢占式实例，指定 DedicatedHostId参数后，会自动忽略请求中的SpotStrategy和SpotPriceLimit设置。 您可以调用API DescribeDedicatedHosts接口查询专有宿主机ID列表。 |
 | Affinity | String | 否 | default | 专有宿主机实例是否与专有宿主机关联。 取值范围： default：实例不与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，若原专有宿主机可用资源不足，则实例被放置在自动部署资源池的其它专有宿主机上。 host：实例与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，仍放置在原专有宿主机上。若原专有宿主机可用资源不足，则实例重启失败。 默认值：default。 |
 | Tenancy | String | 否 | default | 是否在专有宿主机上创建实例。取值范围： default：创建非专有宿主机实例。 host：创建专有宿主机实例。若您不指定DedicatedHostId，则由阿里云自动选择专有宿主机放置实例。 默认值：default。 |
-
-弹性伸缩 ESS
 
 | PrivatePoolOptio ns.MatchCriteria | String | 否 | Open | 实例启动的私有池容量选项。弹性保障服务或容量预定服务在生效后会生成私有池容量，供实例启动时选择。取值范围： Open：开放模式。将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。 该模式下无需设置 PrivatePoolOptions.Id参数。 Target：指定模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。该模式下必须指定私有池ID，即 PrivatePoolOptions.Id参数为必填项。 None：不使用模式。实例启动将不使用私有池容量。 |
 |---|---|---|---|---|
@@ -3419,15 +3541,11 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | SystemDisk.Encr yptAlgorithm | String | 否 | AES-256 | 系统盘采用的加密算法。取值范围： AES-256。 SM4-128。 默认值：AES-256。 |
 | InstanceTypes.N | RepeatL ist | 否 | ecs.g6.large | 多实例规格参数。 如果使用了 InstanceTypes.N，InstanceType将被忽略。 InstanceTypes.N参数中，N的取值范围：1~10，即一个伸缩配置内最多可以设置10种实例规格，其中N代表当前伸缩配置中实例规格的优先级，编号为 1的实例规格优先级最高，实例规格优先级随着编号的增大依次降低。 当无法根据优先级较高的实例规格创建出实例时，弹性伸缩服务会自动选择下一优先级的实例规格来创建实例。 |
 
-弹性伸缩 ESS
-
 | InstanceTypeOv erride.N.Instanc eType | String | 否 | ecs.c5.xlarge | 当您需要指定伸缩配置中实例规格的容量时，请同时指定本参数和 InstanceTypeOverride.N.WeightedCa pacity参数。 本参数用于指定实例规格。您可以指定N个本参数，结合 InstanceTypeOverride.N.WeightedCa pacity参数，扩展多实例规格支持自定义权重。N的取值范围：1~10。 说明指定本参数时，不允许同时指定InstanceTypes.N或 InstanceType。 InstanceType的取值范围：关于在售的 ECS实例规格信息，请参见云服务器 ECS文档中的实例规格族章节。 |
 |---|---|---|---|---|
 | InstanceTypeOv erride.N.Weighte dCapacity | Integer | 否 | 4 | 当您需要指定伸缩配置中实例规格的容量时，在指定 InstanceTypeOverride.N.InstanceTyp e后，再指定本参数。两个参数一一对应，N需要保持一致。 本参数用于指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。权重越大，满足期望容量所需的本实例规格的实例数量越少。 由于每个实例规格的vCPU个数、内存大小等性能指标会有差异，您可以根据自身需求，给不同的实例规格配置不同的权重。 例如： 当前容量：0。 期望容量：6。 ecs.g5.xlarge规格容量：4。 为满足期望容量，伸缩组将为用户扩容2台 ecs.g5.xlarge实例。 说明扩容时伸缩组的容量不得超过最大容量（MaxSize）与实例规格的最大权重之和。 WeightedCapacity的取值范围： 1~500。 |
 | DataDisk.N.Auto SnapshotPolicyId | String | 否 | sp- bp19nq9enxqko mib**** | 数据盘使用的自动快照策略ID，N的取值范围：1~16。 |
 | DataDisk.N.Encr ypted | String | 否 | false | 数据盘N是否加密，N的取值范围： 1~16。该参数取值范围： true：加密。 false：不加密。 默认值：false。 |
-
-弹性伸缩 ESS
 
 | DataDisk.N.Desc ription | String | 否 | Test data disk. | 数据盘的描述，N的取值范围：1~16。长度为2~256个英文或中文字符，不能以 http:// 和 https:// 开头。 |
 |---|---|---|---|---|
@@ -3436,8 +3554,6 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | DataDisk.N.Size | Integer | 否 | 100 | 数据盘N的磁盘大小，N的取值范围： 1~16，内存单位：GiB。取值范围： cloud：5~2000。 cloud efficiency：20~32768。 _ cloud ssd：20~32768。 _ ephemeral ssd：5~800。 _ 指定该参数后，磁盘大小必须大于等于快照大小（快照通过SnapshotId指定）。 |
 | DataDisk.N.Devi ce | String | 否 | /dev/xvdb | 数据盘挂载点，N的取值范围：1~16。如果您没有指定该参数，则默认在自动创建 ECS实例时由系统分配，从/dev/xvdb开始，到/dev/xvdz结束。 |
 
-弹性伸缩 ESS
-
 | DataDisk.N.Disk Name | String | 否 | cloud ssdData _ | 数据盘的名称，N的取值范围：1~16。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以 http:// 和 https:// 开头。可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
 |---|---|---|---|---|
 | DataDisk.N.Cate gory | String | 否 | cloud ssd _ | 数据盘N的磁盘种类，N的取值范围： 1~16。该参数取值范围： cloud：普通云盘。随实例创建的普通云盘的DeleteWithInstance属性为 true。 cloud efficiency：高效云盘。 _ cloud ssd：SSD云盘。 _ ephemeral ssd：本地SSD盘。 _ 对于I/O优化实例，默认值为 cloud efficiency。对于非I/O优化实例， _ 默认值为cloud。 |
@@ -3445,15 +3561,11 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 | DataDisk.N.KMS KeyId | String | 否 | 0e478b7a-4262- 4802-b8cb- 00d3fb40**** | 数据盘对应的KMS密钥的ID，N的取值范围：1~16。 |
 | SecurityGroupId s.N | RepeatL ist | 否 | sg-280ih**** | ECS实例所属的安全组的ID，同一个安全组内的ECS实例可以互相访问。 |
 
-弹性伸缩 ESS
-
 | InstancePatternI nfo.N.Cores | Integer | 否 | 2 | 智能配置模式下，实例规格的vCPU内核数目，用于筛选符合要求的实例规格范围。 更多信息，请参见云服务器ECS文档中的实例规格族章节。N的取值范围： 1~10。 请注意以下信息： InstancePatternInfo.N参数仅适用于伸缩组的网络类型为专有网络。 InstancePatternInfo.N参数必须同时配置InstancePatternInfo.N.Cores和 InstancePatternInfo.N.Memory。 如果您已经通过InstanceType或 InstanceTypes.N参数指定了实例规格，弹性伸缩优先使用您指定的实例规格扩容，当指定的实例规格无库存时， 再从符合InstancePatternInfo.N参数值的实例规格中优先使用价格最低的实例规格扩容。 |
 |---|---|---|---|---|
 | InstancePatternI nfo.N.InstanceFa milyLevel | String | 否 | EnterpriseLevel | 智能配置模式下，实例规格族级别，用于筛选符合要求的实例规格范围。N的取值范围：1~10。取值范围： EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。适用于平时CPU使用率低的业务场景。更多信息，请参见云服务器ECS文档中的共享型。 EnterpriseLevel：企业级。性能稳定，资源独享，适用于对稳定性要求高的业务场景。更多信息，请参见云服务器ECS文档中的实例规格族章节。 CreditEntryLevel：积分入门级，即突发性能实例。通过CPU积分来保证计算性能，适用于平时CPU使用率低、偶有突发CPU使用率的情况。更多信息，请参见云服务器ECS文档中的突发型章节。 |
 | InstancePatternI nfo.N.MaxPrice | Float | 否 | 2 | 智能配置模式下，按量付费实例或者抢占式实例可接受的每小时最高价格，用于筛选符合要求的实例规格范围。N的取值范围：1~10。 |
 | InstancePatternI nfo.N.Memory | Float | 否 | 4 | 智能配置模式下，实例规格的内存大小， 单位：GiB，用于筛选符合要求的实例规格范围。更多信息，请参见云服务器ECS文档中的实例规格族章节。N的取值范围： 1~10。 |
-
-弹性伸缩 ESS
 
 | SystemDiskCate gories.N | RepeatL ist | 否 | cloud | 系统盘的多磁盘类型。N的取值范围： 1~4，即一个伸缩配置内最多可以为系统盘指定4种磁盘类型。N越小，优先级越高。当无法使用高优先级的磁盘类型时， 弹性伸缩自动尝试下一优先级的磁盘类型创建系统盘。取值范围： cloud：普通云盘。 cloud efficiency：高效云盘。 _ cloud ssd：SSD云盘。 _ 说明指定本参数时，不允许同时指定SystemDisk.Category。 |
 |---|---|---|---|---|
@@ -3473,31 +3585,29 @@ http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffo
 http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg-bp14wlu85wrpchm0**** &ImageId=centos6u5_64_20G_aliaegis****.vhd &ImageName=image**** &InstanceType=ecs.g6.large &Cpu=2 &Memory=16 &DeploymentSetId=ds-bp1frxuzdg87zh4pz**** &SecurityGroupId=sg-280ih**** &IoOptimized=optimized &InternetMaxBandwidthIn=100 &InternetMaxBandwidthOut=50 &SystemDisk.Category=cloud_ssd &SystemDisk.Size=100 &SystemDisk.DiskName=cloud_ssdSystem &SystemDisk.Description=Test system disk. &SystemDisk.AutoSnapshotPolicyId=sp-bp12m37ccmxvbmi5**** &ScalingConfigurationName=scalingconfig**** &LoadBalancerWeight=50 &Tags={"key1":"value1","key2":"value2", ... "key5":"value5"} &UserData=echo hello ecs! &KeyPairName=KeyPairTest &RamRoleName=RamRole**** &SecurityEnhancementStrategy=Active &InstanceName=instance**** &HostName=host****
 ```
 
-弹性伸缩 ESS
-
 ```json
 &ostae ost &PasswordInherit=false &Password=123abc**** &HpcClusterId=hpc-clusterid &InstanceDescription=Test instance. &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Ipv6AddressCount=1 &CreditSpecification=Standard &ImageFamily=hangzhou-daily-update &DedicatedHostId=dh-bp67acfmxazb4p**** &Affinity=default &Tenancy=default &PrivatePoolOptions.MatchCriteria=Open &PrivatePoolOptions.Id=eap-bp67acfmxazb4**** &InstanceTypes=["ecs.g6.large"] &InstanceTypeOverride=[{"InstanceType":"ecs.c5.xlarge","WeightedCapacity":4}] &DataDisk=[{"PerformanceLevel":"PL1","AutoSnapshotPolicyId":"spbp19nq9enxqkomib****","Encrypted":"false","Description":"Test data disk.","SnapshotId":"s-280s7****","Categories": ["cloud"],"Size":100,"Device":"/dev/xvdb","DiskName":"cloud_ssdData","Category":"cloud_ss ,"DeleteWithInstance":true,"KMSKeyId":"0e478b7a-4262-4802-b8cb- 00d3fb40****","ProvisionedIops":100,"BurstingEnabled":false}] &SpotPriceLimit=[{"PriceLimit":0.5,"InstanceType":"ecs.g6.large"}] &SecurityGroupIds=["sg-bp18kz60mefs****"] &InstancePatternInfo= [{"Cores":2,"InstanceFamilyLevel":"EnterpriseLevel","MaxPrice":2.0,"Memory":4.0,"Excluded stanceType":["ecs.n1.small/ecs.n1.*/*7*"],"Architecture": ["X86"],"BurstablePerformance":"Include"}] &SystemDiskCategories=["cloud"] &SystemDisk.Encrypted=false &SystemDisk.KMSKeyId=0e478b7a-4262-4802-b8cb-00d3fb40**** &SystemDisk.EncryptAlgorithm=AES-256 &SystemDisk.ProvisionedIops=100 &SystemDisk.BurstingEnabled=false
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateScalingConfigurationResponse>
       <ScalingConfigurationId>asc-bp1ffogfdauy0nu5****</ScalingConfigurationId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</CreateScalingConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingConfigurationId": "asc-bp1ffogfdauy0nu5****"
-}
 ```
 
-**错误码**
+`}`
 
-弹性伸缩 ESS
+**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -3512,8 +3622,6 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | 400 | InvalidParameter | The specified value of parameter KeyPairName is not valid. | Windows系统不支持 KeyPairName参数。 |
 | 400 | InvalidParameter.Confl ict | The value of parameter SystemDisk.Category and parameter DataDisk.N.Category are conflict. | 指定的系统盘类型和数据盘类型冲突。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidRamRole.NotFo und | The specified RamRoleName does not exist. | 不存在指定的 RamRoleName。 |
 |---|---|---|---|
 | 400 | InvalidScalingConfigur ationName.Duplicate | The specified value of parameter ScalingConfigurationN ame is duplicated. | 已存在相同伸缩配置名。 |
@@ -3527,13 +3635,11 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | 指定的UserData过长。 |
 | 403 | QuotaExceeded.Ephe meralDiskSize | Ephemeral disk size quota exceeded. | 临时磁盘数据盘总容量超过2TiB（2048GiB）。 |
 
-弹性伸缩 ESS
-
 | 400 | QuotaExceeded.Scalin gConfiguration | Scaling configuration quota exceeded in the specified scaling group. | 您目前拥有的伸缩配置个数已经达到上限。 |
 |---|---|---|---|
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | 指定的安全组中添加的 ECS实例个数已经达到上限。 |
 
-#### DescribeScalingConfigurations
+#### 6.8.2 DescribeScalingConfigurations
 
 调用DescribeScalingConfigurations查询现有的伸缩配置。
 
@@ -3551,23 +3657,19 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 
 **返回数据**
 
-弹性伸缩 ESS
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 50 | 每页行数。 |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
-| ScalingConfigu rations | Array of ScalingConfigu ration |  | 伸缩配置信息的集合。 |
-| ScalingConfigu ration |  |  |  |
+| ScalingConfigu rations | Array of ScalingConfigu ration |   | 伸缩配置信息的集合。 |
+| ScalingConfigu ration |   |   |   |
 | Affinity | String | default | 专有宿主机实例是否与专有宿主机关联。可能值： default：实例不与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，如果原专有宿主机可用资源不足，则实例被放置在自动部署资源池的其他专有宿主机上。 host：实例与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，仍放置在原专有宿主机上。如果原专有宿主机可用资源不足，则实例重启失败。 |
 | Cpu | Integer | 2 | vCPU个数。单位：核。 同时指定CPU和Memory可以定义实例规格范围，例如，CPU=2且Memory=16可以定义配置为2 vCPU和16 GiB的所有实例规格。弹性伸缩会结合I/O优化、可用区等因素确定可用实例规格集合，并根据价格排序为您创建价格最低的实例。 说明该区间配置效果仅在成本优化模式下且伸缩配置未设置实例规格时生效。 |
 | CreationTime | String | 2014-08- 14T10:58Z | 伸缩配置的创建时间。 |
 | CreditSpecifica tion | String | Standard | 突发性能实例的运行模式，可能值： Standard：标准模式，更多信息，请参见云服务器ECS文档的突发性能实例概述下的性能约束模式内容。 Unlimited：无性能约束模式，更多信息，请参见云服务器ECS文档的突发性能实例概述下的无性能约束模式内容。 |
-| DataDisks | Array of DataDisk |  | 数据盘信息的集合。 |
-| DataDisk |  |  |  |
-
-弹性伸缩 ESS
+| DataDisks | Array of DataDisk |   | 数据盘信息的集合。 |
+| DataDisk |   |   |   |
 
 | AutoSnapshot PolicyId | String | sp- bp19nq9enxqkomi b**** | 数据盘使用的自动快照策略ID。 |
 |---|---|---|---|
@@ -3581,8 +3683,6 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | Encrypted | String | false | 数据盘是否加密，可能值： true：加密。 false：不加密。 |
 | KMSKeyId | String | 0e478b7a-4262- 4802-b8cb- 00d3fb40**** | 数据盘对应的KMS密钥的ID。 |
 | PerformanceL evel | String | PL1 | 说明该参数未开放使用。 |
-
-弹性伸缩 ESS
 
 | ProvisionedIop s | Long | 100 | 数据盘预配置的IOPS（Input/Output Operations Per Second）性能指标。 说明 IOPS（Input/Output Operations Per Second）指每秒能处理的I/O个数，表示块存储处理读写（输出/输入）的能力，单位为次。 |
 |---|---|---|---|
@@ -3599,19 +3699,15 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | InstanceGener ation | String | ecs-3 | ECS实例的系列。 |
 | InstanceName | String | fortest | ECS实例的名称。 |
 
-弹性伸缩 ESS
-
-| InstancePatter nInfos | Array of InstancePatter nInfo |  | 智能配置的信息集合，用于筛选符合要求的实例规格范围。 |
+| InstancePatter nInfos | Array of InstancePatter nInfo |   | 智能配置的信息集合，用于筛选符合要求的实例规格范围。 |
 |---|---|---|---|
-| InstancePatter nInfo |  |  |  |
+| InstancePatter nInfo |   |   |   |
 | Architectures | List | X86 | 实例规格所属的架构类型。可能值： X86：X86计算。 Heterogeneous：异构计算，例如GPU或 FPGA等。 BareMental：弹性裸金属服务器。 Arm：Arm计算。 SuperComputeCluster：超级计算集群。 默认值：包含所有架构类型。 |
 | BurstablePerfo rmance | String | Include | 是否为性能突发实例规格。可能值： Exclude：不包含性能突发实例规格。 Include：包含性能突发实例规格。 Required：只包含性能突发实例规格。 默认值：Include。 |
 | Cores | Integer | 2 | 实例规格的vCPU内核数目。 |
 | ExcludedInsta nceTypes | List | ecs.n1.small/ecs.n 1.*/*7* | 需要排除的实例规格。通过使用通配符（*）可以排除单个规格或者整个规格族。例如： ecs.c6.large：表示排除ecs.c6.large实例规格。 ecs.c6.*：表示排除整个c6规格族 |
 | InstanceFamil yLevel | String | EnterpriseLevel | 实例规格族级别。 EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。 适用于平时CPU使用率低的业务场景。更多信息，请参见云服务器ECS文档中的共享型章节。 EnterpriseLevel：企业级。性能稳定，资源独享，适用于对稳定性要求高的业务场景。更多信息，请参见云服务器ECS文档中的实例规格族章节。 CreditEntryLevel：积分入门级，即突发性能实例。通过CPU积分来保证计算性能，适用于平时CPU使用率低、偶有突发CPU使用率的情况。更多信息，请参见云服务器ECS文档中的突发型章节。 |
 | MaxPrice | Float | 2 | 说明该参数未开放使用。 |
-
-弹性伸缩 ESS
 
 | Memory | Float | 4 | 实例规格的内存大小，单位为GiB。 |
 |---|---|---|---|
@@ -3627,8 +3723,6 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | LoadBalancer Weight | Integer | 1 | 后端服务器的权重，可能值：1~100。 |
 | Memory | Integer | 16 | 内存大小。单位：GiB。 同时指定CPU和Memory可以定义实例规格范围，例如，CPU=2且Memory=16可以定义配置为2 vCPU和16 GiB的所有实例规格。弹性伸缩会结合IO优化、可用区等因素确定可用实例规格集合，并根据价格排序为您创建价格最低的实例。 说明该区间配置效果仅在成本优化模式下且伸缩配置未设置实例规格时生效。 |
 
-弹性伸缩 ESS
-
 | PasswordInher it | Boolean | true | 是否使用镜像预设的密码。 |
 |---|---|---|---|
 | PrivatePoolOpt ions.Id | String | eap- bp67acfmxazb4*** * | 私有池ID。即弹性保障服务ID或容量预定服务 ID。 |
@@ -3638,19 +3732,17 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | ScalingConfigu rationId | String | asc- bp1ezrfgoyn5kijl*** * | 伸缩配置的ID。 |
 | ScalingConfigu rationName | String | c1908dd1-690f- 4c9b-ab73- 350f1f06**** | 伸缩配置的名称。 |
 | ScalingGroupI d | String | sg-280ih**** | 伸缩配置所属伸缩组的ID。 |
-| SchedulerOpti ons | Struct |  | 调度选项。 |
+| SchedulerOpti ons | Struct |   | 调度选项。 |
 | ManagedPrivat eSpaceId | String | testManagedPrivat eSpaceId | 智能全托管资源池。 |
 | SecurityEnhan cementStrateg y | String | Active | 是否开启安全加固。可能值： Active：启用安全加固，只对公共镜像生效。 Deactive：不启用安全加固，对所有镜像类型生效。 |
 | SecurityGroupI d | String | sg- bp18kz60mefs**** | ECS实例所属的安全组的ID，同一个安全组内的 ECS实例可以互相访问。 |
-
-弹性伸缩 ESS
 
 | SecurityGroupI ds | List | sg- bp18kz60mefs**** | ECS实例所属的多个安全组的ID，同一个安全组内的ECS实例可以互相访问。 |
 |---|---|---|---|
 | SpotDuration | Integer | 1 | 说明该参数未开放使用。 |
 | SpotInterrupti onBehavior | String | Terminate | 说明该参数未开放使用。 |
-| SpotPriceLimit | Array of SpotPriceMode l |  | 说明该参数未开放使用。 |
-| SpotPriceMode l |  |  |  |
+| SpotPriceLimit | Array of SpotPriceMode l |   | 说明该参数未开放使用。 |
+| SpotPriceMode l |   |   |   |
 | InstanceType | String | ecs.t1.xsmall | 说明该参数未开放使用。 |
 | PriceLimit | Float | 0.125 | 说明该参数未开放使用。 |
 | SpotStrategy | String | NoSpot | 说明该参数未开放使用。 |
@@ -3658,8 +3750,6 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | SystemDisk.En cryptAlgorithm | String | AES-256 | 系统盘采用的加密算法。可能值： AES-256。 SM4-128。 默认值：AES-256。 |
 | SystemDisk.En crypted | Boolean | false | 是否加密系统盘。可能值： true：加密。 false：不加密。 默认值：false。 |
 | SystemDisk.K MSKeyId | String | 0e478b7a-4262- 4802-b8cb- 00d3fb40**** | 系统盘使用的KMS密钥ID。 |
-
-弹性伸缩 ESS
 
 | SystemDisk.Pr ovisionedIops | Long | 100 | 系统盘预配置的IOPS（Input/Output Operations Per Second）性能指标。 说明 IOPS（Input/Output Operations Per Second）指每秒能处理的I/O个数，表示块存储处理读写（输出/输入）的能力，单位为次。 |
 |---|---|---|---|
@@ -3670,12 +3760,10 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 | SystemDiskNa me | String | cloud ssd Test _ _ | 系统盘的名称。 |
 | SystemDiskPer formanceLevel | String | PL1 | 说明该参数未开放使用。 |
 | SystemDiskSiz e | Integer | 100 | 系统盘的磁盘大小。 |
-| Tags | Array of Tag |  | 标签信息的集合。 |
-| Tag |  |  |  |
+| Tags | Array of Tag |   | 标签信息的集合。 |
+| Tag |   |   |   |
 | Key | String | binary | 标签键。 |
 | Value | String | alterTable | 标签值。 |
-
-弹性伸缩 ESS
 
 | Tenancy | String | default | 是否在专有宿主机上创建实例。可能值： default：创建非专有宿主机实例。 host：创建专有宿主机实例。若您不指定 DedicatedHostId，则由阿里云自动选择专有宿主机放置实例。 |
 |---|---|---|---|
@@ -3692,9 +3780,10 @@ http(s)://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg
 http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingdao-env17-d01 &PageNumber=1 &PageSize=50 &ScalingGroupId=asg-bp17pelvl720x3v7**** &ScalingConfigurationId=["asc-bp17pelvl720x5ub****"] &ScalingConfigurationName=["scalingcon****"]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScalingConfigurationsResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <PageNumber>1</PageNumber>
       <PageSize>50</PageSize>
@@ -3712,8 +3801,6 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
             <SpotStrategy>NoSpot</SpotStrategy>
             <ScalingGroupId>asg-bp17pelvl720x3v7****</ScalingGroupId>
 ```
-
-弹性伸缩 ESS
 
 ```xml
             <Affinity>default</Affinity>
@@ -3772,7 +3859,7 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
                   <Key>binary</Key>
 ```
 
-/ 弹性伸缩 ESS
+`/`
 
 ```xml
                   <Value>alterTable</Value>
@@ -3804,12 +3891,13 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
             <SystemDisk.ProvisionedIops>100</SystemDisk.ProvisionedIops>
             <SystemDisk.BurstingEnabled>false</SystemDisk.BurstingEnabled>
       </ScalingConfigurations>
+</DescribeScalingConfigurationsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
+    "DescribeScalingConfigurationsResponse": {
         "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
         "PageNumber": 1,
         "PageSize": 50,
@@ -3829,8 +3917,6 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
             "SystemDiskSize": 100,
             "Ipv6AddressCount": 1,
 ```
-
-弹性伸缩 ESS
 
 ```json
             "LifecycleState": "Active",
@@ -3879,20 +3965,27 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
                 "Categories": "cloud_essd",
                 "ProvisionedIops": 100,
                 "BurstingEnabled": false
-            },
+```
+
+`},`
+
+```json
             "Tags": {
                 "Key": "binary",
                 "Value": "alterTable"
-            },
+```
+
+`},`
+
+```json
             "SpotPriceLimit": {
                 "InstanceType": "ecs.g6.large",
                 "PriceLimit": 0.125
 ```
 
-弹性伸缩 ESS
+`},`
 
 ```json
-            },
             "InstancePatternInfos": {
                 "MaxPrice": 2,
                 "Cores": 2,
@@ -3901,24 +3994,33 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
                 "Architectures": "X86",
                 "BurstablePerformance": "Include",
                 "ExcludedInstanceTypes": "ecs.n1.small/ecs.n1.*/*7*"
-            },
+```
+
+`},`
+
+```json
             "SystemDiskCategories": "cloud",
             "WeightedCapacities": 4,
             "SecurityGroupIds": "sg-bp18kz60mefs****",
             "SchedulerOptions": {
                 "ManagedPrivateSpaceId": "testManagedPrivateSpaceId"
-            },
+```
+
+`},`
+
+```
             "SystemDisk.Encrypted": false,
             "SystemDisk.KMSKeyId": "0e478b7a-4262-4802-b8cb-00d3fb40****",
             "SystemDisk.EncryptAlgorithm": "AES-256",
             "SystemDisk.ProvisionedIops": 100,
             "SystemDisk.BurstingEnabled": false
-        }
-    }
-}
 ```
 
-#### ModifyScalingConfiguration
+`}` `}` `}`
+
+#### 6.8.3 ModifyScalingConfiguration
+
+调用ModifyScalingConfiguration修改一个伸缩配置。
 
 **接口说明**
 
@@ -3932,8 +4034,6 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 | ScalingConfigura tionId | String | 是 | asc- bp16har3jpj6fjb x**** | 待修改伸缩配置的ID。 |
 | IoOptimized | String | 否 | none | 是否为I/O优化实例。取值范围： none：非I/O优化实例。 optimized：I/O优化实例。 |
 
-弹性伸缩 ESS
-
 | ScalingConfigura tionName | String | 否 | test-modify | 伸缩配置的名称，2~64个英文或中文字符，以数字、大小写字母或中文开头，可包含数字、下划线（ ）、短划线（-）或 _ 半角句号（.）。 在同一地域下同一伸缩组内伸缩配置名称唯一。如果您没有指定该参数，则默认使用伸缩配置的ID。 |
 |---|---|---|---|---|
 | InstanceName | String | 否 | inst**** | 使用本伸缩配置自动创建的ECS实例的名称。 |
@@ -3942,16 +4042,12 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 | ImageName | String | 否 | suse11sp3 64 2 _ _ 0G aliaegis 201 _ _ 5****.vhd | 镜像文件名称，同一个地域内镜像名称唯一。如果设置了ImageId，ImageName 将被忽略。 不支持通过ImageName设置镜像市场镜像。 |
 | Cpu | Integer | 否 | 2 | vCPU个数。单位：核。 同时指定CPU和Memory可以定义实例规格范围，例如，CPU=2且Memory=16可以定义配置为2 vCPU和16 GiB的所有实例规格。弹性伸缩会结合I/O优化、可用区等因素确定可用实例规格集合，并根据价格排序为您创建价格最低的实例。 说明该区间配置效果仅在成本优化模式下且伸缩配置未设置实例规格时生效。 |
 
-弹性伸缩 ESS
-
 | Memory | Integer | 否 | 16 | 内存大小。单位：GiB。 同时指定CPU和Memory可以定义实例规格范围，例如，CPU=2且Memory=16可以定义配置为2 vCPU和16 GiB的所有实例规格。弹性伸缩会结合I/O优化、可用区等因素确定可用实例规格集合，并根据价格排序为您创建价格最低的实例。 说明该区间配置效果仅在成本优化模式下且伸缩配置未设置实例规格时生效。 |
 |---|---|---|---|---|
 | InternetMaxBan dwidthOut | Integer | 否 | 50 | 公网出带宽最大值，单位为Mbps (Mega bit per second)，取值范围： 按带宽计费：0~100，如果您没有指定该参数，则出带宽将自动被设置为0 Mbps。 按流量计费：0~100，如果您没有指定该参数，则会出现报错。 |
 | SystemDisk.Cate gory | String | 否 | cloud efficiency _ | 系统盘的磁盘种类。取值范围： cloud：普通云盘。 cloud efficiency：高效云盘。 _ cloud ssd：SSD云盘。 _ ephemeral ssd：本地SSD盘。 _ 该参数不能与 SystemDiskCategories.N 同时指定。当该参数与 SystemDiskCategories.N 都未指定时，该参数有默认值。InstanceType 为系列I的实例规格且实例属于非I/O优化实例时，默认值：cloud。否则，默认值： cloud efficiency。 _ |
 | SystemDisk.Size | Integer | 否 | 50 | 系统盘的大小，单位：GiB。取值范围： cloud：20~500。 cloud efficiency：20~500。 _ cloud ssd：20~500。 _ ephemeral ssd：20~500。 _ 指定该参数后，系统盘大小必须大于等于 max{20, ImageSize}。 |
 | SystemDisk.Disk Name | String | 否 | cloud ssdSyste _ m | 系统盘的名称。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以 http:// 和 https:// 开头。 可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
-
-弹性伸缩 ESS
 
 | SystemDisk.Des cription | String | 否 | Test system disk. | 系统盘的描述。长度为2~256个英文或中文字符，不能以 http:// 和 https:// 开头。 |
 |---|---|---|---|---|
@@ -3965,17 +4061,15 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 | DeploymentSetI d | String | 否 | ds- bp13v7bjnj9gis* *** | ECS实例所属的部署集的ID。 |
 | SecurityGroupId | String | 否 | sg-F876F**** | ECS实例所属的安全组的ID，同一个安全组内的ECS实例可以互相访问。 |
 
-|  |  | acs: |
+|   |   | acs: |
 |---|---|---|
-|  | http:// |  |
-| https:// |  |  |
+|   | http:// |   |
+| https:// |   |   |
 
-|  |  | acs: |
+|   |   | acs: |
 |---|---|---|
-|  | http:// |  |
-| https:// |  |  |
-
-弹性伸缩 ESS
+|   | http:// |   |
+| https:// |   |   |
 
 | Override | Boolean | 否 | true | 是否覆盖。取值范围： true：覆盖。 false：不覆盖。 |
 |---|---|---|---|---|
@@ -3988,8 +4082,6 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 | DedicatedHostId | String | 否 | dh- bp67acfmxazb4 p**** | 是否在专有宿主机上创建ECS实例。 您可以调用 DescribeDedicatedHosts 接口查询专有宿主机ID列表。 |
 | Affinity | String | 否 | default | 专有宿主机实例是否与专有宿主机关联。 取值范围： default：实例不与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，若原专有宿主机可用资源不足，则实例被放置在自动部署资源池的其它专有宿主机上。 host：实例与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，仍放置在原专有宿主机上。若原专有宿主机可用资源不足，则实例重启失败。 |
 
-弹性伸缩 ESS
-
 | Tenancy | String | 否 | default | 是否在专有宿主机上创建实例。取值范围： default：创建非专有宿主机实例。 host：创建专有宿主机实例。若您不指定 DedicatedHostId ，则由阿里云自动选择专有宿主机放置实例。 |
 |---|---|---|---|---|
 | PrivatePoolOptio ns.MatchCriteria | String | 否 | Open | 实例启动的私有池容量选项。弹性保障服务或容量预定服务在生效后会生成私有池容量，供实例启动时选择。取值范围： Open：开放模式。将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。 该模式下无需设置 PrivatePoolOptions.Id参数。 Target：指定模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。该模式下必须指定私有池ID，即 PrivatePoolOptions.Id参数为必填项。 None：不使用模式。实例启动将不使用私有池容量。 |
@@ -4000,8 +4092,6 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 | DataDisk.N.Auto SnapshotPolicyId | String | 否 | sp- bp19nq9enxqko mib**** | 数据盘使用的自动快照策略ID，N的取值范围：1~16。 |
 | DataDisk.N.Encr ypted | String | 否 | false | 数据盘N是否加密，N的取值范围： 1~16。该参数取值范围： true：加密。 false：不加密。 |
 
-弹性伸缩 ESS
-
 | DataDisk.N.Desc ription | String | 否 | Test data disk. | 数据盘的描述，N的取值范围：1~16。长度为2~256个英文或中文字符，不能以 http:// 和 https:// 开头。 |
 |---|---|---|---|---|
 | DataDisk.N.Snap shotId | String | 否 | s-snapshot**** | 创建数据盘时使用的快照，N的取值范围： 1~16。指定该参数后，DataDisk.N.Size 会被忽略，实际创建的磁盘大小为指定快照的大小。 如果该快照创建于2013年7月15日或之前，调用会被拒绝，返回参数中会提示 InvalidSnapshot.TooOld。 |
@@ -4010,38 +4100,30 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 | DataDisk.N.Devi ce | String | 否 | /dev/xvdb | 数据盘挂载点，N的取值范围：1~16。如果您没有指定该参数，则默认在自动创建 ECS实例时由系统分配，从/dev/xvdb开始，到/dev/xvdz结束。 |
 | DataDisk.N.Disk Name | String | 否 | cloud ssdData _ | 数据盘的名称，N的取值范围：1~16。长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以 http:// 和 https:// 开头。可以包含数字、半角冒号（:）、下划线 （ ）或者短划线（-）。 _ |
 
-弹性伸缩 ESS
-
 | DataDisk.N.Cate gory | String | 否 | cloud ssd _ | 数据盘N的磁盘种类，N的取值范围： 1~16。该参数取值范围： cloud：普通云盘。随实例创建的普通云盘的 DeleteWithInstance 属性为true。 cloud efficiency：高效云盘。 _ cloud ssd：SSD云盘。 _ ephemeral ssd：本地SSD盘。 _ 该参数不能与 DataDisk.N.Categories.N 同时指定。当该参数与 DataDisk.N.Categories.N 都未指定时，该参数的默认值为： 对于I/O优化实例，默认值为 cloud efficiency。 _ 对于非I/O优化实例，默认值为cloud。 |
 |---|---|---|---|---|
 | DataDisk.N.Dele teWithInstance | Boolean | 否 | true | 指定数据盘是否随实例释放，N的取值范围：1~16。该参数取值范围： true：释放实例时，该磁盘随实例一起释放。 false：释放实例时，该磁盘保留不释放。 该参数只可对独立云盘设置 （DataDisk.N.Category为cloud、 cloud efficiency、cloud ssd），否则 _ _ 会出现报错。 |
 | DataDisk.N.KMS KeyId | String | 否 | 0e478b7a-4262- 4802-b8cb- 00d3fb40**** | 数据盘对应的KMS密钥的ID，N的取值范围：1~16。 |
 | InstanceTypes.N | RepeatL ist | 否 | ecs.g6.large | 多实例规格参数。如果使用了 InstanceTypes.N，InstanceType将被忽略，其中N的取值范围：1~10，即一个伸缩配置内最多可以设置10种实例规格。 N代表当前伸缩配置中实例规格的优先级， 编号为1的实例规格优先级最高，实例规格优先级随着编号的增大依次降低。当无法根据优先级较高的实例规格创建出实例时，弹性伸缩服务会自动选择下一优先级的实例规格来创建实例。 |
 
-弹性伸缩 ESS
-
-| InstanceTypeOv erride.N.Instanc eType | String |  |  |  | 当您需要指定伸缩配置中实例规格的容量时，请同时指定本参数和 InstanceTypeOverride.N.Weight edCapacity 。 本参数用于指定实例规格。您可以指定N个本参数，结合 InstanceTypeOverride.N.Weight edCapacity 参数，扩展多实例规格支持自定义权重。N的取值范围：1~10。 说明指定本参数时，不允许同时指定 InstanceTypes 。 InstanceType的取值范围：在售的ECS实例规格，请参见云服务器ECS中的实例规格族章节。 |  |  |
+| InstanceTypeOv erride.N.Instanc eType | String |   |   |   | 当您需要指定伸缩配置中实例规格的容量时，请同时指定本参数和 InstanceTypeOverride.N.Weight edCapacity 。 本参数用于指定实例规格。您可以指定N个本参数，结合 InstanceTypeOverride.N.Weight edCapacity 参数，扩展多实例规格支持自定义权重。N的取值范围：1~10。 说明指定本参数时，不允许同时指定 InstanceTypes 。 InstanceType的取值范围：在售的ECS实例规格，请参见云服务器ECS中的实例规格族章节。 |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | InstanceTypeOverride.N.Weight |  |
-|  |  |  |  |  | edCapacity |  |  |
-|  |  |  |  |  |  | InstanceTypeOverride.N.Weight |  |
-|  |  |  |  |  | edCapacity |  |  |
-|  |  |  | 否 | ecs.c5.xlarge |  |  |  |
-| InstanceTypeOv erride.N.Weighte dCapacity | Integer |  |  |  | 当您需要指定伸缩配置中实例规格的容量时，在指定 InstanceTypeOverride.N.Instan ceType 后，再指定本参数。两个参数一一对应，N需要保持一致。 本参数用于指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。权重越大，满足期望容量所需的本实例规格的实例数量越少。 由于每个实例规格的vCPU个数、内存大小等性能指标会有差异，您可以根据自身需求，给不同的实例规格配置不同的权重。 例如： 当前容量：0。 期望容量：6。 ecs.c5.xlarge规格容量：4。 为满足期望容量，伸缩组将为用户扩容2台 ecs.c5.xlarge实例。 说明扩容时伸缩组的容量不得超过最大容量（MaxSize）与实例规格的最大权重之和。 WeightedCapacity的取值范围： 1~500。 |  |  |
-|  |  |  |  |  |  | InstanceTypeOverride.N.Instan |  |
-|  |  |  |  |  | ceType |  |  |
-|  |  |  | 否 | 4 |  |  |  |
-| SecurityGroupId s.N | RepeatL ist |  | 否 | sg- bp18kz60mefs** ** | 所属安全组ID。 |  |  |
-
-弹性伸缩 ESS
+|   |   |   |   |   |   | InstanceTypeOverride.N.Weight |   |
+|   |   |   |   |   | edCapacity |   |   |
+|   |   |   |   |   |   | InstanceTypeOverride.N.Weight |   |
+|   |   |   |   |   | edCapacity |   |   |
+|   |   |   | 否 | ecs.c5.xlarge |   |   |   |
+| InstanceTypeOv erride.N.Weighte dCapacity | Integer |   |   |   | 当您需要指定伸缩配置中实例规格的容量时，在指定 InstanceTypeOverride.N.Instan ceType 后，再指定本参数。两个参数一一对应，N需要保持一致。 本参数用于指定实例规格的权重，即实例规格的单台实例在伸缩组中表示的容量大小。权重越大，满足期望容量所需的本实例规格的实例数量越少。 由于每个实例规格的vCPU个数、内存大小等性能指标会有差异，您可以根据自身需求，给不同的实例规格配置不同的权重。 例如： 当前容量：0。 期望容量：6。 ecs.c5.xlarge规格容量：4。 为满足期望容量，伸缩组将为用户扩容2台 ecs.c5.xlarge实例。 说明扩容时伸缩组的容量不得超过最大容量（MaxSize）与实例规格的最大权重之和。 WeightedCapacity的取值范围： 1~500。 |   |   |
+|   |   |   |   |   |   | InstanceTypeOverride.N.Instan |   |
+|   |   |   |   |   | ceType |   |   |
+|   |   |   | 否 | 4 |   |   |   |
+| SecurityGroupId s.N | RepeatL ist |   | 否 | sg- bp18kz60mefs** ** | 所属安全组ID。 |   |   |
 
 | InstancePatternI nfo.N.Cores | Integer | 否 | 2 | 智能配置模式下，实例规格的vCPU内核数目，用于筛选符合要求的实例规格范围。 更多信息，请参见云服务器ECS中的实例规格族章节。N的取值范围：1~10。 请注意以下信息： InstancePatternInfo.N参数仅适用于伸缩组的网络类型为专有网络。 InstancePatternInfo.N参数必须同时配置InstancePatternInfo.N.Cores和 InstancePatternInfo.N.Memory。 如果您已经通过InstanceType或 InstanceTypes.N参数指定了实例规格，弹性伸缩优先使用您指定的实例规格扩容，当指定的实例规格无库存时， 再从符合InstancePatternInfo.N参数值的实例规格中优先使用价格最低的实例规格扩容。 |
 |---|---|---|---|---|
 | InstancePatternI nfo.N.InstanceFa milyLevel | String | 否 | EnterpriseLevel | 智能配置模式下，实例规格族级别，用于筛选符合要求的实例规格范围。取值范围： EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。适用于平时CPU使用率低的业务场景。更多信息，请参见云服务器ECS中的共享型章节。 EnterpriseLevel：企业级。性能稳定，资源独享，适用于对稳定性要求高的业务场景。更多信息，请参见云服务器ECS中的实例规格族章节。 CreditEntryLevel：积分入门级，即突发性能实例。通过CPU积分来保证计算性能，适用于平时CPU使用率低、偶有突发CPU使用率的情况。更多信息，请参见云服务器ECS中的突发性能实例章节。 N的取值范围：1~10。 |
 | InstancePatternI nfo.N.MaxPrice | Float | 否 | 2 | 智能配置模式下，按量付费实例或者抢占式实例可接受的每小时最高价格，用于筛选符合要求的实例规格范围。N的取值范围：1~10。 |
 | InstancePatternI nfo.N.Memory | Float | 否 | 4 | 智能配置模式下，实例规格的内存大小， 单位为GiB，用于筛选符合要求的实例规格范围。更多信息，请参见云服务器ECS中的实例规格族章节。N的取值范围： 1~10。 |
-
-弹性伸缩 ESS
 
 | SystemDiskCate gories.N | RepeatL ist | 否 | cloud | 系统盘的多磁盘类型。N的取值范围： 1~4，即一个伸缩配置内最多可以为系统盘指定4种磁盘类型。N越小，优先级越高。当无法使用高优先级的磁盘类型时， 弹性伸缩自动尝试下一优先级的磁盘类型创建系统盘。取值范围： cloud：普通云盘。 cloud efficiency：高效云盘。 _ cloud ssd：SSD云盘。 _ |
 |---|---|---|---|---|
@@ -4060,33 +4142,31 @@ http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingda
 http(s)://ess.example.com/?Action=ModifyScalingConfiguration &ScalingConfigurationId=asc-bp16har3jpj6fjbx**** &IoOptimized=none &ScalingConfigurationName=test-modify &InstanceName=inst**** &HostName=hos**** &ImageId=centos6u5_64_20G_aliaegis_2014****.vhd &ImageName=suse11sp3_64_20G_aliaegis_2015****.vhd &Cpu=2 &Memory=16 &InternetChargeType=PayByBandwidth &InternetMaxBandwidthOut=50 &SystemDisk.Category=cloud_efficiency &SystemDisk.Size=50 &SystemDisk.DiskName=cloud_ssdSystem &SystemDisk.Description=Test system disk. &SystemDisk.AutoSnapshotPolicyId=sp-bp12m37ccmxvbmi5**** &SystemDisk.PerformanceLevel=PL0 &LoadBalancerWeight=50 &UserData=echo hello ecs! &KeyPairName=KeyPair_Name &RamRoleName=RamRoleTest &PasswordInherit=false &Tags={"key1":"value1","key2":"value2", ... "key5":"value5"} &DeploymentSetId=ds-bp13v7bjnj9gis**** &SecurityGroupId=sg-F876F**** &Override=true &HpcClusterId=hpc-clusterid &InstanceDescription=Test instance. &Ipv6AddressCount=1 &CreditSpecification=Standard &ImageFamily=hangzhou-daily-update
 ```
 
-弹性伸缩 ESS
-
 ```json
 &ZoneId=cn-hangzhou-g &DedicatedHostId=dh-bp67acfmxazb4p**** &Affinity=default &Tenancy=default &PrivatePoolOptions.MatchCriteria=Open &PrivatePoolOptions.Id=eap-bp67acfmxazb4**** &DataDisk=[{"PerformanceLevel":"PL1","AutoSnapshotPolicyId":"spbp19nq9enxqkomib****","Encrypted":"false","Description":"Test data disk.","SnapshotId":"s-snapshot****","Categories": ["cloud"],"Size":100,"Device":"/dev/xvdb","DiskName":"cloud_ssdData","Category":"cloud_ss ,"DeleteWithInstance":true,"KMSKeyId":"0e478b7a-4262-4802-b8cb- 00d3fb40****","ProvisionedIops":100,"BurstingEnabled":false}] &InstanceTypes=["ecs.g6.large"] &InstanceTypeOverride=[{"InstanceType":"ecs.c5.xlarge","WeightedCapacity":4}] &SecurityGroupIds=["sg-bp18kz60mefs****"] &InstancePatternInfo= [{"Cores":2,"InstanceFamilyLevel":"EnterpriseLevel","MaxPrice":2.0,"Memory":4.0,"Architec re":["X86"],"BurstablePerformance":"Include","ExcludedInstanceType": ["ecs.n1.small/ecs.n1.*/*7*"]}] &SystemDiskCategories=["cloud"] &SystemDisk.Encrypted=false &SystemDisk.KMSKeyId=0e478b7a-4262-4802-b8cb-00d3fb40**** &SystemDisk.EncryptAlgorithm=AES-256 &SystemDisk.ProvisionedIops=100 &SystemDisk.BurstingEnabled=false
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyScalingConfigurationResponse>
     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyScalingConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 未授权操作当前Action。 |
-
-弹性伸缩 ESS
 
 | 404 | InvalidDataDiskSnapsh otId.NotFound | Snapshot "XXX" does not exist. | 不存在指定的快照。 |
 |---|---|---|---|
@@ -4101,13 +4181,13 @@ http(s)://ess.example.com/?Action=ModifyScalingConfiguration &ScalingConfigurati
 | 400 | InvalidTags.KeyValue | The specified tags key/value cannot be empty. | 必须指定Tags参数。 |
 | 400 | InvalidTags.ListSize | The specified tags list size cannot be more than "5". | Tags列表长度超过限制长度。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidUserData.Base6 4FormatInvalid | The specified parameter UserData must be base64 encoded. | UserData不符合Base64 编码规范。 |
 |---|---|---|---|
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | 指定的UserData过长。 |
 
-#### DeleteScalingConfiguration
+#### 6.8.4 DeleteScalingConfiguration
+
+调用DeleteScalingConfiguration删除一个伸缩配置。
 
 **接口说明**
 
@@ -4134,19 +4214,21 @@ http(s)://ess.example.com/?Action=ModifyScalingConfiguration &ScalingConfigurati
 http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationId=eOs27Kb0oXvQcUYjEGel****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteScalingConfigurationResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScalingConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4156,7 +4238,7 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | 400 | IncorrectScalingConfig urationLifecycleState | The current lifecycle state of specified scaling configuration does not support this action. | 指定的伸缩配置未处于 Inactive状态。 |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | 指定的伸缩配置还有关联的ECS实例未被删除。 |
 
-#### CreateEciScalingConfiguration
+#### 6.8.5 CreateEciScalingConfiguration
 
 调用CreateEciScalingConfiguration创建一个ECI类型的伸缩配置。
 
@@ -4171,8 +4253,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Action | String | 是 | CreateEciScaling Configuration | 系统规定参数。取值： CreateEciScalingConfiguration。 |
 | ContainerGroup Name | String | 是 | nginx-test | ECI实例名称，即容器组名称。 |
 
-弹性伸缩 ESS
-
 | ScalingConfigura tionName | String | 是 | scalingconfig*** * | 伸缩配置的名称。长度为2~64个英文或中文字符组成，以数字、大小写字母或中文开头，可包含数字、下划线（ ）、短划线 _ （-）或半角句号（.）。 在同一地域下同一伸缩组内伸缩配置名称唯一。如果您没有指定该参数，则默认使用伸缩配置的ID。 |
 |---|---|---|---|---|
 | ScalingGroupId | String | 是 | asg- bp14wlu85wrpc hm0**** | 伸缩配置所属的伸缩组的ID。 |
@@ -4185,7 +4265,7 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | RamRoleName | String | 否 | RamTestRole | 实例RAM角色名称。其中，ECI与ECS共用实例RAM角色，更多信息，请参见通过云服务器ECS中的API使用实例RAM角色章节。 |
 | TerminationGrac ePeriodSeconds | Long | 否 | 60 | 程序的缓冲时间，用于处理关闭之前的操作。 |
 
-| 弹性伸缩 ESS |  |  |  | 开发指南·API参考 |
+| 弹性伸缩 ESS |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|
 
 | AutoMatchImage Cache | Boolean | 否 | false | 是否自动匹配镜像缓存。取值范围： true：是。 false：否。 默认值：false。 |
@@ -4202,8 +4282,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | EphemeralStora ge | Integer | 否 | 20 | 临时存储空间大小。单位：GiB。 |
 | LoadBalancerWe ight | Integer | 否 | 50 | ECI实例作为负载均衡后端服务器时的权重，取值范围：1~100。 默认值：50。 |
 
-弹性伸缩 ESS
-
 | Tag.N.Key | String | 否 | version | 实例的标签键。N的取值范围：1~20。 如果传入该值，则不允许为空字符串。最多支持128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |
 |---|---|---|---|---|
 | Tag.N.Value | String | 否 | 3 | 实例的标签键。N的取值范围：1~20。 如果传入该值，则不允许为空字符串。最多支持128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |
@@ -4215,8 +4293,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Container.N.Sec urityContext.Cap ability.Add.N | RepeatL ist | 否 | NET ADMIN _ | 为容器内的进程授予某些特定的权限。目前仅支持配置为NET ADMIN和 _ NET RAW。 _ 说明 NET RAW默认不支 _ 持，需提交工单申请。 |
 | Container.N.Rea dinessProbe.Tcp Socket.Port | Integer | 否 | 8000 | 使用TCP Socket方式进行健康检查时，TCP Socket检测的端口。 |
 | Container.N.Rea dinessProbe.Htt pGet.Scheme | String | 否 | HTTP | 使用HTTP请求方式进行健康检查时，HTTP Get请求对应的协议类型，取值范围： HTTP。 HTTPS。 |
-
-弹性伸缩 ESS
 
 | Container.N.Live nessProbe.Perio dSeconds | Integer | 否 | 5 | 检查执行的周期，默认值为10秒，最小值为1秒。 |
 |---|---|---|---|---|
@@ -4232,8 +4308,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Container.N.Arg. N | RepeatL ist | 否 | 100 | 容器启动命令对应的参数。最多10个。 |
 | Container.N.Gpu | Integer | 否 | 1 | 指定容器使用的GPU个数。 |
 
-弹性伸缩 ESS
-
 | Container.N.Rea dinessProbe.Initi alDelaySeconds | Integer | 否 | 3 | 检查开始执行的时间，以容器启动完成为起点计算。 |
 |---|---|---|---|---|
 | Container.N.Stdi n | Boolean | 否 | false | 此容器是否应在容器运行时为标准输入分配缓冲区。如果未设置，则容器中标准输入的读取值将导致EOF。 默认值：false。 |
@@ -4246,8 +4320,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Container.N.Volu meMount.N.Rea dOnly | Boolean | 否 | false | 数据卷是否只读。取值范围： true：是。 false：否。 默认值：false。 |
 | Container.N.Volu meMount.N.Nam e | String | 否 | default-volume1 | 数据卷名称。同Volume中的Name。 |
 
-弹性伸缩 ESS
-
 | Container.N.Volu meMount.N.Sub Path | String | 否 | data2/ | 数据卷子路径。 |
 |---|---|---|---|---|
 | Container.N.Live nessProbe.Failur eThreshold | Integer | 否 | 3 | 从上次检查成功后认定检查失败的检查次数阈值（必须是连续失败）。 默认值：3。 |
@@ -4259,8 +4331,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Container.N.Live nessProbe.HttpG et.Port | Integer | 否 | 8888 | 使用HTTP请求方式进行健康检查时，HTTP Get请求检测的端口号。 |
 | Container.N.Live nessProbe.HttpG et.Path | String | 否 | /healthyz | 使用HTTP请求方式进行健康检查时，HTTP Get请求检测的路径。 |
 | Container.N.Live nessProbe.Succe ssThreshold | Integer | 否 | 1 | 从上次检查失败后重新认定检查成功的检查次数阈值（必须是连续成功）。当前值仅支持设置为1。 默认值：1。 |
-
-弹性伸缩 ESS
 
 | Container.N.Rea dinessProbe.Peri odSeconds | Integer | 否 | 3 | 检查执行的周期，默认值为10秒，最小值为1秒。 |
 |---|---|---|---|---|
@@ -4276,8 +4346,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Volume.N.DiskV olume.FsType | String | 否 | xfs | DiskVolume的系统类型。 |
 | Volume.N.HostP athVolume.Type | String | 否 | Directory | HostPath Volume的类型。取值范围： Directory：目录。 File：文件。 |
 
-弹性伸缩 ESS
-
 | Volume.N.NFSVo lume.ReadOnly | Boolean | 否 | false | NFS数据卷是否只读。取值范围： true：是。 false：否。 默认值：false。 |
 |---|---|---|---|---|
 | Volume.N.HostP athVolume.Path | String | 否 | /xx/xx/path | HostPath Volume在主机上的目录路径。 |
@@ -4289,8 +4357,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | Volume.N.Name | String | 否 | default-volume1 | 数据卷名称。 |
 | Volume.N.Empty DirVolume.Medi um | String | 否 | memory | EmptyDirVolume的存储媒介，默认为空，使用node文件系统；如果设置为 memory ，则表示使用内存。 |
 
-弹性伸缩 ESS
-
 | Volume.N.Config FileVolumeConfi gFileToPath.N.Pa th | String | 否 | PATH | 环境变量名。长度为1~128个字符。格式要求： [0-9a-zA-Z] ，以及下划线 （ ），不能以数字开头。 _ |
 |---|---|---|---|---|
 | Volume.N.Config FileVolumeConfi gFileToPath.N.M ode | Integer | 否 | 0644 | ConfigFileVolume目录权限。 |
@@ -4301,8 +4367,6 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | InitContainer.N.I mage | String | 否 | nginx | 容器使用的镜像。 |
 | InitContainer.N.I nitContainerVolu meMount.N.Mou ntPropagation | String | 否 | None | 数据卷的挂载传播设置。挂载传播允许将 Container挂载的卷共享到同一Pod中的其他Container，甚至可以共享到同一节点上的其他Pod。可能值： None：该卷不感知任何后续在此卷或其子目录上执行的挂载操作。 HostToCotainer：该卷将会感知到后续在此卷或其子目录上的挂载操作。 Bidirectional：和HostToCotainer类似，能感知挂载操作。另外，该卷将被传播回主机和使用同一卷的所有Pod的所有容器。 |
 | InitContainer.N.I nitContainerVolu meMount.N.Mou ntPath | String | 否 | /usr/share/ | 挂载目录。 重要容器挂载目录下的内容会被Volume的内容直接覆盖，请您谨慎使用。 |
-
-弹性伸缩 ESS
 
 | InitContainer.N.I nitContainerVolu meMount.N.Rea dOnly | Boolean | 否 | false | 挂载路径是否只读。 默认值：false。 |
 |---|---|---|---|---|
@@ -4322,7 +4386,7 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 | DnsConfigOption .N.Value | String | 否 | value | 对象变量值。 |
 | DnsConfigOption .N.Name | String | 否 | name | 对象变量名。 |
 
-| 开发指南·API参考 |  |  |  | 弹性伸缩 ES |
+| 开发指南·API参考 |   |   |   | 弹性伸缩 ES |
 |---|---|---|---|---|
 
 | HostAliase.N.Ip | String | 否 | 1.1.1.1 | 添加IP地址。 |
@@ -4351,33 +4415,31 @@ http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationI
 http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=asg-bp14wlu85wrpchm0**** &ScalingConfigurationName=scalingconfig**** &SecurityGroupId=sg-uf66jeqopgqa9hdn**** &ContainerGroupName=nginx-test &RestartPolicy=Always &Cpu=1.0 &Memory=2.0
 ```
 
-弹性伸缩 ESS
-
 ```json
 &DnsPolicy=Default &ImageSnapshotId=imc-2zebxkiifuyzzlhl**** &RamRoleName=RamTestRole &TerminationGracePeriodSeconds=60 &AutoMatchImageCache=false &Ipv6AddressCount=1 &ActiveDeadlineSeconds=1000 &AutoCreateEip=true &EipBandwidth=5 &HostName=test &IngressBandwidth=1024000 &EgressBandwidth=1024000 &CpuOptionsCore=2 &CpuOptionsThreadsPerCore=2 &EphemeralStorage=20 &LoadBalancerWeight=50 &Tag=[{"Key":"version","Value":"3"}] &ImageRegistryCredential=[{"Password":"yourpaasword","Server":"registry-vpc.cn-shanghai -env17-d01.aliyuncs.com","UserName":"yourusername"}] &Container= [{"ReadinessProbe.TimeoutSeconds":5,"ReadinessProbe.SuccessThreshold":1,"SecurityContext. pability.Add": ["NET_ADMIN"],"ReadinessProbe.TcpSocket.Port":8000,"ReadinessProbe.HttpGet.Scheme":"HTTP" LivenessProbe.PeriodSeconds":5,"Port":[{"Protocol":"TCP","Port":80}],"EnvironmentVar":[ {"Key":"PATH","Value":"/usr/local/bin"}],"LivenessProbe.TcpSocket.Port":8000,"Tty":false, orkingDir":"/usr/local/","LivenessProbe.HttpGet.Scheme":"HTTP","ReadinessProbe.HttpGet.Po ":8080,"Arg": ["100"],"Gpu":1,"ReadinessProbe.InitialDelaySeconds":3,"Stdin":false,"Memory":0.5,"Name": ginx","Image":"registry-vpc.cn-shanghai-env17d01.aliyuncs.com/eci_open/nginx:latest","LivenessProbe.InitialDelaySeconds":5,"VolumeMoun :[{"MountPropagation":"None","MountPath":"/pod/data","ReadOnly":false,"Name":"default-v olume1","SubPath":"data2/"}],"LivenessProbe.FailureThreshold":3,"ReadinessProbe.Exec.Comm d":["cat /tmp/healthy"],"ReadinessProbe.FailureThreshold":3,"ImagePullPolicy":"Always","StdinOnce" alse,"Cpu":0.25,"LivenessProbe.HttpGet.Port":8888,"LivenessProbe.HttpGet.Path":"/healthyz "LivenessProbe.SuccessThreshold":1,"ReadinessProbe.PeriodSeconds":3,"LivenessProbe.Timeou econds":1,"Command": ["sleep"],"SecurityContext.RunAsUser":1000,"ReadinessProbe.HttpGet.Path":"/healthz","Live ssProbe.Exec.Command":["cat/tmp/healthy"]}] &Volume= [{"Type":"ConfigFileVolume","DiskVolume.DiskSize":15,"NFSVolume.Path":"/share","FlexVolum FsType":"ext4","DiskVolume.FsType":"xfs","HostPathVolume.Type":"Directory","NFSVolume.Rea nly":false,"HostPathVolume.Path":"/xx/xx/path","FlexVolume.Options":"{\"volumeId\":\"d- 2zehdahrwoa7srg****\",\"performanceLevel\": \"PL2\"}","FlexVolume.Driver":"flexvolume","ConfigFileVolumeDefaultMode":644,"NFSVolume.S ver":"3f9cd4a596-naw76.cn-shanghai-env17-d01.nas.aliyuncs.com","DiskVolume.DiskId":"d-x x","Name":"defaultvolume1","EmptyDirVolume.Medium":"memory","ConfigFileVolumeConfigFileToPath":[{"Path":" PATH","Mode":644,"Content":"bGl1bWk="}]}] &InitContainer=[{"InitContainerEnvironmentVar": [{"Key":"Path","Value":"/usr/bin/"}],"SecurityContext.Capability.Add": ["NET_ADMIN"],"Image":"nginx","InitContainerVolumeMount": [{"MountPropagation":"None","MountPath":"/usr/share/","ReadOnly":false,"Name":"test-emp ty","SubPath":"/usr/sub/"}],"ImagePullPolicy":"Always","Cpu":0.5,"WorkingDir":"/usr/local "Command":["sleep"]"Arg":
 ```
-
-弹性伸缩 ESS
 
 ```json
 "Command":["sleep"],"Arg": ["10"],"SecurityContext.RunAsUser":587,"Gpu":1,"Memory":1.0,"Name":"test-init"}] &DnsConfigNameServer=["172.10.*.**"] &DnsConfigSearch=["svc.local.kubenetes"] &DnsConfigOption=[{"Value":"value","Name":"name"}] &HostAliase=[{"Ip":"1.1.1.1","Hostname":["hehe.com"]}] &SecurityContextSysctl=[{"Value":"65536","Name":"kernel.msgmax"}] &NtpServer=["ntp.cloud.aliyuncs.com"] &AcrRegistryInfo=[{"Domain":["*****-****-registry.cn-shanghai-env17d01.cr.aliyuncs.com"],"InstanceName":"acr-test","InstanceId":"crinwj395hgf6f3****","RegionId":"cn-shanghai-env17-d01"}]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateEciScalingConfigurationResponse>
       <RequestId>89945DD3-9072-47D0-A318-353284CF****</RequestId>
       <ScalingConfigurationId>eci-uf6fonnghi50u374****</ScalingConfigurationId>
+</CreateEciScalingConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "89945DD3-9072-47D0-A318-353284CF****",
     "ScalingConfigurationId": "eci-uf6fonnghi50u374****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4387,8 +4449,6 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | 404 | InvalidDataDiskSnapsh otId.NotFound | Snapshot "XXX" does not exist. | 不存在指定的快照。 |
 | 400 | InvalidDataDiskSnapsh otId.SizeNotSupported | The capacity of snapshot "XXX" exceeds the size limit of the specified disk category. | 指定快照的大小超过了磁盘大小的限制。 |
 | 403 | InvalidDevice.InUse | Device "XXX" has been occupied. | 数据盘挂载点重复。 |
-
-弹性伸缩 ESS
 
 | 400 | InvalidImageId.Instanc eTypeMismatch | The specified image does not support the specified instance type. | 不允许在指定的实例规格下使用该镜像。 |
 |---|---|---|---|
@@ -4403,8 +4463,6 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | 400 | InvalidSecurityGroupId .IncorrectNetworkType | The network type of specified security Group does not support this action. | 指定的安全组与伸缩组指定网络类型不一致。 |
 | 404 | InvalidSecurityGroupId .NotFound | The specified security group does not exist. | 该账号下不存在指定的安全组。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidSecurityGroupId .VPCMismatch | The specified security group and the specified virtual switch are not in the same VPC. | 指定的安全组和虚拟交换机不属于同一个虚拟专有网络。 |
 |---|---|---|---|
 | 403 | InvalidSnapshot.TooOl d | This operation is denied because the specified snapshot is created before 2013- 07-15. | 该快照创建于2013年7月 15日或之前，调用被拒绝。 |
@@ -4415,7 +4473,7 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | 400 | QuotaExceeded.Scalin gConfiguration | Scaling configuration quota exceeded in the specified scaling group. | 您目前拥有的伸缩配置个数已经达到上限。 |
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | 指定的安全组中添加的 ECI实例个数已经达到上限。 |
 
-#### DescribeEciScalingConfigurations
+#### 6.8.6 DescribeEciScalingConfigurations
 
 调用DescribeEciScalingConfigurations查询ECI类型的伸缩配置信息。
 
@@ -4424,8 +4482,6 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeEciScali ngConfiguration s | 系统规定参数。取值： DescribeEciScalingConfigurations。 |
-
-弹性伸缩 ESS
 
 | RegionId | String | 是 | cn-qingdao- env17-d01 | 伸缩配置所属伸缩组的地域ID。 |
 |---|---|---|---|---|
@@ -4442,11 +4498,9 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 50 | 每页行数。 |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
-| ScalingConfigu rations | Array of ScalingConfigu ration |  | 伸缩配置信息的集合。 |
-| AcrRegistryInf os | Array of AcrRegistryInf o |  | ACR企业版实例的信息。 |
+| ScalingConfigu rations | Array of ScalingConfigu ration |   | 伸缩配置信息的集合。 |
+| AcrRegistryInf os | Array of AcrRegistryInf o |   | ACR企业版实例的信息。 |
 | Domains | List | *****-****- registry.cn-beijing- env17- d01.cr.aliyuncs.co m | ACR企业版实例的域名。默认为相应实例的所有域名。支持指定个别域名，多个以半角逗号（,） 分隔。 |
-
-弹性伸缩 ESS
 
 | InstanceId | String | cri- nwj395hgf6f3**** | ACR企业版实例ID。 |
 |---|---|---|---|
@@ -4456,17 +4510,15 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | AutoCreateEip | Boolean | true | 是否自动创建弹性公网IP，并绑定ECI实例。 |
 | AutoMatchIma geCache | Boolean | false | 是否自动匹配镜像缓存。 默认值：false。 |
 | ContainerGrou pName | String | test | ECI实例名称，即容器组名称。 |
-| Containers | Array of Container |  | 实例包含的容器列表。 |
+| Containers | Array of Container |   | 实例包含的容器列表。 |
 | Args | List | 10 | 容器启动命令对应的参数。最多10个。 |
 | Commands | List | sleep | 容器启动命令。最多20个。每个命令最多包含 256个字符。 |
 | Cpu | Float | 2.0 | 容器的vCPU大小。单位：核。 |
-| EnvironmentV ars | Array of EnvironmentV ar |  | 环境变量的信息。 |
+| EnvironmentV ars | Array of EnvironmentV ar |   | 环境变量的信息。 |
 | Key | String | PATH | 环境变量名。长度为1~128位。格式要求： [0-9a-zA-Z] ，以及下划线，不能以数字开头。 |
 | Value | String | /usr/bin/ | 环境变量值。长度为0~256位。 |
 | Gpu | Integer | 1 | 容器使用的GPU个数。 |
 | Image | String | mysql | 容器镜像。 |
-
-弹性伸缩 ESS
 
 | ImagePullPolic y | String | Always | 镜像拉取策略。可能值： Alway：总是拉取。每次都拉取镜像。 IfNotPresent：按需拉取。优先使用本地镜像，本地没有镜像时则拉取镜像。 Never：从不拉取。使用本地镜像，不拉取镜像。 |
 |---|---|---|---|
@@ -4482,9 +4534,7 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | LivenessProbe TimeoutSecon ds | Integer | 10 | 检查超时的时间，默认为1秒，最小值为1秒。 |
 | Memory | Float | 2.0 | 容器内存大小。单位：GiB。 |
 | Name | String | nginx | 容器名称。 |
-| Ports | Array of Port |  | 暴露端口和协议。 |
-
-弹性伸缩 ESS
+| Ports | Array of Port |   | 暴露端口和协议。 |
 
 | Port | Integer | 8888 | 端口号。可能值：1~65535。 |
 |---|---|---|---|
@@ -4501,19 +4551,15 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | ReadinessProb eTimeoutSeco nds | Integer | 5 | 检查超时的时间，默认为1秒，最小为1秒。 |
 | SecurityConte xtCapabilityAd ds | List | NET ADMIN _ | 为容器内的进程授予某些特定的权限。目前仅支持配置为 NET ADMIN 和 NET RAW 。 _ _ 说明 NET RAW 默认不支持，需 _ 提交工单申请。 |
 
-弹性伸缩 ESS
-
 | SecurityConte xtRunAsUser | Long | 1000 | 设置运行容器的用户ID。 |
 |---|---|---|---|
 | Stdin | Boolean | true | 此容器是否应在容器运行时为标准输入分配缓冲区。如果未设置，则容器中标准输入的读取值将导致EOF。 默认值：false。 |
 | StdinOnce | Boolean | true | 当标准输入为true时，标准输入流将在多个附加会话中保持开启状态。 如果StdinOnce设为true，标准输入在容器开启时被打开，在首个客户端附加到标准输入之前都为空，然后会一直保持开启状态，接收数据，直到客户端连接断开，此时标准输入被关闭，在容器重启前一直保持关闭状态。 |
 | Tty | Boolean | false | 是否开启交互。可能值： true：开启。 false：未开启。 例如：当Command配置为 /bin/bash 时， 需要配置为true。 默认值：false。 |
-| VolumeMounts | Array of VolumeMount |  | 挂载数据卷。 |
+| VolumeMounts | Array of VolumeMount |   | 挂载数据卷。 |
 | MountPath | String | /pod/data | 容器挂载数据卷的目录。 重要容器挂载目录下的内容会被 Volume的内容直接覆盖，请谨慎使用。 |
 | MountPropaga tion | String | None | 数据卷的挂载传播设置。挂载传播允许将 Container挂载的卷共享到同一Pod中的其他 Container，甚至可以共享到同一节点上的其他 Pod。可能值： None：该卷不感知任何后续在此卷或其子目录上执行的挂载操作。 HostToCotainer：该卷将会感知到后续在此卷或其子目录上的挂载操作。 Bidirectional：和HostToCotainer类似，能感知挂载操作。另外，该卷将被传播回主机和使用同一卷的所有Pod的所有容器。 默认值：None。 |
 | Name | String | default-volume1 | 数据卷名称。同Volume中的Name。 |
-
-弹性伸缩 ESS
 
 | ReadOnly | Boolean | false | 数据卷是否只读。 默认值：false。 |
 |---|---|---|---|
@@ -4525,49 +4571,43 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | CpuOptionsThr eadsPerCore | Integer | 2 | 每核线程数。仅部分规格支持自定义设置。配置为1时表示关闭超线程。更多信息，请参见弹性容器实例中的自定义CPU选项章节。 |
 | CreationTime | String | 2014-08- 14T10:58Z | 伸缩配置的创建时间。 |
 | DnsConfigNam eServers | List | 172.10.*.** | DNS服务器的IP地址列表。 |
-| DnsConfigOpti ons | Array of DnsConfigOpti on |  | 对象选项列表，每个对象由Name和Value（可选）构成。 |
+| DnsConfigOpti ons | Array of DnsConfigOpti on |   | 对象选项列表，每个对象由Name和Value（可选）构成。 |
 | Name | String | name | 对象的变量名。 |
 | Value | String | value | 对象变量值。 |
 | DnsConfigSear ches | List | svc.local.kubenete s | DNS搜索域列表。 |
 | DnsPolicy | String | Default | DNS策略。可能值： None：使用DnsConfig字段设置的DNS。 Default：继承运行环境的DNS设置。 |
 | EgressBandwi dth | Long | 1024000 | 出方向带宽限制。单位：Byte。 |
 
-弹性伸缩 ESS
-
 | EipBandwidth | Integer | 5 | 弹性公网IP的带宽。 默认值：5 Mbit/s。 |
 |---|---|---|---|
 | EphemeralStor age | Integer | 20 | 临时存储空间大小。单位：GiB。 |
-| HostAliases | Array of HostAlias |  | 自定义实例内一个容器的Hostname映射。 |
+| HostAliases | Array of HostAlias |   | 自定义实例内一个容器的Hostname映射。 |
 | Hostnames | List | ['hehe.com', 'haha.com'] | 添加主机名。 |
 | Ip | String | 192.0.XX.XX | 添加IP地址。 |
 | HostName | String | ['hehe.com', 'haha.com'] | 主机名。 |
-| ImageRegistry Credentials | Array of ImageRegistry Credential |  | 镜像仓库信息。 |
+| ImageRegistry Credentials | Array of ImageRegistry Credential |   | 镜像仓库信息。 |
 | Password | String | yourpaasword | 镜像仓库密码。 |
 | Server | String | registry-vpc.cn- shanghai-env17- d01.aliyuncs.com | 镜像仓库注册地址。 |
 | UserName | String | yourusername | 镜像仓库用户名。 |
 | ImageSnapsho tId | String | imc- 2zebxkiifuyzzlhl*** * | 镜像缓存ID。 |
 | IngressBandwi dth | Long | 1024000 | 入方向带宽限制。单位：Byte。 |
-| InitContainers | Array of InitContainer |  | Init容器列表。 |
+| InitContainers | Array of InitContainer |   | Init容器列表。 |
 | Cpu | Float | 0.5 | 容器的vCPU大小。单位：核。 |
 | Gpu | Integer | 1 | 指定容器使用的GPU个数。 |
 | Image | String | nginx | 容器使用的镜像。 |
-
-弹性伸缩 ESS
 
 | ImagePullPolic y | String | Always | 镜像拉取策略。可能值： Always：总是拉取。每次都拉取镜像。 IfNotPresent：按需拉取。优先使用本地镜像，本地没有镜像时则拉取镜像。 Never：从不拉取。使用本地镜像，不拉取镜像。 |
 |---|---|---|---|
 | InitContainerA rgs | List | 10 | 容器启动参数。 |
 | InitContainerC ommands | List | sleep | 容器启动指令。 |
-| InitContainerE nvironmentVar s | Array of InitContainerE nvironmentVar |  | 环境变量的信息。 |
+| InitContainerE nvironmentVar s | Array of InitContainerE nvironmentVar |   | 环境变量的信息。 |
 | Key | String | PATH | 环境变量名。长度为1~128位。格式要求： [0-9a-zA-Z] ，以及下划线，不能以数字开头。 |
 | Value | String | /usr/local/bin | 环境变量值。长度为0~256位。 |
-| InitContainerV olumeMounts | Array of InitContainerV olumeMount |  | 数据卷挂载。 |
+| InitContainerV olumeMounts | Array of InitContainerV olumeMount |   | 数据卷挂载。 |
 | MountPath | String | /usr/share/ | 挂载目录。 重要容器的挂载目录下的内容被 Volume的内容直接覆盖，所以要慎用。 |
 | MountPropaga tion | String | None | 数据卷的挂载传播设置。挂载传播允许将 Container挂载的卷共享到同一Pod中的其他 Container，甚至可以共享到同一节点上的其他 Pod。可能值： None：该卷不感知任何后续在此卷或其子目录上执行的挂载操作。 HostToCotainer：该卷将会感知到后续在此卷或其子目录上的挂载操作。 Bidirectional：和HostToCotainer类似，能感知挂载操作。另外，该卷将被传播回主机和使用同一卷的所有Pod的所有容器。 默认值：None。 |
 | Name | String | test-empty | 挂载数据卷的名称。 |
 | ReadOnly | Boolean | false | 挂载路径是否只读。 默认值：false。 |
-
-弹性伸缩 ESS
 
 | SubPath | String | /usr/sub/ | 数据卷下的子目录，方便Pod将同一个Volume 下不同目录挂载到容器不同目录。 |
 |---|---|---|---|
@@ -4581,8 +4621,6 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | Ipv6AddressCo unt | Integer | 1 | IPv6地址数。固定为1，即一个ECI实例支持绑定一个IPv6地址。 |
 | LifecycleState | String | Active | 伸缩配置在伸缩组中的状态。可能值： Active：生效状态。伸缩组会使用处于生效状态的伸缩配置自动创建ECI实例。 Inacitve：未生效状态。处于未生效状态的伸缩配置存在于伸缩组中，但伸缩组不会使用此类伸缩配置自动创建ECI实例。 |
 
-弹性伸缩 ESS
-
 | LoadBalancer Weight | Integer | 1 | ECI实例作为后端服务器时的权重，可能值： 1~100。 |
 |---|---|---|---|
 | Memory | Float | 16 | 内存大小，单位：GiB。 同时指定CPU和Memory可以定义实例规格范围。例如，CPU=2且Memory=16可以定义配置为2 vCPU和16 GiB的所有实例规格。弹性伸缩会结合IO优化、可用区等因素确定可用实例规格集合，并根据价格排序为您创建价格最低的实例。 说明该区间配置效果仅在成本优化模式下且伸缩配置未设置实例规格时生效。 |
@@ -4594,22 +4632,20 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | ScalingConfigu rationId | String | asc- bp1ezrfgoyn5kijl*** * | 伸缩配置的ID。 |
 | ScalingConfigu rationName | String | scalingconfi**** | 伸缩配置的名称。 |
 | ScalingGroupI d | String | asg- bp17pelvl720x3v7* *** | 伸缩配置所属伸缩组的ID。 |
-| SecurityConte xtSysCtls | Array of SecurityConte xtSysCtl |  | 实例运行的安全上下文的系统信息。 |
+| SecurityConte xtSysCtls | Array of SecurityConte xtSysCtl |   | 实例运行的安全上下文的系统信息。 |
 | Name | String | kernel.msgmax | 实例运行的安全上下文系统名称。 |
 | Value | String | 65536 | 实例运行的安全上下文的变量值。 |
-
-弹性伸缩 ESS
 
 | SecurityGroupI d | String | sg- bp18kz60mefs**** | ECI实例所属的安全组的ID，同一个安全组内的 ECI实例可以互相访问。 |
 |---|---|---|---|
 | SpotPriceLimit | Float | 0.025 | 说明该参数未开放使用。 |
 | SpotStrategy | String | NoSpot | 说明该参数未开放使用。 |
-| Tags | Array of Tag |  | 实例的标签键值对。 |
+| Tags | Array of Tag |   | 实例的标签键值对。 |
 | Key | String | version | 标签键。 |
 | Value | String | 3 | 标签值。 |
 | TerminationGr acePeriodSeco nds | Integer | 60 | 程序的缓冲时间，用于处理关闭之前的操作。 |
-| Volumes | Array of Volume |  | 数据卷信息。 |
-| ConfigFileVolu meConfigFileT oPaths | Array of ConfigFileVolu meConfigFileT oPath |  | 配置文件路径列表。 |
+| Volumes | Array of Volume |   | 数据卷信息。 |
+| ConfigFileVolu meConfigFileT oPaths | Array of ConfigFileVolu meConfigFileT oPath |   | 配置文件路径列表。 |
 | Content | String | bGl1bWk= | 配置文件内容。其中，配置文件大小最大为32 KB。 |
 | Mode | Integer | 644 | ConfigFileVolume目录权限。 |
 | Path | String | /usr/bin/ | 相对文件路径。 |
@@ -4617,8 +4653,6 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | DiskVolumeDis kId | String | d-xxxx | DiskVolume的ID。 |
 | DiskVolumeDis kSize | Integer | 15 | DiskVolume的大小。单位为GiB。 |
 | DiskVolumeFs Type | String | xfs | DiskVolume的系统类型。 |
-
-弹性伸缩 ESS
 
 | EmptyDirVolu meMedium | String | memory | EmptyDirVolume的存储媒介，默认为空，使用 node文件系统。如果设置为memory，则表示使用内存。 |
 |---|---|---|---|
@@ -4629,8 +4663,6 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | NFSVolumeRe adOnly | Boolean | false | NFS数据卷是否只读。 默认值：false。 |
 | NFSVolumeSer ver | String | 3f9cd4a596- naw76.cn- shanghai-env17- d01.nas.aliyuncs.c om | NFS服务器地址。 |
 | Name | String | default-volume1 | 数据卷名称。 |
-
-弹性伸缩 ESS
 
 | Type | String | EmptyDirVolume | 数据卷类型，可能值： EmptyDirVolume：EmptyDir类型的数据卷，表示空目录。 NFSVolume：NFS类型的数据卷，表示网络文件系统。 ConfigFileVolume：ConfigFile类型的数据卷，表示配置文件。 FlexVolume：使用FlexVolume插件扩展存储类型，支持挂载云盘。 HostPathVolume：HostPath类型的数据卷，表示主机节点的文件或目录。 DiskVolume（不推荐）：云盘数据卷。建议使用FlexVolume挂载云盘。 |
 |---|---|---|---|
@@ -4644,7 +4676,7 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 http(s)://ess.example.com/?Action=DescribeEciScalingConfigurations &RegionId=cn-qingdao-env17-d01 &PageNumber=1 &PageSize=50 &ScalingGroupId=asg-bp17pelvl720x3v7**** &ScalingConfigurationId=["asc-bp17pelvl720x5ub****"] &ScalingConfigurationName=["scalingcon****"]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeEciScalingConfigurationsResponse>
@@ -4668,8 +4700,6 @@ http(s)://ess.example.com/?Action=DescribeEciScalingConfigurations &RegionId=cn-
             <ActiveDeadlineSeconds>1000</ActiveDeadlineSeconds>
             <LoadBalancerWeight>1</LoadBalancerWeight>
 ```
-
-弹性伸缩 ESS
 
 ```xml
             <CpuOptionsThreadsPerCore>2</CpuOptionsThreadsPerCore>
@@ -4727,13 +4757,13 @@ d01.cr.aliyuncs.com</Domains>
 <Fl
 ```
 
-Vl Di
+`V``l` `D``i`
 
 ```
 >lil d/dik</Fl
 ```
 
-Vl Di > 弹性伸缩 ESS
+`V``l` `D``i` `>`
 
 ```xml
                   <FlexVolumeDriver>alicloud/disk</FlexVolumeDriver>
@@ -4791,8 +4821,6 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
 <ReadinessProbeHttpGetPort>80</ReadinessProbeHttpGetPort>
 ```
 
-弹性伸缩 ESS
-
 ```xml
                   <ReadinessProbeHttpGetPort>80</ReadinessProbeHttpGetPort>
                   <Stdin>true</Stdin>
@@ -4835,10 +4863,9 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
 </DescribeEciScalingConfigurationsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "PageSize": 50,
@@ -4848,8 +4875,6 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
         "Memory": 16,
         "Cpu": 2,
 ```
-
-弹性伸缩 ESS
 
 ```json
         "LifecycleState": "Active",
@@ -4879,13 +4904,21 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
         "HostAliases": {
             "Ip": "192.0.XX.XX",
             "Hostnames": "['hehe.com', 'haha.com']"
-        },
+```
+
+`},`
+
+```json
         "AcrRegistryInfos": {
             "InstanceName": "acr-test",
             "InstanceId": "cri-nwj395hgf6f3****",
             "RegionId": "cn-hangzhou-env17-d01",
             "Domains": "*****-****-registry.cn-beijing-env17-d01.cr.aliyuncs.com"
-        },
+```
+
+`},`
+
+```json
         "InitContainers": {
             "WorkingDir": "/usr/local",
             "ImagePullPolicy": "Always",
@@ -4902,21 +4935,27 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
                 "SubPath": "/usr/sub/",
                 "MountPropagation": "None",
                 "Name": "test-empty"
-            },
+```
+
+`},`
+
+```json
             "InitContainerEnvironmentVars": {
                 "Value": "/usr/local/bin",
                 "Key": "PATH"
-}
 ```
 
-弹性伸缩 ESS
+`}` `},`
 
 ```json
-            },
             "SecurityContextCapabilityAdds": "NET_ADMIN",
             "InitContainerCommands": "sleep",
             "InitContainerArgs": 10
-        },
+```
+
+`},`
+
+```json
         "Volumes": {
             "NFSVolumePath": "/share",
             "Type": "EmptyDirVolume",
@@ -4937,17 +4976,28 @@ d01.nas.aliyuncs.com",
                 "Path": "/usr/bin/",
                 "Content": "bGl1bWk=",
                 "Mode": 644
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "SecurityContextSysCtls": {
             "Value": 65536,
             "Name": "kernel.msgmax"
-        },
+```
+
+`},`
+
+```json
         "ImageRegistryCredentials": {
             "UserName": "yourusername",
             "Server": "registry-vpc.cn-shanghai-env17-d01.aliyuncs.com",
             "Password": "yourpaasword"
-        },
+```
+
+`},`
+
+```json
         "Containers": {
             "Memory": 2,
             "ReadinessProbeTcpSocketPort": 8888,
@@ -4969,8 +5019,6 @@ d01.nas.aliyuncs.com",
 "ReadinessProbePeriodSeconds":1,
 ```
 
-弹性伸缩 ESS
-
 ```json
             ReadinessProbePeriodSeconds: 1,
             "LivenessProbePeriodSeconds": 1,
@@ -4987,46 +5035,70 @@ d01.nas.aliyuncs.com",
             "EnvironmentVars": {
                 "Value": "/usr/bin/",
                 "Key": "PATH"
-            },
+```
+
+`},`
+
+```json
             "Ports": {
                 "Port": 8888,
                 "Protocol": "TCP"
-            },
+```
+
+`},`
+
+```json
             "VolumeMounts": {
                 "MountPath": "/pod/data",
                 "ReadOnly": false,
                 "SubPath": "data2/",
                 "MountPropagation": "None",
                 "Name": "default-volume1"
-            },
+```
+
+`},`
+
+```json
             "Commands": "sleep",
             "LivenessProbeExecCommands": "cat/tmp/healthy",
             "Args": 10,
             "ReadinessProbeExecCommands": "cat/tmp/healthy",
             "SecurityContextCapabilityAdds": "NET_ADMIN"
-        },
+```
+
+`},`
+
+```json
         "DnsConfigOptions": {
             "Value": "value",
             "Name": "name"
-        },
+```
+
+`},`
+
+```json
         "Tags": {
             "Value": 3,
             "Key": "version"
-        },
+```
+
+`},`
+
+```json
         "DnsConfigNameServers": "172.10.*.**",
         "DnsConfigSearches": "svc.local.kubenetes",
         "NtpServers": "ntp.cloud.aliyuncs.com"
-    }
-}
 ```
 
-#### ModifyEciScalingConfiguration
+`}` `}`
+
+#### 6.8.7 ModifyEciScalingConfiguration
 
 调用ModifyEciScalingConfiguration修改一个ECI类型的伸缩配置。
 
 **接口说明**
 
-如果修改伸缩配置的名称，请注意同一伸缩组下不能存在名称相同的伸缩配置。 弹性伸缩 ESS
+如果修改伸缩配置的名称，请注意同一伸缩组下不能存在名称相同的伸缩配置。
 
 **请求参数**
 
@@ -5040,8 +5112,6 @@ d01.nas.aliyuncs.com",
 | RestartPolicy | String | 否 | Always | 实例重启策略。取值范围： Always：总是重启。 Never：从不重启。 OnFailure：失败时重启。 默认值：Always。 |
 | Cpu | Float | 否 | 1.0 | 实例级别vCPU大小。单位：核。 |
 | Memory | Float | 否 | 2.0 | 实例级别内存大小。单位：GiB。 |
-
-弹性伸缩 ESS
 
 | DnsPolicy | String | 否 | Default | DNS策略。取值范围： None：使用DnsConfig字段设置的 DNS。 Default：继承运行环境的DNS设置。 |
 |---|---|---|---|---|
@@ -5059,8 +5129,6 @@ d01.nas.aliyuncs.com",
 | CpuOptionsCore | Integer | 否 | 2 | CPU物理核心数。仅部分规格支持自定义设置。更多信息，请参见弹性容器实例中的自定义CPU选项章节。 |
 | CpuOptionsThre adsPerCore | Integer | 否 | 2 | 每核线程数。仅部分规格支持自定义设置。配置为1时表示关闭超线程。更多信息，请参见弹性容器实例中的自定义CPU 选项章节。 |
 
-弹性伸缩 ESS
-
 | EphemeralStora ge | Integer | 否 | 20 | 临时存储空间大小。单位：GiB。 |
 |---|---|---|---|---|
 | LoadBalancerWe ight | Integer | 否 | 50 | ECI实例作为负载均衡后端服务器时的权重，取值范围：1~100。 默认值：50。 |
@@ -5074,11 +5142,9 @@ d01.nas.aliyuncs.com",
 | Container.N.Sec urityContext.Cap ability.Add.N | RepeatL ist | 否 | NET ADMIN _ | 为容器内的进程授予某些特定的权限。目前仅支持配置为 NET ADMIN 和 NET RAW 。 _ _ 说明 NET RAW 默认不支 _ 持，需提交工单申请。 |
 | Container.N.Rea dinessProbe.Tcp Socket.Port | Integer | 否 | 8000 | 使用TCP Socket方式进行健康检查时，TCP Socket检测的端口。 |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
-
-弹性伸缩 ESS
+| https:// |   |
 
 | Container.N.Rea dinessProbe.Htt pGet.Scheme | String | 否 | HTTP | 使用HTTP请求方式进行健康检查时，HTTP Get请求对应的协议类型，取值范围： HTTP。 HTTPS。 |
 |---|---|---|---|---|
@@ -5094,11 +5160,9 @@ d01.nas.aliyuncs.com",
 | Container.N.Live nessProbe.HttpG et.Scheme | String | 否 | HTTP | 使用HTTP请求方式进行健康检查时，HTTP Get请求对应的协议类型，取值范围： HTTP。 HTTPS。 |
 | Container.N.Rea dinessProbe.Htt pGet.Port | Integer | 否 | 8080 | 使用HTTP请求方式进行健康检查时，HTTP Get请求检测的端口号。 |
 
-|  | /bin/bash |
+|   | /bin/bash |
 |---|---|
-| true |  |
-
-弹性伸缩 ESS
+| true |   |
 
 | Container.N.Arg. N | RepeatL ist | 否 | 100 | 容器启动命令对应的参数。最多10个。 |
 |---|---|---|---|---|
@@ -5112,8 +5176,6 @@ d01.nas.aliyuncs.com",
 | Container.N.Volu meMount.N.Mou ntPropagation | String | 否 | None | 数据卷的挂载传播设置。挂载传播允许将 Container挂载的卷共享到同一Pod中的其他Container，甚至可以共享到同一节点上的其他Pod。取值范围： None：该卷不感知任何后续在此卷或其子目录上执行的挂载操作。 HostToCotainer：该卷将会感知到后续在此卷或其子目录上的挂载操作。 Bidirectional：和HostToCotainer类似，能感知挂载操作。另外，该卷将被传播回主机和使用同一卷的所有Pod的所有容器。 默认值：None。 |
 | Container.N.Volu meMount.N.Mou ntPath | String | 否 | /pod/data | 容器挂载数据卷的目录。 重要容器挂载目录下的内容会被Volume的内容直接覆盖，请您谨慎使用。 |
 
-弹性伸缩 ESS
-
 | Container.N.Volu meMount.N.Rea dOnly | Boolean | 否 | false | 数据卷是否只读。 默认值：false。 |
 |---|---|---|---|---|
 | Container.N.Volu meMount.N.Nam e | String | 否 | default-volume1 | 数据卷名称。同Volume中的Name。 |
@@ -5126,8 +5188,6 @@ d01.nas.aliyuncs.com",
 | Container.N.Cpu | Float | 否 | 0.25 | 容器的vCPU大小。单位：核。 |
 | Container.N.Live nessProbe.HttpG et.Port | Integer | 否 | 8888 | 使用HTTP请求方式进行健康检查时，HTTP Get请求检测的端口号。 |
 | Container.N.Live nessProbe.HttpG et.Path | String | 否 | /healthyz | 使用HTTP请求方式进行健康检查时，HTTP Get请求检测的路径。 |
-
-弹性伸缩 ESS
 
 | Container.N.Live nessProbe.Succe ssThreshold | Integer | 否 | 1 | 从上次检查失败后重新认定检查成功的检查次数阈值（必须是连续成功），当前值仅支持设置为1。 默认值：1。 |
 |---|---|---|---|---|
@@ -5143,8 +5203,6 @@ d01.nas.aliyuncs.com",
 | Volume.N.FlexVo lume.FsType | String | 否 | ext4 | 挂载的文件系统类型，默认取决于 FlexVolume的script。 |
 | Volume.N.DiskV olume.FsType | String | 否 | xfs | DiskVolume的系统类型。 |
 
-弹性伸缩 ESS
-
 | Volume.N.HostP athVolume.Type | String | 否 | Directory | HostPath Volume的类型。取值范围： Directory：目录。 File：文件。 |
 |---|---|---|---|---|
 | Volume.N.NFSVo lume.ReadOnly | Boolean | 否 | false | NFS数据卷是否只读。 默认值：false。 |
@@ -5157,8 +5215,6 @@ d01.nas.aliyuncs.com",
 | Volume.N.Name | String | 否 | default-volume1 | 数据卷名称。 |
 | Volume.N.Empty DirVolume.Medi um | String | 否 | memory | EmptyDirVolume的存储媒介，默认为空，使用node文件系统；如果设置为 memory时，则表示使用内存。 |
 
-弹性伸缩 ESS
-
 | Volume.N.Config FileVolumeConfi gFileToPath.N.Pa th | String | 否 | /usr/bin/ | 相对文件路径。 |
 |---|---|---|---|---|
 | Volume.N.Config FileVolumeConfi gFileToPath.N.M ode | Integer | 否 | 0644 | ConfigFileVolume目录权限。 |
@@ -5169,8 +5225,6 @@ d01.nas.aliyuncs.com",
 | InitContainer.N.I mage | String | 否 | nginx | 容器使用的镜像。 |
 | InitContainer.N.I nitContainerVolu meMount.N.Mou ntPath | String | 否 | /usr/share/ | 挂载目录。 重要容器挂载目录下的内容会被Volume的内容直接覆盖，请您谨慎使用。 |
 | InitContainer.N.I nitContainerVolu meMount.N.Mou ntPropagation | String | 否 | None | 数据卷的挂载传播设置。挂载传播允许将 Container挂载的卷共享到同一Pod中的其他Container，甚至可以共享到同一节点上的其他Pod。取值范围： None：该卷不感知任何后续在此卷或其子目录上执行的挂载操作。 HostToCotainer：该卷将会感知到后续在此卷或其子目录上的挂载操作。 Bidirectional：和HostToCotainer类似，能感知挂载操作。另外，该卷将被传播回主机和使用同一卷的所有Pod的所有容器。 默认值：None。 |
-
-弹性伸缩 ESS
 
 | InitContainer.N.I nitContainerVolu meMount.N.Rea dOnly | Boolean | 否 | false | 挂载路径是否只读。 默认值：false。 |
 |---|---|---|---|---|
@@ -5190,7 +5244,7 @@ d01.nas.aliyuncs.com",
 | DnsConfigOption .N.Value | String | 否 | value | 对象变量值。 |
 | InitContainer.N.S ecurityContext.R unAsUser | Long | 否 | 587 | 设置运行容器的用户ID。 |
 
-| 开发指南·API参考 |  |  |  | 弹性伸缩 ES |
+| 开发指南·API参考 |   |   |   | 弹性伸缩 ES |
 |---|---|---|---|---|
 
 | HostAliase.N.Ip | String | 否 | 192.0.XX.XX | 添加IP地址。 |
@@ -5204,8 +5258,6 @@ d01.nas.aliyuncs.com",
 | AcrRegistryInfo. N.RegionId | String | 否 | cn-hangzhou- env17-d01 | ACR企业版实例所属地域。 |
 | AcrRegistryInfo. N.InstanceId | String | 否 | cri- nwj395hgf6f3*** * | ACR企业版实例ID。 |
 | CostOptimizatio n | Boolean | 否 | false | 是否开启成本优化开关。取值范围： true：开启。 false：未开启。 默认值：false。 |
-
-弹性伸缩 ESS
 
 | InstanceFamilyL evel | String | 否 | EnterpriseLevel | 实例规格族级别，用于筛选符合要求的实例规格范围，当CostOptimization开启时生效。取值范围： EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。适用于平时CPU使用率低的业务场景。更多信息，请参见云服务器ECS中的共享型。 EnterpriseLevel：企业级。性能稳定且资源独享，适用于对稳定性要求高的业务场景。更多信息，请参见云服务器 ECS中的实例规格族。 CreditEntryLevel：积分入门级，即突发性能实例。通过CPU积分来保证计算性能，适用于平时CPU使用率低、偶有突发CPU使用率的业务场景。更多信息，请参见云服务器ECS中的突发性能实例概述。 |
 |---|---|---|---|---|
@@ -5224,25 +5276,25 @@ d01.nas.aliyuncs.com",
 http(s)://ess.example.com/?Action=ModifyEciScalingConfiguration &ScalingConfigurationId=asc-bp16har3jpj6fjbx**** &ScalingConfigurationName=test-modify &SecurityGroupId=sg-uf66jeqopgqa9hdn**** &ContainerGroupName=nginx-test &RestartPolicy=Always &Cpu=1.0 &Memory=2.0 &DnsPolicy=Default &ImageSnapshotId=imc-2zebxkiifuyzzlhl**** &RamRoleName=RamTestRole &TerminationGracePeriodSeconds=60 &AutoMatchImageCache=false &Ipv6AddressCount=1 &ActiveDeadlineSeconds=1000 &AutoCreateEip=true &EipBandwidth=5 &HostName=test &IngressBandwidth=1024000 &EgressBandwidth=1024000 &CpuOptionsCore=2 &CpuOptionsThreadsPerCore=2 &EphemeralStorage=20 &LoadBalancerWeight=50 &Tag=[{"Key":"version","Value":"3"}]
 ```
 
-弹性伸缩 ESS
-
 ```json
 &ImageRegistryCredential=[{"Password":"yourpaasword","Server":"registry-vpc.cn-shanghai -env17-d01.aliyuncs.com","UserName":"yourusername"}] &Container= [{"ReadinessProbe.TimeoutSeconds":1,"ReadinessProbe.SuccessThreshold":1,"SecurityContext. pability.Add": ["NET_ADMIN"],"ReadinessProbe.TcpSocket.Port":8000,"ReadinessProbe.HttpGet.Scheme":"HTTP" LivenessProbe.PeriodSeconds":5,"Port": [{"Protocol":"TCP","Port":80}],"SecurityContext.ReadOnlyRootFilesystem":true,"Environment r": [{"Key":"PATH","Value":"/usr/local/bin"}],"LivenessProbe.TcpSocket.Port":8000,"Tty":false WorkingDir":"/usr/local/","LivenessProbe.HttpGet.Scheme":"HTTP","ReadinessProbe.HttpGet.P t":8080,"Arg": ["100"],"Gpu":1,"ReadinessProbe.InitialDelaySeconds":3,"Stdin":false,"Memory":0.5,"Name": ginx","Image":"registry-vpc.cn-hangzhou-env17d01.aliyuncs.com/eci_open/nginx:latest","LivenessProbe.InitialDelaySeconds":5,"VolumeMoun :[{"MountPropagation":"None","MountPath":"/pod/data","ReadOnly":false,"Name":"default-v olume1","SubPath":"data2/"}],"LivenessProbe.FailureThreshold":3,"ReadinessProbe.Exec.Comm d": ["cat/tmp/healthy"],"ReadinessProbe.FailureThreshold":3,"ImagePullPolicy":"Always","Stdin ce":false,"Cpu":0.25,"LivenessProbe.HttpGet.Port":8888,"LivenessProbe.HttpGet.Path":"/hea hyz","LivenessProbe.SuccessThreshold":1,"ReadinessProbe.PeriodSeconds":3,"LivenessProbe.T eoutSeconds":1,"Command": ["sleep"],"SecurityContext.RunAsUser":1000,"ReadinessProbe.HttpGet.Path":"/healthz","Live ssProbe.Exec.Command":["cat /tmp/healthy"]}] &Volume= [{"Type":"EmptyDirVolume","DiskVolume.DiskSize":15,"NFSVolume.Path":"/share","FlexVolume. Type":"ext4","DiskVolume.FsType":"xfs","HostPathVolume.Type":"Directory","NFSVolume.ReadO y":false,"HostPathVolume.Path":"/xx/xx/name","FlexVolume.Options":"{\"volumeId\":\"d-2z ehdahrwoa7srg****\",\"performanceLevel\": \"PL2\"}","FlexVolume.Driver":"flexvolume","ConfigFileVolumeDefaultMode":644,"NFSVolume.S ver":"3f9cd4a596-naw76.cn-shanghai-env17-d01.nas.aliyuncs.com","DiskVolume.DiskId":"d-x x","Name":"defaultvolume1","EmptyDirVolume.Medium":"memory","ConfigFileVolumeConfigFileToPath":[{"Path":" /usr/bin/","Mode":644,"Content":"bGl1bWk="}]}] &InitContainer=[{"InitContainerEnvironmentVar": [{"Key":"Path","Value":"/usr/bin/"}],"SecurityContext.Capability.Add": ["NET_ADMIN"],"Image":"nginx","InitContainerVolumeMount": [{"MountPropagation":"None","MountPath":"/usr/share/","ReadOnly":false,"Name":"test-emp ty","SubPath":"/usr/sub/"}],"ImagePullPolicy":"Always","Cpu":0.5,"WorkingDir":"/usr/local "Command":["sleep"],"Arg": ["10"],"SecurityContext.RunAsUser":587,"Gpu":1,"Memory":1.0,"Name":"test-init"}] &DnsConfigNameServer=["172.10.*.**"] &DnsConfigSearch=["svc.local.kubenetes"] &DnsConfigOption=[{"Value":"value","Name":"name"}] &HostAliase=[{"Ip":"192.0.XX.XX","Hostname":["['hehe.com', 'haha.com']"]}] &SecurityContextSysctl=[{"Value":"65536","Name":"kernel.msgmax"}] &NtpServer=["ntp.cloud.aliyuncs.com"] &AcrRegistryInfo=[{"Domain":["*****-****-registry.cn-beijing-env17d01.cr.aliyuncs.com"],"InstanceName":"acr-test","InstanceId":"crinwj395hgf6f3****","RegionId":"cn-hangzhou-env17-d01"}] &CostOptimization=false &InstanceFamilyLevel=EnterpriseLevel
 ```
 
-`&<`公共请求参数> 弹性伸缩 ESS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyEciScalingConfigurationResponse>
       <RequestId>89945DD3-9072-47D0-A318-353284CF****</RequestId>
+</ModifyEciScalingConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "89945DD3-9072-47D0-A318-353284CF****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5257,8 +5309,6 @@ http(s)://ess.example.com/?Action=ModifyEciScalingConfiguration &ScalingConfigur
 | 400 | InvalidParamter | The specified value of parameter is not valid. | 指定的参数值无效。 |
 | 400 | InvalidScalingConfigur ationName.Duplicate | The specified value of parameter is duplicated. | 伸缩配置名已存在。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidSecurityGroupId .IncorrectNetworkType | The network type of specified Security Group does not support this action. | 指定的安全组与伸缩组指定网络类型不一致。 |
 |---|---|---|---|
 | 400 | InvalidSecurityGroupId .VPCMismatch | The specified security group and the specified virtual switch are not in the same VPC. | 指定的安全组和虚拟交换机不属于同一个虚拟专有网络。 |
@@ -5267,7 +5317,7 @@ http(s)://ess.example.com/?Action=ModifyEciScalingConfiguration &ScalingConfigur
 | 400 | InvalidUserData.Base6 4FormatInvalid | The specified parameter UserData must be base64 encoded. | UserData不符合Base64 编码规范。 |
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | 指定的UserData过长。 |
 
-#### DeleteEciScalingConfiguration
+#### 6.8.8 DeleteEciScalingConfiguration
 
 调用DeleteEciScalingConfiguration删除一个ECI类型的伸缩配置。
 
@@ -5283,8 +5333,6 @@ http(s)://ess.example.com/?Action=ModifyEciScalingConfiguration &ScalingConfigur
 | ScalingConfigura tionId | String | 是 | asc- bp1bx8mzur534 edp**** | 待删除伸缩配置的ID。 |
 | RegionId | String | 否 | cn-qingdao- env17-d01 | 伸缩组所属的地域ID。 |
 
-弹性伸缩 ESS
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
@@ -5299,27 +5347,31 @@ http(s)://ess.example.com/?Action=ModifyEciScalingConfiguration &ScalingConfigur
 http(s)://ess.example.com/?Action=DeleteEciScalingConfiguration &ScalingConfigurationId=asc-bp1bx8mzur534edp**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteEciScalingConfigurationResponse>
       <RequestId>45D5B0AD-3B00-4A9B-9911-6D5303B0****</RequestId>
+</DeleteEciScalingConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "45D5B0AD-3B00-4A9B-9911-6D5303B0****"
-}
 ```
 
-### 伸缩规则
+`}`
 
-#### CreateScalingRule
+### 6.9 伸缩规则
+
+#### 6.9.1 CreateScalingRule
+
+调用CreateScalingRule创建一条伸缩规则。
 
 **接口说明**
 
-伸缩规则定义了具体的扩张或收缩操作，例如加入或移出N台实例。 如果执行伸缩规则会造成伸缩组的ECS实例数低于MinSize或高于MaxSize，则弹性伸缩会自动调整需要加入或移出的ECS实例数，使得伸缩组的ECS实例数调整到MinSize或MaxSize，但伸缩规则的设定值不会变化。 例如，某个伸缩组，MaxSize=3，当前实例数Total Capacity=2，伸缩规则指定加3台ECS实例，则在实际执行过程中只会加1台ECS实例，但伸缩规则的设定值仍然为3。 例如，某个伸缩组，MinSize=2，当前实例数Total Capacity=3，伸缩规则指定减去5台ECS实例，则在实际执行过程中只会减1台ECS实例，但伸缩规则的设定值仍然为5。 根据传入参数创建伸缩规则： 当AdjustmentType是TotalCapacity时，表示将当前伸缩组的ECS实例数量调整到指定数量，对应的 AdjustmentValue值必须大于等于0。 当AdjustmentType是QuantityChangeInCapacity或PercentChangeInCapacity，对应的 AdjustmentValue值为正数表示增加实例、为负数表示减少实例。 弹性伸缩 ESS 当AdjustmentType是PercentChangeInCapacity，弹性伸缩服务以伸缩组当前实例数（Total Capacity）×AdjusmentValue/100，并使用四舍五入原则来确认增加或减少的ECS实例个数。 当伸缩规则指定了冷却时间（Cooldown），则执行该伸缩规则的伸缩活动完成后，会以伸缩规则中指定的冷却时间对伸缩组进行冷却处理，如果伸缩规则未指定冷却时间，则以伸缩组指定的冷却时间 （DefaultCooldown）为准。 一个伸缩组内最多只能创建50条伸缩规则。 返回的伸缩规则唯一标识符（ScalingRuleAri），主要可以被以下接口所使用： 在执行伸缩规则（ExecuteScalingRule）的ScalingRuleAri参数中指定，您可以手动执行该伸缩规则。 在创建定时任务（CreateScheduledTask）的ScheduledAction参数中指定，您可以定时执行该伸缩规则。
+伸缩规则定义了具体的扩张或收缩操作，例如加入或移出N台实例。 如果执行伸缩规则会造成伸缩组的ECS实例数低于MinSize或高于MaxSize，则弹性伸缩会自动调整需要加入或移出的ECS实例数，使得伸缩组的ECS实例数调整到MinSize或MaxSize，但伸缩规则的设定值不会变化。 例如，某个伸缩组，MaxSize=3，当前实例数Total Capacity=2，伸缩规则指定加3台ECS实例，则在实际执行过程中只会加1台ECS实例，但伸缩规则的设定值仍然为3。 例如，某个伸缩组，MinSize=2，当前实例数Total Capacity=3，伸缩规则指定减去5台ECS实例，则在实际执行过程中只会减1台ECS实例，但伸缩规则的设定值仍然为5。 根据传入参数创建伸缩规则： 当AdjustmentType是TotalCapacity时，表示将当前伸缩组的ECS实例数量调整到指定数量，对应的 AdjustmentValue值必须大于等于0。 当AdjustmentType是QuantityChangeInCapacity或PercentChangeInCapacity，对应的 AdjustmentValue值为正数表示增加实例、为负数表示减少实例。 当AdjustmentType是PercentChangeInCapacity，弹性伸缩服务以伸缩组当前实例数（Total Capacity）×AdjusmentValue/100，并使用四舍五入原则来确认增加或减少的ECS实例个数。 当伸缩规则指定了冷却时间（Cooldown），则执行该伸缩规则的伸缩活动完成后，会以伸缩规则中指定的冷却时间对伸缩组进行冷却处理，如果伸缩规则未指定冷却时间，则以伸缩组指定的冷却时间 （DefaultCooldown）为准。 一个伸缩组内最多只能创建50条伸缩规则。 返回的伸缩规则唯一标识符（ScalingRuleAri），主要可以被以下接口所使用： 在执行伸缩规则（ExecuteScalingRule）的ScalingRuleAri参数中指定，您可以手动执行该伸缩规则。 在创建定时任务（CreateScheduledTask）的ScheduledAction参数中指定，您可以定时执行该伸缩规则。
 
 **请求参数**
 
@@ -5332,14 +5384,10 @@ http(s)://ess.example.com/?Action=DeleteEciScalingConfiguration &ScalingConfigur
 | MinAdjustmentM agnitude | Integer | 否 | 1 | 伸缩规则最小调整实例数，仅当伸缩规则类型为SimpleScalingRule或 StepScalingRule，且AdjustmentType 为PercentChangeInCapacity时生效。 |
 | AdjustmentType | String | 否 | QuantityChangeI nCapacity | 伸缩规则的调整方式，仅适用于简单伸缩规则，且该项必选。取值范围： QuantityChangeInCapacity：增加或减少指定数量的ECS实例。 PercentChangeInCapacity：增加或减少指定比例的ECS实例。 TotalCapacity：将当前伸缩组的ECS 实例数量调整到指定数量。 |
 
-弹性伸缩 ESS
-
 | AdjustmentValu e | Integer | 否 | 100 | 伸缩规则的调整值，仅适用于简单伸缩规则，且该项必选。任何情况下，单次调整的ECS实例台数都不能超过500。不同调整方式对应的取值范围： QuantityChangeInCapacity：- 500~500。 PercentChangeInCapacity：- 100~10000。 TotalCapacity：0~1000。 |
 |---|---|---|---|---|
 | ScalingRuleType | String | 否 | SimpleScalingRu le | 伸缩规则类型，取值范围： SimpleScalingRule：简单伸缩规则。 根据调整方式（AdjustmentType）和调整值（AdjustmentValue）调整ECS 实例数量。 TargetTrackingScalingRule：目标追踪伸缩规则。根据预定义监控 （MetricName）项动态计算需要扩缩容的ECS实例数量，尽量将预定义监控项的指标值维持在目标值 （TargetValue）附近。 StepScalingRule：步进伸缩规则，根据阈值和指标值提供分步扩展方式。 PredictiveScalingRule：预测伸缩规则，基于机器学习能力分析伸缩组的历史监控数据预测未来监控指标值，并支持自动创建定时任务设置伸缩组边界。 默认值：SimpleScalingRule。 |
 | EstimatedInstan ceWarmup | Integer | 否 | 300 | ECS实例预热时间，适用于目标追踪伸缩规则和步进伸缩规则。处于预热状态的 ECS实例将正常的加入伸缩组，但期间不会向云监控上报监控数据。 说明动态计算需要扩缩容的 ECS实例数量时，处于预热状态的 ECS实例不计入现有实例数量。 取值范围：0~86400，单位：秒。 默认值：300。 |
-
-弹性伸缩 ESS
 
 | MetricName | String | 否 | CpuUtilization | 预定义监控项，适用于目标追踪伸缩规则和预测规则，且此时该项必选。 目标追踪伸缩规则取值范围： CpuUtilization：平均CPU使用率。 ClassicInternetRx：经典网络公网入流量平均值。 ClassicInternetTx：经典网络公网出流量平均值。 VpcInternetRx：VPC网络公网入流量平均值。 VpcInternetTx：VPC网络公网出流量平均值。 IntranetRx：内网入流量平均值。 IntranetTx：内网出流量平均值。 预测规则取值范围： CpuUtilization：平均CPU使用率。 IntranetRx：内网入流量平均值。 IntranetTx：内网出流量平均值。 |
 |---|---|---|---|---|
@@ -5349,8 +5397,6 @@ http(s)://ess.example.com/?Action=DeleteEciScalingConfiguration &ScalingConfigur
 | ScaleOutEvaluati onCount | Integer | 否 | 3 | 创建目标追踪规则后，会自动创建报警任务。本参数用于指定对应的扩容报警任务触发报警时，所需连续满足阈值条件的次数。 默认值：3。 |
 | StepAdjustment. N.MetricInterval LowerBound | Float | 否 | 1.0 | 分步步骤的下边界，仅适用于步进规则， 取值范围：- 9.999999E18~9.999999E18。 |
 | StepAdjustment. N.MetricInterval UpperBound | Float | 否 | 5.0 | 分步步骤的上边界，仅适用于步进规则， 取值范围：- 9.999999E18~9.999999E18。 |
-
-弹性伸缩 ESS
 
 | StepAdjustment. N.ScalingAdjust ment | Integer | 否 | 1 | 分步步骤对应的实例扩展数量，仅适用于步进规则。 |
 |---|---|---|---|---|
@@ -5365,8 +5411,6 @@ http(s)://ess.example.com/?Action=DeleteEciScalingConfiguration &ScalingConfigur
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | 请求ID。 |
 |---|---|---|---|
 | ScalingRuleAri | String | ari:acs:ess:cn- hangzhou-env17- d01:14069264740 6****:scalingrule/a sr- bp1dvirgwkoowxk7 **** | 伸缩规则的唯一标识符。 |
@@ -5380,32 +5424,33 @@ http(s)://ess.example.com/?Action=DeleteEciScalingConfiguration &ScalingConfigur
 http://ess.example.com/?Action=CreateScalingRule &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &AdjustmentType=QuantityChangeInCapacity &AdjustmentValue=-10
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateScalingRuleResponse>
       <ScalingRuleAri>ari:acs:ess:cn-hangzhou-env17-
 d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****</ScalingRuleAri>
       <ScalingRuleId>asr-bp1dvirgwkoowxk7****</ScalingRuleId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</CreateScalingRuleResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "ScalingRuleId": "asr-bp1dvirgwkoowxk7****",
     "ScalingRuleAri": "ari:acs:ess:cn-hangzhou-env17-
-d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
+d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****"
 ```
+
+`}`
 
 **错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组在该账号下不存在。 |
-
-弹性伸缩 ESS
 
 | 400 | InvalidScalingRuleNam e.Duplicate | The specified value of parameter <parameter name> is duplicated. | 伸缩规则名字已存在。 |
 |---|---|---|---|
@@ -5418,8 +5463,6 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
 | 400 | InvalidStepAdjustment s.NoNullLowerBound | There must be a StepAdjustment with an unspecified lower bound when one StepAdjustment has a negative lower bound. | 当存在一个分步下界为负数时，则必须有一个未指定分步下界的分步步骤。 |
 | 400 | InvalidStepAdjustment s.NoNullUpperBound | There must be a StepAdjustment with an unspecified upper bound when one StepAdjustment has a positive upper bound. | 当存在一个正数的分步上界时，则必有一个未指定分步上界的分步步骤。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidStepAdjustment s.Gap | StepAdjustment intervals can not have gaps between them. | 分步步骤之间不能有间隔。 |
 |---|---|---|---|
 | 400 | InvalidStepAdjustment s.Overlap | StepAdjustment intervals can not overlap. | 分步步骤之间不能重叠。 |
@@ -5428,7 +5471,9 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
 | 400 | InvalidStepAdjustment s.MaxNum | Your scaling rule can have at most %s StepAdjustments. | 同一伸缩组中分步步骤数量超过阈值。 |
 | 400 | StepBeyondPermitRan ge | Specific parameter "%s" beyond permit range. | 分步步骤的上界或下界超过了可选范围。 |
 
-#### ModifyScalingRule
+#### 6.9.2 ModifyScalingRule
+
+调用ModifyScalingRule修改一条伸缩规则。
 
 **请求参数**
 
@@ -5439,15 +5484,11 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
 | ScalingRuleNam e | String | 否 | scalingrule**** | 伸缩规则的显示名称，2~64个英文或中文字符，以数字、大小字母或中文开头，可包含数字、下划线（ ）、短划线（-）或 _ 半角句号（.）。同一账号同一地域同一伸缩组内唯一。 |
 | Cooldown | Integer | 否 | 60 | 伸缩规则的冷却时间，仅适用于简单伸缩规则。 取值范围：0~86400，单位：秒。 |
 
-弹性伸缩 ESS
-
 | MinAdjustmentM agnitude | Integer | 否 | 1 | 伸缩规则最小调整实例数，仅当伸缩规则类型为SimpleScalingRule或 StepScalingRule，且AdjustmentType 为PercentChangeInCapacity时生效。 |
 |---|---|---|---|---|
 | AdjustmentType | String | 否 | QuantityChangeI nCapacity | 伸缩规则的调整方式，仅适用于简单伸缩规则。取值范围： QuantityChangeInCapacity：增加或减少指定数量的ECS实例。 PercentChangeInCapacity：增加或减少指定比例的ECS实例。 TotalCapacity：将当前伸缩组的ECS 实例数量调整到指定数量。 |
 | AdjustmentValu e | Integer | 否 | 100 | 伸缩规则的调整值，仅适用于简单伸缩规则。任何情况下，单次调整的ECS实例台数都不能超过500。不同调整方式对应的取值范围： QuantityChangeInCapacity：- 500~500。 PercentChangeInCapacity：- 100~10000。 TotalCapacity：0~1000。 |
 | EstimatedInstan ceWarmup | Integer | 否 | 60 | ECS实例预热时间，适用于目标追踪伸缩规则和步进伸缩规则。处于预热状态的 ECS实例将正常的加入伸缩组，但期间不会向云监控上报监控数据。 说明动态计算需要扩缩容的 ECS实例数量时，处于预热状态的 ECS实例不计入现有实例数量。 取值范围：0~86400，单位：秒。 |
-
-弹性伸缩 ESS
 
 | MetricName | String | 否 | CpuUtilization | 预定义监控项，适用于目标追踪伸缩规则和预测规则，且此时该项必选。 目标追踪伸缩规则取值范围： CpuUtilization：平均CPU使用率。 ClassicInternetRx：经典网络公网入流量平均值。 ClassicInternetTx：经典网络公网出流量平均值。 VpcInternetRx：VPC网络公网入流量平均值。 VpcInternetTx：VPC网络公网出流量平均值。 IntranetRx：内网入流量平均值。 IntranetTx：内网出流量平均值。 预测规则取值范围： CpuUtilization：平均CPU使用率。 IntranetRx：内网入流量平均值。 IntranetTx：内网出流量平均值。 |
 |---|---|---|---|---|
@@ -5458,8 +5499,6 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
 | StepAdjustment. N.MetricInterval LowerBound | Float | 否 | 1.0 | 分步步骤的下边界，仅适用于步进规则。 取值范围：- 9.999999E18~9.999999E18。 |
 | StepAdjustment. N.MetricInterval UpperBound | Float | 否 | 5.0 | 分步步骤的上边界，仅适用于步进规则。 取值范围：- 9.999999E18~9.999999E18。 |
 | StepAdjustment. N.ScalingAdjust ment | Integer | 否 | 1 | 分步步骤对应的实例扩展数量，仅适用于步进规则。 |
-
-弹性伸缩 ESS
 
 | PredictiveScalin gMode | String | 否 | PredictAndScale | 预测规则的模式。取值范围： PredictAndScale：产生预测结果并创建预测任务。 PredictOnly：产生预测结果，但不会创建预测任务。 |
 |---|---|---|---|---|
@@ -5482,19 +5521,21 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
 http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAjweN****
 ```
 
-`&<`公共请求参数> 正常返回示例弹性伸缩 ESS `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyScalingRuleResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</ModifyScalingRuleResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5508,8 +5549,6 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | 400 | InvalidMinAdjustment MagnitudeMismatchAd justmentType | MinAdjustmentMagnitu de is not supported by the specified adjustment type. | MinAdjustmentMagnitu de不支持当前伸缩规则调整类型。 |
 | 400 | InvalidStepAdjustment s.MultipleNullUpperBo und | At most one StepAdjustment may have an unspecified upper bound. | 最多只能有一个分步步骤不指定分步上界。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidStepAdjustment s.MultipleNullLowerBo und | At most one StepAdjustment may have an unspecified lower bound. | 最多只能有一个分步步骤不指定分步下界。 |
 |---|---|---|---|
 | 400 | InvalidStepAdjustment s.NoNullLowerBound | There must be a StepAdjustment with an unspecified lower bound when one StepAdjustment has a negative lower bound. | 当存在一个分步下界为负数时，则必须有一个未指定分步下界的分步步骤。 |
@@ -5521,13 +5560,13 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | 400 | InvalidStepAdjustment s.MaxNum | Your scaling rule can have at most %s StepAdjustments. | 同一伸缩组中分步步骤数量超过阈值。 |
 | 400 | StepBeyondPermitRan ge | Specific parameter "%s" beyond permit range. | 分步步骤的上界或下界超过了可选范围。 |
 
-#### DescribeScalingRules
+#### 6.9.3 DescribeScalingRules
 
 调用DescribeScalingRules查询伸缩组下的伸缩规则，并列出伸缩规则的信息。
 
 **接口说明**
 
-弹性伸缩 ESS 您可以通过指定伸缩组ID来查询该伸缩组下的所有伸缩规则，查询时可以输入伸缩规则ID、伸缩规则名称、 伸缩规则唯一标识符、伸缩规则类型进行过滤。
+您可以通过指定伸缩组ID来查询该伸缩组下的所有伸缩规则，查询时可以输入伸缩规则ID、伸缩规则名称、 伸缩规则唯一标识符、伸缩规则类型进行过滤。
 
 **请求参数**
 
@@ -5541,8 +5580,6 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | ScalingRuleType | String | 否 | SimpleScalingRu le | 伸缩规则的类型，取值范围： SimpleScalingRule：简单伸缩规则。 根据调整方式（AdjustmentType）和调整值（AdjustmentValue）调整ECS 实例数量。 TargetTrackingScalingRule：目标追踪伸缩规则。根据预定义监控 （MetricName）项动态计算需要扩缩容的ECS实例数量，尽量将预定义监控项的指标值维持在目标值 （TargetValue）附近。 StepScalingRule：步进伸缩规则，根据阈值和指标值提供分步扩展方式。 PredictiveScalingRule：预测伸缩规则，基于机器学习能力分析伸缩组的历史监控数据预测未来监控指标值，并支持自动创建定时任务设置伸缩组边界。 默认值：SimpleScalingRule。 |
 | ShowAlarmRules | Boolean | 否 | false | 是否返回伸缩规则关联的云监控报警任务，取值范围： true：返回伸缩规则关联的云监控报警任务。 false：不返回伸缩规则关联的云监控报警任务。 默认值：false。 |
 
-弹性伸缩 ESS
-
 | ScalingRuleId.N | RepeatL ist | 否 | asr- bp1dvirgwkoow xk7**** | ScalingRuleId.N为待查询伸缩规则的 ID，N的取值范围：1～10。 |
 |---|---|---|---|---|
 | ScalingRuleNam e.N | RepeatL ist | 否 | scalingrule**** | ScalingRuleName.N为待查询伸缩规则的名称，N的取值范围：1～10。 |
@@ -5555,21 +5592,19 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 50 | 每页行数。 |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | 请求ID。 |
-| ScalingRules | Array of ScalingRule |  | 伸缩规则信息组成的集合。 |
-| ScalingRule |  |  |  |
+| ScalingRules | Array of ScalingRule |   | 伸缩规则信息组成的集合。 |
+| ScalingRule |   |   |   |
 | AdjustmentTy pe | String | QuantityChangeInC apacity | 伸缩规则的调整方式，取值范围： QuantityChangeInCapacity：增加或减少指定数量的ECS实例。 PercentChangeInCapacity：增加或减少指定比例的ECS实例。 TotalCapacity：将当前伸缩组的ECS实例数量调整到指定数量。 |
 | AdjustmentVal ue | Integer | 1 | 伸缩规则的调整值。 |
-| Alarms | Array of Alarm |  | 伸缩规则关联的云监控报警任务。仅在 ShowAlarmRules参数为true时返回伸缩规则关联的云监控报警任务，否则返回空列表。 |
-| Alarm |  |  |  |
-
-弹性伸缩 ESS
+| Alarms | Array of Alarm |   | 伸缩规则关联的云监控报警任务。仅在 ShowAlarmRules参数为true时返回伸缩规则关联的云监控报警任务，否则返回空列表。 |
+| Alarm |   |   |   |
 
 | AlarmTaskId | String | asg- bp18p2yfxow2dloq **** 1f9458d1- _ 70e1-4bee-8c7f- 7a47695b**** | 伸缩规则关联的报警任务的ID。 |
 |---|---|---|---|
 | AlarmTaskNa me | String | event-notified**** | 伸缩规则关联的报警任务的名称。 |
 | ComparisonOp erator | String | >= | 伸缩规则关联的报警任务使用的监控项统计值与阈值的比较符，用于指定监控项统计值与阈值在什么关系下满足条件。取值范围： 监控项统计值大于等于阈值。取值：>= 监控项统计值小于等于阈值。取值：<= 监控项统计值大于阈值。取值：> 监控项统计值小于阈值。取值：< |
-| Dimensions | Array of Dimension |  | 伸缩规则关联的报警任务的维度信息。 |
-| Dimension |  |  |  |
+| Dimensions | Array of Dimension |   | 伸缩规则关联的报警任务的维度信息。 |
+| Dimension |   |   |   |
 | DimensionKey | String | scaling group _ | 监控项关联的维度信息键值。取值范围： scaling group：伸缩组ID。 _ userId：用户账号ID。 |
 | DimensionValu e | String | asg- bp18p2yfxow2dloq **** | 监控项关联的维度信息属性值。 |
 | EvaluationCou nt | Integer | 3 | 伸缩规则关联的报警任务到达报警状态需要连续满足阈值表达式的次数。 |
@@ -5577,8 +5612,6 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | MetricType | String | system | 伸缩规则关联的报警任务的类型。取值范围： system：系统监控报警任务。 custom：自定义监控报警任务。 |
 | Statistics | String | Average | 伸缩规则关联的报警任务的统计方式。取值范围： Average：统计平均值。 Maximum：统计最大值。 Minimum：统计最小值。 |
 | Threshold | Float | 50 | 伸缩规则关联的报警任务的报警阈值。 |
-
-弹性伸缩 ESS
 
 | Cooldown | Integer | 20 | 伸缩规则的冷却时间，仅适用于简单伸缩规则。 取值范围：0~86400，单位：秒。 |
 |---|---|---|---|
@@ -5591,8 +5624,6 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | MinSize | Integer | 1 | 伸缩组最小实例数。 |
 | PredictiveScali ngMode | String | PredictAndScale | 预测规则的模式。取值范围： PredictAndScale：产生预测结果并创建预测任务。 PredictOnly：产生预测结果，但不会创建预测任务。 |
 
-弹性伸缩 ESS
-
 | PredictiveTask BufferTime | Integer | 30 | 预测规则自动创建的预测任务默认均在整点执行，您可以设置预启动时间提前执行预测任务， 预先准备资源。取值范围：0~60，单位：分钟。 |
 |---|---|---|---|
 | PredictiveValu eBehavior | String | MaxOverridePredic tiveValue | 预测规则最大值处理方式。取值范围： MaxOverridePredictiveValue：初始最大值会覆盖预测值。预测值大于初始最大值时，预测任务的最大值采用初始最大值。 PredictiveValueOverrideMax：预测值会覆盖初始最大值。预测值大于初始最大值时，预测任务的最大值采用预测值。 PredictiveValueOverrideMaxWithBuffer ：预测值会附加一定比例。预测值会按照 PredictiveValueBuffer比例增加，当增加后的值大于初始最大值时，会采用增加后的值。 |
@@ -5604,12 +5635,10 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | ScalingRuleId | String | eMKWG8SRNb9dBL AjweN**** | 伸缩规则的ID。 |
 | ScalingRuleNa me | String | eMKWG8SRNb9dBL AjweN**** | 伸缩规则的名称。 |
 
-弹性伸缩 ESS
-
 | ScalingRuleTy pe | String | SimpleScalingRule | 伸缩规则类型，取值范围： SimpleScalingRule：简单伸缩规则。根据调整方式（AdjustmentType）和调整值 （AdjustmentValue）调整ECS实例数量。 TargetTrackingScalingRule：目标追踪伸缩规则。根据预定义监控（MetricName）项动态计算需要扩缩容的ECS实例数量，尽量将预定义监控项的指标值维持在目标值 （TargetValue）附近。 StepScalingRule：步进伸缩规则，根据阈值和指标值提供分步扩展方式。 PredictiveScalingRule：预测伸缩规则，基于机器学习能力分析伸缩组的历史监控数据预测未来监控指标值，并支持自动创建定时任务设置伸缩组边界。 |
 |---|---|---|---|
-| StepAdjustme nts | Array of StepAdjustme nt |  | 步进规则的分步步骤。 |
-| StepAdjustme nt |  |  |  |
+| StepAdjustme nts | Array of StepAdjustme nt |   | 步进规则的分步步骤。 |
+| StepAdjustme nt |   |   |   |
 | MetricIntervalL owerBound | Float | 1.0 | 分步步骤的下边界，取值范围：- 9.999999E18~9.999999E18。 |
 | MetricInterval UpperBound | Float | 5.0 | 分步步骤的上边界，取值范围：- 9.999999E18~9.999999E18。 |
 | ScalingAdjust ment | Integer | 1 | 分步步骤对应的实例扩展数量。 |
@@ -5624,9 +5653,10 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 http://ess.example.com/?Action=DescribeScalingRules &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScalingRulesResponse>
       <PageNumber>1</PageNumber>
       <PageSize>50</PageSize>
       <ScalingRules>
@@ -5643,19 +5673,23 @@ d01:134****:scalingRule/eMKWG8SRNb9dBLAjweN****</ScalingRuleAri>
       </ScalingRules>
       <TotalCount>1</TotalCount>
       <RequestId>3306A40D-3412-4101-9F19-5F81E3055DAD</RequestId>
+</DescribeScalingRulesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B583BFEF-A779-427A-9B74-262DDD249702",
     "TotalCount": 1,
     "PageNumber": 1,
     "PageSize": 10,
     "ScalingRules": {
         "ScalingRule": [
-            {
+```
+
+`{`
+
+```json
                 "ScalingRuleId": "efcqrZdjlookc0UkE3dA****",
                 "ScalingRuleAri": "ari:acs:ess:cn-qingdao-env17-
 d01:134****:scalingRule/efcqrZdjlookc0UkE3dA****",
@@ -5664,24 +5698,18 @@ d01:134****:scalingRule/efcqrZdjlookc0UkE3dA****",
                 "AdjustmentType": "TotalCapacity",
                 "ScalingRuleName": "KFJoxG****",
                 "AdjustmentValue": 5
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
+#### 6.9.4 DeleteScalingRule
 
-#### DeleteScalingRule
+调用DeleteScalingRule删除一条伸缩规则。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | Action | String | 是 | DeleteScalingRu le | 系统规定参数，取值： DeleteScalingRule。 |
 |---|---|---|---|---|
@@ -5701,19 +5729,21 @@ d01:134****:scalingRule/efcqrZdjlookc0UkE3dA****",
 http://ess.example.com/?Action=DeleteScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAjweN****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteScalingRuleResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScalingRuleResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5721,11 +5751,11 @@ http://ess.example.com/?Action=DeleteScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 |---|---|---|---|
 | 404 | InvalidScalingRuleId.N otFound | The specified scaling rule does not exist. | 指定的伸缩规则在该账号下不存在。 |
 
-### 触发任务
+### 6.10 触发任务
 
-#### ExecuteScalingRule
+#### 6.10.1 ExecuteScalingRule
 
-弹性伸缩 ESS
+调用ExecuteScalingRule执行一条伸缩规则。
 
 **接口说明**
 
@@ -5747,8 +5777,6 @@ http://ess.example.com/?Action=DeleteScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | 请求ID。 |
 
-弹性伸缩 ESS
-
 | ScalingActivity Id | String | asa- bp13o672yeautiil** ** | 伸缩活动的ID。 |
 |---|---|---|---|
 
@@ -5760,21 +5788,23 @@ http://ess.example.com/?Action=DeleteScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn-hangzhou-env17-d01:140692647406****:scalingrule/asr-bp1d virgwkoowxk7****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ExecuteScalingRuleResponse>
       <ScalingActivityId>asa-bp13o672yeautiil****</ScalingActivityId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ExecuteScalingRuleResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "ScalingActivityId": "asa-bp13o672yeautiil****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5783,8 +5813,6 @@ http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn
 | 404 | InvalidScalingRuleAri.N otFound | The specified scaling rule Ari does not exist. | 指定的伸缩规则在该账号下不存在。 |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 您并未向弹性伸缩完整授权Open API接口。 |
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | 指定伸缩规则所属的伸缩组未处于active状态。 |
-
-弹性伸缩 ESS
 
 | 400 | ScalingActivityInProgre ss | You cannot delete a scaling group or launch a new scaling activity while there is a scaling activity in progress for the specified scaling group. | 指定伸缩规则所属的伸缩组有伸缩活动正在进行。 |
 |---|---|---|---|
@@ -5798,8 +5826,6 @@ http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn
 | 400 | QuotaExceeded.DBInst anceSecurityIP | Security IP quota exceeded in DB instance "XXX". | 指定伸缩规则所属的伸缩组的RDS实例访问白名单的IP个数达到上限。 |
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | 指定的安全组已添加的 ECS实例个数达到上限。 |
 
-弹性伸缩 ESS
-
 | 400 | IncorrectCapacity.NoC hange | To execute the specified scaling rule, the total capacity will not change. | 伸缩规则未造成伸缩组实例数的变化。 |
 |---|---|---|---|
 | 400 | QuotaExceeded.Scalin gInstance | Scaling instance quota exceeded. | 弹性伸缩的ECS实例使用个数达到上限。 |
@@ -5812,29 +5838,29 @@ http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn
 | 400 | MetricValueBeyondPer mitRange | Specific parameter "%s" beyond permit range. | 指标值超过了可选范围。 |
 | 400 | BreachThresholdBeyon dPermitRange | Specific parameter "%s" beyond permit range. | 阈值超过了可选范围。 |
 
-#### ScaleWithAdjustment
+#### 6.10.2 ScaleWithAdjustment
+
+调用ScaleWithAdjustment基于指定调整规则触发弹性扩缩容。
 
 **接口说明**
 
-弹性伸缩 ESS 调用该接口需注意以下几点： 调用该接口前，请确保满足以下条件： 伸缩组处于Active状态。 伸缩组内没有执行中的伸缩活动。 当伸缩组没有执行中的伸缩活动时，该接口可以绕过冷却时间（Cooldown）直接执行伸缩活动。 如果伸缩规则需要增加的ECS实例数加上当前伸缩组的实例数（Total Capacity）大于最大实例数 （MaxSize），则按Total Capacity=MaxSize执行伸缩活动。 如果当前伸缩组的实例数（Total Capacity）减去伸缩规则需要减少的ECS实例数小于最小实例数 （MinSize），则按Total Capacity=MinSize执行伸缩活动。 调用该接口返回成功，只是表示弹性伸缩服务接受了该接口的调用请求，可以执行伸缩活动，但不代表伸缩活动能够执行成功。您需要通过返回的ScalingActivityId查看该伸缩活动的执行状态。
+本接口区别于 `ExecuteScalingRule` 接口，您无需提前创建伸缩规则。 调用该接口需注意以下几点： 调用该接口前，请确保满足以下条件： 伸缩组处于Active状态。 伸缩组内没有执行中的伸缩活动。 当伸缩组没有执行中的伸缩活动时，该接口可以绕过冷却时间（Cooldown）直接执行伸缩活动。 如果伸缩规则需要增加的ECS实例数加上当前伸缩组的实例数（Total Capacity）大于最大实例数 （MaxSize），则按Total Capacity=MaxSize执行伸缩活动。 如果当前伸缩组的实例数（Total Capacity）减去伸缩规则需要减少的ECS实例数小于最小实例数 （MinSize），则按Total Capacity=MinSize执行伸缩活动。 调用该接口返回成功，只是表示弹性伸缩服务接受了该接口的调用请求，可以执行伸缩活动，但不代表伸缩活动能够执行成功。您需要通过返回的ScalingActivityId查看该伸缩活动的执行状态。
 
 **请求参数**
 
-| 名称 | 类型 | 是否必选 | 示例值 | 描述 |  |  |
+| 名称 | 类型 | 是否必选 | 示例值 | 描述 |   |   |
 |---|---|---|---|---|---|---|
-| Action | String | 是 | ScaleWithAdjust ment | 系统规定参数。取值： ScaleWithAdjustment。 |  |  |
-| AdjustmentType | String | 是 | QuantityChangeI nCapacity | 伸缩活动调整方式，取值范围： QuantityChangeInCapacity：增加或减少指定数量的ECS实例。 PercentChangeInCapacity：增加或减少指定比例的ECS实例。 TotalCapacity：将当前伸缩组的ECS 实例数量调整到指定数量。 |  |  |
-| AdjustmentValu e | Integer | 是 | 100 | 伸缩活动调整值。任何情况下，单次调整的ECS实例台数都不能超过1000，否则会导致调整失败。不同调整方式对应的取值范围： QuantityChangeInCapacity：- 1000~1000。 PercentChangeInCapacity：- 100~10000。 TotalCapacity：0~2000。 |  |  |
-| ScalingGroupId | String | 是 | asg- j6c1o397427hyj dc**** | 伸缩组的ID。 |  |  |
-| MinAdjustmentM agnitude | Integer | 否 | 1 | 伸缩活动最小调整实例数，仅当 AdjustmentType 为 PercentCh angeInCapacity 时生效。 |  |  |
-|  |  |  |  |  | PercentCh |  |
-| ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |  |  |
+| Action | String | 是 | ScaleWithAdjust ment | 系统规定参数。取值： ScaleWithAdjustment。 |   |   |
+| AdjustmentType | String | 是 | QuantityChangeI nCapacity | 伸缩活动调整方式，取值范围： QuantityChangeInCapacity：增加或减少指定数量的ECS实例。 PercentChangeInCapacity：增加或减少指定比例的ECS实例。 TotalCapacity：将当前伸缩组的ECS 实例数量调整到指定数量。 |   |   |
+| AdjustmentValu e | Integer | 是 | 100 | 伸缩活动调整值。任何情况下，单次调整的ECS实例台数都不能超过1000，否则会导致调整失败。不同调整方式对应的取值范围： QuantityChangeInCapacity：- 1000~1000。 PercentChangeInCapacity：- 100~10000。 TotalCapacity：0~2000。 |   |   |
+| ScalingGroupId | String | 是 | asg- j6c1o397427hyj dc**** | 伸缩组的ID。 |   |   |
+| MinAdjustmentM agnitude | Integer | 否 | 1 | 伸缩活动最小调整实例数，仅当 AdjustmentType 为 PercentCh angeInCapacity 时生效。 |   |   |
+|   |   |   |   |   | PercentCh |   |
+| ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |   |   |
 
-|  |  | AdjustmentType |
+|   |   | AdjustmentType |
 |---|---|---|
-|  | angeInCapacity |  |
-
-弹性伸缩 ESS
+|   | angeInCapacity |   |
 
 | SyncActivity | Boolean | 否 | false | 伸缩活动同步执行开关，仅对具有期望实例数配置项的伸缩组有效。取值范围： true：同步流程，即执行伸缩规则时会直接触发伸缩组的扩缩容活动。 false：异步流程，即修改伸缩组内的期望实例数时，不会立刻触发伸缩组的实际扩缩容活动，需等待期望实例数变化后，系统自动检测期望实例数与伸缩组内当前实例数不一致，才会触发扩缩容活动。 说明关于期望实例数的更多信息，请参见弹性伸缩用户指南章节的期望实例数章节。 默认值：false。 |
 |---|---|---|---|---|
@@ -5851,26 +5877,30 @@ http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn
 请求示例
 
 ```
-http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityChangeInCapacity &AdjustmentValue=100 &MinAdjustmentMagnitude=1 &ClientToken=123e4567-e89b-12d3-a456-42665544**** &SyncActivity=false
+http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityChangeInCapacity &AdjustmentValue=100 &MinAdjustmentMagnitude=1 &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Action=ScaleWithAdjustment &SyncActivity=false
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ScaleWithAdjustmentResponse>
     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
     <ScalingActivityId>asa-bp175o6f6ego3r2j****</ScalingActivityId>
+<ScaleWithAdjustmentResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-bp175o6f6ego3r2j****"
-}
 ```
 
-#### AttachInstances
+`}`
+
+#### 6.10.3 AttachInstances
+
+调用AttachInstances为伸缩组添加ECS实例。
 
 **接口说明**
 
@@ -5884,8 +5914,6 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | ScalingGroupId | String | 是 | asg- bp18p2yfxow2dl oq**** | 伸缩组的ID。 |
 | InstanceId.N | RepeatL ist | 否 | i-28wt4**** | InstanceId.N为待添加ECS实例的ID，N 的取值范围：1～20。 |
 | LoadBalancerWe ight.N | RepeatL ist | 否 | 50 | LoadBalancerWeight.N为ECS实例作为负载均衡实例后端服务器时的权重，N的取值范围：1～20，该参数取值范围： 1~100。 默认值：50。 |
-
-弹性伸缩 ESS
 
 | Entrusted | Boolean | 否 | false | 将已经存在的ECS实例手动添加到伸缩组时，是否将该ECS实例的生命周期托管给伸缩组。取值范围： true：托管。该ECS实例的生命周期由弹性伸缩管理，与伸缩组自动创建的 ECS实例一致。ECS实例被移出伸缩组 （不包括通过调用DetachInstances移出）时会自动释放。 false：不托管。该ECS实例在被移出伸缩组时不会被释放。 说明不支持托管包年包月 ECS实例。 默认值：false。 |
 |---|---|---|---|---|
@@ -5902,28 +5930,28 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 请求示例
 
 ```
-&InstanceId.1=i-28wt4**** &ScalingGroupId=asg-bp18p2yfxow2dloq****
+http://ess.example.com/?Action=AttachInstances &InstanceId.1=i-28wt4**** &ScalingGroupId=asg-bp18p2yfxow2dloq****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<AttachInstancesResponse>
       <ScalingActivityId>asa-bp1crxor24s28xf1****</ScalingActivityId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</AttachInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "ScalingActivityId": "asa-bp1crxor24s28xf1****"
-}
 ```
 
-**错误码**
+`}`
 
-弹性伸缩 ESS
+**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -5938,8 +5966,6 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | 400 | InvalidInstanceId.VPC Mismatch | Instance "XXX" and the specified scaling group are not in the same VPC. | 指定的伸缩组与添加的 ECS实例不在同一个VPC 中。 |
 | 400 | InvalidInstanceId.InUs e | Instance "XXX" is already attached to another scaling group. | 指定的ECS实例已加入其他伸缩组。 |
 
-弹性伸缩 ESS
-
 | 400 | ScalingActivityInProgre ss | You cannot delete a scaling group or launch a new scaling activity while there is a scaling activity in progress for the specified scaling group. | 指定的伸缩组有伸缩活动正在进行。 |
 |---|---|---|---|
 | 400 | IncorrectLoadBalancer Status | The current status of the specified load balancer does not support this action. | 指定的伸缩组的负载均衡实例未处于active状态。 |
@@ -5951,9 +5977,9 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | 指定的安全组已添加的 ECS实例个数达到上限。 |
 | 400 | IncorrectCapacity.Max Size | To attach the instances, the total capacity will be greater than the MaxSize. | 加入的ECS实例数使得 Total Capacity超过 MaxSize。 |
 
-弹性伸缩 ESS
+#### 6.10.4 RemoveInstances
 
-#### RemoveInstances
+调用RemoveInstances从一个伸缩组里移出ECS实例。
 
 **接口说明**
 
@@ -5983,24 +6009,26 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 请求示例
 
 ```
-&ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4****
+http://ess.example.com/?Action=RemoveInstances &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<RemoveInstancesResponse>
       <ScalingActivityId>bybj9OcaOT4ucPMbFhcq****</ScalingActivityId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</RemoveInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ScalingActivityId":"bybj9OcaOT4ucPMbFhcq****",
     "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6010,8 +6038,6 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | 404 | InvalidInstanceId.NotF ound | Instance "XXX" does not exist. | 指定的ECS实例在伸缩组下不存在。 |
 | 400 | InvalidParameter | The specified group does not support the specified RemovePolicy. | 当前伸缩组不支持停机回收策略。 |
 
-弹性伸缩 ESS
-
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 您未向弹性伸缩授予完整的OpenAPI接口权限。 |
 |---|---|---|---|
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | 指定的伸缩组未处于 Active状态。 |
@@ -6020,11 +6046,13 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | 400 | IncorrectDBInstanceSt atus | The current status of DB instance "XXX" does not support this action. | 指定伸缩规则所属的伸缩组的RDS实例未处于 Running状态。 |
 | 400 | IncorrectCapacity.MinS ize | To remove the instances, the total capacity will be lesser than the MinSize. | 移出的实例数使得 TotalCapacity小于 MinSize。 |
 
-#### DetachInstances
+#### 6.10.5 DetachInstances
+
+调用DetachInstances从一个伸缩组移出一台或多台ECS实例。
 
 **接口说明**
 
-移出ECS实例之后，ECS实例可以独立于伸缩组存在，您可以调用API AttachInstances接口将ECS实例附加到其他伸缩组。 调用该接口移出一台ECS实例并不会停止或释放该实例。 调用该接口前，请确保满足以下条件： 目标伸缩组必须处于启用（Enable）状态。 目标伸缩组不能有正在进行的伸缩活动。 目标伸缩组没有正在进行的伸缩活动时，该接口可以绕过冷却时间直接执行。 接口成功调用后，仅表示接受了该接口调用的请求。可以照常触发伸缩活动，但不能保证伸缩活动执行成功，您需要通过返回的ScalingActivityId查看伸缩活动的状态。 目标伸缩组的ECS数量减去当前分离的ECS数不能小于伸缩组最小实例数（MinSize），否则会报错。 弹性伸缩 ESS
+移出ECS实例之后，ECS实例可以独立于伸缩组存在，您可以调用API AttachInstances接口将ECS实例附加到其他伸缩组。 调用该接口移出一台ECS实例并不会停止或释放该实例。 调用该接口前，请确保满足以下条件： 目标伸缩组必须处于启用（Enable）状态。 目标伸缩组不能有正在进行的伸缩活动。 目标伸缩组没有正在进行的伸缩活动时，该接口可以绕过冷却时间直接执行。 接口成功调用后，仅表示接受了该接口调用的请求。可以照常触发伸缩活动，但不能保证伸缩活动执行成功，您需要通过返回的ScalingActivityId查看伸缩活动的状态。 目标伸缩组的ECS数量减去当前分离的ECS数不能小于伸缩组最小实例数（MinSize），否则会报错。
 
 **请求参数**
 
@@ -6048,24 +6076,26 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 请求示例
 
 ```
-&ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4****
+http://ess.example.com/?Action=DetachInstances &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DetachInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <ScalingActivityId>asa-****</ScalingActivityId>
+</DetachInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "ScalingActivityId": "asa-****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6078,15 +6108,15 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | 400 | IncorrectCapacity.MinS ize | To remove the instances, the total capacity will be lesser than the MinSize. | 目标伸缩组的ECS实例数量减去当前分离的ECS实例数量不能小于伸缩组最少实例数（MinSize）。 |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 您暂未被授权调用 DetachInstances接口。 |
 
-弹性伸缩 ESS
-
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 |---|---|---|---|
 | 404 | InvalidInstanceId.NotF ound | Instance “XXX” does not exist. | 指定的ECS实例不存在。 |
 
-### 定时任务
+### 6.11 定时任务
 
-#### CreateScheduledTask
+#### 6.11.1 CreateScheduledTask
+
+调用CreateScheduledTask创建一个定时任务。
 
 **接口说明**
 
@@ -6101,23 +6131,19 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | ScheduledTaskN ame | String | 否 | scheduled**** | 定时任务的显示名称。2~64个英文或中文字符，以数字、大小字母或中文开头，可包含数字、下划线（ ）、短划线（-）或 _ 半角句号（.）。同一账号同一地域内唯一。 如果没有指定该函数，默认值： ScheduledScalingTaskId。 |
 | Description | String | 否 | Test scheduled task. | 定时任务的描述信息。2~200个英文或中文字符。 |
 
-弹性伸缩 ESS
-
 | ScheduledAction | String | 否 | ari:acs:ess:cn- qingdao-env17- d01:134****:scal ingRule/cCBpdY dQuBe2cUxOdu 6**** | 定时任务触发时需要执行的伸缩规则，填写伸缩规则的唯一标识符。指定 ScheduledAction 后，定时任务的伸缩方式为选择已有伸缩规则。 说明不支持同时设置 ScheduledAction和 ScalingGroupId参数。 |
 |---|---|---|---|---|
 | RecurrenceEndTi me | String | 否 | 2014-08- 17T16:55Z | 重复执行定时任务的结束时间。 按照ISO8601标准表示，并需要使用UTC 时间。格式： YYYY-MM- DDThh:mmZ 。不能填写自创建当天起 365日后的时间。 您需要同时指定RecurrenceType、 RecurrenceValue和 RecurrenceEndTime参数。 |
 | LaunchTime | String | 否 | 2014-08- 17T16:52Z | 定时任务触发的时间点。 按照ISO8601标准表示，并需要使用UTC 时间。格式： YYYY-MM- DDThh:mmZ 。不能填写自创建当天起90 日后的时间。 如果指定了RecurrenceType，则此属性指定的时间点，默认为循环执行的时间点。 如果未指定RecurrenceType，则按指定的日期和时间执行一次。 |
 | RecurrenceType | String | 否 | Daily | 重复执行定时任务的类型，取值范围： Daily：每多少天重复执行一次定时任务。 Weekly：每周指定几天重复执行一次定时任务。 Monthly：每月内指定几天重复执行一次定时任务。 Cron：按照指定的Cron表达式执行定时任务。 您需要同时指定RecurrenceType、 RecurrenceValue和 RecurrenceEndTime参数。 |
 
-|  |  | YYYY-MM- |
+|   |   | YYYY-MM- |
 |---|---|---|
-|  | DDThh:mmZ |  |
+|   | DDThh:mmZ |   |
 
-|  |  | YYYY-MM- |
+|   |   | YYYY-MM- |
 |---|---|---|
-|  | DDThh:mmZ |  |
-
-弹性伸缩 ESS
+|   | DDThh:mmZ |   |
 
 | RecurrenceValu e | String | 否 | 1 | 重复执行定时任务的数值。 RecurrenceType取Daily时，只能填一个值，取值范围：1~31。 RecurrenceType取Weekly时，可以填入多个值，填多个值时使用半角逗号 （,）分隔。例如，周日、周一、周二、 周三、周四、周五、周六的值依次为： 0,1,2,3,4,5,6。 RecurrenceType取Monthly时，格式为A-B。A、B的取值范围为1~31，并且B必须大于等于A。 RecurrenceType取Cron时，表示UTC 时间，支持分、时、日、月、星期的5 域表达式，支持通配符半角逗号（,）、 半角问号（?）、短划线（-）、星号 （*）、井号（#）、正斜线（/）、L和 W。 您需要同时指定RecurrenceType、 RecurrenceValue和 RecurrenceEndTime参数。 |
 |---|---|---|---|---|
@@ -6126,8 +6152,6 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 | MinValue | Integer | 否 | 0 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的最小数量。 |
 | MaxValue | Integer | 否 | 10 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的最大数量。 |
 | DesiredCapacity | Integer | 否 | 10 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的期望实例数。 说明伸缩组必须支持设置期望实例数，即在创建该伸缩组时指定了DesiredCapacity。 |
-
-弹性伸缩 ESS
 
 | ScalingGroupIdI nvalid | String | 否 | asg- bp18p2yfxow2dl oq**** | 定时任务触发时需要修改实例数量的伸缩组，填写伸缩组ID。指定ScalingGroupId 后，定时任务的伸缩方式为设置伸缩组内实例数量，您需要为MinValue、 MaxValue和DesiredCapacity中至少一个参数指定数量。 说明不支持同时设置 ScheduledAction和 ScalingGroupId参数。 |
 |---|---|---|---|---|
@@ -6147,28 +6171,28 @@ http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityCh
 http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d01 &ScheduledAction=ari:acs:ess:cn-qingdao-env17d01:134****:scalingRule/cCBpdYdQuBe2cUxOdu6****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateScheduledTaskResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScheduledTaskId>edRtShc57WGXdt8TlPbr****</ScheduledTaskId>
+</CreateScheduledTaskResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScheduledTaskId": "edRtShc57WGXdt8TlPbr****"
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-弹性伸缩 ESS
 
 | 404 | InvalidRegionId.NotFou nd | The specified region does not exist. | 指定的地域不存在。 |
 |---|---|---|---|
@@ -6176,13 +6200,15 @@ http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d0
 | 400 | QuotaExceeded.Sched uledTask | Scheduled task quota exceeded. | 您的定时任务使用个数达到上限。 |
 | 400 | ScheduledAction.Regio nMismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | 指定的ScheduledAction 与定时任务所在的地域不匹配。 |
 
-#### ModifyScheduledTask
+#### 6.11.2 ModifyScheduledTask
+
+调用ModifyScheduledTask修改一个定时任务的信息。
 
 **接口说明**
 
-定时任务支持两种伸缩方式。 通过 `ScheduledAction` 参数设置需要执行的伸缩规则。 通过 `ScalingGroupId` 参数设置伸缩组内实例数量。 不支持同时设置ScheduledAction和ScalingGroupId参数。
+定时任务支持两种伸缩方式。 通过 `ScheduledAction` 参数设置需要执行的伸缩规则。 通过 `ScalingGroupId` 参数设置伸缩组内实例数量。
 
-**说明**
+> **说明：** 不支持同时设置ScheduledAction和ScalingGroupId参数。
 
 **请求参数**
 
@@ -6192,8 +6218,6 @@ http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d0
 | ScheduledTaskId | String | 是 | edRtShc57WGX dt8TlPbr**** | 定时任务的ID。 |
 | ScheduledTaskN ame | String | 否 | scheduled**** | 定时任务的名称。2~64个英文或中文字符，以数字、大小字母或中文开头，可包含数字、下划线（ ）、短划线（-）或半 _ 角句号（.）。同一账号同一地域内唯一。 |
 
-弹性伸缩 ESS
-
 | Description | String | 否 | fortest | 定时任务的描述信息。2~200个英文或中文字符。 |
 |---|---|---|---|---|
 | ScheduledAction | String | 否 | ari:acs:ess:cn- qingdao-env17- d01:134****:scal ingRule/cCBpdY dQuBe2cUxOdu 6**** | 定时任务触发时需要执行的伸缩规则，填写伸缩规则的唯一标识符。指定 ScheduledAction 后，定时任务的伸缩方式为选择已有伸缩规则。 说明不支持同时设置 ScheduledAction和 ScalingGroupId参数。 |
@@ -6201,11 +6225,9 @@ http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d0
 | LaunchTime | String | 否 | 2014-08- 18T10:52Z | 定时任务触发的时间点。按照ISO8601标准表示，并需要使用UTC时间。格式为： YYYY-MM-DDThh:mmZ 。不能填写自修改当天起90日后的时间。 如果指定了RecurrenceType，则此属性指定的时间点，默认为循环执行的时间点。 如果未指定RecurrenceType，则按指定的日期和时间执行一次。 |
 | RecurrenceType | String | 否 | Daily | 重复执行定时任务的类型，取值范围： Daily：每多少天重复执行一次定时任务。 Weekly：每周指定几天重复执行一次定时任务。 Monthly：每月内指定几天重复执行一次定时任务。 Cron：按照指定的Cron表达式执行定时任务。 修改后，RecurrenceType、 RecurrenceValue和 RecurrenceEndTime参数需要同时有效。 |
 
-|  |  | YYYY-MM- |
+|   |   | YYYY-MM- |
 |---|---|---|
-|  | DDThh:mmZ |  |
-
-弹性伸缩 ESS
+|   | DDThh:mmZ |   |
 
 | RecurrenceValu e | String | 否 | 2 | 重复执行定时任务的数值。 RecurrenceType取Daily时，只能填一个值，取值范围：1~31。 RecurrenceType取Weekly时，可以填入多个值，填多个值时使用半角逗号 （,）分隔。比如，周日、周一、周二、 周三、周四、周五、周六的值依次为： 0,1,2,3,4,5,6 。 RecurrenceType取Monthly时，格式为A-B。A、B的取值范围为1~31，并且B必须大于等于A。 RecurrenceType取Cron时，表示UTC 时间，支持分、时、日、月、星期的5 域表达式，支持通配符半角逗号（,）、 半角问号（?）、短划线（-）、星号 （*）、井号（#）、正斜线（/）、L和 W。 修改后，RecurrenceType、 RecurrenceValue和 RecurrenceEndTime参数需要同时有效。 |
 |---|---|---|---|---|
@@ -6214,8 +6236,6 @@ http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d0
 | MinValue | Integer | 否 | 0 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的最小数量。 |
 | MaxValue | Integer | 否 | 10 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的最大数量。 |
 | DesiredCapacity | Integer | 否 | 10 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的期望实例数。 说明伸缩组必须支持设置期望实例数，即在创建该伸缩组时指定了DesiredCapacity。 |
-
-弹性伸缩 ESS
 
 | ScalingGroupIdI nvalid | String | 否 | asg- bp18p2yfxow2dl oq**** | 定时任务触发时需要修改实例数量的伸缩组，填写伸缩组ID。指定ScalingGroupId 后，定时任务的伸缩方式为设置伸缩组内实例数量，您需要为MinValue、 MaxValue和DesiredCapacity中至少一个参数指定数量。 说明不支持同时设置 ScheduledAction和 ScalingGroupId。 |
 |---|---|---|---|---|
@@ -6234,19 +6254,21 @@ http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d0
 http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGXdt8TlPbr**** &LaunchTime=2014-08-18T10:52Z &RecurrenceEndTime=2014-08-20T16:55Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyScheduledTaskResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyScheduledTaskResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6254,17 +6276,17 @@ http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGX
 |---|---|---|---|
 | 404 | InvalidScheduledTaskI d.NotFound | The specified scheduled task does not exist. | 指定的定时任务在该用户账号下不存在。 |
 
-弹性伸缩 ESS
-
 | 400 | InvalidScheduledTask Name.Duplicate | The specified value of parameter ScheduledTaskName is duplicated. | 定时任务名已存在。 |
 |---|---|---|---|
 | 400 | ScheduledAction.Regio nMismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | 指定的ScheduledAction 与定时任务所在的地域不匹配。 |
 
-|  |  | ScheduledTaskName |
+|   |   | ScheduledTaskName |
 |---|---|---|
-| e.Duplicate |  |  |
+| e.Duplicate |   |   |
 
-#### DescribeScheduledTasks
+#### 6.11.3 DescribeScheduledTasks
+
+调用DescribeScheduledTasks查询定时任务的信息。
 
 **接口说明**
 
@@ -6281,8 +6303,6 @@ http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGX
 | ScheduledAction .N | RepeatL ist | 否 | ari:acs:ess:cn- qingdao-env17- d01:101582792 734****:scalingr ule/asr- 1kx06vd223809 dlb**** | ScheduledAction.N为对应定时任务在触发时需要执行的操作，N的取值范围：1～ 20。 |
 | ScheduledTaskId .N | RepeatL ist | 否 | edRtShc57WGX dt8TlPbr**** | ScheduledTaskId.N为待查询定时任务的 ID，N的取值范围：1～20。 |
 
-弹性伸缩 ESS
-
 | ScheduledTaskN ame.N | RepeatL ist | 否 | scheduled**** | ScheduledTaskName.N为待查询定时任务的名称，N的取值范围：1～20。 |
 |---|---|---|---|---|
 | ScalingGroupId | String | 否 | asg- bp1bo5tca4m56 nap**** | 执行定时任务的伸缩组的ID。 |
@@ -6294,8 +6314,8 @@ http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGX
 | PageNumber | Integer | 1 | 当前页码。 |
 | PageSize | Integer | 50 | 每页行数。 |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | 请求ID。 |
-| ScheduledTas ks | Array of ScheduledTas k |  | 定时任务信息组成的集合。 |
-| ScheduledTas k |  |  |  |
+| ScheduledTas ks | Array of ScheduledTas k |   | 定时任务信息组成的集合。 |
+| ScheduledTas k |   |   |   |
 | Description | String | fortest | 定时任务的描述信息。 |
 | DesiredCapaci ty | Integer | 10 | 定时任务的伸缩方式为设置伸缩组内实例数量时，指定伸缩组内实例的期望实例数。 |
 | LaunchExpirati onTime | Integer | 600 | 定时任务触发操作失败后，在此时间内重试。单位为秒，取值范围：0~21600。 |
@@ -6305,21 +6325,19 @@ http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGX
 | RecurrenceEn dTime | String | 2014-08- 20T16:55Z | 重复执行定时任务的结束时间。 |
 | RecurrenceTy pe | String | Daily | 重复执行定时任务的类型。 |
 
-弹性伸缩 ESS
-
-| RecurrenceVal ue | String | 1 | 重复执行定时任务的数值。 |  |  |  |
+| RecurrenceVal ue | String | 1 | 重复执行定时任务的数值。 |   |   |   |
 |---|---|---|---|---|---|---|
-| ScalingGroupI d | String | asg- bp1bo5tca4m56na p**** | 执行定时任务的伸缩组的ID。 |  |  |  |
-| ScheduledActi on | String | ari:acs:ess:cn- qingdao-env17- d01:134****:scalin grule/cCBpdYdQuB e2cUxOdu6**** | 定时任务触发时执行的伸缩规则。 说明 ScheduledAction 和 ScalingGrou pId 不会同时存在。 |  |  |  |
-|  |  |  |  | ScalingGrou |  |  |
-| ScheduledTas kId | String | edRtShc57WGXdt8 TlPbr**** | 定时任务的ID。 |  |  |  |
-| ScheduledTas kName | String | edRtShc57WGXdt8 TlPbr**** | 定时任务的名称。 |  |  |  |
-| TaskEnabled | Boolean | true | 是否启动定时任务。 |  |  |  |
-| TotalCount | Integer | 1 | 定时任务总数。 |  |  |  |
+| ScalingGroupI d | String | asg- bp1bo5tca4m56na p**** | 执行定时任务的伸缩组的ID。 |   |   |   |
+| ScheduledActi on | String | ari:acs:ess:cn- qingdao-env17- d01:134****:scalin grule/cCBpdYdQuB e2cUxOdu6**** | 定时任务触发时执行的伸缩规则。 说明 ScheduledAction 和 ScalingGrou pId 不会同时存在。 |   |   |   |
+|   |   |   |   | ScalingGrou |   |   |
+| ScheduledTas kId | String | edRtShc57WGXdt8 TlPbr**** | 定时任务的ID。 |   |   |   |
+| ScheduledTas kName | String | edRtShc57WGXdt8 TlPbr**** | 定时任务的名称。 |   |   |   |
+| TaskEnabled | Boolean | true | 是否启动定时任务。 |   |   |   |
+| TotalCount | Integer | 1 | 定时任务总数。 |   |   |   |
 
-|  |  |  | ScheduledAction |
+|   |   |   | ScheduledAction |
 |---|---|---|---|
-| 6**** |  | pId |  |
+| 6**** |   | pId |   |
 
 **示例**
 
@@ -6329,9 +6347,10 @@ http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGX
 http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式弹性伸缩 ESS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeScheduledTasksResponse>
       <ScheduledTasks>
             <ScheduledTask>
                   <LaunchExpirationTime>600</LaunchExpirationTime>
@@ -6362,15 +6381,19 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
       <TotalCount>34</TotalCount>
       <PageSize>10</PageSize>
       <RequestId>4CF33369-7318-4BD5-BE1C-A776BA2C6627</RequestId>
+</DescribeScheduledTasksResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
  "ScheduledTasks": {
   "ScheduledTask": [
-   {
+```
+
+`{`
+
+```json
     "LaunchExpirationTime": 600,
     "RecurrenceType": "Daily",
     "RecurrenceEndTime": "2020-03-02T00:00Z",
@@ -6381,8 +6404,11 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
     "LaunchTime": "2020-03-01T00:00Z",
     "ScheduledTaskId": "cV0bJbAXpipdbFI1NbM****",
     "RecurrenceValue": "31"
-   },
-   {
+```
+
+`},` `{`
+
+```json
     "LaunchExpirationTime": 600,
     "MinValue": 1,
     "RecurrenceType": "Daily",
@@ -6393,21 +6419,22 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
     "LaunchTime": "2020-02-26T00:00Z",
     "ScheduledTaskId": "cD3G3pesE65NcSTmkld1****",
     "RecurrenceValue": "31"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "PageNumber": 1,
  "TotalCount": 34,
  "PageSize": 10,
  "RequestId": "4CF33369-7318-4BD5-BE1C-A776BA2C6627"
-}
 ```
 
-#### DeleteScheduledTask
+`}`
+
+#### 6.11.4 DeleteScheduledTask
+
+调用DeleteScheduledTask删除一个定时任务。
 
 **请求参数**
 
@@ -6417,8 +6444,6 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
 | ScheduledTaskId | String | 是 | edRtShc57WGX dt8TlPbr**** | 定时任务的ID。您可以调用 DescribeScheduledTasks参数查询定时任务的ID。 |
 
 **返回数据**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -6432,19 +6457,21 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
 http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGXdt8TlPbr****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteScheduledTaskResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScheduledTaskResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6452,17 +6479,17 @@ http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGX
 |---|---|---|---|
 | 404 | InvalidScheduledTaskI d.NotFound | The specified scheduled task does not exist. | 指定的定时任务在该账号下不存在。 |
 
-### 报警任务
+### 6.12 报警任务
 
-#### CreateAlarm
+#### 6.12.1 CreateAlarm
+
+调用CreateAlarm创建一个报警任务。
 
 **接口说明**
 
-如果您创建自定义监控类型的报警任务（MetricType=custom），您需要先将自定义监控项指标上报到云监控。具体操作，请参见弹性伸缩的自定义监控报警任务章节。 创建报警任务时，您需要指定监控项（MetricName），并配合维度信息 （Dimension.N.DimensionKey和Dimension.N.DimensionValue），来确定伸缩组中该监控项数据的聚合范围。例如，指定user_id和scaling_group来确定聚合该用户、该伸缩组下所有ECS实例或ECI实例的监控项数据。 自定义监控报警任务（MetricType=custom）的监控项取决于您自有的监控指标。 弹性伸缩 ESS 系统监控报警任务（MetricType=system）支持的监控项的更多信息，请参见弹性伸缩的系统监控报警任务章节。 维度信息中，user_id和scaling_group由系统自动填充，device、state需要您手动指
+如果您创建自定义监控类型的报警任务（MetricType=custom），您需要先将自定义监控项指标上报到云监控。具体操作，请参见弹性伸缩的自定义监控报警任务章节。 创建报警任务时，您需要指定监控项（MetricName），并配合维度信息 （Dimension.N.DimensionKey和Dimension.N.DimensionValue），来确定伸缩组中该监控项数据的聚合范围。例如，指定user_id和scaling_group来确定聚合该用户、该伸缩组下所有ECS实例或ECI实例的监控项数据。 自定义监控报警任务（MetricType=custom）的监控项取决于您自有的监控指标。 系统监控报警任务（MetricType=system）支持的监控项的更多信息，请参见弹性伸缩的系统监控报警任务章节。
 
-**说明**
-
-定。更多信息，请参见 `Dimension.N.DimensionKey` 和 `Dimension.N.DimensionValue` 参数。
+> **说明：** 维度信息中，user_id和scaling_group由系统自动填充，device、state需要您手动指定。更多信息，请参见 `Dimension.N.DimensionKey` 和 `Dimension.N.DimensionValue` 参数。
 
 **请求参数**
 
@@ -6470,12 +6497,8 @@ http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGX
 |---|---|---|---|---|
 | Action | String | 是 | CreateAlarm | 系统规定参数，取值：CreateAlarm。 |
 
-弹性伸缩 ESS
-
 | MetricName | String | 是 | CpuUtilization | 监控项名称。取值范围与报警任务的监控类型有关： 当报警任务为自定义监控类型（即 MetricType=custom）时，取值范围是您自有的监控项范围。 当报警任务为系统监控类型（即 MetricType=system）时，取值范围如下： CpuUtilization：（ECS）CPU使用率（%）。 IntranetTx：（ECS）内网出流量 （KByte/min）。 IntranetRx：（ECS）内网入流量 （KByte/min）。 VpcInternetTx：（ECS）外网出流量（KByte/min）。 VpcInternetRx：（ECS）外网入流量（KByte/min）。 SystemDiskReadBps：（ECS）系统盘读BPS（Byte/s）。 SystemDiskWriteBps：（ECS）系统盘写BPS（Byte/s）。 SystemDiskReadOps：（ECS）系统盘读IOPS（次/s）。 SystemDiskWriteOps：（ECS） 系统盘写IOPS（次/s）。 CpuUtilizationAgent： （Agent）CPU使用率（%）。 GpuUtilizationAgent： （Agent）GPU使用率（%）。 GpuMemoryFreeUtilizationAgent ：（Agent）GPU内存空闲率 （%）。 GpuMemoryUtilizationAgent： （Agent）GPU内存使用率（%）。 MemoryUtilization：（Agent）内存（%）。 LoadAverage：（Agent）系统平均负载。 TcpConnection：（Agent）TCP总连接数（个）。 TcpConnection：（Agent）TCP已建立连接数（个）。 PackagesNetOut：（Agent）内网网卡发包数（个）。 PackagesNetIn：（Agent）内网网卡收包数（个）。 EciPodCpuUtilization：CPU使用率 （%）。 EciPodMemoryUtilization：内存 （%）。 更多信息，请参见弹性伸缩的系统监控报警任务章节。 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | RegionId | String | 是 | cn-qingdao- env17-d01 | 伸缩组所属的地域ID。 |
 |---|---|---|---|---|
@@ -6487,17 +6510,13 @@ http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGX
 | Period | Integer | 否 | 300 | 统计监控项数据的周期，单位为秒，取值范围： 15。 60。 120。 300。 900。 说明 15秒的统计周期仅适合监控ECS类型伸缩组时，使用云监控 （Agent开头的监控项）客户端采集的监控项指标，除此之外的其他监控项指标的统计周期可以设置为60秒、 120秒、300秒和900秒。 默认值：300。 |
 | Statistics | String | 否 | Average | 统计监控项数据的方法，取值范围： Average：平均值。 Minimun：最小值。 Maximum：最大值。 默认值：Average。 |
 
-弹性伸缩 ESS
-
-| ComparisonOper ator | String | 否 | >= | 监控项统计值与阈值的比较符，用于指定监控项统计值与阈值在什么关系下满足条件。取值范围： 监控项统计值大于等于阈值。取值： >=。 监控项统计值小于等于阈值。取值： <=。 监控项统计值大于阈值。取值：>。 监控项统计值小于阈值。取值：<。 默认值：>=。 |  |  |  |
+| ComparisonOper ator | String | 否 | >= | 监控项统计值与阈值的比较符，用于指定监控项统计值与阈值在什么关系下满足条件。取值范围： 监控项统计值大于等于阈值。取值： >=。 监控项统计值小于等于阈值。取值： <=。 监控项统计值大于阈值。取值：>。 监控项统计值小于阈值。取值：<。 默认值：>=。 |   |   |   |
 |---|---|---|---|---|---|---|---|
-| EvaluationCount | Integer | 否 | 3 | 触发执行伸缩规则需要满足阈值表达式的次数，例如，CPU使用率平均值3次的统计结果均大于等于80%。 默认值：3。 |  |  |  |
-| GroupId | Integer | 否 | 4055401 | 自定义监控项所属云监控应用分组的ID， 仅在监控项类型为 custom 时需要指定该参数。 |  |  |  |
-| Effective | String | 否 | TZ=+00 * * 1-2 * * ? | 指定报警任务的生效时间段，默认所有时间都生效。 该参数遵循Cron表达式，默认格式为 X X X X X ? ，含义如下： X ：一个域的占位符，依次表示秒、 分钟、小时、日期和月。X可以是确定的取值，也可以是具有逻辑意义的特殊字符。X的取值范围，请参见报警任务概述章节的Cron表达式。 ？ ：表示不指定值。 说明该参数指定值默认为 UTC+8时区，支持在Cron表达式之前添加时区信息TZ=+yy来指定时区，其中y表示时区的数值。例如， TZ=+00 * * 1-2 * * ? 表示报警任务在UTC+0时区每天 01:00~02:59之间生效。 取值示例及含义如下： * * * * * ? ：所有时间都生效。 * * 17-18 * * ? ：在UTC+8 时区每天17:00~18:59之间生效。 TZ=+00 * * 1-2 * * ? ：在 UTC+0时区每天01:00~02:59之间生效。 |  |  |  |
-|  |  |  |  |  |  | X |  |
-|  |  |  |  |  | ? |  |  |
-
-弹性伸缩 ESS
+| EvaluationCount | Integer | 否 | 3 | 触发执行伸缩规则需要满足阈值表达式的次数，例如，CPU使用率平均值3次的统计结果均大于等于80%。 默认值：3。 |   |   |   |
+| GroupId | Integer | 否 | 4055401 | 自定义监控项所属云监控应用分组的ID， 仅在监控项类型为 custom 时需要指定该参数。 |   |   |   |
+| Effective | String | 否 | TZ=+00 * * 1-2 * * ? | 指定报警任务的生效时间段，默认所有时间都生效。 该参数遵循Cron表达式，默认格式为 X X X X X ? ，含义如下： X ：一个域的占位符，依次表示秒、 分钟、小时、日期和月。X可以是确定的取值，也可以是具有逻辑意义的特殊字符。X的取值范围，请参见报警任务概述章节的Cron表达式。 ？ ：表示不指定值。 说明该参数指定值默认为 UTC+8时区，支持在Cron表达式之前添加时区信息TZ=+yy来指定时区，其中y表示时区的数值。例如， TZ=+00 * * 1-2 * * ? 表示报警任务在UTC+0时区每天 01:00~02:59之间生效。 取值示例及含义如下： * * * * * ? ：所有时间都生效。 * * 17-18 * * ? ：在UTC+8 时区每天17:00~18:59之间生效。 TZ=+00 * * 1-2 * * ? ：在 UTC+0时区每天01:00~02:59之间生效。 |   |   |   |
+|   |   |   |   |   |   | X |   |
+|   |   |   |   |   | ? |   |   |
 
 | AlarmAction.N | RepeatL ist | 否 | ari:acs:ess:cn- hangzhou- env17- d01:1406926*** *:scalingrule/asr - bp163l21e07uh n**** | 报警任务关联伸缩规则的唯一标识符。 |
 |---|---|---|---|---|
@@ -6505,8 +6524,6 @@ http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGX
 | Dimension.N.Di mensionValue | String | 否 | eth0 | 监控项关联的维度信息值，取值范围由 Dimension.N.DimensionKey决定： 当Dimension.N.DimensionKey的取值是自定义的，即报警任务是自定义监控类型（即MetricType=custom） 时，该参数不限制取值范围，由您自行指定。 当Dimension.N.DimensionKey的取值是系统指定的取值范围中的，即报警任务为系统监控类型（即 MetricType=system）时，该参数取值范围如下： user id：由系统自动填充。 _ scaling group：由系统自动填充。 _ device： eth0：对于经典网络实例，eth0 表示内网网卡。对于VPC实例，只存在eth0一张网卡。 eth1：对于经典网络实例，eth1 代表外网网卡。 state： TCP TOTAL：表示总的TCP连接 _ 数。 ESTABLISHED：表示已建立的 TCP连接数。 |
 
 **返回数据**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -6518,35 +6535,37 @@ http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGX
 请求示例
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &Name=TestAlarmTask &Description=Test alarm task. &ScalingGroupId=asg-bp18p2yfxow2dloq**** &MetricName=CpuUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:1406926****:scalingrule/asr-bp163l21e0 7uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}]
+http(s)://ess.example.com/?Action=CreateAlarm &RegionId=cn-hangzhou-env17-d01 &Name=TestAlarmTask &Description=Test alarm task. &ScalingGroupId=asg-bp18p2yfxow2dloq**** &MetricName=CpuUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:1406926****:scalingrule/asr-bp163l21e0 7uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateAlarmResponse>
     <AlarmTaskId>asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****</AlarmTa
 skId>
     <RequestId>ADD82C07-7A7C-4DD4-907F-1D114742****</RequestId>
+</CreateAlarmResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
         "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****",
         "RequestId": "ADD82C07-7A7C-4DD4-907F-1D114742****"
-}
 ```
 
-**错误码**
+`}`
 
-弹性伸缩 ESS
+**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | InvalidParameter | The specified value of parameter "%s" is not valid. | 指定参数“%s”不合法。 |
 
-#### DescribeAlarms
+#### 6.12.2 DescribeAlarms
+
+调用DescribeAlarms查询报警任务的信息。
 
 **请求参数**
 
@@ -6561,8 +6580,6 @@ skId>
 | MetricType | String | 否 | system | 监控项类型，取值范围： system：使用云监控系统指标。 custom：使用上报到云监控的自定义指标。 |
 | MetricName | String | 否 | CpuUtilization | 报警任务的名称。 |
 
-弹性伸缩 ESS
-
 | PageSize | Integer | 否 | 10 | 分页查询时设置的每页行数。最大值： 50。 默认值：10。 |
 |---|---|---|---|---|
 | PageNumber | Integer | 否 | 1 | 报警任务列表的页码。起始值：1。 默认值：1。 |
@@ -6571,17 +6588,15 @@ skId>
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| AlarmList | Array of Alarm |  | 报警任务的列表。 |
-| Alarm |  |  |  |
+| AlarmList | Array of Alarm |   | 报警任务的列表。 |
+| Alarm |   |   |   |
 | AlarmActions | List | ari:acs:ess:cn- qingdao-env17- d01:1344371:scali ngrule/eMKWG8SR Nb9dBLAjweN**** | 报警任务关联伸缩规则的唯一标识符的列表。 |
 | AlarmTaskId | String | asg- bp1hvbnmkl10vll5* *** f95ce797- _ dc2e-4bad-9618- 14fee7d1**** | 报警任务ID。 |
 | ComparisonOp erator | String | >= | 监控项统计值与阈值的比较符，用于指定监控项统计值与阈值在什么关系下满足条件。可能值： 监控项统计值大于等于阈值。取值：>=。 监控项统计值小于等于阈值。取值：<=。 监控项统计值大于阈值。取值：>。 监控项统计值小于阈值。取值：<。 |
 | Description | String | Test alarm task. | 报警任务的描述。 |
-| Dimensions | Array of Dimension |  | 监控项关联的维度信息。 |
-| Dimension |  |  |  |
+| Dimensions | Array of Dimension |   | 监控项关联的维度信息。 |
+| Dimension |   |   |   |
 | DimensionKey | String | device | 监控项关联的维度信息键，可能值： user id：您的账号ID。 _ scaling group：被监控的伸缩组。 _ device：网卡设备的类型。 state：TCP连接的状态。 |
-
-弹性伸缩 ESS
 
 | DimensionValu e | String | eth0 | 监控项关联的维度信息值，可能值由维度信息键决定。 user id：由系统自动填充。 _ scaling group：由系统自动填充。 _ device可能值： eth0：对于经典网络实例，eth0表示内网网卡。对于VPC实例，只存在eth0一张网卡。 eth1：对于经典网络实例，eth1代表外网网卡。 state可能值： TCP TOTAL：表示总的TCP连接数。 _ ESTABLISHED：表示已建立的TCP连接数。 |
 |---|---|---|---|
@@ -6589,14 +6604,10 @@ skId>
 | Enable | Boolean | true | 报警任务是否启用，可能值： true：已启用。 false：已停用。 |
 | EvaluationCou nt | Integer | 3 | 触发执行伸缩规则需要满足阈值表达式的次数， 例如，CPU使用率平均值3次的统计结果均大于等于80%。 |
 
-弹性伸缩 ESS
-
 | MetricName | String | CpuUtilization | 监控项名称。可能值： CpuUtilization：（ECS）CPU使用率 （%）。 IntranetTx：（ECS）内网出流量 （KByte/min）。 IntranetRx：（ECS）内网入流量 （KByte/min）。 VpcInternetTx：（ECS）外网出流量 （KByte/min）。 VpcInternetRx：（ECS）外网入流量 （KByte/min）。 SystemDiskReadBps：（ECS）系统盘读 BPS（Byte/s）。 SystemDiskWriteBps：（ECS）系统盘写 BPS（Byte/s）。 SystemDiskReadOps：（ECS）系统盘读 IOPS（次/s）。 SystemDiskWriteOps：（ECS）系统盘写 IOPS（次/s）。 CpuUtilizationAgent：（Agent）CPU使用率（%）。 GpuUtilizationAgent：（Agent）GPU使用率（%）。 GpuMemoryFreeUtilizationAgent： （Agent）GPU内存空闲率（%）。 GpuMemoryUtilizationAgent： （Agent）GPU内存使用率（%）。 MemoryUtilization：（Agent）内存 （%）。 LoadAverage：（Agent）系统平均负载。 TcpConnection：（Agent）TCP总连接数 （个）。 TcpConnection：（Agent）TCP已建立连接数（个）。 PackagesNetOut：（Agent）内网网卡发包数（个）。 PackagesNetIn：（Agent）内网网卡收包数（个）。 EciPodCpuUtilization：CPU使用率（%）。 EciPodMemoryUtilization：内存（%）。 更多信息，请参见弹性伸缩的系统监控报警任务章节。 |
 |---|---|---|---|
 | MetricType | String | system | 监控项类型，可能值： system：使用云监控系统指标。 custom：使用上报到云监控的自定义指标。 |
 | Name | String | TestAlarmTask | 报警任务的名称。 |
-
-弹性伸缩 ESS
 
 | Period | Integer | 300 | 统计监控项数据的周期，单位为秒。可能值： 15。 60。 120。 300。 900。 说明仅当监控ECS类型伸缩组时， 使用云监控（Agent开头的监控项）客户端采集的监控项指标，才可以选择15秒的统计周期。 |
 |---|---|---|---|
@@ -6611,13 +6622,13 @@ skId>
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
-&RegionId=cn-qingdao-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &State=OK &IsEnable=true &MetricType=system &MetricName=CpuUtilization &PageSize=10 &PageNumber=1
+http(s)://ess.example.com/?Action=DescribeAlarms &RegionId=cn-qingdao-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &State=OK &IsEnable=true &MetricType=system &MetricName=CpuUtilization &PageSize=10 &PageNumber=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>2</TotalCount> <PageSize>10</PageSize> <RequestId>871C7C53-34A4-45AA-8C14-4B72FA6A****</RequestId> <PageNumber>1</PageNumber> <AlarmList>
@@ -6644,10 +6655,9 @@ skId>
 d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****</AlarmActions> </AlarmList>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 2,
     "PageSize": 10,
     "RequestId": "871C7C53-34A4-45AA-8C14-4B72FA6A****",
@@ -6670,29 +6680,31 @@ d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****</AlarmActions> </AlarmList>
         "Dimensions": {
             "DimensionValue": "eth0",
             "DimensionKey": "device"
-        },
-        "AlarmActions": "ari:acs:ess:cn-qingdao-env17-
-d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
-    }
-}
 ```
 
-#### ModifyAlarm
+`},`
+
+```json
+        "AlarmActions": "ari:acs:ess:cn-qingdao-env17-
+d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
+```
+
+`}` `}`
+
+#### 6.12.3 ModifyAlarm
+
+调用ModifyAlarm修改一个报警任务。
 
 **接口说明**
 
-如果您创建自定义监控类型的报警任务（MetricType=custom），您需要先将自定义监控项指标上报到云监控。具体操作，请参见弹性伸缩的自定义监控报警任务章节。 创建报警任务时，您需要指定监控项（MetricName），并配合维度信息 （ `Dimension.N.DimensionKey` 和 `Dimension.N.DimensionValue` ），来确定伸缩组中该监控项数据的聚合范围。例如，指定user_id和scaling_group来确定聚合该用户、该伸缩组下所有ECS实例或ECI 实例的监控项数据。 自定义监控报警任务（MetricType=custom）的监控项取决于您自有的监控指标。 系统监控报警任务（MetricType=system）支持的监控项的更多信息，请参见弹性伸缩的系统监控报警任务章节。 维度信息中，user_id和scaling_group由系统自动填充，device、state需要您手动指
+如果您创建自定义监控类型的报警任务（MetricType=custom），您需要先将自定义监控项指标上报到云监控。具体操作，请参见弹性伸缩的自定义监控报警任务章节。 创建报警任务时，您需要指定监控项（MetricName），并配合维度信息 （ `Dimension.N.DimensionKey` 和 `Dimension.N.DimensionValue` ），来确定伸缩组中该监控项数据的聚合范围。例如，指定user_id和scaling_group来确定聚合该用户、该伸缩组下所有ECS实例或ECI 实例的监控项数据。 自定义监控报警任务（MetricType=custom）的监控项取决于您自有的监控指标。 系统监控报警任务（MetricType=system）支持的监控项的更多信息，请参见弹性伸缩的系统监控报警任务章节。
 
-**说明**
-
-定。更多信息，请参见 `Dimension.N.DimensionKey` 和 `Dimension.N.DimensionValue` 参数。
+> **说明：** 维度信息中，user_id和scaling_group由系统自动填充，device、state需要您手动指定。更多信息，请参见 `Dimension.N.DimensionKey` 和 `Dimension.N.DimensionValue` 参数。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | Action | String | 是 | ModifyAlarm | 系统规定参数，取值：ModifyAlarm。 |
 |---|---|---|---|---|
@@ -6701,12 +6713,8 @@ d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
 | Name | String | 否 | TestAlarmTask | 报警任务的名称。 |
 | Description | String | 否 | Test alarm task. | 报警任务的描述。 |
 
-弹性伸缩 ESS
-
 | MetricName | String | 否 | MemoryUtilizatio n | 监控项名称。取值范围与报警任务的监控类型有关： 当报警任务为自定义监控类型（即 MetricType=custom）时，取值范围是您自有的监控项范围。 当报警任务为系统监控类型（即 MetricType=system）时，取值范围如下： CpuUtilization：（ECS）CPU使用率（%）。 IntranetTx：（ECS）内网出流量 （KByte/min）。 IntranetRx：（ECS）内网入流量 （KByte/min）。 VpcInternetTx：（ECS）外网出流量（KByte/min）。 VpcInternetRx：（ECS）外网入流量（KByte/min）。 SystemDiskReadBps：（ECS）系统盘读BPS（Byte/s）。 SystemDiskWriteBps：（ECS）系统盘写BPS（Byte/s）。 SystemDiskReadOps：（ECS）系统盘读IOPS（次/s）。 SystemDiskWriteOps：（ECS） 系统盘写IOPS（次/s）。 CpuUtilizationAgent： （Agent）CPU使用率（%）。 GpuUtilizationAgent： （Agent）GPU使用率（%）。 GpuMemoryFreeUtilizationAgent ：（Agent）GPU内存空闲率 （%）。 GpuMemoryUtilizationAgent： （Agent）GPU内存使用率（%）。 MemoryUtilization：（Agent）内存（%）。 LoadAverage：（Agent）系统平均负载。 TcpConnection：（Agent）TCP总连接数（个）。 TcpConnection：（Agent）TCP已建立连接数（个）。 PackagesNetOut：（Agent）网卡发包数（个）。 PackagesNetIn：（Agent）网卡收包数（个）。 EciPodCpuUtilization：CPU使用率 （%）。 EciPodMemoryUtilization：内存 （%）。 更多信息，请参见弹性伸缩的系统监控报警任务章节。 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | MetricType | String | 否 | system | 监控项类型，取值范围： system：使用云监控系统指标。 custom：使用上报到云监控的自定义指标。 |
 |---|---|---|---|---|
@@ -6717,18 +6725,14 @@ d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
 | EvaluationCount | Integer | 否 | 3 | 触发执行伸缩规则需要满足阈值表达式的次数，例如，CPU使用率平均值3次的统计结果均大于等于80%。 |
 | GroupId | Integer | 否 | 4055401 | 自定义监控项所属云监控应用分组的ID， 仅在监控项类型为 custom 时需要指定该参数。 |
 
-弹性伸缩 ESS
-
-| Effective | String | 否 | TZ=+00 * * 1-2 * * ? | 指定报警任务的生效时间段。 该参数遵循Cron表达式，默认格式为 X X X X X ? ，含义如下： X ：一个域的占位符，依次表示秒、 分钟、小时、日期和月。X可以是确定的取值，也可以是具有逻辑意义的特殊字符。X的取值范围，请参见Cron表达式。 ？ ：表示不指定值。 说明该参数指定值默认为 UTC+8时区，支持在Cron表达式之前添加时区信息TZ=+yy来指定时区，其中y表示时区的数值。例如， TZ=+00 * * 1-2 * * ? 表示报警任务在UTC+0时区每天01:00~02:59之间生效。 取值示例及含义如下： * * * * * ? ：所有时间都生效。 * * 17-18 * * ? ：在UTC+8 时区每天17:00~18:59之间生效。 TZ=+00 * * 1-2 * * ? ：在 UTC+0时区每天01:00~02:59之间生效。 |  |  |
+| Effective | String | 否 | TZ=+00 * * 1-2 * * ? | 指定报警任务的生效时间段。 该参数遵循Cron表达式，默认格式为 X X X X X ? ，含义如下： X ：一个域的占位符，依次表示秒、 分钟、小时、日期和月。X可以是确定的取值，也可以是具有逻辑意义的特殊字符。X的取值范围，请参见Cron表达式。 ？ ：表示不指定值。 说明该参数指定值默认为 UTC+8时区，支持在Cron表达式之前添加时区信息TZ=+yy来指定时区，其中y表示时区的数值。例如， TZ=+00 * * 1-2 * * ? 表示报警任务在UTC+0时区每天01:00~02:59之间生效。 取值示例及含义如下： * * * * * ? ：所有时间都生效。 * * 17-18 * * ? ：在UTC+8 时区每天17:00~18:59之间生效。 TZ=+00 * * 1-2 * * ? ：在 UTC+0时区每天01:00~02:59之间生效。 |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | X |  |
-| AlarmAction.N | RepeatL ist | 否 | ari:acs:ess:cn- hangzhou- env17- d01:140692647 ****:scalingrule/ asr- bp163l21e07uh n**** | 报警任务关联伸缩规则的唯一标识符。 |  |  |
-| Dimension.N.Di mensionKey | String | 否 | device | 监控项关联的维度信息键。取值范围与报警任务的监控类型有关： 当报警任务为自定义监控类型（即 MetricType=custom）时，不限制取值范围，由您自行指定。 当报警任务为系统监控类型（即 MetricType=system）时，取值范围如下： user id：您的账号ID。 _ scaling group：被监控的伸缩组。 _ device：网卡设备的类型。 state：TCP连接的状态。 |  |  |
+|   |   |   |   |   | X |   |
+| AlarmAction.N | RepeatL ist | 否 | ari:acs:ess:cn- hangzhou- env17- d01:140692647 ****:scalingrule/ asr- bp163l21e07uh n**** | 报警任务关联伸缩规则的唯一标识符。 |   |   |
+| Dimension.N.Di mensionKey | String | 否 | device | 监控项关联的维度信息键。取值范围与报警任务的监控类型有关： 当报警任务为自定义监控类型（即 MetricType=custom）时，不限制取值范围，由您自行指定。 当报警任务为系统监控类型（即 MetricType=system）时，取值范围如下： user id：您的账号ID。 _ scaling group：被监控的伸缩组。 _ device：网卡设备的类型。 state：TCP连接的状态。 |   |   |
 
-|  |  | ? |
+|   |   | ? |
 |---|---|---|
-
-弹性伸缩 ESS
 
 | Dimension.N.Di mensionValue | String | 否 | eth0 | 监控项关联的维度信息值，取值范围由 Dimension.N.DimensionKey 决定： 当 Dimension.N.DimensionKey 的取值是自定义的，即报警任务是自定义监控类型（即 MetricType=custom）时，该参数不限制取值范围，由您自行指定。 当 Dimension.N.DimensionKey 的取值是系统指定的取值范围中的，即报警任务为系统监控类型（即 MetricType=system）时，该参数取值范围如下： user id：由系统自动填充。 _ scaling group：由系统自动填充。 _ device： eth0：对于经典网络实例，eth0 表示内网网卡。对于VPC实例，只存在eth0一张网卡。 eth1：对于经典网络实例，eth1 代表外网网卡。 state： TCP TOTAL：表示总的TCP连接 _ 数。 ESTABLISHED：表示已建立的 TCP连接数。 |
 |---|---|---|---|---|
@@ -6742,30 +6746,34 @@ d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &Name=alarmtask**** &Description=Test alarm task. &MetricName=MemoryUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:140692647****:scalingrule/asr-bp163l21 e07uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}]
+http(s)://ess.example.com/?Action=ModifyAlarm &RegionId=cn-hangzhou-env17-d01 &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &Name=alarmtask**** &Description=Test alarm task. &MetricName=MemoryUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:140692647****:scalingrule/asr-bp163l21 e07uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyAlarmResponse>
     <AlarmTaskId>asg-bp1hvbnmkl10vll5****_83948190-acdd-483f-98f7-b77f4778****</AlarmTa
 skId>
     <RequestId>BACACF83-7070-4953-A8FD-D81F89F1****</RequestId>
+</ModifyAlarmResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_83948190-acdd-483f-98f7-b77f4778****",
  "RequestId": "BACACF83-7070-4953-A8FD-D81F89F1****"
-}
 ```
 
-#### EnableAlarm
+`}`
+
+#### 6.12.4 EnableAlarm
+
+调用EnableAlarm启用一个报警任务。
 
 **请求参数**
 
@@ -6773,8 +6781,6 @@ skId>
 |---|---|---|---|---|
 | Action | String | 是 | EnableAlarm | 系统规定参数，取值：EnableAlarm。 |
 | AlarmTaskId | String | 是 | asg- bp1hvbnmkl10vl l5**** f95ce797 _ -dc2e-4bad- 9618- 14fee7d1**** | 报警任务ID。 |
-
-弹性伸缩 ESS
 
 | RegionId | String | 是 | cn-qingdao- env17-d01 | 地域ID。 |
 |---|---|---|---|---|
@@ -6790,24 +6796,28 @@ skId>
 请求示例
 
 ```
-&AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01
+http(s)://ess.example.com/?Action=EnableAlarm &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<EnableAlarmResponse>
     <RequestId>688B18B8-FB1E-42EB-A1ED-7F55B090****</RequestId>
+</EnableAlarmResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "688B18B8-FB1E-42EB-A1ED-7F55B090****"
-}
 ```
 
-#### DisableAlarm
+`}`
+
+#### 6.12.5 DisableAlarm
+
+调用DisableAlarm停用一个报警任务。
 
 **请求参数**
 
@@ -6816,8 +6826,6 @@ skId>
 | Action | String | 是 | DisableAlarm | 系统规定参数，取值：DisableAlarm。 |
 | AlarmTaskId | String | 是 | asg- bp1hvbnmkl10vl l5**** f95ce797 _ -dc2e-4bad- 9618- 14fee7d1**** | 报警任务ID。 |
 | RegionId | String | 是 | cn-qingdao- env17-d01 | 地域ID。 |
-
-弹性伸缩 ESS
 
 **返回数据**
 
@@ -6830,24 +6838,26 @@ skId>
 请求示例
 
 ```
-&AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01
+http(s)://ess.example.com/?Action=DisableAlarm &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>086EFCD4-C76F-4DC6-9EE9-0D9B711E****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "086EFCD4-C76F-4DC6-9EE9-0D9B711E****"
-}
 ```
 
-#### DeleteAlarm
+`}`
+
+#### 6.12.6 DeleteAlarm
+
+调用DeleteAlarm删除一个报警任务。
 
 **请求参数**
 
@@ -6862,8 +6872,6 @@ skId>
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
 | AlarmTaskId | String | asg- bp1hvbnmkl10vll5* *** f95ce797- _ dc2e-4bad-9618- 14fee7d1**** | 报警任务ID。 |
 |---|---|---|---|
 | RequestId | String | 6EF9BFEE-FE07- 4627-B8FB- 14326FB9**** | 请求ID。 |
@@ -6873,37 +6881,39 @@ skId>
 请求示例
 
 ```
-&AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01
+http(s)://ess.example.com/?Action=DeleteAlarm &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteAlarmResponse>
     <AlarmTaskId>asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****</AlarmTa
 skId>
     <RequestId>6EF9BFEE-FE07-4627-B8FB-14326FB9****</RequestId>
+</DeleteAlarmResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****",
  "RequestId": "6EF9BFEE-FE07-4627-B8FB-14326FB9****"
-}
 ```
 
-### 生命周期挂钩
+`}`
 
-#### CreateLifecycleHook
+### 6.13 生命周期挂钩
+
+#### 6.13.1 CreateLifecycleHook
+
+调用CreateLifecycleHook为伸缩组创建一个或多个生命周期挂钩。
 
 **接口说明**
 
-一个伸缩组最多可以创建6个生命周期挂钩。创建了生命周期挂钩的伸缩组，在发生伸缩活动时，生命周期挂钩会暂停伸缩活动一段时间，具体等待时长可以通过HeartbeatTimeout参数指定。您可以在等待期间进行初始化ECS实例配置、获取ECS实例数据等操作。 弹性扩张活动时，ECS实例添加至RDS实例白名单后进入等待状态，等待状态结束后再加入SLB实例后端服务器组。弹性收缩活动时，ECS实例从SLB实例后端服务器组移出后进入等待状态，等待状态结束后再从 RDS实例白名单移出。 生命周期挂钩可以配置通知方式，支持MNS主题、MNS队列和OOS模板。如果配置OOS模板，您需要为 OOS服务创建RAM角色。具体操作，请参见运维编排服务中的为OOS服务设置RAM权限章节。 弹性伸缩 ESS 如果伸缩组有存量的ECS实例，且配置的OOS模板用于加入或移出除RDS外的其他云数据
+一个伸缩组最多可以创建6个生命周期挂钩。创建了生命周期挂钩的伸缩组，在发生伸缩活动时，生命周期挂钩会暂停伸缩活动一段时间，具体等待时长可以通过HeartbeatTimeout参数指定。您可以在等待期间进行初始化ECS实例配置、获取ECS实例数据等操作。 弹性扩张活动时，ECS实例添加至RDS实例白名单后进入等待状态，等待状态结束后再加入SLB实例后端服务器组。弹性收缩活动时，ECS实例从SLB实例后端服务器组移出后进入等待状态，等待状态结束后再从 RDS实例白名单移出。 生命周期挂钩可以配置通知方式，支持MNS主题、MNS队列和OOS模板。如果配置OOS模板，您需要为 OOS服务创建RAM角色。具体操作，请参见运维编排服务中的为OOS服务设置RAM权限章节。
 
-**说明**
-
-库白名单，则您必须手动将存量的ECS实例加入云数据库的白名单。
+> **说明：** 如果伸缩组有存量的ECS实例，且配置的OOS模板用于加入或移出除RDS外的其他云数据库白名单，则您必须手动将存量的ECS实例加入云数据库的白名单。
 
 **请求参数**
 
@@ -6915,32 +6925,28 @@ skId>
 | LifecycleHookNa me | String | 否 | lifecyclehook*** * | 生命周期挂钩的名称。不能与当前伸缩组其他生命周期挂钩重名，长度为2~64个英文或中文字符，以数字、大小写字母或中文开头，可包含数字、下划线（ ）、短划 _ 线（-）和半角句号（.）。 默认值为生命周期挂钩ID。 |
 | DefaultResult | String | 否 | CONTINUE | 等待状态结束后的下一步动作，取值范围： CONTINUE：继续响应弹性扩张活动或者继续响应弹性收缩活动。 ABANDON：直接释放弹性扩张活动创建出来的ECS实例或者直接将弹性收缩活动中的ECS实例从伸缩组移除。 当伸缩组发生弹性收缩活动（SCALE IN） _ 并触发多个生命周期挂钩时，DefaultResult为ABANDON的生命周期挂钩触发的等待状态结束时，会提前将其它对应的等待状态提前结束。其他情况下，下一步动作均以最后一个结束等待状态的下一步动作为准。 默认值：CONTINUE。 |
 
-弹性伸缩 ESS
-
-| HeartbeatTimeo ut |  |  | Integer |  |  |  |  | 生命周期挂钩为伸缩组活动设置的等待时间，等待状态超时后会执行下一步动作。 取值范围：30~21600，单位：秒。 创建了生命周期挂钩后，您可以调用API RecordLifecycleActionHeartbeat 接口延长ECS实例的等待时间，也可以调用API CompleteLifecycleAction 接口提前结束伸缩活动的等待状态。 默认值：600。 |  |  |  |
+| HeartbeatTimeo ut |   |   | Integer |   |   |   |   | 生命周期挂钩为伸缩组活动设置的等待时间，等待状态超时后会执行下一步动作。 取值范围：30~21600，单位：秒。 创建了生命周期挂钩后，您可以调用API RecordLifecycleActionHeartbeat 接口延长ECS实例的等待时间，也可以调用API CompleteLifecycleAction 接口提前结束伸缩活动的等待状态。 默认值：600。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  | 否 |  | 600 |  |  |  |  |
-| NotificationMeta data |  |  |  |  |  |  |  | 生命周期挂钩暂停伸缩活动时推送给 NotificationArn（通知对象）的通知信息，便于管理和标记不同类别的通知信息。必须同时指定NotificationArn。参数长度不能超过4096个字符。 如果NotificationArn指定为OOS模板，包括公共模板或者自定义模板，则 NotificationMetadata必须指定为JSON 字符串，且与OOS模板的参数相符。 例如， {"dbInstanceId": "dds- |  |  |  |
-|  |  |  |  |  |  |  |  |  | {"dbInstanceId": "dds- |  |  |
-|  |  |  |  |  |  |  |  | bp17661e0135****", |  |  |  |
-|  |  |  |  |  |  |  |  | "modifyMode": |  |  |  |
-|  |  |  |  |  |  |  |  | "Append"} |  |  |  |
-|  |  |  | String |  | 否 |  | Test lifecycle hook. |  |  |  |  |
+|   |   |   |   |   | 否 |   | 600 |   |   |   |   |
+| NotificationMeta data |   |   |   |   |   |   |   | 生命周期挂钩暂停伸缩活动时推送给 NotificationArn（通知对象）的通知信息，便于管理和标记不同类别的通知信息。必须同时指定NotificationArn。参数长度不能超过4096个字符。 如果NotificationArn指定为OOS模板，包括公共模板或者自定义模板，则 NotificationMetadata必须指定为JSON 字符串，且与OOS模板的参数相符。 例如， {"dbInstanceId": "dds- |   |   |   |
+|   |   |   |   |   |   |   |   |   | {"dbInstanceId": "dds- |   |   |
+|   |   |   |   |   |   |   |   | bp17661e0135****", |   |   |   |
+|   |   |   |   |   |   |   |   | "modifyMode": |   |   |   |
+|   |   |   |   |   |   |   |   | "Append"} |   |   |   |
+|   |   |   | String |   | 否 |   | Test lifecycle hook. |   |   |   |   |
 
-弹性伸缩 ESS
-
-| NotificationArn | String | 否 |  |  |  | 生命周期挂钩通知对象标识符，不设置本参数表示不发送通知，设置本参数时支持以下通知方式： 消息服务MNS队列，参数取值格式： acs:mns:{region-id}: |  |  |
+| NotificationArn | String | 否 |   |   |   | 生命周期挂钩通知对象标识符，不设置本参数表示不发送通知，设置本参数时支持以下通知方式： 消息服务MNS队列，参数取值格式： acs:mns:{region-id}: |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | acs:mns:{region-id}: |  |
-|  |  |  |  |  |  | {account- |  |  |
-|  |  |  |  |  |  | id}:queue/{queuename} |  |  |
-|  |  |  |  |  |  |  | acs:mns:{region-id}: |  |
-|  |  |  |  |  |  | {account- |  |  |
-|  |  |  |  |  |  | id}:topic/{topicname} |  |  |
-|  |  |  |  |  | acs:mns:cn- beijing-env17- d01:161456884 |  |  |  |
-|  |  |  |  |  |  |  | acs:oos:{region-id}: |  |
-|  |  |  |  |  | 340****:queue/ | {account- |  |  |
-|  |  |  |  |  | modifyLifecycle Ho**** | id}:template/{templatename} |  |  |
+|   |   |   |   |   |   |   | acs:mns:{region-id}: |   |
+|   |   |   |   |   |   | {account- |   |   |
+|   |   |   |   |   |   | id}:queue/{queuename} |   |   |
+|   |   |   |   |   |   |   | acs:mns:{region-id}: |   |
+|   |   |   |   |   |   | {account- |   |   |
+|   |   |   |   |   |   | id}:topic/{topicname} |   |   |
+|   |   |   |   |   | acs:mns:cn- beijing-env17- d01:161456884 |   |   |   |
+|   |   |   |   |   |   |   | acs:oos:{region-id}: |   |
+|   |   |   |   |   | 340****:queue/ | {account- |   |   |
+|   |   |   |   |   | modifyLifecycle Ho**** | id}:template/{templatename} |   |   |
 
 **返回数据**
 
@@ -6957,21 +6963,23 @@ skId>
 http(s)://ess.example.com/?Action=CreateLifecycleHook &ScalingGroupId=asg-bp1eyv4qn8ssgv43**** &LifecycleHookName=lifecyclehook**** &LifecycleTransition=SCALE_OUT &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &NotificationMetadata=Test lifecycle hook.
 ```
 
-`&<`公共请求参数> 正常返回示例弹性伸缩 ESS `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateLifecycleHookResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <LifecycleHookId>ash-bp1at9ufhmcf9cmy****</LifecycleHookId>
+</CreateLifecycleHookResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "LifecycleHookId": "ash-bp1at9ufhmcf9cmy****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6985,11 +6993,13 @@ http(s)://ess.example.com/?Action=CreateLifecycleHook &ScalingGroupId=asg-bp1eyv
 | 400 | InvalidLifecycleHookN ame.Duplicate | The specified value of parameter lifecycleHookName is duplicated. | 生命周期挂钩已存在。 |
 | 400 | QuotaExceeded.Lifecy cleHook | Lifecycle hook quota exceeded in the specified scaling group. | 一个伸缩组最多可以创建 6个生命周期挂钩。 |
 
-弹性伸缩 ESS
+#### 6.13.2 ModifyLifecycleHook
 
-#### ModifyLifecycleHook
+调用ModifyLifecycleHook修改一个生命周期挂钩的信息。
 
 **接口说明**
+
+您可以通过以下两种方式指定待修改的生命周期挂钩： 只指定生命周期挂钩ID（ `LifecycleHookId` ），此时将忽
 
 ```
 略 ScalingGroupId 和 LifecycleHookName 参数。
@@ -6999,33 +7009,31 @@ http(s)://ess.example.com/?Action=CreateLifecycleHook &ScalingGroupId=asg-bp1eyv
 
 **请求参数**
 
-| 名称 | 类型 |  | 是否必选 | 示例值 | 描述 |  |
+| 名称 | 类型 |   | 是否必选 | 示例值 | 描述 |   |
 |---|---|---|---|---|---|---|
-| Action | String |  | 是 | ModifyLifecycleH ook | 系统规定参数，取值： ModifyLifecycleHook。 |  |
-| LifecycleHookId | String |  | 否 | ash- bp1fxuqyi98w0a ib**** | 待修改生命周期挂钩的ID，用于指定生命周期挂钩。 |  |
-| ScalingGroupId | String |  | 否 | asg- bp18p2yfxow2dl oq**** | 伸缩组的ID，用于指定生命周期挂钩。 |  |
-| LifecycleHookNa me | String |  | 否 | test SCALE IN _ _ | 待修改生命周期挂钩的名称，用于指定生命周期挂钩。 |  |
-| DefaultResult | String |  | 否 | CONTINUE | 等待状态结束后的下一步动作，取值范围： CONTINUE：继续响应弹性扩张活动或者继续响应弹性收缩活动。 ABANDON：直接释放弹性扩张活动创建出来的ECS实例或者直接将弹性收缩活动中的ECS实例从伸缩组移除。 当伸缩组发生弹性收缩活动（SCALE IN） _ 并触发多个生命周期挂钩时，DefaultResult为ABANDON的生命周期挂钩触发的等待状态结束时，会提前将其它对应的等待状态提前结束。其他情况下，下一步动作均以最后一个结束等待状态的下一步动作为准。 |  |
-| HeartbeatTimeo ut | Integer |  | 否 | 600 | 生命周期挂钩为伸缩组活动设置的等待时间，等待状态超时后会执行下一步动作。 取值范围：30~21600，单位：秒。 您可以调用API RecordLifecycleActionHeartbeat 接口延长ECS实例的等待时间，也可以调用API CompleteLifecycleAction 接口提前结束伸缩活动的等待状态。 |  |
-|  |  |  |  |  |  | RecordLifecycleActionHeartbeat |
+| Action | String |   | 是 | ModifyLifecycleH ook | 系统规定参数，取值： ModifyLifecycleHook。 |   |
+| LifecycleHookId | String |   | 否 | ash- bp1fxuqyi98w0a ib**** | 待修改生命周期挂钩的ID，用于指定生命周期挂钩。 |   |
+| ScalingGroupId | String |   | 否 | asg- bp18p2yfxow2dl oq**** | 伸缩组的ID，用于指定生命周期挂钩。 |   |
+| LifecycleHookNa me | String |   | 否 | test SCALE IN _ _ | 待修改生命周期挂钩的名称，用于指定生命周期挂钩。 |   |
+| DefaultResult | String |   | 否 | CONTINUE | 等待状态结束后的下一步动作，取值范围： CONTINUE：继续响应弹性扩张活动或者继续响应弹性收缩活动。 ABANDON：直接释放弹性扩张活动创建出来的ECS实例或者直接将弹性收缩活动中的ECS实例从伸缩组移除。 当伸缩组发生弹性收缩活动（SCALE IN） _ 并触发多个生命周期挂钩时，DefaultResult为ABANDON的生命周期挂钩触发的等待状态结束时，会提前将其它对应的等待状态提前结束。其他情况下，下一步动作均以最后一个结束等待状态的下一步动作为准。 |   |
+| HeartbeatTimeo ut | Integer |   | 否 | 600 | 生命周期挂钩为伸缩组活动设置的等待时间，等待状态超时后会执行下一步动作。 取值范围：30~21600，单位：秒。 您可以调用API RecordLifecycleActionHeartbeat 接口延长ECS实例的等待时间，也可以调用API CompleteLifecycleAction 接口提前结束伸缩活动的等待状态。 |   |
+|   |   |   |   |   |   | RecordLifecycleActionHeartbeat |
 
-弹性伸缩 ESS
-
-| LifecycleTransiti on | String | 否 |  |  | SCALE IN _ | 生命周期挂钩适用的伸缩活动类型，取值范围： SCALE OUT：伸缩组弹性扩张活动 。 _ SCALE IN：伸缩组弹性收缩活动。 _ |  |  |
+| LifecycleTransiti on | String | 否 |   |   | SCALE IN _ | 生命周期挂钩适用的伸缩活动类型，取值范围： SCALE OUT：伸缩组弹性扩张活动 。 _ SCALE IN：伸缩组弹性收缩活动。 _ |   |   |
 |---|---|---|---|---|---|---|---|---|
-| NotificationMeta data | String | 否 |  |  | Test | 伸缩活动的等待状态的固定字符串信息。 参数长度不能超过128个字符。 弹性伸缩每次推送消息到通知对象时，会同时发送您预先指定的 NotificationMetadata参数值，便于管理和标记不同类别的通知信息。当您同时指定了NotificationArn参数时，NotificationMetadata参数方可生效。 |  |  |
-| NotificationArn | String | 否 |  |  |  | 生命周期挂钩通知对象标识符，设置本参数时支持以下通知方式： 消息服务MNS队列，参数取值格式： acs:mns:{region-id}: |  |  |
-|  |  |  |  |  |  |  | acs:mns:{region-id}: |  |
-|  |  |  |  |  |  | {account- |  |  |
-|  |  |  |  |  |  | id}:queue/{queuename} |  |  |
-|  |  |  |  |  |  |  | acs:mns:{region-id}: |  |
-|  |  |  |  |  |  | {account- |  |  |
-|  |  |  |  |  | acs:mns:cn- | id}:topic/{topicname} |  |  |
-|  |  |  |  |  | beijing-env17- d01:161456884 |  |  |  |
-|  |  |  |  |  |  |  | acs:oos:{region-id}: |  |
-|  |  |  |  |  | 340****:queue/ | {account- |  |  |
-|  |  |  |  |  | modifyLifecycle Ho**** | id}:template/{templatename} |  |  |
-| RegionId | String | 否 |  |  | cn-beijing- env17-d01 | 伸缩组所属的地域ID。 |  |  |
+| NotificationMeta data | String | 否 |   |   | Test | 伸缩活动的等待状态的固定字符串信息。 参数长度不能超过128个字符。 弹性伸缩每次推送消息到通知对象时，会同时发送您预先指定的 NotificationMetadata参数值，便于管理和标记不同类别的通知信息。当您同时指定了NotificationArn参数时，NotificationMetadata参数方可生效。 |   |   |
+| NotificationArn | String | 否 |   |   |   | 生命周期挂钩通知对象标识符，设置本参数时支持以下通知方式： 消息服务MNS队列，参数取值格式： acs:mns:{region-id}: |   |   |
+|   |   |   |   |   |   |   | acs:mns:{region-id}: |   |
+|   |   |   |   |   |   | {account- |   |   |
+|   |   |   |   |   |   | id}:queue/{queuename} |   |   |
+|   |   |   |   |   |   |   | acs:mns:{region-id}: |   |
+|   |   |   |   |   |   | {account- |   |   |
+|   |   |   |   |   | acs:mns:cn- | id}:topic/{topicname} |   |   |
+|   |   |   |   |   | beijing-env17- d01:161456884 |   |   |   |
+|   |   |   |   |   |   |   | acs:oos:{region-id}: |   |
+|   |   |   |   |   | 340****:queue/ | {account- |   |   |
+|   |   |   |   |   | modifyLifecycle Ho**** | id}:template/{templatename} |   |   |
+| RegionId | String | 否 |   |   | cn-beijing- env17-d01 | 伸缩组所属的地域ID。 |   |   |
 
 **返回数据**
 
@@ -7035,25 +7043,27 @@ http(s)://ess.example.com/?Action=CreateLifecycleHook &ScalingGroupId=asg-bp1eyv
 
 **示例**
 
-弹性伸缩 ESS 请求示例
+请求示例
 
 ```
 http(s)://ess.example.com/?Action=ModifyLifecycleHook &LifecycleHookId=ash-bp1fxuqyi98w0aib**** &ScalingGroupId=asg-bp18p2yfxow2dloq**** &LifecycleHookName=test_SCALE_IN &DefaultResult=CONTINUE &HeartbeatTimeout=600 &LifecycleTransition=SCALE_IN &NotificationMetadata=Test &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &RegionId=cn-beijing-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ModifyLifecycleHookResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyLifecycleHookResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7064,14 +7074,12 @@ http(s)://ess.example.com/?Action=ModifyLifecycleHook &LifecycleHookId=ash-bp1fx
 | 400 | InvalidLifecycleHookN ame.NotExist | The specified LifecycleHookName you provided not exist. | 指定的 LifecycleHookName不存在。 |
 | 400 | InvalidNotificationArn | The specified parameter NotificationArn is invalid. | 指定的NotificationArn不存在。 |
 
-弹性伸缩 ESS
-
 | 400 | UnsupportedNotificatio nType.CurrentRegion | The NotificationType is not supported in the special region which scalingGroup belongs to. | 当前地域不支持该通知方式。 |
 |---|---|---|---|
 | 400 | LifecycleHook | The specified queue does not exist. | 指定的MNS队列不存在。 |
 | 400 | TopicNotExist | The specified topic does not exist. | 指定的MNS主题不存在。 |
 
-#### RecordLifecycleActionHeartbeat
+#### 6.13.3 RecordLifecycleActionHeartbeat
 
 调用RecordLifecycleActionHeartbeat延长一个生命周期挂钩触发后被挂起的ECS实例的等待时间。
 
@@ -7094,8 +7102,6 @@ ECS实例的等待时间不能超过6小时，每次等待状态最多能被延�
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | 请求ID。 |
 |---|---|---|---|
 
@@ -7107,19 +7113,21 @@ ECS实例的等待时间不能超过6小时，每次等待状态最多能被延�
 http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookId=ash-bp1fxuqyi98w0aib**** &lifecycleActionToken=F324B880-900E-4968-85DD-81691113**** &heartbeatTimeout=600 &RegionId=cn-hangzhou-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<RecordLifecycleActionHeartbeatResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</RecordLifecycleActionHeartbeatResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7129,14 +7137,16 @@ http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookI
 | 400 | LifecycleHookIdAndLif ecycleActionToken.Inv alid | The specified LifecycleActionToken and LifecycleHookId you provided does not match any in process lifecycle action. | 根据指定的 LifecycleActionToken无法匹配 LifecycleHookId。 |
 | 400 | LifecycleAction.TimeEx ceeded | The specified parameter heartbeatTime exceed lifecycleAction max suspend time. | 等待时间最长不能超过6 小时。 |
 
-弹性伸缩 ESS
-
 | 400 | LifecycleAction.Record TimesExceeded | The specified lifecycleAction exceed lifecycleAction max record times. | 每次等待状态最多能被延时20次。 |
 |---|---|---|---|
 
-#### DescribeLifecycleHooks
+#### 6.13.4 DescribeLifecycleHooks
+
+调用DescribeLifecycleHooks查询生命周期挂钩。
 
 **接口说明**
+
+您可以通过以下三种方式查询生命周期挂钩：
 
 | 定一个生命周期挂钩ID列表（ LifecycleHookId.N ScalingGroupId 和 LifecycleHookName 参数。 定伸缩组ID（ ScalingGroupId ）。 时指定伸缩组ID（ ScalingGroupId ）和生命周期挂 | LifecycleHookId.N |
 |---|---|
@@ -7158,11 +7168,9 @@ http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookI
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
-| LifecycleHooks | Array of LifecycleHook |  | 生命周期挂钩信息列表。 |
+| LifecycleHooks | Array of LifecycleHook |   | 生命周期挂钩信息列表。 |
 |---|---|---|---|
-| LifecycleHook |  |  |  |
+| LifecycleHook |   |   |   |
 | DefaultResult | String | CONTINUE | 等待状态结束后的下一步动作。 |
 | HeartbeatTime out | Integer | 60 | 生命周期挂钩为伸缩组活动设置的等待时间，等待状态超时后会执行下一步动作。 |
 | LifecycleHookI d | String | ash- bp19d1032y9kij96 **** | 生命周期挂钩ID。 |
@@ -7175,8 +7183,6 @@ http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookI
 | PageSize | Integer | 50 | 查询每页返回行数。 |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C**** | 请求ID。 |
 
-弹性伸缩 ESS
-
 | TotalCount | Integer | 1 | 生命周期挂钩总个数。 |
 |---|---|---|---|
 
@@ -7188,9 +7194,10 @@ http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookI
 http(s)://ess.example.com/?Action=DescribeLifecycleHooks &ScalingGroupId=asg-bp1igpak5ft1flyp**** &LifecycleHookName=lifecyclehook**** &PageNumber=1 &PageSize=50 &LifecycleHookId=["ash-bp1at9ufhmcf9cmy****"] &RegionId=cn-beijing-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeLifecycleHooksResponse>
     <TotalCount>1</TotalCount>
     <PageSize>50</PageSize>
     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C****</RequestId>
@@ -7206,12 +7213,12 @@ d01:161456884340****:null/null</NotificationArn>
         <DefaultResult>CONTINUE</DefaultResult>
         <LifecycleHookId>ash-bp19d1032y9kij96****</LifecycleHookId>
     </LifecycleHooks>
+<DescribeLifecycleHooksResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 1,
     "PageSize": 50,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C****",
@@ -7225,9 +7232,9 @@ d01:161456884340****:null/null</NotificationArn>
         "NotificationMetadata": "Test Lifecycle Hook.",
         "DefaultResult": "CONTINUE",
         "LifecycleHookId": "ash-bp19d1032y9kij96****"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -7235,7 +7242,7 @@ d01:161456884340****:null/null</NotificationArn>
 |---|---|---|---|
 | 400 | InvalidParamter | The specified value of parameter is not valid. | 指定的参数值不合法。 |
 
-#### DescribeLifecycleActions
+#### 6.13.5 DescribeLifecycleActions
 
 调用DescribeLifecycleActions查看伸缩活动对应的生命周期操作。
 
@@ -7250,8 +7257,6 @@ d01:161456884340****:null/null</NotificationArn>
 | Action | String | 是 | DescribeLifecycl eActions | 系统规定参数。取值： DescribeLifecycleActions。 |
 | ScalingActivityId | String | 是 | asa- bp17mug9t0peg agw**** | 伸缩活动的ID。 |
 
-弹性伸缩 ESS
-
 | LifecycleActionS tatus | String | 否 | Pending | 生命周期操作的状态。取值范围： Pending：挂起中。表示ECS实例仍处于挂起中状态。 Timeout：已超时。表示已到达生命周期挂钩的超时时间，自动结束ECS实例的挂起中状态。 Completed：已处理。表示您手动提前结束了ECS实例的挂起中状态。 |
 |---|---|---|---|---|
 | NextToken | String | 否 | AAAAAcSz4VTb1 Nq**** | 查询凭证，用于指定开始查询的位置。 例如上次查询10条生命周期操作后，本次从第11条生命周期操作开始查询。取值为上次调用本接口返回的NextToken参数值，如果不填写取值则表示从头开始查询。 |
@@ -7262,14 +7267,12 @@ d01:161456884340****:null/null</NotificationArn>
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| LifecycleAction s | Array of LifecycleAction |  | 各个生命周期挂钩对应的生命周期操作列表。 |
-| LifecycleAction |  |  |  |
+| LifecycleAction s | Array of LifecycleAction |   | 各个生命周期挂钩对应的生命周期操作列表。 |
+| LifecycleAction |   |   |   |
 | InstanceIds | List | ["i- bp11m3fzlqrgk5vh ****","i- bp11m3fzlqrgk5vh ****"] | 该生命周期挂钩挂起的ECS实例的ID列表。 |
 | LifecycleAction Result | String | CONTINUE | 该生命周期挂钩触发的生命周期操作结束后的下一步动作。取值范围： CONTINUE：继续响应弹性扩张活动，将ECS 实例添加至伸缩组；继续响应弹性收缩活动， 将ECS实例从伸缩组移除。 ABANDON：终止弹性扩张活动，直接释放创建出来的ECS实例；继续响应弹性收缩活动， 将ECS实例从伸缩组移除。 |
 | LifecycleAction Status | String | Pending | 生命周期操作的状态。 |
 | LifecycleAction Token | String | 9C2E9DA7-F794- 449A-ACF6- CEE24444F7BB | 生命周期操作的标识符。 |
-
-弹性伸缩 ESS
 
 | LifecycleHookI d | String | ash- bp18uoft0deax0f7* *** | 生命周期挂钩的ID。 |
 |---|---|---|---|
@@ -7286,9 +7289,10 @@ d01:161456884340****:null/null</NotificationArn>
 http(s)://ess.example.com/?Action=DescribeLifecycleActions &ScalingActivityId=asa-bp17mug9t0pegagw**** &LifecycleActionStatus=Pending &NextToken=AAAAAcSz4VTb1Nq**** &MaxResults=10 &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeLifecycleActionsResponse>
     <TotalCount>3</TotalCount>
     <RequestId>42A742EB-FCF3-459E-9C62-E107048C****</RequestId>
     <NextToken>AAAAAcSz4VTb1Nq****</NextToken>
@@ -7301,12 +7305,12 @@ CEE24444F7BB</LifecycleActionToken>
         <LifecycleHookId>ash-bp18uoft0deax0f7****</LifecycleHookId>
         <InstanceIds>["i-bp11m3fzlqrgk5vh****","i-bp11m3fzlqrgk5vh****"]</InstanceIds>
     </LifecycleActions>
+<DescribeLifecycleActionsResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 3,
     "RequestId": "42A742EB-FCF3-459E-9C62-E107048C****",
     "NextToken": "AAAAAcSz4VTb1Nq****",
@@ -7317,9 +7321,9 @@ CEE24444F7BB</LifecycleActionToken>
         "LifecycleActionToken": "9C2E9DA7-F794-449A-ACF6-CEE24444F7BB",
         "LifecycleHookId": "ash-bp18uoft0deax0f7****",
         "InstanceIds": "[\"i-bp11m3fzlqrgk5vh****\",\"i-bp11m3fzlqrgk5vh****\"]"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -7329,7 +7333,9 @@ CEE24444F7BB</LifecycleActionToken>
 | 400 | InvalidParameter | The specified value of parameter "MaxResults" is not valid. | 指定的参数 （MaxResults）无效。 |
 | 400 | InvalidParameter | The specified value of parameter "LifecycleActionStatus " is not valid. | 指定的参数 （LifecycleActionStatu s）无效。 |
 
-#### CompleteLifecycleAction
+#### 6.13.6 CompleteLifecycleAction
+
+调用CompleteLifecycleAction提前结束伸缩活动的等待状态。
 
 **接口说明**
 
@@ -7340,8 +7346,6 @@ CEE24444F7BB</LifecycleActionToken>
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CompleteLifecyc leAction | 系统规定参数，取值： CompleteLifecycleAction。 |
-
-弹性伸缩 ESS
 
 | LifecycleActionT oken | String | 是 | aaaa-bbbbb- cccc-ddddd | 伸缩活动的等待状态标识符，您可以从生命周期挂钩指定的消息服务队列或主题中获取该值。 |
 |---|---|---|---|---|
@@ -7358,25 +7362,27 @@ CEE24444F7BB</LifecycleActionToken>
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
 http(s)://ess.example.com/?Action=CompleteLifecycleAction &LifecycleHookId=ash-bp14g3ee6bt3sc98**** &LifecycleActionToken=aaaa-bbbbb-cccc-ddddd &LifecycleActionResult=CONTINUE &ClientToken=123e4567-e89b-12d3-a456-42665544**** &RegionId=cn-qingdao-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CompleteLifecycleActionResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</CompleteLifecycleActionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7385,21 +7391,21 @@ http(s)://ess.example.com/?Action=CompleteLifecycleAction &LifecycleHookId=ash-b
 | 400 | InvalidParamter | The specified value of parameter is invalid. | 指定的参数值不合法。 |
 | 400 | LifecycleHookIdAndLif ecycleActionToken.Inv alid | The specified LifecycleActionToken and LifecycleHookId you provided does not match any in process lifecycle action. | 根据指定的 LifecycleActionToken无法匹配 LifecycleHookId。 |
 
-#### DeleteLifecycleHook
+#### 6.13.7 DeleteLifecycleHook
+
+调用DeleteLifecycleHook删除一个生命周期挂钩。
 
 **接口说明**
 
-如果生命周期挂钩已触发伸缩活动等待状态，删除生命周期挂钩时，对应的等待状态会被提前结束。您可以
+如果生命周期挂钩已触发伸缩活动等待状态，删除生命周期挂钩时，对应的等待状态会被提前结束。您可以通过以下两种方式删除生命周期挂钩：
 
-| 定生命周期挂钩ID（ |  | LifecycleHookId |  | ）， |
+| 定生命周期挂钩ID（ |   | LifecycleHookId |   | ）， |
 |---|---|---|---|---|
-| ScalingGroupId |  |  |  |  |
-|  |  | 和 |  |  |
-| 时指定伸缩组ID（ | ScalingGroupId |  | ）与生命 |  |
+| ScalingGroupId |   |   |   |   |
+|   |   | 和 |   |   |
+| 时指定伸缩组ID（ | ScalingGroupId |   | ）与生命 |   |
 
 **请求参数**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -7423,23 +7429,23 @@ http(s)://ess.example.com/?Action=CompleteLifecycleAction &LifecycleHookId=ash-b
 http(s)://ess.example.com/?Action=DeleteLifecycleHook &LifecycleHookId=ash-bp14g3ee6bt3sc98**** &ScalingGroupId=asg-bp18p2yfxow2dloq**** &LifecycleHookName=lifecyclehook**** &RegionId=cn-hangzhou-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteLifecycleHookResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</DeleteLifecycleHookResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
 
-**错误码**
+`}`
 
-弹性伸缩 ESS
+**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -7447,9 +7453,9 @@ http(s)://ess.example.com/?Action=DeleteLifecycleHook &LifecycleHookId=ash-bp14g
 | 400 | InvalidLifecycleHookId. NotExist | The specified LifecycleHookId does not exist. | 生命周期挂钩ID不存在。 |
 | 400 | InvalidLifecycleHookN ame.NotExist | The specified LifecycleHookName you provided does not exist. | 生命周期挂钩名称不存在。 |
 
-### 事件通知
+### 6.14 事件通知
 
-#### CreateNotificationConfiguration
+#### 6.14.1 CreateNotificationConfiguration
 
 调用CreateNotificationConfiguration创建弹性伸缩事件及资源变化通知。
 
@@ -7463,24 +7469,22 @@ http(s)://ess.example.com/?Action=DeleteLifecycleHook &LifecycleHookId=ash-bp14g
 |---|---|---|---|---|
 | Action | String | 是 | CreateNotificatio nConfiguration | 系统规定参数。取值： CreateNotificationConfiguration。 |
 
-弹性伸缩 ESS
-
-| NotificationArn | String | 是 |  |  |  |  | 通知对象标识符，设置本参数时支持以下通知方式： 云监控，参数取值格式： acs:ess: |  |  |  |
+| NotificationArn | String | 是 |   |   |   |   | 通知对象标识符，设置本参数时支持以下通知方式： 云监控，参数取值格式： acs:ess: |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | acs:ess: |  |
-|  |  |  |  |  |  |  | {region-id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:cloudmonitor |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  | acs:mns:cn- |  | {account- |  |  |  |
-|  |  |  |  |  | beijing-env17- |  |  |  |  |  |
-|  |  |  |  |  | d01:161456884 |  | id}:queue/{queuename} |  |  |  |
-|  |  |  |  |  | 340****:queue/ modifyLifecycle |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  | Ho**** |  | {account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-| NotificationType. N | RepeatL ist | 是 |  |  | AUTOSCALING:S CALE OUT SUCC _ _ ESS |  | 一类或者多类弹性伸缩事件及资源变化通知。N的取值范围：1~8，多个取值使用重复列表的形式。 您可以调用API DescribeNotificationTypes 接口查询参数取值。 |  |  |  |
-| ScalingGroupId | String | 是 |  |  | AG6CQdPU8OKd wLjgZcJ**** |  | 伸缩组的ID。 |  |  |  |
-| RegionId | String | 否 |  |  | cn-beijing- env17-d01 |  | 伸缩组所属的地域ID。 |  |  |  |
+|   |   |   |   |   |   |   |   |   | acs:ess: |   |
+|   |   |   |   |   |   |   | {region-id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:cloudmonitor |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   | acs:mns:cn- |   | {account- |   |   |   |
+|   |   |   |   |   | beijing-env17- |   |   |   |   |   |
+|   |   |   |   |   | d01:161456884 |   | id}:queue/{queuename} |   |   |   |
+|   |   |   |   |   | 340****:queue/ modifyLifecycle |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   | Ho**** |   | {account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
+| NotificationType. N | RepeatL ist | 是 |   |   | AUTOSCALING:S CALE OUT SUCC _ _ ESS |   | 一类或者多类弹性伸缩事件及资源变化通知。N的取值范围：1~8，多个取值使用重复列表的形式。 您可以调用API DescribeNotificationTypes 接口查询参数取值。 |   |   |   |
+| ScalingGroupId | String | 是 |   |   | AG6CQdPU8OKd wLjgZcJ**** |   | 伸缩组的ID。 |   |   |   |
+| RegionId | String | 否 |   |   | cn-beijing- env17-d01 |   | 伸缩组所属的地域ID。 |   |   |   |
 
 **返回数据**
 
@@ -7496,7 +7500,7 @@ http(s)://ess.example.com/?Action=DeleteLifecycleHook &LifecycleHookId=ash-bp14g
 http(s)://ess.example.com/?Action=CreateNotificationConfiguration &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &NotificationType.1=AUTOSCALING:SCALE_OUT_SUCCESS &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ****
 ```
 
-`&<`公共请求参数> 弹性伸缩 ESS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateNotificationConfigurationResponse>
@@ -7504,13 +7508,13 @@ http(s)://ess.example.com/?Action=CreateNotificationConfiguration &NotificationA
 </CreateNotificationConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7524,39 +7528,35 @@ http(s)://ess.example.com/?Action=CreateNotificationConfiguration &NotificationA
 | 400 | TopicNotExist | The specified topic topicname does not exist. | 指定的MNS主题不存在。 |
 | 400 | UnsupportedNotificatio nType.CurrentRegion | The notificationType is not supported in the special region which scalingGroup belongs to. | 当前地域不支持该通知方式。 |
 
-弹性伸缩 ESS
-
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 |---|---|---|---|
 
-#### ModifyNotificationConfiguration
+#### 6.14.2 ModifyNotificationConfiguration
 
 调用ModifyNotificationConfiguration修改一条弹性伸缩事件及资源变化通知的信息。
 
 **请求参数**
 
-| 名称 | 类型 | 是否必选 |  |  | 示例值 |  | 描述 |  |  |  |
+| 名称 | 类型 | 是否必选 |   |   | 示例值 |   | 描述 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Action | String | 是 |  |  | ModifyNotificatio nConfiguration |  | 系统规定参数。取值： ModifyNotificationConfiguration。 |  |  |  |
-| NotificationArn | String | 是 |  |  |  |  | 通知对象标识符，设置本参数时支持以下通知方式： 云监控，参数取值格式： acs:ess: |  |  |  |
-|  |  |  |  |  |  |  |  |  | acs:ess: |  |
-|  |  |  |  |  |  |  | {region-id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:cloudmonitor |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  |  |  | {account- |  |  |  |
-|  |  |  |  |  | acs:ess:cn- |  |  |  |  |  |
-|  |  |  |  |  | beijing-env17- |  | id}:queue/{queuename} |  |  |  |
-|  |  |  |  |  | d01:161456884 340****:cloudm |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  | onitor |  | {account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-| NotificationType. N | RepeatL ist | 是 |  |  | AUTOSCALING:S CALE OUT SUCC _ _ ESS |  | 一类或者多类弹性伸缩事件及资源变化通知。N的取值范围：1~8，多个取值使用重复列表的形式。 您可以调用API DescribeNotificationTypes 接口查询参数取值。 |  |  |  |
-| ScalingGroupId | String | 是 |  |  | AG6CQdPU8OKd wLjgZcJ**** |  | 伸缩组的ID。 |  |  |  |
-| RegionId | String | 否 |  |  | cn-beijing- env17-d01 |  | 伸缩组所属的地域ID。 |  |  |  |
+| Action | String | 是 |   |   | ModifyNotificatio nConfiguration |   | 系统规定参数。取值： ModifyNotificationConfiguration。 |   |   |   |
+| NotificationArn | String | 是 |   |   |   |   | 通知对象标识符，设置本参数时支持以下通知方式： 云监控，参数取值格式： acs:ess: |   |   |   |
+|   |   |   |   |   |   |   |   |   | acs:ess: |   |
+|   |   |   |   |   |   |   | {region-id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:cloudmonitor |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   |   |   | {account- |   |   |   |
+|   |   |   |   |   | acs:ess:cn- |   |   |   |   |   |
+|   |   |   |   |   | beijing-env17- |   | id}:queue/{queuename} |   |   |   |
+|   |   |   |   |   | d01:161456884 340****:cloudm |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   | onitor |   | {account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
+| NotificationType. N | RepeatL ist | 是 |   |   | AUTOSCALING:S CALE OUT SUCC _ _ ESS |   | 一类或者多类弹性伸缩事件及资源变化通知。N的取值范围：1~8，多个取值使用重复列表的形式。 您可以调用API DescribeNotificationTypes 接口查询参数取值。 |   |   |   |
+| ScalingGroupId | String | 是 |   |   | AG6CQdPU8OKd wLjgZcJ**** |   | 伸缩组的ID。 |   |   |   |
+| RegionId | String | 否 |   |   | cn-beijing- env17-d01 |   | 伸缩组所属的地域ID。 |   |   |   |
 
 **返回数据**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -7570,7 +7570,7 @@ http(s)://ess.example.com/?Action=CreateNotificationConfiguration &NotificationA
 http(s)://ess.example.com/?Action=ModifyNotificationConfiguration &NotificationArn=acs:ess:cn-beijing-env17-d01:161456884340****:cloudmonitor &NotificationType.1=AUTOSCALING:SCALE_OUT_SUCCESS &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyNotificationConfigurationResponse>
@@ -7578,13 +7578,13 @@ http(s)://ess.example.com/?Action=ModifyNotificationConfiguration &NotificationA
 </ModifyNotificationConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
         "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7594,13 +7594,11 @@ http(s)://ess.example.com/?Action=ModifyNotificationConfiguration &NotificationA
 | 400 | NotificationConfigurati onNotExist | The specified notification configuration not exist for the scaling group. | 当前伸缩组不存在指定的弹性伸缩事件及资源变化通知类型。 |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 
-#### DescribeNotificationConfigurations
+#### 6.14.3 DescribeNotificationConfigurations
 
 调用DescribeNotificationConfigurations查询您创建的弹性伸缩事件及资源变化通知。
 
 **请求参数**
-
-弹性伸缩 ESS
 
 **请求参数**
 
@@ -7612,35 +7610,35 @@ http(s)://ess.example.com/?Action=ModifyNotificationConfiguration &NotificationA
 
 **返回数据**
 
-| 名称 | 类型 |  | 示例值 |  |  | 描述 |  |  |  |  |
+| 名称 | 类型 |   | 示例值 |   |   | 描述 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| NotificationCo nfigurationMo dels | Array of NotificationCo nfigurationMo del |  |  |  |  | 弹性伸缩事件及资源变化通知的集合。 |  |  |  |  |
-| NotificationCo nfigurationMo del |  |  |  |  |  |  |  |  |  |  |
-| NotificationArn | String |  |  |  |  | 通知对象标识符，参数格式如下： 云监控： acs:ess:{region-id}: {account-id}:cloudmonitor 。 |  |  |  |  |
-|  |  |  |  |  |  |  | acs:ess:{region-id}: |  |  |  |
-|  |  |  |  |  |  | {account-id}:cloudmonitor |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 。 |
-|  |  |  |  |  |  | 消息服务MNS队列： |  | acs:mns:{region- |  |  |
-|  |  |  |  |  |  | id}:{account- |  |  |  |  |
-|  |  |  | acs:mns:cn- |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | id}:queue/{queuename} |  |  | 。 |  |
-|  |  |  | beijing:161456884 340****:topic/modi |  |  | 消息服务MNS主题： |  | acs:mns:{region- |  |  |
-|  |  |  |  |  | ***:topic/modi | id}:{account- |  |  |  |  |
-|  |  |  | fyLifecycleHo**** |  | ecycleHo**** |  |  |  |  |  |
-|  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |  |
-| NotificationTy pes | List |  | AUTOSCALING:SCA LE IN SUCCESS _ _ |  |  | 弹性伸缩事件及资源变化通知类型列表。 |  |  |  |  |
-| ScalingGroupI d | String |  | asg- bp1igpak5ft1flyp** ** |  |  | 伸缩组的ID。 |  |  |  |  |
-| RequestId | String |  | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** |  |  | 请求ID。 |  |  |  |  |
+| NotificationCo nfigurationMo dels | Array of NotificationCo nfigurationMo del |   |   |   |   | 弹性伸缩事件及资源变化通知的集合。 |   |   |   |   |
+| NotificationCo nfigurationMo del |   |   |   |   |   |   |   |   |   |   |
+| NotificationArn | String |   |   |   |   | 通知对象标识符，参数格式如下： 云监控： acs:ess:{region-id}: {account-id}:cloudmonitor 。 |   |   |   |   |
+|   |   |   |   |   |   |   | acs:ess:{region-id}: |   |   |   |
+|   |   |   |   |   |   | {account-id}:cloudmonitor |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 。 |
+|   |   |   |   |   |   | 消息服务MNS队列： |   | acs:mns:{region- |   |   |
+|   |   |   |   |   |   | id}:{account- |   |   |   |   |
+|   |   |   | acs:mns:cn- |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | id}:queue/{queuename} |   |   | 。 |   |
+|   |   |   | beijing:161456884 340****:topic/modi |   |   | 消息服务MNS主题： |   | acs:mns:{region- |   |   |
+|   |   |   |   |   | ***:topic/modi | id}:{account- |   |   |   |   |
+|   |   |   | fyLifecycleHo**** |   | ecycleHo**** |   |   |   |   |   |
+|   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |   |
+| NotificationTy pes | List |   | AUTOSCALING:SCA LE IN SUCCESS _ _ |   |   | 弹性伸缩事件及资源变化通知类型列表。 |   |   |   |   |
+| ScalingGroupI d | String |   | asg- bp1igpak5ft1flyp** ** |   |   | 伸缩组的ID。 |   |   |   |   |
+| RequestId | String |   | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** |   |   | 请求ID。 |   |   |   |   |
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
 http(s)://ess.aliyuncs.com/?Action=DescribeNotificationConfigurations &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeNotificationConfigurationsResponse>
@@ -7654,19 +7652,18 @@ beijing:161456884340****:topic/modifyLifecycleHo****</NotificationArn>
 <DescribeNotificationConfigurationsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "NotificationConfigurationModels": {
         "NotificationArn": "acs:mns:cn-
 beijing:161456884340****:topic/modifyLifecycleHo****",
         "ScalingGroupId": "asg-bp1igpak5ft1flyp****",
         "NotificationTypes": "AUTOSCALING:SCALE_IN_SUCCESS"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -7674,7 +7671,7 @@ beijing:161456884340****:topic/modifyLifecycleHo****",
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 
-#### DescribeNotificationTypes
+#### 6.14.4 DescribeNotificationTypes
 
 调用DescribeNotificationTypes查询弹性伸缩事件及资源变化通知的类型。
 
@@ -7685,8 +7682,6 @@ beijing:161456884340****:topic/modifyLifecycleHo****",
 | Action | String | 是 | DescribeNotifica tionTypes | 系统规定参数。取值： DescribeNotificationTypes。 |
 
 **返回数据**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -7701,9 +7696,10 @@ beijing:161456884340****:topic/modifyLifecycleHo****",
 http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeNotificationTypesResponse>
     <RequestId>66046F31-AF8C-44B4-9992-453F33CF****</RequestId>
     <NotificationTypes>
         <NotificationType>AUTOSCALING:SCALE_OUT_SUCCESS</NotificationType>
@@ -7715,12 +7711,12 @@ http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes
         <NotificationType>AUTOSCALING:SCALE_IN_START</NotificationType>
         <NotificationType>AUTOSCALING:SCHEDULE_TASK_EXPIRING</NotificationType>
     </NotificationTypes>
+</DescribeNotificationTypesResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "66046F31-AF8C-44B4-9992-453F33CF****",
  "NotificationTypes": {
   "NotificationType": [
@@ -7734,35 +7730,28 @@ http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes
    "AUTOSCALING:SCHEDULE_TASK_EXPIRING"
 ```
 
-]
+`]` `}` `}`
 
-```
- }
-}
-```
-
-#### DeleteNotificationConfiguration
+#### 6.14.5 DeleteNotificationConfiguration
 
 调用DeleteNotificationConfiguration删除一条弹性伸缩事件及资源变化通知。
 
 **请求参数**
 
-| 名称 | 类型 | 是否必选 |  |  | 示例值 |  | 描述 |  |  |  |
+| 名称 | 类型 | 是否必选 |   |   | 示例值 |   | 描述 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Action | String | 是 |  |  | DeleteNotificatio nConfiguration |  | 系统规定参数。取值： DeleteNotificationConfiguration。 |  |  |  |
-| NotificationArn | String | 是 |  |  |  |  | 通知对象标识符，各通知方式的参数格式如下： 云监控，参数取值格式： acs:ess: |  |  |  |
-|  |  |  |  |  |  |  |  |  | acs:ess: |  |
-|  |  |  |  |  |  |  | {region-id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:cloudmonitor |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  |  |  | {account- |  |  |  |
-|  |  |  |  |  | acs:ess:cn- |  | id}:queue/{queuename} |  |  |  |
-|  |  |  |  |  | beijing-env17- d01:161456884 340****:cloudm |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  | onitor |  | {account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-
-弹性伸缩 ESS
+| Action | String | 是 |   |   | DeleteNotificatio nConfiguration |   | 系统规定参数。取值： DeleteNotificationConfiguration。 |   |   |   |
+| NotificationArn | String | 是 |   |   |   |   | 通知对象标识符，各通知方式的参数格式如下： 云监控，参数取值格式： acs:ess: |   |   |   |
+|   |   |   |   |   |   |   |   |   | acs:ess: |   |
+|   |   |   |   |   |   |   | {region-id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:cloudmonitor |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   |   |   | {account- |   |   |   |
+|   |   |   |   |   | acs:ess:cn- |   | id}:queue/{queuename} |   |   |   |
+|   |   |   |   |   | beijing-env17- d01:161456884 340****:cloudm |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   | onitor |   | {account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
 
 | ScalingGroupId | String | 是 | asg- bp18p2yfxow2dl oq**** | 伸缩组的ID。 |
 |---|---|---|---|---|
@@ -7782,7 +7771,7 @@ http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes
 http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupId=asg-bp18p2yfxow2dloq**** &NotificationArn=acs:ess:cn-beijing-env17-d01:161456884340****:cloudmonitor &RegionId=cn-beijing-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DeleteNotificationConfigurationResponse>
@@ -7790,13 +7779,13 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 </DeleteNotificationConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7805,11 +7794,11 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 | 400 | NotificationConfigurati onNotExist | The specified NotificationConfigurati on not exist for the scalingGroup. | 当前伸缩组不存在指定的伸缩事件及资源变化通知。 |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 
-弹性伸缩 ESS
+### 6.15 实例
 
-### 实例
+#### 6.15.1 EnterStandby
 
-#### EnterStandby
+调用EnterStandby将伸缩组内的ECS实例设置为备用状态。
 
 **接口说明**
 
@@ -7834,27 +7823,29 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 
 **示例**
 
-弹性伸缩 ESS 请求示例
+请求示例
 
 ```
-&ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false
+http(s)://ess.example.com/?Action=EnterStandby &ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<EnterStandbyResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-2zeb04oym05qaceq****</ScalingActivityId>
+</EnterStandbyResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-2zeb04oym05qaceq****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7864,15 +7855,15 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 | 404 | InvalidInstanceId.NotF ound | Instance "XXX" does not exist. | 指定的ECS实例不存在。 |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 
-#### ExitStandby
+#### 6.15.2 ExitStandby
+
+调用ExitStandby使伸缩组内处于备用状态的ECS实例进入运行状态。
 
 **接口说明**
 
 如果伸缩组设置了负载均衡服务，会将ECS实例权重设置为伸缩配置中定义的权重值。
 
 **请求参数**
-
-弹性伸缩 ESS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -7895,24 +7886,26 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 请求示例
 
 ```
-&ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false &RegionId=cn-hangzhou-env17-d01
+http(s)://ess.example.com/?Action=ExitStandby &ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false &RegionId=cn-hangzhou-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例弹性伸缩 ESS `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ExitStandbyResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-2zeb04oym05qaceq****</ScalingActivityId>
+</ExitStandbyResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-2zeb04oym05qaceq****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7922,7 +7915,7 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 | 404 | InvalidInstanceId.NotF ound | A required authorization for the specified action is not supplied. | 指定的ECS实例不存在。 |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组在该用户账号下不存在。 |
 
-#### SetInstancesProtection
+#### 6.15.3 SetInstancesProtection
 
 调用SetInstancesProtection保护或者停止保护伸缩组内的一台或者多台ECS实例。
 
@@ -7934,8 +7927,6 @@ ECS实例开启保护状态后： 实例保持此状态，直至您停止保护�
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | Action | String | 是 | SetInstancesProt ection | 系统规定参数，取值： SetInstancesProtection。 |
 |---|---|---|---|---|
@@ -7957,26 +7948,26 @@ ECS实例开启保护状态后： 实例保持此状态，直至您停止保护�
 http(s)://ess.example.com/?Action=SetInstancesProtection &InstanceId.1=i-28wt4**** &ProtectedFromScaleIn=true &ScalingGroupId=asg-bp18p2yfxow2dloq****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<SetInstancesProtectionResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</SetInstancesProtectionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-弹性伸缩 ESS
 
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | 您需要启用伸缩组。 |
 |---|---|---|---|
@@ -7984,7 +7975,9 @@ http(s)://ess.example.com/?Action=SetInstancesProtection &InstanceId.1=i-28wt4**
 | 404 | InvalidInstanceId.NotF ound | Instance “XXX” does not exist. | 指定的ECS实例不存在。 |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组不存在。 |
 
-#### SetInstanceHealth
+#### 6.15.4 SetInstanceHealth
+
+调用SetInstanceHealth设置伸缩组内ECS实例的健康状态。
 
 **接口说明**
 
@@ -8006,25 +7999,27 @@ http(s)://ess.example.com/?Action=SetInstancesProtection &InstanceId.1=i-28wt4**
 
 **示例**
 
-请求示例弹性伸缩 ESS
+请求示例
 
 ```
 http(s)://ess.example.com/?Action=SetInstanceHealth &HealthStatus=Healthy &InstanceId=i-bp1ap6bro51a7fsa****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<SetInstanceHealthResponse>
         <RequestId>B755AE57-6093-43E4-938E-DEA422A9****</RequestId>
+</SetInstanceHealthResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "B755AE57-6093-43E4-938E-DEA422A9****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -8033,7 +8028,7 @@ http(s)://ess.example.com/?Action=SetInstanceHealth &HealthStatus=Healthy &Insta
 | 400 | InvalidInstanceId.NotF ound | Instance "%s" does not exist. | 伸缩组内不存在指定的实例。 |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | 指定的参数非法。 |
 
-#### RebalanceInstances
+#### 6.15.5 RebalanceInstances
 
 调用RebalanceInstances重新平衡多可用区伸缩组内ECS实例的分布。
 
@@ -8045,8 +8040,6 @@ http(s)://ess.example.com/?Action=SetInstanceHealth &HealthStatus=Healthy &Insta
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-弹性伸缩 ESS
 
 | Action | String | 是 | RebalanceInstan ces | 系统规定参数，取值： RebalanceInstances。 |
 |---|---|---|---|---|
@@ -8068,28 +8061,28 @@ http(s)://ess.example.com/?Action=SetInstanceHealth &HealthStatus=Healthy &Insta
 http(s)://ess.example.com/?Action=RebalanceInstances &ScalingGroupId=asg-bp18p2yfxow2dloq**** &RegionId=cn-hangzhou-env17-d01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<RebalanceInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-kjgffgdfadah****</ScalingActivityId>
+</RebalanceInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-kjgffgdfadah****"
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-弹性伸缩 ESS
 
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | 您需要启用伸缩组。 |
 |---|---|---|---|
@@ -8097,9 +8090,11 @@ http(s)://ess.example.com/?Action=RebalanceInstances &ScalingGroupId=asg-bp18p2y
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | 您还未被授权使用 RebalanceInstances接口。 |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | 指定的伸缩组在该用户账号下不存在。 |
 
-### 地域
+### 6.16 地域
 
-#### DescribeRegions
+#### 6.16.1 DescribeRegions
+
+调用DescribeRegions查询可以使用弹性伸缩服务的地域。
 
 **请求参数**
 
@@ -8112,10 +8107,8 @@ http(s)://ess.example.com/?Action=RebalanceInstances &ScalingGroupId=asg-bp18p2y
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Regions | Array of Region |  | 地域信息的集合。 |
-| Region |  |  |  |
-
-弹性伸缩 ESS
+| Regions | Array of Region |   | 地域信息的集合。 |
+| Region |   |   |   |
 
 | ClassicUnavail able | Boolean | false | 当前地域是否支持经典网络类型伸缩组。可能值： true：不支持。 false：支持。 |
 |---|---|---|---|
@@ -8133,9 +8126,10 @@ http(s)://ess.example.com/?Action=RebalanceInstances &ScalingGroupId=asg-bp18p2y
 http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeRegionsResponse>
       <RequestId>73469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <Regions>
             <VpcUnavailable>false</VpcUnavailable>
@@ -8144,12 +8138,12 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
             <RegionEndpoint>ess.example.com</RegionEndpoint>
             <LocalName>华北2</LocalName>
       </Regions>
+</DescribeRegionsResponse>
 ```
 
-`JSON` 格式弹性伸缩 ESS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "73469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "Regions": {
         "VpcUnavailable": false,
@@ -8157,9 +8151,9 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
         "RegionId": "cn-beijing-env17-d01",
         "RegionEndpoint": "ess.example.com",
         "LocalName": "华北2"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -8167,9 +8161,11 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
 |---|---|---|---|
 | 404 | InvalidAcceptLanguag e.NotFound | Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed. | 不支持指定的语言。 |
 
-### 标签
+### 6.17 标签
 
-#### TagResources
+#### 6.17.1 TagResources
+
+调用TagResources为指定的弹性伸缩资源列表统一创建并绑定标签。
 
 **接口说明**
 
@@ -8181,8 +8177,6 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
 |---|---|---|---|---|
 | Action | String | 是 | TagResources | 系统规定参数。取值：TagResources。 |
 | RegionId | String | 是 | cn-hangzhou- env17-d01 | 资源所属的地域ID。您可以调用API DescribeRegions 查看最新的阿里云地域列表。 |
-
-弹性伸缩 ESS
 
 | ResourceId.N | RepeatL ist | 是 | asg- bp17xb4x1vr29l gt**** | 资源ID，N的取值范围为1~50。 |
 |---|---|---|---|---|
@@ -8201,26 +8195,26 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
 请求示例
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup
+http(s)://ess.example.com/?Action=TagResources &RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<TagResourcesResponse>
       <RequestId>74C4E313-8570-479F-8791-DC25360D****</RequestId>
+</TagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "74C4E313-8570-479F-8791-DC25360D****"
-}
 ```
 
-弹性伸缩 ESS
+`}`
 
-#### ListTagResources
+#### 6.17.2 ListTagResources
 
 调用ListTagResources查询一个或多个弹性伸缩资源已经绑定的标签列表。
 
@@ -8240,16 +8234,14 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
 | Tag.N.Value | String | 否 | TestValue | 精确查找弹性伸缩资源时使用的标签值。 标签值长度的取值范围：1~128。N的取值范围：1~20。 |
 | NextToken | String | 否 | caeba0bbb2be0 3f84eb48b699f0 a**** | 下一个查询开始的 Token。 NextToken 为空表示没有下一个。 |
 
-弹性伸缩 ESS
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | NextToken | String | caeba0bbb2be03f8 4eb48b699f0a**** | 下一个查询开始的Token。 |
 | RequestId | String | DE65F6B7-7566- 4802-9007- 96F2494A**** | 请求ID。 |
-| TagResources | Array of TagResource |  | 由资源及其标签组成的集合，包含了资源ID、资源类型和标签键值等信息。 |
-| TagResource |  |  |  |
+| TagResources | Array of TagResource |   | 由资源及其标签组成的集合，包含了资源ID、资源类型和标签键值等信息。 |
+| TagResource |   |   |   |
 | ResourceId | String | asg- bp17xb4x1vr29lgt* *** | 资源ID。 |
 | ResourceType | String | ALIYUN::ESS::SCALI NGGROUP | 资源类型。 |
 | TagKey | String | TestKey | 标签键。 |
@@ -8263,32 +8255,36 @@ http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN
 http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup &NextToken=caeba0bbb2be03f84eb48b699f0a4883 &ResourceId=["asg-bp17xb4x1vr29lgt****"] &Tag=[{"Key":"TestKey","Value":"TestValue"}]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+</ListTagResourcesResponse>
     <NextToken>caeba0bbb2be03f84eb48b699f0a****</NextToken>
     <RequestId>DE65F6B7-7566-4802-9007-96F2494A****</RequestId>
+    <TagResources>
         <ResourceId>asg-bp17xb4x1vr29lgt****</ResourceId>
         <TagKey>TestKey</TagKey>
         <ResourceType>ALIYUN::ESS::SCALINGGROUP</ResourceType>
         <TagValue>TestValue</TagValue>
+    </TagResources>
+</ListTagResourcesResponse>
 ```
 
-弹性伸缩 ESS `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "NextToken":"caeba0bbb2be03f84eb48b699f0a****",
     "RequestId":"DE65F6B7-7566-4802-9007-96F2494A****",
+    "TagResources":[{
         "ResourceId":"asg-bp17xb4x1vr29lgt****",
         "TagKey":"TestKey",
         "ResourceType":"ALIYUN::ESS::SCALINGGROUP",
         "TagValue":"TestValue"
-    }]
-}
 ```
 
-#### UntagResources
+`}]` `}`
+
+#### 6.17.3 UntagResources
 
 调用UntagResources为指定的弹性伸缩资源列表统一解绑标签。解绑后，如果该标签没有绑定其他任何资源，会被自动删除。
 
@@ -8308,8 +8304,6 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
 | RequestId | String | 3AEBB1B9-5B13- 4311-951F- C3C7FA2B**** | 请求ID。 |
 |---|---|---|---|
 
@@ -8318,24 +8312,28 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 请求示例
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup
+http(s)://ess.example.com/?Action=UntagResources &RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<UntagResourcesResponse>
       <RequestId>3AEBB1B9-5B13-4311-951F-C3C7FA2B****</RequestId>
+</UntagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "3AEBB1B9-5B13-4311-951F-C3C7FA2B****"
-}
 ```
 
-#### ListTagKeys
+`}`
+
+#### 6.17.4 ListTagKeys
+
+调用ListTagKeys查询弹性伸缩资源标签键的列表。
 
 **请求参数**
 
@@ -8345,8 +8343,6 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 | RegionId | String | 是 | cn-hangzhou- env17-d01 | 弹性伸缩资源所属地域的ID。 |
 | ResourceType | String | 是 | scalinggroup | 弹性伸缩资源类型。取值为 scalinggroup 时，表示标签绑定的对象是伸缩组。 |
 | NextToken | String | 否 | caeba0bbb2be0 3f84eb48b699f0 a**** | 下一个查询开始的 Token， NextToken 为空表示没有下一个。 |
-
-弹性伸缩 ESS
 
 | PageSize | Integer | 否 | 10 | 分页查询时设置的每页行数。最大值： 50。 默认值：10。 |
 |---|---|---|---|---|
@@ -8365,38 +8361,40 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 请求示例
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup
+http(s)://ess.example.com/?Action=ListTagKeys &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListTagKeysResponse>
       <PageSize>10</PageSize>
       <NextToken>caeba0bbb2be03f84eb48b699f0a****</NextToken>
       <RequestId>DC09A6AA-2713-4E10-A2E9-E6C5C43A****</RequestId>
       <Keys>ESS</Keys>
+</ListTagKeysResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "PageSize": 10,
     "NextToken": "caeba0bbb2be03f84eb48b699f0a****",
     "RequestId": "DC09A6AA-2713-4E10-A2E9-E6C5C43A****",
     "Keys": "ESS"
-}
 ```
 
-**错误码**
+`}`
 
-弹性伸缩 ESS
+**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | InvalidResourceType.N otFound | The ResourceType provided does not exist in our records. | 资源类型参数非法。 |
 
-#### ListTagValues
+#### 6.17.5 ListTagValues
+
+调用ListTagValues查询弹性伸缩资源标签键对应的标签值。
 
 **请求参数**
 
@@ -8417,8 +8415,6 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 | PageSize | Integer | 10 | 输入时设置的每页行数。 |
 | RequestId | String | AB444F46-1CFF- 4B06-B8F0- B45D3158**** | 请求ID。 |
 
-弹性伸缩 ESS
-
 | Values | List | Doc | 标签值信息。 |
 |---|---|---|---|
 
@@ -8427,28 +8423,30 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 请求示例
 
 ```
-&Key=ESS &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup
+http(s)://ess.example.com?Action=ListTagValues &Key=ESS &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListTagValuesResponse>
       <PageSize>10</PageSize>
       <NextToken>caeba0bbb2be03f84eb48b699f0a****</NextToken>
       <RequestId>AB444F46-1CFF-4B06-B8F0-B45D3158****</RequestId>
       <Values>Doc</Values>
+</ListTagValuesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "PageSize": 10,
     "NextToken": "caeba0bbb2be03f84eb48b699f0a****",
     "RequestId": "AB444F46-1CFF-4B06-B8F0-B45D3158****",
     "Values": "Doc"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -8457,11 +8455,11 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 | 400 | InvalidResourceType.N otFound | The ResourceType provided does not exist in our records. | 资源类型参数非法。 |
 | 400 | InvalidTagKey.Malform ed | The specified tag key "%s" is not valid. | 指定的标签键不存在。 |
 
-### 其他
+### 6.18 其他
 
-#### DescribeLimitation
+#### 6.18.1 DescribeLimitation
 
-弹性伸缩 ESS
+调用DescribeLimitation查询资源配额限制。
 
 **请求头**
 
@@ -8489,7 +8487,7 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 | MaxNumberOf MinSize | Integer | 2000 | 一个伸缩组支持为最小实例数设置的最大数量。 |
 | MaxNumberOf ScalingGroups | Integer | 50 | 一个账号在一个地域下支持创建伸缩组的最大数量。 |
 
-| 开发指南·API参考 |  |  | 弹性伸缩 ES |
+| 开发指南·API参考 |   |   | 弹性伸缩 ES |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8507,13 +8505,18 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DescribeLimitation
+http(s)://[Endpoint]/?Action=DescribeLimitation &Action=DescribeLimitation
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式弹性伸缩 ESS
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "MaxNumberOfScalingInstances":1000,
  "RequestId":"BE9BEB41-E7B8-4C7D-A3CF-2DCB106665E9",
  "MaxNumberOfScheduledTasks":20,
@@ -8529,25 +8532,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "MaxNumberOfScalingRules":50,
  "MaxNumberOfNlbServerGroup":"",
  "MaxNumberOfScalingConfigurations":10
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <MaxNumberOfScalingInstances>1000</MaxNumberOfScalingInstances> <RequestId>BE9BEB41-E7B8-4C7D-A3CF-2DCB106665E9</RequestId> <MaxNumberOfScheduledTasks>20</MaxNumberOfScheduledTasks> <MaxNumberOfVServerGroups>5</MaxNumberOfVServerGroups> <MaxNumberOfLoadBalancers>10</MaxNumberOfLoadBalancers> <MaxNumberOfAlbServerGroup>30</MaxNumberOfAlbServerGroup> <MaxNumberOfMinSize>2000</MaxNumberOfMinSize> <MaxNumberOfScalingGroups>50</MaxNumberOfScalingGroups> <MaxNumberOfNotificationConfigurations>6</MaxNumberOfNotificationConfigurations> <MaxNumberOfMaxSize>2000</MaxNumberOfMaxSize> <MaxNumberOfDBInstances>8</MaxNumberOfDBInstances> <MaxNumberOfLifecycleHooks>6</MaxNumberOfLifecycleHooks> <MaxNumberOfScalingRules>50</MaxNumberOfScalingRules> <MaxNumberOfNlbServerGroup /> <MaxNumberOfScalingConfigurations>10</MaxNumberOfScalingConfigurations>
 ```
 
-### 错误代码表
+### 6.19 错误代码表
 
-#### 客户端错误
+#### 6.19.1 客户端错误
 
 本节介绍客户端导致的报错的详情。 表 1. 错误说明
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-弹性伸缩 ESS
 
 | 400 | MissingParameter | The input parameter <parameter name> that is mandatory for processing this request is not supplied. | 缺少参数。 |
 |---|---|---|---|
@@ -8563,28 +8563,26 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | Forbidden.UserVerifica tion | Your user account is not verified by Aliyun. | 未实名验证。 |
 | 400 | ResourceNotAvailable | Resource you requested is not available in this region or zone. | 指定的地域不支持弹性伸缩。 |
 
-#### 服务器端错误
+#### 6.19.2 服务器端错误
 
 本节介绍服务器端导致的报错的详情。 表 1. 错误说明
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 
-弹性伸缩 ESS
-
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 服务器无法完成对请求的处理。 |
 |---|---|---|---|
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | 服务器当前无法处理请求。 |
 
-### 如何保证幂等性
+### 6.20 如何保证幂等性
 
-本节介绍如何通过ClientToken保证请求的幂等性。 当调用执行伸缩规则接口创建或释放ECS实例时，如果发生请求超时或服务器内部错误，客户端可能会尝试重发请求，这时客户端可以通过提供可选参数ClientToken避免创建或释放出比预期要多的实例，即通过提供ClientToken参数保证请求的幂等性。ClientToken是一个由客户端生成的唯一的、大小写敏感、不超过 64个ASCII字符的字符串。 如果您使用同一个ClientToken值调用创建实例接口，则服务端会返回相同的请求结果，包含相同的 ScalingActivityId。因此您在遇到错误进行重试的时候，可以通过提供相同的ClientToken值，来确保只创建一个伸缩活动，并得到这个伸缩活动的ScalingActivityId。 如果您提供了一个已经使用过的ClientToken，但其他请求参数不同，则弹性伸缩会返回 `IdempotentParameterMismatch` 的错误代码。需要注意的是，SignatureNonce、Timestamp和 Signature参数在重试时是需要变化的，因为弹性伸缩使用SignatureNonce来防止重放攻击，使用 Timestamp来标记每次请求时间，所以再次请求必须提供不同的SignatureNonce和Timestamp参数值， 这同时也会导致Signature值的变化。 通常，客户端只需要在503（ServiceUnavailable）错误、或者无法得到响应结果的情况下进行重试操作。返回结果是200时，重试可以得到与上次相同的结果，但不会对服务端状态产生任何影响。而对4xx或 500的返回错误，除非提示信息里明确出现try it later，否则重试也无法成功。 弹性伸缩 ESS
+本节介绍如何通过ClientToken保证请求的幂等性。 当调用执行伸缩规则接口创建或释放ECS实例时，如果发生请求超时或服务器内部错误，客户端可能会尝试重发请求，这时客户端可以通过提供可选参数ClientToken避免创建或释放出比预期要多的实例，即通过提供ClientToken参数保证请求的幂等性。ClientToken是一个由客户端生成的唯一的、大小写敏感、不超过 64个ASCII字符的字符串。 如果您使用同一个ClientToken值调用创建实例接口，则服务端会返回相同的请求结果，包含相同的 ScalingActivityId。因此您在遇到错误进行重试的时候，可以通过提供相同的ClientToken值，来确保只创建一个伸缩活动，并得到这个伸缩活动的ScalingActivityId。 如果您提供了一个已经使用过的ClientToken，但其他请求参数不同，则弹性伸缩会返回 `IdempotentParameterMismatch` 的错误代码。需要注意的是，SignatureNonce、Timestamp和 Signature参数在重试时是需要变化的，因为弹性伸缩使用SignatureNonce来防止重放攻击，使用 Timestamp来标记每次请求时间，所以再次请求必须提供不同的SignatureNonce和Timestamp参数值， 这同时也会导致Signature值的变化。 通常，客户端只需要在503（ServiceUnavailable）错误、或者无法得到响应结果的情况下进行重试操作。返回结果是200时，重试可以得到与上次相同的结果，但不会对服务端状态产生任何影响。而对4xx或 500的返回错误，除非提示信息里明确出现try it later，否则重试也无法成功。
 
-## 附录
+## 7 附录
 
-### STS概要
+### 7.1 STS概要
 
-#### 什么是STS
+#### 7.1.1 什么是STS
 
 阿里云STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。RAM提供RAM用户和RAM角色两种身份。其中，RAM角色不具备永久身份凭证，而只能通过STS获取可以自定义时效和访问权限的临时身份凭证，即安全令牌（STS Token）。
 
@@ -8596,7 +8594,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 使用STS Token，减少长期访问密钥（Accesskey）泄露的风险。 STS Token具有时效性，可以自定义有效期，到期后将自动失效，无需定期轮换。 可以为STS Token绑定自定义权限策略，提供更加灵活和精细的云资源授权。
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证（STS Token）。该接口中RAM用户扮演的是可信实体为阿里云账号类型的RAM角色。
 
@@ -8608,13 +8606,11 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证�
 | RoleArn | String | 是 | acs:ram::123456 789012****:role/ adminrole | 要扮演的RAM角色ARN。 该角色是可信实体为阿里云账号类型的RAM 角色。 |
 | RoleSessionNa me | String | 是 | alice | 角色会话名称。 该参数为用户自定义参数。通常设置为调用该API的用户身份，例如：用户名。在操作审计日志中，即使是同一个RAM角色执行的操作，也可以根据不同的RoleSessionName来区分实际操作者，以实现用户级别的访问审计。 长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-） 和下划线（ ）。 _ |
 
-弹性伸缩 ESS
-
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Policy | String | 否 | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | 为STS Token额外添加的一个权限策略，进一步限制STS Token的权限。具体如下： 长度为1~1024个字符。 |
 
-### 返回结果
+**返回结果**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -8632,7 +8628,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证�
 
 **引入Pom依赖**
 
-弹性伸缩 ESS 操作需要依赖阿里云核心库来实现，在Pom中引入阿里云核心库包的操作如下:
+操作需要依赖阿里云核心库来实现，在Pom中引入阿里云核心库包的操作如下:
 
 ```xml
     <dependency>
@@ -8641,6 +8637,8 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证�
       <version>[4.4.9,5.0.0)</version>
     </dependency>
 ```
+
+**调用API获取STS AccessKey三元组**
 
 以下代码示例为通过调用 `Sts::AssumeRole::2015-04-01` 获取STS AccessKey三元组信息。
 
@@ -8690,13 +8688,13 @@ vpc.${global:region}.${global:internet-domain}
 if(Sti Util
 ```
 
-iE
+`i``E` `t``(`
 
 ```
-t( Rl))
+Rl))
 ```
 
-t 弹性伸缩 ESS
+`t`
 
 ```
             if (StringUtils.isEmpty(assumeRole)) return;
@@ -8718,14 +8716,13 @@ t 弹性伸缩 ESS
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **调用示例**
 
-下列代码以调用ECS的 `DescribeZones` 接口为示例。 弹性伸缩 ESS
+下列代码以调用ECS的 `DescribeZones` 接口为示例。
 
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -8764,13 +8761,13 @@ stsAk、stsSk
         request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,资源集`id`
+`//` 非必填`,`资源集`id`
 
 ```
         // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,组织`id`
+`//` 必填`,`组织`id`
 
 ```java
         request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -8783,12 +8780,9 @@ stsAk、stsSk
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
-弹性伸缩 ESS
+`}` `}` `}`
 
 **错误码**
 

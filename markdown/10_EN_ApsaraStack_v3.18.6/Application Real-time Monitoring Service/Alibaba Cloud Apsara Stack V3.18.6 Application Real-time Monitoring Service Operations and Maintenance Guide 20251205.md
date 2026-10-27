@@ -5,7 +5,7 @@ doc_version: "20251205"
 pdf_pages: 31
 source_pdf: "d0ab88ac4729e9b8_Alibaba Cloud Apsara Stack V3.18.6 Application Real-time Monitoring Service Operations and Maintenan"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1%20ARMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Real-time%20Monitoring%20Service%20Operations%20and%20Maintenance%20Guide%2020251205.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Application Real-time Monitoring Service Operations and Maintenance Guide

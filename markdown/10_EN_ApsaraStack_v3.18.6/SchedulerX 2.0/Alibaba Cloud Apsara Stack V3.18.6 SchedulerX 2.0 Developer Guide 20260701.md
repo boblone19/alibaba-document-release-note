@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 102
 source_pdf: "b0b9ddee2edf3e15_Alibaba Cloud Apsara Stack V3.18.6 SchedulerX 2.0 Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6scheduler-x/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20SchedulerX%202.0%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # SchedulerX 2.0 Developer Guide 20260701
@@ -150,6 +150,11 @@ Liit"
         "jobId": jobId,
         "groupId": groupId,
         "instanceParameters": json.dumps(instanceParameters)
+```
+
+`}`
+
+```json
     timestamp = calendar.timegm(time.gmtime()) * 1000
     # timestamp = time.time()
     print(timestamp)
@@ -161,6 +166,11 @@ Liit"
         'openapi-groupid': groupId,
         'openapi-timestamp': str(timestamp),
         'openapi-signature': signature
+```
+
+`}`
+
+```python
     try:
         ret = requests.post(url, data=requestData, headers=headers, timeout=5)
         print(ret.url)
@@ -217,6 +227,11 @@ g secretKey) throws Exception{
         Mac mac = Mac.getInstance("HmacSHA1");
         if (secretKey == null) {
             throw new RuntimeException("accesskey not exist");
+```
+
+`}`
+
+```
         mac.init(new SecretKeySpec(secretKey.getBytes(Charset.forName("UTF-8")),
 "HmacSHA1"));
         byte[] bytes = mac.doFinal(encryptText.getBytes(Charset.forName("UTF-8")));
@@ -224,7 +239,7 @@ g secretKey) throws Exception{
             Charset.forName("UTF-8")).replace("+", "").replace("=", "").replace("/", ""
 ```
 
-);
+); `}`
 
 ```java
     public static void main(String[] args) throws Exception {
@@ -232,6 +247,8 @@ g secretKey) throws Exception{
         System.out.println(timeNow);
         System.out.println(geneHmacSHA1Encrypt(timeNow, "dts-demo", "xxxxxxxx"));
 ```
+
+`}` `}`
 
 ## 4 API list
 
@@ -246,6 +263,8 @@ Creates a namespace.
 ```
  /openapi/v1/namespace/create
 ```
+
+**Request parameters**
 
 CreateNamespaceRequest
 
@@ -287,6 +306,8 @@ Sample response: `{`
   "message": "create namespace successfully"
 ```
 
+`}`
+
 **Code example**
 
 ```java
@@ -300,6 +321,8 @@ public void testCreateNamespace() throws Exception {
     System.out.println(result);
 ```
 
+`}`
+
 #### 4.1.2 Query the list of namespaces
 
 Queries a list of namespaces.
@@ -309,6 +332,8 @@ Queries a list of namespaces.
 ```
  /openapi/v1/namespace/list
 ```
+
+**Request parameters**
 
 GetNamespaceListRequest
 
@@ -378,7 +403,7 @@ Sample response `{`
         "description": "Production Environment"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "code": 200,
@@ -401,6 +426,8 @@ client.getResponse(request);
         System.out.println(JsonUtil.toJson(result));
 ```
 
+`}` `}`
+
 ### 4.2 Application
 
 #### 4.2.1 Create an application
@@ -412,6 +439,8 @@ This topic describes how to create an application group.
 ```
  /openapi/v1/group/create
 ```
+
+**Request parameters**
 
 CreateAppGroupRequest
 
@@ -457,6 +486,11 @@ xxx 144153");
         // Send the request.
         SchedulerXResult<CreateAppGroupResponse> result = client.getResponse(request);
         System.out.println(result);
+```
+
+`}`
+
+```java
     @Test
     public void testCreateWithNamespace() throws Exception {
         CreateAppGroupRequest request = new CreateAppGroupRequest();
@@ -471,6 +505,8 @@ xxx 144153");
         System.out.println(result);
 ```
 
+`}` `}`
+
 #### 4.2.2 Update an application group
 
 Create an application group.
@@ -480,6 +516,8 @@ Create an application group.
 ```
  /openapi/v1/group/update
 ```
+
+**Request parameters**
 
 UpdateAppGroupRequest
 
@@ -570,8 +608,18 @@ token value.");
 client.getResponse(updateAppGroupRequest);
                     if(res.isSuccess()) {
                         System.out.println(res.getData());
+```
+
+`}`
+
+```
                 } catch (Exception e) {
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```
         } catch (Exception e) {
             e.printStackTrace();
 ```
@@ -585,6 +633,8 @@ Retrieves information about an application group.
 ```
  /openapi/v1/group/get
 ```
+
+**Request parameters**
 
 GetAppGroupRequest
 
@@ -628,9 +678,13 @@ OpenApiClient client = new OpenApiClient("xxxxxxxx", "dts-demo", "schedulerx2.ta
 
 Retrieve a list of all application groups that you have permission to access in a specific namespace.
 
+**Request URL**
+
 ```
  /openapi/v1/group/list
 ```
+
+**Request parameters**
 
 GetJobInstanceListRequest
 
@@ -664,7 +718,7 @@ OpenApiClient client = new OpenApiClient("schedulerx2.taobao.net", "xx 144153");
     System.out.println(appGroupInfo);
 ```
 
-For calls not made in Java, add the following header and request parameters.
+`}` For calls not made in Java, add the following header and request parameters.
 
 ```
 --header 'openapi-list-groups: true' --data-urlencode 'userId=employee ID' \ --data-urlencode 'userName=alias'
@@ -787,15 +841,21 @@ Sample response `{`
   "message": ""
 ```
 
+`}`
+
 ### 4.3 Tasks
 
 #### 4.3.1 Create a Java job
 
 This topic describes how to create a Java job.
 
+**Request URL**
+
 ```
  /openapi/v1/job/create
 ```
+
+**Request parameters**
 
 CreateJavaJobRequest: The request parameters.
 
@@ -903,9 +963,16 @@ client.getResponse(createJobRequest);
         logger.error("createJobRequest error code: {} message: {}, requestId: {}",
 createJobResponseResult.getCode(),
         createJobResponseResult.getMessage(), createJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
   logger.error("createJobRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.2 Create a script job
 
@@ -914,6 +981,8 @@ Create a script job. Supported script types include Go, Python, and Shell.
 ```
  /openapi/v1/job/create
 ```
+
+**Request parameters**
 
 CreateScriptJobRequest: The request object for creating a script job.
 
@@ -1003,9 +1072,16 @@ client.getResponse(createJobRequest);
         logger.error("createJobRequest error code: {} message: {}, requestId: {}",
 createJobResponseResult.getCode(),
         createJobResponseResult.getMessage(), createJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
   logger.error("createJobRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.3 Create an HTTP job
 
@@ -1154,17 +1230,28 @@ client.getResponse(request);
         logger.error("createJobRequest error code: {} message: {}, requestId: {}",
 createJobResponseResult.getCode(),
         createJobResponseResult.getMessage(), createJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
   logger.error("createJobRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.4 Update a job
 
 This operation updates parts of a job's configuration. We recommend that you first call the Get Job API operation to retrieve the job's configuration and then modify the required fields.
 
+**Request URL**
+
 ```
  /openapi/v1/job/update
 ```
+
+**Request parameters**
 
 UpdateJobRequest: The request parameters.
 
@@ -1274,21 +1361,38 @@ client.getResponse(updateJobRequest);
               System.out.println(response);
             } else {
               // Print the log.
+```
+
+`}` `}`
+
+```
     } else {
         logger.error("getJobInfoRequest error code: {} message: {}, requestId: {}", get
 JobInfoResponseResult.getCode(),
         getJobInfoResponseResult.getMessage(),
-getJobInfoResponseResult.getRequestId()); } catch (Exception e) {
+getJobInfoResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
   logger.error("updateJobRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.5 Get a task
 
 Retrieves the details of a task by its job ID. This operation is typically used to update tasks.
 
+**Request URL**
+
 ```
  /openapi/v1/job/get
 ```
+
+**Request parameters**
 
 GetJobInfoRequest: Request parameters
 
@@ -1392,16 +1496,31 @@ client.getResponse(getJobInfoRequest);
         logger.error("getJobInfoRequest error code: {} message: {}, requestId: {}", get
 JobInfoResponseResult.getCode(),
         getJobInfoResponseResult.getMessage(),
-getJobInfoResponseResult.getRequestId()); } catch (Exception e) {
+getJobInfoResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
   logger.error("getJobInfoRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.6 Query a job list
 
 Retrieves a list of all application groups in a specified namespace for which you have permissions.
 
+**Request URL**
+
 ```
  /openapi/v1/job/list
+```
+
+**Request parameters**
+
+```
  GetJobInfoListRequest
 ```
 
@@ -1461,17 +1580,28 @@ client.getResponse(request);
                 System.out.println("jobid:" + jobConfigInfo.getJobId() + ", name:" +
 jobConfigInfo.getName()
                                    + ", jobType:" + jobConfigInfo.getJobType());
+```
+
+`}` `}`
+
+```
     } catch (Exception e) {
         e.printStackTrace();
 ```
+
+`}` `}`
 
 #### 4.3.7 Delete a job
 
 This operation deletes a specified job.
 
+**Request URL**
+
 ```
  /openapi/v1/job/delete
 ```
+
+**Request parameters**
 
 DeleteJobRequest parameters
 
@@ -1505,13 +1635,23 @@ client.getResponse(deleteJobRequest);
         logger.error("deleteJobRequest error code: {} message: {}, requestId: {}",
 deleteJobResponseResult.getCode(),
             deleteJobResponseResult.getMessage(),
-deleteJobResponseResult.getRequestId()); } catch (Exception e) {
+deleteJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
     logger.error("deleteJobRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.8 Enable a job
 
 Enables a specified Job. Jobs are enabled by default after they are created. This feature is used in conjunction with the API for disabling Jobs.
+
+**Request URL**
 
 ```
  /openapi/v1/job/enable
@@ -1547,7 +1687,13 @@ client.getResponse(enableJobRequest);
         logger.error("enableJobRequest error code: {} message: {}, requestId: {}",
 enableJobResponseResult.getCode(),
             enableJobResponseResult.getMessage(),
-enableJobResponseResult.getRequestId()); } catch (Exception e) {
+enableJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
     logger.error("enableJobRequest error.", e);
 ```
 
@@ -1555,9 +1701,13 @@ enableJobResponseResult.getRequestId()); } catch (Exception e) {
 
 Disables a specified job. A disabled job will not be triggered.
 
+**Request URL**
+
 ```
  /openapi/v1/job/disable
 ```
+
+**Request parameters**
 
 The request parameters are included in the `DisableJobRequest` object.
 
@@ -1591,17 +1741,29 @@ client.getResponse(disableJobRequest);
         logger.error("disableJobRequest error code: {} message: {}, requestId: {}", dis
 ableJobResponseResult.getCode(),
             disableJobResponseResult.getMessage(),
-disableJobResponseResult.getRequestId()); } catch (Exception e) {
+disableJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
     logger.error("disableJobRequest error.", e);
 ```
+
+`}`
 
 #### 4.3.10 Run a job
 
 Triggers a job. This method is required for API-type jobs but can also be called for other job types.
 
+**Request URL**
+
 ```
  /openapi/v1/job/execute
 ```
+
+**Request parameters**
 
 The request parameters are described in the ExecuteJobRequest object.
 
@@ -1636,6 +1798,8 @@ OpenApiClient client = new OpenApiClient("xxxxxx", "ram-access-advisor", "schedu
 #### 4.3.11 Specify Machines
 
 After you designate a worker, wait 10 seconds before you call the execute API.
+
+**Request URL**
 
 ```
  /openapi/v1/job/designateWorkers
@@ -1677,9 +1841,16 @@ SchedulerXResult<DesignateWorkersResponse>
                 executeJobResponseResult.getCode(),
                 executeJobResponseResult.getMessage(),
                 executeJobResponseResult.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("executeJobRequest error.", e);
 ```
+
+`}`
 
 ### 4.4 Task instances
 
@@ -1687,9 +1858,13 @@ SchedulerXResult<DesignateWorkersResponse>
 
 This operation stops a running task instance.
 
+**Request URL**
+
 ```
  /openapi/v1/instance/kill
 ```
+
+**Request parameters**
 
 KillInstanceRequest
 
@@ -1722,13 +1897,23 @@ client.getResponse(killInstanceRequest);
         logger.error("killInstanceRequest error code: {} message: {}, requestId: {}", k
 illInstanceResponseResult.getCode(),
             killInstanceResponseResult.getMessage(),
-killInstanceResponseResult.getRequestId()); } catch (Exception e) {
+killInstanceResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
     logger.error("killInstanceRequest error.", e);
 ```
+
+`}`
 
 #### 4.4.2 Retry a failed task instance
 
 This operation retries a failed task instance.
+
+**Request URL**
 
 ```
  /openapi/v1/instance/retry
@@ -1765,17 +1950,29 @@ client.getResponse(retryJobInstanceRequest);
         logger.error("retryJobInstanceResponseResult error code: {} message: {},
 requestId: {}", retryJobInstanceResponseResult.getCode(),
             retryJobInstanceResponseResult.getMessage(),
-retryJobInstanceResponseResult.getRequestId()); } catch (Exception e) {
+retryJobInstanceResponseResult.getRequestId());
+```
+
+`}`
+
+```
+} catch (Exception e) {
     logger.error("retryJobInstanceRequest error.", e);
 ```
+
+`}`
 
 #### 4.4.3 Mark a task instance as successful
 
 Sets the status of a failed task instance to successful.
 
+**Request URL**
+
 ```
  /openapi/v1/instance/setSuccess
 ```
+
+**Request parameters**
 
 SetJobInstanceSuccessRequest
 
@@ -1810,17 +2007,28 @@ client.getResponse(request);
         logger.error("result error code: {} message: {}, requestId: {}",
 result.getCode(),
             result.getMessage(), result.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("SetJobInstanceSuccessRequest error.", e);
 ```
+
+`}`
 
 #### 4.4.4 Query job instance details
 
 Retrieves the details of a specified job instance.
 
+**Request URL**
+
 ```
  /openapi/v1/instance/get
 ```
+
+**Request parameters**
 
 GetJobInstanceRequest
 
@@ -1890,17 +2098,28 @@ JobInstanceDetail
         logger.error("GetJobInstanceRequest error code: {} message: {}, requestId: {}",
 result.getCode(),
             result.getMessage(), result.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("GetJobInstanceRequest error.", e);
 ```
+
+`}`
 
 #### 4.4.5 Query task instances
 
 Retrieves a list of Job instances for a specified Job ID. This operation returns information about the 10 most recent running instances.
 
+**Request URL**
+
 ```
  /openapi/v1/instance/getList
 ```
+
+**Request parameters**
 
 GetJobInstanceListRequest
 
@@ -1963,15 +2182,24 @@ jobInstanceDetails
         logger.error("GetJobInstanceListRequest error code: {} message: {}, requestId:
 {}", result.getCode(),
             result.getMessage(), result.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("GetJobInstanceListRequest error.", e);
 ```
+
+`}`
 
 ### 4.5 Workflow
 
 #### 4.5.1 Create a workflow
 
 Create a workflow and define its basic information.
+
+**Request URL**
 
 ```
  /openapi/v1/workflow/create
@@ -2015,6 +2243,8 @@ Response example: `{`
   "message": ""
 ```
 
+`}`
+
 **Code example**
 
 ```java
@@ -2033,13 +2263,19 @@ public void testCreate() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.5.2 Update basic workflow information
 
 Updates the basic information of a workflow.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/update
 ```
+
+**Request parameters**
 
 UpdateWorkflowRequest
 
@@ -2084,13 +2320,19 @@ SchedulerXResult<UpdateWorkflowResponse>
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.5.3 Update a workflow DAG
 
 Define the basic information for the workflow.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/updateDag
 ```
+
+**Request parameters**
 
 UpdateWorkflowDagRequest
 
@@ -2131,13 +2373,19 @@ SchedulerXResult<UpdateWorkflowDagResponse>
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.5.4 Enable workflow
 
 Enables a specified workflow.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/enable
 ```
+
+**Request parameters**
 
 EnableWorkflowRequest
 
@@ -2168,17 +2416,28 @@ SchedulerXResult<EnableWorkflowResponse>
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", request.getCode(),
             request.getMessage(), request.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("", e);
 ```
+
+`}`
 
 #### 4.5.5 Disable a workflow
 
 This operation disables a specified workflow.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/disable
 ```
+
+**Request parameters**
 
 DisableWorkflowRequest
 
@@ -2207,17 +2466,28 @@ SchedulerXResult<DisableWorkflowResponse>
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", request.getCode(),
             request.getMessage(), request.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("", e);
 ```
+
+`}`
 
 #### 4.5.6 Delete a workflow
 
 This operation deletes a specified workflow.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/delete
 ```
+
+**Request parameters**
 
 DeleteWorkflowRequest
 
@@ -2246,17 +2516,28 @@ SchedulerXResult<DeleteWorkflowResponse>
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", request.getCode(),
             request.getMessage(), request.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("", e);
 ```
+
+`}`
 
 #### 4.5.7 Query workflow details and DAG
 
 This operation returns the details and dependencies of a workflow.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/get
 ```
+
+**Request parameters**
 
 GetWorkFlowRequest
 
@@ -2418,7 +2699,7 @@ Sample response: `{`
                     "jobXAtrrs": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
             "edges": [
@@ -2452,13 +2733,15 @@ Sample response: `{`
                     "target": 1060976
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "code": 200,
     "success": true,
     "message": ""
 ```
+
+`}`
 
 **Sample code**
 
@@ -2475,13 +2758,19 @@ JsonUtil.toJson(result.getData().getWorkFlowInfo()));
 JsonUtil.toJson(result.getData().getWorkFlowNodeInfo()));
 ```
 
+`}`
+
 #### 4.5.8 Run a workflow
 
 This operation triggers a workflow. You must invoke a method for API-based workflows. You can also use this operation to invoke non-API-based workflows.
 
+**Request URL**
+
 ```
  /openapi/v1/workflow/execute
 ```
+
+**Request parameters**
 
 ExecuteWorkflowRequest
 
@@ -2514,9 +2803,16 @@ SchedulerXResult<ExecuteWorkflowResponse>
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", result.getCode(),
             result.getMessage(), result.getRequestId());
+```
+
+`}`
+
+```
 } catch (Exception e) {
     logger.error("", e);
 ```
+
+`}`
 
 ### 4.6 Workflow instances
 
@@ -2524,9 +2820,13 @@ SchedulerXResult<ExecuteWorkflowResponse>
 
 This operation queries a specified workflow instance and returns the instance status and its node topology.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/get
 ```
+
+**Request parameters**
 
 GetWorkflowInstanceRequest
 
@@ -2673,7 +2973,7 @@ GetWorkflowInstanceResponse
                     "attempt": 0
 ```
 
-`],`
+`}` `],`
 
 ```json
             "edges": [
@@ -2714,13 +3014,15 @@ GetWorkflowInstanceResponse
                     "target": 574995030
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "code": 200,
     "success": true,
     "message": ""
 ```
+
+`}`
 
 **Sample code**
 
@@ -2738,13 +3040,19 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.2 Query the list of workflow instances
 
 Queries a list of workflow instances.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/list
 ```
+
+**Request parameters**
 
 GetWorkflowInstanceListRequest
 
@@ -2959,13 +3267,19 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.3 Stop a running workflow instance
 
 Stopping a running workflow instance also stops all of its running nodes.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/stop
 ```
+
+**Request parameters**
 
 StopWfInstanceRequest
 
@@ -3000,13 +3314,19 @@ public void testStopWfInstance() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.4 Retry a failed workflow instance
 
 When you retry a failed workflow instance, all failed nodes in the workflow are rerun.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/retry
 ```
+
+**Request parameters**
 
 RetryWfInstanceRequest
 
@@ -3039,15 +3359,21 @@ public void testRetryWfInstance() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.5 Mark a failed workflow instance as successful
 
 **successful**
 
 Marking a failed workflow instance as successful also marks all its failed and pending nodes as successful and stops the workflow execution.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/setSuccess
 ```
+
+**Request parameters**
 
 SetWfInstanceSuccessRequest
 
@@ -3081,13 +3407,19 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.6 Pause a running workflow instance
 
 Pausing a running workflow allows currently running nodes to complete, but prevents new nodes from starting.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/suspend
 ```
+
+**Request parameters**
 
 SuspendWfInstanceRequest
 
@@ -3120,13 +3452,19 @@ public void testSuspendWfInstance() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.7 Cancel a paused workflow instance
 
 You can resume a paused workflow instance.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/cancelSuspend
 ```
+
+**Request parameters**
 
 CancelSuspendWfInstanceRequest
 
@@ -3160,13 +3498,19 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.8 Skip a workflow instance node
 
 You can skip a node in a workflow instance that has not yet run.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/skip
 ```
+
+**Request parameters**
 
 SkipWfInstanceNodeRequest
 
@@ -3202,15 +3546,21 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
+`}`
+
 #### 4.6.9 Cancel a skipped workflow instance node
 
 **node**
 
 If a workflow node is set to be skipped, you can cancel this setting. The node then resumes execution.
 
+**Request URL**
+
 ```
  /openapi/v1/wfInstance/cancelSkip
 ```
+
+**Request parameters**
 
 CancelSkipWfInstanceNodeRequest
 
@@ -3247,3 +3597,5 @@ public void testCancelSkipWfInstanceNode() throws Exception {
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
+
+`}`

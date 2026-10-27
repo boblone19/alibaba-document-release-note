@@ -5,7 +5,7 @@ doc_version: "20240527"
 pdf_pages: 52
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Key Management Service User Guide 20240527.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1KMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Key%20Management%20Service%20User%20Guide%2020240527.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Key Management Service User Guide 20240527

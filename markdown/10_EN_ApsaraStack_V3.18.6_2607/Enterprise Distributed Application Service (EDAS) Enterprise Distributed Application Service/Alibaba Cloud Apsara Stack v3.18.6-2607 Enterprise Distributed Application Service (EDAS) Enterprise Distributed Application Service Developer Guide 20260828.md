@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 201
 source_pdf: "2d6d4da51556a5ab_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Developer Guide 20260828
@@ -285,10 +285,17 @@ operation).
                 for (DeployGroup deployGroup : deployGroups) {
                     System.out.println(deployGroup.getGroupName());
                     System.out.println(deployGroup.getGroupId());
+```
+
+`}` `}`
+
+```java
         } else {
             // Print the cause of the error.
             System.out.println(response.getMessage());
 ```
+
+`}` `}`
 
 #### 1.1.7 API overview
 
@@ -324,9 +331,13 @@ You can call the DeleteCluster operation to delete an ECS cluster or unimport a 
 
 This operation uses common request headers. No special request headers are required. For more information about common request headers, see Common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/resource/cluster HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -340,21 +351,35 @@ DELETE /pop/v5/resource/cluster HTTP/1.1
 | Data | Boolean | true | The result of the operation. |
 | Message | String | success | Additional message. |
 
+**Examples**
+
 Request example
 
+```
+DELETE /pop/v5/resource/cluster HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-DELETE /pop/v5/resource/cluster HTTP/1.1
   "ClusterId": "8b96ade0-0a07-****af9d-5ed83640d076"
 ```
 
-Successful response example
+`}` Successful response example
+
+```xml
+<Data>true</Data>
+```
+
+`JSON` format `{`
 
 ```json
-<Data>true</Data>
  "Data": true,
  "Message": "success",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.8.1.2 ListCluster
 
@@ -363,6 +388,8 @@ Queries a list of clusters in Enterprise Distributed Application Service (EDAS).
 **Request header**
 
 This operation uses common request headers. No special headers are required. For more information, see Common request parameters.
+
+**Request syntax**
 
 ```
 POST /pop/v5/resource/cluster_list HTTP/1.1
@@ -401,13 +428,15 @@ POST /pop/v5/resource/cluster_list HTTP/1.1
 | Code | Integer | 200 | The HTTP status code or POP error code. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
 ```
 POST /pop/v5/resource/cluster_list HTTP/1.1
 ```
 
-Successful response example
+Successful response example `JSON` format
 
 ```json
  "ClusterList":[
@@ -431,12 +460,17 @@ Successful response example
    "ClusterStatus":1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
  "Message":"success",
  "Code":200
+```
+
+`}` `XML` format
+
+```xml
 <ClusterList>
  <Description>test</Description>
  <OversoldFactor>1</OversoldFactor>
@@ -456,7 +490,7 @@ Successful response example
  <RegionId>cn-wulan-env205-d01:t1</RegionId>
  <CpuUsed>2</CpuUsed>
  <ClusterStatus>1</ClusterStatus>
-</ClusterList> <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId>
+</ClusterList> <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>success</Message> <Code>200</Code>
 ```
 
 ###### 1.1.8.1.3 ListResourceGroup
@@ -466,6 +500,8 @@ The ListResourceGroup operation queries a list of resource groups.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the documentation about common parameters.
+
+**Request syntax**
 
 ```
 POST /pop/v5/resource/reg_group_list HTTP/1.1
@@ -562,16 +598,18 @@ This operation has no request parameters.
 | VpcId | String | vpc- bp13evu4aayj2t1er**** | The unique ID of the VPC. |
 | ZoneId | String | cn-qingdao-h | The ID of the zone. |
 
+**Examples**
+
 Sample request
 
 ```
-POST /pop/v5/resource/reg_group_list HTTP/1.1
+POST /pop/v5/resource/reg_group_list HTTP/1.1 Common request headers
 ```
 
-Sample response
+Sample response `XML` format
 
 ```xml
-<RequestId>b197-40ab-9155-7ca7</RequestId> <ResourceGroupList>
+<RequestId>b197-40ab-9155-7ca7</RequestId> <Message>success</Message> <ResourceGroupList>
     <ResGroupEntity>
         <Description>QqLZDA3pBZ</Description>
         <CreateTime>1557890594376</CreateTime>
@@ -615,7 +653,7 @@ Sample response
                     <InstanceId>i-2zej4i2jdf*********</InstanceId>
 ```
 
-```json
+```xml
                     <CreateTime>1557890594376</CreateTime>
                     <Cpu>2</Cpu>
                     <EcuId>0de2ebdb-9490-4fc4-be41***************</EcuId>
@@ -653,7 +691,12 @@ Sample response
         </SlbList>
         <Name>TIa2LGixyD</Name>
     </ResGroupEntity>
-</ResourceGroupList>
+</ResourceGroupList> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "b197-40ab-9155-7ca7",
     "Message": "success",
     "ResourceGroupList": {
@@ -728,7 +771,7 @@ Sample response
                     "HostName": "iZm5e853hvvrodnvqus****"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "SlbList": {
@@ -747,17 +790,19 @@ Sample response
                     "SlbStatus": "active"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "Name": "TIa2LGixyD"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.8.2 ECS clusters
 
@@ -786,20 +831,35 @@ DELETE /pop/v5/resource/cluster_member HTTP/1.1
 | Data | Boolean | true | Indicates whether the operation was successful. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Sample request
 
-```json
-DELETE /pop/v5/resource/cluster_member HTTP/1.1 "ClusterId": "52984524-****-****-85f2-a34b0e5bb521", "ClusterMemberId": "i-2zej4i2jdf3****jigng"
+```
+DELETE /pop/v5/resource/cluster_member HTTP/1.1 Common request headers
 ```
 
-Sample success response
+`{`
 
 ```json
-<Data>ok</Data>
+"ClusterId": "52984524-****-****-85f2-a34b0e5bb521", "ClusterMemberId": "i-2zej4i2jdf3****jigng"
+```
+
+`}` Sample success response `XML` format
+
+```xml
+<Data>ok</Data> <Code>200</Code> <Message>success</Message>
+```
+
+`JSON` format `{`
+
+```json
  "Data": "ok",
  "Code": "200",
  "Message": "success"
 ```
+
+`}`
 
 ###### 1.1.8.2.2 ListClusterMembers
 
@@ -809,9 +869,13 @@ You can call ListClusterMembers to retrieve a list of ECS instances.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/resource/cluster_member_list HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -841,16 +905,18 @@ GET /pop/v5/resource/cluster_member_list HTTP/1.1
 | Code | Integer | 200 | The HTTP status code. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
 ```json
 GET /pop/v5/resource/cluster_member_list HTTP/1.1 "ClusterId": "52984524-6d48-4bbd-85f2-a34b0e5b****"
 ```
 
-Successful response example
+`}` Successful response example `XML` format
 
-```json
-<ClusterMemberPage>
+```xml
+<Message>success</Message> <ClusterMemberPage>
     <PageSize>10</PageSize>
     <CurrentPage>1</CurrentPage>
     <TotalSize>5</TotalSize>
@@ -863,7 +929,12 @@ Successful response example
         <ClusterMemberId>adb03eeb-3adf-4d7e-afe1-03d1ad45****</ClusterMemberId>
         <EcsId>i-2zej4i2jdf3ntwhj****</EcsId>
     </ClusterMemberList>
-</ClusterMemberPage>
+</ClusterMemberPage> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "ClusterMemberPage": {
         "PageSize": 10,
@@ -879,11 +950,13 @@ Successful response example
             "EcsId": "i-2zej4i2jdf3ntwhj****"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.8.2.3 ListEcsNotInCluster
 
@@ -893,9 +966,13 @@ The ListEcsNotInCluster operation retrieves all Elastic Compute Service (ECS) in
 
 This operation uses common request headers and does not require any special request headers. For more information, see Common parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/resource/ecs_not_in_cluster HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -933,10 +1010,10 @@ Request example
 GET /pop/v5/resource/ecs_not_in_cluster HTTP/1.1 "NetworkMode": "2"
 ```
 
-Response example
+`}` Response example `XML` format
 
-```json
-<RequestId>b197-40ab-9155-****</RequestId> <EcsEntityList>
+```xml
+<RequestId>b197-40ab-9155-****</RequestId> <Message>success</Message> <Code>200</Code> <EcsEntityList>
     <Status> Running</Status>
     <InstanceName>worker-k8s-for-cs-c9dfa009a5e7c4faab2010b87cae4****</InstanceName>
     <InnerIp>192.168.20.113</InnerIp>
@@ -951,6 +1028,11 @@ Response example
     <RegionId>cn-beijing</RegionId>
     <Eip>139.30.xxx.xx</Eip>
 </EcsEntityList>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "b197-40ab-9155-****",
     "Message": "success",
     "Code": 200,
@@ -969,6 +1051,8 @@ Response example
         "RegionId": "cn-beijing",
         "Eip": "139.30.xxx.xx"
 ```
+
+`}` `}`
 
 ###### 1.1.8.2.4 ListEcuByRegion
 
@@ -1025,16 +1109,24 @@ GET /pop/v5/resource/ecu_list HTTP/1.1
 | ZoneId | String | cn-beijing-a | The ID of the zone where the ECU resides. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
-```json
-GET /pop/v5/resource/ecu_list HTTP/1.1 "Act": "pop-query"
+```
+GET /pop/v5/resource/ecu_list HTTP/1.1 Common request headers
 ```
 
-Response example
+`{`
+
+```json
+"Act": "pop-query"
+```
+
+`}` Response example `XML` format
 
 ```xml
-<EcuEntityList>
+<Message>success</Message> <EcuEntityList>
     <IpAddr>192.168.0.115</IpAddr>
     <ZoneId>cn-beijing-a</ZoneId>
     <InstanceId>i-2ze82h8f4zcn449y****</InstanceId>
@@ -1052,8 +1144,10 @@ Response example
     <Online>false</Online>
     <AvailableCpu>4</AvailableCpu>
     <DockerEnv>true</DockerEnv>
-</EcuEntityList>
+</EcuEntityList> <Code>200</Code>
 ```
+
+`JSON` format
 
 ```json
     "Message": "success",
@@ -1083,6 +1177,8 @@ Response example
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.8.2.5 ListScaleOutEcu
 
 Call the ListScaleOutEcu operation to retrieve a list of ECUs that are available for application scale-out from a specified cluster or from the cluster associated with an application. This operation applies only to ECS clusters.
@@ -1098,9 +1194,13 @@ applications. A namespace can be a default namespace or a custom namespace. Each
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request syntax**
+
 ```
 POST /pop/v5/resource/scale_out_ecu_list HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1139,15 +1239,17 @@ POST /pop/v5/resource/scale_out_ecu_list HTTP/1.1
 |---|---|---|---|
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
 ```
-POST /pop/v5/resource/scale_out_ecu_list HTTP/1.1
+POST /pop/v5/resource/scale_out_ecu_list HTTP/1.1 Common request headers
 ```
 
-Response example
+Response example `XML` format
 
-```json
+```xml
 <EcuInfoList>
     <IpAddr>192.168.XX.XX</IpAddr>
     <ZoneId>cn-beijing-h</ZoneId>
@@ -1164,7 +1266,12 @@ Response example
     <Online>true</Online>
     <AvailableCpu>2</AvailableCpu>
     <DockerEnv>false</DockerEnv>
-</EcuInfoList>
+</EcuInfoList> <Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "EcuInfoList": {
         "IpAddr": "192.168.XX.XX",
         "ZoneId": "cn-beijing-h",
@@ -1189,6 +1296,8 @@ Response example
     "Message": "success",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.8.2.6 QueryEccInfo
 
@@ -1223,16 +1332,23 @@ GET /pop/v5/ecc HTTP/1.1
 | Message | String | success | Additional information. |
 | RequestId | String | b197-40ab-9155-**** | The ID of the request. |
 
+**Examples**
+
 Sample request
 
+```
+GET /pop/v5/ecc HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /pop/v5/ecc HTTP/1.1
   "EccId": ""
 ```
 
-Sample responses
+`}` Sample responses `XML` format
 
-```json
+```xml
 <QueryEccInfoResponse>
   <EccInfo>
         <GroupName>_DEFAULT_GROUP</GroupName>
@@ -1245,7 +1361,14 @@ Sample responses
         <GroupId>57cd****-2d3b-496f-bcce-646d0a4d****</GroupId>
   </EccInfo>
   <RequestId>b197-40ab-9155-****</RequestId>
+  <Message>success</Message>
+  <Code>200</Code>
 </QueryEccInfoResponse>
+```
+
+`JSON` format `{`
+
+```json
     "EccInfo": {
         "GroupName": "_DEFAULT_GROUP",
         "VpcId": "vpc-23727****",
@@ -1265,6 +1388,8 @@ Sample responses
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.8.2.7 SynchronizeResource
 
 The SynchronizeResource operation synchronizes your Alibaba Cloud resources with Enterprise Distributed Application Service (EDAS). This operation applies only to ECS clusters. When you synchronize ECS resources, all instance data is synchronized from ECS. If you have more than 100 ECS instances, avoid calling this operation frequently.
@@ -1273,9 +1398,13 @@ The SynchronizeResource operation synchronizes your Alibaba Cloud resources with
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/resource/pop_sync_resource HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1293,25 +1422,41 @@ GET /pop/v5/resource/pop_sync_resource HTTP/1.1
 | RequestId | String | F8DFGED- K98*************** | The unique identifier of the request. |
 | Success | Boolean | true | The result of the request. Valid values: true: The request was successful. false: The request failed. |
 
+**Examples**
+
 Request example
 
+```
+GET /pop/v5/resource/pop\_sync\_resource HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /pop/v5/resource/pop\_sync\_resource HTTP/1.1
   "Type": ""
 ```
 
-Successful response examples
+`}` Successful response examples `XML` format
 
-```json
+```xml
 <SynchronizeResourceResponse>
+  <Message>success</Message>
   <Data>PopSyncResource success</Data>
+  <Code>200</Code>
   <Success>true</Success>
 </SynchronizeResourceResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "Data": "PopSyncResource success",
  "Code": 200,
  "Success": true
 ```
+
+`}`
 
 **Notes**
 
@@ -1343,6 +1488,8 @@ This operation uses only common request headers. For more information, see Commo
 POST /pop/app/bind_slb_json HTTP/1.1
 ```
 
+**Request parameters**
+
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | AppId | String | Query | Yes | 3616cdca-********* | The application ID. |
@@ -1366,21 +1513,28 @@ POST /pop/app/bind_slb_json HTTP/1.1
 | SlbPort | Integer | 80 | The port of the SLB instance. |
 | Message | String | bind slb success | Additional information |
 
+**Examples**
+
 Request example
 
 ```json
 POST /pop/app/bind_slb_json HTTP/1.1 "AppId": "3616cdca-*********", "SlbId": "lb-wz96ph63r************", "SlbIp": "192.16*.*.*", "Type": "intranet"
 ```
 
-Example of a successful response
+`}` Example of a successful response `XML` format
 
-```json
+```xml
 <Data>
     <SlbPort>80</SlbPort>
     <SlbId>lb-wz96ph63r************</SlbId>
     <SlbIp>192.168.*.*</SlbIp>
     <SlbName>test*********</SlbName>
-</Data> <Message>bind slb success</Message>
+</Data> <Message>bind slb success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
  "Data": {
   "SlbPort": 80,
   "SlbId": "lb-wz96ph63r************",
@@ -1395,6 +1549,8 @@ Example of a successful response
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.1.2 ContinuePipeline
 
 Continues a pipeline to the next release batch.
@@ -1403,9 +1559,13 @@ Continues a pipeline to the next release batch.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/changeorder/pipeline_batch_confirm HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1422,20 +1582,35 @@ GET /pop/v5/changeorder/pipeline_batch_confirm HTTP/1.1
 |---|---|---|---|
 | RequestId | String | D16979DC-4D42- **************** | The ID of the request. |
 
+**Examples**
+
 Sample request
 
-```json
-GET /pop/v5/changeorder/pipeline_batch_confirm HTTP/1.1 "PipelineId": "5648dbd7-df13********************"
+```
+GET /pop/v5/changeorder/pipeline_batch_confirm HTTP/1.1 Common request headers
 ```
 
-Sample responses
+`{`
 
 ```json
-<RequestId>D16979DC-4D42-****************</RequestId>
+"PipelineId": "5648dbd7-df13********************"
+```
+
+`}` Sample responses `XML` format
+
+```xml
+<Message>success</Message> <Code>200</Code> <RequestId>D16979DC-4D42-****************</RequestId>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "Code": 200,
     "RequestId": "D16979DC-4D42-****************"
 ```
+
+`}`
 
 ###### 1.1.9.1.3 GetChangeOrderInfo
 
@@ -1445,9 +1620,13 @@ You can call the GetChangeOrderInfo operation to retrieve the details of a chang
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/change_order_info HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1501,17 +1680,24 @@ POST /pop/v5/changeorder/change_order_info HTTP/1.1
 | Status | Integer | 2 | The status of the change. 0: Ready 1: Executing 2: Successful 3: Failed 6: Stopped 8: Waiting for manual confirmation to execute the next batch in a manual phased release. 9: Waiting for the next batch to be executed in an automatic phased release. 10: Failed due to a system exception. |
 |---|---|---|---|
 
+**Examples**
+
 Sample request
 
+```
+POST /pop/v5/changeorder/change_order_info HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/changeorder/change_order_info HTTP/1.1
   "ChangeOrderId": ""
 ```
 
-Sample response
+`}` Sample response `XML` format
 
 ```xml
-<changeOrderInfo>
+<Message>success</Message> <changeOrderInfo>
     <Status>2</Status>
     <BatchCount>1</BatchCount>
     <CreateTime>2019-11-13 14:23:46</CreateTime>
@@ -1531,6 +1717,7 @@ Sample response
                             <StageId>316641fc-69a7-4cc4-****-************</StageId>
                             <Status>2</Status>
                             <StageName>Process Start </StageName>
+                            <Message>Success</Message>
                         </ServiceStage>
                         <InstanceDTOList>
                         </InstanceDTOList>
@@ -1571,6 +1758,7 @@ Sample response
                             <StageId>358a143f-09a0-45e0-****-************</StageId>
                             <Status>2</Status>
                             <StageName>Enable Tengine</StageName>
+                            <Message>Success</Message>
                         </ServiceStage>
                         <InstanceDTOList>
                         </InstanceDTOList>
@@ -1607,6 +1795,7 @@ Sample response
                             <StageId>628acb11-09dd-4709-****-************</StageId>
                             <Status>2</Status>
                             <StageName>Enable SLB</StageName>
+                            <Message>Success</Message>
                         </ServiceStage>
                         <InstanceDTOList>
                         </InstanceDTOList>
@@ -1621,6 +1810,7 @@ Sample response
                             <StageId>bf15f2b1-e7b2-4069-****-************</StageId>
                             <Status>2</Status>
                             <StageName>Process Complete</StageName>
+                            <Message>Success</Message>
                         </ServiceStage>
                         <InstanceDTOList>
                         </InstanceDTOList>
@@ -1628,7 +1818,7 @@ Sample response
                 </StageInfoDTO>
 ```
 
-```json
+```xml
             </StageList>
             <PipelineName> Batch: 1</PipelineName>
             <PipelineStatus>2</PipelineStatus>
@@ -1636,7 +1826,12 @@ Sample response
         </PipelineInfo>
     </PipelineInfoList>
     <Desc>IP of Scale-Out Instance: 47.XX.XX.27 (Public)</Desc>
-</changeOrderInfo>
+</changeOrderInfo> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "changeOrderInfo": {
   "Status": 2,
@@ -1648,8 +1843,18 @@ Sample response
     "ChangeOrderId": "1074f3e2-e974-4a0e-****-************",
   "PipelineInfoList": {
     "PipelineInfo": [
+```
+
+`{`
+
+```json
             "StageList": {
                 "StageInfoDTO": [
+```
+
+`{`
+
+```json
                         "StageId": "316641fc-69a7-4cc4-****-************",
                         "Status": 2,
                         "StageName": "Process Start ",
@@ -1668,7 +1873,7 @@ Sample response
                                 "InstanceDTO": []
 ```
 
-`},`
+`}` `}` `},` `{`
 
 ```json
                         "StageId": "358a143f-09a0-45e0-****-************@**_*******_*****",
@@ -1678,22 +1883,32 @@ Sample response
                             "ServiceStage": {},
                             "InstanceDTOList": {
                                 "InstanceDTO": [
+```
+
+`{`
+
+```json
                                         "Status": 2,
                                         "InstanceStageDTOList": {
                                             "InstanceStageDTO": [
+```
+
+`{`
+
+```json
                                                     "StageId": "5dd4c0f2-d81a-406f-****-************",
                                                     "Status": 2,
                                                     "StageName": " scale out "
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                                         "InstanceIp": "47.XX.XX.27 (Public)<br>***.**.*.*** (*******)",
                                         "InstanceName": "EDAS-scaled-cluster:default-cluster"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
                         "StageId": "358a143f-09a0-45e0-****-************",
@@ -1719,7 +1934,7 @@ Sample response
                                 "InstanceDTO": []
 ```
 
-`},`
+`}` `}` `},` `{`
 
 ```json
                         "StageId": "628acb11-09dd-4709-****-************@**_*******_*****",
@@ -1729,22 +1944,32 @@ Sample response
                             "ServiceStage": {},
                             "InstanceDTOList": {
                                 "InstanceDTO": [
+```
+
+`{`
+
+```json
                                         "Status": 2,
                                         "InstanceStageDTOList": {
                                             "InstanceStageDTO": [
+```
+
+`{`
+
+```json
                                                     "StageId": "70fcced7-9b99-409f-****-************",
                                                     "Status": 2,
                                                     "StageName": "Health Check"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                                         "InstanceIp": "47.XX.XX.27 (Public)<br>***.**.*.*** (*******)",
                                         "InstanceName": "EDAS-scaled-cluster:default-cluster"
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},` `{`
 
 ```json
                         "StageId": "628acb11-09dd-4709-****-************",
@@ -1765,7 +1990,7 @@ Sample response
                                 "InstanceDTO": []
 ```
 
-`},`
+`}` `}` `},` `{`
 
 ```json
                         "StageId": "bf15f2b1-e7b2-4069-****-************",
@@ -1794,7 +2019,7 @@ Sample response
             "PipelineId": "4c4ee320-5e47-4a48-****-************"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Desc": "IP of Scale-Out Instance: 47.XX.XX.27 (Public)"
@@ -1806,6 +2031,8 @@ Sample response
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.1.4 GetCluster
 
 You can call the GetCluster operation to obtain information about a specific cluster.
@@ -1814,9 +2041,13 @@ You can call the GetCluster operation to obtain information about a specific clu
 
 This operation has no special request headers. For information about common request headers, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/resource/cluster HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1849,16 +2080,23 @@ GET /pop/v5/resource/cluster HTTP/1.1
 | Message | String | success | Details |
 | RequestId | String | d76db491 | The ID of the request. |
 
+**Examples**
+
 Sample request
 
+```
+GET /pop/v5/resource/cluster HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /pop/v5/resource/cluster HTTP/1.1
   "ClusterId": "5439271a-015b-433d-xxxxxxxx"
 ```
 
-Sample response
+`}` Sample response `XML` format
 
-```json
+```xml
 <Cluster>
     <MemUsed>2048</MemUsed>
     <Mem>2048</Mem>
@@ -1876,6 +2114,11 @@ Sample response
     <ClusterType>2</ClusterType>
     <IaasProvider>ALIYUN</IaasProvider>
 </Cluster>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "Code": 200,
  "Cluster": {
@@ -1896,6 +2139,8 @@ Sample response
   "IaasProvider": "ALIYUN"
 ```
 
+`}` `}`
+
 ###### 1.1.9.1.5 GetContainerConfiguration
 
 You can call the GetContainerConfiguration operation to retrieve the Tomcat configuration for an application or an application group.
@@ -1904,9 +2149,13 @@ You can call the GetContainerConfiguration operation to retrieve the Tomcat conf
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
 
+**Request syntax**
+
 ```
 GET /pop/v5/app/container_config HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1928,23 +2177,35 @@ GET /pop/v5/app/container_config HTTP/1.1
 | UseBodyEncoding | Boolean | true | Indicates whether useBodyEncodingForURI is enabled. The configured value is returned. If this parameter is not set for the application group, the value configured for the application is returned. If this parameter is not set for the application, the default value is returned. |
 | Message | String | success | The message returned for the call. |
 
+**Examples**
+
 Example request
 
+```
+GET /pop/v5/app/container_config HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /pop/v5/app/container_config HTTP/1.1
   "AppId": ""
 ```
 
-Example of a successful response
+`}` Example of a successful response `XML` format
 
-```json
+```xml
 <ContainerConfiguration>
     <UseBodyEncoding>true</UseBodyEncoding>
     <ContextPath>ROOT</ContextPath>
     <MaxThreads>400</MaxThreads>
     <HttpPort>8080</HttpPort>
     <URIEncoding>ISO-8859-1</URIEncoding>
-</ContainerConfiguration>
+</ContainerConfiguration> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "ContainerConfiguration": {
   "UseBodyEncoding": true,
@@ -1960,6 +2221,8 @@ Example of a successful response
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.1.6 GetJvmConfiguration
 
 You can call the GetJvmConfiguration operation to retrieve the Java Virtual Machine (JVM) settings for an application or an application group.
@@ -1968,9 +2231,13 @@ You can call the GetJvmConfiguration operation to retrieve the Java Virtual Mach
 
 This operation uses only common request headers. For more information, see the document about common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/app/app_jvm_config HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1991,21 +2258,33 @@ GET /pop/v5/app/app_jvm_config HTTP/1.1
 | Options | String | - XX:+UseConcMarkSweepG C -XX:-UseParNewGC | Custom parameters. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Request example
 
+```
+GET /pop/v5/app/app_jvm_config HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-GET /pop/v5/app/app_jvm_config HTTP/1.1
   "AppId": ""
 ```
 
-Successful response example
+`}` Successful response example `XML` format
 
-```json
-<JvmConfiguration>
+```xml
+<Message>success</Message> <JvmConfiguration>
     <MaxHeapSize>1000</MaxHeapSize>
     <MinHeapSize>500</MinHeapSize>
     <Options> -XX:+UseConcMarkSweepGC -XX:-UseParNewGC</Options>
-</JvmConfiguration>
+</JvmConfiguration> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "JvmConfiguration": {
   "MaxHeapSize": 1000,
@@ -2019,6 +2298,8 @@ Successful response example
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.1.7 ListApplication
 
 You can call the ListApplication operation to retrieve a list of applications.
@@ -2027,9 +2308,13 @@ You can call the ListApplication operation to retrieve a list of applications.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/app/app_list HTTP/1.1
 ```
+
+**Request parameters**
 
 None
 
@@ -2062,16 +2347,18 @@ None
 | Code | Integer | 200 | The HTTP status code. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
 ```
 POST /pop/v5/app/app_list HTTP/1.1
 ```
 
-Response example
+Response example `XML` format
 
-```json
-<RequestId>5d6fa0bc-cc3**********</RequestId> <ApplicationList>
+```xml
+<RequestId>5d6fa0bc-cc3**********</RequestId> <Message>success</Message> <ApplicationList>
     <Application>
         <BuildPackageId>58</BuildPackageId>
         <ApplicationType>FatJar</ApplicationType>
@@ -2083,7 +2370,12 @@ Response example
         <RunningInstanceCount>0</RunningInstanceCount>
         <Name>doc-test-consumer</Name>
     </Application>
-</ApplicationList>
+</ApplicationList> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "5d6fa0bc-cc3**********",
     "Message": "success",
     "ApplicationList": {
@@ -2099,11 +2391,13 @@ Response example
             "Name": "doc-test-consumer"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.1.8 ListBuildPack
 
@@ -2113,9 +2407,13 @@ The ListBuildPack operation retrieves a list of container versions.
 
 This operation uses common request headers. No special request headers are required. For more information, see the documentation about common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/app/build_pack_list HTTP/1.1
 ```
+
+**Request parameters**
 
 This operation has no request parameters.
 
@@ -2152,16 +2450,18 @@ This operation has no request parameters.
 | Code | Integer | 200 | The HTTP status code. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
 ```
-POST /pop/v5/app/build_pack_list HTTP/1.1
+POST /pop/v5/app/build_pack_list HTTP/1.1 Common request headers
 ```
 
-Successful response example
+Successful response example `XML` format
 
 ```xml
-<BuildPackList>
+<Message>success</Message> <BuildPackList>
     <TomcatDesc>1. Updated the config-client plugin to fix a cache read failure in multitenancy scenarios. 2. Updated
 the HSF plugin to resolve an issue where the Pandora QoS command fails and an issue where the endpoint is not found w hen many services are subscribed. 3. Upgraded all plugins that use FastJSON to the sec06 security version. </TomcatDesc>
     <ScriptVersion>1.0.3</ScriptVersion>
@@ -2186,8 +2486,10 @@ hangzhou.aliyuncs.com/components/tengine/3.4.7/tengine.sh</TengineDownloadUrl>
     <Disabled>false</Disabled>
     <TengineImageId>registry.aliyuncs.com/edas/****-*********-*****:*.*.*</TengineImageId>
     <SupportFeatures>tengine,fatjar,restful,eip_nodeport,dpath</SupportFeatures>
-</BuildPackList>
+</BuildPackList> <Code>200</Code>
 ```
+
+`JSON` format
 
 ```json
     "Message": "success",
@@ -2222,6 +2524,8 @@ production-7.0.92.tar.gz",
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.1.9 ListHistoryDeployVersion
 
 You can call the ListHistoryDeployVersion operation to retrieve the historical deployment versions of an application.
@@ -2230,9 +2534,13 @@ You can call the ListHistoryDeployVersion operation to retrieve the historical d
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/app/deploy_history_version_list HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2257,15 +2565,23 @@ GET /pop/v5/app/deploy_history_version_list HTTP/1.1
 | UpdateTime | Long | 1573627440892 | The timestamp of the last update. |
 | WarUrl | String | http://edas-sz.oss-cn- shenzhen**********/SPRIN G CLOUD PROVIDER.jar _ _ | The URL of the deployment package. |
 
+**Examples**
+
 Sample request
 
-```json
-GET /pop/v5/app/deploy_history_version_list HTTP/1.1 "AppId": "3616cdca-4f92-4413-****-************"
+```
+GET /pop/v5/app/deploy_history_version_list HTTP/1.1 Common request headers
 ```
 
-Sample responses
+`{`
 
 ```json
+"AppId": "3616cdca-4f92-4413-****-************"
+```
+
+`}` Sample responses `XML` format
+
+```xml
 <PackageVersionList>
     <Type>url</Type>
     <Description>deploy</Description>
@@ -2275,7 +2591,12 @@ Sample responses
     <UpdateTime>1573627440892</UpdateTime>
     <Id>441beb18-da42-44dc-****-************</Id>
     <PackageVersion>1.0</PackageVersion>
-</PackageVersionList>
+</PackageVersionList> <Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "PackageVersionList": {
         "Type": "url",
         "Description": "deploy",
@@ -2294,6 +2615,8 @@ Sample responses
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.1.10 ListUserDefineRegion
 
 You can call the ListUserDefineRegion operation to retrieve a list of user-defined namespaces.
@@ -2305,6 +2628,8 @@ This operation uses common request headers. Special request headers are not requ
 ```
 POST /pop/v5/user_region_defs HTTP/1.1
 ```
+
+**Request parameters**
 
 None
 
@@ -2326,15 +2651,17 @@ None
 | RegionName | String | betaappManager |   | The name of the namespace. |   |   |   |   |
 | UserId | String | edas **** test@aliyun- _ _ ****.com |   | The ID of the Alibaba Cloud account. |   |   |   |   |
 
+**Examples**
+
 Request example
 
 ```
-POST /pop/v5/user_region_defs HTTP/1.1
+POST /pop/v5/user_region_defs HTTP/1.1 Common request headers
 ```
 
-Successful response examples
+Successful response examples `XML` format
 
-```json
+```xml
 <ListUserDefineRegionResponse>
   <UserDefineRegionList>
         <UserDefineRegionEntity>
@@ -2348,10 +2675,20 @@ Successful response examples
         </UserDefineRegionEntity>
   </UserDefineRegionList>
 </ListUserDefineRegionResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "Code": 200,
  "UserDefineRegionList": {
   "UserDefineRegionEntity": [
+```
+
+`{`
+
+```json
     "Description": "betaappManager",
     "RegionName": "betaappManager",
     "BelongRegion": "cn-shenzhen",
@@ -2361,7 +2698,7 @@ Successful response examples
     "DebugEnable": false
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ###### 1.1.9.1.11 ResetApplication
 
@@ -2371,9 +2708,13 @@ You can call the ResetApplication operation to reset an application.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_reset HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2390,24 +2731,40 @@ POST /pop/v5/changeorder/co_reset HTTP/1.1
 | Code | Integer | 200 | Code |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
+```
+POST /pop/v5/changeorder/co_reset HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/changeorder/co_reset HTTP/1.1
   "AppId": ""
   "EccInfo": ""
 ```
 
-Successful response example
+`}` Successful response example `XML` format
+
+```xml
+<ResetApplicationResponse>
+  <Message>success</Message>
+  <ChangeOrderId>1c66548e-a082-40************</ChangeOrderId>
+  <Code>200</Code>
+</ResetApplicationResponse>
+```
+
+`JSON` format `{`
 
 ```json
-<ResetApplicationResponse>
-  <ChangeOrderId>1c66548e-a082-40************</ChangeOrderId>
-</ResetApplicationResponse>
  "Message": "success",
  "ChangeOrderId": "1c66548e-a082-40************",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.1.12 AbortChangeOrder
 
@@ -2417,9 +2774,13 @@ You can call the AbortChangeOrder operation to stop a change flow.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v5/changeorder/change_order_abort HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2439,25 +2800,39 @@ PUT /pop/v5/changeorder/change_order_abort HTTP/1.1
 | RequestId | String | 57F146F6-3C94-****-****- A66EF4B9***** | The ID of the request. |
 | TraceId | String | 0b59000b15947****55688 656d**** | The trace ID. |
 
+**Examples**
+
 Request example
 
+```
+PUT /pop/v5/changeorder/change_order_abort HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-PUT /pop/v5/changeorder/change_order_abort HTTP/1.1
   "ChangeOrderId": ""
 ```
 
-Successful response example
+`}` Successful response example `XML` format
 
-```json
+```xml
 <AbortChangeOrder>
      <Data>
           <ChangeOrderId>4f038ddf-b27b-****-****-88e44375****</ChangeOrderId>
      </Data>
+     <Message>success</Message>
      <TraceId>0b59000b15947****55688656d****</TraceId>
         <RequestId>57F146F6-3C94-****-****-A66EF4B9*****</RequestId>
      <Success>true</Success>
      <ErrorCode>success</ErrorCode>
+     <Code>200</Code>
 </AbortChangeOrder>
+```
+
+`JSON` format `{`
+
+```json
     "Data": {
         "ChangeOrderId": "4f038ddf-b27b-****-****-88e44375****"
 ```
@@ -2471,6 +2846,8 @@ Successful response example
     "ErrorCode": "success",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.1.13 AbortAndRollbackChangeOrder
 
@@ -2500,24 +2877,38 @@ PUT /pop/v5/changeorder/change_order_abort_and_rollback HTTP/1.1
 | RequestId | String | 81E0B333-2871-****-****- B8F5FF43**** | The request ID. |
 | TraceId | String | 0b59000b159471036****8 656d**** | The trace ID. |
 
+**Examples**
+
 Example request
 
+```
+PUT /pop/v5/changeorder/change_order_abort_and_rollback HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-PUT /pop/v5/changeorder/change_order_abort_and_rollback HTTP/1.1
   "ChangeOrderId": "30b2374d-9520-****-****-4d72795c****"
 ```
 
-Example response
+`}` Example response `XML` format
 
-```json
+```xml
 <ChangeOrderIdResponse>
       <Data>
             <ChangeOrderId>30b2374d-9520-****-****-4d72795c****</ChangeOrderId>
       </Data>
+      <Message>success</Message>
       <TraceId>0b59000b159471036****8656d****</TraceId>
       <RequestId>81E0B333-2871-****-****-B8F5FF43****</RequestId>
       <ErrorCode>success</ErrorCode>
+      <Code>200</Code>
 </ChangeOrderIdResponse>
+```
+
+`JSON` format `{`
+
+```json
     "Data": {
         "ChangeOrderId": "30b2374d-9520-****-****-4d72795c****"
 ```
@@ -2540,9 +2931,13 @@ You can call the QueryApplicationStatus operation to query the status of an appl
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/app/app_status HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2635,13 +3030,15 @@ GET /pop/v5/app/app_status HTTP/1.1
 |---|---|---|---|
 | --UserId | String | dd1f0-04a0-4d0e-be***** | The ID of the user. |
 
+**Examples**
+
 Sample request
 
 ```
 GET /pop/v5/app/app_status HTTP/1.1 &AppId=3616cdca-4f92-441************** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format
 
 ```json
  "RequestId":"D16979DC-4D42-********",
@@ -2732,9 +3129,13 @@ Retrieves the configuration of a Spring application instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/app/configExtract HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2761,30 +3162,41 @@ GET /pop/v5/app/configExtract HTTP/1.1
 |   |   | - Dserver.tomcat.accesslog. pattern= {\"x forwarded for\":\"% _ _ {X-Forwarded- For}i\",\"client ip\":\"%h\",\ _ "client user\":\"%l\",\"auth _ enticated\":\"%u\",\"reques t time\":\"%{yyyy-MM- _ dd'T'HH:mm:ss.SSSZ}t\",\" request url\":\"%r\",\"http _ _ code\":\"%s\",\"send bytes\ _ ":\"%b\",\"query string\":\" _ %q\",\"http referer\":\"% _ {Referer}i\",\"user agent\" _ :\"%{User- Agent}i\",\"request time _ _ ms\":\"%D\"} - |   |
 |---|---|---|---|
 
-Dloader.path=/home/admi n/cop-broker Request example
+Dloader.path=/home/admi n/cop-broker
+
+**Examples**
+
+Request example
 
 ```
 GET /pop/v5/app/configExtract HTTP/1.1 &AppId=2dfea044-479f-464a-b374-f14d32****** &EccId=csb-cop-broker-i-a4854351007a1e59f00-group-1-v1-64f899747****** &Common request parameters
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"69CD31EF-A412-42DD-8AD9-1201D******",
  "Message":"success",
  "Data":{
   "ConfigList":[
+```
+
+`{`
+
+```json
     "Content":"-javaagent:/home/admin/.opt/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar\-
 Darms.licenseKey=1905328884798675@75360cd0b2715e0\-Darms.appId=2dfea044-479f-464a-b374-f14d328e7191\- Darms.agent.env=edas\-Darms.agent.args=\-Xms1g\-Xmx1g\-Xmn500m\-XX:MetaspaceSize=128m\-XX:MaxMetaspaceSize=256m\-XX:M axDirectMemorySize=256m\-XX:ReservedCodeCacheSize=64m\-XX:+HeapDumpOnOutOfMemoryError\- XX:HeapDumpPath=/home/admin/cop-broker\-Djava.awt.headless=true\-Djava.security.egd=file:/dev/./urandom\-Dfile.encodi ng=UTF-8\-Dproject.name=i-a4854351007a1e59f00\-Dahas.gateway.address=\-Dahas.license=\-Dahas.namespace=default\-Dahas .agw.type=1\-Dahas.acm.enable=false\-Dcsp.sentinel.app.type=1\-Dio.netty.allocator.type=unpooled\- XX:ErrorFile=/home/admin/cop-broker/csb-cop-broker-i-a4854351007a1e59f00-group-1-v1- 64f8997479q8pvf.hs_err.202410221118.log\-Djavax.net.ssl.trustStore=/usr/local/cloud/cacerts\- Djavax.net.ssl.trustStorePassword=changeit\-Dserver.tomcat.accesslog.encoding=UTF-8\- Dserver.tomcat.accesslog.prefix=csb-cop-broker-i-a4854351007a1e59f00-group-1-v1-64f8997479q8pvf\- Dserver.tomcat.accesslog.file-date-format=-yyyyMMdd\-Dserver.tomcat.accesslog.suffix=-access-json.log\-Dserver.tomcat .accesslog.directory=/home/admin/cop-broker\-Dserver.tomcat.accesslog.enabled=true\-Dserver.tomcat.accesslog.pattern= {\\\"x_forwarded_for\\\":\\\"%{X-Forwarded- For}i\\\",\\\"client_ip\\\":\\\"%h\\\",\\\"client_user\\\":\\\"%l\\\",\\\"authenticated\\\":\\\"%u\\\",\\\"request_time ":\\\"%{yyyy-MMdd'T'HH:mm:ss.SSSZ}t\\\",\\\"request_url\\\":\\\"%r\\\",\\\"http_code\\\":\\\"%s\\\",\\\"send_bytes\\\":\\\"%b\\\",\\\" ry_string\\\":\\\"%q\\\",\\\"http_referer\\\":\\\"%{Referer}i\\\",\\\"user_agent\\\":\\\"%{User- Agent}i\\\",\\\"request_time_ms\\\":\\\"%D\\\"}\-Dloader.path=/home/admin/cop-broker",
     "ConfigType":"jvmMachineProperties",
     "Name":"jvmMachineProperties"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "Code":200
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>69CD31EF-A412-42DD-8AD9-1201D******</RequestId> <Data>
@@ -2794,7 +3206,7 @@ Darms.licenseKey=1***@75360cd0b2715e0-Darms.appId=2dfea044-479f-464a-b374-f14d32
   <ConfigType>jvmMachineProperties</ConfigType>
   <Name>jvmMachineProperties</Name>
  </ConfigList>
-</Data>
+</Data> <Code>200</Code>
 ```
 
 ###### 1.1.9.1.16 GetEffectiveSpringAppConfigInText
@@ -2805,9 +3217,13 @@ Retrieves the configuration of a Spring application.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/app/configExtractExportForPop HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2829,6 +3245,8 @@ GET /pop/v5/app/configExtractExportForPop HTTP/1.1
 |   |   | - XX:ErrorFile=/home/admin/ cop-broker/csb-cop-broker- i-a4854351007a1e59f00- group-1-v1- 64f8997479q8pvf.hs err.2 _ 02410221118.log - Djavax.net.ssl.trustStore=/ usr/local/cloud/cacerts - Djavax.net.ssl.trustStorePa ssword=changeit - Dserver.tomcat.accesslog. encoding=UTF-8 - Dserver.tomcat.accesslog. prefix=csb-cop-broker-i- a4854351007a1e59f00- group-1-v1- 64f8997479q8pvf - Dserver.tomcat.accesslog.f ile-date-format=- yyyyMMdd - Dserver.tomcat.accesslog. suffix=-access-json.log - Dserver.tomcat.accesslog. directory=/home/admin/co p-broker - Dserver.tomcat.accesslog. enabled=true - Dserver.tomcat.accesslog. pattern= {\"x forwarded for\":\"% _ _ {X-Forwarded- For}i\",\"client ip\":\"%h\",\ _ "client user\":\"%l\",\"auth _ enticated\":\"%u\",\"reques t time\":\"%{yyyy-MM- _ dd'T'HH:mm:ss.SSSZ}t\",\" request url\":\"%r\",\"http _ _ code\":\"%s\",\"send bytes\ _ ":\"%b\",\"query string\":\" _ %q\",\"http referer\":\"% _ {Referer}i\",\"user agent\" _ :\"%{User- Agent}i\",\"request time _ _ ms\":\"%D\"} - Dloader.path=/home/admi n/cop-broker |   |
 |---|---|---|---|
 
+**Examples**
+
 Sample request
 
 ```
@@ -2847,8 +3265,13 @@ Sample responses
  "Data":"################# name is server.ports,type is
 other\local.server.port=80\local.management.port=8108\\\################# name is gateway-properties,type is other\sp ring.webflux.hiddenmethod.filter.enabled=false\\\################# name is jvmMachineProperties,type is jvmMachinePro perties\-javaagent:/home/admin/.opt/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar\- Darms.licenseKey=1905328884798675@75360cd0b2715e0\-Darms.appId=2dfea044-479f-464a-b374-f14d328e7191\- Darms.agent.env=edas\-Darms.agent.args=\-Xms1g\-Xmx1g\-Xmn500m\-XX:MetaspaceSize=128m\-XX:MaxMetaspaceSize=256m\-XX:M axDirectMemorySize=256m\-XX:ReservedCodeCacheSize=64m\-XX:+HeapDumpOnOutOfMemoryError\- XX:HeapDumpPath=/home/admin/cop-broker\-Djava.awt.headless=true\-Djava.security.egd=file:/dev/./urandom\-Dfile.encodi ng=UTF-8\-Dproject.name=i-a4854351007a1e59f00\-Dahas.gateway.address=\-Dahas.license=\-Dahas.namespace=default\-Dahas .agw.type=1\-Dahas.acm.enable=false\-Dcsp.sentinel.app.type=1\-Dio.netty.allocator.type=unpooled\- XX:ErrorFile=/home/admin/cop-broker/csb-cop-broker-i-a4854351007a1e59f00-group-1-v1- 64f8997479q8pvf.hs_err.202410221118.log\-Djavax.net.ssl.trustStore=/usr/local/cloud/cacerts\- Djavax.net.ssl.trustStorePassword=changeit\-Dserver.tomcat.accesslog.encoding=UTF-8\- Dserver.tomcat.accesslog.prefix=csb-cop-broker-i-a4854351007a1e59f00-group-1-v1-64f8997479q8pvf\- Dserver.tomcat.accesslog.file-date-format=-yyyyMMdd\-Dserver.tomcat.accesslog.suffix=-access-json.log\-Dserver.tomcat .accesslog.directory=/home/admin/cop-broker\-Dserver.tomcat.accesslog.enabled=true\-Dserver.tomcat.accesslog.pattern= {\\\"x_forwarded_for\\\":\\\"%{X-Forwarded- For}i\\\",\\\"client_ip\\\":\\\"%h\\\",\\\"client_user\\\":\\\"%l\\\",\\\"authenticated\\\":\\\"%u\\\",\\\"request_time ":\\\"%{yyyy-MMdd'T'HH:mm:ss.SSSZ}t\\\",\\\"request_url\\\":\\\"%r\\\",\\\"http_code\\\":\\\"%s\\\",\\\"send_bytes\\\":\\\"%b\\\",\\\" ry_string\\\":\\\"%q\\\",\\\"http_referer\\\":\\\"%{Referer}i\\\",\\\"user_agent\\\":\\\"%{User- Agent}i\\\",\\\"request_time_ms\\\":\\\"%D\\\"}\-Dloader.path=/home/admin/cop-broker\\\",
  "Code":200
+```
+
+`}`
+
+```xml
  XML
-<RequestId>9D899A2E-2721-4E03-BFD0-725ED3******</RequestId> <Data>################# name is server.ports,type is otherlocal.server.port=80local.management.port=8108################# name is gateway-properties,type is otherspring.w ebflux.hiddenmethod.filter.enabled=false################# name is jvmMachineProperties,type is jvmMachineProperties-j avaagent:/home/admin/.opt/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar- Darms.licenseKey=1***@75360cd0b2715e0-Darms.appId=2dfea044-479f-464a-b374-f14d328e7191- Darms.agent.env=edas-Darms.agent.args=-Xms1g-Xmx1g-Xmn500m-XX:MetaspaceSize=128m-XX:MaxMetaspaceSize=256m-XX:MaxDirec tMemorySize=256m-XX:ReservedCodeCacheSize=64m-XX:+HeapDumpOnOutOfMemoryError-XX:HeapDumpPath=/home/admin/cop-broker-D java.awt.headless=true-Djava.security.egd=file:/dev/./urandom-Dfile.encoding=UTF-8-Dproject.name=ia4854351007a1e59f00-Dahas.gateway.address=-Dahas.license=-Dahas.namespace=default-Dahas.agw.type=1- Dahas.acm.enable=false-Dcsp.sentinel.app.type=1-Dio.netty.allocator.type=unpooled-XX:ErrorFile=/home/admin/cop-broker /csb-cop-broker-i-a4854351007a1e59f00-group-1-v1-64f8997479q8pvf.hs_err.202410221118.log- Djavax.net.ssl.trustStore=/usr/local/cloud/cacerts-Djavax.net.ssl.trustStorePassword=changeit- Dserver.tomcat.accesslog.encoding=UTF-8-Dserver.tomcat.accesslog.prefix=csb-cop-broker-i-a4854351007a1e59f00-group-1v1-64f8997479q8pvf-Dserver.tomcat.accesslog.file-date-format=-yyyyMMdd-Dserver.tomcat.accesslog.suffix=-access-json.l og-Dserver.tomcat.accesslog.directory=/home/admin/cop-broker-Dserver.tomcat.accesslog.enabled=true- Dserver.tomcat.accesslog.pattern={\&quot;x_forwarded_for\&quot;:\&quot;%{X-Forwarded- For}i\&quot;,\&quot;client_ip\&quot;:\&quot;%h\&quot;,\&quot;client_user\&quot;:\&quot;%l\&quot;,\&quot;authenticated\& t;:\&quot;%u\&quot;,\&quot;request_time\&quot;:\&quot;%{yyyy-MMdd&#x27;T&#x27;HH:mm:ss.SSSZ}t\&quot;,\&quot;request_url\&quot;:\&quot;%r\&quot;,\&quot;http_code\&quot;:\&quot;%s\&quo \&quot;send_bytes\&quot;:\&quot;%b\&quot;,\&quot;query_string\&quot;:\&quot;%q\&quot;,\&quot;http_referer\&quot;:\&quot {Referer}i\&quot;,\&quot;user_agent\&quot;:\&quot;%{User- Agent}i\&quot;,\&quot;request_time_ms\&quot;:\&quot;%D\&quot;}-Dloader.path=/home/admin/cop-broker</Data>
+<RequestId>9D899A2E-2721-4E03-BFD0-725ED3******</RequestId> <Message>success</Message> <Data>################# name is server.ports,type is otherlocal.server.port=80local.management.port=8108################# name is gateway-properties,type is otherspring.w ebflux.hiddenmethod.filter.enabled=false################# name is jvmMachineProperties,type is jvmMachineProperties-j avaagent:/home/admin/.opt/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar- Darms.licenseKey=1***@75360cd0b2715e0-Darms.appId=2dfea044-479f-464a-b374-f14d328e7191- Darms.agent.env=edas-Darms.agent.args=-Xms1g-Xmx1g-Xmn500m-XX:MetaspaceSize=128m-XX:MaxMetaspaceSize=256m-XX:MaxDirec tMemorySize=256m-XX:ReservedCodeCacheSize=64m-XX:+HeapDumpOnOutOfMemoryError-XX:HeapDumpPath=/home/admin/cop-broker-D java.awt.headless=true-Djava.security.egd=file:/dev/./urandom-Dfile.encoding=UTF-8-Dproject.name=ia4854351007a1e59f00-Dahas.gateway.address=-Dahas.license=-Dahas.namespace=default-Dahas.agw.type=1- Dahas.acm.enable=false-Dcsp.sentinel.app.type=1-Dio.netty.allocator.type=unpooled-XX:ErrorFile=/home/admin/cop-broker /csb-cop-broker-i-a4854351007a1e59f00-group-1-v1-64f8997479q8pvf.hs_err.202410221118.log- Djavax.net.ssl.trustStore=/usr/local/cloud/cacerts-Djavax.net.ssl.trustStorePassword=changeit- Dserver.tomcat.accesslog.encoding=UTF-8-Dserver.tomcat.accesslog.prefix=csb-cop-broker-i-a4854351007a1e59f00-group-1v1-64f8997479q8pvf-Dserver.tomcat.accesslog.file-date-format=-yyyyMMdd-Dserver.tomcat.accesslog.suffix=-access-json.l og-Dserver.tomcat.accesslog.directory=/home/admin/cop-broker-Dserver.tomcat.accesslog.enabled=true- Dserver.tomcat.accesslog.pattern={\&quot;x_forwarded_for\&quot;:\&quot;%{X-Forwarded- For}i\&quot;,\&quot;client_ip\&quot;:\&quot;%h\&quot;,\&quot;client_user\&quot;:\&quot;%l\&quot;,\&quot;authenticated\& t;:\&quot;%u\&quot;,\&quot;request_time\&quot;:\&quot;%{yyyy-MMdd&#x27;T&#x27;HH:mm:ss.SSSZ}t\&quot;,\&quot;request_url\&quot;:\&quot;%r\&quot;,\&quot;http_code\&quot;:\&quot;%s\&quo \&quot;send_bytes\&quot;:\&quot;%b\&quot;,\&quot;query_string\&quot;:\&quot;%q\&quot;,\&quot;http_referer\&quot;:\&quot {Referer}i\&quot;,\&quot;user_agent\&quot;:\&quot;%{User- Agent}i\&quot;,\&quot;request_time_ms\&quot;:\&quot;%D\&quot;}-Dloader.path=/home/admin/cop-broker</Data> <Code>200</Code>
 ```
 
 ###### 1.1.9.1.17 ListRecentChangeOrder
@@ -2858,6 +3281,8 @@ Call the ListRecentChangeOrder operation to retrieve the change order history fo
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request syntax**
 
 ```
 POST /pop/v5/changeorder/change_order_list HTTP/1.1
@@ -2893,13 +3318,21 @@ POST /pop/v5/changeorder/change_order_list HTTP/1.1
 | - ChangeOrderDescrip tion | String | Version: 2020-05-14 20:02:33 \| Package name: hsf-pandora-boot-provider- 1.0.jar \| Deployment target: all groups | The description of the change process. |
 | Code | Integer | 200 | The status of the API call or a POP error code. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/changeorder/change_order_list HTTP/1.1 "AppId":"3616cdca-4f92-4413-****-************"
+```
+POST /pop/v5/changeorder/change_order_list HTTP/1.1
 ```
 
-Sample success response
+`{`
+
+```json
+"AppId":"3616cdca-4f92-4413-****-************"
+```
+
+`}` Sample success response `JSON` format
 
 ```json
  "Message":"success",
@@ -2928,6 +3361,8 @@ nt target: all groups",
  "Code":200
 ```
 
+`}`
+
 ###### 1.1.9.1.18 CreateCanaryRule
 
 Creates a canary release rule.
@@ -2936,9 +3371,13 @@ Creates a canary release rule.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/app_canary_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2961,13 +3400,18 @@ Sample request
 POST /pop/v5/k8s/acs/app_canary_rule HTTP/1.1 "AppId":"2dfea044-479f-464a-b374-f14d32******", "Type":"canary_by_content", "RuleName":"test-rule"
 ```
 
-Sample success response
+`}` Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
  "Message":"message",
  "Code":200
-<RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message>
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Code>200</Code>
 ```
 
 ###### 1.1.9.1.19 ListCanaryRules
@@ -2978,9 +3422,13 @@ Queries the phased release rules for a specified application.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/k8s/acs/app_canary_rules HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3007,13 +3455,15 @@ GET /pop/v5/k8s/acs/app_canary_rules HTTP/1.1
 | --Rules | String | {"http":{"rules": [{"percent":100,"condition Type":"content","path":"/"," triggerPolicy":"OR","conditi ons": [{"strategy":"PARAM","key" :"name","operator":"EQ","v alues": ["zhangsan"]}]}]},"dubbo" :{"rules": []},"servicemesh": {"desired":2,"rules":[]}} | The rule details. |
 | --Type | String | canary by content _ _ | Type: Content-based canary release. |
 
+**Examples**
+
 Sample request
 
 ```
 GET /pop/v5/k8s/acs/app_canary_rules HTTP/1.1 &AppId=2dfea044-479f-464a-b374-f14d32****** &Type=canary_by_content &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
@@ -3021,6 +3471,11 @@ Sample response
  "Code":200,
  "Result":{
   "RuleList":[
+```
+
+`{`
+
+```json
     "Type":"canary_by_content",
     "RuleId":"fb05f0e8-e707-4a66-8978-a84672******",
     "Rules":"{\"http\":{\"rules\":
@@ -3028,10 +3483,10 @@ Sample response
     "RuleName":"test-rule"
 ```
 
-`]`
+`}` `]` `}` `}` `XML` format
 
 ```xml
-<RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Result>
+<RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Code>200</Code> <Result>
  <RuleList>
   <Type>canary_by_content</Type>
   <RuleId>fb05f0e8-e707-4a66-8978-a84672******</RuleId>
@@ -3050,9 +3505,13 @@ Updates the phased release rule for the specified application.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v5/k8s/acs/app_canary_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3069,19 +3528,29 @@ PUT /pop/v5/k8s/acs/app_canary_rule HTTP/1.1
 | Code | Integer | 200 | The status code of the API call. This can be an HTTP status code or a POP error code. |
 | Message | String | message | Additional information |
 
+**Examples**
+
 Sample request
 
-```json
-PUT /pop/v5/k8s/acs/app_canary_rule HTTP/1.1 "AppId":"2dfea044-479f-464a-b374-f14d32******", "RuleId":"76f681af-67d4-4aef-b03e-066b65******", "RuleName":"test-rule"
+```
+PUT /pop/v5/k8s/acs/app_canary_rule HTTP/1.1
 ```
 
-Sample successful response
+`{`
+
+```json
+"AppId":"2dfea044-479f-464a-b374-f14d32******", "RuleId":"76f681af-67d4-4aef-b03e-066b65******", "RuleName":"test-rule"
+```
+
+`}` Sample successful response `JSON` format `{`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
  "Message":"message",
  "Code":200
 ```
+
+`}`
 
 ```xml
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message>
@@ -3095,9 +3564,13 @@ Deletes the specified phased release rule for an application.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/k8s/acs/app_canary_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3113,20 +3586,27 @@ DELETE /pop/v5/k8s/acs/app_canary_rule HTTP/1.1
 | Message | String | message | Additional information. |
 | Result | Boolean | true | The result of the request. |
 
+**Examples**
+
 Request example
 
 ```
 DELETE /pop/v5/k8s/acs/app_canary_rule HTTP/1.1 &AppId=2dfea044-479f-464a-b374-f14d32****** &RuleId=76f681af-67d4-4aef-b03e-066b65****** &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
  "Message":"message",
  "Code":200,
  "Result":true
-<RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Result>true</Result>
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Code>200</Code> <Result>true</Result>
 ```
 
 ##### 1.1.9.2 K8s clusters
@@ -3139,9 +3619,13 @@ Binds a Server Load Balancer (SLB) instance to an application in a Container Ser
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3161,6 +3645,8 @@ POST /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
 | Code | Integer | 200 | The HTTP status code returned. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
 ```json
@@ -3173,14 +3659,21 @@ POST /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
   "Type": "internet"
 ```
 
-Response example
+`}` Response example `XML` format
+
+```xml
+<Message>success</Message> <ChangeOrderId>b4b37bde-a125-****-****-741f7f4a9ae3</ChangeOrderId> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
-<ChangeOrderId>b4b37bde-a125-****-****-741f7f4a9ae3</ChangeOrderId>
     "Message": "success",
     "ChangeOrderId": "b4b37bde-a125-****-****-741f7f4a9ae3",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.2 DeleteK8sApplication
 
@@ -3190,9 +3683,13 @@ Deletes an application from a Container Service for Kubernetes (K8s) cluster.
 
 This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/k8s/acs/k8s_apps HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3213,19 +3710,21 @@ DELETE /pop/v5/k8s/acs/k8s_apps HTTP/1.1
   "AppId": "dbac7e3c-****-49bc-b6de-ffc550018b45"
 ```
 
-Successful response example `XML` format
+`}` Successful response example `XML` format
 
 ```xml
-<ChangeOrderId>0a34531a-****-49dc-8e7f-0cbbbfa12cf0</ChangeOrderId>
+<Message>success</Message> <ChangeOrderId>0a34531a-****-49dc-8e7f-0cbbbfa12cf0</ChangeOrderId> <Code>200</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "Message": "success",
  "ChangeOrderId": "0a34531a-****-49dc-8e7f-0cbbbfa12cf0",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.3 DeployK8sApplication
 
@@ -3235,9 +3734,13 @@ The DeployK8sApplication operation deploys an application in a Container Service
 
 This operation uses common request headers and does not have any special request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/k8s_apps HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required |   | Example |   | Description |   |   |
 |---|---|---|---|---|---|---|---|---|---|
@@ -3347,20 +3850,35 @@ POST /pop/v5/k8s/acs/k8s_apps HTTP/1.1
 | Code | Integer | 200 | The HTTP status code returned. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/k8s/acs/k8s_apps HTTP/1.1 "AppId": "e83acea6-****-47e1-96ae-c0e953772cdc"
+```
+POST /pop/v5/k8s/acs/k8s_apps HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
 
 ```json
-<ChangeOrderId>cd65b247-****-475b-ad4b-7039040d625c</ChangeOrderId>
+"AppId": "e83acea6-****-47e1-96ae-c0e953772cdc"
+```
+
+`}` Successful response example `XML` format
+
+```xml
+<Message>success</Message> <ChangeOrderId>cd65b247-****-475b-ad4b-7039040d625c</ChangeOrderId> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "ChangeOrderId": "cd65b247-****-475b-ad4b-7039040d625c",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.4 GetK8sApplication
 
@@ -3546,7 +4064,7 @@ Sample request
 GET /pop/v5/changeorder/co_application HTTP/1.1 &AppId=5a166fbd-****-4f98-a286-781659d9**** &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format `{`
 
 ```json
  "Message":"success",
@@ -3582,11 +4100,16 @@ Sample responses
    "PodSecurityContext":"{\\\"fsGroup\\\":11111,\\\"runAsGroup\\\":11111,\\\"runAsUser\\\":11111}",
    "CreateTime":1729660967919,
    "EnvList":[
+```
+
+`{`
+
+```json
      "Value":"env-v1",
      "Name":"env-k1"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Labels":"{\\\"label-k1\\\":\\\"label-v1\\\"}",
@@ -3621,14 +4144,24 @@ Sample responses
 
 ```json
   "DeployGroups":[
+```
+
+`{`
+
+```json
     "GroupName":"_DEFAULT_GROUP",
     "Components":[
+```
+
+`{`
+
+```json
       "Type":"JDK",
       "ComponentKey":"Open JDK 8",
       "ComponentId":"8"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "MemoryRequest":"500",
@@ -3661,7 +4194,7 @@ Sample responses
     "PackagePublicUrl":"https://fileserver.edas.inter.***.shuguang.com//prod/demo/SPRING_CLOUD_PROVIDER.jar"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "ImageInfo":{
@@ -3689,6 +4222,11 @@ Sample responses
 
 ```json
   "Instances":[
+```
+
+`{`
+
+```json
     "GroupName":"_DEFAULT_GROUP",
     "Status":0,
     "ContainerIp":"10.3.0.226",
@@ -3711,7 +4249,7 @@ Sample responses
     "Online":0
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Conf":{
@@ -3739,11 +4277,16 @@ ttpGet\": {\"path\": \"/consumer\",\"port\": 8080,\"scheme\": \"HTTP\",\"httpHea
 {},\\\"preferredDuringSchedulingIgnoredDuringExecution\\\":[{\\\"additionalProperties\\\":{},\\\"preference\\\":{\\\" additionalProperties\\\":{},\\\"matchExpressions\\\":[{\\\"additionalProperties\\\": {},\\\"key\\\":\\\"kubernetes.io/os\\\",\\\"operator\\\":\\\"In\\\",\\\"values\\\": [\\\"linux\\\"]}],\\\"matchFields\\\":[]},\\\"weight\\\":5}],\\\"requiredDuringSchedulingIgnoredDuringExecution\\\":{ \\\"additionalProperties\\\":{},\\\"nodeSelectorTerms\\\":[{\\\"additionalProperties\\\":{},\\\"matchExpressions\\\": [{\\\"additionalProperties\\\": {},\\\"key\\\":\\\"beta.kubernetes.io/arch\\\",\\\"operator\\\":\\\"NotIn\\\",\\\"values\\\": [\\\"arm64\\\",\\\"arm32\\\"]}],\\\"matchFields\\\":[]}]}},\\\"podAffinity\\\":{\\\"additionalProperties\\\":{},\\\"p referredDuringSchedulingIgnoredDuringExecution\\\":[],\\\"requiredDuringSchedulingIgnoredDuringExecution\\\":[]},\\\" podAntiAffinity\\\":{\\\"additionalProperties\\\":{},\\\"preferredDuringSchedulingIgnoredDuringExecution\\\":[],\\\"r equiredDuringSchedulingIgnoredDuringExecution\\\":[]}}"
 ```
 
-`},`
+`}` `},`
 
 ```json
  "Code":200
-<RequestId>89F78814-AB00-40E3-90D2-025EC8******</RequestId> <TraceId>0a95146817298471895603045******</TraceId> <Applcation>
+```
+
+`}` `XML` format
+
+```xml
+<Message>success</Message> <RequestId>89F78814-AB00-40E3-90D2-025EC8******</RequestId> <TraceId>0a95146817298471895603045******</TraceId> <Applcation>
  <App>
   <DeployType>Image</DeployType>
   <ServiceAccount>default</ServiceAccount>
@@ -3921,7 +4464,7 @@ t;timeoutSeconds&quot;: 1,&quot;httpGet&quot;: {&quot;path&quot;: &quot;/consume
   <Affinity>{\&quot;additionalProperties\&quot;:{},\&quot;nodeAffinity\&quot;:{\&quot;additionalProperties\&quot;:{},
 \&quot;preferredDuringSchedulingIgnoredDuringExecution\&quot;:[{\&quot;additionalProperties\&quot;: {},\&quot;preference\&quot;:{\&quot;additionalProperties\&quot;:{},\&quot;matchExpressions\&quot;: [{\&quot;additionalProperties\&quot;: {},\&quot;key\&quot;:\&quot;kubernetes.io/os\&quot;,\&quot;operator\&quot;:\&quot;In\&quot;,\&quot;values\&quot;:[\&q uot;linux\&quot;]}],\&quot;matchFields\&quot;: []},\&quot;weight\&quot;:5}],\&quot;requiredDuringSchedulingIgnoredDuringExecution\&quot;: {\&quot;additionalProperties\&quot;:{},\&quot;nodeSelectorTerms\&quot;:[{\&quot;additionalProperties\&quot;:{},\&quot ;matchExpressions\&quot;:[{\&quot;additionalProperties\&quot;: {},\&quot;key\&quot;:\&quot;beta.kubernetes.io/arch\&quot;,\&quot;operator\&quot;:\&quot;NotIn\&quot;,\&quot;values\&qu :[\&quot;arm64\&quot;,\&quot;arm32\&quot;]}],\&quot;matchFields\&quot;:[]}]}},\&quot;podAffinity\&quot;:{\&quot;addit ionalProperties\&quot;:{},\&quot;preferredDuringSchedulingIgnoredDuringExecution\&quot;: [],\&quot;requiredDuringSchedulingIgnoredDuringExecution\&quot;:[]},\&quot;podAntiAffinity\&quot;: {\&quot;additionalProperties\&quot;:{},\&quot;preferredDuringSchedulingIgnoredDuringExecution\&quot;: [],\&quot;requiredDuringSchedulingIgnoredDuringExecution\&quot;:[]}}</Affinity>
  </Conf>
-</Applcation>
+</Applcation> <Code>200</Code>
 ```
 
 ###### 1.1.9.2.5 InsertK8sApplication
@@ -3932,9 +4475,13 @@ You can call the InsertK8sApplication operation to create an application in a Co
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/create_k8s_app HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4014,16 +4561,24 @@ POST /pop/v5/k8s/acs/create_k8s_app HTTP/1.1
 | Code | Integer | 200 | The HTTP status code. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/k8s/acs/create_k8s_app HTTP/1.1 "AppName": "doc-test", "ClusterId": "c9cd****", "ImageUrl": "registry.cn-beijing.aliyuncs.com/****_test/****-cons****:1.0"
+```
+POST /pop/v5/k8s/acs/create_k8s_app HTTP/1.1 Common request headers
 ```
 
-Sample success response
+`{`
+
+```json
+"AppName": "doc-test", "ClusterId": "c9cd****", "ImageUrl": "registry.cn-beijing.aliyuncs.com/****_test/****-cons****:1.0"
+```
+
+`}` Sample success response `XML` format
 
 ```xml
-<ApplicationInfo>
+<Message>success</Message> <ApplicationInfo>
     <Dockerize>true</Dockerize>
     <EdasId>1172****6608****</EdasId>
     <Owner>zp</Owner>
@@ -4033,8 +4588,10 @@ Sample success response
     <RegionId>cn-beijing</RegionId>
     <ClusterType>5</ClusterType>
     <AppName>test</AppName>
-</ApplicationInfo>
+</ApplicationInfo> <Code>200</Code>
 ```
+
+`JSON` format
 
 ```json
     "Message": "success",
@@ -4056,6 +4613,8 @@ Sample success response
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.2.6 UnbindK8sSlb
 
 Unbinds a Server Load Balancer (SLB) instance from a Container Service for Kubernetes (ACK) application.
@@ -4064,9 +4623,13 @@ Unbinds a Server Load Balancer (SLB) instance from a Container Service for Kuber
 
 This operation uses only common request headers. For more information, see Common parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4082,25 +4645,39 @@ DELETE /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
 | Code | Integer | 200 | The status code. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
+```
+DELETE /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-DELETE /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
   "AppId": "5a166fbd-****-****-a286-781659d9f54c"
   "ClusterId": "712082c3-****-****-9217-a947b5cde6ee"
   "Type": "Internet"
 ```
 
-Successful response examples
+`}` Successful response examples
 
-```json
+```xml
 <UnbindK8sSlbResponse>
   <ChangeOrderId>b0a8441e-****-4e8e-9874-b56dea02952f</ChangeOrderId>
 </UnbindK8sSlbResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "ChangeOrderId": "b0a8441e-****-4e8e-9874-b56dea02952f",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.7 UpdateK8sApplicationConfig
 
@@ -4110,9 +4687,13 @@ Modifies the configuration of an application in a Container Service for Kubernet
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v5/k8s/acs/k8s_app_configuration HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4129,22 +4710,33 @@ PUT /pop/v5/k8s/acs/k8s_app_configuration HTTP/1.1
 | Code | Integer | 200 | API status or POP error code |
 | Message | String | success | The response message. |
 
+**Examples**
+
 Example request
 
 ```json
 PUT /pop/v5/k8s/acs/k8s_app_configuration HTTP/1.1 "AppId": "23bf94d9-****-4994-9917-616a827aa777", "ClusterId": "9c28bbb9-****-44b3-b953-54ef8a2d0be2", "CpuLimit": "1", "MemoryLimit": "400"
 ```
 
-Example of a successful response
+`}` Example of a successful response `XML` format
+
+```xml
+<UpdateK8sApplicationConfigResponse>
+  <Message>success</Message>
+  <ChangeOrderId>8806d1c6-****-48eb-9373-6bdef3007466</ChangeOrderId>
+  <Code>200</Code>
+</UpdateK8sApplicationConfigResponse>
+```
+
+`JSON` format `{`
 
 ```json
-<UpdateK8sApplicationConfigResponse>
-  <ChangeOrderId>8806d1c6-****-48eb-9373-6bdef3007466</ChangeOrderId>
-</UpdateK8sApplicationConfigResponse>
     "Message": "success",
     "ChangeOrderId": "8806d1c6-****-48eb-9373-6bdef3007466",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.8 UpdateK8sSlb
 
@@ -4154,9 +4746,13 @@ Updates the SLB for an application in Container Service for Kubernetes.
 
 This operation uses common request headers and has no special request headers. For more information about common request headers, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4175,24 +4771,41 @@ PUT /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1
 | Code | Integer | 200 | Code |
 | Message | String | success | The message returned. |
 
+**Examples**
+
 Request example
 
-```json
-PUT /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1 "AppId": "5a166fbd-****-****-a286-781659d9f54c", "ClusterId": "712082c3-****-****-9217-a947b5cde6ee", "Type": "Internet"
+```
+PUT /pop/v5/k8s/acs/k8s_slb_binding HTTP/1.1 Common request headers
 ```
 
-Example of a successful response
+`{`
 
 ```json
+"AppId": "5a166fbd-****-****-a286-781659d9f54c", "ClusterId": "712082c3-****-****-9217-a947b5cde6ee", "Type": "Internet"
+```
+
+`}` Example of a successful response `XML` format
+
+```xml
 <UpdateK8sSlbResponse>
+  <Message>success</Message>
   <RequestId></RequestId>
   <ChangeOrderId>9a1dcdee-****-****-ad37-cbf9dc91fba9</ChangeOrderId>
+  <Code>200</Code>
 </UpdateK8sSlbResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "RequestId": "",
  "ChangeOrderId": "9a1dcdee-****-****-ad37-cbf9dc91fba9",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.9 ScaleK8sApplication
 
@@ -4202,9 +4815,13 @@ Scales application instances in a Container Service for Kubernetes (ACK) cluster
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v5/k8s/acs/k8s_apps HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4219,24 +4836,41 @@ PUT /pop/v5/k8s/acs/k8s_apps HTTP/1.1
 | Code | Integer | 200 | The status code of the request. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Sample request
 
-```json
-PUT /pop/v5/k8s/acs/k8s_apps HTTP/1.1 "AppId": "23bf94d9-****-4994-****-616a827aa777", "Replicas": "2"
+```
+PUT /pop/v5/k8s/acs/k8s_apps HTTP/1.1 Common request headers
 ```
 
-Sample successful response
+`{`
 
 ```json
+"AppId": "23bf94d9-****-4994-****-616a827aa777", "Replicas": "2"
+```
+
+`}` Sample successful response `XML` format
+
+```xml
 <ScaleK8sApplicationResponse>
   <RequestId>a5281053-08e4-47a5-b2ab-5c0323de7b5a</RequestId>
+  <Message>success</Message>
   <ChangeOrderId>9d7232b2-****-****-b9d9-7e17695779ab</ChangeOrderId>
+  <Code>200</Code>
 </ScaleK8sApplicationResponse>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "a5281053-08e4-47a5-b2ab-5c0323de7b5a",
     "Message": "success",
     "ChangeOrderId": "9d7232b2-****-****-b9d9-7e17695779ab",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.10 ImportK8sCluster
 
@@ -4246,9 +4880,13 @@ You can call the ImportK8sCluster operation to import a Container Service K8s cl
 
 This operation has no special request headers. For more information about common request headers, see Common parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/import_k8s_cluster HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4264,21 +4902,35 @@ POST /pop/v5/import_k8s_cluster HTTP/1.1
 | Data | String | cf96d49a-6be2-4b6d-****- 75c7fb86**** | The change record information. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Sample request
 
+```
+POST /pop/v5/import_k8s_cluster HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/import_k8s_cluster HTTP/1.1
   "ClusterId": "9c28bbb9-****-44b3-b953-54ef8a2d0be2"
 ```
 
-Sample successful response
+`}` Sample successful response `XML` format
+
+```xml
+<Message>success</Message> <Data>cf96d49a-6be2-4b6d-****-75c7fb86****</Data> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
-<Data>cf96d49a-6be2-4b6d-****-75c7fb86****</Data>
     "Message": "success",
     "Data": "cf96d49a-6be2-4b6d-****-75c7fb86****",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.2.11 ImportSelfK8sCluster
 
@@ -4288,9 +4940,13 @@ Imports a self-managed Kubernetes cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/resource/k8s_cluster_self_build HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Location | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4324,13 +4980,15 @@ POST /pop/v5/resource/k8s_cluster_self_build HTTP/1.1
 | Message | String | success | The returned message. |
 | Data | String | df85ff3c-e299-4dd9-9485- 8b0c63354a60 | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```json
 POST /pop/v5/resource/k8s_cluster_self_build HTTP/1.1 "ClusterName":"testselfk8s", "RegionId":"cn-wulan-env149-d01:lybtest", "ApiServerEndpoint":"https://192.168.0.1:6443", "Kubeconfig":"{"apiVersion":"v1","clusters":[{"cluster":{"certificate-authoritydata":"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM2VENDQWRHZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFE wcmRXSmwKY201bGRHVnpNQ0FYRFRJME1ERXlNVEF5TURNd00xb1lEekl4TWpNeE1qSTRNREl3TXpBeldqQVZNUk13RVFZRApWUVFERXdwcmRXSmxjbTVsZE k1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBCnJ1elQ3aXBFd2w1NWdqTTZUelhJVERXN3ZEV041aXlNbkV6d3J2Sm5Ra3BX 2djhTZGlCM1E5aEhCbTAvQWIKcFdDWlducmM0bEc4S3A1ck1XWTNJenVRTENTZEdlaTd2cHBLVzBFVzB6c252OFQ4UW5RblBISUJURkQyck5xaApjRVdMcz y9SUGJPdVRtblAwb3dqb0tUUUROTFdGcFB2VHNhWDlqbnppb2xjTWdEQjBTa2tmNzRBZTdra3JJClc5NDJKNFYreEJLaGFONnJkZkQ5N2VsZTVrUC9zd1py iUFlKR2QrU291Y3dudVE4YlIzNXRhUXFlVHZMNXkKUFcyNXlqMlRHM3dWVi95REwwdXVLbEl0VFYxSW5JVVZRTlpmb0R111111ZVRVMwYi9FNDhVczl4Uk9 pUdVdMaGlJZkFrWStzU05xeU5sYllRSURBUUFCbzBJd1FEQU9CZ05WSFE4QkFmOEVCQU1DQXFRd0R3WURWUjBUCkFRSC9CQVV3QXdFQi96QWRcccUVVVTyt 9iL3ZCMnZKcVNqb3YxaGxSakdwdk13RFFZSktvWkkKaHZjTkFRRUxCUUFEZ2dFQkFEeEhZSDBGKzlOSTNkKzdMaTcrS3lRR0RFWG0xaVI1YTJ0eFhIWW1yN SXIzeAorUjV1emlrYU1sUXhadGorcld2UnVoclIwZWhiUS84Zk1jRXIvN25JQnBsWmtRd1FsdUVGN2Zud1JZaXltdEtrCnV4cVNiSlRwMERUcVZhR3JXVjZ J0UHJMRkNtU1VhNzZjNXNVMXBydk8zYjB5OUJ4Y3BGTW5TNWlVeGRuVkgKSStlbzJpZjA4KzhJNXE2ZnpuZ1BxdFJncmJQV3ByMEhIOU1QWHFvaitKU3F0b aXJTVVdpNXhEY1FBcHlSRwpoQWJ3ZXRtQ0VvbE03TUVFTkNWOTdNNXJBbmlUajZyMURXbkY1ZTNZSUtFNmh6Q0VxdFdVZmNPSmZwM0xBUFZZClNHVWV6Q3B h4VzhDVWVKbG0vdGVkeU5rdEF3VEk5bFF4Z2pyaz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=","server":"https://192.168.0.1:6443"},"n ":"kubernetes"}],"contexts":[{"context":{"cluster":"kubernetes","user":"kubernetes-admin"},"name":"kubernetes-admin@k ubernetes"}],"current-context":"kubernetes-admin@kubernetes","kind":"Config","preferences":{},"users":[{"name":"kuber netes-admin","user":{"client-certificatedata":"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURGVENDQWYyZ0F3SUJBZ0lJRm16NVQ5U2JZNzR3RFFZSktvWklodmNOQVFFTEJRQXdGVEVU FR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWdGdzB5TkRBeE1qRXdNakF6TUROYUdBOHlNVEl6TVRJeU9EQXlNRE13TlZvdwpOREVYTUJVR0ExVUVDaE1PYz mRHVnRPbTFoYzNSbGNuTXhHVEFYQmdOVkJBTVRFR3QxWW1WeWJtVjBaWE10CllXUnRhVzR3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VL JQkFRRGt3anlGaE1aV3pHMEwKQTlWSjNQS1FhbEhCYWNQOXQwV3JmV2crRzIvbEdJZFpCTHNjMTJpRjZwMCsrVGNIRnlpTWxQN3o5Y3RrTjBLeApQQVpLc3 HFVMDliaVN3S1VqZnBSUS9obGlYSytIN21HcTJWM29qRmVKcU1WVzE2SkErYzg3cUdFTlFoK0swCkpqTEY0WXUvNEhMK29tQXJwSXIwZm5xUXlpYSs5M0J3 oeWQwQnFNaEprVzhtcnRzMHc3cWhoNm03OFUxREQKZFNGZm96bW9IMkE0TFFtMHJqQkxJSElSa2ZEccccCtINyt6NzVPVldPMlZ3c1FzSVBIUUl0K1dlRwp ZsZTRXdCtIZ1pEZGNQQnNJb2tlOG1nU1ZkNFpHVktjcEZKY21CL0o1M2lXOXlWdXBFWTVsaHp1a1FURjRyCnh2eUt6dXkxQWdNQkFBR2pTREJHTUE0R0ExV d0VCL3dRRUF3SUZvREFUQmdOVkhTVUVEREFLQmdnckJnRUYKQlFjREFqQWZCZ05WSFNNRUdEQVdnQlJRNzZvYjl2KzhIYThtcEtPaS9XR1ZHTWFtOHpBTkJ Foa2lHOXcwQgpBUXNGQUFPQ0FRRUFXa3B4UStZeTZKS0V2cHY0MzluSnIzaTZVRzVic3dSVnVCelhTMUdNMndBUU5tOWtoZFJSCkpw11rrcEVFb2czbWZRc RnhadU5FcVlLbzJVNk9EREJOLzdMU3lsa2U5SUNGWmVaRFAzREhtdmtjSjgKNm1aamFiN3ptT2dKTERhTmhuT3prOEs1eDI2b0Z3QnluRVRvZmVpVWFLcjZ VoNU9jUUwvTStoTHZVNzFDRQpjanZQYjFmWnQyMG9oVG1rcUxBays2Mkg1R050M1JmVXpmTjl1YTZzN1ZBYnQ2NmZ3MzhKMlpwOEp4TnYyTkJFCnl1Z1REM R0Q2dGFEaDFkT0dIREdvR1Fjc1F0ZDhwakllL29mUjNLQ0pFemlrZC9PVVFHYjl1aUVZUE5RdjEKVkJlZ2VFSGdpdnpiUnA0UC80Ui9GVDBiN2VrTVN0THE 09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K","client-keydata":"LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBNU1JOGhZVEdWc3h0Q3dQVlNkenlrR3BSd1duRC9iZEZxMzFv 0djVSaUhXUVM3CkhOZG9oZXFkUHZrM0J4Y29qSlQrOC9YTFpEZENzVHdHU3JMRXk2bE5QVzRrc0NsSTM2VVVQNFpZbHl2aCs1aHEKdGxkNkl4WGlhakZWdG VBuUE82aGhEVUlmaXRDWXl4ZUdMditCeS9xSmdLNlNLOUg1NmtNb212dmR3Y0t2NApjbmRBYWpJU1pGdkpxN2JOTU82b1llcHUvRk5RdzNVaFg2TTVxQjln wSnRLNHdTeUJ5RVpIdzRoWDlMUk5KCnJ5L2grL3MrK1RsVmp0bGNMRUxDRHgwQ0xmbG5oclNMNVh1RnJmaDRHUTNYRHdiQ0tKSHZKb0VsWGVHUmxTbksKUl mdmeWVkNGx2Y2xicVJHT1pZYzdwRUV4ZUs4YjhpczdzdFFJREFRQUJBb0lCQVFEZlJZbEdsQ0gxZzg4RwpDamE1d2ZIcDdDdGhpSFpuZ3VKNEQ0MlgyTFdz VYWVGaWNQTTVpcm12TmsvWVdjSTcrTDBwc0dFSHN6VmJGCm41MVFlUTFFN2poYU5jK1BOS3hReEZGdjh4TXljUDArMERPUFJ2QUpvSWw5Tml1K3dYOVB4VD XpwWU5saVoKbGhMR09tNW8xNHZGWmZ4UmZHYTNYVjhKUkpUdW1zRHo0ZnNxajBWYXdaUUNtODJRMjlGcUxrSUFTaWpaYjEzUApLSjZGVUhGclE3WEVlWFFo QNU1LSVZoZHZ5NVhSVEJ5eXNqS0g3cFA0ZE1WSnByVWlENEF3eURUN1BDQ0lxCm45bmZPc0F5dmpmZmJoVFJkbmJZZGZDbTJONHpoejZLUUxIcmJaNitYeH kJRZHV4NExYdDNoMnd1dUowT3AKUmhFZHpoMDlBb0dCQU85blk0U0dTMXFZVzBVNkdFcUZIR1NBc09YQ09VSGw1RzRoTnBZckR2MzRieUVFc1BnVwozcVVJ zccccVVWJDQ1czd295VXBnSWFISGZtbDRvQllIZ0Noc0xENUhsTS9IS3FUNzdDa0JCCklac3ZxbzFQNTM5bWNiRURDeFUwQkd1QXRIUzlSeUo0QmlsM1cwK NzVHUDByUk9CTmVmaG0vQW9HQkFQU2QKN3IxVUdrR2xVcStrNmx6OVRaUHNrVXNQYXFNUjNKM0hLN2tHMXBJTDgwMnRJVnBRS3FzdmN0RWlkdzBBUmlmdAp VhQ3dVeDV2dGxseUptZkJ6U2kzUkNYakpIMlFCMFVnTmh4RFJCOWFYTlZZWmZoSU9malVTNUpGb2FmWXRmCnk2VXFiUTlXaUhuaDFmSzZyUHIvc0QwbG1mM TitveVQ3RHNZNkxBb0dBS21EQjFBYTF0ZzY4TVUvc1Z0eWoKUHdNc3pTOEpWYW50T3JWMFpUYXdDN0w3Y1B2VW04WG9tWXdMMWQ5MW1aM1g1dXNCWnF3N3k pQRlBXSFFWMwovNWhXU2c2Smt3am1vUXpmTDdORDg2d3RNM0hheWE3OTFPdW1KQ2VkMGdaL1g1Y3JVaENJSzhOM3JpYUhQZ25ECkJYb1VWdEFWL29lTzBwN NFZOaXg4Q2dZRUF6Z2ZEa0lXb3c4ZmFXQVJBUFdoQUVpcDd5Y3ZIVm1meCtKWkwKMWtEVE14bUxxTTM4dkpPdkRKWWZUOVNHajFXK3dWekVwV0Z1ak1hV05 JCSUZyWWQ5WUEranVhODBtRWdMbgpIT0FZb0tjNW5wZk94Q25wYys5THppbGVXK0hhQWkwQ1dpL2N3Y0Z4bTY3Q1EvcEZQZmRqMm15MFFmeVlNc2w0CkR6e YmNDZ1lCSDBWMlZEZWwyMHVuSU9PZk1PazE2eEVvR1RnZmVPSzlTY3VpQVFicEpXVVFHd1NaTXJNRFIKdDdVYUhOc0V2VWhFTUtVMUF6MmNENjBOelNKVzJ N1N3JNM2VSNVF5eExwUG9Yc3VTdFRYWDlkYmxLbUVzNQpoUk5PN2tHYWVUZU1SNDhDMUYyVUVkY0tWZVhJYVFoSTNwL25zRG9rS3gzOUliN3NSZHo5clE9P LS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo="}}]}"
 ```
 
-Sample success response
+`}` Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"df85ff3c-e299-4dd9-9485-8b0c63354a60",
@@ -4338,6 +4996,8 @@ Sample success response
  "Data":"df85ff3c-e299-4dd9-9485-8b0c63354a60",
  "Code":200
 ```
+
+`}`
 
 ```xml
 <RequestId>df85ff3c-e299-4dd9-9485-8b0c63354a60</RequestId> <Data>df85ff3c-e299-4dd9-9485-8b0c63354a60</Data>
@@ -4351,9 +5011,13 @@ Starts an application in a Container Service for Kubernetes (ACK) cluster or a S
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/start_k8s_app HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4370,16 +5034,24 @@ POST /pop/v5/k8s/acs/start_k8s_app HTTP/1.1
 | Message | String | success | Additional information |
 | RequestId | String | 03FD1520-0FD6-436A- ****-265318D7**** | The ID of the request. |
 
+**Examples**
+
 Example request
 
-```json
-POST /pop/v5/k8s/acs/start_k8s_app HTTP/1.1 "AppId": "93fdd228-*******-ed2ae98de18d"
+```
+POST /pop/v5/k8s/acs/start_k8s_app HTTP/1.1 Common request headers
 ```
 
-Example response
+`{`
+
+```json
+"AppId": "93fdd228-*******-ed2ae98de18d"
+```
+
+`}` Example response `XML` format
 
 ```xml
-<RequestId>03FD1520-0FD6-436A-****-265318D7****</RequestId> <ChangeOrderId>*********d237-4827-a4f4-ed2ae98de18d</ChangeOrderId>
+<RequestId>03FD1520-0FD6-436A-****-265318D7****</RequestId> <Message>success</Message> <ChangeOrderId>*********d237-4827-a4f4-ed2ae98de18d</ChangeOrderId> <Code>200</Code>
 ```
 
 ```json
@@ -4389,6 +5061,8 @@ Example response
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.2.13 StopK8sApplication
 
 The StopK8sApplication operation stops an application that is deployed in a Container Service for Kubernetes (ACK) cluster or a Serverless K8s cluster.
@@ -4397,9 +5071,13 @@ The StopK8sApplication operation stops an application that is deployed in a Cont
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/stop_k8s_app HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4415,16 +5093,24 @@ POST /pop/v5/k8s/acs/stop_k8s_app HTTP/1.1
 | Message | String | success | Additional information |
 | RequestId | String | 03FD1520-0FD6-436A- ****-265318D7**** | The ID of the request. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/k8s/acs/stop_k8s_app HTTP/1.1 "AppId": "93fdd228-d237-*******8de18d"
+```
+POST /pop/v5/k8s/acs/stop_k8s_app HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"AppId": "93fdd228-d237-*******8de18d"
+```
+
+`}` Successful response example `XML` format
 
 ```xml
-<RequestId>03FD1520-0FD6-436A-****-265318D7****</RequestId> <ChangeOrderId>*******27-a4f4-ed2ae98de18d</ChangeOrderId>
+<RequestId>03FD1520-0FD6-436A-****-265318D7****</RequestId> <Message>success</Message> <ChangeOrderId>*******27-a4f4-ed2ae98de18d</ChangeOrderId> <Code>200</Code>
 ```
 
 ```json
@@ -4434,6 +5120,8 @@ Successful response example
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.2.14 RestartK8sApplication
 
 Restarts an application in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
@@ -4442,9 +5130,13 @@ Restarts an application in a Container Service for Kubernetes (ACK) cluster or a
 
 This operation uses only common request headers. For more information, see the documentation on common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/k8s/acs/restart_k8s_app HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4460,16 +5152,24 @@ POST /pop/v5/k8s/acs/restart_k8s_app HTTP/1.1
 | Message | String | success | Additional information |
 | RequestId | String | 03FD1520-0FD6-436A- ****-265318D7**** | The ID of the request. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/k8s/acs/restart_k8s_app HTTP/1.1 "AppId": "93fdd228-********ed2ae98de18d"
+```
+POST /pop/v5/k8s/acs/restart_k8s_app HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"AppId": "93fdd228-********ed2ae98de18d"
+```
+
+`}` Successful response example `XML` format
 
 ```xml
-<RequestId>03FD1520-0FD6-436A-****-265318D7****</RequestId> <ChangeOrderId>*********-ed2ae98de18d</ChangeOrderId>
+<RequestId>03FD1520-0FD6-436A-****-265318D7****</RequestId> <Message>success</Message> <ChangeOrderId>*********-ed2ae98de18d</ChangeOrderId> <Code>200</Code>
 ```
 
 ```json
@@ -4478,6 +5178,8 @@ Successful response example
     "ChangeOrderId": "*********-ed2ae98de18d",
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.9.3 ECS clusters
 
@@ -4489,9 +5191,13 @@ Call the ChangeDeployGroup operation to change the group of an application insta
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_change_group HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4511,21 +5217,36 @@ POST /pop/v5/changeorder/co_change_group HTTP/1.1
 | RequestId | String | F9E4-FDS4- **************** | The request ID. |
 |---|---|---|---|
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/changeorder/co_change_group HTTP/1.1 "AppId": "3616cdca-4f92-**********", "EccInfo": "0cf49a6c-95a8-4aa8******", "GroupName": "test"
+```
+POST /pop/v5/changeorder/co_change_group HTTP/1.1 Common request headers
 ```
 
-Response example
+`{`
 
 ```json
-<RequestId>F9E4-FDS4-****************</RequestId> <ChangeOrderId>435f-regfr4********************</ChangeOrderId>
+"AppId": "3616cdca-4f92-**********", "EccInfo": "0cf49a6c-95a8-4aa8******", "GroupName": "test"
+```
+
+`}` Response example `XML` format
+
+```xml
+<RequestId>F9E4-FDS4-****************</RequestId> <Message>success</Message> <ChangeOrderId>435f-regfr4********************</ChangeOrderId> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "F9E4-FDS4-****************",
     "Message": "success",
     "ChangeOrderId": "435f-regfr4********************",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.2 DeleteApplication
 
@@ -4543,9 +5264,13 @@ DELETE
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/changeorder/co_delete_app HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4561,20 +5286,29 @@ DELETE /pop/v5/changeorder/co_delete_app HTTP/1.1
 |---|---|---|---|
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?<Common request parameters>
 ```
 
-Successful response examples
+Successful response examples `XML` format
+
+```xml
+<Message>success</Message> <ChangeOrderId>0b8e3c0b-5818-430*************</ChangeOrderId> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
-<ChangeOrderId>0b8e3c0b-5818-430*************</ChangeOrderId>
  "Message": "success",
  "ChangeOrderId": "0b8e3c0b-5818-430****",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.3 DeployApplication
 
@@ -4586,9 +5320,13 @@ Deploys an application to an ECS cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_deploy HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4616,20 +5354,29 @@ POST /pop/v5/changeorder/co_deploy HTTP/1.1
 | Code | Integer | 200 | The status code. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Example request
 
 ```json
 POST /pop/v5/changeorder/co_deploy HTTP/1.1 "AppId": "3616cdca-********************", "DeployType": "url", "GroupId": "all", "PackageVersion": "1.0"
 ```
 
-Example successful responses
+`}` Example successful responses `XML` format
+
+```xml
+<Message>success</Message> <ChangeOrderId>adf86823-055b-48a4-a59f-fa5582******</ChangeOrderId> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
-<ChangeOrderId>adf86823-055b-48a4-a59f-fa5582******</ChangeOrderId>
     "Message": "success",
     "ChangeOrderId": "adf86823-055b-48a4-a59f-fa5582******",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.4 DeleteDeployGroup
 
@@ -4639,9 +5386,13 @@ You can call the DeleteDeployGroup API to delete an application instance group i
 
 This API uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/deploy_group HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4656,6 +5407,8 @@ DELETE /pop/v5/deploy_group HTTP/1.1
 | Data | String | 1 | The data returned. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
 ```json
@@ -4664,14 +5417,21 @@ DELETE /pop/v5/deploy_group HTTP/1.1
   "GroupName": ""
 ```
 
-Response example
+`}` Response example `XML` format
+
+```xml
+<Message>success</Message> <Data>1</Data> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
-<Data>1</Data>
     "Message": "success",
     "Data": 1,
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.5 GetApplication
 
@@ -4681,9 +5441,13 @@ Call the GetApplication operation to retrieve information about an application i
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/app/app_info HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4717,16 +5481,23 @@ POST /pop/v5/app/app_info HTTP/1.1
 | Code | Integer | 200 | The status code. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Request example
 
+```
+POST /pop/v5/app/app_info HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/app/app_info HTTP/1.1
   "AppId": "f4ccf3-****-****-****"
 ```
 
-Response example
+`}` Response example `XML` format
 
-```json
+```xml
 <Application>
     <BuildPackageId>59</BuildPackageId>
     <Dockerize>false</Dockerize>
@@ -4746,7 +5517,12 @@ Response example
     <UserId>test@dd******</UserId>
     <RegionId>cn-hangzhou</RegionId>
     <RunningInstanceCount>1</RunningInstanceCount>
-</Application>
+</Application> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "Application": {
         "BuildPackageId": 59,
@@ -4775,6 +5551,8 @@ Response example
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.6 InsertApplication
 
 You can call the InsertApplication operation to create an application in an ECS cluster.
@@ -4784,6 +5562,8 @@ You can call the InsertApplication operation to create an application in an ECS 
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
+
+**Request syntax**
 
 ```
 POST /pop/v5/changeorder/co_create_app HTTP/1.1
@@ -4820,13 +5600,21 @@ POST /pop/v5/changeorder/co_create_app HTTP/1.1
 | Code | Integer | 200 | The status code of the response. |
 | Message | String | The application name test- hsy-C5039-paas-6 had been created successfully. | The message returned. |
 
+**Examples**
+
 Sample request
 
-```json
-POST /pop/v5/changeorder/co_create_app HTTP/1.1 "ApplicationName": "hello-edas-test-1", "BuildPackId": "59"
+```
+POST /pop/v5/changeorder/co_create_app HTTP/1.1 Common request headers
 ```
 
-Sample response
+`{`
+
+```json
+"ApplicationName": "hello-edas-test-1", "BuildPackId": "59"
+```
+
+`}` Sample response `XML` format
 
 ```xml
 <RequestId>4264F69C-686C-4107-B493-0599C8xxxxxx</RequestId> <Message>The application name test-hsy-C5039-paas-6 had been created successfully.</Message> <ApplicationInfo>
@@ -4838,8 +5626,10 @@ Sample response
     <Port>8080</Port>
     <ChangeOrderId>d0cf569e-dce3-4efb-****-08b70021****</ChangeOrderId>
     <AppName>hello-edas-test-1</AppName>
-</ApplicationInfo>
+</ApplicationInfo> <Code>200</Code>
 ```
+
+`JSON` format
 
 ```json
     "RequestId": "4264F69C-686C-4107-B493-0599C8xxxxxx",
@@ -4860,6 +5650,8 @@ Sample response
 ```json
     "Code": 200
 ```
+
+`}`
 
 **Main parameters for common applications**
 
@@ -4922,6 +5714,8 @@ This operation has no special request headers. For more information, see Common 
 GET /pop/v5/resource/components HTTP/1.1
 ```
 
+**Request parameters**
+
 This operation has no request parameters.
 
 **Response data**
@@ -4937,16 +5731,18 @@ This operation has no request parameters.
 | Version | String | oraclejdk7 | The version. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Sample request
 
 ```
-GET /pop/v5/resource/components HTTP/1.1
+GET /pop/v5/resource/components HTTP/1.1 Common request headers
 ```
 
-Sample response
+Sample response `XML` format
 
 ```xml
-<ComponentList>
+<Message>success</Message> <ComponentList>
     <Component>
         <Desc>JDK 7</Desc>
         <Type>JDK</Type>
@@ -4955,7 +5751,7 @@ Sample response
         <Expired>false</Expired>
         <ComponentId>1</ComponentId>
     </Component>
-</ComponentList>
+</ComponentList> <Code>200</Code>
 ```
 
 ```json
@@ -4970,11 +5766,13 @@ Sample response
             "ComponentId": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.8 ListDeployGroup
 
@@ -4984,9 +5782,13 @@ Call ListDeployGroup to retrieve a list of deployment groups.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/app/deploy_group_list HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5012,15 +5814,23 @@ POST /pop/v5/app/deploy_group_list HTTP/1.1
 | UpdateTime | Long | 1573627695779 | The timestamp when the group was last updated. |
 | Message | String | sucess | The returned message. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/app/deploy_group_list HTTP/1.1 "AppId": "3616cdca-4f92-4413-****-************"
+```
+POST /pop/v5/app/deploy_group_list HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
 
 ```json
+"AppId": "3616cdca-4f92-4413-****-************"
+```
+
+`}` Successful response example `XML` format
+
+```xml
 <DeployGroupList>
     <GroupName>_DEFAULT_GROUP</GroupName>
     <GroupType>1</GroupType>
@@ -5031,7 +5841,12 @@ Successful response example
     <AppVersionId>changeorder_a**_*******_**</AppVersionId>
     <PackageVersionId>a7d48fe8-ad8f-****-89bd-74cc1ee6****</PackageVersionId>
     <GroupId>577f4c50-16ee-43d8-****-************</GroupId>
-</DeployGroupList> <Message>sucess</Message>
+</DeployGroupList> <Message>sucess</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "DeployGroupList": {
         "GroupName": "_DEFAULT_GROUP",
         "GroupType": 1,
@@ -5051,6 +5866,8 @@ Successful response example
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.9 RollbackApplication
 
 Rolls back an application to a previous version.
@@ -5062,6 +5879,8 @@ This operation uses common request headers. No special request headers are used.
 ```
 POST /pop/v5/changeorder/co_rollback HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5079,17 +5898,26 @@ POST /pop/v5/changeorder/co_rollback HTTP/1.1
 | Code | Integer | 200 | The response code. |
 | Message | String | success | Contains additional information. |
 
+**Examples**
+
 Sample request
 
-```json
-POST /pop/v5/changeorder/co_rollback HTTP/1.1 "AppId": "3616cdca-4f92-4413-************", "GroupId": "8123db90-880f-48***************", "HistoryVersion": "2019-11-13 14:22:22"
+```
+POST /pop/v5/changeorder/co_rollback HTTP/1.1 Common request headers
 ```
 
-Sample success response
+`{`
+
+```json
+"AppId": "3616cdca-4f92-4413-************", "GroupId": "8123db90-880f-48***************", "HistoryVersion": "2019-11-13 14:22:22"
+```
+
+`}` Sample success response `XML` format
 
 ```xml
 <RollbackApplicationResponse>
   <RequestId>D16979DC-4D42-*********</RequestId>
+  <Message>success</Message>
   <ChangeOrderId>921026b8-d1be-************</ChangeOrderId>
 </RollbackApplicationResponse>
 ```
@@ -5101,6 +5929,8 @@ Sample success response
     "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.10 ScaleInApplication
 
 The ScaleInApplication operation scales in application instances.
@@ -5109,9 +5939,13 @@ The ScaleInApplication operation scales in application instances.
 
 This operation uses common request headers. No special request headers are required. For more information about common request headers, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_scale_in HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5127,24 +5961,38 @@ POST /pop/v5/changeorder/co_scale_in HTTP/1.1
 | Code | Integer | 200 | Code. |
 | Message | String | success | The response message. |
 
+**Examples**
+
 Sample request
 
+```
+POST /pop/v5/changeorder/co_scale_in HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/changeorder/co_scale_in HTTP/1.1
   "AppId": ""
   "EccInfo": ""
 ```
 
-Sample success response
+`}` Sample success response
 
-```json
+```xml
 <ScaleInApplicationResponse>
   <ChangeOrderId>ddf5a4c7-a507-4a6e****************</ChangeOrderId>
 </ScaleInApplicationResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "ChangeOrderId": "ddf5a4c7-a507-4a6e****************",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.11 ScaleOutApplication
 
@@ -5154,9 +6002,13 @@ Scales out an application.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_scale_out HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5172,22 +6024,33 @@ POST /pop/v5/changeorder/co_scale_out HTTP/1.1
 | Code | Integer | 200 | The status code returned. |
 | Message | String | success | The message returned. |
 
+**Examples**
+
 Request example
 
 ```json
 POST /pop/v5/changeorder/co_scale_out HTTP/1.1 "AppId": "3616cdca-4f92-4413*****************", "DeployGroup": "4f1fb6f5-6769-4bd6******************", "EcuInfo": "8123db90-880f-486f-b***************"
 ```
 
-Response example
+`}` Response example `XML` format
+
+```xml
+<ScaleOutApplicationResponse>
+  <Message>success</Message>
+  <ChangeOrderId>f4208118-7171-4e20-92************</ChangeOrderId>
+  <Code>200</Code>
+</ScaleOutApplicationResponse>
+```
+
+`JSON` format `{`
 
 ```json
-<ScaleOutApplicationResponse>
-  <ChangeOrderId>f4208118-7171-4e20-92************</ChangeOrderId>
-</ScaleOutApplicationResponse>
  "Message": "success",
  "ChangeOrderId": "f4208118-7171-4e20-92************",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.12 ScaleoutApplicationWithNewInstances
 
@@ -5201,9 +6064,13 @@ If an application has an Auto Scaling rule enabled, instances purchased by calli
 
 This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
 
+**Request syntax**
+
 ```
 POST /pop/v5/scaling/scale_out HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5226,20 +6093,30 @@ POST /pop/v5/scaling/scale_out HTTP/1.1
 | Message | String | success | The returned message. |
 | RequestId | String | e370c17f-*****- 3df0721a327 | The ID of the request. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/scaling/scale_out HTTP/1.1 "AppId": "e370c17f-*****-3df0721a327", "GroupId": "e37**********-33df0721a327", "ScalingNum": "2", "TemplateInstanceId": "i-28wt4****"
+```
+POST /pop/v5/scaling/scale_out HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"AppId": "e370c17f-*****-3df0721a327", "GroupId": "e37**********-33df0721a327", "ScalingNum": "2", "TemplateInstanceId": "i-28wt4****"
+```
+
+`}` Successful response example `XML` format
 
 ```json
 <ScaleoutApplicationWithNewInstancesResponse>
+  <Message>success</Message>
   <RequestId>e370c17f-*****-3df0721a327</RequestId>
   <ChangeOrderId>e370c17f-*****-3df0721a327</ChangeOrderId>
   <InstanceIds>i-28wt4****</InstanceIds>
   <InstanceIds>i-28wt4****</InstanceIds>
+  <Code>200</Code>
 </ScaleoutApplicationWithNewInstancesResponse> {"Message":"success","RequestId":"e370c17f-*****-3df0721a327","ChangeOrderId":"e370c17f-*****- 3df0721a327","InstanceIds":["i-28wt4****","i-28wt4****"],"Code":"200"}
 ```
 
@@ -5257,9 +6134,13 @@ Starts an application.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_start HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5274,18 +6155,27 @@ POST /pop/v5/changeorder/co_start HTTP/1.1
 | Code | Integer | 200 | The response code. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
+```
+POST /pop/v5/changeorder/co_start HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/changeorder/co_start HTTP/1.1
   "AppId": ""
 ```
 
-Successful response example
+`}` Successful response example `XML` format
 
 ```xml
 <StartApplicationResponse>
+  <Message>success</Message>
   <ChangeOrderId>426d3328-11a***************</ChangeOrderId>
+  <Code>200</Code>
 </StartApplicationResponse>
 ```
 
@@ -5295,6 +6185,8 @@ Successful response example
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.14 StopApplication
 
 Stops an application in an Alibaba Cloud ECS cluster or a hybrid cloud ECS cluster.
@@ -5303,9 +6195,13 @@ Stops an application in an Alibaba Cloud ECS cluster or a hybrid cloud ECS clust
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_stop HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5320,16 +6216,25 @@ POST /pop/v5/changeorder/co_stop HTTP/1.1
 | Code | Integer | 200 | Code |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/changeorder/co_stop HTTP/1.1 "AppId": "c627c157-560d*******"
+```
+POST /pop/v5/changeorder/co_stop HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"AppId": "c627c157-560d*******"
+```
+
+`}` Successful response example `XML` format
 
 ```xml
 <StopApplicationResponse>
+  <Message>success</Message>
   <ChangeOrderId>a9557bac-ddd7-*********************</ChangeOrderId>
 </StopApplicationResponse>
 ```
@@ -5340,6 +6245,8 @@ Successful response example
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.15 UnbindSlb
 
 You can call the UnbindSlb operation to detach an SLB instance.
@@ -5348,9 +6255,13 @@ You can call the UnbindSlb operation to detach an SLB instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/app/unbind_slb_json HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5366,16 +6277,23 @@ POST /pop/app/unbind_slb_json HTTP/1.1
 | Data | String | {} | The success or failure information. |
 | Message | String | Unbind slb success | The returned information. |
 
+**Examples**
+
 Example request
 
+```
+POST /pop/app/unbind_slb_json HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/app/unbind_slb_json HTTP/1.1
   "AppId": ""
   "SlbId": ""
   "Type": ""
 ```
 
-Example of a successful response
+`}` Example of a successful response `XML` format
 
 ```xml
 <UnbindSlbResponse>
@@ -5390,6 +6308,8 @@ Example of a successful response
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.16 UpdateApplicationBaseInfo
 
 The UpdateApplicationBaseInfo operation modifies the name, description, and owner of an application.
@@ -5398,9 +6318,13 @@ The UpdateApplicationBaseInfo operation modifies the name, description, and owne
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request syntax**
+
 ```
 POST /pop/v5/app/update_app_info HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5443,15 +6367,23 @@ POST /pop/v5/app/update_app_info HTTP/1.1
 | Message | String | success | The returned message. |
 | Code | Integer | 200 | Code. |
 
+**Examples**
+
 Example request
 
+```
+POST /pop/v5/app/update_app_info HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/app/update_app_info HTTP/1.1 "AppId": "c627c157-560d-43ff-****-************"
+"AppId": "c627c157-560d-43ff-****-************"
 ```
 
 Example response
 
-```json
+```xml
 <UpdateApplicationBaseInfoResponse>
   <Applcation>
         <SlbPort>0</SlbPort>
@@ -5473,7 +6405,13 @@ Example response
         <CreateTime>1574249022930</CreateTime>
         <ClusterType>2</ClusterType>
   </Applcation>
+  <Code>200</Code>
 </UpdateApplicationBaseInfoResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "Applcation": {
     "SlbPort": 0,
@@ -5502,6 +6440,8 @@ Example response
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.17 UpdateHealthCheckUrl
 
 Sets the health check URL for an application.
@@ -5509,6 +6449,8 @@ Sets the health check URL for an application.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request syntax**
 
 ```
 POST /pop/v5/app/modify_hc_url HTTP/1.1
@@ -5527,24 +6469,41 @@ POST /pop/v5/app/modify_hc_url HTTP/1.1
 | HealthCheckURL | String | http://127.0.0.1:8080/ ehc. _ html | The health check URL. |
 | Message | String | success | The response message. |
 
+**Examples**
+
 Sample request
 
-```json
-POST /pop/v5/app/modify_hc_url HTTP/1.1 "AppId": "c627c157-560d-43ff-***************"
+```
+POST /pop/v5/app/modify_hc_url HTTP/1.1 Common request headers
 ```
 
-Sample response
+`{`
 
 ```json
+"AppId": "c627c157-560d-43ff-***************"
+```
+
+`}` Sample response `XML` format
+
+```xml
 <UpdateHealthCheckUrlResponse>
   <RequestId>D16979DC-4D42-*****************</RequestId>
+  <Message>success</Message>
   <HealthCheckURL>http://127.0.0.1:8080/_ehc.html</HealthCheckURL>
+  <Code>200</Code>
 </UpdateHealthCheckUrlResponse>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "D16979DC-4D42-*****************",
     "Message": "success",
     "HealthCheckURL": "http://127.0.0.1:8080/_ehc.html",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.18 UpdateJvmConfiguration
 
@@ -5553,6 +6512,8 @@ You can call the UpdateJvmConfiguration operation to configure the Java Virtual 
 **Request headers**
 
 This operation uses only common request headers. For more information, see the common request parameters document.
+
+**Request syntax**
 
 ```
 POST /pop/v5/app/app_jvm_config HTTP/1.1
@@ -5581,24 +6542,38 @@ POST /pop/v5/app/app_jvm_config HTTP/1.1
 | Options | String | "" | The custom parameters. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
+```
+POST /pop/v5/app/app_jvm_config HTTP/1.1 Common request headers
+```
+
+`{`
+
 ```json
-POST /pop/v5/app/app_jvm_config HTTP/1.1
   "AppId": ""
 ```
 
-Example of a successful response
+`}` Example of a successful response `XML` format
 
-```json
+```xml
 <UpdateJvmConfigurationResponse>
+  <Message>success</Message>
   <JvmConfiguration>
         <MaxPermSize>1000</MaxPermSize>
         <MaxHeapSize>500</MaxHeapSize>
         <MinHeapSize>500</MinHeapSize>
         <Options></Options>
   </JvmConfiguration>
+  <Code>200</Code>
 </UpdateJvmConfigurationResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "JvmConfiguration": {
   "MaxPermSize": 1000,
@@ -5613,6 +6588,8 @@ Example of a successful response
  "Code": 200
 ```
 
+`}`
+
 ###### 1.1.9.3.19 AddLogPath
 
 The AddLogPath operation adds a log folder for applications that are deployed in Alibaba Cloud ECS clusters and clusters that are not hosted on Alibaba Cloud.
@@ -5620,6 +6597,8 @@ The AddLogPath operation adds a log folder for applications that are deployed in
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request syntax**
 
 ```
 POST /pop/v5/log/popListLogDirs HTTP/1.1
@@ -5640,20 +6619,35 @@ POST /pop/v5/log/popListLogDirs HTTP/1.1
 | Message | String | success | Additional information. |
 | RequestId | String | 3616cdca-4f92- 4413********** | The ID of the request. |
 
+**Examples**
+
 Example request
 
-```json
-POST /pop/v5/log/popListLogDirs HTTP/1.1 "AppId": "3616cdca-4f92-4413**********", "Path": "/temp/log/"
+```
+POST /pop/v5/log/popListLogDirs HTTP/1.1 Common request headers
 ```
 
-Example successful response
+`{`
 
 ```json
-<RequestId>3616cdca-4f92-4413**********</RequestId>
+"AppId": "3616cdca-4f92-4413**********", "Path": "/temp/log/"
+```
+
+`}` Example successful response `XML` format
+
+```xml
+<Message>success</Message> <RequestId>3616cdca-4f92-4413**********</RequestId> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "RequestId": "3616cdca-4f92-4413**********",
  "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.20 ModifyScalingRule
 
@@ -5711,19 +6705,37 @@ POST|PUT /pop/v5/app/scaling_rules HTTP/1.1
 |---|---|---|---|
 | Message | String | success | The response message. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/app/scaling_rules HTTP/1.1 "AppId": "74ee****-db65-4322-a1f6-bcb60e5b****", "GroupId": "8123db90-880f-486f-****-************", "InCpu": "50", "InDuration": "50", "InEnable": "true", "InInstanceNum": "3", "InLoad": "50", "InRT": "50", "InStep": "1", "OutCPU": "50", "OutDuration": "50", "OutEnable": "true", "OutInstanceNum": "10", "OutLoad": "50", "OutRT": "0", "OutStep": "0"
+```
+POST /pop/v5/app/scaling_rules HTTP/1.1 Common request headers
 ```
 
-Successful response
+`{`
 
 ```json
-<ModifyScalingRuleResponse> </ModifyScalingRuleResponse>
+"AppId": "74ee****-db65-4322-a1f6-bcb60e5b****", "GroupId": "8123db90-880f-486f-****-************", "InCpu": "50", "InDuration": "50", "InEnable": "true", "InInstanceNum": "3", "InLoad": "50", "InRT": "50", "InStep": "1", "OutCPU": "50", "OutDuration": "50", "OutEnable": "true", "OutInstanceNum": "10", "OutLoad": "50", "OutRT": "0", "OutStep": "0"
+```
+
+`}` Successful response `XML` format
+
+```xml
+<ModifyScalingRuleResponse>
+  <Message>success</Message>
+  <Code>200</Code>
+</ModifyScalingRuleResponse>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "Code": 200
 ```
+
+`}`
 
 ###### 1.1.9.3.21 RestartApplication
 
@@ -5733,9 +6745,13 @@ The RestartApplication operation restarts applications that are deployed in Alib
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/changeorder/co_restart HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5753,20 +6769,35 @@ POST /pop/v5/changeorder/co_restart HTTP/1.1
 | Message | String | success | Invocation details |
 | RequestId | String | D16979DC-4D42- **************** | The ID of the request. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/changeorder/co_restart HTTP/1.1 "AppId": "c627c157-560d*******"
+```
+POST /pop/v5/changeorder/co_restart HTTP/1.1 Common request headers
 ```
 
-Example of a successful response
+`{`
 
 ```json
-<ChangeOrderId>a9557bac-ddd7-*********************</ChangeOrderId>
+"AppId": "c627c157-560d*******"
+```
+
+`}` Example of a successful response `XML` format
+
+```xml
+<Message>success</Message> <ChangeOrderId>a9557bac-ddd7-*********************</ChangeOrderId> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
  "Message": "success",
  "ChangeOrderId": "a9557bac-ddd7-*********************",
  "Code": 200
 ```
+
+`}`
 
 #### 1.1.10 Service administration
 
@@ -5777,6 +6808,8 @@ Retrieves the service governance configuration details for a specified applicati
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request syntax**
 
 ```
 GET /pop/v5/app/service_governance_config HTTP/1.1
@@ -5802,13 +6835,15 @@ GET /pop/v5/app/service_governance_config HTTP/1.1
 | -LocalityEnabled | Boolean | false | Indicates whether the locality policy is enabled. This policy preferentially routes requests to servers in the same location as the client. |
 | -LocalityThreshold | Float | 0.8 | The threshold for data locality. If the ratio of local data access exceeds this value, the data is considered highly local and can be optimized. |
 
+**Examples**
+
 Sample request
 
 ```
 GET /pop/v5/app/service_governance_config HTTP/1.1 &AppId=2dfea044-479f-464a-b374-f14d32****** &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `JSON` format
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
@@ -5827,6 +6862,11 @@ Sample responses
 
 ```json
  "Code":200
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Data>
  <LosslessOnlineDelay>30</LosslessOnlineDelay>
  <LocalityEnabled>false</LocalityEnabled>
@@ -5835,7 +6875,7 @@ Sample responses
  <LocalityThreshold>0.8</LocalityThreshold>
  <EmptyPushProtectionEnabled>false</EmptyPushProtectionEnabled>
  <LosslessOnlineFuncType>2</LosslessOnlineFuncType>
-</Data>
+</Data> <Code>200</Code>
 ```
 
 ##### 1.1.10.2 UpdateServiceGovernanceConfig
@@ -5846,9 +6886,13 @@ Updates the configuration for service administration.
 
 This operation uses only common request headers. For more information, see the document on common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/app/service_governance_config HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5886,7 +6930,7 @@ Request example
 POST /pop/v5/app/service_governance_config HTTP/1.1
 ```
 
-Response example
+`}` Response example `JSON` format `{`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
@@ -5905,6 +6949,11 @@ Response example
 
 ```json
  "Code":200
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Data>
  <LosslessOnlineDelay>30</LosslessOnlineDelay>
  <LocalityEnabled>true</LocalityEnabled>
@@ -5913,7 +6962,7 @@ Response example
  <LocalityThreshold>0.8</LocalityThreshold>
  <EmptyPushProtectionEnabled>true</EmptyPushProtectionEnabled>
  <LosslessOnlineFuncType>2</LosslessOnlineFuncType>
-</Data>
+</Data> <Code>200</Code>
 ```
 
 ##### 1.1.10.3 UpdateServiceGovernanceConfigInternal
@@ -5924,9 +6973,13 @@ This operation updates the service administration configuration and supports fea
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/internal/app/service_governance_config HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5964,13 +7017,15 @@ POST /pop/v5/internal/app/service_governance_config HTTP/1.1
 | -LocalityEnabled | Boolean | true | Indicates whether the localization feature is enabled. This feature allows the system to provide services or content based on the user's geographical location. |
 | -LocalityThreshold | Float | 0.5 | The tolerance threshold for locality priority in task scheduling. A lower value indicates a stronger preference for strict locality-based scheduling. A value of 0.5 indicates medium tolerance. |
 
+**Examples**
+
 Sample request
 
 ```
 POST /pop/v5/internal/app/service_governance_config HTTP/1.1
 ```
 
-Sample response
+`{` `}` Sample response `JSON` format `{`
 
 ```json
  "RequestId":"1EB9475F-4C6E-4B5F-8EEF-BFCF2B******",
@@ -5989,6 +7044,11 @@ Sample response
 
 ```json
  "Code":200
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Data>
  <LosslessOnlineDelay>30</LosslessOnlineDelay>
  <LocalityEnabled>true</LocalityEnabled>
@@ -5997,7 +7057,7 @@ Sample response
  <LocalityThreshold>0.5</LocalityThreshold>
  <EmptyPushProtectionEnabled>true</EmptyPushProtectionEnabled>
  <LosslessOnlineFuncType>2</LosslessOnlineFuncType>
-</Data>
+</Data> <Code>200</Code>
 ```
 
 ##### 1.1.10.4 ListConsumedServices
@@ -6033,15 +7093,23 @@ GET /pop/v5/service/listConsumedServices HTTP/1.1
 | Version | String | 1.0 | The version of the consumed service. |
 | Message | String | success | The returned message. |
 
+**Examples**
+
 Request example
 
-```json
-GET /pop/v5/service/listConsumedServices HTTP/1.1 "AppId": "a66c5d1f-****-****-8c2b-6925f781b203"
+```
+GET /pop/v5/service/listConsumedServices HTTP/1.1 Common request headers
 ```
 
-Successful response examples
+`{`
 
 ```json
+"AppId": "a66c5d1f-****-****-8c2b-6925f781b203"
+```
+
+`}` Successful response examples `XML` format
+
+```xml
 <ConsumedServicesList>
     <Type>HSF</Type>
     <Group2Ip>""</Group2Ip>
@@ -6051,7 +7119,12 @@ Successful response examples
     <Name>service</Name>
     <Groups>group</Groups>
     <Ips>102.XX.XX.23</Ips>
-</ConsumedServicesList>
+</ConsumedServicesList> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "ConsumedServicesList": {
         "Type": "HSF",
@@ -6070,6 +7143,8 @@ Successful response examples
     "Code": 200
 ```
 
+`}`
+
 ##### 1.1.10.5 ListServiceGroups
 
 The ListServiceGroups operation queries the service groups of a High-Speed Service Framework (HSF) application.
@@ -6078,9 +7153,13 @@ The ListServiceGroups operation queries the service groups of a High-Speed Servi
 
 This operation has no special request headers. For information about common request headers, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/service/serviceGroups HTTP/1.1
 ```
+
+**Request parameters**
 
 This operation has no request parameters.
 
@@ -6099,17 +7178,22 @@ This operation has no request parameters.
 Request example
 
 ```
-GET /pop/v5/service/serviceGroups HTTP/1.1
+GET /pop/v5/service/serviceGroups HTTP/1.1 Common request headers
 ```
 
-Successful response example
+Successful response example `XML` format
 
-```json
+```xml
 <ServiceGroupsList>
     <GroupName>edas-test-group</GroupName>
     <CreateTime>1575357165770</CreateTime>
     <GroupId>789d9cda-74b1-****-****-05e21a0a7661</GroupId>
-</ServiceGroupsList>
+</ServiceGroupsList> <Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "ServiceGroupsList": {
         "GroupName": "edas-test-group",
         "CreateTime": 1575357165770,
@@ -6123,6 +7207,8 @@ Successful response example
     "Code": 200
 ```
 
+`}`
+
 ##### 1.1.10.6 ListPublishedServices
 
 You can call the ListPublishedServices operation to query published services.
@@ -6131,9 +7217,13 @@ You can call the ListPublishedServices operation to query published services.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/service/listPublishedServices HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6163,16 +7253,24 @@ GET /pop/v5/service/listPublishedServices HTTP/1.1
 | Version | String | v1 | The version of the published service. |
 | WriteMode | String | w | The write model. This parameter is not used in Apsara Stack. |
 
+**Examples**
+
 Request example
 
-```json
-GET /pop/v5/service/listPublishedServices HTTP/1.1 "AppId": "1fbd8b72-****-****-bdfe-478dbc914121"
+```
+GET /pop/v5/service/listPublishedServices HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"AppId": "1fbd8b72-****-****-bdfe-478dbc914121"
+```
+
+`}` Successful response example `XML` format
 
 ```xml
-<PublishedServicesList>
+<Message>success</Message> <Code>200</Code> <PublishedServicesList>
     <ListPublishedServices>
         <Groups>
             <group>DEFAULT_GROUP</group>
@@ -6193,6 +7291,11 @@ Successful response example
  "Code": 200,
  "PublishedServicesList": {
   "ListPublishedServices": [
+```
+
+`{`
+
+```json
     "Groups": {
      "group": [
       "DEFAULT_GROUP"
@@ -6210,7 +7313,7 @@ Successful response example
      "ip": []
 ```
 
-`]`
+`}` `}` `]` `}` `}`
 
 #### 1.1.11 Permission management
 
@@ -6222,9 +7325,13 @@ Grants a Resource Access Management (RAM) user permissions on an application.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/account/authorize_app HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example |   | Description |   |
 |---|---|---|---|---|---|---|---|
@@ -6246,12 +7353,20 @@ Request example
 POST /pop/v5/account/authorize_app HTTP/1.1 "AppIds": "5fdf50e8-*****;696-******", "TargetUserId": "test@133434434****"
 ```
 
-Successful response
+`}` Successful response `XML` format
+
+```xml
+<Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
     "Message": "success",
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.11.2 AuthorizeResourceGroup
 
@@ -6261,9 +7376,13 @@ You can call the AuthorizeResourceGroup operation to grant a Resource Access Man
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/account/authorize_res_group HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6278,20 +7397,29 @@ POST /pop/v5/account/authorize_res_group HTTP/1.1
 | Message | String | success | Information |
 | RequestId | String | 57609587-DFA2-********** | The request ID. |
 
+**Examples**
+
 Sample request
 
 ```json
 POST /pop/v5/account/authorize_res_group HTTP/1.1 "ResourceGroupIds": "461;462", "TargetUserId": "test@13333********"
 ```
 
-Sample response
+`}` Sample response `XML` format
+
+```xml
+<RequestId>57609587-DFA2-41EC-**********</RequestId> <Code>200</Code> <Message>success</Message>
+```
+
+`JSON` format `{`
 
 ```json
-<RequestId>57609587-DFA2-41EC-**********</RequestId>
  "RequestId": "57609587-DFA2-41EC-**********",
  "Code": "200",
  "Message": "success"
 ```
+
+`}`
 
 ##### 1.1.11.3 AuthorizeRole
 
@@ -6301,9 +7429,13 @@ Call the AuthorizeRole operation to grant role permissions to a RAM user.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/account/authorize_role HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6317,18 +7449,28 @@ POST /pop/v5/account/authorize_role HTTP/1.1
 | Code | Integer | 200 | The status code of the request. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/account/authorize_role HTTP/1.1 "TargetUserId": "test@133******"
+```
+POST /pop/v5/account/authorize_role HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"TargetUserId": "test@133******"
+```
+
+Successful response example `JSON` format `{`
 
 ```json
     "Message": "success",
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.11.4 DeleteRole
 
@@ -6338,9 +7480,13 @@ The DeleteRole operation deletes a role.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/account/delete_role HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6353,18 +7499,34 @@ POST /pop/v5/account/delete_role HTTP/1.1
 | Code | Integer | 200 | The response status code. |
 | Message | String | success | Additional information |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/account/delete_role HTTP/1.1 "RoleId": "99999999"
+```
+POST /pop/v5/account/delete_role HTTP/1.1 Common request headers
 ```
 
-Example of a successful response
+`{`
+
+```json
+"RoleId": "99999999"
+```
+
+`}` Example of a successful response `XML` format
+
+```xml
+<Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
 
 ```json
     "Message": "success",
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.11.5 GetSecureToken
 
@@ -6374,9 +7536,13 @@ Obtains the SecureToken information for a specific namespace. This information i
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/secure_token HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |   |   |   |
 |---|---|---|---|---|---|---|---|---|
@@ -6407,15 +7573,17 @@ GET /pop/v5/secure_token HTTP/1.1
 | TenantId | String | 401b7bc8-9441-4693-****- ************ | The tenant ID of the namespace. |
 | UserId | String | edas com*** ****@******- _ _ *****.*** | The UID of the user. |
 
+**Examples**
+
 Sample request
 
 ```json
 GET /pop/v5/secure_token HTTP/1.1 "NamespaceId": "cn-shenzhen:x*****"
 ```
 
-Sample response
+`}` Sample response `XML` format
 
-```json
+```xml
 <SecureToken>
     <EdasId>11727458********</EdasId>
     <TenantId>401b7bc8-9441-4693-****-************</TenantId>
@@ -6428,7 +7596,12 @@ Sample response
     <RegionId>cn-shenzhen:x*******</RegionId>
     <Id>7279</Id>
     <BelongRegion>cn-shenzhen</BelongRegion>
-</SecureToken> <RequestId>D16979DC-4D42-*************</RequestId>
+</SecureToken> <RequestId>D16979DC-4D42-*************</RequestId> <Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "SecureToken": {
         "EdasId": "11727458********",
         "TenantId": "401b7bc8-9441-4693-****-************",
@@ -6451,6 +7624,8 @@ Sample response
     "Code": 200
 ```
 
+`}`
+
 ##### 1.1.11.6 InsertRole
 
 The InsertRole operation creates a role.
@@ -6459,9 +7634,13 @@ The InsertRole operation creates a role.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/account/create_role HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6478,20 +7657,35 @@ POST /pop/v5/account/create_role HTTP/1.1
 | Message | String | success | The returned message. |
 | RoleId | Integer | 33 | The ID of the role. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/account/create_role HTTP/1.1 "ActionData": "15:1;14:2", "RoleName": "testrole"
+```
+POST /pop/v5/account/create_role HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
 
 ```json
-<RoleId>33</RoleId>
+"ActionData": "15:1;14:2", "RoleName": "testrole"
+```
+
+`}` Successful response example `XML` format
+
+```xml
+<Message>success</Message> <RoleId>33</RoleId> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "RoleId": 33,
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.11.7 ListRole
 
@@ -6500,6 +7694,8 @@ Call the ListRole operation to retrieve a list of roles.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common parameters.
+
+**Request syntax**
 
 ```
 POST /pop/v5/account/role_list HTTP/1.1
@@ -6529,15 +7725,17 @@ This operation has no request parameters.
 | Name | String | Super Admin(All privileges) | The name of the role. |
 | UpdateTime | Long | 1542717260156 | The UNIX timestamp that indicates when the role was last updated. |
 
+**Examples**
+
 Request example
 
 ```
-POST /pop/v5/account/role_list HTTP/1.1
+POST /pop/v5/account/role_list HTTP/1.1 Common request headers
 ```
 
-Response example
+Response example `XML` format
 
-```json
+```xml
 <RoleList>
     <ActionList>
         <Description>Operation record</Description>
@@ -6553,7 +7751,12 @@ Response example
         <Id>1</Id>
         <Name>Super Admin(All privileges)</Name>
     </Role>
-</RoleList>
+</RoleList> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "RoleList": {
         "ActionList": {
@@ -6575,11 +7778,13 @@ Response example
             "Name": "Super Admin(All privileges)"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Code": 200
 ```
+
+`}`
 
 #### 1.1.12 Configuration management
 
@@ -6591,9 +7796,13 @@ Call the GetJavaStartUpConfig operation to retrieve the Java startup parameter s
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/oam/java_start_up_config HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6614,13 +7823,15 @@ GET /pop/v5/oam/java_start_up_config HTTP/1.1
 | JavaStartUpConfig | String | { "originalConfigs": " {\"CustomParams\": {\"original\":\"- Dtest=test\",\"startup\":\"- Dtest=test\"}}", "startUpArgs": "- Dtest=test" } | The Java startup parameter settings. |
 | Code | Integer | 200 | The status code of the operation or a POP error code. |
 
+**Examples**
+
 Sample request
 
 ```
 GET /pop/v5/oam/java_start_up_config HTTP/1.1 &AppId=5fdf50e8-* &Common request parameters
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
  "Message":"success",
@@ -6628,7 +7839,14 @@ Sample successful response
  "JavaStartUpConfig":"{<br/>\"originalConfigs\": \"{\\\"CustomParams\\\":{\\\"original\\\":\\\"-
 Dtest=test\\\",\\\"startup\\\":\\\"-Dtest=test\\\"}}\",<br/>\"startUpArgs\": \"-Dtest=test\"<br/>}",
  "Code":200
-}<br/><br/><br/> <RequestId>4823-bhjf-23u4-eiufh</RequestId> <JavaStartUpConfig>{ &quot;originalConfigs&quot;: &quot;{\&quot;CustomParams\&quot;:{\&quot;original\&quot;:\&quot;- Dtest=test\&quot;,\&quot;startup\&quot;:\&quot;-Dtest=test\&quot;}}&quot;, &quot;startUpArgs&quot;: &quot;-Dtest=test&quot; }</JavaStartUpConfig>
+}<br/><br/><br/>
+```
+
+`XML` format
+
+```xml
+<Message>success</Message> <RequestId>4823-bhjf-23u4-eiufh</RequestId> <JavaStartUpConfig>{ &quot;originalConfigs&quot;: &quot;{\&quot;CustomParams\&quot;:{\&quot;original\&quot;:\&quot;- Dtest=test\&quot;,\&quot;startup\&quot;:\&quot;-Dtest=test\&quot;}}&quot;, &quot;startUpArgs&quot;: &quot;-Dtest=test&quot; }</JavaStartUpConfig>
+ <Code>200</Code>
 ```
 
 ##### 1.1.12.2 DeleteConfigCenter
@@ -6639,9 +7857,13 @@ Deletes a configuration. Features
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v5/configCenter HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6657,13 +7879,27 @@ DELETE /pop/v5/configCenter HTTP/1.1
 | Code | Integer | 200 | The status code of the request. |
 | Message | String | Success | Additional information |
 
+**Examples**
+
 Request example
 
-```json
-DELETE /pop/v5/configCenter HTTP/1.1 "DataId": "dubbo.registry.config", "Group": "dubbo-registry-test"
+```
+DELETE /pop/v5/configCenter HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"DataId": "dubbo.registry.config", "Group": "dubbo-registry-test"
+```
+
+`}` Successful response example `XML` format
+
+```xml
+<Message>Success</Message> <Code>200</Code>
+```
+
+`JSON` format
 
 ```json
 {"Message":"Success","Code":"200"}
@@ -6677,9 +7913,13 @@ You can call the InsertConfigCenter operation to add a configuration.
 
 This operation uses common request headers and does not have any special request headers. For more information about common request headers, see Common request parameters.
 
+**Request syntax**
+
 ```
 POST /pop/v5/configCenter HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6697,20 +7937,35 @@ POST /pop/v5/configCenter HTTP/1.1
 | Message | String | success | Additional information. |
 | RequestId | String | a5281053-08e4-47a5- b2ab-5c0323de***** | The ID of the request. |
 
+**Examples**
+
 Request example
 
-```json
-POST /pop/v5/configCenter HTTP/1.1 "Data": "Hello World", "DataId": "com.aliyun.acm.example", "Group": "DEFAULT_GROUP ", "LogicalRegionId": "cn-beijing:test"
+```
+POST /pop/v5/configCenter HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
 
 ```json
-<RequestId>a5281053-08e4-47a5-b2ab-5c0323de*****</RequestId>
+"Data": "Hello World", "DataId": "com.aliyun.acm.example", "Group": "DEFAULT_GROUP ", "LogicalRegionId": "cn-beijing:test"
+```
+
+`}` Successful response example `XML` format
+
+```xml
+<RequestId>a5281053-08e4-47a5-b2ab-5c0323de*****</RequestId> <Message>success</Message> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "a5281053-08e4-47a5-b2ab-5c0323de*****",
     "Message": "success",
     "Code": 200
 ```
+
+`}`
 
 ##### 1.1.12.4 ListConfigCenters
 
@@ -6720,9 +7975,13 @@ Lists microservice configurations.
 
 This operation has no special request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/configCenters HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6743,20 +8002,33 @@ GET /pop/v5/configCenters HTTP/1.1
 | Id | String | 6891** | The unique ID of the microservice configuration. |
 | Message | String | success | Additional information. |
 
+**Examples**
+
 Sample request
 
-```json
-GET /pop/v5/configCenters HTTP/1.1 "Group": "test-group"
+```
+GET /pop/v5/configCenters HTTP/1.1 Common request headers
 ```
 
-Sample responses
+`{`
 
 ```json
-<ConfigCentersList>
+"Group": "test-group"
+```
+
+`}` Sample responses `XML` format
+
+```xml
+<Message>success</Message> <ConfigCentersList>
     <Group>test-group</Group>
     <DataId>test1</DataId>
     <Id>6891**</Id>
-</ConfigCentersList>
+</ConfigCentersList> <Code>200</Code>
+```
+
+`JSON` format `{`
+
+```json
     "Message": "success",
     "ConfigCentersList": {
         "Group": "test-group",
@@ -6770,6 +8042,8 @@ Sample responses
     "Code": 200
 ```
 
+`}`
+
 ##### 1.1.12.5 DeleteDockerConfigSecret
 
 Deletes a Secret for a custom image.
@@ -6777,6 +8051,8 @@ Deletes a Secret for a custom image.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6794,13 +8070,15 @@ This operation uses only common request headers. For more information, see Commo
 | TraceId | String | 0a98a334170226880xxxxx xx | The trace ID. |
 | Data | String | xxxxxxx | Data details |
 
+**Examples**
+
 Sample request
 
 ```
 DELETE /pop/v5/k8s/secret/docker_config_secret HTTP/1.1 &ClusterId=b0e014a7-1e7a-42ef-8***** &K8sNameSpace=default &Name=aaa &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "Message":"success",
@@ -6808,7 +8086,12 @@ Sample response
  "TraceId":"0a98a334170226880xxxxxxx",
  "Data":"xxxxxxx",
  "Code":200
-<RequestId>132BF104-A660-40C7-936B-F805967*****</RequestId> <TraceId>0a98a334170226880xxxxxxx</TraceId> <Data>xxxxxxx</Data>
+```
+
+`}` `XML` format
+
+```xml
+<Message>success</Message> <RequestId>132BF104-A660-40C7-936B-F805967*****</RequestId> <TraceId>0a98a334170226880xxxxxxx</TraceId> <Data>xxxxxxx</Data> <Code>200</Code>
 ```
 
 ##### 1.1.12.6 ListConfigTemplates
@@ -6819,9 +8102,13 @@ Call the ListConfigTemplates operation to retrieve a list of configuration templ
 
 This operation uses common request headers and has no special request headers. For more information, see the Common request parameters document.
 
+**Request syntax**
+
 ```
 GET /pop/v5/config_template HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6852,13 +8139,15 @@ GET /pop/v5/config_template HTTP/1.1
 | -TotalSize | Long | 100 | The total number of pages. |
 | Code | Integer | 200 | API status code or POP error code. |
 
+**Examples**
+
 Sample request
 
 ```
 GET /pop/v5/config_template HTTP/1.1 &Common request parameters
 ```
 
-Sample successful response
+Sample successful response `JSON` format
 
 ```json
  "RequestId":"4D9F-DR94-FD****************",
@@ -6886,7 +8175,12 @@ Sample successful response
 
 ```json
  "Code":200
-<RequestId>4D9F-DR94-FD****************</RequestId> <Data>
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>4D9F-DR94-FD****************</RequestId> <Message>success</Message> <Data>
  <-Result>
   <GmtCreate>202108</GmtCreate>
   <Format>int</Format>
@@ -6899,7 +8193,7 @@ Sample successful response
  <PageSize>1</PageSize>
  <CurrentPage>10000</CurrentPage>
  <TotalSize>100</TotalSize>
-</Data>
+</Data> <Code>200</Code>
 ```
 
 **Error codes**
@@ -6916,9 +8210,13 @@ Retrieves the Tomcat configuration for an application.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v5/oam/web_container_config HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Location | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -6942,13 +8240,15 @@ GET /pop/v5/oam/web_container_config HTTP/1.1
 | -UseBodyEncoding | Boolean | true | Indicates whether body character encoding is used. |
 | -UseDefaultConfig | Boolean | true | Indicates whether default configurations are used. |
 
+**Examples**
+
 Sample request
 
 ```
 GET /pop/v5/oam/web_container_config HTTP/1.1 &AppId=5a166fbd-****-**** &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "RequestId":"4823-bhjf-23u4-eiufh",
@@ -6965,6 +8265,8 @@ Sample response
   "UseAdvancedServerXml":true,
   "UseDefaultConfig":true
 ```
+
+`}` `}`
 
 ```xml
 <RequestId>4823-bhjf-23u4-eiufh</RequestId> <WebContainerConfig>
@@ -6990,9 +8292,13 @@ You can call the CreateApplicationScalingRule operation to create a scaling rule
 
 This operation uses only common request headers. For more information, see the common request parameters document.
 
+**Request syntax**
+
 ```
 POST /pop/v1/eam/scale/application_scaling_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7015,7 +8321,7 @@ The metadata of the trigger. This is a JSON map of string-to-string key-value pa
 1. cron
 {"period":"weekly","dryRun":"false","timerInDay":{"atTime":"08:00","targetReplicas":2}, {"atTime":"20:00","targetReplicas":1},"timerInWeek":"Sat","Thu"} period: The recurrence period. Valid values are daily, weekly, and monthly. dryRun: If set to false, the system observes and scales the application. If set to true, the system only observes. timerInDay: Specifies the daily scaling cycle. You can specify points in time during the day to scale the application to a target number of replicas. timerInWeek: The day of the week for the scaling rule to take effect. For example, Fri.
 2. app_metric
-{\"metricName\":\"arms_appstat.incall_QPS\",\"dryRun\":\"false\",\"targetValAvg\":\"true\",\"targetAverageValue\":\"100\"} metricName: arms_appstat.incall_QPS (queries per second, QPS) arms_appstat.incall_rt (response time, RT) arms_appstat.system_CPU (CPU usage) arms_appstat.system_MEM (memory usage) dryRun: Same as for the cron type. targetValAvg: Specifies whether to use the average value of the metric. Set this parameter to `true` to use the average value. This parameter must be set to `true` for QPS and `false` for other metrics. targetAverageValue/targetValue: The threshold of the metric. If `targetValAvg` is set to `true`, use `targetAverageValue`. Otherwise, use `targetValue`. */ String metadata;
+{\"metricName\":\"arms_appstat.incall_QPS\",\"dryRun\":\"false\",\"targetValAvg\":\"true\",\"targetAverageValue\":\"100\"} metricName: arms_appstat.incall_QPS (queries per second, QPS) arms_appstat.incall_rt (response time, RT) arms_appstat.system_CPU (CPU usage) arms_appstat.system_MEM (memory usage) dryRun: Same as for the cron type. targetValAvg: Specifies whether to use the average value of the metric. Set this parameter to `true` to use the average value. This parameter must be set to `true` for QPS and `false` for other metrics. targetAverageValue/targetValue: The threshold of the metric. If `targetValAvg` is set to `true`, use `targetAverageValue`. Otherwise, use `targetValue`. */ String metadata; } }
 
 **Returned data**
 
@@ -7027,16 +8333,30 @@ The metadata of the trigger. This is a JSON map of string-to-string key-value pa
 | RequestId | String | a5281053-08e4-47a5- b2ab-5c0323de**** | The unique ID of the request. |
 | TraceId | String | c6459282-6a4d-4413- 894c-e4ea3968**** | The ID passed from the event source. This ID is used for troubleshooting. |
 
+**Examples**
+
 Sample request
 
-```json
-POST /pop/v1/eam/scale/application_scaling_rule HTTP/1.1 "AppId": "78194c76-3dca-418e-a263-cccd1ab4****", "ScalingRuleMetric": "", "ScalingRuleName": "cpu-trigger", "ScalingRuleType": "trigger"
+```
+POST /pop/v1/eam/scale/application_scaling_rule HTTP/1.1 Common request headers
 ```
 
-Sample responses
+`{`
 
 ```json
-<RequestId>a5281053-08e4-47a5-b2ab-5c0323de****</RequestId> <TraceId>c6459282-6a4d-4413-894c-e4ea3968****</TraceId> <Data/> {"RequestId":"a5281053-08e4-47a5-b2ab-5c0323de****","Message":"success","TraceId":"c6459282-6a4d-4413-894c-e4ea3968**
+"AppId": "78194c76-3dca-418e-a263-cccd1ab4****", "ScalingRuleMetric": "", "ScalingRuleName": "cpu-trigger", "ScalingRuleType": "trigger"
+```
+
+`}` Sample responses `XML` format
+
+```xml
+<RequestId>a5281053-08e4-47a5-b2ab-5c0323de****</RequestId> <Message>success</Message> <TraceId>c6459282-6a4d-4413-894c-e4ea3968****</TraceId> <Data/> <Code>200</Code>
+```
+
+`JSON` format
+
+```json
+{"RequestId":"a5281053-08e4-47a5-b2ab-5c0323de****","Message":"success","TraceId":"c6459282-6a4d-4413-894c-e4ea3968**
 **","Data":"","Code":"200"}
 ```
 
@@ -7050,9 +8370,13 @@ Condition key: The condition key defined by the cloud product. Associated operat
 
 This operation uses common request headers and does not have any special request headers. For more information, see the documentation about common request parameters.
 
+**Request syntax**
+
 ```
 DELETE /pop/v1/eam/scale/application_scaling_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7075,16 +8399,24 @@ Name | Type | Required | Description | Example Value
 | RequestId | String | 5d6fa0bc-cc3********** | The unique ID of the request. |
 | TraceId | String | ab1680******** | The ID of the call chain. |
 
+**Examples**
+
 Example request
 
 ```json
 DELETE /pop/v1/eam/scale/application_scaling_rule HTTP/1.1 "AppId": "78194c76-3dca-418e-a263-cccd1ab4****", "ScalingRuleName": "cpu-trigger"
 ```
 
-Example response
+`}` Example response `XML` format
+
+```xml
+<RequestId>5d6fa0bc-cc3**********</RequestId>
+```
+
+`JSON` format
 
 ```json
-<RequestId>5d6fa0bc-cc3**********</RequestId> {"RequestId":"5d6fa0bc-cc3**********","Message":"","TraceId":"","Data":"","Code":""}
+{"RequestId":"5d6fa0bc-cc3**********","Message":"","TraceId":"","Data":"","Code":""}
 ```
 
 ##### 1.1.13.3 DisableApplicationScalingRule
@@ -7095,9 +8427,13 @@ You can call the DisableApplicationScalingRule operation to disable an auto scal
 
 This operation uses only common request headers. For more information, see Common parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v1/eam/scale/disable_application_scaling_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7114,13 +8450,15 @@ PUT /pop/v1/eam/scale/disable_application_scaling_rule HTTP/1.1
 | RequestId | String | 8FAD132C-* | The unique ID of the request. |
 | TraceId | String | ae13688-* | The call chain ID of the request. |
 
+**Examples**
+
 Sample request
 
 ```json
 PUT /pop/v1/eam/scale/disable_application_scaling_rule HTTP/1.1 "AppId": "a23dc-*", "ScalingRuleName": "mem-85"
 ```
 
-Sample response
+`}` Sample response `JSON` format
 
 ```json
 {"RequestId":"8FAD132C-*","Message":"Invalid request parameters","TraceId":"ae13688-*","Data":"true","Code":"200"}
@@ -7134,9 +8472,13 @@ Enables a scaling rule for an application.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v1/eam/scale/enable_application_scaling_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7153,13 +8495,21 @@ PUT /pop/v1/eam/scale/enable_application_scaling_rule HTTP/1.1
 | RequestId | String | AE78* | The unique ID of the request. |
 | TraceId | String | ab202209* | The ID of the call chain. |
 
+**Examples**
+
 Request example
 
-```json
-PUT /pop/v1/eam/scale/enable_application_scaling_rule HTTP/1.1 "AppId": "", "ScalingRuleName": ""
+```
+PUT /pop/v1/eam/scale/enable_application_scaling_rule HTTP/1.1 Common request headers
 ```
 
-Successful response example
+`{`
+
+```json
+"AppId": "", "ScalingRuleName": ""
+```
+
+`}` Successful response example
 
 ```json
 {"RequestId":"AE78*","Message":"The application does not exist.","TraceId":"ab202209*","Data":"\"\"","Code":"200"}
@@ -7173,9 +8523,13 @@ Updates a scaling rule.
 
 This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 PUT /pop/v1/eam/scale/application_scaling_rule HTTP/1.1
 ```
+
+**Request parameters**
 
 | Name | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7196,7 +8550,7 @@ The trigger metadata. This parameter is a map in JSON format that contains key-v
 1. cron
 {"period":"weekly","dryRun":"false","timerInDay":{"atTime":"08:00","targetReplicas":2}, {"atTime":"20:00","targetReplicas":1},"timerInWeek":"Sat","Thu"} `period`: The period. Valid values: `daily`, `weekly`, and `monthly`. `dryRun`: If set to `false`, the system monitors and scales the application. If set to `true`, the system only monitors the application. `timerInDay`: Describes the daily scaling period. It specifies the time to start maintaining a specific number of replicas. `timerInWeek`: The day of the week for the cron expression, such as `Fri`.
 2. app_metric
-{\"metricName\":\"arms_appstat.incall_QPS\",\"dryRun\":\"false\",\"targetValAvg\":\"true\",\"targetAverageValue\":\"100\"} `metricName`: `arms_appstat.incall_QPS`: Queries per second (QPS). `arms_appstat.incall_rt`: Response time (RT). `arms_appstat.system_CPU`: CPU usage. `arms_appstat.system_MEM`: Memory usage. `dryRun`: Same as for the `cron` type. `targetValAvg`: Specifies whether to calculate the average value. A value of `true` indicates that the average is calculated, while a value of `false` indicates that it is not. Set this parameter to `true` only for QPS. For all other metrics, set it to `false`. `targetAverageValue`/`targetValue`: Use `targetAverageValue` if `targetValAvg` is `true`. Use `targetValue` if `targetValAvg` is `false`. */ String metadata;
+{\"metricName\":\"arms_appstat.incall_QPS\",\"dryRun\":\"false\",\"targetValAvg\":\"true\",\"targetAverageValue\":\"100\"} `metricName`: `arms_appstat.incall_QPS`: Queries per second (QPS). `arms_appstat.incall_rt`: Response time (RT). `arms_appstat.system_CPU`: CPU usage. `arms_appstat.system_MEM`: Memory usage. `dryRun`: Same as for the `cron` type. `targetValAvg`: Specifies whether to calculate the average value. A value of `true` indicates that the average is calculated, while a value of `false` indicates that it is not. Set this parameter to `true` only for QPS. For all other metrics, set it to `false`. `targetAverageValue`/`targetValue`: Use `targetAverageValue` if `targetValAvg` is `true`. Use `targetValue` if `targetValAvg` is `false`. */ String metadata; } }
 
 **Response data**
 
@@ -7210,13 +8564,21 @@ The trigger metadata. This parameter is a map in JSON format that contains key-v
 | RequestId | String | ABE0198-* | The unique ID of the request. |
 | TraceId | String | ab20220917* | The call chain ID of the request. |
 
+**Examples**
+
 Request example
 
-```json
-PUT /pop/v1/eam/scale/application_scaling_rule HTTP/1.1 "AppId": "", "ScalingRuleMetric": "", "ScalingRuleName": "", "ScalingRuleType": ""
+```
+PUT /pop/v1/eam/scale/application_scaling_rule HTTP/1.1 Common request headers
 ```
 
-Response example Format: `JSON`
+`{`
+
+```json
+"AppId": "", "ScalingRuleMetric": "", "ScalingRuleName": "", "ScalingRuleType": ""
+```
+
+`}` Response example Format: `JSON`
 
 ```json
 {"RequestId":"ABE0198-*","Message":"The parameter is invalid.","TraceId":"ab20220917*","Data":"\" {\\\"maxReplicas\\\":3,\\\"minReplicas\\\":1,\\\"metrics\\\": [{\\\"metricType\\\":\\\"CPU\\\",\\\"metricTargetAverageUtilization\\\":20}, {\\\"metricType\\\":\\\"MEMORY\\\",\\\"metricTargetAverageUtilization\\\":30}, {\\\"metricType\\\":\\\"tcpActiveConn\\\",\\\"metricTargetAverageUtilization\\\":20}, {\\\"metricType\\\":\\\"SLB_QPS\\\",\\\"MetricTargetAverageUtilization\\\":25,\\\"SlbProject\\\":\\\"aliyun-fc-cn-han gzhou-d95881d9-5d3c-5f26-a6b8-************\\\",\\\"SlbLogstore\\\":\\\"function-log\\\",\\\"Vport\\\":\\\"80\\\"},{\\ \"metricType\\\":\\\"SLB_RT\\\",\\\"MetricTargetAverageUtilization\\\":35,\\\"SlbProject\\\":\\\"aliyun-fc-cn-hangzho u-d95881d9-5d3c-5f26-a6b8-************\\\",\\\"SlbLogstore\\\":\\\"functionlog\\\",\\\"Vport\\\":\\\"80\\\"}],\\\"scaleUpRules\\\": {\\\"step\\\":\\\"100\\\",\\\"disabled\\\":false,\\\"stabilizationWindowSeconds\\\":0},\\\"scaleDownRules\\\":{\\\"st ep\\\":\\\"100\\\",\\\"disabled\\\":false,\\\"stabilizationWindowSeconds\\\":300}}\"","Code":"200"}
@@ -7230,9 +8592,13 @@ Call the DescribeApplicationScalingRules operation to retrieve a list of Auto Sc
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request syntax**
+
 ```
 GET /pop/v1/eam/scale/application_scaling_rules HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Location | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7247,6 +8613,8 @@ GET /pop/v1/eam/scale/application_scaling_rules HTTP/1.1
 | RequestId | String | AEC870*** | The ID of the request. |
 | TraceId | String | ae202209**** | The ID of the call chain. |
 | Data | String | " {\"CurrentPage\":1,\"PageS ize\":10,\"TotalSize\":20,\"R esult\": [{\"UpdateTime\":2321232 3123,\"CreateTime\":2321 2323123,\"AppId\":\"78194 c76-3dca-418e-a263- cccd1ab4****\",\"LastDisab leTime\":23212323123,\"M axReplicas\":1,\"ScaleRule Enabled\":true,\"ScaleRule Type\":\"trigger\",\"MinRepl icas\":1,\"ScaleRuleName\" :\"cpu-trigger\",\"Metric\": {\"MinReplicas\":1,\"MaxRe plicas\":1,\"Metrics\": [{\"MetricTargetAverageUt ilization\":1,\"MetricType\": \"asd\"}]},\"Trigger\": {\"MinReplicas\":1,\"MaxRe plicas\":122,\"Triggers\": [{\"Type\":\"cron\",\"MetaD ata\":\" {\\\"dryRun\\\":true}\",\"Na me\":\"cron- trigger\"}]}}]}" | The list of Auto Scaling rules. |
+
+**Examples**
 
 Sample request
 
@@ -7265,7 +8633,7 @@ Sample response
  "Code":200
 ```
 
-erence
+`}` erence
 
 ## 2 SDK reference
 
@@ -7375,10 +8743,17 @@ ll failed. For more information, see the list of error codes.
                 for (DeployGroup deployGroup : deployGroups) {
                     System.out.println(deployGroup.getGroupName());
                     System.out.println(deployGroup.getGroupId());
+```
+
+`}` `}`
+
+```java
         } else {
             // Print the cause of the error.
             System.out.println(response.getMessage());
 ```
+
+`}` `}`
 
 #### 2.1.2 User manual
 
@@ -7425,13 +8800,18 @@ ListApplicationRequestResponse response; try {
     response = client.getAcsResponse(request);
     for (ListApplicationRequestResponse.Instance instance:response.getInstances()) {
         System.out.println(instance.getPublicIpAddress());
+```
+
+`}`
+
+```
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
 ```
 
-All the returned fields are deserialized into the response. You can directly call `response.getXXX()` to retrieve the response fields.
+`}` All the returned fields are deserialized into the response. You can directly call `response.getXXX()` to retrieve the response fields.
 
 ```
 instanceStatus := response.getStatus()
@@ -7471,6 +8851,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 ##### 2.1.2.5 Common errors
 

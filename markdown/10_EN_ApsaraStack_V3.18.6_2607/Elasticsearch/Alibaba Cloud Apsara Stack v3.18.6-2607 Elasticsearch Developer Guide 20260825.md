@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 177
 source_pdf: "42c3cf441a6bfee2_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20Developer%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825
@@ -150,13 +150,18 @@ ESTful APIs
 
 Run the following command to count the number of documents in an Elasticsearch cluster.
 
-```json
+```bash
 curl -XGET 'http://localhost:9200/_count?pretty' -d '
+```
+
+`{`
+
+```json
   "query": {
     "match_all": {}
 ```
 
-`}'` The following result is returned.
+`}` `}'` The following result is returned. `{`
 
 ```json
     "count" : 0,
@@ -166,23 +171,33 @@ curl -XGET 'http://localhost:9200/_count?pretty' -d '
         "failed" : 0
 ```
 
-ESTful APIs Use `curl -i` to display the HTTP request header. For example, `curl -i -XGET` `'localhost:9200/'` . The following example shows a complete request.
+`}` `}` ESTful APIs Use `curl -i` to display the HTTP request header. For example, `curl -i -XGET` `'localhost:9200/'` . The following example shows a complete request.
 
-```json
+```bash
 curl -i -XGET 'localhost:9200/_count?pretty' -d '
-    "query": {
-        "match_all": {}
 ```
 
-`}'` The following example shows a shorthand request.
+`{`
 
 ```json
-GET /_count
     "query": {
         "match_all": {}
 ```
 
-he Python API
+`}` `}'` The following example shows a shorthand request.
+
+```
+GET /_count
+```
+
+`{`
+
+```json
+    "query": {
+        "match_all": {}
+```
+
+`}` `}` he Python API
 
 ## 2 Interact using the Python API
 
@@ -308,6 +323,11 @@ doc = {
     'author': 'kimchy',
     'text': 'Elasticsearch: cool. bonsai cool.',
     'timestamp': datetime.now(),
+```
+
+`}`
+
+```python
 res = es.index(index="test-index", doc_type='_doc', id=1, body=doc) print(res['result'])
 # Retrieve the document
 res = es.get(index="test-index", doc_type='_doc', id=1) print(res['_source'])
@@ -330,6 +350,11 @@ agg_body = {
         "popular_tags": {
             "terms": {
                 "field": "tags.keyword"
+```
+
+`}` `}` `}` `}`
+
+```python
 res = es.search(index="my-index", body=agg_body) for bucket in res['aggregations']['popular_tags']['buckets']:
     print(bucket['key'], bucket['doc_count'])
 ```
@@ -369,6 +394,11 @@ from datetime import datetime from elasticsearch import Elasticsearch, exception
                     "title": {"type": "text"},
                     "content": {"type": "text"},
                     "timestamp": {"type": "date"}
+```
+
+`}` `}` `}`
+
+```python
         try:
             if not self.es_client.indices.exists(index=self.index_name):
                 response = self.es_client.indices.create(index=self.index_name,
@@ -481,6 +511,11 @@ he Python API
             'title': 'Python Elasticsearch Demo',
             'content': 'This is an example of accessing Elasticsearch using Python',
             'timestamp': datetime.now()
+```
+
+`}`
+
+```json
         es_client.add_document('1', sample_doc)
         # Retrieve a document
         doc = es_client.get_document('1')
@@ -490,6 +525,11 @@ he Python API
             "query": {
                 "match": {
                     "title": "Python"
+```
+
+`}` `}` `}`
+
+```python
         results = es_client.search_documents(query)
         if results:
             print("Number of search results:", results['hits']['total']['value'])
@@ -587,6 +627,8 @@ String(encodedBytes))};
    return new RestHighLevelClient(builder);
 ```
 
+`}`
+
 #### 2.6.2 Create an index
 
 This topic describes how to create an index by using the Java API.
@@ -670,6 +712,8 @@ String(encodedBytes))};
   return builder.build();
 ```
 
+`}`
+
 **Example of creating an index in JSON form**
 
 ```
@@ -687,10 +731,22 @@ public String createIndex(){
         Response response = client.performRequest("PUT", "/index_name",
 Collections.emptyMap(), entity);
         return response.toString();
+```
+
+`}`
+
+```
     catch (IOException e) {
         e.printStackTrace();
+```
+
+`}`
+
+```
     return "request failed";
 ```
+
+`}`
 
 **Example of creating an index in Map form**
 
@@ -709,10 +765,22 @@ pe.APPLICATION_JSON);
     Response response = client.performRequest("PUT", "/index_name",
 Collections.emptyMap(), entity);
     return response.toString();
+```
+
+`}`
+
+```
   catch (IOException e) {
     e.printStackTrace();
+```
+
+`}`
+
+```
   return "request failed";
 ```
+
+`}`
 
 #### 2.6.3 Write data
 
@@ -854,6 +922,8 @@ String(encodedBytes))};
   return builder.build();
 ```
 
+`}`
+
 **Example of deleting an index**
 
 ```
@@ -862,10 +932,22 @@ public String deleteIndex(){
         Response response = client.performRequest("DELETE", "/index_name",
 Collections.emptyMap());
         return response.toString();
+```
+
+`}`
+
+```
     catch (IOException e) {
         e.printStackTrace();
+```
+
+`}`
+
+```
     return "request failed";
 ```
+
+`}`
 
 ## 3 Interact with OpenAPI
 
@@ -987,7 +1069,7 @@ iii. On the page that appears, click **View Current Role Policy**. In the **View
 > Replace <yourRoleArn> with your actual RAM role.
 > Replace "sts.aliyuns.com" with the actual STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Replace the values with your actual region ID, AccessKey ID, and AccessKey sec
@@ -1007,6 +1089,11 @@ ret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual STS endpoint. The general format is
@@ -1032,9 +1119,15 @@ am Role ARN obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey triplet to call an API operation of a cloud product. The following
 code provides an example on how to call an API operation of a Elasticsearch
 
@@ -1092,6 +1185,8 @@ tained in the previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 #### 3.2.4 Obtain the values of common headers
 
@@ -1234,7 +1329,7 @@ resources.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-ROA calls. Sample API information: Product (Elasticsearch) Interface (GetNamespaceList) Version (2016-06-07). Call the following example:
+`}` `}` `}` ROA calls. Sample API information: Product (Elasticsearch) Interface (GetNamespaceList) Version (2016-06-07). Call the following example:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -1341,6 +1436,8 @@ application/json,
             e.printStackTrace();
 ```
 
+`}` `}` `}`
+
 > **Important:** When you use HTTPS to access OpenAPI operations, the SDK enables SSL/TLS certificate verification by default. If your code environment does not have a certificate environment, the certificate verification fails.
 > To ensure communication security in the production environment, we recommend that you keep it enabled. If certificate verification must be ignored in the test environment, you can set the following parameters:
 
@@ -1408,10 +1505,15 @@ V3.15.0.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-Sample API information for ROA calls: Product (Elasticsearch) Interface (GetNamespaceList) Version (2016-06-07). Call the following example:
+`}` Sample API information for ROA calls: Product (Elasticsearch) Interface (GetNamespaceList) Version (2016-06-07). Call the following example:
 
 ```java
 package main import (
@@ -1430,6 +1532,11 @@ func main() {
         "<yourAccessKeySecret>") // Replace the value with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "GET"
     request.Domain = "elasticsearch.aliyuncs.com" // The URL of the request. This is an
@@ -1465,6 +1572,11 @@ application/json, data is transferred by using the following methods:
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
@@ -1487,7 +1599,7 @@ variable.
 ent variable.
 ```
 
-Method 2: Configure a proxy on the client. Sample code:
+`}` Method 2: Configure a proxy on the client. Sample code:
 
 ```
 // The proxy that is configured on the client takes precedence over the proxy that is configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -1721,9 +1833,14 @@ The response contains only the parameters listed in the preceding table. Other p
 
 Sample request
 
-```json
+```
 POST /openapi/instances HTTP/1.1
 ##body
+```
+
+`{`
+
+```json
   "region": "cn-qingdao-env66-d01",
   "zoneCount": 1,
   "networkConfig": {
@@ -1759,7 +1876,7 @@ POST /openapi/instances HTTP/1.1
     "defaultType": true
 ```
 
-Example of a successful response `JSON` format
+`}` `}` Example of a successful response `JSON` format
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
@@ -1800,7 +1917,7 @@ Example of a successful response `JSON` format
         "instanceCategory": "x-pack"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -1870,7 +1987,7 @@ Request example
 GET /openapi/listZones HTTP/1.1
 ```
 
-Successful response example `JSON` format
+Successful response example `JSON` format `{`
 
 ```json
   "Result": [
@@ -1884,7 +2001,7 @@ Successful response example `JSON` format
   "RequestId": "2C1B46F2-D827-4C05-B8C2-5A823EC3C306"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Result>cn-hangzhou-a</Result> <Result>cn-hangzhou-b</Result> <RequestId>2C1B46F2-D827-4C05-B8C2-5A823EC3C306</RequestId>
@@ -1937,19 +2054,29 @@ Sample success response `JSON` format
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":[
+```
+
+`{`
+
+```json
    "app":"elasticsearch",
    "info":[
+```
+
+`{`
+
+```json
      "roles":"[worker,master]",
      "zoneName":"es-cn-xxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "zoneNum":"3"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -1995,14 +2122,14 @@ Request example
 GET /openapi/networkType HTTP/1.1
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
   "RequestId": "FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result": ["singleTunnel"]
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>singleTunnel</Result>
@@ -2051,14 +2178,14 @@ Request example
 GET /openapi/listEsVersions HTTP/1.1 &recommend=es-cn-xxx
 ```
 
-Successful response `JSON` format
+Successful response `JSON` format `{`
 
 ```json
     "RequestId": "44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF",
     "Result": ["6.7", "7.10"]
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF</RequestId> <Result>6.7</Result> <Result>7.10</Result>
@@ -2120,7 +2247,7 @@ Sample success response `JSON` format
   "defaultType":true
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -2171,14 +2298,14 @@ Request Example
 GET /openapi/assist/actions/[Node]-availiable-specs HTTP/1.1 &node=node
 ```
 
-Normal Response Example `JSON` format
+Normal Response Example `JSON` format `{`
 
 ```json
  "RequestId":"F99407AB-2FA9-489E-A259-40CF6DCC47D9",
  "Result":"["2C 4G"]"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF</RequestId> <Result>2C 4G</Result>
@@ -2234,11 +2361,16 @@ Request example
 GET /openapi/assist/actions/listStorageClass HTTP/1.1 &role=data
 ```
 
-Normal response example `JSON` format
+Normal response example `JSON` format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":[
+```
+
+`{`
+
+```json
    "shared":false,
    "storageClassName":"fast-disk",
    "minSize":10,
@@ -2246,7 +2378,7 @@ Normal response example `JSON` format
    "order":0
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -2365,30 +2497,45 @@ Request example
 GET /openapi/instances HTTP/1.1
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": [
+```
+
+`{`
+
+```json
             "clientNodeConfiguration": {},
             "clusterTasks": [
+```
+
+`{`
+
+```json
                     "taskType": "CLUSTER_CREATE",
                     "stateType": "OK",
                     "startTime": 1665457395125,
                     "nodeInfoList": []
 ```
 
-`],`
+`}` `],`
 
 ```json
             "zoneInfos": [
+```
+
+`{`
+
+```json
                     "clusterVswitchId": "vsw-8ftehwy5aft5ohffn****",
                     "zoneId": "cn-wulan-env230-amtest230001-a",
                     "clusterVpcId": "vpc-8ftt3y3kh7yyubb1l****",
                     "status": "NORMAL"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "kibanaSlbAddress": "10.230.61.***",
@@ -2466,7 +2613,7 @@ bingo.intra.env230.shuguang.com",
                 "defaultType": true
 ```
 
-`]` `XML` format
+`}` `}` `]` `}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -2649,7 +2796,7 @@ Request example
 GET /openapi/instances/[InstanceId] HTTP/1.1 &InstanceId=es-cn-s9dsk3k4k****
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
  "clientNodeConfiguration":{
@@ -2671,12 +2818,17 @@ Response example `JSON` format
 
 ```json
  "clusterTasks":[
+```
+
+`{`
+
+```json
    "taskType":"CLUSTER_CREATE",
    "stateType":"OK",
    "startTime":1665457395125
 ```
 
-`],`
+`}` `],`
 
 ```json
  "networkConfig":{
@@ -2734,7 +2886,7 @@ Response example `JSON` format
  "updatedAt":"2022-10-11T09:44:29.625Z"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -2844,11 +2996,17 @@ POST /openapi/instances/[InstanceId]/actions/restart HTTP/1.1
 
 Request example
 
-```json
-POST /openapi/instances/[InstanceId]/actions/restart HTTP/1.1 "InstanceId":"es-cn-xxx"
+```
+POST /openapi/instances/[InstanceId]/actions/restart HTTP/1.1
 ```
 
-Successful response example `JSON` format
+`{`
+
+```json
+"InstanceId":"es-cn-xxx"
+```
+
+`}` Successful response example `JSON` format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
@@ -2856,7 +3014,7 @@ Successful response example `JSON` format
   "instanceId":"es-cn-xxx"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -2923,8 +3081,13 @@ The response is guaranteed to include only the parameters that are described in 
 
 Request example
 
-```json
+```
 POST /openapi/instances // Body
+```
+
+`{`
+
+```json
   "region": "cn-qingdao-env66-d01",
   "zoneCount": 1,
   "networkConfig": {
@@ -2960,7 +3123,7 @@ POST /openapi/instances // Body
     "defaultType": true
 ```
 
-Sample normal response `JSON` format
+`}` `}` Sample normal response `JSON` format
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
@@ -3001,7 +3164,7 @@ Sample normal response `JSON` format
         "instanceCategory": "x-pack"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -3128,7 +3291,7 @@ Request example
 DELETE /openapi/instances/[InstanceId] HTTP/1.1 &InstanceId=es-cn-xxxx
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
@@ -3145,7 +3308,7 @@ Response example `JSON` format
                 "nodeInfoList": []
 ```
 
-`],`
+`}` `],`
 
 ```json
         "kibanaSlbAddress": "10.230.61.226",
@@ -3218,7 +3381,7 @@ bingo.intra.env230.shuguang.com",
             "defaultType": true
 ```
 
-`XML` format
+`}` `}` `}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -3329,14 +3492,14 @@ Sample request
 GET /openapi/instances/[InstanceId]/elasticsearch-health HTTP/1.1 &InstanceId=es-cn-xxxxxxxxxxx
 ```
 
-Sample response `JSON` format
+Sample response `JSON` format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":"GREEN"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>GREEN</Result>
@@ -3389,7 +3552,7 @@ Request Example
 POST /openapi/instances/[InstanceId]/description HTTP/1.1 &InstanceId=es-cn-31am74f06w73n**** &description=test
 ```
 
-Normal Response Example `JSON` format
+Normal Response Example `JSON` format `{`
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
@@ -3430,7 +3593,7 @@ Normal Response Example `JSON` format
         "instanceCategory": "x-pack"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -3502,20 +3665,25 @@ POST /openapi/instances/[InstanceId]/admin-pwd HTTP/1.1
 
 Request example
 
-```json
+```
 POST /openapi/instances/es-cn-xxx/admin-pwd
 ## Body
+```
+
+`{`
+
+```json
   "esAdminPassword": "Admin@ga****"
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format `{`
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>true</Result>
@@ -3580,6 +3748,11 @@ Response examples `JSON` format
 ```json
  "RequestId":"F99407AB-2FA9-489E-A259-40CF6DCC47D9",
  "Result":[
+```
+
+`{`
+
+```json
    "port":9200,
    "processState":"Running",
    "host":"es-cn-xz6f5gmrr1q5841ti-****-0",
@@ -3589,7 +3762,7 @@ Response examples `JSON` format
    "workTime":"0 days 19 hours 31 minutes"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>F99407AB-2FA9-489E-A259-40CF6DCC47D9</RequestId> <Result>
@@ -3639,7 +3812,7 @@ Sample request
 GET /openapi/instances/[InstanceId]/pod-info/[PodName] HTTP/1.1 &InstanceId=es-cn-xxx &PodName=es-cn-xxx-data-0
 ```
 
-Sample successful response `JSON` format
+Sample successful response `JSON` format `{`
 
 ```json
     "RequestId": "ADCC3CFD-5E19-4AE7-AFFA-DD716C916145",
@@ -3651,7 +3824,7 @@ Sample successful response `JSON` format
         "status": {}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>ADCC3CFD-5E19-4AE7-AFFA-DD716C916145</RequestId> <Result>
@@ -3724,20 +3897,25 @@ Sample requests
 PATCH|POST /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "52F6650B-307A-4312-A303-7C621145****",
   "Result": {
       "clientNodeConfiguration": {},
       "clusterTasks": [
+```
+
+`{`
+
+```json
               "taskType": "ES_CONFIG_MODIFY",
               "stateType": "OK",
               "startTime": 1739321868248,
               "nodeInfoList": []
 ```
 
-`},`
+`},` `{`
 
 ```json
               "taskType": "CLUSTER_CREATE",
@@ -3746,11 +3924,16 @@ Sample success responses `JSON` format
               "nodeInfoList": []
 ```
 
-`],`
+`}` `],`
 
 ```json
       "publicIpWhitelist": [],
       "zoneInfos": [
+```
+
+`{`
+
+```json
               "zoneId": "cn-wulan-env***-amtest******-a",
               "status": "NORMAL"
 ```
@@ -3784,12 +3967,17 @@ Sample success responses `JSON` format
 ```json
       "dictList": [],
       "extendConfigs": [
+```
+
+`{`
+
+```json
               "maintainEndTime": "06:00Z",
               "maintainStartTime": "02:00Z",
               "configType": "maintainTime"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "ikHotDicts": [],
@@ -3801,13 +3989,18 @@ Sample success responses `JSON` format
       "force": false,
       "kibanaConfiguration": {},
       "esAclWhiteIpList": [
+```
+
+`{`
+
+```json
               "whiteIpType": "PRIVATE_ES",
               "vpcId": "vpc-4defdx20iplmzsgtd****",
               "ips": [
                   "192.XX.XX.1/2"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
       "advancedDedicateMaster": false,
@@ -3883,7 +4076,7 @@ Sample success responses `JSON` format
       "advancedSetting": {}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C621145****</RequestId> <Result>
@@ -4054,11 +4247,16 @@ Sample requests
 GET /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "52F6650B-307A-4312-A303-7C621145****",
   "Result":[
+```
+
+`{`
+
+```json
         "key": "apack.accesslog.enabled",
         "value": true,
         "keyDesc": "The access log audit feature is supported only in 7.10.0",
@@ -4071,7 +4269,7 @@ Sample success responses `JSON` format
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "apack.accesslog.search.enabled",
@@ -4087,7 +4285,7 @@ Sample success responses `JSON` format
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "thread_pool.write.queue_size",
@@ -4113,7 +4311,7 @@ nd load of the cluster. Default value: 1000",
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "cluster.routing.allocation.disk.watermark.flood_stage",
@@ -4125,7 +4323,7 @@ vailable disk space) such as 500MB and 100g",
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "action.auto_create_index",
@@ -4141,7 +4339,7 @@ there is no corresponding index after a new document is received",
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "action.destructive_requires_name",
@@ -4156,7 +4354,7 @@ there is no corresponding index after a new document is received",
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "cluster.routing.allocation.disk.watermark.low",
@@ -4168,7 +4366,7 @@ vailable disk space) such as 500MB and 100g",
         "needRestart": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "cluster.routing.allocation.disk.watermark.high",
@@ -4183,7 +4381,7 @@ vailable disk space) such as 500MB and 100g",
         "needRestart": true
 ```
 
-`]` `XML` format
+`]` `}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C621145****</RequestId> <Result>
@@ -4304,14 +4502,14 @@ Request example
 GET /openapi/instances/[InstanceId]/pod-logs/[PodName] HTTP/1.1 &InstanceId=es-cn-6ja1ro4jt000c**** &PodName=pod-name &<Common request parameters>
 ```
 
-Example of a successful response `JSON` format
+Example of a successful response `JSON` format `{`
 
 ```json
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":"es-cn-6ja1ro4jt000c****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>es-cn-6ja1ro4jt000c****</Result>
@@ -4355,6 +4553,8 @@ The request body must include the esConfig parameter to specify the YML paramete
         "thread_pool.write.queue_size": 500
 ```
 
+`}` `}`
+
 **Response data**
 
 | Parameter Name | Type | Example | Description |
@@ -4371,13 +4571,13 @@ Sample request
 PATCH|POST /openapi/instances/[InstanceId]/instance-settings HTTP/1.1 &InstanceId=es-cn-nif1q9o8r0008**** &Common request parameters
 ```
 
-Sample success response `JSON` format
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId>
@@ -4423,18 +4623,24 @@ POST /openapi/instances/[InstanceId]/snapshots HTTP/1.1
 
 Request example
 
-```json
-POST /openapi/instances/[InstanceId]/snapshots HTTP/1.1 "InstanceId":"es-cn-xxx"
+```
+POST /openapi/instances/[InstanceId]/snapshots HTTP/1.1
 ```
 
-Normal response example `JSON` format
+`{`
+
+```json
+"InstanceId":"es-cn-xxx"
+```
+
+`}` Normal response example `JSON` format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>true</Result>
@@ -4494,18 +4700,23 @@ Sample request
 GET /openapi/instances/[InstanceId]/snapshots HTTP/1.1 &InstanceId=es-cn-xxx
 ```
 
-Sample success response `JSON` format
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"E1EB6B19-DF6F-4F15-A34B-9B1A2D5E3BEF",
  "Result":[
+```
+
+`{`
+
+```json
    "startTime":156848066,
    "id":"snapshot-1",
    "endTime":358794445,
    "status":"SUCCESS"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>E1EB6B19-DF6F-4F15-A34B-9B1A2D5E3BEF</RequestId> <Result>
@@ -4567,7 +4778,7 @@ Request Example
 GET /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1 &InstanceId=es-cn-xxx
 ```
 
-Normal Response Example `JSON` format
+Normal Response Example `JSON` format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
@@ -4577,7 +4788,7 @@ Normal Response Example `JSON` format
   "repoName":"backup"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -4636,21 +4847,31 @@ Response example `JSON` format
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":[
+```
+
+`{`
+
+```json
    "name":"test-bucket",
    "settings":[
+```
+
+`{`
+
+```json
      "bucket":"test-bucket",
      "access_key_id":"xxxxx",
      "endpoint":"oss-cn-wulan-enxxxxxx.shuguang.com",
      "secret_access_key":"xxxxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "type":"oss"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -4726,7 +4947,7 @@ Response example `JSON` format
   "type":"oss"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -4770,12 +4991,14 @@ Specify the following parameters in the request body to update the data backup c
 | quartzRegex | String | No | 0 0 01 ? * * * | The start time of the automatic backup. This parameter is required when enable is set to true. |
 | enable | Boolean | Yes | true | Specifies whether to enable scheduled backups. |
 
-The following code provides an example.
+The following code provides an example. `{`
 
 ```json
     "quartzRegex":"0 0 01 ? * * *",
     "enable":true
 ```
+
+`}`
 
 **Response data**
 
@@ -4803,7 +5026,7 @@ Sample response `JSON` format
   "enable":true
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>
@@ -4868,7 +5091,7 @@ Request example
 GET /openapi/instances/[InstanceId]/dicts HTTP/1.1 &InstanceId=es-cn-xxx &analyzerType=ALI_WS
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
     "RequestId": "44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF",
@@ -4880,7 +5103,7 @@ Response example `JSON` format
       "name": "sync"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF</RequestId> <Result>
@@ -4953,7 +5176,7 @@ Sample success response `JSON` format
         "etag":"ESOJAPJJE93"
 ```
 
-`XML` format
+`}` `}` `}` `XML` format
 
 ```xml
 <RequestId>44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF</RequestId> <Result>
@@ -5026,25 +5249,41 @@ PUT /openapi/instances/[InstanceId]/dict HTTP/1.1
 
 Sample request
 
-```json
-PUT /openapi/instances/[InstanceId]/dict HTTP/1.1 "InstanceId":"es-cn-xxx", "body":""
+```
+PUT /openapi/instances/[InstanceId]/dict HTTP/1.1
 ```
 
-Sample normal response `JSON` format
+`{`
+
+```json
+"InstanceId":"es-cn-xxx", "body":""
+```
+
+`}` Sample normal response `JSON` format `{`
 
 ```json
  "RequestId":"5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1DE9E",
  "Result":[
+```
+
+`{`
+
+```json
    "fileSize":220,
    "sourceType":"OSS",
    "name":"deploy_0.dic",
    "ossObject":[
+```
+
+`{`
+
+```json
      "bucketName":"jcj-oss-new",
      "etag":"65B94FC97AE79A567791D9A5689C5038",
      "key":"es_hot_dic/ik_main.dic"
 ```
 
-`]` `]` `XML` format
+`}` `]` `}` `]` `}` `XML` format
 
 ```xml
 <RequestId>5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1DE9E</RequestId> <Result>
@@ -5118,7 +5357,7 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
 # Request body
 ```
 
-`[`
+`[` `{`
 
 ```json
         "name":"deploy_0.dic",
@@ -5133,16 +5372,21 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
         "sourceType":"OSS"
 ```
 
-`]` Successful response example `JSON` format
+`}` `]` Successful response example `JSON` format `{`
 
 ```json
     "Result":[
+```
+
+`{`
+
+```json
             "name":"deploy_0.dic",
             "fileSize":220,
             "sourceType":"OSS"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name":"SYSTEM_MAIN.dic",
@@ -5150,7 +5394,7 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
             "sourceType":"ORIGIN"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name":"SYSTEM_STOPWORD.dic",
@@ -5158,13 +5402,13 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
             "sourceType":"ORIGIN"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"7C5622CC-B312-426F-85AA-B0271A009E0C"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Result>
@@ -5247,7 +5491,7 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
 #body
 ```
 
-`[`
+`[` `{`
 
 ```json
         "name":"deploy_0.dic",
@@ -5262,7 +5506,7 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
         "sourceType":"OSS"
 ```
 
-`]` Sample normal response `JSON` format
+`}` `]` Sample normal response `JSON` format
 
 ```json
     "Result":[
@@ -5271,7 +5515,7 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
             "sourceType":"OSS"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name":"SYSTEM_MAIN.dic",
@@ -5279,7 +5523,7 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
             "sourceType":"ORIGIN"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name":"SYSTEM_STOPWORD.dic",
@@ -5287,13 +5531,13 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
             "sourceType":"ORIGIN"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"7C5622CC-B312-426F-85AA-B0271A009E0C",
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Result>
@@ -5384,6 +5628,11 @@ Sample success response `JSON` format
 
 ```json
     "Result":[
+```
+
+`{`
+
+```json
     "name":"analysis-ik",
     "description":"IK analysis plug-in for Elasticsearch.",
     "state":"INSTALLED",
@@ -5391,7 +5640,7 @@ Sample success response `JSON` format
     "configMutable":false
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>5A5D8E74-565C-43DC-B031-29289FA9BAD6</RequestId> <Headers>
@@ -5462,7 +5711,7 @@ Request example
 GET /openapi/instances/[InstanceId]/kibana-plugins HTTP/1.1 &InstanceId=es-cn-oew1q8bev0002**** &<Common request parameters>
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
@@ -5474,6 +5723,11 @@ Response example `JSON` format
 
 ```json
  "Result":[
+```
+
+`{`
+
+```json
    "specificationUrl":"https://xxxx.html",
    "name":"test",
    "description":"test",
@@ -5482,7 +5736,7 @@ Response example `JSON` format
    "configMutable":"true"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Headers>
@@ -5539,18 +5793,24 @@ POST /openapi/instances/[InstanceId]/kibana-plugins/system/actions/install HTTP/
 
 Request example
 
-```json
-POST /openapi/instances/[InstanceId]/kibana-plugins/system/actions/install HTTP/1.1 "InstanceId":"es-cn-n6w1o1x0w00******"
+```
+POST /openapi/instances/[InstanceId]/kibana-plugins/system/actions/install HTTP/1.1
 ```
 
-Response example `JSON` format
+`{`
+
+```json
+"InstanceId":"es-cn-n6w1o1x0w00******"
+```
+
+`}` Response example `JSON` format `{`
 
 ```json
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":["bsearch_querybuilder"]
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>[bsearch_querybuilder]</Result>
@@ -5593,14 +5853,14 @@ Request example
 POST /openapi/instances/[InstanceId]/kibana-plugins/actions/uninstall HTTP/1.1 "InstanceId":"es-cn-6ja1ro4jt000c****"
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format `{`
 
 ```json
  "RequestId":"5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****",
  "Result":"[\"bsearch_querybuilder\"]"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****</RequestId> <Result>[&quot;bsearch_querybuilder&quot;]</Result>
@@ -5651,18 +5911,24 @@ POST /openapi/instances/[InstanceId]/plugins/system/actions/install HTTP/1.1
 
 Request example
 
-```json
-POST /openapi/instances/[InstanceId]/plugins/system/actions/install HTTP/1.1 "InstanceId":"es-cn-xxx", "body":"[\"pluginName1\",\"pluginName2\"]"
+```
+POST /openapi/instances/[InstanceId]/plugins/system/actions/install HTTP/1.1
 ```
 
-Successful response example `JSON` format
+`{`
+
+```json
+"InstanceId":"es-cn-xxx", "body":"[\"pluginName1\",\"pluginName2\"]"
+```
+
+`}` Successful response example `JSON` format `{`
 
 ```json
     "Result": ["bsearch_querybuilder"],
     "RequestId": "5A5D8E74-565C-43DC-B031-29289FA9BAD6"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Result>bsearch_querybuilder</Result> <RequestId>5A5D8E74-565C-43DC-B031-29289FA9BAD6</RequestId>
@@ -5719,14 +5985,14 @@ POST /openapi/instances/[InstanceId]/plugins/user/actions/install HTTP/1.1
         "name2"
 ```
 
-`]` Successful response examples `JSON` format
+`]` `}` Successful response examples `JSON` format `{`
 
 ```json
     "Result": ["bsearch_querybuilder"],
     "RequestId": "5A5D8E74-565C-43DC-B031-29289FA9BAD6"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Result>bsearch_querybuilder</Result> <RequestId>5A5D8E74-565C-43DC-B031-29289FA9BAD6</RequestId>
@@ -5771,22 +6037,27 @@ POST /openapi/instances/[InstanceId]/plugins/actions/uninstall HTTP/1.1
 
 Request example
 
-```json
+```
 POST /openapi/instances/[InstanceId]/plugins/actions/uninstall HTTP/1.1
+```
+
+`{`
+
+```json
     "InstanceId": "es-cn-xxx",
     "body": [
         "pluginName1",
         "name2"
 ```
 
-`]` Sample responses `JSON` format
+`]` `}` Sample responses `JSON` format `{`
 
 ```json
     "Result": ["bsearch_querybuilder"],
     "RequestId": "5A5D8E74-565C-43DC-B031-29289FA9BAD6"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Result>bsearch_querybuilder</Result> <RequestId>5A5D8E74-565C-43DC-B031-29289FA9BAD6</RequestId>
@@ -5835,7 +6106,7 @@ Sample request
 GET /openapi/instances/[InstanceId]/config-files HTTP/1.1 &InstanceId=es-cn-xxx &pluginName=aliyun-knn
 ```
 
-Example of a successful response `JSON` format
+Example of a successful response `JSON` format `{`
 
 ```json
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
@@ -5843,7 +6114,7 @@ Example of a successful response `JSON` format
       "aliyun-knn":"text"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -5892,22 +6163,27 @@ POST /openapi/instances/[InstanceId]/config-files HTTP/1.1
 
 Sample request
 
-```json
+```
 POST /openapi/instances/[InstanceId]/config-files HTTP/1.1
+```
+
+`{`
+
+```json
   "InstanceId": "es-cn-xxx",
   "pluginName": "aliyun-knn",
   "fileName": "knn",
   "content": "xxxxx"
 ```
 
-Successful response example `JSON` format
+`}` Successful response example `JSON` format `{`
 
 ```json
   "RequestId": "FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>true</Result>
@@ -5963,14 +6239,14 @@ Request Example
 DELETE /openapi/instances/[InstanceId]/config-files HTTP/1.1 &InstanceId=es-cn-xxx &pluginName=aliyun-knn &fileName=knn
 ```
 
-Normal Response Example `JSON` Format
+Normal Response Example `JSON` Format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":true
 ```
 
-`XML` Format
+`}` `XML` Format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>true</Result>
@@ -6022,7 +6298,7 @@ Request example
 GET /openapi/instances/[InstanceId]/certificates HTTP/1.1 &instanceId=es-cn-xxxx
 ```
 
-Normal response example `JSON` format
+Normal response example `JSON` format `{`
 
 ```json
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
@@ -6031,7 +6307,7 @@ Normal response example `JSON` format
   "name":"test"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -6086,11 +6362,16 @@ Request example
 GET /openapi/instances/[InstanceId]/securitys HTTP/1.1 &instanceId=es-cn-xx
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
   "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result":[
+```
+
+`{`
+
+```json
         "userName": "fast-disk",
     "roles": ["aa","vv"],
         "ipWhitelist": ["127.0.0.1","192.***.1.1"],
@@ -6098,7 +6379,7 @@ Response example `JSON` format
       "builtIn": false
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -6156,14 +6437,14 @@ POST /openapi/instances/[InstanceId]/securitys HTTP/1.1
   "InstanceId": "es-cn-xxxxxxxx"
 ```
 
-Sample success response `JSON` format
+`}` Sample success response `JSON` format `{`
 
 ```json
   "RequestId": "FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>true</Result>
@@ -6229,14 +6510,14 @@ POST /openapi/instances/es-cn-xxxxx/actions/modify-acl-white-ips Content-Type:ap
        "192.XX.XX.188"
 ```
 
-`]` Sample success responses `JSON` format
+`]` `}` `}` Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Result":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Result>true</Result>
@@ -6284,14 +6565,14 @@ Sample requests
 POST /openapi/instances/[InstanceId]/actions/disable-https HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "RequestId": "52F6650B-307A-4312-A303-7C621145****",
   "Result": "es-cn-xxxxxxxx"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C621145****</RequestId> <Result>es-cn-xxxxxxxx</Result>
@@ -6339,14 +6620,14 @@ Sample requests
 POST /openapi/instances/[InstanceId]/actions/enable-https HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":"es-cn-xxxxxxxx"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>es-cn-xxxxxxxx</Result>
@@ -6409,7 +6690,7 @@ Sample request
 GET /openapi/global-features HTTP/1.1
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
   "RequestId": "52F6650B-307A-4312-A303-7C62114500A7",
@@ -6422,7 +6703,7 @@ Sample responses `JSON` format
        "esSupportApplyUpdate": true
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>
@@ -6550,6 +6831,8 @@ le in the preceding step.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Sample requests**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -6602,6 +6885,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 **Error codes**
 

@@ -5,7 +5,7 @@ doc_version: "20250421"
 pdf_pages: 205
 source_pdf: "5508daed61bcf25a_Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide 20250421.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20CloudMonitor%20User%20Guide%2020250421.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide
@@ -291,7 +291,11 @@ You can install the CloudMonitor agent on Elastic Compute Service (ECS) instance
 2. In the top navigation bar, choose **Products** > **Monitoring and O&M** > **CloudMonitor**.
 3. In the left-side navigation pane, click **Host Monitoring**.
 4. On the **Host Monitoring** page, select the ECS instances for which you want to install or
-upgrade the agent and click **Bulk install or upgrade plug-ins** in the lower-left corner of the instance list. You can only install the CloudMonitor agent for ECS instances that run the **Linux** and
+upgrade the agent and click **Bulk install or upgrade plug-ins** in the lower-left corner of the instance list.
+
+**Note**
+
+You can only install the CloudMonitor agent for ECS instances that run the **Linux** and
 **Windows** operating systems.
 5. In the message that appears, click **OK**.
 The installation or upgrade process takes approximately five minutes. After the agent changes from the **In Installation** state to the **In operation** state, the CloudMonitor agent is installed or upgraded.
@@ -392,6 +396,8 @@ This topic describes the metrics supported by each service. CloudMonitor checks 
 
 **Basic metrics**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_ecs_dashboard**.
 
 > Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
@@ -455,6 +461,8 @@ Set the **Namespace** parameter to **acs_ecs_dashboard**.
 
 **Disk-related metrics**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 15. Default value: 15. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Descriptio n |
@@ -504,6 +512,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS for SQL Server**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of a value in the range of 60 to 300. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -529,6 +539,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 | MemoryUtilization | % | MemoryUsage | userId and instanceId | The memory usage. |
 
 **ApsaraDB RDS for PostgreSQL**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of a value in the range of 60 to 300. Unit: seconds.
 
@@ -568,6 +580,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS for MySQL**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -600,6 +614,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS for PolarDB**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -625,6 +641,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 |---|---|---|---|---|
 
 **ApsaraDB RDS for PostgreSQL**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -664,6 +682,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 | PG cloud disk primary/stan _ dby delay | Second s | PG ESSD ReplicationL _ _ ag | userId and instanceId | The latency between the primary and secondary ApsaraDB RDS for PostgreSQL instances. |
 
 **Server Load Balancer (SLB)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_slb_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -730,6 +750,8 @@ Set the **Namespace** parameter to **acs_slb_dashboard**. Set the **Period** par
 | Failure rate of seven-tier back- end health check | % | SeventhFloorUnh ealthyServerRate | userId, instanceId, port, and vip | The percentage of backend ECS instances that fail to pass the health check at Layer 7. |
 
 **Object Storage Service (OSS)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_oss_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -819,6 +841,8 @@ Set the **Namespace** parameter to **acs_oss_dashboard**. Set the **Period** par
 
 **ApsaraDB for Redis (Old)**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -836,6 +860,8 @@ Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter
 | Used QPS | Count/s | UsedQPS | userId and instanceId | The number of used QPS. |
 
 **Tair (Redis OSS-compatible)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -906,6 +932,8 @@ Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter
 
 **ApsaraDB for MongoDB (Old)**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Basic metrics**
@@ -952,6 +980,8 @@ Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter
 | OpCounters for Update | Count | OpUpdate | userId, instanceId, and role | The number of Update operations. |
 
 **ApsaraDB for MongoDB (New)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1046,6 +1076,8 @@ Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter
 
 **AnalyticDB for PostgreSQL**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_hybriddb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Computing and storage-related metrics**
@@ -1138,6 +1170,8 @@ Set the **Namespace** parameter to **acs_hybriddb**. Set the **Period** paramete
 | [Reserved Storage] Local Data File Size | MB | adbpg local data di _ _ _ r size segment _ _ | instance id _ | The size of files in the nodes in the compute group. |
 
 **VPN Gateway**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1242,6 +1276,8 @@ Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to 
 
 **Data node-related metrics**
 
+**Note**
+
 The **Namespace** parameter to **acs_polarxsn_dashboard**. Set the **Period** parameter to an integer multiple of a value in the range of 60 to 300. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -1258,6 +1294,8 @@ The **Namespace** parameter to **acs_polarxsn_dashboard**. Set the **Period** pa
 | QPS of an ApsaraDB RDS for MySQL Instance (New) | Count/ s | MySQL QPS new _ _ | userId and instanceId | The number of queries per second on the MySQL data node. |
 
 **Elastic IP Address (EIP)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_vpc_eip**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1286,6 +1324,8 @@ Set the **Namespace** parameter to **acs_apigateway_dashboard**. Set the **Perio
 
 **Hologres**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_hologres**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Instance status-related metrics**
@@ -1313,6 +1353,8 @@ Set the **Namespace** parameter to **acs_hologres**. Set the **Period** paramete
 | Query QPS Detail | Count/s | query qps _ | instanceId, userId, and cmdType | The detailed QPS data. |
 
 **Tablestore**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_ots_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1501,6 +1543,8 @@ Set the **Namespace** parameter to **acs_rocketmq_dashboard**. Set the **Period*
 
 **PolarDB**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_polardb_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **PolarDB-M**
@@ -1545,6 +1589,8 @@ Set the **Namespace** parameter to **acs_polardb_dashboard**. Set the **Period**
 
 **Data Transmission Service (DTS)**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_dts_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console- based metric | Unit | API-based metric | Dimension | Description |
@@ -1567,6 +1613,8 @@ Set the **Namespace** parameter to **acs_blink**. Set the **Period** parameter t
 
 **MaxCompute**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_maxcompute_prepay**.
 
 > Set the **Period** parameter to an integer multiple of 300. Default value: 300. Unit: seconds.
@@ -1581,6 +1629,8 @@ Set the **Namespace** parameter to **acs_maxcompute_prepay**.
 | Number of files used by the project | Count | project used file _ _ _ number | instanceId | The number of files used by the project. |
 
 **Realtime Compute for Apache Flink**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_flink.**
 
@@ -2092,7 +2142,11 @@ You can create alert rules for cloud services that are connected to CloudMonitor
 
 **Background information**
 
-If you want to apply an alert rule to instances in an application group, make sure that the application group is created and the instances are added to the application group. For more information, see Create an application group and Manage application groups. During the validity period of an alert rule, CloudMonitor checks whether the metric values of cloud services exceed the specified thresholds at the default monitoring frequency. If a metric value exceeds the threshold, CloudMonitor sends alert notifications to the specified contacts or alert processing platforms. For ApsaraDB RDS that uses the old link, the monitoring frequency varies from every 60 to 300 seconds. For all other cloud services, the minimum monitoring frequency is set to once per minute.
+If you want to apply an alert rule to instances in an application group, make sure that the application group is created and the instances are added to the application group. For more information, see Create an application group and Manage application groups. During the validity period of an alert rule, CloudMonitor checks whether the metric values of cloud services exceed the specified thresholds at the default monitoring frequency. If a metric value exceeds the threshold, CloudMonitor sends alert notifications to the specified contacts or alert processing platforms.
+
+**Note**
+
+For ApsaraDB RDS that uses the old link, the monitoring frequency varies from every 60 to 300 seconds. For all other cloud services, the minimum monitoring frequency is set to once per minute.
 
 **Procedure**
 
@@ -2731,6 +2785,8 @@ The Event Monitoring module provides a unified portal for you to query and manag
 
 This topic describes the cloud services that are supported by CloudMonitor and their system events. For more information about the event metrics, see Event monitoring metrics of cloud services.
 
+**CloudMonitor**
+
 | Service | System event |
 |---|---|
 | CloudMonitor | Agent Status Stopped _ _ Agent Status Running _ _ |
@@ -3324,6 +3380,9 @@ In the basic information section, view the basic information about the metric fr
 **Creation time**.
 On the **Monitoring chart** tab, view the monitoring charts of the metric. You can view the monitoring data generated within the previous **1 hour**, **3 hours**, **6 hours**, **12 hours**, **1**
 **day**, **3 days**, **7 days**, and **14 days**, or **a custom time range**.
+
+**Note**
+
 You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule. On the **Alarm Rules** tab, view the alert rules of the metric.
 
 > **Note:** You can click **Create alarm rules** to create an alert rule. For more information, see Create an alert rule.

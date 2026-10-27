@@ -5,20 +5,292 @@ doc_version: "20260729"
 pdf_pages: 884
 source_pdf: "06_开发指南_enterprise-ascm-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/dide/zh/enterprise-ascm-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # DataWorks 开发指南
 
-DataWorks
+## 目录
 
-## API简介
+- 1 API简介
+- 2 准备工作
+  - 2.1 获取AccessKey
+- 3 通过POP网关调用专有云API
+- 4 OpenAPI参考
+    - 4.1.1 CreateProject
+    - 4.1.2 DeleteProject
+    - 4.1.3 BindProjectCalcEngines
+    - 4.1.4 AddProjectMemberToRole
+    - 4.1.5 CreateConnection
+    - 4.1.6 CreateProjectMember
+    - 4.1.7 CreateDataSource
+    - 4.1.8 DeleteConnection
+    - 4.1.9 DeleteProjectMember
+    - 4.1.10 DeleteDataSource
+    - 4.1.11 GetProject
+    - 4.1.12 GetProjectDetail
+    - 4.1.13 ListDataSources
+    - 4.1.14 ListCalcEngines
+    - 4.1.15 ListConnections
+    - 4.1.16 ListProjectMembers
+    - 4.1.17 ListProjectRoles
+    - 4.1.18 ListProjects
+    - 4.1.19 ListProjectIds
+    - 4.1.20 ListResourceGroups
+    - 4.1.21 RemoveProjectMemberFromRole
+    - 4.1.22 UpdateConnection
+    - 4.1.23 UpdateDataSource
+  - 4.2 元数据
+    - 4.2.1 AddToMetaCategory
+    - 4.2.2 CheckMetaPartition
+    - 4.2.3 CheckMetaTable
+    - 4.2.4 CreateMetaCategory
+    - 4.2.5 CreateTable
+    - 4.2.6 CreateTableTheme
+    - 4.2.7 CreateTableLevel
+    - 4.2.8 DeleteFromMetaCategory
+    - 4.2.9 DeleteMetaCategory
+    - 4.2.10 DeleteTable
+    - 4.2.11 DeleteTableLevel
+    - 4.2.12 DeleteTableTheme
+    - 4.2.13 GetDDLJobStatus
+    - 4.2.14 GetMetaDBInfo
+    - 4.2.15 GetMetaDBTableList
+    - 4.2.16 GetMetaCategory
+    - 4.2.17 GetMetaColumnLineage
+    - 4.2.18 GetMetaMetrics
+    - 4.2.19 GetMetaStorageTrend
+    - 4.2.20 GetMetaTableBasicInfo
+    - 4.2.21 GetMetaTableColumn
+    - 4.2.22 GetMetaTableChangeLog
+    - 4.2.23 GetMetaTableFullInfo
+    - 4.2.24 GetMetaTableIntroWiki
+    - 4.2.25 GetMetaTableLineage
+    - 4.2.26 GetMetaTableListByCategory
+    - 4.2.27 GetMetaTableOutput
+    - 4.2.28 GetMetaTablePartition
+    - 4.2.29 ListMetaDB
+    - 4.2.30 ListTableLevel
+    - 4.2.31 ListTableTheme
+    - 4.2.32 SearchMetaTables
+    - 4.2.33 SearchMetaTableByKey
+    - 4.2.34 UpdateMetaCategory
+    - 4.2.35 UpdateMetaTable
+    - 4.2.36 UpdateMetaTableIntroWiki
+    - 4.2.37 UpdateTable
+    - 4.2.38 UpdateTableLevel
+    - 4.2.39 UpdateTableModelInfo
+    - 4.2.40 UpdateTableTheme
+    - 4.2.41 UpdateTableAddColumn
+    - 4.2.42 GetMetaTableThemeLevel
+  - 4.3 数据开发
+    - 4.3.1 CreateFile
+    - 4.3.2 CreateFolder
+    - 4.3.3 CreateUdfFile
+    - 4.3.4 CreateBusiness
+    - 4.3.5 CreateResourceFile
+    - 4.3.6 DeleteBusiness
+    - 4.3.7 DeleteFile
+    - 4.3.8 DeleteFolder
+    - 4.3.9 DeployFile
+    - 4.3.10 EstablishRelationTableToBusiness
+    - 4.3.11 GetBusiness
+    - 4.3.12 GetDeployment
+    - 4.3.13 GetFileVersion
+    - 4.3.14 GetFile
+    - 4.3.15 GetFolder
+    - 4.3.16 GetNodeTypeListInfo
+    - 4.3.17 ListBusiness
+    - 4.3.18 ListFiles
+    - 4.3.19 ListFileVersions
+    - 4.3.20 ListFolders
+    - 4.3.21 SubmitFile
+    - 4.3.22 UpdateFile
+    - 4.3.23 UpdateBusiness
+    - 4.3.24 UpdateFolder
+    - 4.3.25 UpdateUdfFile
+    - 4.3.26 UpdateResourceFile
+    - 4.3.27 UpdateIDEEventResult
+    - 4.3.28 CheckFileDeployment
+    - 4.3.29 GetIDEEventDetail
+    - 4.3.30 ListDeployments
+    - 4.3.31 OfflineNode
+    - 4.3.32 addNode
+    - 4.3.33 DeleteNode
+    - 4.3.34 SelectNodeList
+    - 4.3.35 UpdateNode
+  - 4.4 数据集成
+    - 4.4.1 CreateDISyncTask
+    - 4.4.2 GetDataSourceMeta
+    - 4.4.3 ListDIProjectConfig
+    - 4.4.4 TestNetworkConnection
+    - 4.4.5 UpdateDIProjectConfig
+    - 4.4.6 UpdateDISyncTask
+    - 4.4.7 GetDISyncTask
+    - 4.4.8 GetDISyncInstanceInfo
+    - 4.4.9 ListRefDISyncTasks
+  - 4.5 数据建模
+    - 4.5.1 QueryPublicModelEngine
+    - 4.5.2 SearchElement
+    - 4.5.3 UpdateModel
+    - 4.5.4 UpdatePublicDomain
+    - 4.5.5 UpdateDomainCode
+    - 4.5.6 GetModelApplyDomainStatus
+    - 4.5.7 DeleteDomainCodes
+    - 4.5.8 CreatePublicDomain
+    - 4.5.9 AddDomainCode
+    - 4.5.10 DeletePublicDomains
+  - 4.6 运维中心
+    - 4.6.1 CreateDagComplement
+    - 4.6.2 CreateDagTest
+    - 4.6.3 CreateRemind
+    - 4.6.4 DeleteRemind
+    - 4.6.5 GetBaselineConfig
+    - 4.6.6 GetBaselineKeyPath
+    - 4.6.7 GetBaselineStatus
+    - 4.6.8 GetDag
+    - 4.6.9 GetInstance
+    - 4.6.10 GetInstanceConsumeTimeRank
+    - 4.6.11 GetInstanceCountTrend
+    - 4.6.12 GetInstanceErrorRank
+    - 4.6.13 GetInstanceLog
+    - 4.6.14 GetInstanceStatusStatistic
+    - 4.6.15 GetNode
+    - 4.6.16 GetNodeCode
+    - 4.6.17 GetNodeOnBaseline
+    - 4.6.18 GetNodeChildren
+    - 4.6.19 GetNodeParents
+    - 4.6.20 GetRemind
+    - 4.6.21 GetSuccessInstanceTrend
+    - 4.6.22 GetTopic
+    - 4.6.23 GetTopicInfluence
+    - 4.6.24 GetFileTypeStatistic
+    - 4.6.25 ListFileType
+    - 4.6.26 ListAlertMessages
+    - 4.6.27 ListBaselineConfigs
+    - 4.6.28 ListBaselineStatuses
+    - 4.6.29 ListDataServicePublishedApis
+    - 4.6.30 ListDags
+    - 4.6.31 ListInstances
+    - 4.6.32 ListInstanceAmount
+    - 4.6.33 ListInstanceHistory
+    - 4.6.34 ListSuccessInstanceAmount
+    - 4.6.35 ListManualDagInstances
+    - 4.6.36 ListNodes
+    - 4.6.37 ListInnerNodes
+    - 4.6.38 ListNodeIO
+    - 4.6.39 ListNodeInputOrOutput
+    - 4.6.40 ListNodesByOutput
+    - 4.6.41 ListNodesByBaseline
+    - 4.6.42 ListReminds
+    - 4.6.43 ListTopics
+    - 4.6.44 RestartInstance
+    - 4.6.45 ResumeInstance
+    - 4.6.46 RunTriggerNode
+    - 4.6.47 RunCycleDagNodes
+    - 4.6.48 RunManualDagNodes
+    - 4.6.49 RunSmokeTest
+    - 4.6.50 SetSuccessInstance
+    - 4.6.51 StopInstance
+    - 4.6.52 SuspendInstance
+    - 4.6.53 TopTenElapsedTimeInstance
+    - 4.6.54 TopTenErrorTimesInstance
+    - 4.6.55 UpdateRemind
+    - 4.6.56 UpdateNodeOwner
+    - 4.6.57 UpdateNodeRunMode
+  - 4.7 数据质量
+    - 4.7.1 CreateQualityEntity
+    - 4.7.2 CreateQualityFollower
+    - 4.7.3 CreateQualityRelativeNode
+    - 4.7.4 CreateQualityRule
+    - 4.7.5 DeleteQualityEntity
+    - 4.7.6 DeleteQualityFollower
+    - 4.7.7 DeleteQualityRelativeNode
+    - 4.7.8 DeleteQualityRule
+    - 4.7.9 GetQualityEntity
+    - 4.7.10 GetQualityFollower
+    - 4.7.11 GetQualityRule
+    - 4.7.12 ListQualityResultsByEntity
+    - 4.7.13 ListQualityResultsByRule
+    - 4.7.14 ListQualityRules
+    - 4.7.15 UpdateQualityFollower
+    - 4.7.16 UpdateQualityRule
+  - 4.8 数据服务
+    - 4.8.1 AbolishDataServiceApi
+    - 4.8.2 CreateDataServiceApi
+    - 4.8.3 CreateDataServiceApiAuthority
+    - 4.8.4 CreateDataServiceFolder
+    - 4.8.5 CreateDataServiceGroup
+    - 4.8.6 DeleteDataServiceApi
+    - 4.8.7 DeleteDataServiceApiAuthority
+    - 4.8.8 GetDataServiceApi
+    - 4.8.9 GetDataServiceApplication
+    - 4.8.10 GetDataServiceFolder
+    - 4.8.11 GetDataServiceGroup
+    - 4.8.12 GetDataServicePublishedApi
+    - 4.8.13 ListDataServiceApis
+    - 4.8.14 ListDataServiceApiAuthorities
+    - 4.8.15 ListDataServiceApplications
+    - 4.8.16 ListDataServiceAuthorizedApis
+    - 4.8.17 ListDataServiceFolders
+    - 4.8.18 ListDataServiceGroups
+    - 4.8.19 PublishDataServiceApi
+    - 4.8.20 UpdateDataServiceApi
+    - 4.9.1 CreateManualDag
+    - 4.9.2 GetInstanceStatusCount
+    - 4.9.3 GetManualDagInstances
+    - 4.9.4 ListProgramTypeCount
+    - 4.9.5 SearchNodesByOutput
+  - 4.10 数据保护伞
+    - 4.10.1 AddRuleConfig
+    - 4.10.2 AddRuleConfigMessage
+    - 4.10.3 UpdateRuleConfig
+    - 4.10.4 UpdateRuleConfigMessage
+    - 4.10.5 DeleteRuleConfig
+    - 4.10.6 DeleteRuleConfigMessage
+    - 4.10.7 DesensitizeData
+    - 4.10.8 GetRuleConfig
+    - 4.10.9 GetRuleConfigMessage
+    - 4.10.10 GetRuleDataMessage
+    - 4.10.11 GetRuleMessage
+    - 4.10.12 GetSensLevel
+    - 4.10.13 GetSensLevelMessage
+    - 4.10.14 GetSensTableLevel
+    - 4.10.15 GetSensTableLevelMessage
+    - 4.10.16 GetOpSensitiveData
+    - 4.10.17 GetSensitiveData
+    - 4.10.18 ScanSensitiveData
+    - 4.10.19 AddSenRule
+    - 4.10.20 AddSensLevel
+    - 4.10.21 DeleteSenRule
+    - 4.10.22 GetSenRule
+    - 4.10.23 GetSensitiveCountData
+    - 4.10.24 UpdateRiskInfoData
+    - 4.10.25 UpdateSenRule
+    - 4.10.26 UpdateSensitive
+  - 4.11 安全中心
+    - 4.11.1 CreatePermissionApplyOrder
+    - 4.11.2 ApprovePermissionApplyOrder
+    - 4.11.3 ListPermissionApplyOrders
+    - 4.11.4 GetPermissionApplyOrderDetail
+    - 4.11.5 RevokeColumnPermission
+    - 4.11.6 RevokeTablePermission
+  - 4.12 迁移助手
+    - 4.12.1 GetMigrationProcess
+    - 4.12.2 StartMigration
+    - 4.12.3 GetMigrationSummary
+    - 4.12.4 ListMigrations
+  - 4.13 开放平台
+    - 4.13.1 GetExtension
+    - 4.13.2 GetOptionValueForProject
+
+## 1 API简介
 
 本文为您介绍DataWorks OpenAPI的列表详情。
 
 **OpenAPI列表**
 
-DataWorks OpenAPI包括租户、元数据、数据开发、数据集成、运维中心、数据质量、数据服务、调度、
+DataWorks OpenAPI包括租户、元数据、数据开发、数据集成、运维中心、数据质量、数据服务、调度、 数据保护伞、迁移助手、数据建模、安全中心、开放平台：
 
 **租户**
 
@@ -38,8 +310,6 @@ DataWorks OpenAPI包括租户、元数据、数据开发、数据集成、运维
 | GetProjectDetail | 调用GetProjectDetail查询一个DataWorks工作空间的信息。 |
 | ListDataSources | 调用ListDataSources接口，查询DataWorks数据源列表。 |
 
-DataWorks
-
 | ListCalcEngines | 调用ListCalcEngines查看计算引擎列表。 |
 |---|---|
 | ListConnections | 调用ListConnections查询数据源列表。 |
@@ -52,7 +322,7 @@ DataWorks
 | UpdateConnection | 调用UpdateConnection更新一个数据源。 |
 | UpdateDataSource | 调用UpdateDataSource接口，更新数据源。 |
 
-### 元数据
+**元数据**
 
 | API名称 | API描述 |
 |---|---|
@@ -62,8 +332,6 @@ DataWorks
 | CreateMetaCategory | 调用CreateMetaCategory创建类目。 |
 | CreateTable | 调用CreateTable创建一个MaxCompute的表或视图。 |
 | CreateTableTheme | 调用CreateTableTheme创建主题。不建议使用该API，后续将有新API上线覆盖此功能。 |
-
-DataWorks
 
 | CreateTableLevel | 调用CreateTableLevel创建层级。不建议使用该API，后续将有新API上线覆盖此功能。 |
 |---|---|
@@ -84,8 +352,6 @@ DataWorks
 | GetMetaTableChang eLog | 调用GetMetaTableChangeLog获取表的变更日志。 |
 | GetMetaTableFullInfo | 调用GetMetaTableFullInfo获取表的完整信息（包括字段信息）。 |
 
-DataWorks
-
 | GetMetaTableIntroWi ki | 调用GetMetaTableIntroWiki获取表的使用说明。 |
 |---|---|
 | GetMetaTableLineag e | 调用GetMetaTableLineage获取表的血缘关系。 |
@@ -104,14 +370,12 @@ DataWorks
 | UpdateTableLevel | 调用UpdateTableLevel更新层级。不建议使用该API，后续将有新API上线覆盖此功能。 |
 | UpdateTableModelInf o | 调用UpdateTableModelInfo修改表的主题、层级和物理分类等信息。不建议使用该 API，后续将有新API上线覆盖此功能。 |
 
-DataWorks
-
 | UpdateTableTheme | 调用UpdateTableTheme更新主题。不建议使用该API，后续将有新API上线覆盖此功能。 |
 |---|---|
 | UpdateTableAddColu mn | 调用UpdateTableAddColumn更新MaxCompute表的字段信息。 |
 | GetMetaTableTheme Level | 调用GetMetaTableThemeLevel获取表的主题和层级信息。 |
 
-### 数据开发
+**数据开发**
 
 | API名称 | API描述 |
 |---|---|
@@ -128,8 +392,6 @@ DataWorks
 | GetBusiness | 调用GetBusiness查询业务流程的详情。 |
 | GetDeployment | 调用GetDeployment获取发布包的详情。 |
 | GetFileVersion | 调用GetFileVersion获取文件的版本详情。 |
-
-DataWorks
 
 | GetFile | 调用GetFile获取文件的详情。 |
 |---|---|
@@ -150,8 +412,6 @@ DataWorks
 | GetIDEEventDetail | 调用GetIDEEventDetail查询触发扩展点事件时的数据快照。 |
 | ListDeployments | 调用ListDeployments查询发布包列表信息。 |
 
-DataWorks
-
 | OfflineNode | 您可以调用OfflineNode下线节点。 |
 |---|---|
 | addNode | 该API用于在DataWorks中创建新的节点。 |
@@ -159,7 +419,7 @@ DataWorks
 | SelectNodeList | 该接口用于查询指定租户下的节点列表。 |
 | UpdateNode | 该接口用于更新数据开发节点信息。 |
 
-### 数据集成
+**数据集成**
 
 | API名称 | API描述 |
 |---|---|
@@ -173,12 +433,10 @@ DataWorks
 | GetDISyncInstanceInf o | 调用GetDISyncInstanceInfo接口，获取实时同步任务和同步解决方案任务的运行状态。 |
 | ListRefDISyncTasks | 调用ListRefDISyncTasks查看数据集成同步任务。 |
 
-### 数据建模
+**数据建模**
 
 | API名称 | API描述 |
 |---|---|
-
-DataWorks
 
 | QueryPublicModelEng ine | 调用QueryPublicModelEngine查询数据建模引擎的信息。 |
 |---|---|
@@ -192,7 +450,7 @@ DataWorks
 | AddDomainCode | 调用AddDomainCode接口，创建一个标准代码。 |
 | DeletePublicDomains | 调用DeletePublicDomains接口，删除公共数据标准。 |
 
-### 运维中心
+**运维中心**
 
 | API名称 | API描述 |
 |---|---|
@@ -202,8 +460,6 @@ DataWorks
 | DeleteRemind | 调用DeleteRemind删除自定义监控报警规则。 |
 | GetBaselineConfig | 调用GetBaselineConfig获取配置详情。 |
 | GetBaselineKeyPath | 调用GetBaselineKeyPath获取基线实例的关键路径。 |
-
-DataWorks
 
 | GetBaselineStatus | 调用GetBaselineStatus获取基线实例的详情。 |
 |---|---|
@@ -225,8 +481,6 @@ DataWorks
 | GetTopicInfluence | 调用GetTopicInfluence获取事件影响的基线实例列表。 |
 | GetFileTypeStatistic | 调用GetFileTypeStatistic获取节点任务类型的分布情况。 |
 
-DataWorks
-
 | ListFileType | 调用ListFileType查询任务节点的类型信息，包括类型Code和类型名称。 |
 |---|---|
 | ListAlertMessages | 调用ListAlertMessages获取报警信息的列表。 |
@@ -246,8 +500,6 @@ DataWorks
 | ListNodesByOutput | 调用ListNodesByOutput根据节点的输出结果精确查询目标节点。 |
 | ListNodesByBaseline | 调用ListNodesByBaseline获取基线中的节点。 |
 
-DataWorks
-
 | ListReminds | 调用ListReminds获取或搜索自定义监控规则列表。 |
 |---|---|
 | ListTopics | 调用ListTopics获取或搜索事件列表。 |
@@ -266,12 +518,10 @@ DataWorks
 | UpdateNodeOwner | 调用UpdateNodeOwner修改目标节点的负责人。 |
 | UpdateNodeRunMode | 调用UpdateNodeRunMode冻结或解冻目标节点。 |
 
-### 数据质量
+**数据质量**
 
 | API名称 | API描述 |
 |---|---|
-
-DataWorks
 
 | CreateQualityEntity | 调用CreateQualityEntity创建数据质量的分区表达式。 |
 |---|---|
@@ -291,12 +541,10 @@ DataWorks
 | UpdateQualityFollowe r | 调用UpdateQualityFollower更新订阅关系。 |
 | UpdateQualityRule | 调用UpdateQualityRule更新规则。 |
 
-### 数据服务
+**数据服务**
 
 | API名称 | API描述 |
 |---|---|
-
-DataWorks
 
 | AbolishDataServiceApi | 调用AbolishDataServiceApi下线数据服务API。 |
 |---|---|
@@ -316,8 +564,6 @@ DataWorks
 | ListDataServiceApplic ations | 调用ListDataServiceApplications获取数据服务应用的基础信息列表。 |
 | ListDataServiceAuthor izedApis | 调用ListDataServiceAuthorizedApis获取获得授权的API信息列表。 |
 
-DataWorks
-
 | ListDataServiceFolder s | 调用ListDataServiceFolders查询数据服务文件夹列表。 |
 |---|---|
 | ListDataServiceGroup s | 调用ListDataServiceGroups查询数据服务业务流程列表。 |
@@ -334,14 +580,14 @@ DataWorks
 | ListProgramTypeCount | 调用ListProgramTypeCount获取节点任务类型的分布。 |
 | SearchNodesByOutput | 调用SearchNodesByOutput，根据输出精确查询节点。 |
 
+**数据保护伞**
+
 | API名称 | API描述 |
 |---|---|
 | AddRuleConfig | 调用AddRuleConfig接口新增数据识别规则。 |
 | AddRuleConfigMessag e | 调用AddRuleConfigMessage接口新增数据识别规则。 |
 | UpdateRuleConfig | 调用UpdateRuleConfig修改数据识别规则。 |
 | UpdateRuleConfigMes sage | 调用UpdateRuleConfigMessage修改数据识别规则。 |
-
-DataWorks
 
 | DeleteRuleConfig | 调用DeleteRuleConfig接口删除数据识别规则。 |
 |---|---|
@@ -372,7 +618,7 @@ DataWorks
 | UpdateSenRule | 该接口用于更新敏感规则。 |
 | UpdateSensitive | 该接口用于更新敏感数据规则配置的接口。 |
 
-### 安全中心
+**安全中心**
 
 | API名称 | API描述 |
 |---|---|
@@ -383,31 +629,27 @@ DataWorks
 | RevokeColumnPermiss ion | 调用RevokeColumnPermission，撤销用户的表字段权限。 |
 | RevokeTablePermissio n | 调用RevokeTablePermission，撤销用户的表权限。 |
 
-### 迁移助手
+**迁移助手**
 
 | API名称 | API描述 |
 |---|---|
 | GetMigrationProcess | 调用GetMigrationProcess获取导入导出任务的进度状态。 |
 | StartMigration | 调用StartMigration启动执行导入导出任务。 |
 
-DataWorks
-
 | GetMigrationSummary | 调用GetMigrationSummary获取导入或导出任务的信息。 |
 |---|---|
 | ListMigrations | 调用ListMigrations获取迁移任务列表。 |
 
-### 开放平台
+**开放平台**
 
 | API名称 | API描述 |
 |---|---|
 | GetExtension | 调用GetExtension接口，获取某个扩展程序详情。 |
 | GetOptionValueForProj ect | 调用GetOptionValueForProject接口，获取扩展程序选项配置在项目空间下的配置。 |
 
-DataWorks
+## 2 准备工作
 
-## 准备工作
-
-### 获取AccessKey
+### 2.1 获取AccessKey
 
 访问身份验证中通过使用AccessKey ID和AccessKey Secret对称加密的方法来验证某个请求的发送者身份。AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。本文将为您描述如何获取通过RAM授权的AccessKey。
 
@@ -426,40 +668,32 @@ AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的Acce
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
-**警告**
-
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 **获取个人账号AccessKey**
 
 获取个人账号AccessKey的方法如下：
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，将鼠标悬停在当前登录用户的头像上，单击**个人信息**。
-DataWorks
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
-
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
-DataWorks
 
-## 通过POP网关调用专有云API
+## 3 通过POP网关调用专有云API
 
 当您需要通过 POP 网关调用专有云 DataWorks API 时，本文提供完整的 Java SDK 接入指引，包括服务地址、AccessKey、产品名、RegionId 和 Endpoint 名称等关键参数的配置方法，以及鉴权逻辑和调用示例。
 
-**重要**
-
-DataWorks HTTP API 已停止维护，请您尽快迁移至 Java SDK。
+> **重要：** DataWorks HTTP API 已停止维护，请您尽快迁移至 Java SDK。
 
 **服务地址Endpoint**
 
@@ -475,10 +709,7 @@ public.envxxx.yyyyy.com 。
 vpc.envxxx.yyyyy.com 。
 ```
 
-**说明**
-
-DataWorks POP 网关已实现 IPv4/IPv6 双栈支持。如需使用产品的 IPv4/IPv6 双栈能力，请联系阿里云技术支持完成**平台侧的** **IPv6** **能力前置改造**和**产品** **IPv6** **的启用**（详情可参见《**专有云****VPC** **运维**
-**指南**》中的**网络变更** > **功能编排** **> IPv6****大盘章节**）。
+> **说明：** DataWorks POP 网关已实现 IPv4/IPv6 双栈支持。如需使用产品的 IPv4/IPv6 双栈能力，请联系阿里云技术支持完成**平台侧的** **IPv6** **能力前置改造**和**产品** **IPv6** **的启用**（详情可参见《**专有云****VPC** **运维** **指南**》中的**网络变更** **>** **功能编排** **> IPv6****大盘章节**）。
 
 **AccessID和AccessKey**
 
@@ -502,10 +733,8 @@ Client端发送请求，携带指定参数发送至服务地址，会跳转到PO
 
 **调用示例代码**
 
-DataWorks
-
 ```java
-import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dataworks_public.model.v20200518.*;
+import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dataworks_public.model.v20200518.*; public class GetDataServiceApi {
     public static void main(String[] args) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-qingdao", "
 <accessKeyId>", "<accessSecret>");
@@ -524,18 +753,17 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-DataWorks
+`}` `}` `}`
 
-## OpenAPI参考
+## 4 OpenAPI参考
 
-### 租户
+### 4.1 租户
 
-#### CreateProject
+#### 4.1.1 CreateProject
+
+调用CreateProject接口创建项目。
 
 **请求头**
 
@@ -552,15 +780,13 @@ DataWorks
 | IsAllowDo wnload | Integ er | Query | 否 | 1 | 是否允许下载ide上查询的结果，取值如下： 1 ：默认值，允许下载。 0 ：不允许下载。 |
 | ProjectMo de | Integ er | Query | 否 | 1 | 工作空间模式： 简单工作空间模式为2。 标准工作空间模式为3。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProjectIde ntifier | Strin g | Query | 是 | dw project _ | DataWorks工作空间名称。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间名称。该参数与 ProjectId参数，二者必须设置其一，用来确定本次API 调用操作的DataWorks工作空间。 |
 | Resource ManagerR esourceGr oupId | Strin g | Query | 否 | rg-acfmzbn7pt**** | 资源组ID。 |
 | Tags | Repe atList | Query | 否 | ["tag1", "tag2", "tag3"] | 待绑定的数据资产标签列表。 |
-| -Key | Strin g |  | 是 | batch | 标签Key。 |
-| -Value | Strin g |  | 是 | 100.0 | 阈值数值。 |
+| -Key | Strin g |   | 是 | batch | 标签Key。 |
+| -Value | Strin g |   | 是 | 100.0 | 阈值数值。 |
 
 **返回数据**
 
@@ -573,24 +799,22 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&RegionId=default &ProjectName=autotest &ProjectDescription=test_describe &ProjectIdentifier=dw_project
+http(s)://[Endpoint]/?Action=CreateProject &RegionId=default &ProjectName=autotest &ProjectDescription=test_describe &ProjectIdentifier=dw_project
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":1234,
  "Success":false
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>1234</Data> <Success>false</Success>
@@ -606,15 +830,15 @@ DataWorks
 | 403 | 100002002 | Invalid.Tenant.UserIsNotProjec tOwnerOrAdmin | The user is not a project administrator or owner. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### DeleteProject
+#### 4.1.2 DeleteProject
+
+调用DeleteProject接口删除项目空间。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -635,21 +859,19 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &ProjectId=10000
+http(s)://[Endpoint]/?Action=DeleteProject &RegionId=default &ProjectId=10000
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":"{   \"HttpStatusCode\": 200,   \"Success\": true }",
  "Success":false
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>{ &quot;HttpStatusCode&quot;: 200, &quot;Success&quot;: true }</Data> <Success>false</Success>
@@ -657,15 +879,15 @@ DataWorks
 
 **错误码**
 
-DataWorks
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | 1120010003 | Invalid.DI.Parameter | The parameter is invalid. |
 | 403 | 1120010001 | Forbidden.DI.NoPrivilege | No access. |
 | 500 | 1120010002 | InternalError.DI.Parameter | A DI internal error occurred. |
 
-#### BindProjectCalcEngines
+#### 4.1.3 BindProjectCalcEngines
+
+调用BindProjectCalcEngines，绑定引擎。
 
 **请求头**
 
@@ -689,26 +911,22 @@ DataWorks
 | Success | Boolean | Boolean | 是否请求成功。 |
 | Data | Boolean | { "HttpStatusCode": 200, "Success": true } | 返回结果数据。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=BindProjectCalcEngines &RegionId= &ProjectId= &CalcEngineId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":false,
  "Success":false
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>false</Data> <Success>false</Success>
@@ -724,7 +942,7 @@ http(s)://[Endpoint]/?Action=BindProjectCalcEngines &RegionId= &ProjectId= &Calc
 | 403 | 100002002 | Invalid.Tenant.UserIsNotProjec tOwnerOrAdmin | The user is not a project administrator or owner. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### AddProjectMemberToRole
+#### 4.1.4 AddProjectMemberToRole
 
 调用AddProjectMemberToRole，添加DataWorks工作空间的成员至目标角色。使用该接口前，您需要先添加目标账号为DataWorks工作空间的成员。
 
@@ -732,8 +950,6 @@ http(s)://[Endpoint]/?Action=BindProjectCalcEngines &RegionId= &ProjectId= &Calc
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | AddProjectMem berToRole | 系统规定参数。取值： AddProjectMemberToRole。 |
 |---|---|---|---|---|
@@ -757,21 +973,19 @@ DataWorks
 http(s)://[Endpoint]/?Action=AddProjectMemberToRole &ProjectId=27 &RegionId=default &RoleCode=role_project_guest &UserId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1AFAE64E-D1BE-432B-A9****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1AFAE64E-D1BE-432B-A9****"
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -783,7 +997,9 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### CreateConnection
+#### 4.1.5 CreateConnection
+
+调用CreateConnection创建一个数据源。
 
 **请求参数**
 
@@ -791,37 +1007,29 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | CreateConnectio n | 系统规定参数。取值： CreateConnection。 |
 | ConnectionType | String | 是 | rds | 连接串的类型。常用类型枚举如下： odps mysql rds oss sqlserver polardb oracle mongodb emr postgresql analyticdb for mysql _ _ hybriddb for postgresql _ _ holo |
-|  |  |  |  | 数据源的详细信息。部分常用数据源样例如下： odps |
+|   |   |   |   | 数据源的详细信息。部分常用数据源样例如下： odps |
 
-| 开发指南·OpenAPI参 | 考 |  |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   |   | DataWork |
 |---|---|---|---|---|
-|  |  |  |  | { "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } |
-
-DataWorks
+|   |   |   |   | { "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } |
 
 | Content | String | 是 | {"database":"db name","instance Name":"instance name","passwor d":"password","r dsOwnerId":"12 3","username":" | sqlserver { "jdbcUrl": "jdbc:sqlserver://xsaxsa- xsaxsa.database.xxx.cn:123;Da tabaseName=xsxs-xsxs", "password": "sdasda$fs", "tag": "public", "username": "sxaxacdacdd" } polardb { "clusterId": "pc- sdadsadsa", "database": "dsadsadsa", "ownerId": "121212122", "password": "sdasdafssa", "region": "cn-shanghai", "tag": "polardb", "username": "asdadsads" } oracle { "jdbcUrl": "jdbc:oracle:saaa:@xxxxx:1521 :PROD", "password": "sxasaxsa", "tag": "public", "username": "sasfadfa" } mongodb { "address": " [\"xsaxxsa.mongodb.rds.aliyun cs.com:3717\"]", "database": "admin", "password": "sadsda@", |
 |---|---|---|---|---|
-|  |  |  | username"} | "tag": "public", "username": "dsadsadas" } emr |
+|   |   |   | username"} | "tag": "public", "username": "dsadsadas" } emr |
 
-DataWorks
-
-|  |  |  |  | { "accessId": "xsaxsa", "emrClusterId": "C-dsads", "emrResourceQueueName": "default", "emrEndpoint": "emr.aliyuncs.com", "accessKey": "dsadsad", "emrUserId": "224833315798889783", "name": "sasdsadsa", "emrAccessMode": "simple", "region": "cn-shanghai", "authType": "2", "emrProjectId": "FP- sdadsad" } postgresql { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ |
+|   |   |   |   | { "accessId": "xsaxsa", "emrClusterId": "C-dsads", "emrResourceQueueName": "default", "emrEndpoint": "emr.aliyuncs.com", "accessKey": "dsadsad", "emrUserId": "224833315798889783", "name": "sasdsadsa", "emrAccessMode": "simple", "region": "cn-shanghai", "authType": "2", "emrProjectId": "FP- sdadsad" } postgresql { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ |
 |---|---|---|---|---|
 
-DataWorks
-
-|  |  |  |  | { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
+|   |   |   |   | { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
 |---|---|---|---|---|
 | EnvType | Integer | 是 | 1 | 数据源所属的环境，包括0（开发环境）和 1（生产环境）。 |
 | Name | String | 是 | abc | 数据源的名称。 |
 | ProjectId | Long | 是 | 1 | 数据源关联的工作空间ID。您可以通过 ListProjects接口获取工作空间ID。 |
 
-DataWorks
-
-| RegionId | String | 是 | default | 区域ID，为固定值default。 |  |  |
+| RegionId | String | 是 | default | 区域ID，为固定值default。 |   |   |
 |---|---|---|---|---|---|---|
-| Description | String | 否 | abc | 连接串的描述。 |  |  |
-| SubType | String | 否 | mysql | 连接串的子类型，针对某些父类型type下包含子类型的场景。目前有以下组合： 父类型： rds 子类型： mysql 、 sqlserver 或 postgresql 。 |  |  |
+| Description | String | 否 | abc | 连接串的描述。 |   |   |
+| SubType | String | 否 | mysql | 连接串的子类型，针对某些父类型type下包含子类型的场景。目前有以下组合： 父类型： rds 子类型： mysql 、 sqlserver 或 postgresql 。 |   |   |
 
 **返回数据**
 
@@ -837,16 +1045,16 @@ DataWorks
 请求示例
 
 ```json
-&ConnectionType=rds &Content= {"database":"dbname","instanceName":"instancename","password":"password","rdsOwnerId":"12 ,"username":"username"} &EnvType=1 &Name=abc &ProjectId=1 &RegionId=default
+http(s)://[Endpoint]/?Action=CreateConnection &ConnectionType=rds &Content= {"database":"dbname","instanceName":"instancename","password":"password","rdsOwnerId":"12 ,"username":"username"} &EnvType=1 &Name=abc &ProjectId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc141151593763****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>123</Data> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式
 
 ```json
 {"RequestId":"0bc141151593763****","HttpStatusCode":"200","Data":"123","Success":"true"}
@@ -862,7 +1070,7 @@ DataWorks `JSON` 格式
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### CreateProjectMember
+#### 4.1.6 CreateProjectMember
 
 调用CreateProjectMember，添加一个用户至Dataworks工作空间。
 
@@ -879,8 +1087,6 @@ DataWorks `JSON` 格式
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 1AFAE64E-D1BE- 432B-A9**** | 请求ID。 |
@@ -893,19 +1099,19 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreateProjectMember &ProjectId=27 &RegionId=default &UserId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1AFAE64E-D1BE-432B-A9****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1AFAE64E-D1BE-432B-A9****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -919,36 +1125,28 @@ http(s)://[Endpoint]/?Action=CreateProjectMember &ProjectId=27 &RegionId=default
 | 400 | Invalid.Tenant.User AlreadyInProject | The user already exists in the project. | 待添加用户已经存在于工作空间中。 |
 | 400 | Invalid.Tenant.User NotInTenant | The user is not in the tenant. | 待添加成员不在租户中。 |
 
-DataWorks
+#### 4.1.7 CreateDataSource
 
-#### CreateDataSource
+调用CreateDataSource接口，创建DataWorks数据源。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateDataSour ce | 系统规定参数。取值： CreateDataSource。 |
-|  |  |  |  | 数据源的详细信息。部分常用数据源样例如下： odps { "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds |
+|   |   |   |   | 数据源的详细信息。部分常用数据源样例如下： odps { "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds |
 
-DataWorks
-
-|  |  |  |  | { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } sqlserver { "jdbcUrl": |
+|   |   |   |   | { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } sqlserver { "jdbcUrl": |
 |---|---|---|---|---|
-|  |  |  |  | "jdbc:sqlserver://xsaxsa- xsaxsa.database.xxx.cn:123;Da tabaseName=xsxs-xsxs", "password": "sdasda$fs", "tag": "public", "username": "sxaxacdacdd" } polardb { "clusterId": "pc- sdadsadsa", "database": "dsadsadsa", "ownerId": "121212122", "password": "sdasdafssa", "region": "cn-shanghai", "tag": "polardb", "username": "asdadsads" } oracle |
-
-DataWorks
+|   |   |   |   | "jdbc:sqlserver://xsaxsa- xsaxsa.database.xxx.cn:123;Da tabaseName=xsxs-xsxs", "password": "sdasda$fs", "tag": "public", "username": "sxaxacdacdd" } polardb { "clusterId": "pc- sdadsadsa", "database": "dsadsadsa", "ownerId": "121212122", "password": "sdasdafssa", "region": "cn-shanghai", "tag": "polardb", "username": "asdadsads" } oracle |
 
 | Content | String | 是 | {"database":"db name","instance Name":"instance name","passwor d":"password","r dsOwnerId":"12 3","username":" username"} | { "jdbcUrl": "jdbc:oracle:saaa:@xxxxx:1521 :PROD", "password": "sxasaxsa", "tag": "public", "username": "sasfadfa" } mongodb { "address": " [\"xsaxxsa.mongodb.rds.aliyun cs.com:3717\"]", "database": "admin", "password": "sadsda@", "tag": "public", "username": "dsadsadas" } emr { "accessId": "xsaxsa", "emrClusterId": "C-dsads", "emrResourceQueueName": "default", "emrEndpoint": "emr.aliyuncs.com", "accessKey": "dsadsad", "emrUserId": "224833315798889783", "name": "sasdsadsa", "emrAccessMode": "simple", "region": "cn-shanghai", "authType": "2", "emrProjectId": "FP- sdadsad" } postgresql |
 |---|---|---|---|---|
 
-DataWorks
-
-|  |  |  |  | { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } |
+|   |   |   |   | { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } |
 |---|---|---|---|---|
 
-DataWorks
-
-|  |  |  |  | kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
+|   |   |   |   | kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
 |---|---|---|---|---|
 | DataSourceType | String | 是 | rds | 数据源的类型。常用类型如下： odps mysql rds oss sqlserver polardb oracle mongodb emr postgresql analyticdb for mysql _ _ hybriddb for postgresql _ _ holo |
 | EnvType | Integer | 是 | 1 | 数据源所属的环境，包括0（开发环境）和 1（生产环境）。 |
@@ -956,8 +1154,6 @@ DataWorks
 | ProjectId | Long | 是 | 1 | 数据源所在的DataWorks工作空间ID。您可以通过ListProjects接口获取工作空间 ID。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 | Description | String | 否 | abc | 数据源的描述信息。 |
-
-DataWorks
 
 | SubType | String | 否 | mysql | 数据源的子类型。仅当DataSourceType 参数配置为rds时，该参数生效。 当DataSourceType参数配置为rds时， 该参数可以配置为mysql、sqlserver或 postgresql。 |
 |---|---|---|---|---|
@@ -976,25 +1172,25 @@ DataWorks
 请求示例
 
 ```json
-&Content= {"database":"dbname","instanceName":"instancename","password":"password","rdsOwnerId":"12 ,"username":"username"} &DataSourceType=rds &EnvType=1 &Name=abc &ProjectId=1 &RegionId=default
+http(s)://[Endpoint]/?Action=CreateDataSource &Content= {"database":"dbname","instanceName":"instancename","password":"password","rdsOwnerId":"12 ,"username":"username"} &DataSourceType=rds &EnvType=1 &Name=abc &ProjectId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc141151593763****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>123</Data> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc141151593763****",
     "HttpStatusCode": 200,
     "Data": 123,
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -1012,11 +1208,11 @@ DataWorks
 | 400 | MissingParam.Conn ectionStr.Property | You must specify property %s required by the data source connection string. | 数据源连接串信息必填属性缺失 |
 | 400 | Invalid.DataSource. DataSourceTypeNo tExist | The data source type %s does not exist. | 数据源类型不存在。 |
 
-#### DeleteConnection
+#### 4.1.8 DeleteConnection
+
+调用DeleteConnection删除一个数据源。
 
 **请求参数**
-
-DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -1038,10 +1234,10 @@ DataWorks
 请求示例
 
 ```
-&ConnectionId=1 &RegionId=default
+http(s)://[Endpoint]/?Action=DeleteConnection &ConnectionId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <Success>true</Success>
@@ -1055,8 +1251,6 @@ DataWorks
 
 **错误码**
 
-DataWorks
-
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | Invalid.Tenant.Con nectionNotExists | The connection does not exist. | 数据源不存在。 |
@@ -1065,7 +1259,7 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### DeleteProjectMember
+#### 4.1.9 DeleteProjectMember
 
 调用DeleteProjectMember，从DataWorks工作空间移除用户。
 
@@ -1092,19 +1286,19 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteProjectMember &ProjectId=27 &RegionId=default &UserId=1234
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1AFAE64E-D1BE-432B-A9****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1AFAE64E-D1BE-432B-A9****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -1118,7 +1312,9 @@ http(s)://[Endpoint]/?Action=DeleteProjectMember &ProjectId=27 &RegionId=default
 | 400 | Invalid.Tenant.User AlreadyInProject | The user already exists in the project. | 待添加用户已经存在于工作空间中。 |
 | 400 | Invalid.Tenant.User NotInTenant | The user is not in the tenant. | 待添加成员不在租户中。 |
 
-#### DeleteDataSource
+#### 4.1.10 DeleteDataSource
+
+调用DeleteDataSource接口，删除一个数据源。
 
 **请求参数**
 
@@ -1127,8 +1323,6 @@ http(s)://[Endpoint]/?Action=DeleteProjectMember &ProjectId=27 &RegionId=default
 | Action | String | 是 | DeleteDataSour ce | 系统规定参数。取值： DeleteDataSource。 |
 | DataSourceId | Long | 是 | 1 | 数据源ID。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
-
-DataWorks
 
 **返回数据**
 
@@ -1144,25 +1338,25 @@ DataWorks
 请求示例
 
 ```
-&DataSourceId=1 &RegionId=default
+http(s)://[Endpoint]/?Action=DeleteDataSource &DataSourceId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937635****",
     "HttpStatusCode": 200,
     "Data": true,
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -1171,15 +1365,15 @@ DataWorks
 | 400 | Invalid.Tenant.Con nectionNotExists | The connection does not exist. | 数据源不存在。 |
 | 400 | Invalid.Tenant.Proj ectNotExists | The project does not exist. | 项目不存在。 |
 
-DataWorks
-
 | 403 | Invalid.Tenant.User IsNotProjectOwner OrAdmin | The user is not a project administrator or owner. | 用户不是项目负责人或者项目管理员。 |
 |---|---|---|---|
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 | 400 | Invalid.Operation | You cannot delete the bindingCalcEngine that is bound to the data source. | 数据源绑定的计算引擎不允许删除 |
 
-#### GetProject
+#### 4.1.11 GetProject
+
+调用GetProject查询一个DataWorks工作空间的信息。
 
 **请求参数**
 
@@ -1193,14 +1387,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 工作空间的描述信息。 |
+| Data | Struct |   | 工作空间的描述信息。 |
 | Appkey | String | 0 | 该字段已废弃。 |
 | BaseProject | Boolean | false | 该字段已废弃。 |
 | DefaultDiReso urceGroupIden tifier | String | group 280749521* _ *** | 购买MaxCompute独享资源组时，默认分配的资源组的标识。 |
 | Destination | Integer | 0 | 该字段已废弃。 |
 | DevStorageQu ota | String | 0 | 该字段已废弃。 |
-
-DataWorks
 
 | DevelopmentT ype | Integer | 4 | 工作空间的开发类型，目前均为4。该字段已废弃。 |
 |---|---|---|---|
@@ -1217,8 +1409,6 @@ DataWorks
 | ProjectIdentifi er | String | abc | 工作空间的标识。 |
 | ProjectMode | Integer | 2 | 工作空间的模式，取值如下： 2，表示简单工作空间模式。 3，表示标准工作空间模式。 |
 
-DataWorks
-
 | ProjectName | String | abc | 工作空间的显示名称。 |
 |---|---|---|---|
 | ProjectOwnerB aseId | String | 18229311**** | 工作空间所有者的阿里云ID。 |
@@ -1233,8 +1423,6 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 | RequestId | String | 0bc141151593763 5973**** | 请求的ID。用于定位日志，排查问题。 |
 
-DataWorks
-
 | Success | Boolean | true | 是否成功查询工作空间的信息。 |
 |---|---|---|---|
 
@@ -1243,10 +1431,10 @@ DataWorks
 请求示例
 
 ```
-&ProjectId=27 &RegionId=default
+http(s)://[Endpoint]/?Action=GetProject &ProjectId=27 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635973****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -1282,10 +1470,9 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937635973****",
     "HttpStatusCode": 200,
     "Data": {
@@ -1317,10 +1504,15 @@ DataWorks
         "DefaultDiResourceGroupIdentifier": "group_280749521****",
         "SchedulerRetryInterval": 120000,
         "EnvTypes": "[\"PROD\"]"
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -1331,12 +1523,12 @@ DataWorks
 | 403 | Invalid.Tenant.User IsNotProjectOwner OrAdmin | The user is not a project administrator or owner. | 用户不是项目负责人或者项目管理员。 |
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 
-DataWorks
-
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 |---|---|---|---|
 
-#### GetProjectDetail
+#### 4.1.12 GetProjectDetail
+
+调用GetProject查询一个Dataworks工作空间的信息。
 
 **请求参数**
 
@@ -1350,14 +1542,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 工作空间的描述信息。 |
+| Data | Struct |   | 工作空间的描述信息。 |
 | DefaultDiReso urceGroupIden tifier | String | group 280749521* _ *** | 购买MaxCompute独享资源组时，默认分配的资源组的标识。 |
 | DevelopmentT ype | Integer | 4 | 工作空间的开发类型，目前均为4。该字段已废弃。 |
 | EnvTypes | List | ["PROD"] | 工作空间包含的环境： 简单模式只有生产环境（PROD）。 标准模式包含开发环境（DEV）和生产环境 （PROD）。 |
 | GmtCreate | String | Oct 10, 2019 3:42:53 PM | 创建工作空间时间，示例格式Dec 3, 2019 9:12:20 PM。 |
 | GmtModified | String | Dec 3, 2019 9:12:20 PM | 修改工作空间的时间，示例格式为Dec 3, 2019 9:12:20 PM。 |
-
-DataWorks
 
 | IsAllowDownlo ad | Integer | 1 | 是否允许下载ide上查询的结果，取值如下： 1：允许下载。 0：不允许下载。 |
 |---|---|---|---|
@@ -1373,8 +1563,6 @@ DataWorks
 | SchedulerRetr yInterval | Integer | 120000 | 默认出错自动重跑的时间间隔，单位为ms。取值最大为30分钟，注意单位转换。 |
 | Status | Integer | 0 | 工作空间的状态，取值如下： AVAILABLE(0)，工作空间运行正常。 DELETED(1)，工作空间已被删除。 INITIALIZING(2)，初始化工作空间。 INIT FAILED(3)，工作空间初始化失败。 _ FORBIDDEN(4)，手动禁用工作空间。 DELETING(5)，正在删除工作空间。 DEL FAILED(6)，工作空间删除失败。 _ FROZEN(7)，工作空间欠费冻结。 UPDATING(8)，更新工作空间（为工作空间添加并初始化计算引擎）。 UPDATE FAILED(9)，更新工作空间（为工 _ 作空间添加并初始化计算引擎）失败。 |
 
-DataWorks
-
 | TenantId | Long | 280749521 | 租户ID。 |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
@@ -1386,10 +1574,10 @@ DataWorks
 请求示例
 
 ```
-&ProjectId=27 &RegionId=default
+http(s)://[Endpoint]/?Action=GetProjectDetail &ProjectId=27 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635973****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -1415,10 +1603,9 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937635973****",
     "HttpStatusCode": 200,
     "Data": {
@@ -1440,10 +1627,15 @@ DataWorks
         "DefaultDiResourceGroupIdentifier": "group_280749521****",
         "SchedulerRetryInterval": 120000,
         "EnvTypes": "[\"PROD\"]"
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -1455,14 +1647,14 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### ListDataSources
+#### 4.1.13 ListDataSources
+
+调用ListDataSources接口，查询DataWorks数据源列表。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | ListDataSources | 系统规定参数。取值： ListDataSources。 |
 |---|---|---|---|---|
@@ -1476,27 +1668,21 @@ DataWorks
 | PageSize | Integer | 否 | 10 | 每页显示的条数，默认为10条，最大为 100条。 |
 | PageNumber | Integer | 否 | 1 | 分页查询的页码。取值为大于等于1的正整数。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 数据源的查询结果。 |
-| DataSources | Array of DataSources |  | 数据源列表。 |
+| Data | Struct |   | 数据源的查询结果。 |
+| DataSources | Array of DataSources |   | 数据源列表。 |
 | BindingCalcEn gineId | Integer | 123 | 数据源关联的计算引擎ID。 |
 | ConnectStatus | Integer | 1 | 数据源的状态。取值如下： 1，表示数据源正常使用。 2，表示数据源已禁用。 |
-|  |  |  | 数据连接串的相关信息。格式为JSON格式。常用的数据源对应的连接串样例如下： MaxCompute json { "pubEndpoint": "http://service.cn.maxcompute.aliy un.com/api", "accessId": "xxxxxxx", "securityToken": null, "endpoint": "http://service.cn.maxcompute.aliy un-inc.com/api", "accessKey": "***", "name": "PRE PROJECT A engine", _ _ _ "project": "PRE PROJECT A", _ _ "vpcEndpoint": "http://service.cn.maxcompute.aliy un-inc.com/api", "region": "cn-shanghai", "authType": "2" } mysql json { "configType": "1", "database": "mysql d111b", _ "instanceName": "rm-xxxxxx", "password": "***", "rdsOwnerId": "12133xxxxxx", "tag": "rds", "username": "mysql db111" _ } |
-
-DataWorks
+|   |   |   | 数据连接串的相关信息。格式为JSON格式。常用的数据源对应的连接串样例如下： MaxCompute json { "pubEndpoint": "http://service.cn.maxcompute.aliy un.com/api", "accessId": "xxxxxxx", "securityToken": null, "endpoint": "http://service.cn.maxcompute.aliy un-inc.com/api", "accessKey": "***", "name": "PRE PROJECT A engine", _ _ _ "project": "PRE PROJECT A", _ _ "vpcEndpoint": "http://service.cn.maxcompute.aliy un-inc.com/api", "region": "cn-shanghai", "authType": "2" } mysql json { "configType": "1", "database": "mysql d111b", _ "instanceName": "rm-xxxxxx", "password": "***", "rdsOwnerId": "12133xxxxxx", "tag": "rds", "username": "mysql db111" _ } |
 
 | Content | String | {"pubEndpoint":"ht tp://service.cn.max compute.aliyun.co m/api","accessId":" TMP.3KecGjvzy3i8 MYfn2BGHgF7EHG yBFZcHm7GgngrA BVRyvvKQrfF5kskR 36xP361C3dqwbGo 7SGYptAeGyiTwHX qLaBUvYC","securit yToken":null,"endp oint":"http://service .cn.maxcompute.al iyun- inc.com/api","acce ssKey":"***","name ":"PRE PROJECT A _ _ _ engine","project":" PRE PROJECT A","v _ _ pcEndpoint":"http:/ /service.cn.maxco mpute.aliyun- | sqlserver json { "configType": "1", "jdbcUrl": "jdbc:sqlserver://rm- xxxxx.sqlserver.rds.aliyuncs.com:1 433;DatabaseName=sqlserver db1", _ "password": "***", "tag": "public", "username": "sqlserver db111" _ } oss json { "accessId": "LTAINbR9Uxxxx", "accessKey": "***", "bucket": "bigxxx1223", "configType": "1", "endpoint": "http://oss-cn- hangzhou.aliyuncs.com", "tag": "public" |
 |---|---|---|---|
-|  |  | inc.com/api","regio n":"cn- shanghai","authTy pe":"2"} | } postgresql json { "configType": "1", "database": "cdp xxx", _ "instanceName": "rm-xxxx", "password": "***", "rdsOwnerId": "121xxxxx", "tag": "rds", "username": "cdp xxx" _ } redis json { "address": "[{\"host\":\"r- xxxx.redis.rds.aliyuncs.com\",\"po rt\":6379}]", "aliyunKp": "12xxxx", "password": "***", "tag": "public" } ads |
+|   |   | inc.com/api","regio n":"cn- shanghai","authTy pe":"2"} | } postgresql json { "configType": "1", "database": "cdp xxx", _ "instanceName": "rm-xxxx", "password": "***", "rdsOwnerId": "121xxxxx", "tag": "rds", "username": "cdp xxx" _ } redis json { "address": "[{\"host\":\"r- xxxx.redis.rds.aliyuncs.com\",\"po rt\":6379}]", "aliyunKp": "12xxxx", "password": "***", "tag": "public" } ads |
 
-DataWorks
-
-|  |  |  | json { "configType": "1", "password": "***", "schema": "ads demo", _ "tag": "public", "url": "ads-xxx-xxxx.cn- hangzhou- 1.ads.aliyuncs.com:3029", "username": "lslslsls" } |
+|   |   |   | json { "configType": "1", "password": "***", "schema": "ads demo", _ "tag": "public", "url": "ads-xxx-xxxx.cn- hangzhou- 1.ads.aliyuncs.com:3029", "username": "lslslsls" } |
 |---|---|---|---|
 | DataSourceTy pe | String | rds | 数据源的类型。常用类型如下： odps mysql rds oss sqlserver polardb oracle mongodb emr postgresql analyticdb for mysql _ _ hybriddb for postgresql _ _ holo |
 | DefaultEngine | Boolean | false | 数据源关联的引擎是否为同类型数据源选用的默认引擎。 |
@@ -1504,8 +1690,6 @@ DataWorks
 | EnvType | Integer | 1 | 数据源所在的环境。取值如下： 0，开发环境。 1，生产环境。 |
 | GmtCreate | String | Mar 17, 2021 4:09:32 PM | 创建数据源的时间。时间格式示例为Mar 17, 2021 4:09:32 PM。 |
 | GmtModified | String | Mar 17, 2021 4:09:32 PM | 修改数据源的时间。时间格式示例为Mar 17, 2021 4:09:32 PM。 |
-
-DataWorks
 
 | Id | Integer | 1 | 数据源ID。 |
 |---|---|---|---|
@@ -1526,13 +1710,19 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks `&Name=`查询的数据源名称。
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListDataSources
+```
+
+`&Name=`查询的数据源名称。
 
 ```
 &ProjectId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0bc14115159376359****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -1563,10 +1753,9 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc14115159376359****",
     "HttpStatusCode": 200,
     "Data": {
@@ -1593,11 +1782,15 @@ DataWorks
 {\"pubEndpoint\":\"http://service.cn.maxcompute.aliyun.com/api\",\"accessId\":\"TMP.3KecG zy3i8MYfn2BGHgF7EHGyBFZcHm7GgngrABVRyvvKQrfF5kskR36xP361C3dqwbGo7SGYptAeGyiTwHXqLaBUvYC\" "securityToken\":null,\"endpoint\":\"http://service.cn.maxcompute.aliyuninc.com/api\",\"accessKey\":\"***\",\"name\":\"PRE_PROJECT_A_engine\",\"project\":\"PRE_P JECT_A\",\"vpcEndpoint\":\"http://service.cn.maxcompute.aliyuninc.com/api\",\"region\":\"cn-shanghai\",\"authType\":\"2\"}",
             "DataSourceType": "rds",
             "Id": 1
-        }
-    },
-    "Success": true
-}
 ```
+
+`}` `},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -1608,12 +1801,12 @@ DataWorks
 | 403 | Invalid.Tenant.User IsNotProjectOwner OrAdmin | The user is not a project administrator or owner. | 用户不是项目负责人或者项目管理员。 |
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 
-DataWorks
-
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 |---|---|---|---|
 
-#### ListCalcEngines
+#### 4.1.14 ListCalcEngines
+
+调用ListCalcEngines查看计算引擎列表。
 
 **请求参数**
 
@@ -1632,265 +1825,253 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 计算引擎的分页查询结果。 |
-| CalcEngines | Array of CalcEngines |  | 计算引擎列表。 |
+| Data | Struct |   | 计算引擎的分页查询结果。 |
+| CalcEngines | Array of CalcEngines |   | 计算引擎列表。 |
 | BindingProjectI d | Integer | 27 | 计算引擎绑定的工作空间ID。 |
 
-DataWorks
-
-|  |  | BindingProject Name |  | String |  |  | abc |  | 计算引擎关联的工作空间名称。 |  |  |  |  |
+|   |   | BindingProject Name |   | String |   |   | abc |   | 计算引擎关联的工作空间名称。 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  | CalcEngineTyp e |  | String |  |  | ODPS |  | 计算引擎类型。值枚举列表 ODPSEMRBLINKHOLOMaxGraphHYBRIDDB FOR POSTGRESQLADB MYSQLHADOOP C _ _ _ _ DH |  |  |  |  |
-|  |  | DwRegion |  | String |  |  | cn-zhangjiakou |  | 计算引擎关联的Dataworks工作空间所在的地域。 |  |  |  |  |
-|  |  | EngineId |  | Integer |  |  | 35 |  | 计算引擎ID。 |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 计算引擎的详细信息。 ODPS { "pubEndpoint": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | { |  |
-|  |  |  |  |  |  |  |  |  |  | "pubEndpoint": |  |  |  |
-|  |  |  |  |  |  |  |  |  | "service.cn.maxcompute.aliyun.com/a |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | pi", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "endpoint": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "service.cn.maxcompute.aliyun- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | inc.com/api", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "resourceGroupType": "ODPS", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "resourceGroupId": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "361826516****", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "vpcEndpoint": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "service.cn.maxcompute.aliyun- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | inc.com/api", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "projectName": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "onefall test zjk", _ _ |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "taskSameAsOwner": "true" |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | } |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | { |  |  |
-|  |  |  |  |  |  |  |  |  |  | "emrClusterId": "C-xxx", |  |  |  |
-|  |  |  |  |  |  |  |  |  | "specs": " |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | {\"emrClusterId\":\"C- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxx\",\"emrAccessMode\":\"simple\", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | \"emrResourceQueueName\":\"default\ |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ",\"emrProjectId\":\"FP-xxx\"}", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "endpoint": "emr.aliyuncs.com", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "emrResourceQueueName": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "default", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "emrAccessMode": "simple", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "resourceGroupType": "DW", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "projectName": "xx-xxxx", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "emrProjectId": "FP-xxxx", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "taskSameAsOwner": "false" |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | } |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | { |  |
-|  |  |  |  |  |  |  |  |  |  | "bayesProjectId": "xxxx", |  |  |  |
-|  |  |  |  |  |  |  |  |  | "bayesProjectName": |  |  |  |  |
+|   |   | CalcEngineTyp e |   | String |   |   | ODPS |   | 计算引擎类型。值枚举列表 ODPSEMRBLINKHOLOMaxGraphHYBRIDDB FOR POSTGRESQLADB MYSQLHADOOP C _ _ _ _ DH |   |   |   |   |
+|   |   | DwRegion |   | String |   |   | cn-zhangjiakou |   | 计算引擎关联的Dataworks工作空间所在的地域。 |   |   |   |   |
+|   |   | EngineId |   | Integer |   |   | 35 |   | 计算引擎ID。 |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 计算引擎的详细信息。 ODPS { "pubEndpoint": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | { |   |
+|   |   |   |   |   |   |   |   |   |   | "pubEndpoint": |   |   |   |
+|   |   |   |   |   |   |   |   |   | "service.cn.maxcompute.aliyun.com/a |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | pi", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "endpoint": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "service.cn.maxcompute.aliyun- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | inc.com/api", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "resourceGroupType": "ODPS", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "resourceGroupId": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "361826516****", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "vpcEndpoint": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "service.cn.maxcompute.aliyun- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | inc.com/api", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "projectName": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "onefall test zjk", _ _ |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "taskSameAsOwner": "true" |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | } |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | { |   |   |
+|   |   |   |   |   |   |   |   |   |   | "emrClusterId": "C-xxx", |   |   |   |
+|   |   |   |   |   |   |   |   |   | "specs": " |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | {\"emrClusterId\":\"C- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxx\",\"emrAccessMode\":\"simple\", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | \"emrResourceQueueName\":\"default\ |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ",\"emrProjectId\":\"FP-xxx\"}", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "endpoint": "emr.aliyuncs.com", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "emrResourceQueueName": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "default", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "emrAccessMode": "simple", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "resourceGroupType": "DW", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "projectName": "xx-xxxx", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "emrProjectId": "FP-xxxx", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "taskSameAsOwner": "false" |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | } |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | { |   |
+|   |   |   |   |   |   |   |   |   |   | "bayesProjectId": "xxxx", |   |   |   |
+|   |   |   |   |   |   |   |   |   | "bayesProjectName": |   |   |   |   |
 
-DataWorks
-
-|  |  |  |  |  |  | "xc blxxixxxnk 1", _ _ |  |  |  |
+|   |   |   |   |   |   | "xc blxxixxxnk 1", _ _ |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | "cluster": "xxxssxsx", |  |  |  |
-|  |  |  |  |  |  | "endpoint": |  |  |  |
-|  |  |  |  |  |  | "https://stream.console.aliyun.com" |  |  |  |
-|  |  |  |  |  |  | , |  |  |  |
-|  |  |  |  |  |  | "engineType": "BLINK", |  |  |  |
-|  |  |  |  |  |  | "name": "xsxsxxxxx", |  |  |  |
-|  |  |  |  |  |  | "projectName": |  |  |  |
-|  |  |  |  |  |  | "xc blxxxsxink 1", _ _ |  |  |  |
-|  |  |  |  |  |  | "queue": |  |  |  |
-|  |  |  |  |  |  | "root.xc blxsxxxxxxink 1", _ _ |  |  |  |
-|  |  |  |  |  |  | "resourceGroupType": "DW", |  |  |  |
-|  |  |  |  |  |  | "specs": " |  |  |  |
-|  |  |  |  |  |  | {\"cluster\":\"xxxxxx\",\"bayesProj |  |  |  |
-|  |  |  |  |  |  | ectName\":\"xc blxxixxxnk 1\",\"bay _ _ |  |  |  |
-|  |  |  |  |  |  | esProjectId\":\"ssxxxsa\",\"name\": |  |  |  |
-|  |  |  |  |  |  | \"sxsxsxxx\",\"queue\":\"root.sxxsx |  |  |  |
-|  |  |  |  |  |  | xsx\"}", |  |  |  |
-|  |  |  |  |  |  | "taskSameAsOwner": false |  |  |  |
-|  |  |  |  |  |  | } |  |  |  |
-|  |  |  |  |  |  |  |  | { |  |
-|  |  |  |  |  |  |  | "endpoint": "hgprecn-cn- |  |  |
-|  |  |  |  |  |  | xsxssxsx-cn-shanghai- |  |  |  |
-|  |  |  |  |  |  | internal.hologres.aliyuncs.com:80", |  |  |  |
-|  |  |  |  |  |  | "engineType": "ODPS", |  |  |  |
-|  |  |  |  |  |  | "odpsEndpoint": "hgprecn-cn- |  |  |  |
-|  |  |  |  |  |  | xsxssxxs-cn-shanghai- |  |  |  |
-|  |  |  |  |  |  | internal.hologres.aliyuncs.com:80", |  |  |  |
-|  |  |  |  |  |  | "odpsProjectName": "xsxssxsxsx", |  |  |  |
-|  |  |  |  |  |  | "projectName": "xsxssxsxsx", |  |  |  |
-|  |  |  |  |  |  | "resourceGroupType": "DW", |  |  |  |
-|  |  |  |  |  |  | "specs": " |  |  |  |
-|  |  |  |  |  |  | {\"pubEndpoint\":\"hgprecn-cn- |  |  |  |
-|  |  |  |  |  |  | xsxssxsxs-cn- |  |  |  |
-|  |  |  |  |  |  | shanghai.hologres.aliyuncs.com:80\" |  |  |  |
-|  |  |  |  |  |  | ,\"commonBuyInstanceId\":\"hgprecn- |  |  |  |
-|  |  |  |  |  |  | cn- |  |  |  |
-|  |  |  |  |  |  | xsxsxsxs\",\"project\":\"holo upxsx _ |  |  |  |
-|  |  |  |  |  |  | grade1\",\"common buy instance id\" _ _ _ |  |  |  |
-|  |  |  |  |  |  | :\"hgprecn-cn- |  |  |  |
-|  |  |  |  |  |  | xsxsxs\",\"endpoint\":\"hgprecn- |  |  |  |
-|  |  |  |  |  |  | cn-xsxxsxs-cn-shanghai- |  |  |  |
-|  |  |  |  |  |  | internal.hologres.aliyuncs.com:80\" |  |  |  |
-|  |  |  |  |  |  | ,\"port\":\"80\",\"host\":\"hgprecn |  |  |  |
-|  |  |  |  |  |  | -cn-xsxsxsxs-cn-shanghai- |  |  |  |
-|  |  |  |  |  |  | internal.hologres.aliyuncs.com\",\" |  |  |  |
-|  |  |  |  |  |  | vpcEndpoint\":\"hgprecn-cn- |  |  |  |
-|  |  |  |  |  |  | xsxsxsxs-cn-shanghai- |  |  |  |
-|  |  |  |  |  |  | vpc.hologres.aliyuncs.com:80\",\"au |  |  |  |
-|  |  |  |  |  |  | thType\":2,\"region\":\"cn- |  |  |  |
-|  |  |  |  |  |  | shanghai\"}", |  |  |  |
+|   |   |   |   |   |   | "cluster": "xxxssxsx", |   |   |   |
+|   |   |   |   |   |   | "endpoint": |   |   |   |
+|   |   |   |   |   |   | "https://stream.console.aliyun.com" |   |   |   |
+|   |   |   |   |   |   | , |   |   |   |
+|   |   |   |   |   |   | "engineType": "BLINK", |   |   |   |
+|   |   |   |   |   |   | "name": "xsxsxxxxx", |   |   |   |
+|   |   |   |   |   |   | "projectName": |   |   |   |
+|   |   |   |   |   |   | "xc blxxxsxink 1", _ _ |   |   |   |
+|   |   |   |   |   |   | "queue": |   |   |   |
+|   |   |   |   |   |   | "root.xc blxsxxxxxxink 1", _ _ |   |   |   |
+|   |   |   |   |   |   | "resourceGroupType": "DW", |   |   |   |
+|   |   |   |   |   |   | "specs": " |   |   |   |
+|   |   |   |   |   |   | {\"cluster\":\"xxxxxx\",\"bayesProj |   |   |   |
+|   |   |   |   |   |   | ectName\":\"xc blxxixxxnk 1\",\"bay _ _ |   |   |   |
+|   |   |   |   |   |   | esProjectId\":\"ssxxxsa\",\"name\": |   |   |   |
+|   |   |   |   |   |   | \"sxsxsxxx\",\"queue\":\"root.sxxsx |   |   |   |
+|   |   |   |   |   |   | xsx\"}", |   |   |   |
+|   |   |   |   |   |   | "taskSameAsOwner": false |   |   |   |
+|   |   |   |   |   |   | } |   |   |   |
+|   |   |   |   |   |   |   |   | { |   |
+|   |   |   |   |   |   |   | "endpoint": "hgprecn-cn- |   |   |
+|   |   |   |   |   |   | xsxssxsx-cn-shanghai- |   |   |   |
+|   |   |   |   |   |   | internal.hologres.aliyuncs.com:80", |   |   |   |
+|   |   |   |   |   |   | "engineType": "ODPS", |   |   |   |
+|   |   |   |   |   |   | "odpsEndpoint": "hgprecn-cn- |   |   |   |
+|   |   |   |   |   |   | xsxssxxs-cn-shanghai- |   |   |   |
+|   |   |   |   |   |   | internal.hologres.aliyuncs.com:80", |   |   |   |
+|   |   |   |   |   |   | "odpsProjectName": "xsxssxsxsx", |   |   |   |
+|   |   |   |   |   |   | "projectName": "xsxssxsxsx", |   |   |   |
+|   |   |   |   |   |   | "resourceGroupType": "DW", |   |   |   |
+|   |   |   |   |   |   | "specs": " |   |   |   |
+|   |   |   |   |   |   | {\"pubEndpoint\":\"hgprecn-cn- |   |   |   |
+|   |   |   |   |   |   | xsxssxsxs-cn- |   |   |   |
+|   |   |   |   |   |   | shanghai.hologres.aliyuncs.com:80\" |   |   |   |
+|   |   |   |   |   |   | ,\"commonBuyInstanceId\":\"hgprecn- |   |   |   |
+|   |   |   |   |   |   | cn- |   |   |   |
+|   |   |   |   |   |   | xsxsxsxs\",\"project\":\"holo upxsx _ |   |   |   |
+|   |   |   |   |   |   | grade1\",\"common buy instance id\" _ _ _ |   |   |   |
+|   |   |   |   |   |   | :\"hgprecn-cn- |   |   |   |
+|   |   |   |   |   |   | xsxsxs\",\"endpoint\":\"hgprecn- |   |   |   |
+|   |   |   |   |   |   | cn-xsxxsxs-cn-shanghai- |   |   |   |
+|   |   |   |   |   |   | internal.hologres.aliyuncs.com:80\" |   |   |   |
+|   |   |   |   |   |   | ,\"port\":\"80\",\"host\":\"hgprecn |   |   |   |
+|   |   |   |   |   |   | -cn-xsxsxsxs-cn-shanghai- |   |   |   |
+|   |   |   |   |   |   | internal.hologres.aliyuncs.com\",\" |   |   |   |
+|   |   |   |   |   |   | vpcEndpoint\":\"hgprecn-cn- |   |   |   |
+|   |   |   |   |   |   | xsxsxsxs-cn-shanghai- |   |   |   |
+|   |   |   |   |   |   | vpc.hologres.aliyuncs.com:80\",\"au |   |   |   |
+|   |   |   |   |   |   | thType\":2,\"region\":\"cn- |   |   |   |
+|   |   |   |   |   |   | shanghai\"}", |   |   |   |
 
-DataWorks
-
-|  |  |  |  |  |  |  |  |  |  | "taskSameAsOwner": false } MaxGraph { "endpoint": "http://pre- |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   | "taskSameAsOwner": false } MaxGraph { "endpoint": "http://pre- |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  | "taskSameAsOwner": false |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | } |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | {"pubEndpoint":"ht |  |  |  | { |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | "endpoint": "http://pre- |  |  |  |  |
-|  |  |  |  |  |  |  |  | tp://service.cn.max |  | graphcompute.aliyuncs.com", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | compute.aliyun.co |  | "engineType": "ODPS", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | m/api","endpoint":" |  | "odpsEndpoint": "http://pre- |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | http://service.cn.m |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | axcompute.aliyun- |  | graphcompute.aliyuncs.com", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | inc.com/api","resou |  | "odpsProjectName": "xsxsxsxs", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | rceGroupType":"O |  | "projectName": "xsxsxsxs", |  |  |  |  |  |
-|  |  |  | EngineInfo |  |  | Map |  | DPS","resourceGro |  | "resourceGroupType": "DW", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | upId":"361826516* |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "taskSameAsOwner": false |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | ***","vpcEndpoint": |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | "http://service.cn. |  | } |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | maxcompute.aliyu n- inc.com/api","proje ctName":"onefall t |  |  |  |  |  | { |  |
-|  |  |  |  |  |  |  |  |  |  |  | _ _ "endpoint": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | e":"onefall t | "hybriddb for postgresql mo12121ck _ _ _ _ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | _ est zjk","taskSame | _ |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | endpoint", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | _ |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | AsOwner":"true"} |  | "engineType": "ODPS", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "odpsEndpoint": |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "hybriddb for postgresql m121212ock _ _ _ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | endpoint", _ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "odpsProjectName": |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "sxasaxsaxaxas", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "projectName": "sxasaxsaxaxas", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "resourceGroupType": "DW", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "specs": " |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | {\"connectionString\":\"gp- |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | xsxsxsxxs.gpdb.rds.aliyuncs.com\",\ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "database\":\"xsxsxxsxs\",\"passwor |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | d\":\"xxxxxxx\",\"instanceId\":\"gp |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | - |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | cdcdacdacda\",\"port\":\"3432\",\"o |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | wnerId\":\"12121212\",\"username\": |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | \"sdasaddsa\"}", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "taskSameAsOwner": false |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | } |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | { |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | _ "endpoint": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "adb mysql mock endpoint", _ _ _ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "engineType": "ODPS", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "odpsEndpoint": |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "adb mysql mock endpoint", _ _ _ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "odpsProjectName": "am- |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | xsaxaxa", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "projectName": "am-xsxsaxa", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "resourceGroupType": "DW", |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "specs": " |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | {\"connectionString\":\"am- |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | xsaxsa.ads.aliyuncs.com:3306\",\"da |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | tabase\":\"xsaxsaxa\",\"password\": |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | \"xsaxsaxassxsa\",\"instanceId\":\" |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | am- |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | xsaxsasx\",\"username\":\"xsaxsadsd |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   | "taskSameAsOwner": false |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | } |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | {"pubEndpoint":"ht |   |   |   | { |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | "endpoint": "http://pre- |   |   |   |   |
+|   |   |   |   |   |   |   |   | tp://service.cn.max |   | graphcompute.aliyuncs.com", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | compute.aliyun.co |   | "engineType": "ODPS", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | m/api","endpoint":" |   | "odpsEndpoint": "http://pre- |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | http://service.cn.m |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | axcompute.aliyun- |   | graphcompute.aliyuncs.com", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | inc.com/api","resou |   | "odpsProjectName": "xsxsxsxs", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | rceGroupType":"O |   | "projectName": "xsxsxsxs", |   |   |   |   |   |
+|   |   |   | EngineInfo |   |   | Map |   | DPS","resourceGro |   | "resourceGroupType": "DW", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | upId":"361826516* |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "taskSameAsOwner": false |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | ***","vpcEndpoint": |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | "http://service.cn. |   | } |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | maxcompute.aliyu n- inc.com/api","proje ctName":"onefall t |   |   |   |   |   | { |   |
+|   |   |   |   |   |   |   |   |   |   |   | _ _ "endpoint": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | e":"onefall t | "hybriddb for postgresql mo12121ck _ _ _ _ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | _ est zjk","taskSame | _ |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | endpoint", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | _ |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | AsOwner":"true"} |   | "engineType": "ODPS", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "odpsEndpoint": |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "hybriddb for postgresql m121212ock _ _ _ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | endpoint", _ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "odpsProjectName": |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "sxasaxsaxaxas", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "projectName": "sxasaxsaxaxas", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "resourceGroupType": "DW", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "specs": " |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | {\"connectionString\":\"gp- |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | xsxsxsxxs.gpdb.rds.aliyuncs.com\",\ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "database\":\"xsxsxxsxs\",\"passwor |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | d\":\"xxxxxxx\",\"instanceId\":\"gp |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | - |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | cdcdacdacda\",\"port\":\"3432\",\"o |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | wnerId\":\"12121212\",\"username\": |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | \"sdasaddsa\"}", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "taskSameAsOwner": false |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | } |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | { |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | _ "endpoint": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "adb mysql mock endpoint", _ _ _ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "engineType": "ODPS", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "odpsEndpoint": |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "adb mysql mock endpoint", _ _ _ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "odpsProjectName": "am- |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | xsaxaxa", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "projectName": "am-xsxsaxa", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "resourceGroupType": "DW", |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "specs": " |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | {\"connectionString\":\"am- |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | xsaxsa.ads.aliyuncs.com:3306\",\"da |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | tabase\":\"xsaxsaxa\",\"password\": |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | \"xsaxsaxassxsa\",\"instanceId\":\" |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | am- |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | xsaxsasx\",\"username\":\"xsaxsadsd |   |   |   |   |   |
 
-DataWorks
-
-|  |  |  |  |  | \"}", "taskSameAsOwner": false } HADOOP CDH { _ "bindingBaseId": "xsaxsaxs", |  |  |
+|   |   |   |   |   | \"}", "taskSameAsOwner": false } HADOOP CDH { _ "bindingBaseId": "xsaxsaxs", |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  | \"}", |  |  |
-|  |  |  |  |  | "taskSameAsOwner": false |  |  |
-|  |  |  |  |  | } |  |  |
-|  |  |  |  |  |  |  | { |
-|  |  |  |  |  |  | _ "bindingBaseId": "xsaxsaxs", |  |
-|  |  |  |  |  | "endpoint": "xsaaaaa", |  |  |
-|  |  |  |  |  | "engineType": "ODPS", |  |  |
-|  |  |  |  |  | "odpsEndpoint": "axsxaxssxs", |  |  |
-|  |  |  |  |  | "odpsProjectName": "ssxxax", |  |  |
-|  |  |  |  |  | "projectName": "xsaxsaxsa", |  |  |
-|  |  |  |  |  | "resourceGroupId": 45208xxxxxx, |  |  |
-|  |  |  |  |  | "resourceGroupType": "GATEWAY", |  |  |
-|  |  |  |  |  | "specs": "{\"cluster\": |  |  |
-|  |  |  |  |  | {\"hive\": |  |  |
-|  |  |  |  |  | {\"hiveServer2Url\":\"jdbc:hive2:// |  |  |
-|  |  |  |  |  | xxxxxxer-1-cn-shanghai-pre- |  |  |
-|  |  |  |  |  | kerberos- |  |  |
-|  |  |  |  |  | 1:10000\",\"hiveMetastore\":\"thrif |  |  |
-|  |  |  |  |  | t://xxxxxxxr-1-cn-shanghai-pre- |  |  |
-|  |  |  |  |  | kerberos- |  |  |
-|  |  |  |  |  | 1:9083\",\"version\":\"2.1.1\"},\"c |  |  |
-|  |  |  |  |  | onfigFiles\": |  |  |
-|  |  |  |  |  | {\"coreSite\":\"4534574xxxxxx\",\"h |  |  |
-|  |  |  |  |  | dfsSite\":\"453457919xxxxxxx\",\"ma |  |  |
-|  |  |  |  |  | predSite\":\"45345750xxxxxx\",\"yar |  |  |
-|  |  |  |  |  | nSite\":\"4534575xxxxx\",\"krb5Conf |  |  |
-|  |  |  |  |  | \":\"4534576xxxxx1\",\"hiveSite\":\ |  |  |
-|  |  |  |  |  | "453457xxxxx20\"},\"spark\": |  |  |
-|  |  |  |  |  | {\"version\":\"2.4.0\"},\"cdh\": |  |  |
-|  |  |  |  |  | {\"version\":\"6.3.2\"},\"hdfs\": |  |  |
-|  |  |  |  |  | {\"version\":\"3.0.0\"},\"impala\": |  |  |
-|  |  |  |  |  | {\"impalaUrl\":\"jdbc:impala://cdh- |  |  |
-|  |  |  |  |  | xsxssxxsx-1-cn-shanghai-pre- |  |  |
-|  |  |  |  |  | kerberos- |  |  |
-|  |  |  |  |  | 1:21050\",\"version\":\"3.2.0\"},\" |  |  |
-|  |  |  |  |  | yarn\":{\"YarnUrl\":\"http://cdh- |  |  |
-|  |  |  |  |  | xsxsxsxsxs-1-cn-shanghai-pre- |  |  |
-|  |  |  |  |  | kerberos- |  |  |
-|  |  |  |  |  | 1:8032\",\"webUrl\":\"http://cdh- |  |  |
-|  |  |  |  |  | xsxsxssxxssx-1-cn-shanghai-pre- |  |  |
-|  |  |  |  |  | kerberos- |  |  |
-|  |  |  |  |  | 1:8088\",\"version\":\"3.0.0\"},\"p |  |  |
-|  |  |  |  |  | resto\": |  |  |
-|  |  |  |  |  | {\"prestoUrl\":\"jdbc:presto://cdh- |  |  |
-|  |  |  |  |  | xssxsxxsxsxs-1-cn-shanghai-pre- |  |  |
-|  |  |  |  |  | kerberos- |  |  |
-|  |  |  |  |  | 1:8080/hive/default\",\"version\":\ |  |  |
-|  |  |  |  |  | "0.244.1\"}},\"instanceId\":161sdad |  |  |
-|  |  |  |  |  | s733,\"authDetail\": |  |  |
-|  |  |  |  |  | {\"principal\":\"hive@HADOOP.COM\", |  |  |
-|  |  |  |  |  | \"keytabFileId\":\"45345815xsxsxs3\ |  |  |
-|  |  |  |  |  | ",\"type\":\"kerberos\",\"username\ |  |  |
-|  |  |  |  |  | ":\"xsxsxsxsa@HADOOP.COM\"},\"resGr |  |  |
+|   |   |   |   |   | \"}", |   |   |
+|   |   |   |   |   | "taskSameAsOwner": false |   |   |
+|   |   |   |   |   | } |   |   |
+|   |   |   |   |   |   |   | { |
+|   |   |   |   |   |   | _ "bindingBaseId": "xsaxsaxs", |   |
+|   |   |   |   |   | "endpoint": "xsaaaaa", |   |   |
+|   |   |   |   |   | "engineType": "ODPS", |   |   |
+|   |   |   |   |   | "odpsEndpoint": "axsxaxssxs", |   |   |
+|   |   |   |   |   | "odpsProjectName": "ssxxax", |   |   |
+|   |   |   |   |   | "projectName": "xsaxsaxsa", |   |   |
+|   |   |   |   |   | "resourceGroupId": 45208xxxxxx, |   |   |
+|   |   |   |   |   | "resourceGroupType": "GATEWAY", |   |   |
+|   |   |   |   |   | "specs": "{\"cluster\": |   |   |
+|   |   |   |   |   | {\"hive\": |   |   |
+|   |   |   |   |   | {\"hiveServer2Url\":\"jdbc:hive2:// |   |   |
+|   |   |   |   |   | xxxxxxer-1-cn-shanghai-pre- |   |   |
+|   |   |   |   |   | kerberos- |   |   |
+|   |   |   |   |   | 1:10000\",\"hiveMetastore\":\"thrif |   |   |
+|   |   |   |   |   | t://xxxxxxxr-1-cn-shanghai-pre- |   |   |
+|   |   |   |   |   | kerberos- |   |   |
+|   |   |   |   |   | 1:9083\",\"version\":\"2.1.1\"},\"c |   |   |
+|   |   |   |   |   | onfigFiles\": |   |   |
+|   |   |   |   |   | {\"coreSite\":\"4534574xxxxxx\",\"h |   |   |
+|   |   |   |   |   | dfsSite\":\"453457919xxxxxxx\",\"ma |   |   |
+|   |   |   |   |   | predSite\":\"45345750xxxxxx\",\"yar |   |   |
+|   |   |   |   |   | nSite\":\"4534575xxxxx\",\"krb5Conf |   |   |
+|   |   |   |   |   | \":\"4534576xxxxx1\",\"hiveSite\":\ |   |   |
+|   |   |   |   |   | "453457xxxxx20\"},\"spark\": |   |   |
+|   |   |   |   |   | {\"version\":\"2.4.0\"},\"cdh\": |   |   |
+|   |   |   |   |   | {\"version\":\"6.3.2\"},\"hdfs\": |   |   |
+|   |   |   |   |   | {\"version\":\"3.0.0\"},\"impala\": |   |   |
+|   |   |   |   |   | {\"impalaUrl\":\"jdbc:impala://cdh- |   |   |
+|   |   |   |   |   | xsxssxxsx-1-cn-shanghai-pre- |   |   |
+|   |   |   |   |   | kerberos- |   |   |
+|   |   |   |   |   | 1:21050\",\"version\":\"3.2.0\"},\" |   |   |
+|   |   |   |   |   | yarn\":{\"YarnUrl\":\"http://cdh- |   |   |
+|   |   |   |   |   | xsxsxsxsxs-1-cn-shanghai-pre- |   |   |
+|   |   |   |   |   | kerberos- |   |   |
+|   |   |   |   |   | 1:8032\",\"webUrl\":\"http://cdh- |   |   |
+|   |   |   |   |   | xsxsxssxxssx-1-cn-shanghai-pre- |   |   |
+|   |   |   |   |   | kerberos- |   |   |
+|   |   |   |   |   | 1:8088\",\"version\":\"3.0.0\"},\"p |   |   |
+|   |   |   |   |   | resto\": |   |   |
+|   |   |   |   |   | {\"prestoUrl\":\"jdbc:presto://cdh- |   |   |
+|   |   |   |   |   | xssxsxxsxsxs-1-cn-shanghai-pre- |   |   |
+|   |   |   |   |   | kerberos- |   |   |
+|   |   |   |   |   | 1:8080/hive/default\",\"version\":\ |   |   |
+|   |   |   |   |   | "0.244.1\"}},\"instanceId\":161sdad |   |   |
+|   |   |   |   |   | s733,\"authDetail\": |   |   |
+|   |   |   |   |   | {\"principal\":\"hive@HADOOP.COM\", |   |   |
+|   |   |   |   |   | \"keytabFileId\":\"45345815xsxsxs3\ |   |   |
+|   |   |   |   |   | ",\"type\":\"kerberos\",\"username\ |   |   |
+|   |   |   |   |   | ":\"xsxsxsxsa@HADOOP.COM\"},\"resGr |   |   |
 
-DataWorks
-
-|  |  |  | oupStatus\":\"\",\"hadoopAuthType\" |  |
+|   |   |   | oupStatus\":\"\",\"hadoopAuthType\" |   |
 |---|---|---|---|---|
-|  |  |  | :\"kerberos\",\"clusterIdentifier\" |  |
-|  |  |  | :\"xssxsxsxsx\",\"clusterId\":xsxsx |  |
-|  |  |  | ,\"resGroupId\":4520870619xsxssxxs, |  |
-|  |  |  | \"accessMode\":\"security\",\"authT |  |
-|  |  |  | ype\":2}", |  |
-|  |  |  | "taskSameAsOwner": false |  |
-|  |  |  | } |  |
-| EnvType | String | PRD |  |  |
-| GmtCreate | String | Oct 10, 2019 3:42:44 PM | 计算引擎的创建时间。时间戳 |  |
-| IsDefault | Boolean | true | 是否为当前类型的默认计算引擎。 |  |
-| Name | String | abc | 计算引擎的显示名称。 |  |
-| Region | String | cn-zhangjiakou | 计算引擎所在的地域。 |  |
-| TaskAuthType | String | PROJECT | 计算引擎的访问身份。 USER 当前用户 PROJECT 项目执行用户 SUBACCOUNT 子账号 STS ROLE sts角色 _ |  |
-| TenantId | Long | 1234567 | 租户ID。 |  |
-| PageNumber | Integer | 1 | 页码。 |  |
-| PageSize | Integer | 20 | 每页显示的条数，默认为10条，最大100条。 |  |
-| TotalCount | Integer | 1 | 计算引擎的总数。 |  |
-| HttpStatusCod e | Integer | 200 | HTTP状态码。 |  |
-| RequestId | String | 0bc1ec92159376** ** | 请求ID。 |  |
-| Success | Boolean | true | 是否成功查看计算引擎列表。 |  |
+|   |   |   | :\"kerberos\",\"clusterIdentifier\" |   |
+|   |   |   | :\"xssxsxsxsx\",\"clusterId\":xsxsx |   |
+|   |   |   | ,\"resGroupId\":4520870619xsxssxxs, |   |
+|   |   |   | \"accessMode\":\"security\",\"authT |   |
+|   |   |   | ype\":2}", |   |
+|   |   |   | "taskSameAsOwner": false |   |
+|   |   |   | } |   |
+| EnvType | String | PRD |   |   |
+| GmtCreate | String | Oct 10, 2019 3:42:44 PM | 计算引擎的创建时间。时间戳 |   |
+| IsDefault | Boolean | true | 是否为当前类型的默认计算引擎。 |   |
+| Name | String | abc | 计算引擎的显示名称。 |   |
+| Region | String | cn-zhangjiakou | 计算引擎所在的地域。 |   |
+| TaskAuthType | String | PROJECT | 计算引擎的访问身份。 USER 当前用户 PROJECT 项目执行用户 SUBACCOUNT 子账号 STS ROLE sts角色 _ |   |
+| TenantId | Long | 1234567 | 租户ID。 |   |
+| PageNumber | Integer | 1 | 页码。 |   |
+| PageSize | Integer | 20 | 每页显示的条数，默认为10条，最大100条。 |   |
+| TotalCount | Integer | 1 | 计算引擎的总数。 |   |
+| HttpStatusCod e | Integer | 200 | HTTP状态码。 |   |
+| RequestId | String | 0bc1ec92159376** ** | 请求ID。 |   |
+| Success | Boolean | true | 是否成功查看计算引擎列表。 |   |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
-&CalcEngineType=ODPS &Name=abc &ProjectId=27 &RegionId=default
+http(s)://[Endpoint]/?Action=ListCalcEngines &CalcEngineType=ODPS &Name=abc &ProjectId=27 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0bc1ec92159376****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -1916,10 +2097,9 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****",
     "HttpStatusCode": 200,
     "Data": {
@@ -1941,11 +2121,15 @@ DataWorks
             "CalcEngineType": "ODPS",
             "EnvType": "PRD",
             "Name": "abc"
-        }
-    },
-    "Success": true
-}
 ```
+
+`}` `},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -1957,9 +2141,9 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### ListConnections
+#### 4.1.15 ListConnections
 
-DataWorks
+调用ListConnections查询数据源列表。
 
 **请求参数**
 
@@ -1980,13 +2164,11 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 连接串的分页查询结果。 |
-| Connections | Array of Connections |  | 连接串列表。 |
+| Data | Struct |   | 连接串的分页查询结果。 |
+| Connections | Array of Connections |   | 连接串列表。 |
 | BindingCalcEn gineId | Integer | 123 | 数据源关联的计算引擎ID。 |
 | ConnectStatus | Integer | 1 | 数据源的状态。 |
 | ConnectionTyp e | String | mysql | 数据源的类型。 |
-
-DataWorks
 
 | Content | String | {\"database\":\"xxx \",\"instanceName\ ":\"xxx\",\"passwor d\":\"xxx\",\"rdsOw nerId\":\"xxx\",\"tag \":\"rds\",\"usernam e\":\"xxx\"} | 数据源的详细信息。 |
 |---|---|---|---|
@@ -2008,8 +2190,6 @@ DataWorks
 | PageSize | Integer | 20 | 每页的大小。 |
 | TotalCount | Integer | 3 | 数据源的总数。 |
 
-DataWorks
-
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 |---|---|---|---|
 | RequestId | String | 0bc141151593763 59**** | 请求ID。 |
@@ -2020,10 +2200,10 @@ DataWorks
 请求示例
 
 ```
-&Name=abc &ProjectId=76086 &RegionId=default
+http(s)://[Endpoint]/?Action=ListConnections &Name=abc &ProjectId=76086 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc14115159376359****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -2054,10 +2234,9 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc14115159376359****",
     "HttpStatusCode": 200,
     "Data": {
@@ -2084,11 +2263,15 @@ DataWorks `JSON` 格式
             "Content": "
 {\\\"database\\\":\\\"xxx\\\",\\\"instanceName\\\":\\\"xxx\\\",\\\"password\\\":\\\"xxx\\ ,\\\"rdsOwnerId\\\":\\\"xxx\\\",\\\"tag\\\":\\\"rds\\\",\\\"username\\\":\\\"xxx\\\"}",
             "Id": 1
-        }
-    },
-    "Success": true
-}
 ```
+
+`}` `},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -2100,9 +2283,7 @@ DataWorks `JSON` 格式
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-DataWorks
-
-#### ListProjectMembers
+#### 4.1.16 ListProjectMembers
 
 调用ListProjectMembers查询DataWorks工作空间中已存在成员的列表。
 
@@ -2124,11 +2305,9 @@ DataWorks
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 1AFAE64E-D1BE- 432B-A9**** | 请求ID。 |
-| Data | Struct |  | 查询结果。 |
-| - ProjectMembe rList | Array |  | 工作空间的成员列表。 |
-| -- ProjectRoleList | Array |  | 成员所拥有的角色列表。 |
-
-DataWorks
+| Data | Struct |   | 查询结果。 |
+| - ProjectMembe rList | Array |   | 工作空间的成员列表。 |
+| -- ProjectRoleList | Array |   | 成员所拥有的角色列表。 |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2156,49 +2335,42 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListProjectMembers &RegionId=default &ProjectId=27
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"1AFAE64E-D1BE-432B-A9****",
  "Data":{
   "TotalCount":3,
   "PageSize":10,
   "PageNumber":1,
   "ProjectMemberList":[
-   {
-    "Status":"0",
-    "ProjectRoleList":[
-     {
 ```
 
-`"ProjectRoleName":"`项目所有者`",`
+`{`
+
+```json
+    "Status":"0",
+    "ProjectRoleList":[
+```
+
+`{` `"ProjectRoleName":"`项目所有者`",`
 
 ```json
       "ProjectRoleType":"0",
       "ProjectRoleCode":"role_project_guest",
       "ProjectRoleId":24
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "ProjectMemberType":"1",
     "ProjectMemberId":"121",
     "Nick":"zhangsan",
     "ProjectMemberName":"张三"
-   }
 ```
 
-]
-
-```
- }
-}
-```
-
-`XML` 格式 DataWorks
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
 <RequestId>1AFAE64E-D1BE-432B-A9****</RequestId> <Data>
@@ -2231,7 +2403,9 @@ http(s)://[Endpoint]/?Action=ListProjectMembers &RegionId=default &ProjectId=27
 | 400 | 100002001 | Invalid.Tenant.UserNotInProjec t | The user is not in the project. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### ListProjectRoles
+#### 4.1.17 ListProjectRoles
+
+调用ListProjectRoles获取工作空间所有角色的列表。
 
 **请求头**
 
@@ -2241,8 +2415,6 @@ http(s)://[Endpoint]/?Action=ListProjectMembers &RegionId=default &ProjectId=27
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2265,16 +2437,15 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&ProjectId=27 &RegionId=default
+http(s)://[Endpoint]/?Action=ListProjectRoles &ProjectId=27 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1AFAE64E-D1BE-432B-A9****",
     "ProjectRoleList": {
 ```
@@ -2285,11 +2456,9 @@ DataWorks
         "ProjectRoleType": 0,
         "ProjectRoleId": 24,
         "ProjectRoleCode": "role_project_owner"
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>1AFAE64E-D1BE-432B-A9****</RequestId> <ProjectRoleList>
@@ -2310,9 +2479,9 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### ListProjects
+#### 4.1.18 ListProjects
 
-调用ListProjects，分页列出用户所在租户下的DataWorks工作空间列表。 DataWorks
+调用ListProjects，分页列出用户所在租户下的DataWorks工作空间列表。
 
 **请求参数**
 
@@ -2327,10 +2496,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageResult | Struct |  | 查询的结果。 |
+| PageResult | Struct |   | 查询的结果。 |
 | PageNumber | Integer | 1 | 当前的页码。 |
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。 |
-| ProjectList | Array of Project |  | DataWorks工作空间的结果列表。 |
+| ProjectList | Array of Project |   | DataWorks工作空间的结果列表。 |
 | ProjectDescrip tion | String | 测试空间 | 工作空间的详细描述信息。 |
 | ProjectId | Long | 1212 | 工作空间的ID。 |
 | ProjectIdentifi er | String | test | 工作空间的编码。 |
@@ -2340,8 +2509,6 @@ DataWorks
 | ProjectStatusC ode | String | AVAILABLE | 工作空间的状态码。 |
 | TotalCount | Integer | 123 | 结果的总条数。 |
 
-DataWorks
-
 | RequestId | String | 20658801*** | 请求ID。 |
 |---|---|---|---|
 
@@ -2350,10 +2517,10 @@ DataWorks
 请求示例
 
 ```
-&PageNumber=1 &RegionId=default
+http(s)://[Endpoint]/?Action=ListProjects &PageNumber=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>20658801***</RequestId> <PageResult>
@@ -2372,10 +2539,9 @@ DataWorks
 </PageResult>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "20658801***",
     "PageResult": {
         "TotalCount": 123,
@@ -2393,14 +2559,11 @@ DataWorks
 ```json
             "ProjectId": 1212,
             "ProjectDescription": "测试空间"
-        }
-    }
-}
 ```
 
-**错误码**
+`}` `}` `}`
 
-DataWorks
+**错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -2411,7 +2574,7 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### ListProjectIds
+#### 4.1.19 ListProjectIds
 
 调用ListProjectIds，使用目标阿里云账号（包括阿里云主账号或RAM用户）的ID获取其拥有角色权限的 DataWorks工作空间的ID列表。
 
@@ -2430,28 +2593,26 @@ DataWorks
 | ProjectIds | List | 75777 | 返回的DataWorks工作空间ID。 返回结果为目标阿里云账号所拥有角色权限的 DataWorks工作空间的ID列表，此处仅以一个工作空间ID示例。 |
 | RequestId | String | 0b57ff7216278945 532771749d**** | 请求ID。此次请求的唯一标识，用于定位日志， 排查问题。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
-&RegionId=default &UserId=171111
+http(s)://[Endpoint]/?Action=ListProjectIds &RegionId=default &UserId=171111
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0b57ff7216278945532771749d****</RequestId> <ProjectIds>75777</ProjectIds>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0b57ff7216278945532771749d****",
     "ProjectIds": 75777
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2463,7 +2624,7 @@ DataWorks
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### ListResourceGroups
+#### 4.1.20 ListResourceGroups
 
 该接口用于查看指定类型的资源组列表。
 
@@ -2476,8 +2637,6 @@ DataWorks
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 是 | default | 区域ID，为固定值 default。 |
@@ -2486,8 +2645,8 @@ DataWorks
 | BizExtKey | Strin g | Query | 否 | default | 资源组的类别。取值如下： default：公共资源组， 默认值 single：独享资源组 |
 | Resource ManagerR esourceGr oupId | Strin g | Query | 否 | rg-acfmzbn7pti3**** | 资源组 ID。 |
 | Tags | Repe atList | Query | 否 | / | 标签列表。 |
-| -Key | Strin g |  | 否 | Env | 标签键。 |
-| -Value | Strin g |  | 否 | Test | 标签值。 |
+| -Key | Strin g |   | 否 | Env | 标签键。 |
+| -Value | Strin g |   | 否 | Test | 标签值。 |
 
 **返回数据**
 
@@ -2496,7 +2655,7 @@ DataWorks
 | Data | Array | / | 资源组列表。 |
 | -Tags | Array | / | 标签列表。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2508,8 +2667,6 @@ DataWorks
 | -IsDefault | Boolean | true | 是否为默认资源组。取值如下： true：是默认资源组 false：非默认资源组 |
 | -Cluster | String | AY18G | 集群的名称。该参数仅对于 MaxCompute 和 PAI 资源组类型生效。 |
 | -EnableKp | Boolean | false | 是否使用 Kp（关键人）访问。取值如下： true：表示 MaxCompute 引擎使用阿里云账号 UID 作为访问账户的显示名称。 false：表示 MaxCompute 引擎使用阿里云账号名称作为访问账户的显示名称。 其余类型无意义。该参数仅对 MaxCompute 引擎生效。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2527,7 +2684,7 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | 请求返回码。 |
 | RequestId | String | 0bc141151593763 5973**** | 请求 ID。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2542,24 +2699,30 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListResourceGroups &RegionId=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0bc1411515937635973****",
  "HttpStatusCode":200,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "Status":0,
    "IsDefault":true,
    "Tags":[
-    {
-     "Value":"Test",
-     "Key":"Env"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "Value":"Test",
+     "Key":"Env"
+```
+
+`}` `],`
 
 ```json
    "CreateTime":"Jul 9, 2018 2:43:37 PM",
@@ -2576,17 +2739,15 @@ http(s)://[Endpoint]/?Action=ListResourceGroups &RegionId=default
    "UpdateTime":"Jul 9, 2018 2:43:37 PM",
    "Id":10001,
    "Specs":{}
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635973****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -2623,7 +2784,7 @@ http(s)://[Endpoint]/?Action=ListResourceGroups &RegionId=default
 | 403 | 100002002 | Invalid.Tenant.UserIsNotProjec tOwnerOrAdmin | The user is not a project administrator or owner. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### RemoveProjectMemberFromRole
+#### 4.1.21 RemoveProjectMemberFromRole
 
 调用RemoveProjectMemberFromRole，将Dataworks工作空间内的用户从Dataworks角色中移除。
 
@@ -2631,8 +2792,6 @@ http(s)://[Endpoint]/?Action=ListResourceGroups &RegionId=default
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | RemoveProjectM emberFromRole | 系统规定参数。取值： RemoveProjectMemberFromRole。 |
 |---|---|---|---|---|
@@ -2655,19 +2814,19 @@ DataWorks
 http(s)://[Endpoint]/?Action=RemoveProjectMemberFromRole &ProjectId=27 &RegionId=default &RoleCode=role_project_guest &UserId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1AFAE64E-D1BE-432B-A9****</RequestId>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1AFAE64E-D1BE-432B-A9****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2679,7 +2838,9 @@ http(s)://[Endpoint]/?Action=RemoveProjectMemberFromRole &ProjectId=27 &RegionId
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### UpdateConnection
+#### 4.1.22 UpdateConnection
+
+调用UpdateConnection更新一个数据源。
 
 **请求参数**
 
@@ -2687,28 +2848,20 @@ http(s)://[Endpoint]/?Action=RemoveProjectMemberFromRole &ProjectId=27 &RegionId
 |---|---|---|---|---|
 | Action | String | 是 | UpdateConnecti on | 系统规定参数。取值： UpdateConnection。 |
 | ConnectionId | Long | 是 | 1 | 数据源ID。您可以通过ListConnections 接口获取项目空间下的数据源ID。 |
-|  |  |  |  | 数据源的详细信息。部分常用数据源样例如下： odps |
+|   |   |   |   | 数据源的详细信息。部分常用数据源样例如下： odps |
 
-DataWorks
-
-|  |  |  |  | { |
+|   |   |   |   | { |
 |---|---|---|---|---|
-|  |  |  |  | "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } |
-
-DataWorks
+|   |   |   |   | "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } |
 
 | Content | String | 是 | {"database":"db name","instance Name":"instance name","passwor d":"password","r dsOwnerId":"12 3","username":" username"} | sqlserver { "jdbcUrl": "jdbc:sqlserver://xsaxsa- xsaxsa.database.xxx.cn:123;Da tabaseName=xsxs-xsxs", "password": "sdasda$fs", "tag": "public", "username": "sxaxacdacdd" } polardb { "clusterId": "pc- sdadsadsa", "database": "dsadsadsa", "ownerId": "121212122", "password": "sdasdafssa", "region": "cn-shanghai", "tag": "polardb", "username": "asdadsads" } oracle { "jdbcUrl": "jdbc:oracle:saaa:@xxxxx:1521 :PROD", "password": "sxasaxsa", "tag": "public", "username": "sasfadfa" } mongodb { "address": " [\"xsaxxsa.mongodb.rds.aliyun cs.com:3717\"]", "database": "admin", "password": "sadsda@", "tag": "public", "username": "dsadsadas" } emr |
 |---|---|---|---|---|
-| 07 |  |  |  | > 文档版本：2026072 |
+| 07 |   |   |   | > 文档版本：2026072 |
 
-DataWorks
-
-|  |  |  |  | { "accessId": "xsaxsa", "emrClusterId": "C-dsads", "emrResourceQueueName": "default", "emrEndpoint": "emr.aliyuncs.com", "accessKey": "dsadsad", "emrUserId": "224833315798889783", "name": "sasdsadsa", "emrAccessMode": "simple", "region": "cn-shanghai", "authType": "2", "emrProjectId": "FP- sdadsad" } postgresql { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ |
+|   |   |   |   | { "accessId": "xsaxsa", "emrClusterId": "C-dsads", "emrResourceQueueName": "default", "emrEndpoint": "emr.aliyuncs.com", "accessKey": "dsadsad", "emrUserId": "224833315798889783", "name": "sasdsadsa", "emrAccessMode": "simple", "region": "cn-shanghai", "authType": "2", "emrProjectId": "FP- sdadsad" } postgresql { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ |
 |---|---|---|---|---|
 
-DataWorks
-
-|  |  |  |  | { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
+|   |   |   |   | { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
 |---|---|---|---|---|
 | EnvType | Integer | 是 | 1 | 数据源所属的环境，包括0（开发环境）和 1（生产环境）。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
@@ -2716,8 +2869,6 @@ DataWorks
 | Status | String | 否 | ENABLED | 数据源的状态，包括ENABLED（正常）和 DISABLED（异常）。 |
 
 **返回数据**
-
-DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -2731,10 +2882,10 @@ DataWorks
 请求示例
 
 ```json
-&ConnectionId=1 &Content= {"database":"dbname","instanceName":"instancename","password":"password","rdsOwnerId":"12 ,"username":"username"} &EnvType=1 &RegionId=default
+http(s)://[Endpoint]/?Action=UpdateConnection &ConnectionId=1 &Content= {"database":"dbname","instanceName":"instancename","password":"password","rdsOwnerId":"12 ,"username":"username"} &EnvType=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>false</Data> <Success>false</Success>
@@ -2754,40 +2905,32 @@ DataWorks
 | 400 | Invalid.Tenant.Proj ectNotExists | The project does not exist. | 项目不存在。 |
 | 403 | Invalid.Tenant.User IsNotProjectOwner OrAdmin | The user is not a project administrator or owner. | 用户不是项目负责人或者项目管理员。 |
 
-DataWorks
-
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | 用户不在项目中。 |
 |---|---|---|---|
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | 用户不在租户中。 |
 
-#### UpdateDataSource
+#### 4.1.23 UpdateDataSource
+
+调用UpdateDataSource接口，更新数据源。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | UpdateDataSour ce | 系统规定参数。取值： UpdateDataSource。 |
-|  |  |  |  | 需要修改的目标数据源的详细信息。 不支持修改数据源的类型，例如，您不可以修改odps类型的数据源为mysql类型。 部分常用数据源的信息样例如下： odps { "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds |
+|   |   |   |   | 需要修改的目标数据源的详细信息。 不支持修改数据源的类型，例如，您不可以修改odps类型的数据源为mysql类型。 部分常用数据源的信息样例如下： odps { "accessId": "xssssss", "accessKey": "xsaxsaxsa", "authType": 2, "endpoint": "http://service.odps.aliyun.c om/api", "project": "xsaxsax", "tag": "public" } mysql { "database": "xsaxsa", "instanceName": "rm- xsaxsa", "password": "xsaxsa", "rdsOwnerId": "xasxsa", "regionId": "cn-shanghai", "tag": "rds", "username": "xsaxsa" } rds |
 
-DataWorks
-
-|  |  |  |  | { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } |
+|   |   |   |   | { "configType": 1, "tag": "rds", "database": "xsaxsa", "username": "xsaxsa", "password": "xssaxsa$32050", "instanceName": "rm- xsaxs", "rdsOwnerId": "11111111" } oss { "accessId": "sssssxx", "accessKey": "xsaxaxsaxs", "bucket": "xsa-xs-xs", "endpoint": "http://oss- cn-shanghai.aliyuncs.com", "tag": "public" } |
 |---|---|---|---|---|
-|  |  |  |  | sqlserver { "jdbcUrl": "jdbc:sqlserver://xsaxsa- xsaxsa.database.xxx.cn:123;Da tabaseName=xsxs-xsxs", "password": "sdasda$fs", "tag": "public", "username": "sxaxacdacdd" } polardb { "clusterId": "pc- sdadsadsa", "database": "dsadsadsa", "ownerId": "121212122", "password": "sdasdafssa", "region": "cn-shanghai", "tag": "polardb", "username": "asdadsads" } oracle |
-
-DataWorks
+|   |   |   |   | sqlserver { "jdbcUrl": "jdbc:sqlserver://xsaxsa- xsaxsa.database.xxx.cn:123;Da tabaseName=xsxs-xsxs", "password": "sdasda$fs", "tag": "public", "username": "sxaxacdacdd" } polardb { "clusterId": "pc- sdadsadsa", "database": "dsadsadsa", "ownerId": "121212122", "password": "sdasdafssa", "region": "cn-shanghai", "tag": "polardb", "username": "asdadsads" } oracle |
 
 | Content | String | 是 | {"accessId":"xss ssss","accessKey ":"xsaxsaxsa","a uthType":2,"end point":"http://ser vice.odps.aliyun. com/api","projec t":"xsaxsax","tag ":"public"} | { "jdbcUrl": "jdbc:oracle:saaa:@xxxxx:1521 :PROD", "password": "sxasaxsa", "tag": "public", "username": "sasfadfa" } mongodb { "address": " [\"xsaxxsa.mongodb.rds.aliyun cs.com:3717\"]", "database": "admin", "password": "sadsda@", "tag": "public", "username": "dsadsadas" } emr { "accessId": "xsaxsa", "emrClusterId": "C-dsads", "emrResourceQueueName": "default", "emrEndpoint": "emr.aliyuncs.com", "accessKey": "dsadsad", "emrUserId": "224833315798889783", "name": "sasdsadsa", "emrAccessMode": "simple", "region": "cn-shanghai", "authType": "2", "emrProjectId": "FP- sdadsad" } postgresql |
 |---|---|---|---|---|
 
-DataWorks
-
-|  |  |  |  | { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } |
+|   |   |   |   | { "jdbcUrl": "jdbc:postgresql://xxxx:1921/ ssss", "password": "sdadsads", "tag": "public", "username": "sdsasda" } analyticdb for mysql _ _ { "instanceId": "am- sadsada", "database": "xsxsx", "username": "xsxsa", "password": "asdadsa", "connectionString": "am- xssxsxs.ads.aliyuncs.com:3306 " } hybriddb for postgresql _ _ { "connectionString": "gp- xsaxsaxa- master.gpdbmaster.rds.aliyunc s.com", "database": "xsaxsaxas", "password": "xsaxsaxsa@11", "instanceId": "gp- xsaxsaxsa", "port": "541132", "ownerId": "xsaxsaxsas", "username": "sadsad" } holo { "accessId": "xsaxsaxs", "accessKey": "xsaxsaxsa", "database": "xsaxsaxsa", "instanceId": "xsaxa", "tag": "aliyun" } |
 |---|---|---|---|---|
 
-DataWorks
-
-|  |  |  |  | kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
+|   |   |   |   | kafka { "instanceId": "xsax-cn- xsaxsa", "regionId": "cn-shanghai", "tag": "aliyun", "ownerId": "1212121212112" } |
 |---|---|---|---|---|
 | DataSourceId | Long | 是 | 1 | 需要更新的数据源ID。 |
 | EnvType | Integer | 是 | 1 | 数据源所在的环境。取值如下： 0，开发环境。 1，生产环境。 |
@@ -2804,30 +2947,28 @@ DataWorks
 | RequestId | String | 0bc141151593763 59**** | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```json
-&Content= {"accessId":"xssssss","accessKey":"xsaxsaxsa","authType":2,"endpoint":"http://service.odp aliyun.com/api","project":"xsaxsax","tag":"public"} &DataSourceId=1 &EnvType=1 &RegionId=default
+http(s)://[Endpoint]/?Action=UpdateDataSource &Content= {"accessId":"xssssss","accessKey":"xsaxsaxsa","authType":2,"endpoint":"http://service.odp aliyun.com/api","project":"xsaxsax","tag":"public"} &DataSourceId=1 &EnvType=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc14115159376359****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc14115159376359****",
     "HttpStatusCode": 200,
     "Data": true,
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2841,8 +2982,6 @@ DataWorks
 | 400 | MissingParam.Conn ectionStr.Property | You must specify property %s required by the data source connection string. | 数据源连接串信息必填属性缺失 |
 | 400 | DataSource.Check RamRoleFailure | Failed to check the RAM role. AccountId %s. roleArn %s. | 校验数据源权限失败 |
 
-DataWorks
-
 | 400 | DataSource.Conne ctionStrProperty.Pa tternNotMatch | The pattern value %s is invalid. The correct pattern is %s. | 数据源连接串属性不匹配规则 |
 |---|---|---|---|
 | 400 | DataSource.NotFou nd | The specified data source ID %s does not exist. | 数据源不存在 |
@@ -2852,9 +2991,11 @@ DataWorks
 | 400 | Invalid.Operation | You cannot delete the bindingCalcEngine that is bound to the data source. | 数据源绑定的计算引擎不允许删除 |
 | 400 | Required.Paramete r.Empty | You must specify the parameter %s. | 必填参数缺失 |
 
-### 元数据
+### 4.2 元数据
 
-#### AddToMetaCategory
+#### 4.2.1 AddToMetaCategory
+
+调用AddToMetaCategory添加表至指定的类目。
 
 **请求参数**
 
@@ -2871,8 +3012,6 @@ DataWorks
 |---|---|---|---|
 | Data | Boolean | true | 是否成功添加表至指定的类目。 |
 
-DataWorks
-
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
@@ -2885,35 +3024,33 @@ DataWorks
 请求示例
 
 ```
-&CategoryId=5 &RegionId=default &TableGuid=odps.engine_name.table_name
+http(s)://[Endpoint]/?Action=AddToMetaCategory &CategoryId=5 &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
-
-DataWorks
 
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
@@ -2923,7 +3060,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CheckMetaPartition
+#### 4.2.2 CheckMetaPartition
+
+调用CheckMetaPartition检查分区是否存在。
 
 **请求参数**
 
@@ -2939,8 +3078,6 @@ DataWorks
 | DataSourceType | String | 否 | emr | 数据类型，包括odps和emr。 |
 
 **返回数据**
-
-DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -2959,28 +3096,26 @@ DataWorks
 http(s)://[Endpoint]/?Action=CheckMetaPartition &Partition=ds=202005 &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-**错误码**
+`}`
 
-DataWorks
+**错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -3000,11 +3135,11 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-#### CheckMetaTable
+#### 4.2.3 CheckMetaTable
+
+调用CheckMetaTable检查表是否存在。
 
 **请求参数**
-
-DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -3028,23 +3163,23 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &TableGuid=odps.engine_name.table_name
+http(s)://[Endpoint]/?Action=CheckMetaTable &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <Data>true</Data>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "Data": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3065,9 +3200,9 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-DataWorks
+#### 4.2.4 CreateMetaCategory
 
-#### CreateMetaCategory
+调用CreateMetaCategory创建类目。
 
 **请求参数**
 
@@ -3083,7 +3218,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 类目信息。 |
+| Data | Struct |   | 类目信息。 |
 | CategoryId | Long | 223 | 类目的ID。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
@@ -3093,13 +3228,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=CreateMetaCategory &Name=category_name &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -3107,20 +3242,24 @@ http(s)://[Endpoint]/?Action=CreateMetaCategory &Name=category_name &RegionId=de
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
         "CategoryId": 223
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3132,8 +3271,6 @@ http(s)://[Endpoint]/?Action=CreateMetaCategory &Name=category_name &RegionId=de
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
-
-DataWorks
 
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 |---|---|---|---|
@@ -3153,11 +3290,11 @@ DataWorks
 | 500 | Invalid.Meta.Categ oryRelationDuplicat e" | The table is already bound to the category. | 类目已经关联该表。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateTable
+#### 4.2.5 CreateTable
+
+调用CreateTable创建一个MaxCompute的表或视图。
 
 **请求参数**
-
-DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -3176,8 +3313,6 @@ DataWorks
 | Columns.N.Com ment | String | 否 | 备注 | 字段的备注信息。 |
 | IsView | Integer | 否 | 0 | 指定创建视图或创建表： 0为创建表。 1为创建视图。 |
 
-DataWorks
-
 | Visibility | Integer | 否 | 1 | 表或工作空间是否可见： 0为表和工作空间均不可见。 1为表和工作空间均可见。 2为仅工作空间可见。 |
 |---|---|---|---|---|
 | LifeCycle | Integer | 否 | 10 | 表的生命周期。默认取值为空，表示永久存储。 |
@@ -3194,17 +3329,15 @@ DataWorks
 | AppGuid | String | 否 | odps.test | MaxCompute项目的ID，格式为 odps. {projectName}。 |
 | Comment | String | 否 | 备注 | 备注信息。 |
 
-|  | {projectName}。 |
+|   | {projectName}。 |
 |---|---|
-
-DataWorks
 
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | abcdef | 请求ID。 |
-| TaskInfo | Struct |  | 请求任务的信息。 请求任务提交成功后，会被分为多个子任务有序执行。当前子任务执行成功后，才会继续执行下一个子任务，所有子任务执行完毕，该请求任务结束。 如下情况，请求任务会终止，您需要根据错误码信息解决问题后重新发起请求任务： 请求任务提交失败。 请求任务提交成功后，任意子任务执行失败。 |
+| TaskInfo | Struct |   | 请求任务的信息。 请求任务提交成功后，会被分为多个子任务有序执行。当前子任务执行成功后，才会继续执行下一个子任务，所有子任务执行完毕，该请求任务结束。 如下情况，请求任务会终止，您需要根据错误码信息解决问题后重新发起请求任务： 请求任务提交失败。 请求任务提交成功后，任意子任务执行失败。 |
 | Content | String | success | 当前子任务的执行状态详细信息。具体如下： 执行成功，则显示success。 执行失败则显示对应的报错详情。 |
 | NextTaskId | String | abc1 | 即将执行的子任务ID。如果该字段为空，则表示所有子任务均已结束。您可以使用获取到的ID， 从GetDDLJobStatus接口查询对应子任务的状态。 |
 | Status | String | success | 当前执行的子任务的状态信息。取值如下： operating表示子任务正在执行中。 success表示子任务执行成功。 failure表示子任务执行失败。详细的报错信息请参见Content参数。 |
@@ -3215,10 +3348,10 @@ DataWorks
 请求示例
 
 ```
-&Columns.1.ColumnName=columnName1 &Columns.1.ColumnType=string &HasPart=0 &RegionId=default &TableName=tablename
+http(s)://[Endpoint]/?Action=CreateTable &Columns.1.ColumnName=columnName1 &Columns.1.ColumnType=string &HasPart=0 &RegionId=default &TableName=tablename
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TaskInfo>
@@ -3247,7 +3380,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateTableTheme
+#### 4.2.6 CreateTableTheme
 
 调用CreateTableTheme创建主题。不建议使用该API，后续将有新API上线覆盖此功能。
 
@@ -3255,8 +3388,6 @@ DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | CreateTableThe me | 系统规定参数。取值： CreateTableTheme。 |
 |---|---|---|---|---|
@@ -3282,7 +3413,7 @@ DataWorks
 请求示例
 
 ```
-&Level=1
+http(s)://[Endpoint]/?Action=CreateTableTheme &Level=1
 ```
 
 `&Name=`主题名称
@@ -3291,7 +3422,7 @@ DataWorks
 &ProjectId=123 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ThemeId>123</ThemeId> <RequestId>ABCd</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>500</ErrorCode> <ErrorMessage>An internal system error occurred. Try again later.</ErrorMessage> <Success>false</Success>
@@ -3315,7 +3446,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateTableLevel
+#### 4.2.7 CreateTableLevel
 
 调用CreateTableLevel创建层级。不建议使用该API，后续将有新API上线覆盖此功能。
 
@@ -3323,8 +3454,6 @@ DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | CreateTableLev el | 系统规定参数。取值： CreateTableLevel。 |
 |---|---|---|---|---|
@@ -3350,16 +3479,16 @@ DataWorks
 请求示例
 
 ```
-&LevelType=1
+http(s)://[Endpoint]/?Action=CreateTableLevel &LevelType=1
 ```
 
-`&Name=`层级1
+`&Name=`层级`1`
 
 ```
 &ProjectId=123 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>123456789****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <LevelId>123</LevelId> <Success>true</Success>
@@ -3383,14 +3512,14 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteFromMetaCategory
+#### 4.2.8 DeleteFromMetaCategory
+
+调用DeleteFromMetaCategory从指定的类目中移除表。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | DeleteFromMeta Category | 系统规定参数。取值： DeleteFromMetaCategory。 |
 |---|---|---|---|---|
@@ -3417,24 +3546,24 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteFromMetaCategory &CategoryId=5 &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3448,14 +3577,14 @@ http(s)://[Endpoint]/?Action=DeleteFromMetaCategory &CategoryId=5 &RegionId=defa
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteMetaCategory
+#### 4.2.9 DeleteMetaCategory
+
+调用DeleteMetaCategory删除类目。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | DeleteMetaCate gory | 系统规定参数。取值： DeleteMetaCategory。 |
 |---|---|---|---|---|
@@ -3481,24 +3610,24 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteMetaCategory &CategoryId=23 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3518,8 +3647,6 @@ http(s)://[Endpoint]/?Action=DeleteMetaCategory &CategoryId=23 &RegionId=default
 | 400 | Invalid.Meta.Categ oryIllegalDepth | A category can contain a maximum of 4 levels. | 类目层级超过4级。 |
 | 403 | Invalid.Meta.Categ oryIllegalTenant | The tenant ID is different in the parent and child categories. | 父子类目的租户ID不一致。 |
 
-DataWorks
-
 | 400 | Invalid.Meta.Categ oryNameDuplicate | The category name is duplicated at this level. | 同一层级下，类目名称重复。 |
 |---|---|---|---|
 | 500 | Invalid.Meta.Categ oryRelationDuplicat e" | The table is already bound to the category. | 类目已经关联该表。 |
@@ -3531,7 +3658,9 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteTable
+#### 4.2.10 DeleteTable
+
+调用DeleteTable删除MaxCompute表。
 
 **请求参数**
 
@@ -3544,14 +3673,12 @@ DataWorks
 | TableName | String | 是 | table1 | MaxCompute表的名称。 |
 | AppGuid | String | 否 | odps.test | MaxCompute项目的唯一标识，格式为 odps.{projectName}。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 1234-ABCD- EFG***** | 请求ID。 |
-| TaskInfo | Struct |  | 删除表的任务信息。 |
+| TaskInfo | Struct |   | 删除表的任务信息。 |
 | Content | String | success | 任务的内容。 |
 | NextTaskId | String | abc1 | 正在运行的任务ID。 |
 | Status | String | success | 已经结束的任务状态。 |
@@ -3562,10 +3689,10 @@ DataWorks
 请求示例
 
 ```
-&EnvType=1 &ProjectId=10001 &RegionId=default &TableName=table1
+http(s)://[Endpoint]/?Action=DeleteTable &EnvType=1 &ProjectId=10001 &RegionId=default &TableName=table1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TaskInfo>
@@ -3584,8 +3711,6 @@ DataWorks
 
 **错误码**
 
-DataWorks
-
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
@@ -3596,7 +3721,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteTableLevel
+#### 4.2.11 DeleteTableLevel
 
 调用DeleteTableLevel删除层级。不建议使用该API，后续将有新API上线覆盖此功能。
 
@@ -3615,8 +3740,6 @@ DataWorks
 |---|---|---|---|
 | DeleteResult | Boolean | true | 删除结果。 |
 
-DataWorks
-
 | RequestId | String | 0000-ABCD- EFG****** | 请求ID。 |
 |---|---|---|---|
 
@@ -3625,10 +3748,10 @@ DataWorks
 请求示例
 
 ```
-&LevelId=123 &ProjectId=10001 &RegionId=default
+http(s)://[Endpoint]/?Action=DeleteTableLevel &LevelId=123 &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG******</RequestId> <DeleteResult>true</DeleteResult>
@@ -3652,9 +3775,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteTableTheme
+#### 4.2.12 DeleteTableTheme
 
-DataWorks 调用DeleteTableTheme删除主题。不建议使用该API，后续将有新API上线覆盖此功能。
+调用DeleteTableTheme删除主题。不建议使用该API，后续将有新API上线覆盖此功能。
 
 **请求参数**
 
@@ -3681,10 +3804,10 @@ DataWorks 调用DeleteTableTheme删除主题。不建议使用该API，后续将
 请求示例
 
 ```
-&RegionId=default &ThemeId=10002
+http(s)://[Endpoint]/?Action=DeleteTableTheme &RegionId=default &ThemeId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>500</ErrorCode> <ErrorMessage>An internal system error occurred. Try again later.</ErrorMessage> <DeleteResult>true</DeleteResult> <Success>false</Success>
@@ -3708,15 +3831,15 @@ DataWorks 调用DeleteTableTheme删除主题。不建议使用该API，后续将
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetDDLJobStatus
+#### 4.2.13 GetDDLJobStatus
+
+调用GetDDLJobStatus获取创建表、更新表和删除表的任务状态。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | GetDDLJobStatu s | 系统规定参数。取值： GetDDLJobStatus。 |
-
-DataWorks
 
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 |---|---|---|---|---|
@@ -3726,7 +3849,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 任务的详情。 |
+| Data | Struct |   | 任务的详情。 |
 | Content | String | success | 任务的内容。 |
 | NextTaskId | String | abc | 正在进行的TaskID。如果为空，说明全部任务已经结束。 |
 | Status | String | success | 任务的状态。 |
@@ -3738,10 +3861,10 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &TaskId=abc
+http(s)://[Endpoint]/?Action=GetDDLJobStatus &RegionId=default &TaskId=abc
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <Data>
@@ -3758,8 +3881,6 @@ DataWorks
 {"RequestId":"0000-ABCD-EFG*****","Data": {"Status":"success","TaskId":"abc","Content":"success","NextTaskId":"abc"}}
 ```
 
-DataWorks
-
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
@@ -3772,7 +3893,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaDBInfo
+#### 4.2.14 GetMetaDBInfo
+
+调用GetMetaDBInfo获取引擎实例的基本元数据信息。
 
 **请求参数**
 
@@ -3787,11 +3910,9 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
+| Data | Struct |   | 业务数据。 |
 | AppGuid | String | odps.engine name _ | 引擎ID，格式为引擎类型.引擎名称。 |
 | ClusterBizId | String | abc | emr集群id，针对查询emr数据情况 |
 | Comment | String | 备注 | 备注 |
@@ -3810,15 +3931,13 @@ DataWorks
 | Type | String | hive | 数据库类型 |
 | RequestId | String | 0bc1411515937*** * | 请求ID。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
-&AppGuid=odps.some_engine_name &RegionId=default
+http(s)://[Endpoint]/?Action=GetMetaDBInfo &AppGuid=odps.some_engine_name &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937****</RequestId> <Data>
@@ -3841,10 +3960,9 @@ DataWorks 请求示例
 </Data>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937****",
     "Data": {
         "Comment": "备注",
@@ -3867,9 +3985,9 @@ DataWorks 请求示例
         "Endpoint": "http://service.odpsstg.aliyun-inc.com/",
         "ClusterBizId": "abc",
         "Location": "hdfs://"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -3885,8 +4003,6 @@ DataWorks 请求示例
 | 400 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目获取计算引擎失败。 |
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
@@ -3897,7 +4013,9 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-#### GetMetaDBTableList
+#### 4.2.15 GetMetaDBTableList
+
+调用GetMetaDBTableList获取引擎实例中的表。
 
 **请求参数**
 
@@ -3910,8 +4028,6 @@ DataWorks
 | PageSize | Integer | 否 | 10 | 每页显示的条数，默认为10条，最大为 100条。 |
 | ClusterId | String | 否 | abc | EMR集群的ID，仅当数据类型为emr时， 需要配置该参数。 |
 
-DataWorks
-
 | DatabaseName | String | 否 | abc | 数据库的名称。 |
 |---|---|---|---|---|
 | DataSourceType | String | 否 | odps | 数据类型，目前仅支持odps和emr。 |
@@ -3920,10 +4036,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
+| Data | Struct |   | 业务数据。 |
 | PageNumber | Integer | 1 | 请求的数据页数，用于翻页。 |
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大为100条。 |
-| TableEntityList | Array of TableEntityList |  | 实例数据列表。 |
+| TableEntityList | Array of TableEntityList |   | 实例数据列表。 |
 | DatabaseNam e | String | abc | 数据库的名称。 |
 | TableGuid | String | odps.engine name. _ tname | 表的唯一标识。 |
 | TableName | String | tname | 表的名称。 |
@@ -3938,7 +4054,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaDBTableList &AppGuid=odps.testProjectName &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <Data>
@@ -3953,10 +4069,9 @@ http(s)://[Endpoint]/?Action=GetMetaDBTableList &AppGuid=odps.testProjectName &R
 </Data>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "Data": {
         "TotalCount": 20,
@@ -3966,10 +4081,9 @@ http(s)://[Endpoint]/?Action=GetMetaDBTableList &AppGuid=odps.testProjectName &R
             "TableName": "tname",
             "TableGuid": "odps.engine_name.tname",
             "DatabaseName": "abc"
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -3983,8 +4097,6 @@ http(s)://[Endpoint]/?Action=GetMetaDBTableList &AppGuid=odps.testProjectName &R
 | 400 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 400 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目获取计算引擎失败。 |
 
-DataWorks
-
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
@@ -3996,7 +4108,9 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-#### GetMetaCategory
+#### 4.2.16 GetMetaCategory
+
+调用GetMetaCategory查询类目树。
 
 **请求参数**
 
@@ -4010,12 +4124,10 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-| DataEntityList | Array of DataEntityList |  | Data实例列表。 |
+| Data | Struct |   | 业务数据。 |
+| DataEntityList | Array of DataEntityList |   | Data实例列表。 |
 | CategoryId | Long | 133 | 类目的ID。 |
 | Comment | String | category 1 | 类目的备注信息。 |
 | CreateTime | Long | 1541576644000 | 创建类目的时间。 |
@@ -4033,8 +4145,6 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 | RequestId | String | 0bc1ec92159376 | 请求ID。 |
 
-DataWorks
-
 | Success | Boolean | true | 请求是否成功。 |
 |---|---|---|---|
 
@@ -4043,10 +4153,10 @@ DataWorks
 请求示例
 
 ```
-&ParentCategoryId=333 &RegionId=default
+http(s)://[Endpoint]/?Action=GetMetaCategory &ParentCategoryId=333 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4067,10 +4177,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -4087,13 +4196,17 @@ DataWorks
             "Depth": 1,
             "ParentCategoryId": 12,
             "Name": "category 1"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4107,8 +4220,6 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 | 500 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目{0}获取计算引擎失败。 |
-
-DataWorks
 
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 |---|---|---|---|
@@ -4126,14 +4237,14 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaColumnLineage
+#### 4.2.17 GetMetaColumnLineage
+
+调用GetMetaColumnLineage获取字段的血缘关系。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | GetMetaColumn Lineage | 系统规定参数。取值： GetMetaColumnLineage。 |
 |---|---|---|---|---|
@@ -4152,13 +4263,11 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-| DataEntityList | Array of DataEntityList |  | 实例数据列表。 |
+| Data | Struct |   | 业务数据。 |
+| DataEntityList | Array of DataEntityList |   | 实例数据列表。 |
 | ClusterId | String | abc | emr集群id |
 | ColumnGuid | String | odps.engine name. _ table name.1 _ | 字段的唯一标识。 |
 | ColumnName | String | 1 | 字段的名称。 |
-
-DataWorks
 
 | DatabaseNam e | String | abc | 数据库名称 |
 |---|---|---|---|
@@ -4180,7 +4289,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaColumnLineage &ColumnGuid=odps.engine_name.table_name.column_name &Direction=up &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4197,10 +4306,9 @@ http(s)://[Endpoint]/?Action=GetMetaColumnLineage &ColumnGuid=odps.engine_name.t
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -4213,13 +4321,17 @@ http(s)://[Endpoint]/?Action=GetMetaColumnLineage &ColumnGuid=odps.engine_name.t
             "ColumnGuid": "odps.engine_name.table_name.1",
             "ClusterId": "abc",
             "DatabaseName": "abc"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4227,8 +4339,6 @@ http(s)://[Endpoint]/?Action=GetMetaColumnLineage &ColumnGuid=odps.engine_name.t
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
-
-DataWorks
 
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
@@ -4247,7 +4357,7 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaMetrics
+#### 4.2.18 GetMetaMetrics
 
 获取概览数据，包含instance数目、storage数据等。
 
@@ -4256,8 +4366,6 @@ DataWorks
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 
-DataWorks
-
 | Action | String | 是 | GetMetaMetrics | 系统规定参数。取值： GetMetaMetrics。 |
 |---|---|---|---|---|
 | DataSourceType | String | 是 | odps | 数据源类型，支持odps和emr。 |
@@ -4265,24 +4373,22 @@ DataWorks
 
 **返回数据**
 
-| 名称 | 类型 |  | 示例值 | 描述 |
+| 名称 | 类型 |   | 示例值 | 描述 |
 |---|---|---|---|---|
-| Data | Struct |  |  | 返回数据对象。 |
-| LargestProject s | Array of LargestProject s |  |  | 存储量最大的项目列表。 |
-| DataSize | Long |  | 100 | 数据大小。 |
-| ProjectName | String |  | project1 | 项目名称。 |
-| LargestTables | Array of LargestTables |  |  | 存储量最大的表。 |
-| DataSize | Long |  | 100 | 数据大小。 |
-| TableGuid | String |  | odps.project1.table | 表Guid，格式为 odps.${projectName}.${tableName} 。 |
-|  |  |  | 1 |  |
-| TableName | String |  | table1 | 表名称。 |
-| TotalClusters | String |  | 10 | 全部emr集群数量。 |
-| TotalProjects | String |  | 10 | 全部odps项目数量。 |
-| TotalStorage | Long |  | 10 | 总的存储量。 |
-| TotalTables | String |  | 10 | 全部表数量 |
-| ErrorCode | String |  | success | 错误码。 |
-
-DataWorks
+| Data | Struct |   |   | 返回数据对象。 |
+| LargestProject s | Array of LargestProject s |   |   | 存储量最大的项目列表。 |
+| DataSize | Long |   | 100 | 数据大小。 |
+| ProjectName | String |   | project1 | 项目名称。 |
+| LargestTables | Array of LargestTables |   |   | 存储量最大的表。 |
+| DataSize | Long |   | 100 | 数据大小。 |
+| TableGuid | String |   | odps.project1.table | 表Guid，格式为 odps.${projectName}.${tableName} 。 |
+|   |   |   | 1 |   |
+| TableName | String |   | table1 | 表名称。 |
+| TotalClusters | String |   | 10 | 全部emr集群数量。 |
+| TotalProjects | String |   | 10 | 全部odps项目数量。 |
+| TotalStorage | Long |   | 10 | 总的存储量。 |
+| TotalTables | String |   | 10 | 全部表数量 |
+| ErrorCode | String |   | success | 错误码。 |
 
 | ErrorMessage | String | success | 错误消息。 |
 |---|---|---|---|
@@ -4295,10 +4401,10 @@ DataWorks
 请求示例
 
 ```
-&DataSourceType=odps &RegionId=default
+http(s)://[Endpoint]/?Action=GetMetaMetrics &DataSourceType=odps &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>EESDFAFBADSF1233</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4318,7 +4424,7 @@ DataWorks
 </Data> <ErrorCode>success</ErrorCode> <ErrorMessage>success</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"RequestId":"EESDFAFBADSF1233","HttpStatusCode":"200","Data": {"TotalProjects":"10","TotalStorage":"10","TotalClusters":"10","TotalTables":"10","Larges ables": [{"TableName":"table1","TableGuid":"odps.project1.table1","DataSize":"100"}],"LargestProj ts": [{"ProjectName":"project1","DataSize":"100"}]},"ErrorCode":"success","ErrorMessage":"succ s","Success":"true"}
@@ -4341,13 +4447,11 @@ DataWorks
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | 请求参数错误。 |
 
-#### GetMetaStorageTrend
+#### 4.2.19 GetMetaStorageTrend
 
 获取存储趋势。
 
 **请求参数**
-
-DataWorks
 
 **请求参数**
 
@@ -4360,8 +4464,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回数据对象。 |
-| TableEntityList | Array of TableEntityList |  | table对象列表。 |
+| Data | Struct |   | 返回数据对象。 |
+| TableEntityList | Array of TableEntityList |   | table对象列表。 |
 | Date | String | 2021-12-23 | 时间格式：yyyy-MM-dd。 |
 | Storage | Long | 12343 | 存储量大小。 |
 | Value | Long | 1233 | 存储量大小。 |
@@ -4380,7 +4484,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaStorageTrend &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ADSFDSFWEWE</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4413,14 +4517,14 @@ http(s)://[Endpoint]/?Action=GetMetaStorageTrend &RegionId=default
 | 500 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目{0}获取计算引擎失败。 |
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 
-DataWorks
-
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 |---|---|---|---|
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | 请求参数错误。 |
 
-#### GetMetaTableBasicInfo
+#### 4.2.20 GetMetaTableBasicInfo
+
+调用GetMetaTableBasicInfo获取表的基础信息。
 
 **请求参数**
 
@@ -4439,9 +4543,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-
-DataWorks
+| Data | Struct |   | 业务数据。 |
 
 | Caption | String | 中文名 | 表的中文名称。 |
 |---|---|---|---|
@@ -4459,8 +4561,6 @@ DataWorks
 | LastAccessTim e | Long | 1589870294000 | 最近一次访问表的时间。 |
 | LastDdlTime | Long | 1589870294000 | 最近一次变更表结构的时间。 |
 | LastModifyTim e | Long | 1589870294000 | 最近一次更新表的时间。 |
-
-DataWorks
 
 | LifeCycle | Integer | 5 | 表的生命周期。单位为天。 |
 |---|---|---|---|
@@ -4482,13 +4582,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetMetaTableBasicInfo &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4521,10 +4621,9 @@ http(s)://[Endpoint]/?Action=GetMetaTableBasicInfo &RegionId=default &TableGuid=
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937",
     "HttpStatusCode": 200,
     "Data": {
@@ -4558,12 +4657,17 @@ http(s)://[Endpoint]/?Action=GetMetaTableBasicInfo &RegionId=default &TableGuid=
         "IsVisible": 1,
         "ReadCount": 3,
         "Location": "hdfs://"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4573,8 +4677,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableBasicInfo &RegionId=default &TableGuid=
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | 请求参数错误。 |
 | 400 | InvalidParameter.M eta.Illegal | The app guid parameter is invalid. | App参数错误。 |
 | 400 | InvalidParameter.M eta.IllegalDate | The date format is invalid. | 日期格式错误。 |
-
-DataWorks
 
 | 400 | InvalidParameter.M eta.IllegalPageError | The parameter for paging is invalid. | 分页信息错误。 |
 |---|---|---|---|
@@ -4591,7 +4693,9 @@ DataWorks
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 | 400 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目获取计算引擎失败。 |
 
-#### GetMetaTableColumn
+#### 4.2.21 GetMetaTableColumn
+
+调用GetMetaTableColumn，获取表的字段信息。
 
 **请求参数**
 
@@ -4599,8 +4703,6 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | GetMetaTableCo lumn | 系统规定参数。取值： GetMetaTableColumn。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
-
-DataWorks
 
 | TableGuid | String | 是 | odps.engine na _ me.table name _ | 表的唯一标识。您可以通过调用 GetMetaDBTableList，获取表的唯一标识。 |
 |---|---|---|---|---|
@@ -4615,16 +4717,14 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-| ColumnList | Array of ColumnList |  | 字段的信息。 |
+| Data | Struct |   | 业务数据。 |
+| ColumnList | Array of ColumnList |   | 字段的信息。 |
 | Caption | String | data column | 字段的描述。 |
 | ColumnGuid | String | odps.engine name. _ table name.name _ | 字段的唯一标识。 |
 | ColumnName | String | name | 字段的名称。 |
 | ColumnType | String | string | 字段的类型。 |
 | Comment | String | comment | 字段的备注。 |
 | IsForeignKey | Boolean | true | 字段是否为外键，取值如下： true，是外键。 false，不是外键。 |
-
-DataWorks
 
 | IsPartitionColu mn | Boolean | false | 字段是否为分区字段，取值如下： true，是分区字段。 false，不是分区字段。 |
 |---|---|---|---|
@@ -4648,7 +4748,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableColumn &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4669,10 +4769,9 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &RegionId=default &TableGuid=odp
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -4689,20 +4788,22 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &RegionId=default &TableGuid=odp
             "IsForeignKey": true,
             "Caption": "data column",
             "IsPrimaryKey": false
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-DataWorks
 
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | 请求参数错误。 |
 |---|---|---|---|
@@ -4723,9 +4824,9 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-#### GetMetaTableChangeLog
+#### 4.2.22 GetMetaTableChangeLog
 
-DataWorks
+调用GetMetaTableChangeLog获取表的变更日志。
 
 **请求参数**
 
@@ -4746,11 +4847,9 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
-| Data | Struct |  | 业务数据。 |
+| Data | Struct |   | 业务数据。 |
 |---|---|---|---|
-| DataEntityList | Array of DataEntityList |  | 实例列表。 |
+| DataEntityList | Array of DataEntityList |   | 实例列表。 |
 | ChangeConten t | String | " [{\"action\":\"ADD _ COLUMN\",\"value\" : [{\"originName\":\" \",\"originType\":\"\ ",\"originComment\ ":\"\",\"name\":\"id\ ",\"type\":\"struct< name:string>\",\"c omment\":\"\"}]}]", | 变更的内容。 |
 | ChangeType | String | CREATE TABLE _ | 变更的类型。 |
 | CreateTime | Long | 1590722845000 | 创建表的时间。 |
@@ -4766,15 +4865,13 @@ DataWorks
 | RequestId | String | 0bc1ec92159376 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetMetaTableChangeLog &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4787,15 +4884,15 @@ http(s)://[Endpoint]/?Action=GetMetaTableChangeLog &RegionId=default &TableGuid=
         <ChangeContent>"[{\"action\":\"ADD_COLUMN\",\"value\":
 [{\"originName\":\"\",\"originType\":\"\",\"originComment\":\"\",\"name\":\"id\",\"type\" "struct&lt;name:string&gt;\",\"comment\":\"\"}]}]",</ChangeContent>
         <ModifiedTime>1590722845000</ModifiedTime>
+        <ChangeType>CREATE_TABLE</ChangeType>
         <CreateTime>1590722845000</CreateTime>
     </DataEntityList>
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -4810,13 +4907,17 @@ http(s)://[Endpoint]/?Action=GetMetaTableChangeLog &RegionId=default &TableGuid=
             "ModifiedTime": 1590722845000,
             "ChangeType": "CREATE_TABLE",
             "CreateTime": 1590722845000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4831,8 +4932,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableChangeLog &RegionId=default &TableGuid=
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 | 500 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目{0}获取计算引擎失败。 |
 
-DataWorks
-
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 |---|---|---|---|
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
@@ -4843,7 +4942,7 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaTableFullInfo
+#### 4.2.23 GetMetaTableFullInfo
 
 调用GetMetaTableFullInfo接口，获取表的完整信息（包括字段信息）。
 
@@ -4858,8 +4957,6 @@ DataWorks
 | PageSize | Integer | 否 | 10 | 每页显示的条数，默认为10条，最大100 条。 |
 | ClusterId | String | 否 | C- 010A704DA760* *** | EMR集群的ID，您可以登录EMR管理控制台，获取集群ID。 |
 
-DataWorks
-
 | DatabaseName | String | 否 | abc | EMR的数据库名称。您可以通过调用 ListMetaDB接口，获取数据库名称。 |
 |---|---|---|---|---|
 | TableName | String | 否 | abc | EMR的表名称。您可以通过调用 GetMetaDBTableList接口，获取表名称。 |
@@ -4869,9 +4966,9 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
+| Data | Struct |   | 业务数据。 |
 | ClusterId | String | C- 010A704DA760*** * | EMR集群的ID。 |
-| ColumnList | Array of ColumnList |  | 字段列表。 |
+| ColumnList | Array of ColumnList |   | 字段列表。 |
 | Caption | String | data comment | 字段的描述信息。 |
 | ColumnGuid | String | odps.engine name. _ table name.1 _ | 字段的唯一标识。 |
 | ColumnName | String | name1 | 字段的名称。 |
@@ -4880,8 +4977,6 @@ DataWorks
 | IsForeignKey | Boolean | false | 段是否为外键，取值如下： true，是外键。 false，不是外键。 |
 | IsPartitionColu mn | Boolean | false | 字段是否为分区字段，取值如下： true，是分区字段。 false，不是分区字段。 |
 | IsPrimaryKey | Boolean | false | 字段是否为主键，取值如下： true，是主键。 false，不是主键。 |
-
-DataWorks
 
 | Position | Integer | 1 | 字段的排序。 |
 |---|---|---|---|
@@ -4899,8 +4994,6 @@ DataWorks
 | OwnerId | String | 124 | 表所有者的ID。 |
 | PartitionKeys | String | abc | 分区键。 |
 | ProjectId | Long | 10001 | DataWorks工作空间ID。 |
-
-DataWorks
 
 | ProjectName | String | test | 表所在工作空间的名称。 |
 |---|---|---|---|
@@ -4922,7 +5015,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableFullInfo &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -4960,7 +5053,7 @@ http(s)://[Endpoint]/?Action=GetMetaTableFullInfo &RegionId=default &TableGuid=o
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data": {"LifeCycle":"5","Comment":"comment","ClusterId":"C- 010A704DA760****","ProjectName":"test","LastDdlTime":"1589870294000","TotalColumnCount":" ","CreateTime":"1589870293000","DatabaseName":"abc","ProjectId":"10001","LastAccessTime": 589870294000","LastModifyTime":"1589870294000","EnvType":"0","TableName":"table-test"," TenantId":"10002","TableGuid":"odps.engine_name.table_name","OwnerId":"124","DataSize":"1 ,"PartitionKeys":"abc","IsVisible":"1","Location":"hdfs://localhost:777/user/hadoop/test. t","ColumnList": [{"Comment":"comment","ColumnName":"name1","ColumnGuid":"odps.engine_name.table_name.1"," lumnType":"string","Position":"1","IsPartitionColumn":"false","IsForeignKey":"false","Cap on":"data comment","IsPrimaryKey":"false"}]},"ErrorCode":"1031203110005","ErrorMessage":"The spec ified parameters are invalid.","Success":"true"}
@@ -4983,15 +5076,15 @@ http(s)://[Endpoint]/?Action=GetMetaTableFullInfo &RegionId=default &TableGuid=o
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | 请求参数错误。 |
 | 400 | InvalidParameter.M eta.Illegal | The app guid parameter is invalid. | App参数错误。 |
 
-DataWorks
-
 | 400 | InvalidParameter.M eta.IllegalDate | The date format is invalid. | 日期格式错误。 |
 |---|---|---|---|
 | 400 | InvalidParameter.M eta.IllegalPageError | The parameter for paging is invalid. | 分页信息错误。 |
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaTableIntroWiki
+#### 4.2.24 GetMetaTableIntroWiki
+
+调用GetMetaTableIntroWiki获取表的使用说明。
 
 **请求参数**
 
@@ -5006,13 +5099,11 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
+| Data | Struct |   | 业务数据。 |
 | Content | String | # 业务需求\n\n&lt;a name=&quot;xiw5 n&quot; | 表的描述信息。 |
 | CreateTime | Long | 1584444247000 | 表的创建时间。 |
 | Creator | String | abc | 表的创建者。 |
 | CreatorName | String | abc | 表的创建者的名称。 |
-
-DataWorks
 
 | ModifiedTime | Long | 1584444247000 | 表修改时间。 |
 |---|---|---|---|
@@ -5031,7 +5122,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableIntroWiki &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5044,7 +5135,7 @@ http(s)://[Endpoint]/?Action=GetMetaTableIntroWiki &RegionId=default &TableGuid=
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>false</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data": {"ModifiedTime":"1584444247000","Version":"1","Content":"# 业务需求\\n\\n&lt;a name=&quot;xiw5n&quot;","CreateTime":"1584444247000","Creator":"abc","CreatorName":"abc"} ErrorCode":"Invalid.Tenant.ConnectionNotExists","ErrorMessage":"The connection does not exist.","Success":"false"}
@@ -5070,12 +5161,12 @@ http(s)://[Endpoint]/?Action=GetMetaTableIntroWiki &RegionId=default &TableGuid=
 | 400 | InvalidParameter.M eta.IllegalPageError | The parameter for paging is invalid. | 分页信息错误。 |
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### GetMetaTableLineage
+#### 4.2.25 GetMetaTableLineage
+
+调用GetMetaTableLineage获取表的血缘关系。
 
 **请求参数**
 
@@ -5096,10 +5187,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-| DataEntityList | Array of DataEntityList |  | 表信息。 |
-
-DataWorks
+| Data | Struct |   | 业务数据。 |
+| DataEntityList | Array of DataEntityList |   | 表信息。 |
 
 | CreateTimesta mp | Long | 1638720736000 | 创建时间。 |
 |---|---|---|---|
@@ -5121,7 +5210,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableLineage &Direction=up &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5135,10 +5224,9 @@ http(s)://[Endpoint]/?Action=GetMetaTableLineage &Direction=up &RegionId=default
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -5148,13 +5236,17 @@ http(s)://[Endpoint]/?Action=GetMetaTableLineage &Direction=up &RegionId=default
             "TableName": "name",
             "TableGuid": "odps.tt.name",
             "CreateTimestamp": 1638720736000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5165,8 +5257,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableLineage &Direction=up &RegionId=default
 | 400 | InvalidParameter.M eta.GuidFormat | The GUID format is invalid. | Guid信息错误。 |
 | 400 | InvalidParameter.M eta.Illegal | The app guid parameter is invalid. | App参数错误。 |
 | 400 | InvalidParameter.M eta.IllegalDate | The date format is invalid. | 日期格式错误。 |
-
-DataWorks
 
 | 400 | InvalidParameter.M eta.IllegalPageError | The parameter for paging is invalid. | 分页信息错误。 |
 |---|---|---|---|
@@ -5183,7 +5273,9 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-#### GetMetaTableListByCategory
+#### 4.2.26 GetMetaTableListByCategory
+
+调用GetMetaTableListByCategory查询指定类目下的表。
 
 **请求参数**
 
@@ -5191,8 +5283,6 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | GetMetaTableLis tByCategory | 系统规定参数。取值： GetMetaTableListByCategory。 |
 | CategoryId | Long | 是 | 23 | 类目的ID，您可以调用 GetMetaCategory获取类目的ID。 |
-
-DataWorks
 
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 |---|---|---|---|---|
@@ -5203,7 +5293,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
+| Data | Struct |   | 业务数据。 |
 | PageNumber | Integer | 1 | 请求的数据页数，用于翻页。 |
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。 |
 | TableGuidList | List | odps.engine name. _ table name _ | 表的列表。 |
@@ -5222,7 +5312,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableListByCategory &CategoryId=23 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5233,10 +5323,9 @@ http(s)://[Endpoint]/?Action=GetMetaTableListByCategory &CategoryId=23 &RegionId
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -5244,12 +5333,17 @@ http(s)://[Endpoint]/?Action=GetMetaTableListByCategory &CategoryId=23 &RegionId
         "PageSize": 10,
         "PageNumber": 1,
         "TableGuidList": "odps.engine_name.table_name"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5262,8 +5356,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableListByCategory &CategoryId=23 &RegionId
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
-
-DataWorks
 
 | 500 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目{0}获取计算引擎失败。 |
 |---|---|---|---|
@@ -5282,14 +5374,14 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaTableOutput
+#### 4.2.27 GetMetaTableOutput
+
+调用GetMetaTableOutput获取表的产出信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | GetMetaTableOu tput | 系统规定参数。取值： GetMetaTableOutput。 |
 |---|---|---|---|---|
@@ -5304,8 +5396,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-| DataEntityList | Array of DataEntityList |  | 实例列表。 |
+| Data | Struct |   | 业务数据。 |
+| DataEntityList | Array of DataEntityList |   | 实例列表。 |
 | EndTime | String | 1511107200000 | 结束时间。 |
 | ProjectId | Long | 333 | 工作空间的ID。 |
 | StartTime | String | 1511107200000 | 开始时间。 |
@@ -5313,8 +5405,6 @@ DataWorks
 | TaskId | String | 32 | 节点ID。 |
 | TaskInstanceId | Long | 3521 | 实例ID。 |
 | WaitTime | String | 323 | 等待时间。 |
-
-DataWorks
 
 | PageNumber | Integer | 1 | 分页的页数。默认值为1，最小值为1，最大值为 30。 |
 |---|---|---|---|
@@ -5334,7 +5424,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableOutput &EndDate=2020-05-27 &RegionId=default &StartDate=2020-06-27 &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5353,10 +5443,9 @@ http(s)://[Endpoint]/?Action=GetMetaTableOutput &EndDate=2020-05-27 &RegionId=de
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****",
     "HttpStatusCode": 200,
     "Data": {
@@ -5371,21 +5460,23 @@ http(s)://[Endpoint]/?Action=GetMetaTableOutput &EndDate=2020-05-27 &RegionId=de
             "ProjectId": 333,
             "StartTime": 1511107200000,
             "WaitTime": 323
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
-
-DataWorks
 
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
@@ -5404,14 +5495,14 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaTablePartition
+#### 4.2.28 GetMetaTablePartition
+
+调用GetMetaTablePartition获取表的分区列表。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | GetMetaTablePa rtition | 系统规定参数。取值： GetMetaTablePartition。 |
 |---|---|---|---|---|
@@ -5428,16 +5519,14 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 业务数据。 |
-| DataEntityList | Array of DataEntityList |  | 实例列表。 |
+| Data | Struct |   | 业务数据。 |
+| DataEntityList | Array of DataEntityList |   | 实例列表。 |
 | Comment | String | 备注 | 备注 |
 | CreateTime | Long | 1590032868000 | 创建分区的时间。 |
 | DataSize | Long | 19 | 分区的大小，单位为Byte。 |
 | ModifiedTime | Long | 1590032868000 | 修改分区的时间。 |
 | PartitionGuid | String | odps.engine name. _ table name.pt=20 _ 170614 | 分区的唯一标识。 |
 | PartitionLocati on | String | abc | Hive分区的地址。 |
-
-DataWorks
 
 | PartitionName | String | pt=20170614 | 分区的名称。 |
 |---|---|---|---|
@@ -5462,7 +5551,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTablePartition &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5485,10 +5574,9 @@ http(s)://[Endpoint]/?Action=GetMetaTablePartition &RegionId=default &TableGuid=
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": {
@@ -5507,15 +5595,17 @@ http(s)://[Endpoint]/?Action=GetMetaTablePartition &RegionId=default &TableGuid=
             "PartitionType": "abc",
             "PartitionLocation": "abc",
             "RecordCount": 233
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -5538,9 +5628,9 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-DataWorks
+#### 4.2.29 ListMetaDB
 
-#### ListMetaDB
+调用ListMetaDB查询数据库列表。
 
 **请求参数**
 
@@ -5557,16 +5647,14 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DatabaseInfo | Struct |  | 数据库的信息。 |
-| DbList | Array of DbList |  | 数据库列表。 |
+| DatabaseInfo | Struct |   | 数据库的信息。 |
+| DbList | Array of DbList |   | 数据库列表。 |
 | CreateTimeSta mp | Long | 1111176825 | 创建数据库的时间。该结果显示为时间戳，您可以根据使用的时区将时间戳转换为相应日期。 |
 | Location | String | hdfs://localhost:77 7/user/hadoop/test. txt | 存储数据库的地址。 |
 | ModifiedTimeS tamp | Long | 1111176825 | 更新数据库的时间。 |
 | Name | String | name | 数据库的名称。 |
 | OwnerId | String | 123123123 | Owner的ID。 |
 | Type | String | HIVE | 数据库的类型。 |
-
-DataWorks
 
 | UUID | String | 32342 | 数据库的唯一标识。 |
 |---|---|---|---|
@@ -5578,10 +5666,10 @@ DataWorks
 请求示例
 
 ```
-&DataSourceType=emr &ProjectId=10001 &RegionId=default
+http(s)://[Endpoint]/?Action=ListMetaDB &DataSourceType=emr &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <DatabaseInfo>
@@ -5611,8 +5699,6 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
@@ -5630,7 +5716,7 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListTableLevel
+#### 4.2.30 ListTableLevel
 
 调用ListTableLevel查询层级列表。不建议使用该API，后续将有新API上线覆盖此功能。
 
@@ -5638,8 +5724,6 @@ DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | ListTableLevel | 系统规定参数。取值：ListTableLevel。 |
 |---|---|---|---|---|
@@ -5656,8 +5740,8 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
 | Success | Boolean | false | 调用是否成功。 |
-| TableLevelInfo | Struct |  | 层级的信息。 |
-| LevelList | Array of LevelList |  | 层级列表。 |
+| TableLevelInfo | Struct |   | 层级的信息。 |
+| LevelList | Array of LevelList |   | 层级列表。 |
 | Description | String | 层级的描述。 | 层级的描述。 |
 | LevelId | Long | 123 | 层级ID。 |
 | LevelType | Integer | 1 | 层级的类型，包括1（逻辑层级）和2（物理层级）。 |
@@ -5665,17 +5749,13 @@ DataWorks
 | ProjectId | Long | 10001 | DataWorks工作空间ID。 |
 | TotalCount | Long | 10 | 层级的总数。 |
 
-DataWorks
-
-**示例**
-
 请求示例
 
 ```
-&LevelType=1 &ProjectId=10001 &RegionId=default
+http(s)://[Endpoint]/?Action=ListTableLevel &LevelType=1 &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TableLevelInfo>
@@ -5711,14 +5791,12 @@ parameters are invalid.","Success":"false"}
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 
-DataWorks
-
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 |---|---|---|---|
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListTableTheme
+#### 4.2.31 ListTableTheme
 
 调用ListTableTheme查询主题列表。不建议使用该API，后续将有新API上线覆盖此功能。
 
@@ -5737,12 +5815,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 层级数据。 |
-| ThemeList | Array of ThemeList |  | 层级列表。 |
+| Data | Struct |   | 层级数据。 |
+| ThemeList | Array of ThemeList |   | 层级列表。 |
 | CreateTimeSta mp | Long | 123432343243 | 创建层级的时间。 |
 | Creator | String | 1234555 | 层级的创建人。 |
-
-DataWorks
 
 | Level | Integer | 1 | 1（一级层级）和2（二级层级）。 |
 |---|---|---|---|
@@ -5762,10 +5838,10 @@ DataWorks
 请求示例
 
 ```
-&ProjectId=10001 &RegionId=default
+http(s)://[Endpoint]/?Action=ListTableTheme &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5803,12 +5879,12 @@ DataWorks
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### SearchMetaTables
+#### 4.2.32 SearchMetaTables
+
+调用SearchMetaTables根据条件搜索表。
 
 **请求参数**
 
@@ -5828,10 +5904,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回数据。 |
-| DataEntityList | Array of DataEntityList |  | 实例列表。 |
-
-DataWorks
+| Data | Struct |   | 返回数据。 |
+| DataEntityList | Array of DataEntityList |   | 实例列表。 |
 
 | ClusterId | String | abc | EMR集群ID。 |
 |---|---|---|---|
@@ -5852,8 +5926,6 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 | RequestId | String | 0bc1ec92159376** ** | 请求ID。 |
 
-DataWorks
-
 | Success | Boolean | true | 请求是否成功。 |
 |---|---|---|---|
 
@@ -5862,10 +5934,10 @@ DataWorks
 请求示例
 
 ```
-&AppGuid=odps.engine_name &DataSourceType=emr &Keyword=test &RegionId=default
+http(s)://[Endpoint]/?Action=SearchMetaTables &AppGuid=odps.engine_name &DataSourceType=emr &Keyword=test &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -5887,10 +5959,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****",
     "HttpStatusCode": 200,
     "Data": {
@@ -5908,13 +5979,17 @@ DataWorks
             "ProjectId": 323,
             "DatabaseName": "abc",
             "EnvType": 1
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5929,8 +6004,6 @@ DataWorks
 | 400 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 400 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目获取计算引擎失败。 |
 
-DataWorks
-
 | 403 | ResourceNotAuthor ized.Api | You are not authorized to access the resources. | 您无法访问未取得授权的资源。 |
 |---|---|---|---|
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
@@ -5943,7 +6016,7 @@ DataWorks
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 
-#### SearchMetaTableByKey
+#### 4.2.33 SearchMetaTableByKey
 
 提供基于关键词的元数据表搜索功能，帮助用户快速定位目标数据表。
 
@@ -5957,8 +6030,6 @@ DataWorks
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 是 | default | 区域ID，为固定值default 。 |
 | Keyword | Strin g | Query | 否 | ODPS SQL | 关键字。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5981,8 +6052,6 @@ DataWorks
 |---|---|---|---|
 | Data | Array | { "HttpStatusCode": 200, "Success": true } | 返回结果数据。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -TableGuid | String | odps.engine name. _ table name _ | 表的唯一标识。 |
@@ -5998,8 +6067,6 @@ DataWorks
 | - LastAccessTim e | String | 1589870294000 | 最近一次访问表的时间。该结果显示为时间戳， 您可以根据使用的时区将时间戳转换为相应日期。 |
 | -DataSize | Long | 10 | 表占用的存储空间。单位为Byte。 |
 | -Type | String | Fixed | 阈值计算方式。取值范围： Fixed Fluctation FluctationDiscreate Auto Average Variance |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -6017,13 +6084,16 @@ DataWorks
 http(s)://[Endpoint]/?Action=SearchMetaTableByKey &RegionId=default &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "IsView":0,
    "Comment":"test",
    "ProjectName":"autotest",
@@ -6041,16 +6111,9 @@ http(s)://[Endpoint]/?Action=SearchMetaTableByKey &RegionId=default &TenantId=10
    "OwnerId":"123",
    "DataSize":10,
    "IsVisible":1
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <Data>
@@ -6077,8 +6140,6 @@ http(s)://[Endpoint]/?Action=SearchMetaTableByKey &RegionId=default &TenantId=10
 
 **错误码**
 
-DataWorks
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
@@ -6099,9 +6160,9 @@ DataWorks
 | 400 | 1010010018 | InvalidParameter.Meta.NotExis t | The object does not exist. |
 | 403 | 9990010001 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. |
 
-DataWorks
+#### 4.2.34 UpdateMetaCategory
 
-#### UpdateMetaCategory
+调用UpdateMetaCategory更新类目。
 
 **请求参数**
 
@@ -6132,24 +6193,24 @@ DataWorks
 http(s)://[Endpoint]/?Action=UpdateMetaCategory &CategoryId=2 &Name=category name &RegionId=default
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6164,8 +6225,6 @@ http(s)://[Endpoint]/?Action=UpdateMetaCategory &CategoryId=2 &Name=category nam
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 | 500 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | 根据ODPS项目{0}获取计算引擎失败。 |
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | 接口网络不通。 |
-
-DataWorks
 
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | 未知错误。 |
 |---|---|---|---|
@@ -6182,7 +6241,9 @@ DataWorks
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | 数据不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateMetaTable
+#### 4.2.35 UpdateMetaTable
+
+调用UpdateMetaTable更新表的Meta信息。
 
 **请求参数**
 
@@ -6190,8 +6251,6 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | UpdateMetaTabl e | 系统规定参数。取值： UpdateMetaTable。 |
 | EnvType | Integer | 是 | 1 | DataWorks的环境，包括0（开发环境） 和1（生产环境）。 |
-
-DataWorks
 
 | ProjectId | Long | 是 | 10001 | DataWorks工作空间ID。 |
 |---|---|---|---|---|
@@ -6217,10 +6276,10 @@ DataWorks
 请求示例
 
 ```
-&EnvType=1 &ProjectId=10001 &RegionId=default &TableName=table1
+http(s)://[Endpoint]/?Action=UpdateMetaTable &EnvType=1 &ProjectId=10001 &RegionId=default &TableName=table1
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>cn-shanghai</RequestId> <UpdateResult>true</UpdateResult>
@@ -6244,7 +6303,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateMetaTableIntroWiki
+#### 4.2.36 UpdateMetaTableIntroWiki
 
 调用UpdateMetaTableIntroWiki更新表的说明信息，当数据不存在时增加信息。
 
@@ -6254,8 +6313,6 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | UpdateMetaTabl eIntroWiki | 系统规定参数。取值： UpdateMetaTableIntroWiki。 |
 | Content | String | 是 | abc | 表说明的详情。 |
-
-DataWorks
 
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 |---|---|---|---|---|
@@ -6276,7 +6333,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=UpdateMetaTableIntroWiki &Content=abc &RegionId=default &TableGuid=odps.test.table1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <UpdateResult>true</UpdateResult>
@@ -6296,15 +6353,15 @@ http(s)://[Endpoint]/?Action=UpdateMetaTableIntroWiki &Content=abc &RegionId=def
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 
-DataWorks
-
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 |---|---|---|---|
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateTable
+#### 4.2.37 UpdateTable
+
+调用UpdateTable更新MaxCompute表。
 
 **请求参数**
 
@@ -6319,8 +6376,6 @@ DataWorks
 | Columns.N.Colu mnNameCn | String | 否 | 中文名 | 字段的中文名称。 |
 | Columns.N.SeqN umber | Integer | 否 | 1 | 字段的序号。如果字段为分区字段，则不支持配置Columns.N.SeqNumber。 |
 | Columns.N.Leng th | Integer | 否 | 10 | 字段的长度。 |
-
-DataWorks
 
 | Columns.N.IsPart itionCol | Integer | 否 | 0 | 是否为分区字段，包括0（否）和 1（是）。 |
 |---|---|---|---|---|
@@ -6339,8 +6394,6 @@ DataWorks
 | Endpoint | String | 否 | odps:// | MaxCompute Endpoint。不填时，默认取项目对应的Endpoint。 |
 | EnvType | Integer | 否 | 1 | DataWorks工作空间的环境，包括0（开发环境）和1（生产环境）。 |
 
-DataWorks
-
 | Themes.N.Them eId | Long | 否 | 101 | 关联的主题ID。 |
 |---|---|---|---|---|
 | Themes.N.Them eLevel | Integer | 否 | 101 | 主题ID对应的层级。 |
@@ -6352,21 +6405,19 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
-| TaskInfo | Struct |  | 请求任务的信息。 请求任务提交成功后，会被分为多个子任务有序执行。当前子任务执行成功后，才会继续执行下一个子任务，所有子任务执行完毕，该请求任务结束。如下情况，请求任务会终止，您需要根据错误码信息解决问题后重新发起请求任务： 请求任务提交失败。 请求任务提交成功后，任意子任务执行失败。 |
+| TaskInfo | Struct |   | 请求任务的信息。 请求任务提交成功后，会被分为多个子任务有序执行。当前子任务执行成功后，才会继续执行下一个子任务，所有子任务执行完毕，该请求任务结束。如下情况，请求任务会终止，您需要根据错误码信息解决问题后重新发起请求任务： 请求任务提交失败。 请求任务提交成功后，任意子任务执行失败。 |
 | Content | String | success | 当前子任务的执行状态详细信息。具体如下： 执行成功，则显示success。 执行失败则显示对应的报错详情。 |
 | NextTaskId | String | abc1 | 即将执行的子任务ID。如果该字段为空，则表示所有子任务均已结束。您可以使用获取到的ID， 从GetDDLJobStatus接口查询对应子任务的状态。 |
 | Status | String | success | 当前执行的子任务的状态信息。取值如下： operating表示子任务正在执行中。 success表示子任务执行成功。 failure表示子任务执行失败。详细的报错信息请参见Content参数。 |
 | TaskId | String | abc | 当前执行的子任务ID。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
-&Columns.1.ColumnName=abc &Columns.1.ColumnType=string &HasPart=0 &RegionId=default &TableName=tablename
+http(s)://[Endpoint]/?Action=UpdateTable &Columns.1.ColumnName=abc &Columns.1.ColumnType=string &HasPart=0 &RegionId=default &TableName=tablename
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TaskInfo>
@@ -6394,12 +6445,10 @@ DataWorks 请求示例
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### UpdateTableLevel
+#### 4.2.38 UpdateTableLevel
 
 调用UpdateTableLevel更新层级。不建议使用该API，后续将有新API上线覆盖此功能。
 
@@ -6425,8 +6474,6 @@ DataWorks
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
 | Success | Boolean | false | 调用是否成功。 |
 
-DataWorks
-
 | UpdateResult | Boolean | false | 是否成功返回结果。 |
 |---|---|---|---|
 
@@ -6435,7 +6482,7 @@ DataWorks
 请求示例
 
 ```
-&LevelId=123 &LevelType=1
+http(s)://[Endpoint]/?Action=UpdateTableLevel &LevelId=123 &LevelType=1
 ```
 
 `&Name=`层级的名称。
@@ -6444,7 +6491,7 @@ DataWorks
 &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <UpdateResult>false</UpdateResult> <Success>false</Success>
@@ -6466,13 +6513,11 @@ DataWorks
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateTableModelInfo
+#### 4.2.39 UpdateTableModelInfo
 
 调用UpdateTableModelInfo修改表的主题、层级和物理分类等信息。不建议使用该API，后续将有新API 上线覆盖此功能。
 
@@ -6497,13 +6542,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=UpdateTableModelInfo &FirstLevelThemeId=101 &LevelId=101 &RegionId=default &SecondLevelThemeId=101 &TableGuid=odps.test.table1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <UpdateResult>true</UpdateResult>
@@ -6527,13 +6572,11 @@ http(s)://[Endpoint]/?Action=UpdateTableModelInfo &FirstLevelThemeId=101 &LevelI
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateTableTheme
+#### 4.2.40 UpdateTableTheme
 
 调用UpdateTableTheme更新主题。不建议使用该API，后续将有新API上线覆盖此功能。
 
 **请求参数**
-
-DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -6556,13 +6599,19 @@ DataWorks
 
 **示例**
 
-请求示例 `&Name=`主题的名称
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=UpdateTableTheme
+```
+
+`&Name=`主题的名称
 
 ```
 &ProjectId=10001 &RegionId=default &ThemeId=123
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>cn-shanghai</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <UpdateResult>true</UpdateResult> <Success>false</Success>
@@ -6586,7 +6635,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateTableAddColumn
+#### 4.2.41 UpdateTableAddColumn
 
 调用UpdateTableAddColumn更新MaxCompute表的字段信息。
 
@@ -6594,8 +6643,6 @@ DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | UpdateTableAdd Column | 系统规定参数。取值： UpdateTableAddColumn。 |
 |---|---|---|---|---|
@@ -6611,12 +6658,10 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | abc | 请求ID。 |
-| TaskInfo | Struct |  | 请求任务的信息。 请求任务提交成功后，会被分为多个子任务有序执行。当前子任务执行成功后，才会继续执行下一个子任务，所有子任务执行完毕，该请求任务结束。如下情况，请求任务会终止，您需要根据错误码信息解决问题后重新发起请求任务： 请求任务提交失败。 请求任务提交成功后，任意子任务执行失败。 |
+| TaskInfo | Struct |   | 请求任务的信息。 请求任务提交成功后，会被分为多个子任务有序执行。当前子任务执行成功后，才会继续执行下一个子任务，所有子任务执行完毕，该请求任务结束。如下情况，请求任务会终止，您需要根据错误码信息解决问题后重新发起请求任务： 请求任务提交失败。 请求任务提交成功后，任意子任务执行失败。 |
 | Content | String | success | 当前子任务的执行状态详细信息。具体如下： 执行成功，则显示success。 执行失败则显示对应的报错详情。 |
 | NextTaskId | String | abc1 | 即将执行的子任务ID。如果该字段为空，则表示所有子任务均已结束。 |
 | Status | String | success | 当前执行的子任务的状态信息。取值如下： operating表示子任务正在执行中。 success表示子任务执行成功。 failure表示子任务执行失败。详细的报错信息请参见Content参数。 |
-
-DataWorks
 
 | TaskId | String | abc2 | 当前执行的子任务ID。 |
 |---|---|---|---|
@@ -6629,7 +6674,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=UpdateTableAddColumn &Column.1.ColumnName=abc &Column.1.ColumnType=string &RegionId=default &TableGuid=odps.engine_name.table_name
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TaskInfo>
@@ -6640,19 +6685,23 @@ http(s)://[Endpoint]/?Action=UpdateTableAddColumn &Column.1.ColumnName=abc &Colu
 </TaskInfo> <RequestId>abc</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TaskInfo": {
         "Status": "success",
         "TaskId": "abc2",
         "Content": "success",
         "NextTaskId": "abc1"
-    },
-    "RequestId": "abc"
-}
 ```
+
+`},`
+
+```json
+    "RequestId": "abc"
+```
+
+`}`
 
 **错误码**
 
@@ -6662,15 +6711,15 @@ http(s)://[Endpoint]/?Action=UpdateTableAddColumn &Column.1.ColumnName=abc &Colu
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 
-DataWorks
-
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 |---|---|---|---|
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetMetaTableThemeLevel
+#### 4.2.42 GetMetaTableThemeLevel
+
+调用GetMetaTableThemeLevel获取表的主题和层级信息。
 
 **请求头**
 
@@ -6684,9 +6733,9 @@ DataWorks
 | RegionId | Strin g | Host | 是 | default | 服务所在的地域，为固定值default 。 |
 | DataSourc eType | Strin g | Query | 是 | MaxCompute | 数据类型，目前只支持 MaxCompute。 |
 
-|  |  | odps.${projectName |
+|   |   | odps.${projectName |
 |---|---|---|
-|  | }.${tableName} |  |
+|   | }.${tableName} |   |
 
 **返回数据**
 
@@ -6697,7 +6746,7 @@ DataWorks
 | RequestId | String | 16A96B9A-F203- 4EC5-8E43- CB92E68F**** | 请求ID。用于定位日志，排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6723,45 +6772,48 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMetaTableThemeLevel &TableGuid=odps.project1.name1 &RegionId=default &DataSourceType=MaxCompute
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Entity":{
   "Theme":[
-   {
+```
+
+`{`
+
+```json
     "ParentId":0,
     "ThemeId":1,
     "Level":1,
     "Name":"level1"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Level":[
-   {
+```
+
+`{`
+
+```json
     "Type":1,
     "Description":"description_test",
     "LevelId":1,
     "Name":"level1"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "RequestId":"16A96B9A-F203-4EC5-8E43-CB92E68F****",
  "HttpStatusCode":200,
  "ErrorCode":"1010010011",
  "ErrorMessage":"success",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Entity>
@@ -6781,8 +6833,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableThemeLevel &TableGuid=odps.project1.nam
 ```
 
 **错误码**
-
-DataWorks
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -6804,11 +6854,9 @@ DataWorks
 | 500 | 1010010015 | InternalError.Meta.TenantTime Out | Failed to connect to the interface network. |
 | 500 | 1010019999 | InternalError.Meta.Unknown | An unknown error occurred while processing your request. |
 
-DataWorks
+### 4.3 数据开发
 
-### 数据开发
-
-#### CreateFile
+#### 4.3.1 CreateFile
 
 调用CreateFile，在数据开发中创建一个文件。目前不支持调用该接口创建数据集成节点任务。
 
@@ -6826,8 +6874,6 @@ DataWorks
 | FileName | Strin g | Body | 是 | 文件名 | 文件的名称。 |
 | FileDescri ption | Strin g | Body | 否 | 这里是文件描述 | 文件的描述信息。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | FileType | Integ er | Body | 是 | 10 | 文件的代码类型。 常用的代码类型包括 6（Shell）、10（ODPS SQL）、11（ODPS MR）、24（ODPS Script）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS对象检查）、257（EMR Shell）、258（EMR Spark Shell）、 259（EMR Presto）、 260（EMR Impala）、 900（实时同步）、 1089（跨租户节点）、 1091（Hologres开发）、 1093（Hologres SQL）、 1100（赋值节点）、 1221（PyODPS 3）。 您可以调用ListFiles接口中的FileTypes参数，查询文件的代码类型。 |
@@ -6835,8 +6881,6 @@ DataWorks
 | Content | Strin g | Body | 否 | SHOW TABLES; | 文件代码内容，不同代码类型（fileType）的文件，代码格式不同。您可以在运维中心找到对应类型的任务， 右键单击查看代码，查看具体的代码格式。 |
 | RegionId | Strin g | Host | 是 | default | 区域ID，为固定值 default。 |
 | AutoRerun Times | Integ er | Body | 否 | 3 | 出错自动重跑的次数，最多 10次。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6847,16 +6891,12 @@ DataWorks
 | StartEffec tDate | Long | Body | 否 | 936923400000 | 自动调度开始生效的毫秒时间戳，对应页面上的调度配置>时间属性>生效时间> 开始时间的毫秒时间戳。 |
 | EndEffect Date | Long | Body | 否 | 4155787800000 | 停止自动调度的毫秒时间戳，对应页面上的调度配置 >时间属性>生效时间>结束时间的毫秒时间戳。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | CronExpre ss | Strin g | Body | 否 | 00 05 00 * * ? | 自动调度的cron表达式，该参数与 DataWorks 控制台中，数据开发任务的“调度配置>时间属性>cron 表达式”对应。 每天凌晨5点30分定时调度：00 30 05 * * ? 每个小时的第 15 分钟定时调度：00 15 00-23/1 * * ? 每隔十分钟调度一次： 00 00/10 * * * ? 每天 8 点到 17 点，每隔十分钟调度一次：00 00- 59/10 8-17 * * * ? 每月的 1 日 0 点 20 分自动调度：00 20 00 1 * ? 从 1 月 1 日 0 点 10 分开始，每过 3 个月调度一次：00 10 00 1 1-12/3 ? 每周二、周五的 0 点 5 分自动调度：00 05 00 * * 2,5 由于 DataWorks 调度系统的规则，cron 表达式有以下限制： 最短调度间隔时间为5 分钟。 每天最早调度时间为0 点 5 分。 |
 | CycleType | Strin g | Body | 否 | DAY | 调度周期的类型，包括 NOT DAY（分钟、小时） _ 和DAY（日、周、月），对应页面上的调度配置>时间属性>调度周期。 |
 | Dependen tType | Strin g | Body | 否 | NONE | 依赖上一周期的方式，包括 NONE（取消勾选依赖上一周期）、SELF（本节点）、 CHILD（一层子节点）和 USER DEFINE（自定 _ 义）。 |
 | Dependen tNodeIdLis t | Strin g | Body | 否 | abc | 依赖上一周期的节点列表。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6865,8 +6905,6 @@ DataWorks
 | Resource GroupIden tifier | Strin g | Body | 否 | group 37582743485243 _ 7 | 文件发布成任务后，任务执行时对应的资源组。对应页面上调度配置>资源属性> 调度资源组的配置。 您可以通过ListResourceGroups 接口获取工作空间可用的资源组列表。 ResourceGroupType传 1，拿到结果后取出 Identifier字段。 |
 | Resource GroupId | Long | Body | 否 | 375827434852437 | 已废弃。 文件发布成任务后，任务执行时对应的资源组。对应页面上调度配置> 资源属性>调度资源组的配置。 与 ResourceGroupIdentifier 二者设置其一即可。您可以通过ListResourceGroups 接口获取工作空间可用的资源组列表。 ResourceGroupType传 1，拿到结果后取出Id字段。 |
 | Connectio nName | Strin g | Body | 否 | odps first _ | 文件发布成任务后，任务执行时连接的数据源，对应页面顶部的选择数据源下拉列表。 您可以通过 ListResourceGroups接口获取工作空间可用的数据源列表，拿到结果后取出 Name字段。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6877,8 +6915,6 @@ DataWorks
 | StartRight Now | Boole an | Body | 否 | false | 发布后是否立即生成实例。 |
 
 **返回数据**
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -6891,32 +6927,34 @@ DataWorks
 
 **示例**
 
-请求示例 `&FileName=`文件名
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=CreateFile &Action=CreateFile
+```
+
+`&FileName=`文件名
 
 ```
 &FileType=10 &RegionId=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "HttpStatusCode": 200,
     "Data": 1000001,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>1000001</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
-
-DataWorks
 
 **错误码**
 
@@ -6929,7 +6967,9 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### CreateFolder
+#### 4.3.2 CreateFolder
+
+调用CreateFolder创建文件夹。
 
 **请求参数**
 
@@ -6940,8 +6980,6 @@ DataWorks
 | ProjectId | Long | 是 | 10000 | DataWorks工作空间的ID。您可以登录 DataWorks管控台，进入工作空间配置页面获取工作空间ID。该参数与 ProjectIdentifier参数，二者必须设置其一，用来确定本次API调用操作的 DataWorks工作空间。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 | ProjectIdentifier | String | 否 | dw project _ | DataWorks工作空间名称。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间名称。该参数与ProjectId 参数，二者必须设置其一，用来确定本次 API调用操作的DataWorks工作空间。 |
-
-DataWorks
 
 **返回数据**
 
@@ -6956,32 +6994,36 @@ DataWorks
 
 **示例**
 
-请求示例 `&FolderPath=`业务流程/系统数据`/MaxCompute/`导入层
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=CreateFolder
+```
+
+`&FolderPath=`业务流程`/`系统数据`/MaxCompute/`导入层
 
 ```
 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>bdfd68****</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "HttpStatusCode": 200,
     "Data": "bdfd68****",
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -6994,7 +7036,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateUdfFile
+#### 4.3.3 CreateUdfFile
+
+调用CreateUdfFile，在数据开发中创建函数类型文件。
 
 **请求参数**
 
@@ -7005,8 +7049,6 @@ DataWorks
 | FileFolderPath | String | 是 | 业务流程/第一个业务流程/函数/字符串处理函数 | 函数文件所在的文件夹路径。 |
 | FileName | String | 是 | StringConcat | 函数的名称。 |
 | FunctionType | String | 是 | STRING | 函数的分类，对应创建函数表单中的函数类型一项，包括MATH（数学运算函数）、AGGREGATE（聚合函数）、 STRING（字符串处理函数）、DATE（日期处理函数）、ANALYTIC（窗口函数） 和OTHER（其他函数）。 |
-
-DataWorks
 
 | ProjectId | Long | 是 | 10000 | Dataworks工作空间的ID，您可以单击页面右上角的小扳手图标，进入工作空间管理页面查看。 |
 |---|---|---|---|---|
@@ -7028,8 +7070,6 @@ DataWorks
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 
-DataWorks
-
 | RequestId | String | 0000-ABCD- EFG**** | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 |---|---|---|---|
 | Success | Boolean | true | 调用是否成功。 |
@@ -7039,33 +7079,33 @@ DataWorks
 请求示例
 
 ```
-&ClassName=com.alibaba.dataworks.api.udf.StringConcat
+http(s)://[Endpoint]/?Action=CreateUdfFile &ClassName=com.alibaba.dataworks.api.udf.StringConcat
 ```
 
-`&FileFolderPath=`业务流程/第一个业务流程/函数/字符串处理函数
+`&FileFolderPath=`业务流程`/`第一个业务流程`/`函数`/`字符串处理函数
 
 ```
 &FileName=StringConcat &FunctionType=STRING &ProjectId=10000 &RegionId=default &Resources=string-concat-1.0.0.jar,commons-lang-2.6.jar
 ```
 
-`&UdfDescription=`把几个字符串连接起来生成一个新的字符串 `&<`公共请求参数> 正常返回示例 `XML` 格式
+`&UdfDescription=`把几个字符串连接起来生成一个新的字符串 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>100000002</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": 100000002,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7074,15 +7114,13 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateBusiness
+#### 4.3.4 CreateBusiness
 
 调用CreateBusiness，创建数据开发（DataStudio）的业务流程。
 
@@ -7097,8 +7135,6 @@ DataWorks
 | ProjectIdentifier | String | 否 | dw project _ | DataWorks工作空间的唯一标识符（即工作空间名称）。您可以登录DataWorks控制台，进入工作空间配置页面查看名称。 该参数与projectId参数二者必须设置其一，以确定本次API调用操作的 DataWorks项目。 |
 | Description | String | 否 | 这是一个通过接口创建的业务流程 | 业务流程的描述信息。 |
 | Owner | String | 否 | 1000000000001 | 业务流程对应责任人的阿里云账号ID。您可以登录DataWorks控制台，鼠标悬停至顶部菜单栏右侧的用户头像，查看账号 ID。如果该参数为空，则默认使用调用者的阿里云账号ID。 |
-
-DataWorks
 
 | UseType | String | 否 | NORMAL | 业务流程所属的功能模块。取值如下： NORMAL（数据开发） MANUAL BIZ（手动业务流程） _ |
 |---|---|---|---|---|
@@ -7116,30 +7152,36 @@ DataWorks
 
 **示例**
 
-请求示例 `&BusinessName=`我的业务流程
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=CreateBusiness
+```
+
+`&BusinessName=`我的业务流程
 
 ```
 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <BusinessId>100001</BusinessId> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "BusinessId": 100001,
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7152,7 +7194,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateResourceFile
+#### 4.3.5 CreateResourceFile
+
+调用CreateResourceFile上传资源。
 
 **请求参数**
 
@@ -7161,8 +7205,6 @@ DataWorks
 | Action | String | 是 | CreateResource File | 系统规定参数。取值： CreateResourceFile。 |
 | ConnectionNam e | String | 是 | test | 引擎名称。 |
 | FileFolderPath | String | 是 | 业务流程/test1/MaxCo mpute/test flod _ er 123 _ | 节点目录。 |
-
-DataWorks
 
 | FileName | String | 是 | test | 节点名称。 |
 |---|---|---|---|---|
@@ -7187,20 +7229,20 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreateResourceFile &ConnectionName=test &FileFolderPath=业务流程/test1/MaxCompute/test_floder_123 &FileName=test &FileType=13 &OssDownloadLink=http://oss.aliyun.com &ProjectId=10001
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId> <FileId>10001</FileId>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****",
     "FileId": 10001
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7213,7 +7255,9 @@ http(s)://[Endpoint]/?Action=CreateResourceFile &ConnectionName=test &FileFolder
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteBusiness
+#### 4.3.6 DeleteBusiness
+
+调用DeleteBusiness删除业务流程。
 
 **请求参数**
 
@@ -7223,8 +7267,6 @@ http(s)://[Endpoint]/?Action=CreateResourceFile &ConnectionName=test &FileFolder
 | BusinessId | Long | 是 | 1000001 | 业务流程的ID，您可以调用ListBusiness 接口，根据名称查询对应业务流程的ID。 |
 | ProjectId | Long | 是 | 10000 | DataWorks工作空间的ID。您可以登录 DataWorks管控台，进入工作空间配置页面获取工作空间ID。该参数与 ProjectIdentifier参数，二者必须设置其一，用来确定本次API调用操作的 DataWorks工作空间。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
-
-DataWorks
 
 | ProjectIdentifier | String | 否 | dw project _ | DataWorks工作空间名称。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间名称。该参数与ProjectId 参数，二者必须设置其一，用来确定本次 API调用操作的DataWorks工作空间。 |
 |---|---|---|---|---|
@@ -7244,28 +7286,26 @@ DataWorks
 请求示例
 
 ```
-&BusinessId=1000001 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=DeleteBusiness &BusinessId=1000001 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -7278,7 +7318,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteFile
+#### 4.3.7 DeleteFile
+
+调用DeleteFile删除数据开发中的文件。
 
 **请求参数**
 
@@ -7290,8 +7332,6 @@ DataWorks
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 | ProjectIdentifier | String | 否 | dw project _ | DataWorks工作空间名称。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间名称。该参数与ProjectId 参数，二者必须设置其一，用来确定本次 API调用操作的DataWorks工作空间。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
@@ -7307,33 +7347,31 @@ DataWorks
 请求示例
 
 ```
-&FileId=10000001 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=DeleteFile &FileId=10000001 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-DataWorks
 
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
@@ -7343,7 +7381,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteFolder
+#### 4.3.8 DeleteFolder
+
+调用DeleteFolder删除数据开发页面的文件夹。
 
 **请求参数**
 
@@ -7360,8 +7400,6 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
@@ -7374,34 +7412,32 @@ DataWorks
 请求示例
 
 ```
-&FolderId=2eb6f9**** &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=DeleteFolder &FolderId=2eb6f9**** &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
-
-DataWorks
 
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
@@ -7410,7 +7446,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeployFile
+#### 4.3.9 DeployFile
+
+调用DeployFile发布文件至生产环境。
 
 **请求参数**
 
@@ -7423,8 +7461,6 @@ DataWorks
 | ProjectIdentifier | String | 否 | dw project _ | DataWorks工作空间名称。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间名称。该参数与ProjectId 参数，二者必须设置其一，用来确定本次 API调用操作的DataWorks工作空间。 |
 | Comment | String | 否 | 第一次发布任务 | 本次发布的说明信息。 |
 | NodeId | Long | 否 | 2000001 | 待发布文件在调度系统对应的任务ID。该参数与FileId参数配置一个即可。 |
-
-DataWorks
 
 **返回数据**
 
@@ -7442,29 +7478,27 @@ DataWorks
 请求示例
 
 ```
-&FileId=10000001 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=DeployFile &FileId=10000001 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>30000001</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": 30000001,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -7477,7 +7511,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### EstablishRelationTableToBusiness
+#### 4.3.10 EstablishRelationTableToBusiness
 
 调用EstablishRelationTableToBusiness，导入表至业务流程。相当于在数据开发页面右键单击业务流程，选择导入表的操作。
 
@@ -7491,8 +7525,6 @@ DataWorks
 | ProjectId | Long | 是 | 10000 | Dataworks工作空间的ID，您可以单击页面右上角的小扳手图标，进入工作空间管理页面查看。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 | TableGuid | String | 是 | odps.dw project _ .tb1 | 表的UUID。 |
-
-DataWorks
 
 | ProjectIdentifier | String | 否 | dw | Dataworks工作空间的唯一标识符，即数据开发页面顶部切换工作空间处的英文标识。 该参数与ProjectId参数二者必须设置其一，以确定本次API调用操作的 Dataworks工作空间。 |
 |---|---|---|---|---|
@@ -7515,23 +7547,23 @@ DataWorks
 http(s)://[Endpoint]/?Action=EstablishRelationTableToBusiness &BusinessId=1000001 &FolderId=2eb6f9**** &ProjectId=10000 &RegionId=default &TableGuid=odps.dw_project.tb1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7544,7 +7576,9 @@ http(s)://[Endpoint]/?Action=EstablishRelationTableToBusiness &BusinessId=100000
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetBusiness
+#### 4.3.11 GetBusiness
+
+调用GetBusiness查询业务流程的详情。
 
 **请求头**
 
@@ -7556,8 +7590,6 @@ http(s)://[Endpoint]/?Action=EstablishRelationTableToBusiness &BusinessId=100000
 |---|---|---|---|---|---|
 | RequestId | Strin g | System | 否 | 0000-ABCD-EFG**** | 系统参数，无需配置。 |
 | callerUid | Long | System | 否 | 1640133467**** | 系统参数，无需配置。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7579,7 +7611,7 @@ DataWorks
 | Success | Boolean | true | 调用是否成功。 |
 | Data | Struct | / | 业务流程列表的详情。 |
 
-| 开发指南·OpenAPI参 | 考 |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   | DataWork |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -Owner | String | 34824327**** | 业务流程的责任人。 |
@@ -7595,13 +7627,12 @@ DataWorks
 请求示例
 
 ```
-&BusinessId=1000000001 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=GetBusiness &BusinessId=1000000001 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":{
@@ -7615,14 +7646,17 @@ DataWorks
   "ProjectId":"10000",
   "BusinessId":3000001,
   "GlobalParam":"[{\"key\":\"test_key\",\"value\":\"test_v\"}]"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-DataWorks `XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -7650,14 +7684,14 @@ DataWorks `XML` 格式
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetDeployment
+#### 4.3.12 GetDeployment
+
+调用GetDeployment获取发布包的详情。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | GetDeployment | 系统规定参数。取值： GetDeployment。 |
 |---|---|---|---|---|
@@ -7670,8 +7704,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 发布包的详情。 |
-| Deployment | Struct |  | 发布包的详情。 |
+| Data | Struct |   | 发布包的详情。 |
+| Deployment | Struct |   | 发布包的详情。 |
 | CreateTime | Long | 1593877765000 | 发布包生成的毫秒时间戳。 |
 | CreatorId | String | 20030**** | 发布包创建者的阿里云用户ID。 |
 | ErrorMessage | String | 成功 | 当发布包执行失败（status为2）后，该字段记录具体的错误信息。 |
@@ -7679,8 +7713,6 @@ DataWorks
 | FromEnvironm ent | Integer | 0 | 执行本次发布所在的环境，包括0（本地）和 1（开发环境）。 |
 | HandlerId | String | 2003**** | 发布包执行者的阿里云用户ID。 |
 | Name | String | ods user info d- _ _ _ 2020-07- 04 20030**** _ | 发布包的名称，显示在任务发布>发布包列表页面。 |
-
-DataWorks
 
 | Status | Integer | 1 | 发布包当前的状态，包括0（就绪）、1（成功） 和2（失败）。 |
 |---|---|---|---|
@@ -7696,10 +7728,10 @@ DataWorks
 请求示例
 
 ```
-&DeploymentId=3000001 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=GetDeployment &DeploymentId=3000001 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -7717,10 +7749,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -7734,13 +7765,17 @@ DataWorks
             "FromEnvironment": 0,
             "ErrorMessage": "成功",
             "Name": "ods_user_info_d-2020-07-04_20030****"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7749,15 +7784,15 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetFileVersion
+#### 4.3.13 GetFileVersion
+
+调用GetFileVersion获取文件的版本详情。
 
 **请求参数**
 
@@ -7774,9 +7809,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 文件的版本详情。 |
-
-DataWorks
+| Data | Struct |   | 文件的版本详情。 |
 
 | ChangeType | String | UPDATE | 本次文件版本的变更类型，包括CREATE、 UPDATE和DELETE。 |
 |---|---|---|---|
@@ -7796,8 +7829,6 @@ DataWorks
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 
-DataWorks
-
 | RequestId | String | 0000-ABCD- EFG**** | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 |---|---|---|---|
 | Success | Boolean | true | 调用是否成功。 |
@@ -7807,10 +7838,10 @@ DataWorks
 请求示例
 
 ```
-&FileId=1000001 &FileVersion=2 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=GetFileVersion &FileId=1000001 &FileVersion=2 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -7835,10 +7866,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -7859,12 +7889,17 @@ DataWorks
         "NodeId": 3000001,
         "IsCurrentProd": true,
         "NodeContent": "{\"cycleType\":0,\"cronExpress\":\"00 05 00 * * ?\"}"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7877,13 +7912,13 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetFile
+#### 4.3.14 GetFile
 
 该接口用于获取文件的详情。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 DataWorks
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -7906,7 +7941,7 @@ DataWorks
 | Success | Boolean | true | 调用是否成功。 |
 | Data | Struct | / | 文件的详情。 |
 
-| 开发指南·OpenAPI参 | 考 |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   | DataWork |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7925,7 +7960,7 @@ DataWorks
 | --UseType | String | NORMAL | 文件所属的功能模块。取值： NORMAL：数据开发。 MANUAL：手动任务。 MANUAL BIZ：手动业务流程。 _ SKIP：数据开发的空跑调度。 ADHOCQUERY：临时查询。 COMPONENT：组件管理。 |
 | --FileFolderId | String | 2735c2**** | 文件所在文件夹的ID。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7944,8 +7979,6 @@ DataWorks
 | - NodeConfigura tion | Struct | / | 文件的调度属性配置。 |
 | --InputList | Array | / | 依赖的上游文件输出信息。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ---Input | String | dw project root _ _ | 文件依赖的上游文件的输出名称。 该参数与DataWorks控制台中，数据开发任务的“调度配置>调度依赖“选择”同周期“时”依赖的上游节点”下的“输出名”对应。 |
@@ -7959,8 +7992,6 @@ DataWorks
 | -- OutputParame ters | Array | / | 节点的上下文输出参数信息。 |
 | --- ParameterNa me | String | output | 节点上下文输出参数的参数名称。 该参数与DataWorks控制台中，数据开发任务的“调度配置>节点上下文>本节点输出参数“的”参数名“对应。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ---Value | String | 222 | 节点上下文输出参数的表达式。 该参数与DataWorks控制台中，数据开发任务的“调度配置>节点上下文>本节点输出参数“的”取值“对应。 |
@@ -7970,8 +8001,6 @@ DataWorks
 | -- SchedulerType | String | NORMAL | 调度的类型，取值如下： NORMAL：正常调度任务。 MANUAL：手动任务，不会被日常调度。 PAUSE：暂停任务。 SKIP：空跑任务，被日常调度，但启动调度时直接被置为成功。 |
 | --Stop | Boolean | false | 是否暂停调度，取值如下： true：暂停调度。 false：不暂停调度。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>调度类型”配置为”暂停调度“时对应。 |
 | --ParaValue | String | a=x b=y | 调度参数。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 参数”对应。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -7984,8 +8013,6 @@ DataWorks
 | -- AutoRerunTim es | Integer | 3 | 出错自动重跑的次数。 |
 | -- AutoRerunInte rvalMillis | Integer | 1200 | 出错自动重跑时间间隔，单位为毫秒。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>出错自动重跑”的”重跑间隔“配置对应。 控制台中“重跑间隔”的时间单位为分钟，请在调用时注意转换时间。 |
 | --CronExpress | String | 00 00 00 * * ? | 文件定时调度的cron表达式。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8000,13 +8027,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default
+http(s)://[Endpoint]/?Action=GetFile &RegionId=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":{
@@ -8028,8 +8054,6 @@ DataWorks
 "LastEditUser""62465892****"
 ```
 
-DataWorks
-
 ```json
    "LastEditUser":"62465892****",
    "Content":"SHOW TABLES;",
@@ -8041,19 +8065,30 @@ DataWorks
    "FileFolderId":"2735c2****",
    "BizId":1000001,
    "BusinessId":1000001
-  },
-  "ResourceDownloadLink":{
-   "downloadLink":"http://****"
-  },
-  "NodeConfiguration":{
-   "InputList":[
-    {
-     "Input":"dw_project_root",
-     "ParseType":"MANUAL"
-    }
 ```
 
-`],`
+`},`
+
+```json
+  "ResourceDownloadLink":{
+   "downloadLink":"http://****"
+```
+
+`},`
+
+```json
+  "NodeConfiguration":{
+   "InputList":[
+```
+
+`{`
+
+```json
+     "Input":"dw_project_root",
+     "ParseType":"MANUAL"
+```
+
+`}` `],`
 
 ```json
    "CycleType":"DAY",
@@ -8065,26 +8100,32 @@ DataWorks
    "StartImmediately":true,
    "CronExpress":"00 00 00 * * ?",
    "OutputList":[
-    {
-     "Output":"ods_user_info_d",
-     "RefTableName":"ods_user_info_d"
-    }
 ```
 
-`],`
+`{`
+
+```json
+     "Output":"ods_user_info_d",
+     "RefTableName":"ods_user_info_d"
+```
+
+`}` `],`
 
 ```json
    "EndEffectDate":1671694850000,
    "OutputParameters":[
-    {
+```
+
+`{`
+
+```json
      "Type":"1",
      "Description":"a connection",
      "Value":"222",
      "ParameterName":"output"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "DependentNodeIdList":"5,10,15,20",
@@ -8095,30 +8136,28 @@ DataWorks
    "ParaValue":"a=x b=y",
    "ApplyScheduleImmediately":"true",
    "InputParameters":[
-    {
+```
+
+`{`
+
+```json
      "ValueSource":"project_001.parent_node:outputs",
 "ParameterName":"input"
 ```
 
-DataWorks
-
 ```
      ParameterName:input
-    }
 ```
 
-]
+`}` `]` `}` `},`
 
 ```json
-  }
- },
  "ErrorCode":"",
  "ErrorMessage":"",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -8167,13 +8206,11 @@ DataWorks
 tRihtN
 ```
 
-fl
+`f``l`
 
 ```
 /St tRihtN
 ```
-
-DataWorks
 
 ```xml
     <StartRightNow>false</StartRightNow>
@@ -8217,14 +8254,16 @@ DataWorks
 | 429 | 9990020002 | Throttling.User | Your request is too frequent. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-|  | DataWorks |  |  | 开发指南·OpenAPI参考 |  |
+|   | DataWorks |   |   | 开发指南·OpenAPI参考 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### GetFolder
+#### 4.3.15 GetFolder
+
+调用GetFolder获取文件夹的详情。
 
 **请求参数**
 
@@ -8241,10 +8280,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 文件夹的详情。 |
+| Data | Struct |   | 文件夹的详情。 |
 | FolderId | String | 2735**** | 文件夹的ID。 |
-
-DataWorks
 
 | FolderPath | String | 业务流程/我的第一个业务流程/MaxCompute/od s层 | 文件夹的路径。 |
 |---|---|---|---|
@@ -8259,47 +8296,51 @@ DataWorks
 请求示例
 
 ```
-&FolderId=273****
+http(s)://[Endpoint]/?Action=GetFolder &FolderId=273****
 ```
 
-`&FolderPath=`业务流程/我的第一个业务流程`/MaxCompute/ods`层
+`&FolderPath=`业务流程`/`我的第一个业务流程`/MaxCompute/ods`层
 
 ```
 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
 ```
 
-`<FolderPath>`业务流程/我的第一个业务流程`/MaxCompute/ods`层`</FolderPath>`
+`<FolderPath>`业务流程`/`我的第一个业务流程`/MaxCompute/ods`层`</FolderPath>`
 
 ```xml
     <FolderId>2735****</FolderId>
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
 ```
 
-`"FolderPath": "`业务流程/我的第一个业务流程`/MaxCompute/ods`层`",`
+`"FolderPath": "`业务流程`/`我的第一个业务流程`/MaxCompute/ods`层`",`
 
 ```json
         "FolderId": "2735****"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -8312,7 +8353,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetNodeTypeListInfo
+#### 4.3.16 GetNodeTypeListInfo
 
 调用GetNodeTypeListInfos查询节点类型信息，包括类型Code和类型名称。
 
@@ -8323,8 +8364,6 @@ DataWorks
 | Action | String | 是 | GetNodeTypeLis tInfo | 系统规定参数。取值： GetNodeTypeListInfo。 |
 | PageNumber | Integer | 是 | 1 | 请求的数据页数，用于翻页。 |
 | PageSize | Integer | 是 | 10 | 请求的数据页大小，最大值为100。 |
-
-DataWorks
 
 | ProjectId | Long | 是 | 10001 | DataWorks工作空间ID。 |
 |---|---|---|---|---|
@@ -8337,8 +8376,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| NodeTypeInfoL ist | Struct |  | 符合条件的节点类型信息列表。 |
-| NodeTypeInfo | Array of NodeTypeInfo |  | 单个节点类型的信息。 |
+| NodeTypeInfoL ist | Struct |   | 符合条件的节点类型信息列表。 |
+| NodeTypeInfo | Array of NodeTypeInfo |   | 单个节点类型的信息。 |
 | NodeType | Integer | 10 | 节点类型Type（数字）。 |
 | NodeTypeNam e | String | ODPS SQL | 节点类型的名称。 |
 | PageNumber | Integer | 1 | 当前数据页的页码。 |
@@ -8348,13 +8387,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetNodeTypeListInfo &PageNumber=1 &PageSize=10 &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <NodeTypeInfoList>
@@ -8385,9 +8424,9 @@ http(s)://[Endpoint]/?Action=GetNodeTypeListInfo &PageNumber=1 &PageSize=10 &Pro
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-DataWorks
+#### 4.3.17 ListBusiness
 
-#### ListBusiness
+调用ListBusiness查询业务流程的列表。
 
 **请求头**
 
@@ -8407,7 +8446,7 @@ DataWorks
 | PageSize | Integ er | Body | 是 | 10 | 每页显示的数据条数，默认为10条，最大为100条。 |
 | Keyword | Strin g | Body | 否 | my | 关键字，用于模糊匹配业务流程的名称。 |
 
-| DataWorks |  |  |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -8435,7 +8474,7 @@ DataWorks
 | -PageNumber | Integer | 1 | 当前数据页的页码。 |
 | -PageSize | Integer | 10 | 当前数据页的数据条数。 |
 
-| 开发指南·OpenAPI | 参考 |  | DataWork |
+| 开发指南·OpenAPI | 参考 |   | DataWork |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -TotalCount | Integer | 13 | 满足查询条件的数据总条数。 |
@@ -8445,13 +8484,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &PageNumber=1 &PageSize=10
+http(s)://[Endpoint]/?Action=ListBusiness &RegionId=default &PageNumber=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":{
@@ -8459,7 +8497,11 @@ DataWorks
   "PageSize":10,
   "PageNumber":1,
   "Business":[
-   {
+```
+
+`{`
+
+```json
     "Owner":"34824327****",
 ```
 
@@ -8470,20 +8512,17 @@ DataWorks
     "ProjectId":10000,
     "BusinessId":3000001,
     "GlobalParam":"[{\"key\":\"test_key\",\"value\":\"test_v\"}]"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -8517,11 +8556,13 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListFiles
+#### 4.3.18 ListFiles
+
+调用ListFiles查询文件列表。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 DataWorks
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -8538,14 +8579,10 @@ DataWorks
 | PageNum ber | Integ er | Body | 否 | 1 | 请求的数据页数，用于翻页。 |
 | PageSize | Integ er | Body | 否 | 10 | 每页显示的条数，默认为10 条，最大为100条。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | UseType | Strin g | Body | 否 | NORMAL | 文件所属的功能模块，包括 NORMAL（数据开发）、 MANUAL（手动任务）、 MANUAL BIZ（手动工作 _ 流）、SKIP（数据开发空跑调度）、 ADHOCQUERY（临时查询）和COMPONENT（组件管理）。 |
 | FileTypes | Strin g | Body | 否 | 10,23 | 文件的代码类型，常用的代码类型包括6（Shell）、 10（ODPS SQL）、 11（ODPS MR）、23（数据集成）、24（ODPS Script）、97（PAI）、 98（组合节点）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS对象检查）、257（EMR Shell）、258（EMR Spark Shell）、 259（EMR Presto）、 260（EMR Impala）、 900（实时同步）、 1002（PAI内部节点）、 1089（跨租户节点）、 1091（Hologres开发）、 1093（Hologres SQL）、 1100（赋值节点）、 1106（遍历节点 （foreach））、 1221（PyODPS 3）。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8569,8 +8606,6 @@ DataWorks
 | --Owner | String | 3872572**** | 文件责任人的阿里云用户ID。 |
 | --CreateTime | Long | 1593950832000 | 文件创建时间的毫秒时间戳。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --FileType | Integer | 10 | 文件的代码类型，常用的代码类型包括 6（Shell）、10（ODPS SQL）、11（ODPS MR）、23（数据集成）、24（ODPS Script）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS 对象检查）、257（EMR Shell）、258（EMR Spark Shell）、259（EMR Presto）、 260（EMR Impala）、900（实时同步）、 1089（跨租户节点）、1091（Hologres开发）、1093（Hologres SQL）、1100（赋值节点）、1221（PyODPS 3）。 |
@@ -8584,7 +8619,7 @@ DataWorks
 | --FileId | Long | 10000001 | 文件的ID。 |
 | --ParentId | Long | -1 | 如果当前文件是组合节点文件的内部文件，该字段标识对应组合节点文件的ID。 |
 
-| 开发指南·OpenAPI参 | 考 |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   | DataWork |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8605,13 +8640,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default
+http(s)://[Endpoint]/?Action=ListFiles &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "HttpStatusCode": 200,
     "Data": {
@@ -8640,15 +8674,17 @@ DataWorks
             "FileFolderId": "2735c2****",
             "BizId": 300000,
             "BusinessId": ""
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -8690,7 +8726,7 @@ DataWorks
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8698,7 +8734,9 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### ListFileVersions
+#### 4.3.19 ListFileVersions
+
+调用ListFileVersions查询文件的版本列表。
 
 **请求参数**
 
@@ -8716,11 +8754,9 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 文件的版本列表。 |
+| Data | Struct |   | 文件的版本列表。 |
 
-DataWorks
-
-| FileVersions | Array of FileVersion |  | 文件的版本详情。 |
+| FileVersions | Array of FileVersion |   | 文件的版本详情。 |
 |---|---|---|---|
 | ChangeType | String | UPDATE | 本次文件版本的变更类型，包括CREATE、 UPDATE和DELETE。 |
 | Comment | String | 第二次版本提交 | 本次文件版本的说明。 |
@@ -8738,8 +8774,6 @@ DataWorks
 | PageNumber | Integer | 1 | 当前数据页的页码。 |
 | PageSize | Integer | 10 | 当前数据页的大小。 |
 
-DataWorks
-
 | TotalCount | Integer | 13 | 满足查询条件的数据总条数。 |
 |---|---|---|---|
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
@@ -8753,10 +8787,10 @@ DataWorks
 请求示例
 
 ```
-&FileId=100000001 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=ListFileVersions &FileId=100000001 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -8786,10 +8820,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -8815,13 +8848,17 @@ DataWorks
             "NodeId": 1234,
             "IsCurrentProd": false,
             "NodeContent": "{\"cycleType\":0,\"cronExpress\":\"00 05 00 * * ?\"}"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -8834,9 +8871,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-DataWorks
+#### 4.3.20 ListFolders
 
-#### ListFolders
+调用ListFolders查询文件夹的列表。
 
 **请求参数**
 
@@ -8854,12 +8891,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 满足条件的文件夹的列表信息。 |
-| Folders | Array of Folders |  | 文件夹的列表。 |
+| Data | Struct |   | 满足条件的文件夹的列表信息。 |
+| Folders | Array of Folders |   | 文件夹的列表。 |
 | FolderId | String | 2735c2**** | 文件夹的ID。 |
 | FolderPath | String | 业务流程/我的第一个业务流程/MaxCompute/od s层 | 文件夹的路径。 |
-
-DataWorks
 
 | PageNumber | Integer | 1 | 当前数据页的页码。 |
 |---|---|---|---|
@@ -8876,16 +8911,16 @@ DataWorks
 请求示例
 
 ```
-&PageNumber=1 &PageSize=10
+http(s)://[Endpoint]/?Action=ListFolders &PageNumber=1 &PageSize=10
 ```
 
-`&ParentFolderPath=`业务流程/我的第一个业务流程`/MaxCompute`
+`&ParentFolderPath=`业务流程`/`我的第一个业务流程`/MaxCompute`
 
 ```
 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -8895,7 +8930,7 @@ DataWorks
     <Folders>
 ```
 
-`<FolderPath>`业务流程/我的第一个业务流程`/MaxCompute/ods`层`</FolderPath>`
+`<FolderPath>`业务流程`/`我的第一个业务流程`/MaxCompute/ods`层`</FolderPath>`
 
 ```xml
         <FolderId>2735c2****</FolderId>
@@ -8903,10 +8938,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -8916,17 +8950,21 @@ DataWorks `JSON` 格式
         "Folders": {
 ```
 
-`"FolderPath": "`业务流程/我的第一个业务流程`/MaxCompute/ods`层`",`
+`"FolderPath": "`业务流程`/`我的第一个业务流程`/MaxCompute/ods`层`",`
 
 ```json
             "FolderId": "2735c2****"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -8939,16 +8977,14 @@ DataWorks `JSON` 格式
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### SubmitFile
+#### 4.3.21 SubmitFile
 
-调用SubmitFile，提交文件至调度系统的开发环境，生成对应的任务。该API是异步处理，您可以使用
+调用SubmitFile，提交文件至调度系统的开发环境，生成对应的任务。该API是异步处理，您可以使用 GetDeployment接口获取文件的提交状态。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | SubmitFile | 系统规定参数。取值：SubmitFile。 |
 |---|---|---|---|---|
@@ -8971,30 +9007,30 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&FileId=1000000 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=SubmitFile &FileId=1000000 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>3000001</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": 3000001,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9007,11 +9043,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-DataWorks
+#### 4.3.22 UpdateFile
 
-#### UpdateFile
-
-调试或调用该接口时，填写的参数必须和该节点原本的文件配置不同。例如，源节点的某参数值为A，则需要变更为B后再提交。如果仍填写A，会报invalid异常。
+调用UpdateFile更新已创建的文件节点。 调试或调用该接口时，填写的参数必须和该节点原本的文件配置不同。例如，源节点的某参数值为A，则需要变更为B后再提交。如果仍填写A，会报invalid异常。
 
 **请求头**
 
@@ -9027,8 +9061,6 @@ DataWorks
 | AutoRerun IntervalMil lis | Integ er | Body | 否 | 120000 | 出错自动重跑时间间隔，单位为毫秒。最大为 1800000 毫秒（30 分钟）。 该参数与 DataWorks 控制台中，数据开发任务的“调度配置>时间属性>出错自动重跑”的”重跑间隔“配置对应。 控制台中“重跑间隔”的时间单位为分钟，请在调用时注意转换时间。 |
 | RerunMod e | Strin g | Body | 否 | ALL ALLOWED _ | 重跑属性。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>重跑属性”配置内容对应。 枚举值: FAILURE ALLOWED(运 _ 行成功后不可重跑，运行失败后可重跑) ALL DENIED(运行成功 _ 或失败后皆不可重跑) ALL ALLOWED(运行成 _ 功或失败后皆可重跑) |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Stop | Boole an | Body | 否 | false | 是否暂停调度。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>调度类型”配置为”暂停调度“时对应。 枚举值: true(暂停调度) false(不暂停调度) |
@@ -9036,14 +9068,10 @@ DataWorks
 | StartEffec tDate | Long | Body | 否 | 936923400000 | 开始自动调度的毫秒时间戳，单位为毫秒。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>生效日期”配置的开始时间的毫秒时间戳对应。 |
 | EndEffect Date | Long | Body | 否 | 4155787800000 | 停止自动调度的时间戳，单位为毫秒。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>生效日期”配置的结束时间的毫秒时间戳对应。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | CronExpre ss | Strin g | Body | 否 | 00 00-59/5 1-23 * * ? | 自动调度的cron表达式，该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>cron表达式”对应。 示例如下： 每天凌晨5点30分定时调度：00 30 05 * * ? 每个小时的第15分钟定时调度：00 15 00-23/1 * * ? 每隔十分钟调度一次： 00 00/10 * * * ? 每天8点到17点，每隔十分钟调度一次：00 00- 59/10 8-17 * * * ? 每月的1日0点 20 分自动调度：00 20 00 1 * ? 从1月1日0点10分开始， 每过3个月调度一次：00 10 00 1 1-12/3 ? 每周二、周五的0点5分自动调度：00 05 00 * * 2,5 由于DataWorks调度系统的规则，cron表达式有以下限制： 最短调度间隔时间为5分钟。 每天最早调度时间为0点 5分。 |
 | CycleType | Strin g | Body | 否 | NOT DAY _ | 调度周期的类型。 该参数与DataWorks控制台中，数据开发任务的“调度配置>时间属性>调度周期”对应。 默认值：DAY 枚举值: DAY(日、周、月) NOT DAY(分钟、小时) _ |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9055,7 +9083,7 @@ DataWorks
 | Resource GroupIden tifier | Strin g | Body | 否 | default group _ | 文件发布成任务后，任务执行时对应的资源组。您可以调用ListResourceGroups 获取工作空间可用的资源组列表。 |
 | Connectio nName | Strin g | Body | 否 | odps first _ | 文件对应任务执行时，任务使用的数据源标识符。您可以调用ListDataSources获取可用的数据源列表。 |
 
-| DataWorks |  |  |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9065,8 +9093,6 @@ DataWorks
 | Scheduler Type | Strin g | Body | 否 | SKIP | 调度的类型。 枚举值: NORMAL(正常调度任务) SKIP(空跑任务，被日常调度，但启动调度时直接被置为成功) PAUSE(暂停任务) MANUAL(手动任务，不会被日常调度，对应手动业务流程下的节点) |
 | Advanced Settings | Strin g | Body | 否 | {"queue":"default","SPA RK CONF":"--conf _ spark.driver.memory=2 g"} | 任务的高级配置。 该参数与DataWorks控制台中，EMR Spark Streaming和EMR Streaming SQL数据开发任务，编辑页面右侧导航栏的“高级设置“对应。 当前仅EMR Spark Streaming和EMR Streaming SQL任务支持配置该参数，并且参数为 JSON格式。 |
 | StartImme diately | Boole an | Body | 否 | true | 发布后是否立即启动。 该参数与DataWorks控制台中，EMR Spark Streaming和EMR Streaming SQL数据开发任务，编辑页面右侧导航栏的“配置>时间属性>启动方式“对应。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9086,25 +9112,23 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&RegionId=default &FileId=100000001
+http(s)://[Endpoint]/?Action=UpdateFile &RegionId=default &FileId=100000001
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFGH-IJKLMNOPQ",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFGH-IJKLMNOPQ</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -9121,9 +9145,9 @@ DataWorks
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### UpdateBusiness
+#### 4.3.23 UpdateBusiness
 
-DataWorks
+调用UpdateBusiness更新业务流程。
 
 **请求头**
 
@@ -9142,8 +9166,6 @@ DataWorks
 | BusinessN ame | Strin g | Body | 否 | MyBusiness | 业务流程的名称。您可以调用ListBusiness接口获取。 |
 | Descriptio n | Strin g | Body | 否 | modified from my first business | 业务流程的描述信息。 |
 | Owner | Strin g | Body | 否 | 348428**** | 业务流程的责任人。您可以调用ListBusiness接口获取。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9166,22 +9188,20 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &BusinessId=300000
+http(s)://[Endpoint]/?Action=UpdateBusiness &RegionId=default &BusinessId=300000
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -9198,7 +9218,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateFolder
+#### 4.3.24 UpdateFolder
+
+调用UpdateFolder更新文件夹的信息。
 
 **请求参数**
 
@@ -9207,8 +9229,6 @@ DataWorks
 | Action | String | 是 | UpdateFolder | 系统规定参数。取值：UpdateFolder。 |
 | FolderId | String | 是 | 2735c2c19d58 | 文件夹的ID，您可以调用ListFolders获取文件夹的ID。 |
 | FolderName | String | 是 | MySecondFolder | 文件夹的名称。 |
-
-DataWorks
 
 | ProjectId | Long | 是 | 10000 | DataWorks工作空间的ID。您可以登录 DataWorks管控台，进入工作空间配置页面获取工作空间ID。该参数与 ProjectIdentifier参数，二者必须设置其一，用来确定本次API调用操作的 DataWorks工作空间。 |
 |---|---|---|---|---|
@@ -9230,26 +9250,26 @@ DataWorks
 请求示例
 
 ```
-&FolderId=2735c2c19d58 &FolderName=MySecondFolder &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=UpdateFolder &FolderId=2735c2c19d58 &FolderName=MySecondFolder &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9262,15 +9282,15 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateUdfFile
+#### 4.3.25 UpdateUdfFile
+
+调用UpdateUdfFile更新函数的文件信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | UpdateUdfFile | 系统规定参数。取值：UpdateUdfFile。 |
-
-DataWorks
 
 | ClassName | String | 是 | com.alibaba.dat aworks.api.udf.S tringConcat | 函数定义所在的类名，对应创建函数表单的类名。 |
 |---|---|---|---|---|
@@ -9287,8 +9307,6 @@ DataWorks
 | Example | String | 否 | StringConcat('a', 'b', 'c') | 函数的调用示例，对应创建函数表单中的示例。 |
 | ProjectIdentifier | String | 否 | dw project _ | Dataworks工作空间的唯一标识符，即数据开发页面顶部切换工作空间处的英文标识。 该参数与ProjectId参数二者必须设置其一，以确定本次API调用操作的 Dataworks工作空间。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
@@ -9304,34 +9322,32 @@ DataWorks
 请求示例
 
 ```
-&ClassName=com.alibaba.dataworks.api.udf.StringConcat
+http(s)://[Endpoint]/?Action=UpdateUdfFile &ClassName=com.alibaba.dataworks.api.udf.StringConcat
 ```
 
-`&FileFolderPath=`业务流程/第一个业务流程/函数/字符串处理函数
+`&FileFolderPath=`业务流程`/`第一个业务流程`/`函数`/`字符串处理函数
 
 ```
 &FileId=10000001 &FunctionType=STRING &ProjectId=10000 &RegionId=default &Resources=string-concat-1.0.0.jar,commons-lang-2.6.jar
 ```
 
-`&UdfDescription=`把几个字符串连接起来生成一个新的字符串 `&<`公共请求参数> 正常返回示例 `XML` 格式
+`&UdfDescription=`把几个字符串连接起来生成一个新的字符串 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -9344,7 +9360,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateResourceFile
+#### 4.3.26 UpdateResourceFile
+
+调用UpdateResourceFile更新资源文件。
 
 **请求参数**
 
@@ -9362,29 +9380,25 @@ DataWorks
 |---|---|---|---|
 | RequestId | String | 0bc1ec92159376** ** | 请求ID |
 
-DataWorks
-
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=UpdateResourceFile &FileId=10001 &FileName=test &OssDownloadLink=http://oss.aliyun.com &ProjectId=10001
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9397,13 +9411,13 @@ http(s)://[Endpoint]/?Action=UpdateResourceFile &FileId=10001 &FileName=test &Os
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### UpdateIDEEventResult
+#### 4.3.27 UpdateIDEEventResult
 
 调用UpdateIDEEventResult接口，在数据开发过程中触发扩展点时，通过将扩展程序对扩展点事件的检查结果返回给数据开发系统。
 
 **请求头**
 
-DataWorks 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -9421,23 +9435,19 @@ DataWorks 该接口使用公共请求头，无特殊请求头。请参见公共�
 |---|---|---|---|
 | RequestId | String | 8abcb91f-d266- 4073-b907- 2ed670378ed1 | 请求的唯一标识，用于后续错误排查使用。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=UpdateIDEEventResult
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"8abcb91f-d266-4073-b907-2ed670378ed1"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>8abcb91f-d266-4073-b907-2ed670378ed1</RequestId>
@@ -9454,7 +9464,7 @@ http(s)://[Endpoint]/?Action=UpdateIDEEventResult
 | 429 | 9990020002 | Throttling.User | Your request is too frequent. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### CheckFileDeployment
+#### 4.3.28 CheckFileDeployment
 
 当您在DataWorks数据开发页面创建的文件提交成功后，文件将进入发布检查状态，DataWorks会将文件发布检查事件返回给您，您需要根据事件内容判断该文件是否可以继续进行发布校验。此时，可以通过调用 CheckFileDeployment接口，将待发布文件的检查结果返回至DataWorks。
 
@@ -9462,8 +9472,6 @@ http(s)://[Endpoint]/?Action=UpdateIDEEventResult
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | CheckFileDeploy ment | 系统规定参数。取值： CheckFileDeployment。 |
 |---|---|---|---|---|
@@ -9486,21 +9494,19 @@ DataWorks
 http(s)://[Endpoint]/?Action=CheckFileDeployment &CheckerInstanceId=66_123455623_2 &RegionId=default &Status=OK
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>86d5a5ac-0cc0-4c5f-a374-a15713b252ab</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "86d5a5ac-0cc0-4c5f-a374-a15713b252ab"
-}
 ```
 
-DataWorks
+`}`
 
 **错误码**
 
@@ -9513,7 +9519,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetIDEEventDetail
+#### 4.3.29 GetIDEEventDetail
+
+调用GetIDEEventDetail查询触发扩展点事件时的数据快照。
 
 **请求头**
 
@@ -9529,18 +9537,16 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 16A96B9A-F203- 4EC5-8E43- CB92E68F**** | 请求ID。用于定位日志，排查问题。 |
-| EventDetail | Struct |  | 触发扩展点事件时的数据快照。 不同类型的消息事件，数据快照的有效字段存在差异，具体请参考各消息事件的字段说明。 |
-| - FileExecutionC ommand | Struct |  | 文件代码执行时的快照，当Message类型为 IDE FILE EXECUTE BEFORE时有效。 _ _ _ |
+| EventDetail | Struct |   | 触发扩展点事件时的数据快照。 不同类型的消息事件，数据快照的有效字段存在差异，具体请参考各消息事件的字段说明。 |
+| - FileExecutionC ommand | Struct |   | 文件代码执行时的快照，当Message类型为 IDE FILE EXECUTE BEFORE时有效。 _ _ _ |
 | --FileId | Long | 1234123 | 文件的ID。 |
 | -- DataSourceNa me | String | MaxCompute 001 _ | 表所属计算引擎的唯一标识。 |
 | --Content | String | SHOW TABLES; | 生成本次文件版本的代码。 |
 | --FileType | Long | 10 | 文件类型。不同文件类型其代码不同，常用的代码及其表示的类型包括6（Shell）、10（ODPS SQL）、11（ODPS MR）、23（数据集成）、 24（ODPS Script）、99（虚拟节点）、 221（PyODPS 2）、225（ODPS Spark）、 227（EMR Hive）、228（EMR Spark）、 229（EMR Spark SQL）、230（EMR MR）、 239（OSS对象检查）、257（EMR Shell）、 258（EMR Spark Shell）、259（EMR Presto）、260（EMR Impala）、900（实时同步）、1089（跨租户节点）、 1091（Hologres开发）、1093（Hologres SQL）、1100（赋值节点）、1221（PyODPS 3）。 |
-| -DeletedFile | Struct |  | 删除文件时的快照信息，当Message类型为 IDE FILE DELETE BEFORE时有效。 _ _ _ |
+| -DeletedFile | Struct |   | 删除文件时的快照信息，当Message类型为 IDE FILE DELETE BEFORE时有效。 _ _ _ |
 | --Owner | String | 7384234**** | 文件责任人。 |
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9554,7 +9560,7 @@ DataWorks
 | --FolderId | String | aldurie78l2falure | 文件所属的文件夹ID，您可以调用GetFolder查询文件夹详情。 |
 | --ParentFileId | Long | 1234122 | 文件所属的循环节点或遍历节点的ID。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9562,7 +9568,7 @@ DataWorks
 | --Content | String | SHOW TABLES; | 生成本次文件版本的代码。 |
 | --NodeId | Long | 421429 | 调度节点的ID。 |
 | --FileId | Long | 1234123 | 文件的ID。 |
-| - CommittedFile | Struct |  | 文件提交和发布时的快照。 仅当Message类型为 IDE FILE SUBMIT BEFORE或 _ _ _ IDE FILE DEPLOY BEFORE时有效。 _ _ _ |
+| - CommittedFile | Struct |   | 文件提交和发布时的快照。 仅当Message类型为 IDE FILE SUBMIT BEFORE或 _ _ _ IDE FILE DEPLOY BEFORE时有效。 _ _ _ |
 | --FileId | Long | 1234123 | 文件的ID。 |
 | --Content | String | SHOW TABLES; | 生成本次文件版本的代码。 |
 | --Committor | String | 7384234**** | 生成本次文件版本的阿里云用户ID。 |
@@ -9572,36 +9578,30 @@ DataWorks
 | --NodeId | Long | 421429 | 调度节点的ID。 |
 | --Comment | String | 新建的一张表。 | 表的备注信息。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --UseType | String | NORMAL | 文件所属的功能模块。取值： NORMAL：数据开发。 MANUAL：手动任务。 MANUAL BIZ：手动业务流程。 _ SKIP：数据开发的空跑调度。 ADHOCQUERY：临时查询。 COMPONENT：组件管理。 |
-| -- FilePropertyCo ntent | Struct |  | 文件的更多属性。 |
+| -- FilePropertyCo ntent | Struct |   | 文件的更多属性。 |
 | --- DataSourceNa me | String | MaxCompute 001 _ | 文件关联的计算引擎唯一标识。 |
 | ---ParentFileId | Long | 1234122 | 文件所属的循环节点或遍历节点的ID。 |
 | ---BusinessId | Long | 74328 | 文件所属的业务流程ID。 |
 | --- CurrentVersio n | Long | 1 | 当前文件的最新版本。 |
 | ---Owner | String | 7384234**** | 文件责任人。 |
 | ---FolderId | String | aldurie78l2falure | 文件所属的文件夹ID，您可以调用GetFolder查询文件夹详情。 |
-| -- NodeConfigura tion | Struct |  | 文件的调度属性配置。 |
-| ---InputList | Array |  | 文件依赖的上游文件输出。 |
+| -- NodeConfigura tion | Struct |   | 文件的调度属性配置。 |
+| ---InputList | Array |   | 文件依赖的上游文件输出。 |
 | ----Input | String | dw project.002 out _ _ | 文件的输出名称。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 调度依赖“选择”同周期“时的“本节点的输出名称”列值对应。 |
 | ----ParseType | String | MANUAL | 配置文件依赖的方式，取值： MANUAL：手动配置。 AUTO：自动解析。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| ---OutputList | Array |  | 文件的输出。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 调度依赖“选择”同周期“时的”本节点的输出名称”对应。 |
+| ---OutputList | Array |   | 文件的输出。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 调度依赖“选择”同周期“时的”本节点的输出名称”对应。 |
 | ---- RefTableName | String | ods user info d _ _ _ | 文件的输出值。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 调度依赖“选择”同周期“时的“本节点的输出表”列的值对应。 |
 | ----Output | String | dw project.002 out _ _ | 文件的输出名称。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 调度依赖“选择”同周期“时的“本节点的输出名称”列值对应。 |
 | ---RerunMode | String | ALL ALLOWED _ | 重跑属性。取值： ALL ALLOWED：运行成功或失败后皆可重 _ 跑。 FAILURE ALLOWED：运行成功后不可重 _ 跑，运行失败后可以重跑。 ALL DENIED：运行成功或失败皆不可重跑。 _ 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 时间属性 > 重跑属性”配置内容对应。 |
 | --- SchedulerType | String | NORMAL | 调度的类型，取值如下： NORMAL：正常调度任务。 MANUAL：手动任务，不会被日常调度，对应手动业务流程下的节点。 PAUSE：暂停任务。 SKIP：空跑任务，被日常调度，但启动调度时直接被置为成功。 |
 | ---ParaValue | String | a=x b=y | 调度参数。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 参数”对应。您可以参考调度参数配置。 |
 | ---CycleType | String | DAY | 调度周期的类型，包括NOT DAY（分钟、小 _ 时）和DAY（日、周、月）。 该参数与DataWorks控制台中，数据开发任务的“调度配置 > 时间属性 > 调度周期”对应。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -9611,14 +9611,14 @@ DataWorks
 | --- AutoRerunInte rvalMillis | Long | 120000 | 自动重跑间隔，单位：毫秒。 |
 | ---CronExpress | String | 00 05 00 * * ? | 调度Cron表达式。 |
 | --- DependentTyp e | String | USER DEFINE _ | 依赖上一周期的方式。取值： SELF：依赖项选择本节点。 CHILD：依赖项选择一级子节点。 USER DEFINE：依赖项选择其他节点。 _ NONE：未选择依赖项，即不会依赖上一周期。 |
-| -TableModel | Struct |  | 表提交和发布时的快照，当Message类型为 IDE TABLE SUBMIT BEFORE和 _ _ _ IDE TABLE DEPLOY BEFORE时有效。 _ _ _ |
-| --Columns | Array |  | 字段列表。 |
+| -TableModel | Struct |   | 表提交和发布时的快照，当Message类型为 IDE TABLE SUBMIT BEFORE和 _ _ _ IDE TABLE DEPLOY BEFORE时有效。 _ _ _ |
+| --Columns | Array |   | 字段列表。 |
 | --- ColumnName | String | ID | 字段名称。 |
 | ---ColumnType | String | BIGINT | 字段类型。 |
 | --- IsPartitionColu mn | Boolean | false | 是否为分区字段，取值： true：是分区字段。 false：非分区字段。 |
 | ---Comment | String | ID | 字段备注。 |
 
-|  | DataWorks |  |  | 开发指南·OpenAPI参考 |  |
+|   | DataWorks |   |   | 开发指南·OpenAPI参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9635,13 +9635,12 @@ DataWorks
 请求示例
 
 ```
-&MessageId=8abcb91f-d266-4073-b907-2ed67037**** &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=GetIDEEventDetail &MessageId=8abcb91f-d266-4073-b907-2ed67037**** &ProjectId=10000 &RegionId=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"16A96B9A-F203-4EC5-8E43-CB92E68F****",
  "EventDetail":{
   "CommittedFile":{
@@ -9662,22 +9661,34 @@ DataWorks
     "InputList":{
      "Input":"dw_project_root",
      "ParseType":"MANUAL"
-    },
+```
+
+`},`
+
+```json
     "AutoRerunTimes":3,
 ```
 
-DataWorks ,
+`,`
 
 ```json
     "RerunMode":"ALL_ALLOWED",
     "OutputList":{
      "Output":"dw_project.002_out",
      "RefTableName":"ods_user_info_d"
-    },
+```
+
+`},`
+
+```json
     "SchedulerType":"NORMAL",
     "ParaValue":"a=x b=y",
     "CronExpress":"00 05 00 * * ?"
-   },
+```
+
+`},`
+
+```json
    "Content":"SHOW TABLES;",
    "FileName":"hello_dataworks.sql",
    "UseType":"NORMAL",
@@ -9690,8 +9701,11 @@ DataWorks ,
     "CurrentVersion":1,
     "FolderId":"aldurie78l2falure",
     "BusinessId":74328
-   }
-  },
+```
+
+`}` `},`
+
+```json
   "TableModel":{
    "LifeCycle":7,
    "TableName":"tb_hello",
@@ -9707,15 +9721,27 @@ DataWorks ,
     "Comment":"ID",
     "ColumnType":"BIGINT",
     "IsPartitionColumn":false
-   },
+```
+
+`},`
+
+```json
    "Location":"hdfs://path/to/object"
-  },
+```
+
+`},`
+
+```json
   "FileExecutionCommand":{
    "DataSourceName":"MaxCompute_001",
    "FileType":10,
    "Content":"SHOW TABLES",
    "FileId":1234123
-  },
+```
+
+`},`
+
+```json
   "DeletedFile":{
    "ParentFileId":1234122,
    "Owner":"7384234****",
@@ -9729,17 +9755,12 @@ DataWorks ,
    "FileId":1234123,
 ```
 
-DataWorks
-
 ```json
    "FolderId":"aldurie78l2falure",
    "BusinessId":74328
-  }
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `}` `XML` 格式
 
 ```xml
 <RequestId>16A96B9A-F203-4EC5-8E43-CB92E68F****</RequestId> <EventDetail>
@@ -9797,8 +9818,6 @@ DataWorks
   <DataSourceName>MaxCompute001</DataSourceName>
 ```
 
-DataWorks
-
 ```xml
 ataSouceae aCopute_00 /ataSouceae
   <Env>DEV</Env>
@@ -9847,7 +9866,9 @@ ataSouceae aCopute_00 /ataSouceae
 |---|---|---|---|
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### ListDeployments
+#### 4.3.30 ListDeployments
+
+调用ListDeployments查询发布包列表信息。
 
 **使用说明**
 
@@ -9868,7 +9889,7 @@ ataSouceae aCopute_00 /ataSouceae
 | EndCreate Time | Long | Body | 否 | 1593877765000 | 生成发布包的时间，用UNIX 时间戳表示，单位：毫秒。 |
 | Executor | Strin g | Body | 否 | 2003**** | 发布包执行者的阿里云用户 ID。 |
 
-|  | 开发指南·Open | API参考 |  |  |  | DataWork | s |
+|   | 开发指南·Open | API参考 |   |   |   | DataWork | s |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9885,12 +9906,10 @@ ataSouceae aCopute_00 /ataSouceae
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 16A96B9A-F203- 4EC5-8E43- CB92E68F**** | 请求ID。用于定位日志，排查问题。 |
-| Data | Struct |  |  |
-| -Deployments | Array |  |  |
+| Data | Struct |   |   |
+| -Deployments | Array |   |   |
 | --Status | Integer | 1 | 发布包当前的状态。取值： 0：发布包已准备就绪。 1：发布包发布成功。 2：发布包发布失败。 6：发布包被驳回。 |
 | -- ErrorMessage | String | OK | 当发布包执行失败时，用于记录错误信息。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -9909,13 +9928,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default
+http(s)://[Endpoint]/?Action=ListDeployments &RegionId=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"16A96B9A-F203-4EC5-8E43-CB92E68F****",
  "Data":{
   "Deployments":{
@@ -9927,15 +9945,17 @@ DataWorks
    "Id":11111,
    "ErrorMessage":"OK",
    "Name":"auto_created"
-  },
+```
+
+`},`
+
+```json
   "TotalCount":13,
   "PageSize":10,
   "PageNumber":1
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>16A96B9A-F203-4EC5-8E43-CB92E68F****</RequestId> <Data>
@@ -9963,7 +9983,7 @@ DataWorks
 | 429 | 9990040001 | Throttling.Api | The request for this resource has exceeded your available limit. |
 | 429 | 9990020001 | Throttling.System | The DataWorks system is busy. Try again later. |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
@@ -9971,7 +9991,9 @@ DataWorks
 |---|---|---|---|
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### OfflineNode
+#### 4.3.31 OfflineNode
+
+您可以调用OfflineNode下线节点。
 
 **请求头**
 
@@ -9997,19 +10019,17 @@ DataWorks
 请求示例
 
 ```
-&NodeId=1234 &ProjectId=10001 &RegionId=default
+http(s)://[Endpoint]/?Action=OfflineNode &NodeId=1234 &ProjectId=10001 &RegionId=default
 ```
 
-&公共请求参数正常返回示例 DataWorks `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "Success":"true"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <Success>true</Success>
@@ -10023,7 +10043,7 @@ DataWorks
 | 403 | 1120010001 | Forbidden.DI.NoPrivilege | No access. |
 | 500 | 1120010002 | InternalError.DI.Parameter | A DI internal error occurred. |
 
-#### addNode
+#### 4.3.32 addNode
 
 该API用于在DataWorks中创建新的节点。
 
@@ -10046,7 +10066,7 @@ DataWorks
 | Success | Boolean | true | 是否请求成功。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。200标识查询任务成功。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10063,13 +10083,12 @@ DataWorks
 请求示例
 
 ```
-&NodeName=liux_test_n**** &ParentId=121 &BusinessKey=1111111111
+http(s)://[Endpoint]/?Action=addNode &NodeName=liux_test_n**** &ParentId=121 &BusinessKey=1111111111
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "DynamicErrorMessage":false,
  "HttpStatusCode":400,
@@ -10078,10 +10097,9 @@ DataWorks
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <DynamicErrorMessage>false</DynamicErrorMessage> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <DynamicErrorCode>false</DynamicErrorCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -10101,7 +10119,7 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### DeleteNode
+#### 4.3.33 DeleteNode
 
 该接口用于删除数据开发节点。
 
@@ -10113,8 +10131,6 @@ DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -10139,13 +10155,12 @@ DataWorks
 请求示例
 
 ```
-&NodeId=1234 &BusinessKey=11111111111
+http(s)://[Endpoint]/?Action=DeleteNode &NodeId=1234 &BusinessKey=11111111111
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "DynamicErrorMessage":false,
  "HttpStatusCode":400,
@@ -10154,10 +10169,9 @@ DataWorks
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <DynamicErrorMessage>false</DynamicErrorMessage> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <DynamicErrorCode>false</DynamicErrorCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -10177,9 +10191,7 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-DataWorks
-
-#### SelectNodeList
+#### 4.3.34 SelectNodeList
 
 该接口用于查询指定租户下的节点列表。
 
@@ -10203,8 +10215,6 @@ DataWorks
 | HttpStatusCod e | Integer | 400 | HTTP返回码。 |
 | RequestId | String | 0000-ABCD- EFG**** | 请求唯一ID。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | String | { "nodeName": "业务", "sensitiveNotNull": false, "nodeParent": "第一级", "childrenList": [ { "nodeName": "账户信息", "sensitiveNotNull": false, "nodeParent": "第一级/第二级", "childrenList": [ { "nodeName": "特有账户信息", "sensitiveNotNull": true, "childrenList": null, "nodeId": "c9d705c4-217e- 40d4-bb93- 5c2ce6a42e86", "nodeOldId": "c9d705c4-217e- 40d4-bb93- 5c2ce6a42e86", "parentId": "e874ed8b-06f3- 42d0-a876- f394635bb83a" } ], "nodeId": "e874ed8b-06f3- 42d0-a876- f394635bb83a", "nodeOldId": "e874ed8b-06f3- 42d0-a876- f394635bb83a", "parentId": "fbd03611-af79- 4d61-8504- 55e3fe3f2381" } ], "nodeId": "fbd03611-af79- 4d61-8504- 55e3fe3f2381", "nodeOldId": "fbd03611-af79- 4d61-8504- 55e3fe3f2381", "parentId": "39be58b1-58b6- 4965-8e3e- 7d1360de764f" } | 返回结果数据。 |
@@ -10214,13 +10224,12 @@ DataWorks
 请求示例
 
 ```
-&TenantId=10241024
+http(s)://[Endpoint]/?Action=SelectNodeList &TenantId=10241024
 ```
 
-&公共请求参数 DataWorks 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":"{      \"nodeName\": \"业务\",      \"sensitiveNotNull\": false,
@@ -10228,10 +10237,9 @@ DataWorks
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>{
@@ -10239,31 +10247,37 @@ DataWorks
       &quot;sensitiveNotNull&quot;: false,
       &quot;nodeParent&quot;: &quot;第一级&quot;,
       &quot;childrenList&quot;: [
-        {
+```
+
+`{`
+
+```
           &quot;nodeName&quot;: &quot;账户信息&quot;,
           &quot;sensitiveNotNull&quot;: false,
           &quot;nodeParent&quot;: &quot;第一级/第二级&quot;,
           &quot;childrenList&quot;: [
-            {
+```
+
+`{`
+
+```
               &quot;nodeName&quot;: &quot;特有账户信息&quot;,
               &quot;sensitiveNotNull&quot;: true,
               &quot;childrenList&quot;: null,
               &quot;nodeId&quot;: &quot;c9d705c4-217e-40d4-bb93-5c2ce6a42e86&quot;,
               &quot;nodeOldId&quot;: &quot;c9d705c4-217e-40d4-bb93-5c2ce6a42e86&quot;,
               &quot;parentId&quot;: &quot;e874ed8b-06f3-42d0-a876-f394635bb83a&quot;
-            }
 ```
 
-`],`
+`}` `],`
 
 ```
           &quot;nodeId&quot;: &quot;e874ed8b-06f3-42d0-a876-f394635bb83a&quot;,
           &quot;nodeOldId&quot;: &quot;e874ed8b-06f3-42d0-a876-f394635bb83a&quot;,
           &quot;parentId&quot;: &quot;fbd03611-af79-4d61-8504-55e3fe3f2381&quot;
-        }
 ```
 
-`],`
+`}` `],`
 
 ```xml
       &quot;nodeId&quot;: &quot;fbd03611-af79-4d61-8504-55e3fe3f2381&quot;,
@@ -10285,7 +10299,7 @@ DataWorks
 | 429 | 9990020002 | Throttling.User | Your request is too frequent. Try again later. |
 | 403 | 9990010001 | Forbidden.Access | Access is forbidden. Activate DataWorks first. |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 | 500 | 9990010003 | Forbidden.Not.Server | The dataworksAPI service is not available in this area. Please try it in another area. |
@@ -10293,7 +10307,7 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### UpdateNode
+#### 4.3.35 UpdateNode
 
 该接口用于更新数据开发节点信息。
 
@@ -10319,7 +10333,7 @@ DataWorks
 | HttpStatusCod e | Integer | 400 | HTTP返回码。 |
 | Success | Boolean | true | 是否请求成功。 |
 
-| 开发指南·OpenAPI | 参考 |  | DataWork |
+| 开发指南·OpenAPI | 参考 |   | DataWork |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10331,23 +10345,21 @@ DataWorks
 请求示例
 
 ```
-&NodeName=liux_test_n**** &NodeId=1234 &BusinessKey=111111111111111111
+http(s)://[Endpoint]/?Action=UpdateNode &NodeName=liux_test_n**** &NodeId=1234 &BusinessKey=111111111111111111
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":true,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -10361,8 +10373,6 @@ DataWorks
 | 429 | 9990040003 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. |
 | 429 | 9990020001 | Throttling.System | The DataWorks system is busy. Try again later. |
 
-DataWorks
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 429 | 9990020002 | Throttling.User | Your request is too frequent. Try again later. |
@@ -10372,11 +10382,11 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-### 数据集成
+### 4.4 数据集成
 
-#### CreateDISyncTask
+#### 4.4.1 CreateDISyncTask
 
-DataWorks目前仅支持直接使用CreateDISyncTask接口创建数据集成离线同步任务，而数据集成实时同步任务和解决方案同步任务则需要先调用GenerateDISyncTaskConfigForCreating和 QueryDISyncTaskConfigProcessResult接口，获取异步生成创建数据集成同步任务时需要的参数，再将该参数作为CreateDISyncTask接口的入参，使用CreateDISyncTask接口创建相应的实时同步任务和解决方案同步任务。
+调用CreateDISyncTask创建数据集成同步任务。 DataWorks目前仅支持直接使用CreateDISyncTask接口创建数据集成离线同步任务，而数据集成实时同步任务和解决方案同步任务则需要先调用GenerateDISyncTaskConfigForCreating和 QueryDISyncTaskConfigProcessResult接口，获取异步生成创建数据集成同步任务时需要的参数，再将该参数作为CreateDISyncTask接口的入参，使用CreateDISyncTask接口创建相应的实时同步任务和解决方案同步任务。
 
 **请求参数**
 
@@ -10386,13 +10396,9 @@ DataWorks目前仅支持直接使用CreateDISyncTask接口创建数据集成离�
 | ProjectId | Long | 是 | 10000 | DataWorks工作空间的ID。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间ID。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 | TaskContent | String | 是 | {"type":"job","ve rsion":"2.0","ste ps": [{"stepType":"m ysql","paramete r": {"envType":1,"d atasource":"mys ql pub","column _ ": ["id","name","cr eate time","age _ ","score","t 01"], _ "connection": [{"datasource":" mysql pub","tab _ le": ["u pk"]}],"wher _ e":"","splitPk":"id ","encoding":"UT F- 8"},"name":"Re ader","category" :"reader"}, {"stepType":"od ps","parameter": {"partition":"pt= ${bizdate}","tru ncate":true,"dat asource":"odps f _ irst","envType": 1,"column": ["id","name","cr eate time","age _ ","score","t 01"], _ "emptyAsNull":f alse,"tableCom ment":"null","ta ble":"u pk"},"na _ me":"Writer","ca tegory":"writer" }],"setting": {"executeMode" :null,"errorLimit" : {"record":""},"s peed": {"concurrent":2, "throttle":false} },"order": {"hops": [{"from":"Reade r","to":"Writer"}] }} | 使用脚本模式配置数据集成离线同步任务的配置内容。 当前仅支持通过CreateDISyncTask接口创建数据集成离线同步任务。 |
 |---|---|---|---|---|
 | TaskName | String | 是 | new di task _ _ | 创建的数据集成同步任务的名称。 |
-
-DataWorks
 
 | TaskParam | String | 是 | {"FileFolderPath ":"业务流程/XXX/ 数据集成","ResourceGr oup":"S res gro _ _ up XXX XXXX"} _ _ | 数据集成同步任务的配置参数。目前支持配置如下参数： FileFolderPath：表示数据集成同步任务的存放路径。 ResourceGroup：表示数据集成同步任务所使用的数据集成资源组标识 （Identifier）。 |
 |---|---|---|---|---|
@@ -10403,7 +10409,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回数据。 |
+| Data | Struct |   | 返回数据。 |
 | FileId | Long | 1000001 | 成功创建的数据集成同步任务的任务ID。 |
 | Message | String | 不合法的目录路径： 业务流程/重兴xxxx/ 数据集成 | 创建数据集成同步任务失败的原因描述。 |
 | Status | String | success | 创建数据集成同步任务的结果状态。取值如下： success：表示创建任务成功。 fail：表示创建任务失败。 |
@@ -10412,13 +10418,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```json
-&ProjectId=10000 &RegionId=default &TaskContent={"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"e nvType":1,"datasource":"mysql_pub","column": ["id","name","create_time","age","score","t_01"],"connection": [{"datasource":"mysql_pub","table": ["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF- 8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter": {"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_first","envType":1,"colum
+http(s)://[Endpoint]/?Action=CreateDISyncTask &ProjectId=10000 &RegionId=default &TaskContent={"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"e nvType":1,"datasource":"mysql_pub","column": ["id","name","create_time","age","score","t_01"],"connection": [{"datasource":"mysql_pub","table": ["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF- 8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter": {"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_first","envType":1,"colum
 ```
 
-:
+`:`
 
 ```json
 ["id","name","create_time","age","score","t_01"],"emptyAsNull":false,"tableComment":"null "table":"u_pk"},"name":"Writer","category":"writer"}],"setting": {"executeMode":null,"errorLimit":{"record":""},"speed": {"concurrent":2,"throttle":false}},"order":{"hops":[{"from":"Reader","to":"Writer"}]}} &TaskName=new_di_task
@@ -10430,37 +10436,41 @@ DataWorks
 成","ResourceGroup":"S_res_group_XXX_XXXX"} &TaskType=DI_OFFLINE
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635973****</RequestId> <Data>
     <Status>success</Status>
 ```
 
-`<Message>`不合法的目录路径：业务流程/重兴`xxxx/`数据集成`</Message>`
+`<Message>`不合法的目录路径：业务流程`/`重兴`xxxx/`数据集成`</Message>`
 
 ```xml
     <FileId>1000001</FileId>
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937635973****",
     "Data": {
         "Status": "success",
 ```
 
-`"Message": "`不合法的目录路径：业务流程/重兴`xxxx/`数据集成`",`
+`"Message": "`不合法的目录路径：业务流程`/`重兴`xxxx/`数据集成`",`
 
 ```json
         "FileId": 1000001
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -10468,14 +10478,14 @@ DataWorks
 |---|---|---|---|
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | 参数错误 |
 
-DataWorks
-
 | 400 | Invalid.DI.Paramete r.File.Existed | The file name already exists. | 参数不合法，文件名已存在 |
 |---|---|---|---|
 | 403 | Forbidden.DI.NoPri vilege | No access. | 没有权限访问 |
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | 数据集成内部业务错误 |
 
-#### GetDataSourceMeta
+#### 4.4.2 GetDataSourceMeta
+
+调用GetDataSourceMeta获取目标数据源的Meta信息。
 
 **请求参数**
 
@@ -10493,39 +10503,37 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 获取目标数据源Meta信息的返回的结果。 |
+| Data | Struct |   | 获取目标数据源Meta信息的返回的结果。 |
 | Message | String | read datasource time out | 获取目标数据源Meta信息失败后的原因描述。如果获取目标数据源的Meta信息成功，则该参数的返回值为空。 |
 
-DataWorks
-
-|  |  |  |  |  |  | 返回的目标数据源的Meta信息。返回的信息为 JSON格式。 {"dbTables": |  |  |
+|   |   |   |   |   |   | 返回的目标数据源的Meta信息。返回的信息为 JSON格式。 {"dbTables": |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | {"dbTables": |  |
-|  |  |  |  |  |  | [{"dbName":"testdb","schema": |  |  |
-|  |  |  |  | {"dbTables": |  |  |  |  |
-|  |  |  |  |  |  | [{"tableInfos": |  |  |
-|  |  |  |  | [{"dbName":"testd |  | [{"dbName":"testdb","enable":true,"ta |  |  |
-|  |  |  |  | b","schema": |  |  |  |  |
-|  |  |  |  | [{"tableInfos": |  | ble":"table1","tableName":"table1"}]} |  |  |
-|  |  |  |  | [{"dbName":"testd |  | ,{"tableInfos": |  |  |
-|  |  |  |  | b","enable":true,"t |  | [{"dbName":"testdb","enable":true,"ta |  |  |
-|  | Meta |  | String | able":"table1","tabl |  | ble":"table2","tableName":"table2"}]} |  |  |
-|  |  |  |  | eName":"table1"}] |  |  |  |  |
-|  |  |  |  | },{"tableInfos": |  | ]}]} |  |  |
-|  |  |  |  | [{"dbName":"testd b","enable":true,"t able":"table2","tabl eName":"table2"}] }]}]} |  |  |  |  |
-|  | Status |  | String | success |  | 获取目标数据源Meta信息的结果状态。取值如下： success：表示获取目标数据源的Meta信息成功。 fail：表示获取目标数据源的Meta信息失败。 您可以查看Message参数定位失败原因。 |  |  |
-|  | RequestId |  | String | 0000-ABCD-EFG |  | 本次调用的唯一ID。用于出现错误后定位日志， 排查问题。 |  |  |
-|  | Success |  | Boolean | true |  | 请求是否成功。取值如下： true：成功。 false：失败。 |  |  |
+|   |   |   |   |   |   |   | {"dbTables": |   |
+|   |   |   |   |   |   | [{"dbName":"testdb","schema": |   |   |
+|   |   |   |   | {"dbTables": |   |   |   |   |
+|   |   |   |   |   |   | [{"tableInfos": |   |   |
+|   |   |   |   | [{"dbName":"testd |   | [{"dbName":"testdb","enable":true,"ta |   |   |
+|   |   |   |   | b","schema": |   |   |   |   |
+|   |   |   |   | [{"tableInfos": |   | ble":"table1","tableName":"table1"}]} |   |   |
+|   |   |   |   | [{"dbName":"testd |   | ,{"tableInfos": |   |   |
+|   |   |   |   | b","enable":true,"t |   | [{"dbName":"testdb","enable":true,"ta |   |   |
+|   | Meta |   | String | able":"table1","tabl |   | ble":"table2","tableName":"table2"}]} |   |   |
+|   |   |   |   | eName":"table1"}] |   |   |   |   |
+|   |   |   |   | },{"tableInfos": |   | ]}]} |   |   |
+|   |   |   |   | [{"dbName":"testd b","enable":true,"t able":"table2","tabl eName":"table2"}] }]}]} |   |   |   |   |
+|   | Status |   | String | success |   | 获取目标数据源Meta信息的结果状态。取值如下： success：表示获取目标数据源的Meta信息成功。 fail：表示获取目标数据源的Meta信息失败。 您可以查看Message参数定位失败原因。 |   |   |
+|   | RequestId |   | String | 0000-ABCD-EFG |   | 本次调用的唯一ID。用于出现错误后定位日志， 排查问题。 |   |   |
+|   | Success |   | Boolean | true |   | 请求是否成功。取值如下： true：成功。 false：失败。 |   |   |
 
 **示例**
 
 请求示例
 
 ```
-&DatasourceName=mysql_name &PageNumber=1 &PageSize=10 &ProjectId=10000 &RegionId=default
+http(s)://[Endpoint]/?Action=GetDataSourceMeta &DatasourceName=mysql_name &PageNumber=1 &PageSize=10 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0000-ABCD-EFG</RequestId> <Data>
@@ -10536,20 +10544,24 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "Data": {
         "Status": "success",
         "Meta": "{\"dbTables\":[{\"dbName\":\"testdb\",\"schema\":[{\"tableInfos\":[{\"
 dbName\":\"testdb\",\"enable\":true,\"table\":\"table1\",\"tableName\":\"table1\"}]},{\ "tableInfos\": [{\"dbName\":\"testdb\",\"enable\":true,\"table\":\"table2\",\"tableName\":\"table2\"}]}] }",
         "Message": "read datasource time out"
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -10559,7 +10571,7 @@ dbName\":\"testdb\",\"enable\":true,\"table\":\"table1\",\"tableName\":\"table1\
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | 数据集成内部业务错误 |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | 参数错误 |
 
-#### ListDIProjectConfig
+#### 4.4.3 ListDIProjectConfig
 
 调用ListDIProjectConfig查看当前工作空间中数据集成同步解决方案任务默认的全局配置。
 
@@ -10568,8 +10580,6 @@ dbName\":\"testdb\",\"enable\":true,\"table\":\"table1\",\"tableName\":\"table1\
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ListDIProjectCon fig | 系统规定参数。取值： ListDIProjectConfig。 |
-
-DataWorks
 
 | DestinationType | String | 是 | elasticsearch | 数据集成同步解决方案任务的目的端数据源。该参数不能为空。 调用ListDIProjectConfig查看同步解决方案的全局配置目前仅支持配置目的端数据源为analyticdb for mysql、odps、 _ _ elasticsearch、holo、mysql及 polardb。 |
 |---|---|---|---|---|
@@ -10581,9 +10591,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 查看目标工作空间中数据集成同步解决方案任务默认全局配置的返回结果。 |
-
-DataWorks
+| Data | Struct |   | 查看目标工作空间中数据集成同步解决方案任务默认全局配置的返回结果。 |
 
 | Config | String | {"RENAMECOLUMN ":"WARNING","DRO PTABLE":"WARNIN G","CREATETABLE" :"WARNING","MODI FYCOLUMN":"WAR NING","TRUNCATET ABLE":"WARNING", "DROPCOLUMN":" WARNING","ADDC OLUMN":"WARNING ","RENAMETABLE": "WARNING"} | 数据集成同步解决方案任务默认的全局配置内容 （即对不同DDL消息类型配置的默认处理策略）。示例如下： {"RENAMECOLUMN":"WARNING","DROPTA BLE":"WARNING","CREATETABLE":"WARNI NG","MODIFYCOLUMN":"WARNING","TRUN CATETABLE":"WARNING","DROPCOLUMN": "WARNING","ADDCOLUMN":"WARNING","R ENAMETABLE":"WARNING"} DDL消息类型如下： RENAMECOLUMN：重命名列。 DROPTABLE：删除表。 CREATETABLE：新建表。 MODIFYCOLUMN：修改列类型。 TRUNCATETABLE：清空表。 DROPCOLUMN：删除列。 ADDCOLUMN：新增列。 RENAMETABLE：重命名表。 DataWorks收到对应类型的DDL消息时，处理策略如下： WARNING：直接丢弃该消息，同时会在实时同步日志中记录告警信息，指明该消息因执行出错被丢弃。 IGNORE：直接丢弃该消息，不再向目的端数据源发送。 CRITICAL：实时同步任务直接显示出错状态并终止运行。 NORMAL：将相应消息继续下发给目的端数据源，由目的端数据源来处理。因为不同目的端数据源对DDL消息处理策略可能会不同，因此DataWorks只执行转发操作。 |
 |---|---|---|---|
@@ -10598,7 +10606,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDIProjectConfig &DestinationType=elasticsearch &ProjectId=1000 &RegionId=default &SourceType=mysql
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0000-ABCD-EFG</RequestId> <Data>
@@ -10606,18 +10614,22 @@ http(s)://[Endpoint]/?Action=ListDIProjectConfig &DestinationType=elasticsearch 
 {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"W NING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE "WARNING"}</Config> </Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "Data": {
         "Config": "
 {\"RENAMECOLUMN\":\"WARNING\",\"DROPTABLE\":\"WARNING\",\"CREATETABLE\":\"WARNING\",\"MOD YCOLUMN\":\"WARNING\",\"TRUNCATETABLE\":\"WARNING\",\"DROPCOLUMN\":\"WARNING\",\"ADDCOLUM ":\"WARNING\",\"RENAMETABLE\":\"WARNING\"}"
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -10627,7 +10639,7 @@ http(s)://[Endpoint]/?Action=ListDIProjectConfig &DestinationType=elasticsearch 
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | 数据集成内部业务错误 |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | 参数错误 |
 
-#### TestNetworkConnection
+#### 4.4.4 TestNetworkConnection
 
 调用TestNetworkConnection接口，测试目标数据源与所使用资源组的网络连通性。
 
@@ -10637,8 +10649,6 @@ http(s)://[Endpoint]/?Action=ListDIProjectConfig &DestinationType=elasticsearch 
 |---|---|---|---|---|
 | Action | String | 是 | TestNetworkCon nection | 系统规定参数。取值： TestNetworkConnection。 |
 | DatasourceNam e | String | 是 | mysql name _ | 目标数据源的名称。 |
-
-DataWorks
 
 | EnvType | String | 是 | 1 | 目标数据源所属的环境。取值如下： 0：开发环境。 1：生产环境。 |
 |---|---|---|---|---|
@@ -10652,7 +10662,7 @@ DataWorks
 |---|---|---|---|
 | RequestId | String | 0000-ABCD-EFG | 本次调用的唯一ID。用于出现错误后定位日志， 排查问题。 |
 | Success | Boolean | true | 请求是否成功。 |
-| TaskList | Struct |  | 测试数据源与资源组网络连通性的返回结果。 |
+| TaskList | Struct |   | 测试数据源与资源组网络连通性的返回结果。 |
 | ConnectMessa ge | String | 可连通 | 测试目标数据源与其所使用资源组的网络连通性失败后的原因描述。如果数据源与资源组网络连通性测试成功，则该参数的返回值为空。 |
 | ConnectStatus | Boolean | true | 测试目标数据源与其所使用资源组网络连通性的结果状态。取值如下： true：表示目标数据源与其所使用资源组的网络连通成功。 false：表示目标数据源与其所使用资源组的网络连通失败。您可以查看 ConnectMessage参数定位失败原因。 |
 
@@ -10664,7 +10674,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=TestNetworkConnection &DatasourceName=mysql_name &EnvType=1 &ProjectId=10000 &RegionId=default &ResourceGroup=S_res_group_2XXXX4_1619100XXXXX
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG</RequestId> <TaskList>
@@ -10673,18 +10683,22 @@ http(s)://[Endpoint]/?Action=TestNetworkConnection &DatasourceName=mysql_name &E
 </TaskList> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "TaskList": {
         "ConnectStatus": true,
         "ConnectMessage": "可连通"
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -10694,7 +10708,7 @@ http(s)://[Endpoint]/?Action=TestNetworkConnection &DatasourceName=mysql_name &E
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | 数据集成内部业务错误 |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | 参数错误 |
 
-#### UpdateDIProjectConfig
+#### 4.4.5 UpdateDIProjectConfig
 
 调用UpdateDIProjectConfig修改当前工作空间中数据集成同步解决方案任务默认的全局配置。
 
@@ -10704,15 +10718,11 @@ http(s)://[Endpoint]/?Action=TestNetworkConnection &DatasourceName=mysql_name &E
 |---|---|---|---|---|
 | Action | String | 是 | UpdateDIProject Config | 系统规定参数。取值： UpdateDIProjectConfig。 |
 
-DataWorks
-
 | DestinationType | String | 是 | odps | 数据集成同步解决方案任务的目的端数据源。该参数不能为空。 调用UpdateDIProjectConfig修改同步解决方案的全局配置，目前仅支持配置目的端数据源为analyticdb for mysql、 _ _ odps、elasticsearch、holo、mysql及 polardb。 |
 |---|---|---|---|---|
 | ProjectConfig | String | 是 | {"RENAMECOLU MN":"WARNING", "DROPTABLE":" WARNING","CRE ATETABLE":"WA RNING","MODIFY COLUMN":"WAR NING","TRUNCA TETABLE":"WAR NING","DROPCO LUMN":"WARNIN G","ADDCOLUM N":"WARNING"," RENAMETABLE": "WARNING"} | 修改后的数据集成同步解决方案任务默认的全局配置内容（即对不同DDL消息类型配置的默认处理策略）。请使用JSON格式。示例如下： {"RENAMECOLUMN":"WARNING","DR OPTABLE":"WARNING","CREATETABL E":"WARNING","MODIFYCOLUMN":"W ARNING","TRUNCATETABLE":"WARNI NG","DROPCOLUMN":"WARNING","AD DCOLUMN":"WARNING","RENAMETAB LE":"WARNING"} DDL消息类型如下： RENAMECOLUMN：重命名列。 DROPTABLE：删除表。 CREATETABLE：新建表。 MODIFYCOLUMN：修改列类型。 TRUNCATETABLE：清空表。 DROPCOLUMN：删除列。 ADDCOLUMN：新增列。 RENAMETABLE：重命名表。 DataWorks收到对应类型的DDL消息时， 处理策略如下： WARNING：直接丢弃该消息，同时会在实时同步日志中记录告警信息，指明该消息因执行出错被丢弃。 IGNORE：直接丢弃该消息，不再向目的端数据源发送。 CRITICAL：实时同步任务直接显示出错状态并终止运行。 NORMAL：将相应消息继续下发给目的端数据源，由目的端数据源来处理。因为不同目的端数据源对DDL消息处理策略可能会不同，因此DataWorks只执行转发操作。 |
 | ProjectId | Long | 是 | 10000 | DataWorks工作空间的ID。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
-
-DataWorks
 
 | SourceType | String | 是 | mysql | 数据集成同步解决方案任务的源端数据源。 调用UpdateDIProjectConfig修改同步解决方案任务的全局配置，目前仅支持配置源端数据源为oracle、mysql、 polardb、datahub、drds及 analyticdb for mysql。 _ _ 如果不配置源端数据源，则默认全局配置对所有的源端数据源均生效。 |
 |---|---|---|---|---|
@@ -10721,7 +10731,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 修改目标工作空间中数据集成同步解决方案任务默认全局配置的返回结果。 |
+| Data | Struct |   | 修改目标工作空间中数据集成同步解决方案任务默认全局配置的返回结果。 |
 | Status | String | success | 修改数据集成同步解决方案任务默认的全局配置是否成功。取值如下： success：修改成功。 fail：修改失败。 |
 | RequestId | String | 0000-ABCD-EFG | 本次调用的唯一ID。用于出现错误后定位日志， 排查问题。 |
 | Success | Boolean | true | 请求是否成功。取值如下： true：成功。 false：失败。 |
@@ -10734,7 +10744,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=UpdateDIProjectConfig &DestinationType=odps &ProjectConfig= {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"W NING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE "WARNING"} &ProjectId=10000 &RegionId=default &SourceType=mysql
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG</RequestId> <Data>
@@ -10742,17 +10752,21 @@ http(s)://[Endpoint]/?Action=UpdateDIProjectConfig &DestinationType=odps &Projec
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG",
     "Data": {
         "Status": "success"
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -10762,7 +10776,9 @@ http(s)://[Endpoint]/?Action=UpdateDIProjectConfig &DestinationType=odps &Projec
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | 数据集成内部业务错误 |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | 参数错误 |
 
-#### UpdateDISyncTask
+#### 4.4.6 UpdateDISyncTask
+
+调用UpdateDISyncTask更新数据集成同步任务。
 
 **请求参数**
 
@@ -10773,13 +10789,9 @@ http(s)://[Endpoint]/?Action=UpdateDIProjectConfig &DestinationType=odps &Projec
 | ProjectId | Long | 是 | 10000 | DataWorks工作空间的ID。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 | TaskContent | String | 是 | {"type":"job","ve rsion":"2.0","ste ps": [{"stepType":"m ysql","paramete r": {"envType":1,"d atasource":"mys ql pub","column _ ": ["id","name","cr eate time","age _ ","score","t 01"], _ "connection": [{"datasource":" mysql pub","tab _ le": ["u pk"]}],"wher _ e":"","splitPk":"id ","encoding":"UT F- 8"},"name":"Re ader","category" :"reader"}, {"stepType":"od ps","parameter": {"partition":"pt= ${bizdate}","tru ncate":true,"dat asource":"odps f _ irst","envType": 1,"column": ["id","name","cr eate time","age _ ","score","t 01"], _ "emptyAsNull":f alse,"tableCom ment":"null","ta ble":"u pk"},"na _ me":"Writer","ca tegory":"writer" }],"setting": {"executeMode" :null,"errorLimit" : {"record":""},"s peed": {"concurrent":2, "throttle":false} },"order": {"hops": [{"from":"Reade r","to":"Writer"}] }} | 更新已创建的数据集成同步任务通过脚本模式配置的任务内容。当前仅支持通过 UpdateDISyncTask接口更新数据集成离线同步任务。如果您无需更新数据集成同步任务的配置内容，则可将该参数置为空。 |
 |---|---|---|---|---|
 | TaskParam | String | 是 | {"ResourceGrou p":"S res group _ _ XXX XXXX"} _ _ | 更新数据集成同步任务的配置参数。请使用JSON格式。 目前仅支持更新数据集成同步任务的配置参数ResourceGroup，即数据集成同步任务所使用的数据集成资源组标识 （Identifier）。 如果您无需更新数据集成同步任务的配置参数，则可将该参数置为空。 |
-
-DataWorks
 
 | TaskType | String | 是 | DI OFFLINE _ | 修改的数据集成同步任务的任务类型。 目前仅支持使用UpdateDISyncTask接口修改数据集成离线同步任务 （DI OFFLINE）。 _ |
 |---|---|---|---|---|
@@ -10788,7 +10800,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 更新数据集成同步任务的返回结果。 |
+| Data | Struct |   | 更新数据集成同步任务的返回结果。 |
 | Message | String | ResourceGroup: [S res group XXX] _ _ _ is invalid. | 更新数据集成同步任务失败后的原因描述。如果更新数据集成同步任务成功，则该参数的返回值为空。 |
 | Status | String | success | 更新数据集成同步任务的结果状态。取值如下： success：表示更新数据集成同步任务成功。 fail：表示更新数据集成同步任务失败。 |
 | RequestId | String | 0bc141151593763 5973**** | 请求ID。用于定位日志，排查问题。 |
@@ -10796,19 +10808,19 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```json
-&FileId=1000000 &ProjectId=10000 &RegionId=default &TaskContent={"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"e nvType":1,"datasource":"mysql_pub","column": ["id","name","create_time","age","score","t_01"],"connection": [{"datasource":"mysql_pub","table": ["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF- 8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter": {"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_first","envType":1,"colum
+http(s)://[Endpoint]/?Action=UpdateDISyncTask &FileId=1000000 &ProjectId=10000 &RegionId=default &TaskContent={"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"e nvType":1,"datasource":"mysql_pub","column": ["id","name","create_time","age","score","t_01"],"connection": [{"datasource":"mysql_pub","table": ["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF- 8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter": {"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_first","envType":1,"colum
 ```
 
-:
+`:`
 
 ```json
 ["id","name","create_time","age","score","t_01"],"emptyAsNull":false,"tableComment":"null "table":"u_pk"},"name":"Writer","category":"writer"}],"setting": {"executeMode":null,"errorLimit":{"record":""},"speed": {"concurrent":2,"throttle":false}},"order":{"hops":[{"from":"Reader","to":"Writer"}]}} &TaskParam={"ResourceGroup":"S_res_group_XXX_XXXX"} &TaskType=DI_OFFLINE
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635973****</RequestId> <Data>
@@ -10817,18 +10829,22 @@ DataWorks
 </Data> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1411515937635973****",
     "Data": {
         "Status": "success",
         "Message": "ResourceGroup:[S_res_group_XXX] is invalid."
-    },
-    "Success": true
-}
 ```
+
+`},`
+
+```json
+    "Success": true
+```
+
+`}`
 
 **错误码**
 
@@ -10837,12 +10853,12 @@ DataWorks
 | 403 | Forbidden.DI.NoPri vilege | No access. | 没有权限访问 |
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | 数据集成内部业务错误 |
 
-DataWorks
-
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | 参数错误 |
 |---|---|---|---|
 
-#### GetDISyncTask
+#### 4.4.7 GetDISyncTask
+
+调用GetDISyncTask获取数据集成实时同步任务或同步解决方案的详情。
 
 **请求头**
 
@@ -10863,37 +10879,31 @@ DataWorks
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。取值： true：成功。 false：失败。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 16A96B9A-F203- 4EC5-8E43- CB92E68F**** | 请求ID。用于定位日志，排查问题。 |
-| Data | Struct |  | 数据集成任务的返回结果。 |
+| Data | Struct |   | 数据集成任务的返回结果。 |
 | -Code | String | { "extend": { "mode": "wizard", "resourceGroup": "S res group 2871 _ _ _ 14642182658 156 _ 0324290517" }, "nodeDef": {}, "order": { "hops": [ { "from": "datahub 8htXSsfi _ S2vtZCVG", "to": "datahub CRHBAy _ GfhSaLmv2f" } ] }, "setting": { "errorLimit": {}, "jvmOption": "" }, "steps": [ { "stepType": "datahub", "category": "writer", "displayName": "DataHub1", "parameter": { "batchSize": 1000, "datasource": "datahub cloud de _ _ v test", "topic": _ "dwd tfc opt spee _ _ _ d rid amap rt" }, _ _ _ "name": "datahub CRHBAy _ GfhSaLmv2f", "gui": { "x": 262, "y": 325 } }, { "stepType": "datahub", "displayName": "DataHub2", "parameter": { "datasource": "datahub uric test _ _ ", "topic": "dwd tfc opt spee _ _ _ d rid amap rt 330 _ _ _ _ 000", "batchSize": 1000 }, "name": "datahub 8htXSsfi _ S2vtZCVG", "gui": { "x": 268, "y": 160.5 }, "category": "writer" } ] } | 如果TaskType为DI REALTIME，则表示实时 _ 同步任务的详情。 如果TaskType为DI SOLUTION，则为null。 _ |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -Status | String | Success | 数据集成同步任务的结果状态。取值： Success：表示数据集成同步任务成功。 Fail：表示数据集成同步任务失败。 |
 | -Message | String | fileId:[100] is invalid. | 数据集成同步任务失败后的原因描述。 如果数据集成同步任务成功，则该参数为空。 |
-| -SolutionDetail | Struct |  | 如果TaskType为DI REALTIME，则为null。 _ 如果TaskType为DI SOLUTION，则表示同 _ 步解决方案任务的详情。 |
+| -SolutionDetail | Struct |   | 如果TaskType为DI REALTIME，则为null。 _ 如果TaskType为DI SOLUTION，则表示同 _ 步解决方案任务的详情。 |
 | --Status | String | 0 | 同步解决方案的执行状态，取值： 0：成功 1：未运行 2：运行中 3：失败 4：提交 5：待人工确认 6：人工确认完成 7：其他 8：等待 9：已删除 |
 | --Type | String | holo | 同步解决方案任务的类型。 |
 | --StartTime | String | 2021-12-07 14:40:51 | 同步解决方案任务的开始时间。 |
 | --CreatorName | String | dataworks di _ | 同步解决方案任务的创建者名称。 |
 | --ProjectId | Long | 10000 | 同步解决方案任务所在的项目ID。 |
 | --SourceType | String | mysql | 同步解决方案任务源端的类型。 |
-|  |  | { "holoDatasource": "holo", "offlineSyncConfig" : { "nodeNameRule": "oneclick holo di $ _ _ _ {db table name sr _ _ _ c} to ${db table _ _ _ _ name dest}", _ "resourceGroup": "group 219193793 _ 999490" }, |  |
-
-DataWorks
+|   |   | { "holoDatasource": "holo", "offlineSyncConfig" : { "nodeNameRule": "oneclick holo di $ _ _ _ {db table name sr _ _ _ c} to ${db table _ _ _ _ name dest}", _ "resourceGroup": "group 219193793 _ 999490" }, |   |
 
 | 参数名称 | 类型 | "processRuleId": 示例 1007, | 说明 |
 |---|---|---|---|
 | -- ProcessConten t | String | "readerConcurrent" : 10, "realtimeSyncConfi g": { "content": { "order": { "hops": [ { "from": "reader", "to": "writer" } ] }, "setting": { "speed": { "readerConcurrent" : 10 } }, "steps": [ { "stepType": "mysql", "name": "reader", "category": "reader", "parameter": { "connection": [ { "datasource": "mm", "datasourceType": "mysql", "table": [] } ] } }, { "stepType": "holo", "name": "writer", "category": "writer", "parameter": { "datasource": "holo", "writeMode": "replay", "datasourceSchem a": "public", "tableMappingRule ": { "datasource": [ { "tableRule": [], "srcDatasourceNa me": "mm" } ] } } } ] }, "extend": { "mode": "migration holo", _ "resourceGroup": "group 219193793 _ 999490" } }, "setting": { "autoCreateWorkfl ow": true, "userDefinedFileNa meExpression": "oneclick" }, "srcType": "mysql", "tableMappingRule FromRealtimeSync Config": { "datasource": [ { "srcDatasourceNa me": "mm", "tableRule": [] } ] } } | 同步解决方案的配置详情。 |
 | --Name | String | holo 20211206161 _ 025 | 同步解决方案任务的名称。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10907,13 +10917,12 @@ DataWorks
 请求示例
 
 ```
-&ProjectId=10000 &TaskType=DI_REALTIME &RegionId=default &FileId=100
+http(s)://[Endpoint]/?Action=GetDISyncTask &ProjectId=10000 &TaskType=DI_REALTIME &RegionId=default &FileId=100
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"16A96B9A-F203-4EC5-8E43-CB92E68F****",
  "Data":{
   "Status":"Success",
@@ -10927,7 +10936,7 @@ DataWorks
 \"nodeNameRule\": \"oneclick_holo_di_${db_table_name_src}_to_${db_table_name_dest}\", \"resourceGroup\": \"group_219193793999490\" }, \"processRuleId\": 1007, \"readerConcurrent\": 10, \"realtimeSyncConfig\": { \"content\": { \"order\": { \"hops\": [ { \"from\": \"reader\", \"to\": \"wri ter\" } ] }, \"setting\": { \"speed\": { \"read erConcurrent\": 10 } }, \"steps\": [ { \"stepType\":
 ```
 
-\ \ \ \ \ \ \ \ \ \ \ DataWorks
+\ \ \ \ \ \ \ \ \ \ \
 
 ```json
 \"mysql\", \"name\": \"reader\", \"category\": \"reader\", \" parameter\": { \"connection\": [ { \"datasource\": \"mm\", \"datasourceType\": \"mysql\", \"table\": [] } ] } }, { \"stepType\": \"holo\", \"name\": \"writer\", \"category\": \"writer\", \"parameter\": { \"datasource\": \"holo\", \"writeMode\": \"replay\", \"datasourceSchema\": \"public\", \"tableMappingRule\": { \"data source\": [ { \"tableRule\": [], \"srcDa tasourceName\": \"mm\" } ] } } } ] }, \"extend\": { \"mode\": \"migration_holo\", \"resourceGroup\": \"gr oup_219193793999490\" } }, \"setting\": { \"autoCreateWorkflow\": true, \"use rDefinedFileNameExpression\": \"oneclick\" }, \"srcType\": \"mysql\", \"tableMappingRuleFromRealtimeSyncConfig\": { \"datasource\": [ { \"srcDa tasourceName\": \"mm\", \"tableRule\": [] } ] }}",
@@ -10939,13 +10948,15 @@ DataWorks
    "CreatorName":"dataworks_di",
    "ProcessExtra":"{  \"processType\": \"new\",  \"tableNum\": 300}",
    "Name":"holo_20211206161025"
-  }
- },
- "Success":true
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>16A96B9A-F203-4EC5-8E43-CB92E68F****</RequestId> <Data>
@@ -10955,30 +10966,42 @@ DataWorks
   &quot;extend&quot;: {
     &quot;mode&quot;: &quot;wizard&quot;,
     &quot;resourceGroup&quot;: &quot;S_res_group_287114642182658_1560324290517&quot;
-  },
+```
+
+`},`
+
+```
   &quot;nodeDef&quot;: {},
   &quot;order&quot;: {
     &quot;hops&quot;: [
-      {
+```
+
+`{`
+
+```
         &quot;from&quot;: &quot;datahub_8htXSsfiS2vtZCVG&quot;,
         &quot;to&quot;: &quot;datahub_CRHBAyGfhSaLmv2f&quot;
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```
-  },
   &quot;setting&quot;: {
     &quot;errorLimit&quot;: {},
     &quot;jvmOption&quot;: &quot;&quot;
-  },
-  &quot;steps&quot;: [
-    {
-      &quot;stepType&quot;: &quot;datahub&quot;,
 ```
 
-DataWorks
+`},`
+
+```
+  &quot;steps&quot;: [
+```
+
+`{`
+
+```
+      &quot;stepType&quot;: &quot;datahub&quot;,
+```
 
 ```
       &quot;category&quot;: &quot;writer&quot;,
@@ -10987,31 +11010,44 @@ DataWorks
         &quot;batchSize&quot;: 1000,
         &quot;datasource&quot;: &quot;datahub_cloud_dev_test&quot;,
         &quot;topic&quot;: &quot;dwd_tfc_opt_speed_rid_amap_rt&quot;
-      },
+```
+
+`},`
+
+```
       &quot;name&quot;: &quot;datahub_CRHBAyGfhSaLmv2f&quot;,
       &quot;gui&quot;: {
         &quot;x&quot;: 262,
         &quot;y&quot;: 325
-      }
-    },
-    {
+```
+
+`}` `},` `{`
+
+```
       &quot;stepType&quot;: &quot;datahub&quot;,
       &quot;displayName&quot;: &quot;DataHub2&quot;,
       &quot;parameter&quot;: {
         &quot;datasource&quot;: &quot;datahub_uric_test&quot;,
         &quot;topic&quot;: &quot;dwd_tfc_opt_speed_rid_amap_rt_330000&quot;,
         &quot;batchSize&quot;: 1000
-      },
+```
+
+`},`
+
+```
       &quot;name&quot;: &quot;datahub_8htXSsfiS2vtZCVG&quot;,
       &quot;gui&quot;: {
         &quot;x&quot;: 268,
         &quot;y&quot;: 160.5
-      },
-      &quot;category&quot;: &quot;writer&quot;
-    }
 ```
 
-]
+`},`
+
+```
+      &quot;category&quot;: &quot;writer&quot;
+```
+
+`}` `]`
 
 ```xml
 }</Code>
@@ -11024,53 +11060,64 @@ DataWorks
     &quot;nodeNameRule&quot;:
 &quot;oneclick_holo_di_${db_table_name_src}_to_${db_table_name_dest}&quot;,
     &quot;resourceGroup&quot;: &quot;group_219193793999490&quot;
-  },
+```
+
+`},`
+
+```
   &quot;processRuleId&quot;: 1007,
   &quot;readerConcurrent&quot;: 10,
   &quot;realtimeSyncConfig&quot;: {
     &quot;content&quot;: {
       &quot;order&quot;: {
         &quot;hops&quot;: [
-          {
+```
+
+`{`
+
+```
             &quot;from&quot;: &quot;reader&quot;,
             &quot;to&quot;: &quot;writer&quot;
-          }
 ```
 
-]
+`}` `]` `},`
 
 ```
-      },
       &quot;setting&quot;: {
         &quot;speed&quot;: {
 ```
 
-DataWorks
-
 ```
           &quot;readerConcurrent&quot;: 10
-        }
-      },
+```
+
+`}` `},`
+
+```
       &quot;steps&quot;: [
-        {
+```
+
+`{`
+
+```
           &quot;stepType&quot;: &quot;mysql&quot;,
           &quot;name&quot;: &quot;reader&quot;,
           &quot;category&quot;: &quot;reader&quot;,
           &quot;parameter&quot;: {
             &quot;connection&quot;: [
-              {
+```
+
+`{`
+
+```
                 &quot;datasource&quot;: &quot;mm&quot;,
                 &quot;datasourceType&quot;: &quot;mysql&quot;,
                 &quot;table&quot;: []
-              }
 ```
 
-]
+`}` `]` `}` `},` `{`
 
 ```
-          }
-        },
-        {
           &quot;stepType&quot;: &quot;holo&quot;,
           &quot;name&quot;: &quot;writer&quot;,
           &quot;category&quot;: &quot;writer&quot;,
@@ -11080,46 +11127,49 @@ DataWorks
             &quot;datasourceSchema&quot;: &quot;public&quot;,
             &quot;tableMappingRule&quot;: {
               &quot;datasource&quot;: [
-                {
+```
+
+`{`
+
+```
                   &quot;tableRule&quot;: [],
                   &quot;srcDatasourceName&quot;: &quot;mm&quot;
-                }
 ```
 
-]
+`}` `]` `}` `}` `}` `]` `},`
 
 ```
-            }
-          }
-        }
-```
-
-]
-
-```
-    },
     &quot;extend&quot;: {
       &quot;mode&quot;: &quot;migration_holo&quot;,
       &quot;resourceGroup&quot;: &quot;group_219193793999490&quot;
-    }
-  },
+```
+
+`}` `},`
+
+```
   &quot;setting&quot;: {
     &quot;autoCreateWorkflow&quot;: true,
     &quot;userDefinedFileNameExpression&quot;: &quot;oneclick&quot;
-  },
+```
+
+`},`
+
+```
   &quot;srcType&quot;: &quot;mysql&quot;,
   &quot;tableMappingRuleFromRealtimeSyncConfig&quot;: {
     &quot;datasource&quot;: [
-      {
-        &quot;srcDatasourceName&quot;: &quot;mm&quot;,
-        &quot;tableRule&quot;: []
-      }
 ```
 
-] DataWorks ]
+`{`
+
+```
+        &quot;srcDatasourceName&quot;: &quot;mm&quot;,
+        &quot;tableRule&quot;: []
+```
+
+`}` `]` `]` `}`
 
 ```xml
-  }
 }</ProcessContent>
     <SourceType>mysql</SourceType>
     <StartTime>2021-12-07 14:40:51</StartTime>
@@ -11145,7 +11195,7 @@ DataWorks
 | 403 | 1120010001 | Forbidden.Access | Access is forbidden. |
 | 500 | 1120010002 | InternalError.System | An internal error occurred. |
 
-#### GetDISyncInstanceInfo
+#### 4.4.8 GetDISyncInstanceInfo
 
 调用GetDISyncInstanceInfo接口，获取实时同步任务和同步解决方案任务的运行状态。
 
@@ -11159,8 +11209,6 @@ DataWorks
 |---|---|---|---|---|---|
 | ProjectId | Long | Query | 是 | 10000 | DataWorks工作空间的 ID。您可以登录 DataWorks控制台，进入工作空间管理页面获取ID。 该参数用来确定本次API调用操作使用的DataWorks 工作空间。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | TaskType | Strin g | Query | 是 | DI REALTIME _ | 目标数据源所关联的数据集成同步任务的任务类型。取值如下： DI REALTIME：表示数 _ 据集成实时同步任务。 DI SOLUTION：表示数 _ 据集成同步解决方案。 |
@@ -11173,17 +11221,15 @@ DataWorks
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。取值如下： true：成功。 false：失败。 |
 | RequestId | String | 0bc141151593763 5973**** | 请求ID。用于定位日志，排查问题。 |
-| Data | Struct |  |  |
+| Data | Struct |   |   |
 | -Status | String | RUN | 如果taskType为DI REALTIME，则status为 _ 实时任务的运行状态。包括：PAUSE、 NORUN、RUN、KILLING、WAIT。 如果taskType为DI SOLITION， 则status为 _ 同步解决方案的运行状态。包括：success、 fail。 |
 | -Message | String | fileId[100] is invalid | 获取同步任务运行状态失败后的原因描述。如果获取数据集成同步任务成功，则该参数的返回值为空。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -Name | String | streamx name _ | 如果taskType为DI REALTIME，则name为 _ 实时同步任务的名称。 如果taskType为DI SOLITION， 则name为 _ 空。 |
-| -SolutionInfo | Struct |  |  |
-| --StepDetail | Array |  |  |
+| -SolutionInfo | Struct |   |   |
+| --StepDetail | Array |   |   |
 | ---Status | String | success | 同步解决方案运行步骤的状态。 |
 | ---StepId | Long | 1 | 同步解决方案运行步骤的ID。 |
 | ---StepName | String | 创建base表 | 同步解决方案运行步骤的名称。 |
@@ -11200,10 +11246,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetDISyncInstanceInfo &ProjectId=10000 &TaskType=DI_REALTIME &RegionId=default &FileId=100
 ```
 
-&公共请求参数 DataWorks 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0bc1411515937635973****",
  "Data":{
   "Status":"RUN",
@@ -11216,17 +11261,28 @@ http(s)://[Endpoint]/?Action=GetDISyncInstanceInfo &ProjectId=10000 &TaskType=DI
     "StepName":"创建base表",
     "Info":"{\\\"fusionProps\\\":{\\\"dataSource\\\":
 [{\\\"fileName\\\":\\\"holo_20221020161613\\\",\\\"status\\\":\\\"SUCCESS\\\"}]},\\\"cust Props\\\":{\\\"showSN\\\":true,\\\"columns\\\": [{\\\"dataIndex\\\":\\\"fileName\\\",\\\"width\\\":0.8,\\\"title\\\":\\\"实时同步名称\\\" },{\\\"dataIndex\\\":\\\"status\\\",\\\"width\\\":0.2,\\\"title\\\":\\\"状态\\\"}]},\\\" componentName\\\":\\\"Table\\\"}"
-   },
-   "Id":100,
-   "CreatorName":"dataworks_3h1"
-  },
-  "Name":"streamx_name"
- },
- "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`},`
+
+```json
+   "Id":100,
+   "CreatorName":"dataworks_3h1"
+```
+
+`},`
+
+```json
+  "Name":"streamx_name"
+```
+
+`},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>0bc1411515937635973****</RequestId> <Data>
@@ -11262,7 +11318,9 @@ http(s)://[Endpoint]/?Action=GetDISyncInstanceInfo &ProjectId=10000 &TaskType=DI
 | 403 | 1120010001 | Forbidden.Access | Access is forbidden. |
 | 500 | 1120010002 | InternalError.System | An internal error occurred. |
 
-#### ListRefDISyncTasks
+#### 4.4.9 ListRefDISyncTasks
+
+调用ListRefDISyncTasks查看数据集成同步任务。
 
 **请求头**
 
@@ -11272,8 +11330,6 @@ http(s)://[Endpoint]/?Action=GetDISyncInstanceInfo &ProjectId=10000 &TaskType=DI
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11291,13 +11347,11 @@ DataWorks
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。取值如下： true：成功。 false：失败。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 16A96B9A-F203- 4EC5-8E43- CB92E68F**** | 请求ID。用于定位日志，排查问题。 |
-| Data | Struct |  | 数据集成任务的返回结果。 |
-| -DISyncTasks | Array |  | 数据集成任务的返回结果。 |
+| Data | Struct |   | 数据集成任务的返回结果。 |
+| -DISyncTasks | Array |   | 数据集成任务的返回结果。 |
 | -- DiSourceDatas ource | String | mysql datasource _ | 源端数据源名称。 |
 | --TaskType | String | DI OFFLINE _ | 目标数据源所关联的数据集成同步任务类型。 |
 | -- DiDestination Datasource | String | maxcompute data _ source | 目的端数据源名称。 |
@@ -11312,10 +11366,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListRefDISyncTasks &ProjectId=10000 &DatasourceName=mysql_datasource &RegionId=default &TaskType=DI_OFFLINE &RefType=from
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"16A96B9A-F203-4EC5-8E43-CB92E68F****",
  "Data":{
   "DISyncTasks":{
@@ -11324,13 +11377,15 @@ http(s)://[Endpoint]/?Action=ListRefDISyncTasks &ProjectId=10000 &DatasourceName
    "DiSourceDatasource":"mysql_datasource",
    "TaskType":"DI_OFFLINE",
    "NodeId":122333
-  }
- },
- "Success":true
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>16A96B9A-F203-4EC5-8E43-CB92E68F****</RequestId> <Data>
@@ -11353,13 +11408,15 @@ http(s)://[Endpoint]/?Action=ListRefDISyncTasks &ProjectId=10000 &DatasourceName
 | 403 | 1120010001 | Forbidden.DI.NoPrivilege | No access. |
 | 500 | 1120010002 | InternalError.DI.Parameter | A DI internal error occurred. |
 
-### 数据建模
+### 4.5 数据建模
 
-#### QueryPublicModelEngine
+#### 4.5.1 QueryPublicModelEngine
+
+调用QueryPublicModelEngine查询数据建模引擎的信息。
 
 **使用说明**
 
-每次调用该接口均需使用FML语句请求获取查询信息。 除了数仓分层、业务过程和数据域查询外，其他引擎信息查询均可使用分页查询方式。您可以在FML语句 DataWorks 结尾增加 `offset num limit num` 语句，表示查询信息时的偏移量及每次返回的页数。目前偏移量取值仅支持为页数的倍数。 每次调用该接口时，最多返回1000条数据。
+每次调用该接口均需使用FML语句请求获取查询信息。 除了数仓分层、业务过程和数据域查询外，其他引擎信息查询均可使用分页查询方式。您可以在FML语句结尾增加 `offset num limit num` 语句，表示查询信息时的偏移量及每次返回的页数。目前偏移量取值仅支持为页数的倍数。 每次调用该接口时，最多返回1000条数据。
 
 **请求头**
 
@@ -11379,8 +11436,6 @@ http(s)://[Endpoint]/?Action=ListRefDISyncTasks &ProjectId=10000 &DatasourceName
 |---|---|---|---|
 | ReturnValue | Map | [ { "gmtModified": 最后修改时间, "code": "表名", "creatorId": "创建人 ID", "creatorName": "创建人名称", "modifierId": "修改人ID", "gmtCreate": 创建时间, "type": 表类型, "ownerId": "负责人ID", "uuid": "系统ID", "businessUnitUuid" : "业务板块ID", "detailType": "表二级类型", "ownerName": "负责人名称", "name": "表显示名", "modifierName": "最后修改人名称", "businessProcessU uid": "业务过程ID" } ] | 数据建模引擎信息的结果。 |
 | RequestId | String | 4CFB2DED-7D9B- 4C42-B4AA- CFF4991D**** | 请求ID。用于定位日志，排查问题。 |
-
-DataWorks
 
 **返回结果说明**
 
@@ -11427,7 +11482,7 @@ DataWorks
 | description | String | 会员域备注 | 备注。 |
 | uuid | String | obj-123456 | 对象唯一标识。 |
 
-|  | DataWorks |  |  | 开发指南·OpenAPI参考 |  |
+|   | DataWorks |   |   | 开发指南·OpenAPI参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11462,7 +11517,7 @@ DataWorks
 | creatorName | String | 甲乙丙丁 | 创建人名称。 |
 | modifierId | String | 0123456 | 修改人BaseId。 |
 
-|  | 开发指南·OpenAPI参考 |  |  | DataWork | s |
+|   | 开发指南·OpenAPI参考 |   |   | DataWork | s |
 |---|---|---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11508,7 +11563,7 @@ DataWorks
 | categoryDetail | DirectoryDetailDTO | {"uuid": "cate uuid", _ "code": "trd", "name": "交易"} | 数据集市详细信息。 |
 | name | String | 电商 | 目录名称。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11547,7 +11602,7 @@ DataWorks
 | code | String | ind | 业务分类code。 |
 | subDetailType | String | common | 目录子类型细分类型。 |
 
-| ·OpenAPI |  |  | DataWork |
+| ·OpenAPI |   |   | DataWork |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11592,7 +11647,7 @@ DataWorks
  show dicts;
 ```
 
-DataWorks 输出参数
+输出参数
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
@@ -11627,7 +11682,7 @@ DataWorks 输出参数
  show code tables;
 ```
 
-输出参数 DataWorks
+输出参数
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
@@ -11667,8 +11722,6 @@ DataWorks 输出参数
 | modifierName | String | 甲乙丙丁 | 修改人名称。 |
 
 **查询度量单位使用的FML语句**
-
-DataWorks
 
 ```
  show measure_units;
@@ -11713,7 +11766,7 @@ DataWorks
 | creatorName | String | 甲乙丙丁 | 创建人名称。 |
 | modifierId | String | 0123456 | 修改人BaseId。 |
 
-| 开发指南·OpenAPI参考 |  |  | DataWork |
+| 开发指南·OpenAPI参考 |   |   | DataWork |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11758,8 +11811,6 @@ DataWorks
 | type | Integer | 1 | 表类型。可取值如下： 0：事实表。 1：维度表。 |
 | detailType | String | normal | 表具体类型。可取值如下： normal：普通维度。 enum：枚举维度。 transaction：事务事实。 |
 
-DataWorks
-
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
 | businessProcessUuid | String | bp-123456 | 业务过程UUID。 |
@@ -11795,7 +11846,7 @@ DataWorks
 | detailType | String | normal | 表具体类型。可取值如下： normal：普通维度。 enum：枚举维度。 transaction：事务事实。 |
 | businessProcessUuid | String | bp-123456 | 业务过程UUID。 |
 
-| 开发指南·OpenAPI参考 |  |  | DataWork |
+| 开发指南·OpenAPI参考 |   |   | DataWork |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11869,7 +11920,7 @@ DataWorks
 | name | String | 支付汇总表 | 表中文名称。 |
 | adjuncts | List | [{"uuid": "uuid", "code": "code", "name": "中文名称"}] | 修饰词列表。 |
 
-| 开发指南·OpenAPI参考 |  |  | DataWork |
+| 开发指南·OpenAPI参考 |   |   | DataWork |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11903,7 +11954,7 @@ DataWorks
  show ads tables;
 ```
 
-DataWorks 输出参数
+输出参数
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
@@ -11929,7 +11980,7 @@ DataWorks 输出参数
 | ownerId | String | 0123456 | 负责人BaseId。 |
 | ownerName | String | 甲乙丙丁 | 负责人名称。 |
 
-| 开发指南·OpenAPI参考 |  |  | DataWork |
+| 开发指南·OpenAPI参考 |   |   | DataWork |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -11977,7 +12028,7 @@ DataWorks 输出参数
 | name | String | 卖家Id | 列中文名。 |
 | dataType | String | STRING | 数据类型。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -12011,8 +12062,6 @@ DataWorks 输出参数
 | modifierName | String | 甲乙丙丁 | 修改人名称。 |
 
 **查询修饰词使用的FML语句**
-
-DataWorks
 
 ```
  show adjuncts;
@@ -12050,7 +12099,7 @@ DataWorks
 | gmtModified | TimeStamp | 1644459965000 | 修改时间。 |
 | creatorId | String | 0123456 | 创建人BaseId。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -12089,8 +12138,6 @@ DataWorks
 | beginOffset | Integer | 1 | 开始周期偏移量。 |
 | endOffset | Integer | 1 | 结束周期偏移量。 |
 
-DataWorks
-
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
 | firstDay | Integer | 1 | 周期第一天(必填场景： type in[WEEK, MONTH, QUARTER, YEAR]）,"+ "取值范围:"+ "WEEK（初始星期，周日:1, 周一:2, 周二:3, 周三:4, 周四:5, 周五:6, 周六:7）, "+ "MONTH(初始号，月初:1, 月末:99, 2 号到27号:[2~27]), "+ "QUARTER(初始月，1月到12月:[0~11]), "+ "YEAR(初始月，1月到12 月:[0~11])。 |
@@ -12112,8 +12159,6 @@ DataWorks
 | aggFunctionType | AggFunctionEnum | SUM | 指标聚合函数类型。可取值如下： SUM COUNT AVG MAX MIN RATE RANK UNDEFINED |
 | calExpression | String | price | 计算口径(code)。 |
 | dataType | DataTypeNameEnum | TINYINT | 数据类型。可取值为： TINYINT、SMALLINT、 INT、BIGINT、 BINARY、FLOAT、 DOUBLE、DECIMAL、 VARCHAR、CHAR、 STRING、DATE、 DATETIME、 TIMESTAMP、 BOOLEAN、ARRAY、 MAP、STRUCT、JSON。 |
-
-DataWorks
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
@@ -12139,8 +12184,6 @@ DataWorks
 | name | String | 支付金额 | 中文名称。 |
 | extendName | String | pay amount | 英文名称。 |
 | description | String | remark | 描述。 |
-
-DataWorks
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
@@ -12176,8 +12219,6 @@ DataWorks
 | atomicIndicatorCode | String | pay amt _ | 原子指标英文缩写。 |
 | atomicIndicatorName | String | 支付金额 | 原子指标中文名称。 |
 
-DataWorks
-
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
 | dataType | DataTypeNameEnum | BIGINT | 数据类型。可取值为： TINYINT、SMALLINT、 INT、BIGINT、 BINARY、FLOAT、 DOUBLE、DECIMAL、 VARCHAR、CHAR、 STRING、DATE、 DATETIME、 TIMESTAMP、 BOOLEAN、ARRAY、 MAP、STRUCT、JSON。 |
@@ -12203,7 +12244,7 @@ DataWorks
 | name | String | 支付金额 | 中文名称。 |
 | extendName | String | pay amount | 英文名称。 |
 
-|  | 开发指南·OpenAPI参考 |  |  | DataWork | s |
+|   | 开发指南·OpenAPI参考 |   |   | DataWork | s |
 |---|---|---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -12242,7 +12283,7 @@ DataWorks
 | categoryCode | String | tb | 业务分类Code。 |
 | categoryName | String | 淘宝 | 业务分类名称。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -12266,7 +12307,7 @@ DataWorks
 | creatorId | String | 0123456 | 指标创建人BaseId。 |
 | creatorName | String | 甲乙丙丁 | 指标创建人名称。 |
 
-|  | 开发指南·OpenAPI参考 |  |  | DataWork | s |
+|   | 开发指南·OpenAPI参考 |   |   | DataWork | s |
 |---|---|---|---|---|---|
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
@@ -12290,10 +12331,9 @@ DataWorks
 | extendName | String | pay amount | 指标英文名称。 |
 | relations | List | 示例请参见下文 | 依赖指标的模型信息列表，EntityInfo的结构参见下文。 |
 
-EntityInfo的结构示例及参数描述： [
+EntityInfo的结构示例及参数描述： `[` `{`
 
 ```json
-    {
         "uuid": "uuid",
         "code": "code",
 ```
@@ -12317,13 +12357,7 @@ EntityInfo的结构示例及参数描述： [
         "ownerId": "0001",
 ```
 
-`"ownerName": "`负责人姓名"
-
-```
-    }
-```
-
-]
+`"ownerName": "`负责人姓名`"` `}` `]`
 
 | 参数名 | 参数类型 | 示例值 | 描述信息 |
 |---|---|---|---|
@@ -12332,25 +12366,23 @@ EntityInfo的结构示例及参数描述： [
 | name | String | 支付汇总表 | 模型中文名称。 |
 | extendName | String | dws 001 _ | 模型英文名称。 |
 
-DataWorks
-
-| 参数名 |  |  | 参数类型 |  |  |  | 示例值 |  |  | 描述信息 |  |  |  |
+| 参数名 |   |   | 参数类型 |   |   |   | 示例值 |   |   | 描述信息 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| entityType |  |  | EntityTypeEnum |  |  |  | Table |  |  | 依赖指标的实体类型。取值包括但不限于 TABLE、 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | TABLE、 |  |  |
-|  |  |  |  |  |  |  |  |  |  | BASE ATOMIC INDICATO _ _ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | R、 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | BASE DERIVATIVE INDI _ _ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | CATOR |  |  |  |
-| entityTypeName |  |  | String |  |  |  | 表 |  |  | 实体类型名称。 |  |  |  |
-| entitySubType |  |  | String |  |  |  | DWS TABLE |  |  | 实体子类型。取值包括但不限于 DWS TABLE、 _ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | DWS TABLE、 _ |  |
-|  |  |  |  |  |  |  |  |  |  | ATOMIC INDICATOR、 _ |  |  |  |
-|  |  |  |  |  |  |  | _ |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | DERIVATIVE INDICATOR _ |  |  |  |
-| entitySubTypeName |  |  | String |  |  |  | 汇总表 |  |  | 实体子类型名称。 |  |  |  |
-| ownerId |  |  | String |  |  |  | 0001 |  |  | 负责人BaseId。 |  |  |  |
-| ownerName |  |  | String |  |  |  | 张三 |  |  | 负责人名称。 |  |  |  |
+| entityType |   |   | EntityTypeEnum |   |   |   | Table |   |   | 依赖指标的实体类型。取值包括但不限于 TABLE、 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | TABLE、 |   |   |
+|   |   |   |   |   |   |   |   |   |   | BASE ATOMIC INDICATO _ _ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | R、 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | BASE DERIVATIVE INDI _ _ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | CATOR |   |   |   |
+| entityTypeName |   |   | String |   |   |   | 表 |   |   | 实体类型名称。 |   |   |   |
+| entitySubType |   |   | String |   |   |   | DWS TABLE |   |   | 实体子类型。取值包括但不限于 DWS TABLE、 _ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | DWS TABLE、 _ |   |
+|   |   |   |   |   |   |   |   |   |   | ATOMIC INDICATOR、 _ |   |   |   |
+|   |   |   |   |   |   |   | _ |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | DERIVATIVE INDICATOR _ |   |   |   |
+| entitySubTypeName |   |   | String |   |   |   | 汇总表 |   |   | 实体子类型名称。 |   |   |   |
+| ownerId |   |   | String |   |   |   | 0001 |   |   | 负责人BaseId。 |   |   |   |
+| ownerName |   |   | String |   |   |   | 张三 |   |   | 负责人名称。 |   |   |   |
 
 **示例**
 
@@ -12360,9 +12392,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=QueryPublicModelEngine &Text=show dim tables &ProjectId=1234
 ```
 
-&公共请求参数
-### 请求示例补充说明
-`//javasdk`调用的`Demo`示例如下：
+`&`公共请求参数 `###` 请求示例补充说明 `//javasdk`调用的`Demo`示例如下：
 
 ```
  QueryPublicModelEngineRequest request = new QueryPublicModelEngineRequest();
@@ -12381,16 +12411,14 @@ http(s)://[Endpoint]/?Action=QueryPublicModelEngine &Text=show dim tables &Proje
  System.out.println(s);
 ```
 
-正常返回示例 `JSON` 格式 DataWorks
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"4CFB2DED-7D9B-4C42-B4AA-CFF4991D****",
  "ReturnValue":""
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>4CFB2DED-7D9B-4C42-B4AA-CFF4991D****</RequestId> <ReturnValue />
@@ -12412,10 +12440,9 @@ http(s)://[Endpoint]/?Action=QueryPublicModelEngine &Text=show dim tables &Proje
 
 **返回示例补充说明**
 
-DataWorks `// JAVA SDK`调用的`Demo`示例返回结果如下
+`// JAVA SDK`调用的`Demo`示例返回结果如下 `{`
 
 ```json
- {
   "requestId" : "x-request-id",
   "returnValue" : [ {
     "uuid" : "obj-123456",
@@ -12443,14 +12470,15 @@ DataWorks `// JAVA SDK`调用的`Demo`示例返回结果如下
     "ownerId" : "0123456",
 ```
 
-`"ownerName" : "`甲乙丙丁`",` `"description" : "`汇总层描述"
+`"ownerName" : "`甲乙丙丁`",` `"description" : "`汇总层描述`"`
 
 ```
   } ]
-}
 ```
 
-#### SearchElement
+`}`
+
+#### 4.5.2 SearchElement
 
 调用SearchElement接口，使用名称和中文名查询对象。默认为表和字段，仅搜索模型的master分支。
 
@@ -12469,8 +12497,6 @@ DataWorks `// JAVA SDK`调用的`Demo`示例返回结果如下
 | Keyword | Strin g | Body | 是 | my | 搜索关键字。 |
 | CurrentPa ge | Long | Body | 是 | 1 | 当前数据页面，0为第一页。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RequestT oken | Strin g | Body | 否 | SESSION=fca548fa- a495-459d-9210- d39d2637c9e9 | 请求token。 |
@@ -12479,8 +12505,8 @@ DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Data | Array |  | 返回数据。 |
-| -Data | Long |  | 返回数据信息。 |
+| Data | Array |   | 返回数据。 |
+| -Data | Long |   | 返回数据信息。 |
 | -Alias | String | 表4 | 别名。 |
 | -CombinedId | String | 11/4 | 绑定ID。 |
 | -DomainId | String | 1ccaf409f3644665 9341d3b5a144a7b 5 | 数据标准ID。 |
@@ -12495,8 +12521,6 @@ DataWorks
 | -Path | String | Model Repository/ 机构管理/test map _ | 元素路径。 |
 | -RefCode | String | 78es | 关联编码。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -ResultType | String | Simple | 结果类型，固定返回Simple。 |
@@ -12505,11 +12529,11 @@ DataWorks
 | -TypeId | Long | 80000005 | 类型ID。 |
 | -UseProto | Boolean | true | 是否使用Proto保存模型。 |
 | RequestId | String | C404EE27-8DCE- 4602-B9D1- ECA3BDC8D4D1 | 调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| ErrorData | Struct |  | 报错信息。 |
+| ErrorData | Struct |   | 报错信息。 |
 | -ErrorCode | Long | 1000001 | 错误码。 |
-| -ErrorType | String |  | 错误类型。 |
+| -ErrorType | String |   | 错误类型。 |
 | -ErrorMessage | String | The connection does not exist. | 错误信息。 |
-| - RootErrorType | String |  | 根错误码。 |
+| - RootErrorType | String |   | 根错误码。 |
 | - RootErrorMess age | String | You have no permission | 根错误信息。 |
 
 **示例**
@@ -12517,13 +12541,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &PageSize=10 &Keyword=my &CurrentPage=1
+http(s)://[Endpoint]/?Action=UpdateModel &RegionId=default &PageSize=10 &Keyword=my &CurrentPage=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"C404EE27-8DCE-4602-B9D1-ECA3BDC8D4D1",
  "Data":{
   "ParentId":2,
@@ -12545,18 +12568,20 @@ DataWorks
   "Id":78,
   "ElementId":4,
   "ModelId":12
- },
+```
+
+`},`
+
+```json
  "ErrorData":{
   "ErrorType":"",
   "RootErrorType":"",
   "RootErrorMessage":"You have no permission",
   "ErrorCode":1000001,
   "ErrorMessage":"The connection does not exist."
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>C404EE27-8DCE-4602-B9D1-ECA3BDC8D4D1</RequestId> <Data>
@@ -12588,7 +12613,9 @@ DataWorks
 </ErrorData>
 ```
 
-#### UpdateModel
+#### 4.5.3 UpdateModel
+
+调用UpdateModel接口，修改一个模型属性。
 
 **请求头**
 
@@ -12603,7 +12630,7 @@ DataWorks
 | CategoryI d | Long | Body | 是 | 3 | 目录ID。 |
 | Descriptio n | Strin g | Body | 否 | 这是模型的描述 | 模型描述。 |
 
-| 开发指南·Open | API参考 |  |  |  | DataWork |
+| 开发指南·Open | API参考 |   |   |   | DataWork |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12631,7 +12658,7 @@ DataWorks
 | LockTimestam p | Long | 1704333985383 | 模型锁定时间。 |
 | Locked | Boolean | false | 加锁状态。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12647,25 +12674,22 @@ DataWorks
 | UseProto | Boolean | false | 模型是否压缩。 |
 | RequestId | String | C404EE27-8DCE- 4602-B9D1- ECA3BDC8D4D1 | 请求ID。 |
 | RequestId | String | C404EE27-8DCE- 4602-B9D1- ECA3BDC8D4D1 | 请求ID。 |
-| ErrorData | Struct |  | 错误信息。 |
+| ErrorData | Struct |   | 错误信息。 |
 | -ErrorCode | Long | 10001 | 错误码。 |
-| -ErrorType | String |  | 错误类型。 |
+| -ErrorType | String |   | 错误类型。 |
 | -ErrorMessage | String | The connection does not exist. | 错误消息。 |
-| - RootErrorType | String |  | 根错误码。 |
+| - RootErrorType | String |   | 根错误码。 |
 | - RootErrorMess age | String | You have no permission | 根错误信息。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
-&RegionId=default &ModelId=111 &CategoryId=3 &Name=model_1 &Phase=1
+http(s)://[Endpoint]/?Action=SearchElement &RegionId=default &ModelId=111 &CategoryId=3 &Name=model_1 &Phase=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "CategoryId":3,
  "LockTimestamp":1704333985383,
  "LastModifier":"admin",
@@ -12698,11 +12722,9 @@ DataWorks 请求示例
   "RootErrorMessage":"You have no permission",
   "ErrorCode":10001,
   "ErrorMessage":"The connection does not exist."
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
 ```xml
 <CategoryId>3</CategoryId> <LockTimestamp>1704333985383</LockTimestamp> <LastModifier>admin</LastModifier> <Owner>admin</Owner> <Description>这是个xx模型</Description> <Locker>admin</Locker> <Phase>1</Phase> <RequestId>C404EE27-8DCE-4602-B9D1-ECA3BDC8D4D1</RequestId> <CurrentVersion>2</CurrentVersion> <UseProto>false</UseProto> <Frozen>false</Frozen> <Name>model_1</Name> <LastModificationTimestamp>1704333985383</LastModificationTimestamp> <Locked>false</Locked> <Seed>10</Seed> <ModelType>MySQL</ModelType> <CreatedOn>1704333985383</CreatedOn> <Deleted>false</Deleted> <DepartmentId>2</DepartmentId> <Id>1112</Id> <ReferredModelId>1122</ReferredModelId> <ObjCount>10</ObjCount> <ErrorData>
@@ -12714,7 +12736,9 @@ DataWorks 请求示例
 </ErrorData>
 ```
 
-#### UpdatePublicDomain
+#### 4.5.4 UpdatePublicDomain
+
+调用UpdatePublicDomain接口，修改一个公共数据标准的内容。
 
 **请求头**
 
@@ -12727,8 +12751,6 @@ DataWorks 请求示例
 | Content | Strin g | Body | 否 | {"code":"aaa","enName" :"","name":"","values": [{"name":"","value":"","e nName":"","definition":"" ,"order":""}]} | 请求文本。 |
 | Base64Co ntent | Strin g | Body | 否 | eyJjb2RlIjoiYWFhIiwiZW5 OYW1lIjoiIiwibmFtZSI6IiI sInZhbHVlcyI6W3sibmFt ZSI6IiIsInZhbHVlIjoiIiwiZ W5OYW1lIjoiIiwiZGVma W5pdGlvbiI6IiIsIm9yZGV yIjoiIn1dfQ | 文本的Base64编码。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProjectId | Integ er | Body | 否 | 10000 | DataWorks工作空间的 ID。您可以登录 DataWorks控制台，进入工作空间管理页面获取ID。 |
@@ -12739,7 +12761,7 @@ DataWorks
 |---|---|---|---|
 | Data | Boolean | false | 返回数据。 |
 | RequestId | String | 6ccb9f57-0b72- 4b00-be28- e989cfd2c903 | 请求ID。用于定位日志，排查问题。 |
-| ErrorData | Struct |  | 返回的报错数据。 |
+| ErrorData | Struct |   | 返回的报错数据。 |
 | -ErrorCode | Long | 1 | 错误码。 |
 | -ErrorType | String | user | 错误类型。 |
 | -ErrorMessage | String | The connection does not exist | 错误信息。 |
@@ -12754,10 +12776,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=UpdatePublicDomain
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"12345678",
  "Data":"",
  "ErrorData":{
@@ -12766,11 +12787,9 @@ http(s)://[Endpoint]/?Action=UpdatePublicDomain
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>12345678</RequestId> <Data /> <ErrorData>
@@ -12782,7 +12801,9 @@ http(s)://[Endpoint]/?Action=UpdatePublicDomain
 </ErrorData>
 ```
 
-#### UpdateDomainCode
+#### 4.5.5 UpdateDomainCode
+
+调用UpdateDomainCode接口，修改一个标准代码。
 
 **请求头**
 
@@ -12793,8 +12814,6 @@ http(s)://[Endpoint]/?Action=UpdatePublicDomain
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Content | Strin g | Body | 否 | { "id": "d278db54d1e841cca02 3e9cb5f4b5b08", "chName": "英语", "enName": "English", "abbrivation": "english", "path": ["测试"], "description": "这是业务定义", "domainCode": "ad001", "timestamp": 1710839677938, "version": 1, "dataType": "string", "notNull": true, "dataScale": "3", "dataPrecision": 1, "udps": [], "submitter": "11877909784501696", "pathString": "测试" } | 请求文本。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -12807,7 +12826,7 @@ DataWorks
 |---|---|---|---|
 | Data | Boolean | true | 返回数据。 |
 | RequestId | String | 6ccb9f57-0b72- 4b00-be28- e989cfd2c903 | 请求ID。用于定位日志，排查问题。 |
-| ErrorData | Struct |  | 返回的报错数据。 |
+| ErrorData | Struct |   | 返回的报错数据。 |
 | -ErrorCode | Long | 1 | 错误码。 |
 | -ErrorType | String | user | 错误类型。 |
 | -ErrorMessage | String | The connection does not exist | 错误信息。 |
@@ -12816,10 +12835,15 @@ DataWorks
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式 DataWorks
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=UpdateDomainCode
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"6ccb9f57-0b72-4b00-be28-e989cfd2c903",
  "Data":true,
  "ErrorData":{
@@ -12828,11 +12852,9 @@ DataWorks
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>6ccb9f57-0b72-4b00-be28-e989cfd2c903</RequestId> <Data>true</Data> <ErrorData>
@@ -12844,7 +12866,7 @@ DataWorks
 </ErrorData>
 ```
 
-#### GetModelApplyDomainStatus
+#### 4.5.6 GetModelApplyDomainStatus
 
 调用GetModelApplyDomainStatus接口，获取模型所使用数据标准的相关信息。
 
@@ -12863,8 +12885,6 @@ DataWorks
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | Array | { "P":true, "EId":2, "DRefC":"ad001 ", "MId":10, "TN":"student", "CN":"age", "DEn":"English", "DSub":"测试", "TA":"学生表", "CA":"性别", "DCn":"英语", "DId":"d278db54d1 e841cca023e9cb5f 4b5b08" } | 模型的相关数据。 |
@@ -12880,10 +12900,10 @@ DataWorks
 | -DId | String | d278db54d1e841c ca023e9cb5f4b5b0 8 | Domain ID的缩写，标准ID。 |
 | -DRefC | String | ad001 | Domain Ref Code的缩写，引用代码。 |
 | -P | Boolean | true | Is Public Domain的缩写，是否是公共标准。 |
-| ErrorData | Struct |  | 返回的报错数据。 |
+| ErrorData | Struct |   | 返回的报错数据。 |
 | -ErrorCode | Long | 1 | 错误码。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -12901,10 +12921,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetModelApplyDomainStatus &ModelId=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Data":{
   "P":true,
   "EId":2,
@@ -12919,23 +12938,27 @@ http(s)://[Endpoint]/?Action=GetModelApplyDomainStatus &ModelId=10
 
 ```json
   "DId":"d278db54d1e841cca023e9cb5f4b5b08"
- },
+```
+
+`},`
+
+```json
  "ErrorData":{
   "ErrorType":"user",
   "RootErrorType":"Invalid.Tenant.ProjectNotExists",
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
-|  | <Data> <P>true</P> <EId>2</EId> <DRefC>ad001 </DRefC> <MId>10</MId> <TN>student</TN> <CN>age</CN> <DEn>English</DEn> <DSub>测试</DSub> <TA>学生表</TA> <CA>性别</CA> <DCn>英语</DCn> <DId>d278db54d1e841cca023e9cb5f4b5b08</DId> </Data> <ErrorData> <ErrorType>user</ErrorType> <RootErrorType>Invalid.Tenant.ProjectNotExists</RootErrorType> <RootErrorMessage>The project does not exist</RootErrorMessage> <ErrorCode>1</ErrorCode> <ErrorMessage>The connection does not exist</ErrorMessage> </ErrorData> |
+|   | <Data> <P>true</P> <EId>2</EId> <DRefC>ad001 </DRefC> <MId>10</MId> <TN>student</TN> <CN>age</CN> <DEn>English</DEn> <DSub>测试</DSub> <TA>学生表</TA> <CA>性别</CA> <DCn>英语</DCn> <DId>d278db54d1e841cca023e9cb5f4b5b08</DId> </Data> <ErrorData> <ErrorType>user</ErrorType> <RootErrorType>Invalid.Tenant.ProjectNotExists</RootErrorType> <RootErrorMessage>The project does not exist</RootErrorMessage> <ErrorCode>1</ErrorCode> <ErrorMessage>The connection does not exist</ErrorMessage> </ErrorData> |
 |---|---|
 
-#### DeleteDomainCodes
+#### 4.5.7 DeleteDomainCodes
+
+调用DeleteDomainCodes接口，删除一组标准代码。
 
 **请求头**
 
@@ -12953,8 +12976,6 @@ http(s)://[Endpoint]/?Action=GetModelApplyDomainStatus &ModelId=10
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | Boolean | false | 请求是否成功。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -12974,10 +12995,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeletePublicDomains
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"6ccb9f57-0b72-4b00-be28-e989cfd2c903",
  "Data":false,
  "ErrorData":{
@@ -12986,11 +13006,9 @@ http(s)://[Endpoint]/?Action=DeletePublicDomains
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-DataWorks `XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>6ccb9f57-0b72-4b00-be28-e989cfd2c903</RequestId> <Data>false</Data> <ErrorData>
@@ -13002,7 +13020,9 @@ DataWorks `XML` 格式
 </ErrorData>
 ```
 
-#### CreatePublicDomain
+#### 4.5.8 CreatePublicDomain
+
+调用CreatePublicDomain接口，创建公共数据标准。
 
 **请求头**
 
@@ -13015,8 +13035,6 @@ DataWorks `XML` 格式
 | Content | Strin g | Body | 否 | { "path": ["测试"], "domainCode": "ad001", "enName": "English", "abbrivation": "english", "chName": "英语", "description": "这是业务定义", "dataType": "string", "dataScale": "2", "notNull": true, "udps": [], "dataPrecision": "1" } | 请求文本。 |
 | Base64Co ntent | Strin g | Body | 否 | ewoJInBhdGgiOiBbIua1i +ivlSJdLAoJImRvbWFpbk NvZGUiOiAiYWQwMDEiL AoJImVuTmFtZSI6ICJFbm dsaXNoIiwKCSJhYmJyaX ZhdGlvbiI6ICJlbmdsaXNo IiwKCSJjaE5hbWUiOiAi6I ux6K+tIiwKCSJkZXNjcml wdGlvbiI6ICLov5nmmK/k uJrliqHlrprkuYkiLAoJImRh dGFUeXBlIjogInN0cmluZ yIsCgkiZGF0YVNjYWxlIjo gIjIiLAoJIm5vdE51bGwiOi B0cnVlLAoJInVkcHMiOiB bXSwKCSJkYXRhUHJlY2lz aW9uIjogIjEiCn0= | 请求文本的base64编码。 |
 | ProjectId | Integ er | Body | 否 | 10006 | DataWorks工作空间的 ID。您可以登录 DataWorks控制台，进入工作空间管理页面获取ID。 |
-
-DataWorks
 
 **返回数据**
 
@@ -13032,7 +13050,7 @@ DataWorks
 | -EnglishName | String | English | 数据标准的英文名称。 |
 | -Description | String | 这是业务定义 | 业务定义。 |
 
-|  | 开发指南·OpenAPI参 | 考 |  | DataWork | s |
+|   | 开发指南·OpenAPI参 | 考 |   | DataWork | s |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13047,7 +13065,7 @@ DataWorks
 | -DomainCode | String | ad001 | 数据标准的标准ID。 |
 | -Version | Integer | 1 | 数据标准的版本。 |
 | -Submitter | String | 118779097845016 96 | 提交用户。 |
-| ErrorData | Struct |  | 返回的错误数据。 |
+| ErrorData | Struct |   | 返回的错误数据。 |
 | -ErrorCode | Long | 1 | 错误码。 |
 | -ErrorType | String | user | 错误类型。 |
 | -ErrorMessage | String | The connection does not exist | 错误信息。 |
@@ -13062,10 +13080,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreatePublicDomain
 ```
 
-&公共请求参数 DataWorks 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"6ccb9f57-0b72-4b00-be28-e989cfd2c903",
  "Data":{
   "Path":"[\"测试\"]",
@@ -13090,18 +13107,20 @@ http(s)://[Endpoint]/?Action=CreatePublicDomain
   "AdditionalProperties":"[{\t\"propertyId\": 1001,\t\"name\": \"名字\",\t\"category\":
 \"STANDARD\",\t\"order\": 1}]",
   "EnglishName":"English"
- },
+```
+
+`},`
+
+```json
  "ErrorData":{
   "ErrorType":"user",
   "RootErrorType":"Invalid.Tenant.ProjectNotExists",
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>6ccb9f57-0b72-4b00-be28-e989cfd2c903</RequestId> <Data>
@@ -13141,7 +13160,9 @@ http(s)://[Endpoint]/?Action=CreatePublicDomain
  </ErrorData>
 ```
 
-#### AddDomainCode
+#### 4.5.9 AddDomainCode
+
+调用AddDomainCode接口，创建一个标准代码。
 
 **请求头**
 
@@ -13151,8 +13172,6 @@ http(s)://[Endpoint]/?Action=CreatePublicDomain
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13166,8 +13185,6 @@ DataWorks
 |---|---|---|---|
 | RequestId | String | 6ccb9f57-0b72- 4b00-be28- e989cfd2c903 | 请求ID。用于定位日志，排查问题。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | Struct | { "tenantId": 200, "id": 2, "code": "col001", "name": "颜色", "enName": "colours", "datasetName": "主题", "submitter": "11877909784501 696", "lastModification": 1710777600000, "values": [ { "name": "红色", "enName": "red", "value": "c1", "definition": "就是红色的含义", "order": 0 }, { "name": "黑色", "enName": "black", "value": "c2", "definition": "就是黑色的含义", "order": 1 } ], "typeId": 80010098 } | 返回的标准代码信息。 |
@@ -13180,7 +13197,7 @@ DataWorks
 | --Definition3 | String | 描述 | 描述3。 |
 | --ParentValue | String | cc | 父值。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13208,10 +13225,15 @@ DataWorks
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=AddDomainCode
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"6ccb9f57-0b72-4b00-be28-e989cfd2c903",
  "Data":{
   "TypeId":80010098,
@@ -13236,28 +13258,24 @@ DataWorks
    "Definition2":"描述",
 ```
 
-`"Name":"`黑色"
+`"Name":"`黑色`"` `},`
 
 ```json
-  },
   "Code":"col001",
 ```
 
-`"Name":"`颜色"
+`"Name":"`颜色`"` `},`
 
 ```json
- },
  "ErrorData":{
   "ErrorType":"user",
   "RootErrorType":"Invalid.Tenant.ProjectNotExists",
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>6ccb9f57-0b72-4b00-be28-e989cfd2c903</RequestId> <Data>
@@ -13294,7 +13312,9 @@ DataWorks
 </ErrorData>
 ```
 
-#### DeletePublicDomains
+#### 4.5.10 DeletePublicDomains
+
+调用DeletePublicDomains接口，删除公共数据标准。
 
 **请求头**
 
@@ -13309,13 +13329,11 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | Boolean | true | 请求是否成功。 |
 | RequestId | String | 6ccb9f57-0b72- 4b00-be28- e989cfd2c903 | 请求ID。用于定位日志，排查问题。 |
-| ErrorData | Struct |  | 返回的错误数据。 |
+| ErrorData | Struct |   | 返回的错误数据。 |
 | -ErrorCode | Long | 1 | 错误码。 |
 | -ErrorType | String | user | 错误类型。 |
 | -ErrorMessage | String | The connection does not exist | 错误信息。 |
@@ -13330,10 +13348,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeletePublicDomains
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"6ccb9f57-0b72-4b00-be28-e989cfd2c903",
  "Data":true,
  "ErrorData":{
@@ -13342,11 +13359,9 @@ http(s)://[Endpoint]/?Action=DeletePublicDomains
   "RootErrorMessage":"The project does not exist",
   "ErrorCode":1,
   "ErrorMessage":"The connection does not exist"
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>6ccb9f57-0b72-4b00-be28-e989cfd2c903</RequestId> <Data>true</Data> <ErrorData>
@@ -13358,9 +13373,11 @@ http(s)://[Endpoint]/?Action=DeletePublicDomains
 </ErrorData>
 ```
 
-### 运维中心
+### 4.6 运维中心
 
-#### CreateDagComplement
+#### 4.6.1 CreateDagComplement
+
+调用CreateDagComplement创建补数据工作流。
 
 **请求头**
 
@@ -13379,18 +13396,18 @@ http(s)://[Endpoint]/?Action=DeletePublicDomains
 | ExcludeNo deIds | Strin g | Body | 否 | 1234 | 可选参数，排除无需补数据的节点ID列表。 |
 | BizBeginTi me | Strin g | Body | 否 | 00:00:00 | 可选参数，任务的开始时间。小时调度任务需要设置该参数。 |
 
-|  | 开发指南·Open | API参考 |  |  |  | DataWork | s |
+|   | 开发指南·Open | API参考 |   |   |   | DataWork | s |
 |---|---|---|---|---|---|---|---|
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  |  | 说明 |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| BizEndTim e | Strin g | Body | 否 | 23:00:00 |  |  | 可选参数，小时调度任务需要，任务的结束时间 |  |  |
-| Parallelis m | Boole an | Body | 是 | false |  |  | 是否可以并发执行。 |  |  |
-| EndBizDat e | Strin g | Body | 是 | 2020-05-21 00:00:00 |  |  | 补数据的结束业务日期。 |  |  |
-| NodePara ms | Strin g | Body | 否 | {"171232":"dt=$bizdate tbods=$tbods"} |  |  | 可选参数，节点的参数。 标准格式为： {"节点 |  |  |
-|  |  |  |  |  |  |  |  | {"节点 |  |
-|  |  |  |  |  |  |  | id":"key1=value1 |  |  |
-|  |  |  |  |  |  |  | key2=value2"} |  |  |
+| BizEndTim e | Strin g | Body | 否 | 23:00:00 |   |   | 可选参数，小时调度任务需要，任务的结束时间 |   |   |
+| Parallelis m | Boole an | Body | 是 | false |   |   | 是否可以并发执行。 |   |   |
+| EndBizDat e | Strin g | Body | 是 | 2020-05-21 00:00:00 |   |   | 补数据的结束业务日期。 |   |   |
+| NodePara ms | Strin g | Body | 否 | {"171232":"dt=$bizdate tbods=$tbods"} |   |   | 可选参数，节点的参数。 标准格式为： {"节点 |   |   |
+|   |   |   |   |   |   |   |   | {"节点 |   |
+|   |   |   |   |   |   |   | id":"key1=value1 |   |   |
+|   |   |   |   |   |   |   | key2=value2"} |   |   |
 
 **返回数据**
 
@@ -13411,26 +13428,26 @@ http(s)://[Endpoint]/?Action=DeletePublicDomains
 http(s)://[Endpoint]/?Action=CreateDagComplement &EndBizDate=2020-05-21 00:00:00 &IncludeNodeIds=74324,74325 &Name=xm_test &Parallelism=false &ProjectEnv=PROD &RegionId=default &RootNodeId=1234 &StartBizDate=2020-05-20 00:00:00
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": 111,
     "ErrorCode": 0,
     "ErrorMessage": "test",
     "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>111</Data> <ErrorCode>0</ErrorCode> <ErrorMessage>test</ErrorMessage> <Success>true</Success>
 ```
 
-#### CreateDagTest
+#### 4.6.2 CreateDagTest
+
+调用CreateDagTest创建冒烟测试工作流。
 
 **请求参数**
 
@@ -13443,8 +13460,6 @@ http(s)://[Endpoint]/?Action=CreateDagComplement &EndBizDate=2020-05-21 00:00:00
 | ProjectEnv | String | 是 | PROD | 工作空间的环境，包括PROD（生产环境）和DEV（开发环境）。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 | NodeParams | String | 否 | bizdate=$bizdat e tbods=$tbods | 节点的参数。配置为一个JSON字符串，Key为节点 ID，Value为参数实际取值。 |
-
-DataWorks
 
 **返回数据**
 
@@ -13462,31 +13477,31 @@ DataWorks
 请求示例
 
 ```
-&Bizdate=2020-05-26 00:00:00 &Name=xm_create_test &NodeId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=CreateDagTest &Bizdate=2020-05-26 00:00:00 &Name=xm_create_test &NodeId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>3333333</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": 3333333,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
-#### CreateRemind
+#### 4.6.3 CreateRemind
+
+调用CreateRemind创建自定义报警规则。
 
 **请求头**
 
@@ -13503,8 +13518,6 @@ DataWorks
 | RemindUn it | Strin g | Body | 是 | NODE | 对象的类型，包括 NODE（任务节点）、 BASELINE（基线） 、 PROJECT（工作空间）和 BIZPROCESS（业务流程）。 |
 | NodeIds | Strin g | Body | 否 | 1,2,3 | RemindUnit（对象类型） 为NODE（任务节点）时， 监控的任务节点ID。多个ID 之间使用英文逗号（,）分隔，一个规则最多监控50个节点。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | BaselineId s | Strin g | Body | 否 | 1,2,3 | 当RemindUnit（对象类型）为BASELINE（基线） 时，监控的基线ID。多个ID 之间使用英文逗号（,）分隔，一个规则最多监控5条基线。 |
@@ -13514,14 +13527,10 @@ DataWorks
 | MaxAlertT imes | Integ er | Body | 否 | 2 | 最大报警次数。最小值为 1，最大值为10，默认值为 3。 |
 | AlertInterv al | Integ er | Body | 否 | 1800 | 最小报警间隔，单位为秒。 最小值为1200，默认值为 1800。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Detail | Strin g | Body | 否 | {"hour":23,"minu":59} | 不同触发条件的说明如下： 当RemindType（触发条件）为FINISHED（完成） 时，传空。 当 RemindType（触发条件） 为UNFINISHED（未完成） 时，传参格式为 {"hour":23,"minu":59}。 hour的取值范围为 0,47，minu的取值范围为 0,59。 当 RemindType（触发条件） 为ERROR（出错）时，传空。 当RemindType（触发条件）为 CYCLE UNFINISHED（周 _ 期未完成）时，传参格式为 {"1":"05:50","2":"06:50" ,"3":"07:50","4":"08:50", "5":"09:50","6":"10:50"," 7":"11:50","8":"12:50"," 9":"13:50","10":"14:50", "11":"15:50","12":"16:50 ","13":"17:50","14":"18: 50","15":"19:50","16":"2 0:50","17":"21:50","18": "22:50","19":"23:50","20 ":"24:50","21":"25:50"} 。JSON字符串key为周期号，取值范围为1,288。 value为该周期对应的未完成时间，格式为hh:mm。 hh的取值范围为0,47，mm 的取值范围为0,59。 当 RemindType（触发条件） 为TIMEOUT（运行超时） 时，传参格式为1800，单位为秒。即从开始运行起， 运行超过30分钟触发报警。 |
 | AlertUnit | Strin g | Body | 是 | OWNER | 报警接收对象的粒度，包括 OWNER（任务责任人）和 OTHER（指定的人）。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13540,28 +13549,24 @@ DataWorks
 | Success | Boolean | true | 调用是否成功。 |
 | ErrorCode | String | 1031203110005 | 错误码。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
-&RegionId=default &RemindName=test_error_remind &RemindUnit=NODE &RemindType=FINISHED &AlertUnit=OWNER &AlertMethods=SMS,MAIL
+http(s)://[Endpoint]/?Action=CreateRemind &RegionId=default &RemindName=test_error_remind &RemindUnit=NODE &RemindType=FINISHED &AlertUnit=OWNER &AlertMethods=SMS,MAIL
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": 1234,
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>1234</Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
@@ -13577,7 +13582,7 @@ DataWorks
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-| 开发指南·Open | API参考 |  | DataWork |
+| 开发指南·Open | API参考 |   | DataWork |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -13593,7 +13598,9 @@ DataWorks
 | 500 | Invalid.Wkbench.Ba selineNotExist | The baseline does not exist. | 基线不存在。 |
 | 500 | Forbidden.Wkbenc h.RemindOverlimit | The maximum number of reminders is exceeded. | 自定义提醒规则创建超限。 |
 
-#### DeleteRemind
+#### 4.6.4 DeleteRemind
+
+调用DeleteRemind删除自定义监控报警规则。
 
 **请求参数**
 
@@ -13608,8 +13615,6 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
 | Data | Boolean | true | 是否删除成功，包括true（删除成功）和 false（删除失败）。 |
 |---|---|---|---|
 | ErrorCode | String | 1031203110005 | 错误码。 |
@@ -13623,31 +13628,29 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &RemindId=1234
+http(s)://[Endpoint]/?Action=DeleteRemind &RegionId=default &RemindId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
 
-**错误码**
+`}`
 
-DataWorks
+**错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -13659,7 +13662,9 @@ DataWorks
 | 500 | Forbidden.Wkbenc h.RemindNoPermis sion | You are not authorized to modify the reminder. | 无权限修改该自定义提醒规则。 |
 | 500 | Invalid.Wkbench.Re mindNotExist | The reminder does not exist. | 自定义提醒规则不存在。 |
 
-#### GetBaselineConfig
+#### 4.6.5 GetBaselineConfig
+
+调用GetBaselineConfig获取配置详情。
 
 **请求参数**
 
@@ -13673,10 +13678,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 基线的详情。 |
+| Data | Struct |   | 基线的详情。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
-
-DataWorks
 
 | BaselineName | String | 基线名称 | 基线的名称。 |
 |---|---|---|---|
@@ -13689,8 +13692,6 @@ DataWorks
 | Owner | String | 9527952**** | 基线责任人的阿里云UID。有多个责任人时，使用英文逗号（,）分隔。 |
 | Priority | Integer | 1 | 基线的优先级，取值集合为{1,3,5,7,8}。 |
 | ProjectId | Long | 1234 | 工作空间的ID。 |
-
-DataWorks
 
 | SlaHour | Integer | 9 | 天基线的承诺小时，取值范围为0, 47。 |
 |---|---|---|---|
@@ -13707,10 +13708,10 @@ DataWorks
 请求示例
 
 ```
-&BaselineId=1234 &RegionId=default
+http(s)://[Endpoint]/?Action=GetBaselineConfig &BaselineId=1234 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>ecb967ec-c137-48a5-860****</RequestId> <HttpStatusCode>401</HttpStatusCode> <Data>
@@ -13733,10 +13734,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "ecb967ec-c137-48a5-860****",
     "HttpStatusCode": 401,
     "Data": {
@@ -13757,15 +13757,15 @@ DataWorks
         "BaselineType": "DAILY",
 ```
 
-`"BaselineName": "`基线名称"
+`"BaselineName": "`基线名称`"` `},`
 
 ```json
-    },
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -13777,8 +13777,6 @@ DataWorks
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.Wkbe nch.ServiceError | An internal error occurred. | 服务开小差了。 |
 
-DataWorks
-
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 |---|---|---|---|
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
@@ -13788,7 +13786,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetBaselineKeyPath
+#### 4.6.6 GetBaselineKeyPath
+
+调用GetBaselineKeyPath获取基线实例的关键路径。
 
 **请求参数**
 
@@ -13805,9 +13805,7 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
-| Data | Array of Data |  | 关键路径信息。 |
+| Data | Array of Data |   | 关键路径信息。 |
 |---|---|---|---|
 | Bizdate | Long | 1553443200000 | 实例的业务日期时间戳。 |
 | InGroupId | Integer | 1 | 实例周期号，取值范围为1,288。 |
@@ -13817,7 +13815,7 @@ DataWorks
 | Owner | String | 9527952**** | 节点责任人的阿里云UID。 |
 | PrgType | Integer | 10 | 节点类型，常用的节点类型包括数据集成 （23）、MaxCompute SQL（10）、 Shell（6）和虚节点（99）。 |
 | ProjectId | Long | 1234 | 节点所在工作空间的ID。 |
-| Runs | Array of Runs |  | 实例的运行记录。 |
+| Runs | Array of Runs |   | 实例的运行记录。 |
 | AbsTime | Long | 1553531402000 | 实例的预计开始运行时间+历史平均运行时长得到的时间戳。 |
 | BeginCast | Long | 1553531686000 | 实例预计开始运行的时间戳。 |
 | BeginRunning Time | Long | 1553531401000 | 实例实际开始运行的时间戳。 |
@@ -13826,8 +13824,6 @@ DataWorks
 | Bizdate | Long | 1553443200000 | 实例的业务日期时间戳。 |
 | CycTime | Long | 1553443200000 | 实例的定时时间戳。 |
 | EndCast | Long | 1553531687000 | 实例的预计运行结束时间戳。 |
-
-DataWorks
 
 | FinishTime | Long | 1553531401000 | 实例的实际运行结束时间戳。 |
 |---|---|---|---|
@@ -13838,7 +13834,7 @@ DataWorks
 | Owner | String | 9527952**** | 节点责任人的阿里云UID。 |
 | ProjectId | Long | 1234 | 节点所在工作空间的ID。 |
 | Status | String | SUCCESS | 实例的状态，包括NOT RUN（未运行）、 _ WAIT TIME（等待时间）、 _ WAIT RESOURCE（等待资源）、 _ RUNNING（运行中）、CHECKING（校检中）、CHECKING CONDITION（条件检测 _ 中）、FAILURE（运行失败）和SUCCESS（运行成功）。 |
-| Topics | Array of Topics |  | 实例关联的事件信息。 |
+| Topics | Array of Topics |   | 实例关联的事件信息。 |
 | AddTime | Long | 1553531401000 | 事件发现时间戳。 |
 | InstanceId | Long | 1234 | 实例的ID。 |
 | TopicId | Long | 1234 | 事件的ID。 |
@@ -13847,8 +13843,6 @@ DataWorks
 | ErrorMessage | String | The specified parameters are invalid. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP返回码。 |
 | RequestId | String | 0000-ABCD- EFG**** | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
-
-DataWorks
 
 | Success | Boolean | true | 调用是否成功。 |
 |---|---|---|---|
@@ -13861,7 +13855,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetBaselineKeyPath &BaselineId=1234 &Bizdate=2020-07-07T00:00:00+0800 &InGroupId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -13908,10 +13902,9 @@ http(s)://[Endpoint]/?Action=GetBaselineKeyPath &BaselineId=1234 &Bizdate=2020-0
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -13948,27 +13941,33 @@ http(s)://[Endpoint]/?Action=GetBaselineKeyPath &BaselineId=1234 &Bizdate=2020-0
             "NodeId": 1234,
             "BeginWaitResTime": 1553531401000,
             "EndCast": 1553531687000
-        },
+```
+
+`},`
+
+```json
         "Topics": {
             "InstanceId": 1234,
             "TopicId": 1234,
             "AddTime": 1553531401000,
             "TopicName": 1234
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
-
-DataWorks
 
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
@@ -13983,7 +13982,9 @@ DataWorks
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | Invalid.Wkbench.Ba selineStatusNotExis t | The BaselineStatus does not exist. | 基线实例不存在。 |
 
-#### GetBaselineStatus
+#### 4.6.7 GetBaselineStatus
+
+调用GetBaselineStatus获取基线实例的详情。
 
 **请求参数**
 
@@ -13993,8 +13994,6 @@ DataWorks
 | BaselineId | Long | 是 | 1234 | 基线的ID。 |
 | Bizdate | String | 是 | 2020-07- 07T00:00:00+0 800 | 业务日期，需要使用UTC格式（yyyy- MM-dd'T'HH:mm:ssZ）。 |
 
-DataWorks
-
 | InGroupId | Integer | 是 | 1 | 基线实例的周期号。天基线为1，小时基线的取值范围为1,24。 |
 |---|---|---|---|---|
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
@@ -14003,11 +14002,11 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 基线实例的详情。 |
+| Data | Struct |   | 基线实例的详情。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
 | BaselineName | String | 基线名称 | 基线的名称。 |
 | Bizdate | Long | 1553443200000 | 业务日期时间戳。 |
-| BlockInstance | Struct |  | 关键实例信息。 |
+| BlockInstance | Struct |   | 关键实例信息。 |
 | EndCast | Long | 1553443200000 | 实例的预计完成时间戳。 |
 | FinishTime | Long | 1553443200000 | 实例的实际完成时间戳。 |
 | InstanceId | Long | 12345 | 实例的ID。 |
@@ -14018,15 +14017,13 @@ DataWorks
 | Status | String | SUCCESS | 实例的状态，包括NOT RUN（未运行）、 _ WAIT TIME（等待时间）、 _ WAIT RESOURCE（等待资源）、 _ RUNNING（运行中）、CHECKING（校检中）、CHECKING CONDITION（条件检测 _ 中）、FAILURE（运行失败）和SUCCESS（运行成功）。 |
 | Buffer | Float | 1200 | 基线实例的余量，单位为秒。 |
 
-DataWorks
-
 | EndCast | Long | 1553443200000 | 基线实例的预计产出时间戳。 |
 |---|---|---|---|
 | ExpTime | Long | 1553443200000 | 基线实例的预警时间戳。 |
 | FinishStatus | String | UNFINISH | 基线实例是否完成，包括UNFINISH（未完成） 和FINISH（已完成）。 |
 | FinishTime | Long | 1553443200000 | 当FinishStatus（基线实例完成状态）为 FINISH（已完成）时，返回基线实例的完成时间戳。 |
 | InGroupId | Integer | 1 | 基线实例的周期号。天基线为1，小时基线的取值范围为1,24。 |
-| LastInstance | Struct |  | 最晚实例信息。 |
+| LastInstance | Struct |   | 最晚实例信息。 |
 | EndCast | Long | 1553443200000 | 实例的预计完成时间戳。 |
 | FinishTime | Long | 1553443200000 | 实例的实际完成时间戳。 |
 | InstanceId | Long | 12345 | 实例的ID。 |
@@ -14037,8 +14034,6 @@ DataWorks
 | Status | String | SUCCESS | 实例的状态，包括NOT RUN（未运行）、 _ WAIT TIME（等待时间）、 _ WAIT RESOURCE（等待资源）、 _ RUNNING（运行中）、CHECKING（校检中）、CHECKING CONDITION（条件检测 _ 中）、FAILURE（运行失败）和SUCCESS（运行成功）。 |
 | Owner | String | 9527952795**** | 基线责任人的阿里云UID。多个责任人之间使用英文逗号（,）分隔。 |
 | Priority | Integer | 1 | 基线的优先级，取值范围为{1,2,5,7,8}。 |
-
-DataWorks
 
 | ProjectId | Long | 1234 | 基线所在工作空间的ID。 |
 |---|---|---|---|
@@ -14055,10 +14050,10 @@ DataWorks
 请求示例
 
 ```
-&BaselineId=1234 &Bizdate=2020-07-07T00:00:00+0800 &InGroupId=1 &RegionId=default
+http(s)://[Endpoint]/?Action=GetBaselineStatus &BaselineId=1234 &Bizdate=2020-07-07T00:00:00+0800 &InGroupId=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -14107,10 +14102,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -14145,7 +14139,11 @@ DataWorks
             "NodeId": 12345,
             "ProjectId": 12345,
             "EndCast": 1553443200000
-        },
+```
+
+`},`
+
+```json
         "BlockInstance": {
             "Status": "SUCCESS",
             "Owner": "9527952795****",
@@ -14159,21 +14157,23 @@ DataWorks
             "NodeId": 1234,
             "ProjectId": 1234,
             "EndCast": 1553443200000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
-
-DataWorks
 
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
@@ -14185,7 +14185,7 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetDag
+#### 4.6.8 GetDag
 
 调用GetDag，根据DagId获取Dag详情。GetDag支持查询手动业务流程、手动任务、补数据的Dag详情信息，不支持查询日常调度Dag详情。
 
@@ -14200,11 +14200,9 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | Dag的详情信息。 |
+| Data | Struct |   | Dag的详情信息。 |
 | Bizdate | Long | 1605052800000 | 业务日期。 |
 | CreateTime | Long | 1605052800000 | 创建时间。 |
 | CreateUser | String | 173662940004854 5 | 创建人。 |
@@ -14221,8 +14219,6 @@ DataWorks
 | ErrorMessage | String | Invalid.Tenant.Con nectionNotExists | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 
-DataWorks
-
 | RequestId | String | 7782a299-b291- 4fee-8424- cf8058ef**** | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | false | 调用是否成功。 |
@@ -14232,10 +14228,10 @@ DataWorks
 请求示例
 
 ```
-&DagId=123141452341111 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetDag &DagId=123141452341111 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7782a299-b291-4fee-8424-cf8058ef****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -14260,9 +14256,9 @@ DataWorks
 {"RequestId":"7782a299-b291-4fee-8424-cf8058ef****","HttpStatusCode":"200","Data":{"Gmt date":"1605052800000","Status":"FAILURE","ModifyTime":"1605052800000","Type":"MANUAL","Fi shTime":"1605052800000","CreateTime":"1605052800000","StartTime":"1605052800000","Project ":"10001","CreateUser":"1736629400048545","DagId":"12345678","Bizdate":"1605052800000","N e":"dag_test"},"ErrorCode":"200","ErrorMessage":"Invalid.Tenant.ConnectionNotExists","Suc ss":"false"}
 ```
 
-#### GetInstance
+#### 4.6.9 GetInstance
 
-DataWorks
+调用GetInstance接口，获取实例的详细信息。
 
 **请求参数**
 
@@ -14277,7 +14273,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 实例的详细信息。 |
+| Data | Struct |   | 实例的详细信息。 |
 | BaselineId | Long | 123123 | 基线ID。 |
 | BeginRunning Time | Long | 1590416703313 | 实例任务开始运行的时间。 |
 | BeginWaitRes Time | Long | 1590416703313 | 实例任务开始等待资源的时间。 |
@@ -14287,8 +14283,6 @@ DataWorks
 | CreateTime | Long | 1590416703313 | 实例的创建时间。 |
 | CycTime | Long | 1590422400000 | 实例任务的定时时间。 |
 | DagId | Long | 338450167 | 工作流的ID。 |
-
-DataWorks
 
 | DagType | String | DAILY | 工作流的类型，取值如下： DAILY（日常调度） MANUAL（手动任务） SMOKE TEST（冒烟测试） _ SUPPLY DATA（补数据） _ |
 |---|---|---|---|
@@ -14306,8 +14300,6 @@ DataWorks
 | RepeatInterval | Long | 60000 | 调度任务运行出错后，重新调整调度频率，单位为毫秒（ms）。 |
 | Repeatability | Boolean | true | 实例任务是否可以重复执行。 |
 
-DataWorks
-
 | Status | String | NOT RUN _ | 任务的状态，取值如下： NOT RUN（未运行） _ WAIT TIME（等待定时时间dueTime或 _ cycleTime到来） WAIT RESOURCE（等待资源） _ RUNNING（运行中） CHECKING（下发给数据质量进行数据校检） CHECKING CONDITION（正在进行分支条 _ 件校检） FAILURE（执行失败） SUCCESS（执行成功） |
 |---|---|---|---|
 | ErrorCode | String | 0 | 错误码。 |
@@ -14321,10 +14313,10 @@ DataWorks
 请求示例
 
 ```
-&InstanceId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetInstance &InstanceId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -14357,10 +14349,9 @@ tbptcif=$tbptcif</ParamValues>
 </Data> <ErrorCode>0</ErrorCode> <ErrorMessage>test</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": {
@@ -14390,14 +14381,21 @@ tbpidx=$tbpidx tbptcif=$tbptcif",
         "BeginWaitResTime": 1590416703313,
         "ErrorMessage": "test",
         "RepeatInterval": 60000
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 0,
     "ErrorMessage": "test",
     "Success": true
-}
 ```
 
-#### GetInstanceConsumeTimeRank
+`}`
+
+#### 4.6.10 GetInstanceConsumeTimeRank
+
+调用GetInstanceConsumeTimeRank获取实例运行时长排行。
 
 **请求参数**
 
@@ -14405,8 +14403,6 @@ tbpidx=$tbpidx tbptcif=$tbptcif",
 |---|---|---|---|---|
 | Action | String | 是 | GetInstanceCon sumeTimeRank | 系统规定参数。取值： GetInstanceConsumeTimeRank。 |
 | Bizdate | String | 是 | 2020-09- 21T00:00:00+0 800 | 业务日期，精确到天。您需要使用yyyy- MM-dd'T'HH:mm:ssZ的UTC格式。 |
-
-DataWorks
 
 | ProjectId | Long | 是 | 10001 | DataWorks工作空间ID。 |
 |---|---|---|---|---|
@@ -14416,8 +14412,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceConsu meTimeRank | Struct |  | 实例运行时长的排行记录。 |
-| ConsumeTime Rank | Array of ConsumeTime Rank |  | 实例运行时长的排行数据。 |
+| InstanceConsu meTimeRank | Struct |   | 实例运行时长的排行记录。 |
+| ConsumeTime Rank | Array of ConsumeTime Rank |   | 实例运行时长的排行数据。 |
 | Bizdate | Long | 1600963200000 | 实例运行的业务日期。 |
 | Consumed | Long | 1000 | 实例运行时长，单位为s。 |
 | InstanceId | Long | 95279527 | 实例ID。 |
@@ -14436,9 +14432,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetInstanceConsumeTimeRank &Bizdate=2020-09-21T00:00:00+0800 &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
-|  | <RequestId>0000-ABCD-EFG*****</RequestId> <InstanceConsumeTimeRank> <UpdateTime>1600963200000</UpdateTime> <ConsumeTimeRank> <PrgType>10</PrgType> <Owner>952795279527</Owner> <InstanceId>95279527</InstanceId> <NodeName>节点的名称</NodeName> <NodeId>9527</NodeId> <Consumed>1000</Consumed> <Bizdate>1600963200000</Bizdate> </ConsumeTimeRank> </InstanceConsumeTimeRank> |
+|   | <RequestId>0000-ABCD-EFG*****</RequestId> <InstanceConsumeTimeRank> <UpdateTime>1600963200000</UpdateTime> <ConsumeTimeRank> <PrgType>10</PrgType> <Owner>952795279527</Owner> <InstanceId>95279527</InstanceId> <NodeName>节点的名称</NodeName> <NodeId>9527</NodeId> <Consumed>1000</Consumed> <Bizdate>1600963200000</Bizdate> </ConsumeTimeRank> </InstanceConsumeTimeRank> |
 |---|---|
 
 `JSON` 格式
@@ -14461,14 +14457,14 @@ http(s)://[Endpoint]/?Action=GetInstanceConsumeTimeRank &Bizdate=2020-09-21T00:0
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 |---|---|---|---|
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetInstanceCountTrend
+#### 4.6.11 GetInstanceCountTrend
+
+调用GetInstanceCountTrend获取周期实例数量的趋势。
 
 **请求参数**
 
@@ -14484,14 +14480,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceCount s | Array of IntanceCounts |  | 实例数量趋势数据。 |
+| InstanceCount s | Array of IntanceCounts |   | 实例数量趋势数据。 |
 | Count | Integer | 9527 | 实例的数量。 |
 | Date | Long | 1600963200000 | 业务日期对应的时间戳。 |
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
-
-DataWorks
-
-**示例**
 
 请求示例
 
@@ -14499,7 +14491,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetInstanceCountTrend &BeginDate=2020-04-02T00:00:00+0800 &EndDate=2020-09-10T00:00:00+0800 &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <InstanceCounts>
@@ -14526,8 +14518,6 @@ http(s)://[Endpoint]/?Action=GetInstanceCountTrend &BeginDate=2020-04-02T00:00:0
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 
-DataWorks
-
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 |---|---|---|---|
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
@@ -14535,7 +14525,9 @@ DataWorks
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetInstanceErrorRank
+#### 4.6.12 GetInstanceErrorRank
+
+调用GetInstanceErrorRank获取近一个月节点的出错排行。
 
 **请求参数**
 
@@ -14549,14 +14541,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceErrorR ank | Struct |  | 节点出错的排行数据。 |
-| ErrorRank | Array of ErrorRank |  | 节点近一个月出错排行数据。 |
+| InstanceErrorR ank | Struct |   | 节点出错的排行数据。 |
+| ErrorRank | Array of ErrorRank |   | 节点近一个月出错排行数据。 |
 | Count | Integer | 3 | 节点出错的次数。 |
 | NodeId | Long | 9527 | 节点的ID。 |
 | NodeName | String | 节点的名称 | 节点的名称。 |
 | Owner | String | 952795279527 | 节点责任人的阿里云UID。 |
-
-DataWorks
 
 | PrgType | Integer | 10 | 节点任务的类型。 |
 |---|---|---|---|
@@ -14572,7 +14562,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetInstanceErrorRank &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>952795279527****</RequestId> <InstanceErrorRank>
@@ -14604,8 +14594,6 @@ http(s)://[Endpoint]/?Action=GetInstanceErrorRank &ProjectId=10001 &RegionId=def
 |---|---|---|---|
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 
-DataWorks
-
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
@@ -14619,7 +14607,9 @@ DataWorks
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetInstanceLog
+#### 4.6.13 GetInstanceLog
+
+调用GetInstanceLog获取实例的日志。
 
 **请求参数**
 
@@ -14628,8 +14618,6 @@ DataWorks
 | Action | String | 是 | GetInstanceLog | 系统规定参数。取值： GetInstanceLog。 |
 | InstanceId | Long | 是 | 12345 | 实例的ID。 |
 | ProjectEnv | String | 是 | PROD | 工作空间的环境，包括PROD和DEV。 |
-
-DataWorks
 
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 |---|---|---|---|---|
@@ -14650,10 +14638,10 @@ DataWorks
 请求示例
 
 ```
-&InstanceId=12345 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetInstanceLog &InstanceId=12345 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>log_content</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>false</Success>
@@ -14665,9 +14653,9 @@ DataWorks
 {"RequestId":"0000-ABCD- EFG*****","HttpStatusCode":"200","Data":"log_content","ErrorCode":"Invalid.Tenant.Connect nNotExists","ErrorMessage":"The connection does not exist.","Success":"false"}
 ```
 
-#### GetInstanceStatusStatistic
+#### 4.6.14 GetInstanceStatusStatistic
 
-DataWorks 调用GetInstanceStatusStatistic获取实例任务不同运行状态的数量统计。
+调用GetInstanceStatusStatistic获取实例任务不同运行状态的数量统计。
 
 **请求参数**
 
@@ -14684,7 +14672,7 @@ DataWorks 调用GetInstanceStatusStatistic获取实例任务不同运行状态�
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 0000-ABCD- EFG**** | 请求ID，用于定位日志，排查问题。 |
-| StatusCount | Struct |  | 实例状态的数量统计。 |
+| StatusCount | Struct |   | 实例状态的数量统计。 |
 | FailureCount | Integer | 1 | 运行失败的实例数量。 |
 | NotRunCount | Integer | 1 | 未运行的实例数量。 |
 | RunningCount | Integer | 1 | 运行中的实例数量。 |
@@ -14693,15 +14681,13 @@ DataWorks 调用GetInstanceStatusStatistic获取实例任务不同运行状态�
 | WaitResCount | Integer | 1 | 等待资源的实例数量。 |
 | WaitTimeCoun t | Integer | 1 | 等待运行的实例数量。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetInstanceStatusStatistic &BizDate=2020-01-01 &ProjectEnv=PROD &ProjectId=1234 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <StatusCount>
@@ -14715,10 +14701,9 @@ http(s)://[Endpoint]/?Action=GetInstanceStatusStatistic &BizDate=2020-01-01 &Pro
 </StatusCount> <RequestId>0000-ABCD-EFG****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "StatusCount": {
         "TotalCount": 1,
         "FailureCount": 1,
@@ -14727,12 +14712,19 @@ http(s)://[Endpoint]/?Action=GetInstanceStatusStatistic &BizDate=2020-01-01 &Pro
         "SuccessCount": 1,
         "NotRunCount": 1,
         "WaitTimeCount": 1
-    },
-    "RequestId": "0000-ABCD-EFG****"
-}
 ```
 
-#### GetNode
+`},`
+
+```json
+    "RequestId": "0000-ABCD-EFG****"
+```
+
+`}`
+
+#### 4.6.15 GetNode
+
+调用GetNode获取节点的详情。
 
 **请求参数**
 
@@ -14740,8 +14732,6 @@ http(s)://[Endpoint]/?Action=GetInstanceStatusStatistic &BizDate=2020-01-01 &Pro
 |---|---|---|---|---|
 | Action | String | 是 | GetNode | 系统规定参数。取值：GetNode。 |
 | NodeId | Long | 是 | 1234 | 节点的ID。 |
-
-DataWorks
 
 | ProjectEnv | String | 是 | PROD | 工作空间的环境，包括PROD和DEV。 |
 |---|---|---|---|---|
@@ -14751,7 +14741,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 节点的详情。 |
+| Data | Struct |   | 节点的详情。 |
 | BaselineId | Long | 123456 | 基线ID |
 | Connection | String | odps first dev _ _ | 连接串 |
 | CronExpress | String | 00 00 00 * * ? | cron表达式。 |
@@ -14763,8 +14753,6 @@ DataWorks
 | OwnerId | String | 17366294**** | 负责人的ID。 |
 | ParamValues | String | a=b | 额外的参数。 |
 | Priority | Integer | 1 | 任务优先级，1/3/5/7/8 |
-
-DataWorks
 
 | ProgramType | String | ODPS SQL _ | 节点的类型。 |
 |---|---|---|---|
@@ -14785,10 +14773,10 @@ DataWorks
 请求示例
 
 ```
-&NodeId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetNode &NodeId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -14814,10 +14802,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": {
@@ -14844,14 +14831,21 @@ DataWorks
         "NodeId": 1234,
         "ProgramType": "ODPS_SQL",
         "RepeatInterval": 60
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### GetNodeCode
+`}`
+
+#### 4.6.16 GetNodeCode
+
+调用GetNodeCode获取节点的代码。
 
 **请求参数**
 
@@ -14863,8 +14857,6 @@ DataWorks
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
 **返回数据**
-
-DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -14880,10 +14872,10 @@ DataWorks
 请求示例
 
 ```
-&NodeId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetNodeCode &NodeId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>select a;</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>false</Success>
@@ -14895,11 +14887,11 @@ DataWorks
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data":"select a;","ErrorCode":"Invalid.Tenant.ConnectionNotExists","ErrorMessage":"The connection doe s not exist.","Success":"false"}
 ```
 
-#### GetNodeOnBaseline
+#### 4.6.17 GetNodeOnBaseline
+
+调用GetNodeOnBaseline获取基线上的节点。
 
 **请求参数**
-
-DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -14911,7 +14903,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of Data |  | 节点的列表 |
+| Data | Array of Data |   | 节点的列表 |
 | NodeId | Long | 1234 | 节点的ID。 |
 | NodeName | String | 节点名称 | 节点的名称。 |
 | Owner | String | 9527952**** | 节点责任人的阿里云UID。 |
@@ -14927,10 +14919,10 @@ DataWorks
 请求示例
 
 ```
-&BaselineId=1234 &RegionId=default
+http(s)://[Endpoint]/?Action=GetNodeOnBaseline &BaselineId=1234 &RegionId=default
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -14945,10 +14937,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-E****",
     "HttpStatusCode": 200,
     "Data": {
@@ -14960,12 +14951,17 @@ DataWorks
 ```json
         "ProjectId": 1234,
         "NodeId": 1234
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -14976,8 +14972,6 @@ DataWorks
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
-
-DataWorks
 
 | 500 | InternalError.Wkbe nch.ServiceError | An internal error occurred. | 服务开小差了。 |
 |---|---|---|---|
@@ -14990,7 +14984,9 @@ DataWorks
 | 500 | Invalid.Wkbench.Ba selineNotExist | The baseline does not exist. | 基线不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetNodeChildren
+#### 4.6.18 GetNodeChildren
+
+调用GetNodeChildren获取节点下游列表。
 
 **请求参数**
 
@@ -15006,11 +15002,9 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
-| Data | Struct |  | 返回的节点信息列表。 |
+| Data | Struct |   | 返回的节点信息列表。 |
 |---|---|---|---|
-| Nodes | Array of Nodes |  | 节点列表。 |
+| Nodes | Array of Nodes |   | 节点列表。 |
 | BaselineId | Long | 12345656 | 基线ID。 |
 | CronExpress | String | 00 00 * * * * | 定时表达式。用于定时调度执行节点任务。 |
 | NodeId | Long | 1244564565 | 节点ID。 |
@@ -15026,8 +15020,6 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP返回码。 |
 | RequestId | String | 本次调用的唯一ID。 出现错误后，您可以根据该ID排查问题。 | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 
-DataWorks
-
 | Success | Boolean | true | 调用是否成功。 |
 |---|---|---|---|
 
@@ -15036,10 +15028,10 @@ DataWorks
 请求示例
 
 ```
-&NodeId=123456878 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetNodeChildren &NodeId=123456878 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 `<RequestId>`本次调用的唯一`ID`。出现错误后，您可以根据该`ID`排查问题。`</RequestId>`
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式 `<RequestId>`本次调用的唯一`ID`。出现错误后，您可以根据该`ID`排查问题。`</RequestId>`
 
 ```xml
 <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -15062,13 +15054,7 @@ DataWorks
 </Data> <ErrorCode>1060010000000</ErrorCode> <ErrorMessage>err</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
-
-```
-{
-```
-
-`"RequestId": "`本次调用的唯一`ID`。出现错误后，您可以根据该`ID`排查问题。`",`
+`JSON` 格式 `{` `"RequestId": "`本次调用的唯一`ID`。出现错误后，您可以根据该`ID`排查问题。`",`
 
 ```json
     "HttpStatusCode": 200,
@@ -15088,15 +15074,21 @@ DataWorks
             "ProgramType": "ODPS_SQL",
             "SchedulerType": "NORMAL",
             "CronExpress": "00 00 * * * *"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1060010000000,
     "ErrorMessage": "err",
     "Success": true
-}
 ```
 
-#### GetNodeParents
+`}`
+
+#### 4.6.19 GetNodeParents
+
+调用GetNodeParents获取节点上游列表。
 
 **请求参数**
 
@@ -15111,10 +15103,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回的节点信息列表。 |
-| Nodes | Array of Nodes |  | 节点列表。 |
+| Data | Struct |   | 返回的节点信息列表。 |
+| Nodes | Array of Nodes |   | 节点列表。 |
 
-| 开发指南·OpenAPI参 | 考 |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   | DataWork |
 |---|---|---|---|
 
 | BaselineId | Long | 1244564565 | 基线ID。 |
@@ -15134,17 +15126,13 @@ DataWorks
 | RequestId | String | 错误信息。 | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
 
-DataWorks
-
-**示例**
-
 请求示例
 
 ```
-&NodeId=12345456211234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=GetNodeParents &NodeId=12345456211234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 `<RequestId>`错误信息。`</RequestId>`
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式 `<RequestId>`错误信息。`</RequestId>`
 
 ```xml
 <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -15167,13 +15155,7 @@ DataWorks
 </Data> <ErrorCode>1060010000000</ErrorCode> <ErrorMessage>err</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
-
-```
-{
-```
-
-`"RequestId": "`错误信息。`",`
+`JSON` 格式 `{` `"RequestId": "`错误信息。`",`
 
 ```json
     "HttpStatusCode": 200,
@@ -15190,18 +15172,19 @@ DataWorks
             "SchedulerType": "NORMAL",
 ```
 
-`"CronExpress": "`定时表达式。用于定时调度执行节点任务。"
+`"CronExpress": "`定时表达式。用于定时调度执行节点任务。`"` `}` `},`
 
 ```json
-        }
-    },
     "ErrorCode": 1060010000000,
     "ErrorMessage": "err",
     "Success": true
-}
 ```
 
-#### GetRemind
+`}`
+
+#### 4.6.20 GetRemind
+
+调用GetRemind获取自定义监控报警规则的详情。
 
 **请求参数**
 
@@ -15215,24 +15198,22 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 自定义监控规则的详情。 |
+| Data | Struct |   | 自定义监控规则的详情。 |
 | AlertInterval | Integer | 1800 | 最小报警间隔，单位为秒。 |
 | AlertMethods | List | SMS,MAIL | 报警的方式，包括MAIL（邮件）、SMS（短信）和PHONE（电话，仅DataWorks专业版及以上版本支持）。多个报警方式之间使用英文逗号（,）分隔。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | AlertTargets | List | 952795279527952 7 | 当AlertUnit（报警接收人）为OWNER（节点任务责任人）时，返回空。 当AlertUnit（报警接收人）为OTHER（指定的人）时，返回指定用户的阿里云UID。多个阿里云UID之间使用英文逗号（,）分隔。 |
 |---|---|---|---|
 | AlertUnit | String | OWNER | 报警接收对象的粒度，包括OWNER（任务责任人）和OTHER（指定的人）。 |
-| Baselines | Array of Baselines |  | 当RemindUnit（对象类型）为BASELINE（基线）时，该规则监控的基线列表。 |
+| Baselines | Array of Baselines |   | 当RemindUnit（对象类型）为BASELINE（基线）时，该规则监控的基线列表。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
 | BaselineName | String | 基线名称 | 基线的名称。 |
-| BizProcesses | Array of BizProcesses |  | 当RemindUnit（对象类型）为 BIZPROCESS（业务流程）时，该规则监控的业务流程列表。 |
+| BizProcesses | Array of BizProcesses |   | 当RemindUnit（对象类型）为 BIZPROCESS（业务流程）时，该规则监控的业务流程列表。 |
 | BizId | Long | 9527 | 业务流程ID |
 | BizProcessNa me | String | 业务流程名称 | 业务流程名称 |
-
-DataWorks
 
 | Detail | String | {"hour":23,"minu": 59} | 当RemindType（触发条件）为 FINISHED（完成）时，返回空。 当RemindType（触发条件）为 UNFINISHED（未完成）时，返回格式为 {"hour":23,"minu":59}。hour的取值范围为0,47，minu的取值范围为0,59。 当RemindType（触发条件）为ERROR（出错）时，返回空。 当RemindType（触发条件）为 CYCLE UNFINISHED（周期未完成）时，返 _ 回格式为 {"1":"05:50","2":"06:50","3":"07:50","4": "08:50","5":"09:50","6":"10:50","7":"11: 50","8":"12:50","9":"13:50","10":"14:50" ,"11":"15:50","12":"16:50","13":"17:50", "14":"18:50","15":"19:50","16":"20:50"," 17":"21:50","18":"22:50","19":"23:50"," 20":"24:50","21":"25:50"}。JSON字符串 key为周期号，取值范围为1,288。value为该周期对应的未完成时间，格式为hh:mm。 hh的取值范围为0,47，mm的取值范围为0,59。 当RemindType（触发条件）为 TIMEOUT（运行超时）时，返回格式为 1800，单位为秒。即从开始运行起，运行超过30分钟触发报警。 |
 |---|---|---|---|
@@ -15240,22 +15221,20 @@ DataWorks
 | DndStart | String | 00:00 | 免打扰起始时间，格式为hh:mm。hh的取值范围为0,23，mm的取值范围为0,59。 |
 | Founder | String | 9527951795**** | 自定义监控规则创建人的阿里云UID。 |
 | MaxAlertTimes | Integer | 3 | 最大报警次数。 |
-| Nodes | Array of Nodes |  | 当RemindUnit（对象类型）为NODE（任务节点）时，该规则监控的节点列表。 |
+| Nodes | Array of Nodes |   | 当RemindUnit（对象类型）为NODE（任务节点）时，该规则监控的节点列表。 |
 | NodeId | Long | 1234 | 节点的ID。 |
 | NodeName | String | 节点名称 | 节点的名称。 |
 | Owner | String | 9527951795**** | 节点责任人的阿里云UID。 |
 | ProjectId | Long | 1234 | 节点所在工作空间的ID。 |
 
-DataWorks
-
-| Projects | Array of Projects |  | 当RemindUnit（对象类型）为PROJECT（工作空间）时，该规则监控的工作空间列表。 |
+| Projects | Array of Projects |   | 当RemindUnit（对象类型）为PROJECT（工作空间）时，该规则监控的工作空间列表。 |
 |---|---|---|---|
 | ProjectId | Long | 1234 | 工作空间的ID。 |
 | RemindId | Long | 1234 | 自定义监控规则的ID。 |
 | RemindName | String | 规则名称 | 规则的名称。 |
 | RemindType | String | 规则名称 | 触发条件，包括FINISHED（完成）、 UNFINISHED（未完成）、ERROR（出错）、 CYCLE UNFINISHED（周期未完成）和 _ TIMEOUT（运行超时）。 |
 | RemindUnit | String | NODE | 对象的类型，包括NODE（任务节点）、 BASELINE（基线）、PROJECT（工作空间）和 BIZPROCESS（业务流程）。 |
-| Robots | Array of Robots |  | 钉钉群机器人的webhook地址列表。 |
+| Robots | Array of Robots |   | 钉钉群机器人的webhook地址列表。 |
 | AtAll | Boolean | true | 是否@所有人，包括true（是）和false（否）。 |
 | WebUrl | String | https://oapi.dingtal k.com/robot/send? access token=**** _ ******************* ******* | 钉钉群机器人的webhook地址。 |
 | Useflag | Boolean | true | 自定义监控规则是否开启，包括true（开启）和 false（关闭）。 |
@@ -15265,15 +15244,13 @@ DataWorks
 | RequestId | String | 0000-ABCD-EFGH- IJKLMNOPQ | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
-&RegionId=default &RemindId=1234
+http(s)://[Endpoint]/?Action=GetRemind &RegionId=default &RemindId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFGH-IJKLMNOPQ</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -15324,10 +15301,9 @@ access_token=******************************</WebUrl>
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFGH-IJKLMNOPQ",
     "HttpStatusCode": 200,
     "Data": {
@@ -15353,7 +15329,11 @@ DataWorks `JSON` 格式
 ```json
         "Projects": {
             "ProjectId": 1234
-        },
+```
+
+`},`
+
+```json
         "BizProcesses": {
 ```
 
@@ -15361,12 +15341,20 @@ DataWorks `JSON` 格式
 
 ```json
             "BizId": 9527
-        },
+```
+
+`},`
+
+```json
         "Robots": {
             "AtAll": true,
             "WebUrl": "https://oapi.dingtalk.com/robot/send?
 access_token=******************************"
-        },
+```
+
+`},`
+
+```json
         "Nodes": {
             "Owner": "9527951795****",
 ```
@@ -15376,30 +15364,36 @@ access_token=******************************"
 ```json
             "ProjectId": 1234,
             "NodeId": 1234
-        },
+```
+
+`},`
+
+```json
         "Baselines": {
             "BaselineId": 1234,
 ```
 
-`"BaselineName": "`基线名称"
+`"BaselineName": "`基线名称`"` `},`
 
 ```json
-        },
         "AlertMethods": "SMS,MAIL",
         "AlertTargets": 9527952795279528
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-DataWorks
 
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
@@ -15412,7 +15406,9 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetSuccessInstanceTrend
+#### 4.6.21 GetSuccessInstanceTrend
+
+调用GetSuccessInstanceTrend获取当天任务分时段的统计趋势。
 
 **请求参数**
 
@@ -15426,18 +15422,16 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceStatus Trend | Struct |  | 分时段实例状态的统计趋势。 |
+| InstanceStatus Trend | Struct |   | 分时段实例状态的统计趋势。 |
 
-DataWorks
-
-| AvgTrend | Array of AvgTrend |  | 历史平均趋势。 |
+| AvgTrend | Array of AvgTrend |   | 历史平均趋势。 |
 |---|---|---|---|
 | Count | Integer | 10 | 实例的数量。 |
 | TimePoint | String | 01:00 | 时间点，分别为00:00～23:00。 |
-| TodayTrend | Array of TodayTrend |  | 今日趋势。 |
+| TodayTrend | Array of TodayTrend |   | 今日趋势。 |
 | Count | Integer | 10 | 实例的数量。 |
 | TimePoint | String | 01:00 | 时间点，分别为00:00～23:00。 |
-| YesterdayTren d | Array of YesterdayTren d |  | 昨日的趋势。 |
+| YesterdayTren d | Array of YesterdayTren d |   | 昨日的趋势。 |
 | Count | Integer | 10 | 实例的数量。 |
 | TimePoint | String | 01:00 | 时间点，分别为00:00～23:00。 |
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
@@ -15450,7 +15444,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetSuccessInstanceTrend &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <InstanceStatusTrend>
@@ -15488,14 +15482,14 @@ http(s)://[Endpoint]/?Action=GetSuccessInstanceTrend &ProjectId=10001 &RegionId=
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 |---|---|---|---|
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetTopic
+#### 4.6.22 GetTopic
+
+调用GetTopic获取事件的详情。
 
 **请求参数**
 
@@ -15509,7 +15503,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 事件的详情。 |
+| Data | Struct |   | 事件的详情。 |
 | AddTime | Long | 1553524393000 | 事件发现时间戳。 |
 | AlertTime | Long | 1553524393000 | 首次报警时间戳。 |
 | Assigner | String | 952795**** | 指派人的阿里云UID。 |
@@ -15517,8 +15511,6 @@ DataWorks
 | BaselineId | Long | 1234 | 最差基线实例的基线ID。 |
 | BaselineInGro upId | Integer | 1 | 最差基线实例的周期号。 |
 | BaselineName | String | 基线名称 | 最差基线实例的基线名称。 |
-
-DataWorks
 
 | BaselineStatus | String | SAFE | 基线的状态，包括ERROR（异常）、SAFE（安全）、DANGROUS（预警）和OVER（破线）。 |
 |---|---|---|---|
@@ -15539,8 +15531,6 @@ DataWorks
 | TopicType | String | ERROR | 事件的类型，包括SLOW（变慢）和ERROR（出错）。 |
 | ErrorCode | String | 1031203110005 | 错误码。 |
 
-DataWorks
-
 | ErrorMessage | String | The specified parameters are invalid. | 错误信息。 |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | HTTP返回码。 |
@@ -15552,10 +15542,10 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &TopicId=1234
+http(s)://[Endpoint]/?Action=GetTopic &RegionId=default &TopicId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFGH-IJKLMNOPQ</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -15589,10 +15579,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFGH-IJKLMNOPQ",
     "HttpStatusCode": 200,
     "Data": {
@@ -15627,12 +15616,17 @@ DataWorks
         "BaselineBuffer": 3600,
         "TopicId": 1234,
         "DealTime": 1553524393000
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -15644,8 +15638,6 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 
-DataWorks
-
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 |---|---|---|---|
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
@@ -15653,7 +15645,9 @@ DataWorks
 | 500 | Invalid.Wkbench.To picNotExist | The topic does not exist. | 事件不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetTopicInfluence
+#### 4.6.23 GetTopicInfluence
+
+调用GetTopicInfluence获取事件影响的基线实例列表。
 
 **请求参数**
 
@@ -15667,14 +15661,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 事件影响的基线实例列表。 |
-| Influences | Array of Influences |  | 影响的基线实例列表。 |
+| Data | Struct |   | 事件影响的基线实例列表。 |
+| Influences | Array of Influences |   | 影响的基线实例列表。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
 | BaselineName | String | 基线名称 | 基线的名称。 |
 | Bizdate | Long | 1553356800000 | 基线实例的业务日期时间戳。 |
 | Buffer | Long | 360 | 基线实例的余量，单位为秒。 |
-
-DataWorks
 
 | InGroupId | Integer | 1 | 基线实例的周期号。天基线为1，小时基线的取值范围为1,24。 |
 |---|---|---|---|
@@ -15694,10 +15686,10 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &TopicId=1234
+http(s)://[Endpoint]/?Action=GetTopicInfluence &RegionId=default &TopicId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -15716,10 +15708,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -15738,21 +15729,23 @@ DataWorks
 ```json
             "InGroupId": 1,
             "Bizdate": 1553356800000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
-
-DataWorks
 
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
@@ -15767,7 +15760,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetFileTypeStatistic
+#### 4.6.24 GetFileTypeStatistic
+
+调用GetFileTypeStatistic获取节点任务类型的分布情况。
 
 **请求参数**
 
@@ -15777,8 +15772,6 @@ DataWorks
 | ProjectEnv | String | 是 | PROD | 工作空间的环境，包括DEV（开发环境） 和PROD（生产环境）。 |
 | ProjectId | Long | 是 | 123465 | DataWorks工作空间的ID。您可以登录 DataWorks管控台，进入工作空间配置页面获取工作空间ID。 |
 
-DataWorks
-
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 |---|---|---|---|---|
 
@@ -15786,7 +15779,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ProgramTypeA ndCounts | Array of ProgramTypeA ndCount |  | 节点的类型和数量。 |
+| ProgramTypeA ndCounts | Array of ProgramTypeA ndCount |   | 节点的类型和数量。 |
 | Count | Integer | 1 | 节点的数量。 |
 | ProgramType | String | ODPS SQL _ | 节点的类型。 常用的类型如下： 6（Shell）、10（ODPS SQL）、11（ODPS MR）、23（数据集成）、24（ODPS Script）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS 对象检查）、257（EMR Shell）、258（EMR Spark Shell）、259（EMR Presto）、 260（EMR Impala）、900（实时同步）、 1089（跨租户节点）、1091（Hologres开发）、1093（Hologres SQL）、1100（赋值节点）、1221（PyODPS 3）。 |
 | RequestId | String | SDFSDFSDF- SDFSDF-SDFDSF- SDFSDF | 请求的ID，用于定位日志，排查问题。 |
@@ -15799,7 +15792,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetFileTypeStatistic &ProjectEnv=PROD &ProjectId=123465 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF</RequestId> <ProgramTypeAndCounts>
@@ -15808,19 +15801,20 @@ http(s)://[Endpoint]/?Action=GetFileTypeStatistic &ProjectEnv=PROD &ProjectId=12
 </ProgramTypeAndCounts>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF",
     "ProgramTypeAndCounts": {
         "Count": 1,
         "ProgramType": "ODPS_SQL"
-    }
-}
 ```
 
-#### ListFileType
+`}` `}`
+
+#### 4.6.25 ListFileType
+
+调用ListFileType查询任务节点的类型信息，包括类型Code和类型名称。
 
 **请求头**
 
@@ -15831,12 +15825,10 @@ http(s)://[Endpoint]/?Action=GetFileTypeStatistic &ProjectEnv=PROD &ProjectId=12
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProjectId | Long | Body | 否 | 10000 | DataWorks工作空间的 ID。您可以登录 DataWorks管控台，进入工作空间配置页面获取工作空间ID。该参数与 ProjectIdentifier参数，二者必须设置其一，用来确定本次API调用操作的 DataWorks工作空间。 |
-| RegionId | Strin g | Host | 是 |  | 区域ID，为固定值default 。 |
+| RegionId | Strin g | Host | 是 |   | 区域ID，为固定值default 。 |
 | ProjectIde ntifier | Strin g | Body | 否 | dw project _ | DataWorks工作空间名称。您可以登录 DataWorks控制台，进入工作空间配置页面获取工作空间名称。 该参数与 ProjectId参数，二者必须设置其一，用来确定本次API 调用操作的DataWorks工作空间。 |
 | PageNum ber | Integ er | Body | 是 | 1 | 请求数据的页码数。 |
 | PageSize | Integ er | Body | 是 | 50 | 每页显示的数据条数，最大值为100。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -15848,11 +15840,9 @@ DataWorks
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 0000-ABCD- EFG**** | 请求ID。用于出现错误后排查问题。 |
-| NodeTypeInfoL ist | Struct |  | 返回的节点类型信息列表。 |
-| -NodeTypeInfo | Array |  | 单个节点类型的信息。 |
+| NodeTypeInfoL ist | Struct |   | 返回的节点类型信息列表。 |
+| -NodeTypeInfo | Array |   | 单个节点类型的信息。 |
 | -- NodeTypeNam e | String | ODPS SQL | 节点类型的名称。 常用的代码及名称类型对应关系如下： 6（Shell）、10（ODPS SQL）、11（ODPS MR）、23（数据集成）、24（ODPS Script）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS 对象检查）、257（EMR Shell）、258（EMR Spark Shell）、259（EMR Presto）、 260（EMR Impala）、900（实时同步）、 1089（跨租户节点）、1091（Hologres开发）、1093（Hologres SQL）、1100（赋值节点）、1221（PyODPS 3）。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -15866,27 +15856,28 @@ DataWorks
 请求示例
 
 ```
-&RegionId= &PageNumber=1 &PageSize=50
+http(s)://[Endpoint]/?Action=ListFileType &RegionId= &PageNumber=1 &PageSize=50
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "NodeTypeInfoList":{
   "-NodeTypeInfo":{
    "NodeTypeName":"ODPS SQL",
    "NodeType":10
-  },
+```
+
+`},`
+
+```json
   "TotalCount":127,
   "PageSize":50,
   "PageNumber":1
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <NodeTypeInfoList>
@@ -15911,7 +15902,9 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### ListAlertMessages
+#### 4.6.26 ListAlertMessages
+
+调用ListAlertMessages获取报警信息的列表。
 
 **请求参数**
 
@@ -15920,8 +15913,6 @@ DataWorks
 | Action | String | 是 | ListAlertMessag es | 系统规定参数。取值： ListAlertMessages。 |
 | BeginTime | String | 是 | 2020-04- 02T00:00:00+0 800 | 起始报警时间，需要使用yyyy-MM- dd'T'HH:mm:ssZ的UTC格式。 |
 | EndTime | String | 是 | 2020-04- 04T00:00:00+0 800 | 截止报警时间，需要使用yyyy-MM- dd'T'HH:mm:ssZ的UTC格式。 |
-
-DataWorks
 
 | PageNumber | Integer | 是 | 1 | 分页的页数。默认值为1、最小值为1、最大值为30。 |
 |---|---|---|---|---|
@@ -15936,36 +15927,32 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回的报警信息列表。 |
-| AlertMessages | Array of AlertMessages |  | 报警信息列表。 |
+| Data | Struct |   | 返回的报警信息列表。 |
+| AlertMessages | Array of AlertMessages |   | 报警信息列表。 |
 | AlertId | Long | 1234 | 报警ID。 |
 | AlertMessageS tatus | String | READY TO SEND _ _ | 发送状态，包括READY TO SEND（准备发 _ _ 送）、SEND FAIL（发送失败）、 _ SEND SUCCESS（发送成功）和 _ SEND OVERLIMIT（报警超限）。 _ |
 | AlertMethod | String | SMS | 报警方式，包括MAIL（邮件）、SMS（短信） 和 PHONE（电话，仅DataWorks专业版及以上版本支持）。 |
 | AlertTime | Long | 1553531401000 | 报警的时间戳。 |
 
-DataWorks
-
 | AlertUser | String | 9527952795**** | 接收人的阿里云UID。 |
 |---|---|---|---|
 | Content | String | 节点出错 | 报警的内容。 |
-| Instances | Array of Instances |  | 当Source（报警来源）为REMIND ALERT（自 _ 定义提醒）时，返回触发自定义监控规则的实例列表。其它类型的报警来源返回为空。 |
+| Instances | Array of Instances |   | 当Source（报警来源）为REMIND ALERT（自 _ 定义提醒）时，返回触发自定义监控规则的实例列表。其它类型的报警来源返回为空。 |
 | InstanceId | Long | 12345 | 实例的ID。 |
 | NodeId | Long | 12345 | 节点的ID。 |
 | NodeName | String | 节点名称 | 节点的名称。 |
 | ProjectId | Long | 1234 | 节点所在工作空间的ID。 |
 | Status | String | NOT RUN _ | 实例状态，包括NOT RUN （未运行）、 _ WAIT TIME（等待时间）、 _ WAIT RESOURCE（等待资源）、 _ RUNNING（运行中）、CHECKING（校检中）、CHECKING CONDITION（条件检测 _ 中）、FAILURE（运行失败）和SUCCESS（运行成功）。 |
-| Nodes | Array of Nodes |  | 不同的报警来源返回不同的节点列表： 当Source（报警来源）为NODE _ CYCLE ALERT（节点成环报警）时，返回成 _ 环的节点类型。 当Source（报警来源）为 NODE LONELY ALERT（节点孤立报警） _ _ 时，返回孤立的节点类型。 |
+| Nodes | Array of Nodes |   | 不同的报警来源返回不同的节点列表： 当Source（报警来源）为NODE _ CYCLE ALERT（节点成环报警）时，返回成 _ 环的节点类型。 当Source（报警来源）为 NODE LONELY ALERT（节点孤立报警） _ _ 时，返回孤立的节点类型。 |
 | NodeId | Long | 1234 | 节点的ID。 |
 | NodeName | String | 节点名称 | 节点的名称。 |
 | Owner | String | 95279527952**** | 节点责任人的阿里云UID。 |
 | ProjectId | Long | 1234 | 节点所在工作空间的ID。 |
 | RemindId | Long | 1234 | 当Source（报警来源）为REMIND ALERT（自 _ 定义报警）时，返回触发的自定义监控规则ID。 |
 
-DataWorks
-
 | RemindName | String | 自定义监控规则名称 | 当Source（报警来源）为REMIND ALERT（自 _ 定义提醒）时，返回触发的自定义监控规则名称。 |
 |---|---|---|---|
-| SlaAlert | Struct |  | 当Source（报警来源）为SLA ALERT（基线报 _ 警）时，返回触发基线预警的基本实例信息。当报警来源为其它类型时，返回为空。 |
+| SlaAlert | Struct |   | 当Source（报警来源）为SLA ALERT（基线报 _ 警）时，返回触发基线预警的基本实例信息。当报警来源为其它类型时，返回为空。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
 | BaselineName | String | 基线名称 | 基线的名称。 |
 | BaselineOwner | String | 952795279**** | 基线责任人的阿里云UID，多个UID之间使用英文逗号（,）分隔。 |
@@ -15974,13 +15961,11 @@ DataWorks
 | ProjectId | Long | 1234 | 基线所在工作空间的ID。 |
 | Status | String | SAFE | 基线状态，包括ERROR（异常）、SAFE（安全）、DANGROUS（预警）和OVER（破线）。 |
 | Source | String | REMIND ALERT _ | 报警来源，包括REMIND ALERT（自定义报 _ 警）、TOPIC ALERT（事件告警）、 _ SLA ALERT（基线预警）、 _ NODE CYCLE ALERT（节点成环报警）和 _ _ NODE LONELY ALERT（节点孤立报警）。 _ _ |
-| Topics | Array of Topics |  | 当Source（报警来源）为TOPIC ALERT（全局 _ 事件告警）时，返回触发报警的事件列表。当报警来源为其它类型时，返回结果为空。 |
+| Topics | Array of Topics |   | 当Source（报警来源）为TOPIC ALERT（全局 _ 事件告警）时，返回触发报警的事件列表。当报警来源为其它类型时，返回结果为空。 |
 | InstanceId | Long | 12345 | 事件关联的实例ID。 |
 | NodeId | Long | 12345 | 事件关联的节点ID。 |
 | TopicId | Long | 12345 | 事件的ID。 |
 | TopicName | String | 9527出错 | 事件的名称。 |
-
-DataWorks
 
 | TopicOwner | String | 9527952795**** | 事件责任人的阿里云UID。 |
 |---|---|---|---|
@@ -15999,10 +15984,10 @@ DataWorks
 请求示例
 
 ```
-&BeginTime=2020-04-02T00:00:00+0800 &EndTime=2020-04-04T00:00:00+0800 &PageNumber=1 &PageSize=10 &RegionId=default
+http(s)://[Endpoint]/?Action=ListAlertMessages &BeginTime=2020-04-02T00:00:00+0800 &EndTime=2020-04-04T00:00:00+0800 &PageNumber=1 &PageSize=10 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -16069,12 +16054,10 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
-| { "RequestId": "0000-ABCD-EFG****", "HttpStatusCode": 200, "Data": { "TotalCount": 100, "PageSize": 10, "PageNumber": 1, "AlertMessages": { "AlertMessageStatus": "READY TO SEND", _ _ "AlertUser": "9527952795****", "RemindId": 1234, "AlertId": 1234, "Content": "节点出错", "AlertMethod": "SMS", "Source": "REMIND ALERT", _ "AlertTime": 1553531401000, "RemindName": "自定义监控规则名称", "Instances": { "Status": "NOT RUN", _ "InstanceId": 12345, "NodeName": "节点名称", "ProjectId": 1234, "NodeId": 12345 }, "Nodes": { "Owner": "95279527952****", "NodeName": "节点名称", "ProjectId": 1234, "NodeId": 1234 }, "Topics": { "TopicOwner": "9527952795****", "InstanceId": 12345, "NodeId": 12345, "TopicId": 12345, "TopicStatus": "FIXING", "TopicName": "9527出错" }, "SlaAlert": { "Status": "SAFE", "BaselineId": 1234, "BaselineOwner": "952795279****", "ProjectId": 1234, "BaselineName": "基线名称", "InGroupId": 1, "Bizdate": 1553443200000 } } }, "ErrorCode": "Invalid.Tenant.ConnectionNotExists", "ErrorMessage": "The specified parameters are invalid.", "Success": true } |  |
+| { "RequestId": "0000-ABCD-EFG****", "HttpStatusCode": 200, "Data": { "TotalCount": 100, "PageSize": 10, "PageNumber": 1, "AlertMessages": { "AlertMessageStatus": "READY TO SEND", _ _ "AlertUser": "9527952795****", "RemindId": 1234, "AlertId": 1234, "Content": "节点出错", "AlertMethod": "SMS", "Source": "REMIND ALERT", _ "AlertTime": 1553531401000, "RemindName": "自定义监控规则名称", "Instances": { "Status": "NOT RUN", _ "InstanceId": 12345, "NodeName": "节点名称", "ProjectId": 1234, "NodeId": 12345 }, "Nodes": { "Owner": "95279527952****", "NodeName": "节点名称", "ProjectId": 1234, "NodeId": 1234 }, "Topics": { "TopicOwner": "9527952795****", "InstanceId": 12345, "NodeId": 12345, "TopicId": 12345, "TopicStatus": "FIXING", "TopicName": "9527出错" }, "SlaAlert": { "Status": "SAFE", "BaselineId": 1234, "BaselineOwner": "952795279****", "ProjectId": 1234, "BaselineName": "基线名称", "InGroupId": 1, "Bizdate": 1553443200000 } } }, "ErrorCode": "Invalid.Tenant.ConnectionNotExists", "ErrorMessage": "The specified parameters are invalid.", "Success": true } |   |
 |---|---|
-
-DataWorks
 
 **错误码**
 
@@ -16090,7 +16073,9 @@ DataWorks
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### ListBaselineConfigs
+#### 4.6.27 ListBaselineConfigs
+
+调用ListBaselineConfigs获取基线列表。
 
 **请求参数**
 
@@ -16099,8 +16084,6 @@ DataWorks
 | Action | String | 是 | ListBaselineConf igs | 系统规定参数。取值： ListBaselineConfigs。 |
 | PageNumber | Integer | 是 | 1 | 分页的页数。默认值为1，最小值为1，最大值为30。 |
 | PageSize | Integer | 是 | 10 | 每页返回的数据行数。默认值为10，最小值为1，最大值为100。 |
-
-DataWorks
 
 | ProjectId | Long | 是 | 1234 | 工作空间的ID。 |
 |---|---|---|---|---|
@@ -16115,15 +16098,13 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回的基线列表。 |
-| Baselines | Array of Baselines |  | 基线列表。 |
+| Data | Struct |   | 返回的基线列表。 |
+| Baselines | Array of Baselines |   | 基线列表。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
 | BaselineName | String | 基线名称 | 基线的名称。 |
 | BaselineType | String | DAILY | 基线类型，包括DAILY（天基线）和 HOURLY（小时基线）。 |
 | ExpHour | Integer | 7 | 天基线的预警小时，取值范围为0, 47。 |
 | ExpMinu | Integer | 30 | 天基线的预警分钟，取值范围为0, 59。 |
-
-DataWorks
 
 | HourExpDetail | String | {"1":"03:28","2":"0 4:28","3":"05:28"," 4":"06:28","5":"07: 28","6":"08:28","7": "09:28","8":"10:28" ,"9":"11:28","10":"1 2:28","11":"13:28", "12":"14:28","13":" 15:28","14":"16:28 ","15":"17:28","16": "18:28","17":"19:2 8","18":"20:28","19 ":"21:28","20":"22: 28","21":"23:28","2 2":"24:28","23":"25 :28","24":"26:28"} | 小时基线的预警时间配置（JSON格式），key为周期号，value为hh:mm格式。hh的取值范围为0,47，mm的取值范围为0,59。 |
 |---|---|---|---|
@@ -16136,8 +16117,6 @@ DataWorks
 | SlaMinu | Integer | 30 | 天基线的预警分钟，取值范围为0, 59。 |
 | UseFlag | Boolean | true | 基线是否开启，包括true（开启）和false（未开启）。 |
 | PageNumber | Integer | 1 | 当前的页数。 |
-
-DataWorks
 
 | PageSize | Integer | 10 | 每页的大小。 |
 |---|---|---|---|
@@ -16156,7 +16135,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListBaselineConfigs &PageNumber=1 &PageSize=10 &ProjectId=1234 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -16184,10 +16163,9 @@ http(s)://[Endpoint]/?Action=ListBaselineConfigs &PageNumber=1 &PageSize=10 &Pro
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -16212,16 +16190,15 @@ http(s)://[Endpoint]/?Action=ListBaselineConfigs &PageNumber=1 &PageSize=10 &Pro
             "BaselineType": "DAILY",
 ```
 
-`"BaselineName": "`基线名称"
+`"BaselineName": "`基线名称`"` `}` `},`
 
 ```json
-        }
-    },
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -16229,8 +16206,6 @@ http(s)://[Endpoint]/?Action=ListBaselineConfigs &PageNumber=1 &PageSize=10 &Pro
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
-
-DataWorks
 
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 |---|---|---|---|
@@ -16240,7 +16215,9 @@ DataWorks
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### ListBaselineStatuses
+#### 4.6.28 ListBaselineStatuses
+
+调用ListBaselineStatuses获取基线实例列表。
 
 **请求参数**
 
@@ -16255,8 +16232,6 @@ DataWorks
 | SearchText | String | 否 | 基线名称搜索关键字 | 基线名称搜索关键字。 |
 | Owner | String | 否 | 9527952795**** | 基线责任人的阿里云UID。 |
 
-DataWorks
-
 | TopicId | Long | 否 | 1234 | 相关事件的ID。 |
 |---|---|---|---|---|
 | FinishStatus | String | 否 | FINISH,UNFINISH | 基线实例是否完成，包括UNFINISH（未完成）、FINISH（已完成）。多个状态之间使用英文逗号（,）分隔。 |
@@ -16267,8 +16242,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回的基线实例列表。 |
-| BaselineStatus es | Array of BaselineStatus es |  | 基线实例列表。 |
+| Data | Struct |   | 返回的基线实例列表。 |
+| BaselineStatus es | Array of BaselineStatus es |   | 基线实例列表。 |
 | BaselineId | Long | 1234 | 基线的ID。 |
 | BaselineName | String | 基线名称 | 基线的名称。 |
 | Bizdate | Long | 1553443200000 | 业务日期时间戳。 |
@@ -16277,8 +16252,6 @@ DataWorks
 | ExpTime | Long | 1553531400000 | 基线实例的预警时间。 |
 | FinishStatus | String | UNFINISH | 基线实例是否完成，包括UNFINISH（未完成） 和FINISH（已完成）。 |
 | FinishTime | Long | 1553531400000 | 当FinishStatus（基线实例完成状态）为 FINISH（已完成）时，返回基线实例的完成时间戳。 |
-
-DataWorks
 
 | InGroupId | Integer | 1 | 基线实例的周期号。天基线为1，小时基线的取值范围为1,24。 |
 |---|---|---|---|
@@ -16304,7 +16277,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListBaselineStatuses &Bizdate=2020-07-07T00:00:00+0800 &PageNumber=1 &PageSize=10 &RegionId=default
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -16330,10 +16303,9 @@ http(s)://[Endpoint]/?Action=ListBaselineStatuses &Bizdate=2020-07-07T00:00:00+0
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -16359,13 +16331,17 @@ http(s)://[Endpoint]/?Action=ListBaselineStatuses &Bizdate=2020-07-07T00:00:00+0
 ```json
             "SlaTime": 1553531400000,
             "EndCast": 1553531400000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -16378,13 +16354,11 @@ http(s)://[Endpoint]/?Action=ListBaselineStatuses &Bizdate=2020-07-07T00:00:00+0
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 
-DataWorks
-
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### ListDataServicePublishedApis
+#### 4.6.29 ListDataServicePublishedApis
 
 调用ListDataServicePublishedApis获取数据服务API的发布态信息列表。
 
@@ -16406,10 +16380,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | API发布态信息返回。 |
-| Apis | Array of Api |  | API发布态信息列表。 |
-
-DataWorks
+| Data | Struct |   | API发布态信息返回。 |
+| Apis | Array of Api |   | API发布态信息列表。 |
 
 | ApiId | Long | 10002 | API的ID。 |
 |---|---|---|---|
@@ -16424,16 +16396,14 @@ DataWorks
 | OperatorId | String | 2345678 | 最新编辑人阿里云ID |
 | ProjectId | Long | 10000 | 工作空间的ID。 |
 | Protocols | List | 0 | API协议，可选枚举值包括0（HTTP）和 1（HTTPS）。 |
-| RegistrationDe tails | Struct |  | 注册API详情，只有注册API返回。 |
+| RegistrationDe tails | Struct |   | 注册API详情，只有注册API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例。 |
-| RegistrationErr orCodes | Array of RegistrationErr orCode |  | 注册API的错误码列表。 |
+| RegistrationErr orCodes | Array of RegistrationErr orCode |   | 注册API的错误码列表。 |
 | ErrorCode | String | 1001 | 错误码 |
 | ErrorMessage | String | fail to call | 错误信息 |
 | ErrorSolution | String | retry | 错误解决方案 |
 
-DataWorks
-
-| RegistrationRe questParamet ers | Array of RegistrationRe questParamet er |  | 注册API的请求参数列表。 |
+| RegistrationRe questParamet ers | Array of RegistrationRe questParamet er |   | 注册API的请求参数列表。 |
 |---|---|---|---|
 | DefaultValue | String | default1 | 默认值 |
 | ExampleValue | String | example1 | 示例值 |
@@ -16445,8 +16415,6 @@ DataWorks
 | ParameterPosi tion | Integer | 0 | 参数位置，可选枚举值有： 0：Path 1：Query 2：Head 3：Body 向导和脚本API，只支持Query；注册 API，GET、DELETE方法支持Query、 Head，PUT、POST方法支持Query、Head、 Body。 |
 | ServiceConten tType | Integer | 0 | API的返回数据类型，可选枚举值包括 0（JSON）和1（XML）。向导和脚本API支持 JSON，注册API支持JSON和XML。 |
 
-DataWorks
-
 | ServiceHost | String | http://www.abc.co m | 后端服务地址。 |
 |---|---|---|---|
 | ServicePath | String | /index | 后端服务路径。 |
@@ -16454,21 +16422,19 @@ DataWorks
 | SuccessfulRes ultSample | String | {"success": true} | 正常返回示例。 |
 | RequestMetho d | Integer | 0 | API的请求方式，可选枚举值包括0（GET）、 1（POST）、2（PUT）和3（DELTE）。向导和脚本API支持GET和POST。注册API支持 GET、POST、PUT和DELETE。 |
 | ResponseCont entType | Integer | 0 | API的返回数据类型，可选枚举值包括 0（JSON）和1（XML）。向导和脚本API支持 JSON，注册API支持JSON和XML。 |
-| ScriptDetails | Struct |  | 脚本API详情，只有脚本API返回。 |
+| ScriptDetails | Struct |   | 脚本API详情，只有脚本API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例 |
 | IsPagedRespo nse | Boolean | true | 返回是否分页 |
 | Script | String | select a from t | QL脚本 |
-| ScriptConnecti on | Struct |  | 脚本API数据源信息 |
+| ScriptConnecti on | Struct |   | 脚本API数据源信息 |
 | ConnectionId | Long | 123 | 数据源ID |
 | TableName | String | t | 数据源表名 |
-| ScriptErrorCod es | Array of ScriptErrorCod e |  | 脚本API错误码列表 |
+| ScriptErrorCod es | Array of ScriptErrorCod e |   | 脚本API错误码列表 |
 | ErrorCode | String | 1001 | 错误码 |
 | ErrorMessage | String | fail to call | 错误信息 |
 | ErrorSolution | String | retry | 错误解决方案 |
 
-DataWorks
-
-| ScriptRequest Parameters | Array of ScriptRequest Parameter |  | 脚本API请求参数列表 |
+| ScriptRequest Parameters | Array of ScriptRequest Parameter |   | 脚本API请求参数列表 |
 |---|---|---|---|
 | DefaultValue | String | default1 | 默认值 |
 | ExampleValue | String | example1 | 示例值 |
@@ -16478,9 +16444,7 @@ DataWorks
 | ParameterNa me | String | param1 | 参数名称 |
 | ParameterOpe rator | Integer | 0 | 运算符，可选枚举值有： 0：Equal 1：Like 2：Const 3：In 向导API支持Equal、Like、In；脚本API支持 Equal；注册API支持Equal、Const。 |
 | ParameterPosi tion | Integer | 0 | 参数位置，可选枚举值有： 0：Path 1：Query 2：Head 3：Body 向导和脚本API，只支持Query；注册 API，GET、DELETE方法支持Query、 Head，PUT、POST方法支持Query、Head、 Body。 |
-| ScriptRespons eParameters | Array of ScriptRespons eParameter |  | 脚本API返回参数列表 |
-
-DataWorks
+| ScriptRespons eParameters | Array of ScriptRespons eParameter |   | 脚本API返回参数列表 |
 
 | ExampleValue | String | example2 | 示例值 |
 |---|---|---|---|
@@ -16492,22 +16456,20 @@ DataWorks
 | TenantId | Long | 10001 | 租户ID。 |
 | Timeout | Integer | 10000 | 超时时间，单位毫秒ms |
 | VisibleRange | Integer | 0 | 可见范围，可选枚举值包括0（工作空间）和 1（私有）。 |
-| WizardDetails | Struct |  | 向导API详情，只有向导API返回。 |
+| WizardDetails | Struct |   | 向导API详情，只有向导API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例。 |
 | IsPagedRespo nse | Boolean | true | 返回是否分页。 |
 | SuccessfulRes ultSample | String | {"success": true} | 正常返回示例。 |
-| WizardConnec tion | Struct |  | 向导API的数据源信息。 |
+| WizardConnec tion | Struct |   | 向导API的数据源信息。 |
 | ConnectionId | Long | 123 | 数据源ID。 |
 | TableName | String | 1 | 数据源的表名称。 |
 
-DataWorks
-
-| WizardErrorCo des | Array of WizardErrorCo de |  | 向导API的错误码列表。 |
+| WizardErrorCo des | Array of WizardErrorCo de |   | 向导API的错误码列表。 |
 |---|---|---|---|
 | ErrorCode | String | 1001 | 错误码。 |
 | ErrorMessage | String | fail to call | 错误信息。 |
 | ErrorSolution | String | retry | 错误解决方案。 |
-| WizardReques tParameters | Array of WizardReques tParameter |  | 向导API的请求参数列表。 |
+| WizardReques tParameters | Array of WizardReques tParameter |   | 向导API的请求参数列表。 |
 | DefaultValue | String | default1 | 默认值。 |
 | ExampleValue | String | example1 | 示例值。 |
 | IsRequiredPar ameter | Boolean | true | 是否必填。 |
@@ -16516,10 +16478,8 @@ DataWorks
 | ParameterNa me | String | param1 | 参数的名称。 |
 | ParameterOpe rator | Integer | 0 | 运算符，可选枚举值包括0（Equal）、 1（Like）、2（Const）和3（In）。向导模式 API支持Equal、Like和In，脚本模式API支持 Equal，注册API支持Equal和Const。 |
 | ParameterPosi tion | Integer | 0 | 参数的位置，可选枚举值包括0（Path）、 1（Query）、2（Head）和3（Body）。向导和脚本API仅支持Query。注册API中的GET、 DELETE方法支持Query、Head，PUT、POST 方法支持Query、Head和Body。 |
-| WizardRespon seParameters | Array of WizardRespon seParameter |  | 向导API的返回参数列表。 |
+| WizardRespon seParameters | Array of WizardRespon seParameter |   | 向导API的返回参数列表。 |
 | ExampleValue | String | example2 | 示例值。 |
-
-DataWorks
 
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值包括0（STRING）、 1（INT）、2（LONG）、3（FLOAT）、 4（DOUBLE）和5（BOOLEAN）。 |
 |---|---|---|---|
@@ -16542,7 +16502,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServicePublishedApis &PageNumber=1 &PageSize=10 &ProjectId=10000 &RegionId=default &TenantId=10001
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -16550,8 +16510,6 @@ http(s)://[Endpoint]/?Action=ListDataServicePublishedApis &PageNumber=1 &PageSiz
     <PageSize>10</PageSize>
     <PageNumber>1</PageNumber>
 ```
-
-DataWorks
 
 ```xml
     <Apis>
@@ -16614,19 +16572,17 @@ DataWorks
                 <ExampleValue>example2</ExampleValue>
 ```
 
-P t
+`P` `t`
 
 ```
 DtT 0/P
 ```
 
-t
+`t`
 
 ```
 DtT
 ```
-
-DataWorks
 
 ```xml
                 <ParameterDataType>0</ParameterDataType>
@@ -16682,10 +16638,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -16730,7 +16685,11 @@ DataWorks `JSON` 格式
                     "ErrorCode": 1001,
                     "ErrorSolution": "retry",
                     "ErrorMessage": "fail to call"
-                },
+```
+
+`},`
+
+```json
                 "RegistrationRequestParameters": {
                     "DefaultValue": "default1",
                     "ExampleValue": "example1",
@@ -16740,14 +16699,15 @@ DataWorks `JSON` 格式
                     "ParameterOperator": 0,
                     "ParameterDescription": "description1",
                     "IsRequiredParameter": true
-                }
-            },
+```
+
+`}` `},`
+
+```json
             "ScriptDetails": {
                 "Script": "select a from t",
                 "IsPagedResponse": true,
 ```
-
-DataWorks
 
 ```json
                 "SuccessfulResultSample": "{\"success\": true}",
@@ -16756,13 +16716,21 @@ DataWorks
                     "ErrorCode": 1001,
                     "ErrorSolution": "retry",
                     "ErrorMessage": "fail to call"
-                },
+```
+
+`},`
+
+```json
                 "ScriptResponseParameters": {
                     "ExampleValue": "example2",
                     "ParameterDataType": 0,
                     "ParameterName": "param2",
                     "ParameterDescription": "description2"
-                },
+```
+
+`},`
+
+```json
                 "ScriptRequestParameters": {
                     "DefaultValue": "default1",
                     "ExampleValue": "example1",
@@ -16772,12 +16740,19 @@ DataWorks
                     "ParameterOperator": 0,
                     "ParameterDescription": "description1",
                     "IsRequiredParameter": true
-                },
+```
+
+`},`
+
+```json
                 "ScriptConnection": {
                     "TableName": "t",
                     "ConnectionId": 123
-                }
-            },
+```
+
+`}` `},`
+
+```json
             "WizardDetails": {
                 "IsPagedResponse": true,
                 "SuccessfulResultSample": "{\"success\": true}",
@@ -16786,13 +16761,21 @@ DataWorks
                     "ErrorCode": 1001,
                     "ErrorSolution": "retry",
                     "ErrorMessage": "fail to call"
-                },
+```
+
+`},`
+
+```json
                 "WizardResponseParameters": {
                     "ExampleValue": "example2",
                     "ParameterDataType": 0,
                     "ParameterName": "param2",
                     "ParameterDescription": "description2"
-                },
+```
+
+`},`
+
+```json
                 "WizardRequestParameters": {
                     "DefaultValue": "default1",
                     "ExampleValue": "example1",
@@ -16802,25 +16785,29 @@ DataWorks
                     "ParameterOperator": 0,
                     "ParameterDescription": "description1",
                     "IsRequiredParameter": true
-                },
+```
+
+`},`
+
+```json
                 "WizardConnection": {
 "TableName"
 ```
 
-DataWorks
-
 ```json
                     "TableName": 1,
                     "ConnectionId": 123
-                }
-            }
-        }
-    },
+```
+
+`}` `}` `}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -16833,7 +16820,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListDags
+#### 4.6.30 ListDags
 
 根据OpSeq（补数据唯一标识）获取单次补数据的所有Dag详情。 Dag Type的类型： MANUAL：手动任务工作流 SMOKE_TEST：冒烟测试工作流 SUPPLY_DATA：补数据 BUSINESS_PROCESS_DAG：一次性业务流程工作流 Dag Status的类型： CREATED：已创建 RUNNING：运行中 FAILURE：运行失败 SUCCESS：运行成功
 
@@ -16842,8 +16829,6 @@ DataWorks
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -16860,12 +16845,10 @@ DataWorks
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 | Success | Boolean | true | 调用是否成功。 |
-| Data | Struct |  | Dag的详情信息。 |
-| -Dags | Array |  | 返回的实体。 |
+| Data | Struct |   | Dag的详情信息。 |
+| -Dags | Array |   | 返回的实体。 |
 | --Type | String | MANUAL FLOW _ | DAG的类型，包括： MANUAL（手动任务工作流） SMOKE TEST（冒烟测试工作流） _ SUPPLY DATA（补数据） _ BUSINESS PROCESS DAG（一次性业务流 _ _ 程工作流） |
 | --Status | String | FAILURE | DAG的状态，包括: CREATED（已创建） RUNNING（运行中） FAILURE（运行失败） SUCCESS（运行成功） |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -16886,13 +16869,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &OpSeq=123 &ProjectEnv=PROD
+http(s)://[Endpoint]/?Action=ListDags &RegionId=default &OpSeq=123 &ProjectEnv=PROD
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7782a299-b291-4fee-8424-cf8058efa8e8",
  "HttpStatusCode":200,
  "Data":{
@@ -16910,15 +16892,17 @@ DataWorks
    "Type":"MANUAL_FLOW",
    "OpSeq":123,
    "FinishTime":1605052800000
-  }
- },
+```
+
+`}` `},`
+
+```json
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>7782a299-b291-4fee-8424-cf8058efa8e8</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -16940,9 +16924,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-#### ListInstances
+#### 4.6.31 ListInstances
 
-DataWorks
+调用ListInstances获取实例的列表。
 
 **请求参数**
 
@@ -16966,11 +16950,9 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
-| Data | Struct |  | 实例的列表。 |
+| Data | Struct |   | 实例的列表。 |
 |---|---|---|---|
-| Instances | Array of Instance |  | 实例的信息。 |
+| Instances | Array of Instance |   | 实例的信息。 |
 | BaselineId | Long | 123123 | 基线ID。 |
 | BeginRunning Time | Long | 1590416703313 | 实例任务开始运行的时间。 |
 | BeginWaitRes Time | Long | 1590416703313 | 实例任务开始等待资源的时间。 |
@@ -16983,8 +16965,6 @@ DataWorks
 | DagType | String | DAILY | 工作流的类型，取值如下： DAILY（日常调度） MANUAL（手动任务） SMOKE TEST（冒烟测试） _ SUPPLY DATA（补数据） _ |
 | DqcDescriptio n | String | [{"projectName":"z tjy dim","tableNam _ e":"dim user agent _ _ manage area a"," _ _ _ partition":"ds\u003 d$[yyyy-mm-dd- 1]"}] | DQC分区规则串。 |
 | DqcType | Integer | 1 | DQC类型，取值如下： 0表示有关联dqc。 1表示没有关联dqc。 |
-
-DataWorks
 
 | ErrorMessage | String | error message | 实例运行的报错信息。该字段已废弃，您可以调用GetInstanceLog接口获取执行任务的相关报错信息。 |
 |---|---|---|---|
@@ -17002,8 +16982,6 @@ DataWorks
 | PageNumber | Integer | 1 | 页码数。 |
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。 |
 
-DataWorks
-
 | TotalCount | Integer | 66 | 实例的总数。 |
 |---|---|---|---|
 | ErrorCode | String | Invalid.Tenant.Proj ectNotExists | 错误码。 |
@@ -17017,10 +16995,10 @@ DataWorks
 请求示例
 
 ```
-&NodeId=100000000000 &ProjectEnv=PROD &ProjectId=12345 &RegionId=default
+http(s)://[Endpoint]/?Action=ListInstances &NodeId=100000000000 &ProjectEnv=PROD &ProjectId=12345 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -17057,10 +17035,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ProjectNotExists</ErrorCode> <ErrorMessage>The project does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": {
@@ -17093,22 +17070,26 @@ DataWorks
             "BeginWaitResTime": 1590416703313,
             "ErrorMessage": "error message",
             "RepeatInterval": 60000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ProjectNotExists",
     "ErrorMessage": "The project does not exist.",
     "Success": true
-}
 ```
 
-#### ListInstanceAmount
+`}`
+
+#### 4.6.32 ListInstanceAmount
+
+调用ListInstanceAmount获取指定时间段周期实例数量的趋势。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | ListInstanceAmo unt | 系统规定参数。取值： ListInstanceAmount。 |
 |---|---|---|---|---|
@@ -17121,7 +17102,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceCount s | Array of IntanceCounts |  | 周期实例数量在指定时间段的趋势数据。 |
+| InstanceCount s | Array of IntanceCounts |   | 周期实例数量在指定时间段的趋势数据。 |
 | Count | Integer | 9527 | 周期实例的数量。 |
 | Date | Long | 1623772800000 | 获取周期实例数量的业务日期，此处显示业务日期对应的时间戳。 |
 | RequestId | String | 95279527adhfj**** | 请求ID。用于出现错误后排查问题。 |
@@ -17134,7 +17115,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListInstanceAmount &BeginDate=2021-06-13T00:00:00+0800 &EndDate=2021-06-16T00:00:00+0800 &ProjectId=10000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>95279527adhfj****</RequestId> <InstanceCounts>
@@ -17143,17 +17124,16 @@ http(s)://[Endpoint]/?Action=ListInstanceAmount &BeginDate=2021-06-13T00:00:00+0
 </InstanceCounts>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "95279527adhfj****",
     "InstanceCounts": {
         "Count": 9527,
         "Date": 1623772800000
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -17170,12 +17150,10 @@ http(s)://[Endpoint]/?Action=ListInstanceAmount &BeginDate=2021-06-13T00:00:00+0
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 500 | Forbidden.Wkbenc h.NoProject | You have not joined any project. | 尚未加入任何工作空间。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### ListInstanceHistory
+#### 4.6.33 ListInstanceHistory
 
 调用ListInstanceHistory，获取所有实例历史记录，任务重跑一次就会生成一条历史记录。
 
@@ -17195,11 +17173,11 @@ DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Instances | Array |  | 实例列表 |
+| Instances | Array |   | 实例列表 |
 | -Status | String | NOT RUN _ | 任务的状态，取值如下： NOT RUN（未运行） _ WAIT TIME（等待定时时间DueTime或 _ CycTime到来） WAIT RESOURCE（等待资源） _ RUNNING（运行中） CHECKING（下发给数据质量进行数据校检） CHECKING CONDITION（正在进行分支条 _ 件校检） FAILURE（执行失败） SUCCESS（执行成功） |
 | -CycTime | Long | 1590422400000 | 调度任务的运行时间，返回时间戳格式。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17215,7 +17193,7 @@ DataWorks
 | -InstanceId | Long | 1234 | 实例的ID。 |
 | - BeginWaitRes Time | Long | 1590416703313 | 实例任务开始等待资源的时间。 |
 
-|  | 开发指南·OpenAPI参 | 考 |  | DataWork | s |
+|   | 开发指南·OpenAPI参 | 考 |   | DataWork | s |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17236,10 +17214,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListInstanceHistory &InstanceId=1234 &RegionId=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Instances":{
   "Status":"NOT_RUN",
   "ModifyTime":1590416703313,
@@ -17258,13 +17235,16 @@ http(s)://[Endpoint]/?Action=ListInstanceHistory &InstanceId=1234 &RegionId=defa
   "NodeId":33115,
   "BeginWaitResTime":1590416703313,
   "ErrorMessage":"error message"
- },
- "RequestId":"E6F0DBDD-5AD****",
- "Success":true
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "RequestId":"E6F0DBDD-5AD****",
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <Instances>
@@ -17288,9 +17268,9 @@ http(s)://[Endpoint]/?Action=ListInstanceHistory &InstanceId=1234 &RegionId=defa
 </Instances> <RequestId>E6F0DBDD-5AD****</RequestId> <Success>true</Success>
 ```
 
-#### ListSuccessInstanceAmount
+#### 4.6.34 ListSuccessInstanceAmount
 
-调用ListSuccessInstanceAmount，获取业务日期当天生成的周期实例任务，在业务日期的不同整点时刻，运行成功的实例数量统计趋势。 DataWorks
+调用ListSuccessInstanceAmount，获取业务日期当天生成的周期实例任务，在业务日期的不同整点时刻，运行成功的实例数量统计趋势。
 
 **请求参数**
 
@@ -17304,21 +17284,17 @@ http(s)://[Endpoint]/?Action=ListInstanceHistory &InstanceId=1234 &RegionId=defa
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceStatus Trend | Struct |  | 在业务日期的不同时刻，运行成功的实例数量统计趋势数据。 |
-| AvgTrend | Array of AvgTrend |  | 历史平均趋势。 |
+| InstanceStatus Trend | Struct |   | 在业务日期的不同时刻，运行成功的实例数量统计趋势数据。 |
+| AvgTrend | Array of AvgTrend |   | 历史平均趋势。 |
 | Count | Integer | 10 | 运行成功的实例数量。 |
 | TimePoint | String | 01:00 | 时间点。取值范围为00:00～23:00中的整点小时时间，例如00:00、01:00、02:00等等。 |
-| TodayTrend | Array of TodayTrend |  | 业务日期当天的趋势。 |
+| TodayTrend | Array of TodayTrend |   | 业务日期当天的趋势。 |
 | Count | Integer | 10 | 运行成功的实例数量。 |
 | TimePoint | String | 01:00 | 时间点。取值范围为00:00～23:00中的整点小时时间，例如00:00、01:00、02:00等等。 |
-| YesterdayTren d | Array of YesterdayTren d |  | 业务日期前一天的趋势。 |
+| YesterdayTren d | Array of YesterdayTren d |   | 业务日期前一天的趋势。 |
 | Count | Integer | 10 | 运行成功的实例数量。 |
 | TimePoint | String | 01:00 | 时间点。取值范围为00:00～23:00中的整点小时时间，例如00:00、01:00、02:00等等。 |
 | RequestId | String | 952795279527ab* *** | 请求ID。用于出现错误后排查问题。 |
-
-DataWorks
-
-**示例**
 
 请求示例
 
@@ -17326,7 +17302,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListSuccessInstanceAmount &ProjectId=9527 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>952795279527ab****</RequestId> <InstanceStatusTrend>
@@ -17345,34 +17321,38 @@ http(s)://[Endpoint]/?Action=ListSuccessInstanceAmount &ProjectId=9527 &RegionId
 </InstanceStatusTrend>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "952795279527ab****",
     "InstanceStatusTrend": {
         "YesterdayTrend": {
             "TimePoint": "01:00",
             "Count": 10
-        },
+```
+
+`},`
+
+```json
         "AvgTrend": {
             "TimePoint": "01:00",
             "Count": 10
-        },
+```
+
+`},`
+
+```json
         "TodayTrend": {
             "TimePoint": "01:00",
             "Count": 10
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-DataWorks
 
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 |---|---|---|---|
@@ -17387,7 +17367,7 @@ DataWorks
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListManualDagInstances
+#### 4.6.35 ListManualDagInstances
 
 调用ListManualDagInstances获取手动执行的业务流程实例的信息。
 
@@ -17399,8 +17379,6 @@ DataWorks
 | DagId | String | 是 | 7000001231241 | 触发手动业务流程运行的Dag实例ID。 |
 | ProjectEnv | String | 是 | RPOD | 运维中心的调度环境标识，包括 PROD（生产环境）和DEV（开发环境）。 |
 
-DataWorks
-
 | ProjectName | String | 是 | test workspace _ | 手动业务流程所属的工作空间名称。 |
 |---|---|---|---|---|
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
@@ -17409,7 +17387,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Instances | Array of Instances |  | 手动业务流程的内部实例列表。 |
+| Instances | Array of Instances |   | 手动业务流程的内部实例列表。 |
 | BeginRunning Time | Long | 1605178414676 | 实例任务开始运行的时间。 |
 | BeginWaitRes Time | Long | 1605178414676 | 实例任务开始等待资源的时间。 |
 | BeginWaitTim eTime | Long | 1605178414676 | 实例任务开始等待调度的时间。 |
@@ -17425,8 +17403,6 @@ DataWorks
 | NodeName | String | test2 | 节点的名称。 |
 | ParamValues | String | xxx=yyy | 实例的参数信息。 |
 
-DataWorks
-
 | Status | String | SUCCESS | 实例任务的状态，取值如下： NOT RUN（未运行） _ WAIT TIME（等待定时时间DueTime或 _ CycleTime到来） WAIT RESOURCE（等待资源） _ RUNNING（运行中） CHECKING（下发给数据质量进行数据校检） CHECKING CONDITION（正在进行分支条 _ 件校检） FAILURE（执行失败） SUCCESS（执行成功） |
 |---|---|---|---|
 | TaskType | String | MANUAL | 实例任务的调度类型，取值如下： NORMAL(0)：正常调度任务。该任务被日常调度。 MANUAL(1)：手动任务。该任务不会被日常调度。 PAUSE(2)：冻结任务。该任务被日常调度， 但启动调度时直接被置为失败状态。 SKIP(3)：空跑任务。该任务被日常调度，但启动调度时直接被置为成功状态。 SKIP UNCHOOSE(4)：临时工作流中未选择 _ 的任务，仅存在于临时工作流中，启动调度时直接被置为成功状态。 SKIP CYCLE(5)：未到运行周期的周或月任 _ 务。该任务被日常调度，但启动调度时直接被置为成功状态。 CONDITION UNCHOOSE(6)：上游实例中 _ 有分支（IF）节点，但是该下游节点未被分支节点选中，直接置为空跑任务。 REALTIME DEPRECATED(7)：实时生成的 _ 已经过期的周期实例，该类型的任务直接被置为成功状态。 |
@@ -17440,7 +17416,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListManualDagInstances &DagId=7000001231241 &ProjectEnv=RPOD &ProjectName=test_workspace &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Instances>
@@ -17463,10 +17439,9 @@ http(s)://[Endpoint]/?Action=ListManualDagInstances &DagId=7000001231241 &Projec
 </Instances> <RequestId>SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Instances": {
         "Status": "SUCCESS",
         "ModifyTime": 1605178414676,
@@ -17484,19 +17459,24 @@ http(s)://[Endpoint]/?Action=ListManualDagInstances &DagId=7000001231241 &Projec
         "NodeId": 37851,
         "BeginWaitResTime": 1605178414676,
         "BizDate": 1605178414676
-    },
-    "RequestId": "SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF"
-}
 ```
 
-#### ListNodes
+`},`
+
+```json
+    "RequestId": "SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF"
+```
+
+`}`
+
+#### 4.6.36 ListNodes
+
+调用ListNodes获取节点的列表。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | ListNodes | 系统规定参数。取值：ListNodes。 |
 |---|---|---|---|---|
@@ -17514,14 +17494,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 节点的列表。 |
-| Nodes | Array of Nodes |  | 节点的信息。 |
+| Data | Struct |   | 节点的列表。 |
+| Nodes | Array of Nodes |   | 节点的信息。 |
 | BaselineId | Long | 123456 | 基线ID |
 | Connection | String | odps first _ | 连接串 |
 | CronExpress | String | 00 00 00 * * ? | cron表达式。 |
 | Description | String | test | 节点的描述信息。 |
-
-DataWorks
 
 | DqcDescriptio n | String | [{"projectName":"z tjy dim","tableNam _ e":"dim user agent _ _ manage area a"," _ _ _ partition":"ds\u003 d$[yyyy-mm-dd- 1]"}] | DQC分区规则串 |
 |---|---|---|---|
@@ -17540,8 +17518,6 @@ DataWorks
 | SchedulerType | String | NORMAL | 调度的类型，取值如下： NORMAL：正常调度任务。 MANUAL：手动任务，不会被日常调度。 PAUSE：暂停任务。 SKIP：空跑任务，被日常调度，但启动调度时直接被置为成功。 |
 | PageNumber | Integer | 1 | 页码数。 |
 
-DataWorks
-
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。” |
 |---|---|---|---|
 | TotalCount | Integer | 66 | 符合条件的节点总数。 |
@@ -17556,10 +17532,10 @@ DataWorks
 请求示例
 
 ```
-&ProjectEnv=PROD &ProjectId=1234 &RegionId=default
+http(s)://[Endpoint]/?Action=ListNodes &ProjectEnv=PROD &ProjectId=1234 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -17590,10 +17566,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": {
@@ -17624,15 +17599,19 @@ DataWorks
             "NodeId": 1234,
             "ProgramType": "ODPS_SQL",
             "RepeatInterval": 60
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### ListInnerNodes
+`}`
+
+#### 4.6.37 ListInnerNodes
 
 调用ListInnerNodes接口，获取内部节点详情，例如查询组合节点、循环节点等节点类型的内部节点。但是该接口不支持获取PAI节点的内部节点详情。
 
@@ -17646,8 +17625,6 @@ DataWorks
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 是 | default | 区域ID，为固定值default 。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ProgramT ype | Strin g | Body | 否 | ODPS SQL _ | 文件的代码类型。 常用的代码及其对应的文件类型包括6（Shell）、 10（ODPS SQL）、 11（ODPS MR）、23（数据集成）、24（ODPS Script）、97（PAI）、 98（组合节点）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS对象检查）、257（EMR Shell）、258（EMR Spark Shell）、 259（EMR Presto）、 260（EMR Impala）、 900（实时同步）、 1002（PAI内部节点）、 1089（跨租户节点）、 1091（Hologres开发）、 1093（Hologres SQL）、 1100（赋值节点）、 1106（遍历节点 （foreach））、 1221（PyODPS 3），您可以调用ListNodes查看节点类型。 |
@@ -17660,14 +17637,12 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | E6F0DBDD- 5AD**** | 请求的ID。用于定位日志，排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
-| Paging | Struct |  | 分页信息。 |
-| -Nodes | Array |  | 内部节点列表。 |
+| Paging | Struct |   | 分页信息。 |
+| -Nodes | Array |   | 内部节点列表。 |
 | -- SchedulerType | String | NORMAL | 调度的类型，取值如下： NORMAL：正常调度任务。 MANUAL：手动任务，不会被日常调度。 PAUSE：暂停任务。 SKIP：空跑任务，被日常调度，但启动调度时直接被置为成功。 |
 | -- RepeatInterval | Long | 60 | 出错后重新调度频率。 |
 | --Repeatability | Boolean | true | 是否可以重复运行。 |
@@ -17698,13 +17673,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &ProjectId=1234 &OuterNodeId=1234
+http(s)://[Endpoint]/?Action=ListInnerNodes &RegionId=default &ProjectId=1234 &OuterNodeId=1234
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"E6F0DBDD-5AD****",
  "Paging":{
   "TotalCount":100,
@@ -17734,13 +17708,15 @@ DataWorks
    "ProgramType":"ODPS_SQL",
    "BusinessId":123,
    "RepeatInterval":60
-  }
- },
- "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <Paging>
@@ -17771,7 +17747,9 @@ DataWorks
 </Paging> <Success>true</Success>
 ```
 
-#### ListNodeIO
+#### 4.6.38 ListNodeIO
+
+调用ListNodeIO查询上下游节点的信息，只能查询一层。
 
 **请求参数**
 
@@ -17783,13 +17761,11 @@ DataWorks
 | ProjectEnv | String | 是 | PROD | 运行的环境，包括DEV和PROD。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of Data |  | 节点的列表。 |
+| Data | Array of Data |   | 节点的列表。 |
 | Data | String | dataworks a.1234 _ _ out | 输入或输出名称。 |
 | NodeId | Long | 1234 | 节点ID。 |
 | TableName | String | dataworks a.datast _ udio tenant waitre _ _ s alarm _ | 输入或输出表的表名。 |
@@ -17804,10 +17780,10 @@ DataWorks
 请求示例
 
 ```
-&IoType=output &NodeId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=ListNodeIO &IoType=output &NodeId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -17817,24 +17793,30 @@ DataWorks
 </Data> <ErrorCode>0</ErrorCode> <ErrorMessage>test</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": {
         "TableName": "dataworks_a.datastudio_tenant_waitres_alarm",
         "NodeId": 1234,
         "Data": "dataworks_a.1234_out"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 0,
     "ErrorMessage": "test",
     "Success": true
-}
 ```
 
-#### ListNodeInputOrOutput
+`}`
+
+#### 4.6.39 ListNodeInputOrOutput
+
+调用ListNodeInputOrOutput接口，查询当前节点的输入输出信息。
 
 **请求参数**
 
@@ -17846,13 +17828,11 @@ DataWorks
 | ProjectEnv | String | 是 | PROD | 运行的环境，包括DEV（开发环境）和 PROD（生产环境）。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of Data |  | 输入输出列表。 |
+| Data | Array of Data |   | 输入输出列表。 |
 | Data | String | xxxx.123141254 o _ ut | 输入输出节点名称。 |
 | NodeId | Long | 1234667 | 节点ID。 |
 | TableName | String | dwd xxx table _ _ | 关联的表名称。 |
@@ -17870,7 +17850,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListNodeInputOrOutput &IoType=output &NodeId=12314567 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -17880,24 +17860,30 @@ http(s)://[Endpoint]/?Action=ListNodeInputOrOutput &IoType=output &NodeId=123145
 </Data> <ErrorCode>Invalid.Tenant.ProjectNotExists</ErrorCode> <ErrorMessage>The project does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": {
         "TableName": "dwd_xxx_table",
         "NodeId": 1234667,
         "Data": "xxxx.123141254_out"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ProjectNotExists",
     "ErrorMessage": "The project does not exist.",
     "Success": true
-}
 ```
 
-#### ListNodesByOutput
+`}`
+
+#### 4.6.40 ListNodesByOutput
+
+调用ListNodesByOutput根据节点的输出结果精确查询目标节点。
 
 **请求参数**
 
@@ -17913,11 +17899,9 @@ http(s)://[Endpoint]/?Action=ListNodeInputOrOutput &IoType=output &NodeId=123145
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
-| Data | Array of OutputNodePa ir |  | 返回的目标节点信息列表。 |
+| Data | Array of OutputNodePa ir |   | 返回的目标节点信息列表。 |
 |---|---|---|---|
-| NodeList | Array of Node |  | input和output对应的节点信息列表。 |
+| NodeList | Array of Node |   | input和output对应的节点信息列表。 |
 | BaselineId | Long | 1235667 | 基线ID。 |
 | Connection | String | odps first _ | 数据源名称。 |
 | CronExpress | String | 00 00 00 * * ? | cron表达式。 |
@@ -17929,8 +17913,6 @@ DataWorks
 | NodeName | String | liux test n**** _ _ | 节点的名称。 |
 | OwnerId | String | 19337906836551 | 负责人的ID。 |
 | ParamValues | String | a=b | 节点的调度参数。 |
-
-DataWorks
 
 | Priority | Integer | 1 | 节点运行的优先级，取值分为1、3、5、7和8。 取值越大，优先级越高。默认优先级为1。 |
 |---|---|---|---|
@@ -17950,13 +17932,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&Outputs=aaaaa.1231412_out,bbbb.12313123_out &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=ListNodesByOutput &Outputs=aaaaa.1231412_out,bbbb.12313123_out &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>SDFSDFSDF-asdfDFSDF-SDFSDf-SDfSFD</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -17986,10 +17968,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "SDFSDFSDF-asdfDFSDF-SDFSDf-SDfSFD",
     "HttpStatusCode": 200,
     "Data": {
@@ -18019,15 +18000,21 @@ DataWorks
             "NodeId": 125677,
             "ProgramType": "ODPS_SQL",
             "RepeatInterval": 60
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### ListNodesByBaseline
+`}`
+
+#### 4.6.41 ListNodesByBaseline
+
+调用ListNodesByBaseline获取基线中的节点。
 
 **请求参数**
 
@@ -18039,11 +18026,9 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of Data |  | 基线中的节点列表。 |
+| Data | Array of Data |   | 基线中的节点列表。 |
 | NodeId | Long | 1234 | 节点的ID。 |
 | NodeName | String | 节点的名称。 | 节点的名称。 |
 | Owner | String | 9527952**** | 节点责任人的阿里云UID。 |
@@ -18062,7 +18047,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListNodesByBaseline &BaselineId=1234 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-E****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -18077,10 +18062,9 @@ http(s)://[Endpoint]/?Action=ListNodesByBaseline &BaselineId=1234 &RegionId=defa
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-E****",
     "HttpStatusCode": 200,
     "Data": {
@@ -18092,12 +18076,17 @@ http(s)://[Endpoint]/?Action=ListNodesByBaseline &BaselineId=1234 &RegionId=defa
 ```json
         "ProjectId": 1234,
         "NodeId": 1234
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -18110,8 +18099,6 @@ http(s)://[Endpoint]/?Action=ListNodesByBaseline &BaselineId=1234 &RegionId=defa
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.Wkbe nch.ServiceError | An internal error occurred. | 服务开小差了。 |
 
-DataWorks
-
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 |---|---|---|---|
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
@@ -18122,7 +18109,9 @@ DataWorks
 | 500 | Invalid.Wkbench.Ba selineNotExist | The baseline does not exist. | 基线不存在。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListReminds
+#### 4.6.42 ListReminds
+
+调用ListReminds获取或搜索自定义监控规则列表。
 
 **请求参数**
 
@@ -18135,8 +18124,6 @@ DataWorks
 | Founder | String | 否 | 9527952795**** | 创建人的阿里云UID。 |
 | NodeId | Long | 否 | 1234 | 规则的对象，任务节点ID。您可以根据任务节点ID搜索覆盖该任务节点的自定义监控规则。 |
 
-DataWorks
-
 | RemindTypes | String | 否 | FINISHED,ERRO R | 触发条件，包括FINISHED（完成）、 UNFINISHED（未完成）、ERROR（出错）、CYCLE UNFINISHED（周期未完 _ 成）和TIMEOUT（运行超时）。多个触发条件之间使用英文逗号（,）分隔。 |
 |---|---|---|---|---|
 | AlertTarget | String | 否 | 9527952795**** | 报警接收人的阿里云UID。 |
@@ -18146,10 +18133,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回的自定义监控规则列表。 |
+| Data | Struct |   | 返回的自定义监控规则列表。 |
 | PageNumber | Integer | 1 | 当前的页数。 |
 | PageSize | Integer | 10 | 每页的大小。 |
-| Reminds | Array of Reminds |  | 自定义监控规则列表。 |
+| Reminds | Array of Reminds |   | 自定义监控规则列表。 |
 | AlertMethods | List | SMS | 报警的方式，包括MAIL（邮件）、SMS（短信）和PHONE（电话，仅DataWorks专业版及以上版本支持）。 |
 | AlertTargets | List | 952795**** | 报警接收人的阿里云UID列表。 |
 | AlertUnit | String | OWNER | 报警接收对象的粒度，包括OWNER（任务责任人）和OTHER（指定的人）。 |
@@ -18157,8 +18144,6 @@ DataWorks
 | BizProcessIds | List | 9527 | 当RemindUnit（对象类型）为 BIZPROCESS（业务流程）时，监控的基线ID列表。 |
 | DndEnd | String | 08:00 | 免打扰起始时间，格式为hh:mm。hh的取值范围为0,23，mm的取值范围为0,59。 |
 | DndStart | String | 00:00 | 规则创建人的阿里云UID。 |
-
-DataWorks
 
 | Founder | String | 952795**** | 规则创建人的阿里云UID。 |
 |---|---|---|---|
@@ -18178,13 +18163,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&PageNumber=1 &PageSize=10 &RegionId=default
+http(s)://[Endpoint]/?Action=ListReminds &PageNumber=1 &PageSize=10 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -18211,10 +18196,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -18241,13 +18225,17 @@ DataWorks
             "BizProcessIds": 9527,
             "AlertMethods": "SMS",
             "AlertTargets": "952795****"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -18259,15 +18247,15 @@ DataWorks
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 |---|---|---|---|
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### ListTopics
+#### 4.6.43 ListTopics
+
+调用ListTopics获取或搜索事件列表。
 
 **请求参数**
 
@@ -18283,8 +18271,6 @@ DataWorks
 | TopicStatuses | String | 否 | IGNORE,NEW,FIX ING,RECOVER | 事件的状态，包括IGNORE（已忽略）、 NEW（新发现）、FIXING（处理中）和 RECOVER（已恢复）。多个事件状态之间使用英文逗号（,）分隔。 |
 | NodeId | Long | 否 | 1234 | 事件关联的任务节点ID，与参数 InstanceId互斥。 |
 
-DataWorks
-
 | InstanceId | Long | 否 | 12345 | 事件关联的实例ID，与参数NodeId互斥。 |
 |---|---|---|---|---|
 | Owner | String | 否 | 952795**** | 事件责任人的阿里云UID。 |
@@ -18293,10 +18279,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回的事件列表。 |
+| Data | Struct |   | 返回的事件列表。 |
 | PageNumber | Integer | 1 | 当前的页数。 |
 | PageSize | Integer | 10 | 每页的大小。 |
-| Topics | Array of Topics |  | 事件列表。 |
+| Topics | Array of Topics |   | 事件列表。 |
 | AddTime | Long | 1553524393000 | 事件发现的时间戳。 |
 | FixTime | Long | 1553524393000 | 事件恢复的时间戳。 |
 | HappenTime | Long | 1553524393000 | 事件发生的时间戳，事件发生和被发现存在一定的时间差。 |
@@ -18308,8 +18294,6 @@ DataWorks
 | TopicId | Long | 1234 | 事件的ID。 |
 | TopicName | String | 1234出错 | 事件的名称。 |
 | TopicStatus | String | NEW | 事件的状态，包括IGNORE（已忽略）、 NEW（新发现）、FIXING（处理中）和 RECOVER（已恢复）。 |
-
-DataWorks
 
 | TopicType | String | ERROR | 事件的类型，包括SLOW（变慢）和ERROR（出错）。 |
 |---|---|---|---|
@@ -18325,10 +18309,10 @@ DataWorks
 请求示例
 
 ```
-&BeginTime=2019-03-24T00:00:00+0800 &EndTime=2019-03-25T23:00:00+0800 &PageNumber=1 &PageSize=10 &RegionId=default
+http(s)://[Endpoint]/?Action=ListTopics &BeginTime=2019-03-24T00:00:00+0800 &EndTime=2019-03-25T23:00:00+0800 &PageNumber=1 &PageSize=10 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -18356,10 +18340,9 @@ DataWorks
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -18383,13 +18366,17 @@ DataWorks
             "AddTime": 1553524393000,
             "HappenTime": 1553524393000,
             "TopicName": "1234出错"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -18402,14 +18389,14 @@ DataWorks
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### RestartInstance
+#### 4.6.44 RestartInstance
+
+调用RestartInstance重启实例。
 
 **请求参数**
 
@@ -18431,34 +18418,34 @@ DataWorks
 | RequestId | String | q32ety**** | 请求的ID。用于定位日志，排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
-&InstanceId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=RestartInstance &InstanceId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>q32ety****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "q32ety****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### ResumeInstance
+`}`
+
+#### 4.6.45 ResumeInstance
+
+调用ResumeInstance恢复暂停状态的实例。
 
 **请求参数**
 
@@ -18474,8 +18461,6 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
 | Data | Boolean | true | 调用ResumeInstance接口后，返回的结果详情。 |
 |---|---|---|---|
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
@@ -18489,31 +18474,31 @@ DataWorks
 请求示例
 
 ```
-&InstanceId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=ResumeInstance &InstanceId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### RunTriggerNode
+`}`
 
-DataWorks
+#### 4.6.46 RunTriggerNode
+
+调用RunTriggerNode运行一个触发式节点。
 
 **请求参数**
 
@@ -18538,16 +18523,16 @@ DataWorks
 请求示例
 
 ```
-&AppId=10001 &BizDate=1606200230105 &CycleTime=1606200230105 &NodeId=10000011 &RegionId=default
+http(s)://[Endpoint]/?Action=RunTriggerNode &AppId=10001 &BizDate=1606200230105 &CycleTime=1606200230105 &NodeId=10000011 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EFG*****","Success":"true"}
@@ -18568,7 +18553,9 @@ DataWorks `JSON` 格式
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### RunCycleDagNodes
+#### 4.6.47 RunCycleDagNodes
+
+调用RunCycleDagNodes创建补数据工作流。
 
 **请求头**
 
@@ -18578,8 +18565,6 @@ DataWorks `JSON` 格式
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18594,8 +18579,6 @@ DataWorks
 | BizEndTim e | Strin g | Body | 否 | 01:00:00 | 任务的结束时间。仅小时调度任务需要设置该参数，格式为HH:mm:ss，取值范围为 00:00:00~23:59:59。 |
 | Parallelis m | Boole an | Body | 是 | false | 是否可以同时对多个节点进行补数据操作。 |
 | EndBizDat e | Strin g | Body | 是 | 2020-05-21 00:00:00 | 补数据的结束业务日期。格式为yyyy-MM-dd 00:00:00。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -18619,29 +18602,27 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &ProjectEnv=PROD &StartBizDate=2020-05-20 00:00:00 &Name=xm_test &RootNodeId=1234 &Parallelism=false &EndBizDate=2020-05-21 00:00:00 &IncludeNodeIds=74324,74325
+http(s)://[Endpoint]/?Action=RunCycleDagNodes &RegionId=default &ProjectEnv=PROD &StartBizDate=2020-05-20 00:00:00 &Name=xm_test &RootNodeId=1234 &Parallelism=false &EndBizDate=2020-05-21 00:00:00 &IncludeNodeIds=74324,74325
 ```
 
-&公共请求参数 DataWorks 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "default",
     "HttpStatusCode": 200,
     "Data": 111,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>default</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>111</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-#### RunManualDagNodes
+#### 4.6.48 RunManualDagNodes
 
 调用RunManualDagNodes执行手动业务流程。手动业务流程必须已经在环境界面提交发布，提交发布后运维中心才会显示对应手动业务流程，您才可以使用该接口调用执行。
 
@@ -18655,8 +18636,6 @@ DataWorks
 | ProjectEnv | String | 是 | PROD或者DEV | 调度运维中心的环境标识。PROD表示生产环境，DEV表示开发环境。 |
 | ProjectName | String | 是 | test workspace _ | 手动业务流程所属的工作空间英文名称。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
-
-DataWorks
 
 | NodeParameters | String | 否 | {"20000123121 ": "key1=val2 key2=val2", "20000123124": "kkkk=vvvvv aaaa=bbbb"} | 传递手动业务流程执行时的节点参数信息，一个JSON格式： { "<手动业务流程内部的某个节点ID>": "节点的调度参数信息，和数据开发调度配置里面的参数格式保持一致", "<手动业务流程内部的某个节点ID>": "节点的调度参数信息，和数据开发调度配置里面的参数格式保持一致" } |
 |---|---|---|---|---|
@@ -18677,25 +18656,27 @@ DataWorks
 请求示例
 
 ```
-&BizDate=2020-11-11 00:00:00 &FlowName=test_workflow &ProjectEnv=PROD或者DEV &ProjectName=test_workspace &RegionId=default
+http(s)://[Endpoint]/?Action=RunManualDagNodes &BizDate=2020-11-11 00:00:00 &FlowName=test_workflow &ProjectEnv=PROD或者DEV &ProjectName=test_workspace &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>AASFDFSDFG-DFSDF-DFSDFD-SDFSDF</RequestId> <DagId>700000123123141</DagId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "AASFDFSDFG-DFSDF-DFSDFD-SDFSDF",
     "DagId": 700000123123141
-}
 ```
 
-#### RunSmokeTest
+`}`
+
+#### 4.6.49 RunSmokeTest
+
+调用RunSmokeTest创建冒烟测试工作流。
 
 **请求参数**
 
@@ -18716,8 +18697,6 @@ DataWorks
 | Data | Long | 3333333 | 工作流的ID。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 
-DataWorks
-
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
@@ -18729,36 +18708,36 @@ DataWorks
 请求示例
 
 ```
-&Bizdate=2020-05-26 00:00:00 &Name=xm_create_test &NodeId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=RunSmokeTest &Bizdate=2020-05-26 00:00:00 &Name=xm_create_test &NodeId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>3333333</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>false</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": 3333333,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": false
-}
 ```
 
-#### SetSuccessInstance
+`}`
+
+#### 4.6.50 SetSuccessInstance
+
+调用SetSuccessInstance，重置失败状态的实例为成功。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | SetSuccessInsta nce | 系统规定参数。取值： SetSuccessInstance。 |
 |---|---|---|---|---|
@@ -18785,26 +18764,28 @@ DataWorks
 http(s)://[Endpoint]/?Action=SetSuccessInstance &InstanceId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### StopInstance
+`}`
+
+#### 4.6.51 StopInstance
+
+调用StopInstance终止实例。
 
 **请求参数**
 
@@ -18826,34 +18807,34 @@ DataWorks `JSON` 格式
 | RequestId | String | E6F0DBDD- 5AD**** | 请求的ID。用于定位日志，排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
 
-**示例**
-
-DataWorks 请求示例
+请求示例
 
 ```
-&InstanceId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=StopInstance &InstanceId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### SuspendInstance
+`}`
+
+#### 4.6.52 SuspendInstance
+
+调用SuspendInstance暂停实例。
 
 **请求参数**
 
@@ -18865,8 +18846,6 @@ DataWorks 请求示例
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
 **返回数据**
-
-DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -18882,31 +18861,29 @@ DataWorks
 请求示例
 
 ```
-&InstanceId=1234 &ProjectEnv=PROD &RegionId=default
+http(s)://[Endpoint]/?Action=SuspendInstance &InstanceId=1234 &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0baf87f0159376****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ProjectNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0baf87f0159376****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ProjectNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
-#### TopTenElapsedTimeInstance
+#### 4.6.53 TopTenElapsedTimeInstance
 
 调用TopTenElapsedTimeInstance获取已运行完成（即运行状态为成功或失败）的实例运行时长的排行情况。
 
@@ -18922,16 +18899,14 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceConsu meTimeRank | Struct |  | 实例运行时长的排行记录。 |
-| ConsumeTime Rank | Array of ConsumeTime Rank |  | 实例运行时长的排行数据。 |
+| InstanceConsu meTimeRank | Struct |   | 实例运行时长的排行记录。 |
+| ConsumeTime Rank | Array of ConsumeTime Rank |   | 实例运行时长的排行数据。 |
 | BusinessDate | Long | 1600963200000 | 实例运行的业务日期。 |
 | Consumed | Long | 1000 | 实例运行时长，单位为s。 |
 | InstanceId | Long | 95279527 | 实例ID。 |
 | NodeId | Long | 9527 | 任务节点的ID。 |
 | NodeName | String | 节点名称 | 节点的名称。 |
 | Owner | String | 952795279527 | 节点责任人的阿里云UID。 |
-
-DataWorks
 
 | ProgramType | Integer | 10 | 任务的类型。 常见的类型如下： 6（Shell）、10（ODPS SQL）、11（ODPS MR）、23（数据集成）、24（ODPS Script）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS 对象检查）、257（EMR Shell）、258（EMR Spark Shell）、259（EMR Presto）、 260（EMR Impala）、900（实时同步）、 1089（跨租户节点）、1091（Hologres开发）、1093（Hologres SQL）、1100（赋值节点）、1221（PyODPS 3）。 |
 |---|---|---|---|
@@ -18946,7 +18921,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=TopTenElapsedTimeInstance &ProjectId=100000 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>6347364dadsfadf****</RequestId> <InstanceConsumeTimeRank>
@@ -18967,10 +18942,9 @@ http(s)://[Endpoint]/?Action=TopTenElapsedTimeInstance &ProjectId=100000 &Region
 </InstanceConsumeTimeRank>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "6347364dadsfadf****",
     "InstanceConsumeTimeRank": {
         "UpdateTime": 1600963200000,
@@ -18986,10 +18960,9 @@ http(s)://[Endpoint]/?Action=TopTenElapsedTimeInstance &ProjectId=100000 &Region
             "NodeId": 9527,
             "Consumed": 1000,
             "ProgramType": 10
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -19006,12 +18979,12 @@ http(s)://[Endpoint]/?Action=TopTenElapsedTimeInstance &ProjectId=100000 &Region
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### TopTenErrorTimesInstance
+#### 4.6.54 TopTenErrorTimesInstance
+
+调用TopTenErrorTimesInstance获取近一个月节点的出错排行。
 
 **请求参数**
 
@@ -19025,14 +18998,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| InstanceErrorR ank | Struct |  | 节点出错的排行数据。 |
-| ErrorRank | Array of ErrorRank |  | 节点近一个月出错排行数据。 |
+| InstanceErrorR ank | Struct |   | 节点出错的排行数据。 |
+| ErrorRank | Array of ErrorRank |   | 节点近一个月出错排行数据。 |
 | Count | Integer | 5 | 节点出错的次数。 |
 | NodeId | Long | 9527 | 节点的ID。 |
 | NodeName | String | 节点的名称 | 节点的名称。 |
 | Owner | String | 952795279527 | 节点责任人的阿里云UID。 |
-
-DataWorks
 
 | ProgramType | Integer | 10 | 节点任务的类型。 常用的类型如下： 6（Shell）、10（ODPS SQL）、11（ODPS MR）、23（数据集成）、24（ODPS Script）、99（虚拟节点）、221（PyODPS 2）、225（ODPS Spark）、227（EMR Hive）、228（EMR Spark）、229（EMR Spark SQL）、230（EMR MR）、239（OSS 对象检查）、257（EMR Shell）、258（EMR Spark Shell）、259（EMR Presto）、 260（EMR Impala）、900（实时同步）、 1089（跨租户节点）、1091（Hologres开发）、1093（Hologres SQL）、1100（赋值节点）、1221（PyODPS 3）。 |
 |---|---|---|---|
@@ -19048,7 +19019,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=TopTenErrorTimesInstance &ProjectId=9527 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>952795279527****</RequestId> <InstanceErrorRank>
@@ -19068,10 +19039,9 @@ http(s)://[Endpoint]/?Action=TopTenErrorTimesInstance &ProjectId=9527 &RegionId=
 </InstanceErrorRank>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "952795279527****",
     "InstanceErrorRank": {
         "UpdateTime": 1600963200000,
@@ -19086,10 +19056,9 @@ http(s)://[Endpoint]/?Action=TopTenErrorTimesInstance &ProjectId=9527 &RegionId=
             "NodeId": 9527,
             "ProgramType": 10,
             "Count": 5
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -19107,12 +19076,12 @@ http(s)://[Endpoint]/?Action=TopTenErrorTimesInstance &ProjectId=9527 &RegionId=
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | 参数错误。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### UpdateRemind
+#### 4.6.55 UpdateRemind
+
+调用UpdateRemind更新自定义报警规则。
 
 **请求参数**
 
@@ -19129,8 +19098,6 @@ DataWorks
 | ProjectId | Long | 否 | 1234 | 当RemindUnit（对象类型）为 PROJECT（工作空间）时，监控的工作空间ID。一个规则只能监控一个工作空间。 |
 | BizProcessIds | String | 否 | 1,2,3 | 当RemindUnit（对象类型）为 BIZPROCESS（业务流程）时，监控的业务流程ID。多个ID之间使用英文逗号（,） 分隔，一个规则最多监控5个业务流程。 |
 
-DataWorks
-
 | RemindType | String | 否 | FINISHED | 触发条件，包括FINISHED（完成）、 UNFINISHED（未完成）、ERROR（出错）、 CYCLE UNFINISHED（周期未完 _ 成）和TIMEOUT（运行超时）。 |
 |---|---|---|---|---|
 | MaxAlertTimes | Integer | 否 | 3 | 最大报警次数。最小值为1，最大值为 10，默认值为3。 |
@@ -19138,8 +19105,6 @@ DataWorks
 | Detail | String | 否 | {"hour":23,"min u":59} | 不同触发条件的说明如下： 当RemindType（触发条件）为 FINISHED（完成）时，传空。 当RemindType（触发条件）为 UNFINISHED（未完成）时，传参格式为{"hour":23,"minu":59}。hour的取值范围为0,47，minu的取值范围为0,59。 当RemindType（触发条件）为 ERROR（出错）时，传空。 当RemindType（触发条件）为 CYCLE UNFINISHED（周期未完成） _ 时，传参格式为 {"1":"05:50","2":"06:50","3":"07:5 0","4":"08:50","5":"09:50","6":"10: 50","7":"11:50","8":"12:50","9":"13 :50","10":"14:50","11":"15:50","12 ":"16:50","13":"17:50","14":"18:50 ","15":"19:50","16":"20:50","17":"2 1:50","18":"22:50","19":"23:50","2 0":"24:50","21":"25:50"}。JSON字符串key为周期号，取值范围为1,288。value为该周期对应的未完成时间，格式为hh:mm。hh的取值范围为0,47，mm的取值范围为0,59。 当RemindType（触发条件）为 TIMEOUT（运行超时）时，传参格式为 1800，单位为秒。即从开始运行起，运行超过30分钟触发报警。 |
 | AlertUnit | String | 否 | OWNER | 报警接收对象的粒度，包括OWNER（任务责任人）和OTHER（指定的人）。 |
 | AlertMethods | String | 否 | SMS,MAIL | 报警的方式，包括MAIL（邮件）、 SMS（短信）和 PHONE（电话，仅 DataWorks专业版及以上版本支持） 。多个报警方式之间使用英文逗号（,）分隔。 |
-
-DataWorks
 
 | AlertTargets | String | 否 | 9527952795279 527 | 当AlertUnit（报警接收人）为 OWNER（节点任务责任人）时，传空。 当AlertUnit报警接收人）为 OTHER（指定的人）时，传入指定用户的阿里云UID。多个阿里云UID之间使用英文逗号（,）分隔，最多支持10个。 |
 |---|---|---|---|---|
@@ -19162,27 +19127,27 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &RemindId=1234
+http(s)://[Endpoint]/?Action=UpdateRemind &RegionId=default &RemindId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -19198,14 +19163,14 @@ DataWorks
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | 工作空间无权限。 |
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
-
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 |---|---|---|---|
 | 500 | Forbidden.Wkbenc h.RemindNoPermis sion | You are not authorized to modify the reminder. | 无权限修改该自定义提醒规则。 |
 | 500 | Invalid.Wkbench.Re mindNotExist | The reminder does not exist. | 自定义提醒规则不存在。 |
 
-#### UpdateNodeOwner
+#### 4.6.56 UpdateNodeOwner
+
+调用UpdateNodeOwner修改目标节点的负责人。
 
 **请求参数**
 
@@ -19226,28 +19191,30 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&NodeId=1234 &ProjectEnv=PROD &RegionId=default &UserId=19337906836551
+http(s)://[Endpoint]/?Action=UpdateNodeOwner &NodeId=1234 &ProjectEnv=PROD &RegionId=default &UserId=19337906836551
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "Success": true
-}
 ```
 
-#### UpdateNodeRunMode
+`}`
+
+#### 4.6.57 UpdateNodeRunMode
+
+调用UpdateNodeRunMode冻结或解冻目标节点。
 
 **请求参数**
 
@@ -19264,8 +19231,6 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
 | RequestId | String | E6F0DBDD- 5AD**** | 请求的ID。用于定位日志，排查问题。 |
 |---|---|---|---|
 | Success | Boolean | true | 返回值。取值如下： true：表示调用成功。 false：表示调用失败。 |
@@ -19275,27 +19240,29 @@ DataWorks
 请求示例
 
 ```
-&NodeId=1234 &ProjectEnv=PROD &RegionId=default &SchedulerType=0
+http(s)://[Endpoint]/?Action=UpdateNodeRunMode &NodeId=1234 &ProjectEnv=PROD &RegionId=default &SchedulerType=0
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "E6F0DBDD-5AD****",
     "Success": true
-}
 ```
 
-### 数据质量
+`}`
 
-#### CreateQualityEntity
+### 4.7 数据质量
+
+#### 4.7.1 CreateQualityEntity
+
+调用CreateQualityEntity创建数据质量的分区表达式。
 
 **请求参数**
 
@@ -19303,8 +19270,6 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | CreateQualityEn tity | 系统规定参数。取值： CreateQualityEntity。 |
 | EntityLevel | Integer | 是 | 0 | 包括0（SQl完成时校检）和1（task完成时校检）。 |
-
-DataWorks
 
 | EnvType | String | 是 | ODPS | 引擎或者数据源的类型。 |
 |---|---|---|---|---|
@@ -19332,26 +19297,28 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreateQualityEntity &EntityLevel=0 &EnvType=ODPS &MatchExpression=dt=$[yyyymmdd] &ProjectName=autotest &RegionId=default &TableName=dual
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>011e1231u3****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>12345</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>Your project is not relative with your account.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "011e1231u3****",
     "HttpStatusCode": 200,
     "Data": 12345,
     "ErrorCode": 401,
     "ErrorMessage": "Your project is not relative with your account.",
     "Success": true
-}
 ```
 
-#### CreateQualityFollower
+`}`
+
+#### 4.7.2 CreateQualityFollower
+
+调用CreateQualityFollower创建分区表达式的订阅人。
 
 **请求参数**
 
@@ -19369,8 +19336,6 @@ http(s)://[Endpoint]/?Action=CreateQualityEntity &EntityLevel=0 &EnvType=ODPS &M
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
 | Data | Integer | 12345 | 新创建的订阅关系ID。 |
 |---|---|---|---|
 | ErrorCode | String | 401 | 错误码。 |
@@ -19387,28 +19352,28 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreateQualityFollower &AlarmMode=1 &EntityId=12345 &Follower=123 &ProjectName=autotest &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ecb967ec-c137-48****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>12345</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "ecb967ec-c137-48****",
     "HttpStatusCode": 200,
     "Data": 12345,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
-#### CreateQualityRelativeNode
+#### 4.7.3 CreateQualityRelativeNode
+
+调用CreateQualityRelativeNode创建分区表达式关联。
 
 **请求参数**
 
@@ -19434,8 +19399,6 @@ DataWorks
 | ErrorMessage | String | You have no permission. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP错误码。 |
 
-DataWorks
-
 | RequestId | String | ecb967ec-c137- 48**** | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 调用是否成功。 |
@@ -19445,36 +19408,36 @@ DataWorks
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateQualityRelativeNode &MatchExpression=ODPS &NodeId=12321 &ProjectId=123 &ProjectName=autotest &RegionId=default &TableName=dual
+http(s)://[Endpoint]/?Action=CreateQualityRelativeNode &EnvType=CreateQualityRelativeNode &MatchExpression=ODPS &NodeId=12321 &ProjectId=123 &ProjectName=autotest &RegionId=default &TableName=dual &TargetNodeProjectId=1234 &TargetNodeProjectName=autotest
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ecb967ec-c137-48****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "ecb967ec-c137-48****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### CreateQualityRule
+`}`
+
+#### 4.7.4 CreateQualityRule
+
+调用CreateQualityRule创建质量监控规则。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | CreateQualityRu le | 系统规定参数。取值： CreateQualityRule。 |
 |---|---|---|---|---|
@@ -19494,8 +19457,6 @@ DataWorks
 | Property | String | 否 | table id _ | 规则的字段。如果是表级别校验，行数为 table count、大小为table size字段。 _ _ |
 | PropertyType | String | 否 | bigint | 字段的类型，表级table，字段级填写 bigint等。 |
 | WhereCondition | String | 否 | table id>1 _ | 过滤条件或自定义SQL。 |
-
-DataWorks
 
 | CriticalThreshold | String | 否 | 20 | 橙色阈值。 |
 |---|---|---|---|---|
@@ -19518,29 +19479,31 @@ DataWorks
 请求示例
 
 ```
-&BlockType=0 &Checker=9 &EntityId=15224 &MethodName=count/table_count &PredictType=0 &ProjectName=autotest &RegionId=default &RuleName=1234 &RuleType=0
+http(s)://[Endpoint]/?Action=CreateQualityRule &BlockType=0 &Checker=9 &EntityId=15224 &MethodName=count/table_count &PredictType=0 &ProjectName=autotest &RegionId=default &RuleName=1234 &RuleType=0
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ecb967ec-c137-48****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>12345</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "ecb967ec-c137-48****",
     "HttpStatusCode": 200,
     "Data": 12345,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### DeleteQualityEntity
+`}`
+
+#### 4.7.5 DeleteQualityEntity
+
+调用DeleteQualityEntity删除分区表达式。
 
 **请求参数**
 
@@ -19559,8 +19522,6 @@ DataWorks
 | Data | Boolean | true | 调用DeleteQualityEntity接口后，返回的结果详情。 |
 | ErrorCode | String | 401 | 错误码。 |
 
-DataWorks
-
 | ErrorMessage | String | You have no permission. | 错误信息。 |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | HTTP错误码。 |
@@ -19575,33 +19536,33 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteQualityEntity &EntityId=1234 &EnvType=ODPS &ProjectName=autotest &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ecb967ec-c137-48****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "ecb967ec-c137-48****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### DeleteQualityFollower
+`}`
+
+#### 4.7.6 DeleteQualityFollower
+
+调用DeleteQualityFollower删除分区表达式的订阅人。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | DeleteQualityFol lower | 系统规定参数。取值： DeleteQualityFollower。 |
 |---|---|---|---|---|
@@ -19628,26 +19589,28 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteQualityFollower &FollowerId=1234 &ProjectName=autotest &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>6d739ef6-098a-47****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "6d739ef6-098a-47****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### DeleteQualityRelativeNode
+`}`
+
+#### 4.7.7 DeleteQualityRelativeNode
+
+调用DeleteQualityRelativeNode删除调度关联。
 
 **请求参数**
 
@@ -19669,8 +19632,6 @@ DataWorks `JSON` 格式
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
 | Data | Boolean | true | 删除是否成功。 |
 |---|---|---|---|
 | ErrorCode | String | 401 | 错误码。 |
@@ -19684,29 +19645,31 @@ DataWorks
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DeleteQualityRelativeNode &EnvType=ODPS &MatchExpression=dt=$[yyyymmdd] &NodeId=156234 &ProjectId=12345 &ProjectName=autotest &RegionId=default &TableName=dual
+http(s)://[Endpoint]/?Action=DeleteQualityRelativeNode &EnvType=ODPS &MatchExpression=dt=$[yyyymmdd] &NodeId=156234 &ProjectId=12345 &ProjectName=autotest &RegionId=default &TableName=dual &TargetNodeProjectId=12345 &TargetNodeProjectName=autotest
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>6d739ef6-098a-47****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "6d739ef6-098a-47****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### DeleteQualityRule
+`}`
+
+#### 4.7.8 DeleteQualityRule
+
+调用DeleteQualityRule删除规则。
 
 **请求参数**
 
@@ -19728,34 +19691,34 @@ http(s)://[Endpoint]/?Action=DeleteQualityRelativeNode &EnvType=ODPS &MatchExpre
 | RequestId | String | 6d739ef6-098a- 47**** | 请求ID。 |
 | Success | Boolean | true | 调用是否成功。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
-&ProjectName=autotest &RegionId=default &RuleId=1234
+http(s)://[Endpoint]/?Action=DeleteQualityRule &ProjectName=autotest &RegionId=default &RuleId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>6d739ef6-098a-47****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "6d739ef6-098a-47****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### GetQualityEntity
+`}`
+
+#### 4.7.9 GetQualityEntity
+
+调用GetQualityEntity获取分区表达式。
 
 **请求参数**
 
@@ -19767,8 +19730,6 @@ http(s)://[Endpoint]/?Action=DeleteQualityRelativeNode &EnvType=ODPS &MatchExpre
 | ProjectName | String | 是 | autotest | 引擎或数据源的名称。您可以从数据源配置中获取名称。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 | TableName | String | 是 | dual | 分区表名称。您可以调用查看分区表名称。 |
 |---|---|---|---|---|
 
@@ -19776,7 +19737,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of EntityDto |  | 返回信息。 |
+| Data | Array of EntityDto |   | 返回信息。 |
 | CreateTime | Long | 1593964800000 | 创建分区表达式的时间。 |
 | EntityLevel | Integer | 0 | 分区表达式的级别，取值如下： 0（SQL级别），指每段SQL语句执行完毕后都会触发DQC执行校验。 1（任务级别），指所有SQL语句均执行完毕后，统一进行校验。 |
 | EnvType | String | odps | 引擎或者数据源的类型。 |
@@ -19789,8 +19750,6 @@ DataWorks
 | OnDuty | String | 1822931**** | 责任人，指配置分区表达式的账号ID。 |
 | ProjectName | String | autotest | 引擎或数据源的名称。 |
 | RelativeNode | String | [{"projectName":"x c DP****","nodeId" _ :7000026****}] | 分区表达式关联的调度节点信息，包括： ProjectName，调度节点所在的项目名称。 NodeID，调度节点的节点ID。 |
-
-DataWorks
 
 | Sql | Integer | 0 | SQL级别的分区表达式。 |
 |---|---|---|---|
@@ -19807,10 +19766,10 @@ DataWorks
 请求示例
 
 ```
-&EnvType=odps &MatchExpression=dt=$[yyyymmdd] &ProjectName=autotest &RegionId=default &TableName=dual
+http(s)://[Endpoint]/?Action=GetQualityEntity &EnvType=odps &MatchExpression=dt=$[yyyymmdd] &ProjectName=autotest &RegionId=default &TableName=dual
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>6d739ef6-098a-47****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -19832,10 +19791,9 @@ DataWorks
 </Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "6d739ef6-098a-47****",
     "HttpStatusCode": 200,
     "Data": {
@@ -19854,16 +19812,21 @@ DataWorks
         "Id": 4003918,
         "RelativeNode": "[{\"projectName\":\"xc_DP****\",\"nodeId\":7000026****}]",
         "EntityLevel": 0
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### GetQualityFollower
+`}`
 
-DataWorks
+#### 4.7.10 GetQualityFollower
+
+调用GetQualityFollower获取分区表达式的订阅人。
 
 **请求参数**
 
@@ -19878,7 +19841,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of Follower |  | 订阅关系的信息。 |
+| Data | Array of Follower |   | 订阅关系的信息。 |
 | AlarmMode | Integer | 1 | 告警的模式，取值如下： 1（邮件） 2（邮件和短信） 4（钉钉群机器人或hook） 5（钉钉群机器人@ALL） |
 | EntityId | String | 1234 | 分区表达式的ID。 |
 | Follower | String | 1234 | 订阅人，用于接收告警信息。 |
@@ -19888,8 +19851,6 @@ DataWorks
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 | ErrorMessage | String | You have no permission. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP返回码。 |
-
-DataWorks
 
 | RequestId | String | 38cbdef0-f6cf-49 | 请求ID。 |
 |---|---|---|---|
@@ -19903,7 +19864,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetQualityFollower &EntityId=1234 &ProjectName=autotest &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>38cbdef0-f6cf-49</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -19916,10 +19877,9 @@ http(s)://[Endpoint]/?Action=GetQualityFollower &EntityId=1234 &ProjectName=auto
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "38cbdef0-f6cf-49",
     "HttpStatusCode": 200,
     "Data": {
@@ -19929,16 +19889,21 @@ http(s)://[Endpoint]/?Action=GetQualityFollower &EntityId=1234 &ProjectName=auto
         "Follower": 1234,
         "Id": 123,
         "AlarmMode": 1
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
-#### GetQualityRule
+#### 4.7.11 GetQualityRule
+
+调用GetQualityRule获取校验规则的信息。
 
 **请求参数**
 
@@ -19953,7 +19918,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 获取的规则信息。 |
+| Data | Struct |   | 获取的规则信息。 |
 | BlockType | Integer | 1 | 校验规则的强弱。强弱表示规则的重要程度。取值如下： 1，表示强规则。 0，表示弱规则。 您可以根据实际需求设置重要的规则为强规则。 如果使用强规则并触发了红色告警，则会阻塞调度任务。 |
 | Checker | Integer | 9 | 校验器ID。该字段对应前端的ID标识，需要由 pkId转换。 |
 | CheckerName | String | compared with a fixed value | 校验器的名称。 |
@@ -19961,8 +19926,6 @@ DataWorks
 | CriticalThresho ld | String | 20 | 红色告警阈值。表示与样本预期的偏离程度。您可以根据业务需求自定义该阈值。使用强规则并触发红色阈值，会阻塞调度任务。 |
 | EntityId | Long | 165523 | 分区表达式的ID。 |
 | ExpectValue | String | 30 | 期望值。 |
-
-DataWorks
 
 | FixCheck | Boolean | true | 固定值校验。 |
 |---|---|---|---|
@@ -19981,8 +19944,6 @@ DataWorks
 | WarningThres hold | String | 10 | 橙色告警阈值。表示与样本预期的偏离程度，您可以根据业务需求自定义该阈值。 |
 | WhereConditio n | String | id>10 | 校验任务使用的过滤条件或自定义SQL语句。 |
 
-DataWorks
-
 | ErrorCode | String | 401 | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | You have no permission. | 错误信息。 |
@@ -19995,10 +19956,10 @@ DataWorks
 请求示例
 
 ```
-&ProjectName=autotest &RegionId=default &RuleId=1234
+http(s)://[Endpoint]/?Action=GetQualityRule &ProjectName=autotest &RegionId=default &RuleId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>576b9457-2cf5-4****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -20035,10 +19996,9 @@ DataWorks
 </Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "576b9457-2cf5-4****",
     "HttpStatusCode": 200,
     "Data": {
@@ -20072,14 +20032,19 @@ DataWorks
 
 ```json
         "TemplateId": 7
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### ListQualityResultsByEntity
+`}`
+
+#### 4.7.12 ListQualityResultsByEntity
 
 调用ListQualityResultsByEntity，根据分区表达式查询历史校验结果。
 
@@ -20090,8 +20055,6 @@ DataWorks
 | Action | String | 是 | ListQualityResult sByEntity | 系统规定参数。取值： ListQualityResultsByEntity。 |
 | EndDate | String | 是 | 2020-09-21 00:00:00 | 查询校验结果的截止时间，格式为yyyy- MM-dd HH:mm:ss。 |
 | EntityId | Integer | 是 | 152322134 | 分区表达式ID。您可以调用 GetQualityEntity获取分区表达式ID。 |
-
-DataWorks
 
 | PageNumber | Integer | 是 | 1 | 页码数。 |
 |---|---|---|---|---|
@@ -20104,17 +20067,15 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 校验结果的顶层结构体。 |
+| Data | Struct |   | 校验结果的顶层结构体。 |
 | PageNumber | Integer | 1 | 页码数。 |
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。 |
-| RuleChecks | Array of RuleChecks |  | 校验结果的列表。 |
+| RuleChecks | Array of RuleChecks |   | 校验结果的列表。 |
 | ActualExpressi on | String | ds=20200912 | 被校验的数据源表的实际分区。 |
 | BeginTime | Long | 1600704000000 | 执行校验操作的开始时间。 |
 | BizDate | Long | 1600704000000 | 业务日期。如果被校验的业务主体为离线数据， 则业务日期通常为执行校验操作的前一天。 |
 | BlockType | Integer | 0 | 校验规则的强弱。强弱表示规则的重要程度。取值如下： 1，表示强规则。 0，表示弱规则。 您可以根据实际需求设置重要的规则为强规则。如果使用强规则并触发了红色告警，则会阻塞调度任务。 |
 | CheckResult | Integer | 0 | 校验结果： 0：正常 1：橙色告警 2：红色告警 |
-
-DataWorks
 
 | CheckResultSt atus | Integer | 0 | 校验结果状态： 0：正常 1：橙色告警 2：红色告警 |
 |---|---|---|---|
@@ -20132,8 +20093,6 @@ DataWorks
 | ExternalType | String | CWF | 调度系统的类型。目前仅支持CWF。 |
 | FixedCheck | Boolean | false | 是否为固定值校验。取值如下： true：是固定值校验。 false：非固定值校验。 |
 
-DataWorks
-
 | Id | Integer | 121212121 | 主键ID。 |
 |---|---|---|---|
 | IsPrediction | Boolean | false | 是否为预测的结果。取值如下： true：是预测的结果。 false：不是预测的结果。 |
@@ -20143,7 +20102,7 @@ DataWorks
 | Op | String | > | 比较符。 |
 | ProjectName | String | autotest | 需要进行数据质量校验的引擎或者数据源名称。 |
 | Property | String | type | 规则属性的字段，即被校验数据源表的column 名称。 |
-| ReferenceValu e | Array of ReferenceValu e |  | 历史样本值。 |
+| ReferenceValu e | Array of ReferenceValu e |   | 历史样本值。 |
 | BizDate | String | 2020-12-03 | 业务日期。如果被校验的业务主体为离线数据， 则业务日期通常为执行校验操作的前一天。 |
 | DiscreteProper ty | String | 0 | 通过group by分组后的样本字段取值。例如 group by性别字段，则DiscreteProperty为男生、女生和null。 |
 | SingleCheckRe sult | Integer | 0 | 校验结果。 |
@@ -20151,12 +20110,10 @@ DataWorks
 | Value | Float | 19 | 校验值。 |
 | ResultString | String | test | 校验结果的字符串形式。 |
 
-DataWorks
-
 | RuleId | Integer | 123123232 | 规则ID。 |
 |---|---|---|---|
 | RuleName | String | 规则的名称。 | 规则的名称。 |
-| SampleValue | Array of SampleValue |  | 当前使用的样本。 |
+| SampleValue | Array of SampleValue |   | 当前使用的样本。 |
 | BizDate | String | 2020-12-03 | 业务日期。如果被校验的业务主体为离线数据， 则业务日期通常为执行校验操作的前一天。 |
 | DiscreteProper ty | String | 0 | 通过group by分组后的样本字段取值。例如 group by性别字段，则DiscreteProperty为男生、女生和null。 |
 | Value | Float | 19 | 当前样本值。 |
@@ -20173,8 +20130,6 @@ DataWorks
 | ErrorCode | String | 401 | 错误码。 |
 | ErrorMessage | String | You have no permission. | 错误信息。 |
 
-DataWorks
-
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 |---|---|---|---|
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
@@ -20188,7 +20143,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListQualityResultsByEntity &EndDate=2020-09-21 00:00:00 &EntityId=152322134 &PageNumber=1 &PageSize=10 &ProjectName=autotest &StartDate=2020-09-20 00:00:00
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -20223,8 +20178,6 @@ http(s)://[Endpoint]/?Action=ListQualityResultsByEntity &EndDate=2020-09-21 00:0
         <ResultString>test</ResultString>
         <DateType>YMD</DateType>
 ```
-
-DataWorks
 
 ```xml
         <Property>type</Property>
@@ -20268,7 +20221,7 @@ DataWorks
 </Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>false</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data": {"TotalCount":"50","PageSize":"10","PageNumber":"1","RuleChecks": [{"Op":">","TaskId":"16008552981681a0d6****","CheckerName":"fulx","DiscreteCheck":"true", ndTime":"1600704000000","ProjectName":"autotest","ExpectValue":"200","WarningThreshold":" 1","RuleId":"123123232","BeginTime":"1600704000000","WhereCondition":"id>0","CheckResultS tus":"0","MatchExpression":"ds=$[yyyymmdd]","UpperValue":"25555","IsPrediction":"false","
@@ -20280,7 +20233,7 @@ DataWorks
 验","FixedCheck":"false","TimeCost":"202","MethodName":"count_distinct","ResultString":"te t","DateType":"YMD","Property":"type","RuleName":"规则的名称。 ","TemplateId":"5","BizDate":"1600704000000","Comment":"校验规则的描述。","CriticalThresho ld":"0.5","ExternalId":"1112323123","CheckerType":"1","Trend":"abs","ExternalType":"CWF", heckerId":"7","EntityId":"15432322","TableName":"dual","BlockType":"0","ActualExpression" ds=20200912","Id":"121212121","LowerValue":"2344","ReferenceValue": [{"SingleCheckResult":"0","Value":"19","DiscreteProperty":"0","BizDate":"2020-12-03","T hreshold":"0.5"}],"SampleValue":[{"Value":"19","DiscreteProperty":"0","BizDate":"2020-1 2-03"}]}]},"ErrorCode":"401","ErrorMessage":"You have no permission.","Success":"false"}
 ```
 
-#### ListQualityResultsByRule
+#### 4.7.13 ListQualityResultsByRule
 
 调用ListQualityResultsByRule，根据校验规则校验数据源的质量，并查询校验结果。
 
@@ -20297,16 +20250,14 @@ DataWorks
 | StartDate | String | 是 | 2020-09-20 00:00:00 | 查询校验结果的开始时间，格式为yyyy- MM-dd HH:mm:ss。 |
 | RegionId | String | 否 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 校验结果的顶层结构体。 |
+| Data | Struct |   | 校验结果的顶层结构体。 |
 | PageNumber | Integer | 1 | 页码数。 |
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。 |
-| RuleChecks | Array of RuleChecks |  | 校验结果的列表。 |
+| RuleChecks | Array of RuleChecks |   | 校验结果的列表。 |
 | ActualExpressi on | String | ds=20200925 | 被校验的数据源表的实际分区。 |
 | BeginTime | Long | 1600704000000 | 执行校验操作的开始时间。 |
 | BizDate | Long | 1600704000000 | 业务日期。如果被校验的业务主体为离线数据， 则业务日期通常为执行校验操作的前一天。 |
@@ -20318,8 +20269,6 @@ DataWorks
 | CheckerType | Integer | 0 | 校验器的类型。 |
 | Comment | String | 校验规则的描述。 | 校验规则的描述。 |
 | CriticalThresho ld | Float | 0.6 | 红色阈值。表示与样本预期的偏离程度。您可以根据业务需求自定义该阈值。使用强规则并触发红色阈值，会阻塞调度任务。 |
-
-DataWorks
 
 | DateType | String | YMD | 调度周期的类型。通常为YMD，即年任务、月任务、天任务。 |
 |---|---|---|---|
@@ -20337,12 +20286,10 @@ DataWorks
 | MethodName | String | max | 采集样本数据的方法。包括avg、count、 sum、min、max、count distinct、 _ user defined、table count、table size、 _ _ _ table dt load count、 _ _ _ table dt refuseload count、null value、 _ _ _ _ null value/table count、(table count- _ _ _ count distinct)/table count、table count- _ _ _ count distinct等。 _ |
 | Op | String | > | 比较符。 |
 
-DataWorks
-
 | ProjectName | String | autotest | 需要进行数据质量校验的引擎或者数据源名称。 |
 |---|---|---|---|
 | Property | String | type | 规则属性的字段，即被校验数据源表的column 名称。 |
-| ReferenceValu e | Array of ReferenceValu e |  | 历史样本值。 |
+| ReferenceValu e | Array of ReferenceValu e |   | 历史样本值。 |
 | BizDate | Long | 1600704000000 | 业务日期。如果被校验的业务主体为离线数据， 则业务日期通常为执行校验操作的前一天。 |
 | DiscreteProper ty | String | type1 | 通过group by分组后的样本字段取值。例如 group by性别字段，则DiscreteProperty为男生、女生和null。 |
 | SingleCheckRe sult | Integer | 2 | 校验结果的字符串。 |
@@ -20351,14 +20298,12 @@ DataWorks
 | ResultString | String | ResultString | 校验结果的字符串形式。 |
 | RuleId | Integer | 123421 | 规则ID。 |
 | RuleName | String | 规则的名称。 | 规则的名称。 |
-| SampleValue | Array of SampleValue |  | 当前使用的样本。 |
+| SampleValue | Array of SampleValue |   | 当前使用的样本。 |
 | BizDate | Long | 1600704000000 | 业务日期。如果被校验的业务主体为离线数据， 则业务日期通常为执行校验操作的前一天。 |
 | DiscreteProper ty | String | type2 | 通过group by分组后的样本字段取值。例如 group by性别字段，则DiscreteProperty为男生、女生和null。 |
 | Value | Float | 23 | 样本值。 |
 | TableName | String | dual | 进行校验的表名称。 |
 | TaskId | String | 16008552981681a 0d6**** | 校验任务的ID。 |
-
-DataWorks
 
 | TemplateId | Integer | 5 | 使用的校验模板的ID。 |
 |---|---|---|---|
@@ -20383,18 +20328,14 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListQualityResultsByRule &EndDate=2020-09-22 00:00:00 &PageNumber=1 &PageSize=10 &ProjectName=autotest &RuleId=152322134 &StartDate=2020-09-20 00:00:00
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ReqestId>0000ABCDEFG*****</ReqestId>
 ```
 
-DataWorks
-
-|  | <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data> <TotalCount>200</TotalCount> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <RuleChecks> <Op>&gt;</Op> <TaskId>16008552981681a0d6****</TaskId> <CheckerName>fulx</CheckerName> <DiscreteCheck>false</DiscreteCheck> <EndTime>1600704000000</EndTime> <ProjectName>autotest</ProjectName> <ExpectValue>90</ExpectValue> <WarningThreshold>0.1</WarningThreshold> <RuleId>123421</RuleId> <BeginTime>1600704000000</BeginTime> <WhereCondition>type!='type2'</WhereCondition> <CheckResultStatus>2</CheckResultStatus> <MatchExpression>ds=$[yyyymmdd]</MatchExpression> <UpperValue>22200</UpperValue> <IsPrediction>false</IsPrediction> <CheckResult>2</CheckResult> <TemplateName>字段唯一值个数期望值校验</TemplateName> <FixedCheck>false</FixedCheck> <TimeCost>10</TimeCost> <MethodName>max</MethodName> <ResultString>ResultString</ResultString> <DateType>YMD</DateType> <Property>type</Property> <RuleName>规则的名称。</RuleName> <TemplateId>5</TemplateId> <BizDate>1600704000000</BizDate> <Comment>校验规则的描述。</Comment> <CriticalThreshold>0.6</CriticalThreshold> <ExternalId>123112232</ExternalId> <CheckerType>0</CheckerType> <Trend>up</Trend> <ExternalType>CWF</ExternalType> <CheckerId>7</CheckerId> <EntityId>14534343</EntityId> <TableName>dual</TableName> <BlockType>1</BlockType> <ActualExpression>ds=20200925</ActualExpression> <Id>2231123</Id> <LowerValue>2344</LowerValue> <ReferenceValue> <SingleCheckResult>2</SingleCheckResult> <Value>20</Value> <DiscreteProperty>type1</DiscreteProperty> <BizDate>1600704000000</BizDate> <Threshold>0.2</Threshold> </ReferenceValue> <SampleValue> <Value>23</Value> |  |
+|   | <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data> <TotalCount>200</TotalCount> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <RuleChecks> <Op>&gt;</Op> <TaskId>16008552981681a0d6****</TaskId> <CheckerName>fulx</CheckerName> <DiscreteCheck>false</DiscreteCheck> <EndTime>1600704000000</EndTime> <ProjectName>autotest</ProjectName> <ExpectValue>90</ExpectValue> <WarningThreshold>0.1</WarningThreshold> <RuleId>123421</RuleId> <BeginTime>1600704000000</BeginTime> <WhereCondition>type!='type2'</WhereCondition> <CheckResultStatus>2</CheckResultStatus> <MatchExpression>ds=$[yyyymmdd]</MatchExpression> <UpperValue>22200</UpperValue> <IsPrediction>false</IsPrediction> <CheckResult>2</CheckResult> <TemplateName>字段唯一值个数期望值校验</TemplateName> <FixedCheck>false</FixedCheck> <TimeCost>10</TimeCost> <MethodName>max</MethodName> <ResultString>ResultString</ResultString> <DateType>YMD</DateType> <Property>type</Property> <RuleName>规则的名称。</RuleName> <TemplateId>5</TemplateId> <BizDate>1600704000000</BizDate> <Comment>校验规则的描述。</Comment> <CriticalThreshold>0.6</CriticalThreshold> <ExternalId>123112232</ExternalId> <CheckerType>0</CheckerType> <Trend>up</Trend> <ExternalType>CWF</ExternalType> <CheckerId>7</CheckerId> <EntityId>14534343</EntityId> <TableName>dual</TableName> <BlockType>1</BlockType> <ActualExpression>ds=20200925</ActualExpression> <Id>2231123</Id> <LowerValue>2344</LowerValue> <ReferenceValue> <SingleCheckResult>2</SingleCheckResult> <Value>20</Value> <DiscreteProperty>type1</DiscreteProperty> <BizDate>1600704000000</BizDate> <Threshold>0.2</Threshold> </ReferenceValue> <SampleValue> <Value>23</Value> |   |
 |---|---|---|
-
-DataWorks
 
 ```xml
             <Value>23</Value>
@@ -20417,7 +20358,9 @@ DataWorks
 验","FixedCheck":"false","TimeCost":"10","MethodName":"max","ResultString":"ResultString" DateType":"YMD","Property":"type","RuleName":"规则的名称。 ","TemplateId":"5","BizDate":"1600704000000","Comment":"校验规则的描述。","CriticalThresho ld":"0.6","ExternalId":"123112232","CheckerType":"0","Trend":"up","ExternalType":"CWF","C ckerId":"7","EntityId":"14534343","TableName":"dual","BlockType":"1","ActualExpression":" =20200925","Id":"2231123","LowerValue":"2344","ReferenceValue": [{"SingleCheckResult":"2","Value":"20","DiscreteProperty":"type1","BizDate":"160070400000 ,"Threshold":"0.2"}],"SampleValue": [{"Value":"23","DiscreteProperty":"type2","BizDate":"1600704000000"}]}]},"ErrorCode":"401 "ErrorMessage":"You have no permission.","Success":"false"}
 ```
 
-#### ListQualityRules
+#### 4.7.14 ListQualityRules
+
+调用ListQualityRules根据分区表达式获取校验规则列表。
 
 **请求参数**
 
@@ -20428,8 +20371,6 @@ DataWorks
 | PageNumber | Integer | 是 | 1 | 页码数。 |
 | PageSize | Integer | 是 | 20 | 每页显示的条数，默认为10条，最大为 100条。 |
 
-DataWorks
-
 | ProjectName | String | 是 | autotest | 引擎或者数据源的名称。您可以从数据源配置中获取名称。 |
 |---|---|---|---|---|
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
@@ -20438,10 +20379,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 获取的规则列表。 |
+| Data | Struct |   | 获取的规则列表。 |
 | PageNumber | Integer | 1 | 页码数。 |
 | PageSize | Integer | 20 | 每页显示的条数，默认为10条，最大为100条。 |
-| Rules | Array of Rules |  | 校验规则的详情。 |
+| Rules | Array of Rules |   | 校验规则的详情。 |
 | BlockType | Integer | 0 | 校验规则的强弱。强弱表示规则的重要程度。取值如下： 1，表示强规则。 0，表示弱规则。 您可以根据实际需求设置重要的规则为强规则。 如果使用强规则并触发了红色告警，则会阻塞调度任务。 |
 | CheckerId | Integer | 7 | 校验器ID。 |
 | Comment | String | 校验表规则 | 规则的描述信息。 |
@@ -20450,8 +20391,6 @@ DataWorks
 | ExpectValue | String | 1000 | 期望值。 |
 | FixCheck | Boolean | true | 是否为强规则。 |
 | HistoryCritical Threshold | String | history max:80%,history min:50% | 历史红色告警阈值。 |
-
-DataWorks
 
 | HistoryWarnin gThreshold | String | history max:40%,history min:10% | 历史橙色告警阈值。 |
 |---|---|---|---|
@@ -20470,8 +20409,6 @@ DataWorks
 | TemplateNam e | String | sql任务表行数，1、 7、30天波动检测 | 使用的校验模板的名称。 |
 | Trend | String | abs | 校验结果的趋势。 |
 
-DataWorks
-
 | WarningThres hold | String | 10 | 橙色告警阈值。表示与样本预期的偏离程度，您可以根据业务需求自定义该阈值。 |
 |---|---|---|---|
 | TotalCount | Long | 400 | 返回数据总量。 |
@@ -20486,10 +20423,10 @@ DataWorks
 请求示例
 
 ```
-&EntityId=1234 &PageNumber=1 &PageSize=20 &ProjectName=autotest &RegionId=default
+http(s)://[Endpoint]/?Action=ListQualityRules &EntityId=1234 &PageNumber=1 &PageSize=20 &ProjectName=autotest &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>38cbdef0-f6cf-49****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -20523,7 +20460,7 @@ DataWorks
         <BlockType>0</BlockType>
 ```
 
-`<TemplateName>sql`任务表行数，1、7、`30`天波动检测`</TemplateName>`
+`<TemplateName>sql`任务表行数，`1`、`7`、`30`天波动检测`</TemplateName>`
 
 ```xml
         <MethodName>count/table_count</MethodName>
@@ -20535,10 +20472,9 @@ DataWorks
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "38cbdef0-f6cf-49****",
     "HttpStatusCode": 200,
     "Data": {
@@ -20570,7 +20506,7 @@ DataWorks
             "BlockType": 0,
 ```
 
-`"TemplateName": "sql`任务表行数，1、7、`30`天波动检测`",`
+`"TemplateName": "sql`任务表行数，`1`、`7`、`30`天波动检测`",`
 
 ```json
             "MethodName": "count/table_count",
@@ -20578,23 +20514,27 @@ DataWorks
             "Property": "id",
             "PropertyKey": "table_count",
             "TemplateId": 7
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-#### UpdateQualityFollower
+`}`
+
+#### 4.7.15 UpdateQualityFollower
+
+调用UpdateQualityFollower更新订阅关系。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | UpdateQualityFo llower | 系统规定参数。取值： UpdateQualityFollower。 |
-
-DataWorks
 
 | AlarmMode | Integer | 是 | 2 | 订阅关系：1表示邮件、2表示邮件和短信、4表示钉钉群机器人、5表示钉钉群机器人@all。 |
 |---|---|---|---|---|
@@ -20622,26 +20562,28 @@ DataWorks
 http(s)://[Endpoint]/?Action=UpdateQualityFollower &AlarmMode=2 &Follower=1912232**** &FollowerId=1234 &ProjectName=autotest &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>576b9457-2cf5-4****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>401</ErrorCode> <ErrorMessage>You have no permission</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "576b9457-2cf5-4****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 401,
     "ErrorMessage": "You have no permission",
     "Success": true
-}
 ```
 
-#### UpdateQualityRule
+`}`
+
+#### 4.7.16 UpdateQualityRule
+
+调用UpdateQualityRule更新校验规则的信息。
 
 **注意**
 
@@ -20659,7 +20601,7 @@ http(s)://[Endpoint]/?Action=UpdateQualityFollower &AlarmMode=2 &Follower=191223
 | BlockType | Integ er | Body | 否 | 0 | 校验规则的强弱。强弱表示规则的重要程度。取值如下： 1：表示强规则。 0：表示弱规则。您可以根据实际需求设置重要的规则为强规则。如果使用强规则并触发了红色告警，则会阻塞调度任务。 |
 | EntityId | Long | Body | 否 | 123 | 分区表达式的ID。您可以调用ListQualityRules接口获分区表达式ID。 |
 
-| 开发指南·Open | API参考 |  |  |  | DataWork |
+| 开发指南·Open | API参考 |   |   |   | DataWork |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 
@@ -20673,8 +20615,6 @@ http(s)://[Endpoint]/?Action=UpdateQualityFollower &AlarmMode=2 &Follower=191223
 | Operator | Strin g | Body | 否 | > | 比较符。包括>、>=、=、 ≠、<和<=等。当 Checker=9时，Operator 为必选参数。 |
 | ProjectNa me | Strin g | Body | 是 | autotest | 引擎或者数据源的名称。您可以登录DataWorks控制台，进入工作空间管理页面获取名称。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Property | Strin g | Body | 否 | id | 字段的名称。 |
@@ -20687,8 +20627,6 @@ DataWorks
 | RegionId | Strin g | Host | 否 | default | 区域ID，为固定值 default。 |
 | RuleName | Strin g | Body | 否 | 校验表行数规则 | 校验规则的名称。 |
 | PredictTyp e | Integ er | Body | 否 | 0 | 校验规则类型的标识。取值如下： 0：表示校验规则为统计分析规则。 2：表示校验规则为动态阈值规则。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -20710,31 +20648,31 @@ DataWorks
 请求示例
 
 ```
-&Id=1234 &ProjectName=autotest
+http(s)://[Endpoint]/?Action=UpdateQualityRule &Id=1234 &ProjectName=autotest
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "576b9457-2cf5-4****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 0,
     "ErrorMessage": "You have no permission.",
     "Success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>576b9457-2cf5-4****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>0</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-### 数据服务
+### 4.8 数据服务
 
-#### AbolishDataServiceApi
+#### 4.8.1 AbolishDataServiceApi
+
+调用AbolishDataServiceApi下线数据服务API。
 
 **请求参数**
 
@@ -20752,8 +20690,6 @@ DataWorks
 |---|---|---|---|
 | Data | Boolean | true | 数据服务API是否下线成功。 |
 
-DataWorks
-
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
@@ -20769,30 +20705,32 @@ DataWorks
 http(s)://[Endpoint]/?Action=AbolishDataServiceApi &ApiId=10000 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### CreateDataServiceApi
+`}`
+
+#### 4.8.2 CreateDataServiceApi
+
+调用CreateDataServiceApi创建数据服务API。
 
 **请求头**
 
-DataWorks 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -20807,21 +20745,15 @@ DataWorks 该接口使用公共请求头，无特殊请求头。请参见公共�
 | Response ContentTy pe | Integ er | Body | 是 | 0 | API 的返回数据类型。取值范围： 0：JSON 1：XML 向导和脚本 API 支持 JSON。注册 API 支持 JSON 和 XML。 |
 | Timeout | Integ er | Body | 是 | 10000 | 超时时间，单位为毫秒 （ms），取值范围为(0, 30000]。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | VisibleRan ge | Integ er | Body | 是 | 0 | 可见范围。取值范围： 0：工作空间 1：私有 |
 | Protocols | Strin g | Body | 是 | 0,1 | API 的协议。支持多个值， 多个值之间使用英文逗号 （,）分隔。取值范围： 0：HTTP 1：HTTPS |
 | WizardDet ails | Strin g | Body | 否 | {"isPagedResponse":tru e,"wizardConnection": {"connectionId":122786, "tableName":"person"}," wizardRequestParamete rs": [{"columnName":"id","d efaultValue":"","example Value":"1","isRequiredPa rameter":true,"paramete rDataType":2,"paramete rDescription":"","parame terName":"id","paramet erOperator":0,"paramet erPosition":0}],"wizardR esponseParameters": [{"columnName":"id","e xampleValue":"11","par ameterDataType":2,"par ameterDescription":"","p arameterName":"id"}]} | 向导 API 的详情，请参见 GetDataServiceApi 接口 wizardDetails 字段的 JSON String。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ScriptDeta ils | Strin g | Body | 否 | {"isPagedResponse":fals e,"script":"select id as id1, name as name1 from person where id=${inputid}","scriptCo nnection": {"connectionId":122786, "tableName":"person"}," scriptRequestParameter s": [{"defaultValue":"","exa mpleValue":"","isRequire dParameter":true,"para meterDataType":0,"para meterDescription":"","pa rameterName":"inputid", "parameterOperator":0," parameterPosition":1}]," scriptResponseParamete rs": [{"exampleValue":"","pa rameterDataType":0,"pa rameterDescription":""," parameterName":"id1"}, {"exampleValue":"","par ameterDataType":0,"par ameterDescription":"","p arameterName":"name1 "}]} | 脚本 API 的详情，请参见 GetDataServiceApi 接口 scriptDetails 字段的 JSON String。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -20830,8 +20762,6 @@ DataWorks
 | ApiDescri ption | Strin g | Body | 是 | Test API description | API 的描述信息。 |
 | FolderId | Long | Body | 否 | 0 | 创建 API 的目标文件夹 ID，业务流程下根文件夹 ID 等于 0，用户自建文件夹 ID 大于 0。 |
 | SqlMode | Long | Body | 否 | 0 | SQL模式。向导模式时，该值不生效。取值范围： 0：基础SQL 1：高级SQL |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -20857,20 +20787,18 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreateDataServiceApi &RegionId= &ProjectId=10000 &ApiName=Test API name &GroupId=Business process ID &ApiMode=0 &RequestMethod=0 &ResponseContentType=0 &Timeout=10000 &VisibleRange=0 &Protocols=0,1 &ApiPath=/test/1 &ApiDescription=Test API description
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":1000001,
  "ErrorCode":"null",
  "ErrorMessage":"null",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>1000001</Data> <ErrorCode>null</ErrorCode> <ErrorMessage>null</ErrorMessage> <Success>true</Success>
@@ -20887,7 +20815,7 @@ http(s)://[Endpoint]/?Action=CreateDataServiceApi &RegionId= &ProjectId=10000 &A
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### CreateDataServiceApiAuthority
+#### 4.8.3 CreateDataServiceApiAuthority
 
 调用CreateDataServiceApiAuthority新增数据服务API授权。
 
@@ -20895,8 +20823,6 @@ http(s)://[Endpoint]/?Action=CreateDataServiceApi &RegionId= &ProjectId=10000 &A
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | CreateDataServi ceApiAuthority | 系统规定参数。取值： CreateDataServiceApiAuthority。 |
 |---|---|---|---|---|
@@ -20922,13 +20848,13 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreateDataServiceApiAuthority &ApiId=10001 &AuthorizedProjectId=10002 &EndTime=1600531564 &ProjectId=10003 &RegionId=default &TenantId=1004
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EF****</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EF****","Success":"true"}
@@ -20945,7 +20871,9 @@ http(s)://[Endpoint]/?Action=CreateDataServiceApiAuthority &ApiId=10001 &Authori
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateDataServiceFolder
+#### 4.8.4 CreateDataServiceFolder
+
+调用CreateDataServiceFolder创建数据服务文件夹。
 
 **请求参数**
 
@@ -20957,8 +20885,6 @@ http(s)://[Endpoint]/?Action=CreateDataServiceApiAuthority &ApiId=10001 &Authori
 | ParentId | Long | 是 | 0 | 文件夹的目标父文件夹ID。业务流程根文件夹ID等于0，用户创建的文件夹ID大于 0。 |
 | ProjectId | Long | 是 | 10001 | 工作空间的ID。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
-
-DataWorks
 
 | TenantId | Long | 是 | 10002 | 租户ID。 |
 |---|---|---|---|---|
@@ -20984,7 +20910,7 @@ http(s)://[Endpoint]/?Action=CreateDataServiceFolder
 &GroupId=1000abcd &ParentId=0 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-E****</RequestId> <FolderId>123</FolderId>
@@ -21005,15 +20931,13 @@ http(s)://[Endpoint]/?Action=CreateDataServiceFolder
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### CreateDataServiceGroup
+#### 4.8.5 CreateDataServiceGroup
 
-在多Region场景下，此API不支持传入单元Region的API网关分组ID，即**ApiGatewayGroupId** 字段， 只支持中心Region。
+调用CreateDataServiceGroup创建数据服务业务流程。 在多Region场景下，此API不支持传入单元Region的API网关分组ID，即**ApiGatewayGroupId** 字段， 只支持中心Region。
 
 **请求头**
 
@@ -21037,24 +20961,20 @@ DataWorks
 | GroupId | String | ds 12345 _ | 创建的业务流程ID。 |
 | RequestId | String | 0000-ABCD-EF**** | 请求ID，一次请求的唯一标识。 |
 
-**示例**
-
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=CreateDataServiceGroup &RegionId=default &TenantId=10002 &ProjectId=10001 &ApiGatewayGroupId=1000abcd
 ```
 
-`&GroupName=`业务流程名称 &公共请求参数正常返回示例 `JSON` 格式
+`&GroupName=`业务流程名称 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EF****",
  "GroupId":"ds_12345"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EF****</RequestId> <GroupId>ds_12345</GroupId>
@@ -21071,11 +20991,11 @@ http(s)://[Endpoint]/?Action=CreateDataServiceGroup &RegionId=default &TenantId=
 | 429 | 9990020002 | Throttling.User | Your request is too frequent. Try again later. |
 | 403 | 9990010001 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. |
 
-#### DeleteDataServiceApi
+#### 4.8.6 DeleteDataServiceApi
+
+调用DeleteDataServiceApi删除数据服务API。
 
 **请求参数**
-
-DataWorks
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -21104,24 +21024,24 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteDataServiceApi &ApiId=10000 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -21134,7 +21054,7 @@ http(s)://[Endpoint]/?Action=DeleteDataServiceApi &ApiId=10000 &ProjectId=10001 
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### DeleteDataServiceApiAuthority
+#### 4.8.7 DeleteDataServiceApiAuthority
 
 调用DeleteDataServiceApiAuthority取消数据服务API授权。
 
@@ -21142,8 +21062,6 @@ http(s)://[Endpoint]/?Action=DeleteDataServiceApi &ApiId=10000 &ProjectId=10001 
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | DeleteDataServi ceApiAuthority | 系统规定参数。取值： DeleteDataServiceApiAuthority。 |
 |---|---|---|---|---|
@@ -21168,7 +21086,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteDataServiceApiAuthority &ApiId=10001 &AuthorizedProjectId=10002 &ProjectId=10003 &RegionId=default &TenantId=10004
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EF****</RequestId> <Success>true</Success>
@@ -21182,8 +21100,6 @@ http(s)://[Endpoint]/?Action=DeleteDataServiceApiAuthority &ApiId=10001 &Authori
 
 **错误码**
 
-DataWorks
-
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
@@ -21193,7 +21109,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetDataServiceApi
+#### 4.8.8 GetDataServiceApi
+
+调用GetDataServiceApi查询数据服务API开发态的详情。
 
 **请求头**
 
@@ -21214,8 +21132,6 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP 状态码。 |
 | RequestId | String | 0000-ABCD- EFG**** | 请求 ID，一次请求的唯一标识。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ErrorMessage | String | The specified parameters are invalid. | 错误信息。 |
@@ -21231,8 +21147,6 @@ DataWorks
 | - ResponseCont entType | Integer | 0 | API 的返回数据类型，取值范围： 0：JSON 1：XML 向导和脚本 API 支持 JSON，注册 API 支持 JSON 和 XML。 |
 | -CreatorId | String | 1234567 | 创建人的账号 ID。 |
 | -VisibleRange | Integer | 0 | 可见范围，取值范围： 0：工作空间 1：私有 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -21262,8 +21176,6 @@ DataWorks
 | --- DefaultValue | String | default1 | 默认值。 |
 | --- ParameterOpe rator | Integer | 0 | 运算符，取值范围： 0：Equal 1：Like 2：Const 3：In 向导模式API支持Equal、Like和In，脚本模式 API支持Equal，注册API支持Equal和Const。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --- ParameterDat aType | Integer | 0 | 数据类型，取值范围： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean 6：StringList 7：IntList 8：LongList 9：FloatList 10：DoubleList 11：BooleanList |
@@ -21278,7 +21190,7 @@ DataWorks
 | -ScriptDetails | Struct | / | 脚本API的详情，只有脚本API返回。 |
 | -- ScriptRequest Parameters | Array | / | 脚本API的请求参数列表。 |
 
-| 开发指南·OpenAPI参 | 考 |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   | DataWork |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --- ColumnName | String | column1 | 绑定的表字段名称。 |
@@ -21290,7 +21202,7 @@ DataWorks
 | --- ParameterDat aType | Integer | 0 | 数据类型，取值范围： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean 6：StringList 7：IntList 8：LongList 9：FloatList 10：DoubleList 11：BooleanList |
 | --- ExampleValue | String | example1 | 示例值。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21308,7 +21220,7 @@ DataWorks
 | ---TableName | String | t | 数据源表的名称。 |
 | --- ConnectionId | Long | 123 | 数据源ID。 |
 
-| 开发指南·OpenAPI参 | 考 |  | DataWork |
+| 开发指南·OpenAPI参 | 考 |   | DataWork |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21322,8 +21234,6 @@ DataWorks
 | --- DefaultValue | String | default1 | 默认值。 |
 | --- ParameterOpe rator | Integer | 0 | 运算符，取值范围： 0：Equal 1：Like 2：Const 3：In 向导模式API支持Equal、Like和In，脚本模式 API支持Equal，注册API支持Equal和Const。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --- ParameterDat aType | Integer | 0 | 数据类型，取值范围： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean 6：StringList 7：IntList 8：LongList 9：FloatList 10：DoubleList 11：BooleanList |
@@ -21334,8 +21244,6 @@ DataWorks
 | --- ColumnName | String | column2 | 绑定的表字段名称。 |
 | --- ParameterNa me | String | param2 | 参数的名称。 |
 | --- ParameterDat aType | Integer | 0 | 数据类型，取值范围： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean 6：StringList 7：IntList 8：LongList 9：FloatList 10：DoubleList 11：BooleanList |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -21356,13 +21264,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &ProjectId=10001 &ApiId=10000
+http(s)://[Endpoint]/?Action=GetDataServiceApi &RegionId=default &ProjectId=10001 &ApiId=10000
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":200,
  "Data":{
@@ -21371,7 +21278,11 @@ DataWorks
    "Script":"select a from t",
    "IsPagedResponse":true,
    "ScriptRequestParameters":[
-    {
+```
+
+`{`
+
+```json
      "ColumnName":"column1",
      "DefaultValue":"default1",
      "ExampleValue":"example1",
@@ -21379,37 +21290,42 @@ DataWorks
      "ParameterPosition":0,
 ```
 
-DataWorks ,
+`,`
 
 ```json
      "ParameterName":"param1",
      "ParameterOperator":0,
      "ParameterDescription":"description1",
      "IsRequiredParameter":true
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ScriptResponseParameters":[
-    {
+```
+
+`{`
+
+```json
      "ColumnName":"column2",
      "ExampleValue":"example2",
      "ParameterDataType":0,
      "ParameterName":"param2",
      "ParameterDescription":"description2"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ScriptConnection":{
     "TableName":"t",
     "ConnectionId":123
-   }
-  },
+```
+
+`}` `},`
+
+```json
   "Protocols":0,
   "VisibleRange":0,
   "Description":"test ",
@@ -21417,7 +21333,11 @@ DataWorks ,
   "RegistrationDetails":{
    "ServiceRequestBodyDescription":"{\"abc\":1}",
    "RegistrationRequestParameters":[
-    {
+```
+
+`{`
+
+```json
      "ColumnName":"column1",
      "DefaultValue":"default1",
      "ExampleValue":"example1",
@@ -21427,10 +21347,9 @@ DataWorks ,
      "ParameterOperator":0,
      "ParameterDescription":"description1",
      "IsRequiredParameter":true
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ServiceContentType":0,
@@ -21439,22 +21358,22 @@ DataWorks ,
    "FailedResultSample":"{\"success\": false}",
    "ServiceHost":"http://example.aliyundoc.com",
    "RegistrationErrorCodes":[
-    {
+```
+
+`{`
+
+```json
      "ErrorCode":"1001",
      "ErrorMessage":"fail to call",
      "ErrorSolution":"retry"
-    }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "ApiName":"testapi",
   "Timeout":10000,
 ```
-
-DataWorks
 
 ```json
   "CreatorId":"1234567",
@@ -21471,22 +21390,33 @@ DataWorks
    "WizardConnection":{
     "TableName":"t",
     "ConnectionId":123
-   },
+```
+
+`},`
+
+```json
    "WizardResponseParameters":[
-    {
+```
+
+`{`
+
+```json
      "ColumnName":"column2",
      "ExampleValue":"example2",
      "ParameterDataType":0,
      "ParameterName":"param2",
      "ParameterDescription":"description2"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "WizardRequestParameters":[
-    {
+```
+
+`{`
+
+```json
      "ColumnName":"column1",
      "DefaultValue":"default1",
      "ExampleValue":"example1",
@@ -21496,32 +21426,31 @@ DataWorks
      "ParameterOperator":0,
      "ParameterDescription":"description1",
      "IsRequiredParameter":true
-    }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "ApiId":10000,
   "ApiMode":0,
   "ApiPath":"/test/1"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"1031203110005",
  "ErrorMessage":"The specified parameters are invalid.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
   <Status>0</Status>
 <ScriptDetails>
 ```
-
-DataWorks
 
 ```xml
   <ScriptDetails>
@@ -21581,8 +21510,6 @@ DataWorks
   <ApiName>testapi</ApiName>
 ```
 
-DataWorks
-
 ```xml
   <Timeout>10000</Timeout>
   <CreatorId>1234567</CreatorId>
@@ -21631,7 +21558,7 @@ DataWorks
 |---|---|---|---|
 | 403 | 9990010001 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -21642,7 +21569,9 @@ DataWorks
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### GetDataServiceApplication
+#### 4.8.9 GetDataServiceApplication
+
+调用GetDataServiceApplication查询数据服务App的详情。
 
 **请求参数**
 
@@ -21658,11 +21587,9 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | App详情。 |
+| Data | Struct |   | App详情。 |
 | ApplicationCod e | String | CODE123 | API调用认证方式一，简单身份认证中的 AppCode。 |
 | ApplicationId | Long | 10000 | App的ID。 |
-
-DataWorks
 
 | ApplicationKey | String | KEY123 | API调用认证方式二，加密签名身份认证中的 AppKey。 |
 |---|---|---|---|
@@ -21683,7 +21610,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetDataServiceApplication &ApplicationId=10000 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -21696,10 +21623,9 @@ http(s)://[Endpoint]/?Action=GetDataServiceApplication &ApplicationId=10000 &Pro
 </Data> <ErrorCode>0</ErrorCode> <ErrorMessage>正常</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -21713,12 +21639,17 @@ http(s)://[Endpoint]/?Action=GetDataServiceApplication &ApplicationId=10000 &Pro
         "ProjectId": 10001,
         "ApplicationId": 10000,
         "ApplicationCode": "CODE123"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 0,
     "ErrorMessage": "正常",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -21730,12 +21661,12 @@ http(s)://[Endpoint]/?Action=GetDataServiceApplication &ApplicationId=10000 &Pro
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### GetDataServiceFolder
+#### 4.8.10 GetDataServiceFolder
+
+调用GetDataServiceFolder查询数据服务文件夹。
 
 **请求参数**
 
@@ -21751,15 +21682,13 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Folder | Struct |  | 文件夹详情。 |
+| Folder | Struct |   | 文件夹详情。 |
 | CreatedTime | String | 2020-09- 24T18:37:51+0800 | 文件夹创建时间。 |
 | FolderId | Long | 11 | 文件夹ID。 |
 | FolderName | String | test | 文件夹名称。 |
 | GroupId | String | ds 11111 _ | 文件夹所属业务流程的ID。 |
 | ModifiedTime | String | 2020-09- 25T18:37:51+0800 | 文件夹修改时间。 |
 | ParentId | Long | 0 | 父文件夹ID。业务流程下根文件夹ID等于0，用户创建文件夹ID大于0。 |
-
-DataWorks
 
 | ProjectId | Long | 1001 | DataWorks工作空间ID。 |
 |---|---|---|---|
@@ -21774,7 +21703,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetDataServiceFolder &FolderId=10001 &ProjectId=10002 &RegionId=default &TenantId=10003
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG******</RequestId> <Folder>
@@ -21802,15 +21731,15 @@ http(s)://[Endpoint]/?Action=GetDataServiceFolder &FolderId=10001 &ProjectId=100
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 |---|---|---|---|
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetDataServiceGroup
+#### 4.8.11 GetDataServiceGroup
+
+调用GetDataServiceGroup查询数据服务业务流程。
 
 **请求参数**
 
@@ -21826,12 +21755,10 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Group | Struct |  | 业务流程详情。 |
+| Group | Struct |   | 业务流程详情。 |
 | ApiGatewayGr oupId | String | 100abc | 业务流程绑定的API网关分组ID。 |
 | CreatedTime | String | 2020-09- 24T18:37:51+0800 | 业务流程的创建时间。 |
 | CreatorId | String | 123456789 | 创建人UID，部分历史业务流程创建人的UID可能为空。 |
-
-DataWorks
 
 | Description | String | 业务流程的描述 | 业务流程的描述。 |
 |---|---|---|---|
@@ -21850,7 +21777,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetDataServiceGroup &GroupId=ds_123 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Group>
@@ -21874,7 +21801,7 @@ http(s)://[Endpoint]/?Action=GetDataServiceGroup &GroupId=ds_123 &ProjectId=1000
 </Group> <RequestId>0000-ABCD-EFG*****</RequestId>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"Group":{"GroupName":"业务流程名称","TenantId":"10002","CreatedTime":"2020-09-24T18:37:5 1+0800","Description":"业务流程的描述","ModifiedTime":"2020-09- 24T18:37:51+0800","CreatorId":"123456789","ApiGatewayGroupId":"100abc","ProjectId":"10001 "GroupId":"ds_123"},"RequestId":"0000-ABCD-EFG*****"}
@@ -21891,7 +21818,7 @@ http(s)://[Endpoint]/?Action=GetDataServiceGroup &GroupId=ds_123 &ProjectId=1000
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### GetDataServicePublishedApi
+#### 4.8.12 GetDataServicePublishedApi
 
 调用GetDataServicePublishedApi查询数据服务API的发布态信息。
 
@@ -21907,11 +21834,9 @@ http(s)://[Endpoint]/?Action=GetDataServiceGroup &GroupId=ds_123 &ProjectId=1000
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | API的最新发布态信息。 |
+| Data | Struct |   | API的最新发布态信息。 |
 | ApiId | Long | 10001 | 数据服务API的ID。 |
 | ApiMode | Integer | 0 | API的类型，可选枚举值包括0（向导API）、 1（脚本API）和2（注册API）。 |
 | ApiName | String | test | API的名称。 |
@@ -21924,17 +21849,15 @@ DataWorks
 | OperatorId | String | 234567891 | 最新编辑人的阿里云ID。 |
 | ProjectId | Long | 10001 | DataWorks工作空间ID。 |
 | Protocols | List | 0 | API协议，多值列表，可选枚举值包括 0（HTTP）和1（HTTPS）。 |
-| RegistrationDe tails | Struct |  | 注册API详情，只有注册API返回。 |
+| RegistrationDe tails | Struct |   | 注册API详情，只有注册API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例。 |
-| RegistrationErr orCodes | Array of RegistrationErr orCode |  | 注册API的错误码列表。 |
+| RegistrationErr orCodes | Array of RegistrationErr orCode |   | 注册API的错误码列表。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 
-DataWorks
-
 | ErrorSolution | String | retry | 错误解决方案。 |
 |---|---|---|---|
-| RegistrationRe questParamet ers | Array of RegistrationRe questParamet er |  | 注册API的请求参数列表。 |
+| RegistrationRe questParamet ers | Array of RegistrationRe questParamet er |   | 注册API的请求参数列表。 |
 | DefaultValue | String | default1 | 默认值。 |
 | ExampleValue | String | sample1 | 示例值。 |
 | IsRequiredPar ameter | Boolean | true | 是否必填。 |
@@ -21949,28 +21872,24 @@ DataWorks
 | ServiceReques tBodyDescripti on | String | {"abc":1} | 后端请求body内容的描述。 |
 | SuccessfulRes ultSample | String | {"success": true} | 正常返回示例。 |
 
-DataWorks
-
 | RequestMetho d | Integer | 0 | API的请求方式，可选枚举值包括0（GET）、 1（POST）、2（PUT）和3（DELTE）。向导和脚本API支持GET和POST。注册API支持 GET、POST、PUT和DELETE。 |
 |---|---|---|---|
 | ResponseCont entType | Integer | 0 | API的返回数据类型，可选枚举值包括 0（JSON）和1（XML）。向导和脚本API支持 JSON，注册API支持JSON和XML。 |
-| ScriptDetails | Struct |  | 脚本API详情，只有脚本API返回。 |
+| ScriptDetails | Struct |   | 脚本API详情，只有脚本API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例。 |
 | IsPagedRespo nse | Boolean | true | 返回是否分页。 |
 | Script | String | select a from t | SQL脚本。 |
-| ScriptConnecti on | Struct |  | 脚本API的数据源信息。 |
+| ScriptConnecti on | Struct |   | 脚本API的数据源信息。 |
 | ConnectionId | Long | 1001 | 数据源的ID。 |
 | TableName | String | tablename | 数据源的表名称。 |
-| ScriptErrorCod es | Array of ScriptErrorCod e |  | 脚本API的错误码列表。 |
+| ScriptErrorCod es | Array of ScriptErrorCod e |   | 脚本API的错误码列表。 |
 | ErrorCode | String | 1001 | 错误码。 |
 | ErrorMessage | String | fail to call | 错误信息。 |
 | ErrorSolution | String | retry | 错误解决方案。 |
-| ScriptRequest Parameters | Array of ScriptRequest Parameter |  | 脚本API的请求参数列表。 |
+| ScriptRequest Parameters | Array of ScriptRequest Parameter |   | 脚本API的请求参数列表。 |
 | DefaultValue | String | default1 | 默认值。 |
 | ExampleValue | String | example1 | 示例值。 |
 | IsRequiredPar ameter | Boolean | true | 是否必填。 |
-
-DataWorks
 
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean |
 |---|---|---|---|
@@ -21978,36 +21897,32 @@ DataWorks
 | ParameterNa me | String | paraname | 参数名称。 |
 | ParameterOpe rator | Integer | 0 | 运算符，可选枚举值有： 0：Equal 1：Like 2：Const 3：In 向导API支持Equal、Like、In；脚本API支持 Equal；注册API支持Equal、Const。 |
 | ParameterPosi tion | Integer | 0 | 参数位置，可选枚举值有： 0：Path 1：Query 2：Head 3：Body 向导和脚本API，只支持Query；注册 API，GET、DELETE方法支持Query、 Head，PUT、POST方法支持Query、Head、 Body。 |
-| ScriptRespons eParameters | Array of ScriptRespons eParameter |  | 脚本API的返回参数列表。 |
+| ScriptRespons eParameters | Array of ScriptRespons eParameter |   | 脚本API的返回参数列表。 |
 | ExampleValue | String | example2 | 示例值。 |
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值包括0（STRING）、 1（INT）、2（LONG）、3（FLOAT）、 4（DOUBLE）和5（BOOLEAN）。 |
 | ParameterDes cription | String | description2 | 参数描述。 |
 | ParameterNa me | String | paraname2 | 参数名称。 |
 | SuccessfulRes ultSample | String | {"success": true} | 正常返回示例。 |
 
-DataWorks
-
 | Status | Integer | 1 | API的状态，可选枚举值包括0（未发布）和 1（已发布）。 |
 |---|---|---|---|
 | TenantId | Long | 10002 | 租户ID。 |
 | Timeout | Integer | 1000 | 超时时间，单位为毫秒（ms）。 |
 | VisibleRange | Integer | 0 | 可见范围，可选枚举值包括0（工作空间）和 1（私有）。 |
-| WizardDetails | Struct |  | 向导API详情，只有向导API返回。 |
+| WizardDetails | Struct |   | 向导API详情，只有向导API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例。 |
 | IsPagedRespo nse | Boolean | true | 返回是否分页。 |
 | SuccessfulRes ultSample | String | {"success": true} | 正常返回示例。 |
-| WizardConnec tion | Struct |  | 向导API的数据源信息。 |
+| WizardConnec tion | Struct |   | 向导API的数据源信息。 |
 | ConnectionId | Long | 123 | 数据源的ID。 |
 | TableName | String | tablename2 | 数据源的表名称。 |
-| WizardErrorCo des | Array of WizardErrorCo de |  | 向导API的错误码列表。 |
+| WizardErrorCo des | Array of WizardErrorCo de |   | 向导API的错误码列表。 |
 | ErrorCode | String | 1001 | 错误码。 |
 | ErrorMessage | String | fail to call | 错误信息。 |
 | ErrorSolution | String | retry | 错误解决方案。 |
-| WizardReques tParameters | Array of WizardReques tParameter |  | 向导API的请求参数列表。 |
+| WizardReques tParameters | Array of WizardReques tParameter |   | 向导API的请求参数列表。 |
 | DefaultValue | String | default3 | 默认值。 |
 | ExampleValue | String | example3 | 示例值。 |
-
-DataWorks
 
 | IsRequiredPar ameter | Boolean | true | 是否必填。 |
 |---|---|---|---|
@@ -22016,7 +21931,7 @@ DataWorks
 | ParameterNa me | String | paraname3 | 参数名称。 |
 | ParameterOpe rator | Integer | 0 | 运算符，可选枚举值包括0（Equal）、 1（Like）、2（Const）和3（In）。向导模式 API支持Equal、Like和In，脚本模式API支持 Equal，注册API支持Equal和Const。 |
 | ParameterPosi tion | Integer | 0 | 参数的位置，可选枚举值包括0（Path）、 1（Query）、2（Head）和3（Body）。向导和脚本API仅支持Query。注册API中的GET、 DELETE方法支持Query、Head，PUT、POST 方法支持Query、Head和Body。 |
-| WizardRespon seParameters | Array of WizardRespon seParameter |  | 向导API的返回参数列表。 |
+| WizardRespon seParameters | Array of WizardRespon seParameter |   | 向导API的返回参数列表。 |
 | ExampleValue | String | example4 | 示例值。 |
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值包括0（STRING）、 1（INT）、2（LONG）、3（FLOAT）、 4（DOUBLE）和5（BOOLEAN）。 |
 | ParameterDes cription | String | description4 | 参数描述。 |
@@ -22025,8 +21940,6 @@ DataWorks
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
-
-DataWorks
 
 | Success | Boolean | true | 是否调用成功。 |
 |---|---|---|---|
@@ -22039,7 +21952,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetDataServicePublishedApi &ApiId=10001 &ProjectId=10002 &RegionId=default &TenantId=10003
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -22078,19 +21991,19 @@ http(s)://[Endpoint]/?Action=GetDataServicePublishedApi &ApiId=10001 &ProjectId=
             <ExampleValue>sample1</ExampleValue>
 ```
 
-`<P` t
+`<P` `t`
 
 ```
 DtT >0</P
 ```
 
-t
+`t`
 
 ```
 DtT
 ```
 
-> DataWorks
+`>`
 
 ```xml
             <ParameterDataType>0</ParameterDataType>
@@ -22150,8 +22063,6 @@ DtT
 <WizardRequestParameters>
 ```
 
-DataWorks
-
 ```xml
         <WizardRequestParameters>
             <DefaultValue>default3</DefaultValue>
@@ -22171,7 +22082,7 @@ DataWorks
 </Data> <ErrorCode>200</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data": {"Status":"1","VisibleRange":"0","Description":"测试API。","CreatedTime":"2020-06-23T00: 21:01+0800","ApiName":"test","Timeout":"1000","RequestMethod":"0","CreatorId":"123456789" ProjectId":"10001","ResponseContentType":"0","OperatorId":"234567891","GroupId":"ab12**", enantId":"10002","ModifiedTime":"2020-06- 23T00:21:01+0800","ApiMode":"0","ApiId":"10001","ApiPath":"/test/1","Protocols":"0","Regi rationDetails":{"ServiceRequestBodyDescription":" {\"abc\":1}","SuccessfulResultSample":"{\"success\": true}","ServiceContentType":"0","ServicePath":"/index","FailedResultSample":"{\"success \": false}","ServiceHost":"http://www.***.com","RegistrationErrorCodes": [{"ErrorCode":"Invalid.Tenant.ConnectionNotExists","ErrorSolution":"retry","ErrorMessage" The connection does not exist."}],"RegistrationRequestParameters": [{"DefaultValue":"default1","ExampleValue":"sample1","ParameterDataType":"0","ParameterPo tion":"0","ParameterName":"name1","ParameterOperator":"0","ParameterDescription":"descrip on1","IsRequiredParameter":"true"}]},"ScriptDetails":{"Script":"select a from t","IsPag edResponse":"true","SuccessfulResultSample":"{\"success\": true}","FailedResultSample":"{\"success\": false}","ScriptErrorCodes": [{"ErrorCode":"1001","ErrorSolution":"retry","ErrorMessage":"fail to call"}],"ScriptResponseParameters": [{"ExampleValue":"example2","ParameterDataType":"0","ParameterName":"paraname2","Paramete escription":"description2"}],"ScriptRequestParameters": [{"DefaultValue":"default1","ExampleValue":"example1","ParameterDataType":"0","ParameterP ition":"0","ParameterName":"paraname","ParameterOperator":"0","ParameterDescription":"des iption1","IsRequiredParameter":"true"}],"ScriptConnection": {"TableName":"tablename","ConnectionId":"1001"}},"WizardDetails": {"IsPagedResponse":"true","SuccessfulResultSample":"{\"success\": true}","FailedResultSample":"{\"success\": false}","WizardErrorCodes": [{"ErrorCode":"1001","ErrorSolution":"retry","ErrorMessage":"fail to call"}],"WizardResponseParameters": [{"ExampleValue":"example4","ParameterDataType":"0","ParameterName":"paraname4","Paramete escription":"description4"}],"WizardRequestParameters": [{"DefaultValue":"default3","ExampleValue":"example3","ParameterDataType":"0","ParameterP ition":"0","ParameterName":"paraname3","ParameterOperator":"0","ParameterDescription":"de ription3","IsRequiredParameter":"true"}],"WizardConnection": {"TableName":"tablename2","ConnectionId":"123"}}},"ErrorCode":"200","ErrorMessage":"The connection does not exist.","Success":"true"}
@@ -22186,13 +22097,13 @@ DataWorks
 | 429 | Throttling.Api | The request for this resource has exceeded your available limit. | 对该资源的请求已超过您的可用上限。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListDataServiceApis
+#### 4.8.13 ListDataServiceApis
+
+调用ListDataServiceApis获取数据服务API开发中的信息列表。
 
 **请求参数**
 
@@ -22212,11 +22123,9 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 返回开发中API的信息。 |
+| Data | Struct |   | 返回开发中API的信息。 |
 
-DataWorks
-
-| Apis | Array of Api |  | API开发态信息列表。 |
+| Apis | Array of Api |   | API开发态信息列表。 |
 |---|---|---|---|
 | ApiId | Long | 10002 | API的ID。 |
 | ApiMode | Integer | 0 | API的类型，可选枚举值包括0（向导API）、 1（脚本API）和2（注册API）。 |
@@ -22231,17 +22140,15 @@ DataWorks
 | OperatorId | String | 2345678 | 最新编辑人的阿里云ID。 |
 | ProjectId | Long | 10000 | 工作空间的ID。 |
 | Protocols | List | 0 | API的协议，多值列表，可选枚举值包括 0（HTTP）和1（HTTPS）。 |
-| RegistrationDe tails | Struct |  | 注册API的详情，只有注册API返回。 |
+| RegistrationDe tails | Struct |   | 注册API的详情，只有注册API返回。 |
 | FailedResultSa mple | String | {"success": false} | 错误返回示例。 |
-| RegistrationErr orCodes | Array of RegistrationErr orCode |  | 注册API的错误码列表。 |
+| RegistrationErr orCodes | Array of RegistrationErr orCode |   | 注册API的错误码列表。 |
 | ErrorCode | String | 1001 | 错误码。 |
-
-DataWorks
 
 | ErrorMessage | String | fail to call | 错误信息。 |
 |---|---|---|---|
 | ErrorSolution | String | retry | 错误解决方案。 |
-| RegistrationRe questParamet ers | Array of RegistrationRe questParamet er |  | 注册API的请求参数列表。 |
+| RegistrationRe questParamet ers | Array of RegistrationRe questParamet er |   | 注册API的请求参数列表。 |
 | ColumnName | String | column1 | 绑定的表字段名称，仅向导模式支持。 |
 | DefaultValue | String | default1 | 默认值。 |
 | ExampleValue | String | example1 | 示例值。 |
@@ -22255,26 +22162,22 @@ DataWorks
 | ServiceHost | String | http://www.abc.co m | 后端服务地址。 |
 | ServicePath | String | /index | 后端服务路径。 |
 
-DataWorks
-
 | ServiceReques tBodyDescripti on | String | {"abc":1} | 后端请求body内容的描述信息。 |
 |---|---|---|---|
 | SuccessfulRes ultSample | String | {"success": true} | 正常返回示例。 |
 | RequestMetho d | Integer | 0 | API的请求方式，可选枚举值包括0（GET）、 1（POST）、2（PUT）和3（DELTE）。向导和脚本API支持GET和POST。注册API支持 GET、POST、PUT和DELETE。 |
 | ResponseCont entType | Integer | 0 | API的返回数据类型，可选枚举值包括 0（JSON）和1（XML）。向导和脚本API支持 JSON，注册API支持JSON和XML。 |
-| ScriptDetails | Struct |  | 脚本API的详情，只有脚本API返回。 |
+| ScriptDetails | Struct |   | 脚本API的详情，只有脚本API返回。 |
 | IsPagedRespo nse | Boolean | true | 返回是否分页。 |
 | Script | String | select a from t | SQL脚本。 |
-| ScriptConnecti on | Struct |  | 脚本API的数据源信息。 |
+| ScriptConnecti on | Struct |   | 脚本API的数据源信息。 |
 | ConnectionId | Long | 123 | 数据源ID。 |
 | TableName | String | t | 数据源表的名称。 |
-| ScriptRequest Parameters | Array of ScriptRequest Parameter |  | 脚本API的请求参数列表。 |
+| ScriptRequest Parameters | Array of ScriptRequest Parameter |   | 脚本API的请求参数列表。 |
 | ColumnName | String | column1 | 绑定的表字段名称，仅向导模式支持。 |
 | DefaultValue | String | default1 | 默认值 |
 | ExampleValue | String | example1 | 示例值 |
 | IsRequiredPar ameter | Boolean | true | 是否必填 |
-
-DataWorks
 
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean |
 |---|---|---|---|
@@ -22282,12 +22185,10 @@ DataWorks
 | ParameterNa me | String | name1 | 参数名称 |
 | ParameterOpe rator | Integer | 0 | 运算符，可选枚举值有： 0：Equal 1：Like 2：Const 3：In 向导API支持Equal、Like、In；脚本API支持 Equal；注册API支持Equal、Const。 |
 | ParameterPosi tion | Integer | 0 | 参数位置，可选枚举值有： 0：Path 1：Query 2：Head 3：Body 向导和脚本API，只支持Query；注册 API，GET、DELETE方法支持Query、 Head，PUT、POST方法支持Query、Head、 Body。 |
-| ScriptRespons eParameters | Array of ScriptRespons eParameter |  | 脚本API的返回参数列表。 |
+| ScriptRespons eParameters | Array of ScriptRespons eParameter |   | 脚本API的返回参数列表。 |
 | ColumnName | String | column2 | 绑定的表字段名称，仅向导模式有 |
 | ExampleValue | String | example2 | 示例值 |
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值： 0：String 1：Int 2：Long 3：Float 4：Double 5：Boolean |
-
-DataWorks
 
 | ParameterDes cription | String | description2 | 描述 |
 |---|---|---|---|
@@ -22296,12 +22197,12 @@ DataWorks
 | TenantId | Long | 10000 | 租户ID。 |
 | Timeout | Integer | 10000 | 超时时间，单位为毫秒（ms）。 |
 | VisibleRange | Integer | 0 | 可见范围，可选枚举值包括0（工作空间）和 1（私有）。 |
-| WizardDetails | Struct |  | 向导API的详情，只有向导API返回。 |
+| WizardDetails | Struct |   | 向导API的详情，只有向导API返回。 |
 | IsPagedRespo nse | Boolean | true | 返回是否分页。 |
-| WizardConnec tion | Struct |  | 向导API的数据源信息。 |
+| WizardConnec tion | Struct |   | 向导API的数据源信息。 |
 | ConnectionId | Long | 123 | 数据源ID。 |
 | TableName | String | t | 数据源表的名称。 |
-| WizardReques tParameters | Array of WizardReques tParameter |  | 向导API的请求参数列表。 |
+| WizardReques tParameters | Array of WizardReques tParameter |   | 向导API的请求参数列表。 |
 | ColumnName | String | column1 | 绑定的表字段名称，仅向导模式支持。 |
 | DefaultValue | String | default1 | 默认值。 |
 | ExampleValue | String | example1 | 示例值。 |
@@ -22309,13 +22210,11 @@ DataWorks
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值包括0（STRING）、 1（INT）、2（LONG）、3（FLOAT）、 4（DOUBLE）和5（BOOLEAN）。 |
 | ParameterDes cription | String | description1 | 描述信息。 |
 
-DataWorks
-
 | ParameterNa me | String | param1 | 参数名称。 |
 |---|---|---|---|
 | ParameterOpe rator | Integer | 0 | 运算符，可选枚举值包括0（Equal）、 1（Like）、2（Const）和3（In）。向导API支持Equal、Like和In，脚本API支持Equal，注册 API支持Equal和Const。 |
 | ParameterPosi tion | Integer | 0 | 参数的位置，可选枚举值包括0（Path）、 1（Query）、2（Head）和3（Body）。向导和脚本API仅支持Query。注册API中的GET、 DELETE方法支持Query、Head，PUT、POST 方法支持Query、Head和Body。 |
-| WizardRespon seParameters | Array of WizardRespon seParameter |  | 向导模式的返回参数列表。 |
+| WizardRespon seParameters | Array of WizardRespon seParameter |   | 向导模式的返回参数列表。 |
 | ColumnName | String | column2 | 绑定的表字段名称，仅向导模式支持。 |
 | ExampleValue | String | example2 | 示例值。 |
 | ParameterDat aType | Integer | 0 | 数据类型，可选枚举值包括0（STRING）、 1（INT）、2（LONG）、3（FLOAT）、 4（DOUBLE）和5（BOOLEAN）。 |
@@ -22329,8 +22228,6 @@ DataWorks
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 | RequestId | String | 0000-ABCD- EFG**** | 请求ID，一次请求的唯一标识。 |
 
-DataWorks
-
 | Success | Boolean | true | 调用是否成功。 |
 |---|---|---|---|
 
@@ -22342,15 +22239,13 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServiceApis &PageNumber=1 &PageSize=10 &ProjectId=10000 &RegionId=default &TenantId=10001
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD-EFG****","HttpStatusCode":"200","Data": {"TotalCount":"100","PageSize":"10","PageNumber":"1","Apis": [{"Status":"0","VisibleRange":"0","Description":"测试API描述","CreatedTime":"2020-06-23T 00:21:01+0800","ApiName":"我的API名称","Timeout":"10000","RequestMethod":"0","CreatorId":"1234567","ProjectId":"10000","Respo seContentType":"0","FolderId":"0","OperatorId":"2345678","GroupId":"abcde123456789","Tena Id":"10000","ModifiedTime":"2020-06- 23T00:21:01+0800","ApiMode":"0","ApiId":"10002","ApiPath":"/test/1","Protocols":"0","Regi rationDetails":{"ServiceRequestBodyDescription":" {\"abc\":1}","SuccessfulResultSample":"{\"success\": true}","ServiceContentType":"0","ServicePath":"/index","FailedResultSample":"{\"success \": false}","ServiceHost":"http://www.abc.com","RegistrationErrorCodes": [{"ErrorCode":"1001","ErrorSolution":"retry","ErrorMessage":"fail to call"}],"RegistrationRequestParameters": [{"DefaultValue":"default1","ColumnName":"column1","ExampleValue":"example1","ParameterDa Type":"0","ParameterPosition":"0","ParameterName":"name1","ParameterOperator":"0","Parame rDescription":"description1","IsRequiredParameter":"true"}]},"ScriptDetails":{"Script": "select a from t","IsPagedResponse":"true","ScriptResponseParameters": [{"ColumnName":"column2","ExampleValue":"example2","ParameterDataType":"0","ParameterName "param2","ParameterDescription":"description2"}],"ScriptRequestParameters": [{"DefaultValue":"default1","ColumnName":"column1","ExampleValue":"example1","ParameterDa Type":"0","ParameterPosition":"0","ParameterName":"name1","ParameterOperator":"0","Parame rDescription":"description1","IsRequiredParameter":"true"}],"ScriptConnection":{"TableN ame":"t","ConnectionId":"123"}},"WizardDetails": {"IsPagedResponse":"true","WizardResponseParameters": [{"ColumnName":"column2","ExampleValue":"example2","ParameterDataType":"0","ParameterName "param2","ParameterDescription":"description2"}],"WizardRequestParameters": [{"DefaultValue":"default1","ColumnName":"column1","ExampleValue":"example1","ParameterDa Type":"0","ParameterPosition":"0","ParameterName":"param1","ParameterOperator":"0","Param erDescription":"description1","IsRequiredParameter":"true"}],"WizardConnection":{"Table Name":"t","ConnectionId":"123"}}}]},"ErrorCode":"Invalid.Tenant.ConnectionNotExists","Err Message":"The connection does not exist.","Success":"true"}
 ```
 
 **错误码**
-
-DataWorks
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -22361,7 +22256,7 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListDataServiceApiAuthorities
+#### 4.8.14 ListDataServiceApiAuthorities
 
 调用ListDataServiceApiAuthorities获取授权给他人的API列表。
 
@@ -22379,17 +22274,15 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 授权给他人的API列表。 |
-| ApiAuthorizati onList | Array of ApiAuthorizati on |  | 授权给他人的API列表和授权详情。 |
+| Data | Struct |   | 授权给他人的API列表。 |
+| ApiAuthorizati onList | Array of ApiAuthorizati on |   | 授权给他人的API列表和授权详情。 |
 | ApiId | Long | 10002 | API的ID。 |
 | ApiName | String | 我的API名称 | API的名称。 |
 | ApiPath | String | /test/1 | API的路径。 |
 | ApiStatus | Integer | 0 | API的状态，可选枚举值包括0（未发布）和 1（已发布）。 |
-| AuthorizationR ecords | Array of AuthorizationR ecord |  | 授权给他人的授权详情列表。 |
+| AuthorizationR ecords | Array of AuthorizationR ecord |   | 授权给他人的授权详情列表。 |
 | CreatedTime | String | 2020-06- 23T00:21:01+0800 | 授权时间。 |
 | CreatorId | String | 12345 | 授权者的阿里云用户ID。 |
 | EndTime | String | 2020-06- 24T00:21:01+0800 | 授权有效期的截止时间。 |
@@ -22401,8 +22294,6 @@ DataWorks
 | ProjectId | Long | 10000 | 工作空间的ID。 |
 | TenantId | Long | 10001 | 租户ID。 |
 | PageNumber | Integer | 1 | 页码，和请求中的PageNumber一致。 |
-
-DataWorks
 
 | PageSize | Integer | 10 | 每页显示的条数，默认为10条，最大100条。 |
 |---|---|---|---|
@@ -22421,7 +22312,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServiceApiAuthorities &PageNumber=1 &PageSize=10 &ProjectId=10000 &RegionId=default &TenantId=10001
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -22453,10 +22344,9 @@ http(s)://[Endpoint]/?Action=ListDataServiceApiAuthorities &PageNumber=1 &PageSi
 </Data> <ErrorCode>0</ErrorCode> <ErrorMessage>正常</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -22483,14 +22373,17 @@ http(s)://[Endpoint]/?Action=ListDataServiceApiAuthorities &PageNumber=1 &PageSi
                 "EndTime": "2020-06-24T00:21:01+0800",
                 "CreatorId": 12345,
                 "ProjectId": 10004
-            }
-        }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "ErrorCode": 0,
     "ErrorMessage": "正常",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -22502,12 +22395,10 @@ http(s)://[Endpoint]/?Action=ListDataServiceApiAuthorities &PageNumber=1 &PageSi
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 |---|---|---|---|
 
-#### ListDataServiceApplications
+#### 4.8.15 ListDataServiceApplications
 
 调用ListDataServiceApplications获取数据服务应用的基础信息列表。
 
@@ -22526,13 +22417,11 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 查询得到的应用基础信息。 |
-| Applications | Array of Application |  | 应用的基础信息列表。 |
+| Data | Struct |   | 查询得到的应用基础信息。 |
+| Applications | Array of Application |   | 应用的基础信息列表。 |
 | ApplicationId | Long | 20000 | 应用ID。 |
 | ApplicationNa me | String | 我的应用 | 应用的名称。 |
 | ProjectId | Long | 10000 | 工作空间的ID。 |
-
-DataWorks
 
 | PageNumber | Integer | 1 | 页码，和请求中的PageNumber一致。 |
 |---|---|---|---|
@@ -22552,7 +22441,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServiceApplications &PageNumber=1 &PageSize=10 &ProjectIdList=10000,100001 &RegionId=default &TenantId=100002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG***</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -22567,10 +22456,9 @@ http(s)://[Endpoint]/?Action=ListDataServiceApplications &PageNumber=1 &PageSize
 </Data> <ErrorCode>0</ErrorCode> <ErrorMessage>正常</ErrorMessage> <Success>true</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG***",
     "HttpStatusCode": 200,
     "Data": {
@@ -22585,13 +22473,17 @@ DataWorks `JSON` 格式
 ```json
             "ProjectId": 10000,
             "ApplicationId": 20000
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 0,
     "ErrorMessage": "正常",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -22604,7 +22496,7 @@ DataWorks `JSON` 格式
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListDataServiceAuthorizedApis
+#### 4.8.16 ListDataServiceAuthorizedApis
 
 调用ListDataServiceAuthorizedApis获取获得授权的API信息列表。
 
@@ -22612,8 +22504,6 @@ DataWorks `JSON` 格式
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | ListDataService AuthorizedApis | 系统规定参数。取值： ListDataServiceAuthorizedApis。 |
 |---|---|---|---|---|
@@ -22628,8 +22518,8 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 获得授权的API信息。 |
-| ApiAuthorized List | Array of ApiAuthorized |  | 获得授权的API列表。 |
+| Data | Struct |   | 获得授权的API信息。 |
+| ApiAuthorized List | Array of ApiAuthorized |   | 获得授权的API列表。 |
 | ApiId | Long | 10002 | API的ID。 |
 | ApiName | String | 我的API名称 | API的名称。 |
 | ApiPath | String | /test/1 | API的路径。 |
@@ -22637,8 +22527,6 @@ DataWorks
 | CreatedTime | String | 2020-06- 23T00:21:01+0800 | API的创建时间。 |
 | CreatorId | String | 12345 | API负责人阿里云ID |
 | GrantCreatedT ime | String | 2020-06- 23T00:21:01+0800 | API的授权时间。 |
-
-DataWorks
 
 | GrantEndTime | String | 2020-06- 24T00:21:01+0800 | API的授权到期时间。 |
 |---|---|---|---|
@@ -22664,7 +22552,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServiceAuthorizedApis &PageNumber=1 &PageSize=10 &ProjectId=10000 &RegionId=default &TenantId=10001
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -22693,10 +22581,9 @@ http(s)://[Endpoint]/?Action=ListDataServiceAuthorizedApis &PageNumber=1 &PageSi
 </Data> <ErrorCode>1031203110005</ErrorCode> <ErrorMessage>The specified parameters are invalid.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": {
@@ -22721,13 +22608,17 @@ http(s)://[Endpoint]/?Action=ListDataServiceAuthorizedApis &PageNumber=1 &PageSi
             "ApiId": 10002,
             "ApiPath": "/test/1",
             "GroupId": "abcde123456789"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 1031203110005,
     "ErrorMessage": "The specified parameters are invalid.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -22740,9 +22631,9 @@ http(s)://[Endpoint]/?Action=ListDataServiceAuthorizedApis &PageNumber=1 &PageSi
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-DataWorks
+#### 4.8.17 ListDataServiceFolders
 
-#### ListDataServiceFolders
+调用ListDataServiceFolders查询数据服务文件夹列表。
 
 **请求参数**
 
@@ -22761,14 +22652,12 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| FolderPagingR esult | Struct |  | 文件夹列表的分页结果。 |
-| Folders | Array of Folder |  | 文件夹列表。 |
+| FolderPagingR esult | Struct |   | 文件夹列表的分页结果。 |
+| Folders | Array of Folder |   | 文件夹列表。 |
 | CreatedTime | String | 2020-09- 24T18:37:51+0800 | 文件夹的创建时间。 |
 | FolderId | Long | 11 | 文件夹的ID。 |
 | FolderName | String | filename | 文件夹名称。 |
 | GroupId | String | 10003 | 文件夹所属业务流程的ID。 |
-
-DataWorks
 
 | ModifiedTime | String | 2020-09- 24T18:37:51+0800 | 文件夹的编辑时间。 |
 |---|---|---|---|
@@ -22788,7 +22677,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServiceFolders &PageNumber=1 &PageSize=10 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <FolderPagingResult>
@@ -22825,9 +22714,9 @@ http(s)://[Endpoint]/?Action=ListDataServiceFolders &PageNumber=1 &PageSize=10 &
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### ListDataServiceGroups
+#### 4.8.18 ListDataServiceGroups
 
-DataWorks
+调用ListDataServiceGroups查询数据服务业务流程列表。
 
 **请求参数**
 
@@ -22845,15 +22734,13 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| GroupPagingR esult | Struct |  | 业务流程的分页结果。 |
-| Groups | Array of Group |  | 业务流程列表。 |
+| GroupPagingR esult | Struct |   | 业务流程的分页结果。 |
+| Groups | Array of Group |   | 业务流程列表。 |
 | ApiGatewayGr oupId | String | 100abc | 业务流程绑定的API网关分组ID。 |
 | CreatedTime | String | 2020-09- 24T18:37:51+0800 | 业务流程的创建时间。 |
 | CreatorId | String | 123123123123 | 创建人UID，部分历史业务流程的创建人UID可能为空。 |
 | Description | String | 业务流程的描述 | 业务流程的描述。 |
 | GroupId | String | ds 123abc _ | 业务流程的ID。 |
-
-DataWorks
 
 | GroupName | String | 业务流程名称 | 业务流程名称。 |
 |---|---|---|---|
@@ -22873,7 +22760,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListDataServiceGroups &PageNumber=1 &PageSize=10 &ProjectId=10001 &RegionId=default &TenantId=10003
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <GroupPagingResult>
@@ -22919,9 +22806,9 @@ http(s)://[Endpoint]/?Action=ListDataServiceGroups &PageNumber=1 &PageSize=10 &P
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-#### PublishDataServiceApi
+#### 4.8.19 PublishDataServiceApi
 
-DataWorks
+调用PublishDataServiceApi发布数据服务API。
 
 **请求参数**
 
@@ -22952,26 +22839,28 @@ DataWorks
 http(s)://[Endpoint]/?Action=PublishDataServiceApi &ApiId=10000 &ProjectId=10001 &RegionId=default &TenantId=10002
 ```
 
-`&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-#### UpdateDataServiceApi
+`}`
+
+#### 4.8.20 UpdateDataServiceApi
+
+调用UpdateDataServiceApi更新数据服务API开发态的信息。
 
 **请求参数**
 
@@ -22985,8 +22874,6 @@ http(s)://[Endpoint]/?Action=PublishDataServiceApi &ApiId=10000 &ProjectId=10001
 | Protocols | String | 是 | 0,1 | API协议，可选枚举值包括0（HTTP）和 1（HTTPS）。支持多值，多个值之间使用英文逗号（,）分隔。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 
-DataWorks
-
 | RequestMethod | Integer | 是 | 0 | API的请求方式，可选枚举值包括 0（GET）、1（POST）、2（PUT）和 3（DELTE）。向导和脚本API支持GET和 POST。注册API支持GET、POST、PUT和 DELETE。 |
 |---|---|---|---|---|
 | ResponseConten tType | Integer | 是 | 0 | API的返回数据类型，可选枚举值包括 0（JSON）和1（XML）。向导和脚本API 支持JSON，注册API支持JSON和XML。 |
@@ -22995,12 +22882,8 @@ DataWorks
 | VisibleRange | Integer | 是 | 0 | 可见范围，可选枚举值包括0（工作空间） 和1（私有）。 |
 | WizardDetails | String | 否 | {"isPagedRespo nse":true,"wizar dConnection": {"connectionId": 122786,"tableN ame":"person"}, "wizardRequestP arameters": [{"columnName ":"id","defaultVa lue":"","example Value":"1","isRe quiredParameter ":true,"paramet erDataType":2," parameterDescri ption":"","param eterName":"id"," parameterOpera tor":0,"paramet erPosition":0}]," wizardResponse Parameters": [{"columnName ":"id","exampleV alue":"11","para meterDataType" :2,"parameterDe scription":"","par ameterName":"i d"}]} | 向导API的详情，请参见 GetDataServiceApi接口wizardDetails 字段的JSON String。 |
 
-DataWorks
-
 | ScriptDetails | String | 否 | {"isPagedRespo nse":false,"scrip t":"select id as id1, name as name1 from person where id=${inputid}"," scriptConnection ": {"connectionId": 122786,"tableN ame":"person"}, "scriptRequestP arameters": [{"defaultValue" :"","exampleVal ue":"","isRequire dParameter":tru e,"parameterDat aType":0,"para meterDescriptio n":"","parameter Name":"inputid", "parameterOper ator":0,"parame terPosition":1}], "scriptResponse Parameters": [{"exampleValu e":"","parameter DataType":0,"pa rameterDescript ion":"","paramet erName":"id1"}, {"exampleValue ":"","parameter DataType":0,"pa rameterDescript ion":"","paramet erName":"name 1"}]} | 脚本API的详情，请参见 GetDataServiceApi接口scriptDetails字段的JSON String。 |
 |---|---|---|---|---|
-
-DataWorks
 
 | RegistrationDeta ils | String | 否 | {"failedResultSa mple":"fail","regi strationErrorCod es": [{"errorCode":"e 1","errorMessag e":"msg1","error Solution":"sol1" }, {"errorCode":"e 2","errorMessag e":"msg2","error Solution":"sol2" }],"registrationR equestParamete rs": [{"columnName ":"","defaultValu e":"","exampleV alue":"","isRequi redParameter":t rue,"parameter DataType":0,"pa rameterDescript ion":"","paramet erName":"id","p arameterOperat or":0,"paramete rPosition":1}, {"columnName" :"","defaultValue ":"xx","example Value":"","isReq uiredParameter" :true,"parameter DataType":0,"pa rameterDescript ion":"","paramet erName":"cc","p arameterOperat or":2,"paramete rPosition":2}],"s erviceContentTy pe":1,"serviceHo st":"http://www.b aidu.com","servi cePath":"/[uid]"," serviceRequestB odyDescription": "body","successf ulResultSample" :"success"} | 注册API的详情，请参见 GetDataServiceApi接口 registrationDetails字段的JSON String。 |
 |---|---|---|---|---|
@@ -23011,8 +22894,6 @@ DataWorks
 |---|---|---|---|
 | Data | Boolean | true | 更新API是否成功。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。 |
-
-DataWorks
 
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 |---|---|---|---|
@@ -23034,28 +22915,26 @@ http(s)://[Endpoint]/?Action=UpdateDataServiceApi
 &ApiId=10000 &ApiPath=/test/2 &ProjectId=10001 &Protocols=0,1 &RegionId=default &RequestMethod=0 &ResponseContentType=0 &TenantId=10001 &Timeout=10000 &VisibleRange=0
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0000-ABCD-EFG****",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": "Invalid.Tenant.ConnectionNotExists",
     "ErrorMessage": "The connection does not exist.",
     "Success": true
-}
 ```
 
-**错误码**
+`}`
 
-DataWorks
+**错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -23066,9 +22945,9 @@ DataWorks
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | 您被限制访问，请开通DataWorks 企业版或旗舰版。 |
 
-### 调度
+### 4.9 调度
 
-#### CreateManualDag
+#### 4.9.1 CreateManualDag
 
 调用CreateManualDag触发手动业务流程执行。手动业务流程必须已经在界面提交发布，运维中心能够找到对应的手动业务流程，才能使用该接口。
 
@@ -23080,24 +22959,22 @@ DataWorks
 | BizDate | String | 是 | 2020-11-11 00:00:00 | 业务日期的值为小于等于当前日期-1天。 例如，今天是2020年11月11日，则业务日期需要是2020年11月10日的00:00:00 或者该日期之前的日期。业务日期的时分秒信息均填写00。 |
 | FlowName | String | 是 | test workflow _ | 手动业务流程的名称。 |
 
-DataWorks
-
-|  |  |  |  | {"20000123121 |  | 传递手动业务流程执行时的节点参数信息，一个JSON格式： { "<手动业务流 |  |  |
+|   |   |   |   | {"20000123121 |   | 传递手动业务流程执行时的节点参数信息，一个JSON格式： { "<手动业务流 |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | { "<手动业务流 |  |
-|  |  |  |  |  | 0000123121 | 程内部的某个节点ID>": "节点的调度参 |  |  |
-|  |  |  |  | ": "key1=val2 key2=val2", | key1=val2 |  |  |  |
-|  |  |  |  |  |  | 数信息，和数据开发调度配置里面的参数 |  |  |
-| NodeParameters | ters | String | 是 |  |  |  |  |  |
-|  |  |  |  | "20000123124": |  | 格式保持一致", "<手动业务流程内部的 |  |  |
-|  |  |  |  | "kkkk=vvvvv |  | 某个节点ID>": "节点的调度参数信息， |  |  |
-|  |  |  |  | aaaa=bbbb"} |  |  |  |  |
-|  |  |  |  |  |  | 和数据开发调度配置里面的参数格式保持 |  |  |
-|  |  |  |  |  |  | 一致" } |  |  |
-| ProjectEnv |  | String | 是 | PROD |  | 调度运维中心的环境标识。PROD表示生产环境，DEV表示开发环境。 |  |  |
-| ProjectName |  | String | 是 | test workspace _ |  | 手动业务流程所属的工作空间英文名称。 |  |  |
-| RegionId |  | String | 是 | default |  | 区域ID，为固定值default。 |  |  |
-| DagParameters |  | String | 否 | {"kaaaa": "vaaaaa", "kbbbb": "vbbbbb"} |  | 业务流程参数，该参数会同步至本次Dag 的所有实例中。如果内部节点的调度参数引用了DagParameters中的业务流程参数，则节点的对应参数值会被替换为 DagParameter中的业务流程参数。 |  |  |
+|   |   |   |   |   |   |   | { "<手动业务流 |   |
+|   |   |   |   |   | 0000123121 | 程内部的某个节点ID>": "节点的调度参 |   |   |
+|   |   |   |   | ": "key1=val2 key2=val2", | key1=val2 |   |   |   |
+|   |   |   |   |   |   | 数信息，和数据开发调度配置里面的参数 |   |   |
+| NodeParameters | ters | String | 是 |   |   |   |   |   |
+|   |   |   |   | "20000123124": |   | 格式保持一致", "<手动业务流程内部的 |   |   |
+|   |   |   |   | "kkkk=vvvvv |   | 某个节点ID>": "节点的调度参数信息， |   |   |
+|   |   |   |   | aaaa=bbbb"} |   |   |   |   |
+|   |   |   |   |   |   | 和数据开发调度配置里面的参数格式保持 |   |   |
+|   |   |   |   |   |   | 一致" } |   |   |
+| ProjectEnv |   | String | 是 | PROD |   | 调度运维中心的环境标识。PROD表示生产环境，DEV表示开发环境。 |   |   |
+| ProjectName |   | String | 是 | test workspace _ |   | 手动业务流程所属的工作空间英文名称。 |   |   |
+| RegionId |   | String | 是 | default |   | 区域ID，为固定值default。 |   |   |
+| DagParameters |   | String | 否 | {"kaaaa": "vaaaaa", "kbbbb": "vbbbbb"} |   | 业务流程参数，该参数会同步至本次Dag 的所有实例中。如果内部节点的调度参数引用了DagParameters中的业务流程参数，则节点的对应参数值会被替换为 DagParameter中的业务流程参数。 |   |   |
 
 **返回数据**
 
@@ -23111,10 +22988,10 @@ DataWorks
 请求示例
 
 ```
-&BizDate=2020-11-11 00:00:00 &FlowName=test_workflow &NodeParameters={"20000123121": "key1=val2 key2=val2", "20000123124": "kkkk=vvvvv aaaa= bbbb"} &ProjectEnv=PROD &ProjectName=test_workspace &RegionId=default
+http(s)://[Endpoint]/?Action=CreateManualDag &BizDate=2020-11-11 00:00:00 &FlowName=test_workflow &NodeParameters={"20000123121": "key1=val2 key2=val2", "20000123124": "kkkk=vvvvv aaaa= bbbb"} &ProjectEnv=PROD &ProjectName=test_workspace &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>AASFDFSDFG-DFSDF-DFSDFD-SDFSDF</RequestId> <DagId>700000123121111</DagId>
@@ -23126,7 +23003,9 @@ DataWorks
 {"RequestId":"AASFDFSDFG-DFSDF-DFSDFD-SDFSDF","DagId":"700000123121111"}
 ```
 
-#### GetInstanceStatusCount
+#### 4.9.2 GetInstanceStatusCount
+
+调用GetInstanceStatusCount获取实例不同状态的数量统计。
 
 **请求参数**
 
@@ -23143,13 +23022,11 @@ DataWorks
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
-| StatusCount | Struct |  | 实例的状态统计。 |
+| StatusCount | Struct |   | 实例的状态统计。 |
 | FailureCount | Integer | 1 | 失败实例的数量。 |
 | NotRunCount | Integer | 1 | 未运行实例的数量。 |
 | RunningCount | Integer | 1 | 运行中实例的数量。 |
 | SuccessCount | Integer | 1 | 成功实例的数量。 |
-
-DataWorks
 
 | TotalCount | Integer | 6 | 实例的总数。 |
 |---|---|---|---|
@@ -23164,7 +23041,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetInstanceStatusCount &BizDate=2020-01-01 &ProjectEnv=PROD &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <StatusCount>
@@ -23184,7 +23061,7 @@ http(s)://[Endpoint]/?Action=GetInstanceStatusCount &BizDate=2020-01-01 &Project
 {"StatusCount": {"TotalCount":"6","FailureCount":"1","RunningCount":"1","WaitResCount":"1","SuccessCount" 1","NotRunCount":"1","WaitTimeCount":"1"},"RequestId":"0000-ABCD-EFG*****"}
 ```
 
-#### GetManualDagInstances
+#### 4.9.3 GetManualDagInstances
 
 调用GetManualDagInstances，获取手动执行的业务流程实例的信息。
 
@@ -23193,8 +23070,6 @@ http(s)://[Endpoint]/?Action=GetInstanceStatusCount &BizDate=2020-01-01 &Project
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | GetManualDagIn stances | 系统规定参数。取值： GetManualDagInstances。 |
-
-DataWorks
 
 | DagId | String | 是 | 7000001231234 | 触发手动业务流程运行的Dag实例ID。您可以调用CreateManualDag接口获取。 |
 |---|---|---|---|---|
@@ -23206,7 +23081,7 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Instances | Array of Instances |  | 手动业务流程的内部实例列表。 |
+| Instances | Array of Instances |   | 手动业务流程的内部实例列表。 |
 | BeginRunning Time | Long | 1605178414676 | 实例任务开始运行的时间。 |
 | BeginWaitRes Time | Long | 1605178414676 | 实例任务开始等待资源的时间。 |
 | BeginWaitTim eTime | Long | 1605178414676 | 实例任务开始等待调度的时间。 |
@@ -23218,8 +23093,6 @@ DataWorks
 | FinishTime | Long | 1605178414676 | 实例任务运行的结束时间。 |
 | InstanceId | Long | 11726873619 | 内部实例ID。 |
 | ModifyTime | Long | 1605178414676 | 实例任务最新的修改时间。 |
-
-DataWorks
 
 | NodeId | Long | 37851 | 业务流程的内部节点ID。 |
 |---|---|---|---|
@@ -23236,7 +23109,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetManualDagInstances &DagId=7000001231234 &ProjectEnv=PROD &ProjectName=test_workspace &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Instances>
@@ -23264,7 +23137,9 @@ http(s)://[Endpoint]/?Action=GetManualDagInstances &DagId=7000001231234 &Project
 {"Instances": [{"Status":"WAIT_TIME","ModifyTime":"1605178414676","NodeName":"nodename","DagType":"3"," stanceId":"11726873619","ParamValues":"xxx","CreateTime":"1605178414676","BeginWaitTimeTi ":"1605178414676","CycTime":"1605178414676","DagId":"350123123","BeginRunningTime":"16051 414676","FinishTime":"1605178414676","NodeId":"37851","BeginWaitResTime":"1605178414676", izDate":"1605178414676"}],"RequestId":"0000-ABCD-EFG*****"}
 ```
 
-#### ListProgramTypeCount
+#### 4.9.4 ListProgramTypeCount
+
+调用ListProgramTypeCount获取节点任务类型的分布。
 
 **请求参数**
 
@@ -23280,9 +23155,7 @@ http(s)://[Endpoint]/?Action=GetManualDagInstances &DagId=7000001231234 &Project
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-DataWorks
-
-| ProgramTypeA ndCounts | Array of ProgramTypeA ndCount |  | 节点的类型和数量。 |
+| ProgramTypeA ndCounts | Array of ProgramTypeA ndCount |   | 节点的类型和数量。 |
 |---|---|---|---|
 | Count | Integer | 2 | 节点数量。 |
 | ProgramType | String | ODPS SQL | 节点的类型。 |
@@ -23296,7 +23169,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListProgramTypeCount &ProjectEnv=PROD &ProjectId=10001 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <ProgramTypeAndCounts>
@@ -23311,7 +23184,9 @@ http(s)://[Endpoint]/?Action=ListProgramTypeCount &ProjectEnv=PROD &ProjectId=10
 {"RequestId":"0000-ABCD-EFG*****","ProgramTypeAndCounts": [{"Count":"2","ProgramType":"ODPS SQL"}]}
 ```
 
-#### SearchNodesByOutput
+#### 4.9.5 SearchNodesByOutput
+
+调用SearchNodesByOutput，根据输出精确查询节点。
 
 **请求参数**
 
@@ -23319,8 +23194,6 @@ http(s)://[Endpoint]/?Action=ListProgramTypeCount &ProjectEnv=PROD &ProjectId=10
 |---|---|---|---|---|
 | Action | String | 是 | SearchNodesBy Output | 系统规定参数。取值： SearchNodesByOutput。 |
 | Outputs | String | 是 | aaaaa.1231412 _ out,bbbb.12313 123 out _ | 节点的输出串。支持多个值，多个值时请使用英文逗号（,）分隔。 |
-
-DataWorks
 
 | ProjectEnv | String | 是 | PROD | 调度运维中心环境标识：PROD表示生产环境，DEV表示开发环境。 |
 |---|---|---|---|---|
@@ -23335,8 +23208,6 @@ DataWorks
 | ErrorMessage | String | The connection does not exist. | 错误信息。 |
 | HttpStatusCod e | Integer | 200 | HTTP状态码。 |
 
-DataWorks
-
 | RequestId | String | 0000-ABCD- EFG***** | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | false | 调用是否成功。 |
@@ -23349,7 +23220,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=SearchNodesByOutput &Outputs=aaaaa.1231412_out,bbbb.12313123_out &ProjectEnv=PROD &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>{ "test_0709_1.630003558_out": { "nodeId": 21673, "nodeName": "hour_sql", "ownerI d": 123123123124, "cronExpress": "00 00 00-23/2 * * ?", "repeatability": true, "program Type": "ODPS_SQL", "projectId": 11111, "schedulerType": "NORMAL", "priority": 1, "basel ineId": 20001721, "connection": "odps_first" }, "test_0709_1.630003556_out": { "nodeId" : 21671, "nodeName": "start", "ownerId": 123141231231, "cronExpress": "00 */10 00-23 *
@@ -23363,11 +23234,11 @@ http(s)://[Endpoint]/?Action=SearchNodesByOutput &Outputs=aaaaa.1231412_out,bbbb
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data":"{ \"test_0709_1.630003558_out\": { \"nodeId\": 21673, \"nodeName\": \"hour_sql\", \"owner Id\": 123123123124, \"cronExpress\": \"00 00 00-23/2 * * ?\", \"repeatability\": true, \"programType\": \"ODPS_SQL\", \"projectId\": 11111, \"schedulerType\": \"NORMAL\", \"p riority\": 1, \"baselineId\": 20001721, \"connection\": \"odps_first\" }, \"test_0709_1.630003556_out\": { \"nodeId\": 21671, \"nodeName\": \"start\", \"ownerId\ ": 123141231231, \"cronExpress\": \"00 */10 00-23 * * ?\", \"repeatability\": true, \"p rogramType\": \"VIRTUAL\", \"projectId\": 1111, \"schedulerType\": \"NORMAL\", \"priori ty\": 1, \"baselineId\": 20001721 } }","ErrorCode":"Invalid.Tenant.ConnectionNotExists","ErrorMessage":"The connection does not exist.","Success":"false"}
 ```
 
-### 数据保护伞
+### 4.10 数据保护伞
 
-#### AddRuleConfig
+#### 4.10.1 AddRuleConfig
 
-DataWorks 新增数据识别规则接口。
+新增数据识别规则接口。
 
 **请求参数**
 
@@ -23379,8 +23250,6 @@ DataWorks 新增数据识别规则接口。
 | RuleDetailJson | String | 是 | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRul es": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } | 规则详细Json，RuleDetailJson分为三部分，格式如下示例： { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } 字段取值详情请参见下文的补充说明。 |
 | RuleGroup | String | 是 | 自定义规则 | 规则聚类标签。 |
 | SensLevel | String | 是 | L1 | 敏感等级。 |
-
-DataWorks
 
 | Status | String | 是 | 0 | 规则生效状态，包括1：生效、0：失效。 |
 |---|---|---|---|---|
@@ -23402,7 +23271,7 @@ DataWorks
 请求示例
 
 ```
-&Owner=dsg_uat
+http(s)://[Endpoint]/?Action=AddRuleConfig &Owner=dsg_uat
 ```
 
 `&RuleDesc=`手机号规则
@@ -23417,13 +23286,13 @@ DataWorks
 &SensLevel=L1 &Status=0
 ```
 
-`&Type=`手机号 `&<`公共请求参数> 正常返回示例 `XML` 格式
+`&Type=`手机号 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>500</ErrorCode> <ErrorMessage>InternalError.Unknown</ErrorMessage> <Success>false</Success>
 ```
 
-DataWorks `JSON` 格式
+`JSON` 格式
 
 ```json
 {"RequestId":"0000-ABCD- EFG*****","HttpStatusCode":"200","Data":"true","ErrorCode":"500","ErrorMessage":"Internal ror.Unknown","Success":"false"}
@@ -23440,10 +23309,9 @@ DataWorks `JSON` 格式
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-RuleDetailJson分为三部分，如下示例：
+RuleDetailJson分为三部分，如下示例： `{`
 
 ```json
-{
  "contentRule": {
 ```
 
@@ -23451,7 +23319,11 @@ RuleDetailJson分为三部分，如下示例：
 
 ```json
   "regExp": null
- },
+```
+
+`},`
+
+```json
  "metaRules": [{
   "compareType": "equal",
   "param": "a.b.c",
@@ -23461,13 +23333,11 @@ RuleDetailJson分为三部分，如下示例：
   "compareType": "equal",
   "param": "c.d.e",
   "metaType": "guid",
- }]
-}
 ```
 
-其中：
+`}]` `}` 其中：
 **ContentRule**：为内容识别规则，与MetaRules二选一。
-DataWorks ContentRule包含**规则名**和**规则内容**，规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时，规则内容则传递正则内容。
+ContentRule包含**规则名**和**规则内容**，规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时，规则内容则传递正则内容。
 **metaRules**：为字段扫描规则，与ContentRule二选一。
 metaRules包含**规则名**和**规则内容**，规则名为固定值，通过元数据识别；规则内容包含**compareType**、**param**、**metaType**。
 **compareType**：比较类型，取值为固定值：**equal**或**regexp**。如果param包含 *, 传**regexp**, 否
@@ -23475,10 +23345,12 @@ metaRules包含**规则名**和**规则内容**，规则名为固定值，通过
 **param**：字段扫描内容，可使用通配符
 ，格式为 `project.table.column` ；例如，a.b.c 表示匹配project为a ，表名称为b的c列字段；a.b. 表示匹配a的project中b表的任意列字段。
 **metaType**：元数据匹配类型，取值为固定值guid。
-**excludeMetaRules**：字段扫描排除项；非必填。包含**规则名**和**规则内容**，取值与**metaRules**的规
+**excludeMetaRules**：字段扫描排除项；非必填。包含**规则名**和**规则内容**，取值与**metaRules**的**规**
 **则名**和**规则内容**一致。
 
-#### AddRuleConfigMessage
+#### 4.10.2 AddRuleConfigMessage
+
+调用AddRuleConfigMessage接口新增数据识别规则。
 
 **请求参数**
 
@@ -23487,16 +23359,12 @@ metaRules包含**规则名**和**规则内容**，规则名为固定值，通过
 | Action | String | 是 | AddRuleConfigM essage | 系统规定参数。取值： AddRuleConfigMessage。 |
 | Owner | String | 是 | uat | 负责人 。入参配置此参数时，需同步配置指定Type（规则名称）参数。 |
 | RuleDesc | String | 是 | 手机号规则 | 规则描述。 |
-|  |  |  |  | 规则详细Json，RuleDetailJson分为三部分，如下示例： |
+|   |   |   |   | 规则详细Json，RuleDetailJson分为三部分，如下示例： |
 
-DataWorks
-
-|  |  |  |  | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ |
+|   |   |   |   | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ |
 |---|---|---|---|---|
 | RuleDetailJson | String | 是 | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRul es": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } | "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } 其中： ContentRule：为内容识别规则，与 MetaRules二选一 。 ContentRule包含规则名和规则内容， 规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时， 规则内容则传递正则内容。 metaRules：为字段扫描规则，与 ContentRule二选一。 metaRules包含规则名和规则内容，规则名为固定值，通过元数据识别；规则内容包含compareType、param、meta Type。 compareType：比较类型，取值为固定值：equal或regexp。如果 param包含 *, 传regexp, 否则传equal。 param：字段扫描内容，可使用通配符 ，格式为 project.table.column ； 例如 ，a.b.c 表示匹配project为a ，表名称为b的c列字段；a.b. 表示匹配a的project中b表的任意列字段。 metaType：元数据匹配类型，取值为固定值guid。 excludeMetaRules：字段扫描排除项 ；非必填。包含规则名和规则内容， 取值与metaRules的规则名和规则内 |
 | RuleGroup | String | 是 | 自定义规则 | 容一致。 规则聚类标签。 |
-
-DataWorks
 
 | SensLevel | String | 是 | L1 | 敏感等级。 |
 |---|---|---|---|---|
@@ -23535,16 +23403,15 @@ http(s)://[Endpoint]/?Action=AddRuleConfigMessage &Owner=uat
 &SensLevel=L1 &Status=0 &TenantId=541445351475745
 ```
 
-`&Type=`手机号 `&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&Type=`手机号 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <Data>true</Data> <ErrorCode>40001</ErrorCode> <ErrorMessage>错误异常</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "Data": true,
@@ -23555,8 +23422,9 @@ http(s)://[Endpoint]/?Action=AddRuleConfigMessage &Owner=uat
 
 ```json
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -23569,14 +23437,14 @@ http(s)://[Endpoint]/?Action=AddRuleConfigMessage &Owner=uat
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### UpdateRuleConfig
+#### 4.10.3 UpdateRuleConfig
+
+调用UpdateRuleConfig修改数据识别规则。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | UpdateRuleConfi g | 系统规定参数。取值： UpdateRuleConfig。 |
 |---|---|---|---|---|
@@ -23585,14 +23453,12 @@ DataWorks
 | RuleDesc | String | 是 | 手机号规则 | 规则描述。 |
 | RuleDetailJson | String | 是 | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRul es": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } | 规则详细Json，RuleDetailJson分为三部分，如下示例： { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } 其中： ContentRule：为内容识别规则，与 MetaRules二选一 。 ContentRule包含规则名和规则内容， 规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时， 规则内容则传递正则内容。 metaRules：为字段扫描规则，与 ContentRule二选一。 metaRules包含规则名和规则内容，规则名为固定值，通过元数据识别；规则内容包含compareType、param、meta Type。 compareType：比较类型，取值为固定值：equal或regexp。如果 param包含 *, 取值regexp, 否则取值equal。 |
 
-DataWorks
-
-|  |  |  |  | param：字段扫描内容，可使用通配符 * ，格式为 project.table.column ； 例如 ， a.b.c 表示匹配project 为a ，表名称为b的c列字段； a.b.* 表示匹配a的project 中b表的任意列字段。 metaType：元数据匹配类型，取值为固定值guid。 excludeMetaRules：字段扫描排除项 ；非必填。包含规则名和规则内容， 取值与metaRules的规则名和规则内容一致 |
+|   |   |   |   | param：字段扫描内容，可使用通配符 * ，格式为 project.table.column ； 例如 ， a.b.c 表示匹配project 为a ，表名称为b的c列字段； a.b.* 表示匹配a的project 中b表的任意列字段。 metaType：元数据匹配类型，取值为固定值guid。 excludeMetaRules：字段扫描排除项 ；非必填。包含规则名和规则内容， 取值与metaRules的规则名和规则内容一致 |
 |---|---|---|---|---|
 | RuleGroup | String | 是 | 正则规则 | 规则聚类标签。 |
 | SensLevel | String | 是 | L1 | 规则等级。 |
 | Status | String | 是 | 0 | 规则生效状态，包含生效、失效。 |
-|  |  |  |  | 规则名 ，入参配置此参数时，需同步配置 |
+|   |   |   |   | 规则名 ，入参配置此参数时，需同步配置 |
 | Type | String | 是 | 手机号 | 指定Owner（负责人）参数。 |
 
 **返回数据**
@@ -23605,8 +23471,6 @@ DataWorks
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 请求ID。 |
 
-DataWorks
-
 | Success | Boolean | true | 请求是否成功。 |
 |---|---|---|---|
 
@@ -23615,7 +23479,7 @@ DataWorks
 请求示例
 
 ```
-&Id=1 &Owner=uat
+http(s)://[Endpoint]/?Action=UpdateRuleConfig &Id=1 &Owner=uat
 ```
 
 `&RuleDesc=`手机号规则
@@ -23630,16 +23494,15 @@ DataWorks
 &SensLevel=L1 &Status=0
 ```
 
-`&Type=`手机号 `&<`公共请求参数> 正常返回示例 `XML` 格式
+`&Type=`手机号 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <Data>true</Data> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit.</E rrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "Data": true,
@@ -23647,16 +23510,15 @@ DataWorks
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
-
-DataWorks
 
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 |---|---|---|---|
@@ -23665,7 +23527,9 @@ DataWorks
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### UpdateRuleConfigMessage
+#### 4.10.4 UpdateRuleConfigMessage
+
+调用UpdateRuleConfigMessage修改数据识别规则。
 
 **请求参数**
 
@@ -23675,11 +23539,9 @@ DataWorks
 | Id | Long | 是 | 1 | ID。 |
 | Owner | String | 是 | uat | 账号。 |
 | RuleDesc | String | 是 | 手机号规则 | 手机号规则。 |
-|  |  |  |  | 规则详细Json，RuleDetailJson分为三部分，如下示例： |
+|   |   |   |   | 规则详细Json，RuleDetailJson分为三部分，如下示例： |
 
-DataWorks
-
-|  |  |  | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ | { "contentRule": { "dataType": "座机号", "regExp": null }, |
+|   |   |   | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ | { "contentRule": { "dataType": "座机号", "regExp": null }, |
 |---|---|---|---|---|
 | RuleDetailJson | String | 是 | "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRul es": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } | "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } 其中： ContentRule：为内容识别规则，与 MetaRules二选一 。 ContentRule包含规则名和规则内容， 规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时， 规则内容则传递正则内容。 metaRules：为字段扫描规则，与 ContentRule二选一。 metaRules包含规则名和规则内容，规则名为固定值，通过元数据识别；规则内容包含compareType、param、meta Type。 compareType：比较类型，取值为固定值：equal或regexp。如果 param包含 *, 取值regexp, 否则取值equal。 |
 | RuleGroup | String | 是 | 正则规则 | param：字段扫描内容，可使用通规则聚配类符标签* 。，格式为 project.table.column ； |
@@ -23689,8 +23551,6 @@ DataWorks
 | Type | String | 是 | 手机号 | 取值与metaRules的规则名和规则内容一致。 规则名称。 |
 
 **返回数据**
-
-DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -23721,16 +23581,15 @@ http(s)://[Endpoint]/?Action=UpdateRuleConfigMessage &Id=1 &Owner=uat
 &SensLevel=L1 &Status=0 &TenantId=541445351475745
 ```
 
-`&Type=`手机号 `&<`公共请求参数> 正常返回示例 `XML` 格式
+`&Type=`手机号 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <Data>true</Data> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "Data": true,
@@ -23738,8 +23597,9 @@ http(s)://[Endpoint]/?Action=UpdateRuleConfigMessage &Id=1 &Owner=uat
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -23752,7 +23612,9 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### DeleteRuleConfig
+#### 4.10.5 DeleteRuleConfig
+
+调用DeleteRuleConfig接口删除数据识别规则。
 
 **请求参数**
 
@@ -23765,8 +23627,6 @@ mit",
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-DataWorks
 
 | Data | Boolean | true | 删除结果。 |
 |---|---|---|---|
@@ -23781,19 +23641,18 @@ DataWorks
 请求示例
 
 ```
-&Id=1
+http(s)://[Endpoint]/?Action=DeleteRuleConfig &Id=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <Data>true</Data> <ErrorCode>9990040002</ErrorCode> <ErrorMessage> The request for this resource has exceeded your daily available limit.< /ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "Data": true,
@@ -23801,12 +23660,11 @@ DataWorks
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit.",
     "Success": true
-}
 ```
 
-**错误码**
+`}`
 
-DataWorks
+**错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -23817,7 +23675,9 @@ DataWorks
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### DeleteRuleConfigMessage
+#### 4.10.6 DeleteRuleConfigMessage
+
+调用DeleteRuleConfigMessage删除敏感规则。
 
 **请求参数**
 
@@ -23835,8 +23695,6 @@ DataWorks
 | ErrorCode | String | 9990040002 | 错误码。 |
 | ErrorMessage | String | The request for this resource has exceeded your daily available limit. | 错误信息。 |
 
-DataWorks
-
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 |---|---|---|---|
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 请求ID。 |
@@ -23850,16 +23708,15 @@ DataWorks
 http(s)://[Endpoint]/?Action=DeleteRuleConfigMessage &Id=1 &TenantId=541445351475745
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <Data>true</Data> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit.</E rrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "Data": true,
@@ -23867,8 +23724,9 @@ http(s)://[Endpoint]/?Action=DeleteRuleConfigMessage &Id=1 &TenantId=54144535147
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -23877,15 +23735,15 @@ mit.",
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 
-DataWorks
-
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 |---|---|---|---|
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### DesensitizeData
+#### 4.10.7 DesensitizeData
+
+调用DesensitizeData，输入待脱敏数据，返回脱敏后的结果数据。
 
 **请求参数**
 
@@ -23908,23 +23766,23 @@ DataWorks
 请求示例
 
 ```
-&Data=15365291784 &RegionId=default &SceneCode=_default_scene_code
+http(s)://[Endpoint]/?Action=DesensitizeData &Data=15365291784 &RegionId=default &SceneCode=_default_scene_code
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>BCA321BA-46C5-40E9-8A08-6****** </RequestId> <DesensitizeData>{ "desensData": "**198807120510**" }</DesensitizeData>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "BCA321BA-46C5-40E9-8A08-6******",
     "DesensitizeData": "{ \"desensData\": \"**198807120510**\" }"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -23933,7 +23791,9 @@ DataWorks
 | 403 | Forbidden.NoTenan t | The tenant information cannot be obtained using user ID. | 无法获取租户的信息。 |
 | 500 | InternalError.DQC. BizError | An internal error occurred. | 内部服务错误。 |
 
-#### GetRuleConfig
+#### 4.10.8 GetRuleConfig
+
+调用GetRuleConfig获取数据识别规则。
 
 **请求参数**
 
@@ -23944,12 +23804,8 @@ DataWorks
 | Owner | String | 是 | uat | 账户名称。 |
 | RuleDesc | String | 是 | 手机号规则 | 规则描述。 |
 
-DataWorks
-
 | RuleDetailJson | String | 是 | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRul es": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } | 规则详细Json，RuleDetailJson分为三部分，如下示例： { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } 其中： ContentRule：为内容识别规则，与 MetaRules二选一 。 ContentRule包含规则名和规则内容， 规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时， 规则内容则传递正则内容。 metaRules：为字段扫描规则，与 ContentRule二选一。 metaRules包含规则名和规则内容，规则名为固定值，通过元数据识别；规则内容包含compareType、param、meta Type。 compareType：比较类型，取值为固定值：equal或regexp。如果 param包含 *, 取值regexp, 否则取值equal。 param：字段扫描内容，可使用通配符 * ，格式为 project.table.column ； 例如 ， a.b.c 表示匹配project 为a ，表名称为b的c列字段； a.b.* 表示匹配a的project 中b表的任意列字段。 metaType：元数据匹配类型，取值为固定值guid。 excludeMetaRules：字段扫描排除项 ；非必填。包含规则名和规则内容， 取值与metaRules的规则名和规则内容一致。 |
 |---|---|---|---|---|
-
-DataWorks
 
 | RuleGroup | String | 是 | 分类 | 规则聚类标签。 |
 |---|---|---|---|---|
@@ -23973,7 +23829,7 @@ DataWorks
 请求示例
 
 ```
-&Id=1 &Owner=uat
+http(s)://[Endpoint]/?Action=GetRuleConfig &Id=1 &Owner=uat
 ```
 
 `&RuleDesc=`手机号规则
@@ -23988,16 +23844,15 @@ DataWorks
 &SensLevel=L2 &Status=0
 ```
 
-`&Type=`手机号 `&<`公共请求参数> 正常返回示例 DataWorks `XML` 格式
+`&Type=`手机号 `&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <Data>true</Data> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "Data": true,
@@ -24005,8 +23860,9 @@ DataWorks
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24019,14 +23875,14 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetRuleConfigMessage
+#### 4.10.9 GetRuleConfigMessage
+
+调用GetRuleConfigMessage获取数据识别规则。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | GetRuleConfigM essage | 系统规定参数。取值： GetRuleConfigMessage。 |
 |---|---|---|---|---|
@@ -24045,23 +23901,19 @@ DataWorks
 | ErrorMessage | String | The request for this resource has exceeded your daily available limit | 错误信息。 |
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 请求ID。用于出现错误后排查问题。 |
-| RuleConifgDat a | Struct |  | 返回结果。 |
-| Rules | Array of SensList |  | 规则列表。 |
+| RuleConifgDat a | Struct |   | 返回结果。 |
+| Rules | Array of SensList |   | 规则列表。 |
 | BydAccuracy | Float | 80 | 前天的准确率。 |
 | CreateTime | Long | 1546504580000 | 创建时间。 |
 | IsCustom | Boolean | true | 是否是自定义类型。 |
 | LocaleType | String | 手机号 | 国际化名称。 |
-
-DataWorks
 
 | Owner | String | uat | 操作账号。 |
 |---|---|---|---|
 | RuleDesc | String | 手机号规则 | 规则介绍。 |
 | RuleDetailJson | String | { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules ": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } | 规则详细Json，RuleDetailJson分为三部分，如下示例： { "contentRule": { "dataType": "座机号", "regExp": null }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", }], "excludeMetaRules": [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", }] } 其中： ContentRule：为内容识别规则，与 MetaRules二选一 。 ContentRule包含规则名和规则内容，规则名可以是内置规则名、正则表达式、自生成识别模型名、样本库名；当规则名为正则式匹配时， 规则内容则传递正则内容。 metaRules：为字段扫描规则，与 ContentRule二选一。 metaRules包含规则名和规则内容，规则名为固定值，通过元数据识别；规则内容包含compareType、param、metaType 。 compareType：比较类型，取值为固定值：equal或regexp。如果param包含 *, 取值regexp, 否则取值equal。 param：字段扫描内容，可使用通配符 * ，格式为 project.table.column ； 例如 ， a.b.c 表示匹配project为a ，表名称为b的c列字段； a.b.* 表示匹配a的 project中b表的任意列字段。 metaType：元数据匹配类型，取值为固定值guid。 excludeMetaRules：字段扫描排除项 ； 非必填。包含规则名和规则内容，取值 |
 
-DataWorks
-
-|  |  |  | 与metaRules的规则名和规则内容一致。 |
+|   |   |   | 与metaRules的规则名和规则内容一致。 |
 |---|---|---|---|
 | RuleGroup | String | 内置规则 | 聚类tag，标签。 |
 | UpdateTime | Long | 1664159839646 | 更新时间。 |
@@ -24077,7 +23929,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetRuleConfigMessage &PageNum=1 &TenantId=541445351475745
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <RequestId>0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <RuleConifgData>
@@ -24102,10 +23954,9 @@ http(s)://[Endpoint]/?Action=GetRuleConfigMessage &PageNum=1 &TenantId=541445351
 </RuleConifgData> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "RuleConifgData": {
@@ -24132,17 +23983,16 @@ gExp\": null }, \"metaRules\": [{ \t\"compareType\": \"equal\", \t\"param\": \"a
             "YdAccuracy": 100,
 ```
 
-`"RuleGroup": "`内置规则"
+`"RuleGroup": "`内置规则`"` `}` `},`
 
 ```json
-        }
-    },
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24155,9 +24005,9 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
+#### 4.10.10 GetRuleDataMessage
 
-#### GetRuleDataMessage
+调用GetRuleDataMessage根据规则查询分级或者分级分级查询规则。
 
 **请求参数**
 
@@ -24175,15 +24025,13 @@ DataWorks
 | ErrorCode | String | 9990040002 | 错误码。 |
 | ErrorMessage | String | The request for this resource has exceeded your daily available limit | 错误信息。 |
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
-| LevelRuleData | Struct |  | 分级信息。 |
-| LevelRuleList | Array of LevelRuleList |  | 敏感分级列表。 |
+| LevelRuleData | Struct |   | 分级信息。 |
+| LevelRuleList | Array of LevelRuleList |   | 敏感分级列表。 |
 | OpAccount | String | uat | 账号。 |
 | SensLevel | String | L1 | 分级信息。 |
 | SensLevelAlias | String | 机密 | 分级名称。 |
 | Type | String | 邮箱 | 规则类型。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
-
-DataWorks
 
 | Success | Boolean | true | 调用是否成功。 |
 |---|---|---|---|
@@ -24196,7 +24044,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetRuleDataMessage &TenantId=541445351475745
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <LevelRuleData>
@@ -24209,10 +24057,9 @@ http(s)://[Endpoint]/?Action=GetRuleDataMessage &TenantId=541445351475745
 </LevelRuleData> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "LevelRuleData": {
@@ -24225,21 +24072,25 @@ http(s)://[Endpoint]/?Action=GetRuleDataMessage &TenantId=541445351475745
 ```json
             "SensLevelAlias": "机密",
             "SensLevel": "L1"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 
-| 开发指南·Open | API参考 |  | DataWork |
+| 开发指南·Open | API参考 |   | DataWork |
 |---|---|---|---|
 
 | 429 | Throttling.Api.Risk | The request for this resource has exceeded your daily available limit. | 对该资源的请求已超过您的每日可用上限。 |
@@ -24250,7 +24101,9 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetRuleMessage
+#### 4.10.11 GetRuleMessage
+
+调用GetRuleMessage根据规则查询分级或者分级分级查询规则。
 
 **请求参数**
 
@@ -24268,11 +24121,9 @@ mit",
 | ErrorMessage | String | The request for this resource has exceeded your daily available limit | 错误信息。 |
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 
-DataWorks
-
-| LevelRuleData | Struct |  | 返回结果。 |
+| LevelRuleData | Struct |   | 返回结果。 |
 |---|---|---|---|
-| LevelRuleList | Array of LevelRuleList |  | 返回结果列表。 |
+| LevelRuleList | Array of LevelRuleList |   | 返回结果列表。 |
 | OpAccount | String | uat | 账号信息。 |
 | SensLevel | String | L1 | 等级。 |
 | SensLevelAlias | String | 机密 | 等级名称。 |
@@ -24282,7 +24133,13 @@ DataWorks
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=GetRuleMessage
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <LevelRuleData>
@@ -24299,10 +24156,9 @@ DataWorks
 </LevelRuleData> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "LevelRuleData": {
@@ -24315,14 +24171,18 @@ DataWorks
 ```json
             "SensLevelAlias": "机密",
             "SensLevel": "L1"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24335,7 +24195,9 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetSensLevel
+#### 4.10.12 GetSensLevel
+
+调用GetSensLevel获取敏感规则分级列表。
 
 **请求参数**
 
@@ -24345,16 +24207,14 @@ mit",
 
 **返回数据**
 
-DataWorks
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | ErrorCode | String | 9990040002 | 错误码。 |
 | ErrorMessage | String | The request for this resource has exceeded your daily available limi | 错误信息。 |
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 请求ID。 |
-| SensLevelData | Struct |  | 返回结果。 |
-| SensList | Array of SensList |  | 返回列表。 |
+| SensLevelData | Struct |   | 返回结果。 |
+| SensList | Array of SensList |   | 返回列表。 |
 | Count | Integer | 1 | 结果统计。 |
 | OpAccount | String | uat | 操作人员账户。 |
 | OpTime | Long | 1664159839646 | 操作时间。 |
@@ -24364,7 +24224,13 @@ DataWorks
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=GetSensLevel
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <SensLevelData>
@@ -24378,10 +24244,9 @@ DataWorks
 </SensLevelData> <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limi</Err orMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "SensLevelData": {
         "SensList": {
             "OpAccount": "uat",
@@ -24389,16 +24254,20 @@ DataWorks
             "Count": 1,
             "SensLevel": "L1",
             "OpTime": 1664159839646
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mi",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24409,13 +24278,13 @@ mi",
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 
-DataWorks
-
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 |---|---|---|---|
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetSensLevelMessage
+#### 4.10.13 GetSensLevelMessage
+
+调用GetSensLevelMessage接口获取分级列表。
 
 **请求参数**
 
@@ -24432,13 +24301,11 @@ DataWorks
 | ErrorMessage | String | The request for this resource has exceeded your daily available limit | 错误信息。 |
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 请求ID。 |
-| SensLevelData | Struct |  | 返回结果。 |
-| SensList | Array of SensList |  | 返回结果列表。 |
+| SensLevelData | Struct |   | 返回结果。 |
+| SensList | Array of SensList |   | 返回结果列表。 |
 | Count | Integer | 1 | 统计。 |
 | OpAccount | String | uat | 账号信息。 |
 | OpTime | Long | 1664159839646 | 操作时间。 |
-
-DataWorks
 
 | SensLevel | String | L1 | 敏感等级。 |
 |---|---|---|---|
@@ -24453,7 +24320,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetSensLevelMessage &TenantId=541445351475745
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <SensLevelData>
@@ -24467,10 +24334,9 @@ http(s)://[Endpoint]/?Action=GetSensLevelMessage &TenantId=541445351475745
 </SensLevelData> <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "SensLevelData": {
         "SensList": {
             "OpAccount": "uat",
@@ -24478,16 +24344,20 @@ http(s)://[Endpoint]/?Action=GetSensLevelMessage &TenantId=541445351475745
             "Count": 1,
             "SensLevel": "L1",
             "OpTime": 1664159839646
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24500,14 +24370,14 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetSensTableLevel
+#### 4.10.14 GetSensTableLevel
+
+第三方调用GetSensTableLevel接口获取安全等级。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-DataWorks
 
 | Action | String | 是 | GetSensTableLe vel | 系统规定参数。取值： GetSensTableLevel。 |
 |---|---|---|---|---|
@@ -24521,7 +24391,7 @@ DataWorks
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
-| sensTableList | Array of SensTableList |  | 敏感结果。 |
+| sensTableList | Array of SensTableList |   | 敏感结果。 |
 | OpAccount | String | uat | 账户名称。 |
 | SensLevelNam e | String | 机密 | 等级名称。 |
 | SensTables | String | tables | 敏感表信息。 |
@@ -24529,7 +24399,13 @@ DataWorks
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=GetSensTableLevel
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <sensTableList>
@@ -24540,10 +24416,9 @@ DataWorks
 </sensTableList> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit.</E rrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "sensTableList": {
@@ -24551,13 +24426,18 @@ DataWorks
         "OpAccount": "uat",
         "SensLevelName": "机密",
         "SensTables": "tables"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit.",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24570,9 +24450,9 @@ mit.",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-DataWorks
+#### 4.10.15 GetSensTableLevelMessage
 
-#### GetSensTableLevelMessage
+调用GetSensTableLevelMessage获取保护伞接口安全等级。
 
 **请求参数**
 
@@ -24590,7 +24470,7 @@ DataWorks
 | HttpStatusCod e | Integer | 429 | HTTP状态码。 |
 | RequestId | String | 0a0a07e31663921 4411658883ecd10 | 本次调用的唯一ID。出现错误后，您可以根据该 ID排查问题。 |
 | Success | Boolean | true | 调用是否成功。 |
-| sensTableList | Array of SensTableList |  | 表安全分级列表。 |
+| sensTableList | Array of SensTableList |   | 表安全分级列表。 |
 | OpAccount | String | uat | 操作人。 |
 | SensLevelNam e | String | 机密 | 安全等级名称。 |
 | SensTables | String | tables | 指定表字段。 |
@@ -24598,13 +24478,13 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetSensTableLevelMessage &TenantId=541445351475745
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId> 0a0a07e316639214411658883ecd10</RequestId> <HttpStatusCode>429</HttpStatusCode> <sensTableList>
@@ -24615,10 +24495,9 @@ http(s)://[Endpoint]/?Action=GetSensTableLevelMessage &TenantId=541445351475745
 </sensTableList> <ErrorCode>9990040002</ErrorCode> <ErrorMessage>The request for this resource has exceeded your daily available limit</Er rorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0a0a07e316639214411658883ecd10",
     "HttpStatusCode": 429,
     "sensTableList": {
@@ -24626,13 +24505,18 @@ http(s)://[Endpoint]/?Action=GetSensTableLevelMessage &TenantId=541445351475745
         "OpAccount": "uat",
         "SensLevelName": "机密",
         "SensTables": "tables"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 9990040002,
     "ErrorMessage": "The request for this resource has exceeded your daily available li
 mit",
     "Success": true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24642,14 +24526,12 @@ mit",
 | 429 | Throttling.Resource | You have reached the limit for the resource. Please contact us by submitting a ticket. | 该资源已经达到您的使用上限，请提交工单进行咨询。 |
 | 429 | Throttling.System | The DataWorks system is busy. Try again later. | DataWorks系统繁忙，请稍后再试。 |
 
-DataWorks
-
 | 429 | Throttling.User | Your request is too frequent. Try again later. | 您的请求过于频繁，请尝试放缓请求速度。 |
 |---|---|---|---|
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | 该地域还未开放DataWorks的API 服务，请尝试其它地域。 |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | 系统内部错误，请稍后再试。 |
 
-#### GetOpSensitiveData
+#### 4.10.16 GetOpSensitiveData
 
 调用GetOpSensitiveData接口，获取租户下所有DataWorks工作空间指定日期的敏感数据访问记录。
 
@@ -24666,7 +24548,7 @@ DataWorks
 | PageSize | Integ er | Query | 是 | 1 | 每页展示的数据量，最小值为1，最大值为1000。 |
 | PageNo | Integ er | Query | 是 | 100 | 页码数。最小值为1，最大值为1000。 |
 
-| DataWorks |  |  |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Date | Strin g | Query | 是 | 20210116 | 获取访问记录的日期。格式为：yyyyMMdd。 |
@@ -24687,16 +24569,15 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetOpSensitiveData &RegionId=default &Name=[ {"dbType":"hologres","instanceName":"ABC","databaseName":"abc"}, {"dbType":"ODPS.ODPS","projectName":"adbc"} ] &PageSize=1 &PageNo=100 &Date=20210116
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "OpSensitiveData":"\"opSensDatas\": [       {         \"sensLevel\": \"L4\",         \"
-opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensType\": \"手机号\", \"sql\": \"select * from dsg_demo.tbl_phonebook where p hone_no = &#39;1331111****&#39;;\" } ], \"totalCount\": 6" }
+opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensType\": \"手机号\", \"sql\": \"select * from dsg_demo.tbl_phonebook where p hone_no = &#39;1331111****&#39;;\" } ], \"totalCount\": 6"
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <OpSensitiveData>&quot;opSensDatas&quot;: [ { &quot;sensLevel&quot;: &quot ;L4&quot;, &quot;opTime&quot;: &quot;2021-02-07 00:14:51&quot;, &quot;op Account&quot;: &quot;ALIYUN$dsg_test&quot;, &quot;sensType&quot;: &quot;手机号&q uot;, &quot;sql&quot;: &quot;select * from dsg_demo.tbl_phonebook where phone_no = &amp;#39;1331111****&amp;#39;;&quot; } ], &quot;totalCount&quot;: 6</OpSensitiveData>
@@ -24714,7 +24595,7 @@ opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensTy
 
 访问错误中心查看更多错误码。
 
-#### GetSensitiveData
+#### 4.10.17 GetSensitiveData
 
 调用GetSensitiveData，获取租户下所有DataWorks工作空间的最新敏感数据识别结果。
 
@@ -24729,7 +24610,7 @@ opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensTy
 | PageSize | Integ er | Query | 是 | 10 | 每页返回的数据量，最大值为1000。 |
 | PageNo | Integ er | Query | 是 | 1 | 页码数，最小值为1。 |
 
-| DataWorks |  |  |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -24750,35 +24631,35 @@ opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensTy
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```json
-&PageSize=10 &PageNo=1 &RegionId=default &Name=[ {"dbType":"hologres","instanceName":"ABC","databaseName":"abc"}, {"dbType":"odps","projectName":"adbc"} ] &TenantId=111111
+http(s)://[Endpoint]/?Action=GetSensitiveData &PageSize=10 &PageNo=1 &RegionId=default &Name=[ {"dbType":"hologres","instanceName":"ABC","databaseName":"abc"}, {"dbType":"odps","projectName":"adbc"} ] &TenantId=111111
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG*****",
  "SensitiveData":{
   "sensDatas":[
-   {
+```
+
+`{`
+
+```json
     "sensLevel":"L1",
     "guid":"dsg_demo.animal.dog",
     "sensType":"姓名"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "totalCount":2171
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG*****</RequestId> <SensitiveData>
@@ -24799,9 +24680,9 @@ opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensTy
 | 500 | 100000500 | InternalError.DQC.BizError | An internal error occurred. |
 | 400 | 1010010016 | Invalid.Param | The request parameter is invalid. |
 
-DataWorks
+#### 4.10.18 ScanSensitiveData
 
-#### ScanSensitiveData
+调用ScanSensitiveData识别输入数据中是否存在敏感数据。
 
 **请求参数**
 
@@ -24823,23 +24704,23 @@ DataWorks
 请求示例
 
 ```
-&Data=13900001234 &RegionId=default
+http(s)://[Endpoint]/?Action=ScanSensitiveData &Data=13900001234 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Sensitives>sensDatas</Sensitives> <RequestId>0000-ABCD-EFG****</RequestId>
 ```
 
-`JSON` 格式 DataWorks
+`JSON` 格式 `{`
 
 ```json
-{
     "Sensitives": "sensDatas",
     "RequestId": "0000-ABCD-EFG****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -24848,9 +24729,11 @@ DataWorks
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | 当前的用户不是任何租户的所有者。 |
 | 500 | InternalError.DQC. BizError | An internal error occurred. | 内部服务错误。 |
 
-#### AddSenRule
+#### 4.10.19 AddSenRule
 
-该接口用于在DataWorks中创建并配置新的数据识别规则。 该接口不支持新增自生成和样本库规则。
+该接口用于在DataWorks中创建并配置新的数据识别规则。
+
+> 该接口不支持新增自生成和样本库规则。
 
 **请求头**
 
@@ -24865,14 +24748,10 @@ DataWorks
 | Status | Strin g | Query | 是 | 1 | 规则的生效状态。 枚举值: 0(失效) 1(生效) |
 | Owner | Strin g | Query | 是 | 193379**** | 负责人 ，入参配置此参数时，需同步配置指定Type （规则名称）参数。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RuleDesc | Strin g | Query | 否 | 手机号规则 | 规则描述。 |
 | RuleDetail Json | Strin g | Query | 是 | { "contentTemplates": [{ "name": "正则式匹配", "localeName": "正则式匹配", "templateJsonStr": " {\" clazz\":\"com.alipay. _ dsgclient.sdk.dsg.fastsca n.engine.cond.RegExpCo ndition\"}", "regex": null, "uuid": null, "desc": "", "custom": false }] } | 规则详细 Json，RuleDetailJson分为三部分，如下示例： { "contentRule": { "dataType": "银行卡号", "regExp": null， " clazz":"com.alip _ ay.dsgclient.sdk.d sg.fastscan.engine .cond.BankCardCond " }, "metaRules": [{ "compareType": "equal", "param": "a.b.c", "metaType": "guid", " clazz":"com.alip _ ay.dsgclient.sdk.d sg.fastscan.engine .cond.DftMetaCond" }], "excludeMetaRules" : [{ "compareType": "equal", "param": "c.d.e", "metaType": "guid", " clazz":"com.alip _ ay.dsgclient.sdk.d sg.fastscan.engine .cond.DftMetaCond" }] } |
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -24881,7 +24760,7 @@ DataWorks
 | TenantId | Strin g | Query | 是 | 10241024 | 租户ID。 |
 | NodeId | Strin g | Query | 是 | 1234 | 节点ID。 |
 
-| DataWorks |  |  |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -24932,8 +24811,6 @@ RuleDetailJson详细说明： ：为内容识别规则，与MetaRules二选一�
 | -Name | string | 规则名，固定值： 元数据识别 。 |
 | -Contents | Array | 规则内容列表。 |
 
-DataWorks
-
 | 参数 | 类型 | 描述 |
 |---|---|---|
 | --CompareType | string | 比较类型，固定值： equal 或 regexp 。 若 Param 包含通配符 * ， 应设为 regexp ；否则为 equal 。 |
@@ -24953,8 +24830,6 @@ DataWorks
 | RequestId | String | 0000-ABCD- EFG**** | 请求唯一ID。 |
 | ErrorCode | String | Invalid.Tenant.Con nectionNotExists | 错误码。200标识查询任务成功。 |
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ErrorMessage | String | The connection does not exist. | 调用失败时，返回的错误信息。 |
@@ -24967,7 +24842,7 @@ DataWorks
 请求示例
 
 ```
-&HitThreshold=50
+http(s)://[Endpoint]/?Action=AddSenRule &HitThreshold=50
 ```
 
 `&Type=`手机号
@@ -24986,30 +24861,32 @@ DataWorks
   "uuid": null,
   "desc": "",
   "custom": false
- }]
-} &SensLevel=Critical &RuleGroup=test &TenantId=10241024 &NodeId=1234
 ```
 
-`&NodeParent=`客户/个人/个人自然信息/个人基本概况信息
+`}]` `}`
+
+```
+&SensLevel=Critical &RuleGroup=test &TenantId=10241024 &NodeId=1234
+```
+
+`&NodeParent=`客户`/`个人`/`个人自然信息`/`个人基本概况信息
 
 ```
 &RecognizeRulesType=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":true,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -25029,9 +24906,9 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### AddSensLevel
+#### 4.10.20 AddSensLevel
 
-DataWorks 该接口用于在DataWorks中添加新的敏感级别配置。
+该接口用于在DataWorks中添加新的敏感级别配置。
 
 **请求头**
 
@@ -25061,23 +24938,21 @@ DataWorks 该接口用于在DataWorks中添加新的敏感级别配置。
 请求示例
 
 ```
-&OpAccount=uat &SensLevelAlias=L1 &TenantId=10241024
+http(s)://[Endpoint]/?Action=AddSensLevel &OpAccount=uat &SensLevelAlias=L1 &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":true,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -25097,9 +24972,9 @@ DataWorks 该接口用于在DataWorks中添加新的敏感级别配置。
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### DeleteSenRule
+#### 4.10.21 DeleteSenRule
 
-DataWorks 该接口用于删除DataWorks中的敏感规则。
+该接口用于删除DataWorks中的敏感规则。
 
 **请求头**
 
@@ -25130,13 +25005,12 @@ DataWorks 该接口用于删除DataWorks中的敏感规则。
 请求示例
 
 ```
-&Id=860438872620113XXXX &TenantId=10241024
+http(s)://[Endpoint]/?Action=DeleteSenRule &Id=860438872620113XXXX &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "DynamicErrorMessage":false,
  "HttpStatusCode":400,
@@ -25145,10 +25019,9 @@ DataWorks 该接口用于删除DataWorks中的敏感规则。
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <DynamicErrorMessage>false</DynamicErrorMessage> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <DynamicErrorCode>false</DynamicErrorCode> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -25168,9 +25041,7 @@ DataWorks 该接口用于删除DataWorks中的敏感规则。
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-DataWorks
-
-#### GetSenRule
+#### 4.10.22 GetSenRule
 
 该接口用于查询敏感规则。
 
@@ -25200,7 +25071,7 @@ DataWorks
 | RequestId | String | 0000-ABCD- EFG**** | 请求唯一ID。 |
 | Data | Struct | / | 返回结果数据。 |
 
-|  | 开发指南·OpenAPI参 | 考 |  | DataWork | s |
+|   | 开发指南·OpenAPI参 | 考 |   | DataWork | s |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -25228,19 +25099,22 @@ DataWorks
 请求示例
 
 ```
-&PageNum=1 &TenantId=10241024
+http(s)://[Endpoint]/?Action=GetSenRule &PageNum=1 &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":{
   "TotalCount":42,
   "Rules":[
-   {
+```
+
+`{`
+
+```json
     "Owner":"110755000425XXXX",
     "RuleDetailJson":"{\t\"contentTemplates\": [{\t\t\"name\": \"正则式匹配
 \",\t\t\"localeName\": \"正则式匹配\",\t\t\"templateJsonStr\": \" {\\\"_clazz\\\":\\\"com.alipay.dsgclient.sdk.dsg.fastscan.engine.cond.RegExpCondition\\\" ",\t\t\"regex\": null,\t\t\"uuid\": null,\t\t\"desc\": \"\",\t\t\"custom\": false\t}]}",
@@ -25255,23 +25129,15 @@ DataWorks
     "NodeParent":12345,
 ```
 
-`"RuleGroup":"`示例值"
-
-```
-   }
-```
-
-]
+`"RuleGroup":"`示例值`"` `}` `]` `},`
 
 ```json
- },
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>
@@ -25288,7 +25154,11 @@ DataWorks
   &quot;uuid&quot;: null,
   &quot;desc&quot;: &quot;&quot;,
   &quot;custom&quot;: false
- }]
+```
+
+`}]`
+
+```xml
 }</RuleDetailJson>
    <BydAccuracy>0.95</BydAccuracy>
    <IsCustom>false</IsCustom>
@@ -25325,7 +25195,7 @@ esc>
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### GetSensitiveCountData
+#### 4.10.23 GetSensitiveCountData
 
 获取指定租户的敏感数据统计信息。
 
@@ -25372,10 +25242,9 @@ esc>
 http(s)://[Endpoint]/?Action=GetSensitiveCountData &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
     "success": true,
     "errorCode": null,
     "errorMessage": null,
@@ -25385,14 +25254,17 @@ http(s)://[Endpoint]/?Action=GetSensitiveCountData &TenantId=10241024
         "totalCols": 1446,
         "sensTables": 10,
         "sensCols": 17
-    },
+```
+
+`},`
+
+```json
     "requestId": null,
     "dynamicErrorCode": null,
     "dynamicErrorMessage": null
-}
 ```
 
-DataWorks `XML` 格式
+`}` `XML` 格式
 
 ```xml
 <success>true</success> <errorCode /> <errorMessage /> <httpStatusCode>200</httpStatusCode> <data>
@@ -25411,7 +25283,7 @@ DataWorks `XML` 格式
 | 500 | 100000500 | InternalError.DQC.BizError | An internal error occurred. |
 | 400 | 1010010016 | Invalid.Param | The request parameter is invalid. |
 
-#### UpdateRiskInfoData
+#### 4.10.24 UpdateRiskInfoData
 
 该接口用于更新指定实例的风险信息数据。
 
@@ -25427,7 +25299,7 @@ DataWorks `XML` 格式
 | Status | Strin g | Query | 是 | INIT | 状态。 枚举值: HAS RISK(有风险) _ NO RISK(无风险) _ INIT(待处理) |
 | Tags | Strin g | Query | 否 | ["tag1", "tag2", "tag3"] | 标签。 |
 
-| 开发指南·Open | API参考 |  |  |  | DataWork |
+| 开发指南·Open | API参考 |   |   |   | DataWork |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -25454,20 +25326,18 @@ DataWorks `XML` 格式
 http(s)://[Endpoint]/?Action=UpdateRiskInfoData &InstIds=ACC001 &Status=INIT &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":true,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
@@ -25487,7 +25357,7 @@ http(s)://[Endpoint]/?Action=UpdateRiskInfoData &InstIds=ACC001 &Status=INIT &Te
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### UpdateSenRule
+#### 4.10.25 UpdateSenRule
 
 该接口用于更新敏感规则。
 
@@ -25499,8 +25369,6 @@ http(s)://[Endpoint]/?Action=UpdateRiskInfoData &InstIds=ACC001 &Status=INIT &Te
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-DataWorks
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -25534,10 +25402,10 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
-&HitThreshold=50
+http(s)://[Endpoint]/?Action=UpdateSenRule &HitThreshold=50
 ```
 
 `&Type=`手机号
@@ -25556,8 +25424,12 @@ DataWorks
   "uuid": null,
   "desc": "",
   "custom": false
- }]
-} &SensLevel=L1
+```
+
+`}]` `}`
+
+```
+&SensLevel=L1
 ```
 
 `&RuleGroup=`用户行为规则组
@@ -25566,34 +25438,30 @@ DataWorks
 &Id=860438872620113XXXX &Owner=user1 &TenantId=10241024 &NodeId=1234
 ```
 
-`&NodeParent=`客户/个人/个人自然信息/个人基本概况信息
+`&NodeParent=`客户`/`个人`/`个人自然信息`/`个人基本概况信息
 
 ```
 &RecognizeRulesType=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":true,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
 **错误码**
-
-DataWorks
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -25607,7 +25475,7 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-#### UpdateSensitive
+#### 4.10.26 UpdateSensitive
 
 该接口用于更新敏感数据规则配置的接口。
 
@@ -25625,8 +25493,6 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。 |
@@ -25641,31 +25507,27 @@ DataWorks
 请求示例
 
 ```
-&RuleName=rename_rule_1 &Guid=dataworks_test_001.myphone_odps_email.myphone02#ODPS.ODPS &TenantId=10241024
+http(s)://[Endpoint]/?Action=UpdateSensitive &RuleName=rename_rule_1 &Guid=dataworks_test_001.myphone_odps_email.myphone02#ODPS.ODPS &TenantId=10241024
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0000-ABCD-EFG****",
  "HttpStatusCode":400,
  "Data":true,
  "ErrorCode":"Invalid.Tenant.ConnectionNotExists",
  "ErrorMessage":"The connection does not exist.",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>0000-ABCD-EFG****</RequestId> <HttpStatusCode>400</HttpStatusCode> <Data>true</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
 **错误码**
-
-DataWorks
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -25679,9 +25541,11 @@ DataWorks
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request has bad parameters |
 
-### 安全中心
+### 4.11 安全中心
 
-#### CreatePermissionApplyOrder
+#### 4.11.1 CreatePermissionApplyOrder
+
+调用CreatePermissionApplyOrder创建一个权限申请单。
 
 **请求参数**
 
@@ -25689,8 +25553,6 @@ DataWorks
 |---|---|---|---|---|
 | Action | String | 是 | CreatePermissio nApplyOrder | 系统规定参数。取值： CreatePermissionApplyOrder。 |
 | ApplyObject.N.A ctions | String | 是 | Select,Describe | 申请的权限类型，一次申请多种类型权限时使用逗号（,）分隔。目前仅支持申请 Select、Describe、Drop、Alter、 Update、Download类型。 |
-
-DataWorks
 
 | ApplyObject.N.C olumnMetaList.N .Name | String | 是 | aColumnName | 申请目标列的权限，此处输入列名称。如果申请全表的权限，则需要输入表的所有列名。 仅当MaxCompute项目开启了 labelSecurity，才可以申请部分列的权限。如果MaxCompute项目没有开启 labelSecurity，则只能申请全表的权限。 |
 |---|---|---|---|---|
@@ -25703,8 +25565,6 @@ DataWorks
 | Deadline | Long | 否 | 1617115071885 | 申请权限的到期时间。此处需要输入一个 unix时间戳，不输入默认到期时间为2065 年1月1日。 如果MaxCompute项目未开启 LabelSecurity，或申请的表字段安全等级为0或小于等于申请账号的安全等级时，只能申请永久权限。 您可以进入DataWorks工作空间的管理页面，在MaxCompute引擎的高级配置页面，查看是否启动列级别访问控制。 您可以进入DataWorks工作空间，在数据地图查看字段的安全等级，在成员管理页面查看账号的安全等级。 |
 | OrderType | Integer | 否 | 1 | 申请单类型。目前仅支持取值为1，表示对象ACL权限申请。 |
 | EngineType | String | 否 | odps | 申请权限的计算引擎类型。目前仅支持取值为odps，表示仅支持申请 MaxCompute计算引擎的权限。 |
-
-DataWorks
 
 **返回数据**
 
@@ -25721,30 +25581,30 @@ DataWorks
 http(s)://[Endpoint]/?Action=CreatePermissionApplyOrder &ApplyObject.1.Actions=Select,Describe &ApplyObject.1.ColumnMetaList.1.1ame=aColumnName &ApplyObject.1.1ame=aTableName &ApplyReason=I need to use this table &ApplyUserIds=267842600408993176,267842600408993177 &MaxComputeProjectName=aMaxcomputeProjectName &RegionId=default &WorkspaceId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <FlowId>ee276e6e-5d34-46d8-b848-bca7879ed233</FlowId> <RequestId>0bc1ec92159376****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "FlowId": "ee276e6e-5d34-46d8-b848-bca7879ed233",
     "RequestId": "0bc1ec92159376****"
-}
 ```
 
-#### ApprovePermissionApplyOrder
+`}`
+
+#### 4.11.2 ApprovePermissionApplyOrder
+
+调用ApprovePermissionApplyOrder审批一个权限申请单。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ApprovePermissi onApplyOrder | 系统规定参数。取值： ApprovePermissionApplyOrder。 |
-
-DataWorks
 
 | ApproveAction | Integer | 是 | 1 | 执行的审批动作，取值如下： 1：同意。 2：拒绝。 |
 |---|---|---|---|---|
@@ -25767,24 +25627,24 @@ DataWorks
 http(s)://[Endpoint]/?Action=ApprovePermissionApplyOrder &ApproveAction=1 &ApproveComment=agree &FlowId=48f36729-05f9-4a40-9286-933fd940f30a &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId> <ApproveSuccess>true</ApproveSuccess>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****",
     "ApproveSuccess": true
-}
 ```
 
-#### ListPermissionApplyOrders
+`}`
 
-DataWorks
+#### 4.11.3 ListPermissionApplyOrders
+
+调用ListPermissionApplyOrders接口查询权限申请单列表。
 
 **请求参数**
 
@@ -25802,8 +25662,6 @@ DataWorks
 | StartTime | Long | 否 | 1616200471885 | 查询目标起始时间发起的申请单，配置为一个unix时间戳。不输入则表示查询所有的申请单。 |
 | EndTime | Long | 否 | 1617200471885 | 查询目标截至时间的申请单，配置为一个 unix时间戳。不输入则表示查询截至当前时间的申请单。 |
 
-DataWorks
-
 | PageNum | Integer | 否 | 1 | 分页查询页码。大于等于1的正整数，默认为1。 |
 |---|---|---|---|---|
 | PageSize | Integer | 否 | 100 | 每页显示的条数，默认为10条，最大100 条。 |
@@ -25812,21 +25670,19 @@ DataWorks
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ApplyOrders | Struct |  | 权限申请单的分页查询结果。 |
-| ApplyOrder | Array of Orders |  | 权限申请单列表。 |
+| ApplyOrders | Struct |   | 权限申请单的分页查询结果。 |
+| ApplyOrder | Array of Orders |   | 权限申请单列表。 |
 | ApplyBaseId | String | 267842600408993 176 | 提交申请单的阿里云用户UID。 |
 | ApplyTimesta mp | Long | 1615284086000 | 申请单的提交时间，显示为一个unix时间戳。 |
-| ApproveConte nt | Struct |  | 申请单的内容。 |
+| ApproveConte nt | Struct |   | 申请单的内容。 |
 | ApplyReason | String | I need to use this table | 申请的原因。用于管理员进行评估审批。 |
 | OrderType | Integer | 1 | 申请单类型。目前仅支持取值为1，表示对象 ACL权限申请。 |
-| ProjectMeta | Struct |  | 申请对象的内容。 |
-| ObjectMetaList | Array of ObjectMetaList |  | 申请的对象信息。 |
+| ProjectMeta | Struct |   | 申请对象的内容。 |
+| ObjectMetaList | Array of ObjectMetaList |   | 申请的对象信息。 |
 | Actions | List | Select,Describe | 申请的权限类型，一次申请多种类型权限时使用英文逗号（,）分隔。 目前仅支持申请Select、Describe、Drop、 Alter、Update、Download类型。 |
 | ObjectName | String | aTableName | 申请的表名称。 |
 | WorkspaceNa me | String | aWorkspaceName | 申请权限的MaxCompute项目所属的 DataWorks工作空间名称。 |
 | FlowId | String | ad8da78d-8135- 455e-9486- 27cf213fc140 | 申请单ID。 |
-
-DataWorks
 
 | FlowStatus | Integer | 2 | 申请单的状态。取值如下： 1：待审批。 2：审批通过，授权成功。 3：审批通过，授权失败。 4：审批拒绝。 |
 |---|---|---|---|
@@ -25843,7 +25699,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=ListPermissionApplyOrders &EngineType=odps &OrderType=1 &QueryType=1 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId> <ApplyOrders>
@@ -25870,10 +25726,9 @@ http(s)://[Endpoint]/?Action=ListPermissionApplyOrders &EngineType=odps &OrderTy
 </ApplyOrders>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "0bc1ec92159376****",
     "ApplyOrders": {
         "TotalCount": 150,
@@ -25892,17 +25747,11 @@ http(s)://[Endpoint]/?Action=ListPermissionApplyOrders &EngineType=odps &OrderTy
                     "ObjectMetaList": {
                         "ObjectName": "aTableName",
                         "Actions": "Select,Describe"
-                    }
-                }
-            }
-        }
-    }
-}
 ```
 
-DataWorks
+`}` `}` `}` `}` `}` `}`
 
-#### GetPermissionApplyOrderDetail
+#### 4.11.4 GetPermissionApplyOrderDetail
 
 调用GetPermissionApplyOrderDetail查询一个权限申请单的详细信息。
 
@@ -25922,15 +25771,13 @@ DataWorks
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 0bc1ec92159376** ** | 请求ID。 |
-| ApplyOrderDet ail | Struct |  | 申请单详情。 |
-| - ApproveAccou ntList | Array |  | 审批申请单的阿里云账号列表。 |
+| ApplyOrderDet ail | Struct |   | 申请单详情。 |
+| - ApproveAccou ntList | Array |   | 审批申请单的阿里云账号列表。 |
 | --BaseId | String | 182293110403**** | 审批申请单的阿里云用户UID。 |
-| - GranteeObject List | Array |  | 申请权限的账号信息。 |
+| - GranteeObject List | Array |   | 申请权限的账号信息。 |
 | --GranteeType | Integer | 1 | 申请权限的主体类型。目前只支持1（用户）。 |
 | -- GranteeTypeS ub | Integer | 103 | 申请权限的主体子类型，取值如下： 101：生产云账号。 103：个人云账号。 105：代他人申请云账号。 |
 | -- GranteeName | String | RAM$dataworks 3 _ h1 1:StsRamUser( _ StsRamUser) | 申请权限的云账号名称。格式与MaxCompute 的账号格式一致。 主账号为ALIYUN$+账号名。 子账号为RAM$+账号名。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -25939,17 +25786,17 @@ DataWorks
 | - ApplyTimesta mp | Long | 1615284086000 | 发起申请单的时间，显示为一个unix时间戳。 |
 | -FlowId | String | ad8da78d-8135- 455e-9486- 27cf213f**** | 申请单ID。 |
 | -FlowStatus | Integer | 2 | 申请单的状态。取值如下： 1：待审批。 2：审批通过，授权成功。 3：审批通过，授权失败。 4：审批拒绝。 |
-| - ApproveConte nt | Struct |  | 申请的具体内容。 |
+| - ApproveConte nt | Struct |   | 申请的具体内容。 |
 | --ApplyReason | String | 需要使用表 | 申请的原因，用于管理员审批参考。 |
 | --Deadline | Long | 1617115071885 | 申请权限的到期时间。此处显示为一个unix时间戳。 如果MaxCompute项目未开启LabelSecurity， 或申请的表字段安全等级为0或小于等于申请账号的安全等级时，只能申请永久权限。 |
 | --OrderType | Integer | 1 | 申请单类型。目前仅支持取值为1，表示对象 ACL权限申请。 |
-| --ProjectMeta | Struct |  | 申请对象所属的项目和工作空间信息。 |
-| --- ObjectMetaList | Array |  | 申请对象的详细信息。 |
-| ---- ColumnMetaLi st | Array |  | 申请对象的列字段信息。 |
+| --ProjectMeta | Struct |   | 申请对象所属的项目和工作空间信息。 |
+| --- ObjectMetaList | Array |   | 申请对象的详细信息。 |
+| ---- ColumnMetaLi st | Array |   | 申请对象的列字段信息。 |
 | ----- ColumnName | String | aColumnName | 申请的列名称。 |
 | ----- ColumnComm ent | String | 字段描述 | 申请的列描述。 |
 
-| DataWorks |  |  | 开发指南·OpenAPI参考 |
+| DataWorks |   |   | 开发指南·OpenAPI参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -25966,10 +25813,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetPermissionApplyOrderDetail &RegionId=default &FlowId=48f36729-05f9-4a40-9286-933fd940****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"0bc1ec92159376****",
  "ApplyOrderDetail":{
   "ApplyTimestamp":1615284086000,
@@ -25979,7 +25825,11 @@ http(s)://[Endpoint]/?Action=GetPermissionApplyOrderDetail &RegionId=default &Fl
    "GranteeId":"26784260040899****",
    "GranteeName":"RAM$dataworks_3h1_1:StsRamUser(StsRamUser)",
    "GranteeTypeSub":103
-  },
+```
+
+`},`
+
+```json
   "-ApproveContent":{
    "OrderType":1,
    "Deadline":1617115071885,
@@ -25995,25 +25845,33 @@ http(s)://[Endpoint]/?Action=GetPermissionApplyOrderDetail &RegionId=default &Fl
       "ColumnName":"aColumnName",
 ```
 
-`"ColumnComment":"`字段描述"
+`"ColumnComment":"`字段描述`"` `},`
 
 ```json
-     },
      "ObjectName":"aTableName"
-    },
-    "WorkspaceId":12345
-   }
-  },
-  "-ApproveAccountList":{
-   "BaseId":"182293110403****"
-  },
-  "ApplyBaseId":"26784260040899****",
-  "FlowStatus":2
- }
-}
 ```
 
-`XML` 格式 DataWorks
+`},`
+
+```json
+    "WorkspaceId":12345
+```
+
+`}` `},`
+
+```json
+  "-ApproveAccountList":{
+   "BaseId":"182293110403****"
+```
+
+`},`
+
+```json
+  "ApplyBaseId":"26784260040899****",
+  "FlowStatus":2
+```
+
+`}` `}` `XML` 格式
 
 ```xml
 <RequestId>0bc1ec92159376****</RequestId> <ApplyOrderDetail>
@@ -26053,7 +25911,9 @@ http(s)://[Endpoint]/?Action=GetPermissionApplyOrderDetail &RegionId=default &Fl
 </ApplyOrderDetail>
 ```
 
-#### RevokeColumnPermission
+#### 4.11.5 RevokeColumnPermission
+
+调用RevokeColumnPermission，撤销用户的表字段权限。
 
 **请求参数**
 
@@ -26061,8 +25921,6 @@ http(s)://[Endpoint]/?Action=GetPermissionApplyOrderDetail &RegionId=default &Fl
 |---|---|---|---|---|
 | Action | String | 是 | RevokeColumnP ermission | 系统规定参数。取值： RevokeColumnPermission。 |
 | Columns | String | 是 | id,name | 需要撤销权限的字段名称。一次撤销多个字段的权限时，使用逗号（,）分隔。 当前仅支持撤销MaxCompute表字段的权限。 |
-
-DataWorks
 
 | MaxComputeProj ectName | String | 是 | aMaxcomputePr ojectName | 需要撤销权限的字段所在的MaxCompute 项目名称。您可以登录DataWorks控制台，进入工作空间配置页面，查询 DataWorks工作空间绑定的 MaxCompute项目名称。 |
 |---|---|---|---|---|
@@ -26081,28 +25939,30 @@ DataWorks
 
 **示例**
 
-请求示例 DataWorks
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=RevokeColumnPermission &Columns=id,name &MaxComputeProjectName=aMaxcomputeProjectName &RegionId=default &TableName=aTableName &WorkspaceId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RevokeSuccess>true</RevokeSuccess> <RequestId>0bc1ec92159376****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RevokeSuccess": true,
     "RequestId": "0bc1ec92159376****"
-}
 ```
 
-#### RevokeTablePermission
+`}`
+
+#### 4.11.6 RevokeTablePermission
+
+调用RevokeTablePermission，撤销用户的表权限。
 
 **请求参数**
 
@@ -26113,8 +25973,6 @@ http(s)://[Endpoint]/?Action=RevokeColumnPermission &Columns=id,name &MaxCompute
 | MaxComputeProj ectName | String | 是 | aMaxcomputePr ojectName | 需要撤销权限的表所在的MaxCompute项目名称。您可以登录DataWorks控制台， 进入工作空间配置页面，查询DataWorks 工作空间绑定的MaxCompute项目名称。 |
 | RegionId | String | 是 | default | 区域ID，为固定值default。 |
 | TableName | String | 是 | aTableName | 需要撤销权限的MaxCompute表名称。 |
-
-DataWorks
 
 | WorkspaceId | Long | 是 | 12345 | 需要撤销权限的MaxCompute表所属的 DataWorks工作空间ID。您可以登录 DataWorks控制台，进入工作空间配置页面，查询工作空间ID。 |
 |---|---|---|---|---|
@@ -26136,24 +25994,26 @@ DataWorks
 http(s)://[Endpoint]/?Action=RevokeTablePermission &Actions=Select,Describe &MaxComputeProjectName=aMaxcomputeProjectName &RegionId=default &TableName=aTableName &WorkspaceId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式 DataWorks
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RevokeSuccess>true</RevokeSuccess> <RequestId>0bc1ec92159376****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RevokeSuccess": true,
     "RequestId": "0bc1ec92159376****"
-}
 ```
 
-### 迁移助手
+`}`
 
-#### GetMigrationProcess
+### 4.12 迁移助手
+
+#### 4.12.1 GetMigrationProcess
+
+调用GetMigrationProcess获取导入导出任务的进度状态。
 
 **请求参数**
 
@@ -26168,11 +26028,9 @@ http(s)://[Endpoint]/?Action=RevokeTablePermission &Actions=Select,Describe &Max
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Array of ProgressTaskIt em |  | 导入导出任务的进度信息，包括导入导出任务所有步骤的名称和进度状态。 |
+| Data | Array of ProgressTaskIt em |   | 导入导出任务的进度信息，包括导入导出任务所有步骤的名称和进度状态。 |
 | TaskName | String | IMPORE PREPARE _ | 导入导出任务的步骤名称。 |
 | TaskStatus | String | SUCCESS | 导入导出任务的步骤运行状态。取值如下： INIT，初始状态。 RUNNING，运行中。 FAILURE，运行失败。 SUCCESS，运行成功。 |
-
-DataWorks
 
 | ErrorCode | String | 110001123456 | 错误码。 |
 |---|---|---|---|
@@ -26189,7 +26047,7 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMigrationProcess &MigrationId=123456 &ProjectId=123456 &RegionId=default
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>请求ID。</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>
@@ -26198,25 +26056,29 @@ http(s)://[Endpoint]/?Action=GetMigrationProcess &MigrationId=123456 &ProjectId=
 </Data> <ErrorCode>110001123456</ErrorCode> <ErrorMessage>test error msg</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "请求ID。",
     "HttpStatusCode": 200,
     "Data": {
         "TaskName": "IMPORE_PREPARE",
         "TaskStatus": "SUCCESS"
-    },
+```
+
+`},`
+
+```json
     "ErrorCode": 110001123456,
     "ErrorMessage": "test error msg",
     "Success": true
-}
 ```
 
-DataWorks
+`}`
 
-#### StartMigration
+#### 4.12.2 StartMigration
+
+调用StartMigration启动执行导入导出任务。
 
 **请求参数**
 
@@ -26243,29 +26105,31 @@ DataWorks
 请求示例
 
 ```
-&MigrationId=123456 &ProjectId=123456 &RegionId=default
+http(s)://[Endpoint]/?Action=StartMigration &MigrationId=123456 &ProjectId=123456 &RegionId=default
 ```
 
-`&<`公共请求参数> DataWorks 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>FSDFSDF-WERWER-XVCX-DSFSDF</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>110001123445</ErrorCode> <ErrorMessage>test error msg</ErrorMessage> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "FSDFSDF-WERWER-XVCX-DSFSDF",
     "HttpStatusCode": 200,
     "Data": true,
     "ErrorCode": 110001123445,
     "ErrorMessage": "test error msg",
     "Success": true
-}
 ```
 
-#### GetMigrationSummary
+`}`
+
+#### 4.12.3 GetMigrationSummary
+
+调用GetMigrationSummary获取导入或导出任务的信息。
 
 **请求头**
 
@@ -26281,13 +26145,11 @@ DataWorks
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 19999A96-71BA- 1845-B455- ED620EF4**** | 请求的ID。用于定位日志，排查问题。 |
 | Success | Boolean | true | 调用是否成功。取值： true：调用成功。 false：调用失败。您可以通过请求ID定位问题。 |
-| Data | Struct |  | 导入、导出任务详情。 |
+| Data | Struct |   | 导入、导出任务详情。 |
 | -MigrationId | Long | 1234 | 任务的ID。 |
 | -Name | String | test export 01 _ _ | 任务的名称。 |
 | -GmtCreate | Long | 1589904000000 | 任务的创建时间。用UNIX时间戳表示，单位：毫秒。 |
@@ -26296,8 +26158,6 @@ DataWorks
 | -OpUser | String | 982293332403**** | 任务操作人的用户ID。 |
 | -Status | String | EXPORT SUCCESS _ | 导入、导出任务的执行状态。取值： INIT：任务为初始状态。 EDITING：任务在编辑中。 IMPORTING：任务在导入中。 IMPORT ERROR：任务导入失败。 _ IMPORT SUCCESS：任务导入成功。 _ EXPORTING：任务在导出中。 EXPORT ERROR：任务导出失败。 _ EXPORT SUCCESS：任务导出成功。 _ REVOKED：任务被取消。 PARTIAL SUCCESS：仅部分任务导入或导出 _ 成功。 |
 | -ProjectId | Long | 12345 | 任务所在DataWorks空间的ID。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -26311,10 +26171,9 @@ DataWorks
 http(s)://[Endpoint]/?Action=GetMigrationSummary &RegionId=default &ProjectId=12345 &MigrationId=1234
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"19999A96-71BA-1845-B455-ED620EF4****",
  "Data":{
   "Status":"EXPORT_SUCCESS",
@@ -26327,12 +26186,15 @@ http(s)://[Endpoint]/?Action=GetMigrationSummary &RegionId=default &ProjectId=12
   "Name":"test_export_01",
   "DownloadUrl":"https://shanghai-xxx-oss.oss-cn-
 shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip? Expires=1639540903&OSSAccessKeyId=******eF4Lv5j&Signature=q*****"
- },
- "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>19999A96-71BA-1845-B455-ED620EF4****</RequestId> <Data>
@@ -26348,7 +26210,9 @@ shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip? Expires=1639540903&OS
 shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip? Expires=1639540903&amp;OSSAccessKeyId=******eF4Lv5j&amp;Signature=q*****</DownloadUrl> </Data> <Success>true</Success>
 ```
 
-#### ListMigrations
+#### 4.12.4 ListMigrations
+
+调用ListMigrations获取迁移任务列表。
 
 **请求头**
 
@@ -26367,14 +26231,12 @@ shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip? Expires=1639540903&am
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F9198AA3-9010- 53D5-9714- DC446142**** | 请求ID。用于定位日志，排查问题。 |
 | Success | Boolean | true | 请求是否成功。取值： true：成功。 false：失败。 |
-| Data | Struct |  | 返回数据。 |
-| -Migrations | Array |  | 迁移任务列表。 |
+| Data | Struct |   | 返回数据。 |
+| -Migrations | Array |   | 迁移任务列表。 |
 | --Id | Long | 436064 | 主键ID。 |
 | --Name | String | test task 1638498 _ _ 642279 | 任务名称。 |
 | --PackageType | String | DATAWORKS MOD _ EL | 导入、导出包的类型，取值： DWMA：标准格式。 DATAWORKS MODEL：标准格式。 _ DATAWORKS V2：专有云（V3.6.1- _ V3.11）。 DATAWORKS V3：专有云（V3.12及以 _ 上）。 DWMA和DATAWORKS MODEL可通用。 _ |
@@ -26384,8 +26246,6 @@ DataWorks
 | --CreateUser | String | 123123**** | 创建人。 |
 | -- CreateUserNa me | String | 3h1 test _ | 创建人名称。 |
 | --UpdateUser | String | 1231**** | 更新人。 |
-
-DataWorks
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -26405,13 +26265,12 @@ DataWorks
 请求示例
 
 ```
-&RegionId=default &ProjectId=12345 &MigrationType=IMPORT
+http(s)://[Endpoint]/?Action=ListMigrations &RegionId=default &ProjectId=12345 &MigrationType=IMPORT
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 DataWorks
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F9198AA3-9010-53D5-9714-DC446142****",
  "Data":{
   "TotalCount":20,
@@ -26440,13 +26299,15 @@ gdu, can't open network for it",
    "Id":436064,
    "DownloadUrl":"http://geoip-sdk-user.oss-cn-
 zhangjiakou.aliyuncs.com/product/v1/ipv4/trace/v1.20220424123842.dex? Expires=1650780849&OSSAccessKeyId=*****eF4Lv5j&Signature=q*****"
-  }
- },
- "Success":true
-}
 ```
 
-`XML` 格式 DataWorks
+`}` `},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>F9198AA3-9010-53D5-9714-DC446142****</RequestId> <Data>
@@ -26480,9 +26341,11 @@ zhangjiakou.aliyuncs.com/product/v1/ipv4/trace/v1.20220424123842.dex? Expires=16
 </Data> <Success>true</Success>
 ```
 
-### 开放平台
+### 4.13 开放平台
 
-#### GetExtension
+#### 4.13.1 GetExtension
+
+调用GetExtension接口，获取某个扩展程序详情。
 
 **请求头**
 
@@ -26497,16 +26360,14 @@ zhangjiakou.aliyuncs.com/product/v1/ipv4/trace/v1.20220424123842.dex? Expires=16
 
 **返回数据**
 
-DataWorks
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 0000-ABCD-EFG | 请求的ID。用于定位日志，排查问题。 |
-| Extension | Struct |  | 扩展程序详情。 |
-| -BindEventList | Array |  | 扩展点列表。 |
+| Extension | Struct |   | 扩展程序详情。 |
+| -BindEventList | Array |   | 扩展点列表。 |
 | --EventCode | String | commit-file | 扩展点事件编码。 |
 | --EventName | String | 文件提交前置事件 | 扩展点事件名称。 |
-| - EventCategory List | Array |  | 事件类型列表。 |
+| - EventCategory List | Array |   | 事件类型列表。 |
 | -- CategoryCode | String | file-change | 事件类型编码。 |
 | -- CategoryName | String | 文件变更事件 | 事件类型名称。 |
 | - ExtensionCode | String | ce4*********086da 5 | 扩展程序唯一码。 |
@@ -26519,20 +26380,15 @@ DataWorks
 | - ParameterSett ing | String | extension.project.d isabled=projectId1, projectId2,projectId 3 | 参数配置信息。 |
 | -OptionSetting | String | 选项配置 | 选项配置。 |
 
-DataWorks
-
-**示例**
-
 请求示例
 
 ```
-&ExtensionCode=ce4*********086da5
+http(s)://[Endpoint]/?Action=GetExtension &ExtensionCode=ce4*********086da5
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Extension":{
   "Status":0,
   "ExtensionName":"名称",
@@ -26548,10 +26404,9 @@ DataWorks
    "CategoryCode":"file-change",
 ```
 
-`"CategoryName":"`文件变更事件"
+`"CategoryName":"`文件变更事件`"` `},`
 
 ```json
-  },
   "HelpDocUrl":"https://www.aliyun.com/",
   "-BindEventList":{
 ```
@@ -26560,14 +26415,21 @@ DataWorks
 
 ```json
    "EventCode":"commit-file"
-  },
-  "ProjectTesting":13552
- },
- "RequestId":"0000-ABCD-EFG"
-}
 ```
 
-`XML` 格式 DataWorks
+`},`
+
+```json
+  "ProjectTesting":13552
+```
+
+`},`
+
+```json
+ "RequestId":"0000-ABCD-EFG"
+```
+
+`}` `XML` 格式
 
 ```xml
 <Extension>
@@ -26603,7 +26465,7 @@ DataWorks
 </Extension> <RequestId>0000-ABCD-EFG</RequestId>
 ```
 
-#### GetOptionValueForProject
+#### 4.13.2 GetOptionValueForProject
 
 调用GetOptionValueForProject接口，获取扩展程序选项配置在项目空间下的配置。
 
@@ -26626,26 +26488,20 @@ DataWorks
 | RequestId | String | E6F0DBDD- 5AD**** | 请求ID。 |
 | OptionValue | String | {"cuNumber":"0"} | 示例中的cuNumber是自定义的Key。 |
 
-DataWorks
-
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetOptionValueForProject
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"E6F0DBDD-5AD****",
  "OptionValue":"{\"cuNumber\":\"0\"}"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>E6F0DBDD-5AD****</RequestId> <OptionValue>{&quot;cuNumber&quot;:&quot;0&quot;}</OptionValue>

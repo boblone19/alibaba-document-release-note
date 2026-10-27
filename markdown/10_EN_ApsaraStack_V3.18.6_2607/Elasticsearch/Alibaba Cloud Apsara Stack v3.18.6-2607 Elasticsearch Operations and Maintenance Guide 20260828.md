@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 126
 source_pdf: "6e06d4c5d38289e2_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Operations and Maintenance Guide 20260828
@@ -2355,6 +2355,8 @@ When you run the command, replace the following variables:
 kubectl logs ${Pod name of the operator} -n elasticsearch
 ```
 
+**Note**
+
 |   | kubectl get pod -n elasticsearch \| grep operator |
 |---|---|
 | ${Pod name of the operator} |   |
@@ -2438,7 +2440,11 @@ Newly created instances automatically add the underlying network segment to the 
 
 **Cross-cluster access issues**
 
-An error occurs during cross-cluster access (XDCR cluster synchronization fails). Error message: [][22.0.x.x:9300] general node connection failure Cause: The interacting clusters are using different certificates. Solution: Contact your on-site operations team for assistance, or see the instance management section of your operations guide. For more information, see security settings.
+An error occurs during cross-cluster access (XDCR cluster synchronization fails). Error message: [][22.0.x.x:9300] general node connection failure Cause: The interacting clusters are using different certificates. Solution: Contact your on-site operations team for assistance, or see the instance management section of your operations guide.
+
+**Note**
+
+For more information, see security settings.
 
 ### 5.2 Performance issues
 

@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 85
 source_pdf: "37d92285c1466abf_Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide

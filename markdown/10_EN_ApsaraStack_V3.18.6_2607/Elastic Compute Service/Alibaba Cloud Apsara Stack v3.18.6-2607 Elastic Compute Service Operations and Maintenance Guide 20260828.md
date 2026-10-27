@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 210
 source_pdf: "256579df72aca124_Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Operations and Maintenance Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%20ECS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elastic%20Compute%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Operations and Maintenance Guide 20260828
@@ -161,6 +161,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key. ager Operations Console
@@ -181,6 +184,9 @@ If you log on to the Apsara Uni-manager Operations Console for the first time, y
 ### 2.1 Computing O&M overview
 
 This topic describes the Overview page of the Compute Operations Console. On the Overview page, you can obtain a high-level overview of services in IaaS O&M, stay updated with service status, and view service information, such as diagnostics results, alerts, inventory usage, core metrics, and health status.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -228,6 +234,9 @@ Click the name of a service that you want to view. In the **Deployed Machines** 
 #### 2.2.1 View compute clusters
 
 This topic describes how to query and view information about all compute clusters, including the total number of clusters, the number of clusters that have not reached the desired state, the number of clusters that have reached the desired state, the cluster names, cluster types, and cluster instance types.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -267,6 +276,9 @@ of the cluster configurations. For more information, see Manage cluster configur
 #### 2.2.2 Log in to the AG of a cluster
 
 You can log in to the Admin Gateway (AG) of a cluster to go to the Terminal Service page. Then, you can perform O&M operations on VMs in the cluster by using the CLI. This topic describes how to log in to the AG of a cluster from the Compute Cluster O&M page.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
@@ -287,6 +299,9 @@ server account to be used to log in to the AG. Then, you can perform O&M operati
 ##### 2.2.3.1 Get an overview of a compute cluster
 
 In the Compute Operations Console, you can view the details of a compute cluster on the Overview tab of the Computing Cluster Details page. The details include the basic information about the cluster, statistics about computing server resources, numbers of Elastic Compute Service (ECS) instances, distribution of physical servers by state, distribution of ECS instances by state, inventory utilization, and inventory of instances by instance type.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -364,6 +379,9 @@ Before you change the CPU oversold ratio of a cluster, the system checks whether
 **current number of used vCPUs** is greater than 80% of **the number of saleable vCPUs**
 **in the cluster after the reduction**. If yes, you cannot reduce the CPU oversold ratio of
 the cluster. A high CPU oversold ratio may cause performance degradation issues, such as extended response time, intensified resource contention, and host instability. Proceed with caution. After you change the CPU oversold ratio of a cluster, you can view the details of the change on the **CPU Oversold Ratio Configuration Records** tab. An extended period of time is required to complete the change. You cannot terminate, cancel, or roll back the change. The CPU oversold ratio change may fail on specific servers. In this case, you can contact O&M engineers to change the CPU oversold ratios of these servers in the Emergency Operation Command Center (EOCC). If you change the cluster-level CPU oversold ratio of a cluster, the CPU oversold ratios of physical machines that are added to dedicated resource pools remain unchanged. After the physical machines are removed from the dedicated resource pools, the CPU oversold ratios of the physical machines change to the new cluster-level CPU oversold ratio.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
 **Operations Console**.
@@ -402,6 +420,9 @@ When you reduce the CPU oversold ratio of a cluster, the system only checks whet
 ###### 2.2.3.3.1 View computing servers
 
 This topic describes how to view computing servers in a computing cluster and how to view the details of each computing server. The details include the basic server information, O&M details, and information about Elastic Compute Service (ECS) instances that are deployed on the server.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -420,6 +441,9 @@ on the computing server. View O&M details of a computing server. a. Click the na
 ###### 2.2.3.3.2 Manage server status
 
 This topic describes how to manage the status of computing servers (NCs) in a cluster. You can manually lock, unlock, and activate computing servers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -445,6 +469,9 @@ you can perform on computing servers.
 ##### 2.3.1.1 View computing servers
 
 This topic describes how to view computing servers and the details of each computing server. The details of each computing server include the hostname, IP address, model, number of CPU cores, memory size, CPU processor, compute type, whether it is a dedicated host, business status, and compute cluster to which the computing server belongs.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -485,6 +512,9 @@ ii. On the **Computing Server O&M** page, view the O&M information about the com
 **server**
 
 This topic describes how to view O&M details about a computing server. The O&M details include business information, hardware information, resource information, Elastic Compute Service (ECS) instances deployed on the computing server, performance monitoring information, control service status, server-level migration tasks (also known as machine migration tasks), and audited operations. You can perform operations on different tabs.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -539,6 +569,9 @@ You can lock physical machines based on your business requirements. If a physica
 **Background information**
 
 Common scenarios in which physical machines are locked: mlock: If a physical machine is locked and enters the mlock state, Elastic Compute Service (ECS) instances on it are restarted and scheduled to other physical machines, excluding the instances for which failover is disabled. rlock: If normal physical machines do not meet the failover requirements, the physical machines in the rlock state are used to restore instances that fail.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -556,6 +589,9 @@ You can unlock a computing server to allow the server to be scheduled. After you
 **Background information**
 
 You can unlock computing servers that are in the No Heartbeat, mlock, and rlock states.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -578,6 +614,9 @@ The computing server that you want to activate is in the **mlock** state.
 **Background information**
 
 You can activate computing servers that are in the mlock, rlock, no heartbeat, nc_down, and initializing states.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
@@ -604,7 +643,13 @@ When you scale down or maintain a computing server, you must migrate all ECS ins
 
 **Usage notes**
 
-When you migrate all ECS instances from a computing server, take note of the following items: After you submit a computing server-level migration task, the state of the computing server changes to mlock. If the migration task is complete, fails, or is canceled, you must submit an application to unlock the computing server. ECS instances on the computing server are migrated to another computing server based on the ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Stopped** or **Pending** state is migrated, the status of the ECS instance remains unchanged. After the migration task is complete, you must check whether all ECS instances are migrated. Instances in a dedicated resource pool (DRP) can be migrated only within the DRP. You can also create a computing server-level migration task on the **Machine Migration**
+When you migrate all ECS instances from a computing server, take note of the following items: After you submit a computing server-level migration task, the state of the computing server changes to mlock. If the migration task is complete, fails, or is canceled, you must submit an application to unlock the computing server. ECS instances on the computing server are migrated to another computing server based on the ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Stopped** or **Pending** state is migrated, the status of the ECS instance remains unchanged. After the migration task is complete, you must check whether all ECS instances are migrated. Instances in a dedicated resource pool (DRP) can be migrated only within the DRP.
+
+**Procedure**
+
+**Note**
+
+You can also create a computing server-level migration task on the **Machine Migration**
 **Tasks** tab on the **Tasks** tab of the **Migration Tasks** page. For more information, see
 Create a computing server-level migration task.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -674,6 +719,9 @@ If the destination physical machines to which the ECS instances are migrated hav
 migrate the ECS instances away from the physical machine. After you manually migrate the ECS instances, go back to the maintenance details page of the physical machine and click
 **Retry** below **Step3: ncMaintenanceMigrateEcsInstance** to continue deactivating the
 physical machine. For information about how to migrate ECS instances, see Migrate all instances from a computing server or Migrate an instance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -703,6 +751,9 @@ appears, click **OK**. The procedure of deactivating the physical machine for ma
 ##### 2.3.1.9 View audit logs
 
 Server O&M operations that may introduce risks are audited. You can view the historical operations in the Apsara Uni-manager Operations Console, historical POP API calls, and historical server controller API calls for a computing server.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -718,6 +769,8 @@ For more information, see View O&M audit logs.
 **tasks**
 
 After you run a task to migrate all instances from a computing server, you can check the progress and result of the migration task. You can also view the details of all instances and O&M details about the computing server involved in the migration task.
+
+**Procedure**
 
 > **Note:** You can also view a computing server-level migration task on the **Machine Migration** **Tasks** tab on the **Tasks** tab of the **Migration Task Management** page. For more information, see View migration tasks.
 
@@ -894,6 +947,9 @@ following table and click **Submit**.
 **resource pool**
 
 You can view the details of a dedicated resource pool, including the ID, name, status, instance family, and server information of the dedicated resource pool.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
 3. In the left-side navigation pane, click **Dedicated Resource Pool O&M**.
@@ -929,6 +985,9 @@ This topic describes how to scale out a dedicated resource pool.
 **Usage notes**
 
 After a physical server is added to a dedicated resource pool, the CPU oversold ratio of the physical server may change: If the CPU oversold ratio of the dedicated resource pool has been adjusted, the CPU oversold ratio of the physical server is the same as that of the dedicated resource pool. If the CPU oversold ratio of the dedicated resource pool has not been adjusted, the CPU oversold ratio of the physical server remains unchanged.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
 3. In the left-side navigation pane, click **Dedicated Resource Pool O&M**.
@@ -946,6 +1005,9 @@ resource pool and click **OK**.
 **Usage notes**
 
 You can remove a physical server that does not host Elastic Compute Service (ECS) instances from a dedicated resource pool. After a physical server is removed from a dedicated resource pool, the CPU oversold ratio of the physical server is restored to the CPU oversold ratio of the original cluster to which the physical server belongs.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
 3. In the left-side navigation pane, click **Dedicated Resource Pool O&M**.
@@ -964,6 +1026,9 @@ The administrator account ID is the ID of the dedicated resource pool administra
 **Usage notes**
 
 After you change the administrator account ID for a dedicated resource pool, the original administrator of the dedicated resource pool automatically becomes a regular user.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
 3. In the left-side navigation pane, click **Dedicated Resource Pool O&M**.
@@ -982,6 +1047,9 @@ from the drop-down list or directly enter an account ID in the field, and then c
 **replacement policy**
 
 This topic describes how to modify the replacement policy for physical machines when a fault occurs in a dedicated resource pool and the differences between two replacement policies.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
 3. In the left-side navigation pane, click **Dedicated Resource Pool O&M**.
@@ -1040,6 +1108,9 @@ dedicated resource pool, enter a reason for this operation in the **Reason** fie
 ##### 2.5.1.1 View ECS instances
 
 This topic describes how to search for Elastic Compute Service (ECS) instances and view information about the instances, such as the physical machines (computing servers) on which the instances reside, the clusters to which the instances belong, and the hostnames, aliases, status, networks, and bandwidth of the instances.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1069,6 +1140,9 @@ IP Address, RDMA IP, and Bandwidth columns corresponding to an ECS instance. Vie
 ##### 2.5.1.2 View the details of an ECS instance
 
 This topic describes how to view the details of an Elastic Compute Service (ECS) instance and perform operations on the instance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1115,6 +1189,9 @@ If an Elastic Compute Service (ECS) instance is in a state in which the instance
 **Prerequisites**
 
 The instance to be started is in the **Pending**, **Stopped**, or **StartFailure** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1137,6 +1214,8 @@ The instance to be stopped is in the **Running** state.
 
 > **Important:** After you stop an instance, the applications running on the instance are also stopped. Perform this operation during off-peak hours to minimize the impact on services.
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1157,6 +1236,8 @@ After you change the login passwords or install system updates for Elastic Compu
 The ECS instances that you want to restart are in the **Running** state.
 
 > **Warning:** The restart operation stops the ECS instances for a short period of time and interrupts services that are running on the instances. Proceed with caution.
+
+**Procedure**
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
@@ -1186,7 +1267,13 @@ Instances that are not **running** Dedicated hosts GPU-accelerated instances ECS
 
 **Cold migration**
 
-Instances that are not in the **Pending** or **Shutted** state Dedicated hosts ECS instances that use local disks Instances that use a trunk or member NIC Instances that are attached with an ISO image For more information about how to migrate multiple ECS instances at once or all instances on a physical server, see Create a batch ECS migration task or Create a fullcopy migration task.
+Instances that are not in the **Pending** or **Shutted** state Dedicated hosts ECS instances that use local disks Instances that use a trunk or member NIC Instances that are attached with an ISO image
+
+**Procedure**
+
+**Note**
+
+For more information about how to migrate multiple ECS instances at once or all instances on a physical server, see Create a batch ECS migration task or Create a fullcopy migration task.
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1383,6 +1470,9 @@ The hypervisor layer returns an error after the control plane successfully sends
 ##### 2.5.1.5 View migration logs in Server Controller
 
 In the Compute Operations Console, you can view the migration logs of an Elastic Compute Service (ECS) instance in Server Controller, including hot migration and cold migration that are performed on the ECS instance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1408,6 +1498,9 @@ You can mount an ISO file to or unmount an ISO file from an Elastic Compute Serv
 **Prerequisites**
 
 An ECS instance is in the **Stopped** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1426,6 +1519,9 @@ click **OK**.
 ##### 2.5.1.7 Modify the internal bandwidth of instances
 
 You can modify the maximum inbound and outbound internal bandwidth of Elastic Compute Service (ECS) instances. The internal bandwidth is the bandwidth for communication between ECS instances that reside in the same region and virtual private cloud (VPC). You can modify the bandwidth within the maximum value supported by the instance type.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1449,6 +1545,9 @@ Internal Bandwidth, and Reason parameters. The unit of bandwidth is KB/s.
 ##### 2.5.2.1 View disks
 
 You can view a list of disks and the details of each disk. The details include the basic information of the disk, and Elastic Compute Service (ECS) instances and compute clusters that are associated with the disk.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1464,6 +1563,9 @@ ECS instances, and mount targets. To view the details of a disk, find the disk a
 ##### 2.5.2.2 View disk details
 
 You can view the details of disks, such as the basic information and the snapshot information.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1476,6 +1578,9 @@ Basic Information: the disk ID, disk ID in the server controller, disk name, dis
 ##### 2.5.2.3 View snapshots
 
 You can view the snapshots of disks, manage snapshots, and view automatic snapshot policies.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1492,6 +1597,9 @@ An image is a template for running environments within Elastic Compute Service (
 ##### 2.5.3.2 View images
 
 In the Compute Operations Console, you can view a list of images and the information about each image.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1505,6 +1613,9 @@ search box and specify the image type. Then, the image is displayed in the image
 ##### 2.5.3.3 Manage ISO images
 
 This topic describes how to upload an ISO file, check the system type of the ISO file, and check whether the ISO file can be mounted.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1534,6 +1645,9 @@ You are not allowed to import Virtual Machine Disk format (VMDK) images to the A
 **Background information**
 
 Before you convert an image, you must upload the image to an Object Storage Service (OSS) bucket by using the OSS console in Apsara Uni-manager Management Console. You can convert VMDK images into RAW images. Each image can be up to 100 GB in size.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1572,6 +1686,8 @@ By default, unpublished images are not displayed in the image list. You can sear
 > aliyun_3_arm64_20G_uefi_pro_alibase_20241225.vhd
 > aliyun_3_arm64_20G_uefi_pro_dengbao_alibase_20241030.vhd
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1589,6 +1705,9 @@ Snapshots are point-in-time copies of disks. You can use snapshots to back up da
 ##### 2.5.4.2 View snapshots
 
 In the Compute Operations Console, you can view snapshots and the details of each snapshot.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1630,6 +1749,9 @@ You can apply automatic snapshot policies to system disks and data disks to auto
 **Background information**
 
 You can use automatic snapshot policies to mitigate the risks that are associated with the manual creation of snapshots. Examples: When applications, such as personal websites or databases, that are deployed on an Elastic Compute Service (ECS) instance encounter attacks or system vulnerabilities, you may be unable to manually create snapshots. In this case, you can use the most recent automatic snapshots to roll back the affected disks to restore your data and reduce the impacts of data loss. Before regular system maintenance tasks are performed, you can specify an automatic snapshot policy to create snapshots. This eliminates the need to manually create snapshots and ensures that snapshots are always created before maintenance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1644,6 +1766,9 @@ policy, including the policy ID, policy name, and number of associated disks.
 ##### 2.5.5.1 View the details of an ENI
 
 In the Compute Operations Console, you can view the list of elastic network interfaces (ENIs) and the details of each ENI.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1658,6 +1783,9 @@ view the details of the ECS instance. For more information about ECS instances, 
 ##### 2.5.5.2 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical API calls in Server Controller for elastic network interfaces (ENIs).
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1677,6 +1805,9 @@ A security group is a virtual firewall that provides Stateful Packet Inspection 
 ##### 2.5.6.2 View the details of a security group
 
 In the Compute Operations Console, you can view the information about each security group in the security group list, including the region, network type, virtual private cloud (VPC) ID, associated Elastic Compute Service (ECS) instances, and creation time. You can also view the details of a security group on the details page. The details include the basic information, inbound and outbound rules of the security group, and the details of ECS instances that are associated with the security group.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1708,6 +1839,9 @@ View the associated ECS instances Click the **Instances** tab to view the ECS in
 ##### 2.5.6.3 Security group configurations
 
 The maximum number of inbound and outbound rules for each security group is 1,000. If you need to raise this limit, you can increase the number to 2,000 on the Security Group Configurations tab. We recommend that you periodically clear redundant rules to improve management efficiency.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1748,6 +1882,9 @@ This topic describes how to attach a USB device on a physical machine to an Elas
 **Usage notes**
 
 You can attach USB devices on physical machines to ECS instances. By default, a single physical machine can have up to four USB devices, and you can attach up to four USB devices to an ECS instance. Before a USB device is attached to an ECS instance, a precheck is performed. When a USB device is being attached to an ECS instance, the instance is restarted. After you attach a USB device on a physical machine to an ECS instance, the physical machine enters the mlock state, and the ECS instance cannot be hot migrated in the Compute Operations Console or cold migrated. After you attach a USB device to an ECS instance, if the instance is unexpectedly migrated or the USB device is unplugged from the physical machine, the USB device is labeled as Peripheral Detached. You must check the environment in the Attach Device dialog box before you plug and attach a device. If a USB device is in the Peripheral Detached state, perform subsequent operations based on the solutions in the Emergency Operation Command Center (EOCC).
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1769,6 +1906,9 @@ This topic describes how to attach a CD-ROM device from a physical server to an 
 **Usage notes**
 
 You can attach only one CD-ROM device to an ECS instance. After you attach a CD-ROM device from a physical server to an ECS instance, the physical server enters the mlock state. In this case, you cannot perform hot or cold migration on the ECS instance. After you attach a CD-ROM device to an ECS instance, the CD-ROM device is labeled as Peripheral Detached if the instance is unexpectedly migrated or restarted.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1790,6 +1930,9 @@ click **Detach** in the Operation column to detach the CD-ROM device.
 #### 2.6.1 Analyze compute capacity
 
 This topic describes how to query the inventory usage of Elastic Compute Service (ECS) instance types. This helps you understand trends in ECS capacity and inventory usage.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1908,6 +2051,9 @@ The new custom instance type is displayed on the Custom Specifications page. Aft
 ###### 2.6.2.2.2 View a custom instance type
 
 You can view existing custom instance types in the Compute Operations Console and the details of each custom instance type.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1923,6 +2069,9 @@ panel, view the basic information and extended attributes of the instance type.
 ###### 2.6.2.2.3 Disable custom instance types
 
 In the Compute Operations Console, you can disable the custom instance types that you no longer require. After you disable a custom instance type, you can no longer select the custom instance type when you create instances.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1939,6 +2088,9 @@ that you want to disable and click **Disable** in the **Operation** column.
 ###### 2.6.2.2.4 View audit logs
 
 You can view the historical operations that are performed in the Apsara Uni-manager Operations Console and the historical POP API calls that are made for a custom instance type.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1955,6 +2107,9 @@ Apsara Uni-manager Operations Console and the historical POP API calls that are 
 **instance**
 
 This topic describes how to create a resource reservation for an Elastic Compute Service (ECS) instance. This ensures that the computing cluster has sufficient available resources if the ECS instance fails and a high-availability (HA) switchover is triggered.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -1979,6 +2134,9 @@ This topic describes how to create a resource reservation for a physical machine
 **Usage notes**
 
 You can create a resource reservation to reserve resources for a physical machine on which no Elastic Compute Service (ECS) instances exist. After you create the resource reservation for the physical machine, resources are reserved for the physical machine and the physical machine enters the Reserved Lock (rlock) state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -2010,7 +2168,13 @@ The instance is not in the **Running** state. The instance is a Dedicated Host i
 
 **Cold migration**
 
-The instance is not in the **Pending** or **Stopped** state. The instance is a Dedicated Host instance. The instance has local disks. The instance is attached to a trunk or member NIC. An ISO file is attached to the instance. In addition to the following procedure, you can also go to the **ECS Instances** page to create a migration task for an ECS instance. For more information, see Migrate an instance.
+The instance is not in the **Pending** or **Stopped** state. The instance is a Dedicated Host instance. The instance has local disks. The instance is attached to a trunk or member NIC. An ISO file is attached to the instance.
+
+**Procedure**
+
+**Note**
+
+In addition to the following procedure, you can also go to the **ECS Instances** page to create a migration task for an ECS instance. For more information, see Migrate an instance.
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -2091,7 +2255,13 @@ When you scale down or maintain a computing server, you must migrate all ECS ins
 
 **Usage notes**
 
-When you migrate all ECS instances from a computing server, take note of the following items: After you submit a computing server-level migration task, the state of the computing server changes to mlock. If the migration task is complete, fails, or is canceled, you must submit an application to unlock the computing server. ECS instances on the computing server are migrated to another computing server based on the ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Shutted** or **Pending** state is migrated, the status of the ECS instance remains unchanged after the migration. After the migration task is complete, you must check whether all ECS instances are migrated. Instances in a dedicated resource pool can be migrated only within the dedicated resource pool. You can also find the computing server from which you want to migrate ECS instances on the **Computing Server O&M** page and create a computing server-level migration task for the computing server. For more information, see Migrate all instances from a computing server.
+When you migrate all ECS instances from a computing server, take note of the following items: After you submit a computing server-level migration task, the state of the computing server changes to mlock. If the migration task is complete, fails, or is canceled, you must submit an application to unlock the computing server. ECS instances on the computing server are migrated to another computing server based on the ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Shutted** or **Pending** state is migrated, the status of the ECS instance remains unchanged after the migration. After the migration task is complete, you must check whether all ECS instances are migrated. Instances in a dedicated resource pool can be migrated only within the dedicated resource pool.
+
+**Procedure**
+
+**Note**
+
+You can also find the computing server from which you want to migrate ECS instances on the **Computing Server O&M** page and create a computing server-level migration task for the computing server. For more information, see Migrate all instances from a computing server.
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -2150,6 +2320,9 @@ Instances that are not **running** Dedicated hosts GPU-accelerated instances ECS
 **Cold migration**
 
 Instances that are not in the **Pending** or **Shutted** state Dedicated hosts ECS instances that use local disks Instances that use a trunk or member NIC Instances that are attached with an ISO image
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -2360,6 +2533,9 @@ After you create a migration task, you can view information about the migration 
 **Background information**
 
 You can view information about Elastic Compute Service (ECS) migration tasks, machine migration tasks (also known as computing server-level migration tasks), and batch migration tasks. A machine or batch migration task consists of multiple subtasks. Each subtask is an ECS migration task that migrates an ECS instance. The subtasks are displayed together with the ECS migration tasks that you separately created in the ECS migration task list. You can create migration tasks of different types based on your business requirements. To migrate an ECS instance, create an ECS migration task. For more information, see Create an ECS migration task. To migrate all ECS instances on one physical machine, create a machine migration task. For more information, see Create a machine migration task. To migrate multiple ECS instances at a time, create a batch ECS migration task. For more information, see Create a batch ECS migration task. To migrate all ECS instances on multiple physical machines, create a batch machine migration task. For more information, see Create a batch machine migration task. To migrate physical machines from a cluster, create a cluster-level migration task. For more information, see Create a cluster-level migration task
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -2397,7 +2573,11 @@ migration task list.
 |---|---|
 
 5. View machine migration tasks.
-On the Tasks tab, click the **Machine Migration Tasks** tab and view information about machine migration tasks in the migration task list. You can view the success rate of each machine migration task. You can also search for a machine migration task by task ID or source physical machine ID. The following table describes the parameters displayed in the migration task list. You can also click **Computing Server O&M** in the left-side navigation pane and then click the **Server-level Migration Tasks** tab to view information about existing machine migration tasks. For more information, see View computing server-level migration tasks.
+On the Tasks tab, click the **Machine Migration Tasks** tab and view information about machine migration tasks in the migration task list. You can view the success rate of each machine migration task. You can also search for a machine migration task by task ID or source physical machine ID. The following table describes the parameters displayed in the migration task list.
+
+**Note**
+
+You can also click **Computing Server O&M** in the left-side navigation pane and then click the **Server-level Migration Tasks** tab to view information about existing machine migration tasks. For more information, see View computing server-level migration tasks.
 
 | Parameter | Description |
 |---|---|
@@ -2502,6 +2682,8 @@ Before you stop a migration task, take note of the following items: You can stop
 
 > **Important:** Subtasks in the **pending** or **migrating** state are not affected.
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -2529,6 +2711,8 @@ level migration task, you can click **Details** in the **Operation** column of t
 #### 2.7.2 Configure migration constraints
 
 Customize the migration task constraints if the default migration rate and timeout do not meet your business requirements.
+
+**Procedure**
 
 > **Note:** Migration tasks created after you modify the default migration rate and timeout will use the new default settings.
 
@@ -2624,6 +2808,9 @@ CPU models that support migration across physical machines and the CPU compatibi
 **Usage notes on CPU compatibility for hot migration**
 
 If the CPU models of the source and destination servers that you configured for a hot migration task are not displayed on the **CPU Compatibility Configurations** tab, the task is not allowed to hot migrate ECS instances in the Apsara Uni-manager Operations Console, and the task fails. You cannot add the CPU compatibility information for hot migration in the Apsara Unimanager Operations Console.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
 **Operations Console**.
@@ -2648,6 +2835,9 @@ You can query events by instance. This allows you to know the exceptions of Elas
 **Prerequisites**
 
 ECS has reached the desired state. The Apsara Uni-manager Operations Console has reached the desired state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
 **Operations Console**.
@@ -2685,6 +2875,9 @@ In the Compute Operations Console, you can use the Elastic Compute Service (ECS)
 **Prerequisites**
 
 ECS has reached the desired state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operation Console**.
@@ -2756,6 +2949,8 @@ you can perform the following operations on the workflow details page.
 
 > **Warning:** During proactive O&M, services may be interrupted due to operations such as server restarts. Therefore, you must obtain the authorization from users and proceed with caution.
 
+**Procedure**
+
 1. Click **Submit Proactive O&M Event**.
 2. In the dialog box that appears, configure the parameters and click **OK**.
 
@@ -2809,6 +3004,8 @@ you can perform the following operations on the workflow details page.
 
 > **Note:** If the machine already has a pending workflow, complete the workflow before you submit a repair ticket. Otherwise, the submission does not take effect.
 
+**Procedure**
+
 1. Click **Submit Repair Ticket for Local Disks**.
 2. In the dialog box that appears, configure the following parameters and click **Report**.
 
@@ -2822,7 +3019,11 @@ you can perform the following operations on the workflow details page.
 
 **Prerequisites**
 
-The proactive O&M workflow is in the Running state. Complete a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
+The proactive O&M workflow is in the Running state.
+
+**Procedure**
+
+Complete a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
 **Status** in the **Operation** column, and then select **Complete Workflow**.
 ii. In the message that appears, click **OK**. Cancel a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
@@ -2860,7 +3061,11 @@ O&M event. On the workflow details page, view the following information.
 
 **Prerequisites**
 
-The proactive O&M workflow is in the Running state. Complete a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
+The proactive O&M workflow is in the Running state.
+
+**Procedure**
+
+Complete a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
 **Status** in the **Operation** column, and then select **Complete Workflow**.
 ii. In the message that appears, click **OK**. Cancel a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
@@ -2902,6 +3107,9 @@ and **End Time**.
 
 The workflow that you want to restart is in the **COMPLETED**, **FAILED**, or
 **HUMAN_PROCESSING** state.
+
+**Procedure**
+
 1. On the ECS Workflows page, find the workflow that you want to restart and click **Restart** in
 the **Operation** column.
 2. In the message that appears, click **OK**.
@@ -2920,6 +3128,9 @@ The workflow that you want to roll back is in the **HUMAN_PROCESSING** state.
 **Prerequisites**
 
 The workflow that you want to terminate is in the **HUMAN_PROCESSING** state.
+
+**Procedure**
+
 1. On the ECS Workflows page, find the workflow that you want to terminate and click
 **Terminate** in the **Operation** column.
 2. In the message that appears, click **OK**.
@@ -2931,6 +3142,9 @@ The Elastic Compute Service (ECS) diagnostics feature supports end-to-end except
 **Prerequisites**
 
 View the IDs of ECS instances or IP addresses of hosts on the **ECS Instances** page of the Apsara Uni-manager Operations Console. For more information, see View the details of an instance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
 **Operations Console**.
@@ -3048,6 +3262,9 @@ You can configure throttling limits for proactive O&M actions, such as the maxim
 **Background information**
 
 You can adjust throttling limits for proactive O&M actions based on actual conditions and onsite O&M requirements. For example, a proactive O&M action is configured to be executed when a physical machine freezes. If the proactive O&M action is executed but does not resolve the issue and the physical machine remains frozen, the action is executed repeatedly to deactivate and reactivate the physical machine until the physical machine is recovered. In this case, you can configure throttling limits for the proactive O&M action. For example, you can configure throttling limits to allow the proactive O&M action to be executed only one time within a 168-hour execution window. This way, after the proactive action is executed, the Apsara Uni-manager Operations Console does not execute the action again within the next 168 hours, and you can perform other O&M operations to resolve the physical machine freeze issue at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -3058,6 +3275,9 @@ You can adjust throttling limits for proactive O&M actions based on actual condi
 4. Click the **O&M Actions** tab.
 A list of proactive O&M actions is displayed, which includes the **OpsCode** (O&M type),
 **Throttling Status**, and **Throttling Effective Time** columns.
+
+**Note**
+
 The **Support for Manual Reporting** and **Approval for Manually Reported O&M**
 **Workflow** parameters of a proactive O&M action vary based on the approval
 configuration of the action. For more information, see Configure the approval process for a proactive O&M action.
@@ -3102,6 +3322,9 @@ By default, the **Support for Manual Reporting** feature is enabled for proactiv
 > **Important:** You can submit proactive O&M events related to only the proactive O&M actions for which the Support for Manual Reporting feature is enabled. For information about how to submit a proactive O&M event, see Submit a proactive O&M event for a server.
 
 The O&M types for which you can configure the Support for Manual Reporting feature and the Approval for Manually Reported O&M Workflow feature are displayed in the Apsara Unimanager Operations Console. You can use only the default setting of the Approval for Manually Reported O&M Workflow feature for specific O&M types, but cannot change the default setting. For example, the Support for Manual Reporting feature is automatically enabled and the Approval for Manually Reported O&M Workflow feature is automatically disabled for the **0x4000A000000007-Unlock Nc** O&M type. In this case, the proactive O&M action can be performed without the need for approval of an Apsara Uni-manager Operations Console administrator after you submit a proactive O&M event related to the O&M type.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -3129,6 +3352,9 @@ On the Computing O&M Configurations page, you can specify the disk release time 
 **Usage notes**
 
 If you release a disk, the data stored in the disk cannot be restored. We recommend that you create snapshots for a disk to back up data before you release the disk. You can specify whether to delete automatic snapshots created for a disk when the disk is released. If the **Release Automatic Snapshots with Disk** feature is enabled for a disk, the automatic snapshots created for the disk are deleted when the disk is released.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -3146,6 +3372,9 @@ described in the following table and click **Submit**.
 ### 2.10 View O&M audit logs
 
 The Compute Operations Console provides traceability of resource operations. In the Compute Operations Console, you can view the historical operations performed on resources, historical POP API calls, and historical Server Controller API calls and identify high-risk operations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -3167,6 +3396,9 @@ that you can view on each tab.
 #### 2.11.1 View Tiangong services
 
 This topic describes how to view the basic information about cloud services that are deployed on Elastic Compute Service (ECS) in the Tiangong 2.0 architecture.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -3195,6 +3427,9 @@ instances.
 #### 2.11.2 View Tiangong workflows
 
 This topic describes how to view the workflow of the Tiangong adaptation layer triggered by the task sent by Apsara Infrastructure Management, including the status information such as resource processing and instance cloning. You can also perform O&M operations on the workflow.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 **Operations Console**.
@@ -3626,6 +3861,9 @@ You can select different workflows from the **Associated opcode** parameter. The
 ### 3.3 View O&M events
 
 The O&M event list can record O&M events submitted by network computer (NC) O&M, virtual machine (VM) O&M, and alert center. This topic describes how to search for and view event information in the O&M event list, including the ID, resource type, status, author, extended field, and workflow of an O&M event.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > ECS Diagnosis**.
 3. In the left-side navigation pane, choose **Proactive Operations > Operations Event List**.
@@ -3660,6 +3898,9 @@ The system displays the basic information about all O&M events. The following ta
 **rules**
 
 You can configure OpsCode throttling rules to control the number of O&M workflows that can be executed within a specific period of time. This prevents redundant operations and ensures the system stability and the reasonableness of resource allocation. You can also adjust the throttling rules to meet the requirements of different proactive O&M tasks. This topic describes how to configure an OpsCode throttling rule.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Computing > ECS Diagnosis**.
 3. In the left-side navigation pane, choose **Proactive Operations > Operations Rate**

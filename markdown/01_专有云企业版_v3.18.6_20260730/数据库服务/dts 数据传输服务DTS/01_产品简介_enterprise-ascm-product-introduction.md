@@ -5,18 +5,24 @@ doc_version: "20260729"
 pdf_pages: 17
 source_pdf: "01_产品简介_enterprise-ascm-product-introduction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/dts/zh/enterprise-ascm-product-introduction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 数据传输服务DTS 产品简介
 
-数据传输
+## 目录
 
-## 数据传输服务DTS
+- 1 数据传输服务DTS
+  - 1.1 产品详情
+  - 1.2 产品价值
+  - 1.3 应用场景
+  - 1.4 功能特性
+
+## 1 数据传输服务DTS
 
 数据传输服务DTS（Data Transmission Service）是阿里云提供的一种支持关系型数据库及大数据等多种数据源之间数据交互的数据服务。相对于传统数据迁移或同步工具，DTS提供功能更丰富、传输性能更强、 易用性更高且安全可靠的服务，帮助客户简化复杂的数据交互工作，客户可专注于上层的业务开发。
 
-### 产品详情
+### 1.1 产品详情
 
 数据传输服务DTS（Data Transmission Service）包含数据同步、数据迁移、数据订阅等功能特性。
 
@@ -50,8 +56,6 @@ DTS的数据迁移功能支持同/异构数据源之间的数据迁移，同时�
 | 修改消费时间点 | 数据订阅支持客户随时修改需要消费数据对应的时间点。 |
 | 完善的监控体系 | 数据订阅提供订阅通道状态、下游消费延迟的报警监控功能。客户可以根据业务敏感度，自定义消费延迟报警阈值。 |
 
-数据传输
-
 **数据加工**
 
 DTS提供数据加工功能ETL，可实现数据的抽取、清洗转换和加载。同时在配置迁移或同步任务时，支持库列名映射、设置过滤条件，用于修改名称和筛选特定数据。 数据加工具备多种特性，如下表所示：
@@ -65,15 +69,15 @@ DTS提供数据加工功能ETL，可实现数据的抽取、清洗转换和加�
 
 DTS通过日志读取和回放模块、数据校验和断点续传功能，保障源库和目标库数据的一致性。
 
-### 产品价值
+### 1.2 产品价值
 
 相对于第三方的数据迁移或同步工具，DTS提供丰富多样、高性能、安全可靠的传输链路，同时也提供诸多便利功能，极大地方便了传输链路的创建及管理。
 
 **丰富多样**
 
-DTS支持数据迁移、数据订阅及数据同步多种传输方式。 数据订阅及数据同步均为实时数据传输方式。
+DTS支持数据迁移、数据订阅及数据同步多种传输方式。
 
-**说明**
+> **说明：** 数据订阅及数据同步均为实时数据传输方式。
 
 数据迁移功能支持不停服的迁移方式，可实现数据迁移过程中应用停机时间降低到分钟级别。
 
@@ -87,19 +91,17 @@ DTS内部对部分传输链路提供7×24小时的数据准确性校验，快速
 
 **简单易用**
 
-DTS提供可视化管理界面，提供向导式的链路创建流程，客户可以在其控制台简单轻松地创建传输链路。 DTS控制台展示了链路的传输状态及进度、传输性能等信息，客户可以方便管理自己的传输链路。 数据传输 DTS提供链路断点续传功能，可解决网络或系统异常等突发情况导致的链路中断问题，此功能可以定期监测所有链路的状态，一旦发现链路异常，先尝试自动修复重启，如果链路需要客户介入修复，那么客户可以直接在控制台修复，并重启链路。
+DTS提供可视化管理界面，提供向导式的链路创建流程，客户可以在其控制台简单轻松地创建传输链路。 DTS控制台展示了链路的传输状态及进度、传输性能等信息，客户可以方便管理自己的传输链路。 DTS提供链路断点续传功能，可解决网络或系统异常等突发情况导致的链路中断问题，此功能可以定期监测所有链路的状态，一旦发现链路异常，先尝试自动修复重启，如果链路需要客户介入修复，那么客户可以直接在控制台修复，并重启链路。
 
-### 应用场景
+### 1.3 应用场景
 
 数据传输服务DTS（Data Transmission Service）适用于不停服迁移数据库、加速全球化业务访问速度、 数据异地灾备和异地多活等场景。
 
 **不停服迁移数据库**
 
-传统的迁移工具有无法保证数据的一致性、需要长时间停止服务等弊端，甚至在迁移过程中对业务的影响较大。DTS提供不停服迁移解决方案，让数据迁移过程中的业务停服时间降低到分钟级别。 不停服迁移的迁移类型包含结构迁移、全量数据迁移及增量数据迁移三个阶段。当进入增量数据迁移阶段时，目标实例会保持跟源数据库之间的数据实时同步，客户可以在目标数据库进行业务验证，当验证通过后，直接将业务切换到目标数据库，从而实现整个系统迁移。 在整个迁移过程中，仅当业务从源实例切换到目标实例期间，可能会产生业务闪断，其他
+传统的迁移工具有无法保证数据的一致性、需要长时间停止服务等弊端，甚至在迁移过程中对业务的影响较大。DTS提供不停服迁移解决方案，让数据迁移过程中的业务停服时间降低到分钟级别。 不停服迁移的迁移类型包含结构迁移、全量数据迁移及增量数据迁移三个阶段。当进入增量数据迁移阶段时，目标实例会保持跟源数据库之间的数据实时同步，客户可以在目标数据库进行业务验证，当验证通过后，直接将业务切换到目标数据库，从而实现整个系统迁移。
 
-**说明**
-
-时间业务均能正常服务。
+> **说明：** 在整个迁移过程中，仅当业务从源实例切换到目标实例期间，可能会产生业务闪断，其他时间业务均能正常服务。
 
 **加速全球化业务访问速度**
 
@@ -119,160 +121,146 @@ DTS提供的数据订阅功能，可以帮助客户异步订阅数据库的增�
 
 **业务异步解耦**
 
-DTS提供的数据订阅，可以将深耦合业务优化为通过实时消息通知实现的异步耦合，让核心业务逻辑更简单可靠。 数据传输
+DTS提供的数据订阅，可以将深耦合业务优化为通过实时消息通知实现的异步耦合，让核心业务逻辑更简单可靠。
 
 **读能力横向扩展**
 
 对于有大量读请求的应用场景，单个数据库实例可能无法承担全部的读取压力。客户可以使用DTS的实时同步功能构建只读实例，利用这些只读实例承担大量的数据库读取工作负载，实现读取能力的弹性扩展，分担数据库压力。
 
-### 功能特性
+### 1.4 功能特性
 
-| 功能分类 |  | 描述 |
+本文主要介绍阿里云数据传输服务DTS的功能特性，帮助您快速了解产品功能。
+
+| 功能分类 |   | 描述 |
 |---|---|---|
-|  | Db2 for i迁移到MySQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Db2 for i迁移到PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Db2 for LUW迁移到 AnalyticDB PostgreSQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Db2 for LUW迁移到PolarDB PostgreSQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Db2 for LUW迁移到PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB MySQL版迁移到MySQL | 支持库表结构迁移、全量数据迁移和增量数据迁移。 自建MySQL为5.1、5.5、5.6、5.7版本。 |
-|  | PolarDB MySQL版迁移到Kafka | 支持全量数据迁移和增量数据迁移。 自建Kafka为0.1~2.7版本。 |
-|  | MaxCompute迁移到 MySQL | 支持库表结构迁移、全量数据迁移。 |
-|  | MongoDB间的数据迁移 | 源和目标仅支持自建的MongoDB数据库实例。 支持的MongoDB数据库版本为3.0、3.2、3.4、3.6、4.0或4.2版本。 |
-|  | MySQL迁移到PolarDB- X 1.0 | MySQL的版本为5.1~5.7。 PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持全量数据迁移、增量数据迁移，不支持库表结构迁移。 |
+|   | Db2 for i迁移到MySQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Db2 for i迁移到PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Db2 for LUW迁移到 AnalyticDB PostgreSQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Db2 for LUW迁移到PolarDB PostgreSQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Db2 for LUW迁移到PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB MySQL版迁移到MySQL | 支持库表结构迁移、全量数据迁移和增量数据迁移。 自建MySQL为5.1、5.5、5.6、5.7版本。 |
+|   | PolarDB MySQL版迁移到Kafka | 支持全量数据迁移和增量数据迁移。 自建Kafka为0.1~2.7版本。 |
+|   | MaxCompute迁移到 MySQL | 支持库表结构迁移、全量数据迁移。 |
+|   | MongoDB间的数据迁移 | 源和目标仅支持自建的MongoDB数据库实例。 支持的MongoDB数据库版本为3.0、3.2、3.4、3.6、4.0或4.2版本。 |
+|   | MySQL迁移到PolarDB- X 1.0 | MySQL的版本为5.1~5.7。 PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持全量数据迁移、增量数据迁移，不支持库表结构迁移。 |
 
-数据传输
-
-|  | MySQL迁移到PolarDB- X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | MySQL迁移到PolarDB- X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
 |---|---|---|
-|  | MySQL迁移到 AnalyticDB PostgreSQL | 自建MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | MySQL迁移到Kafka | 自建MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 需要Kafka开通公网或者私网，且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 公网自建的Kafka 0.10-2.0版本。 |
-|  | MySQL间的数据迁移 | 自建MySQL的版本为5.1~5.7，RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | MySQL迁移到Oracle | Oracle的版本为9i、10g、11g。 MySQL的版本为5.1~5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | MySQL迁移到 PostgreSQL | 支持MySQL的版本为5.5、5.6、5.7、8.0。 支持PostgreSQL的版本为10.x、11.x、12.x、13.x。 PostgreSQL为公网自建的方式接入。 |
-|  | Oracle迁移到 AnalyticDB MySQL 2.0 | Oracle的版本为9i、10g、11g。 全量数据迁移、增量数据迁移。 |
-|  | Oracle迁移到 AnalyticDB MySQL 3.0 | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Oracle迁移到 AnalyticDB PostgreSQL的迁移 | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Oracle迁移到PolarDB- X 1.0 | Oracle的版本为9i、10g、11g。 PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.73。 支持全量数据迁移、增量数据迁移，不支持库表结构迁移。 |
+|   | MySQL迁移到 AnalyticDB PostgreSQL | 自建MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | MySQL迁移到Kafka | 自建MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 需要Kafka开通公网或者私网，且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 公网自建的Kafka 0.10-2.0版本。 |
+|   | MySQL间的数据迁移 | 自建MySQL的版本为5.1~5.7，RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | MySQL迁移到Oracle | Oracle的版本为9i、10g、11g。 MySQL的版本为5.1~5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | MySQL迁移到 PostgreSQL | 支持MySQL的版本为5.5、5.6、5.7、8.0。 支持PostgreSQL的版本为10.x、11.x、12.x、13.x。 PostgreSQL为公网自建的方式接入。 |
+|   | Oracle迁移到 AnalyticDB MySQL 2.0 | Oracle的版本为9i、10g、11g。 全量数据迁移、增量数据迁移。 |
+|   | Oracle迁移到 AnalyticDB MySQL 3.0 | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Oracle迁移到 AnalyticDB PostgreSQL的迁移 | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Oracle迁移到PolarDB- X 1.0 | Oracle的版本为9i、10g、11g。 PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.73。 支持全量数据迁移、增量数据迁移，不支持库表结构迁移。 |
 
-数据传输
-
-| 数据迁移 |  |  |
+| 数据迁移 |   |   |
 |---|---|---|
-|  | Oracle迁移到MySQL | Oracle的版本为9i、10g、11g。 MySQL的版本为5.1~5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Oracle间的数据迁移 | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Oracle迁移到PolarDB PostgreSQL版（兼容 Oracle） | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 需要PolarDB PostgreSQL版（兼容Oracle）开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 |
-|  | Oracle迁移到 PostgreSQL | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Oracle迁移到PPAS | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | Oralce迁移到Kafka | 公网自建的Kafka 0.10~2.0版本。 支持库表结构迁移、全量数据迁移、增量数据迁移。 Oracle的版本为9i、10g、11g、12g、18c、19c。 RAC接入近支持公网的方式，专线接入仅支持配置其中的1个VIP。 |
-|  | Oralce迁移到 PostgreSQL | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 需要PolarDB PostgreSQL版（兼容Oracle）开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 PostgreSQL的版本为10.x、11.x、12.x，需开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 |
-|  | Oralce到建行流式采集 SDK | Oracle的版本为9i、10g、11g、12c、18c、19c。 支持全量数据迁移、增量数据迁移。 |
-|  | PolarDB MySQL版迁移到MySQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB PostgreSQL 版（兼容Oracle）迁移到Kafka | 公网自建的Kafka 0.10~2.0版本。 仅支持增量数据迁移。 PolarDB PostgreSQL版（兼容Oracle）需要以公网自建数据库的方式接入，填写PolarDB PostgreSQL版（兼容Oracle）的IP和 Port进行连接。 |
+|   | Oracle迁移到MySQL | Oracle的版本为9i、10g、11g。 MySQL的版本为5.1~5.7。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Oracle间的数据迁移 | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Oracle迁移到PolarDB PostgreSQL版（兼容 Oracle） | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 需要PolarDB PostgreSQL版（兼容Oracle）开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 |
+|   | Oracle迁移到 PostgreSQL | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Oracle迁移到PPAS | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | Oralce迁移到Kafka | 公网自建的Kafka 0.10~2.0版本。 支持库表结构迁移、全量数据迁移、增量数据迁移。 Oracle的版本为9i、10g、11g、12g、18c、19c。 RAC接入近支持公网的方式，专线接入仅支持配置其中的1个VIP。 |
+|   | Oralce迁移到 PostgreSQL | Oracle的版本为9i、10g、11g。 支持库表结构迁移、全量数据迁移、增量数据迁移。 需要PolarDB PostgreSQL版（兼容Oracle）开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 PostgreSQL的版本为10.x、11.x、12.x，需开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 |
+|   | Oralce到建行流式采集 SDK | Oracle的版本为9i、10g、11g、12c、18c、19c。 支持全量数据迁移、增量数据迁移。 |
+|   | PolarDB MySQL版迁移到MySQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB PostgreSQL 版（兼容Oracle）迁移到Kafka | 公网自建的Kafka 0.10~2.0版本。 仅支持增量数据迁移。 PolarDB PostgreSQL版（兼容Oracle）需要以公网自建数据库的方式接入，填写PolarDB PostgreSQL版（兼容Oracle）的IP和 Port进行连接。 |
 
-数据传输
-
-|  | PolarDB PostgreSQL 版（兼容Oracle）迁移到Oralce | PolarDB PostgreSQL版（兼容Oracle）需要以公网自建数据库的方式接入，填写PolarDB PostgreSQL版（兼容Oracle）的IP和 Port进行连接。 公网自建的Oralce 9i~19c版本。 支持全量和增量数据迁移，不支持库表结构迁移。 |
+|   | PolarDB PostgreSQL 版（兼容Oracle）迁移到Oralce | PolarDB PostgreSQL版（兼容Oracle）需要以公网自建数据库的方式接入，填写PolarDB PostgreSQL版（兼容Oracle）的IP和 Port进行连接。 公网自建的Oralce 9i~19c版本。 支持全量和增量数据迁移，不支持库表结构迁移。 |
 |---|---|---|
-|  | PolarDB PostgreSQL 版（兼容Oracle）间的数据迁移 | PolarDB PostgreSQL版（兼容Oracle）需要以公网自建数据库的方式接入，填写PolarDB PostgreSQL版（兼容Oracle）的IP和 Port进行连接。 支持库表结构迁移、全量数据迁移、增量数据的迁移。 |
-|  | PolarDB-X 2.0迁移到 AnalyticDB PostgreSQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB-X 2.0迁移到 Kafka | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB-X 2.0迁移到 MySQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB-X 2.0间的数据迁移 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PostgreSQL迁移到 PolarDB PostgreSQL 版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PostgreSQL迁移到 PolarDB PostgreSQL 版（兼容Oracle） | 支持库表结构迁移、全量数据迁移、增量数据迁移。 PolarDB PostgreSQL版（兼容Oracle）的接入方式为公网自建的方式接入。 PostgreSQL的接入方式为公网自建的方式接入。 PostgreSQL的版本为10.x、11.x、12.x。 |
-|  | PostgreSQL间的数据迁移 | PostgreSQL的版本为9.x~10.x。 支持库表结构迁移、全量数据迁移、增量数据迁移。 自建数据库，做增量迁移需要安装ali decoding插件。 _ |
-|  | PPAS迁移到PolarDB PostgreSQL版（兼容 Oracle） | 支持库表结构迁移、全量数据迁移、增量数据迁移。 PPAS需要开通公网或者私网，且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 PolarDB PostgreSQL版（兼容Oracle）需要开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 |
+|   | PolarDB PostgreSQL 版（兼容Oracle）间的数据迁移 | PolarDB PostgreSQL版（兼容Oracle）需要以公网自建数据库的方式接入，填写PolarDB PostgreSQL版（兼容Oracle）的IP和 Port进行连接。 支持库表结构迁移、全量数据迁移、增量数据的迁移。 |
+|   | PolarDB-X 2.0迁移到 AnalyticDB PostgreSQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB-X 2.0迁移到 Kafka | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB-X 2.0迁移到 MySQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB-X 2.0间的数据迁移 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PostgreSQL迁移到 PolarDB PostgreSQL 版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PostgreSQL迁移到 PolarDB PostgreSQL 版（兼容Oracle） | 支持库表结构迁移、全量数据迁移、增量数据迁移。 PolarDB PostgreSQL版（兼容Oracle）的接入方式为公网自建的方式接入。 PostgreSQL的接入方式为公网自建的方式接入。 PostgreSQL的版本为10.x、11.x、12.x。 |
+|   | PostgreSQL间的数据迁移 | PostgreSQL的版本为9.x~10.x。 支持库表结构迁移、全量数据迁移、增量数据迁移。 自建数据库，做增量迁移需要安装ali decoding插件。 _ |
+|   | PPAS迁移到PolarDB PostgreSQL版（兼容 Oracle） | 支持库表结构迁移、全量数据迁移、增量数据迁移。 PPAS需要开通公网或者私网，且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 PolarDB PostgreSQL版（兼容Oracle）需要开通公网或者私网， 且和DTS能互通，并选择公网的接入方式填入公网或者私网IP。 |
 
-数据传输
-
-|  | 云数据库MongoDB版迁移到Kafka | 仅支持全量和增量数据迁移，不支持库表结构数据迁移。 自建Kafka为0.1~2.7版本。 |
+|   | 云数据库MongoDB版迁移到Kafka | 仅支持全量和增量数据迁移，不支持库表结构数据迁移。 自建Kafka为0.1~2.7版本。 |
 |---|---|---|
-|  | Redis间的数据迁移 | 仅公网自建Redis。 不支持集群架构。 支持的自建Redis 2.8、3.0、3.2、4.0。 支持全量数据迁移和增量数据迁移。 |
-|  | SQL Server间的数据迁移 | 支持的SQL Server的版本为2005~2017。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB MySQL版间的数据迁移 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB MySQL版迁移到PolarDB-X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB-X 2.0迁移到 PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | RDS PostgreSQL迁移到PolarDB PostgreSQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB PostgreSQL 版间的数据迁移 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | 自建MySQL（公网）迁移到PolarDB-X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | RDS MySQL（实例）迁移到PolarDB-X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | RDS PostgreSQL迁移到PolarDB PostgreSQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-|  | PolarDB-X 1.0迁移到 kafka | 支持库表结构迁移、全量数据迁移、增量数据迁移。 kafka版本为2.7。 |
-|  | OceanBase MySQL迁移到PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
-
-数据传输
+|   | Redis间的数据迁移 | 仅公网自建Redis。 不支持集群架构。 支持的自建Redis 2.8、3.0、3.2、4.0。 支持全量数据迁移和增量数据迁移。 |
+|   | SQL Server间的数据迁移 | 支持的SQL Server的版本为2005~2017。 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB MySQL版间的数据迁移 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB MySQL版迁移到PolarDB-X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB-X 2.0迁移到 PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | RDS PostgreSQL迁移到PolarDB PostgreSQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB PostgreSQL 版间的数据迁移 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | 自建MySQL（公网）迁移到PolarDB-X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | RDS MySQL（实例）迁移到PolarDB-X 2.0 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | RDS PostgreSQL迁移到PolarDB PostgreSQL | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
+|   | PolarDB-X 1.0迁移到 kafka | 支持库表结构迁移、全量数据迁移、增量数据迁移。 kafka版本为2.7。 |
+|   | OceanBase MySQL迁移到PolarDB MySQL版 | 支持库表结构迁移、全量数据迁移、增量数据迁移。 |
 
 | 数据订阅 | PolarDB-X 1.0为源的增量数据订阅 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 |
 |---|---|---|
-|  | PolarDB-X 2.0为源的增量数据订阅 | 支持多流CDC。 |
-|  | MySQL为源的增量数据订阅 | MySQL的版本为5.1~5.7，RDS MySQL的版本为5.5、5.6、5.7。 |
-|  | Oracle为源的增量数据订阅 | Oracle的版本为9i、10g、11g。 不支持Oralce RAC。 |
-|  | Db2 for i同步到MySQL | 支持库表结构同步、全量数据同步和增量数据同步。 |
-|  | Db2 for i同步到PolarDB MySQL版 | 支持库表结构同步、全量数据同步和增量数据同步。 |
-|  | Db2 for LUW同步到 AnalyticDB PostgreSQL | 支持库表结构同步、全量数据同步、增量数据同步。 Db2 for LUW版本为10.1、10.5、11.5。 |
-|  | Db2 for LUW同步到PolarDB PostgreSQL版 | 支持库表结构同步、全量数据同步和增量数据同步。 |
-|  | Db2 for LUW同步到PolarDB MySQL版 | 支持库表结构同步、全量数据同步和增量数据同步。 |
-|  | PolarDB MySQL版同步到MySQL | 支持库表结构同步、全量数据同步和增量数据同步。 自建MySQL为5.1、5.5、5.6、5.7版本。 |
-|  | PolarDB MySQL版同步到Kafka | 支持全量数据同步和增量数据同步。 自建Kafka为0.1~2.7版本。 |
-|  | PolarDB-X 1.0同步到 DataHub | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | PolarDB-X 1.0间的数据同步 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 2.0为源的增量数据订阅 | 支持多流CDC。 |
+|   | MySQL为源的增量数据订阅 | MySQL的版本为5.1~5.7，RDS MySQL的版本为5.5、5.6、5.7。 |
+|   | Oracle为源的增量数据订阅 | Oracle的版本为9i、10g、11g。 不支持Oralce RAC。 |
+|   | Db2 for i同步到MySQL | 支持库表结构同步、全量数据同步和增量数据同步。 |
+|   | Db2 for i同步到PolarDB MySQL版 | 支持库表结构同步、全量数据同步和增量数据同步。 |
+|   | Db2 for LUW同步到 AnalyticDB PostgreSQL | 支持库表结构同步、全量数据同步、增量数据同步。 Db2 for LUW版本为10.1、10.5、11.5。 |
+|   | Db2 for LUW同步到PolarDB PostgreSQL版 | 支持库表结构同步、全量数据同步和增量数据同步。 |
+|   | Db2 for LUW同步到PolarDB MySQL版 | 支持库表结构同步、全量数据同步和增量数据同步。 |
+|   | PolarDB MySQL版同步到MySQL | 支持库表结构同步、全量数据同步和增量数据同步。 自建MySQL为5.1、5.5、5.6、5.7版本。 |
+|   | PolarDB MySQL版同步到Kafka | 支持全量数据同步和增量数据同步。 自建Kafka为0.1~2.7版本。 |
+|   | PolarDB-X 1.0同步到 DataHub | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 1.0间的数据同步 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
 
-数据传输
-
-|  | MySQL同步到 AnalyticDB PostgreSQL | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | MySQL同步到 AnalyticDB PostgreSQL | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
 |---|---|---|
-|  | MySQL同步到 AnalyticDB MySQL 2.0 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | MySQL同步到 AnalyticDB MySQL 3.0 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | MySQL同步到 DataHub | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、增量数据同步，不支持全量数据同步。 |
-|  | MySQL同步到 MaxCompute | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 支持同步的DDL语句：ALTER TABLE、ADD COLUMN。 |
-|  | MySQL间的单向同步 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
-| 数据同步 |  |  |
-|  | MySQL间的双向同步 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | Oralce同步到 AnalyticDB PostgreSQL | Oracle的版本为9i、10g、11g、12c、18c、19c。 支持结库表构同步、全量数据同步、增量数据同步。 |
-|  | Oralce同步到Datahub | Oracle的版本为9i、10g、11g、12c、18c、19c。 支持库表结构同步、增量数据同步。 |
-|  | PolarDB-X1.0同步到 AnalyticDB MySQL 3.0 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | PolarDB-X 1.0同步到 PolarDB-X 2.0 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持全量数据同步、增量数据同步，不支持库表结构同步。 |
+|   | MySQL同步到 AnalyticDB MySQL 2.0 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | MySQL同步到 AnalyticDB MySQL 3.0 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | MySQL同步到 DataHub | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、增量数据同步，不支持全量数据同步。 |
+|   | MySQL同步到 MaxCompute | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 支持同步的DDL语句：ALTER TABLE、ADD COLUMN。 |
+|   | MySQL间的单向同步 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+| 数据同步 |   |   |
+|   | MySQL间的双向同步 | MySQL的版本为5.1~5.7、RDS MySQL的版本为5.5、5.6、 5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | Oralce同步到 AnalyticDB PostgreSQL | Oracle的版本为9i、10g、11g、12c、18c、19c。 支持结库表构同步、全量数据同步、增量数据同步。 |
+|   | Oralce同步到Datahub | Oracle的版本为9i、10g、11g、12c、18c、19c。 支持库表结构同步、增量数据同步。 |
+|   | PolarDB-X1.0同步到 AnalyticDB MySQL 3.0 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 1.0同步到 PolarDB-X 2.0 | PolarDB-X 1.0下挂载的RDS MySQL版本为5.1~5.7。 支持全量数据同步、增量数据同步，不支持库表结构同步。 |
 
-数据传输
-
-|  | PolarDB-X 2.0同步到 PolarDB-X 1.0 | 支持全量数据同步、增量数据同步，不支持库表结构同步。 |
+|   | PolarDB-X 2.0同步到 PolarDB-X 1.0 | 支持全量数据同步、增量数据同步，不支持库表结构同步。 |
 |---|---|---|
-|  | PolarDB-X 2.0同步到 AnalyticDB MySQL 3.0 | 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | PolarDB-X 2.0同步到 AnalyticDB PostgreSQL | 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | PolarDB-X 2.0同步到 MySQL | 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | PolarDB-X 2.0间的数据同步 | 支持库表结构同步、全量数据同步、增量数据同步。 |
-|  | PostgreSQL同步到 AnalyticDB PostgreSQL | 仅支持全量和增量数据同步，不支持库表结构数据同步。 不支持DDL的同步。 1个任务仅支持对1个数据库进行同步。 |
-|  | 云数据库MongoDB版同步到Kafka | 仅支持全量和增量数据同步，不支持库表结构数据同步。 自建Kafka为0.1~2.7版本。 |
-|  | Redis或Tair企业版之间的数据同步 | 支持的架构为标准、集群架构。 支持的版本号为5.0。 支持单向和双向同步。 |
-|  | Redis社区版间的数据同步 | 支持的架构为标准、集群架构。 支持的版本号为4.0、5.0。 |
-|  | SQL Server间的数据同步 | 支持的SQL Server的版本为2005~2017。 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 2.0同步到 AnalyticDB MySQL 3.0 | 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 2.0同步到 AnalyticDB PostgreSQL | 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 2.0同步到 MySQL | 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PolarDB-X 2.0间的数据同步 | 支持库表结构同步、全量数据同步、增量数据同步。 |
+|   | PostgreSQL同步到 AnalyticDB PostgreSQL | 仅支持全量和增量数据同步，不支持库表结构数据同步。 不支持DDL的同步。 1个任务仅支持对1个数据库进行同步。 |
+|   | 云数据库MongoDB版同步到Kafka | 仅支持全量和增量数据同步，不支持库表结构数据同步。 自建Kafka为0.1~2.7版本。 |
+|   | Redis或Tair企业版之间的数据同步 | 支持的架构为标准、集群架构。 支持的版本号为5.0。 支持单向和双向同步。 |
+|   | Redis社区版间的数据同步 | 支持的架构为标准、集群架构。 支持的版本号为4.0、5.0。 |
+|   | SQL Server间的数据同步 | 支持的SQL Server的版本为2005~2017。 支持库表结构同步、全量数据同步、增量数据同步。 |
 | 容灾 | 同城容灾 | 支持同城容灾。 |
-|  | 异地容灾 | 支持异地容灾。 |
+|   | 异地容灾 | 支持异地容灾。 |
 | 安全 | HTTPS证书加密 | DTS的Portal支持国密HTTPS访问。 |
-|  | 不同账号下的资源隔离 | 对接ASCM实现不同部门账号下资源的隔离。 |
-| > 文档版本：202 | 60729 1 |  |
+|   | 不同账号下的资源隔离 | 对接ASCM实现不同部门账号下资源的隔离。 |
+| > 文档版本：202 | 60729 1 |   |
 
-| 产品简介·数据传输 |  |  |
+| 产品简介·数据传输 |   |   |
 |---|---|---|
-|  | 安全审计 | 支持安全审计。 |
+|   | 安全审计 | 支持安全审计。 |
 | 多Region部署 | 多Region部署 | 支持多Region部署。 |
 | 告警监控 | 支持配置任务告警 | 支持配置任务延迟和任务失败告警。 |
 | 数据和应用迁移评估 （ADAM） | SQL在线转换 | 实时转换Oracle、Db2、TeradataSQL到多个目标库，如PolarDB、 AnalyticDB PostgreSQL等主流开源数据库。 |
-|  | 应用画像 | Java应用画像信息展示。 |
-|  | 应用评估 | Java应用评估详情，改造点，改造意见。 |
-|  | 应用采集 | 源库Oracle、Db2、Teradata，Java应用数据采集（业务SQL）。 |
-|  | 增量源库对比 | Oracle、Db2、Teradata源库增量对比。 |
-|  | 支持热升级功能 | 支持后续评估迁移功能迭代的热升级。 |
-|  | 支持高可用 | 支持多机房容灾。 |
-|  | 源库计划校验 | Oracle、Db2、Teradata源库结构比对。 |
-|  | 生成迁移计划 | 支持开源主流数据库迁移至PolarDB，AnalyticDB PostgreSQL。 |
-|  | 库表结构迁移/订正 | 支持开源主流数据库迁移至PolarDB，AnalyticDB PostgreSQL提供库表结构订正和改造意见。 |
-|  | 源库画像 | 采集源库的数据画像展示。 |
-|  | 目标库兼容评估 | 源库评估详情，兼容详情，不兼容点及原因等展示。 |
-|  | 目标库选型建议 | 多个目标库兼容性选型建议。 |
+|   | 应用画像 | Java应用画像信息展示。 |
+|   | 应用评估 | Java应用评估详情，改造点，改造意见。 |
+|   | 应用采集 | 源库Oracle、Db2、Teradata，Java应用数据采集（业务SQL）。 |
+|   | 增量源库对比 | Oracle、Db2、Teradata源库增量对比。 |
+|   | 支持热升级功能 | 支持后续评估迁移功能迭代的热升级。 |
+|   | 支持高可用 | 支持多机房容灾。 |
+|   | 源库计划校验 | Oracle、Db2、Teradata源库结构比对。 |
+|   | 生成迁移计划 | 支持开源主流数据库迁移至PolarDB，AnalyticDB PostgreSQL。 |
+|   | 库表结构迁移/订正 | 支持开源主流数据库迁移至PolarDB，AnalyticDB PostgreSQL提供库表结构订正和改造意见。 |
+|   | 源库画像 | 采集源库的数据画像展示。 |
+|   | 目标库兼容评估 | 源库评估详情，兼容详情，不兼容点及原因等展示。 |
+|   | 目标库选型建议 | 多个目标库兼容性选型建议。 |
 | DTS数据一致性校验、订正 | 数据一致性校验、订正 | 支持对数据库表创建数据校验、订正任务。 |
-
-数据传输
 
 | DTS周期性数据集成 | 周期性数据集成 | 依赖于DMS的任务编排、调度功能，通过编排周期性的数据集成任务，可以实现周期性的全量数据迁移。 |
 |---|---|---|

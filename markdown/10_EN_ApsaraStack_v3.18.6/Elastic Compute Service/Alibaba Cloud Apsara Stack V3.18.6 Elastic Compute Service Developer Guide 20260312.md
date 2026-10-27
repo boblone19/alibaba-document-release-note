@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 836
 source_pdf: "fa6d7cc2d397a080_Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Developer Guide 20260312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20Compute%20Service%20Developer%20Guide%2020260312.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Elastic Compute Service Developer Guide 20260312
@@ -4019,7 +4019,11 @@ Sample success responses `JSON` format `{`
 
 ##### 5.1.4.3 StartInstance
 
-You can call this operation to start an ECS instance. After the operation is called, the instance enters the Starting state. When you call this operation, take note of the following items:
+You can call this operation to start an ECS instance. After the operation is called, the instance enters the Starting state.
+
+**Description**
+
+When you call this operation, take note of the following items:
 
 | Stopped |   | ) state. |
 |---|---|---|
@@ -4095,7 +4099,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.4 StopInstance
 
-You can call this operation to stop an ECS instance in the Running state. After the operation is called, the status of the instance changes to Stopping and then to Stopped. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be stopped through calls to this operation. To stop an instance of an instance family equipped with local SSDs, take note of the following items: After the instance is stopped, data in its local disks is cleared. To ensure data availability, we recommend that you implement data redundancy at the application layer. ECS automatically ignores the `ConfirmStop` parameter in the requests to stop instances of other instance families.
+You can call this operation to stop an ECS instance in the Running state. After the operation is called, the status of the instance changes to Stopping and then to Stopped.
+
+**Description**
+
+If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be stopped through calls to this operation. To stop an instance of an instance family equipped with local SSDs, take note of the following items: After the instance is stopped, data in its local disks is cleared. To ensure data availability, we recommend that you implement data redundancy at the application layer. ECS automatically ignores the `ConfirmStop` parameter in the requests to stop instances of other instance families.
 
 **Request parameters**
 
@@ -4163,7 +4171,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.5 RebootInstance
 
-You can call this operation to restart an instance in the Running state. Only instances in the **Running** ( `Running` ) state can be restarted. After the operation is called, the status of the corresponding instance changes to **Starting** ( `Starting` ). Instances can be forcibly restarted. A forced restart ( `ForceStop` ) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted through calls to this operation.
+You can call this operation to restart an instance in the Running state.
+
+**Description**
+
+Only instances in the **Running** ( `Running` ) state can be restarted. After the operation is called, the status of the corresponding instance changes to **Starting** ( `Starting` ). Instances can be forcibly restarted. A forced restart ( `ForceStop` ) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted through calls to this operation.
 
 **Request parameters**
 
@@ -4224,7 +4236,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.6 DeleteInstance
 
-You can call this operation to release an ECS instance. After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered. Disks attached to the instance: The disks for which `DeleteWithInstance` is set to true are released along with the instance. For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained. For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released. Manual snapshots of the disks are retained. If OperationLocks in the DescribeInstances response contains `"LockReason" : "security` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to false for the disks attached to the instance, this parameter is ignored and the disks are released along with the instance.
+You can call this operation to release an ECS instance.
+
+**Description**
+
+After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered. Disks attached to the instance: The disks for which `DeleteWithInstance` is set to true are released along with the instance. For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained. For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released. Manual snapshots of the disks are retained. If OperationLocks in the DescribeInstances response contains `"LockReason" : "security` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to false for the disks attached to the instance, this parameter is ignored and the disks are released along with the instance.
 
 **Request parameters**
 
@@ -4483,7 +4499,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.9 DescribeInstanceStatus
 
-You can call this operation to query the status information of multiple instances. You can also call this operation to query the list of instances.
+You can call this operation to query the status information of multiple instances.
+
+**Description**
+
+You can also call this operation to query the list of instances.
 
 **Request parameters**
 
@@ -4564,7 +4584,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.10 DescribeInstances
 
-Call the DescribeInstances operation to query the details of one or more ECS instances. Request parameters act as filters and are joined by a logical AND. If a parameter is left empty, it is not used as a filter. However, if the InstanceIds parameter is an empty JSON array, the request is considered valid and an empty result is returned. If you use a Resource Access Management (RAM) user or RAM role that does not have the required permissions for this operation, an empty list is returned. You can add the `DryRun` parameter to the request to check whether the empty list is returned due to insufficient permissions.
+Call the DescribeInstances operation to query the details of one or more ECS instances. Description Request parameters act as filters and are joined by a logical AND. If a parameter is left empty, it is not used as a filter. However, if the InstanceIds parameter is an empty JSON array, the request is considered valid and an empty result is returned. If you use a Resource Access Management (RAM) user or RAM role that does not have the required permissions for this operation, an empty list is returned. You can add the `DryRun` parameter to the request to check whether the empty list is returned due to insufficient permissions.
 
 **Request headers**
 
@@ -5571,7 +5591,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.14 DescribeUserData
 
-You can call this operation to query the user data of an ECS instance. The returned user data is encoded in Base64. If the instance does not have user data configured, an empty result is returned.
+You can call this operation to query the user data of an ECS instance.
+
+**Description**
+
+The returned user data is encoded in Base64. If the instance does not have user data configured, an empty result is returned.
 
 **Request parameters**
 
@@ -5910,7 +5934,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.17 ModifyInstanceAttribute
 
-Modifies some attributes of an Elastic Compute Service (ECS) instance, such as the password, name, description, hostname, security group, and user data. If the instance is a burstable instance, you can also change its performance mode. When you query the instance information and the responses contain `{"OperationLocks":` `{"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance. When you call this operation, take note of the following items: Modify the hostname ( `HostName` ): After the hostname is modified, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system. Reset the password ( `Password` ): The instance must not be in the **Starting** ( `Starting` ) state. After the password is reset, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system. Modify user data ( `UserData` ): The instance must be in the **Stopped** ( `Stopped` ) state. The instance must meet the limits on user data.
+Modifies some attributes of an Elastic Compute Service (ECS) instance, such as the password, name, description, hostname, security group, and user data. If the instance is a burstable instance, you can also change its performance mode.
+
+**Description**
+
+When you query the instance information and the responses contain `{"OperationLocks":` `{"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance. When you call this operation, take note of the following items: Modify the hostname ( `HostName` ): After the hostname is modified, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system. Reset the password ( `Password` ): The instance must not be in the **Starting** ( `Starting` ) state. After the password is reset, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system. Modify user data ( `UserData` ): The instance must be in the **Stopped** ( `Stopped` ) state. The instance must meet the limits on user data.
 
 **Request parameters**
 
@@ -6012,7 +6040,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.18 ModifyInstanceVpcAttribute
 
-Modifies the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance in a VPC. The instance must be in the **Stopped** ( `Stopped` ) state. When you call this operation to modify the private IP address or vSwitch of an instance, take note of the following items: If the instance is a new instance, you must restart the instance before you call this operation on it. After the private IP address or vSwitch of an instance is modified, you must restart the instance before you can call this operation again. When you call this operation to modify the VPC of an instance, take note of the following items: Instance: The instance cannot be associated with Server Load Balancer (SLB) instances. The instance cannot be in the Locked or To Be Released state. The instance cannot be used in other cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission (DTS). Network: The instance cannot have secondary ENIs bound. The instance cannot have IPv6 addresses assigned. The primary ENI of the instance cannot be associated with multiple IP addresses. The vSwitch specified by the VSwitchId parameter must belong to the new VPC. The vSwitches before and after the modification must reside within the same zone. If the private IP address of the primary ENI is specified, the private IP address must be available and within the CIDR block of the vSwitch. If the private IP address is not specified, the system randomly assigns one. The available IP addresses in the CIDR block of the new vSwitch must be sufficient. The Alibaba Cloud account that owns the new VPC cannot share the VPC to other accounts. Security group (SecurityGroupId.N): The valid values of N depend on the maximum number of security groups to which an instance can belong. Make sure that the quota for security groups within your account is sufficient. The specified security groups must belong to the new VPC.
+Modifies the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance in a VPC.
+
+**Description**
+
+The instance must be in the **Stopped** ( `Stopped` ) state. When you call this operation to modify the private IP address or vSwitch of an instance, take note of the following items: If the instance is a new instance, you must restart the instance before you call this operation on it. After the private IP address or vSwitch of an instance is modified, you must restart the instance before you can call this operation again. When you call this operation to modify the VPC of an instance, take note of the following items: Instance: The instance cannot be associated with Server Load Balancer (SLB) instances. The instance cannot be in the Locked or To Be Released state. The instance cannot be used in other cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission (DTS). Network: The instance cannot have secondary ENIs bound. The instance cannot have IPv6 addresses assigned. The primary ENI of the instance cannot be associated with multiple IP addresses. The vSwitch specified by the VSwitchId parameter must belong to the new VPC. The vSwitches before and after the modification must reside within the same zone. If the private IP address of the primary ENI is specified, the private IP address must be available and within the CIDR block of the vSwitch. If the private IP address is not specified, the system randomly assigns one. The available IP addresses in the CIDR block of the new vSwitch must be sufficient. The Alibaba Cloud account that owns the new VPC cannot share the VPC to other accounts. Security group (SecurityGroupId.N): The valid values of N depend on the maximum number of security groups to which an instance can belong. Make sure that the quota for security groups within your account is sufficient. The specified security groups must belong to the new VPC.
 
 **Request parameters**
 
@@ -6090,7 +6122,11 @@ Sample success responses `XML` format
 
 ##### 5.1.4.19 ModifyInstanceVncPasswd
 
-You can call this operation to change the VNC password of an instance. The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits. After you change the VNC password of an instance: If the instance is I/O optimized, the new password takes effect immediately. If the instance is not I/O optimized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect.
+You can call this operation to change the VNC password of an instance.
+
+**Description**
+
+The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits. After you change the VNC password of an instance: If the instance is I/O optimized, the new password takes effect immediately. If the instance is not I/O optimized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect.
 
 **Request parameters**
 
@@ -6336,7 +6372,11 @@ Ecs 2014-05-26
 
 ##### 5.1.4.22 SoftDeleteInstances
 
-Logically deletes one or more Elastic Compute Service (ECS) instances. Logical deletion is a new method to delete ECS resources. Different from the DeleteInstance operation, after an instance is logically deleted by calling the SoftDeleteInstances operation, the instance is moved to the recycle bin and is retained here for a specified period of time, which is specified by the Hours parameter. During the retention period, computing resources such as CPUs and memory are released, elastic IP addresses (EIPs) are disassociated from the instance, and storage resources are retained. After the retention period, all ECS resources including storage resources are permanently deleted and cannot be restored. When you call this operation, take note of the following items: Instances of instance families equipped with local disks cannot be logically deleted. The instance must be in the **Stopped** (Stopped) or **Running** (Running) state. After an instance is logically deleted, the instance enters a retention period. During the retention period, you can only recover or permanently delete the instance but cannot associate or disassociate other resources with or from it, such as attaching or detaching a disk.
+Logically deletes one or more Elastic Compute Service (ECS) instances.
+
+**Description**
+
+Logical deletion is a new method to delete ECS resources. Different from the DeleteInstance operation, after an instance is logically deleted by calling the SoftDeleteInstances operation, the instance is moved to the recycle bin and is retained here for a specified period of time, which is specified by the Hours parameter. During the retention period, computing resources such as CPUs and memory are released, elastic IP addresses (EIPs) are disassociated from the instance, and storage resources are retained. After the retention period, all ECS resources including storage resources are permanently deleted and cannot be restored. When you call this operation, take note of the following items: Instances of instance families equipped with local disks cannot be logically deleted. The instance must be in the **Stopped** (Stopped) or **Running** (Running) state. After an instance is logically deleted, the instance enters a retention period. During the retention period, you can only recover or permanently delete the instance but cannot associate or disassociate other resources with or from it, such as attaching or detaching a disk.
 
 **Request parameters**
 
@@ -6612,7 +6652,11 @@ Sample success responses `XML` format
 
 ##### 5.1.5.1 AllocateDedicatedHosts
 
-You can call this operation to create one or more dedicated hosts. A dedicated host is a physical server dedicated to a single tenant. You can create ECS instances on a dedicated host and view the attributes of the dedicated host. Before you create a dedicated host, you can call the DescribeAvailableResource operation to view the available resources in the target region or zone. You can create a maximum of 100 dedicated hosts at a time. After you create a dedicated host, you can use its ID that is returned by the system as the request parameter to call the DescribeDedicatedHosts operation to query the status of the dedicated host. After you submit a request to create a dedicated host, an error is returned if a specified parameter is invalid or the requested resources are insufficient. For more information about error causes, see Error codes. After a dedicated host is created, you can call the ModifyInstanceDeployment operation to migrate ECS instances from a shared host to the dedicated host. You can also migrate ECS instances from another dedicated host to the created dedicated host.
+You can call this operation to create one or more dedicated hosts. A dedicated host is a physical server dedicated to a single tenant. You can create ECS instances on a dedicated host and view the attributes of the dedicated host.
+
+**Description**
+
+Before you create a dedicated host, you can call the DescribeAvailableResource operation to view the available resources in the target region or zone. You can create a maximum of 100 dedicated hosts at a time. After you create a dedicated host, you can use its ID that is returned by the system as the request parameter to call the DescribeDedicatedHosts operation to query the status of the dedicated host. After you submit a request to create a dedicated host, an error is returned if a specified parameter is invalid or the requested resources are insufficient. For more information about error causes, see Error codes. After a dedicated host is created, you can call the ModifyInstanceDeployment operation to migrate ECS instances from a shared host to the dedicated host. You can also migrate ECS instances from another dedicated host to the created dedicated host.
 
 **Request parameters**
 
@@ -7249,7 +7293,11 @@ Sample success responses `XML` format
 
 ##### 5.1.5.6 ReleaseDedicatedHost
 
-You can call this operation to release a dedicated host. Before you release a dedicated host, make sure that no ECS instances are deployed on the dedicated host.
+You can call this operation to release a dedicated host.
+
+**Description**
+
+Before you release a dedicated host, make sure that no ECS instances are deployed on the dedicated host.
 
 **Request parameters**
 
@@ -7993,7 +8041,11 @@ Sample success responses `XML` format
 
 ##### 5.1.7.1 CreateStorageSet
 
-Creates a storage set in a zone within a specified region. A storage set can distribute disks or Shared Block Storage devices to different locations. You can specify the number of partitions in a storage set. A larger number of partitions indicate more discrete distribution of disks or Shared Block Storage devices. For more information about storage sets, see Create a storage set in Defined Storage User Guide.
+Creates a storage set in a zone within a specified region.
+
+**Description**
+
+A storage set can distribute disks or Shared Block Storage devices to different locations. You can specify the number of partitions in a storage set. A larger number of partitions indicate more discrete distribution of disks or Shared Block Storage devices. For more information about storage sets, see Create a storage set in Defined Storage User Guide.
 
 **Request parameters**
 
@@ -8837,7 +8889,11 @@ Sample success responses `XML` format
 
 ##### 5.1.8.3 AttachDisk
 
-Attaches a system disk or data disk to an instance. The instance and the disk must reside in the same zone. When you call this operation, take note of the following items: The disk to be attached must be in the **Unattached** ( `Available` ) state. When the disk is attached as a data disk, take note of the following items: The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ) state. When the disk is attached as a system disk, take note of the following items: The instance must be the original instance from which the system disk is detached. The instance must be in the **Stopped** ( `Stopped` ) state. The logon credentials must be configured. When you query the instance information and the responses contain `{"OperationLocks":` `{"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance.
+Attaches a system disk or data disk to an instance. The instance and the disk must reside in the same zone.
+
+**Description**
+
+When you call this operation, take note of the following items: The disk to be attached must be in the **Unattached** ( `Available` ) state. When the disk is attached as a data disk, take note of the following items: The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ) state. When the disk is attached as a system disk, take note of the following items: The instance must be the original instance from which the system disk is detached. The instance must be in the **Stopped** ( `Stopped` ) state. The logon credentials must be configured. When you query the instance information and the responses contain `{"OperationLocks":` `{"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance.
 
 **Request parameters**
 
@@ -9005,7 +9061,11 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 5.1.8.5 ModifyDiskAttribute
 
-You can call this operation to modify the attributes of one or more Block Storage devices, including their names, descriptions, and whether they are released along with their attached instances. If you set DeleteWithInstance to false for a disk and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance parameter will be ignored and the disk will be released along with the instance. (If the value of `LockReason` is security in OperationLocks of the API response when you query information of an instance, the instance is locked for security reasons.)
+You can call this operation to modify the attributes of one or more Block Storage devices, including their names, descriptions, and whether they are released along with their attached instances.
+
+**Description**
+
+If you set DeleteWithInstance to false for a disk and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance parameter will be ignored and the disk will be released along with the instance. (If the value of `LockReason` is security in OperationLocks of the API response when you query information of an instance, the instance is locked for security reasons.)
 
 **Request parameters**
 
@@ -9146,7 +9206,11 @@ Sample success responses `XML` format
 
 ##### 5.1.8.7 ReInitDisk
 
-Re-initializes a disk. When you call this operation, take note of the following items: The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state. If the instance has never been started since it was created, the disks attached to it cannot be re-initialized. When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized. When a separately created data disk is re-initialized, it is restored to an empty data disk. When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot. If the snapshot has been deleted, the disk cannot be re-initialized and an error is returned.
+Re-initializes a disk.
+
+**Description**
+
+When you call this operation, take note of the following items: The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state. If the instance has never been started since it was created, the disks attached to it cannot be re-initialized. When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized. When a separately created data disk is re-initialized, it is restored to an empty data disk. When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot. If the snapshot has been deleted, the disk cannot be re-initialized and an error is returned.
 
 **Request parameters**
 
@@ -9223,7 +9287,11 @@ Sample success responses `XML` format
 
 ##### 5.1.8.8 ResetDisk
 
-Restores a disk to a specific point in time from a snapshot of the disk. When you call this operation, take note of the following items: The disk must be in the In Use (In_Use) state. The instance to which the disk is attached must be in the Stopped (Stopped) state. The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter. When you call the DescribeInstances operation to query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance.
+Restores a disk to a specific point in time from a snapshot of the disk.
+
+**Description**
+
+When you call this operation, take note of the following items: The disk must be in the In Use (In_Use) state. The instance to which the disk is attached must be in the Stopped (Stopped) state. The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter. When you call the DescribeInstances operation to query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance.
 
 **Request parameters**
 
@@ -9534,7 +9602,11 @@ Ecs 2014-05-26
 
 ##### 5.1.8.11 DeleteDisk
 
-Releases a data disk. When you call this operation to release a data disk, take note of the following items: Manual snapshots of the disk are retained. You can call the ModifyDiskAttribute operation to configure whether to retain automatic snapshots of the disk or release them along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots. The disk must be in the Unattached (Available) state. If the specified DiskId parameter does not exist, the request is ignored.
+Releases a data disk.
+
+**Description**
+
+When you call this operation to release a data disk, take note of the following items: Manual snapshots of the disk are retained. You can call the ModifyDiskAttribute operation to configure whether to retain automatic snapshots of the disk or release them along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots. The disk must be in the Unattached (Available) state. If the specified DiskId parameter does not exist, the request is ignored.
 
 **Request parameters**
 
@@ -9597,7 +9669,11 @@ Sample success responses `XML` format
 
 ##### 5.1.9.1 CreateSnapshot
 
-Creates a snapshot for a disk. In the following scenarios, snapshots cannot be created for a disk: The number of manual snapshots of the disk has reached 256. A snapshot is being created for the disk. The Elastic Compute Service (ECS) instance to which the disk is attached has never been started. The instance to which the disk is attached is not in the **Stopped** ( `Stopped` ) or **Running** ( `Running` ) state. If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it. When you create a snapshot, take note of the following items: About 1 hour after an instance is created or the system disk of an instance is replaced, you can create a snapshot for a disk that is attached to the instance. After a data disk is attached to an instance, you must wait a period of time before you can create a snapshot for the data disk. The amount of time to wait depends on the volume of data stored on the disk. If a snapshot is being created, this snapshot cannot be used to create a custom image by calling the CreateImage operation. If the disk for which you want to create a snapshot is attached to an ECS instance, do not change the instance state during snapshot creation.
+Creates a snapshot for a disk.
+
+**Description**
+
+In the following scenarios, snapshots cannot be created for a disk: The number of manual snapshots of the disk has reached 256. A snapshot is being created for the disk. The Elastic Compute Service (ECS) instance to which the disk is attached has never been started. The instance to which the disk is attached is not in the **Stopped** ( `Stopped` ) or **Running** ( `Running` ) state. If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it. When you create a snapshot, take note of the following items: About 1 hour after an instance is created or the system disk of an instance is replaced, you can create a snapshot for a disk that is attached to the instance. After a data disk is attached to an instance, you must wait a period of time before you can create a snapshot for the data disk. The amount of time to wait depends on the volume of data stored on the disk. If a snapshot is being created, this snapshot cannot be used to create a custom image by calling the CreateImage operation. If the disk for which you want to create a snapshot is attached to an ECS instance, do not change the instance state during snapshot creation.
 
 **Request parameters**
 
@@ -9898,7 +9974,11 @@ Sample success responses `XML` format
 
 ##### 5.1.9.3 DeleteSnapshot
 
-Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled. When you call this operation, take note of the following items: If the specified snapshot does not exist, the request is ignored. A snapshot that has already been used to create custom images cannot be deleted. You must call the DeleteImage operation to delete the custom images before you can delete the snapshot. If the specified snapshot has been used to create disks and the `Force` parameter is not specified or is set to `false` , the snapshot cannot be deleted directly. If you want to delete the snapshot, set the `Force` parameter to true to forcefully delete the snapshot. The disks created from the snapshot cannot be re-initialized after the snapshot is forcefully deleted.
+Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled.
+
+**Description**
+
+When you call this operation, take note of the following items: If the specified snapshot does not exist, the request is ignored. A snapshot that has already been used to create custom images cannot be deleted. You must call the DeleteImage operation to delete the custom images before you can delete the snapshot. If the specified snapshot has been used to create disks and the `Force` parameter is not specified or is set to `false` , the snapshot cannot be deleted directly. If you want to delete the snapshot, set the `Force` parameter to true to forcefully delete the snapshot. The disks created from the snapshot cannot be re-initialized after the snapshot is forcefully deleted.
 
 **Request parameters**
 
@@ -9955,7 +10035,11 @@ Sample success responses `XML` format
 
 ##### 5.1.9.4 CopySnapshot
 
-You can call this operation to copy a normal snapshot from one region to another. When you call this operation, take note of the following items: New snapshots, which are the copies of source snapshots, cannot be used to roll back the disks for which the source snapshots were created. Encrypted snapshots cannot be copied. Local snapshots cannot be copied.
+You can call this operation to copy a normal snapshot from one region to another.
+
+**Description**
+
+When you call this operation, take note of the following items: New snapshots, which are the copies of source snapshots, cannot be used to roll back the disks for which the source snapshots were created. Encrypted snapshots cannot be copied. Local snapshots cannot be copied.
 
 **Request parameters**
 
@@ -10226,7 +10310,11 @@ Sample success responses `XML` format
 
 ##### 5.1.9.7 CreateAutoSnapshotPolicy
 
-You can call this operation to create an automatic snapshot policy. After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to disks. You can also call the ModifyAutoSnapshotPolicyEx operation to modify the automatic snapshot policy. When you call this operation, take note of the following items: A maximum of 100 automatic snapshot policies can be created in each region per Apsara Stack tenant account. If an automatic snapshot is being created when the time scheduled for a new automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, an automatic snapshot policy is applied to a disk that contains a large volume of data, and the policy specifies that snapshots are created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00. The snapshot creation process takes 80 minutes and ends at 10:20. The system skips the automatic snapshot task scheduled for 10:00 and creates the next automatic snapshot for the disk at 11:00.
+You can call this operation to create an automatic snapshot policy.
+
+**Description**
+
+After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to disks. You can also call the ModifyAutoSnapshotPolicyEx operation to modify the automatic snapshot policy. When you call this operation, take note of the following items: A maximum of 100 automatic snapshot policies can be created in each region per Apsara Stack tenant account. If an automatic snapshot is being created when the time scheduled for a new automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, an automatic snapshot policy is applied to a disk that contains a large volume of data, and the policy specifies that snapshots are created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00. The snapshot creation process takes 80 minutes and ends at 10:20. The system skips the automatic snapshot task scheduled for 10:00 and creates the next automatic snapshot for the disk at 11:00.
 
 **Request parameters**
 
@@ -10701,7 +10789,11 @@ Sample success responses `XML` format
 
 ##### 5.1.9.14 CreateSnapshotGroup
 
-Creates a snapshot-consistent group for the disks in an Elastic Compute Service (ECS) instance. A snapshot-consistent group can contain snapshots of one or more disks. When you call this operation, take note of the following items: The disk for which you want to create a snapshot must be in the **Running** ( `Running` ) or
+Creates a snapshot-consistent group for the disks in an Elastic Compute Service (ECS) instance. A snapshot-consistent group can contain snapshots of one or more disks.
+
+**Description**
+
+When you call this operation, take note of the following items: The disk for which you want to create a snapshot must be in the **Running** ( `Running` ) or
 **Unattached** ( `Available` ) state.
 
 | g ( | Running |   |
@@ -10922,7 +11014,11 @@ Sample success responses `XML` format
 
 ##### 5.1.9.16 DeleteSnapshotGroup
 
-Deletes a snapshot-consistent group. If you have custom images that were created from a disk snapshot contained in a snapshotconsistent group, the disk snapshot is retained when the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the DeleteImage operation to delete the custom images. Then, you can call the DeleteSnapshot operation to delete the disk snapshot.
+Deletes a snapshot-consistent group.
+
+**Description**
+
+If you have custom images that were created from a disk snapshot contained in a snapshotconsistent group, the disk snapshot is retained when the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the DeleteImage operation to delete the custom images. Then, you can call the DeleteSnapshot operation to delete the disk snapshot.
 
 **Request parameters**
 
@@ -11562,7 +11658,11 @@ Sample success responses `XML` format
 
 ##### 5.1.10.5 CopyImage
 
-You can call this operation to copy a custom image from one region to another. You can deploy or copy instances across regions by copying images. You can use the image copy to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk) in the destination region. When you call this operation, take note of the following items: Only custom images that are in the Available ( `Available` ) state can be copied. You can copy only the images in your Apsara Stack tenant account. Images cannot be copied across accounts. When an image is being copied, you cannot delete the image copy by calling the DeleteImage operation, but you can cancel the copy task by calling the CancelCopyImage operation.
+You can call this operation to copy a custom image from one region to another. You can deploy or copy instances across regions by copying images.
+
+**Description**
+
+You can use the image copy to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk) in the destination region. When you call this operation, take note of the following items: Only custom images that are in the Available ( `Available` ) state can be copied. You can copy only the images in your Apsara Stack tenant account. Images cannot be copied across accounts. When an image is being copied, you cannot delete the image copy by calling the DeleteImage operation, but you can cancel the copy task by calling the CancelCopyImage operation.
 
 **Request parameters**
 
@@ -11655,7 +11755,11 @@ Sample success responses `XML` format
 
 ##### 5.1.10.6 CancelCopyImage
 
-You can call this operation to cancel an ongoing image copy (CopyImage) task. When you call this operation, take note of the following items: After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged. If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
+You can call this operation to cancel an ongoing image copy (CopyImage) task.
+
+**Description**
+
+When you call this operation, take note of the following items: After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged. If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
 
 **Request parameters**
 
@@ -11715,7 +11819,11 @@ Sample success responses `XML` format
 
 ##### 5.1.10.7 ModifyImageSharePermission
 
-Manages the share permission on a custom image. After you share a custom image to another Apsara Stack tenant account, the account can use the shared image to create Elastic Compute Service (ECS) instances (RunInstances) or replace the system disks of ECS instances (ReplaceSystemDisk). When you call this operation, take note of the following items: You can share only your own custom images to other Apsara Stack tenant accounts. A custom image can be shared to up to 10 Apsara Stack tenant accounts at a time. You can specify up to 10 Apsara Stack tenant account IDs in the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter is ignored. A single custom image can be shared to up to 50 Apsara Stack tenant accounts. If an instance was created (RunInstances) from a shared image, the system disk of this instance cannot be re-initialized (ReInitDisk) after the image owner unshares or deletes the image (DeleteImage).
+Manages the share permission on a custom image. After you share a custom image to another Apsara Stack tenant account, the account can use the shared image to create Elastic Compute Service (ECS) instances (RunInstances) or replace the system disks of ECS instances (ReplaceSystemDisk).
+
+**Description**
+
+When you call this operation, take note of the following items: You can share only your own custom images to other Apsara Stack tenant accounts. A custom image can be shared to up to 10 Apsara Stack tenant accounts at a time. You can specify up to 10 Apsara Stack tenant account IDs in the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter is ignored. A single custom image can be shared to up to 50 Apsara Stack tenant accounts. If an instance was created (RunInstances) from a shared image, the system disk of this instance cannot be re-initialized (ReInitDisk) after the image owner unshares or deletes the image (DeleteImage).
 
 **Request parameters**
 
@@ -12043,7 +12151,11 @@ Sample success responses `XML` format
 
 ##### 5.1.10.10 ExportImage
 
-You can call this operation to export a custom image to an OSS bucket in the same region. A custom image cannot be exported if it contains more than four data disk snapshots or if one of the data disk snapshots exceeds 500 GiB in size. Before you export a custom image, you must use Resource Access Management (RAM) to create a RAM role for ECS and authorize ECS to write data to OSS.
+You can call this operation to export a custom image to an OSS bucket in the same region.
+
+**Description**
+
+A custom image cannot be exported if it contains more than four data disk snapshots or if one of the data disk snapshots exceeds 500 GiB in size. Before you export a custom image, you must use Resource Access Management (RAM) to create a RAM role for ECS and authorize ECS to write data to OSS.
 1. Create a role named `AliyunECSImageExportDefaultRole` . Any other role names are invalid.
 Configure the following trust policy for the role: `{`
 
@@ -13228,7 +13340,11 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 5.1.12.5 LeaveSecurityGroup
 
-You can call this operation to remove an ECS instance from a security group. When you call this operation, take note of the following items: Before you remove an ECS instance from a security group, make sure that the instance is in the
+You can call this operation to remove an ECS instance from a security group.
+
+**Description**
+
+When you call this operation, take note of the following items: Before you remove an ECS instance from a security group, make sure that the instance is in the
 **Stopped** (Stopped) or **Running** (Running) state.
 An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails.
 
@@ -13648,7 +13764,11 @@ Id"
 
 ##### 5.1.12.8 DescribeSecurityGroups
 
-Queries the basic information about security groups. The basic information about security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs. When you use Alibaba Cloud CLI to call an API operation, you must specify request parameters of different data types in required formats.
+Queries the basic information about security groups.
+
+**Description**
+
+The basic information about security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs. When you use Alibaba Cloud CLI to call an API operation, you must specify request parameters of different data types in required formats.
 
 **Request parameters**
 
@@ -13764,7 +13884,11 @@ Sample success responses `XML` format
 
 ##### 5.1.12.9 DescribeSecurityGroupReferences
 
-You can call this operation to query whether one or more security groups are referenced by rules of other security groups. When you call this operation, take note of the following items: Security group-level authorization includes authorization for inbound and outbound traffic. A maximum of 100 entries can be returned each time. If you fail to delete a security group by calling the DeleteSecurityGroup operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. If the security group is referenced by a rule of another security group, you must remove the reference before you can delete the security group.
+You can call this operation to query whether one or more security groups are referenced by rules of other security groups.
+
+**Description**
+
+When you call this operation, take note of the following items: Security group-level authorization includes authorization for inbound and outbound traffic. A maximum of 100 entries can be returned each time. If you fail to delete a security group by calling the DeleteSecurityGroup operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. If the security group is referenced by a rule of another security group, you must remove the reference before you can delete the security group.
 
 **Request parameters**
 
@@ -13859,7 +13983,11 @@ Sample success responses `XML` format
 
 ##### 5.1.12.10 RevokeSecurityGroup
 
-Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed. In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination. You can delete a specific inbound rule by specifying one of the following groups of parameters. However, you cannot delete the security group rule by specifying only one of the parameters in a group. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an inbound security group rule that controls access from a specified security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. If the security group rule to be deleted does not exist, the RevokeSecurityGroup operation succeeds but no rule is deleted.
+Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+
+**Description**
+
+In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination. You can delete a specific inbound rule by specifying one of the following groups of parameters. However, you cannot delete the security group rule by specifying only one of the parameters in a group. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an inbound security group rule that controls access from a specified security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. If the security group rule to be deleted does not exist, the RevokeSecurityGroup operation succeeds but no rule is deleted.
 
 **Request headers**
 
@@ -14036,6 +14164,8 @@ The RevokeSecurityGroupEgress operation does not have specific request headers a
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE***** | The request ID. |
+
+**Example**
 
 Wxample for request
 
@@ -14446,7 +14576,11 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 5.1.13.1 CreateKeyPair
 
-You can call this operation to create an SSH key pair. Apsara Stack stores the public key and returns the unencrypted private key. The private key is PEM-encoded in the PKCS#8 format. You must securely lock away the private key on your own. In addition to calling CreateKeyPair, you can create a key pair by using other key pair generation tools and call ImportKeyPair to upload the key pair to a region. You have a maximum of 500 key pairs in each region.
+You can call this operation to create an SSH key pair. Apsara Stack stores the public key and returns the unencrypted private key. The private key is PEM-encoded in the PKCS#8 format. You must securely lock away the private key on your own.
+
+**Description**
+
+In addition to calling CreateKeyPair, you can create a key pair by using other key pair generation tools and call ImportKeyPair to upload the key pair to a region. You have a maximum of 500 key pairs in each region.
 
 **Request parameters**
 
@@ -14519,7 +14653,11 @@ Sample success responses `XML` format
 
 ##### 5.1.13.2 AttachKeyPair
 
-Binds an SSH key pair to one or more Linux instances. When you call this operation, consider the following items: Windows instances do not support SSH key pairs. After an SSH key pair is attached to an ECS instance that uses password authentication, the password authentication method might be disabled. If an instance is in the Running state, you must restart the instance (RebootInstance) for the SSH key pair to take effect. If an instance is in the Stopped state, you must start the instance (StartInstance) for the SSH key pair to take effect. If an instance is already bound to an SSH key pair, the new SSH key pair will replace the original one.
+Binds an SSH key pair to one or more Linux instances.
+
+**Description**
+
+When you call this operation, consider the following items: Windows instances do not support SSH key pairs. After an SSH key pair is attached to an ECS instance that uses password authentication, the password authentication method might be disabled. If an instance is in the Running state, you must restart the instance (RebootInstance) for the SSH key pair to take effect. If an instance is in the Stopped state, you must start the instance (StartInstance) for the SSH key pair to take effect. If an instance is already bound to an SSH key pair, the new SSH key pair will replace the original one.
 
 **Request headers**
 
@@ -14631,7 +14769,11 @@ Ecs 2014-05-26
 
 ##### 5.1.13.3 DetachKeyPair
 
-You can call this operation to detach an SSH key pair from one or more Linux instances. When you call this operation, take note of the following items: After you detach an SSH key pair from an instance, you must call the RebootInstance operation to restart the instance for the detach operation to take effect. By default, the username and password authentication method is used for an instance after you detach an SSH key pair from the instance.
+You can call this operation to detach an SSH key pair from one or more Linux instances.
+
+**Description**
+
+When you call this operation, take note of the following items: After you detach an SSH key pair from an instance, you must call the RebootInstance operation to restart the instance for the detach operation to take effect. By default, the username and password authentication method is used for an instance after you detach an SSH key pair from the instance.
 
 **Request parameters**
 
@@ -14739,7 +14881,11 @@ Sample success responses `XML` format
 
 ##### 5.1.13.4 DeleteKeyPairs
 
-You can call this operation to delete one or more SSH key pairs. After an SSH key pair is deleted: You cannot query the key pair by calling the DescribeKeyPairs operation. If the key pair was bound to one or more ECS instances: The key pair is no longer stored on Apsara Stack but the instances can still use the key pair. When you call the DescribeInstance operation to query instance information, the name of the key pair name (KeyPairNames) is still returned, but no other information about the key pair.
+You can call this operation to delete one or more SSH key pairs.
+
+**Description**
+
+After an SSH key pair is deleted: You cannot query the key pair by calling the DescribeKeyPairs operation. If the key pair was bound to one or more ECS instances: The key pair is no longer stored on Apsara Stack but the instances can still use the key pair. When you call the DescribeInstance operation to query instance information, the name of the key pair name (KeyPairNames) is still returned, but no other information about the key pair.
 
 **Request parameters**
 
@@ -15101,7 +15247,11 @@ Sample success responses `XML` format
 
 ##### 5.1.14.2 AttachNetworkInterface
 
-You can call this operation to bind an elastic network interface (ENI) to an ECS instance in a VPC. When you call this operation, take note of the following items: The ENI must be in the **Available** ( `Available` ) state. Each ENI can be bound to a single instance. The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ). When you bind ENIs to instances of some instance types, the instances must be in the **Stopped** ( `Stopped` ) state.
+You can call this operation to bind an elastic network interface (ENI) to an ECS instance in a VPC.
+
+**Description**
+
+When you call this operation, take note of the following items: The ENI must be in the **Available** ( `Available` ) state. Each ENI can be bound to a single instance. The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ). When you bind ENIs to instances of some instance types, the instances must be in the **Stopped** ( `Stopped` ) state.
 
 > **Note:** If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be attached to the instance.
 
@@ -15187,7 +15337,11 @@ Sample success responses `XML` format
 
 ##### 5.1.14.3 AssignPrivateIpAddresses
 
-Assigns one or more secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that hosts the ENI. Alternatively, you can specify the number of private IP addresses for Elastic Compute Service (ECS) to automatically assign them. The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
+Assigns one or more secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that hosts the ENI. Alternatively, you can specify the number of private IP addresses for Elastic Compute Service (ECS) to automatically assign them.
+
+**Description**
+
+The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
 
 **Request parameters**
 
@@ -15281,7 +15435,11 @@ Sample success responses `XML` format
 
 ##### 5.1.14.4 UnassignPrivateIpAddresses
 
-You can call this operation to unassign one or more secondary private IP addresses from an elastic network interface (ENI). The ENI from which you want to unassign private IP addresses must be in the **Available** (Available) or **Bound** (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+You can call this operation to unassign one or more secondary private IP addresses from an elastic network interface (ENI).
+
+**Description**
+
+The ENI from which you want to unassign private IP addresses must be in the **Available** (Available) or **Bound** (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
 
 **Request parameters**
 
@@ -15362,7 +15520,11 @@ Sample success responses `XML` format
 
 ##### 5.1.14.5 DescribeNetworkInterfaces
 
-You can call this operation to query the list of elastic network interfaces (ENIs). `You can use one of the following methods to check` the responses returned by the DescribeNetworkInterfaces operation: Method 1: Use `NextToken` to configure the query token. Set the value of this parameter to the
+You can call this operation to query the list of elastic network interfaces (ENIs).
+
+**Description**
+
+`You can use one of the following methods to check` the responses returned by the DescribeNetworkInterfaces operation: Method 1: Use `NextToken` to configure the query token. Set the value of this parameter to the
 
 | NextToken |   |
 |---|---|
@@ -15607,7 +15769,11 @@ Sample success responses `XML` format
 
 ##### 5.1.14.6 DetachNetworkInterface
 
-You can call this operation to unbind an elastic network interface (ENI) from an ECS instance. When you call this operation, take note of the following items: The primary ENIs of ECS instances cannot be unbound. The ENI must be in the Detaching (Detaching) or Bound (InUse) state. The instance must be in the Running (Running) or Stopped (Stopped) state.
+You can call this operation to unbind an elastic network interface (ENI) from an ECS instance.
+
+**Description**
+
+When you call this operation, take note of the following items: The primary ENIs of ECS instances cannot be unbound. The ENI must be in the Detaching (Detaching) or Bound (InUse) state. The instance must be in the Running (Running) or Stopped (Stopped) state.
 
 **Request parameters**
 
@@ -16796,7 +16962,11 @@ Sample success responses `XML` format
 
 ##### 5.1.17.1 GetInstanceConsoleOutput
 
-You can call this operation to obtain the command output of an instance. The returned command output is encoded in Base64. ECS is a virtualized cloud-based service and cannot be connected to display devices. However, the command output for the last start, restart, or shutdown of each instance is cached. You can call GetInstanceConsoleOutput to obtain this information. You cannot obtain the command output of Windows instances.
+You can call this operation to obtain the command output of an instance. The returned command output is encoded in Base64.
+
+**Description**
+
+ECS is a virtualized cloud-based service and cannot be connected to display devices. However, the command output for the last start, restart, or shutdown of each instance is cached. You can call GetInstanceConsoleOutput to obtain this information. You cannot obtain the command output of Windows instances.
 
 **Request parameters**
 
@@ -16861,7 +17031,11 @@ Sample success responses `XML` format
 
 ##### 5.1.17.2 GetInstanceScreenshot
 
-You can call this operation to obtain screenshots of an instance. ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items: The instance must be in the Running state. If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
+You can call this operation to obtain screenshots of an instance.
+
+**Description**
+
+ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items: The instance must be in the Running state. If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
 
 **Request parameters**
 
@@ -16924,7 +17098,11 @@ Sample success responses `XML` format
 
 ##### 5.1.17.3 DescribeSnapshotMonitorData
 
-You can call this operation to query all monitoring data about snapshot size changes in a region over the past 30 days. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value
+You can call this operation to query all monitoring data about snapshot size changes in a region over the past 30 days.
+
+**Description**
+
+When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value
 
 | (EndTime − StartTime)/Period |   |   |
 |---|---|---|
@@ -17033,7 +17211,11 @@ Sample success responses `XML` format
 
 ##### 5.1.17.4 DescribeEniMonitorData
 
-You can call this operation to query all monitoring data about traffic on a secondary elastic network interface (ENI) over a specific period of time. The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and in the Available state, monitoring data about traffic on the ENI cannot be obtained. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: (EndTime − StartTime)/Period. You can query monitoring data from up to the past 30 days. If the value of StartTime is more than 30 days earlier than the current time, an error is returned.
+You can call this operation to query all monitoring data about traffic on a secondary elastic network interface (ENI) over a specific period of time.
+
+**Description**
+
+The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and in the Available state, monitoring data about traffic on the ENI cannot be obtained. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: (EndTime − StartTime)/Period. You can query monitoring data from up to the past 30 days. If the value of StartTime is more than 30 days earlier than the current time, an error is returned.
 
 **Request parameters**
 
@@ -17740,7 +17922,11 @@ Sample success responses `XML` format
 
 ##### 5.1.18.6 StopInvocation
 
-Stops the process of a Cloud Assistant command that is running on one or more Elastic Compute Service (ECS) instances. If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled. If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
+Stops the process of a Cloud Assistant command that is running on one or more Elastic Compute Service (ECS) instances.
+
+**Description**
+
+If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled. If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
 
 **Request parameters**
 
@@ -17936,7 +18122,11 @@ Sample success responses `XML` format
 
 ##### 5.1.18.8 DescribeInvocations
 
-Queries the list of tasks and execution status of Cloud Assistant commands. After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results. You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
+Queries the list of tasks and execution status of Cloud Assistant commands.
+
+**Description**
+
+After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results. You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
 
 **Request parameters**
 
@@ -18574,7 +18764,11 @@ $2}')</Content>
 
 ##### 5.1.19.1 AddTags
 
-You can call this operation to add or overwrite one or more tags on your ECS resources. You can add or overwrite tags on instances, disks, snapshots, images, and security groups to facilitate resource management. When you call this operation, take note of the following items: Up to 20 tags can be added to each ECS resource.
+You can call this operation to add or overwrite one or more tags on your ECS resources. You can add or overwrite tags on instances, disks, snapshots, images, and security groups to facilitate resource management.
+
+**Description**
+
+When you call this operation, take note of the following items: Up to 20 tags can be added to each ECS resource.
 
 | Tag.N.Value |   |   | based on th |   |
 |---|---|---|---|---|
@@ -18707,7 +18901,11 @@ Sample success responses `XML` format
 
 ##### 5.1.19.3 DescribeTags
 
-You can call this operation to query available tags. You can query tags by specifying filter conditions such as resource type, resource ID, tag key, and tag value. The specified filter conditions have logical AND relations. Only the tags that meet all the specified filter conditions are returned. If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
+You can call this operation to query available tags. You can query tags by specifying filter conditions such as resource type, resource ID, tag key, and tag value. The specified filter conditions have logical AND relations. Only the tags that meet all the specified filter conditions are returned.
+
+**Description**
+
+If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
 
 **Request parameters**
 
@@ -18816,7 +19014,11 @@ Sample success responses `XML` format
 
 ##### 5.1.19.4 TagResources
 
-You can call this operation to create and bind tags to specified ECS resources. Before you bind tags to a resource, the system checks the number of existing tags on the resource. An error message is returned if the maximum number of tags is reached.
+You can call this operation to create and bind tags to specified ECS resources.
+
+**Description**
+
+Before you bind tags to a resource, the system checks the number of existing tags on the resource. An error message is returned if the maximum number of tags is reached.
 
 **Request parameters**
 
@@ -18895,7 +19097,11 @@ Sample success responses `XML` format
 
 ##### 5.1.19.5 ListTagResources
 
-Queries the tags that are added to one or more Elastic Compute Service (ECS) resources and these ECS resources. You must specify at least one of the following parameters or parameter pairs in the request to determine a query object: the `ResourceId.N` parameter, the `Tag.N` parameter pair ( `Tag.N.Key` and `Tag.N.Value` ), and the `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N). If one of the following sets of request parameters is specified as filter conditions, the response contains only ECS resources that meet all these filter conditions: Set 1: `Tag.N.Key, Tag.N.Value` , and `ResourceId.N` Set 2: `TagFilter.N.TagKey and TagFilter.N.TagValues.N` , and `ResourceId.N`
+Queries the tags that are added to one or more Elastic Compute Service (ECS) resources and these ECS resources.
+
+**Description**
+
+You must specify at least one of the following parameters or parameter pairs in the request to determine a query object: the `ResourceId.N` parameter, the `Tag.N` parameter pair ( `Tag.N.Key` and `Tag.N.Value` ), and the `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N). If one of the following sets of request parameters is specified as filter conditions, the response contains only ECS resources that meet all these filter conditions: Set 1: `Tag.N.Key, Tag.N.Value` , and `ResourceId.N` Set 2: `TagFilter.N.TagKey and TagFilter.N.TagValues.N` , and `ResourceId.N`
 
 **Request parameters**
 
@@ -18931,6 +19137,8 @@ Queries the tags that are added to one or more Elastic Compute Service (ECS) res
 | TagKey | String | FinanceDeptKey | The tag key of the resource. |
 |---|---|---|---|
 | TagValue | String | FinanceDeptValue | The tag value of the resource. |
+
+**Example**
 
 Sample requests
 
@@ -19390,7 +19598,11 @@ Normal response example `JSON` format `{`
 
 ##### 5.1.20.3 CancelTask
 
-You can call this operation to cancel a running task. You can call this operation to cancel the following tasks: Image import (ImportImage) Image export (ExportImage)
+You can call this operation to cancel a running task.
+
+**Description**
+
+You can call this operation to cancel the following tasks: Image import (ImportImage) Image export (ExportImage)
 
 **Request parameters**
 

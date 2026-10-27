@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 68
 source_pdf: "a014db00a23569aa_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260828
@@ -189,6 +189,8 @@ add remarks and click **Add Remark** in the **Actions** column.
 **Remark** field and click **OK**.
 
 **Delete a domain name**
+
+**Note**
 
 When a domain name is deleted, all its DNS records are also deleted. Proceed with caution.
 1. (Method 1) On the **Global Internal Domain Name** page, find the domain name that you
@@ -910,6 +912,8 @@ On the **Private Line** page, you can view the information about the added priva
 2. In the dialog box that appears, configure the **Sorting Method** parameter and click **OK**.
 
 **Delete a line**
+
+**Note**
 
 Before you delete a line, make sure that no scheduling instance is associated with the line.
 1. Method 1: On the **Private Line** page, find the line that you want to delete and click **Delete**

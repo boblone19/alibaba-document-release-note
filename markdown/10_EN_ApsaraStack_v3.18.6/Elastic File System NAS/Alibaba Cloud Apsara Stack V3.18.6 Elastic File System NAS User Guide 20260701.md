@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 42
 source_pdf: "efc8fa3846efea39_Alibaba Cloud Apsara Stack V3.18.6 Elastic File System NAS User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%98%BF%E9%87%8C%E4%BA%91%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20EFS-NAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20File%20System%20NAS%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Elastic File System NAS User Guide 20260701
@@ -77,6 +77,9 @@ This topic describes how to log in to the Elastic File Storage-File Storage NAS 
 **Prerequisites**
 
 You have obtained the service domain name for the Apsara Uni-manager Management Console from the deployment personnel. Use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter.
 
@@ -89,6 +92,9 @@ manager Management Console and press Enter.
 
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
+
+**Note**
+
 The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
 
 > The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
@@ -114,6 +120,9 @@ Enter the six-digit MFA code and click **Authenticate**.
 ### 3.2 Create a file system
 
 This topic describes how to create a file system in the Apsara Stack Elastic File Storage-File Storage NAS (EFS-NAS) console.
+
+**Procedure**
+
 1. Log in to the EFS-NAS console.
 2. On the **File System Management** page, click **Create File System**.
 3. On the **Create File System** page, configure the following parameters.
@@ -137,6 +146,9 @@ information, see the **Quota management** topic in User Guide - Apsara Uni-manag
 ### 3.3 Create a user
 
 This topic describes how to create a user.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the left-side navigation pane, click **User Group**.
 3. Click **Create User** above the list and configure the following parameters.
@@ -218,6 +230,8 @@ After you create a Network File System (NFS) share, you can use a mount target t
 
 A file system is created. For more information, see Create a file system. An NFS share is created. For more information, see Create an NFS share.
 
+**Procedure**
+
 **Step 1: Install an NFS client**
 
 Before you mount an NFS file system on a Linux Elastic Compute Service (ECS) instance, you must install an NFS client. If an NFS client is installed, skip this step.
@@ -280,6 +294,9 @@ After you create a Server Message Block (SMB) share, you can use a mount target 
 **Prerequisites**
 
 A file system is created. For more information, see Create a file system. An SMB share is created. For more information, see Create an SMB share.
+
+**Procedure**
+
 1. Log in to a Windows ECS instance. For more information, see the **Connect to an instance**
 section of the **Get started** topic in **ECS User Guide**.
 2. Start the following services on the Windows host:
@@ -316,6 +333,9 @@ system on the ECS instance.
 **about a file system**
 
 This topic describes how to view the detailed information about a file system.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. The file system list displays the basic information about each file system, including the
 status, usage and total capacity, cluster, storage type, label, NFS version, organization and resource set, creator, and creation time.
@@ -325,6 +345,9 @@ details page. On the details page, you can view NFS and SMB shares. For more inf
 ### 4.2 Resize a file system
 
 This topic describes how to resize a file system.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the file system list, click the
 icon in the Operation column of the target file system and click **Modify Total Capacity**.
@@ -342,6 +365,8 @@ This topic describes how to delete a file system.
 **Prerequisites**
 
 The file system that you want to delete is unmounted from the mount target of the corresponding computing node, such as an Elastic Compute Service (ECS) instance. All shares are deleted.
+
+**Procedure**
 
 > **Warning:** After you delete a file system, the file system can no longer be restored. Proceed with caution and back up the data in the file system before you begin.
 
@@ -579,6 +604,9 @@ recycle bin. The application log files that are automatically rotated. For examp
 ### 6.1 Enable the recycle bin feature
 
 After you enable the recycle bin feature, deleted files are automatically added to the recycle bin. If you configure a retention policy, files in the recycle bin are permanently deleted when the specified retention period ends.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the left-side navigation pane, click **Recycle Bin**.
 3. Click **Enable** in the upper-left corner. In the **Enable Recycle Bin** dialog box, configure the
@@ -602,6 +630,9 @@ You can restore files from the recycle bin within the retention period that you 
 **Usage notes**
 
 You can restore only one file or directory in a single restore operation. If you restore a specified directory, all files in the directory are recursively restored. After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the left-side navigation pane, click **Recycle Bin**.
 3. Click the ID of a file system to go to the **Recycle Bin Details** page.
@@ -639,6 +670,9 @@ Elastic File Storage-File Storage NAS (EFS-NAS) supports normal snapshots and sc
 **Usage notes**
 
 A file system can have no more than 16 path levels. The path length of a normal snapshot must not exceed 4096, and the path length of a scheduled snapshot must not exceed 4047. We recommend that you retain 128 snapshots for a single file system. A maximum of 2,048 snapshots can be created. A maximum of 8,192 snapshots can be created for all file systems. If no snapshots are created for a file system, you cannot create another snapshot for the file system. We recommend that you create snapshots at an interval of more than 10 minutes. A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot. You can associate a maximum of eight scheduled snapshot policies with a single file system.If you associate different scheduled snapshot policies with a single file system,all the associated scheduled snapshot policies take effect on the file system.
+
+**Procedure**
+
 1. Log in to the EFS-NAS console.
 2. In the left-side navigation pane, click **Snapshot**.
 3. On the **Directory Snapshot** tab of the **Snapshot** page, click **Create Snapshot**.
@@ -706,6 +740,9 @@ You can create a scheduled snapshot policy and then associate it with a file sys
 **Usage notes**
 
 You can create a maximum of 128 scheduled snapshot policies. You can associate a maximum of eight scheduled snapshot policies with a single file system. Scheduled snapshot policies can be applied to any file systems within the selected organization, resource set, and region. Before you configure a policy, assess the cluster storage capacity and backup needs to avoid resource waste or performance degradation.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the left-side navigation pane, click **Snapshot**.
 3. On the **Scheduled Snapshot Policy** tab of the **Snapshot** page, click **Create**
@@ -791,6 +828,9 @@ After you enable a Write Once Read Many (WORM) policy for a file system, you can
 **Usage notes**
 
 The protection periods of WORM can only be extended. You cannot shorten the protection periods.
+
+**Procedure**
+
 1. Log in to the Elastic File Storage-File Storage NAS (EFS-NAS) console.
 2. In the left-side navigation tree, click **WORM Strategy**.
 3. In the WORM policy list, click **Modify** in the **Operation** column of a file system.

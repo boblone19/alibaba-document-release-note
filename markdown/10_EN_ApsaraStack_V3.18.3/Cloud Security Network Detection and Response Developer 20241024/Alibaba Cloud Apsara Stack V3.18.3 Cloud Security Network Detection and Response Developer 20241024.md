@@ -5,7 +5,7 @@ doc_version: "20241024"
 pdf_pages: 121
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Network Detection and Response Developer 20241024.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Security%20Network%20Detection%20and%20Response%20Developer%2020241024.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Network Detection and Response Developer 20241024
@@ -519,7 +519,11 @@ API responses use the HTTP response format: A 2xx status code indicates a succes
 
 #### 4.1.1 Request structure
 
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests.
+
+**Description**
+
+You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -720,6 +724,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | - PlaybookStatu s | Integer | 1 | Whether the process has been published before: 1: posted. 0: has not been published. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -901,6 +907,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | PageNumber | Integer | 10 | The amount of data returned on each page. |
 | TotalCount | Integer | 50 | The total amount of data. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -978,6 +986,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | RequestId | String | 913BE26B-F9CC- 4A84-8CEC- 190E4BADD246 | The ID of the call. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -1020,6 +1030,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | RequestId | String | 0E402C78-34DC- 4B2B-BB15- 73BB914172C1 | The request ID. |
 | RequestUuid | String | a5a60946-3ad4- 4e0d-92db- 500da9619793 | The UUID of the task that is generated when the playbook is run. You can stop the task or query the result of the task by using the UUID. |
+
+**Examples**
 
 `JSON` format
 
@@ -1095,6 +1107,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | PageNumber | Integer | 10 | The number of entries returned on each page. |
 | TotalCount | Integer | 50 | The total amount of data. |
+
+**Examples**
 
 `JSON` format
 
@@ -1273,6 +1287,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | PageNumber | Integer | 1 | Indicates the page number of the returned page. |
 | TotalCount | Integer | 50 | The total amount of data. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -1348,6 +1364,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | RequestId | String | 3BB85AD2-E1D2- 45C5-B22B- 949CBC9BD98B | The request ID. |
 | Id | Long | 2 | The ID of the case. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -1398,6 +1416,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | RequestId | String | 3BB85AD2-E1D2- 45C5-B22B- 949CBC9BD98B | The request ID. |
 | Id | Long | 10 | The ID of the blocking result. |
+
+**Examples**
 
 `JSON` format
 
@@ -1482,6 +1502,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | PageNumber | Long | 1 | The page number of the returned page. |
 | PageSize | Long | 10 | The number of entries per page. |
 | TotalCount | Long | 100 | The total number of namespaces returned. |
+
+**Examples**
 
 `JSON` format
 
@@ -1634,6 +1656,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | - OnlineExecute Mode | String | one | Online process trigger mode: one: manual triggering. mul: timing trigger. strema: streaming trigger. |
 | - OutputParams | String | {"ip":"***"} | The output data of the process. |
 | -RightLevel | String |   |   |
+
+**Examples**
 
 `JSON` format
 
@@ -1901,6 +1925,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | RequestId | String | C8242F6C-F6E9- 491C-AA00- D619224268ED | The request ID. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -1942,6 +1968,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | RequestId | String | 913BE26B-F9CC- 4A84-8CEC- 190E4BADD246 | The ID of the call. |
+
+**Examples**
 
 `JSON` format
 
@@ -1988,6 +2016,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | TriggerUuid | String | a5a60946-3ad4- 4e0d-92db- 500da9619793 | The UUID of the task that is generated when the playbook is run. You can stop the task or query the result of the task by using the UUID. |
+
+**Examples**
 
 `JSON` format
 
@@ -2043,6 +2073,8 @@ The CreateBackupPlan operation does not have operation-specific request headers 
 |---|---|---|---|
 | RequestId | String | 8277EDCA-9E03- 4102-867E- E346E280865C | The request ID. |
 
+**Examples**
+
 `JSON` format
 
 ```
@@ -2090,6 +2122,8 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 |---|---|---|---|
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
+
+**Examples**
 
 Sample requests
 
@@ -2145,6 +2179,8 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2199,6 +2235,8 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2251,6 +2289,8 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 |---|---|---|---|
+
+**Examples**
 
 Sample requests
 
@@ -2321,6 +2361,8 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 | └└IpType | String | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 | └Count | Number | 5 | The number of entries returned. |
 | └Module | String | dispatch rule _ | The name of the process for this request. Default value: dispatch rule. _ |
+
+**Examples**
 
 Sample requests
 
@@ -2430,6 +2472,8 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 | └└IpType | String | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses 6: IPv6 addresses |
 | └Count | Number | 5 | The number of entries returned. |
 | └Module | String | dispatch rule _ | The name of the process for this request. Default value: dispatch rule. _ |
+
+**Examples**
 
 Sample requests
 
@@ -2567,6 +2611,8 @@ Queries the details of the application-layer rules that are used to block traffi
 | Success | Boolean | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 | TotalCount | Integer | 10 | The total number of entries returned. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2682,6 +2728,8 @@ Changes the status of application-layer rules.
 | RequestId | String | CFE6DXXX-XXX- XXXX-XXXX- 99XX99XX99XX | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2735,6 +2783,8 @@ Creates an HTTP rule.
 | RequestId | String | CFE6DXXX-XXX- XXXX-XXXX- 99XX99XX99XX | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2781,6 +2831,8 @@ Deletes application-layer rules.
 | RequestId | String | CFE6DXXX-XXX- XXXX-XXXX- 99XX99XX99XX | The ID of the request. |
 |---|---|---|---|
 | Success | Boolean | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
+
+**Examples**
 
 Sample requests
 

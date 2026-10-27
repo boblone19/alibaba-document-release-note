@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 373
 source_pdf: "1e649a57cb95f10e_Secondary Edition) User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary/Secondary%20Edition%29%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/Secondary Edition) User Guide 20260831
@@ -1477,7 +1477,11 @@ Create an alert rule that triggers alerts for a cloud service based on specified
 
 **Background information**
 
-During its effective period, an alert rule checks at a default detection frequency if a metric exceeds the specified threshold. If a metric exceeds the threshold and becomes abnormal, an alert is sent to the specified alert contacts or other alert processing platforms. The minimum alert detection frequency is once per minute.
+During its effective period, an alert rule checks at a default detection frequency if a metric exceeds the specified threshold. If a metric exceeds the threshold and becomes abnormal, an alert is sent to the specified alert contacts or other alert processing platforms.
+
+**Note**
+
+The minimum alert detection frequency is once per minute.
 
 **Procedure**
 
@@ -1724,6 +1728,9 @@ After you enable TDE, you cannot disable TDE. You can enable TDE only when you c
 2. In the left-side navigation pane, choose Primary/Secondary Edition > Instances. On the **List**
 **of local disk instances** page, click **Create an instance** in the upper-right corner.
 3. On the page that appears, configure the required parameters and enable TDE.
+
+**Note**
+
 For more information about the parameters for creating an instance, see Create an instance.
 4. Click **Submit**.
 
@@ -5148,6 +5155,8 @@ Sample result:
  [0,0,0]
 (3 rows)
 ```
+
+**Note**
 
 In `val vector_ip_ops` , val is the column on which you want to create an index, and `vector_ip_ops` is the vector operator provided byPolarDB for PostgreSQL to calculate the similarities between vectors. This vector operator supports the calculation of dot product distance, cosine similarity, and Euclidean distance between vectors. `WITH (lists = 1)` indicates that only one region is created, which means that all vectors are assigned to the same region. In actual vector query scenarios, specify the number of regions based on the amount of data and query performance.
 
@@ -10047,7 +10056,6 @@ The following results show that the check objects pass the compatibility checks:
 >   --old-datadir=/var/lib/pgsql/13/data \
 >   --new-datadir=/var/lib/pgsql/14/data \
 >   --check
-
 Performing Consistency Checks ----------------------------- Checking cluster versions ok Checking database user is the install user ok Checking database connection settings ok Checking for prepared transactions ok Checking for system-defined composite types in user tables ok Checking for reg* data types in user tables ok Checking for contrib/isn with bigint-passing mismatch ok Checking for user-defined encoding conversions ok Checking for user-defined postfix operators ok Checking for incompatible polymorphic functions ok Checking for presence of required libraries ok Checking database user is the install user ok Checking for prepared transactions ok Checking for new cluster tablespace directories ok *Clusters are compatible*
 ```
 
@@ -10802,7 +10810,6 @@ The following result is returned: capabilities
 >   --old-datadir=/var/lib/pgsql/13/data \
 >   --new-datadir=/var/lib/pgsql/14/data \
 >   --check
-
 Performing Consistency Checks ----------------------------- Checking cluster versions ok Checking database user is the install user ok Checking database connection settings ok Checking for prepared transactions ok Checking for system-defined composite types in user tables ok Checking for reg* data types in user tables ok Checking for contrib/isn with bigint-passing mismatch ok Checking for user-defined encoding conversions ok Checking for user-defined postfix operators ok Checking for incompatible polymorphic functions ok Checking for presence of required libraries ok Checking database user is the install user ok Checking for prepared transactions ok Checking for new cluster tablespace directories ok *Clusters are compatible*
 ```
 

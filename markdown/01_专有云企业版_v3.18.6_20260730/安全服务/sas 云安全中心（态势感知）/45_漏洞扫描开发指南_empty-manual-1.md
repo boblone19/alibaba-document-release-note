@@ -5,14 +5,123 @@ doc_version: "20260729"
 pdf_pages: 215
 source_pdf: "45_漏洞扫描开发指南_empty-manual-1.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/sas/zh/empty-manual-1.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云安全中心（态势感知） 漏洞扫描开发指南
 
-## 快速入门
+## 目录
 
-### API调用流程说明
+- 1 快速入门
+  - 1.1 API调用流程说明
+  - 1.2 开发文档使用说明
+- 2 准备工作
+  - 2.1 登录开发者门户控制台
+  - 2.2 查看API信息
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取Endpoint
+- 3 调用示例
+  - 3.1 Python SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Python SDK
+      - 3.1.2.2 使用CommonRequest进行调用
+  - 3.2 Go SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Go SDK核心包
+      - 3.2.2.2 使用CommonRequest进行调用
+- 4 API公共参数
+- 5 漏洞扫描
+  - 5.1 任务模版相关接口
+    - 5.1.1 TemplateAssetDetectionAdd
+    - 5.1.2 TemplateListGetByType
+    - 5.1.3 TemplateRiskScanAdd
+    - 5.1.4 TemplateAssetDetectionDetail
+    - 5.1.5 GetAssetImportTaskInfo
+    - 5.1.6 GetRiskScanTaskTemplate
+    - 5.1.7 TemplateDelete
+    - 5.1.8 TemplateList
+    - 5.1.9 TemplateRiskScanDetail
+    - 5.1.10 TemplateWebMonitorConf
+    - 5.1.11 BasicRiskOption
+    - 5.1.12 GetCommonVulnItemList
+  - 5.2 任务相关接口
+    - 5.2.1 BatchStartTasks
+    - 5.2.2 TaskAssetScanCreate
+    - 5.2.3 TaskList
+    - 5.2.4 BatchStopTasks
+    - 5.2.5 BatchDeleteTasks
+    - 5.2.6 TaskProcessV2
+    - 5.2.7 TaskStart
+    - 5.2.8 TaskStop
+    - 5.2.9 BatchSuspendTasks
+    - 5.2.10 TaskProcess
+    - 5.2.11 TaskRestart
+    - 5.2.12 TaskDelete
+    - 5.2.13 TaskRiskScanDetail
+    - 5.2.14 GetAssetScanTaskInfo
+    - 5.2.15 TaskAssetImportDetail
+    - 5.2.16 TaskAssetScanDetail
+    - 5.2.17 TaskAssetImportChildDetail
+    - 5.2.18 CycleTaskAssetStats
+    - 5.2.19 TaskAssetScanCycleRunning
+    - 5.2.20 TaskAssetImport
+    - 5.2.21 TaskRiskScanCreate
+    - 5.2.22 TaskAssetImportDetailExists
+    - 5.2.23 TaskQueueTaskDetail
+    - 5.2.24 TaskAssetImportBaseInfo
+    - 5.2.25 TaskRiskScanCycleRunning
+    - 5.2.26 GetAssetRiskScanTaskInfo
+    - 5.2.27 BatchRestartTasks
+    - 5.2.28 TaskQueueTaskList
+    - 5.2.29 TaskQueueTaskInfo
+    - 5.2.30 TaskStatusStats
+    - 5.2.31 TaskQueueTaskListDetail
+    - 5.2.32 TaskRunTypeStats
+    - 5.2.33 TaskQueueTaskCount
+    - 5.2.34 SuspendStatus
+- 6 漏洞扫描V2
+  - 6.1 资产相关接口
+    - 6.1.1 主机资产
+      - 6.1.1.1 DescribeHostAssetList
+    - 6.1.2 网站资产
+      - 6.1.2.1 DescribeWebsiteAssetList
+    - 6.1.3 域名资产
+      - 6.1.3.1 DescribeDomainAssetList
+    - 6.1.4 DeleteAsset
+  - 6.2 任务相关接口
+    - 6.2.1 资产导入任务
+      - 6.2.1.1 CreateAssetImportTask
+      - 6.2.1.2 DescribeAssetImportTask
+      - 6.2.1.3 DescribeAssetImportTaskResult
+    - 6.2.2 资产扫描任务
+      - 6.2.2.1 CreateAssetScanTask
+      - 6.2.2.2 DescribeAssetScanTask
+    - 6.2.3 风险扫描任务
+      - 6.2.3.1 CreateRiskScanTask
+      - 6.2.3.2 DescribeRiskScanTask
+      - 6.2.3.3 DescribeRiskScanTaskResult
+    - 6.2.4 DescribeTaskList
+    - 6.2.5 StartTask
+    - 6.2.6 StopTask
+    - 6.2.7 SuspendTask
+    - 6.2.8 DeleteTask
+  - 6.3 风险相关接口
+    - 6.3.1 安全漏洞
+      - 6.3.1.1 DescribeRiskList
+    - 6.3.2 对外暴露
+      - 6.3.2.1 DescribeBaselineRiskList
+    - 6.3.3 合规漏洞
+      - 6.3.3.1 DescribeComplianceRiskList
+- 7 安全审计
+  - 7.1 GetData
+  - 7.2 LouauditCleanData
+
+## 1 快速入门
+
+### 1.1 API调用流程说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -33,7 +142,7 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### 开发文档使用说明
+### 1.2 开发文档使用说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍如何通过POP网关调用专有云API。
 
@@ -53,18 +162,20 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-` `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户控制台
+### 2.1 登录开发者门户控制台
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户控制台。
 
 **前提条件**
 
@@ -85,11 +196,11 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
+绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
 **启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 查看API信息
+### 2.2 查看API信息
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本，在通过SDK调用API接口时需要填写上述信息。
 
@@ -106,13 +217,13 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 4. 在左侧导航栏中选择目标云产品。在下方API列表中可浏览当前API版本中的所有API接口名称。若当前云
 产品存在多个API版本，可在**版本**下拉列表中，选择目标API版本。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
 **警告**
 
@@ -143,12 +254,12 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -188,11 +299,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -227,15 +343,16 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
-
-**说明**
-
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
@@ -293,24 +410,24 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取Endpoint
+`}`
+
+### 2.5 获取Endpoint
 
 本文介绍如何获取云盾各产品的Endpoint。
 
 **背景信息**
 
-通过POP网关调用API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。您也
+通过POP网关调用API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。您也可以通过如下方法自行获取Endpoint。
 
 **操作步骤**
 
 1. 登录飞天基础运维平台。
-2. 在顶部菜单栏，选择**产品运维** > **飞天基础运维平台**。
+2. 在顶部菜单栏，选择**产品运维** **>** **飞天基础运维平台**。
 3. 在左侧导航栏，单击**产品集群运维**。
-4. 在**产品** | **集群**搜索框输入sas-securityoperationscentercluster，单击**集群详情**。
+4. 在**产品** **|** **集群**搜索框输入sas-securityoperationscentercluster，单击**集群详情**。
 5. 在**服务列表**页签，单击服务名称。
 6. 在**组件列表**页点击 **yundun-soc**组件，单击**注册变量**，搜索yundunsoc.pop.endpoint，对应的值即
 为业务域的Endpoint。
@@ -320,17 +437,21 @@ AccessKeyID、AccessKeySecret。
 ${EndpointPre}.${global:region}.${global:internet-domain}
 ```
 
-## 调用示例
+## 3 调用示例
 
-### Python SDK调用示例
+### 3.1 Python SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -355,7 +476,7 @@ pip3 install aliyun-python-sdk-core-v3
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
 ```
 
 `request.set_domain('<your-endpoint>')//` 当前产品的服务地址
@@ -367,13 +488,13 @@ request.set_version('<API-version>')// 接口的版本 request.set_action_name('
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.1.2 使用手册
 
-##### 安装Python SDK
+##### 3.1.2.1 安装Python SDK
 
 本文档介绍如何安装及调用Python SDK。
 
-##### 使用CommonRequest进行调用
+##### 3.1.2.2 使用CommonRequest进行调用
 
 **CommonRequest调用特点**
 
@@ -381,6 +502,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：调用RPC风格的API**
@@ -394,15 +518,15 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### Go SDK调用示例
+### 3.2 Go SDK调用示例
 
-#### 快速开始
+#### 3.2.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -418,36 +542,44 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化Client实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-
-**说明**
-
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
 
 ```java
-package main "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
+package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.2.2 使用手册
+
+##### 3.2.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.2 使用CommonRequest进行调用
 
 **CommonRequest调用特点**
 
@@ -455,6 +587,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：使用RPC风格的API**
@@ -462,13 +597,13 @@ CommonRequest的特点如下：
 以下代码展示了如何使用CommonRequest的方式调用接口：
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -476,7 +611,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<YOUR-ENDPOINT>"// 当前产品实际的Endpoint
     request.Version = "<API-version>"// 接口的版本
@@ -486,12 +625,17 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-## API公共参数
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -513,11 +657,11 @@ your_access_key_secret}")
 
 API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
 
-## 漏洞扫描
+## 5 漏洞扫描
 
-### 任务模版相关接口
+### 5.1 任务模版相关接口
 
-#### TemplateAssetDetectionAdd
+#### 5.1.1 TemplateAssetDetectionAdd
 
 调用TemplateAssetDetectionAdd接口v3.1.0 add template asset detection api。
 
@@ -539,16 +683,16 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| alive port _ s | Strin g | Body | 否 |  | 探活端口。 |
+| alive port _ s | Strin g | Body | 否 |   | 探活端口。 |
 | baseline | Integ er | Body | 否 | 1 | 基线id。 |
 | baseline r _ ule | Integ er | Body | 否 | 1 | baseline。 |
-| custom p _ ort | Strin g | Body | 否 |  | 附加端口。 |
+| custom p _ ort | Strin g | Body | 否 |   | 附加端口。 |
 | disable su _ bdomain _ api | Integ er | Body | 否 | 1 | 子域名接口查询。 |
 | disable su _ bdomain _ dict | Integ er | Body | 否 | 1 | 子域名字典爆破。 |
-| exclude p _ orts | Strin g | Body | 否 |  | 排除端口。 |
+| exclude p _ orts | Strin g | Body | 否 |   | 排除端口。 |
 | icmp ech _ o | Integ er | Body | 否 | 1 | ICMP ECHO。 _ |
 
-| 漏洞扫描开发指 | 南·漏洞扫 | 描 |  |  |  |
+| 漏洞扫描开发指 | 南·漏洞扫 | 描 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -560,15 +704,15 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 | no status _ | Integ er | Body | 否 | 1 | asset scan。 |
 | port area _ | Strin g | Body | 否 | ALL | 端口范围。 |
 | retry time _ s | Integ er | Body | 否 | 1 | 重试次数。 |
-| scan spee _ d | Strin g | Body | 否 |  | 扫描速率。 |
+| scan spee _ d | Strin g | Body | 否 |   | 扫描速率。 |
 | sctp | Integ er | Body | 否 | 1 | SCTP。 |
-| spc ports _ | Strin g | Body | 否 |  |  |
+| spc ports _ | Strin g | Body | 否 |   |   |
 | sub doma _ in brute r _ _ ate | Integ er | Body | 否 | 1 | 子域名爆破速率。 |
 | sub doma _ in scan _ | Integ er | Body | 否 | 1 | 子域名查询。 |
 | tcp ack _ | Integ er | Body | 否 | 1 | TCP ACK。 _ |
 | tcp syn _ | Integ er | Body | 否 | 1 | TCP SYN。 _ |
 | udp | Integ er | Body | 否 | 1 | UDP。 |
-| vpc id _ | Strin g | Body | 否 |  | vpcID。 |
+| vpc id _ | Strin g | Body | 否 |   | vpcID。 |
 | wait time _ out | Integ er | Body | 否 | 1 | 3.4.1。 |
 
 **返回数据**
@@ -594,19 +738,24 @@ https://[Endpoint]/?Action=TemplateAssetDetectionAdd&RegionId=cnhangzhou&alive_p
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "data":1
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "data":1
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateAssetDetectionAddResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TemplateAssetDetectionAddResponse>
 ```
 
 **错误码**
@@ -614,9 +763,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateListGetByType
+#### 5.1.2 TemplateListGetByType
 
 调用TemplateListGetByType接口v3.1.0 get template by id。
 
@@ -644,21 +793,21 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
-| -create tm _ | Integer |  | 创建时间。 |
-| -creator | String |  | 创建者。 |
-| -id | Integer |  | id。 |
-| -is default _ | Integer |  | 是否默认。 |
-| -name | String |  | 模版名。 |
-| -org full id _ _ | String |  | Unknown。 |
-| -org id _ | String |  | Unknown。 |
+| data | Array |   |   |
+| -create tm _ | Integer |   | 创建时间。 |
+| -creator | String |   | 创建者。 |
+| -id | Integer |   | id。 |
+| -is default _ | Integer |   | 是否默认。 |
+| -name | String |   | 模版名。 |
+| -org full id _ _ | String |   | Unknown。 |
+| -org id _ | String |   | Unknown。 |
 
-|  |  |  |  | 漏洞扫描开发指南·漏洞扫描 |  |
+|   |   |   |   | 漏洞扫描开发指南·漏洞扫描 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -type | Integer |  | 模版类型。 |
+| -type | Integer |   | 模版类型。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 
 **示例**
@@ -671,11 +820,20 @@ https://[Endpoint]/?Action=TemplateListGetByType&RegionId=cn-hangzhou&template_t
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "creator":"",
             "create_tm":"",
             "org_id":"",
@@ -684,19 +842,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "is_default":"",
             "type":"",
             "org_full_id":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateListGetByTypeResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <create_tm></create_tm>
@@ -708,6 +859,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <org_id></org_id>
         <type></type>
     </data>
+</TemplateListGetByTypeResponse>
 ```
 
 **错误码**
@@ -715,9 +867,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateRiskScanAdd
+#### 5.1.3 TemplateRiskScanAdd
 
 调用TemplateRiskScanAdd接口v3.1.0 add risk_scan template api。
 
@@ -742,13 +894,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| advanced scan _ | Strin g | Body | 否 |  | 高级扫描配置。 |
-| basic sca _ n | Strin g | Body | 否 |  | 基础扫描配置。 |
-| emergent scan _ | Strin g | Body | 否 |  | 应急扫描配置。 |
-| exclude p _ orts | Strin g | Body | 否 |  | 排除端口。 |
+| advanced scan _ | Strin g | Body | 否 |   | 高级扫描配置。 |
+| basic sca _ n | Strin g | Body | 否 |   | 基础扫描配置。 |
+| emergent scan _ | Strin g | Body | 否 |   | 应急扫描配置。 |
+| exclude p _ orts | Strin g | Body | 否 |   | 排除端口。 |
 | name | Strin g | Body | 否 | 全量风险扫描模板 | 模版名称。 |
-| user agen _ t | Strin g | Body | 否 |  | user agent。 _ |
-| vpc id _ | Strin g | Body | 否 |  | vpcID。 |
+| user agen _ t | Strin g | Body | 否 |   | user agent。 _ |
+| vpc id _ | Strin g | Body | 否 |   | vpcID。 |
 
 **返回数据**
 
@@ -767,19 +919,24 @@ https://[Endpoint]/?Action=TemplateRiskScanAdd&RegionId=cnhangzhou&advanced_scan
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "data":1
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "data":1
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateRiskScanAddResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TemplateRiskScanAddResponse>
 ```
 
 **错误码**
@@ -787,9 +944,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateAssetDetectionDetail
+#### 5.1.4 TemplateAssetDetectionDetail
 
 调用TemplateAssetDetectionDetail接口v3.1.0 get template asset detection detail api。
 
@@ -821,41 +978,41 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| alive ports _ | String |  | 探活端口。 |
-| baseline id _ | Integer |  | 基线id。 |
-| baseline name _ | String |  | 基线名。 |
-| baseline rule _ | Integer |  | baseline。 |
-| custom port _ | String |  | 附加端口。 |
-| disable subdo _ main api _ | Integer |  | 子域名接口查询。 |
-| disable subdo _ main dict _ | Integer |  | 子域名字典爆破。 |
-| exclude ports _ | String |  | 排除端口。 |
-| icmp echo _ | Integer |  | ICMP ECHO。 _ |
-| inherit attrs _ | Integer |  | 自动同步资产信息。 |
-| ip2domain | Integer |  | ip反查域名。 |
-| ip scan _ | Integer |  | 自动导入关联ip。 |
-| name | String |  | 名称。 |
-| no status _ | Integer |  | asset scan。 |
-| opt | String |  | 选项。 |
-| port area _ | String |  | 端口范围。 |
-| retry times _ | Integer |  | 重试次数。 |
+| alive ports _ | String |   | 探活端口。 |
+| baseline id _ | Integer |   | 基线id。 |
+| baseline name _ | String |   | 基线名。 |
+| baseline rule _ | Integer |   | baseline。 |
+| custom port _ | String |   | 附加端口。 |
+| disable subdo _ main api _ | Integer |   | 子域名接口查询。 |
+| disable subdo _ main dict _ | Integer |   | 子域名字典爆破。 |
+| exclude ports _ | String |   | 排除端口。 |
+| icmp echo _ | Integer |   | ICMP ECHO。 _ |
+| inherit attrs _ | Integer |   | 自动同步资产信息。 |
+| ip2domain | Integer |   | ip反查域名。 |
+| ip scan _ | Integer |   | 自动导入关联ip。 |
+| name | String |   | 名称。 |
+| no status _ | Integer |   | asset scan。 |
+| opt | String |   | 选项。 |
+| port area _ | String |   | 端口范围。 |
+| retry times _ | Integer |   | 重试次数。 |
 
-| 漏洞扫描开发指南· | 漏洞扫描 |  |  |
+| 漏洞扫描开发指南· | 漏洞扫描 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| scan speed _ | String |  | 扫描速率。 |
-| sctp | Integer |  | SCTP。 |
-| sub domain b _ _ rute rate _ | Integer |  | 子域名爆破速率。 |
-| sub domain s _ _ can | Integer |  | 子域名查询。 |
-| target type _ | String |  | 目标类型。 |
-| tcp ack _ | Integer |  | TCP ACK。 _ |
-| tcp syn _ | Integer |  | TCP SYN。 _ |
-| type | String |  | 类型。 |
-| udp | Integer |  | UDP。 |
-| value | String |  | 值。 |
-| vpc id _ | String |  | vpcID。 |
-| wait timeout _ | Integer |  | 3.4.1。 |
+| scan speed _ | String |   | 扫描速率。 |
+| sctp | Integer |   | SCTP。 |
+| sub domain b _ _ rute rate _ | Integer |   | 子域名爆破速率。 |
+| sub domain s _ _ can | Integer |   | 子域名查询。 |
+| target type _ | String |   | 目标类型。 |
+| tcp ack _ | Integer |   | TCP ACK。 _ |
+| tcp syn _ | Integer |   | TCP SYN。 _ |
+| type | String |   | 类型。 |
+| udp | Integer |   | UDP。 |
+| value | String |   | 值。 |
+| vpc id _ | String |   | vpcID。 |
+| wait timeout _ | Integer |   | 3.4.1。 |
 
 **示例**
 
@@ -867,8 +1024,13 @@ https://[Endpoint]/?Action=TemplateAssetDetectionDetail&RegionId=cn-hangzhou&id=
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "alive_ports":"",
     "baseline_id":"",
@@ -899,13 +1061,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "value":"",
     "vpc_id":"",
     "wait_timeout":""
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateAssetDetectionDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <alive_ports></alive_ports>
     <baseline_id></baseline_id>
@@ -936,6 +1097,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <value></value>
     <vpc_id></vpc_id>
     <wait_timeout></wait_timeout>
+</TemplateAssetDetectionDetailResponse>
 ```
 
 **错误码**
@@ -943,9 +1105,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### GetAssetImportTaskInfo
+#### 5.1.5 GetAssetImportTaskInfo
 
 调用GetAssetImportTaskInfo接口v3.1.0 get asset_import task info api。
 
@@ -973,8 +1135,8 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| asset list _ | String |  | 资产列表 1.1.1.1。 |
-| tag names _ | String |  | 标签。 |
+| asset list _ | String |   | 资产列表 1.1.1.1。 |
+| tag names _ | String |   | 标签。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | group id _ | Integer | 1 | 组别id。 |
 | screen shot _ | Integer | 1 | 是否开启网站截图 enum[0:关闭\|1:开启]。 |
@@ -992,21 +1154,25 @@ https://[Endpoint]/?Action=GetAssetImportTaskInfo&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "group_id":1,
     "screen_shot":1,
     "staff_id":1,
     "task_name":"test",
     "template_id":1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetAssetImportTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <asset_list>
         <asset_list></asset_list>
@@ -1019,6 +1185,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     </tag_names>
     <task_name>test</task_name>
     <template_id>1</template_id>
+</GetAssetImportTaskInfoResponse>
 ```
 
 **错误码**
@@ -1026,9 +1193,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### GetRiskScanTaskTemplate
+#### 5.1.6 GetRiskScanTaskTemplate
 
 调用GetRiskScanTaskTemplate接口获取风险扫描任务运行时的模版信息。
 
@@ -1056,11 +1223,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| exclude ports _ | String |  | 排除端口。 |
+| exclude ports _ | String |   | 排除端口。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| advanced sca _ n | Map |  | 高级扫描。 |
-| basic scan _ | Map |  | 基础扫描。 |
-| emergent sca _ n | Map |  | 应急扫描。 |
+| advanced sca _ n | Map |   | 高级扫描。 |
+| basic scan _ | Map |   | 基础扫描。 |
+| emergent sca _ n | Map |   | 应急扫描。 |
 | name | String | 资产扫描模板-测试 | 名称。 |
 | user agent _ | String | xxx | UserAgent。 |
 
@@ -1074,25 +1241,29 @@ https://[Endpoint]/?Action=GetRiskScanTaskTemplate&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "advanced_scan":"",
     "basic_scan":"",
     "emergent_scan":"",
 ```
 
-`"name":"`资产扫描模板-测试`",`
+`"name":"`资产扫描模板`-`测试`",`
 
 ```json
     "user_agent":"xxx"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetRiskScanTaskTemplateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <advanced_scan></advanced_scan>
     <basic_scan></basic_scan>
@@ -1102,10 +1273,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
     </exclude_ports>
 ```
 
-`<name>`资产扫描模板-测试`</name>`
+`<name>`资产扫描模板`-`测试`</name>`
 
 ```xml
     <user_agent>xxx</user_agent>
+</GetRiskScanTaskTemplateResponse>
 ```
 
 **错误码**
@@ -1113,9 +1285,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateDelete
+#### 5.1.7 TemplateDelete
+
+调用TemplateDelete接口v3.1.0 delete template api。
 
 **授权信息**
 
@@ -1135,14 +1309,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| ids | Strin g | Body | 否 |  | 模版id列表 example: [85,86]。 |
+| ids | Strin g | Body | 否 |   | 模版id列表 example: [85,86]。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
+| status | String |   | 成功状态。 |
 
 **示例**
 
@@ -1154,29 +1328,32 @@ https://[Endpoint]/?Action=TemplateDelete&RegionId=cn-hangzhou&ids=
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateDeleteResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</TemplateDeleteResponse>
 ```
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateList
+#### 5.1.8 TemplateList
 
 调用TemplateList接口v3.1.0 list all task templates。
 
@@ -1203,23 +1380,23 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
 | search | Strin g | Body | 否 | 模版 | 搜索条件，支持模版名称的模糊查找。 |
 | start time _ | Strin g | Body | 否 | 2024-07-01 00:00:00 | 时间区间-开始。 |
-| template _ types | Strin g | Body | 否 |  | 模版类型 enum[1:资产风险扫描模板类型\|4:可用性监控模板\|5:资产扫描模板]。 |
+| template _ types | Strin g | Body | 否 |   | 模版类型 enum[1:资产风险扫描模板类型\|4:可用性监控模板\|5:资产扫描模板]。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
-| -create tm _ | Integer |  | 创建时间。 |
-| -creator | String |  | 创建者。 |
-| -id | Integer |  | id。 |
-| -is default _ | Integer |  | 是否默认。 |
-| -name | String |  | 模版名。 |
-| -org full id _ _ | String |  | Unknown。 |
-| -org id _ | String |  | Unknown。 |
-| -type | Integer |  | 模版类型。 |
+| results | Array |   |   |
+| -create tm _ | Integer |   | 创建时间。 |
+| -creator | String |   | 创建者。 |
+| -id | Integer |   | id。 |
+| -is default _ | Integer |   | 是否默认。 |
+| -name | String |   | 模版名。 |
+| -org full id _ _ | String |   | Unknown。 |
+| -org id _ | String |   | Unknown。 |
+| -type | Integer |   | 模版类型。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | 总数。 |
+| count | Integer |   | 总数。 |
 
 **示例**
 
@@ -1231,12 +1408,21 @@ https://[Endpoint]/?Action=TemplateList&RegionId=cn-hangzhou&end_time=2024-08-01
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "creator":"",
             "create_tm":"",
             "org_id":"",
@@ -1245,19 +1431,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "is_default":"",
             "type":"",
             "org_full_id":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -1270,6 +1449,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <org_id></org_id>
         <type></type>
     </results>
+</TemplateListResponse>
 ```
 
 **错误码**
@@ -1277,9 +1457,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateRiskScanDetail
+#### 5.1.9 TemplateRiskScanDetail
 
 调用TemplateRiskScanDetail接口v3.1.0 Get template risk_scan detail api。
 
@@ -1307,15 +1487,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| exclude ports _ | String |  | 排除端口。 |
+| exclude ports _ | String |   | 排除端口。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| advanced sca _ n | Map |  | 高级扫描。 |
-| basic scan _ | Map |  | 基础扫描。 |
-| emergent sca _ n | Map |  | 应急扫描。 |
+| advanced sca _ n | Map |   | 高级扫描。 |
+| basic scan _ | Map |   | 基础扫描。 |
+| emergent sca _ n | Map |   | 应急扫描。 |
 | name | String | 资产扫描模板-测试 | 名称。 |
 | user agent _ | String | xxx | UserAgent。 |
-
-**示例**
 
 请求示例
 
@@ -1325,25 +1503,29 @@ https://[Endpoint]/?Action=TemplateRiskScanDetail&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "advanced_scan":"",
     "basic_scan":"",
     "emergent_scan":"",
 ```
 
-`"name":"`资产扫描模板-测试`",`
+`"name":"`资产扫描模板`-`测试`",`
 
 ```json
     "user_agent":"xxx"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateRiskScanDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <advanced_scan></advanced_scan>
     <basic_scan></basic_scan>
@@ -1353,10 +1535,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
     </exclude_ports>
 ```
 
-`<name>`资产扫描模板-测试`</name>`
+`<name>`资产扫描模板`-`测试`</name>`
 
 ```xml
     <user_agent>xxx</user_agent>
+</TemplateRiskScanDetailResponse>
 ```
 
 **错误码**
@@ -1364,9 +1547,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TemplateWebMonitorConf
+#### 5.1.10 TemplateWebMonitorConf
 
 调用TemplateWebMonitorConf接口v3.1.0 get web_monitor config api。
 
@@ -1389,11 +1572,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| default crawl _ _ depth | Integer |  | 默认爬虫深度。 |
-| default monito _ r cycle _ | String |  | 默认监控周期。 |
-| default url lim _ _ it | Integer |  | 默认URL限制。 |
-| monitor optio _ n | Map |  | 监控参数。 |
-| scan param _ | Map |  | 扫描参数。 |
+| default crawl _ _ depth | Integer |   | 默认爬虫深度。 |
+| default monito _ r cycle _ | String |   | 默认监控周期。 |
+| default url lim _ _ it | Integer |   | 默认URL限制。 |
+| monitor optio _ n | Map |   | 监控参数。 |
+| scan param _ | Map |   | 扫描参数。 |
 
 **示例**
 
@@ -1405,27 +1588,32 @@ https://[Endpoint]/?Action=TemplateWebMonitorConf&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "default_crawl_depth":"",
     "default_monitor_cycle":"",
     "default_url_limit":"",
     "monitor_option":"",
     "scan_param":""
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateWebMonitorConfResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <default_crawl_depth></default_crawl_depth>
     <default_monitor_cycle></default_monitor_cycle>
     <default_url_limit></default_url_limit>
     <monitor_option></monitor_option>
     <scan_param></scan_param>
+</TemplateWebMonitorConfResponse>
 ```
 
 **错误码**
@@ -1433,9 +1621,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### BasicRiskOption
+#### 5.1.11 BasicRiskOption
+
+调用BasicRiskOption接口basic risk option api。
 
 **授权信息**
 
@@ -1455,15 +1645,15 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| type | Integ er | Body | 否 |  | 风险扫描类型。 |
+| type | Integ er | Body | 否 |   | 风险扫描类型。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
-| -define | String |  | 定义。 |
-| -name | String |  | 名称。 |
+| data | Array |   |   |
+| -define | String |   | 定义。 |
+| -name | String |   | 名称。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 
 **示例**
@@ -1476,31 +1666,34 @@ https://[Endpoint]/?Action=BasicRiskOption&RegionId=cn-hangzhou&type=
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "define":"",
             "name":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BasicRiskOptionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <define></define>
         <name></name>
     </data>
+</BasicRiskOptionResponse>
 ```
 
 **错误码**
@@ -1508,9 +1701,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### GetCommonVulnItemList
+#### 5.1.12 GetCommonVulnItemList
 
 调用GetCommonVulnItemList接口common_vuln_item_list api。
 
@@ -1532,24 +1725,24 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| general ty _ pe | Strin g | Body | 否 |  | 类型。 |
-| page | Integ er | Body | 否 |  | 页码。 |
+| general ty _ pe | Strin g | Body | 否 |   | 类型。 |
+| page | Integ er | Body | 否 |   | 页码。 |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| page size _ | Integ er | Body | 否 |  | 列表数量。 |
+| page size _ | Integ er | Body | 否 |   | 列表数量。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
-| -module count _ | Integer |  | 模块数量。 |
-| -name | String |  | 漏洞名。 |
-| -risk count _ | Integer |  | 风险数。 |
-| -status | Integer |  | 漏洞状态。 |
+| results | Array |   |   |
+| -module count _ | Integer |   | 模块数量。 |
+| -name | String |   | 漏洞名。 |
+| -risk count _ | Integer |   | 风险数。 |
+| -status | Integer |   | 漏洞状态。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | 分页数据条数。 |
+| count | Integer |   | 分页数据条数。 |
 
 **示例**
 
@@ -1561,29 +1754,31 @@ https://[Endpoint]/?Action=GetCommonVulnItemList&RegionId=cnhangzhou&general_typ
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "risk_count":"",
             "module_count":"",
             "name":"",
             "status":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetCommonVulnItemListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -1592,6 +1787,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <risk_count></risk_count>
         <status></status>
     </results>
+</GetCommonVulnItemListResponse>
 ```
 
 **错误码**
@@ -1599,11 +1795,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-### 任务相关接口
+### 5.2 任务相关接口
 
-#### BatchStartTasks
+#### 5.2.1 BatchStartTasks
 
 调用BatchStartTasks接口v3.2.0 batch start task api。
 
@@ -1628,14 +1824,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | end time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 结束时间。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
-| parent ta _ sk id _ | Integ er | Body | 否 |  |  |
-| run types _ | Strin g | Body | 否 |  | 运行方式，cycle，once, immediately。 |
+| parent ta _ sk id _ | Integ er | Body | 否 |   |   |
+| run types _ | Strin g | Body | 否 |   | 运行方式，cycle，once, immediately。 |
 | search | Strin g | Body | 否 | 1 1 1 1 1 _ _ _ _ | 任务ID;任务名称；资产地址。 |
 | start time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
-| statuses | Strin g | Body | 否 |  | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
+| statuses | Strin g | Body | 否 |   | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
 | task id _ | Integ er | Body | 否 | 1 | 任务id。 |
-| task ids _ | Strin g | Body | 否 |  | 任务id example:[1,2,3]。 |
-| task types _ | Strin g | Body | 否 |  | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
+| task ids _ | Strin g | Body | 否 |   | 任务id example:[1,2,3]。 |
+| task types _ | Strin g | Body | 否 |   | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1645,7 +1841,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -task id _ | Integer | 173 | 任务ID。 |
 | - task instance _ _ id | Integer | 208 | 任务实例ID。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
@@ -1660,31 +1856,34 @@ https://[Endpoint]/?Action=BatchStartTasks&RegionId=cn-hangzhou&end_time=2020-01
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchStartTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</BatchStartTasksResponse>
 ```
 
 **错误码**
@@ -1692,9 +1891,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetScanCreate
+#### 5.2.2 TaskAssetScanCreate
 
 调用TaskAssetScanCreate接口v3.1.0 create asset_scan task api。
 
@@ -1722,15 +1921,15 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | is immedi _ ately | Integ er | Body | 否 | 1 | 是否立即执行。 |
-| month | Strin g | Body | 否 |  | 每月example:[1,2]。 |
+| month | Strin g | Body | 否 |   | 每月example:[1,2]。 |
 | screen sh _ ot | Integ er | Body | 否 | 1 | 屏幕截图 enum[1\|0]。 |
 | spec cycl _ e | Integ er | Body | 否 | 1 | 自定义天数。 |
 | start tm _ | Strin g | Body | 否 | 2023-09-14 16:36:18 | 开始时间周期任务 00:00 一次性任务 2023-09-14 16:36:18。 |
-| targets | Strin g | Body | 否 |  | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]。 |
+| targets | Strin g | Body | 否 |   | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]。 |
 | task nam _ e | Strin g | Body | 否 | 风险扫描任务-测试 | 任务名。 |
 | template i _ d | Integ er | Body | 否 | 1 | 模版id。 |
 | vpc id _ | Strin g | Body | 否 | 1 | vpc id。 _ |
-| week | Strin g | Body | 否 |  | 每周 example:[1,2]。 |
+| week | Strin g | Body | 否 |   | 每周 example:[1,2]。 |
 
 **返回数据**
 
@@ -1738,8 +1937,6 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | data | Integer | 1 | Unknown。 |
-
-**示例**
 
 请求示例
 
@@ -1749,19 +1946,24 @@ https://[Endpoint]/?Action=TaskAssetScanCreate&RegionId=cnhangzhou&cycle=SPEC&en
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "data":1
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "data":1
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetScanCreateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TaskAssetScanCreateResponse>
 ```
 
 **错误码**
@@ -1769,9 +1971,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskList
+#### 5.2.3 TaskList
+
+调用TaskList接口v3.1.0 list all task。
 
 **授权信息**
 
@@ -1794,25 +1998,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | end time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 结束时间。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
-| parent ta _ sk id _ | Integ er | Body | 否 |  |  |
-| run types _ | Strin g | Body | 否 |  | 运行方式，cycle，once, immediately。 |
+| parent ta _ sk id _ | Integ er | Body | 否 |   |   |
+| run types _ | Strin g | Body | 否 |   | 运行方式，cycle，once, immediately。 |
 | search | Strin g | Body | 否 | 1 1 1 1 1 _ _ _ _ | 任务ID;任务名称；资产地址。 |
 | start time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
-| statuses | Strin g | Body | 否 |  | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
+| statuses | Strin g | Body | 否 |   | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
 | task id _ | Integ er | Body | 否 | 1 | 任务id。 |
-| task ids _ | Strin g | Body | 否 |  | 任务id example:[1,2,3]。 |
-| task types _ | Strin g | Body | 否 |  | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
+| task ids _ | Strin g | Body | 否 |   | 任务id example:[1,2,3]。 |
+| task types _ | Strin g | Body | 否 |   | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
 | template | Integ er | Body | 否 | 1 | 模版。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -asset info _ | String |  | 资产信息 1.1.1.1。 |
+| -asset info _ | String |   | 资产信息 1.1.1.1。 |
 | -creator | String | admin | 创建者。 |
 | -cycle count _ | Integer | 10 | 周期次数。 |
 | -end time _ | Integer | 1620000000 | 结束时间。 |
@@ -1844,16 +2048,25 @@ https://[Endpoint]/?Action=TaskList&RegionId=cn-hangzhou&end_time=2020-01-01 00:
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":10,
     "results":[
-        {
+```
+
+`{`
+
+```json
             "cycle_count":10,
 ```
 
-`"task_name":"`资产扫描任务-测试`",`
+`"task_name":"`资产扫描任务`-`测试`",`
 
 ```json
             "creator":"admin",
@@ -1869,19 +2082,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "is_immediately":1,
             "task_type":6,
             "status":"INIT"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -1901,8 +2107,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <sub_type>1</sub_type>
         <task_cycle>0</task_cycle>
         <task_instance_id>123</task_instance_id>
+```
+
+`<task_name>`资产扫描任务`-`测试`</task_name>`
+
+```xml
         <task_type>6</task_type>
     </results>
+</TaskListResponse>
 ```
 
 **错误码**
@@ -1910,9 +2122,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### BatchStopTasks
+#### 5.2.4 BatchStopTasks
+
+调用BatchStopTasks接口v3.2.0 batch stop task api。
 
 **授权信息**
 
@@ -1935,14 +2149,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | end time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 结束时间。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
-| parent ta _ sk id _ | Integ er | Body | 否 |  |  |
-| run types _ | Strin g | Body | 否 |  | 运行方式，cycle，once, immediately。 |
+| parent ta _ sk id _ | Integ er | Body | 否 |   |   |
+| run types _ | Strin g | Body | 否 |   | 运行方式，cycle，once, immediately。 |
 | search | Strin g | Body | 否 | 1 1 1 1 1 _ _ _ _ | 任务ID;任务名称；资产地址。 |
 | start time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
-| statuses | Strin g | Body | 否 |  | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
+| statuses | Strin g | Body | 否 |   | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
 | task id _ | Integ er | Body | 否 | 1 | 任务id。 |
-| task ids _ | Strin g | Body | 否 |  | 任务id example:[1,2,3]。 |
-| task types _ | Strin g | Body | 否 |  | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
+| task ids _ | Strin g | Body | 否 |   | 任务id example:[1,2,3]。 |
+| task types _ | Strin g | Body | 否 |   | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
 | template | Integ er | Body | 否 | 1 | 模版。 |
 
 **返回数据**
@@ -1953,7 +2167,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
+| status | String |   | 成功状态。 |
 
 **示例**
 
@@ -1965,19 +2179,24 @@ https://[Endpoint]/?Action=BatchStopTasks&RegionId=cn-hangzhou&end_time=2020-01-
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "status":""
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "status":""
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <BatchStopTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</BatchStopTasksResponse>
 ```
 
 **错误码**
@@ -1985,9 +2204,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### BatchDeleteTasks
+#### 5.2.5 BatchDeleteTasks
 
 调用BatchDeleteTasks接口v3.2.0 batch delete task api。
 
@@ -2012,17 +2231,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | end time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 结束时间。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
-| parent ta _ sk id _ | Integ er | Body | 否 |  |  |
-| run types _ | Strin g | Body | 否 |  | 运行方式，cycle，once, immediately。 |
+| parent ta _ sk id _ | Integ er | Body | 否 |   |   |
+| run types _ | Strin g | Body | 否 |   | 运行方式，cycle，once, immediately。 |
 | search | Strin g | Body | 否 | 1 1 1 1 1 _ _ _ _ | 任务ID;任务名称；资产地址。 |
 | start time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
-| statuses | Strin g | Body | 否 |  | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
+| statuses | Strin g | Body | 否 |   | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
 | task id _ | Integ er | Body | 否 | 1 | 任务id。 |
-| task ids _ | Strin g | Body | 否 |  | 任务id example:[1,2,3]。 |
+| task ids _ | Strin g | Body | 否 |   | 任务id example:[1,2,3]。 |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| task types _ | Strin g | Body | 否 |  | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
+| task types _ | Strin g | Body | 否 |   | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
 | template | Integ er | Body | 否 | 1 | 模版。 |
 
 **返回数据**
@@ -2030,7 +2249,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
+| status | String |   | 成功状态。 |
 
 **示例**
 
@@ -2042,29 +2261,32 @@ https://[Endpoint]/?Action=BatchDeleteTasks&RegionId=cn-hangzhou&end_time=2020-0
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <BatchDeleteTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</BatchDeleteTasksResponse>
 ```
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskProcessV2
+#### 5.2.6 TaskProcessV2
 
 调用TaskProcessV2接口v3.1.0 get task process api v2。
 
@@ -2098,7 +2320,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -insert tm _ | Integer | 1620000000 | 插入时间。 |
 | -risk addr _ | String | http://1.1.1.1 | 风险地址。 |
 | -risk id _ | Integer | 1 | 风险id。 |
@@ -2106,7 +2328,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -risk name _ | String | xxx安全漏洞 | 风险名称。 |
 | -risk type _ | Integer | 3 | 风险类型 enum[2:安全漏洞\|3:合规漏洞]。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | 总数。 |
+| count | Integer |   | 总数。 |
 
 **示例**
 
@@ -2118,12 +2340,21 @@ https://[Endpoint]/?Action=TaskProcessV2&RegionId=cnhangzhou&all=True&insert_tm_
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "risk_addr":"http://1.1.1.1",
             "risk_level":"LOW",
             "risk_id":1,
@@ -2131,22 +2362,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "insert_tm":1620000000,
 ```
 
-`"risk_name":"xxx`安全漏洞"
-
-```
-        }
-```
-
-]
-
-```
-}
-```
-
-`XML` 格式
+`"risk_name":"xxx`安全漏洞`"` `}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskProcessV2Response>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2157,6 +2376,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <risk_name>xxx安全漏洞</risk_name>
         <risk_type>3</risk_type>
     </results>
+</TaskProcessV2Response>
 ```
 
 **错误码**
@@ -2164,9 +2384,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskStart
+#### 5.2.7 TaskStart
+
+调用TaskStart接口v3.1.0 start task api。
 
 **授权信息**
 
@@ -2192,7 +2414,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -task id _ | Integer | 173 | 任务ID。 |
 | - task instance _ _ id | Integer | 208 | 任务实例ID。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
@@ -2207,31 +2429,34 @@ https://[Endpoint]/?Action=TaskStart&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskStartResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</TaskStartResponse>
 ```
 
 **错误码**
@@ -2239,9 +2464,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskStop
+#### 5.2.8 TaskStop
+
+调用TaskStop接口v3.1.0 stop task api。
 
 **授权信息**
 
@@ -2268,7 +2495,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
+| status | String |   | 成功状态。 |
 
 **示例**
 
@@ -2280,19 +2507,24 @@ https://[Endpoint]/?Action=TaskStop&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "status":""
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "status":""
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskStopResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</TaskStopResponse>
 ```
 
 **错误码**
@@ -2300,9 +2532,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### BatchSuspendTasks
+#### 5.2.9 BatchSuspendTasks
+
+调用BatchSuspendTasks接口批量停止任务。
 
 **授权信息**
 
@@ -2325,20 +2559,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | end time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 结束时间。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
-| parent ta _ sk id _ | Integ er | Body | 否 |  |  |
-| run types _ | Strin g | Body | 否 |  | 运行方式，cycle，once, immediately。 |
+| parent ta _ sk id _ | Integ er | Body | 否 |   |   |
+| run types _ | Strin g | Body | 否 |   | 运行方式，cycle，once, immediately。 |
 | search | Strin g | Body | 否 | 1 1 1 1 1 _ _ _ _ | 任务ID;任务名称；资产地址。 |
 | start time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
 
-|  |  |  |  |  | 漏洞扫描开发指南·漏洞扫描 |
+|   |   |   |   |   | 漏洞扫描开发指南·漏洞扫描 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| statuses | Strin g | Body | 否 |  | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
+| statuses | Strin g | Body | 否 |   | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
 | task id _ | Integ er | Body | 否 | 1 | 任务id。 |
-| task ids _ | Strin g | Body | 否 |  | 任务id example:[1,2,3]。 |
-| task types _ | Strin g | Body | 否 |  | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
+| task ids _ | Strin g | Body | 否 |   | 任务id example:[1,2,3]。 |
+| task types _ | Strin g | Body | 否 |   | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
 | template | Integ er | Body | 否 | 1 | 模版。 |
 
 **返回数据**
@@ -2346,7 +2580,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
+| status | String |   | 成功状态。 |
 
 **示例**
 
@@ -2358,19 +2592,24 @@ https://[Endpoint]/?Action=BatchSuspendTasks&RegionId=cn-hangzhou&end_time=2020-
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "status":""
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "status":""
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchSuspendTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</BatchSuspendTasksResponse>
 ```
 
 **错误码**
@@ -2378,9 +2617,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskProcess
+#### 5.2.10 TaskProcess
+
+调用TaskProcess接口v3.1.0 get task process api。
 
 **授权信息**
 
@@ -2404,7 +2645,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | insert tm _ _ order | Integ er | Body | 否 | 1 | 插入时间排序 enum[1\|- 1]。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 
-|  |  |  |  |  | 漏洞扫描开发指南·漏洞扫描 |
+|   |   |   |   |   | 漏洞扫描开发指南·漏洞扫描 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2418,7 +2659,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -asset id _ | Integer | 1 | 资产ID。 |
 | -behavior | String | 检测网站：.... | 行为。 |
 | -id | Integer | 1 | ID。 |
@@ -2426,7 +2667,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -is deleted _ | Integer | 0 | 是否删除 enum[1:是\|0:否]。 |
 | -risk id _ | Integer | 1 | 风险ID。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | 分页数据条数。 |
+| count | Integer |   | 分页数据条数。 |
 
 **示例**
 
@@ -2438,13 +2679,13 @@ https://[Endpoint]/?Action=TaskProcess&RegionId=cnhangzhou&all=True&insert_tm_or
 
 正常返回示例 `JSON` 格式
 
-|  | HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "count":"", "results":[ { "risk id":1, _ "is deleted":0, _ "insert tm":1620000000, _ "asset id":1, _ "id":1, "behavior":"检测网站：...." } ] } |
+|   | HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "count":"", "results":[ { "risk id":1, _ "is deleted":0, _ "insert tm":1620000000, _ "asset id":1, _ "id":1, "behavior":"检测网站：...." } ] } |
 |---|---|
 
 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskProcessResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2459,6 +2700,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_deleted>0</is_deleted>
         <risk_id>1</risk_id>
     </results>
+</TaskProcessResponse>
 ```
 
 **错误码**
@@ -2466,9 +2708,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskRestart
+#### 5.2.11 TaskRestart
+
+调用TaskRestart接口v3.1.0 restart task api。
 
 **授权信息**
 
@@ -2494,7 +2738,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -task id _ | Integer | 173 | 任务ID。 |
 | - task instance _ _ id | Integer | 208 | 任务实例ID。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
@@ -2509,31 +2753,34 @@ https://[Endpoint]/?Action=TaskRestart&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRestartResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</TaskRestartResponse>
 ```
 
 **错误码**
@@ -2541,9 +2788,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskDelete
+#### 5.2.12 TaskDelete
+
+调用TaskDelete接口v3.1.0 delete task api。
 
 **授权信息**
 
@@ -2570,7 +2819,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
+| status | String |   | 成功状态。 |
 
 **示例**
 
@@ -2582,19 +2831,24 @@ https://[Endpoint]/?Action=TaskDelete&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "status":""
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "status":""
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskDeleteResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</TaskDeleteResponse>
 ```
 
 **错误码**
@@ -2602,9 +2856,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskRiskScanDetail
+#### 5.2.13 TaskRiskScanDetail
 
 调用TaskRiskScanDetail接口v3.1.0 get risk_scan task detail api。
 
@@ -2632,13 +2886,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| targets | Array |  |  |
-| -target | String |  | 目标。 |
+| targets | Array |   |   |
+| -target | String |   | 目标。 |
 | -type | String | ALL | 类型。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | cycle count _ | Integer | 10 | 循环次数。 |
 
-|  |  |  | 漏洞扫描开发指南·漏洞扫描 |
+|   |   |   | 漏洞扫描开发指南·漏洞扫描 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2666,8 +2920,13 @@ https://[Endpoint]/?Action=TaskRiskScanDetail&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -2684,28 +2943,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "start_tm":1600000000,
     "status":"RUNNING",
     "targets":[
-        {
-            "type":"ALL"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "type":"ALL"
+```
+
+`}` `],`
 
 ```json
     "task_instance_id":1,
     "template_id":1,
 ```
 
-`"template_name":"xx`风险扫描模板"
-
-```
-}
-```
-
-`XML` 格式
+`"template_name":"xx`风险扫描模板`"` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRiskScanDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle_count>10</cycle_count>
     <finish_time>1600000000</finish_time>
@@ -2733,14 +2989,16 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 `<template_name>xx`风险扫描模板`</template_name>`
 
-**错误码**
+```
+</TaskRiskScanDetailResponse>
+```
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### GetAssetScanTaskInfo
+#### 5.2.14 GetAssetScanTaskInfo
 
 调用GetAssetScanTaskInfo接口v3.1.0 get asset_scan task info api。
 
@@ -2768,12 +3026,12 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| month | Integer |  | 每月example:[1,2]。 |
-| week | Integer |  | 每周 example:[1,2]。 |
+| month | Integer |   | 每月example:[1,2]。 |
+| week | Integer |   | 每周 example:[1,2]。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | cycle | String | SPEC | 周期 SPEC，MONTH，WEEK。 |
 
-|  | 漏洞扫描开发指南· | 漏洞扫描 |  |  |  |
+|   | 漏洞扫描开发指南· | 漏洞扫描 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2783,7 +3041,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | screen shot _ | Integer | 1 | 截屏 enum[0:关闭\|1:开启]。 |
 | spec cycle _ | Integer | 1 | 自定义天数。 |
 | start tm _ | String | 2023-09-14 16:36:18 | 开始时间周期任务 00:00 一次性任务 2023- 09-14 16:36:18。 |
-| targets | Map |  | 目标。 |
+| targets | Map |   | 目标。 |
 | task name _ | String | test | 任务名。 |
 | task type _ | Integer | 6 | 任务类型。 |
 | template id _ | Integer | 1 | 模版id。 |
@@ -2798,8 +3056,13 @@ https://[Endpoint]/?Action=GetAssetScanTaskInfo&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":"SPEC",
     "end_tm":"24:00",
@@ -2811,13 +3074,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "task_name":"test",
     "task_type":6,
     "template_id":1
-}
 ```
 
 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetAssetScanTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>SPEC</cycle>
     <end_tm>24:00</end_tm>
@@ -2835,6 +3097,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <week>
         <week></week>
     </week>
+</GetAssetScanTaskInfoResponse>
 ```
 
 **错误码**
@@ -2842,9 +3105,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetImportDetail
+#### 5.2.15 TaskAssetImportDetail
 
 调用TaskAssetImportDetail接口v3.1.0 get task asset import detail api。
 
@@ -2877,8 +3140,8 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
-| -children | String |  | 子资产。 |
+| results | Array |   |   |
+| -children | String |   | 子资产。 |
 | -asset name _ | String | 1.1.1.1 | 资产名。 |
 | -asset source _ | String | 主机导入 | 资产源。 |
 | -has childs _ | Integer | 0 | 是否子资产 enum[1:是\|0:否]。 |
@@ -2891,7 +3154,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | - task instance _ _ id | Integer | 1 | 任务实例ID。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | 分页数据条数。 |
+| count | Integer |   | 分页数据条数。 |
 
 **示例**
 
@@ -2903,12 +3166,21 @@ https://[Endpoint]/?Action=TaskAssetImportDetail&RegionId=cnhangzhou&asset_type=
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -2921,19 +3193,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "has_childs":0,
             "insert_tm":1620000000,
             "id":1
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2949,6 +3214,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_new>1</is_new>
         <task_instance_id>1</task_instance_id>
     </results>
+</TaskAssetImportDetailResponse>
 ```
 
 **错误码**
@@ -2956,9 +3222,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetScanDetail
+#### 5.2.16 TaskAssetScanDetail
 
 调用TaskAssetScanDetail接口v3.1.0 get asset_scan task detail api。
 
@@ -2986,15 +3252,15 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| targets | Array |  |  |
-| -target | String |  | 目标。 |
+| targets | Array |   |   |
+| -target | String |   | 目标。 |
 | -type | String | ALL | 类型。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | cycle count _ | Integer | 10 | 循环次数。 |
 | finish time _ | Integer | 1600000000 | 结束时间。 |
 | host risk coun _ _ t | Integer | 10 | 主机漏洞数。 |
 | id | Integer | 1 | ID。 |
-| import count _ | Map |  | 导入数量。 |
+| import count _ | Map |   | 导入数量。 |
 | insert tm _ | Integer | 1600000000 | 插入时间。 |
 | name | String | xx资产扫描 | 名称。 |
 | process | String | 100% | 进度。 |
@@ -3003,7 +3269,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | status | String | RUNNING | 运行状态 enum: [INIT\|RUNNING\|STOP\|FINISH]。 |
 | task instance _ _ id | Integer | 1 | 任务实例ID。 |
 
-| 漏洞扫描开发指南· | 漏洞扫描 |  |  |
+| 漏洞扫描开发指南· | 漏洞扫描 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3021,8 +3287,13 @@ https://[Endpoint]/?Action=TaskAssetScanDetail&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -3040,28 +3311,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "start_tm":1600000000,
     "status":"RUNNING",
     "targets":[
-        {
-            "type":"ALL"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "type":"ALL"
+```
+
+`}` `],`
 
 ```json
     "task_instance_id":1,
     "template_id":1,
 ```
 
-`"template_name":"xx`资产扫描模板"
-
-```
-}
-```
-
-`XML` 格式
+`"template_name":"xx`资产扫描模板`"` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetScanDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle_count>10</cycle_count>
     <finish_time>1600000000</finish_time>
@@ -3090,14 +3358,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 `<template_name>xx`资产扫描模板`</template_name>`
 
+```
+</TaskAssetScanDetailResponse>
+```
+
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetImportChildDetail
+#### 5.2.17 TaskAssetImportChildDetail
 
 调用TaskAssetImportChildDetail接口v3.1.0 get import asset child task detail api。
 
@@ -3127,8 +3399,8 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
-| -children | String |  | 子资产。 |
+| data | Array |   |   |
+| -children | String |   | 子资产。 |
 | -asset name _ | String | 1.1.1.1 | 资产名。 |
 | -asset source _ | String | 主机导入 | 资产源。 |
 | -has childs _ | Integer | 0 | 是否子资产 enum[1:是\|0:否]。 |
@@ -3139,8 +3411,6 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | - task instance _ _ id | Integer | 1 | 任务实例ID。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -3149,11 +3419,20 @@ https://[Endpoint]/?Action=TaskAssetImportChildDetail&RegionId=cnhangzhou&asset_
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -3166,19 +3445,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "has_childs":0,
             "insert_tm":1620000000,
             "id":1
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetImportChildDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <asset_name>1.1.1.1</asset_name>
@@ -3193,16 +3465,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_new>1</is_new>
         <task_instance_id>1</task_instance_id>
     </data>
+</TaskAssetImportChildDetailResponse>
 ```
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### CycleTaskAssetStats
+#### 5.2.18 CycleTaskAssetStats
+
+调用CycleTaskAssetStats接口v3.4.1 获取周期任务资产扫描统计。
 
 **授权信息**
 
@@ -3234,17 +3507,22 @@ https://[Endpoint]/?Action=CycleTaskAssetStats&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <CycleTaskAssetStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</CycleTaskAssetStatsResponse>
 ```
 
 **错误码**
@@ -3252,9 +3530,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetScanCycleRunning
+#### 5.2.19 TaskAssetScanCycleRunning
 
 调用TaskAssetScanCycleRunning接口v3.4.0 获取资产巡检任务是否有周期任务。
 
@@ -3288,17 +3566,22 @@ https://[Endpoint]/?Action=TaskAssetScanCycleRunning&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetScanCycleRunningResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</TaskAssetScanCycleRunningResponse>
 ```
 
 **错误码**
@@ -3306,9 +3589,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetImport
+#### 5.2.20 TaskAssetImport
 
 调用TaskAssetImport接口v3.1.0 import asset task api。
 
@@ -3330,23 +3613,23 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| asset met _ adatas | Strin g | Body | 否 |  | 资产元数据。 |
-| content m _ onitor | Integ er | Body | 否 |  |  |
-| customize asset list _ _ | Strin g | Body | 否 |  |  |
+| asset met _ adatas | Strin g | Body | 否 |   | 资产元数据。 |
+| content m _ onitor | Integ er | Body | 否 |   |   |
+| customize asset list _ _ | Strin g | Body | 否 |   |   |
 | group id _ | Integ er | Body | 否 | 0 | 组别id。 |
 | is immedi _ ately | Integ er | Body | 否 | 1 | 4.1.1。 |
-| is public _ _ asset | Integ er | Body | 否 |  | 是否公网资产。 |
+| is public _ _ asset | Integ er | Body | 否 |   | 是否公网资产。 |
 | network t _ ype | Integ er | Body | 否 | 1 | 网络类型 1, 2。 |
 | not alive _ _ report | Integ er | Body | 否 | 1 | 非存活资产是否上报。 |
 | screen sh _ ot | Integ er | Body | 否 | 1 | 是否开启网站截图 1 开启 0 关闭。 |
 | staff id _ | Integ er | Body | 否 | 1 | 负责人id。 |
 | start tm _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
-| tag ids _ | Strin g | Body | 否 |  | 标签id [1,2,3]。 |
-| targets | Strin g | Body | 否 |  | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]。 |
+| tag ids _ | Strin g | Body | 否 |   | 标签id [1,2,3]。 |
+| targets | Strin g | Body | 否 |   | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]。 |
 | task nam _ e | Strin g | Body | 否 | 风险扫描任务-测试 | 任务名。 |
 | template i _ d | Integ er | Body | 否 | 1 | 模版id。 |
 | vpc id _ | Strin g | Body | 否 | 1 | vpc id。 _ |
-| web moni _ tor | Integ er | Body | 否 |  |  |
+| web moni _ tor | Integ er | Body | 否 |   |   |
 
 **返回数据**
 
@@ -3365,19 +3648,24 @@ https://[Endpoint]/?Action=TaskAssetImport&RegionId=cnhangzhou&asset_metadatas=&
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "data":1
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "data":1
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetImportResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TaskAssetImportResponse>
 ```
 
 **错误码**
@@ -3385,9 +3673,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskRiskScanCreate
+#### 5.2.21 TaskRiskScanCreate
 
 调用TaskRiskScanCreate接口v3.1.0 create risk scan task api。
 
@@ -3412,18 +3700,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | cycle | Strin g | Body | 否 | SPEC | 周期 SPEC，MONTH，WEEK。 |
 | end tm _ | Strin g | Body | 否 | 24:00 | 结束时间 24:00。 |
 | is immedi _ ately | Integ er | Body | 否 | 1 | 是否立即执行。 |
-| month | Strin g | Body | 否 |  | 每月example:[1,2]。 |
-| scan spee _ d | Strin g | Body | 否 |  | 扫描速率废弃。 |
+| month | Strin g | Body | 否 |   | 每月example:[1,2]。 |
+| scan spee _ d | Strin g | Body | 否 |   | 扫描速率废弃。 |
 | spec cycl _ e | Integ er | Body | 否 | 1 | 自定义天数。 |
 | start tm _ | Strin g | Body | 否 | 2023-09-14 16:36:18 | 开始时间周期任务 00:00 一次性任务 2023-09-14 16:36:18。 |
-| targets | Strin g | Body | 否 |  | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]。 |
+| targets | Strin g | Body | 否 |   | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]。 |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | task nam _ e | Strin g | Body | 否 | 风险扫描任务-测试 | 任务名。 |
 | template i _ d | Integ er | Body | 否 | 1 | 模版id。 |
 | vpc id _ | Strin g | Body | 否 | 1 | vpc id。 _ |
-| week | Strin g | Body | 否 |  | 每周 example:[1,2]。 |
+| week | Strin g | Body | 否 |   | 每周 example:[1,2]。 |
 
 **返回数据**
 
@@ -3442,29 +3730,32 @@ https://[Endpoint]/?Action=TaskRiskScanCreate&RegionId=cnhangzhou&cycle=SPEC&end
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRiskScanCreateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TaskRiskScanCreateResponse>
 ```
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetImportDetailExists
+#### 5.2.22 TaskAssetImportDetailExists
 
 调用TaskAssetImportDetailExists接口v3.1.0 get asset import task existed task api。
 
@@ -3496,7 +3787,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -asset name _ | String | 1.1.1.1 | 资产名。 |
 | -asset source _ | String | 主机导入 | 资产源。 |
 | -id | Integer | 1 | ID。 |
@@ -3504,7 +3795,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -is deleted _ | Boolean | False | 是否删除 enum[0:未删除 1:已删除]。 |
 | -is new _ | Integer | 1 | 是否新发现 enum[0:否 1:是]。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | 分页数据条数。 |
+| count | Integer |   | 分页数据条数。 |
 
 **示例**
 
@@ -3516,12 +3807,21 @@ https://[Endpoint]/?Action=TaskAssetImportDetailExists&RegionId=cnhangzhou&asset
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -3532,19 +3832,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
             "insert_tm":1620000000,
             "id":1
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetImportDetailExistsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -3555,6 +3848,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_deleted>False</is_deleted>
         <is_new>1</is_new>
     </results>
+</TaskAssetImportDetailExistsResponse>
 ```
 
 **错误码**
@@ -3562,9 +3856,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskQueueTaskDetail
+#### 5.2.23 TaskQueueTaskDetail
+
+调用TaskQueueTaskDetail接口巡哨4.1.0。
 
 **授权信息**
 
@@ -3591,7 +3887,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| result | Map |  | Unknown。 |
+| result | Map |   | Unknown。 |
 
 **示例**
 
@@ -3603,19 +3899,24 @@ https://[Endpoint]/?Action=TaskQueueTaskDetail&RegionId=cn-hangzhou&id=207_1_1_1
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "result":""
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "result":""
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskQueueTaskDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <result></result>
+</TaskQueueTaskDetailResponse>
 ```
 
 **错误码**
@@ -3623,9 +3924,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskAssetImportBaseInfo
+#### 5.2.24 TaskAssetImportBaseInfo
 
 调用TaskAssetImportBaseInfo接口v3.1.0 get task asset import base info api。
 
@@ -3660,9 +3961,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | cycle count _ | Integer | 10 | 任务周期。 |
 | finish time _ | Integer | 1600000000 | 结束时间。 |
 | id | Integer | 1 | 任务ID。 |
-| import count _ | Map |  | 导入数量。 |
+| import count _ | Map |   | 导入数量。 |
 | import mode _ | String | MANUAL IMPORT _ | 导入方式 enum[MANUAL IMPORT:手动导 _ 入\|EXCEL IMPORT:模版导入]。 _ |
-| import res _ | Map |  | 导入数据。 |
+| import res _ | Map |   | 导入数据。 |
 | insert tm _ | Integer | 1600000000 | 插入时间。 |
 | is immediately _ | Integer | 1 | 是否立即执行 enum[1:是\|0:否]。 |
 | is public asset _ _ | Integer | 1 | 是否公网资产导入 enum[1:是\|0:否]。 |
@@ -3672,7 +3973,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | screen shot _ | Integer | 1 | 是否开启网站截图, 模版导入。 |
 | start time _ | Integer | 1600000000 | 开始时间。 |
 | status | String | INIT | 运行状态 enum[INIT:初始化\|RUNNING:运行中\|FINISH:完成\|STOP:停止]。 |
-| target | Map |  | 目标废弃。 |
+| target | Map |   | 目标废弃。 |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3681,7 +3982,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | template id _ | Integer | 1 | 任务模板ID。 |
 | template nam _ e | String | 资产扫描模板-测试 | 任务模板名。 |
 | username | String | admin | 用户名。 |
-| view detail _ | Map |  | 查看详情返回一个MAP或者一个下载链接和导入方式相关。 |
+| view detail _ | Map |   | 查看详情返回一个MAP或者一个下载链接和导入方式相关。 |
 | vpc id _ | String | 1 | VPCID。 |
 
 **示例**
@@ -3694,8 +3995,13 @@ https://[Endpoint]/?Action=TaskAssetImportBaseInfo&RegionId=cnhangzhou&task_inst
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -3716,25 +4022,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "task_instance_id":1,
 ```
 
-`"task_name":"`资产扫描任务-测试`",`
+`"task_name":"`资产扫描任务`-`测试`",`
 
 ```json
     "template_id":1,
 ```
 
-`"template_name":"`资产扫描模板-测试`",`
+`"template_name":"`资产扫描模板`-`测试`",`
 
 ```json
     "username":"admin",
     "view_detail":"",
     "vpc_id":"1"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportBaseInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle_count>10</cycle_count>
     <finish_time>1600000000</finish_time>
@@ -3753,15 +4058,21 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <status>INIT</status>
     <target></target>
     <task_instance_id>1</task_instance_id>
+```
+
+`<task_name>`资产扫描任务`-`测试`</task_name>`
+
+```xml
     <template_id>1</template_id>
 ```
 
-`<template_name>`资产扫描模板-测试`</template_name>`
+`<template_name>`资产扫描模板`-`测试`</template_name>`
 
 ```xml
     <username>admin</username>
     <view_detail></view_detail>
     <vpc_id>1</vpc_id>
+</TaskAssetImportBaseInfoResponse>
 ```
 
 **错误码**
@@ -3769,9 +4080,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskRiskScanCycleRunning
+#### 5.2.25 TaskRiskScanCycleRunning
 
 调用TaskRiskScanCycleRunning接口v3.4.0 获取风险扫描任务是否有任务。
 
@@ -3805,17 +4116,22 @@ https://[Endpoint]/?Action=TaskRiskScanCycleRunning&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRiskScanCycleRunningResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</TaskRiskScanCycleRunningResponse>
 ```
 
 **错误码**
@@ -3823,9 +4139,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### GetAssetRiskScanTaskInfo
+#### 5.2.26 GetAssetRiskScanTaskInfo
 
 调用GetAssetRiskScanTaskInfo接口v3.1.0 get asset_risk_scan task info api。
 
@@ -3853,22 +4169,22 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| month | Integer |  | 每月example:[1,2]。 |
-| week | Integer |  | 每周 example:[1,2]。 |
+| month | Integer |   | 每月example:[1,2]。 |
+| week | Integer |   | 每周 example:[1,2]。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | cycle | String | SPEC | 周期 SPEC，MONTH，WEEK。 |
 | end tm _ | String | 24:00 | 结束时间 24:00。 |
 | is immediately _ | Integer | 1 | 是否立即执行。 |
-| scan speed _ | String |  | 扫描速度废弃。 |
+| scan speed _ | String |   | 扫描速度废弃。 |
 | spec cycle _ | Integer | 1 | 自定义天数。 |
 
-|  | 漏洞扫描开发指南· | 漏洞扫描 |  |  |  |
+|   | 漏洞扫描开发指南· | 漏洞扫描 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | start tm _ | String | 2023-09-14 16:36:18 | 开始时间周期任务 00:00 一次性任务 2023- 09-14 16:36:18。 |
-| targets | Map |  | 扫描目标,JSON格式 {'ALL IP':0,'ALL WEBSITE':0,'ALL ASSET':0 _ _ _ ,'IP':[1],'WEBSITE':[1],'GROUP':[1]}序列化， 每次请求只可选择其中一项作为请求内容数组中为对应id，其他为是否选择,0:未选择,1:选择。 |
+| targets | Map |   | 扫描目标,JSON格式 {'ALL IP':0,'ALL WEBSITE':0,'ALL ASSET':0 _ _ _ ,'IP':[1],'WEBSITE':[1],'GROUP':[1]}序列化， 每次请求只可选择其中一项作为请求内容数组中为对应id，其他为是否选择,0:未选择,1:选择。 |
 | task name _ | String | test | 任务名称。 |
 | task type _ | Integer | 6 | 任务类型。 |
 | template id _ | Integer | 1 | 任务模板ID。 |
@@ -3883,8 +4199,13 @@ https://[Endpoint]/?Action=GetAssetRiskScanTaskInfo&RegionId=cn-hangzhou&id=1
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":"SPEC",
     "end_tm":"24:00",
@@ -3896,13 +4217,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "task_name":"test",
     "task_type":6,
     "template_id":1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetAssetRiskScanTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>SPEC</cycle>
     <end_tm>24:00</end_tm>
@@ -3920,6 +4240,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <week>
         <week></week>
     </week>
+</GetAssetRiskScanTaskInfoResponse>
 ```
 
 **错误码**
@@ -3927,9 +4248,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### BatchRestartTasks
+#### 5.2.27 BatchRestartTasks
 
 调用BatchRestartTasks接口v3.2.0 batch restart task api。
 
@@ -3954,25 +4275,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | end time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 结束时间。 |
 | page | Integ er | Body | 否 | 1 | 页码。 |
 | page size _ | Integ er | Body | 否 | 10 | 页大小。 |
-| parent ta _ sk id _ | Integ er | Body | 否 |  |  |
-| run types _ | Strin g | Body | 否 |  | 运行方式，cycle，once, immediately。 |
+| parent ta _ sk id _ | Integ er | Body | 否 |   |   |
+| run types _ | Strin g | Body | 否 |   | 运行方式，cycle，once, immediately。 |
 | search | Strin g | Body | 否 | 1 1 1 1 1 _ _ _ _ | 任务ID;任务名称；资产地址。 |
 | start time _ | Strin g | Body | 否 | 2020-01-01 00:00:00 | 开始时间。 |
-| statuses | Strin g | Body | 否 |  | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
+| statuses | Strin g | Body | 否 |   | 任务状态枚举值: RUNNING\|INIT\|FINISH\|ST OP。 |
 | task id _ | Integ er | Body | 否 | 1 | 任务id。 |
-| task ids _ | Strin g | Body | 否 |  | 任务id example:[1,2,3]。 |
-| task types _ | Strin g | Body | 否 |  | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
+| task ids _ | Strin g | Body | 否 |   | 任务id example:[1,2,3]。 |
+| task types _ | Strin g | Body | 否 |   | 任务类型枚举值: assetImport\|assetRisk\|a ssetScan。 |
 | template | Integ er | Body | 否 | 1 | 模版。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -task id _ | Integer | 173 | 任务ID。 |
 | - task instance _ _ id | Integer | 208 | 任务实例ID。 |
 
-|  |  |  | 漏洞扫描开发指南·漏洞扫描 |
+|   |   |   | 漏洞扫描开发指南·漏洞扫描 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
@@ -3987,31 +4308,34 @@ https://[Endpoint]/?Action=BatchRestartTasks&RegionId=cn-hangzhou&end_time=2020-
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <BatchRestartTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</BatchRestartTasksResponse>
 ```
 
 **错误码**
@@ -4022,9 +4346,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskQueueTaskList
+#### 5.2.28 TaskQueueTaskList
+
+调用TaskQueueTaskList接口巡哨4.1.0。
 
 **授权信息**
 
@@ -4052,18 +4378,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -group id _ | Integer | 0 | 设备组编号。 |
 | -id | String | 0 11 0 _ _ | 队列名称。 |
 | -list type _ | String | asset list _ | 队列类型 enum[asset list\|vuln list]。 _ _ |
 
-|  |  |  |  | 漏洞扫描开发指南·漏洞扫描 |  |
+|   |   |   |   | 漏洞扫描开发指南·漏洞扫描 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | Unknown。 |
+| count | Integer |   | Unknown。 |
 
 **示例**
 
@@ -4075,28 +4401,30 @@ https://[Endpoint]/?Action=TaskQueueTaskList&RegionId=cnhangzhou&page=1&page_siz
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "list_type":"asset_list",
             "group_id":0,
             "id":"0_11_0"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4104,16 +4432,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <id>0_11_0</id>
         <list_type>asset_list</list_type>
     </results>
+</TaskQueueTaskListResponse>
 ```
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskQueueTaskInfo
+#### 5.2.29 TaskQueueTaskInfo
+
+调用TaskQueueTaskInfo接口巡哨4.1.0。
 
 **授权信息**
 
@@ -4141,11 +4470,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -insert tm _ | Integer | 1722477664 | 任务创建时间，时间戳格式。 |
 | - task instance _ _ id | Integer | 206 | 任务实例id。 |
 
-|  |  |  |  | 漏洞扫描开发指南·漏洞扫描 |  |
+|   |   |   |   | 漏洞扫描开发指南·漏洞扫描 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4157,7 +4486,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | - task wait num _ _ | Integer | 2 | 等待中的任务数。 |
 | -username | String | admin | 用户名称。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | Unknown。 |
+| count | Integer |   | Unknown。 |
 
 **示例**
 
@@ -4169,12 +4498,21 @@ https://[Endpoint]/?Action=TaskQueueTaskInfo&RegionId=cnhangzhou&mode=1&page=1&p
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "task_name":"dd",
             "task_wait_num":2,
             "task_instance_id":206,
@@ -4183,19 +4521,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "task_run_num":1,
             "task_pri":"high",
             "username":"admin"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4208,6 +4539,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <task_wait_num>2</task_wait_num>
         <username>admin</username>
     </results>
+</TaskQueueTaskInfoResponse>
 ```
 
 **错误码**
@@ -4215,9 +4547,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskStatusStats
+#### 5.2.30 TaskStatusStats
+
+调用TaskStatusStats接口v3.4.0 获取任务运行状态统计。
 
 **授权信息**
 
@@ -4237,7 +4571,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -count | Integer | 10 | 数量。 |
 | -status | String | RUNNING | 状态。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
@@ -4252,31 +4586,34 @@ https://[Endpoint]/?Action=TaskStatusStats&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
+```
+
+`{`
+
+```json
             "count":10,
             "status":"RUNNING"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskStatusStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <count>10</count>
         <status>RUNNING</status>
     </data>
+</TaskStatusStatsResponse>
 ```
 
 **错误码**
@@ -4284,9 +4621,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskQueueTaskListDetail
+#### 5.2.31 TaskQueueTaskListDetail
+
+调用TaskQueueTaskListDetail接口巡哨4.1.0。
 
 **授权信息**
 
@@ -4314,14 +4653,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -id | String | 208 1 1 11 0 _ _ _ _ | 任务ID。 |
 | -list type _ | String | asset monitor task _ _ | 任务类型 enum[asset import task\|asset monitor ta _ _ _ _ sk\|basic monitor task\|vuln verify task]。 _ _ _ _ |
 | -name | String | dd | 任务名称。 |
 | -task level _ | String | high | 任务优先级 enum[emergent\|high\|mid\|low]。 |
 | -user name _ | String | admin | 用户名。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| count | Integer |  | Unknown。 |
+| count | Integer |   | Unknown。 |
 
 **示例**
 
@@ -4333,30 +4672,32 @@ https://[Endpoint]/?Action=TaskQueueTaskListDetail&RegionId=cnhangzhou&list_name
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
+```
+
+`{`
+
+```json
             "list_type":"asset_monitor_task",
             "user_name":"admin",
             "name":"dd",
             "id":"208_1_1_11_0",
             "task_level":"high"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskListDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4366,6 +4707,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <task_level>high</task_level>
         <user_name>admin</user_name>
     </results>
+</TaskQueueTaskListDetailResponse>
 ```
 
 **错误码**
@@ -4373,9 +4715,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskRunTypeStats
+#### 5.2.32 TaskRunTypeStats
+
+调用TaskRunTypeStats接口v3.4.0 获取任务运行方式统计。
 
 **授权信息**
 
@@ -4410,23 +4754,28 @@ https://[Endpoint]/?Action=TaskRunTypeStats&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":10,
     "immediately":10,
     "once":10
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskRunTypeStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>10</cycle>
     <immediately>10</immediately>
     <once>10</once>
+</TaskRunTypeStatsResponse>
 ```
 
 **错误码**
@@ -4434,9 +4783,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### TaskQueueTaskCount
+#### 5.2.33 TaskQueueTaskCount
+
+调用TaskQueueTaskCount接口巡哨4.1.0。
 
 **授权信息**
 
@@ -4460,7 +4811,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | await | Integer | 7 | 等待中任务数。 |
 | run | Integer | 2 | 正在执行任务数。 |
 
-|  |  |  | 漏洞扫描开发指南·漏洞扫描 |
+|   |   |   | 漏洞扫描开发指南·漏洞扫描 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4477,23 +4828,28 @@ https://[Endpoint]/?Action=TaskQueueTaskCount&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "await":7,
     "run":2,
     "task_queue":1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskCountResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <await>7</await>
     <run>2</run>
     <task_queue>1</task_queue>
+</TaskQueueTaskCountResponse>
 ```
 
 **错误码**
@@ -4501,9 +4857,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### SuspendStatus
+#### 5.2.34 SuspendStatus
 
 调用SuspendStatus接口system updates suspend api。
 
@@ -4526,7 +4882,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| data | String |  | Unknown。 |
+| data | String |   | Unknown。 |
 
 **示例**
 
@@ -4538,35 +4894,38 @@ https://[Endpoint]/?Action=SuspendStatus&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":""
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <SuspendStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data></data>
+</SuspendStatusResponse>
 ```
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-## 漏洞扫描V2
+## 6 漏洞扫描V2
 
-### 资产相关接口
+### 6.1 资产相关接口
 
-#### 主机资产
+#### 6.1.1 主机资产
 
-##### DescribeHostAssetList
+##### 6.1.1.1 DescribeHostAssetList
 
 获取主机资产列表
 
@@ -4620,7 +4979,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].vpc id _ | String | vpc- l0miygn8aj171l8115eg 1 | VPC ID |
 | results[].asset id _ | Integer | 123 | 资产ID |
 | results[].group id _ | Integer | 1 | 分组ID |
@@ -4638,7 +4997,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | results[].risk count _ | Integer | 100 | 安全漏洞个数 |
 | results[].compliance ri _ sk count _ | Integer | 100 | 合规漏洞数量 |
 | results[].remark | String | this is a reremark | 备注 |
-| results[].cdn | String |  | CDN识别 |
+| results[].cdn | String |   | CDN识别 |
 | results[].finger print _ | Array | [{}] | 指纹 |
 | results[].asset tags _ | Array | [{"tag id": 11, _ "tag name": "EIP"}] _ | 资产标签 |
 | results[].asset tags[].t _ ag id _ | Integer | 11 | 资产标签ID |
@@ -4651,12 +5010,15 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | results[].scan tm _ | Integer | 1774428275 | 扫描时间 |
 | results[].update tm _ | Integer | 1774428275 | 更新时间 |
 
-**示例**
-
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -4749,17 +5111,25 @@ POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Conte
   "search": "",
   "update_tm_end": "2024-02-04 00:00:00",
   "update_tm_start": "2024-01-04 00:00:00"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -4777,20 +5147,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "remark": "this is a reremark",
       "cdn": "",
       "finger_print": [
-        {}
 ```
 
-`],`
+`{}` `],`
 
 ```json
       "asset_tags": [
-        {
-          "tag_id": 11,
-          "tag_name": "EIP"
-        }
 ```
 
-`],`
+`{`
+
+```json
+          "tag_id": 11,
+          "tag_name": "EIP"
+```
+
+`}` `],`
 
 ```json
       "staff": {},
@@ -4805,19 +5177,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "scan_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeHostAssetListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -4858,6 +5223,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeHostAssetListResponse>
 ```
 
 **错误码**
@@ -4866,9 +5232,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### 网站资产
+#### 6.1.2 网站资产
 
-##### DescribeWebsiteAssetList
+##### 6.1.2.1 DescribeWebsiteAssetList
 
 获取网站资产列表
 
@@ -4918,7 +5284,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].vpc id _ | String | vpc- l0miygn8aj171l8115eg 1 | VPC ID |
 | results[].asset id _ | Integer | 123 | 资产ID |
 | results[].group id _ | Integer | 1 | 分组ID |
@@ -4936,7 +5302,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | results[].compliance ri _ sk count _ | Integer | 100 | 合规漏洞数量 |
 |---|---|---|---|
 | results[].title | String | this is a title | 网站标题 |
-| results[].custom title _ | String |  | 自定义标题 |
+| results[].custom title _ | String |   | 自定义标题 |
 | results[].remark | String | this is a reremark | 备注 |
 | results[].waf | Boolean | true | waf |
 | results[].finger print _ | Array | [{}] | 指纹 |
@@ -4945,7 +5311,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | results[].asset tags[].t _ ag name _ | String | EIP | 标签名 |
 | results[].staff | Object | {} | 负责人信息 |
 | results[].asset source _ | String | System Discovered | 资产来源 |
-| results[].screenshot | String |  | 网站截图 |
+| results[].screenshot | String |   | 网站截图 |
 | results[].status code _ | Integer | 200 | 网站状态码 |
 | results[].insert tm _ | Integer | 1774428275 | 插入时间 |
 | results[].scan tm _ | Integer | 1774428275 | 扫描时间 |
@@ -4955,8 +5321,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -5033,17 +5404,25 @@ POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Co
 ```json
   "update_tm_end": "2024-02-04 00:00:00",
   "update_tm_start": "2024-01-04 00:00:00"
-}
 ```
 
 正常返回示例 `JSON` 格式
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -5063,20 +5442,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "remark": "this is a reremark",
       "waf": true,
       "finger_print": [
-        {}
 ```
 
-`],`
+`{}` `],`
 
 ```json
       "asset_tags": [
-        {
-          "tag_id": 11,
-          "tag_name": "EIP"
-        }
 ```
 
-`],`
+`{`
+
+```json
+          "tag_id": 11,
+          "tag_name": "EIP"
+```
+
+`}` `],`
 
 ```json
       "staff": {},
@@ -5086,19 +5467,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "scan_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeWebsiteAssetListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -5139,6 +5513,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeWebsiteAssetListResponse>
 ```
 
 **错误码**
@@ -5147,9 +5522,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### 域名资产
+#### 6.1.3 域名资产
 
-##### DescribeDomainAssetList
+##### 6.1.3.1 DescribeDomainAssetList
 
 获取域名资产列表
 
@@ -5198,7 +5573,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].vpc id _ | String | vpc- l0miygn8aj171l8115eg 1 | VPC ID |
 | results[].asset id _ | Integer | 123 | 资产ID |
 | results[].group id _ | Integer | 1 | 分组ID |
@@ -5211,7 +5586,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | results[].is alive _ | Integer | 1 | 存活状态 |
 | results[].hostname | String | 192.168.100.100 | 主机名 |
 | results[].remark | String | this is a reremark | 备注 |
-| results[].parsed | String |  | 解析状态 |
+| results[].parsed | String |   | 解析状态 |
 
 | results[].parse err _ | String | this is a fail reason for domain resolution | 解析失败原因 |
 |---|---|---|---|
@@ -5242,8 +5617,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -5306,20 +5686,18 @@ POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Con
   "search": "",
   "update_tm_end": "2024-02-04 00:00:00",
   "update_tm_start": "2024-01-04 00:00:00"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
 ```
 
 ```json
   "count": 10,
   "results": [
-    {
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -5340,38 +5718,47 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
       "asset_tags": [
-        {
-          "tag_id": 11,
-          "tag_name": "EIP"
-        }
 ```
 
-`],`
+`{`
+
+```json
+          "tag_id": 11,
+          "tag_name": "EIP"
+```
+
+`}` `],`
 
 ```json
       "staff": {},
       "domain_parsed": [
-        {
+```
+
+`{`
+
+```json
           "id": 123,
           "ip": "192.168.131.100",
           "insert_tm": 1774428275,
           "update_tm": 1774428275
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "parsed_history": [
-        {
+```
+
+`{`
+
+```json
           "id": 123,
           "ip": "192.168.131.100",
           "insert_tm": 1774428275,
           "update_tm": 1774428275
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "asset_source": "System Discovered",
@@ -5379,23 +5766,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "scan_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
+`}` `]` `}` `XML` 格式
 
 ```
-}
-```
-
-`XML` 格式
-
-```
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml
 ```
 
 ```xml
-Cotet ype:app cato/
+Cotet ype:app cato/ <DescribeDomainAssetListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -5449,15 +5829,14 @@ Cotet ype:app cato/
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeDomainAssetListResponse>
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### DeleteAsset
+#### 6.1.4 DeleteAsset
 
 删除资产
 
@@ -5488,36 +5867,38 @@ Cotet ype:app cato/
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 
-**示例**
-
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DeleteAsset&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DeleteAsset&RegionId=cn-hangzhou Content-Type: application/json {
   "add_white": 1,
   "ids": [
     123,
 ```
 
-]
+`]` `}` 正常返回示例 `JSON` 格式
 
 ```
-}
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteAssetResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</DeleteAssetResponse>
 ```
 
 **错误码**
@@ -5526,11 +5907,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-### 任务相关接口
+### 6.2 任务相关接口
 
-#### 资产导入任务
+#### 6.2.1 资产导入任务
 
-##### CreateAssetImportTask
+##### 6.2.1.1 CreateAssetImportTask
+
+创建资产导入任务
 
 **授权信息**
 
@@ -5577,8 +5960,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "1",
   "template_id": 1,
   "group_id": 0,
@@ -5586,55 +5974,62 @@ POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Conte
   "tag_ids": [
 ```
 
-`1,` `2,` `],` `"task_name": "`风险扫描任务-测试`",`
+`1,` `2,` `],` `"task_name": "`风险扫描任务`-`测试`",`
 
 ```json
   "network_type": 1,
   "is_immediately": 1,
   "is_public_asset": 1,
   "asset_metadatas": [
-    {
+```
+
+`{`
+
+```json
       "hostName": "xxlsk",
       "ip": "1.1.1.1",
       "instanceId": "xxx_ss",
       "instanceName": "xxx_ss",
       "osType": "linux"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "not_alive_report": 1,
   "screen_shot": 1,
   "start_tm": "2020-01-01 00:00:00"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_instance_id": 1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateAssetImportTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_instance_id>1</task_instance_id>
+</CreateAssetImportTaskResponse>
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-##### DescribeAssetImportTask
+##### 6.2.1.2 DescribeAssetImportTask
+
+获取资产导入任务详情
 
 **授权信息**
 
@@ -5688,16 +6083,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
-```json
-POST https://[Endpoint]/?Action=DescribeAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json {
-  "task_instance_id": 1
-}
+```
+POST https://[Endpoint]/?Action=DescribeAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+  "task_instance_id": 1
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "vpc_id": "1",
   "id": 1,
@@ -5705,7 +6109,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "template_id": 1,
 ```
 
-`"task_name": "`资产扫描任务-测试`",` `"template_name": "`资产扫描模板-测试`",`
+`"task_name": "`资产扫描任务`-`测试`",` `"template_name": "`资产扫描模板`-`测试`",`
 
 ```json
   "import_mode": "MANUAL_IMPORT",
@@ -5720,13 +6124,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "finish_time": 1774428275,
   "insert_tm": 1774428275,
   "start_time": 1774428275
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetImportTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <vpc_id>1</vpc_id>
     <id>1</id>
@@ -5734,7 +6137,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <template_id>1</template_id>
 ```
 
-`<template_name>`资产扫描模板-测试`</template_name>`
+`<task_name>`资产扫描任务`-`测试`</task_name>` `<template_name>`资产扫描模板`-`测试`</template_name>`
 
 ```xml
     <import_mode>MANUAL_IMPORT</import_mode>
@@ -5749,6 +6152,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <finish_time>1774428275</finish_time>
     <insert_tm>1774428275</insert_tm>
     <start_time>1774428275</start_time>
+</DescribeAssetImportTaskResponse>
 ```
 
 **错误码**
@@ -5757,7 +6161,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-##### DescribeAssetImportTaskResult
+##### 6.2.1.3 DescribeAssetImportTaskResult
+
+获取资产导入任务结果列表
 
 **授权信息**
 
@@ -5790,7 +6196,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 100 | 分页数据条数 |
-| results | Array |  | 结果集 |
+| results | Array |   | 结果集 |
 | results[].id | Integer | 1 | ID |
 | results[].task instance _ id _ | Integer | 1 | 任务实例ID |
 
@@ -5805,25 +6211,38 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeAssetImportTaskResult&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeAssetImportTaskResult&RegionId=cn-hangzhou Content-Type: application/json {
   "task_instance_id": 1,
   "asset_type": "IP",
   "is_new": 1,
   "page": 1,
   "page_size": 10,
   "search": "1_1_1_1_1"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 100,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "id": 1,
       "task_instance_id": 1,
       "asset_name": "1.1.1.1",
@@ -5835,19 +6254,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
       "insert_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetImportTaskResultResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>100</count>
     <results>
@@ -5861,6 +6273,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <insert_tm>1774428275</insert_tm>
         </item>
     </results>
+</DescribeAssetImportTaskResultResponse>
 ```
 
 **错误码**
@@ -5869,9 +6282,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### 资产扫描任务
+#### 6.2.2 资产扫描任务
 
-##### CreateAssetScanTask
+##### 6.2.2.1 CreateAssetScanTask
+
+创建资产扫描任务
 
 **授权信息**
 
@@ -5894,7 +6309,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | vpc id _ | String | body | 否 | 1 | VPC ID |
 | template id _ | Integer | body | 否 | 1 | 模版ID |
 | task name _ | String | body | 是 | 风险扫描任务- 测试 | 任务名 |
-| targets | String | body | 否 |  | 检测目标 ALL IP: 0/1 ALL WEBSITE: _ _ 0/1 ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 GROUP: _ [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3] |
+| targets | String | body | 否 |   | 检测目标 ALL IP: 0/1 ALL WEBSITE: _ _ 0/1 ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 GROUP: _ [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3] |
 | screen shot _ | Integer | body | 否 | 1 | 是否开启网站截图 1 开启 0 关闭 |
 
 **返回数据**
@@ -5902,41 +6317,50 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
-| task id _ | Integer | 1 |  |
+| task id _ | Integer | 1 |   |
 
 **示例**
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=CreateAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=CreateAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "1",
   "template_id": 1,
 ```
 
-`"task_name": "`风险扫描任务-测试`",`
+`"task_name": "`风险扫描任务`-`测试`",`
 
 ```json
   "targets": "",
   "screen_shot": 1
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_id": 1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateAssetScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_id>1</task_id>
+</CreateAssetScanTaskResponse>
 ```
 
 **错误码**
@@ -5947,7 +6371,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 500 | 101 | 服务端透传 | 服务端透传 |
 |---|---|---|---|
 
-##### DescribeAssetScanTask
+##### 6.2.2.2 DescribeAssetScanTask
+
+获取资产扫描任务详情
 
 **授权信息**
 
@@ -5967,7 +6393,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| id | Integer | body | 否 | 1 |  |
+| id | Integer | body | 否 | 1 |   |
 
 **返回数据**
 
@@ -5995,16 +6421,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
-```json
-POST https://[Endpoint]/?Action=DescribeAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json {
-  "id": 1
-}
+```
+POST https://[Endpoint]/?Action=DescribeAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+  "id": 1
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "id": 1,
   "task_instance_id": 1,
@@ -6016,18 +6451,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
   "status": "RUNNING",
   "targets": [
-    {
+```
+
+`{`
+
+```json
       "type": "ALL",
       "target": [
 ```
 
-`""` ]
-
-```
-    }
-```
-
-`],`
+`""` `]` `}` `],`
 
 ```json
   "cycle_count": 10,
@@ -6035,13 +6468,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "finish_time": 1774428275,
   "insert_tm": 1774428275,
   "start_tm": 1774428275
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <id>1</id>
     <task_instance_id>1</task_instance_id>
@@ -6065,6 +6497,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <finish_time>1774428275</finish_time>
     <insert_tm>1774428275</insert_tm>
     <start_tm>1774428275</start_tm>
+</DescribeAssetScanTaskResponse>
 ```
 
 **错误码**
@@ -6073,9 +6506,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### 风险扫描任务
+#### 6.2.3 风险扫描任务
 
-##### CreateRiskScanTask
+##### 6.2.3.1 CreateRiskScanTask
+
+创建风险扫描任务
 
 **授权信息**
 
@@ -6098,49 +6533,58 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | template id _ | Integer | body | 否 | 1 | 模版ID |
 | vpc ids _ | String | body | 否 | ["vpc 1", _ "vpc 2"] _ | VPC ID |
 | task name _ | String | body | 是 | 风险扫描任务-测试 | 任务名 |
-| targets | String | body | 否 |  | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] |
+| targets | String | body | 否 |   | 检测目标 ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
-| task id _ | Integer | 1 |  |
+| task id _ | Integer | 1 |   |
 
 **示例**
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json {
   "template_id": 1,
   "vpc_ids": [
     "vpc_1",
     "vpc_2"
 ```
 
-`],` `"task_name": "`风险扫描任务-测试`",`
+`],` `"task_name": "`风险扫描任务`-`测试`",`
 
 ```json
   "targets": ""
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_id": 1
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateRiskScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_id>1</task_id>
+</CreateRiskScanTaskResponse>
 ```
 
 **错误码**
@@ -6149,7 +6593,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-##### DescribeRiskScanTask
+##### 6.2.3.2 DescribeRiskScanTask
+
+获取风险扫描任务详情
 
 **授权信息**
 
@@ -6171,7 +6617,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| id | Integer | body | 否 | 1 |  |
+| id | Integer | body | 否 | 1 |   |
 
 **返回数据**
 
@@ -6198,16 +6644,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
-```json
-POST https://[Endpoint]/?Action=DescribeRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json {
-  "id": 1
-}
+```
+POST https://[Endpoint]/?Action=DescribeRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+  "id": 1
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "id": 1,
   "task_instance_id": 1,
@@ -6219,31 +6674,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
   "status": "RUNNING",
   "targets": [
-    {
+```
+
+`{`
+
+```json
       "type": "ALL",
       "target": [
 ```
 
-`""` ]
-
-```
-    }
-```
-
-`],`
+`""` `]` `}` `],`
 
 ```json
   "cycle_count": 10,
   "finish_time": 1774428275,
   "insert_tm": 1774428275,
   "start_tm": 1774428275
-}
 ```
 
 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRiskScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <id>1</id>
     <task_instance_id>1</task_instance_id>
@@ -6266,6 +6718,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <finish_time>1774428275</finish_time>
     <insert_tm>1774428275</insert_tm>
     <start_tm>1774428275</start_tm>
+</DescribeRiskScanTaskResponse>
 ```
 
 **错误码**
@@ -6274,7 +6727,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-##### DescribeRiskScanTaskResult
+##### 6.2.3.3 DescribeRiskScanTaskResult
+
+获取风险扫描任务结果
 
 **授权信息**
 
@@ -6306,7 +6761,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 100 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].risk id _ | Integer | 1 | 风险ID |
 | results[].risk name _ | String | xxx安全漏洞 | 风险名称 |
 | results[].risk type _ | Integer | 3 | 风险类型 2 安全漏洞 3 合规漏洞 |
@@ -6320,24 +6775,37 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeRiskScanTaskResult&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeRiskScanTaskResult&RegionId=cn-hangzhou Content-Type: application/json {
   "task_instance_id": 1,
   "risk_type": 2,
   "page": 1,
   "page_size": 10,
   "search": "1_1_1_1_1"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 100,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "risk_id": 1,
 ```
 
@@ -6348,19 +6816,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "risk_level": "LOW",
       "risk_addr": "http://1.1.1.1",
       "insert_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRiskScanTaskResultResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>100</count>
     <results>
@@ -6373,6 +6834,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <insert_tm>1774428275</insert_tm>
         </item>
     </results>
+</DescribeRiskScanTaskResultResponse>
 ```
 
 **错误码**
@@ -6381,7 +6843,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### DescribeTaskList
+#### 6.2.4 DescribeTaskList
 
 获取任务列表
 
@@ -6423,7 +6885,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 |---|---|---|---|
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].id | Integer | 1 | ID |
 | results[].task instance _ id _ | Integer | 123 | 任务实例ID |
 | results[].task name _ | String | 资产扫描任务-测试 | 任务名 |
@@ -6443,8 +6905,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Type: application/json {
   "template_id": 1,
   "page": 1,
   "page_size": 10,
@@ -6471,22 +6938,30 @@ POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Ty
 ```json
   "end_time": "2020-01-01 00:00:00",
   "start_time": "2020-01-01 00:00:00"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "id": 1,
       "task_instance_id": 123,
 ```
 
-`"task_name": "`资产扫描任务-测试`",`
+`"task_name": "`资产扫描任务`-`测试`",`
 
 ```json
       "task_type": 6,
@@ -6498,25 +6973,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "start_time": 1774428275,
       "end_time": 1774428275,
       "insert_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeTaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
         <item>
             <id>1</id>
             <task_instance_id>123</task_instance_id>
+```
+
+`<task_name>`资产扫描任务`-`测试`</task_name>`
+
+```xml
             <task_type>6</task_type>
             <status>INIT</status>
             <is_immediately>1</is_immediately>
@@ -6528,15 +7001,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <insert_tm>1774428275</insert_tm>
         </item>
     </results>
+</DescribeTaskListResponse>
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### StartTask
+#### 6.2.5 StartTask
 
 开始任务
 
@@ -6565,7 +7037,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
-| data | Array | [{"task instance id": _ _ 208, "task id": 173}] _ |  |
+| data | Array | [{"task instance id": _ _ 208, "task id": 173}] _ |   |
 | data[].task instance id _ _ | Integer | 208 | 任务实例ID |
 
 | data[].task id _ | Integer | 173 | 任务ID |
@@ -6575,39 +7047,40 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=StartTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=StartTask&RegionId=cn-hangzhou Content-Type: application/json {
   "task_ids": [
 ```
 
-`1,` `2,` ]
+`1,` `2,` `]` `}` 正常返回示例 `JSON` 格式
 
 ```
-}
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "data": [
-    {
+```
+
+`{`
+
+```json
       "task_instance_id": 208,
       "task_id": 173
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <StartTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <item>
@@ -6615,15 +7088,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <task_id>173</task_id>
         </item>
     </data>
+</StartTaskResponse>
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### StopTask
+#### 6.2.6 StopTask
 
 停止任务
 
@@ -6658,32 +7130,36 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=StopTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=StopTask&RegionId=cn-hangzhou Content-Type: application/json {
   "task_ids": [
 ```
 
-`1,` `2,` ]
+`1,` `2,` `]` `}` 正常返回示例 `JSON` 格式
 
 ```
-}
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <StopTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
+</StopTaskResponse>
 ```
 
 **错误码**
@@ -6692,7 +7168,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### SuspendTask
+#### 6.2.7 SuspendTask
 
 暂停任务
 
@@ -6729,32 +7205,36 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=SuspendTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=SuspendTask&RegionId=cn-hangzhou Content-Type: application/json {
   "task_ids": [
 ```
 
-`1,` `2,` ]
+`1,` `2,` `]` `}` 正常返回示例 `JSON` 格式
 
 ```
-}
+Content-Type:application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <SuspendTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
+</SuspendTaskResponse>
 ```
 
 **错误码**
@@ -6763,7 +7243,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### DeleteTask
+#### 6.2.8 DeleteTask
 
 删除任务
 
@@ -6800,45 +7280,47 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DeleteTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DeleteTask&RegionId=cn-hangzhou Content-Type: application/json {
   "task_ids": [
 ```
 
-`1,` `2,` ]
+`1,` `2,` `]` `}` 正常返回示例 `JSON` 格式
 
 ```
-}
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
+</DeleteTaskResponse>
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-### 风险相关接口
+### 6.3 风险相关接口
 
-#### 安全漏洞
+#### 6.3.1 安全漏洞
 
-##### DescribeRiskList
+##### 6.3.1.1 DescribeRiskList
 
 获取安全漏洞列表
 
@@ -6889,7 +7371,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].risk id _ | Integer | 1 | 风险ID |
 | results[].asset id _ | Integer | 1 | 资产ID |
 | results[].vuln id _ | Integer | 1 | 漏洞ID |
@@ -6917,8 +7399,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "public_network_asset",
   "asset_id": 1,
   "group_ids": [
@@ -6985,20 +7472,23 @@ POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Ty
   "vuln_types": [
 ```
 
-`1,` ]
+`1,` `]` `}` 正常返回示例 `JSON` 格式
 
 ```
-}
+Content-Type:application/json
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "asset_id": 1,
       "vuln_id": 1,
@@ -7019,19 +7509,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "last_detect_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRiskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -7058,6 +7541,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeRiskListResponse>
 ```
 
 **错误码**
@@ -7066,9 +7550,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### 对外暴露
+#### 6.3.2 对外暴露
 
-##### DescribeBaselineRiskList
+##### 6.3.2.1 DescribeBaselineRiskList
 
 获取对外暴露列表
 
@@ -7116,7 +7600,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].risk id _ | Integer | 1 | 风险ID |
 | results[].asset id _ | Integer | 1 | 资产ID |
 | results[].rule id _ | Integer | 1 | 规则ID |
@@ -7140,8 +7624,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 请求示例
 
+```
+POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Content-Type: application/json {
   "vpc_id": "public_network_asset",
   "group_ids": [
 ```
@@ -7196,17 +7685,25 @@ POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Co
   "search": "CVE-2021-44228",
   "update_tm_end": "2021-01-04 00:00:00",
   "update_tm_start": "2021-01-04 00:00:00"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "asset_id": 1,
       "rule_id": 1,
@@ -7223,19 +7720,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "vuln_addr": "192.168.0.1:443",
       "insert_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeBaselineRiskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -7258,6 +7748,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeBaselineRiskListResponse>
 ```
 
 **错误码**
@@ -7266,9 +7757,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-#### 合规漏洞
+#### 6.3.3 合规漏洞
 
-##### DescribeComplianceRiskList
+##### 6.3.3.1 DescribeComplianceRiskList
 
 获取合规漏洞列表
 
@@ -7326,7 +7817,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题 |
 | count | Integer | 10 | 总数 |
-| results | Array |  | 结果 |
+| results | Array |   | 结果 |
 | results[].risk id _ | Integer | 1 | 风险ID |
 | results[].asset id _ | Integer | 1 | 资产ID |
 | results[].risk name _ | String | foo | 风险名称 |
@@ -7363,7 +7854,6 @@ POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou 
 ```
 
 ```json
-{
   "vpc_id": "public_network_asset",
   "asset_id": 1,
   "host_asset_id": 1,
@@ -7450,17 +7940,25 @@ POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou 
 
 ```json
   "update_tm_start": "2021-01-04 00:00:00"
-}
 ```
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "asset_id": 1,
       "risk_name": "foo",
@@ -7493,19 +7991,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "ignore_comment": "xxx",
       "insert_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeComplianceRiskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -7540,6 +8031,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeComplianceRiskListResponse>
 ```
 
 **错误码**
@@ -7548,9 +8040,9 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|
 | 500 | 101 | 服务端透传 | 服务端透传 |
 
-## 安全审计
+## 7 安全审计
 
-### GetData
+### 7.1 GetData
 
 获取审计日志列表
 
@@ -7587,7 +8079,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -audit event _ | String | 导入资产 | 日志事件。 |
 | -event attr _ | String | 【rp】导入 | 日志属性。 |
 | -event result _ | String | SUCCESS | 事件结果 enum[SUCCESS\|FAILED]。 |
@@ -7610,16 +8102,20 @@ https://[Endpoint]/?Action=GetData&RegionId=cnhangzhou&company_id=0&csv=1&end=17
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":150,
     "path":"http://oss.xxxx.xxxx/xxx/xx",
     "results":[
-        {
 ```
 
-`"audit_event":"`导入资产`",` `"event_attr":"`【`rp`】导入`",`
+`{` `"audit_event":"`导入资产`",` `"event_attr":"`【`rp`】导入`",`
 
 ```json
             "module":"ASSET",
@@ -7628,19 +8124,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "insert_tm":1722478948,
             "id":1947,
             "login_ip":"192.168.102.18"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>150</count>
     <path>http://oss.xxxx.xxxx/xxx/xx</path>
@@ -7654,16 +8143,15 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <login_username>aliens</login_username>
         <module>ASSET</module>
     </results>
+</GetDataResponse>
 ```
-
-**错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-### LouauditCleanData
+### 7.2 LouauditCleanData
 
 清理审计日志
 
@@ -7692,9 +8180,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| status | String |  | 成功状态。 |
-
-**示例**
+| status | String |   | 成功状态。 |
 
 请求示例
 
@@ -7704,19 +8190,24 @@ https://[Endpoint]/?Action=LouauditCleanData&RegionId=cn-hangzhou&keep_time=1722
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "status":""
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "status":""
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <LouauditCleanDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</LouauditCleanDataResponse>
 ```
 
 **错误码**
@@ -7724,4 +8215,4 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | Parameter 1001API is mandatory for this action. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error. |

@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 33
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 MaxCompute Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%A4%A7%E6%95%B0%E6%8D%AE/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20MaxCompute%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 MaxCompute Developer Guide 20220928
@@ -68,7 +68,7 @@ The following table describes the overall information about SDK packages provide
 | odps-sdk-mapred | The MapReduce API for MaxCompute. |
 | odps-sdk-graph | The Graph API for MaxCompute. |
 
-The SDK packages are available at SDK package download. If your MaxCompute version is earlier than V3.8.0, download the 0.27.2-public/ version of SDK packages. If your MaxCompute version is V3.8.0 or later, download the 0.30.8-public/ or 0.30.9-public/ version of SDK packages.
+The SDK packages are available at SDK package download. Not e If your MaxCompute version is earlier than V3.8.0, download the 0.27.2-public/ version of SDK packages. If your MaxCompute version is V3.8.0 or later, download the 0.30.8-public/ or 0.30.9-public/ version of SDK packages.
 
 ### 1.2 Prerequisites
 
@@ -87,7 +87,7 @@ You can obtain an AccessKey pair in the Apsara Stack Cloud Management (ASCM) con
 This topic describes how to log on to the Apsara Stack Cloud Management (ASCM) console. Prerequisites The IP address or domain name of the ASCM console is obtained from deployment personnel. The URL used to log on to the ASCM console is in the following format: https://IP address or domain name of the ASCM console. A browser is available. We recommend that you use Google Chrome. Procedure
 1. In the address bar, enter the URL used to log on to the ASCM console. Press Enter.
 2. Enter the correct username and password.
-Obtain the username and password used to log on to the console from the operations administrator. When you log on to the ASCM console for the first time, you must change the password as prompted. For security purposes, your password must meet the complexity requirements. Specifically, the password must be 8 to 20 characters in length and must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters such as ! @ # $ %
+Obtain the username and password used to log on to the console from the operations administrator. Not e When you log on to the ASCM console for the first time, you must change the password as prompted. For security purposes, your password must meet the complexity requirements. Specifically, the password must be 8 to 20 characters in length and must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters such as ! @ # $ %
 3. Click Login to go to the homepage of the ASCM console.
 
 ##### 1.2.2.2 Obtain the AccessKey pair of an organization
@@ -100,7 +100,7 @@ This topic describes how to obtain an AccessKey pair. Prerequisites Only the ope
 icon on the right of an organization.
 5. Select AccessKey from the shortcut menu.
 6. In the message that appears, view the AccessKey pair of the organization.
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
+Not e An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
 
 ##### 1.2.2.3 View the AccessKey pair of your Apsara Stack tenant account
 
@@ -109,16 +109,16 @@ tenant account To secure cloud resources, the system must verify the identity of
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and click User
 Inf ormat ion.
 3. In the Apsara St ack AccessKey Pair section of the User Information page, view your AccessKey
-pair. The AccessKey pair is made up of the AccessKey ID and AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+pair. Not e The AccessKey pair is made up of the AccessKey ID and AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
 
 #### 1.2.3 Obtain the endpoint
 
 This topic describes how to obtain the service endpoint in the Apsara Stack Operations (ASO) console. Context The URL, username, and password that are required to log on to the console are obtained from deployment personnel or administrators. The URL of the ASO console is in the following format: region-id.aso.intranet-domain-id.com. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Open your browser.
 2. In the address bar, enter region-id.aso.intranet-domain-id.com and press Enter.
-You can select a language from the drop-down list in the upper-right corner.
+Not e You can select a language from the drop-down list in the upper-right corner.
 3. Enter your username and password.
-Obtain the username and password that are required to log on to the ASO console from deployment personnel or administrators. By default, the following user roles are available: security: the user who has permissions to manage other users or roles auditor: the user who has permissions to view audit logs sysadmin: the user who has permissions that a security administrator and an auditor do not have When you log on to the ASO console for the first time, you must change the password as prompted. To enhance security, the password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters, such as ! @ # $ % It must be 10 to 20 characters in length.
+Not e Obtain the username and password that are required to log on to the ASO console from deployment personnel or administrators. By default, the following user roles are available: security: the user who has permissions to manage other users or roles auditor: the user who has permissions to view audit logs sysadmin: the user who has permissions that a security administrator and an auditor do not have When you log on to the ASO console for the first time, you must change the password as prompted. To enhance security, the password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters, such as ! @ # $ % It must be 10 to 20 characters in length.
 4. Click Log On to go to the ASO page.
 5. In the left-side navigation pane, click Product s and then Product List . In the Basic O&M section
 of the Apsara St ack O&M pane, click Apsara Inf rast ruct ure Management Framework.
@@ -145,7 +145,7 @@ It is the entrance to MaxCompute SDK. You can use this class to obtain all objec
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Table t : odps.tables()) { ....
 ```
 
-`}` MaxCompute provides two endpoints. For more information, see Tunnel SDK overview .
+`}` Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview .
 
 #### 1.3.3 Projects
 
@@ -155,7 +155,7 @@ A collection of all projects in MaxCompute. A project is an element in a collect
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Project p = odps.projects().get("my_exists"); p.reload(); Map<String, String> properties = prj.getProperties(); ...
 ```
 
-MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.4 Project
 
@@ -175,7 +175,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 Map<String, String> results = instance.getTaskResults(); Map<String, TaskStatus> taskStatus = instance.getTaskStatus(); for (Entry<String, TaskStatus> status : taskStatus.entrySet()) { String result = results.get(status.getKey());
 ```
 
-`}` To create a table, you must use the SQLTask API instead of the Table API. You must pass the CREATE TABLE statement into SQLTask. MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+`}` Not e To create a table, you must use the SQLTask API instead of the Table API. You must pass the CREATE TABLE statement into SQLTask. MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.6 Instances
 
@@ -185,7 +185,7 @@ A collection of all instances in MaxCompute. An instance is an element in a coll
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Instance i : odps.instances ()) { ....
 ```
 
-`}` MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+`}` Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.7 Instance
 
@@ -207,7 +207,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 ... TaskSummary summary = instance.getTaskSummary("instance name"); String s = summary.getSummaryText();
 ```
 
-MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.8 Tables
 
@@ -217,7 +217,7 @@ A collection of all tables in MaxCompute. A table is an element in a collection.
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Table t : odps.tables()) { ....
 ```
 
-`}` MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+`}` Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.9 Table
 
@@ -227,7 +227,7 @@ A description of table information. You can obtain a list of tables through Tabl
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Table t = odps.tables().get("table name"); t.reload(); Partition part = t.getPartition(new PartitionSpec(tableSpec[1])); part.reload(); ...
 ```
 
-MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.10 Resources
 
@@ -237,7 +237,7 @@ A collection of all resources in MaxCompute. A resource is an element in a colle
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Resource r : odps.resources()) { ....
 ```
 
-`}` MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
+`}` Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview.
 
 #### 1.3.11 Resource
 
@@ -259,7 +259,7 @@ if (tr.getSourceTablePartition() ! = null) { tableSource += " partition(" + tr.g
 ....
 ```
 
-`}` MaxCompute provides two endpoints. For more information, see Tunnel SDK overview. The following sample code shows how to create a file resource:
+`}` Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview. The following sample code shows how to create a file resource:
 
 ```
 String projectName = "my_porject"; String source = "my_local_file.txt"; File file = new File(source); InputStream is = new FileInputStream(file); FileResource resource = new FileResource(); String name = file.getName(); resource.setName(name); odps.resources().create(projectName, resource, is);
@@ -289,7 +289,7 @@ A description of function information. You can obtain a list of functions throug
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Function f = odps.functions().get("function name"); List<Resource> resources = f.getResources();
 ```
 
-MaxCompute provides two endpoints. For more information, see Tunnel SDK overview. The following sample code shows how to create a function:
+Not e MaxCompute provides two endpoints. For more information, see Tunnel SDK overview. The following sample code shows how to create a function:
 
 ```
 String resources = "xxx:xxx"; String classType = "com.aliyun.odps.mapred.open.example.WordCount"; ArrayList<String> resourceList = new ArrayList<String>(); for (String r : resources.split(":")) { resourceList.add(r);
@@ -373,20 +373,20 @@ An open-source API repository compatible with Elasticsearch on MaxCompute. For m
 
 ## 2 SDK for Python
 
-This topic describes how to use SDK for Python to create, view, and delete tables. PyODPS is MaxCompute SDK for Python. PyODPS provides the DataFrame framework and basic operations on MaxCompute objects to allow you to easily analyze data in MaxCompute. For more information, visit GitHub and Docs that include details about all interfaces and classes. For more information about PyODPS, see MaxCompute User Guide. The following sections describe how to use SDK for Python to create, view, and delete tables. The following examples are for reference only. Install PyODPS PyODPS supports Python 2.6 and later (including Python 3). After you install pip in the system, you only need to run the `pip install pyodps` command. The related dependencies of PyODPS are automatically installed. For more information, see the Inst allat ion guide section in MaxCompute User Guide. Perform initialization Use your Apsara Stack tenant account to initialize a MaxCompute entry object. Example:
+This topic describes how to use SDK for Python to create, view, and delete tables. PyODPS is MaxCompute SDK for Python. PyODPS provides the DataFrame framework and basic operations on MaxCompute objects to allow you to easily analyze data in MaxCompute. For more information, visit GitHub and Docs that include details about all interfaces and classes. For more information about PyODPS, see MaxCompute User Guide. The following sections describe how to use SDK for Python to create, view, and delete tables. Not e The following examples are for reference only. Install PyODPS PyODPS supports Python 2.6 and later (including Python 3). After you install pip in the system, you only need to run the `pip install pyodps` command. The related dependencies of PyODPS are automatically installed. For more information, see the Inst allat ion guide section in MaxCompute User Guide. Perform initialization Use your Apsara Stack tenant account to initialize a MaxCompute entry object. Example:
 
 ```python
 from odps import ODPS odps = ODPS('**your-access-id**', '**your-secret-access-key**', '**your-default-project**',
             endpoint='**your-end-point**')
 ```
 
-After initialization, you can perform operations on tables, resources, and functions. Unless otherwise specified, objects in the following sections all refer to MaxCompute entry objects. Obtain a PyODPS project A project is the basic organizational unit in MaxCompute, similar to a database. You can use the `get_project` method to obtain information about a project. Example:
+After initialization, you can perform operations on tables, resources, and functions. Not e Unless otherwise specified, objects in the following sections all refer to MaxCompute entry objects. Obtain a PyODPS project A project is the basic organizational unit in MaxCompute, similar to a database. You can use the `get_project` method to obtain information about a project. Example:
 
 ```
 project = odps.get_project('my_project') # Obtain information about a project. project = odps.get_project() # Obtain information about the default project.
 ```
 
-If no parameters are specified, information about the default project is obtained. You can use the exist_project method to check whether a project exists. A table is the data storage unit in MaxCompute. Perform operations on PyODPS tables Call `list_tables` to query all tables in a project. Example:
+Not e If no parameters are specified, information about the default project is obtained. You can use the exist_project method to check whether a project exists. A table is the data storage unit in MaxCompute. Perform operations on PyODPS tables Call `list_tables` to query all tables in a project. Example:
 
 ```
 for table in odps.list_tables(): # Process each table.
@@ -627,7 +627,7 @@ Update a table resource
  table_resource.update(partition='pt=test2', project_name='my_project2')
 ```
 
-DataFrame PyODPS provides a pandas-like API called PyODPS DataFrame. This API makes full use of the computing power of MaxCompute. For more information, see DataFrame. The following DataFrame examples are provided for reference only. You must create a MaxCompute object before you perform subsequent steps.
+DataFrame PyODPS provides a pandas-like API called PyODPS DataFrame. This API makes full use of the computing power of MaxCompute. For more information, see DataFrame. The following DataFrame examples are provided for reference only. Not e You must create a MaxCompute object before you perform subsequent steps.
 
 ```
  odps = ODPS('**your-access-id**', '**your-secret-access-key**',

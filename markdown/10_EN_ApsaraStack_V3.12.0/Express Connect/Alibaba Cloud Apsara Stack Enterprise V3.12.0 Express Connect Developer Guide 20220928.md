@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 28
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Express Connect Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Express%20Connect%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Express Connect Developer Guide 20220928
@@ -56,7 +56,7 @@ To send an Express Connect API request, you must send an HTTP GET request to the
 http://Endpoint/?Action=xx&Parameters
 ```
 
-where: Endpoint: the endpoint of the Express Connect API is `vpc.`example`.com` . `example.com` is a custom domain name. You can obtain the endpoint in the Apsara Stack Operations (ASO) console. For more information, see Obtain the endpoint of ASAPI. Action: the name of the operation being performed. To create a router interface, you must set the Action parameter to CreateRouterInterface. Version: the version of the API that you need to use. The current VPC API version is 2016-04-28. Parameters: the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters are used for all Express Connect API calls regardless of the operation. For more information, see Common parameters. The following example demonstrates how to call the CreateRouterInterface operation in Express Connect. The following code has been formatted to ease reading.
+where: Endpoint: the endpoint of the Express Connect API is `vpc.`example`.com` . Not e `example.com` is a custom domain name. You can obtain the endpoint in the Apsara Stack Operations (ASO) console. For more information, see Obtain the endpoint of ASAPI. Action: the name of the operation being performed. To create a router interface, you must set the Action parameter to CreateRouterInterface. Version: the version of the API that you need to use. The current VPC API version is 2016-04-28. Parameters: the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters are used for all Express Connect API calls regardless of the operation. For more information, see Common parameters. The following example demonstrates how to call the CreateRouterInterface operation in Express Connect. The following code has been formatted to ease reading.
 
 ```
 https://vpc.example.com/?Action=CreateRouterInterface &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
@@ -274,7 +274,7 @@ JSON format `{`
 
 #### 1.5.1 CreateRouterInterface
 
-Creates a router interface. When you call this operation, make sure that the following requirements are met: You can create only one pair of interconnected router interfaces between two routers. You can create a maximum of five router interfaces for a router. If your account contains any router interface that has overdue payments, you cannot create new router interfaces. The destination CIDR block of routes in the same route table cannot be the same. You can only use a VBR for the side that initiates connections. In addition, the VBR must be activated. Router interfaces created by calling the operation are billed on a daily basis. Request parameters
+Creates a router interface. Description When you call this operation, make sure that the following requirements are met: You can create only one pair of interconnected router interfaces between two routers. You can create a maximum of five router interfaces for a router. If your account contains any router interface that has overdue payments, you cannot create new router interfaces. The destination CIDR block of routes in the same route table cannot be the same. You can only use a VBR for the side that initiates connections. In addition, the VBR must be activated. Not e Router interfaces created by calling the operation are billed on a daily basis. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -405,7 +405,7 @@ You can log on to the API Tool console through the Apsara Stack Cloud Management
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
@@ -422,9 +422,9 @@ operation name in the search box, and then click the search icon.
 
 You can obtain the endpoint of Apsara Stack API (ASAPI) in the Apsara Stack Operations (ASO) console. Procedure
 1. In the address bar, enter the URL region-id.aso.intranet-domain-id.com and press the Enter key.
-You can select a language from the drop-down list in the upper-right corner of the page.
+Not e You can select a language from the drop-down list in the upper-right corner of the page.
 2. Enter your username and password.
-Obtain the username and password for logging on to the ASO console from the deployment personnel or an administrator. When you log on to the ASO console for the first time, you must change the password of your username as prompted. To enhance security, a password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). It must be 10 to 20 characters in length.
+Not e Obtain the username and password for logging on to the ASO console from the deployment personnel or an administrator. When you log on to the ASO console for the first time, you must change the password of your username as prompted. To enhance security, a password must meet the following requirements: It must contain uppercase and lowercase letters. It must contain digits. It must contain special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). It must be 10 to 20 characters in length.
 3. Click Log On to go to the ASO console.
 4. In the left-side navigation pane, choose Product s > Product List . On the Product List page, click
 Apsara Inf rast ruct ure Management Framework.
@@ -452,12 +452,12 @@ An AccessKey pair is composed of an AccessKey ID and an AccessKey secret. The Ac
 icon on the right of the organization to be added.
 5. Select AccessKey.
 6. In the AccessKey message, view the AccessKey pair of the organization.
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization. Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following operations:
+Not e An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations use the same AccessKey pair as their level-1 organization. Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following operations:
 1. Log on to the ASCM console as an administrator.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and click User
 Inf ormat ion.
 3. In the Apsara St ack AccessKey Pair section of the User Information page, view your AccessKey
-pair. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
+pair. Not e The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide you full permissions on Apsara Stack resources. You must keep the AccessKey pair confidential.
 
 ### 2.7 Query the region ID
 

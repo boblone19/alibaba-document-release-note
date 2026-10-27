@@ -5,14 +5,89 @@ doc_version: "20260729"
 pdf_pages: 180
 source_pdf: "35_容器安全开发指南_container-security-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/aegis/zh/container-security-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云安全中心（安骑士） 容器安全开发指南
 
-## 快速入门
+## 目录
 
-### 开发文档使用说明
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取AccessKey
+  - 2.2 获取STS AccessKey
+  - 2.3 获取API信息及其EndPoint
+- 3 调用示例
+  - 3.1 Java SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Java SDK
+      - 3.1.2.2 使用CommonRequest进行调用
+  - 3.2 Python SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Python SDK
+      - 3.2.2.2 使用CommonRequest进行调用
+  - 3.3 Go SDK调用示例
+    - 3.3.1 快速开始
+    - 3.3.2 使用手册
+      - 3.3.2.1 安装Go SDK核心包
+      - 3.3.2.2 使用CommonRequest进行调用
+- 4 API公共参数
+- 5 API参考
+  - 5.1 DescribeLatestScanTask
+  - 5.2 ListImageRisk
+  - 5.3 UpdateJenkinsImageScanTaskStatus
+  - 5.4 DescribeImageInfoList
+  - 5.5 DescribeImageBaselineCheckSummary
+  - 5.6 DescribeImageListWithBaselineName
+  - 5.7 DescribeImageBaselineItemList
+  - 5.8 DescribeCycleTaskList
+  - 5.9 DescribeContainerCriteria
+  - 5.10 DescribeContainerFieldStatistics
+  - 5.11 DescribeContainerGroupedFieldDetail
+  - 5.12 DescribeContainerInstances
+  - 5.13 DescribeGroupedContainerInstances
+  - 5.14 DescribeImageSecurityScanCount
+  - 5.15 DescribeImageCriteria
+  - 5.16 GetRegistryScanDayNum
+  - 5.17 DescribeImageInstances
+  - 5.18 ListPrivateRegistryList
+  - 5.19 ListPrivateRegistryType
+  - 5.20 DescribeAlarmEventDetail
+  - 5.21 DescribeNsasSuspEventType
+  - 5.22 DescribeSuspEvents
+  - 5.23 DescribeConcernNecessity
+  - 5.24 DescribeEventLevelCount
+  - 5.25 DescribeSecurityEventOperations
+  - 5.26 DescribeGroupedVul
+  - 5.27 DescribeImageGroupedVulList
+  - 5.28 DescribeAllGroups
+  - 5.29 DescribeImageVulList
+  - 5.30 DescribeVulDetails
+  - 5.31 DescribeAssetDetailByUuid
+  - 5.32 DescribeAllEntity
+  - 5.33 DescribeClusterVulStatistics
+  - 5.34 DescribeContainerInstancesWithoutAscm
+  - 5.35 DescribeExportInfo
+  - 5.36 DescribePropertyCount
+  - 5.37 DescribePropertyCronDetail
+  - 5.38 DescribePropertySoftwareDetail
+  - 5.39 DescribePropertyUserDetail
+  - 5.40 ExportRecord
+  - 5.41 GetClusterCheckItemWarningStatistics
+  - 5.42 GetClusterSuspEventStatistics
+  - 5.43 IgnoreCheckItems
+  - 5.44 ListCheckItemWarningMachine
+  - 5.45 ListCheckItemWarningSummary
+  - 5.46 ModifyOperateVul
+- 6 错误代码表
+
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -33,15 +108,22 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍如何通过POP网关调用专有云API。
 
 **流程图**
 
-## 准备工作
+> 获取API信息
+> 获取AccessKey或STSAccessKey
 
-获取公共Header参数获取ApsaraUni-manager运营控制台的Endpoint 获取ApsaraUni-manager运营控制台正式调用的SDK包调用API
+> 获取公共Header参数
+> 获取ApsaraUni-manager运营控制台
+> 的Endpoint
+> 获取ApsaraUni-manager运营控制台
+> 正式调用
+> 的SDK包
+> 调用API
 
 **调用步骤**
 
@@ -55,18 +137,18 @@ converter: line-classifier (PyMuPDF)
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrganizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup章节。
 
-|  | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集，则需要同时指定组织ID。 |
+|   | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集，则需要同时指定组织ID。 |
 |---|---|
-|  | resourcegroupid>， |
+|   | resourcegroupid>， |
 
 4. 获取对应的API参考文档。
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-## 准备工作
+## 2 准备工作
 
-### 获取AccessKey
+### 2.1 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过 RAM授权的AccessKey。
 
@@ -101,12 +183,12 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.2 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -146,11 +228,16 @@ AccessKeySecret>");
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -185,11 +272,15 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
 
 **说明**
@@ -251,11 +342,11 @@ rStsAccessSecret>");
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取API信息及其EndPoint
+`}` `}`
+
+### 2.3 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -273,17 +364,17 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-## 调用示例
+## 3 调用示例
 
-### Java SDK调用示例
+### 3.1 Java SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取产品名Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 阿里云专有云Java SDK需要1.8及以上的JDK。
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取Endpoint，具体操作，请参见获取API信息及其EndPoint。 阿里云专有云Java SDK需要1.8及以上的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -337,14 +428,13 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### 使用手册
+`}` `}` `}`
 
-##### 安装Java SDK
+#### 3.1.2 使用手册
+
+##### 3.1.2.1 安装Java SDK
 
 本文介绍如何安装及调用云盾Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包（SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
@@ -356,7 +446,7 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 </dependency>
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.1.2.2 使用CommonRequest进行调用
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -365,9 +455,7 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发工具** > **API****与工具**
 > **开发者门户**，选择**API****集成** > **API****调试**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -469,13 +557,13 @@ ourAccessSecret>");
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -493,12 +581,9 @@ ourAccessSecret>");
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` `}` `}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -589,19 +674,19 @@ ourAccessSecret>");
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -625,10 +710,9 @@ ourAccessSecret>");
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **重要**
 
@@ -644,15 +728,19 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Python SDK调用示例
+### 3.2 Python SDK调用示例
 
-#### 快速开始
+#### 3.2.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取 AccessKey。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取 AccessKey。 获取到Endpoint。具体操作，请参见获取API信息及其EndPoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -688,13 +776,13 @@ request.set_version('<API-version>') # 接口的版本 request.set_action_name('
 ction>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.2.2 使用手册
 
-##### 安装Python SDK
+##### 3.2.2.1 安装Python SDK
 
-本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
+本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
 
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -708,7 +796,7 @@ pip install aliyun-python-sdk-core
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.2 使用CommonRequest进行调用
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -717,9 +805,7 @@ pip3 install aliyun-python-sdk-core-v3
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发工具** > **API****与工具**
 > **开发者门户**，选择**API****集成** > **API****调试**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -733,7 +819,7 @@ pip3 install aliyun-python-sdk-core-v3
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -742,13 +828,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -757,13 +837,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-SecurityToken>"};
@@ -772,35 +852,39 @@ def describe_api_groups():
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -809,7 +893,7 @@ def describe_api_groups():
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -821,14 +905,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -847,13 +930,13 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-**忽略证书**
+> **忽略证书**
 
 **重要**
 
@@ -864,7 +947,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -874,17 +957,17 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-)
+`)`
 
-### Go SDK调用示例
+### 3.3 Go SDK调用示例
 
-#### 快速开始
+#### 3.3.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取 AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取 AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取到Endpoint。具体操作，请参见获取API信息及其EndPoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -909,27 +992,38 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 使用手册
+
+##### 3.3.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.3.2.2 使用CommonRequest进行调用
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -938,9 +1032,7 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **开发工具** > **API****与工具**
 > **开发者门户**，选择**API****集成** > **API****调试**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -957,7 +1049,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1005,19 +1097,22 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 package main import (
@@ -1027,7 +1122,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -1072,17 +1167,22 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
@@ -1093,16 +1193,15 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -1134,7 +1233,7 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-## API公共参数
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -1156,9 +1255,9 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 
 API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码RequestId。
 
-## API参考
+## 5 API参考
 
-### DescribeLatestScanTask
+### 5.1 DescribeLatestScanTask
 
 调用DescribeLatestScanTask接口查询最近一次的病毒扫描任务进度。
 
@@ -1196,21 +1295,25 @@ https://[Endpoint]/?Action=DescribeLatestScanTask&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "LastCheckTime":1671610264000,
     "RiskNum":1,
     "TargetInfo":"[{\"type\":\"uuid\",\"name\":\"host001\",\"target\":\"503201a7-14c6-4280-801b-1169ed
 42****\"}]",
     "Uuids":"78645c8e-2e89-441b-8eb***,a9622a6b-adb5-4dd3-929e,0136460a-1cb5-44e8-****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeLatestScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <LastCheckTime>1671610264000</LastCheckTime>
     <RiskNum>1</RiskNum>
@@ -1219,9 +1322,12 @@ rgetInfo>
     <Uuids>
         <uuid>78645c8e-2e89-441b-8eb***,a9622a6b-adb5-4dd3-929e,0136460a-1cb5-44e8-****</uuid>
     </Uuids>
+</DescribeLatestScanTaskResponse>
 ```
 
-### ListImageRisk
+### 5.2 ListImageRisk
+
+调用ListImageRisk接口获取容器镜像的安全信息。
 
 **授权信息**
 
@@ -1255,8 +1361,8 @@ rgetInfo>
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| ImageRiskList | Array |  | 镜像风险信息列表。 |
-| -EndPointList | Array |  | Endpoint信息列表。 |
+| ImageRiskList | Array |   | 镜像风险信息列表。 |
+| -EndPointList | Array |   | Endpoint信息列表。 |
 | --Domains | String | ['xxx.com','aaa.com'] | Endpoint域名名称列表。 |
 | --Type | String | internet | Endpoint域名类型。取值： internet：公网。 intranet：私网。 |
 | -RepoNamespace | String | vultar*** | 镜像命名空间。 |
@@ -1282,10 +1388,10 @@ rgetInfo>
 | -OrgId | String | 12 | 组织id。 |
 | -ResourceSetId | String | 12 | 资源集id。 |
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | -TotalCount | Integer | 23 | 查询到的数据总条数。 |
 
-| · | API |  |  |
+| · | API |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1304,11 +1410,20 @@ https://[Endpoint]/?Action=ListImageRisk&RegionId=cnhangzhou&CurrentPage=1&PageS
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ImageRiskList":[
-        {
+```
+
+`{`
+
+```json
             "ImageAccessType":"IN_SAS",
             "RepoNamespace":"vultar***",
             "RegistryType":"harbor",
@@ -1324,7 +1439,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Uuid":"624778f3-5bf2-423c-ac0c-47a62c05****",
             "RepoType":"PRIVATE",
             "EndPointList":[
-                {
+```
+
+`{`
+
+```json
                     "Domains":[
                         "xxx.com",
                         "aaa.com"
@@ -1334,10 +1453,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
                     "Type":"internet"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "ImageId":"f922bfeb6960436fe3f0e7b62fc6b9a0b47980986669c367c22433269404****",
@@ -1347,10 +1465,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "VpcURLs":"****-registry-registry-vpc.cn-shenzhen-finance-1.cr.aliyuncs.com/xxxx/docker-**
 **",
             "ResourceSetId":"12"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -1358,14 +1475,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":20,
         "CurrentPage":1,
         "Count":3
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListImageRiskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ImageRiskList>
         <RepoNamespace>vultar***</RepoNamespace>
@@ -1402,9 +1517,10 @@ cURLs>
         <PageSize>20</PageSize>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</ListImageRiskResponse>
 ```
 
-### UpdateJenkinsImageScanTaskStatus
+### 5.3 UpdateJenkinsImageScanTaskStatus
 
 调用UpdateJenkinsImageScanTaskStatus接口修改jenkins镜像仓库扫描任务状态。
 
@@ -1448,14 +1564,18 @@ https://[Endpoint]/?Action=UpdateJenkinsImageScanTaskStatus&RegionId=cn-hangzhou
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "TimeCost":1
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "TimeCost":1
+```
+
+`}` `XML` 格式
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusResponse>
@@ -1464,7 +1584,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusRe
 </UpdateJenkinsImageScanTaskStatusResponse>
 ```
 
-### DescribeImageInfoList
+### 5.4 DescribeImageInfoList
 
 查询镜像信息集合。
 
@@ -1479,7 +1599,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusRe
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ImageInfos | Array of ImageInfo |  | 镜像信息。 |
+| ImageInfos | Array of ImageInfo |   | 镜像信息。 |
 | AlarmCount | Integer | 1 | 异常事件数量。 |
 | AlarmStatus | String | NO | 是否有安全告警。 YES：有安全告警。 NO：无安全告警。 |
 | Digest | String | 6a5e1031a5858617f7d 8a179ead6*** | 镜像摘要。 |
@@ -1514,7 +1634,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusRe
 http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ImageInfos>
@@ -1543,10 +1663,9 @@ http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3
 </ImageInfos> <RequestId>B41B****-337A-472D-B82E-9FD3642B****</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ImageInfos": {
         "Status": "NORMAL",
         "RepoNamespace": "hang***-namespace",
@@ -1570,14 +1689,17 @@ http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3
         "RegionId": "cn-wu***-env***-d01***",
         "RepoId": "crr-vridcl4****",
         "AlarmCount": 1
-    },
-    "RequestId": "B41B****-337A-472D-B82E-9FD3642B****"
-}
 ```
 
-**5.5.**
+`},`
 
-### DescribeImageBaselineCheckSummary
+```json
+    "RequestId": "B41B****-337A-472D-B82E-9FD3642B****"
+```
+
+`}`
+
+### 5.5 DescribeImageBaselineCheckSummary
 
 镜像基线检查查询。
 
@@ -1597,7 +1719,7 @@ http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| BaselineResultSu mmary | Array of BaselineResultSu mmary |  | 基线扫描结果。 |
+| BaselineResultSu mmary | Array of BaselineResultSu mmary |   | 基线扫描结果。 |
 | BaselineClassAlia s | String | 身份鉴别 | 基线分类。 |
 | BaselineClassKey | String | identification | 基线分类key。 |
 | BaselineNameAlia s | String | 身份鉴别 | 基线名称。 |
@@ -1611,7 +1733,7 @@ http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3
 | LowRiskImage | Integer | 2 | 低风险镜像统计。 |
 | MiddleRiskImage | Integer | 3 | 中风险镜像统计。 |
 | Status | Integer | 0 | 基线状态： 0：正常。 1：异常。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 18 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -1626,7 +1748,7 @@ http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3
 http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PageInfo>
@@ -1649,16 +1771,19 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary
 </BaselineResultSummary>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "PageInfo": {
         "TotalCount": 18,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 18
-    },
+```
+
+`},`
+
+```json
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "BaselineResultSummary": {
         "Status": 0,
@@ -1672,13 +1797,11 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary
         "BaselineNameLevel": "high",
         "LastScanTime": 1639236844747,
         "BaselineNameKey": "identification"
-    }
-}
 ```
 
-**5.6.**
+`}` `}`
 
-### DescribeImageListWithBaselineName
+### 5.6 DescribeImageListWithBaselineName
 
 查询基线检查详情。
 
@@ -1704,7 +1827,7 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ImageInfos | Array of ImageInfos |  | 镜像信息。 |
+| ImageInfos | Array of ImageInfos |   | 镜像信息。 |
 | Digest | String | 6a5e1031a5858617f7d 8a179ead6**** | 镜像摘要。 |
 | Endpoints | String | [] | 镜像端点。 |
 | HighRiskImage | Integer | 1 | 高风险镜像统计。 |
@@ -1727,14 +1850,12 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary
 | Tag | String | 0.2 | 镜像标签。 |
 | TotalItemCount | Integer | 1 | 镜像实例总计。 |
 | Uuid | String | B41B3780-337A-472D- B82E-9FD36****** | 资产UUID。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 18 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | TotalCount | Integer | 18 | 总数据条数。 |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B935 | 本次调用请求的ID。 |
-
-**示例**
 
 请求示例
 
@@ -1742,7 +1863,7 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary
 http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=identification
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ImageInfos>
@@ -1774,10 +1895,9 @@ http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B935</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ImageInfos": {
         "NoRiskImage": 3,
         "RepoNamespace": "hanghai-namespace",
@@ -1799,18 +1919,27 @@ http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=
         "Tag": 0.2,
         "RegionId": "cn-wulan-env116-d01***",
         "RepoId": "crr-vridcl4****"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 18,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 18
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B935"
-}
 ```
 
-### DescribeImageBaselineItemList
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B935"
+```
+
+`}`
+
+### 5.7 DescribeImageBaselineItemList
 
 查询镜像基线检查项。
 
@@ -1833,7 +1962,7 @@ http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| BaselineItemInfos | Array of BaselineItemInfos |  | 检查项。 |
+| BaselineItemInfos | Array of BaselineItemInfos |   | 检查项。 |
 | BaselineClassAlia s | String | 身份鉴别 | 基线类型。 |
 | BaselineClassKey | String | identification | 基线类型key。 |
 | BaselineItemAlias | String | 确保系统不存在空密码账户 | 基线检查项。 |
@@ -1842,7 +1971,7 @@ http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=
 | BaselineNameKe y | String | identification | 基线名称key。 |
 | Status | Integer | 0 | 状态。 0：正常。 1：异常。 |
 | WhiteList | Integer | 0 | 白名单。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 18 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -1857,7 +1986,7 @@ http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=
 http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798217637868ef4****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <BaselineItemInfos>
@@ -1881,10 +2010,9 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "BaselineItemInfos": {
         "Status": 0,
         "BaselineClassKey": "identification",
@@ -1898,18 +2026,27 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798
         "BaselineNameAlias": "身份鉴别",
         "WhiteList": 0,
         "BaselineNameKey": "identification"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 200,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 18
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeCycleTaskList
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.8 DescribeCycleTaskList
 
 查询镜像扫描任务集合。
 
@@ -1929,7 +2066,7 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| CycleScheduleRe sponseList | Array of CycleScheduleRe sponse |  | 定时任务列表。 |
+| CycleScheduleRe sponseList | Array of CycleScheduleRe sponse |   | 定时任务列表。 |
 | ConfigId | String | 60846e06a516e91ce1 665a8b50***** | 配置ID。 |
 | Enable | Integer | 1 | 是否开启。 0：未开启。 1：已开启。 |
 | FirstDateStr | Long | 1639236844747 | 首次扫描时间。使用时间戳格式，单位：毫秒。 |
@@ -1942,7 +2079,7 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798
 | TargetStartTime | Integer | 0 | 目标开始时间。单位：小时。 |
 | TaskName | String | IMAGE SCAN _ | 任务名称。镜像扫描固定值：IMAGE SCAN。 _ |
 | TaskType | String | IMAGE SCAN _ | 任务类型。镜像扫描固定值：IMAGE SCAN。 _ |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 15 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -1959,7 +2096,7 @@ http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798
 http(s)://[Endpoint]/?Action=DescribeCycleTaskList &TaskType=IMAGE_SCAN
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CycleScheduleResponseList>
@@ -1983,10 +2120,9 @@ http(s)://[Endpoint]/?Action=DescribeCycleTaskList &TaskType=IMAGE_SCAN
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "CycleScheduleResponseList": {
         "TargetEndTime": 24,
         "TaskName": "IMAGE_SCAN",
@@ -2000,18 +2136,27 @@ http(s)://[Endpoint]/?Action=DescribeCycleTaskList &TaskType=IMAGE_SCAN
         "ConfigId": "60846e06a516e91ce1665a8b50*****",
         "LastTaskId": "c619d978da536af2532ea45501ef****",
         "PeriodUnit": "day"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 15,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 15
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeContainerCriteria
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.9 DescribeContainerCriteria
 
 获取容器查询条件。
 
@@ -2027,7 +2172,7 @@ http(s)://[Endpoint]/?Action=DescribeCycleTaskList &TaskType=IMAGE_SCAN
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| CriteriaList | Array of Criteria |  | 查询条件列表。 |
+| CriteriaList | Array of Criteria |   | 查询条件列表。 |
 | Name | String | demoKey | 参数key。 |
 | Type | String | select | 参数类型。 input：输入框。 select：下拉选择框。 |
 
@@ -2043,7 +2188,7 @@ http(s)://[Endpoint]/?Action=DescribeCycleTaskList &TaskType=IMAGE_SCAN
 http(s)://[Endpoint]/?Action=DescribeContainerCriteria
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CriteriaList>
@@ -2053,20 +2198,24 @@ http(s)://[Endpoint]/?Action=DescribeContainerCriteria
 </CriteriaList> <RequestId>clusterTypeB41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "CriteriaList": {
         "Type": "select",
         "Values": "value1,value2,value3",
         "Name": "demoKey"
-    },
-    "RequestId": "clusterTypeB41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeContainerFieldStatistics
+`},`
+
+```json
+    "RequestId": "clusterTypeB41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.10 DescribeContainerFieldStatistics
 
 查询容器风险统计。
 
@@ -2080,7 +2229,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerCriteria
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ContainerGroupe dFields | Struct |  | 容器组信息。 |
+| ContainerGroupe dFields | Struct |   | 容器组信息。 |
 | AlarmContainerC ount | Integer | 2 | 告警容器统计。 |
 | AlarmInstanceCo unt | Integer | 3 | 告警实例统计。 |
 
@@ -2107,7 +2256,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerCriteria
 http(s)://[Endpoint]/?Action=DescribeContainerFieldStatistics
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <ContainerGroupedFields>
@@ -2128,10 +2277,9 @@ http(s)://[Endpoint]/?Action=DescribeContainerFieldStatistics
 </ContainerGroupedFields>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "ContainerGroupedFields": {
         "RiskContainerCount": 4,
@@ -2148,13 +2296,11 @@ http(s)://[Endpoint]/?Action=DescribeContainerFieldStatistics
         "ContainerCount": 4,
         "AlarmContainerCount": 2,
         "RiskPodCount": 3
-    }
-}
 ```
 
-**5.11.**
+`}` `}`
 
-### DescribeContainerGroupedFieldDetail
+### 5.11 DescribeContainerGroupedFieldDetail
 
 查询容器组详情。
 
@@ -2172,7 +2318,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerFieldStatistics
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 容器组详情。 |
+| Data | Struct |   | 容器组详情。 |
 | AlarmCount | Integer | 1 | 告警统计。 |
 | AppName | String | csi-provisioner | 应用名。 |
 | ClusterCurrentVe rsion | String | 无 | 已废弃。 |
@@ -2202,7 +2348,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerFieldStatistics
 http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"name\":\"riskStatus\",\"value\":\"YES\"}, {\"name\":\"internetIp\",\"value\":\"1.2.3.4\"}] &GroupField=pod
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <Data>
@@ -2226,10 +2372,9 @@ http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"n
 </Data>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "Data": {
         "ClusterState": "无",
@@ -2249,11 +2394,11 @@ http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"n
         "ClusterName": "test****",
         "RegionId": "cn-wulan-env116-d01",
         "AlarmCount": 1
-    }
-}
 ```
 
-### DescribeContainerInstances
+`}` `}`
+
+### 5.12 DescribeContainerInstances
 
 查询容器列表。
 
@@ -2271,7 +2416,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"n
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ContainerInstanc eList | Array of ContainerInstanc e |  | 容器列表。 |
+| ContainerInstanc eList | Array of ContainerInstanc e |   | 容器列表。 |
 | AlarmCount | Integer | 1 | 安全告警统计。 |
 | AlarmStatus | String | NO | 是否有安全告警。 YES：有安全告警。 NO：无安全告警。 |
 | AppName | String | csi-provisioner | 应用名。 |
@@ -2303,7 +2448,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"n
 | UpdateMark | String | 无 | 已废弃。 |
 | VulCount | Integer | 0 | 漏洞风险数。 |
 | VulStatus | String | NO | 是否有漏洞问题。 YES：有漏洞问题。 NO：无漏洞问题。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 20 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -2318,7 +2463,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"n
 http(s)://[Endpoint]/?Action=DescribeContainerInstances
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ContainerInstanceList>
@@ -2359,10 +2504,9 @@ http(s)://[Endpoint]/?Action=DescribeContainerInstances
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ContainerInstanceList": {
         "VulStatus": "NO",
         "ImageDigest": "6a5e103187b31a94592a47a5858617f7a179ead61df7606****",
@@ -2393,20 +2537,27 @@ http(s)://[Endpoint]/?Action=DescribeContainerInstances
         "ImageRepoTag": "0.2.7.0-68ada84-aliyun",
         "HcStatus": "NO",
         "UpdateMark": "无"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 50,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 20
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-**5.13.**
+`},`
 
-### DescribeGroupedContainerInstances
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.13 DescribeGroupedContainerInstances
 
 容器分组查询，应用、集群、命名空间、容器组。
 
@@ -2428,7 +2579,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerInstances
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| GroupedContaine rInstanceList | Array of GroupedContaine rInstance |  | 容器分组列表。 |
+| GroupedContaine rInstanceList | Array of GroupedContaine rInstance |   | 容器分组列表。 |
 | AlarmCount | Integer | 1 | 告警数。 |
 | AppName | String | csi-provisioner | 应用名。 |
 | ClusterId | String | Cccfd68c474454665ac e07efce924**** | 容器集群ID。 |
@@ -2449,7 +2600,7 @@ http(s)://[Endpoint]/?Action=DescribeContainerInstances
 | RiskLevel | String | medium | 风险等级。取值： high：高。 medium：中。 low：低。 |
 | RiskStatus | String | YES | 是否存在风险。 YES：存在风险。 NO：不存在风险。 |
 | VulCount | Integer | 2 | 漏洞数。 |
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 20 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -2458,15 +2609,13 @@ http(s)://[Endpoint]/?Action=DescribeContainerInstances
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
 |---|---|---|---|
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeGroupedContainerInstances
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <GroupedContainerInstanceList>
@@ -2496,10 +2645,9 @@ http(s)://[Endpoint]/?Action=DescribeGroupedContainerInstances
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "GroupedContainerInstanceList": {
         "HostIp": "47.100.XX.XX",
         "Pod": "csi-provisioner-564c7989c4-9****",
@@ -2519,18 +2667,27 @@ http(s)://[Endpoint]/?Action=DescribeGroupedContainerInstances
         "RegionId": "cn-*****-env116-d01",
         "RiskLevel": "medium",
         "AlarmCount": 1
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 35,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 20
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeImageSecurityScanCount
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.14 DescribeImageSecurityScanCount
 
 镜像安全扫描统计。
 
@@ -2553,7 +2710,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedContainerInstances
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 镜像安全信息。 |
+| Data | Struct |   | 镜像安全信息。 |
 | ImageBaselineCo unt | Integer | 1 | 镜像基线统计。 |
 | ImageCveVulCou nt | Integer | 2 | 镜像CVE漏洞统计。 |
 | ImageMaliciousFil eCount | Integer | 3 | 镜像异常文件告警。 |
@@ -2568,7 +2725,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedContainerInstances
 http(s)://[Endpoint]/?Action=DescribeImageSecurityScanCount
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <Data>
@@ -2579,21 +2736,20 @@ http(s)://[Endpoint]/?Action=DescribeImageSecurityScanCount
 </Data>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "Data": {
         "ImageBaselineCount": 1,
         "ImageCveVulCount": 2,
         "ImageMaliciousFileCount": 3,
         "ImageScaVulCount": 1
-    }
-}
 ```
 
-### DescribeImageCriteria
+`}` `}`
+
+### 5.15 DescribeImageCriteria
 
 获取镜像查询筛选条件。
 
@@ -2608,7 +2764,7 @@ http(s)://[Endpoint]/?Action=DescribeImageSecurityScanCount
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| CriteriaList | Array of Criteria |  | 查询条件列表。 |
+| CriteriaList | Array of Criteria |   | 查询条件列表。 |
 | Name | String | riskStatus | 查询条件字段名。 |
 | Type | String | select | 查询条件类型。 input：输入框。 select：下拉选择框。 |
 | Values | String | NO | 查询条件值。 |
@@ -2622,7 +2778,7 @@ http(s)://[Endpoint]/?Action=DescribeImageSecurityScanCount
 http(s)://[Endpoint]/?Action=DescribeImageCriteria
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CriteriaList>
@@ -2632,20 +2788,24 @@ http(s)://[Endpoint]/?Action=DescribeImageCriteria
 </CriteriaList> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "CriteriaList": {
         "Type": "select",
         "Values": "NO",
         "Name": "riskStatus"
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### GetRegistryScanDayNum
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.16 GetRegistryScanDayNum
 
 查询扫描时间设置。
 
@@ -2660,7 +2820,7 @@ http(s)://[Endpoint]/?Action=DescribeImageCriteria
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
-| ScanDayNumCon fig | Struct |  | 扫描配置。 |
+| ScanDayNumCon fig | Struct |   | 扫描配置。 |
 | DayNumList | String | 1,3,7,15,30,90,180,365 | 扫描时间范围选项。 |
 | ScanDayNum | Integer | 90 | 扫描时间范围。 |
 
@@ -2672,7 +2832,7 @@ http(s)://[Endpoint]/?Action=DescribeImageCriteria
 http(s)://[Endpoint]/?Action=GetRegistryScanDayNum
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ScanDayNumConfig>
@@ -2681,19 +2841,23 @@ http(s)://[Endpoint]/?Action=GetRegistryScanDayNum
 </ScanDayNumConfig> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ScanDayNumConfig": {
         "DayNumList": "1,3,7,15,30,90,180,365",
         "ScanDayNum": 90
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeImageInstances
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.17 DescribeImageInstances
 
 查询镜像信息列表。
 
@@ -2711,7 +2875,7 @@ http(s)://[Endpoint]/?Action=GetRegistryScanDayNum
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ImageInstanceLis t | Array of responses |  | 镜像实例列表。 |
+| ImageInstanceLis t | Array of responses |   | 镜像实例列表。 |
 | AlarmCount | Integer | 1 | 告警数。 |
 | AlarmStatus | String | YES | 是否有安全告警。 YES：有安全告警。 NO：无安全告警。 |
 | Digest | String | 6a5e1031a5858617f7d 8a179ead6*** | 镜像摘要。 |
@@ -2742,7 +2906,7 @@ http(s)://[Endpoint]/?Action=GetRegistryScanDayNum
 
 | VulStatus | String | YES | 是否有漏洞问题。 YES：有漏洞问题。 NO：无漏洞问题。 |
 |---|---|---|---|
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | Count | Integer | 15 | 总页码数。 |
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
@@ -2757,7 +2921,7 @@ http(s)://[Endpoint]/?Action=GetRegistryScanDayNum
 http(s)://[Endpoint]/?Action=DescribeImageInstances
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ImageInstanceList>
@@ -2795,10 +2959,9 @@ http(s)://[Endpoint]/?Action=DescribeImageInstances
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ImageInstanceList": {
         "VulStatus": "YES",
         "ImageSize": 101,
@@ -2826,18 +2989,27 @@ http(s)://[Endpoint]/?Action=DescribeImageInstances
         "RegionId": "cn-wulan-env116-d01",
         "RepoId": "crr-vridcl4****",
         "HcStatus": "NO"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 15,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 15
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### ListPrivateRegistryList
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.18 ListPrivateRegistryList
 
 查询私有仓集合。
 
@@ -2852,7 +3024,7 @@ http(s)://[Endpoint]/?Action=DescribeImageInstances
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ImageRegistryInf os | Array of ImageRegistryInf o |  | 镜像仓库列表。 |
+| ImageRegistryInf os | Array of ImageRegistryInf o |   | 镜像仓库列表。 |
 
 | AliUid | Long | 1 | 阿里云账号。 |
 |---|---|---|---|
@@ -2877,7 +3049,7 @@ http(s)://[Endpoint]/?Action=DescribeImageInstances
 http(s)://[Endpoint]/?Action=ListPrivateRegistryList
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <ImageRegistryInfos>
@@ -2896,10 +3068,9 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryList
 </ImageRegistryInfos>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "ImageRegistryInfos": {
         "VpcId": "112***",
@@ -2914,11 +3085,11 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryList
         "NetType": 1,
         "RegistryVersion": 1,
         "AliUid": 1
-    }
-}
 ```
 
-### ListPrivateRegistryType
+`}` `}`
+
+### 5.19 ListPrivateRegistryType
 
 查询仓库类型。
 
@@ -2932,14 +3103,12 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryList
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| RegistryTypeInfos | Array of RegistryTypeInfo |  | 仓库类型信息。 |
+| RegistryTypeInfos | Array of RegistryTypeInfo |   | 仓库类型信息。 |
 | Count | Long | 2 | 对应类型数量。 |
 | RegistryType | String | defaultAcr | 仓库注册类型。 |
 
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
 |---|---|---|---|
-
-**示例**
 
 请求示例
 
@@ -2947,7 +3116,7 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryList
 http(s)://[Endpoint]/?Action=ListPrivateRegistryType
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RegistryTypeInfos>
@@ -2956,19 +3125,23 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryType
 </RegistryTypeInfos> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RegistryTypeInfos": {
         "RegistryType": "defaultAcr",
         "Count": 2
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeAlarmEventDetail
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.20 DescribeAlarmEventDetail
 
 查询异常事件详情。
 
@@ -2986,7 +3159,7 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryType
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Data | Struct |  | 异常事件信息。 |
+| Data | Struct |   | 异常事件信息。 |
 
 | AccessCode | String | 无 | 已废弃。 |
 |---|---|---|---|
@@ -2995,9 +3168,9 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryType
 | AlarmUniqueInfo | String | asdajshdklahsdj****** | 告警事件的唯一值。 |
 | CanBeDealOnLine | Boolean | false | 是否支持在线处理告警事件，例如阻断隔离、加白名单、 忽略等。取值： true：支持在线处理。 false：不支持在线处理。 |
 | CanCancelFault | Boolean | false | 能否取消标记为误报。取值： true：可以取消标记为误报。 false：不能取消标记为误报。 |
-| CauseDetails | Array of CauseDetail |  | 事件详情。 |
+| CauseDetails | Array of CauseDetail |   | 事件详情。 |
 | Key | String | html | 文本的展示方式。取值： text：文本方式。 html：富文本方式。 |
-| Value | Array of Value |  | 事件详情值。 |
+| Value | Array of Value |   | 事件详情值。 |
 | Name | String | 排查方案 | 溯源信息字段的名称。 |
 | Type | String | html | 溯源信息字段的展示类型。取值： text：文本方式。 html：富文本方式。 |
 | Value | String | [] | 溯源信息字段值。 |
@@ -3025,7 +3198,7 @@ http(s)://[Endpoint]/?Action=ListPrivateRegistryType
 http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasdfadsfasdf******* &From=css
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <Data>
@@ -3049,7 +3222,7 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasd
     <AlarmUniqueInfo>asdajshdklahsdjkashdjka</AlarmUniqueInfo>
 ```
 
-`<AlarmEventDesc>`黑客入侵服务器后，为了让恶意后门程序能持久化运行，黑客常常将恶意`SHELL`脚本写入`crontab`、`systemd` 等计划任务。`</AlarmEventDesc>` `<AlarmEventAliasName>`网站后门-发现后门（`Webshell`）文件`</AlarmEventAliasName>`
+`<AlarmEventDesc>`黑客入侵服务器后，为了让恶意后门程序能持久化运行，黑客常常将恶意`SHELL`脚本写入`crontab`、`systemd` 等计划任务。`</AlarmEventDesc>` `<AlarmEventAliasName>`网站后门`-`发现后门（`Webshell`）文件`</AlarmEventAliasName>`
 
 ```xml
     <Level>suspicious</Level>
@@ -3073,10 +3246,9 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasd
 </Data>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "Data": {
         "CanCancelFault": false,
@@ -3099,7 +3271,7 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasd
         "AlarmUniqueInfo": "asdajshdklahsdjkashdjka",
 ```
 
-`"AlarmEventDesc": "`黑客入侵服务器后，为了让恶意后门程序能持久化运行，黑客常常将恶意`SHELL`脚本写入`crontab`、s `ystemd`等计划任务。`",` `"AlarmEventAliasName": "`网站后门-发现后门（`Webshell`）文件`",`
+`"AlarmEventDesc": "`黑客入侵服务器后，为了让恶意后门程序能持久化运行，黑客常常将恶意`SHELL`脚本写入`crontab`、`s` `ystemd`等计划任务。`",` `"AlarmEventAliasName": "`网站后门`-`发现后门（`Webshell`）文件`",`
 
 ```json
         "Level": "suspicious",
@@ -3115,16 +3287,9 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasd
                 "Value": "[]",
 ```
 
-`"Name": "`排查方案"
+`"Name": "`排查方案`"` `}` `}` `}` `}`
 
-```
-            }
-        }
-    }
-}
-```
-
-### DescribeNsasSuspEventType
+### 5.21 DescribeNsasSuspEventType
 
 告警事件类型查询。
 
@@ -3150,7 +3315,7 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasd
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| EventTypes | Array of Data |  | 事件类型列表。 |
+| EventTypes | Array of Data |   | 事件类型列表。 |
 | Name | String | 威胁情报 | 异常名称。 |
 | SuspEventCount | Integer | 12 | 事件异常数量。 |
 | Type | String | 威胁情报 | 异常类型。 |
@@ -3164,7 +3329,7 @@ http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasd
 http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <EventTypes>
@@ -3182,10 +3347,9 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
 </EventTypes>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "EventTypes": {
 ```
@@ -3196,14 +3360,9 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
         "SuspEventCount": 12,
 ```
 
-`"Name": "`威胁情报"
+`"Name": "`威胁情报`"` `}` `}`
 
-```
-    }
-}
-```
-
-### DescribeSuspEvents
+### 5.22 DescribeSuspEvents
 
 查询异常事件。
 
@@ -3244,7 +3403,7 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
 | CurrentPage | Integer | 1 | 当前页的页码。 |
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
-| SuspEvents | Array of WarningSummary |  | 异常事件内容。 |
+| SuspEvents | Array of WarningSummary |   | 异常事件内容。 |
 | Advanced | Boolean | false | 是否为高级版。 true：是。 false：否。 |
 | AlarmEventName | String | DDoS木马 | 异常事件名称。 |
 | AlarmEventName Display | String | 无 | 已废弃。 |
@@ -3266,14 +3425,14 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
 | ContainerImageN ame | String | name1 | 容器镜像名称。 |
 | DataSource | String | aegis suspicious *** _ _ | 异常事件的数据来源。 |
 | Desc | String | 检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、 病毒、黑客行为有关。 | 异常事件描述。 |
-| Details | Array of QuaraFile |  | 异常事件详情。 |
+| Details | Array of QuaraFile |   | 异常事件详情。 |
 | InfoType | String | 无 | 已废弃。 |
 | Name | String | ${suspicious.sp.rs.des cription} | 国际化显示名。 |
 | NameDisplay | String | 事件说明 | 返回参数中，异常事件显示的名称。 |
 | Type | String | text | 异常事件详情信息展示的方式。取值包括： text：文本方式。 html：富文本的方式。 |
 | Value | String | 检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、 病毒、黑客行为有关。 | 详情内容。 |
 | ValueDisplay | String | 检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、 病毒、黑客行为有关。 | 展示详情内容。 |
-| EventNotes | Array of EventNote |  | 已废弃。 |
+| EventNotes | Array of EventNote |   | 已废弃。 |
 | Note | String | 无 | 已废弃。 |
 | NoteId | Long | 1 | 已废弃。 |
 | NoteTime | String | 无 | 已废弃。 |
@@ -3296,7 +3455,7 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
 | LastTime | String | 2022-01-06 18:41:24 | 事件最新更新时间。使用yyyy-MM-dd HH:mm:ss格式。 |
 | LastTimeStamp | Long | 1234567890123 | 事件最新更新时间戳。使用时间戳格式，单位：毫秒。 |
 
-| 容器安全开发指南·A | PI参考 |  |  |
+| 容器安全开发指南·A | PI参考 |   |   |
 |---|---|---|---|
 
 | Level | String | serious | 风险等级。 serious：紧急。 suspicious：可疑。 remind：提醒。 |
@@ -3320,15 +3479,13 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType
 | Uuid | String | B41B3780-337A-472D- B82E-9FD364****** | 资产UUID。 |
 | TotalCount | Integer | 35 | 总数据条数。 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSuspEvents
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>35</TotalCount> <PageSize>20</PageSize> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <CurrentPage>1</CurrentPage> <Count>20</Count> <SuspEvents>
@@ -3420,10 +3577,9 @@ env116d01</RegionId>
 </SuspEvents>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 35,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -3500,7 +3656,7 @@ env116d01</RegionId>
             "Type": "text",
 ```
 
-`"Value": "`检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、病毒、黑客行为有关。`",` `"ValueDisplay": "`检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、病毒、黑客行为有关。" ,
+`"Value": "`检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、病毒、黑客行为有关。`",` `"ValueDisplay": "`检测模型发现您的服务器上执行的进程命令行高度可疑，很有可能与木马、病毒、黑客行为有关。`"` `,`
 
 ```json
             "InfoType": "无",
@@ -3510,17 +3666,20 @@ env116d01</RegionId>
 
 ```json
             "Name": "${suspicious.sp.rs.description}"
-        },
+```
+
+`},`
+
+```json
         "EventNotes": {
             "NoteId": 1,
             "Note": "无",
             "NoteTime": "无"
-        }
-    }
-}
 ```
 
-### DescribeConcernNecessity
+`}` `}` `}`
+
+### 5.23 DescribeConcernNecessity
 
 查询事件等级。
 
@@ -3538,30 +3697,28 @@ env116d01</RegionId>
 | ConcernNecessity | List | ["nntf", "later", "asap"] | 紧急程度。 nntf：低。 later：中。 asap：高。 |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeConcernNecessity
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <ConcernNecessity>["nntf", "later", "asap"]</ConcernNecessity>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "ConcernNecessity": "[\"nntf\", \"later\", \"asap\"]"
-}
 ```
 
-### DescribeEventLevelCount
+`}`
+
+### 5.24 DescribeEventLevelCount
 
 查询告警等级统计。
 
@@ -3582,7 +3739,7 @@ http(s)://[Endpoint]/?Action=DescribeConcernNecessity
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| EventLevels | Struct |  | 事件列表。 |
+| EventLevels | Struct |   | 事件列表。 |
 
 | Remind | Integer | 1 | 提醒事件数量。 |
 |---|---|---|---|
@@ -3598,7 +3755,7 @@ http(s)://[Endpoint]/?Action=DescribeConcernNecessity
 http(s)://[Endpoint]/?Action=DescribeEventLevelCount
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <EventLevels>
@@ -3608,20 +3765,24 @@ http(s)://[Endpoint]/?Action=DescribeEventLevelCount
 </EventLevels> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "EventLevels": {
         "Serious": 2,
         "Suspicious": 3,
         "Remind": 1
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeSecurityEventOperations
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.25 DescribeSecurityEventOperations
 
 告警事件进行处理的操作列表信息。
 
@@ -3641,14 +3802,14 @@ http(s)://[Endpoint]/?Action=DescribeEventLevelCount
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
-| SecurityEventOpe rationsResponse | Array of SecurityEventOpe ration |  | 告警信息处理列表。 |
-| MarkField | Array of MarkField |  | 已废弃。 |
+| SecurityEventOpe rationsResponse | Array of SecurityEventOpe ration |   | 告警信息处理列表。 |
+| MarkField | Array of MarkField |   | 已废弃。 |
 | FiledAliasName | String | 无 | 已废弃。 |
 | FiledName | String | 无 | 已废弃。 |
 | MarkMisType | String | 无 | 已废弃。 |
 | MarkMisValue | String | 无 | 已废弃。 |
 | SupportedMisTyp e | List | 无 | 已废弃。 |
-| MarkFieldsSource | Array of SecurityEventOpe ration |  | 告警事件信息列表。 |
+| MarkFieldsSource | Array of SecurityEventOpe ration |   | 告警事件信息列表。 |
 | FiledAliasName | String | 进程路径 | 告警名称。 |
 | FiledName | String | proc path _ | 字段key。 |
 | MarkMisValue | String | /usr/bin/ps | 操作指令。 |
@@ -3657,15 +3818,13 @@ http(s)://[Endpoint]/?Action=DescribeEventLevelCount
 | OperationParams | String | demo | 操作参数。 |
 | UserCanOperate | Boolean | false | 是否可以对告警事件进行处理。取值： true：可以对该告警事件进行处理。 false：不可以对该告警事件进行处理。 |
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSecurityEventOperations
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <SecurityEventOperationsResponse>
@@ -3689,10 +3848,9 @@ sType>
 </SecurityEventOperationsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "SecurityEventOperationsResponse": {
         "OperationParams": "demo",
@@ -3704,7 +3862,11 @@ sType>
             "MarkMisType": "无",
             "FiledAliasName": "无",
             "SupportedMisType": "无"
-        },
+```
+
+`},`
+
+```json
         "MarkFieldsSource": {
             "FiledName": "proc_path",
             "MarkMisValue": "/usr/bin/ps",
@@ -3715,12 +3877,11 @@ sType>
 ```json
             "SupportedMisType": "[\"contains\", \"notContains\", \"regex\", \"strEqual\",
 \"strNotEqual\"]"
-        }
-    }
-}
 ```
 
-### DescribeGroupedVul
+`}` `}` `}`
+
+### 5.26 DescribeGroupedVul
 
 分组查询漏洞信息。
 
@@ -3766,7 +3927,7 @@ sType>
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | CurrentPage | Integer | 1 | 当前页的页码。 |
-| GroupedVulItems | Array of GroupedVulItem |  | 漏洞分组列表。 |
+| GroupedVulItems | Array of GroupedVulItem |   | 漏洞分组列表。 |
 | AliasName | String | DSA-2019 libseccomp 安全漏洞 | 漏洞的别名。 |
 | AsapCount | Integer | 1 | 高危漏洞数。 |
 | GmtLast | Long | 1234567890123 | 最新扫描的时间戳，使用时间戳格式，单位：毫秒。 |
@@ -3792,7 +3953,7 @@ sType>
 http(s)://[Endpoint]/?Action=DescribeGroupedVul
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>25</TotalCount> <PageSize>20</PageSize> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <CurrentPage>1</CurrentPage> <GroupedVulItems>
@@ -3814,10 +3975,9 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 </GroupedVulItems>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 25,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -3838,11 +3998,11 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 
 ```json
         "Name": "debian:10:CVE-2019-9893"
-    }
-}
 ```
 
-### DescribeImageGroupedVulList
+`}` `}`
+
+### 5.27 DescribeImageGroupedVulList
 
 镜像漏洞查询。
 
@@ -3878,7 +4038,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | CurrentPage | Integer | 1 | 当前页的页码。 |
-| GroupedVulItems | Array of GroupedVulItem |  | 漏洞分组列表。 |
+| GroupedVulItems | Array of GroupedVulItem |   | 漏洞分组列表。 |
 | AliasName | String | DSA-2019 libseccomp 安全漏洞 | 漏洞别名。 |
 | AsapCount | Integer | 1 | 高危漏洞数。 |
 | GmtLast | Long | 1234567890123 | 最新时间。使用时间戳格式，单位：毫秒。 |
@@ -3901,7 +4061,7 @@ http(s)://[Endpoint]/?Action=DescribeGroupedVul
 http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>27</TotalCount> <PageSize>20</PageSize> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <CurrentPage>1</CurrentPage> <GroupedVulItems>
@@ -3922,10 +4082,9 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 </GroupedVulItems>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 27,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -3945,11 +4104,13 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 
 ```json
         "Name": "debian:10:CVE-2019-9893"
-    }
-}
 ```
 
-### DescribeAllGroups
+`}` `}`
+
+### 5.28 DescribeAllGroups
+
+调用DescribeAllGroups接口查询所有服务器分组信息。
 
 **请求参数**
 
@@ -3958,7 +4119,7 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 | Action | String | 是 | DescribeAllGroups | 要执行的操作。。取值：DescribeAllGroups。 |
 | Lang | String | 否 | zh | 请求和接收消息的语言类型。取值： zh：中文。 en：英文。 |
 
-|  |  |  |  | 容器安全开发指南·API参考 |
+|   |   |   |   | 容器安全开发指南·API参考 |
 |---|---|---|---|---|
 
 **返回数据**
@@ -3966,7 +4127,7 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | Count | Integer | 1 | 分组的总数量。 |
-| Groups | Array of Group |  | 分组信息。 |
+| Groups | Array of Group |   | 分组信息。 |
 | GroupFlag | Integer | 0 | 服务器分组类型。取值： 0：默认分组。 1：其他分组。 |
 | GroupId | Integer | 123 | 分组ID。 |
 | GroupName | String | abc | 分组名称。 |
@@ -3974,7 +4135,13 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeAllGroups
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</RequestId> <Groups>
@@ -3984,21 +4151,25 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 </Groups> <Count>1</Count>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
     "Groups": {
         "GroupName": "abc",
         "GroupFlag": 0,
         "GroupId": 123
-    },
-    "Count": 1
-}
 ```
 
-### DescribeImageVulList
+`},`
+
+```json
+    "Count": 1
+```
+
+`}`
+
+### 5.29 DescribeImageVulList
 
 镜像漏洞列表查询。
 
@@ -4037,13 +4208,13 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 | PageSize | Integer | 20 | 每页最多显示的数据条数。 |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | 本次调用请求的ID。 |
 | TotalCount | Integer | 25 | 总数据条数。 |
-| VulRecords | Array of VulRecord |  | 漏洞列表。 |
+| VulRecords | Array of VulRecord |   | 漏洞列表。 |
 | AliasName | String | DSA-2019 libseccomp 安全漏洞 | 漏洞别名。 |
 | CanUpdate | Boolean | false | 是否可以修改。取值： true false |
-| ExtendContentJso n | Struct |  | 扩展信息。 |
+| ExtendContentJso n | Struct |   | 扩展信息。 |
 | Os | String | centos | 操作系统名称。 |
 | OsRelease | String | 7 | 对应系统版本。 |
-| RpmEntityList | Array of RpmEntity |  | RPM 集合。 |
+| RpmEntityList | Array of RpmEntity |   | RPM 集合。 |
 | FullVersion | String | 1.4.3-12.el7 6.2 _ | 完整版号。 |
 | Layer | String | 27213ad3447f0209dd 152a5cadea**** | 镜像的层。 |
 | MatchDetail | String | libssh2 version less than 0:1.4.3-12.el7 6.3 _ | 漏洞命中详情。 |
@@ -4073,15 +4244,13 @@ http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList
 | Uuid | String | B41B3780-337A-472D- B82E-9FD3********* | 资产UUID。 |
 |---|---|---|---|
 
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageVulList
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>25</TotalCount> <PageSize>20</PageSize> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <VulRecords>
@@ -4120,10 +4289,9 @@ http(s)://[Endpoint]/?Action=DescribeImageVulList
 </VulRecords> <CurrentPage>1</CurrentPage>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TotalCount": 25,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -4158,14 +4326,17 @@ http(s)://[Endpoint]/?Action=DescribeImageVulList
                 "Layer": "27213ad3447f0209dd152a5cadea****",
                 "MatchDetail": "libssh2 version less than 0:1.4.3-12.el7_6.3",
                 "Name": "libssh2"
-            }
-        }
-    },
-    "CurrentPage": 1
-}
 ```
 
-### DescribeVulDetails
+`}` `}` `},`
+
+```json
+    "CurrentPage": 1
+```
+
+`}`
+
+### 5.30 DescribeVulDetails
 
 查看漏洞详情。
 
@@ -4186,9 +4357,9 @@ http(s)://[Endpoint]/?Action=DescribeImageVulList
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Cves | Array of Cve |  | CVE漏洞列表。 |
+| Cves | Array of Cve |   | CVE漏洞列表。 |
 | Classify | String | 无 | 已废弃。 |
-| Classifys | Array of Classify |  | 已废弃。 |
+| Classifys | Array of Classify |   | 已废弃。 |
 | Classify | String | 无 | 已废弃。 |
 | DemoVideoUrl | String | 无 | 已废弃。 |
 | Description | String | 无 | 已废弃。 |
@@ -4222,7 +4393,7 @@ http(s)://[Endpoint]/?Action=DescribeImageVulList
 http(s)://[Endpoint]/?Action=DescribeVulDetails &Name=debian:10:CVE-2019-9893 &Type=cve
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Cves>
@@ -4256,10 +4427,9 @@ http(s)://[Endpoint]/?Action=DescribeVulDetails &Name=debian:10:CVE-2019-9893 &T
 </Cves> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Cves": {
         "CvssVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "CvssScore": 9.3,
@@ -4291,13 +4461,17 @@ http(s)://[Endpoint]/?Action=DescribeVulDetails &Name=debian:10:CVE-2019-9893 &T
             "DemoVideoUrl": "无",
             "Description": "无",
             "Classify": "无"
-        }
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeAssetDetailByUuid
+`}` `},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.31 DescribeAssetDetailByUuid
 
 调用DescribeAssetDetailByUuid接口使用资产的UUID查询资产的详情。
 
@@ -4314,7 +4488,7 @@ http(s)://[Endpoint]/?Action=DescribeVulDetails &Name=debian:10:CVE-2019-9893 &T
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| AssetDetail | Struct |  | 资产详情对象。 |
+| AssetDetail | Struct |   | 资产详情对象。 |
 | AssetType | String | 6 | 资产类型。取值： 0：云服务器ECS。 1：负载均衡SLB。 2：NAT网关。 3：RDS数据库 4：MongoDb数据库。 5：REDIS数据库。 6：容器镜像IMAGE。 7：容器CONTAINER。 |
 | AuthModifyTime | Long | 1627974044000 | 资产授权绑定的时间戳，单位为毫秒。 |
 | AuthVersion | Integer | 1 | 资产的授权版本。取值： 1：免费版（未授权） 6：防病毒版 5：高级版 3：企业版 7：旗舰版 10：独立购买版 |
@@ -4357,7 +4531,7 @@ http(s)://[Endpoint]/?Action=DescribeVulDetails &Name=debian:10:CVE-2019-9893 &T
 http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-a701-9bbf02f4****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>39031E31-6BBA-5C99-A870-D807E78918CD </RequestId> <AssetDetail>
@@ -4372,7 +4546,7 @@ http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-
     <InternetIp>10.18.XX.XX </InternetIp>
 ```
 
-`<RegionName>`华东1（杭州） `</RegionName>`
+`<RegionName>`华东`1`（杭州） `</RegionName>`
 
 ```xml
     <Kernel>4.18.0-80.11.2.el8_0.x86_64 </Kernel>
@@ -4398,10 +4572,9 @@ http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-
 </AssetDetail>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "39031E31-6BBA-5C99-A870-D807E78918CD",
     "AssetDetail": {
         "GroupTrace": "未分组",
@@ -4415,7 +4588,7 @@ http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-
         "InternetIp": "10.18.XX.XX",
 ```
 
-`"RegionName": "`华东1（杭州）`",`
+`"RegionName": "`华东`1`（杭州）`",`
 
 ```json
         "Kernel": "4.18.0-80.11.2.el8_0.x86_64",
@@ -4438,11 +4611,11 @@ http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-
         "IpList": "[\"192.168.XX.XX\",\"192.168.XX.XX\"]",
         "MacList": "[\"00:16:3*:1*:9*:cf\"]",
         "DiskInfoList": "[ { \"diskName\": \"/dev/vda1\", \"totalSize\": 20, \"useSize\": 2 } ]"
-    }
-}
 ```
 
-### DescribeAllEntity
+`}` `}`
+
+### 5.32 DescribeAllEntity
 
 查询所有实体信息的API接口，支持多种过滤条件以满足不同场景需求。
 
@@ -4463,7 +4636,7 @@ http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-
 |---|---|---|---|
 | EntityList | Array | [ "003d544744249351** **" ] | 实体列表 |
 
-|  |  |  | 容器安全开发指南·API参考 |
+|   |   |   | 容器安全开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4479,13 +4652,28 @@ http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeAllEntity
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"F0A8***-930D-5EC1-97C8-************",
  "EntityList":[
-  {
+```
+
+`{`
+
+```json
    "InstanceName":"test",
    "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****",
    "Os":"linux",
@@ -4493,16 +4681,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "Ip":"127.0.0.1",
    "IntranetIp":"192.168.XX.XX",
    "GroupId":12345
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-### DescribeClusterVulStatistics
+### 5.33 DescribeClusterVulStatistics
 
 调用DescribeClusterVulStatistics接口获取漏洞数量统计。
 
@@ -4550,21 +4733,24 @@ https://[Endpoint]/?Action=DescribeClusterVulStatistics&RegionId=cnhangzhou&Sour
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "VulStat":{
         "LaterCount":"2",
         "AsapCount":"1",
         "NntfCount":"3"
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeClusterVulStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <VulStat>
@@ -4572,11 +4758,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <LaterCount>2</LaterCount>
         <NntfCount>3</NntfCount>
     </VulStat>
+</DescribeClusterVulStatisticsResponse>
 ```
 
-**5.34.**
-
-### DescribeContainerInstancesWithoutAscm
+### 5.34 DescribeContainerInstancesWithoutAscm
 
 调用DescribeContainerInstancesWithoutAscm接口查询容器列表不过滤多级组织信息。
 
@@ -4610,12 +4795,12 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-|  |  | [ { "ImageRepoTag": "0.3.1.0-dfa2010- aliyun", "AppName": "alibaba-log- controller", "PodIp": "172.24.XX.XX", "VulCount": 15, "HcStatus": "YES", "ImageId": "registry- vpc.cn- beijing.aliyuncs.com/ac s/log- controller@sha256:5b0 46e2de8c4908191251 93ee2eb71a66f2cc16c 032dcd8b69ead4be10 24****", "ClusterId": "cfb41a869c71e4678a 97021582dd8a****", "ImageRepoName": "log-controller", "HostIp": "172.24.XX.XX", "Pod": "alibaba-log-controller- 6f847f8786-mk2mg", "RiskStatus": "YES", "VulStatus": "YES", "AlarmStatus": "YES", "Image": "docker.io/library/nginx :latest", "ImageRepoNamespac e": "acs", "ImageDigest": "5b046e2de8c490819 125193ee2eb71a66f2c c16c032dcd8b69ead4 be1024****" |  |
+|   |   | [ { "ImageRepoTag": "0.3.1.0-dfa2010- aliyun", "AppName": "alibaba-log- controller", "PodIp": "172.24.XX.XX", "VulCount": 15, "HcStatus": "YES", "ImageId": "registry- vpc.cn- beijing.aliyuncs.com/ac s/log- controller@sha256:5b0 46e2de8c4908191251 93ee2eb71a66f2cc16c 032dcd8b69ead4be10 24****", "ClusterId": "cfb41a869c71e4678a 97021582dd8a****", "ImageRepoName": "log-controller", "HostIp": "172.24.XX.XX", "Pod": "alibaba-log-controller- 6f847f8786-mk2mg", "RiskStatus": "YES", "VulStatus": "YES", "AlarmStatus": "YES", "Image": "docker.io/library/nginx :latest", "ImageRepoNamespac e": "acs", "ImageDigest": "5b046e2de8c490819 125193ee2eb71a66f2c c16c032dcd8b69ead4 be1024****" |   |
 
 | C参o数nt名ain称erInstanc | 类型 Array | be1024**** , "示N例amespace": "kube- system", "InstanceId": | 说明容器列表。 |
 |---|---|---|---|
-| eList |  | "i- 2zegzjyotydfkz9****", "NodeInfo": "test", "ImageUuid": "5f23dfbceec289a49ac 94e035e2****", "RegionId": "cn- hangzhou", "UpdateMark": "79cff74d-e967-5407- 8a78-ee03b9****", "ContainerId": "48a6d9a92435a13ad 573372c3f3c63b7e04d 106458141df9f921557 09d****", "NodeName": "test", |  |
-|  |  | "HcCount": 1, "ClusterName": "test", "RiskCount": 1, "AlarmCount": 1, "CreateTimestamp": 1670368337000, "Exposed": 1, "ExposedDetail": " [{\\\"exposedName\\\": \\\"nginx-ingress- lb\\\",\\\"exposedType\\ \":\\\"LoadBalancer\\\",\ \\"portDOList\\\": [{\\\"name\\\":\\\"http\\\ ",\\\"nodePort\\\":32268 ,\\\"port\\\":80,\\\"target Port\\\":80}, {\\\"name\\\":\\\"https\\ \",\\\"nodePort\\\":3237 6,\\\"port\\\":443,\\\"tar getPort\\\":443}]}] " } ] |  |
+| eList |   | "i- 2zegzjyotydfkz9****", "NodeInfo": "test", "ImageUuid": "5f23dfbceec289a49ac 94e035e2****", "RegionId": "cn- hangzhou", "UpdateMark": "79cff74d-e967-5407- 8a78-ee03b9****", "ContainerId": "48a6d9a92435a13ad 573372c3f3c63b7e04d 106458141df9f921557 09d****", "NodeName": "test", |   |
+|   |   | "HcCount": 1, "ClusterName": "test", "RiskCount": 1, "AlarmCount": 1, "CreateTimestamp": 1670368337000, "Exposed": 1, "ExposedDetail": " [{\\\"exposedName\\\": \\\"nginx-ingress- lb\\\",\\\"exposedType\\ \":\\\"LoadBalancer\\\",\ \\"portDOList\\\": [{\\\"name\\\":\\\"http\\\ ",\\\"nodePort\\\":32268 ,\\\"port\\\":80,\\\"target Port\\\":80}, {\\\"name\\\":\\\"https\\ \",\\\"nodePort\\\":3237 6,\\\"port\\\":443,\\\"tar getPort\\\":443}]}] " } ] |   |
 | -ContainerId | String | B41B3780-337A-472D- B82E-9FD3******** | 容器ID。 |
 | -Image | String | registry.acs.intra.***.** *.com/acs/log- ***:0.2.7.0-68ada84- aliyun | 镜像。 |
 | -ImageId | String | asdaSdasd******** | 镜像ID。 |
@@ -4626,7 +4811,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -PodIp | String | 172.29.0.130 | 容器组IP。 |
 | -HostIp | String | 47.100.XX.XX | IP地址。 |
 
-| 容器安全开发指南·A | PI参考 |  |  |
+| 容器安全开发指南·A | PI参考 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4650,7 +4835,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -RegionId | String | cn-***-env116-d01 | 地域ID。 |
 | -HcCount | Integer | 1 | 基线检查风险数量。 |
 
-|  |  |  |  | 容器安全开发指南·API参考 |  |
+|   |   |   |   | 容器安全开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4676,17 +4861,30 @@ https://[Endpoint]/?Action=DescribeContainerInstancesWithoutAscm&RegionId=cn-han
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageInfo":{
         "TotalCount":50,
         "PageSize":20,
         "CurrentPage":1,
         "Count":20
-    },
+```
+
+`},`
+
+```json
     "ContainerInstanceList":[
-        {
+```
+
+`{`
+
+```json
             "NodeName":"cn-wulan-env116-d01.i-km100o6qw4bhyqo7pbvb",
             "ImageDigest":"6a5e103187b31a94592a47a5858617f7a179ead61df7606****",
             "VulStatus":"NO",
@@ -4718,16 +4916,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "ImageRepoTag":"0.2.7.0-68ada84-aliyun",
             "UpdateMark":"无",
             "HcStatus":"NO"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <DescribeContainerInstancesWithoutAscmResponse>
@@ -4774,7 +4965,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeContainerInstancesWithoutA
 </DescribeContainerInstancesWithoutAscmResponse>
 ```
 
-### DescribeExportInfo
+### 5.35 DescribeExportInfo
 
 查询导出任务详情。
 
@@ -4810,10 +5001,15 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeContainerInstancesWithoutA
 http(s)://[Endpoint]/?Action=DescribeExportInfo
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":32,
  "Progress":100,
  "RequestId":"F0A8***-930D-5EC1-97C8-************",
@@ -4823,10 +5019,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "CurrentCount":1,
  "Id":1,
  "Link":"http://xxxxx"
-}
 ```
 
-### DescribePropertyCount
+`}`
+
+### 5.36 DescribePropertyCount
 
 DescribePropertyCount API用于统计云安全中心中资产的属性数量，提供全面的资产视图。
 
@@ -4862,10 +5059,15 @@ DescribePropertyCount API用于统计云安全中心中资产的属性数量，�
 http(s)://[Endpoint]/?Action=DescribePropertyCount
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Sca":112,
  "User":"",
  "RequestId":"F0A8***-930D-5EC1-97C8-************",
@@ -4874,10 +5076,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "Software":111,
  "Cron":123,
  "Autorun":3
-}
 ```
 
-### DescribePropertyCronDetail
+`}`
+
+### 5.37 DescribePropertyCronDetail
 
 调用DescribePropertyCronDetail接口查询主机资产中计划任务列表的详细信息。
 
@@ -4923,7 +5126,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -Uuid | String | 162eb349-c2d9-4f8b- 805c-75b43d4c**** | 服务器的UUID。 |
 | -InstanceId | String | i- hp35tftuh52wbp1g**** | 服务器的实例ID。 |
 
-| 容器安全开发指南·A | PI参考 |  |  |
+| 容器安全开发指南·A | PI参考 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4957,11 +5160,20 @@ https://[Endpoint]/?Action=DescribePropertyCronDetail&RegionId=cnhangzhou&Remark
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Propertys":[
-        {
+```
+
+`{`
+
+```json
             "User":"root",
             "InstanceId":"i-hp35tftuh52wbp1g****",
             "ResourceSetName":"test",
@@ -4979,10 +5191,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "ResourceSetId":"12",
             "CreateTimestamp":1649149566000,
             "Md5":"4cc8f97c2bf9cbabb2c2be2erqw****"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -4990,14 +5201,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":10,
         "CurrentPage":1,
         "Count":1
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyCronDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Propertys>
         <InstanceName>hc-host-****</InstanceName>
@@ -5024,9 +5233,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>1</TotalCount>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</DescribePropertyCronDetailResponse>
 ```
 
-### DescribePropertySoftwareDetail
+### 5.38 DescribePropertySoftwareDetail
 
 调用DescribePropertySoftwareDetail接口获取软件资产详情。
 
@@ -5051,7 +5261,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | Remark | String | Query | 否 | 47.100.XX.XX | 服务器名称或IP。 |
 | Name | String | Query | 否 | sshd | 软件名。 |
 
-|  |  |  |  |  | 容器安全开发指南·API参考 |
+|   |   |   |   |   | 容器安全开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5088,7 +5298,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -InstanceId | String | i- 5fq05ua8z5cd1spus1t w | 软件安装机器的实例id |
 | -IntranetIp | String | 192.168.176.124 | 机器的内网ip |
 
-|  |  |  |  | 容器安全开发指南·API参考 |  |
+|   |   |   |   | 容器安全开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5110,16 +5320,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
 请求示例
 
 ```
-https://[Endpoint]/?Action=DescribePropertySoftwareDetail&RegionId=cnhangzhou&Remark=47.100.XX.XX&Name=sshd&Path=/usr/xxx&SoftwareVersion=1.1.x.x&Extend=1&Uuid=inet-f6ac9a 93xxx&ContainerId=c1caea99b7649408aa5035dca00ac97ed&CurrentPage=1&PageSize=20&SelectType=equals&Ip=47.100. XX&GroupId=1&AssetType=IMAGE
+https://[Endpoint]/?Action=DescribePropertySoftwareDetail&RegionId=cnhangzhou&Remark=47.100.XX.XX&Name=sshd&Path=/usr/xxx&SoftwareVersion=1.1.x.x&Extend=1&Uuid=inet-f6ac9a xxx&ContainerId=c1caea99b7649408aa5035dca00ac97ed&CurrentPage=1&PageSize=20&SelectType=equals&Ip=47.100. XX&GroupId=1&AssetType=IMAGE
 ```
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Propertys":[
-        {
+```
+
+`{`
+
+```json
             "Path":"/boot/.vmlinuz-3.10.0-514.el7.x86_64.hmac",
             "InstallTimeStamp":1498375028000,
             "InstallTime":"2017-06-25 15:17:08",
@@ -5137,10 +5356,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Create":1704248313000,
             "ResourceSetId":"12",
             "CreateTimestamp":1704248313000
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -5148,14 +5366,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":20,
         "CurrentPage":1,
         "Count":2
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertySoftwareDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Propertys>
         <Name>kernel</Name>
@@ -5182,9 +5398,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>2</TotalCount>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</DescribePropertySoftwareDetailResponse>
 ```
 
-### DescribePropertyUserDetail
+### 5.39 DescribePropertyUserDetail
 
 调用DescribePropertyUserDetail接口获取账户下服务器账户详情。
 
@@ -5209,7 +5426,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | Remark | String | Query | 否 | 192.168.x.x | 服务器名称或IP。 |
 | User | String | Query | 否 | root | 用户名。 |
 
-| 容器安全开发指 | 南·API参 | 考 |  |  |  |
+| 容器安全开发指 | 南·API参 | 考 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5263,7 +5480,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -OrgName | String | test | 组织名称。 |
 | - ResourceSetNam e | String | test | 资源集名称。 |
 
-|  |  |  | 容器安全开发指南·API参考 |
+|   |   |   | 容器安全开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5282,22 +5499,34 @@ HTTP/1.1 200 OK Content-Type:application/xml
 ```
 https://[Endpoint]/?Action=DescribePropertyUserDetail&RegionId=cnhangzhou&Remark=192.168.x.x&User=root&IsRoot=1&Extend=1&Uuid=inet-00f20b1a-e2dd-408b-b38e-
 *****&CurrentPage=1&PageSize=20&SelectType=equals&AssetType=IMAGE&Ip=47.200.XX.XX&GroupId=1&TagIdListStr
-=1
 ```
 
-正常返回示例 `JSON` 格式
+`=1` 正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageInfo":{
         "TotalCount":20,
         "PageSize":20,
         "CurrentPage":1,
         "Count":2
-    },
+```
+
+`},`
+
+```json
     "Propertys":[
-        {
+```
+
+`{`
+
+```json
             "IsRoot":"0",
             "User":"root",
             "LastLoginIp":"N/A",
@@ -5324,19 +5553,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "OrgId":"12",
             "Uuid":"00f2-xxx-xxx",
             "IsUserExpired":0
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyUserDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PageInfo>
         <Count>2</Count>
@@ -5374,9 +5596,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <OrgName>test</OrgName>
         <ResourceSetName>test</ResourceSetName>
     </Propertys>
+</DescribePropertyUserDetailResponse>
 ```
 
-### ExportRecord
+### 5.40 ExportRecord
 
 调用ExportRecord接口导出资产中心、云平台配置检查、镜像安全扫描、攻击分析、AK泄露检测等页面的检测结果的Excel 文件。
 
@@ -5420,26 +5643,29 @@ https://[Endpoint]/?Action=ExportRecord&RegionId=cn-hangzhou&Lang=zh&Params= {"e
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Id":131231,
     "FileName":"cms_20171101.xlsx"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ExportRecordResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Id>131231</Id>
     <FileName>cms_20171101.xlsx</FileName>
+</ExportRecordResponse>
 ```
 
-**5.41.**
-
-### GetClusterCheckItemWarningStatistics
+### 5.41 GetClusterCheckItemWarningStatistics
 
 调用GetClusterCheckItemWarningStatistics接口查看基线检查的结果统计情况，例如基线检查的服务器数量、基线检查项数量、最近检查通过率等。
 
@@ -5484,18 +5710,21 @@ https://[Endpoint]/?Action=GetClusterCheckItemWarningStatistics&RegionId=cnhangz
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Data":{
         "MediumWarningCount":2,
         "HighWarningCount":10,
         "LowWarningCount":3
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <GetClusterCheckItemWarningStatisticsResponse>
@@ -5514,7 +5743,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetClusterCheckItemWarningStatisti
 |---|---|---|---|
 | 400 | -101 | -101 | %s %s |
 
-### GetClusterSuspEventStatistics
+### 5.42 GetClusterSuspEventStatistics
 
 调用GetClusterSuspEventStatistics接口查询告警等级统计。
 
@@ -5557,8 +5786,6 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetClusterCheckItemWarningStatisti
 | -Suspicious | Integer | 3 | 可疑事件数量。 |
 | -Remind | Integer | 1 | 提醒事件数量。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -5567,30 +5794,36 @@ https://[Endpoint]/?Action=GetClusterSuspEventStatistics&RegionId=cnhangzhou&Sou
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "SuspStatistics":{
         "Serious":2,
         "Suspicious":3,
         "Remind":1
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetClusterSuspEventStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <SuspStatistics>
         <Serious>2</Serious>
         <Suspicious>3</Suspicious>
         <Remind>1</Remind>
     </SuspStatistics>
+</GetClusterSuspEventStatisticsResponse>
 ```
 
-### IgnoreCheckItems
+### 5.43 IgnoreCheckItems
+
+调用IgnoreCheckItems接口加白基线检查的风险检查项。
 
 **授权信息**
 
@@ -5612,7 +5845,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 |---|---|---|---|---|---|
 | SourceIp | String | Query | 否 | 219.133.XX.XX | 访问源IP地址。 |
 
-| 容器安全开发指 | 南·API参 | 考 |  |  |  |
+| 容器安全开发指 | 南·API参 | 考 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5622,8 +5855,8 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | Source | String | Query | 否 | default | 数据来源。取值： default：主机基线 agentless：agentless 基线 |
 | UuidList | Repeat List | Query | 否 | 55bf7984-9b3b-4e8d-be8e- f3e5b0b4**** | 要忽略的服务器 UUID。 |
 | CheckAndRis kTypeList | Repeat List | Query | 否 | [{"CheckId":52,"RiskType","w eak password"}] _ | 指定需要忽略的检查项列表。 |
-| -CheckId | Long |  | 否 | 52 | 检查项 ID。 |
-| -RiskType | String |  | 否 | weak password _ | 基线风险类别。 |
+| -CheckId | Long |   | 否 | 52 | 检查项 ID。 |
+| -RiskType | String |   | 否 | weak password _ | 基线风险类别。 |
 | CheckIds | Repeat List | Query | 否 | 1 | 检查项 ID 列表。 |
 
 **返回数据**
@@ -5642,17 +5875,22 @@ https://[Endpoint]/?Action=IgnoreCheckItems&RegionId=cnhangzhou&SourceIp=219.133
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <IgnoreCheckItemsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</IgnoreCheckItemsResponse>
 ```
 
 **错误码**
@@ -5663,7 +5901,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | 500 | ServerError | ServerError | ServerError |
 | 403 | NoPermission | NoPermission | caller has no permission |
 
-### ListCheckItemWarningMachine
+### 5.44 ListCheckItemWarningMachine
 
 调用ListCheckItemWarningMachine接口获取基线检查指定检查项告警机器。
 
@@ -5727,7 +5965,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -InternetIp | String | 8.210.XX.XX | 受影响资产实例的公网 IP 地址。 |
 | -InstanceName | String | sql-test-0**** | 服务器实例名称。 |
 
-|  |  |  | 容器安全开发指南·API参考 |
+|   |   |   | 容器安全开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5751,8 +5989,6 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -TotalCount | Integer | 103 | 查询到的受影响资产的总数量。 |
 | -Count | Integer | 2 | 查询到的受影响资产的当前页显示数据条数。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -5761,24 +5997,36 @@ https://[Endpoint]/?Action=ListCheckItemWarningMachine&RegionId=cnhangzhou&Sourc
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "List":[
-        {
+```
+
+`{`
+
+```json
             "Status":7,
             "Bind":true,
             "InstanceId":"i-bp1a69mvjujbakxu****",
             "PortOpen":true,
             "WarningRiskList":[
-                {
+```
+
+`{`
+
+```json
                     "RiskId":215,
                     "RiskName":"Alibaba Cloud Linux/Aliyun Linux 2 Baseline for China classified
 protection of cybersecurity-Level II"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "LastScanTime":1694692471000,
@@ -5789,14 +6037,17 @@ protection of cybersecurity-Level II"
             "OrgId":"1",
             "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****",
             "FixList":[
-                {
+```
+
+`{`
+
+```json
                     "RiskId":215,
                     "RiskName":"Alibaba Cloud Linux/Aliyun Linux 2 Baseline for China classified
 protection of cybersecurity-Level II"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "InternetIp":"8.210.XX.XX",
@@ -5808,10 +6059,9 @@ protection of cybersecurity-Level II"
             "AuthVersion":5,
             "ResourceSetId":"11",
             "LastHandleTime":1694692471000
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -5820,14 +6070,12 @@ protection of cybersecurity-Level II"
         "CurrentPage":1,
         "Count":2,
         "LastRowKey":"null"
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListCheckItemWarningMachineResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <List>
         <Status>7</Status>
@@ -5868,6 +6116,7 @@ ybersecurity-Level II</RiskName>
         <TotalCount>103</TotalCount>
         <Count>2</Count>
     </PageInfo>
+</ListCheckItemWarningMachineResponse>
 ```
 
 **错误码**
@@ -5876,7 +6125,7 @@ ybersecurity-Level II</RiskName>
 |---|---|---|---|
 | 400 | -101 | -101 | %s %s |
 
-### ListCheckItemWarningSummary
+### 5.45 ListCheckItemWarningSummary
 
 调用ListCheckItemWarningSummary接口获取基线检查项风险统计数据。
 
@@ -5927,7 +6176,7 @@ ybersecurity-Level II</RiskName>
 | -CheckLevel | String | high | 风险等级。取值： high：高危 medium：中危 low：低危 |
 | -CheckType | String | Security audit | 检查项类别。 |
 
-| 容器安全开发指南·A | PI参考 |  |  |
+| 容器安全开发指南·A | PI参考 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5954,11 +6203,20 @@ https://[Endpoint]/?Action=ListCheckItemWarningSummary&RegionId=cnhangzhou&Sourc
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "List":[
-        {
+```
+
+`{`
+
+```json
             "Status":1,
             "EnableRisks":[
                 "CIS Ubuntu Linux 14 LTS Benchmark"
@@ -5992,10 +6250,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Advice":"In the Administrative Tools window, double-click Local Security Policy. In the L
 ocal Security Policy window that appears, choose Security Settings\\\\Local Policies\\\\Audit Policy, configure all audit policies as: `Success, Failure`.",
             "RiskType":"weak_password"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -6004,14 +6261,12 @@ ocal Security Policy window that appears, choose Security Settings\\\\Local Poli
         "CurrentPage":1,
         "Count":3,
         "LastRowKey":"null"
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListCheckItemWarningSummaryResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <List>
         <RiskType>weak_password</RiskType>
@@ -6043,6 +6298,7 @@ ecurity Policy window that appears, choose Security Settings\\Local Policies\\Au
         <TotalCount>105</TotalCount>
         <Count>3</Count>
     </PageInfo>
+</ListCheckItemWarningSummaryResponse>
 ```
 
 **错误码**
@@ -6051,7 +6307,9 @@ ecurity Policy window that appears, choose Security Settings\\Local Policies\\Au
 |---|---|---|---|
 | 400 | -101 | -101 | %s %s |
 
-### ModifyOperateVul
+### 5.46 ModifyOperateVul
+
+调用ModifyOperateVul接口对检测到的漏洞进行处理。
 
 **授权信息**
 
@@ -6096,20 +6354,25 @@ https://[Endpoint]/?Action=ModifyOperateVul&RegionId=cn-hangzhou&Info= [{"name":
 
 正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyOperateVulResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</ModifyOperateVulResponse>
 ```
 
-## 错误代码表
+## 6 错误代码表
 
 本文介绍云盾API返回的错误代码信息。 表 1. 云盾通用错误代码
 

@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 607
 source_pdf: "469e7d0de43f2a54_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide 20251106.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Management%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide

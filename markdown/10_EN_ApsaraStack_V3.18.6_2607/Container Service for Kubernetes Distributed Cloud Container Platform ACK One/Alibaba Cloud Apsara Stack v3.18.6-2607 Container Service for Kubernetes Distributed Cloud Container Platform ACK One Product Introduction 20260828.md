@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 12
 source_pdf: "99a8fcf1ea1d8689_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Distributed%20Cloud%20Container%20Platform%20ACK%20One%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container Platform ACK One Product Introduction 20260828
@@ -40,17 +40,17 @@ To address various challenges in distributed cloud scenarios, ACK One provides t
 
 **User**
 
-Provide consistent user experience with Container Service for
+Provide consistent user experience with Container Alibaba Service for
 
 **ACK One**
 
-Kubernetes
+Cloud Kubernetes
 
 **Registered**
 
 **Cluster**
 
-Registered Registered Registered Cluster 1 Cluster 2 Cluster 3 Other account Third-party Non- Public Cloud Connector Connector Agent Agent API Server API Server KCM/Scheduler KCM/Scheduler Kubernetes Kubernetes Cluster Cluster By using ACK registered clusters, you can connect Kubernetes clusters from different vendors and locations to the Alibaba Cloud Container Service for Kubernetes console for unified management of multiple clusters and access to the rich cluster extension capabilities of Container Service for Kubernetes. For more information about registered clusters, see the **Container Service for Kubernetes**
+Registered Registered Registered Cluster 1 Cluster 2 Cluster 3 Other account ACK Cluster Third-party Local Data Non- Alibaba Public Cloud Center Cloud Connector Connector Agent Agent API Server API Server KCM/Scheduler KCM/Scheduler Kubernetes Kubernetes Cluster Cluster By using ACK registered clusters, you can connect Kubernetes clusters from different vendors and locations to the Alibaba Cloud Container Service for Kubernetes console for unified management of multiple clusters and access to the rich cluster extension capabilities of Container Service for Kubernetes. For more information about registered clusters, see the **Container Service for Kubernetes**
 **User Guide > Overview of registered clusters** section.
 
 **Multi-cluster fleet**
@@ -59,7 +59,7 @@ Unified Control Plane
 
 **ACK One fleet**
 
-Multi-Cluster Application Multi-Cluster Resource Distribution Distribution Open Cluster Management Deployment/Svc Deployment/Svc Multi-cluster Svc Multi-cluster Svc Job Job K8s Cluster When running multiple Kubernetes clusters simultaneously, you can associate them with a multi-cluster fleet and manage all associated clusters through the unified control plane provided by the fleet. A multi-cluster fleet control plane runs on the Kubernetes control plane and provides standard Kubernetes APIs. A multi-cluster fleet can connect to multiple Kubernetes clusters. For non-ACK clusters, connect them first by using registered clusters. Multi-cluster application distribution: Host open source ArgoCD to distribute applications across multiple clusters. For more information about multi-cluster fleets, see the **Distributed Cloud Container**
+Multi-Cluster Application Multi-Cluster Resource Distribution Distribution Open Cluster Management Alibaba Local Data Cloud Center Deployment/Svc Deployment/Svc Multi-cluster Svc Multi-cluster Svc Job Job ACK Cluster K8s Cluster When running multiple Kubernetes clusters simultaneously, you can associate them with a multi-cluster fleet and manage all associated clusters through the unified control plane provided by the fleet. A multi-cluster fleet control plane runs on the Kubernetes control plane and provides standard Kubernetes APIs. A multi-cluster fleet can connect to multiple Kubernetes clusters. For non-ACK clusters, connect them first by using registered clusters. Multi-cluster application distribution: Host open source ArgoCD to distribute applications across multiple clusters. For more information about multi-cluster fleets, see the **Distributed Cloud Container**
 **Platform ACK One User Guide > Overview of fleet management** section.
 
 **Summary**
@@ -134,17 +134,17 @@ This topic describes scenarios of Distributed Cloud Container Platform for Kuber
 
 **User**
 
-Provide user experience consistent with Container Service
+Provide user experience consistent with Alibaba Container Service
 
 **ACK One**
 
-for Kubernetes
+Cloud for Kubernetes
 
 **Registered**
 
 **Cluster**
 
-Registered Registered Registered Cluster 1 Cluster 2 Cluster 3 Other account Third-party Non- Public Cloud Connector Connector Agent Agent API Server API Server KCM/Scheduler KCM/Scheduler Kubernetes Kubernetes Cluster Cluster Scenario description
+Registered Registered Registered Cluster 1 Cluster 2 Cluster 3 Other account ACK Cluster Third-party Local Data Non- Alibaba Public Cloud Center Cloud Connector Connector Agent Agent API Server API Server KCM/Scheduler KCM/Scheduler Kubernetes Kubernetes Cluster Cluster Scenario description
 **Consistent operations experience:** The unified operations capabilities of ACK extend to
 data center clusters and third-party public cloud clusters.
 **Enhanced observability:** Collect logs, metrics, and events to deliver the same operations

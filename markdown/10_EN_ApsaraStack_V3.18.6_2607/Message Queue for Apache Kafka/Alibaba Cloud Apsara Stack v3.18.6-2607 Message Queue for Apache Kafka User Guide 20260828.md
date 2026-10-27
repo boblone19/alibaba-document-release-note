@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 241
 source_pdf: "1e7e30b9d7c067aa_Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20Kafka%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Message%20Queue%20for%20Apache%20Kafka%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828
@@ -179,7 +179,11 @@ ApsaraMQ for Kafka provides a rich application ecosystem that covers the followi
 
 ### 2.1 Log on to the console
 
-This topic describes how to log on to the ApsaraMQ for Kafka console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+This topic describes how to log on to the ApsaraMQ for Kafka console.
+
+**Prerequisites**
+
+The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
 
 **Procedure**
 
@@ -418,7 +422,11 @@ The organization administrator and resource auditor automatically have the permi
 
 **Configurations**
 
-Each instance can belong only to one resource group. After you specify a resource group for an instance, you cannot change the resource group. The permissions to query the instance relationship list and configure instance relationships are granted to the logon user.
+Each instance can belong only to one resource group. After you specify a resource group for an instance, you cannot change the resource group.
+
+**Prerequisites**
+
+The permissions to query the instance relationship list and configure instance relationships are granted to the logon user.
 
 **Procedure**
 
@@ -788,7 +796,11 @@ the topic list of the **Consumption status** panel and click **Details** in the 
 
 **consumer group**
 
-If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them. You can also consume messages sent after a point in time regardless of whether the messages sent before this point in time are consumed. All consumers in the consumer group for which you want to reset the consumer offset are stopped.
+If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them. You can also consume messages sent after a point in time regardless of whether the messages sent before this point in time are consumed.
+
+**Prerequisites**
+
+All consumers in the consumer group for which you want to reset the consumer offset are stopped.
 
 > **Important:** ApsaraMQ for Kafka no longer supports the resetting of offsets during client connection.
 > ApsaraMQ for Kafka considers a consumer stopped only after the period of time specified by the `ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG` parameter elapses. The default value of the parameter is 10000, in milliseconds.
@@ -890,7 +902,11 @@ click **Download message** next to **Key** or **Value**.
 
 #### 2.7.1 Create SASL users
 
-This topic describes how to create a Simple Authentication and Security Layer (SASL) user. The ACL feature is enabled for the ApsaraMQ for Kafka instance. For more information, see Enable ACL.
+This topic describes how to create a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+The ACL feature is enabled for the ApsaraMQ for Kafka instance. For more information, see Enable ACL.
 
 **Procedure**
 
@@ -911,7 +927,11 @@ following table describes the parameters.
 
 #### 2.7.2 Grant permissions to SASL users
 
-This topic describes how to grant permissions to a Simple Authentication and Security Layer (SASL) user. An SASL user is created. For more information, see Create SASL users.
+This topic describes how to grant permissions to a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+An SASL user is created. For more information, see Create SASL users.
 
 **Procedure**
 
@@ -940,7 +960,11 @@ table describes the parameters.
 
 #### 2.7.3 Configure an ACL
 
-This topic describes how to configure an access control list (ACL) for an ApsaraMQ for Kafka instance. After an ACL is configured for an ApsaraMQ for Kafka instance, only the IP addresses and ports in the ACL can be used to access the instance. An ApsaraMQ for Kafka instance is deployed and is in the **In service** state.
+This topic describes how to configure an access control list (ACL) for an ApsaraMQ for Kafka instance. After an ACL is configured for an ApsaraMQ for Kafka instance, only the IP addresses and ports in the ACL can be used to access the instance.
+
+**Prerequisites**
+
+An ApsaraMQ for Kafka instance is deployed and is in the **In service** state.
 
 **Create an ACL**
 
@@ -979,7 +1003,11 @@ instance name, or click **Details** in the **Operation** column.
 
 #### 2.7.4 Change the passwords of SASL users
 
-This topic describes how to change the password of a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
+This topic describes how to change the password of a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+A SASL user is created. For more information, see Create SASL users.
 
 **Procedure**
 
@@ -994,7 +1022,11 @@ the **Operation** column.
 
 #### 2.7.5 Delete SASL users
 
-This topic describes how to delete a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
+This topic describes how to delete a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+A SASL user is created. For more information, see Create SASL users.
 
 **Procedure**
 
@@ -1009,7 +1041,11 @@ the **Operation** column.
 
 #### 2.7.6 Delete the permissions of SASL users
 
-This topic describes how to delete the permissions that are granted to a Simple Authentication and Security Layer (SASL) user. Permissions are granted to the SASL user. For more information, see Grant permissions to SASL users.
+This topic describes how to delete the permissions that are granted to a Simple Authentication and Security Layer (SASL) user.
+
+**Prerequisites**
+
+Permissions are granted to the SASL user. For more information, see Grant permissions to SASL users.
 
 **Procedure**
 
@@ -1026,7 +1062,11 @@ you want to delete and click **Query**.
 
 #### 2.7.7 Download an ACL certificate
 
-This topic describes how to download an Access Control List (ACL) certificate. The endpoint type for the target instance is SASL. The endpoint information contains values for SASL_SSL and SASL_PLAINTEXT.
+This topic describes how to download an Access Control List (ACL) certificate.
+
+**Prerequisites**
+
+The endpoint type for the target instance is SASL. The endpoint information contains values for SASL_SSL and SASL_PLAINTEXT.
 
 **Procedure**
 
@@ -1095,7 +1135,11 @@ instance name, or click **Details** in the **Operation** column.
 
 #### 2.8.3 Request a domain name
 
-This topic describes how to request a domain name for a virtual IP address (VIP) endpoint that does not have a domain name prefix. The VIP endpoint does not have a domain name prefix.
+This topic describes how to request a domain name for a virtual IP address (VIP) endpoint that does not have a domain name prefix.
+
+**Prerequisites**
+
+The VIP endpoint does not have a domain name prefix.
 
 **Procedure**
 
@@ -1230,7 +1274,11 @@ This topic describes how to create and manage remote tasks.
 
 **Background information**
 
-You can use remote tasks to migrate data between different clouds. Remote tasks also provide atomic APIs for geo-disaster recovery and enable data migration between different clouds to achieve disaster recovery. The ApsaraMQ for Kafka instance on one cloud is connected to the ApsaraMQ for Kafka instance on the other cloud. In addition, the domain name of the Apsara Uni-manager Management Console on one cloud is connected to the domain name of the Apsara Unimanager Management Console on the other cloud. The IP addresses of the endpoints in the two clouds are mutually reachable.
+You can use remote tasks to migrate data between different clouds. Remote tasks also provide atomic APIs for geo-disaster recovery and enable data migration between different clouds to achieve disaster recovery.
+
+**Prerequisites**
+
+The ApsaraMQ for Kafka instance on one cloud is connected to the ApsaraMQ for Kafka instance on the other cloud. In addition, the domain name of the Apsara Uni-manager Management Console on one cloud is connected to the domain name of the Apsara Unimanager Management Console on the other cloud. The IP addresses of the endpoints in the two clouds are mutually reachable.
 
 **Create a remote task**
 
@@ -1395,7 +1443,11 @@ This topic describes how to manage connects and connectors.
 
 **Background information**
 
-Kafka Connect enables reliable and scalable data streaming between ApsaraMQ for Kafka and external systems, such as databases, message queues, and file systems. An ApsaraMQ for Kafka instance is created. For more information, see the Create an instance section in the Manage instances topic. Automatic topic creation is enabled for the ApsaraMQ for Kafka instance. This indicates that
+Kafka Connect enables reliable and scalable data streaming between ApsaraMQ for Kafka and external systems, such as databases, message queues, and file systems.
+
+**Prerequisites**
+
+An ApsaraMQ for Kafka instance is created. For more information, see the Create an instance section in the Manage instances topic. Automatic topic creation is enabled for the ApsaraMQ for Kafka instance. This indicates that
 **auto.create.topics.enable** is turned on in the **Parameter configuration** panel of the
 ApsaraMQ for Kafka instance. For more information, see auto.create.topics.enable.
 
@@ -1600,7 +1652,11 @@ connector. Restart a failed task: On the **Connector Details** page, click **Res
 
 ##### 2.9.2.1 clickhouse-sink-connector
 
-This topic describes how to configure the parameters for clickhouse-sink-connector. You are creating a connector, and the connector type is set to clickhouse-sink-connector. For more information about how to create a connector, see Create a connect. ClickHouse is deployed.
+This topic describes how to configure the parameters for clickhouse-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to clickhouse-sink-connector. For more information about how to create a connector, see Create a connect. ClickHouse is deployed.
 
 **Parameters**
 
@@ -1644,7 +1700,11 @@ This topic describes how to configure the parameters for clickhouse-sink-connect
 
 ##### 2.9.2.2 github-source-connector
 
-This topic describes how to configure the parameters for github-source-connector. You are creating a connector, and the connector type is set to github-source-connector. For more information about how to create a connector, see Connect. GitHub is deployed.
+This topic describes how to configure the parameters for github-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to github-source-connector. For more information about how to create a connector, see Connect. GitHub is deployed.
 
 **Parameters**
 
@@ -1721,7 +1781,11 @@ This topic describes how to configure the parameters for github-source-connector
 
 ##### 2.9.2.3 hbase-sink-connector
 
-This topic describes how to configure the parameters for hbase-sink-connector. You are creating a connector, and the connector type is set to hbase-sink-connector. For more information about how to create a connector, see Create a connect. An HBase database is deployed.
+This topic describes how to configure the parameters for hbase-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to hbase-sink-connector. For more information about how to create a connector, see Create a connect. An HBase database is deployed.
 
 **Parameters**
 
@@ -1776,7 +1840,11 @@ This topic describes how to configure the parameters for hbase-sink-connector. Y
 
 ##### 2.9.2.4 lindorm-search-sink-connector
 
-This topic describes how to configure the parameters for lindorm-search-sink-connector. You are creating a connector, and the connector type is set to lindorm-search-sink-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for lindorm-search-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to lindorm-search-sink-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -1824,7 +1892,11 @@ This topic describes how to configure the parameters for lindorm-search-sink-con
 
 ##### 2.9.2.5 lindorm-tsdb-sink-connector
 
-This topic describes how to configure the parameters for lindorm-tsdb-sink-connector. You are creating a connector, and the connector type is set to lindorm-tsdb-sink-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for lindorm-tsdb-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to lindorm-tsdb-sink-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -1874,7 +1946,11 @@ This topic describes how to configure the parameters for lindorm-tsdb-sink-conne
 
 ##### 2.9.2.6 lindorm-vector-sink-connector
 
-This topic describes how to configure the parameters for lindorm-vector-sink-connector. You are creating a connector, and the connector type is set to lindorm-vector-sink-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for lindorm-vector-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to lindorm-vector-sink-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -1926,7 +2002,11 @@ This topic describes how to configure the parameters for lindorm-vector-sink-con
 
 ##### 2.9.2.7 lindorm-widetable-sink-connector
 
-This topic describes how to configure the parameters for lindorm-widetable-sink-connector. You are creating a connector, and the connector type is set to lindorm-widetable-sinkconnector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for lindorm-widetable-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to lindorm-widetable-sinkconnector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -1972,7 +2052,11 @@ This topic describes how to configure the parameters for lindorm-widetable-sink-
 
 ##### 2.9.2.8 mariadb-sink-connector
 
-This topic describes how to configure the parameters for mariadb-sink-connector. You are creating a connector, and the connector type is set to mariadb-sink-connector. For more information about how to create a connector, see Create a connect. A MariaDB database is deployed.
+This topic describes how to configure the parameters for mariadb-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mariadb-sink-connector. For more information about how to create a connector, see Create a connect. A MariaDB database is deployed.
 
 **Parameters**
 
@@ -2017,7 +2101,11 @@ This topic describes how to configure the parameters for mariadb-sink-connector.
 
 ##### 2.9.2.9 mariadb-source-connector
 
-This topic describes how to configure the parameters for mariadb-source-connector. You are creating a connector, and the connector type is set to mariadb-source-connector. For more information about how to create a connector, see Create a connect. A MariaDB database is deployed.
+This topic describes how to configure the parameters for mariadb-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mariadb-source-connector. For more information about how to create a connector, see Create a connect. A MariaDB database is deployed.
 
 **Parameters**
 
@@ -2060,7 +2148,11 @@ This topic describes how to configure the parameters for mariadb-source-connecto
 
 ##### 2.9.2.10 maxcompute-sink-connector
 
-This topic describes how to configure the parameters for maxcompute-sink-connector. You are creating a connector, and the connector type is set to maxcompute-sink-connector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for maxcompute-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to maxcompute-sink-connector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -2106,7 +2198,11 @@ This topic describes how to configure the parameters for maxcompute-sink-connect
 
 ##### 2.9.2.11 maxcompute-source-connector
 
-This topic describes how to configure the parameters for maxcompute-source-connector. You are creating a connector, and the connector type is set to maxcompute-sourceconnector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for maxcompute-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to maxcompute-sourceconnector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -2150,7 +2246,11 @@ This topic describes how to configure the parameters for maxcompute-source-conne
 
 ##### 2.9.2.12 opensearch-sink-connector
 
-This topic describes how to configure the parameters for opensearch-sink-connector. You are creating a connector, and the connector type is set to opensearch-sink-connector. For more information about how to create a connector, see Connect. OpenSearch is deployed.
+This topic describes how to configure the parameters for opensearch-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to opensearch-sink-connector. For more information about how to create a connector, see Connect. OpenSearch is deployed.
 
 **Parameters**
 
@@ -2193,7 +2293,11 @@ This topic describes how to configure the parameters for opensearch-sink-connect
 
 ##### 2.9.2.13 oracle-sink-connector
 
-This topic describes how to configure the parameters for oracle-sink-connector. You are creating a connector, and the connector type is set to oracle-sink-connector. For more information about how to create a connector, see Create a connect. An Oracle database is deployed.
+This topic describes how to configure the parameters for oracle-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to oracle-sink-connector. For more information about how to create a connector, see Create a connect. An Oracle database is deployed.
 
 **Parameters**
 
@@ -2237,7 +2341,11 @@ This topic describes how to configure the parameters for oracle-sink-connector. 
 
 ##### 2.9.2.14 oracle-source-connector
 
-This topic describes how to configure the parameters for oracle-source-connector. You are creating a connector, and the connector type is set to oracle-source-connector. For more information about how to create a connector, see Create a connect. An Oracle database is deployed.
+This topic describes how to configure the parameters for oracle-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to oracle-source-connector. For more information about how to create a connector, see Create a connect. An Oracle database is deployed.
 
 **Parameters**
 
@@ -2283,7 +2391,11 @@ This topic describes how to configure the parameters for oracle-source-connector
 
 ##### 2.9.2.15 polardb-for-oracle-sink-connector
 
-This topic describes how to configure the parameters for polardb-for-oracle-sink-connector. You are creating a connector, and the connector type is set to polardb-for-oracle-sinkconnector. For more information about how to create a connector, see Create a connector.
+This topic describes how to configure the parameters for polardb-for-oracle-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-for-oracle-sinkconnector. For more information about how to create a connector, see Create a connector.
 
 **Parameters**
 
@@ -2328,7 +2440,11 @@ This topic describes how to configure the parameters for polardb-for-oracle-sink
 
 ##### 2.9.2.16 polardb-for-oracle-source-connector
 
-This topic describes how to configure the parameters for polardb-for-oracle-source-connector. You are creating a connector, and the connector type is set to polardb-for-oracle-sourceconnector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for polardb-for-oracle-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-for-oracle-sourceconnector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -2368,7 +2484,11 @@ This topic describes how to configure the parameters for polardb-for-oracle-sour
 
 ##### 2.9.2.17 sqlserver-sink-connector
 
-This topic describes how to configure the parameters for sqlserver-sink-connector. You are creating a connector, and the connector type is set to sqlserver-sink-connector. For more information about how to create a connector, see Create a connect. An SQL Server database is deployed.
+This topic describes how to configure the parameters for sqlserver-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to sqlserver-sink-connector. For more information about how to create a connector, see Create a connect. An SQL Server database is deployed.
 
 **Parameters**
 
@@ -2415,7 +2535,11 @@ This topic describes how to configure the parameters for sqlserver-sink-connecto
 
 ##### 2.9.2.18 sqlserver-source-connector
 
-This topic describes how to configure the parameters for sqlserver-source-connector. You are creating a connector, and the connector type is set to sqlserver-source-connector. For more information about how to create a connector, see Create a connect. An SQL Server database is deployed.
+This topic describes how to configure the parameters for sqlserver-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to sqlserver-source-connector. For more information about how to create a connector, see Create a connect. An SQL Server database is deployed.
 
 **Parameters**
 
@@ -2454,7 +2578,11 @@ This topic describes how to configure the parameters for sqlserver-source-connec
 
 ##### 2.9.2.19 tidb-sink-connector
 
-This topic describes how to configure the parameters for tidb-sink-connector. You are creating a connector, and the connector type is set to tidb-sink-connector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for tidb-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to tidb-sink-connector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -2501,7 +2629,11 @@ This topic describes how to configure the parameters for tidb-sink-connector. Yo
 
 ##### 2.9.2.20 http-sink-connector
 
-This topic describes how to configure the parameters for http-sink-connector. You are creating a connector, and the connector type is set to http-sink-connector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for http-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to http-sink-connector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -2565,7 +2697,11 @@ Configure multiple HTTP push destinations. You can specify a separate URL and a 
 
 ##### 2.9.2.21 http-source-connector
 
-This topic describes how to configure the parameters for http-source-connector. You are creating a connector, and the connector type is set to http-source-connector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for http-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to http-source-connector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -2704,7 +2840,11 @@ This topic describes how to configure the parameters for kafka-mirror-source-con
 
 ##### 2.9.2.23 analyticdb-for-mysql-sink-connector
 
-This topic describes how to configure the parameters for analyticdb-for-mysql-sink-connector. You are creating a connector, and the connector type is set to analyticdb-for-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for analyticdb-for-mysql-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to analyticdb-for-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -2755,7 +2895,11 @@ This topic describes how to configure the parameters for analyticdb-for-mysql-si
 
 ##### 2.9.2.24 analyticdb-for-postgresql-sink-connector
 
-This topic describes how to configure the parameters for analyticdb-for-postgresql-sinkconnector. You are creating a connector, and the connector type is set to analyticdb-for-postgresql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for analyticdb-for-postgresql-sinkconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to analyticdb-for-postgresql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -2800,7 +2944,11 @@ This topic describes how to configure the parameters for analyticdb-for-postgres
 
 ##### 2.9.2.25 elasticsearch-sink-connector
 
-This topic describes how to configure the parameters for Elasticsearch-sink-connector. You are creating a connector, and the connector type is set to Elasticsearch-sink-connector. For more information about how to create a connector, see Create a connector.
+This topic describes how to configure the parameters for Elasticsearch-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to Elasticsearch-sink-connector. For more information about how to create a connector, see Create a connector.
 
 **Configuration description**
 
@@ -2929,7 +3077,11 @@ This topic describes how to configure the parameters for hologres-sink-connector
 
 ##### 2.9.2.28 hologres-source-connector
 
-This topic describes how to configure the parameters for hologres-source-connector. You are creating a connector, and the connector type is set to hologres-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for hologres-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to hologres-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -2967,7 +3119,11 @@ This topic describes how to configure the parameters for hologres-source-connect
 
 ##### 2.9.2.29 localfs-sink-connector
 
-This topic describes how to configure the parameters for localfs-sink-connector. You are creating a connector, and the connector type is set to localfs-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for localfs-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to localfs-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3054,7 +3210,11 @@ This topic describes how to configure the parameters for localfs-source-connecto
 
 ##### 2.9.2.31 mongodb-sink-connector
 
-This topic describes how to configure the parameters for mongodb-sink-connector. You are creating a connector, and the connector type is set to mongodb-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for mongodb-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mongodb-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3088,7 +3248,11 @@ This topic describes how to configure the parameters for mongodb-sink-connector.
 
 ##### 2.9.2.32 mongodb-source-connector
 
-This topic describes how to configure the parameters for mongodb-source-connector. You are creating a connector, and the connector type is set to mongodb-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for mongodb-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mongodb-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3124,7 +3288,11 @@ This topic describes how to configure the parameters for mongodb-source-connecto
 
 ##### 2.9.2.33 mysql-sink-connector.json
 
-This topic describes how to configure the parameters for mysql-sink-connector. You are creating a connector, and the connector type is set to mysql-sink-connector. For more information about how to create a connector, see Create a connector.
+This topic describes how to configure the parameters for mysql-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mysql-sink-connector. For more information about how to create a connector, see Create a connector.
 
 **Configuration description**
 
@@ -3164,7 +3332,11 @@ This topic describes how to configure the parameters for mysql-sink-connector. Y
 
 ##### 2.9.2.34 mysql-source-connector.json
 
-This topic describes how to configure the parameters for mysql-source-connector. You are creating a connector, and the connector type is set to mysql-source-connector. For more information about how to create a connector, see Create a connector.
+This topic describes how to configure the parameters for mysql-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mysql-source-connector. For more information about how to create a connector, see Create a connector.
 
 **Configuration description**
 
@@ -3198,7 +3370,11 @@ This topic describes how to configure the parameters for mysql-source-connector.
 
 ##### 2.9.2.35 oceanbase-mysql-sink-connector
 
-This topic describes how to configure the parameters for oceanbase-mysql-sink-connector. You are creating a connector, and the connector type is set to oceanbase-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for oceanbase-mysql-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to oceanbase-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3245,7 +3421,11 @@ This topic describes how to configure the parameters for oceanbase-mysql-sink-co
 
 ##### 2.9.2.36 oceanbase-mysql-source-connector
 
-This topic describes how to configure the parameters for oceanbase-mysql-source-connector. You are creating a connector, and the connector type is set to oceanbase-mysql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for oceanbase-mysql-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to oceanbase-mysql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3287,7 +3467,11 @@ This topic describes how to configure the parameters for oceanbase-mysql-source-
 
 ##### 2.9.2.37 oss-sink-connector
 
-This topic describes how to configure the parameters for oss-sink-connector. You are creating a connector, and the connector type is set to oss-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for oss-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to oss-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3324,7 +3508,11 @@ This topic describes how to configure the parameters for oss-sink-connector. You
 
 ##### 2.9.2.38 oss-source-connector
 
-This topic describes how to configure the parameters for oss-source-connector. You are creating a connector, and the connector type is set to oss-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for oss-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to oss-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3373,7 +3561,11 @@ This topic describes how to configure the parameters for oss-source-connector. Y
 
 ##### 2.9.2.39 otlp-sls-sink-connector
 
-This topic describes how to configure the parameters for otlp-sls-sink-connector. You are creating a connector, and the connector type is set to otlp-sls-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for otlp-sls-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to otlp-sls-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3420,7 +3612,11 @@ This topic describes how to configure the parameters for otlp-sls-sink-connector
 
 ##### 2.9.2.40 otlp-source-connector
 
-This topic describes how to configure the parameters for otlp-source-connector. You are creating a connector, and the connector type is set to otlp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for otlp-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to otlp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3466,7 +3662,11 @@ This topic describes how to configure the parameters for otlp-source-connector. 
 
 ##### 2.9.2.41 polardb-for-mysql-sink-connector
 
-This topic describes how to configure the parameters for polardb-for-mysql-sink-connector. You are creating a connector, and the connector type is set to polardb-for-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for polardb-for-mysql-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-for-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3552,7 +3752,11 @@ This topic describes how to configure the parameters for polardb-for-mysql-sourc
 
 ##### 2.9.2.43 polardb-for-postgresql-sink-connector
 
-This topic describes how to configure the parameters for polardb-for-postgresql-sinkconnector. You are creating a connector, and the connector type is set to polardb-for-postgresql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for polardb-for-postgresql-sinkconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-for-postgresql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3597,7 +3801,11 @@ This topic describes how to configure the parameters for polardb-for-postgresql-
 
 ##### 2.9.2.44 polardb-for-postgresql-source-connector
 
-This topic describes how to configure the parameters for polardb-for-postgresql-sourceconnector. You are creating a connector, and the connector type is set to polardb-for-postgresql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for polardb-for-postgresql-sourceconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-for-postgresql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3637,7 +3845,11 @@ This topic describes how to configure the parameters for polardb-for-postgresql-
 
 ##### 2.9.2.45 polardb-x-2.0-sink-connector
 
-This topic describes how to configure the parameters for polardb-x-2.0-sink-connector. You are creating a connector, and the connector type is set to polardb-x-2.0-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for polardb-x-2.0-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-x-2.0-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3684,7 +3896,11 @@ This topic describes how to configure the parameters for polardb-x-2.0-sink-conn
 
 ##### 2.9.2.46 polardb-x-2.0-source-connector
 
-This topic describes how to configure the parameters for polardb-x-2.0-source-connector. You are creating a connector, and the connector type is set to polardb-x-2.0-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for polardb-x-2.0-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to polardb-x-2.0-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3762,7 +3978,11 @@ This topic describes how to configure the parameters for postgresql-sink-connect
 
 ##### 2.9.2.48 postgresql-source-connector.json
 
-This topic describes how to configure the parameters for postgresql-source-connector. You are creating a connector, and the connector type is set to postgresql-source-connector. For more information about how to create a connector, see Create a connector.
+This topic describes how to configure the parameters for postgresql-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to postgresql-source-connector. For more information about how to create a connector, see Create a connector.
 
 **Configuration description**
 
@@ -3799,7 +4019,11 @@ This topic describes how to configure the parameters for postgresql-source-conne
 
 ##### 2.9.2.49 prometheus-sink-connector
 
-This topic describes how to configure the parameters for prometheus-sink-connector. You are creating a connector, and the connector type is set to prometheus-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for prometheus-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to prometheus-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3849,7 +4073,11 @@ This topic describes how to configure the parameters for prometheus-sink-connect
 
 ##### 2.9.2.50 prometheus-source-connector
 
-This topic describes how to configure the parameters for prometheus-source-connector. You are creating a connector, and the connector type is set to prometheus-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for prometheus-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to prometheus-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3887,7 +4115,11 @@ This topic describes how to configure the parameters for prometheus-source-conne
 
 ##### 2.9.2.51 redis-sink-connector
 
-This topic describes how to configure the parameters for redis-sink-connector. You are creating a connector, and the connector type is set to redis-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for redis-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to redis-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3930,7 +4162,11 @@ This topic describes how to configure the parameters for redis-sink-connector. Y
 
 ##### 2.9.2.52 redis-source-connector
 
-This topic describes how to configure the parameters for redis-source-connector. You are creating a connector, and the connector type is set to redis-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for redis-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to redis-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -3974,7 +4210,11 @@ This topic describes how to configure the parameters for redis-source-connector.
 
 ##### 2.9.2.53 sls-sink-connector
 
-This topic describes how to configure the parameters for sls-sink-connector. You are creating a connector, and the connector type is set to sls-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for sls-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to sls-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4058,7 +4298,11 @@ This topic describes how to configure the parameters for sls-source-connector. Y
 
 ##### 2.9.2.55 spark-sink-connector
 
-This topic describes how to configure the parameters for spark-sink-connector. You are creating a connector, and the connector type is set to spark-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for spark-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to spark-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4108,7 +4352,11 @@ This topic describes how to configure the parameters for spark-sink-connector. Y
 
 ##### 2.9.2.56 tablestore-sink-connector
 
-This topic describes how to configure the parameters for tablestore-sink-connector. You are creating a connector, and the connector type is set to tablestore-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for tablestore-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to tablestore-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4160,7 +4408,11 @@ This topic describes how to configure the parameters for tablestore-sink-connect
 
 ##### 2.9.2.57 tablestore-source-connector
 
-This topic describes how to configure the parameters for tablestore-source-connector. You are creating a connector, and the connector type is set to tablestore-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for tablestore-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to tablestore-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4204,7 +4456,11 @@ This topic describes how to configure the parameters for tablestore-source-conne
 
 ##### 2.9.2.58 syslog-source-connector
 
-This topic describes how to configure the parameters for syslog-source-connector. You are creating a connector, and the connector type is set to syslog-source-connector. For more information about how to create a connector, see Create a connect.
+This topic describes how to configure the parameters for syslog-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to syslog-source-connector. For more information about how to create a connector, see Create a connect.
 
 **Parameters**
 
@@ -4277,7 +4533,11 @@ This topic describes how to configure the parameters for syslog-source-connector
 
 ##### 2.9.2.59 hdfs3-sink-connector
 
-This topic describes how to configure the parameters for connectors of the type hdfs3-sinkconnector. You are creating a connector, and the connector type is hdfs3-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type hdfs3-sinkconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is hdfs3-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4331,7 +4591,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.60 hdfs3-source-connector
 
-This topic describes how to configure the parameters for connectors of the type hdfs3-sourceconnector. You are creating a connector, and the connector type is hdfs3-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type hdfs3-sourceconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is hdfs3-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4366,7 +4630,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.61 neo4j-sink-connector
 
-This topic describes how to configure the parameters for connectors of the type neo4j-sinkconnector. You are creating a connector, and the connector type is neo4j-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type neo4j-sinkconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is neo4j-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4414,7 +4682,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.62 neo4j-source-connector
 
-This topic describes how to configure the parameters for connectors of the type neo4j-sourceconnector. You are creating a connector, and the connector type is neo4j-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type neo4j-sourceconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is neo4j-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4454,7 +4726,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.63 ftp-sink-connector
 
-This topic describes how to configure the parameters for connectors of the type ftp-sinkconnector. You are creating a connector, and the connector type is ftp-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type ftp-sinkconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is ftp-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4501,7 +4777,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.64 ftp-source-connector
 
-This topic describes how to configure the parameters for connectors of the type ftp-sourceconnector. You are creating a connector, and the connector type is ftp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type ftp-sourceconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is ftp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4554,7 +4834,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.65 sftp-sink-connector
 
-This topic describes how to configure the parameters for connectors of the type sftp-sinkconnector. You are creating a connector, and the connector type is sftp-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type sftp-sinkconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is sftp-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4601,7 +4885,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.66 sftp-source-connector
 
-This topic describes how to configure the parameters for connectors of the type sftp-sourceconnector. You are creating a connector, and the connector type is sftp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
+This topic describes how to configure the parameters for connectors of the type sftp-sourceconnector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is sftp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
 **Parameters**
 
@@ -4654,7 +4942,11 @@ This topic describes how to configure the parameters for connectors of the type 
 
 ##### 2.9.2.67 mqtt-sink-connector
 
-This topic describes how to configure the parameters for mqtt-sink-connector. You are creating a connector, and the connector type is set to mqtt-sink-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for mqtt-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mqtt-sink-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -4707,7 +4999,11 @@ This topic describes how to configure the parameters for mqtt-sink-connector. Yo
 
 ##### 2.9.2.68 mqtt-source-connector
 
-This topic describes how to configure the parameters for mqtt-source-connector. You are creating a connector, and the connector type is set to mqtt-source-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for mqtt-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to mqtt-source-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -4759,7 +5055,11 @@ This topic describes how to configure the parameters for mqtt-source-connector. 
 
 ##### 2.9.2.69 rocketmq-sink-connector
 
-This topic describes how to configure the parameters for rocketmq-sink-connector. You are creating a connector, and the connector type is set to rocketmq-sink-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for rocketmq-sink-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to rocketmq-sink-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -4802,7 +5102,11 @@ This topic describes how to configure the parameters for rocketmq-sink-connector
 
 ##### 2.9.2.70 rocketmq-source-connector
 
-This topic describes how to configure the parameters for rocketmq-source-connector. You are creating a connector, and the connector type is set to rocketmq-source-connector. For more information about how to create a connector, see Connect.
+This topic describes how to configure the parameters for rocketmq-source-connector.
+
+**Prerequisites**
+
+You are creating a connector, and the connector type is set to rocketmq-source-connector. For more information about how to create a connector, see Connect.
 
 **Parameters**
 
@@ -5015,7 +5319,11 @@ Ingesting data to data lakes is a process of persisting real-time or offline dat
 
 **Background information**
 
-Ingesting data to data lakes is a process of persisting raw data from different business systems to a data lake after automated collection, cleansing, and conversion. You can persist real-time logs from message queues, transaction records from databases, and sensor data from IoT devices. In Apsara Stack and modern big data architectures, a data lake is usually built on top of object storage, such as Object Storage Service (OSS). It supports a wide array of data formats, such as Parquet, ORC, and JSON, and is compatible with various computing engines, such as MaxCompute, Flink, Spark, and Hive. A connect is created. For more information, see the Create a connect section in the Connect topic. AI Data Lake (ADL) is deployed.
+Ingesting data to data lakes is a process of persisting raw data from different business systems to a data lake after automated collection, cleansing, and conversion. You can persist real-time logs from message queues, transaction records from databases, and sensor data from IoT devices. In Apsara Stack and modern big data architectures, a data lake is usually built on top of object storage, such as Object Storage Service (OSS). It supports a wide array of data formats, such as Parquet, ORC, and JSON, and is compatible with various computing engines, such as MaxCompute, Flink, Spark, and Hive.
+
+**Prerequisites**
+
+A connect is created. For more information, see the Create a connect section in the Connect topic. AI Data Lake (ADL) is deployed.
 
 **Create a data ingestion task**
 
@@ -5082,7 +5390,11 @@ the **Operation** column.
 
 #### 2.10.1 Solution overview
 
-ApsaraMQ for Kafka provides zone-disaster recovery capabilities for financial business that requires high data stability and regulatory compliance. In the zone-disaster recovery solution provided by ApsaraMQ for Kafka, a primary cluster and a secondary cluster are deployed in two data centers that reside in the same zone. The primary cluster provides external services, and the KafkaReplicator component synchronizes data from the primary cluster to the secondary cluster. If both clusters run as expected, all data in the primary cluster, including messages and consumer offsets, is backed up to the secondary cluster. If the primary cluster fails, you can use the ApsaraMQ for Kafka console or the Application Service Registration (ASR) mechanism to switch business from the primary cluster to the secondary cluster. Failure scenarios include a disruption of the hardware or software environment that prevents timely service recovery, or a catastrophic event such as a fire or natural disaster that results in a full data center rebuild. The secondary cluster then handles service requests. Once the primary cluster is restored, you can switch business back to the primary cluster.
+ApsaraMQ for Kafka provides zone-disaster recovery capabilities for financial business that requires high data stability and regulatory compliance.
+
+**Description**
+
+In the zone-disaster recovery solution provided by ApsaraMQ for Kafka, a primary cluster and a secondary cluster are deployed in two data centers that reside in the same zone. The primary cluster provides external services, and the KafkaReplicator component synchronizes data from the primary cluster to the secondary cluster. If both clusters run as expected, all data in the primary cluster, including messages and consumer offsets, is backed up to the secondary cluster. If the primary cluster fails, you can use the ApsaraMQ for Kafka console or the Application Service Registration (ASR) mechanism to switch business from the primary cluster to the secondary cluster. Failure scenarios include a disruption of the hardware or software environment that prevents timely service recovery, or a catastrophic event such as a fire or natural disaster that results in a full data center rebuild. The secondary cluster then handles service requests. Once the primary cluster is restored, you can switch business back to the primary cluster.
 
 **Architecture**
 
@@ -5094,7 +5406,11 @@ After you implement a zone-disaster recovery solution, you must change the conne
 
 #### 2.10.2 Create replica clusters
 
-This topic describes how to create a replica cluster and establish a replication relationship to provide disaster recovery capabilities by using ApsaraMQ for Kafka instances. Two ApsaraMQ for Kafka instances are deployed. One of the instances is used in production environments and the other is used in zone-disaster recovery environments. Make sure that KafkaReplicator is deployed in the clusters to which the instances belong. If KafkaReplicator is not deployed, contact ApsaraMQ for Kafka technical support to deploy it.
+This topic describes how to create a replica cluster and establish a replication relationship to provide disaster recovery capabilities by using ApsaraMQ for Kafka instances.
+
+**Prerequisites**
+
+Two ApsaraMQ for Kafka instances are deployed. One of the instances is used in production environments and the other is used in zone-disaster recovery environments. Make sure that KafkaReplicator is deployed in the clusters to which the instances belong. If KafkaReplicator is not deployed, contact ApsaraMQ for Kafka technical support to deploy it.
 1. Log on to the ApsaraMQ for Kafka console.
 2. In the left-side navigation pane, click **Replica Clusters**.
 3. On the **Disaster Recovery** page, click **Create a disaster recovery cluster**.
@@ -5160,7 +5476,11 @@ This topic describes how to use the data migration tool provided by Apsara Stack
 
 **Migrate data to the cloud by using a metadata file**
 
-You can use the `kafka-migration.jar` tool and the metadata file exported from a selfmanaged Apache Kafka cluster to enable ApsaraMQ for Kafka to automatically create topics and groups in an ApsaraMQ for Kafka instance. The following tool is downloaded to the self-managed Apache Kafka cluster from which you want to migrate data: kafka-migration.jar The metadata file of the self-managed Apache Kafka cluster is exported.
+You can use the `kafka-migration.jar` tool and the metadata file exported from a selfmanaged Apache Kafka cluster to enable ApsaraMQ for Kafka to automatically create topics and groups in an ApsaraMQ for Kafka instance.
+
+**Prerequisites**
+
+The following tool is downloaded to the self-managed Apache Kafka cluster from which you want to migrate data: kafka-migration.jar The metadata file of the self-managed Apache Kafka cluster is exported.
 
 **Start the migration**
 
@@ -5330,7 +5650,11 @@ This topic describes how to use the Kafka data migration tool from Alibaba Cloud
 
 **Migrate Kafka metadata and data in the cloud**
 
-You can use the provided `kafka-migration-assessment.jar` tool and the `kafka-mirror-` `maker.sh` tool, which is included with the ApsaraMQ for Kafka instance, to migrate metadata and data. Download the `kafka-migration-assessment.jar` tool to the target ApsaraMQ for Kafka cluster. kafka-migration-assessment.jar
+You can use the provided `kafka-migration-assessment.jar` tool and the `kafka-mirror-` `maker.sh` tool, which is included with the ApsaraMQ for Kafka instance, to migrate metadata and data.
+
+**Prerequisites**
+
+Download the `kafka-migration-assessment.jar` tool to the target ApsaraMQ for Kafka cluster. kafka-migration-assessment.jar
 
 **Start the migration**
 
@@ -5584,7 +5908,11 @@ This topic describes how to manage an Apache Kafka KSQL cluster.
 
 **Background information**
 
-KSQL is an open source stream processing SQL engine designed for Apache Kafka. It supports SQL-like syntax to enable low-code, real-time processing and analysis of Kafka data streams. An ApsaraMQ for Kafka instance and a connect are created. For more information, see Create an instance and Create a connect.
+KSQL is an open source stream processing SQL engine designed for Apache Kafka. It supports SQL-like syntax to enable low-code, real-time processing and analysis of Kafka data streams.
+
+**Prerequisites**
+
+An ApsaraMQ for Kafka instance and a connect are created. For more information, see Create an instance and Create a connect.
 
 **Create a KSQL cluster**
 
@@ -5644,7 +5972,11 @@ ions
 
 #### 3.1.1 Create topics
 
-This topic describes how to create a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to create a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -5681,7 +6013,11 @@ __consumer_offsets test
 
 #### 3.1.2 Send messages
 
-This topic describes how to send messages to a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to send messages to a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -5715,7 +6051,11 @@ to send messages by enabling logging for debugging.
 
 #### 3.1.3 Consume messages
 
-This topic describes how to consume messages from a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to consume messages from a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -5793,7 +6133,11 @@ __consumer_offsets test
 
 #### 3.2.2 View the status of a topic
 
-This topic describes how to view the status of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the status of a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -5843,7 +6187,11 @@ Isr: 1003,1002,1001
 
 #### 3.2.3 View the current offset of a partition
 
-The current offset of a partition is the latest message that is sent to the consumer by the ApsaraMQ for Kafka broker. This topic describes how to view the current offset of a partition. The information about the master node in ApsaraMQ for Kafka is obtained.
+The current offset of a partition is the latest message that is sent to the consumer by the ApsaraMQ for Kafka broker. This topic describes how to view the current offset of a partition.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -5879,7 +6227,11 @@ Value 16761
 
 #### 3.2.4 View the list of topics
 
-This topic describes how to view the list of topics. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the list of topics.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -5907,7 +6259,11 @@ CMDTest __consumer_offsets demo test test1 test2
 
 **topic**
 
-After you create a topic, you can increase the number of partitions in the topic. ApsaraMQ for Kafka does not allow you to decrease the number of partitions in a topic. If you want to decrease the number of partitions in a topic, you can delete the topic and create another topic that has the required number of partitions. The information about the master node in ApsaraMQ for Kafka is obtained.
+After you create a topic, you can increase the number of partitions in the topic. ApsaraMQ for Kafka does not allow you to decrease the number of partitions in a topic. If you want to decrease the number of partitions in a topic, you can delete the topic and create another topic that has the required number of partitions.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -6062,7 +6418,11 @@ ions
 
 **consumer group**
 
-This topic describes how to view the consumer status of a consumer group. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the consumer status of a consumer group.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -6120,7 +6480,11 @@ test 2 16516 16516 0 -
 
 #### 3.3.2 View the list of consumer groups
 
-This topic describes how to view the list of consumer groups. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to view the list of consumer groups.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Procedure**
 
@@ -6150,7 +6514,11 @@ ions
 
 #### 3.4.1 Send messages
 
-This topic describes how to send messages to a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to send messages to a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -6181,7 +6549,11 @@ to send messages by enabling logging for debugging.
 
 #### 3.4.2 Consume messages
 
-This topic describes how to consume messages from a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to consume messages from a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 

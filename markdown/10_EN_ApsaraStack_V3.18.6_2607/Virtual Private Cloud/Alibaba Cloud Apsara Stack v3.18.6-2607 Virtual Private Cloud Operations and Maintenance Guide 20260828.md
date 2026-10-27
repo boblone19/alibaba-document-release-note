@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 126
 source_pdf: "b36e2fef2382485c_Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C%20VPC/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Virtual%20Private%20Cloud%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Operations and Maintenance Guide 20260828

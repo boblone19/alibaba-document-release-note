@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 279
 source_pdf: "40a1cda92d3af2c7_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek Dev Developer Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/OpenTrek%20Dev/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20Dev%20Developer%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # OpenTrek Dev Developer Guide 20260630
@@ -452,6 +452,8 @@ ignore exceptions in the project.
             System.out.println(error.getMessage());
 ```
 
+`}` `}` `}`
+
 **Step introduction**
 
 1. Initializes the configuration object com.aliyun.teaopenapi.models.Config. The Config object stores the
@@ -649,6 +651,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -665,6 +672,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. You can use STS to call the APIs of cloud products. Example:
 
 ```java
@@ -681,6 +689,8 @@ import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Confi
         Client credentialClient = new Client(credentialConfig);
         // Continue to call the API. For more information, see the API documentation.
 ```
+
+`}` `}`
 
 ### 1.2 References
 
@@ -744,6 +754,11 @@ Query the version list of intelligences
     "extInfos": {},
     "total": 1,
     "list": [
+```
+
+`{`
+
+```json
         "id": 759,
         "gmtCreate": "2025-11-11T12:19:54.315+00:00",
         "gmtModified": "2025-11-11T12:19:54.315+00:00",
@@ -837,6 +852,8 @@ Query the version list of intelligences
   "failure": false
 ```
 
+`}`
+
 **Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
@@ -889,6 +906,8 @@ Write memory partition contents
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -906,6 +925,8 @@ Write memory partition contents
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -959,6 +980,8 @@ Create intelligences
 | gmtModified | String | The modification time. |
 | errorCode | String | The error code. |
 | errorMsg | String | Error description |
+
+**Examples**
 
 `JSON` format
 
@@ -1020,6 +1043,8 @@ Create intelligences
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1087,6 +1112,8 @@ Create an agent version
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -1104,6 +1131,8 @@ Create an agent version
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1150,8 +1179,15 @@ Delete intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1164,6 +1200,8 @@ Delete intelligences
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1219,8 +1257,15 @@ Edit Intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1233,6 +1278,8 @@ Edit Intelligences
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1291,8 +1338,15 @@ Edit agent version
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1305,6 +1359,8 @@ Edit agent version
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1356,8 +1412,15 @@ Delete an agent version
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1370,6 +1433,8 @@ Delete an agent version
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1438,6 +1503,8 @@ Query the intelligences list
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -1449,6 +1516,11 @@ Query the intelligences list
     "extInfos": {},
     "total": 1,
     "list": [
+```
+
+`{`
+
+```json
         "id": 188,
         "gmtCreate": "2025-10-23T01:46:02.907+00:00",
         "gmtModified": "2025-10-23T01:46:02.907+00:00",
@@ -1491,7 +1563,7 @@ Query the intelligences list
         "agentApiLimitConfig": null
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageSize": 10,
@@ -1511,6 +1583,8 @@ Query the intelligences list
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1577,6 +1651,8 @@ Editing tools
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -1594,6 +1670,8 @@ Editing tools
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -1663,7 +1741,9 @@ Query tool list
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "errorMessages": [],
@@ -1718,7 +1798,7 @@ face uniqueCode",
             "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "true",
@@ -1728,7 +1808,7 @@ face uniqueCode",
             "type": "BOOL"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "true By default, new content is output each time, excluding the text that is ou
@@ -1739,7 +1819,7 @@ tput in the preceding sequence",
             "type": "BOOL"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "false does not return trace records by default",
@@ -1749,10 +1829,15 @@ tput in the preceding sequence",
             "type": "BOOL"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "children": [
+```
+
+`{`
+
+```json
                 "example": "Book me a flight from Shanghai to Zurich tomorrow",
                 "label": "Conversation input",
                 "name": "text",
@@ -1760,7 +1845,7 @@ tput in the preceding sequence",
                 "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "example": "{}",
@@ -1770,10 +1855,15 @@ tput in the preceding sequence",
                 "type": "OBJECT"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "children": [
+```
+
+`{`
+
+```json
                     "example": "{}",
                     "label": "Attachment address",
                     "name": "url",
@@ -1781,7 +1871,7 @@ tput in the preceding sequence",
                     "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "example": "{}",
@@ -1804,7 +1894,7 @@ tput in the preceding sequence",
                 "type": "LIST<Object>"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "example": "{\"text\":\" Book me a ticket from Shanghai to Zurich tomorrow \",
@@ -1815,11 +1905,16 @@ tput in the preceding sequence",
             "type": "OBJECT"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "interfaceDesc": "None",
         "outputParams": [
+```
+
+`{`
+
+```json
             "example": "message.de lta output text block think.de lta thought process block error error
 message",
             "label": "Data type",
@@ -1828,7 +1923,7 @@ message",
             "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "assistant",
@@ -1838,7 +1933,7 @@ message",
             "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "object=message.delta scenario: {\"type\": \"text\",\"text\":{\"value\": \" Incr
@@ -1849,7 +1944,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "OBJECT"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "{\"key\":\"value\"}",
@@ -1859,7 +1954,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "OBJECT"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "false|true",
@@ -1893,7 +1988,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "true",
@@ -1903,11 +1998,21 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "BOOL"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "children": [
+```
+
+`{`
+
+```json
                 "children": [
+```
+
+`{`
+
+```json
                     "example": "assistant",
                     "label": "Role",
                     "name": "role",
@@ -1915,7 +2020,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "example": "{\"key\":\"value\"}",
@@ -1925,10 +2030,15 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "type": "OBJECT"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "children": [
+```
+
+`{`
+
+```json
                         "example": "text|image",
                         "label": "Output content type",
                         "name": "type",
@@ -1936,10 +2046,15 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                         "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "children": [
+```
+
+`{`
+
+```json
                             "example": "Hello! Is there anything I can help you with?",
                             "label": "Output text",
                             "name": "value",
@@ -1947,7 +2062,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                             "type": "STRING"
 ```
 
-`],`
+`}` `],`
 
 ```json
                         "example": "{}",
@@ -1971,7 +2086,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                             "type": "STRING"
 ```
 
-`],`
+`}` `],`
 
 ```json
                         "example": "{}",
@@ -1981,7 +2096,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                         "type": "OBJECT"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "example": "",
@@ -1991,7 +2106,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "type": "LIST<Object>"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "example": "{}",
@@ -2001,10 +2116,15 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                 "type": "OBJECT"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "children": [
+```
+
+`{`
+
+```json
                     "example": "assistant",
                     "label": "Role",
                     "name": "role",
@@ -2012,10 +2132,15 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "children": [
+```
+
+`{`
+
+```json
                         "example": "",
                         "label": "Output text",
                         "name": "data",
@@ -2023,7 +2148,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                         "type": "STRING"
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "example": "text",
@@ -2033,7 +2158,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                         "type": "STRING"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "example": "",
@@ -2043,7 +2168,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "type": "OBJECT"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "example": "{}",
@@ -2066,7 +2191,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "OBJECT"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "true",
@@ -2076,7 +2201,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "BOOL"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "example": "true",
@@ -2086,7 +2211,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "type": "BOOL"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
       "type": "platform"
@@ -2118,6 +2243,8 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -2188,6 +2315,8 @@ Create a tool
 | errorCode | String | Error code | true |
 | errorMsg | String | Error description | true |
 
+**Examples**
+
 `JSON` format
 
 ```json
@@ -2251,6 +2380,8 @@ Create a tool
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -2319,7 +2450,9 @@ Query tool details
 | errorCode | String | Error code | true |
 | errorMsg | String | Error description | true |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "errorMessages": [],
@@ -2366,6 +2499,11 @@ Query tool details
         "platformTool": null,
         "limitQps": 50,
         "apiHeaderList": [
+```
+
+`{`
+
+```json
             "fieldCode": "Content-Type",
             "fieldType": "CONSTANT",
             "fieldValue": "application/json",
@@ -2374,10 +2512,15 @@ Query tool details
             "encrypt": false
 ```
 
-`],`
+`}` `],`
 
 ```json
         "requestToolApiFieldList": [
+```
+
+`{`
+
+```json
             "fieldCode": "a",
             "fieldType": "STRING",
             "parentFieldCode": null,
@@ -2393,10 +2536,15 @@ Query tool details
             "children": null
 ```
 
-`],`
+`}` `],`
 
 ```json
         "responseToolApiFieldList": [
+```
+
+`{`
+
+```json
             "fieldCode": "b",
             "fieldType": "STRING",
             "parentFieldCode": null,
@@ -2412,7 +2560,7 @@ Query tool details
             "children": null
 ```
 
-`],`
+`}` `],`
 
 ```json
         "asyncExecutorFlag": false,
@@ -2459,6 +2607,8 @@ Query tool details
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -2512,6 +2662,8 @@ Delete a tool
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -2529,6 +2681,8 @@ Delete a tool
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -2583,7 +2737,9 @@ Querying the Details of an Intelligence Template
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -2628,6 +2784,11 @@ Querying the Details of an Intelligence Template
       "interfaceInfo": {
         "interfaceDesc": "None",
         "inputParams": [
+```
+
+`{`
+
+```json
             "name": "sessionId",
             "label": "sessionId",
             "type": "STRING",
@@ -2635,7 +2796,7 @@ Querying the Details of an Intelligence Template
             "example": "bd962db7-b1c8-4466-a2cc-41b9b67cd94b"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name": "stream",
@@ -2645,7 +2806,7 @@ Querying the Details of an Intelligence Template
             "example": "true"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name": "message",
@@ -2654,16 +2815,26 @@ Querying the Details of an Intelligence Template
             "necessary": true,
             "example": "{\"text\":\" Book me a ticket from Shanghai to Zurich tomorrow \"}",
             "children": [
+```
+
+`{`
+
+```json
                 "name": "text",
                 "label": "Conversation input",
                 "type": "STRING",
                 "necessary": true
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
         "outputParams": [
+```
+
+`{`
+
+```json
             "name": "object",
             "label": "Data type",
             "type": "STRING",
@@ -2685,7 +2856,7 @@ Querying the Details of an Intelligence Template
             "example": "assistant"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "name": "sessionId",
@@ -2694,13 +2865,15 @@ Querying the Details of an Intelligence Template
             "necessary": true
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "config": null,
     "feature": {
       "templateType": "AutoBot"
 ```
+
+`}` `}` `}`
 
 **Documentation Supplement**
 
@@ -2771,6 +2944,8 @@ Query the list of intelligence templates
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -2785,6 +2960,11 @@ Query the list of intelligence templates
     "pageSize": 10,
     "totalPages": 1,
     "list": [
+```
+
+`{`
+
+```json
         "marketCode": "common",
         "marketName": "Custom templates",
         "itemCode": "79d39852ceb148b9a0afe674a2e6d38d",
@@ -2811,6 +2991,11 @@ Query the list of intelligence templates
           "interfaceInfo": {
             "interfaceDesc": "whatsapp",
             "inputParams": [
+```
+
+`{`
+
+```json
                 "name": "sessionId",
                 "label": "sessionId",
                 "type": "STRING",
@@ -2818,10 +3003,15 @@ Query the list of intelligence templates
                 "example": "bd962db7-b1c8-4466-a2cc-41b9b67cd94b"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "outputParams": [
+```
+
+`{`
+
+```json
                 "name": "object",
                 "label": "Data type",
                 "type": "STRING",
@@ -2829,7 +3019,7 @@ Query the list of intelligence templates
                 "example": "message.delta"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
         "config": {
@@ -2839,7 +3029,7 @@ Query the list of intelligence templates
           "versionCode": "1740037093657"
 ```
 
-`]`
+`}` `}` `]`
 
 **Documentation Supplement**
 
@@ -2899,12 +3089,21 @@ Create /update prompt word templates
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -2951,12 +3150,21 @@ Publish prompt word templates
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -3020,12 +3228,24 @@ Query prompt word classification
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "total": 1,
         "list": [
+```
+
+`{`
+
+```json
                 "id": null,
                 "gmtCreate": "2025-06-17T07:20:49.621+00:00",
                 "gmtModified": "2025-06-17T07:20:49.621+00:00",
@@ -3047,7 +3267,7 @@ Query prompt word classification
                 "managers": null
 ```
 
-`],`
+`}` `],`
 
 ```json
         "pageSize": 10,
@@ -3061,6 +3281,8 @@ Query prompt word classification
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -3107,12 +3329,21 @@ Delete a prompt word template
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -3189,6 +3420,8 @@ Query the list of prompt word templates
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -3200,6 +3433,11 @@ Query the list of prompt word templates
     "extInfos": {},
     "total": 1,
     "list": [
+```
+
+`{`
+
+```json
         "id": 5,
         "projectCode": "fmthktsjdb",
         "name": "Shenyang Custom",
@@ -3233,7 +3471,7 @@ are you interested in? Examples include programming languages, data structures, 
         "operateControl": null
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageSize": 10,
@@ -3253,6 +3491,8 @@ are you interested in? Examples include programming languages, data structures, 
   "firstErrorMessage": null,
   "failure": false
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -3311,8 +3551,15 @@ Document knowledge base Delete Document
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "affected": 1
@@ -3324,6 +3571,8 @@ Document knowledge base Delete Document
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -3386,7 +3635,9 @@ This operation uses common request headers only. For more information, see the d
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error description. | true |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
     "success": true,
@@ -3396,12 +3647,14 @@ This operation uses common request headers only. For more information, see the d
     "updates":1
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Document supplementary notes**
 
@@ -3467,13 +3720,22 @@ Writes data to the knowledge base based on the knowledge base data model definit
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": null,
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -3535,38 +3797,45 @@ Obtain the time series data required for a trend chart
 | dimensions | List | Fixed structure returns: a list of names of dimensions and metrics that define the meaning of each column in the source array. | [{"key":"date","label":"time "}, {"key":"fileCount","label":"t otal number of files"}, {"key":"fileSize","label":"fil e size"}, {"key":"tokenCount","label ":"total number of tokens"}] |
 | source | List | The data matrix. Each row represents a point in time. The values in each column correspond to the names in the dimensions array. | [["2025-08-30", 18000, 1572864, 23943], ["2025- 01-21", 22000, 2097152, 134667]] |
 
+**Examples**
+
 `JSON` format
 
 ```json
   "success": true,
   "data": {
     "dimensions": [
+```
+
+`{`
+
+```json
         "key": "date",
         "label": "Time"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "fileCount",
         "label": "Total number of files"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "fileSize",
         "label": "File size"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "key": "tokenCount",
         "label": "total number of tokens"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "source": [
@@ -3630,6 +3899,8 @@ Obtain the time series data required for a trend chart
   "errorCode": null,
   "errorMsg": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -3712,8 +3983,15 @@ Delete knowledge base
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "monoDeletes": {
@@ -3749,7 +4027,7 @@ Delete knowledge base
                 "deletes": 6
 ```
 
-`},`
+`}` `},`
 
 ```json
         "kbdocFileDeletes": 0
@@ -3761,6 +4039,8 @@ Delete knowledge base
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -3868,9 +4148,19 @@ Get knowledge base data model definitions and other details
         "kbType": 100,
         "kbProperties": null,
         "kbSubmodels": [
+```
+
+`{`
+
+```json
                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                 "kbSubmodelName": "Standard knowledge base",
                 "kbSubmodelFields": [
+```
+
+`{`
+
+```json
                         "kbCode": "z7pn9wbtkpy0",
                         "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                         "fieldName": "matter_code",
@@ -3880,7 +4170,7 @@ Get knowledge base data model definitions and other details
                         "fieldIndexExt": null
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "kbCode": "z7pn9wbtkpy0",
@@ -3892,10 +4182,15 @@ Get knowledge base data model definitions and other details
                         "fieldIndexExt": null
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "kbIndexes": [
+```
+
+`{`
+
+```json
                         "kbCode": "z7pn9wbtkpy0",
                         "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                         "kbIndexCode": "z7pn9wbtkpy0w83n",
@@ -3941,14 +4236,14 @@ Get knowledge base data model definitions and other details
                                 "fieldIndexType": "resource"
 ```
 
-`},`
+`},` `{`
 
 ```json
                                 "fieldName": "matter_name",
                                 "fieldIndexType": "retrieve"
 ```
 
-`]` `]` `],`
+`}` `]` `}` `]` `}` `],`
 
 ```json
         "refRes": null,
@@ -3964,6 +4259,8 @@ Get knowledge base data model definitions and other details
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -4065,8 +4362,15 @@ This interface uses common request headers without special request headers. See 
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "stats": {
@@ -4112,7 +4416,7 @@ This interface uses common request headers without special request headers. See 
                     "inserts": 2
 ```
 
-`},`
+`}` `},`
 
 ```json
             "ddlStats_smod": {
@@ -4146,6 +4450,11 @@ This interface uses common request headers without special request headers. See 
 
 ```json
                         "kbSubmodelFieldEntities": [
+```
+
+`{`
+
+```json
                                 "id": 3041,
                                 "kbCode": "z7pn9wbtkpy0",
                                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
@@ -4161,7 +4470,7 @@ This interface uses common request headers without special request headers. See 
                                 "updateUser": "gaochai"
 ```
 
-`},`
+`},` `{`
 
 ```json
                                 "id": 3042,
@@ -4217,6 +4526,11 @@ This interface uses common request headers without special request headers. See 
 
 ```json
                         "kbIndexFieldEntities": [
+```
+
+`{`
+
+```json
                                 "id": 2305,
                                 "kbCode": "z7pn9wbtkpy0",
                                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
@@ -4233,7 +4547,7 @@ This interface uses common request headers without special request headers. See 
                                 "updateUser": "gaochai"
 ```
 
-`},`
+`},` `{`
 
 ```json
                                 "id": 2306,
@@ -4256,7 +4570,7 @@ This interface uses common request headers without special request headers. See 
                                 "updateUser": "gaochai"
 ```
 
-`]` `},`
+`}` `]` `}` `}` `}` `},`
 
 ```json
         "kbCode": "z7pn9wbtkpy0"
@@ -4268,6 +4582,8 @@ This interface uses common request headers without special request headers. See 
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -4328,8 +4644,15 @@ For document knowledge base and graphic knowledge base, knowledge base source fi
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "insert": 1
@@ -4344,6 +4667,8 @@ For document knowledge base and graphic knowledge base, knowledge base source fi
     "env": null,
     "ext": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -4401,8 +4726,15 @@ Enable knowledge base
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "kbEnable": 1
@@ -4414,6 +4746,8 @@ Enable knowledge base
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Additional information**
 
@@ -4482,6 +4816,8 @@ Query the knowledge base list
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 `JSON` format
 
 ```json
@@ -4489,6 +4825,11 @@ Query the knowledge base list
     "data": {
         "total": 1,
         "list": [
+```
+
+`{`
+
+```json
                 "id": 363,
                 "code": "z7pn9wbtkpy0",
                 "name": "Custom knowledge base",
@@ -4507,7 +4848,7 @@ Query the knowledge base list
                 "updateUser": "gaochai"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "pageSize": 60,
@@ -4520,6 +4861,8 @@ Query the knowledge base list
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -4597,38 +4940,48 @@ Obtains a detailed data list.
   "success": true,
   "data": {
     "columns": [
+```
+
+`{`
+
+```json
         "label": "knowledge base name",
         "value": "kbName"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "label": "Number of original files",
         "value": "fileCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "label": "Original file size",
         "value": "fileSize"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "label": "Total number of tokens",
         "value": "tokenCount"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageNumber": 1,
     "pageSize": 10,
     "totalCount": 1,
     "list": [
+```
+
+`{`
+
+```json
         "projectCode": "05bb2bad-689b-4518-9a50-53953c65d59a",
         "date": null,
         "fileCount": 1,
@@ -4639,12 +4992,14 @@ Obtains a detailed data list.
         "kbCode": "v8ocqajdnb16"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "errorCode": null,
   "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -4706,6 +5061,8 @@ Obtain data for three core metrics
 | label | String | Metric | Total number of original files |
 | value | Integer | The metric values. | 1262 |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -4718,7 +5075,7 @@ Obtain data for three core metrics
       "value": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key": "fileSize",
@@ -4726,7 +5083,7 @@ Obtain data for three core metrics
       "value": 3532962
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key": "tokenCount",
@@ -4734,12 +5091,14 @@ Obtain data for three core metrics
       "value": "121036"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "errorCode": null,
   "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -4837,13 +5196,20 @@ Document knowledge base chunk detail list query
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
     "success": true,
     "data": {
         "total": 1,
         "list": [
+```
+
+`{`
+
+```json
                 "file_code": "7a3f64a3f22a4f12b2fe2557d3139595",
                 "file_name": "I was on the verge of collapse"_full.pdf",
                 "file_path": "kortex/kb/doc/file/kk062kg1t4hd/7 a3f64a3f22a4f12b2fe2557d3139595 /" I wa
@@ -4859,6 +5225,11 @@ ing; Wang Qiang; Dingli recommended; CITIC Publishing Group I have walked on the
                 "show_content": "{object_1_figure_0} I was on the verge of collapse -- Yu Minhong's des
 cription of the entrepreneurial development of New Oriental CITIC Publishing Group by Yu Minhong",
                 "chunk_bboxs": [
+```
+
+`{`
+
+```json
                         "text_bbox": [
                             0.2206,
                             0.2898,
@@ -4875,7 +5246,7 @@ al's entrepreneurial development",
                         "page": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "text_bbox": [
@@ -4893,7 +5264,7 @@ al's entrepreneurial development",
                         "page": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "text_bbox": [
@@ -4912,7 +5283,7 @@ w Oriental",
                         "page": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "text_bbox": [
@@ -4930,7 +5301,7 @@ w Oriental",
                         "page": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "text_bbox": [
@@ -4948,7 +5319,7 @@ w Oriental",
                         "page": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "text_bbox": [
@@ -4987,10 +5358,15 @@ w Oriental",
                         "page": 2
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "objects": [
+```
+
+`{`
+
+```json
                         "object_id": "object_1_figure_0",
                         "object_type": "figure",
                         "object_sub_type": "other",
@@ -5004,7 +5380,7 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
                         "page": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "start_page": 1,
@@ -5013,7 +5389,7 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
                 "chapter_title": null
 ```
 
-`],`
+`}` `],`
 
 ```json
         "pageSize": 10,
@@ -5026,6 +5402,8 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5087,8 +5465,15 @@ Document knowledge base re-parsing
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "updated": 1
@@ -5100,6 +5485,8 @@ Document knowledge base re-parsing
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5164,6 +5551,8 @@ Document knowledge base chunk content correction
     "errorMsg": null
 ```
 
+`}`
+
 **Additional information**
 
 | HTTP status return code | Error description | Error interpretation |
@@ -5226,11 +5615,18 @@ knowledge base data query, such as business data entered by a data model defined
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
     "total": 3,
     "list": [
+```
+
+`{`
+
+```json
             "matter_name": "Manhole cover defect 1",
             "sys_source_ids": "{\"kb_submodel\": \"true\", \"kb_submodel.sys_data_id\": \"b724ba0f-
 a836-4f5e-88d8-c90dda96e3e6\"}",
@@ -5239,7 +5635,7 @@ a836-4f5e-88d8-c90dda96e3e6\"}",
             "sys_create_time": "2025-07-22T15:44:14.592+00:00"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "matter_name": "Noise nuisance",
@@ -5250,7 +5646,7 @@ a836-4f5e-88d8-c90dda96e3e6\"}",
             "sys_create_time": "2025-07-22T15:43:05.304+00:00"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "matter_name": "Privately built",
@@ -5261,12 +5657,14 @@ a836-4f5e-88d8-c90dda96e3e6\"}",
             "sys_create_time": "2025-07-22T15:17:58.050+00:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageSize": 10,
     "current": 1
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5349,6 +5747,8 @@ Document knowledge base File List Query
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -5358,6 +5758,11 @@ Document knowledge base File List Query
     "data": {
         "total": 1,
         "list": [
+```
+
+`{`
+
+```json
                 "kbCode": "kk062kg1t4hd",
                 "fileCode": "7a3f64a3f22a4f12b2fe2557d3139595",
                 "fileOriginalUrl": "https://ibp-deliver.oss-cn-
@@ -5384,7 +5789,7 @@ on the verge of crash "_full.pdf",
                 "updateUserId": "2b6b6d96279a4c7eaf3357dca86a4844"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "pageSize": 10,
@@ -5397,6 +5802,8 @@ on the verge of crash "_full.pdf",
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5455,8 +5862,15 @@ Deactivate knowledge base
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
     "success": true,
     "data": {
         "kbDisable": 1
@@ -5468,6 +5882,8 @@ Deactivate knowledge base
     "errorCode": null,
     "errorMsg": null
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5559,6 +5975,11 @@ Obtain a list of datasets
 ```json
  JSON format
   "datasets": [
+```
+
+`{`
+
+```json
       "id": 128,
       "code": "mmlu_no_train",
       "name": "dataset001",
@@ -5567,12 +5988,17 @@ Obtain a list of datasets
       "rowCount": 36,
       "downloadCount": 9,
       "tags": [
+```
+
+`{`
+
+```json
           "id": 7,
           "name": "Multi-label classification",
           "value": ""
 ```
 
-`},`
+`},` `{`
 
 ```json
           "id": 202,
@@ -5580,7 +6006,7 @@ Obtain a list of datasets
           "value": "French label value"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "ownerId": "1631044****3440",
@@ -5591,13 +6017,15 @@ Obtain a list of datasets
       "updatedAt": "2021-01-30T12:51:33.028Z"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5664,13 +6092,22 @@ Create a dataset
 | id | Integer | Dataset ID | 99 |
 | code | String | Dataset code | mmlu no train _ _ |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": {
     "id": 99,
     "code": "mmlu_no_train"
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -5727,11 +6164,20 @@ Update a dataset
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | Boolean | Response parameters | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": true
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5777,11 +6223,20 @@ Delete a dataset
 | success | Boolean | Success | true |
 | data | Boolean | Response parameters | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": true
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -5889,6 +6344,8 @@ Obtain the details of a dataset.
 | parquetPath | String | Dataset parquet address | sfm/dataset/baseline/mmlu no train/parquet _ _ |
 | summaryModified | String | The time when the dataset summary was last modified. | 2021-01-30T12:51:33.028Z |
 
+**Examples**
+
 `JSON` format
 
 ```json
@@ -5899,27 +6356,42 @@ Obtain the details of a dataset.
   "rowCount": 36,
   "downloadCount": 9,
   "tags": [
+```
+
+`{`
+
+```json
       "id": 123,
       "name": "size_scale",
       "value": "1w-10w"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "subsets": [
+```
+
+`{`
+
+```json
       "code": "default",
       "name": "default",
       "parquetFilesSize": 0,
       "rowCount": 19,
       "features": [
+```
+
+`{`
+
+```json
           "columnName": "__idx",
           "columnType": "string",
           "columnPhysicalType": "varchar",
           "columnComment": ""
 ```
 
-`},`
+`},` `{`
 
 ```json
           "columnName": "__content",
@@ -5928,10 +6400,15 @@ Obtain the details of a dataset.
           "columnComment": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
       "splits": [
+```
+
+`{`
+
+```json
           "code": "train",
           "subset": "default",
           "name": "train",
@@ -5939,7 +6416,7 @@ Obtain the details of a dataset.
           "rowCount": 19
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
   "ownerId": "1631044****3440",
@@ -5951,6 +6428,8 @@ Obtain the details of a dataset.
   "repoPath": "sfm/dataset/baseline/mmlu_no_train/main",
   "parquetPath": "sfm/dataset/baseline/mmlu_no_train/parquet"
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -6011,7 +6490,9 @@ Notify Dataset File Add
 | error | String | Error message |   |
 | progress | Integer | Execution progress | 100 |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -6024,6 +6505,8 @@ Notify Dataset File Add
     "error": "",
     "progress": 100
 ```
+
+`}` `}`
 
 **Additional information**
 
@@ -6084,7 +6567,9 @@ Notify Dataset File Deletion
 | error | String | Error message |   |
 | progress | Integer | Execution progress | 100 |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -6097,6 +6582,8 @@ Notify Dataset File Deletion
     "error": "",
     "progress": 100
 ```
+
+`}` `}`
 
 **Additional information**
 
@@ -6161,12 +6648,19 @@ Query the list of dataset files by page
 | totalCount | Integer | The total number of records. | 5000 |
 | pageNumber | Integer | Current Page Number | 1 |
 
+**Examples**
+
 `JSON` format
 
 ```json
   "success": true,
   "data": {
     "datasetFileInfos": [
+```
+
+`{`
+
+```json
         "name": "000000000139.jpg",
         "filepath": "sfm/dataset/baseline/opentrek/COCO_2017/main/val/000000000139.jpg",
         "suffix": "jpg",
@@ -6174,7 +6668,7 @@ Query the list of dataset files by page
         "lastModified": 1737106513
 ```
 
-`},`
+`},` `{`
 
 ```json
         "name": "000000000285.jpg",
@@ -6184,13 +6678,15 @@ Query the list of dataset files by page
         "lastModified": 1737106513
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageSize": 10,
     "totalCount": 5000,
     "pageNumber": 1
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -6270,7 +6766,9 @@ New Data Subset
 | ownerName | String | The name of the owner. | admin |
 | tags | List | The tags. | [] |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -6291,6 +6789,8 @@ New Data Subset
     "ownerName": "admin",
     "tags": []
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -6354,7 +6854,7 @@ Update a subset of data
 | ownerName | String | Owner user name | admin |
 | tags | List | The tags. | [] |
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -6375,6 +6875,8 @@ Update a subset of data
     "ownerName": "admin",
     "tags": []
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -6427,11 +6929,20 @@ Delete a subset of a dataset
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | Boolean | Response parameters | true |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": true
 ```
+
+`}`
 
 **Additional information**
 
@@ -6503,23 +7014,40 @@ Dataset subset list
 | totalCount | Integer | The total number of records. | 2 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": {
     "subsets": [
+```
+
+`{`
+
+```json
         "code": "image_subset",
         "name": "image_subset",
         "parquetFilesSize": 275025,
         "rowCount": 5000,
         "features": [
+```
+
+`{`
+
+```json
             "columnName": "__idx",
             "columnType": "string",
             "columnPhysicalType": "varchar",
             "columnComment": ""
 ```
 
-`},`
+`},` `{`
 
 ```json
             "columnName": "image",
@@ -6541,13 +7069,13 @@ Dataset subset list
               "sfm/dataset/baseline/opentrek/COCO_2017/main/**/*.jpg"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
         "lastModified": 1737107658
 ```
 
-`},`
+`},` `{`
 
 ```json
         "code": "image_subset_annotation_dd52841...9d1e7925c5",
@@ -6555,13 +7083,18 @@ Dataset subset list
         "parquetFilesSize": 8898,
         "rowCount": 14,
         "features": [
+```
+
+`{`
+
+```json
             "columnName": "image",
             "columnType": "Image",
             "columnPhysicalType": "struct(bytes blob, path varchar)",
             "columnComment": ""
 ```
 
-`},`
+`},` `{`
 
 ```json
             "columnName": "label",
@@ -6570,10 +7103,15 @@ Dataset subset list
             "columnComment": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
         "splits": [
+```
+
+`{`
+
+```json
             "code": "train",
             "subset": "image_subset_annotation_dd52841...9d1e7925c5",
             "name": "train",
@@ -6583,19 +7121,21 @@ Dataset subset list
 "sfm/dataset/baseline/opentrek/COCO_2017/parquet/image_subset_annotation_dd528417ad82405f835e969d1e7925c rain/0000.parquet"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
         "lastModified": 1737107659
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageSize": 2,
     "totalCount": 2,
     "pageNumber": 1
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -6667,6 +7207,8 @@ This interface uses common request headers without special request headers. See 
 | sourceFiles | List | Source file list | ["sfm/dataset/baseline/ope ntrek/COCO 2017/main/**/ _ * .jpg"] |
 | lastModified | Integer | Last modification time | 1737107658 |
 
+**Examples**
+
 `JSON` format
 
 ```json
@@ -6675,13 +7217,18 @@ This interface uses common request headers without special request headers. See 
         "parquetFilesSize": 275025,
         "rowCount": 5000,
         "features": [
+```
+
+`{`
+
+```json
             "columnName": "__idx",
             "columnType": "string",
             "columnPhysicalType": "varchar",
             "columnComment": ""
 ```
 
-`},`
+`},` `{`
 
 ```json
             "columnName": "image",
@@ -6690,10 +7237,15 @@ This interface uses common request headers without special request headers. See 
             "columnComment": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
         "splits": [
+```
+
+`{`
+
+```json
             "code": "train",
             "subset": "image_subset",
             "name": "train",
@@ -6703,11 +7255,13 @@ This interface uses common request headers without special request headers. See 
               "sfm/dataset/baseline/opentrek/COCO_2017/main/**/*.jpg"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
         "lastModified": 1737107658
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -6779,6 +7333,8 @@ Obtain dataset preview data
 | totalCount | Integer | Total Rows | 12389 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -6787,12 +7343,17 @@ Obtain dataset preview data
   "success": true,
   "data": {
     "schema": [
+```
+
+`{`
+
+```json
         "columnName": "pdf_url",
         "columnType": "string",
         "columnPhysicalType": "varchar"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "columnName": "file",
@@ -6800,7 +7361,7 @@ Obtain dataset preview data
         "columnPhysicalType": "struct(bytes blob, path varchar)"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "columnName": "size",
@@ -6808,7 +7369,7 @@ Obtain dataset preview data
         "columnPhysicalType": "int64"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "data": [
@@ -6816,8 +7377,13 @@ Obtain dataset preview data
 
 `[`
 
-```json
+```
         "oss://xxx/tenant/dataset/xxx/tmp/xxx.pdf",
+```
+
+`{`
+
+```json
           "path": "tmp/xxx.pdf",
           "bytes": null
 ```
@@ -6837,6 +7403,8 @@ Obtain dataset preview data
     "totalCount": 12389,
     "pageNumber": 1
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -6894,7 +7462,9 @@ Obtain the image URL
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -6903,6 +7473,8 @@ Obtain the image URL
     "expiration": 3600,
     "expireTime": "2024-10-08T11:53:23.000Z"
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -6967,6 +7539,8 @@ Obtain the file download address
     "expireTime": "2024-10-08T11:53:23.000Z"
 ```
 
+`}` `}`
+
 **Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7015,7 +7589,9 @@ Delete files in a dataset at a time
 | cnt | Integer | Number of deleted files | 1 |
 | deletedFiles | List | Deleted File List | ["train /Wuguitan. jpeg"] |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -7023,6 +7599,8 @@ Delete files in a dataset at a time
     "cnt": 1,
     "deletedFiles": ["train /turtle tan. jpeg"]
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -7085,7 +7663,9 @@ Obtain the file upload authorization credential
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -7102,6 +7682,8 @@ Obtain the file upload authorization credential
     "expiration": 3600,
     "expireTime": "2024-10-08T11:53:23.000Z"
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -7162,7 +7744,9 @@ Obtain the file download authorization credential
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "success": true,
@@ -7179,6 +7763,8 @@ Obtain the file download authorization credential
     "expiration": 3600,
     "expireTime": "2024-10-08T11:53:23.000Z"
 ```
+
+`}` `}`
 
 **Documentation Supplement**
 
@@ -7258,7 +7844,9 @@ Obtains the details of a processing task.
 | createdAt | String | Creation time | 2021-01-30T12:51:33.028Z |
 | updatedAt | String | Update time | 2021-01-30T12:51:33.028Z |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "id": 123,
@@ -7281,6 +7869,8 @@ Obtains the details of a processing task.
   "createdAt": "2021-01-30T12:51:33.028Z",
   "updatedAt": "2021-01-30T12:51:33.028Z"
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -7354,6 +7944,8 @@ Obtains the list of processing templates.
 | totalCount | Integer | Total Quantity | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
+**Example**
+
 ```
  JSON format
 ```
@@ -7376,13 +7968,15 @@ Obtains the list of processing templates.
       "updatedAt": "2021-01-30T12:51:33.028Z"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -7450,10 +8044,19 @@ Create a processing task
 |---|---|---|---|
 | id | Integer | The task ID. | 123 |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "id": 123
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -7503,6 +8106,8 @@ Delete a processing task
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
+
+**Examples**
 
 `JSON` format
 
@@ -7588,10 +8193,17 @@ Obtains the list of processing tasks.
 | totalCount | Integer | The total number of entries returned. | 79 |
 | pageNumber | Integer | Current Page Number | 1 |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "tasks": [
+```
+
+`{`
+
+```json
       "id": 123,
       "name": "Custom cleansing task",
       "description": "Custom cleansing task",
@@ -7610,13 +8222,15 @@ Obtains the list of processing tasks.
       "updatedAt": "2021-01-30T12:51:33.028Z"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -7719,10 +8333,17 @@ Obtains the operator list.
 | totalCount | Integer | The total number of entries returned. | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "operators": [
+```
+
+`{`
+
+```json
       "id": 1203,
       "name": "Text enhancement",
       "code": "opentrek_text_enhancement_mapper",
@@ -7732,13 +8353,18 @@ Obtains the operator list.
       "devices": ["CPU", "GPU"],
       "tags": ["LLM"],
       "updateFeatures": [
+```
+
+`{`
+
+```json
           "columnName": "problem",
           "columnType": "string",
           "columnPhysicalType": "varchar",
           "columnComment": "User question"
 ```
 
-`},`
+`},` `{`
 
 ```json
           "columnName": "param:solution",
@@ -7747,10 +8373,15 @@ Obtains the operator list.
           "columnComment": "LLM answer"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "params": [
+```
+
+`{`
+
+```json
           "type": "literal",
           "required": true,
           "key": "model",
@@ -7759,7 +8390,7 @@ Obtains the operator list.
           "options": ["qwen-max", "qwen-vl"]
 ```
 
-`],`
+`}` `],`
 
 ```json
       "components": [
@@ -7773,13 +8404,18 @@ Obtains the operator list.
           "desc": "A brief description of the current form item",
           "defaultValue": "qwen-max",
           "options": [
+```
+
+`{`
+
+```json
               "label": "Tongyi Qiwen",
               "value": "qwen-max",
               "desc": "Tongyi Qianwen is a large model that specially responds to human instructions. I
 t is a flexible and versatile player who can write emails, weekly newspapers, outlines, poems, novels, plays, coding, tabulation and even role-playing. "
 ```
 
-`},`
+`},` `{`
 
 ```json
               "label": "VL",
@@ -7788,7 +8424,7 @@ t is a flexible and versatile player who can write emails, weekly newspapers, ou
 can use images, text, and check boxes as input and use text and check boxes as output. It supports Chi nese multi-modal dialogues and multi-image dialogues. "
 ```
 
-`],`
+`}` `],`
 
 ```json
           "extra": {
@@ -7798,13 +8434,15 @@ can use images, text, and check boxes as input and use text and check boxes as o
             "mode": "multiple"
 ```
 
-`]` `],`
+`}` `}` `]` `}` `],`
 
 ```json
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -7902,10 +8540,22 @@ Obtain the information of a task running instance.
 | totalCount | Integer | The total number of records. | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": [
+```
+
+`{`
+
+```json
       "id": 667,
       "tenantCode": "baseline",
       "flowId": 555,
@@ -7938,7 +8588,7 @@ Obtain the information of a task running instance.
       "exportDataset": null
 ```
 
-`]`
+`}` `]`
 
 **Documentation Supplement**
 
@@ -7990,11 +8640,20 @@ Run processing tasks
 | data | Object | Response parameters |   |
 | id | Integer | Task Run ID | 2357 |
 
-```json
+**Example**
+
+```
  JSON format
+```
+
+`{`
+
+```json
   "success": true,
   "data": {"id": 2357}
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -8045,6 +8704,8 @@ Publish a task
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 
+**Examples**
+
 `JSON` format
 
 ```json
@@ -8093,6 +8754,8 @@ To undownload a task
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
+
+**Examples**
 
 `JSON` format
 
@@ -8174,7 +8837,9 @@ Obtain the details of a processing template.
 | createdAt | String | Creation time | 2021-01-30T12:51:33.028Z |
 | updatedAt | String | Update time | 2021-01-30T12:51:33.028Z |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
   "id": 128,
@@ -8194,6 +8859,8 @@ Obtain the details of a processing template.
   "createdAt": "2021-01-30T12:51:33.028Z",
   "updatedAt": "2021-01-30T12:51:33.028Z"
 ```
+
+`}`
 
 **Documentation Supplement**
 
@@ -8317,6 +8984,8 @@ Obtain task instance logs
 |---|---|---|---|
 | log | String | Task instance logs | 2025-07-01 17:59:52.301073 +0800 CST -------------------------------- -- 2025-07-01 18:05:30.643637 +0800 CST |
 
+**Examples**
+
 `JSON` format
 
 ```json
@@ -8428,6 +9097,8 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/createSession
 
 **Response example**
 
+`{`
+
 ```json
  "success": true,
  "data": {
@@ -8440,6 +9111,8 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/createSession
  "errorCode": null,
  "errorMsg": null
 ```
+
+`}`
 
 **Status codes**
 
@@ -8553,7 +9226,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/run \ -H 'Aut
         "attachments":[]
 ```
 
-`}'`
+`}` `}'`
 
 **Response examples**
 
@@ -8576,10 +9249,20 @@ data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de
     "type": "text",
     "text": {
      "value": "Hello! How can I help you?"
+```
+
+`}`
+
+```json
    },{
     "type": "image",
     "image": {
      "url": ""
+```
+
+`}`
+
+```json
    }],
    "metadata": null
 ```
@@ -8594,7 +9277,7 @@ data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de
      "data": ""
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "error": null
@@ -8606,6 +9289,8 @@ data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de
  "errorCode": null,
  "errorMsg": null
 ```
+
+`}`
 
 **Status codes**
 
@@ -8679,9 +9364,13 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/clearSession 
 
 **Response example**
 
+`{`
+
 ```json
   "success": true
 ```
+
+`}`
 
 **Status codes**
 
@@ -8753,9 +9442,13 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/deleteSession
 
 **Response example**
 
+`{`
+
 ```json
   "success": true ,"data": true
 ```
+
+`}`
 
 **Status code descriptions**
 
@@ -8833,9 +9526,13 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/taskFinishNot
 
 **Response example**
 
+`{`
+
 ```json
   "success": true
 ```
+
+`}`
 
 **Status codes**
 
@@ -8937,9 +9634,11 @@ curl --location --request POST 'http://ibp-studio-daily.aegmp.com/gateway/agent/
         "comment": "123"
 ```
 
-`}'`
+`}` `}'`
 
 **Response example**
+
+`{`
 
 ```json
   "errorMessages": [],
@@ -8964,12 +9663,14 @@ curl --location --request POST 'http://ibp-studio-daily.aegmp.com/gateway/agent/
       "comment": "123"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "errorCode": null,
   "errorMsg": null
 ```
+
+`}`
 
 **Status codes**
 
@@ -9182,6 +9883,11 @@ Example of batch retrieval from knowledge bases
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/mono/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
     "combinationParams":[
+```
+
+`{`
+
+```json
             "kbCode":"kbcode1",
             "kbIndexRetrieveFieldName":"name",
             "query":"Test query 1",
@@ -9191,7 +9897,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
             "kbIndexEngineType":"builtin_vector"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "kbCode":"kbcode2",
@@ -9203,7 +9909,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
             "kbIndexEngineType":"builtin_es"
 ```
 
-`]` `}'`
+`}` `]` `}'`
 
 **Response parameters**
 
@@ -9460,6 +10166,11 @@ The batch retrieval API supports simultaneous retrieval from multiple document k
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/doc/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
     "combinationParams":[
+```
+
+`{`
+
+```json
             "kbCode":"kbcode1",
             "query":"Test query 1",
             "score":0.01,
@@ -9467,7 +10178,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
             "mapBatchKey":"kb1"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "kbCode":"kbcode2",
@@ -9481,7 +10192,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
             "topN":5
 ```
 
-`]` `}'`
+`}` `]` `}'`
 
 **Response parameters**
 
@@ -9670,14 +10381,14 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
                     "key": "China Resources Land Limited"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "tag": null,
             "version": null
 ```
 
-`},`
+`},` `{`
 
 ```json
             "score": 1.0809742,
@@ -9695,14 +10406,14 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
                     "key": "Country Garden Holdings Company Limited"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "tag": null,
             "version": null
 ```
 
-`],`
+`}` `],`
 
 ```json
     "errorCode": null,
@@ -9711,6 +10422,8 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
     "env": null,
     "ext": null
 ```
+
+`}`
 
 **Status code descriptions**
 
@@ -9798,18 +10511,25 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
 
 **Response example**
 
+`{`
+
 ```json
     "success": true,
     "data": {
         "total": 2,
         "list": [
+```
+
+`{`
+
+```json
                 "dpCode": "543eec8256cf40418d18c009ad9b319b",
                 "tableCode": "66024e2bf01541da93e3bd04cdf946a5",
                 "tableName": "dwd_mat_voucher",
                 "tableCommentExt": "Material voucher"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "dpCode": "543eec8256cf40418d18c009ad9b319b",
@@ -9819,7 +10539,7 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
 al Bureau of Statistics"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "pageSize": 1000,
@@ -9835,6 +10555,8 @@ al Bureau of Statistics"
     "env": null,
     "ext": null
 ```
+
+`}`
 
 **Status codes**
 
@@ -9934,6 +10656,11 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
     "data": {
         "total": 20,
         "list": [
+```
+
+`{`
+
+```json
                 "dpCode": "094107a115f64f5c8770aa1c3a0d0c3c",
                 "tableCode": "08dc4cbfef7c477e8ab9f50417678fd4",
                 "columnCode": "e5e66de1d72a48bab699a599dcf78040",
@@ -9949,12 +10676,17 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
                 "includeValue": 0,
                 "refDims": {
                     "dims": [
+```
+
+`{`
+
+```json
                             "code": "0d57e22c692a4c83a4de24fb1bb064b9",
                             "name": "Student List Table",
                             "refDimType": 1
 ```
 
-`]` `},`
+`}` `]` `}` `},` `{`
 
 ```json
                 "dpCode": "094107a115f64f5c8770aa1c3a0d0c3c",
@@ -9967,7 +10699,7 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
                 "refDims": null
 ```
 
-`],`
+`}` `],`
 
 ```json
         "pageSize": 10,
@@ -9983,6 +10715,8 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
     "env": null,
     "ext": null
 ```
+
+`}`
 
 **Status Code Descriptions**
 
@@ -10086,6 +10820,11 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
     "data": {
         "total": 1,
         "list": [
+```
+
+`{`
+
+```json
                 "code": "263a188399a24bb282c7325b40d4a231",
                 "name": "This Campus",
                 "content": "This Campus refers to the campus to which the user belongs.",
@@ -10095,15 +10834,25 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
                     "schema": {
                         "allTables": false,
                         "tables": [
+```
+
+`{`
+
+```json
                                 "tableCode": "08dc4cbfef7c477e8ab9f50417678fd4",
                                 "tableName": "Campus Dictionary Table",
                                 "allColumns": false,
                                 "columns": [
+```
+
+`{`
+
+```json
                                         "columnCode": "e5e66de1d72a48bab699a599dcf78040",
                                         "columnName": "Campus Name"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
                         "tableCodes": [
@@ -10117,7 +10866,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
                             "e5e66de1d72a48bab699a599dcf78040"
 ```
 
-`]` `],`
+`]` `}` `}` `}` `],`
 
 ```json
         "pageSize": 10,
@@ -10133,6 +10882,8 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
     "env": null,
     "ext": null
 ```
+
+`}`
 
 **Status code descriptions**
 

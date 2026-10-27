@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 186
 source_pdf: "e3eb3750a3f2a431_Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%20Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elasticsearch%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Elasticsearch User Guide 20260629
@@ -598,15 +598,20 @@ This topic describes how to create an index for an Elasticsearch cluster by usin
 1. Log in to the Kibana console.
 2. Run the following command to create an index:
 
-```json
+```
 PUT my_index
+```
+
+`{`
+
+```json
   "settings": {
     "index": {
       "number_of_shards": "5",
       "number_of_replicas": "1"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "mappings": {
@@ -630,6 +635,8 @@ PUT my_index
         "analyzer": "cjk"
 ```
 
+`}` `}` `}` `}`
+
 > **Important:** The preceding sample code applies only to Elasticsearch V7.0.0 and later. You can modify the code based on your business requirements. For more information, see Doc index.
 
 In Elasticsearch V7.0.0 and later, mapping types are removed. However, these mapping types are still supported in earlier versions. For more information, see Removal of types. In the preceding example, an index named `my_index` is created, and the type of the index
@@ -639,13 +646,15 @@ In Elasticsearch V7.0.0 and later, mapping types are removed. However, these map
 | cjk |   |   |
 |   |   | tok |
 
-is `_doc` . The index is split into five shards, has one replica for each shard, and uses the After the index is created and the mappings are configured, the following result is returned:
+is `_doc` . The index is split into five shards, has one replica for each shard, and uses the After the index is created and the mappings are configured, the following result is returned: `{`
 
 ```json
   "acknowledged" : true,
   "shards_acknowledged" : true,
   "index" : "my_index"
 ```
+
+`}`
 
 ### 6.2 Manage documents
 
@@ -660,8 +669,15 @@ Elasticsearch allows you to create documents by sending PUT requests, specifying
 
 ```
 PUT /<index_name>/<type>/<ID>
+```
+
+`{`
+
+```
   "<field_name>": "<value>"
 ```
+
+`}`
 
 | Parameter | Description |
 |---|---|
@@ -680,7 +696,7 @@ PUT /my_index/_doc/1
   "post_date":"2009-11-15T13:00:00"
 ```
 
-After the document is created, the following result is returned:
+`}` After the document is created, the following result is returned: `{`
 
 ```json
   "_index" : "my_index",
@@ -701,16 +717,21 @@ After the document is created, the following result is returned:
   "_primary_term" : 1
 ```
 
-Create a document whose ID is 2
+`}` Create a document whose ID is 2
+
+```
+PUT /my_index/_doc/2
+```
+
+`{`
 
 ```json
-PUT /my_index/_doc/2
   "title": "Two",
   "tags": ["ruby"],
   "post_date":"2009-11-15T14:00:00"
 ```
 
-After the document is created, the following result is returned:
+`}` After the document is created, the following result is returned: `{`
 
 ```json
   "_index" : "my_index",
@@ -731,7 +752,7 @@ After the document is created, the following result is returned:
   "_primary_term" : 1
 ```
 
-For more information, see Docs Index.
+`}` For more information, see Docs Index.
 
 #### 6.2.2 Update a document
 
@@ -745,16 +766,28 @@ method. Update an entire document
 
 ```
 PUT /<index_name>/<type>/<ID>
+```
+
+`{`
+
+```
   "<field_name>": "<value>"
 ```
 
-Update part of a document
+`}` Update part of a document
+
+```
+POST /<index_name>/<type>/_update/<ID>
+```
+
+`{`
 
 ```json
-POST /<index_name>/<type>/_update/<ID>
   "script" : {
         "source": "ctx._source.<field_name> = '<value>'"
 ```
+
+`}` `}`
 
 | Parameter | Description |
 |---|---|
@@ -773,7 +806,7 @@ PUT /my_index/_doc/1
   "post_date":"2009-11-15T13:00:00"
 ```
 
-If the document is updated, the following result is returned:
+`}` If the document is updated, the following result is returned: `{`
 
 ```json
   "_index" : "my_index",
@@ -794,15 +827,20 @@ If the document is updated, the following result is returned:
   "_primary_term" : 1
 ```
 
-Update part of a document
+`}` Update part of a document
+
+```
+POST /my_index/_update/1
+```
+
+`{`
 
 ```json
-POST /my_index/_update/1
     "script" : {
         "source": "ctx._source.title='One World'"
 ```
 
-If the document is updated, the following result is returned:
+`}` `}` If the document is updated, the following result is returned: `{`
 
 ```json
   "_index" : "my_index",
@@ -823,7 +861,7 @@ If the document is updated, the following result is returned:
   "_primary_term" : 1
 ```
 
-You can also call the corresponding API operation to batch update documents. For more information, see Docs Update.
+`}` You can also call the corresponding API operation to batch update documents. For more information, see Docs Update.
 
 #### 6.2.3 Retrieve a document
 
@@ -850,7 +888,7 @@ Sample code:
 GET /my_index/_doc/1
 ```
 
-If the command succeeds, the following result is returned:
+If the command succeeds, the following result is returned: `{`
 
 ```json
   "_index" : "my_index",
@@ -873,7 +911,7 @@ If the command succeeds, the following result is returned:
     "post_date" : "2009-11-15T13:00:00"
 ```
 
-For more information, see Docs GET.
+`}` `}` For more information, see Docs GET.
 
 #### 6.2.4 Search for documents
 
@@ -896,7 +934,7 @@ To search for documents in which the title field contains the T keyword, run the
 GET /my_index/_search?q=title:T*
 ```
 
-If the command succeeds, the following result is returned:
+If the command succeeds, the following result is returned: `{`
 
 ```json
   "took" : 689,
@@ -922,6 +960,11 @@ If the command succeeds, the following result is returned:
 ```json
     "max_score" : 1.0,
     "hits" : [
+```
+
+`{`
+
+```json
         "_index" : "my_index",
         "_type" : "_doc",
         "_id" : "2",
@@ -938,7 +981,7 @@ If the command succeeds, the following result is returned:
           "post_date" : "2009-11-15T14:00:00"
 ```
 
-`]` For more information, see Docs GET.
+`}` `}` `]` `}` `}` For more information, see Docs GET.
 
 #### 6.2.5 Perform a complex search
 
@@ -949,12 +992,17 @@ This topic describes how to perform a complex search in the Kibana console by se
 1. Log in to the Kibana console.
 2. Run the following command to perform a complex search by using the GET method:
 
-```json
+```
 GET /<index_name>/_search
+```
+
+`{`
+
+```json
     "query" : {
 ```
 
-`""`
+`""` `}` `}`
 
 | Parameter | Description |
 |---|---|
@@ -963,15 +1011,20 @@ GET /<index_name>/_search
 
 Sample code: Query by time range
 
-```json
+```
 GET /my_index/_search
+```
+
+`{`
+
+```json
     "query" : {
         "range" : {
             "post_date" : { "from" : "2009-11-15T13:00:00", "to" : "2009-11-
 15T14:00:00" }
 ```
 
-If the command succeeds, the following result is returned:
+`}` `}` `}` If the command succeeds, the following result is returned:
 
 ```json
   "took" : 1,
@@ -997,6 +1050,11 @@ If the command succeeds, the following result is returned:
 ```json
     "max_score" : 1.0,
     "hits" : [
+```
+
+`{`
+
+```json
         "_index" : "my_index",
         "_type" : "_doc",
         "_id" : "2",
@@ -1013,7 +1071,7 @@ If the command succeeds, the following result is returned:
           "post_date" : "2009-11-15T14:00:00"
 ```
 
-`},`
+`}` `},` `{`
 
 ```json
         "_index" : "my_index",
@@ -1032,7 +1090,7 @@ If the command succeeds, the following result is returned:
           "post_date" : "2009-11-15T13:00:00"
 ```
 
-`]` Query by keyword
+`}` `}` `]` `}` `}` Query by keyword
 
 ```json
 GET /my_index/_search
@@ -1043,7 +1101,7 @@ GET /my_index/_search
         "default_operator": "or"
 ```
 
-If the command succeeds, the following result is returned:
+`}` `}` `}` If the command succeeds, the following result is returned: `{`
 
 ```json
   "took" : 1,
@@ -1069,6 +1127,11 @@ If the command succeeds, the following result is returned:
 ```json
     "max_score" : 2.2378674,
     "hits" : [
+```
+
+`{`
+
+```json
         "_index" : "my_index",
         "_type" : "_doc",
         "_id" : "1",
@@ -1085,7 +1148,7 @@ If the command succeeds, the following result is returned:
           "post_date" : "2009-11-15T13:00:00"
 ```
 
-`]` For more information, see Docs GET.
+`}` `}` `]` `}` `}` For more information, see Docs GET.
 
 #### 6.2.6 Analyze document statistics
 
@@ -1096,8 +1159,13 @@ Elasticsearch allows you to perform aggregate queries on the data of a specific 
 1. Log in to the Kibana console.
 2. Run the following command to analyze document statistics by using the POST method:
 
-```json
+```
 POST /<index_name>/_search
+```
+
+`{`
+
+```json
   "size": 0,
   "aggs": {
     "group_by_tags": {
@@ -1105,11 +1173,17 @@ POST /<index_name>/_search
         "field": "tags"
 ```
 
+`}` `}` `}` `}`
 **<index_name>**: the name of the index.
 Sample code:
 
-```json
+```
 POST /my_index/_search
+```
+
+`{`
+
+```json
   "size": 0,
   "aggs": {
     "group_by_tags": {
@@ -1117,7 +1191,7 @@ POST /my_index/_search
         "field": "tags"
 ```
 
-If the command succeeds, the following result is returned:
+`}` `}` `}` `}` If the command succeeds, the following result is returned:
 
 ```json
   "took" : 1,
@@ -1153,11 +1227,16 @@ If the command succeeds, the following result is returned:
       "doc_count_error_upper_bound" : 0,
       "sum_other_doc_count" : 0,
       "buckets" : [
+```
+
+`{`
+
+```json
           "key" : "ruby",
           "doc_count" : 2
 ```
 
-`]`
+`}` `]` `}` `}` `}`
 
 #### 6.2.7 Delete a document
 
@@ -1186,7 +1265,7 @@ Sample code:
 DELETE /my_index/_doc/2
 ```
 
-If the document is deleted, the following result is returned:
+If the document is deleted, the following result is returned: `{`
 
 ```json
   "_index" : "my_index",
@@ -1207,7 +1286,7 @@ If the document is deleted, the following result is returned:
   "_primary_term" : 1
 ```
 
-For more information, see Docs Delete.
+`}` For more information, see Docs Delete.
 
 #### 6.2.8 Delete an index
 
@@ -1229,7 +1308,7 @@ Sample code:
 DELETE /my_index
 ```
 
-If the index is deleted, the following result is returned:
+If the index is deleted, the following result is returned: `{`
 
 ```json
   "acknowledged" : true
@@ -1912,8 +1991,13 @@ This topic uses the following markers to provide descriptions for code: <1>, <2>
 
 **Create a repository**
 
-```json
+```
 PUT _snapshot/my_backup
+```
+
+`{`
+
+```json
    "type": "oss",
     "settings": {
         "endpoint": "http://oss-cn-hangzhou-internal.aliyuncs.com", <1>
@@ -1924,7 +2008,7 @@ PUT _snapshot/my_backup
         "base_path": "snapshot/" <3>
 ```
 
-<1>: The `endpoint` parameter specifies the internal endpoint of an Object Storage Service (OSS) bucket. <2>: The bucket parameter specifies the name of the OSS bucket. <3>: The base_path parameter specifies the path of the repository. The default value is the root directory.
+`}` `}` <1>: The `endpoint` parameter specifies the internal endpoint of an Object Storage Service (OSS) bucket. <2>: The bucket parameter specifies the name of the OSS bucket. <3>: The base_path parameter specifies the path of the repository. The default value is the root directory.
 
 **Set the size of each part**
 
@@ -1942,7 +2026,7 @@ POST _snapshot/my_backup/ <1>
         "base_path": "snapshot/" <2>
 ```
 
-<1>: the request method.
+`}` `}` <1>: the request method.
 
 > **Important:** When you update the settings of a repository, use the POST method instead of the PUT method. If you use the PUT method for the update, other settings of the repository are also updated.
 
@@ -1978,12 +2062,17 @@ By default, a snapshot contains all enabled indexes. If Kibana is used when you 
 
 > **Important:** A repository stores multiple snapshots. Each snapshot is a copy of all indexes, specified indexes, or a single index in a cluster. When you create a snapshot, specify the desired indexes and make sure that the snapshot name is unique.
 
-```json
+```
 PUT _snapshot/my_backup/snapshot_2
+```
+
+`{`
+
+```json
     "indices": "index_1,index_2"
 ```
 
-The preceding command creates a snapshot only for the indexes named `index1` and
+`}` The preceding command creates a snapshot only for the indexes named `index1` and
 
 ```
  index2 .
@@ -1997,10 +2086,15 @@ In some cases, you may need to query snapshot information. For example, a snapsh
 GET _snapshot/my_backup/snapshot_2
 ```
 
-The response contains detailed information of the snapshot:
+The response contains detailed information of the snapshot: `{`
 
 ```json
 "snapshots": [
+```
+
+`{`
+
+```json
       "snapshot": "snapshot_2",
       "indices": [
          ".marvel_2014_28_10",
@@ -2024,7 +2118,7 @@ The response contains detailed information of the snapshot:
          "successful": 10
 ```
 
-`]` You can replace the snapshot name in the preceding command with `_all` to query all snapshots in the repository. Example:
+`}` `]` You can replace the snapshot name in the preceding command with `_all` to query all snapshots in the repository. Example:
 
 ```
 GET _snapshot/my_backup/_all
@@ -2154,12 +2248,19 @@ POST _snapshot/my_backup/snapshot_1/_restore
 
 After you run this command, the system restores all indexes in the snapshot by default. For example, if the `snapshot_1` snapshot contains five indexes, all these indexes are restored to the Elasticsearch cluster. You can also specify the indexes that you want to restore. For more information, see the Create a snapshot for specified indexes section of this topic. Restore specified indexes and rename the indexes. If you want to only verify or process the data in indexes and do not want to overwrite the data, use this method to restore the indexes. Example:
 
-```json
+```
 POST /_snapshot/my_backup/snapshot_1/_restore
+```
+
+`{`
+
+```json
  "indices": "index_1", <1>
  "rename_pattern": "index_(.+)", <2>
  "rename_replacement": "restored_index_$1" <3>
 ```
+
+`}`
 
 | In this example, the | index 1 _ . |
 |---|---|
@@ -2258,10 +2359,15 @@ Sample response:
    "start" : {
      "check_index_time" : 0,
      "total_time_in_millis" : 0
+```
+
+`}`
+
+```
  } ]
 ```
 
-<1>: The `type` parameter indicates the type of restoration. The value `snapshot` indicates that the shard is being restored from a snapshot. <2>: The `source` parameter indicates the source snapshot and repository. <3>: The `percent` parameter indicates the progress of the restoration task. The value 94.5% indicates that 94.5% of shard files are restored. The response lists all indexes that are being restored and all shards in these indexes. Each shard contains statistics about the start or end time, duration, restoration progress, and transmitted bytes.
+`}` `}` <1>: The `type` parameter indicates the type of restoration. The value `snapshot` indicates that the shard is being restored from a snapshot. <2>: The `source` parameter indicates the source snapshot and repository. <3>: The `percent` parameter indicates the progress of the restoration task. The value 94.5% indicates that 94.5% of shard files are restored. The response lists all indexes that are being restored and all shards in these indexes. Each shard contains statistics about the start or end time, duration, restoration progress, and transmitted bytes.
 
 **Cancel index restoration**
 
@@ -2281,6 +2387,9 @@ To use a snapshot to migrate data to an Elasticsearch cluster, perform the follo
 OSS bucket that stores the snapshot.
 3. Set the `base_path` parameter to the path of the snapshot.
 4. Run the snapshot restoration command on the destination Elasticsearch cluster.
+
+**Note**
+
 These steps provide a simple solution to snapshot-based data migration. For more information, see Use a snapshot stored in OSS to migrate Elasticsearch data.
 
 ##### 7.4.4.2 Automatic backup
@@ -2463,6 +2572,7 @@ PUT /my_test_index
           "type": "text"
 ```
 
+`}` `}` `}` `}` `}`
 4. Run the `GET _nodes` command to get the `<IP:Port>` information. You will need this
 information in a later step. From the query result, get the value of the `transport_address` parameter. For example:
 
@@ -2478,8 +2588,13 @@ For more information, see Log on to the Kibana console.
 3. In the **Console**, run the following command on the destination cluster (follower) to add the
 source cluster (leader) as a remote cluster.
 
-```json
+```
 PUT _cluster/settings
+```
+
+`{`
+
+```json
   "persistent": {
     "cluster": {
       "remote": {
@@ -2488,7 +2603,7 @@ PUT _cluster/settings
             "<your cluster IP>:<your cluster Port>"
 ```
 
-`]`
+`]` `}` `}` `}` `}` `}`
 
 > **Note:** Replace `<your cluster IP>` and `<your cluster Port>` with the `<IP:Port>` information from Step 4 of the Preparation section.
 
@@ -2565,6 +2680,8 @@ PUT /_xdcr/repository/<new_repository_name>
   "password": "<primary_cluster_password>"
 ```
 
+`}`
+
 > **Note:** To get the IP address and port number of the primary cluster, log on to its Kibana console and run the `GET _nodes` command to find the `<IP:Port>` information.
 > Cluster username and password for the primary cluster: The default username is elastic. The password is the one you set when creating the cluster.
 
@@ -2619,12 +2736,18 @@ PUT /<index_name>
 
 2. Insert data into the index:
 
-```json
+```
 POST /kk-index02/_doc
+```
+
+`{`
+
+```json
   "aaa":"primary cluster data 1",
   "bbb":"primary cluster data 12"
 ```
 
+`}`
 3. View the created index and its data.
 
 ```
@@ -2659,24 +2782,37 @@ DELETE /_xdcr/cluster_sync/<repository_name>/<index_name>
 1. On the primary cluster, create two indexes (for example, kk-indexa001 and kk-indexb002)
 and insert data into each index.
 
-```json
+```bash
 # Create an index on the primary cluster.
 PUT /kk-indexa001
 # Insert data into the index.
 POST /kk-indexa001/_doc
+```
+
+`{`
+
+```json
   "aaa":"primary cluster index a data 1",
   "bbb":"primary cluster index a data 12"
 ```
 
-```json
+`}`
+
+```bash
 # Create an index on the primary cluster.
 PUT /kk-indexb002
 # Insert data into the index.
 POST /kk-indexb002/_doc
+```
+
+`{`
+
+```json
   "aaa":"primary cluster index b data 1",
   "bbb":"primary cluster index b data 2"
 ```
 
+`}`
 2. On the primary cluster, run the following commands to verify that the indexes and their
 data were created.
 
@@ -2717,11 +2853,22 @@ named kk-indexa001 and kk-indexb002.
 POST /kk-indexa001/_doc
   "aaaz":"primary cluster index a data 3",
   "bbbx":"primary cluster index a data 4"
+```
+
+`}`
+
+```
 POST /kk-indexb002/_doc
+```
+
+`{`
+
+```json
   "aaaa":"primary cluster index b data 3",
   "bbbx":"primary cluster index b data 4"
 ```
 
+`}`
 2. On the primary cluster, run the following commands to verify that the data was inserted.
 
 ```
@@ -2747,10 +2894,20 @@ The result is as expected if the index configured for incremental synchronizatio
 1. On the primary cluster, use the following commands to create three indexes (for example,
 `index-a1` , `index-b1` , and `index-c1` ) and then check the indexes.
 
-```json
+```
 PUT /index-a1 POST /index-a1/_doc
+```
+
+`{`
+
+```json
   "aaaz":"primary cluster index a data 3",
   "bbbx":"primary cluster index a data 4"
+```
+
+`}`
+
+```
 GET /_cat/indices
 ```
 
@@ -2828,28 +2985,56 @@ PUT test_user_data
           "format": "yyyy-MM-dd||epoch_millis"
 ```
 
+`}` `}` `}` `}` `}`
 2. Run the following commands to insert three test data entries into the index:
 
-```json
+```
 POST test_user_data/_doc/1
+```
+
+`{`
+
+```json
   "name": "Alice",
   "age": 30,
   "city": "Beijing",
   "salary": 15000.5,
   "join_date": "2022-03-15"
+```
+
+`}`
+
+```
 POST test_user_data/_doc/2
+```
+
+`{`
+
+```json
   "name": "Bob",
   "age": 28,
   "city": "Shanghai",
   "salary": 18000.0,
   "join_date": "2021-07-20"
+```
+
+`}`
+
+```
 POST test_user_data/_doc/3
+```
+
+`{`
+
+```json
   "name": "Charlie",
   "age": 35,
   "city": "Beijing",
   "salary": 22000.8,
   "join_date": "2020-11-05"
 ```
+
+`}`
 
 **Step 3: Use the opendistro_sql plug-in to query the test data**
 
@@ -2890,6 +3075,11 @@ Expected return result:
     "total" : 3,
     "max_score" : 1.0,
     "hits" : [
+```
+
+`{`
+
+```json
         "_index" : "test_user_data",
         "_type" : "_doc",
         "_id" : "2",
@@ -2900,7 +3090,7 @@ Expected return result:
           "age" : 28
 ```
 
-`},`
+`}` `},` `{`
 
 ```json
         "_index" : "test_user_data",
@@ -2913,17 +3103,27 @@ Expected return result:
           "age" : 30
 ```
 
-`]` Syntax for an SQL query in a POST request
+`}` `}` `]` `}` `}` Syntax for an SQL query in a POST request
+
+```
+POST _opendistro/_sql
+```
+
+`{`
 
 ```json
-POST _opendistro/_sql
  "query": "SELECT * FROM <your_index> LIMIT 50"
 ```
 
-Sample command:
+`}` Sample command:
+
+```
+POST _opendistro/_sql
+```
+
+`{`
 
 ```json
-POST _opendistro/_sql
   "query": "SELECT name, salary FROM test_user_data WHERE age > 29 ORDER BY salary DE
 SC"
 ```
@@ -2947,6 +3147,11 @@ Expected return result:
     "total" : 2,
     "max_score" : null,
     "hits" : [
+```
+
+`{`
+
+```json
         "_index" : "test_user_data",
         "_type" : "_doc",
         "_id" : "3",
@@ -2963,7 +3168,7 @@ Expected return result:
           22000.8
 ```
 
-`]` `},`
+`]` `},` `{`
 
 ```json
         "_index" : "test_user_data",
@@ -2982,21 +3187,26 @@ Expected return result:
           15000.5
 ```
 
-`]` `]` Syntax for an SQL query with the CSV format specified for the data to return
+`]` `}` `]` `}` `}` Syntax for an SQL query with the CSV format specified for the data to return
+
+```
+POST _opendistro/_sql?format=csv
+```
+
+`{`
 
 ```json
-POST _opendistro/_sql?format=csv
  "query": "SELECT * FROM <your_index> LIMIT 50"
 ```
 
-Sample command:
+`}` Sample command:
 
 ```json
 POST _opendistro/_sql?format=csv
   "query": "SELECT name, age, city FROM test_user_data"
 ```
 
-Expected return result:
+`}` Expected return result:
 
 ```
 city,name,age Shanghai,Bob,28 Beijing,Alice,30 Beijing,Charlie,35
@@ -3045,8 +3255,13 @@ For more information, see Log on to the Kibana console.
 2. In the left-side navigation pane, click **Dev Tools**.
 3. In the **Console**, run the following command to create a vector index.
 
-```json
+```
 PUT test
+```
+
+`{`
+
+```json
   "settings": {
     "index.codec": "proxima",
     "index.vector.algorithm": "hnsw"
@@ -3063,6 +3278,8 @@ PUT test
         "vector_type": "float",
         "distance_method": "SquaredEuclidean"
 ```
+
+`}` `}` `}` `}`
 
 | Type | Parameter | Default | Description |
 |---|---|---|---|
@@ -3081,13 +3298,22 @@ PUT test
 |---|---|---|
 |   | 1128900228] |   |
 
+**Note**
+
 k-NN vector search also provides advanced query parameters. For more information, see Advanced parameters.
 4. Run the following command to add a document.
 
-```json
+```
 POST test/_doc
+```
+
+`{`
+
+```json
   "feature": [1.0, 2.0]
 ```
+
+`}`
 
 **Vector query**
 
@@ -3102,7 +3328,7 @@ GET test/_search
         "size": 10
 ```
 
-Common parameters:
+`}` `}` `}` `}` Common parameters:
 
 | Parameter | Description |
 |---|---|
@@ -3111,6 +3337,8 @@ Common parameters:
 
 | size | Specifies the number of documents to return. Note The size parameter in vector search is different from the native Elasticsearch size parameter. The former controls the number of documents retrieved by the knn vector search plugin, while the latter controls the number of documents retrieved for the entire query. When you run a query, the system first uses the vector search size parameter to retrieve the top-N documents. Then, the native Elasticsearch size parameter is used to retrieve the documents for the entire query and return the final result. We recommend that you keep the value of thes ize parameter for vector search the same as the value of the Elasticsearch size parameter (default: 10). |
 |---|---|
+
+**Note**
 
 k-NN vector search also provides advanced query parameters. For more information, see Advanced parameters. Warm up an index (to reduce latency) Because a k-NN index requires full in-memory search, query latency can be high during a cold start. The k-NN plugin provides an index warmup feature to preload the k-NN index into local memory before it serves search requests. This significantly reduces query latency during cold starts. Warm up all vector indexes.
 
@@ -3183,8 +3411,13 @@ Table 3. Query parameters (hnsw)
 
 The following is a query example.
 
-```json
+```
 GET test/_search
+```
+
+`{`
+
+```json
   "query": {
     "hnsw": {
       "feature": {
@@ -3192,6 +3425,8 @@ GET test/_search
         "size": 10,
         "ef": 100
 ```
+
+`}` `}` `}` `}`
 
 **FAQ**
 
@@ -3237,45 +3472,70 @@ PUT _opendistro/_ism/policies/policy_1
     "description": "test",
     "default_state": "ingest",
     "states": [
+```
+
+`{`
+
+```json
         "name": "ingest",
         "actions": [
+```
+
+`{`
+
+```json
             "rollover": {
               "min_doc_count": 5
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
         "transitions": [
+```
+
+`{`
+
+```json
             "state_name": "search"
 ```
 
-`]` `},`
+`}` `]` `},` `{`
 
 ```json
         "name": "search",
         "actions": [],
         "transitions": [
+```
+
+`{`
+
+```json
             "state_name": "delete",
             "conditions": {
               "min_index_age": "5m"
 ```
 
-`]` `},`
+`}` `}` `]` `},` `{`
 
 ```json
         "name": "delete",
         "actions": [
+```
+
+`{`
+
+```json
             "delete": {}
 ```
 
-`],`
+`}` `],`
 
 ```json
         "transitions": []
 ```
 
-`],`
+`}` `],`
 
 ```json
     "ism_template": {
@@ -3288,6 +3548,8 @@ PUT _opendistro/_ism/policies/policy_1
 ```json
       "priority": 0
 ```
+
+`}` `}`
 
 | Parameter | Description |
 |---|---|
@@ -3303,7 +3565,7 @@ PUT _opendistro/_ism/policies/policy_1
 GET _opendistro/_ism/policies/policy_1
 ```
 
-The following example shows a successful response.
+The following example shows a successful response. `{`
 
 ```json
   "_id" : "policy_1",
@@ -3318,16 +3580,31 @@ The following example shows a successful response.
     "error_notification" : null,
     "default_state" : "ingest",
     "states" : [
+```
+
+`{`
+
+```json
         "name" : "ingest",
         "actions" : [
+```
+
+`{`
+
+```json
             "rollover" : {
               "min_doc_count" : 5
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
         "transitions" : [
+```
+
+`{`
+
+```json
             "state_name" : "search"
 ```
 
@@ -3337,29 +3614,44 @@ The following example shows a successful response.
         "name" : "search",
         "actions" : [ ],
         "transitions" : [
+```
+
+`{`
+
+```json
             "state_name" : "delete",
             "conditions" : {
               "min_index_age" : "5m"
 ```
 
-`]` `},`
+`}` `}` `]` `},` `{`
 
 ```json
         "name" : "delete",
         "actions" : [
+```
+
+`{`
+
+```json
             "delete" : { }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "transitions" : [ ]
 ```
 
-`],`
+`}` `],`
 
 ```json
     "ism_template" : [
+```
+
+`{`
+
+```json
         "index_patterns" : [
           "test-*"
 ```
@@ -3371,11 +3663,16 @@ The following example shows a successful response.
         "last_updated_time" : 1676530893161
 ```
 
-`]`
+`}` `]` `}` `}`
 5. Set the rollover_alias.
 
-```json
+```
 PUT _index_template/ism_rollover
+```
+
+`{`
+
+```json
   "index_patterns": [
     "test-*"
 ```
@@ -3388,7 +3685,7 @@ PUT _index_template/ism_rollover
       "opendistro.index_state_management.rollover_alias": "test"
 ```
 
-The following example shows a successful response.
+`}` `}` `}` The following example shows a successful response. `{`
 
 ```json
    "acknowledged" : true
@@ -3403,7 +3700,7 @@ PUT test-000001
       "is_write_index": true
 ```
 
-The following example shows a successful response.
+`}` `}` `}` The following example shows a successful response. `{`
 
 ```json
    "acknowledged" : true,
@@ -3411,13 +3708,14 @@ The following example shows a successful response.
    "index" : "test-000001"
 ```
 
+`}`
 7. Verify that ISM has automatically attached the policy.
 
 ```
 GET _opendistro/_ism/explain/test-000001
 ```
 
-The following example shows a successful response.
+The following example shows a successful response. `{`
 
 ```json
   "test-000001" : {
@@ -3427,13 +3725,21 @@ The following example shows a successful response.
     "policy_id" : "policy_1"
 ```
 
+`}` `}`
 8. Verify the result.
 To verify that the policy takes effect, write five documents to the index to trigger a state transition.
 
-```json
+```
 POST test/_doc
+```
+
+`{`
+
+```json
   "message": "dummy"
 ```
+
+`}`
 
 > **Note:** After you attach a policy to an index, the ISM plugin creates a job that runs every 5 minutes by default. This job executes policy actions, checks conditions, and transitions the index between states.
 > You can also run the `GET _opendistro/_ism/explain/test-000001` command to check the current state of the ISM policy.
@@ -3474,18 +3780,29 @@ i. In the left-side navigation pane, click the icon, and choose **Open Distro fo
 **Elasticsearch > Security**.
 ii. In the left-side navigation pane of the **Security** page, click **Internal users**. iii. On the **Internal users** page, click **Create internal user**. iv. On the **Create internal user** page, specify the user information. v. Click **Create**. You can also create a user by calling an API operation. For more information, see Create user. Sample code:
 
-```json
+```
 PUT _opendistro/_security/api/internalusers/read_test_security1
+```
+
+`{`
+
+```json
    "password":"yourPassword"
 ```
 
+`}`
 3. Create a role.
 i. In the left-side navigation pane, click the icon, and choose **Open Distro for**
 **Elasticsearch > Security**.
 ii. In the left-side navigation pane of the **Security** page, click **Roles**. iii. On the **Roles** page, click **Create role**. iv. On the **Create Role** page, specify the role information. The following example shows how to configure read-only permissions on the index named index_security1. v. Click **Create**. You can also create a role by calling an API operation. For more information, see Create role. Sample code:
 
-```json
+```
 PUT _opendistro/_security/api/roles/read_test_security1
+```
+
+`{`
+
+```json
   "index_permissions":[{
     "index_patterns":[
         "test_security1"
@@ -3498,7 +3815,7 @@ PUT _opendistro/_security/api/roles/read_test_security1
         "read"
 ```
 
-`]` `}]`
+`]` `}]` `}`
 4. Associate the role with the user.
 i. After the role is created, go to the role modification page and click the **Mapped users** tab. ii. Click **Map users**.
 
@@ -3506,37 +3823,58 @@ i. After the role is created, go to the role modification page and click the **M
 
 iii. On the **Map user** page, choose **Users** (the user to associate). iv. Click **Map**. You can also associate a role with a user by calling an API operation. For more information, see Create role mapping. Sample code:
 
-```json
+```
 PUT _opendistro/_security/api/rolesmapping/read_test_security1
+```
+
+`{`
+
+```json
    "users":["read_test_security1"]
 ```
 
+`}`
 5. Verify the permissions of the user.
 Use the created username and password to log in to the Kibana console and run the following command to verify the permissions of the user: The user does not have write permissions on index test_security1. For example, when you write data to index test_security1, "no permissions error" is returned.
 
-```json
+```
 PUT test_security1/_doc/3
+```
+
+`{`
+
+```json
   "city":"jd",
   "name":"zz"
 ```
 
-Expected result: The user does not have permissions on index test_security2. For example, when you query data in index test_security2, "no permissions error" is returned.
+`}` Expected result: The user does not have permissions on index test_security2. For example, when you query data in index test_security2, "no permissions error" is returned.
 
-```json
+```
 GET test_security2/_search
-  "query":{
-      "match_all":{}
 ```
 
-Expected result: The user has read permissions on index test_security1. The user has permissions to query data in the index. For example, when you query data in index test_security1, the corresponding data is returned.
+`{`
 
 ```json
-GET test_security1/_search
   "query":{
       "match_all":{}
 ```
 
-Expected result:
+`}` `}` Expected result: The user has read permissions on index test_security1. The user has permissions to query data in the index. For example, when you query data in index test_security1, the corresponding data is returned.
+
+```
+GET test_security1/_search
+```
+
+`{`
+
+```json
+  "query":{
+      "match_all":{}
+```
+
+`}` `}` Expected result:
 
 **Configure attribute-based access control (ABAC)**
 
@@ -3548,25 +3886,36 @@ Kibana console as prompted. For information about how to log in to the Kibana co
 2. Create a user. For more information, see Create a user.
 When you create a user, you need to add user attributes by configuring **Attributes**. You can also create a user by calling an API operation and configure **Attributes**. For more information, see Create user. Sample code:
 
-```json
+```
 PUT _opendistro/_security/api/internalusers/read_test_security1
+```
+
+`{`
+
+```json
   "password":"yourPassword",
   "attributes":{
       "alias":"read_test_security1"
 ```
 
+`}` `}`
 3. Create a role. For more information, see Create a role.
-When you create a role, you need to configure **Document level security** to specify the user attributes that can be accessed. Sample configuration:
+When you create a role, you need to configure **Document level security** to specify the user attributes that can be accessed. Sample configuration: `{`
 
 ```json
   "term": {
        "readable_by":"${attr.internal.alias}"
 ```
 
-You can also call an API operation to create a role and configure document-level security. For more information, see Document-level security. Sample code:
+`}` `}` You can also call an API operation to create a role and configure document-level security. For more information, see Document-level security. Sample code:
+
+```
+PUT _opendistro/_security/api/roles/read_test_security_doc
+```
+
+`{`
 
 ```json
-PUT _opendistro/_security/api/roles/read_test_security_doc
   "index_permissions":[{
     "index_patterns":[
         "test_security*"
@@ -3586,13 +3935,18 @@ PUT _opendistro/_security/api/roles/read_test_security_doc
 5. Verify the permissions of the user.
 Use the created username and password to log in to the Kibana console and run the following command to view all data stored in the index.
 
-```json
+```
 GET test_security1/_search
+```
+
+`{`
+
+```json
   "query":{
       "match_all":{}
 ```
 
-Expected result (only attributes that the role is allowed to access are queried):
+`}` `}` Expected result (only attributes that the role is allowed to access are queried):
 
 **Configure document-level access control**
 
@@ -3604,7 +3958,7 @@ Kibana console as prompted. For information about how to log in to the Kibana co
 
 2. Create a user. For more information, see Create a user.
 3. Create a role. For more information, see Create a role.
-When you create a role, you need to configure **Document level security** to specify the documents that can be accessed. Sample configuration: The user can access only documents whose **city** is **hz** in index test_security*.
+When you create a role, you need to configure **Document level security** to specify the documents that can be accessed. Sample configuration: The user can access only documents whose **city** is **hz** in index test_security*. `{`
 
 ```json
   "bool": {
@@ -3613,7 +3967,7 @@ When you create a role, you need to configure **Document level security** to spe
         "city": "hz"
 ```
 
-You can also call an API operation to create a role and configure Document level security. For more information, see Document-level security. Sample code:
+`}` `}` `}` `}` You can also call an API operation to create a role and configure Document level security. For more information, see Document-level security. Sample code:
 
 ```json
 PUT _opendistro/_security/api/roles/read_test_security_doc
@@ -3630,18 +3984,23 @@ PUT _opendistro/_security/api/roles/read_test_security_doc
         "read"
 ```
 
-`]` `}]`
+`]` `}]` `}`
 4. Associate the role with the user. For more information, see Associate the role with the user.
 5. Verify the permissions of the user.
 Use the created username and password to log in to the Kibana console and run the following command to view all data stored in the index.
 
-```json
+```
 GET test_security1/_search
+```
+
+`{`
+
+```json
   "query":{
       "match_all":{}
 ```
 
-Expected result (only documents that the role is allowed to access are queried):
+`}` `}` Expected result (only documents that the role is allowed to access are queried):
 
 #### 8.1.7 Compress index files with the aliyun-codec plugin
 
@@ -3715,7 +4074,7 @@ PUT /index1
         "index": true
 ```
 
-The following table describes the parameters related to index compression.
+`}` `}` `}` `}` The following table describes the parameters related to index compression.
 
 | Parameter | Description |
 |---|---|
@@ -3749,6 +4108,8 @@ PUT index2
           "enabled": true
 ```
 
+`}` `}` `}` `}` `}`
+
 **Adjust  source_reuse_doc_values  configuration**
 
 > **Note:** Native ES stores multiple copies of data in its underlying structures, such as `_source` ,
@@ -3759,21 +4120,31 @@ PUT index2
 
 After you enable the `source_reuse_doc_values` feature, you can adjust the following settings: Adjust the maximum number of fields with the `source_reuse_doc_values` feature enabled. If the number of fields with the `source_reuse_doc_values` feature enabled exceeds the value that you set, ES throws an exception or automatically disables the `source_reuse_doc_values` feature. The maximum number of fields is `50` by default. The following example sets the maximum number of fields to `100` .
 
-```json
+```
 PUT _cluster/settings
+```
+
+`{`
+
+```json
   "persistent": {
        "apack.ali_codec_service.source_reuse_doc_values.max_fields": 100
 ```
 
-Specify whether to enforce the maximum field limit for the `source_reuse_doc_values` feature.
+`}` `}` Specify whether to enforce the maximum field limit for the `source_reuse_doc_values` feature.
+
+```
+PUT _cluster/settings
+```
+
+`{`
 
 ```json
-PUT _cluster/settings
   "persistent": {
        "apack.ali_codec_service.source_reuse_doc_values.strict_max_fields": true
 ```
 
-`true` : ES throws an exception when the limit is exceeded. `false` : ES automatically disables the `source_reuse_doc_values` feature when the limit is exceeded. Adjust the concurrency for reading values from fields that have the `source_reuse_doc_values` feature enabled during queries.
+`}` `}` `true` : ES throws an exception when the limit is exceeded. `false` : ES automatically disables the `source_reuse_doc_values` feature when the limit is exceeded. Adjust the concurrency for reading values from fields that have the `source_reuse_doc_values` feature enabled during queries.
 
 | source reuse doc values _ _ _ |   | feature c |
 |---|---|---|
@@ -3781,15 +4152,20 @@ PUT _cluster/settings
 
 To reduce latency, you can adjust the concurrency for retrieving the values of these fields. The default concurrency is `5` . The following code shows an example of how to adjust the concurrency to `2` .
 
-```json
+```
 PUT index2/_settings
+```
+
+`{`
+
+```json
   "index": {
     "ali_codec_service": {
       "source_reuse_doc_values": {
         "fetch_slice": 2
 ```
 
-Adjust the thread pool and queue size for reading values from fields that have the `source_reuse_doc_values` feature enabled. The default thread pool size is the number of CPU cores on the node, and the default queue size is `1000` . This setting can only be adjusted by modifying the YML file. To adjust these settings, add the following configuration to the YML file:
+`}` `}` `}` `}` Adjust the thread pool and queue size for reading values from fields that have the `source_reuse_doc_values` feature enabled. The default thread pool size is the number of CPU cores on the node, and the default queue size is `1000` . This setting can only be adjusted by modifying the YML file. To adjust these settings, add the following configuration to the YML file:
 
 ```
 apack.doc_values_fetch:
@@ -3820,17 +4196,25 @@ PUT _cluster/settings
       "apack.fasterbulk.combine.enabled":"true"
 ```
 
+`}` `}`
+
 **Bulk aggregation size and time interval**
 
 Run the following command to specify the aggregation size and time interval for bulk write requests. The plugin writes data when, on a single data node, the cumulative size of bulk write requests or the aggregation time interval reaches the specified threshold.
 
-```json
+```
 PUT _cluster/settings
+```
+
+`{`
+
+```json
    "transient" : {
       "apack.fasterbulk.combine.flush_threshold_size":"1mb",
       "apack.fasterbulk.combine.interval":"50"
 ```
 
+`}` `}`
 **apack.fasterbulk.combine.flush_threshold_size**: The maximum size of aggregated
 bulk requests. The default value is **1mb**.
 **apack.fasterbulk.combine.interval**: The maximum time interval for aggregating bulk
@@ -3846,31 +4230,50 @@ When `routing` and the primary key ( `_id` ) are not specified for bulk document
 
 Enable direct routing for the cluster.
 
-```json
+```
 PUT _cluster/settings
+```
+
+`{`
+
+```json
   "persistent" : {
     "index.direct_routing.global.enable" : "true"
 ```
 
-Create an index and enable direct routing.
+`}` `}` Create an index and enable direct routing.
 
 > **Note:** Replace `<index>` with your index name.
 
-```json
+```
 PUT /<index>
+```
+
+`{`
+
+```json
   "settings": {
   "index.direct_routing.enable" : "true"
 ```
+
+`}` `}`
 
 **Disable bulk aggregation**
 
 Run the following command to disable bulk aggregation.
 
-```json
+```
 PUT _cluster/settings
+```
+
+`{`
+
+```json
    "transient" : {
       "apack.fasterbulk.combine.enabled":"false"
 ```
+
+`}` `}`
 
 #### 8.1.9 Throttle cluster traffic with the aliyun-qos plug-in
 
@@ -3909,13 +4312,19 @@ Write requests The calculation for the write request throttling threshold is sim
 
 **Enable throttling**
 
-The throttling feature of the aliyun-qos plug-in is disabled by default. You must enable it before using it. All commands in this topic can be run on the Kibana console. For more information, see Log on to the Kibana console.
+The throttling feature of the aliyun-qos plug-in is disabled by default. You must enable it before using it.
+
+**Note**
+
+All commands in this topic can be run on the Kibana console. For more information, see Log on to the Kibana console.
 
 ```json
 PUT _cluster/settings
   "persistent": {
     "apack.qos.limiter.enabled": true
 ```
+
+`}` `}`
 
 **Configure a rate limiter**
 
@@ -3927,8 +4336,13 @@ The following code and parameter descriptions explain how to configure a rate li
 
 For specific examples of how to configure a rate limiter, see Rate limiter configuration examples.
 
-```json
+```
 PUT /_qos/limiter/${limiterName}
+```
+
+`{`
+
+```json
   "limiters": {
      "${action}.${limiter_type}":${threshold}
 ```
@@ -3947,6 +4361,8 @@ PUT /_qos/limiter/${limiterName}
   "params":{
       "watchMode":true
 ```
+
+`}` `}`
 
 | Parameter | Description | Value |
 |---|---|---|
@@ -3986,17 +4402,22 @@ You can limit the number of query requests that a coordinating node receives per
 | Set a total search QPS limit for all indices combined. | PUT / qos/limiter/${limiterName} _ { "limiters": { "search.qps": "1000" }, "tags": { "index": "*" } } Note The index:* expression applies the limit to all indices as a group. For example, if a cluster has three indices named A, B, and C, their combined search QPS is limited to 1000 . This is equivalent to not setting the index tag. |
 |---|---|
 
-When you run a query from a client or on the Kibana console, you receive the following error if the search QPS exceeds the configured limit. If you receive this error, adjust the search QPS limit accordingly.
+When you run a query from a client or on the Kibana console, you receive the following error if the search QPS exceeds the configured limit. If you receive this error, adjust the search QPS limit accordingly. `{`
 
 ```json
   "error": {
     "root_cause": [
+```
+
+`{`
+
+```json
         "type": "status_exception",
         "reason": "search blocked, limited by [<limiterName>][search.qps](<limiterId>)
 threshold:[x]"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "type": "status_exception",
@@ -4009,6 +4430,8 @@ shold:[x]"
 ```json
   "status": 429
 ```
+
+`}`
 
 **Set write TPS throttling**
 
@@ -4027,12 +4450,19 @@ PUT /_qos/limiter/${limiterName}
     "index": "nginx-log-*"
 ```
 
+`}` `}`
+
 **Set Bulk write throughput throttling**
 
 You can limit the number of write bytes that a coordinating node receives per second by setting the total bytes written per second for Bulk requests. When the number of write bytes received per second exceeds the limit, ES rejects the requests. The values of `index` and `index_patterns` support full index names and index wildcards.
 
-```json
+```
 PUT /_qos/limiter/${limiterName}
+```
+
+`{`
+
+```json
   "limiters": {
     "write.throughput": "100MB"
 ```
@@ -4044,12 +4474,19 @@ PUT /_qos/limiter/${limiterName}
     "index": "nginx-log-*"
 ```
 
+`}` `}`
+
 **Set single Bulk request size throttling**
 
 By setting the maximum size of a single Bulk request, you can limit the number of bytes that a coordinating node receives in a single write request. If a request exceeds the throttling limit, ES rejects the request. The values for `index` and `index_patterns` support full index names and index wildcards.
 
-```json
+```
 PUT /_qos/limiter/${limiterName}
+```
+
+`{`
+
+```json
   "limiters": {
     "write.max_size_per_request": "1000"
 ```
@@ -4061,17 +4498,22 @@ PUT /_qos/limiter/${limiterName}
     "index": "nginx-log-*"
 ```
 
-When you submit a write operation from a client or on the Kibana console, you receive the following error if the request size exceeds the configured limit. If you receive this error, reduce the size of your individual write requests.
+`}` `}` When you submit a write operation from a client or on the Kibana console, you receive the following error if the request size exceeds the configured limit. If you receive this error, reduce the size of your individual write requests.
 
 ```json
   "error" : {
     "root_cause" : [
+```
+
+`{`
+
+```json
         "type" : "status_exception",
         "reason" : "write_size blocked, limited by [<limiterName>]
 [write.max_size_per_request](<limiterId>) threshold:[x] try acquire [x]"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "type" : "status_exception",
@@ -4085,12 +4527,19 @@ When you submit a write operation from a client or on the Kibana console, you re
   "status" : 400
 ```
 
+`}`
+
 **Set concurrent shard query throttling**
 
 You can reduce the load on the cluster by setting the number of concurrent query `shard` s. The values of `index` and `index_patterns` support full index names and index wildcards.
 
-```json
+```
 PUT /_qos/limiter/${limiterName}
+```
+
+`{`
+
+```json
   "limiters": {
     "search_shards.concurrent_count": "10"
 ```
@@ -4102,12 +4551,19 @@ PUT /_qos/limiter/${limiterName}
     "index": "nginx-log-*"
 ```
 
+`}` `}`
+
 **Set multiple throttling rules**
 
 You can simultaneously set multiple configurations for the rate limiter. The values for `index` and `index_patterns` support full index names and index wildcards.
 
-```json
+```
 PUT /_qos/limiter/${limiterName}
+```
+
+`{`
+
+```json
   "limiters": {
     "search.qps": "1000",
     "write.tps": "100000",
@@ -4122,6 +4578,8 @@ PUT /_qos/limiter/${limiterName}
   "tags": {
     "index": "nginx-log-*"
 ```
+
+`}` `}`
 
 **Get rate limiter configurations**
 
@@ -4212,8 +4670,13 @@ An OpenSearch instance is running. You have configured an IP address whitelist. 
 3. Run the following command to create an index named `hotels-location` to store sample
 hotel data.
 
-```json
+```
 PUT /hotels-location
+```
+
+`{`
+
+```json
   "settings": {
     "index.knn": true
 ```
@@ -4227,6 +4690,8 @@ PUT /hotels-location
         "type": "knn_vector",
         "dimension": 2
 ```
+
+`}` `}` `}` `}`
 
 | Parameter | Description |
 |---|---|
@@ -4244,35 +4709,50 @@ Vector search queries typically return more than zero results. By default, the s
 
 Add three sample documents to the index. Each document represents a hotel. The `location` field in each document contains a two-dimensional vector that specifies the hotel's location.
 
-```json
+```
 POST /hotels-location/_doc/1
+```
+
+`{`
+
+```json
   "name": "Shanshui Hotel",
   "location": [
     116.4,
     39.9
 ```
 
-`]`
+`]` `}`
+
+```
+POST /hotels-location/_doc/2
+```
+
+`{`
 
 ```json
-POST /hotels-location/_doc/2
   "name": "Starry Inn",
   "location": [
     116.5,
     39.8
 ```
 
-`]`
+`]` `}`
+
+```
+POST /hotels-location/_doc/3
+```
+
+`{`
 
 ```json
-POST /hotels-location/_doc/3
   "name": "Cloud Hotel",
   "location": [
     116.35,
     39.92
 ```
 
-`]`
+`]` `}`
 
 **Step 3: Search the data**
 
@@ -4295,7 +4775,7 @@ To find the two hotels closest to the point `[116.41, 39.89]` , run the followin
         "k": 2
 ```
 
-The search results are as follows:
+`}` `}` `}` `}` The search results are as follows:
 
 ```json
   "took": 868,
@@ -4321,6 +4801,11 @@ The search results are as follows:
 ```json
     "max_score": 0.9998,
     "hits": [
+```
+
+`{`
+
+```json
         "_index": "hotels-location",
         "_id": "1",
         "_score": 0.9998,
@@ -4331,7 +4816,7 @@ The search results are as follows:
             39.9
 ```
 
-`]` `},`
+`]` `}` `},` `{`
 
 ```json
         "_index": "hotels-location",
@@ -4344,7 +4829,7 @@ The search results are as follows:
             39.92
 ```
 
-`]` `]`
+`]` `}` `}` `]` `}` `}`
 
 **Additional information**
 
@@ -4370,8 +4855,13 @@ Log on to the OpenSearch Dashboards console for the leader and follower clusters
 1. On the OpenSearch Dashboards console of the leader cluster, run the following command
 to create a sample index named `hotels-index` .
 
-```json
+```
 PUT /hotels-index
+```
+
+`{`
+
+```json
   "settings": {
     "index.knn": true
 ```
@@ -4387,6 +4877,7 @@ PUT /hotels-index
         "space_type": "l2"
 ```
 
+`}` `}` `}` `}`
 2. Run the following command to insert sample data.
 
 ```json
@@ -4401,14 +4892,21 @@ POST /_bulk {"index":{"_index":"hotels-index","_id":"3"}} {"location":[5.2,4.4]}
 1. On the OpenSearch Dashboards console of a new follower cluster, use one of the following
 two methods to establish a remote repository connection to the leader cluster. This example creates a remote repository named `test01` , where `lrr-test` is the name of the leader cluster. Method 1
 
-```json
+```
 PUT _cluster/settings?pretty
+```
+
+`{`
+
+```json
   "persistent": {
     "cluster": {
       "remote": {
         "test01": {
           "seeds": ["lrr-test-discovery.es-essen.svc.cluster.local:9300"]
 ```
+
+`}` `}` `}` `}` `}`
 
 | seeds | must follow the |
 |---|---|
@@ -4433,7 +4931,7 @@ PUT _cluster/settings
     "cluster.remote.test01.seeds": ["10.XX.XX.83:9300"]
 ```
 
-The value of `seeds` must follow the format `<leader_cluster_node_IP:9300>` . For example: `10.XX.XX.83:9300` . Log on to the OPS1 machine and run the following command to get the node IP of the leader cluster:
+`}` `}` The value of `seeds` must follow the format `<leader_cluster_node_IP:9300>` . For example: `10.XX.XX.83:9300` . Log on to the OPS1 machine and run the following command to get the node IP of the leader cluster:
 
 ```bash
 kubectl get pod -nes-essen -owide | grep $<leader_cluster_name>
@@ -4442,14 +4940,21 @@ kubectl get pod -nes-essen -owide | grep $<leader_cluster_name>
 2. Run the following command on the follower cluster to start the replication task for a specific
 index. In this example, the index is `hotels-index-bak` .
 
-```json
+```
 PUT _plugins/_replication/hotels-index-bak/_start
+```
+
+`{`
+
+```json
   "leader_alias": "test01",
    "leader_index": "hotels-index",
    "use_roles":{
       "leader_cluster_role": "all_access",
       "follower_cluster_role": "all_access"
 ```
+
+`}` `}`
 
 | Parameter | Description | Example value |
 |---|---|---|
@@ -4477,6 +4982,8 @@ The following output indicates that the replication status is normal.
     "follower_checkpoint": 0,
     "seq_no": 1
 ```
+
+`}` `}`
 
 **More operations**
 
@@ -4570,13 +5077,31 @@ PUT /error-demo
           "type": "text"
 ```
 
-ii. Write data to the index.
+`}` `}` `}` `}` `}` ii. Write data to the index.
 
-```json
-POST /error-demo/_doc "message": "demo test error message" POST /error-demo/_doc "message": "demo test message"
+```
+POST /error-demo/_doc
 ```
 
-iii. Run the following command to check whether the data is written:
+`{`
+
+```json
+"message": "demo test error message"
+```
+
+`}`
+
+```
+POST /error-demo/_doc
+```
+
+`{`
+
+```json
+"message": "demo test message"
+```
+
+`}` iii. Run the following command to check whether the data is written:
 
 ```
 GET /error-demo/_search
@@ -4601,6 +5126,11 @@ If a result similar to the following is returned, the data is written.
     "total" : 2,
     "max_score" : 1.0,
     "hits" : [
+```
+
+`{`
+
+```json
         "_index" : "error-demo",
         "_type" : "_doc",
         "_id" : "D-B0HZwBHT2vvpZBDXP-",
@@ -4609,7 +5139,7 @@ If a result similar to the following is returned, the data is written.
           "message" : "demo test error message"
 ```
 
-`},`
+`}` `},` `{`
 
 ```json
         "_index" : "error-demo",
@@ -4620,7 +5150,7 @@ If a result similar to the following is returned, the data is written.
           "message" : "demo test message"
 ```
 
-`]`
+`}` `}` `]` `}` `}`
 
 **Step 3: Create a destination**
 

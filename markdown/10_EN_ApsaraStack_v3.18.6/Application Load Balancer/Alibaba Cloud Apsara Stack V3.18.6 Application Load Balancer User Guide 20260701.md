@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 136
 source_pdf: "056ddeada094faf9_Alibaba Cloud Apsara Stack V3.18.6 Application Load Balancer User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E5%9E%8B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1ALB/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Load%20Balancer%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Application Load Balancer User Guide 20260701
@@ -106,6 +106,9 @@ This topic describes how to navigate to the Application Load Balancer (ALB) cons
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
@@ -140,7 +143,11 @@ Enter the 6-digit MFA verification code and click **Authenticate**.
 
 ### 2.1 Overview
 
-This topic describes how to create an Application Load Balancer (ALB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances. Before you create an ALB instance, you must determine the configurations of the ALB instance, such as the region, type, and specifications. For more information, see Preparations. This topic includes the following operations: Create an ALB instance. An ALB instance is an entity that provides load balancing services. After you create an ALB instance, you must add listeners and backend services to the ALB instance. If you no longer need the ALB instance, you can release it.
+This topic describes how to create an Application Load Balancer (ALB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances.
+
+**Note**
+
+Before you create an ALB instance, you must determine the configurations of the ALB instance, such as the region, type, and specifications. For more information, see Preparations. This topic includes the following operations: Create an ALB instance. An ALB instance is an entity that provides load balancing services. After you create an ALB instance, you must add listeners and backend services to the ALB instance. If you no longer need the ALB instance, you can release it.
 
 ### 2.2 Preparations
 
@@ -184,6 +191,9 @@ net.ipv4.conf.default.rp_filter = 0 net.ipv4.conf.all.rp_filter = 0 net.ipv4.con
 ### 2.3 Create an ALB instance
 
 An Application Load Balancer (ALB) instance is an entity that provides load balancing services.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -467,6 +477,9 @@ Apsara Stack provides Internet-facing and internal-facing ALB instances. You can
 #### 3.1.2 Create an ALB instance
 
 An Application Load Balancer (ALB) instance is an entity that provides load balancing services. ALB provides powerful Layer 7 processing capabilities and can increase the service capacity of your applications by distributing network traffic across different backend servers. This topic describes how to create an ALB instance.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -507,6 +520,9 @@ You can modify the name of an Application Load Balancer (ALB) instance. Before y
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance. Modification protection is disabled for the ALB instance. For more information, see Configure modification protection.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -525,6 +541,9 @@ After an Application Load Balancer (ALB) instance is created, you can modify del
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -542,6 +561,9 @@ After an Application Load Balancer (ALB) instance is created, you can configure 
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -559,6 +581,8 @@ You can release Application Load Balancer (ALB) instances based on your business
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance. Deletion protection is disabled for the ALB instance. For more information, see Modify deletion protection.
+
+**Procedure**
 
 > **Note:** Before you release an ALB instance, you must disable deletion protection.
 
@@ -579,6 +603,9 @@ You can upgrade or downgrade Application Load Balancer (ALB) instances based on 
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance. Modification protection is disabled for the ALB instance. For more information, see Configure modification protection.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -603,6 +630,9 @@ Application Load Balancer (ALB) instances support network types of different pro
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance. Modification protection is disabled for the ALB instance. For more information, see Configure modification protection.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -640,6 +670,9 @@ bandwidth is disabled for the IPv6 gateway. c. Click **OK**.
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -664,6 +697,9 @@ Application Load Balancer (ALB) allows you to view the details of an ALB instanc
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -945,6 +981,8 @@ You can configure whitelists or blacklists for different listeners.
 
 A listener is created. For more information, see Add listeners. Access control is disabled for the listener. For more information, see Disable access control.
 
+**Procedure**
+
 > **Note:** Access control may cause some business risks.
 > If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If you configure a whitelist but no IP addresses are added to the whitelist, the listener forwards all requests.
 > If a blacklist is configured for a listener, all requests from the IP addresses that are added to the blacklist are blocked by the listener. If you configure a blacklist but no IP addresses are added to the blacklist, the listener forwards all requests.
@@ -975,6 +1013,9 @@ In the listener list, find the target listener and click **Enable** in the **Acc
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners. Access control is enabled for the listener. For more information, see Enable access control.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1003,6 +1044,9 @@ This topic describes how to disable access control for a listener.
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners. Access control is enabled for the listener. For more information, see Enable access control.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1024,6 +1068,9 @@ You can change the running status of a listener by starting or stopping the list
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1062,6 +1109,9 @@ listener. For more information about the parameters, see Add listeners.
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1090,6 +1140,9 @@ After you create a listener, you can delete the listener based on your business 
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1110,6 +1163,9 @@ This topic describes how to change the TLS security policies for HTTP listeners.
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1135,6 +1191,9 @@ click **OK**.
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1161,6 +1220,9 @@ that are added to the server group. For backend servers in a server group of the
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1199,6 +1261,9 @@ If you want to access multiple domain names or add multiple server certificates,
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1226,6 +1291,8 @@ i. Click the **CA Certificate** tab. ii. Click **Add Additional Certificate**. i
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
 
 > **Note:** We recommend that you renew your certificate before it expires to prevent adverse impacts on your services.
 
@@ -1260,6 +1327,9 @@ Mutual authentication improves the security of business-critical services. This 
 **Background information**
 
 One-way authentication: The client must verify the identity of the server. The server does not need to verify the identity of the client. The client downloads the public key certificate from the server for authentication. A connection can be established after the identity of the server is authenticated. Mutual authentication: The client downloads the server certificate (public key certificate) from the server and uploads the client certificate (public key certificate) to the server for authentication. A connection can be established only after both the client and the server are authenticated. Mutual authentication provides higher security.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1316,6 +1386,9 @@ Exact match: The requested content must be the same as the specified content. Wi
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1584,6 +1657,9 @@ i. Click **Delete** in the upper-right corner of a custom forwarding rule sectio
 **Prerequisites**
 
 A listener is created. For more information, see Add listeners.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1792,6 +1868,9 @@ You can view the monitoring data of an Application Load Balancer (ALB) instance 
 **Prerequisites**
 
 An ALB instance is created. For more information, see Create an ALB instance.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1934,6 +2013,9 @@ A server certificate is purchased. A certificate file obtained from a certificat
 **Background information**
 
 Up to 100 certificates can be created by each account.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -1999,6 +2081,9 @@ A CA certificate and a client certificate are generated. A client CA certificate
 **Background information**
 
 Up to 100 certificates can be created by each account.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -2051,6 +2136,9 @@ Backend servers can be organized into logical groups (also known as server group
 #### 3.3.1 Create a server group
 
 If you associate a server group with a listener, the listener distributes requests only to backend servers in the server group. This topic describes how to create a server group.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2137,6 +2225,9 @@ The name must be 2 to 128 characters in length and can contain letters, digits, 
 **Prerequisites**
 
 A server group is created. For more information, see Create a server group.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2155,6 +2246,9 @@ configurations of the server group and click **Submit**. For more information ab
 **Prerequisites**
 
 A server group is created. For more information, see Create a server group.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2168,6 +2262,9 @@ column.
 **Prerequisites**
 
 A server group is created. For more information, see Create a server group.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2184,6 +2281,9 @@ management. For more information, see Tag management.
 **Prerequisites**
 
 A server group is created. For more information, see Create a server group.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2219,6 +2319,9 @@ After you create a server group, you must add one or more backend servers to the
 **Prerequisites**
 
 A server group is created. For more information, see Create a server group. An Elastic Compute Service (ECS) instance is created if you need to add a backend server of the server type.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2281,6 +2384,9 @@ been added. For backend servers in a server group of the IP address type, you ca
 **Prerequisites**
 
 A backend server is added. For more information, see Add backend servers.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Server**
@@ -2392,6 +2498,8 @@ You can specify a domain name for HTTP health checks. This setting is optional. 
 
 #### 3.4.2 Create a health check
 
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Health**
@@ -2440,6 +2548,9 @@ management. For more information, see Tag management.
 **Prerequisites**
 
 A health check is created. For more information, see Create a health check.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Health**
@@ -2454,6 +2565,9 @@ The name must be 2 to 128 characters in length and can contain letters, digits, 
 **Prerequisites**
 
 A health check is created. For more information, see Create a health check.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Health**
@@ -2468,6 +2582,9 @@ For more information about the parameters, see Create a health check.
 **Prerequisites**
 
 A health check is created. For more information, see Create a health check.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Health**
@@ -2491,6 +2608,8 @@ You can set whitelists or blacklists for different listeners. Whitelist: Only re
 The following figure shows how to configure an ACL for a listener.
 
 #### 3.5.2 Create an ACL
+
+**Procedure**
 
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
@@ -2517,6 +2636,9 @@ For more information, see Tag management.
 **Prerequisites**
 
 An access control list (ACL) is created. For more information, see Create an ACL.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Access**
@@ -2531,6 +2653,9 @@ The name must be 2 to 128 characters in length and can contain letters, digits, 
 **Prerequisites**
 
 An access control list (ACL) is created. For more information, see Create an ACL.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Access**
@@ -2546,6 +2671,9 @@ After you create an access control list (ACL), you can add entries to the ACL. A
 **Prerequisites**
 
 An access control list (ACL) is created. For more information, see Create an ACL.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Access**
@@ -2599,6 +2727,9 @@ ALB provides some commonly used TLS security policies to enhance the security of
 **Limits**
 
 When you specify TLS versions and cipher suites for a custom TLS security policy, make sure that the TLS versions and cipher suites are supported by the clients, such as browsers. Otherwise, the clients may fail to establish connections to the server.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Security**
@@ -2643,6 +2774,9 @@ management. For more information, see Tag management.
 **Prerequisites**
 
 A custom security policy is created. For more information, see Create a custom security policy.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Security**
@@ -2657,6 +2791,9 @@ The name must be 2 to 128 characters in length and can contain letters, digits, 
 **Prerequisites**
 
 A custom security policy is created. For more information, see Create a custom security policy.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) > Security**
@@ -2668,6 +2805,9 @@ A custom security policy is created. For more information, see Create a custom s
 ### 3.7 Operation logs
 
 Application Load Balancer (ALB) allows you to view the operation logs of an ALB instance, which record the instance status, operation sources, operation time, and API call details. You can analyze and trace historical operations based on the operation logs.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. Use one of the following methods to view the operation logs of an ALB instance:
@@ -2729,6 +2869,9 @@ As the number of instances increases, it becomes more difficult to manage instan
 ### 4.2 Edit tags
 
 Application Load Balancer (ALB) allows you to edit tags. You can add, modify, and delete tags for an instance. This topic describes how to edit tags for an ALB instance. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**
@@ -2757,6 +2900,8 @@ move the pointer over the icon in the **Tag** column, and then click the icon in
 **instances at a time**
 
 Application Load Balancer (ALB) allows you to add tags at a time. This topic describes how to add tags to multiple ALB instances at a time. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
+
+**Procedure**
 
 > **Note:** Select at least two items.
 > This configuration applies to all the selected resources. For specific resources, tags may be added or replaced.
@@ -2788,6 +2933,8 @@ and click **Batch Add Tags** in the lower-left corner.
 
 Application Load Balancer (ALB) allows you to remove tags from multiple ALB instances at a time. This topic describes how to remove tags from multiple ALB instances at a time. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
 
+**Procedure**
+
 > **Note:** Select at least two items.
 > This configuration applies to all the selected resources. For specific resources, tags may be added or replaced.
 
@@ -2807,6 +2954,9 @@ the **Tags to Remove** section and click **OK**.
 ### 4.5 Search for instances by tag
 
 After you add tags to Application Load Balancer (ALB) resources, you can quickly search for the resources by tag. This topic describes how to search for ALB instances by tag. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
+
+**Procedure**
+
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
 3. In the navigation pane on the left, choose **Application Load Balancer (ALB) >**

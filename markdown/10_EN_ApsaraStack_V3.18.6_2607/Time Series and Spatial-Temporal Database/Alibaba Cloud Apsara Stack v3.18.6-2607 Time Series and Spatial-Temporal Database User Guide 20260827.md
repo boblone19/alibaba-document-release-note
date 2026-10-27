@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 49
 source_pdf: "c3d117f917445b85_Alibaba Cloud Apsara Stack v3.18.6-2607 Time  Series and Spatial-Temporal  Database User Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%9A%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%20Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Time%20%20Series%20and%20Spatial-Temporal%20%20Database%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database User Guide 20260827

@@ -5,14 +5,121 @@ doc_version: "20260729"
 pdf_pages: 91
 source_pdf: "64_EFS-NAS开发指南_efs-nas-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/hcs_hgw/zh/efs-nas-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 混合云存储CDS EFS-NAS开发指南
 
-阿里云弹性文件存储 EFS-NAS 开发
+## 目录
 
-## 版本变更记录
+- 1 版本变更记录
+- 2 快速入门
+  - 2.1 开发文档使用说明
+  - 2.2 API调用流程说明
+- 3 准备工作
+  - 3.1 获取文件存储的Endpoint
+  - 3.2 获取AccessKey或STS AccessKey
+  - 3.3 获取公共Header参数
+- 4 Java SDK调用示例
+  - 4.1 快速开始
+  - 4.2 使用手册
+    - 4.2.1 安装Java SDK
+    - 4.2.2 设置身份验证凭证
+    - 4.2.3 请求连接配置
+    - 4.2.4 发起调用
+    - 4.2.5 错误处理
+- 5 Python SDK调用示例
+  - 5.1 快速开始
+  - 5.2 使用手册
+    - 5.2.1 安装Python SDK
+    - 5.2.2 设置身份验证凭证
+    - 5.2.3 设置HTTPS请求
+    - 5.2.4 发起调用
+    - 5.2.5 错误处理
+- 6 Go SDK调用示例
+  - 6.1 快速开始
+  - 6.2 使用手册
+    - 6.2.1 安装Go SDK
+    - 6.2.2 设置身份验证凭证
+    - 6.2.3 请求连接配置
+    - 6.2.4 发起调用
+    - 6.2.5 错误处理
+- 7 API参考
+  - 7.1 调用API
+    - 7.1.2 请求结构
+    - 7.1.3 返回结果
+  - 7.2 RAM鉴权
+  - 7.3 公共参数
+    - 7.4.1 DescribeClusters
+    - 7.5.1 DescribeZones
+  - 7.6 文件系统
+    - 7.6.1 CreateFileSystem
+    - 7.6.2 DescribeFileSystems
+    - 7.6.3 ModifyFileSystem
+    - 7.6.4 DeleteFileSystem
+    - 7.6.5 BatchModifyFileSystem
+    - 7.7.1 CreateDfsQuota
+    - 7.7.2 DescribeDfsQuotas
+    - 7.7.3 DeleteDfsQuota
+    - 7.7.4 ModifyDfsQuota
+    - 7.8.1 CreateFsUser
+    - 7.8.2 DescribeFsUsers
+    - 7.8.3 ModifyFsUser
+    - 7.8.4 DeleteFsUser
+  - 7.9 用户组
+    - 7.9.1 CreateFsUserGroup
+    - 7.9.2 AddFsUsersToGroup
+    - 7.9.3 RemoveFsUsersFromGroup
+    - 7.9.4 DescribeFsUserGroups
+    - 7.9.5 DeleteFsUserGroup
+  - 7.10 SMB共享
+    - 7.10.1 CreateSmbShare
+    - 7.10.2 DescribeSmbConnections
+    - 7.10.3 DescribeSmbShares
+    - 7.10.4 ModifySmbShare
+    - 7.10.5 DeleteSmbShare
+  - 7.11 SMB ACL
+    - 7.11.1 BatchCreateSmbAcl
+    - 7.11.2 DescribeSmbAcls
+    - 7.11.3 BatchUpdateSmbAcl
+    - 7.11.4 BatchDeleteSmbAcl
+  - 7.12 NFS共享
+    - 7.12.1 CreateNfsShare
+    - 7.12.2 DescribeNfsConnections
+    - 7.12.3 DescribeNfsShares
+    - 7.12.4 ModifyNfsShare
+    - 7.12.5 DeleteNfsShare
+  - 7.13 NFS ACL
+    - 7.13.1 BatchCreateNfsAcl
+    - 7.13.2 DescribeNfsAcls
+    - 7.13.3 BatchUpdateNfsAcl
+    - 7.13.4 BatchDeleteNfsAcl
+    - 7.14.1 CreateSnapshot
+    - 7.14.2 ModifySnapshot
+    - 7.14.3 DescribeSnapshots
+    - 7.14.4 DeleteSnapshot
+    - 7.14.5 CreateScheduledSnapshot
+    - 7.14.6 DescribeSnapshotPolicyBindings
+    - 7.14.7 DeleteScheduledSnapshot
+  - 7.15 快照策略
+    - 7.15.1 CreateSnapshotPolicy
+    - 7.15.2 ModifySnapshotPolicy
+    - 7.15.3 DescribeSnapshotPolicies
+    - 7.15.4 DeleteSnapshotPolicy
+  - 7.16 WORM
+    - 7.16.1 CreateWorm
+    - 7.16.2 UpdateWorm
+    - 7.16.3 DescribeWorms
+  - 7.17 回收站
+    - 7.17.1 EnableTrash
+    - 7.17.2 UpdateTrash
+    - 7.17.3 ListTrashFiles
+    - 7.17.4 RestoreTrashFile
+    - 7.17.5 RemoveTrashFile
+    - 7.17.6 DisableAndCleanTrash
+    - 7.17.7 EmptyTrash
+
+## 1 版本变更记录
 
 本文介绍EFS-NAS产品各版本的特性变更记录，仅涵盖API接口以及调用示例的变更。
 
@@ -56,11 +163,9 @@ converter: line-classifier (PyMuPDF)
 | NFS共享与ACL | 新增NFS共享和NFS ACL相关操作，例如创建NFS共享、获取NFS共享连接情况、批量创建NFS访问控制列表、获取NFS访问控制列表信息等。 |
 | 地域 | 新增地域操作，用于查询地域下支持指定文件系统类型的可用区信息。 |
 
-阿里云弹性文件存储 EFS-NAS 开发
+## 2 快速入门
 
-## 快速入门
-
-### 开发文档使用说明
+### 2.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -77,12 +182,11 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-阿里云弹性文件存储 EFS-NAS 开发
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 2.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云更一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
@@ -92,10 +196,6 @@ converter: line-classifier (PyMuPDF)
 
 1. 从API参考文档中获取API信息。
 2. 获取AccessKey或STS AccessKey。
-阿里云弹性文件存储 EFS-NAS 开发
-
-**说明**
-
 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 3. 获取公共Header参数。
 RegionID：地域ID。 组织ID：需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrganizationList章节。 资源集ID：需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup章节。
@@ -107,11 +207,10 @@ RegionID：地域ID。 组织ID：需要通过API进行获取，获取方式请�
 5. 获取阿里云官网的SDK核心库。
 要使用EFS-NAS功能，直接安装阿里云官网的SDK核心库即可。
 6. 调用云产品API。
-阿里云弹性文件存储 EFS-NAS 开发
 
-## 准备工作
+## 3 准备工作
 
-### 获取文件存储的Endpoint
+### 3.1 获取文件存储的Endpoint
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint。文件存储EFS-NAS的Endpoint可依照配置格式在飞天基础运维平台中获得对应变量值来自行拼装或在飞天基础运维平台中搜索获取。
 
@@ -121,30 +220,34 @@ RegionID：地域ID。 组织ID：需要通过API进行获取，获取方式请�
 
 | 文件存储Endpoint的配置格式为 | efs-nas.${global:region}.${global:internet-domain} | 。 |
 |---|---|---|
-| 说明 ${global:internet-domain} 和 ${global:region} 为变量，请替换为您获取到的实际值。最终Endpoint中， ${global:} 不保留。 |  |  |
+| 说明 ${global:internet-domain} 和 ${global:region} 为变量，请替换为您获取到的实际值。最终Endpoint中， ${global:} 不保留。 |   |   |
 
 获取变量值的具体步骤如下：
 1. 登录Apsara-Uni manager运维控制台。
 2. 在顶部菜单栏，选择**平台运维** > **飞天基础运维平台** > **资源管理**，默认进入**产品集群运维**页面。
-3. 在**产品集群运维**页面的**产品** | **集群**文本框中输入efs-nas，找到EfsNasControllerCluster-A-xxx集群，单击操作列的**集群详情**。
+3. 在**产品集群运维**页面的**产品** **|** **集群**文本框中输入efs-nas，找到EfsNasControllerCluster-A-xxx集群，单击操作列的**集群详情**。
 4. 在**集群详情**页面，选择**终态配置**页签。
 5. 在左侧文件列表中，单击**kv.conf**，单击右侧文件内容，按Ctrl+F键分别搜索 `region` 和 `internet-domain` 。
 获取到的 `region` 值将替换 ${global:region} ， `internet-domain` 值将替换 ${global:internet-domain} 。
 
 **方法二：通过飞天基础运维平台获取**
 
-1. 在飞天基础运维平台**产品集群运维**页面的**产品** | **集群**文本框中输入 `efs-nas` ，找到EfsNasControllerCluster-A-xxx集群，单击操作列的**集群详情**。
+1. 在飞天基础运维平台**产品集群运维**页面的**产品** **|** **集群**文本框中输入 `efs-nas` ，找到EfsNasControllerCluster-A-xxx集群，单击操作列的**集群详情**。
 2. 在服务列表页面搜索 `efs-nas-mgr` 服务，单击下方列表中操作列的**详情**。
 3. 在服务详情页面单击**EfsNasMgr#**组件，在组件信息中选择**资源列表**页签。
 4. 搜索名为 `EFS-NAS` 的资源，单击下方**资源申请参数**列中的信息，查看**domain**值，即EFS -NAS的Endpoint。
 
-### 获取AccessKey或STS AccessKey
+### 3.2 获取AccessKey或STS AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。
+
+**获取AccessKey**
+
+Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。
 
 **说明**
 
@@ -163,7 +266,6 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
-阿里云弹性文件存储 EFS-NAS 开发
 3. 在**AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
 **说明**
@@ -177,7 +279,7 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
@@ -188,10 +290,12 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的RAM Role。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击个人信息。 iii. 单击查看当前角色策略。 iv. 在当前选择角色策略对话框中查看RAM Role。
 2. 获取STS的Endpoint。
-i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏，选择平台运维**平台运维** > **飞天基础运维平台** > **资源管理**。 iii. 在飞天基础运维平台左侧导航栏中，单击。 iv. 在**产品集群运维**页面，设置**产品** | **集群**为**ascm-A**。 v. 单击集群**操作**列的**集群详情**。 vi. 在集群详情页面，单击**终态配置**页签。 vii. 在终态配置页面左侧文件列表中，单击**kv.conf**，单击右侧区域的**显示内容**。按Ctrl+F键搜索 `internet-domain` 的对应值。
+i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏，选择平台运维**平台运维** **>** **飞天基础运维平台** **>** **资源管理**。 iii. 在飞天基础运维平台左侧导航栏中，单击。 iv. 在**产品集群运维**页面，设置**产品** **|** **集群**为**ascm-A**。 v. 单击集群**操作**列的**集群详情**。 vi. 在集群详情页面，单击**终态配置**页签。 vii. 在终态配置页面左侧文件列表中，单击**kv.conf**，单击右侧区域的**显示内容**。按Ctrl+F键搜索 `internet-domain` 的对应值。
 
 | internet-domain | 的值替换 | ${global:internet-domain} |
 |---|---|---|
+
+viii. 获取后按照 sts-vpc.${global:internet-domain} 格式进行替换拼接。其中 `internet-domain` 的值替换 ${global:internet-domain} 。
 
 **说明**
 
@@ -206,7 +310,7 @@ i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏，选择平
 中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 、 <yourRoleSessionName> 、 <yourRoleArn> 、 <sts.aliyuns.com> 均为可
 ```
 
-变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。 阿里云弹性文件存储 EFS-NAS 开发
+变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。
 
 ```
 public static void main(String[] args) {
@@ -229,11 +333,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // "sts.aliyuns.com" 请替换为实际的STS Endpoint，一般格式为sts-vpc.${global:region}.${global:internet-domain}。
     request.setSysDomain("<sts.aliyuns.com>");
@@ -263,19 +372,21 @@ public static void main(String[] args) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 4. 获取STS AccessKey三元组后，您就可以使用三元组信息调用云产品API接口。以下Java SDK示例以DescribeZones接口为例，使用STS AccessKey调用文件存储产品
 接口。
 
-|  | 说明以下代码示例中 <efs- nas.aliyuns.com> 、 <yourRegionID> 、 <yourStsAccesskeyID> 、 <yourStsAccessKeySecret> 、 <yourStsToken> 、 <yourResourceGroupID> 、 <yo 为可变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。文件存储的Endpoint需配置为环境变量。 |  |  |
+|   | 说明以下代码示例中 <efs- nas.aliyuns.com> 、 <yourRegionID> 、 <yourStsAccesskeyID> 、 <yourStsAccessKeySecret> 、 <yourStsToken> 、 <yourResourceGroupID> 、 <yo 为可变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。文件存储的Endpoint需配置为环境变量。 |   |   |
 |---|---|---|---|
-|  | nas.aliyuns.com> | <yo | u |
-
-阿里云弹性文件存储 EFS-NAS 开发
+|   | nas.aliyuns.com> | <yo | u |
 
 ```
 public static void main(String[] args) {
@@ -315,13 +426,13 @@ public static void main(String[] args) {
     request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,请替换为实际操作的实例资源所属的资源集`ID`。
+`//` 非必填`,`请替换为实际操作的实例资源所属的资源集`ID`。
 
 ```
     // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,请替换为实际操作的实例资源所属的组织`ID`。
+`//` 必填`,`请替换为实际操作的实例资源所属的组织`ID`。
 
 ```java
     request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -334,11 +445,11 @@ public static void main(String[] args) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取公共Header参数
+`}` `}`
+
+### 3.3 获取公共Header参数
 
 调用专有云API时需要填写多个公共请求Header参数，在返回结果中也会包含公共返回参数。
 
@@ -371,7 +482,6 @@ public static void main(String[] args) {
 组织ID需要通过调用API方式获取，您可以在Apsara Uni-manager运营控制台中通过API在线调试功能快速获取组织ID信息。
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，选择**产品** > **开发工具** > **API****与工具** > **开发者门户**。
-阿里云弹性文件存储 EFS-NAS 开发
 3. 在**开发者门户**页面，选择**API****集成**> **API****调试**。
 4. 单击
 按钮，选择**云平台** > **统一云管平台**，**版本**选择**2019-05-10**。
@@ -406,17 +516,15 @@ public static void main(String[] args) {
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-阿里云弹性文件存储 EFS-NAS 开发
+## 4 Java SDK调用示例
 
-## Java SDK调用示例
-
-### 快速开始
+### 4.1 快速开始
 
 本文介绍如何获取EFS-NAS Java SDK并开始调用。
 
 **环境准备**
 
-已安装1.8及以上版本的JDK。
+已获取AccessKey或STS AccessKey。 已获取文件存储的Endpoint。 已安装1.8及以上版本的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -432,10 +540,10 @@ public static void main(String[] args) {
 
 **说明**
 
-REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID和ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。涉及替换的可变参数如下： <efs-nas.aliyuns.com>，请替换为您实际的产品访问地址。 <readTimeout>，请根据实际情况设置读取超时时间，单位为毫秒。 <connectionTimeout>，请根据实际情况设置连接超时时间，单位为毫秒。 <http://192.168.XX:33XX>，请替换为实际的代理IP+端口。 阿里云弹性文件存储 EFS-NAS 开发
+REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID和ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。涉及替换的可变参数如下： <efs-nas.aliyuns.com>，请替换为您实际的产品访问地址。 <readTimeout>，请根据实际情况设置读取超时时间，单位为毫秒。 <connectionTimeout>，请根据实际情况设置连接超时时间，单位为毫秒。 <http://192.168.XX:33XX>，请替换为实际的代理IP+端口。
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeFileSystemsExample {
     public static void main(String[] args) throws Exception {
 ```
 
@@ -446,7 +554,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.getenv("REGION_ID"),
             System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"),
             System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET")
-        );
+```
+
+);
+
+```
         HttpClientConfig clientConfig = HttpClientConfig.getDefault();
         clientConfig.setProtocolType(ProtocolType.HTTP);
         /**
@@ -511,7 +623,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>");
 ```
 
-`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情 `//` 发送请求并输出结果
+`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参照开发指南中的“获取公共`Header`参数`"`。 `//` 发送请求并输出结果
 
 ```java
         try {
@@ -524,16 +636,15 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### 使用手册
+`}` `}` `}`
 
-#### 4.2.1. 安装Java SDK
+### 4.2 使用手册
 
-阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包（SDK）的方式安装专有云Java SDK。 要使用文件存储功能，只需安装阿里云Java SDK核心库，SDK核心库推荐使用4.5.17及以上版本。
+#### 4.2.1 安装Java SDK
+
+本文介绍如何安装Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包（SDK）的方式安装专有云Java SDK。 要使用文件存储功能，只需安装阿里云Java SDK核心库，SDK核心库推荐使用4.5.17及以上版本。
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -543,15 +654,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 </dependency>
 ```
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-#### 4.2.2. 设置身份验证凭证
+#### 4.2.2 设置身份验证凭证
 
 使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。
 
 **配置访问凭证**
 
-获取 AccessKey 或 STS 临时凭证和地域ID后，请按以下方式将其配置为环境变量。此处以AccessKey为例介绍，STS 临时凭证的配置类似。请根据所用平台类型进行配置。
+> 获取 AccessKey 或 STS 临时凭证和地域ID后，请按以下方式将其配置为环境变量。此处以AccessKey为例介绍，STS 临时凭证的配置类似。请根据所用平台类型进行配置。
 
 **WIndows**
 
@@ -589,7 +698,7 @@ echo %REGION_ID% echo %ALIBABA_CLOUD_ACCESS_KEY_ID% echo %ALIBABA_CLOUD_ACCESS_K
 
 | 在命令行界面执行以下命令来将环境变量设置追加到 | ~/.bashrc | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bashrc |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bashrc |   |   |
 
 2. 执行以下命令使变更生效。
 
@@ -612,37 +721,38 @@ echo $SHELL
 ```
 
 2. 根据默认 Shell 类型进行操作。
-Zsh
+
+> Zsh
 
 | 执行以下命令来将环境变量设置追加到 | ~/.zshrc | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.zshrc |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.zshrc |   |   |
 
-b. 执行以下命令使变更生效。
+> b. 执行以下命令使变更生效。
 
 ```
 source ~/.zshrc
 ```
 
-c. 执行以下命令检查环境变量是否生效。
+> c. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $REGION_ID echo $ALIBABA_CLOUD_ACCESS_KEY_ID echo $ALIBABA_CLOUD_ACCESS_KEY_SECRET
 ```
 
-Bash
+> Bash
 
 | 执行以下命令来将环境变量设置追加到 | ~/.bash_profile | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bash_profile |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bash_profile |   |   |
 
-阿里云弹性文件存储 EFS-NAS 开发 b. 执行以下命令使变更生效。
+> b. 执行以下命令使变更生效。
 
 ```
 source ~/.bash_profile
 ```
 
-c. 执行以下命令检查环境变量是否生效。
+> c. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $REGION_ID echo $ALIBABA_CLOUD_ACCESS_KEY_ID echo $ALIBABA_CLOUD_ACCESS_KEY_SECRET
@@ -667,10 +777,11 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 ```
     System.getenv("ALIBABA_CLOUD_STS_SECURITY_TOKEN")
-);
 ```
 
-#### 4.2.3. 请求连接配置
+);
+
+#### 4.2.3 请求连接配置
 
 本文介绍了如何配置请求连接（HttpClientConfig）。 可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
@@ -688,31 +799,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -736,13 +847,13 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### 4.2.4. 发起调用
+#### 4.2.4 发起调用
 
 当您要调用某个API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意OpenAPI接口的调用。
 
 **CommonRequest介绍**
 
-CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在EFS-NAS的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取 `Action` 参数，使用 `request.setSysAction("<Action>")` 的方式来指定API名称。 阿里云弹性文件存储 EFS-NAS 开发例如 `DescribeFileSystems` 接口，在发起 `CommonRequest` 请求时，需要使用 `request.setSysAction("DescribeFileSystems")` 来指定API名称。
+CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在EFS-NAS的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取 `Action` 参数，使用 `request.setSysAction("<Action>")` 的方式来指定API名称。 例如 `DescribeFileSystems` 接口，在发起 `CommonRequest` 请求时，需要使用 `request.setSysAction("DescribeFileSystems")` 来指定API名称。
 
 **创建请求CommonRequest**
 
@@ -815,8 +926,6 @@ request.setHttpContentType(FormatType.JSON);
 | Body | Body参数用于对请求Request中的HTTP Content 进行设置（一般用于POST/PUT请求）。 目前支持两种格式： application/json application/x-www-form-urlencoded 说明在设置Body参数时，需要同时设置HTTP Content-Type。 | key-value形式设置Body参数，并设置HttpContentType。 CommonRequest request = new CommonRequest(); request.putBodyParameter("ClusterId", "clusterId01"); request.putBodyParameter("ClusterName", "clusterName01"); // 若Content-Type设置为application/x-www-form-urlencoded，请求到服务器的Content 数据格式为"ClusterId=clusterId01&ClusterName=clusterName01"的字符串。 request.setHttpContentType(FormatType.FORM); // 或，若Content-Type设置为application/json，请求到服务器的Content数据格式为" {\"ClusterId\":\"clusterId01\",\"ClusterName\":\"clusterName01\"}"的JSON串。 request.setHttpContentType(FormatType.JSON); 自行构造HTTP Content并直接设置HttpContent。 CommonRequest request = new CommonRequest(); //设置application/json格式的HTTP Content。 String body = "{\"ClusterId\": \"clusterId01\", \"ClusterName\": \"clusterName01\"}"; request.setHttpContent(body.getBytes(), "utf-8", FormatType.JSON); //设置application/x-www-form-urlencoded格式的HTTP Content。 String body = "ClusterId=clusterId01&ClusterName=clusterName01"; request.setHttpContent(body.getBytes(), "utf-8", FormatType.FORM); |
 | Header | Header参数用于对请求Request中的HTTP Header进行设置。 | CommonRequest request = new CommonRequest(); request.putHeadParameter("x-acs-organizationid", "3"); request.putHeadParameter("x-acs-resourcegroupid", "2"); |
 
-阿里云弹性文件存储 EFS-NAS 开发
-
 **发起调用并处理应答**
 
 可参考以下代码发起请求并处理返回结果。
@@ -837,15 +946,16 @@ try {
     System.out.println("ErrCode:" + e.getErrCode());
     System.out.println("ErrMsg:" + e.getErrMsg());
     System.out.println("RequestId:" + e.getRequestId());
-}
 ```
+
+`}`
 
 **完整示例**
 
-以下代码为通过EFS-NAS的 `DescribeFileSystems` 接口查询文件系统列表的调用示例。 阿里云弹性文件存储 EFS-NAS 开发
+以下代码为通过EFS-NAS的 `DescribeFileSystems` 接口查询文件系统列表的调用示例。
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeFileSystemsExample {
     public static void main(String[] args) throws Exception {
 ```
 
@@ -856,7 +966,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.getenv("REGION_ID"),
             System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"),
             System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET")
-        );
+```
+
+);
+
+```
         HttpClientConfig clientConfig = HttpClientConfig.getDefault();
         clientConfig.setProtocolType(ProtocolType.HTTP);
         /**
@@ -921,7 +1035,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>");
 ```
 
-`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参 `//` 发送请求并输出结果
+`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参照开发指南中的“获取公共`Header`参数`"`。 `//` 发送请求并输出结果
 
 ```java
         try {
@@ -934,18 +1048,17 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **说明**
 
 REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID和ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。涉及替换的可变参数如下： <efs-nas.aliyuns.com>，请替换为您实际的产品访问地址。 <readTimeout>，请根据实际情况设置读取超时时间，单位为毫秒。 <connectionTimeout>，请根据实际情况设置连接超时时间，单位为毫秒。 <http://192.168.XX:33XX>，请替换为实际的代理IP+端口。
 
-#### 4.2.5. 错误处理
+#### 4.2.5 错误处理
 
-在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 阿里云弹性文件存储 EFS-NAS 开发一般情况下，无需对Java SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
+在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，无需对Java SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
@@ -984,18 +1097,21 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-阿里云弹性文件存储 EFS-NAS 开发
+`}`
 
-## Python SDK调用示例
+## 5 Python SDK调用示例
 
-### 快速开始
+### 5.1 快速开始
 
 本文介绍如何获取SDK并开始调用。
 
 **环境准备**
+
+已获取AccessKey或STS AccessKey。 已获取文件存储的Endpoint。
+
+**安装Python SDK核心库**
 
 要使用文件存储功能，只需安装阿里云Python SDK核心库。具体命令如下： 如果您使用的是Python 2.x，执行以下命令安装阿里云SDK核心库。
 
@@ -1025,13 +1141,13 @@ REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID、ALIBABA_CLOUD_ACCESS_KEY_SECRET表示�
 import os from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest def main():
 ```
 
-# 如需使用代理，请使用以下代码：
+`#` 如需使用代理，请使用以下代码：
 
 ```
     #os.environ['http_proxy'] = "<http://192.168.XX:33XX>"
 ```
 
-# 将`AccessKey`和地域`ID`配置为环境变量后再进行初始化。
+`#` 将`AccessKey`和地域`ID`配置为环境变量后再进行初始化。
 
 ```
     client = AcsClient(os.environ['ALIBABA_CLOUD_ACCESS_KEY_ID'],
@@ -1039,7 +1155,7 @@ import os from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request 
                        os.environ['REGION_ID'])
 ```
 
-# 创建请求对象。
+`#` 创建请求对象。
 
 ```
     request = CommonRequest()
@@ -1064,7 +1180,7 @@ import os from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request 
     request.add_query_param('PageSize', '30')
 ```
 
-# 发起请求并处理响应。
+`#` 发起请求并处理响应。
 
 ```python
     response = client.do_action_with_exception(request)
@@ -1073,9 +1189,9 @@ if __name__ == '__main__':
     main()
 ```
 
-### 使用手册
+### 5.2 使用手册
 
-#### 5.2.1. 安装Python SDK
+#### 5.2.1 安装Python SDK
 
 本文介绍如何安装及调用EFS-NAS Python SDK。
 
@@ -1087,13 +1203,13 @@ if __name__ == '__main__':
 pip install aliyun-python-sdk-core
 ```
 
-阿里云弹性文件存储 EFS-NAS 开发如果您使用的是Python 3.x，执行以下命令安装阿里云SDK核心库。
+如果您使用的是Python 3.x，执行以下命令安装阿里云SDK核心库。
 
 ```
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-#### 5.2.2. 设置身份验证凭证
+#### 5.2.2 设置身份验证凭证
 
 当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。
 
@@ -1137,7 +1253,7 @@ echo %REGION_ID% echo %ALIBABA_CLOUD_ACCESS_KEY_ID% echo %ALIBABA_CLOUD_ACCESS_K
 
 | 在命令行界面执行以下命令来将环境变量设置追加到 | ~/.bashrc | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bashrc |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bashrc |   |   |
 
 2. 执行以下命令使变更生效。
 
@@ -1160,37 +1276,38 @@ echo $SHELL
 ```
 
 2. 根据默认 Shell 类型进行操作。
-Zsh
+
+> Zsh
 
 | 执行以下命令来将环境变量设置追加到 | ~/.zshrc | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.zshrc |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.zshrc |   |   |
 
-b. 执行以下命令使变更生效。
+> b. 执行以下命令使变更生效。
 
 ```
 source ~/.zshrc
 ```
 
-c. 执行以下命令检查环境变量是否生效。
+> c. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $REGION_ID echo $ALIBABA_CLOUD_ACCESS_KEY_ID echo $ALIBABA_CLOUD_ACCESS_KEY_SECRET
 ```
 
-Bash 阿里云弹性文件存储 EFS-NAS 开发
+> Bash
 
 | 执行以下命令来将环境变量设置追加到 | ~/.bash_profile | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bash_profile |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bash_profile |   |   |
 
-b. 执行以下命令使变更生效。
+> b. 执行以下命令使变更生效。
 
 ```
 source ~/.bash_profile
 ```
 
-c. 执行以下命令检查环境变量是否生效。
+> c. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $REGION_ID echo $ALIBABA_CLOUD_ACCESS_KEY_ID echo $ALIBABA_CLOUD_ACCESS_KEY_SECRET
@@ -1206,7 +1323,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(os.environ['ALIBAB
                    os.environ['REGION_ID'])
 ```
 
-#### 5.2.3. 设置HTTPS请求
+#### 5.2.3 设置HTTPS请求
 
 Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
@@ -1230,7 +1347,7 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 import DescribeInstancesRequest request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -1240,21 +1357,21 @@ import DescribeInstancesRequest request = DescribeInstancesRequest() request.set
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-#### 5.2.4. 发起调用
+#### 5.2.4 发起调用
 
 当您要调用某个API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意OpenAPI接口的调用。
 
 **CommonRequest介绍**
 
-CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在EFS-NAS的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 阿里云弹性文件存储 EFS-NAS 开发接口信息：要调用的接口名称。
+CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。 简便：无需更新SDK即可调用最新发布的API。 快速迭代。 发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在EFS-NAS的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。
 
 | 要获取 | Action | 参数，使 |
 |---|---|---|
-| DescribeFileSystems |  |  |
+| DescribeFileSystems |   |   |
 
-| request.set_action_name("<Action>") |  |  |
+| request.set_action_name("<Action>") |   |   |
 |---|---|---|
 | 口，在发起 | CommonRequest | 请求时，需要使 |
 
@@ -1278,8 +1395,7 @@ request.set_version('2017-06-26') # API版本号
 request.set_method('POST') # API请求方式
 ```
 
-`request.set_protocol_type('HTTPS') #` 请求协议`HTTPS`或`HTTP`，建议使用`HTTPS`。
-# 接口业务参数设置。
+`request.set_protocol_type('HTTPS') #` 请求协议`HTTPS`或`HTTP`，建议使用`HTTPS`。 `#` 接口业务参数设置。
 
 ```
 request.add_query_param('PageNum', '1') request.add_query_param('PageSize', '30')
@@ -1291,8 +1407,7 @@ request.add_query_param('PageNum', '1') request.add_query_param('PageSize', '30'
 
 **发起调用并处理应答**
 
-可参考以下代码发起请求并处理返回结果。
-# 发起请求，并获取返回。
+可参考以下代码发起请求并处理返回结果。 `#` 发起请求，并获取返回。
 
 ```python
 response = client.do_action_with_exception(request)
@@ -1304,15 +1419,15 @@ print(str(response, encoding='utf-8'))
 
 | 以下代码为通过EFS-NAS的 | DescribeFileSystems | 接口查询文件系统列表的调用示例。 |
 |---|---|---|
-| import os from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest def main(): # 如需使用代理，请使用以下代码： #os.environ['http_proxy'] = "<http://192.168.XX:33XX>" # 将AccessKey和地域ID配置为环境变量后再进行初始化。 client = AcsClient(os.environ['ALIBABA_CLOUD_ACCESS_KEY_ID'], os.environ['ALIBABA_CLOUD_ACCESS_KEY_SECRET'], os.environ['REGION_ID']) # 创建请求对象 request = CommonRequest() request.set_domain('<efs-nas.aliyuns.com>') # API服务地址，当前为示例值，请替换为您实际的产品访问地址 request.set_version('2017-06-26') # API版本号 request.set_action_name('DescribeFileSystems') # API名称，当调用RPC风格API时，必须配置set_action_name()指定接口名称 request.set_method('POST') # API请求方式 request.set_protocol_type('HTTPS') # 请求协议HTTPS或HTTP，建议使用HTTPS。 request.add_query_param('PageNum', '1') request.add_query_param('PageSize', '30') # 发起请求并处理响应 response = client.do_action_with_exception(request) print(response) if __name__ == '__main__': main() |  |  |
+| import os from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest def main(): # 如需使用代理，请使用以下代码： #os.environ['http_proxy'] = "<http://192.168.XX:33XX>" # 将AccessKey和地域ID配置为环境变量后再进行初始化。 client = AcsClient(os.environ['ALIBABA_CLOUD_ACCESS_KEY_ID'], os.environ['ALIBABA_CLOUD_ACCESS_KEY_SECRET'], os.environ['REGION_ID']) # 创建请求对象 request = CommonRequest() request.set_domain('<efs-nas.aliyuns.com>') # API服务地址，当前为示例值，请替换为您实际的产品访问地址 request.set_version('2017-06-26') # API版本号 request.set_action_name('DescribeFileSystems') # API名称，当调用RPC风格API时，必须配置set_action_name()指定接口名称 request.set_method('POST') # API请求方式 request.set_protocol_type('HTTPS') # 请求协议HTTPS或HTTP，建议使用HTTPS。 request.add_query_param('PageNum', '1') request.add_query_param('PageSize', '30') # 发起请求并处理响应 response = client.do_action_with_exception(request) print(response) if __name__ == '__main__': main() |   |   |
 
 **说明**
 
 REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID、ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。涉及替换的可变参数如下： <efs-nas.aliyuns.com>，请替换为您实际的产品访问地址。 <http://192.168.XX:33XX>，请替换为实际的代理IP+端口。
 
-#### 5.2.5. 错误处理
+#### 5.2.5 错误处理
 
-在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，无需对Python SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。 阿里云弹性文件存储 EFS-NAS 开发
+在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，无需对Python SDK返回的错误进行处理，只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
 ```
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
@@ -1326,8 +1441,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -1335,15 +1449,15 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-阿里云弹性文件存储 EFS-NAS 开发
+## 6 Go SDK调用示例
 
-## Go SDK调用示例
-
-### 快速开始
+### 6.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问云产品。本操作介绍如何获取阿里云EFS-NAS Go SDK并开始调用。
 
 **环境准备**
+
+已获取AccessKey或STS AccessKey。 已获取文件存储的Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -1363,7 +1477,7 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 
 **说明**
 
-REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID和ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中<efs-nas.aliyuns.com>为可变参数，请替换为您实际的产品访问地址。尖括号（<>）在最终代码中不保留。 阿里云弹性文件存储 EFS-NAS 开发
+REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID和ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中<efs-nas.aliyuns.com>为可变参数，请替换为您实际的产品访问地址。尖括号（<>）在最终代码中不保留。
 
 ```java
 package main import (
@@ -1374,7 +1488,7 @@ package main import (
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1399,16 +1513,15 @@ func main() {
         "",
 ```
 
-)
+`)`
 
 ```
     client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(), credential)
     if err != nil {
         panic(err)
-    }
 ```
 
-`//` 创建请求。
+`}` `//` 创建请求。
 
 ```
     request := requests.NewCommonRequest()
@@ -1430,7 +1543,7 @@ func main() {
     request.QueryParams["PageNumber"] = "1"
 ```
 
-`//` 可选 `Header`（一般不需要，除非企业有组织/资源组要求）。
+`//` 可选 `Header`（一般不需要，除非企业有组织`/`资源组要求）。
 
 ```
     request.Headers["x-acs-regionid"] = "<yourRegionID>" // 建议与 client 一致
@@ -1444,23 +1557,25 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
 ```
 
-`//` 输出响应结果。
+`}` `//` 输出响应结果。
 
 ```
     fmt.Println(response.GetHttpContentString())
-}
 ```
 
-### 使用手册
+`}`
 
-#### 6.2.1. 安装Go SDK
+### 6.2 使用手册
+
+#### 6.2.1 安装Go SDK
+
+本文档介绍如何安装 Go SDK核心包。
 
 | 阿里云Go SDK支持Go 1.10.x及以上版本。在项目目录中执行 | go mod init <DIRNAME> | 命令生成go.mod文件后，执行如下命令安装Go SDK核心包。 |
 |---|---|---|
-| 说明 <DIRNAME> 为项目目录路径，请以实际路径为准。 |  |  |
+| 说明 <DIRNAME> 为项目目录路径，请以实际路径为准。 |   |   |
 
 | <DIRNAME> | 为项目目录路径，请以实际路径为准。 |
 |---|---|
@@ -1481,13 +1596,13 @@ GOPROXY=https://goproxy.cn,direct go get -u github.com/aliyun/alibaba-cloud-sdk-
 go env -W GOPROXY='https://goproxy.cn,direct'
 ```
 
-#### 6.2.2. 设置身份验证凭证
+#### 6.2.2 设置身份验证凭证
 
 当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。
 
 **配置访问凭证**
 
-阿里云弹性文件存储 EFS-NAS 开发获取 AccessKey 或 STS 临时凭证和地域ID后，请按以下方式将其配置为环境变量。此处以AccessKey为例介绍，STS 临时凭证的配置类似。请根据所用平台类型进行配置。
+> 获取 AccessKey 或 STS 临时凭证和地域ID后，请按以下方式将其配置为环境变量。此处以AccessKey为例介绍，STS 临时凭证的配置类似。请根据所用平台类型进行配置。
 
 **WIndows**
 
@@ -1525,7 +1640,7 @@ echo %REGION_ID% echo %ALIBABA_CLOUD_ACCESS_KEY_ID% echo %ALIBABA_CLOUD_ACCESS_K
 
 | 在命令行界面执行以下命令来将环境变量设置追加到 | ~/.bashrc | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bashrc |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bashrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bashrc |   |   |
 
 2. 执行以下命令使变更生效。
 
@@ -1548,37 +1663,38 @@ echo $SHELL
 ```
 
 2. 根据默认 Shell 类型进行操作。
-Zsh
+
+> Zsh
 
 | 执行以下命令来将环境变量设置追加到 | ~/.zshrc | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.zshrc |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.zshrc echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.zshrc |   |   |
 
-b. 执行以下命令使变更生效。
+> b. 执行以下命令使变更生效。
 
 ```
 source ~/.zshrc
 ```
 
-c. 执行以下命令检查环境变量是否生效。
+> c. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $REGION_ID echo $ALIBABA_CLOUD_ACCESS_KEY_ID echo $ALIBABA_CLOUD_ACCESS_KEY_SECRET
 ```
 
-Bash
+> Bash
 
 | 执行以下命令来将环境变量设置追加到 | ~/.bash_profile | 文件中。 |
 |---|---|---|
-| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bash_profile |  |  |
+| echo "export REGION_ID='YOUR_REGION_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_ID='YOUR_ACCESS_KEY_ID'" >> ~/.bash_profile echo "export ALIBABA_CLOUD_ACCESS_KEY_SECRET='YOUR_ACCESS_KEY_SECRET'" >> ~/.bash_profile |   |   |
 
-b. 执行以下命令使变更生效。
+> b. 执行以下命令使变更生效。
 
 ```
 source ~/.bash_profile
 ```
 
-阿里云弹性文件存储 EFS-NAS 开发 c. 执行以下命令检查环境变量是否生效。
+> c. 执行以下命令检查环境变量是否生效。
 
 ```
 echo $REGION_ID echo $ALIBABA_CLOUD_ACCESS_KEY_ID echo $ALIBABA_CLOUD_ACCESS_KEY_SECRET
@@ -1605,37 +1721,37 @@ credential := credentials.NewStsTokenCredential(
     os.Getenv("ALIBABA_CLOUD_STS_SECURITY_TOKEN"),
 ```
 
-)
+`)`
 
 ```
 client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(), credential) if err != nil {
     panic(err)
-}
 ```
 
-#### 6.2.3. 请求连接配置
+`}`
+
+#### 6.2.3 请求连接配置
 
 本文介绍了如何配置请求连接（HttpClientConfig）。 可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
 ```
 client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(), credential) if err != nil {
     panic(err)
-}
 ```
 
-`//` 设置是否忽略证书。`true`：忽略；`false`：不忽略。
+`}` `//` 设置是否忽略证书。`true`：忽略；`false`：不忽略。
 
 ```
 client.SetHTTPSInsecure(true)
 ```
 
-`//`（可选）设置创建连接超时时间，单位纳秒。计算公式为：X秒`*time.Second=X*1000000000`纳秒
+`//`（可选）设置创建连接超时时间，单位纳秒。计算公式为：`X`秒`*time.Second=X*1000000000`纳秒
 
 ```
 client.SetConnectTimeout(1 * time.Second)
 ```
 
-`//` （可选）设置读取超时时间，单位纳秒。计算公式为：X秒`*time.Second=X*1000000000`纳秒
+`//` （可选）设置读取超时时间，单位纳秒。计算公式为：`X`秒`*time.Second=X*1000000000`纳秒
 
 ```
 client.SetReadTimeout(10 * time.Second)
@@ -1653,7 +1769,7 @@ client.SetHttpProxy("<http://192.168.XX.XX:33XX>") client.SetHttpsProxy("<https:
 
 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，请结合自身服务替换为其实际值，尖括号（<>） 在最终代码中不保留。
 
-#### 6.2.4. 发起调用
+#### 6.2.4 发起调用
 
 当您要调用某个API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意OpenAPI接口的调用。
 
@@ -1663,15 +1779,17 @@ CommonRequest的特点如下： 轻量：只需Core包即可发起调用，无�
 
 | 要获取 | Action | 参数，使 |
 |---|---|---|
-| DescribeFileSystems |  |  |
+| DescribeFileSystems |   |   |
 
-| request.ApiName = "<Action>" |  |  |
+| request.ApiName = "<Action>" |   |   |
 |---|---|---|
 | 口，在发起 | CommonRequest | 请求时 |
 
+例如 `DescribeFileSystems` 接口，在发起 `CommonRequest` 请求时，需要使用 `request.ApiName = "DescribeFileSystems"` 来指定API名称。
+
 **创建请求CommonRequest**
 
-使用CommonRequest调用方式可实现任意Open API接口的调用。 阿里云弹性文件存储 EFS-NAS 开发
+使用CommonRequest调用方式可实现任意Open API接口的调用。
 
 ```
 request := requests.NewCommonRequest() request.Method = "POST" request.Domain = "<efs-nas.aliyuns.com>" // EFS-NAS服务域名。 request.Product = "efs-nas" // 产品名。 request.Version = "2017-06-26" // 指定API版本。 request.ApiName = "DescribeFileSystems" // API名称。
@@ -1683,7 +1801,7 @@ request := requests.NewCommonRequest() request.Method = "POST" request.Domain = 
 request.QueryParams["PageSize"] = "20" request.QueryParams["PageNumber"] = "1"
 ```
 
-`//` 可选 `Header`（一般不需要，除非企业有组织/资源组要求）
+`//` 可选 `Header`（一般不需要，除非企业有组织`/`资源组要求）
 
 ```
 request.Headers["x-acs-regionid"] = "<yourRegionID>" // 建议与 client 一致 // request.Headers["x-acs-resourcegroupid"] = "<yourResourceGroupID>" // 非必填 // request.Headers["x-acs-organizationid"] = "<yourOrganizationID>" // 必填（如需按组织隔离）
@@ -1700,12 +1818,17 @@ request.Headers["x-acs-regionid"] = "<yourRegionID>" // 建议与 client 一致 
 ```
 response, err := client.ProcessCommonRequest(request) if err != nil {
     panic(err)
-} fmt.Println(response.GetHttpContentString())
+```
+
+`}`
+
+```
+fmt.Println(response.GetHttpContentString())
 ```
 
 **完整示例**
 
-以下代码为通过EFS-NAS的 `DescribeFileSystems` 接口查询文件系统列表的调用示例。 阿里云弹性文件存储 EFS-NAS 开发
+以下代码为通过EFS-NAS的 `DescribeFileSystems` 接口查询文件系统列表的调用示例。
 
 ```java
 package main import (
@@ -1716,7 +1839,7 @@ package main import (
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1741,16 +1864,15 @@ func main() {
         "",
 ```
 
-)
+`)`
 
 ```
     client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(), credential)
     if err != nil {
         panic(err)
-    }
 ```
 
-`//` 创建请求。
+`}` `//` 创建请求。
 
 ```
     request := requests.NewCommonRequest()
@@ -1772,7 +1894,7 @@ func main() {
     request.QueryParams["PageNumber"] = "1"
 ```
 
-`//` 可选 `Header`（一般不需要，除非企业有组织/资源组要求）。
+`//` 可选 `Header`（一般不需要，除非企业有组织`/`资源组要求）。
 
 ```
     request.Headers["x-acs-regionid"] = "<yourRegionID>" // 建议与 client 一致
@@ -1786,21 +1908,21 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
 ```
 
-`//` 输出响应结果。
+`}` `//` 输出响应结果。
 
 ```
     fmt.Println(response.GetHttpContentString())
-}
 ```
+
+`}`
 
 **说明**
 
 REGION_ID、ALIBABA_CLOUD_ACCESS_KEY_ID和ALIBABA_CLOUD_ACCESS_KEY_SECRET表示地域ID、账号的AccessKey ID、账号的AccessKey Secret，请分别设置为环境变量。 代码示例中<efs-nas.aliyuns.com>为可变参数，请替换为您实际的产品访问地址。尖括号（<>）在最终代码中不保留。
 
-#### 6.2.5. 错误处理
+#### 6.2.5 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即sdk.errors包下的ClientError和ServerError。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
@@ -1816,12 +1938,13 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
-当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个ClientError，您可以通过以下代码来判断并获取ClientError中的错误信息。 阿里云弹性文件存储 EFS-NAS 开发
+当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个ClientError**，**您可以通过以下代码来判断并获取ClientError中的错误信息。
 
 **重要**
 
@@ -1839,7 +1962,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1861,8 +1984,9 @@ response, err := client.ProcessCommonRequest(request) if clientError, ok := err.
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
@@ -1884,7 +2008,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1906,22 +2030,23 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
 
-阿里云弹性文件存储 EFS-NAS 开发
+`}`
 
-## API参考
+## 7 API参考
 
-### 调用API
+### 7.1 调用API
 
-**7.1.1. 概述**
+#### 7.1.1 概述
 
 API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按照接口描述在请求中加入相应请求参数。调用后系统会返回处理结果。请求及返回结果都使用UTF-8字符集编码。
 
-#### 7.1.2. 请求结构
+#### 7.1.2 请求结构
 
 **服务地址**
+
+如何获取产品的endpoint，请参见获取文件存储的Endpoint。
 
 **请求方法**
 
@@ -1939,7 +2064,7 @@ API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按
 
 请求及返回结果都使用UTF-8字符集进行编码。
 
-#### 7.1.3. 返回结果
+#### 7.1.3 返回结果
 
 调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功；返回4xx或5xx的HTTP状态码代表调用失败。调用成功返回的数据格式仅支持JSON。
 
@@ -1949,31 +2074,28 @@ API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按
 
 **成功结果**
 
+`{`
+
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
 ```
 
-`/*` 返回结果数据 `*/`
-
-```
-}
-```
+`/*` 返回结果数据 `*/` `}`
 
 **错误结果**
 
-调用接口出错后，将不会返回结果数据。调用方可根据每个接口对应的错误码来定位错误原因。当调用出错时，HTTP请求返回一个4xx或5xx的HTTP状态码。返回的消息体中是具体的错误代码及错误信息。另外还包含一个全局唯一的请求ID：RequestId和一个您本次请求访问的站点ID：HostId。
+调用接口出错后，将不会返回结果数据。调用方可根据每个接口对应的错误码来定位错误原因。当调用出错时，HTTP请求返回一个4xx或5xx的HTTP状态码。返回的消息体中是具体的错误代码及错误信息。另外还包含一个全局唯一的请求ID：RequestId和一个您本次请求访问的站点ID：HostId。 `{`
 
 ```json
-{
     "RequestId": "8906582E-6722-409A-A6C4-0E7863B733A5",
     "HostId": "efs-nas.example.com",
     "Code": "InvalidOwnerId",
     "Message": "The specified OwnerId is not valid."
-}
 ```
 
-### RAM鉴权
+`}`
+
+### 7.2 RAM鉴权
 
 当RAM用户通过OpenAPI对阿里云账号的资源进行访问时，系统会向RAM进行权限检查，以确保资源拥有者的确将相关资源的相关权限授予了调用者。
 
@@ -1985,7 +2107,7 @@ API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按
 
 每个不同的EFS-NAS API会根据涉及到的资源以及API的语义，确定需要检查的资源的权限。
 
-### 公共参数
+### 7.3 公共参数
 
 公共参数分为公共请求参数、公共Header参数和公共返回参数。
 
@@ -1996,8 +2118,6 @@ API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 
-阿里云弹性文件存储 EFS-NAS 开发
-
 | Format | String | 否 | 返回值的类型，仅支持JSON。 |
 |---|---|---|---|
 | Version | String | 是 | API版本号，以日期形式YYYY-MM-DD输入。取值为2017-06-26。 |
@@ -2005,6 +2125,10 @@ API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按
 | AccessKeySecret | String | 是 | 访问服务使用的密钥值。 |
 | RegionId | String | 是 | 访问服务所使用的地域ID。 |
 | Product | String | 是 | 接口对应的产品名称，产品名称取值为efs-nas。 |
+
+**公共Header参数**
+
+具体操作，请参见获取公共Header参数。
 
 | 名称 | 描述 |
 |---|---|
@@ -2021,9 +2145,9 @@ API接口调用是向产品的服务端地址发送HTTP GET请求。您需要按
 
 API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码RequestId。
 
-### 集群
+### 7.4 集群
 
-#### 7.4.1. DescribeClusters
+#### 7.4.1 DescribeClusters
 
 查询集群列表。
 
@@ -2046,7 +2170,7 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 | TotalCount | Long | 10 | 集群总数量。 |
 | PageSize | Integer | 100 | 每页行数。 |
 
-| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |  |  |
+| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2063,15 +2187,21 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeClusters
+```
+
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":10, "PageSize":100, "PageNum":1, "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0D******", "Clusters":[ { "Status":"Running", "ZoneId":"cn-hangzhou-a", "ClusterId":"cluster-123", "ClusterName":"test-cluster", "ClusterType":"standard", "RegionId":"cn-hangzhou" } ] } |  |
+| { "TotalCount":10, "PageSize":100, "PageNum":1, "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0D******", "Clusters":[ { "Status":"Running", "ZoneId":"cn-hangzhou-a", "ClusterId":"cluster-123", "ClusterName":"test-cluster", "ClusterType":"standard", "RegionId":"cn-hangzhou" } ] } |   |
 
-### 地域
+### 7.5 地域
 
-#### 7.5.1. DescribeZones
+#### 7.5.1 DescribeZones
 
 查询地域下支持指定文件系统类型的可用区信息。
 
@@ -2083,8 +2213,6 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2100,15 +2228,21 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeZones
+```
+
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Zones":[ { "ZoneId":"cn-hangzhou-**" } ] } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Zones":[ { "ZoneId":"cn-hangzhou-**" } ] } |   |
 
-### 文件系统
+### 7.6 文件系统
 
-#### 7.6.1. CreateFileSystem
+#### 7.6.1 CreateFileSystem
 
 创建文件系统。
 
@@ -2134,7 +2268,7 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1-97C8- ************ | 请求ID。 |
 
-| 指南·API参考 |  |  |  |
+| 指南·API参考 |   |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2146,16 +2280,16 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 请求示例
 
 ```
-&FsName=myfs &Capacity=1024 &FsType=Capacity
+http(s)://[Endpoint]/?Action=CreateFileSystem &FsName=myfs &Capacity=1024 &FsType=Capacity
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "FsId":"efs-nas-0*****" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "FsId":"efs-nas-0*****" } |   |
 
-#### 7.6.2. DescribeFileSystems
+#### 7.6.2 DescribeFileSystems
 
 查询文件系统列表，支持分页。
 
@@ -2188,7 +2322,7 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 | -FsType | String | Performance | 文件系统类型。取值包含Performance（性能型，全闪）和Capacity（容量型， 混闪）。 |
 | -Capacity | Long | 100 | 总容量。单位为GiB。 |
 
-|  |  |  | 阿里云弹性文件存储 EFS-NAS 开发指南·API参考 |
+|   |   |   | 阿里云弹性文件存储 EFS-NAS 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2213,13 +2347,13 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态。 
 http(s)://[Endpoint]/?Action=DescribeFileSystems
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "FileSystems":[ { "Status":"Running", "ModifyTime":"2025-10-16T09:55:41Z", "Description":"测试使用", "ZoneId":"cn-hangzhou-**", "NfsVersion":"v3,v4", "ClusterId":"c******", "CreateTime":"2025-10-15T05:55:20Z", "FsType":"Performance", "FsId":"efs-nas-0*****", "UsedCapacity":1024, "FsName":"myfs", "Capacity":100, "CreateRequestId":"F0A8B189-930D-5EC1-97C8-************", "UserId":"15577******8921", "RegionId":"cn-hangzhou" } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageSize":10, "PageNum":1 } |  |
+| { "FileSystems":[ { "Status":"Running", "ModifyTime":"2025-10-16T09:55:41Z", "Description":"测试使用", "ZoneId":"cn-hangzhou-**", "NfsVersion":"v3,v4", "ClusterId":"c******", "CreateTime":"2025-10-15T05:55:20Z", "FsType":"Performance", "FsId":"efs-nas-0*****", "UsedCapacity":1024, "FsName":"myfs", "Capacity":100, "CreateRequestId":"F0A8B189-930D-5EC1-97C8-************", "UserId":"15577******8921", "RegionId":"cn-hangzhou" } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageSize":10, "PageNum":1 } |   |
 
-#### 7.6.3. ModifyFileSystem
+#### 7.6.3 ModifyFileSystem
 
 修改文件系统的容量、描述等信息。
 
@@ -2233,7 +2367,7 @@ http(s)://[Endpoint]/?Action=DescribeFileSystems
 |---|---|---|---|---|---|
 | ClusterId | String | Query | 否 | c**** | 集群ID。 |
 
-| 指南·API参考 |  |  |  |  |  |
+| 指南·API参考 |   |   |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2253,16 +2387,16 @@ http(s)://[Endpoint]/?Action=DescribeFileSystems
 请求示例
 
 ```
-&FsId=efs-nas-0*****
+http(s)://[Endpoint]/?Action=ModifyFileSystem &FsId=efs-nas-0*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.6.4. DeleteFileSystem
+#### 7.6.4 DeleteFileSystem
 
 删除文件系统。
 
@@ -2292,22 +2426,18 @@ http(s)://[Endpoint]/?Action=DescribeFileSystems
 请求示例
 
 ```
-&FsId=efs-nas-8*****
+http(s)://[Endpoint]/?Action=DeleteFileSystem &FsId=efs-nas-8*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.6.5. BatchModifyFileSystem
+#### 7.6.5 BatchModifyFileSystem
 
-批量修改文件系统状态。 接口说明阿里云弹性文件存储 EFS-NAS 开发
-
-## 准备工作
-
-获取文件系统的id。
+批量修改文件系统状态。 接口说明获取文件系统的id。
 
 **注意事项**
 
@@ -2338,15 +2468,15 @@ http(s)://[Endpoint]/?Action=DescribeFileSystems
 http(s)://[Endpoint]/?Action=BatchModifyFileSystem &FsIds= &Status=
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"" } |  |
+| { "RequestId":"" } |   |
 
-### 配额
+### 7.7 配额
 
-#### 7.7.1. CreateDfsQuota
+#### 7.7.1 CreateDfsQuota
 
 创建DFS（分布式文件系统）配额，用于限制指定路径下的存储空间或文件数量。 本接口需通过AccessKey进行签名认证（authType=AK）。 请求方法：POST 必须指定文件系统ID（FileSystemId）与配额路径（Path）。 配额参数（如SizeHardQuota、FileSoftQuota等）根据业务需求选择性填写，具体生效逻辑由服务端校验。 路径（Path）需为文件系统内有效目录路径。
 
@@ -2365,7 +2495,7 @@ http(s)://[Endpoint]/?Action=BatchModifyFileSystem &FsIds= &Status=
 | FsUserGroupId | Long | Body | 否 | 2001 | 文件系统用户组ID |
 | SizeHardQuota | Long | Body | 否 | 1073741824 | 空间硬限制（字节），超过将禁止写入 |
 
-| 阿里云弹性文件 | 存储 EFS- | NAS 开发 |  |  |  |
+| 阿里云弹性文件 | 存储 EFS- | NAS 开发 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2399,16 +2529,16 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&FileSystemId=fs-xxxxxx &Path=/data/project
+http(s)://[Endpoint]/?Action=CreateDfsQuota &FileSystemId=fs-xxxxxx &Path=/data/project
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "QuotaId":12345, "RequestId":"12345678-1234-1234-1234-123456789012", "Success":true } |  |
+| { "QuotaId":12345, "RequestId":"12345678-1234-1234-1234-123456789012", "Success":true } |   |
 
-#### 7.7.2. DescribeDfsQuotas
+#### 7.7.2 DescribeDfsQuotas
 
 查询DFS文件系统配额信息列表，支持按路径、关键字等条件过滤及分页查询。 ：需使用AccessKey（AK）进行签名认证。
 
@@ -2426,14 +2556,6 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 
 ：请确保已创建有效的DFS文件系统，并拥有对应操作权限。
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-阿里云弹性文件存储 EFS-NAS 开发
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | FileSystemId | String | Body | 是 | fs-xxxxxx | 目标DFS文件系统的唯一标识ID |
@@ -2443,10 +2565,10 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 | PageSize | Integer | Body | 否 | 20 | 每页返回记录数，取值范围1~100，默认20 默认值：20 |
 | PageNum | Integer | Body | 否 | 1 | 页码，从1开始，默认1 默认值：1 |
 
-| 当 | TotalCount |  |  | 大于 |  | PageSize |  | 时，可通过 | PageNum |
+| 当 | TotalCount |   |   | 大于 |   | PageSize |   | 时，可通过 | PageNum |
 |---|---|---|---|---|---|---|---|---|---|
-| Path |  |  | 参数需以 | / |  | 开头，例如 | /project/data |  |  |
-| 支持 |  | CreateTime |  |  | 、 | UpdateTime |  |  |  |
+| Path |   |   | 参数需以 | / |   | 开头，例如 | /project/data |   |   |
+| 支持 |   | CreateTime |   |   | 、 | UpdateTime |   |   |   |
 
 **分页逻辑**
 
@@ -2479,7 +2601,7 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 | -FilesSuggestQuota | Long | 50000 | 建议文件数配额 |
 | -SizeRatio | Float | 0.75 | 当前空间使用率 |
 
-| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |  |  |
+| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2508,7 +2630,7 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 | --UsedFiles | Long | 5000 | 已使用文件数 |
 | --UsedKbyte | Long | 102400 | 已使用空间（单位：KB） |
 
-| ActionStatus |  |  |
+| ActionStatus |   |   |
 |---|---|---|
 | 进入宽限期（ | SizeGraceTime | / FilesGraceTime |
 
@@ -2525,20 +2647,23 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&FileSystemId=fs-xxxxxx
+http(s)://[Endpoint]/?Action=DescribeDfsQuotas &FileSystemId=fs-xxxxxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"4C467B38-391A-512B-8855-2B3B8D3C3D3D",
  "PageNum":1,
  "PageSize":20,
  "NextToken":"",
  "Quotas":[
-  {
+```
+
+`{`
+
+```json
    "FilesSuggestQuota":50000,
    "FilesHardQuota":100000,
    "FilesExceedTime":"2023-01-01T12:00:00Z",
@@ -2561,14 +2686,17 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
    "ClusterId":999,
    "CreateTime":"2023-01-01T10:00:00Z",
    "Samples":[
-    {
+```
+
+`{`
+
+```json
      "Create":"2023-07-01T08:00:00Z",
      "UsedFiles":5000,
      "UsedKbyte":102400
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "DfsRootfsId":789012,
@@ -2583,20 +2711,15 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
    "DomainUserName":"domain\\user1",
    "Id":123456,
    "FilesGraceTime":604800
-  }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **文档补充说明**
 
 配额查询结果按创建时间倒序排列。若需实时监控配额使用情况，建议结合 `Samples` 字段分析历史趋势。配额管理操作（如创建、修改）请参考DFS配额管理相关API。
 
-#### 7.7.3. DeleteDfsQuota
+#### 7.7.3 DeleteDfsQuota
 
 删除分布式文件系统（DFS）配额配置
 
@@ -2631,7 +2754,7 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 |---|---|---|---|
 | RequestId | String | 12345-67890 | 本次请求的唯一标识，用于问题追踪与排查 |
 
-| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |  |  |
+| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2644,16 +2767,16 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&QuotaId=1000001 &FileSystemId=fs-12345678
+http(s)://[Endpoint]/?Action=DeleteDfsQuota &QuotaId=1000001 &FileSystemId=fs-12345678
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "QuotaId":1000001, "RequestId":"12345-67890", "Success":true } |  |
+| { "QuotaId":1000001, "RequestId":"12345-67890", "Success":true } |   |
 
-#### 7.7.4. ModifyDfsQuota
+#### 7.7.4 ModifyDfsQuota
 
 修改分布式文件系统（DFS）的配额配置参数。 ：需使用AccessKey（AK）进行签名认证。
 
@@ -2695,10 +2818,6 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 3. 比例类参数（SizeRatio/FileRatio）需在0~1范围内，宽限期单位为秒。
 4. 建议配额（SuggestQuota）仅作参考提示，不影响实际硬/软限制。
 
-**返回数据**
-
-阿里云弹性文件存储 EFS-NAS 开发
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 4C467B38-1A2B-3C4D-5E6F- 7890ABCDEF12 | 本次请求唯一标识 |
@@ -2712,14 +2831,14 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&QuotaId=12345 &FileSystemId=fs-abcdef123456
+http(s)://[Endpoint]/?Action=ModifyDfsQuota &QuotaId=12345 &FileSystemId=fs-abcdef123456
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "QuotaId":12345, "RequestId":"4C467B38-1A2B-3C4D-5E6F-7890ABCDEF12", "Success":true } |  |
+| { "QuotaId":12345, "RequestId":"4C467B38-1A2B-3C4D-5E6F-7890ABCDEF12", "Success":true } |   |
 
 **文档补充说明**
 
@@ -2728,9 +2847,9 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 3. 配额参数存在依赖关系（如软配额不可大于硬配额），参数校验由服务端执行。
 4. 集群ID（ClusterId）在多集群部署场景下需显式指定，单集群环境可省略。
 
-### 用户
+### 7.8 用户
 
-#### 7.8.1. CreateFsUser
+#### 7.8.1 CreateFsUser
 
 创建文件系统用户。
 
@@ -2760,19 +2879,16 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&Name=myuser &Password=ab****** &Uid=10000
+http(s)://[Endpoint]/?Action=CreateFsUser &Name=myuser &Password=ab****** &Uid=10000
 ```
-
-&公共请求参数阿里云弹性文件存储 EFS-NAS 开发正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "FsUserId":100000
-}
 ```
 
-#### 7.8.2. DescribeFsUsers
+`}`
+
+#### 7.8.2 DescribeFsUsers
 
 查询文件系统用户列表，支持分页和按文件系统用户ID查询。
 
@@ -2807,32 +2923,35 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeFsUsers
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "TotalCount":5,
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "PageNum":1,
  "PageSize":10,
  "FsUsers":[
-  {
+```
+
+`{`
+
+```json
    "Uid":10000,
    "CreateTime":"2025-10-15T09:55:41Z",
    "FsUserId":100000,
    "PrimaryGroupId":10000,
    "Name":"myuser",
    "SecondaryGroupIds":"[10001,10002]"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-#### 7.8.3. ModifyFsUser
+#### 7.8.3 ModifyFsUser
 
 修改文件系统用户。
 
@@ -2863,28 +2982,22 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&FsUserId=100000
+http(s)://[Endpoint]/?Action=ModifyFsUser &FsUserId=100000
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "Uid":1000000000000000, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "FsUserId":100000, "Name":"myuser" } |  |
+| { "Uid":1000000000000000, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "FsUserId":100000, "Name":"myuser" } |   |
 
-#### 7.8.4. DeleteFsUser
+#### 7.8.4 DeleteFsUser
 
 删除文件系统用户。
 
 **注意事项**
 
 文件系统用户删除后不可恢复，请谨慎操作。
-
-**请求头**
-
-阿里云弹性文件存储 EFS-NAS 开发该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2902,18 +3015,18 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&FsUserId=100000
+http(s)://[Endpoint]/?Action=DeleteFsUser &FsUserId=100000
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-### 用户组
+### 7.9 用户组
 
-#### 7.9.1. CreateFsUserGroup
+#### 7.9.1 CreateFsUserGroup
 
 创建文件系统用户组。
 
@@ -2941,24 +3054,18 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&Name=myusergroup &GroupId=10000 &FsUserIds=[100000,100001]
+http(s)://[Endpoint]/?Action=CreateFsUserGroup &Name=myusergroup &GroupId=10000 &FsUserIds=[100000,100001]
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "FsUserGroupId":10000 } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "FsUserGroupId":10000 } |   |
 
-阿里云弹性文件存储 EFS-NAS 开发
+#### 7.9.2 AddFsUsersToGroup
 
-#### 7.9.2. AddFsUsersToGroup
-
-将文件系统用户添加到指定用户组。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+将文件系统用户添加到指定用户组。 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -2979,16 +3086,16 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 请求示例
 
 ```
-&FsUserGroupId=10000 &FsUserIds=[100000,100001]
+http(s)://[Endpoint]/?Action=AddFsUsersToGroup &FsUserGroupId=10000 &FsUserIds=[100000,100001]
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-#### 7.9.3. RemoveFsUsersFromGroup
+#### 7.9.3 RemoveFsUsersFromGroup
 
 从指定用户组中移除文件系统用户。
 
@@ -3018,16 +3125,13 @@ Success为true时，QuotaId有效，表示配额创建成功。 Success为false�
 http(s)://[Endpoint]/?Action=RemoveFsUsersFromGroup &FsUserGroupId=10000 &FsUserIds=[100000,100001]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Success":true
-}
 ```
 
-#### 7.9.4. DescribeFsUserGroups
+#### 7.9.4 DescribeFsUserGroups
 
 查询文件系统用户组列表，支持分页和按文件系统用户组ID查询。
 
@@ -3066,21 +3170,15 @@ http(s)://[Endpoint]/?Action=RemoveFsUsersFromGroup &FsUserGroupId=10000 &FsUser
 http(s)://[Endpoint]/?Action=DescribeFsUserGroups
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":5, "FsUserGroups":[ { "FsUserIds":"[100000,100001]", "Gid":10000, "CreateTime":"2025-10-15T09:55:41Z", "FsUserGroupId":10000, "Name":"myusergroup" } ], "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |  |
+| { "TotalCount":5, "FsUserGroups":[ { "FsUserIds":"[100000,100001]", "Gid":10000, "CreateTime":"2025-10-15T09:55:41Z", "FsUserGroupId":10000, "Name":"myusergroup" } ], "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |   |
 
-阿里云弹性文件存储 EFS-NAS 开发
+#### 7.9.5 DeleteFsUserGroup
 
-#### 7.9.5. DeleteFsUserGroup
-
-删除文件系统用户组。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+删除文件系统用户组。 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -3100,18 +3198,20 @@ http(s)://[Endpoint]/?Action=DescribeFsUserGroups
 请求示例
 
 ```
-&FsUserGroupId=10000
+http(s)://[Endpoint]/?Action=DeleteFsUserGroup &FsUserGroupId=10000
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-### SMB共享
+### 7.10 SMB共享
 
-#### 7.10.1. CreateSmbShare
+#### 7.10.1 CreateSmbShare
+
+创建SMB共享。
 
 **请求头**
 
@@ -3129,7 +3229,7 @@ http(s)://[Endpoint]/?Action=DescribeFsUserGroups
 | AbeEnabled | Boolean | Query | 否 | false | 是否启用ABE（Access-Based Enumeration，基于访问权限的枚举）。默认值false表示未启用， 启用后，用户在浏览共享目录时，只能看到自己有权限访问的共享文件和目录，无法查看无权访问的项。 |
 | OpportunisticLockE nabled | Boolean | Query | 否 | false | 是否启用机会锁，适用于读多写少、用户间不频繁共享同一文件的环境。默认值false表示未启用。 启用后，允许客户端在一段时间内独占性地访问共享文件，以减少对文件服务器的频繁访问和网络传输。但也可能导致某些问题，如文件并发访问冲突等，请谨慎配置和使用。 |
 
-| 阿里云弹性文件指南·API参考 | 存储 EFS- | NAS 开发 |  |  |  |
+| 阿里云弹性文件指南·API参考 | 存储 EFS- | NAS 开发 |   |   |   |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 
@@ -3151,16 +3251,18 @@ http(s)://[Endpoint]/?Action=DescribeFsUserGroups
 请求示例
 
 ```json
-&FileSystemId=efs-nas-c***** &ShareName=myshare &Acls=[{"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000000,"userName":"JL-USER-02"}, {"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000001,"userName":"JL-USER-01"}]
+http(s)://[Endpoint]/?Action=CreateSmbShare &FileSystemId=efs-nas-c***** &ShareName=myshare &Acls=[{"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000000,"userName":"JL-USER-02"}, {"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000001,"userName":"JL-USER-01"}]
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "ShareId":"3e47da****", "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "ShareId":"3e47da****", "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.10.2. DescribeSmbConnections
+#### 7.10.2 DescribeSmbConnections
+
+查询SMB共享连接详情和连接数。
 
 **请求头**
 
@@ -3173,10 +3275,6 @@ http(s)://[Endpoint]/?Action=DescribeFsUserGroups
 | ShareId | String | Query | 是 | 3e47****** | SMB共享ID。 |
 | PageNum | Integer | Query | 否 | 1 | 分页页数。默认值为1。 |
 | PageSize | Integer | Query | 否 | 10 | 分页查询时每页返回的资源数量。默认值为20。 |
-
-**返回数据**
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3199,13 +3297,15 @@ http(s)://[Endpoint]/?Action=DescribeFsUserGroups
 http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "SmbConnections":[ { "ShareId":"3e47******", "ProtocolVersion":"3.0", "ConnectTime":"1500", "ClientIp":"10.10.10.**", "AccessUser":"myusertest" } ] } |  |
+| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "SmbConnections":[ { "ShareId":"3e47******", "ProtocolVersion":"3.0", "ConnectTime":"1500", "ClientIp":"10.10.10.**", "AccessUser":"myusertest" } ] } |   |
 
-#### 7.10.3. DescribeSmbShares
+#### 7.10.3 DescribeSmbShares
+
+查询SMB共享列表，支持分页。
 
 **请求头**
 
@@ -3220,10 +3320,6 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 | ShareId | String | Query | 否 | 3e47****** | 共享ID。 |
 | PageNum | Integer | Query | 否 | 1 | 分页页数。默认值为1。 |
 | PageSize | Integer | Query | 否 | 10 | 分页查询时每页返回的资源数量。默认值为20。 |
-
-**返回数据**
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3249,12 +3345,16 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeSmbShares
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "SmbShares":[
-  {
    "Status":"ACTIVE",
    "Azone":"cn-hangzhou-**",
    "CreateTime":"2025-10-16T09:55:41Z",
@@ -3269,20 +3369,22 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
    "ContactIpList":"[192.168.10.1,192.168.10.2]",
    "FileSystemId":"efs-nas-0*****",
    "CaseSensitive":false
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":5,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "PageNum":1,
  "PageSize":10
-}
 ```
 
-#### 7.10.4. ModifySmbShare
+`}`
+
+#### 7.10.4 ModifySmbShare
+
+修改SMB共享配置。
 
 **请求头**
 
@@ -3310,20 +3412,22 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```
-&ShareId=3e47****** &ContactIpList=[192.168.10.1,192.168.10.2]
+http(s)://[Endpoint]/?Action=ModifySmbShare &ShareId=3e47****** &ContactIpList=[192.168.10.1,192.168.10.2]
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
-#### 7.10.5. DeleteSmbShare
+#### 7.10.5 DeleteSmbShare
+
+删除SMB共享。
 
 **注意事项**
+
+删除SMB共享将导致所有用户无法再通过此共享访问资源，请确认无业务依赖后再操作。 SMB共享删除后无法恢复，请谨慎操作。
 
 **请求头**
 
@@ -3347,18 +3451,18 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```
-&ShareId=3e47******
+http(s)://[Endpoint]/?Action=DeleteSmbShare &ShareId=3e47******
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-### SMB ACL
+### 7.11 SMB ACL
 
-#### 7.11.1. BatchCreateSmbAcl
+#### 7.11.1 BatchCreateSmbAcl
 
 批量创建SMB访问控制列表。
 
@@ -3372,8 +3476,6 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 |---|---|---|---|---|---|
 | ClusterId | String | Query | 否 | c****** | 集群ID。 |
 | ShareId | String | Query | 是 | 3e47****** | SMB共享ID。 |
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3390,16 +3492,18 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```json
-&ShareId=3e47****** &Acls=[{"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000000,"userName":"JL-USER-02"}, {"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000001,"userName":"JL-USER-01"}]
+http(s)://[Endpoint]/?Action=BatchCreateSmbAcl &ShareId=3e47****** &Acls=[{"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000000,"userName":"JL-USER-02"}, {"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000001,"userName":"JL-USER-01"}]
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.11.2. DescribeSmbAcls
+#### 7.11.2 DescribeSmbAcls
+
+查询SMB ACL列表，支持分页。
 
 **请求头**
 
@@ -3424,7 +3528,7 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 | -GroupId | Long | 10000 | 文件系统用户组ID。 |
 | -UserType | String | everyone | 用户类型。取值为user（用户）、user _group（用户组）、everyone（所有人）。 |
 
-| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |  |  |
+| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3445,16 +3549,16 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```
-&ShareId=3e47******
+http(s)://[Endpoint]/?Action=DescribeSmbAcls &ShareId=3e47******
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "AclEntries":[ { "ModifyTime":"2025-10-17T09:55:41Z", "UserName":"myuser", "UserId":1000000000000000, "AclId":1000000000, "UserGroupName":"myusergroup", "CreateTime":"2025-10-16T09:55:41Z", "Permission":"RO", "UserType":"everyone", "AccessType":"local", "GroupId":10000 } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |  |
+| { "AclEntries":[ { "ModifyTime":"2025-10-17T09:55:41Z", "UserName":"myuser", "UserId":1000000000000000, "AclId":1000000000, "UserGroupName":"myusergroup", "CreateTime":"2025-10-16T09:55:41Z", "Permission":"RO", "UserType":"everyone", "AccessType":"local", "GroupId":10000 } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |   |
 
-#### 7.11.3. BatchUpdateSmbAcl
+#### 7.11.3 BatchUpdateSmbAcl
 
 批量更新SMB访问控制列表。
 
@@ -3484,22 +3588,22 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```
-&ShareId=3e47****** &Acls=[{"AclId": 1000000000,"Permission":"RO"},{"AclId": 1000000001,"Permission":"RO"}]
+http(s)://[Endpoint]/?Action=BatchUpdateSmbAcl &ShareId=3e47****** &Acls=[{"AclId": 1000000000,"Permission":"RO"},{"AclId": 1000000001,"Permission":"RO"}]
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.11.4. BatchDeleteSmbAcl
+#### 7.11.4 BatchDeleteSmbAcl
 
 批量删除SMB访问控制列表。
 
 **注意事项**
 
-删除 SMB ACL 将直接影响用户或组对共享资源的访问权限，可能导致访问中断，请确认无业务依赖后再执行删除操作。
+删除 SMB ACL 将直接影响用户或组对共享资源的访问权限，可能导致访问中断，请确认无业务依赖后再执行删除操作。 SMB ACL删除后不可恢复，请谨慎操作。
 
 **请求头**
 
@@ -3524,22 +3628,16 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```
-&ShareId=3e47****** &AclIds=[1000000000,1000000001]
+http(s)://[Endpoint]/?Action=BatchDeleteSmbAcl &ShareId=3e47****** &AclIds=[1000000000,1000000001]
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
-### NFS共享
+### 7.12 NFS共享
 
-#### 7.12.1. CreateNfsShare
+#### 7.12.1 CreateNfsShare
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
+创建NFS共享。
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3566,16 +3664,18 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 请求示例
 
 ```
-&FileSystemId=efs-nas-c***** &ShareName=mynfsshare
+http(s)://[Endpoint]/?Action=CreateNfsShare &FileSystemId=efs-nas-c***** &ShareName=mynfsshare
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "ShareId":"3e47******", "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "ShareId":"3e47******", "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.12.2. DescribeNfsConnections
+#### 7.12.2 DescribeNfsConnections
+
+查询NFS共享连接详情及连接数。
 
 **请求头**
 
@@ -3589,7 +3689,7 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 | PageNum | Integer | Query | 否 | 1 | 分页页数。默认值为1。 |
 | PageSize | Integer | Query | 否 | 10 | 分页查询时每页返回的资源数量。默认值为20。 |
 
-|  |  |  |  | 阿里 | 云弹性文件存储 EFS-NAS 开发指南·API参考 |
+|   |   |   |   | 阿里 | 云弹性文件存储 EFS-NAS 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3617,13 +3717,15 @@ http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47******
 http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "NfsConnections":[ { "ShareId":"3e47******", "NfsVersion":"v3", "ClientIp":"10.10.10.**" } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |  |
+| { "NfsConnections":[ { "ShareId":"3e47******", "NfsVersion":"v3", "ClientIp":"10.10.10.**" } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |   |
 
-#### 7.12.3. DescribeNfsShares
+#### 7.12.3 DescribeNfsShares
+
+查询NFS共享列表，支持分页。
 
 **请求头**
 
@@ -3638,10 +3740,6 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 | ShareId | String | Query | 否 | 3e47****** | NFS共享ID， |
 | PageNum | Integer | Query | 否 | 1 | 分页页数。默认值为1。 |
 | PageSize | Integer | Query | 否 | 10 | 分页查询时每页返回的资源数量。默认值为20。 |
-
-**返回数据**
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3663,21 +3761,21 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeNfsShares
+```
+
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "NfsShares":[ { "Status":"ACTIVE", "Azone":"cn-hangzhou-**", "ShareId":"3e47******", "VpcId":"vpc-bp15zckdt37pq72zv****", "MountTargetDomain":"04f314****-at***.cn-hangzhou.**.***.com", "CreateTime":"2025-10-17T09:55:41Z", "MountTargetInfo":"/efs-nas-73****", "ShareName":"mynfsshare", "FileSystemId":"efs-nas-0*****", "VswitchId":"vsw-bp1e7clcw529l773d****" } ] } |  |
+| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "NfsShares":[ { "Status":"ACTIVE", "Azone":"cn-hangzhou-**", "ShareId":"3e47******", "VpcId":"vpc-bp15zckdt37pq72zv****", "MountTargetDomain":"04f314****-at***.cn-hangzhou.**.***.com", "CreateTime":"2025-10-17T09:55:41Z", "MountTargetInfo":"/efs-nas-73****", "ShareName":"mynfsshare", "FileSystemId":"efs-nas-0*****", "VswitchId":"vsw-bp1e7clcw529l773d****" } ] } |   |
 
-#### 7.12.4. ModifyNfsShare
+#### 7.12.4 ModifyNfsShare
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-阿里云弹性文件存储 EFS-NAS 开发
+修改NFS共享配置。
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3696,18 +3794,22 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&ShareId=3e47****** &ShareName=mynfssharenew
+http(s)://[Endpoint]/?Action=ModifyNfsShare &ShareId=3e47****** &ShareName=mynfssharenew
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.12.5. DeleteNfsShare
+#### 7.12.5 DeleteNfsShare
+
+删除NFS共享。
 
 **注意事项**
+
+删除NFS共享将导致所有用户无法再通过此共享访问资源，请确认无业务依赖后再操作。 NFS共享删除后无法恢复，请谨慎操作。
 
 **请求头**
 
@@ -3731,26 +3833,20 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&ShareId=3e47******
+http(s)://[Endpoint]/?Action=DeleteNfsShare &ShareId=3e47******
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-### NFS ACL
+### 7.13 NFS ACL
 
-阿里云弹性文件存储 EFS-NAS 开发
+#### 7.13.1 BatchCreateNfsAcl
 
-#### 7.13.1. BatchCreateNfsAcl
-
-批量创建NFS访问控制列表。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+批量创建NFS访问控制列表。 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -3772,16 +3868,18 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&Acls=[{"Type":"every-client","Permission":"RO","RootSquash":true,"AllSquash":false}] &FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=BatchCreateNfsAcl &Acls=[{"Type":"every-client","Permission":"RO","RootSquash":true,"AllSquash":false}] &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.13.2. DescribeNfsAcls
+#### 7.13.2 DescribeNfsAcls
+
+查询NFS ACL列表，支持分页。
 
 **请求头**
 
@@ -3796,9 +3894,7 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 | PageNum | Integer | Query | 否 | 1 | 分页页数。默认值为1。 |
 | PageSize | Integer | Query | 否 | 10 | 分页查询时每页返回的资源数量。默认值为20。 |
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-|  |  |  |  |  | 指南·API参考 |
+|   |   |   |   |   | 指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | FileSystemId | String | Query | 是 | efs-nas-c***** | 文件系统ID。 |
@@ -3824,26 +3920,22 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=DescribeNfsAcls &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "AclEntries":[ { "AllSquash":false, "Type":"client", "AclId":2000000000, "Permission":"RO", "RootSquash":true, "ClientIp":"10.10.10.**" } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |  |
+| { "AclEntries":[ { "AllSquash":false, "Type":"client", "AclId":2000000000, "Permission":"RO", "RootSquash":true, "ClientIp":"10.10.10.**" } ], "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10 } |   |
 
-#### 7.13.3. BatchUpdateNfsAcl
+#### 7.13.3 BatchUpdateNfsAcl
 
 批量更新NFS访问控制列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3863,22 +3955,22 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&Acls=[{"AclId": 2000000000,"Permission":"RO"},{"AclId": 2000000001,"Permission":"RO"}] &FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=BatchUpdateNfsAcl &Acls=[{"AclId": 2000000000,"Permission":"RO"},{"AclId": 2000000001,"Permission":"RO"}] &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-#### 7.13.4. BatchDeleteNfsAcl
+#### 7.13.4 BatchDeleteNfsAcl
 
 批量删除NFS访问控制列表。
 
 **注意事项**
 
-删除NFS ACL将直接影响用户或组对共享资源的访问权限，可能导致访问中断，请确认无业务依赖后再执行删除操作。
+删除NFS ACL将直接影响用户或组对共享资源的访问权限，可能导致访问中断，请确认无业务依赖后再执行删除操作。 NFS ACL删除后不可恢复，请谨慎操作。
 
 **请求头**
 
@@ -3904,18 +3996,16 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&AclIds=[2000000000,2000000001] &FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=BatchDeleteNfsAcl &AclIds=[2000000000,2000000001] &FileSystemId=efs-nas-c*****
 ```
-
-&公共请求参数阿里云弹性文件存储 EFS-NAS 开发正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-### 快照
+### 7.14 快照
 
-#### 7.14.1. CreateSnapshot
+#### 7.14.1 CreateSnapshot
 
 创建一个快照。
 
@@ -3950,24 +4040,18 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&FileSystemId=efs-nas-c***** &SnapshotName=testSnapshotName
+http(s)://[Endpoint]/?Action=CreateSnapshot &FileSystemId=efs-nas-c***** &SnapshotName=testSnapshotName
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "SnapshotId":"snap-1764836************", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "SnapshotId":"snap-1764836************", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-阿里云弹性文件存储 EFS-NAS 开发
+#### 7.14.2 ModifySnapshot
 
-#### 7.14.2. ModifySnapshot
-
-修改指定快照的名称、描述信息、保留时间等属性。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+修改指定快照的名称、描述信息、保留时间等属性。 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -3992,16 +4076,16 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&SnapshotId=snap-1764836************
+http(s)://[Endpoint]/?Action=ModifySnapshot &SnapshotId=snap-1764836************
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "SnapshotId":"snap-1764836************", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "SnapshotId":"snap-1764836************", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-#### 7.14.3. DescribeSnapshots
+#### 7.14.3 DescribeSnapshots
 
 查询指定文件系统一个或多个快照的信息。
 
@@ -4020,9 +4104,7 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 | FileSystemId | String | Body | 否 | efs-nas-0***** | 文件系统ID。 |
 | SnapshotId | String | Body | 否 | snap-1764836************ | 快照ID。 |
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-|  |  |  |  |  | 指南·API参考 |
+|   |   |   |   |   | 指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | PageSize | Integer | Body | 否 | 10 | 分页查询时每页返回的资源数量。默认值为20。 |
@@ -4030,38 +4112,42 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 
 **返回数据**
 
-| 参数名称 | 类型 | 示例 | 说明 |  |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |   |
 |---|---|---|---|---|---|
-| Snapshots | Array | [{}] | 快照列表。 |  |  |
-| -SnapshotId | String | snap-1764836************ | 快照ID。 |  |  |
-| -SnapshotName | String | testSnapshotName | 快照名称。 |  |  |
-| -FileSystemId | String | efs-nas-0***** | 快照所属文件系统ID。 |  |  |
-| -Status | String | progressing | 快照状态。返回值如下： 1：创建成功 0：创建失败 |  |  |
-| -CreateTime | String | 2025-12-15T09:55:41Z | 快照创建时间。按照ISO 8601标准表示，并使用 UTC 时间。格式为 yyyy-MM- ddThh:mmZ 。 |  |  |
-|  |  |  |  | yyyy-MM- |  |
-| -ExpirationTime | String | 2026-12-15T09:55:41Z | 快照过期时间。按照ISO 8601标准表示，并使用 UTC 时间。格式为yyyy-MM- ddThh:mmZ。 |  |  |
-| -Retention | String | never | 快照保留时间。返回值为never（永不过期）或由正整数和单位组成的字符串。单位可选h（小时）、d（天数）、m（月）、y（年）。 |  |  |
-| -Description | String | 测试使用 | 快照描述信息。 |  |  |
-| -Lock | Boolean | true | 快照锁定状态。返回值为true（锁定）或false（未锁定）。 |  |  |
-| RequestId | String | F0A8A039-930D-5EC1-97C8- ************ | 请求ID。 |  |  |
-| TotalCount | Integer | 5 | 查询到的快照总数量。 |  |  |
-| PageNum | Integer | 10 | 分页页数。 |  |  |
-| PageSize | Integer | 1 | 每页资源个数。 |  |  |
+| Snapshots | Array | [{}] | 快照列表。 |   |   |
+| -SnapshotId | String | snap-1764836************ | 快照ID。 |   |   |
+| -SnapshotName | String | testSnapshotName | 快照名称。 |   |   |
+| -FileSystemId | String | efs-nas-0***** | 快照所属文件系统ID。 |   |   |
+| -Status | String | progressing | 快照状态。返回值如下： 1：创建成功 0：创建失败 |   |   |
+| -CreateTime | String | 2025-12-15T09:55:41Z | 快照创建时间。按照ISO 8601标准表示，并使用 UTC 时间。格式为 yyyy-MM- ddThh:mmZ 。 |   |   |
+|   |   |   |   | yyyy-MM- |   |
+| -ExpirationTime | String | 2026-12-15T09:55:41Z | 快照过期时间。按照ISO 8601标准表示，并使用 UTC 时间。格式为yyyy-MM- ddThh:mmZ。 |   |   |
+| -Retention | String | never | 快照保留时间。返回值为never（永不过期）或由正整数和单位组成的字符串。单位可选h（小时）、d（天数）、m（月）、y（年）。 |   |   |
+| -Description | String | 测试使用 | 快照描述信息。 |   |   |
+| -Lock | Boolean | true | 快照锁定状态。返回值为true（锁定）或false（未锁定）。 |   |   |
+| RequestId | String | F0A8A039-930D-5EC1-97C8- ************ | 请求ID。 |   |   |
+| TotalCount | Integer | 5 | 查询到的快照总数量。 |   |   |
+| PageNum | Integer | 10 | 分页页数。 |   |   |
+| PageSize | Integer | 1 | 每页资源个数。 |   |   |
 
-|  | ddThh:mmZ |
+|   | ddThh:mmZ |
 |---|---|
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeSnapshots
+```
+
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":10, "PageSize":1, "Snapshots":[ { "Status":"progressing", "SnapshotId":"snap-1764836************", "Description":"测试使用", "CreateTime":"2025-12-15T09:55:41Z", "FileSystemId":"efs-nas-0*****", "ExpirationTime":"2026-12-15T09:55:41Z", "Retention":"never", "SnapshotName":"testSnapshotName", "Lock":true } ] } |  |
+| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":10, "PageSize":1, "Snapshots":[ { "Status":"progressing", "SnapshotId":"snap-1764836************", "Description":"测试使用", "CreateTime":"2025-12-15T09:55:41Z", "FileSystemId":"efs-nas-0*****", "ExpirationTime":"2026-12-15T09:55:41Z", "Retention":"never", "SnapshotName":"testSnapshotName", "Lock":true } ] } |   |
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-#### 7.14.4. DeleteSnapshot
+#### 7.14.4 DeleteSnapshot
 
 删除指定的快照或取消正在创建的快照任务。
 
@@ -4091,16 +4177,16 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&SnapshotId=snap-1764836************
+http(s)://[Endpoint]/?Action=DeleteSnapshot &SnapshotId=snap-1764836************
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Result":"true" } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Result":"true" } |   |
 
-#### 7.14.5. CreateScheduledSnapshot
+#### 7.14.5 CreateScheduledSnapshot
 
 为文件系统创建定时快照。创建后，系统将按照指定时间周期自动为文件系统生成快照。
 
@@ -4127,7 +4213,7 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 | RequestId | String | F0A8A039-930D-5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 操作是否成功。返回值为true时表示成功。 |
 
-|  |  |  | 指南·API参考 |
+|   |   |   | 指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4145,13 +4231,13 @@ http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c*****
 http(s)://[Endpoint]/?Action=CreateScheduledSnapshot &SnapshotPolicyId=sp-17748631231******** &FileSystemId=efs-nas-c***** &Trigger=true
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "ScheduledSnapshotId":"snap-17781404842********", "HttpStatusCode":"200", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "ScheduledSnapshotId":"snap-17781404842********", "HttpStatusCode":"200", "Code":"200", "Success":true } |   |
 
-#### 7.14.6. DescribeSnapshotPolicyBindings
+#### 7.14.6 DescribeSnapshotPolicyBindings
 
 查询快照策略与文件系统的绑定关系列表，支持按策略ID或文件系统ID过滤，支持分页。
 
@@ -4181,7 +4267,7 @@ http(s)://[Endpoint]/?Action=CreateScheduledSnapshot &SnapshotPolicyId=sp-177486
 | PageNum | Integer | 1 | 分页页数。 |
 | PageSize | Integer | 10 | 每页资源个数。 |
 
-| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |  |  |
+| 阿里云弹性文件存储指南·API参考 | EFS-NAS 开发 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4196,13 +4282,13 @@ http(s)://[Endpoint]/?Action=CreateScheduledSnapshot &SnapshotPolicyId=sp-177486
 http(s)://[Endpoint]/?Action=DescribeSnapshotPolicyBindings
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "SnapshotPolicyBindings":[ { "SnapshotPolicyId":"sp-17748631231********", "CreateTime":"2026-05-25T09:55:41Z", "FileSystemId":"efs-nas-0*****" } ] } |  |
+| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "SnapshotPolicyBindings":[ { "SnapshotPolicyId":"sp-17748631231********", "CreateTime":"2026-05-25T09:55:41Z", "FileSystemId":"efs-nas-0*****" } ] } |   |
 
-#### 7.14.7. DeleteScheduledSnapshot
+#### 7.14.7 DeleteScheduledSnapshot
 
 解除文件系统与快照策略的绑定，停止该文件系统上的定时快照。
 
@@ -4236,22 +4322,21 @@ http(s)://[Endpoint]/?Action=DescribeSnapshotPolicyBindings
 http(s)://[Endpoint]/?Action=DeleteScheduledSnapshot &SnapshotPolicyId=sp-17748631231******** &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "ScheduledSnapshotId":"snap-17781404842********",
  "HttpStatusCode":"200",
  "Code":"200",
  "Success":true
-}
 ```
 
-### 快照策略
+`}`
 
-#### 7.15.1. CreateSnapshotPolicy
+### 7.15 快照策略
+
+#### 7.15.1 CreateSnapshotPolicy
 
 创建一个快照策略，用于后续绑定到文件系统实现定时快照。
 
@@ -4291,21 +4376,15 @@ http(s)://[Endpoint]/?Action=DeleteScheduledSnapshot &SnapshotPolicyId=sp-177486
 http(s)://[Endpoint]/?Action=CreateSnapshotPolicy &SnapshotPolicyName=mysnapshotpolicy &CronExpression=0 0 2 ? * 1-7 &ExpireType=true
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "SnapshotPolicyId":"sp-17748631431********", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "SnapshotPolicyId":"sp-17748631431********", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-阿里云弹性文件存储 EFS-NAS 开发
+#### 7.15.2 ModifySnapshotPolicy
 
-#### 7.15.2. ModifySnapshotPolicy
-
-修改已有快照策略的配置，包括快照周期、过期删除等。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+修改已有快照策略的配置，包括快照周期、过期删除等。 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -4335,13 +4414,13 @@ http(s)://[Endpoint]/?Action=CreateSnapshotPolicy &SnapshotPolicyName=mysnapshot
 http(s)://[Endpoint]/?Action=ModifySnapshotPolicy &SnapshotPolicyId=sp-17748631431********
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "SnapshotPolicyId":"sp-17748631431********", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "SnapshotPolicyId":"sp-17748631431********", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-#### 7.15.3. DescribeSnapshotPolicies
+#### 7.15.3 DescribeSnapshotPolicies
 
 查询快照策略列表，支持按文件系统或策略ID过滤，支持分页。
 
@@ -4357,9 +4436,7 @@ http(s)://[Endpoint]/?Action=ModifySnapshotPolicy &SnapshotPolicyId=sp-177486314
 | SnapshotPolicyId | String | Body | 否 | sp-177909055113******** | 快照策略ID。 |
 | PageSize | Integer | Body | 否 | 10 | 页面大小，默认值为10。 |
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-|  |  |  |  |  | 指南·API参考 |
+|   |   |   |   |   | 指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | PageNum | Integer | Body | 否 | 1 | 页码，默认值为1。 |
@@ -4392,15 +4469,15 @@ http(s)://[Endpoint]/?Action=ModifySnapshotPolicy &SnapshotPolicyId=sp-177486314
 http(s)://[Endpoint]/?Action=DescribeSnapshotPolicies
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "SnapshotPolicies":[ { "RetentionNum":30, "AssociatedDirectoryCount":1, "SnapshotPolicyId":"sp-17748631431********", "Description":"my sanpshot policy", "RetentionUnit":"d", "CreateTime":"2025-10-15T09:55:41Z", "ExpireType":"true", "SnapshotPolicyName":"mysnapshotpolicy", "CronExpression":"0 0 * * *" } ] } |  |
+| { "TotalCount":5, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "PageNum":1, "PageSize":10, "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****", "SnapshotPolicies":[ { "RetentionNum":30, "AssociatedDirectoryCount":1, "SnapshotPolicyId":"sp-17748631431********", "Description":"my sanpshot policy", "RetentionUnit":"d", "CreateTime":"2025-10-15T09:55:41Z", "ExpireType":"true", "SnapshotPolicyName":"mysnapshotpolicy", "CronExpression":"0 0 * * *" } ] } |   |
 
-#### 7.15.4. DeleteSnapshotPolicy
+#### 7.15.4 DeleteSnapshotPolicy
 
-阿里云弹性文件存储 EFS-NAS 开发删除指定的快照策略。
+删除指定的快照策略。
 
 **注意事项**
 
@@ -4433,15 +4510,15 @@ http(s)://[Endpoint]/?Action=DescribeSnapshotPolicies
 http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-17748631431********
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "SnapshotPolicyId":"sp-17748631431********", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |  |
+| { "SnapshotPolicyId":"sp-17748631431********", "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Success":true } |   |
 
-### WORM
+### 7.16 WORM
 
-#### 7.16.1. CreateWorm
+#### 7.16.1 CreateWorm
 
 为文件系统启用WORM策略。文件系统启用WORM策略后，文件在写入完成时可手动设置或自动进入保护状态。在保护期间，文件仅允许读取，禁止修改与删除。
 
@@ -4459,8 +4536,6 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 |---|---|---|---|---|---|
 | FileSystemId | String | Query | 是 | efs-nas-c***** | 文件系统ID。 |
 | MinProtectPeriod | String | Query | 是 | 5d | 最小保护期。手动设置文件的保护期时，文件遵循的最小保护时长。可选具体时长或 infinity（无限期）。 设置为具体时长时，需由数字和单位后缀组成，最大值为30y。其中单位后缀可选h（小时）、d（天）、t（月）和y（年）。例如 5d。 设置为infinity时，表示将保护期设置为最大。 |
-
-阿里云弹性文件存储 EFS-NAS 开发
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4484,28 +4559,22 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&FileSystemId=efs-nas-c***** &MinProtectPeriod=5d &MaxProtectPeriod=1y &DefaultProtectPeriod=1t &AutoLockPeriod=3d
+http(s)://[Endpoint]/?Action=CreateWorm &FileSystemId=efs-nas-c***** &MinProtectPeriod=5d &MaxProtectPeriod=1y &DefaultProtectPeriod=1t &AutoLockPeriod=3d
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "WormId":"worm-********", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "WormId":"worm-********", "Code":"200", "Success":true } |   |
 
-#### 7.16.2. UpdateWorm
+#### 7.16.2 UpdateWorm
 
 修改 WORM 保护策略的保护期配置。
 
 **注意事项**
 
 合规模式下保护期只能延长不能缩短，且不允许修改自动锁定期。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 阿里云弹性文件存储 EFS-NAS 开发
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4531,24 +4600,18 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&WormId=worm-******** &MinProtectPeriod=5d
+http(s)://[Endpoint]/?Action=UpdateWorm &WormId=worm-******** &MinProtectPeriod=5d
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "WormId":"worm-********", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "WormId":"worm-********", "Code":"200", "Success":true } |   |
 
-#### 7.16.3. DescribeWorms
+#### 7.16.3 DescribeWorms
 
 查询 WORM 保护策略列表，支持按 WormId 或文件系统ID过滤，支持分页。
-
-**请求头**
-
-阿里云弹性文件存储 EFS-NAS 开发该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4580,16 +4643,24 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式阿里云弹性文件存储 EFS-NAS 开发
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeWorms
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "TotalCount":1,
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "PageNum":1,
  "PageSize":10,
  "Worms":[
-  {
+```
+
+`{`
+
+```json
    "Status":"active",
    "Path":"/efs-nas-********",
    "MinProtectPeriod":"5d",
@@ -4604,18 +4675,13 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
    "UpdateTime":"2026-05-17T16:26:22Z",
    "FileSystemId":"efs-nas-0*****",
    "RootfsId":"busybox"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+### 7.17 回收站
 
-### 回收站
-
-#### 7.17.1. EnableTrash
+#### 7.17.1 EnableTrash
 
 启用回收站功能，允许删除的文件被移至回收站而非永久删除。
 
@@ -4646,16 +4712,14 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=EnableTrash &FileSystemId=efs-nas-c*****
 ```
-
-&公共请求参数正常返回示例阿里云弹性文件存储 EFS-NAS 开发
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |   |
 
-#### 7.17.2. UpdateTrash
+#### 7.17.2 UpdateTrash
 
 更新回收站中数据的保留时间或者过滤文件规则。
 
@@ -4686,24 +4750,18 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&FileSystemId=efs-nas-c***** &ExpiredTime=14400
+http(s)://[Endpoint]/?Action=UpdateTrash &FileSystemId=efs-nas-c***** &ExpiredTime=14400
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |   |
 
-#### 7.17.3. ListTrashFiles
+#### 7.17.3 ListTrashFiles
 
 查询文件系统的回收站中暂存的文件或目录。
-
-**请求头**
-
-阿里云弹性文件存储 EFS-NAS 开发该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4733,18 +4791,16 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=ListTrashFiles &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "TrashFiles":[ { "Type":"Regular File", "Size":1024, "ExpiredTime":"2025-12-15T16:00:00Z", "Change":"2025-12-10T16:00:00Z", "Files":1, "TrashPath":"/efs-nas-ba4c37/.trash/current/file11", "Name":"file11" } ] } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "TrashFiles":[ { "Type":"Regular File", "Size":1024, "ExpiredTime":"2025-12-15T16:00:00Z", "Change":"2025-12-10T16:00:00Z", "Files":1, "TrashPath":"/efs-nas-ba4c37/.trash/current/file11", "Name":"file11" } ] } |   |
 
-阿里云弹性文件存储 EFS-NAS 开发
-
-#### 7.17.4. RestoreTrashFile
+#### 7.17.4 RestoreTrashFile
 
 恢复回收站中暂存的文件。
 
@@ -4779,16 +4835,16 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&FileSystemId=efs-nas-c***** &Path=/test
+http(s)://[Endpoint]/?Action=RestoreTrashFile &FileSystemId=efs-nas-c***** &Path=/test
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |   |
 
-#### 7.17.5. RemoveTrashFile
+#### 7.17.5 RemoveTrashFile
 
 彻底删除回收站中暂存的文件或目录。
 
@@ -4806,7 +4862,7 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 |---|---|---|---|---|---|
 | FileSystemId | String | Query | 是 | efs-nas-c***** | 文件系统ID。 |
 
-| 阿里云弹性文件指南·API参考 | 存储 EFS- | NAS 开发 |  |  |  |
+| 阿里云弹性文件指南·API参考 | 存储 EFS- | NAS 开发 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4828,16 +4884,16 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 请求示例
 
 ```
-&FileSystemId=efs-nas-c***** &Path=/test
+http(s)://[Endpoint]/?Action=RemoveTrashFile &FileSystemId=efs-nas-c***** &Path=/test
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |   |
 
-#### 7.17.6. DisableAndCleanTrash
+#### 7.17.6 DisableAndCleanTrash
 
 关闭文件系统的回收站功能，并清空回收站。
 
@@ -4865,27 +4921,23 @@ http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-177486314
 | Message | String | success | 错误信息。 |
 | HttpStatusCode | String | 200 | HTTP状态码。 |
 
-**示例**
-
-请求示例阿里云弹性文件存储 EFS-NAS 开发
-
 ```
 http(s)://[Endpoint]/?Action=DisableAndCleanTrash &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "HttpStatusCode":"200",
  "Code":"200",
  "Success":true
-}
 ```
 
-#### 7.17.7. EmptyTrash
+`}`
+
+#### 7.17.7 EmptyTrash
 
 清空指定文件系统的回收站。
 
@@ -4918,11 +4970,11 @@ http(s)://[Endpoint]/?Action=DisableAndCleanTrash &FileSystemId=efs-nas-c*****
 请求示例
 
 ```
-&FileSystemId=efs-nas-c*****
+http(s)://[Endpoint]/?Action=EmptyTrash &FileSystemId=efs-nas-c*****
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |  |
+| { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "HttpStatusCode":"200", "Code":"200", "Success":true } |   |

@@ -5,7 +5,7 @@ doc_version: "20250304"
 pdf_pages: 155
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 CloudMonitor User Guide 20250304.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20CloudMonitor%20User%20Guide%2020250304.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 CloudMonitor User Guide 20250304
@@ -1837,6 +1837,8 @@ The Event Monitoring module provides a unified portal for you to query and manag
 #### 7.1.1 System events of cloud services
 
 This topic describes the cloud services that are supported by CloudMonitor and their system events. For more information about the event metrics, see Event metrics of cloud services.
+
+**CloudMonitor**
 
 | Service | System event |
 |---|---|

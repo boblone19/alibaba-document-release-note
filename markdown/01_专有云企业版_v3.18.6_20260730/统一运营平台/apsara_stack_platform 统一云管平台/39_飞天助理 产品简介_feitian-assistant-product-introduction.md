@@ -5,12 +5,19 @@ doc_version: "20260729"
 pdf_pages: 8
 source_pdf: "39_飞天助理 产品简介_feitian-assistant-product-introduction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apsara_stack_platform/zh/feitian-assistant-product-introduction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 统一云管平台 飞天助理 产品简介
 
-## 产品详情
+## 目录
+
+- 1 产品详情
+- 2 产品价值
+- 3 应用场景
+- 4 功能特性
+
+## 1 产品详情
 
 本文对Apsara Copilot（飞天助理）进行整体介绍。 Apsara Copilot（飞天助理）云管数字人定位于专有云统一云管平台的智能化入口，通过自然语言对话交互，为专有云管理者和使用者提供资源管理、运营分析和深度洞察的一站式管云体验。
 
@@ -26,7 +33,7 @@ Copilot系列数字员工的操作权限均都源自实际用户的权限体系�
 
 通过标准化的协议和接口，将Apsara Copilot的AI能力与企业本地知识库、企业已有的AI智能体深度融合，构建一个开放、协同的智能系统。
 
-## 产品价值
+## 2 产品价值
 
 本文为您介绍飞天助理的产品价值。
 
@@ -42,7 +49,7 @@ Copilot系列数字员工的操作权限均都源自实际用户的权限体系�
 
 打造“对话即服务”的交互模式，让云平台更像一个智能伙伴而非工具系统，为未来的自主智能管理打下基础。
 
-## 应用场景
+## 3 应用场景
 
 本文为您介绍飞天助理的典型使用场景。
 
@@ -76,7 +83,7 @@ Copilot系列数字员工的操作权限均都源自实际用户的权限体系�
 **代码一键调试**：对于生成的OpenAPI样例代码，可以点击去调试链接，直达开发者门户里的接口在线调试页
 面，快速进行调试。
 
-## 功能特性
+## 4 功能特性
 
 本文介绍飞天助理的典型功能特性。
 

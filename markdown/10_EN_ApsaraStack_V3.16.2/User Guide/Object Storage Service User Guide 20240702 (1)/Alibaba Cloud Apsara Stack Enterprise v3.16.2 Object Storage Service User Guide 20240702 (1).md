@@ -5,7 +5,7 @@ doc_version: "20240702"
 pdf_pages: 61
 source_pdf: "281790d88d7df8fe_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1).pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Object%20Storage%20Service%20User%20Guide%2020240702%20%281%29.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1) User Guide
@@ -566,6 +566,9 @@ This topic describes how to log on to the Object Storage Service (OSS) console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
@@ -602,6 +605,9 @@ Enter a six-digit MFA verification code and click **Authenticate**.
 ### 3.2 Create buckets
 
 Objects uploaded to OSS are stored in a bucket. You must create a bucket before you upload objects to OSS.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click **Create Bucket**.
 3. On the **Create OSS Bucket** page, configure parameters.
@@ -634,6 +640,9 @@ A bucket is created. For more information, see Create buckets.
 **Background information**
 
 You can upload an object of any format to a bucket. You can use the OSS console to upload an object up to 5 GB in size. To upload an object larger than 5 GB, use OSS SDKs or call an API operation.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. Click Buckets. On the Buckets page that appears, click the name of the bucket to which you
 want to upload objects.
@@ -679,6 +688,9 @@ You can view the detailed information about created buckets in the Object Storag
 **Prerequisites**
 
 A bucket is created. For more information, see Create buckets.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -694,6 +706,8 @@ You can delete a bucket in the Object Storage Service (OSS) console.
 All objects and parts in the bucket are deleted. For more information, see Delete objects and Manage parts.
 
 > **Warning:** Deleted objects, parts, and buckets cannot be recovered. Exercise caution when you delete objects, parts, and buckets.
+
+**Procedure**
 
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
@@ -715,6 +729,8 @@ You can set the ACL of a bucket to one of the following values: Private: Only th
 
 > **Warning:** If you set the ACL of a bucket to Public Read or Public Read/Write, other users can read the data in the bucket without authentication, which may result in security risks. To ensure the security of your data, we recommend that you set the ACL of your bucket to private.
 
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -731,6 +747,9 @@ You can configure static website hosting for a bucket in the Object Storage Serv
 **Prerequisites**
 
 A bucket is created. For more information, see Create buckets.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -755,6 +774,9 @@ A bucket is created. For more information, see Create buckets.
 **Background information**
 
 The hotlink protection feature allows you to configure a Referer whitelist for a bucket. This way, only requests from domain names included in the Referer whitelist can access your data in the bucket. OSS allows you to configure Referer whitelists based on the Referer header field in HTTP or HTTPS requests. After hotlink protection is configured for a bucket, OSS verifies requests to objects in the bucket only when the requests are initiated by using signed URLs or from anonymous users. Requests that contain the Authorization field in the header are not verified.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -777,6 +799,9 @@ A bucket is created. For more information, see Create buckets.
 **Background information**
 
 OSS provides CORS over HTML5 to implement cross-origin access. When OSS receives a cross-origin request (or an OPTIONS request) for a bucket, OSS reads the CORS rules of the bucket and checks the relevant permissions of the request. OSS matches the request with the rules one by one. When OSS finds the first match, OSS returns a corresponding header in the response. If no match is found, OSS does not include any CORS header in the response.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -810,6 +835,9 @@ A bucket is created. For more information, see Create buckets.
 **Background information**
 
 Take note of the following items when you configure lifecycle rules for a bucket: After a lifecycle rule is configured, it is loaded within 24 hours and takes effect within 24 hours after it is loaded. Check the configurations of a rule before you save the rule. Objects that are deleted based on lifecycle rules cannot be recovered. Configure lifecycle rules based on your requirements. You can configure up to 100 lifecycle rules for each bucket in the Object Storage Service (OSS) console and up to 1,000 lifecycle rules for each bucket by using ossutil.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket for which you want to configure lifecycle rules.
@@ -840,6 +868,9 @@ A bucket is created. For more information, see Create buckets.
 **Background information**
 
 Take note of the following items when you configure the storage quota of a bucket: Before you configure the storage quota of a bucket, make sure that the quota does not limit your business because write operations cannot be performed if the bucket capacity reaches the specified quota. In general, it takes about an hour for OSS to determine whether the bucket capacity exceeds the storage quota. In some cases, it can take longer than one hour.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket for which you want to configure storage quota.
@@ -859,6 +890,9 @@ In cluster-disaster recovery mode, buckets with the same name are replicated. Cl
 **Prerequisites**
 
 A bucket is created. For more information about how to create a bucket, see Create buckets.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click Buckets. On the Buckets page, click the name of the
 bucket to go to the bucket details page.
@@ -874,6 +908,9 @@ Object Storage Service (OSS) allows you to configure bucket tagging to classify 
 **Background information**
 
 The bucket tagging feature uses a key-value pair to identify a bucket. You can add tags to buckets that are used for different purposes and manage the buckets by tags. Only the bucket owner or authorized Resource Access Management (RAM) users can configure tagging for the bucket. Otherwise, 403 Forbidden is returned with the AccessDenied error code. You can configure up to 20 tags for a bucket. The tag key is required. The tag key can be up to 64 Bytes in length and cannot start with `http://` , `https://` , or `Aliyun` . The tag value is optional. The tag value can be up to 128 bytes in length. You can leave the parameter empty. The key and value of a tag must be encoded in UTF-8.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket for which you want to configure tagging.
@@ -948,6 +985,9 @@ You can bind your bucket to a specified virtual private cloud (VPC) to allow onl
 **Prerequisites**
 
 A VPC is created. For more information, see the "Create a VPC" chapter of VPC User Guide.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket that you want to bind to the VPC network.
@@ -967,6 +1007,9 @@ The source bucket and destination bucket are created. For more information, see 
 **Background information**
 
 CRR can help you meet compliance requirements for cross-region disaster recovery or data replication. Objects in the destination bucket are exact replicas of objects in the source bucket. The objects have the same object names, object content, and object metadata, such as the creation time, owner, user metadata, and access control lists (ACLs).
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket for which you want to configure a CRR rule.
@@ -1064,6 +1107,9 @@ When you access Object Storage Service (OSS), a large number of access logs are 
 **Prerequisites**
 
 A bucket is created. For more information, see Create buckets.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to
 which you want to upload objects.
@@ -1223,6 +1269,8 @@ You can use the following methods to access the protected original images: Use U
 Signature .
 ```
 
+**Procedure**
+
 1. Log on to the OSS console.
 2. Click the **Image Processing (IMG)** tab. On the page that appears, click **Access Settings**.
 3. In the **Access Settings** panel, turn on **Protect Source Image File** and configure the
@@ -1250,6 +1298,9 @@ Object are uploaded to the bucket. For more information, see Upload objects.
 **Background information**
 
 When you search for objects based on a prefix, search strings are case-sensitive and cannot contain forward slashes (/). You can search for objects only in the root folder of the current bucket or in the current folder. Subfolders and objects stored in subfolders cannot be searched.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket in which the objects that you want to search for are stored.
@@ -1264,6 +1315,9 @@ You can configure the ACL of an object in the OSS console to control access to t
 **Prerequisites**
 
 An object is uploaded to the bucket. For more information, see Upload objects.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket that contains the object whose ACL you want to configure.
@@ -1294,6 +1348,8 @@ A bucket is created. For more information, see Create buckets.
 OSS does not use a hierarchical structure for objects, but instead uses a flat structure. All elements are stored in buckets as objects. To facilitate object grouping and to simplify management, the OSS console displays objects whose names end with a forward slash (/) as folders. These objects can be uploaded and downloaded. You can use OSS folders in the OSS console in the same manner as you use folders in Windows.
 
 > **Note:** The OSS console displays objects whose names end with a forward slash (/) as folders, regardless of whether these objects contain data. The objects can only be downloaded by calling an API operation or by using OSS SDKs.
+
+**Procedure**
 
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
@@ -1452,6 +1508,8 @@ You can delete a single object or batch delete multiple objects. You can batch d
 
 > **Important:** Deleted objects cannot be recovered. Exercise caution when you delete objects.
 
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket in which the objects you want to delete are stored.
@@ -1468,6 +1526,9 @@ When you use multipart upload to upload an object, the object is split into seve
 **Background information**
 
 You can also configure lifecycle rules to clear parts that are not needed on a regular basis. For more information, see Manage lifecycle rules.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the
 bucket in which the parts you want to delete are stored.
@@ -1484,6 +1545,9 @@ You can create single tunnels between OSS and a virtual private cloud (VPC) to a
 
 A VPC and a vSwitch are created. For more information, see the **Create a VPC** and **Create a vSwitch** topics in **VPC User**
 **Guide**.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. In the left-side navigation panel, click **Create Single Tunnel**.
 3. Click **Create**.
@@ -1508,6 +1572,9 @@ You can add the paths of OSS resources in the console for quicker access.
 **Prerequisites**
 
 A bucket is created. For more information about how to create a bucket, see Create buckets.
+
+**Procedure**
+
 1. Log on to the OSS console.
 2. Click the + icon on the right side of **My OSS Paths**.
 3. In the **Add Authorized OSS Path** panel, add a path.

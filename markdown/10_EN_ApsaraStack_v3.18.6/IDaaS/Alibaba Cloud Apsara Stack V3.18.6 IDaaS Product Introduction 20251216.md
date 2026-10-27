@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 11
 source_pdf: "a4c44cf8bb287d01_Alibaba Cloud Apsara Stack V3.18.6 IDaaS Product Introduction 20251216.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20IDaaS%20Product%20Introduction%2020251216.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # IDaaS Product Introduction 20251216
@@ -47,6 +47,8 @@ applications and enterprise contacts. You can also use IDaaS as an EIAM system o
 ## 2 Terms
 
 **IDaaS terms**
+
+**IDaaS**
 
 Identity as a Service (IDaaS) is a cloud-based identity management service that helps enterprises centrally manage identities. ​
 

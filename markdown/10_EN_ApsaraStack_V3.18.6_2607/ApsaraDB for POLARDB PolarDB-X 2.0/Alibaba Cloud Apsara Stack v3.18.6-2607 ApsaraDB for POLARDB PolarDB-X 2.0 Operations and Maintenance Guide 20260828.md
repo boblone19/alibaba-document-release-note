@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 312
 source_pdf: "6b15d7c6b18c605b_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Operations and Maintenanc"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Operations and Maintenance Guide 20260828
@@ -7121,6 +7121,9 @@ instance.
 3. In the lower part of the Basic information page, click **Specification change**.
 4. On the page that appears, specify **Storage space (GB)**, **Instance specifications**,
 **Switch Mode**, and **Reason for change**. Then, click **Next step**.
+
+**Note**
+
 Forced alignment of minor engine versions during migration: Yes: The system enforces that no other minor engine version may be used on the target host. If the target host does not have a minor engine version consistent with those of the primary and replica nodes, the specification change will fail. We recommend that you manually install the required minor engine version on the target host in advance by referring to the O&M manual of ApsaraDB Operations and Maintenance System. For more information about how to update the minor engine version, see Update the minor engine version. No: The system preferentially uses the minor engine version consistent with those of the primary and replica nodes of the instance on the target host. If the target host does not have such a minor engine version, the latest valid minor engine version available on the target host will be used instead.
 5. In the **Audit comments** section, confirm the comments and click **Audit changes**.
 6. After the operation, you can view the task progress on the **Task Management** page until

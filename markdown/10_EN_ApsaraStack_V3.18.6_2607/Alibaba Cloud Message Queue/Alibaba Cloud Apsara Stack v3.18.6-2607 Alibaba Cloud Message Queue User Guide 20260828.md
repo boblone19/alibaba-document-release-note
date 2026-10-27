@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 379
 source_pdf: "b22e6e73e90c8fc7_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue User Guide 20260828
@@ -506,12 +506,17 @@ status of the message.
              SendResult sendResult = producer.send(msg);
              System.out.println("Send Message success. Message ID is: " +
 sendResult.getMessageId());
+```
+
+`}`
+
+```
          // Before you exit the application, shut down the producer.
          // Note: This operation is optional.
          producer.shutdown();
 ```
 
-You can also send messages by performing the following operations in the ApsaraMQ for RocketMQ console: On the **Topic management** page, find the topic that you created, and click **Send message** in the **Operation** column.
+`}` `}` You can also send messages by performing the following operations in the ApsaraMQ for RocketMQ console: On the **Topic management** page, find the topic that you created, and click **Send message** in the **Operation** column.
 
 **Use the TCP client SDK for Java to subscribe to normal**
 
@@ -540,10 +545,17 @@ the Network Management tab of the Instance details page in the ApsaraMQ for Rock
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
 ```
+
+`}` `}`
 
 **Check whether message subscription is successful**
 
@@ -621,6 +633,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
+```
+
+`}`
+
+```
         try {
             // Cyclically send four messages.
             for (int i = 0; i < 4; i++) {
@@ -647,6 +664,11 @@ message is sent.
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
+```
+
+`}`
+
+```java
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
@@ -717,21 +739,36 @@ In this example, the value is set to 3. The maximum value that you can specify i
 
 );
 
-```java
+```
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+```
+
+`}` `}`
+
+```java
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
+```
+
+`}`
+
+```java
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker sends the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -768,10 +805,27 @@ errors.getRequestId() + ", fail handles:");
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
+```
+
+`}` `}`
+
+```
                         continue;
+```
+
+`}`
+
+```
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```
         } while (true);
 ```
+
+`}` `}`
 
 **Check whether message subscription is successful**
 
@@ -843,12 +897,17 @@ tMQ console. In the left-side navigation pane, click Instances. On the Instance 
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
 ```
 
-After you run the code, you can check whether the consumer is started in the ApsaraMQ for RocketMQ console. This operation checks whether the message subscription is successful.
+`}` `}` After you run the code, you can check whether the consumer is started in the ApsaraMQ for RocketMQ console. This operation checks whether the message subscription is successful.
 2. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
 3. In the top navigation bar of the **Instance List** page, select an **organization** and a
@@ -3205,6 +3264,8 @@ arameter.
                  System.out.println("failed to send the message");
 ```
 
+`}` `}` `}` `}`
+
 ###### 7.2.4.4.3 Integrate a transactional message producer with Spring
 
 **producer with Spring**
@@ -3228,6 +3289,7 @@ package demo; import com.aliyun.openservices.ons.api.Message; import com.aliyun.
 ransactionStatus based on the status check result of the local transaction.
 ```
 
+`}` `}`
 2. Define information such as the producer bean in transactionProducer.xml.
 
 ```xml
@@ -3293,8 +3355,15 @@ LocalTransactionExecuter() {
                  System.out.println("A local transaction is executed.");
                  return TransactionStatus.CommitTransaction; // Returns different valu
 es for TransactionStatus based on the execution result of the local transaction.
+```
+
+`}`
+
+```
          }, null);
 ```
+
+`}` `}`
 
 ###### 7.2.4.4.4 Integrate a consumer with Spring
 
@@ -3316,6 +3385,7 @@ package demo; import com.aliyun.openservices.ons.api.Action; import com.aliyun.o
             return Action.ReconsumeLater;
 ```
 
+`}` `}` `}`
 2. Define information such as the consumer bean in consumer.xml.
 
 ```xml
@@ -3402,6 +3472,8 @@ ClassPathXmlApplicationContext("consumer.xml");
         System.out.println("Consumer Started");
 ```
 
+`}` `}`
+
 ##### 7.2.4.5 Three modes for sending messages
 
 ###### 7.2.4.5.1 Overview
@@ -3475,16 +3547,28 @@ is sent.
                 if (sendResult != null) {
                     System.out.println(new Date() + " Send mq message success. Topic is:
 " + msg.getTopic() + " msgId is: " + sendResult.getMessageId());
+```
+
+`}` `}`
+
+```java
             catch (Exception e) {
                 // Specify the logic to resend or persist the message if the message fai
 ls to be sent.
                 System.out.println(new Date() + " Send mq message failed. Topic is:" + m
 sg.getTopic());
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```
         // Before you exit the application, shut down the producer object.
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
 ```
+
+`}` `}`
 
 ###### 7.2.4.5.3 Reliable asynchronous transmission
 
@@ -3556,6 +3640,11 @@ producer after the producer calls the callback function.
                 // The message is sent to the consumer.
                 System.out.println("send message success. topic=" +
 sendResult.getTopic() + ", msgId=" + sendResult.getMessageId());
+```
+
+`}`
+
+```java
             @Override
             public void onException(OnExceptionContext context) {
                 // Specify the logic to resend or persist the message if the message fai
@@ -3576,6 +3665,8 @@ msg.getMsgID());
 an choose not to shut down the producer object.
         producer.shutdown();
 ```
+
+`}`
 
 ###### 7.2.4.5.4 One-way transmission
 
@@ -3651,10 +3742,17 @@ essage key.
             // In one-way transmission mode, the producer does not wait for the
 response from the ApsaraMQ for RocketMQ broker. Therefore, data loss occurs if messages that fail to be delivered are not redelivered. If data loss is not acceptable, we recom mend that you use the reliable synchronous or asynchronous transmission mode.
             producer.sendOneway(msg);
+```
+
+`}`
+
+```
         // Before you exit the application, shut down the producer object.
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
 ```
+
+`}`
 
 ##### 7.2.4.6 Send messages by using multiple threads
 
@@ -3716,12 +3814,22 @@ sage is sent.
                     if (sendResult != null) {
                         System.out.println(new Date() + " Send mq message success. Topic
 is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
+```
+
+`}`
+
+```java
                 } catch (Exception e) {
                     // Specify the logic to resend or persist the message if the message
 fails to be sent.
                     System.out.println(new Date() + " Send mq message failed. Topic is:"
 + MqConfig.TOPIC);
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         });
         thread.start();
         Thread anotherThread = new Thread(new Runnable() {
@@ -3739,18 +3847,30 @@ sage is sent.
                     if (sendResult != null) {
                         System.out.println(new Date() + " Send mq message success. Topic
 is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
+```
+
+`}`
+
+```java
                 } catch (Exception e) {
                     // Specify the logic to resend or persist the message if the message
 fails to be sent.
                     System.out.println(new Date() + " Send mq message failed. Topic is:"
 + MqConfig.TOPIC);
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```
         });
         anotherThread.start();
         // If the producer instance is no longer used, shut it down to release
 resources.
         // producer.shutdown();
 ```
+
+`}` `}`
 
 ##### 7.2.4.7 Send and receive ordered messages
 
@@ -3814,12 +3934,22 @@ partitions. The sharding key is different from the key of a normal message.
                 if (sendResult != null) {
                     System.out.println(new Date() + " Send mq message success. Topic is:
 " + msg.getTopic() + " msgId is: " + sendResult.getMessageId());
+```
+
+`}` `}`
+
+```java
             catch (Exception e) {
                 // The logic to resend or persist the message if the message fails to be
 sent and needs to be resent.
                 System.out.println(new Date() + " Send mq message failed. Topic is:" + m
 sg.getTopic());
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```
         // Before you exit the application, shut down the producer object.
         // Note: This operation is optional.
         producer.shutdown();
@@ -3880,9 +4010,16 @@ ng message processing, OrderAction.Suspend is returned.
 ext) {
                         System.out.println(message);
                         return OrderAction.Success;
+```
+
+`}`
+
+```
                 });
         consumer.start();
 ```
+
+`}` `}`
 
 ##### 7.2.4.8 Send and receive transactional messages
 
@@ -3957,6 +4094,11 @@ sing the CRC32 or MD5 algorithm.
                              // Roll back the message if the local transaction fails.
                              transactionStatus =
 TransactionStatus.RollbackTransaction;
+```
+
+`}`
+
+```
                      } catch (Exception e) {
                          log.error("Message Id:{}", msgId, e);
 ```
@@ -3966,18 +4108,34 @@ TransactionStatus.RollbackTransaction;
                      log.warn("Message Id:{}transactionStatus:{}", msgId, transactionS
 tatus.name());
                      return transactionStatus;
+```
+
+`}`
+
+```
              }, null);
+```
+
+`}`
+
+```java
          catch (Exception e) {
              // Specify the logic to resend or persist the message if the message
 fails to be sent.
              System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
              e.printStackTrace();
+```
+
+`}`
+
+```
      // Use the demo example to prevent the process from exiting. This is not require
 d in actual use.
      TimeUnit.MILLISECONDS.sleep(Integer.MAX_VALUE);
 ```
 
+`}` `}`
 2. Commit the status of the transactional message.
 After the local transaction is executed, the ApsaraMQ for RocketMQ broker must be notified of the transaction status of the current message, no matter whether the execution succeeds or fails. You can notify the ApsaraMQ for RocketMQ broker by using one of the following methods: Commit the status after the local transaction is executed. Wait until the ApsaraMQ for RocketMQ broker sends a request to check the transaction status of the message. A transaction can be in one of the following states:
 **TransactionStatus.CommitTransaction**: The transaction is committed. The message
@@ -4016,12 +4174,24 @@ businessService.checkbusinessService(businessServiceArgs);
            } else {
                // Roll back the message if the local transaction fails.
                transactionStatus = TransactionStatus.RollbackTransaction;
+```
+
+`}`
+
+```
        } catch (Exception e) {
            log.error("Message Id:{}", msgId, e);
+```
+
+`}`
+
+```
        log.warn("Message Id:{}transactionStatus:{}", msgId,
 transactionStatus.name());
        return transactionStatus;
 ```
+
+`}` `}`
 
 **Utility class**
 
@@ -4032,6 +4202,8 @@ import java.util.zip.CRC32; public class HashUtil {
         crc32.update(bytes);
         return crc32.getValue();
 ```
+
+`}` `}`
 
 **Mechanism of transaction status check**
 
@@ -4119,6 +4291,11 @@ sent.
             if (sendResult != null) {
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 msg.getTopic() + " msgId is: " + sendResult.getMessageId());
+```
+
+`}`
+
+```java
             } catch (Exception e) {
             // Specify the logic to resend or persist the message if the message fails
 to be sent.
@@ -4190,16 +4367,28 @@ he consumer, in milliseconds. For example, you can set this parameter to 2016-03
             // Send the message. If no error occurs, the message is sent.
             SendResult sendResult = producer.send(msg);
             System.out.println("Message Id:" + sendResult.getMessageId());
+```
+
+`}`
+
+```java
         catch (Exception e) {
             // Specify the logic to resend or persist the message if the message fails
 to be sent.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
             e.printStackTrace();
+```
+
+`}`
+
+```
         // Before you exit the application, shut down the producer object.
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
 ```
+
+`}` `}`
 
 **Subscribe to scheduled messages**
 
@@ -4260,6 +4449,11 @@ Subscribe to multiple tags.
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
+```
+
+`}`
+
+```java
         });
         // Subscribe to another topic.
         consumer.subscribe("TopicTestMQ-Other", "*", new MessageListener() { //
@@ -4267,10 +4461,17 @@ Subscribe to all tags.
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
 ```
+
+`}`
 
 **Note**
 
@@ -4377,6 +4578,11 @@ ges
 
 ```
         SendResultONS sendResult = pProducer->send(msg);
+```
+
+`}`
+
+```
     catch(ONSClientException & e)
 ```
 
@@ -4384,11 +4590,18 @@ ges
 
 ```
         // Handle the send failure (log, retry, alert, etc.)
+```
+
+`}`
+
+```
     // Shut down the producer before your application exits to prevent issues such as m
 emory leaks.
     pProducer->shutdown();
     return 0;
 ```
+
+`}`
 
 **Subscribe to normal messages**
 
@@ -4473,6 +4686,11 @@ key.
         // Send the message. If no exception is thrown, the message is sent.
         SendResultONS sendResult = pProducer->send(msg, shardingKey);
     std::cout << "send success" << std::endl;
+```
+
+`}`
+
+```
     catch(ONSClientException & e)
 ```
 
@@ -4480,11 +4698,18 @@ key.
 
 ```
         // Specify the logic to handle errors.
+```
+
+`}`
+
+```
     // Before you exit the application, shut down the consumer. Otherwise, issues such
 as memory leaks may occur.
     pProducer->shutdown();
     return 0;
 ```
+
+`}`
 
 **Receive ordered messages**
 
@@ -4502,13 +4727,13 @@ public:
     MyMsgListener()
 ```
 
-`{`
+`{` `}`
 
 ```
     virtual ~MyMsgListener()
 ```
 
-`{`
+`{` `}`
 
 ```
     virtual OrderAction consume(Message &message, ConsumeOrderContext &context)
@@ -4521,7 +4746,7 @@ public:
         return Success; //CONSUME_SUCCESS;
 ```
 
-};
+`}` };
 
 ```
 int main(int argc, char* argv[])
@@ -4563,11 +4788,18 @@ es, the consumer calls the consumeMessage function of the message listening clas
     orderConsumer->start();
     for(volatile int i = 0; i < 1000000000; ++i) {
         //wait
+```
+
+`}`
+
+```
     // Destroy the consumer. Before you exit the application, destroy the consumer. Oth
 erwise, issues such as memory leaks may occur.
     orderConsumer->shutdown();
    return 0;
 ```
+
+`}`
 
 ##### 7.2.5.4 Send and subscribe to scheduled messages
 
@@ -4649,6 +4881,11 @@ the serialization and deserialization methods.
 
 ```
         SendResultONS sendResult = pProducer->send(msg);
+```
+
+`}`
+
+```
     catch(ONSClientException & e)
 ```
 
@@ -4656,10 +4893,17 @@ the serialization and deserialization methods.
 
 ```
         // Handle the exception.
+```
+
+`}`
+
+```
     // Shut down the producer before exiting to avoid memory leaks.
     pProducer->shutdown();
     return 0;
 ```
+
+`}`
 
 **Subscribe to scheduled messages**
 
@@ -4697,7 +4941,7 @@ using namespace ons;
         ~MyLocalTransactionExecuter()
 ```
 
-`{`
+`{` `}`
 
 ```
         virtual TransactionStatus execute(Message &value)
@@ -4726,9 +4970,24 @@ message body by using the CRC32 or MD5 algorithm.
                         // Roll back the message if the local transaction failed to be
 executed.
                         transactionStatus = RollbackTransaction;
+```
+
+`}`
+
+```
                 } catch (...) {
                     //exception handle
+```
+
+`}`
+
+```
                 return transactionStatus;
+```
+
+`}` `}`
+
+```
     int main(int argc, char* argv[])
 ```
 
@@ -4805,6 +5064,11 @@ the message in the ApsaraMQ for RocketMQ console.
 ecuter by yourself.
             MyLocalTransactionExecuter pExecuter = new MyLocalTransactionExecuter();
             SendResultONS sendResult = pProducer->send(msg,pExecuter);
+```
+
+`}`
+
+```
         catch(ONSClientException & e)
 ```
 
@@ -4822,6 +5086,7 @@ uch as memory leaks occur.
         return 0;
 ```
 
+`}`
 2. Commit the status of the transactional message.
 After the local transaction is executed, the ApsaraMQ for RocketMQ broker must be notified of the transaction status of the current message, no matter whether the execution succeeds or fails. You can notify the ApsaraMQ for RocketMQ broker by using one of the following methods: Commit the status after the local transaction is executed. Wait until the ApsaraMQ for RocketMQ broker sends a request to check the transaction status of the message. A transaction can be in one of the following states:
 **TransactionStatus.CommitTransaction**: The transaction is committed. The consumer
@@ -4841,13 +5106,13 @@ RocketMQ broker is expected to send a request again to the producer to query the
      MyLocalTransactionChecker()
 ```
 
-`{`
+`{` `}`
 
 ```
      ~MyLocalTransactionChecker()
 ```
 
-`{`
+`{` `}`
 
 ```
      virtual TransactionStatus check(Message &value)
@@ -4874,10 +5139,22 @@ CRC32 or MD5 algorithm.
              } else {
                  // Roll back the message if the local transaction fails.
                  transactionStatus = RollbackTransaction;
+```
+
+`}`
+
+```
          } catch(...) {
              //exception error
+```
+
+`}`
+
+```
          return transactionStatus;
 ```
+
+`}` `}`
 
 **Mechanism of transaction status check**
 
@@ -4943,7 +5220,7 @@ using namespace ons; // Mutex to synchronize access to shared resources across l
         return CommitMessage;
 ```
 
-};
+`}` };
 
 ```
 int main(int argc, char* argv[]) {
@@ -4989,6 +5266,8 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
     std::cout << "=======After consuming messages======" << std::endl;
     return 0;
 ```
+
+`}`
 
 #### 7.2.6 SDK for .NET
 
@@ -5092,13 +5371,23 @@ using System; using System.Collections.Generic; using System.Linq; using System.
 after the SDK is roughly encapsulated.
                 OnscSharp.CreateProducer();
                 OnscSharp.StartProducer();
+```
+
+`}`
+
+```
             catch (Exception ex)
 ```
 
 `{`
 
-```java
+```
                     // Specify the logic for handling errors.
+```
+
+`}` `}`
+
+```java
         protected void Application_End(object sender, EventArgs e)
 ```
 
@@ -5113,6 +5402,11 @@ after the SDK is roughly encapsulated.
 ```
                // The code for stopping the SDK.
               OnscSharp.ShutdownProducer();
+```
+
+`}`
+
+```
             catch (Exception ex)
 ```
 
@@ -5122,6 +5416,7 @@ after the SDK is roughly encapsulated.
               // Specify the logic for handling errors.
 ```
 
+`}` `}` `}` `}`
 9. Write and compile the test program.
 0. Save the DLL file of the SDK to the directory of the executable file or to the system directory
 and run the program. Figure 7. .NET SDK-7
@@ -5147,7 +5442,7 @@ using System; using ons; public class ProducerExampleForEx
     public ProducerExampleForEx()
 ```
 
-`{`
+`{` `}`
 
 ```
     static void Main(string[] args) {
@@ -5198,6 +5493,11 @@ age body");
 ```
                 SendResultONS sendResult = producer.send(msg);
                 Console.WriteLine("send success {0}", sendResult.getMessageId());
+```
+
+`}`
+
+```
             catch (Exception ex)
 ```
 
@@ -5205,9 +5505,16 @@ age body");
 
 ```
                 Console.WriteLine("send failure{0}", ex.ToString());
+```
+
+`}` `}`
+
+```
         // Shut down the producer instance when your thread is about to exit.
         producer.shutdown();
 ```
+
+`}` `}`
 
 **Subscribe to normal messages**
 
@@ -5235,7 +5542,7 @@ public class OrderProducerExampleForEx
     public OrderProducerExampleForEx()
 ```
 
-`{`
+`{` `}`
 
 ```
     static void Main(string[] args) {
@@ -5282,6 +5589,11 @@ age body");
 ```
                 SendResultONS sendResult = producer.send(msg, shardingKey);
                 Console.WriteLine("send success {0}", sendResult.getMessageId());
+```
+
+`}`
+
+```
             catch (Exception ex)
 ```
 
@@ -5313,13 +5625,13 @@ using System; using System.Text; using System.Threading; using ons; namespace de
         public MyMsgOrderListener()
 ```
 
-`{`
+`{` `}`
 
 ```
         ~MyMsgOrderListener()
 ```
 
-`{`
+`{` `}`
 
 ```
         public override ons.OrderAction consume(Message value, ConsumeOrderContext cont
@@ -5332,6 +5644,11 @@ ext)
             Byte[] text = Encoding.Default.GetBytes(value.getBody());
             Console.WriteLine(Encoding.UTF8.GetString(text));
             return ons.OrderAction.Success;
+```
+
+`}` `}`
+
+```
     class OrderConsumerExampleForEx
 ```
 
@@ -5383,6 +5700,8 @@ MyMsgOrderListener());
             // Disable the consumer instance when the instance is no longer used.
             consumer.shutdown();
 ```
+
+`}` `}` `}`
 
 ##### 7.2.6.4 Send and subscribe to scheduled messages
 
@@ -5469,6 +5788,11 @@ the message to the consumer. Unit: milliseconds. The message can be consumed onl
 
 ```
                 SendResultONS sendResult = pProducer.send(msg);
+```
+
+`}`
+
+```
             catch(ONSClientException e)
 ```
 
@@ -5476,6 +5800,11 @@ the message to the consumer. Unit: milliseconds. The message can be consumed onl
 
 ```
                 // Specify the logic for handling failures.
+```
+
+`}`
+
+```
             // Before you exit the application, shut down the producer object.
 Otherwise, memory leaks may occur.
             pProducer.shutdown();
@@ -5520,13 +5849,13 @@ Perform the following steps to send a transactional message:
      public MyLocalTransactionExecuter()
 ```
 
-`{`
+`{` `}`
 
 ```
      ~MyLocalTransactionExecuter()
 ```
 
-`{`
+`{` `}`
 
 ```
      public override TransactionStatus execute(Message value)
@@ -5559,9 +5888,24 @@ the CRC32 or MD5 algorithm.
                  } else {
                      // Roll back the message if the local transaction fails.
                      transactionStatus = TransactionStatus.RollbackTransaction;
+```
+
+`}`
+
+```
              } catch (Exception e) {
                  //exception handle
+```
+
+`}`
+
+```
              return transactionStatus;
+```
+
+`}` `}`
+
+```
  class onscsharp
 ```
 
@@ -5627,6 +5971,11 @@ sage key.
 ```
              LocalTransactionExecuter myExecuter = new MyLocalTransactionExecuter();
              SendResultONS sendResult = pProducer.send(msg, ref myExecuter);
+```
+
+`}`
+
+```
          catch(ONSClientException e)
 ```
 
@@ -5634,6 +5983,11 @@ sage key.
 
 ```
              Console.WriteLine("\nexception of sendmsg:{0}",e.what() );
+```
+
+`}`
+
+```
          // Before you exit the application, shut down the producer object.
 Otherwise, memory leaks may occur.
          // The producer cannot be started again after the producer object is shut do
@@ -5641,6 +5995,7 @@ wn.
          pProducer.shutdown();
 ```
 
+`}` `}` `}`
 2. Commit the status of the transactional message.
 After the local transaction is executed, the ApsaraMQ for RocketMQ broker must be notified of the transaction status of the current message, no matter whether the execution succeeds or fails. You can notify the ApsaraMQ for RocketMQ broker by using one of the following methods: Commit the status after the local transaction is executed. Wait until the ApsaraMQ for RocketMQ broker sends a request to check the transaction status of the message. A transaction can be in one of the following states:
 **TransactionStatus.CommitTransaction**: The transaction is committed. The message
@@ -5660,13 +6015,13 @@ for RocketMQ broker is expected to send a request again to the producer to query
         public MyLocalTransactionChecker()
 ```
 
-`{`
+`{` `}`
 
 ```
         ~MyLocalTransactionChecker()
 ```
 
-`{`
+`{` `}`
 
 ```
         public override TransactionStatus check(Message value)
@@ -5698,10 +6053,22 @@ the CRC32 or MD5 algorithm.
                     } else {
                         // Roll back the message if the local transaction fails.
                         transactionStatus = TransactionStatus.RollbackTransaction;
+```
+
+`}`
+
+```
                 } catch (Exception e) {
                     //exception handle
+```
+
+`}`
+
+```
                 return transactionStatus;
 ```
+
+`}` `}`
 
 **Mechanism of transaction status check**
 
@@ -5757,13 +6124,13 @@ using System; using System.Threading; using System.Text; using ons; // The callb
     public MyMsgListener()
 ```
 
-`{`
+`{` `}`
 
 ```
     ~MyMsgListener()
 ```
 
-`{`
+`{` `}`
 
 ```
     public override ons.Action consume(Message value, ConsumeContext context)
@@ -5771,10 +6138,15 @@ using System; using System.Threading; using System.Text; using ons; // The callb
 
 `{`
 
-```java
+```
         Byte[] text = Encoding.Default.GetBytes(value.getBody());
         Console.WriteLine(Encoding.UTF8.GetString(text));
         return ons.Action.CommitMessage;
+```
+
+`}` `}`
+
+```java
 public class ConsumerExampleForEx
 ```
 
@@ -5784,7 +6156,7 @@ public class ConsumerExampleForEx
     public ConsumerExampleForEx()
 ```
 
-`{`
+`{` `}`
 
 ```
     static void Main(string[] args) {
@@ -5838,6 +6210,8 @@ must set a proper value to make sure that the process does not unexpectedly exit
         // Shut down the consumer instance when the process is about to exit.
         consumer.shutdown();
 ```
+
+`}` `}`
 
 ### 7.3 HTTP client SDK reference
 
@@ -6293,6 +6667,11 @@ message is sent.
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
+```
+
+`}`
+
+```java
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
@@ -6304,6 +6683,8 @@ topic);
 ```
         mqClient.close();
 ```
+
+`}`
 
 **Consume normal messages**
 
@@ -6381,21 +6762,36 @@ example, the value is set to 3. The maximum value that you can specify is 30.
 
 );
 
-```java
+```
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+```
+
+`}` `}`
+
+```java
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
+```
+
+`}`
+
+```java
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -6431,10 +6827,27 @@ errors.getRequestId() + ", fail handles:");
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
+```
+
+`}` `}`
+
+```
                         continue;
+```
+
+`}`
+
+```
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```
         } while (true);
 ```
+
+`}` `}`
 
 ##### 7.3.2.3 Send and consume ordered messages
 
@@ -6486,6 +6899,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
+```
+
+`}`
+
+```
         try {
             // Cyclically send eight messages.
             for (int i = 0; i < 8; i++) {
@@ -6516,14 +6934,26 @@ message is sent.
                 System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
+```
+
+`}`
+
+```java
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
+```
+
+`}`
+
+```
         mqClient.close();
 ```
+
+`}` `}`
 
 **Consume ordered messages**
 
@@ -6567,6 +6997,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
+```
+
+`}`
+
+```
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         do {
@@ -6592,24 +7027,39 @@ is example, the value is set to 3. The maximum value that you can specify is 30.
 
 );
 
-```java
+```
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+```
+
+`}` `}`
+
+```java
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
+```
+
+`}`
+
+```java
             // Specify the message consumption logic.
             System.out.println("Receive " + messages.size() + " messages:");
             for (Message message : messages) {
                 System.out.println(message);
                 System.out.println("ShardingKey: " + message.getShardingKey() + ", a:"
 + message.getProperties().get("a"));
+```
+
+`}`
+
+```
             // If the broker does not receive an ACK for a message from the consumer be
 fore the timeout period for a message retry elapses, the broker delivers the message fo r consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -6618,10 +7068,15 @@ e message is consumed.
 
 `{`
 
-```java
+```
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
+```
+
+`}`
+
+```java
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -6649,8 +7104,15 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
 ```
                         continue;
                     e.printStackTrace();
+```
+
+`}`
+
+```
         } while (true);
 ```
+
+`}` `}`
 
 ##### 7.3.2.4 Send and consume scheduled messages and delayed messages
 
@@ -6707,6 +7169,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
+```
+
+`}`
+
+```
         try {
             // Cyclically send four messages.
             for (int i = 0; i < 4; i++) {
@@ -6741,14 +7208,26 @@ message is sent.
              System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
+```
+
+`}`
+
+```java
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
+```
+
+`}`
+
+```
         mqClient.close();
 ```
+
+`}` `}`
 
 **Consume scheduled messages or delayed messages**
 
@@ -6792,6 +7271,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
+```
+
+`}`
+
+```
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         do {
@@ -6829,9 +7313,19 @@ example, the value is set to 3. The maximum value that you can specify is 30.
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
+```
+
+`}`
+
+```java
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -6840,10 +7334,15 @@ e message is consumed.
 
 `{`
 
-```java
+```
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
+```
+
+`}`
+
+```java
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -6864,10 +7363,27 @@ errors.getRequestId() + ", fail handles:");
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
+```
+
+`}` `}`
+
+```
                         continue;
+```
+
+`}`
+
+```
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```
         } while (true);
 ```
+
+`}` `}`
 
 ##### 7.3.2.5 Send and consume transactional messages
 
@@ -6901,6 +7417,11 @@ errors.getRequestId() + ", fail handles:");
 ```
                             + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
+```
+
+`}` `}`
+
+```
     public static void main(String[] args) throws Throwable {
         MQClient mqClient = new MQClient(
                 // The HTTP endpoint to which you want to connect. To obtain the HTTP
@@ -6969,6 +7490,11 @@ before the period of time specified by the TransCheckImmunityTime parameter for 
                         if (e instanceof AckMessageException) {
                             processCommitRollError(e);
                             continue;
+```
+
+`}` `}` `}` `}` `}`
+
+```
         // The client needs a thread or a process to process unacknowledged
 transactional messages.
         // Start a thread to process unacknowledged transactional messages.
@@ -6979,6 +7505,11 @@ transactional messages.
                     try {
                         if (count == 3) {
                             break;
+```
+
+`}`
+
+```
                         List<Message> messages = mqTransProducer.consumeHalfMessage(3, 3
 ```
 
@@ -6988,6 +7519,11 @@ transactional messages.
                         if (messages == null) {
                             System.out.println("No Half message!");
                             continue;
+```
+
+`}`
+
+```java
                         System.out.println(String.format("Half----
 >MessageId:%s,Properties:%s,Body:%s,Latency:%d",
                                 messages.get(0).getMessageId(),
@@ -7027,12 +7563,27 @@ ack", message.getMessageId()));
 time.
                                     System.out.println(String.format("MessageId:%s, unkno
 wn", message.getMessageId()));
+```
+
+`}`
+
+```
                             } catch (Throwable e) {
                                 // If the transactional message is not committed or
 rolled back before the timeout period specified by the TransCheckImmunityTime parameter for the handle of the transactional message elapses or before the timeout period specif ied for the handle of consumeHalfMessage elapses, the commit or rollback operation fail s. In this example, the timeout period for the handle of consumeHalfMessage is 10 secon ds.
                                 processCommitRollError(e);
+```
+
+`}` `}`
+
+```java
                     } catch (Throwable e) {
                         System.out.println(e.getMessage());
+```
+
+`}` `}` `}`
+
+```
         });
         t.start();
         t.join();
@@ -7103,21 +7654,36 @@ example, the value is set to 3. The maximum value that you can specify is 30.
 
 );
 
-```java
+```
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+```
+
+`}` `}`
+
+```java
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
+```
+
+`}`
+
+```java
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -7130,6 +7696,11 @@ e message is consumed.
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
+```
+
+`}`
+
+```
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -7153,10 +7724,27 @@ errors.getRequestId() + ", fail handles:");
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
+```
+
+`}` `}`
+
+```
                         continue;
+```
+
+`}`
+
+```
                     e.printStackTrace();
+```
+
+`}` `}`
+
+```
         } while (true);
 ```
+
+`}` `}`
 
 #### 7.3.3 Go SDK
 
@@ -7248,6 +7836,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         MessageBody: "hello mq!",         // The content of the message.
         MessageTag:  "",                  // The tag of the message.
         Properties:  map[string]string{}, // The properties of the message.
+```
+
+`}`
+
+```
         // The key of the message.
         msg.MessageKey = "MessageKey"
         // The custom property of the message.
@@ -7259,8 +7852,15 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
+```
+
+`}`
+
+```
         time.Sleep(time.Duration(100) * time.Millisecond)
 ```
+
+`}` `}`
 
 **Consume normal messages**
 
@@ -7316,7 +7916,7 @@ does not have a namespace, set the instance ID to null or an empty string. You c
 
 `{`
 
-```json
+```
                     // Specify the message consumption logic.
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
@@ -7330,6 +7930,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
+```
+
+`}`
+
+```json
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -7351,12 +7956,32 @@ ve an ACK for the message from the consumer.
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case err := <-errChan:
 ```
 
@@ -7374,7 +7999,17 @@ errAckItem.ErrorMsg)
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
 ```
 
@@ -7383,6 +8018,11 @@ errAckItem.ErrorMsg)
 ```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
+```
+
+`}` `}`
+
+```
         }()
         // In long polling mode, the default network timeout period is 35 seconds.
         // In long polling mode, if no message in the topic is available for
@@ -7399,6 +8039,8 @@ the value is set to 3. The maximum value that you can specify is 30.
 ```
         <-endChan
 ```
+
+`}` `}`
 
 ##### 7.3.3.3 Send and consume ordered messages
 
@@ -7458,6 +8100,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
             MessageBody: "hello mq!",         // The content of the message.
             MessageTag:  "",                  // The tag of the message.
             Properties:  map[string]string{}, // The properties of the message.
+```
+
+`}`
+
+```
         // The key of the message.
         msg.MessageKey = "MessageKey"
         // The custom property of the message.
@@ -7472,8 +8119,15 @@ ition. Shard keys can be used to identify different partitions. A shard key is d
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
+```
+
+`}`
+
+```
         time.Sleep(time.Duration(100) * time.Millisecond)
 ```
+
+`}` `}`
 
 **Consume ordered messages**
 
@@ -7542,6 +8196,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties, v.ShardingKey)
+```
+
+`}`
+
+```
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
 ```
@@ -7561,12 +8220,32 @@ ve an ACK for the message from the consumer.
 ErrorMsg:%s\n",
                                  errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case err := <-errChan:
 ```
 
@@ -7584,7 +8263,17 @@ errAckItem.ErrorMsg)
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
 ```
 
@@ -7593,6 +8282,11 @@ errAckItem.ErrorMsg)
 ```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
+```
+
+`}` `}`
+
+```
         }()
                 // The consumer may pull partitionally ordered messages from multiple
 partitions. The consumer consumes the messages in each partition in the order in which the messages are sent.
@@ -7643,6 +8337,8 @@ the value is set to 3. The maximum value that you can specify is 30.
 ```
         <-endChan
 ```
+
+`}` `}`
 
 ##### 7.3.3.4 Send and consume scheduled messages and delayed messages
 
@@ -7704,6 +8400,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
             MessageBody: "hello mq!",         // The content of the message.
             MessageTag:  "",                  // The tag of the message.
             Properties:  map[string]string{}, // The properties of the message.
+```
+
+`}`
+
+```
     // The key of the message.
             msg.MessageKey = "MessageKey"
             // The custom property of the message.
@@ -7739,8 +8440,15 @@ e.ow().UC().U
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
+```
+
+`}`
+
+```
         time.Sleep(time.Duration(100) * time.Millisecond)
 ```
+
+`}` `}`
 
 **Consume scheduled messages or delayed messages**
 
@@ -7796,7 +8504,7 @@ does not have a namespace, set the instance ID to null or an empty string. You c
 
 `{`
 
-```json
+```
                     // Specify the message consumption logic.
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
@@ -7810,6 +8518,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
+```
+
+`}`
+
+```json
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -7825,8 +8538,18 @@ ve an ACK for the message from the consumer.
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
@@ -7851,7 +8574,17 @@ errAckItem.ErrorMsg)
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
 ```
 
@@ -7860,6 +8593,11 @@ errAckItem.ErrorMsg)
 ```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
+```
+
+`}` `}`
+
+```
         }()
         // In long polling mode, the default network timeout period is 35 seconds.
         // In long polling mode, if no message in the topic is available for
@@ -7876,6 +8614,8 @@ the value is set to 3. The maximum value that you can specify is 30.
 ```
         <-endChan
 ```
+
+`}` `}`
 
 ##### 7.3.3.5 Send and consume transactional messages
 
@@ -7911,6 +8651,11 @@ var loopCount = 0 func ProcessError(err error) {
 riod specified by the TransCheckImmunityTime parameter for the handle of the transactio nal message elapses or before the timeout period specified for the handle of consumeHal fMessage elapses, the commit or rollback operation fails. In this example, the timeout period for the handle of consumeHalfMessage is 10 seconds.
     if err == nil {
         return
+```
+
+`}`
+
+```
     fmt.Println(err)
     for _, errAckItem := range err.(errors.ErrCode).Context()["Detail"].
 ([]mq_http_sdk.ErrAckItem) {
@@ -7923,6 +8668,11 @@ func ConsumeHalfMsg(mqTransProducer *mq_http_sdk.MQTransProducer) {
     for {
         if loopCount >= 10 {
             return
+```
+
+`}`
+
+```
         loopCount++
         endChan := make(chan int)
         respChan := make(chan mq_http_sdk.ConsumeMessageResponse)
@@ -7965,6 +8715,11 @@ v.TransCheckImmunityTime)
                         } else {
                             // Do not perform operations. Check the status next time.
                             fmt.Println("Unknown---------->")
+```
+
+`}`
+
+```
                         ProcessError(comRollErr)
                     endChan <- 1
 caseerr <errChan
@@ -7988,7 +8743,17 @@ caseerr <errChan
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case <-time.After(35 * time.Second):
 ```
 
@@ -7997,6 +8762,11 @@ caseerr <errChan
 ```
                     fmt.Println("Timeout of consumer message ??")
                     return
+```
+
+`}` `}`
+
+```
         }()
         // Check the status of half messages in long polling mode.
         // In long polling mode, if no message in the topic is available for
@@ -8012,6 +8782,11 @@ the value is set to 3. The maximum value that you can specify is 30.
 
 ```
         <-endChan
+```
+
+`}` `}`
+
+```
 func main() {
     // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint, log
 on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instan ces. On the Instances page, select the name of your instance. Then, view the HTTP endpo int on the Network Management tab.
@@ -8050,6 +8825,11 @@ Check the status of the half messages that correspond to the other three transac
         msg := mq_http_sdk.PublishMessageRequest{
             MessageBody:"I am transaction msg!",
             Properties: map[string]string{"a":strconv.Itoa(i)},
+```
+
+`}`
+
+```
         // The time interval between the time when the transactional message is sent an
 d the start time of the first transaction status check. Unit: seconds. Valid values: 10 to 300.
         // If the message is not committed or rolled back after the first transaction s
@@ -8059,6 +8839,11 @@ tatus check is performed, the broker initiates a request to check the status of 
         if pubErr != nil {
             fmt.Println(pubErr)
             return
+```
+
+`}`
+
+```
         fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, Handle:%s\n",
             resp.MessageId, resp.MessageBodyMD5, resp.ReceiptHandle)
         if i == 0 {
@@ -8067,6 +8852,11 @@ he handle of the half message that corresponds to the transactional message and 
             ackErr := mqTransProducer.Commit(resp.ReceiptHandle)
             fmt.Println("Commit---------->")
             ProcessError(ackErr)
+```
+
+`}` `}`
+
+```
     for ; loopCount < 10 ; {
         time.Sleep(time.Duration(1) * time.Second)
 ```
@@ -8128,7 +8918,7 @@ does not have a namespace, set the instance ID to null or an empty string. You c
 
 `p` `y` `g` `p` `g`
 
-```json
+```
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
                     for _, v := range resp.Messages {
@@ -8141,6 +8931,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
+```
+
+`}`
+
+```json
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -8156,12 +8951,32 @@ ve an ACK for the message from the consumer.
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
+```
+
+`}`
+
+```
                         } else {
                            fmt.Println("ack err =", ackerr)
+```
+
+`}`
+
+```
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
+```
+
+`}`
+
+```
                     endChan <- 1
+```
+
+`}`
+
+```
             case err := <-errChan:
 ```
 
@@ -8179,6 +8994,11 @@ errAckItem.ErrorMsg)
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
+```
+
+`}`
+
+```
                     endChan <- 1
             case <-time.After(35 * time.Second):
 ```
@@ -8188,6 +9008,11 @@ errAckItem.ErrorMsg)
 ```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
+```
+
+`}` `}`
+
+```
         }()
         // In long polling mode, the default network timeout period is 35 seconds.
         // In long polling mode, if no message in the topic is available for
@@ -8204,6 +9029,8 @@ the value is set to 3. The maximum value that you can specify is 30.
 ```
         <-endChan
 ```
+
+`}` `}`
 
 #### 7.3.4 Python SDK
 
@@ -9029,6 +9856,11 @@ const {
       res = await producer.publishMessage("hello mq.", "", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
+```
+
+`}`
+
+```
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
@@ -9092,11 +9924,21 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
+```
+
+`}`
+
+```
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -9105,6 +9947,11 @@ de continues to take effect.
 e.RequestId, e.Code);
       } else {
         console.log(e);
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
@@ -9141,6 +9988,11 @@ ion. Shard keys can be used to identify different partitions. A shard key is dif
       res = await producer.publishMessage("hello mq.", "", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
+```
+
+`}`
+
+```
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
@@ -9209,11 +10061,21 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
+```
+
+`}`
+
+```
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -9225,6 +10087,11 @@ e.RequestId, e.Code);
 
 ```
         console.log(e);
+```
+
+`}`
+
+```
 })();
 ```
 
@@ -9272,10 +10139,20 @@ val between the scheduled point in time and the current point in time.
       res = await producer.publishMessage("hello mq. timer msg!", "TagA", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
+```
+
+`}`
+
+```
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
     console.log(e)
+```
+
+`}`
+
+```
 })();
 ```
 
@@ -9336,11 +10213,21 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
+```
+
+`}`
+
+```
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
+```
+
+`}` `}`
+
+```
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -9349,6 +10236,11 @@ de continues to take effect.
 e.RequestId, e.Code);
       } else {
         console.log(e);
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
@@ -9399,6 +10291,11 @@ tdi
 // The ID of the instance to which the topic belongs. The instance is created in the Ap saraMQ for RocketMQ console. // If the instance has a namespace, specify the ID of the instance. If the instance doe s not have a namespace, set the instance ID to null or an empty string. You can check w hether your instance has a namespace on the Instances page in the RocketMQ console. const instanceId = "${INSTANCE_ID}"; const mqTransProducer = client.getTransProducer(instanceId, topic, groupId); async function processTransResult(res, msgId) {
     if (!res) {
         return;
+```
+
+`}`
+
+```
     if (res.code != 204) {
       // If a transactional message is not committed or rolled back before the timeout
 period specified by the TransCheckImmunityTime parameter for the handle of the transact ional message elapses or before the timeout period specified for the handle of consumeH alfMessage elapses, the commit or rollback operation fails. In this example, the timeou t period for the handle of consumeHalfMessage is 10 seconds.
@@ -9410,6 +10307,11 @@ error.ErrorCode, error.ErrorMessage);
       });
     } else {
       console.log("Commit/Rollback Message suc!!! %s", msgId);
+```
+
+`}` `}`
+
+```
 var halfMessageCount = 0; var halfMessageConsumeCount = 0; (async function(){
   try {
     // Cyclically send four transactional messages.
@@ -9441,10 +10343,20 @@ handle of the half message that corresponds to the transactional message and com
           // If the transactional message is not committed or rolled back before the ti
 meout period specified by the TransCheckImmunityTime parameter elapses, the commit or r ollback operation fails.
         processTransResult(res, msgId);
+```
+
+`}` `}`
+
+```
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
     console.log(e)
+```
+
+`}`
+
+```
 })(); // The client needs a thread or a process to process unacknowledged transactional messa ges. // Process unacknowledged transactional messages. (async function() {
   // Cyclically check the status of half messages. This process is similar to consuming
 normal messages.
@@ -9485,6 +10397,11 @@ de continues to take effect.
 Code:%s", e.RequestId, e.Code);
       } else {
         console.log(e);
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
@@ -9542,6 +10459,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
+```
+
+`}`
+
+```
           });
         } else {
           // Obtain an ACK from the consumer.
@@ -9558,6 +10480,11 @@ de continues to take effect.
 e.RequestId, e.Code);
       } else {
         console.log(e);
+```
+
+`}` `}` `}`
+
+```
 })();
 ```
 
@@ -9582,6 +10509,7 @@ To install the SDK for PHP, perform the following steps:
      "aliyunmq/mq-http-sdk": ">=1.0.3"
 ```
 
+`}` `}`
 2. Run the following command to use Composer to install the SDK for PHP:
 
 ```
@@ -9639,6 +10567,11 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
+```
+
+`}`
+
+```
     public function run()
 ```
 
@@ -9672,8 +10605,18 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
+```
+
+`}`
+
+```
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
+```
+
+`}` `}` `}`
+
+```
 $instance = new ProducerTest(); $instance->run();
 ```
 
@@ -9740,6 +10683,11 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
+```
+
+`}`
+
+```
     public function run()
 ```
 
@@ -9770,6 +10718,11 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
 sleep(3);
 ```
@@ -9790,6 +10743,11 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -9805,7 +10763,17 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
+```
+
+`}` `}` `}`
+
+```
             print "ack finish\n";
+```
+
+`}` `}` `}`
+
+```
 $instance = new ConsumerTest(); $instance->run();
 ```
 
@@ -9869,6 +10837,11 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
+```
+
+`}`
+
+```
     public function run()
 ```
 
@@ -9902,8 +10875,18 @@ ic partition. Shard keys can be used to identify different partitions. A shard k
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
+```
+
+`}`
+
+```
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
+```
+
+`}` `}` `}`
+
+```
 $instance = new ProducerTest(); $instance->run();
 ```
 
@@ -9954,6 +10937,11 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
+```
+
+`}`
+
+```
     public function run()
 ```
 
@@ -9994,9 +10982,19 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
+```
+
+`}`
+
+```
             print "======>consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -10010,6 +11008,11 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getShardingKey());
                 print_r($message->getProperties());
+```
+
+`}`
+
+```
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -10028,7 +11031,17 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
+```
+
+`}` `}` `}`
+
+```
             print "=======>ack finish\n";
+```
+
+`}` `}` `}`
+
+```
 $instance = new ConsumerTest(); $instance->run();
 ```
 
@@ -10128,8 +11141,18 @@ time interval between the scheduled point in time and the current point in time.
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
+```
+
+`}`
+
+```
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
+```
+
+`}` `}` `}`
+
+```
 $instance = new ProducerTest(); $instance->run();
 ```
 
@@ -10184,6 +11207,11 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
+```
+
+`}`
+
+```
     public function run()
 ```
 
@@ -10219,9 +11247,19 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
+```
+
+`}`
+
+```
             print "consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -10235,6 +11273,11 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -10250,6 +11293,11 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
+```
+
+`}` `}` `}`
+
+```
             print "ack finish\n";
 ```
 
@@ -10327,6 +11375,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
 $groupId);
         $this->count = 0;
         $this->popMsgCount = 0;
+```
+
+`}`
+
+```
     function processAckError($e) {
         if ($e instanceof MQ\Exception\AckMessageException) {
             // If a transactional message is not committed or rolled back within the
@@ -10349,9 +11402,19 @@ tReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     print "no half transaction message\n";
                     continue;
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
+```
+
+`}`
+
+```
             foreach ($messages as $message) {
                 printf("ID:%s TAG:%s BODY:%s \nPublishTime:%d,
 FirstConsumeTime:%d\nConsumedTimes:%d, NextConsumeTime:%d\nPropA:%s\n",
@@ -10382,6 +11445,11 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
                     } else {
                         print "\n unknown transaction msg: " . $message->getMessageId()
 . "\n";
+```
+
+`}`
+
+```
                 } catch (\Exception $e) {
                     processAckError($e);
 ```
@@ -10419,10 +11487,20 @@ tMessageId() . "\n";
                     // If the transactional message is not committed or rolled back befo
 re the timeout period specified by the TransCheckImmunityTime parameter elapses, the co mmit or rollback operation fails.
                     processAckError($e);
+```
+
+`}` `}` `}`
+
+```
         // The client needs a thread or a process to process unacknowledged
 transactional messages.
         // Process unacknowledged transactional messages.
         $this->consumeHalfMsg();
+```
+
+`}` `}`
+
+```
 $instance = new ProducerTest(); $instance->run();
 ```
 
@@ -10473,6 +11551,11 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
+```
+
+`}`
+
+```
     public function run()
 ```
 
@@ -10508,9 +11591,19 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
+```
+
+`}`
+
+```
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
+```
+
+`}`
+
+```
             print "consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -10524,6 +11617,11 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
+```
+
+`}`
+
+```
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -10542,7 +11640,17 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
+```
+
+`}` `}` `}`
+
+```
             print "ack finish\n";
+```
+
+`}` `}` `}`
+
+```
 $instance = new ConsumerTest(); $instance->run();
 ```
 
@@ -10646,6 +11754,11 @@ _secretAccessKey, _endpoint);
                 sendMsg.MessageKey = "MessageKey";
                 TopicMessage result = producer.PublishMessage(sendMsg);
                 Console.WriteLine("publis message success:" + result);
+```
+
+`}` `}`
+
+```
             catch (Exception ex)
 ```
 
@@ -10654,6 +11767,8 @@ _secretAccessKey, _endpoint);
 ```
                 Console.Write(ex);
 ```
+
+`}` `}` `}` `}`
 
 **Consume normal messages**
 
@@ -10735,7 +11850,7 @@ a time. In this example, the value is set to 3. The maximum value that you can s
 this example, the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-);
+); `}`
 
 ```
                     catch (Exception exp1)
@@ -10753,6 +11868,11 @@ this example, the value is set to 3. The maximum value that you can specify is 3
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
 ```
@@ -10765,6 +11885,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                         continue;
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
@@ -10777,6 +11902,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
+```
+
+`}`
+
+```
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by Message.nextConsumeTime el apses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -10796,7 +11926,17 @@ time the message is consumed.
 
 ```
                             Console.Write("\t" + handle);
+```
+
+`}`
+
+```
                         Console.WriteLine();
+```
+
+`}`
+
+```
                     catch (Exception exp2)
 ```
 
@@ -10822,6 +11962,11 @@ ackExp.RequestId);
 ```
                                 Console.WriteLine("\tErrorHandle:" +
 errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}` `}`
+
+```
                 catch (Exception ex)
 ```
 
@@ -10912,6 +12057,11 @@ ecific partition. Shard keys can be used to identify different partitions. A sha
                     sendMsg.ShardingKey = (i % 2).ToString();
                     TopicMessage result = producer.PublishMessage(sendMsg);
                     Console.WriteLine("publis message success:" + result);
+```
+
+`}` `}`
+
+```
             catch (Exception ex)
 ```
 
@@ -10920,6 +12070,8 @@ ecific partition. Shard keys can be used to identify different partitions. A sha
 ```
                 Console.Write(ex);
 ```
+
+`}` `}` `}` `}`
 
 **Consume ordered messages**
 
@@ -11009,7 +12161,7 @@ a time. In this example, the value is set to 3. The maximum value that you can s
 this example, the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-);
+); `}`
 
 ```
                     catch (Exception exp1)
@@ -11027,8 +12179,18 @@ this example, the value is set to 3. The maximum value that you can specify is 3
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
+```
+
+`}`
+
+```
                     if (messages == null)
 ```
 
@@ -11036,6 +12198,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                         continue;
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
@@ -11048,6 +12215,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
+```
+
+`}`
+
+```
                     // If the broker does not receive an ACK for a message from the cons
 umer before the period of time specified by Message.nextConsumeTime elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -11096,6 +12268,11 @@ ackExp.RequestId);
 ```
                                 Console.WriteLine("\tErrorHandle:" +
 errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}` `}`
+
+```
                 catch (Exception ex)
 ```
 
@@ -11105,6 +12282,8 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Console.WriteLine(ex);
                     Thread.Sleep(2000);
 ```
+
+`}` `}` `}` `}` `}`
 
 ##### 7.3.7.4 Send and consume scheduled messages and delayed messages
 
@@ -11189,6 +12368,11 @@ he time interval between the scheduled point in time and the current point in ti
 000;
                     TopicMessage result = producer.PublishMessage(sendMsg);
                     Console.WriteLine("publis message success:" + result);
+```
+
+`}` `}`
+
+```
             catch (Exception ex)
 ```
 
@@ -11197,6 +12381,8 @@ he time interval between the scheduled point in time and the current point in ti
 ```
                 Console.Write(ex);
 ```
+
+`}` `}` `}` `}`
 
 **Consume scheduled messages or delayed messages**
 
@@ -11278,7 +12464,7 @@ a time. In this example, the value is set to 3. The maximum value that you can s
 this example, the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-);
+); `}`
 
 ```
                     catch (Exception exp1)
@@ -11308,6 +12494,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                         continue;
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
@@ -11320,6 +12511,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
+```
+
+`}`
+
+```
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by Message.nextConsumeTime el apses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -11339,7 +12535,17 @@ time the message is consumed.
 
 ```
                             Console.Write("\t" + handle);
+```
+
+`}`
+
+```
                         Console.WriteLine();
+```
+
+`}`
+
+```
                     catch (Exception exp2)
 ```
 
@@ -11365,6 +12571,11 @@ ackExp.RequestId);
 ```
                                 Console.WriteLine("\tErrorHandle:" +
 errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}`
+
+```
                 catch (Exception ex)
 ```
 
@@ -11377,6 +12588,8 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
 ```
                     Thread.Sleep(2000);
 ```
+
+`}` `}` `}`
 
 ##### 7.3.7.5 Send and consume transactional messages
 
@@ -11458,6 +12671,11 @@ timeout period specified by the TransCheckImmunityTime parameter for the handle 
 ```
                     Console.WriteLine("\tErrorHandle:" + errorItem.ReceiptHandle + ",Err
 orCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorItem.ErrorMessage);
+```
+
+`}` `}` `}`
+
+```
         static void ConsumeHalfMessage()
 ```
 
@@ -11499,8 +12717,18 @@ suming normal messages.
                             Console.WriteLine(Thread.CurrentThread.Name + " No half mess
 age, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
+```
+
+`}`
+
+```
                     if (messages == null)
                         continue;
                     // Specify the business processing logic.
@@ -11533,6 +12761,11 @@ age, " + ((MessageNotExistException)exp1).RequestId);
                                 // Do not perform operations. Check the status next
 time.
                                 Console.WriteLine("Id:" + message.Id + ", unkonwn");
+```
+
+`}`
+
+```
                         } catch (Exception ackError) {
                             ProcessAckError(ackError);
 ```
@@ -11546,6 +12779,11 @@ time.
 ```
                     Console.WriteLine(ex);
                     Thread.Sleep(2000);
+```
+
+`}` `}` `}`
+
+```
         static void Main(string[] args)
 ```
 
@@ -11593,6 +12831,11 @@ ansaction status check is performed, the broker initiates a request to check the
 roker obtains the handle of the half message that corresponds to the transactional mess age and commits or rolls back the transactional message based on the status of the hand le.
                             transProducer.Commit(result.ReceiptHandle);
                             Console.WriteLine("Id:" + result.Id + ", commit");
+```
+
+`}`
+
+```
                     } catch (Exception ackError) {
                         ProcessAckError(ackError);
             } catch (Exception ex) {
@@ -11602,6 +12845,8 @@ roker obtains the handle of the half message that corresponds to the transaction
                 Console.Write(ex);
             consumeHalfThread.Join();
 ```
+
+`}` `}` `}`
 
 **Consume transactional messages**
 
@@ -11686,7 +12931,7 @@ a time. In this example, the value is set to 3. The maximum value that you can s
 this example, the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-);
+); `}`
 
 ```
                     catch (Exception exp1)
@@ -11704,8 +12949,18 @@ this example, the value is set to 3. The maximum value that you can specify is 3
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
+```
+
+`}`
+
+```
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
+```
+
+`}`
+
+```
                     if (messages == null)
 ```
 
@@ -11713,6 +12968,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
 
 ```
                         continue;
+```
+
+`}`
+
+```
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
@@ -11725,6 +12985,11 @@ ge, " + ((MessageNotExistException)exp1).RequestId);
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
+```
+
+`}`
+
+```
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by Message.nextConsumeTime el apses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -11747,7 +13012,17 @@ time the message is consumed. try
 
 ```
                             Console.Write("\t" + handle);
+```
+
+`}`
+
+```
                         Console.WriteLine();
+```
+
+`}`
+
+```
                     catch (Exception exp2)
 ```
 
@@ -11773,6 +13048,11 @@ ackExp.RequestId);
 ```
                                 Console.WriteLine("\tErrorHandle:" +
 errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+```
+
+`}` `}` `}` `}`
+
+```
                 catch (Exception ex)
 ```
 
@@ -11782,6 +13062,8 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Console.WriteLine(ex);
                     Thread.Sleep(2000);
 ```
+
+`}` `}` `}` `}` `}`
 
 #### 7.3.8 C++ SDK
 
@@ -11929,6 +13211,11 @@ stace does not have a namespace, set the instance ID to null or an empty string.
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
+```
+
+`}`
+
+```
     try {
         // Cyclically send four messages.
         for (int i = 0; i < 4; i++)
@@ -11948,6 +13235,11 @@ stace does not have a namespace, set the instance ID to null or an empty string.
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
+```
+
+`}`
+
+```
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -11955,8 +13247,15 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
+```
+
+`}`
+
+```
     return 0;
 ```
+
+`}`
 
 **Consume normal messages**
 
@@ -12005,6 +13304,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
@@ -12042,6 +13346,11 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
+```
+
+`}`
+
+```
             // Obtain an acknowledgment (ACK) from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -12064,8 +13373,18 @@ s.begin();
 ```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
+```
+
+`}`
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
@@ -12075,6 +13394,11 @@ s.begin();
 
 ```
                 continue;
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -12092,8 +13416,15 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
+```
+
+`}`
+
+```
     } while(true);
 ```
+
+`}`
 
 ##### 7.3.8.3 Send and consume ordered messages
 
@@ -12149,6 +13480,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
+```
+
+`}`
+
+```
     try {
         // Cyclically send four messages.
         for (int i = 0; i < 8; i++)
@@ -12181,8 +13517,15 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
+```
+
+`}`
+
+```
     return 0;
 ```
+
+`}`
 
 **Consume ordered messages**
 
@@ -12231,6 +13574,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
@@ -12273,6 +13621,11 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " ShardingKey: " << iter->getShardingKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
+```
+
+`}`
+
+```
             // Obtain an ACK from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -12298,8 +13651,18 @@ s.begin();
 ```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
+```
+
+`}`
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
@@ -12309,6 +13672,11 @@ s.begin();
 
 ```
                 continue;
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -12323,8 +13691,15 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
+```
+
+`}`
+
+```
     } while(true);
 ```
+
+`}`
 
 ##### 7.3.8.4 Send and consume scheduled messages and delayed messages
 
@@ -12380,6 +13755,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
+```
+
+`}`
+
+```
     try {
         // Cyclically send four messages.
         for (int i = 0; i < 4; i++)
@@ -12409,6 +13789,11 @@ interval between the scheduled point in time and the current point in time.
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
+```
+
+`}`
+
+```
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -12416,8 +13801,15 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
+```
+
+`}`
+
+```
     return 0;
 ```
+
+`}`
 
 **Consume scheduled messages or delayed messages**
 
@@ -12463,6 +13855,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
@@ -12503,6 +13900,11 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
+```
+
+`}`
+
+```
             // Obtain an acknowledgment (ACK) from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -12525,6 +13927,11 @@ s.begin();
 ```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
         } catch (MQServerException& me) {
@@ -12539,6 +13946,11 @@ s.begin();
 
 ```
                 continue;
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -12553,8 +13965,15 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
+```
+
+`}`
+
+```
     } while(true);
 ```
+
+`}`
 
 ##### 7.3.8.5 Send and consume transactional messages
 
@@ -12591,6 +14010,11 @@ using namespace std; using namespace mq::http::sdk; const int32_t pubMsgCount = 
     if (bdmResp.isSuccess()) {
         cout << "Commit/Roll Transaction Suc: " << messageId << endl;
         return;
+```
+
+`}`
+
+```
     const std::vector<AckMessageFailedItem>& failedItems =
         bdmResp.getAckMessageFailedItem();
     for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItems.begin();
@@ -12602,6 +14026,11 @@ using namespace std; using namespace mq::http::sdk; const int32_t pubMsgCount = 
 ```
         cout << "Commit/Roll Transaction ERROR: " << iter->errorCode
             << "  " << iter->receiptHandle << endl;
+```
+
+`}` `}`
+
+```
 #ifdef WIN32
 unsigned __stdcall consumeHalfMessageThread(void *arg)
 #else
@@ -12640,10 +14069,25 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                 cout << "No half message to consume! RequestId: " + me.GetRequestId() <<
 endl;
                 continue;
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
+```
+
+`}`
+
+```
         if (halfMsgs.size() == 0) {
             continue;
+```
+
+`}`
+
+```
         cout << "Consume Half: " << halfMsgs.size() << " Messages!" << endl;
         // Process half messages.
         std::vector<std::string> receiptHandles;
@@ -12688,15 +14132,30 @@ me.GetRequestId() << endl;
             } else {
                 transProducer->commit(handle, bdmResp);
                 cout << "Unkown msg.." << endl;
+```
+
+`}`
+
+```
             // If the transactional message is not committed or rolled back before the
 period of time specified by the NextConsumeTime parameter elapses, the commit or rollba ck operation fails.
             processCommitRollError(bdmResp, iter->getMessageId());
+```
+
+`}`
+
+```
     } while(count < halfCheckCount);
 #ifdef WIN32
     return 0;
 #else
     return NULL;
 #endif
+```
+
+`}`
+
+```
 int main() {
     MQClient mqClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
@@ -12769,11 +14228,21 @@ period of time specified by the TransCheckImmunityTime parameter elapses, the co
                 AckMessageResponse bdmResp;
                 transProducer->commit(pmResp.getReceiptHandle(), bdmResp);
                 processCommitRollError(bdmResp, pmResp.getMessageId());
+```
+
+`}` `}`
+
+```
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
+```
+
+`}`
+
+```
 #ifdef WIN32
     WaitForSingleObject(thread, INFINITE);
     CloseHandle(thread);
@@ -12785,6 +14254,8 @@ me.GetRequestId() << endl;
 #endif
     return 0;
 ```
+
+`}`
 
 **Consume transactional messages**
 
@@ -12833,6 +14304,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
+```
+
+`}`
+
+```
     do {
         try {
             std::vector<Message> messages;
@@ -12870,6 +14346,11 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
+```
+
+`}`
+
+```
             // Obtain an acknowledgment (ACK) from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -12896,8 +14377,18 @@ s.begin();
 ```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
+```
+
+`}`
+
+```
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
+```
+
+`}`
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
@@ -12907,6 +14398,11 @@ s.begin();
 
 ```
                 continue;
+```
+
+`}`
+
+```
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -12921,8 +14417,15 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
+```
+
+`}`
+
+```
     } while(true);
 ```
+
+`}`
 
 ## 8 Best practices
 
@@ -12983,6 +14486,11 @@ consumer.subscribe("MQ_TOPIC", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -12993,6 +14501,11 @@ consumer.subscribe("MQ_TOPIC", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13003,6 +14516,11 @@ consumer.subscribe("MQ_TOPIC", "TagA||TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13013,10 +14531,20 @@ Consumption method 4 (error example) If a consumer subscribes to messages with s
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```java
 }); consumer.subscribe("MQ_TOPIC", "TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13037,6 +14565,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13047,6 +14580,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13057,6 +14595,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13067,6 +14610,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13077,10 +14625,20 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```java
 }); consumer.subscribe("jodie_test_B", "TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13091,6 +14649,11 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13117,6 +14680,11 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         String key = message.getKey()
         // Use the unique business-specific key for idempotent processing.
+```
+
+`}`
+
+```
 });
 ```
 
@@ -13314,11 +14882,17 @@ To set the number of consumer threads on a ApsaraMQ for RocketMQ consumer, set t
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
+```
+
+`}`
+
+```java
         });
         consumer.start();
         System.out.println("Consumer Started");
 ```
 
+`}`
 4. What do I do if an error in loading DLL or another running error occurs due to invalid .NET
 client configuration? For more information, see SDK_GUIDE.pdf in the compressed package of SDK for .NET to verify that the project configuration is the same as that described in the document.
 
@@ -13388,7 +14962,7 @@ method, this line of log is not printed.
         return Action.CommitMessage;
 ```
 
-If the problem persists, contact technical support and provide the local SDK logs.
+`}` `}` If the problem persists, contact technical support and provide the local SDK logs.
 
 #### 9.2.2 Nonexistent resources
 
@@ -13472,6 +15046,11 @@ Example 1: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13486,6 +15065,11 @@ Example 1: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13502,6 +15086,11 @@ Example 2: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13516,6 +15105,11 @@ Example 2: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13577,6 +15171,11 @@ topics: MQ-FAQ-TOPIC-1 and MQ-FAQ-TOPIC-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13591,6 +15190,11 @@ topics: MQ-FAQ-TOPIC-1 and MQ-FAQ-TOPIC-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13610,6 +15214,11 @@ topic but different tags: NM-MQ-FAQ-1 and NM-MQ-FAQ-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```
@@ -13624,6 +15233,11 @@ topic but different tags: NM-MQ-FAQ-1 and NM-MQ-FAQ-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
+```
+
+`}`
+
+```
     });
     consumer.start();
 ```

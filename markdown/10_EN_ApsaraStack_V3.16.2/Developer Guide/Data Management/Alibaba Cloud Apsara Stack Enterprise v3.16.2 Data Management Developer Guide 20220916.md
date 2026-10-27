@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 232
 source_pdf: "3e14f604ad4d0e11_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Management Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230602/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Data%20Management%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Management Developer Guide 20220916

@@ -5,16 +5,23 @@ doc_version: "20260729"
 pdf_pages: 9
 source_pdf: "43_CPFS产品简介_cpfs-product-introduction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/hcs_hgw/zh/cpfs-product-introduction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 混合云存储CDS CPFS产品简介
 
-## 产品详情
+## 目录
+
+- 1 产品详情
+- 2 产品价值
+- 3 应用场景
+- 4 功能特性
+
+## 1 产品详情
 
 文件存储CPFS (Cloud Parallel File Storage)是阿里云专有云高性能的并行文件系统，支持POSIX协议， 提供对数据亚毫秒级的访问和数十GB/s的读写吞吐能力，推荐用于AIGC、自动驾驶、EDA仿真、CG渲染等业务场景。
 
-## 产品价值
+## 2 产品价值
 
 **超高性能**
 
@@ -28,9 +35,9 @@ CPFS集群和单文件系统均可支持TB级的吞吐能力。 企业级NVMe SS
 
 数据采用EC纠删码方式进行存储，支持4D+2P的规格。
 
-## 应用场景
+## 3 应用场景
 
-CPFS是阿里云推出的一款超高性能的文件存储服务，支持端到端RDMA网络，应用于AIGC、自动驾驶等智算场景。
+> CPFS是阿里云推出的一款超高性能的文件存储服务，支持端到端RDMA网络，应用于AIGC、自动驾驶等智算场景。
 
 **AIGC**
 
@@ -44,7 +51,7 @@ CPFS结合对象存储OSS、文件存储NAS等产品组成完整的解决方案�
 
 CPFS对接容器服务ACK、Serverless容器服务ASK和基因计算AGS，搭建极速、低成本、高精度的基因计算容器环境，满足基因测序计算和数据共享需求。CPFS用于基因数据分析中的共享存储，保存下机数据和组装后的数据，以及过程数据，满足基因行业用户的低时延、高IOPS的存储需求，减少数据拷贝/传输。同时，CPFS计算结果数据会同步到对象存储OSS，CPFS集成OSS提供海量存储空间，同时通过生命周期管理，将冷数据归档存储，降低存储成本。
 
-## 功能特性
+## 4 功能特性
 
 本文介绍CPFS文件系统的功能特性。
 

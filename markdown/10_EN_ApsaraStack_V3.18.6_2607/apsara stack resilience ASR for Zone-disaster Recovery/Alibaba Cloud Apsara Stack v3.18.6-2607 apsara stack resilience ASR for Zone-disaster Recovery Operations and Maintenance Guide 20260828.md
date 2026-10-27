@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 96
 source_pdf: "5fac65ba574bf306_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Zone-disaster Recovery Opera"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%C2%A0for%C2%A0Zone-disaster%C2%A0Recovery%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Zone-disaster Recovery Operations and Maintenance Guide 20260828
@@ -142,7 +142,11 @@ Apsara Stack Resilience (ASR) for Zone-disaster Recovery provides three logon me
 
 **Prerequisites**
 
-To log on from the Apsara Uni-manager Operations Console, you have obtained the endpoint, username, and password for the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: <region-id>.console.<intranet-domain-id>. For a disaster recovery escape logon, you have obtained the endpoint, username, and password of the ASR console from the deployment personnel or an administrator. If the primary data center fails, log on to the ASR console of the secondary data center. If the secondary data center fails, log on to the ASR console of the primary data center. The two data centers have different domain names. The endpoint of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>/user/login. The endpoint of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>/user/login. To log on for tenant operation scenarios, you have obtained the service domain name of the Apsara Uni-manager Management Console from the deployment personnel.
+To log on from the Apsara Uni-manager Operations Console, you have obtained the endpoint, username, and password for the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: <region-id>.console.<intranet-domain-id>. For a disaster recovery escape logon, you have obtained the endpoint, username, and password of the ASR console from the deployment personnel or an administrator.
+
+**Note**
+
+If the primary data center fails, log on to the ASR console of the secondary data center. If the secondary data center fails, log on to the ASR console of the primary data center. The two data centers have different domain names. The endpoint of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>/user/login. The endpoint of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>/user/login. To log on for tenant operation scenarios, you have obtained the service domain name of the Apsara Uni-manager Management Console from the deployment personnel.
 
 **Log on to the Unified O&M platform**
 
@@ -184,7 +188,11 @@ between views.
 > **Important:** By default, the disaster recovery escape logon feature is disabled. To use this logon method, you must first enable the feature and set a logon password. For more information, see Manage escape logon.
 
 1. In your browser's address bar, enter the Zone-Disaster Recovery Management Platform ASR
-endpoint and press Enter. If the primary data center fails, log on to the ASR console of the secondary data center. If the secondary data center fails, log on to the ASR console of the primary data center. The two data centers have different domain names. The endpoint of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>/user/login. The endpoint of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>/user/login.
+endpoint and press Enter.
+
+**Note**
+
+If the primary data center fails, log on to the ASR console of the secondary data center. If the secondary data center fails, log on to the ASR console of the primary data center. The two data centers have different domain names. The endpoint of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>/user/login. The endpoint of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>/user/login.
 
 > **Note:** You can click the language drop-down list in the upper-right corner to switch the language. Simplified Chinese and English are supported.
 
@@ -1284,6 +1292,8 @@ Rolling on On Tianji services a. Log on to OPS 1 of the primary data center. b. 
 cd /apsarapangu/disk3/u_disk/upgrade_tools/tianji_zhuque_sdk ./upgrade_A_to_Aplus.py -z [$ZONE] -p [$PROJECT] -c [$CLUSTER] --tianjiCltConfig [$TIANJICLTCONFIG]
 ```
 
+**Note**
+
 Parameter description: $ZONE: the zone of the cluster in the primary data center. $PROJECT: the name of the project of the cluster in the primary data center. $CLUSTER: the name of the cluster in the primary data center. $TIANJICLTCONFIG: the fixed directory of the tianji_clt configuration file. Sample commands:
 
 ```
@@ -1649,6 +1659,9 @@ primary database, which indicates that the backup is complete. (This can be comp
 
 6. Click **Submit**.
 7. Click **Task Management** and monitor the task progress until the task is complete.
+
+**Note**
+
 If tasks fail, contact the product and R&D team for assistance.
 8. Log on to the abnormal instance.
 9. Run the following SQL statement and check the returned result.

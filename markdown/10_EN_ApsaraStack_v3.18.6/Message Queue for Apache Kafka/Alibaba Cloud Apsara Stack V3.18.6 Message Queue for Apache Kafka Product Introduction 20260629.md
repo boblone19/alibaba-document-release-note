@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 17
 source_pdf: "efa742ad46a1a5ae_Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97Kafka%E7%89%88%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Message%20Queue%20for%20Apache%20Kafka%20Product%20Introduction%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Message Queue for Apache Kafka Product Introduction 20260629

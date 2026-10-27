@@ -5,7 +5,7 @@ doc_version: "20240522"
 pdf_pages: 97
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Database Backup Developer Guide 20240522.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BDDBS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Database%20Backup%20Developer%20Guide%2020240522.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Database Backup Developer Guide 20240522
@@ -1758,6 +1758,8 @@ You can call the ModifyBackupSetDownloadRules operation to enable, modify, or di
 
 | Success | Boolean | true | Indicates whether the operation is successful. Valid values: true: successful false: failed |
 |---|---|---|---|
+
+**Description**
 
 Sample requests
 

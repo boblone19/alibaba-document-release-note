@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 555
 source_pdf: "b40a08747a2b961d_Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20IDaaS%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831
@@ -290,6 +290,11 @@ biz.${global:region}.${global:internet-domain}.
         queryParam.put("Action",action);
         doRpcRequest(profile, domain, proxy, version, action, method, headerParam, path
 Param, queryParam, bodyParam);
+```
+
+`}`
+
+```
     public static void doRpcRequest(IClientProfile profile, String domain, String proxy
 , String version, String action, String method,
                                     Map<String, String> headerParam,
@@ -298,7 +303,7 @@ Param, queryParam, bodyParam);
                                     Map<String, String> bodyParam) {
 ```
 
-```java
+```
         HttpClientConfig clientConfig = HttpClientConfig.getDefault();
         clientConfig.setReadTimeoutMillis(100 * 1000);
         clientConfig.setHttpProxy(proxy);
@@ -313,12 +318,32 @@ Param, queryParam, bodyParam);
         request.setSysProtocol(ProtocolType.HTTPS);
         for (Map.Entry<String, String> entry : headerParam.entrySet()) {
             request.putHeadParameter(entry.getKey(), entry.getValue());
+```
+
+`}`
+
+```
         for (Map.Entry<String, String> entry : pathParam.entrySet()) {
             request.putPathParameter(entry.getKey(), entry.getValue());
+```
+
+`}`
+
+```
         for (Map.Entry<String, String> entry : queryParam.entrySet()) {
             request.putQueryParameter(entry.getKey(), entry.getValue());
+```
+
+`}`
+
+```
         for (Map.Entry<String, String> entry : bodyParam.entrySet()) {
             request.putBodyParameter(entry.getKey(), entry.getValue());
+```
+
+`}`
+
+```java
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
@@ -337,6 +362,8 @@ Param, queryParam, bodyParam);
             System.out.println("ErrorMessage=" + e.getErrMsg());
             System.out.println("ResponseId=" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 **1.1 Instance management**
 
@@ -593,6 +620,11 @@ Policies can be stored as JSON files. The following code provides an example on 
 ```json
   "Version": "1",
   "Statement": [
+```
+
+`{`
+
+```json
       "Effect": "<Effect>",
       "Action": "<Action>",
       "Resource": "<Resource>",
@@ -602,7 +634,7 @@ Policies can be stored as JSON files. The following code provides an example on 
             "<Condition_value>"
 ```
 
-`]` `]` The following list describes the fields in the policy: Effect: specifies the authorization result. Valid values: Allow and Deny. Action: specifies one or more operations that are allowed or denied. For more information, see the "Action" section of this topic. Resource: specifies one or more resources to which the policy applies. You can use an Alibaba Cloud Resource Name (ARN) to specify a resource. For more information, see the "Resource" section of this topic. Condition: specifies one or more conditions that are required for the policy to take effect. This field is optional. For more information, see the "Condition" section of this topic. Condition_operator: specifies the conditional operators. Different types of conditions support different conditional operators. For more information, see Policy elements. Condition_key: specifies the condition keys. Condition_value: specifies the condition values.
+`]` `}` `}` `}` `]` `}` The following list describes the fields in the policy: Effect: specifies the authorization result. Valid values: Allow and Deny. Action: specifies one or more operations that are allowed or denied. For more information, see the "Action" section of this topic. Resource: specifies one or more resources to which the policy applies. You can use an Alibaba Cloud Resource Name (ARN) to specify a resource. For more information, see the "Resource" section of this topic. Condition: specifies one or more conditions that are required for the policy to take effect. This field is optional. For more information, see the "Condition" section of this topic. Condition_operator: specifies the conditional operators. Different types of conditions support different conditional operators. For more information, see Policy elements. Condition_key: specifies the condition keys. Condition_value: specifies the condition values.
 
 **Action**
 
@@ -2601,11 +2633,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateApsaraEiamInstanceDescription &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.1.2 DeleteApsaraEiamInstance
 
@@ -2636,11 +2670,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteApsaraEiamInstance &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.1.3 CreateApsaraEiamInstance
 
@@ -2682,6 +2718,8 @@ Sample success responses `JSON` format
  "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx"
 ```
 
+`}`
+
 ##### 1.4.1.4 UpdateApsaraEiamInstanceQuota
 
 Changes the instance specifications.
@@ -2719,6 +2757,8 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.1.5 ListApsaraEiamInstances
 
@@ -2785,46 +2825,68 @@ Sample responses `JSON` format
  "Instances":[
    "Status":"running",
    "UserStock":[
+```
+
+`{`
+
+```json
      "StockUsed":200,
      "StockTotal":1000,
      "StockRemaining":800
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ApplicationStock":[
+```
+
+`{`
+
+```json
      "StockUsed":20,
      "StockTotal":100,
      "StockRemaining":80
 ```
 
-`],`
+`}` `],`
 
 ```json
    "IdentityProviderStock":[
+```
+
+`{`
+
+```json
      "StockUsed":20,
      "StockTotal":100,
      "StockRemaining":80
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Description":"Used in the production environment",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
    "CreateTime":1652085686179,
    "DefaultEndpoint":[
+```
+
+`{`
+
+```json
      "Status":"resolved",
      "Endpoint":"example-xxx.aliyunidaas.com"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.1.6 GetInstanceLicense
 
@@ -2870,7 +2932,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetInstanceLicense &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -2894,6 +2956,8 @@ Sample success responses `JSON` format
   "LicenseId":"license_1234xxxx",
   "Edition":"free"
 ```
+
+`}` `}`
 
 #### 1.4.2 Applications
 
@@ -2938,12 +3002,14 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateApplication &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationName=Ram Account SSO &ApplicationSourceType=urn:alibaba:idaas:app:source:standard &SsoType=saml2 &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2xxxx"
 ```
+
+`}`
 
 ###### 1.4.2.1.2 DeleteApplication
 
@@ -2975,11 +3041,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.1.3 UpdateApplicationDescription
 
@@ -3012,11 +3080,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateApplicationDescription &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.1.4 EnableApplication
 
@@ -3048,11 +3118,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=EnableApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.1.5 DisableApplication
 
@@ -3084,11 +3156,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DisableApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.1.6 GetApplication
 
@@ -3149,7 +3223,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -3173,6 +3247,8 @@ Sample success responses `JSON` format
   "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
   "AuthorizationType":"authorize_required"
 ```
+
+`}` `}`
 
 ###### 1.4.2.1.7 ListApplications
 
@@ -3235,6 +3311,11 @@ Sample success responses `JSON` format
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Applications":[
+```
+
+`{`
+
+```json
    "Status":"enabled",
    "ApplicationName":"SAML application",
    "Description":"A single application whose code is pkces",
@@ -3252,7 +3333,7 @@ Sample success responses `JSON` format
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.1.8 ListApplicationsForNetworkZone
 
@@ -3301,24 +3382,31 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListApplicationsForNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=zone123456 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "PreviousToken":"test",
  "Applications":[
+```
+
+`{`
+
+```json
    "ApplicationName":"SAML application",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
  "MaxResults":10
 ```
+
+`}`
 
 ###### 1.4.2.1.9 ListApplicationsForGroup
 
@@ -3361,18 +3449,23 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListApplicationsForGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_miu8e4t4d7i4u7uwezgr54xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Applications":[
+```
+
+`{`
+
+```json
    "HasDirectAuthorization":true,
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "HasInheritAuthorization":false
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.1.10 GetApplicationTemplate
 
@@ -3423,7 +3516,7 @@ Sample requests
 https://[Endpoint]/?Action=GetApplicationTemplate &ApplicationTemplateId=apt_ramuser_xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "ApplicationTemplate":{
@@ -3488,11 +3581,13 @@ Sample requests
 https://[Endpoint]/?Action=UpdateApplicationInfo &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationName=Ram Account SSO &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.1.12 ListApplicationsForNetworkAccessEndpoint
 
@@ -3535,19 +3630,24 @@ Sample requests
 https://[Endpoint]/?Action=ListApplicationsForNetworkAccessEndpoint &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkAccessEndpointId=nae_mxzj4c44ctyectkggtg4mxxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
  "ApplicationsForNetworkAccessEndpoint":[
+```
+
+`{`
+
+```json
    "ApplicationName":"cloudSSO",
    "InstanceId":"idaas_6ed5syotlwdrgmbzn7qn5xxxxx",
    "ApplicationId":"app_m5nzr3kk4njkco2nnc4wjxxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.2.2 SSO
 
@@ -3581,11 +3681,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=EnableApplicationSso &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.2.2 DisableApplicationSso
 
@@ -3617,11 +3719,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DisableApplicationSso &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.2.3 SetApplicationSsoConfig
 
@@ -3714,11 +3818,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetApplicationSsoConfig &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.2.4 GetApplicationSsoConfig
 
@@ -3817,7 +3923,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetApplicationSsoConfig &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -3843,21 +3949,31 @@ Sample success responses `JSON` format
 ```json
   "SamlSsoConfig":{
    "AttributeStatements":[
+```
+
+`{`
+
+```json
      "AttributeValueExpression":"",
      "AttributeName":""
 ```
 
-`],`
+`}` `],`
 
 ```json
    "NameIdValueExpression":"",
    "ResponseSigned":"",
    "OptionalRelayStates":[
+```
+
+`{`
+
+```json
      "RelayState":"",
      "DisplayName":""
 ```
 
-`],`
+`}` `],`
 
 ```json
    "SpEntityId":"",
@@ -3883,11 +3999,16 @@ Sample success responses `JSON` format
    "PkceChallengeMethods":"",
    "RefreshTokenEffective":"",
    "CustomClaims":[
+```
+
+`{`
+
+```json
      "ClaimName":"",
      "ClaimValueExpression":""
 ```
 
-`],`
+`}` `],`
 
 ```json
    "PostLogoutRedirectUris":"",
@@ -3939,6 +4060,8 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
+`}`
+
 ###### 1.4.2.3.2 AuthorizeApplicationToOrganizationalUnits
 
 Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
@@ -3970,11 +4093,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=AuthorizeApplicationToOrganizationalUnits &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &OrganizationalUnitIds=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.3.3 AuthorizeApplicationToGroups
 
@@ -4007,11 +4132,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=AuthorizeApplicationToGroups &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &GroupIds=group_miu8e4t4d7i4u7uwezgr54xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.3.4 RevokeApplicationFromUsers
 
@@ -4047,11 +4174,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=RevokeApplicationFromUsers &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &UserIds=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.3.5 RevokeApplicationFromOrganizationalUnits
 
@@ -4087,11 +4216,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=RevokeApplicationFromOrganizationalUnits &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &OrganizationalUnitIds=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.3.6 RevokeApplicationFromGroups
 
@@ -4124,11 +4255,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=RevokeApplicationFromGroups &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &GroupIds=group_miu8e4t4d7i4u7uwezgr54xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.3.7 UpdateApplicationAuthorizationType
 
@@ -4161,7 +4294,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateApplicationAuthorizationType &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &AuthorizationType=authorize_required &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
@@ -4203,16 +4336,21 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListUsersForApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Users":[
+```
+
+`{`
+
+```json
    "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.3.9 ListOrganizationalUnitsForApplication
 
@@ -4253,16 +4391,21 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListOrganizationalUnitsForApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "OrganizationalUnits":[
+```
+
+`{`
+
+```json
    "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx"
 ```
 
-`]`
+`}` `]`
 
 ###### 1.4.2.3.10 ListGroupsForApplication
 
@@ -4300,16 +4443,21 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListGroupsForApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Groups":[
+```
+
+`{`
+
+```json
    "GroupId":"group_miu8e4t4d7i4u7uwezgr54xxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.3.11 ListApplicationsForOrganizationalUnit
 
@@ -4358,12 +4506,17 @@ Sample success responses `JSON` format
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Applications":[
+```
+
+`{`
+
+```json
    "HasDirectAuthorization":"",
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "HasInheritAuthorization":""
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.3.12 ListApplicationsForUser
 
@@ -4410,18 +4563,23 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListApplicationsForUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Applications":[
+```
+
+`{`
+
+```json
    "HasDirectAuthorization":true,
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "HasInheritAuthorization":false
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.2.4 Client keys
 
@@ -4459,7 +4617,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateApplicationClientSecret &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -4468,6 +4626,8 @@ Sample success responses `JSON` format
   "SecretId":" sci_k52x2ru63rlkflina5utgkxxxx",
   "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
+
+`}`
 
 ###### 1.4.2.4.2 DeleteApplicationClientSecret
 
@@ -4500,7 +4660,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteApplicationClientSecret &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &SecretId= sci_k52x2ru63rlkflina5utgkxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
@@ -4537,7 +4697,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DisableApplicationClientSecret &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &SecretId=sci_k52x2ru63rlkflina5utgkxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
@@ -4623,12 +4783,17 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListApplicationClientSecrets &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationClientSecrets":[
+```
+
+`{`
+
+```json
    "Status":"enabled",
    "InstanceId":"idaas_wdziy4vnjt33ehhf7z2o2nxxxx",
 "ClientSecret":"eyJh*********************************************************************
@@ -4639,7 +4804,7 @@ Sample success responses `JSON` format
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.4.6 ObtainApplicationClientSecret
 
@@ -4680,7 +4845,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=ObtainApplicationClientSecret &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &SecretId= sci_k52x2ru63rlkflina5utgkxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -4693,6 +4858,8 @@ Sample success responses `JSON` format
   "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
   "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
+
+`}` `}`
 
 ###### 1.4.2.4.7 UpdateApplicationClientSecretExpirationTime
 
@@ -4730,11 +4897,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateApplicationClientSecretExpirationTime &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &SecretId=sci_k52x2ru63rlkflina5utgkxxxx &ExpirationTime=86400 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.2.5 Application tokens
 
@@ -4774,7 +4943,7 @@ Sample requests
 https://[Endpoint]/?Action=CreateApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenType=bearer_token &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "ApplicationTokens":{
@@ -4788,6 +4957,8 @@ Sample responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.5.2 EnableApplicationToken
 
@@ -4820,11 +4991,13 @@ Sample requests
 https://[Endpoint]/?Action=EnableApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.5.3 DisableApplicationToken
 
@@ -4857,11 +5030,13 @@ Sample requests
 https://[Endpoint]/?Action=DisableApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.5.4 UpdateApplicationTokenExpirationTime
 
@@ -4895,11 +5070,13 @@ Sample requests
 https://[Endpoint]/?Action=UpdateApplicationTokenExpirationTime &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &ExpirationTime=1735530123762 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.5.5 ListApplicationTokens
 
@@ -4950,10 +5127,15 @@ Sample requests
 https://[Endpoint]/?Action=ListApplicationTokens &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenType=bearer_token &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "ApplicationTokens":[
+```
+
+`{`
+
+```json
    "Status":"enabled",
    "ApplicationTokenId":"token_ndfxxigahelfne2y2hodehrxxxx",
    "Description":"jwqtts-0430",
@@ -4967,11 +5149,13 @@ Sample success responses `JSON` format
    "AliUid":1973166921975
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.5.6 ObtainApplicationToken
 
@@ -5030,6 +5214,8 @@ Sample success responses `JSON` format
   "ExpirationTime":1735610950000
 ```
 
+`}` `}`
+
 ###### 1.4.2.5.7 DeleteApplicationToken
 
 Deletes an application token.
@@ -5061,11 +5247,13 @@ Sample requests
 https://[Endpoint]/?Action=DeleteApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.2.6 Application accounts
 
@@ -5102,12 +5290,14 @@ Sample requests
 https://[Endpoint]/?Action=AddApplicationAccountToUser &InstanceId=eiam-111ccc1111 &ApplicationId=app_11111 &UserId=user_example &ApplicationUsername=zhangsan &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationAccountId":"aac_m6z7awz5kresi2ezgajsbkxxxx"
 ```
+
+`}`
 
 ###### 1.4.2.6.2 ListApplicationAccounts
 
@@ -5159,22 +5349,32 @@ Sample requests
 https://[Endpoint]/?Action=ListApplicationAccounts &InstanceId=eiam-111ccc1111 &ApplicationId=app_11111 &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationAccounts":[
+```
+
+`{`
+
+```json
    "InstanceId":"idaas_eznwtkkaucljizh6qqu7ptxxxx",
    "UserId":"user_tkmboufpnvpbitdpzrlngxzxxxx",
    "CreateTime":1737510353000,
    "ApplicationUserAttributes":[
+```
+
+`{`
+
+```json
      "AttributeValueExpression":"",
      "AttributeType":"",
      "AttributeName":""
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ApplicationId":"app_m43o4h5adeo5klvbbxgxxxxx",
@@ -5182,7 +5382,7 @@ Sample responses `JSON` format
    "ApplicationUsername":"test"
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.6.3 ListApplicationAccountsForUser
 
@@ -5233,22 +5433,32 @@ Sample requests
 https://[Endpoint]/?Action=ListApplicationAccountsForUser &InstanceId=eiam-111ccc1111 &ApplicationId=app_11111 &UserId=user_example &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationAccounts":[
+```
+
+`{`
+
+```json
    "InstanceId":"idaas_ki6hd7ihir4ybawogqk6xxxxx",
    "UserId":"user_tkmboufpnvpbitdpzrlng6mxxxxx",
    "CreateTime":1754359439000,
    "ApplicationUserAttributes":[
+```
+
+`{`
+
+```json
      "AttributeValueExpression":"",
      "AttributeType":"",
      "AttributeName":""
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ApplicationId":"app_na2r76irswrwfgpkz7xvcj7xxxxx",
@@ -5256,7 +5466,7 @@ Sample success responses `JSON` format
    "ApplicationUsername":"test"
 ```
 
-`]`
+`}` `]` `}`
 
 ###### 1.4.2.6.4 RemoveApplicationAccountFromUser
 
@@ -5296,11 +5506,13 @@ Sample requests
 https://[Endpoint]/?Action=RemoveApplicationAccountFromUser &InstanceId=eiam-111ccc1111 &ApplicationId=app_11111 &UserId=user_example &ApplicationAccountId=act_example &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.2.7 Open API operations
 
@@ -5334,11 +5546,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=EnableApplicationApiInvoke &InstanceId= idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.7.2 DisableApplicationApiInvoke
 
@@ -5370,11 +5584,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DisableApplicationApiInvoke &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.7.3 SetApplicationGrantScope
 
@@ -5411,11 +5627,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetApplicationGrantScope &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.7.4 GetApplicationGrantScope
 
@@ -5458,6 +5676,8 @@ Sample success responses `JSON` format
 [\"urn:alibaba:idaas:scope:user:read_all\",\"urn:alibaba:idaas:scope:user:manageall\"]"
 ```
 
+`}` `}`
+
 ##### 1.4.2.8 Application account synchronization
 
 ###### 1.4.2.8.1 DisableApplicationProvisioning
@@ -5495,6 +5715,8 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.8.2 EnableApplicationProvisioning
 
@@ -5591,11 +5813,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetApplicationProvisioningConfig &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ProvisionProtocolType=idaas_callback &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.8.4 SetApplicationProvisioningScope
 
@@ -5632,11 +5856,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetApplicationProvisioningScope &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ###### 1.4.2.8.5 GetApplicationProvisioningScope
 
@@ -5676,7 +5902,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetApplicationProvisioningScope &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -5686,6 +5912,8 @@ Sample success responses `JSON` format
   "UsedQuota":"",
   "OrganizationalUnitIds":""
 ```
+
+`}` `}`
 
 ###### 1.4.2.8.6 GetApplicationProvisioningConfig
 
@@ -5807,6 +6035,8 @@ hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtz
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
+`}`
+
 #### 1.4.3 Account management
 
 ##### 1.4.3.1 CreateUser
@@ -5870,6 +6100,8 @@ Sample success responses `JSON` format
  "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
 
+`}`
+
 ##### 1.4.3.2 UpdateUser
 
 Updates the basic information about an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
@@ -5911,11 +6143,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.3 DeleteUser
 
@@ -5947,11 +6181,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.4 AddUserToOrganizationalUnits
 
@@ -5984,11 +6220,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=AddUserToOrganizationalUnits &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &OrganizationalUnitIds= &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.5 RemoveUserFromOrganizationalUnits
 
@@ -6021,11 +6259,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=RemoveUserFromOrganizationalUnits &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &OrganizationalUnitIds= &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.6 UpdateUserPassword
 
@@ -6063,11 +6303,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateUserPassword &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &Password=123456 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.7 UpdateUserDescription
 
@@ -6103,11 +6345,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateUserDescription &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.8 DisableUser
 
@@ -6139,11 +6383,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DisableUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.9 EnableUser
 
@@ -6179,11 +6425,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=EnableUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.10 UnlockUser
 
@@ -6219,11 +6467,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UnlockUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.11 SetUserPrimaryOrganizationalUnit
 
@@ -6262,11 +6512,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetUserPrimaryOrganizationalUnit &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.12 GetUser
 
@@ -6373,31 +6625,46 @@ Sample success responses `JSON` format
   "LockExpireTime":1652085686179,
   "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx",
   "OrganizationalUnits":[
+```
+
+`{`
+
+```json
     "OrganizationalUnitId":"",
     "Primary":"",
     "OrganizationalUnitName":""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "CustomFields":[
+```
+
+`{`
+
+```json
     "FieldValue":"",
     "FieldName":""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "UpdateTime":1652085686179,
   "PhoneNumber":"156xxxxxxx",
   "Groups":[
+```
+
+`{`
+
+```json
     "GroupName":"",
     "Description":"",
     "GroupId":""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "UserSourceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
@@ -6409,6 +6676,8 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.3.13 ListUsers
 
@@ -6497,12 +6766,17 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListUsers &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Users":[
+```
+
+`{`
+
+```json
    "UserSourceType":"build_in",
    "Status":"enabled",
    "Email":"user@example.com",
@@ -6527,7 +6801,7 @@ Sample success responses `JSON` format
    "PhoneRegion":"86"
 ```
 
-`]`
+`}` `]`
 
 #### 1.4.4 Organization management
 
@@ -6565,12 +6839,14 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateOrganizationalUnit &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitName=test_ou_name &ParentId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.2 Deletes an EIAM organization
 
@@ -6602,11 +6878,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteOrganizationalUnit &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.3 UpdateOrganizationalUnit
 
@@ -6642,11 +6920,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateOrganizationalUnit &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.4 DeleteOrganizationalUnitChildren
 
@@ -6678,11 +6958,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteOrganizationalUnitChildren &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.5 UpdateOrganizationalUnitParentId
 
@@ -6715,11 +6997,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateOrganizationalUnitParentId &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &ParentId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.6 UpdateOrganizationalUnitDescription
 
@@ -6752,11 +7036,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateOrganizationalUnitDescription &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.7 Query the information about the root EIAM organization in IDaaS
 
@@ -6824,6 +7110,8 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
+`}`
+
 ##### 1.4.4.8 Queries the information about an EIAM organization.
 
 **organization.**
@@ -6880,7 +7168,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetOrganizationalUnit &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "OrganizationalUnit":{
@@ -6902,6 +7190,8 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.4.9 Query information about EIAM organizations in a list
 
@@ -6961,11 +7251,21 @@ http(s)://[Endpoint]/?Action=ListOrganizationalUnits &InstanceId=idaas_ue2jvisn3
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "TotalCount":1000,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "OrganizationalUnits":[
+```
+
+`{`
+
+```json
    "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx",
    "ParentId":"ou_wovwffm62xifdziem7an7xxxxx",
    "Description":"Test organization",
@@ -6979,7 +7279,7 @@ Sample success responses
    "OrganizationalUnitSourceType":"build_in"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.4.10 ListOrganizationalUnitParents
 
@@ -7019,11 +7319,16 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Parents":[
+```
+
+`{`
+
+```json
    "OrganizationalUnitId":"ou_4lag76zc2km5ssg5vsmm2lznvu",
    "ParentId":"ou_x3beoyepv2ls5iwuge3xhjkwbm"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 1.4.5 account group management
 
@@ -7065,11 +7370,18 @@ http(s)://[Endpoint]/?Action=CreateGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
 ```
+
+`}`
 
 ##### 1.4.5.2 AddUsersToGroup
 
@@ -7108,11 +7420,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=AddUsersToGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &UserIds=[ou_001] &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.5.3 DeleteGroup
 
@@ -7144,11 +7458,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.5.4 RemoveUsersFromGroup
 
@@ -7185,11 +7501,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=RemoveUsersFromGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &UserIds=[ou_001] &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.5.5 UpdateGroup
 
@@ -7215,17 +7533,21 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=UpdateGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.5.6 UpdateGroupDescription
 
@@ -7258,11 +7580,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateGroupDescription &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.5.7 GetGroup
 
@@ -7307,7 +7631,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "Group":{
@@ -7327,6 +7651,8 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.5.8 ListGroups
 
@@ -7386,6 +7712,11 @@ Sample success responses `JSON` format
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Groups":[
+```
+
+`{`
+
+```json
    "GroupName":"group_name",
    "Description":"test group",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
@@ -7397,7 +7728,7 @@ Sample success responses `JSON` format
    "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.5.9 ListUsersForGroup
 
@@ -7446,12 +7777,17 @@ Sample responses `JSON` format
  "TotalCount":1000,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Users":[
+```
+
+`{`
+
+```json
    "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx",
    "GroupMemberRelationSourceId":"",
    "GroupMemberRelationSourceType":""
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.5.10 ListGroupsForUser
 
@@ -7485,24 +7821,31 @@ This operation does not have operation-specific request headers and uses only co
 | - GroupMember RelationSourc eId | String | idaas igc5glpu2ye _ 7x5iyagkppizxxx | The ID of the source of the group member relationship. |
 | - GroupMember RelationSourc eType | String | build in _ | The type of the source of the group members. |
 
+**Example**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ListGroupsForUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":1000,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Groups":[
+```
+
+`{`
+
+```json
    "GroupMemberRelationSourceId":"",
    "GroupMemberRelationSourceType":"",
    "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 1.4.6 IdP management
 
@@ -7633,6 +7976,8 @@ This operation does not have operation-specific request headers and uses only co
 | IdentityProvid erId | String | idp mwpcwnhrimlr _ 2horxXXXX | The IdP ID. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -7641,11 +7986,18 @@ http(s)://[Endpoint]/?Action=CreateIdentityProvider &InstanceId=idaas_ue2jvisn35
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "IdentityProviderId":"idp_mwpcwnhrimlr2horxXXXX",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.6.2 Delete an IdP
 
@@ -7669,6 +8021,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -7677,10 +8031,17 @@ http(s)://[Endpoint]/?Action=DeleteIdentityProvider &InstanceId=idaas_ue2jvisn35
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.6.3 UpdateIdentityProvider
 
@@ -7756,11 +8117,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateIdentityProvider &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &IdentityProviderId=idp_my664lwkhpicbyzirog3xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.6.4 Obtain an IdP
 
@@ -7899,8 +8262,13 @@ http(s)://[Endpoint]/?Action=GetIdentityProvider &InstanceId=idaas_ue2jvisn35ea5
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "IdentityProviderDetail":{
   "AuthnSourceSupplier":"urn:alibaba:idaas:idp:bytedance:lark",
@@ -7961,11 +8329,16 @@ Sample success responses
   "LockReason":"financial",
   "UdPushConfig":{
    "UdSyncScopeConfigs":[
+```
+
+`{`
+
+```json
      "SourceScopes":"[\"\"ou_xxx,\"ou_xxxx\"]",
      "TargetScope":"ou_123xxxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "IncrementalCallbackStatus":"disabled"
@@ -8014,11 +8387,16 @@ Sample success responses
    "CorpId":"ding_xxxxx",
    "CorpName":"Test enterprise",
    "AuthedUsers":[
+```
+
+`{`
+
+```json
      "UserId":"130308333929200479",
      "Name":"Victor XX"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "UdPullStatus":"disabled",
@@ -8055,6 +8433,8 @@ Sample success responses
 ```json
   "IdentityProviderExternalId":"idp_xxxx"
 ```
+
+`}` `}`
 
 ##### 1.4.6.5 ListIdentityProviders
 
@@ -8121,12 +8501,17 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListIdentityProviders &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "IdentityProviders":[
+```
+
+`{`
+
+```json
    "IdentityProviderId":"idp_m5b5wd5s2hpq4t6iaehhXXX",
    "Description":null,
    "AuthnSourceSupplier":"urn:alibaba:idaas:idp:bytedance:lark",
@@ -8148,7 +8533,7 @@ Sample responses `JSON` format
    "IncrementalCallbackStatus":"enabled"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.6.6 Disable data push from an IdP
 
@@ -8172,6 +8557,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -8180,10 +8567,17 @@ http(s)://[Endpoint]/?Action=DisableIdentityProviderUdPull &InstanceId=idaas_ue2
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.6.7 Enable synchronization from an IdP
 
@@ -8215,11 +8609,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=EnableIdentityProviderUdPull &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &IdentityProviderId=idp_my664lwkhpicbyzirog3xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.6.8 SetIdentityProviderUdPullConfiguration
 
@@ -8280,11 +8676,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetIdentityProviderUdPullConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &IdentityProviderId=idp_my664lwkhpicbyzirog3xxxxx &IncrementalCallbackStatus=disabled &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.6.9 Query the pulling configurations of an IdP
 
@@ -8346,8 +8744,13 @@ http(s)://[Endpoint]/?Action=GetIdentityProviderUdPullConfiguration &InstanceId=
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "UdPullConfiguration":{
   "LdapUdPullConfig":{
    "GroupObjectClass":"",
@@ -8391,6 +8794,8 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
+`}`
+
 #### 1.4.7 Password policies
 
 ##### 1.4.7.1 SetForgetPasswordConfiguration
@@ -8424,11 +8829,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetForgetPasswordConfiguration &InstanceId=eiam-111ccc1111 &ForgetPasswordStatus=enabled &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.7.2 SetPasswordInitializationConfiguration
 
@@ -8463,11 +8870,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetPasswordInitializationConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &PasswordInitializationStatus=enabled &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.7.3 SetPasswordExpirationConfiguration
 
@@ -8541,17 +8950,21 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=SetPasswordHistoryConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &PasswordHistoryStatus=enabled &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.7.5 SetPasswordComplexityConfiguration
 
@@ -8576,17 +8989,21 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=SetPasswordComplexityConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &PasswordMinLength=10 &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.7.6 Queries the forgot password policy of an EIAM instance
 
@@ -8628,7 +9045,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetForgetPasswordConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -8639,6 +9056,8 @@ Sample success responses `JSON` format
   "AuthenticationChannels":"",
   "EnableSms":true
 ```
+
+`}` `}`
 
 ##### 1.4.7.7 Queries the password initialization configurations of an EIAM) instance
 
@@ -8676,7 +9095,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetPasswordInitializationConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -8686,6 +9105,8 @@ Sample success responses `JSON` format
   "PasswordInitializationNotificationChannels":"",
   "PasswordInitializationStatus":"enabled"
 ```
+
+`}` `}`
 
 ##### 1.4.7.8 GetPasswordHistoryConfiguration
 
@@ -8714,13 +9135,15 @@ This operation does not have operation-specific request headers and uses only co
 | - PasswordHisto ryStatus | String | enabled | Indicates the status of the password history feature. Valid values: enabled disabled |
 | - PasswordHisto ryMaxRetentio n | Integer | 3 | The number of recent passwords that are retained. |
 
+**Example**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=GetPasswordHistoryConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -8728,6 +9151,8 @@ Sample responses `JSON` format
   "PasswordHistoryStatus":"enabled",
   "PasswordHistoryMaxRetention":3
 ```
+
+`}` `}`
 
 ##### 1.4.7.9 Queries the password expiration policy of an EIAM instance.
 
@@ -8781,7 +9206,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetPasswordExpirationConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "PasswordExpirationConfiguration":{
@@ -8800,6 +9225,8 @@ Sample success responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.7.10 Query the password complexity policy of an EIAM instance of IDaaS
 
@@ -8838,19 +9265,31 @@ http(s)://[Endpoint]/?Action=GetPasswordComplexityConfiguration &InstanceId=idaa
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "PasswordComplexityConfiguration":{
   "PasswordComplexityRules":[
+```
+
+`{`
+
+```json
     "PasswordCheckType":""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "PasswordMinLength":3
 ```
+
+`}` `}`
 
 #### 1.4.8 Synchronization
 
@@ -9089,38 +9528,68 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListSynchronizationJobs &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
  "SynchronizationJobs":[
+```
+
+`{`
+
+```json
    "Status":"success",
    "TriggerType":"auto",
    "Result":[
+```
+
+`{`
+
+```json
      "GroupMemberStatistics":[
+```
+
+`{`
+
+```json
        "Same":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Deleted":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Binded":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
@@ -9140,58 +9609,88 @@ Sample success responses `JSON` format
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Pushed":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Updated":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
      "GroupStatistics":[
+```
+
+`{`
+
+```json
        "Same":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Deleted":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Binded":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Created":[
@@ -9209,56 +9708,86 @@ Sample success responses `JSON` format
 
 ```json
        "Pushed":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Updated":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
      "ErrorCode":"ErrorCodeNotFound",
      "ErrorMessage":"Request parameter error",
      "OrganizationalUnitStatistics":[
+```
+
+`{`
+
+```json
        "Same":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Deleted":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Binded":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Created":[
@@ -9277,57 +9806,92 @@ Sample success responses `JSON` format
 
 ```json
        "Pushed":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Updated":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
      "UserStatistics":[
+```
+
+`{`
+
+```json
        "Same":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Exported":[
+```
+
+`{`
+
+```json
          "Failed":3,
          "Total":5,
          "Skipped":1,
          "Success":2
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Deleted":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Binded":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
@@ -9338,33 +9902,48 @@ Sample success responses `JSON` format
 
 ```json
        "Created":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Pushed":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`],`
+`}` `],`
 
 ```json
        "Updated":[
+```
+
+`{`
+
+```json
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
 ```
 
-`]` `]` `],`
+`}` `]` `}` `]` `}` `],`
 
 ```json
    "SynchronizationJobId":"sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx",
@@ -9376,7 +9955,7 @@ Sample success responses `JSON` format
    "TargetId":"idp_my664lwkhpicbyzirog3xxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.8.2 Runs a synchronization task
 
@@ -9423,12 +10002,14 @@ Sample requests
 http(s)://[Endpoint]/?Action=RunSynchronizationJob &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &TargetId=idp_my664lwkhpicbyzirog3ngxxxxx &TargetType=identity_provider &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "SynchronizationJobId":"sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.8.3 GetSynchronizationJob
 
@@ -9633,7 +10214,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetSynchronizationJob &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &SynchronizationJobId=sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -9703,7 +10284,7 @@ Sample success responses `JSON` format
      "Success":10
 ```
 
-`},`
+`}` `},`
 
 ```json
    "GroupStatistics":{
@@ -9764,7 +10345,7 @@ Sample success responses `JSON` format
      "Success":10
 ```
 
-`},`
+`}` `},`
 
 ```json
    "ErrorCode":"ErrorCodeNotFound",
@@ -9831,7 +10412,7 @@ Sample success responses `JSON` format
      "Success":10
 ```
 
-`},`
+`}` `},`
 
 ```json
    "UserStatistics":{
@@ -9895,7 +10476,7 @@ Sample success responses `JSON` format
      "Success":10
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "SynchronizationJobId":"sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx",
@@ -9906,7 +10487,7 @@ Sample success responses `JSON` format
   "TargetId":"idp_my664lwkhpicbyzirog3nxxxxx"
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>0441BD79-92F3-53AA-8657-F8CE4A2B912A</RequestId> <SynchronizationJob>
@@ -10130,12 +10711,14 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateNetworkAccessEndpoint &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkAccessEndpointName=VPCEndpointForXX &VpcId=vpc-examplexxx &VpcRegionId=cn-hangzhou &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkAccessEndpointId":"nae_examplexxxx"
 ```
+
+`}`
 
 ##### 1.4.9.2 DeleteNetworkAccessEndpoint
 
@@ -10167,11 +10750,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteNetworkAccessEndpoint &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkAccessEndpointId=nae_examplexxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.9.3 UpdateNetworkAccessEndpointName
 
@@ -10196,17 +10781,21 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=UpdateNetworkAccessEndpointName &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkAccessEndpointId=nae_examplexxxx &NetworkAccessEndpointName=VPCEndpointForXX &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.9.4 Query the regions that support network endpoints of IDaaS
 
@@ -10239,6 +10828,8 @@ This operation does not have operation-specific request headers and uses only co
 | -RegionId | String | cn-hangzhou | The region ID. |
 | -LocalName | String | China (Hangzhou) | The region name. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -10247,15 +10838,25 @@ http(s)://[Endpoint]/?Action=ListNetworkAccessEndpointAvailableRegions &<Common 
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Regions":[
+```
+
+`{`
+
+```json
    "RegionId":"cn-hangzhou",
    "LocalName":"China (Hangzhou)"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.9.5 ListNetworkAccessEndpointAvailableZones
 
@@ -10289,16 +10890,21 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListNetworkAccessEndpointAvailableZones &NaeRegionId=cn-hangzhou &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Zones":[
+```
+
+`{`
+
+```json
    "ZoneId":"cn-hangzhou-j",
    "LocalName":"Hangzhou Zone J"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.9.6 GetNetworkAccessEndpoint
 
@@ -10367,6 +10973,8 @@ Sample responses `JSON` format
   "EgressPublicIpAddresses":""
 ```
 
+`}` `}`
+
 ##### 1.4.9.7 ListNetworkAccessEndpoints
 
 Queries the network endpoints of an IDaaS EIAM instance.
@@ -10425,13 +11033,18 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListNetworkAccessEndpoints &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
  "NetworkAccessEndpoints":[
+```
+
+`{`
+
+```json
    "Status":"running",
    "VpcId":"vpc-examplexxx",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
@@ -10445,7 +11058,7 @@ Sample responses `JSON` format
    "NetworkAccessEndpointType":"private"
 ```
 
-`]`
+`}` `]`
 
 ##### 1.4.9.8 ListNetworkAccessPaths
 
@@ -10493,11 +11106,16 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListNetworkAccessPaths &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkAccessEndpointId=nae_examplexxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkAccessPaths":[
+```
+
+`{`
+
+```json
    "Status":"running",
    "NetworkAccessPathId":"nap_examplexxx",
    "PrivateIpAddress":"cn-hangzhou",
@@ -10509,7 +11127,7 @@ Sample responses `JSON` format
    "NetworkInterfaceId":"eni-examplexxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.9.9 Query the VPCs within a user account when creating a network endpoint
 
@@ -10552,21 +11170,33 @@ http(s)://[Endpoint]/?Action=ListVpcs &ResourceSetId=12 &<Common request paramet
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "Vpcs":[
+```
+
+`{`
+
+```json
    "Description":"Test",
    "VpcId":"vpc-examplexxx",
    "CidrBlock":"10.0.0.0/24",
    "VpcName":"Name"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.9.10 ListVSwitches
 
@@ -10614,6 +11244,11 @@ Sample success responses `JSON` format
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "VSwitches":[
+```
+
+`{`
+
+```json
    "Description":"test",
    "VpcId":"vpc-examplexxx",
    "ZoneId":"cn-hangzhou-h",
@@ -10623,7 +11258,7 @@ Sample success responses `JSON` format
    "VSwitchName":"test"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.9.11 ListNetworkInterfaces
 
@@ -10675,18 +11310,28 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListNetworkInterfaces &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkInterfaceSets":[
+```
+
+`{`
+
+```json
    "Status":"Available",
    "AssociatedPublicIp":[
+```
+
+`{`
+
+```json
      "PublicIpAddress":"116.62.**.**"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Type":"Primary",
@@ -10699,7 +11344,7 @@ Sample responses `JSON` format
    "SecurityGroupIds":"Security group ID list"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.9.12 ListNatGateways
 
@@ -10759,18 +11404,28 @@ Sample responses `JSON` format
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NatGateways":[
+```
+
+`{`
+
+```json
    "Description":"NAT gateway description",
    "VpcId":"vpc-examplexxx",
    "NetworkType":"internet",
    "EipBindMode":"MULTI_BINDED",
    "IpLists":[
+```
+
+`{`
+
+```json
      "UsingStatus":"UsedByForwardTable",
      "PrivateIpAddress":"172.17.**.**",
      "AllocationId":"eip-25877c70gddh****",
      "IpAddress":"192.168.XX.XX"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "RegionId":"cn-hangzhou",
@@ -10779,7 +11434,7 @@ Sample responses `JSON` format
    "Name":"test"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.9.13 CheckServiceLinkedRoleExistence
 
@@ -10810,12 +11465,14 @@ Sample requests
 http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleExistence &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Exists":true
 ```
+
+`}`
 
 ##### 1.4.9.14 CreateServiceLinkedRole
 
@@ -10891,6 +11548,8 @@ Sample responses `JSON` format
  "BrandId":"brand_xxxx"
 ```
 
+`}`
+
 ##### 1.4.10.2 UpdateBrand
 
 Modifies a brand.
@@ -10959,6 +11618,8 @@ This operation does not have operation-specific request headers and uses only co
 | NetworkZoneI d | String | network m6a57vre _ 4g3h7m725yrq6px xxx | The ID of the network zone. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -10967,11 +11628,18 @@ http(s)://[Endpoint]/?Action=CreateNetworkZone &InstanceId=idaas_ue2jvisn35ea5lm
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "NetworkZoneId":"network_m6a57vre4g3h7m725yrq6pxxxx",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.11.2 DeleteNetworkZone
 
@@ -11003,11 +11671,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.11.3 UpdateNetworkZone
 
@@ -11050,11 +11720,13 @@ Sample requests
 https://[Endpoint]/?Action=UpdateNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &NetworkZoneName=IPV4Test &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.11.4 Update the description of a network zone object
 
@@ -11092,10 +11764,17 @@ https://[Endpoint]/?Action=UpdateNetworkZoneDescription &InstanceId=idaas_ue2jvi
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.11.5 ListNetworkZones
 
@@ -11148,10 +11827,15 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListNetworkZones &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "NetworkZones":[
+```
+
+`{`
+
+```json
    "NetworkZoneId":"network_m223wbvc3sn3uakfnxvhbxxxxx",
    "Description":"test",
    "VpcId":"vpc-bp1usdmfqcgoy5ebxxxxx",
@@ -11162,7 +11846,7 @@ Sample responses `JSON` format
    "Ipv4Cidrs":""
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":100,
@@ -11213,7 +11897,7 @@ Sample requests
 https://[Endpoint]/?Action=GetNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
@@ -11227,6 +11911,8 @@ Sample success responses `JSON` format
   "NetworkZoneType":"arn:alibaba:idaas:network:zone:classic",
   "Ipv4Cidrs":""
 ```
+
+`}` `}`
 
 #### 1.4.12 Others
 
@@ -11263,11 +11949,13 @@ Sample requests
 https://[Endpoint]/?Action=DisableIdentityProviderAuthn &InstanceId=eiam-111ccc1111 &IdentityProviderId=idp_11111 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.2 EnableIdentityProviderAuthn
 
@@ -11303,11 +11991,13 @@ Sample requests
 https://[Endpoint]/?Action=EnableIdentityProviderAuthn &InstanceId=eiam-111ccc1111 &IdentityProviderId=idp_11111 &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.3 ListApplicationSupportedProvisionProtocolTypes
 
@@ -11347,7 +12037,7 @@ Sample requests
 https://[Endpoint]/?Action=ListApplicationSupportedProvisionProtocolTypes &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "ApplicationSupportedProvisionProtocolType":{
@@ -11392,10 +12082,17 @@ https://[Endpoint]/?Action=DeleteBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xx
 
 Sample success responses
 
-```json
+```
  JSON format
+```
+
+`{`
+
+```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.5 Disables a brand
 
@@ -11427,11 +12124,13 @@ Sample requests
 https://[Endpoint]/?Action=DisableBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.6 EnableBrand
 
@@ -11463,11 +12162,13 @@ Sample requests
 https://[Endpoint]/?Action=EnableBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.7 GetBrand
 
@@ -11528,6 +12229,8 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
+`}`
+
 ##### 1.4.12.8 GetLoginRedirectApplicationForBrand
 
 Configures redirection to an application after Single Sign-On (SSO) for a brand.
@@ -11562,7 +12265,7 @@ Sample requests
 https://[Endpoint]/?Action=GetLoginRedirectApplicationForBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
  "BrandLoginRedirectApplication":{
@@ -11576,6 +12279,8 @@ Sample responses `JSON` format
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.9 Query a list of brands
 
@@ -11635,6 +12340,11 @@ Sample success responses
  "NextToken":"NTxxxexample",
  "MaxResults":20,
  "Brands":[
+```
+
+`{`
+
+```json
    "BrandName":"Custom Brand",
    "Status":"enabled",
    "BrandType":"user_custom",
@@ -11642,7 +12352,7 @@ Sample success responses
    "BrandId":"brand_xxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.12.10 SetLoginRedirectApplicationForBrand
 
@@ -11675,11 +12385,13 @@ Sample requests
 https://[Endpoint]/?Action=SetLoginRedirectApplicationForBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &ApplicationId=app_xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ##### 1.4.12.11 Changes the brand associated with a domain name
 
@@ -11714,11 +12426,13 @@ Sample requests
 https://[Endpoint]/?Action=UpdateDomainBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &DomainId=dm_examplexxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
+
+`}`
 
 ### 1.5 Release notes
 
@@ -12112,7 +12826,7 @@ POST /v2/{instanceId}/{applicationId}/oauth2/token HTTP/1.1
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "token_type": "Bearer",
@@ -12122,6 +12836,8 @@ Sample success responses `JSON` format
   "expires_at": 1653288641,
   "id_token": "xxxxx"
 ```
+
+`}`
 
 ##### 2.3.1.2 GetUserInfo
 
@@ -12152,11 +12868,13 @@ GET /v2/{instanceId}/{applicationId}/oauth2/userinfo HTTP/1.1
 
 **Examples**
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
   "key": "None"
 ```
+
+`}`
 
 **Error codes**
 
@@ -12211,12 +12929,14 @@ POST /v2/{instanceId}/{applicationId}/oauth2/revoke HTTP/1.1
 
 **Examples**
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
   "test": "test",
   "test2": 1
 ```
+
+`}`
 
 **Error codes**
 
@@ -12270,7 +12990,7 @@ GET /v2/{instanceId}/{applicationId}/provisioningScope HTTP/1.1
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "organizationalUnitIds": [
@@ -12284,7 +13004,7 @@ Sample success responses `JSON` format
     "group_wovwffm62xifdziem7an7xxxxx"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -12349,11 +13069,13 @@ POST /v2/{instanceId}/{applicationId}/organizationalUnits HTTP/1.1
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -12501,6 +13223,8 @@ Sample success responses `JSON` format
   "description": "xxxxx"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, see Service error codes.
@@ -12583,7 +13307,7 @@ Queries a list of organizations in Identity as a Service (IDaaS) Employee Identi
 
 **Usage notes**
 
-If you need to query child organizations in a root organization, set the following request parameter: "parentOrganizationalUnitId": "ou_root"
+If you need to query child organizations in a root organization, set the following request parameter: { "parentOrganizationalUnitId": "ou_root" }
 
 | Debug Debugging | Debug |
 |---|---|
@@ -12639,6 +13363,11 @@ Sample success responses `JSON` format
 ```json
   "totalCount": 1000,
   "data": [
+```
+
+`{`
+
+```json
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
       "organizationalUnitName": "name001",
@@ -12651,7 +13380,7 @@ Sample success responses `JSON` format
       "description": "Test organization"
 ```
 
-`]`
+`}` `]` `}`
 
 **Error codes**
 
@@ -12712,14 +13441,14 @@ GET /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitId}/
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "parentIds": [
     "ou_wovwffm62xifdziem7an7xxxxx"
 ```
 
-`]`
+`]` `}`
 
 **Error codes**
 
@@ -12785,11 +13514,13 @@ POST /v2/{instanceId}/{applicationId}/organizationalUnits/_/actions/getOrganizat
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -12866,11 +13597,13 @@ POST /v2/{instanceId}/{applicationId}/users HTTP/1.1
 
 **Examples**
 
-Sample responses `JSON` format
+Sample responses `JSON` format `{`
 
 ```json
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -13085,21 +13818,31 @@ Sample success responses `JSON` format
 ```json
   "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
   "organizationalUnits": [
+```
+
+`{`
+
+```json
       "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
       "organizationalUnitName": "name001",
       "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
   "primaryOrganizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
   "customFields": [
+```
+
+`{`
+
+```json
       "fieldName": "xxxx",
       "fieldValue": "Field value"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx",
@@ -13122,12 +13865,17 @@ Sample success responses `JSON` format
   "updateTime": 1652085686179,
   "description": "Test account",
   "groups": [
+```
+
+`{`
+
+```json
       "groupId": "group_ufdsasn35ea5lmthk267xxxxx",
       "groupName": "name_test",
       "description": "description_demo"
 ```
 
-`]`
+`}` `]` `}`
 
 **Error codes**
 
@@ -13318,6 +14066,11 @@ Sample responses `JSON` format
 ```json
   "totalCount": 1000,
   "data": [
+```
+
+`{`
+
+```json
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "userId": "user_d6sbsuumeta4h66ec3il7yxxxx",
       "username": "name001",
@@ -13340,7 +14093,7 @@ Sample responses `JSON` format
       "description": "Test account"
 ```
 
-`]`
+`}` `]` `}`
 
 **Error codes**
 
@@ -13512,11 +14265,13 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByEmail HTTP/1.1
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -13581,11 +14336,13 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByPhoneNumber HTT
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -13652,11 +14409,13 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByExternalId HTTP
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -13720,11 +14479,13 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByUsername HTTP/1
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -13890,23 +14651,30 @@ GET /v2/{instanceId}/{applicationId}/users/{userId}/actions/listGroupsForUser HT
 
 **Examples**
 
-Successful response `JSON` format
+Successful response `JSON` format `{`
 
 ```json
   "totalCount": 1000,
   "data": [
+```
+
+`{`
+
+```json
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "groupId": "user_d6sbsuumeta4h66ec3il7yxxxx",
       "groupMemberRelationSourceType": "build_in",
       "groupMemberRelationSourceId": "idaas_ue2jvisn35ea5lmthk267xxxxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "nextToken": "NTxxx",
   "maxResults": 20
 ```
+
+`}`
 
 #### 2.3.5 API operations related to account group management
 
@@ -13967,6 +14735,8 @@ Sample responses `JSON` format
   "updateTime": 1652085686179
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, see Service error codes.
@@ -14007,11 +14777,13 @@ POST /v2/{instanceId}/{applicationId}/groups HTTP/1.1
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "groupId": "group_wovwffm62xifdziem7an7xxxxx"
 ```
+
+`}`
 
 **Error codes**
 
@@ -14149,6 +14921,11 @@ Sample success responses `JSON` format
 ```json
   "totalCount": 1000,
   "data": [
+```
+
+`{`
+
+```json
       "groupName": "name_test",
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "createTime": 1652085686179,
@@ -14160,12 +14937,14 @@ Sample success responses `JSON` format
       "groupExternalId": "group_ufdsasn35ea5lmthk267xxxxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "nextToken": "NTxxx",
   "maxResults": 20
 ```
+
+`}`
 
 **Error codes**
 
@@ -14292,21 +15071,28 @@ If you set groupId to iggroup_all, the system queries accounts in all groups.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
   "totalCount": 1000,
   "data": [
+```
+
+`{`
+
+```json
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "userId": "user_001"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "nextToken": "NTxxx",
   "maxResults": 20
 ```
+
+`}`
 
 **Error codes**
 
@@ -14458,7 +15244,7 @@ POST /v2/<instance_id>/<app_id>/oauth2/token HTTP/1.0 Host: eiam-api-cn-hangzhou
   &redirect_uri=http%3A%2F%2Fwww.example.com%2Fsso%2Fcallback
 ```
 
-Sample response:
+Sample response: `{`
 
 ```json
   "token_type": "Bearer",
@@ -14468,7 +15254,7 @@ Sample response:
   "id_token": "eyJraWQiOiJLRVkyV************gRIadj-frOIRFChA"
 ```
 
-The user is logged in to the application. You can use one of the following methods to obtain more identity information about the logged-in user and create the application-side login state: i. Use the id_token in the response to obtain the user ID after verification. ii. Use the access_token in the response to send a request to the IDaaS user endpoint to obtain the information of the logged-in user. For more information, see the following section.
+`}` The user is logged in to the application. You can use one of the following methods to obtain more identity information about the logged-in user and create the application-side login state: i. Use the id_token in the response to obtain the user ID after verification. ii. Use the access_token in the response to send a request to the IDaaS user endpoint to obtain the information of the logged-in user. For more information, see the following section.
 
 > **Important:** The scope of user data you can obtain is specified by the scope parameter in the request sent to the authorization endpoint in Step 1.
 
@@ -14492,10 +15278,15 @@ An `id_token` is a signature token in JSON Web Token (JWT) format that contains 
 }.[Signature]
 ```
 
-Before you use the content to log in to the application, you must verify the signature to ensure that the token is issued by IDaaS, rather than another third-party service. This ensures the security of the login. Login security is mandatory. i. **Obtain the public key for signature verification** Before you verify the signature, you must obtain the endpoint for the public key for signature verification that is openly distributed by IDaaS. You can click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the endpoint for the public key for signature verification in the **Application Settings** section. The application can access this endpoint to obtain the public key information. You can also open this URL in a browser to view the public key information. Sample code:
+Before you use the content to log in to the application, you must verify the signature to ensure that the token is issued by IDaaS, rather than another third-party service. This ensures the security of the login. Login security is mandatory. i. **Obtain the public key for signature verification** Before you verify the signature, you must obtain the endpoint for the public key for signature verification that is openly distributed by IDaaS. You can click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the endpoint for the public key for signature verification in the **Application Settings** section. The application can access this endpoint to obtain the public key information. You can also open this URL in a browser to view the public key information. Sample code: `{`
 
 ```json
   "keys": [
+```
+
+`{`
+
+```json
       "kty": "RSA",
       "e": "AQAB",
       "use": "sig",
@@ -14504,7 +15295,7 @@ Before you use the content to log in to the application, you must verify the sig
 v4gP27T7u6bUy0GXTlh3eKE0v1LYB81nfqjF2uazlPwPR5yYOhhWcK-gMNByLfE3CnkDc1YGwA3dZmIz-Zj OCKy8xLaBuqjrvwn5tpMpAoYEEaH4jIm7unTdhbKEKspNR- UXKD8q9RppMh5Tn2sB6oPHlQANudJDgqSwEOevIrdmHU0Zqxrb9cscGH9hH0QjmYEu72yI8BVeliPo3jK6JIo Icj5K_t8BJlFQ9QLJ8_o9tmd3BFv5_LVsh4BKGw"
 ```
 
-`]` Then, you can use the code to verify the signature and obtain the content of `id_token` . ii. **Verify the signature and log in** You can find the tool in the corresponding language by visiting Libraries for Token Signing/Verification and use the tool in the code to verify signatures and parse
+`}` `]` `}` Then, you can use the code to verify the signature and obtain the content of `id_token` . ii. **Verify the signature and log in** You can find the tool in the corresponding language by visiting Libraries for Token Signing/Verification and use the tool in the code to verify signatures and parse
 
 ```
  id_token .
@@ -14575,12 +15366,19 @@ issuer, String appId) {
             for (JsonWebKey jsonWebKey: jsonWebKeySet.getJsonWebKeys()) {
                 if (signKeyId.equals(jsonWebKey.getKeyId())) {
                     return jsonWebKey.getKey();
+```
+
+`}` `}`
+
+```
             throw new RuntimeException("Cannot find verification key: " +
 signKeyId);
         });
         // Build a validator instance.
         return jwtConsumerBuilder.build();
 ```
+
+`}` `}`
 
 > **Important:** Replace the issuer, appId, jwkJson, and jwt field values in the code with the actual information that is obtained from EIAM.
 
@@ -14604,13 +15402,20 @@ This way, the application obtains the identity information about the logged-in u
 6. **Obtain the user information from the UserInfo endpoint**
 You can also obtain user information from the UserInfo endpoint. You can click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the endpoint for the public key for signature verification in the **Application Settings** section. The request for user information complies with the standard RFC6750. Sample request:
 
-```json
+```
 GET /v2/<instance_id>/<app_id>/oauth2/userinfo HTTP/1.0 Host: eiam-api-cn-hangzhou.aliyuncs.com Authorization: Bearer <AccessToken> Sample response:
+```
+
+`{`
+
+```json
     "sub": "user_dt6kj6yf64cf4wjaknpbxjcwuu",
     "name": "test",
     "preferred_username": "test",
     "updated_at": 1653899948
 ```
+
+`}`
 
 > **Note:** The characters returned by the UserInfo endpoint are consistent with the parameters in id_token. This indicates that the parameters configured in extended id_token are also returned from the UserInfo endpoint.
 
@@ -14779,6 +15584,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
             .oauth2Login();
 ```
 
+`}` `}`
+
 **Obtain user information**
 
 The toolkit automatically completes all the authorization calls and id_token verification. You can obtain the user information by injecting `@AuthenticationPrincipal OAuth2User user` :
@@ -14790,7 +15597,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal; imp
         return user;
 ```
 
-You can output user information on the /user endpoint. Use the user information to log the user on to complete the SSO process.
+`}` `}` You can output user information on the /user endpoint. Use the user information to log the user on to complete the SSO process.
 
 **Configurations when a proxy service is used**
 
@@ -14869,11 +15676,17 @@ When a selected event occurs, IDaaS sends a `POST` request to the configured **U
 **receiving synchronization requests**.
 The following code provides an example on how to configure request parameters:
 
-```json
-Content-Type: application/json;charset=utf-8 // An example of the body of a POST request from IDaaS. After the application obtains t he parameters, it verifies the signature. "event":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4 G9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+```
+Content-Type: application/json;charset=utf-8 // An example of the body of a POST request from IDaaS. After the application obtains t he parameters, it verifies the signature.
 ```
 
-All the parameters are passed in the `event` field in the JSON Web Token (JWT) format, which contains the signature. For more information, see RFC 7515: JSON Web Signature (JWS).
+`{`
+
+```json
+"event":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4 G9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+```
+
+`}` All the parameters are passed in the `event` field in the JSON Web Token (JWT) format, which contains the signature. For more information, see RFC 7515: JSON Web Signature (JWS).
 
 **Event format**
 
@@ -14885,7 +15698,7 @@ You must use the universal open source tools for various languages to parse the 
     "alg": "RS256"
 ```
 
-Sample `payload` :
+`}` Sample `payload` : `{`
 
 ```json
   "iss":"urn:alibaba:idaas:app:event",
@@ -14901,6 +15714,11 @@ Sample `payload` :
     "instanceId":"instance ID",  // The ID of the instance.
     "eventVersion":"V1.0",  // The version number of the event.
     "eventData":[
+```
+
+`{`
+
+```json
         "eventId":"",     // The ID of the event.
         "eventType":"",   // The type of the event.
         "eventTime":121313,  // The time when the event occurred.
@@ -14910,7 +15728,7 @@ organization, the value is the ID of the organization.
 event types. For more information, see Address book events.
 ```
 
-`]` The following table describes the fields contained.
+`}` `]` `}` `}` The following table describes the fields contained.
 
 |   | Paramete r | Position | Type | Description |
 |---|---|---|---|---|
@@ -14935,7 +15753,7 @@ The JWT signature must be verified to confirm that the `event` information is is
 
 **Data decryption (optional)**
 
-The encrypted transmission of event synchronization data is supported. The encrypted fields are passed in the `cipher_data` field in `payload` .
+The encrypted transmission of event synchronization data is supported. The encrypted fields are passed in the `cipher_data` field in `payload` . `{`
 
 ```json
     ...
@@ -14944,7 +15762,7 @@ The encrypted transmission of event synchronization data is supported. The encry
     ...
 ```
 
-After you enable the feature, you can enter an encryption key or generate an encryption key. Before IDaaS sends an event callback request, IDaaS uses this key to encrypt all the request data before transmission. IDaaS uses the AES-256 algorithm for symmetric encryption and encrypts events in the JSON Web Encryption (JWE) format. The application must use the same key for decryption to obtain the synchronization data. For more information, see Connect Java applications to IDaaS for account synchronization.
+`}` After you enable the feature, you can enter an encryption key or generate an encryption key. Before IDaaS sends an event callback request, IDaaS uses this key to encrypt all the request data before transmission. IDaaS uses the AES-256 algorithm for symmetric encryption and encrypts events in the JSON Web Encryption (JWE) format. The application must use the same key for decryption to obtain the synchronization data. For more information, see Connect Java applications to IDaaS for account synchronization.
 
 **Responses**
 
@@ -14968,43 +15786,63 @@ elf-managed applications
 | -eventCode | String | The error code returned. IDaaS records the result for troubleshooting. You can customize eventCode . |
 | -eventMessage | String | The error message returned. IDaaS records the cause of the result for troubleshooting. You can customize eventMessage . |
 
-Sample success responses:
+Sample success responses: `{`
 
 ```json
     "successEvents": [
+```
+
+`{`
+
+```json
             "eventId": "The ID of the event",
             "eventCode": "SUCCESS",
             "eventMessage": "SUCCESS"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "skippedEvents": [
+```
+
+`{`
+
+```json
             "eventId": "The ID of the event",
             "eventCode": "The error code returned",
             "eventMessage": "The error message returned"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "failedEvents": [
+```
+
+`{`
+
+```json
             "eventId": "The ID of the event",
             "eventCode": "The error code returned",
             "eventMessage": "The error message returned"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "retriedEvents": [
+```
+
+`{`
+
+```json
             "eventId": "The ID of the event",
             "eventCode": "The error code returned",
             "eventMessage": "The error message returned"
 ```
 
-`]` elf-managed applications
+`}` `]` `}` elf-managed applications
 
 |   | Important After the application receives the request, it must respond to the request with the HTTP 200 status code within 10 seconds. Otherwise, IDaaS determines that the synchronization fails and tries to push the event again up to five times at the respective intervals of 1s, 5s, 10s, 10s, and 10s. |   |   |
 |---|---|---|---|
@@ -15028,12 +15866,14 @@ Generally, the following error codes are returned.
 | too many request _ _ | 429 | If the business is busy and returns this error code, IDaaS will use throttling policies. |
 | internal error _ | 500 | Indicates an internal error. IDaaS automatically retries the synchronization. |
 
-Sample error responses
+Sample error responses `{`
 
 ```json
      "error": "invalid_token",
      "error_description": "The JWS token is invalid."
 ```
+
+`}`
 
 #### 4.2.2 Address book events
 
@@ -15092,7 +15932,7 @@ This event tests the connectivity based on the configuration information and val
 
 > **Note:** This event can be triggered only by performing a test with one click in the IDaaS console. You cannot trigger the event by calling an API operation.
 
-The following code shows the `payload` part of a sample request after signature verification:
+The following code shows the `payload` part of a sample request after signature verification: `{`
 
 ```json
   "iss": "urn:alibaba:idaas:app:event",
@@ -15108,6 +15948,11 @@ The following code shows the `payload` part of a sample request after signature 
     "aliUid": 151971404963****,
     "eventVersion": "V1.0",
     "eventData": [
+```
+
+`{`
+
+```json
           "eventId":"evnt_aaaac766x2somw2ptotoyk6ag6bmfkt5xpqprpq",
           "eventType":"urn:alibaba:idaas:app:event:common:test",
           "eventTime":"1648709509849",
@@ -15115,7 +15960,7 @@ The following code shows the `payload` part of a sample request after signature 
           "bizData":"{\"bizData\":\"req_xxxxxxxxxxsdfsdfsfd\"}"
 ```
 
-`]` After the application receives the request, the application must respond to the request and make sure that the value of the `eventId` parameter in `successEvents` is the same as that in the request. Otherwise, the test request fails. elf-managed applications
+`}` `]` `}` `}` After the application receives the request, the application must respond to the request and make sure that the value of the `eventId` parameter in `successEvents` is the same as that in the request. Otherwise, the test request fails. elf-managed applications
 
 ```json
   "successEvents": [
@@ -15124,34 +15969,49 @@ The following code shows the `payload` part of a sample request after signature 
       "eventMessage": "SUCCESS"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "skippedEvents": [
+```
+
+`{`
+
+```json
       "eventId": "",
       "eventCode": "",
       "eventMessage": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "failedEvents": [
+```
+
+`{`
+
+```json
       "eventId": "",
       "eventCode": "",
       "eventMessage": ""
 ```
 
-`],`
+`}` `],`
 
 ```json
   "retriedEvents": [
+```
+
+`{`
+
+```json
       "eventId": "",
       "eventCode": "",
       "eventMessage": ""
 ```
 
-`]`
+`}` `]` `}`
 
 **Incremental events for address book**
 
@@ -15182,21 +16042,31 @@ You can subscribe to this event to create an account for an onboarded employee. 
     "updateTime": "1648531553621",
     "description": "",
     "customFields": [
+```
+
+`{`
+
+```json
             "fieldName": "test_custom_field",
             "fieldValue": "test_value"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "primaryOrganizationalUnitId": "ou_bvluxnp2ef36uupdwob6km34a4",
     "organizationalUnits": [
+```
+
+`{`
+
+```json
             "organizationalUnitId": "ou_bvluxnp2ef36uupdwob6km34a4",
             "organizationalUnitName": "R&D department",
             "primary": true
 ```
 
-`]`
+`}` `]` `}`
 
 **Parameters**
 
@@ -15279,6 +16149,8 @@ You can subscribe to this event to create an organization. Event code: urn:aliba
     "description":"Created in IDaaS"
 ```
 
+`}`
+
 **Parameters**
 
 | Parameter | Field data type | Description |
@@ -15304,7 +16176,7 @@ You can subscribe to this event to update the parent organization of an organiza
 **Group events**
 
 1. **Create a group**
-You can subscribe to this event to create a group. Event code: urn:alibaba:idaas:app:event:ud:group:create. Example of parsed `bizData` :
+You can subscribe to this event to create a group. Event code: urn:alibaba:idaas:app:event:ud:group:create. Example of parsed `bizData` : `{`
 
 ```json
     "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
@@ -15312,7 +16184,7 @@ You can subscribe to this event to create a group. Event code: urn:alibaba:idaas
     "groupExternalId": "test_2024"
 ```
 
-Parameters
+`}` Parameters
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15329,15 +16201,20 @@ You can subscribe to this event to update the basic information of a group. Even
 3. **Delete a group**
 You can subscribe to this event to delete a group. Event code: urn:alibaba:idaas:app:event:ud:group:delete. For an example of parsed `bizData` , see the "Create a group" section of this topic.
 4. **Add members to a group**
-You can subscribe to this event to add members to a group. Event code: urn:alibaba:idaas:app:event:ud:group:add_user. Example of parsed `bizData` :
+You can subscribe to this event to add members to a group. Event code: urn:alibaba:idaas:app:event:ud:group:add_user. Example of parsed `bizData` : `{`
 
 ```json
     "addedMembers": [
+```
+
+`{`
+
+```json
             "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
             "memberName": "Jim"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
@@ -15345,7 +16222,7 @@ You can subscribe to this event to add members to a group. Event code: urn:aliba
     "groupExternalId": "test_2024"
 ```
 
-Parameters
+`}` Parameters
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15357,15 +16234,20 @@ Parameters
 | -memberName | String | The display name of the user. |
 
 5. **Remove members from a group**
-You can subscribe to this event to remove members from a group. elf-managed applications Event code: urn:alibaba:idaas:app:event:ud:group:remove_user. Example of parsed `bizData` :
+You can subscribe to this event to remove members from a group. elf-managed applications Event code: urn:alibaba:idaas:app:event:ud:group:remove_user. Example of parsed `bizData` : `{`
 
 ```json
     "removedMembers": [
+```
+
+`{`
+
+```json
             "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
             "memberName": "Jim"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
@@ -15373,7 +16255,7 @@ You can subscribe to this event to remove members from a group. elf-managed appl
     "groupExternalId": "test_2024"
 ```
 
-Parameters
+`}` Parameters
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15397,18 +16279,23 @@ You can subscribe to this event to synchronize all groups. Event code: urn:aliba
 
 ```json
     "allMembers": [
+```
+
+`{`
+
+```json
             "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
             "memberName": "Jim"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "memberId": "user_zakg7oeea1234ff2bzcexample",
             "memberName": "Bob"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
@@ -15416,7 +16303,7 @@ You can subscribe to this event to synchronize all groups. Event code: urn:aliba
     "groupExternalId": "test_2024"
 ```
 
-Parameters
+`}` Parameters
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15440,10 +16327,15 @@ After the preceding procedure is completed, the application receives the request
 1. . Signature verification**
 Obtain the public key endpoint from the synchronization configuration of the application. For more information, see **User Guide (Tenant) > Applications > Application Management**
 **> Synchronize IDaaS accounts to an application by using SCIM**.
-In this topic, a Java utility class that directly obtains the public key from the public key endpoint is provided. If the programming language that you use requires public key information, you may need to click the public key endpoint URL to obtain the public key, and store the public key in a .pem file locally. The following code provides an example of a public key:
+In this topic, a Java utility class that directly obtains the public key from the public key endpoint is provided. If the programming language that you use requires public key information, you may need to click the public key endpoint URL to obtain the public key, and store the public key in a .pem file locally. The following code provides an example of a public key: `{`
 
 ```json
   "keys": [
+```
+
+`{`
+
+```json
       "kty": "RSA",
       "e": "AQAB",
       "use": "sig",
@@ -15453,7 +16345,7 @@ In this topic, a Java utility class that directly obtains the public key from th
 aQAqituZdIlT4l3-q9gtccdY-khaE- OfH9qYZhlxFcYj0gVtOvKZFIkuGhME4IQJd_RAWS3OPXxtbGhO2fZYCiuuc8NWub5mcVQnqsy5aJPLwHbVwVUwYNO q97_m2TtPcIVWtw7AOzX8O78UrYnYt_QPrv7uVdJMbHleSOx2A1IXqrAkJWecwFfvTsBTCUOPPDeVRQEHzzwmf3zp KMgHZU1I5pyqi0KJ6BuMHWw"
 ```
 
-`]` The following example shows how to add dependencies to your Maven project:
+`}` `]` `}` The following example shows how to add dependencies to your Maven project:
 
 ```xml
 <dependency>
@@ -15482,6 +16374,11 @@ new ConcurrentHashMap<>();
         } catch (Exception e) {
             throw new RuntimeException("Fetch JWKs from url failed: " + e.getMessage()
 + ", " + jwkUrl, e);
+```
+
+`}` `}`
+
+```
     public static JwtConsumer createJwtConsumer(JsonWebKeySet jsonWebKeySet, String app
 Id) {
         final JwtConsumerBuilder jwtConsumerBuilder = new JwtConsumerBuilder();
@@ -15498,16 +16395,36 @@ Id) {
             for (JsonWebKey jsonWebKey : jsonWebKeySet.getJsonWebKeys()) {
                 if (StringUtils.equals(jsonWebKey.getKeyId(), signKeyId)) {
                     return jsonWebKey.getKey();
+```
+
+`}` `}`
+
+```
             throw new RuntimeException("Cannot find verification key: " + signKeyId);
         });
         return jwtConsumerBuilder.build();
+```
+
+`}`
+
+```
     synchronized private static JsonWebKeySet getJsonWebKeySetByUrl(String
 jwkUrlString) throws IOException, JoseException {
         JsonWebKeySet jsonWebKeySet = IDAAS_SIGN_JWK_SET_MAP.get(jwkUrlString);
         if (jsonWebKeySet == null) {
             jsonWebKeySet = innerGetJsonWebKeySetByUrl(jwkUrlString);
             IDAAS_SIGN_JWK_SET_MAP.put(jwkUrlString, jsonWebKeySet);
+```
+
+`}`
+
+```
         return jsonWebKeySet;
+```
+
+`}`
+
+```java
     private static JsonWebKeySet innerGetJsonWebKeySetByUrl(String jwkUrlString) throws
 IOException, JoseException { finalURLjkUrl
 ```
@@ -15528,15 +16445,25 @@ elf-managed applications
         final String jwkSetJson = new String(readAll(urlConnection.getInputStream()), S
 tandardCharsets.UTF_8);
         return new JsonWebKeySet(jwkSetJson);
+```
+
+`}`
+
+```
     public static byte[] readAll(InputStream inputStream) throws IOException {
         final byte[] buffer = new byte[1024 * 8];
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         for (int len; ((len = inputStream.read(buffer)) != -1); ) {
             baos.write(buffer, 0, len);
+```
+
+`}`
+
+```
         return baos.toByteArray();
 ```
 
-The following code provides an example for the call:
+`}` `}` The following code provides an example for the call:
 
 ```
 // Public key -> Obtain the public key by accessing the public key endpoint in the synchronization configuration of the application on IDaaS. String publicKey = "{\n"
@@ -15606,6 +16533,8 @@ AlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT, new String[]{"d
     return new String(receiverJwe.getPlaintextBytes(), StandardCharsets.UTF_8);
 ```
 
+`}`
+
 #### 4.2.4 SCIM 2.0 operations supported by EIAM
 
 This topic describes System for Cross-domain Identity Management (SCIM) 2.0 operations that are supported by Employee Identity and Access Management (EIAM). This topic also describes the scope and limits of SCIM 2.0 operations. The operations described in this topic are required only if you want to synchronize data from your self-managed application to EIAM by using SCIM.
@@ -15658,6 +16587,8 @@ elf-managed applications
 **Discovery Endpoint**
 
 **/ServiceProviderConfig**
+
+**Description**
 
 Obtains the features that are supported by EIAM.
 
@@ -15723,6 +16654,11 @@ elf-managed applications
 
 ```json
     "authenticationSchemes": [
+```
+
+`{`
+
+```json
             "name": "OAuth Bearer Token",
             "description": "Authentication scheme using the OAuth Bearer Token
 Standard",
@@ -15731,16 +16667,18 @@ Standard",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
 ```
 
-`]`
+`]` `}`
 
 **/ResourceTypes**
+
+**Description**
 
 Obtains the resource types that are supported by EIAM. The details of users and user groups are returned.
 
@@ -15763,6 +16701,11 @@ elf-managed applications
     "totalResults": 2,
     "itemsPerPage": 2,
     "Resources": [
+```
+
+`{`
+
+```json
             "name": "Group",
             "description": "Group",
             "endpoint": "/Groups",
@@ -15780,7 +16723,7 @@ elf-managed applications
                 "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
 ```
 
-`]` `},`
+`]` `},` `{`
 
 ```json
             "name": "User",
@@ -15788,12 +16731,17 @@ elf-managed applications
             "endpoint": "/Users",
             "schema": "urn:ietf:params:scim:schemas:core:2.0:User",
             "schemaExtensions": [
+```
+
+`{`
+
+```json
                     "schema":
 "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
                     "required": false
 ```
 
-`],`
+`}` `],`
 
 ```json
             "id": "User",
@@ -15809,16 +16757,18 @@ elf-managed applications
                 "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-`]`
+`]` `}`
 
 **/Schemas**
+
+**Description**
 
 Obtains the schemas that are supported by EIAM. The schemas of users and user groups are returned. elf-managed applications
 
@@ -15843,14 +16793,26 @@ curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:Use
 
 **Schema to request users**
 
+`{`
+
 ```json
     "startIndex": 1,
     "totalResults": 3,
     "itemsPerPage": 3,
     "Resources": [
+```
+
+`{`
+
+```json
             "name": "User",
             "description": "User Account",
             "attributes": [
+```
+
+`{`
+
+```json
                     "name": "userName",
                     "type": "string",
                     "multiValued": false,
@@ -15863,7 +16825,7 @@ user to directly authenticate to the service provider.",
                     "uniqueness": "server"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "displayName",
@@ -15898,12 +16860,17 @@ tended to be used as a means to specify an initial password when creating a new 
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "emails",
                     "type": "complex",
                     "subAttributes": [
+```
+
+`{`
+
+```json
                             "name": "value",
                             "type": "string",
                             "multiValued": false,
@@ -15916,7 +16883,7 @@ OULD be canonicalized by the Service Provider, e.g.\nbjensen@example.com instead
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "display",
@@ -15931,7 +16898,7 @@ splay purposes.",
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "type",
@@ -15960,7 +16927,7 @@ e.g., 'work' or 'home'.",
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "primary",
@@ -15980,7 +16947,7 @@ preferred attribute value for this attribute, e.g., the preferred mailing addres
                             "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "multiValued": true,
@@ -15993,12 +16960,17 @@ anonicalized by the Service Provider, e.g., bjensen@example.com instead of bjens
                     "uniqueness": "server"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "phoneNumbers",
                     "type": "complex",
                     "subAttributes": [
+```
+
+`{`
+
+```json
                             "name": "value",
                             "type": "string",
                             "multiValued": false,
@@ -16010,7 +16982,7 @@ anonicalized by the Service Provider, e.g., bjensen@example.com instead of bjens
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "display",
@@ -16030,7 +17002,7 @@ elf-managed applications
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "type",
@@ -16057,7 +17029,7 @@ e.g., 'work' or 'home' or 'mobile' etc.",
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "primary",
@@ -16072,7 +17044,7 @@ preferred attribute value for this attribute, e.g., the preferred phone number o
                             "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "multiValued": true,
@@ -16111,7 +17083,7 @@ efault value is 86",
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "id",
@@ -16126,7 +17098,7 @@ y the service provider.",
                     "uniqueness": "server"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "externalId",
@@ -16141,12 +17113,17 @@ efined by the provisioning client.",
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "meta",
                     "type": "complex",
                     "subAttributes": [
+```
+
+`{`
+
+```json
                             "name": "resourceType",
                             "type": "string",
                             "multiValued": false,
@@ -16158,7 +17135,7 @@ efined by the provisioning client.",
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "location",
@@ -16177,7 +17154,7 @@ elf-managed applications
                             "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "multiValued": false,
@@ -16189,7 +17166,7 @@ elf-managed applications
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "schemas",
@@ -16203,7 +17180,7 @@ elf-managed applications
                     "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "id": "urn:ietf:params:scim:schemas:core:2.0:User",
@@ -16213,12 +17190,17 @@ elf-managed applications
 {BaseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
 ```
 
-`},`
+`}` `},` `{`
 
 ```json
             "name": "Group",
             "description": "Group",
             "attributes": [
+```
+
+`{`
+
+```json
                     "name": "displayName",
                     "type": "string",
                     "multiValued": false,
@@ -16230,7 +17212,7 @@ elf-managed applications
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "members",
@@ -16252,7 +17234,7 @@ elf-managed applications
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "ref",
@@ -16268,7 +17250,7 @@ elf-managed applications
                                 "User"
 ```
 
-`]` `},`
+`]` `},` `{`
 
 ```json
                             "name": "display",
@@ -16283,7 +17265,7 @@ splay purposes.",
                             "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "multiValued": true,
@@ -16295,7 +17277,7 @@ splay purposes.",
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "id",
@@ -16325,12 +17307,17 @@ efined by the provisioning client.",
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "meta",
                     "type": "complex",
                     "subAttributes": [
+```
+
+`{`
+
+```json
                             "name": "resourceType",
                             "type": "string",
                             "multiValued": false,
@@ -16342,7 +17329,7 @@ efined by the provisioning client.",
                             "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "name": "location",
@@ -16356,7 +17343,7 @@ efined by the provisioning client.",
                             "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "multiValued": false,
@@ -16368,7 +17355,7 @@ efined by the provisioning client.",
                     "uniqueness": "none"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "name": "schemas",
@@ -16388,7 +17375,7 @@ elf-managed applications
                     "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "id": "urn:ietf:params:scim:schemas:core:2.0:Group",
@@ -16398,12 +17385,17 @@ elf-managed applications
 {BaseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`},`
+`}` `},` `{`
 
 ```json
             "name": "EnterpriseUser",
             "description": "Enterprise User",
             "attributes": [
+```
+
+`{`
+
+```json
                     "name": "organization",
                     "type": "string",
                     "multiValued": false,
@@ -16415,7 +17407,7 @@ elf-managed applications
                     "uniqueness": "none"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "id": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
@@ -16425,18 +17417,20 @@ elf-managed applications
 {BaseUrl}/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-`]`
+`]` `}`
 
 **Users**
 
 **POST /Users**
+
+**Description**
 
 Synchronizes users.
 
@@ -16454,28 +17448,40 @@ The following sample code provides an example of the data field:
 
 **Example 1: Do not specify the organizational unit to which the account belongs**
 
+`{`
+
 ```json
     "userName": "<user username>",
     "externalId": "<external Id>",
     "displayName": "<user display name>",
     "active": true,
     "emails": [
+```
+
+`{`
+
+```json
             "primary": true,
             "type": "work",
             "value": "<user email>"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "phoneRegion":"86"
    "phoneNumbers": [
+```
+
+`{`
+
+```json
             "primary": true,
             "type": "work",
             "value": "<user phoneNumber>"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "active":true,
@@ -16483,7 +17489,7 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:schemas:core:2.0:User"
 ```
 
-`]`
+`]` `}`
 
 **Example 2: Specify the organizational unit to which the account belongs**
 
@@ -16494,22 +17500,32 @@ elf-managed applications
     "externalId": "<external Id>",
     "displayName": "<user display name>",
     "emails": [
+```
+
+`{`
+
+```json
             "primary": true,
             "type": "work",
             "value": "<user email>"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "phoneRegion":"86"
    "phoneNumbers": [
+```
+
+`{`
+
+```json
             "primary": true,
             "type": "work",
             "value": "<user phoneNumber>"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "active":true,
@@ -16525,6 +17541,8 @@ elf-managed applications
     "organization": "<user organizationalUnitId>"
 ```
 
+`}` `}`
+
 **Sample response**
 
 elf-managed applications
@@ -16536,21 +17554,31 @@ HTTP/1.1 201
     "displayName": "<user display name>",
     "active": true,
     "emails": [
+```
+
+`{`
+
+```json
             "value": "<user email>",
             "type": "work",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "phoneNumbers": [
+```
+
+`{`
+
+```json
             "value": "<user phoneNumber>",
             "type": "work",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "externalId": "<external Id>",
@@ -16577,7 +17605,11 @@ HTTP/1.1 201
     "organization": "<user organizationalUnitId>"
 ```
 
+`}` `}`
+
 **GET /Users/{id}**
+
+**Description**
 
 Queries a user by ID.
 
@@ -16595,28 +17627,43 @@ elf-managed applications
 
 **Sample response**
 
-```json
+```
 HTTP/1.1 200
+```
+
+`{`
+
+```json
     "id": "<userId>",
     "userName": "<user username>",
     "displayName": "<user display name>",
     "active": true,
     "emails": [
+```
+
+`{`
+
+```json
             "value": "<user email>",
             "type": "work",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "phoneNumbers": [
+```
+
+`{`
+
+```json
             "value": "<user phoneNumber>",
             "type": "work",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "externalId": "<external Id>",
@@ -16643,7 +17690,11 @@ HTTP/1.1 200
     "organization": "<user organizationalUnitId>"
 ```
 
+`}` `}`
+
 **GET /Users**
+
+**Description**
 
 Queries the information about specific users or queries all users.
 
@@ -16667,12 +17718,22 @@ The following table describes the supported parameters.
 
 **Sample response**
 
-```json
+```
 HTTP/1.1 200
+```
+
+`{`
+
+```json
     "startIndex": 1,
     "totalResults": 2,
     "itemsPerPage": 20,
     "Resources": [
+```
+
+`{`
+
+```json
             "userName": "username1",
             "displayName": "displayName1",
             "active": true,
@@ -16687,16 +17748,21 @@ elf-managed applications
                     "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
             "phoneNumbers": [
+```
+
+`{`
+
+```json
                     "value": "333*****333",
                     "type": "work",
                     "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
             "id": "user_addxxxxxxxxxxxxxxx1",
@@ -16715,28 +17781,38 @@ elf-managed applications
                 "urn:ietf:params:scim:schemas:core:2.0:User"
 ```
 
-`]` `},`
+`]` `},` `{`
 
 ```json
             "userName": "username2",
             "displayName": "displayName2",
             "active": true,
             "emails": [
+```
+
+`{`
+
+```json
                     "value": "test2@example.com",
                     "type": "work",
                     "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
             "phoneNumbers": [
+```
+
+`{`
+
+```json
                     "value": "333*****334",
                     "type": "work",
                     "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
             "id": "user_g3od4xxxxxxxxxxxxxxx2",
@@ -16762,9 +17838,11 @@ elf-managed applications
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-`]`
+`]` `}`
 
 **PUT /Users/{id}**
+
+**Description**
 
 Replaces the information about a user.
 
@@ -16786,22 +17864,32 @@ The following sample code provides an example of the data field: elf-managed app
     "externalId": "<external Id>",
     "displayName": "<user display name>",
     "emails": [
+```
+
+`{`
+
+```json
             "primary": true,
             "type": "work",
             "value": "<user email>"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "phoneRegion":"86"
    "phoneNumbers": [
+```
+
+`{`
+
+```json
             "primary": true,
             "type": "work",
             "value": "<user phoneNumber>"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "active":true,
@@ -16817,6 +17905,8 @@ The following sample code provides an example of the data field: elf-managed app
     "organization": "<user organizationalUnitId>"
 ```
 
+`}` `}`
+
 **Sample response**
 
 elf-managed applications
@@ -16828,21 +17918,31 @@ HTTP/1.1 200
     "displayName": "<user display name>",
     "active": true,
     "emails": [
+```
+
+`{`
+
+```json
             "value": "<user email>",
             "type": "work",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "phoneNumbers": [
+```
+
+`{`
+
+```json
             "value": "<user phoneNumber>",
             "type": "work",
             "primary": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "externalId": "<external Id>",
@@ -16869,7 +17969,11 @@ HTTP/1.1 200
     "organization": "<user organizationalUnitId>"
 ```
 
+`}` `}`
+
 **PATCH /Users/{id}**
+
+**Description**
 
 Updates the information about a user.
 
@@ -16887,39 +17991,53 @@ The following sample code provides an example of the data field:
 
 **Example 1: Add the displayName field and do not specify the path parameter**
 
+`{`
+
 ```json
     "Operations": [
+```
+
+`{`
+
+```json
             "op": "add",
             "value": {
                 "diplayName": "updateDisplayName"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-`]`
+`]` `}`
 
 **Example 2: Modify the displayName field and specify the path parameter**
 
+`{`
+
 ```json
     "Operations": [
+```
+
+`{`
+
+```json
             "op": "Replace",
             "path": "diplayName",
             "value": "updateDisplayName"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-`]`
+`]` `}`
 
 **Example 3: Modify the emails field and do not specify the path parameter**
 
@@ -16942,43 +18060,57 @@ elf-managed applications
                     "primary": true
 ```
 
-`}]` `}]`
+`}]` `}` `}]` `}`
 
 **Example 4: Modify the emails field and specify the path parameter**
 
+`{`
+
 ```json
     "Operations": [
+```
+
+`{`
+
+```json
             "op": "Replace",
             "path": "emails[type eq \"work\"].value",
             "value": "test@example.com"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-`]`
+`]` `}`
 
 **Example 5: Disable the account field and specify the path parameter**
 
+`{`
+
 ```json
     "Operations": [
+```
+
+`{`
+
+```json
             "op": "Replace",
             "path": "active",
             "value": "false"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-`]`
+`]` `}`
 
 **Example 6: Disable the account field and do not specify the path parameter**
 
@@ -16991,14 +18123,14 @@ elf-managed applications
                 "active": false
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-`]`
+`]` `}`
 
 **Sample response**
 
@@ -17007,6 +18139,8 @@ HTTP/1.1 204
 ```
 
 **DELETE /Users/{id}**
+
+**Description**
 
 Deletes a user.
 
@@ -17030,6 +18164,8 @@ HTTP/1.1 204
 
 **POST /Groups**
 
+**Description**
+
 Synchronizes a user group.
 
 **Limits**
@@ -17042,12 +18178,17 @@ For more information about the limits on fields, see the "/Schemas" section of t
   "externalId": "<external Id>",
   "displayName": "<group name>",
   "members": [
+```
+
+`{`
+
+```json
       "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
       "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
       "type": "User"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "value": "user_d3rmo3xxxxxxxxxbo6vhcfq",
@@ -17055,28 +18196,38 @@ For more information about the limits on fields, see the "/Schemas" section of t
       "type": "User"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]`
+`]` `}`
 
 **Sample response**
 
-```json
+```
 HTTP/1.1 201
+```
+
+`{`
+
+```json
     "id": "group_bz7xxxxxxxxxx3hhxdha",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
+```
+
+`{`
+
+```json
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "meta": {
@@ -17093,7 +18244,7 @@ HTTP/1.1 201
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]`
+`]` `}`
 
 **GET /Groups/{id}**
 
@@ -17117,17 +18268,27 @@ The following table describes the supported parameters.
 
 **Sample response**
 
-```json
+```
 HTTP/1.1 200
+```
+
+`{`
+
+```json
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
+```
+
+`{`
+
+```json
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "meta": {
@@ -17144,7 +18305,7 @@ HTTP/1.1 200
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]`
+`]` `}`
 
 **GET /Groups**
 
@@ -17178,6 +18339,11 @@ HTTP/1.1 200
     "totalResults": 2,
     "itemsPerPage": 20,
     "Resources": [
+```
+
+`{`
+
+```json
             "displayName": "GroupName1",
             "id": "group_7xh7xxxxxxxxxxgvajbbowpe",
             "externalId": "externalId1",
@@ -17195,7 +18361,7 @@ HTTP/1.1 200
                 "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]` `},`
+`]` `},` `{`
 
 ```json
             "displayName": "GroupName2",
@@ -17215,16 +18381,18 @@ HTTP/1.1 200
                 "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]` `],`
+`]` `}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-`]`
+`]` `}`
 
 **PUT /Groups/{id}**
+
+**Description**
 
 Replaces the information about a user group.
 
@@ -17238,39 +18406,54 @@ The id parameter is required. You can modify only the fields that are defined in
 curl {BaseUrl}/Groups/<groupId> --header 'Authorization: Bearer <BearerToken>' --header "content-type:application/scim+json" -X PUT -d '<data>'
 ```
 
-The following sample code provides an example of the data field:
+The following sample code provides an example of the data field: `{`
 
 ```json
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
+```
+
+`{`
+
+```json
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]`
+`]` `}`
 
 **Sample response**
 
-```json
+```
 HTTP/1.1 200
+```
+
+`{`
+
+```json
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
+```
+
+`{`
+
+```json
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "meta": {
@@ -17287,7 +18470,7 @@ HTTP/1.1 200
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]`
+`]` `}`
 
 **PATCH /Groups/{id}**
 
@@ -17309,6 +18492,8 @@ The following sample code provides an example of the data field:
 
 **user group**
 
+`{`
+
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
@@ -17318,11 +18503,16 @@ The following sample code provides an example of the data field:
 
 ```json
     "Operations": [
+```
+
+`{`
+
+```json
             "op": "remove",
             "path": "members"
 ```
 
-`]`
+`}` `]` `}`
 
 **Example 2: Add users to or remove users from the user group**
 
@@ -17331,13 +18521,18 @@ elf-managed applications
 ```json
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
     "Operations": [
+```
+
+`{`
+
+```json
         "op": "remove",
         "path": "members",
         "value": [{
             "value": "user_dm57xxxxxxxxxxx5wzecz"
 ```
 
-`}]`
+`}]` `{`
 
 ```json
         "op": "add",
@@ -17346,20 +18541,27 @@ elf-managed applications
             "value": "user_sdfqxxxxxxxxxxkzhw5wz"
 ```
 
-`}]` `]`
+`}]` `}` `]` `}`
 
 **Example 3: Replace users**
+
+`{`
 
 ```json
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
     "Operations": [
+```
+
+`{`
+
+```json
         "op": "replace",
         "path": "members",
         "value": [{
             "value": "user_dm57xxxxxxxxxxx5wzecz"
 ```
 
-`}]` `]`
+`}]` `}` `]` `}`
 
 **Sample response**
 
@@ -17371,11 +18573,16 @@ HTTP/1.1 200
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
+```
+
+`{`
+
+```json
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "meta": {
@@ -17392,9 +18599,11 @@ HTTP/1.1 200
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-`]`
+`]` `}`
 
 **DELETE /Groups/{id}**
+
+**Description**
 
 Deletes a user group.
 

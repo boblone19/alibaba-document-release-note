@@ -5,7 +5,7 @@ doc_version: "20250312"
 pdf_pages: 174
 source_pdf: "288b8545e01fe1c4_Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide 20250312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20CloudMonitor%20Developer%20Guide%2020250312.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide
@@ -101,6 +101,8 @@ When you call an API operation provided by CloudMonitor, you must specify the
 
 **Basic metrics**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_ecs_dashboard**.
 
 > Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
@@ -164,6 +166,8 @@ Set the **Namespace** parameter to **acs_ecs_dashboard**.
 
 **Disk-related metrics**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 15. Default value: 15. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Descriptio n |
@@ -174,6 +178,8 @@ Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** par
 | Free Disk Space | GB | DiskSerialFree | userId, instanceId, and id serial _ | The available disk capacity. |
 
 **GPU-related metrics**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -216,6 +222,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS for SQL Server**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of a value in the range of 60 to 300. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -241,6 +249,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 | MemoryUtilization | % | MemoryUsage | userId and instanceId | The memory usage. |
 
 **ApsaraDB RDS for PostgreSQL**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of a value in the range of 60 to 300. Unit: seconds.
 
@@ -280,6 +290,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS for MySQL**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -312,6 +324,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 
 **ApsaraDB RDS for PolarDB**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -337,6 +351,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 | PG ReplayLatency _ InMB | MB | PG ReplayLatencyInM _ B | userId and instanceId | The size of data written to the PolarDB for Oracle Enterprise Edition database that uses local SSDs with a delay. |
 
 **ApsaraDB RDS for PostgreSQL**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -376,6 +392,8 @@ Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** par
 | PG cloud disk primary/stan _ dby delay | Second s | PG ESSD ReplicationL _ _ ag | userId and instanceId | The latency between primary and secondary ApsaraDB RDS for PostgreSQL instances. |
 
 **SLB**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_slb_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -442,6 +460,8 @@ Set the **Namespace** parameter to **acs_slb_dashboard**. Set the **Period** par
 | Failure rate of seven-tier back- end health check | % | SeventhFloorUnh ealthyServerRate | userId, instanceId, port, and vip | The percentage of backend ECS instances that fail to pass the health check at Layer 7. |
 
 **OSS**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_oss_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -531,6 +551,8 @@ Set the **Namespace** parameter to **acs_oss_dashboard**. Set the **Period** par
 
 **ApsaraDB for Redis (Old)**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -548,6 +570,8 @@ Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter
 | Used QPS | Count/s | UsedQPS | userId and instanceId | The number of used QPS. |
 
 **ApsaraDB for Redis (New)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -622,6 +646,8 @@ Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter
 
 **ApsaraDB for MongoDB (Old)**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Basic metrics**
@@ -666,6 +692,8 @@ Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter
 | OpCounters for Update | Count | OpUpdate | userId, instanceId, and role | The number of Update operations. |
 
 **ApsaraDB for MongoDB (New)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -762,6 +790,8 @@ Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter
 
 **AnalyticDB for PostgreSQL**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_hybriddb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 **Computing and storage-related metrics**
@@ -801,6 +831,8 @@ Set the **Namespace** parameter to **acs_hybriddb**. Set the **Period** paramete
 | node disk used _ _ _ percent | % | node disk used _ _ _ percent | instanceId, instance compon _ ent, and hostname | The disk usage of the node. |
 
 **AnalyticDB for PostgreSQL (New)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_hybriddb**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -856,6 +888,8 @@ Set the **Namespace** parameter to **acs_hybriddb**. Set the **Period** paramete
 | [Reserved Storage] Local Data File Size | MB | adbpg local data di _ _ _ r size segment _ _ | instance id _ | The size of files in the nodes in the compute group. |
 
 **VPN Gateway**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -958,6 +992,8 @@ Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to 
 
 **Data node-related metrics**
 
+**Note**
+
 The **Namespace** parameter to **acs_polarxsn_dashboard**. Set the **Period** parameter to an integer multiple of a value in the range of 60 to 300. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -986,6 +1022,8 @@ Set the **Namespace** parameter to **acs_vpc_eip**. Set the **Period** parameter
 
 **API Gateway**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_apigateway_dashboard**. Set the **Period** parameter to an integral multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -1001,6 +1039,8 @@ Set the **Namespace** parameter to **acs_apigateway_dashboard**. Set the **Perio
 | code5XX Number | Count | code5XX | userId, region, and apiUid | The number of times that a 5XX HTTP status code is returned. |
 
 **Hologres**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_hologres**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1030,6 +1070,8 @@ Set the **Namespace** parameter to **acs_hologres**. Set the **Period** paramete
 
 **Tablestore**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_ots_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console-based metric | Unit | API-based metric | Dimension | Description |
@@ -1056,6 +1098,8 @@ Set the **Namespace** parameter to **acs_ots_dashboard**. Set the **Period** par
 | Failed Rows | Count/s | InstanceFailRowC ount NoOp _ | userId and instanceName | The number of failed rows. |
 
 **NAT Gateway**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_nat_gateway**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1148,6 +1192,8 @@ Set the **Namespace** parameter to **acs_nat_gateway**. Set the **Period** param
 | Index master slice data size | Bytes | IndexDiskPrimari es | userId and indexName | The data size of the primary shard of the index. |
 
 **ApsaraMQ for RocketMQ**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_rocketmq_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1268,6 +1314,8 @@ Set the **Namespace** parameter to **acs_polardb_dashboard**. Set the **Period**
 
 **DTS**
 
+**Note**
+
 Set the **Namespace** parameter to **acs_dts_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
 | Console- based metric | Unit | API-based metric | Dimension | Description |
@@ -1277,6 +1325,8 @@ Set the **Namespace** parameter to **acs_dts_dashboard**. Set the **Period** par
 | MigrationLaten cy | Seconds | MigrationLatency | userId and instanceId | The latency of the data migration task. |
 
 **Stream Computing (Blink)**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_blink**. Set the **Period** parameter to an integer multiple of 60. Default value: 60. Unit: seconds.
 
@@ -1291,6 +1341,8 @@ Set the **Namespace** parameter to **acs_blink**. Set the **Period** parameter t
 | FailoverRate | % | TaskFailoverRate | userId, regionId, projectName, and jobName | The failover rate. |
 
 **MaxCompute**
+
+**Note**
 
 Set the **Namespace** parameter to **acs_maxcompute_prepay**.
 

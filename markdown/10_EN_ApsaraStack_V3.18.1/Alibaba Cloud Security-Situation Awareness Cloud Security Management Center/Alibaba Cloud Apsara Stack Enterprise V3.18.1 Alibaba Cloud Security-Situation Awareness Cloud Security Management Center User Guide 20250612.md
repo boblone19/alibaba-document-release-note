@@ -5,7 +5,7 @@ doc_version: "20250612"
 pdf_pages: 71
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center User Guide 20250612.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%80%81%E5%8A%BF%E6%84%9F%E7%9F%A5/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20User%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center User Guide 20250612
@@ -104,6 +104,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -127,6 +130,9 @@ operations in the following scenarios: It is the first time that you log on to t
 ### 3.1 Threat monitoring
 
 Security administrators can use the threat monitoring feature to understand the overall security of a network. This topic describes how to use the threat monitoring feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -244,6 +250,9 @@ The modules displayed vary based on the asset. The modules displayed on the cons
 #### 3.3.3 View vulnerability analysis results
 
 This topic describes how to view vulnerability analysis results on the platform side and the tenant side. Security administrators can use the results to troubleshoot issues.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -290,6 +299,9 @@ All search results are displayed in the baseline list. You can perform the follo
 #### 3.3.4 View cloud service check data
 
 You can use built-in security baselines to check and manage the security compliance of Apsara Stack services. This topic describes how to perform a cloud service check and view check data.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -323,6 +335,9 @@ In the baseline list of the Cloud Service Check page, view the values in the Clo
 #### 3.3.5 View attack surface assessment results
 
 This topic describes how to view attack surface assessment results.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -356,6 +371,9 @@ outside the cloud are displayed in a list. You can click the name of an instance
 #### 3.3.6 View traffic analysis results
 
 This topic describes how to view the analysis information about traffic, including organization traffic, application traffic, source IP traffic, and destination IP traffic.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -375,6 +393,9 @@ conditions to view the global traffic information.
 ### 3.4 Use the Tasks module
 
 On the Tasks page, you can analyze and handle global security risks in a streamlined process. This facilitates security operations and management and helps accumulate experience in handling risks. This topic describes how to manage tasks on the Tasks page.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -502,6 +523,9 @@ Click the icon to refresh the asset list. Click the icon to export the asset inf
 #### 3.5.2 View platform assets
 
 This topic describes how to view the protection information about physical machines on which platform assets are deployed. Security administrators can identify issues and obtain handling suggestions based on the information.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -522,6 +546,9 @@ Asset, Risk Level, and Suspicious Processes tabs. Risk Level You can view inform
 **page**
 
 The Overview page displays the overall statistics on all logs that are collected by Security Operations Center (SOC) in a visualized manner. On the Overview page, you can pre-define and customize widgets to display logs. This topic describes how to view the logs that are displayed in the widgets on the Overview page.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -558,6 +585,9 @@ Click **Details** in the **data** column of a log to view the log details.
 #### 3.6.2 Query log details
 
 This topic describes how to query log details.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -574,6 +604,9 @@ Follow Logs: Click **Follow Logs** and enter a name in the **Followed Log Name**
 #### 3.6.3 Query raw logs
 
 Security Operations Center (SOC) allows you to query raw logs. Raw logs contain the information that is required for debugging. Security administrators can use these raw logs to troubleshoot system failures. This topic describes how to query raw logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -636,6 +669,9 @@ You can also expand a display field to view the top 5 values of the field.
 #### 3.6.4 View platform logs
 
 Platform logs record information about Apsara Stack Security. Security administrators can use these logs to troubleshoot issues that occur on Apsara Stack Security. This topic describes how to view platform logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -723,6 +759,9 @@ The system displays **tenant logs** in a column chart based on the query conditi
 ##### 3.6.6.1 Manage log sources
 
 You can manage log sources of the Third-party Network Element or Terminal type on the Log Sources tab as a security administrator. This topic describes how to manage the log sources that are connected to Security Operations Center (SOC).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -786,6 +825,9 @@ to create a parsing rule for the log source. You can **modify** or **delete** a 
 ##### 3.6.6.2 Configure a log parsing template
 
 Security Operations Center (SOC) provides the log parsing feature. Security administrators can configure log parsing templates based on their business requirements to manage logs in an efficient manner. This topic describes how to configure a log parsing template.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -804,6 +846,9 @@ The log parsing template that you created is displayed in the log parsing list. 
 ##### 3.6.6.3 Configure log forwarding
 
 Security Operations Center (SOC) provides the log forwarding feature. Security administrators can forward logs based on their business requirements and view logs in a timely manner. You can specify multiple log sources for a log forwarding task. You can also forward logs that belong to specified organizations. This topic describes how to configure a log forwarding task.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -828,6 +873,9 @@ To create multiple log forwarding tasks, repeat the preceding steps. After you c
 ### 3.7 Use the Reports module
 
 This topic describes how to create a report task. After you create a report task, the system sends reports to the specified email addresses at specified intervals.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -853,7 +901,11 @@ In the report task list, you can download, edit, and delete the newly created re
 
 #### 3.8.1 Create an analysis rule
 
-You can use analysis rules to perform comprehensive association-based analysis on a large number of logs. You can also trace the attack paths of multi-phase attacks based on the detected high risks. This way, security administrators can obtain helpful risk information in an efficient and quick manner and the efficiency of security operations is improved. This topic describes how to create an analysis rule. Security Operations Center (SOC) provides built-in rules based on common business requirements. You can only view the details of the built-in rules but cannot modify the rules. If the built-in rules cannot meet your business requirements, you can perform the following steps to create a rule:
+You can use analysis rules to perform comprehensive association-based analysis on a large number of logs. You can also trace the attack paths of multi-phase attacks based on the detected high risks. This way, security administrators can obtain helpful risk information in an efficient and quick manner and the efficiency of security operations is improved. This topic describes how to create an analysis rule.
+
+**Procedure**
+
+Security Operations Center (SOC) provides built-in rules based on common business requirements. You can only view the details of the built-in rules but cannot modify the rules. If the built-in rules cannot meet your business requirements, you can perform the following steps to create a rule:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -885,6 +937,8 @@ The created rule is displayed in the rule list. You can click **Edit** or **Dele
 
 > You can create alert rules to obtain threat events, alerts, baseline risks, vulnerabilities, and configuration risks in cloud services in a timely manner. You can also send real-time alerts to alert contacts by DingTalk or email. The security alerts are provided in Security Operations Center (SOC). This topic describes how to create an alert rule.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -912,6 +966,9 @@ After the alert rule is created, the contacts that are specified in the alert ru
 #### 3.8.3 Create a blocking rule
 
 This topic describes how to block requests for a specific IP address with a few clicks.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > Security Operations Center**. On the **Security**
@@ -939,6 +996,9 @@ The created blocking rule is displayed in the rule list. You can **query** or **
 #### 3.9.1 Configure the log storage policy
 
 Security Operations Center (SOC) allows you to create a custom log storage policy based on your business requirements. This topic describes how to configure a log storage policy.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -1000,6 +1060,9 @@ The Global Security Situation feature of SOC uses the geographical location that
 #### 3.9.3 Manage organization authorization
 
 This topic describes how to enable global organization service-linked role authorization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Global Platform Security > Security**
 **Operations Center**. On the **Security Operations Center** page, select a region from the
@@ -1027,6 +1090,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -1101,6 +1167,9 @@ After you create a custom IPS rule, you can perform the following operations on 
 #### 4.3.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1124,6 +1193,9 @@ If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbi
 #### 4.3.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1146,6 +1218,8 @@ rity configurations
 #### 4.3.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
+
+**Procedure**
 
 > **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
@@ -1216,6 +1290,9 @@ see Update the feature library or the version of Apsara Stack Security.
 **of Apsara Stack Security**
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update feature libraries or the version of Apsara Stack Security. This topic describes how to update feature libraries or the version of Apsara Stack Security.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1308,6 +1385,9 @@ You can configure global brute-force attack detection rules to prevent hosts fro
 **Important**
 
 If you modify global brute-force attack detection rules, all host assets, including tenantside hosts and platform-side physical servers, are affected. The modification also affects the attack analysis results of Threat Detection Service (TDS). Proceed with caution.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1331,6 +1411,8 @@ If a normal request is considered an attack by the attack blocking feature of Th
 
 > **Note:** Make sure that only trusted IP addresses are included in the whitelist.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1350,6 +1432,9 @@ You can **delete** a whitelist that is no longer required.
 #### 4.6.3 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1363,6 +1448,9 @@ disable the attack blocking feature. After you disable the attack blocking featu
 #### 4.6.4 Add a Server Guard account
 
 After you add a Server Guard account, you can use the account to configure and manage Server Guard and Web Application Firewall (WAF) resources. This topic describes how to add a Server Guard account.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1381,6 +1469,9 @@ Installed on Physical Machines dialog box, configure the parameters and click **
 ### 4.7 Cloud Firewall monitoring
 
 You can use the Cloud Firewall monitoring feature to monitor the status of Cloud Firewall, detect abnormal traffic, and handle abnormal events at the earliest opportunity. This topic describes how to perform system inspection and service monitoring.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1440,6 +1531,8 @@ This topic describes how to view and modify the information about your Apsara St
 
 > **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 rity configurations
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
@@ -1452,7 +1545,11 @@ tenant account. i. Find your Apsara Stack tenant account and click **Revised** i
 
 #### 4.8.2 Manage Alibaba Cloud accounts
 
-After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
+After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center.
+
+**Procedure**
+
+To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**

@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 259
 source_pdf: "af9f3765bf1d4e04_Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL User Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93AnalyticDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20AnalyticDB%20for%20MySQL%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL User Guide 20260828

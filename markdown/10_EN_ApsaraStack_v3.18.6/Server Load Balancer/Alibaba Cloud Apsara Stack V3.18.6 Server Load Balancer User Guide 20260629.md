@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 126
 source_pdf: "b2058ce27d761781_Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Load%20Balancer%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Server Load Balancer User Guide 20260629
@@ -129,7 +129,11 @@ operations based on your scenario: Scenario 1: You log on to the Apsara Uni-mana
 
 ### 3.1 Overview
 
-This topic describes how to create an Internet-facing Server Load Balancer (SLB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances. Before you create an SLB instance, you must determine the configurations of the SLB instance, such as the region, type, and specification. For more information, see Preparations. This topic includes the following operations: Create an SLB instance. An SLB instance is an entity that provides load balancing services. After you create an SLB instance, you must add listeners and backend servers to the SLB instance. If you no longer need the SLB instance, you can release it.
+This topic describes how to create an Internet-facing Server Load Balancer (SLB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances.
+
+**Note**
+
+Before you create an SLB instance, you must determine the configurations of the SLB instance, such as the region, type, and specification. For more information, see Preparations. This topic includes the following operations: Create an SLB instance. An SLB instance is an entity that provides load balancing services. After you create an SLB instance, you must add listeners and backend servers to the SLB instance. If you no longer need the SLB instance, you can release it.
 
 ### 3.2 Preparations
 
@@ -324,6 +328,9 @@ is located.
 **Listener Protocol**: Select **TCP** or **UDP**.
 Enable Proxy Protocol: Click **Modify** next to **Advanced Settings**. Then, turn on **Use**
 **Proxy Protocol to Pass Client IP Addresses to Backend Servers** and click **Next**.
+
+**Note**
+
 For more information, see Add a TCP listener or Add a UDP listener.
 
 **Step 2: Enable Proxy Protocol for a backend server**

@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 695
 source_pdf: "7cfd915f63f67ed4_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service User Guide 20260831
@@ -3632,6 +3632,9 @@ To ensure that incremental data migration tasks run as expected, we recommend th
 > **Note:** If you perform only full data migration, skip the following steps.
 
 1. Use the redis-cli program to connect to the source database.
+
+**Note**
+
 You can use the redis-cli program after you install the Redis client. For more information, see Redis community official website.
 
 ```
@@ -6546,7 +6549,11 @@ The tables that you want to synchronize from the source database contain primary
 
 **SQL operations that can be synchronized**
 
-DML operations: INSERT, UPDATE, and DELETE DDL operations: ALTER TABLE, ADD COLUMN, DROP COLUMN, and RENAME COLUMN The CREATE TABLE and DROP TABLE operations are not supported. To synchronize data from a new table, you must add the table to the selected objects. For more information, see Add an object to a data synchronization task.
+DML operations: INSERT, UPDATE, and DELETE DDL operations: ALTER TABLE, ADD COLUMN, DROP COLUMN, and RENAME COLUMN
+
+**Note**
+
+The CREATE TABLE and DROP TABLE operations are not supported. To synchronize data from a new table, you must add the table to the selected objects. For more information, see Add an object to a data synchronization task.
 
 **Term mapping**
 
@@ -10449,15 +10456,15 @@ Before Data Transmission Service (DTS) runs a data synchronization task, DTS per
 
 **Source database connectivity**
 
-DTS checks whether DTS servers can connect to the source RDS instance. DTS creates a connection to the source RDS instance by using the Java Database Connectivity (JDBC) protocol. If the connection fails, the task fails to pass this precheck item. Cause of failure DTS does not support data synchronization between RDS instances in the region in which the source instance resides. The database account or password of the source instance is invalid. Solution Contact Alibaba Cloud technical support.
+Description DTS checks whether DTS servers can connect to the source RDS instance. DTS creates a connection to the source RDS instance by using the Java Database Connectivity (JDBC) protocol. If the connection fails, the task fails to pass this precheck item. Cause of failure DTS does not support data synchronization between RDS instances in the region in which the source instance resides. The database account or password of the source instance is invalid. Solution Contact Alibaba Cloud technical support.
 
 **Destination database connectivity**
 
-DTS checks whether DTS servers can connect to the destination RDS instance. DTS creates a connection to the destination RDS instance by using the JDBC protocol. If the connection fails, the task fails to pass this precheck item. Cause of failure DTS does not support data synchronization between RDS instances in the region in which the destination instance resides. The database account or password of the destination instance is invalid. Solution Submit a ticket and contact Alibaba Cloud technical support.
+Description DTS checks whether DTS servers can connect to the destination RDS instance. DTS creates a connection to the destination RDS instance by using the JDBC protocol. If the connection fails, the task fails to pass this precheck item. Cause of failure DTS does not support data synchronization between RDS instances in the region in which the destination instance resides. The database account or password of the destination instance is invalid. Solution Submit a ticket and contact Alibaba Cloud technical support.
 
 **Source database version**
 
-DTS checks whether: i. The database version of the source RDS instance is supported by the data synchronization feature. ii. The database version of the destination RDS instance is the same as the database version of the source RDS instance. Cause of failure The database version of the source RDS instance is earlier than the database versions that are supported by DTS. For example, the data synchronization feature supports the following database versions: MySQL 5.1, 5.5, 5.6, and 5.7. The database version of the destination RDS instance is earlier than the database version of the source RDS instance. Solution If the database version of the source RDS instance is earlier than the database versions that are supported by DTS, update the source RDS instance to MySQL 5.6 or 5.7 in the RDS console. Then, create a data synchronization task again. If the database version of the destination RDS instance is earlier than the database version of the source RDS instance, update the destination RDS instance to MySQL 5.6 or 5.7 in the RDS console. Then, create a data synchronization task again.
+Description DTS checks whether: i. The database version of the source RDS instance is supported by the data synchronization feature. ii. The database version of the destination RDS instance is the same as the database version of the source RDS instance. Cause of failure The database version of the source RDS instance is earlier than the database versions that are supported by DTS. For example, the data synchronization feature supports the following database versions: MySQL 5.1, 5.5, 5.6, and 5.7. The database version of the destination RDS instance is earlier than the database version of the source RDS instance. Solution If the database version of the source RDS instance is earlier than the database versions that are supported by DTS, update the source RDS instance to MySQL 5.6 or 5.7 in the RDS console. Then, create a data synchronization task again. If the database version of the destination RDS instance is earlier than the database version of the source RDS instance, update the destination RDS instance to MySQL 5.6 or 5.7 in the RDS console. Then, create a data synchronization task again.
 
 **Database existence**
 
@@ -10469,11 +10476,11 @@ DTS checks whether the account of the source database has the required permissio
 
 **Destination database permissions**
 
-DTS checks whether the account of the destination database has the required permissions. If the account does not have the required permissions, the task fails to pass this precheck item. Cause of failure DTS fails to create a database account in the destination RDS instance. DTS fails to grant the read and write permissions to the database account of the destination RDS instance. Solution Submit a ticket and contact Alibaba Cloud technical support.
+Description DTS checks whether the account of the destination database has the required permissions. If the account does not have the required permissions, the task fails to pass this precheck item. Cause of failure DTS fails to create a database account in the destination RDS instance. DTS fails to grant the read and write permissions to the database account of the destination RDS instance. Solution Submit a ticket and contact Alibaba Cloud technical support.
 
 **Object name conflict**
 
-DTS checks object names only if you select initial synchronization for a data synchronization task. DTS checks whether an object that you want to synchronize has the same name as an object in the destination RDS instance. Cause of failure If an object in the destination RDS instance has the same name as the object that you want to synchronize, the task fails to pass this precheck item. Solution Delete the conflicting object from the destination database. After the conflicting object is deleted, create a data synchronization task again. Select both Initial Schema Synchronization and Initial Full Data Synchronization.
+Description DTS checks object names only if you select initial synchronization for a data synchronization task. DTS checks whether an object that you want to synchronize has the same name as an object in the destination RDS instance. Cause of failure If an object in the destination RDS instance has the same name as the object that you want to synchronize, the task fails to pass this precheck item. Solution Delete the conflicting object from the destination database. After the conflicting object is deleted, create a data synchronization task again. Select both Initial Schema Synchronization and Initial Full Data Synchronization.
 
 **Value of server_id in the source database**
 
@@ -10489,19 +10496,19 @@ DTS checks whether the binary log format of the source database is set to ROW. I
 
 **Integrity of the FOREIGN KEY constraints**
 
-DTS checks whether the parent tables and child tables that have referential relationships with each other are all included in the objects to be synchronized. The precheck allows DTS to protect the integrity of the FOREIGN KEY constraints. Cause of failure One or more child tables are included in the objects to be synchronized. However, the parent tables that are referenced by the child tables are not included in the objects to be synchronized. This impairs the integrity of the FOREIGN KEY constraints. Solution The following solutions are available: Create a data synchronization task again and do not synchronize the child tables that fail to pass this precheck item. Create a data synchronization task again and add the parent tables to the objects to be synchronized. Remove the FOREIGN KEY constraints from the child tables that fail to pass this precheck item. Then, create a data synchronization task again.
+Description DTS checks whether the parent tables and child tables that have referential relationships with each other are all included in the objects to be synchronized. The precheck allows DTS to protect the integrity of the FOREIGN KEY constraints. Cause of failure One or more child tables are included in the objects to be synchronized. However, the parent tables that are referenced by the child tables are not included in the objects to be synchronized. This impairs the integrity of the FOREIGN KEY constraints. Solution The following solutions are available: Create a data synchronization task again and do not synchronize the child tables that fail to pass this precheck item. Create a data synchronization task again and add the parent tables to the objects to be synchronized. Remove the FOREIGN KEY constraints from the child tables that fail to pass this precheck item. Then, create a data synchronization task again.
 
 **Storage engine**
 
-DTS checks whether the objects to be synchronized use the storage engines that are not supported by the data synchronization feature, such as FEDERATED, MRG_MyISAM, and TokuDB. Cause of failure If the storage engine of a source table is FEDERATED, MRG_MyISAM, or TokuDB, the task fails to pass this precheck item. Solution Change the unsupported storage engine to InnoDB and create a data synchronization task again.
+Description DTS checks whether the objects to be synchronized use the storage engines that are not supported by the data synchronization feature, such as FEDERATED, MRG_MyISAM, and TokuDB. Cause of failure If the storage engine of a source table is FEDERATED, MRG_MyISAM, or TokuDB, the task fails to pass this precheck item. Solution Change the unsupported storage engine to InnoDB and create a data synchronization task again.
 
 **Character set**
 
-DTS checks whether the objects to be synchronized use the character sets that are not supported by the data synchronization feature, such as the UCS-2 character set. Cause of failure If the character sets used by the objects to be synchronized are not supported by the data synchronization feature, the task fails to pass this precheck item. Solution Change the unsupported character sets to UTF-8, GBK, or Latin1. Then, create a data synchronization task again.
+Description DTS checks whether the objects to be synchronized use the character sets that are not supported by the data synchronization feature, such as the UCS-2 character set. Cause of failure If the character sets used by the objects to be synchronized are not supported by the data synchronization feature, the task fails to pass this precheck item. Solution Change the unsupported character sets to UTF-8, GBK, or Latin1. Then, create a data synchronization task again.
 
 **Complex topologies**
 
-DTS checks whether the topology that you specify for the source and destination RDS instances is supported. Cause of failure The source RDS instance in the current task is being used as the destination instance of another task. The destination RDS instance in the current task is being used as the source or destination instance of another task. The objects that you want to synchronize in the current task are being synchronized by an existing task. The two tasks have the same source and destination RDS instances. Solution If the task that you want to create has the same source and destination RDS instances as an existing task, you can add the objects that you want to synchronize to the existing task. You do not need to create another task to synchronize these objects. If the task that you want to create conflicts with an existing task, wait until the existing task is complete before you create a data synchronization task again.
+Description DTS checks whether the topology that you specify for the source and destination RDS instances is supported. Cause of failure The source RDS instance in the current task is being used as the destination instance of another task. The destination RDS instance in the current task is being used as the source or destination instance of another task. The objects that you want to synchronize in the current task are being synchronized by an existing task. The two tasks have the same source and destination RDS instances. Solution If the task that you want to create has the same source and destination RDS instances as an existing task, you can add the objects that you want to synchronize to the existing task. You do not need to create another task to synchronize these objects. If the task that you want to create conflicts with an existing task, wait until the existing task is complete before you create a data synchronization task again.
 
 **Format of the MySQL database password**
 

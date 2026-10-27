@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 14
 source_pdf: "57b9aa03705ffe05_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Operations and Maintenance Guide 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%20DBS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Backup%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Operations and Maintenance Guide 20260828
@@ -43,6 +43,9 @@ This topic describes how users such as O&M engineers log on to the DBS O&M conso
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open a web browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. e
@@ -72,6 +75,9 @@ Press the ENTER key. e
 ### 3.1 Manage tasks
 
 This topic describes how to view and manage all existing and abnormal tasks on the task management page.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Tasks > All Tasks**.
 3. In the upper part of the page, you can enter a keyword in the search box and click **Search**
@@ -102,6 +108,9 @@ You can also choose **Tasks > Abnormal Tasks** to view all anomalous tasks withi
 ### 3.2 Manage a task module
 
 A DBS task contains multiple modules. This topic describes how to manage a task module.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Tasks > All Tasks** or choose **Tasks > Abnormal**
 **Tasks**.
@@ -128,6 +137,9 @@ On the **Basic Information** tab, you can restart, pause, skip, reset, or fail t
 ### 4.1 View DBS resources
 
 This topic describes how to view the overview information of DBS resources. This helps you understand the status of DBS resources.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Resources > DBS Resources**.
 On the DBS Resources page, information about all DBS resources is displayed. The information of a resource includes the region where the resource resides, CPU utilization, and memory usage.
@@ -139,6 +151,9 @@ You can click the trend icon in the **Network** column to filter a time range an
 ### 4.2 Unpublish DBS resources
 
 This topic describes how to unpublish DBS resources in the DBS O&M console.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Resources > DBS Resources**.
 3. Select one or more DBS resources and click **Unpublish Machine** below the DBS resource
@@ -149,6 +164,9 @@ list to unpublish the service node where the resources reside.
 ### 4.3 View DBS CIDR blocks
 
 This topic describes how to view DBS CIDR blocks. This helps you obtain the IP addresses of regions and network types to which DBS servers belong, which enables you to troubleshoot DBS connectivity issues. For example, you can check whether the CIDR blocks of DBS servers in the same region and network type as a database instance or a self-managed database are added to an IP address whitelist of the instance or the firewall rules of the database.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Resources > DBS CIDR Blocks**.
 By default, the CIDR blocks of all regions and network types are displayed. In the upper part of the CIDR block list page, specify a region and a network type. Then, click **Search** to filter CIDR blocks. Click the icon in the upper-right corner to copy the CIDR blocks.
@@ -160,6 +178,9 @@ By default, the CIDR blocks of all regions and network types are displayed. In t
 **plan**
 
 This topic describes how to view all subtasks in a backup plan, including full backup tasks, incremental tasks, backup set download tasks, and restoration tasks. This helps you have a comprehensive insight into the overall operation of the backup plan.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. Choose **Tasks > All Tasks**.
 3. On the **Tasks** page, enter the ID of a backup plan in the upper-right corner and then click
@@ -180,6 +201,9 @@ basic module information, backup objects, operation records, and operation logs.
 **task**
 
 In specific scenarios, you must view the running details of a full backup task or a backup set download task. This way, you can plan your business in a timely manner. This topic excludes traditional task viewing methods and describes a convenient and quick way.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. Choose **Tasks > All Tasks**.
 3. On the **Tasks** page, click a task name.
@@ -197,6 +221,9 @@ queried. Then, press the Enter key.
 ### 5.3 Manually restart a task
 
 This topic describes how to manually restart a task.
+
+**Procedure**
+
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Tasks > All Tasks** or choose **Tasks > Abnormal**
 **Tasks**.

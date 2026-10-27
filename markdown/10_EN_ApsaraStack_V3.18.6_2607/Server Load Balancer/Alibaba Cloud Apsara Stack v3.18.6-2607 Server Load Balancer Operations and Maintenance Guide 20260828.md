@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 41
 source_pdf: "19f35e70a68f7d4b_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Operations and Maintenance Guide 202608"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Operations and Maintenance Guide 20260828

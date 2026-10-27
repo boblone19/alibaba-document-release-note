@@ -5,7 +5,7 @@ doc_version: "20240522"
 pdf_pages: 70
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 NAT Gateway Developer Guide 20240522.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/NAT%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20NAT%20Gateway%20Developer%20Guide%2020240522.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 NAT Gateway Developer Guide 20240522
@@ -110,7 +110,11 @@ You can go to the Apsara Stack documentation center and view the desired product
 
 ### 1.2 Call an API operation
 
-Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure th You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpo
+Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure th
+
+**Note**
+
+You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpo
 
 **Procedure**
 
@@ -241,7 +245,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 > <yourRoleArn>: Replace the parameter with your RAM role.
 > <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
-```java
+```
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -259,6 +263,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpoint is sts-vpc.${global:region}.${global:internet-
@@ -282,9 +291,15 @@ domain}.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample code provides an example on how to call the
 
 | DescribeNatGateways | operation of NAT Gateway. |
@@ -327,6 +342,8 @@ he previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 2.5 Obtain the values of common header parameters
 
@@ -515,6 +532,8 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 3.2 Use SDK
 
 #### 3.2.1 Install VPC SDK for Java
@@ -636,6 +655,8 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
+`}`
+
 #### 3.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations.
@@ -721,7 +742,7 @@ when you want to delete, modify, or query an instance.
             e.printStackTrace();
 ```
 
-or SDK for Python
+`}` `}` `}` or SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -1034,6 +1055,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create a request and set the required parameters.
     request := vpc.CreateDescribeNatGatewaysRequest()
     // Specify the endpoint of the service.
@@ -1045,9 +1071,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -1131,6 +1163,8 @@ response,err := vpcClient.DescribeNatGateways(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` .
@@ -1150,6 +1184,8 @@ response, err := vpcClient.DescribeNatGateways(request) if clientError, ok := er
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
 ```
+
+`}`
 
 **ServerError**
 
@@ -1177,6 +1213,8 @@ response, err := vpcClient.DescribeNatGateways(request) if serverError, ok := er
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 #### 5.2.5 Use CommonRequest to call API operations
 
@@ -1216,6 +1254,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace the parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<vpc.aliyuncs.com>" // Replace the parameter with the endpoint of the service.
@@ -1249,8 +1292,15 @@ o modify, delete, or query an instance.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 6 API reference
 
@@ -1455,6 +1505,8 @@ JSON format `{`
       /*Return Result Data*/
 ```
 
+`}`
+
 ### 6.5 NAT gateways
 
 #### 6.5.1 CreateNatGateway
@@ -1598,7 +1650,11 @@ Sample success responses
 
 #### 6.5.3 ModifyNatGatewaySpec
 
-Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
+Resizes a NAT gateway.
+
+**Description**
+
+NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
 | Size | Maximum connection | Number of new connections per second |
 |---|---|---|
@@ -1833,6 +1889,8 @@ Sample success responses
             "VswitchId": "vsw-bp1s2laxhdf9ayjbo****"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -1843,7 +1901,11 @@ Sample success responses
 
 #### 6.6.1 CreateForwardEntry
 
-Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
+Adds a DNAT entry to a DNAT table.
+
+**Description**
+
+Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
 
 **Request parameters**
 
@@ -1889,6 +1951,8 @@ Sample success responses
         "RequestId": "A4AEE536-A97A-40EB-9EBE-53A6948A6928",
         "ForwardEntryId": "fwd-119smw5tkasdf****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2114,6 +2178,8 @@ Sample success responses
         "ForwardTableId": "ftb-11tc6xgmv****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2126,7 +2192,11 @@ Sample success responses
 
 #### 6.7.1 CreateSnatEntry
 
-Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
+Adds an SNAT entry to an SNAT table.
+
+**Description**
+
+When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
 
 **Request parameters**
 
@@ -2365,6 +2435,8 @@ Sample success responses
         "SnatTableId": "stb-8vbczigrhop8x5u3t****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2579,6 +2651,8 @@ Sample success responses
             "IpAddress": "116.52.XX.XX"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2792,6 +2866,8 @@ PI directory.
     // Display the results.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
+
+`}`
 
 ### 7.2 Use the ASAPI gateway to make API calls
 
@@ -3030,6 +3106,8 @@ vpc.${global:region}.${global:internet-domain}.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -3071,6 +3149,8 @@ the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

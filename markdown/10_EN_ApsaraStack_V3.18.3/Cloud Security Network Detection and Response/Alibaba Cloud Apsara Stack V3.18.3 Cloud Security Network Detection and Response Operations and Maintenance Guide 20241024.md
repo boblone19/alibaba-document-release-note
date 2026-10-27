@@ -5,7 +5,7 @@ doc_version: "20241024"
 pdf_pages: 17
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Network Detection and Response Operations and Maintenance Guide 20241024.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Security%20Network%20Detection%20and%20Response%20Operations%20and%20Maintenance%20Guide%2020241024.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Network Detection and Response Operations and Maintenance Guide 20241024
@@ -41,6 +41,9 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -65,6 +68,8 @@ This topic describes how to check the service status of Network Detection Respon
 
 The purpose of a basic inspection is to check the service status of Network Detection Response (NDR). This topic describes how to perform a basic inspection.
 
+**Procedure**
+
 ## 1 Log on to the Apsara Infrastructure Management console.
 
 2. In the left-side navigation pane, click **Project & Cluster O&M**.
@@ -78,6 +83,9 @@ check whether the service status is normal.
 ### 2.2 Advanced inspection
 
 The purpose of an advanced inspection is to check the service status and features of Network Detection Response (NDR). This topic describes how to perform an advanced inspection.
+
+**Procedure**
+
 2. Log on to the two physical servers of Beaver.
 i. In the left-side navigation pane, click **Project & Cluster O&M**. ii. On the Project O&M page, enter **BeaverCluster** in the **Project | Cluster** search box. iii. Find the BeaverClusterForTAPSW-A-xx cluster and click **Cluster Details** in the **Actions** column. iv. On the cluster details page, click the **Services** tab. v. On the Services tab, enter **yundun-beaver-advance** in the **Service** search box. Then, click **Details** in the Actions column to go to the service details page. vi. In the **Components** section, click **BeaverAdvance#** to view the detailed information about the component. vii. In the Information of Component BeaverAdvance# section, click the **Instances** tab. On this tab, find the instance whose information you want to view and click **Terminal** in the
 **Actions** column.
@@ -103,6 +111,9 @@ Run the `cat /home/admin/beaver-dj-schedule/conf/dj.conf` command. Check whether
 **Background information**
 
 This topic describes how to restart the beaver_drv process.
+
+**Procedure**
+
 1. Log on to a physical server of Beaver.
 2. Switch to the root user.
 3. Restart the beaver_drv process.
@@ -115,6 +126,9 @@ Run the `/home/admin/beaver_drv/bin/beaver_drv.sh stop` command for five times, 
 **Background information**
 
 To uninstall Network Traffic Monitoring System, follow the following steps:
+
+**Procedure**
+
 1. Log on to a physical machine of Network Traffic Monitoring System.
 2. Switch to the root account.
 3. Run the following command to uninstall Network Traffic Monitoring System:
@@ -322,6 +336,9 @@ curl "localhost:7070/api/v3/column/m.*?m.sn=Serial number of the server"
 **Background information**
 
 This topic describes how to disable TCP blocking for Beaver.
+
+**Procedure**
+
 1. Log on to a physical server of Beaver.
 2. Switch to the root user.
 3. Open the /beaver_client.sh file on each server of Beaver, and add a number sign ( `#` ) to
@@ -339,6 +356,9 @@ the start of the `./tcp_reset` line to comment out the line.
 **Background information**
 
 To enable TCPDump for Network Traffic Monitoring System, follow the following steps:
+
+**Procedure**
+
 1. Log on to a physical machine of Network Traffic Monitoring System.
 2. Switch to the root account.
 3. Run the following command to enable TCPDump:

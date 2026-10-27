@@ -5,7 +5,7 @@ doc_version: "20240222"
 pdf_pages: 784
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 MaxCompute User Guide 20240222.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20MaxCompute%20User%20Guide%2020240222.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 MaxCompute User Guide 20240222
@@ -25541,6 +25541,8 @@ You can click python-dateutils to find python-dateutil-2.6.0.zip and download py
 add archive python-dateutil.zip;
 ```
 
+**Note**
+
 Download the pytz-2017.2.zip and six-1.11.0.tar.gz packages and upload them as resources to MaxCompute. For pandas packages that include C programming code, only the WHL package whose name includes cp27-cp27mmanylinux1_x86_64 can run in MaxCompute. Therefore, you must download the pandas-0.20.2-cp27-cp27mmanylinux1_x86_64.whl package and change the file name extension of the package to .zip. Then, run the `add` archive pandas.zip; command in the MaxCompute console to upload the package. Use the same method to upload other required packages. The following table lists the packages that you must download.
 
 | Package name | File name | Name of the resource for upload |
@@ -31488,6 +31490,8 @@ grant read on package Information_Schema.systables to user RAM$B***@aliyun.com:u
 
 > **Note:** Query a metadata view
 
+**Note**
+
 |   | TABLES |   |   |
 |---|---|---|---|
 |   | PARTITIONS |   |   |
@@ -34133,7 +34137,11 @@ figure. Figure 2. Choose Debug As > ODPS MapReduce|Graph
 3. In the ODPS MapReduce/Graph Run Configuration dialog box, set the parameters to the values shown in the
 following figure. Figure 3. ODPS MapReduce/Graph Run Configuration dialog box
 4. Click **Finish** to view the job running result, as shown in the following figure.
-Figure 4. Running result View the local computing result, as shown in the following figure. Figure 5. Local computing result After local debugging succeeds, you can package the program, upload the package to MaxCompute as a JAR resource, and submit a Graph job. For more information about the packaging process, see MapReduce running example.
+Figure 4. Running result View the local computing result, as shown in the following figure. Figure 5. Local computing result After local debugging succeeds, you can package the program, upload the package to MaxCompute as a JAR resource, and submit a Graph job.
+
+**Note**
+
+For more information about the packaging process, see MapReduce running example.
 
 > For more information about the directory structure of local results, see MapReduce running example.
 

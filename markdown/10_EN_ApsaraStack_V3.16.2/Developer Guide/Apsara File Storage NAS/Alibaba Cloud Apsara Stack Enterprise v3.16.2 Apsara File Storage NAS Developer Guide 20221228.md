@@ -5,7 +5,7 @@ doc_version: "20221228"
 pdf_pages: 95
 source_pdf: "a1c92bd8586d6963_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230602/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Apsara%20File%20Storage%20NAS%20Developer%20Guide%2020221228.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228
@@ -730,7 +730,11 @@ Sample requests http(s)://[Endpoint]/?Action=CreateFileSystem &ProtocolType=NFS 
 
 #### 4.4.2 DeleteFileSystem
 
-Deletes a file system. Before you delete a file system, you must remove all the mount targets from the file system. After the file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+Deletes a file system.
+
+**Description**
+
+Before you delete a file system, you must remove all the mount targets from the file system. After the file system is deleted, the data on the file system cannot be restored. Proceed with caution.
 
 **Request parameters**
 
@@ -888,7 +892,11 @@ Sample requests http(s)://[Endpoint]/? Action=CreateMountTarget &AccessGroupName
 
 #### 4.5.2 DeleteMountTarget
 
-Deletes a mount target. After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+Deletes a mount target.
+
+**Description**
+
+After you delete a mount target, the mount target cannot be restored. Proceed with caution.
 
 **Request parameters**
 

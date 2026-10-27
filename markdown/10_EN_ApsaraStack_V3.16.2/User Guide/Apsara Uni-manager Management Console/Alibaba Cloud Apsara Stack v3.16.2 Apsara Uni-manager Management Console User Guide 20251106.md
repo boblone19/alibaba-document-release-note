@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 167
 source_pdf: "16145930a1b16f69_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console User Guide 20251106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Management%20Console%20User%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console User Guide
@@ -275,7 +275,11 @@ The Apsara Uni-manager Management Console is a service capability platform of th
 
 **Overview**
 
-The Apsara Uni-manager Management Console simplifies the management and deployment of physical and virtual resources by building an Apsara Stack platform that supports various business types of public service and enterprise customers. The console helps build your business systems in a simple and quick manner, fully improves resource utilization, and reduces O&M costs. This allows you to shift your focus from O&M to business. The console brings the Internet economy model to public service and enterprise customers and builds a new ecosystem chain based on cloud computing. Operations in the Apsara Uni-manager Management Console are classified into the following parts: System initialization: completes basic system configurations, such as creating organizations, resource sets, and users, creating basic resources such as virtual private clouds (VPCs), and creating contacts and contact groups in CloudMonitor. Cloud resource creation: creates resources. Cloud resource management: completes resource management operations, such as starting, using, and releasing resources, and changing resource configurations and resource quotas. nd permissions
+The Apsara Uni-manager Management Console simplifies the management and deployment of physical and virtual resources by building an Apsara Stack platform that supports various business types of public service and enterprise customers. The console helps build your business systems in a simple and quick manner, fully improves resource utilization, and reduces O&M costs. This allows you to shift your focus from O&M to business. The console brings the Internet economy model to public service and enterprise customers and builds a new ecosystem chain based on cloud computing.
+
+**Procedure**
+
+Operations in the Apsara Uni-manager Management Console are classified into the following parts: System initialization: completes basic system configurations, such as creating organizations, resource sets, and users, creating basic resources such as virtual private clouds (VPCs), and creating contacts and contact groups in CloudMonitor. Cloud resource creation: creates resources. Cloud resource management: completes resource management operations, such as starting, using, and releasing resources, and changing resource configurations and resource quotas. nd permissions
 
 ## 2 User roles and permissions
 
@@ -316,6 +320,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -379,6 +386,9 @@ The Apsara Uni-manager Management Console uses charts to keep you up to date on 
 **Background information**
 
 The resource types displayed may vary with region types. See your dashboard for available resource types.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 By default, the **workbench** page appears when you log on to the Apsara Uni-manager Management Console. To return to the workbench page from other pages, click **Home** in the top navigation bar.
 2. On the **workbench** page, you can view the instance summary information for all regions of
@@ -417,6 +427,8 @@ If your homepage is the default homepage, you can customize the dashboards for t
 If Default Homepage is selected on the Menu Permissions tab of your role, no dashboards are displayed in the workbench on the homepage. You can manually configure a URL to be displayed on the homepage.
 
 > **Note:** This URL supports only domain names of the oneconsole type. You can view and access a URL only by using the account and the role that are used to specify the URL. For more information, see Create a menu.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Home.
@@ -873,6 +885,9 @@ ApsaraDB RDS also supports a new link. The period of collected data is 60 second
 #### 6.3.3 View the list of monitored instances
 
 This topic describes how to view the list of monitored instances. You can obtain the status of instances in your organization, resource set, and region in an efficient manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products** > **Monitoring and O&M** > **CloudMonitor**.
 3. In the top navigation bar of the **CloudMonitor** console, select an organization, a resource
@@ -885,6 +900,9 @@ In the instance list that is displayed, view the instance information such as th
 #### 6.3.4 View monitoring charts
 
 You can view monitoring charts to obtain up-to-date information about each instance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -898,6 +916,9 @@ On the Monitoring Charts page that appears, you can select a date and time to vi
 #### 6.4.1 View alert overview
 
 On the **Overview** page in Cloud Monitor, you can view the alert status statistics and alert logs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the Cloud Monitor page, click **Overview**.
@@ -911,6 +932,9 @@ You can choose whether to enable alert notification by email or DingTalk.
 **Prerequisites**
 
 Valid contact information is specified when you create a user. If the contact information has changed, you must modify your personal information. For more information, see Modify personal information.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click **Personal information**.
@@ -927,6 +951,8 @@ Alert information contains information for all items that do not comply with you
 
 > **Note:** The system can retain up to one million alert items generated within the last three months.
 > This topic describes how to view alert information for ECS. You can view the alert information for other cloud resources in a similar manner.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > Cloud Monitor**.
@@ -952,6 +978,9 @@ After you create alert rules, you can view your alert rules on the Alert Rules p
 **Background information**
 
 The system provides alert rules for ECS, ApsaraDB RDS, SLB, OSS, KVStore for Redis, VPN Gateway, AnalyticDB for PostgreSQL, ApsaraDB for MongoDB, EIP, and API Gateway.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -974,6 +1003,8 @@ For Elastic Compute Service (ECS) instances, you must install a monitoring plug-
 **Install**.
 
 > **Note:** The monitoring chart displays monitoring data 5 to 10 minutes after the monitoring plug- in is installed.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > Cloud Monitor**.
@@ -1014,6 +1045,9 @@ Table 2. Parameters for adding rule description
 ##### 6.4.4.3 Disable an alert rule
 
 You can disable one or more alert rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the Cloud Monitor page, click **Cloud Service**
@@ -1027,6 +1061,9 @@ to the alert rule to be disabled.
 ##### 6.4.4.4 Enable an alert rule
 
 You can re-enable alert rules at any time after they have been disabled.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > Cloud Monitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -1040,6 +1077,9 @@ the alert rule to be enabled.
 ##### 6.4.4.5 Delete an alert rule
 
 You can delete alert rules that are no longer needed.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the Cloud Monitor page, click **Cloud Service**
@@ -1068,6 +1108,9 @@ This topic describes how to log on to the VMware Cloud on Alibaba Cloud console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key. ud on Alibaba Cloud
 
@@ -1094,6 +1137,9 @@ Before you use VMware Cloud on Alibaba Cloud, you must bind a VMware Cloud on Al
 **Prerequisites**
 
 A VMware Cloud on Alibaba Cloud region is managed. For more information, see Add a VMware node.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, click **Resource Pools**.
@@ -1137,6 +1183,9 @@ A VMware Cloud on Alibaba Cloud instance is a virtual machine (VM) that contains
 **Prerequisites**
 
 The region where VMware Cloud on Alibaba Cloud is deployed is managed. For more information, see Add a VMware node. The region where VMware Cloud on Alibaba Cloud is deployed is bound to an organization. For more information, see Bind a VMware Cloud on Alibaba Cloud region.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1186,6 +1235,9 @@ ud on Alibaba Cloud
 ##### 7.1.4.2 View instance information
 
 You can view the list of created instances as well as details of individual instances, such as their basic configurations, disks, and elastic network interfaces (ENIs).
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1196,6 +1248,9 @@ In the **Instance ID/Name** column, click the instance ID. Click **Manage** in t
 ##### 7.1.4.3 Modify an instance
 
 You can modify the name and description of a created VMware Cloud on Alibaba Cloud instance.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1208,6 +1263,9 @@ column.
 ##### 7.1.4.4 Remotely connect to an instance
 
 You can remotely connect to and manage added VMware Cloud on Alibaba Cloud instances.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1228,6 +1286,9 @@ You can stop VMware Cloud on Alibaba Cloud instances that are not in use. The st
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1247,6 +1308,9 @@ You can start a stopped instance. ud on Alibaba Cloud
 **Prerequisites**
 
 The instance is in the **Stopped** state.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1269,6 +1333,9 @@ After you change the logon password of an instance or install system updates, yo
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1290,6 +1357,9 @@ ud on Alibaba Cloud You can delete instances that are no longer needed to releas
 **Prerequisites**
 
 The instance is in the **Stopped** state.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1304,6 +1374,9 @@ You can change the instance types of instances to suit your business needs. This
 **Prerequisites**
 
 The instance is in the **Stopped** state.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -1340,6 +1413,9 @@ The name must be 2 to 128 characters in length and can contain letters, digits, 
 ##### 7.1.5.2 View images
 
 You can view the list of created images.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, choose **Images** > **Images**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where the
@@ -1366,6 +1442,9 @@ The instance to which the disk is attached is in the **Running** or **Stopped** 
 **Background information**
 
 A snapshot of a disk can be used to roll back data of the disk. When you create a snapshot, take note of the following items: For each disk, the first snapshot taken is a full snapshot and subsequent snapshots are incremental snapshots. It takes longer to create the first full snapshot than it does subsequent incremental snapshots. The amount of taken time depends on the amount of data that has been changed since the previous snapshot. The more data that has been changed, the longer it takes to create an incremental snapshot. Avoid creating snapshots during peak hours.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1384,6 +1463,9 @@ click the **Snapshots** tab.
 ##### 7.1.6.2 Delete a snapshot
 
 You can delete a snapshot that is no longer needed. After the snapshot is deleted, it cannot be recovered.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 ud on Alibaba Cloud
@@ -1397,6 +1479,9 @@ To delete a single snapshot, find the snapshot and click **Delete** in the **Act
 ##### 7.1.6.3 View snapshots
 
 You can view the list of created snapshots.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1416,6 +1501,9 @@ You can select multiple filter options to narrow down search results.
 ##### 7.1.7.1 Create a disk
 
 To increase the storage space of VMware Cloud on Alibaba Cloud instances, you can create standalone data disks and then attach them to the instances. This topic describes how to create an empty data disk. You cannot create standalone system disks.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1440,6 +1528,9 @@ The created disk is displayed in the disk list and in the **Running** state.
 ##### 7.1.7.2 View disks
 
 You can view the list of created disks and the details of individual disks.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1458,6 +1549,8 @@ box, and then click **Search**. You can select multiple filter options to narrow
 ##### 7.1.7.3 Detach a data disk
 
 You can detach data disks. System disks cannot be detached.
+
+**Procedure**
 
 > **Warning:** Resources are released after disks are detached. Make sure that the data of a disk is backed up before you detach it.
 
@@ -1484,6 +1577,9 @@ ud on Alibaba Cloud A virtual private cloud (VPC) and a vSwitch are created. For
 **Background information**
 
 ENIs are classified into primary and secondary ENIs. A primary ENI is created by default when an instance is created in a VPC. This primary ENI shares the lifecycle of the instance with which it is created and cannot be unbound from the instance. ENIs that are separately created are secondary ENIs. This topic describes how to create a secondary ENI.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1516,6 +1612,9 @@ The created ENI is displayed on the ENIs tab and is in the **Bound** state.
 ##### 7.1.8.2 View ENIs
 
 You can view the list of created elastic network interfaces (ENIs).
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1547,6 +1646,9 @@ You can delete secondary elastic network interfaces (ENIs) that are no longer ne
 **Background information**
 
 Only secondary ENIs can be deleted. Primary ENIs share the same lifecycle as instances and cannot be deleted.
+
+**Procedure**
+
 1. Log on to the VMware Cloud on Alibaba Cloud console.
 2. In the left-side navigation pane, click **Instances**.
 3. In the top navigation bar, move the pointer over **Region** and select the region where
@@ -1562,6 +1664,9 @@ VMware Cloud on Alibaba Cloud is deployed.
 #### 8.1.1 Create an organization
 
 This topic describes how to create an organization. You can create organizations to store resource sets and their resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -1576,6 +1681,9 @@ Select **Synchronously Create Multi-cloud Organization**, select clouds on which
 #### 8.1.2 Sort organizations
 
 This topic describes how to sort organizations that belong to the same parent organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise** .
 3. In the left-side navigation pane of the Enterprise page, click **Organizations**.
@@ -1586,6 +1694,9 @@ This topic describes how to sort organizations that belong to the same parent or
 #### 8.1.3 View organization information
 
 You can view information of an organization on the Organizations page.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1604,6 +1715,9 @@ You can click the **Resource Sets**, **Users**, or **User Groups** tab to query 
 #### 8.1.4 Change the name of an organization
 
 Users that have operation permissions on an organization can change the name of the organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1625,6 +1739,9 @@ Make sure that each sub-organization under the organization that you want to cha
 **Background information**
 
 Users can change the ownership of an organization across parent organizations. This way, the ownership of subordinate organizations, users, and resources are also changed in a cascading manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, choose **Resources > Changes**.
@@ -1644,6 +1761,9 @@ An AccessKey pair that consists of an AccessKey ID and an AccessKey secret is us
 **Prerequisites**
 
 Only operations administrators and level-1 organization administrators can obtain AccessKey pairs of an organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1661,6 +1781,9 @@ You can create AccessKey pairs for organizations and delete the original ones to
 **Prerequisites**
 
 Level-1 organization administrators can create AccessKey pairs for organizations to which they belong. Operations administrators can create AccessKey pairs for all level-1 organizations. A maximum of two AccessKey pairs can be created for each organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -1679,6 +1802,9 @@ You can delete AccessKey pairs that are no longer needed.
 **Prerequisites**
 
 Level-1 organization administrators can delete AccessKeys from organizations to which they belong. Operations administrators can delete AccessKey pairs from all level-1 organizations. At least one AccessKey pair is retained for an organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -1699,6 +1825,9 @@ You can disable AccessKey pairs that are no longer needed. Newly created AccessK
 **Prerequisites**
 
 Level-1 organization administrators can disable AccessKey pairs for organizations to which they belong. Operations administrators can disable AccessKey pairs for all level-1 organizations. At least one AccessKey pair is enabled for each level-1 organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -1719,6 +1848,9 @@ Disabled AccessKey pairs must be enabled before they can be used. Newly created 
 **Prerequisites**
 
 Level-1 organization administrators can enable AccessKey pairs for organizations to which they belong. Operations administrators can enable AccessKey pairs for all level-1 organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -1739,6 +1871,8 @@ Before you delete an organization, make sure that the organization does not cont
 
 > **Warning:** After the organization is deleted, the data of the organization cannot be recovered. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1753,6 +1887,9 @@ above the organization navigation tree. Fuzzy search is supported.
 #### 8.2.1 Create a resource set
 
 This topic describes how to create a resource set. Before you apply for resources, you must create a resource set.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Resource Sets**.
@@ -1778,6 +1915,9 @@ redirected to the instance list page. On the page that appears, view the details
 #### 8.2.3 Change the name of a resource set
 
 You can change the name of a resource set to keep it up-to-date as an administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Resource Sets**.
@@ -1824,6 +1964,8 @@ The resource set to be deleted does not contain resources, users, or user groups
 > **Important:** A resource set cannot be deleted if it contains resources, users, or user groups.
 > The default resource set cannot be deleted.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Resource Sets**.
@@ -1868,6 +2010,9 @@ After the role is created, you can click **Authorize now** in the Submission res
 
 If you are uncertain about the specific permissions of a role, you can go to the **Role**
 **Authorization** page to view the role permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -1882,6 +2027,9 @@ This topic describes how to modify information about custom roles. You can modif
 **Background information**
 
 You cannot modify information about system roles.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -1901,6 +2049,9 @@ You can copy a preset role or a custom role to create a role that has the same p
 **Background information**
 
 Operations on the **Role authorization** page are the same as those for creating a custom role. You can add, modify, and remove the role permissions in the copied role. By default, if you do not modify the role permissions, the sharing scope, management permissions, application permissions, menu permissions, and authorized users are all the same as those of the source role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -1927,6 +2078,9 @@ After the role is created, you can click **Authorize now** in the Submission res
 #### 8.3.5 Disable a role
 
 When you disable a role, all of its permissions are also disabled.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -1936,6 +2090,9 @@ column.
 #### 8.3.6 Enable a role
 
 When you enable a disabled role, the permissions of the role are restored.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -1948,6 +2105,9 @@ This topic describes how to delete a custom role. You can delete custom roles th
 **Prerequisites**
 
 Default or preset roles cannot be deleted. Before you delete a role, you must unbind all user groups from the role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -1991,6 +2151,9 @@ You can create a user and assign the user different roles as an administrator to
 ##### 8.4.1.2 Query a user
 
 You can view user information such as the name, organization, mobile number, email address, role, logon time, and initial password.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2002,6 +2165,9 @@ organization. You can also click **Advanced** on the right side and select a rol
 ##### 8.4.1.3 Modify user information
 
 You can modify user information such as the display name, mobile number, and email address to keep it up to date.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2056,6 +2222,9 @@ select the role to be added or removed from the **Assigned Roles** drop-down lis
 ##### 8.4.1.5 Modify the information about a user group
 
 This topic describes how to modify the information about a user group. On the **Users** page, you can view the information of user groups and modify the ownership of users in user groups.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2092,6 +2261,9 @@ After a user is created, the system generates an initial password for the user.
 **Background information**
 
 Organization administrators can view the initial passwords of all users in the organizations they manage.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2124,6 +2296,9 @@ You can disable a user account to prevent the user account from logging on to th
 **Background information**
 
 By default, user accounts are enabled when they are created.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2136,6 +2311,9 @@ Find the user whose **Status** is **Disabled** and which you want to re-enable, 
 ##### 8.4.1.10 Delete a user
 
 You can delete a specific user as an administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2164,6 +2342,9 @@ An administrator can restore a deleted user account from the **Historical Users*
 **Background information**
 
 The basic information such as the logon password of a restored user is the same as it was before the user was deleted, except for its organization and role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -2181,6 +2362,9 @@ To improve the security of the Apsara Uni-manager Management Console, you can cr
 **Background information**
 
 Access policies are used to control the time periods and IP addresses valid for user logon. After a user is bound to an access policy, user logons are limited based on the logon time and IP addresses specified in the policy. The default policy generated by the Apsara Uni-manager Management Console does not have limits on the time and IP addresses valid for user logon. This policy cannot be deleted.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Permission Policies**.
@@ -2208,6 +2392,9 @@ This topic describes how to query access policies. You can query the details of 
 **Background information**
 
 When the Apsara Uni-manager Management Console provides services, the console automatically generates a default policy that does not have limits on the logon time and IP addresses.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Permission Policies**.
@@ -2226,6 +2413,9 @@ View the access policy, including the permitted logon time and IP addresses. The
 #### 8.5.3 Modify a logon policy
 
 You can modify the policy name, policy properties, permitted logon time period, and IP addresses of a logon policy.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Permission Policies**.
@@ -2236,6 +2426,9 @@ You can modify the policy name, policy properties, permitted logon time period, 
 #### 8.5.4 Disable an access policy
 
 You can disable access policies that are no longer needed.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Permission Policies**.
@@ -2245,6 +2438,9 @@ You can disable access policies that are no longer needed.
 #### 8.5.5 Enable a logon policy
 
 You can re-enable disabled logon policies.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Permission Policies**.
@@ -2261,6 +2457,8 @@ The access policy to be deleted is not bound to users. If an access policy is bo
 **Background information**
 
 > **Note:** The default policy cannot be deleted.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
@@ -2281,6 +2479,9 @@ An organization is created. For more information, see Create an organization.
 **Background information**
 
 Relationships between user groups and users: A user group can contain zero or more users. A user does not need to belong to a user group. You can add a user to multiple user groups. Relationships between user groups and organizations: A user group belongs to only a single organization. You can create multiple user groups within an organization. Relationships between user groups and roles: A role can be assigned to multiple user groups. When a role is assigned to a user group, the permissions that the role has are automatically granted to users within the user group. Relationships between user groups and resource sets: You can add zero or more user groups to a resource set. A user group can be added to multiple resource sets.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -2298,6 +2499,9 @@ Relationships between user groups and users: A user group can contain zero or mo
 #### 8.6.2 Add users to a user group
 
 You can add users to a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -2310,6 +2514,9 @@ the right-side section.
 #### 8.6.3 Remove a user
 
 You can remove users from a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -2322,6 +2529,9 @@ click the icon to move the user to the **Remove User** section.
 #### 8.6.4 Add or remove a role
 
 You can add a role to a user group to grant the role permissions to all users within the group. You can also remove a role from a user group to revoke the role permissions from all users within the group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -2336,6 +2546,9 @@ permissions from the user group.
 #### 8.6.5 Modify the name of a user group
 
 You can modify the names of user groups.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -2350,6 +2563,9 @@ This topic describes how to delete a user groups. You can delete user groups tha
 **Prerequisites**
 
 Before you delete a user group, you must unbind the user group from all roles. Otherwise, the user group cannot be deleted.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -2364,6 +2580,9 @@ column.
 #### 8.7.1 Update associations
 
 The Apsara Uni-manager Management Console allows you to manage resources across regions. You can update the associations between organizations and regions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Regions**.
@@ -2443,6 +2662,9 @@ information of a secondary node and click **OK**.
 ##### 8.9.1.3 View managed cloud instances
 
 You can use the multi-cloud management feature to view the details of all managed cloud instances.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the Enterprise page, click **Cloud Instances**.
@@ -2456,6 +2678,9 @@ In the Manage Cloud Instance message, you can view the version, Apsara Stack API
 ##### 8.9.1.4 Modify a cloud instance
 
 If you want to change the information of a cloud instance for more efficient management, you can modify it in the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the Enterprise page, click **Cloud Instances**.
@@ -2469,6 +2694,9 @@ If you want to change the information of a cloud instance for more efficient man
 ##### 8.9.1.5 Manage cloud instances
 
 You can manage Apsara Stack cloud instances to check whether they can be connected.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the Enterprise page, click **Cloud Instances**.
@@ -2522,6 +2750,9 @@ If you want to change the information of a VMware node for more efficient manage
 ##### 8.9.2.3 Test VMware node connectivity
 
 You can manage VMware nodes to check whether they can be connected.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the Enterprise page, click **Cloud Instances**.
@@ -2546,6 +2777,9 @@ Organization administrators can set the data permissions of resource instances t
 **Prerequisites**
 
 The cloud services that support data authorization include Message Queue (MQ), Object Storage Service (OSS), Log Service, DataHub, Container Service for Kubernetes, and Key Management Service (KMS).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Data Permissions**.
@@ -2561,6 +2795,9 @@ You can also select or clear Enable All to batch manage permissions.
 #### 8.10.3 Edit user permissions
 
 You can use JSON statements to edit user permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Data Permissions**.
@@ -2575,6 +2812,9 @@ If no permissions are available, specify a policy in the text editor. For more i
 #### 8.10.4 View the permissions of a user
 
 You can view the existing permissions of a user.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Data Permissions**.
@@ -2592,6 +2832,9 @@ ons
 #### 9.1.1 Configure password policies
 
 You can configure password policies for user logons.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Security Policies**.
@@ -2637,6 +2880,9 @@ your business requirements. Within the specified duration, the system prompts an
 #### 9.2.1 Create a menu
 
 You can create a menu and add its URL to the Apsara Uni-manager Management Console for quick access.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Menu Settings**.
@@ -2669,6 +2915,9 @@ You can modify an existing menu, including the menu name, URL, icon, and menu or
 **Prerequisites**
 
 Default menus cannot be modified.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Menu Settings**.
@@ -2684,6 +2933,9 @@ You can delete menus that are no longer needed. ons
 **Prerequisites**
 
 Default menus cannot be deleted.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Menu Settings**.
@@ -2693,6 +2945,9 @@ Default menus cannot be deleted.
 #### 9.2.4 Show or hide menus
 
 You can perform the following operations to show or hide menus:
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Menu Settings**.
@@ -2830,6 +3085,9 @@ For more information, see Specification parameters.
 #### 9.3.3 View specifications
 
 You can view the specifications of each resource type.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -2842,6 +3100,9 @@ quantity.
 #### 9.3.4 Disable specifications
 
 By default, newly created specifications are in the Enabled state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -2853,6 +3114,9 @@ disable.
 #### 9.3.5 Export specifications
 
 You can export specifications that you want to view and share.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Specifications**.
@@ -2866,6 +3130,9 @@ the specifications to your computer as a CSV file.
 **type in previous versions**
 
 You can view specifications of each resource type in previous versions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -2899,6 +3166,9 @@ In hybrid mode, cloud services that support RAM and STS can still authenticate u
 #### 9.4.2 Configure an authentication mode
 
 You can select an appropriate authentication mode for different scenarios.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Authentication Mode**.
@@ -2918,6 +3188,9 @@ You can view all internal messages, including read and unread messages.
 **Background information**
 
 When changes are made to or alerts are generated for an instance in a resource, all users that have read and operation permissions on this resource receive corresponding messages.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, move the pointer over the
 icon and click **More**.
@@ -2927,6 +3200,9 @@ scope. Choose **Internal Messages > All Messages** to view all messages, includi
 #### 9.5.2 Mark messages as read
 
 You can mark unread messages as read messages to facilitate message management.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, move the pointer over the
 icon and click **More**.
@@ -2941,6 +3217,9 @@ You can also select the check boxes to the left of messages and click **Batch Re
 #### 9.5.3 Delete a message
 
 You can delete messages that are no longer needed.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, move the pointer over the
 icon and click **More**.
@@ -2957,6 +3236,9 @@ This topic describes how to configure resource pools. You can modify the maximum
 **Prerequisites**
 
 If the physical inventory is unlimited, the logical inventory cannot be less than the used inventory. If the physical inventory is limited, the logical inventory cannot be less than the used inventory and cannot be greater than the physical inventory.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
@@ -2969,6 +3251,9 @@ If the physical inventory is unlimited, the logical inventory cannot be less tha
 #### 9.7.1 Configure brands
 
 You can customize the icon, platform name, and logon page of the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a platform administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Custom Configurations**.
@@ -3117,6 +3402,9 @@ You must set quotas for a parent organization before you can set quotas for its 
 **Background information**
 
 If the parent organization (not including level-1 organizations) has quotas, the available quotas for a subordinate organization are equal to the quotas for the parent organization minus the quotas for other subordinate organizations. This topic describes how to set quotas for Elastic Compute Service (ECS). You can set quotas for other cloud resources in a similar manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an organization administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, click **Quotas**.
@@ -3135,6 +3423,9 @@ Administrators can adjust quotas for cloud resources based on their organization
 **Background information**
 
 This topic describes how to modify quotas for Elastic Compute Service (ECS). You can modify quotas for other cloud resources in a similar manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an organization administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, click **Quotas**.
@@ -3153,6 +3444,9 @@ Administrators can reset quotas to remove quota limits on cloud resources.
 **Prerequisites**
 
 Before you delete a quota for an organization, make sure that no subordinate organizations have quotas.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an organization administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, click **Quotas**.
@@ -3168,6 +3462,9 @@ icon.
 ##### 10.1.5.1 Create a rule for quota alerts
 
 This topic describes how to create a rule for quota alerts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alerts**.
@@ -3204,6 +3501,9 @@ alert that you want to modify. You can also search the alert by **Organization a
 ##### 10.1.5.3 Delete a quota alert
 
 This topic describes how to delete a quota alert. You can delete quota alerts that you no longer require.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alerts**.
@@ -3216,6 +3516,9 @@ alert that you want to delete. You can also search an alert by **Organization an
 #### 10.1.6 View the quota alert history
 
 By viewing alerts, you can understand the usage of resource quotas and obtain exception information in a timely manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alert History**.
@@ -3237,6 +3540,9 @@ The Apsara Uni-manager Management Console shows the number of resource instances
 **Background information**
 
 The following cloud resources support usage statistics: Elastic Compute Service, Container Service for Kubernetes, Container Registry Standard Edition, Virtual Private Cloud, Server Load Balancer, VPN Gateway, Express Connect, NAT Gateway, IPv6 Gateway, Cloud Service Bus, Object Storage Service, ApsaraDB RDS for MySQL, Elastic IP Address, Tablestore, PolarDB-X V1.0, KVStore for Redis, AnalyticDB for PostgreSQL, Apsaradb MongoDB, Graph Database, ApsaraDB RDS for PostgreSQL ,ApsaraDB RDS for SQL Server, Log Service, Elastic Block Store, ECS Snapshot, Auto Scaling, API Gateway, Key Management Service, Realtime Compute, MaxCompute, Data Management, DataHub, Elasticsearch on Kubernetes, Enterprise Distributed Application Service, Dedicated Host, ApsaraDB for OceanBase, Bastionhost (Early Version), Cloud-native Bastionhost, Internet Firewall, VPC Firewall, Threat Detection Service, Database Audit, Web Application Firewall, Anti-DDoS Service, and Network Traffic Monitoring System. The following procedure uses Elastic Compute Service as an example to describe how to view usage statistics. You can view the usage statistics of other cloud resources in a similar manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, click **Usage Statistics**.
@@ -3265,6 +3571,9 @@ View the most recent data of the service.
 #### 10.3.2 Export reports
 
 You can export the resources, quotas, or monitoring data that you want to view at the same time based on cloud service types.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Statistical Analysis** > **Reports**.
@@ -3278,6 +3587,9 @@ Export reports by service. a. Click **Create Report Export Task**. b. In the **C
 #### 10.3.3 Download reports of historical data
 
 This topic describes how to download reports of historical data. You can download data reports of cloud services within the specified period of time, resource set, and region by creating download tasks.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane of the **Operations** page, choose **Statistical Analysis** >
@@ -3313,6 +3625,9 @@ You can use tags to classify and manage resources from different dimensions.
 #### 10.4.1 Query tags
 
 Each tag consists of a tag key and a tag value. On the **Tag management** page, you can view all tag keys and values, as well as the information about the resources to which the tags are added.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, click **Tags**.
@@ -3327,6 +3642,9 @@ configure **The organization of the resource** .
 #### 10.4.2 Create a tag
 
 This topic describes how to create a tag and add the tag to resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, click **Tags**.
@@ -3369,6 +3687,9 @@ effective within different periods of time. Click **LocateDay** in the upper-rig
 ##### 10.5.2.1 Create a billable item
 
 Billable items define the billing methods of services. This topic describes how to create a billable item.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Rules**.
@@ -3395,6 +3716,9 @@ Billable items define the billing methods of services. This topic describes how 
 ##### 10.5.2.2 Clone a billable item
 
 You can clone an existing billable item to create the same or a similar billable item.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Rules**.
@@ -3428,6 +3752,8 @@ You can delete billable items that are incorrect or no longer needed.
 At least one billable item is retained in a billing rule.
 
 > **Warning:** If you delete billable items, billing data may change. This change cannot be undone. Proceed with caution.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
@@ -3463,6 +3789,9 @@ Service fees are accumulated from multiple billable items. A billing rule must c
 ##### 10.5.3.2 View billing rules
 
 This topic describes how to view existing billing rules and their details.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billings Management** > **Billing Rules**.
@@ -3485,6 +3814,9 @@ icon to the left of the billable item name. You can view **status**, **Unit Pric
 ##### 10.5.3.3 Clone a billing rule
 
 You can clone an existing billing rule to create the same or a similar billing policy.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billings Management** > **Billing Rules**.
@@ -3500,6 +3832,9 @@ This topic describes how to modify a billing rule.
 **Prerequisites**
 
 After a billing rule is created, you cannot delete billable items that are in effect from the billing rule. You can create billable items in the billing rule, but these newly created billable items do not take effect. To modify billable items that are in effect in a billing rule, you must clone the billing rule. For more information, see Clone a billing rule.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billings Management** > **Billing Rules**.
@@ -3522,6 +3857,8 @@ You can delete billing rules that are incorrect or no longer needed.
 A billing rule is preconfigured for each service. This rule is used as the default billing rule and cannot be deleted. Default billable items in the default billing rule cannot be deleted. You can create other billable items.
 
 > **Warning:** If you delete a billing rule, billing data may change. This change cannot be undone. Proceed with caution.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
@@ -3570,6 +3907,9 @@ This topic describes how to create a billing policy.
 **Background information**
 
 The system requires that each billing policy includes all services for which billing is enabled. If a service in a billing policy is provided free of charge, the discount rate can be set to 0. This discount property takes effect only in the billing policy and does not belong to billing rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Policies**.
@@ -3599,6 +3939,9 @@ on your requirements. For information about billing policy parameters, see Creat
 ##### 10.5.4.4 Modify a billing policy
 
 This topic describes how to modify a billing policy.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Policies**.
@@ -3622,6 +3965,8 @@ A billing policy is preconfigured in the system. This policy is used as the defa
 
 > **Warning:** If you delete a billing policy, billing data may change. This change cannot be undone. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Policies**.
@@ -3637,6 +3982,9 @@ This topic describes how to view existing billing plans.
 **Background information**
 
 A billing plan consists of multiple billing policies that are configured with an effective time and priorities. A billing plan specifies a time range for billing policies. This enables the billing system to use different billing policies at different periods of time.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Plans**.
@@ -3671,6 +4019,9 @@ This topic describes how to create a billing plan.
 **Prerequisites**
 
 To simplify billing configurations and avoid unexpected charges due to excessive billing plans, a maximum of nine billing pans can be created (not including the default billing plan). To avoid errors caused by empty policies in a billing plan, the default billing policy is included in each billing plan. By default, the default billing policy has the lowest priority. This ensures that at least one billing policy is available after the billing plan is assigned to metering data.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Plans**.
@@ -3692,6 +4043,9 @@ To simplify billing configurations and avoid unexpected charges due to excessive
 ##### 10.5.5.3 Clone a billing plan
 
 You can clone an existing billing plan to create the same or a similar billing plan.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Plans**.
@@ -3703,6 +4057,9 @@ requirements. For more information about billing plan parameters, see Create a b
 ##### 10.5.5.4 Modify a billing plan
 
 This topic describes how to modify a billing plan.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Plans**.
@@ -3734,6 +4091,8 @@ A billing plan is preconfigured in the system. This policy is used as the defaul
 
 > **Warning:** If you delete a billing plan, billing data may change. This change cannot be undone. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billing Management** > **Billing Plans**.
@@ -3745,6 +4104,9 @@ A billing plan is preconfigured in the system. This policy is used as the defaul
 ##### 10.5.6.1 View cloud service bills
 
 You can view bills by cloud service type.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Billings** > **Cloud Service Bills**.
@@ -3770,6 +4132,9 @@ v. Save the queried data to your computer. Click **Export all bills** to save al
 **set**
 
 You can view bills by organization and resource set.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Organization and Resource Set Bills**.
@@ -3799,6 +4164,9 @@ v. Save the queried data to your computer. Click **Export all bills** to save al
 ### 11.1 View operation logs
 
 You can view operation logs to obtain up-to-date information about all resources and functional modules in the Apsara Uni-manager Management Console. You can also export operation logs to your computer.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as a security administrator.
 2. In the top navigation bar, choose**Security** > Global Platform Security > Operation Logs.
 3. Select an organization and service, and set the start date and end date to search for logs.
@@ -3952,6 +4320,9 @@ Policies are stored in RAM as JSON documents. When you create or update a policy
 **RAM-based batch authorization role**
 
 You can view the basic information about a RAM-based batch authorization role, including its user groups and permission policies.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -3964,6 +4335,9 @@ corresponding information.
 **authorization role**
 
 If you want all RAM users in a user group to have the same permissions on cloud resources, you must use the RAM-based batch authorization feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**. In the upper-
@@ -3988,6 +4362,9 @@ and then click **OK**.
 #### 12.3.3 Create a permission policy
 
 To use a cloud service to access other cloud resources, you must create a policy and attach it to a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4006,6 +4383,9 @@ For more information about how to enter the policy content, see Permission polic
 **role**
 
 You can modify the content of a permissions policy of a RAM-based batch authorization role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4028,6 +4408,9 @@ For more information about how to modify the content of a policy, see Permission
 **authorization role**
 
 You can modify the name of a permission policy attached to a RAM-based batch authorization role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4047,6 +4430,9 @@ You can add a user group to a RAM-based batch authorization role based on your b
 **Prerequisites**
 
 A user group is created. For more information, see Create a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4061,6 +4447,9 @@ click **Modify** in the **Actions** column.
 **based batch authorization role**
 
 You can attach a permission policy to a RAM-based batch authorization role to grant permissions to all users in a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4079,6 +4468,9 @@ structure and syntax.
 **RAM-based batch authorization role**
 
 You can detach a permission policy that is no longer needed from a RAM-based batch authorization role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4098,6 +4490,9 @@ An administrator can modify the name of a RAM-based batch authorization role.
 **Background information**
 
 The names of preset roles cannot be modified.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4116,6 +4511,9 @@ You can delete a RAM-based batch authorization role that is no longer needed.
 **Prerequisites**
 
 You have unbound all user groups from the RAM-based batch authorization role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions > Role Permissions**.
@@ -4144,6 +4542,9 @@ tabs to view information.
 **authorization role**
 
 To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role-based batch authorization role. This role contains the permissions that are required by the cloud service to perform operations on the resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
@@ -4169,6 +4570,9 @@ iv. In the Preview Policy step, check the content of the selected permission pol
 **batch authorization role**
 
 You can modify the content of a custom permission policy and a trust policy for a RAM rolebased batch authorization role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
@@ -4194,6 +4598,9 @@ a. Click the **Trust Policy** tab and click **Modify**. b. (Optional) Select one
 **authorization role**
 
 You can modify the name of a permission policy for a RAM role-based batch authorization role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
@@ -4213,6 +4620,9 @@ You can add an organization to a RAM role-based batch authorization role based o
 **Prerequisites**
 
 You have created the organization that you want to add. For more information, see Create an organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
@@ -4242,6 +4652,9 @@ permissions policy, and click **Modify** in the **Actions** column.
 **authorization role**
 
 You can delete a RAM role-based batch authorization role that is no longer needed.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Role Permissions**.
@@ -4254,6 +4667,9 @@ in the **Actions** column.
 #### 12.5.1 Create a service-linked role
 
 You can create authorization policies and grant them to organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Service-linked Roles**.
@@ -4282,6 +4698,9 @@ You can view the details of a Resource Access Management (RAM) policy, including
 **Prerequisites**
 
 A RAM policy is created. For more information, see Create a service-linked role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Service-linked Roles**.
@@ -4299,6 +4718,9 @@ the Actions column to view the policy details. ormation management
 ### 13.1 Modify personal information
 
 You can modify your personal information to keep it up to date.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click **User Information**.
@@ -4309,6 +4731,9 @@ click **User Information**.
 ### 13.2 Change the logon password
 
 To improve security, you must change your logon password on a regular basis. This topic describes how to change your logon password.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click **User Information**. ormation management
@@ -4320,6 +4745,9 @@ click **User Information**. ormation management
 ### 13.3 Switch the current role
 
 You can switch the scope of your current role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the upper-right corner of the homepage, move the pointer over the user profile picture
 and choose **User Information** from the shortcut menu.
@@ -4331,6 +4759,9 @@ You can also switch back to the default role.
 ### 13.4 View the current role policy
 
 You can view the information of your current role policy.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click **Personal information**.
@@ -4344,6 +4775,9 @@ In the **View Policies of Current Role** message, view the policy content.
 **your Apsara Stack tenant account**
 
 To ensure the security of cloud resources, the system must verify the identity of visitors and ensure that they have the relevant permissions. You must obtain the AccessKey ID and AccessKey secret of your Apsara Stack tenant to access cloud resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 choose **User Information** from the shortcut menu.
@@ -4355,6 +4789,9 @@ ormation management
 ### 13.6 Create an AccessKey pair
 
 You can delete your old AccessKey pairs and create new ones to implement the rotation of your AccessKey pairs.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 choose **User Information** from the shortcut menu.
@@ -4370,6 +4807,9 @@ You can delete AccessKey pairs that are no longer needed.
 **Prerequisites**
 
 Each user can delete only its own AccessKey pairs. The administrator cannot delete the AccessKey pairs of users. Each user retains at least one AccessKey pair.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 choose **User Information** from the shortcut menu.
@@ -4380,6 +4820,9 @@ delete and click **Delete** in the **Actions** column.
 ### 13.8 Disable an AccessKey pair
 
 You can disable AccessKey pairs that are no longer needed. Newly created AccessKey pairs are in the Enable state by default.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 choose **User Information** from the shortcut menu.
@@ -4392,6 +4835,9 @@ disable and click **Disable** in the **Actions** column. ormation management Eac
 ### 13.9 Enable an AccessKey pair
 
 Disabled AccessKey pairs must be re-enabled before you can continue to use them. Newly created AccessKey pairs are in the Enable state by default.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 choose **User Information** from the shortcut menu.

@@ -5,14 +5,98 @@ doc_version: "20260729"
 pdf_pages: 220
 source_pdf: "06_开发指南_development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/quickbi/zh/development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # BI 开发指南
 
-Quick BI 色
+## 目录
 
-## 批量更新工作空间成员的角色
+- 1 批量更新工作空间成员的角色
+- 2 修改工作空间成员角色
+- 3 更新组织成员标签值
+- 4 更新组织成员标签元信息
+- 5 更新用户组信息
+- 6 更新组织成员信息
+- 7 更新嵌入ticket票据数量
+- 8 更新数据集行列权限开关状态
+- 9 设置行级权限白名单
+- 10 设置单条数据集行列权限配置信息
+- 11 设置行列权限额外配置
+- 12 添加作品收藏
+- 13 自定义审批流回调接口
+- 14 查询工作空间下的成员列表
+- 15 查询工作空间下的所有作品
+- 16 查询组织下的所有作品
+- 17 查询数据作品的血缘信息
+- 18 查询数据作品信息
+- 19 查询组织成员标签值列表
+- 20 查询组织成员标签元信息列表
+- 21 查询工作空间成员的角色
+- 22 查询组织成员列表信息
+- 23 根据用户ID查询用户信息
+- 24 根据账号查询用户信息
+- 25 查询用户组成员列表
+- 26 查询父用户组下的子用户组列表
+- 27 查询嵌入报表ticket详情
+- 28 查询授权给用户的作品列表
+- 29 查询作品的分享记录
+- 30 查询用户有权查看的作品列表
+- 31 获取组织下的工作空间列表
+- 32 查询报表嵌入状态
+- 33 获取组织嵌入配置
+- 34 获取数据集行级权限开关状态
+- 35 查询工作空间数据集列表
+- 36 查询数据集简略信息
+- 37 查询数据集详情
+- 38 调用数据服务API
+- 39 查询用户所属的用户组信息列表
+- 40 获取首页看板被授权的作品列表
+- 41 获取首页看板常看和足迹列表
+- 42 获取数据门户菜单列表
+- 43 获取数据门户菜单的授权详情
+- 44 首页看板收藏列表
+- 45 获取数据集行列权限白名单列表
+- 46 获取数据集行列权限配置列表
+- 47 获取用户收藏作品列表
+- 48 批量查询用户组
+- 49 根据关键字获取用户组信息
+- 50 删除工作空间
+- 51 删除组织成员标签元信息
+- 52 用户批量退出用户组
+- 53 删除用户组成员
+- 54 删除用户组
+- 55 删除工作空间成员
+- 56 删除组织用户
+- 57 删除嵌入ticket
+- 58 删除行列权限规则
+- 59 删除行列规则的人群
+- 60 更新嵌入ticket的失效时间
+- 61 增量修改行列权限白名单
+- 62 添加行列权限规则人群
+- 63 批量添加成员到用户组
+- 64 新建工作空间
+- 65 新建用户组
+- 66 生成报表嵌入ticket
+- 67 查询用户对数据作品的查看权限
+- 68 修改数据门户菜单的可见方式
+- 69 删除数据作品的分享授权
+- 70 取消作品收藏
+- 71 批量取消数据门户菜单授权
+- 72 数据门户菜单批量授权
+- 73 批量添加成员到工作空间
+- 74 添加成员到工作空间
+- 75 新增组织成员标签元信息
+- 76 添加成员到用户组
+- 77 添加组织成员
+- 78 用户退出所有用户组
+- 79 添加数据作品分享配置
+
+色
+
+## 1 批量更新工作空间成员的角色
+
+批量更新工作空间成员的角色信息。
 
 **请求头**
 
@@ -32,26 +116,21 @@ Quick BI 色
 |---|---|---|---|
 | RequestId | String | 7AAB95D7-2E11- 4FE2-94BC- 858E4FC0C976 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功，存在部分成员修改成功，部分修改失败的情况，失败的原因参考返回结果中的FailureDetail false：请求失败，不会持久化任何数据 |
-| Result | Struct |  | 返回接口执行结果。 |
-| -Failure | Integer |  |  |
-| -FailureDetail | Map |  |  |
-| -Total | Integer |  |  |
-| -Success | Integer |  |  |
+| Result | Struct |   | 返回接口执行结果。 |
+| -Failure | Integer |   |   |
+| -FailureDetail | Map |   |   |
+| -Total | Integer |   |   |
+| -Success | Integer |   |   |
 
-Quick BI 色
-
-**示例**
-
-请求示例
+色
 
 ```
 http(s)://[Endpoint]/?Action=UpdateWorkspaceUsersRole &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0**** &UserIds=136516262323****,124498444445**** &RoleId=25
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7AAB95D7-2E11-4FE2-94BC-858E4FC0C976",
  "Success":true,
  "Result":{
@@ -59,9 +138,9 @@ http(s)://[Endpoint]/?Action=UpdateWorkspaceUsersRole &WorkspaceId=95296e95-ca89
   "Total":"",
   "Failure":"",
   "Success":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -74,10 +153,10 @@ http(s)://[Endpoint]/?Action=UpdateWorkspaceUsersRole &WorkspaceId=95296e95-ca89
 | 400 | AE0150010013 | User.Not.WorkspaceAdmin | Only administrators of the group workspace can perform this operation. |
 | 400 | AE0150010014 | Remove.AdminRoleOf.Workspa ceOwner | The owner of the group workspace must be assigned the administrator role. |
 | 400 | AE0150010004 | User.NotIn.Workspace | The user is not a member of the group workspace. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 
-| Quick BI |  |  | 开发指南·批量更新工作空间成员的角色 |
+| Quick BI |   |   | 开发指南·批量更新工作空间成员的角色 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -90,9 +169,7 @@ http(s)://[Endpoint]/?Action=UpdateWorkspaceUsersRole &WorkspaceId=95296e95-ca89
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 修改工作空间成员角色
+## 2 修改工作空间成员角色
 
 修改工作空间下指定成员的角色。
 
@@ -124,15 +201,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=UpdateWorkspaceUserRole &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0**** &UserId=f5698bedeb384b1986afccd9e434**** &RoleId=25
 ```
 
-&公共请求参数正常返回示例 Quick BI `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -147,7 +224,7 @@ http(s)://[Endpoint]/?Action=UpdateWorkspaceUserRole &WorkspaceId=95296e95-ca89-
 | 400 | AE0150010002 | User.RoleType.Valid | The role ID is invalid. |
 | 400 | AE0150010003 | User.AlreadyIn.Role | The user is already assigned this role. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -155,14 +232,14 @@ http(s)://[Endpoint]/?Action=UpdateWorkspaceUserRole &WorkspaceId=95296e95-ca89-
 | 400 | AE0510000005 | Invalid.Parameter | An error occurred while verifying parameters. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 
-| 开发指南·修改工 | 作空间成员角色 |  | Quick B |
+| 开发指南·修改工 | 作空间成员角色 |   | Quick B |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 3 更新组织成员标签值
 
-## 更新组织成员标签值
+更新组织成员标签值。
 
 **请求头**
 
@@ -186,28 +263,28 @@ Quick BI
 
 **示例**
 
-请求示例 Quick BI
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=UpdateUserTagValue &UserId=fe67f61a35a94b7da1a34ba174a7**** &TagId=pop_001
 ```
 
-`&TagValue=`产品总监 &公共请求参数正常返回示例 `JSON` 格式
+`&TagValue=`产品总监 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"46e5374665ba4b679ee22e2a29270",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100023 | UserTag.NotIn.CurrentOrganiz ation | The user tag is not in the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -217,9 +294,9 @@ http(s)://[Endpoint]/?Action=UpdateUserTagValue &UserId=fe67f61a35a94b7da1a34ba1
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 
-Quick BI
+## 4 更新组织成员标签元信息
 
-## 更新组织成员标签元信息
+用于更新组织成员标签元信息。
 
 **请求头**
 
@@ -249,15 +326,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=UpdateUserTagMeta &TagId=e82f6c6c0333431bad0225b2f85e****
 ```
 
-`&TagName=`职位 &公共请求参数 Quick BI 正常返回示例 `JSON` 格式
+`&TagName=`职位 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -265,7 +342,7 @@ http(s)://[Endpoint]/?Action=UpdateUserTagMeta &TagId=e82f6c6c0333431bad0225b2f8
 |---|---|---|---|
 | 400 | AE0150100023 | UserTag.NotIn.CurrentOrganiz ation | The user tag is not in the current organization. |
 | 400 | AE0150100025 | TagName.Repeat | The tag name is duplicated. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -273,9 +350,7 @@ http(s)://[Endpoint]/?Action=UpdateUserTagMeta &TagId=e82f6c6c0333431bad0225b2f8
 | 400 | AE0510000005 | Invalid.Parameter | An error occurred while verifying parameters. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 更新用户组信息
+## 5 更新用户组信息
 
 更新组织下指定用户组的信息。
 
@@ -307,15 +382,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=UpdateUserGroup &UserGroupId=f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 ```
 
-&公共请求参数正常返回示例 Quick BI `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"4AEF8C5C-D5D2-55D3-BB2F-9D3AA1B6F4FA",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -324,7 +399,7 @@ http(s)://[Endpoint]/?Action=UpdateUserGroup &UserGroupId=f5eeb52e-d9c2-4a8b-80e
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
 | 400 | AE0150020301 | UserGroup.Remove.RootNode | The root user group cannot be deleted. |
 | 400 | AE0150020302 | UserGroup.Remove.WithChildr en | This user group contains a child user group and cannot be deleted. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -333,9 +408,7 @@ http(s)://[Endpoint]/?Action=UpdateUserGroup &UserGroupId=f5eeb52e-d9c2-4a8b-80e
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 更新组织成员信息
+## 6 更新组织成员信息
 
 更新组织下指定成员的信息。
 
@@ -359,8 +432,6 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | DC4E1E63-B337- 44F8-8C22- 6F00DF67E2C3 | 请求ID。 |
 
-Quick BI
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
@@ -374,15 +445,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=UpdateUser &UserId=fe67f61a35a94b7da1a34ba174a7**** &AdminUser=true &AuthAdminUser=true &UserType=1
 ```
 
-`&NickName=`小张 &公共请求参数正常返回示例 `JSON` 格式
+`&NickName=`小张 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -394,7 +465,7 @@ http(s)://[Endpoint]/?Action=UpdateUser &UserId=fe67f61a35a94b7da1a34ba174a7****
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 | 400 | AE0520010021 | Organization.Developers.Reac hedTheUpperLimit | The developers of the organization have reached the upper limit:%s |
 
-| Quick BI |  |  | 开发指南·更新组织成员信息 |
+| Quick BI |   |   | 开发指南·更新组织成员信息 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -402,7 +473,7 @@ http(s)://[Endpoint]/?Action=UpdateUser &UserId=fe67f61a35a94b7da1a34ba174a7****
 | 400 | AE0520010023 | Organization.Viewers.Reached TheUpperLimit | The visitors of the organization have reached the upper limit:%s. |
 | 400 | AE0520010022 | Organization.Analysts.Reached TheUpperLimit | The analysts of the organization have reached the upper limit:%s. |
 | 400 | AE0520010013 | Instance.Over.MaxLicense | You have reached the maximum number of users that can be added. Please upgrade the configurations or remove some users first. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -411,9 +482,7 @@ http(s)://[Endpoint]/?Action=UpdateUser &UserId=fe67f61a35a94b7da1a34ba174a7****
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 
-Quick BI
-
-## 更新嵌入ticket票据数量
+## 7 更新嵌入ticket票据数量
 
 对用于免登嵌入报表的指定的ticket进行更新票据数量操作。
 
@@ -444,15 +513,14 @@ Quick BI
 http(s)://[Endpoint]/?Action=UpdateTicketNum &Ticket=040e6f79d33444838***83c7206c070 &TicketNum=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -468,9 +536,11 @@ http(s)://[Endpoint]/?Action=UpdateTicketNum &Ticket=040e6f79d33444838***83c7206
 | 400 | AE0510200000 | NoPermissionTo.Operate.Objec t | You are not authorized to operate the objects. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 
-Quick BI 态
+态
 
-## 更新数据集行列权限开关状态
+## 8 更新数据集行列权限开关状态
+
+更新数据集行列权限开关状态。
 
 **请求头**
 
@@ -500,15 +570,15 @@ Quick BI 态
 http(s)://[Endpoint]/?Action=UpdateDataLevelPermissionStatus &CubeId=7c7223ae-****-3c744528014b &RuleType=ROW_LEVEL &IsOpen=1
 ```
 
-&公共请求参数 Quick BI 态正常返回示例 `JSON` 格式
+态 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -527,9 +597,7 @@ http(s)://[Endpoint]/?Action=UpdateDataLevelPermissionStatus &CubeId=7c7223ae-**
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 设置行级权限白名单
+## 9 设置行级权限白名单
 
 设置指定行级权限的白名单列表。
 
@@ -553,21 +621,19 @@ Quick BI
 
 **示例**
 
-请求示例 Quick BI
-
 ```json
 http(s)://[Endpoint]/?Action=SetDataLevelPermissionWhiteList &WhiteListModel={"ruleType":"ROW_LEVEL","usersModel":{"userGroups":["26edcb76-****-bdba b78267cb","187e6dd5-1611-4cf7-a034-1a93bd5fecf9"],"users": ["4334***358","Huang***3fa822"]},"cubeId":"7c7223ae-****44528014b"}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -586,9 +652,11 @@ http(s)://[Endpoint]/?Action=SetDataLevelPermissionWhiteList &WhiteListModel={"r
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 置信息
+置信息
 
-## 设置单条数据集行列权限配置信息
+## 10 设置单条数据集行列权限配置信息
+
+设置单条数据集行列权限配置信息（新增和更新）。
 
 **请求头**
 
@@ -600,11 +668,11 @@ Quick BI 置信息
 |---|---|---|---|---|---|
 | RuleModel | Strin g | Query | 是 | { "cubeId": "aa574353- 41cf-****-8d0d- 455176c101fa", "hitTakeEffect": 1, "isOpen": 1, "permissionMode": "COMPLEX", "ruleContentModel": { "ruleContent": { "pathId": [ "264b7a970b" ] }, "ruleContentJson": " {\"pathId\": [\"264b7a970b\"]}", "ruleContentType": "COLUMN FORBID" _ }, "ruleId": "3971fa8e- f7e0-****-b6e3- 5b3167dd7247", "ruleLevelType": "COLUMN LEVEL", _ "ruleName": "规则名称", "ruleTargetScope": "ALL" | { "rule": "a5bb24da-- a891683e14da", // 行列权限规则的ID,当传入时为修改行级权限规则,否则新增 "cubeId": "7c7223ae- -3c744528014b", // 数据集ID "ruleName": "测试行级权限", // 行级权限规则的名称 "ruleLevelType": "ROW LEVEL", // 行级权 _ 限类型：ROW LEVEL：行 _ 级权限,COLUMN LEVEL： _ 列级权限 "ruleTargetScope": "ALL", // 行级权限规则针对的人群：1：所有人,2：指定人 "hitTakeEffect": 1, //命中后规则生效还是不生效（针对列级权限）：1：生效 （默认生效）,0：不生效 "ruleUsersModel": { "userGroups": [ "9bd2c6440ac542589f1 6bf12ca8178dd", // 用户组人群的用户组ID "0d5fb19b- -1248fc27ca51", "3d2c23d4-- f6390f325c2d" ], "users": [ "43342 3784358", // 用户人群的 UserID "Huang2e3fa822" ] }, "ruleContentModel": { "ruleContentType": "ROW FIELD", // 行列权 _ 限的规则类型 "ruleContentJson": " {"conditionNode": {"caption":"周期","isMeasure":false, |
 
-Quick BI 置信息
+置信息
 
 | 参数名称 | 类型 | 位置 | 是否必选 | } 示例 | "pathId":"7d3b 说明 bc6","relationOperato |
 |---|---|---|---|---|---|
-|  |  |  |  |  | r":"not- null","name":"7d3b bc6","value":{"value": [""],"valueType":"ENUM" }}}", // 规则的JSON字符串 "ruleOriginConfigJson": " {"operator":"and","oper ands":[{"labelName":"周期","isValid":true,"uniqu eId":"5","fieldId":"7d3b* **bc6","error":false,"fiel dType":"string","default Value": {"selectType":"condition ","value": {"conditionOp":"not- null","conditionValue":"" },"valueType":"ENUM"} }],"isRelation":true}" // 前端模板要是用的JSON结果 （行级权限专用） } } |
+|   |   |   |   |   | r":"not- null","name":"7d3b bc6","value":{"value": [""],"valueType":"ENUM" }}}", // 规则的JSON字符串 "ruleOriginConfigJson": " {"operator":"and","oper ands":[{"labelName":"周期","isValid":true,"uniqu eId":"5","fieldId":"7d3b* **bc6","error":false,"fiel dType":"string","default Value": {"selectType":"condition ","value": {"conditionOp":"not- null","conditionValue":"" },"valueType":"ENUM"} }],"isRelation":true}" // 前端模板要是用的JSON结果 （行级权限专用） } } |
 
 **返回数据**
 
@@ -613,7 +681,7 @@ Quick BI 置信息
 | RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 
-Quick BI 置信息
+置信息
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -621,7 +689,7 @@ Quick BI 置信息
 
 **示例**
 
-请求示例 Quick BI 置信息
+请求示例置信息
 
 ```json
 http(s)://[Endpoint]/?Action=SetDataLevelPermissionRuleConfig &RuleModel={
@@ -635,13 +703,16 @@ http(s)://[Endpoint]/?Action=SetDataLevelPermissionRuleConfig &RuleModel={
                 "264b7a970b"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "ruleContentJson": "{\"pathId\":[\"264b7a970b\"]}",
         "ruleContentType": "COLUMN_FORBID"
-    },
+```
+
+`},`
+
+```json
     "ruleId": "3971fa8e-f7e0-****-b6e3-5b3167dd7247",
     "ruleLevelType": "COLUMN_LEVEL",
 ```
@@ -650,18 +721,18 @@ http(s)://[Endpoint]/?Action=SetDataLevelPermissionRuleConfig &RuleModel={
 
 ```json
     "ruleTargetScope": "ALL"
-}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`}` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":"{    \"cubeId\": \"aa574353-41cf-****-8d0d-455176c101fa\",
-\"hitTakeEffect\": 1, \"isOpen\": 1, \"permissionMode\": \"COMPLEX\", \"ruleContentModel\": { \"ruleContent\": { \"pathId\": [ \"264b7a970b\" ] }, \"ruleContentJson\": \"{\\\"pathId\\\":[\\\ "264b7a970b\\\"]}\", \"ruleContentType\": \"COLUMN_FORBID\" }, \"ruleId\": \"3971fa8e-f7e0-****-b6e3-5b3167dd7247\", \"ruleLevelType\": \"COLUMN_LEVEL\", \" ruleName\": \"规则名称\", \"ruleTargetScope\": \"ALL\"}" }
+\"hitTakeEffect\": 1, \"isOpen\": 1, \"permissionMode\": \"COMPLEX\", \"ruleContentModel\": { \"ruleContent\": { \"pathId\": [ \"264b7a970b\" ] }, \"ruleContentJson\": \"{\\\"pathId\\\":[\\\ "264b7a970b\\\"]}\", \"ruleContentType\": \"COLUMN_FORBID\" }, \"ruleId\": \"3971fa8e-f7e0-****-b6e3-5b3167dd7247\", \"ruleLevelType\": \"COLUMN_LEVEL\", \" ruleName\": \"规则名称\", \"ruleTargetScope\": \"ALL\"}"
 ```
+
+`}`
 
 **错误码**
 
@@ -672,7 +743,7 @@ http(s)://[Endpoint]/?Action=SetDataLevelPermissionRuleConfig &RuleModel={
 | 400 | AE0510030031 | CubePermission.ColumnlevelFi eld.Repeat | There are duplicate field configurations. |
 | 400 | AE0510030033 | RowLevelPermission.SwitchClo se.Error | The row level permission switch must be on. |
 
-| 开发指南·设置单置信息 | 条数据集行列权限配 |  | Quick B |
+| 开发指南·设置单置信息 | 条数据集行列权限配 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -687,9 +758,7 @@ http(s)://[Endpoint]/?Action=SetDataLevelPermissionRuleConfig &RuleModel={
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 设置行列权限额外配置
+## 11 设置行列权限额外配置
 
 设置行列权限的额外配置。
 
@@ -721,15 +790,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=SetDataLevelPermissionExtraConfig &CubeId=7c7223ae-******-3c744528014b &RuleType=ROW_LEVEL &MissHitPolicy=NONE
 ```
 
-&公共请求参数 Quick BI 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"B70E1FBD-E533-52F2-A7A1-E02B92F78DDF",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -748,9 +817,7 @@ http(s)://[Endpoint]/?Action=SetDataLevelPermissionExtraConfig &CubeId=7c7223ae-
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 添加作品收藏
+## 12 添加作品收藏
 
 添加用户的收藏数据作品。
 
@@ -781,15 +848,14 @@ Quick BI
 http(s)://[Endpoint]/?Action=SaveFavorites &UserId=121344444790**** &WorksId=d23e84a1-82a0-4292-bfdb-521306c3****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -800,7 +866,7 @@ http(s)://[Endpoint]/?Action=SaveFavorites &UserId=121344444790**** &WorksId=d23
 | 400 | AE0510130012 | Report.NotExist.Error | This work does not exist. It may have been deleted. Work ID is %s. |
 | 400 | AE0150010007 | Workspace.Not.Exist | The group workspace does not exist. |
 | 400 | AE0550010012 | Workspace.Status.Error | This group workspace has been disabled or deleted. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -810,9 +876,9 @@ http(s)://[Endpoint]/?Action=SaveFavorites &UserId=121344444790**** &WorksId=d23
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 13 自定义审批流回调接口
 
-## 自定义审批流回调接口
+自定义审批流回调接口，用户自行对Quick BI的审批流进行处理。
 
 **请求头**
 
@@ -842,21 +908,20 @@ Quick BI
 http(s)://[Endpoint]/?Action=ResultCallback &ApplicationId=c5ea0db8-****-****-9081-04bc0df4c6a3
 ```
 
-`&HandleReason=`你不是A部门分析师。
+`&HandleReason=`你不是`A`部门分析师。
 
 ```
 &Status=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -867,9 +932,7 @@ http(s)://[Endpoint]/?Action=ResultCallback &ApplicationId=c5ea0db8-****-****-90
 | 400 | AE0580800021 | Application.RecordClosed | The closed application record cannot be operated. |
 | 400 | AE0580800013 | Application.NotExist | The application is not exists. |
 
-Quick BI
-
-## 查询工作空间下的成员列表
+## 14 查询工作空间下的成员列表
 
 查询指定工作空间下的成员列表信息。
 
@@ -892,28 +955,28 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回成员列表的分页结果，成员的详细信息列表存放在返回参数Data中。 |
-| -Data | Array |  |  |
-| --Email | String |  |  |
-| --UserId | String |  |  |
-| --AccountId | String |  |  |
-| --NickName | String |  |  |
+| Result | Struct |   | 返回成员列表的分页结果，成员的详细信息列表存放在返回参数Data中。 |
+| -Data | Array |   |   |
+| --Email | String |   |   |
+| --UserId | String |   |   |
+| --AccountId | String |   |   |
+| --NickName | String |   |   |
 
-| 开发指南·查询工作空 | 间下的成员列表 |  | Quick B |
+| 开发指南·查询工作空 | 间下的成员列表 |   | Quick B |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| --Phone | String |  |  |
-| -- AccountName | String |  |  |
-| --Role | Struct |  |  |
-| ---RoleCode | String |  |  |
-| ---RoleName | String |  |  |
-| ---RoleId | Long |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
-| -TotalNum | Integer |  |  |
+| --Phone | String |   |   |
+| -- AccountName | String |   |   |
+| --Role | Struct |   |   |
+| ---RoleCode | String |   |   |
+| ---RoleName | String |   |   |
+| ---RoleId | Long |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
+| -TotalNum | Integer |   |   |
 
 **示例**
 
@@ -923,12 +986,10 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryWorkspaceUserList &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "TotalNum":"",
   "PageNum":"",
@@ -944,12 +1005,15 @@ http(s)://[Endpoint]/?Action=QueryWorkspaceUserList &WorkspaceId=95296e95-ca89-4
     "RoleName":"",
     "RoleCode":"",
     "RoleId":""
-   },
-   "AccountName":""
-  }
- }
-}
 ```
+
+`},`
+
+```json
+   "AccountName":""
+```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -958,23 +1022,21 @@ http(s)://[Endpoint]/?Action=QueryWorkspaceUserList &WorkspaceId=95296e95-ca89-4
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
 | 400 | AE0150010007 | Workspace.Not.Exist | The group workspace does not exist. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-| 开发指南·查询工 | 作空间下的成员列表 |  | Quick B |
+| 开发指南·查询工 | 作空间下的成员列表 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 
-Quick BI
-
-## 查询工作空间下的所有作品
+## 15 查询工作空间下的所有作品
 
 查询组织下某个工作空间下的所有作品，可指定作品类型。
 
@@ -999,42 +1061,40 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 
-Quick BI
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回组织工作空间下所有符合请求条件的作品列表。 |
-| -Data | Array |  |  |
-| --Status | Integer |  |  |
-| --GmtModify | String |  |  |
-| --Auth3rdFlag | Integer |  |  |
-| --WorksId | String |  |  |
-| --WorkType | String |  |  |
-| --OwnerName | String |  |  |
-| -- WorkspaceNa me | String |  |  |
-| --OwnerId | String |  |  |
-| --ModifyName | String |  |  |
-| --WorkspaceId | String |  |  |
-| --SecurityLevel | String |  |  |
-| --Description | String |  |  |
-| --WorkName | String |  |  |
-| --GmtCreate | String |  |  |
-| --Directory | Struct |  |  |
-| ---PathId | String |  |  |
-| ---PathName | String |  |  |
-| ---Name | String |  |  |
-| ---Id | String |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
+| Result | Struct |   | 返回组织工作空间下所有符合请求条件的作品列表。 |
+| -Data | Array |   |   |
+| --Status | Integer |   |   |
+| --GmtModify | String |   |   |
+| --Auth3rdFlag | Integer |   |   |
+| --WorksId | String |   |   |
+| --WorkType | String |   |   |
+| --OwnerName | String |   |   |
+| -- WorkspaceNa me | String |   |   |
+| --OwnerId | String |   |   |
+| --ModifyName | String |   |   |
+| --WorkspaceId | String |   |   |
+| --SecurityLevel | String |   |   |
+| --Description | String |   |   |
+| --WorkName | String |   |   |
+| --GmtCreate | String |   |   |
+| --Directory | Struct |   |   |
+| ---PathId | String |   |   |
+| ---PathName | String |   |   |
+| ---Name | String |   |   |
+| ---Id | String |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
 
-| Quick BI |  |  | 开发指南·查询工作空间下的所有作品 |
+| Quick BI |   |   | 开发指南·查询工作空间下的所有作品 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -TotalNum | Integer |  |  |
+| -TotalNum | Integer |   |   |
 
 **示例**
 
@@ -1044,10 +1104,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryWorksByWorkspace &WorkspaceId=89713491-cb4f-4579-b889-e82c35f1****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1064,7 +1123,11 @@ http(s)://[Endpoint]/?Action=QueryWorksByWorkspace &WorkspaceId=89713491-cb4f-45
     "PathName":"",
     "Id":"",
     "Name":""
-   },
+```
+
+`},`
+
+```json
    "WorkType":"",
    "ModifyName":"",
    "WorkspaceId":"",
@@ -1076,18 +1139,15 @@ http(s)://[Endpoint]/?Action=QueryWorksByWorkspace &WorkspaceId=89713491-cb4f-45
    "WorkName":"",
    "WorkspaceName":"",
    "WorksId":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
-Quick BI
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -1098,9 +1158,7 @@ Quick BI
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询组织下的所有作品
+## 16 查询组织下的所有作品
 
 查询整个组织下的所有作品，可指定作品类型。
 
@@ -1127,37 +1185,37 @@ Quick BI
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回组织下所有符合请求条件的作品列表。 |
-| -Data | Array |  |  |
-| --Status | Integer |  |  |
-| --Auth3rdFlag | Integer |  |  |
-| --GmtModify | String |  |  |
-| --WorksId | String |  |  |
-| --WorkType | String |  |  |
-| --OwnerName | String |  |  |
-| -- WorkspaceNa me | String |  |  |
-| --OwnerId | String |  |  |
-| --ModifyName | String |  |  |
-| --WorkspaceId | String |  |  |
-| --SecurityLevel | String |  |  |
-| --Description | String |  |  |
-| --WorkName | String |  |  |
-| --GmtCreate | String |  |  |
-| --Directory | Struct |  |  |
-| ---PathId | String |  |  |
-| ---PathName | String |  |  |
-| ---Name | String |  |  |
-| ---Id | String |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
+| Result | Struct |   | 返回组织下所有符合请求条件的作品列表。 |
+| -Data | Array |   |   |
+| --Status | Integer |   |   |
+| --Auth3rdFlag | Integer |   |   |
+| --GmtModify | String |   |   |
+| --WorksId | String |   |   |
+| --WorkType | String |   |   |
+| --OwnerName | String |   |   |
+| -- WorkspaceNa me | String |   |   |
+| --OwnerId | String |   |   |
+| --ModifyName | String |   |   |
+| --WorkspaceId | String |   |   |
+| --SecurityLevel | String |   |   |
+| --Description | String |   |   |
+| --WorkName | String |   |   |
+| --GmtCreate | String |   |   |
+| --Directory | Struct |   |   |
+| ---PathId | String |   |   |
+| ---PathName | String |   |   |
+| ---Name | String |   |   |
+| ---Id | String |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
 
-| Quick BI |  |  | 开发指南·查询组织下的所有作品 |
+| Quick BI |   |   | 开发指南·查询组织下的所有作品 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -TotalNum | Integer |  |  |
+| -TotalNum | Integer |   |   |
 
 **示例**
 
@@ -1167,10 +1225,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryWorksByOrganization
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1187,7 +1244,11 @@ http(s)://[Endpoint]/?Action=QueryWorksByOrganization
     "PathName":"",
     "Id":"",
     "Name":""
-   },
+```
+
+`},`
+
+```json
    "WorkType":"",
    "ModifyName":"",
    "WorkspaceId":"",
@@ -1199,18 +1260,15 @@ http(s)://[Endpoint]/?Action=QueryWorksByOrganization
    "WorkName":"",
    "WorkspaceName":"",
    "WorksId":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
-Quick BI
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -1220,9 +1278,7 @@ Quick BI
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0510000005 | Parameter.Validation.Failed | Parameter validation failed. |
 
-Quick BI
-
-## 查询数据作品的血缘信息
+## 17 查询数据作品的血缘信息
 
 获取数据作品的血缘关系，包括各组件引用的数据集以及查询字段信息。目前仅支持的数据作品包含仪表板、电子表格、自助取数。
 
@@ -1242,19 +1298,19 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 作品血缘信息列表。 |
-| -QueryParams | Array |  | 查询参数引用列的列表。 |
-| --Uid | String |  |  |
-| --PathId | String |  |  |
-| --Caption | String |  |  |
-| --DataType | String |  |  |
-| --IsMeasure | Boolean |  |  |
-| --AreaId | String |  |  |
-| --AreaName | String |  |  |
+| Result | Array |   | 作品血缘信息列表。 |
+| -QueryParams | Array |   | 查询参数引用列的列表。 |
+| --Uid | String |   |   |
+| --PathId | String |   |   |
+| --Caption | String |   |   |
+| --DataType | String |   |   |
+| --IsMeasure | Boolean |   |   |
+| --AreaId | String |   |   |
+| --AreaName | String |   |   |
 | -ComponentId | String | 0696083a-ca72- 4d89-8e7a- c017910e0*** | 组件ID。 |
 | - ComponentNa me | String | 线图 | 组件名称。 |
 
-| 开发指南·查询数据作 | 品的血缘信息 |  | Quick B |
+| 开发指南·查询数据作 | 品的血缘信息 |   | Quick B |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1271,10 +1327,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryWorksBloodRelationship &WorksId=abcd****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1290,11 +1345,15 @@ http(s)://[Endpoint]/?Action=QueryWorksBloodRelationship &WorksId=abcd****
    "AreaId":"",
    "DataType":"",
    "Caption":""
-  },
-  "DatasetId":"dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record"
- }
-}
 ```
+
+`},`
+
+```json
+  "DatasetId":"dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record"
+```
+
+`}` `}`
 
 **错误码**
 
@@ -1302,21 +1361,19 @@ http(s)://[Endpoint]/?Action=QueryWorksBloodRelationship &WorksId=abcd****
 |---|---|---|---|
 | 400 | AE0510130012 | Invalid.Works.Empty | works not exist,the report has been deleted!reportId:%s |
 
-| Quick BI |  |  | 开发指南·查询数据作品的血缘信息 |
+| Quick BI |   |   | 开发指南·查询数据作品的血缘信息 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0581060004 | Invalid.WorksId.Not.Publish | works %s is not published yet |
 | 400 | AE0150100012 | Invalid.Workspace | workspace not in organization |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询数据作品信息
+## 18 查询数据作品信息
 
 查询指定数据作品信息。
 
@@ -1336,32 +1393,32 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 作品详情信息。 |
-| -WorksId | String |  |  |
-| -WorkType | String |  |  |
-| -WorkName | String |  |  |
-| -WorkspaceId | String |  |  |
-| - WorkspaceNa me | String |  |  |
-| -SecurityLevel | String |  |  |
-| -Auth3rdFlag | Integer |  |  |
-| -Description | String |  |  |
-| -OwnerId | String |  |  |
-| -OwnerName | String |  |  |
-| -ModifyName | String |  |  |
-| -GmtCreate | String |  |  |
+| Result | Struct |   | 作品详情信息。 |
+| -WorksId | String |   |   |
+| -WorkType | String |   |   |
+| -WorkName | String |   |   |
+| -WorkspaceId | String |   |   |
+| - WorkspaceNa me | String |   |   |
+| -SecurityLevel | String |   |   |
+| -Auth3rdFlag | Integer |   |   |
+| -Description | String |   |   |
+| -OwnerId | String |   |   |
+| -OwnerName | String |   |   |
+| -ModifyName | String |   |   |
+| -GmtCreate | String |   |   |
 
-| Quick BI |  |  | 开发指南·查询数据作品信息 |
+| Quick BI |   |   | 开发指南·查询数据作品信息 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -GmtModify | String |  |  |
-| -Status | Integer |  |  |
-| -Directory | Struct |  |  |
-| --Id | String |  |  |
-| --Name | String |  |  |
-| --PathId | String |  |  |
-| --PathName | String |  |  |
+| -GmtModify | String |   |   |
+| -Status | Integer |   |   |
+| -Directory | Struct |   |   |
+| --Id | String |   |   |
+| --Name | String |   |   |
+| --PathId | String |   |   |
+| --PathName | String |   |   |
 
 **示例**
 
@@ -1371,10 +1428,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryWorks &WorksId=abcd****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1396,29 +1452,25 @@ http(s)://[Endpoint]/?Action=QueryWorks &WorksId=abcd****
    "Id":"",
    "PathName":"",
    "Name":""
-  },
-  "WorksId":""
- }
-}
 ```
 
-Quick BI
+`},`
 
-**错误码**
+```json
+  "WorksId":""
+```
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0110130007 | Invalid.Works.Empty | works not exist! |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0510130015 | Resource.NotBelongTo.Current Organization | The resource does not belong to the current organization. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询组织成员标签值列表
+## 19 查询组织成员标签值列表
 
 查询特定用户标签值列表。
 
@@ -1438,7 +1490,7 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 返回用户标签及标签值列表的请求结果。 |
+| Result | Array |   | 返回用户标签及标签值列表的请求结果。 |
 | -TagValue | String | 主管 | 标签的值。 |
 | -TagName | String | 职位 | 标签名称。 |
 | -TagId | String | pop 001 _ | 标签 ID。 |
@@ -1451,26 +1503,24 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryUserTagValueList &UserId=fe67f61a35a94b7da1a34ba174a7****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "TagName":"职位",
   "TagId":"pop_001",
   "TagValue":"主管"
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100023 | UserTag.NotIn.CurrentOrganiz ation | The user tag is not in the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
@@ -1479,9 +1529,9 @@ http(s)://[Endpoint]/?Action=QueryUserTagValueList &UserId=fe67f61a35a94b7da1a34
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 
-Quick BI 表
+表
 
-## 查询组织成员标签元信息列表
+## 20 查询组织成员标签元信息列表
 
 查询组织内成员标签元信息列表。
 
@@ -1495,7 +1545,7 @@ Quick BI 表
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 返回组织内的用户标签列表。 |
+| Result | Array |   | 返回组织内的用户标签列表。 |
 | -TagName | String | 职位 | 标签名称。 |
 | - TagDescriptio n | String | 用于区分部分职位 | 标签描述。 |
 | -TagId | String | pop 001 _ | 标签 ID。 |
@@ -1508,10 +1558,9 @@ Quick BI 表
 http(s)://[Endpoint]/?Action=QueryUserTagMetaList
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1522,26 +1571,20 @@ http(s)://[Endpoint]/?Action=QueryUserTagMetaList
 
 ```json
   "TagId":"pop_001"
- }
-}
 ```
 
-**错误码**
-
-Quick BI 表
+`}` `}` 表
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询工作空间成员的角色
+## 21 查询工作空间成员的角色
 
 获取指定工作空间下的成员角色信息。
 
@@ -1562,10 +1605,10 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 成员的角色信息。 |
-| -RoleCode | String |  |  |
-| -RoleName | String |  |  |
-| -RoleId | Long |  |  |
+| Result | Struct |   | 成员的角色信息。 |
+| -RoleCode | String |   |   |
+| -RoleName | String |   |   |
+| -RoleId | Long |   |   |
 
 **示例**
 
@@ -1575,19 +1618,17 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryUserRoleInfoInWorkspace &UserId=f5698bedeb384b1986afccd9e434**** &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "RoleName":"",
   "RoleCode":"",
   "RoleId":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -1597,7 +1638,7 @@ http(s)://[Endpoint]/?Action=QueryUserRoleInfoInWorkspace &UserId=f5698bedeb384b
 | 400 | AE0150010007 | Workspace.Not.Exist | The group workspace does not exist. |
 | 400 | AE0150010002 | User.RoleType.Valid | The role ID is invalid. |
 | 400 | AE0150010004 | User.NotIn.Workspace | The user is not a member of the group workspace. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -1606,9 +1647,9 @@ http(s)://[Endpoint]/?Action=QueryUserRoleInfoInWorkspace &UserId=f5698bedeb384b
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 22 查询组织成员列表信息
 
-## 查询组织成员列表信息
+查询组织成员列表信息。
 
 **请求头**
 
@@ -1628,27 +1669,27 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回用户列表的分页结果，组织成员的详细信息列表存放在返回参数Data中。 |
-| -Data | Array |  |  |
-| --UserType | Integer |  |  |
-| --Email | String |  |  |
-| --UserId | String |  |  |
-| -- AuthAdminUse r | Boolean |  |  |
-| --AccountId | String |  |  |
+| Result | Struct |   | 返回用户列表的分页结果，组织成员的详细信息列表存放在返回参数Data中。 |
+| -Data | Array |   |   |
+| --UserType | Integer |   |   |
+| --Email | String |   |   |
+| --UserId | String |   |   |
+| -- AuthAdminUse r | Boolean |   |   |
+| --AccountId | String |   |   |
 
-|  | 开发指南·查询组织成 | 员列表信息 |  | Quick B | I |
+|   | 开发指南·查询组织成 | 员列表信息 |   | Quick B | I |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| --NickName | String |  |  |
-| --AdminUser | Boolean |  |  |
-| --Phone | String |  |  |
-| -- AccountName | String |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
-| -TotalNum | Integer |  |  |
+| --NickName | String |   |   |
+| --AdminUser | Boolean |   |   |
+| --Phone | String |   |   |
+| -- AccountName | String |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
+| -TotalNum | Integer |   |   |
 
 **示例**
 
@@ -1658,10 +1699,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryUserList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1679,18 +1719,13 @@ http(s)://[Endpoint]/?Action=QueryUserList
    "UserType":"",
    "AuthAdminUser":"",
    "AccountName":""
-  }
- }
-}
 ```
 
-**错误码**
-
-Quick BI
+`}` `}` `}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -1698,9 +1733,9 @@ Quick BI
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 23 根据用户ID查询用户信息
 
-## 根据用户ID查询用户信息
+根据用户ID查询用户信息。
 
 **请求头**
 
@@ -1718,29 +1753,24 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回的组织用户信息。 |
-| -UserType | Integer |  |  |
-| -Email | String |  |  |
-| -UserId | String |  |  |
-| - AuthAdminUse r | Boolean |  |  |
-| -AccountId | String |  |  |
-| -NickName | String |  |  |
-| -AdminUser | Boolean |  |  |
-| -Phone | String |  |  |
-| -AccountName | String |  |  |
-
-**示例**
-
-请求示例 Quick BI
+| Result | Struct |   | 返回的组织用户信息。 |
+| -UserType | Integer |   |   |
+| -Email | String |   |   |
+| -UserId | String |   |   |
+| - AuthAdminUse r | Boolean |   |   |
+| -AccountId | String |   |   |
+| -NickName | String |   |   |
+| -AdminUser | Boolean |   |   |
+| -Phone | String |   |   |
+| -AccountName | String |   |   |
 
 ```
 http(s)://[Endpoint]/?Action=QueryUserInfoByUserId &UserId=fe67f61a35a94b7da1a34ba174a7****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1753,16 +1783,16 @@ http(s)://[Endpoint]/?Action=QueryUserInfoByUserId &UserId=fe67f61a35a94b7da1a34
   "UserType":"",
   "AuthAdminUser":"",
   "AccountName":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100013 | UserInfo.Error | The personal information is invalid. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -1771,9 +1801,7 @@ http(s)://[Endpoint]/?Action=QueryUserInfoByUserId &UserId=fe67f61a35a94b7da1a34
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 
-Quick BI
-
-## 根据账号查询用户信息
+## 24 根据账号查询用户信息
 
 根据阿里云ID或阿里云账户名查询用户信息。
 
@@ -1793,22 +1821,22 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回的组织用户信息。 |
-| -UserType | Integer |  |  |
-| -Email | String |  |  |
-| -UserId | String |  |  |
+| Result | Struct |   | 返回的组织用户信息。 |
+| -UserType | Integer |   |   |
+| -Email | String |   |   |
+| -UserId | String |   |   |
 
-| Quick BI |  |  | 开发指南·根据账号查询用户信息 |
+| Quick BI |   |   | 开发指南·根据账号查询用户信息 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| - AuthAdminUse r | Boolean |  |  |
-| -AccountId | String |  |  |
-| -NickName | String |  |  |
-| -AdminUser | Boolean |  |  |
-| -Phone | String |  |  |
-| -AccountName | String |  |  |
+| - AuthAdminUse r | Boolean |   |   |
+| -AccountId | String |   |   |
+| -NickName | String |   |   |
+| -AdminUser | Boolean |   |   |
+| -Phone | String |   |   |
+| -AccountName | String |   |   |
 
 **示例**
 
@@ -1818,10 +1846,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryUserInfoByAccount &Account=1386587****@163.com
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -1834,18 +1861,18 @@ http(s)://[Endpoint]/?Action=QueryUserInfoByAccount &Account=1386587****@163.com
   "UserType":"",
   "AuthAdminUser":"",
   "AccountName":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100013 | UserInfo.Error | The personal information is invalid. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 
-| 开发指南·根据账 | 号查询用户信息 |  | Quick B |
+| 开发指南·根据账 | 号查询用户信息 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -1857,9 +1884,7 @@ http(s)://[Endpoint]/?Action=QueryUserInfoByAccount &Account=1386587****@163.com
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 
-Quick BI
-
-## 查询用户组成员列表
+## 25 查询用户组成员列表
 
 获取用户组下的成员列表信息。
 
@@ -1880,25 +1905,20 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | 48C930FF-DFCF- 5986-902B- E24C202E2443 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 用户组成员列表的请求结果。 |
+| Result | Array |   | 用户组成员列表的请求结果。 |
 | - ParentUserGro upName | String | 财务组 | 所属用户组名称。 |
 | -IsUserGroup | Boolean | true | 是否为用户组。取值范围： true：用户组 false：用户 |
 | -Name | String | 小刘的测试用户组 | 用户组名称或用户组成员昵称 。 |
 | - ParentUserGro upId | String | 2fe4fbd8-588f- 489a-b3e1- e92c7af0**** | 所属用户组ID。 |
 | -Id | String | 3d2c23d4-2b41- 4af8-a1f5- f6390f32**** | 用户组ID或用户组成员ID。 |
 
-**示例**
-
-Quick BI 请求示例
-
 ```
 http(s)://[Endpoint]/?Action=QueryUserGroupMember &UserGroupId=2fe4fbd8-588f-489a-b3e1-e92c7af0****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"48C930FF-DFCF-5986-902B-E24C202E2443",
  "Success":true,
  "Result":{
@@ -1908,28 +1928,23 @@ http(s)://[Endpoint]/?Action=QueryUserGroupMember &UserGroupId=2fe4fbd8-588f-489
   "Id":"3d2c23d4-2b41-4af8-a1f5-f6390f32****",
 ```
 
-`"Name":"`小刘的测试用户组"
-
-```
- }
-}
-```
+`"Name":"`小刘的测试用户组`"` `}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 列表
+列表
 
-## 查询父用户组下的子用户组列表
+## 26 查询父用户组下的子用户组列表
 
 获取指定父用户组下的子用户组信息。
 
@@ -1949,13 +1964,13 @@ Quick BI 列表
 |---|---|---|---|
 | RequestId | String | 72B19D61-B37A- 5C7A-9389- 0856CD7935B3 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 子用户组信息。 |
+| Result | Array |   | 子用户组信息。 |
 | -IdentifiedPath | String | 2fe4fbd8-588f- 489a-b3e1- e92c7af0****/3d2c 23d4-2b41-4af8- a1f5- f6390f32****/f5eeb 52e-d9c2-4a8b- 80e3- 47ab55c2**** | 子用户组的目录层级。 |
 | -ModifiedTime | String | 2020-11-16 15:49:08 | 子用户组最新修改时间。 |
 | -CreateUser | String | 136516262323**** | 子用户组创建者。此处为Quick BI的UserID，而非阿里云的UID。 |
 | -CreateTime | String | 2020-10-30 10:03:09 | 子用户组创建时间。 |
 
-Quick BI 列表
+列表
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1973,10 +1988,9 @@ Quick BI 列表
 http(s)://[Endpoint]/?Action=QueryUserGroupListByParentId &ParentUserGroupId=3d2c23d4-2b41-4af8-a1f5-f6390f32****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"72B19D61-B37A-5C7A-9389-0856CD7935B3",
  "Success":true,
  "Result":{
@@ -1991,22 +2005,17 @@ http(s)://[Endpoint]/?Action=QueryUserGroupListByParentId &ParentUserGroupId=3d2
   "CreateUser":"136516262323****",
 ```
 
-`"UserGroupDescription":"`用来测试的用户组"
-
-```
- }
-}
-```
+`"UserGroupDescription":"`用来测试的用户组`"` `}` `}`
 
 **错误码**
 
-Quick BI 列表
+列表
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150020305 | UserGroup.NotIn.Organization | The user group is not in the current organization. |
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -2014,9 +2023,7 @@ Quick BI 列表
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询嵌入报表ticket详情
+## 27 查询嵌入报表ticket详情
 
 获取免登嵌入报表的指定ticket的详情信息。
 
@@ -2036,33 +2043,26 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 生成的票据详情。 |
-| -AccessTicket | String |  |  |
-| - OrganizationId | String |  |  |
-| -UserId | String |  |  |
-| - UsedTicketNu m | Integer |  |  |
-| - MaxTicketNum | Integer |  |  |
-| -RegisterTime | String |  |  |
-| -InvalidTime | String |  |  |
-| -WorksId | String |  |  |
-| -CmptId | String |  |  |
-| -GlobalParam | String |  |  |
-| - WatermarkPar am | String |  |  |
-
-Quick BI
-
-**示例**
-
-请求示例
+| Result | Struct |   | 生成的票据详情。 |
+| -AccessTicket | String |   |   |
+| - OrganizationId | String |   |   |
+| -UserId | String |   |   |
+| - UsedTicketNu m | Integer |   |   |
+| - MaxTicketNum | Integer |   |   |
+| -RegisterTime | String |   |   |
+| -InvalidTime | String |   |   |
+| -WorksId | String |   |   |
+| -CmptId | String |   |   |
+| -GlobalParam | String |   |   |
+| - WatermarkPar am | String |   |   |
 
 ```
 http(s)://[Endpoint]/?Action=QueryTicketInfo &Ticket=a27a9aec-****-****-bd40-1a21ea41d7c5
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -2077,9 +2077,9 @@ http(s)://[Endpoint]/?Action=QueryTicketInfo &Ticket=a27a9aec-****-****-bd40-1a2
   "InvalidTime":"",
   "WorksId":"",
   "GlobalParam":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -2094,9 +2094,9 @@ http(s)://[Endpoint]/?Action=QueryTicketInfo &Ticket=a27a9aec-****-****-bd40-1a2
 | 400 | AE0130010026 | Authorize3rdTicket.Num.HasN oLeft | There is no ticket number left, please generate new ticket. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 
-Quick BI
+## 28 查询授权给用户的作品列表
 
-## 查询授权给用户的作品列表
+查询授权给用户的作品列表。
 
 **请求头**
 
@@ -2114,13 +2114,11 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | DC4E1E63-B337- 44F8-8C22- 6F00DF67E2C3 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 返回授权给用户的作品列表。 |
+| Result | Array |   | 返回授权给用户的作品列表。 |
 | -Status | Integer | 1 | 报表的发布状态。取值范围： 0：未发布 1：已发布 2：已修改未发布 3：已下线 |
 | - ThirdPartAuthF lag | Integer | 0 | 第三方嵌入状态。取值范围： 0：未开通嵌入 1：已开通嵌入 |
 | -WorksId | String | 97f7f4c1-543a- 4069-8e8d- a56cfcd6**** | 报表ID。 |
 | -CreateTime | String | 1530078690000 | 创建时间的毫秒级时间戳。 |
-
-Quick BI
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2134,26 +2132,19 @@ Quick BI
 | -Description | String | 测试报表的描述 | 作品备注。 |
 | -WorkName | String | 测试报表 | 报表名称。 |
 | -ModifyTime | String | 1530078690000 | 修改时间的毫秒级时间戳。 |
-| -Directory | Struct |  | 作品所在的目录信息。 |
-| --PathId | String |  |  |
-| --PathName | String |  |  |
-| --Name | String |  |  |
-| --Id | String |  |  |
-
-Quick BI
-
-**示例**
-
-请求示例
+| -Directory | Struct |   | 作品所在的目录信息。 |
+| --PathId | String |   |   |
+| --PathName | String |   |   |
+| --Name | String |   |   |
+| --Id | String |   |   |
 
 ```
 http(s)://[Endpoint]/?Action=QuerySharesToUserList &UserId=46e53****5ba4b679ee22e2a2927****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
  "Success":true,
  "Result":{
@@ -2182,22 +2173,26 @@ http(s)://[Endpoint]/?Action=QuerySharesToUserList &UserId=46e53****5ba4b679ee22
    "PathName":"",
    "Id":"",
    "Name":""
-  },
-  "WorksId":"97f7f4c1-543a-4069-8e8d-a56cfcd6****"
- }
-}
 ```
+
+`},`
+
+```json
+  "WorksId":"97f7f4c1-543a-4069-8e8d-a56cfcd6****"
+```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 
-| Quick BI |  |  | 开发指南·查询授权给用户的作品列表 |
+| Quick BI |   |   | 开发指南·查询授权给用户的作品列表 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2205,9 +2200,7 @@ http(s)://[Endpoint]/?Action=QuerySharesToUserList &UserId=46e53****5ba4b679ee22
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询作品的分享记录
+## 29 查询作品的分享记录
 
 查询作品被分享给哪些对象的列表，只返回仍然在有效期限内的分享配置。
 
@@ -2227,13 +2220,11 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | DC4E1E63-B337- 44F8-8C22- 6F00DF67E2C3 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 返回作品被分享给的对象列表。 |
+| Result | Array |   | 返回作品被分享给的对象列表。 |
 | -ShareId | String | 0ab9659e-29cf- 47d7-a364- 3a91553b**** | 分享配置ID。 |
 | -ShareToId | String | 95296e95-ca89- 4c7d-8af9- dedf0ad0**** | 分享目标的ID，可能是在Quick BI的用户ID，可能是用户组ID。 当ShareToType=2（所有组织内的成员）的时候，ShareToId为组织ID。 |
 | -AuthPoint | Integer | 3 | 分享权限。取值范围： 1：仅查看 3：查看和导出 |
 | -ExpireDate | Long | 1640102400000 | 授权有效时间的毫秒级时间戳。 |
-
-Quick BI
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2250,10 +2241,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryShareList &ReportId=6b407e50-e774-406b-9956-da2425c2****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
  "Success":true,
  "Result":{
@@ -2265,20 +2255,16 @@ http(s)://[Endpoint]/?Action=QueryShareList &ReportId=6b407e50-e774-406b-9956-da
   "ShareToName":"小张",
   "ReportId":"6b407e50-e774-406b-9956-da2425c2****",
   "ShareType":"product"
- }
-}
 ```
 
-Quick BI
-
-**错误码**
+`}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0510130012 | Report.NotExist.Error | This work does not exist. It may have been deleted. Work ID is %s. |
 | 400 | AE0150010007 | Workspace.Not.Exist | The group workspace does not exist. |
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -2287,9 +2273,11 @@ Quick BI
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 表
+表
 
-## 查询用户有权查看的作品列表
+## 30 查询用户有权查看的作品列表
+
+查询用户有权查看的作品列表，包含空间下与分享授权的报表。
 
 **请求头**
 
@@ -2307,13 +2295,13 @@ Quick BI 表
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 用户有权限查看的作品列表。 |
+| Result | Array |   | 用户有权限查看的作品列表。 |
 | -Status | Integer | 1 | 报表状态。取值范围： 0：未发布 1：已发布 2：已修改未发布 3：已下线 |
 | - ThirdPartAuthF lag | Integer | 1 | 第三方嵌入状态。取值范围： 0：暂未开通嵌入 1：已开通嵌入 |
 | -WorksId | String | 03366b16-69ce- 43c8-b782- 56c2f6ec**** | 作品ID。 |
 | -CreateTime | String | 1611023338000 | 创建时间的毫秒级时间戳。 |
 
-Quick BI 表
+表
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2327,26 +2315,21 @@ Quick BI 表
 | -Description | String | 备注 | 作品备注。 |
 | -WorkName | String | 公司地区表 | 作品名称。 |
 | -ModifyTime | String | 1611023338000 | 修改时间的毫秒级时间戳。 |
-| -Directory | Struct |  | 作品所处的目录结构。 |
-| --PathId | String |  |  |
-| --PathName | String |  |  |
-| --Name | String |  |  |
-| --Id | String |  |  |
+| -Directory | Struct |   | 作品所处的目录结构。 |
+| --PathId | String |   |   |
+| --PathName | String |   |   |
+| --Name | String |   |   |
+| --Id | String |   |   |
 
-Quick BI 表
-
-**示例**
-
-请求示例
+表
 
 ```
 http(s)://[Endpoint]/?Action=QueryReadableResourcesListByUserId &UserId=de4bc5f9429141cc8091cdd1c15b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -2371,22 +2354,26 @@ http(s)://[Endpoint]/?Action=QueryReadableResourcesListByUserId &UserId=de4bc5f9
    "PathName":"",
    "Id":"",
    "Name":""
-  },
-  "WorksId":"03366b16-69ce-43c8-b782-56c2f6ec****"
- }
-}
 ```
+
+`},`
+
+```json
+  "WorksId":"03366b16-69ce-43c8-b782-56c2f6ec****"
+```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 
-| 开发指南·查询用表 | 户有权查看的作品列 |  | Quick B |
+| 开发指南·查询用表 | 户有权查看的作品列 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2394,9 +2381,7 @@ http(s)://[Endpoint]/?Action=QueryReadableResourcesListByUserId &UserId=de4bc5f9
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 获取组织下的工作空间列表
+## 31 获取组织下的工作空间列表
 
 获取当前组织下的工作空间列表信息。
 
@@ -2419,29 +2404,29 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回工作空间列表的分页结果，工作空间的详细信息列表存放在返回参数Data中。 |
-| -Data | Array |  |  |
-| -- CreateUserAcc ountName | String |  |  |
-| --Owner | String |  |  |
-| --CreateTime | String |  |  |
+| Result | Struct |   | 返回工作空间列表的分页结果，工作空间的详细信息列表存放在返回参数Data中。 |
+| -Data | Array |   |   |
+| -- CreateUserAcc ountName | String |   |   |
+| --Owner | String |   |   |
+| --CreateTime | String |   |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -- WorkspaceNa me | String |  |  |
-| -- OrganizationId | String |  |  |
-| --WorkspaceId | String |  |  |
-| -- AllowShareOp eration | Boolean |  |  |
-| --CreateUser | String |  |  |
-| --ModifiedTime | String |  |  |
-| -- WorkspaceDes cription | String |  |  |
-| --ModifyUser | String |  |  |
-| -- AllowPublishO peration | Boolean |  |  |
-| -- OwnerAccount Name | String |  |  |
-| -- ModifyUserAcc ountName | String |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
-| -TotalNum | Integer |  |  |
+| -- WorkspaceNa me | String |   |   |
+| -- OrganizationId | String |   |   |
+| --WorkspaceId | String |   |   |
+| -- AllowShareOp eration | Boolean |   |   |
+| --CreateUser | String |   |   |
+| --ModifiedTime | String |   |   |
+| -- WorkspaceDes cription | String |   |   |
+| --ModifyUser | String |   |   |
+| -- AllowPublishO peration | Boolean |   |   |
+| -- OwnerAccount Name | String |   |   |
+| -- ModifyUserAcc ountName | String |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
+| -TotalNum | Integer |   |   |
 
 **示例**
 
@@ -2451,12 +2436,10 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryOrganizationWorkspaceList
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "TotalNum":"",
   "PageNum":"",
@@ -2477,16 +2460,15 @@ http(s)://[Endpoint]/?Action=QueryOrganizationWorkspaceList
    "WorkspaceName":"",
    "AllowPublishOperation":"",
    "CreateUserAccountName":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -2495,13 +2477,11 @@ http(s)://[Endpoint]/?Action=QueryOrganizationWorkspaceList
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 
-| 开发指南·获取组 | 织下的工作空间列表 |  | Quick B |
+| 开发指南·获取组 | 织下的工作空间列表 |   | Quick B |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
-Quick BI
-
-## 查询报表嵌入状态
+## 32 查询报表嵌入状态
 
 查询某个报表是否已经开通嵌入。
 
@@ -2531,24 +2511,20 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryEmbeddedStatus &WorksId=95296e95-ca89-4c7d-8af9-dedf0ad0****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":true
-}
 ```
 
-**错误码**
-
-Quick BI
+`}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0510130012 | Report.NotExist.Error | This work does not exist. It may have been deleted. Work ID is %s. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0510130015 | Resource.NotBelongTo.Current Organization | The resource does not belong to the current organization. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
@@ -2556,9 +2532,7 @@ Quick BI
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 获取组织嵌入配置
+## 33 获取组织嵌入配置
 
 获取组织下的嵌入配置，包括最大嵌入数和已经嵌入数等。
 
@@ -2572,13 +2546,13 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 组织下报表的嵌入信息。 |
-| - EmbeddedCou nt | Integer |  |  |
-| -MaxCount | Integer |  |  |
-| -Detail | Struct |  |  |
-| -- DashboardOffli neQuery | Integer |  |  |
-| --Report | Integer |  |  |
-| --Page | Integer |  |  |
+| Result | Struct |   | 组织下报表的嵌入信息。 |
+| - EmbeddedCou nt | Integer |   |   |
+| -MaxCount | Integer |   |   |
+| -Detail | Struct |   |   |
+| -- DashboardOffli neQuery | Integer |   |   |
+| --Report | Integer |   |   |
+| --Page | Integer |   |   |
 
 **示例**
 
@@ -2588,38 +2562,40 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryEmbeddedInfo
 ```
 
-正常返回示例 `JSON` 格式 Quick BI
+正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "-Detail":{
    "Report":"",
    "DashboardOfflineQuery":"",
    "Page":""
-  },
+```
+
+`},`
+
+```json
   "MaxCount":"",
   "EmbeddedCount":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 态
+态
 
-## 获取数据集行级权限开关状态
+## 34 获取数据集行级权限开关状态
 
 获取指定数据集的行级权限开关状态。
 
@@ -2639,10 +2615,10 @@ Quick BI 态
 |---|---|---|---|
 | RequestId | String | FAECEFA8-09BB- 58AB-BC58- C8ACEFE4D232 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 数据集行列权限开关详情。 |
-| - IsOpenRowLev elPermission | Integer |  |  |
-| -CubeId | String |  |  |
-| - IsOpenColumn LevelPermissio n | Integer |  |  |
+| Result | Struct |   | 数据集行列权限开关详情。 |
+| - IsOpenRowLev elPermission | Integer |   |   |
+| -CubeId | String |   |   |
+| - IsOpenColumn LevelPermissio n | Integer |   |   |
 
 **示例**
 
@@ -2652,19 +2628,17 @@ Quick BI 态
 http(s)://[Endpoint]/?Action=QueryDatasetSwitchInfo &CubeId=7c7223ae-****-3c744528014b
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI 态
+`&`公共请求参数正常返回示例 `JSON` 格式态
 
 ```json
-{
  "RequestId":"FAECEFA8-09BB-58AB-BC58-C8ACEFE4D232",
- "Success":true,
  "Result":{
   "CubeId":"",
   "IsOpenRowLevelPermission":"",
   "IsOpenColumnLevelPermission":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -2681,9 +2655,7 @@ http(s)://[Endpoint]/?Action=QueryDatasetSwitchInfo &CubeId=7c7223ae-****-3c7445
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询工作空间数据集列表
+## 35 查询工作空间数据集列表
 
 查询指定工作空间的数据集列表，按照创建时间倒序排列。
 
@@ -2708,42 +2680,40 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 
-Quick BI
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回数据集列表的分页结果，数据集列表的详细信息存放在返回参数Data中。 |
-| -Data | Array |  |  |
-| --RowLevel | Boolean |  |  |
-| --WorkspaceId | String |  |  |
-| --Description | String |  |  |
-| --CreateTime | String |  |  |
-| --OwnerName | String |  |  |
-| -- WorkspaceNa me | String |  |  |
-| --OwnerId | String |  |  |
-| --ModifyTime | String |  |  |
-| -- DatasetName | String |  |  |
-| --DatasetId | String |  |  |
-| --DataSource | Struct |  |  |
-| ---DsType | String |  |  |
-| ---DsName | String |  |  |
-| ---DsId | String |  |  |
-| --Directory | Struct |  |  |
-| ---PathId | String |  |  |
-| ---PathName | String |  |  |
-| ---Name | String |  |  |
-| ---Id | String |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
+| Result | Struct |   | 返回数据集列表的分页结果，数据集列表的详细信息存放在返回参数Data中。 |
+| -Data | Array |   |   |
+| --RowLevel | Boolean |   |   |
+| --WorkspaceId | String |   |   |
+| --Description | String |   |   |
+| --CreateTime | String |   |   |
+| --OwnerName | String |   |   |
+| -- WorkspaceNa me | String |   |   |
+| --OwnerId | String |   |   |
+| --ModifyTime | String |   |   |
+| -- DatasetName | String |   |   |
+| --DatasetId | String |   |   |
+| --DataSource | Struct |   |   |
+| ---DsType | String |   |   |
+| ---DsName | String |   |   |
+| ---DsId | String |   |   |
+| --Directory | Struct |   |   |
+| ---PathId | String |   |   |
+| ---PathName | String |   |   |
+| ---Name | String |   |   |
+| ---Id | String |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
 
-| Quick BI |  |  | 开发指南·查询工作空间数据集列表 |
+| Quick BI |   |   | 开发指南·查询工作空间数据集列表 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -PageSize | Integer |  |  |
-| -TotalNum | Integer |  |  |
+| -PageSize | Integer |   |   |
+| -TotalNum | Integer |   |   |
 
 **示例**
 
@@ -2753,10 +2723,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryDatasetList &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -2771,14 +2740,22 @@ http(s)://[Endpoint]/?Action=QueryDatasetList &WorkspaceId=95296e95-ca89-4c7d-8a
     "DsName":"",
     "DsId":"",
     "DsType":""
-   },
+```
+
+`},`
+
+```json
    "Description":"",
    "--Directory":{
     "PathId":"",
     "PathName":"",
     "Id":"",
     "Name":""
-   },
+```
+
+`},`
+
+```json
    "OwnerId":"",
    "DatasetName":"",
    "CreateTime":"",
@@ -2786,20 +2763,15 @@ http(s)://[Endpoint]/?Action=QueryDatasetList &WorkspaceId=95296e95-ca89-4c7d-8a
    "RowLevel":"",
    "WorkspaceName":"",
    "DatasetId":""
-  }
- }
-}
 ```
 
-**错误码**
-
-Quick BI
+`}` `}` `}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
 | 400 | AE0510100038 | CubeSchema.Not.Exist | The cube schema does not exist. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -2808,9 +2780,7 @@ Quick BI
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询数据集简略信息
+## 36 查询数据集简略信息
 
 查询指定数据集的信息。
 
@@ -2830,64 +2800,64 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | a4d1a221d-41za1- **** | 请求ID。 |
 | Success | Boolean | true | 接口是否成功返回，取值范围： true：成功 false：失败 |
-| Result | Struct |  | 数据集信息。 |
-| -CubeTableList | Array |  |  |
-| --TableName | String |  |  |
-| --DatasourceId | String |  |  |
-| --DsType | String |  |  |
-| --UniqueId | String |  |  |
-| --FactTable | Boolean |  |  |
-| --Caption | String |  |  |
-| --Customsql | Boolean |  |  |
-| --Sql | String |  |  |
-| -DimensionList | Array |  |  |
-| --DataType | String |  |  |
-| --Expression | String |  |  |
-| --FactColumn | String |  |  |
+| Result | Struct |   | 数据集信息。 |
+| -CubeTableList | Array |   |   |
+| --TableName | String |   |   |
+| --DatasourceId | String |   |   |
+| --DsType | String |   |   |
+| --UniqueId | String |   |   |
+| --FactTable | Boolean |   |   |
+| --Caption | String |   |   |
+| --Customsql | Boolean |   |   |
+| --Sql | String |   |   |
+| -DimensionList | Array |   |   |
+| --DataType | String |   |   |
+| --Expression | String |   |   |
+| --FactColumn | String |   |   |
 
-| 开发指南·查询数据集 | 简略信息 |  | Quick B |
+| 开发指南·查询数据集 | 简略信息 |   | Quick B |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -- DimensionTyp e | String |  |  |
-| --Granularity | String |  |  |
-| --RefUid | String |  |  |
-| --Caption | String |  |  |
-| --Uid | String |  |  |
-| -- TableUniqueId | String |  |  |
-| -MeasureList | Array |  |  |
-| --DataType | String |  |  |
-| --Expression | String |  |  |
-| --MeasureType | String |  |  |
-| --FactColumn | String |  |  |
-| --Caption | String |  |  |
-| -- TableUniqueId | String |  |  |
-| --Uid | String |  |  |
-| -GmtModify | String |  |  |
-| -DsName | String |  |  |
-| -DsId | String |  |  |
-| -OwnerName | String |  |  |
-| - WorkspaceNa me | String |  |  |
-| -OwnerId | String |  |  |
-| -DatasetName | String |  |  |
-| -RowLevel | Boolean |  |  |
-| -WorkspaceId | String |  |  |
-| -CustimzeSql | Boolean |  |  |
-| -GmtCreate | String |  |  |
-| -DsType | String |  |  |
+| -- DimensionTyp e | String |   |   |
+| --Granularity | String |   |   |
+| --RefUid | String |   |   |
+| --Caption | String |   |   |
+| --Uid | String |   |   |
+| -- TableUniqueId | String |   |   |
+| -MeasureList | Array |   |   |
+| --DataType | String |   |   |
+| --Expression | String |   |   |
+| --MeasureType | String |   |   |
+| --FactColumn | String |   |   |
+| --Caption | String |   |   |
+| -- TableUniqueId | String |   |   |
+| --Uid | String |   |   |
+| -GmtModify | String |   |   |
+| -DsName | String |   |   |
+| -DsId | String |   |   |
+| -OwnerName | String |   |   |
+| - WorkspaceNa me | String |   |   |
+| -OwnerId | String |   |   |
+| -DatasetName | String |   |   |
+| -RowLevel | Boolean |   |   |
+| -WorkspaceId | String |   |   |
+| -CustimzeSql | Boolean |   |   |
+| -GmtCreate | String |   |   |
+| -DsType | String |   |   |
 
-| Quick BI |  |  | 开发指南·查询数据集简略信息 |
+| Quick BI |   |   | 开发指南·查询数据集简略信息 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -DatasetId | String |  |  |
-| -Directory | Struct |  |  |
-| --PathId | String |  |  |
-| --PathName | String |  |  |
-| --Name | String |  |  |
-| --Id | String |  |  |
+| -DatasetId | String |   |   |
+| -Directory | Struct |   |   |
+| --PathId | String |   |   |
+| --PathName | String |   |   |
+| --Name | String |   |   |
+| --Id | String |   |   |
 
 **示例**
 
@@ -2897,10 +2867,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryDatasetInfo &DatasetId=a201c85c-******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"a4d1a221d-41za1-****",
  "Success":true,
  "Result":{
@@ -2913,7 +2882,11 @@ http(s)://[Endpoint]/?Action=QueryDatasetInfo &DatasetId=a201c85c-******
    "TableUniqueId":"",
    "Caption":"",
    "FactColumn":""
-  },
+```
+
+`},`
+
+```json
   "WorkspaceId":"",
   "RowLevel":"",
   "DsId":"",
@@ -2928,11 +2901,13 @@ http(s)://[Endpoint]/?Action=QueryDatasetInfo &DatasetId=a201c85c-******
    "Granularity":"",
    "Caption":"",
    "FactColumn":""
-  },
-"CbTblLit"{
 ```
 
-Quick BI
+`},`
+
+```
+"CbTblLit"{
+```
 
 ```json
   "-CubeTableList":{
@@ -2944,7 +2919,11 @@ Quick BI
    "Caption":"",
    "DsType":"",
    "Sql":""
-  },
+```
+
+`},`
+
+```json
   "DsType":"",
   "DatasetId":"",
   "GmtCreate":"",
@@ -2958,10 +2937,9 @@ Quick BI
    "PathName":"",
    "Id":"",
    "Name":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -2975,13 +2953,11 @@ Quick BI
 | 400 | AE0510100002 | CubeMeta.ToXml.Error | An error occurred while converting the data object to the XML format. |
 | 400 | AE0510260009 | Datasource.NotFound.Error | The specified data source does not exist: %s. |
 
-Quick BI
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0510110002 | Cube.ParseToXml.Error | An error occurred while parsing a dataset object to XML format. |
 | 400 | AE0510260010 | DatasourceId.IsNull.Error | You must select a data source before selecting the table. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -2991,9 +2967,7 @@ Quick BI
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 查询数据集详情
+## 37 查询数据集详情
 
 查询指定数据集的详情，包括所属数据源、目录、以及数据集模型。
 
@@ -3014,47 +2988,45 @@ Quick BI
 | RequestId | String | DC4E1E63-B337- 44F8-8C22- 6F00DF67E2C3 | 请求ID。 |
 | Success | Boolean | true | 返回接口执行结果。取值范围： true：执行成功 false：执行失败 |
 
-Quick BI
-
-|  | 参数名称 | 类型 |  | 示例 | 返回JSON格式的数据集数据： 说明 { "cube": { "dimensions": [ { |  |  |
+|   | 参数名称 | 类型 |   | 示例 | 返回JSON格式的数据集数据： 说明 { "cube": { "dimensions": [ { |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | 说明 { "cube": { "dimensions": [ { |  |
-|  |  |  |  |  | "caption": "客户名称", "dataType": |  |  |
-|  |  |  |  |  | "string", "dimensionType": |  |  |
-|  |  |  |  | 返回JSON格式的数据 | "standard dimension", "factColumn": _ |  |  |
-|  | Result | String |  | 集数据，详见左侧说 | "customer name", "uid": _ |  |  |
-|  |  |  |  | 明。 | "N5820f5 customer name" }, { _ _ |  |  |
-|  |  |  |  |  | "caption": "订单编号", "dataType": |  |  |
-|  |  |  |  |  | "string", "dimensionType": |  |  |
-|  |  |  |  |  | "standard dimension", "factColumn": _ |  |  |
-|  |  |  |  |  | "order id", "uid": _ |  |  |
-|  |  |  |  |  | "N5820f5 order id" }, ], _ _ |  |  |
-|  |  |  |  |  | "measures": [ { "caption": "订单金 |  |  |
-|  |  |  |  |  | 额", "dataType": "number", |  |  |
-|  |  |  |  |  | "factColumn": "order amt", _ |  |  |
-|  |  |  |  |  | "measureType": "standard measure", _ |  |  |
-|  |  |  |  |  | "uid": "N5820f5 order amt" } ], _ _ |  |  |
-|  |  |  |  |  | "table": { "customsql": false, |  |  |
-|  |  |  |  |  | "dsId": "261b252d-c3c3-498a-a0a7- |  |  |
-|  |  |  |  |  | 5d1ec6cd****", "tableName": |  |  |
-|  |  |  |  |  | "company sales record copy" } }, _ _ _ |  |  |
-|  |  |  |  |  | "datasetId": "5820f58c-c734-4d8a- |  |  |
-|  |  |  |  |  | baf1-7979af4f****", "datasetName": |  |  |
-|  |  |  |  |  | "company sales record copy12", _ _ _ |  |  |
-|  |  |  |  |  | "datasource": { "dsId": "261b252d- |  |  |
-|  |  |  |  |  | c3c3-498a-a0a7-5d1ec6cd****", |  |  |
-|  |  |  |  |  | "dsName": "立三自用", "dsType": |  |  |
-|  |  |  |  |  | "mysql" }, "directory": { "id": |  |  |
-|  |  |  |  |  | "schemaad8aad00-9c55-4984-a767- |  |  |
-|  |  |  |  |  | b4e0ec60****", "name": "我的数据集", |  |  |
-|  |  |  |  |  | "pathId": "schemaad8aad00-9c55- |  |  |
-|  |  |  |  |  | 4984-a767-b4e0ec60****", |  |  |
-|  |  |  |  |  | "pathName": "我的数据集" }, |  |  |
-|  |  |  |  |  | "ownerId": "13651626232****", |  |  |
-|  |  |  |  |  | "ownerName": "张三", "rowLevel": |  |  |
-|  |  |  |  |  | false, "workspaceId": "95296e95- |  |  |
-|  |  |  |  |  | ca89-4c7d-8af9-dedf0ad0****", |  |  |
-|  |  |  |  |  | "workspaceName": "测试工作空间" } |  |  |
+|   |   |   |   |   |   | 说明 { "cube": { "dimensions": [ { |   |
+|   |   |   |   |   | "caption": "客户名称", "dataType": |   |   |
+|   |   |   |   |   | "string", "dimensionType": |   |   |
+|   |   |   |   | 返回JSON格式的数据 | "standard dimension", "factColumn": _ |   |   |
+|   | Result | String |   | 集数据，详见左侧说 | "customer name", "uid": _ |   |   |
+|   |   |   |   | 明。 | "N5820f5 customer name" }, { _ _ |   |   |
+|   |   |   |   |   | "caption": "订单编号", "dataType": |   |   |
+|   |   |   |   |   | "string", "dimensionType": |   |   |
+|   |   |   |   |   | "standard dimension", "factColumn": _ |   |   |
+|   |   |   |   |   | "order id", "uid": _ |   |   |
+|   |   |   |   |   | "N5820f5 order id" }, ], _ _ |   |   |
+|   |   |   |   |   | "measures": [ { "caption": "订单金 |   |   |
+|   |   |   |   |   | 额", "dataType": "number", |   |   |
+|   |   |   |   |   | "factColumn": "order amt", _ |   |   |
+|   |   |   |   |   | "measureType": "standard measure", _ |   |   |
+|   |   |   |   |   | "uid": "N5820f5 order amt" } ], _ _ |   |   |
+|   |   |   |   |   | "table": { "customsql": false, |   |   |
+|   |   |   |   |   | "dsId": "261b252d-c3c3-498a-a0a7- |   |   |
+|   |   |   |   |   | 5d1ec6cd****", "tableName": |   |   |
+|   |   |   |   |   | "company sales record copy" } }, _ _ _ |   |   |
+|   |   |   |   |   | "datasetId": "5820f58c-c734-4d8a- |   |   |
+|   |   |   |   |   | baf1-7979af4f****", "datasetName": |   |   |
+|   |   |   |   |   | "company sales record copy12", _ _ _ |   |   |
+|   |   |   |   |   | "datasource": { "dsId": "261b252d- |   |   |
+|   |   |   |   |   | c3c3-498a-a0a7-5d1ec6cd****", |   |   |
+|   |   |   |   |   | "dsName": "立三自用", "dsType": |   |   |
+|   |   |   |   |   | "mysql" }, "directory": { "id": |   |   |
+|   |   |   |   |   | "schemaad8aad00-9c55-4984-a767- |   |   |
+|   |   |   |   |   | b4e0ec60****", "name": "我的数据集", |   |   |
+|   |   |   |   |   | "pathId": "schemaad8aad00-9c55- |   |   |
+|   |   |   |   |   | 4984-a767-b4e0ec60****", |   |   |
+|   |   |   |   |   | "pathName": "我的数据集" }, |   |   |
+|   |   |   |   |   | "ownerId": "13651626232****", |   |   |
+|   |   |   |   |   | "ownerName": "张三", "rowLevel": |   |   |
+|   |   |   |   |   | false, "workspaceId": "95296e95- |   |   |
+|   |   |   |   |   | ca89-4c7d-8af9-dedf0ad0****", |   |   |
+|   |   |   |   |   | "workspaceName": "测试工作空间" } |   |   |
 
 **示例**
 
@@ -3064,19 +3036,13 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryDatasetDetailInfo &DatasetId=5820f58c-c734-4d8a-baf1-7979af4f****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
- "Success":true,
 ```
 
-`"Result":"`返回`JSON`格式的数据集数据，详见左侧说明。"
-
-```
-}
-```
+`"Result":"`返回`JSON`格式的数据集数据，详见左侧说明。`"` `}`
 
 **错误码**
 
@@ -3087,16 +3053,14 @@ http(s)://[Endpoint]/?Action=QueryDatasetDetailInfo &DatasetId=5820f58c-c734-4d8
 | 400 | AE0150100013 | UserInfo.Error | The personal information is invalid. |
 | 400 | AE0510260010 | DatasourceId.IsNull.Error | You must select a data source before selecting the table. |
 | 400 | AE0510260006 | Datasource.UserPermission.Err or | You do not have datasource authorization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 调用数据服务API
+## 38 调用数据服务API
 
 对数据服务中已创建的API进行调用。
 
@@ -3106,32 +3070,28 @@ Quick BI
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  | 说明 |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|---|
-| ApiId | Strin g | Query | 是 | f4cc43bc3*** |  | 数据服务中的API ID，请参见：数据服务。 |  |  |
-| Conditions | Strin g | Query | 否 | { "area": ["华东", "华北"], "shopping date": _ "2019Q1", } |  | 数据服务的查询条件，以 Key和Value的形式传入。 map类型的字符串。其中，Key为请求参数的参数名，Value为请求参数的参数值。Key和Value必须成对出现。 说明： 请求参数的操作符设置为枚举筛选时支持 value包含多个值，此时 value值的格式是JSON形式的List。例如： area=["华东","华北","华南"] 对于日期，根据类型不同，提供不同的入参格式： 年：2019 季：2019Q1 月：201901 （携带 0） 周：2019-52 日：20190101 时：14:00:00 （分、 秒为00） 分：14:12:00 （秒为 00） 秒：14:34:34 |  |  |
-|  |  |  |  |  |  |  | area=["华东","华 |  |
-|  |  |  |  |  |  | 北","华南"] |  |  |
-| ReturnFiel ds | Strin g | Query | 否 | ["area", "city", "price", "date"] |  | 返回参数的参数名列表，List 类型字符串。 |  |  |
-
-**返回数据**
-
-Quick BI
+| ApiId | Strin g | Query | 是 | f4cc43bc3*** |   | 数据服务中的API ID，请参见：数据服务。 |   |   |
+| Conditions | Strin g | Query | 否 | { "area": ["华东", "华北"], "shopping date": _ "2019Q1", } |   | 数据服务的查询条件，以 Key和Value的形式传入。 map类型的字符串。其中，Key为请求参数的参数名，Value为请求参数的参数值。Key和Value必须成对出现。 说明： 请求参数的操作符设置为枚举筛选时支持 value包含多个值，此时 value值的格式是JSON形式的List。例如： area=["华东","华北","华南"] 对于日期，根据类型不同，提供不同的入参格式： 年：2019 季：2019Q1 月：201901 （携带 0） 周：2019-52 日：20190101 时：14:00:00 （分、 秒为00） 分：14:12:00 （秒为 00） 秒：14:34:34 |   |   |
+|   |   |   |   |   |   |   | area=["华东","华 |   |
+|   |   |   |   |   |   | 北","华南"] |   |   |
+| ReturnFiel ds | Strin g | Query | 否 | ["area", "city", "price", "date"] |   | 返回参数的参数名列表，List 类型字符串。 |   |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 78C1AA2D-9201- 599E-A0BA- 6FC462E57A95 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回接口查询结果。 |
-| -Values | Map |  |  |
-| -Headers | Array |  |  |
-| --Type | String |  |  |
-| --DataType | String |  |  |
-| --Granularity | String |  |  |
-| --Label | String |  |  |
-| --Column | String |  |  |
-| --Aggregator | String |  |  |
-| -Sql | String |  |  |
+| Result | Struct |   | 返回接口查询结果。 |
+| -Values | Map |   |   |
+| -Headers | Array |   |   |
+| --Type | String |   |   |
+| --DataType | String |   |   |
+| --Granularity | String |   |   |
+| --Label | String |   |   |
+| --Column | String |   |   |
+| --Aggregator | String |   |   |
+| -Sql | String |   |   |
 
 **示例**
 
@@ -3141,12 +3101,10 @@ Quick BI
 http(s)://[Endpoint]/?Action=QueryDataService &ApiId=f4cc43bc3***
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"78C1AA2D-9201-599E-A0BA-6FC462E57A95",
- "Success":true,
  "Result":{
   "Values":"",
   "-Headers":{
@@ -3156,11 +3114,15 @@ http(s)://[Endpoint]/?Action=QueryDataService &ApiId=f4cc43bc3***
    "DataType":"",
    "Aggregator":"",
    "Granularity":""
-  },
-  "Sql":""
- }
-}
 ```
+
+`},`
+
+```json
+  "Sql":""
+```
+
+`}` `}`
 
 **错误码**
 
@@ -3174,13 +3136,13 @@ http(s)://[Endpoint]/?Action=QueryDataService &ApiId=f4cc43bc3***
 | 400 | AE0581040006 | Missing.Conditions | The specified Conditions is invalid. You must specify %s. |
 | 400 | AE0581040013 | Missing.Dimension.Measure | The dimension or measure %s does not exist in Cube. |
 | 400 | AE0510030023 | Rowlevel.Permission.Forbbiden | The request is denied by row level permission. The dataset is %s, %s %s. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 
-Quick BI 列表
+列表
 
-## 查询用户所属的用户组信息列表
+## 39 查询用户所属的用户组信息列表
 
 根据用户的UserID，查询该用户所属的所有用户组信息。
 
@@ -3200,14 +3162,14 @@ Quick BI 列表
 |---|---|---|---|
 | RequestId | String | E2440604-3059- 561A-AD68- DEDBC870EB2B | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 用户组信息。 |
+| Result | Array |   | 用户组信息。 |
 | -IdentifiedPath | String | 2fe4fbd8-588f- 489a-b3e1- e92c7af0****/3d2c 23d4-2b41-4af8- a1f5- f6390f32****/f5eeb 52e-d9c2-4a8b- 80e3- 47ab55c2**** | 用户组的目录层级。 |
 | - ParentUsergro upId | String | 2fe4fbd8-588f- 489a-b3e1- e92c7af0**** | 用户组ID。 |
 | -ModifiedTime | String | 2021-03-15 20:36:40 | 用户组最新修改时间。 |
 | -CreateUser | String | 46e5374665ba4b6 79ee22e2a2927*** * | 用户组创建者。此处为Quick BI的UserID，而非阿里云的UID。 |
 | - UsergroupNam e | String | 测试用户组 | 用户组名称。 |
 
-|  | Quick BI |  |  | 开发指南·查询用户所属的用户组信息列表 |  |
+|   | Quick BI |   |   | 开发指南·查询用户所属的用户组信息列表 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3225,10 +3187,9 @@ Quick BI 列表
 http(s)://[Endpoint]/?Action=ListUserGroupsByUserId &UserId=46e5374665ba4b679ee22e2a2927****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"E2440604-3059-561A-AD68-DEDBC870EB2B",
  "Success":true,
  "Result":{
@@ -3246,18 +3207,18 @@ http(s)://[Endpoint]/?Action=ListUserGroupsByUserId &UserId=46e5374665ba4b679ee2
 
 ```json
   "UsergroupId":"34fd141d-4598-4093-8c33-8e066dcb****"
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 
-| 列表 |  |  | Quick B |
+| 列表 |   |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -3268,9 +3229,9 @@ http(s)://[Endpoint]/?Action=ListUserGroupsByUserId &UserId=46e5374665ba4b679ee2
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 列表
+列表
 
-## 获取首页看板被授权的作品列表
+## 40 获取首页看板被授权的作品列表
 
 获取指定用户在首页看板中展示的被授权的作品列表。
 
@@ -3293,31 +3254,31 @@ Quick BI 列表
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回查询结果。 |
-| -Data | Array |  |  |
-| --TreeId | String |  |  |
-| --Type | String |  |  |
-| --Name | String |  |  |
+| Result | Struct |   | 返回查询结果。 |
+| -Data | Array |   |   |
+| --TreeId | String |   |   |
+| --Type | String |   |   |
+| --Name | String |   |   |
 
-|  | 开发指南·获取首页看列表 | 板被授权的作品 |  | Quick B | I |
+|   | 开发指南·获取首页看列表 | 板被授权的作品 |   | Quick B | I |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| --OwnerNum | String |  |  |
-| --OwnerName | String |  |  |
-| --GmtCreate | String |  |  |
-| --GmtModified | String |  |  |
-| --PublishStatus | Integer |  |  |
-| --Favorite | Boolean |  |  |
-| --HasViewAuth | Boolean |  |  |
-| --HasEditAuth | Boolean |  |  |
-| --WorkspaceId | String |  |  |
-| -- WorkspaceNa me | String |  |  |
-| -TotalNum | Integer |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
+| --OwnerNum | String |   |   |
+| --OwnerName | String |   |   |
+| --GmtCreate | String |   |   |
+| --GmtModified | String |   |   |
+| --PublishStatus | Integer |   |   |
+| --Favorite | Boolean |   |   |
+| --HasViewAuth | Boolean |   |   |
+| --HasEditAuth | Boolean |   |   |
+| --WorkspaceId | String |   |   |
+| -- WorkspaceNa me | String |   |   |
+| -TotalNum | Integer |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
 
 **示例**
 
@@ -3327,12 +3288,10 @@ Quick BI 列表
 http(s)://[Endpoint]/?Action=ListSharedReports &UserId=b5d8fd9348cc4327****afb604
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI 列表
+`&`公共请求参数正常返回示例 `JSON` 格式列表
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "TotalNum":"",
   "PageNum":"",
@@ -3352,10 +3311,9 @@ http(s)://[Endpoint]/?Action=ListSharedReports &UserId=b5d8fd9348cc4327****afb60
    "HasViewAuth":"",
    "PublishStatus":"",
    "HasEditAuth":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -3366,9 +3324,9 @@ http(s)://[Endpoint]/?Action=ListSharedReports &UserId=b5d8fd9348cc4327****afb60
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 
-Quick BI 表
+表
 
-## 获取首页看板常看和足迹列表
+## 41 获取首页看板常看和足迹列表
 
 获取指定用户在首页看板中展示的常看和足迹列表。
 
@@ -3394,31 +3352,31 @@ Quick BI 表
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 
-Quick BI 表
+表
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Result | Struct |  | 返回查询结果。 |
-| -Data | Array |  |  |
-| --TreeId | String |  |  |
-| --Type | String |  |  |
-| --Name | String |  |  |
-| --OwnerNum | String |  |  |
-| --OwnerName | String |  |  |
-| --GmtCreate | String |  |  |
-| --GmtModified | String |  |  |
-| --PublishStatus | Integer |  |  |
-| --Favorite | Boolean |  |  |
-| --HasViewAuth | Boolean |  |  |
-| --HasEditAuth | Boolean |  |  |
-| --WorkspaceId | String |  |  |
-| -- WorkspaceNa me | String |  |  |
-| --ViewCount | Long |  |  |
-| -- LatestViewTim e | String |  |  |
-| -TotalNum | Integer |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
+| Result | Struct |   | 返回查询结果。 |
+| -Data | Array |   |   |
+| --TreeId | String |   |   |
+| --Type | String |   |   |
+| --Name | String |   |   |
+| --OwnerNum | String |   |   |
+| --OwnerName | String |   |   |
+| --GmtCreate | String |   |   |
+| --GmtModified | String |   |   |
+| --PublishStatus | Integer |   |   |
+| --Favorite | Boolean |   |   |
+| --HasViewAuth | Boolean |   |   |
+| --HasEditAuth | Boolean |   |   |
+| --WorkspaceId | String |   |   |
+| -- WorkspaceNa me | String |   |   |
+| --ViewCount | Long |   |   |
+| -- LatestViewTim e | String |   |   |
+| -TotalNum | Integer |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
 
 **示例**
 
@@ -3428,10 +3386,9 @@ Quick BI 表
 http(s)://[Endpoint]/?Action=ListRecentViewReports &UserId=b5d8fd9348cc4327****afb604
 ```
 
-&公共请求参数正常返回示例 Quick BI 表 `JSON` 格式
+表
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":{
@@ -3455,10 +3412,9 @@ http(s)://[Endpoint]/?Action=ListRecentViewReports &UserId=b5d8fd9348cc4327****a
    "HasViewAuth":"",
    "PublishStatus":"",
    "HasEditAuth":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -3469,9 +3425,7 @@ http(s)://[Endpoint]/?Action=ListRecentViewReports &UserId=b5d8fd9348cc4327****a
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 
-Quick BI
-
-## 获取数据门户菜单列表
+## 42 获取数据门户菜单列表
 
 获取具体数据门户下的分层菜单列表。
 
@@ -3493,8 +3447,6 @@ Quick BI
 | RequestId | String | 75912036-5527- 4B7E-9265- B481D6651AC2 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 
-Quick BI
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Result | String | [{"children": [{"children": [{"children": [{"menuId":"54kqg oa****","menuNam e":"报表菜单","menuType":0," showOnlyWithAcce ss":true,"dependen tPermisson":false," uri":"e5da4a3f- d7f9-4262-a39e- a840043c****"}, {"menuId":"pg1n1 35****","menuNam e":"目录菜单","menuType":4," showOnlyWithAcce ss":false,"depende ntPermisson":true} ],"menuId":"23a7d 5d8-e55a-4737- b6a1- 3c585505****","m enuName":"pop三级菜单","menuType":4," showOnlyWithAcce ss":true,"dependen tPermisson":true}], "menuId":"80764f3 c-affd-45a1-aaa1- bb039d8a****","m enuName":"pop二级菜单","menuType":4," showOnlyWithAcce ss":false,"depende ntPermisson":true} ],"menuId":"277f96 8a-22ff-4ce6-83f0- a82950f4****","me nuName":"pop一级菜单","menuType":4," showOnlyWithAcce ss":false,"depende ntPermisson":true} ] | 分级门户菜单列表详情的JSON字符串。取值范围： menuType：菜单类型。 0：仪表板 1：外链 2：电子表格 4：目录文件夹 5：表单填报 6：自助取数 menuId：菜单ID uri： 菜单关联资源的ID或者URL showOnlyWithAccess：是否仅授权可见 menuName：菜单显示名称 dependentPermisson：菜单关联的报表资源是否有权限 children：子菜单 |
@@ -3507,21 +3459,21 @@ Quick BI
 http(s)://[Endpoint]/?Action=ListPortalMenus &DataPortalId=0d173abb53e84c8ca7495429163b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"75912036-5527-4B7E-9265-B481D6651AC2",
- "Success":true,
  "Result":"[{\"children\":[{\"children\":[{\"children\":
-[{\"menuId\":\"54kqgoa****\",\"menuName\":\"报表菜单 \",\"menuType\":0,\"showOnlyWithAccess\":true,\"dependentPermisson\":false,\"uri\":\"e5da 3f-d7f9-4262-a39e-a840043c****\"},{\"menuId\":\"pg1n135****\",\"menuName\":\"目录菜单\", \"menuType\":4,\"showOnlyWithAccess\":false,\"dependentPermisson\":true}],\"menuId\":\"23 d5d8-e55a-4737-b6a1-3c585505****\",\"menuName\":\"pop三级菜单 \",\"menuType\":4,\"showOnlyWithAccess\":true,\"dependentPermisson\":true}],\"menuId\":\" 764f3c-affd-45a1-aaa1-bb039d8a****\",\"menuName\":\"pop二级菜单 \",\"menuType\":4,\"showOnlyWithAccess\":false,\"dependentPermisson\":true}],\"menuId\":\ 77f968a-22ff-4ce6-83f0-a82950f4****\",\"menuName\":\"pop一级菜单 \",\"menuType\":4,\"showOnlyWithAccess\":false,\"dependentPermisson\":true}]" }
+[{\"menuId\":\"54kqgoa****\",\"menuName\":\"报表菜单 \",\"menuType\":0,\"showOnlyWithAccess\":true,\"dependentPermisson\":false,\"uri\":\"e5da 3f-d7f9-4262-a39e-a840043c****\"},{\"menuId\":\"pg1n135****\",\"menuName\":\"目录菜单\", \"menuType\":4,\"showOnlyWithAccess\":false,\"dependentPermisson\":true}],\"menuId\":\"23 d5d8-e55a-4737-b6a1-3c585505****\",\"menuName\":\"pop三级菜单 \",\"menuType\":4,\"showOnlyWithAccess\":true,\"dependentPermisson\":true}],\"menuId\":\" 764f3c-affd-45a1-aaa1-bb039d8a****\",\"menuName\":\"pop二级菜单 \",\"menuType\":4,\"showOnlyWithAccess\":false,\"dependentPermisson\":true}],\"menuId\":\ 77f968a-22ff-4ce6-83f0-a82950f4****\",\"menuName\":\"pop一级菜单 \",\"menuType\":4,\"showOnlyWithAccess\":false,\"dependentPermisson\":true}]"
 ```
+
+`}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -3531,9 +3483,11 @@ http(s)://[Endpoint]/?Action=ListPortalMenus &DataPortalId=0d173abb53e84c8ca7495
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 情
+情
 
-## 获取数据门户菜单的授权详情
+## 43 获取数据门户菜单的授权详情
+
+获取数据门户菜单的授权详情列表。
 
 **请求头**
 
@@ -3551,10 +3505,10 @@ Quick BI 情
 |---|---|---|---|
 | RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 门户菜单的授权详情列表。 |
-| -Receivers | Array |  | 菜单所授权的对象详情。 |
-| --ReceiverId | String |  |  |
-| --ReceiverType | Integer |  |  |
+| Result | Array |   | 门户菜单的授权详情列表。 |
+| -Receivers | Array |   | 菜单所授权的对象详情。 |
+| --ReceiverId | String |   |   |
+| --ReceiverType | Integer |   |   |
 | - ShowOnlyWith Access | Boolean | true | 是否仅授权可见。取值范围： true：仅授权可见 false：都可见 |
 | -MenuId | String | 54kqgoa**** | 数据门户的叶子节点菜单ID。 |
 
@@ -3566,10 +3520,9 @@ Quick BI 情
 http(s)://[Endpoint]/?Action=ListPortalMenuAuthorization &DataPortalId=0d173abb53e84c8ca7495429163b****
 ```
 
-&公共请求参数正常返回示例 Quick BI 情 `JSON` 格式
+`&`公共请求参数情
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":{
@@ -3577,18 +3530,22 @@ http(s)://[Endpoint]/?Action=ListPortalMenuAuthorization &DataPortalId=0d173abb5
   "-Receivers":{
    "ReceiverId":"",
    "ReceiverType":""
-  },
-  "ShowOnlyWithAccess":true
- }
-}
 ```
+
+`},`
+
+```json
+  "ShowOnlyWithAccess":true
+```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -3597,9 +3554,7 @@ http(s)://[Endpoint]/?Action=ListPortalMenuAuthorization &DataPortalId=0d173abb5
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 首页看板收藏列表
+## 44 首页看板收藏列表
 
 获取指定用户在首页看板中展示的收藏作品列表。
 
@@ -3622,31 +3577,31 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回查询结果。 |
-| -Data | Array |  |  |
-| --TreeId | String |  |  |
-| --Type | String |  |  |
-| --Name | String |  |  |
+| Result | Struct |   | 返回查询结果。 |
+| -Data | Array |   |   |
+| --TreeId | String |   |   |
+| --Type | String |   |   |
+| --Name | String |   |   |
 
-| Quick BI |  |  | 开发指南·首页看板收藏列表 |
+| Quick BI |   |   | 开发指南·首页看板收藏列表 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| --OwnerNum | String |  |  |
-| --OwnerName | String |  |  |
-| --GmtCreate | String |  |  |
-| --GmtModified | String |  |  |
-| --PublishStatus | Integer |  |  |
-| --Favorite | Boolean |  |  |
-| --HasViewAuth | Boolean |  |  |
-| --HasEditAuth | Boolean |  |  |
-| --WorkspaceId | String |  |  |
-| -- WorkspaceNa me | String |  |  |
-| -TotalNum | Integer |  |  |
-| -TotalPages | Integer |  |  |
-| -PageNum | Integer |  |  |
-| -PageSize | Integer |  |  |
+| --OwnerNum | String |   |   |
+| --OwnerName | String |   |   |
+| --GmtCreate | String |   |   |
+| --GmtModified | String |   |   |
+| --PublishStatus | Integer |   |   |
+| --Favorite | Boolean |   |   |
+| --HasViewAuth | Boolean |   |   |
+| --HasEditAuth | Boolean |   |   |
+| --WorkspaceId | String |   |   |
+| -- WorkspaceNa me | String |   |   |
+| -TotalNum | Integer |   |   |
+| -TotalPages | Integer |   |   |
+| -PageNum | Integer |   |   |
+| -PageSize | Integer |   |   |
 
 **示例**
 
@@ -3656,12 +3611,10 @@ Quick BI
 http(s)://[Endpoint]/?Action=ListFavoriteReports &UserId=b5d8fd9348cc4327****afb604
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "TotalNum":"",
   "PageNum":"",
@@ -3681,10 +3634,9 @@ http(s)://[Endpoint]/?Action=ListFavoriteReports &UserId=b5d8fd9348cc4327****afb
    "HasViewAuth":"",
    "PublishStatus":"",
    "HasEditAuth":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
@@ -3695,9 +3647,9 @@ http(s)://[Endpoint]/?Action=ListFavoriteReports &UserId=b5d8fd9348cc4327****afb
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 
-Quick BI 列表
+列表
 
-## 获取数据集行列权限白名单列表
+## 45 获取数据集行列权限白名单列表
 
 根据行列权限种类，获取数据集行列权限的白名单列表。
 
@@ -3718,12 +3670,12 @@ Quick BI 列表
 |---|---|---|---|
 | RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 指定行级权限类型的白名单列表。 |
-| -CubeId | String |  |  |
-| -RuleType | String |  |  |
-| -UsersModel | Struct |  |  |
-| --UserGroups | String |  |  |
-| --Users | String |  |  |
+| Result | Struct |   | 指定行级权限类型的白名单列表。 |
+| -CubeId | String |   |   |
+| -RuleType | String |   |   |
+| -UsersModel | Struct |   |   |
+| --UserGroups | String |   |   |
+| --Users | String |   |   |
 
 **示例**
 
@@ -3733,22 +3685,25 @@ Quick BI 列表
 http(s)://[Endpoint]/?Action=ListDataLevelPermissionWhiteList &CubeId=3d5db23c-e4f2-49dd-a883-92285b48e14a &RuleType=ROW_LEVEL
 ```
 
-&公共请求参数 Quick BI 列表正常返回示例 `JSON` 格式
+列表 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":{
   "-UsersModel":{
    "Users":"",
    "UserGroups":""
-  },
+```
+
+`},`
+
+```json
   "CubeId":"",
   "RuleType":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -3767,9 +3722,9 @@ http(s)://[Endpoint]/?Action=ListDataLevelPermissionWhiteList &CubeId=3d5db23c-e
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 表
+表
 
-## 获取数据集行列权限配置列表
+## 46 获取数据集行列权限配置列表
 
 获取指定数据集的行列权限配置列表。
 
@@ -3791,36 +3746,27 @@ Quick BI 表
 | RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 
-Quick BI 表
+表
 
 | 参数名称 | 类型 | 示例 | { 说明 "isOpen": 1, |
 |---|---|---|---|
-|  |  |  | "extraConfigModel": { // 额外配置信息 "ruleType": "ROW LEVEL", //行级权限类型 _ "missHitPolicy": "NONE", //命中规则策略： NONE无权限，ALL有权限 "cubeId": "7c7223ae-31d1-4d2f-b11f- 3c744528014b" //数据集ID }, "ruleType": "ROW LEVEL", //行列权限类型 _ |
+|   |   |   | "extraConfigModel": { // 额外配置信息 "ruleType": "ROW LEVEL", //行级权限类型 _ "missHitPolicy": "NONE", //命中规则策略： NONE无权限，ALL有权限 "cubeId": "7c7223ae-31d1-4d2f-b11f- 3c744528014b" //数据集ID }, "ruleType": "ROW LEVEL", //行列权限类型 _ |
 | Result | String | 行列权限列表的JSON 串，详情见描述。 | "ruleModels": [ { "ruleUsersModel": { // 针对的人群 "userGroups": [ "0d5fb19b--1248fc27ca51", // 用户组 ID "4aa3f089- -85f0-0e8ac7c2dee9" ], "users": [ "HuangJia***2e3fa822", // 用户的UserID "4334***84358" ] }, "ruleContentModel": { "ruleContentType": "ROW FIELD", //行列权 _ 限类型 "ruleContentJson": "{"conditionNode": {"caption":"周期","isMeasure":false,"pathId":"7d3b073bc 6","relationOperator":"not- null","name":"7d3b073bc6","value": {"value":[""],"valueType":"ENUM"}}}", // 行列权限规则的JSON串 "ruleOriginConfigJson": " {"operator":"and","operands": [{"labelName":"周期","isValid":true,"uniqueId":"5","fieldId":"7 d3b073bc6","error":false,"fieldType":"strin g","defaultValue": {"selectType":"condition","value": {"conditionOp":"not- null","conditionValue":""},"valueType":"EN UM"}}],"isRelation":true}" }, //前端需求的固定格式JSON串 "isOpen": 1, // 行列权限配置的开关状态 1.开启 0.关闭 "hitTakeEffect": 1, // 针对列级权限，命中后规则是否生效 1生效、0不生效。 "ruleName": "测试行级权限勿删", // 行列权限 _ 规则的名称 "ruleLevelType": "ROW LEVEL", //行列权限 _ 类型 "ruleId": "a5bb24da-772f-45e8-a43c- a891683e14da", // 行列权限规则的ID "cubeId": "7c7223ae-31d1-4d2f-b11f- 3c744528014b", // 数据集ID "ruleTargetScope": "OTHERS" 规则生效范围：ALL所有人、OTHERS指定人 } ], "cubeId": "7c7223ae-31d1-4d2f-b11f- 3c744528014b" // 数据集ID } |
 
-Quick BI 表
-
-**示例**
-
-请求示例
+表
 
 ```
 http(s)://[Endpoint]/?Action=ListCubeDataLevelPermissionConfig &CubeId=7c7223ae-****-3c744528014b &RuleType=ROW_LEVEL
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
 ```
 
-`"Result":"`行列权限列表的`JSON`串，详情见描述。"
-
-```
-}
-```
+`"Result":"`行列权限列表的`JSON`串，详情见描述。`"` `}`
 
 **错误码**
 
@@ -3838,15 +3784,13 @@ http(s)://[Endpoint]/?Action=ListCubeDataLevelPermissionConfig &CubeId=7c7223ae-
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 
-Quick BI 表
+表
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 获取用户收藏作品列表
+## 47 获取用户收藏作品列表
 
 获取用户收藏的作品列表。
 
@@ -3866,14 +3810,12 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | 162A632E-0A88- 51CF-98F8- 94FDEE82DB7D | 请求ID。 |
 | Success | Boolean | true | 收藏记录的主键 ID。 |
-| Result | Array |  | 用户收藏的报表列表详情。 |
+| Result | Array |   | 用户收藏的报表列表详情。 |
 | -WorkspaceId | String | 9337d121-a78f- 4c1b-a8bc- f81de117**** | 工作空间ID。 |
 | -WorksType | String | dashboardOfflineQ uery | 作品类型。取值范围： DATAPRODUCT：数据门户 PAGE：仪表板 REPORT：电子表格 dataForm：数据填报 dashboardOfflineQuery：自助取数 |
 | -FavoriteId | Integer | 12373 | 收藏记录的主键 ID。 |
 | -WorksId | String | 95296e95-ca89- 4c7d-8af9- dedf0ad0**** | 作品的ID。 |
 | -WorksName | String | 奇异博士 | 作品的名称。 |
-
-Quick BI
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -3888,10 +3830,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=ListCollections &UserId=fe67f61a35a94b7da1a34ba174a7****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"162A632E-0A88-51CF-98F8-94FDEE82DB7D",
  "Success":true,
  "Result":{
@@ -3910,21 +3851,21 @@ http(s)://[Endpoint]/?Action=ListCollections &UserId=fe67f61a35a94b7da1a34ba174a
 
 ```json
   "WorksId":"95296e95-ca89-4c7d-8af9-dedf0ad0****"
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 
-| Quick BI |  |  | 开发指南·获取用户收藏作品列表 |
+| Quick BI |   |   | 开发指南·获取用户收藏作品列表 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -3934,9 +3875,9 @@ http(s)://[Endpoint]/?Action=ListCollections &UserId=fe67f61a35a94b7da1a34ba174a
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 48 批量查询用户组
 
-## 批量查询用户组
+根据用户组ID批量查询用户组信息。
 
 **请求头**
 
@@ -3954,24 +3895,24 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回用户组查询结果。 |
-| - FailedUserGro upIds | String |  |  |
-| - UserGroupMod els | Array |  |  |
-| -- IdentifiedPath | String |  |  |
-| -- ParentUsergro upId | String |  |  |
-| --ModifiedTime | String |  |  |
-| --CreateUser | String |  |  |
-| -- UsergroupNam e | String |  |  |
-| --CreateTime | String |  |  |
+| Result | Struct |   | 返回用户组查询结果。 |
+| - FailedUserGro upIds | String |   |   |
+| - UserGroupMod els | Array |   |   |
+| -- IdentifiedPath | String |   |   |
+| -- ParentUsergro upId | String |   |   |
+| --ModifiedTime | String |   |   |
+| --CreateUser | String |   |   |
+| -- UsergroupNam e | String |   |   |
+| --CreateTime | String |   |   |
 
-| Quick BI |  |  | 开发指南·批量查询用户组 |
+| Quick BI |   |   | 开发指南·批量查询用户组 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -- UsergroupDes c | String |  |  |
-| --UsergroupId | String |  |  |
-| --ModifyUser | String |  |  |
+| -- UsergroupDes c | String |   |   |
+| --UsergroupId | String |   |   |
+| --ModifyUser | String |   |   |
 
 **示例**
 
@@ -3981,10 +3922,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=ListByUserGroupId &UserGroupIds=34fe-***-6dcb,84q9-****-4a274
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":{
@@ -3999,21 +3939,20 @@ http(s)://[Endpoint]/?Action=ListByUserGroupId &UserGroupIds=34fe-***-6dcb,84q9-
    "CreateUser":"",
    "UsergroupName":"",
    "UsergroupId":""
-  }
- }
-}
 ```
+
+`}` `}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 
-| 开发指南·批量查 | 询用户组 |  | Quick B |
+| 开发指南·批量查 | 询用户组 |   | Quick B |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -4022,9 +3961,7 @@ http(s)://[Endpoint]/?Action=ListByUserGroupId &UserGroupIds=34fe-***-6dcb,84q9-
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 根据关键字获取用户组信息
+## 49 根据关键字获取用户组信息
 
 根据用户组名称关键字搜索用户组信息。
 
@@ -4044,7 +3981,7 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D7980306-1F08- 5A88-9FE7- ECB8B9C4C0F5 | 请求 ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Array |  | 用户组信息。 |
+| Result | Array |   | 用户组信息。 |
 | -IdentifiedPath | String | 2fe4fbd8-588f- 489a-b3e1- e92c7af0****/34fd 141d-4598-4093- 8c33-8e066dcb**** | 用户组的目录层级。 |
 | - ParentUsergro upId | String | 2fe4fbd8-588f- 489a-b3e1- e92c7af0**** | 父用户组ID。 |
 | -ModifiedTime | String | 2021-03-15 20:36:40 | 用户组最新修改时间。 |
@@ -4053,7 +3990,7 @@ Quick BI
 | -CreateTime | String | 2021-03-15 17:13:55 | 用户组创建时间。 |
 | - UsergroupDes c | String | 测试描述 | 用户组备注。 |
 
-| 开发指南·根据关键字 | 获取用户组信息 |  | Quick B |
+| 开发指南·根据关键字 | 获取用户组信息 |   | Quick B |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4069,10 +4006,9 @@ Quick BI
 http(s)://[Endpoint]/?Action=GetUserGroupInfo
 ```
 
-`&Keyword=`测试用户组 &公共请求参数正常返回示例 `JSON` 格式
+`&Keyword=`测试用户组 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D7980306-1F08-5A88-9FE7-ECB8B9C4C0F5",
  "Success":true,
  "Result":{
@@ -4094,20 +4030,20 @@ cb****",
 
 ```json
   "UsergroupId":"34fd141d-4598-4093-8c33-8e066dcb****"
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 
-| Quick BI |  |  | 开发指南·根据关键字获取用户组信息 |
+| Quick BI |   |   | 开发指南·根据关键字获取用户组信息 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -4115,9 +4051,9 @@ cb****",
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 50 删除工作空间
 
-## 删除工作空间
+删除工作空间。
 
 **请求头**
 
@@ -4145,17 +4081,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteWorkspace &WorkspaceId=391d5920-****-****-a6a4-c8177cafcfc4
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
 
-`XML` 格式 Quick BI
+`}` `XML` 格式
 
 ```xml
 <RequestId>D8749D65-E80A-433C-AF1B-CE9C180FF3B4</RequestId> <Success>true</Success> <Result>true</Result>
@@ -4177,11 +4111,9 @@ http(s)://[Endpoint]/?Action=DeleteWorkspace &WorkspaceId=391d5920-****-****-a6a
 | 400 | AE0150100005 | Not.Organization.Admin | No permission,you are not organization admin. |
 | 400 | AE0150010020 | Workspace.Num.Exceed | The number of create workspace exceeds the maximum number limit %s. |
 | 400 | AE0510000018 | Name.Repetition | The workspace name already exists. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 
-Quick BI
-
-## 删除组织成员标签元信息
+## 51 删除组织成员标签元信息
 
 删除组织成员的标签元信息。
 
@@ -4211,24 +4143,20 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteUserTagMeta &TagId=pop_001
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":true
-}
 ```
 
-**错误码**
-
-Quick BI
+`}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100023 | UserTag.NotIn.CurrentOrganiz ation | The user tag is not in the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -4237,9 +4165,9 @@ Quick BI
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 
-Quick BI
+## 52 用户批量退出用户组
 
-## 用户批量退出用户组
+指定用户批量退出用户组。
 
 **请求头**
 
@@ -4268,22 +4196,21 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteUserGroupMembers &UserId=204627493484**** &UserGroupIds=34fd141d-4598-4093-8c33-8e066dcb****,3d2c23d4-2b41-4af8-a1f5-f6390f32****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例
 
 ```json
-{
  "RequestId":"ABBAD906-3925-5D18-B23D-714053AB0AA2",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150020307 | Usergroup.NotBelongTo.Curren tOrganization | The usergroup %s does not belong to the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -4292,9 +4219,7 @@ http(s)://[Endpoint]/?Action=DeleteUserGroupMembers &UserId=204627493484**** &Us
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 删除用户组成员
+## 53 删除用户组成员
 
 删除指定用户组下的指定成员。
 
@@ -4325,33 +4250,25 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteUserGroupMember &UserGroupId=46e537**** &UserId=2fe4fbd8****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
  "Success":true,
  "Result":true
-}
 ```
-
-Quick BI
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 删除用户组
+## 54 删除用户组
 
 删除组织内的用户组。
 
@@ -4381,35 +4298,29 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteUserGroup &UserGroupId=f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F2775AB6-DE99-5FA6-86A4-72EA0A8AFEE3",
  "Success":true,
  "Result":true
-}
 ```
 
-**错误码**
-
-Quick BI
+`}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
 | 400 | AE0150020301 | UserGroup.Remove.RootNode | The root user group cannot be deleted. |
 | 400 | AE0150020302 | UserGroup.Remove.WithChildr en | This user group contains a child user group and cannot be deleted. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 删除工作空间成员
+## 55 删除工作空间成员
 
 删除指定工作空间的成员。
 
@@ -4440,15 +4351,14 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteUserFromWorkspace &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0**** &UserId=de4bc5f9429141cc8091cdd1c15b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4464,13 +4374,13 @@ http(s)://[Endpoint]/?Action=DeleteUserFromWorkspace &WorkspaceId=95296e95-ca89-
 | 400 | AE0510200010 | Works.Transfer.Error | You are not authorized to transfer this item. |
 | 400 | AE0510280001 | Transfer.TargetUser.NotExist | The new owner does not exist. Please ensure that the target user has logged on to the system. |
 | 400 | AE0510280003 | PersonalWorkspace.NotSuppor t.AllTransfer | Personal workspaces cannot be transferred. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 
-|  | 开发指南·删除工 | 作空间成员 |  | Quick B | I |
+|   | 开发指南·删除工 | 作空间成员 |   | Quick B | I |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -4478,9 +4388,7 @@ http(s)://[Endpoint]/?Action=DeleteUserFromWorkspace &WorkspaceId=95296e95-ca89-
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 删除组织用户
+## 56 删除组织用户
 
 删除指定组织用户。
 
@@ -4503,23 +4411,19 @@ Quick BI
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 | Result | Boolean | true | 返回接口执行结果。取值范围： true：执行成功 false：执行失败 |
 
-**示例**
-
-请求示例 Quick BI
-
 ```
 http(s)://[Endpoint]/?Action=DeleteUser &UserId=fe67f61a35a94b7da1a34ba174a7****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4535,9 +4439,9 @@ http(s)://[Endpoint]/?Action=DeleteUser &UserId=fe67f61a35a94b7da1a34ba174a7****
 | 400 | AE0150010004 | User.NotIn.Workspace | The user is not a member of the group workspace. |
 | 400 | AE0510280001 | Transfer.TargetUser.NotExist | The new owner does not exist. Please ensure that the target user has logged on to the system. |
 | 400 | AE0150010002 | User.RoleType.Valid | The role ID is invalid. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 
-| Quick BI |  |  | 开发指南·删除组织用户 |
+| Quick BI |   |   | 开发指南·删除组织用户 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -4552,9 +4456,7 @@ http(s)://[Endpoint]/?Action=DeleteUser &UserId=fe67f61a35a94b7da1a34ba174a7****
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 
-Quick BI
-
-## 删除嵌入ticket
+## 57 删除嵌入ticket
 
 删除免登嵌入报表的指定ticket。
 
@@ -4584,19 +4486,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteTicket &Ticket=040e6f79d****7d283c7206c070
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":true
-}
 ```
 
-**错误码**
-
-Quick BI
+`}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -4610,9 +4508,7 @@ Quick BI
 | 400 | AE0510200000 | NoPermissionTo.Operate.Objec t | You are not authorized to operate the objects. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 
-Quick BI
-
-## 删除行列权限规则
+## 58 删除行列权限规则
 
 删除单条行列权限规则。
 
@@ -4643,19 +4539,13 @@ Quick BI
 http(s)://[Endpoint]/?Action=DeleteDataLevelRuleConfig &CubeId=7c7223ae-****-3c744528014b &RuleId=a5bb24da-****-a891683e14da
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
-
-Quick BI
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -4672,9 +4562,7 @@ Quick BI
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 删除行列规则的人群
+## 59 删除行列规则的人群
 
 针对单条行列权限规则删除选定的人群。
 
@@ -4698,21 +4586,19 @@ Quick BI
 
 **示例**
 
-请求示例 Quick BI
-
 ```
 http(s)://[Endpoint]/?Action=DeleteDataLevelPermissionRuleUsers &DeleteUserModel= {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528 014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4731,9 +4617,7 @@ http(s)://[Endpoint]/?Action=DeleteDataLevelPermissionRuleUsers &DeleteUserModel
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 更新嵌入ticket的失效时间
+## 60 更新嵌入ticket的失效时间
 
 更新嵌入报表的ticket的失效时间。
 
@@ -4764,15 +4648,14 @@ Quick BI
 http(s)://[Endpoint]/?Action=DelayTicketExpireTime &Ticket=040e6f79d33444838e*****c7206c070 &ExpireTime=200
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -4788,9 +4671,7 @@ http(s)://[Endpoint]/?Action=DelayTicketExpireTime &Ticket=040e6f79d33444838e***
 | 400 | AE0510200000 | NoPermissionTo.Operate.Objec t | You are not authorized to operate the objects. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 
-Quick BI
-
-## 增量修改行列权限白名单
+## 61 增量修改行列权限白名单
 
 修改指定数据集行列权限的白名单。
 
@@ -4802,39 +4683,33 @@ Quick BI
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| CubeId | Strin g | Query | 是 |  | 数据集ID。 |
-| RuleType | Strin g | Query | 否 |  | 行级权限类型： ROW LEVEL：行级权 _ 限， COLUMN LEVEL：列级 _ 权限 |
-| OperateTy pe | Strin g | Query | 否 |  | 操作类型： 1. ADD：增加白名单 2. DELETE：删除白名单 |
-| TargetTyp e | Strin g | Query | 否 |  | 修改白名单对应的类型： 1：用户 2：用户组 |
-| TargetIds | Strin g | Query | 否 |  | 授权对象，同时支持多个授权对象，多个对象以英文逗号分隔。取值范围： TargetType=1（用户） 时，为用户ID。 TargetType=2（用户组）时，为用户组ID。 |
+| CubeId | Strin g | Query | 是 |   | 数据集ID。 |
+| RuleType | Strin g | Query | 否 |   | 行级权限类型： ROW LEVEL：行级权 _ 限， COLUMN LEVEL：列级 _ 权限 |
+| OperateTy pe | Strin g | Query | 否 |   | 操作类型： 1. ADD：增加白名单 2. DELETE：删除白名单 |
+| TargetTyp e | Strin g | Query | 否 |   | 修改白名单对应的类型： 1：用户 2：用户组 |
+| TargetIds | Strin g | Query | 否 |   | 授权对象，同时支持多个授权对象，多个对象以英文逗号分隔。取值范围： TargetType=1（用户） 时，为用户ID。 TargetType=2（用户组）时，为用户组ID。 |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 |  |
-| Result | Boolean | true |  |
-| Success | Boolean | true |  |
-
-**示例**
-
-Quick BI 请求示例
+| RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 |   |
+| Result | Boolean | true |   |
+| Success | Boolean | true |   |
 
 ```
 http(s)://Endpoint/?Action=AddDataLevelPermissionWhiteList &CubeId=7c7223ae-***-3c74452
 ```
 
-`8014b &`公共请求参数正常返回示例 `JSON` 格式
+`8014b &`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>D8749D65-E80A-433C-AF1B-CE9C180FF3B4</RequestId> <Success>true</Success> <Result>true</Result>
@@ -4855,16 +4730,12 @@ http(s)://Endpoint/?Action=AddDataLevelPermissionWhiteList &CubeId=7c7223ae-***-
 | 400 | AE0510030033 | RowLevelPermission.SwitchClo se.Error | The row level permission switch must be on. |
 | 400 | AE0510030034 | RowLevelPermission.Rule.NotE xsist | The row level permission rule does not exist: %s. |
 
-Quick BI
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0510030035 | RowLevelPermission.Rule.NotB elongToCube | The row level permission rule does not belong to the current cube. |
 | 400 | AE0510100043 | Cube.NotBelongTo.CurrentOrg anization | The cube does not belong to the current organization %s. |
 
-Quick BI
-
-## 添加行列权限规则人群
+## 62 添加行列权限规则人群
 
 针对单条行列权限规则增量添加选定的人群。
 
@@ -4876,7 +4747,7 @@ Quick BI
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| AddUserM odel | Strin g | Query | 是 |  |  |
+| AddUserM odel | Strin g | Query | 是 |   |   |
 
 **返回数据**
 
@@ -4894,17 +4765,15 @@ Quick BI
 http(s)://Endpoint/?Action=AddDataLevelPermissionRuleUsers &AddUserModel= {"ruleId":"a5bb24da--a891683e14da","cubeId":"7c7223ae--3c744528014b","addModel":{"userG roups":"0d5fb19b--1248fc27ca51","3d2c23d4-f6390f325c2d","users":"4334358","Huang3fa822"}} &公共请求参数
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
 
-`XML` 格式 Quick BI
+`}` `XML` 格式
 
 ```xml
 <RequestId>D8749D65-E80A-433C-AF1B-CE9C180FF3B4</RequestId> <Success>true</Success> <Result>true</Result>
@@ -4927,9 +4796,7 @@ http(s)://Endpoint/?Action=AddDataLevelPermissionRuleUsers &AddUserModel= {"rule
 | 400 | AE0510030035 | RowLevelPermission.Rule.NotB elongToCube | The row level permission rule does not belong to the current cube. |
 | 400 | AE0510100043 | Cube.NotBelongTo.CurrentOrg anization | The cube does not belong to the current organization %s. |
 
-Quick BI
-
-## 批量添加成员到用户组
+## 63 批量添加成员到用户组
 
 将用户批量添加到指定的用户组中。
 
@@ -4948,9 +4815,9 @@ Quick BI
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 |  |
-| Result | Boolean | true |  |
-| Success | Boolean | true |  |
+| RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 |   |
+| Result | Boolean | true |   |
+| Success | Boolean | true |   |
 
 **示例**
 
@@ -4960,17 +4827,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=AddUserGroupMembers &UserId=46e5****37a5 &UserGroupIds=0d5fb19b-****-****-99da-1248fc27ca51
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
 
-`XML` 格式 Quick BI
+`}` `XML` 格式
 
 ```xml
 <RequestId>D8749D65-E80A-433C-AF1B-CE9C180FF3B4</RequestId> <Success>true</Success> <Result>true</Result>
@@ -4990,11 +4855,9 @@ http(s)://[Endpoint]/?Action=AddUserGroupMembers &UserId=46e5****37a5 &UserGroup
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000035 | Invalid.Parameter | The length of the parameter must not exceed 1000. |
 | 400 | AE0110000001 | Internal.System.Error | An internal system error occurred. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 
-Quick BI
-
-## 新建工作空间
+## 64 新建工作空间
 
 在当前组织下新建一个工作空间。
 
@@ -5018,9 +4881,9 @@ Quick BI
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 |  |
-| Result | String | true |  |
-| Success | Boolean | true |  |
+| RequestId | String | D8749D65-E80A- 433C-AF1B- CE9C180FF3B4 |   |
+| Result | String | true |   |
+| Success | Boolean | true |   |
 
 **示例**
 
@@ -5030,17 +4893,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=CreateWorkspace
 ```
 
-`&WorkspaceName=`示例工作空间 &公共请求参数 Quick BI 正常返回示例 `JSON` 格式
+`&WorkspaceName=`示例工作空间 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":"true"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>D8749D65-E80A-433C-AF1B-CE9C180FF3B4</RequestId> <Success>true</Success> <Result>true</Result>
@@ -5063,16 +4924,16 @@ http(s)://[Endpoint]/?Action=CreateWorkspace
 | 400 | AE0150010020 | Workspace.Num.Exceed | The number of create workspace exceeds the maximum number limit %s. |
 | 400 | AE0510000018 | Name.Repetition | The workspace name already exists. |
 
-| Quick BI |  |  | 开发指南·新建工作空间 |
+| Quick BI |   |   | 开发指南·新建工作空间 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 
-Quick BI
+## 65 新建用户组
 
-## 新建用户组
+新建用户组，可以指定父用户组。
 
 **请求头**
 
@@ -5094,7 +4955,7 @@ Quick BI
 | RequestId | String | 36829379-0C38- 5BC0-830A- 92665BF77D4F | 请求 ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 
-| Quick BI |  |  | 开发指南·新建用户组 |
+| Quick BI |   |   | 开发指南·新建用户组 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -5115,15 +4976,15 @@ http(s)://[Endpoint]/?Action=CreateUserGroup
 &ParentUserGroupId=3d2c23d4-2b41-4af8-a1f5-f6390f32****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"36829379-0C38-5BC0-830A-92665BF77D4F",
  "Success":true,
  "Result":"f5eeb52e-d9c2-4a8b-80e3-47ab55c2****"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5133,12 +4994,12 @@ http(s)://[Endpoint]/?Action=CreateUserGroup
 | 400 | AE0510000018 | Duplicate.Name.Error | The name already exists. |
 | 400 | AE0150020001 | UserGroup.Parent.NotFound | The parent user group does not exist. |
 | 400 | AE0150020306 | Duplicate.UserGroup.Id | Duplicated usergroupId %s. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 
-| 开发指南·新建用 | 户组 |  | Quick B |
+| 开发指南·新建用 | 户组 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -5148,9 +5009,7 @@ http(s)://[Endpoint]/?Action=CreateUserGroup
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 生成报表嵌入ticket
+## 66 生成报表嵌入ticket
 
 生成报表嵌入需要使用的ticket。
 
@@ -5167,8 +5026,6 @@ Quick BI
 | TicketNu m | Integ er | Query | 否 | 1 | Ticket的票据数量，每次使用票据访问后，Ticket的票据数量减1。 默认值为1。 建议值为1。 最大值为99999。 |
 | UserId | Strin g | Query | 否 | 46e537466****92704c8 | Quick BI的UserId，非您的阿里云账号ID。 您可以调用QueryUserInfoByAcco unt接口，获取UserId。 UserId样例为 fe67f61a35a94b7da1a3 4ba174a7****。 UserId和 AccountName只填一个即可，不填时默认绑定报表的Owner，访问报表时将以该用户身份访问。若您需要配置数据行级权限，请参见行级权限。 |
 
-Quick BI
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | AccountN ame | Strin g | Query | 否 | 测试用户 | 用户的账号名称。 如果用户是阿里云主账号wangwu ，格式为 **[主账号]，例如 wangwu**。 如果用户是RAM账号zhangsan @aliyu n.cn**，格式为**[主账号：子账号]，例如 wangwu:zhangsa n****。 UserId和 AccountName只填一个即可，不填时默认绑定报表的Owner，访问报表时将以该用户身份访问。若您需要配置数据行级权限，请参见行级权限。 |
@@ -5176,10 +5033,6 @@ Quick BI
 | ExpireTim e | Integ er | Query | 否 | 200 | 过期时间单位：分钟默认：240 |
 | Watermar kParam | Strin g | Query | 否 | 三方嵌入 | 报表的水印参数。 不得超过50个字符。 |
 | GlobalPar am | Strin g | Query | 否 | [{"paramKey":"price","jo inType":"and","condition List": [{"operate":">","value": "0"}]}] | 报表过滤条件的全局参数。 JsonArray格式的字符串。 若您需要使用全局参数能力，请联系Quick BI运营负责人。 |
-
-Quick BI
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5195,15 +5048,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=CreateTicket &WorksId=a206f5f3-****-e9b17c835b03
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":"ccd3428c-****-****-a608-26bae29dffee"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5216,7 +5069,7 @@ http(s)://[Endpoint]/?Action=CreateTicket &WorksId=a206f5f3-****-e9b17c835b03
 | 400 | AE0130010023 | Authorize3rdTicket.NotExist | Ticket %s does not exist. |
 | 400 | AE0130010025 | Authorize3rdTicket.Num.Excee d | The number of tickets %s is invalid. |
 
-| 开发指南·生成报 | 表嵌入ticket |  | Quick B |
+| 开发指南·生成报 | 表嵌入ticket |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -5242,9 +5095,9 @@ http(s)://[Endpoint]/?Action=CreateTicket &WorksId=a206f5f3-****-e9b17c835b03
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100013 | UserInfo.Error | The personal information is invalid. |
 
-Quick BI 权限
+权限
 
-## 查询用户对数据作品的查看权限
+## 67 查询用户对数据作品的查看权限
 
 查询用户对数据作品（仪表板、电子表格等）是否有权限查看。
 
@@ -5275,22 +5128,21 @@ Quick BI 权限
 http(s)://[Endpoint]/?Action=CheckReadable &WorksId=95296e95-ca89-4c7d-8af9-dedf0ad0**** &UserId=de4bc5f9429141cc8091cdd1c15b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI 权限
+`&`公共请求参数正常返回示例 `JSON` 格式权限
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0510130012 | Report.NotExist.Error | This work does not exist. It may have been deleted. Work ID is %s. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5299,9 +5151,11 @@ http(s)://[Endpoint]/?Action=CheckReadable &WorksId=95296e95-ca89-4c7d-8af9-dedf
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI 式
+式
 
-## 修改数据门户菜单的可见方式
+## 68 修改数据门户菜单的可见方式
+
+修改数据门户菜单的可见方式，是否仅授权可见。
 
 **请求头**
 
@@ -5331,15 +5185,15 @@ Quick BI 式
 http(s)://[Endpoint]/?Action=ChangeVisibilityModel &DataPortalId=0d173abb53e84c8ca7495429163b**** &MenuIds=54kqgoa****,pg1n135**** &ShowOnlyWithAccess=true
 ```
 
-&公共请求参数 Quick BI 式正常返回示例 `JSON` 格式
+式 `{`
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":2
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5349,7 +5203,7 @@ http(s)://[Endpoint]/?Action=ChangeVisibilityModel &DataPortalId=0d173abb53e84c8
 | 400 | AE0580800008 | AccessMenu.NotMatch.Portal | The menu does not match the BI portal. |
 | 400 | AE0580800016 | FolderMenu.CanNot.Authorize | The folder type menu cannot be authorized. Menu ID: %s. |
 | 400 | AE0580800015 | Menu.NotBelongTo.CurrentDat aportal | Menu %s does not belong to the current data portal %s. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5357,9 +5211,7 @@ http(s)://[Endpoint]/?Action=ChangeVisibilityModel &DataPortalId=0d173abb53e84c8
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 删除数据作品的分享授权
+## 69 删除数据作品的分享授权
 
 删除数据作品的一个分享授权。
 
@@ -5383,25 +5235,19 @@ Quick BI
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 | Result | Boolean | true | 返回接口执行结果。取值范围： true：执行成功 false：执行失败 |
 
-Quick BI
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=CancelReportShare &ReportId=6b407e50-e774-406b-9956-da2425c2**** &ShareToIds=de4bc5f9429141cc8091cdd1c15b**** &ShareToType=0
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"DC4E1E63-B337-44F8-8C22-6F00DF67E2C3",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5411,7 +5257,7 @@ http(s)://[Endpoint]/?Action=CancelReportShare &ReportId=6b407e50-e774-406b-9956
 | 400 | AE0510130015 | Resource.NotBelongTo.Current Organization | The resource does not belong to the current organization. |
 | 400 | AE0150100033 | User.NotBelongTo.CurrentOrga nization | The user %s does not belong to the current organization. |
 | 400 | AE0150020307 | Usergroup.NotBelongTo.Curren tOrganization | The usergroup %s does not belong to the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5419,16 +5265,14 @@ http(s)://[Endpoint]/?Action=CancelReportShare &ReportId=6b407e50-e774-406b-9956
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 
-|  | Quick BI |  |  | 开发指南·删除数据作品的分享授权 |  |
+|   | Quick BI |   |   | 开发指南·删除数据作品的分享授权 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 取消作品收藏
+## 70 取消作品收藏
 
 取消用户收藏的数据作品。
 
@@ -5459,25 +5303,18 @@ Quick BI
 http(s)://[Endpoint]/?Action=CancelCollection &WorksId=5d6ae4e7-cede-43cd-b4d3-d2fd442a9202 &UserId=121344444790****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7c7223ae-****-3c744528014b",
- "Success":true,
  "Result":true
-}
 ```
-
-Quick BI
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
 | 400 | AE0510200017 | Favorite.NotCancel.Permission | You have not added this work to favorites. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5486,9 +5323,7 @@ Quick BI
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 批量取消数据门户菜单授权
+## 71 批量取消数据门户菜单授权
 
 根据门户菜单ID，取消指定用户、用户组的授权记录。
 
@@ -5513,25 +5348,19 @@ Quick BI
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
 | Result | Integer | 2 | 取消授权成功的菜单数。 |
 
-Quick BI
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=CancelAuthorizationMenu &DataPortalId=0d173abb53e84c8ca7495429163b**** &MenuIds=54kqgoa****,pg1n135****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":2
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5544,12 +5373,12 @@ http(s)://[Endpoint]/?Action=CancelAuthorizationMenu &DataPortalId=0d173abb53e84
 | 400 | AE0580800015 | Menu.NotBelongTo.CurrentDat aportal | Menu %s does not belong to the current data portal %s. |
 | 400 | AE0150100033 | User.NotBelongTo.CurrentOrga nization | The user %s does not belong to the current organization. |
 | 400 | AE0150020307 | Usergroup.NotBelongTo.Curren tOrganization | The usergroup %s does not belong to the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 
-| 开发指南·批量取 | 消数据门户菜单授权 |  | Quick B |
+| 开发指南·批量取 | 消数据门户菜单授权 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -5560,9 +5389,7 @@ http(s)://[Endpoint]/?Action=CancelAuthorizationMenu &DataPortalId=0d173abb53e84
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 数据门户菜单批量授权
+## 72 数据门户菜单批量授权
 
 数据门户菜单的批量授权，已经授权的会自动略过。
 
@@ -5586,8 +5413,6 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | 188F0B12-00EF- 41B3-944A- FB7EF06C9F43 | 请求ID。 |
 
-Quick BI
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
@@ -5601,15 +5426,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=AuthorizeMenu &DataPortalId=0d173abb53e84c8ca7495429163b**** &MenuIds=54kqgoa****,pg1n135****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"188F0B12-00EF-41B3-944A-FB7EF06C9F43",
  "Success":true,
  "Result":2
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5623,12 +5448,12 @@ http(s)://[Endpoint]/?Action=AuthorizeMenu &DataPortalId=0d173abb53e84c8ca749542
 | 400 | AE0150100033 | User.NotBelongTo.CurrentOrga nization | The user %s does not belong to the current organization. |
 | 400 | AE0150020307 | Usergroup.NotBelongTo.Curren tOrganization | The usergroup %s does not belong to the current organization. |
 
-| Quick BI |  |  | 开发指南·数据门户菜单批量授权 |
+| Quick BI |   |   | 开发指南·数据门户菜单批量授权 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5638,9 +5463,7 @@ http(s)://[Endpoint]/?Action=AuthorizeMenu &DataPortalId=0d173abb53e84c8ca749542
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 批量添加成员到工作空间
+## 73 批量添加成员到工作空间
 
 批量添加工作空间成员。
 
@@ -5662,26 +5485,19 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | 7AAB95D7-2E11- 4FE2-94BC- 858E4FC0C976 | 请求ID。 |
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功，存在添加部分成员成功，部分失败的情况，添加失败的原因参考返回结果中的FailureDetail false：请求失败，不会持久化任何数据 |
-| Result | Struct |  | 返回接口执行结果。 |
-| -Failure | Integer |  |  |
-| -FailureDetail | Map |  |  |
-| -Total | Integer |  |  |
-| -Success | Integer |  |  |
-
-Quick BI
-
-**示例**
-
-请求示例
+| Result | Struct |   | 返回接口执行结果。 |
+| -Failure | Integer |   |   |
+| -FailureDetail | Map |   |   |
+| -Total | Integer |   |   |
+| -Success | Integer |   |   |
 
 ```
 http(s)://[Endpoint]/?Action=AddWorkspaceUsers &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0**** &UserIds=de4bc5f9429141cc8091cdd1c15b**** &RoleId=25
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"7AAB95D7-2E11-4FE2-94BC-858E4FC0C976",
  "Success":true,
  "Result":{
@@ -5689,9 +5505,9 @@ http(s)://[Endpoint]/?Action=AddWorkspaceUsers &WorkspaceId=95296e95-ca89-4c7d-8
   "Total":"",
   "Failure":"",
   "Success":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -5699,7 +5515,7 @@ http(s)://[Endpoint]/?Action=AddWorkspaceUsers &WorkspaceId=95296e95-ca89-4c7d-8
 |---|---|---|---|
 | 400 | AE0150100012 | Workspace.NotIn.Organization | The workspace is not owned by the organization. |
 | 400 | AE0150010002 | User.RoleType.Valid | The role ID is invalid. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5708,16 +5524,14 @@ http(s)://[Endpoint]/?Action=AddWorkspaceUsers &WorkspaceId=95296e95-ca89-4c7d-8
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 
-|  | 开发指南·批量添 | 加成员到工作空间 |  | Quick B | I |
+|   | 开发指南·批量添 | 加成员到工作空间 |   | Quick B | I |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 添加成员到工作空间
+## 74 添加成员到工作空间
 
 在指定的工作空间添加成员。
 
@@ -5749,15 +5563,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=AddUserToWorkspace &WorkspaceId=95296e95-ca89-4c7d-8af9-dedf0ad0**** &UserId=de4bc5f9429141cc8091cdd1c15b**** &RoleId=25
 ```
 
-&公共请求参数正常返回示例 Quick BI `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5773,14 +5587,14 @@ http(s)://[Endpoint]/?Action=AddUserToWorkspace &WorkspaceId=95296e95-ca89-4c7d-
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 | 400 | AE0150010001 | User.AlreadyIn.Workspace | This user already exists. |
 | 400 | AE0150010003 | User.AlreadyIn.Role | The user is already assigned this role. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
 | 400 | AE0510000038 | Invalid.Parameter.Error | The parameter is invalid:%s. |
 | 400 | AE0510000015 | System.Param.Empty | You must specify the %s parameter. |
 
-|  | Quick BI |  |  | 开发指南·添加成员到工作空间 |  |
+|   | Quick BI |   |   | 开发指南·添加成员到工作空间 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -5788,9 +5602,9 @@ http(s)://[Endpoint]/?Action=AddUserToWorkspace &WorkspaceId=95296e95-ca89-4c7d-
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 
-Quick BI
+## 75 新增组织成员标签元信息
 
-## 新增组织成员标签元信息
+新增组织成员标签元信息。
 
 **请求头**
 
@@ -5819,22 +5633,21 @@ Quick BI
 http(s)://[Endpoint]/?Action=AddUserTagMeta
 ```
 
-`&TagName=`职位 &公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&TagName=`职位 `&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":"0822a7d9-****-****-****-f20163ab9b0d"
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | AE0150100025 | TagName.Repeat | The tag name is duplicated. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -5843,9 +5656,7 @@ http(s)://[Endpoint]/?Action=AddUserTagMeta
 | 400 | AE0150100005 | Invalid.User.Admin | You are not an administrator of this organization. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 添加成员到用户组
+## 76 添加成员到用户组
 
 将组织成员添加到指定的用户组。
 
@@ -5876,15 +5687,14 @@ Quick BI
 http(s)://[Endpoint]/?Action=AddUserGroupMember &UserGroupId=555c4cd**** &UserIdList=46e537a5****,3dadsu****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"B6141A5A-A9EF-5F16-BF34-EFB9C1CCE4F3",
- "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5893,16 +5703,16 @@ http(s)://[Endpoint]/?Action=AddUserGroupMember &UserGroupId=555c4cd**** &UserId
 | 400 | AE0150020003 | Invalid.User | The user does not exist and cannot be added to a user group. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0510000035 | Parameter.Length.Exceed | Parameter length exceeds maximum limit: [%s]. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0510000005 | Invalid.Parameter | An error occurred while verifying parameters. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
+## 77 添加组织成员
 
-## 添加组织成员
+添加组织成员。
 
 **请求头**
 
@@ -5924,21 +5734,21 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | D787E1A3-A93C- 424A-B626- C2B05DF8D885 | 请求ID。 |
 
-|  | Quick BI |  |  | 开发指南·添加组织成员 |  |
+|   | Quick BI |   |   | 开发指南·添加组织成员 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
-| Result | Struct |  | 返回新增阿里云用户的详细信息。 |
-| -UserType | Integer |  |  |
-| -Email | String |  |  |
-| -UserId | String |  |  |
-| - AuthAdminUse r | Boolean |  |  |
-| -NickName | String |  |  |
-| -AdminUser | Boolean |  |  |
-| -Phone | String |  |  |
-| -AccountName | String |  |  |
+| Result | Struct |   | 返回新增阿里云用户的详细信息。 |
+| -UserType | Integer |   |   |
+| -Email | String |   |   |
+| -UserId | String |   |   |
+| - AuthAdminUse r | Boolean |   |   |
+| -NickName | String |   |   |
+| -AdminUser | Boolean |   |   |
+| -Phone | String |   |   |
+| -AccountName | String |   |   |
 
 **示例**
 
@@ -5948,12 +5758,10 @@ Quick BI
 http(s)://[Endpoint]/?Action=AddUser &AdminUser=true &AuthAdminUser=true &UserType=1 &AccountName=xxxxxx@163.com
 ```
 
-`&NickName=`张三 &公共请求参数正常返回示例 `JSON` 格式 Quick BI
+`&NickName=`张三 `&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestId":"D787E1A3-A93C-424A-B626-C2B05DF8D885",
- "Success":true,
  "Result":{
   "Email":"",
   "UserId":"",
@@ -5963,9 +5771,9 @@ http(s)://[Endpoint]/?Action=AddUser &AdminUser=true &AuthAdminUser=true &UserTy
   "UserType":"",
   "AuthAdminUser":"",
   "AccountName":""
- }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -5980,10 +5788,10 @@ http(s)://[Endpoint]/?Action=AddUser &AdminUser=true &AuthAdminUser=true &UserTy
 | 400 | AE0150100004 | Invalid.User.Organization | The user is not in your organization. |
 | 400 | AE0150100013 | UserInfo.Error | The personal information is invalid. |
 | 400 | AE0520010013 | Instance.Over.MaxLicense | You have reached the maximum number of users that can be added. Please upgrade the configurations or remove some users first. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 
-| Quick BI |  |  | 开发指南·添加组织成员 |
+| Quick BI |   |   | 开发指南·添加组织成员 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -5997,9 +5805,9 @@ http(s)://[Endpoint]/?Action=AddUser &AdminUser=true &AuthAdminUser=true &UserTy
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 | 400 | AE0150100004 | User.Not.In.Organization | The specified user is not in the organizational unit. |
 
-Quick BI
+## 78 用户退出所有用户组
 
-## 用户退出所有用户组
+使用户退出所有用户组，该过程不可逆，请谨慎操作。
 
 **请求头**
 
@@ -6027,23 +5835,19 @@ Quick BI
 http(s)://[Endpoint]/?Action=WithdrawAllUserGroups &UserId=46e5374665ba4b679ee22e2a2927****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"D8749D65-E80A-433C-AF1B-CE9C180FF3B4",
  "Success":true,
  "Result":true
-}
 ```
 
-**错误码**
-
-Quick BI
+`}`
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |
 | 400 | AE0150100003 | Invalid.Organization | The specified organizational unit does not exist. |
@@ -6051,9 +5855,7 @@ Quick BI
 | 400 | AE0510000015 | System.Param.empty | This error code has been discarded. |
 | 400 | AE0580800012 | Access.Forbidden | Access forbidden. Your instance version or access key is not allowed to call the API operation. |
 
-Quick BI
-
-## 添加数据作品分享配置
+## 79 添加数据作品分享配置
 
 添加数据作品的一个分享配置。
 
@@ -6077,8 +5879,6 @@ Quick BI
 |---|---|---|---|
 | RequestId | String | 05739b8e-3de0- 4204-9669- 7f04f02522b9 | 请求ID。 |
 
-Quick BI
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 是否请求成功。取值范围： true：请求成功 false：请求失败 |
@@ -6092,15 +5892,15 @@ Quick BI
 http(s)://[Endpoint]/?Action=AddShareReport &WorksId=6b407e50-e774-406b-9956-da2425c2**** &ShareToId=de4bc5f9429141cc8091cdd1c15b**** &ShareToType=0 &ExpireDate=1608202110838 &AuthPoint=3
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"05739b8e-3de0-4204-9669-7f04f02522b9",
  "Success":true,
  "Result":true
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6112,7 +5912,7 @@ http(s)://[Endpoint]/?Action=AddShareReport &WorksId=6b407e50-e774-406b-9956-da2
 | 400 | AE0510200012 | Workspace.Share.Forbidden | Content in the current group workspace cannot be shared. |
 | 400 | AE0150100013 | UserInfo.Error | The personal information is invalid. |
 
-| 开发指南·添加数 | 据作品分享配置 |  | Quick B |
+| 开发指南·添加数 | 据作品分享配置 |   | Quick B |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -6120,7 +5920,7 @@ http(s)://[Endpoint]/?Action=AddShareReport &WorksId=6b407e50-e774-406b-9956-da2
 | 400 | AE0510200013 | Workspace.OutsideShare.Forbi dden | Content in the current group workspace cannot be shared with another organization. |
 | 400 | AE0150020002 | Usergroup.Not.Exist | The user group does not exist. |
 | 400 | AE0150020305 | UserGroup.NotIn.Organization | The user group is not in the current organization. |
-| 400 |  | Internal.System.Error | An internal system error occurred. |
+| 400 |   | Internal.System.Error | An internal system error occurred. |
 | 400 | AE0510140015 | Share.ExpireDate.Error | The expire date is illegal. |
 | 400 | AE0520010008 | Instance.Expired | Your instance has expired. |
 | 400 | AE0520010001 | Instance.Not.Exist | The specified instance does not exist. |

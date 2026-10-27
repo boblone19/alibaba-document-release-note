@@ -5,7 +5,7 @@ doc_version: "20250618"
 pdf_pages: 109
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Stack Resilience ASR for Zone-disaster Recovery User Guide 20250618.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Zone-disaster%C2%A0Recovery%20User%20Guide%2020250618.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Stack Resilience ASR for Zone-disaster Recovery User Guide 20250618
@@ -175,7 +175,11 @@ ASR for Zone-disaster Recovery provides three logon methods for routine O&M, esc
 
 **Prerequisites**
 
-For routine O&M scenarios, the URL of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: <region-i d>.ops.console.<intranet-domain-id>. For escape logon scenarios, the URL of the ASR for Zone-disaster Recovery console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator. If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR for Zone-disaster Recovery console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domainid>.com/user/login. The URL of the ASR for Zone-disaster Recovery console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domainid>.com/user/login. For tenant operation scenarios, the URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers.
+For routine O&M scenarios, the URL of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: <region-i d>.ops.console.<intranet-domain-id>. For escape logon scenarios, the URL of the ASR for Zone-disaster Recovery console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator.
+
+**Note**
+
+If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR for Zone-disaster Recovery console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domainid>.com/user/login. The URL of the ASR for Zone-disaster Recovery console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domainid>.com/user/login. For tenant operation scenarios, the URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers.
 
 **Routine O&M scenarios**
 
@@ -204,7 +208,11 @@ nsole
 
 To use disaster recovery features such as fault simulation and disaster recovery, follow these steps to log on to the ASR console:
 1. In the address bar of your browser, enter the URL of the ASR for Zone-disaster Recovery
-console and then press Enter. If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR for Zone-disaster Recovery console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domainid>.com/user/login. The URL of the ASR for Zone-disaster Recovery console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domainid>.com/user/login.
+console and then press Enter.
+
+**Note**
+
+If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR for Zone-disaster Recovery console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domainid>.com/user/login. The URL of the ASR for Zone-disaster Recovery console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domainid>.com/user/login.
 
 > **Note:** You can click the language drop-down in the upper-right corner to switch between languages. Simplified Chinese, English, and Traditional Chinese are supported.
 
@@ -238,7 +246,11 @@ a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-en
 
 **You have enabled and bound MFA**
 
-Enter the 6-digit MFA code and click **Authenticate**. For more information about how to bind and enable MFA, see Manage multi-factor authentication.
+Enter the 6-digit MFA code and click **Authenticate**.
+
+**Note**
+
+For more information about how to bind and enable MFA, see Manage multi-factor authentication.
 5. In the top navigation bar, select **Products**.
 6. In the left-side navigation pane, click **Disaster Recovery and Backup**.
 7. In the **Disaster Recovery and Backup** section, choose **Disaster Recovery > ASR for**
@@ -247,6 +259,9 @@ Enter the 6-digit MFA code and click **Authenticate**. For more information abou
 ## 3 Overview
 
 The Overview page displays the overall disaster recovery capabilities. It allows you to understand the disaster recovery capabilities of your platform more intuitively and quickly. After you log on to the ASR for Zone-disaster Recovery console, you can have a general understanding of the disaster recovery capabilities of your ASR platform. You can view the status of the secondary data center and the network traffic between data centers, predict the duration and results of forced switchovers, and view the usage records of the platform.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zone-
 disaster Recovery (Secondary Zone) console. For more information, see Log on to the ASR console.
 2. On the **Overview** page, you can view information such as the status of the data centers,
@@ -281,7 +296,11 @@ Platform monitoring consists of three parts: product monitoring, synchronization
 
 **Scenarios**
 
-Routine monitoring: During the daily operations of the cloud platform, you need to regularly inspect various check items. Check before drills: Before switchover and switchback drills, you need to check platform monitoring information. Ensure that monitoring items do not have exceptions. For some products, you need to perform inspections in addition to the product monitoring check. Contact the ASR R&D team to perform inspections before a drill.
+Routine monitoring: During the daily operations of the cloud platform, you need to regularly inspect various check items. Check before drills: Before switchover and switchback drills, you need to check platform monitoring information. Ensure that monitoring items do not have exceptions.
+
+**Note**
+
+For some products, you need to perform inspections in addition to the product monitoring check. Contact the ASR R&D team to perform inspections before a drill.
 
 ### 4.2 Monitor products
 
@@ -335,6 +354,9 @@ The following table describes the features that you can use on the Synchronizati
 ### 4.4 Use the ASR dashboard
 
 You can view the metrics of overall business continuity, such as the data synchronization latency compliance rates, drill duration, product status, and recent disaster recovery drills on the Apsara Stack Resilience (ASR) dashboard.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more
 information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Monitoring > ASR Dashboard**.
@@ -401,6 +423,9 @@ Drill plans are divided into plans for custom drills and predefined drills based
 #### 6.2.1 Custom virtual drills
 
 This topic describes how to run virtual drills to switch over services from the primary data center to the secondary data center when no power or network outages occur and how to switch back services. You can select multiple services to perform a custom drill. After the drill is complete, the drill data is automatically aggregated and a drill report is generated.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Secondary Zone) console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery Drill > Drill Plan**.
@@ -460,6 +485,9 @@ ls
 #### 6.2.2 Predefined drills
 
 This topic describes how to perform predefined drills to switch over services from the primary data center to the secondary data center when no power or network outages occur and how to switch back services. If you perform a predefined drill, you can select a single service or all services.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Secondary Zone) console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery Drill > Drill Plan**.
@@ -510,6 +538,9 @@ history of the product.
 ### 6.3 View the drill history
 
 This topic describes how to view the history and results of predefined drills and custom drills.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery Drill > Drill History**.
@@ -561,6 +592,9 @@ This topic describes how to perform platform switchover and switchback in the AS
 **data center**
 
 This topic describes how to recover online business by starting cloud services in the secondary data center when the primary data center encounters power outages.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Switchover**.
@@ -578,6 +612,9 @@ This topic describes how to fail back your business to the primary data center a
 **Prerequisites**
 
 Your business is successfully failed over to the secondary data center. For more information, see Failover for power outages of the primary data center. The primary data center is recovered from power outages.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Switchback**.
@@ -597,6 +634,9 @@ This topic describes how to perform platform switchover and switchback in the AS
 **primary data center**
 
 This topic describes how to start cloud services in the secondary data center when the primary data center is disconnected from both the Internet and the secondary data center. This ensures business continuity.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Switchover**.
@@ -614,6 +654,9 @@ This topic describes how to fail back your business to the primary data center a
 **Prerequisites**
 
 Your business is successfully failed over to the secondary data center. For more information, see Failover for network outages of the primary data center. The primary data center is recovered from network outages.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Switchback**.
@@ -631,6 +674,9 @@ This topic describes how to recover online business by starting the correspondin
 **Prerequisites**
 
 A single-service outage is injected into the primary data center.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Switchover**.
@@ -651,6 +697,9 @@ This topic describes how to fail back your business to the primary data center a
 **Prerequisites**
 
 Your business is successfully failed over to the secondary data center. For more information, see Failover for single-service outages. The faulty service is recovered.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Switchback.**
@@ -666,6 +715,9 @@ click **OK**.
 **brain scenarios of the secondary data center**
 
 This topic describes how to recover online business by starting cloud services in the primary data center when the secondary data center encounters power outages or the network communication between the primary and secondary data centers fails.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Disaster Recovery**.
@@ -724,6 +776,9 @@ Security risks may arise when faults are injected into a data center. You are no
 **Prerequisites**
 
 The environment is checked and works as expected. For more information, see Check the environment.
+
+**Procedure**
+
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Primary
 Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 
@@ -741,6 +796,9 @@ To ensure the accuracy of disaster recovery drill results, you must check whethe
 **Background information**
 
 Health check items differ in fault injection scenarios. Perform health checks as prompted. To implement health checks, perform the following steps.
+
+**Procedure**
+
 1. Use an administrator account to log on to the Apsara Stack Resilience (ASR) for Zone-
 disaster Recovery (Primary Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 
@@ -766,6 +824,9 @@ This topic describes how to simulate a power outage scenario by shutting down al
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 
@@ -806,6 +867,9 @@ This topic describes how to start all servers in a data center in the Apsara Sta
 **Prerequisites**
 
 Your business is successfully failed over after a power outage, and all services are available.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 
@@ -839,6 +903,9 @@ You can simulate network outage scenarios in the Apsara Stack Resilience (ASR) c
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Inject**
@@ -869,6 +936,9 @@ This topic describes how to simulate the recovery of a data center after a failo
 **Prerequisites**
 
 Your business is successfully failed over, and all services are available.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Data**
@@ -892,6 +962,9 @@ This topic describes how to simulate a split-brain scenario by interrupting the 
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "escape logon scenarios" section in Escape logon scenarios.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Inject**
@@ -916,6 +989,9 @@ You can simulate recovery of the environment for a split-brain scenario in the A
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code. A split-brain scenario is injected. For more information, see Inject a split-brain scenario.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Data**
@@ -940,6 +1016,9 @@ This topic describes how to simulate a single-service outage by shutting down th
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Escape logon scenarios.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Inject**
@@ -970,6 +1049,9 @@ This topic describes how to simulate the recovery of a data center after the fai
 **Prerequisites**
 
 After a single-service outage occurs, your business is failed over and the services are available.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Escape logon scenarios.
 
@@ -1041,6 +1123,9 @@ To ensure the accuracy of the disaster recovery (DR) drill results, you must che
 **Background information**
 
 Environment check items differ in fault injection scenarios. Perform environment checks as prompted. This topic describes the common environment check procedure.
+
+**Procedure**
+
 1. Use an administrator account to log on to the Apsara Stack Resilience (ASR) for Zone-
 disaster Recovery (Primary Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 
@@ -1066,6 +1151,9 @@ This topic describes how to simulate a power outage scenario by shutting down al
 **Prerequisites**
 
 The environment information is obtained. For more information, see Preparations. An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 
@@ -1102,6 +1190,9 @@ After the power outage is injected, verify that your business is failed over and
 **power outages**
 
 This topic describes how to start all servers in a data center in the Apsara Stack Resilience (ASR) console to simulate scenarios of power-up.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Data**
@@ -1131,6 +1222,9 @@ This topic describes how to simulate network outage scenarios in the Apsara Stac
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Primary Zone) console. For more information, see the "Escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Inject**
@@ -1157,6 +1251,9 @@ This topic describes how to simulate the recovery of a data center after the fai
 **Prerequisites**
 
 Your business is successfully failed over, and all services are available.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Data**
@@ -1185,6 +1282,9 @@ You can simulate a single-connection failure in the Apsara Stack Resilience (ASR
 **Prerequisites**
 
 An authentication code is obtained. For more information, see Apply for an authentication code.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Inject**
@@ -1210,6 +1310,9 @@ You can simulate recovery of the environment after the switchover for a single-c
 **Prerequisites**
 
 The single-connection failure is injected.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation > Data**
@@ -1233,6 +1336,9 @@ This topic describes how to simulate a single-product failure by shutting down t
 **Prerequisites**
 
 The authentication code used to simulate the single-product failure is obtained.
+
+**Procedure**
+
 1. Use the administrator account or an account configured with the advanced O&M role to log
 on to the ASR console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Fault Simulation** > **Inject Fault**.
@@ -1263,6 +1369,9 @@ This topic describes how to simulate the recovery of a data center after the fai
 **Prerequisites**
 
 After a single-service outage occurs, your business is failed over and the services are available.
+
+**Procedure**
+
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
 on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zonedisaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 
@@ -1321,6 +1430,9 @@ recover the faulty data center. The entire arbitration process ends after the ar
 **Prerequisites**
 
 ASR for Zone-disaster Recovery services of the primary and secondary data centers run normally. The inspection results of the arbitration service are normal. The ISW connectivity check of each data center is normal.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zone-
 disaster Recovery (Secondary Zone) console. For more information, see the "escape logon scenarios" section in Log on to the ASR console.
 2. In the left-side navigation pane of the **ASR for Zone-disaster Recovery** console, choose
@@ -1355,6 +1467,9 @@ After the arbitration service is enabled, you can perform the following operatio
 #### 8.2.1 Create an alert rule
 
 This topic describes how to create an alert rule. After you create an alert rule, an alert is generated if Apsara Stack Resilience (ASR) detects exceptions and the alert rule is met.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more
 information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Settings > Alerts > Alert Rules**.
@@ -1379,6 +1494,9 @@ information, see Log on to the ASR console.
 #### 8.2.2 Modify an alert rule
 
 You can modify alert rules when your requirements change.
+
+**Procedure**
+
 1. Log on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Secondary Zone)
 console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Settings > Alerts > Alert Rules**.
@@ -1414,6 +1532,9 @@ Leased lines are created before you perform a batch import. To create a leased l
 **Product Operation > Networking > Network Operations Console** to go to the
 **Network Operations Console**. In the left-side navigation pane, choose **Basic Network >**
 **Leased Line Management > Leased Line Instances** to create a leased line.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zone-
 disaster Recovery (Secondary Zone) console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Settings > Leased Line Management**.
@@ -1447,6 +1568,9 @@ After you configure leased line information, you can perform the following opera
 ### 8.4 Password change
 
 To ensure account security, we recommend that you change your logon password on a regular basis.
+
+**Procedure**
+
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Primary
 Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the Escape logon scenarios section of the "Log on to the ASR console" topic.
 2. In the left-side navigation pane, choose **Settings > Change Password**.
@@ -1470,6 +1594,9 @@ Administrators can log on to ASR to manage users by adding users, deleting users
 #### 8.5.1 Add a user
 
 The administrator can add user accounts that can be used to log on to the Apsara Stack Resilience (ASR) console.
+
+**Procedure**
+
 1. Log on to the ASR console as the administrator.
 2. In the left-side navigation pane, choose **Settings > Users**.
 3. Click **Add**.
@@ -1494,6 +1621,9 @@ Administrators can turn on or turn off authentication for common users.
 #### 8.5.3 Delete user information
 
 To better guarantee the security of the ASR console, you must maintain ASR users on a regular basis.
+
+**Procedure**
+
 1. Log on to the ASR console as an administrator.
 2. In the left-side navigation pane, choose **Settings > Users**.
 3. Click **Delete** in the Actions column corresponding to the target user.
@@ -1501,6 +1631,9 @@ To better guarantee the security of the ASR console, you must maintain ASR users
 ### 8.6 Authentication configuration
 
 To ensure the security of logons, you can configure authentication. After authentication is enabled, users must use a Universal Serial Bus (USB) key to perform authentication when they log on to the Apsara Stack Resilience (ASR) console.
+
+**Procedure**
+
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Primary
 Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see Log on to the ASR console.
 2. In the left-side navigation pane, choose **Settings > Authentication Settings**.
@@ -1516,6 +1649,9 @@ The serial number (SN) of the USB key is bound to the current account.
 ### 8.7 Data backup
 
 You can back up data such as user accounts and alert rules that are configured in the Apsara Stack Resilience (ASR) console to an Object Storage Service (OSS) bucket. You can restore the data to the ASR console as required with a few clicks.
+
+**Procedure**
+
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Primary
 Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more information, see the DR scenarios section of the "Log on to the ASR console" topic.
 2. In the left-side navigation pane, choose **Settings > Data Backup**.
@@ -1598,6 +1734,9 @@ On the condition of without affecting your business, you can create drill plans 
 **Prerequisites**
 
 Protection groups are created. For more information, see Create a protection group.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery console in tenant mode.
 2. In the left-side navigation pane, choose **Protection Group Drills** > **Drill Plans**.
 3. On the **Drill Plans** page, click **Create Plan**.
@@ -1624,6 +1763,9 @@ secondary data center. Switchback is from the secondary data center to the prima
 **Prerequisites**
 
 A drill plan is created, and the protection group associated with the current plan is not in an emergency process.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Protection Group Drills** > **Drill Plans**.
 2. Find the drill plan and click **Details** in the Actions column. The **Drill Plan Details** page
 appears. In the upper-right corner of the page, click **Start Drill**.
@@ -1659,6 +1801,9 @@ A disaster recovery plan is used to recover business when a data center fails.
 **Prerequisites**
 
 In the ASR for Zone-disaster Recovery console, relevant instances are switched over to the secondary data center. The basic capabilities of the cloud platform are available.
+
+**Procedure**
+
 1. Log on to the ASR for Zone-disaster Recovery console in tenant mode.
 2. In the left-side navigation pane, choose **Disaster Recovery** > **Disaster Recovery Plan**.
 3. On the **Disaster Recovery Plans** page, click **Create Plan**.
@@ -1687,6 +1832,9 @@ must manually perform the switchover and switchback steps. You can click Complet
 **Prerequisites**
 
 A disaster recovery plan is created, and the protection group associated with the current plan is not in a drill process.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Disaster Recovery** > **Disaster Recovery Plan**.
 2. Find the disaster recovery plan and click **Details** in the Actions column. The **Disaster**
 **Recovery Plan Details** page appears. In the upper-right corner of the page, click **Start**
@@ -1717,7 +1865,15 @@ process ends. You can view historical disaster recovery plans on the **Disaster 
 
 ### 10.1 Encryption and backup
 
-Apsara Stack Resilience (ASR) ensures the security of user data by using key encryption and offline backup. ASR generates audit logs to record system security events and activities, prevent internal data misuse, track suspicious behaviors, and identify potential security threats and attacks. Key encryption: ASR stores logon passwords in the database by using the MD5 algorithm. Other data such as configurations and personnel information is not encrypted. Audit logs: ASR sends operation logs to Apsara Stack Security for auditing. Logs are stored in SLS-Inner. Docker logs are not backed up. Offline backup: ASR uses mysqldump to back up database data offline every 12 hours. The backup data is stored in Object Storage Service (OSS) and deleted after 5 days.
+Apsara Stack Resilience (ASR) ensures the security of user data by using key encryption and offline backup. ASR generates audit logs to record system security events and activities, prevent internal data misuse, track suspicious behaviors, and identify potential security threats and attacks. Key encryption: ASR stores logon passwords in the database by using the MD5 algorithm.
+
+**Note**
+
+Other data such as configurations and personnel information is not encrypted. Audit logs: ASR sends operation logs to Apsara Stack Security for auditing. Logs are stored in SLS-Inner.
+
+**Note**
+
+Docker logs are not backed up. Offline backup: ASR uses mysqldump to back up database data offline every 12 hours. The backup data is stored in Object Storage Service (OSS) and deleted after 5 days.
 
 ### 10.2 How to obtain the endpoint of ASR for Zone-disaster Recover
 
@@ -1728,6 +1884,9 @@ This topic describes how to obtain the endpoint when you log on to the ASR for Z
 **Prerequisites**
 
 Make sure that you have obtained the endpoint of the Apsara Uni-manager Operations Console, and the username and password used for logging on to the console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform > Apsara Infrastructure Management >**
 **Resources**.

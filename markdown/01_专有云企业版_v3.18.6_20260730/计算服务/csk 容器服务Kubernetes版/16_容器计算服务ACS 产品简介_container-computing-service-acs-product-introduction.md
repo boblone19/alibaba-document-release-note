@@ -5,14 +5,24 @@ doc_version: "20260729"
 pdf_pages: 15
 source_pdf: "16_容器计算服务ACS 产品简介_container-computing-service-acs-product-introduction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/csk/zh/container-computing-service-acs-product-introduction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 容器服务Kubernetes版 容器计算服务ACS 产品简介
 
-容器服务Kubernetes版 CS
+## 目录
 
-## 什么是容器计算服务 ACS
+- 1 什么是容器计算服务 ACS
+- 2 产品详情
+- 3 产品价值
+- 4 功能特性
+- 5 应用场景
+- 6 使用限制
+- 7 基本概念
+
+CS
+
+## 1 什么是容器计算服务 ACS
 
 容器计算服务 ACS是面向专有云环境的Serverless容器算力服务，用于以Pod为算力单元提供GPU容器计算资源，无需管理节点即可运行容器化工作负载。
 
@@ -34,9 +44,9 @@ converter: line-classifier (PyMuPDF)
 **GPU****容器算力**：支持多种GPU卡型，面向AI训练推理和异构计算场景，提供灵活的vCPU/内存/GPU配
 比。
 **Kubernetes****生态兼容**：兼容标准Kubernetes API，支持kubectl、YAML部署，集成Prometheus监
-控和SLS日志采集。 容器服务Kubernetes版
+控和SLS日志采集。
 
-## 产品详情
+## 2 产品详情
 
 容器计算服务 ACS基于Serverless架构提供容器算力服务，按照“集群创建→算力声明→调度交付→运行管理”的工作流程交付容器资源。本文主要介绍容器计算服务 ACS的工作原理、核心功能与技术特性。
 
@@ -64,13 +74,13 @@ ACS采用控制面全托管的Serverless Kubernetes架构，将传统Kubernetes�
 
 **GPU异构计算**
 
-容器服务Kubernetes版支持多种GPU卡型，覆盖大模型训练、推理和通用AI任务。通过Kubernetes标签指定GPU实例类型，使用标准YAML部署。支持多GPU卡配置和NVLink/P2P通信，提供GPU Pod容量预留功能保障工作负载容量确定性。集成Prometheus监控GPU Pod指标，支持GPU Pod调度失败等问题诊断。
+支持多种GPU卡型，覆盖大模型训练、推理和通用AI任务。通过Kubernetes标签指定GPU实例类型，使用标准YAML部署。支持多GPU卡配置和NVLink/P2P通信，提供GPU Pod容量预留功能保障工作负载容量确定性。集成Prometheus监控GPU Pod指标，支持GPU Pod调度失败等问题诊断。
 
 **管理工具**
 
-ACS提供控制台和命令行两种管理方式。 控制台支持集群创建与管理、工作负载部署与监控、弹性策略配置和资源用量查看。 命令行支持通过kubectl连接集群，使用标准Kubernetes命令管理资源。 运维侧提供ACS管控集群和super集群的管理能力，包括组件管理、版本升级、资源监控、日志管理和操作记录等功能。 容器服务Kubernetes版
+ACS提供控制台和命令行两种管理方式。 控制台支持集群创建与管理、工作负载部署与监控、弹性策略配置和资源用量查看。 命令行支持通过kubectl连接集群，使用标准Kubernetes命令管理资源。 运维侧提供ACS管控集群和super集群的管理能力，包括组件管理、版本升级、资源监控、日志管理和操作记录等功能。
 
-## 产品价值
+## 3 产品价值
 
 容器计算服务 ACS通过Serverless架构简化专有云容器算力的交付与运维，为用户提供免规划、免运维、 高弹性的容器运行环境。本文主要介绍容器计算服务 ACS的核心产品价值。
 
@@ -100,9 +110,9 @@ GPU Pod最小支持1卡。按量秒级计费，资源规格与业务负载匹配
 
 **成本优化**
 
-集群管理免费，仅对Pod资源按量计费。Pod与工作负载1:1对应，缩容时自动释放算力停止计费，避免节点闲置成本。 容器服务Kubernetes版
+集群管理免费，仅对Pod资源按量计费。Pod与工作负载1:1对应，缩容时自动释放算力停止计费，避免节点闲置成本。
 
-## 功能特性
+## 4 功能特性
 
 容器计算服务 ACS覆盖Serverless Kubernetes架构、容器算力定义、集群管理、应用管理、运维安全和 GPU调度等功能模块。具体功能及详细说明如下： 具体功能及详细说明如下：
 
@@ -133,8 +143,6 @@ GPU Pod最小支持1卡。按量秒级计费，资源规格与业务负载匹配
 | 功能点 | 详细说明 |
 |---|---|
 
-容器服务Kubernetes版
-
 | 按需弹性 | 秒级弹性伸缩，Pod维度vCPU/内存/GPU资源使用量进行计量计费。 |
 |---|---|
 
@@ -164,15 +172,13 @@ GPU Pod最小支持1卡。按量秒级计费，资源规格与业务负载匹配
 
 **GPU调度与部署**
 
-容器服务Kubernetes版
-
 | 功能点 | 详细说明 |
 |---|---|
 | Kubernetes原生兼容 | 通过 alibabacloud.com/compute-class: gpu 或 gpu-hpn 标签指定GPU实例类型，使用标准 YAML部署。 |
 
-|  |  | alibabacloud.com/compute-class: |
+|   |   | alibabacloud.com/compute-class: |
 |---|---|---|
-| 生兼容 | gpu |  |
+| 生兼容 | gpu |   |
 
 **可观测与运维**
 
@@ -181,9 +187,7 @@ GPU Pod最小支持1卡。按量秒级计费，资源规格与业务负载匹配
 | 监控与日志 | 集成Prometheus监控GPU Pod指标，通过SLS采集 GPU应用日志。 |
 | 故障诊断 | 提供Pod级一键诊断，支持GPU Pod调度失败 （Pending）等问题排查。 |
 
-容器服务Kubernetes版
-
-## 应用场景
+## 5 应用场景
 
 容器计算服务 ACS适用于专有云环境中的容器化应用部署、AI工作负载运行和弹性业务场景。本文主要介绍容器计算服务 ACS的应用场景。
 
@@ -201,9 +205,9 @@ GPU Pod最小支持1卡。按量秒级计费，资源规格与业务负载匹配
 
 **离线批处理任务**
 
-面向成本敏感、具有容错能力的离线计算任务。在资源库存不足时实例会被抢占和驱逐，驱逐前提供事件通知，适用于大数据计算、日志处理等无状态离线工作负载。 场景特点： 支持Job和CronJob工作负载类型。 缩容时自动释放资源，按实际使用时长计费。 容器服务Kubernetes版
+面向成本敏感、具有容错能力的离线计算任务。在资源库存不足时实例会被抢占和驱逐，驱逐前提供事件通知，适用于大数据计算、日志处理等无状态离线工作负载。 场景特点： 支持Job和CronJob工作负载类型。 缩容时自动释放资源，按实际使用时长计费。
 
-## 使用限制
+## 6 使用限制
 
 容器计算服务 ACS对部分功能和使用范围进行了约束，请在使用前了解以下限制项。 具体的限制项和限制值请参见下表。
 
@@ -219,11 +223,13 @@ GPU Pod最小支持1卡。按量秒级计费，资源规格与业务负载匹配
 | GPU Pod最大GPU卡数 | 8卡 | 单个GPU Pod最多支持8张GPU卡。 |
 | K8s版本策略 | 社区双数版本 | ACS仅发布Minor版本号为双数的 K8s版本，每个版本提供两年维保周期。 |
 
-容器服务Kubernetes版
+## 7 基本概念
 
-## 基本概念
+本文主要对容器计算服务 ACS涉及的专有名词及术语进行定义和解析，方便您更好地理解相关概念并使用容器计算服务 ACS。
 
-本文主要对容器计算服务 ACS涉及的专有名词及术语进行定义和解析，方便您更好地理解相关概念并使用容器计算服务 ACS。 面向专有云环境的Serverless容器计算服务，以Pod为算力交付单元，提供GPU容器算力，用户无需管理底层节点即可运行容器化工作负载。
+**容器计算服务 ACS**
+
+面向专有云环境的Serverless容器计算服务，以Pod为算力交付单元，提供GPU容器算力，用户无需管理底层节点即可运行容器化工作负载。
 
 **Serverless Kubernetes**
 
@@ -271,7 +277,7 @@ ACS默认集成的容器网络插件，为每个Pod分配独立的Pod IP地址�
 
 **CSI**
 
-容器服务Kubernetes版 Container Storage Interface的缩写，是Kubernetes标准存储接口规范。ACS基于CSI对接云盘、 OSS和NAS等持久化存储类型。
+Container Storage Interface的缩写，是Kubernetes标准存储接口规范。ACS基于CSI对接云盘、 OSS和NAS等持久化存储类型。
 
 **E2B**
 

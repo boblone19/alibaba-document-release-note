@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 19
 source_pdf: "e85b60f9fa8c5eb5_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%A7%A3%E6%9E%90DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Multicloud%20Integration%29%20User%20Guide%2020251103.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20251103
@@ -99,7 +99,11 @@ You can add and manage domain names in the Apsara Uni-manager Management Console
 **cloud Shared Domain Names**.
 3. On the **Multicloud Domain Names** page, click **Add Domain Name**.
 4. In the **Create Scheduling Domain** dialog box, enter a **Scheduling Domain Name** and
-click **OK**. i. A domain name cannot exceed 220 characters, including the trailing period (.). ii. A domain name is divided into segments by periods (.). Each segment cannot exceed 63 characters and cannot be empty. This means you cannot have consecutive periods. iii. A domain name can contain only letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). iv. Domain names are case-insensitive. v. A domain name must end with a period (.).
+click **OK**.
+
+**Note**
+
+i. A domain name cannot exceed 220 characters, including the trailing period (.). ii. A domain name is divided into segments by periods (.). Each segment cannot exceed 63 characters and cannot be empty. This means you cannot have consecutive periods. iii. A domain name can contain only letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). iv. Domain names are case-insensitive. v. A domain name must end with a period (.).
 
 **What to do next**
 
@@ -237,6 +241,8 @@ ines
 2. In the **Sort Line** dialog box, set the **Sorting Method** and click **OK**.
 
 **Delete a line**
+
+**Note**
 
 To delete a line, you must first dissociate it from all scheduling instances.
 1. (Method 1) On the **Resolution Line** page, find the target line and click **Delete** in the

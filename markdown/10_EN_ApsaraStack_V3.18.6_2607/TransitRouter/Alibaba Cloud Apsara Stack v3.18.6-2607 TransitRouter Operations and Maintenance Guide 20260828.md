@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 12
 source_pdf: "790d9e16676e45a3_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Operations and Maintenance Guide 20260828
@@ -28,6 +28,9 @@ This topic describes how users such as O&M engineers log on to the Apsara Uni-ma
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -49,6 +52,9 @@ If you enter an invalid password for three consecutive times, the system enables
 ### 2.1 Manage CEN-TR clusters
 
 Virtual machines (VMs) that run on physical machines have their own IP addresses, and can access the Internet and host applications.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.
@@ -122,6 +128,9 @@ specific period of time, including the **traffic**, **CPU utilization**, and **m
 ### 2.2 Manage CEN workflows
 
 On the CEN workflows page, you can view the workflow event details and relevant information about a Cloud Enterprise Network (CEN) instance. If a workflow is in an abnormal state, you can re-push, skip, and terminate the workflow.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 **Operations Console**.

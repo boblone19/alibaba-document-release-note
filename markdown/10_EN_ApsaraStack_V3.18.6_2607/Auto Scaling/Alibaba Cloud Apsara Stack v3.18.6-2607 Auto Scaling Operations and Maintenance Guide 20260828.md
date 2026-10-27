@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 8
 source_pdf: "6f4d7e319bfd2b88_Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Auto%20Scaling%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Operations and Maintenance Guide 20260828

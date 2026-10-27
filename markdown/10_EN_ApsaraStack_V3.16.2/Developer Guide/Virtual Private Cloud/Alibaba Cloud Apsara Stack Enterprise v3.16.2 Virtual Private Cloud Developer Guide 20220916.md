@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 498
 source_pdf: "fe7326071064b64b_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Virtual Private Cloud Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Virtual%20Private%20Cloud%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Virtual Private Cloud Developer Guide
@@ -329,7 +329,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 2. Obtain the STS AccessKey 3-tuple.
 Not e In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with your RAM role. "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
 
-```java
+```
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -348,6 +348,11 @@ AccessKeySecret>");
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpoint is sts-vpc.
@@ -371,9 +376,15 @@ ${global:region}.${global:internet-domain}.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample code provides
 an example on how to call the `DescribeVpcs` operation of Virtual Private Cloud (VPC). Not e In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourRegionID>: Replace the parameter with the organization ID.
 
@@ -419,6 +430,8 @@ rStsAccessSecret>");
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 2.5 Obtain the values of common headers
 
@@ -552,7 +565,7 @@ ult value: HTTP.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-SDK for Java
+`}` SDK for Java
 
 ### 3.2 Use SDK
 
@@ -636,7 +649,7 @@ DescribeVpcsResponse response; try {
     e.printStackTrace();
 ```
 
-In normal cases, all returned fields are deserialized into the response. You can directly use `response.getXXX()` to obtain the response fields.
+`}` In normal cases, all returned fields are deserialized into the response. You can directly use `response.getXXX()` to obtain the response fields.
 
 ```
 instanceStatus := response.getStatus()
@@ -676,6 +689,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 #### 3.2.6 Use CommonRequest to call API operations
 
@@ -747,7 +762,7 @@ field in the request parameters.
             e.printStackTrace();
 ```
 
-SDK for Python
+`}` `}` `}` SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -989,6 +1004,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create a request and set the required parameters.
     request := vpc.CreateDescribeVpcsRequest()
     // Specify the endpoint of the service.
@@ -1000,9 +1020,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -1078,7 +1104,7 @@ response,err := vpcClient.DescribeVpcs(request) if err != nil {
    err.Error()
 ```
 
-ClientError When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a
+`}` ClientError When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a
 
 ```
  ClientError .
@@ -1112,7 +1138,7 @@ response, err := vpcClient.DescribeVpcs(request) if clientError, ok := err.(*err
     clientError.OriginError()
 ```
 
-ServerError When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain the error message in a server error and response of VPC SDK for Go: SDK for Go Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-` `cloud-sdk-go/sdk/errors` by using the following code:
+`}` ServerError When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain the error message in a server error and response of VPC SDK for Go: SDK for Go Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-` `cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -1140,6 +1166,8 @@ response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*err
     response.GetOriginHttpResponse()
 ```
 
+`}`
+
 #### 5.2.5 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations. Not e In the following code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
@@ -1161,6 +1189,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace the parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<vpc.aliyuncs.com>" // Replace the parameter with the endpoint of the service.
@@ -1199,8 +1232,15 @@ is parameter is required if you want to modify, delete, or query an instance.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 6 API reference
 
@@ -1645,6 +1685,8 @@ Common request parameters Common request parameters are request parameters that 
 | SignatureVersion | String | Yes | The version of the signature algorithm. Valid value: 1.0 |
 | SignatureNonce | String | Yes | A unique random number that is used to prevent network replay attacks. You must use different random numbers for different requests. |
 
+Example
+
 ```
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
 ```
@@ -1667,6 +1709,8 @@ JSON format `{`
       "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
       /*Returned results*/
 ```
+
+`}`
 
 ### 6.5 VPC
 
@@ -1734,7 +1778,7 @@ Sample success responses `XML` format
         "VpcId": "vpc-bp1qpo0kug3a20qqe****"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1799,7 +1843,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1869,7 +1913,7 @@ Sample success responses `XML` format
         "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2006,7 +2050,7 @@ Sample success responses `XML` format
                 "CenId": "cen-7qthudw0ll6jmc****"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "VRouterId": "vrt-bp1jso6ng1at0ajs****",
@@ -2048,7 +2092,7 @@ Sample success responses `XML` format
                     "ResourceCount": 1
 ```
 
-`]` Error codes
+`}` `]` `}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2093,7 +2137,7 @@ Sample success response `XML` format
  "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2144,6 +2188,8 @@ Sample success responses `XML` format
 ```json
  "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159"
 ```
+
+`}`
 
 #### 6.5.7 MoveResourceGroup
 
@@ -2247,7 +2293,7 @@ Sample success responses `XML` format
         "VSwitchId": "vsw-25naue4cdvf****"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2314,7 +2360,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2366,7 +2412,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2489,6 +2535,8 @@ Sample success responses `XML` format
         "ResourceType": "VSwitch"
 ```
 
+`}` `}`
+
 ### 6.7 vRouter
 
 #### 6.7.1 ModifyVRouterAttribute
@@ -2533,7 +2581,7 @@ Sample success responses `XML` format
         "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2650,12 +2698,14 @@ Sample success responses `XML` format
                 "VpcId": "vpc-rj905wotv6y030t1z****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageSize": 10,
     "RequestId": "CB2793A8-845F-444C-8E93-76F1BBDF9C78"
 ```
+
+`}`
 
 ### 6.8 Route table
 
@@ -2701,7 +2751,7 @@ Sample success responses `XML` format
     "RouteTableId": "vtb-bp145q7glnuzdvzu2****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2754,7 +2804,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2858,7 +2908,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3007,7 +3057,7 @@ Sample success responses `XML` format
                 "InstanceType": "VPC"
 ```
 
-Error codes
+`}` `}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3054,7 +3104,7 @@ Sample success response `XML` format
  "RequestId": "861E6630-AEC0-4B2D-B214-6CB5E44B7F04"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3144,7 +3194,7 @@ Sample success responses `XML` format
   "RequestId": "DC668356-BCB4-42FD-9BC3-FA2B2E04B634"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3284,7 +3334,7 @@ Sample success responses `XML` format
     "Success": true
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3328,7 +3378,7 @@ Sample success responses `XML` format
   "RequestId": "62172DD5-6BAC-45DF-8D44-62172DD5"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3391,6 +3441,8 @@ Sample success responses `XML` format
         "RegionEndpoint": "vpc.aliyuncs.com",
         "LocalName": "China (Qingdao)"
 ```
+
+`}` `}`
 
 #### 6.9.2 DescribeZones
 
@@ -3558,7 +3610,7 @@ Sample success responses `XML` format
         "TagValue": "FinanceJoshua"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3609,7 +3661,7 @@ Sample success responses `XML` format
  "RequestId":"C46FF5A8-C5F0-4024-8262-B16B639225A0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3673,7 +3725,7 @@ Sample success responses `XML` format
         "PhysicalConnectionId": "pc-bp12mw******"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3793,7 +3845,7 @@ Sample success responses `XML` format
         "PageNumber": 1
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3836,7 +3888,7 @@ Sample success responses `XML` format
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3995,7 +4047,7 @@ angdong",
     "PageNumber": 10
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4147,7 +4199,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4194,7 +4246,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4252,7 +4304,7 @@ Sample success responses `XML` format
  "RequestId": "9B9300FE-11E2-4E3B-949C-BED3B44DD26D"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4369,6 +4421,8 @@ Sample success responses `XML` format
     "PhysicalConnectionId": "pc-2zegmc02v7ss4******"
 ```
 
+`}`
+
 #### 6.11.12 CompletePhysicalConnectionLOA
 
 Generates a report for an installed physical connection. Request parameters
@@ -4416,6 +4470,8 @@ Sample success responses `XML` format
     "requestId":"5FA3B04E-AEA0-4F89-BF0D-3FD71ED69BF7",
     "success":true
 ```
+
+`}`
 
 #### 6.11.13 DescribePhysicalConnectionLOA
 
@@ -4519,7 +4575,7 @@ Sample success responses `XML` format
                 "pmName": "test"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "si": "ctcu",
@@ -4533,6 +4589,8 @@ Sample success responses `XML` format
     "requestId": "318BB676-0A2B-43A0-9AD8-F1D34E93750F",
     "success": true
 ```
+
+`}`
 
 ### 6.12 VBR
 
@@ -4594,7 +4652,7 @@ Sample success responses `XML` format
     "VbrId": "vbr-bp1jcg5cmxjbl9xgc****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4669,7 +4727,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4833,14 +4891,14 @@ Sample success responses `XML` format
                 "VbrId": "vbr-2zecmmvg5gxxxxxxxx"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "TotalCount": "1",
         "PageSize": "10"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4978,7 +5036,7 @@ Sample success responses `XML` format
         "PConnVbrBussinessStatus": "Available"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5027,7 +5085,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5076,7 +5134,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5146,7 +5204,7 @@ Sample success responses `XML` format
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5221,7 +5279,7 @@ Sample success responses `XML` format
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5310,7 +5368,7 @@ Sample success responses `XML` format
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5374,7 +5432,7 @@ Sample success responses `XML` format
     "BgpGroupId": "bgpg-2zendnzngq9lkjkhv****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5508,7 +5566,7 @@ Sample success responses `XML` format
                 "RegionId": "cn-beijing"
 ```
 
-`]` Error codes
+`}` `]` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5564,7 +5622,7 @@ Sample success responses `XML` format
   "RequestId": "C1221A1F-2ACD-4592-8F27-474E02883159"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5628,7 +5686,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5703,7 +5761,7 @@ Sample success responses `XML` format
     "RequestId": "D4B7649A-61BB-4C64-A586-1DFF1EDA6A42"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5858,7 +5916,7 @@ Sample success responses `XML` format
     "PageNumber": 1
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5909,7 +5967,7 @@ Sample success responses `XML` format
     "RequestId": "D4B7649A-61BB-4C64-A586-1DFF1EDA6A42"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5952,7 +6010,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6025,7 +6083,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6095,7 +6153,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6186,7 +6244,7 @@ Sample success responses `XML` format
         "VpcId": ""
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "RequestId": "6F513A15-669F-419D-B511-08A85292059B",
@@ -6194,7 +6252,7 @@ Sample success responses `XML` format
   "TotalCount": 1
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6279,7 +6337,7 @@ Sample success responses `XML` format
     "RouterInterfaceId": "ri-2ze7fbuohm****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6305,7 +6363,7 @@ Error codes
 
 #### 6.14.2 ConnectRouterInterface
 
-Initiates a connection from the initiator router interface to the acceptor. After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments. Request parameters
+Initiates a connection from the initiator router interface to the acceptor. Description After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6339,9 +6397,11 @@ JSON format `{`
    "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
 
+`}`
+
 #### 6.14.3 DeactivateRouterInterface
 
-Deactivates a router interface. After you call this operation, the router interface enters the Deactivating state. When the router interface is deactivated, it enters the Inactive state. Not e You cannot deactivate a router interface that has overdue payments. Request parameters
+Deactivates a router interface. Description After you call this operation, the router interface enters the Deactivating state. When the router interface is deactivated, it enters the Inactive state. Not e You cannot deactivate a router interface that has overdue payments. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6375,9 +6435,11 @@ JSON format `{`
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 6.14.4 ModifyRouterInterfaceSpec
 
-Modifies the specifications of a router interface. After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot modify the specifications of a router interface that has overdue payments. Request parameters
+Modifies the specifications of a router interface. Description After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot modify the specifications of a router interface that has overdue payments. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6416,9 +6478,11 @@ JSON format `{`
      "Spec":"Middle.2"
 ```
 
+`}`
+
 #### 6.14.5 DeleteRouterInterface
 
-Deletes a router interface. When you call this operation, take note of the following: You can only delete a router interface that is in the Idle or Inactive state. Before you delete a router interface, you must delete all custom route entries destined for the router interface. Request parameters
+Deletes a router interface. Description When you call this operation, take note of the following: You can only delete a router interface that is in the Idle or Inactive state. Before you delete a router interface, you must delete all custom route entries destined for the router interface. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6456,6 +6520,8 @@ JSON format `{`
 ```json
    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 #### 6.14.6 DescribeRouterInterfaces
 
@@ -6631,7 +6697,7 @@ JSON format `{`
                 "EndTime": "2018-07-27T16:00:00Z"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 6.14.7 ActivateRouterInterface
 
@@ -6668,6 +6734,8 @@ JSON format `{`
 ```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 #### 6.14.8 ModifyRouterInterfaceAttribute
 
@@ -6720,7 +6788,7 @@ Sample success responses `XML` format
         "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6897,14 +6965,14 @@ Sample success responses `XML` format
                 "VpcId": "vpc-bp1ub1yt9cvakoelj****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageSize": 10,
     "RequestId": "B2CD1315-CA2B-47B1-9DA5-8F1D69C48E82"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -6990,7 +7058,7 @@ Sample success responses `XML` format
     "VpcId": "vpc-bp1ub1yt9cvakoelj****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7035,7 +7103,7 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7183,7 +7251,7 @@ Sample success responses `XML` format
     "IpAddress": "100.XX.XX.1"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7274,7 +7342,7 @@ Sample success responses `XML` format
                 "IpAddress": "139.XX.XX.55"
 ```
 
-`]` Error codes
+`}` `]` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7330,7 +7398,7 @@ Sample success responses `XML` format
     "IpAddress": "139.XX.XX.32"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7378,7 +7446,7 @@ Sample success responses `XML` format
   "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7447,7 +7515,7 @@ Sample success responses `XML` format
     "Description": "modify"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7507,7 +7575,7 @@ Sample success responses `XML` format
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7562,7 +7630,7 @@ Sample success responses `XML` format
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7655,14 +7723,14 @@ Sample success responses `XML` format
     "NextHop": "vco-bp1tui07ob10fmuro****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageSize": 10,
  "RequestId": "BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7714,7 +7782,7 @@ Sample success responses `XML` format
     "RequestId": "E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7799,7 +7867,7 @@ Sample success responses `XML` format
     "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7856,7 +7924,7 @@ Sample success responses `XML` format
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -7954,7 +8022,7 @@ Sample success responses `XML` format
                 "RouteSource": "11.0.0.0/32"
 ```
 
-`]` Error codes
+`}` `]` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8005,7 +8073,7 @@ Sample success responses `XML` format
     "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8089,7 +8157,7 @@ Sample success responses `XML` format
     "NextHop": "vco-bp1tui07ob10fmuro****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8253,7 +8321,7 @@ Sample success responses `XML` format
                     "LocalId": "116.XX.XX.119"
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
     "TotalCount": 1,
@@ -8261,7 +8329,7 @@ Sample success responses `XML` format
     "RequestId": "7D598A10-26EF-44F2-9F47-E417842F3CEA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8306,7 +8374,7 @@ Sample success responses `XML` format
   "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8428,7 +8496,7 @@ Sample success responses `XML` format
             "LocalId": "139.XX.XX.32"
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8499,7 +8567,7 @@ Sample success responses `XML` format
     "VpnConnectionId": "vco-bp15oes1py4i6****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8678,7 +8746,7 @@ Sample success responses `XML` format
                     "LocalId": "116.XX.XX.64"
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
     "TotalCount": 1,
@@ -8686,7 +8754,7 @@ Sample success responses `XML` format
     "RequestId": "54A4B3D0-DF4D-4C54-B8DC-5DC8DD49C939"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8836,7 +8904,7 @@ Sample success responses `XML` format
         "LocalId": "116.XX.XX.69"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8914,7 +8982,7 @@ Sample success responses `XML` format
     "Name": "test"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -8969,7 +9037,7 @@ Sample success responses `XML` format
   "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9084,13 +9152,13 @@ Sample success responses `XML` format
             "InternetIp": "47.XX.XX.98"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9192,7 +9260,7 @@ Sample success responses `XML` format
     "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9245,7 +9313,7 @@ Sample success responses `XML` format
     "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9354,13 +9422,13 @@ Sample success responses `XML` format
                 "InternetIp": "47.XX.XX.98"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9442,7 +9510,7 @@ Sample success responses `XML` format
  "SslVpnServerId": "vss-bp155e9yclsg1xgq4****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9559,13 +9627,13 @@ Sample success responses `XML` format
             "InternetIp": "47.XX.XX.167"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9641,7 +9709,7 @@ Sample success responses `XML` format
  "RequestId": "26641E42-66C7-4942-9FEC-F99213914F8F"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9748,7 +9816,7 @@ Sample success responses `XML` format
     "NatGatewayId": "ngw-wz95lh0c2wj9b6r1z****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9824,7 +9892,7 @@ Error codes
 
 #### 6.16.3 ModifyNatGatewaySpec
 
-Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
+Resizes a NAT gateway. Description NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
 | Size | Maximum connection | Number of new connections per second |
 |---|---|---|
@@ -9875,7 +9943,7 @@ Sample success responses `XML` format
     "RequestId":"DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9927,7 +9995,7 @@ Sample success responses `XML` format
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10122,7 +10190,7 @@ Sample success responses `XML` format
             "VswitchId": "vsw-bp1s2laxhdf9ayjbo****"
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10130,7 +10198,7 @@ Error codes
 
 #### 6.16.6 CreateForwardEntry
 
-Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table. Request parameters
+Adds a DNAT entry to a DNAT table. Description Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -10179,7 +10247,7 @@ Sample success responses `XML` format
         "ForwardEntryId": "fwd-119smw5tkasdf****"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10300,7 +10368,7 @@ Sample success responses `XML` format
         "ForwardTableId": "ftb-11tc6xgmv****"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10353,7 +10421,7 @@ Sample success responses `XML` format
     "RequestId": "24CC85DC-7700-4F09-9624-99E988C7DD03"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10430,7 +10498,7 @@ Error codes
 
 #### 6.16.10 CreateSnatEntry
 
-Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. Request parameters
+Adds an SNAT entry to an SNAT table. Description When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -10481,7 +10549,7 @@ Sample success responses `XML` format
     "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10588,7 +10656,7 @@ Sample success responses `XML` format
         "SnatTableId": "stb-8vbczigrhop8x5u3t****"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10635,7 +10703,7 @@ Successful response examples `XML` format
   "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10733,7 +10801,7 @@ Sample success responses `XML` format
     "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10784,7 +10852,7 @@ Sample success responses `XML` format
     "RequestId": "7D275A59-1EB0-4775-8A20-2A47055EAC5C"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10797,7 +10865,7 @@ Error codes
 
 #### 6.16.16 CreateBandwidthPackage
 
-Creates a NAT service plan. A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses Not e This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. If you have not purchased a NAT service plan before November 3, 2017, you can apply for public IP addresses by associating elastic IP addresses (EIPs). Request parameters
+Creates a NAT service plan. Description A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses Not e This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. If you have not purchased a NAT service plan before November 3, 2017, you can apply for public IP addresses by associating elastic IP addresses (EIPs). Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -10845,7 +10913,7 @@ Sample success responses `XML` format
     "BandwidthPackageId": "bwp-s6lmotmkk****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -10982,7 +11050,7 @@ Sample success responses `XML` format
             "IpAddress": "116.XX.XX.28"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11026,7 +11094,7 @@ Sample success responses `XML` format
     "RequestId": "DFDDD35D-3F29-4E15-AA28-53F5341F9599"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11076,7 +11144,7 @@ Sample success responses `XML` format
   "RequestId": "EC0B5C51-7F40-44D6-A642-1DE764B547EC"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11095,7 +11163,7 @@ Error codes
 
 #### 6.17.1 AllocateEipAddress
 
-Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the Available state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported. Request parameters
+Applies for an elastic IP address (EIP). Description After you call this operation, the system randomly allocates an EIP that is in the Available state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11161,7 +11229,7 @@ Sample success responses `XML` format
         "OrderId": 10
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11249,7 +11317,7 @@ Sample success responses `XML` format
     "OrderId": 20190000
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11271,7 +11339,7 @@ Error codes
 
 #### 6.17.3 AssociateEipAddress
 
-Associates an elastic IP address (EIP) with an instance in the same region. When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account. Request parameters
+Associates an elastic IP address (EIP) with an instance in the same region. Description When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11314,7 +11382,7 @@ Sample success responses `XML` format
   "RequestId": "C0FD0EED-F90D-4479-803D-DD62335357E5"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11382,7 +11450,7 @@ Sample success responses `XML` format
         "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11640,7 +11708,7 @@ Sample success responses `XML` format
     "PageNumber": 10
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11750,7 +11818,7 @@ Sample success responses `XML` format
   "RequestId": "748C38F6-9A3D-482E-83FB-DB6C39C68AEA"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11767,7 +11835,7 @@ Error codes
 
 #### 6.17.8 DescribeEipGatewayInfo
 
-Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode. Request parameters
+Queries information about the gateway and subnet mask of an elastic IP address (EIP). Description You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11821,7 +11889,7 @@ Sample success responses `XML` format
         "Ip": "47.XX.XX.236"
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -11883,6 +11951,8 @@ Sample success responses `XML` format
         "Success": true
 ```
 
+`}` `}`
+
 ### 6.18 HAVIPs
 
 #### 6.18.1 CreateHaVip
@@ -11931,7 +12001,7 @@ Sample success responses `XML` format
     "HaVipId": "havip-2zeo05qre24nhrqp****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -12057,7 +12127,7 @@ Sample success responses `XML` format
         "PageNumber": 1
 ```
 
-Error codes
+`}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -12102,7 +12172,7 @@ Sample success responses `XML` format
 "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -12262,7 +12332,7 @@ Sample success responses `XML` format
 "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -12437,6 +12507,8 @@ Sample success responses `XML` format
             "ResourceType": "VSwitch"
 ```
 
+`}` `}` `}`
+
 #### 6.19.2 AssociateNetworkAcl
 
 Associates a network access control list (ACL) with a vSwitch. Request parameters
@@ -12479,6 +12551,8 @@ Sample success responses `XML` format
     "RequestId":"4CF20CC7-D1FC-425B-A15B-DF7C8E2131A7"
 ```
 
+`}`
+
 #### 6.19.3 ModifyNetworkAclAttributes
 
 Modifies the attributes of a network access control list (ACL). Request parameters
@@ -12517,6 +12591,8 @@ Sample success response `XML` format
 ```json
     "RequestId": "8F76C3E4-B39F-465D-B8B3-50BAF03CA833"
 ```
+
+`}`
 
 #### 6.19.4 UpdateNetworkAclEntries
 
@@ -12578,6 +12654,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "1170A5A0-E760-4331-9133-A7D38D973215"
 ```
+
+`}`
 
 #### 6.19.5 UnassociateNetworkAcl
 
@@ -12694,6 +12772,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "34F1206D-04B0-4A05-9D8A-80521E288BD1"
 ```
+
+`}`
 
 #### 6.19.8 DescribeNetworkAcls
 
@@ -12867,13 +12947,15 @@ Sample success responses `XML` format
             "ResourceType": "VSwitch"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "PageSize": 10,
     "RequestId": "F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1",
     "PageNumber": 1
 ```
+
+`}`
 
 #### 6.19.9 DescribeNetworkAclAttributes
 
@@ -13034,7 +13116,7 @@ Sample success responses `XML` format
             "ResourceType": "VSwitch"
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13088,7 +13170,7 @@ Sample success responses `XML` format
     "Ipv6GatewayId": "ipv6gw-hp3y0l3ln89j8cdvf****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13131,7 +13213,7 @@ Sample success responses `XML` format
  "RequestId": "E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13268,13 +13350,15 @@ Sample success responses `XML` format
                 "Ipv6GatewayId": "ipv6gw-hp33p10bdbt77xxxxxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "TotalCount": 2,
     "PageSize": 10,
     "RequestId": "E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
 ```
+
+`}`
 
 #### 6.20.4 ModifyIpv6GatewaySpec
 
@@ -13320,7 +13404,7 @@ Sample success responses `XML` format
  "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13403,6 +13487,8 @@ Sample success responses `XML` format
         "Name": "rulename"
 ```
 
+`}` `}`
+
 #### 6.20.6 CreateIpv6EgressOnlyRule
 
 Creates an egress-only rule for an IPv6 address. Request parameters
@@ -13450,7 +13536,7 @@ Sample success responses `XML` format
     "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13493,6 +13579,8 @@ Sample success responses `XML` format
  "RequestId": "4E40EAF1-783D-4C05-948D-DA0426C398C1"
 ```
 
+`}`
+
 #### 6.20.8 DeleteIpv6InternetBandwidth
 
 Sets the Internet bandwidth value of an IPv6 address to zero. Request parameters
@@ -13530,7 +13618,7 @@ Sample success responses `XML` format
  "RequestId": "E07E0FE6-5C21-405F-AF82-7613AA81EF92"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13608,7 +13696,7 @@ Sample success responses `XML` format
     "Spec": "Small"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13744,7 +13832,7 @@ Sample success responses `XML` format
             "InternetChargeType": "PayByTraffic"
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13789,7 +13877,7 @@ Sample success responses `XML` format
     "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13850,7 +13938,7 @@ Sample success responses `XML` format
     "Ipv6AddressId": "ipv6-123456****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -13900,7 +13988,7 @@ Sample success responses `XML` format
  "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -14003,6 +14091,8 @@ ve.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.Pre
 ttyFormat));
 ```
+
+`}`
 
 ### 7.2 Use the ASAPI gateway to make API calls
 
@@ -14252,7 +14342,7 @@ step.
             System.out.println(e.getErrMsg());
 ```
 
-Error codes
+`}` `}` Error codes
 
 | Ht t pCode | Error code | Error message | Descript ion |
 |---|---|---|---|

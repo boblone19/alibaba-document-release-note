@@ -5,7 +5,7 @@ doc_version: "20220707"
 pdf_pages: 28
 source_pdf: "2cb57b7b264b10ae_Alibaba Cloud Apsara Stack Enterprise V3.16.2 NAT Gateway User Guide 20220707.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20NAT%20Gateway%20User%20Guide%2020220707.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 NAT Gateway User Guide
@@ -59,14 +59,14 @@ way console
 
 ## 2 Log on to the NAT Gateway console
 
-console This topic describes how to log on to the Apsara Uni-manager Management Console to manage your NAT gateways. The Google Chrome browser is used as an example. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+console This topic describes how to log on to the Apsara Uni-manager Management Console to manage your NAT gateways. The Google Chrome browser is used as an example. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click Login.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
-in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
+in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
 5. In the top navigation bar, choose Product s > Net working > Virt ual Privat e Cloud.
 6. In the left-side navigation pane, choose Int ernet Access > NAT Gat eway.
 
@@ -74,13 +74,13 @@ in the following scenarios: It is the first time that you log on to the console 
 
 ### 3.1 Overview
 
-This topic describes how to configure SNAT and DNAT. You can configure SNAT and DNAT to enable Elastic Compute Service (ECS) instances in a virtual private cloud (VPC) to communicate with the Internet through a NAT gateway. Before you start, make sure that the following conditions are met: A VPC is created. For more information, see the Creat e a VPC topic in the Quick St art chapter of VP C User Guide. An ECS instance is created in the VPC. For more information, see the Creat e an ECS inst ance topic in the Quick St art chapter of ECS User Guide. An elastic IP address (EIP) is created. For more information, see the Creat e an EIP topic in the Quick St art chapter of EIP User Guide. The ECS instance used as an example in this topic is deployed in a VPC but is not assigned a public IP address. The following flowchart shows the configuration process. NAT gateways are enterprise-class gateways that provide network address translation services for accessing the Internet and VPCs. Before you configure SNAT and DNAT rules, you must create a NAT gateway. For more information, see Create a NAT gateway.
+This topic describes how to configure SNAT and DNAT. You can configure SNAT and DNAT to enable Elastic Compute Service (ECS) instances in a virtual private cloud (VPC) to communicate with the Internet through a NAT gateway. Prerequisites Before you start, make sure that the following conditions are met: A VPC is created. For more information, see the Creat e a VPC topic in the Quick St art chapter of VP C User Guide. An ECS instance is created in the VPC. For more information, see the Creat e an ECS inst ance topic in the Quick St art chapter of ECS User Guide. An elastic IP address (EIP) is created. For more information, see the Creat e an EIP topic in the Quick St art chapter of EIP User Guide. Procedure The ECS instance used as an example in this topic is deployed in a VPC but is not assigned a public IP address. The following flowchart shows the configuration process. NAT gateways are enterprise-class gateways that provide network address translation services for accessing the Internet and VPCs. Before you configure SNAT and DNAT rules, you must create a NAT gateway. For more information, see Create a NAT gateway.
 2. Associate an EIP with the NAT gateway
 A NAT gateway works as expected only after it is associated with an EIP. After a NAT gateway is created, you must associate an EIP with the NAT gateway. For more information, see Associate an EIP with a NAT gateway. NAT gateways support the DNAT feature. This feature allows you to map the public IP addresses of NAT gateways to ECS instances. This way, the ECS instances can provide Internet-facing services. DNAT supports port mapping and IP mapping. For more information, see Create a DNAT entry. NAT gateways support the SNAT feature. This feature allows ECS instances that are not assigned public IP addresses in a VPC to access the Internet through a NAT gateway. For more information, see Create an SNAT entry.
 
 ### 3.2 Create a NAT gateway
 
-NAT gateways are enterprise-class gateways that provide network address translation services. Before you configure SNAT and DNAT rules, you must create a NAT gateway. A virtual private cloud (VPC) is created. For more information, see the Creat e a VPC topic in the Quick St art chapter of VPC User Guide.
+NAT gateways are enterprise-class gateways that provide network address translation services. Before you configure SNAT and DNAT rules, you must create a NAT gateway. Prerequisites A virtual private cloud (VPC) is created. For more information, see the Creat e a VPC topic in the Quick St art chapter of VPC User Guide. Procedure
 1. Log on to the NAT Gateway console.
 2. On the NAT Gat eways page, click Creat e NAT Gat eway.
 3. On the page that appears, set the following parameters and click Submit .
@@ -102,7 +102,7 @@ NAT gateways are enterprise-class gateways that provide network address translat
 
 ### 3.3 Associate an EIP with a NAT gateway
 
-gateway This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. A NAT gateway can work as expected only after you associate an EIP with it. After you create a NAT gateway, you can associate an EIP with the NAT gateway. Before you associate an EIP with a NAT gateway, make sure that the following requirements are met: A NAT gateway is created. For more information, see Create a NAT gateway. An EIP is created. For more information, see the Apply f or EIPs topic in the Quick St art chapter of EI P User Guide.
+gateway This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. A NAT gateway can work as expected only after you associate an EIP with it. After you create a NAT gateway, you can associate an EIP with the NAT gateway. Prerequisites Before you associate an EIP with a NAT gateway, make sure that the following requirements are met: A NAT gateway is created. For more information, see Create a NAT gateway. An EIP is created. For more information, see the Apply f or EIPs topic in the Quick St art chapter of EI P User Guide. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway with which you want to associate an EIP and
@@ -117,7 +117,7 @@ choose
 
 ### 3.4 Create a DNAT entry
 
-This topic describes how to create a DNAT entry. DNAT can map public IP addresses of NAT gateways to Elastic Compute Service (ECS) instances. This way, the ECS instances can provide Internet-facing services. DNAT supports port mapping and IP mapping.
+This topic describes how to create a DNAT entry. DNAT can map public IP addresses of NAT gateways to Elastic Compute Service (ECS) instances. This way, the ECS instances can provide Internet-facing services. DNAT supports port mapping and IP mapping. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -133,7 +133,7 @@ DNAT in the Operat ion column.
 
 ### 3.5 Create an SNAT entry
 
-This topic describes how to create an SNAT entry. SNAT can provide proxy services for Elastic Compute Service (ECS) instances. ECS instances that do not have public IP address assigned in virtual private clouds (VPCs) can access the Internet by using SNAT.
+This topic describes how to create an SNAT entry. SNAT can provide proxy services for Elastic Compute Service (ECS) instances. ECS instances that do not have public IP address assigned in virtual private clouds (VPCs) can access the Internet by using SNAT. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -164,7 +164,7 @@ When you specify the size of a NAT gateway, take note of the following limits: C
 
 ### 4.2 Create a NAT gateway
 
-NAT gateways are enterprise-class gateways that provide network address translation services. Before you configure SNAT and DNAT rules, you must create a NAT gateway. A virtual private cloud (VPC) is created. For more information, see the Creat e a VPC topic in the Quick St art chapter of VPC User Guide.
+NAT gateways are enterprise-class gateways that provide network address translation services. Before you configure SNAT and DNAT rules, you must create a NAT gateway. Prerequisites A virtual private cloud (VPC) is created. For more information, see the Creat e a VPC topic in the Quick St art chapter of VPC User Guide.
 1. Log on to the NAT Gateway console.
 2. On the NAT Gat eways page, click Creat e NAT Gat eway.
 3. On the page that appears, set the following parameters and click Submit .
@@ -186,7 +186,7 @@ NAT gateways are enterprise-class gateways that provide network address translat
 
 ### 4.3 Modify a NAT gateway
 
-You can modify the name and description of a NAT gateway.
+You can modify the name and description of a NAT gateway. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to modify and click
@@ -198,20 +198,19 @@ next to Descript ion. In the dialog box that appears, enter a description for th
 
 ### 4.4 Delete a NAT gateway
 
-You can delete a NAT gateway that you no longer need. Before you delete a NAT gateway, make sure that the following requirements are met: No elastic IP address (EIP) is associated with the NAT gateway. If an EIP is associated with the NAT gateway, disassociate the EIP from the NAT gateway. For more information, see Disassociate an EIP from a NAT gateway. The DNAT table does not contain DNAT entries. If the DNAT table contains DNAT entries, delete the DNAT entries. For more information, see Delete a DNAT entry. The SNAT table does not contain SNAT entries. If the SNAT table contains SNAT entries, delete the SNAT entries. For more information, see Delete an SNAT entry.
+You can delete a NAT gateway that you no longer need. Prerequisites Before you delete a NAT gateway, make sure that the following requirements are met: No elastic IP address (EIP) is associated with the NAT gateway. If an EIP is associated with the NAT gateway, disassociate the EIP from the NAT gateway. For more information, see Disassociate an EIP from a NAT gateway. The DNAT table does not contain DNAT entries. If the DNAT table contains DNAT entries, delete the DNAT entries. For more information, see Delete a DNAT entry. The SNAT table does not contain SNAT entries. If the SNAT table contains SNAT entries, delete the SNAT entries. For more information, see Delete an SNAT entry. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to delete and choose
 > Delet e in the Operat ion column.
-
 4. In the message that appears, click OK.
-If you select Force delet ion, the DNAT and SNAT entries of the NAT gateway are automatically deleted. The EIPs associated with the NAT gateway are also disassociated. If you select Force deletion, you do not need to delete the DNAT entries and SNAT entries, or disassociate the EIPs before you delete the NAT gateway.
+Not e If you select Force delet ion, the DNAT and SNAT entries of the NAT gateway are automatically deleted. The EIPs associated with the NAT gateway are also disassociated. If you select Force deletion, you do not need to delete the DNAT entries and SNAT entries, or disassociate the EIPs before you delete the NAT gateway.
 
 ## 5 Manage EIPs
 
 ### 5.1 Associate an EIP with a NAT gateway
 
-gateway This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. A NAT gateway can work as expected only after you associate an EIP with it. After you create a NAT gateway, you can associate an EIP with the NAT gateway. Before you associate an EIP with a NAT gateway, make sure that the following requirements are met: A NAT gateway is created. For more information, see Create a NAT gateway. An EIP is created. For more information, see the Apply f or EIPs topic in the Quick St art chapter of EI P User Guide.
+gateway This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. A NAT gateway can work as expected only after you associate an EIP with it. After you create a NAT gateway, you can associate an EIP with the NAT gateway. Prerequisites Before you associate an EIP with a NAT gateway, make sure that the following requirements are met: A NAT gateway is created. For more information, see Create a NAT gateway. An EIP is created. For more information, see the Apply f or EIPs topic in the Quick St art chapter of EI P User Guide. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway with which you want to associate an EIP and
@@ -226,12 +225,11 @@ choose
 
 ### 5.2 Disassociate an EIP from a NAT gateway
 
-gateway This topic describes how to disassociate an elastic IP address (EIP) from a NAT gateway. After an EIP is disassociated from a NAT gateway, the NAT gateway can no longer communicate with the Internet by using the EIP. Make sure that the EIP to be disassociated is not used in an SNAT entry or a DNAT entry. If the EIP is used in an SNAT or a DNAT entry, delete the SNAT or DNAT entry first. For more information, see Delete an SNAT entry and Delete a DNAT entry.
+gateway This topic describes how to disassociate an elastic IP address (EIP) from a NAT gateway. After an EIP is disassociated from a NAT gateway, the NAT gateway can no longer communicate with the Internet by using the EIP. Prerequisites Make sure that the EIP to be disassociated is not used in an SNAT entry or a DNAT entry. If the EIP is used in an SNAT or a DNAT entry, delete the SNAT or DNAT entry first. For more information, see Delete an SNAT entry and Delete a DNAT entry. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and choose
 > Unbind f lexible public net work IP in the Operat ion column.
-
 4. In the Unbind f lexible public net work IP dialog box, select the EIP that you want to
 disassociate, and click OK.
 
@@ -254,7 +252,7 @@ IP mapping After you configure IP mapping for a NAT gateway, the NAT gateway for
 
 ### 6.2 Create a DNAT entry
 
-This topic describes how to create a DNAT entry. DNAT can map public IP addresses of NAT gateways to Elastic Compute Service (ECS) instances. This way, the ECS instances can provide Internet-facing services. DNAT supports port mapping and IP mapping.
+This topic describes how to create a DNAT entry. DNAT can map public IP addresses of NAT gateways to Elastic Compute Service (ECS) instances. This way, the ECS instances can provide Internet-facing services. DNAT supports port mapping and IP mapping. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -270,7 +268,7 @@ DNAT in the Operat ion column.
 
 ### 6.3 Modify a DNAT entry
 
-This topic describes how to modify a DNAT entry. You can modify the public IP address, private IP address, and port in a DNAT entry.
+This topic describes how to modify a DNAT entry. You can modify the public IP address, private IP address, and port in a DNAT entry. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -282,7 +280,7 @@ DNAT entry, and then click OK.
 
 ### 6.4 Delete a DNAT entry
 
-If you no longer need an ECS instance to provide Internet-facing services, you can delete the DNAT entry created for the ECS instance.
+If you no longer need an ECS instance to provide Internet-facing services, you can delete the DNAT entry created for the ECS instance. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -295,11 +293,11 @@ the Operat ion column.
 
 ### 7.1 SNAT table overview
 
-This topic describes how to configure SNAT. SNAT allows Elastic Compute Service (ECS) instances that are not assigned public IP addresses in a virtual private cloud (VPC) to access the Internet through a NAT gateway. SNAT entries You can add SNAT entries to an SNAT table to allow ECS instances to access the Internet. Each SNAT entry consists of the following items: vSwit ches or ECS inst ances: the vSwitch or ECS instances that require Internet access by using SNAT. Public IP address: the public IP address used to access the Internet. vSwitch granularity and ECS granularity SNAT entries can be created based on the following granularity to enable ECS instances in a VPC to access the Internet. vSwitch granularity If you create an SNAT entry for a vSwitch, the ECS instances attached to the vSwitch access the Internet by using the public IP address specified in the SNAT entry and through the NAT gateway on which the SNAT entry is created. By default, all ECS instances attached to the vSwitch can use the specified public IP address to access the Internet. If an ECS instance has a public IP address, for example, the ECS instance is assigned a static public IP address, associated with an elastic IP address (EIP), or has DNAT IP mapping configured, the ECS instance uses the public IP address to access the Internet instead of the SNAT feature. ECS granularity If you create an SNAT entry for an ECS instance, the ECS instance can access the Internet by using the specified public IP address. The ECS instance accesses the Internet by using the public IP address specified in the SNAT entry and through the NAT gateway on which the SNAT entry is created.
+This topic describes how to configure SNAT. SNAT allows Elastic Compute Service (ECS) instances that are not assigned public IP addresses in a virtual private cloud (VPC) to access the Internet through a NAT gateway. SNAT entries You can add SNAT entries to an SNAT table to allow ECS instances to access the Internet. Each SNAT entry consists of the following items: vSwit ches or ECS inst ances: the vSwitch or ECS instances that require Internet access by using SNAT. Public IP address: the public IP address used to access the Internet. vSwitch granularity and ECS granularity SNAT entries can be created based on the following granularity to enable ECS instances in a VPC to access the Internet. vSwitch granularity If you create an SNAT entry for a vSwitch, the ECS instances attached to the vSwitch access the Internet by using the public IP address specified in the SNAT entry and through the NAT gateway on which the SNAT entry is created. By default, all ECS instances attached to the vSwitch can use the specified public IP address to access the Internet. Not e If an ECS instance has a public IP address, for example, the ECS instance is assigned a static public IP address, associated with an elastic IP address (EIP), or has DNAT IP mapping configured, the ECS instance uses the public IP address to access the Internet instead of the SNAT feature. ECS granularity If you create an SNAT entry for an ECS instance, the ECS instance can access the Internet by using the specified public IP address. The ECS instance accesses the Internet by using the public IP address specified in the SNAT entry and through the NAT gateway on which the SNAT entry is created.
 
 ### 7.2 Create an SNAT entry
 
-This topic describes how to create an SNAT entry. SNAT can provide proxy services for Elastic Compute Service (ECS) instances. ECS instances that do not have public IP address assigned in virtual private clouds (VPCs) can access the Internet by using SNAT.
+This topic describes how to create an SNAT entry. SNAT can provide proxy services for Elastic Compute Service (ECS) instances. ECS instances that do not have public IP address assigned in virtual private clouds (VPCs) can access the Internet by using SNAT. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -315,7 +313,7 @@ SNAT in the Operat ion column.
 
 ### 7.3 Modify an SNAT entry
 
-This topic describes how to modify the name of an SNAT entry and the elastic IP address (EIP) specified in the SNAT entry.
+This topic describes how to modify the name of an SNAT entry and the elastic IP address (EIP) specified in the SNAT entry. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -326,7 +324,7 @@ the Operat ion column.
 
 ### 7.4 Delete an SNAT entry
 
-You can delete an SNAT entry if the Elastic Compute Service (ECS) instances that do not have public IP addresses in a virtual private cloud (VPC) no longer need SNAT to access the Internet.
+You can delete an SNAT entry if the Elastic Compute Service (ECS) instances that do not have public IP addresses in a virtual private cloud (VPC) no longer need SNAT to access the Internet. Procedure
 1. Log on to the NAT Gateway console.
 2. In the top navigation bar, select the region where the NAT gateway is deployed.
 3. On the NAT Gat eways page, find the NAT gateway that you want to manage and click Set
@@ -339,7 +337,7 @@ the Operat ion column.
 
 ### 8.1 Create a NAT service plan
 
-You can associate an elastic IP address (EIP) or a NAT service plan to a NAT gateway. However, you can choose only one of them for the NAT gateway. If you want to associate a NAT service plan with the NAT gateway, you must create a NAT service plan first. Then, you can configure SNAT or DNAT for the NAT gateway. A NAT service plan consists of public IP addresses and Internet bandwidth.
+You can associate an elastic IP address (EIP) or a NAT service plan to a NAT gateway. However, you can choose only one of them for the NAT gateway. If you want to associate a NAT service plan with the NAT gateway, you must create a NAT service plan first. Then, you can configure SNAT or DNAT for the NAT gateway. A NAT service plan consists of public IP addresses and Internet bandwidth. Procedure
 1. Log on to the NAT Gateway console.
 2. On the NAT Gat eways page, find the target NAT gateway and choose Purchase NAT
 Bandwidt h Package in the Int ernet Shared Bandwidt h column.
@@ -372,7 +370,7 @@ Each NAT bandwidth plan supports a maximum of 5,000 Mbit/s in bandwidth.
 
 ### 8.3 Add an IP address
 
-This topic describes how to add IP addresses to a NAT service plan. The added IP addresses can be used to create Source Network Address Translation (SNAT) and Destination Network Address Translation (DNAT) rules.
+This topic describes how to add IP addresses to a NAT service plan. The added IP addresses can be used to create Source Network Address Translation (SNAT) and Destination Network Address Translation (DNAT) rules. Procedure
 1. Log on to the NAT Gateway console.
 2. On the NAT Gat eways page, find the target NAT gateway and click the ID of the NAT service plan
 in the Int ernet Shared Bandwidt h column.
@@ -383,7 +381,7 @@ Submit .
 
 ### 8.4 Release an IP address
 
-This topic describes how to release IP addresses in a NAT service plan. The NAT service plan must contain at least one IP address. Before you release an IP address in the NAT service plan, make sure that the IP address is not used in Source Network Address Translation (SNAT) and Destination Network Address Translation (DNAT) entries. If the IP address is used in an SNAT or DNAT entry, delete the SNAT or DNAT entry first. For more information, see Delete a DNAT entry and Delete an SNAT entry.
+This topic describes how to release IP addresses in a NAT service plan. The NAT service plan must contain at least one IP address. Prerequisites Before you release an IP address in the NAT service plan, make sure that the IP address is not used in Source Network Address Translation (SNAT) and Destination Network Address Translation (DNAT) entries. If the IP address is used in an SNAT or DNAT entry, delete the SNAT or DNAT entry first. For more information, see Delete a DNAT entry and Delete an SNAT entry. Procedure
 1. Log on to the NAT Gateway console.
 2. On the NAT Gat eways page, find the target NAT gateway and click the ID of the NAT service plan
 in the Int ernet Shared Bandwidt h column.
@@ -393,7 +391,7 @@ in the Int ernet Shared Bandwidt h column.
 
 ### 8.5 Delete a NAT service plan
 
-This topic describes how to delete a service plan. Before you start, make sure that the following requirements are met: Delete the IP addresses that are used in Destination Network Address Translation (DNAT) entries. For more information, see Delete a DNAT entry. Delete the IP addresses that are used for Source Network Address Translation (SNAT) entries. For more information, see Delete an SNAT entry.
+This topic describes how to delete a service plan. Before you start, make sure that the following requirements are met: Delete the IP addresses that are used in Destination Network Address Translation (DNAT) entries. For more information, see Delete a DNAT entry. Delete the IP addresses that are used for Source Network Address Translation (SNAT) entries. For more information, see Delete an SNAT entry. Procedure
 1. Log on to the NAT Gateway console.
 2. On the NAT Gat eways page, find the target NAT gateway and click the ID of the NAT service plan
 in the Int ernet Shared Bandwidt h column.

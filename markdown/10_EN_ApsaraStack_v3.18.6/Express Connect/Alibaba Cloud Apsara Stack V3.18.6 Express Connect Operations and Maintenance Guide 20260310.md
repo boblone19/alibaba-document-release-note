@@ -5,7 +5,7 @@ doc_version: "20260310"
 pdf_pages: 46
 source_pdf: "ba1f5a2b1306a751_Alibaba Cloud Apsara Stack V3.18.6 Express Connect Operations and Maintenance Guide 20260310.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Express%20Connect%20Operations%20and%20Maintenance%20Guide%2020260310.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Express Connect Operations and Maintenance Guide

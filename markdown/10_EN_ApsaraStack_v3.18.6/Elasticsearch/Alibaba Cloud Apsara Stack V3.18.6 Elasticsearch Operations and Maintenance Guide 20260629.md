@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 127
 source_pdf: "296e88bec1e1704b_Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch Operations and Maintenance Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%20Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elasticsearch%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Elasticsearch Operations and Maintenance Guide
@@ -2348,6 +2348,8 @@ When you run the command, replace the following variables:
 kubectl logs ${Pod name of the operator} -n elasticsearch
 ```
 
+**Note**
+
 |   | kubectl get pod -n elasticsearch \| grep operator |
 |---|---|
 | ${Pod name of the operator} |   |
@@ -2421,7 +2423,11 @@ PUT _cluster/settings
 
 This topic describes how to troubleshoot GUI exceptions that may occur when you use Elasticsearch. Failure to log in to the Kibana console Error message: Elasticsearch V6.X/7.X: kibana server is not ready yet Elasticsearch V5.X: Authorization Exception Cause: The whitelist of the kibanaserver account is improperly configured. Solution: Add the IP address of the Kibana service to the whitelist of the kibanaserver account. You can still log in to the Kibana console after the Kibana whitelist is disabled Exception: You can still log in to the Kibana console after the Kibana whitelist is disabled. Cause: The Kibana page is not reinitialized. Solution: Contact the on-site O&M engineer to restart the pod that runs the Kibana service. No monitoring data is displayed Exception: "no data" is displayed on the Grafana monitoring page. Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the exporter service to the whitelist of the monitoring_collector account. An error is thrown when you access the Elasticsearch plug-in page Error message: 403 Forbidden:[Ip 23.5.**.** is not allow in ip white/black list] Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the essen service to the whitelist of the monitoring_collector account. An error is thrown when you access the automatic backup page Error message: proxy request fail Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the essen service to the whitelist of the monitoring_collector account. Automatic backup does not take effect Exception: The snapshot is not taken normally after the specified time point. Cause: The whitelist of the monitoring_collector account is improperly configured. Solution: Modify the whitelist of the monitoring_collector account and add the IP address of the snapshot service to the whitelist of the monitoring_collector account. Kibana login error Exception: The account password is correct, but a login error is thrown (monitoring_collector is used as an example). Cause analysis: The whitelist of the account is not configured properly, or **Can Login to**
 **Kibana** is not selected.
-Solution: Add the IP address of the Kibana service to the whitelist of the account and select **Can Login to Kibana**. Cross-cluster access error (XDCR cluster synchronization failure) Error message: [][22.0.x.x:9300] general node connection failure Cause: The clusters that need to intercommunicate use different certificates. Solution: Contact the O&M engineer or refer to the cluster management operations in the O&M guide. For more information, see Security settings.
+Solution: Add the IP address of the Kibana service to the whitelist of the account and select **Can Login to Kibana**. Cross-cluster access error (XDCR cluster synchronization failure) Error message: [][22.0.x.x:9300] general node connection failure Cause: The clusters that need to intercommunicate use different certificates. Solution: Contact the O&M engineer or refer to the cluster management operations in the O&M guide.
+
+**Note**
+
+For more information, see Security settings.
 
 ### 5.2 Performance issues
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 517
 source_pdf: "b38077b1762886d9_Alibaba Cloud Apsara Stack V3.18.6 Virtual Private Cloud Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9CVPC/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Virtual%20Private%20Cloud%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Virtual Private Cloud Developer Guide 20260629
@@ -2538,6 +2538,8 @@ Common request parameters are request parameters that you must use when you call
 | es | DDThh:mm:ssZ |
 |---|---|
 
+**Example**
+
 ```
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
 ```
@@ -4248,7 +4250,11 @@ Sample success responses `XML` format
 
 #### 6.6.4 DeleteRouteEntry
 
-Deletes a custom route from a route table. When you call this operation, take note of the following rules: You can delete only a custom route entry that is in the **Available** state. You cannot delete a custom route entry from a virtual private cloud (VPC) where a vSwitch is being created or deleted. When you delete an IPv6 route entry, if the route entry has multiple next hops of the ECMP type, including NextHopList, you must specify **NextHopId** to delete the next hops one by one.
+Deletes a custom route from a route table.
+
+**Description**
+
+When you call this operation, take note of the following rules: You can delete only a custom route entry that is in the **Available** state. You cannot delete a custom route entry from a virtual private cloud (VPC) where a vSwitch is being created or deleted. When you delete an IPv6 route entry, if the route entry has multiple next hops of the ECMP type, including NextHopList, you must specify **NextHopId** to delete the next hops one by one.
 
 **Request header**
 
@@ -6123,7 +6129,11 @@ This operation uses only common request headers. For more information, see Commo
 
 #### 6.9.2 AllocateEipAddress
 
-Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
+Applies for an elastic IP address (EIP).
+
+**Description**
+
+After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
 
 **Request parameters**
 
@@ -6300,7 +6310,11 @@ Sample success responses `XML` format
 
 #### 6.9.4 AssociateEipAddress
 
-Associates an elastic IP address (EIP) with an instance in the same region. When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account.
+Associates an elastic IP address (EIP) with an instance in the same region.
+
+**Description**
+
+When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account.
 
 **Request parameters**
 
@@ -6754,7 +6768,11 @@ Sample success responses `XML` format
 
 #### 6.9.8 ReleaseEipAddress
 
-Releases a specified elastic IP address (EIP). Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
+Releases a specified elastic IP address (EIP).
+
+**Description**
+
+Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
 
 **Request parameters**
 
@@ -6812,7 +6830,11 @@ Sample success responses `XML` format
 
 #### 6.9.9 DescribeEipGatewayInfo
 
-Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
+Queries information about the gateway and subnet mask of an elastic IP address (EIP).
+
+**Description**
+
+You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
 
 **Request parameters**
 
@@ -7429,7 +7451,11 @@ Sample success responses `XML` format
 
 #### 6.10.6 CreateForwardEntry
 
-Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
+Adds a DNAT entry to a DNAT table.
+
+**Description**
+
+Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
 
 **Request parameters**
 
@@ -7751,7 +7777,11 @@ Sample success responses `XML` format
 
 #### 6.10.10 CreateSnatEntry
 
-Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
+Adds an SNAT entry to an SNAT table.
+
+**Description**
+
+When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
 
 **Request parameters**
 
@@ -8156,7 +8186,11 @@ Sample success responses `XML` format
 
 #### 6.10.16 CreateBandwidthPackage
 
-Creates a NAT service plan. A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses
+Creates a NAT service plan.
+
+**Description**
+
+A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses
 
 > **Note:** This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. If you have not purchased a NAT service plan before November 3, 2017, you can apply for public IP addresses by associating elastic IP addresses (EIPs).
 

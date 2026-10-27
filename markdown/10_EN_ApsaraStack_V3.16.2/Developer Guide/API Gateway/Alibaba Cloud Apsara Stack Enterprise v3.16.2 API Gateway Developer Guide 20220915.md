@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 196
 source_pdf: "fbce78ffdd52518a_Alibaba Cloud Apsara Stack Enterprise v3.16.2 API Gateway Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20API%20Gateway%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 API Gateway Developer Guide
@@ -343,6 +343,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -359,6 +364,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. You can use STS to make API calls. The following sample code demonstrates how to call ECS API
 operations. uide
 
@@ -368,6 +374,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("asapi_test");
   // Call ECS API operations.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Strin g stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -381,6 +392,8 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
+
+`}`
 
 ### 3.2 Use POP to make API calls
 
@@ -462,7 +475,7 @@ equ ed. eca souce.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -526,7 +539,7 @@ service resides.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-uide Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
+`}` `}` uide Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
 #### 3.2.3 SDK for Go
 
@@ -567,10 +580,15 @@ ityToken parameter to the header.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. The following sample code shows how to call API operations: uide
+`}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. The following sample code shows how to call API operations: uide
 
 ```java
 package main import (
@@ -609,10 +627,15 @@ curity-token parameter to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
 
-Configure proxies You can configure proxies in one of the following ways when you call API operations: Configure proxies as environment variables. Set the HTTP_PROXY and HTTPS_PROXY environment variables, or set the NO_PROXY environment variable. Sample code: uide
+`}` Configure proxies You can configure proxies in one of the following ways when you call API operations: Configure proxies as environment variables. Set the HTTP_PROXY and HTTPS_PROXY environment variables, or set the NO_PROXY environment variable. Sample code: uide
 
 ```java
 import (
@@ -629,7 +652,7 @@ ariable.
 t variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are conf igured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -684,6 +707,11 @@ tyToken parameter to the header.
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. For the modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2014-05-26")
     request.set_action_name("DescribeInstances")
@@ -968,7 +996,13 @@ Use Apsara Stack SDK for Node.js uide The following sample code shows how to use
 ityToken parameter to the header.
     // "SecurityToken": "<your-securitytoken>",
       "<The name of the operation-specific parameter required by the API operation>": "<The
-value of the operation-specific parameter>" // 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the x-acs-sec urity-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
+value of the operation-specific parameter>"
+```
+
+`}`
+
+```
+// 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the x-acs-sec urity-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
   const res = await AsapiClient.doRequest(cnofig.API_GATEWAY, params, {
     method: 'POST', // The request method.
     formatParams: false, // Specifies whether to format parameters and capitalize the first
@@ -1041,6 +1075,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 lace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 3. Use equal signs ( `=` ) to connect the encoded request parameters and their values.
 4. Use ampersands ( `&` ) to connect the encoded request parameters. These parameters must be
 arranged in the same order as those in Step 1. Then, a canonicalized query string that follows the request structure is obtained. For more information, see Request structure. Step 2: Create a string-to-sign uide
@@ -1101,6 +1136,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 eplace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 2. Predefine the time format for the `Timestamp` parameter. Specify the `Timestamp` parameter in
 the ISO 8601 format. The time must be in UTC+0.
 
@@ -1111,6 +1147,7 @@ private static final String ISO8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"; pr
     return df.format(date);
 ```
 
+`}`
 3. Create a request string.
 uide
 
@@ -1120,6 +1157,11 @@ final String HTTP_METHOD = "GET"; Map parameters = new HashMap(); // Specify req
     canonicalizedQueryString.append("&")
     .append(percentEncode(key)).append("=")
     .append(percentEncode(parameters.get(key)));
+```
+
+`}`
+
+```
 //Encode the canonicalized query string. stringToSign.append(percentEncode( canonicalizedQueryString.toString().substring(1)));
 ```
 
@@ -1179,7 +1221,7 @@ Responses are returned only in the JSON format. If a return code is greater than
       "cuserId":"aliyuntest"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "requestId":"xxxxxxxxxxxxxx",
@@ -1187,7 +1229,7 @@ Responses are returned only in the JSON format. If a return code is greater than
   "message":"success"
 ```
 
-Sample error responses If a request fails, the following information is returned. For more information, see the developer guide of the corresponding Apsara Stack service. uide `{`
+`}` Sample error responses If a request fails, the following information is returned. For more information, see the developer guide of the corresponding Apsara Stack service. uide `{`
 
 ```json
     "code": "asapi.server.api.notfound",// The error code.
@@ -1199,7 +1241,7 @@ Sample error responses If a request fails, the following information is returned
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by ASAPI.
 ```
 
-s
+`}` s
 
 ## 4 Request signatures
 
@@ -1244,7 +1286,7 @@ ns
 
 ### 5.1 CreateApiGroup
 
-Creates an API group. You must create an API group before you create an API. An API group is a basic attribute of an API. This operation is intended for API providers. A second-level domain name is automatically allocated to the API group for testing purposes. An API group has a region attribute. After you create an API and select a group for the API, the region is also selected. We recommend that you select the same region to which your back-end services belong to reduce network latency. After you create an API group, you can bind a custom domain name to the group. The QPS limit on this operation is 50 per user. Request parameters
+Description Creates an API group. You must create an API group before you create an API. An API group is a basic attribute of an API. This operation is intended for API providers. A second-level domain name is automatically allocated to the API group for testing purposes. An API group has a region attribute. After you create an API and select a group for the API, the region is also selected. We recommend that you select the same region to which your back-end services belong to reduce network latency. After you create an API group, you can bind a custom domain name to the group. The QPS limit on this operation is 50 per user. Request parameters
 
 | Parame ter | Type | Required | Description |
 |---|---|---|---|
@@ -1296,9 +1338,11 @@ JSON format `{`
   "Description": "The weather information"
 ```
 
+`}`
+
 ### 5.2 ModifyApiGroup
 
-You can call this operation to modify the name or description of an existing API group. This operation is intended for API providers. The QPS limit on this operation is 50 per user. Request parameters
+Description You can call this operation to modify the name or description of an existing API group. This operation is intended for API providers. The QPS limit on this operation is 50 per user. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1353,9 +1397,11 @@ JSON format ns `{`
     "Description": "New weather informations."
 ```
 
+`}`
+
 ### 5.3 DeleteApiGroup
 
-Deletes a specified API group. This operation is intended for API providers. An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs. After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated. If the specified API group does not exist, a success response is returned. The QPS limit on this operation is 50 per user. Request parameters
+Description Deletes a specified API group. This operation is intended for API providers. An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs. After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated. If the specified API group does not exist, a success response is returned. The QPS limit on this operation is 50 per user. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1388,9 +1434,11 @@ JSON format `{`
     "RequestId": "E8515BA6-81CD-4191-A7CF-C4FCDD3C0D99"
 ```
 
+`}`
+
 ### 5.4 CreateApiStageVariable
 
-You can call this operation to add a variable to a specified environment. This operation is intended for API providers. Request parameters
+Description You can call this operation to add a variable to a specified environment. This operation is intended for API providers. Request parameters
 
 | Name | Type | Requi red | Description |
 |---|---|---|---|
@@ -1426,9 +1474,11 @@ JSON format `{`
     "RequestId": "03442A3D-3B7D-434C-8A95-A5FEB999B529"
 ```
 
+`}`
+
 ### 5.5 DeleteApiStageVariable
 
-You can call this operation to delete a variable in a specified environment. This operation is intended for API providers. Request parameters
+Description You can call this operation to delete a variable in a specified environment. This operation is intended for API providers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1463,9 +1513,11 @@ JSON format `{`
     "RequestId": "03442A3D-3B7D-434C-8A95-A5FEB969B529"
 ```
 
+`}`
+
 ### 5.6 DescribeApiGroup
 
-You can call this operation to query details about an API group, including the automatically generated second-level domain name, custom domain name, and SSL certificate. This operation is intended for API providers. Request parameters
+Description You can call this operation to query details about an API group, including the automatically generated second-level domain name, custom domain name, and SSL certificate. This operation is intended for API providers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1567,7 +1619,7 @@ JSON format ns `{`
         "DomainStatus": "BINDING"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "StageItems": {
@@ -1590,11 +1642,11 @@ JSON format ns `{`
           "Description": "MYTEST"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 5.7 DescribeApiGroups
 
-Queries existing API groups and their basic information. This operation is intended for API providers. Request parameters
+Description Queries existing API groups and their basic information. This operation is intended for API providers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1706,11 +1758,11 @@ JSON format ns `{`
           "IllegalStatus": "NORMAL"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 5.8 DescribeApiStage
 
-You can call this operation to query details about a specified runtime environment of an API group. This operation is intended for API providers. Request parameters
+Description You can call this operation to query details about a specified runtime environment of an API group. This operation is intended for API providers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1797,13 +1849,13 @@ JSON format `{`
           "VariableValue": "v1.0"
 ```
 
-`]` ations
+`}` `]` `}` `}` ations
 
 ## 6 Domain name operations
 
 ### 6.1 SetDomain
 
-You can call this operation to bind a custom domain name to a specified API group. This operation is intended for API providers. Before you bind an independent domain name to an API group, you must resolve the domain name. You can add a CNAME record to resolve the domain name to the second-level domain name of the group. Alternatively, you can add an A record to resolve the domain name to the IP address of the second-level domain name server. To bind the independent domain name of another group to the current group, you must resolve the independent domain name and then bind it to the current group. If HTTPS is used, you must also bind the SSL certificate and specify the CertificateName, CertificateBody, and PrivateKey parameters. You can then upload the SSL certificate. For more information, see SetDomainCertificate. Request parameters
+Description You can call this operation to bind a custom domain name to a specified API group. This operation is intended for API providers. Before you bind an independent domain name to an API group, you must resolve the domain name. You can add a CNAME record to resolve the domain name to the second-level domain name of the group. Alternatively, you can add an A record to resolve the domain name to the IP address of the second-level domain name server. To bind the independent domain name of another group to the current group, you must resolve the independent domain name and then bind it to the current group. If HTTPS is used, you must also bind the SSL certificate and specify the CertificateName, CertificateBody, and PrivateKey parameters. You can then upload the SSL certificate. For more information, see SetDomainCertificate. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1860,9 +1912,11 @@ JSON format `{`
     "DomainBindingStatus": "BINDING"
 ```
 
+`}`
+
 ### 6.2 SetDomainCertificate
 
-You can call this operation to upload an SSL certificate for a specific custom domain name. This operation is intended for API providers. The SSL certificate must match the custom domain name. HTTPS-based API services will be available after the SSL certificate has been bound. Request parameters ations
+Description You can call this operation to upload an SSL certificate for a specific custom domain name. This operation is intended for API providers. The SSL certificate must match the custom domain name. HTTPS-based API services will be available after the SSL certificate has been bound. Request parameters ations
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1898,6 +1952,8 @@ JSON format `{`
 ```json
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7",
 ```
+
+`}`
 
 ### 6.3 DescribeDomain
 
@@ -1967,6 +2023,8 @@ JSON format `{`
     "DomainCNAMEStatus": "RESOLVED"
 ```
 
+`}`
+
 ### 6.4 DeleteDomain
 
 ations You can call this operation to unbind the custom domain name from a specified API group. This operation is intended for API providers. If the specified domain name does not exist, a successful response will still appear. Unbinding the domain name of an API group will affect acces to the APIs in the group. Exercise caution when using this operation. Request parameters
@@ -2002,6 +2060,8 @@ JSON format `{`
 ```json
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7"
 ```
+
+`}`
 
 ### 6.5 DeleteDomainCertificate
 
@@ -2046,7 +2106,7 @@ operations
 
 ### 7.1 CreateApi
 
-Creates an API. This operation is intended for API providers. The name of each API within the same group must be unique. Each request path within the same group must be unique. A group can contain up to 200 APIs. The QPS limit on this operation is 50 per user. Request parameters
+Description Creates an API. This operation is intended for API providers. The name of each API within the same group must be unique. Each request path within the same group must be unique. A group can contain up to 200 APIs. The QPS limit on this operation is 50 per user. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2106,6 +2166,8 @@ JSON format `{`
     "RequestId":"6C87A26A-6A18-4B8E-8099-705278381A2C",
     "ApiId":"8afff6c8c4c6447abb035812e4d66b65"
 ```
+
+`}`
 
 ### 7.2 ModifyApi
 
@@ -2168,11 +2230,11 @@ JSON format `{`
     "RequestId":"6C87A26A-6A18-4B8E-8099-705278381A2C"
 ```
 
-operations
+`}` operations
 
 ### 7.3 DeployApi
 
-You can call this operation to publish an API to a specified runtime environment. This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called. An API is published to a cluster in under 5 seconds. The QPS limit on this operation is 50 per user. Request parameters
+Description You can call this operation to publish an API to a specified runtime environment. This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called. An API is published to a cluster in under 5 seconds. The QPS limit on this operation is 50 per user. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2208,9 +2270,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
 ```
 
+`}`
+
 ### 7.4 SwitchApi
 
-You can call this operation to switch the API definition running in the specified runtime environment to a historical version. This operation is intended for API providers. The historical version can be obtained through the DescribeHistoryApis API. Only APIs that have been published more than once have historical versions to switch to. This operation can only be performed on running APIs. Use caution when performing this operation because the operation cannot be undone after it has been completed and takes effect within 5 seconds. The switch operation is in essence a publish operation, and the reason for this operation must be provided. Request parameters
+Description You can call this operation to switch the API definition running in the specified runtime environment to a historical version. This operation is intended for API providers. The historical version can be obtained through the DescribeHistoryApis API. Only APIs that have been published more than once have historical versions to switch to. This operation can only be performed on running APIs. Use caution when performing this operation because the operation cannot be undone after it has been completed and takes effect within 5 seconds. The switch operation is in essence a publish operation, and the reason for this operation must be provided. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2247,9 +2311,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ001"
 ```
 
+`}`
+
 ### 7.5 AbolishApi
 
-You can call this operation to unpublish a specified API from a specified runtime environment. This operation is intended for API providers and is the opposite of DeployApi. An API can be unpublished from a specified runtime environment in under 5 seconds. An unpublished API cannot be called in the specified runtime environment. Request parameters
+Description You can call this operation to unpublish a specified API from a specified runtime environment. This operation is intended for API providers and is the opposite of DeployApi. An API can be unpublished from a specified runtime environment in under 5 seconds. An unpublished API cannot be called in the specified runtime environment. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2289,9 +2355,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ016"
 ```
 
+`}`
+
 ### 7.6 DeleteApi
 
-Deletes a specified API. This operation is intended for API providers and cannot be undone after it is complete. An API that is running in the runtime environment must be unpublished before you can delete the API. The QPS limit on this operation is 50 per user. Request parameters operations
+Description Deletes a specified API. This operation is intended for API providers and cannot be undone after it is complete. An API that is running in the runtime environment must be unpublished before you can delete the API. The QPS limit on this operation is 50 per user. Request parameters operations
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2324,6 +2392,8 @@ JSON format `{`
 ```json
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ017"
 ```
+
+`}`
 
 ### 7.7 DescribeApi
 
@@ -2625,7 +2695,7 @@ JSON format `{`
                 "Location": "query"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ConstantParameters": {
@@ -2641,7 +2711,7 @@ JSON format `{`
                 "ConstantValue": "constant"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "GroupId": "4a3f3050b9c5469bb685bdd29e571be1",
@@ -2659,7 +2729,7 @@ JSON format `{`
                 "ParameterName": "CaClientIp"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestParametersObject": {
@@ -2726,7 +2796,7 @@ operations
                 "DocOrder": 0
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "DeployedInfos": {
@@ -2748,7 +2818,7 @@ operations
                 "EffectiveVersion": "20160721115223375"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ServiceConfig": {
@@ -2814,7 +2884,7 @@ operations `q` `,`
                 "RequestParameterName": "type"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ErrorCodeSamples": {
@@ -2829,7 +2899,7 @@ operations `q` `,`
                 "Description": "The UserId parameter is missing from the request"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ApiId": "e77fd9257b1d436a806fe23c649300a0",
@@ -2843,9 +2913,11 @@ operations `q` `,`
         "publicKeyId": "88483727556929326703309904351185815489"
 ```
 
+`}` `}`
+
 ### 7.8 DescribeApiDoc
 
-You can call this operation to query documentation of a specified API. For API callers, the specified API must be a public or authorized private API that has been published operations to a runtime environment. When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned. When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify. Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required. Request parameters
+Description You can call this operation to query documentation of a specified API. For API callers, the specified API must be a public or authorized private API that has been published operations to a runtime environment. When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned. When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify. Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3001,7 +3073,7 @@ operations `p` `,`
                 "Description": "The UserId parameter is missing from the request"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestConfig": {
@@ -3053,7 +3125,7 @@ operations `p` `,`
 
 ### 7.9 DescribeApis
 
-Queries the APIs that belong to a certain definition. This API is intended for API providers. The list of all APIs that belong to the definition and their brief information are returned. This API returns the most recently edited API definitions. These may be different from the definitions of those APIs currently published to the runtime environment. Request parameters
+Description Queries the APIs that belong to a certain definition. This API is intended for API providers. The list of all APIs that belong to the definition and their brief information are returned. This API returns the most recently edited API definitions. These may be different from the definitions of those APIs currently published to the runtime environment. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3154,7 +3226,7 @@ JSON format operations `{`
           "ModifiedTime": "2016-07-23T08:28:48Z"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": "3",
@@ -3163,9 +3235,11 @@ JSON format operations `{`
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ002"
 ```
 
+`}`
+
 ### 7.10 DescribeApiHistory
 
-You can call this operation to query the details of a specified historical version of a specified API definition. This operation is intended for API providers. API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication. Request parameters
+Description You can call this operation to query the details of a specified historical version of a specified API definition. This operation is intended for API providers. API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3442,7 +3516,7 @@ operations
           "Description": "Requester application ID"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ConstantParameters": {
@@ -3453,7 +3527,7 @@ operations
         "Description": "Desc"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestParameters": {
@@ -3490,7 +3564,7 @@ operations
           "Description": "Desc2"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ErrorCodeSamples": {
@@ -3528,7 +3602,7 @@ operations `]` `},`
           "ParameterType": "Number"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ServiceParametersMap": {
@@ -3549,7 +3623,7 @@ operations `]` `},`
           "RequestParameterName": "ServiceKey2"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "OpenIdConnectConfig": {
@@ -3558,9 +3632,11 @@ operations `]` `},`
         "publicKeyId": "88483727556929326703309904351185815489"
 ```
 
+`}` `}`
+
 ### 7.11 DescribeApiHistories
 
-You can call this operation to query the list of historical versions of a specified API. This operation is intended for API providers. Only APIs which have been published have a historical version record. This operation allows you to obtain the API historical versions which can be used to call other APIs. Request parameters
+Description You can call this operation to query the list of historical versions of a specified API. This operation is intended for API providers. Only APIs which have been published have a historical version record. This operation allows you to obtain the API historical versions which can be used to call other APIs. Request parameters
 
 | Name | Type | Requ ired | Description |
 |---|---|---|---|
@@ -3668,7 +3744,7 @@ JSON format operations `{`
                 "DetachedTime": "2014-07-23T08:28:48Z",
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": 3,
@@ -3677,9 +3753,11 @@ JSON format operations `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ003"
 ```
 
+`}`
+
 ### 7.12 DescribeDeployedApi
 
-You can call this operation to query the running definition of an API in a specified runtime environment. This operation is intended for API providers. This operation allows you to query the API definition that has been published to and is running in a specified environment. This definition may be different from the API definition being modified. A modified API definition can overwrite the definition running in a runtime environment only after the modified definition is published to the runtime environment. Request parameters
+Description You can call this operation to query the running definition of an API in a specified runtime environment. This operation is intended for API providers. This operation allows you to query the API definition that has been published to and is running in a specified environment. This definition may be different from the API definition being modified. A modified API definition can overwrite the definition running in a runtime environment only after the modified definition is published to the runtime environment. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3942,7 +4020,7 @@ JSON format `{`
           "Description": "Requester application ID"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ConstantParameters": {
@@ -3953,7 +4031,7 @@ JSON format `{`
         "Description": "Desc"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestParameters": {
@@ -3990,7 +4068,7 @@ JSON format `{`
           "Description": "Desc2"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ServiceParameters": {
@@ -4039,7 +4117,7 @@ operations
           "RequestParameterName": "ServiceKey2"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ErrorCodeSamples": {
@@ -4054,7 +4132,7 @@ operations
                 "Description": "The UserId parameter is missing from the request"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "OpenIdConnectConfig": {
@@ -4063,9 +4141,11 @@ operations
         "publicKeyId": "88483727556929326703309904351185815489"
 ```
 
+`}` `}`
+
 ### 7.13 DescribeDeployedApis
 
-You can call this operation to query the list of APIs that have been published to and are running in a specified runtime environment. This operation is intended for API providers. Request parameters
+Description You can call this operation to query the list of APIs that have been published to and are running in a specified runtime environment. This operation is intended for API providers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4168,7 +4248,7 @@ JSON format operations `{`
                 "DeployedTime": "2016-07-20T08:28:48Z"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": 3,
@@ -4176,6 +4256,8 @@ JSON format operations `{`
       "TotalCount": 32,
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ002"
 ```
+
+`}`
 
 ## 8 Plugin operations
 
@@ -4431,6 +4513,8 @@ JSON format `{`
     "PluginId" :"1f3bde29b43d4d53989248327ff737f2"
 ```
 
+`}`
+
 ### 8.2 ModifyPlugin
 
 You can call this operation to modify the configurations of a custom plug-in. This operation is intended for API providers. The modified configuration takes effect immediately. The name of the plug-in must be unique. Request parameters
@@ -4469,9 +4553,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ004",
 ```
 
+`}`
+
 ### 8.3 DeletePlugin
 
-Deletes a specified custom plug-in. This API is intended for API providers. If the plug-in is bound to an API, you must unbind the plug-in from the API before you delete the plug-in. Otherwise, an error is returned. Request parameters
+Description Deletes a specified custom plug-in. This API is intended for API providers. If the plug-in is bound to an API, you must unbind the plug-in from the API before you delete the plug-in. Otherwise, an error is returned. Request parameters
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -4504,9 +4590,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ004",
 ```
 
+`}`
+
 ### 8.4 AttachPlugin
 
-You can call this operation to bind a plug-in to an API. This operation is intended for API providers. You can only bind plug-ins to published APIs. The plug-in takes effect immediately after it is bound to an API. If you bind a different plug-in to an API, this plug-in takes effect immediately. Request parameters
+Description You can call this operation to bind a plug-in to an API. This operation is intended for API providers. You can only bind plug-ins to published APIs. The plug-in takes effect immediately after it is bound to an API. If you bind a different plug-in to an API, this plug-in takes effect immediately. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4541,9 +4629,11 @@ JSON format `{`
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ004"
 ```
 
+`}`
+
 ### 8.5 DetachPlugin
 
-You can call this operation to unbind a plug-in from an API. This operation is intended for API providers. This operation is used to unbind a plug-in from an API. A plug-in can be unbound from an API with immediate effect. Request parameters
+Description You can call this operation to unbind a plug-in from an API. This operation is intended for API providers. This operation is used to unbind a plug-in from an API. A plug-in can be unbound from an API with immediate effect. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4581,9 +4671,11 @@ JSON format `{`
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ004"
 ```
 
+`}`
+
 ### 8.6 DescribePluginApis
 
-You can call this operation to query detailed information of the APIs to which a specified plug-in is bound. This operation is intended for API providers. This operation is used to query detailed information of the APIs to which a specified plug-in is bound. This operation supports pagination. The returned APIs to which a plug-in is bound may be unpublished. Request parameters
+Description You can call this operation to query detailed information of the APIs to which a specified plug-in is bound. This operation is intended for API providers. This operation is used to query detailed information of the APIs to which a specified plug-in is bound. This operation supports pagination. The returned APIs to which a plug-in is bound may be unpublished. Request parameters
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -4648,11 +4740,11 @@ JSON format `{`
             "Description": "Description",
 ```
 
-`}]` `},`
+`}]` `},` `}`
 
 ### 8.7 DescribePlugins
 
-Queries the details of plug-ins based on the specified conditions. This operation supports pagination. This operation allows you to query plug-ins by business type. This operation allows you to query plug-ins by ID. This operation allows you to query plug-ins by name. Request parameters
+Description Queries the details of plug-ins based on the specified conditions. This operation supports pagination. This operation allows you to query plug-ins by business type. This operation allows you to query plug-ins by ID. This operation allows you to query plug-ins by name. Request parameters
 
 | Paramet er | T ype | Required | Descript ion |
 |---|---|---|---|
@@ -4727,11 +4819,11 @@ JSON format `{`
             "ModifiedTime":"2019-01-11T09:29:58Z"
 ```
 
-`}]`
+`}]` `}` `}`
 
 ### 8.8 DescribePluginsByApi
 
-You can call this operation to query plug-ins that are bound to a specified API. The API must have been published to an environment. This API is intended for API providers. This operation is used to query plug-ins that are bound to a specified API in a specific environment. Request parameters
+Description You can call this operation to query plug-ins that are bound to a specified API. The API must have been published to an environment. This API is intended for API providers. This operation is used to query plug-ins that are bound to a specified API in a specific environment. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4802,13 +4894,13 @@ JSON format `{`
             "ModifiedTime":"2019-01-11T09:29:58Z"
 ```
 
-`}]` operations
+`}]` `}` `}` operations
 
 ## 9 App management operations
 
 ### 9.1 CreateApp
 
-Creates an application. An application is used to call third-party APIs. This operation is intended for API callers. Each application has a key-value pair that is used for identity authentication when an API is called. An application must be authorized to call an API. Each application has only one key-value pair. You can reset the key-value pair as needed. The QPS limit on this operation is 50 per user. Request parameters
+Description Creates an application. An application is used to call third-party APIs. This operation is intended for API callers. Each application has a key-value pair that is used for identity authentication when an API is called. An application must be authorized to call an API. Each application has only one key-value pair. You can reset the key-value pair as needed. The QPS limit on this operation is 50 per user. Request parameters
 
 | Paramet er | T yp e | Req uire d | Descript ion |
 |---|---|---|---|
@@ -4845,9 +4937,11 @@ JSON format `{`
     "RequestId":"BA20890E-75C7-41BC-9C8B-73276B58F550"
 ```
 
+`}`
+
 ### 9.2 ModifyApp
 
-You can call this operation to modify the basic information of a specific application. This operation is intended for API callers. AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response. The QPS limit on this operation is 50 per user. Request parameters
+Description You can call this operation to modify the basic information of a specific application. This operation is intended for API callers. AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response. The QPS limit on this operation is 50 per user. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4888,9 +4982,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
 ```
 
+`}`
+
 ### 9.3 ResetAppSecret
 
-You can call this operation to reset the secret of a specific application. This operation is intended for API callers. A new secret is automatically generated after you have called this operation. This secret cannot be customized. The results returned by this operation do not contain the application secret. You can obtain the operations secret by calling DescribeAppSecurity. Request parameters
+Description You can call this operation to reset the secret of a specific application. This operation is intended for API callers. A new secret is automatically generated after you have called this operation. This secret cannot be customized. The results returned by this operation do not contain the application secret. You can obtain the operations secret by calling DescribeAppSecurity. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4923,9 +5019,11 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
 ```
 
+`}`
+
 ### 9.4 DescribeAppAttributes
 
-Queries applications and their basic information. This operation is intended for API callers. The AppId parameter is optional in requests. Request parameters operations
+Description Queries applications and their basic information. This operation is intended for API callers. The AppId parameter is optional in requests. Request parameters operations
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -4996,11 +5094,11 @@ JSON format `{`
                 "ModifiedTime":"2016-07-31T04:10:19Z"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 9.5 DescribeAppSecurity
 
-You can call this operation to query the key of a specified application. The key is used for authentication when you call an API. This operation is intended for API callers. Request parameters
+Description You can call this operation to query the key of a specified application. The key is used for authentication when you call an API. This operation is intended for API callers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5049,6 +5147,8 @@ JSON format `{`
     "ModifiedTime":"2016-07-31T04:10:19Z"
 ```
 
+`}`
+
 ### 9.6 DeleteApp
 
 operations Deletes a specified application. This operation is intended for API callers. After an application is deleted, the application and its API authorization cannot be restored. The QPS limit on this operation is 50 per user. Request parameters
@@ -5084,13 +5184,13 @@ JSON format `{`
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
 ```
 
-ations
+`}` ations
 
 ## 10 Authorization operations
 
 ### 10.1 DescribeApps
 
-You can call this operation to query which applications you are able to grant permissions to. You can then grant permissions based on the obtained application information. This operation is intended for API providers. API providers can use the application IDs or their Apsara Stack tenant accounts to query application information. Each provider can call this operation for a maximum of 200 times every day in a region. Request parameters
+Description You can call this operation to query which applications you are able to grant permissions to. You can then grant permissions based on the obtained application information. This operation is intended for API providers. API providers can use the application IDs or their Apsara Stack tenant accounts to query application information. Each provider can call this operation for a maximum of 200 times every day in a region. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5158,11 +5258,11 @@ JSON format `{`
                 "Description":"APP test"                    }
 ```
 
-`]`
+`]` `}` `}`
 
 ### 10.2 DescribeAuthorizedApis
 
-You can call this operation to query the APIs that a specified application can call. This operation is intended for API callers. The specified application can call all APIs included in the responses. Request parameters ations
+Description You can call this operation to query the APIs that a specified application can call. This operation is intended for API callers. The specified application can call all APIs included in the responses. Request parameters ations
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5261,11 +5361,11 @@ JSON format ations `{`
       "AuthorizedTime": "2016-07-21T06:17:20Z"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 10.3 DescribeAuthorizedApps
 
-You can call this operation to query which applications currently have access to a specified API. This operation is intended for API providers. All applications included in the responses have access to the specified API. Request parameters
+Description You can call this operation to query which applications currently have access to a specified API. This operation is intended for API providers. All applications included in the responses have access to the specified API. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5359,11 +5459,11 @@ JSON format ations `{`
       "AuthorizedTime": "2016-07-21T06:17:20Z"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 10.4 SetApisAuthorities
 
-You can call this operation to grant access permissions on multiple APIs to a specified application. In this case, multiple APIs map to a single application. This operation is intended for API providers and callers. API providers can authorize any applications to call their APIs. API callers can authorize their own applications to call APIs they have purchased. Request parameters
+Description You can call this operation to grant access permissions on multiple APIs to a specified application. In this case, multiple APIs map to a single application. This operation is intended for API providers and callers. API providers can authorize any applications to call their APIs. API callers can authorize their own applications to call APIs they have purchased. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5405,6 +5505,8 @@ JSON format `{`
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
 ```
 
+`}`
+
 ### 10.5 SetAppsAuthorities
 
 You can call this operation to grant access permissions on a specified API to multiple applications. In this case, multiple applications map to a single API. ations This operation is intended for API providers and callers. API providers can authorize any applications to call their APIs. API callers can authorize their own applications to call APIs they have purchased. Request parameters
@@ -5444,9 +5546,11 @@ ations JSON format `{`
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
 ```
 
+`}`
+
 ### 10.6 RemoveApisAuthorities
 
-You can call this operation to revoke the access permissions on multiple APIs from a specified application. In this case, multiple APIs map to a single application. This operation is intended for API providers and callers. Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer. Request parameters
+Description You can call this operation to revoke the access permissions on multiple APIs from a specified application. In this case, multiple APIs map to a single application. This operation is intended for API providers and callers. Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5482,9 +5586,11 @@ JSON format `{`
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
 ```
 
+`}`
+
 ### 10.7 RemoveAppsAuthorities
 
-You can call this operation to revoke the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API. This operation is intended for API providers and callers. Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer. Request parameters
+Description You can call this operation to revoke the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API. This operation is intended for API providers and callers. Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5525,11 +5631,13 @@ JSON format `{`
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
 ```
 
+`}`
+
 ## 11 Other operations
 
 ### 11.1 DescribeRegions
 
-You can call this operation to query supported regions. This operation is intended for API providers and callers. Request parameters
+Description You can call this operation to query supported regions. This operation is intended for API providers and callers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5618,11 +5726,11 @@ JSON format `{`
                 "LocalName": "China (Shenzhen)"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 11.2 DescribeSystemParameters
 
-You can call this operation to query configurable system parameters. This API is intended for API providers. The response of this API contains the system parameters that are optional in API definitions. Request parameters
+Description You can call this operation to query configurable system parameters. This API is intended for API providers. The response of this API contains the system parameters that are optional in API definitions. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5767,13 +5875,13 @@ JSON format `{`
                 "ParamType": "string"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ## 12 Data types
 
 ### 12.1 ApiGroupAttribute
 
-The information about a specified API group. Node name Subnodes
+Description The information about a specified API group. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5807,7 +5915,7 @@ The information about a published API. Node name Subnodes
 
 ### 12.3 ApiInfo
 
-The information about a published API. Node name Subnodes
+Description The information about a published API. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5826,7 +5934,7 @@ The information about a published API. Node name Subnodes
 
 ### 12.4 ApiPluginSummary
 
-The summary of an API that is bound to a plug-in. Node name Subnodes
+Description The summary of an API that is bound to a plug-in. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5840,7 +5948,7 @@ The summary of an API that is bound to a plug-in. Node name Subnodes
 
 ### 12.5 ApiSummary
 
-The API summary information. Node name Subnodes
+Description The API summary information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5856,7 +5964,7 @@ The API summary information. Node name Subnodes
 
 ### 12.6 AppAttribute
 
-The application information. Node name Subnodes
+Description The application information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5874,7 +5982,7 @@ The application information. Node name Subnodes
 
 ### 12.7 AppItem
 
-The application information. Node name Subnodes
+Description The application information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5884,7 +5992,7 @@ The application information. Node name Subnodes
 
 ### 12.8 AuthorizedApi
 
-The mappings between applications and an API. Node name Subnodes
+Description The mappings between applications and an API. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5907,7 +6015,7 @@ The mappings between applications and an API. Node name Subnodes
 
 ### 12.9 AuthorizedApp
 
-The application authorization information of APIs. Node name Subnodes
+Description The application authorization information of APIs. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5925,7 +6033,7 @@ The application authorization information of APIs. Node name Subnodes
 
 ### 12.10 ConstantParameter
 
-The information about constant input parameters. Node name Subnodes
+Description The information about constant input parameters. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5936,7 +6044,7 @@ The information about constant input parameters. Node name Subnodes
 
 ### 12.11 CustomDomain
 
-The domain name information. Node name Subnodes
+Description The domain name information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5952,7 +6060,7 @@ The domain name information. Node name Subnodes
 
 ### 12.12 DeployedApiItem
 
-The information about a published API. Node name Subnodes
+Description The information about a published API. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5968,7 +6076,7 @@ The information about a published API. Node name Subnodes
 
 ### 12.13 DeployedInfo
 
-The information about API publishing. Node name Subnodes
+Description The information about API publishing. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5978,7 +6086,7 @@ The information about API publishing. Node name Subnodes
 
 ### 12.14 DomainItem
 
-The domain name used to call an API. Node name Subnodes
+Description The domain name used to call an API. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5986,7 +6094,7 @@ The domain name used to call an API. Node name Subnodes
 
 ### 12.15 ErrorCodeSample
 
-The sample error codes. Node name Subnodes
+Description The sample error codes. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -5996,7 +6104,7 @@ The sample error codes. Node name Subnodes
 
 ### 12.16 MonitorItem
 
-The monitoring metric information. Node name Subnodes
+Description The monitoring metric information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6005,7 +6113,7 @@ The monitoring metric information. Node name Subnodes
 
 ### 12.17 PluginAttribute
 
-The details of a plug-in. Node name Subnodes
+Description The details of a plug-in. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6026,7 +6134,7 @@ The details of a plug-in. Node name Subnodes
 
 ### 12.18 Region
 
-The region information. Node name Subnodes
+Description The region information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6036,7 +6144,7 @@ The region information. Node name Subnodes
 
 ### 12.19 RequestConfig
 
-The frontend information. Node name Subnodes
+Description The frontend information. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6054,7 +6162,7 @@ The frontend information. Node name Subnodes
 
 ### 12.20 RequestParameter
 
-The information about frontend input parameters. Node name Subnodes
+Description The information about frontend input parameters. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6080,7 +6188,7 @@ The information about frontend input parameters. Node name Subnodes
 
 ### 12.21 ServiceConfig
 
-The information about a backend service call. Node name Subnodes
+Description The information about a backend service call. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6100,7 +6208,7 @@ The information about a backend service call. Node name Subnodes
 
 ### 12.22 ServiceParameter
 
-The information about input parameters for a backend service call. Node name Subnodes
+Description The information about input parameters for a backend service call. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6110,7 +6218,7 @@ The information about input parameters for a backend service call. Node name Sub
 
 ### 12.23 ServiceParameterMap
 
-The mappings between frontend input parameters and backend input parameters. Node name Subnodes
+Description The mappings between frontend input parameters and backend input parameters. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6122,7 +6230,7 @@ The mappings between frontend input parameters and backend input parameters. Nod
 
 ### 12.24 Special
 
-The special throttling policy. Node name Subnodes
+Description The special throttling policy. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6131,7 +6239,7 @@ The special throttling policy. Node name Subnodes
 
 ### 12.25 SpecialPolicy
 
-The information about a special throttling policy. Node name Subnodes
+Description The information about a special throttling policy. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6150,7 +6258,7 @@ The runtime environment information. Node name Subnodes
 
 ### 12.27 SystemParameter
 
-The system input parameter. Node name Subnodes
+Description The system input parameter. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|
@@ -6162,7 +6270,7 @@ The system input parameter. Node name Subnodes
 
 ### 12.28 SystemParamItem
 
-The information about a specified system parameter. Node name Subnodes
+Description The information about a specified system parameter. Node name Subnodes
 
 | Name | Type | Description |
 |---|---|---|

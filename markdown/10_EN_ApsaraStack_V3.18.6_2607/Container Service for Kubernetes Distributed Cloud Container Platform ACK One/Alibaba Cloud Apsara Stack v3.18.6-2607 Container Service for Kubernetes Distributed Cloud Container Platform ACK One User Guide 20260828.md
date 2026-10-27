@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 22
 source_pdf: "7345ad42751084d7_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Distributed%20Cloud%20Container%20Platform%20ACK%20One%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container Platform ACK One User Guide 20260828
@@ -53,6 +53,9 @@ This topic describes how to log in to the ACK One console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineer. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key. o the ACK One console
 
@@ -193,6 +196,8 @@ Application resources in the argocd namespace
 |---|---|
 | Application | argoproj.io |
 
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Authorization Management**.
 3. On the **Authorization Management** page, select a Fleet instance from the **Fleet** drop-
@@ -288,6 +293,9 @@ This topic describes how to create a Fleet instance.
 You are assigned the operations administrator or organization administrator role. If you are assigned a custom role, the custom role must be granted the permissions to access the
 **Authorization Management** page. For more information, see Attach a system permission
 policy to a RAM role.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. On the **Fleet List** page, click **Create**.
@@ -311,7 +319,11 @@ Wait a few minutes. After the status of the Fleet instance changes to **Running*
 
 #### 4.1.4 View the details of a Fleet instance
 
-This topic describes how to view the details of a Fleet instance. After a Fleet instance is created, you can view the basic information, connection information, logs, and associated clusters of the Fleet instance.
+This topic describes how to view the details of a Fleet instance.
+
+**Procedure**
+
+After a Fleet instance is created, you can view the basic information, connection information, logs, and associated clusters of the Fleet instance.
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. Optional. On the **Fleet List** page, specify the **Fleet ID** parameter to search for fleets.
@@ -337,6 +349,9 @@ This topic describes how to delete a Fleet instance.
 **Prerequisites**
 
 Before you delete a Fleet instance, you must remove the clusters associated with the Fleet instance. For more information, see Disassociate clusters from a Fleet instance.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. On the Fleet List page, find the Fleet instance that you want to delete and click **Delete** in
@@ -379,6 +394,9 @@ associated with the Fleet instance. Click **Details** in the **Actions** column 
 **instance**
 
 This topic describes how to disassociate the clusters that are associated with a Fleet instance.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. On the Fleet List page, find the Fleet instance that you want to manage and click the Fleet
@@ -403,6 +421,9 @@ A Fleet instance is created. For more information, see Create a Fleet instance.
 **Background information**
 
 In a Kubernetes cluster, you can use namespaces to create multiple virtual spaces. When a large number of users share a cluster, you can use namespaces to divide different workspaces and allocate cluster resources to different tasks.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.
@@ -418,6 +439,9 @@ In a Kubernetes cluster, you can use namespaces to create multiple virtual space
 #### 4.3.2 Modify the tags of a namespace
 
 This topic describes how to modify the tags of a namespace.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.
@@ -433,6 +457,9 @@ This topic describes how to delete a namespace.
 **Usage notes**
 
 When you delete a namespace, all resource objects under the namespace are deleted. Proceed with caution.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.
@@ -456,6 +483,9 @@ Multi-cluster applications are supported. You can use an Argo CD ApplicationSet 
 **Prerequisites**
 
 A Fleet instance is created. For more information, see Create a Fleet instance. The Fleet instance is associated with multiple clusters. For more information, see Associate clusters with a Fleet instance. A namespace is created. For more information, see Create a namespace.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.
@@ -478,6 +508,9 @@ click **OK**.
 **cluster applications**
 
 This topic describes how to view the information about multi-cluster applications under a Fleet instance.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.
@@ -495,6 +528,9 @@ to filter applications.
 **cluster application**
 
 This topic describes how to modify the configuration of a multi-cluster application.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.
@@ -512,6 +548,9 @@ This topic describes how to delete a multi-cluster application.
 **Usage notes**
 
 After you delete a multi-cluster application, the corresponding applications deployed in the associated clusters will also be deleted.
+
+**Procedure**
+
 1. Log in to the ACK One console.
 2. In the left-side navigation pane, click **Fleet List**.
 3. In the fleet list, click the ID of the desired fleet or click **Details** in the **Actions** column.

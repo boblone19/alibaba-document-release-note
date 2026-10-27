@@ -5,14 +5,178 @@ doc_version: "20260729"
 pdf_pages: 333
 source_pdf: "18_API网关 开发指南_ai-gateway-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apigateway/zh/ai-gateway-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 网关 API网关 开发指南
 
-## 快速入门
+## 目录
 
-### 开发文档使用说明
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+  - 2.5 获取用户和角色信息
+  - 2.6 获取地域ID和组织ID
+- 3 通过POP网关调用专有云API
+  - 3.1 Java版本
+  - 3.2 常用接口调用方式
+    - 3.2.1 API 调用-集群管理
+    - 3.2.2 API 调用-来源管理
+    - 3.2.3 API 调用-服务管理
+    - 3.2.4 API 调用-实例管理
+    - 3.2.5 API 调用-分组管理
+    - 3.2.6 API 调用-路由管理
+    - 3.2.7 API 调用-策略配置管理
+    - 3.2.8 API 调用-消费者管理
+    - 3.2.9 API 调用-域名管理
+    - 3.2.10 API 调用-路由插件管理
+    - 3.2.11 API 调用-证书管理
+- 4 API 网关
+  - 4.1 集群管理
+    - 4.1.1 ListClusters
+    - 4.1.2 GetK8sClusterInfoByGwInstanceId
+    - 4.1.3 GetK8sClusterName
+    - 4.1.4 ImportCluster
+    - 4.1.5 UpdateCluster
+    - 4.1.6 CancelImportCluster
+    - 4.1.7 CheckConnectCluster
+    - 4.1.8 ListK8sAllNamespaces
+    - 4.1.9 ListAllNamespaces
+  - 4.2 实例管理
+    - 4.2.1 ListInstances
+    - 4.2.2 ListAllInstances
+    - 4.2.3 ListInstancesByServiceId
+    - 4.2.4 GetInstanceInfo
+    - 4.2.5 CreateInstance
+    - 4.2.6 AscmCreateInstance
+    - 4.2.7 ModifyInstance
+    - 4.2.8 ModifyInstanceImageUrl
+    - 4.2.9 UpgradeInstance
+    - 4.2.10 DeleteInstance
+    - 4.2.11 RestartInstance
+    - 4.2.12 StopInstance
+    - 4.2.13 RefreshInstance
+    - 4.2.14 CreateInstanceDeployConfig
+    - 4.2.15 GetInstanceDeployDeployConfig
+    - 4.2.16 GetInstanceDeployMsg
+    - 4.2.17 GetCustomDeployConfig
+    - 4.2.18 GetInstanceAccessModeConfig
+    - 4.2.19 GetResource
+    - 4.2.20 ModifyResource
+  - 4.3 分组管理
+    - 4.3.1 ModifyGroup
+    - 4.3.2 CreateGroup
+    - 4.3.3 ListGroups
+    - 4.3.4 GetAllGroups
+    - 4.3.5 GetGroup
+    - 4.3.6 DeleteGroup
+    - 4.3.7 AddGroupDomain
+    - 4.3.8 DeleteGroupDomain
+  - 4.4 路由管理
+    - 4.4.1 CreateRoute
+    - 4.4.2 BatchDeleteRoute
+    - 4.4.3 ListRoutes
+    - 4.4.4 ListRoutesByAppId
+    - 4.4.5 ListRoutesByGwInstanceId
+    - 4.4.6 GetAllRoutePath
+    - 4.4.7 GetRoute
+    - 4.4.8 GetProtocolByRoute
+    - 4.4.9 ModifyRoute
+    - 4.4.10 DeleteRoute
+    - 4.4.11 ChangeRouteStatus
+  - 4.5 来源管理
+    - 4.5.1 ListSources
+    - 4.5.2 ListAllSources
+    - 4.5.3 GetSource
+    - 4.5.4 CreateSource
+    - 4.5.5 ModifySource
+    - 4.5.6 DeleteSource
+    - 4.5.7 BatchDeleteSource
+  - 4.6 服务管理
+    - 4.6.1 ListServices
+    - 4.6.2 ListAllServices
+    - 4.6.3 GetService
+    - 4.6.4 CreateService
+    - 4.6.5 ModifyService
+    - 4.6.6 ModifyNode
+    - 4.6.7 DeleteService
+    - 4.6.8 BatchDeleteService
+    - 4.6.9 ImportServices
+  - 4.7 消费者管理
+    - 4.7.1 ListApps
+    - 4.7.2 ListAppsByGwInstanceId
+    - 4.7.3 GetApp
+    - 4.7.4 CreateApp
+    - 4.7.5 ModifyApp
+    - 4.7.6 DeleteApp
+    - 4.7.7 ModifyAppOpenStatus
+    - 4.7.8 ModifyAppWhiteListStatus
+    - 4.7.9 GetAppAuth
+    - 4.7.10 CreateAppAuth
+    - 4.7.11 BatchCreateAppAuthByRoute
+    - 4.7.12 ModifyAppAuthStatus
+    - 4.7.13 DeleteAppAuth
+    - 4.7.14 RefreshToken
+    - 4.7.15 ResetSecretKey
+    - 4.7.16 HandlerConsumerAuth
+    - 4.7.17 CreateAppAuthByRoute
+    - 4.7.18 BatchDeleteApp
+  - 4.8 插件管理
+    - 4.8.1 ListPlugins
+    - 4.8.2 ListOpenPlugins
+    - 4.8.3 ListGlobalPlugins
+    - 4.8.4 ListRoutePlugins
+    - 4.8.5 GetPlugin
+    - 4.8.6 CreatePlugin
+    - 4.8.7 CreateGlobalPlugin
+    - 4.8.8 CreateRoutePlugin
+    - 4.8.9 ModifyPlugin
+    - 4.8.10 ModifyGlobalPlugin
+    - 4.8.11 ModifyRoutePlugin
+    - 4.8.12 DeletePlugin
+    - 4.8.13 DeleteGlobalPlugin
+    - 4.8.14 DeleteRoutePlugin
+    - 4.8.15 ModifyGlobalPluginStatus
+    - 4.8.16 ModifyRoutePluginStatus
+    - 4.8.17 ListPluginUsage
+  - 4.9 策略管理
+    - 4.9.1 ModifyStrategyConfig
+    - 4.9.2 CreateStrategyConfig
+    - 4.9.3 ListStrategies
+    - 4.9.4 ListStrategyConfigs
+    - 4.9.5 GetStrategy
+    - 4.9.6 GetStrategyConfig
+    - 4.9.7 GetRoutePolicies
+    - 4.9.8 ModifyRoutePolicy
+    - 4.9.9 DeleteStrategyConfig
+    - 4.9.10 ModifyStrategyConfigStatus
+  - 4.10 域名管理
+    - 4.10.1 ListDomains
+    - 4.10.2 ListAllDomains
+    - 4.10.3 GetDomain
+    - 4.10.4 CreateDomain
+    - 4.10.5 ModifyDomain
+    - 4.10.6 DeleteDomain
+  - 4.11 证书管理
+    - 4.11.1 ListCertificates
+    - 4.11.2 ListAllServerCertificates
+    - 4.11.3 ListAllCACertificates
+    - 4.11.4 GetCertificate
+    - 4.11.5 CreateCertificate
+    - 4.11.6 ModifyCertificate
+    - 4.11.7 DeleteCertificate
+    - 4.12.1 GetTotalityInfo
+    - 4.12.2 GetSettings
+    - 4.12.3 GetSlsStatistics
+
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -33,27 +197,31 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
 
-| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |  |
+| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |   |
 |---|---|
-| 获取AI网关的Endpoint 获取AI网关的SDK包调用API |  |
+| 获取AI网关的Endpoint 获取AI网关的SDK包调用API |   |
 
-准备工正式调
+> 准备工
+> 正式调
 
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
 **说明**
 
 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
 **说明**
 
@@ -63,9 +231,9 @@ converter: line-classifier (PyMuPDF)
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -83,13 +251,13 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
 **警告**
 
@@ -120,12 +288,12 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -180,7 +348,7 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -219,7 +387,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -241,9 +414,9 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，示例如下。
 
 ```java
@@ -278,47 +451,48 @@ public class DemoStsTest {
         Client credentialClient = new Client(credentialConfig);
 ```
 
-`//` 继续调用`API`，完整参考的`API`文档
+`//` 继续调用`API`，完整参考的`API`文档 `}` `}`
 
-```
-    }
-}
-```
+### 2.5 获取用户和角色信息
 
-### 获取用户和角色信息
+本文介绍如何获取用户和角色信息。
 
 **操作步骤**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 创建用户。
-i. 在顶部菜单栏，选择**企业**。 ii. 在左侧导航栏，选择**人员管理** > **用户管理**。 iii. 在**系统用户**页签，单击**创建用户。** iv. 在**创建用户**对话框，配置用户信息后，单击**确定**。 更多配置信息请参考**《统一云管平台****用户指南》** > **创建用户**章节。
+i. 在顶部菜单栏，选择**企业**。 ii. 在左侧导航栏，选择**人员管理** **>** **用户管理**。 iii. 在**系统用户**页签，单击**创建用户。** iv. 在**创建用户**对话框，配置用户信息后，单击**确定**。 更多配置信息请参考**《统一云管平台****用户指南》** **>** **创建用户**章节。
 3. 创建角色。
-i. 在左侧导航栏，选择**权限管理**> **角色授权**。 ii. 在角色列表上方，单击**创建自定义角色**。 iii. 设置**基础配置**，单击**下一步**。
+i. 在左侧导航栏，选择**权限管理****>** **角色授权**。 ii. 在角色列表上方，单击**创建自定义角色**。 iii. 设置**基础配置**，单击**下一步**。
 **管理范围**：选择**资源集**。
-iv. 设置**管理权限**，在权限列表勾选**查看****RAM****服务角色**和**创建****RAM****服务角色**权限后，单击**下一步**。
+iv. 设置**管理权限**，在权限列表勾选**查看****RAM****服务角色**和**创建****RAM****服务角色**权限后，单击**下一步**。 v. 设置**应用权限**，在权限列表勾选**API****网关**的**只读权限**和**读写权限**后，单击**下一步**。 vi. 设置**菜单权限**，在列表勾选**API****网关**后，单击**下一步**或**创建**。
 4. 为用户添加角色。
-i. 在左侧导航栏，选择**人员管理** > **用户管理**。 ii. 在**系统用户**页签，找到新创建的用户，单击用户**操作**列的 ，选择**角色授权**。 iii. 在**角色授权**对话框，添加新创建的用户角色后，单击**确定**。
+i. 在左侧导航栏，选择**人员管理** **>** **用户管理**。 ii. 在**系统用户**页签，找到新创建的用户，单击用户**操作**列的 ，选择**角色授权**。 iii. 在**角色授权**对话框，添加新创建的用户角色后，单击**确定**。
 5. 将用户添加到资源集。
 i. 在**系统用户**页签，找到新创建的用户，单击用户名。 ii. 在**所属资源集**页签下，单击列表上方的**加入资源集**。 iii. 在**加入资源集**对话框中，**选择角色类型**下拉列表选择用户的角色，**选择资源集**列表勾选需要加入的资源集，单击**确定**。
 
-### 获取地域ID和组织ID
+### 2.6 获取地域ID和组织ID
+
+本文介绍如何获取地域ID和组织ID。
+
+**获取地域ID**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏选择**企业**。
-3. 在左侧导航栏，选择**资源管理** > **地域管理**。
+3. 在左侧导航栏，选择**资源管理** **>** **地域管理**。
 4. 在左侧组织架构，单击目标组织，在右侧的**Region****列表**中，获取Region ID。
 
 **获取组织ID**
 
 1. 登录Apsara Uni-manager运营控制台。
-2. 在顶部菜单栏选择**产品** > **中间件** > **应用集成** **> API** **网关**。
-3. 在左侧导航栏，选择**API****网关** > **实例列表**或**AI****网关**。
+2. 在顶部菜单栏选择**产品** **>** **中间件** **>** **应用集成** **> API** **网关**。
+3. 在左侧导航栏，选择**API****网关** **>** **实例列表**或**AI****网关**。
 4. 在**网关实例**页面，打开开发者工具，单击Network页签，然后刷新页面。
 5. 在搜索框输入**ListResourceGroupByOrgId**，单击接口名称，在右侧的Preview页签获取组织ID。
 
-## 通过POP网关调用专有云API
+## 3 通过POP网关调用专有云API
 
-### Java版本
+### 3.1 Java版本
 
 **环境要求**
 
@@ -362,11 +536,13 @@ i. 在**系统用户**页签，找到新创建的用户，单击用户名。 ii.
 
 **代码示例**
 
+以下示例展示如何使用 common request 方式调用 API 网关控制台接口：
+
 ```java
 package com.aliyun.apsarastack; import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONArray; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.AcsResponse; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.HttpResponse; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.HashMap; import java.util.Map; /**
 ```
 
-`*/`
+`* API`网关控制台 `Common Request` 调用示例 `*/`
 
 ```java
 public class Sample {
@@ -379,12 +555,15 @@ public class Sample {
     private static final String LIST_ROUTES = "/route/listRoutes";
     public static void main(String[] args) throws ClientException {
         listRoutes();
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询路由列表示例
-`*/`
+`*` 查询路由列表示例 `*/`
 
 ```java
     private static void listRoutes() throws ClientException {
@@ -409,16 +588,21 @@ JSON.parseObject(httpResponse.getHttpContentString());
                     records.forEach(record -> {
                         System.out.println(JSON.toJSONString(record));
                     });
-                }
-            }
+```
+
+`}` `}`
+
+```java
             System.out.println(jsonObject);
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 通用请求方法
-* `* @param param` 请求参数
+`*` 通用请求方法 `*` `* @param param` 请求参数
 
 ```
      * @param path API路径
@@ -436,7 +620,11 @@ e methodType) throws ClientException {
 FormatType.JSON);
         initDefaultHeader(request, methodType);
         return client.getCommonResponse(request);
-    }
+```
+
+`}`
+
+```
     static {
 ```
 
@@ -456,12 +644,15 @@ FormatType.JSON);
         httpClientConfig.setHttpProxy("http://127.0.0.1:9898");
         profile.setHttpClientConfig(httpClientConfig);
         client = new DefaultAcsClient(profile);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 设置请求`Header`
-* `* @param request` 请求对象
+`*` 设置请求`Header` `*` `* @param request` 请求对象
 
 ```
      * @param methodType HTTP方法类型
@@ -516,9 +707,9 @@ FormatType.JSON);
 
 ```
         request.setSysVersion("2023-02-06");
-    }
-}
 ```
+
+`}` `}`
 
 **步骤示例**
 
@@ -572,10 +763,9 @@ CommonResponse response = client.getCommonResponse(request); HttpResponse httpRe
 
 ```java
         System.out.println(JSON.toJSONString(data));
-    }
-}
 ```
 
+`}` `}`
 6. .** **异常处理**
 
 ```
@@ -594,8 +784,9 @@ try {
 ```java
     System.out.println("ErrorCode: " + e.getErrCode());
     System.out.println("ErrorMessage: " + e.getErrMsg());
-}
 ```
+
+`}`
 
 **自建 ACK 环境调用方式**
 
@@ -613,13 +804,18 @@ static {
 
 `//` 创建`DefaultAcsClient`实例并初始化
 
-```java
+```
     DefaultProfile profile = DefaultProfile.getProfile(
             "-",  // regionId 不需要
             "-",  // AccessKey ID 不需要
             "-"); // AccessKey Secret 不需要
     client = new DefaultAcsClient(profile);
-} private static <T extends AcsResponse> void initDefaultHeader(CommonRequest request, Me thodType methodType) {
+```
+
+`}`
+
+```java
+private static <T extends AcsResponse> void initDefaultHeader(CommonRequest request, Me thodType methodType) {
 ```
 
 `//` 自建`ACK`环境特有的认证`Header`
@@ -631,8 +827,9 @@ static {
     request.setSysDomain("<控制台服务IP>");
     request.setSysProduct("csb-cop");
     request.setSysVersion("2023-02-06");
-}
 ```
+
+`}`
 
 **常见 API 路径**
 
@@ -644,7 +841,7 @@ static {
 | 创建路由 | /route/createRoute |
 | 查询域名列表 | /domain/listDomains |
 
-### 常用接口调用方式
+### 3.2 常用接口调用方式
 
 **概述**
 
@@ -672,18 +869,13 @@ static {
 
 **请求体**
 
-所有接口采用JSON格式请求体，基本结构如下：
+所有接口采用JSON格式请求体，基本结构如下： `{`
 
 ```json
-{
   "gwInstanceId": "xxx",
 ```
 
-`... //` 其他业务参数
-
-```
-}
-```
+`... //` 其他业务参数 `}`
 
 **说明**
 
@@ -711,33 +903,37 @@ static {
 
 **成功响应示例**
 
+`{`
+
 ```json
-{
   "requestId": "abc****456",
   "code": 200,
   "msg": null,
   "data": {
     "routeId": "route-001",
     "routeName": "test-route"
-  }
-}
 ```
+
+`}` `}`
 
 **失败响应示例**
 
+`{`
+
 ```json
-{
   "requestId": "ab****f456",
   "code": 500,
   "msg": "Route not found",
   "data": null
-}
 ```
+
+`}`
 
 **分页响应示例**
 
+`{`
+
 ```json
-{
   "requestId": "ab****456",
   "code": 200,
   "msg": null,
@@ -750,12 +946,7 @@ static {
       { "id": "2", "name": "item-2" }
 ```
 
-]
-
-```
-  }
-}
-```
+`]` `}` `}`
 
 **认证方式**
 
@@ -778,9 +969,9 @@ Authorization: Bearer <token>
 | 请求头 | Authorization: Bearer <api-key> 或 x- api-key: <api-key> 。 |
 | 查询参数 | ?api key=<api-key> 。 _ |
 
-|  |  | Authorization: Bearer <api-key> |
+|   |   | Authorization: Bearer <api-key> |
 |---|---|---|
-|  | api-key: <api-key> |  |
+|   | api-key: <api-key> |   |
 
 具体认证方式由网关实例的认证配置决定。
 
@@ -809,6 +1000,8 @@ Authorization: Bearer <token>
 
 **接口分类概览**
 
+**API网关（SCG）接口**
+
 | 模块 | 接口路径 | 说明 |
 |---|---|---|
 | 路由管理 | /route | 路由配置管理。 |
@@ -828,10 +1021,9 @@ Authorization: Bearer <token>
 
 **业务异常**
 
-当业务逻辑出现异常时，返回：
+当业务逻辑出现异常时，返回： `{`
 
 ```json
-{
   "code": 500,
 ```
 
@@ -839,10 +1031,9 @@ Authorization: Bearer <token>
 
 ```json
   "data": null
-}
 ```
 
-常见业务异常：
+`}` 常见业务异常：
 
 | 错误信息 | 说明 |
 |---|---|
@@ -853,31 +1044,29 @@ Authorization: Bearer <token>
 
 **参数校验异常**
 
-当请求参数校验失败时，返回：
+当请求参数校验失败时，返回： `{`
 
 ```json
-{
   "code": 500,
   "msg": "<field> <error message>",
   "data": null
-}
 ```
 
-示例：
+`}` 示例： `{`
 
 ```json
-{
   "code": 500,
   "msg": "gwInstanceId must not be blank",
   "data": null
-}
 ```
+
+`}`
 
 **请求示例**
 
 **cURL示例**
 
-# 创建路由
+`#` 创建路由
 
 ```json
 curl -X POST 'http://localhost:8080/route/createRoute' \
@@ -888,19 +1077,26 @@ curl -X POST 'http://localhost:8080/route/createRoute' \
     "routeName": "test-route",
     "path": "/api/test",
     "serviceId": "service-001"
-  }'
 ```
+
+`}'`
 
 **HTTP请求示例**
 
+```
+POST /route/createRoute HTTP/1.1 Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token>
+```
+
+`{`
+
 ```json
-Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token> {
   "gwInstanceId": "instance-001",
   "routeName": "test-route",
   "path": "/api/test",
   "serviceId": "service-001"
-}
 ```
+
+`}`
 
 **最佳实践**
 
@@ -913,7 +1109,7 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 4. .** **实例区分**
 操作前确认 `gwInstanceId` 对应的网关类型。 通过 `/gatewayInstance/getInstance` 查询实例详情确认类型。
 
-#### API 调用-集群管理
+#### 3.2.1 API 调用-集群管理
 
 **概述**
 
@@ -954,11 +1150,11 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 
 **k8sClusterAttribute 结构**
 
-| 参数名 | 类型 | 必填 |  | 说明 |  |  |  |  |
+| 参数名 | 类型 | 必填 |   | 说明 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-| csClusterId | String | 条件必填 |  | 容器服务集群ID。 说明 container- service 类型时必填。 |  |  |  |  |
-|  |  |  |  |  |  | container- |  |  |
-|  |  |  |  |  | service |  |  |  |
+| csClusterId | String | 条件必填 |   | 容器服务集群ID。 说明 container- service 类型时必填。 |   |   |   |   |
+|   |   |   |   |   |   | container- |   |   |
+|   |   |   |   |   | service |   |   |   |
 
 **查询集群列表**
 
@@ -1077,6 +1273,8 @@ Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 GetK8sClusterNameRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | clusterCode | String | 是 | 集群编码。 |
@@ -1166,9 +1364,13 @@ checkConnect(client clusterCode);
 
 `// ==========` 取消导入集群 `==========`
 
-```java
+```
         // cancelImportCluster(client, clusterCode);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -1177,11 +1379,18 @@ checkConnect(client clusterCode);
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -1189,8 +1398,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -1200,27 +1412,23 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 导入自建`Kubernetes`集群（基于 `ImportK8sClusterRequest`）
-`*/`
+`*` 导入自建`Kubernetes`集群（基于 `ImportK8sClusterRequest`） `*/`
 
 ```java
     private static String importSelfBuiltCluster(IAcsClient client) throws Exception {
 ```
 
-p g p
+`p` `p` `(` `)` `p` `{`
 
 ```
-(
-```
-
-) p
-
-```
-{
         Map<String, Object> request = new HashMap<>();
         request.put("k8sClusterName", "my-self-built-cluster");         // 【必填】集群名
 ```
@@ -1251,13 +1459,15 @@ clusterCode);
             System.out.println("importSelfBuiltCluster failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 导入容器服务`Kubernetes`集群（基于 `ImportK8sClusterRequest`）
-`*/`
+`*` 导入容器服务`Kubernetes`集群（基于 `ImportK8sClusterRequest`） `*/`
 
 ```java
     private static String importContainerServiceCluster(IAcsClient client) throws Excep
@@ -1297,13 +1507,15 @@ clusterCode);
             System.out.println("importContainerServiceCluster failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询集群列表（基于 `ListK8sClusterRequest`）
-`*/`
+`*` 查询集群列表（基于 `ListK8sClusterRequest`） `*/`
 
 ```java
     private static void listClusters(IAcsClient client) throws Exception {
@@ -1315,18 +1527,22 @@ result.getString("msg"));
 
 名称（模糊搜索）
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/k8s/listClusters");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listClusters: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询全部集群
-`*/`
+`*` 查询全部集群 `*/`
 
 ```java
     private static void getClusterList(IAcsClient client) throws Exception {
@@ -1335,12 +1551,15 @@ response.getHttpResponse().getHttpContentString());
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("getClusterList: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 测试集群连接（基于 `CheckK8sClusterConnectRequest`）
-`*/`
+`*` 测试集群连接（基于 `CheckK8sClusterConnectRequest`） `*/`
 
 ```java
     private static void checkConnect(IAcsClient client, String clusterCode) throws Exce
@@ -1357,14 +1576,19 @@ ption {
 FormatType.JSON);
 ```
 
-```
+```java
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("checkConnectCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询集群名称（基于 `GetK8sClusterNameRequest`） `*/`
 
 ```java
     private static void getK8sClusterName(IAcsClient client, String clusterCode) throws
@@ -1375,18 +1599,22 @@ Exception {
 
 码
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/k8s/getK8sClusterName");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getK8sClusterName: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询实例关联集群信息（基于 `GetK8sClusterInfoRequest`）
-`*/`
+`*` 查询实例关联集群信息（基于 `GetK8sClusterInfoRequest`） `*/`
 
 ```java
     private static void getK8sClusterInfoByGwInstanceId(IAcsClient client, String gwIns
@@ -1405,12 +1633,15 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("getK8sClusterInfoByGwInstanceId: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 更新集群（基于 `UpdateK8sClusterRequest`）
-`*/`
+`*` 更新集群（基于 `UpdateK8sClusterRequest`） `*/`
 
 ```java
     private static void updateCluster(IAcsClient client, String clusterCode) throws Exc
@@ -1431,35 +1662,39 @@ eption {
         CommonRequest commonRequest = createBaseRequest("/k8s/updateCluster");
 ```
 
-R t
+`R` `t`
 
 ```
 tHttC
 ```
 
-t
+`t`
 
 ```
-t(JSONObj ttJSONBt (
+t(JSONObj ttJSONBt
 ```
 
-`t)`
+`(` `t)`
 
 ```
 "UTF8"
 ```
 
-```
+```java
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("updateCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 取消导入集群（基于 `CancelImportK8sClusterRequest`）
-`*/`
+`*` 取消导入集群（基于 `CancelImportK8sClusterRequest`） `*/`
 
 ```java
     private static void cancelImportCluster(IAcsClient client, String clusterCode) thro
@@ -1470,15 +1705,16 @@ ws Exception {
 
 码
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/k8s/cancelImportCluster");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("cancelImportCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **集群类型说明**
 
@@ -1496,11 +1732,12 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误. |
 
-#### API 调用-来源管理
+#### 3.2.2 API 调用-来源管理
 
 **概述**
 
 来源管理模块提供服务注册中心的增删改查功能。来源用于服务发现，SCG支持Nacos、微服务空间 (EDAS)、Eureka、Database四种来源类型。
+**适用引擎**：SCG（API网关）
 **API****路径前缀**： `/source`
 
 **认证方式**
@@ -1711,13 +1948,17 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 
 `// ==========` 查询来源详情 `==========`
 
-```java
+```
         getSource(client, nacosSourceId);
         // ========== 修改来源 ==========
         modifySource(client, nacosSourceId);
         // ========== 删除来源 ==========
         deleteSource(client, nacosSourceId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -1726,11 +1967,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -1738,8 +1986,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
 ```
 
@@ -1752,12 +2003,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建`Nacos`来源
-`*/`
+`*` 创建`Nacos`来源 `*/`
 
 ```java
     private static String createNacosSource(IAcsClient client) throws Exception {
@@ -1843,13 +2097,15 @@ Systemoutprintln("createNacosSourcefailed:"+resultgetString("msg"));
 ```java
             System.out.println("createNacosSource failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建微服务空间`(EDAS)`来源
-`*/`
+`*` 创建微服务空间`(EDAS)`来源 `*/`
 
 ```java
     private static String createEdasSource(IAcsClient client) throws Exception {
@@ -1897,13 +2153,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createEdasSource failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建`Eureka`来源
-`*/`
+`*` 创建`Eureka`来源 `*/`
 
 ```java
     private static String createEurekaSource(IAcsClient client) throws Exception {
@@ -1944,13 +2202,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createEurekaSource failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建`Database`来源
-`*/`
+`*` 创建`Database`来源 `*/`
 
 ```java
     private static String createDatabaseSource(IAcsClient client) throws Exception {
@@ -2021,13 +2281,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createDatabaseSource failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询来源列表
-`*/`
+`*` 查询来源列表 `*/`
 
 ```java
     private static void listSources(IAcsClient client) throws Exception {
@@ -2061,22 +2323,30 @@ result.getString("msg"));
 
 源类型筛选
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/source/listSources");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listSources: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询来源详情
-`*/`
+`*` 查询来源详情 `*/`
 
 ```java
     private static void getSource(IAcsClient client, String sourceId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("sourceId", sourceId);                                  // 【必填】来源
 ```
@@ -2089,18 +2359,22 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/source/getSource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getSource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改来源
-`*/`
+`*` 修改来源 `*/`
 
 ```java
     private static void modifySource(IAcsClient client, String sourceId) throws Excepti
@@ -2139,18 +2413,22 @@ on {
 
 源配置结构
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/source/modifySource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifySource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除来源
-`*/`
+`*` 删除来源 `*/`
 
 ```java
     private static void deleteSource(IAcsClient client, String sourceId) throws Excepti
@@ -2167,15 +2445,16 @@ on {
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/source/deleteSource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteSource: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **来源类型说明（SCG）**
 
@@ -2202,7 +2481,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-服务管理
+#### 3.2.3 API 调用-服务管理
 
 **概述**
 
@@ -2270,36 +2549,23 @@ response.getHttpResponse().getHttpContentString());
 
 **固定节点（upstreamType=1）：**
 
+`{`
+
 ```json
-{
     "nodes": [
-        {
 ```
 
-`"ip": "192***.*.100", //` 【必填】节点`IP`地址 `"port": 8080, //` 【必填】端口 `"weight": 100, //` 【可选】权重，默认`100` `"enable": true //` 【可选】是否启用，默认`true`
-
-```
-        }
-```
-
-]
-
-```
-}
-```
+`{` `"ip": "192***.*.100", //` 【必填】节点`IP`地址 `"port": 8080, //` 【必填】端口 `"weight": 100, //` 【可选】权重，默认`100` `"enable": true //` 【可选】是否启用，默认`true` `}` `]` `}`
 
 **Nacos服务发现（upstreamType=2）：**
 
-```
-{
-```
-
-`"nacosNamespaceId": "public", //` 【必填】`Nacos`命名空间`ID`
+`{` `"nacosNamespaceId": "public", //` 【必填】`Nacos`命名空间`ID`
 
 ```json
     "nacosGroupName": "DEFAULT_GROUP"  // 【可选】Nacos分组名
-}
 ```
+
+`}`
 
 **HealthCheckStruct 结构（SCG健康检查）**
 
@@ -2330,7 +2596,7 @@ response.getHttpResponse().getHttpContentString());
 | httpHost | String | 否 | HTTP检查Host。 |
 | expectedStatuses | List | 条件必填 | 预期状态码，如 ["200","301"]。 |
 
-|  |  |  | protocol=http |
+|   |   |   | protocol=http |
 |---|---|---|---|
 
 **查询服务列表**
@@ -2552,12 +2818,15 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
         modifyService(client, serviceId);
         // ========== 删除服务 ==========
         deleteService(client, serviceId);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建客户端（自建`ACK`和企业版通用）
-`*/`
+`*` 创建客户端（自建`ACK`和企业版通用） `*/`
 
 ```java
     private static IAcsClient createClient() {
@@ -2568,14 +2837,16 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
-    private static String getEndpoint() {
-        return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
 ```
 
-i t
+`}` `}`
+
+```java
+    private static String getEndpoint() {
+        return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
+```
+
+`}` `t`
 
 ```
 tti
@@ -2587,13 +2858,7 @@ tti
 tAthH
 ```
 
-d
-
-```
-(C
-```
-
-R t
+`d` `(C` `R` `t`
 
 ```
 t){
@@ -2607,8 +2872,11 @@ t){
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -2618,12 +2886,15 @@ t){
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建固定节点服务
-`*/`
+`*` 创建固定节点服务 `*/`
 
 ```java
     private static String createFixedNodeService(IAcsClient client) throws Exception {
@@ -2728,13 +2999,15 @@ serviceId);
             System.out.println("createFixedNodeService failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建`Nacos`服务发现服务
-`*/`
+`*` 创建`Nacos`服务发现服务 `*/`
 
 ```java
     private static String createNacosService(IAcsClient client) throws Exception {
@@ -2820,13 +3093,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createNacosService failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建带健康检查的服务
-`*/`
+`*` 创建带健康检查的服务 `*/`
 
 ```java
     private static String createServiceWithHealthCheck(IAcsClient client) throws Except
@@ -2980,13 +3255,15 @@ serviceId);
             System.out.println("createServiceWithHealthCheck failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询服务列表（基于 `GatewayServiceListByPageRequest`）
-`*/`
+`*` 查询服务列表（基于 `GatewayServiceListByPageRequest`） `*/`
 
 ```java
     private static void listServices(IAcsClient client) throws Exception {
@@ -3026,18 +3303,22 @@ result.getString("msg"));
 
 是否容灾服务筛选
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/microservice/listServices");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listServices: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询服务详情
-`*/`
+`*` 查询服务详情 `*/`
 
 ```java
     private static void getService(IAcsClient client, String serviceId) throws Exceptio
@@ -3054,18 +3335,22 @@ n {
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/microservice/getService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getService: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改服务
-`*/`
+`*` 修改服务 `*/`
 
 ```java
     private static void modifyService(IAcsClient client, String serviceId) throws Excep
@@ -3117,18 +3402,22 @@ tion {
 
 务结构配置
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/microservice/modifyService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyService: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除服务
-`*/`
+`*` 删除服务 `*/`
 
 ```java
     private static void deleteService(IAcsClient client, String serviceId) throws Excep
@@ -3145,18 +3434,22 @@ tion {
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/microservice/deleteService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteService: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 批量删除服务
-`*/`
+`*` 批量删除服务 `*/`
 
 ```java
     private static void batchDeleteServices(IAcsClient client, List<String> serviceIds)
@@ -3182,16 +3475,17 @@ requestput("serviceIds" serviceIds);
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest =
 createBaseRequest("/microservice/batchDeleteService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("batchDeleteService: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **上游类型说明**
 
@@ -3220,7 +3514,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-实例管理
+#### 3.2.4 API 调用-实例管理
 
 **概述**
 
@@ -3325,6 +3619,8 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 GetInstanceInfoRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 实例ID。 |
@@ -3342,6 +3638,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /gatewayInstance/modifyInstance |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 ModifyInstanceRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -3404,6 +3702,8 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 StopInstanceRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 实例ID。 |
@@ -3443,6 +3743,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /gatewayInstance/modifyResource |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 ModifyInstanceResourceRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -3514,11 +3816,15 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 
 `// ==========` 查询实例资源 `==========`
 
-```java
+```
         getResource(client, instanceId);
         // ========== 删除实例 ==========
         // deleteInstance(client, instanceId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -3527,11 +3833,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -3539,8 +3852,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -3550,12 +3866,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建实例（基于 `CreateGwInstanceRequest`）
-`*/`
+`*` 创建实例（基于 `CreateGwInstanceRequest`） `*/`
 
 ```java
     private static String createInstance(IAcsClient client) throws Exception {
@@ -3616,13 +3935,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createInstance failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询实例列表（基于 `ListGwInstancesRequest`）
-`*/`
+`*` 查询实例列表（基于 `ListGwInstancesRequest`） `*/`
 
 ```java
     private static void listInstances(IAcsClient client) throws Exception {
@@ -3651,16 +3972,21 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
 createBaseRequest("/gatewayInstance/listInstances");
 ```
 
-```
+```java
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listInstances: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询实例详情（基于 `GetInstanceInfoRequest`） `*/`
 
 ```java
     private static void getInstanceInfo(IAcsClient client, String gwInstanceId) throws
@@ -3672,12 +3998,17 @@ createBaseRequest("/gatewayInstance/getInstanceInfo");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getInstanceInfo: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 修改实例名称（基于 `ModifyInstanceRequest`） `*/`
 
 ```java
     private static void modifyInstance(IAcsClient client, String gwInstanceId) throws E
@@ -3689,19 +4020,23 @@ xception {
 
 名称
 
-```
+```java
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/modifyInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询实例资源（基于 `GetInstanceResourceRequest`）
-`*/`
+`*` 查询实例资源（基于 `GetInstanceResourceRequest`） `*/`
 
 ```java
     private static void getResource(IAcsClient client, String gwInstanceId) throws Exce
@@ -3711,18 +4046,23 @@ ption {
 CommonReqestcommonReqest
 ```
 
-```
+```java
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/getResource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getResource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 修改实例资源（基于 `ModifyInstanceResourceRequest`） `*/`
 
 ```java
     private static void modifyResource(IAcsClient client, String gwInstanceId) throws E
@@ -3734,20 +4074,24 @@ xception {
 
 格
 
-```
+```java
         request.put("instanceNumber", 3);                                // 【可选】节点数
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/modifyResource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyResource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 重启实例（基于 `RestartGwInstanceRequest`）
-`*/`
+`*` 重启实例（基于 `RestartGwInstanceRequest`） `*/`
 
 ```java
     private static void restartInstance(IAcsClient client, String gwInstanceId) throws
@@ -3759,19 +4103,24 @@ createBaseRequest("/gatewayInstance/restartInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("restartInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 停止实例（基于 `StopInstanceRequest`） `*/`
 
 ```java
     private static void stopInstance(IAcsClient client, String gwInstanceId) throws Exc
 eption { Map<String,Object>request=newHashMap<>();
 ```
 
-```
+```java
         Map<String, Object> request  new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【必填】实例ID
         CommonRequest commonRequest =
@@ -3779,13 +4128,17 @@ createBaseRequest("/gatewayInstance/stopInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("stopInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除实例（基于 `DeleteGwInstanceRequest`）
-`*/`
+`*` 删除实例（基于 `DeleteGwInstanceRequest`） `*/`
 
 ```java
     private static void deleteInstance(IAcsClient client, String gwInstanceId) throws E
@@ -3797,10 +4150,11 @@ createBaseRequest("/gatewayInstance/deleteInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **实例状态说明**
 
@@ -3835,7 +4189,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-分组管理
+#### 3.2.5 API 调用-分组管理
 
 **概述**
 
@@ -3862,6 +4216,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /group/createGroup |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 CreateGroupRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -3891,6 +4247,8 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 ListGroupsRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 网关实例ID。 |
@@ -3917,6 +4275,8 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 GetGroupRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 网关实例ID。 |
@@ -3935,6 +4295,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /group/modifyGroup |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 ModifyGroupRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -3983,6 +4345,8 @@ response.getHttpResponse().getHttpContentString());
 | Method | POST |
 | Content-Type | application/json |
 
+**请求参数（基于 AddGroupDomainRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 网关实例ID。 |
@@ -4002,6 +4366,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /group/deleteGroupDomain |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 DeleteGroupDomainRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -4079,11 +4445,15 @@ import java.util.HashMap; import java.util.List; import java.util.Map; public cl
 
 `// ==========` 删除分组域名 `==========`
 
-```java
+```
         deleteGroupDomain(client, groupId, "domain-id-xxx");
         // ========== 删除分组 ==========
         deleteGroup(client, groupId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -4092,11 +4462,9 @@ import java.util.HashMap; import java.util.List; import java.util.Map; public cl
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
 ```
 
-i t
+`}` `}` `t`
 
 ```
 tti Sti tEd it(){
@@ -4105,7 +4473,11 @@ tti Sti tEd it(){
 ```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -4113,8 +4485,11 @@ tti Sti tEd it(){
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -4124,11 +4499,15 @@ tti Sti tEd it(){
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 创建分组（基于 `CreateGroupRequest`） `*/`
 
 ```java
     private static String createGroup(IAcsClient client) throws Exception {
@@ -4204,12 +4583,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createGroup failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询分组列表（基于 `ListGroupsRequest`） `*/`
 
 ```java
     private static void listGroups(IAcsClient client) throws Exception {
@@ -4249,17 +4631,22 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
 
 是否容灾分组筛选
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/group/listGroups");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listGroups: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询分组详情（基于 `GetGroupRequest`） `*/`
 
 ```java
     private static void getGroup(IAcsClient client, String groupId) throws Exception {
@@ -4282,37 +4669,47 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
 ```
 
-`Co` o
+`Co` `o`
 
 ```
 espose espose
 ```
 
-c
+`c`
 
 ```
 et.getCo
 ```
 
-o
+`o`
 
 ```
 espose(co
 ```
 
-o
+`o`
+
+```java
+equest);
+        System.out.println("getGroup: " +
+response.getHttpResponse().getHttpContentString());
+```
+
+`}`
 
 ```
-equest); response.getHttpResponse().getHttpContentString());
-    }
     /**
 ```
 
-`*/`
+`*` 修改分组（基于 `ModifyGroupRequest`） `*/`
 
 ```java
     private static void modifyGroup(IAcsClient client, String groupId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【必填】网
 ```
@@ -4343,17 +4740,22 @@ equest); response.getHttpResponse().getHttpContentString());
 
 组描述
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/group/modifyGroup");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyGroup: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 添加分组域名（基于 `AddGroupDomainRequest`） `*/`
 
 ```java
     private static void addGroupDomain(IAcsClient client, String groupId, List<String>
@@ -4376,17 +4778,22 @@ domainIds) throws Exception {
 
 加的域名`ID`列表
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/group/addGroupDomain");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("addGroupDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 删除分组域名（基于 `DeleteGroupDomainRequest`） `*/`
 
 ```java
     private static void deleteGroupDomain(IAcsClient client, String groupId, String dom
@@ -4409,22 +4816,30 @@ ainId) throws Exception {
 
 除的域名`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/group/deleteGroupDomain");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteGroupDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除分组
-`*/`
+`*` 删除分组 `*/`
 
 ```java
     private static void deleteGroup(IAcsClient client, String groupId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【必填】网
 ```
@@ -4437,18 +4852,22 @@ response.getHttpResponse().getHttpContentString());
 
 `ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/group/deleteGroup");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteGroup: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询所有分组
-`*/`
+`*` 查询所有分组 `*/`
 
 ```java
     private static void getAllGroups(IAcsClient client) throws Exception {
@@ -4458,18 +4877,19 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/group/getAllGroups");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getAllGroups: " +
 ```
 
 ```
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **分组属性说明**
 
@@ -4492,7 +4912,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-路由管理
+#### 3.2.6 API 调用-路由管理
 
 **概述**
 
@@ -4686,11 +5106,7 @@ response.getHttpResponse().getHttpContentString());
 
 **接口说明**
 
-启用或禁用路由。
-
-**说明**
-
-仅适用于 SCG 引擎，Higress 引擎不支持此接口。
+启用或禁用路由。 仅适用于 SCG 引擎，Higress 引擎不支持此接口。
 
 **请求信息**
 
@@ -4721,8 +5137,6 @@ response.getHttpResponse().getHttpContentString());
 | URL | /route/batchDeleteRoute |
 | Method | POST |
 | Content-Type | application/json |
-
-**请求参数**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -4795,12 +5209,15 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
         changeRouteStatus(client, routeId, false);
         // ========== 删除路由 ==========
         deleteRoute(client, routeId);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建客户端（自建`ACK`和企业版通用）
-`*/`
+`*` 创建客户端（自建`ACK`和企业版通用） `*/`
 
 ```java
     private static IAcsClient createClient() {
@@ -4811,11 +5228,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -4823,15 +5247,18 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
         request.setSysUriPattern(uriPattern);
 ```
 
-t `tS`
+`t` `tS`
 
 ```
 Mthd(MthdT POST)
@@ -4843,12 +5270,15 @@ Mthd(MthdT POST)
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建路由前校验
-`*/`
+`*` 创建路由前校验 `*/`
 
 ```java
     private static void checkCreateRoute(IAcsClient client) throws Exception {
@@ -4857,13 +5287,17 @@ Mthd(MthdT POST)
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("checkCreateRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建路由
-`*/`
+`*` 创建路由 `*/`
 
 ```java
     private static String createRoute(IAcsClient client) throws Exception {
@@ -4881,13 +5315,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createRoute failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 构建路由请求参数
-`*/`
+`*` 构建路由请求参数 `*/`
 
 ```java
     private static Map<String, Object> buildRouteRequest() {
@@ -5045,12 +5481,15 @@ T/REGEX
 
 ```
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询路由列表
-`*/`
+`*` 查询路由列表 `*/`
 
 ```java
     private static void listRoutes(IAcsClient client) throws Exception {
@@ -5090,18 +5529,22 @@ T/REGEX
 
 启用状态筛选
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/listRoutes");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listRoutes: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询路由详情
-`*/`
+`*` 查询路由详情 `*/`
 
 ```java
     private static void getRoute(IAcsClient client, String routeId) throws Exception {
@@ -5117,22 +5560,30 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/getRoute");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改路由
-`*/`
+`*` 修改路由 `*/`
 
 ```java
     private static void modifyRoute(IAcsClient client, String routeId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = buildRouteRequest();
         request.put("routeId", routeId);                                    // 【必填】要修
 ```
@@ -5151,18 +5602,22 @@ response.getHttpResponse().getHttpContentString());
 
 优先级
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/modifyRoute");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改路由状态
-`*/`
+`*` 修改路由状态 `*/`
 
 ```java
     private static void changeRouteStatus(IAcsClient client, String routeId, boolean en
@@ -5185,25 +5640,30 @@ ableStatus) throws Exception {
 
 用状态
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/changeRouteStatus");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("changeRouteStatus: " +
 response.getHttpResponse().getHttpContentString());
-    }
 ```
+
+`}`
 
 ```
     /**
 ```
 
-* 删除路由
-`*/`
+`*` 删除路由 `*/`
 
 ```java
     private static void deleteRoute(IAcsClient client, String routeId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("routeId", routeId);                                    // 【必填】路由
 ```
@@ -5216,18 +5676,22 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/deleteRoute");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 批量删除路由
-`*/`
+`*` 批量删除路由 `*/`
 
 ```java
     private static void batchDeleteRoutes(IAcsClient client, List<String> routeIds) thr
@@ -5244,15 +5708,16 @@ ows Exception {
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/batchDeleteRoute");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("batchDeleteRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **路径匹配类型说明**
 
@@ -5280,7 +5745,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-策略配置管理
+#### 3.2.7 API 调用-策略配置管理
 
 **概述**
 
@@ -5397,11 +5862,11 @@ response.getHttpResponse().getHttpContentString());
 
 **请求信息**
 
-| 项目 |  | 内容 |  |  |
+| 项目 |   | 内容 |   |   |
 |---|---|---|---|---|
-| URL |  | /strategyConfig/modifyStrategyConfigStatus |  |  |
-|  |  |  | /strategyConfig/modifyStrategyConfigStatus |  |
-|  | RL |  |  |  |
+| URL |   | /strategyConfig/modifyStrategyConfigStatus |   |   |
+|   |   |   | /strategyConfig/modifyStrategyConfigStatus |   |
+|   | RL |   |   |   |
 
 | 17 | > 文档版本：2026072 |
 |---|---|
@@ -5579,12 +6044,15 @@ AccessKey Secret
 
 ```
         deleteStrategyConfig(client, flowControlStrategyId);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建客户端（自建`ACK`和企业版通用）
-`*/`
+`*` 创建客户端（自建`ACK`和企业版通用） `*/`
 
 ```java
     private static IAcsClient createClient() {
@@ -5605,23 +6073,28 @@ AccessKey Secret
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 获取`Endpoint`
-获取 p `*/`
+`*` 获取`Endpoint` 获取 `p` `*/`
 
 ```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 设置认证`Header`（自建`ACK`和企业版通用）
-`*/`
+`*` 设置认证`Header`（自建`ACK`和企业版通用） `*/`
 
 ```java
     private static void setAuthHeaders(CommonRequest request) {
@@ -5641,13 +6114,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 ```
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建基础请求对象
-`*/`
+`*` 创建基础请求对象 `*/`
 
 ```java
     private static CommonRequest createBaseRequest(String uriPattern) {
@@ -5659,10 +6134,9 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
 ```
 
-`// ==========` 策略配置创建示例 `==========`
+`}` `// ==========` 策略配置创建示例 `==========`
 
 ```
     /**
@@ -5674,10 +6148,9 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 
 ```java
     private static String createFlowControlStrategy(IAcsClient client) throws Exception
-{
 ```
 
-`//` 流控规则配置
+`{` `//` 流控规则配置
 
 ```
         Map<String, Object> flowRule = new HashMap<>();
@@ -5772,7 +6245,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.put("strategyConfigName", "route-flow-control");
         request.put("config", config);
         return executeCreate(client, request, "Flow Control Policy");
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
@@ -5799,8 +6276,9 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.put("strategyConfigName", "route-timeout");
         request.put("config", config);
         return executeCreate(client, request, "Timeout Policy");
-    }
 ```
+
+`}`
 
 ```
     /**
@@ -5828,7 +6306,7 @@ ion {
         fuseCondition.put("operator", "in");                                // 【必填】比较
 ```
 
-符：`gt(`大于`), in(`包含`), notIn(`不包含)
+符：`gt(`大于`), in(`包含`), notIn(`不包含`)`
 
 ```
         fuseCondition.put("judgValue", "500,502,503");                      // 【必填】判
@@ -5903,7 +6381,7 @@ ion {
         config.put("combinedCondition", "any");                             // 【可选】组合
 ```
 
-条件：`all(`全部满足`), any(`任一满足)
+条件：`all(`全部满足`), any(`任一满足`)`
 
 ```
         config.put("routeFusesCondition", routeFusesCondition);             // 【必填】熔
@@ -5930,7 +6408,7 @@ ion {
         request.put("strategyConfigName", "route-circuit-breaker");
 ```
 
-t
+`t`
 
 ```
 t(" fi" fi)
@@ -5939,7 +6417,11 @@ t(" fi" fi)
 ```
         request.put("config", config);
         return executeCreate(client, request, "Circuit Breaker Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 4. 跨域策略 (Cross-domain Policy)
      * config结构: RouteCross
@@ -5965,7 +6447,7 @@ t(" fi" fi)
         config.put("allowedOrigins", "*");                                  // 【必填】允许
 ```
 
-的来源（*表示全部）
+的来源（`*`表示全部）
 
 ```
         config.put("allowedMethods", Arrays.asList("GET", "POST", "PUT", "DELETE",
@@ -6010,7 +6492,11 @@ t(" fi" fi)
         request.put("strategyConfigName", "route-cors");
         request.put("config", config);
         return executeCreate(client, request, "Cross-domain Policy");
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
@@ -6085,7 +6571,11 @@ Map<String Object>config=newHashMap<>();
         request.put("strategyConfigName", "route-cache");
         request.put("config", config);
         return executeCreate(client, request, "Caching Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 6. IP黑白名单策略 (IP Blacklist and Whitelist Policy)
      * config结构: RouteIpBlockConfig
@@ -6147,7 +6637,11 @@ Map<String Object>config=newHashMap<>();
 
 ```
         return executeCreate(client, request, IP Blacklist and Whitelist Policy);
-    }
+```
+
+`}`
+
+```
     /**
      * 7. ACL权限控制策略 (ACL Permission Control Policy)
      * config结构: RouteACLConfig
@@ -6205,7 +6699,11 @@ Map<String Object>config=newHashMap<>();
         request.put("strategyConfigName", "route-acl");
         request.put("config", config);
         return executeCreate(client, request, "ACL Permission Control Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 8. Mock策略 (MOCK Policy)
      * config结构: CacheMockConfig
@@ -6252,7 +6750,11 @@ Map<String Object>config=newHashMap<>();
         request.put("strategyConfigName", "route-mock");
         request.put("config", config);
         return executeCreate(client, request, "MOCK Policy");
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
@@ -6291,7 +6793,11 @@ Map<String Object>config=newHashMap<>();
         request.put("strategyConfigName", "route-tracing");
         request.put("config", config);
         return executeCreate(client, request, "Request Tracing Policy");
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
@@ -6305,7 +6811,11 @@ Map<String Object>config=newHashMap<>();
 
 ```java
     private static String createRequestSizeStrategy(IAcsClient client) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> config = new HashMap<>();
         config.put("dataSize", "10MB");                                     // 【必填】请求
 ```
@@ -6319,17 +6829,15 @@ Map<String Object>config=newHashMap<>();
         request.put("strategyConfigName", "route-request-size");
         request.put("config", config);
         return executeCreate(client, request, "Request Size Limit Policy");
-    }
 ```
 
-`// ==========` 通用操作方法 `==========`
+`}` `// ==========` 通用操作方法 `==========`
 
 ```
     /**
 ```
 
-* 执行创建策略配置
-`*/`
+`*` 执行创建策略配置 `*/`
 
 ```java
     private static String executeCreate(IAcsClient client, Map<String, Object> request,
@@ -6350,13 +6858,15 @@ rategyId);
             System.out.println("create " + strategyName + " failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询策略配置列表
-`*/`
+`*` 查询策略配置列表 `*/`
 
 ```java
     private static void listStrategyConfigs(IAcsClient client) throws Exception {
@@ -6369,13 +6879,17 @@ createBaseRequest("/strategyConfig/listStrategyConfigs");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listStrategyConfigs: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询策略配置详情
-`*/`
+`*` 查询策略配置详情 `*/`
 
 ```java
     private static void getStrategyConfig(IAcsClient client, String strategyConfigId) t
@@ -6385,19 +6899,23 @@ hrows Exception {
         request.put("gwInstanceId", GW_INSTANCE_ID);
 ```
 
-```
+```java
         CommonRequest commonRequest =
 createBaseRequest("/strategyConfig/getStrategyConfig");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getStrategyConfig: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改策略配置状态
-`*/`
+`*` 修改策略配置状态 `*/`
 
 ```java
     private static void modifyStrategyConfigStatus(IAcsClient client, String
@@ -6413,12 +6931,15 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("modifyStrategyConfigStatus: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除策略配置
-`*/`
+`*` 删除策略配置 `*/`
 
 ```java
     private static void deleteStrategyConfig(IAcsClient client, String
@@ -6431,10 +6952,11 @@ createBaseRequest("/strategyConfig/deleteStrategyConfig");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteStrategyConfig: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **策略类型说明（strategyName）**
 
@@ -6456,41 +6978,41 @@ response.getHttpResponse().getHttpContentString());
 | Request Tracing Policy | 请求追踪策略 | 可观测性 | 对经过本网关的请求增加请求追踪头，追踪请求链路。 |
 | ACL Permission Control Policy | ACL权限控制策略 | 认证 | 控制哪些消费者可以访问服务。 |
 
-|  | Authentication | 鉴 |
+|   | Authentication | 鉴 |
 |---|---|---|
-| Policy |  |  |
+| Policy |   |   |
 
-|  |  | Flow Control |  |
+|   |   | Flow Control |   |
 |---|---|---|---|
-|  | Policy |  |  |
+|   | Policy |   |   |
 
-|  | Circuit Breaker | 熔断 |
+|   | Circuit Breaker | 熔断 |
 |---|---|---|
-| Policy |  |  |
+| Policy |   |   |
 
-|  |  | Cross-domain |  |
+|   |   | Cross-domain |   |
 |---|---|---|---|
-|  | Policy |  |  |
+|   | Policy |   |   |
 
-|  | IP Blacklist and | IP黑白名单策略 |
+|   | IP Blacklist and | IP黑白名单策略 |
 |---|---|---|
-| Whitelist Policy |  |  |
+| Whitelist Policy |   |   |
 
-|  | Request Tracing | 请求 |
+|   | Request Tracing | 请求 |
 |---|---|---|
-| Policy |  |  |
+| Policy |   |   |
 
-|  | ACL Permission | ACL权限控制 |
+|   | ACL Permission | ACL权限控制 |
 |---|---|---|
-| Control Policy |  |  |
+| Control Policy |   |   |
 
-|  | Request Size Limit Policy |  | 请求体大小限制策略 | 流量 | 限制请求体的最大大小。 |
+|   | Request Size Limit Policy |   | 请求体大小限制策略 | 流量 | 限制请求体的最大大小。 |
 |---|---|---|---|---|---|
-|  |  | Request Size | 请求体大 |  |  |
-|  | Limit Policy |  |  |  |  |
-|  | HSF Protocol Mapping Policy |  | HSF协议映射策略 | 转换 | 控制路由指向的HSF具体方法，设置HTTP->HSF 参数格式映射。 |
-|  |  | HSF Protocol | HSF协议映 |  |  |
-|  | Mapping Policy |  |  |  |  |
+|   |   | Request Size | 请求体大 |   |   |
+|   | Limit Policy |   |   |   |   |
+|   | HSF Protocol Mapping Policy |   | HSF协议映射策略 | 转换 | 控制路由指向的HSF具体方法，设置HTTP->HSF 参数格式映射。 |
+|   |   | HSF Protocol | HSF协议映 |   |   |
+|   | Mapping Policy |   |   |   |   |
 
 **Higress 策略（适用于 Higress 引擎）**
 
@@ -6556,7 +7078,7 @@ response.getHttpResponse().getHttpContentString());
 
 **策略作用域说明（scope）**
 
-策略可以应用于不同的作用域，优先级为：**路由** > **域名** > **服务** > **消费者** > **实例。**
+策略可以应用于不同的作用域，优先级为：**路由** **>** **域名** **>** **服务** **>** **消费者** **>** **实例。**
 
 | scope | 中文名称 | bitMask | 说明 |
 |---|---|---|---|
@@ -6578,7 +7100,7 @@ ROUTE = 1 + 2 = 3）。
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-消费者管理
+#### 3.2.8 API 调用-消费者管理
 
 **概述**
 
@@ -6605,8 +7127,6 @@ ROUTE = 1 + 2 = 3）。
 | URL | /application/createApp |
 | Method | POST |
 | Content-Type | application/json |
-
-**请求参数**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -6659,8 +7179,6 @@ ROUTE = 1 + 2 = 3）。
 | URL | /application/getApp |
 | Method | POST |
 | Content-Type | application/json |
-
-**请求参数**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -6839,9 +7357,13 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 
 `// ==========` 删除消费者 `==========`
 
-```java
+```
         deleteApp(client, appId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -6850,11 +7372,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -6862,8 +7391,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -6873,12 +7405,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建`BASIC`认证消费者
-`*/`
+`*` 创建`BASIC`认证消费者 `*/`
 
 ```java
     private static String createBasicConsumer(IAcsClient client) throws Exception {
@@ -6898,7 +7433,7 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.put("authType", 1);                                         // 【必填】认证
 ```
 
-类型类型：`1-BASIC`
+类型：`1-BASIC`
 
 ```
         request.put("key", "user-001");                                     // 【必填】用户
@@ -6939,13 +7474,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createBasicConsumer failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建`API Key`认证消费者
-`*/`
+`*` 创建`API Key`认证消费者 `*/`
 
 ```java
     private static String createApiKeyConsumer(IAcsClient client) throws Exception {
@@ -6985,7 +7522,7 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createApiKeyConsumer success, appId: " + appId);
 ```
 
-t `Id`
+`t` `Id`
 
 ```java
             return appId;
@@ -6993,13 +7530,15 @@ t `Id`
             System.out.println("createApiKeyConsumer failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询消费者列表
-`*/`
+`*` 查询消费者列表 `*/`
 
 ```java
     private static void listApps(IAcsClient client) throws Exception {
@@ -7039,18 +7578,22 @@ result.getString("msg"));
 
 用类别：`0-`后台，`1-`门户
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/application/listApps");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listApps: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询消费者详情
-`*/`
+`*` 查询消费者详情 `*/`
 
 ```java
     private static void getApp(IAcsClient client, String appId) throws Exception {
@@ -7066,19 +7609,22 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/application/getApp");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
 /**
 ```
 
-/
-* 修改消费者
-`*/`
+`/` `*` 修改消费者 `*/`
 
 ```java
     private static void modifyApp(IAcsClient client, String appId) throws Exception {
@@ -7106,18 +7652,22 @@ response.getHttpResponse().getHttpContentString());
 
 费者描述
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/application/modifyApp");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除消费者
-`*/`
+`*` 删除消费者 `*/`
 
 ```java
     private static void deleteApp(IAcsClient client, String appId) throws Exception {
@@ -7133,18 +7683,22 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/application/deleteApp");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 批量删除消费者
-`*/`
+`*` 批量删除消费者 `*/`
 
 ```java
     private static void batchDeleteApps(IAcsClient client, List<String> appIds) throws
@@ -7166,34 +7720,30 @@ Exception {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 ```
 
-q p
+`q` `p` `(` `j` `y` `(` `q` `),` `,`
 
-```
-(
-```
-
-j y
-
-```
-(
-```
-
-q `),` ,
-
-```
+```java
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("batchDeleteApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 刷新`Token`
-`*/`
+`*` 刷新`Token` `*/`
 
 ```java
     private static void refreshToken(IAcsClient client, String appId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("appId", appId);                                        // 【必填】消费
 ```
@@ -7206,15 +7756,16 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/application/refreshToken");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("refreshToken: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **认证类型说明**
 
@@ -7237,7 +7788,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-域名管理
+#### 3.2.9 API 调用-域名管理
 
 **概述**
 
@@ -7294,6 +7845,8 @@ response.getHttpResponse().getHttpContentString());
 | Content-Type | application/json |
 |---|---|
 
+**请求参数（基于 ListDomainsRequest）**
+
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | gwInstanceId | String | 是 | 网关实例ID。 |
@@ -7315,6 +7868,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /domain/getDomain |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 GetDomainRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -7352,6 +7907,8 @@ response.getHttpResponse().getHttpContentString());
 | URL | /domain/deleteDomain |
 | Method | POST |
 | Content-Type | application/json |
+
+**请求参数（基于 DeleteDomainRequest）**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -7441,12 +7998,15 @@ privatestaticfinalStringACCESSKEYSECRET="your-access-key-secret";
         modifyDomain(client, httpDomainId);
         // ========== 删除域名 ==========
         deleteDomain(client, httpDomainId);
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建客户端（自建`ACK`和企业版通用）
-`*/`
+`*` 创建客户端（自建`ACK`和企业版通用） `*/`
 
 ```java
     private static IAcsClient createClient() {
@@ -7457,11 +8017,18 @@ privatestaticfinalStringACCESSKEYSECRET="your-access-key-secret";
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -7469,12 +8036,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
 ```
 
+`}` `}` `}`
+
 ```java
-}
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -7484,12 +8050,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建`HTTP`域名（基于 `CreateOrUpdateDomainRequest`）
-`*/`
+`*` 创建`HTTP`域名（基于 `CreateOrUpdateDomainRequest`） `*/`
 
 ```java
     private static String createHttpDomain(IAcsClient client) throws Exception {
@@ -7525,13 +8094,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createHttpDomain failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建`HTTPS`域名（带证书）
-`*/`
+`*` 创建`HTTPS`域名（带证书） `*/`
 
 ```java
     private static String createHttpsDomain(IAcsClient client) throws Exception {
@@ -7597,12 +8168,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createHttpsDomain failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询域名列表（基于 `ListDomainsRequest`） `*/`
 
 ```java
     private static void listDomains(IAcsClient client) throws Exception {
@@ -7636,21 +8210,30 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
 
 议类型筛选
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/domain/listDomains");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listDomains: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 查询域名详情（基于 `GetDomainRequest`） `*/`
 
 ```java
     private static void getDomain(IAcsClient client, String domainId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = new HashMap<>();
         request.put("domainId", domainId);                                  // 【必填】域名
 ```
@@ -7663,18 +8246,22 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/domain/getDomain");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改域名
-`*/`
+`*` 修改域名 `*/`
 
 ```java
     private static void modifyDomain(IAcsClient client, String domainId) throws Excepti
@@ -7703,17 +8290,22 @@ on {
 
 类型
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/domain/modifyDomain");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonRequest(commonRequest);
+        System.out.println("modifyDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-`*/`
+`*` 删除域名（基于 `DeleteDomainRequest`） `*/`
 
 ```java
     private static void deleteDomain(IAcsClient client, String domainId) throws Excepti
@@ -7728,24 +8320,28 @@ on {
         request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【必填】网
 ```
 
-关实例`ID` R t R t tB R
+关实例`ID` `R` `t` `R` `t` `t``B` `R`
 
 ```
 t("/d i/dltD i")
 ```
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/domain/deleteDomain");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询所有域名
-`*/`
+`*` 查询所有域名 `*/`
 
 ```java
     private static void listAllDomains(IAcsClient client) throws Exception {
@@ -7755,15 +8351,16 @@ response.getHttpResponse().getHttpContentString());
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/domain/listAllDomains");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listAllDomains: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **协议类型说明**
 
@@ -7791,7 +8388,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-路由插件管理
+#### 3.2.10 API 调用-路由插件管理
 
 **概述**
 
@@ -7822,8 +8419,6 @@ response.getHttpResponse().getHttpContentString());
 | URL | /route/createRoutePlugin |
 | Method | POST |
 | Content-Type | application/json |
-
-**请求参数**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -7998,9 +8593,13 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 
 `// ==========` 删除路由插件 `==========`
 
-```java
+```
         deleteRoutePlugin(client, routePluginId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -8009,11 +8608,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -8021,8 +8627,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -8035,12 +8644,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 
 ```
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建路由插件
-`*/`
+`*` 创建路由插件 `*/`
 
 ```java
     private static String createRoutePlugin(IAcsClient client) throws Exception {
@@ -8104,13 +8716,15 @@ routePluginId);
         } else {
             System.out.println("createRoutePlugin failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询路由插件列表
-`*/`
+`*` 查询路由插件列表 `*/`
 
 ```java
     private static void listRoutePlugins(IAcsClient client) throws Exception {
@@ -8138,18 +8752,22 @@ routePluginId);
 
 条数
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/listRoutePlugins");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listRoutePlugins: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改路由插件
-`*/`
+`*` 修改路由插件 `*/`
 
 ```java
     private static void modifyRoutePlugin(IAcsClient client, String routePluginId) thro
@@ -8182,18 +8800,22 @@ ws Exception {
 
 的插件配置
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/modifyRoutePlugin");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyRoutePlugin: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改路由插件状态
-`*/`
+`*` 修改路由插件状态 `*/`
 
 ```java
     private static void modifyRoutePluginStatus(IAcsClient client, String
@@ -8224,7 +8846,7 @@ requestput("routePluginId" routePluginId);
         request.put("isOpen", isOpen);                                      // 【必填】tru
 ```
 
-e启用，`false`禁用
+`e`启用，`false`禁用
 
 ```java
         CommonRequest commonRequest =
@@ -8234,12 +8856,15 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("modifyRoutePluginStatus: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除路由插件
-`*/`
+`*` 删除路由插件 `*/`
 
 ```java
     private static void deleteRoutePlugin(IAcsClient client, String routePluginId) thro
@@ -8262,15 +8887,16 @@ ws Exception {
 
 由插件`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/deleteRoutePlugin");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteRoutePlugin: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **注意事项**
 
@@ -8287,7 +8913,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | 权限不足。 |
 | 500 | 服务器内部错误。 |
 
-#### API 调用-证书管理
+#### 3.2.11 API 调用-证书管理
 
 **概述**
 
@@ -8452,11 +9078,15 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 
 `// ==========` 查询证书详情 `==========`
 
-```java
+```
         getCertificate(client, certId);
         // ========== 删除证书 ==========
         deleteCertificate(client, certId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -8465,11 +9095,18 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -8477,8 +9114,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -8486,25 +9126,28 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysMethod(MethodType.POST);
 ```
 
-t `tS` P d
+`t` `tS` `P` `d`
 
 ```
 t("
 ```
 
-b `")`
+`b` `")`
 
 ```
         request.setSysProduct("csb-cop");
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 创建服务端证书
-`*/`
+`*` 创建服务端证书 `*/`
 
 ```java
     private static String createServerCertificate(IAcsClient client) throws Exception {
@@ -8565,13 +9208,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createServerCertificate failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 创建`CA`证书
-`*/`
+`*` 创建`CA`证书 `*/`
 
 ```
 privatestaticStringcreateCACertificate(IAcsClientclient)throwsException{
@@ -8622,13 +9267,15 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createCACertificate failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
 ```
 
-* 查询证书列表
-`*/`
+`*` 查询证书列表 `*/`
 
 ```java
     private static void listCertificates(IAcsClient client) throws Exception {
@@ -8669,18 +9316,22 @@ createBaseRequest("/certificate/listCertificates");
 FormatType.JSON);
 ```
 
-o
+`o`
 
-```
+```java
 atype.JSO);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listCertificates: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 查询证书详情
-`*/`
+`*` 查询证书详情 `*/`
 
 ```java
     private static void getCertificate(IAcsClient client, String certificateId) throws
@@ -8697,18 +9348,22 @@ Exception {
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/certificate/getCertificate");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getCertificate: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 修改证书
-`*/`
+`*` 修改证书 `*/`
 
 ```java
     private static void modifyCertificate(IAcsClient client, String certificateId) thro
@@ -8760,15 +9415,19 @@ createBaseRequest("/certificate/modifyCertificate");
 FormatType.JSON);
 ```
 
-```
+```java
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyCertificate: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-* 删除证书
-`*/`
+`*` 删除证书 `*/`
 
 ```java
     private static void deleteCertificate(IAcsClient client, String certificateId) thro
@@ -8785,16 +9444,17 @@ ws Exception {
 
 关实例`ID`
 
-```
+```java
         CommonRequest commonRequest =
 createBaseRequest("/certificate/deleteCertificate");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteCertificate: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **证书类型说明**
 
@@ -8814,11 +9474,11 @@ response.getHttpResponse().getHttpContentString());
 |---|---|
 | 500 | 服务器内部错误。 |
 
-## API 网关
+## 4 API 网关
 
-### 集群管理
+### 4.1 集群管理
 
-#### ListClusters
+#### 4.1.1 ListClusters
 
 查询集群列表。
 
@@ -8864,15 +9524,13 @@ response.getHttpResponse().getHttpContentString());
 | -current | Integer | 1 | 当前页码 |
 | -size | Integer | 100 | 大小 |
 
-#### GetK8sClusterInfoByGwInstanceId
+#### 4.1.2 GetK8sClusterInfoByGwInstanceId
 
 查询根据网关实例ID查询Kubernetes集群信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8892,7 +9550,7 @@ response.getHttpResponse().getHttpContentString());
 | - k8sClusterStat usDesc | String | 运行中 | Kubernetes集群状态描述 |
 | - k8sClusterImp ortDateTime | String | 2024-10-14 10:00:00 | Kubernetes集群导入时间 |
 
-#### GetK8sClusterName
+#### 4.1.3 GetK8sClusterName
 
 查询Kubernetes集群名称。
 
@@ -8914,7 +9572,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ImportCluster
+#### 4.1.4 ImportCluster
 
 导入集群。
 
@@ -8939,7 +9597,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### UpdateCluster
+#### 4.1.5 UpdateCluster
 
 更新集群。
 
@@ -8962,7 +9620,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### CancelImportCluster
+#### 4.1.6 CancelImportCluster
 
 取消导入集群。
 
@@ -8983,14 +9641,14 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | Map | {} | 数据 |
 
-#### CheckConnectCluster
+#### 4.1.7 CheckConnectCluster
 
 检查集群连接状态。
 
@@ -9014,7 +9672,7 @@ response.getHttpResponse().getHttpContentString());
 | -connectStatus | Integer | 1 | 连接状态 |
 | - connectStatus Desc | String | 已连接 | 连接状态描述 |
 
-#### ListK8sAllNamespaces
+#### 4.1.8 ListK8sAllNamespaces
 
 查询Kubernetes所有命名空间列表。
 
@@ -9036,7 +9694,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### ListAllNamespaces
+#### 4.1.9 ListAllNamespaces
 
 查询所有命名空间列表。
 
@@ -9061,9 +9719,9 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-### 实例管理
+### 4.2 实例管理
 
-#### ListInstances
+#### 4.2.1 ListInstances
 
 查询实例列表。
 
@@ -9096,7 +9754,7 @@ response.getHttpResponse().getHttpContentString());
 | ---ports | String | [] | 端口列表 |
 | ---externalIps | String | [] | 外部IP列表 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | ---clusterIp | String | [] | 集群IP列表 |
@@ -9136,7 +9794,7 @@ response.getHttpResponse().getHttpContentString());
 | -- resourceGroup | String | rg-default | 资源组 |
 | -- ingressClassN ame | String | nginx | Ingress类名 |
 
-| ·API |  |  | API |
+| ·API |   |   | API |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9153,7 +9811,7 @@ response.getHttpResponse().getHttpContentString());
 | -current | Integer | 1 | 当前页码 |
 | -size | Integer | 100 | 大小 |
 
-#### ListAllInstances
+#### 4.2.2 ListAllInstances
 
 查询所有实例列表。
 
@@ -9168,7 +9826,7 @@ response.getHttpResponse().getHttpContentString());
 | data | Array | {} | 数据 |
 | -accessMode | Array | [] | 接入模式列表 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9187,7 +9845,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### ListInstancesByServiceId
+#### 4.2.3 ListInstancesByServiceId
 
 查询实例列表。
 
@@ -9212,7 +9870,7 @@ response.getHttpResponse().getHttpContentString());
 | -serviceStruct | Map | {} | 服务结构 |
 | -instanceList | Map | {} | 实例列表 |
 
-#### GetInstanceInfo
+#### 4.2.4 GetInstanceInfo
 
 查询实例信息。
 
@@ -9234,7 +9892,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Struct | {} | 数据 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9257,7 +9915,7 @@ response.getHttpResponse().getHttpContentString());
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | 网关实例ID |
 | -name | String | my-resource | 名称 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9280,7 +9938,7 @@ response.getHttpResponse().getHttpContentString());
 | - k8sNamespac e | String | default | Kubernetes命名空间 |
 | -instanceClass | String | ecs.g6.large | 实例规格 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9297,7 +9955,7 @@ response.getHttpResponse().getHttpContentString());
 | - sharedInstanc eSource | String | aliyun | 共享实例来源 |
 | -vSwitchId | String | vsw- bp1234567890 | 虚拟交换机ID |
 
-#### CreateInstance
+#### 4.2.5 CreateInstance
 
 创建实例。
 
@@ -9334,7 +9992,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### AscmCreateInstance
+#### 4.2.6 AscmCreateInstance
 
 创建实例。
 
@@ -9364,7 +10022,7 @@ response.getHttpResponse().getHttpContentString());
 | edasAppIn fos | Repe atList | Body | 否 | [] | EDAS应用信息列表 |
 | -appId | Strin g | Body | 否 | 12345678 | 应用ID |
 
-| 开发指南·API 网 | 关 |  |  |  | API 网关 |
+| 开发指南·API 网 | 关 |   |   |   | API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9391,14 +10049,14 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-| A | PI 网关 |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | {} | 数据 |
 
-#### ModifyInstance
+#### 4.2.7 ModifyInstance
 
 修改实例。
 
@@ -9421,7 +10079,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Boolean | {} | 数据 |
 
-#### ModifyInstanceImageUrl
+#### 4.2.8 ModifyInstanceImageUrl
 
 修改实例镜像地址。
 
@@ -9444,7 +10102,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Boolean | {} | 数据 |
 
-#### UpgradeInstance
+#### 4.2.9 UpgradeInstance
 
 升级实例。
 
@@ -9466,7 +10124,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### DeleteInstance
+#### 4.2.10 DeleteInstance
 
 删除实例。
 
@@ -9480,7 +10138,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | 否 | i-c0a81bb16a1524a17 | 网关实例ID |
 
-| PI |  |  |  |  | ·API |
+| PI |   |   |   |   | ·API |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9495,7 +10153,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### RestartInstance
+#### 4.2.11 RestartInstance
 
 重启实例。
 
@@ -9517,15 +10175,13 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### StopInstance
+#### 4.2.12 StopInstance
 
 停止实例。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9539,7 +10195,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Boolean | {} | 数据 |
 
-#### RefreshInstance
+#### 4.2.13 RefreshInstance
 
 刷新实例。
 
@@ -9564,7 +10220,7 @@ response.getHttpResponse().getHttpContentString());
 | --ips | String | [] | IP地址列表 |
 | --ports | String | [] | 端口列表 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9583,15 +10239,13 @@ response.getHttpResponse().getHttpContentString());
 | -modifyTime | String | 2024-10-14 12:30:00 | 修改时间 |
 | -tid | String | t-123456789 | 任务ID |
 
-#### CreateInstanceDeployConfig
+#### 4.2.14 CreateInstanceDeployConfig
 
 创建实例部署配置。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9629,7 +10283,7 @@ response.getHttpResponse().getHttpContentString());
 | - deployConfigY amlStr | String | apiVersion: apps/v1 kind: Deployment | 部署配置YAML字符串 |
 | - accessModeCo nfigYamlStr | String | mode: public enabled: true | 接入模式配置YAML字符串 |
 
-#### GetInstanceDeployDeployConfig
+#### 4.2.15 GetInstanceDeployDeployConfig
 
 查询实例部署配置。
 
@@ -9654,7 +10308,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | data | String | {} | 数据 |
 
-#### GetInstanceDeployMsg
+#### 4.2.16 GetInstanceDeployMsg
 
 查询实例部署消息。
 
@@ -9683,7 +10337,7 @@ response.getHttpResponse().getHttpContentString());
 | -podInfoList | Array | [] | Pod信息列表 |
 | --ipList | Array | [] | IP列表 |
 
-| A | PI 网关 |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9715,7 +10369,7 @@ response.getHttpResponse().getHttpContentString());
 | --namespace | String | prod-ns | 命名空间 |
 | --clusterCode | String | cluster-001 | 集群编码 |
 
-#### GetCustomDeployConfig
+#### 4.2.17 GetCustomDeployConfig
 
 查询自定义部署配置。
 
@@ -9744,7 +10398,7 @@ response.getHttpResponse().getHttpContentString());
 | -jarStr | String | my-service.jar | JAR文件名 |
 | -wgetStr | String | wget https://example.co m/file | Wget命令字符串 |
 
-#### GetInstanceAccessModeConfig
+#### 4.2.18 GetInstanceAccessModeConfig
 
 查询实例访问模式配置。
 
@@ -9766,7 +10420,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### GetResource
+#### 4.2.19 GetResource
 
 查询实例资源。
 
@@ -9803,7 +10457,7 @@ response.getHttpResponse().getHttpContentString());
 | -cpuRequest | Struct | 1000m | CPU请求 |
 | --amount | String | 100.00 | 金额 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9819,7 +10473,7 @@ response.getHttpResponse().getHttpContentString());
 | --amount | String | 100.00 | 金额 |
 | --unit | String | requests/second | 单位 |
 
-#### ModifyResource
+#### 4.2.20 ModifyResource
 
 修改实例资源。
 
@@ -9836,7 +10490,7 @@ response.getHttpResponse().getHttpContentString());
 | specificati onTempla te | Integ er | Body | 否 | 1 | 规格模板 |
 | source | Strin g | Body | 否 | manual | 来源 |
 
-| 开发指南·API 网 | 关 |  |  |  | API 网关 |
+| 开发指南·API 网 | 关 |   |   |   | API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9856,9 +10510,9 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-### 分组管理
+### 4.3 分组管理
 
-#### ModifyGroup
+#### 4.3.1 ModifyGroup
 
 修改分组。
 
@@ -9888,7 +10542,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息。 |
 | data | String | {} | 数据。 |
 
-#### CreateGroup
+#### 4.3.2 CreateGroup
 
 创建分组。
 
@@ -9915,7 +10569,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息。 |
 | data | String | {} | 数据。 |
 
-#### ListGroups
+#### 4.3.3 ListGroups
 
 查询分组列表。
 
@@ -9942,7 +10596,7 @@ response.getHttpResponse().getHttpContentString());
 | data | Struct | {} | 数据 |
 | -records | Array | [] | 记录列表 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9965,7 +10619,7 @@ response.getHttpResponse().getHttpContentString());
 | -current | Integer | 1 | 当前页码 |
 | -size | Integer | 100 | 大小 |
 
-#### GetAllGroups
+#### 4.3.4 GetAllGroups
 
 查询所有分组。
 
@@ -9998,7 +10652,7 @@ response.getHttpResponse().getHttpContentString());
 | - defaultDomain | String | api.example.com | 默认域名 |
 | -editable | Boolean | true | 是否可编辑 |
 
-| A | PI 网关 |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10008,7 +10662,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetGroup
+#### 4.3.5 GetGroup
 
 查询分组。
 
@@ -10035,7 +10689,7 @@ response.getHttpResponse().getHttpContentString());
 | --domain | String | api.example.com | 域名 |
 | --protocol | String | HTTP | 协议 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --createTime | String | 2024-10-14 08:00:00 | 创建时间 |
@@ -10049,7 +10703,7 @@ response.getHttpResponse().getHttpContentString());
 | -createTime | String | 2024-10-14 08:00:00 | 创建时间 |
 | -updateTime | String | 2024-10-14 15:00:00 | 更新时间 |
 
-#### DeleteGroup
+#### 4.3.6 DeleteGroup
 
 删除分组。
 
@@ -10075,7 +10729,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### AddGroupDomain
+#### 4.3.7 AddGroupDomain
 
 添加分组域名。
 
@@ -10101,10 +10755,9 @@ response.getHttpResponse().getHttpContentString());
 
 **示例**
 
-请求示例
+请求示例 `{`
 
 ```json
-{
   "gwInstanceId": "gw-cn-wwo36s5y001",
   "groupId": "16782",
   "domainIds": [
@@ -10112,23 +10765,17 @@ response.getHttpResponse().getHttpContentString());
     "3413"
 ```
 
-]
-
-```
-}
-```
-
-正常返回示例 `JSON` 格式
+`]` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "code": 200,
   "msg": "success",
   "data": "true"
-}
 ```
 
-#### DeleteGroupDomain
+`}`
+
+#### 4.3.8 DeleteGroupDomain
 
 删除分组域名。
 
@@ -10152,9 +10799,9 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-### 路由管理
+### 4.4 路由管理
 
-#### CreateRoute
+#### 4.4.1 CreateRoute
 
 创建路由。
 
@@ -10164,8 +10811,9 @@ response.getHttpResponse().getHttpContentString());
 
 **请求语法**
 
+`{`
+
 ```json
-{
   "gwInstanceId": "string",
   "groupId": "string",
   "serviceId": "string",
@@ -10181,17 +10829,24 @@ response.getHttpResponse().getHttpContentString());
     "matchType": "string",
     "matchValue": "string",
     "caseSensitive": true
-  },
+```
+
+`},`
+
+```json
   "openStripPrefix": true,
   "serviceType": "string",
   "serviceIds": [
-    {
-      "serviceId": "string",
-      "weight": 0
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "serviceId": "string",
+      "weight": 0
+```
+
+`}` `],`
 
 ```json
   "enableStatus": true,
@@ -10205,36 +10860,45 @@ response.getHttpResponse().getHttpContentString());
 
 ```json
   "header": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "cookie": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "queryParam": [
-    {
+```
+
+`{`
+
+```json
       "key": "string",
 ```
 
 ```json
       "value": "string"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "domainIds": [
@@ -10248,7 +10912,11 @@ response.getHttpResponse().getHttpContentString());
   "hsfMethodMappingConfig": {
     "hsfMethod": "string",
     "parameterMappingList": [
-      {
+```
+
+`{`
+
+```json
         "name": "string",
         "schema": {
           "type": "string",
@@ -10256,19 +10924,17 @@ response.getHttpResponse().getHttpContentString());
           "array": true,
           "primitive": true,
           "generic": true
-        },
+```
+
+`},`
+
+```json
         "location": "string",
         "required": true,
         "order": 0
-      }
 ```
 
-]
-
-```
-  }
-}
-```
+`}` `]` `}` `}`
 
 **请求参数**
 
@@ -10283,7 +10949,7 @@ response.getHttpResponse().getHttpContentString());
 | gwInstanc eId | Strin g | Body | 否 | i-c0a81bb16a1524a17 | 网关实例ID。 |
 | methods | Repe atList | Body | 否 | [] | 请求方法列表。 |
 
-| A | PI 网关 |  |  |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10307,7 +10973,7 @@ response.getHttpResponse().getHttpContentString());
 | serviceIds | Repe atList | Body | 否 | [] | 服务ID列表。 |
 | -serviceId | Strin g | Body | 否 | service-123456 | 服务ID |
 
-| 开发指南·API 网 | 关 |  |  |  | API 网关 |
+| 开发指南·API 网 | 关 |   |   |   | API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10325,7 +10991,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息。 |
 | data | String | {} | 数据。 |
 
-#### BatchDeleteRoute
+#### 4.4.2 BatchDeleteRoute
 
 批量删除路由。
 
@@ -10347,7 +11013,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码。 |
 | msg | String | 操作成功 | 消息。 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10356,7 +11022,7 @@ response.getHttpResponse().getHttpContentString());
 | -successIds | String | [] | 成功ID列表。 |
 | -failedIds | String | [] | 失败ID列表。 |
 
-#### ListRoutes
+#### 4.4.3 ListRoutes
 
 查询路由列表。
 
@@ -10365,6 +11031,10 @@ response.getHttpResponse().getHttpContentString());
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /route/listRoutes HTTP/1.1
+```
 
 **请求参数**
 
@@ -10404,7 +11074,7 @@ response.getHttpResponse().getHttpContentString());
 | --groupName | String | 默认分组 | 分组名称 |
 | --path | Struct | /api/v1/resource | 路径 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10421,13 +11091,12 @@ response.getHttpResponse().getHttpContentString());
 请求示例
 
 ```
-{ }
+POST /route/listRoutes HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "msg":"",
  "code":"",
  "data":{
@@ -10435,7 +11104,11 @@ response.getHttpResponse().getHttpContentString());
   "current":"",
   "size":"",
   "records":[
-   {
+```
+
+`{`
+
+```json
     "routePath":"",
     "groupName":"",
     "routeId":"",
@@ -10446,28 +11119,25 @@ response.getHttpResponse().getHttpContentString());
     "serviceName":"",
     "enableStatus":"",
     "path":[
-     {
+```
+
+`{`
+
+```json
       "matchType":"",
       "caseSensitive":"",
       "matchValue":""
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "routeName":""
-   }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
- }
-}
-```
-
-#### ListRoutesByAppId
+#### 4.4.4 ListRoutesByAppId
 
 查询路由列表。
 
@@ -10508,7 +11178,7 @@ response.getHttpResponse().getHttpContentString());
 | --authStatus | Integer | 1 | 认证状态 |
 | --createTime | String | 2024-10-14 08:00:00 | 创建时间 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10518,7 +11188,7 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### ListRoutesByGwInstanceId
+#### 4.4.5 ListRoutesByGwInstanceId
 
 查询路由列表。
 
@@ -10550,7 +11220,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetAllRoutePath
+#### 4.4.6 GetAllRoutePath
 
 查询所有路由路径。
 
@@ -10573,7 +11243,7 @@ response.getHttpResponse().getHttpContentString());
 | Data | Struct | {} | 数据 |
 | -RoutePaths | String | [] | 路由路径列表 |
 
-#### GetRoute
+#### 4.4.7 GetRoute
 
 查询路由。
 
@@ -10608,7 +11278,7 @@ response.getHttpResponse().getHttpContentString());
 | --value | String | example-value | 值 |
 | -plugins | Array | [] | 插件列表 |
 
-| A | PI 网关 |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10652,7 +11322,7 @@ response.getHttpResponse().getHttpContentString());
 | ----id | String | 123456 | ID |
 | ---appInfos | Array | [] | 应用信息列表 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10676,7 +11346,7 @@ response.getHttpResponse().getHttpContentString());
 | -groupId | String | group-123456 | 分组ID |
 | -groupName | String | 默认分组 | 分组名称 |
 
-|  | 开发指南·API 网关 |  |  | API 网关 |  |
+|   | 开发指南·API 网关 |   |   | API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10699,7 +11369,7 @@ response.getHttpResponse().getHttpContentString());
 | -isOpenFuse | Boolean | true | 是否开启熔断 |
 | -isOpenSig | Boolean | true | 是否开启签名 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -10722,7 +11392,7 @@ response.getHttpResponse().getHttpContentString());
 | --count | Float | 10.5 | 数量 |
 | -- controlBehavio r | Integer | 1 | 流控行为 |
 
-|  | 开发指南·API 网关 |  |  | API 网关 |  |
+|   | 开发指南·API 网关 |   |   | API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10746,7 +11416,7 @@ response.getHttpResponse().getHttpContentString());
 | ---timeInterval | Integer | 300 | 时间间隔（秒） |
 | ---timeUnit | Integer | 1 | 时间单位 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -10768,7 +11438,7 @@ response.getHttpResponse().getHttpContentString());
 | ---judgValue | String | 100 | 判断值 |
 | ---errorCount | Float | 5.0 | 错误数量 |
 
-|  | 开发指南·API 网关 |  |  | API 网关 |  |
+|   | 开发指南·API 网关 |   |   | API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10829,7 +11499,7 @@ response.getHttpResponse().getHttpContentString());
 | ---method | String | GET | 请求方法 |
 | ---headers | String | Content-Type: application/json | 请求头 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -10851,7 +11521,7 @@ response.getHttpResponse().getHttpContentString());
 | ---policy | String | allow | 策略 |
 | --isEnableACL | Boolean | true | 是否启用访问控制 |
 
-| ·API |  |  | API |
+| ·API |   |   | API |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10861,7 +11531,7 @@ response.getHttpResponse().getHttpContentString());
 | -- isEnableDown stream | Boolean | true | 是否启用下游 |
 | -- isEnableTracin g | Boolean | true | 是否启用链路追踪 |
 
-#### GetProtocolByRoute
+#### 4.4.8 GetProtocolByRoute
 
 查询路由协议。
 
@@ -10885,15 +11555,13 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyRoute
+#### 4.4.9 ModifyRoute
 
 修改路由。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -10928,7 +11596,7 @@ response.getHttpResponse().getHttpContentString());
 | -serviceId | Strin g | Body | 否 | service-123456 | 服务ID |
 | -weight | Integ er | Body | 否 | 100 | 权重 |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 
@@ -10940,7 +11608,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | success | 返回的描述信息，成功时通常为'success'。 |
 | data | String | rt-a1b2c3d4e5f6 | 返回的数据。操作成功时，通常是修改后的路由 ID。 |
 
-#### DeleteRoute
+#### 4.4.10 DeleteRoute
 
 删除路由。
 
@@ -10963,7 +11631,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ChangeRouteStatus
+#### 4.4.11 ChangeRouteStatus
 
 变更路由状态。
 
@@ -10987,9 +11655,9 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-### 来源管理
+### 4.5 来源管理
 
-#### ListSources
+#### 4.5.1 ListSources
 
 查询来源列表。
 
@@ -11029,7 +11697,7 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### ListAllSources
+#### 4.5.2 ListAllSources
 
 查询所有来源列表。
 
@@ -11057,15 +11725,13 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetSource
+#### 4.5.3 GetSource
 
 查询来源。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11088,15 +11754,13 @@ response.getHttpResponse().getHttpContentString());
 | -createTime | String | 2024-10-14 08:00:00 | 创建时间 |
 | -updateTime | String | 2024-10-14 15:00:00 | 更新时间 |
 
-#### CreateSource
+#### 4.5.4 CreateSource
 
 创建来源。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11119,15 +11783,13 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifySource
+#### 4.5.5 ModifySource
 
 修改来源。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11146,7 +11808,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteSource
+#### 4.5.6 DeleteSource
 
 删除来源。
 
@@ -11169,7 +11831,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### BatchDeleteSource
+#### 4.5.7 BatchDeleteSource
 
 批量删除来源。
 
@@ -11194,9 +11856,9 @@ response.getHttpResponse().getHttpContentString());
 | -successIds | String | [] | 成功ID列表。 |
 | -failedIds | String | [] | 失败ID列表。 |
 
-### 服务管理
+### 4.6 服务管理
 
-#### ListServices
+#### 4.6.1 ListServices
 
 查询服务列表。
 
@@ -11229,7 +11891,7 @@ response.getHttpResponse().getHttpContentString());
 | ---weight | Integer | 100 | 权重 |
 | ---enable | Boolean | true | 是否启用 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11249,15 +11911,13 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### ListAllServices
+#### 4.6.2 ListAllServices
 
 查询所有服务列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11275,7 +11935,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetService
+#### 4.6.3 GetService
 
 查询服务。
 
@@ -11296,7 +11956,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11320,7 +11980,7 @@ response.getHttpResponse().getHttpContentString());
 | ---scopes | String | [] | 授权范围列表 |
 | ---routeInfos | Array | [] | 路由信息列表 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11344,7 +12004,7 @@ response.getHttpResponse().getHttpContentString());
 | -serviceName | String | user-service | 服务名称 |
 | -description | String | 这是一个示例服务 | 描述 |
 
-|  | 开发指南·API 网关 |  |  | API 网关 |  |
+|   | 开发指南·API 网关 |   |   | API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11367,7 +12027,7 @@ response.getHttpResponse().getHttpContentString());
 | --timeout | Integer | 30000 | 超时时间（毫秒） |
 | -- healthInterval | Integer | 30 | 健康检查间隔（秒） |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11376,7 +12036,7 @@ response.getHttpResponse().getHttpContentString());
 | -- httpSuccesses | Integer | 3 | HTTP成功次数 |
 | --httpFailures | Integer | 5 | HTTP失败次数 |
 
-#### CreateService
+#### 4.6.4 CreateService
 
 创建服务。
 
@@ -11400,7 +12060,7 @@ response.getHttpResponse().getHttpContentString());
 | isOpenHe althCheck | Boole an | Body | 否 | true | 是否开启健康检查 |
 | healthChe ckStruct | Json | Body | 否 | {} | 健康检查配置 |
 
-|  | 开发指南·API 网 | 关 |  |  |  | API 网关 |  |
+|   | 开发指南·API 网 | 关 |   |   |   | API 网关 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -11416,7 +12076,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyService
+#### 4.6.5 ModifyService
 
 修改服务。
 
@@ -11437,7 +12097,7 @@ response.getHttpResponse().getHttpContentString());
 | serviceSo urceType | Integ er | Body | 否 | 1 | 服务来源类型 |
 | serviceTy pe | Integ er | Body | 否 | REST | 服务类型 |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | loadBalan ceType | Integ er | Body | 否 | 1 | 负载均衡类型 |
@@ -11454,7 +12114,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyNode
+#### 4.6.6 ModifyNode
 
 修改服务节点。
 
@@ -11479,7 +12139,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteService
+#### 4.6.7 DeleteService
 
 删除服务。
 
@@ -11488,6 +12148,10 @@ response.getHttpResponse().getHttpContentString());
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /microservice/deleteService HTTP/1.1
+```
 
 **请求参数**
 
@@ -11509,20 +12173,20 @@ response.getHttpResponse().getHttpContentString());
 请求示例
 
 ```
-{ }
+POST /microservice/deleteService HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "msg":"",
  "code":"",
  "data":""
-}
 ```
 
-#### BatchDeleteService
+`}`
+
+#### 4.6.8 BatchDeleteService
 
 批量删除服务。
 
@@ -11547,15 +12211,13 @@ response.getHttpResponse().getHttpContentString());
 | -successIds | String | [] | 成功ID列表 |
 | -failedIds | String | [] | 失败ID列表 |
 
-#### ImportServices
+#### 4.6.9 ImportServices
 
 导入Services。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11578,17 +12240,15 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码。 |
 | msg | String | 操作成功 | 消息。 |
 
-### 消费者管理
+### 4.7 消费者管理
 
-#### ListApps
+#### 4.7.1 ListApps
 
 查询消费者列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11614,7 +12274,7 @@ response.getHttpResponse().getHttpContentString());
 | data | Struct | {} | 数据 |
 | -records | Array | [] | 记录列表 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11638,7 +12298,7 @@ response.getHttpResponse().getHttpContentString());
 | --userId | String | uid-123456 | 用户ID |
 | --userName | String | 张三 | 用户名 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11651,7 +12311,7 @@ response.getHttpResponse().getHttpContentString());
 | -current | Integer | 1 | 当前页码 |
 | -size | Integer | 100 | 大小 |
 
-#### ListAppsByGwInstanceId
+#### 4.7.2 ListAppsByGwInstanceId
 
 查询AppsByGwInstanceId列表。
 
@@ -11715,7 +12375,7 @@ response.getHttpResponse().getHttpContentString());
 | -- clientCredenti als | Boolean | true | 是否启用客户端凭证模式 |
 | --implicitGrant | Boolean | false | 是否启用隐式授权 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11730,7 +12390,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetApp
+#### 4.7.3 GetApp
 
 查询消费者。
 
@@ -11751,7 +12411,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| A | PI 网关 |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11775,7 +12435,7 @@ response.getHttpResponse().getHttpContentString());
 | ----id | String | 123456 | ID |
 | ---serviceInfos | Array | [] | 服务信息列表 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11799,7 +12459,7 @@ response.getHttpResponse().getHttpContentString());
 | - authTypeNam e | String | JWT | 认证类型名称 |
 | -ipWhiteList | String | [] | IP白名单 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11823,7 +12483,7 @@ response.getHttpResponse().getHttpContentString());
 | --scopes | String | [] | 授权范围列表 |
 | -- authorizationC ode | Boolean | true | 是否启用授权码模式 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- clientCredenti als | Boolean | true | 是否启用客户端凭证模式 |
@@ -11836,7 +12496,7 @@ response.getHttpResponse().getHttpContentString());
 | --redirectUris | String | https://example.co m/callback | 重定向URI |
 | --pkce | Boolean | true | 是否启用PKCE |
 
-#### CreateApp
+#### 4.7.4 CreateApp
 
 创建消费者。
 
@@ -11853,7 +12513,7 @@ response.getHttpResponse().getHttpContentString());
 | oauth2Pa yload | Json | Body | 否 | {} | OAuth2负载 |
 | password | Strin g | Body | 否 | ******** | 密码 |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -11889,7 +12549,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyApp
+#### 4.7.5 ModifyApp
 
 修改消费者。
 
@@ -11911,7 +12571,7 @@ response.getHttpResponse().getHttpContentString());
 | token | Strin g | Body | 否 | eyJhbGciOiJIUzI1NiIsInR5 cCI6IkpXVCJ9... | 令牌 |
 | useAuth | Boole an | Body | 否 | true | 是否使用认证 |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | appId | Strin g | Body | 否 | 12345678 | 应用ID |
@@ -11949,7 +12609,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteApp
+#### 4.7.6 DeleteApp
 
 删除消费者。
 
@@ -11970,7 +12630,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11978,7 +12638,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyAppOpenStatus
+#### 4.7.7 ModifyAppOpenStatus
 
 修改消费者开放状态。
 
@@ -12002,7 +12662,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### ModifyAppWhiteListStatus
+#### 4.7.8 ModifyAppWhiteListStatus
 
 修改消费者白名单状态。
 
@@ -12029,7 +12689,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### GetAppAuth
+#### 4.7.9 GetAppAuth
 
 查询消费者授权。
 
@@ -12052,7 +12712,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Struct | {} | 数据 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12066,7 +12726,7 @@ response.getHttpResponse().getHttpContentString());
 | - serviceProtoco l | String | HTTP | 服务协议 |
 | -authStatus | Integer | 1 | 认证状态 |
 
-#### CreateAppAuth
+#### 4.7.10 CreateAppAuth
 
 创建消费者授权。
 
@@ -12088,7 +12748,7 @@ response.getHttpResponse().getHttpContentString());
 | Msg | String | 操作成功 | 消息 |
 | Data | String | {} | 数据 |
 
-#### BatchCreateAppAuthByRoute
+#### 4.7.11 BatchCreateAppAuthByRoute
 
 批量创建消费者授权。
 
@@ -12113,7 +12773,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyAppAuthStatus
+#### 4.7.12 ModifyAppAuthStatus
 
 修改消费者授权状态。
 
@@ -12128,7 +12788,7 @@ response.getHttpResponse().getHttpContentString());
 | gwInstanc eId | Strin g | Body | 否 | i-c0a81bb16a1524a17 | 网关实例ID |
 | authId | Strin g | Body | 否 | auth 123456 _ | 认证ID |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12151,7 +12811,7 @@ response.getHttpResponse().getHttpContentString());
 | -authStatus | Integer | 1 | 认证状态 |
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | 网关实例ID |
 
-#### DeleteAppAuth
+#### 4.7.13 DeleteAppAuth
 
 删除消费者授权。
 
@@ -12177,7 +12837,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### RefreshToken
+#### 4.7.14 RefreshToken
 
 刷新令牌。
 
@@ -12222,7 +12882,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-|  | 开发指南·API 网关 |  |  | API 网关 |  |
+|   | 开发指南·API 网关 |   |   | API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12230,7 +12890,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### ResetSecretKey
+#### 4.7.15 ResetSecretKey
 
 重置密钥。
 
@@ -12253,7 +12913,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Boolean | {} | 数据 |
 
-#### HandlerConsumerAuth
+#### 4.7.16 HandlerConsumerAuth
 
 查询消费者认证。
 
@@ -12267,7 +12927,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|---|---|
 | isOpen | Boole an | Body | 否 | true | 是否开启 |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12284,7 +12944,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### CreateAppAuthByRoute
+#### 4.7.17 CreateAppAuthByRoute
 
 创建消费者授权。
 
@@ -12307,7 +12967,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12315,7 +12975,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### BatchDeleteApp
+#### 4.7.18 BatchDeleteApp
 
 批量删除消费者。
 
@@ -12340,17 +13000,15 @@ response.getHttpResponse().getHttpContentString());
 | -successIds | String | [] | 成功ID列表 |
 | -failedIds | String | [] | 失败ID列表 |
 
-### 插件管理
+### 4.8 插件管理
 
-#### ListPlugins
+#### 4.8.1 ListPlugins
 
 查询插件列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -12376,7 +13034,7 @@ response.getHttpResponse().getHttpContentString());
 | --description | String | 这是一个示例服务 | 描述 |
 | --downloadURL | String | https://example.co m/download/file.zip | 下载URL |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12387,7 +13045,7 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### ListOpenPlugins
+#### 4.8.2 ListOpenPlugins
 
 查询开放插件列表。
 
@@ -12413,7 +13071,7 @@ response.getHttpResponse().getHttpContentString());
 | --name | String | my-resource | 名称 |
 | --required | Boolean | true | 是否必需 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -pluginId | String | plugin-123456 | 插件ID |
@@ -12426,7 +13084,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### ListGlobalPlugins
+#### 4.8.3 ListGlobalPlugins
 
 查询全局插件列表。
 
@@ -12464,15 +13122,13 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### ListRoutePlugins
+#### 4.8.4 ListRoutePlugins
 
 查询路由插件列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -12507,7 +13163,7 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### GetPlugin
+#### 4.8.5 GetPlugin
 
 查询插件。
 
@@ -12531,7 +13187,7 @@ response.getHttpResponse().getHttpContentString());
 | data | Struct | {} | 数据 |
 | -config | Array | [] | 配置列表 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | --name | String | my-resource | 名称 |
@@ -12544,7 +13200,7 @@ response.getHttpResponse().getHttpContentString());
 | -type | Integer | 1 | 类型 |
 | -used | Boolean | false | 是否已使用 |
 
-#### CreatePlugin
+#### 4.8.6 CreatePlugin
 
 创建插件。
 
@@ -12562,7 +13218,7 @@ response.getHttpResponse().getHttpContentString());
 | download URL | Strin g | Body | 否 | https://example.com/do wnload/file.zip | 下载URL |
 | config | Repe atList | Body | 否 | [] | 配置列表 |
 
-|  | 开发指南·API 网 | 关 |  |  |  | API 网关 |  |
+|   | 开发指南·API 网 | 关 |   |   |   | API 网关 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12578,7 +13234,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### CreateGlobalPlugin
+#### 4.8.7 CreateGlobalPlugin
 
 创建全局插件。
 
@@ -12602,7 +13258,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -12610,7 +13266,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### CreateRoutePlugin
+#### 4.8.8 CreateRoutePlugin
 
 创建路由插件。
 
@@ -12637,7 +13293,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyPlugin
+#### 4.8.9 ModifyPlugin
 
 修改插件。
 
@@ -12665,7 +13321,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyGlobalPlugin
+#### 4.8.10 ModifyGlobalPlugin
 
 修改全局插件。
 
@@ -12679,7 +13335,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | 否 | i-c0a81bb16a1524a17 | 网关实例ID |
 
-| A | PI 网关 |  |  |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12697,7 +13353,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyRoutePlugin
+#### 4.8.11 ModifyRoutePlugin
 
 修改路由插件。
 
@@ -12724,7 +13380,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeletePlugin
+#### 4.8.12 DeletePlugin
 
 删除插件。
 
@@ -12747,15 +13403,13 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteGlobalPlugin
+#### 4.8.13 DeleteGlobalPlugin
 
 删除全局插件。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -12770,7 +13424,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteRoutePlugin
+#### 4.8.14 DeleteRoutePlugin
 
 删除路由插件。
 
@@ -12794,7 +13448,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyGlobalPluginStatus
+#### 4.8.15 ModifyGlobalPluginStatus
 
 修改全局插件状态。
 
@@ -12820,7 +13474,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyRoutePluginStatus
+#### 4.8.16 ModifyRoutePluginStatus
 
 修改路由插件状态。
 
@@ -12834,7 +13488,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | 否 | i-c0a81bb16a1524a17 | 网关实例ID |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12853,7 +13507,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ListPluginUsage
+#### 4.8.17 ListPluginUsage
 
 查询插件使用情况列表。
 
@@ -12885,9 +13539,9 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-### 策略管理
+### 4.9 策略管理
 
-#### ModifyStrategyConfig
+#### 4.9.1 ModifyStrategyConfig
 
 修改策略配置。
 
@@ -12903,7 +13557,7 @@ response.getHttpResponse().getHttpContentString());
 | strategyC onfigId | Strin g | Body | 否 | strategy-config-001 | 策略配置ID。 |
 | strategyN ame | Strin g | Body | 否 | 流量控制策略 | 策略名称。 |
 
-| A | PI 网关 |  |  |  |  | 开发指南·API 网关 |  |
+| A | PI 网关 |   |   |   |   | 开发指南·API 网关 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -12930,7 +13584,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息。 |
 | data | String | {} | 数据。 |
 
-#### CreateStrategyConfig
+#### 4.9.2 CreateStrategyConfig
 
 创建策略配置。
 
@@ -12967,7 +13621,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息。 |
 | data | String | {} | 数据。 |
 
-#### ListStrategies
+#### 4.9.3 ListStrategies
 
 查询策略列表。
 
@@ -12994,7 +13648,7 @@ response.getHttpResponse().getHttpContentString());
 | -strategies | Array | [] | 策略列表 |
 | --scopes | String | [] | 授权范围列表 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13014,15 +13668,13 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### ListStrategyConfigs
+#### 4.9.4 ListStrategyConfigs
 
 查询策略配置列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13048,7 +13700,7 @@ response.getHttpResponse().getHttpContentString());
 | -- strategyName | String | 流量控制策略 | 策略名称 |
 | --status | Boolean | 1 | 状态 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13072,7 +13724,7 @@ response.getHttpResponse().getHttpContentString());
 | --- mcpServerInfo s | Array | [] | MCP服务器信息列表 |
 | ----name | String | my-resource | 名称 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13082,7 +13734,7 @@ response.getHttpResponse().getHttpContentString());
 | -current | Integer | 1 | 当前页码 |
 | -size | Integer | 100 | 大小 |
 
-#### GetStrategy
+#### 4.9.5 GetStrategy
 
 查询策略。
 
@@ -13109,7 +13761,7 @@ response.getHttpResponse().getHttpContentString());
 | -strategyName | String | 流量控制策略 | 策略名称 |
 | -strategyTitle | String | 高级流控 | 策略标题 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -description | String | 这是一个示例服务 | 描述 |
@@ -13118,7 +13770,7 @@ response.getHttpResponse().getHttpContentString());
 | -order | Integer | 100 | 排序号 |
 | -document | String | API接口文档 | 文档 |
 
-#### GetStrategyConfig
+#### 4.9.6 GetStrategyConfig
 
 查询策略配置。
 
@@ -13143,7 +13795,7 @@ response.getHttpResponse().getHttpContentString());
 | -scopes | String | [] | 授权范围列表 |
 | - strategyConfig Name | String | 默认策略 | 策略配置名称 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | - strategyConfig Id | String | strategy-config- 001 | 策略配置ID |
@@ -13182,7 +13834,7 @@ response.getHttpResponse().getHttpContentString());
 | ---name | String | my-resource | 名称 |
 | ---id | String | 123456 | ID |
 
-#### GetRoutePolicies
+#### 4.9.7 GetRoutePolicies
 
 查询路由策略。
 
@@ -13217,7 +13869,7 @@ response.getHttpResponse().getHttpContentString());
 | ----value | String | example-value | 值 |
 | ---set | Array | [] | 设置列表 |
 
-|  | 开发指南·API 网关 |  |  | API 网关 |  |
+|   | 开发指南·API 网关 |   |   | API 网关 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13241,7 +13893,7 @@ response.getHttpResponse().getHttpContentString());
 | ---name | String | my-resource | 名称 |
 | ---port | Integer | 8080 | 端口号 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13251,7 +13903,7 @@ response.getHttpResponse().getHttpContentString());
 | --enabled | Boolean | true | 是否启用 |
 | -- fallbackStrate gy | String | default | 降级策略 |
 
-#### ModifyRoutePolicy
+#### 4.9.8 ModifyRoutePolicy
 
 修改路由策略。
 
@@ -13276,7 +13928,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteStrategyConfig
+#### 4.9.9 DeleteStrategyConfig
 
 删除策略配置。
 
@@ -13299,7 +13951,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyStrategyConfigStatus
+#### 4.9.10 ModifyStrategyConfigStatus
 
 修改策略配置状态。
 
@@ -13321,7 +13973,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13329,9 +13981,9 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-### 域名管理
+### 4.10 域名管理
 
-#### ListDomains
+#### 4.10.1 ListDomains
 
 查询域名列表。
 
@@ -13375,14 +14027,17 @@ response.getHttpResponse().getHttpContentString());
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "Msg":"success",
  "Data":{
   "Records":[
-   {
+```
+
+`{`
+
+```json
     "DomainId":"00efd71a-770e-4255-b54e-6fe5659baffe",
     "CertificateId":"12345678-1234-1234-1234-12345678****",
     "CreateTime":"2024-03-15T01:46Z",
@@ -13393,21 +14048,25 @@ response.getHttpResponse().getHttpContentString());
     "ClientAuth":0,
     "CaCertificateName":"test",
     "CaCertificateId":"00efd71a-770e-4255-b54e-6fe5659baffe"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Size":20,
   "Total":1,
   "Current":1
- },
- "Code":200
-}
 ```
 
-#### ListAllDomains
+`},`
+
+```json
+ "Code":200
+```
+
+`}`
+
+#### 4.10.2 ListAllDomains
 
 查询所有域名列表。
 
@@ -13443,7 +14102,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetDomain
+#### 4.10.3 GetDomain
 
 查询域名。
 
@@ -13485,7 +14144,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | -issuerDn | String | CN=Example CA, O=Example Inc, C=CN | 颁发者DN |
 
-#### CreateDomain
+#### 4.10.4 CreateDomain
 
 创建域名。
 
@@ -13518,7 +14177,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | data | String | {} | 数据 |
 
-#### ModifyDomain
+#### 4.10.5 ModifyDomain
 
 修改域名。
 
@@ -13548,7 +14207,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteDomain
+#### 4.10.6 DeleteDomain
 
 删除域名。
 
@@ -13571,9 +14230,9 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-### 证书管理
+### 4.11 证书管理
 
-#### ListCertificates
+#### 4.11.1 ListCertificates
 
 查询证书列表。
 
@@ -13589,7 +14248,7 @@ response.getHttpResponse().getHttpContentString());
 | current | Integ er | Body | 否 | 1 | 当前页码 |
 | sni | Strin g | Body | 否 | example.com | SNI域名 |
 
-| PI 网关 |  |  |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   |   |   | 开发指南·API 网关 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -13616,7 +14275,7 @@ response.getHttpResponse().getHttpContentString());
 | -total | Integer | 1000 | 总数 |
 | -current | Integer | 1 | 当前页码 |
 
-#### ListAllServerCertificates
+#### 4.11.2 ListAllServerCertificates
 
 查询所有服务器证书列表。
 
@@ -13639,7 +14298,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | Map | {} | 数据 |
 
-#### ListAllCACertificates
+#### 4.11.3 ListAllCACertificates
 
 查询所有CA证书列表。
 
@@ -13660,7 +14319,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | data | Array | {} | 数据 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13675,7 +14334,7 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-#### GetCertificate
+#### 4.11.4 GetCertificate
 
 查询证书。
 
@@ -13696,7 +14355,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|---|---|
 | code | Integer | 200 | 响应码 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13717,15 +14376,13 @@ response.getHttpResponse().getHttpContentString());
 | -certType | Integer | 1 | 证书类型 |
 | -SN | String | SN12345678 | 序列号 |
 
-#### CreateCertificate
+#### 4.11.5 CreateCertificate
 
 创建证书。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -13745,7 +14402,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### ModifyCertificate
+#### 4.11.6 ModifyCertificate
 
 修改证书。
 
@@ -13761,7 +14418,7 @@ response.getHttpResponse().getHttpContentString());
 | gwInstanc eId | Strin g | Body | 否 | i-c0a81bb16a1524a17 | 网关实例ID |
 | certificate s | Strin g | Body | 否 | cert1,cert2 | 证书列表 |
 
-| 开发指南·API 网 | 关 |  |  |  | API 网关 |
+| 开发指南·API 网 | 关 |   |   |   | API 网关 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | privateKe y | Strin g | Body | 否 | -----BEGIN PRIVATE KEY-- --- | 私钥 |
@@ -13777,7 +14434,7 @@ response.getHttpResponse().getHttpContentString());
 | msg | String | 操作成功 | 消息 |
 | data | String | {} | 数据 |
 
-#### DeleteCertificate
+#### 4.11.7 DeleteCertificate
 
 删除证书。
 
@@ -13799,16 +14456,16 @@ response.getHttpResponse().getHttpContentString());
 | code | Integer | 200 | 响应码 |
 | msg | String | 操作成功 | 消息 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | {} | 数据 |
 
-### 其他
+### 4.12 其他
 
-#### GetTotalityInfo
+#### 4.12.1 GetTotalityInfo
 
 查询总体信息。
 
@@ -13841,7 +14498,7 @@ response.getHttpResponse().getHttpContentString());
 | - mcpServerCou nt | Integer | 3 | MCP服务器数量 |
 | -strategyCount | Integer | 5 | 策略数量 |
 
-#### GetSettings
+#### 4.12.2 GetSettings
 
 查询系统设置参数。
 
@@ -13869,7 +14526,7 @@ response.getHttpResponse().getHttpContentString());
 | --upLimitNum | Integer | 10000 | 上限数量 |
 | --routeCount | Integer | 25 | 路由数量 |
 
-| PI 网关 |  |  | 开发指南·API 网关 |
+| PI 网关 |   |   | 开发指南·API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -13882,7 +14539,7 @@ response.getHttpResponse().getHttpContentString());
 | -licenseEnable | Boolean | true | 是否启用许可证 |
 | - customPluginE nable | Boolean | true | 是否启用自定义插件 |
 
-#### GetSlsStatistics
+#### 4.12.3 GetSlsStatistics
 
 查询SLS统计信息。
 
@@ -13905,7 +14562,7 @@ response.getHttpResponse().getHttpContentString());
 | Data | Struct | {} | 数据 |
 | -Records | Array | [] | 记录列表 |
 
-| 开发指南·API 网关 |  |  | API 网关 |
+| 开发指南·API 网关 |   |   | API 网关 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |

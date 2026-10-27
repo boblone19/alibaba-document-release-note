@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 258
 source_pdf: "09ecb258977a1324_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Developer Guide 20260828
@@ -272,6 +272,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 13526224-5780- 4426-8BDF- BC8B08700F22 | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -492,6 +494,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 5903EE99-D542- 4E14-BC65- AAC1CB2D3D03 | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -666,6 +670,8 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | 0C2EE7A8-74D4- 4081-8236- CEBDE3BBCF50 | The request ID. |
 | CenId | String | cen- dc4vwznpwbobrl**** | The ID of the CEN instance. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -716,6 +722,8 @@ This operation does not have operation-specific request headers and uses only co
 
 | -LocalName | String | cn-qingdao-env17e- d01 | The region name. |
 |---|---|---|---|
+
+**Example**
 
 Sample requests
 
@@ -934,6 +942,8 @@ This operation does not have operation-specific request headers and uses only co
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | E9963DD7-998B- 4F92-892D- 8293CB49EE81 | The request ID. |
+
+**Example**
 
 Sample requests
 
@@ -2052,6 +2062,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | TotalCount | Integer | 2 | The total number of entries returned. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -2132,6 +2144,8 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRouterAtt achmentId | String | tr-attach- ia340z7xis7t5s**** | The ID of the VBR connection. |
 |---|---|---|---|
 | RequestId | String | C087A369-82B9- 43EF-91F4- 4B63A9C6E6B6 | The request ID. |
+
+**Example**
 
 Sample requests
 
@@ -2401,6 +2415,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 3EDA94DE-0AE5- 41FC-A91E- 7170E408E0FD | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -2476,6 +2492,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | TransitRouterAtt achmentId | String | tr-attach- 8b586cj3ugv12r**** | The ID of the Connect attachment. |
 | RequestId | String | 8B5DD40A-3A29- 5AC0-B8DA- 05FD10D5C893 | The request ID. |
+
+**Example**
 
 Sample requests
 
@@ -2712,6 +2730,8 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRouterCo nnectPeerId | String | tr-connect-peer- ax66ixf6ubbajw**** | The ID of the Connect peer. |
 | RequestId | String | BCF96FD3-17C1- 58DA-B9D6- 2CC347A71D79 | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -2933,6 +2953,8 @@ This operation does not have operation-specific request headers and uses only co
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9878790A-5C16- 5A59-A6CB- 79B28C04637D | The request ID. |
+
+**Example**
 
 Sample requests
 
@@ -4820,6 +4842,8 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | 94E19C6F-206F-5223- 9A63-64B85851BC04 | The request ID. |
 |---|---|---|---|
 
+**Example**
+
 Sample requests
 
 ```
@@ -5075,6 +5099,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 40194E53-2484- 5831-BB53- E11D123C1A32 | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -5140,6 +5166,8 @@ This operation does not have operation-specific request headers and uses only co
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F88AC12C-943B- 50E9-A344- 4F8820BB07A7 | The request ID. |
+
+**Example**
 
 Sample requests
 
@@ -5405,6 +5433,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 9C5D5D70-0AFF- 5E5C-8D8A- E92C90C8FB08 | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -5546,6 +5576,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | EB985B7E-2CF8- 5EC9-A7DB- F7C82ABD3ACE | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -5631,6 +5663,8 @@ This operation does not have operation-specific request headers and uses only co
 
 | RequestId | String | 61D0A553-5E4E- 53B5-9DA3- 01CBA076A286 | The request ID. |
 |---|---|---|---|
+
+**Example**
 
 Sample requests
 
@@ -6020,6 +6054,8 @@ This operation does not have operation-specific request headers and uses only co
 | RouteMapId | String | cenrmap- w4yf7toozfol3q**** | The ID of the routing policy. |
 | RequestId | String | 62172DD5-6BAC- 45DF-8D44- 56SDF467BAC | The request ID. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -6359,6 +6395,8 @@ This operation does not have operation-specific request headers and uses only co
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5903EE99-D542- 4E14-BC65- AAC1CB2D3D03 | The request ID. |
+
+**Example**
 
 Sample requests
 

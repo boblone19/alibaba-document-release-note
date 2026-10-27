@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 13
 source_pdf: "da2865502a2a47ba_Alibaba Cloud Apsara Stack V3.18.6 Application Hybrid Marketplace Operations and Maintenance Guide 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83AHM/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Hybrid%20Marketplace%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Application Hybrid Marketplace Operations and Maintenance Guide

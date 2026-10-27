@@ -5,7 +5,7 @@ doc_version: "20241213"
 pdf_pages: 26
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Container Service for Kubernetes Operations and Maintenance Guide 20241213.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1ACK/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Container%20Service%20for%20Kubernetes%20Operations%20and%20Maintenance%20Guide%2020241213.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Container Service for Kubernetes Operations and Maintenance Guide 20241213
@@ -269,7 +269,7 @@ The Container Service for Kubernetes (ACK) console provides a graphical user int
 2. In the left-side navigation pane of the **Apsara Infrastructure Management** page, click
 **Project & Cluster O&M**.
 3. On the **Project O&M** page, enter
-`acs` in the **Project | Cluster** search box. Find the acs
+`acs` in the **Project | Cluster** search box. Find the acs cluster and click **Cluster Details** in the **Actions** column.
 4. On the cluster details page, click the **Services** tab and then click **acs-acs_control**.
 5. On the **Serviceacs-acs_control** page, click **CosConsoleAliyunCom#** in the left-side
 **Components** list. Click the **Instances** tab to view the machines on which the service role
@@ -299,7 +299,7 @@ The Troopers component is used to create clusters and machines. You can also use
 2. In the left-side navigation pane of the **Apsara Infrastructure Management** page, click
 **Project & Cluster O&M**.
 3. On the **Projects** page, enter
-`acs` into the **Product | Cluster** search box. Find the acs
+`acs` into the **Product | Cluster** search box. Find the acs cluster and click **Cluster Details** in the **Actions** column.
 4. On the cluster details page, click the **Services** tab and then click **acs-acs_control**.
 5. On the **Serviceacs-acs_control** page, click **Troopers#** in the left-side **Components** list.
 Click the **Instances** tab, and then click **Terminal** in the **Actions** column to go to the
@@ -350,7 +350,7 @@ Control nodes run as Docker containers where services such as CosConsoleAliyunCo
 2. In the left-side navigation pane of the **Apsara Infrastructure Management** page, click
 **Product & Cluster O&M**.
 3. On the **Projects** page, enter
-`acs` into the **Product | Cluster** search box. Find the acs
+`acs` into the **Product | Cluster** search box. Find the acs cluster and click **Cluster Details** in the **Actions** column.
 4. On the cluster details page, click the **Services** tab and then click **acs-acs_control**.
 5. In the left-side **Components** list, click the component that you want to manage. Click the
 **Instances** tab, and then click **Terminal** in the **Actions** column of the instance that you
@@ -382,6 +382,7 @@ Log on to the control component and query the creation time of the component. Th
 2. In the left-side navigation pane of the **Apsara Infrastructure Management** page, click
 **Project & Cluster O&M**.
 3. On the **Project O&M** page, enter **acs** in the **Project | Cluster** search box. Find the acs
+cluster and click **Cluster Details** in the **Actions** column.
 4. On the cluster details page, click the service that you want to manage on the **Services** tab.
 5. In the **Components** list, click the Troopers component (service role). On the **Instances**
 tab, click **Terminal** in the **Actions** column to go to the **TerminalService** page.
@@ -408,6 +409,7 @@ l components
 2. In the left-side navigation pane of the **Apsara Infrastructure Management** page, click
 **Project & Cluster O&M**.
 3. On the **Project O&M** page, enter **acs** in the **Project | Cluster** search box. Find the acs
+cluster and click **Cluster Details** in the **Actions** column.
 4. On the cluster details page, click the service that you want to manage on the **Services** tab.
 5. In the **Components** list, click the Troopers component (service role). On the **Instances**
 tab, click **Terminal** in the **Actions** column to go to the **TerminalService** page.
@@ -451,7 +453,7 @@ i. In the top navigation bar of the Apsara Uni-manager Operations Console, choos
 **Products** > **Base/Platforms** > **Apsara Infrastructure Management**.
 ii. In the left-side navigation pane of the **Apsara Infrastructure Management** page, click
 **Project & Cluster O&M**.
-iii. On the **Project O&M** page, enter **acs** in the **Project | Cluster** search box. Find the acs iv. On the cluster details page, click the **Resource Details** tab and enter the name of the resource that you want to manage in the **Resource Name** field. l components v. In the **Resource Application Result** column, click the icon and then click the hyperlink that is displayed. In the **Resource Application Result** dialog box, you can view information about how to log on to the database. vi. Log on to an OPS machine or a VM in the cluster. vii. Run the following command to log on to the database: Replace the parameters in the following command with the information that you obtained in Step e.
+iii. On the **Project O&M** page, enter **acs** in the **Project | Cluster** search box. Find the acs cluster and click **Cluster Details** in the **Actions** column. iv. On the cluster details page, click the **Resource Details** tab and enter the name of the resource that you want to manage in the **Resource Name** field. l components v. In the **Resource Application Result** column, click the icon and then click the hyperlink that is displayed. In the **Resource Application Result** dialog box, you can view information about how to log on to the database. vi. Log on to an OPS machine or a VM in the cluster. vii. Run the following command to log on to the database: Replace the parameters in the following command with the information that you obtained in Step e.
 
 ```
 mysql -h${db_host} -P${db_port} -u${db_user} -D${dbName} -p
@@ -473,7 +475,7 @@ The output is empty, which indicates that the certificates are deleted.
 2. Restart the CertControl component.
 Chest is used to sign the certificates for the control components used in ACK clusters that are deployed in Apsara Stack. Chest is deployed as an HTTP server and provides interfaces that are used to sign certificates for the control components. i. In the top navigation bar of the Apsara Uni-manager Operations Console, choose
 **Products > Base/Platforms > Apsara Infrastructure Management** .
-ii. In the left-side navigation pane of the **Apsara Infrastructure Management** console, click **Project & Cluster O&M**. iii. On the **Project O&M** page, enter **acs** in the **Project | Cluster** search box. Find the acs iv. On the cluster details page, click the service that you want to manage on the **Services** tab. v. In the **Components** list, click the CertControl component (service role). On the
+ii. In the left-side navigation pane of the **Apsara Infrastructure Management** console, click **Project & Cluster O&M**. iii. On the **Project O&M** page, enter **acs** in the **Project | Cluster** search box. Find the acs cluster and click **Cluster Details** in the **Actions** column. iv. On the cluster details page, click the service that you want to manage on the **Services** tab. v. In the **Components** list, click the CertControl component (service role). On the
 **Instances** tab, choose **Actions** > **Restart** in the **Actions** column.
 vi. In the **Confirmation** dialog box, enter **RESTART** and click **OK**.
 3. Check whether data entries about component certificates are regenerated in the cert_info
@@ -495,7 +497,7 @@ Restart the following control components: Certificate, Console, Mirana, Static, 
 5. Check whether the components are restarted.
 In the following steps, the Troopers component is used as an example. i. In the top navigation bar of the Apsara Uni-manager Operations Console, choose
 **Products** > **Base/Platforms** > **Apsara Infrastructure Management**.
-ii. In the left-side navigation pane of the **Apsara Infrastructure Management** console, click **Project & Cluster O&M**. iii. On the **Project O&M** page, enter acs in the **Project | Cluster** search box. Find the acs iv. On the cluster details page, click the service that you want to manage on the **Services** tab. v. In the **Components** list, click the Troopers component (service role). On the **Instances** tab, click **Terminal** in the **Actions** column to log on to the machine. vi. Check whether the certificate exists. a. Run the following command to query the container ID:
+ii. In the left-side navigation pane of the **Apsara Infrastructure Management** console, click **Project & Cluster O&M**. iii. On the **Project O&M** page, enter acs in the **Project | Cluster** search box. Find the acs cluster and click **Cluster Details** in the **Actions** column. iv. On the cluster details page, click the service that you want to manage on the **Services** tab. v. In the **Components** list, click the Troopers component (service role). On the **Instances** tab, click **Terminal** in the **Actions** column to log on to the machine. vi. Check whether the certificate exists. a. Run the following command to query the container ID:
 
 ```bash
 docker ps | grep troopers

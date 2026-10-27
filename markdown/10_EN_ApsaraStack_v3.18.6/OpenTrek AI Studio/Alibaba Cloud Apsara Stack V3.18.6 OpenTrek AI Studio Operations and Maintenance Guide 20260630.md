@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 25
 source_pdf: "2de2a1f73645ddf4_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek AI Studio Operations and Maintenance Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/AI%20Studio/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20AI%20Studio%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # OpenTrek AI Studio Operations and Maintenance Guide 20260630
@@ -108,6 +108,9 @@ This topic describes how to log on to AI Studio OPS from the Apsara Uni-manager 
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Log on to Apsara Uni-manager Operations Console.
 i. Open your browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
 
@@ -134,6 +137,9 @@ iv. Click **Agree to Private Policy and Log On** .
 #### 4.2.1 Check resource pool availability
 
 This topic describes how to check the availability of an AI resource pool and add features.
+
+**Procedure**
+
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Resource Availability Check > Resource Pool**.
 The page displays the health status and the last check time of all resource pools.
@@ -154,6 +160,9 @@ You can perform the following operations on the details page.
 #### 4.2.2 Check resource group availability
 
 This topic describes how to check the availability of a resource group and add features.
+
+**Procedure**
+
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Resource Availability Check > Resource Group**.
 The page displays the health status and last check time of all resource groups.
@@ -179,6 +188,9 @@ You can perform the following operations on the details page.
 #### 4.3.1 Kubectl
 
 This section describes how to query pods in a resource pool using commands.
+
+**Procedure**
+
 1. You can log on to the AI Studio OPS console. For more information, see Log on to AI Studio
 OPS.
 2. In the left navigation pane, choose **Toolbox > Kubectl**.
@@ -191,6 +203,8 @@ Supported commands are get and describe.
 This topic describes how to manually enter chip models.
 
 > **Important:** The system presets supported chip models. You can use this feature to manually enter specific chip models.
+
+**Procedure**
 
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Tools Box > Chip Model**.
@@ -346,6 +360,8 @@ This topic describes the metrics for task monitoring, how to view them, and thei
 
 > **Note:** Metrics are collected at 60-second intervals. If a resource type supports multiple container groups, the metrics are available for both task and container group dimensions.
 
+**Procedure**
+
 1. Log on to the AI Studio console.
 2. In the top menu bar, select the organization, resource set, and region.
 3. In the navigation pane on the left, click **Model Service** > **Online Service**.
@@ -386,6 +402,8 @@ This topic describes the pod monitoring metrics, explains how to view them, and 
 
 > **Note:** Metrics are collected every 60 seconds. If a resource type supports multiple pods, metrics are available at both the task and pod dimensions.
 
+**Procedure**
+
 1. Log on to the AI Studio console.
 2. In the top menu bar, select an organization, resource set, and region.
 3. In the navigation pane on the left, click **Model Service** > **Online Services**.
@@ -423,6 +441,9 @@ ails
 #### 5.1.3 Gateway monitoring metrics
 
 This topic describes the metrics for gateway monitoring. It also explains how to view these metrics and what they represent.
+
+**Procedure**
+
 1. Log on to the AI Studio console.
 2. In the top menu bar, select an organization, resource set, and region.
 3. In the navigation pane on the left, click **Model Service** > **Online Services**.

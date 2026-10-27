@@ -5,12 +5,63 @@ doc_version: "20260729"
 pdf_pages: 73
 source_pdf: "26_统一云管平台 运维指南_apsara-uni-manager-o-m-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apsara_stack_platform/zh/apsara-uni-manager-o-m-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 统一云管平台 统一云管平台 运维指南
 
-## 概述
+## 目录
+
+- 2 高危操作清单
+- 3 产品架构
+  - 3.1 系统架构
+  - 3.2 部署架构
+  - 3.3 组件架构
+  - 3.4 架构差异
+    - 3.4.1 部署架构
+    - 3.4.2 技术架构
+  - 3.5 底座服务依赖
+  - 3.6 服务角色列表
+- 4 例行维护
+  - 4.1 监控项说明
+  - 4.2 日常巡检
+- 5 安全维护
+- 6 故障处理
+  - 6.1 确认故障影响范围
+  - 6.2 收集故障日志信息
+  - 6.3 快速定位故障
+- 7 告警处理
+  - 7.1 identity_service_request_error_alarm
+  - 7.2 one_router_business_error_alarm
+  - 7.3 one_console_slow_request_alarm
+  - 7.4 one_console_request_timeout_alarm
+  - 8.1 模块日志列表
+  - 8.2 常用错误码
+  - 8.3 常用运维命令
+  - 8.4 查看日志
+  - 8.5 敏捷PaaS基本操作指令
+  - 8.6 Apsara Uni-manager运营控制台资源管理链路
+  - 8.7 Apsara Uni-manager运营控制台实用命令
+  - 8.8 ASAPI域名说明
+  - 8.9 查看ASAPI业务告警信息
+- 9 常见问题排查
+  - 9.1 控制台登录异常
+  - 9.2 产品跳转中间页配置
+  - 9.3 控制台调用VPC、ECS、SLB、RDS接口超时
+  - 9.4 控制台创建ACK集群超时
+  - 9.5 控制台获取ACK集群列表超时
+  - 9.6 控制台调用Blink产品接口返回异常
+  - 9.7 控制台操作提示无权限
+  - 9.8 资源管理定时任务同步问题
+  - 9.9 使用SDK调用接口控制台提示请求接口未找到
+  - 9.10 ASAPI HTTPS域名无法访问
+  - 9.11 控制台操作提示云产品接口尚未注册
+  - 9.12 控制台操作提示ASAPI调用接口超时
+  - 9.13 Apsara Uni-manager运营控制台登录接口巡检告警
+  - 9.14 如何关闭实例资源间交互归属严格执行开关
+  - 9.15 配置门户公网透出
+
+## 1 概述
 
 本文介绍Apsara Uni-manager运营控制台运维的目的、要求、注意事项、以及寻求帮助的方式。
 
@@ -22,9 +73,7 @@ converter: line-classifier (PyMuPDF)
 
 维护人员必须拥有IT行业技能，包括计算机网络知识、计算机操作知识、问题分析排查能力。具体包括： Linux、Docker、网络DNS等常用命令。 维护人员必须经过阿里云系统岗前培训，学习必要的阿里云系统知识，包括但不限于飞天基础运维平台、 ASD、以及其他维护工具的使用。
 
-**重要**
-
-在维护操作过程中，维护人员务必遵守操作规章，确保人身安全和系统安全。对于用户数据，严格保密，未经用户书面许可，禁止复制、传播用户数据。
+> **重要：** 在维护操作过程中，维护人员务必遵守操作规章，确保人身安全和系统安全。对于用户数据，严格保密，未经用户书面许可，禁止复制、传播用户数据。
 
 **注意事项**
 
@@ -34,7 +83,7 @@ converter: line-classifier (PyMuPDF)
 
 维护人员在系统维护过程中，需要相关帮助，可以联系阿里云技术支持获取帮助。
 
-## 高危操作清单
+## 2 高危操作清单
 
 在使用Apsara Uni-manager运营控制台的过程中，高危操作可能会对业务稳定性造成较大影响，在使用前请认真了解以下高危操作及其影响，谨慎操作。
 
@@ -43,7 +92,7 @@ converter: line-classifier (PyMuPDF)
 | 控制台模块 | 高危操作 | 影响 | 恢复方案 |
 |---|---|---|---|
 | 企业 | 禁用用户。 | 禁用用户会同时禁用该用户的 AccessKey，可能会影响配置了AccessKey的客户业务。 | 观察业务是否出现异常，若出现异常需尽快激活恢复被禁用的用户。 激活已禁用的用户的具体操作请参见Apsara Uni-manager运营控制台用户指南>企业中心>用户管理>系统用户管理>禁用和激活用户。 |
-|  | 删除用户。 | 删除用户会同时删除该用户的 RAM子账号和AccessKey，可能会影响配置了AccessKey的客户业务。 | 观察业务是否出现异常，若出现异常需尽快恢复已被删除的用户。 恢复已删除用户的具体操作请参见Apsara Uni-manager运营控制台用户指南>企业中心>用户管理>历史用户管理>恢复历史用户。 正确做法：先通过用户管理的禁用功能做灰度验证，若出现影响业务等异常情况，应尽快回滚。 |
+|   | 删除用户。 | 删除用户会同时删除该用户的 RAM子账号和AccessKey，可能会影响配置了AccessKey的客户业务。 | 观察业务是否出现异常，若出现异常需尽快恢复已被删除的用户。 恢复已删除用户的具体操作请参见Apsara Uni-manager运营控制台用户指南>企业中心>用户管理>历史用户管理>恢复历史用户。 正确做法：先通过用户管理的禁用功能做灰度验证，若出现影响业务等异常情况，应尽快回滚。 |
 | 多云管理平台 （MCM） | 删除云平台。 | 导致该云平台在多云管理平台中的多云管理数据丢失（多云的映射关系和资源的管理关系），不会影响该云平台的真实数据。 | 不可恢复。 |
 
 **运维相关高危操作**
@@ -51,26 +100,26 @@ converter: line-classifier (PyMuPDF)
 | 分类 | 高危操作 | 影响 | 恢复方案 |
 |---|---|---|---|
 | 服务角色SR | 下线或删除某个SR。 | 导致Apsara Uni- manager运营控制台功能异常。 | 重新部署。 |
-|  | 停止或关闭SR容器中的 Java和Nginx进程。 | 导致Apsara Uni- manager运营控制台功能异常。 | 重启SR容器。 |
-|  | 修改容器或宿主机的时间。 | 导致接口报错进而影响 Apsara Uni-manager运营控制台功能异常。 | 将被修改的容器或宿主机的时候恢复为正确的时间。 |
-|  | 修改host、iptables等网络配置。 | 引起网络请求异常进而影响 Apsara Uni-manager运营控制台功能异常。 | 将host、iptables等网络配置恢复成修改之前的配置。 |
+|   | 停止或关闭SR容器中的 Java和Nginx进程。 | 导致Apsara Uni- manager运营控制台功能异常。 | 重启SR容器。 |
+|   | 修改容器或宿主机的时间。 | 导致接口报错进而影响 Apsara Uni-manager运营控制台功能异常。 | 将被修改的容器或宿主机的时候恢复为正确的时间。 |
+|   | 修改host、iptables等网络配置。 | 引起网络请求异常进而影响 Apsara Uni-manager运营控制台功能异常。 | 将host、iptables等网络配置恢复成修改之前的配置。 |
 
-|  | 缩容容器的CPU、MEM和 DISK规格配置。 | 导致Apsara Uni- manager运营控制台功能异常。 | 恢复被修改容的相应规格配置。 |
+|   | 缩容容器的CPU、MEM和 DISK规格配置。 | 导致Apsara Uni- manager运营控制台功能异常。 | 恢复被修改容的相应规格配置。 |
 |---|---|---|---|
-|  | 删除 /logs 目录或 /home/admin/logs 目录下的日志。 | 导致日志丢失。 | 不可恢复。 |
-|  | 删除或修改VIP、DNS。 | 导致Apsara Uni- manager运营控制台功能异常。 | 不可恢复。 |
+|   | 删除 /logs 目录或 /home/admin/logs 目录下的日志。 | 导致日志丢失。 | 不可恢复。 |
+|   | 删除或修改VIP、DNS。 | 导致Apsara Uni- manager运营控制台功能异常。 | 不可恢复。 |
 | 数据库 | 在asapi、ascm、cmp数据库上执行插入、更新或删除操作。 | 导致Apsara Uni- manager运营控制台功能异常。 | 恢复为修改前的数据。 |
-|  | 执行插入、更新或删除数据库操作之前没有备份。 | 导致Apsara Uni- manager运营控制台功能异常、数据异常。 | 不可恢复。 |
+|   | 执行插入、更新或删除数据库操作之前没有备份。 | 导致Apsara Uni- manager运营控制台功能异常、数据异常。 | 不可恢复。 |
 | 多云管理平台（MCM）的命令行工具 | 通过命令行工具修改tair数据。 | 导致多云管理平台功能异常、数据异常。 | 删除缓存或等待缓存过期。 |
-|  | 通过命令行工具重置用户密码。 | 多云管理平台中该用户可能无法登录。 | 重置用户密码。 |
+|   | 通过命令行工具重置用户密码。 | 多云管理平台中该用户可能无法登录。 | 重置用户密码。 |
 
-## 产品架构
+## 3 产品架构
 
-### 系统架构
+### 3.1 系统架构
 
 本文为您介绍Apsara Uni-manager运营控制台的系统架构和其中包含的各组件。 Apsara Uni-manager运营控制台由前端、资源托管、ASAPI和后端服务四大模块组成。Apsara Unimanager运营控制台的架构图如下所示。 各模块功能如下： AS-Console：用于托管Apsara Uni-manager运营控制台自研的控制台页面（如，ECS控制台）。 资源托管：包括AS-Console和One-Console，两者都是托管服务，负责托管不同云产品前端使用的静态文件，并且为前端提供统一的API调用和配置服务。 ASAPI：作为控制台的统一网关，实现Java、Python、Node.js、SDK和OpenAPI的一致性兼容，负责接收来自前端和SDK的请求，具有云内API管理的能力。具有以下功能特性： 支持使用SDK统一调用云内各云产品的OpenAPI。 支持账号校验、自动路由、限流、日志审计等功能。 支持云产品、Apsara Uni-manager运营控制台相关模块和第三方客户集成系统的调用。 核心模块采用了异步化高并发请求方案，包含了Jetty+NIO+Servlet 3.0非阻塞异步请求等能力，具备高并发、高吞吐量等优异特性。 利用线程池隔离技术，将ASAPI内部分为业务处理线程、路由线程和结果处理线程，提高请求处理速度。 后端服务：由Apsara Uni-manager运营控制台相关模块、飞天基础运维平台底座通用服务、POP三个模块组成，各模块功能如下： Apsara Uni-manager运营控制台相关模块：负责资源管理、认证鉴权、计量计费、规格管理等。 飞天基础运维平台底座通用服务：包括数据缓存模块、消息中心、任务调度模块、认证鉴权模块、高可用组件、系统日志等部分。 POP：云计算底层统一网关。云产品的开放接口会经过ASAPI数据处理后，转发到POP中，再交给云产品进行资源处理。
 
-### 部署架构
+### 3.2 部署架构
 
 本文为您介绍Apsara Uni-manager运营控制台各组件的部署说明。
 
@@ -87,7 +136,7 @@ converter: line-classifier (PyMuPDF)
 | Billing | 集群部署，Billing一般为双节点部署。 |
 | Cosmos | 集群部署，Cosmos一般为双节点部署。 |
 
-### 组件架构
+### 3.3 组件架构
 
 本文为您介绍Apsara Uni-manager运营控制台的组件架构。
 
@@ -108,9 +157,9 @@ converter: line-classifier (PyMuPDF)
 
 组件依赖关键图如下所示。
 
-### 架构差异
+### 3.4 架构差异
 
-#### 部署架构
+#### 3.4.1 部署架构
 
 本文介绍了新部署架构与老部署架构的区别。
 
@@ -121,42 +170,42 @@ converter: line-classifier (PyMuPDF)
 | 集群 | Service | 老架构Service Role | 新架构Service Role | 备注 |
 |---|---|---|---|---|
 | OneConsole | oneService | cdn-aliyun-com# | cdn-aliyun-com# | 无 |
-|  |  | one-console-aliyun- com# | one-console-aliyun- com# | 无 |
-|  |  | one-console2# |  | 无 |
-|  |  | one-console2-router# |  | 无 |
-|  |  | console-common- service# |  | 无 |
+|   |   | one-console-aliyun- com# | one-console-aliyun- com# | 无 |
+|   |   | one-console2# |   | 无 |
+|   |   | one-console2-router# |   | 无 |
+|   |   | console-common- service# |   | 无 |
 
-|  | oneService-admin |  | one-console2# |  |
+|   | oneService-admin |   | one-console2# |   |
 |---|---|---|---|---|
-|  |  | vipernew-aliyun-inc- com# |  | 无 |
-|  |  | console-common- service-init# |  | 无 |
+|   |   | vipernew-aliyun-inc- com# |   | 无 |
+|   |   | console-common- service-init# |   | 无 |
 | ASCM | asapi | ApiDbInit# | ApiDbInit# | 无 |
-|  |  | ApiServer# | ApiServer# | 无 |
-|  |  | ServiceTest# | ServiceTest# | 无 |
-|  | ascm-brm | Manage# | Manage# | 无 |
-|  |  | ResourceMgr# | ResourceMgr# | 无 |
-|  |  | ServiceTest# | ServiceTest# | 无 |
-|  |  | ManageInit# | 无 | 新架构迁移至 unimanager- base.BaseInit# 下。 |
-|  |  | Auth# |  | 新架构迁移至 unimanager- base.IdentitySe rvice#下。 |
-|  | ascm-init | DbInit# | 无 | 新架构迁移至 unimanager- base.DbInit# 下。 |
-|  | ascm-saleconf | salereconf# | 无 | 新架构删除，功能合入ascm- brm.Manage# 下。 |
-|  | ascm-portal | Portal# | Portal# | 无 |
-|  | ascm-common | CommonSrv# | 无 | 新架构迁移至 unimanager- base.CommonS erver#下。 |
-|  |  | ServiceTest# | 无 |  |
+|   |   | ApiServer# | ApiServer# | 无 |
+|   |   | ServiceTest# | ServiceTest# | 无 |
+|   | ascm-brm | Manage# | Manage# | 无 |
+|   |   | ResourceMgr# | ResourceMgr# | 无 |
+|   |   | ServiceTest# | ServiceTest# | 无 |
+|   |   | ManageInit# | 无 | 新架构迁移至 unimanager- base.BaseInit# 下。 |
+|   |   | Auth# |   | 新架构迁移至 unimanager- base.IdentitySe rvice#下。 |
+|   | ascm-init | DbInit# | 无 | 新架构迁移至 unimanager- base.DbInit# 下。 |
+|   | ascm-saleconf | salereconf# | 无 | 新架构删除，功能合入ascm- brm.Manage# 下。 |
+|   | ascm-portal | Portal# | Portal# | 无 |
+|   | ascm-common | CommonSrv# | 无 | 新架构迁移至 unimanager- base.CommonS erver#下。 |
+|   |   | ServiceTest# | 无 |   |
 
-|  | ascm-skyline | SkylineDbInit# | 无 | 新架构删除，业务移除对skyline 的依赖。 |
+|   | ascm-skyline | SkylineDbInit# | 无 | 新架构删除，业务移除对skyline 的依赖。 |
 |---|---|---|---|---|
-|  |  | SkylineUnit# | 无 |  |
-|  | ascm-metering | ServiceTest# | ServiceTest# | 无 |
-|  |  | metering server# _ | metering server# _ | 无 |
-|  |  | 无 | statistics# | 新架构运营增效，新增SR。 |
+|   |   | SkylineUnit# | 无 |   |
+|   | ascm-metering | ServiceTest# | ServiceTest# | 无 |
+|   |   | metering server# _ | metering server# _ | 无 |
+|   |   | 无 | statistics# | 新架构运营增效，新增SR。 |
 | UniManagerB ase | unimanager-base | 无 | BaseInit# | 新架构承载了初始化、auth及 commonServer 等ASCM底层服务。 |
-|  |  |  | CommonServer# |  |
-|  |  |  | IdentityService# |  |
-|  |  |  | DbInit# |  |
-|  |  |  | ServiceTest# |  |
+|   |   |   | CommonServer# |   |
+|   |   |   | IdentityService# |   |
+|   |   |   | DbInit# |   |
+|   |   |   | ServiceTest# |   |
 
-#### 技术架构
+#### 3.4.2 技术架构
 
 本文为您介绍新老技术架构之间的差异。
 
@@ -164,49 +213,49 @@ converter: line-classifier (PyMuPDF)
 
 企业版V3.15.0及之后版本的技术架构，解决了越权问题并提高了安全性。安全方面主要增强了账号权限、 RAM鉴权和POP鉴权。 账号安全增强企业版V3.14.0及之前版本，通过换取一级组织对应的主账号Accesskey的方式，使用主账号访问云产品接口。 企业版V3.15.0及之后版本，通过给子账号临时授权STS Token的方式访问特定的云资源，权限控制更加严格。 RAM鉴权增强企业版V3.14.0及之前版本，通过换取主账号的方式访问云产品，RAM鉴权为pass状态，即未做鉴权。 企业版V3.15.0及之后版本，通过给子账号临时授权STS Token的方式访问特定的云资源，RAM侧增加了 RAM Proxy，即从Apsara Uni-manager运营控制台获取组织、资源集等访问权限的信息用于RAM鉴权。 POP侧鉴权增加企业版V3.14.0及之前版本，直接调用POP。无组织、资源集等Apsara Uni-manager运营控制台用户权限鉴权逻辑。 企业版V3.15.0及之后版本，POP侧增加代理。云产品请求POP会通过POP proxy先在Apsara Unimanager运营控制台侧做鉴权，鉴权通过后再调用POP。 企业版V3.14.0及之前版本的技术架构如下图所示： 企业版V3.15.0及之后版本的技术架构如下图所示：
 
-### 底座服务依赖
+### 3.5 底座服务依赖
 
 本文为您介绍Apsara Uni-manager运营控制台所依赖的底座服务。 底座服务状态对Apsara Uni-manager运营控制台稳定运行至关重要。Apsara Uni-manager运营控制台部署与运行，需要依赖以下底座服务： MiniRDS：用于业务数据持久化，如保存组织、资源集数据。 Tair：用于缓存经常访问的数据，如云资源列表。 UMM：用于获取用户AccessKey ID和AccessKey Secret信息，进行身份认证。 POP：用于产品接口API调用，是云产品的接入网关。 RAM：用于实现授权功能，控制对资源的操作权限。 AAS：用于实现账号管理。 OTS：用于消息数据、时序数据处理，如消息推送、计量统计。 SLS：用于保存调用日志，包括access、call、main等后端服务日志以及API调用审计日志。
 
-### 服务角色列表
+### 3.6 服务角色列表
 
 本文为您介绍Apsara Uni-manager运营控制台的Project、集群、服务和服务角色，方便运维人员了解 Apsara Uni-manager运营控制台的服务角色及其提供的功能。 Apsara Uni-manager运营控制台的服务角色如下：
 
 | Project | 集群 | 服务 | 服务角色 | 描述 |
 |---|---|---|---|---|
 | ascm | ascm | Asapi | ApiServer# | ASAPI网关核心组件，专有云控制台相关功能几乎都依赖ASAPI进行API请求转发。 ApiServer#依赖ApiDbInit#，依赖底座服务中的middleWare-tair、webapp-pop、ram- ramService、baseService-umm-ak、 MinRDS以及unimanager-base。 |
-|  |  |  | ApiDbInit# | 用于执行DB初始化（API定义初始化），只在部署或升级时执行一次。 |
-|  |  |  | ServiceTest # | 服务状态检查。 |
-|  |  | ascm-brm | Manage# | 资源管理核心业务逻辑。 |
-|  |  |  | ResourceM gr# | 资源定时调度任务。 |
-|  |  |  | ServiceTest # | 服务状态检查。 |
-|  |  | ascm- metering | metering s _ erver# | 计量核心服务。 |
-|  |  |  | ServiceTest # | 服务状态检查。 |
-|  |  | ascm-portal | Portal# | 自研前端服务（逐渐下线整合到OneConsole）。 |
-|  |  | unimanager -base | DbInit# | DB初始化。 |
-|  |  |  | IdentitySer vice# | 用户、角色、权限。 |
-|  |  |  | BaseInit# | 初始化配置数据（云产品配置元数据）。 |
-|  |  |  | CommonSe rver# | 公共组件，用于提供云产品元数据服务及菜单配置。 |
-|  |  |  | ServiceTest # | 服务状态检查。 |
+|   |   |   | ApiDbInit# | 用于执行DB初始化（API定义初始化），只在部署或升级时执行一次。 |
+|   |   |   | ServiceTest # | 服务状态检查。 |
+|   |   | ascm-brm | Manage# | 资源管理核心业务逻辑。 |
+|   |   |   | ResourceM gr# | 资源定时调度任务。 |
+|   |   |   | ServiceTest # | 服务状态检查。 |
+|   |   | ascm- metering | metering s _ erver# | 计量核心服务。 |
+|   |   |   | ServiceTest # | 服务状态检查。 |
+|   |   | ascm-portal | Portal# | 自研前端服务（逐渐下线整合到OneConsole）。 |
+|   |   | unimanager -base | DbInit# | DB初始化。 |
+|   |   |   | IdentitySer vice# | 用户、角色、权限。 |
+|   |   |   | BaseInit# | 初始化配置数据（云产品配置元数据）。 |
+|   |   |   | CommonSe rver# | 公共组件，用于提供云产品元数据服务及菜单配置。 |
+|   |   |   | ServiceTest # | 服务状态检查。 |
 
-|  | ascmcomm ander | ascm- cosmos | studio# | 大屏的前端。 |
+|   | ascmcomm ander | ascm- cosmos | studio# | 大屏的前端。 |
 |---|---|---|---|---|
-|  |  |  | insight# | 大屏的后端。 |
-|  |  |  | DbInit# | DB初始化。 |
-|  |  |  | ServiceTest # | 服务状态检查。 |
+|   |   |   | insight# | 大屏的后端。 |
+|   |   |   | DbInit# | DB初始化。 |
+|   |   |   | ServiceTest # | 服务状态检查。 |
 | oneConsole | oneConsole Cluster | oneService | cdn-aliyun- com# | 前端静态资源服务器。 |
-|  |  |  | one- console- aliyun- com# | 前端服务托管，包含了DB初始化脚本、前台页面渲染和API数据接口、DB操作模块和VIPER配置模块。 |
-|  | oneService AdminClust er | oneService- admin | one- console2# | 用于封装部分非POP类产品API调用，包括 Tablestore、OSS、API Gateway。 |
+|   |   |   | one- console- aliyun- com# | 前端服务托管，包含了DB初始化脚本、前台页面渲染和API数据接口、DB操作模块和VIPER配置模块。 |
+|   | oneService AdminClust er | oneService- admin | one- console2# | 用于封装部分非POP类产品API调用，包括 Tablestore、OSS、API Gateway。 |
 
-## 例行维护
+## 4 例行维护
 
-### 监控项说明
+### 4.1 监控项说明
 
 本文为您介绍监控项的查看方法和指标说明。
 
 **查看方法**
 
-您可以通过以下两种方法查看监控项： 通过ASD进行机器指标监控 ii. 在左侧导航栏中，选择**链路诊断** > **调用链分析**。 iii. 在页面中输入TraceId和时间范围，单击**查询**。 iv. 在**拓扑分析**页签下，单击服务角色卡片，查看相关的指标趋势图。 通过Linux命令查询监控项可使用的命令包括：vmstat、top、tsar、jstat(/opt/taobao/java/bin)。Apsara Uni-manager运营控制
+您可以通过以下两种方法查看监控项： 通过ASD进行机器指标监控 ii. 在左侧导航栏中，选择**链路诊断** > **调用链分析**。 iii. 在页面中输入TraceId和时间范围，单击**查询**。 iv. 在**拓扑分析**页签下，单击服务角色卡片，查看相关的指标趋势图。 通过Linux命令查询监控项可使用的命令包括：vmstat、top、tsar、jstat(/opt/taobao/java/bin)。Apsara Uni-manager运营控制台提供常用的运维脚本，具体详情请参见常用运维命令。
 
 | 指标名称 | 指标含义 | 异常判断 |
 |---|---|---|
@@ -223,7 +272,7 @@ converter: line-classifier (PyMuPDF)
 |---|---|---|
 | netstat指标 | TCP连接相关详情 | 可结合日常运行平均水平基线进行判断，可关注 TIME WAIT是否增加。 _ |
 
-### 日常巡检
+### 4.2 日常巡检
 
 本文为您介绍日常巡检的方法。
 
@@ -231,7 +280,7 @@ converter: line-classifier (PyMuPDF)
 
 1. 登录飞天基础运维平台。
 2. 在左侧导航栏中选单击**产品集群运维**。
-3. 在**产品** | **集群**文本框中输入 `ascm` 。
+3. 在**产品** **|** **集群**文本框中输入 `ascm` 。
 4. 在产品列表中的**状态**列，查看目标集群是否达到终态。
 5. （可选）单击目标集群**操作**列的**状态详情**，可在**产品详情**页面查看该集群内各服务及组件是否达到终态；或
 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**服务列表**页签，在**服务列表**页签中，查看各服务是否达到终态。
@@ -241,62 +290,62 @@ converter: line-classifier (PyMuPDF)
 不同的服务巡检步骤相同，本文以ASAPI服务为例介绍巡检方法。
 1. 登录飞天基础运维平台。
 2. 在左侧导航栏中选单击**产品集群运维**。
-3. 在**产品** | **集群**文本框中输入 `ascm` 。
+3. 在**产品** **|** **集群**文本框中输入 `ascm` 。
 4. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**服务列表**页签。
 5. 单击**asapi**服务**操作**栏中的**详情**。
 6. 在左侧**组件列表**中单击目标组件，在右侧组件信息区域中，单击**实例列表**页签。
 7. 单击目标实例**操作**列中的**Terminal**。
 您可以执行以下命令进行巡检。
 
-| Project | 集群 |  | 服务 | 服务角色SR | 健康检查 |  |  |
+| Project | 集群 |   | 服务 | 服务角色SR | 健康检查 |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  | ApiServer# | 容器内执行： curl http://127.0.0.1:7001/api/version 返回成功样式如下： {"version":"v3.13","code":"200","api |  |  |
-|  |  |  |  |  |  | {"version":"v3.13","code":"200","api |  |
-|  |  |  |  |  | Count":13122,"desc":"update xml |  |  |
-|  |  |  |  |  | pretty"} |  |  |
-|  |  |  | asapi |  |  |  |  |
+|   |   |   |   | ApiServer# | 容器内执行： curl http://127.0.0.1:7001/api/version 返回成功样式如下： {"version":"v3.13","code":"200","api |   |   |
+|   |   |   |   |   |   | {"version":"v3.13","code":"200","api |   |
+|   |   |   |   |   | Count":13122,"desc":"update xml |   |   |
+|   |   |   |   |   | pretty"} |   |   |
+|   |   |   | asapi |   |   |   |   |
 
-|  |  | curl |  |
+|   |   | curl |   |
 |---|---|---|---|
-|  | http://127.0.0.1:7001/api/version |  |  |
+|   | http://127.0.0.1:7001/api/version |   |   |
 
-|  |  |  | ApiDbInit# | 一般Docker执行大约5到10分钟会自动退出，如果长期未退出（飞天基础运维平台未到终态），则需要查询日志，检查日志中的报错信息： docker logs <dockerid> 执行成功的样例如下： Progress为100% |
+|   |   |   | ApiDbInit# | 一般Docker执行大约5到10分钟会自动退出，如果长期未退出（飞天基础运维平台未到终态），则需要查询日志，检查日志中的报错信息： docker logs <dockerid> 执行成功的样例如下： Progress为100% |
 |---|---|---|---|---|
-| ascm | ascm |  |  |  |
-|  |  | ascm-brm | Manage# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
-|  |  |  | ResourceM gr# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
-|  |  | ascm- metering | metering s _ erver# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
-|  |  | ascm-portal | Portal# | 容器内执行： curl -s http://127.0.0.1/check.node 成功返回： success |
-|  |  | unimanager -billing | billing# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
-|  |  |  | DbInit# | 容器内执行： docker logs <dockerid> 查看执行情况。 |
+| ascm | ascm |   |   |   |
+|   |   | ascm-brm | Manage# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
+|   |   |   | ResourceM gr# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
+|   |   | ascm- metering | metering s _ erver# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
+|   |   | ascm-portal | Portal# | 容器内执行： curl -s http://127.0.0.1/check.node 成功返回： success |
+|   |   | unimanager -billing | billing# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |
+|   |   |   | DbInit# | 容器内执行： docker logs <dockerid> 查看执行情况。 |
 
-|  |  | curl -s |
+|   |   | curl -s |
 |---|---|---|
-| al# | http://127.0.0.1/check.node |  |
+| al# | http://127.0.0.1/check.node |   |
 
-|  |  |  |  | unimanager -base |  |  |  |
+|   |   |   |   | unimanager -base |   |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  | IdentityServ ice# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |  |
-|  |  |  |  |  | BaseInit# | 容器内执行： docker logs <dockerid> 查看执行情况。 |  |
-|  |  |  |  |  |  | 容器内执行： curl --location --request GET 'localhost:8008/ascm/basic/welcome' 成功返回： welcome to basic. |  |
-|  |  |  |  |  |  |  | curl --location --request GET |
-|  |  |  |  |  | CommonSe rver# | 'localhost:8008/ascm/basic/welcome' |  |
-|  |  | ascmcomm ander |  | ascm- cosmos | studio# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |  |
-|  |  |  |  |  | insight# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |  |
-|  |  |  |  |  | DbInit# | 容器内执行： docker logs <dockerid> 查看执行情况。 |  |
-|  | oneConsole | oneConsole Cluster |  | oneService | cdn-aliyun- com# | 容器内执行： curl <容器的 IP>:80/api/console/check-health 成功返回： ok |  |
+|   |   |   |   |   | IdentityServ ice# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |   |
+|   |   |   |   |   | BaseInit# | 容器内执行： docker logs <dockerid> 查看执行情况。 |   |
+|   |   |   |   |   |   | 容器内执行： curl --location --request GET 'localhost:8008/ascm/basic/welcome' 成功返回： welcome to basic. |   |
+|   |   |   |   |   |   |   | curl --location --request GET |
+|   |   |   |   |   | CommonSe rver# | 'localhost:8008/ascm/basic/welcome' |   |
+|   |   | ascmcomm ander |   | ascm- cosmos | studio# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |   |
+|   |   |   |   |   | insight# | 容器内执行： /alidata/bin/check health.sh _ 成功返回： ok |   |
+|   |   |   |   |   | DbInit# | 容器内执行： docker logs <dockerid> 查看执行情况。 |   |
+|   | oneConsole | oneConsole Cluster |   | oneService | cdn-aliyun- com# | 容器内执行： curl <容器的 IP>:80/api/console/check-health 成功返回： ok |   |
 
-|  |  | curl <容器的 |  |
+|   |   | curl <容器的 |   |
 |---|---|---|---|
-| dn-aliyun- om# | IP>:80/api/console/check-health |  |  |
+| dn-aliyun- om# | IP>:80/api/console/check-health |   |   |
 
-|  |  |  |  | one- console- aliyun- com# |  | 容器内执行： curl http://127.0.0.1:7003/preload.htm 成功返回： success |  |  |
+|   |   |   |   | one- console- aliyun- com# |   | 容器内执行： curl http://127.0.0.1:7003/preload.htm 成功返回： success |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | curl |  |
-|  |  |  |  |  |  | http://127.0.0.1:7003/preload.htm |  |  |
-|  |  | oneService AdminClust er | oneService- admin | one- console2# |  | 容器内执行： curl 127.0.0.1:7001/preload.htm 成功返回： success |  |  |
+|   |   |   |   |   |   |   | curl |   |
+|   |   |   |   |   |   | http://127.0.0.1:7003/preload.htm |   |   |
+|   |   | oneService AdminClust er | oneService- admin | one- console2# |   | 容器内执行： curl 127.0.0.1:7001/preload.htm 成功返回： success |   |   |
 
-## 安全维护
+## 5 安全维护
 
 Apsara Uni-manager运营控制台的维护过程中，您需要关注账号密码的维护和日志审计。
 
@@ -308,9 +357,9 @@ Apsara Uni-manager运营控制台运营管理员等全局角色，拥有所有�
 
 Apsara Uni-manager运营控制台提供两种级别的可审计的日志： 操作日志审计查看操作日志的方法请参见Apsara Uni-manager运营控制台用户指南中操作审计章节。 API调用审计 ii. 在左侧导航栏，选择**日志分析** > **API****审计日志**。 iii. 展开高级筛选，设置筛选条件后，单击**搜索**。 iv. 在API审计列表中查看API调用信息。 v. 单击**操作**列的**详情，**查看API调用时的请求参数、返回结果和调用日志。 由于底座存储空间的限制，目前上述日志不支持长期存储。存储最长周期为7天。 如果您需要长期存储日志，请使用日志存储SLS，该产品支持转储功能，详细方案可咨询产品团队。
 
-## 故障处理
+## 6 故障处理
 
-### 确认故障影响范围
+### 6.1 确认故障影响范围
 
 本文将为您介绍故障范围确认的大致思路。
 1. 故障影响范围确定。如：
@@ -318,7 +367,7 @@ Apsara Uni-manager运营控制台提供两种级别的可审计的日志： 操�
 2. 故障类型确定。如：
 物理环境故障（请联系硬件厂商）。 底座环境故障（请联系阿里云驻场运维工程师）。 产品性能问题。 产品功能问题。
 
-### 收集故障日志信息
+### 6.2 收集故障日志信息
 
 本文为您介绍如何收集故障的日志信息。
 1. 按照以下模板收集故障现象。
@@ -343,9 +392,9 @@ Apsara Uni-manager运营控制台提供两种级别的可审计的日志： 操�
 | 是否可重现 | 可以 |
 
 2. 收集故障日志。
-i. 获取故障发生时的鹰眼ID。 如果Apsara Uni-manager运营控制台还可以访问，并且能够重现，则可以从浏览器（F12快捷键）拿到鹰眼ID（优先选择使用ResponseHeaders中的eagleeye-traceid，其次可以从查看Response中的 eagleEyeTraceId）。 如果Apsara Uni-manager运营控制台还可以访问，但问题不能重现，可以查询发生问题时的API调用日志，查询方式请参见安全维护。 如果Apsara Uni-manager运营控制台已经无法访问，可以通过查询ASAPI容器内的access和call日志获取信息，过滤条件可以使用API名称和其他可以获取到的关键参数，从容器日志中可以得到鹰眼做进一步分析。 ii. 获取API调用链路日志。 通过API审计获取API调用记录，查询方式请参见安全维护。 通过ASD调用链详情查看日志，查询方式请参见查看日志。 通过SLS查询API调用日志，查询方式请参见查看日志。
+i. 获取故障发生时的鹰眼ID。 如果Apsara Uni-manager运营控制台还可以访问，并且能够重现，则可以从浏览器（F12快捷键）拿到鹰眼ID（优先选择使用ResponseHeaders中的eagleeye-traceid，其次可以从查看Response中的 eagleEyeTraceId）。 如果Apsara Uni-manager运营控制台还可以访问，但问题不能重现，可以查询发生问题时的API调用日志，查询方式请参见安全维护。 如果Apsara Uni-manager运营控制台已经无法访问，可以通过查询ASAPI容器内的access和call日志获取信息，过滤条件可以使用API名称和其他可以获取到的关键参数，从容器日志中可以得到鹰眼做进一步分析。 ii. 获取API调用链路日志。 通过API审计获取API调用记录，查询方式请参见安全维护。 通过ASD调用链详情查看日志，查询方式请参见查看日志。 通过SLS查询API调用日志，查询方式请参见查看日志。 通过ASAPI容器查询API调用日志。具体日志功能请参见模块日志列表。
 
-### 快速定位故障
+### 6.3 快速定位故障
 
 本文为您介绍如何根据故障类型，逐层定位问题。
 
@@ -359,23 +408,21 @@ i. 使用不同的测试环境，排除由于浏览器、网络、防火墙、�
 | 返回值Key | 返回值含义 | 用途描述 |
 |---|---|---|
 | API | 代表发生异常的API调用 （包含产品名和版本） | 有效定位发生异常的产品或模块 |
-| domain | 代表API请求的域名 |  |
-| serverRole | 发生异常的SR |  |
+| domain | 代表API请求的域名 |   |
+| serverRole | 发生异常的SR |   |
 | ASAPIErrorCode | 错误异常码 | 有效定位发生异常的具体原因 |
-| ASAPIErrorMessge | 错误异常信息 |  |
-| ASAPISuccess | 调用是否成功 |  |
+| ASAPIErrorMessge | 错误异常信息 |   |
+| ASAPISuccess | 调用是否成功 |   |
 | eagleEyeTraceId | 调用链路鹰眼ID | 可用于继续查询后端产品的日志 |
-| ASAPIRequestId | 调用产品后端请求ID |  |
+| ASAPIRequestId | 调用产品后端请求ID |   |
 
 如果异常需要进一步排查，可根据链路鹰眼ID进一步搜索产品后端日志，获取更详细信息。
 3. 使用ASD排查性能问题。
-i. 查询慢接口统计数据。 b. 在左侧导航栏中，选择**链路诊断** > **查询调用链**。 c. 设置服务角色、接口、耗时时间、时间范围、调用失败等筛选条件，单击**查询**。 ii. 针对单个接口较慢，可以通过链路分析，输入鹰眼ID、选择时间段查询调用链详情。 b. 在左侧导航栏中，选择**链路诊断** >**调用链分析**。 c. 在**TraceId**文本框中输入Trace ID，选择时间范围，单击**查询**，在**链路详情**页签，查看调用链的详细信息。 iii. 查询机器性能指标。
+i. 查询慢接口统计数据。 b. 在左侧导航栏中，选择**链路诊断** > **查询调用链**。 c. 设置服务角色、接口、耗时时间、时间范围、调用失败等筛选条件，单击**查询**。 ii. 针对单个接口较慢，可以通过链路分析，输入鹰眼ID、选择时间段查询调用链详情。 b. 在左侧导航栏中，选择**链路诊断** >**调用链分析**。 c. 在**TraceId**文本框中输入Trace ID，选择时间范围，单击**查询**，在**链路详情**页签，查看调用链的详细信息。 iii. 查询机器性能指标。 查询方式请参见监控项说明。
 
-## 告警处理
+## 7 告警处理
 
-**7.1.**
-
-### identity_service_request_error_alarm
+### 7.1 identity_service_request_error_alarm
 
 OneConsole服务请求登录鉴权服务的接口报错。
 
@@ -407,18 +454,13 @@ OneConsole服务请求登录鉴权服务的接口报错。
 
 **处理方法**
 
-**警告**
+> **警告：** 所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 
-所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 1. 请联系登录鉴权服务的研发，根据具体报错定位解决问题。
 
-**说明**
+> **说明：** 如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
 
-如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
-
-**7.2.**
-
-### one_router_business_error_alarm
+### 7.2 one_router_business_error_alarm
 
 此告警表示oneConsole2服务处理请求时内部出错，可能会导致OSS、OTS等产品的控制台不可用。
 
@@ -451,20 +493,15 @@ oneConsole2服务处理请求出错。
 
 **处理方法**
 
-**警告**
+> **警告：** 所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 
-所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 1. 复制报错请求的鹰眼id（Eagleeye-Traceid），进入SR：oneService-admin.one-console2#的docker
 中。在/logs/asconsole-logger目录下，执行如下命令，查看日志。 `grep` 报错请求的鹰眼`id *` 查看报错相关的日志。
 2. 请联系OneConsole产品研发定位并处理问题。
 
-**说明**
+> **说明：** 如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
 
-如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
-
-**7.3.**
-
-### one_console_slow_request_alarm
+### 7.3 one_console_slow_request_alarm
 
 OneConsole服务请求其他服务的接口，返回时间超过5秒。
 
@@ -495,19 +532,14 @@ OneConsole服务请求其他服务的接口，返回时间超过5秒。
 
 **处理方法**
 
-**警告**
+> **警告：** 所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 
-所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 1. 请根据product和action定位接口所属的服务。
 2. 请联系接口所属服务的研发定位并解决问题。
 
-**说明**
+> **说明：** 如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
 
-如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
-
-**7.4.**
-
-### one_console_request_timeout_alarm
+### 7.4 one_console_request_timeout_alarm
 
 OneConsole服务请求其他服务的接口，返回时间超过30秒。
 
@@ -538,152 +570,149 @@ OneConsole服务请求其他服务的接口，返回时间超过30秒。
 
 **处理方法**
 
-**警告**
+> **警告：** 所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 
-所有告警处理方法涉及到修改产品任何配置，均需要走生产变更流程确认方案的可行性以及流程规范性，若属紧急应急范畴需与TAM方确认后方可执行，否则不允许直接执行处理方法的任何步骤。
 1. 根据product和action定位接口所属的服务。
 2. 联系接口所属服务的研发定位并解决问题。
 
-**说明**
+> **说明：** 如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
 
-如果上述步骤未解决告警问题，请提工单（服务请求单）联系阿里云技术支持提供支持。
+## 8 附录
 
-## 附录
-
-### 模块日志列表
+### 8.1 模块日志列表
 
 本文为您介绍不同日志文件的作用。
 
 | 组件 | 文件 | 说明 |
 |---|---|---|
 | asapi.ApiServer# | /logs/asapi-logger/access trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/apiServer- access.log | ASAPI收到API调用请求日志。 |
-|  | /logs/asapi-logger/call trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/apiServer-call.log | ASAPI发起的对后端服务和产品的调用日志。 |
-|  | /logs/asapi-logger/main trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/server.log /opt/api- server/logs/error.log | ASAPI调试日志打印。 |
-|  | /logs/asapi-logger/exception trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/apiServer- exception.log | ASAPI异常错误打印。 |
+|   | /logs/asapi-logger/call trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/apiServer-call.log | ASAPI发起的对后端服务和产品的调用日志。 |
+|   | /logs/asapi-logger/main trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/server.log /opt/api- server/logs/error.log | ASAPI调试日志打印。 |
+|   | /logs/asapi-logger/exception trace.log _ 历史版本（企业版V3.10.0）日志路径如下： /opt/api-server/logs/apiServer- exception.log | ASAPI异常错误打印。 |
 | asapi.ApiDbInit# | docker logs | 容器启动日志。 |
 | ascm- portal.Portal# | /root/logs/ascm-portal/ascm-error.log | Portal异常日志打印。 |
-|  | /root/logs/ascm-portal/ascm-access.log | Portal收到页面调用请求日志。 |
-|  | /root/logs/ascm-portal/ascm-agent.log | Portal进程日志。 |
-|  | /root/logs/ascm-portal/ascm-web.log | Portal应用相关日志。 |
-|  | /root/logs/ascm-portal/egg-schedule.log | Portal定时任务日志。 |
-|  | /root/logs/ascm-portal/egg-web.log | Portal框架内核、插件日志。 |
-| > 文档版本：2026072 | 9 3 |  |
+|   | /root/logs/ascm-portal/ascm-access.log | Portal收到页面调用请求日志。 |
+|   | /root/logs/ascm-portal/ascm-agent.log | Portal进程日志。 |
+|   | /root/logs/ascm-portal/ascm-web.log | Portal应用相关日志。 |
+|   | /root/logs/ascm-portal/egg-schedule.log | Portal定时任务日志。 |
+|   | /root/logs/ascm-portal/egg-web.log | Portal框架内核、插件日志。 |
+| > 文档版本：2026072 | 9 3 |   |
 
-|  | 统一云管平台 |  |
+|   | 统一云管平台 |   |
 |---|---|---|
 | 组件 | 文件 | 说明 |
-|  | /logs/ascm-logger/access trace.log _ | Manage收到ASAPI调用请求日志。 |
-|  | /logs/ascm-logger/call trace.log _ | Manage发起的对ASAPI的调用日志。 |
-| ascm- brm.Manage# |  |  |
-|  | /logs/ascm-logger/exception trace.log _ | Manage异常错误打印。 |
-|  | /logs/ascm-logger/main trace.log _ | Manage调试日志打印。 |
+|   | /logs/ascm-logger/access trace.log _ | Manage收到ASAPI调用请求日志。 |
+|   | /logs/ascm-logger/call trace.log _ | Manage发起的对ASAPI的调用日志。 |
+| ascm- brm.Manage# |   |   |
+|   | /logs/ascm-logger/exception trace.log _ | Manage异常错误打印。 |
+|   | /logs/ascm-logger/main trace.log _ | Manage调试日志打印。 |
 | ascm- brm.ResourceMgr # | /logs/ascm-logger/access trace.log _ | Manage收到请求日志。 |
-|  | /logs/ascm-logger/call trace.log _ | 定时任务发起的对ASAPI的调用日志。 |
-|  | /logs/ascm-logger/exception trace.log _ | 定时任务异常错误打印。 |
-|  | /logs/ascm-logger/main trace.log _ | 定时任务调试日志打印。 |
+|   | /logs/ascm-logger/call trace.log _ | 定时任务发起的对ASAPI的调用日志。 |
+|   | /logs/ascm-logger/exception trace.log _ | 定时任务异常错误打印。 |
+|   | /logs/ascm-logger/main trace.log _ | 定时任务调试日志打印。 |
 | ascm- metering.meterin g server# _ | /logs/metering/access trace.log _ | Metering收到请求日志。 |
-|  | /logs/metering/call trace.log _ | Metering发起的对其它ascm服务调用日志。 |
-|  | /logs/metering/exception trace.log _ | Metering异常错误打印。 |
-|  | /logs/metering/main trace.log _ | Metering调试日志打印。 |
+|   | /logs/metering/call trace.log _ | Metering发起的对其它ascm服务调用日志。 |
+|   | /logs/metering/exception trace.log _ | Metering异常错误打印。 |
+|   | /logs/metering/main trace.log _ | Metering调试日志打印。 |
 | unimanager- billing.billing# | /logs/billing/access trace.log _ | Billing收到请求日志。 |
-|  | /logs/billing/call trace.log _ | Billing发起的对其它ascm服务调用日志。 |
-|  | /logs/billing/exception trace.log _ | Billing异常错误打印。 |
-|  | /logs/billing/main trace.log _ | Billing调试日志打印。 |
+|   | /logs/billing/call trace.log _ | Billing发起的对其它ascm服务调用日志。 |
+|   | /logs/billing/exception trace.log _ | Billing异常错误打印。 |
+|   | /logs/billing/main trace.log _ | Billing调试日志打印。 |
 | unimanager- base.DbInit# | docker logs | 容器启动日志。 |
 | unimanager- base.BaseInit# | docker logs | 容器启动日志。 |
 
-| 统一云管平台 |  | 运维指南·附录 |
+| 统一云管平台 |   | 运维指南·附录 |
 |---|---|---|
 
 | 组件 | 文件 | 说明 |
 |---|---|---|
 | V3.14.0及之后版本： unimanager- base. IdentityService # V3.13.0及之前版本：ascm- brm.Auth# | /logs/ascm-logger/access trace.log _ | IDENTITYSERVICE/Auth收到请求日志。 |
-|  | /logs/ascm-logger/call trace.log _ | IDENTITYSERVICE/Auth发起的对其它底座服务（如RAM）调用日志。 |
-|  | /logs/ascm-logger/exception trace.log _ | IDENTITYSERVICE/Auth异常错误打印。 |
-|  | /logs/ascm-logger/main trace.log _ | IDENTITYSERVICE/Auth调试日志打印。 |
+|   | /logs/ascm-logger/call trace.log _ | IDENTITYSERVICE/Auth发起的对其它底座服务（如RAM）调用日志。 |
+|   | /logs/ascm-logger/exception trace.log _ | IDENTITYSERVICE/Auth异常错误打印。 |
+|   | /logs/ascm-logger/main trace.log _ | IDENTITYSERVICE/Auth调试日志打印。 |
 | V3.14.0及之后版本： unimanager- base. CommonServer # V3.13.0及之前版本：ascm- common.Comm onSrv# | /ascm/.logs/basic.log | CommonServer应用日志。 |
-|  | /ascm/.logs/basic-error.log | CommonServer异常错误打印。 |
+|   | /ascm/.logs/basic-error.log | CommonServer异常错误打印。 |
 | ascm- cosmos.insight# | /logs/data-processor/access trace.log _ | INSIGHT收到请求日志。 |
-|  | /logs/data-processor/call trace.log _ | INSIGHT发起的对其它ascm服务调用日志。 |
-|  | /logs/data-processor/exception trace.log _ | INSIGHT异常错误打印。 |
-|  | /logs/data-processor/main trace.log _ | INSIGHT调试日志打印。 |
+|   | /logs/data-processor/call trace.log _ | INSIGHT发起的对其它ascm服务调用日志。 |
+|   | /logs/data-processor/exception trace.log _ | INSIGHT异常错误打印。 |
+|   | /logs/data-processor/main trace.log _ | INSIGHT调试日志打印。 |
 | ascm- cosmos.DbInit# | docker logs | 容器启动日志。 |
 | oneService.one- console-aliyun- com# | /home/admin/logs/access trace.log _ | ONE-CONSOLE-ALIYUN-COM收到请求日志。 |
-|  | /home/admin/logs/call trace.log _ | ONE-CONSOLE-ALIYUN-COM发起的对 ASAPI的调用日志。 |
-|  | /home/admin/logs/exception trace.log _ | ONE-CONSOLE-ALIYUN-COM异常错误打印。 |
-|  | /home/admin/logs/main trace.log _ | ONE-CONSOLE-ALIYUN-COM调试日志打印。 |
-| > 文档版本：2026072 | 9 3 |  |
+|   | /home/admin/logs/call trace.log _ | ONE-CONSOLE-ALIYUN-COM发起的对 ASAPI的调用日志。 |
+|   | /home/admin/logs/exception trace.log _ | ONE-CONSOLE-ALIYUN-COM异常错误打印。 |
+|   | /home/admin/logs/main trace.log _ | ONE-CONSOLE-ALIYUN-COM调试日志打印。 |
+| > 文档版本：2026072 | 9 3 |   |
 
-|  |  | 统一云管平台 |
+|   |   | 统一云管平台 |
 |---|---|---|
 | 组件 | 文件 | 说明 |
 | oneService- admin.one- console2# | /home/admin/one-console2/logs/ascm- logger/access trace.log _ | One-Console2收到请求日志。 |
-|  | /home/admin/one-console2/logs/ascm- logger/call trace.log _ | One-Console2发起的对云产品的调用日志。 |
-|  | /home/admin/one-console2/logs/ascm- logger/exception trace.log _ | One-Console2异常错误打印。 |
-|  | /home/admin/one-console2/logs/ascm- logger/main trace.log _ | One-Console2调试日志打印。 |
+|   | /home/admin/one-console2/logs/ascm- logger/call trace.log _ | One-Console2发起的对云产品的调用日志。 |
+|   | /home/admin/one-console2/logs/ascm- logger/exception trace.log _ | One-Console2异常错误打印。 |
+|   | /home/admin/one-console2/logs/ascm- logger/main trace.log _ | One-Console2调试日志打印。 |
 
-### 常用错误码
+### 8.2 常用错误码
 
 本文为您介绍常见的一些报错信息和简单的处理办法。
 
 | 模块 | 报错信息 | 错误说明 | 解决办法 |
 |---|---|---|---|
-|  | asapi.server.request.unkno wn.host | ASAPI请求后端产品域名失败。 | 检查以下项目： 通过飞天基础运维平台查看相关产品是否部署。 通过飞天基础运维平台查看相关域名是否存在。 通过ASAPI容器关闭域名网络链路。 |
-|  | asapi.server.api.notfound | ASAPI无法找到调用方想要调用的接口。 | 检查以下项目： 检查调用参数是否正确。 确认ASAPI库内是否注册此接口。 |
-|  | asapi.server.endpoint.notfo und | ASAPI无法获取调用接口的 Endpoint。 | 检查以下项目： 1. 在飞天基础运维平台中检查对应产品是否在环境中部署，且是否到达终态。 2. 找ascm common运维工程 _ 师进行后续定位。 |
-|  | asapi.server.internal.error | ASAPI内部错误。 | 找ascm asapi运维工程师进行 _ 排查。 |
+|   | asapi.server.request.unkno wn.host | ASAPI请求后端产品域名失败。 | 检查以下项目： 通过飞天基础运维平台查看相关产品是否部署。 通过飞天基础运维平台查看相关域名是否存在。 通过ASAPI容器关闭域名网络链路。 |
+|   | asapi.server.api.notfound | ASAPI无法找到调用方想要调用的接口。 | 检查以下项目： 检查调用参数是否正确。 确认ASAPI库内是否注册此接口。 |
+|   | asapi.server.endpoint.notfo und | ASAPI无法获取调用接口的 Endpoint。 | 检查以下项目： 1. 在飞天基础运维平台中检查对应产品是否在环境中部署，且是否到达终态。 2. 找ascm common运维工程 _ 师进行后续定位。 |
+|   | asapi.server.internal.error | ASAPI内部错误。 | 找ascm asapi运维工程师进行 _ 排查。 |
 
-| ASCM- >asapi |  |  |  |
+| ASCM- >asapi |   |   |   |
 |---|---|---|---|
-|  | asapi.server.endpoint.notm atch | ASAPI获取到调用接口的 Endpoint异常。 | 找ascm common运维工程师 _ 进行排查。 |
-|  | asapi.server.timeout.conne ct | 与服务器建立连接的超时时间。 | 找ascm asapi运维工程师进行 _ 排查。 |
-|  | asapi.server.request.param eter.accesskeyid.error | AccessKey非法或者获取 AccessKey Secret失败的异常。 | 检查以下项目： 检查调用方参数中的 AccessKey ID和 AccessKey Secret是否正确。 找ascm asapi运维工程师进 _ 行排查。 |
-|  | asapi.server.request.param eter.regionid.not.found | RegionId未找到。 | 检查调用参数中的 regionId 是否为空。 |
-|  | asapi.server.request.validat e.signature.failed | ASAPI检验签名失败。 | 检查以下项目： 是否通过ASAPI的SDK发起调用。 找ascm asapi运维工程师进 _ 行排查。 |
-|  | asapi.server.request.flow.c ontrol | 接口被限流。 | 检查以下项目： 查看当前环境是否存在压测。 找ascm asapi运维工程师进 _ 行排查。 |
-|  | asapi.server.request.upload .file.error | 文件上传异常。 | 找ascm asapi运维工程师进行 _ 排查。 |
-|  | asapi.server.request.downl oad.file.error | 文件下载异常。 | 找ascm asapi运维工程师进行 _ 排查。 |
-|  | asapi.server.api.no.permissi on.operate | API越权。 | 找ascm asapi运维工程师进行 _ 排查。 |
-|  | ascm.manage.InvalidParam eter.CloudAccount.OnlySup portAttachToTopOrg | 账号只支持绑定一级组织。 | 无 |
-|  | ascm.manage.EntityNotExis t.CloudAccount | 账号不存在。 | 创建账号。 |
+|   | asapi.server.endpoint.notm atch | ASAPI获取到调用接口的 Endpoint异常。 | 找ascm common运维工程师 _ 进行排查。 |
+|   | asapi.server.timeout.conne ct | 与服务器建立连接的超时时间。 | 找ascm asapi运维工程师进行 _ 排查。 |
+|   | asapi.server.request.param eter.accesskeyid.error | AccessKey非法或者获取 AccessKey Secret失败的异常。 | 检查以下项目： 检查调用方参数中的 AccessKey ID和 AccessKey Secret是否正确。 找ascm asapi运维工程师进 _ 行排查。 |
+|   | asapi.server.request.param eter.regionid.not.found | RegionId未找到。 | 检查调用参数中的 regionId 是否为空。 |
+|   | asapi.server.request.validat e.signature.failed | ASAPI检验签名失败。 | 检查以下项目： 是否通过ASAPI的SDK发起调用。 找ascm asapi运维工程师进 _ 行排查。 |
+|   | asapi.server.request.flow.c ontrol | 接口被限流。 | 检查以下项目： 查看当前环境是否存在压测。 找ascm asapi运维工程师进 _ 行排查。 |
+|   | asapi.server.request.upload .file.error | 文件上传异常。 | 找ascm asapi运维工程师进行 _ 排查。 |
+|   | asapi.server.request.downl oad.file.error | 文件下载异常。 | 找ascm asapi运维工程师进行 _ 排查。 |
+|   | asapi.server.api.no.permissi on.operate | API越权。 | 找ascm asapi运维工程师进行 _ 排查。 |
+|   | ascm.manage.InvalidParam eter.CloudAccount.OnlySup portAttachToTopOrg | 账号只支持绑定一级组织。 | 无 |
+|   | ascm.manage.EntityNotExis t.CloudAccount | 账号不存在。 | 创建账号。 |
 
-| ASCM- >Manage |  |  |  |
+| ASCM- >Manage |   |   |   |
 |---|---|---|---|
-|  | ascm.manage.DeleteConflic t.CloudAccount.Organizatio n | 删除账号前，必须和组织解除绑定。 | 无 |
-|  | ascm.manage.EntityNotExis t.AccessKey | AccessKey不存在。 | 创建新的AccessKey。 |
-|  | ascm.manage.EntityNotExis t.Instance | 实例不存在。 | 创建实例。 |
-|  | ascm.manage.EntityNotExis t.Role | 角色不存在。 | 创建角色。 |
-|  | ascm.manage.InvalidParam eter.Role.NotVisibleToTheU ser | 角色对该用户不可见。 | 新建对该用户可见的角色，或将角色属性变更为该用户可见。 |
-|  | ascm.manage.EntityNotExis t.Organization | 组织不存在。 | 创建组织。 |
-|  | ascm.manage.EntityNotExis t.ResourceSet | 资源集不存在。 | 创建资源集。 |
-|  | ascm.manage.EntityAlread yExisted.User | 用户已存在。 | 无 |
-|  | ascm.manage.EntityAlread yExisted.User.UserName | 用户名已存在。 | 更换用户名。 |
-|  | ascm.auth.invalidParameter .token | Token不合法。 | 更换合法的Token。 |
-|  | ascm.auth.account.deleted | 用户已被删除。 | 使用管理员账号恢复后重新登录。 |
-|  | ascm.auth.account.inactive | 用户已被禁用。 | 使用管理员账号激活后重新登录。 |
-|  | ascm.auth.account.type.not Supported | 不支持此类型账户登录。 | 无 |
-|  | ascm.auth.account.notLogg edIn | 用户未登录或登录状态失效。 | 重新登录。 |
-|  | ascm.auth.username.null | 用户名为空，请重新输入。 | 输入用户名。 |
+|   | ascm.manage.DeleteConflic t.CloudAccount.Organizatio n | 删除账号前，必须和组织解除绑定。 | 无 |
+|   | ascm.manage.EntityNotExis t.AccessKey | AccessKey不存在。 | 创建新的AccessKey。 |
+|   | ascm.manage.EntityNotExis t.Instance | 实例不存在。 | 创建实例。 |
+|   | ascm.manage.EntityNotExis t.Role | 角色不存在。 | 创建角色。 |
+|   | ascm.manage.InvalidParam eter.Role.NotVisibleToTheU ser | 角色对该用户不可见。 | 新建对该用户可见的角色，或将角色属性变更为该用户可见。 |
+|   | ascm.manage.EntityNotExis t.Organization | 组织不存在。 | 创建组织。 |
+|   | ascm.manage.EntityNotExis t.ResourceSet | 资源集不存在。 | 创建资源集。 |
+|   | ascm.manage.EntityAlread yExisted.User | 用户已存在。 | 无 |
+|   | ascm.manage.EntityAlread yExisted.User.UserName | 用户名已存在。 | 更换用户名。 |
+|   | ascm.auth.invalidParameter .token | Token不合法。 | 更换合法的Token。 |
+|   | ascm.auth.account.deleted | 用户已被删除。 | 使用管理员账号恢复后重新登录。 |
+|   | ascm.auth.account.inactive | 用户已被禁用。 | 使用管理员账号激活后重新登录。 |
+|   | ascm.auth.account.type.not Supported | 不支持此类型账户登录。 | 无 |
+|   | ascm.auth.account.notLogg edIn | 用户未登录或登录状态失效。 | 重新登录。 |
+|   | ascm.auth.username.null | 用户名为空，请重新输入。 | 输入用户名。 |
 
-|  | ascm.auth.password.null | 密码为空，请重新输入。 | 输入密码。 |
+|   | ascm.auth.password.null | 密码为空，请重新输入。 | 输入密码。 |
 |---|---|---|---|
-|  | ascm.auth.password.expire d | 密码已过期。 | 使用管理员账号重置密码后登录。 |
-|  | ascm.auth.account.userna meOrPasswordError | 用户名或密码错误，登录失败。 | 输入正确的用户名和密码。 |
-|  | ascm.auth.organizationId.n ull | 组织ID为空。 | 输入组织ID。 |
-|  | ascm.auth.organization.roo tNotSupported | 不支持使用根组织跳转。 | 无 |
-|  | ascm.auth.loginPolicy.deAct ive | 用户绑定的登录策略已被禁用， 当前无法录陆。 | 使用管理员账号管理员激活登录策略后重试。 |
-|  | ascm.auth.role.deActive | 用户当前的角色已被禁用，无法执行此操作，请管理员解禁后重试。 | 使用管理员账号管理员激活角色后重试。 |
+|   | ascm.auth.password.expire d | 密码已过期。 | 使用管理员账号重置密码后登录。 |
+|   | ascm.auth.account.userna meOrPasswordError | 用户名或密码错误，登录失败。 | 输入正确的用户名和密码。 |
+|   | ascm.auth.organizationId.n ull | 组织ID为空。 | 输入组织ID。 |
+|   | ascm.auth.organization.roo tNotSupported | 不支持使用根组织跳转。 | 无 |
+|   | ascm.auth.loginPolicy.deAct ive | 用户绑定的登录策略已被禁用， 当前无法录陆。 | 使用管理员账号管理员激活登录策略后重试。 |
+|   | ascm.auth.role.deActive | 用户当前的角色已被禁用，无法执行此操作，请管理员解禁后重试。 | 使用管理员账号管理员激活角色后重试。 |
 | ASCM- >Common | exposed resource not found <region.Identifier.dns> | 获取DNS信息异常。 | 检查以下项目： 重新获取DNS。 找ascm Common运维工程 _ 师进行排查。 |
 | ASCM- >ONE- CONSOLE | signature.verification.failed | 签名验证失败。 | 检查以下项目： 重新获取签名并验证。 找ascm ONE-CONSOLE运 _ 维工程师进行排查。 |
-|  | console.invalid.parameters | Console系统报错-传入非法参数。 | 找ascm ONE-CONSOLE运维 _ 工程师进行排查。 |
-|  | console.need.login | 请重新登录。 | 无 |
-|  | console.system.error | Console系统报错-系统错误。 | 找ascm ONE-CONSOLE运维 _ 工程师进行排查。 |
-|  | console.api.error | Console系统报错-ASAPI调用错误。 | 找ascm ONE-CONSOLE运维 _ 工程师进行排查。 |
-|  | console.token.not.found | Console系统错误-未获取到x- as-console-token，请刷新页面重试。 | 刷新页面重试。 |
+|   | console.invalid.parameters | Console系统报错-传入非法参数。 | 找ascm ONE-CONSOLE运维 _ 工程师进行排查。 |
+|   | console.need.login | 请重新登录。 | 无 |
+|   | console.system.error | Console系统报错-系统错误。 | 找ascm ONE-CONSOLE运维 _ 工程师进行排查。 |
+|   | console.api.error | Console系统报错-ASAPI调用错误。 | 找ascm ONE-CONSOLE运维 _ 工程师进行排查。 |
+|   | console.token.not.found | Console系统错误-未获取到x- as-console-token，请刷新页面重试。 | 刷新页面重试。 |
 
-### 常用运维命令
+### 8.3 常用运维命令
 
-本文为您介绍一些Apsara Uni-manager运营控制台在运维过程中常用的命令。 top `top` 显示系统当前的进程和其他状况，是一个动态显示过程。可以通过用户按键来不断刷新当前状态，如果在前台执行该命令，它将独占前台，直到用户终止该程序为止。 命令格式： `top <`参数> 。
+本文为您介绍一些Apsara Uni-manager运营控制台在运维过程中常用的命令。 top `top` 显示系统当前的进程和其他状况，是一个动态显示过程。可以通过用户按键来不断刷新当前状态，如果在前台执行该命令，它将独占前台，直到用户终止该程序为止。 命令格式： `top <`参数`>` 。
 
 | 命令 | 描述 |
 |---|---|
@@ -732,19 +761,19 @@ Options参数如下：
 | --list/-L | 列出启用的模块。 |
 | --live/-l | 启用实时模式，类似iostat等，可以配合-i参数和模块参数使用。 |
 
-| --file/-f | 指定输入文件。 |  |  |
+| --file/-f | 指定输入文件。 |   |   |
 |---|---|---|---|
-| --ndays/-n | 控制显示多长时间的历史数据，默认1天。 |  |  |
-| --date/-d | 指定日期，YYYYMMDD或者n代表n天前。 |  |  |
-| --detail/-D | 能够指定查看主要字段还是模块的所有字段。 |  |  |
-| --spec/-s | 输出-s后指定的字段，如： tsar –cpu -s sys,util |  |  |
-| --watch/-w | 显示最后多少分钟的记录。 |  |  |
-| --merge/-m | 对有多个数据的展示，进行汇总，如机器上跑了3个squid，可以用 tsar– squid -m 的放式进行展示汇总。 |  |  |
-|  |  | tsar– |  |
-| --item/-I | 显示指定项目数据。 |  |  |
-| --help/-h | 显示提示信息和模块信息。 |  |  |
+| --ndays/-n | 控制显示多长时间的历史数据，默认1天。 |   |   |
+| --date/-d | 指定日期，YYYYMMDD或者n代表n天前。 |   |   |
+| --detail/-D | 能够指定查看主要字段还是模块的所有字段。 |   |   |
+| --spec/-s | 输出-s后指定的字段，如： tsar –cpu -s sys,util |   |   |
+| --watch/-w | 显示最后多少分钟的记录。 |   |   |
+| --merge/-m | 对有多个数据的展示，进行汇总，如机器上跑了3个squid，可以用 tsar– squid -m 的放式进行展示汇总。 |   |   |
+|   |   | tsar– |   |
+| --item/-I | 显示指定项目数据。 |   |   |
+| --help/-h | 显示提示信息和模块信息。 |   |   |
 
-|  | squid -m |
+|   | squid -m |
 |---|---|
 
 Modules Enabled参数如下：
@@ -767,16 +796,17 @@ Modules Enabled参数如下：
 
 jstat jstat命令可以查看堆内存各部分的使用量，以及加载类的数量。 命令格式：
 
-| jstat -<option> [-t] [-h<lines>]<vmid> [<interval> [<count>]] |  |
+| jstat -<option> [-t] [-h<lines>]<vmid> [<interval> [<count>]] |   |
 |---|---|
-| jstat [ generalOption \| outputOptions vmid[interval[s\|ms] [count]] ] |  |
+| jstat [ generalOption \| outputOptions vmid[interval[s\|ms] [count]] ] |   |
 
 命令参数解释：
 
-| generalOption outputOptions |  |
+| generalOption outputOptions |   |
 |---|---|
 | J | 等选项配合使用 |
 
+`generalOption` ：单个的常用的命令行选项，如 `-help` , `-options` , 或 `-version` 。 `outputOptions` ：一个或多个输出选项，由单个的statOption选项组成，可以和 `-t` 、 `-h` 、和 `-`
 # option 参数如下：
 
 | 参数 | 描述 |
@@ -806,7 +836,7 @@ jstat参数选项如下：
 | -gccause | 显示垃圾回收的相关信息（通-gcutil），同时显示最后一次或当前正在发生的垃圾回收的诱因。 |
 | -printcompilation | 输出JIT编译的方法信息。 |
 
-### 查看日志
+### 8.4 查看日志
 
 本文为您介绍通过ASD调用链详情和SLS查看API调用日志的方法。
 
@@ -829,55 +859,51 @@ env | grep sls
 4. 通过浏览器访问SLS地址，账号和密码分别为步骤2所获取的AccessKey ID和AccessKey Secret。
 5. 选择目标Project后即可在Logstore中查看日志。
 
-### 敏捷PaaS基本操作指令
+### 8.5 敏捷PaaS基本操作指令
 
-敏捷版的底座是K8s，本文为您介绍一些进入ASAPI容器的常用的K8s命令。 在PaaS环境中，常用的运维指令有以下几种： 获取Apsara Uni-manager运营控制台访问地址。
-#ascm相关
+敏捷版的底座是K8s，本文为您介绍一些进入ASAPI容器的常用的K8s命令。 在PaaS环境中，常用的运维指令有以下几种： 获取Apsara Uni-manager运营控制台访问地址。 `#ascm`相关
 
 ```bash
 kubectl get ingress -n ascm
 ```
 
-#oneconsole相关
+`#oneconsole`相关
 
 ```bash
 kubectl get ingress -n oneconsole
 ```
 
-获取Pods。
-#ascm相关
+获取Pods。 `#ascm`相关
 
 ```bash
 kubectl get pods -n ascm
 ```
 
-#oneconsole相关
+`#oneconsole`相关
 
 ```bash
 kubectl get pods -n oneconsole
 ```
 
-进入Pod。
-#ascm相关
+进入Pod。 `#ascm`相关
 
 ```bash
 kubectl exec -it asapiapiserver-0 bash -n ascm
 ```
 
-#oneconsole相关
+`#oneconsole`相关
 
 ```bash
 kubectl exec -it oneserviceoneconsole-0 bash -n oneconsole
 ```
 
-查看容器日志。
-#ascm相关
+查看容器日志。 `#ascm`相关
 
 ```bash
 kubectl logs -f asapiapidbinit-jqzk6 -n ascm
 ```
 
-#oneconsole相关
+`#oneconsole`相关
 
 ```bash
 kubectl logs -f oneserviceoneconsole-0 bash -n oneconsole
@@ -901,28 +927,29 @@ kubectl describe pod asapiapiserver-0 -n ascm
 exit
 ```
 
-### Apsara Uni-manager运营控制台资
+### 8.6 Apsara Uni-manager运营控制台资源管理链路
 
 **源管理链路**
 
-### Apsara Uni-manager运营控制台实
+本文为您介绍Apsara Uni-manager运营控制台资源管理链路。 Apsara Uni-manager运营控制台资源管理链路如下图所示。
+
+### 8.7 Apsara Uni-manager运营控制台实用命令
 
 **用命令**
 
-本文为您介绍Apsara Uni-manager运营控制台的实用命令。 过滤ASAPI容器中ECS的DescribeInstances接口耗时大于2s的鹰眼ID及耗时。
-# 企业版`V3.16.0`及之后版本
+本文为您介绍Apsara Uni-manager运营控制台的实用命令。 过滤ASAPI容器中ECS的DescribeInstances接口耗时大于2s的鹰眼ID及耗时。 `#` 企业版`V3.16.0`及之后版本
 
 ```
 cat /logs/asapi-logger/access_trace.* | grep Ecs | grep DescribeInstances | awk -F '[|][|] ' '$13 > 2000 {print $8,$15}'C
 ```
 
-# 企业版`V3.12.0`及之后版本
+`#` 企业版`V3.12.0`及之后版本
 
 ```
 cat /logs/asapi-logger/access_trace.* | grep Ecs | grep DescribeInstances | awk -F '[|][|] ' '$13 > 2000 {print $6,$13}'C
 ```
 
-# 企业版`V3.10.0`版本
+`#` 企业版`V3.10.0`版本
 
 ```
 cat /opt/api-server/logs/apiServer-access.* | grep Ecs | grep DescribeInstances | awk -F ' [|][|]' '$13 > 2000 {print $6,$13}'
@@ -930,7 +957,7 @@ cat /opt/api-server/logs/apiServer-access.* | grep Ecs | grep DescribeInstances 
 
 输出结果如下图所示： 图中第一列为鹰眼ID，第二列为ASAPI侧的实际耗时，可以根据鹰眼ID获取更多详细日志。
 
-### ASAPI域名说明
+### 8.8 ASAPI域名说明
 
 本文为您说明不同域名类型及其使用限制。
 
@@ -941,7 +968,7 @@ cat /opt/api-server/logs/apiServer-access.* | grep Ecs | grep DescribeInstances 
 | internal.asapi.${global:region}.$ {global:intranet-domain} | 管理网络域、内部域名。 | 新增域名，使用HTTP，直接映射到 ASAPI的7001端口。 |
 | asapi.${global:region}.${global:i ntranet-domain} | 运维网络域。 | 历史域名，使用HTTPS（HTTPS Proxy，使用tengine的8082端口转发到ASAPI）。 |
 
-### 查看ASAPI业务告警信息
+### 8.9 查看ASAPI业务告警信息
 
 本文为您介绍如何通过飞天基础运维平台和Apsara Uni-manager运维控制台（ASO）查看告警信息。
 
@@ -958,9 +985,11 @@ cat /opt/api-server/logs/apiServer-access.* | grep Ecs | grep DescribeInstances 
 2. 在顶部导航栏选择**监控告警**>**告警管理**> **告警列表**。
 3. 在搜索框中输入**asapi_sys_alert**进行搜索。
 
-## 常见问题排查
+## 9 常见问题排查
 
-### 控制台登录异常
+### 9.1 控制台登录异常
+
+本文为您介绍Apsara Uni-manager运营控制台登录异常的解决办法。
 
 **问题现象**
 
@@ -973,7 +1002,7 @@ Apsara Uni-manager运营控制台页面输入正确的账号密码，单击登�
 **解决方案**
 
 1. 在飞天基础运维平台中查看当前Apsara Uni-manager运营控制台集群的服务是否到达终态。
-i. 登录飞天基础运维平台。 ii. 在左侧导航栏中单击**产品集群运维**。 iii. 在**产品** | **集群**文本框中输入 `ascm` 。 iv. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**服务列表**页签。在服务列表的**状态**列查看各服务的状态。 如有服务未到达终态，请先将对应服务调整至终态，然后重新登录Apsara Uni-manager运营控制台。
+i. 登录飞天基础运维平台。 ii. 在左侧导航栏中单击**产品集群运维**。 iii. 在**产品** **|** **集群**文本框中输入 `ascm` 。 iv. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**服务列表**页签。在服务列表的**状态**列查看各服务的状态。 如有服务未到达终态，请先将对应服务调整至终态，然后重新登录Apsara Uni-manager运营控制台。
 2. 若集群内服务均已到达终态，登录依然异常，则需要按照“前端页面>Portal容器>ASAPI容器
 >Auth/Manager容器”的顺序逐步排查是否为网络问题。 排查方式：每个容器内执行 `curl` 命令联通下一个服务的Endpoint。 i. 单击**机器列表**页签。 ii. 单击目标机器**操作**列的**Terminal**。 iii. 在左侧机器名称列表中单击目标机器执行以下命令。
 
@@ -989,7 +1018,7 @@ docker ps
 
 v. 执行以下命令进入容器。
 
-```bash
+```python
 sudo docker exec -it <容器ID> bash
 ```
 
@@ -1011,7 +1040,7 @@ grep {eagleeye-traceid} /logs/ascm-logger/*.log -5
 
 ii. 日志中出现返回值报错时即可确定为AAS调用出错。需要联系AAS的运维工程师进行进一步定位。
 
-### 产品跳转中间页配置
+### 9.2 产品跳转中间页配置
 
 用户可以根据自身需求设置去产品跳转中间页开关。
 
@@ -1027,7 +1056,7 @@ ii. 日志中出现返回值报错时即可确定为AAS调用出错。需要联�
 4. 在**去除跳转页配置**列，开启或关闭去除跳转页。
 表示去除跳转页的开关开启。开启后，进入该产品控制台时，不会弹出跳转页，跳转页默认展示在悬浮菜单中，可以在悬浮菜单中切换账号。 表示去除跳转页的开关关闭。关闭后，进入该产品控制台时，会先弹出跳转页。进入控制台后，跳转页也会展示在悬浮菜单中，可以在悬浮菜单中切换账号。
 
-### 控制台调用VPC、ECS、SLB、RDS接
+### 9.3 控制台调用VPC、ECS、SLB、RDS接口超时
 
 **口超时**
 
@@ -1055,7 +1084,7 @@ ConcurrentMarkSweep为FullGc的日志，可以看到每隔一两分钟就会Full
 4. 重启完成后，继续观察POPFullGC情况。
 若依旧频繁POPFullGC，请联系驻场运维工程师。
 
-### 控制台创建ACK集群超时
+### 9.4 控制台创建ACK集群超时
 
 本文为您介绍在Apsara Uni-manager运营控制台中创建ACK集群失败，提示超时问题的排查方法。
 
@@ -1091,7 +1120,7 @@ grep <鹰眼ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/*
 2. 将ASAPI侧的耗时和POP侧的耗时进行比对，此时有两种情况：
 如果耗时相差不大，且POP耗时较长（如相差1s~2s内），则需要产品工程师进一步定位耗时问题。 如果ASAPI的耗时比POP的耗时长很多，需要定位POP是否存在FullGC问题。具体操作请参见控制台调用 VPC、ECS、SLB、RDS接口超时。
 
-### 控制台获取ACK集群列表超时
+### 9.5 控制台获取ACK集群列表超时
 
 本文为您介绍在Apsara Uni-manager运营控制台中获取ACK集群列表失败，提示超时问题的排查方法。
 
@@ -1134,18 +1163,18 @@ grep <鹰眼ID> logs/asapi-logger/*
 grep <鹰眼ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/trace.log
 ```
 
-**重要**
+> **重要：** 容器内日志很快就会被刷新，进入POP容器获取日志需要在20分钟内完成。
 
-容器内日志很快就会被刷新，进入POP容器获取日志需要在20分钟内完成。 方式二： a. 进入SLS Portal页面。 进入SLS查看日志的方法请参见查看日志。 b. Project选择**ali-pop-log**，logstore选择**pop_rpc_trace_log**。 c. 若使用鹰眼ID无法过滤出日志，请使用 `CS and DescribeClusters` 作为过滤条件，时间区间选择调用接口的时间，时间跨度请尽可能小。
+方式二： a. 进入SLS Portal页面。 进入SLS查看日志的方法请参见查看日志。 b. Project选择**ali-pop-log**，logstore选择**pop_rpc_trace_log**。 c. 若使用鹰眼ID无法过滤出日志，请使用 `CS and DescribeClusters` 作为过滤条件，时间区间选择调用接口的时间，时间跨度请尽可能小。
 4. 根据以上获取到的日志，分析哪个模块耗时较长。
 
-### 控制台调用Blink产品接口返回异常
+### 9.6 控制台调用Blink产品接口返回异常
 
 本文为您介绍Apsara Uni-manager运营控制台调用blink产品接口返回异常的处理方法。
 
 **问题现象**
 
-示"ascm.manage.EntityNotExist.Instance"。
+Apsara Uni-manager运营控制台调用blink产品接口返回异常，提示"ascm.manage.EntityNotExist.Instance"。
 
 **操作步骤**
 
@@ -1165,7 +1194,9 @@ select * from resource_instance where type ='foas_project' and instance_id = '$p
 
 | inst | ance id _ | 有大写 |
 |---|---|---|
-| 分钟后 no show count _ _ |  |  |
+| 分钟后 no show count _ _ |   |   |
+
+若 `inst ance_id` 有大写字母，则执行以下命令，备份表数据，修改 `instance_id` 为全小写字母。 10分钟后 `no_show_count` 会自动变为0，后续步骤不用执行。
 
 ```
 create table resource_instance_bak20210204 as select * from resource_instance; updateresource_instance set instance_id = lower(instance_id) where type ='foas_project';
@@ -1174,13 +1205,7 @@ create table resource_instance_bak20210204 as select * from resource_instance; u
 若 `instance_id` 没有大写字母， `no_show_count` 为1，则在容器**ascm-brm.ResourceMgr#**执行以下命令获取日志。
 
 ```
-cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep ECONNREFUSED |tai l -5 cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep ServiceUnavailable | tail -5 cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep '\"Code\"' | tail
-```
-
-`-5`
-
-```
-cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep ResponseTimeoutError | tail -5 cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep InternalError| ta il -5
+cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep ECONNREFUSED |tai l -5 cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep ServiceUnavailable | tail -5 cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep '\"Code\"' | tail cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep ResponseTimeoutError | tail -5 cat /logs/ascm-logger/call_trace* |grep foas |grep ListProject |grep InternalError| ta il -5
 ```
 
 如果查询结果为空，则执行以下命令获取日志。
@@ -1191,7 +1216,7 @@ cat /logs/ascm-logger/call_trace.log|grep foas |grep ListProject| grep $project�
 
 4. 将收集到的日志提供给Apsara Uni-manager运营控制台的驻场运维工程师。
 
-### 控制台操作提示无权限
+### 9.7 控制台操作提示无权限
 
 本文为您介绍在Apsara Uni-manager运营控制台中创建实例提示没有权限问题的解决方案。
 
@@ -1199,9 +1224,7 @@ cat /logs/ascm-logger/call_trace.log|grep foas |grep ListProject| grep $project�
 
 在Apsara Uni-manager运营控制台中创建实例时系统报错，提示没有权限。
 
-**说明**
-
-本文所介绍方法为判断权限点的通用方法，仅以创建实例报错进行举例。
+> **说明：** 本文所介绍方法为判断权限点的通用方法，仅以创建实例报错进行举例。
 
 **解决方案**
 
@@ -1222,11 +1245,9 @@ select * from ascm_privilege wherecode='<asapiErrorCode>'\G
 5. 确认当前用户角色权限是否勾选。
 i. 管理员登录Apsara Uni-manager运营控制台。 ii. 在顶部菜单栏中单击**企业**。 iii. 在左侧导航栏中单击**用户管理**。 iv. 找到提示报错的用户后，单击用户名。 v. 在头像下方查看用户角色。 vi. 在顶部菜单栏中单击**企业**。 vii. 在左侧导航栏中单击**角色管理**。 viii. 单击目标角色的角色名称，查看步骤4中获取的权限是否勾选。
 
-**说明**
+> **说明：** 只有自定义角色支持编辑权限。若系统预置角色不满足要求，请创建自定义角色后，为用户授权。创建角色及授权方法请参见Apsara Uni-manager运营控制台用户指南。
 
-只有自定义角色支持编辑权限。若系统预置角色不满足要求，请创建自定义角色后，为用户授权。创建角色及授权方法请参见Apsara Uni-manager运营控制台用户指南。
-
-### 资源管理定时任务同步问题
+### 9.8 资源管理定时任务同步问题
 
 本文为您介绍在Apsara Uni-manager运营控制台云产品实例列表展示内容与实际不符的解决办法。
 
@@ -1240,9 +1261,8 @@ i. 管理员登录Apsara Uni-manager运营控制台。 ii. 在顶部菜单栏中
 
 **解决方案**
 
-**说明**
+> **说明：** 以下操作仅支持企业版V3.16.0及以上版本。
 
-以下操作仅支持企业版V3.16.0及以上版本。
 1. 在飞天基础运维平台查看告警，获取日志。
 i. 登录飞天基础运维平台1.0。 ii. 在顶部菜单栏选择**监控中心** > **报警历史**。 iii. 在**报警历史**页面，**服务**下拉框中选择**ascm-brm**。 iv. 单击**搜索**。 v. 在**报警历史**页面，将鼠标放在目标报警的**故障资源**字段上，展示当前报警的所有故障资源内容，包括报错产品及其API。
 
@@ -1270,9 +1290,11 @@ i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏选择**平�
 3. 在返回结果中查看是否有该实例。
 若有返回则表示产品返回数据正常。若无返回，请联系阿里云技术支持进行排查。
 
-### 使用SDK调用接口控制台提示请求接口未
+### 9.9 使用SDK调用接口控制台提示请求接口未找到
 
 **找到**
+
+本文为您介绍使用SDK调用接口控制台提示请求接口未找到的解决方法。
 
 **问题现象**
 
@@ -1287,7 +1309,7 @@ i. 登录Apsara Uni-manager运维控制台。 ii. 在顶部菜单栏选择**平�
 1. 进入**asapi.ApiServer#**容器，执行以下命令，进入ASAPI数据库。
 
 ```
-mysql -h${db_asapi_db_host} -P${db_asapi_port} -u${db_asapi_user} -p${db_asapi_password}
+mysql -h${db_asapi_db_host} -P${db_asapi_port} -u${db_asapi_user} -p${db_asapi_password} asapi
 ```
 
 2. 执行以下SQL命令，查询当前调用的接口是否存在于ASAPI数据库。
@@ -1309,8 +1331,7 @@ select * from asapi_product where name = "产品名";
 cd /alidata/tools
 ```
 
-# 用工具从`pop`同步接口
-`./asapiTools pop -p` 产品名 `-v` 版本例:
+`#` 用工具从`pop`同步接口 `./asapiTools pop -p` 产品名 `-v` 版本例`:`
 
 ```
 ./asapiTools pop -p Ecs -v 2014-05-26
@@ -1318,9 +1339,13 @@ cd /alidata/tools
 
 查看输出的接口列表中是否包含当前需要调用的接口，若不包含，则需联系阿里云该产品相关人员检查此接口是否被注册到了POP平台中。若包含，则该接口已注册到ASAPI，请重新发起调用进行测试。
 
-### ASAPI HTTPS域名无法访问
+### 9.10 ASAPI HTTPS域名无法访问
+
+本文为您介绍ASAPI HTTPS域名无法访问的解决方法。
 
 **问题现象**
+
+ASAPI HTTPS域名无法访问。
 
 **可能原因**
 
@@ -1357,7 +1382,7 @@ i. 获取TianJi System_Id。 ii. 获取TianJi朱雀终态规划JSON文件。
 3. 飞天基础运维平台下发证书。
 i. 进入**ascm**的飞天基础运维平台集群配置文件。 ii. 在**asapi**文件夹下新建user及下级的文件目录，并将获取到的证书文件放入**cert**文件夹下。 iii. 单击**保存并提交**。
 
-### 控制台操作提示云产品接口尚未注册
+### 9.11 控制台操作提示云产品接口尚未注册
 
 本文为您介绍在Apsara Uni-manager运营控制台中遇到云产品接口尚未注册问题的解决方案。
 
@@ -1370,7 +1395,7 @@ i. 进入**ascm**的飞天基础运维平台集群配置文件。 ii. 在**asapi
 1. 通过API调用日志审计获取报错接口的产品名和版本号。
 具体操作请参见日志审计。
 2. 进入 `asapi.ApiServer#` 容器。
-i. 登录飞天基础运维平台。 ii. 在左侧导航栏中单击**产品集群运维**。 iii. 在**产品** | **集群**文本框中输入 `ascm` 。 iv. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**机器列表**页签。 v. 单击目标机器**操作**列的**Terminal**。 vi. 在左侧机器名称列表中单击目标机器执行以下命令。
+i. 登录飞天基础运维平台。 ii. 在左侧导航栏中单击**产品集群运维**。 iii. 在**产品** **|** **集群**文本框中输入 `ascm` 。 iv. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**机器列表**页签。 v. 单击目标机器**操作**列的**Terminal**。 vi. 在左侧机器名称列表中单击目标机器执行以下命令。
 
 ```
 bash -c bash
@@ -1384,7 +1409,7 @@ docker ps
 
 viii. 执行以下命令进入容器。
 
-```bash
+```python
 sudo docker exec -it <容器ID> bash
 ```
 
@@ -1392,12 +1417,12 @@ sudo docker exec -it <容器ID> bash
 此目录下存放注册工具，X86架构下使用工具asapiTools，ARM架构下使用工具asapiTools-arm64。
 4. 执行以下代码，将报错的产品版本下所有的接口，从POP同步至ASAPI中。
 
-**重要**
+> **重要：** 此命令对产品名称大小写敏感，请按实际情况输入。
 
-此命令对产品名称大小写敏感，请按实际情况输入。 `./asapiTools pop -p <`产品名`> <`版本号> 获取接口成功之后，系统会打印详细接口名称，需要确认打印的接口列表中是否包含缺失的接口，如果不包含，您需要确认输入的产品名称和版本号是否正确，确认无误但仍然无法获取到对应接口，请联系阿里云的驻场运维工程师。
+`./asapiTools pop -p <`产品名`> <`版本号`>` 获取接口成功之后，系统会打印详细接口名称，需要确认打印的接口列表中是否包含缺失的接口，如果不包含，您需要确认输入的产品名称和版本号是否正确，确认无误但仍然无法获取到对应接口，请联系阿里云的驻场运维工程师。
 5. 同步成功之后，重新执行报错的操作。
 
-### 控制台操作提示ASAPI调用接口超时
+### 9.12 控制台操作提示ASAPI调用接口超时
 
 本文为您介绍在Apsara Uni-manager运营控制台中遇到ASAPI调用接口超时的解决方案。
 
@@ -1412,7 +1437,7 @@ i. 按F12键。然后刷新页面，重新调用接口。 ii. 在**Headers**页�
 2. 通过 `eagleeye-traceid` 在API调用日志中获取报错接口的产品名和版本号。
 具体操作请参见日志审计。
 3. 进入 `asapi.ApiServer#` 容器。
-i. 登录飞天基础运维平台。 ii. 在左侧导航栏中单击**产品集群运维**。 iii. 在**产品** | **集群**文本框中输入 `ascm` 。 iv. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**机器列表**页签。 v. 单击目标机器**操作**列的**Terminal**。 vi. 在左侧机器名称列表中单击目标机器执行以下命令。
+i. 登录飞天基础运维平台。 ii. 在左侧导航栏中单击**产品集群运维**。 iii. 在**产品** **|** **集群**文本框中输入 `ascm` 。 iv. 单击目标集群**操作**列的**集群详情**，在**集群详情**页面单击**机器列表**页签。 v. 单击目标机器**操作**列的**Terminal**。 vi. 在左侧机器名称列表中单击目标机器执行以下命令。
 
 ```
 bash -c bash
@@ -1426,7 +1451,7 @@ docker ps
 
 viii. 执行以下命令进入容器。
 
-```bash
+```python
 sudo docker exec -it <容器ID> bash
 ```
 
@@ -1437,19 +1462,18 @@ mysql -h <db_asapi_db_host> -P<db_asapi_port> -u<db_asapi_user> -p<db_asapi_pass
 ```
 
 5. 在数据库中执行以下命令。
-#以`PolarDB-X`产品的接口为例，设置的超时时间根据后端接口实际耗时再来调整
+`#`以`PolarDB-X`产品的接口为例，设置的超时时间根据后端接口实际耗时再来调整
 
 ```
 update ops_api set timeout = 30000 where namespace = "Drds" and name ="DescribeDrdsRdsInstances" and api_version = "2019-01-23"; insert into api_timeout_unlimited(namespace,name,api_version,category_id) values ("Drds "," DescribeDrdsRdsInstances ","2019-01-23","privateCloud");
 ```
 
-**说明**
+> **说明：** 如果当前版本没有表api_timeout_unlimited，则不需要执行第二段命令。
 
-如果当前版本没有表api_timeout_unlimited，则不需要执行第二段命令。
 6. 执行成功之后，等待5分钟，重新执行控制台操作，观察调用情况。
 若问题仍未解决，请联系阿里云运维工程师进行操作。
 
-### Apsara Uni-manager运营控制台登
+### 9.13 Apsara Uni-manager运营控制台登录接口巡检告警
 
 **录接口巡检告警**
 
@@ -1476,21 +1500,24 @@ Apsara Uni-manager运营控制台登录接口巡检告警是对Apsara Uni-manage
 
 1. 根据告警来源获取异常原因和TraceId。
 
-**说明**
+> **说明：** ascm_login_api_inspect_alert告警来源是ASD。
+> ascm_login_check_health_alarm告警来源是ASCM的ASAPI网关。
 
-ascm_login_api_inspect_alert告警来源是ASD。 ascm_login_check_health_alarm告警来源是ASCM的ASAPI网关。 i. 登录SlsInner控制台。 ii. project: tjm-asd-console, logStore: biz_alert_log，查询条件为BizExType:AscmLoginFault。 project: tjm-asapi, logStore: tjmcollector_biz_alert_log_ascm_asapi，查询条件为 BizExType:AsapiHealthCheck。 下面是告警源为ASD的SLS日志，可以从原始日志中获取EagleEyeTraceId。其中EntityType表示异常的组件和服务；ErrorType表示异常的错误码，起到异常定界的作用，可以定位影响ASCM登录功能的具体组件，如果EntityType取值为Ram、Aas、Ummak、Pop、Tair这些组件，可以定界为底座基础服务异常。
+i. 登录SlsInner控制台。 ii. project: tjm-asd-console, logStore: biz_alert_log，查询条件为BizExType:AscmLoginFault。 project: tjm-asapi, logStore: tjmcollector_biz_alert_log_ascm_asapi，查询条件为 BizExType:AsapiHealthCheck。 下面是告警源为ASD的SLS日志，可以从原始日志中获取EagleEyeTraceId。其中EntityType表示异常的组件和服务；ErrorType表示异常的错误码，起到异常定界的作用，可以定位影响ASCM登录功能的具体组件，如果EntityType取值为Ram、Aas、Ummak、Pop、Tair这些组件，可以定界为底座基础服务异常。
 2. 底座基础服务异常导致登录接口报错处理方式。
 i. 使用ASD查询报错的具体原因和日志。 ii. 使用ASCM白屏化故障应急模式。 a. 如果此时ascm出现无法登录的情况，在登录时会提示开启应急模式。 b. 单击应急模式。 c. 登录ASD，进行故障诊断及开启应急模式。
 
-**说明**
+> **说明：** ASD使用ASO登录，如果ASO也出现无法登录的情况，可使用ASO的应急模式进行登录。
 
-ASD使用ASO登录，如果ASO也出现无法登录的情况，可使用ASO的应急模式进行登录。 d. 进入ASD后会先进行诊断，然后引导开启ASCM的应急模式，如下图所示。 e. 单击开启降级后ASCM恢复登录，可以登录ASCM后继续操作，登录ASCM后在顶部会有统一提示。 f. （可选）如果需要关闭应急模式，需要在ASD的降级配置中关闭。
+d. 进入ASD后会先进行诊断，然后引导开启ASCM的应急模式，如下图所示。 e. 单击开启降级后ASCM恢复登录，可以登录ASCM后继续操作，登录ASCM后在顶部会有统一提示。 f. （可选）如果需要关闭应急模式，需要在ASD的降级配置中关闭。
 3. ASCM异常导致登录接口报错处理方式。
 i. 登录ASD。 ii. 使用ASD日志查询功能，查询服务角色unimanager-base.IdentityService#的日志。 iii. 将日志发给研发同学排查解决。
 
-### 如何关闭实例资源间交互归属严格执行
+### 9.14 如何关闭实例资源间交互归属严格执行开关
 
 **开关**
+
+本文介绍如何关闭实例资源间交互归属严格执行开关。
 
 **资源间交互展示规则说明**
 
@@ -1512,16 +1539,15 @@ i. 登录ASD。 ii. 使用ASD日志查询功能，查询服务角色unimanager-b
 2. 在顶部菜单选择**平台运维** > **UniConsole****管控研发平台**，默认进入**产品列表**页面。
 3. 在**产品列表**页面，搜索想要变更的产品，单击**搜索**。
 
-**说明**
+> **说明：** 目前支持vpc和slb，这里以vpc为例。
 
-目前支持vpc和slb，这里以vpc为例。
 4. 搜索后，单击产品操作列的**开关列表**。
 5. 在开关列表搜索 `strictOwnership` ，查看当前值是否开启。如果开启，则单击操作列的**修改开关状态**。
 6. 在对话框中关闭**当前值**后，单击**确定**。
 7. 保存成功后，页面会自动刷新，展示是否修改成功。
 8. 等待10分钟左右，重新登录统一云管平台即可。
 
-### 配置门户公网透出
+### 9.15 配置门户公网透出
 
 **概述**
 
@@ -1543,7 +1569,7 @@ i. 登录ASD。 ii. 使用ASD日志查询功能，查询服务角色unimanager-b
 
 **重新加载配置**
 
-在容器中，进入cd `/opt/taobao/tengine/bin` 目录，执行 #sh nginxctl reload 重新加载配置。
+在容器中，进入cd `/opt/taobao/tengine/bin` 目录，执行 `#sh nginxctl reload` 重新加载配置。
 
 ```
 cd /opt/taobao/tengine/bin sh nginxctl reload
@@ -1557,9 +1583,7 @@ cd /opt/taobao/tengine/bin sh nginxctl reload
 
 进入TianJi，查看serviceManagement 集群详情，查看unimanager-cosm.ComsCms的注册变量 unimanager-coms-cms-vip-biz.vip_ip的值。
 
-**说明**
-
-如果需要支持IPv6，请联系阿里云技术支持处理。
+> **说明：** 如果需要支持IPv6，请联系阿里云技术支持处理。
 
 **查看realServerIp**
 

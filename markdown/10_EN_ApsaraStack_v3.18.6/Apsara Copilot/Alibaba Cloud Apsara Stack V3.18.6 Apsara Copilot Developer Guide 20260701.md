@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 57
 source_pdf: "7a47711f2befff97_Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%A3%9E%E5%A4%A9%E5%8A%A9%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Copilot%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Copilot Developer Guide 20260701
@@ -201,6 +201,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -217,6 +222,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
 this example, the Elastic Compute Service (ECS) API is used.
 
@@ -226,6 +232,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -239,6 +250,8 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
+
+`}`
 
 ## 2 Use POP to make API calls
 
@@ -359,7 +372,7 @@ operations.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -424,6 +437,8 @@ u must add the x-acs-security-token field to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 **Important**
 
 By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: Java
@@ -487,10 +502,15 @@ eter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
+`}` The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
 
 ```java
 package main import (
@@ -529,8 +549,15 @@ eld to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Set a proxy**
 
@@ -551,7 +578,7 @@ iable.
 variable.
 ```
 
-Set the proxy on the client. The following code is an example:
+`}` Set the proxy on the client. The following code is an example:
 
 ```
 // Proxy settings on the client have a higher priority than environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Set the HTTP proxy. client.GetHttpProxy() // Get the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Set the HTTPS proxy. client.GetHttpsProxy() // Get the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Set the proxy whitelist. client.GetNoProxy() // Get the proxy whitelist.
@@ -624,7 +651,7 @@ def describe_api_groups():
     request = CommonRequest()
 ```
 
-```python
+```bash
     # When you call an RPC API using an STS AccessKey pair, add the SecurityToken field
 to the parameters.
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -642,6 +669,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. Required for modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -758,7 +790,7 @@ POST /api/open/api/IntelligentAnalysis HTTP/1.1 Content-Type: application/json A
       "content": "Count the top 5 level-1 organizations with the most ECS instances"
 ```
 
-`]` Sample success responses `JSON` format
+`}` `]` `}` Sample success responses `JSON` format
 
 ```json
 data: {"choices": [{"delta": {"role": "function", "name": "action_node_type", "content" : "data_analysis", "status": "waiting", "extra": {}}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStep>Data retrieval intent</TeamixStep>", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "The user wants to count the top 5 level-1 organizations with the most ECS instances. The mo st relevant table is the resource instance table in the resource analysis domain, invol ving the organization and resource type dimensions and the instance count metric. I wil l filter for data where the resource type is ECS instance, aggregate by organization, a
@@ -817,7 +849,7 @@ POST /api/open/api/IntelligentSearch HTTP/1.1
       "content": "Query the ECS instances I created"
 ```
 
-`]` Sample success responses `JSON` format `{`
+`}` `]` `}` Sample success responses `JSON` format `{`
 
 ```json
  "data":"[{}]",
@@ -828,7 +860,7 @@ POST /api/open/api/IntelligentSearch HTTP/1.1
  "httpCode":200
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
@@ -913,7 +945,7 @@ POST /api/open/api/IntelligentQa HTTP/1.1 Content-Type: application/json
         "intranetSearch": false
 ```
 
-`]` Sample success responses `JSON` format `{`
+`}` `}` `]` Sample success responses `JSON` format `{`
 
 ```json
  "data":"[{}]",
@@ -924,7 +956,7 @@ POST /api/open/api/IntelligentQa HTTP/1.1 Content-Type: application/json
  "httpCode":200
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
@@ -998,7 +1030,7 @@ POST /api/open/api/CreateChat HTTP/1.1 Content-Type: application/json
     "outerType":"coms"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
  "data":{
@@ -1017,7 +1049,7 @@ Sample success responses `JSON` format `{`
  "httpCode":200
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -1088,7 +1120,7 @@ Sample success responses `JSON` format `{`
  "httpCode":200
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>A system exception occurred.</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
@@ -1190,7 +1222,7 @@ POST /api/open/api/GetChatHistory HTTP/1.1 Content-Type: application/json
   "chatId": "ff536d45-014c-43ca-a97f-f7e4dca3bed9"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "chatId": "8a5544e8-6704-4981-9241-caa15fd9fc3d",
@@ -1289,7 +1321,7 @@ r me?",
                     "timestamp": "2026-01-22T09:04:29Z"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
         "title": "In one sentence, tell me what the AI Assistant can do for me?",
@@ -1302,6 +1334,8 @@ r me?",
     "namespace": "default",
     "title": "In one sentence, tell me what the AI Assistant can do for me?"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1380,7 +1414,7 @@ POST /api/open/api/ListHistoryChats HTTP/1.1 Content-Type: application/json
   "outerType": "coms"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "data": [
@@ -1397,11 +1431,13 @@ Sample success responses `JSON` format `{`
             "chatType": "default"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": true
 ```
+
+`}`
 
 **Error codes**
 
@@ -1507,13 +1543,13 @@ the functional scope of the AI assistant, intending to understand available serv
       "model": "qwen3"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "actionNodeType": "rag"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "success": true
@@ -1594,12 +1630,14 @@ POST /api/open/api/MessageFeedback HTTP/1.1 Content-Type: application/json
   "reason": ""
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "success": true,
     "message": "success"
 ```
+
+`}`
 
 **Error code**
 
@@ -1668,7 +1706,7 @@ POST /api/open/api/DeleteChat HTTP/1.1 Content-Type: application/json
     "chatId": "2a902b57-dd58-416f-b190-cba7dc74e12c"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
     "data": {
@@ -1680,6 +1718,8 @@ Sample success responses `JSON` format `{`
 ```json
     "success": true
 ```
+
+`}`
 
 **Error codes**
 

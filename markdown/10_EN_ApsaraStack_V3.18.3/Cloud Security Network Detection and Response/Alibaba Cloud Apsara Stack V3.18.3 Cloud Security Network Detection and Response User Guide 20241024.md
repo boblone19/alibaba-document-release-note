@@ -5,7 +5,7 @@ doc_version: "20241024"
 pdf_pages: 20
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Network Detection and Response User Guide 20241024.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Security%20Network%20Detection%20and%20Response%20User%20Guide%2020241024.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Network Detection and Response User Guide 20241024

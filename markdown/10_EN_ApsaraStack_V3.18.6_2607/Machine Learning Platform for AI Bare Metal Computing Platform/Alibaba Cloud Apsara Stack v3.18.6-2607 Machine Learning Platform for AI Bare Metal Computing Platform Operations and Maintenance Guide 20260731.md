@@ -5,7 +5,7 @@ doc_version: "20260731"
 pdf_pages: 73
 source_pdf: "f589b963a018349c_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20Operations%20and%20Maintenance%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Operations and Maintenance Guide 20260731
@@ -159,6 +159,9 @@ This topic describes how users such as O&M engineers log in to the Apsara Uni-ma
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open a web browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -241,6 +244,8 @@ The cluster running the task must have the ai-task-inspector component installed
 
 > **Note:** You can initiate tasks through many products, such as PAI or AI Studio. As long as the task consumes GPU resources on BMCP nodes, you can use the job path analysis feature.
 
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Visualized Monitoring > Job Path Analysis**.
 3. On the **Job Path Analysis** page, use filters to locate a **Job ID**. After selection, click
@@ -273,6 +278,8 @@ The resource event alert monitors stability metrics for computing resources, inc
 Deploy CloudMonitor (CMS) and ensure it reaches the desired state.
 
 > **Note:** Resource event alert depends heavily on CMS. Confirm that CMS is deployed and has reached the desired state before use.
+
+**Procedure**
 
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Alerts**.
@@ -310,6 +317,9 @@ A job event alert refers to failover events that occur on all compute nodes occu
 **Limits**
 
 Job event alert supports only **ACK - Intelligent Computing Cluster** .
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Alerts**.
 By default, the system navigates to the **Resource Event Alert** tab.
@@ -330,6 +340,9 @@ This topic describes how to query the details of a Bare Metal Computing Platform
 **Prerequisites**
 
 A BMCP cluster is created in the Apsara Uni-manager Operations Console.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, choose **Clusters**.
 3. Choose **Computing > Cluster**.
@@ -426,6 +439,9 @@ synchronize the information to the current page.
 ##### 7.1.1.1 View server details
 
 This topic describes how to query all physical servers and view their detailed information.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Calculation > Server** tab is displayed. You can view all physical servers on this tab.
@@ -445,6 +461,9 @@ ii. Monitoring On the **Monitoring** tab, you can view the CPU utilization, memo
 ##### 7.1.1.2 Register server resources
 
 This topic describes how to register server resources.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, choose **Resource management**.
 By default, the **Computing > Servers** tab is displayed, where you can view all physical servers in the site.
@@ -527,6 +546,9 @@ This topic describes how to start, restart, stop, delete, and initialize servers
 **Prerequisites**
 
 The server **Resource owner** is **Resource Pool**.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Resource managemen**t.
 By default, you enter the **Computing** > **Servers** tab. This page displays all physical servers in the site.
@@ -552,6 +574,9 @@ This topic describes how to remotely log on to a server.
 **Prerequisites**
 
 The server to which you want to log on is running.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Calculation > Server** tab is displayed. You can view all physical servers on this tab.
@@ -562,6 +587,9 @@ By default, the **Calculation > Server** tab is displayed. You can view all phys
 ##### 7.1.1.5 Re-register a server
 
 This topic describes how to re-register servers.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource Management**.
 3. On the **Resource Management** page, click the **Calculation** tab.
@@ -632,6 +660,9 @@ This section describes how to query the list of GPU cards installed on bare meta
 **Prerequisites**
 
 You can query GPU cards only after the bare metal machine completes provisioning.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Resource Management**.
 3. On the **Resource Management** page, click the **Calculation > GPU card** tab to enter the
@@ -669,6 +700,9 @@ View the file system details, including the file system name, storage cluster, c
 #### 7.2.2 View server resource details
 
 This topic describes how to view server resource details.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 3. On the **Resource Management** page, click the **Storage** tab.
@@ -683,6 +717,9 @@ You can then view the storage cluster information of the server, including the n
 **node**
 
 This topic describes how to view the cache resources of a computing node.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 3. On the **Resource Management** page, click the **Storage** tab.
@@ -707,6 +744,9 @@ The **fuse-related configuration parameters** section displays information such 
 #### 7.3.1 Query network element details
 
 This section describes how to query all network element resources (including DSW, RDSW, HSW, CHSW, EHSW, RASW, etc.) within a site.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Resource Management**.
 The system opens the **Calculation** page by default.
@@ -730,6 +770,9 @@ network element to view more detailed information about the CPN network element.
 #### 7.3.2 View trace details
 
 This section describes how to query all traces within a site, including switch traces and node traces, to quickly identify abnormal nodes.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Resource Management**.
 The system opens the **Calculation** page by default.
@@ -756,6 +799,8 @@ This topic describes how to diagnose a cluster or node.
 **Limits**
 
 Cluster/node diagnostics is supported only for bare metal-intelligent computing clusters (intelligent computing high-bandwidth network instances), ACK-intelligent computing clusters (intelligent computing high-bandwidth network instances and intelligent computing training and inference optimization instances), and converged computing clusters (high-bandwidth network converged instances and basic converged instances) that contain bare metal nodes.
+
+**Procedure**
 
 > **Important:** If this operation includes time-consuming diagnostic items or stress tests, GPU resources are occupied. Make sure that this operation does not affect your business.
 
@@ -993,6 +1038,9 @@ This topic describes how to add a device model.
 **Background information**
 
 You can add **managed intelligent computing**, **In-Band**, and **HPC** device models by clicking **Add model**. The system automatically imports device models of all other types during the Zhuque planning phase.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Click **Basic Configurations > Models**.
 3. Click **Add model** in the upper-left corner of the device model list.
@@ -1042,6 +1090,9 @@ The machine type list automatically displays machine types that match your searc
 #### 9.1.3 Modify model
 
 This topic describes how to modify a model.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Click **Basic Configuration > Models**.
 3. Click **Modify** in the **Operation** column of the target model.
@@ -1052,6 +1103,8 @@ This topic describes how to modify a model.
 This topic describes how to delete a model.
 
 > **Warning:** Before you delete a model, make sure that no instances are using this model. The deletion is irreversible.
+
+**Procedure**
 
 1. Log on to the BMCP Operations Platform.
 2. Click **Basic Configuration > Models**.
@@ -1090,6 +1143,9 @@ By default, the **Custom image** tab is displayed.
 **Manage custom images**
 
 You can **delete**, **enable**, **disable**, and **export** custom images.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Images**.
 By default, the **Custom image** tab is displayed.
@@ -1108,6 +1164,9 @@ You can enable, disable, and export public images and export signature files.
 **Manage public images**
 
 You can enable, disable, and export public images.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Images**.
 By default, the **Custom image** tab is displayed.
@@ -1142,6 +1201,9 @@ By default, the **Custom image** tab is displayed.
 #### 9.3.1 Add a GPU
 
 This topic describes how to add a GPU.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. Click **Add GPU** above the list.
@@ -1163,6 +1225,9 @@ This topic describes how to add a GPU.
 #### 9.3.2 Query GPU
 
 This topic describes how to query GPU.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Click **Basic Configuration > GPU Settings**.
 3. On the **GPU Configuration** page, enter a **GPU model** in the search bar. The system
@@ -1171,6 +1236,9 @@ automatically displays matching GPU configurations in the list. You can also cli
 #### 9.3.3 Modify a GPU
 
 This topic describes how to modify the information of a GPU.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. Click **Edit** in the **Operation** column of the desired GPU.
@@ -1184,6 +1252,9 @@ This topic describes how to modify the information of a GPU.
 #### 9.3.4 Remove a GPU
 
 This topic describes how to remove a GPU.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. Click **Delete** in the Operation column of the desired GPU.
@@ -1214,6 +1285,9 @@ This topic describes how to collect job logs.
 
 Job logs support only **ACK - intelligent computing clusters** that contain **bare metal**
 **nodes**.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. In the left-side navigation pane, click **Logs**.
 The system directs you to the **Cluster/node logs** tab by default.
@@ -1227,6 +1301,9 @@ click **OK**.
 ## 11 Event center
 
 You can manage event tickets in the event center. For example, you can view the basic information about an event ticket, such as the number and status of the event ticket, and review an event ticket.
+
+**Procedure**
+
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Event Center**.
 3. On the upper part of the Event Center page, query event tickets by configuring the
@@ -1254,6 +1331,9 @@ The Instance O&M module provides component package management, software stack co
 #### 12.1.1 Create an upgrade task
 
 An upgrade task in the BMCP Operations Console is a task unit used to issue new versions of component packages to target bare metal instances for batch upgrading. This topic describes how to create an upgrade task.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Upgrade Task Management**.
 3. Click **Create Upgrade Task** in the upper-left corner of the task list.
@@ -1281,6 +1361,9 @@ An upgrade task in the BMCP Operations Console is a task unit used to issue new 
 #### 12.1.2 View the details of an upgrade task
 
 This topic describes how to view the details of an upgrade task.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Upgrade Task Management**.
 3. Above the upgrade task list, search tasks by **Task ID** or **Bundle Name**.
@@ -1309,6 +1392,9 @@ This topic describes how to proceed to the next wave of upgrade tasks. After you
 **Limits**
 
 The **Canary Release Mode** of the upgrade task is **By Wave**. The **Status** of the upgrade task is **In Progress**.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Upgrade Task Management**.
 3. In the **Actions** column of the target upgrade task, click the
@@ -1323,6 +1409,9 @@ This topic describes how to cancel an upgrade task. The cancel operation only st
 **Limits**
 
 The **Canary Release Mode** of the upgrade task is **By Wave** or **By Percentage**. The **Status** of the upgrade task is **In Progress**.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Upgrade Task Management**.
 3. In the **Actions** column of the target upgrade task, click the
@@ -1344,6 +1433,9 @@ A component package is the fundamental unit for managing and upgrading software 
 **Usage Limits**
 
 When you select a component package from a bundle, its version is inherited directly, so you do not need to enter it again. When you upload a component package with the same name, the system displays a prompt, allowing to choose to overwrite the existing file or cancel the upload. During large-file uploads, the pop-up window is blocked and background operation is not supported. Please wait for the upload to complete before closing the pop-up window.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Component Package Management**.
 3. Click **Upload Component Package** in the upper-left corner of the component package
@@ -1381,6 +1473,9 @@ This topic describes how to delete a component package.
 **Limits**
 
 Component packages referenced by software stack bundles cannot be deleted. System-preset component packages cannot be deleted.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Component Package Management**.
 3. Locate the target component package and click **Delete** in the **Actions** column .
@@ -1395,6 +1490,9 @@ This topic describes how to create a software stack bundle.
 **Background Information**
 
 A software stack bundle manages version match relationships among components and defines compatible version combinations across a set of component packages. With the software stack bundle, you can enable consistency detection of component versions on bare metal instances and issue batch upgrade tasks.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Software Stack Profile**.
 3. Click **Create Bundle** in the upper-left corner of the bundle list.
@@ -1415,6 +1513,9 @@ A software stack bundle manages version match relationships among components and
 **bundle**
 
 This topic describes how to view the details of a software stack bundle.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Software Stack Profile**.
 3. Above the bundle list, enter a bundle name to perform a fuzzy search.
@@ -1424,6 +1525,9 @@ This topic describes how to view the details of a software stack bundle.
 #### 12.3.3 Add components
 
 This topic describes how to add components to a bundle.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Software Stack Profile**.
 3. In the bundle list, click **Details** in the **Actions** column of the target bundle.
@@ -1448,6 +1552,9 @@ This topic describes how to enable or disable a software stack bundle.
 **Limits**
 
 To enable a bundle: The Rediness value of the bundle is **Ready**, and the Status of the bundle is **Draft** or **Disabled**. To disable a bundle: The Status of the bundle is **Draft** or **Enabled**.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Software Stack Profile**.
 3. In the **Actions** column of the target bundle, click the
@@ -1483,6 +1590,9 @@ This topic describes how to delete a software stack bundle.
 **Limits**
 
 System-preset bundles cannot be deleted. Custom bundles for which **Status** is **Draft** or **Disabled** can be deleted.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Platform.
 2. Choose **Instance O&M > Software Stack Profile**.
 3. Locate the target bundle, click the

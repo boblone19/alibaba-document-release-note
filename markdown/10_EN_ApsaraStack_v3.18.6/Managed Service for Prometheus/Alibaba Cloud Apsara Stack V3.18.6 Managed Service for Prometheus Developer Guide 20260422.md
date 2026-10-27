@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 24
 source_pdf: "04e41b44cb4fe55d_Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus Developer Guide 20260422.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Managed%20Service%20for%20Prometheus%20Developer%20Guide%2020260422.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Managed Service for Prometheus Developer Guide 20260422
@@ -57,7 +57,7 @@ package com.aliyun.sample; import com.aliyun.tea.*; import com.aliyun.arms201908
 
 `*/`
 
-```java
+```
  public static com.aliyun.arms20190808.Client createClient(String accessKeyId, String
 accessKeySecret) throws Exception {
  Config config = new Config().setAccessKeyId(accessKeyId)
@@ -67,6 +67,11 @@ roduct is located.
  config.endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the Prom
 etheus product.
  return new com.aliyun.arms20190808.Client(config);
+```
+
+`}`
+
+```java
  public static void main(String[] args_) throws Exception {
  com.aliyun.arms20190808.Client client =createClient("accessKeyId", "accessKeySecret");
  ListDashboardsRequestl istDashboardsRequest = new ListDashboardsRequest();
@@ -75,6 +80,8 @@ etheus product.
  ListDashboardsResponse response =client.listDashboards(listDashboardsRequest);
  System.out.println(response.body);
 ```
+
+`}` `}`
 
 **TypeScript request example**
 
@@ -103,11 +110,21 @@ import ARMS20190808, * as $ARMS20190808 from '@alicloud/arms20190808'; // For in
  config.endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the Prom
 etheus product.
  return new ARMS20190808(config);
+```
+
+`}`
+
+```
  static async main(args: string[]): Promise<void> {
  let client = Client.createClient("accessKeyId", "accessKeySecret");
        let listDashboardsRequest = new $ARMS20190808.ListDashboardsRequest({ });
        ... // Set business parameters.
  await client.listDashboards(listDashboardsRequest);
+```
+
+`}` `}`
+
+```
 Client.main(process.argv.slice(2));
 ```
 
@@ -143,22 +160,47 @@ func CreateClient (accessKeyId *string, accessKeySecret *string) (_result *arms2
        AccessKeySecret: accessKeySecret,
        RegionId:“${regionId}”, // The region ID where the Prometheus product is
 located.
+```
+
+`}`
+
+```
  // The domain name to access.
  config.Endpoint = tea.String("${proxy_prometheus_api_domain}") // The POP domain name
 of the Prometheus product.
  _result = &arms20190808.Client{}
  _result, _err = arms20190808.NewClient(config)
  return _result, _err
+```
+
+`}`
+
+```
 func _main (args []*string) (_err error) {
  client, _err := CreateClient(tea.String("accessKeyId"), tea.String("accessKeySecret"))
  if _err != nil {
  return _err
+```
+
+`}`
+
+```
  listDashboardsRequest := &arms20190808.ListDashboardsRequest{}
  ... // Set business parameters.
  _, _err = client.ListDashboards(listDashboardsRequest)
  if _err != nil {
  return _err
+```
+
+`}`
+
+```
  return _err
+```
+
+`}`
+
+```
 func main() {
  err := _main(tea.StringSlice(os.Args[1:]))
  if err != nil {
@@ -192,6 +234,11 @@ located.
    $config->endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the
 Prometheus product.
    return new ARMS($config);
+```
+
+`}`
+
+```
  /**
  * @param string[] $args
  * @return void
@@ -205,8 +252,18 @@ Prometheus product.
  $listDashboardsRequest = new ListDashboardsRequest([]);
  ... // Set business parameters.
                $client->listDashboards($listDashboardsRequest);
+```
+
+`}` `}`
+
+```
 $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'vendor' . \DIRE CTORY_SEPARATOR . 'autoload.php'; if (file_exists($path)) {
  require_once $path;
+```
+
+`}`
+
+```
 Sample::main(array_slice($argv, 1));
 ```
 
@@ -276,6 +333,11 @@ etheus product is located.
  config.Endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the Prom
 etheus product.
  return new AlibabaCloud.SDK.ARMS20190808.Client(config);
+```
+
+`}`
+
+```
  public static void Main(string[] args)
 ```
 
@@ -290,7 +352,7 @@ AlibabaCloud.SDK.ARMS20190808.Models.ListDashboardsRequest();
  client.ListDashboards(listDashboardsRequest);
 ```
 
-meters
+`}` meters
 
 ## 3 Obtain API parameters
 
@@ -428,6 +490,8 @@ orgId=3**&amp;refresh=60s",
     "RequestId": "2A0CEDF1-06FE-44AC-8E21-21A5BE65****"
 ```
 
+`}`
+
 ### 4.2 SearchAlertContact
 
 You can call the SearchAlertContact operation to query alert contacts.
@@ -524,11 +588,13 @@ access_token=91f2f6****",
             "ContactName": "John Doe"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "21E85B16-75A6-429A-9F65-8AAC9A54****"
 ```
+
+`}`
 
 ### 4.3 SearchAlertContactGroup
 
@@ -624,7 +690,7 @@ access_token=91f2f6****",
             "ContactName": "John Doe"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "4D6C358A-A58B-4F4B-94CE-F5AAF023****"

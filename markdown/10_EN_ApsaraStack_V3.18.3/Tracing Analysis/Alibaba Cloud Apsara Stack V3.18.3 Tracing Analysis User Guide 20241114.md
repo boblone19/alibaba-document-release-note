@@ -5,7 +5,7 @@ doc_version: "20241114"
 pdf_pages: 66
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Tracing Analysis User Guide 20241114.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Tracing%20Analysis%20User%20Guide%2020241114.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Tracing Analysis User Guide 20241114

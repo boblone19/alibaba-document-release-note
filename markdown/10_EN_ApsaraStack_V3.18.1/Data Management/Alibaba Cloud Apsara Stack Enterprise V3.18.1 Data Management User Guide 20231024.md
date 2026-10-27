@@ -5,7 +5,7 @@ doc_version: "20231024"
 pdf_pages: 263
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Data Management User Guide 20231024.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/DMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Data%20Management%20User%20Guide%2020231024.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Data Management User Guide 20231024
@@ -3750,6 +3750,9 @@ the **Actions** column.
 4. Click a tab on the left side of the page, and then click a checkpoint based on your business
 requirements. For example, click **SQL Console** on the left side of the page, and then click **SQL Execution**
 **Quantity Criteria**.
+
+**Note**
+
 For more information about the tabs and checkpoints, see Overview of security rule sets. You can click **Create Rule** to create a security rule. For more information about the syntax, see DSL syntax for security rules.
 5. Find the security rule that you want to manage and click **Edit** in the **Actions** column.
 You can also click **Disable** to disable a security rule, click **Enable** to enable a security rule, or click **Delete** to delete a security rule.

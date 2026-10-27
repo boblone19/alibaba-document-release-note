@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 19
 source_pdf: "77c197c320b6d4ef_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Operations and"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Network%20Detection%20and%20Response%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Operations and Maintenance Guide 20260828
@@ -38,6 +38,9 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open a web browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. cture Management console
@@ -66,6 +69,9 @@ This topic describes how to check the service status of Network Detection Respon
 ### 2.1 Basic inspection
 
 The purpose of a basic inspection is to check the service status of Network Detection and Response (NDR). This topic describes how to perform a basic inspection.
+
+**Procedure**
+
 1. Log in to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane, choose **Resource Management > Product & Cluster**
 **O&M**.
@@ -79,6 +85,9 @@ check whether the service status is normal.
 ### 2.2 Advanced inspection
 
 The purpose of an advanced inspection is to check the service status and features of Network Detection and Response (NDR). This topic describes how to perform an advanced inspection.
+
+**Procedure**
+
 1. Log in to the Apsara Infrastructure Management console.
 2. Log in to the two physical servers of NDR.
 i. In the left-side navigation pane, choose **Resource Management > Product & Cluster**
@@ -119,6 +128,9 @@ Run the python /opt/beaver/bin/scripts/check_beaver_process.py command. If the c
 **process**
 
 This topic describes how to restart the beaver_drv process.
+
+**Procedure**
+
 1. Log in to the two physical servers of Network Detection and Response (NDR).
 2. Switch to the root user.
 3. Run the following command to restart the NDR process:
@@ -193,6 +205,9 @@ information, see **Security management > Account security > PCM > AccessKey pair
 ### 3.3 Access databases
 
 This topic describes how to access the three databases on which a Network Detection and Response (NDR) server depends from the NDR server.
+
+**Procedure**
+
 1. Log in to the two physical servers of NDR.
 2. Run the following command to access the NDR database:
 
@@ -203,6 +218,9 @@ This topic describes how to access the three databases on which a Network Detect
 ### 3.4 View the NIC types and status
 
 This topic describes how to view the network interface controller (NIC) types, check whether a business NIC is enabled, and view the link status of NICs on a server of Network Detection and Response (NDR).
+
+**Procedure**
+
 1. Log in to the two physical servers of Network Detection and Response (NDR).
 2. Run the following command to view the network interface controller (NIC) types and status.
 
@@ -241,6 +259,9 @@ lspci | grep net
 ### 3.5 Use packet capture tools
 
 This topic describes the built-in packet capture tools of Network Detection and Response (NDR) that are used for troubleshooting.
+
+**Procedure**
+
 1. Log in to the two physical servers of NDR.
 2. Troubleshoot the issue based on the following descriptions of packet capture tools.
 
@@ -297,6 +318,9 @@ rx|tx|drop|kernel|pre_routing|local_in|post_routing|pre_routing6|local_in6|post_
 ### 3.6 Replay packets
 
 This topic describes how to use DPDK to replay packets. This way, you can test the performance of Network Detection and Response (NDR) features.
+
+**Procedure**
+
 1. Log in to the two physical servers of NDR.
 2. Run the following command to replay packets.
 
@@ -312,6 +336,9 @@ eplay_loops> <Interval> Userage ./pkt_repaly <cap file> <speed(Kpps)> <time(Seco
 **server**
 
 This topic describes how to query information about a server.
+
+**Procedure**
+
 1. Log in to the two physical servers of Network Detection and Response (NDR).
 2. Run the following commands to query information about a server.
 

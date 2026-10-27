@@ -5,7 +5,7 @@ doc_version: "20241115"
 pdf_pages: 116
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 ApsaraDB for Redis Developer Guide 20241115.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/Redis/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020241115.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 ApsaraDB for Redis Developer Guide 20241115
@@ -321,6 +321,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -337,6 +342,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
 this example, the Elastic Compute Service (ECS) API is used.
 
@@ -346,6 +352,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -360,7 +371,7 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
 
-e API calls
+`}` e API calls
 
 ## 3 Use POP to make API calls
 
@@ -491,7 +502,7 @@ e API calls
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -556,6 +567,8 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 > **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
 > To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
@@ -624,10 +637,15 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
+`}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
 
 ```java
 package main import (
@@ -668,8 +686,15 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Proxy configuration**
 
@@ -690,13 +715,15 @@ iable.
 variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
 **SSL verification**
+
+**Description**
 
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
@@ -737,7 +764,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Only remote procedure call (RPC) APIs are supported. The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
+Only remote procedure call (RPC) APIs are supported.
+
+**Example**
+
+The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -785,6 +816,11 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -989,11 +1025,13 @@ The response in XML format includes a message that indicates whether the call is
 <? xml version="1.0" encoding="utf-8"? > <!—The root node of the response--> <Operation name+Response> <!—The request ID returned--> <RequestId>4C4fdsf38-3910-447D-87AD-AC078932216</RequestId> <!—The result data returned--> </Operation name+Response>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
 "RequestId": "4C4fdsf38-3910-447D-87AD-AC078932216", /* The result data returned */
 ```
+
+`}`
 
 **Sample error response**
 
@@ -1008,6 +1046,8 @@ JSON format
 ```json
 "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
+
+`}`
 
 ### 4.5 Request signatures
 
@@ -1048,6 +1088,8 @@ an HMAC value.
 5. Add the signature string to the request as the Signature parameter.
 
 > **Note:** When you submit the signature string to the KVStore for Redis instance as the final request parameter value, perform URL encoding on this parameter based on RFC 3986 rules. This is the same method that is used to process other parameters.
+
+**Example**
 
 DescribeDrdsInstances is used in this example. The following section shows the canonicalized query string:
 
@@ -1174,8 +1216,13 @@ http(s)://[Endpoint]/?Action=DescribeZones &<Common request parameters>
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "RequestId":"1D42F072-72FE-4DC4-BB8E-64B1D298****",
  "Zones":{
   "ZoneName":"Hohhot Zone B",
@@ -1248,11 +1295,13 @@ XML format
 </CreateInstanceResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
 "InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb"
 ```
+
+`}`
 
 #### 4.7.3 DeleteInstance
 
@@ -1288,11 +1337,13 @@ XML format
 </DeleteInstanceResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D190D2"
 ```
+
+`}`
 
 #### 4.7.4 ModifyInstanceSpec
 
@@ -1331,12 +1382,14 @@ XML format
 </ModifyInstanceSpecResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "A4828C10-AF0A-4CD7-8FBE-737C6CC1193E",
     "OrderId": "20722623431****"
 ```
+
+`}`
 
 ### 4.8 Manage instances
 
@@ -1384,6 +1437,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "InstanceId":"r-bp1zxszhcgatnx****"
 ```
 
+`}`
+
 #### 4.8.2 FlushExpireKeys
 
 Deletes the expired keys from a Redis instance.
@@ -1418,12 +1473,19 @@ http(s)://[Endpoint]/?Action=FlushExpireKeys &InstanceId=r-bp1zxszhcgatnx**** &A
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "TaskId":"21986****",
  "RequestId":"82E30AB7-E3A4-46AC-88A0-3E4DCDC5****",
  "InstanceId":"r-bp1zxszhcgatnx****"
 ```
+
+`}`
 
 #### 4.8.3 DescribeLogicInstanceTopology
 
@@ -1471,8 +1533,13 @@ http(s)://[Endpoint]/?Action=DescribeLogicInstanceTopology &InstanceId=r-bp1zxsz
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "RedisShardList":{
   "Capacity":"2048",
   "Bandwidth":"96",
@@ -1493,6 +1560,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "NodeId":"r-bp10noxlhcoim2****-proxy-3#542****",
   "Connection":"320000"
 ```
+
+`}` `}`
 
 #### 4.8.4 DescribeEngineVersion
 
@@ -1533,8 +1602,13 @@ http(s)://[Endpoint]/?Action=DescribeEngineVersion &InstanceId=r-bp1zxszhcgatnx*
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "MajorVersion":"5.0",
  "IsLatestVersion":false,
  "RequestId":"A52974D1-9D57-4805-86CC-92E6EDE8****",
@@ -1543,6 +1617,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "Engine":"redis",
  "EnableUpgradeMajorVersion":true
 ```
+
+`}`
 
 #### 4.8.5 DescribeInstanceAttribute
 
@@ -1670,11 +1746,16 @@ bp1wcw2rlw76acc5k****.redis.rds.aliyuncs.com</ConnectionDomain>
 </DescribeInstanceAttributeResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
  "Instances": {
   "DBInstanceAttribute": [
+```
+
+`{`
+
+```json
     "Connections": 10000,
     "ResourceGroupId": "rg-acfmyiu4ekp****",
     "Config": "{\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-
@@ -1699,11 +1780,16 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
     "MaintainStartTime": "18:00Z",
     "Tags": {
      "Tag": [
+```
+
+`{`
+
+```json
        "Value": "Community Edition",
        "Key": "Type"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ArchitectureType": "standard",
@@ -1728,11 +1814,13 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
     "RegionId": "cn-hangzhou"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "D67A69DF-C1FC-4B01-B239-B17888CCFD2A"
 ```
+
+`}`
 
 #### 4.8.6 DescribeInstances
 
@@ -1852,7 +1940,7 @@ mple.com",
 "ChargeType":" PostPaid"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber" : 1,
@@ -1860,6 +1948,8 @@ mple.com",
     "TotalCount" : 1,
     "RequestId" : "969D0A1D-C91A-4837-9F70-49785DF9BDCE"
 ```
+
+`}`
 
 #### 4.8.7 DescribeRegions
 
@@ -1945,11 +2035,13 @@ n-hangzhou-b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-
                 "LocalName": "China (Hangzhou)"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "AD425AD3-CC7B-4EE2-A5CB-2F61BA73****"
 ```
+
+`}`
 
 #### 4.8.8 DescribeSecurityIps
 
@@ -2007,17 +2099,22 @@ XML format
 </DescribeSecurityIpsResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "SecurityIpGroups": {
         "SecurityIpGroup": [
+```
+
+`{`
+
+```json
                 "SecurityIpList": "127.0.0.1",
                 "SecurityIpGroupAttribute": "",
                 "SecurityIpGroupName": "default"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "SecurityIpList": "100.100.202.***/24,10.10.10.***",
@@ -2025,11 +2122,13 @@ JSON format
                 "SecurityIpGroupName": "rds_replica_group"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "EFC9161F-15E3-4A6E-8A99-C09916D1****"
 ```
+
+`}`
 
 #### 4.8.9 FlushInstance
 
@@ -2067,11 +2166,13 @@ XML format
 </FlushInstanceResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
   "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E7"
 ```
+
+`}`
 
 #### 4.8.10 ModifyInstanceAttribute
 
@@ -2153,11 +2254,13 @@ XML format
 </ModifyInstanceMaintainTimeResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76"
 ```
+
+`}`
 
 #### 4.8.12 ModifyInstanceNetExpireTime
 
@@ -2195,11 +2298,13 @@ XML format
 </ModifyInstanceNetExpireTimeResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "9C4AF387-1EA3-4C84-8013-3F6B973EDDF5",
 ```
+
+`}`
 
 #### 4.8.13 ModifySecurityIps
 
@@ -2237,11 +2342,13 @@ XML format
 </ModifySecurityIpsResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId" : "AAAF99B1-69ED-4E80-8CD5-272C09E4****"
 ```
+
+`}`
 
 #### 4.8.14 SwitchNetwork
 
@@ -2285,12 +2392,14 @@ XML format
 </SwitchNetworkResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "TaskId":"578678678",
     "requestId": "F0997EE8-F4C2-4503-9168-85177ED78C70"
 ```
+
+`}`
 
 ### 4.9 Data encryption
 
@@ -2339,8 +2448,13 @@ http(s)://[Endpoint]/?Action=DescribeEncryptionKey &InstanceId=r-bp1zxszhcgatnx*
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "Origin":"Aliyun_KMS",
  "Description":"testkey",
  "RequestId":"9A931CE5-C926-5E09-B0EC-6299C4A6****",
@@ -2351,6 +2465,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "Creator":"17649847********",
  "DeleteDate":"2021-09-24T18:22:03Z"
 ```
+
+`}`
 
 #### 4.9.2 DescribeInstanceTDEStatus
 
@@ -2383,11 +2499,18 @@ http(s)://[Endpoint]/?Action=DescribeInstanceTDEStatus &InstanceId=r-bp1zxszhcga
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "TDEStatus":"Enabled",
  "RequestId":"5D622714-AEDD-4609-9167-F5DDD3D1****"
 ```
+
+`}`
 
 #### 4.9.3 CheckCloudResourceAuthorized
 
@@ -2428,11 +2551,18 @@ http(s)://[Endpoint]/?Action=CheckCloudResourceAuthorized &InstanceId=r-bp1zxszh
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "AuthorizationState":1,
  "RequestId":"A501A191-BD70-5E50-98A9-C2A486A82****"
 ```
+
+`}`
 
 ### 4.10 Account management
 
@@ -2472,8 +2602,13 @@ http(s)://[Endpoint]/?Action=DescribeUserInfo
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "BalanceAmount":0,
  "RequestId":"3A40BE4E-1890-4972-889C-FEFA376XXX",
  "IsAuthentication":true,
@@ -2482,6 +2617,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "EcsBought":22,
   "KVSBought":29
 ```
+
+`}` `}`
 
 #### 4.10.2 CreateAccount
 
@@ -2534,6 +2671,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "AcountName":"demoaccount"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCo de | Error code | Error message | Description |
@@ -2583,8 +2722,13 @@ http(s)://[Endpoint]/?Action=DescribeInstanceSSL &InstanceId=r-bp1zxszhcgatnx***
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "SSLExpiredTime":"2020-08-05T09:05:53Z",
  "RequestId":"02260F96-913E-4655-9BA5-A3651CAF****",
  "SSLEnabled":"Enable",
@@ -2636,12 +2780,19 @@ http(s)://[Endpoint]/?Action=DescribeIntranetAttribute &InstanceId=r-bp1zxszhcga
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "IntranetBandwidth":102,
  "RequestId":"25D42CC3-FBA1-4AEC-BCE2-B8DD3137****",
  "ExpireTime":"0"
 ```
+
+`}`
 
 #### 4.12.2 ModifyInstanceVpcAuthMode
 
@@ -2680,10 +2831,17 @@ http(s)://[Endpoint]/?Action=ModifyInstanceVpcAuthMode &InstanceId=r-bp1zxszhcga
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "RequestId":"ABAF95F6-35C1-4177-AF3A-70969EBD****"
 ```
+
+`}`
 
 #### 4.12.3 AllocateInstancePublicConnection
 
@@ -2719,10 +2877,17 @@ http(s)://[Endpoint]/?Action=AllocateInstancePublicConnection &InstanceId=r-bp1z
 
 Sample success responses `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "RequestId":"20C8341E-B5AD-4B24-BD82-D73241522ABF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2771,12 +2936,14 @@ XML format
 </CreateBackupResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "2FF6158E-3394-4A90-B634-79C49184****",
     "BackupJobID": "1162****"
 ```
+
+`}`
 
 #### 4.13.2 ModifyBackupPolicy
 
@@ -2818,11 +2985,13 @@ XML format
 </ModifyBackupPolicyResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 #### 4.13.3 DescribeBackupPolicy
 
@@ -2867,7 +3036,7 @@ XML format
 </DescribeBackupPolicyResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
  "PreferredBackupPeriod": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
@@ -2876,6 +3045,8 @@ JSON format
  "PreferredBackupTime": "19:00Z-20:00Z",
  "BackupRetentionPeriod": "7"
 ```
+
+`}`
 
 #### 4.13.4 DescribeBackups
 
@@ -2970,6 +3141,11 @@ JSON format
     "PageNumber": 1,
     "Backups": {
         "Backup": [
+```
+
+`{`
+
+```json
                 "BackupMethod": "Physical",
                 "EngineVersion": "4.0",
                 "BackupIntranetDownloadURL": "http://rdsbak-hz-v3.oss-cn-hangzhou-intern
@@ -2987,7 +3163,7 @@ hangzhou.aliyuncs.com/********",
                 "BackupStatus": "Success"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 4.13.5 RestoreInstance
 
@@ -3024,11 +3200,13 @@ XML format
 </RestoreInstanceResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 ### 4.14 Manage monitoring
 
@@ -3102,11 +3280,13 @@ JSON format
                 "Unit" : "Counts/s"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId" : "B906A893-58A3-4644-AC2D-A2C9B08706C1"
 ```
+
+`}`
 
 #### 4.14.2 DescribeHistoryMonitorValues
 
@@ -3155,13 +3335,15 @@ XML format
 </DescribeHistoryMonitorValuesResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "MonitorHistory": "{\"2020-11-18T00:00:00Z\":{\"CpuUsage\":\"0.30\"},\"2020-11-18T0
 0:02:00Z\":{\"CpuUsage\":\"0.60\"},\"2020-11-18T00:03:00Z\":{\"CpuUsage\":\"0.60\"}}",
     "RequestId": "689E8093-3094-4DC2-A2A2-30D40097****"
 ```
+
+`}`
 
 ### 4.15 Manage parameters
 
@@ -3209,6 +3391,8 @@ JSON format
 cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplistentries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-int set-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabledcommands\":\"flushall\"}"
 ```
 
+`}`
+
 #### 4.15.2 ModifyInstanceConfig
 
 Modifies configuration parameters of a KVStore for Redis instance.
@@ -3246,11 +3430,13 @@ XML format
 </ModifyInstanceConfigResponse>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
   "requestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 ### 4.16 Appendixes
 

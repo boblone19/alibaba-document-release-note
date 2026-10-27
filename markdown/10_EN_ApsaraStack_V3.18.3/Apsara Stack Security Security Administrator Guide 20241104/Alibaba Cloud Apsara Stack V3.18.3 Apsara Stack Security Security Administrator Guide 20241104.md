@@ -5,7 +5,7 @@ doc_version: "20241104"
 pdf_pages: 18
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Stack Security Security Administrator Guide 20241104.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E5%9F%BA%E7%A1%80%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Stack%20Security%20Security%20Administrator%20Guide%2020241104.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Stack Security Security Administrator Guide 20241104
@@ -51,6 +51,9 @@ This topic describes how to log on to Cloud Security Operations Center.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -77,6 +80,9 @@ On the **Operations Platform** page, you can view the following information.
 **data**
 
 You can use the system monitoring feature to monitor integrated cloud services and identify exceptions in the cloud services at the earliest opportunity. This facilitates service O&M. This topic describes how to view the system monitoring data.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Monitoring and Alerting** > **System Monitoring**.
 3. On the page that appears, view the monitoring overview and monitoring data of cloud
@@ -93,6 +99,9 @@ services. On the **Monitoring Overview** tab, view the following information. Ov
 **data**
 
 You can use the business monitoring feature to monitor the statuses of integrated cloud services. This topic describes how to view the business monitoring data.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Monitoring and Alerting** > **Monitoring**.
 3. On the page that appears, view the business monitoring data of Apsara Stack Security
@@ -107,6 +116,9 @@ On the **Container Security** tab, you can view the monitoring details of Contai
 ### 4.1 Manage middleware
 
 Cloud Security Operations Center allows you to manage middleware such as Diamond, Tair, ScheduleX, Dubbo, OpenAPI, and MetaQ. This topic describes how to manage Apsara Stack Security middleware.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **O&M management** > **Middleware**
 **Management**.
@@ -206,6 +218,9 @@ ud service management
 #### 5.2.1 View O&M logs
 
 O&M logs include the resource utilization and mirrored traffic logs of Network Detection and Response (NDR). This topic describes how to view the O&M logs of NDR.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services** > **Network Detection and**
 **Response** > **O&M Logs**.
@@ -215,6 +230,9 @@ day, last 7 days, last 30 days, or a custom time range. The O&M log list display
 #### 5.2.2 View the node status
 
 You can view a Network Detection and Response (NDR) node and the status trend of the node. This topic describes how to view the status of an NDR node.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services** > **Network Detection and**
 **Response** > **Node Status**.
@@ -235,6 +253,9 @@ and **DDoS anti-DDoS** to enable or disable the features. By default, **Maliciou
 ### 6.1 View end-to-end logs
 
 This topic describes how to use the end-to-end log tracing feature to view end-to-end logs in the Logstore of Apsara Stack Security.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Log Diagnostics** > **End-to-end Log Tracing**.
 3. On the **End-to-end Link Log** page, view the end-to-end logs.
@@ -251,6 +272,9 @@ You can use the following search conditions to query end-to-end logs.
 **feature**
 
 This topic describes how to use the quick diagnostics feature to create a diagnostic task to identify issues on a service.
+
+**Procedure**
+
 1. Log on to Cloud Security Operations Center.
 2. In the left-side navigation pane, choose **Log Diagnostics** > **Quick Diagnostics**.
 3. On the **One-click diagnosis** page, click **Create diagnostic tasks**. In the panel that

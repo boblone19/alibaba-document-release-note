@@ -5,23 +5,33 @@ doc_version: "20260729"
 pdf_pages: 13
 source_pdf: "02_AgentRuntime产品简介_agent-runtime-apsarastack-product-introduction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/opentrek/zh/agent-runtime-apsarastack-product-introduction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 智能体工厂 OpenTrek AgentRuntime产品简介
 
-智能体工厂 OpenTrek
+## 目录
 
-## 什么是AgentRuntime 智能体运
+- 1 什么是AgentRuntime 智能体运行服务
+- 2 产品详情
+- 3 产品价值
+- 4 功能特性
+- 5 应用场景
+- 6 基本概念
+- 7 使用限制
+
+ntRuntime 智能体运行服务
+
+## 1 什么是AgentRuntime 智能体运行服务
 
 **行服务**
 
 **AgentRuntime Platform**是一个专为企业级 AI Agent 应用设计的、部署在企业自有云环境下
 的 PaaS (Platform-as-a-Service) 平台。它专注于解决 Agent 在生产环境中从代码调试、部署到运维全生命周期的核心挑战，提供统一的**Agent** **运行时管理、工具（****Tool/MCP****）生命周期管理、底层异构资源**
 **的精细化弹性调度，以及多级安全隔离能力**。
-AgentRuntime支持 Python、Node.js、Java 等主流语言的运行时，为Agent应用提供标准化部署、版本管理、灰度发布与弹性实例调度能力。内置 Code Interpreter 与 Browser Use 两类沙箱服务，分别支持安全隔离的代码执行（含文件 I/O 与会话管理）和浏览器自动化任务（如网页浏览、数据抓取、表单填写）。 平台提供统一的工具调用治理能力，兼容MCP协议，支持工具一键接入、自定义发布及凭证集中管理。 Agent、沙箱、大模型与工具的访问凭证均通过安全机制统一管控，可与企业凭证中心或AI网关集成。 可观测能力覆盖链路追踪（Trace）与运行时指标（Metrics），支持对Agent执行步骤的耗时和状态进行可视化监控。 智能体工厂 OpenTrek
+AgentRuntime支持 Python、Node.js、Java 等主流语言的运行时，为Agent应用提供标准化部署、版本管理、灰度发布与弹性实例调度能力。内置 Code Interpreter 与 Browser Use 两类沙箱服务，分别支持安全隔离的代码执行（含文件 I/O 与会话管理）和浏览器自动化任务（如网页浏览、数据抓取、表单填写）。 平台提供统一的工具调用治理能力，兼容MCP协议，支持工具一键接入、自定义发布及凭证集中管理。 Agent、沙箱、大模型与工具的访问凭证均通过安全机制统一管控，可与企业凭证中心或AI网关集成。 可观测能力覆盖链路追踪（Trace）与运行时指标（Metrics），支持对Agent执行步骤的耗时和状态进行可视化监控。
 
-## 产品详情
+## 2 产品详情
 
 AgentRuntime 智能体运行服务是面向企业级 Agent 应用的一站式基础设施平台，提供从调试、部署到监控、升级的全生命周期管理能力。平台内置统一执行环境，支持 Python、Node.js、Java 等多语言运行时，集成安全沙箱（Code Interpreter、Browser Use）、模型接入与治理、工具调用、凭证管理及可观测能力。本文主要介绍AgentRuntime的工作原理和核心功能等。
 
@@ -71,9 +81,9 @@ Sandbox 沙箱平台基于容器服务runD沙盒提供隔离执行环境，其�
 **凭证管理**：统一管理 Agent、Sandbox、LLM 及工具调用所需的 API Key凭证类型。
 **可观测能力**：支持 Trace 链路调用可视化与 Metrics 实时监控，展示执行耗时、状态及错误信息。
 **多模式开发**：支持零代码（面向业务人员）和高代码（Python/Node.js/Java 编码）两种开发方式。
-AgentRuntime提供统一执行环境、全生命周期管理、多语言运行时、安全沙箱、模型管理、工具管理、凭证管理及可观测能力，支持企业基于自有技术栈开展 Agent 应用运维。 智能体工厂 OpenTrek
+AgentRuntime提供统一执行环境、全生命周期管理、多语言运行时、安全沙箱、模型管理、工具管理、凭证管理及可观测能力，支持企业基于自有技术栈开展 Agent 应用运维。
 
-## 产品价值
+## 3 产品价值
 
 AgentRuntime 智能体运行服务是面向企业级Agentic应用的一站式基础设施平台，提供统一的执行环境、 全生命周期管理、多语言运行时支持、安全沙箱服务、模型管理、工具生态集成、凭证统一管理及可观测能力。平台支持零代码和高代码两种开发模式，适配Python、Node.js、Java等语言，兼容主流Agent框架， 并可通过AI网关集成模型与工具服务。本文主要介绍AgentRuntime的核心产品价值。
 
@@ -95,9 +105,9 @@ AgentRuntime 智能体运行服务是面向企业级Agentic应用的一站式基
 
 **可观测与可运维的生产支撑能力**
 
-支持基于Trace的Agent决策路径可视化，展示从前端请求、网关、Agent、模型到工具调用的完整链路。 提供Metrics维度的耗时与状态监控，支持实时查看各执行步骤的运行状态与响应时间。平台具备版本管理、灰度发布、Endpoint配置与弹性伸缩策略设置能力，满足企业级应用持续演进与稳定运行需求。 智能体工厂 OpenTrek
+支持基于Trace的Agent决策路径可视化，展示从前端请求、网关、Agent、模型到工具调用的完整链路。 提供Metrics维度的耗时与状态监控，支持实时查看各执行步骤的运行状态与响应时间。平台具备版本管理、灰度发布、Endpoint配置与弹性伸缩策略设置能力，满足企业级应用持续演进与稳定运行需求。
 
-## 功能特性
+## 4 功能特性
 
 AgentRuntime 是面向企业级 AI Agent 运行时平台，提供统一的执行环境、全生命周期管理、多语言运行时支持、安全沙箱、弹性资源调度、多级隔离、可观测性、工具与模型集成、凭证管理等能力。
 
@@ -126,8 +136,6 @@ AgentRuntime 是面向企业级 AI Agent 运行时平台，提供统一的执行
 | 秒级冷启与按需弹性 | 支持将 Agent 实例缩容至零，请求到达时启动实例。 |
 | 休眠与恢复（即将上线） | 实例缩容前可将其运行状态（如内存、会话信息）快照并持久化，恢复时加载快照。 |
 
-智能体工厂 OpenTrek
-
 | 会话亲和性保障 | 同一用户的连续请求可路由到同一 Agent 实例。 |
 |---|---|
 | 高并发弹性扩容 | 支持根据预设策略自动增加实例数量。 |
@@ -152,8 +160,6 @@ AgentRuntime 是面向企业级 AI Agent 运行时平台，提供统一的执行
 | 全链路 Trace | 支持从前端请求、网关、Agent、模型、工具到外部依赖的调用链追踪。 |
 | AI 应用监控（可观测需要集成 AI 可观测产品） | 支持基于 Prometheus / ARMS 的监控，可分析模型性能、Token 消耗、GPU 使用情况。 |
 
-智能体工厂 OpenTrek
-
 | 日志与评估 | 日志统一存储，支持检索和 SQL 分析；支持对模型调用日志进行质量、安全、意图等评估。 |
 |---|---|
 
@@ -176,9 +182,7 @@ AgentRuntime 是面向企业级 AI Agent 运行时平台，提供统一的执行
 | 动态凭证注入 | 与 AgentRuntime 运行时联动，在运行时通过安全机制注入凭证。 |
 | 启用/禁用控制 | 支持一键启用或禁用凭证。 |
 
-智能体工厂 OpenTrek
-
-## 应用场景
+## 5 应用场景
 
 AgentRuntime 智能体运行服务提供统一执行环境、全生命周期管理、安全沙箱及多语言运行时支持，满足企业级Agent应用在部署与运维阶段的基础需求。本文主要介绍AgentRuntime的应用场景。
 
@@ -200,9 +204,9 @@ AgentRuntime支持代码执行和数据处理能力，提供安全隔离的Code 
 
 **场景5：跨部门协作的模型与工具共享**
 
-AgentRuntime支持跨部门、跨项目的模型与工具共享机制。凭证管理模块统一存储LLM访问密钥与工具 API凭证，按项目或角色分配使用权限。Tool Hub支持自定义工具发布与内部共享，便于沉淀企业级能力资产。多个Sandbox环境可独立配置依赖与镜像，满足不同团队的技术栈差异。开发模式支持从低代码快速验证到高代码工程化落地的平滑过渡。该场景适用于大型集团企业，总部统一建设Agent基础设施，各子公司或事业部基于同一平台开发专属Agent应用，实现能力复用与标准统一。 智能体工厂 OpenTrek
+AgentRuntime支持跨部门、跨项目的模型与工具共享机制。凭证管理模块统一存储LLM访问密钥与工具 API凭证，按项目或角色分配使用权限。Tool Hub支持自定义工具发布与内部共享，便于沉淀企业级能力资产。多个Sandbox环境可独立配置依赖与镜像，满足不同团队的技术栈差异。开发模式支持从低代码快速验证到高代码工程化落地的平滑过渡。该场景适用于大型集团企业，总部统一建设Agent基础设施，各子公司或事业部基于同一平台开发专属Agent应用，实现能力复用与标准统一。
 
-## 基本概念
+## 6 基本概念
 
 本文主要介绍AgentRuntime 智能体运行服务的基本概念。 AgentRuntime**平台** 部署在专有云环境中的 PaaS 平台，提供 Agent 应用的统一运行时管理、工具生命周期管理、异构资源调度及多级安全隔离能力。
 
@@ -244,9 +248,9 @@ AgentRuntime支持跨部门、跨项目的模型与工具共享机制。凭证�
 
 **统一API与SDK**
 
-提供兼容OpenAI Chat Completions协议的HTTP API及多语言SDK。 智能体工厂 OpenTrek
+提供兼容OpenAI Chat Completions协议的HTTP API及多语言SDK。
 
-## 使用限制
+## 7 使用限制
 
 您在使用AgentRuntime 智能体运行服务时注意不要超过相应的限制值，以免程序出现异常。
 

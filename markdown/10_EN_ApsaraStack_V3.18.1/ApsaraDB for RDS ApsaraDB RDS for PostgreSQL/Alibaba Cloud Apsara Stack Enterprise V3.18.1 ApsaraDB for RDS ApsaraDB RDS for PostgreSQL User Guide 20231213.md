@@ -5,7 +5,7 @@ doc_version: "20231213"
 pdf_pages: 132
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 20231213.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/RDS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20PostgreSQL%20User%20Guide%2020231213.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 20231213

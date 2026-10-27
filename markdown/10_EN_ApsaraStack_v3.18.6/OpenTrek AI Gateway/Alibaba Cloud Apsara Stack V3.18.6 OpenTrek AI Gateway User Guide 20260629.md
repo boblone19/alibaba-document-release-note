@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 358
 source_pdf: "92dba37387dcf114_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek AI Gateway User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/AI%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20AI%20Gateway%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # OpenTrek AI Gateway User Guide 20260629
@@ -9141,6 +9141,8 @@ curl -X POST '127.0.0.1:8181/v1/data/example1/allow' \
 
 ##### 3.10.6.1 Cross-origin resource sharing
 
+**Description**
+
 The `cors` plugin enables Cross-Origin Resource Sharing (CORS) by adding the required HTTP response headers.
 
 **Configuration fields**
@@ -11460,6 +11462,7 @@ endpoint:/graphql
  repository(owner:$owner, name:$name) {
  name
  forkCount
+ description
 ```
 
 `}` `}`
@@ -11522,6 +11525,7 @@ query ($owner : String!, $name : String!) {
  repository(owner: $owner, name: $name) {
  name
  forkCount
+ description
 ```
 
 `}` `}`

@@ -5,7 +5,7 @@ doc_version: "20250225"
 pdf_pages: 1143
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 DataWorks User Guide 20250225.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20DataWorks%20User%20Guide%2020250225.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 DataWorks User Guide 20250225
@@ -2318,7 +2318,11 @@ After you create a batch synchronization node, you must select a data source and
 
 **Configure a destination**
 
-After you configure the source, you must select a data source and a table in the Target section. For more information about how to configure the parameters in the Target section, see Configure DataHub Writer.
+After you configure the source, you must select a data source and a table in the Target section.
+
+**Note**
+
+For more information about how to configure the parameters in the Target section, see Configure DataHub Writer.
 
 > You must specify a write mode, such as overwriting or appending, for most synchronization nodes. The write mode that you can specify for a synchronization node varies based on the data source type.
 
@@ -17648,7 +17652,11 @@ To run an auto triggered node, you must configure a resource group for schedulin
 
 **Configure a resource group**
 
-Go to the configuration tab of your node. Click the **Properties** tab in the right-side navigation pane. On the Properties tab, configure a resource group for the node in the **Resource Group** section. Select the resource group that you want to use from the **Resource Group** dropdown list. By default, **Common scheduler resource group** is selected. You can go to the **Scheduling Settings** tab of the Settings page to change the default resource group for scheduling. For more information, see Configure scheduling settings.
+Go to the configuration tab of your node. Click the **Properties** tab in the right-side navigation pane. On the Properties tab, configure a resource group for the node in the **Resource Group** section. Select the resource group that you want to use from the **Resource Group** dropdown list. By default, **Common scheduler resource group** is selected.
+
+**Note**
+
+You can go to the **Scheduling Settings** tab of the Settings page to change the default resource group for scheduling. For more information, see Configure scheduling settings.
 
 > If you select Common scheduler resource group, the node may wait for resources during peak hours. We recommend that you change the scheduling time of the node or use an exclusive resource group to run the node.
 > If the existing resource groups do not meet your business requirements, click **Purchase Resource Group** to purchase an exclusive resource group.
@@ -24438,7 +24446,11 @@ Only **project administrators** and **project owners** can create, edit, and del
 
 **Create and edit asset directories**
 
-Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory. If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
+Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory.
+
+**Note**
+
+If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
 
 > You must be a member of the current workspace before you can be an asset owner. An asset owner must be a member of the current workspace. For more information about how to add a workspace member, see Manage members and roles.
 
@@ -26920,6 +26932,8 @@ When you join the dimension table to another table, you can view metrics such as
 | cacheHitQPS | Queries the number of cache hits (in QPS) against the dimension table. The metric name is blink.projectName.jobName.dimJoin.cacheHitQPS . |
 | dimJoin.fetchHit | Queries the correlation degree of the dimension table and the table to which the dimension table is joined. The metric name is blink.projectName.jobName.dimJoin.fetchHit . |
 | dimJoin.cacheHit | Queries the cache hit ratio of the dimension table. The metric name is blink.projectName.jobName.dimJoin.cacheHit . |
+
+**Note**
 
 We recommend that you use Realtime Compute V2.1.1 and later. To use a MaxCompute dimension table, you must grant the read permission to the account for accessing MaxCompute. When you declare a dimension table, you must specify the primary key. When you join a dimension table with another table, the ON condition must contain an equivalent condition that includes the primary key of either table. The primary key value for each row of a MaxCompute dimension table must be unique. Otherwise, the duplicate records are removed. If the dimension table is a partitioned table, Realtime Compute does not currently support writing the partition key column to the schema. When the cache policy is set to ALL, Realtime Compute reloads data asynchronously. Therefore, you must increase the memory of the JOIN operator. The size of the increased memory is twice the data size of the remote table. The following failover message may appear when you run a node:
 

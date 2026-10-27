@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 178
 source_pdf: "f428ea656062a274_Alibaba Cloud Apsara Stack V3.18.6 NFV Cloud Firewall Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-NFV%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20NFV%20Cloud%20Firewall%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # NFV Cloud Firewall Developer Guide 20260701
@@ -1026,7 +1026,13 @@ If no setting is configured for a request, the setting configured on the client 
 
 #### 4.1.1 CreateCidr
 
-Creates a CIDR block. This operation uses common request headers. For more information, see Common request parameters.
+Creates a CIDR block.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1041,6 +1047,8 @@ Creates a CIDR block. This operation uses common request headers. For more infor
 | Ipv6CidrBl ock | Strin g | Quer y | No | 2401:b2c0::/56 | The IPv6 CIDR block. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1048,7 +1056,13 @@ Creates a CIDR block. This operation uses common request headers. For more infor
 
 #### 4.1.2 CreateVpcIpv6Cidr
 
-Allocates an IPv6 CIDR block to a virtual private cloud (VPC). This operation uses common request headers. For more information, see Common request parameters.
+Allocates an IPv6 CIDR block to a virtual private cloud (VPC).
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1056,6 +1070,8 @@ Allocates an IPv6 CIDR block to a virtual private cloud (VPC). This operation us
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | Ipv6Isp | Strin g | Quer y | No | BGP | The IPv6 Internet Service Provider (ISP). |
 | Ipv6CidrBl ock | Strin g | Quer y | No | 2401:b2c0::/56 | The IPv6 CIDR block. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1066,7 +1082,13 @@ Allocates an IPv6 CIDR block to a virtual private cloud (VPC). This operation us
 
 #### 4.1.3 DeleteCidr
 
-Deletes configurations of a specified CIDR block. This operation uses common request headers. For more information, see Common request parameters.
+Deletes configurations of a specified CIDR block.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1075,6 +1097,8 @@ Deletes configurations of a specified CIDR block. This operation uses common req
 | OriginCalle rUid | Strin g | Quer y | No | 1 | The UID of the requester. |
 | CidrId | Strin g | Quer y | No | 12 | The index of the CIDR block. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1082,6 +1106,8 @@ Deletes configurations of a specified CIDR block. This operation uses common req
 #### 4.1.4 ListCidrs
 
 Lists the CIDR blocks in a specified virtual private cloud (VPC) or network range. This operation uses common request headers and does not have operation-specific request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1094,6 +1120,8 @@ Lists the CIDR blocks in a specified virtual private cloud (VPC) or network rang
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
 | CidrStatus | Strin g | Quer y | No | success | The status of the CIDR block. |
 | CidrId | Strin g | Quer y | No | 45 | The index of the CIDR block. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1124,7 +1152,13 @@ Lists the CIDR blocks in a specified virtual private cloud (VPC) or network rang
 
 #### 4.1.5 ListCidrsAll
 
-Lists all configured CIDR blocks, including all CIDR blocks related to virtual private cloud (VPC), subnets, and custom routes. This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
+Lists all configured CIDR blocks, including all CIDR blocks related to virtual private cloud (VPC), subnets, and custom routes.
+
+**Request headers**
+
+This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1133,6 +1167,8 @@ Lists all configured CIDR blocks, including all CIDR blocks related to virtual p
 | Name | Strin g | Quer y | No | test | The name. |
 | Cidr | Strin g | Quer y | No | 192.168.1.0/24 | The CIDR block. |
 | CidrId | Strin g | Quer y | No | 123 | The index of the CIDR block. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1163,12 +1199,20 @@ Lists all configured CIDR blocks, including all CIDR blocks related to virtual p
 
 #### 4.1.6 ListVpcIpv6IspOptions
 
-Lists the Internet Service Provider (ISP) options supported by the virtual private cloud (VPC) IPv6 CIDR block. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Lists the Internet Service Provider (ISP) options supported by the virtual private cloud (VPC) IPv6 CIDR block.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Valid values: zh (default) for Chinese and en for English |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1192,7 +1236,13 @@ Lists the Internet Service Provider (ISP) options supported by the virtual priva
 
 #### 4.2.1 BypassCluster
 
-Bypasses cluster routing and connects directly to backend service nodes. Use this for debugging, troubleshooting, or specific traffic direct-connect scenarios. This operation uses common request headers and has no special request headers. See the documentation for common request parameters.
+Bypasses cluster routing and connects directly to backend service nodes. Use this for debugging, troubleshooting, or specific traffic direct-connect scenarios.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. See the documentation for common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1205,6 +1255,8 @@ Bypasses cluster routing and connects directly to backend service nodes. Use thi
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The ID of the cluster. |
 | AuthCode | Strin g | Quer y | No | 123456789 | The authentication code: the ID of the level-1 organization. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1213,7 +1265,13 @@ Bypasses cluster routing and connects directly to backend service nodes. Use thi
 
 #### 4.2.2 BypassClusterRecover
 
-Bypasses the cluster recovery process and enters the normal service state directly. Use this operation during failover to skip time-consuming steps such as consistency check or data synchronization. This operation uses only common request headers. For more information, see Common request parameters.
+Bypasses the cluster recovery process and enters the normal service state directly. Use this operation during failover to skip time-consuming steps such as consistency check or data synchronization.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1226,6 +1284,8 @@ Bypasses the cluster recovery process and enters the normal service state direct
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The ID of the cluster. |
 | AuthCode | Strin g | Quer y | No | 123456789 | The verification code. This value is the ID of the level-1 organization. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1234,7 +1294,11 @@ Bypasses the cluster recovery process and enters the normal service state direct
 
 #### 4.2.3 CreateCluster
 
-Creates a new cluster resource. This operation uses common request headers and does not have special request headers. For more information, see the documentation for common request parameters.
+Creates a new cluster resource.
+
+**Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see the documentation for common request parameters.
 
 | Paramete r | Typ e | Posi tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1277,7 +1341,13 @@ Creates a new cluster resource. This operation uses common request headers and d
 
 #### 4.2.4 CreateDisasterCluster
 
-Createa a disaster recovery cluster to achieve high availability and disaster recovery capabilities across regions or zones. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+Createa a disaster recovery cluster to achieve high availability and disaster recovery capabilities across regions or zones.
+
+**Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1312,6 +1382,8 @@ Createa a disaster recovery cluster to achieve high availability and disaster re
 | AppId | Strin g | Quer y | No | cls-xxx | The ID of the application. |
 | Consumed Cap | Integ er | Quer y | No | 10000 | The capacity consumed by the cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1324,6 +1396,8 @@ Createa a disaster recovery cluster to achieve high availability and disaster re
 
 Deletes a specified cluster resource and its associated configurations and data. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
@@ -1332,6 +1406,8 @@ Deletes a specified cluster resource and its associated configurations and data.
 | ClusterNa me | Strin g | Quer y | No | cluster-name | The name of the cluster. |
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The ID of the cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1339,13 +1415,19 @@ Deletes a specified cluster resource and its associated configurations and data.
 
 #### 4.2.6 GetAllRegionsInfo
 
-Retrieves the list of geographic regions, typically including hierarchical data such as countries, provinces, and cities. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Retrieves the list of geographic regions, typically including hierarchical data such as countries, provinces, and cities.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid values: en (English). |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1369,6 +1451,8 @@ Retrieves the execution result of an asynchronous task. This operation uses comm
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the caller. |
 | TaskId | Strin g | Quer y | No | task-xxx | The ID of the task. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1390,7 +1474,13 @@ Retrieves the execution result of an asynchronous task. This operation uses comm
 
 #### 4.2.8 GetBypassInfo
 
-Retrieves bypass information to query details such as the current bypass status, configuration, and operational parameters of a device or system. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+Retrieves bypass information to query details such as the current bypass status, configuration, and operational parameters of a device or system.
+
+**Request headers**
+
+This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1402,6 +1492,8 @@ Retrieves bypass information to query details such as the current bypass status,
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The cluster ID. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1410,7 +1502,13 @@ Retrieves bypass information to query details such as the current bypass status,
 
 #### 4.2.9 GetGateWay
 
-Retrieves gateway information. This operation uses common request headers only. For more information, see Common request parameters.
+Retrieves gateway information.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1423,6 +1521,8 @@ Retrieves gateway information. This operation uses common request headers only. 
 |---|---|---|---|---|---|
 | IpType | Strin g | Quer y | No | ipv4 | The IP version. Valid values: ipv4 and ipv6 |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1432,7 +1532,13 @@ Retrieves gateway information. This operation uses common request headers only. 
 
 #### 4.2.10 ListApps
 
-Lists applications that are installed or available in the system. This operation uses common request headers. For more information, see Common request parameters.
+Lists applications that are installed or available in the system.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1442,6 +1548,8 @@ Lists applications that are installed or available in the system. This operation
 
 | AppId | Strin g | Quer y | No | 2dfea044-479f-464a- b374-f14d32****** | The ID of the application. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1453,7 +1561,13 @@ Lists applications that are installed or available in the system. This operation
 
 #### 4.2.11 ListClusterDetail
 
-Retrieves details of a specified cluster, including its configuration, status, nodes, and resources. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+Retrieves details of a specified cluster, including its configuration, status, nodes, and resources.
+
+**Request headers**
+
+This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1463,6 +1577,8 @@ Retrieves details of a specified cluster, including its configuration, status, n
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to whom the original calling process belongs. |
 |---|---|---|---|---|---|
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The cluster ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1489,6 +1605,8 @@ Lists the configuration information of cluster monitoring metrics. This operatio
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to whom the original calling process belongs. |
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The ID of the cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1507,7 +1625,13 @@ Lists the configuration information of cluster monitoring metrics. This operatio
 
 #### 4.2.13 ListClusterResources
 
-Lists the overview information of all resources (such as pods, services, and deployments) in the cluster. This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
+Lists the overview information of all resources (such as pods, services, and deployments) in the cluster.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1515,6 +1639,8 @@ Lists the overview information of all resources (such as pods, services, and dep
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Valid values: zh, en (English) |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique user ID (UID) of the application that initiates the call. |
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The ID of the cluster. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1552,7 +1678,13 @@ Lists the overview information of all resources (such as pods, services, and dep
 
 #### 4.2.14 ListClusters
 
-Lists all clusters that the current user has permission to access. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+Lists all clusters that the current user has permission to access.
+
+**Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1569,6 +1701,8 @@ Lists all clusters that the current user has permission to access. This operatio
 | AppId | Strin g | Quer y | No | 2dfea044-479f-464a- b374-f14d32****** | The ID of the application. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number of the list. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1617,7 +1751,13 @@ Queries the list of clusters associated with an application by its name. API des
 
 **Best practice**
 
-<Customer usage scenarios for this API> This API uses common request headers and has no special request headers. For more information, see the documentation on common request parameters.
+<Customer usage scenarios for this API>
+
+**Request headers**
+
+This API uses common request headers and has no special request headers. For more information, see the documentation on common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1784,7 +1924,11 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 #### 4.2.16 ListEcsInstanceTypes
 
-Lists the available Elastic Compute Service (ECS) instance types on Alibaba Cloud. This operation uses common request headers. For more information, see Common request parameters.
+Lists the available Elastic Compute Service (ECS) instance types on Alibaba Cloud.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1796,6 +1940,8 @@ Lists the available Elastic Compute Service (ECS) instance types on Alibaba Clou
 | ArchType | Strin g | Quer y | No | amd64 | The architecture type. amd64 |
 | VfwSpec | Strin g | Quer y | No | 12G | The capacity specification of the virtual firewall. |
 | NetType | Strin g | Quer y | No | isw | The network type. Valid values: isw or csw. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1809,7 +1955,13 @@ Lists the available Elastic Compute Service (ECS) instance types on Alibaba Clou
 
 #### 4.2.17 ListVfwSpecOptions
 
-Lists the available specifications for virtual firewalls, such as CPU, memory, and throughput. This operation uses common request headers. No special request headers apply. For more information, see Common request parameters.
+Lists the available specifications for virtual firewalls, such as CPU, memory, and throughput.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers apply. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1817,6 +1969,8 @@ Lists the available specifications for virtual firewalls, such as CPU, memory, a
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid value: en (English) |
 | NetType | Strin g | Quer y | No | k25 | The network type. |
 | ArchType | Strin g | Quer y | No | intel | The CPU type. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1834,7 +1988,13 @@ Lists the available specifications for virtual firewalls, such as CPU, memory, a
 
 #### 4.2.18 ModifyClusterInfo
 
-Modifies basic cluster information, such as the cluster name and description. This operation uses common request headers only. For more information, see Common request parameters.
+Modifies basic cluster information, such as the cluster name and description.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1847,6 +2007,8 @@ Modifies basic cluster information, such as the cluster name and description. Th
 | Value | Strin g | Quer y | No | test | The tag value. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1855,7 +2017,13 @@ Modifies basic cluster information, such as the cluster name and description. Th
 
 #### 4.2.19 QueryMemberDetail
 
-Queries details of a member. This operation uses common request headers. For more information, see Common request parameters.
+Queries details of a member.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1866,6 +2034,8 @@ Queries details of a member. This operation uses common request headers. For mor
 
 | EcsId | Strin g | Quer y | No | ecs-adf86823****** | The ID of the Elastic Compute Service (ECS) instance. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1908,7 +2078,13 @@ Creates a dedicated host cluster. This operation uses common request headers. Fo
 
 #### 4.3.2 CreateDdhHost
 
-Creates a dedicated host. This operation uses common request headers. For more information, see Common request parameters.
+Creates a dedicated host.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1923,6 +2099,8 @@ Creates a dedicated host. This operation uses common request headers. For more i
 |---|---|---|---|---|---|
 | Descriptio n | Strin g | Quer y | No | testDescription | The description. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -1930,7 +2108,13 @@ Creates a dedicated host. This operation uses common request headers. For more i
 
 #### 4.3.3 DeleteDdhCluster
 
-Deletes a Dedicated Host (DDH) cluster. This operation uses common request headers. For more information, see Common request parameters.
+Deletes a Dedicated Host (DDH) cluster.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1945,7 +2129,13 @@ Deletes a Dedicated Host (DDH) cluster. This operation uses common request heade
 
 #### 4.3.4 DeleteDdhHost
 
-Deletes a dedicated host. This operation uses common request headers. For more information, see Common request parameters.
+Deletes a dedicated host.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1953,6 +2143,8 @@ Deletes a dedicated host. This operation uses common request headers. For more i
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 | HostRecor dId | Strin g | Quer y | No | 12345 | The ID of the host record. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1962,6 +2154,8 @@ Deletes a dedicated host. This operation uses common request headers. For more i
 
 ListS applications deployed on Dedicated Host (DDH). This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
@@ -1970,6 +2164,8 @@ ListS applications deployed on Dedicated Host (DDH). This operation uses common 
 | DdhCluster Id | Strin g | Quer y | No | dc-xxx | The ID of the dedicated host cluster. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1987,7 +2183,13 @@ ListS applications deployed on Dedicated Host (DDH). This operation uses common 
 
 #### 4.3.6 ListDdhClusters
 
-Lists dedicated host clusters. This operation uses common request headers. For more information, see Common request parameters.
+Lists dedicated host clusters.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2004,6 +2206,8 @@ Lists dedicated host clusters. This operation uses common request headers. For m
 | ZoneId | Strin g | Quer y | No | cn-hangzhou-b | The ID of the zone. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2032,7 +2236,13 @@ Lists dedicated host clusters. This operation uses common request headers. For m
 
 #### 4.3.7 ListDdhClustersByClsIds
 
-Queries Dedicated Cluster (DDH) information by the cluster ID list. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Queries Dedicated Cluster (DDH) information by the cluster ID list.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2041,6 +2251,8 @@ Queries Dedicated Cluster (DDH) information by the cluster ID list. This operati
 |---|---|---|---|---|---|
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
 | ClusterRec ordIds | Repe atLis t | Quer y | Yes | test-id | The ID of the cluster record. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2067,7 +2279,13 @@ Queries Dedicated Cluster (DDH) information by the cluster ID list. This operati
 
 #### 4.3.8 ListDdhEcsType
 
-Lists the Elastic Compute Service (ECS) instance types supported on Dedicated Host (DDH). This operation uses common request headers. For more information, see Common request parameters.
+Lists the Elastic Compute Service (ECS) instance types supported on Dedicated Host (DDH).
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2079,6 +2297,8 @@ Lists the Elastic Compute Service (ECS) instance types supported on Dedicated Ho
 | ArchType | Strin g | Quer y | No | amd64 | The architecture type. amd64 |
 | VfwSpec | Strin g | Quer y | No | 1Gbps | The virtual firewall specification. |
 | NetType | Strin g | Quer y | No | k10/k25 | The network type. Valid values: isw or csw. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2131,7 +2351,13 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 #### 4.3.9 ListDdhHosts
 
-Lists the details of a dedicated hosts. This operation uses common request headers. For more information, see Common request parameters.
+Lists the details of a dedicated hosts.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2145,6 +2371,8 @@ Lists the details of a dedicated hosts. This operation uses common request heade
 | HostStatus | Strin g | Quer y | No | success | The status of the host. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2173,7 +2401,13 @@ Lists the details of a dedicated hosts. This operation uses common request heade
 
 #### 4.3.10 ListDdhHostType
 
-Lists the host types supported by Dedicated Host (DDH), including host models with different specifications, resource capacities, and applicable scenarios. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Lists the host types supported by Dedicated Host (DDH), including host models with different specifications, resource capacities, and applicable scenarios.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2185,6 +2419,8 @@ Lists the host types supported by Dedicated Host (DDH), including host models wi
 | ZoneId | Strin g | Quer y | No | cn-hangzhou-b | The ID of the zone. |
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The ID of the region. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DdhHostTypes | List | ['ddh.ecs.ne8m', 'ddh.ecs.ne8x'] | The list of DDH host types. |
@@ -2193,7 +2429,13 @@ Lists the host types supported by Dedicated Host (DDH), including host models wi
 
 #### 4.3.11 ListZones
 
-Lists zone information. The system typically uses this operation in cloud services or distributed systems to retrieve a list of selectable geographical regions or fault domains. This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
+Lists zone information. The system typically uses this operation in cloud services or distributed systems to retrieve a list of selectable geographical regions or fault domains.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2203,6 +2445,8 @@ Lists zone information. The system typically uses this operation in cloud servic
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the caller. |
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2215,7 +2459,13 @@ Lists zone information. The system typically uses this operation in cloud servic
 
 #### 4.3.12 ModifyDdhClusterInfo
 
-Modifies the information of a dedicated host cluster. This operation uses common request headers. For more information, see Common request parameters.
+Modifies the information of a dedicated host cluster.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | > Document V | ersion: 2 | 026070 | 1 |   | 9 |
 |---|---|---|---|---|---|
@@ -2229,6 +2479,8 @@ Modifies the information of a dedicated host cluster. This operation uses common
 | ClusterRec ordId | Integ er | Quer y | No | 1 | The ID of the cluster record. |
 | Field | Strin g | Quer y | No | test-key | The name of the field to modify. |
 | Value | Strin g | Quer y | No | test-value | The value of the field to modify. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2266,7 +2518,13 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 #### 4.3.13 ModifyDdhHostInfo
 
-Modifies the attributes of a dedicated host, such as its name, description, or tags. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Modifies the attributes of a dedicated host, such as its name, description, or tags.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2281,6 +2539,8 @@ Modifies the attributes of a dedicated host, such as its name, description, or t
 | DdhHostId | Strin g | Quer y | No | dh-xxx | The ID of the dedicated host. |
 | DdhCluster Id | Strin g | Quer y | No | dc-xxx | The ID of the dedicated host cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -2291,7 +2551,13 @@ Modifies the attributes of a dedicated host, such as its name, description, or t
 
 #### 4.4.1 CreateForwardingPolicy
 
-Creates a forwarding policy to define the forwarding rules and behavior of network traffic. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Creates a forwarding policy to define the forwarding rules and behavior of network traffic.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2319,7 +2585,13 @@ Creates a forwarding policy to define the forwarding rules and behavior of netwo
 
 #### 4.4.2 DeleteForwardingPolicy
 
-Deletes a specified forwarding rule. This operation uses common request headers. For more information, see Common request parameters.
+Deletes a specified forwarding rule.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2336,7 +2608,13 @@ Deletes a specified forwarding rule. This operation uses common request headers.
 
 #### 4.4.3 EnableForwardingPolicyByEcs
 
-EnableS the forwarding rule configured via the Elastic Compute Service (ECS) instance. This operation uses common request headers. For more information, see Common request parameters.
+EnableS the forwarding rule configured via the Elastic Compute Service (ECS) instance.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2353,7 +2631,13 @@ EnableS the forwarding rule configured via the Elastic Compute Service (ECS) ins
 
 #### 4.4.4 ListForwardingPolicies
 
-Lists all forwarding rules configured in the current network environment. The list includes basic information such as rule name, match conditions, action type, and priority. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+Lists all forwarding rules configured in the current network environment. The list includes basic information such as rule name, match conditions, action type, and priority.
+
+**Request headers**
+
+This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2377,6 +2661,8 @@ Lists all forwarding rules configured in the current network environment. The li
 | Descriptio n | Strin g | Quer y | No | description-123 | The description. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2432,6 +2718,8 @@ Lists the optional parameters for forwarding rules, typically including paginati
 | OrgId | Strin g | Quer y | No | 5ebbc0228123212b5**** * | The ID of the organization. |
 | ResourceG roup | Strin g | Quer y | No | 123 | The ID of the resource set. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Vpcs | Array | vpcs | The list of VPCs. |
@@ -2449,7 +2737,13 @@ Lists the optional parameters for forwarding rules, typically including paginati
 
 #### 4.4.6 ListSlaveEnis
 
-Lists all secondary Elastic Network Interfaces (ENIs) associated with the specified primary ENI. This operation uses common request headers. For more information, see Common request parameters.
+Lists all secondary Elastic Network Interfaces (ENIs) associated with the specified primary ENI.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2460,6 +2754,8 @@ Lists all secondary Elastic Network Interfaces (ENIs) associated with the specif
 |---|---|---|---|---|---|
 | EniId | Strin g | Quer y | No | eni-bp67acfmxazb4p**** | The ID of the ENI. |
 | IpType | Strin g | Quer y | No | ipv4;ipv6 | The IP address version. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2477,7 +2773,13 @@ Lists all secondary Elastic Network Interfaces (ENIs) associated with the specif
 
 #### 4.4.7 UpdateForwardingPolicy
 
-Updates a forwarding rule to modify the configuration of an existing network traffic forwarding rule, such as match conditions, actions, priority, and other parameters. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Updates a forwarding rule to modify the configuration of an existing network traffic forwarding rule, such as match conditions, actions, priority, and other parameters.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2491,6 +2793,8 @@ Updates a forwarding rule to modify the configuration of an existing network tra
 | Name | Strin g | Quer y | No | test | The name. |
 | ClusterId | Strin g | Quer y | No | cls-xxx | The ID of the cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -2501,7 +2805,13 @@ Updates a forwarding rule to modify the configuration of an existing network tra
 
 #### 4.5.1 AddSharingUser
 
-Adds a shared user. This operation uses common request headers. For more information, see Common request parameters.
+Adds a shared user.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2515,6 +2825,8 @@ Adds a shared user. This operation uses common request headers. For more informa
 | SharingUs erName | Strin g | Quer y | No | Zhang San | The name of the shared user. |
 | OperateTy pe | Strin g | Quer y | No | read | The type of the operation. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -2523,7 +2835,13 @@ Adds a shared user. This operation uses common request headers. For more informa
 
 #### 4.5.2 CreateOrgAuthorization
 
-Creates authorization information for an organization. This operation uses common request headers. For more information, see Common request parameters.
+Creates authorization information for an organization.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2543,6 +2861,8 @@ Creates authorization information for an organization. This operation uses commo
 | ResourceIn foList | Strin g | Quer y | No | yundun e2e windows**** _ _ */vpc- ck6x7iyz5b6kntbpfrkia,yu ndune2e*****/vpc- ck6syestnzcuyw***** | The list of resource information. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
@@ -2550,7 +2870,13 @@ Creates authorization information for an organization. This operation uses commo
 
 #### 4.5.3 DeleteOrgAuthorization
 
-Deletes authorization information for an organization. This operation uses common request headers. For more information, see Common request parameters.
+Deletes authorization information for an organization.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2565,6 +2891,8 @@ Deletes authorization information for an organization. This operation uses commo
 | SourceOrgI D | Strin g | Quer y | No | 13853727***** | The UID of the source organization. |
 | ResourceT ype | Strin g | Quer y | No | standard | The type of the resource. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
@@ -2573,7 +2901,13 @@ Deletes authorization information for an organization. This operation uses commo
 
 #### 4.5.4 DeleteSharingUser
 
-Deletes a shared user. This operation uses common request headers. For more information, see Common request parameters.
+Deletes a shared user.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2585,6 +2919,8 @@ Deletes a shared user. This operation uses common request headers. For more info
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 | SharingId | Strin g | Quer y | No | abc123xyz | The ID of the sharing record. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -2592,7 +2928,13 @@ Deletes a shared user. This operation uses common request headers. For more info
 
 #### 4.5.5 DescribeOrgAuthorization
 
-Queries the authorization information of an organization. This operation uses common request headers. For more information, see Common request parameters.
+Queries the authorization information of an organization.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2612,6 +2954,8 @@ Queries the authorization information of an organization. This operation uses co
 | Descriptio n | Strin g | Quer y | No | description-123 | The description. |
 | ResourceT ype | Strin g | Quer y | No | vpc | The resource type. |
 | ResourceId List | Strin g | Quer y | No | res-123 | The list of resource IDs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2640,13 +2984,21 @@ Queries the authorization information of an organization. This operation uses co
 
 #### 4.5.6 GetAuthorization
 
-Retrieves authorization information or access permissions. This operation uses common request headers only. For more information, see Common request parameters.
+Retrieves authorization information or access permissions.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the requester. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2662,7 +3014,13 @@ Retrieves authorization information or access permissions. This operation uses c
 
 #### 4.5.7 GrantAuthorize
 
-Grants users or roles the permission to access specific resources or perform specific operations. This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
+Grants users or roles the permission to access specific resources or perform specific operations.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2670,6 +3028,8 @@ Grants users or roles the permission to access specific resources or perform spe
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the caller. |
 | UserTicket | Strin g | Quer y | No | ticket-xxx | The user ticket. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2684,7 +3044,13 @@ Grants users or roles the permission to access specific resources or perform spe
 
 #### 4.5.8 ListSharingUserLocal
 
-Lists local shared users. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Lists local shared users.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2699,6 +3065,8 @@ Lists local shared users. This operation uses common request headers and does no
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to which the original calling process belongs. |
 | SharedUse r | Strin g | Quer y | No | yundun2e | The shared user. |
 | SharedUse rName | Strin g | Quer y | No | yundune2e | The username of the shared user. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2723,7 +3091,13 @@ Lists local shared users. This operation uses common request headers and does no
 
 #### 4.5.9 ListVpcResource
 
-Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Balancer, and RDS instances, within the specified virtual private cloud (VPC) and their associated information. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Balancer, and RDS instances, within the specified virtual private cloud (VPC) and their associated information.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2735,6 +3109,8 @@ Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Ba
 
 | ResourceG roup | Strin g | Quer y | No | Resources***** | The resource group. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2748,7 +3124,13 @@ Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Ba
 
 #### 4.5.10 UpdateOrgAuthorization
 
-Updates authorization information for an organization. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Updates authorization information for an organization.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2766,6 +3148,8 @@ Updates authorization information for an organization. This operation uses commo
 | ResourceN ame | Strin g | Quer y | No | test-name | The resource name. |
 | ResourceIn foList | Strin g | Quer y | No | yundun e2e windows**** _ _ */vpc- ck6x7iyz5b6kntbpfrkia,yu ndune2e *****/vpc- _ ck6syestnzcuywok***** | The list of resource information. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
@@ -2778,7 +3162,13 @@ Updates authorization information for an organization. This operation uses commo
 
 #### 4.6.1 ListImages
 
-Lists all available image information. This operation uses common request headers. No special request headers exist. For more information, see Common request parameters.
+Lists all available image information.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers exist. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2787,6 +3177,8 @@ Lists all available image information. This operation uses common request header
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID. |
 | AzoneId | Strin g | Quer y | No | cn-heyuan-b | The zone ID. |
 | ImageNam e | Strin g | Quer y | No | image-name | The image name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2805,7 +3197,13 @@ Lists all available image information. This operation uses common request header
 
 #### 4.7.1 GetVfwQuota
 
-Retrieves the quota information for a virtual firewall. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Retrieves the quota information for a virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2832,12 +3230,18 @@ Retrieves the quota information for a virtual firewall. This operation uses comm
 
 #### 4.8.1 CheckRamRoleExists
 
-Checks whether the specified Resource Access Management (RAM) role exists. This operation uses common request headers. For more information, see Common request parameters.
+Checks whether the specified Resource Access Management (RAM) role exists.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2847,7 +3251,13 @@ Checks whether the specified Resource Access Management (RAM) role exists. This 
 
 #### 4.9.1 GetAsynTaskDetail
 
-Retrieves detailed information about an asynchronous task. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Retrieves detailed information about an asynchronous task.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2864,6 +3274,8 @@ Retrieves detailed information about an asynchronous task. This operation uses c
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2895,7 +3307,13 @@ Retrieves detailed information about an asynchronous task. This operation uses c
 
 #### 4.10.1 CreateClassicTunnel
 
-Creates a classic network tunnel to establish a secure and stable network connection in a classic network environment. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Creates a classic network tunnel to establish a secure and stable network connection in a classic network environment.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2905,13 +3323,21 @@ Creates a classic network tunnel to establish a secure and stable network connec
 | ClusterId | Strin g | Quer y | No | cls-xxx | The ID of the cluster. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to whom the original calling process belongs. The system uses this parameter for permission verification and security context tracking. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
 #### 4.10.2 CreateVpcTunnel
 
-Creates a virtual private cloud (VPC) tunnel to establish a secure and private network connection between different network environments, such as between an on-premises IDC and a VPC, or between VPCs across regions. This operation uses common request headers only. For more information, see Common request parameters.
+Creates a virtual private cloud (VPC) tunnel to establish a secure and private network connection between different network environments, such as between an on-premises IDC and a VPC, or between VPCs across regions.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2921,6 +3347,8 @@ Creates a virtual private cloud (VPC) tunnel to establish a secure and private n
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32***** | The ID of the cluster. |
 | VswitchId | Strin g | Quer y | No | vsw- bp1s5fnvk4gn2tws***** | The ID of the vSwitch. |
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2939,7 +3367,13 @@ Creates a virtual private cloud (VPC) tunnel to establish a secure and private n
 
 #### 4.10.3 DeleteClassicTunnel
 
-Deletes the classic network tunnel connection. This operation uses only common request headers. For more information, see Common request parameters.
+Deletes the classic network tunnel connection.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2950,6 +3384,8 @@ Deletes the classic network tunnel connection. This operation uses only common r
 |---|---|---|---|---|---|
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -2957,7 +3393,13 @@ Deletes the classic network tunnel connection. This operation uses only common r
 
 #### 4.10.4 DeleteVpcTunnel
 
-DeleteS the specified virtual private cloud (VPC) tunnel connection. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+DeleteS the specified virtual private cloud (VPC) tunnel connection.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2972,7 +3414,13 @@ DeleteS the specified virtual private cloud (VPC) tunnel connection. This operat
 
 #### 4.10.5 GetVncPwd
 
-Retrieves the password for Virtual Network Computing (VNC) remote desktop connection. This operation uses common request headers only. For more information, see Common request parameters.
+Retrieves the password for Virtual Network Computing (VNC) remote desktop connection.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2981,6 +3429,8 @@ Retrieves the password for Virtual Network Computing (VNC) remote desktop connec
 | EcsId | Strin g | Quer y | No | adf86823****** | The ID of the Elastic Compute Service (ECS) instance. |
 | OriginCalle rUid | Strin g | Quer y | No | 1 | The unique identifier (UID) of the user to whom the original calling process belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -2988,7 +3438,13 @@ Retrieves the password for Virtual Network Computing (VNC) remote desktop connec
 
 #### 4.10.6 GetVncUrl
 
-Queires the Virtual Network Computing (VNC) remote control connection string for a virtual machine or an instance. This operation uses common request headers. For more information, see Common request parameters.
+Queires the Virtual Network Computing (VNC) remote control connection string for a virtual machine or an instance.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2996,6 +3452,8 @@ Queires the Virtual Network Computing (VNC) remote control connection string for
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid value: en (English) |
 | EcsId | Strin g | Quer y | No | ecs-adf86823****** | The ID of the Elastic Compute Service (ECS) instance. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to which the original calling process belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3012,6 +3470,8 @@ Lists tunnel connection information for the classic network type. This operation
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
 | EcsId | Strin g | Quer y | No | adf86823***** | The ID of the Elastic Compute Service (ECS) instance. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3030,7 +3490,13 @@ Lists tunnel connection information for the classic network type. This operation
 
 #### 4.10.8 ListVpcTunnels
 
-Lists all VPN tunnel configurations under the specified virtual private cloud (VPC). This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Lists all VPN tunnel configurations under the specified virtual private cloud (VPC).
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3038,6 +3504,8 @@ Lists all VPN tunnel configurations under the specified virtual private cloud (V
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid values: en (English) |
 | EcsId | Strin g | Quer y | No | adf86823***** | The ID of the Elastic Compute Service (ECS) instance. |
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The unique identifier (UID) of the user to whom the original calling process belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3058,7 +3526,13 @@ Lists all VPN tunnel configurations under the specified virtual private cloud (V
 
 #### 4.11.1 ListVfwInterfaces
 
-Lists all network interface information associated with a virtual firewall. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Lists all network interface information associated with a virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3082,6 +3556,8 @@ Lists all network interface information associated with a virtual firewall. This
 
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3114,7 +3590,13 @@ Lists all network interface information associated with a virtual firewall. This
 
 #### 4.11.2 PublishVfwInterfaces
 
-Publishes the network interface configuration of a virtual firewall so that external systems or orchestrators can discover and manage it. This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
+Publishes the network interface configuration of a virtual firewall so that external systems or orchestrators can discover and manage it.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3141,7 +3623,13 @@ Publishes the network interface configuration of a virtual firewall so that exte
 
 #### 4.11.3 UnPublishVfwInterfaces
 
-Revokes the configuration that publishes virtual firewall interfaces. This action removes published virtual firewall interfaces from the network service or cancels their external exposure. This operation uses common request headers only. No special request headers apply. For details, see the documentation for common request parameters.
+Revokes the configuration that publishes virtual firewall interfaces. This action removes published virtual firewall interfaces from the network service or cancels their external exposure.
+
+**Request headers**
+
+This operation uses common request headers only. No special request headers apply. For details, see the documentation for common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3161,6 +3649,8 @@ Revokes the configuration that publishes virtual firewall interfaces. This actio
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
 | EcsIdList | Strin g | Quer y | No | i-g0k00ogwze***** | The ID of the Elastic Compute Service (ECS) instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3169,7 +3659,13 @@ Revokes the configuration that publishes virtual firewall interfaces. This actio
 
 #### 4.12.1 CreateVfwRoutes
 
-Creates routing rules for a virtual firewall. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+Creates routing rules for a virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3196,7 +3692,13 @@ Creates routing rules for a virtual firewall. This operation uses common request
 
 #### 4.12.2 DelVfwRoutes
 
-Deletes route table entries of a virtual firewall. This operation uses common request headers. For more information, see Common request parameters.
+Deletes route table entries of a virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3215,13 +3717,21 @@ Deletes route table entries of a virtual firewall. This operation uses common re
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
 | RouteType | Strin g | Quer y | No | standard | The type of the route. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
 #### 4.12.3 GetVfwRouteConfigStatus
 
-Retrieves the route configuration status of the virtual firewall. This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
+Retrieves the route configuration status of the virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3232,6 +3742,8 @@ Retrieves the route configuration status of the virtual firewall. This operation
 | RouteEntry Id | Strin g | Quer y | No | rte- bp1mnnr2al0naomnpv*** * | The ID of the route entry to query. |
 | OriginCalle rUid | Strin g | Quer y | No | 1 | The UID of the caller. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3239,7 +3751,13 @@ Retrieves the route configuration status of the virtual firewall. This operation
 
 #### 4.12.4 ListVfwRouteEntries
 
-Lists route entries for a virtual firewall (VFW). This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+Lists route entries for a virtual firewall (VFW).
+
+**Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3285,7 +3803,13 @@ Lists route entries for a virtual firewall (VFW). This operation uses common req
 
 #### 4.12.5 ListVfwRouteOptions
 
-Lists routing configuration options for a virtual firewall. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Lists routing configuration options for a virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3296,6 +3820,8 @@ Lists routing configuration options for a virtual firewall. This operation uses 
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
 | VpcId | Strin g | Quer y | No | vpc-g0kugui5l1fk***** | The instance ID of the virtual private cloud (VPC). |
 | IpType | Strin g | Quer y | No | standard | The IP type. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3314,7 +3840,13 @@ Lists routing configuration options for a virtual firewall. This operation uses 
 
 #### 4.12.6 PublishVfwRoutes
 
-Publishes the routing information of a virtual firewall to the network so that other devices can learn and forward traffic to subnets managed by the virtual firewall. This operation uses common request headers. For more information, see Common request parameters.
+Publishes the routing information of a virtual firewall to the network so that other devices can learn and forward traffic to subnets managed by the virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3334,6 +3866,8 @@ Publishes the routing information of a virtual firewall to the network so that o
 | EcsIdList | Strin g | Quer y | No | i-g0k00ogwz***** | The list of Elastic Compute Service (ECS) IDs. |
 | RouteType | Strin g | Quer y | No | standard | The route type. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -3342,7 +3876,13 @@ Publishes the routing information of a virtual firewall to the network so that o
 
 #### 4.12.7 UnPublishVfwRoutes
 
-Revokes the publication of route entries for a virtual firewall. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Revokes the publication of route entries for a virtual firewall.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3362,6 +3902,8 @@ Revokes the publication of route entries for a virtual firewall. This operation 
 | EcsIdList | Strin g | Quer y | No | i-g0k00ogwzeepz***** | The Elastic Compute Service (ECS) ID. |
 | RouteType | Strin g | Quer y | No | ipv6 | The route type. ipv6 ipv4 |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
@@ -3370,7 +3912,13 @@ Revokes the publication of route entries for a virtual firewall. This operation 
 
 #### 4.13.1 BatchPublishRoutes
 
-Publishes route configurations in batches. This operation uses only common request headers. For more information, see Common request parameters.
+Publishes route configurations in batches.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3379,6 +3927,8 @@ Publishes route configurations in batches. This operation uses only common reque
 
 | RouteGrou pIds | Repe atLis t | Quer y | Yes | rg-xxx | The list of route group IDs. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3394,7 +3944,11 @@ Publishes route configurations in batches. This operation uses only common reque
 
 #### 4.13.2 BatchUnPublishRoutes
 
-Unpublishes specified route entries in batches. This operation uses common request headers. For more information, see Common request parameters.
+Unpublishes specified route entries in batches.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3402,6 +3956,8 @@ Unpublishes specified route entries in batches. This operation uses common reque
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid values: en (English) |
 | RouteGrou pIds | Repe atLis t | Quer y | Yes | rg-xxx | The list of route group IDs. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to which the original calling process belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3417,7 +3973,13 @@ Unpublishes specified route entries in batches. This operation uses common reque
 
 #### 4.13.3 CreateRouteEntry
 
-Creates a route entry in the route table. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Creates a route entry in the route table.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramete r | Typ e | Posi tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3480,6 +4042,8 @@ Creates a route entry in the route table. This operation uses common request hea
 | RouteType | Strin g | Quer y | No | standard | The type of the route. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3487,7 +4051,13 @@ Creates a route entry in the route table. This operation uses common request hea
 
 #### 4.13.4 DeleteRouteEntry
 
-Deletes a route entry from the route table. This operation uses common request headers. For more information, see Common request parameters.
+Deletes a route entry from the route table.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3502,7 +4072,13 @@ Deletes a route entry from the route table. This operation uses common request h
 
 #### 4.13.5 GetRouteConfigStatus
 
-Retrieves the route configuration status. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Retrieves the route configuration status.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3511,6 +4087,8 @@ Retrieves the route configuration status. This operation uses common request hea
 | RouteEntry Id | Strin g | Quer y | No | 123 | The ID of the route entry. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3518,7 +4096,13 @@ Retrieves the route configuration status. This operation uses common request hea
 
 #### 4.13.6 ListRouteEntries
 
-Lists route entries in a route table. This operation uses common request headers. For more information, see Common request parameters.
+Lists route entries in a route table.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 |---|---|---|---|---|---|
@@ -3623,7 +4207,13 @@ Lists route entries in a route table. This operation uses common request headers
 
 #### 4.13.7 ListRouteEntryOptions
 
-Lists the query parameter options for route entries. These options typically include configurations for pagination, filtering, and sorting. This operation uses common request headers and does not require special request headers. For more information, see the documentation of common request parameters.
+Lists the query parameter options for route entries. These options typically include configurations for pagination, filtering, and sorting.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see the documentation of common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3638,6 +4228,8 @@ Lists the query parameter options for route entries. These options typically inc
 | ResourceG roup | Strin g | Quer y | No | resources-test | The resource set. |
 | ProtectTyp e | Strin g | Quer y | No | vp-vpc | The protection type. |
 | IpType | Strin g | Quer y | No | ipv4 | The IP type. |
+
+**Response parameters**
 
 | RouteEntryOpt ionInfos | Array | route-entry- optionInfos | The list of optional configuration information for route entries. |
 |---|---|---|---|
@@ -3738,13 +4330,21 @@ Modifies the specified route entry in the route table. This operation uses commo
 | AzoneId | Strin g | Quer y | No | cn-heyuan-b | The ID of the zone. |
 | RouteGrou pId | Strin g | Quer y | No | rg-xxx | The ID of the route group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
 #### 4.13.9 ModifyRoutePolicyName
 
-Modifies the name of a routing policy. This operation uses common request headers. For more information, see Common request parameters.
+Modifies the name of a routing policy.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3755,6 +4355,8 @@ Modifies the name of a routing policy. This operation uses common request header
 | Name | Strin g | Quer y | No | test | The name. |
 | RouteGrou pId | Strin g | Quer y | No | rg-xxx | The ID of the route group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
@@ -3763,7 +4365,13 @@ Modifies the name of a routing policy. This operation uses common request header
 
 #### 4.13.10 PublishRoutes
 
-Publishes routing information to register a service's access path with the service gateway or registration center so that external requests route correctly to the corresponding service instance. This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
+Publishes routing information to register a service's access path with the service gateway or registration center so that external requests route correctly to the corresponding service instance.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3772,6 +4380,8 @@ Publishes routing information to register a service's access path with the servi
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default: zh (Chinese), en (English) |
 |---|---|---|---|---|---|
 | RouteGrou pId | Strin g | Quer y | No | rg-xxx | The ID of the route group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3788,13 +4398,21 @@ Publishes routing information to register a service's access path with the servi
 
 #### 4.13.11 UnPublishRoutes
 
-Unpublishes the specified routes so they no longer provide external services or are discoverable. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Unpublishes the specified routes so they no longer provide external services or are discoverable.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | RouteGrou pId | Strin g | Quer y | No | rg-xxx | The ID of the route group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|

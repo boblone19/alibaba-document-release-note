@@ -5,18 +5,132 @@ doc_version: "20260729"
 pdf_pages: 412
 source_pdf: "05_用户指南_enterprise-ascm-user-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/ros/zh/enterprise-ascm-user-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 资源编排 用户指南
 
-资源编排
+## 目录
 
-## 什么是资源编排服务
+- 1 什么是资源编排服务
+- 2 登录资源编排控制台
+- 3 管理资源栈
+  - 3.1 创建资源栈
+  - 3.2 查看资源栈
+  - 3.3 更新资源栈
+  - 3.4 重新创建资源栈
+  - 3.5 删除资源栈
+- 4 管理模板
+  - 4.1 创建模板
+  - 4.2 编辑模板
+  - 4.3 共享设置
+  - 4.4 删除模板
+- 5 查看操作日志
+- 6 模板语法
+  - 6.1 模板结构说明
+  - 6.3 资源（Resources）
+  - 6.4 输出（Outputs）
+  - 6.5 函数（Functions）
+  - 6.6 映射（Mappings）
+  - 6.7 条件（Conditions）
+- 7 资源类型
+  - 7.1 ECS
+    - 7.1.1 ALIYUN::ECS::AutoSnapshotPolicy
+    - 7.1.2 ALIYUN::ECS::BandwidthPackage
+    - 7.1.3 ALIYUN::ECS::Command
+    - 7.1.4 ALIYUN::ECS::CustomImage
+    - 7.1.5 ALIYUN::ECS::DedicatedHost
+    - 7.1.6 ALIYUN::ECS::Disk
+    - 7.1.7 ALIYUN::ECS::DiskAttachment
+    - 7.1.8 ALIYUN::ECS::ForwardEntry
+    - 7.1.9 ALIYUN::ECS::Instance
+    - 7.1.10 ALIYUN::ECS::InstanceClone
+    - 7.1.11 ALIYUN::ECS::InstanceGroup
+    - 7.1.12 ALIYUN::ECS::InstanceGroupClone
+    - 7.1.13 ALIYUN::ECS::Invocation
+    - 7.1.14 ALIYUN::ECS::JoinSecurityGroup
+    - 7.1.15 ALIYUN::ECS::LaunchTemplate
+    - 7.1.16 ALIYUN::ECS::NatGateway
+    - 7.1.17 ALIYUN::ECS::NetworkInterface
+    - 7.1.18 ALIYUN::ECS::NetworkInterfaceAttachment
+    - 7.1.19 ALIYUN::ECS::NetworkInterfacePermission
+    - 7.1.20 ALIYUN::ECS::Route
+    - 7.1.21 ALIYUN::ECS::SNatEntry
+    - 7.1.22 ALIYUN::ECS::SecurityGroup
+    - 7.1.23 ALIYUN::ECS::SecurityGroupClone
+    - 7.1.24 ALIYUN::ECS::SecurityGroupEgress
+    - 7.1.25 ALIYUN::ECS::SecurityGroupIngress
+    - 7.1.26 ALIYUN::ECS::Snapshot
+    - 7.1.27 ALIYUN::ECS::SSHKeyPair
+    - 7.1.28 ALIYUN::ECS::SSHKeyPairAttachment
+    - 7.1.29 ALIYUN::ECS::VPC
+    - 7.1.30 ALIYUN::ECS::VSwitch
+  - 7.2 ESS
+    - 7.2.1 ALIYUN::ESS::AlarmTask
+    - 7.2.2 ALIYUN::ESS::AlarmTaskEnable
+    - 7.2.3 ALIYUN::ESS::LifecycleHook
+    - 7.2.4 ALIYUN::ESS::ScalingConfiguration
+    - 7.2.5 ALIYUN::ESS::ScalingGroup
+    - 7.2.6 ALIYUN::ESS::ScalingGroupEnable
+    - 7.2.7 ALIYUN::ESS::ScalingRule
+    - 7.2.8 ALIYUN::ESS::ScheduledTask
+  - 7.3 KMS
+    - 7.3.1 ALIYUN::KMS::Alias
+    - 7.3.2 ALIYUN::KMS::Key
+  - 7.4 NAS
+    - 7.4.1 ALIYUN::NAS::AccessGroup
+    - 7.4.2 ALIYUN::NAS::AccessRule
+    - 7.4.3 ALIYUN::NAS::FileSystem
+    - 7.4.4 ALIYUN::NAS::MountTarget
+  - 7.5 OSS
+    - 7.5.1 ALIYUN::OSS::Bucket
+  - 7.6 RDS
+    - 7.6.1 ALIYUN::RDS::Account
+    - 7.6.2 ALIYUN::RDS::AccountPrivilege
+    - 7.6.3 ALIYUN::RDS::DBInstance
+    - 7.6.4 ALIYUN::RDS::DBInstanceParameterGroup
+    - 7.6.5 ALIYUN::RDS::DBInstanceSecurityIps
+    - 7.6.6 ALIYUN::RDS::PrepayDBInstance
+  - 7.7 Redis
+    - 7.7.1 ALIYUN::REDIS::Instance
+  - 7.8 ROS
+    - 7.8.1 ALIYUN::ROS::WaitCondition
+    - 7.8.2 ALIYUN::ROS::WaitConditionHandle
+    - 7.8.3 ALIYUN::ROS::Stack
+  - 7.9 SLB
+    - 7.9.1 ALIYUN::SLB::AccessControl
+    - 7.9.2 ALIYUN::SLB::BackendServerAttachment
+    - 7.9.3 ALIYUN::SLB::BackendServerToVServerGroupAddition
+    - 7.9.4 ALIYUN::SLB::Certificate
+    - 7.9.5 ALIYUN::SLB::DomainExtension
+    - 7.9.6 ALIYUN::SLB::Listener
+    - 7.9.7 ALIYUN::SLB::LoadBalancer
+    - 7.9.8 ALIYUN::SLB::LoadBalancerClone
+    - 7.9.9 ALIYUN::SLB::MasterSlaveServerGroup
+    - 7.9.10 ALIYUN::SLB::Rule
+    - 7.9.11 ALIYUN::SLB::VServerGroup
+  - 7.10 SLS
+    - 7.10.1 ALIYUN::SLS::Index
+    - 7.10.2 ALIYUN::SLS::Logstore
+    - 7.10.3 ALIYUN::SLS::LogtailConfig
+    - 7.10.4 ALIYUN::SLS::Savedsearch
+    - 7.10.5 ALIYUN::SLS::Project
+  - 7.11 PAI
+    - 7.11.1 ALIYUN::PAI::Service
+  - 7.12 VPC
+    - 7.12.1 ALIYUN::VPC::EIP
+    - 7.12.2 ALIYUN::VPC::EIPAssociation
+    - 7.12.3 ALIYUN::VPC::PeeringRouterInterfaceBinding
+    - 7.12.4 ALIYUN::VPC::PeeringRouterInterfaceConnection
+    - 7.12.5 ALIYUN::VPC::RouterInterface
 
-资源编排服务ROS（Resource Orchestration Service）是阿里云提供的一项简化云计算资源管理的服务。您可以遵循 ROS定义的模板规范编写资源栈模板，在模板中定义所需的云计算资源（例如：ECS实例、RDS数据库实例）、资源间的依赖关系等。ROS的编排引擎将根据模板自动完成所有资源的创建和配置，实现自动化部署及运维。 ROS模板是可读、易编写的文本文件。您可以直接编辑JSON格式文本，或者通过SVN、Git等版本控制工具控制模板的版本，以达到控制基础设施版本的目的。您可以通过API、SDK等方式将ROS的编排能力与自己的应用进行整合，实现基础设施即代码（Infrastructure as Code）。 ROS模板也是一种标准化的资源和应用交付方式。如果您是独立软件供应商（ISV），则可以通过ROS模板交付包含云资源和应用的整体系统和解决方案。ISV可以通过这种交付方式，整合阿里云的资源和ISV的软件系统，实现统一交付。 ROS通过资源栈（Stack）统一管理一组云资源（一个资源栈即为一组阿里云资源）。对于云资源的创建、删除、重新创建等操作，都可以以资源栈为单位来完成。 资源编排
+## 1 什么是资源编排服务
 
-## 登录资源编排控制台
+资源编排服务ROS（Resource Orchestration Service）是阿里云提供的一项简化云计算资源管理的服务。您可以遵循 ROS定义的模板规范编写资源栈模板，在模板中定义所需的云计算资源（例如：ECS实例、RDS数据库实例）、资源间的依赖关系等。ROS的编排引擎将根据模板自动完成所有资源的创建和配置，实现自动化部署及运维。 ROS模板是可读、易编写的文本文件。您可以直接编辑JSON格式文本，或者通过SVN、Git等版本控制工具控制模板的版本，以达到控制基础设施版本的目的。您可以通过API、SDK等方式将ROS的编排能力与自己的应用进行整合，实现基础设施即代码（Infrastructure as Code）。 ROS模板也是一种标准化的资源和应用交付方式。如果您是独立软件供应商（ISV），则可以通过ROS模板交付包含云资源和应用的整体系统和解决方案。ISV可以通过这种交付方式，整合阿里云的资源和ISV的软件系统，实现统一交付。 ROS通过资源栈（Stack）统一管理一组云资源（一个资源栈即为一组阿里云资源）。对于云资源的创建、删除、重新创建等操作，都可以以资源栈为单位来完成。
+
+## 2 登录资源编排控制台
+
+本文为您介绍如何登录资源编排控制台。
 
 **前提条件**
 
@@ -26,32 +140,29 @@ converter: line-classifier (PyMuPDF)
 
 1. 在浏览器地址栏中，输入Apsara Uni-manager运营控制台的服务域名地址，按回车键。
 
-**说明**
+> **说明：** 单击页面右上角的当前语言可以切换其它语言。
 
-单击页面右上角的当前语言可以切换其它语言。 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Uni-manager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
+由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Uni-manager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。
 2. 输入正确的用户名及密码。
-资源编排
 
-**说明**
+> **说明：** 请向运营管理员获取登录控制台的用户名和密码。
+> 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、 at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 
-请向运营管理员获取登录控制台的用户名和密码。 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且包含英文字母大小写、阿拉伯数字和特殊符号（感叹号（!）、 at（@）、井号（#）、美元符号（$）、百分号（%）等）。
 3. 勾选**我已阅读并同意产品服务协议、隐私协议、用户协议**。
 
 **说明**
 
 登录页展示的链接文字为文档标题，单击链接文字，可查看协议的详细内容。
-**产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布，则不需要执行该
-操作。
+
+> **产品服务协议**、**隐私协议**和**用户协议**仅在已发布时才会显示。如果三种类型协议都没有发布，则不需要执行该操作。
+
 4. 单击**账号登录**/**授权登录**。
 
-**说明**
+> **说明：** “授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 
-“授权登录”仅第三方认证的全局IdP设置启用时才会显示，且该显示名称可自定义，默认显示名称为“授权登录”。
 5. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 
-**说明**
-
-公网场景下，登录入口默认强制开启多因素认证。
+> **说明：** 公网场景下，登录入口默认强制开启多因素认证。
 
 **开启MFA后的首次登录**
 
@@ -60,14 +171,16 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 **已开启并绑定MFA**
 
 输入6位MFA码后单击**认证**。
-6. 在页面顶部导航栏，选择**产品** > **开发工具** > **资源编排****ROS**。
-资源编排
+6. 在页面顶部导航栏，选择**产品** **>** **开发工具** **>** **资源编排****ROS**。
 
-## 管理资源栈
+## 3 管理资源栈
 
-### 创建资源栈
+### 3.1 创建资源栈
 
 资源编排服务ROS（Resource Orchestration Service）可以通过创建资源栈来管理一组资源。本文为您介绍创建资源栈的两种方式。
+
+**方式一（推荐）：在资源栈页面创建资源栈**
+
 1. 登录资源编排控制台。
 2. 在左侧导航栏，单击**资源栈**。
 3. 在**资源栈**页面，单击**创建资源栈**。
@@ -77,12 +190,16 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 **我的模板**：选择已创建的模板。关于如何创建模板，请参见创建模板。
 6. 在**配置模板参数**页面，输入资源栈名称和参数，然后单击**下一步**。
 
-**说明**
+> **说明：** 根据模板的不同，您需要输入的参数将有所差异，请根据控制台提示输入参数信息。
+> 您也可以单击**预览**，查看待创建的资源名称、资源类型和资源属性等信息。
 
-根据模板的不同，您需要输入的参数将有所差异，请根据控制台提示输入参数信息。 您也可以单击**预览**，查看待创建的资源名称、资源类型和资源属性等信息。
 7. 在**配置资源栈**页面，设置是否启用失败时回滚，并设置超时的时间，然后单击**下一步**。
 8. 在**确认信息**页面，确认资源栈相关信息无误后，单击**提交**。
-创建资源栈成功后，资源栈**状态**列显示**创建成功**。此时您可以单击资源栈ID，查询资源栈基础信息（例如：资源栈名称、 ID和创建时间）、事件、资源、输出、参数和模板等信息。 如果您已经创建了模板，可以通过以下方式快速创建资源栈。关于如何创建模板，请参见创建模板。
+创建资源栈成功后，资源栈**状态**列显示**创建成功**。此时您可以单击资源栈ID，查询资源栈基础信息（例如：资源栈名称、 ID和创建时间）、事件、资源、输出、参数和模板等信息。
+
+**方式二：通过已有模板快速创建资源栈**
+
+如果您已经创建了模板，可以通过以下方式快速创建资源栈。关于如何创建模板，请参见创建模板。
 1. 登录资源编排控制台。
 2. 在左侧导航栏，单击**我的模板**。
 3. 在**我的模板**页面，单击目标模板右侧**操作**列的**创建栈**。
@@ -92,16 +209,20 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 7. 在**确认信息**页面，确认资源栈相关信息无误后，单击**提交**。
 创建资源栈成功后，资源栈**状态**列显示**创建成功**。此时您可以单击资源栈ID，查询资源栈基础信息（例如：资源栈名称、 ID和创建时间）、事件、资源、输出、参数和模板等信息。
 
-### 查看资源栈
+### 3.2 查看资源栈
+
+本文为您介绍如何查看资源栈信息，包括资源栈基本信息、事件和资源等。
 
 **前提条件**
+
+请确保您已创建资源栈且资源栈状态为创建成功。具体操作，请参见创建资源栈。
 
 **操作步骤**
 
 1. 登录资源编排控制台。
 2. 在左侧导航栏，单击**资源栈**。
 3. 在**资源栈**页面，单击目标资源栈ID。
-您可以通过**资源栈名称**、**资源栈****ID**和**标签**筛选获取目标资源栈。 资源编排在资源栈详情页面，您可以执行以下操作： 单击**参数**页签，查看创建资源栈时模板中指定的参数包括ROS提供的以ALIYUN::开始的伪参数。 单击**操作日志**页签，查看资源栈被用户访问以及使用行为，便于对历史操作进行分析和回溯。 您可以按**操作名称**、**操作人**、**执行状态**等过滤条件进一步筛查出关心的操作记录，支持的过滤条件如下表所示。
+您可以通过**资源栈名称**、**资源栈****ID**和**标签**筛选获取目标资源栈。 在资源栈详情页面，您可以执行以下操作： 单击**资源栈信息**页签，查看资源栈基本信息和模板内容。 单击**事件**页签，查看资源栈生命周期中发生的每一个事件。 单击**资源**页签，查看资源栈所包括的每一个资源信息。 单击**输出**页签，查看创建资源栈时模板中指定的输出信息。 单击**参数**页签，查看创建资源栈时模板中指定的参数包括ROS提供的以ALIYUN::开始的伪参数。 单击**操作日志**页签，查看资源栈被用户访问以及使用行为，便于对历史操作进行分析和回溯。 您可以按**操作名称**、**操作人**、**执行状态**等过滤条件进一步筛查出关心的操作记录，支持的过滤条件如下表所示。
 
 | 过滤条件 | 说明 |
 |---|---|
@@ -113,11 +234,13 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 
 **可选：**在目标操作记录的**操作**列，单击**操作详情**，可查看**基本信息**以及**API****调用详情**。
 
-### 更新资源栈
+### 3.3 更新资源栈
 
-当您只需要修改资源栈模板或资源栈配置，但不需要修改资源栈归属（包括组织、资源集和地域）时，可以选择更新资源资源编排
+当您只需要修改资源栈模板或资源栈配置，但不需要修改资源栈归属（包括组织、资源集和地域）时，可以选择更新资源栈。本文为您介绍如何更新资源栈。
 
 **前提条件**
+
+请确保您已经创建资源栈，且资源栈状态为**创建成功**。具体操作，请参见创建资源栈。
 
 **操作步骤**
 
@@ -129,21 +252,21 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 **我的模板**：选择已创建的模板。
 5. 在**配置模板参数**页面，录入参数，然后单击**下一步**。
 
-**说明**
+> **说明：** 根据模板的不同，您需要输入的参数将有所差异，请根据控制台提示输入参数信息。
 
-根据模板的不同，您需要输入的参数将有所差异，请根据控制台提示输入参数信息。
 6. 在**配置资源栈**页面，设置是否启用失败时回滚、超时的时间，然后单击**下一步**。
 
-**说明**
+> **说明：** 超时设置的时间是以分钟为单位的正整数，数字范围为10~1440。
 
-超时设置的时间是以分钟为单位的正整数，数字范围为10~1440。
 7. 在**确认信息**页面，确认更新后的资源栈相关信息无误后，单击**提交**。
 
-### 重新创建资源栈
+### 3.4 重新创建资源栈
 
-当您需要修改资源栈模板、资源栈配置和资源栈归属（包括组织、资源集和地域）时，可以重新创建资源栈。本文为您介绍
+当您需要修改资源栈模板、资源栈配置和资源栈归属（包括组织、资源集和地域）时，可以重新创建资源栈。本文为您介绍如何重新创建资源栈。
 
 **前提条件**
+
+请确保您已经创建资源栈，且资源栈状态为**创建成功**。具体操作，请参见创建资源栈。
 
 **操作步骤**
 
@@ -156,34 +279,37 @@ a. 输入账号密码登录后，展示绑定虚拟MFA设备页面。 b. 在绑�
 **我的模板**：选择已创建的模板。
 6. 在**配置模板参数**页面，更改配置名称并输入参数，然后单击**下一步**。
 
-**说明**
+> **说明：** 根据模板的不同，您需要输入的参数将有所差异，请根据控制台提示输入参数信息。
+> 同一账号中资源栈名称不能重复。
 
-根据模板的不同，您需要输入的参数将有所差异，请根据控制台提示输入参数信息。 同一账号中资源栈名称不能重复。
 7. 在**配置资源栈**页面，设置是否启用失败时回滚，并设置超时的时间，然后单击**下一步**。
 
-**说明**
+> **说明：** 超时设置的时间是以分钟为单位的正整数，数字范围为10~1440。
 
-超时设置的时间是以分钟为单位的正整数，数字范围为10~1440。
 8. 在**确认信息**页面，确认更新后的资源栈相关信息无误后，单击**提交**。
-资源编排
 
-### 删除资源栈
+### 3.5 删除资源栈
+
+当资源栈没有处于正在创建中、更新中或者其他操作中时，您可以删除资源栈。
 
 **前提条件**
+
+请确保您已经创建资源栈。具体操作，请参见创建资源栈。
 
 **操作步骤**
 
 1. 登录资源编排控制台。
 2. 在左侧导航栏，单击**资源栈**。
 3. 删除一个或多个资源栈。
-i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**。
+i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**。 ii. 批量删除资源栈：选中目标资源栈，单击列表下方的**批量删除**。
 4. 在弹出的对话框，确认要删除的资源栈，然后选择**删除方式**。
+**保留资源**：删除资源栈时保留资源栈中的资源。
+**释放资源**：删除资源栈时释放资源栈中的资源，请您谨慎操作。
 5. 单击**删除**。
-资源编排
 
-## 管理模板
+## 4 管理模板
 
-### 创建模板
+### 4.1 创建模板
 
 资源编排服务ROS（Resource Orchestration Service）支持JSON格式的模板，用于创建资源栈。本文为您介绍如何创建模板。
 
@@ -205,7 +331,7 @@ i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**
 
 5. 单击**确定**。
 
-### 编辑模板
+### 4.2 编辑模板
 
 您可以根据需要编辑模板名称、模板描述和模板内容。
 
@@ -219,15 +345,14 @@ i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**
 2. 在左侧导航栏，选择**我的模板**。
 3. 在筛选列表中，选择筛选选项，并在搜索栏输入相应信息，模板列表中将自动展示符合搜索条件的模板。
 
-**说明**
+> **说明：** 支持通过**实例或****ID**、**标签筛选**查找目标模板。
+> 您也可以单击高级筛选，同时选择多个筛选选项逐级过滤，以便快速查找模板。
 
-支持通过**实例或****ID**、**标签筛选**查找目标模板。 您也可以单击高级筛选，同时选择多个筛选选项逐级过滤，以便快速查找模板。
 4. 在**我的模板**页面，单击目标模板右侧**操作**列的**编辑**。
 5. 在**编辑模板**对话框，编辑**模板名称**、**模板描述**和**准备模板**。
-资源编排
 6. 单击**确定**。
 
-### 共享设置
+### 4.3 共享设置
 
 您可以根据需要将已经创建的模板，共享给本资源集、本组织或下级组织。
 
@@ -243,7 +368,7 @@ i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**
 4. 在**共享设置编辑**页面的**共享范围**下拉框中，根据您的需求选择**本组织及下级组织**、**本资源集共享**或**本组织共享**。
 5. 单击确定。
 
-### 删除模板
+### 4.4 删除模板
 
 当您不再使用某个模板时，可以删除该模板。
 
@@ -257,9 +382,8 @@ i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**
 2. 在左侧导航栏，单击**我的模板**。
 3. 在**我的模板**页面，单击目标模板右侧**操作**列的**删除**。
 4. 在弹出的对话框，确认要删除的模板，然后单击**删除**。
-资源编排
 
-## 查看操作日志
+## 5 查看操作日志
 
 本文为您介绍如何查看操作日志，帮助您用户访问以及使用行为，便于对历史操作进行分析和回溯。
 
@@ -270,18 +394,18 @@ i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**
 3. 在**操作日志**页面，您可查看在设置的起止时间内所有操作人的操作记录。
 您可以在**高级筛选**中，按**资源类型**、**操作****IP**、起止时间等过滤条件进一步筛查出关心的操作记录。
 4. 选择您要查看的记录，在右侧**详情**列并单击**查看**，可查看**基本信息**以及**实例详情**。
-资源编排
 
-## 模板语法
+## 6 模板语法
 
-### 模板结构说明
+### 6.1 模板结构说明
 
 模板是一个JSON格式的文本文件，使用UTF-8编码。模板用于创建资源栈，是描述基础设施和架构的蓝图。模板编辑者在模板中定义阿里云资源和配置细节，并说明资源间的依赖关系。
 
 **ROS模板结构**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
 ```
 
@@ -291,42 +415,37 @@ i. 删除一个资源栈：单击目标资源栈右侧**操作**列的**删除**
   "Metadata" : {
 ```
 
-`//` 模板的元数据信息，例如：可以存放可视化的布局信息。
+`//` 模板的元数据信息，例如：可以存放可视化的布局信息。 `},`
 
 ```json
-  },
   "Parameters" : {
-  },
+```
+
+`//` 定义创建资源栈时，用户可以定制的参数。 `},`
+
+```json
   "Mappings" : {
 ```
 
-`//` 定义映射信息表。映射信息是一种多层的映射结构。
+`//` 定义映射信息表。映射信息是一种多层的映射结构。 `},`
 
 ```json
-  },
   "Conditions": {
 ```
 
-`//` 使用内部条件函数定义条件。这些条件确定何时创建关联的资源。
+`//` 使用内部条件函数定义条件。这些条件确定何时创建关联的资源。 `},`
 
 ```json
-  },
   "Resources" : {
 ```
 
-`//` 所需资源的详细定义，包括资源间的依赖关系、配置细节等。
+`//` 所需资源的详细定义，包括资源间的依赖关系、配置细节等。 `},`
 
 ```json
-  },
   "Outputs" : {
 ```
 
-`//` 定义输出资源属性等有用信息。可以通过`API`或控制台获取输出的内容。
-
-```
-  }
-}
-```
+`//` 定义输出资源属性等有用信息。可以通过`API`或控制台获取输出的内容。 `}` `}`
 
 **ROSTemplateFormatVersion（必选）**
 
@@ -350,7 +469,7 @@ Mappings定义了一个多层的映射表，可以通过Fn::FindInMap函数来�
 
 **Conditions（可选）**
 
-资源编排 Conditions使用Fn::And、Fn::Or、Fn::Not、Fn::Equals定义条件。多个条件之间用半角逗号（,）隔开。在创建或更新资源栈时，系统先计算模板中的所有条件，然后再创建资源。创建与 `true` 条件关联的所有资源，忽略与 `false` 条件关联的所有资源。
+Conditions使用Fn::And、Fn::Or、Fn::Not、Fn::Equals定义条件。多个条件之间用半角逗号（,）隔开。在创建或更新资源栈时，系统先计算模板中的所有条件，然后再创建资源。创建与 `true` 条件关联的所有资源，忽略与 `false` 条件关联的所有资源。
 
 **Resources（可选）**
 
@@ -360,7 +479,7 @@ Mappings定义了一个多层的映射表，可以通过Fn::FindInMap函数来�
 
 定义输出资源属性等有用信息。可以通过API或控制台获取输出的内容。
 
-### 概览
+### 6.2 概览
 
 在创建模板时，使用参数（Parameters）可提高模板的灵活性和可复用性。创建资源栈时，可根据实际情况，替换模板中的某些参数值。
 
@@ -368,25 +487,23 @@ Mappings定义了一个多层的映射表，可以通过Fn::FindInMap函数来�
 
 每个参数由参数名称和参数属性组成。参数名称必须为英文字母、数字，并且在同一个模板中不能与其它参数名称重复。可以用**Label**字段来定义参数别名。 参数属性如下表所示。
 
-| 参数属性 | 必须 | 描述 |  |  |  |
+| 参数属性 | 必须 | 描述 |   |   |   |
 |---|---|---|---|---|---|
-| Type | 是 | 参数的数据类型。取值： String ：字符串。例如： "ecs.s1.medium" 。 Number ：整数或浮点数。例如：3.14。 CommaDelimitedList ：一组用半角逗号（,）分隔的字符串，可通过 Fn::Select函数索引值。例如： "80, foo, bar" 。 Json ：一个JSON格式的字符串。例如： {"foo": "bar"} ， [1, 2, 3] 。 Boolean ：布尔值。例如： true 或者 false 。 ALIYUN::OOS::Parameter::Value ：存储在OOS参数仓库中的普通参数。例如： my image 。 _ ALIYUN::OOS::SecretParameter::Value ：存储在OOS参数仓库中的加密参数。例如： my password 。 _ 说明 ALIYUN::OOS::Parameter::Value 和 ALIYUN::OOS::SecretPa rameter::Value 不支持AllowedPattern校验。 |  |  |  |
-|  |  |  | ALIYUN::OOS::SecretPa |  |  |
-| Default | 否 | 在创建资源栈时，如果用户没有传入指定值，ROS会检查模板中是否定义默认值。如果已定义默认值，则使用默认值，否则报错。 说明默认值可以设置为 null ，表示该参数取值为空并且忽略对该参数的验证。 |  |  |  |
-| AllowedValues | 否 | 包含参数允许值的列表。 |  |  |  |
+| Type | 是 | 参数的数据类型。取值： String ：字符串。例如： "ecs.s1.medium" 。 Number ：整数或浮点数。例如：3.14。 CommaDelimitedList ：一组用半角逗号（,）分隔的字符串，可通过 Fn::Select函数索引值。例如： "80, foo, bar" 。 Json ：一个JSON格式的字符串。例如： {"foo": "bar"} ， [1, 2, 3] 。 Boolean ：布尔值。例如： true 或者 false 。 ALIYUN::OOS::Parameter::Value ：存储在OOS参数仓库中的普通参数。例如： my image 。 _ ALIYUN::OOS::SecretParameter::Value ：存储在OOS参数仓库中的加密参数。例如： my password 。 _ 说明 ALIYUN::OOS::Parameter::Value 和 ALIYUN::OOS::SecretPa rameter::Value 不支持AllowedPattern校验。 |   |   |   |
+|   |   |   | ALIYUN::OOS::SecretPa |   |   |
+| Default | 否 | 在创建资源栈时，如果用户没有传入指定值，ROS会检查模板中是否定义默认值。如果已定义默认值，则使用默认值，否则报错。 说明默认值可以设置为 null ，表示该参数取值为空并且忽略对该参数的验证。 |   |   |   |
+| AllowedValues | 否 | 包含参数允许值的列表。 |   |   |   |
 
-|  |  | Json |
+|   |   | Json |
 |---|---|---|
-|  | 2, 3] |  |
+|   | 2, 3] |   |
 
-| [1, |  |
+| [1, |   |
 |---|---|
 
-|  |  |  | ALIYUN::OOS::Parameter::Value |
+|   |   |   | ALIYUN::OOS::Parameter::Value |
 |---|---|---|---|
-|  |  | rameter::Value |  |
-
-资源编排
+|   |   | rameter::Value |   |
 
 | AllowedPattern | 否 | 一个正则表达式，用于检查用户输入的字符串类型的参数是否匹配。如果用户输入的不是字符串类型，则报错。 如果使用以下特殊字符，需要在字符前输入两个反斜线（\\）进行转义： *.?+-$^[ ]( ){ }\|\/ 说明短划线（-）在紧挨边界时无需转义，例如：[a-z-]。 |
 |---|---|---|
@@ -403,7 +520,9 @@ Mappings定义了一个多层的映射表，可以通过Fn::FindInMap函数来�
 | Confirm | 否 | 当NoEcho取值为 true 时，参数是否需要二次输入确认。默认值为 false 。 说明只有String类型的参数，且NoEcho取值为 true 时，Confirm可以为 true 。 |
 | TextArea | 否 | 参数是否支持换行。取值： true ：支持换行。 false （默认值）：不支持换行。 例如：以下代码表示参数Content支持换行。 ROSTemplateFormatVersion: '2015-09-01' Parameters: Content: Type: String TextArea: true Outputs: TestContent: Value: Ref: Content |
 
-如果您需要为1个Web应用创建1个资源栈，包含1个负载均衡实例、2个ECS实例和1个RDS实例。如果该Web应用负载较高，可以在创建资源栈时，选择高配的ECS实例；否则可以在创建资源栈时，选择低配的ECS实例。您可以按照如下示例， 在模板中定义ECS实例规格参数： 资源编排
+**示例：为Web应用创建资源栈**
+
+如果您需要为1个Web应用创建1个资源栈，包含1个负载均衡实例、2个ECS实例和1个RDS实例。如果该Web应用负载较高，可以在创建资源栈时，选择高配的ECS实例；否则可以在创建资源栈时，选择低配的ECS实例。您可以按照如下示例， 在模板中定义ECS实例规格参数：
 
 ```
 Parameters:
@@ -427,11 +546,12 @@ m，ecs.c1.large。
 
 ```
 Webserver:
+  Type: ALIYUN::ECS::Instance
   InstanceType:
     Ref: InstanceType
 ```
 
-### 资源（Resources）
+### 6.3 资源（Resources）
 
 资源（Resources）用于描述资源栈中每个资源的属性和资源之间的依赖关系。一个Resources可以被其他资源和Outputs 所引用。
 
@@ -443,34 +563,19 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
 "Resources" : {
 ```
 
-"资源`1 ID" : {` `"Type" : "`资源类型`",` `"Condition": "`是否创建此资源的条件"，
+`"`资源`1 ID" : {` `"Type" : "`资源类型`",` `"Condition": "`是否创建此资源的条件`"`，
 
 ```json
         "Properties" : {
 ```
 
-资源属性描述
-
-```
-        }
-    },
-```
-
-"资源`2 ID" : {` `"Type" : "`资源类型`",` `"Condition": "`是否创建此资源的条件"，
+资源属性描述 `}` `},` `"`资源`2 ID" : {` `"Type" : "`资源类型`",` `"Condition": "`是否创建此资源的条件`"`，
 
 ```json
         "Properties" : {
 ```
 
-资源属性描述
-
-```
-        }
-    }
-}
-```
-
-参数说明如下： 资源ID：在模板中具有唯一性。在创建模板其他部分时，可以通过资源ID引用该资源。 资源类型（Type）：表示正在声明的资源的类型。例如：ALIYUN::ECS::Instance表示阿里云ECS实例。 资源属性（Properties）：为资源指定的附加选项。例如：必须为每个阿里云ECS实例指定一个Image ID。 示例资源编排
+资源属性描述 `}` `}` `}` 参数说明如下： 资源ID：在模板中具有唯一性。在创建模板其他部分时，可以通过资源ID引用该资源。 资源类型（Type）：表示正在声明的资源的类型。例如：ALIYUN::ECS::Instance表示阿里云ECS实例。 资源属性（Properties）：为资源指定的附加选项。例如：必须为每个阿里云ECS实例指定一个Image ID。 示例
 
 ```json
 "Resources" : {
@@ -478,12 +583,9 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
     "Type" : "ALIYUN::ECS::Instance",
     "Properties" : {
       "ImageId" : "m-25l0r****"
-    }
-  }
-}
 ```
 
-如果资源不需要声明任何属性，可以忽略该资源的属性部分。 属性值可以是文本字符串、字符串列表、布尔值、引用参数或者函数返回值。 声明不同的属性值类型示例如下：
+`}` `}` `}` 如果资源不需要声明任何属性，可以忽略该资源的属性部分。 属性值可以是文本字符串、字符串列表、布尔值、引用参数或者函数返回值。 声明不同的属性值类型示例如下：
 
 ```json
 "Properties" : {
@@ -493,10 +595,9 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
     "ReferenceForOneValue" :  { "Ref" : "ResourceID" } ,
     "FunctionResultWithFunctionParams" : {
         "Fn::Join" : [ "%", [ "Key=", { "Ref" : "SomeParameter" } ] ] }
-}
 ```
 
-在模板中，设置DeletionPolicy属性，可以声明在资源栈被删除时保留某个资源。例如：设置在资源栈删除时保留ECS实例，可按照以下示例进行声明：
+`}` 在模板中，设置DeletionPolicy属性，可以声明在资源栈被删除时保留某个资源。例如：设置在资源栈删除时保留ECS实例，可按照以下示例进行声明：
 
 ```json
 "Resources" : {
@@ -504,47 +605,54 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
     "Type" : "ALIYUN::ECS::Instance",
     "Properties" : {
       "ImageId" : "m-25l0r****"
-    },
-    "DeletionPolicy" : "Retain"
-  }
-}
 ```
 
-在模板中，设置DependsOn属性，可以指定特定资源紧跟着另一个资源后创建。为某个资源添加DependsOn属性后，该资源仅在DependsOn属性中指定的资源之后创建。 以下示例中，WebServer将在DatabaseServer创建成功后才开始创建：
+`},`
 
 ```json
-{
+    "DeletionPolicy" : "Retain"
+```
+
+`}` `}` 在模板中，设置DependsOn属性，可以指定特定资源紧跟着另一个资源后创建。为某个资源添加DependsOn属性后，该资源仅在DependsOn属性中指定的资源之后创建。 以下示例中，WebServer将在DatabaseServer创建成功后才开始创建： `{`
+
+```json
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
       "DependsOn": "DatabseServer"
-    },
+```
+
+`},`
+
+```json
     "DatabseServer": {
       "Type": "ALIYUN::ECS::Instance",
       "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
-      }
-    }
-  }
-}
 ```
 
-在模板中，使用Condition属性可以指定是否创建此资源的条件。只有Condition所指定的条件值为true时，才会创建此资源。 以下示例中，根据MaxAmount的值判断否创建WebServer： 资源编排
+`}` `}` `}` `}` 在模板中，使用Condition属性可以指定是否创建此资源的条件。只有Condition所指定的条件值为true时，才会创建此资源。 以下示例中，根据MaxAmount的值判断否创建WebServer：
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Parameters": {
     "MaxAmount": {
       "Type": "Number",
       "Default": 1
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Conditions": {
     "CreateWebServer": {"Fn::Not": {"Fn::Equals": [0, {"Ref": "MaxAmount"}]}}
-  }
+```
+
+`}`
+
+```json
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroup",
@@ -553,28 +661,28 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
         "MaxAmount": {"Ref": "MaxAmount"}
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "DatabseServer": {
       "Type": "ALIYUN::ECS::Instance",
       "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
-      }
-    }
-  }
-}
 ```
+
+`}` `}` `}` `}`
 
 **资源声明示例**
 
-典型的资源声明示例如下： 资源编排
+典型的资源声明示例如下：
 
 ```json
 "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
-      "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
@@ -585,14 +693,11 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
         },{
             "Key": "Department2",
             "Value": "Finance"
-        }
 ```
 
-]
+`}` `]` `}` `},`
 
 ```json
-      }
-    },
     "ScalingConfiguration": {
       "Type": "ALIYUN::ESS::ScalingConfiguration",
       "Properties": {
@@ -606,74 +711,67 @@ Resources由资源ID和资源描述组成。资源描述用大括号（{ }）括
         "ScalingGroupId": "bwhtvpcBcKYac9fe3vd0****",
         "SecurityGroupId": "sg-25zwc****",
         "DiskMappings": [
-            {
+```
+
+`{`
+
+```json
                 "Size": 10
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Category": "cloud",
                 "Size": 10
-            }
 ```
 
-]
+`}` `]` `}` `}` `}`
 
-```
-      }
-    }
-}
-```
-
-### 输出（Outputs）
+### 6.4 输出（Outputs）
 
 在输出（Outputs）中，定义在调用查询资源栈接口时返回的值。例如：定义ECS实例ID的输出，然后可在调用查询资源栈的接口时，查看该实例ID。
 
 **语法**
 
-Outputs由输出ID和输出描述组成。所有输出描述都被括在大括号（{ }）里。如果声明多个输出项，则用半角逗号（,）分隔开。每一个输出项支持以数组形式输出多个值。请参见以下Outputs的语法结构示例代码： 资源编排
+Outputs由输出ID和输出描述组成。所有输出描述都被括在大括号（{ }）里。如果声明多个输出项，则用半角逗号（,）分隔开。每一个输出项支持以数组形式输出多个值。请参见以下Outputs的语法结构示例代码：
 
 ```json
 "Outputs" : {
 ```
 
-"输出`1 ID" : {` `"Description" : "`输出项的描述`",` `"Condition": "`是否输出此资源属性的条件`",` `"Value" : "`输出值的表达式"
-
-```
-  },
-```
-
-"输出`2 ID" : {` `"Description" : "`输出项的描述`",` `"Condition": "`是否输出此资源属性的条件`",`
+`"`输出`1 ID" : {` `"Description" : "`输出项的描述`",` `"Condition": "`是否输出此资源属性的条件`",` `"Value" : "`输出值的表达式`"` `},` `"`输出`2 ID" : {` `"Description" : "`输出项的描述`",` `"Condition": "`是否输出此资源属性的条件`",`
 
 ```json
     "Value" : [
 ```
 
-"输出值的表达式`1",` "输出值的表达式`2",`
+`"`输出值的表达式`1",` `"`输出值的表达式`2",`
 
 ```
       ...
 ```
 
-]
-
-```
-  }
-}
-```
-
-输出ID：输出项的标识符，在模板中具有唯一性。 Description（可选）：输出项的描述。 Value（必选）：在调用查询资源栈接口时，返回的属性值。 Condition（可选）：使用Condition属性可以指定是否需要创建某个资源和输出资源的信息。当Condition所指定的条件值为 `true` 时，才创建此资源和输出资源信息。 如以下代码所示，根据MaxAmount的值判断是否创建WebServer：
+`]` `}` `}` 输出ID：输出项的标识符，在模板中具有唯一性。 Description（可选）：输出项的描述。 Value（必选）：在调用查询资源栈接口时，返回的属性值。 Condition（可选）：使用Condition属性可以指定是否需要创建某个资源和输出资源的信息。当Condition所指定的条件值为 `true` 时，才创建此资源和输出资源信息。 如以下代码所示，根据MaxAmount的值判断是否创建WebServer： `{`
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Parameters": {
     "MaxAmount": {
       "Type": "Number",
       "Default": 1
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Conditions": {
     "CreateWebServer": {"Fn::Not": {"Fn::Equals": [0, {"Ref": "MaxAmount"}]}}
-  }
+```
+
+`}`
+
+```json
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroup",
@@ -682,43 +780,37 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
         "MaxAmount": {"Ref": "MaxAmount"}
-      }
-    }
-  }
+```
+
+`}` `}` `}`
+
+```json
   "Outputs": {
     "WebServerIP": {
       "Condition": "CreateWebServer",
       "Value": {
         "Fn::GetAtt": ["WebServer", "PublicIps"]
-      }
-    }
-  }
-}
 ```
+
+`}` `}` `}` `}`
 
 **示例**
 
-在以下示例中，有2个输出项： 资源ID为WebServer的InstanceId属性。 资源ID为WebServer的PublicIp和PrivateIp属性。 资源编排
+在以下示例中，有2个输出项： 资源ID为WebServer的InstanceId属性。 资源ID为WebServer的PublicIp和PrivateIp属性。
 
 ```json
 "Outputs": {
   "InstanceId": {
     "Value" : {"Fn::GetAtt": ["WebServer", "InstanceId"]}
-  },
   "PublicIp & PrivateIp": {
     "Value" : [
       {"Fn::GetAtt": ["WebServer", "PublicIp"]},
       {"Fn::GetAtt": ["WebServer", "PrivateIp"]}
 ```
 
-]
+`]` `}` `}`
 
-```
-  }
-}
-```
-
-### 函数（Functions）
+### 6.5 函数（Functions）
 
 资源编排服务提供多个内置函数，帮助您管理您的资源栈。您可以在定义资源（Resources）和输出（Outputs）时，使用内部函数。
 
@@ -760,7 +852,7 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
  "Fn::Base64": stringToEncode
 ```
 
-参数 valueToEncode：转换成Base64的字符串。 资源编排返回值用Base64表示方法的原始字符串。 示例
+参数 valueToEncode：转换成Base64的字符串。 返回值用Base64表示方法的原始字符串。 示例
 
 ```
  "Fn::Base64":"string to encode"
@@ -774,10 +866,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 "Fn::FindInMap": ["MapName", "TopLevelKey", "SecondLevelKey"]
 ```
 
-参数 `MapName` ：Mappings中所声明映射的ID，包含键和值。 `TopLevelKey` ：第一级键，其值是一个键/值对列表。 `SecondLevelKey` ：第二级键，其值是一个字符串或者数字。 返回值分配给SecondLevelKey的值。 示例在创建名为WebServer的资源时，需要指定ImageId属性。在Mappings中，描述根据地域区分的ImageId映射。在 Parameters中，描述需要用户指定的地域。Fn::FindInMap会根据用户指定的地域，在RegionMap中查找对应的 ImageId映射，然后在映射中找到对应的ImageId。 MapName可自定义。在本示例中为 `RegionMap` 。 TopLevelKey设置为创建资源栈的地区。在本示例中，通过 `{ "Ref" : "regionParam" }` 确定。 SecondLevelKey设置为所需的架构。在本示例中为 `32` 。 资源编排
+参数 `MapName` ：Mappings中所声明映射的ID，包含键和值。 `TopLevelKey` ：第一级键，其值是一个键/值对列表。 `SecondLevelKey` ：第二级键，其值是一个字符串或者数字。 返回值分配给SecondLevelKey的值。 示例在创建名为WebServer的资源时，需要指定ImageId属性。在Mappings中，描述根据地域区分的ImageId映射。在 Parameters中，描述需要用户指定的地域。Fn::FindInMap会根据用户指定的地域，在RegionMap中查找对应的 ImageId映射，然后在映射中找到对应的ImageId。 MapName可自定义。在本示例中为 `RegionMap` 。 TopLevelKey设置为创建资源栈的地区。在本示例中，通过 `{ "Ref" : "regionParam" }` 确定。 SecondLevelKey设置为所需的架构。在本示例中为 `32` 。
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "regionParam": {
@@ -792,23 +883,27 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "beijing"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "Mappings": {
     "RegionMap": {
       "hangzhou": {
         "32": "m-25l0rcfjo",
         "64": "m-25l0rcfj1"
-      },
+```
+
+`},`
+
+```json
       "beijing": {
         "32": "m-25l0rcfj2",
         "64": "m-25l0rcfj3"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
@@ -820,38 +915,34 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
             "32"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
         "Tags": [
-          {
+```
+
+`{`
+
+```json
             "Key": "key1",
             "Value": "value1"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "Key": "key2",
             "Value": "value2"
-          }
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-支持的函数 Fn::FindInMap Ref
+`}` `]` `}` `}` `}` `}` 支持的函数 Fn::FindInMap Ref
 
 **Fn::GetAtt**
 
-内部函数Fn::GetAtt返回模板中的资源的属性值。 声明资源编排
+内部函数Fn::GetAtt返回模板中的资源的属性值。 声明
 
 ```
 "Fn::GetAtt": ["resourceID", "attributeName"]
@@ -861,9 +952,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 | resourceID | ：目 |
 |---|---|
-| attributeName |  |
+| attributeName |   |
 
-返回值属性值。 示例返回Resource ID为MyEcsInstance的ImageId属性。
+`attributeName` ：目标资源的属性名称。 返回值属性值。 示例返回Resource ID为MyEcsInstance的ImageId属性。
 
 ```json
 {"Fn::GetAtt" : ["MyEcsInstance" , "ImageID"]}
@@ -881,9 +972,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 | delimiter | ：分隔符。分隔符可以 |
 |---|---|
-| [ "string1", "string2", ... ] |  |
+| [ "string1", "string2", ... ] |   |
 
-返回值被连接起来的字符串。 示例
+`delimiter` ：分隔符。分隔符可以为空，表示将所有的值直接连接起来。 返回值被连接起来的字符串。 示例
 
 ```json
 {"Fn::Join": [ ",", ["a", "b", "c"]]}
@@ -905,7 +996,7 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 "Fn::Select": ["index", {"key1": "value1", ... }]
 ```
 
-参数 `index` ：待检索数据元的索引。如果数据元列表是一个数组，则索引是0到N-1之间的某个值（其中N代表阵列中元素的数量）。如果数据元列表是一个映射表，则索引是映射表中的某个键。 如果找不到索引对应的值，则返回空字符串。 返回值选定的数据元。 示例资源编排如果数据元列表是一个数组：
+参数 `index` ：待检索数据元的索引。如果数据元列表是一个数组，则索引是0到N-1之间的某个值（其中N代表阵列中元素的数量）。如果数据元列表是一个映射表，则索引是映射表中的某个键。 如果找不到索引对应的值，则返回空字符串。 返回值选定的数据元。 示例如果数据元列表是一个数组：
 
 ```json
 {"Fn::Select": ["1", ["apples", "grapes", "oranges", "mangoes"]]}
@@ -924,17 +1015,18 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
   "userParam": {
     "Type": "CommaDelimitedList",
       "Default": "10.0.100.0/24, 10.0.101.0/24, 10.0.102.0/24"
-  }
-} "Resources": {
+```
+
+`}` `}`
+
+```json
+"Resources": {
   "resourceID": {
       "Properties": {
           "CidrBlock": {"Fn::Select": ["0", {"Ref": "userParam"}]}
-    }
-  }
-}
 ```
 
-支持的函数对于Fn::Select索引值，您可以使用Ref函数。 对于对象的Fn::Select列表，您可以使用以下函数： Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref
+`}` `}` `}` 支持的函数对于Fn::Select索引值，您可以使用Ref函数。 对于对象的Fn::Select列表，您可以使用以下函数： Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref
 
 **Ref**
 
@@ -944,10 +1036,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 "Ref": "logicalName"
 ```
 
-参数 `logicalName` ：要引用的资源或参数的逻辑名称。 返回值资源的值或者参数的值。 示例使用Ref函数指定regionParam作为WebServer的RegionMap的地域参数。 资源编排
+参数 `logicalName` ：要引用的资源或参数的逻辑名称。 返回值资源的值或者参数的值。 示例使用Ref函数指定regionParam作为WebServer的RegionMap的地域参数。
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "regionParam": {
@@ -962,23 +1053,27 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "beijing"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "Mappings": {
     "RegionMap": {
       "hangzhou": {
         "32": "m-25l0rcfjo",
         "64": "m-25l0rcfj1"
-      },
+```
+
+`},`
+
+```json
       "beijing": {
         "32": "m-25l0rcfj2",
         "64": "m-25l0rcfj3"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
@@ -990,34 +1085,30 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
             "32"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
         "Tags": [
-          {
+```
+
+`{`
+
+```json
             "Key": "tiantt",
             "Value": "ros"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "Key": "tiantt1",
             "Value": "ros1"
-          }
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-支持的函数不能在Ref函数中使用任何函数。必须指定为资源逻辑ID的字符串。
+`}` `]` `}` `}` `}` `}` 支持的函数不能在Ref函数中使用任何函数。必须指定为资源逻辑ID的字符串。
 
 **Fn::GetAZs**
 
@@ -1027,10 +1118,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 "Fn::GetAZs": "region"
 ```
 
-资源编排参数 `region` ：region ID。 返回值指定Region下的可用区列表。 示例在指定Region的第一个可用区内创建一个ECS实例。
+参数 `region` ：region ID。 返回值指定Region下的可用区列表。 示例在指定Region的第一个可用区内创建一个ECS实例。 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
@@ -1047,21 +1137,24 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "SystemDiskCategory": "cloud_efficiency",
         "IoOptimized": "optimized",
         "ZoneId": {"Fn::Select": ["0", {"Fn::GetAZs": {"Ref": "ALIYUN::Region"}}]}
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "InstanceId": {
          "Value": {"Fn::GetAtt": ["WebServer","InstanceId"]}
-    },
-    "PublicIp": {
-         "Value": {"Fn::GetAtt": ["WebServer","PublicIp"]}
-    }
-  }
-}
 ```
 
-支持的函数 Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref
+`},`
+
+```json
+    "PublicIp": {
+         "Value": {"Fn::GetAtt": ["WebServer","PublicIp"]}
+```
+
+`}` `}` `}` 支持的函数 Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref
 
 **Fn::Replace**
 
@@ -1071,10 +1164,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::Replace": [{"object_key": "object_value"}, "object_string"]}
 ```
 
-参数 `object_key` ：将要被替换的字符串。 `object_value` ：将要替换成的最终字符串。 `object_string` ：包含被替换 `object_key` 的字符串。 返回值被替换后的字符串。 资源编排示例所指定脚本中的print替换成echo。
+参数 `object_key` ：将要被替换的字符串。 `object_value` ：将要替换成的最终字符串。 `object_string` ：包含被替换 `object_key` 的字符串。 返回值被替换后的字符串。 示例所指定脚本中的print替换成echo。
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
@@ -1094,21 +1186,24 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
              "mkdir ~/test_ros\n",
              "print hello > ~/1.txt\n"
          ]]}]}
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "InstanceId": {
          "Value" : {"Fn::GetAtt": ["WebServer","InstanceId"]}
-    },
-    "PublicIp": {
-         "Value" : {"Fn::GetAtt": ["WebServer","PublicIp"]}
-    }
-  }
-}
 ```
 
-支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref
+`},`
+
+```json
+    "PublicIp": {
+         "Value" : {"Fn::GetAtt": ["WebServer","PublicIp"]}
+```
+
+`}` `}` `}` 支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref
 
 **Fn::Split**
 
@@ -1122,24 +1217,26 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 | delim | ：分隔符， |
 |---|---|
-| original string _ |  |
+| original string _ |   |
 
-返回值返回切片后所有字符串组成的列表。 示例如果数据元列表是一个数组：
+`delim` ：分隔符，例如：半角逗号（,）、半角分号（;）、换行符（\n）、缩进（\t）等。 `original_string` ：将要被切片的字符串。 返回值返回切片后所有字符串组成的列表。 示例如果数据元列表是一个数组：
 
 ```json
 {"Fn::Split": [";", "foo; bar; achoo"]} 返回： ["foo", " bar", "achoo "] 。
 ```
 
-资源编排使用Fn::Split对InstanceIds进行切片：
+使用Fn::Split对InstanceIds进行切片：
 
 ```json
-{
   "Parameters": {
     "InstanceIds": {
       "Type": "String",
       "Default": "instane1_id,instance2_id,instance2_id"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "resourceID": {
       "Type": "ALIYUN::SLB::BackendServerAttachment",
@@ -1147,22 +1244,15 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "BackendServerList": {
           "Fn::Split": [
             ",",
-            {
+```
+
+`{`
+
+```json
               "Ref": "InstanceIds"
-            }
 ```
 
-]
-
-```
-        }
-      }
-    }
-  }
-}
-```
-
-支持的函数 Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Fn::Replace Fn::GetAZs Fn::If Ref
+`}` `]` `}` `}` `}` `}` `}` 支持的函数 Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Fn::Replace Fn::GetAZs Fn::If Ref
 
 **Fn::Equals**
 
@@ -1172,17 +1262,19 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::Equals": ["value_1", "value_2"]}
 ```
 
-参数 `value` ：要比较的任意类型的值。 返回值 true或false。 示例在Conditions中使用Fn::Equals定义条件。 资源编排
+参数 `value` ：要比较的任意类型的值。 返回值 true或false。 示例在Conditions中使用Fn::Equals定义条件。
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "EnvType": {
       "Default": "pre",
       "Type": "String"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Conditions": {
     "TestEqualsCond": {
       "Fn::Equals": [
@@ -1190,15 +1282,7 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         {"Ref": "EnvType"}
 ```
 
-]
-
-```
-    }
-  }
-}
-```
-
-支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
+`]` `}` `}` `}` 支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
 
 **Fn::And**
 
@@ -1208,25 +1292,25 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::And": ["condition", {...}]}
 ```
 
-参数 `condition` ：计算为true或false的条件。 返回值 true或false。 示例在Conditions中使用Fn::And定义一个条件：
+参数 `condition` ：计算为true或false的条件。 返回值 true或false。 示例在Conditions中使用Fn::And定义一个条件： `{`
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Parameters":{
     "EnvType":{
       "Default":"pre",
       "Type":"String"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Conditions": {
     "TestEqualsCond": {"Fn::Equals": ["prod", {"Ref": "EnvType"}]},
     "TestAndCond": {"Fn::And": ["TestEqualsCond", {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}]}
-  }
-}
 ```
 
-支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap 资源编排 Fn::And Ref
+`}` `}` 支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
 
 **Fn::Or**
 
@@ -1236,25 +1320,25 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::Or": ["condition", {...}]}
 ```
 
-参数 `condition` ：计算为true或false的条件。 返回值 true或false。 示例在Conditions中使用Fn::Or定义一个条件。
+参数 `condition` ：计算为true或false的条件。 返回值 true或false。 示例在Conditions中使用Fn::Or定义一个条件。 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Parameters":{
     "EnvType":{
       "Default":"pre",
       "Type":"String"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Conditions": {
     "TestEqualsCond": {"Fn::Equals": ["prod", {"Ref": "EnvType"}]},
     "TestOrCond": {"Fn::And": ["TestEqualsCond", {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}]}
-  }
-}
 ```
 
-支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
+`}` `}` 支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
 
 **Fn::Not**
 
@@ -1264,24 +1348,24 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::Not": "condition"}
 ```
 
-参数 `condition` ：计算为true或false的条件。 返回值 true或false。 示例在Conditions中使用Fn::Not定义一个条件。 资源编排
+参数 `condition` ：计算为true或false的条件。 返回值 true或false。 示例在Conditions中使用Fn::Not定义一个条件。
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Parameters":{
     "EnvType":{
       "Default":"pre",
       "Type":"String"
-    }
-  },
-  "Conditions": {
-    "TestNotCond": {"Fn::Not": {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}}
-  }
-}
 ```
 
-支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
+`}` `},`
+
+```json
+  "Conditions": {
+    "TestNotCond": {"Fn::Not": {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}}
+```
+
+`}` `}` 支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
 
 **Fn::If**
 
@@ -1293,36 +1377,39 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 参数
 
-| condition name _ |  |
+| condition name _ |   |
 |---|---|
 | value if true _ _ | ： |
-| value if false _ _ |  |
+| value if false _ _ |   |
 
-示例根据输入的参数，确定是否创建数据盘。
+`condition_name` ：Conditions中条件对应的条件名称。通过条件名称引用条件。 `value_if_true` ：当指定的条件计算为true时，返回此值。 `value_if_false` ：当指定的条件计算为false时，返回此值。 示例根据输入的参数，确定是否创建数据盘。 `{`
 
 ```json
-{
     "ROSTemplateFormatVersion":"2015-09-01",
     "Parameters":{
         "EnvType":{
             "Default":"pre",
             "Type":"String"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "Conditions":{
         "CreateDisk":{
             "Fn::Equals":[
                 "prod",
-                {
-                    "Ref":"EnvType"
-                }
 ```
 
-]
+`{`
 
 ```json
-        }
-    },
+                    "Ref":"EnvType"
+```
+
+`}` `]` `}` `},`
+
+```json
     "Resources":{
         "WebServer":{
             "Type":"ALIYUN::ECS::Instance",
@@ -1332,33 +1419,31 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                         "CreateDisk",
 ```
 
-资源编排 [
+`[`
 
 ```json
-                            {
                                 "Category":"cloud_efficiency",
                                 "DiskName":"FirstDataDiskName",
                                 "Size":40
-                            },
-                            {
+```
+
+`},` `{`
+
+```json
                                 "Category":"cloud_ssd",
                                 "DiskName":"SecondDataDiskName",
                                 "Size":40
-                            }
 ```
 
-`],`
+`}` `],` `{`
 
 ```json
-                        {
                             "Ref":"ALIYUN::NoValue"
-                        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-                },
                 "VpcId":"vpc-2zew9pxh2yirtzqxd****",
                 "SystemDiskCategory":"cloud_efficiency",
                 "SecurityGroupId":"sg-2zece6wcqriejf1v****",
@@ -1367,9 +1452,11 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                 "IoOptimized":"optimized",
                 "VSwitchId":"vsw-2zed9txvy7h2srqo6****",
                 "InstanceType":"ecs.n1.medium"
-            }
-        }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "Outputs":{
         "InstanceId":{
             "Value":{
@@ -1378,11 +1465,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                     "InstanceId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-            }
-        },
         "ZoneId":{
             "Value":{
                 "Fn::GetAtt":[
@@ -1390,29 +1475,19 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                     "ZoneId"
 ```
 
-]
-
-```
-            }
-        }
-    }
-}
-```
-
-支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
+`]` `}` `}` `}` `}` 支持的函数 Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref
 
 **Fn::ListMerge**
 
-合并多个列表为一个列表。 声明资源编排
+合并多个列表为一个列表。 声明
 
 ```json
-{"Fn::ListMerge": [["list_1_item_1", "list_1_imte_2", ...], ["list_2_item_1", "list_2_imte_2", ...] ]}
+{"Fn::ListMerge": [["list_1_item_1", "list_1_imte_2", ...], ["list_2_item_1", "list_2_imte_2", ...]
 ```
 
-参数 `["list_1_item_1", "list_1_imte_2", ...]` ：将要合并的第一个列表。 `["list_2_item_1", "list_2_imte_2", ...]` ：将要和第一个列表合并的列表。 示例把两个ECS组挂载到同一个负载均衡实例上。
+`]}` 参数 `["list_1_item_1", "list_1_imte_2", ...]` ：将要合并的第一个列表。 `["list_2_item_1", "list_2_imte_2", ...]` ：将要和第一个列表合并的列表。 示例把两个ECS组挂载到同一个负载均衡实例上。 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "LoadBalancer": {
@@ -1421,8 +1496,11 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "LoadBalancerName": "ros",
         "AddressType": "internet",
         "InternetChargeType": "paybybandwidth",
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "BackendServer1": {
       "Type": "ALIYUN::ECS::InstanceGroup",
       "Properties": {
@@ -1431,8 +1509,11 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "SecurityGroupId": "sg-2ze8yxgempcdsq3****",
         "MaxAmount": 1,
         "MinAmount": 1
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "BackendServer2": {
       "Type": "ALIYUN::ECS::InstanceGroup",
       "Properties": {
@@ -1441,8 +1522,11 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "SecurityGroupId": "sg-2ze8yxgempcdsq3iu****",
         "MaxAmount": 1,
         "MinAmount": 1
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "Attachment": {
       "Type": "ALIYUN::SLB::BackendServerAttachment",
       "Properties": {
@@ -1452,17 +1536,7 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
             {"Fn::GetAtt": ["BackendServer2", "InstanceIds"]}
 ```
 
-]
-
-```
-        }
-      }
-    }
-  }
-}
-```
-
-支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref 资源编排 Fn::If
+`]` `}` `}` `}` `}` `}` 支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::If
 
 **Fn::GetJsonValue**
 
@@ -1476,12 +1550,11 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 | key | ：键值。 |
 |---|---|
-| json string _ |  |
+| json string _ |   |
 
-示例 WebServer2从WebServer实例执行完UserData返回的JSON字符串中，获取对应的值。
+`json_string` ：指定的需要解析的JSON字符串。 示例 WebServer2从WebServer实例执行完UserData返回的JSON字符串中，获取对应的值。 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
@@ -1506,17 +1579,28 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
          ]]},
          "PrivateIpAddress": "192.168.XX.XX",
          "HostName": "userdata-1
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "WaitConHandle": {
-    },
+        "Type": "ALIYUN::ROS::WaitConditionHandle"
+```
+
+`},`
+
+```json
     "WaitCondition": {
         "Type": "ALIYUN::ROS::WaitCondition",
         "Properties": {
           "Handle": {"Ref": "WaitConHandle"},
           "Timeout": 900
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "WebServer2": {
       "Type": "ALIYUN::ECS::Instance",
       "Properties": {
@@ -1529,8 +1613,6 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "VpcId": "vpc-2zevx9ios1rszqv0a****",
 "SystemDiskCategory":"cloudssd"
 ```
-
-资源编排
 
 ```json
         SystemDiskCategory: cloud_ssd,
@@ -1545,21 +1627,24 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
          ]]},
          "PrivateIpAddress": "192.168.XX.XX",
          "HostName": "userdata-2"
-      }
-    },
-  },
+```
+
+`}` `},` `},`
+
+```json
   "Outputs": {
     "InstanceId": {
          "Value" : {"Fn::GetAtt": ["WebServer","InstanceId"]}
-    },
-    "PublicIp": {
-         "Value" : {"Fn::GetAtt": ["WebServer","PublicIp"]}
-    }
-  }
-}
 ```
 
-支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::If
+`},`
+
+```json
+    "PublicIp": {
+         "Value" : {"Fn::GetAtt": ["WebServer","PublicIp"]}
+```
+
+`}` `}` `}` 支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::If
 
 **Fn::MergeMapToList**
 
@@ -1569,77 +1654,67 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::MergeMapToList": [{"key_1": ["key_1_item_1", "key_1_item_2", ...]}, {"key_2":["key_2_item_1", "key_2_item_2", ...]}, ... ]}
 ```
 
-参数 `{"key_1": ["key_1_item_1", "key_1_item_2", ...]}` ：将要合并的第一个Mapping。 `"key_1"` 所对应的值必须是一个列表。 `"key_1"` 将是合并后的列表元素中，每个Mapping的一个键。其对应的值在第一个Mapping中将是 `"key_1_item_1"` ，在第二个Mapping中是 `"key_1_item_2"` ，以此类推。最终合并的列表长度是所有将要合并的参数Mapping中， `"key_x"` 所对应的列表中最长的长度。如果有的 `"key_y"` 所对应的列表长度比较短，会重复此列表的最后一个元素，使列表长度都达到最长。 `{"key_2": ["key_2_item_1", "key_2_item_2", ...]}` ：将要合并的第二个Mapping。 `"key_2"` 所对应的值必须是一个列表。 `"key_2"` 将是合并后的列表元素中每个Mapping的一个键。其对应的值在第一个Mapping中将是 `"key_2_item_1"` ，在第二个Mapping中是 `"key_2_item_2"` ，以此类推。 示例资源编排合并三个Mapping，每个Mapping中键值对应的列表长度一致。
+参数 `{"key_1": ["key_1_item_1", "key_1_item_2", ...]}` ：将要合并的第一个Mapping。 `"key_1"` 所对应的值必须是一个列表。 `"key_1"` 将是合并后的列表元素中，每个Mapping的一个键。其对应的值在第一个Mapping中将是 `"key_1_item_1"` ，在第二个Mapping中是 `"key_1_item_2"` ，以此类推。最终合并的列表长度是所有将要合并的参数Mapping中， `"key_x"` 所对应的列表中最长的长度。如果有的 `"key_y"` 所对应的列表长度比较短，会重复此列表的最后一个元素，使列表长度都达到最长。 `{"key_2": ["key_2_item_1", "key_2_item_2", ...]}` ：将要合并的第二个Mapping。 `"key_2"` 所对应的值必须是一个列表。 `"key_2"` 将是合并后的列表元素中每个Mapping的一个键。其对应的值在第一个Mapping中将是 `"key_2_item_1"` ，在第二个Mapping中是 `"key_2_item_2"` ，以此类推。 示例合并三个Mapping，每个Mapping中键值对应的列表长度一致。
 
 ```json
-{
    "Fn::MergeMapToList": [
       {"key_1": ["kye_1_item_1", "kye_1_item_2"]},
       {"key_2": ["kye_2_item_1", "kye_2_item_2"]},
       {"key_3": ["kye_3_item_1", "kye_3_item_2"]}
 ```
 
-]
-
-```
-}
-```
-
-最终的合并结果如下。 [
+`]` `}` 最终的合并结果如下。 `[` `{`
 
 ```json
-   {
       "key_1": "kye_1_item_1",
       "key_2": "kye_2_item_1",
       "key_3": "kye_3_item_1"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "key_1": "kye_1_item_2",
       "key_2": "kye_2_item_2",
       "key_3": "kye_3_item_2"
-    }
 ```
 
-] 合并三个Mapping，每个Mapping中键值对应的列表长度不一致。
+`}` `]` 合并三个Mapping，每个Mapping中键值对应的列表长度不一致。 `{`
 
 ```json
-{
    "Fn::MergeMapToList": [
       {"key_1": ["kye_1_item_1", "kye_1_item_2"]},
       {"key_2": ["kye_2_item_1", "kye_2_item_2", "key_2_item_3"]},
       {"key_3": ["kye_3_item_1", "kye_3_item_2"]}
 ```
 
-]
-
-```
-}
-```
-
-最终的合并结果如下。 [
+`]` `}` 最终的合并结果如下。 `[` `{`
 
 ```json
-   {
       "key_1": "kye_1_item_1",
       "key_2": "kye_2_item_1",
       "key_3": "kye_3_item_1"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "key_1": "kye_1_item_2",
       "key_2": "kye_2_item_2",
       "key_3": "kye_3_item_2"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "key_1": "kye_1_item_2",
       "key_2": "kye_2_item_3",
       "key_3": "kye_3_item_2"
-    }
 ```
 
-] 资源编排以下模板示例中，把WebServer中创建的所有实例，都加入到一个负载均衡的虚拟服务器组中。
+`}` `]` 以下模板示例中，把WebServer中创建的所有实例，都加入到一个负载均衡的虚拟服务器组中。
 
 ```json
-{
     "ROSTemplateFormatVersion": "2015-09-01",
     "Resources": {
         "WebServer": {
@@ -1649,8 +1724,11 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                "Password": "Hello****",
                "MinAmount": 1,
                "MaxAmount": 1
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "CreateVServerGroup": {
             "Type": "ALIYUN::SLB::VServerGroup",
             "Properties": {
@@ -1663,17 +1741,7 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                        {"Weight": [20, 100]}
 ```
 
-]
-
-```
-                }
-            }
-        }
-    }
-}
-```
-
-支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::If Fn::ListMerge Fn::GetJsonValue
+`]` `}` `}` `}` `}` `}` 支持的函数 Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::If Fn::ListMerge Fn::GetJsonValue
 
 **Fn::Avg**
 
@@ -1687,15 +1755,15 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 | ndigits | ：平均值保留几位小 |
 |---|---|
-| [ number1, number2, ... ] |  |
+| [ number1, number2, ... ] |   |
 
-返回值给定一组数字的平均值。 示例
+`[ number1, number2, ... ]` ：一组用来求平均值的数字。组内每个元素可以是数字或能转换成数字的字符串。 返回值给定一组数字的平均值。 示例
 
 ```json
 { "Fn::Avg": [ 1, [1, 2, 6.0] ] } { "Fn::Avg": [ 1, ['1', '2', '6.0'] ] }
 ```
 
-返回：**3.0**。 支持的函数资源编排 Fn::GetAtt Ref
+返回：**3.0**。 支持的函数 Fn::GetAtt Ref
 
 **Fn::SelectMapList**
 
@@ -1709,17 +1777,16 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 | key2 | ：在map中查询的key。 |
 |---|---|
-| [{ "key1": "value1-1", "key3": "value1-3" }, ... ] |  |
+| [{ "key1": "value1-1", "key3": "value1-3" }, ... ] |   |
 
-返回值对map_list中的每个map，取出key对应的值，合并成一个列表。 示例
+返回值对map_list中的每个map，取出key对应的值，合并成一个列表。 示例 `{`
 
-```json
-{
+```
  "Fn::SelectMapList": [
    "key2",
 ```
 
-[
+`[`
 
 ```json
       {"key1": "value1-1", "key3": "value1-3"},
@@ -1727,10 +1794,10 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
       {"key1": "value3-1", "key2": "value3-2"}
 ```
 
-] ]
+`]` `]` `}`
 
 ```
-} 返回： ["value2-2","value3-2"] 。
+返回： ["value2-2","value3-2"] 。
 ```
 
 **Fn::Add**
@@ -1741,28 +1808,27 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 {"Fn::Add": [{"Product": "ROS"}, {"Fn": "Add"}]}
 ```
 
-参数参数为一个列表。 列表内元素可以是数字、列表、字典，但是所有元素必须是同一类型，至少2个元素。 返回值如果是数字类型，对参数进行求和；如果是列表类型，对参数进行拼接；如果是字典类型，对参数进行合并，key相同的情况下，后面的key值覆盖前面的key值。 示例
+参数参数为一个列表。 列表内元素可以是数字、列表、字典，但是所有元素必须是同一类型，至少2个元素。 返回值如果是数字类型，对参数进行求和；如果是列表类型，对参数进行拼接；如果是字典类型，对参数进行合并，key相同的情况下，后面的key值覆盖前面的key值。 示例 `{`
 
 ```json
-{
  "Fn::Add": [
    {"Product": "ROS"},
    {"Fn": "Add"}
 ```
 
-]
+`]` `}`
 
 ```
-} 返回： {"Fn":"Add","Product":"ROS"} 。
+返回： {"Fn":"Add","Product":"ROS"} 。
 ```
 
-### 映射（Mappings）
+### 6.6 映射（Mappings）
 
 映射是一个Key-Value映射表。在模板的Resources和Outputs中，可以使用Fn::FindInMap内部函数，通过指定Key而获取映射表的Value。
 
 **语法**
 
-资源编排映射由Key-Value对组成。其中Key和Value可以为字符串类型或者数字类型。如果声明多个映射，用半角逗号（,）分隔开。每个映射的名称不能重复。映射须为纯数据，映射不会解析函数。
+映射由Key-Value对组成。其中Key和Value可以为字符串类型或者数字类型。如果声明多个映射，用半角逗号（,）分隔开。每个映射的名称不能重复。映射须为纯数据，映射不会解析函数。
 
 **示例**
 
@@ -1775,27 +1841,27 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "TestKey2": {"TestValu2": "value2"},
         1234567890: {"TestValu3": "value3"},
         "TestKey4": {"TestValu4": 1234}
-    }
-}
 ```
 
-错误的映射示例：
+`}` `}` 错误的映射示例：
 
 ```json
 "Mappings": {
     "InvalidMapping1": {
         "ValueList": ["foo", "bar"],
           "ValueString": "baz"
-    },
-    "InvalidMapping2": ["foo", {"bar" : "baz"}],
-    "InvalidMapping3": "foobar"
-}
 ```
 
-使用内部函数Fn::FindInMap返回对应的值示例： 资源编排
+`},`
 
 ```json
-{
+    "InvalidMapping2": ["foo", {"bar" : "baz"}],
+    "InvalidMapping3": "foobar"
+```
+
+`}` 使用内部函数Fn::FindInMap返回对应的值示例：
+
+```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "regionParam": {
@@ -1810,23 +1876,27 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "beijing"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "Mappings": {
     "RegionMap": {
       "hangzhou": {
         "32": "m-25l0rcfjo",
         "64": "m-25l0rcfj1"
-      },
+```
+
+`},`
+
+```json
       "beijing": {
         "32": "m-25l0rcfj2",
         "64": "m-25l0rcfj3"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
@@ -1834,42 +1904,48 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
         "ImageId": {
           "Fn::FindInMap": [
             "RegionMap",
-            {
+```
+
+`{`
+
+```json
               "Ref": "regionParam"
-            },
+```
+
+`},`
+
+```
             "32"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
         "Tags": [
-          {
+```
+
+`{`
+
+```json
             "Key": "Department1",
             "Value": "HumanResource"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "Key": "Department2",
             "Value": "Finance"
-          }
 ```
 
-]
+`}` `]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+### 6.7 条件（Conditions）
 
-### 条件（Conditions）
-
-每一个条件项由Fn::And、Fn::Or、Fn::Not或Fn::Equals定义。根据您在创建或更新资源栈时，指定的输入参数值进行计算。在每个条件中，都可以引用其他条件、参数值或映射。在模板的Resources和Outputs部分，将条件与资源关联起来。 条件和资源的关联通过两种方式实现：Fn::If 函数或者资源的Condition字段。 资源编排
+每一个条件项由Fn::And、Fn::Or、Fn::Not或Fn::Equals定义。根据您在创建或更新资源栈时，指定的输入参数值进行计算。在每个条件中，都可以引用其他条件、参数值或映射。在模板的Resources和Outputs部分，将条件与资源关联起来。 条件和资源的关联通过两种方式实现：Fn::If 函数或者资源的Condition字段。
 
 **语法**
 
@@ -1885,34 +1961,36 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
        "UTEnv": {"Fn::Equals": ["UT", {"Ref": "EnvType"}]},
        "PREEnv": {"Fn::Not": {"Fn::Or": ["DevEnv", "UTEnv"]}},
        "ProdEnv": {"Fn::And": [{"Fn::Equals": ["Prod", {"Ref": "EnvType"}]}, "PREEnv"]}
-}
 ```
 
-关联Conditions和Resources 本示例中，根据EnvType参数值决定是否为ECS instance创建数据盘和OSS存储空间。
+`}` 关联Conditions和Resources 本示例中，根据EnvType参数值决定是否为ECS instance创建数据盘和OSS存储空间。 `{`
 
 ```json
-{
     "ROSTemplateFormatVersion":"2015-09-01",
     "Parameters":{
         "EnvType":{
             "Default":"pre",
             "Type":"String"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "Conditions":{
         "CreateProdRes":{
             "Fn::Equals":[
                 "prod",
-                {
-                    "Ref":"EnvType"
-                }
 ```
 
-]
+`{`
 
 ```json
-        }
-    },
+                    "Ref":"EnvType"
+```
+
+`}` `]` `}` `},`
+
+```json
     "Resources":{
         "WebServer":{
             "Type":"ALIYUN::ECS::Instance",
@@ -1922,39 +2000,29 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                         "CreateProdRes",
 ```
 
-[
+`[` `{`
 
 ```json
-                            {
                                 "Category":"cloud_efficiency",
                                 "DiskName":"FirstDataDiskName",
                                 "Size":40
-                            },
-                            {
+```
+
+`},` `{`
+
+```json
                                 "Category":"cloud_ssd",
                                 "DiskName":"SecondDataDiskName",
                                 "Size":40
-                            }
 ```
 
-`],`
+`}` `],`
 
 ```json
-                        {
                             "Ref":"ALIYUN::NoValue"
-}
 ```
-
-资源编排
-
-```
-                        }
-```
-
-]
 
 ```json
-                },
                 "VpcId":"vpc-2zew9pxh2yirtzqxd****",
                 "SystemDiskCategory":"cloud_efficiency",
                 "SecurityGroupId":"sg-2zece6wcqriejf1v****",
@@ -1963,17 +2031,22 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                 "IoOptimized":"optimized",
                 "VSwitchId":"vsw-2zed9txvy7h2srqo6****",
                 "InstanceType":"ecs.n1.medium"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "OssBucket": {
             "Type": "ALIYUN::OSS::Bucket",
             "Condition": "CreateProdRes",
             "Properties": {
                 "AccessControl": "private",
                 "BucketName": "myprodbucket"
-            }
-        }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "Outputs":{
         "InstanceId":{
             "Value":{
@@ -1982,11 +2055,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                     "InstanceId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-            }
-        },
         "OssDomain":{
             "Condition": "CreateProdRes",
             "Value":{
@@ -1995,27 +2066,21 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
                     "DomainName"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-            }
-        }
-    }
-}
-```
+## 7 资源类型
 
-资源编排
+### 7.1 ECS
 
-## 资源类型
+#### 7.1.1 ALIYUN::ECS::AutoSnapshotPolicy
 
-### ECS
-
-#### ALIYUN::ECS::AutoSnapshotPolicy
+ALIYUN::ECS::AutoSnapshotPolicy类型用于创建自动快照策略。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type" : "ALIYUN::ECS::AutoSnapshotPolicy",
   "Properties" : {
     "TimePoints" : String,
@@ -2025,9 +2090,9 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
     "Tags": List,
     "AutoSnapshotPolicyName" : String,
     "ResourceGroupId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -2038,8 +2103,6 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 | RetentionDay s | Integer | 是 | 是 | 自动快照的保留时间。 | 取值范围： -1（默认值）：永久保存。 1~65,535：指定保存天数。 单位：天。 |
 | DiskIds | List | 否 | 是 | 目标磁盘ID。 | 当您需要将自动快照策略应用于多块磁盘时，多块磁盘ID用["d- xxxxxxxxx", "d-yyyyyyyyy", … "d-zzzzzzzzz"]的列表表示，磁盘 ID之间用半角逗号（,）隔开。 |
 
-资源编排
-
 | ResourceGro upId | String | 否 | 是 | 快照所属的资源组ID。 | 无 |
 |---|---|---|---|---|---|
 | Tags | List | 否 | 是 | 标签。 | 最多支持添加20个标签。 更多信息，请参见Tags属性。 |
@@ -2049,13 +2112,16 @@ Outputs由输出ID和输出描述组成。所有输出描述都被括在大括�
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -2070,76 +2136,112 @@ Fn::GetAtt AutoSnapshotPolicyId：自动快照策略ID。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "TimePoints": {
    "Type": "CommaDelimitedList",
    "Description": "The automatic snapshot creation schedule, and the unit of measurement is hour. Val
 ue range: [0, 23], which represents from 00:00 to 24:00, for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an a rray.\nA maximum of 24 time points can be selected.\nThe format is a list of [0, 1, ..., 23] and the time points are separated by commas (,)."
-  },
+```
+
+`},`
+
+```json
   "DiskIds": {
    "Type": "Json",
    "Description": "The disk ID. When you want to apply the automatic snapshot policy to multiple disk
 s, you can set the DiskIds to an array. The format is list of [\"d-xxxxxxxxx\", \"d-yyyyyyyyy\", ..., \"d-zzzzzzzzz\"] and the IDs are separated by commas (,)."
 ```
 
-资源编排
-
 ```json
-  },
   "RetentionDays": {
    "Type": "Number",
    "Description": "The snapshot retention time, and the unit of measurement is day. Optional values:\
 n-1: The automatic snapshots are retained permanently.\n[1, 65536]: The number of days retained.\nDef ault value: -1.",
    "MinValue": -1,
    "MaxValue": 65536
-  },
+```
+
+`},`
+
+```json
   "RepeatWeekdays": {
    "Type": "Json",
    "Description": "The automatic snapshot repetition dates. The unit of measurement is day and the re
 peating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, f or example 1 indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.\nA maximum of seven time points can be selecte d.\nThe format is a list of [1, 2, ..., 7] and the time points are separated by commas (,)."
-  },
+```
+
+`},`
+
+```json
   "AutoSnapshotPolicyName": {
    "Type": "String",
    "Description": "The name of the automatic snapshot policy.\nIt can consist of [2, 128] English or
 Chinese characters.\nMust begin with an uppercase or lowercase letter or a Chinese character. Can con tain numbers, periods (.), colons (:), underscores (_), and hyphens (-).\nCannot start with http:// o r https://.\nDefault value: null."
-  },
+```
+
+`},`
+
+```json
   "Tags": {
    "Type": "Json",
    "Description": "Tags to attach to instance. Max support 20 tags to add during create instance. Eac
 h tag with two properties Key and Value, and Key is required.",
    "MaxLength": 20
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "AutoSnapshotPolicy": {
    "Type": "ALIYUN::ECS::AutoSnapshotPolicy",
    "Properties": {
     "TimePoints": {
      "Ref": "TimePoints"
-    },
+```
+
+`},`
+
+```json
     "DiskIds": {
      "Ref": "DiskIds"
-    },
+```
+
+`},`
+
+```json
     "RetentionDays": {
      "Ref": "RetentionDays"
-    },
+```
+
+`},`
+
+```json
     "RepeatWeekdays": {
      "Ref": "RepeatWeekdays"
-    },
+```
+
+`},`
+
+```json
     "AutoSnapshotPolicyName": {
      "Ref": "AutoSnapshotPolicyName"
-    },
+```
+
+`},`
+
+```json
     "Tags": {
      "Ref": "Tags"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "Outputs": {
   "AutoSnapshotPolicyId": {
    "Description": "The automatic snapshot policy ID.",
@@ -2148,22 +2250,13 @@ h tag with two properties Key and Value, and Key is required.",
      "AutoSnapshotPolicy",
 ```
 
-" S h `li` `d"` 资源编排
+`"` `S` `h` `li` `d"`
 
 ```
      "AutoSnapshotPolicyId"
 ```
 
-]
-
-```
-   }
-  }
- }
-}
-```
-
-`YAML` 格式
+`}` `}` `YAML` 格式
 
 ```json
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -2211,8 +2304,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
    1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks
 ```
 
-资源编排
-
 ```
    for a disk in a day, you can set the TimePoints to an array.
    A maximum of 24 time points can be selected.
@@ -2234,24 +2325,27 @@ Resources:
     Ref: Tags
    TimePoints:
     Ref: TimePoints
+  Type: ALIYUN::ECS::AutoSnapshotPolicy
 Outputs:
  AutoSnapshotPolicyId:
   Description: The automatic snapshot policy ID.
   Value:
    Fn::GetAtt:
+   - AutoSnapshotPolicy
    - AutoSnapshotPolicyId
 ```
 
 更多示例，请参见：JSON示例和YAML示例。
 
-#### ALIYUN::ECS::BandwidthPackage
+#### 7.1.2 ALIYUN::ECS::BandwidthPackage
 
 ALIYUN::ECS::BandwidthPackage类型用于创建NAT网关使用的带宽包。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::BandwidthPackage",
   "Properties": {
     "Description": String,
@@ -2260,17 +2354,15 @@ ALIYUN::ECS::BandwidthPackage类型用于创建NAT网关使用的带宽包。
     "BandwidthPackageName": String,
     "Bandwidth": Integer,
     "IpCount": Integer
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | NatGatewayId | String | 是 | 否 | 带宽包要绑定的 NAT网关ID | 无 |
-
-资源编排
 
 | Bandwidth | Integer | 是 | 否 | 带宽大小 | 取值范围：5~5000 单位：Mbps 默认值：5 Mbps |
 |---|---|---|---|---|---|
@@ -2285,8 +2377,9 @@ Fn::GetAtt BandwidthPackageId：带宽包的ID。 BandwidthPackageIps：带宽�
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "BandwidthPackage": {
@@ -2298,39 +2391,42 @@ Fn::GetAtt BandwidthPackageId：带宽包的ID。 BandwidthPackageIps：带宽�
         "IpCount": 2,
         "Bandwidth": 5,
         "ZoneId": "cn-beijing-c"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "BandwidthPackageId": {
          "Value": {"Fn::GetAttr": ["BandwidthPackage","BandwidthPackageId"]}
-    },
-    "BandwidthPackageIps": {
-         "Value": {"Fn::GetAttr": ["BandwidthPackage","BandwidthPackageIps"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::Command
+`},`
+
+```json
+    "BandwidthPackageIps": {
+         "Value": {"Fn::GetAttr": ["BandwidthPackage","BandwidthPackageIps"]}
+```
+
+`}` `}` `}`
+
+#### 7.1.3 ALIYUN::ECS::Command
+
+ALIYUN::ECS::Command类型用于新建云助手命令。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::Command",
-  "Properties": {
     "Name": String,
     "WorkingDir": String,
     "CommandContent": String,
     "Timeout": Integer,
     "Type": String,
     "Description": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -2349,31 +2445,19 @@ Fn::GetAtt CommandId: 命令ID。
 
 **示例**
 
-```
-{
-```
-
-资源编排
-
-|  | "ROSTemplateFormatVersion": "2015-09-01", "Parameters": { "WorkingDir": { "Type": "String", "Description": "The path where command will be executed in the instance." }, "CommandContent": { "Type": "String", "Description": "The content of command. Content requires base64 encoding. Maximum size support 16KB." }, "Type": { "Type": "String", "Description": "The type of command." }, "Description": { "Type": "String", "Description": "The description of command." }, "Timeout": { "Type": "Number", "Description": "Total timeout when the command is executed in the instance. Input the time unit as second. Default is 3600s." }, "Name": { "Type": "String", "Description": "The name of command." } }, "Resources": { "Command": { "Type": "ALIYUN::ECS::Command", "Properties": { "WorkingDir": { "Ref": "WorkingDir" }, "CommandContent": { "Ref": "CommandContent" }, "Type": { "Ref": "Type" }, "Description": { "Ref": "Description" }, "Timeout": { "Ref": "Timeout" }, "Name": { "Ref": "Name" } } } }, "Outputs": { "CommandId": { "Description": "The id of command created.", "Value": { "Fn::GetAtt": [ "Command", "CommandId" ] |  |
+|   | "ROSTemplateFormatVersion": "2015-09-01", "Parameters": { "WorkingDir": { "Type": "String", "Description": "The path where command will be executed in the instance." }, "CommandContent": { "Type": "String", "Description": "The content of command. Content requires base64 encoding. Maximum size support 16KB." }, "Type": { "Type": "String", "Description": "The type of command." }, "Description": { "Type": "String", "Description": "The description of command." }, "Timeout": { "Type": "Number", "Description": "Total timeout when the command is executed in the instance. Input the time unit as second. Default is 3600s." }, "Name": { "Type": "String", "Description": "The name of command." } }, "Resources": { "Command": { "Type": "ALIYUN::ECS::Command", "Properties": { "WorkingDir": { "Ref": "WorkingDir" }, "CommandContent": { "Ref": "CommandContent" }, "Type": { "Ref": "Type" }, "Description": { "Ref": "Description" }, "Timeout": { "Ref": "Timeout" }, "Name": { "Ref": "Name" } } } }, "Outputs": { "CommandId": { "Description": "The id of command created.", "Value": { "Fn::GetAtt": [ "Command", "CommandId" ] |   |
 |---|---|---|
-|  | > 文档版本：20260729 57 |  |
+|   | > 文档版本：20260729 57 |   |
 
-资源编排
+#### 7.1.4 ALIYUN::ECS::CustomImage
 
-```
-      }
-    }
-  }
-}
-```
-
-#### ALIYUN::ECS::CustomImage
+ALIYUN::ECS::CustomImage类型用于创建自定义镜像。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::CustomImage",
   "Properties": {
     "Description": String,
@@ -2386,9 +2470,9 @@ Fn::GetAtt CommandId: 命令ID。
     "Platform": String,
     "DiskDeviceMapping": List,
     "Architecture": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -2403,8 +2487,6 @@ Fn::GetAtt CommandId: 命令ID。
 | ResourceGroupId | String | 否 | 否 | 自定义镜像所在的企业资源组ID。 | 无 |
 | Platform | String | 否 | 否 | 指定数据盘快照做镜像的系统盘后，需要通过Platform确定系统盘的的操作系统发行版。 | 无 |
 
-资源编排
-
 | DiskDeviceMappin g | List | 否 | 否 | 镜像和快照的关系。 | 无 |
 |---|---|---|---|---|---|
 | Architecture | String | 否 | 否 | 指定数据盘快照做镜像的系统盘后，需要通过Architecture确定系统盘的系统架构。 | 取值范围： i386 x86 64（默认） _ |
@@ -2413,13 +2495,16 @@ Fn::GetAtt CommandId: 命令ID。
 
 ```json
 "Tag": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tag属性**
 
@@ -2432,15 +2517,18 @@ Fn::GetAtt CommandId: 命令ID。
 
 ```json
 "DiskDeviceMapping": [
-  {
+```
+
+`{`
+
+```json
     "Device": String,
     "SnapshotId": String,
     "Size": Integer,
     "DiskType": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskDeviceMapping属性**
 
@@ -2448,8 +2536,6 @@ Fn::GetAtt CommandId: 命令ID。
 |---|---|---|---|---|---|
 | Device | String | 否 | 否 | 指定 DiskDeviceMappin g在自定义镜像中的设备名称。 | 取值范围：/dev/xvda~/dev/xvdz |
 | SnapshotId | String | 否 | 否 | 根据指定的快照创建自定义镜像。 | 无 |
-
-资源编排
 
 | Size | Integer | 否 | 否 | DiskDeviceMappin g磁盘的大小，单位为 GiB。 | 取值范围：5~2000。 如果不指定磁盘大小，默认为快照 （DiskDeviceMapping.N. SnapshotId）的大小。 如果没有指定快照 （DiskDeviceMapping.N. SnapshotId），默认磁盘大小为5 GiB。 如果指定了磁盘大小，必须大于等于对应快照 （DiskDeviceMapping.N. SnapshotId）的大小。 |
 |---|---|---|---|---|---|
@@ -2461,10 +2547,7 @@ Fn::GetAtt ImageId：自定义镜像 ID。
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "WebServer": {
@@ -2475,7 +2558,11 @@ Fn::GetAtt ImageId：自定义镜像 ID。
         "SecurityGroupId": "sg-2ze7pxymaix640qr****",
         "ImageId": {
           "Ref": "CustomImage"
-        },
+```
+
+`},`
+
+```json
         "IoOptimized": "optimized",
         "SystemDisk_Description": "SystemDisk.Description",
         "SystemDisk_DiskName": "SystemDisk.DiskName",
@@ -2484,8 +2571,11 @@ Fn::GetAtt ImageId：自定义镜像 ID。
         "Password": "Wenqiao****",
         "InstanceType": "ecs.n1.medium",
         "MaxAmount": 1
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "CustomImage": {
       "Type": "ALIYUN::ECS::CustomImage",
       "Properties": {
@@ -2493,9 +2583,11 @@ Fn::GetAtt ImageId：自定义镜像 ID。
         "SnapshotId": "s-2ze0ibk1pvak4mw6****",
         "ImageName": "image-test-****",
         "ImageVersion": "verison-6-1"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "CustomImage": {
       "Value": {
@@ -2504,11 +2596,9 @@ Fn::GetAtt ImageId：自定义镜像 ID。
           "ImageId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "InstanceIds": {
       "Value": {
         "Fn::GetAtt": [
@@ -2516,25 +2606,16 @@ Fn::GetAtt ImageId：自定义镜像 ID。
           "InstanceIds"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.5 ALIYUN::ECS::DedicatedHost
 
-#### ALIYUN::ECS::DedicatedHost
+ALIYUN::ECS::DedicatedHost资源类型用于创建专有宿主机。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::DedicatedHost",
-  "Properties": {
     "DedicatedHostType": String,
     "DedicatedHostName": String,
     "AutoReleaseTime": String,
@@ -2548,9 +2629,9 @@ Fn::GetAtt ImageId：自定义镜像 ID。
     "ZoneId": String,
     "NetworkAttributesUdpTimeout": Integer,
     "Quantity": Integer
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -2561,26 +2642,22 @@ Fn::GetAtt ImageId：自定义镜像 ID。
 | AutoReleaseTim e | String | 否 | 否 | 自动释放时间。如果不输入 AutoReleaseTim e 参数，表示取消自动释放，专有宿主机在预约时间点不再自动释放。 最短不能晚于当前时间半小时内。 最长不能超过当前时间三年以后。 如果秒 （ ss ）取值不是 00 ， 则自动取为当前分钟（ mm ） 开始时刻。 | 无。 |
 | Description | String | 否 | 否 | 专有宿主机的描述。 | 无。 |
 
-资源编排
-
-| ZoneId |  | String |  |  | 否 |  |  | 否 |  |  | 专有宿主机所属的可用区。 默认值：空，表示由系统选择。 |  | 无。 |  |  |
+| ZoneId |   | String |   |   | 否 |   |   | 否 |   |   | 专有宿主机所属的可用区。 默认值：空，表示由系统选择。 |   | 无。 |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ChargeType |  | String |  |  | 否 |  |  | 否 |  |  | 专有宿主机的计费方式。 |  | 取值范围： PostPaid：按量付费。 |  |  |
-| AutoPlacement |  | String |  |  | 否 |  |  | 否 |  |  | 专有宿主机是否加入自动部署资源池。当您在专有宿主机上创建实例， 却不指定 DedicatedHostId 时，阿里云将自动从加入资源池的专有宿主机中，为您选取适合的宿主机部署实例。 |  | 取值范围： on off 说明若您不设置该参数，则默认为专有宿主机加入自动部署资源池。 若您不希望专有宿主机加入自动部署资源池，请将该参数设置为 off。 |  |  |
-| Tags |  | List |  |  | 否 |  |  | 否 |  |  |  |  | 最多支持20个标签，格式： [{"Key": |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | [{"Key": |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "tagKey", |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "Value": |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 用户自定义标签。 |  | "tagValue"}, |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | {"Key": |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "tagKey2", |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "Value": |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | "tagValue2"}] |  |  |
-| ActionOnMainte nance |  | String |  |  | 否 |  |  | 否 |  |  | 当专有宿主机发生故障或者在线修复时，为其所宿实例设置迁移方案。 |  | 取值范围： Migrate：迁移实例到其他物理机并重新启动实例。 Stop：在当前专有宿主机上停止实例，确认无法修复专有宿主机后，迁移实例到其他物理机并重新启动实例。 当专有宿主机上挂载云盘存储时默认值为Migrate，当专有宿主机上挂载本地盘存储时默认值为Stop。 |  |  |
-| NetworkAttribut esSlbUdpTimeou t |  | Integer |  |  | 否 |  |  | 否 |  |  | 负载均衡连接的 UDP会话超时时间。 |  | 取值范围： 15~310。 单位：秒。 |  |  |
-| ResourceGroupI d |  | String |  |  | 否 |  |  | 否 |  |  | 专有宿主机要加入的资源组ID。 |  | 无。 |  |  |
-
-资源编排
+| ChargeType |   | String |   |   | 否 |   |   | 否 |   |   | 专有宿主机的计费方式。 |   | 取值范围： PostPaid：按量付费。 |   |   |
+| AutoPlacement |   | String |   |   | 否 |   |   | 否 |   |   | 专有宿主机是否加入自动部署资源池。当您在专有宿主机上创建实例， 却不指定 DedicatedHostId 时，阿里云将自动从加入资源池的专有宿主机中，为您选取适合的宿主机部署实例。 |   | 取值范围： on off 说明若您不设置该参数，则默认为专有宿主机加入自动部署资源池。 若您不希望专有宿主机加入自动部署资源池，请将该参数设置为 off。 |   |   |
+| Tags |   | List |   |   | 否 |   |   | 否 |   |   |   |   | 最多支持20个标签，格式： [{"Key": |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | [{"Key": |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "tagKey", |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "Value": |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 用户自定义标签。 |   | "tagValue"}, |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | {"Key": |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "tagKey2", |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "Value": |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | "tagValue2"}] |   |   |
+| ActionOnMainte nance |   | String |   |   | 否 |   |   | 否 |   |   | 当专有宿主机发生故障或者在线修复时，为其所宿实例设置迁移方案。 |   | 取值范围： Migrate：迁移实例到其他物理机并重新启动实例。 Stop：在当前专有宿主机上停止实例，确认无法修复专有宿主机后，迁移实例到其他物理机并重新启动实例。 当专有宿主机上挂载云盘存储时默认值为Migrate，当专有宿主机上挂载本地盘存储时默认值为Stop。 |   |   |
+| NetworkAttribut esSlbUdpTimeou t |   | Integer |   |   | 否 |   |   | 否 |   |   | 负载均衡连接的 UDP会话超时时间。 |   | 取值范围： 15~310。 单位：秒。 |   |   |
+| ResourceGroupI d |   | String |   |   | 否 |   |   | 否 |   |   | 专有宿主机要加入的资源组ID。 |   | 无。 |   |   |
 
 | NetworkAttribut esUdpTimeout | Integer | 否 | 否 | 为专有宿主机上运行的云服务设置用户访问的UDP会话超时时间。 | 取值范围： 15~310。 单位：秒。 |
 |---|---|---|---|---|---|
@@ -2592,8 +2669,9 @@ Fn::GetAtt OrderId: 订单ID。 DedicatedHostIds：主机ID列表。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "AutoRenewPeriod": {
@@ -2607,20 +2685,36 @@ PrePaid, it will take effect.It could be 1, 2, 3, 6, 12\. Default value is 1.",
 
 ```json
       "Default": 1
-    },
+```
+
+`},`
+
+```json
     "Description": {
       "Type": "String",
       "Description": "The description of host."
-    },
+```
+
+`},`
+
+```json
     "ZoneId": {
       "Type": "String",
       "Description": "The zone to create the host."
-    },
+```
+
+`},`
+
+```json
     "DedicatedHostName": {
       "Type": "String",
       "Description": "The name of the dedicated host, [2, 128] English or Chinese characters. It must
 begin with an uppercase/lowercase letter or a Chinese character, and may contain numbers, '_' or '-'. It cannot begin with http:// or https://."
-    },
+```
+
+`},`
+
+```json
     "ChargeType": {
       "Type": "String",
       "Description": "Instance Charge type, allowed value: Prepaid and Postpaid. If specified
@@ -2634,14 +2728,16 @@ Prepaid, please ensure you have sufficient balance in your account. Or instance 
 
 ```json
       "Default": "PostPaid"
-    },
+```
+
+`},`
+
+```json
     "AutoRenew": {
       "Type": "String",
       "Description": "Whether renew the fee automatically? When the parameter InstanceChargeType is P
 rePaid, it will take effect. Range of value:True: automatic renewal.False: no automatic renewal. Defa
 ```
-
-资源编排
 
 ```json
 ult value is False.",
@@ -2654,7 +2750,11 @@ ult value is False.",
 
 ```json
       "Default": "False"
-    },
+```
+
+`},`
+
+```json
     "Period": {
       "Type": "Number",
       "Description": "Prepaid time period. Unit is month, it could be from 1 to 9 or 12, 24, 36, 48,
@@ -2675,11 +2775,19 @@ ult value is False.",
 
 ```json
       "Default": 1
-    },
+```
+
+`},`
+
+```json
     "DedicatedHostType": {
       "Type": "String",
       "Description": "The instance type of host."
-    },
+```
+
+`},`
+
+```json
     "PeriodUnit": {
       "Type": "String",
       "Description": "Unit of prepaid time period, it could be Week/Month. Default value is Month.",
@@ -2692,47 +2800,67 @@ ult value is False.",
 
 ```json
       "Default": "Month"
-    },
+```
+
+`},`
+
+```json
     "AutoReleaseTime": {
       "Type": "String",
       "Description": "Auto release time for created host, Follow ISO8601 standard using UTC time. for
 mat is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Host": {
       "Type": "ALIYUN::ECS::DedicatedHost",
       "Properties": {
           "Description": {
           "Ref": "Description"
-        },
+```
+
+`},`
+
+```json
         "ZoneId": {
           "Ref": "ZoneId"
-        },
+```
+
+`},`
+
+```json
         "DedicatedHostName": {
           "Ref": "DedicatedHostName"
-        },
         "ChargeType": {
 "Ref" "ChargeTpe"
 ```
 
-资源编排
-
 ```json
           "Ref": "ChargeType"
-        },
           "DedicatedHostType": {
           "Ref": "DedicatedHostType"
-        },
+```
+
+`},`
+
+```json
         "PeriodUnit": {
           "Ref": "PeriodUnit"
-        },
+```
+
+`},`
+
+```json
         "AutoReleaseTime": {
           "Ref": "AutoReleaseTime"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "OrderId": {
       "Description": "The order id list of created instance.",
@@ -2742,11 +2870,9 @@ mat is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
           "OrderId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "DedicatedHostIds": {
       "Description": "The host id list of created hosts",
       "Value": {
@@ -2755,25 +2881,16 @@ mat is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
           "DedicatedHostIds"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.6 ALIYUN::ECS::Disk
 
-#### ALIYUN::ECS::Disk
+ALIYUN::ECS::Disk类型用于创建ECS云盘。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::Disk",
-  "Properties": {
     "StorageSetId": String,
     "Description": String,
     "Tags": List,
@@ -2792,9 +2909,9 @@ mat is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
     "BurstingEnabled": Boolean,
     "ProvisionedIops": Integer,
     "MultiAttach": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -2807,8 +2924,6 @@ mat is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
 | Tags | List | 否 | 否 | 标签。 | 最多支持20个标签。 更多信息，请参见Tags属性。 |
 | DiskCategory | String | 否 | 否 | 云盘的类型。 | 取值： cloud（默认值）：普通云盘。 cloud efficiency：高效云盘。 _ cloud ssd：SSD云盘。 _ cloud essd：ESSD云盘。 _ |
 | SnapshotId | String | 否 | 否 | 快照ID。 | 同时指定该参数和Size时，以该参数取值为准。 实际创建的云盘大小为指定快照的大小。 说明 2013年07月15 日及以前创建的快照不能用来创建云盘。 |
-
-资源编排
 
 | PerformanceL evel | String | 否 | 否 | ESSD云盘性能等级。 | 取值： PL0：单盘最高随机读写IOPS 1 万。 PL1（默认值）：单盘最高随机读写IOPS 5万。 PL2：单盘最高随机读写IOPS 10 万。 PL3：单盘最高随机读写IOPS 100万。 |
 |---|---|---|---|---|---|
@@ -2825,17 +2940,13 @@ mat is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
 
 **Tags语法**
 
-资源编排
-
 ```json
 "Tags" : [
-  {
     "Value" : String,
     "Key" : String
-  }
 ```
 
-]
+`}` `]`
 
 **Tags属性**
 
@@ -2866,6 +2977,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
       en: VSwitch Availability Zone
 Resources:
   DataDisk:
+    Type: ALIYUN::ECS::Disk
     Properties:
       Size: 10
       ZoneId:
@@ -2884,10 +2996,9 @@ Outputs:
         - Status
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "ZoneId": {
@@ -2900,9 +3011,11 @@ Outputs:
 
 ```json
         "en": "VSwitch Availability Zone"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "DataDisk": {
       "Type": "ALIYUN::ECS::Disk",
@@ -2910,11 +3023,17 @@ Outputs:
         "Size": 10,
         "ZoneId": {
           "Ref": "ZoneId"
-        },
+```
+
+`},`
+
+```json
         "DiskName": "DataDisk"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "DiskId": {
       "Value": {
@@ -2923,11 +3042,9 @@ Outputs:
           "DiskId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Status": {
       "Value": {
         "Fn::GetAtt": [
@@ -2935,35 +3052,24 @@ Outputs:
           "Status"
 ```
 
-]
+`]` `}` `}` `}` `}` 更多示例，请参见：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.7 ALIYUN::ECS::DiskAttachment
 
-更多示例，请参见：JSON示例和YAML示例。
-
-#### ALIYUN::ECS::DiskAttachment
+ALIYUN::ECS::DiskAttachment用于挂载ECS磁盘。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::DiskAttachment",
-  "Properties": {
     "InstanceId": String,
     "Device": String,
     "DeleteWithInstance": Boolean,
     "DiskId": String,
     "DeleteAutoSnapshot": Boolean
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -2981,8 +3087,9 @@ Fn::GetAtt DiskId：新建磁盘的ID。 Status：新建磁盘的状态。 Devic
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "DiskAttachment": {
@@ -2990,35 +3097,44 @@ Fn::GetAtt DiskId：新建磁盘的ID。 Status：新建磁盘的状态。 Devic
       "Properties": {
         "InstanceId": {
           "Ref": "InstanceId"
-        },
+```
+
+`},`
+
+```json
         "Device": {
           "Ref": "Device"
-        },
         "DeleteWithInstance": {
 "Ref" "DeleteWithInstance"
 ```
 
-资源编排
-
 ```json
           "Ref": "DeleteWithInstance"
-        },
         "DiskId": {
           "Ref": "DiskId"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "InstanceId": {
       "Type": "String",
       "Description": "The instanceId to attach the disk."
-    },
+```
+
+`},`
+
+```json
     "Device": {
       "Type": "String",
       "Description": "The device where the volume is exposed on the instance. could be /dev/xvd[a-z].
 If not specification, will use default value."
-    },
+```
+
+`},`
+
+```json
     "DeleteWithInstance": {
       "Type": "Boolean",
       "Description": "If property is true, the disk will be deleted while instance is deleted, if pro
@@ -3030,15 +3146,17 @@ perty is false, the disk will be retain after instance is deleted.",
         "false"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "DiskId": {
       "Type": "String",
       "Description": "The disk id to attached."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "Status": {
       "Description": "The disk status now.",
@@ -3048,11 +3166,9 @@ perty is false, the disk will be retain after instance is deleted.",
           "Status"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Device": {
       "Description": "The device where the volume is exposed on ecs instance.",
       "Value": {
@@ -3061,11 +3177,9 @@ perty is false, the disk will be retain after instance is deleted.",
           "Device"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "DiskId": {
       "Description": "The disk id of created disk",
       "Value": {
@@ -3074,26 +3188,15 @@ perty is false, the disk will be retain after instance is deleted.",
           "DiskId"
 ```
 
-]
+#### 7.1.8 ALIYUN::ECS::ForwardEntry
 
-```
-      }
-    }
-  }
-```
-
-资源编排
-
-```
-}
-```
-
-#### ALIYUN::ECS::ForwardEntry
+ALIYUN::ECS::ForwardEntry类型用于配置NAT网关的DNAT表。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::ForwardEntry",
   "Properties": {
     "ExternalIp": String,
@@ -3104,9 +3207,9 @@ perty is false, the disk will be retain after instance is deleted.",
     "InternalPort": String,
     "PortBreak": Boolean,
     "ForwardEntryName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -3119,15 +3222,13 @@ perty is false, the disk will be retain after instance is deleted.",
 | IpProtocol | String | 是 | 否 | 协议类型 | 取值： TCP UDP Any |
 | InternalPort | String | 是 | 否 | 目标私网端口 | 取值范围： 1~65,535。 |
 
-资源编排
-
 | PortBreak | Boolean | 否 | 否 | 是否开启端口突破 | 取值： true：开启端口突破。 false（默认值）：不开启端口突破。 说明当DNAT条目和SNAT条目使用同一个公网IP地址时， 如果您想配置大于1024的端口号，您需要指定 PortBreak为 true。 |
 |---|---|---|---|---|---|
 | ForwardEntryNa me | String | 否 | 否 | DNAT规则的名称 | 长度为2~128个字符，必须以英文字母或汉字开头，但不能以 http:// 或 https:// 开头。 |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 **返回值**
 
@@ -3135,19 +3236,26 @@ Fn::GetAtt ForwardEntryId：DNAT中每一个条目的ID。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "Parameters": {
     "ExternalPort": {
       "Type": "String",
       "Description": "Source port, now support [1-65535]|Any|x/y"
-    },
+```
+
+`},`
+
+```json
     "ExternalIp": {
       "Type": "String",
       "Description": "Source IP, must belongs to bandwidth package internet IP"
-    },
+```
+
+`},`
+
+```json
     "IpProtocol": {
       "Type": "String",
       "Description": "Supported protocol, Now support 'TCP|UDP|Any'",
@@ -3157,16 +3265,13 @@ Fn::GetAtt ForwardEntryId：DNAT中每一个条目的ID。
         "Any"
 ```
 
-]
+`]`
 
 ```json
-    },
     "PortBreak": {
       "Type": "Boolean",
 "Description":"Specifieswhethertoremovelimitsontheportrange.",
 ```
-
-资源编排
 
 ```json
       Description: Specifies whether to remove limits on the port range.,
@@ -3177,28 +3282,42 @@ Fn::GetAtt ForwardEntryId：DNAT中每一个条目的ID。
         "false"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "InternalPort": {
       "Type": "String",
       "Description": "Destination port, now support [1-65535]|Any|x/y"
-    },
+```
+
+`},`
+
+```json
     "ForwardEntryName": {
       "Type": "String",
       "Description": "the name of the DNAT rule is 2-128 characters long and must start with a letter
 or Chinese, but cannot begin with HTTP:// or https://."
-    },
+```
+
+`},`
+
+```json
     "InternalIp": {
       "Type": "String",
       "Description": "Destination IP, must belong to VPC private IP"
-    },
+```
+
+`},`
+
+```json
     "ForwardTableId": {
       "Type": "String",
       "Description": "Create forward entry in specified forward table."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Outputs": {
     "ForwardEntryId": {
@@ -3209,52 +3328,60 @@ or Chinese, but cannot begin with HTTP:// or https://."
           "ForwardEntryId"
 ```
 
-]
+`]` `}` `}` `},`
 
 ```json
-      }
-    }
-  },
   "Resources": {
     "ForwardTableEntry": {
       "Type": "ALIYUN::ECS::ForwardEntry",
       "Properties": {
         "ExternalPort": {
           "Ref": "ExternalPort"
-        },
-        "ExternalIp": {
-          "Ref": "ExternalIp"
-        },
-        "IpProtocol": {
-          "Ref": "IpProtocol"
-        },
-        "PortBreak": {
-          "Ref": "PortBreak"
-        },
-        "InternalPort": {
-          "Ref": "InternalPort"
-        },
-        "ForwardEntryName": {
-          "Ref": "ForwardEntryName"
-        },
-        "InternalIp": {
-          "Ref": "InternalIp"
-        },
 ```
 
-资源编排
+`},`
+
+```json
+        "ExternalIp": {
+          "Ref": "ExternalIp"
+```
+
+`},`
+
+```json
+        "IpProtocol": {
+          "Ref": "IpProtocol"
+```
+
+`},`
+
+```json
+        "PortBreak": {
+          "Ref": "PortBreak"
+```
+
+`},`
+
+```json
+        "InternalPort": {
+          "Ref": "InternalPort"
+```
+
+`},`
+
+```json
+        "ForwardEntryName": {
+          "Ref": "ForwardEntryName"
+        "InternalIp": {
+          "Ref": "InternalIp"
+```
 
 ```json
         "ForwardTableId": {
           "Ref": "ForwardTableId"
-        }
-      }
-    }
-  }
-}
 ```
 
-`YAML` 格式
+`}` `}` `}` `YAML` 格式
 
 ```
 Parameters:
@@ -3302,14 +3429,13 @@ ROSTemplateFormatVersion: '2015-09-01' Outputs:
         - ForwardEntryId
 Resources:
   ForwardTableEntry:
+    Type: 'ALIYUN::ECS::ForwardEntry'
     Properties:
       ExternalPort:
         Ref: ExternalPort
       ExternalIp:
         Ref: ExternalIp
 ```
-
-资源编排
 
 ```
       IpProtocol:
@@ -3328,12 +3454,15 @@ Resources:
 
 更多示例，请参见JSON示例和YAML示例。
 
-#### ALIYUN::ECS::Instance
+#### 7.1.9 ALIYUN::ECS::Instance
+
+ALIYUN::ECS::Instance类型用于创建ECS实例。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::Instance",
   "Properties": {
     "RamRoleName": String,
@@ -3362,17 +3491,15 @@ Resources:
     "HpcClusterId": String,
     "SystemDiskDescription": String,
     "DiskMappings": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | ResourceGroupId | String | 否 | 否 | 实例所在的资源组 ID。 | 无。 |
-
-资源编排
 
 | ImageId | String | 是 | 是 | ECS实例的镜像ID， 包括公共镜像、自定义镜像和云市场镜像。 | 在编辑模板时，只需要指定镜像类型或者镜像类型和版本，ROS就会自动选择适配的公共镜像ID。 可以用星号通配符 （*） 指代镜像ID 的某一部分。 以所有阿里云提供的Ubuntu的公共镜像为例，在给ECS实例指定公共镜像ID时，规则如下： 指定ubuntu，最终会匹配 ubuntu16 0402 64 20G aliba _ _ _ _ se 20170818.vhd。 _ 指定ubuntu 14，最终会匹配 _ ubuntu 14 0405 64 20G alib _ _ _ _ _ ase 20170824.vhd。 _ 指定ubuntu*14*32，最终会匹配 ubuntu 14 0405 32 40G alib _ _ _ _ _ ase 20170711.vhd。 _ 指定 ubuntu 16 0402 32，最 _ _ _ 终会匹配 ubuntu 16 0402 32 40G alib _ _ _ _ _ ase 20170711.vhd。 _ |
 |---|---|---|---|---|---|
@@ -3385,47 +3512,41 @@ Resources:
 | PrivateIpAddress | String | 否 | 否 | 在VPC网络环境下， 指定内网IP。IP地址不能与VPC网络下的其它实例重复。 | 无。 |
 | InternetMaxBand widthIn | Integer | 否 | 否 | 公网最大入网带宽。 | 取值范围：1~100。 默认值：100。 单位：Mbps。 |
 
-资源编排
-
-| IoOptimized |  | String | 否 |  | 否 |  | 指定是否创建I/O优化实例。 | 取值范围： none（非 I/O 优化） optimized（I/O 优化） 默认值：none。 |  |  |
+| IoOptimized |   | String | 否 |   | 否 |   | 指定是否创建I/O优化实例。 | 取值范围： none（非 I/O 优化） optimized（I/O 优化） 默认值：none。 |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| DiskMappings |  | List | 否 |  | 否 |  | 指定需要挂载的磁盘。 | 最多支持16块磁盘。 |  |  |
-| SystemDiskCateg ory |  | String | 否 |  | 否 |  | 指定系统盘类型。 | 取值范围： cloud cloud efficiency _ cloud ssd _ ephemeral ssd _ |  |  |
-| SystemDiskDescri ption |  | String | 否 |  | 否 |  | 系统盘描述信息。 | 无。 |  |  |
-| SystemDiskDiskN ame |  | String | 否 |  | 否 |  | 系统盘名称。 | 无。 |  |  |
-| SystemDiskSize |  | Number | 否 |  | 是 |  | 系统盘大小。单位： GB。 | 取值范围：40~500。 如果使用自定义镜像创建系统盘，需要保证系统盘大于自定义镜像大小。 |  |  |
-| Tags |  | List | 否 |  | 否 |  |  | 最多支持 20 个标签，格式： [{“Key”:”tagKey”,”Value |  |  |
-|  |  |  |  |  |  |  |  |  | [{“Key”:”tagKey”,”Value |  |
-|  |  |  |  |  |  |  | 用户自定义标签。 | ”:”tagValue”}, |  |  |
-|  |  |  |  |  |  |  |  | {“Key”:”tagKey2”,”Value”:”ta |  |  |
-|  |  |  |  |  |  |  |  | gValue2”}] |  |  |
-| UserData |  | String | 否 |  | 否 |  | 创建ECS实例时传递的用户数据。 | 内容需要限制在16KB以内，不需要 Base64，特殊字符需要使用 \ 转义。 |  |  |
-| ZoneId |  | String | 否 |  | 否 |  | 可用区ID。 | 无。 |  |  |
-| HpcClusterId |  | String | 否 |  | 否 |  | 实例所属的HPC集群 ID。 | 无。 |  |  |
-| VpcId |  | String | 否 |  | 否 |  | VPC ID。 | 无。 |  |  |
-| VSwitchId |  | String | 否 |  | 否 |  | VSwitch ID。 | 无。 |  |  |
-| KeyPairName |  | String | 否 |  | 否 |  | ECS实例绑定的密钥对名称。 | Windows系统保留默认值为空。 在Linux系统中，如果指定该参数，Password的内容仍旧会被设置到实例中，但是密码登录方式会默认被禁止，采用密钥对验证登录。 |  |  |
-| RamRoleName |  | String | 否 |  | 否 |  | 实例RAM角色名称。可以调用 ListRoles查询。 | 无。 |  |  |
-| DeletionProtectio n |  | Boolean | 否 |  | 否 |  | 实例释放保护属性， 指定是否支持通过控制台或 API（DeleteInstan ce）释放实例。 | 取值范围： True False |  |  |
-| DeploymentSetId |  | String | 否 |  | 是 |  | 部署集ID。 | 无。 |  |  |
+| DiskMappings |   | List | 否 |   | 否 |   | 指定需要挂载的磁盘。 | 最多支持16块磁盘。 |   |   |
+| SystemDiskCateg ory |   | String | 否 |   | 否 |   | 指定系统盘类型。 | 取值范围： cloud cloud efficiency _ cloud ssd _ ephemeral ssd _ |   |   |
+| SystemDiskDescri ption |   | String | 否 |   | 否 |   | 系统盘描述信息。 | 无。 |   |   |
+| SystemDiskDiskN ame |   | String | 否 |   | 否 |   | 系统盘名称。 | 无。 |   |   |
+| SystemDiskSize |   | Number | 否 |   | 是 |   | 系统盘大小。单位： GB。 | 取值范围：40~500。 如果使用自定义镜像创建系统盘，需要保证系统盘大于自定义镜像大小。 |   |   |
+| Tags |   | List | 否 |   | 否 |   |   | 最多支持 20 个标签，格式： [{“Key”:”tagKey”,”Value |   |   |
+|   |   |   |   |   |   |   |   |   | [{“Key”:”tagKey”,”Value |   |
+|   |   |   |   |   |   |   | 用户自定义标签。 | ”:”tagValue”}, |   |   |
+|   |   |   |   |   |   |   |   | {“Key”:”tagKey2”,”Value”:”ta |   |   |
+|   |   |   |   |   |   |   |   | gValue2”}] |   |   |
+| UserData |   | String | 否 |   | 否 |   | 创建ECS实例时传递的用户数据。 | 内容需要限制在16KB以内，不需要 Base64，特殊字符需要使用 \ 转义。 |   |   |
+| ZoneId |   | String | 否 |   | 否 |   | 可用区ID。 | 无。 |   |   |
+| HpcClusterId |   | String | 否 |   | 否 |   | 实例所属的HPC集群 ID。 | 无。 |   |   |
+| VpcId |   | String | 否 |   | 否 |   | VPC ID。 | 无。 |   |   |
+| VSwitchId |   | String | 否 |   | 否 |   | VSwitch ID。 | 无。 |   |   |
+| KeyPairName |   | String | 否 |   | 否 |   | ECS实例绑定的密钥对名称。 | Windows系统保留默认值为空。 在Linux系统中，如果指定该参数，Password的内容仍旧会被设置到实例中，但是密码登录方式会默认被禁止，采用密钥对验证登录。 |   |   |
+| RamRoleName |   | String | 否 |   | 否 |   | 实例RAM角色名称。可以调用 ListRoles查询。 | 无。 |   |   |
+| DeletionProtectio n |   | Boolean | 否 |   | 否 |   | 实例释放保护属性， 指定是否支持通过控制台或 API（DeleteInstan ce）释放实例。 | 取值范围： True False |   |   |
+| DeploymentSetId |   | String | 否 |   | 是 |   | 部署集ID。 | 无。 |   |   |
 
 **DiskMappings语法**
 
-资源编排
-
 ```json
 "DiskMappings": [
-  {
     "Category": String,
     "DiskName": String,
     "Description": String,
     "Device": String,
     "SnapshotId": String,
     "Size": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskMappings属性**
 
@@ -3442,13 +3563,16 @@ Resources:
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -3459,12 +3583,13 @@ Resources:
 
 **返回值**
 
-Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识。 PrivateIp：VPC类型实例的私网IP。当NetworkType为VPC时，该参数生效。 资源编排 InnerIp：Classic类型实例的私网IP。当NetworkType为Classic时，该参数生效。 PublicIp：Classic类型实例的公网IP列表。当NetworkType为Classic时，该参数生效。 ZoneId：可用区ID。 HostName：实例的主机名称。
+Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识。 PrivateIp：VPC类型实例的私网IP。当NetworkType为VPC时，该参数生效。 InnerIp：Classic类型实例的私网IP。当NetworkType为Classic时，该参数生效。 PublicIp：Classic类型实例的公网IP列表。当NetworkType为Classic时，该参数生效。 ZoneId：可用区ID。 HostName：实例的主机名称。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "WebServer": {
@@ -3480,36 +3605,33 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
         },{
             "Key": "tiantt1",
             "Value": "ros1"
-        }
 ```
 
-]
+`}` `]` `}` `}` `},`
 
 ```json
-      }
-    }
-  },
   "Outputs": {
     "InstanceId": {
          "Value": {"get_attr": ["WebServer","InstanceId"]}
-    },
-    "PublicIp": {
-         "Value": {"get_attr": ["WebServer","PublicIp"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::InstanceClone
+`},`
+
+```json
+    "PublicIp": {
+         "Value": {"get_attr": ["WebServer","PublicIp"]}
+```
+
+`}` `}` `}`
+
+#### 7.1.10 ALIYUN::ECS::InstanceClone
+
+ALIYUN::ECS::InstanceClone类型用于克隆一个ECS实例。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::InstanceClone",
-  "Properties": {
     "DeletionProtection": Boolean,
     "DiskMappings": List,
     "LoadBalancerIdToAttach": String,
@@ -3530,9 +3652,9 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
     "InternetMaxBandwidthIn": Integer,
     "ZoneId": String,
     "KeyPairName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -3544,8 +3666,6 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 | LoadBalancerId ToAttach | String | 否 | 否 | ECS实例待加入的负载均衡实例的ID。 | 无。 |
 | Description | String | 否 | 否 | 描述信息。 | 最长256个字符。 |
 
-资源编排
-
 | ImageId | String | 否 | 是 | 用于启动ECS实例的镜像 ID，包括公共镜像、自定义镜像和云市场镜像。 | 在编辑模板时，仅需指定镜像的类型， 或类型和版本，ROS会自动选择适配的公共镜像ID。 可以用星号通配符 （\*） 指代镜像ID的某一部分。 以阿里云提供的全部Ubuntu公共镜像为例，在为ECS实例指定公共镜像ID时， 可以按照如下方式： 指定：ubuntu 最终会匹配： ubuntu16 0402 64 20G alibase 2 _ _ _ _ _ 0170818.vhd 指定：ubuntu 14 _ 最终会匹配： ubuntu 14 0405 64 20G alibase _ _ _ _ _ _ 20170824.vhd 指定：ubuntu*14*32 最终会匹配： ubuntu 14 0405 32 40G alibase _ _ _ _ _ _ 20170711.vhd 指定：ubuntu 16 0402 32 _ _ _ 最终会匹配： ubuntu 16 0402 32 40G alibase _ _ _ _ _ _ 20170711.vhd |
 |---|---|---|---|---|---|
 | SecurityGroupI d | String | 否 | 否 | 新建实例所属安全组。 | 无。 |
@@ -3555,8 +3675,6 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 | Tags | List | 否 | 否 | 用户自定义标签。 | 最多支持20个标签，格式: [{"Key":"tagKey","Value":"tagValu e"}、 {"Key":"tagKey2","Value":"tagValu e2"}]。 |
 | ZoneId | String | 否 | 否 | 可用区ID。 | 无 |
 | InstanceCharge Type | String | 否 | 否 | 实例的付费方式。 | 可选值：Prepiad、Postpaid。 默认值：Postpaid。如果指定为 Prepaid，必须确保余额充足，否则创建失败。 |
-
-资源编排
 
 | Period | Number | 否 | 否 | 若 `InstanceChargeType ` 为 Prepaid，必须设置此参数；若 `InstanceChargeType ` 为 Postpaid，忽略此参数。 | 可选值：1-9、12、24、36，单位： 月。 |
 |---|---|---|---|---|---|
@@ -3571,25 +3689,26 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 
 ```json
 "DiskMappings": [
-  {
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
     "Device": String,
     "SnapshotId": String,
     "Size": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskMappings 属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | Size | String | 是 | 否 | 数据盘大小，单位：GB。 | 无 。 |
-
-资源编排
 
 | Category | String | 否 | 否 | 数据盘类型。 | 可选值：cloud、 cloud efficiency、 _ cloud ssd、 _ ephemeral ssd。 _ 默认值：cloud。 |
 |---|---|---|---|---|---|
@@ -3602,13 +3721,16 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags 属性**
 
@@ -3623,10 +3745,7 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "WebServer": {
@@ -3640,33 +3759,31 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
             {"Size": 10, "Category": "cloud", "SnapshotId": "s-25wsw****"}
 ```
 
-]
+`]` `}` `}` `},`
 
 ```json
-      }
-    }
-  },
   "Outputs": {
     "InstanceId": {
          "Value": {"get_attr": ["WebServer","InstanceId"]}
-    },
-    "PublicIp": {
-         "Value": {"get_attr": ["WebServer","PublicIp"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::InstanceGroup
+`},`
+
+```json
+    "PublicIp": {
+         "Value": {"get_attr": ["WebServer","PublicIp"]}
+```
+
+`}` `}` `}`
+
+#### 7.1.11 ALIYUN::ECS::InstanceGroup
+
+ALIYUN::ECS::InstanceGroup类型用于创建一组ECS实例。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::InstanceGroup",
-  "Properties": {
     "SystemDiskAutoSnapshotPolicyId": String,
     "DedicatedHostId": String,
     "LaunchTemplateName": String,
@@ -3707,9 +3824,9 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
     "StorageSetId": String,
     "StorageSetPartitionNumber": Integer,
     "SchedulerOptions": Map
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -3718,53 +3835,47 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 | ResourceGroup Id | String | 否 | 是 | 实例所在的企业资源组ID。 | 无。 |
 | HpcClusterId | String | 否 | 是 | 实例所属的HPC 集群ID。 | 无。 |
 
-资源编排
-
-| MaxAmount | Integer |  | 是 |  |  | 是 |  |  | 一次性创建ECS 实例的最大个数。 |  | 取值范围：1~100，必须大于等于MinAmount。 |  |  |  |
+| MaxAmount | Integer |   | 是 |   |   | 是 |   |   | 一次性创建ECS 实例的最大个数。 |   | 取值范围：1~100，必须大于等于MinAmount。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| MinAmount | String |  | 是 |  |  | 是 |  |  | 一次性创建ECS 实例的最小个数。 |  | 取值范围：1~100，必须小于等于MaxAmount。 |  |  |  |
-| Description | String |  | 否 |  |  | 是 |  |  | 描述信息。 |  | 最长256个字符。 |  |  |  |
-| InstanceType | String |  | 是 |  |  | 是 |  |  | ECS实例规格。 |  | 无。 |  |  |  |
-| ImageId | String |  | 是 |  |  | 是 |  |  | 用于启动ECS实例的镜像ID，包括公共镜像、自定义镜像和云市场镜像。 |  | 支持通过模糊的方式指定公共镜像ID，而不需要指定一个完整的公共镜像ID。例如， 指定Ubuntu，最终会匹配 ubuntu 16 0402 64 _ _ _ _ 20G alibase 2017081 _ _ 8.vhd 指定ubuntu1432，最终会匹配 ubuntu 14 0405 32 _ _ _ _ 40G alibase 2017071 _ _ 1.vhd |  |  |  |
-| SecurityGroupI d | String |  | 否 |  |  | 否 |  |  | 指定创建实例所属安全组。 |  | 无。 |  |  |  |
-| InstanceName | String |  | 否 |  |  | 否 |  |  | 实例名称。 |  | 最长128个字符。可包含英文、中文、数字、下划线、 点号和连字符。通过 name prefix[begin _ _ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | name prefix[begin _ _ |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | number,bits]name suff _ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | ix |  |  |  |
-| Password | String |  | 否 |  |  | 是 |  |  | ECS实例登录密 |  | 长度为8~30个字符。 必须同时包含三项（大、 小写字母，数字和特殊符号）。 支持以下特殊字符 ：( |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | ：( |  |
-|  |  |  |  |  |  |  |  |  |  |  | ) ` ~ ! @ # $ % ^ |  |  |  |
-|  |  |  |  |  |  |  |  |  | 码。 |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | & * - + = \| { } [ |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | ] : ; ‘ < > , . ? |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | / |  |  |  |
-| HostName | String |  | 否 |  |  | 否 |  |  | 主机名。 |  | 长度最少2个字符。点号和连字符不能作为hostname 的首尾字符，且不能连续使用。 |  |  |  |
+| MinAmount | String |   | 是 |   |   | 是 |   |   | 一次性创建ECS 实例的最小个数。 |   | 取值范围：1~100，必须小于等于MaxAmount。 |   |   |   |
+| Description | String |   | 否 |   |   | 是 |   |   | 描述信息。 |   | 最长256个字符。 |   |   |   |
+| InstanceType | String |   | 是 |   |   | 是 |   |   | ECS实例规格。 |   | 无。 |   |   |   |
+| ImageId | String |   | 是 |   |   | 是 |   |   | 用于启动ECS实例的镜像ID，包括公共镜像、自定义镜像和云市场镜像。 |   | 支持通过模糊的方式指定公共镜像ID，而不需要指定一个完整的公共镜像ID。例如， 指定Ubuntu，最终会匹配 ubuntu 16 0402 64 _ _ _ _ 20G alibase 2017081 _ _ 8.vhd 指定ubuntu1432，最终会匹配 ubuntu 14 0405 32 _ _ _ _ 40G alibase 2017071 _ _ 1.vhd |   |   |   |
+| SecurityGroupI d | String |   | 否 |   |   | 否 |   |   | 指定创建实例所属安全组。 |   | 无。 |   |   |   |
+| InstanceName | String |   | 否 |   |   | 否 |   |   | 实例名称。 |   | 最长128个字符。可包含英文、中文、数字、下划线、 点号和连字符。通过 name prefix[begin _ _ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | name prefix[begin _ _ |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | number,bits]name suff _ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | ix |   |   |   |
+| Password | String |   | 否 |   |   | 是 |   |   | ECS实例登录密 |   | 长度为8~30个字符。 必须同时包含三项（大、 小写字母，数字和特殊符号）。 支持以下特殊字符 ：( |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | ：( |   |
+|   |   |   |   |   |   |   |   |   |   |   | ) ` ~ ! @ # $ % ^ |   |   |   |
+|   |   |   |   |   |   |   |   |   | 码。 |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | & * - + = \| { } [ |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | ] : ; ‘ < > , . ? |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | / |   |   |   |
+| HostName | String |   | 否 |   |   | 否 |   |   | 主机名。 |   | 长度最少2个字符。点号和连字符不能作为hostname 的首尾字符，且不能连续使用。 |   |   |   |
 
-资源编排
-
-| AutoReleaseTi me | String |  | 否 |  | 否 | ECS实例自动释放的时间。 | 时间格式必须遵守ISO8601 规范，例如 "yyyy-MM- ddTHH:mm:ssZ" 。释放时间不能超过三年。 |  |
+| AutoReleaseTi me | String |   | 否 |   | 否 | ECS实例自动释放的时间。 | 时间格式必须遵守ISO8601 规范，例如 "yyyy-MM- ddTHH:mm:ssZ" 。释放时间不能超过三年。 |   |
 |---|---|---|---|---|---|---|---|---|
-| PrivateIpAddre ss | String |  | 否 |  | 否 | 在VPC网络环境下，指定的内网 IP。 | IP地址不能与VPC网络下的其它实例重复。 |  |
-| DiskMappings | List |  | 否 |  | 是 | 为ECS实例创建的数据盘。 | 无。 |  |
-| InternetMaxBa ndwidthIn | Integer |  | 否 |  | 否 | 公网最大入网带宽。 | 单位：Mbps。 取值范围：1~100。 默认值：100。 |  |
-| IoOptimized | String |  | 否 |  | 否 | 是否创建I/O优化实例。 | 取值范围： none（非 I/O 优化） optimized（I/O 优化） 默认值：none。 |  |
-| SystemDiskCat egory | String |  | 否 |  | 是 | 系统盘类型。 | 取值范围： cloud：普通云盘 cloud efficiency：高效云 _ 盘 cloud ssd：SSD云盘 _ cloud essd：ESSD云盘 _ ephemeral ssd：本地 _ SSD盘 |  |
-| SystemDiskDe scription | String |  | 否 |  | 是 | 系统盘描述信息。 | 无。 |  |
-| SystemDiskDis kName | String |  | 否 |  | 是 | 系统盘名称。 | 无。 |  |
-| SystemDiskSiz e | Number |  | 否 |  | 是 | 系统盘大小。 | 取值范围： 40GB~500GB。如果使用自定义镜像创建系统盘，需要保证系统盘大于自定义镜像大小。 |  |
-| Tags | List |  | 否 |  |  |  | 最多支持20个标签，格式： [{"Key":"tagKey" |  |
-|  |  |  |  |  |  |  |  | [{"Key":"tagKey" |
-|  |  |  |  |  |  | 用户自定义标 | ,"Value":"tagValue"}, |  |
-|  |  |  |  |  | 是 |  |  |  |
-|  |  |  |  |  |  | 签。 | {"Key":"tagKey2","Val |  |
-|  |  |  |  |  |  |  | ue":"tagValue2"}] |  |
-| UserData | String |  | 否 |  | 是 | 创建ECS实例时传递的用户数据。 | 内容需要限制在16KB以内。无需用Base64转码， 特殊字符需要使用转义符。 |  |
+| PrivateIpAddre ss | String |   | 否 |   | 否 | 在VPC网络环境下，指定的内网 IP。 | IP地址不能与VPC网络下的其它实例重复。 |   |
+| DiskMappings | List |   | 否 |   | 是 | 为ECS实例创建的数据盘。 | 无。 |   |
+| InternetMaxBa ndwidthIn | Integer |   | 否 |   | 否 | 公网最大入网带宽。 | 单位：Mbps。 取值范围：1~100。 默认值：100。 |   |
+| IoOptimized | String |   | 否 |   | 否 | 是否创建I/O优化实例。 | 取值范围： none（非 I/O 优化） optimized（I/O 优化） 默认值：none。 |   |
+| SystemDiskCat egory | String |   | 否 |   | 是 | 系统盘类型。 | 取值范围： cloud：普通云盘 cloud efficiency：高效云 _ 盘 cloud ssd：SSD云盘 _ cloud essd：ESSD云盘 _ ephemeral ssd：本地 _ SSD盘 |   |
+| SystemDiskDe scription | String |   | 否 |   | 是 | 系统盘描述信息。 | 无。 |   |
+| SystemDiskDis kName | String |   | 否 |   | 是 | 系统盘名称。 | 无。 |   |
+| SystemDiskSiz e | Number |   | 否 |   | 是 | 系统盘大小。 | 取值范围： 40GB~500GB。如果使用自定义镜像创建系统盘，需要保证系统盘大于自定义镜像大小。 |   |
+| Tags | List |   | 否 |   |   |   | 最多支持20个标签，格式： [{"Key":"tagKey" |   |
+|   |   |   |   |   |   |   |   | [{"Key":"tagKey" |
+|   |   |   |   |   |   | 用户自定义标 | ,"Value":"tagValue"}, |   |
+|   |   |   |   |   | 是 |   |   |   |
+|   |   |   |   |   |   | 签。 | {"Key":"tagKey2","Val |   |
+|   |   |   |   |   |   |   | ue":"tagValue2"}] |   |
+| UserData | String |   | 否 |   | 是 | 创建ECS实例时传递的用户数据。 | 内容需要限制在16KB以内。无需用Base64转码， 特殊字符需要使用转义符。 |   |
 
-|  |  | "yyyy-MM- |  |
+|   |   | "yyyy-MM- |   |
 |---|---|---|---|
-| 间。 | ddTHH:mm:ssZ" |  |  |
-
-资源编排
+| 间。 | ddTHH:mm:ssZ" |   |   |
 
 | ZoneId | String | 否 | 否 | 可用区ID。 | 无。 |
 |---|---|---|---|---|---|
@@ -3783,8 +3894,6 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 | StorageSetId | String | 否 | 否 | 存储集ID。 | 无 |
 | StorageSetPart itionNumber | Integer | 否 | 否 | 存储集中的最大分区数量。 | 取值范围：大于等于 2。 |
 
-资源编排
-
 | SchedulerOptio ns | Map | 否 | 否 | 调度相关属性信息。 | 更多信息，请参见 SchedulerOptions属性 |
 |---|---|---|---|---|---|
 
@@ -3792,7 +3901,11 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 
 ```json
 "DiskMappings": [
-  {
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
@@ -3803,28 +3916,25 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
     "KMSKeyId": String,
     "PerformanceLevel": String,
     "AutoSnapshotPolicyId": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskMappings属性**
 
-| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |  |  |
+| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |   |   |
 |---|---|---|---|---|---|---|---|
-| Size | String | 是 | 否 | 数据盘大小。 | 单位：GB。 |  |  |
-| Category | String | 否 | 否 | 数据盘的类型。 | 取值范围： cloud cloud efficiency _ cloud ssd _ cloud essd _ ephemeral ssd _ 对于I/O优化实例，默认值为 cloud efficiency。对于非 _ I/O优化实例，默认值为 cloud。 |  |  |
-| DiskName | String | 否 | 否 | 数据盘的名称。 | 最长128个字符。可包含英文、中文、数字、下划线、 点号和连字符。 |  |  |
-| Description | String | 否 | 否 | 数据盘的描述。 | 长度为2~256个英文或中文字符。不能以 http:// 或 https: // 开头。 |  |  |
-|  |  |  |  |  |  | https: |  |
-| Device | String | 否 | 否 | 数据盘在ECS中的名称。 | 例如：/dev/xvd[a-z]。 |  |  |
-| SnapshotId | String | 否 | 否 | 快照ID。 | 无。 |  |  |
+| Size | String | 是 | 否 | 数据盘大小。 | 单位：GB。 |   |   |
+| Category | String | 否 | 否 | 数据盘的类型。 | 取值范围： cloud cloud efficiency _ cloud ssd _ cloud essd _ ephemeral ssd _ 对于I/O优化实例，默认值为 cloud efficiency。对于非 _ I/O优化实例，默认值为 cloud。 |   |   |
+| DiskName | String | 否 | 否 | 数据盘的名称。 | 最长128个字符。可包含英文、中文、数字、下划线、 点号和连字符。 |   |   |
+| Description | String | 否 | 否 | 数据盘的描述。 | 长度为2~256个英文或中文字符。不能以 http:// 或 https: // 开头。 |   |   |
+|   |   |   |   |   |   | https: |   |
+| Device | String | 否 | 否 | 数据盘在ECS中的名称。 | 例如：/dev/xvd[a-z]。 |   |   |
+| SnapshotId | String | 否 | 否 | 快照ID。 | 无。 |   |   |
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | // |  |
-
-资源编排
+|   | // |   |
 
 | Encrypted | Boolean | 否 | 否 | 数据盘是否加密。 | 取值范围： true false 默认值：false。 |
 |---|---|---|---|---|---|
@@ -3836,13 +3946,16 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -3855,64 +3968,69 @@ Fn::GetAtt InstanceId：实例ID。由系统生成，实例的全局唯一标识
 
 ```json
 "EniMappings": [
-  {
+```
+
+`{`
+
+```json
     "SecurityGroupId": String,
     "VSwitchId": String,
     "Description": String,
     "NetworkInterfaceName": String,
     "PrimaryIpAddress": String
-  }
 ```
-
-] 资源编排
 
 **EniMappings属性**
 
-| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |  |  |
+| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |   |   |
 |---|---|---|---|---|---|---|---|
-| SecurityGroupI d | String | 是 | 是 | 安全组ID。 | 所属的安全组ID必须是同一个VPC下的安全组。 |  |  |
-| VSwitchId | String | 是 | 否 | 交换机ID。 | 无。 |  |  |
-| Description | String | 否 | 是 | 弹性网卡的描述信息。 | 长度为2~256个英文或中文字符，不能以 http:// 或 https: // 开头。 |  |  |
-| NetworkInterfa ceName | String | 否 | 是 | 弹性网卡名称。 | 长度为2~128个英文或中文字符。 必须以大小字母或中文开头，不能以 http:// 或 htt ps:// 开头。 可以包含数字、半角冒号 （:）、下划线（ ）或者 _ 连字符（-）。 |  |  |
-|  |  |  |  |  |  | htt |  |
-| PrimaryIpAddr ess | String | 否 | 否 | 弹性网卡的主私有IP地址。 | 指定的IP必须是在所属交换机的地址段内的空闲地址。 如果不指定IP，则默认随机分配该交换机中的空闲地址。 |  |  |
+| SecurityGroupI d | String | 是 | 是 | 安全组ID。 | 所属的安全组ID必须是同一个VPC下的安全组。 |   |   |
+| VSwitchId | String | 是 | 否 | 交换机ID。 | 无。 |   |   |
+| Description | String | 否 | 是 | 弹性网卡的描述信息。 | 长度为2~256个英文或中文字符，不能以 http:// 或 https: // 开头。 |   |   |
+| NetworkInterfa ceName | String | 否 | 是 | 弹性网卡名称。 | 长度为2~128个英文或中文字符。 必须以大小字母或中文开头，不能以 http:// 或 htt ps:// 开头。 可以包含数字、半角冒号 （:）、下划线（ ）或者 _ 连字符（-）。 |   |   |
+|   |   |   |   |   |   | htt |   |
+| PrimaryIpAddr ess | String | 否 | 否 | 弹性网卡的主私有IP地址。 | 指定的IP必须是在所属交换机的地址段内的空闲地址。 如果不指定IP，则默认随机分配该交换机中的空闲地址。 |   |   |
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | // |  |
+|   | // |   |
 
-| https: |  |
+| https: |   |
 |---|---|
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | ps:// |  |
+|   | ps:// |   |
 
 **SchedulerOptions语法**
 
 ```json
 "SchedulerOptions": [
-  {
-    "DedicatedHostClusterId": String,
-  }
 ```
 
-]
+`{`
+
+```json
+    "DedicatedHostClusterId": String,
+```
+
+`}` `]`
 
 **SchedulerOptions属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-| DedicatedHost ClusterId | String | 是 | 否 | 指定ECS实例所属的专有宿主机集群，系统会自动选择该专有宿主机集群中的一台专有宿主机部署ECS实例。 |  |
+| DedicatedHost ClusterId | String | 是 | 否 | 指定ECS实例所属的专有宿主机集群，系统会自动选择该专有宿主机集群中的一台专有宿主机部署ECS实例。 |   |
 
 **返回值**
 
-Fn::GetAtt InstanceIds：实例ID，是访问实例的唯一标识。由系统生成，全局唯一。 PrivateIps：VPC类型实例的私网IP列表。当NetworkType为VPC时，此参数生效。例如，一个带有格式的Json Array： ["172.16.XX.XX", "172.16.XX.XX", … "172.16.XX.XX"] ，最多100个IP，用半角逗号字符隔开。 资源编排 InnerIps：Classic类型实例的私网IP列表。当NetworkType为Classic时，此参数生效。例如，一个带有格式的Json Array： ["10.1.XX.XX", "10.1.XX.XX", … "10.1.XX.XX"] ，最多100个IP，用半角逗号字符隔开。 PublicIps：Classic类型实例的公网IP列表。当NetworkType为Classic时，此参数生效。例如，一个带有格式的Json Array： ["42.1.XX.XX", "42.1.XX.XX", … "42.1.XX.XX"] ，最多100个IP，用半角逗号字符隔开。 HostNames：所有实例的主机名称列表。 OrderId: 实例的订单ID列表。 ZoneIds: 可用区ID。 RelatedOrderIds: 已创建ECS实例的相关订单ID列表。
+Fn::GetAtt InstanceIds：实例ID，是访问实例的唯一标识。由系统生成，全局唯一。 PrivateIps：VPC类型实例的私网IP列表。当NetworkType为VPC时，此参数生效。例如，一个带有格式的Json Array： ["172.16.XX.XX", "172.16.XX.XX", … "172.16.XX.XX"] ，最多100个IP，用半角逗号字符隔开。 InnerIps：Classic类型实例的私网IP列表。当NetworkType为Classic时，此参数生效。例如，一个带有格式的Json Array： ["10.1.XX.XX", "10.1.XX.XX", … "10.1.XX.XX"] ，最多100个IP，用半角逗号字符隔开。 PublicIps：Classic类型实例的公网IP列表。当NetworkType为Classic时，此参数生效。例如，一个带有格式的Json Array： ["42.1.XX.XX", "42.1.XX.XX", … "42.1.XX.XX"] ，最多100个IP，用半角逗号字符隔开。 HostNames：所有实例的主机名称列表。 OrderId: 实例的订单ID列表。 ZoneIds: 可用区ID。 RelatedOrderIds: 已创建ECS实例的相关订单ID列表。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion":"2015-09-01",
   "Resources":{
     "WebServer": {
@@ -3930,38 +4048,33 @@ Fn::GetAtt InstanceIds：实例ID，是访问实例的唯一标识。由系统�
         },{
             "Key": "tiantt1",
             "Value": "ros1"
-        }
 ```
 
-]
+`}` `]` `}` `}` `},`
 
 ```json
-      }
-    }
-  },
   "Outputs": {
     "InstanceIds": {
          "Value":{"get_attr": ["WebServer","InstanceIds"]}
-    },
-    "PublicIps": {
-         "Value":{"get_attr": ["WebServer","PublicIps"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::InstanceGroupClone
+`},`
+
+```json
+    "PublicIps": {
+         "Value":{"get_attr": ["WebServer","PublicIps"]}
+```
+
+`}` `}` `}`
+
+#### 7.1.12 ALIYUN::ECS::InstanceGroupClone
 
 ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::InstanceGroupClone",
-  "Properties": {
     "BackendServerWeight": Integer,
     "DiskMappings": List,
     "LaunchTemplateName": String,
@@ -3992,9 +4105,9 @@ ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
     "RamRoleName": String,
     "HpcClusterId": String,
     "SystemDiskDescription": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -4009,25 +4122,21 @@ ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
 | LoadBalancerIdT oAttach | String | 否 | 否 | 指定ECS实例将加入到哪个负载均衡实例ID。 | 无。 |
 | Description | String | 否 | 否 | 描述信息。 | 最长256个字符。 |
 
-资源编排
-
-|  | ImageId | String |  |  | 否 | 是 | 用于启动ECS实例的镜像ID，包括公共镜像、 自定义镜像和云市场镜像。 | 支持通过模糊的方式指定公共镜ID，而不需要指定一个完整的公共镜像ID。部署ECS实例时，只需在编辑模板中指定镜像的类型和版本或者只指定镜像类型，ROS会选择自动适配符合的公共镜像ID。在模糊镜像ID中，可以用通配符（\*）指代镜像ID的某一部分。 当您给ECS指定公共镜像ID时，可以按照如下方式： 指定：ubuntu，最终会匹配： ubuntu 16 0402 64 20G alibase 20170818 _ _ _ _ _ _ .vhd。 指定：ubuntu 14，最终会匹配： _ ubuntu 14 0405 64 20G alibase 20170824 _ _ _ _ _ _ .vhd。 指定：ubuntu1432，最终会匹配： ubuntu 14 0405 32 40G alibase 20170711 _ _ _ _ _ _ .vhd 指定：ubuntu 16 0402 32，最终会匹配： _ _ _ ubuntu 16 0402 32 40G alibase 20170711 _ _ _ _ _ _ .vhd |  |
+|   | ImageId | String |   |   | 否 | 是 | 用于启动ECS实例的镜像ID，包括公共镜像、 自定义镜像和云市场镜像。 | 支持通过模糊的方式指定公共镜ID，而不需要指定一个完整的公共镜像ID。部署ECS实例时，只需在编辑模板中指定镜像的类型和版本或者只指定镜像类型，ROS会选择自动适配符合的公共镜像ID。在模糊镜像ID中，可以用通配符（\*）指代镜像ID的某一部分。 当您给ECS指定公共镜像ID时，可以按照如下方式： 指定：ubuntu，最终会匹配： ubuntu 16 0402 64 20G alibase 20170818 _ _ _ _ _ _ .vhd。 指定：ubuntu 14，最终会匹配： _ ubuntu 14 0405 64 20G alibase 20170824 _ _ _ _ _ _ .vhd。 指定：ubuntu1432，最终会匹配： ubuntu 14 0405 32 40G alibase 20170711 _ _ _ _ _ _ .vhd 指定：ubuntu 16 0402 32，最终会匹配： _ _ _ ubuntu 16 0402 32 40G alibase 20170711 _ _ _ _ _ _ .vhd |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  | SecurityGroupId | String |  |  | 否 | 否 | 指定创建实例所属安全组。 | 无。 |  |
-|  | InstanceName | String |  |  | 否 | 否 | 实例名称。 | 最长128个字符，可包含英文、中文、数字、下划线 （ ）、点号（.）、和连字符（-）。 _ |  |
-|  | Password | String |  |  | 否 | 否 | ECS实例登录密码。 | 实例的密码。8~30个字符，必须同时包含三项 （大、小写字母，数字和特殊符号）。支持以下特殊字符：( ) ` ~ ! @ # $ % ^ & * - + = \| { } [ ] : ; ‘ < > , . ? /。如果传入Password参数，请务必使用 HTTPS协议调用API以避免可能发生的密码泄露。 |  |
-|  | DiskMappings | List |  |  | 否 | 否 | 指定需要挂载的磁盘。 | 最多支持16块磁盘。 |  |
-|  | Tags | List |  |  |  |  |  | 最多支持20个标签，格式如： [{"Key":"tagKey","Value":"tagValue"} |  |
-|  |  |  |  |  |  |  |  |  | [{"Key":"tagKey","Value":"tagValue"} |
-|  |  |  |  |  | 否 | 否 | 用户自定义标签。 | , |  |
-|  |  |  |  |  |  |  |  | {"Key":"tagKey2","Value":"tagValue2"}] |  |
-|  | ZoneId | String |  |  | 否 | 否 | 可用区ID。 | 无。 |  |
-|  | KeyPairName | String |  |  | 否 | 否 | 给ECS实例绑定的密钥对名称。如果是 Windows ECS实例，则忽略该参数。默认为空。如果填写了 KeyPairName，Passw ord的内容仍旧会被设置到实例中，但是 Linux 中的密码登录方式会被初始化成禁止。 | 无。 |  |
-|  | RamRoleName | String |  |  | 否 | 否 | 实例RAM角色名称。 | 您可以使用RAM APIListRoles查询实例RAM角色名称。 |  |
-|  | SpotPriceLimit | String |  |  | 否 | 否 | 设置实例的每小时最高价格。 | 支持最大3位小数。参数SpotStrategy取值为 SpotWithPriceLimit 时生效。 |  |
-|  | SystemDiskDisk Name | String |  |  | 否 | 是 | 系统盘名称。 | 长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以 http:// 或 https:// 开头，可以包含数字、半角冒号（:）、下划线（ ）或 _ 者连字符（-）。 |  |
-
-资源编排
+|   | SecurityGroupId | String |   |   | 否 | 否 | 指定创建实例所属安全组。 | 无。 |   |
+|   | InstanceName | String |   |   | 否 | 否 | 实例名称。 | 最长128个字符，可包含英文、中文、数字、下划线 （ ）、点号（.）、和连字符（-）。 _ |   |
+|   | Password | String |   |   | 否 | 否 | ECS实例登录密码。 | 实例的密码。8~30个字符，必须同时包含三项 （大、小写字母，数字和特殊符号）。支持以下特殊字符：( ) ` ~ ! @ # $ % ^ & * - + = \| { } [ ] : ; ‘ < > , . ? /。如果传入Password参数，请务必使用 HTTPS协议调用API以避免可能发生的密码泄露。 |   |
+|   | DiskMappings | List |   |   | 否 | 否 | 指定需要挂载的磁盘。 | 最多支持16块磁盘。 |   |
+|   | Tags | List |   |   |   |   |   | 最多支持20个标签，格式如： [{"Key":"tagKey","Value":"tagValue"} |   |
+|   |   |   |   |   |   |   |   |   | [{"Key":"tagKey","Value":"tagValue"} |
+|   |   |   |   |   | 否 | 否 | 用户自定义标签。 | , |   |
+|   |   |   |   |   |   |   |   | {"Key":"tagKey2","Value":"tagValue2"}] |   |
+|   | ZoneId | String |   |   | 否 | 否 | 可用区ID。 | 无。 |   |
+|   | KeyPairName | String |   |   | 否 | 否 | 给ECS实例绑定的密钥对名称。如果是 Windows ECS实例，则忽略该参数。默认为空。如果填写了 KeyPairName，Passw ord的内容仍旧会被设置到实例中，但是 Linux 中的密码登录方式会被初始化成禁止。 | 无。 |   |
+|   | RamRoleName | String |   |   | 否 | 否 | 实例RAM角色名称。 | 您可以使用RAM APIListRoles查询实例RAM角色名称。 |   |
+|   | SpotPriceLimit | String |   |   | 否 | 否 | 设置实例的每小时最高价格。 | 支持最大3位小数。参数SpotStrategy取值为 SpotWithPriceLimit 时生效。 |   |
+|   | SystemDiskDisk Name | String |   |   | 否 | 是 | 系统盘名称。 | 长度为2~128个英文或中文字符。必须以大小字母或中文开头，不能以 http:// 或 https:// 开头，可以包含数字、半角冒号（:）、下划线（ ）或 _ 者连字符（-）。 |   |
 
 | PeriodUnit | String | 否 | 是 | 购买资源的时长。 | 取值范围： Week 当PeriodUnit 为Week时，Period取值：{“1”, “2”, “3”, “4”}，AutoRenewPeriod取值：{“1”, “2”, “3”}。 Month 当PeriodUnit为Month时，Period取值：{ “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}，AutoRenewPeriod取值：{“1”, “2”, “3”, “6”, “12”}。 默认值：Month。 |
 |---|---|---|---|---|---|
@@ -4041,8 +4150,6 @@ ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
 | SystemDiskDesc ription | String | 否 | 是 | 系统盘描述。 | 长度为2~256个英文或中文字符，不能以 http:// 和 https:// 开头。默认值：空。 |
 | DeletionProtecti on | Boolea n | 否 | 否 | 实例释放保护属性，指定是否支持通过控制台或 API（DeleteInstance ）释放实例。 | 取值范围： true false |
 
-资源编排
-
 | DeploymentSetI d | String | 否 | 是 | 部署集ID。 | 无。 |
 |---|---|---|---|---|---|
 
@@ -4050,7 +4157,11 @@ ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
 
 ```json
 "DiskMappings": [
-  {
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
@@ -4059,10 +4170,9 @@ ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
     "Device": String,
     "SnapshotId": String,
     "Size": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskMappings属性**
 
@@ -4079,47 +4189,46 @@ ALIYUN::ECS::InstanceGroupClone类型用于克隆生产一组ECS实例。
 
 **EniMappings 语法**
 
-资源编排
-
 ```json
 "EniMappings": [
-  {
     "SecurityGroupId": String,
     "VSwitchId": String,
     "Description": String,
     "NetworkInterfaceName": String,
     "PrimaryIpAddress": String
-  }
 ```
 
-]
+`}` `]`
 
 **EniMappings 属性**
 
-| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |  |  |
+| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |   |   |
 |---|---|---|---|---|---|---|---|
-| SecurityGroupId | String | 是 | 是 | 弹性网卡所属的安全组ID。 | 无。 |  |  |
-| VSwitchId | String | 是 | 否 | 弹性网卡所属的虚拟交换机 ID。 | 无 。 |  |  |
-| Description | String | 否 | 是 | 弹性网卡的描述。 | 长度为2~256个英文或中文字符，不能以 http:// 和 https: // 开头。 |  |  |
-|  |  |  |  |  |  | https: |  |
-| NetworkInterface Name | String | 否 | 是 | 弹性网卡名称。 | 无。 |  |  |
-| PrimaryIpAddress | String | 否 | 否 | 弹性网卡的主IP地址。 | 无。 |  |  |
+| SecurityGroupId | String | 是 | 是 | 弹性网卡所属的安全组ID。 | 无。 |   |   |
+| VSwitchId | String | 是 | 否 | 弹性网卡所属的虚拟交换机 ID。 | 无 。 |   |   |
+| Description | String | 否 | 是 | 弹性网卡的描述。 | 长度为2~256个英文或中文字符，不能以 http:// 和 https: // 开头。 |   |   |
+|   |   |   |   |   |   | https: |   |
+| NetworkInterface Name | String | 否 | 是 | 弹性网卡名称。 | 无。 |   |   |
+| PrimaryIpAddress | String | 否 | 否 | 弹性网卡的主IP地址。 | 无。 |   |   |
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | // |  |
+|   | // |   |
 
 **Tags 语法**
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags 属性**
 
@@ -4134,10 +4243,7 @@ Fn::GetAtt InstanceIds：实例 ID。由系统生成，全局唯一。是访问�
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "WebServer": {
@@ -4149,37 +4255,43 @@ Fn::GetAtt InstanceIds：实例 ID。由系统生成，全局唯一。是访问�
         "ZoneId": "cn-beijing-b",
         "MaxAmount": 1,
         "MinAmount": 1
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "InstanceIds": {
       "Value": {"get_attr": ["WebServer","InstanceIds"]}
-    },
-    "PublicIps": {
-      "Value": {"get_attr": ["WebServer","PublicIps"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::Invocation
+`},`
+
+```json
+    "PublicIps": {
+      "Value": {"get_attr": ["WebServer","PublicIps"]}
+```
+
+`}` `}` `}`
+
+#### 7.1.13 ALIYUN::ECS::Invocation
 
 ALIYUN::ECS::Invocation类型用于为一台或多台ECS实例触发一条云助手命令。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::Invocation",
   "Properties": {
     "Timed": Boolean,
     "Frequency": String,
     "CommandId": String,
     "InstanceIds": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -4192,12 +4304,13 @@ ALIYUN::ECS::Invocation类型用于为一台或多台ECS实例触发一条云助
 
 **返回值**
 
-Fn::GetAtt 资源编排 InvokeId: 命令进程执行ID。
+Fn::GetAtt InvokeId: 命令进程执行ID。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "Timed": {
@@ -4210,62 +4323,86 @@ Fn::GetAtt 资源编排 InvokeId: 命令进程执行ID。
         "false"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "Frequency": {
       "Type": "String",
       "Description": "The frequency of timing execution (the shortest frequency is performed every 1
 minute). It iss mandatory when Timing is True.The value rule follows the rules of the cron expression . "
-    },
+```
+
+`},`
+
+```json
     "CommandId": {
       "Type": "String",
       "Description": "The id of command."
-    },
+```
+
+`},`
+
+```json
     "InstanceIds": {
       "Type": "CommaDelimitedList",
       "Description": "The instance id list. Select up to 20 instances at a time.Instances selected ne
 twork type must be VPC network, status must be running"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Invocation": {
       "Type": "ALIYUN::ECS::Invocation",
       "Properties": {
         "Timed": {
           "Ref": "Timed"
-        },
+```
+
+`},`
+
+```json
         "Frequency": {
           "Ref": "Frequency"
-        },
+```
+
+`},`
+
+```json
         "CommandId": {
           "Ref": "CommandId"
-        },
+```
+
+`},`
+
+```json
         "InstanceIds": {
           "Fn::Split": [
             ",",
-            {
-              "Ref": "InstanceIds"
-            },
-            {
-              "Ref": "InstanceIds"
-            }
 ```
 
-]
+`{`
 
 ```json
-        }
-      }
-    }
-  },
+              "Ref": "InstanceIds"
+```
+
+`},` `{`
+
+```json
+              "Ref": "InstanceIds"
+```
+
+`}` `]` `}` `}` `}`
+
+```json
   "Outputs": {
     "InvokeId": {
       "Description": "The id of command execution.",
 ```
 
-资源编排 p ,
+`p` `,`
 
 ```json
       "Value": {
@@ -4274,32 +4411,26 @@ twork type must be VPC network, status must be running"
           "InvokeId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
-
-#### ALIYUN::ECS::JoinSecurityGroup
+#### 7.1.14 ALIYUN::ECS::JoinSecurityGroup
 
 ALIYUN::ECS::JoinSecurityGroup类型用于将一个或多个ECS实例加入指定的安全组。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::JoinSecurityGroup",
   "Properties": {
     "InstanceId": String,
     "InstanceIdList": List,
     "SecurityGroupId": String,
     "NetworkInterfaceList": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -4316,10 +4447,9 @@ Fn::GetAtt 无。
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SG": {
@@ -4331,20 +4461,12 @@ Fn::GetAtt 无。
           "i-m5e505hio0wyjc6r****"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Resources:
   SG:
+    Type: ALIYUN::ECS::JoinSecurityGroup
     Properties:
       SecurityGroupId: sg-m5eagh7rzys2z8sa****
       InstanceIdList:
@@ -4352,16 +4474,14 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
       - i-m5e505hio0wyjc6r****
 ```
 
-#### ALIYUN::ECS::LaunchTemplate
+#### 7.1.15 ALIYUN::ECS::LaunchTemplate
+
+ALIYUN::ECS::LaunchTemplate类型用于创建ECS实例启动模板。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::LaunchTemplate",
-  "Properties": {
     "LaunchTemplateName": String,
     "VersionDescription": String,
     "ImageId": String,
@@ -4404,17 +4524,15 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
     "DeploymentSetId": String,
     "InstanceChargeType": String,
     "SystemDiskPerformanceLevel": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | LaunchTempl ateName | String | 是 | 否 | 实例启动模板名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 和 https:// 开头。可包含英文字母、汉字、数字、半角冒号（:）、下划线（ ）和 _ 短划线（-）。 |
-
-资源编排
 
 | VersionDescri ption | String | 否 | 否 | 实例启动模板版本描述。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 和 https:// 开头。 |
 |---|---|---|---|---|---|
@@ -4432,30 +4550,26 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 | SystemDiskSi ze | Number | 否 | 否 | 系统盘大小。 | 取值范围：20~500。 单位：GB。 |
 | SystemDiskDi skName | String | 否 | 否 | 系统盘名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 和 https:// 开头。可包含英文字母、汉字、数字、半角冒号（:）、下划线（ ）和 _ 短划线（-）。 |
 
-资源编排
-
-| SystemDiskD escription | String | 否 | 否 | 系统盘描述。 | 长度为2~256个字符，不能以 http:// 和 https:// 开头。 |  |  |
+| SystemDiskD escription | String | 否 | 否 | 系统盘描述。 | 长度为2~256个字符，不能以 http:// 和 https:// 开头。 |   |   |
 |---|---|---|---|---|---|---|---|
-| IoOptimized | String | 否 | 否 | 是否为I/O优化实例。 | 取值： none：非I/O优化实例。 optimized：I/O优化实例。 |  |  |
-| InternetCharg eType | String | 否 | 否 | 网络付费类型。 | 取值： PayByBandwidth：按带宽计费。 PayByTraffic：按流量计费。 |  |  |
-| UserData | String | 否 | 否 | 实例自定义数据。 | 需要以Base64方式编码，原始数据不超过16KB。 |  |  |
-| KeyPairName | String | 否 | 否 | 密钥对名称。 | 仅Linux实例需要指定该参数，此时密码登录方式会被初始化为禁止。 |  |  |
-| RamRoleNam e | String | 否 | 否 | 实例RAM角色名称。 | 无 |  |  |
-| AutoReleaseT ime | String | 否 | 否 | 实例自动释放时间。 | 按照ISO8601标准表示。需要使用 UTC时间，格式为 yyyy-MM- ddTHH:mm:ssZ 。 |  |  |
-|  |  |  |  |  |  | yyyy-MM- |  |
-| SpotStrategy | String | 否 | 否 | 后付费实例的抢占策略。 | 当InstanceChargeType参数取值为PostPaid时该参数生效。 取值： NoSpot：正常按量付费实例。 SpotWithPriceLimit：设置上限价格的抢占式实例。 SpotAsPriceGo：系统自动出价，最高按量付费价格。 |  |  |
-| SpotPriceLimi t | String | 否 | 否 | 设置实例的每小时最高价格。 | 支持最多3位小数。 |  |  |
-| SecurityEnha ncementStrat egy | String | 否 | 否 | 是否开启安全加固。 | 取值： Active：开启。 Deactive：关闭。 |  |  |
-| DiskMappings | List | 否 | 否 | 数据盘列表。 | 最多支持16个数据盘。 更多信息，请参见DiskMappings 属性。 |  |  |
-| NetworkInterf aces | List | 否 | 否 | 弹性网卡列表。 | 最多支持8个弹性网卡。 更多信息，请参见NetworkInterfaces属性。 |  |  |
-| Tags | List | 否 | 否 | 实例、安全组、 磁盘和网卡的标签列表。 | 最多支持20个标签。 更多信息，请参见Tags属性。 |  |  |
-| TemplateTag s | List | 否 | 否 | 启动模板的标签列表。 | 最多支持20个标签。 更多信息，请参见TemplateTags 属性。 |  |  |
-| TemplateRes ourceGroupId | String | 否 | 否 | 启动模板所在的资源组ID。 | 无 |  |  |
+| IoOptimized | String | 否 | 否 | 是否为I/O优化实例。 | 取值： none：非I/O优化实例。 optimized：I/O优化实例。 |   |   |
+| InternetCharg eType | String | 否 | 否 | 网络付费类型。 | 取值： PayByBandwidth：按带宽计费。 PayByTraffic：按流量计费。 |   |   |
+| UserData | String | 否 | 否 | 实例自定义数据。 | 需要以Base64方式编码，原始数据不超过16KB。 |   |   |
+| KeyPairName | String | 否 | 否 | 密钥对名称。 | 仅Linux实例需要指定该参数，此时密码登录方式会被初始化为禁止。 |   |   |
+| RamRoleNam e | String | 否 | 否 | 实例RAM角色名称。 | 无 |   |   |
+| AutoReleaseT ime | String | 否 | 否 | 实例自动释放时间。 | 按照ISO8601标准表示。需要使用 UTC时间，格式为 yyyy-MM- ddTHH:mm:ssZ 。 |   |   |
+|   |   |   |   |   |   | yyyy-MM- |   |
+| SpotStrategy | String | 否 | 否 | 后付费实例的抢占策略。 | 当InstanceChargeType参数取值为PostPaid时该参数生效。 取值： NoSpot：正常按量付费实例。 SpotWithPriceLimit：设置上限价格的抢占式实例。 SpotAsPriceGo：系统自动出价，最高按量付费价格。 |   |   |
+| SpotPriceLimi t | String | 否 | 否 | 设置实例的每小时最高价格。 | 支持最多3位小数。 |   |   |
+| SecurityEnha ncementStrat egy | String | 否 | 否 | 是否开启安全加固。 | 取值： Active：开启。 Deactive：关闭。 |   |   |
+| DiskMappings | List | 否 | 否 | 数据盘列表。 | 最多支持16个数据盘。 更多信息，请参见DiskMappings 属性。 |   |   |
+| NetworkInterf aces | List | 否 | 否 | 弹性网卡列表。 | 最多支持8个弹性网卡。 更多信息，请参见NetworkInterfaces属性。 |   |   |
+| Tags | List | 否 | 否 | 实例、安全组、 磁盘和网卡的标签列表。 | 最多支持20个标签。 更多信息，请参见Tags属性。 |   |   |
+| TemplateTag s | List | 否 | 否 | 启动模板的标签列表。 | 最多支持20个标签。 更多信息，请参见TemplateTags 属性。 |   |   |
+| TemplateRes ourceGroupId | String | 否 | 否 | 启动模板所在的资源组ID。 | 无 |   |   |
 
-|  | ddTHH:mm:ssZ |
+|   | ddTHH:mm:ssZ |
 |---|---|
-
-资源编排
 
 | SecurityGrou pIds | List | 否 | 否 | 实例加入的一个或多个安全组。 | 取值与实例能够加入的安全组配额有关。 说明不支持同时指定 SecurityGroupId和 SecurityGroupIds。 |
 |---|---|---|---|---|---|
@@ -4470,8 +4584,6 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 | DeploymentS etId | String | 否 | 否 | 部署集ID。 | 无 |
 | InstanceChar geType | String | 否 | 否 | 实例的计费方式。 | 取值： PrePaid：预付费，包年包月。 PostPaid：后付费，按实际使用量付费。 |
 
-资源编排
-
 | SystemDiskP erformanceLe vel | String | 否 | 否 | 创建ESSD云盘作为系统盘使用时，云盘的性能等级。 | 取值： PL0（默认）：单盘最高随机读写IOPS 1万。 PL1：单盘最高随机读写IOPS 5 万。 PL2：单盘最高随机读写IOPS 10 万。 PL3：单盘最高随机读写IOPS 100万。 |
 |---|---|---|---|---|---|
 
@@ -4479,7 +4591,11 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 
 ```json
 "DiskMappings": [
-  {
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
@@ -4488,10 +4604,9 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
     "Encrypted": String,
     "DeleteWithInstance": String,
     "PerformanceLevel": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskMappings属性**
 
@@ -4504,8 +4619,6 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 | Size | String | 否 | 否 | 系统盘大小。 | 取值范围： cloud：5~2000。 cloud efficiency： _ 20~32768。 cloud ssd：20~32768。 _ ephemeral ssd：5~800。 _ 单位：GB。 |
 | Encrypted | Boolean | 否 | 否 | 是否加密数据盘。 | 取值： true：加密。 false：不加密。 |
 
-资源编排
-
 | DeleteWithIns tance | Boolean | 否 | 否 | 数据盘是否随实例释放而释放。 | 取值： true：释放。 false：不释放。 |
 |---|---|---|---|---|---|
 | PerformanceL evel | String | 否 | 否 | 创建ESSD云盘作为数据盘使用时，云盘的性能等级。 | 取值： PL0（默认）：单盘最高随机读写IOPS 1万。 PL1：单盘最高随机读写IOPS 5 万。 PL2：单盘最高随机读写IOPS 10 万。 PL3：单盘最高随机读写IOPS 100万。 |
@@ -4514,16 +4627,19 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 
 ```json
 "NetworkInterfaces": [
-  {
+```
+
+`{`
+
+```json
     "PrimaryIpAddress": String,
     "VSwitchId": String,
     "SecurityGroupId": String,
     "NetworkInterfaceName": String,
     "Description": String
-  }
 ```
 
-]
+`}` `]`
 
 **NetworkInterfaces属性**
 
@@ -4539,20 +4655,21 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | Key | String | 否 | 否 | 标签键。 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |
 |---|---|---|---|---|---|
@@ -4562,13 +4679,16 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 
 ```json
 "TemplateTags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **TemplateTags属性**
 
@@ -4583,20 +4703,28 @@ Fn::GetAtt LaunchTemplateId：实例启动模板ID。 LaunchTemplateName：实�
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": "Test ECS LaunchTemplate、AutoProvisioningGroup",
   "Parameters": {
     "VSwitchZoneId": {
       "AssociationProperty": "ALIYUN::ECS::Instance:ZoneId",
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "VpcId": {
       "Type": "String",
-    },
+      "AssociationProperty": "ALIYUN::ECS::VPC::VPCId"
+```
+
+`},`
+
+```json
     "VSwitchId": {
       "Type": "String",
       "AssociationProperty": "ALIYUN::ECS::VSwitch::VSwitchId",
@@ -4604,33 +4732,44 @@ Fn::GetAtt LaunchTemplateId：实例启动模板ID。 LaunchTemplateName：实�
 "ZoneId":"VSwitchZoneId",
 ```
 
-资源编排
-
 ```json
 oed: Swtc oed,
         "VpcId": "VpcId"
-      }
-    },
     "SecurityGroupId": {
       "AssociationProperty": "ALIYUN::ECS::SecurityGroup::SecurityGroupId",
       "Type": "String",
       "AssociationPropertyMetadata": {
         "VpcId": "VpcId"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "LaunchTemplateName": {
       "Type": "String",
       "Default": "mytest"
-    },
+```
+
+`},`
+
+```json
     "ImageId": {
       "Type": "String",
       "Default": "centos_7"
-    },
+```
+
+`},`
+
+```json
     "InstanceType": {
       "Type": "String",
       "AssociationProperty": "ALIYUN::ECS::Instance::InstanceType",
       "Default": "ecs.c5.large"
-    },
+```
+
+`},`
+
+```json
     "SystemDiskCategory": {
       "Type": "String",
       "Description": "Category of system disk. Default is cloud_efficiency. support
@@ -4639,40 +4778,57 @@ cloud|cloud_efficiency|cloud_ssd|cloud_essd|ephemeral_ssd.Old instances will not
       "AssociationPropertyMetadata": {
         "ZoneId": "VSwitchZoneId",
         "InstanceType": "InstanceType"
-      },
+```
+
+`},`
+
+```json
       "Default": "cloud_essd"
-    },
+```
+
+`},`
+
+```json
     "PayAsYouGoTargetCapacity": {
       "Type": "String",
       "Description": "The target capacity of pay-as-you-go instances in the auto provisioning group."
 ```
 
-,
+`,`
 
 ```json
       "Default": "1"
-    },
+```
+
+`},`
+
+```json
     "TotalTargetCapacity": {
       "Type": "String",
       "Description": "The total target capacity of the auto provisioning group. The target capacity c
 onsists\nof the following three parts:\nThe target capacity of pay-as-you-go instances specified by t he PayAsYouGoTargetCapacity parameter\nThe target capacity of preemptible instances specified by the SpotTargetCapacity parameter\nThe supplemental capacity besides PayAsYouGoTargetCapacity and SpotTarg etCapacity",
       "Default": "2"
-    },
+```
+
+`},`
+
+```json
     "SpotTargetCapacity": {
       "Type": "String",
       "Description": "The target capacity of preemptible instances in the auto provisioning group.",
       "Default": "1"
-    },
+```
+
+`},`
+
+```json
     "AutoProvisioningGroupName": {
       "Type": "String",
       "Description": "The name of the auto provisioning group to be created. It must be 2 to 128 char
 acters\nin length. It must start with a letter but cannot start with http:// or https://.\nIt can con tain letters, digits, colons (:), underscores (_), and hyphens (-).",
       "Default": "mytest"
-    },
     "SpotAllocationStrategy": {
 ```
-
-资源编排
 
 ```json
       "Type": "String",
@@ -4687,13 +4843,21 @@ e cost optimization policy the auto provisioning group follows to select instanc
 
 ```json
       "Default": "lowest-price"
-    },
+```
+
+`},`
+
+```json
     "SpotInstancePoolsToUseCount": {
       "Type": "Number",
       "Description": "This parameter takes effect when the SpotAllocationStrategy parameter is set to
 lowest-price. The auto provisioning group selects instance types of the lowest cost to create\ninstances.",
       "Default": null
-    },
+```
+
+`},`
+
+```json
     "PayAsYouGoAllocationStrategy": {
       "Type": "String",
       "Description": "The scale-out policy for pay-as-you-go instances. Valid values:\nlowest-price:
@@ -4707,13 +4871,21 @@ The cost optimization policy the auto provisioning group follows to select insta
 
 ```json
       "Default": "lowest-price"
-    },
+```
+
+`},`
+
+```json
     "MaxSpotPrice": {
       "Type": "Number",
       "Description": "The global maximum price for preemptible instances in the auto provisioning gro
 up.\nIf both the MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice parameters are specified, the maxim um price is the lower value of the two.",
       "Default": 5
-    },
+```
+
+`},`
+
+```json
     "DefaultTargetCapacityType": {
       "Type": "String",
       "Description": "The type of supplemental instances. When the total value of
@@ -4727,7 +4899,11 @@ PayAsYouGoTargetCapacity and SpotTargetCapacity is smaller than the value of Tot
 
 ```json
       "Default": "PayAsYouGo"
-    },
+```
+
+`},`
+
+```json
     "AutoProvisioningGroupType": {
       "Type": "String",
       "Description": "The type of the auto provisioning group. Valid values:\nrequest: One-time deliv
@@ -4735,8 +4911,6 @@ ery. After the auto provisioning group is started, it only attempts\nto create a
       "AllowedValues": [
 "maintain"
 ```
-
-资源编排
 
 ```
         maintain,
@@ -4747,7 +4921,11 @@ ery. After the auto provisioning group is started, it only attempts\nto create a
 
 ```json
       "Default": "maintain"
-    },
+```
+
+`},`
+
+```json
     "ExcessCapacityTerminationPolicy": {
       "Type": "String",
       "Description": "The shutdown policy for excess preemptible instances followed when the capacity
@@ -4761,7 +4939,11 @@ of\nthe auto provisioning group exceeds the target capacity. Valid values:\nno-t
 
 ```json
       "Default": "termination"
-    },
+```
+
+`},`
+
+```json
     "TerminateInstances": {
       "Type": "Boolean",
       "Description": "Specifies whether to release instances of the auto provisioning group. Valid va
@@ -4775,7 +4957,11 @@ lues:\ntrue\nfalse\nDefault: false",
 
 ```json
       "Default": true
-    },
+```
+
+`},`
+
+```json
     "TerminateInstancesWithExpiration": {
       "Type": "Boolean",
       "Description": "The shutdown policy for preemptible instances when the auto provisioning group
@@ -4789,38 +4975,51 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
 
 ```json
       "Default": true
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "LaunchTemplate": {
       "Type": "ALIYUN::ECS::LaunchTemplate",
       "Properties": {
         "LaunchTemplateName": {
           "Ref": "LaunchTemplateName"
-        },
+```
+
+`},`
+
+```json
         "VersionDescription": "Test create LaunchTemplate",
         "ImageId": {
           "Ref": "ImageId"
-        },
+```
+
+`},`
+
+```json
         "InstanceType": {
           "Ref": "InstanceType"
-        },
+```
+
+`},`
+
+```json
         "SystemDiskCategory": {
           "Ref": "SystemDiskCategory"
-        },
+```
+
+`},`
+
+```json
         "SecurityGroupId": {
           "Ref": "SecurityGroupId"
-        },
         "VSwitchId": {
           "Ref": "VSwitchId"
 ```
 
-资源编排
-
 ```json
-        }
-      }
-    },
     "AutoProvisioningGroup": {
       "DependsOn": "LaunchTemplate",
       "Type": "ALIYUN::ECS::AutoProvisioningGroup",
@@ -4831,74 +5030,122 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
             "LaunchTemplateId"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "LaunchTemplateVersion": "1",
         "TotalTargetCapacity": {
           "Ref": "TotalTargetCapacity"
-        },
+```
+
+`},`
+
+```json
         "PayAsYouGoTargetCapacity": {
           "Ref": "PayAsYouGoTargetCapacity"
-        },
+```
+
+`},`
+
+```json
         "SpotTargetCapacity": {
           "Ref": "SpotTargetCapacity"
-        },
+```
+
+`},`
+
+```json
         "AutoProvisioningGroupName": {
           "Ref": "AutoProvisioningGroupName"
-        },
+```
+
+`},`
+
+```json
         "SpotAllocationStrategy": {
           "Ref": "SpotAllocationStrategy"
-        },
+```
+
+`},`
+
+```json
         "SpotInstancePoolsToUseCount": {
           "Ref": "SpotInstancePoolsToUseCount"
-        },
+```
+
+`},`
+
+```json
         "LaunchTemplateConfig": [
-          {
+```
+
+`{`
+
+```json
             "Priority": 1,
             "WeightedCapacity": 1,
             "VSwitchId": {
               "Ref": "VSwitchId"
-            },
-            "MaxPrice": 1
-          }
 ```
 
-`],`
+`},`
+
+```json
+            "MaxPrice": 1
+```
+
+`}` `],`
 
 ```json
         "Description": "Test AutoProvisioningGroup",
         "PayAsYouGoAllocationStrategy": {
           "Ref": "PayAsYouGoAllocationStrategy"
-        },
+```
+
+`},`
+
+```json
         "MaxSpotPrice": {
           "Ref": "MaxSpotPrice"
-        },
+```
+
+`},`
+
+```json
         "DefaultTargetCapacityType": {
           "Ref": "DefaultTargetCapacityType"
-        },
+```
+
+`},`
+
+```json
         "AutoProvisioningGroupType": {
           "Ref": "AutoProvisioningGroupType"
-        },
+```
+
+`},`
+
+```json
         "ExcessCapacityTerminationPolicy": {
           "Ref": "ExcessCapacityTerminationPolicy"
-        },
+```
+
+`},`
+
+```json
         "TerminateInstances": {
           "Ref": "TerminateInstances"
-        },
         "TerminateInstancesWithExpiration": {
 "Ref" "TerminateInstancesWithEpiration"
 ```
 
-资源编排
-
 ```json
           "Ref": "TerminateInstancesWithExpiration"
-        }
-      }
-    }
-  },
+```
+
+`},`
+
+```json
   "Outputs": {
     "AutoProvisioningGroupId": {
       "Description": "The ID of the auto provisioning group.",
@@ -4908,11 +5155,9 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
           "AutoProvisioningGroupId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "LaunchTemplateId": {
       "Value": {
         "Fn::GetAtt": [
@@ -4920,11 +5165,9 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
           "LaunchTemplateId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "LaunchTemplateName": {
       "Value": {
         "Fn::GetAtt": [
@@ -4932,11 +5175,9 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
           "LaunchTemplateName"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "DefaultVersionNumber": {
       "Value": {
         "Fn::GetAtt": [
@@ -4944,11 +5185,9 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
           "DefaultVersionNumber"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "LatestVersionNumber": {
       "Value": {
         "Fn::GetAtt": [
@@ -4956,27 +5195,16 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
           "LatestVersionNumber"
 ```
 
-]
+`]` `}` `}` `}` `}` 更多示例，请参见创建ECS实例启动模板和创建弹性供应组的组合示例：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.16 ALIYUN::ECS::NatGateway
 
-更多示例，请参见创建ECS实例启动模板和创建弹性供应组的组合示例：JSON示例和YAML示例。
-
-#### ALIYUN::ECS::NatGateway
+ALIYUN::ECS::NatGateway类型用于创建专有网络的NAT网关。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::NatGateway",
-  "Properties": {
     "DeletionProtection": Boolean,
     "VpcId": String,
     "Description": String,
@@ -4991,9 +5219,9 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
     "Spec": String,
     "Tags": List,
     "EipBindMode": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -5005,15 +5233,11 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
 | NatGatewayNam e | String | 否 | 否 | NAT网关的名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，可包含英文字母、数字、汉字、下划线 （ ）、英文句点 _ （.）和短划线 （-）。 |
 | NatType | String | 否 | 否 | NAT网关的类型。 | 取值： Normal：普通型NAT网关。 Enhanced：增强型NAT网关。 |
 
-资源编排
-
 | Duration | Number | 否 | 否 | 购买时长。 | 取值： 当PricingCycle 取值为Month 时：1~9。 当PricingCycle 取值为Year时： 1~3。 说明当 InstanceCh argeType参数取值为 PrePaid时， 该参数必选。 |
 |---|---|---|---|---|---|
 | AutoPay | Boolean | 否 | 否 | 是否自动付费。 | 取值： false：不开启自动付费，生成订单后需要到订单中心完成支付。 true：开启自动付费，自动支付订单。 说明当 InstanceCh argeType参数取值为 PrePaid时， 该参数必选。 |
 | InstanceChargeT ype | String | 否 | 否 | 计费方式。 | 取值： PostPaid（默认值）：按量计费。 PrePaid：包年包月。 |
 | PricingCycle | String | 否 | 否 | 包年包月的计费周期。 | 取值： Month（默认值）：按月付费。 Year：按年付费。 说明当 InstanceCh argeType参数取值为 PrePaid时， 该参数必选。 |
-
-资源编排
 
 | Spec | String | 否 | 否 | NAT网关的规格。 | 取值： Small（默认值）：小型。 Middle：中型。 Large：大型。 XLarge.1：超大型。 |
 |---|---|---|---|---|---|
@@ -5026,40 +5250,41 @@ expires.\nValid values:\ntrue: shuts down preemptible instances. The action to b
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 
-资源编排
-
-| Key | String | 是 | 否 | 标签键 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或 https:// 。 |  |  |
+| Key | String | 是 | 否 | 标签键 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或 https:// 。 |   |   |
 |---|---|---|---|---|---|---|---|
-| Value | String | 否 | 否 | 标签值 | 长度为0~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或 https:// 。 |  |  |
+| Value | String | 否 | 否 | 标签值 | 长度为0~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或 https:// 。 |   |   |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 **返回值**
 
@@ -5067,28 +5292,35 @@ Fn::GetAtt ForwardTableId：端口转发表ID。 SNatTableId：SNAT源地址转�
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "Description": {
       "Type": "String",
       "Description": "Description of the NAT gateway, [2, 256] characters. Do not fill or empty, the
 default is empty."
-    },
+```
+
+`},`
+
+```json
     "NatGatewayName": {
       "Type": "String",
       "Description": "Display name of the NAT gateway, [2, 128] English or Chinese characters, must s
 tart with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
-    },
+```
+
+`},`
+
+```json
     "InstanceChargeType": {
       "Type": "String",
       "Description": "The billing method. The default value is PostPaid (which means pay-as-you-go)."
 ```
 
-,
+`,`
 
 ```json
       "AllowedValues": [
@@ -5100,7 +5332,11 @@ tart with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
 
 ```json
       "Default": "PostPaid"
-    },
+```
+
+`},`
+
+```json
     "PricingCycle": {
       "Type": "String",
       "Description": "Price cycle of the resource. This property has no default value.",
@@ -5109,19 +5345,12 @@ tart with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
         "Year"
 ```
 
-]
-
-```
-    },
-```
-
-资源编排 ,
+`,`
 
 ```json
     "VSwitchId": {
       "Type": "String",
       "Description": "The VSwitch id to create NAT gateway."
-    },
     "Duration": {
       "Type": "Number",
       "Description": "The subscription duration. While choose by pay by month, it could be from 1 to
@@ -5129,7 +5358,11 @@ tart with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
       "MinValue": 1,
       "MaxValue": 9,
       "Default": 1
-    },
+```
+
+`},`
+
+```json
     "DeletionProtection": {
       "Type": "Boolean",
       "Description": "Whether to enable deletion protection.\nDefault to False.",
@@ -5144,7 +5377,11 @@ tart with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
 
 ```json
       "Default": false
-    },
+```
+
+`},`
+
+```json
     "AutoPay": {
       "Type": "Boolean",
       "Description": "Specifies whether to enable automatic payment. Default is false.",
@@ -5159,7 +5396,11 @@ tart with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
 
 ```json
       "Default": false
-    },
+```
+
+`},`
+
+```json
     "NatType": {
       "Type": "String",
       "Description": "The type of the NAT gateway. Valid values:\n- Normal: standard NAT gateway.\n-
@@ -5169,10 +5410,9 @@ Enhanced: enhanced NAT gateway.",
         "Enhanced"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "DeletionForce": {
       "Type": "Boolean",
       "Description": "Whether force delete the relative snat and dnat entries in the net gateway and
@@ -5188,73 +5428,125 @@ unbind eips. Default value is false.",
 
 ```json
       "Default": false
-    },
+```
+
+`},`
+
+```json
     "VpcId": {
       "Type": "String",
       "Description": "The VPC id to create NAT gateway."
-    },
     "Spec": {
       "Type": "String",
       "Description": "NAT gateway specification. Now support 'Small|Middle|Large|XLarge.1'"
 ```
 
-资源编排
-
 ```json
-    },
     "Tags": {
       "Type": "Json",
       "Description": "Tags to attach to natgateway. Max support 20 tags to add during create
 natgateway. Each tag with two properties Key and Value, and Key is required.",
       "MaxLength": 20
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "NatGateway": {
       "Type": "ALIYUN::ECS::NatGateway",
       "Properties": {
         "Description": {
           "Ref": "Description"
-        },
+```
+
+`},`
+
+```json
         "NatGatewayName": {
           "Ref": "NatGatewayName"
-        },
+```
+
+`},`
+
+```json
         "InstanceChargeType": {
           "Ref": "InstanceChargeType"
-        },
+```
+
+`},`
+
+```json
         "PricingCycle": {
           "Ref": "PricingCycle"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
           "Ref": "VSwitchId"
-        },
+```
+
+`},`
+
+```json
         "Duration": {
           "Ref": "Duration"
-        },
+```
+
+`},`
+
+```json
         "DeletionProtection": {
           "Ref": "DeletionProtection"
-        },
+```
+
+`},`
+
+```json
         "AutoPay": {
           "Ref": "AutoPay"
-        },
+```
+
+`},`
+
+```json
         "NatType": {
           "Ref": "NatType"
-        },
+```
+
+`},`
+
+```json
         "DeletionForce": {
           "Ref": "DeletionForce"
-        },
+```
+
+`},`
+
+```json
         "VpcId": {
           "Ref": "VpcId"
-        },
+```
+
+`},`
+
+```json
         "Spec": {
           "Ref": "Spec"
-        },
+```
+
+`},`
+
+```json
         "Tags": {
           "Ref": "Tags"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "BandwidthPackageIds": {
       "Description": "The bandwidth package ids of created NAT gateway.",
@@ -5264,17 +5556,7 @@ natgateway. Each tag with two properties Key and Value, and Key is required.",
           "BandwidthPackageIds"
 ```
 
-]
-
-```
-}
-```
-
-资源编排
-
 ```json
-      }
-    },
     "NatGatewayId": {
       "Description": "The Id of created NAT gateway.",
       "Value": {
@@ -5283,11 +5565,9 @@ natgateway. Each tag with two properties Key and Value, and Key is required.",
           "NatGatewayId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "SNatTableId": {
       "Description": "The SNAT table id.",
       "Value": {
@@ -5296,11 +5576,9 @@ natgateway. Each tag with two properties Key and Value, and Key is required.",
           "SNatTableId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "BandwidthPackageIps": {
       "Description": "The allocated public IPs.",
       "Value": {
@@ -5309,11 +5587,9 @@ natgateway. Each tag with two properties Key and Value, and Key is required.",
           "BandwidthPackageIps"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ForwardTableId": {
       "Description": "The forward table id.",
       "Value": {
@@ -5322,16 +5598,7 @@ natgateway. Each tag with two properties Key and Value, and Key is required.",
           "ForwardTableId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -5354,8 +5621,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     AllowedValues:
 -PrePaid
 ```
-
-资源编排
 
 ```
        PrePaid
@@ -5423,8 +5688,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Description: The VPC id to create NAT gateway.
 ```
 
-资源编排
-
 ```
   Spec:
     Type: String
@@ -5438,6 +5701,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     MaxLength: 20
 Resources:
   NatGateway:
+    Type: 'ALIYUN::ECS::NatGateway'
     Properties:
       Description:
         Ref: Description
@@ -5470,16 +5734,19 @@ Outputs:
     Description: The bandwidth package ids of created NAT gateway.
     Value:
       'Fn::GetAtt':
+        - NatGateway
         - BandwidthPackageIds
   NatGatewayId:
     Description: The Id of created NAT gateway.
     Value:
       'Fn::GetAtt':
+        - NatGateway
         - NatGatewayId
   SNatTableId:
     Description: The SNAT table id.
     Value:
       'Fn::GetAtt':
+        - NatGateway
         - SNatTableId
   BandwidthPackageIps:
     Description: The allocated public IPs.
@@ -5487,26 +5754,27 @@ Outputs:
 'Fn::GetAtt':
 ```
 
-资源编排
-
 ```
       'Fn::GetAtt':
+        - NatGateway
         - BandwidthPackageIps
   ForwardTableId:
     Description: The forward table id.
     Value:
       'Fn::GetAtt':
+        - NatGateway
         - ForwardTableId
 ```
 
-#### ALIYUN::ECS::NetworkInterface
+#### 7.1.17 ALIYUN::ECS::NetworkInterface
 
 ALIYUN::ECS::NetworkInterface类型用于创建一个弹性网卡（ENI）。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::NetworkInterface",
   "Properties": {
     "Description": String,
@@ -5519,9 +5787,9 @@ ALIYUN::ECS::NetworkInterface类型用于创建一个弹性网卡（ENI）。
     "SecurityGroupIds": List,
     "PrivateIpAddresses": List,
     "SecondaryPrivateIpAddressCount": Integer
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -5534,8 +5802,6 @@ ALIYUN::ECS::NetworkInterface类型用于创建一个弹性网卡（ENI）。
 | NetworkInterf aceName | String | 否 | 是 | 弹性网卡的名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 和 https:// 开头。可包含英文字母、汉字、数字、半角冒号（:）、下划线（ ）和 _ 短划线（-）。 |
 | PrimaryIpAdd ress | String | 否 | 否 | 弹性网卡的主私有IP地址。 | 指定IP地址必须是所属交换机地址段内的空闲地址，不指定则默认随机分配该交换机中的空闲地址。 |
 
-资源编排
-
 | SecondaryPri vateIpAddres sCount | Integer | 否 | 否 | 辅助私有IP地址数量。 | 无 |
 |---|---|---|---|---|---|
 | Tags | List | 否 | 是 | 标签。 | 最多支持添加20个标签。 更多信息，请参见Tags属性。 |
@@ -5546,13 +5812,16 @@ ALIYUN::ECS::NetworkInterface类型用于创建一个弹性网卡（ENI）。
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -5567,7 +5836,7 @@ Fn::GetAtt NetworkInterfaceId：弹性网卡ID。 MacAddress：弹性网卡的MA
 
 **示例**
 
-`YAML` 格式资源编排
+`YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -5593,6 +5862,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
       en: VSwitch ID
 Resources:
   EniInstance:
+    Type: ALIYUN::ECS::NetworkInterface
     Properties:
       SecurityGroupId:
         Ref: SecurityGroupId
@@ -5626,10 +5896,9 @@ Outputs:
         - NetworkInterfaceId
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "SecurityGroupId": {
@@ -5642,12 +5911,8 @@ Outputs:
 
 ```json
         "en": "Security Group ID"
-      }
-    },
-"Si hd" {
+"Si hd"
 ```
-
-资源编排
 
 ```json
     "VSwitchId": {
@@ -5660,23 +5925,35 @@ Outputs:
 
 ```json
         "en": "VSwitch ID"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "EniInstance": {
       "Type": "ALIYUN::ECS::NetworkInterface",
       "Properties": {
         "SecurityGroupId": {
           "Ref": "SecurityGroupId"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
           "Ref": "VSwitchId"
-        },
+```
+
+`},`
+
+```json
         "NetworkInterfaceName": "TestNetworkInterface"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "PrivateIpAddress": {
       "Description": "The primary private ip address of your Network Interface.",
@@ -5686,11 +5963,9 @@ Outputs:
           "PrivateIpAddress"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "SecondaryPrivateIpAddresses": {
       "Description": "The secondary private IP addresses of your Network Interface.",
       "Value": {
@@ -5699,11 +5974,9 @@ Outputs:
           "SecondaryPrivateIpAddresses"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "MacAddress": {
       "Description": "The MAC address of your Network Interface.",
       "Value": {
@@ -5712,11 +5985,9 @@ Outputs:
           "MacAddress"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "NetworkInterfaceId": {
       "Description": "ID of your Network Interface.",
       "Value": {
@@ -5725,33 +5996,25 @@ Outputs:
           "NetworkInterfaceId"
 ```
 
-]
+`]` `}` 更多示例，请参见创建一个弹性网卡、绑定弹性网卡到专有网络类型实例和授权弹性网卡的组合示例：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
-
-资源编排更多示例，请参见创建一个弹性网卡、绑定弹性网卡到专有网络类型实例和授权弹性网卡的组合示例：JSON示例和YAML示例。
-
-#### ALIYUN::ECS::NetworkInterfaceAttachment
+#### 7.1.18 ALIYUN::ECS::NetworkInterfaceAttachment
 
 ALIYUN::ECS::NetworkInterfaceAttachment类型用于绑定弹性网卡（ENI）到专有网络（VPC）类型实例上。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::NetworkInterfaceAttachment",
   "Properties": {
     "InstanceId": String,
     "NetworkInterfaceId": String,
     "TrunkNetworkInstanceId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -5767,40 +6030,59 @@ Fn::GetAtt NetworkInterfaceId：弹性网卡ID。 TrunkNetworkInstanceId：Trunk
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "InstanceId": {
       "Type": "String",
       "Description": "ECS instance id"
-    },
+```
+
+`},`
+
+```json
     "TrunkNetworkInstanceId": {
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "NetworkInterfaceId": {
       "Type": "String",
       "Description": "Network interface id"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "EniAttachment": {
       "Type": "ALIYUN::ECS::NetworkInterfaceAttachment",
       "Properties": {
         "InstanceId": {
           "Ref": "InstanceId"
-        },
+```
+
+`},`
+
+```json
         "TrunkNetworkInstanceId": {
           "Ref": "TrunkNetworkInstanceId"
-        },
+```
+
+`},`
+
+```json
         "NetworkInterfaceId": {
           "Ref": "NetworkInterfaceId"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "TrunkNetworkInstanceId": {
       "Description": "ID of Trunk Network Interface.",
@@ -5810,11 +6092,9 @@ Fn::GetAtt NetworkInterfaceId：弹性网卡ID。 TrunkNetworkInstanceId：Trunk
           "TrunkNetworkInstanceId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "NetworkInterfaceId": {
       "Description": "ID of your Network Interface.",
       "Value": {
@@ -5823,16 +6103,7 @@ Fn::GetAtt NetworkInterfaceId：弹性网卡ID。 TrunkNetworkInstanceId：Trunk
           "NetworkInterfaceId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -5871,22 +6142,23 @@ Outputs:
 
 更多示例，请参见创建一个弹性网卡、绑定弹性网卡到专有网络类型实例和授权弹性网卡的组合示例：JSON示例和YAML示例。
 
-#### ALIYUN::ECS::NetworkInterfacePermission
+#### 7.1.19 ALIYUN::ECS::NetworkInterfacePermission
 
 ALIYUN::ECS::NetworkInterfacePermission类型用于授权弹性网卡。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::NetworkInterfacePermission",
   "Properties": {
     "NetworkInterfaceId": String,
     "AccountId": String,
     "Permission": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -5894,8 +6166,6 @@ ALIYUN::ECS::NetworkInterfacePermission类型用于授权弹性网卡。
 |---|---|---|---|---|---|
 | NetworkInterfac eId | String | 是 | 否 | 弹性网卡ID。 | 无 |
 | AccountId | String | 是 | 否 | 帐号ID。 | 无 |
-
-资源编排
 
 | Permission | String | 是 | 否 | 授权。 | 无 |
 |---|---|---|---|---|---|
@@ -5908,40 +6178,61 @@ NetworkInterfacePermissionId: 授权弹性网卡ID。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "AccountId": {
       "Type": "String",
       "Description": "the account id"
-    },
+```
+
+`},`
+
+```json
     "Permission": {
       "Type": "String",
       "Description": "the permission",
       "Default": "InstanceAttach"
-    },
+```
+
+`},`
+
+```json
     "NetworkInterfaceId": {
       "Type": "String",
       "Description": "Network interface id"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "EniPermission": {
       "Type": "ALIYUN::ECS::NetworkInterfacePermission",
       "Properties": {
         "AccountId": {
           "Ref": "AccountId"
-        },
+```
+
+`},`
+
+```json
         "Permission": {
           "Ref": "Permission"
-        },
+```
+
+`},`
+
+```json
         "NetworkInterfaceId": {
           "Ref": "NetworkInterfaceId"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "NetworkInterfacePermissionId": {
       "Description": "the network interface permission id",
@@ -5951,33 +6242,24 @@ NetworkInterfacePermissionId: 授权弹性网卡ID。
           "NetworkInterfacePermissionId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.20 ALIYUN::ECS::Route
 
-#### ALIYUN::ECS::Route
+ALIYUN::ECS::Route类型用于创建自定义路由条目。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::Route",
-  "Properties": {
     "DestinationCidrBlock": String,
     "RouteTableId": String,
     "NextHopId": String,
     "NextHopType": String,
     "NextHopList": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -5993,21 +6275,22 @@ NetworkInterfacePermissionId: 授权弹性网卡ID。
 
 ```json
 "NextHopList": [
-  {
-    "NextHopId": String,
-    "NextHopType": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "NextHopId": String,
+    "NextHopType": String
+```
+
+`}` `]`
 
 **NextHopList 属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | NextHopId | String | 是 | 否 | ECMP路由条目的下一跳实例的ID。 | 无 |
-
-资源编排
 
 | NextHopType | String | 否 | 否 | ECMP路由条目的下一跳的类型。 | 取值：RouterInterface，表示路由器接口。 |
 |---|---|---|---|---|---|
@@ -6018,8 +6301,9 @@ Fn::GetAtt 无
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ECSRoute": {
@@ -6028,20 +6312,19 @@ Fn::GetAtt 无
         "RouteTableId": "vtb-25oud****",
         "DestinationCidrBlock": "172.16.XX.XX/24",
         "NextHopId": "i-25xzy****"
-      }
-    }
-  }
-}
 ```
 
-更多示例，请参见为弹性网卡分配IPv6地址和创建自定义路由条目的组合示例：JSON示例和YAML示例。
+`}` `}` `}` `}` 更多示例，请参见为弹性网卡分配IPv6地址和创建自定义路由条目的组合示例：JSON示例和YAML示例。
 
-#### ALIYUN::ECS::SNatEntry
+#### 7.1.21 ALIYUN::ECS::SNatEntry
+
+ALIYUN::ECS::SNatEntry类型用于配置NAT网关中的源地址转换表。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::SNatEntry",
   "Properties": {
     "SNatTableId": String,
@@ -6049,24 +6332,22 @@ Fn::GetAtt 无
     "SnatEntryName": String,
     "SourceCIDR": String,
     "SourceVSwitchId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
-| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |  |  |
+| 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |   |   |
 |---|---|---|---|---|---|---|---|
-| SNatTableId | String | 是 | 是 | 源地址转换表ID。 | 无 |  |  |
-| SNatIp | String | 是 | 是 | 用于源地址转换的公网IP。 | 必须是NAT网关中带宽包的 IP。每个NAT网关上的公网 IP，不能既存在于端口转发表中，也存在于SNAT表中。 |  |  |
-| SnatEntryName | String | 否 | 是 | SNAT条目的名称。 | 长度为2~128个字符，必须以英文字母或汉字开头，但不能以 http:// 或 https: // 开头。 |  |  |
-|  |  |  |  |  |  | https: |  |
+| SNatTableId | String | 是 | 是 | 源地址转换表ID。 | 无 |   |   |
+| SNatIp | String | 是 | 是 | 用于源地址转换的公网IP。 | 必须是NAT网关中带宽包的 IP。每个NAT网关上的公网 IP，不能既存在于端口转发表中，也存在于SNAT表中。 |   |   |
+| SnatEntryName | String | 否 | 是 | SNAT条目的名称。 | 长度为2~128个字符，必须以英文字母或汉字开头，但不能以 http:// 或 https: // 开头。 |   |   |
+|   |   |   |   |   |   | https: |   |
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | // |  |
-
-资源编排
+|   | // |   |
 
 | SourceCIDR | String | 否 | 否 | 交换机或ECS实例的网段。 交换机粒度：指定交换机的网段（如 192.168.1.0/24），当交换机下的ECS实例发起互联网访问请求时，NAT 网关会为其提供SNAT服务（代理上网服务）。如果SnatIp仅指定了一个公网IP，ECS实例使用指定的公网IP访问互联网；如果SnatIp指定了多个公网 IP，ECS实例随机使用 SnatIp中的公网IP访问互联网。 ECS粒度：指定ECS实例的地址（如 192.168.1.1/32），当 ECS实例发起互联网访问请求时，NAT网关会为其提供SNAT服务（代理上网服务）。如果SnatIp仅指定了一个公网IP，ECS 实例使用指定的公网IP访问互联网；如果SnatIp指定了多个公网IP，ECS实例随机使用SnatIp中的公网IP访问互联网。 | 不能同时指定SourceCIDR 和SourceVSwtichId，必须指定其中之一。 |
 |---|---|---|---|---|---|
@@ -6078,57 +6359,92 @@ Fn::GetAtt SNatEntryId：源地址转换表中的表项ID。
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "SourceVSwitchId": {
    "Type": "String",
    "Description": "Allow which switch can access internet."
-  },
+```
+
+`},`
+
+```json
   "SnatEntryName": {
    "Type": "String",
    "Description": "he name of the SNAT rule is 2-128 characters long and must start with a letter or
 Chinese, but cannot begin with HTTP:// or https://."
-  },
+```
+
+`},`
+
+```json
   "SourceCIDR": {
    "Type": "String",
    "Description": "Specifies the network segment of the switch. For example, 10.0.0.1/24. This parame
 ter and the SourceVSwtichId parameter are mutually exclusive and cannot appear at the same time."
-  },
+```
+
+`},`
+
+```json
   "SNatTableId": {
    "Type": "String",
    "Description": "Create SNAT entry in specified SNAT table."
-  },
+```
+
+`},`
+
+```json
   "SNatIp": {
    "Type": "String",
    "Description": "Source IP, must belongs to bandwidth package internet IP"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "SNatTableEntry": {
    "Type": "ALIYUN::ECS::SNatEntry",
    "Properties": {
     "SourceVSwitchId": {
      "Ref": "SourceVSwitchId"
-    },
+```
+
+`},`
+
+```json
     "SnatEntryName": {
      "Ref": "SnatEntryName"
-    },
+```
+
+`},`
+
+```json
     "SourceCIDR": {
      "Ref": "SourceCIDR"
-    },
+```
+
+`},`
+
+```json
     "SNatTableId": {
      "Ref": "SNatTableId"
-    },
+```
+
+`},`
+
+```json
     "SNatIp": {
      "Ref": "SNatIp"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "Outputs": {
   "SNatEntryId": {
    "Description": "The id of created SNAT entry.",
@@ -6138,16 +6454,7 @@ ter and the SourceVSwtichId parameter are mutually exclusive and cannot appear a
      "SNatEntryId"
 ```
 
-]
-
-```
-   }
-  }
- }
-}
-```
-
-资源编排 `YAML` 格式
+`]` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -6173,6 +6480,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
   Description: 'Source IP, must belongs to bandwidth package internet IP'
 Resources:
  SNatTableEntry:
+  Type: 'ALIYUN::ECS::SNatEntry'
   Properties:
    SourceVSwitchId:
     Ref: SourceVSwitchId
@@ -6193,16 +6501,14 @@ Outputs:
     - SNatEntryId
 ```
 
-#### ALIYUN::ECS::SecurityGroup
+#### 7.1.22 ALIYUN::ECS::SecurityGroup
+
+ALIYUN::ECS::SecurityGroup类型用于创建安全组。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::SecurityGroup",
-  "Properties": {
     "VpcId": String,
     "Description": String,
     "SecurityGroupName": String,
@@ -6211,9 +6517,9 @@ Outputs:
     "SecurityGroupIngress": List,
     "ResourceGroupId": String,
     "SecurityGroupType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -6232,20 +6538,21 @@ Outputs:
 
 ```json
 "Tags": [
-  {
-    "Value" : String,
-    "Key" : String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value" : String,
+    "Key" : String
+```
+
+`}` `]`
 
 **Tags属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | Key | String | 是 | 否 | 标签键。 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或 https:// 。 |
 |---|---|---|---|---|---|
@@ -6255,7 +6562,11 @@ Outputs:
 
 ```json
 "SecurityGroupEgress": [
-  {
+```
+
+`{`
+
+```json
     "Description": String,
     "PortRange": String,
     "SecurityGroupId": String,
@@ -6268,10 +6579,9 @@ Outputs:
     "DestGroupOwnerId": String,
     "Ipv6DestCidrIp": String,
     "DestPrefixListId": String
-  }
 ```
 
-]
+`}` `]`
 
 **SecurityGroupEgress属性**
 
@@ -6281,8 +6591,6 @@ Outputs:
 | DestGroupOw nerId | String | 否 | 否 | 跨账号设置安全组规则时，目的端安全组所属的阿里云账号 ID。 | 如果未设置DestGroupOwnerId， 则认为您设置了其它安全组的访问权限。如果您已经设置参数 DestCidrIp，则参数 DestGroupOwnerId无效。 |
 | IpProtocol | String | 是 | 否 | IP协议。 | 取值： tcp udp icmp gre all：同时支持四种协议。 |
 | PortRange | String | 是 | 否 | IP协议相关的端口号范围。 | 目的端安全组开放的传输层协议相关的端口范围。取值： TCP/UDP协议：1~65,535。使用正斜线（/）分隔起始端口和终止端口。 正确示例：1/200。 错误示例：200/1。 ICMP协议：-1/-1。 GRE协议：-1/-1。 all：-1/-1。 |
-
-资源编排
 
 | SecurityGrou pId | String | 否 | 否 | 需要创建出方向规则的安全组 ID。 | 无 |
 |---|---|---|---|---|---|
@@ -6296,11 +6604,8 @@ Outputs:
 
 **SecurityGroupIngress语法**
 
-资源编排
-
 ```json
 "SecurityGroupIngress": [
-  {
     "SourceGroupOwnerId": String,
     "Description": String,
     "PortRange": String,
@@ -6314,10 +6619,9 @@ Outputs:
     "SourcePortRange": String,
     "SourceCidrIp": String,
     "SourcePrefixListId": String
-  }
 ```
 
-]
+`}` `]`
 
 **SecurityGroupIngress属性**
 
@@ -6328,8 +6632,6 @@ Outputs:
 | SourcePrefixL istId | String | 否 | 否 | 需要设置入方向访问权限的源端前缀列表ID。 | 您可以调用云服务ECS的 DescribePrefixLists查询可以使用的前缀列表ID。 安全组的网络类型为经典网络时， 不支持设置前缀列表。 当您指定了SourceCidrIp、 Ipv6DestCidrIp或DestGroupId参数中的任意一个时，将忽略该参数。 |
 | IpProtocol | String | 是 | 否 | IP协议。 | 取值： tcp udp icmp gre all：同时支持四种协议。 |
 | PortRange | String | 是 | 否 | IP协议相关的端口范围。 | 目的端安全组开放的传输层协议相关的端口范围。取值： TCP/UDP协议：1~65535。使用正斜线（/）间隔起始端口和终止端口。 正确示例：1/200。 错误示例：200/1。 ICMP协议：-1/-1。 GRE协议：-1/-1。 all：-1/-1。 |
-
-资源编排
 
 | SourceGroupI d | String | 否 | 否 | 同一地域内的源安全组ID。 | SourceGroupId或者SourceCidrIp 参数必须指定一项。 如果两项都指定，则默认对 SourceCidrIp授权。 如果指定了该参数，且没有指定 SourceCidrIp，则NicType只能选择intranet。 |
 |---|---|---|---|---|---|
@@ -6347,11 +6649,12 @@ Fn::GetAtt SecurityGroupId：安全组ID。 SecurityGroupName：安全组名称�
 
 **示例**
 
-`YAML` 格式资源编排
+`YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
   VpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
     Type: String
     Label:
 ```
@@ -6362,6 +6665,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
       en: Existing VPC Instance ID
 Resources:
   SecurityGroup:
+    Type: ALIYUN::ECS::SecurityGroup
     Properties:
       VpcId:
         Ref: VpcId
@@ -6380,18 +6684,19 @@ Outputs:
     Description: The name of security group.
     Value:
       Fn::GetAtt:
+        - SecurityGroup
         - SecurityGroupName
   SecurityGroupId:
     Description: generated security group id for security group.
     Value:
       Fn::GetAtt:
+        - SecurityGroup
         - SecurityGroupId
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "VpcId": {
@@ -6404,45 +6709,57 @@ Outputs:
 
 ```json
         "en": "Existing VPC Instance ID"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "SecurityGroup": {
       "Type": "ALIYUN::ECS::SecurityGroup",
       "Properties": {
         "VpcId": {
           "Ref": "VpcId"
-        },
+```
+
+`},`
+
+```json
         "SecurityGroupName": "TestSecurityGroupName",
         "SecurityGroupType": "normal",
         "SecurityGroupIngress": [
-          {
-            "PortRange": "22/22",
-            "IpProtocol": "tcp"
-          },
-          {
-            "PortRange": "80/80",
-            "IpProtocol": "tcp"
-          }
 ```
 
-`],`
+`{`
+
+```json
+            "PortRange": "22/22",
+            "IpProtocol": "tcp"
+```
+
+`},` `{`
+
+```json
+            "PortRange": "80/80",
+            "IpProtocol": "tcp"
+```
+
+`}` `],`
 
 ```json
         "SecurityGroupEgress": [
-          {
-            "PortRange": "443/443",
-            "IpProtocol": "tcp"
-          }
 ```
 
-]
+`{`
 
 ```json
-      }
-    }
-  },
+            "PortRange": "443/443",
+            "IpProtocol": "tcp"
+```
+
+`}` `]` `}` `}` `},`
+
+```json
   "Outputs": {
     "SecurityGroupName": {
       "Description": "The name of security group.",
@@ -6452,11 +6769,9 @@ Outputs:
           "SecurityGroupName"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "SecurityGroupId": {
       "Description": "generated security group id for security group.",
       "Value": {
@@ -6465,23 +6780,17 @@ Outputs:
           "SecurityGroupId"
 ```
 
-]
+`]` `}` 更多示例，请参见创建安全组和添加ECS到安全组的组合示例：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.23 ALIYUN::ECS::SecurityGroupClone
 
-资源编排更多示例，请参见创建安全组和添加ECS到安全组的组合示例：JSON示例和YAML示例。
-
-#### ALIYUN::ECS::SecurityGroupClone
+ALIYUN::ECS::SecurityGroupClone类型用于克隆安全组。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::SecurityGroupClone",
   "Properties": {
     "DestinationRegionId": String,
@@ -6492,9 +6801,9 @@ Outputs:
     "ResourceGroupId": String,
     "NetworkType": String,
     "SecurityGroupType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -6509,16 +6818,15 @@ Outputs:
 | DestinationRegi onId | String | 否 | 否 | 将安全组克隆到指定区域。 | 默认值： CURRENT。 |
 | SecurityGroupTy pe | String | 否 | 否 | 安全组类型。 | 取值： normal：基本安全组。 enterprise：高级安全组。 |
 
-资源编排
-
 **返回值**
 
 Fn::GetAtt SecurityGroupId：安全组ID。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SecurityGroupClone": {
@@ -6526,56 +6834,92 @@ Fn::GetAtt SecurityGroupId：安全组ID。
       "Properties": {
         "SourceSecurityGroupId": {
           "Ref": "SourceSecurityGroupId"
-        },
+```
+
+`},`
+
+```json
         "VpcId": {
           "Ref": "VpcId"
-        },
+```
+
+`},`
+
+```json
         "Description": {
           "Ref": "Description"
-        },
+```
+
+`},`
+
+```json
         "SecurityGroupName": {
           "Ref": "SecurityGroupName"
-        },
+```
+
+`},`
+
+```json
         "DestinationRegionId": {
           "Ref": "DestinationRegionId"
-        },
+```
+
+`},`
+
+```json
         "NetworkType": {
           "Ref": "NetworkType"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "SourceSecurityGroupId": {
       "Type": "String",
       "Description": "Source security group ID is used to copy properties to clone new security
 group. If the NetworkType and VpcId is not specified, the same security group will be cloned. If Netw orkType or VpcId is specified, only proper security group rules will be cloned."
-    },
+```
+
+`},`
+
+```json
     "VpcId": {
       "Type": "String",
       "Description": "Physical ID of the VPC."
-    },
+```
+
+`},`
+
+```json
     "Description": {
       "Type": "String",
       "Description": "Description of the security group, [2, 256] characters. Do not fill or empty, t
 he default is empty."
-    },
+```
+
+`},`
+
+```json
     "SecurityGroupName": {
       "Type": "String",
       "Description": "Display name of the security group, [2, 128] English or Chinese characters, mus
 t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
-    },
+```
+
+`},`
+
+```json
     "DestinationRegionId": {
       "Default": "CURRENT",
       "Type": "String",
       "Description": "Clone security group to the specified region. Default to current region."
-    },
     "NetworkType": {
       "Type": "String",
       "Description": "Clone new security group as classic network type. If the VpcId is specified, th
 ```
 
-资源编排 p yg p `yp` p p ,
+`p` `y``g` `p` `yp` `p` `p` `,`
 
 ```json
 e value will be ignored.",
@@ -6583,11 +6927,9 @@ e value will be ignored.",
         "Classic"
 ```
 
-]
+`}` `},`
 
 ```json
-    }
-  },
   "Outputs": {
     "SecurityGroupId": {
       "Description": "Generated security group id of new security group.",
@@ -6597,23 +6939,17 @@ e value will be ignored.",
           "SecurityGroupId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
-
-#### ALIYUN::ECS::SecurityGroupEgress
+#### 7.1.24 ALIYUN::ECS::SecurityGroupEgress
 
 ALIYUN::ECS::SecurityGroupEgress类型用于创建安全组出方向的访问规则。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::SecurityGroupEgress",
   "Properties": {
     "SecurityGroupId": String,
@@ -6628,9 +6964,9 @@ ALIYUN::ECS::SecurityGroupEgress类型用于创建安全组出方向的访问规
     "Description": String,
     "DestGroupOwnerId": String,
     "Ipv6DestCidrIp": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -6638,16 +6974,12 @@ ALIYUN::ECS::SecurityGroupEgress类型用于创建安全组出方向的访问规
 |---|---|---|---|---|---|
 | IpProtocol | String | 是 | 否 | 传输层协议。 | 取值： tcp udp icmp gre all：同时支持四种协议。 |
 
-资源编排
-
 | PortRange | String | 是 | 否 | 目的端安全组开放的传输层协议相关的端口范围。 | 取值： TCP/UDP协议： 1~65535。使用正斜线（/） 隔开起始端口和终止端口。正确示例：1/200； 错误示例： 200/1。 ICMP协议：-1/- 1。 GRE协议：-1/- 1。 all：-1/-1。 |
 |---|---|---|---|---|---|
 | SecurityGroupId | String | 否 | 否 | 源端安全组ID。 | 无 |
 | DestPrefixListId | String | 否 | 否 | 需要设置出方向访问权限的目的端前缀列表ID。 | 您可以调用云服务 ECS的 DescribePrefixLi sts查询可用的前缀列表ID。 当安全组的网络类型为经典网络时， 不支持设置前缀列表。 当您指定了 DestCidrIp、 Ipv6DestCidrIp或 DestGroupId参数中的任意一个时， 将忽略该参数。 |
 | NicType | String | 否 | 否 | 网卡类型。 | 取值： internet（默认值）：公网网卡。 intranet：内网网卡。 当设置安全组之间互相访问时，即指定DestGroupId， 但未指定 DestCidrIp时，该参数取值为 intranet。 |
 | Priority | Integer | 否 | 否 | 安全组规则优先级。 | 取值范围： 1~100。 默认值：1。 |
-
-资源编排
 
 | DestGroupId | String | 否 | 否 | 需要设置访问权限的目的端安全组 ID。 | 至少设置 DestGroupId或者 DestCidrIp其中一项。 如果指定 DestGroupId，但未指定 DestCidrIp，则 NicType取值为 intranet。 如果同时指定 DestGroupId和 DestCidrIp，则以 DestCidrIp的设置为准。 |
 |---|---|---|---|---|---|
@@ -6663,7 +6995,7 @@ Fn::GetAtt 无。
 
 **示例**
 
-`YAML` 格式资源编排
+`YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Description: Test ECS SecurityGroupEgress Parameters:
@@ -6679,6 +7011,7 @@ ROSTemplateFormatVersion: '2015-09-01' Description: Test ECS SecurityGroupEgress
       en: Security Group ID
 Resources:
   SgEgress:
+    Type: ALIYUN::ECS::SecurityGroupEgress
     Properties:
       IpProtocol: all
       PortRange: '-1/-1'
@@ -6687,10 +7020,9 @@ Resources:
         Ref: SecurityGroupId
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": "Test ECS SecurityGroupEgress",
   "Parameters": {
@@ -6704,9 +7036,11 @@ Resources:
 
 ```json
         "en": "Security Group ID"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "SgEgress": {
       "Type": "ALIYUN::ECS::SecurityGroupEgress",
@@ -6716,25 +7050,18 @@ Resources:
         "NicType": "intranet",
         "SecurityGroupId": {
           "Ref": "SecurityGroupId"
-        }
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::SecurityGroupIngress
+`}` `}` `}` `}` `}`
+
+#### 7.1.25 ALIYUN::ECS::SecurityGroupIngress
 
 ALIYUN::ECS::SecurityGroupIngress类型用于创建安全组入方向的访问规则。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::SecurityGroupIngress",
-  "Properties": {
     "SourceGroupOwnerId": String,
     "Description": String,
     "PortRange": String,
@@ -6748,9 +7075,9 @@ ALIYUN::ECS::SecurityGroupIngress类型用于创建安全组入方向的访问�
     "SourcePortRange": String,
     "SourceCidrIp": String,
     "SourcePrefixListId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -6758,8 +7085,6 @@ ALIYUN::ECS::SecurityGroupIngress类型用于创建安全组入方向的访问�
 |---|---|---|---|---|---|
 | IpProtocol | String | 是 | 否 | IP协议。 | 取值： tcp udp icmp gre all：同时支持四种协议。 |
 | PortRange | String | 是 | 否 | 目的端安全组开放的传输层协议相关的端口范围。 | 取值： TCP/UDP协议： 1~65535。使用正斜线（/） 隔开起始端口和终止端口。正确示例：1/200； 错误示例： 200/1。 ICMP协议：-1/- 1。 GRE协议：-1/- 1。 all：-1/-1。 |
-
-资源编排
 
 | SourcePrefixListI d | String | 否 | 否 | 需要设置入方向访问权限的目的端前缀列表ID。 | 您可以调用云服务 ECS的 DescribePrefixLi sts查询可以使用的前缀列表ID。 安全组的网络类型为经典网络时，不支持设置前缀列表。 当您指定了 SourceCidrIp、 Ipv6SourceCidrI p与 SourceFroupId参数中的任意一个时，将忽略该参数。 |
 |---|---|---|---|---|---|
@@ -6769,8 +7094,6 @@ ALIYUN::ECS::SecurityGroupIngress类型用于创建安全组入方向的访问�
 | Priority | Integer | 否 | 否 | 安全组规则优先级。 | 取值范围： 1~100。 默认值：1。 |
 | SourceCidrIp | String | 否 | 否 | 源端IPv4 CIDR地址段。 | 仅支持IPv4格式的 IP地址范围。 |
 | Policy | String | 否 | 否 | 访问权限。 | 取值： accept（默认值）：接受访问。 drop：拒绝访问。 |
-
-资源编排
 
 | SourceGroupOw nerId | String | 否 | 否 | 跨账户设置安全组规则时，源端安全组所属的阿里云账户ID。 | 如果 SourceGroupOw nerId未设置，则默认设置您其他安全组的访问权限。 如果已经设置 SourceCidrIp，则 SourceGroupOw nerId的设置无效。 |
 |---|---|---|---|---|---|
@@ -6784,7 +7107,7 @@ Fn::GetAtt 无。
 
 **示例**
 
-`YAML` 格式资源编排
+`YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -6824,6 +7147,7 @@ g format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'
       - intranet
 Resources:
   SecurityGroupIngress:
+    Type: ALIYUN::ECS::SecurityGroupIngress
     Properties:
       SecurityGroupId:
         Ref: SecurityGroupId
@@ -6837,10 +7161,9 @@ Resources:
         Ref: PortRange
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "PortRange": {
@@ -6848,24 +7171,30 @@ Resources:
       "Default": "-1/-1",
       "Description": "Ip protocol relative port range. For tcp and udp, the port rang is [1,65535],
 using format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'"
-    },
+```
+
+`},`
+
+```json
     "SecurityGroupId": {
        "Type": "String",
       "AssociationProperty": "ALIYUN::ECS::SecurityGroup::SecurityGroupId",
       "Label": {
 ```
 
-"安全组 "h " " 资源编排 `"zh-cn": "`安全组`ID",`
+`"`安全组 `"``h` `"` `"` `"zh-cn": "`安全组`ID",`
 
 ```json
         "en": "Security Group ID"
-      }
-    },
     "SourceCidrIp": {
       "Type": "String",
       "Description": "Source CIDR Ip Address range. Only IPV4 supported.",
       "Default": "0.0.0.0/0"
-    },
+```
+
+`},`
+
+```json
     "IpProtocol": {
       "Type": "String",
       "Description": "Ip protocol for in rule.",
@@ -6877,10 +7206,9 @@ using format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'"
         "all"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "NicType": {
       "Type": "String",
       "Description": "Network type, could be 'internet' or 'intranet'. Default value is internet.",
@@ -6889,46 +7217,55 @@ using format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'"
         "intranet"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "Resources": {
     "SecurityGroupIngress": {
       "Type": "ALIYUN::ECS::SecurityGroupIngress",
       "Properties": {
         "SecurityGroupId": {
           "Ref": "SecurityGroupId"
-        },
-        "SourceCidrIp": {
-          "Ref": "SourceCidrIp"
-        },
-        "IpProtocol": {
-          "Ref": "IpProtocol"
-        },
-        "NicType": {
-          "Ref": "NicType"
-        },
-        "PortRange": {
-          "Ref": "PortRange"
-        }
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::ECS::Snapshot
+`},`
+
+```json
+        "SourceCidrIp": {
+          "Ref": "SourceCidrIp"
+```
+
+`},`
+
+```json
+        "IpProtocol": {
+          "Ref": "IpProtocol"
+```
+
+`},`
+
+```json
+        "NicType": {
+          "Ref": "NicType"
+```
+
+`},`
+
+```json
+        "PortRange": {
+          "Ref": "PortRange"
+```
+
+`}` `}` `}` `}` `}`
+
+#### 7.1.26 ALIYUN::ECS::Snapshot
+
+ALIYUN::ECS::Snapshot类型用于创建磁盘快照。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::Snapshot",
-  "Properties": {
     "SnapshotName": String,
     "Timeout": Integer,
     "Description": String,
@@ -6938,9 +7275,9 @@ using format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'"
     "InstantAccessRetentionDays": Integer,
     "ResourceGroupId": String,
     "RetentionDays": Integer
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -6953,8 +7290,6 @@ using format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'"
 | ResourceGro upId | String | 否 | 是 | 磁盘快照所属的资源组ID。 | 无 |
 | Tags | List | 否 | 是 | 标签。 | 最多支持添加20个标签。 更多信息，请参见Tags属性。 |
 
-资源编排
-
 | InstantAccess | Boolean | 否 | 否 | 是否开启快照极速可用功能。 | 取值： true：开启。仅ESSD云盘支持开启该功能。 false（默认值）：关闭。即创建标准快照。 |
 |---|---|---|---|---|---|
 | InstantAccess RetentionDay s | Integer | 否 | 否 | 设置快照极速可用功能的保留时间，保留时间到期后快照将自动释放。 | 该参数仅在InstantAccess取值为 true时生效。 取值范围：1~65,535。 单位：天。 |
@@ -6964,13 +7299,16 @@ using format '1/200'For icmp|gre|all protocel, the port range should be '-1/-1'"
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -6985,14 +7323,16 @@ Fn::GetAtt SnapshotId：快照ID。 Arn：阿里云资源名称。
 
 **示例**
 
-YAML JSON 资源编排
+YAML JSON
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
   DiskId:
     Type: String
+    AssociationProperty: ALIYUN::ECS::Disk::DiskId
 Resources:
   Snapshot:
+    Type: ALIYUN::ECS::Snapshot
     Properties:
       Timeout: 300
       DiskId:
@@ -7002,28 +7342,30 @@ Outputs:
     Description: The snapshot ID.
     Value:
       Fn::GetAtt:
+        - Snapshot
         - SnapshotId
 ```
 
 更多示例，请参见挂载ECS磁盘和创建磁盘快照的组合示例：YAML示例。
 
-#### ALIYUN::ECS::SSHKeyPair
+#### 7.1.27 ALIYUN::ECS::SSHKeyPair
 
 ALIYUN::ECS::SSHKeyPair类型用于创建SSH密钥对或导入已有的SSH密钥对。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::SSHKeyPair",
   "Properties": {
     "ResourceGroupId": String,
     "KeyPairName": String,
     "PublicKeyBody": String,
     "Tags": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -7036,17 +7378,13 @@ ALIYUN::ECS::SSHKeyPair类型用于创建SSH密钥对或导入已有的SSH密钥
 
 **Tags语法**
 
-资源编排
-
 ```json
 "Tags": [
-  {
     "Key": String,
     "Value": String
-  }
 ```
 
-]
+`}` `]`
 
 **Tags属性**
 
@@ -7061,57 +7399,76 @@ Fn::GetAtt KeyPairFingerPrint：密钥对的指纹。根据RFC4716定义的公�
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "KeyPairName": {
    "Type": "String",
    "Description": "SSH key pair name. It must be unique. [2, 128] characters. All character sets are
 supported. Do not start with a special character, digit, http://, or https://. It can contain digits, \".\", \"_\", or \"-\"."
-  },
+```
+
+`},`
+
+```json
   "ResourceGroupId": {
    "Type": "String",
    "Description": "Resource group id."
-  },
+```
+
+`},`
+
+```json
   "Tags": {
    "Type": "Json",
    "Description": "Tags to attach to instance. Max support 20 tags to add during create instance. Eac
 h tag with two properties Key and Value, and Key is required.",
    "MaxLength": 20
-  },
+```
+
+`},`
+
+```json
   "PublicKeyBody": {
    "Type": "String",
    "Description": "SSH Public key. If PublicKeyBody is specified, existed public key body will be imp
 orted instead of creating new SSH key pair."
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "SSHKeyPair": {
    "Type": "ALIYUN::ECS::SSHKeyPair",
-   "Properties": {
 ```
-
-资源编排
 
 ```json
     "KeyPairName": {
      "Ref": "KeyPairName"
-    },
     "ResourceGroupId": {
      "Ref": "ResourceGroupId"
-    },
+```
+
+`},`
+
+```json
     "Tags": {
      "Ref": "Tags"
-    },
+```
+
+`},`
+
+```json
     "PublicKeyBody": {
      "Ref": "PublicKeyBody"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "Outputs": {
   "KeyPairFingerPrint": {
    "Description": "The fingerprint of the key pair. The public key fingerprint format defined in RFC4
@@ -7122,11 +7479,9 @@ orted instead of creating new SSH key pair."
      "KeyPairFingerPrint"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "KeyPairName": {
    "Description": "SSH Key pair name.",
    "Value": {
@@ -7135,11 +7490,9 @@ orted instead of creating new SSH key pair."
      "KeyPairName"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "PrivateKeyBody": {
    "Description": "The private key of the key pair. Content of the RSA private key in the PKCS#8 form
 at of the unencrypted PEM encoding. Refer to: https://www.openssl.org/docs/apps/pkcs8.html.User only can get the private key one time when and only when SSH key pair is created.",
@@ -7149,16 +7502,7 @@ at of the unencrypted PEM encoding. Refer to: https://www.openssl.org/docs/apps/
      "PrivateKeyBody"
 ```
 
-]
-
-```
-   }
-  }
- }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -7190,17 +7534,20 @@ Resources:
     Ref: ResourceGroupId
    Tags:
     Ref: Tags
+  Type: ALIYUN::ECS::SSHKeyPair
 Outputs:
  KeyPairFingerPrint:
   Description: 'The fingerprint of the key pair. The public key fingerprint format
    defined in RFC4716: MD5 message digest algorithm.'
   Value:
    Fn::GetAtt:
+   - SSHKeyPair
    - KeyPairFingerPrint
  KeyPairName:
   Description: SSH Key pair name.
   Value:
    Fn::GetAtt:
+   - SSHKeyPair
    - KeyPairName
  PrivateKeyBody:
   Description: 'The private key of the key pair. Content of the RSA private key
@@ -7209,26 +7556,26 @@ https://www.openssl.org/docs/apps/pkcs8.html.User
    only can get the private key one time when and only when SSH key pair is created.'
   Value:
    Fn::GetAtt:
+   - SSHKeyPair
    - PrivateKeyBody
 ```
 
 更多示例，请参见创建单个ECS实例、创建SSH密钥对和绑定SSH密钥和ECS实例的组合示例：JSON示例和YAML示例。
 
-#### ALIYUN::ECS::SSHKeyPairAttachment
+#### 7.1.28 ALIYUN::ECS::SSHKeyPairAttachment
 
-ALIYUN::ECS::SSHKeyPairAttachment类型用于绑定SSH密钥对到ECS实例。 资源编排
+ALIYUN::ECS::SSHKeyPairAttachment类型用于绑定SSH密钥对到ECS实例。
 
 **语法**
 
 ```json
-{
   "Type": "ALIYUN::ECS::SSHKeyPairAttachment",
   "Properties": {
     "InstanceIds": List,
     "KeyPairName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -7243,8 +7590,9 @@ Fn::GetAtt 无。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SSHKeyPairAttachment": {
@@ -7256,25 +7604,16 @@ Fn::GetAtt 无。
           'i-2zebt3kfvxm28y9o****'
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.29 ALIYUN::ECS::VPC
 
-#### ALIYUN::ECS::VPC
+ALIYUN::ECS::VPC类型用于创建专有网络。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ECS::VPC",
-  "Properties": {
     "Description": String,
     "Tags": List,
     "Ipv6CidrBlock": String,
@@ -7285,9 +7624,9 @@ Fn::GetAtt 无。
     "Ipv6Isp": String,
     "UserCidr": String,
     "SecondaryCidrBlock": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -7301,8 +7640,6 @@ Fn::GetAtt 无。
 | EnableIpv6 | Boolean | 否 | 是 | 是否开启IPv6 网段。 | 取值： true：开启。 false（默认值）：关闭。 |
 | Tags | List | 否 | 是 | 标签。 | 最多支持20个标签。 更多信息，请参见Tags属性。 |
 
-资源编排
-
 | Ipv6Isp | String | 否 | 否 | 专有网络的 IPv6地址段类型。 | 取值： BGP（默认值）：阿里云BGP IPv6。 ChinaMobile：中国移动（单线）。 ChinaUnicom：中国联通（单线）。 ChinaTelecom：中国电信（单线）。 说明如果是开通了单线带宽白名单的用户，该参数可以设置为 ChinaTelecom（中国电信）、ChinaUnicom（中国联通）和ChinaMobile（中国移动）。 |
 |---|---|---|---|---|---|
 | UserCidr | String | 否 | 否 | 用户网段。 | 如需定义多个网段，请使用半角逗号（,）分隔。最多支持3个网段。 |
@@ -7312,13 +7649,16 @@ Fn::GetAtt 无。
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -7329,7 +7669,7 @@ Fn::GetAtt 无。
 
 **返回值**
 
-Fn::GetAtt VpcId：专有网络ID。 资源编排 VRouterId：路由器ID。 RouteTableId：路由表ID。
+Fn::GetAtt VpcId：专有网络ID。 VRouterId：路由器ID。 RouteTableId：路由表ID。
 
 **示例**
 
@@ -7345,6 +7685,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Description: Display name of the vpc instance, [2, 128] English or Chinese characters, must sta
 rt with a letter or Chinese in size, can contain numbers, '_' or '.', '-' Resources:
   Vpc:
+    Type: ALIYUN::ECS::VPC
     Properties:
       CidrBlock:
         Ref: CidrBlock
@@ -7371,35 +7712,46 @@ Outputs:
         - VpcId
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "CidrBlock": {
       "Type": "String",
       "AssociationProperty": "ALIYUN::VPC::VPC::CidrBlock"
-    },
+```
+
+`},`
+
+```json
     "VpcName": {
       "Type": "String",
       "Description": "Display name of the vpc instance, [2, 128] English or Chinese characters, mus
 t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Vpc": {
       "Type": "ALIYUN::ECS::VPC",
       "Properties": {
         "CidrBlock": {
           "Ref": "CidrBlock"
-        },
+```
+
+`},`
+
+```json
         "VpcName": {
           "Ref": "VpcName"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "VRouterId": {
       "Description": "Router id of created VPC.",
@@ -7409,11 +7761,9 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
           "VRouterId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "RouteTableId": {
       "Description": "The router table id of created VPC.",
       "Value": {
@@ -7422,11 +7772,9 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
           "RouteTableId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "VpcId": {
       "Description": "Id of created VPC.",
       "Value": {
@@ -7435,25 +7783,17 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
           "VpcId"
 ```
 
-]
+`]` `}` `}` `}` `}` 更多示例，请参见创建专有网络、创建专有网络中的交换机、在SNAT列表中添加SNAT条目、创建共享带宽实例、添加EIP 到共享带宽中、创建IPv6网关和为IPv6地址购买公网带宽的组合示例：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.1.30 ALIYUN::ECS::VSwitch
 
-更多示例，请参见创建专有网络、创建专有网络中的交换机、在SNAT列表中添加SNAT条目、创建共享带宽实例、添加EIP 到共享带宽中、创建IPv6网关和为IPv6地址购买公网带宽的组合示例：JSON示例和YAML示例。
-
-#### ALIYUN::ECS::VSwitch
-
-资源编排
+ALIYUN::ECS::VSwitch类型用于创建交换机。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ECS::VSwitch",
   "Properties": {
     "VSwitchName": String,
@@ -7465,46 +7805,42 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
     "CidrBlock": String,
     "VpcIpv6CidrBlock": String,
     "ZoneType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
-|  | 属性名称 |  | 类型 | 必须 | 允许更新 | 描述 | 约束 |
+|   | 属性名称 |   | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|---|---|
-|  | VpcId |  | String | 是 | 否 | 要创建交换机的专有网络ID。 | 无 |
-|  | ZoneId |  | String | 是 | 否 | 可用区ID。 | 无 |
-|  | VSwitchNam e |  | String | 否 | 是 | 交换机名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 或 https:// 开头。可包含英文字母、汉字、数字、下划线（ ）和短划线（-）。 _ |
-|  |  | VSwitchNam |  |  |  |  |  |
-|  | e |  |  |  |  |  |  |
-|  | CidrBlock |  | String | 是 | 否 | 交换机网段。 | 必须是所属专有网络的子网段，并且没有被其他交换机占用。 |
-|  |  | CidrBlock |  |  |  |  |  |
-|  | Descriptio n |  | String | 否 | 是 | 交换机描述。 | 长度为2~256个字符。不能以 http:// 和 https:// 开头。 |
-|  |  | Descriptio |  |  |  |  |  |
-|  | n |  |  |  |  |  |  |
-|  | Ipv6CidrBl ock |  | Integer | 否 | 否 | 交换机的IPv6 网段。 | 取值范围：0~255（十进制）。 交换机的IPv6网段掩码默认为64 位。 支持自定义VPC IPv6网段的最后8 位。 |
-|  |  | Ipv6CidrBl | In |  |  |  |  |
-|  | ock |  |  |  |  |  |  |
-|  | Tags |  | List | 否 | 是 | 标签。 | 最多支持20个标签。 更多信息，请参见Tags属性。 |
-|  | VpcIpv6Cid rBlock |  | String | 否 | 否 | 专有网络的 IPv6网段。 | 无 |
-|  |  | VpcIpv6Cid | Strin |  |  |  |  |
-|  | rBlock |  |  |  |  |  |  |
-|  | ZoneType |  | String | 否 | 否 | 要查询的分区类型。 | 默认值： AvailabilityZone 。 |
+|   | VpcId |   | String | 是 | 否 | 要创建交换机的专有网络ID。 | 无 |
+|   | ZoneId |   | String | 是 | 否 | 可用区ID。 | 无 |
+|   | VSwitchNam e |   | String | 否 | 是 | 交换机名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 或 https:// 开头。可包含英文字母、汉字、数字、下划线（ ）和短划线（-）。 _ |
+|   |   | VSwitchNam |   |   |   |   |   |
+|   | e |   |   |   |   |   |   |
+|   | CidrBlock |   | String | 是 | 否 | 交换机网段。 | 必须是所属专有网络的子网段，并且没有被其他交换机占用。 |
+|   |   | CidrBlock |   |   |   |   |   |
+|   | Descriptio n |   | String | 否 | 是 | 交换机描述。 | 长度为2~256个字符。不能以 http:// 和 https:// 开头。 |
+|   |   | Descriptio |   |   |   |   |   |
+|   | n |   |   |   |   |   |   |
+|   | Ipv6CidrBl ock |   | Integer | 否 | 否 | 交换机的IPv6 网段。 | 取值范围：0~255（十进制）。 交换机的IPv6网段掩码默认为64 位。 支持自定义VPC IPv6网段的最后8 位。 |
+|   |   | Ipv6CidrBl | In |   |   |   |   |
+|   | ock |   |   |   |   |   |   |
+|   | Tags |   | List | 否 | 是 | 标签。 | 最多支持20个标签。 更多信息，请参见Tags属性。 |
+|   | VpcIpv6Cid rBlock |   | String | 否 | 否 | 专有网络的 IPv6网段。 | 无 |
+|   |   | VpcIpv6Cid | Strin |   |   |   |   |
+|   | rBlock |   |   |   |   |   |   |
+|   | ZoneType |   | String | 否 | 否 | 要查询的分区类型。 | 默认值： AvailabilityZone 。 |
 
 **Tags语法**
 
-资源编排
-
 ```json
 "Tags": [
-  {
     "Value": String,
     "Key": String
-  }
 ```
 
-]
+`}` `]`
 
 **Tags属性**
 
@@ -7519,10 +7855,9 @@ Fn::GetAtt CidrBlock：交换机的IPv4网段。 Ipv6CidrBlock：交换机的IPv
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "VSwitchZoneId": {
@@ -7536,22 +7871,35 @@ Fn::GetAtt CidrBlock：交换机的IPv4网段。 Ipv6CidrBlock：交换机的IPv
 
 ```json
         "en": "VSwitch Availability Zone"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Resources": {
     "EcsVSwitch": {
       "Type": "ALIYUN::ECS::VSwitch",
       "Properties": {
         "VpcId": {
           "Ref": "EcsVpc"
-        },
+```
+
+`},`
+
+```json
         "ZoneId": {
           "Ref": "VSwitchZoneId"
-        },
+```
+
+`},`
+
+```json
         "CidrBlock": "192.168.0.0/24"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "EcsVpc": {
       "Type": "ALIYUN::ECS::VPC",
       "Properties": {
@@ -7561,41 +7909,36 @@ Fn::GetAtt CidrBlock：交换机的IPv4网段。 Ipv6CidrBlock：交换机的IPv
             "-",
 ```
 
-[
+`[`
 
-```json
+```
               "StackId",
-              {
-                "Ref": "ALIYUN::StackId"
-              }
 ```
 
-] ]
+`{`
 
 ```json
-        }
-      }
-    }
-  },
-  "Outputs": {
-  }
-}
+                "Ref": "ALIYUN::StackId"
 ```
 
-更多示例，请参见创建专有网络、创建专有网络中的交换机、在SNAT列表中添加SNAT条目、创建共享带宽实例、添加EIP 到共享带宽中、创建IPv6网关和为IPv6地址购买公网带宽的组合示例：JSON示例和YAML示例。
+`}` `]` `]` `}` `}` `}` `},`
 
-### ESS
+```json
+  "Outputs": {
+```
 
-#### ALIYUN::ESS::AlarmTask
+`}` `}` 更多示例，请参见创建专有网络、创建专有网络中的交换机、在SNAT列表中添加SNAT条目、创建共享带宽实例、添加EIP 到共享带宽中、创建IPv6网关和为IPv6地址购买公网带宽的组合示例：JSON示例和YAML示例。
+
+### 7.2 ESS
+
+#### 7.2.1 ALIYUN::ESS::AlarmTask
+
+ALIYUN::ESS::AlarmTask类型用于创建监控项报警任务。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ESS::AlarmTask",
-  "Properties": {
     "Statistics": String,
     "Name": String,
     "EvaluationCount": Integer,
@@ -7609,9 +7952,9 @@ Fn::GetAtt CidrBlock：交换机的IPv4网段。 Ipv6CidrBlock：交换机的IPv
     "MetricName": String,
     "GroupId": Integer,
     "Description": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -7633,17 +7976,13 @@ Fn::GetAtt CidrBlock：交换机的IPv4网段。 Ipv6CidrBlock：交换机的IPv
 
 **Dimensions语法**
 
-资源编排
-
 ```json
 "Dimensions": [
-  {
     "DimensionKey": String,
     "DimensionValue": String
-  }
 ```
 
-]
+`}` `]`
 
 **Dimensions属性**
 
@@ -7658,8 +7997,9 @@ Fn::GetAtt AlarmTaskId：报警任务ID。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "ComparisonOperator": {
@@ -7672,18 +8012,25 @@ Fn::GetAtt AlarmTaskId：报警任务ID。
         "<"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "Description": {
       "Type": "String",
       "Description": "Description"
-    },
+```
+
+`},`
+
+```json
     "ScalingGroupId": {
       "Type": "String",
       "Description": "The ID of the scaling group."
-    },
+```
+
+`},`
+
+```json
     "MetricType": {
       "Type": "String",
       "Description": "Metric Type",
@@ -7692,15 +8039,18 @@ Fn::GetAtt AlarmTaskId：报警任务ID。
         "custom"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "EvaluationCount": {
       "Type": "Number",
       "Description": "Evaluation Count",
       "MinValue": 1
-    },
+```
+
+`},`
+
+```json
     "Period": {
       "Type": "Number",
       "Description": "Period",
@@ -7709,21 +8059,17 @@ Fn::GetAtt AlarmTaskId：报警任务ID。
         120,
 ```
 
-资源编排
-
-```
-        300,
-```
-
-]
-
 ```json
-    },
+        300,
     "Dimensions": {
       "Type": "CommaDelimitedList",
       "Description": "Dimensions",
       "MinLength": 1
-    },
+```
+
+`},`
+
+```json
     "Statistics": {
       "Type": "String",
       "Description": "Statistics",
@@ -7733,109 +8079,165 @@ Fn::GetAtt AlarmTaskId：报警任务ID。
         "Maximum"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "Name": {
       "Type": "String",
       "Description": "Name"
-    },
+```
+
+`},`
+
+```json
     "GroupId": {
       "Type": "Number",
       "Description": "Group Id"
-    },
+```
+
+`},`
+
+```json
     "MetricName": {
       "Type": "String",
       "Description": "Metric Name"
-    },
+```
+
+`},`
+
+```json
     "AlarmAction": {
       "Type": "CommaDelimitedList",
       "Description": "Alarm Actions",
       "MinLength": 1,
       "MaxLength": 5
-    },
+```
+
+`},`
+
+```json
     "Threshold": {
       "Type": "Number",
       "Description": "Threshold"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "AlarmTask": {
       "Type": "ALIYUN::ESS::AlarmTask",
       "Properties": {
         "ComparisonOperator": {
           "Ref": "ComparisonOperator"
-        },
-        "Description": {
-          "Ref": "Description"
-        },
-        "ScalingGroupId": {
-          "Ref": "ScalingGroupId"
-        },
-        "MetricType": {
-          "Ref": "MetricType"
-        },
-        "EvaluationCount": {
-          "Ref": "EvaluationCount"
-        },
-        "Period": {
-          "Ref": "Period"
-}
 ```
 
-资源编排
+`},`
 
 ```json
-        },
+        "Description": {
+          "Ref": "Description"
+```
+
+`},`
+
+```json
+        "ScalingGroupId": {
+          "Ref": "ScalingGroupId"
+```
+
+`},`
+
+```json
+        "MetricType": {
+          "Ref": "MetricType"
+```
+
+`},`
+
+```json
+        "EvaluationCount": {
+          "Ref": "EvaluationCount"
+        "Period": {
+          "Ref": "Period"
+```
+
+```json
         "Dimensions": {
           "Fn::Split": [
             ",",
-            {
-              "Ref": "Dimensions"
-            },
-            {
-              "Ref": "Dimensions"
-            }
 ```
 
-]
+`{`
 
 ```json
-        },
+              "Ref": "Dimensions"
+```
+
+`},` `{`
+
+```json
+              "Ref": "Dimensions"
+```
+
+`}` `]` `},`
+
+```json
         "Statistics": {
           "Ref": "Statistics"
-        },
+```
+
+`},`
+
+```json
         "Name": {
           "Ref": "Name"
-        },
+```
+
+`},`
+
+```json
         "GroupId": {
           "Ref": "GroupId"
-        },
+```
+
+`},`
+
+```json
         "MetricName": {
           "Ref": "MetricName"
-        },
+```
+
+`},`
+
+```json
         "AlarmAction": {
           "Fn::Split": [
             ",",
-            {
-              "Ref": "AlarmAction"
-            },
-            {
-              "Ref": "AlarmAction"
-            }
 ```
 
-]
+`{`
 
 ```json
-        },
+              "Ref": "AlarmAction"
+```
+
+`},` `{`
+
+```json
+              "Ref": "AlarmAction"
+```
+
+`}` `]` `},`
+
+```json
         "Threshold": {
           "Ref": "Threshold"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "AlarmTaskId": {
       "Description": "The alarm task ID",
@@ -7845,32 +8247,21 @@ Fn::GetAtt AlarmTaskId：报警任务ID。
           "AlarmTaskId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
-
-#### ALIYUN::ESS::AlarmTaskEnable
+#### 7.2.2 ALIYUN::ESS::AlarmTaskEnable
 
 ALIYUN::ESS::AlarmTaskEnable类型用于启动报警任务。当您的报警任务处于停止状态时，可以使用此接口启用报警任务。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ESS::AlarmTaskEnable",
-  "Properties": {
     "AlarmTaskId": String,
     "Enable": Boolean
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -7885,8 +8276,9 @@ Fn::GetAtt 无
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "Enable": {
@@ -7899,40 +8291,47 @@ Fn::GetAtt 无
         "false"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "AlarmTaskId": {
       "Type": "String",
       "Description": "The id of alarm task."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "AlarmTaskEnable": {
       "Type": "ALIYUN::ESS::AlarmTaskEnable",
       "Properties": {
         "Enable": {
           "Ref": "Enable"
-        },
-        "AlarmTaskId": {
-          "Ref": "AlarmTaskId"
-        }
-      }
-    }
-  },
-  "Outputs": {}
-}
 ```
 
-#### ALIYUN::ESS::LifecycleHook
+`},`
 
-ALIYUN::ESS::LifecycleHook类型用于为一个伸缩组创建生命周期挂钩。 资源编排
+```json
+        "AlarmTaskId": {
+          "Ref": "AlarmTaskId"
+```
+
+`}` `}` `}` `},`
+
+```json
+  "Outputs": {}
+```
+
+`}`
+
+#### 7.2.3 ALIYUN::ESS::LifecycleHook
+
+ALIYUN::ESS::LifecycleHook类型用于为一个伸缩组创建生命周期挂钩。
 
 **语法**
 
 ```json
-{
   "Type": "ALIYUN::ESS::LifecycleHook",
   "Properties": {
     "LifecycleHookName": String,
@@ -7942,9 +8341,9 @@ ALIYUN::ESS::LifecycleHook类型用于为一个伸缩组创建生命周期挂钩
     "ScalingGroupId": String,
     "DefaultResult": String,
     "LifecycleTransition": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -7954,19 +8353,17 @@ ALIYUN::ESS::LifecycleHook类型用于为一个伸缩组创建生命周期挂钩
 | NotificationArn | String | 否 | 是 | 生命周期挂钩通知对象标识符。 | 目前我们支持消息服务 MNS 队列或主题，参数取值格式：acs:ess:{region}: {account-id}:{resource- relative-id}。 region ：伸缩组所在的地域 account-id ：阿里云账号 ID 例如： MNS 队列：acs:ess: {region}:{account- id}:queue/{queuenam e} MNS 主题：acs:ess: {region}:{account- id}:topic/{topicname} |
 | HeartbeatTimeout | Integer | 否 | 是 | 生命周期挂钩为伸缩组活动设置的等待时间，等待状态超时后会执行下一步动作。 | 取值范围：[30, 21600]， 单位为秒。 默认值：600。 |
 
-资源编排
-
-| NotificationMetad ata | String | 否 |  |  |  | 伸缩活动的等待状态的固定字符串信息。 弹性伸缩每次推送消息到通知对象时，会同时发送您预先指定的 NotificationMetadata 参数值，便于管理和标记不同类别的通知信息。当您同时指定了 NotificationArn 参数时， NotificationMetad ata 参数方可生效。 |  |  | 参数长度不能超过 128 个字符。 |
+| NotificationMetad ata | String | 否 |   |   |   | 伸缩活动的等待状态的固定字符串信息。 弹性伸缩每次推送消息到通知对象时，会同时发送您预先指定的 NotificationMetadata 参数值，便于管理和标记不同类别的通知信息。当您同时指定了 NotificationArn 参数时， NotificationMetad ata 参数方可生效。 |   |   | 参数长度不能超过 128 个字符。 |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | NotificationMetadata |  |  |
-|  |  |  |  |  | 是 |  |  |  |  |
-|  |  |  |  |  |  |  |  | NotificationMetad |  |
-|  |  |  |  |  |  | ata |  |  |  |
-| ScalingGroupId | String | 是 |  |  | 否 | 伸缩组 ID。 |  |  | 无 |
-| DefaultResult | String | 否 |  |  | 是 | 等待状态结束后的下一步动作。 当伸缩组发生弹性收缩活动 （ SCALE IN ）并触发多 _ 个生命周期挂钩时， DefaultResult=ABA NDON 的生命周期挂钩触发的等待状态结束时，会提前将其它对应的等待状态提前结束。其他情况下，下一步动作均以最后一个结束等待状态的下一步动作为准。 |  |  | 取值范围： CONTINUE：继续响应弹性扩张活动或者继续响应弹性收缩活动。 ABANDON：直接释放弹性扩张活动创建出来的 ECS 实例或者直接将弹性收缩活动中的 ECS 实例从伸缩组移除。 默认值：CONTINUE |
-|  |  |  |  |  |  |  |  | DefaultResult=ABA | 性 |
-|  |  |  |  |  |  | NDON |  |  |  |
-| LifecycleTransitio n | String | 是 |  |  | 是 | 生命周期挂钩适用的伸缩活动类型。 |  |  | 取值范围： SCALE OUT：伸缩组弹 _ 性扩张活动 SCALE IN：伸缩组弹性 _ 收缩活动 |
+|   |   |   |   |   |   |   | NotificationMetadata |   |   |
+|   |   |   |   |   | 是 |   |   |   |   |
+|   |   |   |   |   |   |   |   | NotificationMetad |   |
+|   |   |   |   |   |   | ata |   |   |   |
+| ScalingGroupId | String | 是 |   |   | 否 | 伸缩组 ID。 |   |   | 无 |
+| DefaultResult | String | 否 |   |   | 是 | 等待状态结束后的下一步动作。 当伸缩组发生弹性收缩活动 （ SCALE IN ）并触发多 _ 个生命周期挂钩时， DefaultResult=ABA NDON 的生命周期挂钩触发的等待状态结束时，会提前将其它对应的等待状态提前结束。其他情况下，下一步动作均以最后一个结束等待状态的下一步动作为准。 |   |   | 取值范围： CONTINUE：继续响应弹性扩张活动或者继续响应弹性收缩活动。 ABANDON：直接释放弹性扩张活动创建出来的 ECS 实例或者直接将弹性收缩活动中的 ECS 实例从伸缩组移除。 默认值：CONTINUE |
+|   |   |   |   |   |   |   |   | DefaultResult=ABA | 性 |
+|   |   |   |   |   |   | NDON |   |   |   |
+| LifecycleTransitio n | String | 是 |   |   | 是 | 生命周期挂钩适用的伸缩活动类型。 |   |   | 取值范围： SCALE OUT：伸缩组弹 _ 性扩张活动 SCALE IN：伸缩组弹性 _ 收缩活动 |
 
 **返回值**
 
@@ -7974,8 +8371,9 @@ Fn::GetAtt LifecycleHookId: 生命周期挂钩 ID。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "LifecycleHookName": {
@@ -7983,7 +8381,11 @@ Fn::GetAtt LifecycleHookId: 生命周期挂钩 ID。
       "Description": "The name of the lifecycle hook. Each name must be unique within a scaling group
 . The name must be 2 to 40 characters in length and can contain letters, numbers, Chinese characters, and special characters including underscores (_), hyphens (-) and periods (.).\nDefault value: Lifecy cle Hook ID",
       "AllowedPattern": "^[a-zA-Z0-9\\u4e00-\\u9fa5][-_.a-zA-Z0-9\\u4e00-\\u9fa5]{1,63}$"
-    },
+```
+
+`},`
+
+```json
     "NotificationArn": {
       "Type": "String",
       "Description": "The Alibaba Cloud Resource Name (ARN) of the notification target that Auto Scal
@@ -7992,16 +8394,17 @@ ing will use to notify you when an instance is in the transition state for the l
 {0255})$"
 ```
 
-资源编排
-
 ```json
 {0,255})$",
       "MaxLength": 300
-    },
     "ScalingGroupId": {
       "Type": "String",
       "Description": "The ID of the scaling group."
-    },
+```
+
+`},`
+
+```json
     "LifecycleTransition": {
       "Type": "String",
       "Description": "The scaling activities to which lifecycle hooks apply Value range:\n SCALE_OUT:
@@ -8011,17 +8414,20 @@ scale-out event\n SCALE_IN: scale-in event",
         "SCALE_IN"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "HeartbeatTimeout": {
       "Type": "Number",
       "Description": "The time, in seconds, that can elapse before the lifecycle hook times out. If t
 he lifecycle hook times out, the scaling group performs the default action (DefaultResult). The range is from 30 to 21,600 seconds. The default value is 600 seconds.\nYou can prevent the lifecycle hook f rom timing out by calling the RecordLifecycleActionHeartbeat operation. You can also terminate the li fecycle action by calling the CompleteLifecycleAction operation.",
       "MinValue": 30,
       "MaxValue": 21600
-    },
+```
+
+`},`
+
+```json
     "NotificationMetadata": {
       "Type": "String",
       "Description": "The fixed string that you want to include when Auto Scaling sends a message abo
@@ -8032,7 +8438,11 @@ ut the wait state of the scaling activity to the notification target. The length
 
 ```json
       "MaxLength": 128
-    },
+```
+
+`},`
+
+```json
     "DefaultResult": {
       "Type": "String",
       "Description": "The action that the scaling group takes when the lifecycle hook times out. Valu
@@ -8042,44 +8452,57 @@ e range:\n CONTINUE: the scaling group continues with the scale-in or scale-out 
         "ABANDON"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "Resources": {
     "LifecycleHook": {
       "Type": "ALIYUN::ESS::LifecycleHook",
       "Properties": {
         "LifecycleHookName": {
           "Ref": "LifecycleHookName"
-        },
+```
+
+`},`
+
+```json
         "NotificationArn": {
           "Ref": "NotificationArn"
-        },
         "ScalingGroupId": {
 ```
 
-资源编排 g p
+`g` `p`
 
 ```json
           "Ref": "ScalingGroupId"
-        },
         "LifecycleTransition": {
           "Ref": "LifecycleTransition"
-        },
+```
+
+`},`
+
+```json
         "HeartbeatTimeout": {
           "Ref": "HeartbeatTimeout"
-        },
+```
+
+`},`
+
+```json
         "NotificationMetadata": {
           "Ref": "NotificationMetadata"
-        },
+```
+
+`},`
+
+```json
         "DefaultResult": {
           "Ref": "DefaultResult"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "LifecycleHookId": {
       "Description": "The lifecycle hook ID",
@@ -8089,27 +8512,16 @@ e range:\n CONTINUE: the scaling group continues with the scale-in or scale-out 
           "LifecycleHookId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
-
-#### ALIYUN::ESS::ScalingConfiguration
+#### 7.2.4 ALIYUN::ESS::ScalingConfiguration
 
 ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ESS::ScalingConfiguration",
-  "Properties": {
     "PasswordInherit": Boolean,
     "DiskMappings": List,
     "RamRoleName": String,
@@ -8137,9 +8549,9 @@ ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
     "ScalingGroupId": String,
     "SpotPriceLimitForInstanceType": Map,
     "TagList": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -8153,8 +8565,6 @@ ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
 | InternetChargeTy pe | String | 否 | 是 | 公网访问带宽计费方式。 | 取值范围： PayByBandwidth：按固定带宽计费 PayByTraffic：按流量计费默认值：PayByTraffic（按流量计费）。 |
 | InternetMaxBand widthIn | Integer | 否 | 否 | 公网最大入网带宽。 | 单位：Mbps。 取值范围：1~100。 默认值：100。 |
 
-资源编排
-
 | InternetMaxBand widthOut | Integer | 否 | 是 | 公网最大出网带宽。 | 取值范围： 按固定带宽计费： 0~100。默认值：0。 按流量计费：1~200。此时，该参数为必选参数。 单位：Mbps。 |
 |---|---|---|---|---|---|
 | InstanceId | String | 否 | 否 | 伸缩配置的实例ID。 | 无。 |
@@ -8167,29 +8577,25 @@ ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
 | KeyPairName | String | 否 | 是 | 实例绑定的密钥对名称。 | 如果实例类型为Windows 实例，则此参数将被忽略，默认值为空。 如果实例类型为Linux实例，则密码登录方式会被初始化为禁止。 |
 | RamRoleName | String | 否 | 是 | 实例RAM角色名称。 | 您可以使用RAM APIListRoles查询实例RAM 角色名称。 |
 
-资源编排
-
-| SystemDiskSize |  | Integer | 否 |  |  | 是 | 系统盘大小。 |  | 取值范围：40~500。 单位：GB。 如果使用自定义镜像创建系统盘，则系统盘大小必须大于自定义镜像大小。 |  |
+| SystemDiskSize |   | Integer | 否 |   |   | 是 | 系统盘大小。 |   | 取值范围：40~500。 单位：GB。 如果使用自定义镜像创建系统盘，则系统盘大小必须大于自定义镜像大小。 |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| UserData |  | String | 否 |  |  | 是 | 创建实例时传递的用户数据。 |  | 内容需要限制在16KB以内， 无需Base64转码，特殊字符需要使用反斜杠转义。 |  |
-| InstanceTypes |  | List | 否 |  |  | 是 | 多实例规格参数。如果指定了InstanceTypes，则 InstanceType无效。 |  | 一个伸缩配置内最多可以设置10种实例规格，优先级按列表元素的顺序依次降低。 当无法根据优先级较高的实例规格创建出实例时，弹性伸缩服务会自动选择下一优先级的实例规格来创建实例。 |  |
-| PasswordInherit |  | Boolean | 否 |  |  | 是 | 是否使用镜像预设的密码。 |  | 使用此参数时，您需要确保所用镜像已经预设了密码。 |  |
-| TagList |  | List | 否 |  |  |  |  |  | 标签以键值对方式传入，最多可以使用5组标签，格式为 {"key1": "value1", |  |
-|  |  |  |  |  |  |  |  |  |  | {"key1": "value1", |
-|  |  |  |  |  |  |  |  |  | "key2": "value2", ... |  |
-|  |  |  |  |  |  |  |  |  | "key5": "value5"} |  |
-|  |  |  |  |  |  | 是 | 实例标签。 |  |  |  |
-| SpotStrategy |  | String | 否 |  |  | 是 | 后付费实例的抢占策略。 |  | 取值范围： NoSpot（正常按量付费实例） SpotWithPriceLimit（设置上限价格的抢占式实例） SpotAsPriceGo（系统自动出价，跟随当前市场实际价格）。 默认值：NoSpot。 |  |
-| InstanceName |  | String | 否 |  |  | 是 | 基于当前伸缩配置创建的实例的名称。 |  | 无。 |  |
-| SpotPriceLimit |  | Number | 否 |  |  | 是 | 实例每小时的最高价格。 |  | 支持最多3位小数。且仅当 SpotStrategy取值为 SpotWithPriceLimit时，此参数生效，并且此参数的取值可以被 SpotPriceLimitForInstanc eType的取值所覆盖。 |  |
-| SpotPriceLimitForI nstanceType |  | Map | 否 |  |  |  |  |  | 格式为 {“<instance type 1 _ _ |  |
-|  |  |  |  |  |  |  |  |  |  | {“<instance type 1 _ _ |
-|  |  |  |  |  |  |  |  |  | >": <price limit 1>, _ _ |  |
-|  |  |  |  |  |  |  |  |  | ..., |  |
-|  |  |  |  |  |  | 是 | 抢占式实例的实例规格和对 |  | {“<instance type 10>": _ _ |  |
-|  |  |  |  |  |  |  | 应的出价。 |  | <price limit 10>} _ _ |  |
-
-资源编排
+| UserData |   | String | 否 |   |   | 是 | 创建实例时传递的用户数据。 |   | 内容需要限制在16KB以内， 无需Base64转码，特殊字符需要使用反斜杠转义。 |   |
+| InstanceTypes |   | List | 否 |   |   | 是 | 多实例规格参数。如果指定了InstanceTypes，则 InstanceType无效。 |   | 一个伸缩配置内最多可以设置10种实例规格，优先级按列表元素的顺序依次降低。 当无法根据优先级较高的实例规格创建出实例时，弹性伸缩服务会自动选择下一优先级的实例规格来创建实例。 |   |
+| PasswordInherit |   | Boolean | 否 |   |   | 是 | 是否使用镜像预设的密码。 |   | 使用此参数时，您需要确保所用镜像已经预设了密码。 |   |
+| TagList |   | List | 否 |   |   |   |   |   | 标签以键值对方式传入，最多可以使用5组标签，格式为 {"key1": "value1", |   |
+|   |   |   |   |   |   |   |   |   |   | {"key1": "value1", |
+|   |   |   |   |   |   |   |   |   | "key2": "value2", ... |   |
+|   |   |   |   |   |   |   |   |   | "key5": "value5"} |   |
+|   |   |   |   |   |   | 是 | 实例标签。 |   |   |   |
+| SpotStrategy |   | String | 否 |   |   | 是 | 后付费实例的抢占策略。 |   | 取值范围： NoSpot（正常按量付费实例） SpotWithPriceLimit（设置上限价格的抢占式实例） SpotAsPriceGo（系统自动出价，跟随当前市场实际价格）。 默认值：NoSpot。 |   |
+| InstanceName |   | String | 否 |   |   | 是 | 基于当前伸缩配置创建的实例的名称。 |   | 无。 |   |
+| SpotPriceLimit |   | Number | 否 |   |   | 是 | 实例每小时的最高价格。 |   | 支持最多3位小数。且仅当 SpotStrategy取值为 SpotWithPriceLimit时，此参数生效，并且此参数的取值可以被 SpotPriceLimitForInstanc eType的取值所覆盖。 |   |
+| SpotPriceLimitForI nstanceType |   | Map | 否 |   |   |   |   |   | 格式为 {“<instance type 1 _ _ |   |
+|   |   |   |   |   |   |   |   |   |   | {“<instance type 1 _ _ |
+|   |   |   |   |   |   |   |   |   | >": <price limit 1>, _ _ |   |
+|   |   |   |   |   |   |   |   |   | ..., |   |
+|   |   |   |   |   |   | 是 | 抢占式实例的实例规格和对 |   | {“<instance type 10>": _ _ |   |
+|   |   |   |   |   |   |   | 应的出价。 |   | <price limit 10>} _ _ |   |
 
 | SystemDiskAutoS napshotPolicyId | String | 否 | 是 | 数据盘使用的自动快照策略 ID。 | 无。 |
 |---|---|---|---|---|---|
@@ -8198,7 +8604,11 @@ ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
 
 ```json
 "DiskMappings": [
-  {
+```
+
+`{`
+
+```json
     "Category": String,
     "Device": String,
     "SnapshotId": String,
@@ -8207,10 +8617,9 @@ ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
     "KMSKeyId": String,
     "Description": String,
     "DiskName": String
-  }
 ```
 
-]
+`}` `]`
 
 **DiskMappings属性**
 
@@ -8221,8 +8630,6 @@ ALIYUN::ESS::ScalingConfiguration类型用于为伸缩组创建伸缩配置。
 | DiskName | String | 否 | 否 | 数据盘名称。 | 长度为2~128个字符。可以包含数字、半角冒号（:）、下划线（ ）或者连字符（-），必 _ 须以英文字母或中文开头，不能以 http:// 或 https:// 开头。 |
 | Description | String | 否 | 否 | 数据盘描述。 | 长度为2~256个字符。不能以 http:// 或 https:// 开头。 |
 | Device | String | 否 | 否 | 数据盘挂载点。 | 如果此参数值未指定，则默认将在自动创建ECS实例时由系统分配，取值从/dev/xvdb开始，到/dev/xvdz结束。 |
-
-资源编排
 
 | SnapshotId | String | 否 | 否 | 创建数据盘时使用的快照。 | 指定此参数后，Size会被忽略，实际创建的磁盘大小为指定快照的大小。如果快照创建于2013年7月15日或之前，调用快照会被拒绝，返回参数中会提示 InvalidSnapshot.TooOld。 |
 |---|---|---|---|---|---|
@@ -8235,8 +8642,9 @@ Fn::GetAtt ScalingConfigurationId：伸缩配置的ID。由系统生成，全局
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScalingConfiguration": {
@@ -8252,41 +8660,39 @@ Fn::GetAtt ScalingConfigurationId：伸缩配置的ID。由系统生成，全局
         "ScalingGroupId": "bwhtvpcBcKYac9fe3vd0****",
         "SecurityGroupId": "sg-25zwc****",
         "DiskMappings": [
-          {
-            "Size": 10
-          },
-          {
-            "Category": "cloud",
-            "Size": 10
-          }
 ```
 
-]
+`{`
 
 ```json
-      }
-    }
-  },
+            "Size": 10
+```
+
+`},` `{`
+
+```json
+            "Category": "cloud",
+            "Size": 10
+```
+
+`}` `]` `}` `}` `},`
+
+```json
   "Outputs": {
     "ScalingConfiguration": {
       "Value": {"get_attr": ["ScalingConfigurationId"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ESS::ScalingGroup
+`}` `}` `}`
+
+#### 7.2.5 ALIYUN::ESS::ScalingGroup
 
 ALIYUN::ESS::ScalingGroup类型用于创建伸缩组。伸缩组是具有相同应用场景的ECS实例的集合，创建成功后不会立即生效，需要使用ALIYUN::ESS::ScalingGroupEnable启用伸缩组，才能触发伸缩活动，执行伸缩规则。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ESS::ScalingGroup",
-  "Properties": {
     "MultiAZPolicy": String,
     "DesiredCapacity": Integer,
     "NotificationConfigurations": List,
@@ -8315,9 +8721,9 @@ ALIYUN::ESS::ScalingGroup类型用于创建伸缩组。伸缩组是具有相同�
     "SpotInstancePools": Integer,
     "OnDemandBaseCapacity": Integer,
     "GroupType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -8327,8 +8733,6 @@ ALIYUN::ESS::ScalingGroup类型用于创建伸缩组。伸缩组是具有相同�
 | MaxSize | Integer | 是 | 是 | 伸缩组内ECS实例个数的最大值。 | 取值范围：0~1000。 当伸缩组内ECS实例数大于 MaxSize时，弹性伸缩会自动移出 ECS实例。 |
 | ScalingGroup Name | String | 否 | 是 | 伸缩组的显示名称。 | 长度为2~64个字符。以数字、英文字母或汉字开头，可包含英文字母、汉字、数字、下划线（ ）、短 _ 划线（-）和半角句号（.）。 同一账号同一地域内名称唯一。 默认值：ScalingGroupId。 |
 | LaunchTempl ateId | String | 否 | 是 | 实例启动模板 ID，用于指定伸缩组从实例启动模板获取启动配置信息。 | 无 |
-
-资源编排
 
 | LaunchTempl ateVersion | String | 否 | 是 | ECS实例启动模板的版本。 | 取值： 固定的模板版本号。 Default：始终使用模板默认版本。 Latest：始终使用模板最新版本。 |
 |---|---|---|---|---|---|
@@ -8342,8 +8746,6 @@ ALIYUN::ESS::ScalingGroup类型用于创建伸缩组。伸缩组是具有相同�
 | NotificationC onfigurations | List | 否 | 是 | 事件及资源变化通知的配置列表。 | 更多信息，请参见NotificationConfigurations属性。 |
 | ProtectedInst ances | List | 否 | 是 | 伸缩组内处于保护模式的ECS实例个数。 | 最多支持1000个实例。 |
 
-资源编排
-
 | StandbyInsta nces | List | 否 | 是 | 伸缩组内处于备用模式的ECS实例个数。 | 最多支持1000个实例。 |
 |---|---|---|---|---|---|
 | HealthCheckT ype | String | 否 | 是 | 健康检查类型。 | 取值： ECS NONE |
@@ -8356,8 +8758,6 @@ ALIYUN::ESS::ScalingGroup类型用于创建伸缩组。伸缩组是具有相同�
 | ContainerGro upId | String | 否 | 否 | ECI实例ID。 | 无 |
 | ScalingPolicy | String | 否 | 否 | 指定伸缩组的回收模式。 | 取值： recycle：停机模式。 release：释放模式。 ScalingPolicy指定伸缩组的回收模式，但实例被移出伸缩组时的具体动作，由RemoveInstances的 RemovePolicy参数决定。 |
 
-资源编排
-
 | SpotInstance Remedy | Boolean | 否 | 是 | 是否开启补齐抢占式实例。 | 取值： true：开启补齐抢占式实例。 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。 false：未开启补齐抢占式实例。 |
 |---|---|---|---|---|---|
 | SpotInstance Pools | Integer | 否 | 是 | 指定可用实例规格的个数。 | 伸缩组将按成本最低的多个规格均衡创建抢占式实例。 取值范围：1~10。 |
@@ -8368,46 +8768,50 @@ ALIYUN::ESS::ScalingGroup类型用于创建伸缩组。伸缩组是具有相同�
 
 ```json
 "NotificationConfigurations": [
-  {
-    "NotificationArn": String,
-    "NotificationTypes": List
-  }
 ```
 
-]
+`{`
+
+```json
+    "NotificationArn": String,
+    "NotificationTypes": List
+```
+
+`}` `]`
 
 **NotificationConfigurations属性**
 
-| 属性名称 | 类型 | 必须 | 允许更新 |  | 描述 |  | 约束 |  |  |  |
+| 属性名称 | 类型 | 必须 | 允许更新 |   | 描述 |   | 约束 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| NotificationAr n | String | 是 | 否 |  | 生命周期挂钩通 |  | 取值格式： MNS队列： acs:ess: |  |  |  |
-|  |  |  |  |  |  |  |  | acs:ess: |  |  |
-|  |  |  |  |  |  | 挂钩通 | {region}:{account- |  |  |  |
-|  |  |  |  |  | 知对象标识符， 支持消息服务 | 识符， |  |  |  |  |
-|  |  |  |  |  |  |  | id}:queue/{queuename} |  | 。 |  |
-|  |  |  |  |  | MNS队列或主题。 |  | MNS主题： | acs:ess: |  |  |
-|  |  |  |  |  |  |  | {region}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-| NotificationTy pes | List | 是 | 否 |  | ESS事件和资源更改通知类型。 |  | 无 |  |  |  |
+| NotificationAr n | String | 是 | 否 |   | 生命周期挂钩通 |   | 取值格式： MNS队列： acs:ess: |   |   |   |
+|   |   |   |   |   |   |   |   | acs:ess: |   |   |
+|   |   |   |   |   |   | 挂钩通 | {region}:{account- |   |   |   |
+|   |   |   |   |   | 知对象标识符， 支持消息服务 | 识符， |   |   |   |   |
+|   |   |   |   |   |   |   | id}:queue/{queuename} |   | 。 |   |
+|   |   |   |   |   | MNS队列或主题。 |   | MNS主题： | acs:ess: |   |   |
+|   |   |   |   |   |   |   | {region}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
+| NotificationTy pes | List | 是 | 否 |   | ESS事件和资源更改通知类型。 |   | 无 |   |   |   |
 
 **Tags语法**
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | Key | String | 是 | 否 | 标签键。 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |
 |---|---|---|---|---|---|
@@ -8424,6 +8828,7 @@ Fn::GetAtt ScalingGroupId：伸缩组的ID。 ScalingGroupName：伸缩组名称
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
   VPC:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
     Type: String
     Label:
 ```
@@ -8468,10 +8873,9 @@ e name must begin with a number, an upper/lower-case letter or a Chinese charact
     Default: 0
 Resources:
   ScalingGroup:
+    Type: ALIYUN::ESS::ScalingGroup
 Properties:
 ```
-
-资源编排
 
 ```
     Properties:
@@ -8492,18 +8896,19 @@ Outputs:
     Description: Scaling group Id
     Value:
       Fn::GetAtt:
+        - ScalingGroup
         - ScalingGroupId
   ScalingGroupName:
     Description: Scaling group name
     Value:
       Fn::GetAtt:
+        - ScalingGroup
         - ScalingGroupName
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "VPC": {
@@ -8516,8 +8921,11 @@ Outputs:
 
 ```json
         "en": "Existing VPC Instance ID"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "VSwitch": {
       "AssociationProperty": "ALIYUN::ECS::VSwitch::VSwitchId",
       "Type": "String",
@@ -8528,15 +8936,26 @@ Outputs:
 
 ```json
         "en": "VSwitch ID"
-      },
+```
+
+`},`
+
+```json
       "AssociationPropertyMetadata": {
         "VpcId": "${VPC}"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "LaunchTemplateId":{
       "AssociationProperty":"ALIYUN::ECS::LaunchTemplate::LaunchTemplateId",
       "Type":"String"
-    },
+```
+
+`},`
+
+```json
     "MaxSize": {
       "Type": "Number",
       "Description": "Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
@@ -8548,10 +8967,7 @@ Outputs:
       "MinValue": 0,
       "MaxValue": 1000,
       "Default": 3
-    },
 ```
-
-资源编排
 
 ```json
     "ScalingGroupName": {
@@ -8559,7 +8975,11 @@ Outputs:
       "Description": "Name shown for the scaling group, which must contain 2-40 characters (English
 or Chinese). The name must begin with a number, an upper/lower-case letter or a Chinese character a nd may contain numbers, \"_\", \"-\" or \".\". The account name is unique in the same region.\nIf t his parameter is not specified, the default value is ScalingGroupId.",
       "AllowedPattern": "^[a-zA-Z0-9\\u4e00-\\u9fa5][-_.a-zA-Z0-9\\u4e00-\\u9fa5]{1,63}$"
-    },
+```
+
+`},`
+
+```json
     "MinSize": {
       "Type": "Number",
       "Description": "Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
@@ -8571,33 +8991,57 @@ or Chinese). The name must begin with a number, an upper/lower-case letter or a 
       "MinValue": 0,
       "MaxValue": 1000,
       "Default": 0
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "ScalingGroup": {
       "Type": "ALIYUN::ESS::ScalingGroup",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
           "Ref": "VSwitch"
-        },
+```
+
+`},`
+
+```json
         "LaunchTemplateId": {
           "Ref": "LaunchTemplateId"
-        },
+```
+
+`},`
+
+```json
         "MaxSize": {
           "Ref": "MaxSize"
-        },
+```
+
+`},`
+
+```json
         "ScalingGroupName": {
           "Ref": "ScalingGroupName"
-        },
+```
+
+`},`
+
+```json
         "MinSize": {
           "Ref": "MinSize"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "ScalingGroupId": {
       "Description": "Scaling group Id",
@@ -8607,11 +9051,9 @@ or Chinese). The name must begin with a number, an upper/lower-case letter or a 
           "ScalingGroupId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ScalingGroupName": {
       "Description": "Scaling group name",
       "Value": {
@@ -8620,26 +9062,12 @@ or Chinese). The name must begin with a number, an upper/lower-case letter or a 
           "ScalingGroupName"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-资源编排
-
-```
-}
-```
-
-当伸缩组中仅定义了一个伸缩组配置，且伸缩组配置中包含依赖的其他资源，您需要在定义资源模板时为伸缩组设置 DependsOn属性，对伸缩组配置依赖的其他资源设置资源依赖关联。 伸缩组ScalingGroup设置DependsOn依赖关系到安全组SecurityGroup，因为伸缩组配置ScalingConfiguration依赖了安全组SecurityGroup资源。
+`]` 当伸缩组中仅定义了一个伸缩组配置，且伸缩组配置中包含依赖的其他资源，您需要在定义资源模板时为伸缩组设置 DependsOn属性，对伸缩组配置依赖的其他资源设置资源依赖关联。 伸缩组ScalingGroup设置DependsOn依赖关系到安全组SecurityGroup，因为伸缩组配置ScalingConfiguration依赖了安全组SecurityGroup资源。
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
   VpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
     Type: String
   VSwitchId:
     AssociationProperty: ALIYUN::ECS::VSwitch::VSwitchId
@@ -8657,6 +9085,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Default: centos_7_04_64_20G_alibase_201701015.vhd
 Resources:
   ScalingGroupEnable:
+    Type: ALIYUN::ESS::ScalingGroupEnable
     Properties:
       ScalingConfigurationId:
         Ref: ScalingConfiguration
@@ -8664,6 +9093,7 @@ Resources:
         Ref: ScalingGroup
       ScalingRuleArisExecuteVersion: 0
   SecurityGroup:
+    Type: ALIYUN::ECS::SecurityGroup
     Properties:
       SecurityGroupName:
         Ref: ALIYUN::StackName
@@ -8687,11 +9117,10 @@ Resources:
           DestCidrIp: 0.0.X.X/0
           NicType: intranet
   ScalingConfiguration:
+    Type: ALIYUN::ESS::ScalingConfiguration
     DependsOn: ScalingGroup
     Properties:
 ```
-
-资源编排
 
 ```
       InstanceType:
@@ -8708,6 +9137,7 @@ Resources:
       SecurityGroupId:
         Ref: SecurityGroup
   ScalingGroup:
+    Type: ALIYUN::ESS::ScalingGroup
     DependsOn: SecurityGroup
     Properties:
       MaxSize: 3
@@ -8722,12 +9152,15 @@ Outputs: {}
 
 更多示例，请参见创建伸缩组、创建伸缩规则、创建监控项报警任务、启动报警任务、为伸缩组创建生命周期挂钩和创建定时任务的组合示例：JSON示例和YAML示例。
 
-#### ALIYUN::ESS::ScalingGroupEnable
+#### 7.2.6 ALIYUN::ESS::ScalingGroupEnable
+
+ALIYUN::ESS::ScalingGroupEnable类型用于启用伸缩组。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ESS::ScalingGroupEnable",
   "Properties": {
     "ScalingConfigurationId": String,
@@ -8736,9 +9169,9 @@ Outputs: {}
     "ScalingGroupId": String,
     "RemoveInstanceIds": List,
     "InstanceIds": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -8747,8 +9180,6 @@ Outputs: {}
 | ScalingGroupId | String | 是 | 否 | 伸缩组的ID | 无 |
 | ScalingConfigura tionId | String | 否 | 否 | 需要在伸缩组内激活的伸缩配置的ID | 无 |
 | InstanceIds | List | 否 | 是 | 启用后需要加入伸缩组的ECS实例的 ID | 最多支持20个 |
-
-资源编排
 
 | ScalingRuleArisE xecuteVersion | Integer | 否 | 是 | 伸缩规则标识符执行版本。改变属性会执行一次 ScalingRuleAris 中的所有的缩放规则。 | 最小值：0 |
 |---|---|---|---|---|---|
@@ -8761,8 +9192,9 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScalingGroupEnable": {
@@ -8771,27 +9203,26 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
         "ScalingGroupId": "r0HUqbJ411cc2eQw8bU****",
         "ScalingConfigurationId": "bJlLfdexm77Ldsyptmel****",
         "InstanceIds": "",
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "ScalingGroupEnable": {
       "Value": {"Fn::GetAtt": ["ScalingGroupEnable", "LifecycleState"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::ESS::ScalingRule
+`}` `}` `}`
+
+#### 7.2.7 ALIYUN::ESS::ScalingRule
+
+ALIYUN::ESS::ScalingRule类型用于创建伸缩规则。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ESS::ScalingRule",
-  "Properties": {
     "AdjustmentValue": Integer,
     "Cooldown": Integer,
     "ScalingGroupId": String,
@@ -8809,9 +9240,9 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
     "MinAdjustmentMagnitude": Integer,
     "EstimatedInstanceWarmup": Integer,
     "PredictiveScalingMode": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -8822,14 +9253,10 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
 | ScalingGroupId | String | 是 | 否 | 伸缩规则所属的伸缩组ID。 | 无 |
 | AdjustmentTyp e | String | 否 | 是 | 伸缩规则的调整方式，适用于简单规则和步进规则。 | 取值： QuantityChangeInCap acity：增加或减少指定数量的ECS实例。 PercentChangeInCapa city：增加或减少指定比例的ECS实例。 TotalCapacity： 将当前伸缩组的ECS实例数量调整到指定数量。 |
 
-资源编排
-
 | ScalingRuleNa me | String | 否 | 是 | 伸缩规则的名称。 | 长度为2~64个字符，以数字、字母或汉字开头。可包含数字、字母、汉字、下划线（ ）、短划线（-）和英 _ 文句点（.）。 如果没有指定该参数，默认为ScalingRuleId的取值。 |
 |---|---|---|---|---|---|
 | MetricName | String | 否 | 否 | 预定义监控项， 适用于目标追踪规则和预测规则。 | 取值： 目标追踪规则： CpuUtilization：平均 CPU使用率。 ClassicInternetRx： 经典网络公网入流量平均值。 ClassicInternetTx： 经典网络公网出流量平均值。 VpcInternetRx：专有网络公网入流量平均值。 VpcInternetTx：专有网络公网出流量平均值。 IntranetRx：内网入流量平均值。 IntranetTx ：内网出流量平均值。 预测规则： CpuUtilization：平均 CPU使用率。 IntranetRx：内网入流量平均值。 IntranetTx ：内网出流量平均值。 |
 | PredictiveTask BufferTime | Integer | 否 | 否 | 预测规则自动创建的预测任务， 默认在整点执行。您可以设置预启动时间提前执行预测任务， 预先准备资源。 | 取值范围：0~60。 单位：分钟。 默认值：0。 |
-
-资源编排
 
 | ScalingRuleTyp e | String | 否 | 否 | 伸缩规则类型。 | 取值： SimpleScalingRule（默认值）：简单规则。根据调整方式 （AdjustmentType）和调整值 （AdjustmentValue） 调整ECS实例数量。 TargetTrackingScaling Rule：目标追踪规则。根据预定义监控项 （MetricName）动态计算需要扩缩容的ECS实例数量，尽量将预定义监控项的指标值维持在目标值 （TargetValue）附近。 StepScalingRule： 步进规则，根据阈值和指标值提供分步扩展方式。 PredictiveScalingRule ：预测规则，基于机器学习能力分析伸缩组的历史监控数据预测未来监控指标值，并支持自动创建定时任务设置伸缩组边界。 |
 |---|---|---|---|---|---|
@@ -8838,8 +9265,6 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
 | StepAdjustmen t | List | 否 | 否 | 分步步骤。 | 详情请参见StepAdjustment属性。 |
 | PredictiveValu eBehavior | String | 否 | 否 | 预测规则最大值处理方式。 | 取值： MaxOverridePredictiv eValue（默认值）：初始最大值会覆盖预测值。 预测值大于初始最大值时，预测任务的最大值采用初始最大值。 PredictiveValueOverri deMax：预测值会覆盖初始最大值。预测值大于初始最大值时， 预测任务的最大值采用预测值。 PredictiveValueOverri deMaxWithBuffer：预测值会附加一定比例。预测值会按照 PredictiveValueBuffer 比例增加，当增加后的值大于初始最大值时，会采用增加后的值。 |
 | DisableScaleIn | Boolean | 否 | 否 | 是否禁用缩容， 仅适用于目标追踪规则。 | 取值： true false（默认值） |
-
-资源编排
 
 | InitialMaxSize | Integer | 否 | 否 | 伸缩组实例数上限，和 PredictiveValu eBehavior结合使用。 | 默认值为伸缩组最大实例数 （MaxSize的取值）。 |
 |---|---|---|---|---|---|
@@ -8851,14 +9276,17 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
 
 ```json
 "StepAdjustment": [
-  {
+```
+
+`{`
+
+```json
     "MetricIntervalUpperBound": Number,
     "ScalingAdjustment": Integer,
     "MetricIntervalLowerBound": Number
-  }
 ```
 
-]
+`}` `]`
 
 **StepAdjustment属性**
 
@@ -8870,32 +9298,43 @@ Fn::GetAtt LifecycleState: 伸缩组的状态。 ScalingInstances: 伸缩组自�
 
 **返回值**
 
-Fn::GetAtt 资源编排 ScalingRuleAri：伸缩规则的唯一标识符。 ScalingRuleId：伸缩规则的ID。由系统生成，全局唯一。
+Fn::GetAtt ScalingRuleAri：伸缩规则的唯一标识符。 ScalingRuleId：伸缩规则的ID。由系统生成，全局唯一。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "TargetValue": {
       "Type": "Number",
       "Description": "The target value of a metric. This parameter is required and applicable only to
 target tracking scaling rules and predictive scaling rules. The value of TargetValue must be greater than 0 and can have a maximum of three decimal places."
-    },
+```
+
+`},`
+
+```json
     "Cooldown": {
       "Type": "Number",
       "Description": "Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The def
 ault value is empty.",
       "MinValue": 0,
       "MaxValue": 86400
-    },
+```
+
+`},`
+
+```json
     "ScalingGroupId": {
       "Type": "String",
       "Description": "ID of the scaling group of a scaling rule."
-    },
+```
+
+`},`
+
+```json
     "PredictiveValueBehavior": {
       "Type": "String",
       "Description": "The action taken on the predicted maximum value. Valid values:\n-
@@ -8906,17 +9345,20 @@ MaxOverridePredictiveValue: uses the initial maximum capacity as the maximum val
         "PredictiveValueOverrideMaxWithBuffer"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "MinAdjustmentMagnitude": {
       "Type": "Number",
       "Description": "The minimum number of ECS instances to be adjusted in a scaling rule. This para
 meter takes effect only when the scaling rule type is SimpleScalingRule or StepScalingRule and Adjust mentType is PercentChangeInCapacity.",
       "MinValue": 0,
       "MaxValue": 20
-    },
+```
+
+`},`
+
+```json
     "DisableScaleIn": {
       "Type": "Boolean",
       "Description": "Specifies whether to disable scale-in. This parameter is applicable only to
@@ -8928,19 +9370,10 @@ target tracking scaling rules.\n Default value: false",
         "false"
 ```
 
-]
-
-```
-    },
-```
-
-资源编排
-
 ```json
     "StepAdjustment": {
       "Type": "Json",
       "Description": ""
-    },
     "AdjustmentType": {
       "Type": "String",
       "Description": "Adjustment mode of a scaling rule. Optional values:\n-
@@ -8951,10 +9384,9 @@ QuantityChangeInCapacity: It is used to increase or decrease a specified number 
         "TotalCapacity"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "MetricName": {
       "Type": "String",
       "Description": "The predefined metric to monitor. This parameter is required and applicable onl
@@ -8969,35 +9401,39 @@ y to target tracking scaling rules and predictive scaling rules.\nValid values o
         "IntranetTx"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ScalingRuleName": {
       "Type": "String",
       "Description": "Name shown for the scaling group, which is a string containing 2 to 40 English
 or Chinese characters. It must begin with a number, a letter (case-insensitive) or a Chinese characte r and can contain numbers, \"_\", \"-\" or \".\". The account name in the same scaling group is uniqu e in the same region. If this parameter value is not specified, the default value is ScalingRuleId.",
       "AllowedPattern": "^[a-zA-Z0-9\\u4e00-\\u9fa5][-_.a-zA-Z0-9\\u4e00-\\u9fa5]{1,63}$"
-    },
+```
+
+`},`
+
+```json
     "AdjustmentValue": {
       "Type": "Number",
       "Description": "Adjusted value of a scaling rule. Value range:\n- QuantityChangeInCapacity: [-5
 00, 500]\n- PercentChangeInCapacity: [-100, 10000]\n- TotalCapacity: [0, 1000]",
       "MinValue": -500,
       "MaxValue": 10000
-    },
+```
+
+`},`
+
+```json
     "InitialMaxSize": {
       "Type": "Number",
       "Description": "The maximum number of ECS instances in the scaling group, which is used
 together with PredictiveValueBehavior.\n Default value: the same as the value of MaxSize",
       "MinValue": 0,
       "MaxValue": 1000
-    },
     "ScalingRuleType": {
 "Type":"String"
 ```
-
-资源编排
 
 ```json
       Type: String,
@@ -9010,17 +9446,20 @@ stances based on the values of AdjustmentType and AdjustmentValue.\n- TargetTrac
         "PredictiveScalingRule"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "EstimatedInstanceWarmup": {
       "Type": "Number",
       "Description": "The warm-up period of the ECS instances. This parameter is applicable to target
 tracking scaling rules and step scaling rules. The system adds ECS instances that are in the warm-up state to the scaling group, but does not report monitoring data during the warm-up period to CloudMon itor.\nNote: When calculating the number of ECS instances to be adjusted, the system does not count E CS instances in the warm-up state as part of the current capacity of the scaling group.\nValid values : 0 to 86400. Unit: seconds. Default value: 300.",
       "MinValue": 0,
       "MaxValue": 86400
-    },
+```
+
+`},`
+
+```json
     "PredictiveScalingMode": {
       "Type": "String",
       "Description": "The mode of the predictive scaling rule. Valid values:\n- PredictAndScale:
@@ -9030,88 +9469,146 @@ generates forecasts and creates forecast tasks.\n- PredictOnly: generates foreca
         "PredictOnly"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "PredictiveTaskBufferTime": {
       "Type": "Number",
       "Description": "The amount of buffer time ahead of the forecast task execution time. By
 default, all scheduled tasks that are automatically created for a predictive scaling rule are execute d at the beginning of each hour. You can set a buffer time to execute forecast tasks ahead of schedul e, so that resources can be prepared in advance. Valid values: 0 to 60. Unit: minutes.\n Default valu e: 0",
       "MinValue": 0,
       "MaxValue": 60
-    },
+```
+
+`},`
+
+```json
     "PredictiveValueBuffer": {
       "Type": "Number",
       "Description": "The ratio of the increment to the predicted value when PredictiveValueBehavior
 is set to PredictiveValueOverrideMaxWithBuffer. When the value after the increase is greater than the initial maximum capacity, the value after the increase is used for forecast tasks. Valid values: 0 to 100\n Default value: 0",
       "MinValue": 0,
       "MaxValue": 100
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "ScalingRule": {
       "Type": "ALIYUN::ESS::ScalingRule",
-      "Properties": {
         "TargetValue": {
           "Ref": "TargetValue"
 ```
 
-资源编排
-
 ```json
-        },
         "Cooldown": {
           "Ref": "Cooldown"
-        },
         "ScalingGroupId": {
           "Ref": "ScalingGroupId"
-        },
+```
+
+`},`
+
+```json
         "PredictiveValueBehavior": {
           "Ref": "PredictiveValueBehavior"
-        },
+```
+
+`},`
+
+```json
         "MinAdjustmentMagnitude": {
           "Ref": "MinAdjustmentMagnitude"
-        },
+```
+
+`},`
+
+```json
         "DisableScaleIn": {
           "Ref": "DisableScaleIn"
-        },
+```
+
+`},`
+
+```json
         "StepAdjustment": {
           "Ref": "StepAdjustment"
-        },
+```
+
+`},`
+
+```json
         "AdjustmentType": {
           "Ref": "AdjustmentType"
-        },
+```
+
+`},`
+
+```json
         "MetricName": {
           "Ref": "MetricName"
-        },
+```
+
+`},`
+
+```json
         "ScalingRuleName": {
           "Ref": "ScalingRuleName"
-        },
+```
+
+`},`
+
+```json
         "AdjustmentValue": {
           "Ref": "AdjustmentValue"
-        },
+```
+
+`},`
+
+```json
         "InitialMaxSize": {
           "Ref": "InitialMaxSize"
-        },
+```
+
+`},`
+
+```json
         "ScalingRuleType": {
           "Ref": "ScalingRuleType"
-        },
+```
+
+`},`
+
+```json
         "EstimatedInstanceWarmup": {
           "Ref": "EstimatedInstanceWarmup"
-        },
+```
+
+`},`
+
+```json
         "PredictiveScalingMode": {
           "Ref": "PredictiveScalingMode"
-        },
+```
+
+`},`
+
+```json
         "PredictiveTaskBufferTime": {
           "Ref": "PredictiveTaskBufferTime"
-        },
+```
+
+`},`
+
+```json
         "PredictiveValueBuffer": {
           "Ref": "PredictiveValueBuffer"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "ScalingRuleAri": {
       "Description": "Unique identifier of a scaling rule.",
@@ -9121,20 +9618,11 @@ is set to PredictiveValueOverrideMaxWithBuffer. When the value after the increas
           "ScalingRuleAri"
 ```
 
-]
-
-```
-      }
-    },
-```
-
 `"S` `li`
 
 ```
-RlId" {
+RlId"
 ```
-
-资源编排
 
 ```json
     "ScalingRuleId": {
@@ -9145,16 +9633,7 @@ RlId" {
           "ScalingRuleId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -9204,13 +9683,11 @@ pecified by PredictiveValueBuffer. If the value after the increase is greater th
     Type: Boolean
 ```
 
-D
+`D`
 
 ```
 iti
 ```
-
-资源编排
 
 ```
     Description: >-
@@ -9263,8 +9740,6 @@ iti
       - ClassicInternetRx
       - ClassicInternetTx
 ```
-
-资源编排
 
 ```
       - VpcInternetRx
@@ -9327,8 +9802,6 @@ iti
       instances that are in the warm-up state to the scaling group, but does not
 ```
 
-资源编排
-
 ```
       report monitoring data during the warm-up period to CloudMonitor.
       Note: When calculating the number of ECS instances to be adjusted, the
@@ -9372,6 +9845,7 @@ iti
     MaxValue: 100
 Resources:
   ScalingRule:
+    Type: 'ALIYUN::ESS::ScalingRule'
     Properties:
       TargetValue:
         Ref: TargetValue
@@ -9391,8 +9865,6 @@ Resources:
         Ref: AdjustmentType
 MetricName:
 ```
-
-资源编排
 
 ```
       MetricName:
@@ -9418,20 +9890,25 @@ Outputs:
     Description: Unique identifier of a scaling rule.
     Value:
       'Fn::GetAtt':
+        - ScalingRule
         - ScalingRuleAri
   ScalingRuleId:
     Description: 'ID of a scaling rule, generated by the system and globally unique.'
     Value:
       'Fn::GetAtt':
+        - ScalingRule
         - ScalingRuleId
 ```
 
-#### ALIYUN::ESS::ScheduledTask
+#### 7.2.8 ALIYUN::ESS::ScheduledTask
+
+ALIYUN::ESS::ScheduledTask类型用于根据指定参数创建定时任务。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ESS::ScheduledTask",
   "Properties": {
     "TaskEnabled": Boolean,
@@ -9443,37 +9920,31 @@ Outputs:
     "RecurrenceType": String,
     "RecurrenceValue": String,
     "ScheduledAction": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 
-资源编排
-
-| TaskEnabled | Boolean | 否 | 是 | 是否启动定时任务 |  |  | 取值： true（默认值）：启动任务 false：停止任务 |  |  |
+| TaskEnabled | Boolean | 否 | 是 | 是否启动定时任务 |   |   | 取值： true（默认值）：启动任务 false：停止任务 |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| Description | String | 否 | 是 | 定时任务的描述信息 |  |  | 长度为2~200个字符 |  |  |
-| ScheduledTaskN ame | String | 否 | 是 | 定时任务的显示名称 |  |  | 长度为2~40个字符，以数字、字母或中文字符开头， 可包含数字、字母、中文字符、下划线（ ）、短划 _ 线（-）或英文句点 （.）。 同一用户账号同一地域内唯一。 如果没有指定该参数，默认为 ScheduledScalin gTaskId。 |  |  |
-| LaunchExpiratio nTime | Integer | 否 | 是 | 定时任务触发操作失败后，在此时间内重试 |  |  | 取值范围： 0~21600。 单位：秒。 默认值：600。 |  |  |
-| LaunchTime | String | 是 | 是 | 定时任务触发的时间点 |  |  | 格式为： YYYY- MM- DDThh:mmZ 。 按照ISO8601标准表示，并需要使用 UTC时间。 如果指定了 RecurrenceTy pe，则此属性指定的时间点，默认为循环执行的时间点。 如果未指定 RecurrenceTy pe，则按指定的日期和时间执行一次。 不能填写自创建或修改当天起90日后的时间。 |  |  |
-|  |  |  |  |  |  |  |  | YYYY- |  |
-|  |  |  |  |  |  |  | MM- |  |  |
-|  |  |  |  |  |  |  | DDThh:mmZ |  |  |
+| Description | String | 否 | 是 | 定时任务的描述信息 |   |   | 长度为2~200个字符 |   |   |
+| ScheduledTaskN ame | String | 否 | 是 | 定时任务的显示名称 |   |   | 长度为2~40个字符，以数字、字母或中文字符开头， 可包含数字、字母、中文字符、下划线（ ）、短划 _ 线（-）或英文句点 （.）。 同一用户账号同一地域内唯一。 如果没有指定该参数，默认为 ScheduledScalin gTaskId。 |   |   |
+| LaunchExpiratio nTime | Integer | 否 | 是 | 定时任务触发操作失败后，在此时间内重试 |   |   | 取值范围： 0~21600。 单位：秒。 默认值：600。 |   |   |
+| LaunchTime | String | 是 | 是 | 定时任务触发的时间点 |   |   | 格式为： YYYY- MM- DDThh:mmZ 。 按照ISO8601标准表示，并需要使用 UTC时间。 如果指定了 RecurrenceTy pe，则此属性指定的时间点，默认为循环执行的时间点。 如果未指定 RecurrenceTy pe，则按指定的日期和时间执行一次。 不能填写自创建或修改当天起90日后的时间。 |   |   |
+|   |   |   |   |   |   |   |   | YYYY- |   |
+|   |   |   |   |   |   |   | MM- |   |   |
+|   |   |   |   |   |   |   | DDThh:mmZ |   |   |
 
-资源编排
-
-| RecurrenceEndTi me | String | 否 | 是 | 重复执行定时任务的结束时间 |  |  | 格式为： YYYY- MM- DDThh:mmZ 。 按照ISO8601标准表示，并需要使用 UTC时间。 不能填写自创建或修改当天起90日后的时间。 RecurrenceType 、 RecurrenceValu e和 RecurrenceEndT ime需要同时指定。 |  |  |
+| RecurrenceEndTi me | String | 否 | 是 | 重复执行定时任务的结束时间 |   |   | 格式为： YYYY- MM- DDThh:mmZ 。 按照ISO8601标准表示，并需要使用 UTC时间。 不能填写自创建或修改当天起90日后的时间。 RecurrenceType 、 RecurrenceValu e和 RecurrenceEndT ime需要同时指定。 |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | YYYY- |  |
-|  |  |  |  |  |  |  | MM- |  |  |
-|  |  |  |  |  |  |  | DDThh:mmZ |  |  |
-| RecurrenceType | String | 否 | 是 | 重复执行定时任务的类型 |  |  | 取值： Daily：每多少天重复执行一次定时任务。 Weekly：每周指定几天重复执行一次定时任务。 Monthly：每月内指定几天重复执行一次定时任务。 Cron：按照指定的Cron表达式执行定时任务。 RecurrenceType 、 RecurrenceValu e和 RecurrenceEndT ime需要同时指定。 |  |  |
-
-资源编排
+|   |   |   |   |   |   |   |   | YYYY- |   |
+|   |   |   |   |   |   |   | MM- |   |   |
+|   |   |   |   |   |   |   | DDThh:mmZ |   |   |
+| RecurrenceType | String | 否 | 是 | 重复执行定时任务的类型 |   |   | 取值： Daily：每多少天重复执行一次定时任务。 Weekly：每周指定几天重复执行一次定时任务。 Monthly：每月内指定几天重复执行一次定时任务。 Cron：按照指定的Cron表达式执行定时任务。 RecurrenceType 、 RecurrenceValu e和 RecurrenceEndT ime需要同时指定。 |   |   |
 
 | RecurrenceValu e | String | 否 | 是 | 重复执行定时任务的数值 | 取值： Daily：只能填一个值。取值范围：1~31。 Weekly：可以填入多个值。周日、周一……周六的值依次为： 0, 1,2,…, 6， 多天使用半角逗号（,）分隔。 Monthly：格式为A-B。A、B的取值范围为 1~31，并且B 必须大于等于 A。 Cron：表示 UTC时间，支持分、时、日、 月、星期的5域表达式，支持半角逗号（,）、 半角问号 （?）、连字符 （-）、星号 （*）、井号 （#）、正斜线 （/）、L和W。 RecurrenceType 、 RecurrenceValu e和 RecurrenceEndT ime需要同时指定。 |
 |---|---|---|---|---|---|
@@ -9485,10 +9956,7 @@ Fn::GetAtt ScheduledTaskId：定时任务的ID，由系统生成，全局唯一�
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScheduledTask": {
@@ -9502,9 +9970,11 @@ Fn::GetAtt ScheduledTaskId：定时任务的ID，由系统生成，全局唯一�
         "RecurrenceType": "Daily",
         "RecurrenceValue": "1",
         "ScheduledAction": "ari:acs:ess:cn-qingdao:1344371:scalingRule/cCBpdYdQuBe2cUxOdu6piOk"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "ScheduledTaskId": {
       "Value": {
@@ -9513,30 +9983,26 @@ Fn::GetAtt ScheduledTaskId：定时任务的ID，由系统生成，全局唯一�
           "ScheduledTaskId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+### 7.3 KMS
 
-### KMS
+#### 7.3.1 ALIYUN::KMS::Alias
 
-#### ALIYUN::KMS::Alias
+ALIYUN::KMS::Alias类型用于给主密钥（CMK）创建一个别名。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::KMS::Alias",
   "Properties": {
     "KeyId": String,
     "AliasName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -9547,16 +10013,15 @@ Fn::GetAtt ScheduledTaskId：定时任务的ID，由系统生成，全局唯一�
 
 **返回值**
 
-资源编排
-
 **Fn::GetAtt**
 
 无。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Alias": {
@@ -9564,36 +10029,52 @@ Fn::GetAtt ScheduledTaskId：定时任务的ID，由系统生成，全局唯一�
       "Properties": {
         "KeyId": {
           "Ref": "KeyId"
-        },
+```
+
+`},`
+
+```json
         "AliasName": {
           "Ref": "AliasName"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "KeyId": {
       "Type": "String",
       "Description": "Globally unique identifier of the CMK."
-    },
+```
+
+`},`
+
+```json
     "AliasName": {
       "MinLength": 1,
       "Type": "String",
       "Description": "- The display name of the key. You can use the alias to call APIs such as Encry
 pt, GenerateDataKey, and DescribeKey. - Not including the prefix, the minimum length of an alias is 1 and the maximum length is 255. - The prefix alias/ must be included.",
       "MaxLength": 255
-    }
-  },
-  "Outputs": {}
-}
 ```
 
-#### ALIYUN::KMS::Key
+`}` `},`
+
+```json
+  "Outputs": {}
+```
+
+`}`
+
+#### 7.3.2 ALIYUN::KMS::Key
+
+ALIYUN::KMS::Key类型用于创建一个主密钥。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::KMS::Key",
   "Properties": {
     "KeyUsage": String,
@@ -9604,16 +10085,14 @@ pt, GenerateDataKey, and DescribeKey. - Not including the prefix, the minimum le
     "EnableAutomaticRotation": Boolean,
     "RotationInterval": String,
     "ProtectionLevel": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | KeyUsage | String | 否 | 否 | 密钥的用途。 | 取值： ENCRYPT/DEC RYPT：数据加密和解密。 SIGN/VERIFY ：产生和验证数字签名。 |
 |---|---|---|---|---|---|
@@ -9623,13 +10102,11 @@ pt, GenerateDataKey, and DescribeKey. - Not including the prefix, the minimum le
 | KeySpec | String | 否 | 否 | 密钥的类型。 | 取值： Aliyun AES 2 _ _ 56 Aliyun SM4 _ RSA 2048 _ EC P256 _ EC P256K _ EC SM2 _ 说明在中国内地使用托管密码机创建的密钥， 默认为 Aliyun SM4 _ 类型，其余情况下默认为 Aliyun AES _ _ 256。 |
 | EnableAutomatic Rotation | Boolean | 否 | 是 | 是否开启自动密钥轮转。 | 取值： true false（默认值） |
 
-资源编排
-
-| RotationInterval | String | 否 | 是 | 自动轮转的时间周期。例如： 365d 。 |  | 格式为 integer[uni t] ，其中 integer 表示时间长度， unit 表示时间单位。 合法的 unit 单位取值如下： d：天 h：小时 m：分钟 s：秒 7d或者604800s 均表示7天的周期。 取值范围：7~730 天。 |  |  |
+| RotationInterval | String | 否 | 是 | 自动轮转的时间周期。例如： 365d 。 |   | 格式为 integer[uni t] ，其中 integer 表示时间长度， unit 表示时间单位。 合法的 unit 单位取值如下： d：天 h：小时 m：分钟 s：秒 7d或者604800s 均表示7天的周期。 取值范围：7~730 天。 |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | integer[uni |  |
-|  |  |  |  |  |  | t] |  |  |
-| ProtectionLevel | String | 否 | 否 | 密钥的保护级别。 |  | 取值： SOFTWARE（ 默认值） HSM |  |  |
+|   |   |   |   |   |   |   | integer[uni |   |
+|   |   |   |   |   |   | t] |   |   |
+| ProtectionLevel | String | 否 | 否 | 密钥的保护级别。 |   | 取值： SOFTWARE（ 默认值） HSM |   |   |
 
 **返回值**
 
@@ -9637,29 +10114,40 @@ Fn::GetAtt KeyId：密钥的全局唯一标识符。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "ProtectionLevel": {
       "Type": "String",
       "Description": "The protection level of the CMK to create. Valid value: SOFTWARE and HSM. When
 this parameter is set to HSM:\nIf the Origin parameter is set to Aliyun_KMS, the CMK is created in Ma naged HSM.\nIf the Origin parameter is set to EXTERNAL, you can import external keys to Managed HSM."
-    },
+```
+
+`},`
+
+```json
     "Description": {
       "Type": "String",
       "Description": "The description of the CMK. Length constraints: Minimum length of 0 characters.
 Maximum length of 8192 characters.",
       "MinLength": 0,
       "MaxLength": 8192
-    },
+```
+
+`},`
+
+```json
     "RotationInterval": {
       "Type": "String",
       "Description": "The time period for automatic rotation. The format is integer[unit], where inte
 ger represents the length of time and unit represents the time unit. The legal unit units are: d (day ), h (hour), m (minute), s (second). 7d or 604800s both represent a 7-day cycle. Value: 7~730 days."
-    },
+```
+
+`},`
+
+```json
     "EnableAutomaticRotation": {
       "Type": "Boolean",
       "Description": "Whether to enable automatic key rotation. Valid value: true/false (default)",
@@ -9668,10 +10156,7 @@ ger represents the length of time and unit represents the time unit. The legal u
         false
 ```
 
-] 资源编排 ]
-
 ```json
-    },
     "PendingWindowInDays": {
       "Type": "Number",
       "Description": "The waiting period, specified in number of days. During this period, you can ca
@@ -9679,12 +10164,20 @@ ncel the CMK in PendingDeletion status. After the waiting period expires, you ca
       "MinValue": 7,
       "MaxValue": 30,
       "Default": 30
-    },
+```
+
+`},`
+
+```json
     "KeySpec": {
       "Type": "String",
       "Description": "Key type. Valid value:
 Aliyun_AES_256/Aliyun_SM4/RSA_2048/EC_P256/EC_P256K/EC_SM2"
-    },
+```
+
+`},`
+
+```json
     "Enable": {
       "Type": "Boolean",
       "Description": "Specifies whether the key is enabled. Defaults to true.",
@@ -9697,48 +10190,82 @@ Aliyun_AES_256/Aliyun_SM4/RSA_2048/EC_P256/EC_P256K/EC_SM2"
 
 ```json
       "Default": true
-    },
+```
+
+`},`
+
+```json
     "KeyUsage": {
       "Type": "String",
       "Description": "The intended use of the CMK. Default value: ENCRYPT/DECRYPT.",
       "Default": "ENCRYPT/DECRYPT"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Key": {
       "Type": "ALIYUN::KMS::Key",
       "Properties": {
         "ProtectionLevel": {
           "Ref": "ProtectionLevel"
-        },
-        "Description": {
-          "Ref": "Description"
-        },
-        "RotationInterval": {
-          "Ref": "RotationInterval"
-        },
-        "EnableAutomaticRotation": {
-          "Ref": "EnableAutomaticRotation"
-        },
-        "PendingWindowInDays": {
-          "Ref": "PendingWindowInDays"
-        },
-        "KeySpec": {
-          "Ref": "KeySpec"
-        },
-        "Enable": {
-          "Ref": "Enable"
-        },
-        "KeyUsage": {
-          "Ref": "KeyUsage"
-        }
-      }
-    }
-  },
-  "Outputs": {
 ```
 
-资源编排
+`},`
+
+```json
+        "Description": {
+          "Ref": "Description"
+```
+
+`},`
+
+```json
+        "RotationInterval": {
+          "Ref": "RotationInterval"
+```
+
+`},`
+
+```json
+        "EnableAutomaticRotation": {
+          "Ref": "EnableAutomaticRotation"
+```
+
+`},`
+
+```json
+        "PendingWindowInDays": {
+          "Ref": "PendingWindowInDays"
+```
+
+`},`
+
+```json
+        "KeySpec": {
+          "Ref": "KeySpec"
+```
+
+`},`
+
+```json
+        "Enable": {
+          "Ref": "Enable"
+```
+
+`},`
+
+```json
+        "KeyUsage": {
+          "Ref": "KeyUsage"
+```
+
+`}`
+
+```json
+  "Outputs": {
+```
 
 ```json
     "KeyId": {
@@ -9749,16 +10276,7 @@ Aliyun_AES_256/Aliyun_SM4/RSA_2048/EC_P256/EC_P256K/EC_SM2"
           "KeyId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -9808,8 +10326,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Description: >-
 ```
 
-资源编排
-
 ```
       Key type. Valid value:
       Aliyun_AES_256/Aliyun_SM4/RSA_2048/EC_P256/EC_P256K/EC_SM2
@@ -9826,6 +10342,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Default: ENCRYPT/DECRYPT
 Resources:
   Key:
+    Type: 'ALIYUN::KMS::Key'
     Properties:
       ProtectionLevel:
         Ref: ProtectionLevel
@@ -9852,26 +10369,27 @@ Outputs:
         - KeyId
 ```
 
-### NAS
+### 7.4 NAS
 
-#### ALIYUN::NAS::AccessGroup
+#### 7.4.1 ALIYUN::NAS::AccessGroup
+
+ALIYUN::NAS::AccessGroup用于创建权限组。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::NAS::AccessGroup",
   "Properties": {
     "AccessGroupType": String,
     "AccessGroupName": String,
     "Description": String
-  }
-}
 ```
 
-**属性**
+`}`
 
-资源编排
+**属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
@@ -9887,10 +10405,7 @@ AccessGroupName：权限组名称。
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "AccessGroup": {
@@ -9898,62 +10413,78 @@ AccessGroupName：权限组名称。
       "Properties": {
         "AccessGroupType": {
           "Ref": "AccessGroupType"
-        },
+```
+
+`},`
+
+```json
         "AccessGroupName": {
           "Ref": "AccessGroupName"
-        },
+```
+
+`},`
+
+```json
         "Description": {
           "Ref": "Description"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "AccessGroupType": {
       "Type": "String",
       "Description": "Permission group type, including the Vpc and Classic types",
       "AllowedValues": ["Vpc", "Classic"]
-    },
+```
+
+`},`
+
+```json
     "AccessGroupName": {
       "AllowedPattern": "^[a-zA-Z0-9-]{3,64}$",
       "Type": "String",
       "Description": "Permission group name"
-    },
+```
+
+`},`
+
+```json
     "Description": {
       "Type": "String",
       "Description": "Permission group description. It is the same as the permission group name by de
 fault."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "AccessGroupName": {
       "Description": "Permission group name",
       "Value": {
         "Fn::GetAtt": ["AccessGroup", "AccessGroupName"]
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::NAS::AccessRule
+`}` `}` `}` `}`
+
+#### 7.4.2 ALIYUN::NAS::AccessRule
+
+ALIYUN::NAS::AccessRule类型用于创建权限规则。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::NAS::AccessRule",
-  "Properties": {
     "Priority": Integer,
     "UserAccessType": String,
     "AccessGroupName": String,
     "SourceCidrIp": String,
     "RWAccessType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -9973,8 +10504,9 @@ AccessRuleId：规则序号。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "AccessRule": {
@@ -9982,25 +10514,35 @@ AccessRuleId：规则序号。
       "Properties": {
         "Priority": {
           "Ref": "Priority"
-        },
-        "RWAccessType": {
-          "Ref": "RWAccessType"
-        },
-        "UserAccessType": {
-          "Ref": "UserAccessType"
-        },
-        "SourceCidrIp": {
-          "Ref": "SourceCidrIp"
-        },
-        "AccessGroupName": {
-          "Ref": "AccessGroupName"
-        }
-      }
-    }
-  },
 ```
 
-资源编排
+`},`
+
+```json
+        "RWAccessType": {
+          "Ref": "RWAccessType"
+```
+
+`},`
+
+```json
+        "UserAccessType": {
+          "Ref": "UserAccessType"
+```
+
+`},`
+
+```json
+        "SourceCidrIp": {
+          "Ref": "SourceCidrIp"
+```
+
+`},`
+
+```json
+        "AccessGroupName": {
+          "Ref": "AccessGroupName"
+```
 
 ```json
   "Parameters": {
@@ -10010,49 +10552,64 @@ AccessRuleId：规则序号。
       "Description": "Priority level. Range: 1-100. Default value: 1",
       "MaxValue": 100,
       "MinValue": 1
-    },
+```
+
+`},`
+
+```json
     "RWAccessType": {
       "Default": "RDWR",
       "Type": "String",
       "Description": "Read-write permission type: RDWR (default), RDONLY",
       "AllowedValues": ["RDWR", "RDONLY"]
-    },
+```
+
+`},`
+
+```json
     "UserAccessType": {
       "Default": "no_squash",
       "Type": "String",
       "Description": "User permission type: no_squash (default), root_squash, all_squash",
       "AllowedValues": ["no_squash", "root_squash", "all_squash"]
-    },
+```
+
+`},`
+
+```json
     "SourceCidrIp": {
       "Type": "String",
       "Description": "Address or address segment"
-    },
+```
+
+`},`
+
+```json
     "AccessGroupName": {
       "Type": "String",
       "Description": "Permission group name"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "AccessRuleId": {
       "Description": "Rule serial number",
       "Value": {
         "Fn::GetAtt": ["AccessRule", "AccessRuleId"]
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::NAS::FileSystem
+`}` `}` `}` `}`
+
+#### 7.4.3 ALIYUN::NAS::FileSystem
+
+ALIYUN::NAS::FileSystem类型用于创建文件系统。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::NAS::FileSystem",
-  "Properties": {
     "SnapshotId": String,
     "Description": String,
     "StorageType": String,
@@ -10068,9 +10625,9 @@ AccessRuleId：规则序号。
     "VSwitchId": String,
     "Duration": Integer,
     "ChargeType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -10083,8 +10640,6 @@ AccessRuleId：规则序号。
 | ZoneId | String | 否 | 否 | 可用区ID。 | 无 |
 | Tags | List | 否 | 是 | 标签。 | 每个实例最多绑定20个标签。 更多信息，请参见Tags属性。 |
 
-资源编排
-
 | SnapshotId | String | 否 | 否 | 快照ID。 | 可以通过指定SnapshotId从指定快照创建NAS实例，目前仅支持极速型NAS。 说明通过快照创建的文件系统版本需和快照源文件系统版本一致。如果不一致，可以执行以下步骤： 1. 把快照源文件数据拷贝到创建的文件系统中。 2. 拷贝完成后，把业务迁移到新的文件系统。 |
 |---|---|---|---|---|---|
 | EncryptType | Integer | 否 | 否 | 文件系统是否加密。使用KMS托管密钥，对文件系统落盘数据进行加密存储。在读写加密数据时，无需解密。 | 当FileSystemType取值为 standard或extreme时该参数有效。取值： 0：不加密。 1：加密。 |
@@ -10094,8 +10649,6 @@ AccessRuleId：规则序号。
 | Bandwidth | Integer | 否 | 否 | 文件系统吞吐上限。 | 当FileSystemType取值为cpfs 时该参数必须指定，取值根据 Capacity确定。更多信息，请参见CPFS购买页面。 单位：Mbps。 |
 | VSwitchId | String | 否 | 否 | 交换机ID，指定VpcId 和VSwitchId可以在创建文件系统实例的同时预配置一个默认挂载点。 | 当FileSystemType取值为cpfs 时该参数必须指定。 |
 
-资源编排
-
 | Duration | Integer | 否 | 否 | 包年包月时长。 | 当ChargeType取值为 Subscription时该参数有效且必须指定。当包年包月实例到期时未进行续费，实例会自动到期释放。取值： 1 2 3 6 12 36 单位：月。 |
 |---|---|---|---|---|---|
 | ChargeType | String | 否 | 否 | 付费类型。 | 取值： PayAsYouGo：按量付费。 Subscription：包年包月。 |
@@ -10104,13 +10657,16 @@ AccessRuleId：规则序号。
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -10125,10 +10681,9 @@ Fn::GetAtt FileSystemId：文件系统ID。
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": "Test NAS AccessGroupName、AccessRule、FileSystem、MountTarget",
   "Parameters": {
@@ -10136,7 +10691,11 @@ Fn::GetAtt FileSystemId：文件系统ID。
       "Type": "String",
       "Description": "File system description.",
       "Default": "mytest"
-    },
+```
+
+`},`
+
+```json
     "ProtocolType": {
       "Type": "String",
       "Description": "Type of protocol used.",
@@ -10149,7 +10708,11 @@ Fn::GetAtt FileSystemId：文件系统ID。
 
 ```json
       "Default": "NFS"
-    },
+```
+
+`},`
+
+```json
     "StorageType": {
       "Type": "String",
       "Description": "The file system type.",
@@ -10162,24 +10725,36 @@ Fn::GetAtt FileSystemId：文件系统ID。
 
 ```json
       "Default": "Capacity"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "FileSystem": {
       "Type": "ALIYUN::NAS::FileSystem",
       "Properties": {
         "ProtocolType": {
           "Ref": "ProtocolType"
-        },
+```
+
+`},`
+
+```json
         "StorageType": {
           "Ref": "StorageType"
-        },
+```
+
+`},`
+
+```json
         "Description": {
           "Ref": "Description"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "FileSystemId": {
       "Description": "ID of the file system created",
@@ -10189,25 +10764,17 @@ Fn::GetAtt FileSystemId：文件系统ID。
           "FileSystemId"
 ```
 
-]
+`]` `}` `}` `}` `}` 更多示例，请参见创建文件系统、创建权限组、创建权限规则和创建挂载点的组合示例：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.4.4 ALIYUN::NAS::MountTarget
 
-更多示例，请参见创建文件系统、创建权限组、创建权限规则和创建挂载点的组合示例：JSON示例和YAML示例。
-
-#### ALIYUN::NAS::MountTarget
-
-资源编排
+ALIYUN::NAS::MountTarget类型用于创建挂载点。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::NAS::MountTarget",
   "Properties": {
     "Status": String,
@@ -10216,9 +10783,9 @@ Fn::GetAtt FileSystemId：文件系统ID。
     "VSwitchId": String,
     "NetworkType": String,
     "AccessGroupName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -10239,8 +10806,9 @@ MountTargetDomain：挂载点域名。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "MountTarget": {
@@ -10248,81 +10816,114 @@ MountTargetDomain：挂载点域名。
       "Properties": {
         "Status": {
           "Ref": "Status"
-        },
+```
+
+`},`
+
+```json
         "VpcId": {
           "Ref": "VpcId"
-        },
+```
+
+`},`
+
+```json
         "FileSystemId": {
           "Ref": "FileSystemId"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
           "Ref": "VSwitchId"
-        },
+```
+
+`},`
+
+```json
         "NetworkType": {
           "Ref": "NetworkType"
-        },
         "AccessGroupName": {
 ```
 
-资源编排
-
 ```json
           "Ref": "AccessGroupName"
-        }
-      }
-    }
-  },
+```
+
+`},`
+
+```json
   "Parameters": {
     "Status": {
       "Type": "String",
       "Description": "Status, including Active and Inactive",
       "AllowedValues": ["Active", "Inactive"]
-    },
+```
+
+`},`
+
+```json
     "VpcId": {
       "Type": "String",
       "Description": "VPC network ID"
-    },
+```
+
+`},`
+
+```json
     "FileSystemId": {
       "Type": "String",
       "Description": "File system ID"
-    },
+```
+
+`},`
+
+```json
     "VSwitchId": {
       "Type": "String",
       "Description": "VSwitch ID."
-    },
+```
+
+`},`
+
+```json
     "NetworkType": {
       "Type": "String",
       "Description": "Network type, including Vpc and Classic networks.",
       "AllowedValues": ["Vpc", "Classic"]
-    },
+```
+
+`},`
+
+```json
     "AccessGroupName": {
       "Type": "String",
       "Description": "Permission group name"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "MountTargetDomain": {
       "Description": "Mount point domain name",
       "Value": {
         "Fn::GetAtt": ["MountTarget", "MountTargetDomain"]
-      }
-    }
-  }
-}
 ```
 
-### OSS
+`}` `}` `}` `}`
 
-#### ALIYUN::OSS::Bucket
+### 7.5 OSS
+
+#### 7.5.1 ALIYUN::OSS::Bucket
+
+ALIYUN::OSS::Bucket类型用于创建OSS存储空间。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::OSS::Bucket",
-  "Properties": {
     "AccessControl": String,
     "RefererConfiguration": Map,
     "ServerSideEncryptionConfiguration": Map,
@@ -10335,9 +10936,9 @@ MountTargetDomain：挂载点域名。
     "WebsiteConfiguration": Map,
     "Policy": Map,
     "BucketName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -10354,11 +10955,9 @@ MountTargetDomain：挂载点域名。
 | ServerSideEn cryptionConfi guration | Map | 否 | 是 | 服务端加密规则配置。 | 更多信息，请参见ServerSideEncryptionConfigu ration属性。 |
 | Tags | Map | 否 | 是 | 存储空间标签。 Key-Value形式的键值对。 | 最多设置20个标签。 Key长度为1~64个字节，不能以 http:// 、 https:// 或 Aliyun 开头。 Value长度为0~128个字节，必须为UTF-8编码。 |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| Aliyun |  |
-
-资源编排
+| Aliyun |   |
 
 | StorageClass | String | 否 | 否 | 存储空间类型。 | 取值： Standard（默认值）：标准存储。 IA：低频访问。 Archive：归档存储。 |
 |---|---|---|---|---|---|
@@ -10369,8 +10968,9 @@ MountTargetDomain：挂载点域名。
 ```json
 "CORSConfiguration": {
   "CORSRule": List
-}
 ```
+
+`}`
 
 **CORSConfiguration属性**
 
@@ -10382,16 +10982,19 @@ MountTargetDomain：挂载点域名。
 
 ```json
 "CORSRule": [
-  {
+```
+
+`{`
+
+```json
     "MaxAgeSeconds": Number,
     "AllowedMethod": List,
     "ExposeHeader": List,
     "AllowedOrigin": List,
     "AllowedHeader": List
-  }
 ```
 
-]
+`}` `]`
 
 **CORSRule属性**
 
@@ -10400,8 +11003,6 @@ MountTargetDomain：挂载点域名。
 | AllowedHead er | List | 否 | 否 | 允许的跨域请求 Header。 | 取值： * Cache-Control Content-Language Content-Type Expires Last-Modified Pragma |
 | AllowedMetho d | List | 否 | 否 | 允许的跨域请求的方法。 | 取值： * GET PUT POST DELETE HEAD |
 | AllowedOrigin | List | 否 | 否 | 允许的跨域请求的来源。 | 无 |
-
-资源编排
 
 | ExposeHeade r | List | 否 | 否 | 允许用户从应用程序中访问的响应头。 | 不允许使用星号（*）。 |
 |---|---|---|---|---|---|
@@ -10412,8 +11013,9 @@ MountTargetDomain：挂载点域名。
 ```json
 "LifecycleConfiguration": {
   "Rule": List
-}
 ```
+
+`}`
 
 **LifecycleConfiguration属性**
 
@@ -10425,16 +11027,19 @@ MountTargetDomain：挂载点域名。
 
 ```json
 "Rule": [
-  {
+```
+
+`{`
+
+```json
     "Status": String,
     "AbortMultipartUpload": Map,
     "Expiration": Map,
     "Prefix": String,
     "ID": String
-  }
 ```
 
-]
+`}` `]`
 
 **Rule属性**
 
@@ -10453,10 +11058,7 @@ MountTargetDomain：挂载点域名。
   "Days": Number,
   "CreatedBeforeDate": String,
   "Date": String
-}
 ```
-
-资源编排
 
 **Expiration属性**
 
@@ -10471,8 +11073,9 @@ MountTargetDomain：挂载点域名。
 "AbortMultipartUpload": {
   "CreatedBeforeDate": String,
   "Days": Number
-}
 ```
+
+`}`
 
 **AbortMultipartUpload属性**
 
@@ -10487,8 +11090,9 @@ MountTargetDomain：挂载点域名。
 "LoggingConfiguration": {
   "TargetBucket": String,
   "TargetPrefix": String
-}
 ```
+
+`}`
 
 **LoggingConfiguration属性**
 
@@ -10503,12 +11107,9 @@ MountTargetDomain：挂载点域名。
 "WebsiteConfiguration":{
   "IndexDocument": String,
   "ErrorDocument": String
-}
 ```
 
 **WebsiteConfiguration属性**
-
-资源编排
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
@@ -10521,8 +11122,9 @@ MountTargetDomain：挂载点域名。
 "RefererConfiguration":{
   "AllowEmptyReferer": String,
   "RefererList": List
-}
 ```
+
+`}`
 
 **RefererConfiguration属性**
 
@@ -10537,8 +11139,9 @@ MountTargetDomain：挂载点域名。
 "ServerSideEncryptionConfiguration":{
   "KMSMasterKeyID": String,
   "SSEAlgorithm": String
-}
 ```
+
+`}`
 
 **ServerSideEncryptionConfiguration属性**
 
@@ -10553,18 +11156,15 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": "Test OSS Bucket",
   "Parameters": {
     "AccessControl": {
 "Default":"private"
 ```
-
-资源编排
 
 ```json
       Default: private,
@@ -10576,28 +11176,35 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
         "public-read-write"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "BucketName": {
       "Type": "String",
       "Description": "bucket name."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Bucket": {
       "Type": "ALIYUN::OSS::Bucket",
       "Properties": {
         "AccessControl": {
           "Ref": "AccessControl"
-        },
+```
+
+`},`
+
+```json
         "BucketName": {
           "Ref": "BucketName"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "InternalDomainName": {
       "Description": "The internal DNS name of the specified bucket.",
@@ -10607,11 +11214,9 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
           "InternalDomainName"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Name": {
       "Description": "The name of Bucket",
       "Value": {
@@ -10620,11 +11225,9 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
           "Name"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "DomainName": {
       "Description": "The public DNS name of the specified bucket.",
       "Value": {
@@ -10633,27 +11236,19 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
           "DomainName"
 ```
 
-]
+`]` `}` `}` `}` `}` 更多示例，请参见：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
+### 7.6 RDS
 
-更多示例，请参见：JSON示例和YAML示例。
+#### 7.6.1 ALIYUN::RDS::Account
 
-### RDS
-
-资源编排
-
-#### ALIYUN::RDS::Account
+ALIYUN::RDS::Account用于创建管理数据库的账号。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::RDS::Account",
   "Properties": {
     "AccountDescription": String,
@@ -10661,9 +11256,9 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
     "AccountPassword": String,
     "AccountType": String,
     "AccountName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -10677,25 +11272,32 @@ Fn::GetAtt Name：存储空间名称，全局唯一。 DomainName：通过公网
 
 **返回值**
 
-Fn::GetAtt AccountName：账号名称。 资源编排
+Fn::GetAtt AccountName：账号名称。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "AccountDescription": {
       "Type": "String",
       "Description": "Account remarks.\nIt cannot begin with http:// or https://.\nIt must start with
 a Chinese character or English letter.\nIt can include Chinese and English characters/letters, unders cores (_), hyphens (-), and digits.\nThe length may be 2-256 characters."
-    },
+```
+
+`},`
+
+```json
     "DBInstanceId": {
       "Type": "String",
       "Description": "RDS instance ID."
-    },
+```
+
+`},`
+
+```json
     "AccountType": {
       "Type": "String",
       "Description": "Privilege type of account.\nNormal: Common privilege.\nSuper: High privilege. A
@@ -10709,47 +11311,68 @@ nd the default value is Normal.\nThis parameter is valid for MySQL 5.5/5.6 only.
 
 ```json
       "Default": "Normal"
-    },
+```
+
+`},`
+
+```json
     "AccountPassword": {
       "Type": "String",
       "Description": "The account password for the database instance. It may consist of letters, digi
 ts, or underlines, with a length of 8 to 32 characters.",
       "MinLength": 8,
       "MaxLength": 32
-    },
+```
+
+`},`
+
+```json
     "AccountName": {
       "Type": "String",
       "Description": "Account name, which must be unique and meet the following requirements:\nStart
 with a letter;\nConsist of lower-case letters, digits, and underscores (_);\nContain no more than 16 characters.\nFor other invalid characters, see Forbidden keywords table."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Account": {
       "Type": "ALIYUN::RDS::Account",
       "Properties": {
         "AccountDescription": {
           "Ref": "AccountDescription"
-        },
-        "DBInstanceId": {
-          "Ref": "DBInstanceId"
-        },
-        "AccountType": {
-          "Ref": "AccountType"
-        },
-        "AccountPassword": {
-          "Ref": "AccountPassword"
-        },
-        "AccountName": {
-          "Ref": "AccountName"
-        }
-      }
 ```
 
-资源编排
+`},`
 
 ```json
-    }
-  },
+        "DBInstanceId": {
+          "Ref": "DBInstanceId"
+```
+
+`},`
+
+```json
+        "AccountType": {
+          "Ref": "AccountType"
+```
+
+`},`
+
+```json
+        "AccountPassword": {
+          "Ref": "AccountPassword"
+```
+
+`},`
+
+```json
+        "AccountName": {
+          "Ref": "AccountName"
+```
+
+```json
   "Outputs": {
     "AccountName": {
       "Description": "Account name",
@@ -10759,16 +11382,7 @@ with a letter;\nConsist of lower-case letters, digits, and underscores (_);\nCon
           "AccountName"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -10809,8 +11423,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Type: String
 ```
 
-资源编排
-
 ```
     Description: |-
       Account name, which must be unique and meet the following requirements:
@@ -10820,6 +11432,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
       For other invalid characters, see Forbidden keywords table.
 Resources:
   Account:
+    Type: 'ALIYUN::RDS::Account'
     Properties:
       AccountDescription:
         Ref: AccountDescription
@@ -10836,31 +11449,33 @@ Outputs:
     Description: Account name
     Value:
       'Fn::GetAtt':
+        - Account
         - AccountName
 ```
 
-#### ALIYUN::RDS::AccountPrivilege
+#### 7.6.2 ALIYUN::RDS::AccountPrivilege
+
+ALIYUN::RDS::AccountPrivilege用于授权账号访问数据库。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::RDS::AccountPrivilege",
   "Properties": {
     "AccountPrivilege": String,
     "DBInstanceId": String,
     "DBName": String,
     "AccountName": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | AccountPrivilege | String | 是 | 是 | 账号权限。 | 取值范围： ReadWrite：读写； ReadOnly：只读； DDLOnly：仅执行DDL，适用于MySQL和 MariaDB； DMLOnly：只执行DML，适用于MySQL和 MariaDB； DBOwner：数据库所有者，适用于SQL Server。 |
 |---|---|---|---|---|---|
@@ -10874,10 +11489,7 @@ Fn::GetAtt 无。
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "AccountPrivilege": {
@@ -10885,48 +11497,80 @@ Fn::GetAtt 无。
       "Properties": {
         "AccountPrivilege": {
           "Ref": "AccountPrivilege"
-        },
+```
+
+`},`
+
+```json
         "DBInstanceId": {
           "Ref": "DBInstanceId"
-        },
+```
+
+`},`
+
+```json
         "DBName": {
           "Ref": "DBName"
-        },
+```
+
+`},`
+
+```json
         "AccountName": {
           "Ref": "AccountName"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "AccountPrivilege": {
       "Type": "String",
       "Description": "RDS account privilege",
       "AllowedValues": ["ReadOnly", "ReadWrite", "DDLOnly", "DMLOnly", "DBOwner"]
-    },
+```
+
+`},`
+
+```json
     "DBInstanceId": {
       "Type": "String",
       "Description": "RDS instance ID."
-    },
+```
+
+`},`
+
+```json
     "DBName": {
       "Type": "String",
       "Description": "RDS database name"
-    },
+```
+
+`},`
+
+```json
     "AccountName": {
       "Type": "String",
       "Description": "RDS account name."
-    }
-  },
-  "Outputs": {}
-}
 ```
 
-#### ALIYUN::RDS::DBInstance
+`}` `},`
+
+```json
+  "Outputs": {}
+```
+
+`}`
+
+#### 7.6.3 ALIYUN::RDS::DBInstance
+
+ALIYUN::RDS::DBInstance类型用于创建RDS数据库实例。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::RDS::DBInstance",
   "Properties": {
     "PeriodType": String,
@@ -10939,8 +11583,6 @@ Fn::GetAtt 无。
     "DedicatedHostGroupId": String,
     "EncryptionKey": String,
 ```
-
-资源编排
 
 ```json
     "PreferredBackupPeriod": List,
@@ -10995,17 +11637,15 @@ Fn::GetAtt 无。
     "LocalLogRetentionHours": Integer,
     "LogBackupLocalRetentionNumber": Integer,
     "ServerlessConfig": Map
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | ResourceGroup Id | String | 否 | 是 | 资源组ID。 | 无 |
-
-资源编排
 
 | Engine | String | 是 | 否 | 数据库类型。 | 取值： MySQL SQLServer PostgreSQL PPAS MariaDB |
 |---|---|---|---|---|---|
@@ -11018,8 +11658,6 @@ Fn::GetAtt 无。
 | DBParamGroup Id | String | 否 | 否 | 参数模板ID。 | 无 |
 | Category | String | 否 | 否 | 实例系列。 | 取值： Basic：基础版。 HighAvailability：高可用版。 AlwaysOn：集群版。 Finance：三节点企业版。 |
 | TargetDedicate dHostIdForMast er | String | 否 | 否 | 在专属集群内创建实例时，指定主实例的主机 ID。 | 无 |
-
-资源编排
 
 | DBIsIgnoreCase | Integer | 否 | 否 | 表名是否区分大小写。 | 取值： 0：区分大小写。 1（默认值）：不区分大小写。 |
 |---|---|---|---|---|---|
@@ -11037,8 +11675,6 @@ Fn::GetAtt 无。
 | DBMappings | List | 否 | 否 | 实例下创建新的数据库。 | 更多信息，请参见DBMappings属性。 |
 | DBInstanceDes cription | String | 否 | 否 | 实例的描述或备注信息。 | 长度为2~256个字符。以英文字母或汉字开头，不能以 http:// 或 https:// 开头。 可包含汉字、英文字母、数字、下划线 （ ）和短划线（-）。 _ |
 
-资源编排
-
 | ConnectionMod e | String | 否 | 否 | 数据库的连接模式。 | 取值： Standard：标准访问模式。 Safe：高安全访问模式。 如果未指定该参数，则默认由RDS系统分配。 说明 SQL Server 2012/2016/2017只支持标准访问模式。 |
 |---|---|---|---|---|---|
 | MasterUsernam e | String | 否 | 否 | 数据库实例的主账号名称。 | 名称需要全局唯一。长度不超过16个字符。以英文字母开头，可包含英文字母、数字和下划线（ ）。 _ |
@@ -11052,34 +11688,30 @@ Fn::GetAtt 无。
 | BackupRetentio nPeriod | Number | 否 | 否 | 备份保留天数。 | 取值范围：7~30。 单位：天。 默认值：7。 |
 | PrivateIpAddres s | String | 否 | 否 | VSwitchId下的私网IP。 | 如果不指定该参数，系统将自动分配私网IP。 |
 
-资源编排
-
-| PreferredBacku pPeriod | List | 否 | 否 |  | 备份周期。 | 取值： Monday Tuesday Wednesday Thursday Friday Saturday Sunday |  |
+| PreferredBacku pPeriod | List | 否 | 否 |   | 备份周期。 | 取值： Monday Tuesday Wednesday Thursday Friday Saturday Sunday |   |
 |---|---|---|---|---|---|---|---|
-| MasterUserTyp e | String | 否 | 否 |  | 主账号类型。 | 取值： Normal（默认值）：普通账号。 Super：高权限账号。 Sysadmin：管理员账号。 说明管理员账号只支持 SQLServer数据库。 |  |
-| Tags | Map | 否 | 是 |  | Tag列表，包括TagKey 和TagValue。 | TagKey不能为空，TagValue可以为空。 格式示例： {“key1”:”value1”,“key2”:”” } 。 |  |
-|  |  |  |  |  |  | } |  |
-| PeriodType | String | 否 | 否 |  | 周期类型。 | 取值： Month（默认值） Year |  |
-| PayType | String | 否 | 否 |  | 实例的付费类型。 | 取值： Postpaid：后付费，即按量付费。 Prepaid：预付费，即包年包月。 |  |
-| Period | Integer | 否 | 否 |  | 预付费时长。 | 取值： 当参数PeriodType取值为Year时： 1~3。 当参数PeriodType取值为Month： 1~9。 |  |
-| TargetDedicate dHostIdForLog | String | 否 | 否 |  | 在专属集群内创建实例时，指定日志实例的主机 ID。 | 无 |  |
-| SlaveZoneIds | List | 否 | 否 |  | 高可用版或三节点企业版的备可用区。 | 最多指定两个备可用区，例如： ["zone-b"] 或 ["zone-b", "zone-c"] 。 为每个主可用区或者备可用区指定一个交换机，例如：ZoneId= "zone- a" 并且SlaveZoneIds= ["zone- c", "zone-b"] ，VSwitchID取值为 "vsw-zone-a,vsw-zone- c,vsw-zone-b" |  |
-| SQLCollectorSt atus | String | 否 | 是 |  | 是否开启SQL洞察（SQL 审计）。 | 取值： Enable：开启SQL洞察。 Disabled：关闭SQL洞察。 |  |
+| MasterUserTyp e | String | 否 | 否 |   | 主账号类型。 | 取值： Normal（默认值）：普通账号。 Super：高权限账号。 Sysadmin：管理员账号。 说明管理员账号只支持 SQLServer数据库。 |   |
+| Tags | Map | 否 | 是 |   | Tag列表，包括TagKey 和TagValue。 | TagKey不能为空，TagValue可以为空。 格式示例： {“key1”:”value1”,“key2”:”” } 。 |   |
+|   |   |   |   |   |   | } |   |
+| PeriodType | String | 否 | 否 |   | 周期类型。 | 取值： Month（默认值） Year |   |
+| PayType | String | 否 | 否 |   | 实例的付费类型。 | 取值： Postpaid：后付费，即按量付费。 Prepaid：预付费，即包年包月。 |   |
+| Period | Integer | 否 | 否 |   | 预付费时长。 | 取值： 当参数PeriodType取值为Year时： 1~3。 当参数PeriodType取值为Month： 1~9。 |   |
+| TargetDedicate dHostIdForLog | String | 否 | 否 |   | 在专属集群内创建实例时，指定日志实例的主机 ID。 | 无 |   |
+| SlaveZoneIds | List | 否 | 否 |   | 高可用版或三节点企业版的备可用区。 | 最多指定两个备可用区，例如： ["zone-b"] 或 ["zone-b", "zone-c"] 。 为每个主可用区或者备可用区指定一个交换机，例如：ZoneId= "zone- a" 并且SlaveZoneIds= ["zone- c", "zone-b"] ，VSwitchID取值为 "vsw-zone-a,vsw-zone- c,vsw-zone-b" |   |
+| SQLCollectorSt atus | String | 否 | 是 |   | 是否开启SQL洞察（SQL 审计）。 | 取值： Enable：开启SQL洞察。 Disabled：关闭SQL洞察。 |   |
 
-| {“key1”:”value1”,“key2”:”” |  |
+| {“key1”:”value1”,“key2”:”” |   |
 |---|---|
 
-|  |  | ["zone-b"] |
+|   |   | ["zone-b"] |
 |---|---|---|
-|  | "zone-c"] |  |
+|   | "zone-c"] |   |
 
-| ["zone-b", |  |
+| ["zone-b", |   |
 |---|---|
 
-|  | 业版 | a" |
+|   | 业版 | a" |
 |---|---|---|
-
-资源编排
 
 | SSLSetting | String | 否 | 否 | 实例的安全套接层 （SSL）链接设置。 | 取值： Disabled（默认值）：禁用SSL。 EnabledForPublicConnection：公网连接地址将受SSL证书保护。 说明该参数取值为 EnabledForPublicConnection 时，AllocatePublicConnectio n取值必须为true。 EnabledForInnerConnection：私网连接地址将受SSL证书保护。 |
 |---|---|---|---|---|---|
@@ -11091,8 +11723,6 @@ Fn::GetAtt 无。
 | ArchiveBackup KeepPolicy | String | 否 | 否 | 归档备份的保留周期。 | 取值： ByMonth ByWeek KeepAll |
 | ArchiveBackup KeepCount | Integer | 否 | 否 | 归档备份的保留个数。 | 取值： 当ArchiveBackupKeepPolicy取值为ByMonth时：1~31。 当ArchiveBackupKeepPolicy取值为ByWeek时：1~7。 当ArchiveBackupKeepPolicy取值为KeepAll时：无需指定该参数。 默认值：1。 |
 
-资源编排
-
 | LogBackupRete ntionPeriod | Integer | 否 | 否 | 日志备份保留天数。 | 取值范围：7~730。 日志备份保留期不能长于数据备份保留期。 说明如果启用了日志备份功能，您可以指定日志备份的保留期限。 |
 |---|---|---|---|---|---|
 | HighSpaceUsag eProtection | String | 否 | 否 | 指定当磁盘空间不足（实例超过80％或剩余空间少于5 GB）时是否强制删除日志备份文件 。 | 取值： Enable Disable 当BackupPolicyMode取值为 LogBackupPolicy时，必须指定该参数。 |
@@ -11103,8 +11733,6 @@ Fn::GetAtt 无。
 | LogBackupLoca lRetentionNum ber | Integer | 否 | 否 | 实例上可以保留的日志备份文件数。 | 取值范围：6~100。 默认值：60。 |
 | ServerlessConfi g | Map | 否 | 否 | RDS Serverless实例的相关设置。 | 更多信息，请参见ServerlessConfig属性。 |
 
-资源编排
-
 **ServerlessConfig语法**
 
 ```json
@@ -11113,23 +11741,20 @@ Fn::GetAtt 无。
     "MaxCapacity": Number,
     "MinCapacity": Number,
     "AutoPause": Boolean
-  }
 ```
+
+`}`
 
 **ServerlessConfig属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-|  |  |  |  | 是否开启 | 取值： true：开启。 false（默认）：不开启。 |
-
-资源编排
+|   |   |   |   | 是否开启 | 取值： true：开启。 false（默认）：不开启。 |
 
 | SwitchForce | Boolean | 否 | 否 | 是否开启 Serverless实例的强制弹性扩容和缩容。 | 说明开启该参数后， 实例进行强制扩容和缩容时会有 1分钟以内的闪断， 请您根据实际情况谨慎使用。 实例 RCU 的弹性扩容和缩容通常会立刻生效， 但在某些特殊情况下 （例如： |
 |---|---|---|---|---|---|
-|  |  |  |  |  | 大事务执行中） 无法即刻完成扩容和缩容， 此时可开启本参数进行强制扩容和缩容。 |
+|   |   |   |   |   | 大事务执行中） 无法即刻完成扩容和缩容， 此时可开启本参数进行强制扩容和缩容。 |
 | MaxCapacity | Number | 是 | 否 | 实例RCU（RDS Capacity Unit） 自动扩容和缩容范围的最大值。 | 取值：0.5~8。 说明该参数的值必须大于等于 MinCapacity 参数。 |
-
-资源编排
 
 | MinCapacity | Number | 是 | 否 | 实例RCU自动扩容和缩容范围的最小值。 | 取值：0.5~8。 说明该参数的值必须小于等于 MaxCapacit y参数。 |
 |---|---|---|---|---|---|
@@ -11139,14 +11764,17 @@ Fn::GetAtt 无。
 
 ```json
 "DBMappings": [
-  {
+```
+
+`{`
+
+```json
     "DBDescription": String,
     "CharacterSetName": String,
     "DBName": String
-  }
 ```
 
-]
+`}` `]`
 
 **DBMappings属性**
 
@@ -11154,8 +11782,6 @@ Fn::GetAtt 无。
 |---|---|---|---|---|---|
 | CharacterSetName | String | 是 | 否 | 字符集。 | 取值： MySQL类型： utf8 gbk latin1 utf8mb4（适用于5.5版和 5.6版） SQLServer类型： Chinese PRC CI AS _ _ _ Chinese PRC CS AS _ _ _ SQL Latin1 General CP _ _ _ 1 CI AS _ _ SQL Latin1 General CP _ _ _ 1 CS AS _ _ Chinese PRC BIN _ _ |
 | DBName | String | 是 | 否 | 数据库名称。 | 名称需要全局唯一。 长度不超过64个字符。以英文字母开头，可包含英文字母、数字和下划线（ ）。 _ |
-
-资源编排
 
 | DBDescription | String | 否 | 否 | 数据库描述。 | 长度为2~256个字符。以英文字母或汉字开头，不能以 http:// 或 https:// 开头。可包含汉字、英文字母、 数字、下划线（ ）和短划线 _ （-）。 |
 |---|---|---|---|---|---|
@@ -11166,11 +11792,12 @@ Fn::GetAtt DBInstanceId：数据库实例ID。 InnerPort：数据库实例的内
 
 **示例**
 
-`YAML` 格式资源编排
+`YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Description: Test RDS DBInstance Parameters:
   VpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
     Type: String
     Description:
       en: Please search the ID starting with (vpc-xxx) from console-Virtual Private Cloud
@@ -11210,6 +11837,7 @@ s under query
 Resources:
   RDSInstance:
     DependsOn: VSwitch
+    Type: ALIYUN::RDS::DBInstance
     Properties:
       VpcId:
         Ref: VpcId
@@ -11231,10 +11859,9 @@ Outputs:
         - DBInstanceId
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": "Test RDS DBInstance",
   "Parameters": {
@@ -11245,56 +11872,46 @@ Outputs:
         "en": "Please search the ID starting with (vpc-xxx) from console-Virtual Private Cloud",
 ```
 
-`"zh-cn": "`现有虚拟专有网络的实例`ID"`
+`"zh-cn": "`现有虚拟专有网络的实例`ID"` `"`
 
 ```
-      },
+bl"
 ```
-
-"
-
-```
-bl" {
-```
-
-资源编排
 
 ```json
       "Label": {
         "en": "VPC ID",
 ```
 
-`"zh-cn": "`专有网络`VPC`实例`ID"`
+`"zh-cn": "`专有网络`VPC`实例`ID"` `},`
 
 ```json
-      }
-    },
     "VSwitchId": {
       "AssociationProperty": "ALIYUN::ECS::VSwitch::VSwitchId",
       "AssociationPropertyMetadata": {
         "VpcId": "${VpcId}",
         "ZoneId": "${VSwitchZoneId}"
-      },
+```
+
+`},`
+
+```json
       "Type": "String",
       "Description": {
         "en": "Instance ID of existing business network switches, console-Virtual Private Cloud-VSw
 itches under query",
 ```
 
-`"zh-cn": "`现有业务网络交换机的实例`ID"`
+`"zh-cn": "`现有业务网络交换机的实例`ID"` `},`
 
 ```json
-      },
       "Label": {
         "en": "VSwitch ID",
 ```
 
-`"zh-cn": "`交换机实例`ID"`
+`"zh-cn": "`交换机实例`ID"` `}` `}` `},`
 
 ```json
-      }
-    }
-  },
   "Resources": {
     "RDSInstance": {
       "DependsOn": "VSwitch",
@@ -11302,28 +11919,36 @@ itches under query",
       "Properties": {
         "VpcId": {
           "Ref": "VpcId"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
           "Ref": "VSwitchId"
-        },
+```
+
+`},`
+
+```json
         "EngineVersion": "5.6",
         "DBInstanceClass": "rds.mysql.s2.large",
         "SecurityIPList": "0.0.0.0/0",
         "DBInstanceStorage": 5,
         "Engine": "MySQL",
         "DBMappings": [
-          {
-            "CharacterSetName": "utf8",
-            "DBName": "DBTest"
-          }
 ```
 
-]
+`{`
 
 ```json
-      }
-    }
-  },
+            "CharacterSetName": "utf8",
+            "DBName": "DBTest"
+```
+
+`}` `]` `}` `}` `},`
+
+```json
   "Outputs": {
     "DBInstanceId": {
       "Value": {
@@ -11332,33 +11957,25 @@ itches under query",
           "DBInstanceId"
 ```
 
-]
+`]` `}` `}` `}` `}` 更多示例，请参见创建数据库实例、创建管理数据库的账号、授权账号访问数据库、修改数据库参数列表、修改实例访问白名单、为某个实例创建一个只读实例和在实例下创建数据库的组合示例：JSON示例和YAML示例。
 
-```
-      }
-    }
-  }
-}
-```
-
-更多示例，请参见创建数据库实例、创建管理数据库的账号、授权账号访问数据库、修改数据库参数列表、修改实例访问白名单、为某个实例创建一个只读实例和在实例下创建数据库的组合示例：JSON示例和YAML示例。 资源编排
-
-#### ALIYUN::RDS::DBInstanceParameterGroup
+#### 7.6.4 ALIYUN::RDS::DBInstanceParameterGroup
 
 ALIYUN::RDS::DBInstanceParameterGroup类型用于修改RDS实例的参数。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::RDS::DBInstanceParameterGroup",
   "Properties": {
     "Forcerestart": String,
     "DBInstanceId": String,
     "Parameters": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -11372,13 +11989,16 @@ ALIYUN::RDS::DBInstanceParameterGroup类型用于修改RDS实例的参数。
 
 ```json
 "Parameters": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Parameters属性**
 
@@ -11393,22 +12013,29 @@ Fn::GetAtt 无。
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "Parameters": {
       "Type": "Json",
       "Description": "Parameters to update for selected database instance.",
       "Default": {"delayed_insert_timeout":"600","max_length_for_sort_data":"2048"}
-    },
+```
+
+`},`
+
+```json
     "DBInstanceId": {
       "Type": "String",
       "Description": "Database InstanceId to update properties."
       "Default": rm-uf6wjk5xxxxxxx
-    },
+```
+
+`},`
+
+```json
     "Forcerestart": {
       "Type": "String",
       "Description": "whether restart database instance.",
@@ -11421,50 +12048,57 @@ Fn::GetAtt 无。
 
 ```json
       "Default": "false"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "DBInstanceParameterGroup": {
       "Type": "ALIYUN::RDS::DBInstanceParameterGroup",
       "Properties": {
         "Parameters": {
           "Ref": "Parameters"
-        },
-        "DBInstanceId": {
-          "Ref": "DBInstanceId"
-        },
-        "Forcerestart": {
-          "Ref": "Forcerestart"
-        }
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::RDS::DBInstanceSecurityIps
+`},`
+
+```json
+        "DBInstanceId": {
+          "Ref": "DBInstanceId"
+```
+
+`},`
+
+```json
+        "Forcerestart": {
+          "Ref": "Forcerestart"
+```
+
+`}` `}` `}` `}` `}`
+
+#### 7.6.5 ALIYUN::RDS::DBInstanceSecurityIps
 
 ALIYUN::RDS::DBInstanceSecurityIps类型用于修改实例访问白名单。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::RDS::DBInstanceSecurityIps",
   "Properties": {
     "DBInstanceId": String,
     "DBInstanceIPArrayName": String,
     "DBInstanceIPArrayAttribute": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | DBInstanceId | String | 是 | 否 | 实例ID | 无 |
 |---|---|---|---|---|---|
@@ -11477,10 +12111,7 @@ Fn::GetAtt SecurityIps：修改后的实例访问白名单。
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "DBInstanceSecurityIps": {
@@ -11488,31 +12119,51 @@ Fn::GetAtt SecurityIps：修改后的实例访问白名单。
       "Properties": {
         "DBInstanceIPArrayName": {
           "Ref": "DBInstanceIPArrayName"
-        },
+```
+
+`},`
+
+```json
         "DBInstanceId": {
           "Ref": "DBInstanceId"
-        },
+```
+
+`},`
+
+```json
         "DBInstanceIPArrayAttribute": {
           "Ref": "DBInstanceIPArrayAttribute"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "DBInstanceIPArrayName": {
       "Type": "String",
       "Description": "Group name of the security ips, only support lower characters and '_'. Advice u
 se a new group name avoid effect your database system. If the properties is not specified, it will se t to default group, please be careful."
-    },
+```
+
+`},`
+
+```json
     "DBInstanceId": {
       "Type": "String",
       "Description": "Database instance id to update security ips."
-    },
+```
+
+`},`
+
+```json
     "DBInstanceIPArrayAttribute": {
       "Type": "String",
       "Description": "Security ips to add or remove."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "SecurityIps": {
       "Description": "The security ips of selected database instance.",
@@ -11522,21 +12173,17 @@ se a new group name avoid effect your database system. If the properties is not 
           "SecurityIps"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.6.6 ALIYUN::RDS::PrepayDBInstance
 
-#### ALIYUN::RDS::PrepayDBInstance
+ALIYUN::RDS::PrepayDBInstance类型用于创建预付费数据库实例。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::RDS::PrepayDBInstance",
   "Properties": {
     "DBMappings": List,
@@ -11545,8 +12192,6 @@ se a new group name avoid effect your database system. If the properties is not 
     "PeriodType": String,
     "DBInstanceNetType": String,
 ```
-
-资源编排
 
 ```json
     "MasterUserType": String,
@@ -11606,13 +12251,11 @@ se a new group name avoid effect your database system. If the properties is not 
     "LocalLogRetentionSpace": Integer,
     "ReleasedKeepPolicy": String,
     "BackUpCategory": String
-  }
-}
 ```
 
-**属性**
+`}`
 
-资源编排
+**属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
@@ -11630,8 +12273,6 @@ se a new group name avoid effect your database system. If the properties is not 
 | PrivateIpAddress | String | 否 | 否 | 指定交换机下的私网IP地址。 | 如果不指定该参数，则系统自动分配私网IP地址。 |
 | Engine | String | 是 | 否 | 数据类型。 | 取值： MySQL SQLServer PostgreSQL PPAS MariaDB |
 
-资源编排
-
 | MultiAZ | Boolean | 否 | 否 | 数据库实例是否支持多可用区。 | 取值： true false |
 |---|---|---|---|---|---|
 | VpcId | String | 否 | 否 | 专有网络ID。 | 无 |
@@ -11645,53 +12286,47 @@ se a new group name avoid effect your database system. If the properties is not 
 | EngineVersion | String | 是 | 否 | 数据库版本号。 | 取值： MySQL：5.5、5.6、5.7、 8.0。 SQLServer：2008r2、 08r2 ent ha、2012、 _ _ 2012 ent ha、 _ _ 2012 std ha、2012 web、 _ _ _ 2014 std ha、 _ _ 2016 ent ha、 _ _ 2016 std ha、2016 web、 _ _ _ 2017 std ha、2017 ent、 _ _ _ 2019 ent。 _ PostgreSQL：9.4、10.0、 11.0、12.0。 PPAS：9.3、10.0。 MariaDB：10.3。 |
 | DBInstanceClass | String | 是 | 是 | 实例规格。 | 例如：rds.mys2.large、 rds.mss1.large、 rds.pg.s1.small。 |
 
-资源编排
-
-| PreferredBackupPeri od | List | 否 | 否 | 备份周期。 |  | 取值： Monday Tuesday Wednesday Thursday Friday Saturday Sunday |  |  |
+| PreferredBackupPeri od | List | 否 | 否 | 备份周期。 |   | 取值： Monday Tuesday Wednesday Thursday Friday Saturday Sunday |   |   |
 |---|---|---|---|---|---|---|---|---|
-| DBInstanceStorage | Integer | 是 | 是 | 数据库存储空间。 |  | 取值： MySQL：5~1000。 SQLServer：10~1000。 PostgreSQL和PPAS： 5~2000。 单位：GB。 说明每5 GB进行递增。 |  |  |
-| DBInstanceDescripti on | String | 否 | 否 | 实例的描述或备注信息。 |  | 长度为2~256个字符。以汉字或英文字母开头，不能以 http:// 或 https:// 开头。可以包含汉字、英文字母、数字、下划线（ ）和短划线 _ （-）。 |  |  |
-| Tags | Map | 否 | 是 | 标签。 |  | 无 |  |  |
-| Period | Number | 是 | 否 | 购买时长。 |  | 取值： 选择按月支付，取值范围： 1~9。 选择按年支付，取值范围： 1~3。 |  |  |
-| MasterUserPassword | String | 否 | 否 | 数据库实例的数据库账号密码。 |  | 长度为8~32个字符。由大写英文字母、小写英文字母、数字和特殊字符中的任意三种组成。支持特殊字符 !@#$&amp;%^* () +-= 。 _ |  |  |
-|  |  |  |  |  |  |  | !@#$&amp;%^* |  |
-|  |  |  |  |  |  | () +-= _ |  |  |
-| AllocatePublicConne ction | Boolean | 否 | 否 | 是否申请实例的外网连接地址。 |  | 取值： true false |  |  |
-| AutoPay | Boolean | 否 | 否 | 是否自动付款。 |  | 取值： true false（默认值） |  |  |
+| DBInstanceStorage | Integer | 是 | 是 | 数据库存储空间。 |   | 取值： MySQL：5~1000。 SQLServer：10~1000。 PostgreSQL和PPAS： 5~2000。 单位：GB。 说明每5 GB进行递增。 |   |   |
+| DBInstanceDescripti on | String | 否 | 否 | 实例的描述或备注信息。 |   | 长度为2~256个字符。以汉字或英文字母开头，不能以 http:// 或 https:// 开头。可以包含汉字、英文字母、数字、下划线（ ）和短划线 _ （-）。 |   |   |
+| Tags | Map | 否 | 是 | 标签。 |   | 无 |   |   |
+| Period | Number | 是 | 否 | 购买时长。 |   | 取值： 选择按月支付，取值范围： 1~9。 选择按年支付，取值范围： 1~3。 |   |   |
+| MasterUserPassword | String | 否 | 否 | 数据库实例的数据库账号密码。 |   | 长度为8~32个字符。由大写英文字母、小写英文字母、数字和特殊字符中的任意三种组成。支持特殊字符 !@#$&amp;%^* () +-= 。 _ |   |   |
+|   |   |   |   |   |   |   | !@#$&amp;%^* |   |
+|   |   |   |   |   |   | () +-= _ |   |   |
+| AllocatePublicConne ction | Boolean | 否 | 否 | 是否申请实例的外网连接地址。 |   | 取值： true false |   |   |
+| AutoPay | Boolean | 否 | 否 | 是否自动付款。 |   | 取值： true false（默认值） |   |   |
 
-资源编排
-
-| SlaveZoneIds | List | 否 | 否 |  |  | 高可用版或三 |  | 最多指定两个备可用区，例如： ["zone-b"] 或 ["zone- b", "zone-c"] 。 为每个主可用区或者备可用区指定一个交换机，例如：ZoneId = "zone-a" 并且 SlaveZoneIds = ["zone- c", "zone- b"] ，VSwitchID取值为 "vsw-zone-a,vsw-zone- c,vsw-zone-b" 。 如果自动选择备可用区，取值为 ["Auto"] 或 ["Auto", "Auto"] 。此时只需要指定主可用区交换机ID，备可用区交换机会自动创建。 |  |  |
+| SlaveZoneIds | List | 否 | 否 |   |   | 高可用版或三 |   | 最多指定两个备可用区，例如： ["zone-b"] 或 ["zone- b", "zone-c"] 。 为每个主可用区或者备可用区指定一个交换机，例如：ZoneId = "zone-a" 并且 SlaveZoneIds = ["zone- c", "zone- b"] ，VSwitchID取值为 "vsw-zone-a,vsw-zone- c,vsw-zone-b" 。 如果自动选择备可用区，取值为 ["Auto"] 或 ["Auto", "Auto"] 。此时只需要指定主可用区交换机ID，备可用区交换机会自动创建。 |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | 版或三 | c", "zone- |  |  |
-|  |  |  |  |  |  | 节点企业版的备可用区。 |  |  |  |  |
-|  |  |  |  |  |  |  |  | b"] |  |  |
-|  |  |  |  |  |  |  |  | 为 |  |  |
-|  |  |  |  |  |  |  |  | c,vsw-zone-b" |  |  |
-| TargetDedicatedHos tIdForMaster | String | 否 | 否 |  |  | 在专属集群内创建实例时， 指定主实例的主机ID。 |  | 无 |  |  |
-| RoleARN | String | 否 | 否 |  |  | 角色ARN。该角色允许RDS 访问KMS。 |  | 无 |  |  |
-| DBInstanceStorageT ype | String | 否 | 否 |  |  | 实例存储类型。 |  | 取值： local ssd：本地SSD盘（推 _ 荐）。 cloud ssd：SSD云盘。 _ cloud essd：ESSD云盘。 _ |  |  |
-| Category | String | 否 | 否 |  |  | 实例系列。 |  | 取值： Basic：基础版。 HighAvailability：高可用版。 AlwaysOn：集群版。 Finance：三节点企业版。 |  |  |
-| DBParamGroupId | String | 否 | 否 |  |  | 参数模板ID。 |  | 无 |  |  |
-| EncryptionKey | String | 否 | 否 |  |  | 同地域内的云盘加密的密钥 ID。 |  | 您可以在密钥管理服务控制台查看密钥ID，也可以创建新的密钥。 |  |  |
-| DBIsIgnoreCase | Integer | 否 | 否 |  |  | 表名是否区分大小写。 |  | 取值： 1（默认值）：不区分大小写。 0：区分大小写。 |  |  |
-| SecurityGroupId | String | 否 | 是 |  |  | 关联的安全组 ID。 |  | 最多支持关联3个安全组，多个安全组用半角逗号（,）隔开。清空安全组请指定空字符串。 |  |  |
-| TargetDedicatedHos tIdForLog | String | 否 | 否 |  |  | 在专属集群内创建实例时， 指定日志实例的主机ID。 |  | 无 |  |  |
-| DBTimeZone | String | 否 | 否 |  |  | UTC时区。 |  | 取值范围：-12:59 ~ +13:00。 如果不指定该参数，默认时区为地域默认时区。 本地SSD盘实例可以命名时区。 |  |  |
+|   |   |   |   |   |   |   | 版或三 | c", "zone- |   |   |
+|   |   |   |   |   |   | 节点企业版的备可用区。 |   |   |   |   |
+|   |   |   |   |   |   |   |   | b"] |   |   |
+|   |   |   |   |   |   |   |   | 为 |   |   |
+|   |   |   |   |   |   |   |   | c,vsw-zone-b" |   |   |
+| TargetDedicatedHos tIdForMaster | String | 否 | 否 |   |   | 在专属集群内创建实例时， 指定主实例的主机ID。 |   | 无 |   |   |
+| RoleARN | String | 否 | 否 |   |   | 角色ARN。该角色允许RDS 访问KMS。 |   | 无 |   |   |
+| DBInstanceStorageT ype | String | 否 | 否 |   |   | 实例存储类型。 |   | 取值： local ssd：本地SSD盘（推 _ 荐）。 cloud ssd：SSD云盘。 _ cloud essd：ESSD云盘。 _ |   |   |
+| Category | String | 否 | 否 |   |   | 实例系列。 |   | 取值： Basic：基础版。 HighAvailability：高可用版。 AlwaysOn：集群版。 Finance：三节点企业版。 |   |   |
+| DBParamGroupId | String | 否 | 否 |   |   | 参数模板ID。 |   | 无 |   |   |
+| EncryptionKey | String | 否 | 否 |   |   | 同地域内的云盘加密的密钥 ID。 |   | 您可以在密钥管理服务控制台查看密钥ID，也可以创建新的密钥。 |   |   |
+| DBIsIgnoreCase | Integer | 否 | 否 |   |   | 表名是否区分大小写。 |   | 取值： 1（默认值）：不区分大小写。 0：区分大小写。 |   |   |
+| SecurityGroupId | String | 否 | 是 |   |   | 关联的安全组 ID。 |   | 最多支持关联3个安全组，多个安全组用半角逗号（,）隔开。清空安全组请指定空字符串。 |   |   |
+| TargetDedicatedHos tIdForLog | String | 否 | 否 |   |   | 在专属集群内创建实例时， 指定日志实例的主机ID。 |   | 无 |   |   |
+| DBTimeZone | String | 否 | 否 |   |   | UTC时区。 |   | 取值范围：-12:59 ~ +13:00。 如果不指定该参数，默认时区为地域默认时区。 本地SSD盘实例可以命名时区。 |   |   |
 
-| ["zone- |  |
+| ["zone- |   |
 |---|---|
 
-|  | b", "zone-c"] |
+|   | b", "zone-c"] |
 |---|---|
 
-| ["Auto", |  |
+| ["Auto", |   |
 |---|---|
 
-|  | "Auto"] |  |
+|   | "Auto"] |   |
 |---|---|---|
-
-资源编排
 
 | DedicatedHostGroup Id | String | 否 | 否 | 在专属集群内创建实例时， 指定专属集群 ID。 | 无 |
 |---|---|---|---|---|---|
@@ -11705,8 +12340,6 @@ se a new group name avoid effect your database system. If the properties is not 
 | LogBackupLocalRete ntionNumber | Integer | 否 | 否 | 本地Binlog保留个数。 | 无 |
 | ArchiveBackupKeepP olicy | String | 否 | 否 | 归档备份的保留周期。 | 取值： ByMonth：月。 ByWeek：周。 KeepAll：全部保留。 归档备份的保留周期内能保存的备份个数由 ArchiveBackupKeepCount决定，默认为0。 说明当 BackupPolicyMode参数取值为DataBackupPolicy 时，该参数生效。 |
 | LocalLogRetentionH ours | Integer | 否 | 否 | 本地日志备份保留小时数。 | 无 |
-
-资源编排
 
 | HighSpaceUsageProt ection | String | 否 | 否 | 实例使用空间大于80%，或者剩余空间小于5 GB时， 是否强制清理 Binlog。 | 取值： Disable：不清理。 Enable：清理。 |
 |---|---|---|---|---|---|
@@ -11722,30 +12355,27 @@ se a new group name avoid effect your database system. If the properties is not 
 
 ```json
 "DBMappings": [
-  {
+```
+
+`{`
+
+```json
     "DBDescription": String,
     "CharacterSetName": String,
     "DBName": String
-  }
 ```
 
-]
+`}` `]`
 
 **DBMappings属性**
-
-资源编排
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | DBDescription | String | 否 | 否 | 数据库描述。 | 长度为2~256个字符。以汉字或英文字母开头，不能以 http:// 或 https:// 开头。可包含汉字、英文字母、 数字、下划线（ ）和短划线 _ （-）。 |
 
-资源编排
-
 | CharacterSetName | String | 是 | 否 | 字符集。 | 取值： MySQL/MariaDB类型： utf8 gbk latin1 utf8mb4 SQLServer类型： Chinese PRC CI AS _ _ _ Chinese PRC CS AS _ _ _ SQL Latin1 General CP _ _ _ 1 CI AS _ _ SQL Latin1 General CP _ _ _ 1 CS AS _ _ Chinese PRC BIN _ _ PostgreSQL类型： KOI8U UTF8 WIN866 WIN874 WIN1250 WIN1251 WIN1252 WIN1253 WIN1254 WIN1255 WIN1256 WIN1257 WIN1258 EUC CN _ EUC KR _ EUC TW _ EUC JP _ EUC JIS 2004 _ _ KOI8R MULE INTERNAL _ LATIN1 LATIN2 LATIN3 LATIN4 LATIN5 LATIN6 LATIN7 LATIN8 LATIN9 LATIN10 ISO 8859 5 _ _ ISO 8859 6 _ _ ISO 8859 7 _ _ ISO 8859 8 _ _ SQL ASCII _ |
 |---|---|---|---|---|---|
 | DBName | String | 是 | 否 | 数据库名称。 | 名称需要全局唯一。 长度不超过64个字符。以小写英文字母开头，可包含小写英文字母、数字和下划线（ ）。 _ |
-
-资源编排
 
 **返回值**
 
@@ -11753,10 +12383,9 @@ Fn::GetAtt InnerPort：数据库实例的内网端口。 OrderId：订单ID。 P
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "PeriodType": {
@@ -11771,63 +12400,96 @@ Fn::GetAtt InnerPort：数据库实例的内网端口。 OrderId：订单ID。 P
 
 ```json
    "Default": "Month"
-  },
+```
+
+`},`
+
+```json
   "ResourceGroupId": {
    "Type": "String",
    "Description": "Resource group id."
-  },
+```
+
+`},`
+
+```json
   "ArchiveBackupRetentionPeriod": {
    "Type": "Number",
    "Description": "The number of days for which to retain archived backups. \n The default value 0 sp
 ecifies not to enable the backup archiving function. Valid values: 30 to 1095.",
    "MinValue": 30,
    "MaxValue": 1095
-  },
+```
+
+`},`
+
+```json
   "DBTimeZone": {
    "Type": "String",
    "Description": "The UTC time zone of the instance. Valid values: -12:00 to +12:00. The time zone m
 ust be an integer value such as +08:00. Values such as +08:30 are not allowed."
-  },
+```
+
+`},`
+
+```json
   "Port": {
    "Type": "Number",
    "Description": "The port of the database service.",
    "MinValue": 1,
    "MaxValue": 65535
-  },
+```
+
+`},`
+
+```json
   "ArchiveBackupKeepCount": {
    "Type": "Number",
    "Description": "The number of archived backups that can be retained. Default value: 1. Valid value
 s: \nThe value of this parameter ranges from 1 to 31 when the ArchiveBackupKeepPolicy \n parameter is set to ByMonth. \nThe value of this parameter ranges from 1 to 7 when the ArchiveBackupKeepPolicy \n parameter is set to ByWeek. \nNote You do not need to specify this parameter when the ArchiveBackupKeepPolicy \nparameter is set to KeepAll.",
    "MinValue": 1,
    "MaxValue": 31
-  },
   "LogBackupRetentionPeriod": {
    "Type": "Number",
 ```
-
-资源编排
 
 ```json
    "Description": "The number of days for which to retain log backup files. Valid values: 7 to 730. T
 he log backup \n retention period cannot be longer than the data backup retention period.Note If you enable the log \n backup function, you can specify the log backup retention period. This applies only when the \n instance runs MySQL, PostgreSQL, or PPAS.",
    "MinValue": 7,
    "MaxValue": 730
-  },
+```
+
+`},`
+
+```json
   "DBInstanceStorage": {
    "Type": "Number",
    "Description": "Database instance storage size. mysql is [5,1000]. sql server 2008r2 is [10,1000],
 sql server 2012/2012_web/2016-web is [20,1000]. PostgreSQL and PPAS is [5,2000]. Increased every 5 GB , Unit in GB"
-  },
+```
+
+`},`
+
+```json
   "DBMappings": {
    "Type": "Json",
    "Description": "Database mappings to attach to db instance."
-  },
+```
+
+`},`
+
+```json
   "ConnectionStringPrefix": {
    "Type": "String",
    "Description": "The prefix of the endpoint. \nOnly the prefix of the CurrentConnectionString param
 eter value can be modified.\nThe prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). ",
    "AllowedPattern": "[a-zA-Z0-9-]{8,64}"
-  },
+```
+
+`},`
+
+```json
   "MultiAZ": {
    "Type": "Boolean",
    "Description": "Specifies if the database instance is a multiple Availability Zone deployment. ",
@@ -11842,7 +12504,11 @@ eter value can be modified.\nThe prefix must be 8 to 64 characters in length and
 
 ```json
    "Default": false
-  },
+```
+
+`},`
+
+```json
   "Engine": {
    "Type": "String",
    "Description": "Database instance engine type. Support MySQL/SQLServer/PostgreSQL/PPAS/MariaDB now
@@ -11855,19 +12521,21 @@ eter value can be modified.\nThe prefix must be 8 to 64 characters in length and
     "MariaDB"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "Tags": {
    "Type": "Json",
    "Description": "The tags of an instance.\nYou should input the information of the tag with the for
 mat of the Key-Value, such as {\"key1\":\"value1\",\"key2\":\"value2\", ... \"key5\":\"value5\"}.\nAt most 5 tags can be specified.\nKey\nIt can be up to 64 characters in length.\nCannot begin with aliyu n.\nCannot begin with http:// or https://.\nCannot be a null string.\nValue\nIt can be up to 128 char acters in length.\nCannot begin with aliyun.\nCannot begin with http:// or https://.\nCan be a null s tring."
-  },
+```
+
+`},`
+
+```json
   "DBInstanceDescription": {
    "Type": "String",
    "Description": "Description of created database instance."
-  },
   "TargetDedicatedHostIdForMaster": {
    "Type": "String",
 ```
@@ -11878,7 +12546,7 @@ mat of the Key-Value, such as {\"key1\":\"value1\",\"key2\":\"value2\", ... \"ke
 iti
 ```
 
-"
+`"`
 
 ```
 "Th
@@ -11890,28 +12558,35 @@ iti
 fth
 ```
 
-h tt
+`h` `t``t`
 
 ```
 hihth
 ```
 
-i t bl `if` t i i t 资源编排
+`i` `t` `b``l` `if` `t` `i` `i` `t`
 
 ```json
    "Description": "The ID of the host to which the instance belongs if you create a primary instance
 in a host group."
-  },
   "EngineVersion": {
    "Type": "String",
    "Description": "Database instance version of the relative engine type.Support MySQL:
 5.5/5.6/5.7/8.0;\nSQLServer: 2008r2/2012/2012_ent_ha/2012_std_ha/2012_web/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent;\nPo reSQL: 9.4/10.0/11.0/12.0;\nPPAS: 9.3/10.0;\nMariaDB: 10.3."
-  },
+```
+
+`},`
+
+```json
   "DBInstanceClass": {
    "Type": "String",
    "Description": "Database instance type. Refer the RDS database instance type reference, such as 'r
 ds.mys2.large', 'rds.mss1.large', 'rds.pg.s1.small' etc"
-  },
+```
+
+`},`
+
+```json
   "ArchiveBackupKeepPolicy": {
    "Type": "String",
    "Description": "The period for which to retain archived backups. The number of archived backups th
@@ -11922,14 +12597,17 @@ at can \n be retained within the specified period is determined by the ArchiveBa
     "KeepAll"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "VSwitchId": {
    "Type": "String",
    "Description": "The vSwitch id of created instance. For VPC network, the property is required."
-  },
+```
+
+`},`
+
+```json
   "BackupPolicyMode": {
    "Type": "String",
    "Description": "Backup type, \nDataBackupPolicy: data backup \nLogBackupPolicy: log backup",
@@ -11938,10 +12616,9 @@ at can \n be retained within the specified period is determined by the ArchiveBa
     "LogBackupPolicy"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "Period": {
    "Type": "Number",
    "Description": "Prepaid time period. While choose by pay by month, it could be from 1 to 9. While
@@ -11949,14 +12626,22 @@ choose pay by year, it could be from 1 to 3.",
    "MinValue": 1,
    "MaxValue": 9,
    "Default": 1
-  },
+```
+
+`},`
+
+```json
   "LocalLogRetentionHours": {
    "Type": "Number",
    "Description": "The number of hours for which to retain log backup files on the instance. \nValid
 values: 0 to 168. The value 0 specifies not to retain log backup files on the instance. \nYou can ret ain the default value. Note You must specify this parameter when the BackupPolicyMode \nparameter is set to LogBackupPolicy.",
    "MinValue": 0,
    "MaxValue": 168
-  },
+```
+
+`},`
+
+```json
   "HighSpaceUsageProtection": {
    "Type": "String",
    "Description": "Specifies whether to forcibly delete log backup files when the space usage of the
@@ -11965,36 +12650,37 @@ values: 0 to 168. The value 0 specifies not to retain log backup files on the in
     "Enable",
 ```
 
-资源编排 ,
-
-```
-    "Disable"
-```
-
-]
+`,`
 
 ```json
-  },
+    "Disable"
   "RoleARN": {
    "Type": "String",
    "Description": "The Alibaba Cloud Resource Name (ARN) provided to the service account of the insta
 nce by your Alibaba Cloud account to connect to KMS. You can copy the ARN from the RAM console."
-  },
+```
+
+`},`
+
+```json
   "MasterUserPassword": {
    "Type": "String",
    "Description": "The master password for the database instance. ",
    "MinLength": 8,
    "MaxLength": 32
-  },
+```
+
+`},`
+
+```json
   "VpcId": {
    "Type": "String",
    "Description": "The VPC id of created database instance. For VPC network, the property is required
 ```
 
-`."`
+`."` `},`
 
 ```json
-  },
   "SSLSetting": {
    "Type": "String",
    "Description": "Secure Sockets Layer (SSL) link setting of the instance. Valid values:\nDisabled:
@@ -12009,23 +12695,39 @@ Disable SSL\nEnabledForPublicConnection: Public connection address will be prote
 
 ```json
    "Default": "Disabled"
-  },
+```
+
+`},`
+
+```json
   "MasterUsername": {
    "Type": "String",
    "Description": "The master user name for the database instance. "
-  },
+```
+
+`},`
+
+```json
   "ConnectionMode": {
    "Type": "String",
    "Description": "Connection Mode for database instance,support 'Standard' and 'Safe' mode. Default
 is RDS system assigns. "
-  },
+```
+
+`},`
+
+```json
   "LocalLogRetentionSpace": {
    "Type": "Number",
    "Description": "The maximum percentage of space that is allowed to store log backup files on the i
 nstance. \n If the space usage for log backup files exceeds this percentage, the system deletes earli er \n log backup files until the space usage falls below this percentage. Valid values:0 to 50. \n Yo u can retain the default value. Note You must specify this parameter when the \n BackupPolicyMode par ameter is set to LogBackupPolicy.",
    "MinValue": 0,
    "MaxValue": 50
-  },
+```
+
+`},`
+
+```json
   "Category": {
    "Type": "String",
    "Description": "The edition of the instance. Valid values:\nBasic: specifies to use the Basic Edit
@@ -12037,19 +12739,24 @@ ion.\nHighAvailability: specifies to use the High-availability Edition.\nAlwaysO
     "Finance"
 ```
 
-] 资源编排
-
 ```json
-  },
   "PrivateIpAddress": {
    "Type": "String",
    "Description": "The private ip for created instance."
-  },
+```
+
+`},`
+
+```json
   "TargetDedicatedHostIdForSlave": {
    "Type": "String",
    "Description": "The ID of the host to which the instance belongs if you create a secondary instanc
 e in a host group."
-  },
+```
+
+`},`
+
+```json
   "DBInstanceNetType": {
    "Type": "String",
    "Description": "Database instance net type, default is Intranet.Internet for public access, Intran
@@ -12063,7 +12770,11 @@ et for private access.",
 
 ```json
    "Default": "Intranet"
-  },
+```
+
+`},`
+
+```json
   "ReleasedKeepPolicy": {
    "Type": "String",
    "Description": "The policy used to retain archived backups if the instance is released. Default va
@@ -12073,15 +12784,18 @@ lue: None. \n Valid values: \nLastest: Only the last archived backup is retained
     "All"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "DedicatedHostGroupId": {
    "Type": "String",
    "Description": "The ID of the host group to which the instance belongs if you create an instance i
 n a host group."
-  },
+```
+
+`},`
+
+```json
   "AutoRenew": {
    "Type": "Boolean",
    "Description": "Auto renew the prepay instance. If the period type is by year, it will renew by ye
@@ -12097,41 +12811,58 @@ ar, else it will renew by month.",
 
 ```json
    "Default": false
-  },
+```
+
+`},`
+
+```json
   "EncryptionKey": {
    "Type": "String",
    "Description": "The ID of the encryption key that is used to encrypt data on SSDs in the region. Y
 ou can view the encryption key ID in the Key Management Service (KMS) console. You can also create an encryption key."
-  },
+```
+
+`},`
+
+```json
   "PreferredBackupPeriod": {
    "Type": "CommaDelimitedList",
    "Description": "The backup period. Separate multiple values with commas (,). The default value is
 the original value. Valid values:Monday Tuesday Wednesday Thursday Friday Saturday Sunday Note When t he BackupPolicyMode parameter is set to DataBackupPolicy, this parameter is required."
-  },
+```
+
+`},`
+
+```json
   "LogBackupLocalRetentionNumber": {
    "Type": "Number",
    "Description": "The number of log backup files that can be retained on the instance. \nDefault val
 ue:60 Validvalues:6to100",
 ```
 
-资源编排
-
 ```json
 ue: 60. Valid values: 6 to 100.,
    "MinValue": 6,
    "MaxValue": 100
-  },
   "SlaveZoneIds": {
    "Type": "Json",
    "Description": "List of slave zone ids can specify slave zone ids when creating the high-availabil
 ity or enterprise edition instance. Meanwhile, VSwitchId needs to pass in the corresponding vswitch i d to the slave zone by order. For example, ZoneId = \"zone-a\" and SlaveZoneIds = [\"zone-c\", \"zone -b\"], then the VSwitchId must be \"vsw-zone-a,vsw-zone-c,vsw-zone-b\". Of course, you can also choos e automatic allocation, for example, ZoneId = \"zone-a\" and SlaveZoneIds = [\"Auto\", \"Auto\"], the n the VSwitchId must be \"vsw-zone-a,Auto,Auto\". The list contains up to 2 slave zone ids, separated by commas.",
    "MaxLength": 2
-  },
+```
+
+`},`
+
+```json
   "DBIsIgnoreCase": {
    "Type": "Number",
    "Description": "Specifies whether table names are case-sensitive. Valid values:\n1: Table names ar
 e not case-sensitive. This is the default value.\n0: Table names are case-sensitive."
-  },
+```
+
+`},`
+
+```json
   "CommodityCode": {
    "Type": "String",
    "Description": "The CommodityCode of the order.",
@@ -12145,25 +12876,45 @@ e not case-sensitive. This is the default value.\n0: Table names are case-sensit
 
 ```json
    "Default": "rds"
-  },
+```
+
+`},`
+
+```json
   "MaintainTime": {
    "Type": "String",
    "Description": "The period during which the maintenance performs. The format is HH:mmZ-HH:mmZ."
-  },
+```
+
+`},`
+
+```json
   "DBParamGroupId": {
    "Type": "String",
    "Description": "The ID of the parameter template used by the instance."
-  },
+```
+
+`},`
+
+```json
   "ZoneId": {
    "Type": "String",
    "Description": "selected zone to create database instance. You cannot set the ZoneId parameter if
 the MultiAZ parameter is set to true."
-  },
+```
+
+`},`
+
+```json
   "TargetDedicatedHostIdForLog": {
    "Type": "String",
    "Description": "The ID of the host to which the instance belongs if you create a log instance in a
 host group."
-  },
+```
+
+`},`
+
+```json
   "AllocatePublicConnection": {
    "Type": "Boolean",
    "Description": "If true, allocate public connection automate.",
@@ -12174,32 +12925,36 @@ host group."
     "false"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "PreferredBackupTime": {
    "Type": "String",
    "Description": "The time when the backup task is performed. Format: yyyy-MM-ddZ-HH:mm:ssZ.Note Whe
 n the BackupPolicyMode parameter is set to DataBackupPolicy, this parameter is required."
-  },
 ```
-
-资源编排
 
 ```json
   "SecurityGroupId": {
    "Type": "String",
    "Description": "The ID of the ECS security groups. \nEach RDS instance can be associated with up t
 o three ECS security groups. \nYou must separate them with commas (,). \nTo delete an ECS Security gr oup, leave this parameter empty. \n"
-  },
+```
+
+`},`
+
+```json
   "Quantity": {
    "Type": "Number",
    "Description": "The number of instance to be created, default is 1, max number is 99",
    "MinValue": 1,
    "MaxValue": 99,
    "Default": 1
-  },
+```
+
+`},`
+
+```json
   "AutoPay": {
    "Type": "Boolean",
    "Description": "Automatic Payment. Default is false.",
@@ -12214,12 +12969,20 @@ o three ECS security groups. \nYou must separate them with commas (,). \nTo dele
 
 ```json
    "Default": false
-  },
+```
+
+`},`
+
+```json
   "DBInstanceStorageType": {
    "Type": "String",
    "Description": "The storage type of the instance. Valid values:\nlocal_ssd: specifies to use local
 SSDs. This is the recommended storage type.\ncloud_ssd: specifies to use standard SSDs.\ncloud_essd: specifies to use enhanced SSDs."
-  },
+```
+
+`},`
+
+```json
   "BackUpCategory": {
    "Type": "String",
    "Description": "Specifies whether to enable the second-level backup function. This function allows
@@ -12229,20 +12992,27 @@ a backup \nto be completed within seconds. Valid values: \nFlash: specifies to e
     "Standard"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "CompressType": {
    "Type": "Number",
    "Description": "The format used to compress backups. Valid values: \n 1: The zlib tool is used to
 compress backups into .tar.gz files. \n 4: The QuickLZ tool is used to compress backups into .xb.gz f iles. \nThis compression format is supported only when the instance runs MySQL 5.6 or 5.7. \nIt can b e used to restore individual databases and tables. \n 8: The QuickLZ tool is used to compress backups into .xb.gz files. \n This compression format is supported only when the instance runs MySQL 8.0. \nI t cannot be used to restore individual databases or tables."
-  },
+```
+
+`},`
+
+```json
   "LogBackupFrequency": {
    "Type": "String",
    "Description": "The frequency at which to back up logs. Valid values: \nThe value LogInterval
 specifies to back up logs every 30 minutes. \n The default value of this parameter is the same as the data backup frequency. \nNote The value LogInterval is supported only when the instance runs SQL Serv er."
-  },
+```
+
+`},`
+
+```json
   "ConnectionStringType": {
    "Type": "String",
    "Description": "The endpoint type of the instance, allow values: Inner, Public",
@@ -12251,15 +13021,18 @@ specifies to back up logs every 30 minutes. \n The default value of this paramet
     "Public"
 ```
 
-] 资源编排 `],`
+`],`
 
 ```json
    "Default": "Inner"
-  },
   "CouponCode": {
    "Type": "String",
    "Description": "The coupon code of the order."
-  },
+```
+
+`},`
+
+```json
   "MasterUserType": {
    "Type": "String",
    "Description": "Privilege type of account.\n Normal: Common privilege. \n Super: High privilege. \
@@ -12274,7 +13047,11 @@ nSysadmin: Super privileges (SA) (only supported by SQL Server)\nThe default val
 
 ```json
    "Default": "Normal"
-  },
+```
+
+`},`
+
+```json
   "EnableBackupLog": {
    "Type": "Boolean",
    "Description": "Specifies whether to enable the log backup function. Valid values: \nTrue: specifi
@@ -12286,10 +13063,9 @@ es to enable the log backup function. \nFalse: specifies to disable the log back
     "false"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "SQLCollectorStatus": {
    "Type": "String",
    "Description": "Specifies whether to enable or disable the SQL Explorer (SQL audit) feature. \nVal
@@ -12299,226 +13075,421 @@ id values:Enable | Disabled.",
     "Disabled"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "BackupRetentionPeriod": {
    "Type": "Number",
    "Description": "The retention period of the data backup. Value range: 7 to 730. The default value
 is the original value. Note When the BackupPolicyMode parameter is set to LogBackupPolicy, this param eter is required.",
    "Default": 7
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "PrepayDBInstance": {
    "Type": "ALIYUN::RDS::PrepayDBInstance",
    "Properties": {
     "PeriodType": {
      "Ref": "PeriodType"
-    },
-    "ResourceGroupId": {
-     "Ref": "ResourceGroupId"
-    },
-    "ArchiveBackupRetentionPeriod": {
-     "Ref": "ArchiveBackupRetentionPeriod"
-    },
-    "DBTimeZone": {
-     "Ref": "DBTimeZone"
-    },
 ```
 
-资源编排
+`},`
+
+```json
+    "ResourceGroupId": {
+     "Ref": "ResourceGroupId"
+```
+
+`},`
+
+```json
+    "ArchiveBackupRetentionPeriod": {
+     "Ref": "ArchiveBackupRetentionPeriod"
+    "DBTimeZone": {
+     "Ref": "DBTimeZone"
+```
 
 ```json
     "Port": {
      "Ref": "Port"
-    },
     "ArchiveBackupKeepCount": {
      "Ref": "ArchiveBackupKeepCount"
-    },
-    "LogBackupRetentionPeriod": {
-     "Ref": "LogBackupRetentionPeriod"
-    },
-    "DBInstanceStorage": {
-     "Ref": "DBInstanceStorage"
-    },
-    "DBMappings": {
-     "Ref": "DBMappings"
-    },
-    "ConnectionStringPrefix": {
-     "Ref": "ConnectionStringPrefix"
-    },
-    "MultiAZ": {
-     "Ref": "MultiAZ"
-    },
-    "Engine": {
-     "Ref": "Engine"
-    },
-    "Tags": {
-     "Ref": "Tags"
-    },
-    "DBInstanceDescription": {
-     "Ref": "DBInstanceDescription"
-    },
-    "TargetDedicatedHostIdForMaster": {
-     "Ref": "TargetDedicatedHostIdForMaster"
-    },
-    "EngineVersion": {
-     "Ref": "EngineVersion"
-    },
-    "DBInstanceClass": {
-     "Ref": "DBInstanceClass"
-    },
-    "ArchiveBackupKeepPolicy": {
-     "Ref": "ArchiveBackupKeepPolicy"
-    },
-    "VSwitchId": {
-     "Ref": "VSwitchId"
-    },
-    "BackupPolicyMode": {
-     "Ref": "BackupPolicyMode"
-    },
-    "Period": {
-     "Ref": "Period"
-    },
-    "LocalLogRetentionHours": {
-     "Ref": "LocalLogRetentionHours"
-    },
-    "HighSpaceUsageProtection": {
-     "Ref": "HighSpaceUsageProtection"
-    },
-    "RoleARN": {
-     "Ref": "RoleARN"
-    },
-    "MasterUserPassword": {
-     "Ref": "MasterUserPassword"
-}
 ```
 
-资源编排
+`},`
 
 ```json
-    },
+    "LogBackupRetentionPeriod": {
+     "Ref": "LogBackupRetentionPeriod"
+```
+
+`},`
+
+```json
+    "DBInstanceStorage": {
+     "Ref": "DBInstanceStorage"
+```
+
+`},`
+
+```json
+    "DBMappings": {
+     "Ref": "DBMappings"
+```
+
+`},`
+
+```json
+    "ConnectionStringPrefix": {
+     "Ref": "ConnectionStringPrefix"
+```
+
+`},`
+
+```json
+    "MultiAZ": {
+     "Ref": "MultiAZ"
+```
+
+`},`
+
+```json
+    "Engine": {
+     "Ref": "Engine"
+```
+
+`},`
+
+```json
+    "Tags": {
+     "Ref": "Tags"
+```
+
+`},`
+
+```json
+    "DBInstanceDescription": {
+     "Ref": "DBInstanceDescription"
+```
+
+`},`
+
+```json
+    "TargetDedicatedHostIdForMaster": {
+     "Ref": "TargetDedicatedHostIdForMaster"
+```
+
+`},`
+
+```json
+    "EngineVersion": {
+     "Ref": "EngineVersion"
+```
+
+`},`
+
+```json
+    "DBInstanceClass": {
+     "Ref": "DBInstanceClass"
+```
+
+`},`
+
+```json
+    "ArchiveBackupKeepPolicy": {
+     "Ref": "ArchiveBackupKeepPolicy"
+```
+
+`},`
+
+```json
+    "VSwitchId": {
+     "Ref": "VSwitchId"
+```
+
+`},`
+
+```json
+    "BackupPolicyMode": {
+     "Ref": "BackupPolicyMode"
+```
+
+`},`
+
+```json
+    "Period": {
+     "Ref": "Period"
+```
+
+`},`
+
+```json
+    "LocalLogRetentionHours": {
+     "Ref": "LocalLogRetentionHours"
+```
+
+`},`
+
+```json
+    "HighSpaceUsageProtection": {
+     "Ref": "HighSpaceUsageProtection"
+```
+
+`},`
+
+```json
+    "RoleARN": {
+     "Ref": "RoleARN"
+    "MasterUserPassword": {
+     "Ref": "MasterUserPassword"
+```
+
+```json
     "VpcId": {
      "Ref": "VpcId"
-    },
     "SSLSetting": {
      "Ref": "SSLSetting"
-    },
+```
+
+`},`
+
+```json
     "MasterUsername": {
      "Ref": "MasterUsername"
-    },
+```
+
+`},`
+
+```json
     "ConnectionMode": {
      "Ref": "ConnectionMode"
-    },
+```
+
+`},`
+
+```json
     "LocalLogRetentionSpace": {
      "Ref": "LocalLogRetentionSpace"
-    },
+```
+
+`},`
+
+```json
     "Category": {
      "Ref": "Category"
-    },
+```
+
+`},`
+
+```json
     "PrivateIpAddress": {
      "Ref": "PrivateIpAddress"
-    },
+```
+
+`},`
+
+```json
     "TargetDedicatedHostIdForSlave": {
      "Ref": "TargetDedicatedHostIdForSlave"
-    },
+```
+
+`},`
+
+```json
     "DBInstanceNetType": {
      "Ref": "DBInstanceNetType"
-    },
+```
+
+`},`
+
+```json
     "ReleasedKeepPolicy": {
      "Ref": "ReleasedKeepPolicy"
-    },
+```
+
+`},`
+
+```json
     "DedicatedHostGroupId": {
      "Ref": "DedicatedHostGroupId"
-    },
+```
+
+`},`
+
+```json
     "AutoRenew": {
      "Ref": "AutoRenew"
-    },
+```
+
+`},`
+
+```json
     "EncryptionKey": {
      "Ref": "EncryptionKey"
-    },
+```
+
+`},`
+
+```json
     "PreferredBackupPeriod": {
      "Ref": "PreferredBackupPeriod"
-    },
+```
+
+`},`
+
+```json
     "LogBackupLocalRetentionNumber": {
      "Ref": "LogBackupLocalRetentionNumber"
-    },
+```
+
+`},`
+
+```json
     "SlaveZoneIds": {
      "Ref": "SlaveZoneIds"
-    },
+```
+
+`},`
+
+```json
     "DBIsIgnoreCase": {
      "Ref": "DBIsIgnoreCase"
-    },
+```
+
+`},`
+
+```json
     "CommodityCode": {
      "Ref": "CommodityCode"
-    },
+```
+
+`},`
+
+```json
     "MaintainTime": {
      "Ref": "MaintainTime"
-    },
+```
+
+`},`
+
+```json
     "DBParamGroupId": {
      "Ref": "DBParamGroupId"
-    },
     "ZoneId": {
      "Ref": "ZoneId"
 ```
 
-资源编排
-
 ```json
-    },
     "TargetDedicatedHostIdForLog": {
      "Ref": "TargetDedicatedHostIdForLog"
-    },
     "AllocatePublicConnection": {
      "Ref": "AllocatePublicConnection"
-    },
+```
+
+`},`
+
+```json
     "PreferredBackupTime": {
      "Ref": "PreferredBackupTime"
-    },
+```
+
+`},`
+
+```json
     "SecurityGroupId": {
      "Ref": "SecurityGroupId"
-    },
+```
+
+`},`
+
+```json
     "Quantity": {
      "Ref": "Quantity"
-    },
+```
+
+`},`
+
+```json
     "AutoPay": {
      "Ref": "AutoPay"
-    },
+```
+
+`},`
+
+```json
     "DBInstanceStorageType": {
      "Ref": "DBInstanceStorageType"
-    },
+```
+
+`},`
+
+```json
     "BackUpCategory": {
      "Ref": "BackUpCategory"
-    },
+```
+
+`},`
+
+```json
     "CompressType": {
      "Ref": "CompressType"
-    },
+```
+
+`},`
+
+```json
     "LogBackupFrequency": {
      "Ref": "LogBackupFrequency"
-    },
+```
+
+`},`
+
+```json
     "ConnectionStringType": {
      "Ref": "ConnectionStringType"
-    },
+```
+
+`},`
+
+```json
     "CouponCode": {
      "Ref": "CouponCode"
-    },
+```
+
+`},`
+
+```json
     "MasterUserType": {
      "Ref": "MasterUserType"
-    },
+```
+
+`},`
+
+```json
     "EnableBackupLog": {
      "Ref": "EnableBackupLog"
-    },
+```
+
+`},`
+
+```json
     "SQLCollectorStatus": {
      "Ref": "SQLCollectorStatus"
-    },
+```
+
+`},`
+
+```json
     "BackupRetentionPeriod": {
      "Ref": "BackupRetentionPeriod"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "Outputs": {
   "InnerConnectionString": {
    "Description": "DB instance connection url by Intranet.",
@@ -12527,15 +13498,6 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "PrepayDBInstance",
      "InnerConnectionString"
 ```
-
-]
-
-```
-   }
-  },
-```
-
-资源编排
 
 ```json
   "DBInstanceId": {
@@ -12546,11 +13508,9 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "DBInstanceId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "InnerIPAddress": {
    "Description": "IP Address for created DB instance of Intranet.",
    "Value": {
@@ -12559,11 +13519,9 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "InnerIPAddress"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "PublicConnectionString": {
    "Description": "DB instance connection url by Internet.",
    "Value": {
@@ -12572,11 +13530,9 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "PublicConnectionString"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "PublicIPAddress": {
    "Description": "IP Address for created DB instance of Internet.",
    "Value": {
@@ -12585,11 +13541,9 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "PublicIPAddress"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "OrderId": {
    "Description": "The order id list of created instance.",
    "Value": {
@@ -12598,11 +13552,9 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "OrderId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "PublicPort": {
    "Description": "Internet port of created DB instance.",
    "Value": {
@@ -12611,32 +13563,15 @@ is the original value. Note When the BackupPolicyMode parameter is set to LogBac
      "PublicPort"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "InnerPort": {
    "Description": "Intranet port of created DB instance.",
    "Value": {
     "Fn::GetAtt": [
      "PrepayDBInstance",
      "InnerPort"
-```
-
-]
-
-```
-   }
-}
-```
-
-资源编排
-
-```
-  }
- }
-}
 ```
 
 `YAML` 格式
@@ -12700,8 +13635,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
 BackUpCategory:
 ```
 
-资源编排
-
 ```
  BackUpCategory:
   AllowedValues:
@@ -12764,8 +13697,6 @@ BackUpCategory:
   Description: "The prefix of the endpoint. \nOnly the prefix of the CurrentConnectionString\
 ```
 
-资源编排
-
 ```
    \ parameter value can be modified.\nThe prefix must be 8 to 64 characters in\
    \ length and can contain letters, digits, and hyphens (-). "
@@ -12827,8 +13758,6 @@ BackUpCategory:
 aninstanceinahostgrop
 ```
 
-资源编排
-
 ```
    an instance in a host group.
   Type: String
@@ -12869,6 +13798,7 @@ aninstanceinahostgrop
   Type: String
  HighSpaceUsageProtection:
   AllowedValues:
+  - Enable
   - Disable
   Description: "Specifies whether to forcibly delete log backup files when the space\
    \ usage of the \n instance exceeds 80% or the remaining space is less than 5\
@@ -12889,8 +13819,6 @@ aninstanceinahostgrop
   Description: "The maximum percentage of space that is allowed to store log backup\
    \ files on the instance. \n If the space usage for log backup files exceeds\
 ```
-
-资源编排
 
 ```
    \ this percentage, the system deletes earlier \n log backup files until the\
@@ -12957,8 +13885,6 @@ aninstanceinahostgrop
   Description: Prepaid time period. While choose by pay by month, it could be from
 ```
 
-资源编排
-
 ```
    1 to 9. While choose pay by year, it could be from 1 to 3.
   MaxValue: 9
@@ -13014,6 +13940,7 @@ aninstanceinahostgrop
   Type: String
  SQLCollectorStatus:
   AllowedValues:
+  - Enable
   - Disabled
   Description: "Specifies whether to enable or disable the SQL Explorer (SQL audit)\
    \ feature. \nValid values:Enable | Disabled."
@@ -13022,8 +13949,6 @@ aninstanceinahostgrop
   AllowedValues:
 -Disabled
 ```
-
-资源编排
 
 ```
 sabed
@@ -13074,8 +13999,6 @@ sabed
   Description: The ID of the host to which the instance belongs if you create a
    log instance in a host group.
 ```
-
-资源编排
 
 ```
   Type: String
@@ -13143,8 +14066,6 @@ Resources:
 DBInstanceStorage:
 ```
 
-资源编排
-
 ```
    DBInstanceStorage:
     Ref: DBInstanceStorage
@@ -13211,8 +14132,6 @@ DBInstanceStorage:
    RoleARN:
 ```
 
-资源编排
-
 ```
     Ref: RoleARN
    SQLCollectorStatus:
@@ -13237,63 +14156,73 @@ DBInstanceStorage:
     Ref: VpcId
    ZoneId:
     Ref: ZoneId
+  Type: ALIYUN::RDS::PrepayDBInstance
 Outputs:
  DBInstanceId:
   Description: The instance id of created database instance.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - DBInstanceId
  InnerConnectionString:
   Description: DB instance connection url by Intranet.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - InnerConnectionString
  InnerIPAddress:
   Description: IP Address for created DB instance of Intranet.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - InnerIPAddress
  InnerPort:
   Description: Intranet port of created DB instance.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - InnerPort
  OrderId:
   Description: The order id list of created instance.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - OrderId
  PublicConnectionString:
   Description: DB instance connection url by Internet.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - PublicConnectionString
  PublicIPAddress:
 Description IPAddressforcreatedDBinstanceofInternet
 ```
 
-资源编排
-
 ```
   Description: IP Address for created DB instance of Internet.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - PublicIPAddress
  PublicPort:
   Description: Internet port of created DB instance.
   Value:
    Fn::GetAtt:
+   - PrepayDBInstance
    - PublicPort
 ```
 
-### Redis
+### 7.7 Redis
 
-#### ALIYUN::REDIS::Instance
+#### 7.7.1 ALIYUN::REDIS::Instance
+
+ALIYUN::REDIS::Instance类型用于创建Redis。
 
 **语法**
 
+`{`
+
 ```json
- {
   "Type": "ALIYUN::REDIS::Instance",
   "Properties": {
     "VpcId": String,
@@ -13323,16 +14252,14 @@ Description IPAddressforcreatedDBinstanceofInternet
     "ShardCount": Integer,
     "NodeType": String,
     "DeletionProtection": Boolean
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | EngineVersio n | String | 否 | 否 | 数据库版本。 | 取值： 2.8 说明已停售，请选择其他版本。 4.0 5.0 |
 |---|---|---|---|---|---|
@@ -13346,8 +14273,6 @@ Description IPAddressforcreatedDBinstanceofInternet
 | VSwitchId | String | 否 | 否 | 专有网络下的交换机ID。 | 无 |
 | SecurityGrou pId | String | 否 | 是 | 安全组ID。 | 最多支持设置10个ID，ID之间用半角逗号（,）分隔。 |
 
-资源编排
-
 | Password | String | 否 | 是 | 密码。 | 长度为8～30个字符，必须同时包含大写英文字母、小写英文字母和数字。 |
 |---|---|---|---|---|---|
 | SSLEnabled | String | 否 | 是 | SSL状态。 | 取值： Disable：关闭。 Enable：开启。 Update：更新证书。 |
@@ -13359,8 +14284,6 @@ Description IPAddressforcreatedDBinstanceofInternet
 | Period | Integer | 否 | 否 | 付费周期。 | 取值：1~9、12、24、36、60。 单位：月。 |
 | AutoRenewD uration | Integer | 否 | 是 | 自动续费时长。 | 取值范围：1~12。 单位：月。 当实例即将到期时，将根据该参数指定的时长自动续费。 说明当ChargeType取值为 PrePaid时该参数有效。 |
 
-资源编排
-
 | ProductType | String | 否 | 否 | 产品类型。 | 取值： Local：社区版实例（本地盘版） 或性能增强型（本地盘版）。 Tair rdb：性能增强型（云盘 _ 版）。 Tair scm：持久内存型。 _ Tair essd：容量存储型。 _ OnECS：社区版实例（云盘版）。 说明建议设置 ProductType 属性，能加快参数查询的速度。 |
 |---|---|---|---|---|---|
 | SecondaryZo neId | String | 否 | 是 | 备可用区ID。 | 可调用查询支持的可用区接口查询。 说明传入本参数可以实现主备数据节点分布在不同的可用区，实现跨可用区容灾，能够承受机房级别的故障。 |
@@ -13368,8 +14291,6 @@ Description IPAddressforcreatedDBinstanceofInternet
 | PeriodUnit | String | 否 | 否 | 时长单位。 | 取值： Year：年。 Month：月。 |
 | TairConfig | Map | 否 | 否 | Tair配置。 | 更多信息，请参见TairConfig属性。 |
 | ShardCount | Integer | 否 | 否 | 分片数。 | 本参数仅适用于创建云盘版集群架构实例，您可以通过该参数实现自定义分片数量。 |
-
-资源编排
 
 | NodeType | String | 否 | 否 | 节点类型。 | 取值： MASTER SLAVE：高可用 _ （双副本）。 STAND ALONE：单副本。 _ double：双副本。 single：单副本。 说明云原生版实例请选择MASTER SLAVE或STA _ ND ALONE，经典版实例请 _ 选择double或single。 |
 |---|---|---|---|---|---|
@@ -13382,8 +14303,9 @@ Description IPAddressforcreatedDBinstanceofInternet
   "PreferredBackupPeriod": "String",
   "PreferredBackupTime": "String",
   "EnableBackupLog": "Integer"
-}
 ```
+
+`}`
 
 **BackupPolicy属性**
 
@@ -13395,13 +14317,10 @@ Description IPAddressforcreatedDBinstanceofInternet
 
 **InstanceMaintainTime语法**
 
-资源编排
-
 ```json
 "InstanceMaintainTime": {
   "MaintainStartTime": "String",
   "MaintainEndTime": "String"
-}
 ```
 
 **InstanceMaintainTime属性**
@@ -13415,13 +14334,16 @@ Description IPAddressforcreatedDBinstanceofInternet
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -13438,12 +14360,11 @@ Description IPAddressforcreatedDBinstanceofInternet
   "ClassicInnerConnection": "Map",
   "DirectConnection": "Map",
   "PublicConnection": "Map"
-}
 ```
 
-**Connections属性**
+`}`
 
-资源编排
+**Connections属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
@@ -13458,8 +14379,9 @@ Description IPAddressforcreatedDBinstanceofInternet
 "VpcPrivateConnection": {
   "ConnectionPort": Integer,
   "ConnectionString": String
-}
 ```
+
+`}`
 
 **VpcPrivateConnection属性**
 
@@ -13474,16 +14396,15 @@ Description IPAddressforcreatedDBinstanceofInternet
 "PublicConnection": {
   "ConnectionPort": Integer,
   "ConnectionString": String
-}
 ```
+
+`}`
 
 **PublicConnection属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | ConnectionPo rt | Integer | 是 | 是 | 实例的 ApsaraDB服务端口号。 | 取值范围：1024~65535。 |
-
-资源编排
 
 | ConnectionSt ring | String | 是 | 是 | 公共端点的前缀。 | 长度为8~64个字符，必须以小写英文字母开头。可包含小写英文字母和数字。 |
 |---|---|---|---|---|---|
@@ -13494,8 +14415,9 @@ Description IPAddressforcreatedDBinstanceofInternet
 "DirectConnection": {
   "ConnectionPort": Integer,
   "ConnectionString": String
-}
 ```
+
+`}`
 
 **DirectConnection属性**
 
@@ -13510,8 +14432,9 @@ Description IPAddressforcreatedDBinstanceofInternet
 "ClassicInnerConnection": {
   "ConnectionPort": Integer,
   "ConnectionString": String
-}
 ```
+
+`}`
 
 **ClassicInnerConnection属性**
 
@@ -13527,12 +14450,11 @@ Description IPAddressforcreatedDBinstanceofInternet
   "Storage": "Integer",
   "StorageType": "String",
   "ShardCount": "Integer"
-}
 ```
 
-**TairConfig属性**
+`}`
 
-资源编排
+**TairConfig属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
@@ -13542,7 +14464,7 @@ Description IPAddressforcreatedDBinstanceofInternet
 
 **返回值**
 
-Fn::GetAtt InstanceId：实例ID。 OrderId：实例订单ID。 ConnectionDomain：实例的私网连接地址。 InstanceName：实例名称。 InstanceClass：实例规格。 VpcId：专有网络ID。 Capacity：实例的存储容量。 InstanceType：实例的引擎版本。 ChargeType：实例的计费方式。 PackageType：计划类型。 Connections：实例支持的最大连接数。 ArchitectureType：架构类型。 NodeType：节点类型。 HasRenewChangeOrder：阿里云账号是否有待续订或扩容订单。 ResourceGroupId：资源组ID。 QPS：每秒访问次数，取值为当前规格实例的理论值。 ZoneId：实例所属的可用区ID。 Bandwidth：实例带宽。单位：Mbps。 EngineVersion：版本类型。 NetworkType：网络类型。 VSwitchId：交换机ID。 PrivateIp：实例的私网IP地址。 PublicConnectionString：实例的公共连接字符串。 VpcPrivateConnectionPort：VPC私有连接端口。 资源编排 ClassicInnerConnectionString：实例的经典内部连接字符串。 VpcPrivateConnectionString：实例的VPC私有连接字符串。 PublicConnectionPort：实例的公共连接端口。 DirectConnectionString：实例的直接连接字符串。 DirectConnectionPort：实例的直接连接端口。 ClassicInnerConnectionPort：实例的经典内连接端口。
+Fn::GetAtt InstanceId：实例ID。 OrderId：实例订单ID。 ConnectionDomain：实例的私网连接地址。 Port：Redis服务端口。 InstanceName：实例名称。 InstanceClass：实例规格。 VpcId：专有网络ID。 Capacity：实例的存储容量。 InstanceType：实例的引擎版本。 ChargeType：实例的计费方式。 PackageType：计划类型。 Connections：实例支持的最大连接数。 ArchitectureType：架构类型。 NodeType：节点类型。 HasRenewChangeOrder：阿里云账号是否有待续订或扩容订单。 ResourceGroupId：资源组ID。 QPS：每秒访问次数，取值为当前规格实例的理论值。 ZoneId：实例所属的可用区ID。 Bandwidth：实例带宽。单位：Mbps。 EngineVersion：版本类型。 NetworkType：网络类型。 VSwitchId：交换机ID。 PrivateIp：实例的私网IP地址。 PublicConnectionString：实例的公共连接字符串。 VpcPrivateConnectionPort：VPC私有连接端口。 ClassicInnerConnectionString：实例的经典内部连接字符串。 VpcPrivateConnectionString：实例的VPC私有连接字符串。 PublicConnectionPort：实例的公共连接端口。 DirectConnectionString：实例的直接连接字符串。 DirectConnectionPort：实例的直接连接端口。 ClassicInnerConnectionPort：实例的经典内连接端口。
 
 **示例**
 
@@ -13552,9 +14474,15 @@ YAML JSON
 ROSTemplateFormatVersion: '2015-09-01' Description: {} Parameters:
   VpcId:
     Type: String
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
   ZoneId:
     Type: String
     Description:
+```
+
+`zh-cn:` 创建实例前，请确认可用区是否支持`Redis`资源的规格。
+
+```
       en: Before you create an instance, confirm that the Availability Zone supports the
 specifications of Redis resources.
     AssociationProperty: ALIYUN::ECS::Instance:ZoneId
@@ -13573,45 +14501,48 @@ specifications of Redis resources.
       ZoneId: ${ZoneId}
 Resources:
   RedisInstance:
+    Type: ALIYUN::REDIS::Instance
     Properties:
       VpcId:
         Ref: VpcId
       VSwitchId:
         Ref: VSwitchId
+      InstanceClass: redis.master.small.default
       EvictionPolicy: noeviction
       ZoneId:
         Ref: ZoneId
+      InstanceName: DefaultRedis
       Password: Admin@123!
 Outputs:
   InstanceId:
     Value:
       Fn::GetAtt:
+        - RedisInstance
         - InstanceId
 ```
 
 更多示例，请参见创建云数据库 Tair（兼容 Redis）实例、设置Tair实例的IP白名单和创建有特定权限的账号的组合示例：YAML示例。
 
-### ROS
+### 7.8 ROS
 
-资源编排
-
-#### ALIYUN::ROS::WaitCondition
+#### 7.8.1 ALIYUN::ROS::WaitCondition
 
 ALIYUN::ROS::WaitCondition类型用于创建处理UserData消息的实例。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::ROS::WaitCondition",
   "Properties": {
     "Count": Number,
     "Handle": String,
     "Timeout": Number,
     "ShowProgressEvent": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -13628,10 +14559,9 @@ Fn::GetAtt Data：JSON格式字符串，最近一次创建或更新后的信号�
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "ShowProgressEvent": {
@@ -13642,51 +14572,67 @@ Fn::GetAtt Data：JSON格式字符串，最近一次创建或更新后的信号�
         "Disabled"
 ```
 
-]
+`]`
 
 ```json
-    },
     "Timeout": {
       "Type": "Number",
       "Description": "The number of seconds to wait for the correct number of signals to arrive.",
 ```
 
-资源编排
-
 ```json
       "MinValue": 1,
       "MaxValue": 43200
-    },
     "Count": {
       "Type": "Number",
       "Description": "The number of success signals that must be received before the stack creation p
 rocess continues.",
       "Default": 1
-    },
+```
+
+`},`
+
+```json
     "Handle": {
       "Type": "String",
       "Description": "A reference to the wait condition handle used to signal this wait condition."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "WaitCondition": {
       "Type": "ALIYUN::ROS::WaitCondition",
       "Properties": {
         "ShowProgressEvent": {
           "Ref": "ShowProgressEvent"
-        },
+```
+
+`},`
+
+```json
         "Timeout": {
           "Ref": "Timeout"
-        },
+```
+
+`},`
+
+```json
         "Count": {
           "Ref": "Count"
-        },
+```
+
+`},`
+
+```json
         "Handle": {
           "Ref": "Handle"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "LastErrorData": {
       "Description": "JSON serialized dict containing data associated with wait condition error
@@ -13697,11 +14643,9 @@ signals sent to the handle backup by update last time.",
           "LastErrorData"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "JoinedLastErrorData": {
       "Description": "String containing data associated with wait condition error signals sent to the
 handle backup by update last time.",
@@ -13711,11 +14655,9 @@ handle backup by update last time.",
           "JoinedLastErrorData"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "LastData": {
       "Description": "JSON serialized dict containing data associated with wait condition signals
 sent to the handle backup by update last time.",
@@ -13725,17 +14667,7 @@ sent to the handle backup by update last time.",
           "LastData"
 ```
 
-]
-
-```
-}
-```
-
-资源编排
-
 ```json
-      }
-    },
     "JoinedErrorData": {
       "Description": "String containing data associated with wait condition error signals sent to the
 handle.",
@@ -13745,11 +14677,9 @@ handle.",
           "JoinedErrorData"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Data": {
       "Description": "JSON serialized dict containing data associated with wait condition signals
 sent to the handle.",
@@ -13759,11 +14689,9 @@ sent to the handle.",
           "Data"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ErrorData": {
       "Description": "JSON serialized dict containing data associated with wait condition error
 signals sent to the handle.",
@@ -13773,16 +14701,7 @@ signals sent to the handle.",
           "ErrorData"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -13812,8 +14731,6 @@ Resources:
 Properties:
 ```
 
-资源编排
-
 ```
     Properties:
       Count:
@@ -13824,64 +14741,70 @@ Properties:
         Ref: ShowProgressEvent
       Timeout:
         Ref: Timeout
+    Type: ALIYUN::ROS::WaitCondition
 Outputs:
   Data:
     Description: JSON serialized dict containing data associated with wait condition
       signals sent to the handle.
     Value:
       Fn::GetAtt:
+      - WaitCondition
       - Data
   ErrorData:
     Description: JSON serialized dict containing data associated with wait condition
       error signals sent to the handle.
     Value:
       Fn::GetAtt:
+      - WaitCondition
       - ErrorData
   JoinedErrorData:
     Description: String containing data associated with wait condition error signals
       sent to the handle.
     Value:
       Fn::GetAtt:
+      - WaitCondition
       - JoinedErrorData
   JoinedLastErrorData:
     Description: String containing data associated with wait condition error signals
       sent to the handle backup by update last time.
     Value:
       Fn::GetAtt:
+      - WaitCondition
       - JoinedLastErrorData
   LastData:
     Description: JSON serialized dict containing data associated with wait condition
       signals sent to the handle backup by update last time.
     Value:
       Fn::GetAtt:
+      - WaitCondition
       - LastData
   LastErrorData:
     Description: JSON serialized dict containing data associated with wait condition
       error signals sent to the handle backup by update last time.
     Value:
       Fn::GetAtt:
+      - WaitCondition
       - LastErrorData
 ```
 
-#### ALIYUN::ROS::WaitConditionHandle
+#### 7.8.2 ALIYUN::ROS::WaitConditionHandle
 
 ALIYUN::ROS::WaitConditionHandle用于创建在自定义数据执行过程中发送信号和接收信号的实例。
 
 **使用说明**
 
-本文仅适用于资源栈更新场景，用于控制旧信号的删除。 资源编排
+本文仅适用于资源栈更新场景，用于控制旧信号的删除。
 
 **语法**
 
 ```json
-{
   "Type": "ALIYUN::ROS::WaitConditionHandle",
   "Properties": {
     "Count": Integer,
     "Mode": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -13892,30 +14815,33 @@ ALIYUN::ROS::WaitConditionHandle用于创建在自定义数据执行过程中发
 
 **返回值**
 
-Fn::GetAtt CurlCli：该资源产生的curl命令。通过该命令发送自定义数据执行的结果或者状态到资源编排服务。 WindowsCurlCli：为Windows提供curl CLI命令前缀，可用于发送处理完成或失败的信号。由于Windows不支持curl命资源编排令，您需要先安装curl.exe并将其添加到PATH中。您可以通过添加 --data-binary "{\"status\": \" SUCCESS \"} 表示成功、添加 --data-binary "{\"status\": \" FAILURE \"} 表示失败。 PowerShellCurlCli：为PowerShell提供curl CLI命令前缀，可用于发送处理完成或失败的信号。由于此cmdlet是在
+Fn::GetAtt CurlCli：该资源产生的curl命令。通过该命令发送自定义数据执行的结果或者状态到资源编排服务。 WindowsCurlCli：为Windows提供curl CLI命令前缀，可用于发送处理完成或失败的信号。由于Windows不支持curl命令，您需要先安装curl.exe并将其添加到PATH中。您可以通过添加 --data-binary "{\"status\": \" SUCCESS \"} 表示成功、添加 --data-binary "{\"status\": \" FAILURE \"} 表示失败。 PowerShellCurlCli：为PowerShell提供curl CLI命令前缀，可用于发送处理完成或失败的信号。由于此cmdlet是在 PowerShell 3.0中引入的，所以要确保PowerShell的版本满足此约束，PowerShell的版本可以通
 
-| 过 | $PSVersionTable.PSVersion |  |
+| 过 | $PSVersionTable.PSVersion |   |
 |---|---|---|
-| '{"status": " FAILURE "} |  | 表示 |
+| '{"status": " FAILURE "} |   | 表示 |
 
-Headers：HTTP POST请求头，可用于发送处理完成或失败的信号。 URL：HTTP POST请求地址，可用于发送处理完成或失败的信号。
+过 $PSVersionTable.PSVersion 显示。您可以通过添加 `-Body '{"status": " SUCCESS "}` 表示成功、添加 `-Body` Headers：HTTP POST请求头，可用于发送处理完成或失败的信号。 URL：HTTP POST请求地址，可用于发送处理完成或失败的信号。
 
-**说明**
-
-CurlCli、WindowsCurlCli、PowerShellCurlCli的请求体中均可通过ID字段（字符串）信号明确指定信号ID。
+> **说明：** CurlCli、WindowsCurlCli、PowerShellCurlCli的请求体中均可通过ID字段（字符串）信号明确指定信号ID。
 
 ```
 例如： --data-binary "{\"status\": \" SUCCESS \", \"id\": \"test\"} 。
 ```
 
-相同ID的信号会被当作同一信号，后面收到的信号会覆盖前面收到的。 如果没有指定ID，ROS会使用整数作为信号ID，这个整数=已有信号的数量+1。 通过 `status` 可以指定信号类型，包括 `SUCCESS` 、 `FAILURE` 、 `WARNING` 。 如果收到 `FAILURE` 信号，则资源栈操作失败。 如果在设定时间内，收到的信号数量未满足要求，则资源栈操作超时失败。 如果收到的信号数量满足了要求，且所有信号均为 `WARNING` ，则资源栈操作失败。 其他情况下，资源栈操作成功。
+> 相同ID的信号会被当作同一信号，后面收到的信号会覆盖前面收到的。
+> 如果没有指定ID，ROS会使用整数作为信号ID，这个整数=已有信号的数量+1。
+> 通过 `status` 可以指定信号类型，包括 `SUCCESS` 、 `FAILURE` 、 `WARNING` 。
+> 如果收到 `FAILURE` 信号，则资源栈操作失败。
+> 如果在设定时间内，收到的信号数量未满足要求，则资源栈操作超时失败。
+> 如果收到的信号数量满足了要求，且所有信号均为 `WARNING` ，则资源栈操作失败。
+> 其他情况下，资源栈操作成功。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "Mode": {
@@ -13931,32 +14857,36 @@ WaitCondition.Count should reference an incremental value instead of a full valu
 
 ```json
    "Default": "Full"
-  },
+```
+
+`},`
+
+```json
   "Count": {
    "Type": "Number",
    "Description": "There are 3 preconditions that make Count taking effect:\n1.Mode is set to Full.\n
 2.Count >= 0.\n3.The id of signal is not specified. If so, it will be a self-increasing integer start ed from 1. For example, the id of the first signal is 1, the id of the second signal is 2, and so on. \n\nIf Count takes effect, signals with id > Count will be deleted before update.\nThe default value is -1, which means no effect.\nIt is recommended to quote the same value with WaitCondition.Count.",
    "Default": -1
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "WaitConditionHandle": {
    "Type": "ALIYUN::ROS::WaitConditionHandle",
-   "Properties": {
     "Mode": {
      "Ref": "Mode"
-    },
 ```
-
-资源编排
 
 ```json
     "Count": {
      "Ref": "Count"
-    }
-   }
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Outputs": {
   "CurlCli": {
    "Description": "Convenience attribute, provides curl CLI command prefix, which can be used for sig
@@ -13967,11 +14897,9 @@ nalling handle completion or failure. You can signal success by adding --data-bi
      "CurlCli"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "WindowsCurlCli": {
    "Description": "Convenience attribute, provides curl CLI command prefix for Windows, which can be
 used for signalling handle completion or failure. As Windows does not support curl command, you need to install curl.exe and add it to PATH first. You can signal success by adding --data-binary \"{\\\"s tatus\\\": \\\"SUCCESS\\\"}\" , or signal failure by adding --data-binary \"{\\\"status\\\": \\\"FAILURE\\\"}\" ",
@@ -13981,11 +14909,9 @@ used for signalling handle completion or failure. As Windows does not support cu
      "WindowsCurlCli"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "Headers": {
    "Description": "HTTP POST Headers used for signalling handle completion or failure.",
    "Value": {
@@ -13994,11 +14920,9 @@ used for signalling handle completion or failure. As Windows does not support cu
      "Headers"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "URL": {
    "Description": "HTTP POST URL used for signalling handle completion or failure.",
    "Value": {
@@ -14007,11 +14931,9 @@ used for signalling handle completion or failure. As Windows does not support cu
      "URL"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "PowerShellCurlCli": {
    "Description": "Convenience attribute, provides curl CLI command prefix for PowerShell, which can
 be used for signalling handle completion or failure. As this cmdlet was introduced in PowerShell 3.0, ensure the version of PowerShell satisfies the constraint. (Show the version via $PSVersionTable.PSVersion.) You can signal success by adding -Body '{\"status\": \"SUCCESS\"}' , or s ignal failure by adding -Body '{\"status\": \"FAILURE\"}' ",
@@ -14019,21 +14941,6 @@ be used for signalling handle completion or failure. As this cmdlet was introduc
     "Fn::GetAtt": [
      "WaitConditionHandle",
      "PowerShellCurlCli"
-```
-
-]
-
-```
-   }
-  }
-}
-```
-
-资源编排
-
-```
- }
-}
 ```
 
 `YAML` 格式
@@ -14072,6 +14979,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
   Default: -1
 Resources:
  WaitConditionHandle:
+  Type: 'ALIYUN::ROS::WaitConditionHandle'
   Properties:
    Mode:
     Ref: Mode
@@ -14086,12 +14994,11 @@ Outputs:
 --data-binary'{"status":"FAILURE"}'
 ```
 
-资源编排
-
 ```
 databinary {status: FAILURE}
   Value:
    'Fn::GetAtt':
+    - WaitConditionHandle
     - CurlCli
  WindowsCurlCli:
   Description: >-
@@ -14103,16 +15010,19 @@ databinary {status: FAILURE}
    \"FAILURE\"}"
   Value:
    'Fn::GetAtt':
+    - WaitConditionHandle
     - WindowsCurlCli
  Headers:
   Description: HTTP POST Headers used for signalling handle completion or failure.
   Value:
    'Fn::GetAtt':
+    - WaitConditionHandle
     - Headers
  URL:
   Description: HTTP POST URL used for signalling handle completion or failure.
   Value:
    'Fn::GetAtt':
+    - WaitConditionHandle
     - URL
  PowerShellCurlCli:
   Description: >-
@@ -14125,23 +15035,20 @@ databinary {status: FAILURE}
    "FAILURE"}'
   Value:
    'Fn::GetAtt':
+    - WaitConditionHandle
     - PowerShellCurlCli
 ```
 
 更多示例，请参见JSON示例和YAML示例。
 
-#### ALIYUN::ROS::Stack
+#### 7.8.3 ALIYUN::ROS::Stack
 
-嵌套资源栈本身可以包含其他嵌套资源栈，构成一个资源栈层次结构。根资源栈是所有嵌套资源栈最终归属的父资源栈，根资源栈的模板称为顶层模板。ALIYUN::ROS::Stack类型在顶层模板中将资源栈作为资源进行嵌套。 您可以将嵌套资源栈模板中的一个资源栈的输出用作另一个资源栈的输入。您也可以使用Fn::GetAtt函数，将函数参数设置为嵌套资源栈的名称和Outputs.NestedStackOutputName格式的输出值，获取嵌套资源栈的输出。
+ALIYUN::ROS::Stack用于创建嵌套资源栈，最多支持5层嵌套。 嵌套资源栈本身可以包含其他嵌套资源栈，构成一个资源栈层次结构。根资源栈是所有嵌套资源栈最终归属的父资源栈，根资源栈的模板称为顶层模板。ALIYUN::ROS::Stack类型在顶层模板中将资源栈作为资源进行嵌套。 您可以将嵌套资源栈模板中的一个资源栈的输出用作另一个资源栈的输入。您也可以使用Fn::GetAtt函数，将函数参数设置为嵌套资源栈的名称和Outputs.NestedStackOutputName格式的输出值，获取嵌套资源栈的输出。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::ROS::Stack",
-  "Properties": {
     "TemplateURL": String,
     "TemplateBody": String,
     "TemplateId": String,
@@ -14149,72 +15056,69 @@ databinary {status: FAILURE}
     "TimeoutMins": Number,
     "Parameters": Map,
     "ResourceGroupId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
-| 属性名称 | 类型 | 必须 | 允许更新 |  |  | 描述 | 约束 |
+| 属性名称 | 类型 | 必须 | 允许更新 |   |   | 描述 | 约束 |
 |---|---|---|---|---|---|---|---|
-| TemplateURL | String | 否 | 是 |  |  |  | 模板主体的文件最大为524,288个字节，URL的最大长度为1024个字节。 URL必须指向位于Web服务器 （HTTP、HTTPS）或阿里云OSS存储空间中的模板。例如： oss://ros/template/dem o 、 oss://ros/template/de mo?RegionId=cn-hangzhou 。 OSS地域如未指定，默认与资源栈 RegionId相同。 您必须指定 TemplateURL 、 Templat eBody 或 TemplateId 其中一个。如果都指定，则使用 TemplateBody 。 |
-|  |  |  |  |  |  |  | o |
-|  |  |  |  |  |  | 模板主体的文件的位置。 |  |
-| TemplateBod y | Map | 否 | 是 |  |  | 模板内容，用于简化模板的传递。 | 内容为原始数据，函数只在子模板中生效，不在当前模板中生效。 您必须指定 TemplateURL 、 Templat eBody 或 TemplateId 其中一个。如果都指定，则使用 TemplateBody 。 |
-| TemplateId | String | 否 | 是 |  |  | 模板ID。 | 您必须指定 TemplateURL 、 Templat eBody 或 TemplateId 其中一个。如果都指定，则使用 TemplateBody 。 |
-| TemplateVers ion | String | 否 | 是 |  |  | 模板版本名。 | 无 |
-| TimeoutMins | Number | 否 | 是 |  |  | 创建或更新资源栈的超时时间。 | 单位：分。 默认值：60。 |
-| Parameters | Map | 否 | 是 |  |  | 一组键值对，表示在创建此嵌套资源栈时传递给 ROS的参数。 | Parameters中的每个键都对应于嵌套资源栈模板中的参数名，每个值对应于参数取值。如果嵌套资源栈需要输入参数，则必须指定此参数。 |
+| TemplateURL | String | 否 | 是 |   |   |   | 模板主体的文件最大为524,288个字节，URL的最大长度为1024个字节。 URL必须指向位于Web服务器 （HTTP、HTTPS）或阿里云OSS存储空间中的模板。例如： oss://ros/template/dem o 、 oss://ros/template/de mo?RegionId=cn-hangzhou 。 OSS地域如未指定，默认与资源栈 RegionId相同。 您必须指定 TemplateURL 、 Templat eBody 或 TemplateId 其中一个。如果都指定，则使用 TemplateBody 。 |
+|   |   |   |   |   |   |   | o |
+|   |   |   |   |   |   | 模板主体的文件的位置。 |   |
+| TemplateBod y | Map | 否 | 是 |   |   | 模板内容，用于简化模板的传递。 | 内容为原始数据，函数只在子模板中生效，不在当前模板中生效。 您必须指定 TemplateURL 、 Templat eBody 或 TemplateId 其中一个。如果都指定，则使用 TemplateBody 。 |
+| TemplateId | String | 否 | 是 |   |   | 模板ID。 | 您必须指定 TemplateURL 、 Templat eBody 或 TemplateId 其中一个。如果都指定，则使用 TemplateBody 。 |
+| TemplateVers ion | String | 否 | 是 |   |   | 模板版本名。 | 无 |
+| TimeoutMins | Number | 否 | 是 |   |   | 创建或更新资源栈的超时时间。 | 单位：分。 默认值：60。 |
+| Parameters | Map | 否 | 是 |   |   | 一组键值对，表示在创建此嵌套资源栈时传递给 ROS的参数。 | Parameters中的每个键都对应于嵌套资源栈模板中的参数名，每个值对应于参数取值。如果嵌套资源栈需要输入参数，则必须指定此参数。 |
 
-| oss://ros/template/dem |  |  |
+| oss://ros/template/dem |   |   |
 |---|---|---|
-|  | oss://ros/template/de |  |
+|   | oss://ros/template/de |   |
 
-|  |  | TemplateURL |  |
+|   |   | TemplateURL |   |
 |---|---|---|---|
-|  | eBody |  |  |
+|   | eBody |   |   |
 
-| Templat |  |
+| Templat |   |
 |---|---|
 
-|  |  | TemplateURL |  |
+|   |   | TemplateURL |   |
 |---|---|---|---|
-|  | eBody |  |  |
+|   | eBody |   |   |
 
-| Templat |  |
+| Templat |   |
 |---|---|
 
-|  |  | TemplateURL |  |
+|   |   | TemplateURL |   |
 |---|---|---|---|
-|  | eBody |  |  |
+|   | eBody |   |   |
 
-| Templat |  |
+| Templat |   |
 |---|---|
-
-资源编排
 
 | ResourceGro upId | String | 否 | 否 | 资源组ID。 | 无 |
 |---|---|---|---|---|---|
 
 **返回值**
 
-Fn::GetAtt 您可以通过以下代码，获取嵌套资源栈的输出。
+Fn::GetAtt 您可以通过以下代码，获取嵌套资源栈的输出。 `{`
 
-```json
-{
+```
   "Fn::GetAtt": [
     "<nested_stack>",
     "Outputs.<nested_stack_output_name>"
 ```
 
-]
-
-```
-}
-```
+`]` `}`
 
 | Ref | 引用嵌套资源栈资源时，将获得嵌套资源栈的ARN。例如： |
 |---|---|
+
+```
+hangzhou:12345****:stacks/test-nested-stack-Demo-jzkyq7mn****/e71c1e04-1a57-46fc-b9a4-cf7ce0d3**** 。
+```
 
 **示例**
 
@@ -14222,12 +15126,11 @@ Fn::GetAtt 您可以通过以下代码，获取嵌套资源栈的输出。
 
 | YAML | 格式 |
 |---|---|
-| ROSTemplateFormatVersion: '2015-09-01' Description: One VPC, vSwitch, security group. Parameters: ZoneId: Type: String Description: The available zone SecurityGroupName: Type: String Description: The security group name Default: my-sg-name VpcName: Type: String Description: The VPC name MinLength: 2 MaxLength: 128 ConstraintDescription: '[2, 128] English or Chinese letters' Default: my-vpc-name VpcCidrBlock: Type: String AllowedValues: - 192.168.0.0/16 - 172.16.0.0/12 - 10.0.0.0/8 Default: 10.0.0.0/8 VSwitchCidrBlock: Type: String Description: The vSwitch subnet which must be within VPC Default: 10.0.10.0/24 UpdateVersion: Type: Number Default: 0 Resources: Vpc: Type: ALIYUN::ECS::VPC Properties: CidrBlock: Ref: VpcCidrBlock VpcName: Ref: VpcName |  |
-
-资源编排
+| ROSTemplateFormatVersion: '2015-09-01' Description: One VPC, vSwitch, security group. Parameters: ZoneId: Type: String Description: The available zone SecurityGroupName: Type: String Description: The security group name Default: my-sg-name VpcName: Type: String Description: The VPC name MinLength: 2 MaxLength: 128 ConstraintDescription: '[2, 128] English or Chinese letters' Default: my-vpc-name VpcCidrBlock: Type: String AllowedValues: - 192.168.0.0/16 - 172.16.0.0/12 - 10.0.0.0/8 Default: 10.0.0.0/8 VSwitchCidrBlock: Type: String Description: The vSwitch subnet which must be within VPC Default: 10.0.10.0/24 UpdateVersion: Type: Number Default: 0 Resources: Vpc: Type: ALIYUN::ECS::VPC Properties: CidrBlock: Ref: VpcCidrBlock VpcName: Ref: VpcName |   |
 
 ```
   VSwitch:
+    Type: ALIYUN::ECS::VSwitch
     Properties:
       CidrBlock:
         Ref: VSwitchCidrBlock
@@ -14238,12 +15141,14 @@ Fn::GetAtt 您可以通过以下代码，获取嵌套资源栈的输出。
           - Vpc
           - VpcId
   SecurityGroup:
+    Type: ALIYUN::ECS::SecurityGroup
     Properties:
       SecurityGroupName:
         Ref: SecurityGroupName
       VpcId:
         Ref: Vpc
   WaitConditionHandle:
+    Type: ALIYUN::ROS::WaitConditionHandle
     Properties:
       UpdateVersion:
         Ref: UpdateVersion
@@ -14251,6 +15156,7 @@ Outputs:
   SecurityGroupId:
     Value:
       Fn::GetAtt:
+        - SecurityGroup
         - SecurityGroupId
   VpcId:
     Value:
@@ -14260,17 +15166,15 @@ Outputs:
   VSwitchId:
     Value:
       Fn::GetAtt:
+        - VSwitch
         - VSwitchId
 ```
 
 | JSON | 格式 |
 |---|---|
-| { "ROSTemplateFormatVersion": "2015-09-01", "Description": "One VPC, vSwitch, security group.", "Parameters": { "ZoneId": { "Type": "String", "Description": "The available zone" }, "SecurityGroupName": { "Type": "String", "Description": "The security group name", "Default": "my-sg-name" }, "VpcName": { "Type": "String", "Description": "The VPC name", "MinLength": 2, "MaxLength": 128, "ConstraintDescription": "[2, 128] English or Chinese letters", "Default": "my-vpc-name" |  |
-
-资源编排
+| { "ROSTemplateFormatVersion": "2015-09-01", "Description": "One VPC, vSwitch, security group.", "Parameters": { "ZoneId": { "Type": "String", "Description": "The available zone" }, "SecurityGroupName": { "Type": "String", "Description": "The security group name", "Default": "my-sg-name" }, "VpcName": { "Type": "String", "Description": "The VPC name", "MinLength": 2, "MaxLength": 128, "ConstraintDescription": "[2, 128] English or Chinese letters", "Default": "my-vpc-name" |   |
 
 ```json
-    },
     "VpcCidrBlock": {
       "Type": "String",
       "AllowedValues": [
@@ -14283,76 +15187,102 @@ Outputs:
 
 ```json
       "Default": "10.0.0.0/8"
-    },
+```
+
+`},`
+
+```json
     "VSwitchCidrBlock": {
       "Type": "String",
       "Description": "The vSwitch subnet which must be within VPC",
       "Default": "10.0.10.0/24"
-    },
+```
+
+`},`
+
+```json
     "UpdateVersion": {
       "Type": "Number",
       "Default": 0
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "Vpc": {
       "Type": "ALIYUN::ECS::VPC",
       "Properties": {
         "CidrBlock": {
           "Ref": "VpcCidrBlock"
-        },
+```
+
+`},`
+
+```json
         "VpcName": {
           "Ref": "VpcName"
-        }
-      }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "VSwitch": {
       "Type": "ALIYUN::ECS::VSwitch",
       "Properties": {
         "CidrBlock": {
           "Ref": "VSwitchCidrBlock"
-        },
+```
+
+`},`
+
+```json
         "ZoneId": {
           "Ref": "ZoneId"
-        },
+```
+
+`},`
+
+```json
         "VpcId": {
           "Fn::GetAtt": [
             "Vpc",
             "VpcId"
 ```
 
-]
+`]` `}` `}` `},`
 
 ```json
-        }
-      }
-    },
     "SecurityGroup": {
       "Type": "ALIYUN::ECS::SecurityGroup",
       "Properties": {
         "SecurityGroupName": {
           "Ref": "SecurityGroupName"
-        },
+```
+
+`},`
+
+```json
         "VpcId": {
           "Ref": "Vpc"
-        }
-      }
-    },
+```
+
+`}` `}`
+
+```json
     "WaitConditionHandle": {
       "Type": "ALIYUN::ROS::WaitConditionHandle",
 "Properties":{
 ```
 
-资源编排
-
 ```json
-      "Properties": {
         "UpdateVersion": {
           "Ref": "UpdateVersion"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "SecurityGroupId": {
       "Value": {
@@ -14361,11 +15291,9 @@ Outputs:
           "SecurityGroupId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "VpcId": {
       "Value": {
         "Fn::GetAtt": [
@@ -14373,11 +15301,9 @@ Outputs:
           "VpcId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "VSwitchId": {
       "Value": {
         "Fn::GetAtt": [
@@ -14385,16 +15311,7 @@ Outputs:
           "VSwitchId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-父资源栈示例 `YAML` 格式
+`]` `}` `}` `}` `}` 父资源栈示例 `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Description: One ECS instance. Parameters:
@@ -14422,7 +15339,7 @@ ROSTemplateFormatVersion: '2015-09-01' Description: One ECS instance. Parameters
     Default: my-sg-name
 ```
 
-资源编排 y g
+`y` `g`
 
 ```
   NetworkInterfaceName:
@@ -14468,6 +15385,7 @@ disk(cloud_efficiency) or SSD cloud disk(cloud_ssd)'
     Default: 0
 Resources:
   NetworkStack:
+    Type: ALIYUN::ROS::Stack
     Properties:
       TemplateURL: oss://ros/template/vpc.txt
       TimeoutMins: 5
@@ -14485,9 +15403,8 @@ Resources:
         UpdateVersion:
           Ref: UpdateVersion
   WebServer:
+    Type: ALIYUN::ECS::Instance
 ```
-
-资源编排
 
 ```
     Properties:
@@ -14552,11 +15469,8 @@ Outputs:
 `JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
 ```
-
-资源编排
 
 ```json
   "Description": "One ECS instance.",
@@ -14565,16 +15479,28 @@ Outputs:
       "Default": "centos_7",
       "Type": "String",
       "Description": "Image Id, represents the image resource to startup the ECS instance"
-    },
+```
+
+`},`
+
+```json
     "InstanceType": {
       "Type": "String",
       "Description": "The ECS instance type,",
       "Default": "ecs.xn4.small"
-    },
+```
+
+`},`
+
+```json
     "ZoneId": {
       "Type": "String",
       "Description": "The available zone "
-    },
+```
+
+`},`
+
+```json
     "InstanceChargeType": {
       "Type": "String",
       "AllowedValues": [
@@ -14587,17 +15513,29 @@ Outputs:
 ```json
       "Default": "PostPaid",
       "Description": "The instance charge type"
-    },
+```
+
+`},`
+
+```json
     "SecurityGroupName": {
       "Type": "String",
       "Description": "The security group name",
       "Default": "my-sg-name"
-    },
+```
+
+`},`
+
+```json
     "NetworkInterfaceName": {
       "Type": "String",
       "Description": "The Network interface name",
       "Default": "my-eni-name"
-    },
+```
+
+`},`
+
+```json
     "VpcName": {
       "Type": "String",
       "Description": "The VPC name",
@@ -14605,7 +15543,11 @@ Outputs:
       "MaxLength": 128,
       "ConstraintDescription": "[2, 128] English or Chinese letters",
       "Default": "my-vpc-name"
-    },
+```
+
+`},`
+
+```json
     "IoOptimized": {
       "AllowedValues": [
         "none",
@@ -14618,7 +15560,11 @@ Outputs:
       "Description": "IO optimized, optimized is for the IO optimized instance type",
       "Type": "String",
       "Default": "optimized"
-    },
+```
+
+`},`
+
+```json
     "SystemDiskCategory": {
       "AllowedValues": [
         "cloud",
@@ -14635,10 +15581,7 @@ disk(cloud_efficiency) or SSD cloud disk(cloud_ssd)",
       "Default": "cloud_ssd"
 ```
 
-资源编排
-
 ```json
-    },
     "VpcCidrBlock": {
       "Type": "String",
       "AllowedValues": [
@@ -14651,17 +15594,28 @@ disk(cloud_efficiency) or SSD cloud disk(cloud_ssd)",
 
 ```json
       "Default": "10.0.0.0/8"
-    },
+```
+
+`},`
+
+```json
     "VSwitchCidrBlock": {
       "Type": "String",
       "Description": "The VSwitch subnet which must be within VPC",
       "Default": "10.0.10.0/24"
-    },
+```
+
+`},`
+
+```json
     "UpdateVersion": {
       "Type": "Number",
       "Default": 0
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "NetworkStack": {
       "Type": "ALIYUN::ROS::Stack",
@@ -14671,100 +15625,130 @@ disk(cloud_efficiency) or SSD cloud disk(cloud_ssd)",
         "Parameters": {
           "ZoneId": {
             "Ref": "ZoneId"
-          },
+```
+
+`},`
+
+```json
           "SecurityGroupName": {
             "Ref": "SecurityGroupName"
-          },
+```
+
+`},`
+
+```json
           "VpcName": {
             "Ref": "VpcName"
-          },
+```
+
+`},`
+
+```json
           "VpcCidrBlock": {
             "Ref": "VpcCidrBlock"
-          },
+```
+
+`},`
+
+```json
           "VSwitchCidrBlock": {
             "Ref": "VSwitchCidrBlock"
-          },
+```
+
+`},`
+
+```json
           "UpdateVersion": {
             "Ref": "UpdateVersion"
-          }
-        }
-      }
-    },
+```
+
+`}` `}` `}` `},`
+
+```json
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
       "Properties": {
         "ImageId": {
           "Ref": "ImageId"
-        },
+```
+
+`},`
+
+```json
         "InstanceType": {
           "Ref": "InstanceType"
-        },
+```
+
+`},`
+
+```json
         "InstanceChargeType": {
           "Ref": "InstanceChargeType"
-        },
         "SecurityGroupId": {
           "Fn::GetAtt": [
             "NetworkStack",
 ```
 
-资源编排
-
 ```
 etwo Stac
 ```
 
-,
-
-```
-            "Outputs.SecurityGroupId"
-```
-
-]
+`,`
 
 ```json
-        },
+            "Outputs.SecurityGroupId"
         "VpcId": {
           "Fn::GetAtt": [
             "NetworkStack",
             "Outputs.VpcId"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "VSwitchId": {
           "Fn::GetAtt": [
             "NetworkStack",
             "Outputs.VSwitchId"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "IoOptimized": {
           "Ref": "IoOptimized"
-        },
-        "ZoneId": {
-          "Ref": "ZoneId"
-        },
-        "SystemDisk_Category": {
-          "Ref": "SystemDiskCategory"
-        },
-        "DiskMappings": [
-          {
-            "Category": "cloud_ssd",
-            "Size": 20
-          }
 ```
 
-]
+`},`
 
 ```json
-      }
-    }
-  },
+        "ZoneId": {
+          "Ref": "ZoneId"
+```
+
+`},`
+
+```json
+        "SystemDisk_Category": {
+          "Ref": "SystemDiskCategory"
+```
+
+`},`
+
+```json
+        "DiskMappings": [
+```
+
+`{`
+
+```json
+            "Category": "cloud_ssd",
+            "Size": 20
+```
+
+`}` `]` `}` `}` `},`
+
+```json
   "Outputs": {
     "InstanceId": {
       "Value": {
@@ -14773,11 +15757,9 @@ etwo Stac
           "InstanceId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "PublicIp": {
       "Value": {
         "Fn::GetAtt": [
@@ -14785,11 +15767,9 @@ etwo Stac
           "PublicIp"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "SecurityGroupId": {
       "Value": {
         "Fn::GetAtt": [
@@ -14797,28 +15777,17 @@ etwo Stac
           "Outputs.SecurityGroupId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "VpcId": {
       "Value": {
         "Fn::GetAtt": [
           "NetworkStack",
 ```
 
-资源编排
-
-```
-          "Outputs.VpcId"
-```
-
-]
-
 ```json
-      }
-    },
+          "Outputs.VpcId"
     "VSwitchId": {
       "Value": {
         "Fn::GetAtt": [
@@ -14826,30 +15795,27 @@ etwo Stac
           "Outputs.VSwitchId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "NetworkStackArn": {
       "Value": {
         "Ref": "NetworkStack"
-      }
-    }
-  }
-}
 ```
 
-更多示例，请参见：JSON示例和YAML示例。
+`}` `}` `}` `}` 更多示例，请参见：JSON示例和YAML示例。
 
-### SLB
+### 7.9 SLB
 
-#### ALIYUN::SLB::AccessControl
+#### 7.9.1 ALIYUN::SLB::AccessControl
+
+ALIYUN::SLB::AccessControl类型用于创建访问控制策略组。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLB::AccessControl",
   "Properties": {
     "AddressIPVersion": String,
@@ -14857,9 +15823,9 @@ etwo Stac
     "AclEntrys": List,
     "Tags": List,
     "ResourceGroupId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -14870,8 +15836,6 @@ etwo Stac
 | ResourceGro upId | String | 否 | 是 | 访问控制策略组所属的资源组 ID。 | 无 |
 | AclEntrys | List | 否 | 否 | 访问控制策略组的信息列表。 | 最多支持50个信息列表。 更多信息，请参见AclEntrys属性。 |
 
-资源编排
-
 | Tags | List | 否 | 是 | 标签。 | 最多支持添加20个标签。 更多信息，请参见Tags属性。 |
 |---|---|---|---|---|---|
 
@@ -14879,13 +15843,16 @@ etwo Stac
 
 ```json
 "AclEntrys": [
-  {
-    "comment": String,
-    "entry": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "comment": String,
+    "entry": String
+```
+
+`}` `]`
 
 **AclEntrys属性**
 
@@ -14898,13 +15865,16 @@ etwo Stac
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -14919,10 +15889,9 @@ Fn::GetAtt AclId：访问控制策略组ID。
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "AclEntrys": {
@@ -14930,7 +15899,11 @@ Fn::GetAtt AclId：访问控制策略组ID。
    "Description": "A list of acl entrys. Each entry can be IP addresses or CIDR blocks. Max length: 5
 0.",
    "MaxLength": 50
-  },
+```
+
+`},`
+
+```json
   "AddressIPVersion": {
    "Type": "String",
    "Description": "IP version. Could be \"ipv4\" or \"ipv6\".",
@@ -14939,40 +15912,59 @@ Fn::GetAtt AclId：访问控制策略组ID。
     "ipv6"
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "AclName": {
    "Type": "String",
    "Description": "The name of the access control list."
-  },
+```
+
+`},`
+
+```json
   "Tags": {
    "Type": "Json",
    "Description": "Tags to attach to instance. Max support 20 tags to add during create instance. Eac
 h tag with two properties Key and Value, and Key is required.",
    "MaxLength": 20
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "AccessControl": {
    "Type": "ALIYUN::SLB::AccessControl",
    "Properties": {
     "AclEntrys": {
      "Ref": "AclEntrys"
-    },
+```
+
+`},`
+
+```json
     "AddressIPVersion": {
      "Ref": "AddressIPVersion"
-    },
+```
+
+`},`
+
+```json
     "AclName": {
      "Ref": "AclName"
-    },
+```
+
+`},`
+
+```json
     "Tags": {
      "Ref": "Tags"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "Outputs": {
   "AclId": {
    "Description": "The ID of the access control list.",
@@ -14982,16 +15974,7 @@ h tag with two properties Key and Value, and Key is required.",
      "AclId"
 ```
 
-]
-
-```
-   }
-  }
- }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -15025,37 +16008,38 @@ Resources:
     Ref: AddressIPVersion
    Tags:
     Ref: Tags
+  Type: ALIYUN::SLB::AccessControl
 Outputs:
  AclId:
   Description: The ID of the access control list.
   Value:
    Fn::GetAtt:
+   - AccessControl
    - AclId
 ```
 
 更多示例，请参见：JSON示例和YAML示例。
 
-#### ALIYUN::SLB::BackendServerAttachment
+#### 7.9.2 ALIYUN::SLB::BackendServerAttachment
 
 ALIYUN::SLB::BackendServerAttachment类型用于添加后端服务器。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLB::BackendServerAttachment",
   "Properties": {
     "LoadBalancerId": String,
     "BackendServers": List,
     "BackendServerList": List,
     "BackendServerWeightList": List
-  }
-}
 ```
 
-**属性**
+`}` `}`
 
-资源编排
+**属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
@@ -15068,24 +16052,25 @@ ALIYUN::SLB::BackendServerAttachment类型用于添加后端服务器。
 
 ```json
 "BackendServers": [
-  {
+```
+
+`{`
+
+```json
     "ServerId" : String,
     "Weight" : Integer,
     "Type": String,
     "ServerIp": String,
     "Description": String
-  }
 ```
 
-]
+`}` `]`
 
 **BackendServers属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | ServerId | String | 是 | 是 | ECS实例ID。 | 后端服务器（ECS 实例）必须在运行中才可以加入负载均衡实例，每次调用最多可添加20个后端服务器。 只有性能保障型实例支持添加eni类型的后端服务器。 |
-
-资源编排
 
 | Weight | Integer | 是 | 是 | ECS实例在SLB实例中的权重。 | 取值范围： 0~100。 默认值：100。 |
 |---|---|---|---|---|---|
@@ -15099,56 +16084,71 @@ Fn::GetAtt BackendServers：所有加入负载均衡的后端服务器列表。 
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "BackendServerList": {
       "Type": "Json",
       "Description": "The comma delimited instance id list.If the property \"BackendServers\" is sett
 ing, this property will be ignored."
-    },
+```
+
+`},`
+
+```json
     "LoadBalancerId": {
       "Type": "String",
       "Description": "The id of load balancer."
-    },
+```
+
+`},`
+
+```json
     "BackendServerWeightList": {
       "Type": "CommaDelimitedList",
       "Description": "The comma delimited weight list. If no value specified will use 100. If the len
 gth is small than \"BackendServerList\", it will copy the last one to fill the array.If the property \"BackendServers\" is setting, this property will be ignored."
-    },
+```
+
+`},`
+
+```json
     "BackendServers": {
       "Type": "Json",
       "Description": "The list of ECS instance, which will attached to load balancer."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "BackendServer": {
       "Type": "ALIYUN::SLB::BackendServerAttachment",
       "Properties": {
         "BackendServerList": {
           "Ref": "BackendServerList"
-        },
         "LoadBalancerId": {
 "Ref":"LoadBalancerId"
 ```
 
-资源编排
-
 ```json
           Ref: LoadBalancerId
-        },
         "BackendServerWeightList": {
           "Ref": "BackendServerWeightList"
-        },
+```
+
+`},`
+
+```json
         "BackendServers": {
           "Ref": "BackendServers"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "LoadBalancerId": {
       "Description": "The id of load balancer.",
@@ -15158,11 +16158,9 @@ gth is small than \"BackendServerList\", it will copy the last one to fill the a
           "LoadBalancerId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "BackendServers": {
       "Description": "The collection of attached backend server.",
       "Value": {
@@ -15171,16 +16169,7 @@ gth is small than \"BackendServerList\", it will copy the last one to fill the a
           "BackendServers"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -15204,6 +16193,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Description: 'The list of ECS instance, which will attached to load balancer.'
 Resources:
   BackendServer:
+    Type: 'ALIYUN::SLB::BackendServerAttachment'
     Properties:
       BackendServerList:
         Ref: BackendServerList
@@ -15218,33 +16208,29 @@ Outputs:
     Description: The id of load balancer.
     Value:
       'Fn::GetAtt':
+        - BackendServer
         - LoadBalancerId
   BackendServers:
     Description: The collection of attached backend server.
     Value:
       'Fn::GetAtt':
+        - BackendServer
         - BackendServers
 ```
 
-**7.9.3.**
-
-#### ALIYUN::SLB::BackendServerToVServerGroupAddition
+#### 7.9.3 ALIYUN::SLB::BackendServerToVServerGroupAddition
 
 ALIYUN::SLB::BackendServerToVServerGroupAddition类型用于把后端服务器添加到已存在的服务器组中。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLB::BackendServerToVServerGroupAddition",
-  "Properties": {
     "BackendServers": List,
     "VServerGroupId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -15257,17 +16243,20 @@ ALIYUN::SLB::BackendServerToVServerGroupAddition类型用于把后端服务器�
 
 ```json
 "BackendServers": [
-  {
+```
+
+`{`
+
+```json
     "ServerId": String,
     "Port": Integer,
     "Weight": Integer,
     "Type": String,
     "Description": String,
     "ServerIp": String
-  }
 ```
 
-]
+`}` `]`
 
 **BackendServers属性**
 
@@ -15282,39 +16271,50 @@ ALIYUN::SLB::BackendServerToVServerGroupAddition类型用于把后端服务器�
 
 **返回值**
 
-Fn::GetAtt 资源编排 VServerGroupId：服务器组的ID。
+Fn::GetAtt VServerGroupId：服务器组的ID。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "VServerGroupId": {
       "Type": "String",
       "Description": "The ID of virtual server group."
-    },
+```
+
+`},`
+
+```json
     "BackendServers": {
       "Type": "Json",
       "Description": "The list of a combination of ECS Instance-Port-Weight.Same ecs instance with di
 fferent port is allowed, but same ecs instance with same port isn't."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "BackendServerToVServerGroupAddition": {
       "Type": "ALIYUN::SLB::BackendServerToVServerGroupAddition",
       "Properties": {
         "VServerGroupId": {
           "Ref": "VServerGroupId"
-        },
+```
+
+`},`
+
+```json
         "BackendServers": {
           "Ref": "BackendServers"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "VServerGroupId": {
       "Description": "The ID of virtual server group.",
@@ -15324,16 +16324,7 @@ fferent port is allowed, but same ecs instance with same port isn't."
           "VServerGroupId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -15359,23 +16350,24 @@ Outputs:
     Description: The ID of virtual server group.
     Value:
       'Fn::GetAtt':
+        - BackendServerToVServerGroupAddition
         - VServerGroupId
 ```
 
 更多示例，请参见创建负载均衡监听、克隆负载均衡实例、上传证书、创建扩展域名、创建服务器组并添加后端服务器到负载均衡实例、为HTTP或HTTPS监听添加转发规则和将后端服务器添加到服务器组的组合示例：JSON示例和YAML示例。
 
-#### ALIYUN::SLB::Certificate
+#### 7.9.4 ALIYUN::SLB::Certificate
 
 ALIYUN::SLB::Certificate类型用于上传证书，支持ServerCertificate和CACertificate两种证书。
 
-**重要**
-
-一次只能上传一份CA证书内容（"CertificateType": "CA"）。 一次只能上传一份服务器证书和对应的私钥（"CertificateType": "Server"）。
+> **重要：** 一次只能上传一份CA证书内容（"CertificateType": "CA"）。
+> 一次只能上传一份服务器证书和对应的私钥（"CertificateType": "Server"）。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLB::Certificate",
   "Properties": {
     "CertificateName": String,
@@ -15386,16 +16378,14 @@ ALIYUN::SLB::Certificate类型用于上传证书，支持ServerCertificate和CAC
     "CertificateType": String,
     "AliCloudCertificateId": String,
     "Tags": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | ResourceGro upId | String | 否 | 是 | 资源组ID。 | 无 |
 |---|---|---|---|---|---|
@@ -15411,13 +16401,16 @@ ALIYUN::SLB::Certificate类型用于上传证书，支持ServerCertificate和CAC
 
 ```json
 "Tags": [
-  {
-    "Key": String,
-    "Value": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Key": String,
+    "Value": String
+```
+
+`}` `]`
 
 **Tags属性**
 
@@ -15432,17 +16425,14 @@ Fn::GetAtt CertificateId：证书ID。 Fingerprint：证书的指纹。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "CertificateType": {
    "Type": "String",
 ```
-
-资源编排
 
 ```json
    "Description": "The type of the certificate.",
@@ -15455,75 +16445,122 @@ Fn::GetAtt CertificateId：证书ID。 Fingerprint：证书的指纹。
 
 ```json
    "Default": "Server"
-  },
+```
+
+`},`
+
+```json
   "AliCloudCertificateName": {
    "Type": "String",
    "Description": "The name of the Alibaba Cloud certificate."
-  },
+```
+
+`},`
+
+```json
   "PrivateKey": {
    "Type": "String",
    "Description": "The private key."
-  },
+```
+
+`},`
+
+```json
   "ResourceGroupId": {
    "Type": "String",
    "Description": "Resource group id."
-  },
+```
+
+`},`
+
+```json
   "CertificateName": {
    "Type": "String",
    "Description": "The name of the certificate."
-  },
+```
+
+`},`
+
+```json
   "Tags": {
    "Type": "Json",
    "Description": "Tags to attach to instance. Max support 20 tags to add during create instance. Eac
 h tag with two properties Key and Value, and Key is required.",
    "MaxLength": 20
-  },
+```
+
+`},`
+
+```json
   "Certificate": {
    "Type": "String",
    "Description": "The content of the certificate public key."
-  },
+```
+
+`},`
+
+```json
   "AliCloudCertificateId": {
    "Type": "String",
    "Description": "The ID of the Alibaba Cloud certificate."
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "SLBCertificate": {
    "Type": "ALIYUN::SLB::Certificate",
    "Properties": {
     "CertificateType": {
      "Ref": "CertificateType"
-    },
-    "AliCloudCertificateName": {
-     "Ref": "AliCloudCertificateName"
-    },
-    "PrivateKey": {
-     "Ref": "PrivateKey"
-    },
-    "ResourceGroupId": {
-     "Ref": "ResourceGroupId"
-    },
-    "CertificateName": {
-     "Ref": "CertificateName"
-    },
-    "Tags": {
-     "Ref": "Tags"
-    },
-    "Certificate": {
-     "Ref": "Certificate"
-}
 ```
 
-资源编排
+`},`
 
 ```json
-    },
+    "AliCloudCertificateName": {
+     "Ref": "AliCloudCertificateName"
+```
+
+`},`
+
+```json
+    "PrivateKey": {
+     "Ref": "PrivateKey"
+```
+
+`},`
+
+```json
+    "ResourceGroupId": {
+     "Ref": "ResourceGroupId"
+```
+
+`},`
+
+```json
+    "CertificateName": {
+     "Ref": "CertificateName"
+```
+
+`},`
+
+```json
+    "Tags": {
+     "Ref": "Tags"
+    "Certificate": {
+     "Ref": "Certificate"
+```
+
+```json
     "AliCloudCertificateId": {
      "Ref": "AliCloudCertificateId"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "Outputs": {
   "Fingerprint": {
    "Description": "The fingerprint of the certificate.",
@@ -15533,11 +16570,9 @@ h tag with two properties Key and Value, and Key is required.",
      "Fingerprint"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-   }
-  },
   "CertificateId": {
    "Description": "The ID of the certificate.",
    "Value": {
@@ -15546,16 +16581,7 @@ h tag with two properties Key and Value, and Key is required.",
      "CertificateId"
 ```
 
-]
-
-```
-   }
-  }
- }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -15573,6 +16599,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
   Type: String
  CertificateType:
   AllowedValues:
+  - Server
   - CA
   Default: Server
   Description: The type of the certificate.
@@ -15589,8 +16616,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
   MaxLength: 20
 Type:Json
 ```
-
-资源编排
 
 ```
   Type: Json
@@ -15613,44 +16638,48 @@ Resources:
     Ref: ResourceGroupId
    Tags:
     Ref: Tags
+  Type: ALIYUN::SLB::Certificate
 Outputs:
  CertificateId:
   Description: The ID of the certificate.
   Value:
    Fn::GetAtt:
+   - SLBCertificate
    - CertificateId
  Fingerprint:
   Description: The fingerprint of the certificate.
   Value:
    Fn::GetAtt:
+   - SLBCertificate
    - Fingerprint
 ```
 
 更多示例，请参见创建负载均衡监听、克隆负载均衡实例、上传证书、创建扩展域名、创建虚拟服务器组并添加后端服务器到负载均衡实例、为HTTP或HTTPS监听添加转发规则和将后端服务器添加到虚拟服务器组的组合示例：JSON示例和YAML 示例。
 
-#### ALIYUN::SLB::DomainExtension
+#### 7.9.5 ALIYUN::SLB::DomainExtension
+
+ALIYUN::SLB::DomainExtension类型用于创建扩展域名。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLB::DomainExtension",
   "Properties": {
     "Domain": String,
     "ListenerPort": Integer,
     "ServerCertificateId": String,
     "LoadBalancerId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | Domain | String | 是 | 否 | 域名。 | 无。 |
-
-资源编排
 
 | ListenerPort | Integer | 是 | 否 | 负载均衡实例 HTTPS监听的前端端口。 | 取值范围： 1~65535。 |
 |---|---|---|---|---|---|
@@ -15663,8 +16692,9 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "DomainExtension": {
@@ -15674,9 +16704,11 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
         "ListenerPort": "443",
         "ServerCertificateId": "123157908552****_166f8204689_1714763408_70998****",
         "LoadBalancerId": "lb-bp1o94dp5i6earr9g****"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "DomainExtensionId": {
       "Value": {
@@ -15685,11 +16717,9 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
           "DomainExtensionId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ListenerPort": {
       "Value": {
         "Fn::GetAtt": [
@@ -15697,25 +16727,16 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
           "ListenerPort"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.9.6 ALIYUN::SLB::Listener
 
-#### ALIYUN::SLB::Listener
+ALIYUN::SLB::Listener类型用于创建负载均衡监听。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLB::Listener",
-  "Properties": {
     "MasterSlaveServerGroupId": String,
     "AclStatus": String,
     "Protocol": String,
@@ -15738,9 +16759,9 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
     "PortRange": List,
     "StartListener": Boolean,
     "EnableHttp2": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -15750,8 +16771,6 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 | AclStatus | String | 否 | 是 | 是否开启访问控制功能。 | 取值： on（默认值）：开启。 off：关闭。 |
 | EnableHttp2 | String | 否 | 是 | 是否开启 HTTP2特性。 | 取值： on：开启。 off ：不开启。 |
 | AclId | String | 否 | 是 | 监听绑定的访问策略组ID。 | 当AclStatus取值为on时，必须指定该参数。 |
-
-资源编排
 
 | AclType | String | 否 | 是 | 访问控制类型。 | 取值： white：仅转发来自所选访问控制策略组中设置的IP地址或地址段的请求。白名单适用于应用只允许特定IP访问的场景。设置白名单存在一定业务风险。一旦设置白名单，只有白名单中的IP可以访问负载均衡监听。如果开启了白名单访问，但访问策略组中没有添加任何IP，则负载均衡监听不会转发请求。 black：来自所选访问控制策略组中设置的IP地址或地址段的所有请求都不会转发。黑名单适用于应用只限制某些特定IP访问的场景。如果开启了黑名单访问，但访问策略组中没有添加任何IP， 则负载均衡监听会转发全部请求。当AclStatus参数取值为on 时，必须指定该参数。 |
 |---|---|---|---|---|---|
@@ -15764,8 +16783,6 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 | Persistence | Map | 否 | 是 | 相关参数的持久化。 | 更多信息，请参见Persistence属性。 |
 | Scheduler | String | 否 | 否 | 调度算法。 | 取值： wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：按照访问顺序依次将外部请求分发到后端服务器。 |
 | CACertificateI d | String | 否 | 否 | CA证书ID。 | 只对HTTPS协议有效。 |
-
-资源编排
 
 | ServerCertific ateId | String | 否 | 是 | 服务器证书的 ID。 | 只对HTTPS协议有效，且必须指定该参数。 |
 |---|---|---|---|---|---|
@@ -15792,15 +16809,14 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
   "Port": Integer,
   "Switch": String,
   "HealthCheckMethod": String
-}
 ```
+
+`}`
 
 **HealthCheck属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
-
-资源编排
 
 | Domain | String | 否 | 否 | 用于健康检查的域名。 | 取值： $ ip _ 用户自定义字符串：长度为 1~80个字符。可包含英文字母、数字、短划线（-）和半角句号（.）。 空说明用户设置此参数为$ ip或空时，负载均衡会使 _ 用各后端服务器的私网IP作为健康检查使用的域名。 |
 |---|---|---|---|---|---|
@@ -15812,8 +16828,6 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 | Timeout | Integer | 否 | 否 | 每次健康检查响应的最大超时时间。 | 取值范围：1~50。 单位：秒。 说明如果Timeout值小于Interval值，则Timeout 无效，超时时间为Interval的值。 |
 | UnhealthyThr eshold | Integer | 否 | 否 | 判定健康检查结果为fail的阈值。即，健康检查连续失败多少次后，将后端服务器的健康检查状态由success 改为fail。 | 取值范围：1~10。 |
 | Port | Integer | 否 | 否 | 用于健康检查的端口。 | 取值范围：0~65,535。 |
-
-资源编排
 
 | Switch | String | 否 | 否 | 是否启用健康检查。 | 取值： on：启用。 off：禁用。 说明当前仅对HTTP或 HTTPS协议有效。如果未设置 Switch，默认将禁用健康检查，除非已经配置了健康检查项目。 |
 |---|---|---|---|---|---|
@@ -15834,8 +16848,9 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
   "StickySessionType": String,
   "XForwardedFor_ClientSrcPort": String,
   "XForwardedFor_SLBPORT": String
-}
 ```
+
+`}`
 
 **Persistence属性**
 
@@ -15844,8 +16859,6 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 | StickySession | String | 否 | 是 | 是否开启会话保持。 | 取值： on：开启。 off：关闭。 |
 | PersistenceTi meout | Integer | 否 | 是 | 连接持久化的超时时间。 | 取值范围：0~1000。 默认值：0。表示关闭。 单位：秒。 |
 | CookieTimeo ut | Integer | 否 | 是 | Cookie超时时间。 | 取值范围：1~86,400。 单位：秒。 说明当 StickySession为on且 StickySessionType为insert 时，该参数必选。 |
-
-资源编排
 
 | XForwardedF or | String | 否 | 是 | 是否通过X- Forwarded- Fort头字段获取来访者真实IP。 | 取值： on：通过X-Forwarded-Fort头字段获取来访者真实IP。 off（默认值）：不通过X- Forwarded-Fort头字段获取来访者真实IP。 |
 |---|---|---|---|---|---|
@@ -15859,13 +16872,10 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 
 **HttpConfig语法**
 
-资源编排
-
 ```json
 "HttpConfig": {
   "ForwardPort": Integer,
   "ListenerForward": String
-}
 ```
 
 **HttpConfig属性**
@@ -15879,13 +16889,16 @@ Fn::GetAtt DomainExtensionId：创建的扩展域名ID。 ListenerPort：负载�
 
 ```json
 "PortRange": [
-  {
-    "StartPort": Integer,
-    "EndPort": Integer
-  }
 ```
 
-]
+`{`
+
+```json
+    "StartPort": Integer,
+    "EndPort": Integer
+```
+
+`}` `]`
 
 **PortRange属性**
 
@@ -15900,10 +16913,9 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "LoadBalancerId": {
@@ -15914,8 +16926,11 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
 
 ```json
       "Default": "slb-*****"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "SlbListener": {
       "Type": "ALIYUN::SLB::Listener",
@@ -15926,7 +16941,11 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
           "PersistenceTimeout": 180,
           "XForwardedFor": "off",
           "StickySessionType": "insert"
-        },
+```
+
+`},`
+
+```json
         "ListenerPort": 80,
         "Bandwidth": -1,
         "HealthCheck": {
@@ -15938,32 +16957,38 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
           "Port": 80,
           "URI": "/",
           "Interval": 2
-        },
-        "LoadBalancerId": {
-          "Ref": "LoadBalancerId"
-        },
-        "BackendServerPort": 80,
-        "Protocol": "tcp"
-      }
-    }
-  },
-  "Outputs": {
-  }
-}
 ```
 
-更多示例，请参见创建负载均衡监听、克隆负载均衡实例、上传证书、创建扩展域名、创建服务器组并添加后端服务器到负载均衡实例、为HTTP或HTTPS监听添加转发规则和将后端服务器添加到服务器组的组合示例：JSON示例和YAML示例。
+`},`
 
-#### ALIYUN::SLB::LoadBalancer
+```json
+        "LoadBalancerId": {
+          "Ref": "LoadBalancerId"
+```
+
+`},`
+
+```json
+        "BackendServerPort": 80,
+        "Protocol": "tcp"
+```
+
+`}` `}` `},`
+
+```json
+  "Outputs": {
+```
+
+`}` `}` 更多示例，请参见创建负载均衡监听、克隆负载均衡实例、上传证书、创建扩展域名、创建服务器组并添加后端服务器到负载均衡实例、为HTTP或HTTPS监听添加转发规则和将后端服务器添加到服务器组的组合示例：JSON示例和YAML示例。
+
+#### 7.9.7 ALIYUN::SLB::LoadBalancer
+
+ALIYUN::SLB::LoadBalancer类型用于创建LoadBalancer。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLB::LoadBalancer",
-  "Properties": {
     "DeletionProtection": Boolean,
     "AddressType": String,
     "Tags": List,
@@ -15980,9 +17005,9 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
     "LoadBalancerSpec": String,
     "MasterZoneId": String,
     "PayType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -15993,8 +17018,6 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
 | VpcId | String | 否 | 否 | 专有网络ID。 | 无。 |
 | SlaveZoneId | String | 否 | 否 | 该创建实例的备可用区ID。 | 无。 |
 
-资源编排
-
 | Bandwidth | Integer | 否 | 否 | 按固定带宽计费方式的公网类型实例的带宽峰值。 | 针对按固定带宽计费方式的公网类型实例，需要将当前设定值通过 Listener中的 Bandwidth参数进行分配后才能生效；针对按使用流量计费方式的公网类型实例的带宽峰值，请直接通过 Listener上 Bandwidth参数进行设定，此时本参数会被忽略。 取值范围： 1~1000（单位为 Mbps）。 默认值：1。 专有网络实例系统会统一按流量计费设置。 |
 |---|---|---|---|---|---|
 | AddressType | String | 否 | 否 | Address 类型。 | 取值范围： internet intranet 默认值： internet。 |
@@ -16002,8 +17025,6 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
 | LoadBalancerNa me | String | 否 | 否 | 负载均衡实例的名称。 | 用户自定义字符串。长度限制为1- 80个字节，允许包含字母、数字、连字符（-)、正斜线 （/）、点号 （.）、和下划线 （ ）。不指定该 _ 参数时，默认由系统分配一个实例名称。 |
 | InternetChargeT ype | String | 否 | 否 | 公网类型实例付费方式。 | 取值范围： paybybandwi dth paybytraffic 默认值： paybytraffic。 |
 | MasterZoneId | String | 否 | 否 | 实例的主可用区 ID。 | 无 。 |
-
-资源编排
 
 | Tags | List | 否 | 否 | 负载均衡实例绑定的Tag列表，其结构是一个Json List，包含TagKey 和TagValue。 | 最多5个。 |
 |---|---|---|---|---|---|
@@ -16015,17 +17036,13 @@ Fn::GetAtt LoadBalancerId：负载均衡实例的唯一标识。 ListenerPortsAn
 
 **Tags 语法**
 
-资源编排
-
 ```json
 "Tags": [
-  {
     "Value": String ,
     "Key": String
-  }
 ```
 
-]
+`}` `]`
 
 **Tags 属性**
 
@@ -16042,8 +17059,9 @@ LoadBalancerId：负载均衡实例的唯一标识。 NetworkType：负载均衡
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "CreateLoadBalance": {
@@ -16052,28 +17070,27 @@ LoadBalancerId：负载均衡实例的唯一标识。 NetworkType：负载均衡
         "LoadBalancerName": "createdByHeat",
         "AddressType": "internet",
         "InternetChargeType": "paybybandwidth",
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "LoadBalanceDetails": {
       "Value": {
         "Fn::GetAtt": ["CreateLoadBalance", "LoadBalancerId"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::SLB::LoadBalancerClone
+`}` `}` `}`
+
+#### 7.9.8 ALIYUN::SLB::LoadBalancerClone
+
+ALIYUN::SLB::LoadBalancerClone类型用于克隆负载均衡实例。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLB::LoadBalancerClone",
-  "Properties": {
     "Tags": List,
     "ResourceGroupId": String,
     "VSwitchId": String,
@@ -16084,9 +17101,9 @@ LoadBalancerId：负载均衡实例的唯一标识。 NetworkType：负载均衡
     "BackendServers": List,
     "InstanceChargeType": String,
     "LoadBalancerSpec": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -16098,8 +17115,6 @@ LoadBalancerId：负载均衡实例的唯一标识。 NetworkType：负载均衡
 | BackendServers Policy | String | 否 | 否 | 克隆策略，指定配置新负载均衡实例需要监听的ECS实例以及各ECS实例的权重。 | 取值： clone（默认值）：把源负载均衡实例中监听的ECS实例和权重配置全部克隆到新的负载均衡实例中。 empty：不给新的负载均衡实例添加任何ECS实例。 append：既克隆源负载均衡实例中监听的ECS 实例和权重配置，也添加新的 ECS实例和权重配置到新的负载均衡实例。 replace：只添加新的ECS实例列表和权重配置而不克隆源负载均衡实例所监听的ECS实例列表和权重配置。 |
 | BackendServers | List | 否 | 是 | 指定新添加的需要监听的ECS实例列表。 | 详情请参见BackendServe rs属性。 |
 
-资源编排
-
 | LoadBalancerNa me | String | 否 | 否 | 负载均衡实例名称。 | 用户自定义字符串。长度为1~80 个字符，可包含英文字母、数字、短划线（-）、正斜线 （/）、英文句点 （.）和下划线 （ ）。 _ |
 |---|---|---|---|---|---|
 | Tags | List | 否 | 否 | SLB实例标签。 | 标签以键值对方式传入，最多可以设置5组标签。 详情请参见Tags属性。 |
@@ -16109,20 +17124,16 @@ LoadBalancerId：负载均衡实例的唯一标识。 NetworkType：负载均衡
 
 **BackendServers语法**
 
-资源编排
-
 ```json
 "BackendServers": [
-  {
     "Type": String,
     "ServerId": String,
     "Description": String,
     "ServerIp": String,
     "Weight": Integer
-  }
 ```
 
-]
+`}` `]`
 
 **BackendServers属性**
 
@@ -16138,32 +17149,33 @@ LoadBalancerId：负载均衡实例的唯一标识。 NetworkType：负载均衡
 
 ```json
 "Tags": [
-  {
-    "Value": String,
-    "Key": String
-  }
 ```
 
-]
+`{`
+
+```json
+    "Value": String,
+    "Key": String
+```
+
+`}` `]`
 
 **Tags属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 
-资源编排
-
-| Key | String | 是 | 否 | 标签键。 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |  |  |
+| Key | String | 是 | 否 | 标签键。 | 长度为1~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |   |   |
 |---|---|---|---|---|---|---|---|
-| Value | String | 否 | 否 | 标签值。 | 长度为0~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |  |  |
+| Value | String | 否 | 否 | 标签值。 | 长度为0~128个字符，不能以 aliyun 和 acs: 开头，不能包含 http:// 或者 https:// 。 |   |   |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
 **返回值**
 
@@ -16181,6 +17193,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
     Description: Source load balancer id to clone
 Resources:
   LoadBalancerClone:
+    Type: ALIYUN::SLB::LoadBalancerClone
     Properties:
       LoadBalancerName: DemoCloneLoadBalancer
       SourceLoadBalancerId:
@@ -16190,21 +17203,24 @@ Outputs:
     Description: The id of load balance generated
     Value:
       Fn::GetAtt:
+        - LoadBalancerClone
         - LoadBalancerId
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "SourceSLBId": {
       "AssociationProperty": "ALIYUN::SLB::Instance::InstanceId",
       "Type": "String",
       "Description": "Source load balancer id to clone"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "LoadBalancerClone": {
       "Type": "ALIYUN::SLB::LoadBalancerClone",
@@ -16212,10 +17228,11 @@ Outputs:
         "LoadBalancerName": "DemoCloneLoadBalancer",
         "SourceLoadBalancerId": {
           "Ref": "SourceSLBId"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "LoadBalancerId": {
       "Description": "The id of load balance generated",
@@ -16225,43 +17242,33 @@ Outputs:
           "LoadBalancerId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
-
-#### ALIYUN::SLB::MasterSlaveServerGroup
+#### 7.9.9 ALIYUN::SLB::MasterSlaveServerGroup
 
 ALIYUN::SLB::MasterSlaveServerGroup类型用于创建主备服务器组。
 
-**重要**
-
-一个主备服务器组只能包含两个ECS实例，一个为主服务器，另一个为备服务器。
+> **重要：** 一个主备服务器组只能包含两个ECS实例，一个为主服务器，另一个为备服务器。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLB::MasterSlaveServerGroup",
   "Properties": {
     "MasterSlaveServerGroupName": String,
     "MasterSlaveBackendServers": List,
     "LoadBalancerId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | MasterSlaveServ erGroupName | String | 否 | 否 | 主备服务器组名称 | 无 |
-
-资源编排
 
 | MasterSlaveBac kendServers | List | 是 | 否 | 主备服务器组列表 | 最多可包含2个后端服务器。如果不指定该参数，则创建一个空的主备服务器组列表。 |
 |---|---|---|---|---|---|
@@ -16271,15 +17278,18 @@ ALIYUN::SLB::MasterSlaveServerGroup类型用于创建主备服务器组。
 
 ```json
 "MasterSlaveBackendServers": [
-  {
+```
+
+`{`
+
+```json
     "ServerId": String,
     "Port": Integer,
     "Weight": Integer,
     "ServerType": String
-  }
 ```
 
-]
+`}` `]`
 
 **MasterSlaveBackendServers属性**
 
@@ -16296,10 +17306,7 @@ Fn::GetAtt MasterSlaveServerGroupId：主备服务器组ID。
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "MasterSlaveServerGroup": {
@@ -16307,27 +17314,35 @@ Fn::GetAtt MasterSlaveServerGroupId：主备服务器组ID。
       "Properties": {
         "MasterSlaveServerGroupName": "Group1",
         "MasterSlaveBackendServers": [
-          {
+```
+
+`{`
+
+```json
             "ServerId": "vm****",
             "Port": "80",
             "Weight": "100",
             "ServerType": "Master"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "ServerId": "vm****",
             "Port": "90",
             "Weight": "100",
             "ServerType": "Slave"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "LoadBalancerId": "lb-bp1hv944r69al4j9j****"
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "MasterSlaveServerGroupId": {
       "Value": {
@@ -16336,37 +17351,31 @@ Fn::GetAtt MasterSlaveServerGroupId：主备服务器组ID。
           "MasterSlaveServerGroupId"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+#### 7.9.10 ALIYUN::SLB::Rule
 
-#### ALIYUN::SLB::Rule
+ALIYUN::SLB::Rule类型用于为指定的HTTP或HTTPS监听添加转发规则。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLB::Rule",
   "Properties": {
     "ListenerPort": Integer,
     "RuleList": List,
     "LoadBalancerId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | ListenerPort | Integer | 是 | 否 | 负载均衡实例前端使用的监听端口 | 取值范围： 1~65535。 |
-
-资源编排
 
 | RuleList | List | 是 | 否 | 要添加的转发规则 | 一次请求中，最多可添加10条转发规则。 每条转发规则包含以下参数： RuleName Domain Url VServerGroup Id Domain和URL两者必须指定一个， 也可以同时指定。 Domain和URL的组合在同一个监听内必须唯一。 |
 |---|---|---|---|---|---|
@@ -16376,15 +17385,18 @@ Fn::GetAtt MasterSlaveServerGroupId：主备服务器组ID。
 
 ```json
 "RuleList": [
-  {
+```
+
+`{`
+
+```json
     "Url": String,
     "Domain": String,
     "VServerGroupId": String,
     "RuleName": String
-  }
 ```
 
-]
+`}` `]`
 
 **RuleList属性**
 
@@ -16397,12 +17409,13 @@ Fn::GetAtt MasterSlaveServerGroupId：主备服务器组ID。
 
 **返回值**
 
-Fn::GetAtt 资源编排 Rules：转发规则列表。
+Fn::GetAtt Rules：转发规则列表。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Rule": {
@@ -16410,20 +17423,28 @@ Fn::GetAtt 资源编排 Rules：转发规则列表。
       "Properties": {
         "ListenerPort": {
           "Ref": "ListenerPort"
-        },
+```
+
+`},`
+
+```json
         "RuleList": {
           "Fn::Split": [",", {
             "Ref": "RuleList"
           }, {
             "Ref": "RuleList"
-          }]
-        },
+```
+
+`}]` `},`
+
+```json
         "LoadBalancerId": {
           "Ref": "LoadBalancerId"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "ListenerPort": {
       "Type": "Number",
@@ -16431,47 +17452,52 @@ Fn::GetAtt 资源编排 Rules：转发规则列表。
 alue:\n1-65535",
       "MaxValue": 65535,
       "MinValue": 1
-    },
+```
+
+`},`
+
+```json
     "RuleList": {
       "MinLength": 1,
       "Type": "CommaDelimitedList",
       "Description": "The forwarding rules to add.",
       "MaxLength": 10
-    },
+```
+
+`},`
+
+```json
     "LoadBalancerId": {
       "Type": "String",
       "Description": "The ID of Server Load Balancer instance."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "Rules": {
       "Description": "A list of forwarding rules. Each element of rules contains \"RuleId\".",
       "Value": {
         "Fn::GetAtt": ["Rule", "Rules"]
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::SLB::VServerGroup
+`}` `}` `}` `}`
+
+#### 7.9.11 ALIYUN::SLB::VServerGroup
 
 ALIYUN::SLB::VServerGroup类型用于创建服务器组并添加后端服务器到负载均衡实例。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLB::VServerGroup",
-  "Properties": {
     "VServerGroupName": String,
     "BackendServers": List,
     "LoadBalancerId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -16485,17 +17511,20 @@ ALIYUN::SLB::VServerGroup类型用于创建服务器组并添加后端服务器�
 
 ```json
 "BackendServers": [
-  {
+```
+
+`{`
+
+```json
     "ServerId": String,
     "Port": Integer,
     "Weight": Integer,
     "Type": String,
     "Description": String,
     "ServerIp": String
-  }
 ```
 
-]
+`}` `]`
 
 **BackendServers属性**
 
@@ -16510,46 +17539,65 @@ ALIYUN::SLB::VServerGroup类型用于创建服务器组并添加后端服务器�
 
 **返回值**
 
-资源编排 Fn::GetAtt VServerGroupId：服务器组的ID。 BackendServers：添加到负载均衡实例的后端服务器列表。
+Fn::GetAtt VServerGroupId：服务器组的ID。 BackendServers：添加到负载均衡实例的后端服务器列表。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "VServerGroupName": {
       "Type": "String",
       "Description": "Display name of the VServerGroup."
-    },
+```
+
+`},`
+
+```json
     "LoadBalancerId": {
       "Type": "String",
       "Description": "The id of load balancer."
-    },
+```
+
+`},`
+
+```json
     "BackendServers": {
       "Type": "Json",
       "Description": "The list of a combination of ECS Instance-Port-Weight.Same ecs instance with di
 fferent port is allowed, but same ecs instance with same port isn't."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "VServerGroup": {
       "Type": "ALIYUN::SLB::VServerGroup",
       "Properties": {
         "VServerGroupName": {
           "Ref": "VServerGroupName"
-        },
+```
+
+`},`
+
+```json
         "LoadBalancerId": {
           "Ref": "LoadBalancerId"
-        },
+```
+
+`},`
+
+```json
         "BackendServers": {
           "Ref": "BackendServers"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "VServerGroupId": {
       "Description": "The id of VServerGroup created.",
@@ -16559,11 +17607,9 @@ fferent port is allowed, but same ecs instance with same port isn't."
           "VServerGroupId"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "BackendServers": {
       "Description": "Backend server list in this VServerGroup.",
       "Value": {
@@ -16572,16 +17618,7 @@ fferent port is allowed, but same ecs instance with same port isn't."
           "BackendServers"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-资源编排 `YAML` 格式
+`]` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -16599,6 +17636,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
       isn't.
 Resources:
   VServerGroup:
+    Type: 'ALIYUN::SLB::VServerGroup'
     Properties:
       VServerGroupName:
         Ref: VServerGroupName
@@ -16611,24 +17649,29 @@ Outputs:
     Description: The id of VServerGroup created.
     Value:
       'Fn::GetAtt':
+        - VServerGroup
         - VServerGroupId
   BackendServers:
     Description: Backend server list in this VServerGroup.
     Value:
       'Fn::GetAtt':
+        - VServerGroup
         - BackendServers
 ```
 
 更多示例，请参见创建负载均衡监听、克隆负载均衡实例、上传证书、创建扩展域名、创建服务器组并添加后端服务器到负载均衡实例、为HTTP或HTTPS监听添加转发规则和将后端服务器添加到服务器组的组合示例：JSON示例和YAML示例。
 
-### SLS
+### 7.10 SLS
 
-#### ALIYUN::SLS::Index
+#### 7.10.1 ALIYUN::SLS::Index
+
+ALIYUN::SLS::Index类型用于为指定的日志库创建索引。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLS::Index",
   "Properties": {
     "ProjectName": String,
@@ -16636,11 +17679,7 @@ Outputs:
     "LogstoreName": String,
     "KeyIndices": List,
     "LogReduce": Boolean
-  }
-}
 ```
-
-资源编排
 
 **属性**
 
@@ -16660,8 +17699,9 @@ Outputs:
   "Delimiter": String,
   "IncludeChinese": Boolean,
   "Enable": Boolean
-}
 ```
+
+`}`
 
 **FullTextIndex属性**
 
@@ -16674,11 +17714,8 @@ Outputs:
 
 **KeyIndices语法**
 
-资源编排
-
 ```json
 "KeyIndices": [
-  {
     "Name": String,
     "EnableAnalytics": Boolean,
     "Delimiter": String,
@@ -16687,47 +17724,42 @@ Outputs:
     "Alias": String,
     "IncludeChinese": String,
     "Type": String
-  }
 ```
 
-]
+`}` `]`
 
 **KeyIndices属性**
 
-| 属性名称 | 类型 |  | 必须 |  |  | 允许更新 |  |  | 描述 |  | 约束 |  |
+| 属性名称 | 类型 |   | 必须 |   |   | 允许更新 |   |   | 描述 |   | 约束 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Name | String |  | 是 |  |  | 是 |  |  | 字段名。 |  | 可以使用嵌套名，以英文句点（.） 分隔，例如：k1.k2.k3。 |  |
-| EnableAnalyti cs | Boolean |  | 否 |  |  | 是 |  |  | 该字段是否开启统计。 |  | 取值： true（默认值） false |  |
-| Delimiter | String |  | 否 |  |  | 是 |  |  | 分词符。 |  | 支持以下特殊字符： ,'";=()[]{}?@& <>/:\n\t\r |  |
-| CaseSensitive | Boolean |  | 否 |  |  | 是 |  |  | 是否区分大小写。 |  | 取值： true false（默认值） 只有当Type参数取值为 text 或 json 时该参数生效。 |  |
-| JsonKeyIndice s | List |  | 否 |  |  | 是 |  |  | JSON索引配置。格式： [{"key1 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{"key1 | 支持的key为：Name、Alias、 |  |
-|  |  |  |  |  |  |  |  |  | ": |  | 支持的key为：Name、Alias |  |
-|  |  |  |  |  |  |  |  |  |  |  | Type和EnableAnalytics。 |  |
-|  |  |  |  |  |  |  |  |  | "value1", |  | 详情请参见JsonKeyIndice |  |
-|  |  |  |  |  |  |  |  |  |  |  | 详情请参见J |  |
-|  |  |  |  |  |  |  |  |  | "key2": |  |  |  |
-|  |  |  |  |  |  |  |  |  | "value2", |  |  |  |
-|  |  |  |  |  |  |  |  |  | ...}] |  |  |  |
-| Alias | String |  | 否 |  |  | 是 |  |  | 字段别名。 |  | 无 |  |
-| IncludeChines e | Boolean |  | 否 |  |  | 是 |  |  | 是否包含中文。 |  | 取值： true false（默认值） 只有当Type参数取值为text时该参数生效。 |  |
-| Type | String |  | 是 |  |  | 是 |  |  | 字段类型。 |  | 取值： text （默认值） long double json |  |
-
-资源编排
+| Name | String |   | 是 |   |   | 是 |   |   | 字段名。 |   | 可以使用嵌套名，以英文句点（.） 分隔，例如：k1.k2.k3。 |   |
+| EnableAnalyti cs | Boolean |   | 否 |   |   | 是 |   |   | 该字段是否开启统计。 |   | 取值： true（默认值） false |   |
+| Delimiter | String |   | 否 |   |   | 是 |   |   | 分词符。 |   | 支持以下特殊字符： ,'";=()[]{}?@& <>/:\n\t\r |   |
+| CaseSensitive | Boolean |   | 否 |   |   | 是 |   |   | 是否区分大小写。 |   | 取值： true false（默认值） 只有当Type参数取值为 text 或 json 时该参数生效。 |   |
+| JsonKeyIndice s | List |   | 否 |   |   | 是 |   |   | JSON索引配置。格式： [{"key1 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{"key1 | 支持的key为：Name、Alias、 |   |
+|   |   |   |   |   |   |   |   |   | ": |   | 支持的key为：Name、Alias |   |
+|   |   |   |   |   |   |   |   |   |   |   | Type和EnableAnalytics。 |   |
+|   |   |   |   |   |   |   |   |   | "value1", |   | 详情请参见JsonKeyIndice |   |
+|   |   |   |   |   |   |   |   |   |   |   | 详情请参见J |   |
+|   |   |   |   |   |   |   |   |   | "key2": |   |   |   |
+|   |   |   |   |   |   |   |   |   | "value2", |   |   |   |
+|   |   |   |   |   |   |   |   |   | ...}] |   |   |   |
+| Alias | String |   | 否 |   |   | 是 |   |   | 字段别名。 |   | 无 |   |
+| IncludeChines e | Boolean |   | 否 |   |   | 是 |   |   | 是否包含中文。 |   | 取值： true false（默认值） 只有当Type参数取值为text时该参数生效。 |   |
+| Type | String |   | 是 |   |   | 是 |   |   | 字段类型。 |   | 取值： text （默认值） long double json |   |
 
 **JsonKeyIndices语法**
 
 ```json
 "JsonKeyIndices": [
-  {
     "Type": String,
     "Alias": String,
     "EnableAnalytics": Boolean,
     "Name": String
-  }
 ```
 
-]
+`}` `]`
 
 **JsonKeyIndices属性**
 
@@ -16744,10 +17776,9 @@ Fn::GetAtt 无。
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Index": {
@@ -16755,22 +17786,39 @@ Fn::GetAtt 无。
       "Properties": {
         "ProjectName": {
           "Ref": "ProjectName"
-        },
+```
+
+`},`
+
+```json
         "FullTextIndex": {
           "Ref": "FullTextIndex"
-        },
+```
+
+`},`
+
+```json
         "LogstoreName": {
           "Ref": "LogstoreName"
-        },
+```
+
+`},`
+
+```json
         "KeyIndices": {
           "Ref": "KeyIndices"
-        },
+```
+
+`},`
+
+```json
         "LogReduce": {
           "Ref": "LogReduce"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Parameters": {
     "ProjectName": {
       "Type": "String",
@@ -16778,30 +17826,44 @@ Fn::GetAtt 无。
 scores()2 Muststartandendwithlowercaselettersandnumbers3 Thenamelengthis3-63charac
 ```
 
-资源编排
-
 ```json
 scores (_).2. Must start and end with lowercase letters and numbers.3. The name length is 363 charac ters.",
       "MinLength": 3,
       "MaxLength": 63
-    },
+```
+
+`},`
+
+```json
     "FullTextIndex": {
       "Type": "Map",
       "Description": "Full-text indexing configuration.Full-text indexing and key indexing must have
 at least one enabled."
-    },
+```
+
+`},`
+
+```json
     "LogstoreName": {
       "Type": "String",
       "Description": "Logstore name:1. Only supports lowercase letters, numbers, hyphens (-) and unde
 rscores (_).2. Must start and end with lowercase letters and numbers.3. The name length is 3-63 chara cters.",
       "MinLength": 3,
       "MaxLength": 63
-    },
+```
+
+`},`
+
+```json
     "KeyIndices": {
       "Type": "List",
       "Description": "Key index configurations.Full-text indexing and key indexing must have at least
 one enabled."
-    },
+```
+
+`},`
+
+```json
     "LogReduce": {
       "Default": false,
       "Type": "Boolean",
@@ -16811,19 +17873,12 @@ one enabled."
         false
 ```
 
-]
-
-```
-    }
-  }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Resources:
   Index:
+    Type: ALIYUN::SLS::Index
     Properties:
       ProjectName:
         Ref: ProjectName
@@ -16867,16 +17922,14 @@ Parameters:
     - false
 ```
 
-#### ALIYUN::SLS::Logstore
+#### 7.10.2 ALIYUN::SLS::Logstore
+
+ALIYUN::SLS::Logstore类型用于在日志项目下创建日志库。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLS::Logstore",
-  "Properties": {
     "ProjectName": String,
     "ShardCount": Integer,
     "AutoSplit": Boolean,
@@ -16887,9 +17940,9 @@ Parameters:
     "EnableTracking": Boolean,
     "PreserveStorage": Boolean,
     "EncryptConf": Map
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -16903,8 +17956,6 @@ Parameters:
 | TTL | Integer | 否 | 是 | 数据的保存时间。 | 取值范围：1~3600。 默认值：30。 单位：天。 |
 | EnableTracki ng | Boolean | 否 | 是 | 是否开启 WebTracking 采集信息。 | 支持采集各种浏览器以及iOS或 Android App的信息。 取值： true：开启WebTracking采集信息。 false（默认值）：不开启 WebTracking采集信息。 |
 
-资源编排
-
 | PreserveStor age | Boolean | 否 | 是 | 是否永久保存日志。 | 取值： true：永久保存日志。如果取值为true，则TTL的设置不生效。 false（默认值）：不永久保存日志。 |
 |---|---|---|---|---|---|
 | AppendMeta | Boolean | 否 | 是 | 接收日志后，是否自动添加客户端外网IP和日志到达时间。 | 取值： true：自动添加客户端外网IP和日志到达时间。 false（默认值）：不自动添加客户端外网IP和日志到达时间。 |
@@ -16917,8 +17968,9 @@ Parameters:
     "Enable": Boolean,
     "EncryptType": String,
     "UserCmkInfo": Map
-}
 ```
+
+`}`
 
 **EncryptConf属性**
 
@@ -16935,16 +17987,15 @@ Parameters:
     "CmkKeyId": String,
     "Arn": String,
     "RegionId": String
-  }
 ```
+
+`}`
 
 **UserCmkInfo属性**
 
 | 属性名称 | 类型 | 必须 | 允许更新 | 描述 | 约束 |
 |---|---|---|---|---|---|
 | CmkKeyId | String | 是 | 否 | BYOK密钥所属的CMK的ID。 | 无 |
-
-资源编排
 
 | Arn | String | 是 | 否 | CMK所在区域的ID。 | 无 |
 |---|---|---|---|---|---|
@@ -16961,6 +18012,7 @@ Fn::GetAtt LogstoreName：日志库名称。
 ```
 ROSTemplateFormatVersion: '2015-09-01' Description: Test SLS Logstore Parameters: {} Resources:
   SlsLogStore:
+    Type: ALIYUN::SLS::Logstore
     Properties:
       LogstoreName: mytest
       PreserveStorage: true
@@ -16973,14 +18025,17 @@ ROSTemplateFormatVersion: '2015-09-01' Description: Test SLS Logstore Parameters
 Outputs: {}
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": "Test SLS Logstore",
   "Parameters": {
-  },
+```
+
+`},`
+
+```json
   "Resources": {
     "SlsLogStore": {
       "Type": "ALIYUN::SLS::Logstore",
@@ -16993,24 +18048,25 @@ Outputs: {}
         "AutoSplit": true,
         "EnableTracking": false,
         "ShardCount": 2
-      }
-    }
-  },
-  "Outputs": {
-  }
-}
 ```
 
-更多示例，请参见创建日志项目、创建日志库、创建索引、配置Logtail参数、创建日志服务ECS机器组、将日志配置应用于机器组、创建日志配置、将查询结果保存为快速查询和创建告警的组合示例：JSON示例和YAML示例。
+`}` `}` `},`
 
-#### ALIYUN::SLS::LogtailConfig
+```json
+  "Outputs": {
+```
 
-资源编排 ALIYUN::SLS::LogtailConfig类型用于配置采集数据时的Logtail参数。
+`}` `}` 更多示例，请参见创建日志项目、创建日志库、创建索引、配置Logtail参数、创建日志服务ECS机器组、将日志配置应用于机器组、创建日志配置、将查询结果保存为快速查询和创建告警的组合示例：JSON示例和YAML示例。
+
+#### 7.10.3 ALIYUN::SLS::LogtailConfig
+
+ALIYUN::SLS::LogtailConfig类型用于配置采集数据时的Logtail参数。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLS::LogtailConfig",
   "Properties": {
     "ProjectName": String,
@@ -17018,115 +18074,111 @@ Outputs: {}
     "LogstoreName": String,
     "RawConfigData": Map,
     "CloneFrom": Map
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
-| 属性名称 |  |  | 类型 |  | 必须 |  | 允许更新 |  | 描述 |  | 约束 |  |
+| 属性名称 |   |   | 类型 |   | 必须 |   | 允许更新 |   | 描述 |   | 约束 |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ProjectName |  |  | String |  | 是 |  | 否 |  | 日志项目名称。 |  | 无 |  |
-| LogtailConfigNam e |  |  | String |  | 是 |  | 否 |  | Logtail配置名称。 |  | 同一项目下配置名称必须唯一。 长度为2~128个字符。必须以小写英文字母或者数字开头和结尾。可包含小写英文字母、数字、短划线（-）和下划线（ ）。 _ |  |
-| LogstoreName |  |  | String |  | 是 |  | 否 |  | 日志库名称。 |  | 无 |  |
-|  |  |  |  |  |  |  |  |  |  |  | 格式与SLS API GetConfig 的响应相同。 如果同时指定CloneFrom和 RawConfigData，Logtail Config的数据将会和 RawConfigData合并，RawConfigData中的 configName、outputType 和outputDetail会被忽略。 取值示例： {"configName": |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | {"configName": |
-|  |  |  |  |  |  |  |  |  |  |  | "test-logtail- |  |
-|  |  |  |  |  |  |  |  |  |  |  | config", |  |
-|  |  |  |  |  |  |  |  |  |  |  | "createTime": |  |
-|  |  |  |  |  |  |  |  |  |  |  | 1574843554, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "inputDetail": |  |
-|  |  |  |  |  |  |  |  |  |  |  | {"acceptNoEnoughKeys": |  |
-|  |  |  |  |  |  |  |  |  |  |  | false, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "adjustTimezone": |  |
-|  |  |  |  |  |  |  |  |  |  |  | false, "advanced": { |  |
-|  |  |  |  |  |  |  |  |  |  |  | "force multiconfig": _ |  |
-|  |  |  |  |  |  |  |  |  |  |  | false }, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "autoExtend": true, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "delayAlarmBytes": 0, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "delaySkipBytes": 0, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "discardNonUtf8": |  |
-|  |  |  |  |  |  |  |  |  |  |  | false, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "discardUnmatch": |  |
-|  |  |  |  |  |  |  |  |  |  |  | false, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "dockerExcludeEnv": |  |
-|  |  |  |  |  |  |  |  |  |  |  | {}, |  |
-|  |  |  |  |  |  |  |  |  |  |  | "dockerExcludeLabel": |  |
+| ProjectName |   |   | String |   | 是 |   | 否 |   | 日志项目名称。 |   | 无 |   |
+| LogtailConfigNam e |   |   | String |   | 是 |   | 否 |   | Logtail配置名称。 |   | 同一项目下配置名称必须唯一。 长度为2~128个字符。必须以小写英文字母或者数字开头和结尾。可包含小写英文字母、数字、短划线（-）和下划线（ ）。 _ |   |
+| LogstoreName |   |   | String |   | 是 |   | 否 |   | 日志库名称。 |   | 无 |   |
+|   |   |   |   |   |   |   |   |   |   |   | 格式与SLS API GetConfig 的响应相同。 如果同时指定CloneFrom和 RawConfigData，Logtail Config的数据将会和 RawConfigData合并，RawConfigData中的 configName、outputType 和outputDetail会被忽略。 取值示例： {"configName": |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | {"configName": |
+|   |   |   |   |   |   |   |   |   |   |   | "test-logtail- |   |
+|   |   |   |   |   |   |   |   |   |   |   | config", |   |
+|   |   |   |   |   |   |   |   |   |   |   | "createTime": |   |
+|   |   |   |   |   |   |   |   |   |   |   | 1574843554, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "inputDetail": |   |
+|   |   |   |   |   |   |   |   |   |   |   | {"acceptNoEnoughKeys": |   |
+|   |   |   |   |   |   |   |   |   |   |   | false, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "adjustTimezone": |   |
+|   |   |   |   |   |   |   |   |   |   |   | false, "advanced": { |   |
+|   |   |   |   |   |   |   |   |   |   |   | "force multiconfig": _ |   |
+|   |   |   |   |   |   |   |   |   |   |   | false }, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "autoExtend": true, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "delayAlarmBytes": 0, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "delaySkipBytes": 0, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "discardNonUtf8": |   |
+|   |   |   |   |   |   |   |   |   |   |   | false, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "discardUnmatch": |   |
+|   |   |   |   |   |   |   |   |   |   |   | false, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "dockerExcludeEnv": |   |
+|   |   |   |   |   |   |   |   |   |   |   | {}, |   |
+|   |   |   |   |   |   |   |   |   |   |   | "dockerExcludeLabel": |   |
 
-资源编排
-
-|  |  |  |  |  | {}, "dockerFile": |
+|   |   |   |   |   | {}, "dockerFile": |
 |---|---|---|---|---|---|
-|  |  |  |  |  | false, |
-|  |  |  |  |  | "dockerIncludeEnv": |
-|  |  |  |  |  | {}, |
-|  |  |  |  |  | "dockerIncludeLabel": |
-|  |  |  |  |  | {}, "enableRawLog": |
-|  |  |  |  |  | false, "enableTag": |
-|  |  |  |  |  | false, |
-|  |  |  |  |  | "fileEncoding": |
-|  |  |  |  |  | "utf8", |
-|  |  |  |  |  | "filePattern": |
-|  |  |  |  |  | "test.log*", |
-|  |  |  |  |  | "filterKey": [], |
-|  |  |  |  |  | "filterRegex": [], |
-|  |  |  |  |  | "key": [ "time", |
-|  |  |  |  |  | "logger", "level", |
+|   |   |   |   |   | false, |
+|   |   |   |   |   | "dockerIncludeEnv": |
+|   |   |   |   |   | {}, |
+|   |   |   |   |   | "dockerIncludeLabel": |
+|   |   |   |   |   | {}, "enableRawLog": |
+|   |   |   |   |   | false, "enableTag": |
+|   |   |   |   |   | false, |
+|   |   |   |   |   | "fileEncoding": |
+|   |   |   |   |   | "utf8", |
+|   |   |   |   |   | "filePattern": |
+|   |   |   |   |   | "test.log*", |
+|   |   |   |   |   | "filterKey": [], |
+|   |   |   |   |   | "filterRegex": [], |
+|   |   |   |   |   | "key": [ "time", |
+|   |   |   |   |   | "logger", "level", |
 | RawConfigData | Map | 否 | 是 | 原始配置数据。 | "request id", _ |
-|  |  |  |  |  | "user id", |
-|  |  |  |  |  | _ |
-|  |  |  |  |  | "region id", _ |
-|  |  |  |  |  | "content" ], |
-|  |  |  |  |  | "localStorage": true, |
-|  |  |  |  |  | "logPath": |
-|  |  |  |  |  | "/var/log/test", |
-|  |  |  |  |  | "logTimezone": "", |
-|  |  |  |  |  | "logType": |
-|  |  |  |  |  | "delimiter log", _ |
-|  |  |  |  |  | "maxDepth": 100, |
-|  |  |  |  |  | "maxSendRate": -1, |
-|  |  |  |  |  | "mergeType": "topic", |
-|  |  |  |  |  | "preserve": true, |
-|  |  |  |  |  | "preserveDepth": 1, |
-|  |  |  |  |  | "priority": 0, |
-|  |  |  |  |  | "quote": "\u0001", |
-|  |  |  |  |  | "sendRateExpire": 0, |
-|  |  |  |  |  | "sensitive keys": [], _ |
-|  |  |  |  |  | "separator": ",,,", |
-|  |  |  |  |  | "shardHashKey": [], |
-|  |  |  |  |  | "tailExisted": false, |
-|  |  |  |  |  | "timeFormat": "", |
-|  |  |  |  |  | "timeKey": "", |
-|  |  |  |  |  | "topicFormat": "none" |
-|  |  |  |  |  | }, "inputType": |
-|  |  |  |  |  | "file", |
-|  |  |  |  |  | "lastModifyTime": |
-|  |  |  |  |  | 1574843554, |
-|  |  |  |  |  | "logSample": "2019- |
-|  |  |  |  |  | 11-27 |
-|  |  |  |  |  | 10:48:23,160,,,MAIN,,, |
-|  |  |  |  |  | INFO,,,98DCC51D-BE5D- |
-|  |  |  |  |  | 49C7-B3FD- |
-|  |  |  |  |  | 37B2BAEFB296,,,1234567 |
-|  |  |  |  |  | 89,,,cn- |
-|  |  |  |  |  | hangzhou,,,this is a |
-|  |  |  |  |  | simple test.", |
-|  |  |  |  |  | "outputDetail": { |
-|  |  |  |  |  | "endpoint": "cn- |
-|  |  |  |  |  | hangzhou- |
-|  |  |  |  |  | intranet.log.aliyuncs. |
-|  |  |  |  |  | com", "logstoreName": |
-|  |  |  |  |  | "test-logstore", |
-|  |  |  |  |  | "region": "cn- |
-|  |  |  |  |  | hangzhou"}, |
-| > 文档版本：20260 | 729 |  |  |  | 365 |
+|   |   |   |   |   | "user id", |
+|   |   |   |   |   | _ |
+|   |   |   |   |   | "region id", _ |
+|   |   |   |   |   | "content" ], |
+|   |   |   |   |   | "localStorage": true, |
+|   |   |   |   |   | "logPath": |
+|   |   |   |   |   | "/var/log/test", |
+|   |   |   |   |   | "logTimezone": "", |
+|   |   |   |   |   | "logType": |
+|   |   |   |   |   | "delimiter log", _ |
+|   |   |   |   |   | "maxDepth": 100, |
+|   |   |   |   |   | "maxSendRate": -1, |
+|   |   |   |   |   | "mergeType": "topic", |
+|   |   |   |   |   | "preserve": true, |
+|   |   |   |   |   | "preserveDepth": 1, |
+|   |   |   |   |   | "priority": 0, |
+|   |   |   |   |   | "quote": "\u0001", |
+|   |   |   |   |   | "sendRateExpire": 0, |
+|   |   |   |   |   | "sensitive keys": [], _ |
+|   |   |   |   |   | "separator": ",,,", |
+|   |   |   |   |   | "shardHashKey": [], |
+|   |   |   |   |   | "tailExisted": false, |
+|   |   |   |   |   | "timeFormat": "", |
+|   |   |   |   |   | "timeKey": "", |
+|   |   |   |   |   | "topicFormat": "none" |
+|   |   |   |   |   | }, "inputType": |
+|   |   |   |   |   | "file", |
+|   |   |   |   |   | "lastModifyTime": |
+|   |   |   |   |   | 1574843554, |
+|   |   |   |   |   | "logSample": "2019- |
+|   |   |   |   |   | 11-27 |
+|   |   |   |   |   | 10:48:23,160,,,MAIN,,, |
+|   |   |   |   |   | INFO,,,98DCC51D-BE5D- |
+|   |   |   |   |   | 49C7-B3FD- |
+|   |   |   |   |   | 37B2BAEFB296,,,1234567 |
+|   |   |   |   |   | 89,,,cn- |
+|   |   |   |   |   | hangzhou,,,this is a |
+|   |   |   |   |   | simple test.", |
+|   |   |   |   |   | "outputDetail": { |
+|   |   |   |   |   | "endpoint": "cn- |
+|   |   |   |   |   | hangzhou- |
+|   |   |   |   |   | intranet.log.aliyuncs. |
+|   |   |   |   |   | com", "logstoreName": |
+|   |   |   |   |   | "test-logstore", |
+|   |   |   |   |   | "region": "cn- |
+|   |   |   |   |   | hangzhou"}, |
+| > 文档版本：20260 | 729 |   |   |   | 365 |
 
-资源编排
-
-|  |  |  |  |  | "outputType": |  |
+|   |   |   |   |   | "outputType": |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | "LogService"} |  |
-| CloneFrom | Map | 否 | 是 | 克隆其他日志项目的 LogtailConfig。 | CloneFrom和 LogtailConfig必须指定一个。 更多信息，请参见CloneFrom属性。 |  |
+|   |   |   |   |   | "LogService"} |   |
+| CloneFrom | Map | 否 | 是 | 克隆其他日志项目的 LogtailConfig。 | CloneFrom和 LogtailConfig必须指定一个。 更多信息，请参见CloneFrom属性。 |   |
 
 **CloneFrom语法**
 
@@ -17134,8 +18186,9 @@ Outputs: {}
 "CloneFrom": {
   "ProjectName": String,
   "LogtailConfigName": String
-}
 ```
+
+`}`
 
 **CloneFrom属性**
 
@@ -17150,10 +18203,9 @@ Fn::GetAtt Endpoint：Endpoint地址。 AppliedMachineGroups：日志采集配�
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "LogtailConfig": {
@@ -17161,27 +18213,42 @@ Fn::GetAtt Endpoint：Endpoint地址。 AppliedMachineGroups：日志采集配�
       "Properties": {
         "ProjectName": {
           "Ref": "ProjectName"
-        },
-        "LogtailConfigName": {
-          "Ref": "LogtailConfigName"
-        },
-        "LogstoreName": {
-          "Ref": "LogstoreName"
-        },
-        "RawConfigData": {
-          "Ref": "RawConfigData"
-        },
-        "CloneFrom": {
-          "Ref": "CloneFrom"
-        }
-      }
-    }
-  },
-  "Parameters": {
-"ProjectName" {
 ```
 
-资源编排
+`},`
+
+```json
+        "LogtailConfigName": {
+          "Ref": "LogtailConfigName"
+```
+
+`},`
+
+```json
+        "LogstoreName": {
+          "Ref": "LogstoreName"
+```
+
+`},`
+
+```json
+        "RawConfigData": {
+          "Ref": "RawConfigData"
+```
+
+`},`
+
+```json
+        "CloneFrom": {
+          "Ref": "CloneFrom"
+```
+
+`}`
+
+```json
+  "Parameters": {
+"ProjectName"
+```
 
 ```json
     "ProjectName": {
@@ -17190,32 +18257,51 @@ Fn::GetAtt Endpoint：Endpoint地址。 AppliedMachineGroups：日志采集配�
       "Description": "Project name: 1. Only supports lowercase letters, numbers, hyphens (-) and unde
 rscores (_). 2. Must start and end with lowercase letters and numbers. 3. The name length is 3-63 cha racters.",
       "MaxLength": 63
-    },
+```
+
+`},`
+
+```json
     "LogtailConfigName": {
       "MinLength": 3,
       "Type": "String",
       "Description": "Logtail config name: 1. Only supports lowercase letters, numbers, hyphens (-) a
 nd underscores (_). 2. Must start and end with lowercase letters and numbers. 3. The name length is 3 -63 characters.",
       "MaxLength": 63
-    },
+```
+
+`},`
+
+```json
     "LogstoreName": {
       "MinLength": 3,
       "Type": "String",
       "Description": "Logstore name: 1. Only supports lowercase letters, numbers, hyphens (-) and und
 erscores (_). 2. Must start and end with lowercase letters and numbers. 3. The name length is 3-63 ch aracters.",
       "MaxLength": 63
-    },
+```
+
+`},`
+
+```json
     "RawConfigData": {
       "Type": "Json",
       "Description": "The format is the same as the response of SLS API GetConfig. Either CloneFrom o
 r RawConfigData must be specified. If CloneFrom and RawConfigData are both specified, logtail config data will be merged from both with RawConfigData first. configName, outputType, outputDetail in data will be ignored.For example:\n{\"configName\": \"test-logtail-config\",\"createTime\": 1574843554,\"inputDetail\": { \"acceptNoEnoughKeys\": false, \"adjustTimezone\": false, \"advanced\": { \"force_multiconfig\": false }, \"autoExtend\": true, \"delayAlarmBytes\": 0, \"delaySkipBytes\": 0, \"discardNonUtf8\": false, \"discardUnmatch\": false, \"dockerExcludeEnv\": {}, \"dockerExcludeLabel\": {}, \"dockerFile\": false, \"dockerIncludeEnv\": {}, \"dockerIncludeLabel\": {}, \"enableRawLog\": false, \"enableTag\": false, \"fileEncoding\": \"utf8\", \"filePattern\": \"tes t.log*\", \"filterKey\": [], \"filterRegex\": [], \"key\": [ \"time\", \"logger\", \"level\", \"request_id\", \"user_id\", \"region_id\", \"content\" ], \"localStorage\": true, \"logPath\": \"/var/log/test\", \"logTimezone\": \"\", \"logType\": \"delimiter_log\", \"maxDepth\": 100, \"maxSendRate\": -1, \"mergeType\": \"topic\", \"preserve\": true, \"preserveDepth\": 1, \"priority\": 0, \"quote\": \"\\u0001\", \"sendRateExpire\": 0, \"sensitive_keys\": [], \"separator\": \",,,\", \"shardHashKey\": [], \"tailExisted\": false, \"timeFormat\": \"\", \"timeKey \": \"\", \"topicFormat\": \"none\"}, \"inputType\": \"file\", \"lastModifyTime\": 1574843554, \"logS ample\": \"2019-11-27 10:48:23,160,,,MAIN,,,INFO,,,98DCC51D-BE5D-49C7-B3FD- 37B2BAEFB296,,,123456789,,,cn-hangzhou,,,this is a simple test.\", \"outputDetail\": {\"endpoint\": \ "cn-hangzhou-intranet.log.aliyuncs.com\", \"logstoreName\": \"test-logstore\",\"region\": \"cn-hangzh ou\"}, \"outputType\": \"LogService\"}"
-    },
+```
+
+`},`
+
+```json
     "CloneFrom": {
       "Type": "Json",
       "Description": "Clone logtail config data from existing logtail config. Either CloneFrom or Raw
 ConfigData must be specified. If CloneFrom and RawConfigData are both specified, logtail config data will be merged from both with RawConfigData first."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Outputs": {
     "LogtailConfigName": {
      "Description": "Logtail config name.",
@@ -17225,16 +18311,7 @@ ConfigData must be specified. If CloneFrom and RawConfigData are both specified,
        "LogtailConfigName"
 ```
 
-]
-
-```
-     }
-```
-
-资源编排
-
 ```json
-    },
     "Endpoint": {
       "Description": "Endpoint address.",
       "Value": {
@@ -17243,11 +18320,9 @@ ConfigData must be specified. If CloneFrom and RawConfigData are both specified,
           "Endpoint"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "AppliedMachineGroups": {
       "Description": "Applied machine groups.",
       "Value": {
@@ -17256,20 +18331,12 @@ ConfigData must be specified. If CloneFrom and RawConfigData are both specified,
           "AppliedMachineGroups"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Resources:
   LogtailConfig:
+    Type: ALIYUN::SLS::LogtailConfig
     Properties:
       ProjectName:
         Ref: ProjectName
@@ -17306,7 +18373,7 @@ Parameters:
   RawConfigData:
 ```
 
-资源编排 g
+`g`
 
 ```json
     Type: Json
@@ -17325,36 +18392,37 @@ Outputs:
     Description: Endpoint address.
     Value:
       Fn::GetAtt:
+      - LogtailConfig
       - Endpoint
   AppliedMachineGroups:
     Description: Applied machine groups.
     Value:
       Fn::GetAtt:
+      - LogtailConfig
       - AppliedMachineGroups
   LogtailConfigName:
     Description: Logtail config name.
     Value:
       Fn::GetAtt:
+      - LogtailConfig
       - LogtailConfigName
 ```
 
 更多示例，请参见创建日志项目、在日志项目下创建日志库、为指定的Logstore创建索引、配置采集数据时的Logtail参数、创建日志服务机器组、将日志服务的日志配置应用于机器组、创建日志配置、将查询结果保存为快速查询和创建告警的组合示例：JSON示例和YAML示例。
 
-#### ALIYUN::SLS::Savedsearch
+#### 7.10.4 ALIYUN::SLS::Savedsearch
+
+ALIYUN::SLS::Savedsearch类型用于将查询结果保存为快速查询。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::SLS::Savedsearch",
-  "Properties": {
     "Project": String,
     "Detail": Map
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -17372,8 +18440,9 @@ Outputs:
   "DisplayName": String,
   "SavedsearchName": String,
   "Topic": String
-}
 ```
+
+`}`
 
 **Detail属性**
 
@@ -17391,34 +18460,45 @@ Fn::GetAtt SavedsearchName：保存的查询名称
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "Project": {
       "Type": "String",
       "Description": "Project name"
-    },
+```
+
+`},`
+
+```json
     "Detail": {
       "Type": "Json",
       "Description": ""
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "SavedSearch": {
       "Type": "ALIYUN::SLS::Savedsearch",
       "Properties": {
         "Project": {
           "Ref": "Project"
-        },
+```
+
+`},`
+
+```json
         "Detail": {
           "Ref": "Detail"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "SavedsearchName": {
       "Description": "Savedsearch name.",
@@ -17428,16 +18508,7 @@ Fn::GetAtt SavedsearchName：保存的查询名称
           "SavedsearchName"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -17449,6 +18520,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
   Description: ''
 Resources:
  SavedSearch:
+  Type: 'ALIYUN::SLS::Savedsearch'
   Properties:
    Project:
     Ref: Project
@@ -17459,23 +18531,27 @@ Outputs:
   Description: Savedsearch name.
   Value:
    'Fn::GetAtt':
+    - SavedSearch
     - SavedsearchName
 ```
 
-#### ALIYUN::SLS::Project
+#### 7.10.5 ALIYUN::SLS::Project
+
+ALIYUN::SLS::Project类型用于创建一个日志项目。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::SLS::Project",
   "Properties": {
     "Name": String,
     "Description": String,
     "Tags": List
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -17487,17 +18563,13 @@ Outputs:
 
 **Tags语法**
 
-资源编排
-
 ```json
 "Tags": [
-  {
     "Key": String,
     "Value": String
-  }
 ```
 
-]
+`}` `]`
 
 **Tags属性**
 
@@ -17512,23 +18584,30 @@ Fn::GetAtt Name: 日志项目名称。
 
 **示例**
 
-`JSON` 格式资源编排
+`JSON` 格式
 
 ```json
-{
  "ROSTemplateFormatVersion": "2015-09-01",
  "Parameters": {
   "Description": {
    "Type": "String",
    "Description": "Project description: <>'\"\\ is not supported, up to 64 characters.",
    "MaxLength": 64
-  },
+```
+
+`},`
+
+```json
   "Tags": {
    "Type": "Json",
    "Description": "Tags to attach to project. Max support 20 tags to add during create project. Each
 tag with two properties Key and Value, and Key is required.",
    "MaxLength": 20
-  },
+```
+
+`},`
+
+```json
   "Name": {
    "Type": "String",
    "Description": "Project name:\n1. Only supports lowercase letters, numbers, hyphens (-) and unders
@@ -17536,24 +18615,36 @@ cores (_).\n2. Must start and end with lowercase letters and numbers.\n3. The na
    "AllowedPattern": "^[a-zA-Z0-9_-]+$",
    "MinLength": 3,
    "MaxLength": 63
-  }
- },
+```
+
+`}` `},`
+
+```json
  "Resources": {
   "Project": {
    "Type": "ALIYUN::SLS::Project",
    "Properties": {
     "Description": {
      "Ref": "Description"
-    },
+```
+
+`},`
+
+```json
     "Tags": {
      "Ref": "Tags"
-    },
+```
+
+`},`
+
+```json
     "Name": {
      "Ref": "Name"
-    }
-   }
-  }
- },
+```
+
+`}` `}` `}` `},`
+
+```json
  "Outputs": {
   "Name": {
    "Description": "Project name.",
@@ -17563,16 +18654,7 @@ cores (_).\n2. Must start and end with lowercase letters and numbers.\n3. The na
      "Name"
 ```
 
-]
-
-```
-   }
-  }
- }
-}
-```
-
-`YAML` 格式资源编排
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -17599,6 +18681,7 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
   MaxLength: 63
 Resources:
  Project:
+  Type: 'ALIYUN::SLS::Project'
   Properties:
    Description:
     Ref: Description
@@ -17611,29 +18694,31 @@ Outputs:
   Description: Project name.
   Value:
    'Fn::GetAtt':
+    - Project
     - Name
 ```
 
 更多示例，请参见JSON示例和YAML示例。该示例可实现以下功能： 创建日志项目在日志项目下创建日志库为指定的Logstore创建索引配置采集数据时的Logtail参数创建日志服务机器组将日志服务的日志配置应用于机器组创建日志配置将查询结果保存为快速查询创建告警
 
-### PAI
+### 7.11 PAI
 
-资源编排
+#### 7.11.1 ALIYUN::PAI::Service
 
-#### ALIYUN::PAI::Service
+ALIYUN::PAI::Service类型用于创建EAS服务。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::PAI::Service",
   "Properties": {
     "Develop": String,
     "ServiceConfig": Map,
     "Labels": Map
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -17641,15 +18726,13 @@ Outputs:
 |---|---|---|---|---|---|
 | Develop | String | 否 | 否 | 是否进入开发模式。 | 取值： true：进入开发模式。 false：不进入开发模式。 |
 
-资源编排
-
 | ServiceConfig | Map | 是 | 是 | 服务的配置信息。 | 例如： { "metadata": { "cpu":1, "instance": 1, "memory":10 24 }, "name":"ech o", "processor _ entry":"lib echo.so", "processor _ path":"http ://oss-cn- hangzhou- zmf.aliyunc s.com/05924 7/echo proc _ essor relea _ se.tar.gz", "processor _ type":"cpp" } |
 |---|---|---|---|---|---|
 | Labels | Map | 否 | 是 | 服务标签列表。 | 例如： {"key":"val ue"} |
 
 **返回值**
 
-Fn::GetAtt ServiceGroup：服务所在的分组。 Message：服务的摘要信息。 Memory：每个实例申请的内存。 CurrentVersion：当前运行的模型版本。 RunningInstance：正在运行的服务的实例个数。 资源编排 Cpu：每个实例申请的CPU。 Image：服务的数据镜像。 Gpu：每个实例申请的GPU。 CallerUid：服务创建账号的UID。 Reason：服务的状态原因。 TotalInstance：服务的所有实例总个数。 ServiceConfig：服务的配置信息。 AccessToken：服务的请求Token。 InternetEndpoint：服务的公网Endpoint。 ResourceAlias：服务所在的资源组别名。 CreateTime：服务的创建时间。 Resource：服务所在的资源组。 Labels：服务标签列表。 ExtraData：服务的额外信息。 Namespace：服务所在的命名空间。 Weight：服务灰度发布的权重值。 Role：服务角色。 PendingInstance：被挂起的服务的实例个数。 LatestVersion：服务最新版本号。 ServiceName：服务的名字。 SafetyLock：服务安全锁。 UpdateTime：服务的更新时间。 ServiceUid：服务ID，同ServiceId。 RoleAttrs：服务角色额外属性。 ParentUid：服务创建账号的阿里云账号UID。 IntranetEndpoint：服务内网endpoint。
+Fn::GetAtt ServiceGroup：服务所在的分组**。** Message：服务的摘要信息。 Memory：每个实例申请的内存。 CurrentVersion：当前运行的模型版本。 RunningInstance：正在运行的服务的实例个数。 Cpu：每个实例申请的CPU。 Image：服务的数据镜像。 Gpu：每个实例申请的GPU。 CallerUid：服务创建账号的UID。 Reason：服务的状态原因**。** TotalInstance：服务的所有实例总个数**。** ServiceConfig：服务的配置信息**。** AccessToken：服务的请求Token**。** InternetEndpoint：服务的公网Endpoint**。** ResourceAlias：服务所在的资源组别名**。** CreateTime：服务的创建时间。 Resource：服务所在的资源组**。** Labels：服务标签列表**。** ExtraData：服务的额外信息**。** Namespace：服务所在的命名空间。 Weight：服务灰度发布的权重值。 Role：服务角色**。** PendingInstance：被挂起的服务的实例个数。 LatestVersion：服务最新版本号。 ServiceName：服务的名字。 SafetyLock：服务安全锁**。** UpdateTime：服务的更新时间**。** ServiceUid：服务ID，同ServiceId**。** RoleAttrs：服务角色额外属性**。** ParentUid：服务创建账号的阿里云账号UID。 IntranetEndpoint：服务内网endpoint。
 
 **示例**
 
@@ -17676,10 +18759,11 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
       key: value
 Resources:
   ExtensionResource:
+    Type: ALIYUN::PAI::Service
     Properties:
 ```
 
-资源编排 p
+`p`
 
 ```
       ServiceConfig:
@@ -17728,6 +18812,7 @@ Outputs:
     Value:
       Fn::GetAtt:
         - ExtensionResource
+        - Image
   Gpu:
     Description: Number of service GPU cards.
     Value:
@@ -17744,8 +18829,6 @@ Outputs:
     Description: Service deployment failure reason.
     Value:
 ```
-
-资源编排
 
 ```
       Fn::GetAtt:
@@ -17792,6 +18875,7 @@ Outputs:
     Value:
       Fn::GetAtt:
         - ExtensionResource
+        - Resource
   Labels:
     Description: Service Tag.
     Value:
@@ -17811,8 +18895,6 @@ Outputs:
         - ExtensionResource
 -Namespace
 ```
-
-资源编排
 
 ```
          Namespace
@@ -17880,8 +18962,6 @@ Outputs:
     Description: The intranet Endpoint of the service.
 ```
 
-资源编排
-
 ```
     Value:
       Fn::GetAtt:
@@ -17889,10 +18969,9 @@ Outputs:
         - IntranetEndpoint
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "ServiceConfig": {
@@ -17903,33 +18982,48 @@ Outputs:
           "cpu": 1,
           "instance": 1,
           "memory": 1024
-        },
+```
+
+`},`
+
+```json
         "name": "echo",
         "processor_entry": "libecho.so",
         "processor_path": "http://oss-cn-hangzhou-
 zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
         "processor_type": "cpp"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "Labels": {
       "Type": "Json",
       "Description": "Service Tag.",
       "Default": {"key":"value"}
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "ExtensionResource": {
       "Type": "ALIYUN::PAI::Service",
       "Properties": {
         "ServiceConfig": {
           "Ref": "ServiceConfig"
-        },
+```
+
+`},`
+
+```json
         "Labels": {
           "Ref": "Labels"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "ServiceGroup": {
       "Description": "Group to which the service belongs.",
@@ -17939,11 +19033,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ServiceGroup"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Message": {
       "Description": "Latest information on services.",
       "Value": {
@@ -17952,11 +19044,7 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Message"
 ```
 
-] 资源编排
-
 ```json
-      }
-    },
     "Memory": {
       "Description": "Memory of service (MB).",
       "Value": {
@@ -17965,11 +19053,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Memory"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "CurrentVersion": {
       "Description": "Current running version of the service.",
       "Value": {
@@ -17978,11 +19064,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "CurrentVersion"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "RunningInstance": {
       "Description": "Number of instances in service running.",
       "Value": {
@@ -17991,11 +19075,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "RunningInstance"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Cpu": {
       "Description": "Number of service CPU cores.",
       "Value": {
@@ -18004,11 +19086,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Cpu"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Image": {
       "Description": "Service Deployment Mirroring.",
       "Value": {
@@ -18017,11 +19097,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Image"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Gpu": {
       "Description": "Number of service GPU cards.",
       "Value": {
@@ -18030,11 +19108,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Gpu"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "CallerUid": {
       "Description": "The ID of the service creator, which can be the ID of the RAM account.",
       "Value": {
@@ -18043,11 +19119,7 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "CallerUid"
 ```
 
-] 资源编排 ]
-
 ```json
-      }
-    },
     "Reason": {
       "Description": "Service deployment failure reason.",
       "Value": {
@@ -18056,11 +19128,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Reason"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "TotalInstance": {
       "Description": "Total number of instances required by the service.",
       "Value": {
@@ -18069,11 +19139,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "TotalInstance"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ServiceConfig": {
       "Description": "Service configuration information.",
       "Value": {
@@ -18082,11 +19150,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ServiceConfig"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "AccessToken": {
       "Description": "Service Request authentication token.",
       "Value": {
@@ -18095,11 +19161,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "AccessToken"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "InternetEndpoint": {
       "Description": "Public network Endpoint of the service.",
       "Value": {
@@ -18108,11 +19172,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "InternetEndpoint"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ResourceAlias": {
       "Description": "Name of the resource group where the service resides.",
       "Value": {
@@ -18121,11 +19183,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ResourceAlias"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "CreateTime": {
       "Description": "Creation time of the service.",
       "Value": {
@@ -18134,11 +19194,7 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "CreateTime"
 ```
 
-资源编排 ]
-
 ```json
-      }
-    },
     "Resource": {
       "Description": "The ID of the resource group to which the service belongs.",
       "Value": {
@@ -18147,11 +19203,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Resource"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Labels": {
       "Description": "Service Tag.",
       "Value": {
@@ -18160,11 +19214,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Labels"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ExtraData": {
       "Description": "Service Extra Information.",
       "Value": {
@@ -18173,11 +19225,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ExtraData"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Namespace": {
       "Description": "The namespace to which the service belongs.",
       "Value": {
@@ -18186,11 +19236,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Namespace"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Weight": {
       "Description": "Packet Service Traffic Weight.",
       "Value": {
@@ -18199,11 +19247,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Weight"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "Role": {
       "Description": "Grouping Service Role.",
       "Value": {
@@ -18212,11 +19258,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "Role"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "PendingInstance": {
       "Description": "Number of instances where the service is not currently ready.",
       "Value": {
@@ -18224,17 +19268,8 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ExtensionResource",
 ```
 
-资源编排
-
-```
-          "PendingInstance"
-```
-
-]
-
 ```json
-      }
-    },
+          "PendingInstance"
     "LatestVersion": {
       "Description": "The latest version of the service.",
       "Value": {
@@ -18243,11 +19278,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "LatestVersion"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ServiceName": {
       "Description": "Service Name.",
       "Value": {
@@ -18256,11 +19289,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ServiceName"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "SafetyLock": {
       "Description": "Service Security Lock Status.",
       "Value": {
@@ -18269,11 +19300,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "SafetyLock"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "UpdateTime": {
       "Description": "Service Last Updated.",
       "Value": {
@@ -18282,11 +19311,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "UpdateTime"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ServiceUid": {
       "Description": "Unique Service ID.",
       "Value": {
@@ -18295,11 +19322,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "ServiceUid"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "RoleAttrs": {
       "Description": "Grouping Service Role Properties.",
       "Value": {
@@ -18308,11 +19333,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
           "RoleAttrs"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-      }
-    },
     "ParentUid": {
       "Description": "Primary account ID of the creator.",
       "Value": {
@@ -18320,18 +19343,9 @@ zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",
 "ExtensionResource",
 ```
 
-资源编排
-
-```
+```json
 teso esouce,
           "ParentUid"
-```
-
-]
-
-```json
-      }
-    },
     "IntranetEndpoint": {
       "Description": "The intranet Endpoint of the service.",
       "Value": {
@@ -18340,23 +19354,19 @@ teso esouce,
           "IntranetEndpoint"
 ```
 
-]
+`]` `}` `}` `}` `}`
 
-```
-      }
-    }
-  }
-}
-```
+### 7.12 VPC
 
-### VPC
+#### 7.12.1 ALIYUN::VPC::EIP
 
-#### ALIYUN::VPC::EIP
+ALIYUN::VPC::EIP类型用于申请弹性公网IP。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::VPC::EIP",
   "Properties": {
     "Isp": String,
@@ -18367,9 +19377,9 @@ teso esouce,
     "PricingCycle": String,
     "InternetChargeType": String,
     "Bandwidth": Number
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -18379,8 +19389,6 @@ teso esouce,
 | Bandwidth | Number | 否 | 否 | 带宽值。 | 如果不指定，则取默认值5Mbps。 |
 | InternetChargeT ype | String | 否 | 否 | EIP的计费方式。 | 取值范围： PayByBandwidth：按带宽计费。 PayByTraffic：按流量计费。 默认值：PayByBandwidth。 |
 | InstanceCharge Type | String | 否 | 否 | EIP的付费方式。 | 取值范围： Prepaid：预付费。 Postpaid：后付费。 默认值：Postpaid。 |
-
-资源编排
 
 | PricingCycle | String | 否 | 否 | 预付费的计费周期。 | 取值范围： Month：按月付费。 Year：按年付费。 默认值：Month。 说明 InstanceChargeType参数的值为 Prepaid时，该参数必选。 |
 |---|---|---|---|---|---|
@@ -18394,10 +19402,7 @@ Fn::GetAtt EipAddress：分配的弹性公网IP。 AllocationId：弹性公网IP
 
 **示例**
 
-资源编排
-
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Eip": {
@@ -18405,40 +19410,50 @@ Fn::GetAtt EipAddress：分配的弹性公网IP。 AllocationId：弹性公网IP
       "Properties": {
         "InternetChargeType": "PayByTraffic",
           "Bandwidth": 200
-      }
-    }
-  },
+```
+
+`}` `}` `},`
+
+```json
   "Outputs": {
     "EipAddress": {
       "Value" : {"Fn::GetAtt": ["Eip", "EipAddress"]}
-    },
-    "AllocationId": {
-      "Value" : {"Fn::GetAtt": ["Eip", "AllocationId"]}
-    },
-    "OrderId": {
-      "Value" : {"Fn::GetAtt": ["Eip", "OrderId"]}
-    }
-  }
-}
 ```
 
-#### ALIYUN::VPC::EIPAssociation
+`},`
+
+```json
+    "AllocationId": {
+      "Value" : {"Fn::GetAtt": ["Eip", "AllocationId"]}
+```
+
+`},`
+
+```json
+    "OrderId": {
+      "Value" : {"Fn::GetAtt": ["Eip", "OrderId"]}
+```
+
+`}` `}` `}`
+
+#### 7.12.2 ALIYUN::VPC::EIPAssociation
 
 ALIYUN::VPC::EIPAssociation用于为云产品实例绑定弹性公网IP（EIP）。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::VPC::EIPAssociation",
   "Properties": {
     "AllocationId": String,
     "InstanceId": String,
     "PrivateIpAddress": String,
     "Mode": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -18447,8 +19462,6 @@ ALIYUN::VPC::EIPAssociation用于为云产品实例绑定弹性公网IP（EIP）
 | AllocationId | String | 是 | 是 | 弹性公网IP的 ID。 | 无 |
 | InstanceId | String | 是 | 是 | 云产品实例的 ID。 | 支持以下云产品实例类型： VPC类型的ECS实例。 VPC类型的SLB实例。 NAT网关。 高可用虚拟IP（HaVip）。 弹性网卡。 |
 | PrivateIpAddr ess | String | 否 | 是 | 交换机网段内的一个私网IP地址。 | 如果不指定该参数，系统将根据 VPC ID和交换机ID自动分配一个私网IP地址。 |
-
-资源编排
 
 | Mode | String | 否 | 是 | 绑定模式。 | 取值： NAT（默认值）：NAT模式（普通模式）。 MULTI BINDED：多EIP网卡可 _ 见模式。 BINDED：EIP网卡可见模式。 |
 |---|---|---|---|---|---|
@@ -18459,19 +19472,17 @@ Fn::GetAtt EipAddress：弹性公网IP的地址。 AllocationId：弹性公网IP
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Description": {
     "en": "Create a VPC type ECS and bind EIP (existing VPC).",
 ```
 
-`"zh-cn": "`创建`VPC`类型`ECS`，并绑定`EIP`（已有`VPC`）。"
+`"zh-cn": "`创建`VPC`类型`ECS`，并绑定`EIP`（已有`VPC`）。`"` `},`
 
 ```json
-  },
   "Parameters": {
     "VPC": {
       "AssociationProperty": "ALIYUN::ECS::VPC::VPCId",
@@ -18480,43 +19491,41 @@ Fn::GetAtt EipAddress：弹性公网IP的地址。 AllocationId：弹性公网IP
         "en": "Please search the ID starting with (vpc-xxx) from console-Virtual Private Cloud.",
 ```
 
-`"zh-cn": "`现有专有网络的实例`ID`，在专有网络控制台选择专有网络进行查询。"
+`"zh-cn": "`现有专有网络的实例`ID`，在专有网络控制台选择专有网络进行查询。`"` `},`
 
 ```json
-      },
       "Label": {
         "en": "VPC ID",
 ```
 
-`"zh-cn": "`专有网络`VPC`实例`ID"`
+`"zh-cn": "`专有网络`VPC`实例`ID"` `}` `},`
 
 ```json
-      }
-    },
     "VSwitch": {
       "AssociationProperty": "ALIYUN::ECS::VSwitch::VSwitchId",
       "AssociationPropertyMetadata": {
         "VpcId": "VPC"
-      },
+```
+
+`},`
+
+```json
       "Type": "String",
       "Description": {
         "en": "Existing VSwitch ID, query under console-VPC-VSwitch, <font color='red'>VSwitch must b
 e under VPC. ECS will be created under this VSwitch.</font>",
 ```
 
-`"zh-cn": "`现有交换机`ID`，在专有网络控制台选择交换机进行查询，`<font color='red'>`交换机必须在`VPC`下。`ECS`将创建在此交换机下。`</font>"`
+`"zh-cn": "`现有交换机`ID`，在专有网络控制台选择交换机进行查询，`<font color='red'>`交换机必须在`VPC`下。`ECS`将创建在此交换机下。`</font>"` `},`
 
 ```json
-      },
       "Label": {
         "en": "VSwitch ID",
 ```
 
-`"zh-cn": "`交换机实例`ID"`
+`"zh-cn": "`交换机实例`ID"` `}` `},`
 
 ```json
-      }
-    },
     "SecurityGroup": {
       "Type": "String",
       "AssociationProperty": "ALIYUN::ECS::SecurityGroup::SecurityGroupId",
@@ -18525,13 +19534,7 @@ e under VPC. ECS will be created under this VSwitch.</font>",
 etwork & Security.",
 ```
 
-`"zh-cn": "`现有业务安全组的实例`ID`，在`ECS`控制台选择安全组进行查询。`<br><font color='red'>`安全组必须归属在V `PC`下。`</font>"`
-
-```
-      },
-```
-
-资源编排
+`"zh-cn": "`现有业务安全组的实例`ID`，在`ECS`控制台选择安全组进行查询。`<br><font color='red'>`安全组必须归属在`V` `PC`下。`</font>"`
 
 ```json
       "Label": {
@@ -18541,11 +19544,13 @@ etwork & Security.",
 `"zh-cn": "`业务安全组`ID"`
 
 ```json
-      },
       "AssociationPropertyMetadata": {
         "VpcId": "VPC"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "ECSPassword": {
       "NoEcho": true,
       "Type": "String",
@@ -18554,33 +19559,34 @@ etwork & Security.",
 letters, numbers, ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ Special symbol in).",
 ```
 
-`"zh-cn": "`服务器登录密码，长度为8~30个字符，必须包含三项（大写英文字母、小写英文字母、数字和 ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ 中的特殊字符）。"
+`"zh-cn": "`服务器登录密码，长度为8~30个字符，必须包含三项（大写英文字母、小写英文字母、数字和 ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ 中的特殊字符）。`"` `},`
 
 ```json
-      },
       "AllowedPattern": "[0-9A-Za-z\\_\\-\\&:;'<>,=%`~!@#\\(\\)\\$\\^\\*\\+\\|\\{\\}\\[\\]\\.\\?
 \\/]+$",
       "Label": {
         "en": "Instance Password",
 ```
 
-`"zh-cn": "`实例密码"
+`"zh-cn": "`实例密码`"` `},`
 
 ```json
-      },
       "MinLength": 8,
       "ConstraintDescription": {
         "en": "Length 8-30, must contain three(Capital letters, lowercase letters, numbers,
 ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ Special symbol in).",
 ```
 
-`"zh-cn": "`长度为8~30个字符，必须包含三项（大写英文字母、小写英文字母、数字和 ()`~!@#$%^&*_-+=|{} []:;'<>,.?/ 中的特殊字符）。"
+`"zh-cn": "`长度为8~30个字符，必须包含三项（大写英文字母、小写英文字母、数字和 ()`~!@#$%^&*_-+=|{} []:;'<>,.?/ 中的特殊字符）。`"` `},`
 
 ```json
-      },
       "MaxLength": 30,
       "Default": null
-    },
+```
+
+`},`
+
+```json
     "EIPInternetChargeType": {
       "Type": "String",
       "AllowedValues": [
@@ -18595,20 +19601,22 @@ letters, numbers, ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ Special symbol in).",
         "en": "The charge type of EIP, PayByBandwidth；PayByTraffic.",
 ```
 
-`"zh-cn": "`弹性公网`IP`的收费类型。`PayByBandwidth`：按带宽付费；`PayByTraffic`：按流量付费。"
+`"zh-cn": "`弹性公网`IP`的收费类型。`PayByBandwidth`：按带宽付费；`PayByTraffic`：按流量付费。`"` `},`
 
 ```json
-      },
       "Label": {
         "en": "EIP Charge Type",
 ```
 
-`"zh-cn": "`弹性公网`IP`的收费类型"
+`"zh-cn": "`弹性公网`IP`的收费类型`"` `},`
 
 ```json
-      },
       "Default": "PayByTraffic"
-    },
+```
+
+`},`
+
+```json
     "ECSImageId": {
       "Type": "String",
       "AssociationProperty": "ALIYUN::ECS::Instance::ImageId",
@@ -18616,24 +19624,19 @@ letters, numbers, ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ Special symbol in).",
         "en": "Image ID，Please use Centos7.",
 ```
 
-`"zh-cn": "`镜像`ID`，请使用`Centos7`。"
+`"zh-cn": "`镜像`ID`，请使用`Centos7`。`"` `},`
 
 ```json
-      },
       "Label": {
         "en": "Image",
 ```
 
-`"zh-cn": "`镜像"
+`"zh-cn": "`镜像`"`
 
 ```json
-      },
       "Default": "ubuntu_14"
-    },
 "ECSZoneId":{
 ```
-
-资源编排
 
 ```json
     ECSZoneId: {
@@ -18644,46 +19647,49 @@ letters, numbers, ()`~!@#$%^&*_-+=|{}[]:;'<>,.?/ Special symbol in).",
 whether the availability zone supports the specification of creating ECS resources. It is recommended to be different from other switch availability zones</font></b ><br><font color='red'>The switch avai lability zone and the selected switch instance ID must be in the same availability zone.</font>",
 ```
 
-`"zh-cn": "`可用区`ID`。`<br><b>`注： `<font color='blue'>`选择前请确认该可用区是否支持创建`ECS`资源的规格，建议与其他交换机可用区不同`</font></b><br><font color='red'>`交换机可用区和已选择的交换机实例`ID`必须在同一个可用区。`</font` `>"`
+`"zh-cn": "`可用区`ID`。`<br><b>`注： `<font color='blue'>`选择前请确认该可用区是否支持创建`ECS`资源的规格，建议与其他交换机可用区不同`</font></b><br><font color='red'>`交换机可用区和已选择的交换机实例`ID`必须在同一个可用区。`</font` `>"` `},`
 
 ```json
-      },
       "Label": {
         "en": "VSwitch Availability Zone",
 ```
 
-`"zh-cn": "`交换机可用区"
+`"zh-cn": "`交换机可用区`"` `}` `},`
 
 ```json
-      }
-    },
     "EIPBandwidth": {
       "Type": "Number",
       "Description": {
         "en": "EIP Bandwidth, Value range: [1,200], unit: Mbps.",
 ```
 
-`"zh-cn": "`弹性公网`IP`带宽。取值范围：1~200，单位：`Mbps`。"
+`"zh-cn": "`弹性公网`IP`带宽。取值范围：1~200，单位：`Mbps`。`"` `},`
 
 ```json
-      },
       "MinValue": 1,
       "Label": {
         "en": "EIP Bandwidth",
 ```
 
-`"zh-cn": "`弹性公网`IP`带宽"
+`"zh-cn": "`弹性公网`IP`带宽`"` `},`
 
-```java
-      },
+```json
       "MaxValue": 200,
       "Default": 1
-    },
+```
+
+`},`
+
+```json
     "ECSInstanceType": {
       "AssociationPropertyMetadata": {
         "ZoneId": "ECSZoneId",
         "InstanceChargeType": "InstanceChargeType"
-      },
+```
+
+`},`
+
+```java
       "AssociationProperty": "ALIYUN::ECS::Instance::InstanceType",
       "Type": "String",
       "Description": {
@@ -18697,19 +19703,16 @@ available zone under the model is in stock, some models need to be reported in a
 b></font><br><font color='blue'><b>2、取值：</font><br></b></font>[ecs.c5.large：<font
 ```
 
-`color='green'>2vCPU 4 GiB`，内网带宽`1Gbps`、内网收发包`30`万`PPS`。`</font>]<br></b>[ecs.c5.xlarge`：`<font color='` `green'>4vCPU 8GiB`，内网带宽`1.5Gbps`、内网收发包`50`万`PPS`。`</font>]<br></b>[ecs.c5.2xlarge`： `<font` `color='green'>8vCPU 16 GiB`，内网带宽`2.5 Gbps`、内网收发包`80`万`PPS`。`</font>]"`
+`color='green'>2vCPU 4 GiB`，内网带宽`1Gbps`、内网收发包`30`万`PPS`。`</font>]<br></b>[ecs.c5.xlarge`：`<font color='` `green'>4vCPU 8GiB`，内网带宽`1.5Gbps`、内网收发包`50`万`PPS`。`</font>]<br></b>[ecs.c5.2xlarge`： `<font` `color='green'>8vCPU 16 GiB`，内网带宽`2.5 Gbps`、内网收发包`80`万`PPS`。`</font>]"` `},`
 
 ```json
-      },
       "Label": {
         "en": "Instance Type",
 ```
 
-`"zh-cn": "`实例规格"
+`"zh-cn": "`实例规格`"` `}` `},`
 
 ```json
-      }
-    },
     "ECSDiskCategory": {
       "Type": "String",
       "Description": {
@@ -18717,74 +19720,73 @@ b></font><br><font color='blue'><b>2、取值：</font><br></b></font>[ecs.c5.la
 color='green'>Efficient Cloud Disk</font>]<br>[cloud_ssd: <font color='green'>SSD Cloud Disk</font>]<
 ```
 
-资源编排
-
 ```
 br>[cloud_essd: <font color='green'>ESSD Cloud Disk</font>]<br>[cloud: <font color='green'>Cloud Disk </font>]<br>[ephemeral_ssd: <font color='green'>Local SSD Cloud Disk</font>]",
         "zh-cn": "<font color='blue'><b>取值：</b></font><br>[cloud_efficiency: <font color='green'>高
 效云盘</font>]<br>[cloud_ssd: <font color='green'>SSD云盘</font>]<br>[cloud_essd: <font color='green'>E SSD云盘</font>]<br>[cloud: <font color='green'>普通云盘</font>]<br>[ephemeral_ssd: <font color='green'>
 ```
 
-本地`SSD`盘`</font>]"`
+本地`SSD`盘`</font>]"` `},`
 
 ```json
-      },
       "AssociationProperty": "ALIYUN::ECS::Disk::SystemDiskCategory",
       "AssociationPropertyMetadata": {
         "ZoneId": "ECSZoneId",
         "InstanceType": "ECSInstanceType"
-      },
+```
+
+`},`
+
+```json
       "Label": {
         "en": "System Disk Type",
 ```
 
-`"zh-cn": "`系统盘类型"
+`"zh-cn": "`系统盘类型`"` `}` `},`
 
 ```json
-      }
-    },
     "ECSSysDiskSize": {
       "Type": "Number",
       "Description": {
         "en": "System disk size, range of values: 40-500, units: GB.",
 ```
 
-`"zh-cn": "`系统盘大小，取值范围：40~500，单位：`GB`。"
+`"zh-cn": "`系统盘大小，取值范围：40~500，单位：`GB`。`"` `},`
 
 ```json
-      },
       "MinValue": 40,
       "Label": {
         "en": "System Disk Space",
 ```
 
-`"zh-cn": "`系统盘空间"
+`"zh-cn": "`系统盘空间`"` `},`
 
 ```json
-      },
       "MaxValue": 500,
       "Default": 40
-    },
+```
+
+`},`
+
+```json
     "InstanceChargeType": {
       "Type": "String",
       "Label": {
         "en": "Instance Charge Type",
 ```
 
-`"zh-cn": "`实例的付费方式"
+`"zh-cn": "`实例的付费方式`"` `},`
 
 ```json
-      },
       "Description": {
         "en": "<font color='blue'><b>Optional values:</b></font><br>[PostPaid: <font
 color='green'>Pay as you go.</font>]<br> [PrePaid: <font color='green'>Prepaid, monthly subscription. </font>]",
         "zh-cn": "<font color='blue'><b>取值：</b></font><br>[PostPaid: <font color='green'>按量付费。</
 ```
 
-`font>]<br>[PrePaid: <font color='green'>`预付费，包年包月。`</font>]"`
+`font>]<br>[PrePaid: <font color='green'>`预付费，包年包月。`</font>]"` `},`
 
 ```json
-      },
       "AllowedValues": [
         "PostPaid",
         "PrePaid"
@@ -18794,7 +19796,11 @@ color='green'>Pay as you go.</font>]<br> [PrePaid: <font color='green'>Prepaid, 
 
 ```json
       "Default": "PostPaid"
-    },
+```
+
+`},`
+
+```json
     "KeyPairName": {
       "Type": "String",
       "AssociationProperty": "ALIYUN::ECS::KeyPair::KeyPairName",
@@ -18802,32 +19808,35 @@ color='green'>Pay as you go.</font>]<br> [PrePaid: <font color='green'>Prepaid, 
         "en": "Key Pair Name",
 ```
 
-`"zh-cn": "`密钥对名称"
+`"zh-cn": "`密钥对名称`"` `},`
 
 ```json
-      },
       "Description": {
         "en": "If it is a Windows ECS instance, ignore this parameter. The default is blank.<br>If yo
 u have filled in <font color='green'>key pair name</font>, <font color='green'>instance password< The content of /font> will still be set in the instance, but the password login method in the Linux syste m will be forbidden.<br><font color='red'>Please enter the name of the existing key pair. If you use theinstancepasswordLogin thekeypairnamedoesnotneedtobefilledin</font>"
 ```
 
-资源编排
-
 ```
 the instance password Login, the key pair name does not need to be filled in.</font>,
 ```
 
-`"zh-cn": "`如果是`Windows ECS`实例，则忽略该参数。默认为空。`<br>`如果已填写`<font color='green'>`密钥对名称< `/font>`，`<font color='green'>`实例密码`</font>`的内容仍会被设置到实例中，但是`Linux`系统中的密码登录方式会被禁止。`<br><` `font color='red'>`请输入已有密钥对的名称。如使用实例密码登录，密钥对名称不需要填写。`</font>"`
+`"zh-cn": "`如果是`Windows ECS`实例，则忽略该参数。默认为空。`<br>`如果已填写`<font color='green'>`密钥对名称`<` `/font>`，`<font color='green'>`实例密码`</font>`的内容仍会被设置到实例中，但是`Linux`系统中的密码登录方式会被禁止。`<br><` `font color='red'>`请输入已有密钥对的名称。如使用实例密码登录，密钥对名称不需要填写。`</font>"` `},`
 
 ```json
-      },
       "Default": null
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Metadata": {
     "ALIYUN::ROS::Interface": {
       "ParameterGroups": [
-        {
+```
+
+`{`
+
+```json
           "Parameters": [
             "VPC",
             "VSwitch",
@@ -18839,9 +19848,11 @@ the instance password Login, the key pair name does not need to be filled in.</f
 ```json
           "Label": {
             "default": "VPC "
-          }
-        },
-        {
+```
+
+`}` `},` `{`
+
+```json
           "Parameters": [
             "EIPBandwidth",
             "EIPInternetChargeType"
@@ -18852,9 +19863,11 @@ the instance password Login, the key pair name does not need to be filled in.</f
 ```json
           "Label": {
             "default": "EIP"
-          }
-        },
-        {
+```
+
+`}` `},` `{`
+
+```json
           "Parameters": [
             "ECSZoneId",
             "ECSImageId",
@@ -18871,22 +19884,18 @@ the instance password Login, the key pair name does not need to be filled in.</f
 ```json
           "Label": {
             "default": "ECS"
-          }
-        }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
       "TemplateTags": [
         "Specify the image Id and snapshot to create ECS instance."
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "Resources": {
     "ECSInstanceGroup": {
       "Type": "ALIYUN::ECS::InstanceGroup",
@@ -18894,57 +19903,93 @@ the instance password Login, the key pair name does not need to be filled in.</f
         "IoOptimized": "optimized",
         "InstanceChargeType": {
           "Ref": "InstanceChargeType"
-        },
+```
+
+`},`
+
+```json
         "ZoneId": {
           "Ref": "ECSZoneId"
-        },
         "SystemDisk_Category": {
 ```
 
-资源编排
-
 ```json
           "Ref": "ECSDiskCategory"
-        },
         "SecurityGroupId": {
           "Ref": "SecurityGroup"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
           "Ref": "VSwitch"
-        },
+```
+
+`},`
+
+```json
         "MaxAmount": 1,
         "SystemDisk_Size": {
           "Ref": "ECSSysDiskSize"
-        },
+```
+
+`},`
+
+```json
         "VpcId": {
           "Ref": "VPC"
-        },
+```
+
+`},`
+
+```json
         "ImageId": {
           "Ref": "ECSImageId"
-        },
+```
+
+`},`
+
+```json
         "InstanceType": {
           "Ref": "ECSInstanceType"
-        },
+```
+
+`},`
+
+```json
         "AllocatePublicIP": "false",
         "Password": {
           "Ref": "ECSPassword"
-        },
+```
+
+`},`
+
+```json
         "KeyPairName": {
           "Ref": "KeyPairName"
-        }
-      }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "ElasticIp": {
       "Type": "ALIYUN::VPC::EIP",
       "Properties": {
         "Bandwidth": {
           "Ref": "EIPBandwidth"
-        },
+```
+
+`},`
+
+```json
         "InternetChargeType": {
           "Ref": "EIPInternetChargeType"
-        }
-      }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "ElasticIpAssociation": {
       "Type": "ALIYUN::VPC::EIPAssociation",
       "Properties": {
@@ -18952,61 +19997,61 @@ the instance password Login, the key pair name does not need to be filled in.</f
           "Fn::Select": [
 ```
 
-`0,`
+`0,` `{`
 
-```json
-            {
+```
               "Fn::GetAtt": [
                 "ECSInstanceGroup",
                 "InstanceIds"
 ```
 
-]
-
-```
-            }
-```
-
-]
+`]` `}` `]` `},`
 
 ```json
-        },
         "AllocationId": {
           "Ref": "ElasticIp"
-        }
-      }
-    }
-  },
+```
+
+`}`
+
+```json
   "Outputs": {
 ```
 
 `"V`
 
 ```
-Id" {
+Id"
 ```
-
-资源编排
 
 ```json
     "VpcId": {
       "Description": "VPC Id",
       "Value": {
         "Ref": "VPC"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "SecurityGroupId": {
       "Description": "Security Group Id",
       "Value": {
         "Ref": "SecurityGroup"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "VSwitchId": {
       "Description": "VSwitch Id",
       "Value": {
         "Ref": "VSwitch"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "EipAddress": {
       "Description": "IP address of created EIP.",
       "Value": {
@@ -19015,16 +20060,7 @@ Id" {
           "EipAddress"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Description:
@@ -19036,6 +20072,7 @@ ROSTemplateFormatVersion: '2015-09-01' Description:
 ```
 Parameters:
   VPC:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
     Type: String
     Description:
       en: Please search the ID starting with (vpc-xxx) from console-Virtual Private Cloud.
@@ -19076,13 +20113,11 @@ er VPC. ECS will be created under this VSwitch.</font>
     AssociationProperty: ALIYUN::ECS::SecurityGroup::SecurityGroupId
 ```
 
-D
+`D`
 
 ```
 iti
 ```
-
-资源编排
 
 ```
     Description:
@@ -19185,8 +20220,6 @@ ether the availability zone supports the specification of creating ECS resources
     Label:
 ```
 
-资源编排
-
 ```
       en: VSwitch Availability Zone
 ```
@@ -19272,7 +20305,7 @@ color=''green''>Efficient Cloud Disk</font>]<br>[cloud_ssd: <font color=''green'
       en: System Disk Space
 ```
 
-系统盘空间资源编排 `zh-cn:` 系统盘空间
+系统盘空间 `zh-cn:` 系统盘空间
 
 ```
     MaxValue: 500
@@ -19319,6 +20352,8 @@ Metadata:
     ParameterGroups:
       - Parameters:
           - VPC
+          - VSwitch
+          - SecurityGroup
         Label:
           default: 'VPC '
       - Parameters:
@@ -19342,10 +20377,9 @@ Metadata:
 Resources: ECSInstanceGroup:
 ```
 
-资源编排
-
 ```
   ECSInstanceGroup:
+    Type: ALIYUN::ECS::InstanceGroup
     Properties:
       IoOptimized: optimized
       InstanceChargeType:
@@ -19373,17 +20407,19 @@ Resources: ECSInstanceGroup:
       KeyPairName:
         Ref: KeyPairName
   ElasticIp:
+    Type: ALIYUN::VPC::EIP
     Properties:
       Bandwidth:
         Ref: EIPBandwidth
       InternetChargeType:
         Ref: EIPInternetChargeType
   ElasticIpAssociation:
+    Type: ALIYUN::VPC::EIPAssociation
     Properties:
       InstanceId:
         Fn::Select:
-          - 0
           - Fn::GetAtt:
+              - ECSInstanceGroup
               - InstanceIds
       AllocationId:
         Ref: ElasticIp
@@ -19406,30 +20442,29 @@ Outputs:
        Fn::GetAtt:
 ```
 
-资源编排
-
 ```
         - ElasticIp
         - EipAddress
 ```
 
-#### ALIYUN::VPC::PeeringRouterInterfaceBinding
+#### 7.12.3 ALIYUN::VPC::PeeringRouterInterfaceBinding
 
 ALIYUN::VPC::PeeringRouterInterfaceBinding类型用于绑定将要互联的两个路由器接口信息。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::VPC::PeeringRouterInterfaceBinding",
   "Properties": {
     "OppositeRouterId": String,
     "OppositeInterfaceId": String,
     "OppositeInterfaceOwnerId": String,
     "RouterInterfaceId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -19446,8 +20481,9 @@ Fn::GetAtt RouterInterfaceId：路由器ID。
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "InitiatorRouterInterfaceBinding": {
@@ -19456,31 +20492,26 @@ Fn::GetAtt RouterInterfaceId：路由器ID。
         "RouterInterfaceId": "ri-2zedgo0ih64g1me29****",
         "OppositeInterfaceId": "ri-2zex1tkyym98pjaor****",
         "OppositeRouterId": "vrt-2zexb35tzoriu0286****"
-      }
-    }
-  }
-}
 ```
 
-资源编排
+`}` `}` `}` `}`
 
-**7.12.4.**
-
-#### ALIYUN::VPC::PeeringRouterInterfaceConnection
+#### 7.12.4 ALIYUN::VPC::PeeringRouterInterfaceConnection
 
 ALIYUN::VPC::PeeringRouterInterfaceConnection类型用于发起路由器接口链接。
 
 **语法**
 
+`{`
+
 ```json
-{
   "Type": "ALIYUN::VPC::PeeringRouterInterfaceConnection",
   "Properties": {
     "OppositeInterfaceId": String,
     "RouterInterfaceId": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -19495,8 +20526,9 @@ Fn::GetAtt OppositeInterfaceId：接收端路由器接口的ID。 RouterInterfac
 
 **示例**
 
+`{`
+
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "InitiatorRouterInterfaceBinding": {
@@ -19504,22 +20536,18 @@ Fn::GetAtt OppositeInterfaceId：接收端路由器接口的ID。 RouterInterfac
       "Properties": {
         "RouterInterfaceId": "ri-2zedgo0ih64g1me29****",
         "OppositeInterfaceId": "ri-2ze4k5n2aeardu8cy****"
-      }
-    }
-  }
-}
 ```
 
-#### ALIYUN::VPC::RouterInterface
+`}` `}` `}` `}`
+
+#### 7.12.5 ALIYUN::VPC::RouterInterface
+
+ALIYUN::VPC::RouterInterface用于创建路由器接口。
 
 **语法**
 
-资源编排
-
 ```json
-{
   "Type": "ALIYUN::VPC::RouterInterface",
-  "Properties": {
     "OppositeRegionId": String,
     "Description": String,
     "HealthCheckSourceIp": String,
@@ -19539,9 +20567,9 @@ Fn::GetAtt OppositeInterfaceId：接收端路由器接口的ID。 RouterInterfac
     "Period": Number,
     "AutoPay": Boolean,
     "InstanceChargeType": String
-  }
-}
 ```
+
+`}` `}`
 
 **属性**
 
@@ -19552,8 +20580,6 @@ Fn::GetAtt OppositeInterfaceId：接收端路由器接口的ID。 RouterInterfac
 | RouterType | String | 否 | 否 | 所属的路由器类型。 | 取值： VRouter：VPC路由器。 VBR：边界路由器。 |
 | AccessPointId | String | 否 | 否 | 所属的接入点ID。 | RouterType取值为VBR 时该参数必须指定，而且创建后不允许修改。在 RouterType取值为 VRouter时，不能指定该参数。 |
 
-资源编排
-
 | Spec | String | 否 | 否 | 路由器接口的规格。 | 可用的规格和对应的带宽如下： Mini.2：2Mbps Mini.5：5Mbps Small.1：10Mbps Small.2：20Mbps Small.5：50Mbps Middle.1：100Mbps Middle.2：200Mbps Middle.5：500Mbps Large.1：1000 Mbps Large.2：2000Mbps Large.5：5000 Mbps Xlarge.1： 10000Mbps Role取值为 InitiatingSide时，该参数必须指定。 Role参数取值为 AcceptingSide时，该参数取值默认为 Negative。 |
 |---|---|---|---|---|---|
 | OppositeRegi onId | String | 否 | 否 | 要连接的对端所在的地域。 | 无 |
@@ -19563,27 +20589,25 @@ Fn::GetAtt OppositeInterfaceId：接收端路由器接口的ID。 RouterInterfac
 | OppositeRout erType | String | 否 | 是 | 要连接的对端路由器接口所属的路由器类型。 | 取值： VRouter：VPC路由器。 RouterType取值为 VBR时，该参数取值必须是VRouter。 VBR：边界路由器。 |
 | OppositeAcce ssPointId | String | 否 | 否 | 对端所属的接入点ID。 | OppositeRouterType取值为VBR时该参数必须指定，而且创建后不允许修改。 OppositeRouterType取值为VRouter时，不能指定该参数。 说明 OppositeRouterTy pe取值为VBR时 OppositeRouterId 所指定的VBR必须在 OppositeAccessPo intId所指定的接入点内。 |
 
-资源编排
-
-| Description | String | 否 | 是 | 路由器接口描述。 | 长度为2~256个字符。不能以 http:// 和 http s:// 开头。 不填则为空，默认为空。 |  |  |
+| Description | String | 否 | 是 | 路由器接口描述。 | 长度为2~256个字符。不能以 http:// 和 http s:// 开头。 不填则为空，默认为空。 |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | http |  |
-| Name | String | 否 | 是 | 路由器接口显示名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 和 http s:// 开头。可包含英文字母、汉字、数字、英文句点（.）、下划线（ ） _ 和短划线（-）。 |  |  |
-|  |  |  |  |  |  | http |  |
-| HealthCheckS ourceIp | String | 否 | 否 | 专线容灾和ECMP场景下用来做专线健康检查的 Packet的源IP。 | 只对本端是VRouter，而且对端是VB的路由器接口有效。必须是本端 VRouter所在的VPC内的一个未被使用的IP。 HealthCheckSourceIp 与 HealthCheckTargetIp 必须同时指定，或同时不指定。 |  |  |
-| HealthCheckT argetIp | String | 否 | 否 | 专线容灾和ECMP场景下用来做专线健康检查的 Packet的目标IP。 | 只对本端是VRouter，而且对端是VBR的路由器接口有效。通常可以用专线用户端CPE的IP（即对端 RI所在的VBR上的 PeerGatewayIp），也可以指定专线用户端的其他IP。 HealthCheckSourceIp 与 HealthCheckTargetIp 必须同时指定，或同时不指定。 |  |  |
-| PricingCycle | String | 否 | 否 | 预付费的计费周期。 | 取值： Month：按月付费。 Year：按年付费。 |  |  |
-| Period | Number | 否 | 否 | 购买时长。 | 取值： 当选择按月付费时，取值范围：1~9。 当选择按年付费时，取值范围：1~3。 |  |  |
-| AutoPay | Boolean | 否 | 否 | 自动付款。 | 取值： true false（默认值） |  |  |
-| InstanceChar geType | String | 否 | 否 | 实例的付费类型。 | 取值： Postpaid：后付费 （按量付费）。 Prepaid：预付费（包年包月）。 |  |  |
+|   |   |   |   |   |   | http |   |
+| Name | String | 否 | 是 | 路由器接口显示名称。 | 长度为2~128个字符。必须以英文字母或汉字开头，不能以 http:// 和 http s:// 开头。可包含英文字母、汉字、数字、英文句点（.）、下划线（ ） _ 和短划线（-）。 |   |   |
+|   |   |   |   |   |   | http |   |
+| HealthCheckS ourceIp | String | 否 | 否 | 专线容灾和ECMP场景下用来做专线健康检查的 Packet的源IP。 | 只对本端是VRouter，而且对端是VB的路由器接口有效。必须是本端 VRouter所在的VPC内的一个未被使用的IP。 HealthCheckSourceIp 与 HealthCheckTargetIp 必须同时指定，或同时不指定。 |   |   |
+| HealthCheckT argetIp | String | 否 | 否 | 专线容灾和ECMP场景下用来做专线健康检查的 Packet的目标IP。 | 只对本端是VRouter，而且对端是VBR的路由器接口有效。通常可以用专线用户端CPE的IP（即对端 RI所在的VBR上的 PeerGatewayIp），也可以指定专线用户端的其他IP。 HealthCheckSourceIp 与 HealthCheckTargetIp 必须同时指定，或同时不指定。 |   |   |
+| PricingCycle | String | 否 | 否 | 预付费的计费周期。 | 取值： Month：按月付费。 Year：按年付费。 |   |   |
+| Period | Number | 否 | 否 | 购买时长。 | 取值： 当选择按月付费时，取值范围：1~9。 当选择按年付费时，取值范围：1~3。 |   |   |
+| AutoPay | Boolean | 否 | 否 | 自动付款。 | 取值： true false（默认值） |   |   |
+| InstanceChar geType | String | 否 | 否 | 实例的付费类型。 | 取值： Postpaid：后付费 （按量付费）。 Prepaid：预付费（包年包月）。 |   |   |
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | s:// |  |
+|   | s:// |   |
 
-|  |  | http:// |
+|   |   | http:// |
 |---|---|---|
-|  | s:// |  |
+|   | s:// |   |
 
 **返回值**
 
@@ -19591,35 +20615,54 @@ Fn::GetAtt RouterInterfaceId：路由器接口ID。
 
 **示例**
 
-资源编排 `JSON` 格式
+`JSON` 格式
 
 ```json
-{
   "ROSTemplateFormatVersion": "2015-09-01",
   "Parameters": {
     "OppositeInterfaceId": {
       "Type": "String",
       "Description": "The ID of the peer router interface."
-    },
+```
+
+`},`
+
+```json
     "OppositeInterfaceOwnerId": {
       "Type": "String",
       "Description": "Owner account ID of the connection peer RouterInterface. The default value is c
 urrent user Id."
-    },
+```
+
+`},`
+
+```json
     "Description": {
       "Type": "String",
       "Description": "Custom description of the RouterInterface, [2, 256] characters. Don't fill or e
 mpty, the default is empty."
-    },
+```
+
+`},`
+
+```json
     "OppositeRouterId": {
       "Type": "String",
       "Description": "The router ID of the connection peer RouterInterface."
-    },
+```
+
+`},`
+
+```json
     "OppositeRegionId": {
       "Type": "String",
       "Description": "The region where the connection peer RouterInterface locates. The default value
 is region where stack is created."
-    },
+```
+
+`},`
+
+```json
     "PricingCycle": {
       "Type": "String",
       "Description": "Unit of the payment cycle. It could be Month (default) or Year.",
@@ -19628,10 +20671,9 @@ is region where stack is created."
         "Year"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "InstanceChargeType": {
       "Type": "String",
       "Description": "The billing method of the router interface. Valid values: PrePaid
@@ -19645,12 +20687,20 @@ is region where stack is created."
 
 ```json
       "Default": "PostPaid"
-    },
+```
+
+`},`
+
+```json
     "HealthCheckSourceIp": {
       "Type": "String",
       "Description": "Source IP address of the packet for leased line HealthCheck in leased line disa
 ster tolerance and ECMP scenarios. It is valid only for a VRouter RouterInterface with a peer on a VB R. The source IP address must be in the VPC of the local VRouter and is not used. HealthCheckSourceIp and HealthCheckTargetIp parameters must be both specified or left unspecified."
-    },
+```
+
+`},`
+
+```json
     "Period": {
       "Type": "Number",
       "Description": "Prepaid time period. It could be from 1 to 9 when PricingCycle is Month, or 1 t
@@ -19658,14 +20708,17 @@ o 3 when PricingCycle is Year. Default value is 3.",
       "AllowedValues": [
 ```
 
-`1,` `2,` `3,` `4,` 资源编排 `5,` `6,` `7,` `8,` ]
+`1,` `2,` `3,` `4,` `5,` `6,` `7,` `8,` `]` `},`
 
 ```json
-    },
     "RouterId": {
       "Type": "String",
       "Description": "The router ID to create RouterInterface."
-    },
+```
+
+`},`
+
+```json
     "AutoPay": {
       "Type": "Boolean",
       "Description": "Indicates whether automatic payment is enabled. Valid values:false: Automatic p
@@ -19677,15 +20730,18 @@ ayment is disabled. You need to go to Orders to make the payment once an order i
         "false"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "Name": {
       "Type": "String",
       "Description": "Custom name of the RouterInterface, [2, 128] English or Chinese characters, mus
 t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
-    },
+```
+
+`},`
+
+```json
     "Role": {
       "Type": "String",
       "Description": "RouterInterface role. Now support 'InitiatingSide|AcceptingSide'. If
@@ -19695,10 +20751,9 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
         "AcceptingSide"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "OppositeRouterType": {
       "Type": "String",
       "Description": "Router type of the connection peer router. Now support 'VRouter|VBR'. If
@@ -19712,7 +20767,11 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
 
 ```json
       "Default": "VRouter"
-    },
+```
+
+`},`
+
+```json
     "RouterType": {
       "Type": "String",
       "Description": "Router type. Now support 'VRouter|VBR'",
@@ -19725,102 +20784,165 @@ t start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'"
 
 ```json
       "Default": "VRouter"
-    },
+```
+
+`},`
+
+```json
     "AccessPointId": {
       "Type": "String",
       "Description": "Access point ID. If 'RouterType' is specified as 'VBR', the value is required."
-    },
     "OppositeAccessPointId": {
       "Type": "String",
 ```
 
-资源编排
-
 ```json
       "Description": "Access point ID of the connection peer RouterInterface. If 'OppositeRouterType'
 is specified as 'VBR', the value is required."
-    },
     "Spec": {
       "Type": "String",
       "Description": "RouterInterface specification. If 'Role' is specified as 'InitiatingSide', the
 value is required. If 'Role' is specified as 'AcceptingSide', the value is set as 'Negative' by defau lt."
-    },
+```
+
+`},`
+
+```json
     "HealthCheckTargetIp": {
       "Type": "String",
       "Description": "Target IP address of the packet for leased line HealthCheck in leased line disa
 ster tolerance and ECMP scenarios. It is valid only for a VRouter RouterInterface with a peer on a VB R. Usually you can use the CPE IP address of the leased line user's client (that is, the PeerGatewayI P on the VBR of the peer RouterInterface), you can also specify another IP address of the leased line user's client as the HealthCheck target IP address. HealthCheckSourceIp and HealthCheckTargetIp param eters must be both specified or left unspecified."
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Resources": {
     "RouterInterface": {
       "Type": "ALIYUN::VPC::RouterInterface",
       "Properties": {
         "OppositeInterfaceId": {
           "Ref": "OppositeInterfaceId"
-        },
-        "OppositeInterfaceOwnerId": {
-          "Ref": "OppositeInterfaceOwnerId"
-        },
-        "Description": {
-          "Ref": "Description"
-        },
-        "OppositeRouterId": {
-          "Ref": "OppositeRouterId"
-        },
-        "OppositeRegionId": {
-          "Ref": "OppositeRegionId"
-        },
-        "PricingCycle": {
-          "Ref": "PricingCycle"
-        },
-        "InstanceChargeType": {
-          "Ref": "InstanceChargeType"
-        },
-        "HealthCheckSourceIp": {
-          "Ref": "HealthCheckSourceIp"
-        },
-        "Period": {
-          "Ref": "Period"
-        },
-        "RouterId": {
-          "Ref": "RouterId"
-        },
-        "AutoPay": {
-          "Ref": "AutoPay"
-        },
-        "Name": {
-          "Ref": "Name"
-        },
-        "Role": {
-          "Ref": "Role"
-        },
-"OppositeRoterTpe" {
 ```
 
-资源编排
+`},`
+
+```json
+        "OppositeInterfaceOwnerId": {
+          "Ref": "OppositeInterfaceOwnerId"
+```
+
+`},`
+
+```json
+        "Description": {
+          "Ref": "Description"
+```
+
+`},`
+
+```json
+        "OppositeRouterId": {
+          "Ref": "OppositeRouterId"
+```
+
+`},`
+
+```json
+        "OppositeRegionId": {
+          "Ref": "OppositeRegionId"
+```
+
+`},`
+
+```json
+        "PricingCycle": {
+          "Ref": "PricingCycle"
+```
+
+`},`
+
+```json
+        "InstanceChargeType": {
+          "Ref": "InstanceChargeType"
+```
+
+`},`
+
+```json
+        "HealthCheckSourceIp": {
+          "Ref": "HealthCheckSourceIp"
+```
+
+`},`
+
+```json
+        "Period": {
+          "Ref": "Period"
+```
+
+`},`
+
+```json
+        "RouterId": {
+          "Ref": "RouterId"
+```
+
+`},`
+
+```json
+        "AutoPay": {
+          "Ref": "AutoPay"
+```
+
+`},`
+
+```json
+        "Name": {
+          "Ref": "Name"
+        "Role": {
+          "Ref": "Role"
+"OppositeRoterTpe"
+```
 
 ```json
         "OppositeRouterType": {
           "Ref": "OppositeRouterType"
-        },
         "RouterType": {
           "Ref": "RouterType"
-        },
+```
+
+`},`
+
+```json
         "AccessPointId": {
           "Ref": "AccessPointId"
-        },
+```
+
+`},`
+
+```json
         "OppositeAccessPointId": {
           "Ref": "OppositeAccessPointId"
-        },
+```
+
+`},`
+
+```json
         "Spec": {
           "Ref": "Spec"
-        },
+```
+
+`},`
+
+```json
         "HealthCheckTargetIp": {
           "Ref": "HealthCheckTargetIp"
-        }
-      }
-    }
-  },
+```
+
+`}` `}` `}` `},`
+
+```json
   "Outputs": {
     "RouterInterfaceId": {
       "Description": "The ID of created RouterInterface.",
@@ -19830,16 +20952,7 @@ ster tolerance and ECMP scenarios. It is valid only for a VRouter RouterInterfac
           "RouterInterfaceId"
 ```
 
-]
-
-```
-      }
-    }
-  }
-}
-```
-
-`YAML` 格式
+`]` `}` `}` `}` `}` `YAML` 格式
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Parameters:
@@ -19870,8 +20983,6 @@ ROSTemplateFormatVersion: '2015-09-01' Parameters:
 All dVl
 ```
 
-资源编排
-
 ```
     AllowedValues:
       - Month
@@ -19899,15 +21010,6 @@ All dVl
       Prepaid time period. It could be from 1 to 9 when PricingCycle is Month,
       or 1 to 3 when PricingCycle is Year. Default value is 3.
     AllowedValues:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
   RouterId:
     Type: String
     Description: The router ID to create RouterInterface.
@@ -19938,7 +21040,7 @@ All dVl
       'AcceptingSide'.
 ```
 
-资源编排 p g
+`p` `g`
 
 ```
     AllowedValues:
@@ -19989,6 +21091,7 @@ All dVl
       both specified or left unspecified.
 Resources:
   RouterInterface:
+    Type: 'ALIYUN::VPC::RouterInterface'
     Properties:
       OppositeInterfaceId:
         Ref: OppositeInterfaceId
@@ -20003,8 +21106,6 @@ Resources:
       PricingCycle:
         Ref: PricingCycle
 ```
-
-资源编排
 
 ```
       InstanceChargeType:
@@ -20038,5 +21139,6 @@ Outputs:
     Description: The ID of created RouterInterface.
     Value:
       'Fn::GetAtt':
+        - RouterInterface
         - RouterInterfaceId
 ```

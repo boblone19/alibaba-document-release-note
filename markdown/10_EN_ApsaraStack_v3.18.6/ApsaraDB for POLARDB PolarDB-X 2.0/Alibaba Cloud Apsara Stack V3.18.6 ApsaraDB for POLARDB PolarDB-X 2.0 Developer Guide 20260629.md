@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 179
 source_pdf: "7a5f9cef958b5bd9_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/PolarDB-X/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260629
@@ -4864,6 +4864,8 @@ Queries the monitoring information of a storage node.
 |---|---|---|---|
 | Success | Boolean | true | Indicates whether the request is successful. |
 
+**Description**
+
 Sample requests
 
 ```
@@ -4925,6 +4927,8 @@ Queries the monitoring information of an instance.
 | Message | String | **** | The returned message. |
 | RequestId | String | 88DC5709-8BEC- 4D17-A6D5- 4DACA9DF45TP | The request ID. |
 | Success | Boolean | true | Indicates whether the request is successful. |
+
+**Description**
 
 Sample requests
 

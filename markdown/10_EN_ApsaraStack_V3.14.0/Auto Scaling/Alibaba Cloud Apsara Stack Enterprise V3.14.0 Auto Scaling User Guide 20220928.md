@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 53
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 Auto Scaling User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E5%BC%B9%E6%80%A7%E8%AE%A1%E7%AE%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20Auto%20Scaling%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 Auto Scaling User Guide 20220928
@@ -158,7 +158,7 @@ This topic describes how to create a scaling group and how to add or remove ECS 
 
 ### 3.2 Log on to the Auto Scaling console
 
-console This topic describes how to log on to the Auto Scaling console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+console This topic describes how to log on to the Auto Scaling console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
@@ -168,7 +168,7 @@ Obtain the username and password that you can use to log on to the console from 
 
 ### 3.3 Create a scaling group
 
-This topic describes how to create a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that is dynamically scaled based on the configured scenario. You can specify the minimum and maximum numbers of ECS instances in a scaling group. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see Create a VPC and Create a vSwitch in VPC User Guide. To associate a scaling group with Server Load Balancer (SLB) instances, make sure that the following requirements are met: You have one or more SLB instances in the Running state. The SLB instances and the scaling group are in the same organization, resource set, and region. To associate a scaling group with ApsaraDB RDS instances, make sure that the following requirements are met: You have one or more RDS instances in the Running state. The RDS instances and the scaling group are in the same organization, resource set, and region.
+This topic describes how to create a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that is dynamically scaled based on the configured scenario. You can specify the minimum and maximum numbers of ECS instances in a scaling group. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see Create a VPC and Create a vSwitch in VPC User Guide. To associate a scaling group with Server Load Balancer (SLB) instances, make sure that the following requirements are met: You have one or more SLB instances in the Running state. The SLB instances and the scaling group are in the same organization, resource set, and region. To associate a scaling group with ApsaraDB RDS instances, make sure that the following requirements are met: You have one or more RDS instances in the Running state. The RDS instances and the scaling group are in the same organization, resource set, and region. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, click Scaling groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -202,7 +202,7 @@ Result The created scaling group is displayed in the scaling group list but is i
 
 ### 3.4 Create a scaling configuration
 
-This topic describes how to create a scaling configuration for a scaling group. Prerequisites At least one security group is available. If you do not have any security groups, create a security group. For more information, see Create a security group in ECS User Guide. Context You can create only a limited number of scaling configurations for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction.
+This topic describes how to create a scaling configuration for a scaling group. Prerequisites At least one security group is available. If you do not have any security groups, create a security group. For more information, see Create a security group in ECS User Guide. Context You can create only a limited number of scaling configurations for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -246,7 +246,7 @@ Result After the scaling configuration is created, it is in the Disabled state a
 
 ### 3.5 Enable a scaling group
 
-This topic describes how to enable a scaling group. You can enable a scaling group to trigger scaling activities. Prerequisites The scaling group is in the Disabled state. The scaling group has a scaling configuration that is in the Enable state.
+This topic describes how to enable a scaling group. You can enable a scaling group to trigger scaling activities. Prerequisites The scaling group is in the Disabled state. The scaling group has a scaling configuration that is in the Enable state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the scaling group that you want to enable and click Enable in the Act ions column.
@@ -255,7 +255,7 @@ Result The status of the scaling group is changed from Disabled to Enable in the
 
 ### 3.6 Create a scaling rule
 
-This topic describes how to create a scaling rule. You can create scaling rules to add or remove ECS instances. For example, you can add an ECS instance to a scaling group. Context You can create only a limited number of scaling rules for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction. After a scaling rule is executed, the resulting number of ECS instances in the scaling group may fall outside of the specified range. In this case, Auto Scaling automatically adjusts the number of ECS instances to ensure that the number of ECS instances in the scaling group is within the specified range.
+This topic describes how to create a scaling rule. You can create scaling rules to add or remove ECS instances. For example, you can add an ECS instance to a scaling group. Context You can create only a limited number of scaling rules for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction. After a scaling rule is executed, the resulting number of ECS instances in the scaling group may fall outside of the specified range. In this case, Auto Scaling automatically adjusts the number of ECS instances to ensure that the number of ECS instances in the scaling group is within the specified range. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -274,7 +274,7 @@ Name/ID column.
 
 ### 3.7 Create a scheduled task
 
-This topic describes how to create a scheduled task to scale computing resources in response to predictable business changes in the future. Scheduled tasks enable the system to automatically obtain sufficient computing resources before business peaks and release idle computing resources after the business peaks. Context A scheduled task is preconfigured to execute the specified scaling rule at the specified time. When the specified time arrives, the scheduled task automatically scales computing resources. This allows you to reduce costs and meet business requirements. You can also specify recurring schedules for scheduled tasks if business changes are regular. If multiple scheduled tasks need to be executed in 1 minute, Auto Scaling executes the most recently created scheduled task.
+This topic describes how to create a scheduled task to scale computing resources in response to predictable business changes in the future. Scheduled tasks enable the system to automatically obtain sufficient computing resources before business peaks and release idle computing resources after the business peaks. Context A scheduled task is preconfigured to execute the specified scaling rule at the specified time. When the specified time arrives, the scheduled task automatically scales computing resources. This allows you to reduce costs and meet business requirements. You can also specify recurring schedules for scheduled tasks if business changes are regular. If multiple scheduled tasks need to be executed in 1 minute, Auto Scaling executes the most recently created scheduled task. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > T imed t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -296,7 +296,7 @@ Result The scheduled task that you created is displayed in the scheduled task li
 
 ### 3.8 Create an event-triggered task
 
-This topic describes how to create an event-triggered task associated with monitoring metrics in response to emergent or unpredictable business changes. After you create and enable an eventtriggered task, Auto Scaling collects data for the specified metric in real time and triggers an alert when the specified condition is met. Then, Auto Scaling executes the corresponding scaling rule to scale Elastic Compute Service (ECS) instances in the scaling group.
+This topic describes how to create an event-triggered task associated with monitoring metrics in response to emergent or unpredictable business changes. After you create and enable an eventtriggered task, Auto Scaling collects data for the specified metric in real time and triggers an alert when the specified condition is met. Then, Auto Scaling executes the corresponding scaling rule to scale Elastic Compute Service (ECS) instances in the scaling group. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert T asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -324,7 +324,7 @@ This topic describes how to create an event-triggered task associated with monit
 
 ### 4.1 Create a scaling group
 
-This topic describes how to create a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that is dynamically scaled based on the configured scenario. You can specify the minimum and maximum numbers of ECS instances in a scaling group. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see Create a VPC and Create a vSwitch in VPC User Guide. To associate a scaling group with Server Load Balancer (SLB) instances, make sure that the following requirements are met: You have one or more SLB instances in the Running state. The SLB instances and the scaling group are in the same organization, resource set, and region. To associate a scaling group with ApsaraDB RDS instances, make sure that the following requirements are met: You have one or more RDS instances in the Running state. The RDS instances and the scaling group are in the same organization, resource set, and region.
+This topic describes how to create a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that is dynamically scaled based on the configured scenario. You can specify the minimum and maximum numbers of ECS instances in a scaling group. Prerequisites A virtual private cloud (VPC) and a vSwitch are created. For more information, see Create a VPC and Create a vSwitch in VPC User Guide. To associate a scaling group with Server Load Balancer (SLB) instances, make sure that the following requirements are met: You have one or more SLB instances in the Running state. The SLB instances and the scaling group are in the same organization, resource set, and region. To associate a scaling group with ApsaraDB RDS instances, make sure that the following requirements are met: You have one or more RDS instances in the Running state. The RDS instances and the scaling group are in the same organization, resource set, and region. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, click Scaling groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -364,7 +364,7 @@ Result The status of the scaling group is changed from Disabled to Enable in the
 
 ### 4.3 View scaling groups
 
-This topic describes how to view the scaling group list and the details of a specific scaling group.
+This topic describes how to view the scaling group list and the details of a specific scaling group. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 The scaling groups that correspond to the specified organization, resource set, and region are displayed.
@@ -389,7 +389,7 @@ You can select multiple filter options to narrow down the search results.
 
 ### 4.4 Modify a scaling group
 
-This topic describes how to modify a scaling group. You can modify the parameters of a specific scaling group, such as the minimum and maximum numbers of ECS instances. Context After you modify the minimum or maximum number of ECS instances that a scaling group can have, if the number of instances in the scaling group is outside this range, Auto Scaling automatically creates or removes ECS instances until the number of instances are within the range.
+This topic describes how to modify a scaling group. You can modify the parameters of a specific scaling group, such as the minimum and maximum numbers of ECS instances. Context After you modify the minimum or maximum number of ECS instances that a scaling group can have, if the number of instances in the scaling group is outside this range, Auto Scaling automatically creates or removes ECS instances until the number of instances are within the range. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click Edit in the Act ions column.
@@ -399,7 +399,7 @@ You can modify the scaling configuration and other parameters, but not the organ
 
 ### 4.5 Disable a scaling group
 
-This topic describes how to disable a scaling group. Prerequisites The scaling group does not have scaling activities in progress. The scaling group is in the Enable state.
+This topic describes how to disable a scaling group. Prerequisites The scaling group does not have scaling activities in progress. The scaling group is in the Enable state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click Disable in the Act ions column.
@@ -416,7 +416,7 @@ This topic describes how to delete a scaling group. When you delete a scaling gr
 
 ### 4.7 Query ECS instances
 
-You can query all ECS instances in a scaling group and their states.
+You can query all ECS instances in a scaling group and their states. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, click Scaling groups.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -433,7 +433,7 @@ Name/ID column.
 
 ### 4.8 Put an ECS instance into the Standby state
 
-Standby state This topic describes how to put an ECS instance into the Standby state. Auto Scaling does not perform health checks on or release ECS instances in the Standby state. Context After an ECS instance is put into the Standby state: The ECS instance stays in the Standby state until you change its status. Auto Scaling stops managing the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance. If a scale-in event is triggered, Auto Scaling will not remove the ECS instance. When the ECS instance is stopped or restarted, its health check status is not affected. To release the ECS instance, you must first remove it from the scaling group. If you delete the scaling group, the ECS instance is automatically put out of the Standby state and is released. You can also perform other operations on the ECS instance, such as stopping, restarting, changing the instance type of, or changing the operating system of the ECS instance.
+Standby state This topic describes how to put an ECS instance into the Standby state. Auto Scaling does not perform health checks on or release ECS instances in the Standby state. Context After an ECS instance is put into the Standby state: The ECS instance stays in the Standby state until you change its status. Auto Scaling stops managing the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance. If a scale-in event is triggered, Auto Scaling will not remove the ECS instance. When the ECS instance is stopped or restarted, its health check status is not affected. To release the ECS instance, you must first remove it from the scaling group. If you delete the scaling group, the ECS instance is automatically put out of the Standby state and is released. You can also perform other operations on the ECS instance, such as stopping, restarting, changing the instance type of, or changing the operating system of the ECS instance. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -460,7 +460,7 @@ column.
 
 ### 4.10 Put an ECS instance into the Protected state
 
-Protected state This topic describes how to put an ECS instance into the Protected state. Auto Scaling does not perform health checks on or release ECS instances that are in the Protected state. Context After an ECS instance is put into the Protected state: The ECS instance stays in the Protected state until you change its status. If a scale-in event is triggered, Auto Scaling will not remove the ECS instance. To release the ECS instance, you must remove the ECS instance from the Protected state and then remove it from the scaling group. When the ECS instance is stopped or restarted, its health check status is not affected.
+Protected state This topic describes how to put an ECS instance into the Protected state. Auto Scaling does not perform health checks on or release ECS instances that are in the Protected state. Context After an ECS instance is put into the Protected state: The ECS instance stays in the Protected state until you change its status. If a scale-in event is triggered, Auto Scaling will not remove the ECS instance. To release the ECS instance, you must remove the ECS instance from the Protected state and then remove it from the scaling group. When the ECS instance is stopped or restarted, its health check status is not affected. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -489,7 +489,7 @@ column.
 
 ### 5.1 Create a scaling configuration
 
-This topic describes how to create a scaling configuration for a scaling group. Prerequisites At least one security group is available. If you do not have any security groups, create a security group. For more information, see Create a security group in ECS User Guide. Context You can create only a limited number of scaling configurations for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction.
+This topic describes how to create a scaling configuration for a scaling group. Prerequisites At least one security group is available. If you do not have any security groups, create a security group. For more information, see Create a security group in ECS User Guide. Context You can create only a limited number of scaling configurations for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -543,7 +543,7 @@ Name/ID column.
 
 ### 5.3 Modify a scaling configuration
 
-This topic describes how to modify a scaling configuration. You can modify the parameters of a scaling configuration based on your actual needs.
+This topic describes how to modify a scaling configuration. You can modify the parameters of a scaling configuration based on your actual needs. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -557,7 +557,7 @@ For more information about parameters of the scaling configuration, see Create a
 
 ### 5.4 Apply a scaling configuration
 
-This topic describes how to apply a scaling configuration. You can create multiple scaling configurations for a scaling group and apply one.
+This topic describes how to apply a scaling configuration. You can create multiple scaling configurations for a scaling group and apply one. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -570,7 +570,7 @@ Result The status of the scaling configuration changes from Disabled to Enable i
 
 ### 5.5 Delete a scaling configuration
 
-This topic describes how to delete a scaling configuration that is no longer needed. After you delete a scaling configuration, existing ECS instances that are created from the scaling configuration are not removed. Prerequisites The scaling configuration is in the Disabled state.
+This topic describes how to delete a scaling configuration that is no longer needed. After you delete a scaling configuration, existing ECS instances that are created from the scaling configuration are not removed. Prerequisites The scaling configuration is in the Disabled state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -583,7 +583,7 @@ Name/ID column.
 
 ### 6.1 Create a scaling rule
 
-This topic describes how to create a scaling rule. You can create scaling rules to add or remove ECS instances. For example, you can add an ECS instance to a scaling group. Context You can create only a limited number of scaling rules for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction. After a scaling rule is executed, the resulting number of ECS instances in the scaling group may fall outside of the specified range. In this case, Auto Scaling automatically adjusts the number of ECS instances to ensure that the number of ECS instances in the scaling group is within the specified range.
+This topic describes how to create a scaling rule. You can create scaling rules to add or remove ECS instances. For example, you can add an ECS instance to a scaling group. Context You can create only a limited number of scaling rules for a scaling group. For more information, see the Limits topic in Auto Scaling Product Introduction. After a scaling rule is executed, the resulting number of ECS instances in the scaling group may fall outside of the specified range. In this case, Auto Scaling automatically adjusts the number of ECS instances to ensure that the number of ECS instances in the scaling group is within the specified range. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -602,7 +602,7 @@ Name/ID column.
 
 ### 6.2 View scaling rules
 
-This topic describes how to view scaling rules.
+This topic describes how to view scaling rules. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 The scaling groups that correspond to the specified organization, resource set, and region are displayed.
@@ -613,7 +613,7 @@ Name/ID column.
 
 ### 6.3 Modify a scaling rule
 
-This topic describes how to modify a scaling rule. You can modify the following parameters of a scaling rule: Rule Name, Scaling Activity, and Default Cooldown.
+This topic describes how to modify a scaling rule. You can modify the following parameters of a scaling rule: Rule Name, Scaling Activity, and Default Cooldown. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -625,7 +625,7 @@ Name/ID column.
 
 ### 6.4 Delete a scaling rule
 
-This topic describes how to delete a scaling rule that is no longer needed.
+This topic describes how to delete a scaling rule that is no longer needed. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -638,7 +638,7 @@ Name/ID column.
 
 ### 7.1 Manually execute a scaling rule
 
-This topic describes how to manually execute a scaling rule to add or remove ECS instances. Prerequisites The scaling group to which the scaling rule belongs is in the Enable state. No scaling activity is in progress in the scaling group to which the scaling rule belongs. Context After the scaling rule is executed, if the number of ECS instances is greater than the maximum number or less than the minimum number, Auto Scaling automatically adjusts the number of ECS instances to be within the valid range. Auto Scaling enables you to manually execute scaling rules. You can also associate an event-triggered task or scheduled task with the scaling rule to automatically adjust the number of ECS instances. For more information, see Create a scheduled task and Create an event-triggered task.
+This topic describes how to manually execute a scaling rule to add or remove ECS instances. Prerequisites The scaling group to which the scaling rule belongs is in the Enable state. No scaling activity is in progress in the scaling group to which the scaling rule belongs. Context After the scaling rule is executed, if the number of ECS instances is greater than the maximum number or less than the minimum number, Auto Scaling automatically adjusts the number of ECS instances to be within the valid range. Auto Scaling enables you to manually execute scaling rules. You can also associate an event-triggered task or scheduled task with the scaling rule to automatically adjust the number of ECS instances. For more information, see Create a scheduled task and Create an event-triggered task. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -650,7 +650,7 @@ Result The Scaling Act ivit ies page appears. You can view the details of your s
 
 ### 7.2 Manually add an ECS instance
 
-This topic describes how to manually add an ECS instance to a scaling group. You can add existing ECS instances to a scaling group to take full advantage of the computing resources. Prerequisites The ECS instance to be added must meet the following conditions: The ECS instance and the scaling group to which to add the instance share the same region, organization, and resource set. The ECS instance is in the Running state. The ECS instance does not belong to any scaling groups. The ECS instance and the scaling group are in the same VPC. The scaling group to which to add the ECS instance must meet the following conditions: The scaling group is in the Enable state. No scaling activity is in progress in the scaling group. Context When no scaling activity is being executed in the scaling group, you can add an ECS instance to the scaling group without the need to wait for the cooldown time to expire. If the number of instances in the scaling group is greater than the maximum number of instances after an ECS instance is added to the scaling group, the ECS instance cannot be added. The ECS instances that are manually added to a scaling group are not limited by scaling configurations. The instance types of the manually added instances can be different from that of the scaling configuration in the Enable state.
+This topic describes how to manually add an ECS instance to a scaling group. You can add existing ECS instances to a scaling group to take full advantage of the computing resources. Prerequisites The ECS instance to be added must meet the following conditions: The ECS instance and the scaling group to which to add the instance share the same region, organization, and resource set. The ECS instance is in the Running state. The ECS instance does not belong to any scaling groups. The ECS instance and the scaling group are in the same VPC. The scaling group to which to add the ECS instance must meet the following conditions: The scaling group is in the Enable state. No scaling activity is in progress in the scaling group. Context When no scaling activity is being executed in the scaling group, you can add an ECS instance to the scaling group without the need to wait for the cooldown time to expire. If the number of instances in the scaling group is greater than the maximum number of instances after an ECS instance is added to the scaling group, the ECS instance cannot be added. The ECS instances that are manually added to a scaling group are not limited by scaling configurations. The instance types of the manually added instances can be different from that of the scaling configuration in the Enable state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -662,7 +662,7 @@ Result The manually added instance is displayed on the Manually Added tab.
 
 ### 7.3 Manually remove an ECS instance
 
-This topic describes how to manually remove an ECS instance that is no longer needed from a scaling group. Prerequisites The scaling group must meet the following conditions: The scaling group is in the Enable state. No scaling activity is in progress in the scaling group. Context When no scaling activity is being executed in the scaling group, you can immediately remove an ECS instance from the scaling group without the need to wait for the cooldown time to expire. After an ECS instances is removed from a scaling group, the number of instances in the scaling group must be greater than or equal to the minimum number of instances. Otherwise, the ECS instance cannot be removed.
+This topic describes how to manually remove an ECS instance that is no longer needed from a scaling group. Prerequisites The scaling group must meet the following conditions: The scaling group is in the Enable state. No scaling activity is in progress in the scaling group. Context When no scaling activity is being executed in the scaling group, you can immediately remove an ECS instance from the scaling group without the need to wait for the cooldown time to expire. After an ECS instances is removed from a scaling group, the number of instances in the scaling group must be greater than or equal to the minimum number of instances. Otherwise, the ECS instance cannot be removed. Procedure
 1. Log on to the Auto Scaling console.
 2. In the top navigation bar, select an organization, a resource set, and a region.
 3. Find the target scaling group and click the name of the scaling group in the Scaling Group
@@ -678,7 +678,7 @@ Manually added ECS instances can only be removed, but cannot be released. Find t
 
 ### 8.1 Create a scheduled task
 
-This topic describes how to create a scheduled task to scale computing resources in response to predictable business changes in the future. Scheduled tasks enable the system to automatically obtain sufficient computing resources before business peaks and release idle computing resources after the business peaks. Context A scheduled task is preconfigured to execute the specified scaling rule at the specified time. When the specified time arrives, the scheduled task automatically scales computing resources. This allows you to reduce costs and meet business requirements. You can also specify recurring schedules for scheduled tasks if business changes are regular. If multiple scheduled tasks need to be executed in 1 minute, Auto Scaling executes the most recently created scheduled task.
+This topic describes how to create a scheduled task to scale computing resources in response to predictable business changes in the future. Scheduled tasks enable the system to automatically obtain sufficient computing resources before business peaks and release idle computing resources after the business peaks. Context A scheduled task is preconfigured to execute the specified scaling rule at the specified time. When the specified time arrives, the scheduled task automatically scales computing resources. This allows you to reduce costs and meet business requirements. You can also specify recurring schedules for scheduled tasks if business changes are regular. If multiple scheduled tasks need to be executed in 1 minute, Auto Scaling executes the most recently created scheduled task. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > T imed t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -703,7 +703,7 @@ Result The scheduled task that you created is displayed in the scheduled task li
 
 ### 8.2 View scheduled tasks
 
-This topic describes how to view scheduled tasks.
+This topic describes how to view scheduled tasks. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > T imed t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -720,7 +720,7 @@ You can select multiple filter options to narrow down the search results.
 
 ### 8.3 Modify a scheduled task
 
-This topic describes how to modify a scheduled task. You can modify parameters such as Start Time, Scaling Rules, and Retry Expiry Time for a scheduled task.
+This topic describes how to modify a scheduled task. You can modify parameters such as Start Time, Scaling Rules, and Retry Expiry Time for a scheduled task. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > T imed t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -731,7 +731,7 @@ You can modify the Recurrence and Expire parameters if you have enabled the Recu
 
 ### 8.4 Disable a scheduled task
 
-This topic describes how to disable a scheduled task. You can disable a scheduled task that is no longer needed. Prerequisites The scheduled task is in the Running state.
+This topic describes how to disable a scheduled task. You can disable a scheduled task that is no longer needed. Prerequisites The scheduled task is in the Running state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > T imed t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -741,7 +741,7 @@ Result The status of the scheduled task is changed from Running to St op in the 
 
 ### 8.5 Enable a scheduled task
 
-This topic describes how to enable a scheduled task. You can enable a scheduled task that has been disabled and use it to trigger scaling activities at the specified time point. Prerequisites The scheduled task is in the St op state.
+This topic describes how to enable a scheduled task. You can enable a scheduled task that has been disabled and use it to trigger scaling activities at the specified time point. Prerequisites The scheduled task is in the St op state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > T imed t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -762,7 +762,7 @@ This topic describes how to delete a scheduled task that is no longer needed.
 
 ### 9.1 Create an event-triggered task
 
-This topic describes how to create an event-triggered task associated with monitoring metrics in response to emergent or unpredictable business changes. After you create and enable an eventtriggered task, Auto Scaling collects data for the specified metric in real time and triggers an alert when the specified condition is met. Then, Auto Scaling executes the corresponding scaling rule to scale Elastic Compute Service (ECS) instances in the scaling group.
+This topic describes how to create an event-triggered task associated with monitoring metrics in response to emergent or unpredictable business changes. After you create and enable an eventtriggered task, Auto Scaling collects data for the specified metric in real time and triggers an alert when the specified condition is met. Then, Auto Scaling executes the corresponding scaling rule to scale Elastic Compute Service (ECS) instances in the scaling group. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert T asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -788,7 +788,7 @@ This topic describes how to create an event-triggered task associated with monit
 
 ### 9.2 View event-triggered tasks
 
-This topic describes how to view event-triggered tasks.
+This topic describes how to view event-triggered tasks. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert T asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -803,7 +803,7 @@ You can select multiple filter options to narrow down the search results.
 
 ### 9.3 Modify an event-triggered task
 
-This topic describes how to modify an event-triggered task. You can modify parameters such as Scaling Rules, Monitoring Type, and Statistic for an event-triggered task.
+This topic describes how to modify an event-triggered task. You can modify parameters such as Scaling Rules, Monitoring Type, and Statistic for an event-triggered task. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert T asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -814,7 +814,7 @@ For more information about other parameters of the scheduled task, see Create an
 
 ### 9.4 Disable an event-triggered task
 
-This topic describes how to disable an event-triggered task. You can disable an event-triggered task if you no longer want to use it to trigger scaling activities. Prerequisites The event-triggered task is in the Normal, Alert s, or Insuf f icient Dat a state.
+This topic describes how to disable an event-triggered task. You can disable an event-triggered task if you no longer want to use it to trigger scaling activities. Prerequisites The event-triggered task is in the Normal, Alert s, or Insuf f icient Dat a state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -824,7 +824,7 @@ Result The status of the event-triggered task is changed to St opped in the St a
 
 ### 9.5 Enable an event-triggered task
 
-This topic describes how to enable an event-triggered task. You can enable an event-triggered task that has been disabled to continue to monitor metrics and trigger scaling activities for a scaling group. Prerequisites The event-triggered task is in the St opped state.
+This topic describes how to enable an event-triggered task. You can enable an event-triggered task that has been disabled to continue to monitor metrics and trigger scaling activities for a scaling group. Prerequisites The event-triggered task is in the St opped state. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert t asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -834,7 +834,7 @@ Result The status of the event-triggered task changes from St opped to Normal in
 
 ### 9.6 Delete an event-triggered task
 
-This topic describes how to delete an event-triggered task. You can delete an event-triggered task that is no longer needed.
+This topic describes how to delete an event-triggered task. You can delete an event-triggered task that is no longer needed. Procedure
 1. Log on to the Auto Scaling console.
 2. In the left-side navigation pane, choose Event -driven T asks > Alert T asks.
 3. In the top navigation bar, select an organization, a resource set, and a region.

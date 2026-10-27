@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 327
 source_pdf: "2484b553e6842414_Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage Operations and Maintenance Guide 20260630.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Defined%20Storage%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Defined Storage Operations and Maintenance Guide
@@ -275,6 +275,9 @@ This topic describes how users such as O&M engineers log on to the Apsara Uni-ma
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key. ager Operations Console
@@ -547,6 +550,9 @@ Only CDS clusters support co-deployment of CDS-OSS and CDS-EBS. Co-deployment is
 #### 5.2.1 Overview of EBS clusters
 
 On the Cluster O&M page, you can view the capacity usage, I/O hangs, resource overview, and current alerts of Elastic Block Storage (EBS) clusters. You can also view a list of EBS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -647,6 +653,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 ###### 5.2.2.3.1 View cluster monitoring information
 
 You can view the real-time and historical monitoring data of an Elastic Block Storage (EBS) cluster to obtain the cluster resource usage. Historical monitoring data includes the read and write latency and total IOPS of the cluster in a specific time range.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -676,6 +685,9 @@ Move the pointer over a trend chart to view the value at a specific point in tim
 **BlockServer nodes**
 
 You can view the real-time monitoring data and historical monitoring data of a BlockServer node, such as the average latency within a specific time range and read/write IOPS. This allows you to know the resource usage of the BlockServer node promptly.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -760,6 +772,9 @@ By default, the block rebalance feature is enabled. If data is unevenly distribu
 **Background information**
 
 O&M engineers can determine whether the segments are evenly distributed by checking the average number of segments on each BlockServer node and the variance in the number of segments on all BlockServer nodes.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -839,6 +854,9 @@ Basic Information: In this section, you can view the cluster type, QoS feature s
 ###### 5.2.2.5.1 Manage BlockMaster nodes
 
 BlockMaster is a type of management node that can be used to perform multiple operations. For example, you can manage the metadata of disks, and generate the information about a block device when you create the virtual block device. BlockMaster nodes can distribute segments to different BlockServer nodes and schedule garbage collection (GC) threads based on the invalid data and fragment data reported by BlockServer nodes. Cloud Defined Storage (CDS)-OPS allows you to view the information about a BlockMaster node, such as the IP address and service location, check the server status, and obtain version information.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -862,6 +880,9 @@ BlockServer nodes can call the FlatLogFile API to manage the data files of segme
 **Background information**
 
 BlockServer nodes use the Index Map data structure to maintain the relationship between the logical block address (LBA) of data in segments and the offset address in the actual storage file. This way, read requests can quickly locate the actual data in the files of PANGU. In addition, BlockServer nodes use read-ahead cache to reduce the I/O of flies. This can optimize the read speed. BlockServer nodes collect the percentage of garbage data and the fragmentation degree in segments and report them to BlockMaster nodes. Then, BlockMaster nodes schedule garbage collection (GC) workers to perform a GC or defragmentation task. After a GC task is complete, the system compacts block data to update the Index Map data structure and deletes invalid data files.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -876,6 +897,9 @@ and obtain the server version information as required. You can use one of the fo
 ###### 5.2.2.5.3 Manage snapshot servers
 
 You can view the information about snapshot servers, such as the service address, task load, number of upload tasks, number of replication tasks, and number of download tasks. You can also obtain version information.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -1035,6 +1059,9 @@ Compute nodes are used to run computing tasks in a cluster. Cloud Defined Storag
 **Background information**
 
 An ECS instance is a virtual computing environment that you can configure and manage in ECS. Each ECS instance contains the most basic computing components, such as CPU and memory. Disks are block-level storage devices provided by Apsara Stack for ECS instances. ECS instances rely on the resources of compute nodes in a cluster to provide external services. Before you use an ECS instance, you must create disks to be used as the system disk and data disks of the ECS instance. To help you understand the association among compute nodes, ECS instances, and disks in a cluster, CDS-OPS provides the compute node feature.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Compute Node**.
@@ -1059,6 +1086,9 @@ You can search for an Elastic Block Storage (EBS) storage set by cluster name or
 **Prerequisites**
 
 Storage sets are created. For more information, see the "Create a storage set" topic of the EBS documentation in **CDS User Guide**.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Storage Set**.
@@ -1216,6 +1246,9 @@ You can initiate canary O&M tasks to run a common O&M command on multiple hosts 
 **Background information**
 
 You can execute canary O&M tasks to run multiple common O&M commands at the same time, such as hostname and /apsara/deploy/pangu_blockadmin. Canary O&M provides the following features: You can configure canary policies to determine the duration of a canary O&M task, the interval between canary O&M tasks, and other O&M settings. You can configure a command whitelist. Only commands in the whitelist can be run on specific clusters. You can specify the cluster and the command status to filter O&M tasks.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Canary O&M**.
@@ -1249,6 +1282,9 @@ After a canary O&M task is executed, you can perform the following operations: V
 ##### 5.2.9.1 Log in to the HaiTu console
 
 This topic describes how to log in to the HaiTu console.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -1298,6 +1334,9 @@ In the **Statistics Overview** section, select a cluster to view the disk size t
 ##### 5.2.9.3 Cluster management
 
 On the Cluster Management page, O&M engineers can manage Elastic Block Storage (EBS) computing clusters, storage clusters, and control clusters. The features supported by a cluster vary based on the cluster type. The actual features that are available in the console shall prevail.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, view the cluster information and details.
@@ -1313,6 +1352,9 @@ On the Cluster Management page, O&M engineers can manage Elastic Block Storage (
 ###### 5.2.9.3.1 View machines
 
 In the machine list, you can view hosts in a cluster and the host details. This helps O&M engineers fully understand the distribution of cluster resources and the status of the hosts, quickly identify issues, and efficiently perform maintenance operations.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
@@ -1362,6 +1404,9 @@ In the **BlockServer** section, view the location, number of segments, read IOPS
 ###### 5.2.9.3.3 View service templates
 
 O&M engineers can view service templates to quickly learn about the deployment template and version of each service in a cluster. This feature helps engineers obtain accurate information for version upgrade, configuration comparison, and standardized O&M.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
@@ -1371,6 +1416,9 @@ O&M engineers can view service templates to quickly learn about the deployment t
 ###### 5.2.9.3.4 View performance data
 
 This feature is supported only by CDS-EBS clusters. O&M engineers can view the performance data of a cluster and NCs to learn about the resource usage of the cluster and BlockServer.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
@@ -1412,6 +1460,9 @@ This feature is supported only by CDS-EBS clusters. By default, clusters use era
 After you modify the EC configurations for a cluster, the configurations take effect on both existing and new disks. You can check the progress of the EC conversion task in the **EC**
 **Progress** field. For more information, see View disk details.
 After the EC mode is enabled for a cluster, you cannot disable this mode for the cluster. This means that you cannot switch to the triplicate storage mode. Proceed with caution. You can modify the current EC configurations only by switching to a lower level of data redundancy. The system automatically calculates EC configurations with a lower level of data redundancy.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, find the cluster that you want to manage and click
@@ -1461,6 +1512,9 @@ After the O&M operations are completed, turn on **Sales Switch** to allow purcha
 ##### 5.2.9.4 Machine management
 
 On the Machine Management page, O&M engineers can view the host information and host details in a cluster. This information allows O&M engineers to quickly understand the physical location, service role status, and key attributes of hosts in a cluster, and facilitates resource locating and troubleshooting.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, click **Machine Management**.
 3. On the **Machine Management** page, view the hosts.
@@ -1477,6 +1531,9 @@ By default, hosts in all clusters are displayed.
 ###### 5.2.9.5.1 Manage the disk list
 
 O&M engineers can manage disk information to obtain the key attributes, such as the disk ID, status, and capacity, and modify disk IOPS and BPS configurations to facilitate resource management and troubleshooting.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Cloud Disk Management > Cloud Disks**.
 3. On the Cloud Disks page, manage the disk information in the disk list.
@@ -1493,6 +1550,9 @@ O&M engineers can manage disk information to obtain the key attributes, such as 
 ###### 5.2.9.5.2 View disk details
 
 O&M engineers can fully understand disk sales, computing control, and storage control details, including the name, specification, ownership, and status. This helps O&M engineers implement unified resource management and efficient O&M.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Disk Management > Disk Details**.
 3. On the **Block Device Information** page, specify the query condition.
@@ -1525,6 +1585,9 @@ The system displays the sales, computing control, and storage control informatio
 **Performance Monitor view**
 
 Distributed System Performance Monitor visualizes service metrics. O&M engineers can view the trend of key cluster metrics in a Distributed System Performance Monitor view.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Alert Monitoring > Monitoring Inspection >**
 **Distributed System Performance Monitor View**.
@@ -1571,6 +1634,9 @@ On the **Inspection Configuration** tab, view the list of inspection items, the 
 ###### 5.2.9.6.1.3 Manage log inspections
 
 By default, automatic inspections on I/O hang event logs are forcibly enabled. O&M engineers can view the inspection configurations and inspection history, and can manually start inspections. This helps you detect I/O hangs at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Alert Monitoring > Monitoring Inspection >**
 **Log Inspection**.
@@ -1597,6 +1663,9 @@ O&M engineers can view the information about I/O hangs to quickly locate disks t
 **Background information**
 
 An I/O hang indicates that an I/O operation on the system is blocked or not responded. When an I/O hang occurs, programs or system processes that rely on the operation are suspended. This may reduce the system response speed or even crash the system. I/O hangs may be caused by disk failures, high network latency, system bottlenecks, and high-concurrency access. After you locate the disk that encounters an I/O hang, you can troubleshoot the issue by using the following methods: You can view disk performance data to check the monitoring data of disk at a granularity of seconds or minutes. You can query logs to collect and view the logs of the disk within the time period during which the I/O hang occurs.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Alert Monitoring > IOHang Events**.
 3. On the IOHang Events page, select a time range to query I/O hangs.
@@ -1649,6 +1718,8 @@ You can query logs of a specified time range based on the module, NC, and log pa
 
 > **Warning:** You must be granted the required permissions before you can collect and export user logs. You must follow the principle of least privilege (PoLP) and collect only the logs of the services that are related to specific issues.
 
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Diagnostics Emergency > Log Query**.
 3. On the Log Query page, specify the module, NC, log path, and time range, and then click
@@ -1660,6 +1731,9 @@ To download logs to your on-premises machine, click **Download** in the **Action
 ###### 5.2.9.7.2 View disk performance data
 
 You can view the basic information, second-level monitoring data, and minute-level monitoring data of disks to understand the status of disks and analyze disks with I/O exceptions.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Diagnostics Emergency > Disk Performance**.
 3. On the Disk Performance page, set a query condition.
@@ -1763,6 +1837,9 @@ Manage workflows of O&M operations based on your business requirements.
 ###### 5.2.9.7.4 Event Center
 
 The Event Center displays events from all EBS clusters, including EBS-1.0 and CDS-EBS.
+
+**Procedure**
+
 1. Log in to the Haitu Console.
 2. In the left-side navigation pane, choose **Diagnostics & Emergency Response > Event**
 **Center**.
@@ -2034,6 +2111,9 @@ about the disks in the Running, To Be Run, Complete, or Error state, the total n
 ###### 5.2.9.9.3 Migration management
 
 O&M engineers can manage disk migration tasks during O&M, such as automatic migration, automatic decommissioning, and disk configuration change. This allows O&M engineers to track the real-time progress and execution status of each task in a visualized manner, and implements observation, tracking, and management during the migration process.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Migration and Replication O&M > Migration**
 **Management**.
@@ -2400,6 +2480,9 @@ After you configure the destination cloud, you can perform the following operati
 ###### 5.2.9.10.1 Query snapshot information
 
 O&M engineers can view snapshot information to fully understand the key attributes of a specified snapshot, such as the creation time, status, size, and associated disks. This facilitates evaluation of the snapshot availability and helps O&M engineers to make informed decisions on snapshot use, retention, and deletion.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Snapshot O&M > Snapshot Information**
 **Query**.
@@ -2420,6 +2503,9 @@ region, and then click **Search**.
 ###### 5.2.9.10.2 Manage snapshots
 
 The snapshot list allows O&M engineers to view the snapshot creation status of each disk in the cluster, including the snapshot status and creation time. This helps O&M engineers quickly obtain available snapshots for disk data recovery in the event of data loss or anomalies.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Snapshot O&M > Snapshots**.
 3. On the **Snapshots** page, manage snapshots.
@@ -2441,6 +2527,9 @@ O&M engineers can view the Object Storage Service (OSS) clusters and buckets use
 **Background information**
 
 Elastic Compute Service (ECS) instances use Elastic Block Service (EBS) disks to persist block data. You can create snapshots based on disks to implement data backup and recovery. The actual data of these snapshots is persisted in OSS. The HaiTu console supports efficient management of snapshots from the dimension of storage resources. You can go to the OSS Bucket Occupation page to view the OSS cluster, bucket, and storage capacity, and make informed decisions on resource allocation and cost management.
+
+**Procedure**
+
 1. Log in to the HaiTu console.
 2. In the left-side navigation pane, choose **Snapshot O&M > OSS Storage Usage**.
 3. On the **OSS Storage Usage** page, view the OSS cluster and bucket in which the snapshots
@@ -2461,6 +2550,9 @@ are stored, and configure zone-disaster recovery for the bucket.
 #### 5.3.1 Overview of EBS clusters
 
 On the Cluster O&M page, you can view the capacity usage, I/O hangs, resource overview, and current alerts of Elastic Block Storage (EBS) clusters. You can also view a list of EBS clusters to understand the overall information about the clusters and handle exceptions promptly.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2494,6 +2586,9 @@ On the Overview tab of an Elastic Block Storage (EBS) cluster, you can view the 
 **Background information**
 
 To manage existing clusters, Cloud Defined Storage (CDS)-OPS displays EBS clusters that are based on PANGU V1.0 and PANGU clusters. This allows you to view the cluster information and manage PANGU clusters. You can use CDS-OPS to perform O&M operations on PANGU clusters but not EBS clusters that are based on PANGU V1.0.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2526,6 +2621,9 @@ You can specify a time range or click a time range to view the monitoring data o
 ##### 5.3.2.2 View capacity information
 
 On the Capacity tab of an Elastic Block Storage (EBS) cluster, you can view the inventory capacity usage and physical capacity usage of the cluster. Then, you can scale up or scale down the cluster based on the capacity usage of the cluster and business requirements.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2548,6 +2646,9 @@ cluster.
 ###### 5.3.2.3.1 View cluster monitoring information
 
 You can view the historical monitoring data of an Elastic Block Storage (EBS) cluster to obtain the cluster resource usage. Historical monitoring data includes the read and write latency and total IOPS of the cluster in a specific time range.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2574,6 +2675,9 @@ Move the pointer over a trend chart to view the value at a specific point in tim
 **RiverServer nodes**
 
 You can view the historical monitoring data of a RiverServer node, such as the average latency and read/write IOPS in a specific time range. This allows you to know the resource usage of the RiverServer node.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2600,6 +2704,9 @@ Move the pointer over a trend chart to view the value at a specific point in tim
 **nodes**
 
 A RiverCluster node is a management node of a storage service. This node manages the information about disks, such as metadata, and allocates RiverServer nodes to disks to achieve high availability. This topic describes how to view the information about a RiverCluster node, such as the IP address and service location.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2615,6 +2722,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **nodes**
 
 This topic describes how to view the information about a RiverServer node, such as the IP address and service location.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > Cluster O&M**.
@@ -2710,6 +2820,9 @@ server roles, cluster, monitoring data, and logical resources. The following tab
 #### 5.4.1 Overview of OSS clusters
 
 On the Cluster O&M page, you can view the capacity usage, resource overview, and current alerts of Object Storage Service (OSS) clusters. You can also view a list of OSS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2789,6 +2902,9 @@ buckets in the cluster. Click a bucket name in a ranking list. On the Bucket Det
 ##### 5.4.2.2 View capacity information
 
 You can view the logical capacity usage, physical capacity usage, distribution of used physical capacity, and physical capacity usage trend of an Object Storage Service (OSS) cluster as required.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2813,6 +2929,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 ###### 5.4.2.3.1 View cluster monitoring information
 
 You can view the monitoring data of an Object Storage Service (OSS) cluster within a specific time range to obtain the cluster status. The monitoring data includes the service level agreement (SLA), status of HTTP requests, storage capacity, queries per second (QPS), bandwidth statistics, and latency.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2835,6 +2954,9 @@ HTTP Status: the numbers of the returned 5XX, 403, 404, 499, 4XX_other, 2XX, and
 ###### 5.4.2.3.2 Check the health status of a cluster
 
 Key-value (KV) engine is a KV storage layer to store KV pairs. This helps you manage large amounts of index information. You can view the status of KV engines by checking the health status of a cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2853,6 +2975,9 @@ You can run background tasks based on your business requirements. For example, y
 **Background information**
 
 Background tasks can be manually or automatically run. By default, the system automatically runs background tasks every day. You cannot disable automatic background tasks. Manually: You can manually run a background task. Automatically: You can specify a point in time to automatically run a background task. The system automatically runs the task at the specified point in time every day. For more information, see Configure a scheduled time for background tasks.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2871,6 +2996,9 @@ Run a lifecycle task In the **Lifecycle** section, click **Run Now**. In the **N
 ###### 5.4.2.4.1 Modify KV configurations
 
 You can modify the configurations of key-value (KV) Server nodes, such as monitoring data capacity. You can also enable or disable automatic partition splitting for key management (KM) Master nodes. In most cases, you can retain the default KV configurations. We recommend that you modify the KV configurations under the guidance of technical experts.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2897,6 +3025,9 @@ In EC mode, the N+M configuration varies based on the minimum number of servers 
 **Usage notes**
 
 You cannot modify EC configurations when O&M operations are being performed on servers in a cluster. Wait until the O&M operations are complete and try again. After the EC mode is enabled for a cluster, you cannot disable this mode for the cluster, which means you cannot switch to the triplicate storage mode. Exercise caution when you perform this operation. You can modify the current EC configuration only to one with lower redundancy. The system automatically calculates EC configurations with lower redundancy for selection.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -2945,6 +3076,9 @@ Configure a scheduled time for GC tasks On the **GC** tab, find GC and click **E
 ###### 5.4.2.4.4 Configure a global flag
 
 You can configure the settings of each service in a cluster based on your business requirements. In most cases, you can use the default global flag configurations. If you need to configure a global flag, configure the settings under the guidance of technical experts.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
@@ -3042,6 +3176,9 @@ i. Specify flag values for the oss_QosGlobalMaxSendFlowTotal (write throughput),
 > **Important:** Hosts of different models have different preset values for QoS settings. Contact Apsara Stack technical support to obtain the corresponding preset values.
 
 ii. Set the oss_QosGlobalEnable parameter of oss_service to true.
+
+**Procedure**
+
 1. Log in to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -3073,6 +3210,9 @@ iii. Click **OK**.
 ###### 5.4.2.5.1 Manage KV services
 
 In an index system, KV services have the following responsibilities: Key-value (KV) Master nodes can manage and schedule partitions. KV Server nodes can configure the indexes of partitions and store data. Key management (KM) Master nodes can schedule and distribute loads to balance the loads of each partition. KM Server nodes can run tasks. If you need to analyze an O&M issue, you can obtain the information about KV services such as KV Master and KV Server nodes or restart KV services for troubleshooting.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -3123,6 +3263,8 @@ Manage KM Server nodes On the **KMServer** tab, view the server information abou
 After you analyze an error and determine that the error occurs in an access-layer service, you can restart the access-layer service, such as a service of TEngine, OssServer, or OssImageServer, to troubleshoot the error.
 
 > **Warning:** Do not restart services on frontend servers. If you need help, contact Apsara Stack technical support.
+
+**Procedure**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
@@ -3331,6 +3473,9 @@ HTTP Status: the numbers of the returned 5XX, 403, 404, 499, 4XX_other, 2XX, and
 ##### 5.4.3.2 Query bucket information
 
 You can query buckets by Apsara Stack tenant account, user ID (UID), or bucket name. After you query a bucket, you can view the bucket details, manage the bucket, and delete the bucket.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Bucket > Bucket Query**.
@@ -3411,6 +3556,9 @@ This topic describes how to manage the cross-region or cross-cloud synchronizati
 **Prerequisites**
 
 Cross-region or cross-cloud synchronization processes are configured. For more information, see Configure cross-region synchronization processes and Configure crosscloud synchronization processes. Cross-region replication or cross-cloud replication is enabled for buckets in the Object Storage Service (OSS) console by using the Apsara Uni-manager Management Console. For more information, see the "Configure CRR rules" or "Configure cross-cloud replication" section of the Cloud Defined Storage User Guide.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Synchronization Management >**
@@ -3440,6 +3588,9 @@ The region ID of the destination region is obtained.
 **Usage notes**
 
 The source and destination regions must reside in the same cloud, and the network between the two regions is connected.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Synchronization Management >**
@@ -3604,6 +3755,9 @@ Sample policy:
 
 `]` `}` `]` `}`
 6. Click **Save**.
+
+**Procedure**
+
 Log on to the Apsara Uni-manager Operations Console of the source cloud and go to the CDS- OPS console to configure cross-cloud synchronization.
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
@@ -3641,6 +3795,9 @@ The monitoring data of cluster synchronization shows the synchronization status 
 **Background information**
 
 By default, the synchronization monitoring data of all clusters in the current region is displayed. The monitoring data of a cluster, such as the number of synchronized files and fragments, is displayed only if a synchronization task and a data replication task are configured for the cluster. You can check whether a data replication task is configured for a cluster on the **Synchronization Process Management** page. For more information, see Manage synchronization processes. If no synchronization task is configured for a cluster or a synchronization task is configured but no data replication task is configured, the values of the monitoring metrics are 0.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Synchronization Management >**
@@ -3653,6 +3810,9 @@ The system displays the synchronization monitoring data of clusters in each regi
 ##### 5.4.5.1 Manage O&M robots
 
 You can use O&M robots to perform automatic O&M tasks, such as intelligent analysis and diagnostics on faulty machines, intelligent analysis and diagnostics on hot issues, automatic repair of key-value (KV) CheckReady failures, emergency solutions for file damages, automatic adjustment of the KV recycle bin, and automatic write prohibition and recovery of Object Storage Service (OSS). O&M robots simplify O&M operations and improve O&M efficiency.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > O&M Robot**.
@@ -3676,6 +3836,9 @@ By default, all O&M robots are enabled. If you need to disable an O&M robot, fin
 ##### 5.4.5.2 View historical O&M tasks
 
 On the O&M History tab, you can view the history of different types of O&M tasks that are automatically executed by O&M robots.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > O&M Robot**.
@@ -3691,6 +3854,9 @@ You can click the plus icon before an O&M task to view the running information a
 ##### 5.4.6.1 Log in to the OSS O&M console
 
 After you log in to the Object Storage Service (OSS) O&M console, you can use, configure, and perform O&M operations on OSS. This topic describes how to log in to the OSS O&M console.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -3700,6 +3866,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 ##### 5.4.6.2 Cluster overview
 
 On the **Home** page, you can view metrics for all clusters, a specific cluster, or the top 10 buckets in the current region.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane of the Data Cube console, click **Home**.
 3. On the **Home** page, information for all clusters is displayed by default. You can select a
@@ -3744,6 +3913,9 @@ The second column shows the UID of the Alibaba Cloud account that owns the bucke
 ###### 5.4.6.3.1.1 Basic bucket information
 
 This topic describes how to query basic information about a bucket, such as the cluster deployment location, configurations, current capacity, and the number of objects stored in the bucket.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **User and Bucket O&M > User Data Query**.
 3. On the page that appears, select **Apsara Stack Tenant Account**, **UID**, **Bucket Name** or
@@ -3761,6 +3933,9 @@ the name of the bucket whose information you want to query. Then, click **Query*
 ###### 5.4.6.3.1.2 User data overview
 
 Object Storage Service (OSS) allows you to view the statistical data of a user, such as the resource usage and the attributes of resources. You can measure the total resource usage of all buckets owned by an Apsara Stack tenant account or UID on a specific day.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **User and Bucket O&M > User Data Query**.
 3. On the page that appears, select **Apsara Stack Tenant Account** or **UID** from the drop-
@@ -3771,6 +3946,9 @@ View the resource usage, including the total storage capacity, total inbound and
 ###### 5.4.6.3.1.3 Data monitoring
 
 This topic describes how to monitor Object Storage Service (OSS) data in the OSS O&M console.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **User and Bucket O&M > User Data Query**.
 3. On the page that appears, select **Apsara Stack Tenant Account**, **UID**, **Bucket Name**, or
@@ -3796,7 +3974,11 @@ describes the parameters.
 
 ###### 5.4.6.3.2 Bucket management
 
-You can use the bucket management feature to manage your users and buckets. For example, you can modify the status of users, status of buckets, and access control lists (ACLs) of buckets. 1.
+You can use the bucket management feature to manage your users and buckets. For example, you can modify the status of users, status of buckets, and access control lists (ACLs) of buckets.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the Object Storage Service (OSS) Operations and
@@ -3822,6 +4004,9 @@ In the **Bucket list information** section, you can manage your buckets. Click *
 ###### 5.4.6.3.3 Disassociate a bucket from a VPC
 
 This topic describes how to disassociate an Object Storage Service (OSS) bucket from a virtual private cloud (VPC).
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **User and Bucket O&M > Remove Domain**
 **Name Mapping from Bucket**.
@@ -3886,7 +4071,11 @@ Set the **Bucket** parameter to the name of the destination bucket or an asteris
 
 ###### 5.4.6.4.1.1 Cluster overview
 
-In the Object Storage Service (OSS) Operations and Maintenance System, you can view the running status of a cluster, such as data monitoring, bucket statistics, and object statistics. 1.
+In the Object Storage Service (OSS) Operations and Maintenance System, you can view the running status of a cluster, such as data monitoring, bucket statistics, and object statistics.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane, choose **Cluster O&M > Cluster Monitoring > Cluster**
@@ -3896,7 +4085,11 @@ class, service-level agreement (SLA) this year, total requests with 5xx today, t
 
 ###### 5.4.6.4.1.2 Inventory monitoring
 
-You can monitor the following metrics: total capacity, unused capacity, used capacity, backup ratio, and storage usage. 1.
+You can monitor the following metrics: total capacity, unused capacity, used capacity, backup ratio, and storage usage.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the Object Storage Service (OSS) Operations and
@@ -3923,7 +4116,11 @@ space issues.
 
 ###### 5.4.6.4.1.3 Data monitoring
 
-This topic describes how to view the metrics used to monitor data by cluster. 1.
+This topic describes how to view the metrics used to monitor data by cluster.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the Object Storage Service (OSS) Operations and
@@ -3948,6 +4145,9 @@ status codes and the percentage of the requests to which these codes are returne
 ###### 5.4.6.4.1.4 Resource usage rankings
 
 Resource usage ranked by clusters helps O&M engineers monitor and identify high-usage users.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Cluster Monitoring > Resource**
 **Usage Ranking**.
@@ -3963,7 +4163,11 @@ If you set the **Display Method** parameter to **Report**, you can select a buck
 
 ###### 5.4.6.4.1.5 Bucket statistics
 
-This topic describes how to measure the number of buckets created in each cluster. 1.
+This topic describes how to measure the number of buckets created in each cluster.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the Object Storage Service (OSS) Operations and
@@ -3976,7 +4180,11 @@ If you select **Report Statistics**, you must configure **Select Time Range**. I
 
 ###### 5.4.6.4.1.6 Object statistics
 
-This topic describes how to measure the number of objects stored in each cluster and the trend of the number. 1.
+This topic describes how to measure the number of objects stored in each cluster and the trend of the number.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the Object Storage Service (OSS) Operations and
@@ -3990,6 +4198,9 @@ If you select **Current Overall Statistics**, the statistics that you query are 
 ###### 5.4.6.4.2 Govern cluster usage
 
 Based on the analysis reports of cluster usage, pending garbage collection (GC) data items, and historical data trends, O&M engineers can detect and handle abnormal usage at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Cluster Usage Governance**.
 3. On the **Cluster Usage Governance** page, select a cluster.
@@ -4005,7 +4216,11 @@ Based on the analysis reports of cluster usage, pending garbage collection (GC) 
 
 ###### 5.4.6.4.3 View the information about servers
 
-In the Object Storage Service (OSS) Operations and Maintenance System, you can view the information about servers in a cluster. 1.
+In the Object Storage Service (OSS) Operations and Maintenance System, you can view the information about servers in a cluster.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the OSS Operations and Maintenance System, choose
@@ -4023,7 +4238,11 @@ Click **Machine information**. You can view the basic information of the host, s
 
 ###### 5.4.6.4.4 Disk management
 
-In the Object Storage Service (OSS) Operations and Maintenance System, you can view the disk usage of all servers in a cluster. 1.
+In the Object Storage Service (OSS) Operations and Maintenance System, you can view the disk usage of all servers in a cluster.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3.
 4. In the left-side navigation pane of the OSS Operations and Maintenance System, choose
@@ -4039,6 +4258,8 @@ By default, the system assigns a domain name and a virtual IP address (VIP) to e
 
 > **Important:** The VIP of an Object Storage Service (OSS) cluster dynamically changes and may compromise access security. Therefore, do not directly use the VIP to access OSS.
 
+**Procedure**
+
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Network Management >**
 **Domain Name Management**.
@@ -4052,6 +4273,9 @@ By default, the system assigns a domain name and a virtual IP address (VIP) to e
 ###### 5.4.6.4.5.2 Manage virtual IP addresses
 
 By default, the system assigns and bounds a virtual IP address (VIP) to the cluster. You can use the VIP management feature to view the details of built-in VIPs. You can also view the details of Classic Load Balancer (CLB) instances, view the details of AnyTunnel load balancers, and switch the forwarding mode of load balancers. This allows you to manage the bandwidth and forwarding mode of clusters and troubleshoot issues in a more efficient manner.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Cluster O&M > Network Management > VIP**
 **Management**.
@@ -4089,6 +4313,8 @@ the components such as pangu and kv are running as normal. The storage usage and
 the storage usage is normal, and the remaining storage space is sufficient to store the data migrated from the source cluster.
 **Make sure that the Message Service (MNS) component runs as normal** : Contact the
 Alibaba Cloud technical support for assistance.
+
+**Procedure**
 
 **Step 1: Enable the migration mode**
 
@@ -4185,6 +4411,9 @@ This topic describes how to add users to the OSS Control Manager (OCM) list and 
 **Usage notes**
 
 All modifications on the OCM list take effect after 30 minutes.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M - OSS > OCM List Management**.
 3. On the **Special User**tab, add users.
@@ -4244,7 +4473,11 @@ The system displays all applications in the cluster.
 
 ###### 5.4.6.5.3 Location query
 
-In the Object Storage Service (OSS) Operations and Maintenance System, you can query the location information of OSS. 1.
+In the Object Storage Service (OSS) Operations and Maintenance System, you can query the location information of OSS.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Product Management > Products** to go to the
 Products page. Then, in the Storage Service section, click **OSS Operations and**
@@ -4256,6 +4489,9 @@ Products page. Then, in the Storage Service section, click **OSS Operations and*
 ###### 5.4.6.5.4 Manage OSS global flags
 
 You need to configure the parameters of each service in the Object Storage Service (OSS) cluster, such as the number of garbage collection (GC) partitions and GC threads. In most cases, you can use the default global flag configurations. If you need to configure a global flag, configure the settings under the guidance of technical experts.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M - OSS > OSS GlobalFlag**
 **Configuration**.
@@ -4297,6 +4533,8 @@ following table, and then click **Submit**. On the **Batch Workflow Submission**
 You can restart key services, such as TEngine, OssServer, and ImageServer on the Object Storage Service (OSS) server to ensure the stability and availability of OSS.
 
 > **Warning:** Security risks may arise if you restart OSS services. Proceed with caution.
+
+**Procedure**
 
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane of the OSS O&M console, choose **Service O&M - OSS >**
@@ -4348,7 +4586,11 @@ In the Object Storage Service (OSS) O&M console, you can view the status and exe
 
 ###### 5.4.6.5.6.2 Backend task configurations
 
-In the Object Storage Service (OSS) Operations and Maintenance System, you can configure lifecycle rules and the time when garbage collector (GC) tasks are run. 1.
+In the Object Storage Service (OSS) Operations and Maintenance System, you can configure lifecycle rules and the time when garbage collector (GC) tasks are run.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Product Management > Products** to go to the
 Products page. Then, in the Storage Service section, click **OSS Operations and**
@@ -4552,6 +4794,9 @@ The region ID of the destination region is obtained.
 **Usage notes**
 
 The source and destination regions must reside in the same cloud, and the network between the two regions is connected.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M-OSS > Synchronization**
 **Management > Cross-region Synchronization Configuration**.
@@ -4576,6 +4821,9 @@ The source and destination module allows O&M administrators to centrally manage 
 **Prerequisites**
 
 Cross-cloud synchronization or cross-region synchronization is configured. For more information, see Cross-cloud synchronization or Cross-region synchronization. Cross-region replication or cross-cloud replication is enabled for buckets in the Object Storage Service (OSS) console by using the Apsara Uni-manager Management Console. For more information, see the "Configure CRR rules" or "Configure cross-cloud replication" section of Cloud Defined Storage User Guide or OSS User Guide.
+
+**Procedure**
+
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane, choose **Service O&M - OSS > Synchronization**
 **Management > Source and Destination**.
@@ -4597,6 +4845,9 @@ On the DRS Task Distribution Monitoring page, O&M engineers can view the distrib
 **Prerequisites**
 
 Cross-cloud synchronization or cross-region synchronization is configured. For more information, see Cross-cloud synchronization or Cross-region synchronization. Cross-region replication or cross-cloud replication is enabled for buckets in the Object Storage Service (OSS) console by using the Apsara Uni-manager Management Console. For more information, see the "Configure CRR rules" or "Configure cross-cloud replication" section of Cloud Defined Storage User Guide or OSS User Guide.
+
+**Procedure**
+
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane, choose **Service O&M - OSS > Synchronization**
 **Management > DRS Task Distribution**.
@@ -4606,6 +4857,9 @@ synchronization tasks in the cluster. In the synchronization task list, you can 
 ###### 5.4.6.5.7.5 Cluster synchronization monitoring
 
 O&M engineers can view the status of synchronization tasks between two clusters.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M - OSS > Synchronization**
 **Management > Cluster Synchronization**.
@@ -4658,6 +4912,9 @@ Select a cluster and click **Confirm**. Perform the following operations.
 ###### 5.4.6.6.3 Manage KV servers
 
 O&M engineers can perform fine-grained O&M operations on KV servers, including viewing the status of servers or clusters, adding servers to or removing servers from the blacklist, and viewing the version information. This ensures the stability and controllability of KV servers.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M - KV > KV Server Management**.
 3. On the **KV Server Management** page, view KV server by configuring the **Specified a**
@@ -4697,6 +4954,9 @@ operations as needed.
 ###### 5.4.6.6.4 Restart KV services
 
 If an error occurs in the KV service or application configuration changes are required, you can restart the specified KV service to ensure service stability.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Service O&M - KV > KV Service Restart**.
 3. On the **Restart KV Service** page, set the parameters and click **Restart**. The following
@@ -4716,6 +4976,9 @@ In the SubmitSuccessful message, click **OK**. You can view the workflow progres
 ###### 5.4.6.6.5 Manage KV applications
 
 O&M engineers can manage KV applications in the Object Storage Service (OSS) O&M console. You can view application information, partition details, and parameters to implement centralized O&M on KV applications.
+
+**Procedure**
+
 1. Log in to the OSS O&M console.
 2. In the left-side navigation pane, choose **Service O&M - KV > KV App Management**.
 3. On the **KV App Management** page, select the cluster that you want to manage and click
@@ -4730,7 +4993,11 @@ Perform operations on the KV application list as needed.
 
 ###### 5.4.6.6.6 KV partition management
 
-In the Object Storage Service (OSS) Operations and Maintenance System, you can split and merge KV partitions. 1.
+In the Object Storage Service (OSS) Operations and Maintenance System, you can split and merge KV partitions.
+
+**Procedure**
+
+1.
 2. In the top navigation bar, click **System Settings**.
 3. In the left-side navigation pane, choose **Product Management > Products** to go to the
 Products page. Then, in the Storage Service section, click **OSS Operations and**
@@ -4859,6 +5126,9 @@ click **OK**. The workflow is submitted. Click **OK**. On the **Published Tasks*
 ###### 5.4.6.7.1 Intelligent O&M history
 
 Engineers can manage the O&M history of robots to view causes, execution status, execution results, and detailed logs of each robot in a cluster. This improves the observability and efficiency of automated O&M.
+
+**Procedure**
+
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Intelligent O&M > History**.
 3. On the **History** page, view and manage the O&M history as needed.
@@ -4892,6 +5162,8 @@ The following table describes the supported O&M robots.
 | Intelligent Analysis and Diagnosis of Hot Issues | When the system detects KV hot issues during routine inspections, the system automatically triggers this O&M task to analyze and diagnose the causes of the KV hot issues, and then provides O&M suggestions for troubleshooting the issues. |
 | KV Checkready fails to repair automatically | When the system detects KV CheckReady failures during routine inspections, the system automatically triggers this O&M task to fix the issue that caused the KV CheckReady failure. |
 | The number of GC partitions is automatically adjusted. | After this O&M robot is enabled, the system automatically adjusts the number of OSS garbage collection (GC) partitions based on the cluster size. |
+
+**Procedure**
 
 1. Log in to the Object Storage Service (OSS) O&M console.
 2. In the left-side navigation pane, choose **Intelligent O&M > Configurations**.
@@ -4985,6 +5257,9 @@ On the **Error Ranking**s tab, view the top information about buckets, operation
 ###### 5.4.6.8.2 Backend log query
 
 The system can query backend logs by request ID, cluster (5XX), bucket, UID, application (5XX), and AccessLog. This helps O&M personnel quickly locate the root cause of exceptions.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Log Monitoring > Backend Log Query**.
 3. On the **Query Logs** page, select a query method as needed.
@@ -5049,6 +5324,9 @@ i. Set the search condition to **Search by access log** and the request ID. ii. 
 ###### 5.4.6.8.3 KV error code table
 
 The KV Error Code Table maps status codes to error codes, helping O&M personnel quickly identify fault types, improve diagnostic efficiency, and reduce troubleshooting time.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation, select **Log Monitoring > KV Error Code Table**.
 3. On the **KV Error Code Table** page, view the mapping between status codes and error
@@ -5267,6 +5545,9 @@ In the task result list, you can view the task execution information and perform
 ###### 5.4.6.9.4 Inspection history
 
 View the inspection history for your tasks to monitor system health. This allows operators to quickly identify and address issues, prevent potential risks, and ensure service stability.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left navigation pane, choose **Monitoring Center > Inspection History**.
 3. On the **Inspection Result List** page, select a search type, enter your search criteria, and
@@ -5286,6 +5567,9 @@ In the search results, you can view the execution results for each inspection ta
 ###### 5.4.6.9.5 One-click inspection
 
 The one-click inspection feature helps O&M personnel run routine checks. You can periodically trigger an inspection to quickly assess your cluster's health, identify potential issues, and ensure system stability.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, click **Home**.
 3. On the **Home** page, in the **One-click Inspection** section, click **View Details**.
@@ -5311,6 +5595,9 @@ After you trigger the inspection, view the inspection records and perform any ne
 ###### 5.4.6.10.1.1 Workflow overview
 
 The system has built-in common workflows. O&M personnel can query, view steps, or submit. This allows them to quickly understand the task flow logic and efficiently initiate process execution. This improves O&M response speed and operation efficiency.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Workflow >**
 **Overview**.
@@ -5332,6 +5619,9 @@ After you search for a workflow, you can view the details of the existing workfl
 ###### 5.4.6.10.1.2 Workflow task
 
 By viewing the task details of all workflows, creating new tasks, and browsing task statistics, O&M personnel can understand the execution status, flow logic, and overall trend of tasks, further understand workflow, identify bottlenecks, and optimize task orchestration and scheduling policies to improve automation efficiency and O&M management.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose Bacj**Background Management > Workflow >**
 **Task**.
@@ -5409,6 +5699,9 @@ On the **Task Statistics** tab, you can view the number of pending and running t
 ###### 5.4.6.10.1.3 Batch workflow submission
 
 With the batch workflow submission feature, O&M personnel can submit the same workflow for multiple clusters in batches to implement centralized and large-scale execution of O&M tasks, significantly reduce repeated operations, accelerate task delivery, and improve O&M efficiency and consistency.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Workflow >**
 **Batch Workflow Submission**.
@@ -5455,6 +5748,9 @@ urgency, confirm the workflow parameters, and then click **Confirm**. The system
 ###### 5.4.6.10.1.4 Workflow instance
 
 By viewing the list of workflow instances, O&M personnel can manage workflow instances based on business requirements, such as repairing failed instances and removing abandoned instances, so as to properly allocate resources and improve the automation level of business.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Workflow >**
 **Instances**.
@@ -5487,6 +5783,9 @@ After the workflow instance is queried, you can view the workflow instance ID, t
 ###### 5.4.6.10.1.5 Workflow definition
 
 A workflow definition outlines the activity steps and execution flow for various types of workflows. O&M personnel use these definitions to manage automated workflows.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Chi Ji Background Management > Workflow >**
 **Workflow Definition**.
@@ -5498,6 +5797,9 @@ category.
 ###### 5.4.6.10.2 White-screen Commands
 
 The custom command feature provides built-in command templates for common tasks. These templates let you quickly run remote commands without manual entry, improving your operational efficiency and accuracy.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Chiji Backend Management > White-screen**
 **Commands > Custom Command**.
@@ -5513,6 +5815,9 @@ The custom command feature provides built-in command templates for common tasks.
 ###### 5.4.6.10.3.1 Trigger management
 
 By default, the system has built-in and enabled common triggers. When an event is detected, the system automatically triggers the event and submits the relevant workflow for processing. The trigger management feature allows O&M personnel to flexibly control the start and stop status of triggers, view configuration information, and query event execution history. This feature allows O&M personnel to manage automated tasks in a fine-grained manner and improves O&M efficiency.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > DNA > Trigger**
 **Management**.
@@ -5528,6 +5833,9 @@ After you search for a trigger, you can view the trigger information and perform
 ###### 5.4.6.10.3.2 Event center trigger history
 
 Viewing the trigger history in the event center allows O&M personnel to track the processing of events initiated by triggers. This helps them quickly pinpoint issues, meet audit, traceability, and compliance requirements, and ensure that automated O&M is secure and controllable.
+
+**Procedure**
+
 1. Log on to the Shuju Mofang console.
 2. In the left-side navigation pane, choose **CHIJI background management > CHIJI DNA >**
 **Event center trigger history**.
@@ -5539,6 +5847,9 @@ The query results show information for each event, including the event name, pro
 ###### 5.4.6.10.4 Chiji domain name management
 
 By managing the clusters bound to the domain name of the Red Kits, O&M personnel can precisely control the access targets of the front-end pages and interfaces of the Red Kits.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Domain name**
 **switching**.
@@ -5549,6 +5860,9 @@ and VIPs that are bound to the domain name in the current region. To switch the 
 ###### 5.4.6.10.5 Audit logs
 
 By querying audit logs, O&M personnel can track and control platform operations, accurately locate the source of operations, and detect abnormal activities in a timely manner, effectively improving security audit and risk response capabilities.
+
+**Procedure**
+
 1. Log on to the Data Cube console.
 2. In the left-side navigation pane, choose **Background Management > Audit Logs**.
 3. On the **Operation Logs** page, turn on or off the switch in the upper-right corner to switch
@@ -5566,6 +5880,9 @@ After the logs are queried, you can view the audit log details in the log list, 
 #### 5.5.1 Overview of SLS clusters
 
 On the Cluster O&M page, you can view the capacity usage, resource overview, and current alerts of Simple Log Service (SLS) clusters. You can also view a list of SLS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
@@ -5598,6 +5915,9 @@ Manage clusters In the **Clusters** section, you can view the information about 
 ##### 5.5.2.1 View cluster overview
 
 On the Overview tab, you can view the top 10 Logstores with the highest traffic in a Simple Log Service (SLS) cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
@@ -5610,6 +5930,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 ##### 5.5.2.2 View capacity information
 
 On the Capacity tab, you can view the logical capacity usage, physical capacity usage, and physical capacity usage trend of a Simple Log Service (SLS) cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
@@ -5641,6 +5964,9 @@ In non-folding scenarios, EC is a data protection method in which data is split,
 **Usage notes**
 
 You cannot modify EC configurations when O&M operations are performed on hosts in a cluster. Wait until the O&M operations are complete and try again. After the EC mode is enabled for a cluster, you cannot disable this mode for the cluster, which means you cannot switch to the triplicate storage mode. Proceed with caution. You can modify the current EC configurations only to EC configurations with lower data redundancy. The system automatically calculates EC configurations with lower data redundancy for selection.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-SLS > Cluster O&M**.
@@ -5857,6 +6183,9 @@ After you add the monitoring data of frequently used resources to the custom das
 **Prerequisites**
 
 The monitoring data of resources is added to the custom dashboard. For more information, see View resource monitoring data and View the monitoring data of storage metrics.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Custom Dashboard**.
@@ -5868,6 +6197,9 @@ View monitoring data You can specify a time range to view the detailed metrics o
 **data**
 
 On the Resource Monitoring page, you can view the performance monitoring data of various resources, such as clusters, hosts, and hard disks. You can also add the monitoring data of resources to the custom dashboard. This way, you can view the detailed metrics of the resources on the Custom Dashboard page.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -5921,7 +6253,11 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS OPS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Storage Metrics**.
 3. On the Storage Metrics page, click the **OSS** tab. On the OSS tab, view the storage metrics
-of an OSS cluster or bucket. View the storage metrics of an OSS cluster On the **Cluster Metrics** tab, select a cluster and specify a time range to view the monitoring data of the cluster within the specified time range. View the storage metrics of an OSS bucket On the **Bucket Metrics** tab, enter a bucket name and specify a time range view the monitoring data of the bucket within the specified time range. To obtain the bucket name, go to the **Buckets** page of CDS-OSS. For more information, see Manage bucket information.
+of an OSS cluster or bucket. View the storage metrics of an OSS cluster On the **Cluster Metrics** tab, select a cluster and specify a time range to view the monitoring data of the cluster within the specified time range. View the storage metrics of an OSS bucket On the **Bucket Metrics** tab, enter a bucket name and specify a time range view the monitoring data of the bucket within the specified time range.
+
+**Note**
+
+To obtain the bucket name, go to the **Buckets** page of CDS-OSS. For more information, see Manage bucket information.
 4. To add a metric to your custom dashboard, click **Add to Custom Dashboard** in the upper-
 right corner and select a group or metric. After the metric is added, you can view it on your custom dashboard. For more information, see View the custom dashboard.
 
@@ -5934,6 +6270,8 @@ Move the pointer over a trend chart to view the value at a specific point in tim
 If an exception occurs in a module of a cluster, you can view the service metrics of the module to troubleshoot and identify issues.
 
 > **Important:** This feature is applicable only to Cloud Defined Storage-Object Storage Service (OSS) clusters and CDS-Elastic Block Storage (EBS) clusters.
+
+**Procedure**
 
 1. Log in to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
@@ -5989,6 +6327,9 @@ status of a node is abnormal, you can click **Disk Maintenance** to fix the disk
 ### 7.3 View historical alerts
 
 Alerts that are automatically or manually cleared are displayed on the Alert History page. You can view the information about the alerts within the specified time range, including the alert name, module, cluster name, description, resource name, alert time, auto recovery status, and confirmation status.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -6019,6 +6360,9 @@ By default, the system uses built-in inspection items to regularly inspect clust
 **Usage notes**
 
 Only Elastic Block Storage (EBS) supports inspection.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Routine Inspection > Inspection Center**.
@@ -6083,6 +6427,9 @@ You can log in to the Cloud Defined Storage (CDS)-OPS console, go to the Host O&
 **Background information**
 
 You can choose the following types of workflows: CDS Cluster Scale Up, CDS Cluster Scale Down, CDS Cluster Node Maintenance, CDSOSSZRS Cluster Three-zone Change, and CDS Cluster Deployment Mode Switch. If you need to add physical hosts to or remove physical hosts from a cluster to properly allocate computing and storage resources, you can initiate a CDS Cluster Scale Up or CDS Cluster Scale Down workflow. For more information, see Initiate a CDS Cluster Scale Up workflow and Initiate a CDS Cluster Scale Down workflow. If a physical host in a cluster fails and needs to be repaired or replaced, you can initiate a CDS Cluster Node Maintenance workflow. For more information, see Initiate a CDS Cluster Node Maintenance workflow. If you need to improve the availability and fault tolerance of a newly deployed CDS-Object Storage Service (CDS-OSS) cluster, you can initiate a CDSOSSZRS Cluster Three-zone Change workflow to scale up the single-data center cluster to a three-data center cluster. For more information, see Initiate a CDSOSSZRS Cluster Three-zone Change workflow. To scale a lite cluster that contains four or five nodes to a standard cluster that contains six or more nodes, you need to initiate a CDS Cluster Deployment Mode Switch workflow after you add nodes. For more information, see Initiate a CDS Cluster Deployment Mode Switch workflow.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
@@ -6119,6 +6466,9 @@ On the Cluster Details page, click the **Machines** tab. A list of available hos
 **Usage notes**
 
 To scale up a Could Defined Storage-Object Storage Service (CDS-OSS) three-zone cluster, you must add the same number of physical hosts to each of the three data centers in the cluster, and update the erasure coding (EC) configuration of the cluster as needed.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
@@ -6146,6 +6496,9 @@ Before you initiate a CDS Cluster Scale Down workflow, take note of the followin
 > **Important:** The minimum number of nodes required varies based on the storage service. The value displayed on the GUI prevails.
 
 To scale down a Cloud Defined Storage-Object Storage Service (CDS-OSS) three-zone cluster, you must undeploy the same number of physical hosts from each of the three data centers in the cluster. Make sure that no less than seven physical hosts are maintained in each data center after the scale-down process is complete.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
@@ -6219,6 +6572,9 @@ iii. On the **Product & Cluster O&M** page, enter **cds** in the **Product | Clu
 |---|---|
 
 If the yunchi component is in the **Ready** state and the yunchi servers are in the **Running** state on the **Workload** tab, the yunchi service is running as expected.
+
+**Procedure**
+
 1. Log in to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.
@@ -6257,6 +6613,9 @@ Each cluster supports only one type of host O&M operation at a time. During this
 **Prerequisites**
 
 A lite cluster is scaled up. For more information, see Initiate a CDS Cluster Scale Up workflow. The number of hosts is greater than or equal to 6.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
@@ -6288,6 +6647,8 @@ When a hard disk drive (HDD) or Non-Volatile Memory Express (NVMe) SSD disk of a
 **Usage notes**
 
 To ensure data security, you cannot initiate multiple disk replacement processes in the same cluster at a time. The disk replacement process and host O&M workflow cannot be performed at the same time. Disks can be mounted in EXT4 or USSOS mode. The replacement operations vary based on the mounting methods. The following high-risk operations exist during the hot disk maintenance process. If the process is not complete as expected, contact Apsara Stack technical support for assistance. Detach the damaged disk: The disk is removed from the file system, and data cannot be read from or written to the disk. Replace the damaged disk: The drive letters may change. Initialize the new disk: Partitions are formatted, and data on the disk is completely deleted and cannot be restored.
+
+**Procedure**
 
 **Replace a data disk mounted in EXT4 mode**
 
@@ -6381,6 +6742,9 @@ After the hard disk is replaced, you can view the maintenance history of the dis
 #### 9.2.3 View hard disk maintenance history
 
 After you replace a hard disk, you can view the detailed hard disk maintenance history, including the cluster, chunk server, hard disk ID, hard disk mount type, and execution status.
+
+**Procedure**
+
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
 i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS OPS**.
@@ -6402,12 +6766,19 @@ After you identify abnormal services or modules based on an issue, you can manua
 > **Warning:** The operations on user logs must be authorized by a user, such as collecting or exporting log data. You must follow the principle of least privilege and collect only the logs of the services that are related to the issue to be handled.
 
 Logs are asynchronously collected with a specific latency. You can view the progress of a log collection task on the Tasks page. For more information, see View tasks. Newly collected logs overwrite previously collected logs.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Log Collection**.
 3. On the **Log Collection** page, click **Data Collection**.
 4. In the **Data Collection** dialog box, configure the Type, Service Name, Cluster Name, Host
-Name, and Time Range parameters, and click **Initiate Collection**. The **Service Name** parameter is displayed only if you set the **Type** parameter to
+Name, and Time Range parameters, and click **Initiate Collection**.
+
+**Note**
+
+The **Service Name** parameter is displayed only if you set the **Type** parameter to
 **Service Logs**. You can select multiple values for the Type, Service Name, and Host
 Name parameters. After the log collection task is complete, you can view the logs that are generated in the specified time range. To save the logs to your computer, you can find the log collection record and click
 **Download** in the **Result File** column. A message indicating that the certificate is not
@@ -6420,6 +6791,9 @@ The system centrally stores and indexes logs of key services. You can query logs
 **Background information**
 
 Logs are not permanently stored. The system automatically clears logs on a regular basis. The log retention period varies based on service. The log retention period is determined by the size and the importance of logs, but cannot exceed 30 days.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Log Search**.
@@ -6460,6 +6834,9 @@ By default, the system automatically registers the deployed Apsara Stack data se
 **Usage notes**
 
 Cloud Defined Storage (CDS) automatically registers plug-ins, including cds-plugin-sgw, HDR- OPS, and sls-storage-service. The plug-ins used by different storage clusters may be different. The cds-plugin-sgw plug-in can be installed only in CDS-OSS clusters and hybrid clusters of CDS-OSS and CDS-EBS. The HDR-OPS can be installed only in CDS-OSS clusters and hybrid clusters of Elastic Compute Service (ECS), CDS-OSS, and CDS-EBS. Only CDS-SLS clusters support the sls-storage-service plug-in.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > Plug-ins**.
@@ -6473,6 +6850,9 @@ You can manage and maintain registered data services. For more information, see 
 ### 10.2 View tasks
 
 The system runs time-consuming tasks in an asynchronous manner. You can view the status of asynchronous tasks on the Tasks page.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > Tasks**.
@@ -6492,6 +6872,9 @@ Go to the page on which a task is triggered Find the task that you want to manag
 ### 10.3 Query audit logs
 
 The audit logs record the modifications made by users to the system. During security maintenance, you can filter the audit logs by using different keywords to quickly locate and handle security issues in a timely manner.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > ActionTrail**.
@@ -6507,6 +6890,9 @@ After you find a log record, you can view the user, operation, object, and objec
 #### 10.4.1 Manage cleanup configurations
 
 By default, the feature of automatically triggering compression tasks and cleanup tasks is disabled. You can manually enable the feature based on your business requirements. After you enable the auto trigger feature, the system automatically compresses service logs or clears tasks when the storage space reaches the specified threshold. You can also modify the automatic cleanup configurations such as enabling or disabling the auto trigger feature, modifying the thresholds, or deleting log cleanup configurations.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > System Cleanup**.
@@ -6569,6 +6955,9 @@ The system configuration feature lets you adjust how capacity units are displaye
 | own unit formats. |   |   |
 
 This configuration applies only to the current browser session and does not affect the capacity unit display settings for other users or in other browsers. The capacity unit setting is temporary. If you clear your browser cache, the setting reverts to the system default.
+
+**Procedure**
+
 1. Log on to the CDS O&M Platform console.
 i. Log on to the Apsara Uni-manager O&M Console.
 2. In the navigation pane, choose **CDS System Management > System Configuration**.
@@ -6586,6 +6975,9 @@ After you create and configure a Cloud Storage Gateway (CSG) instance, you can v
 **Prerequisites**
 
 A CSG instance is created and configured. For more information, see the "Quick start" topic in the OSS > CSG chapter of **Cloud Defined Storage (CDS) User Guide**.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > Storage Gateway Service**.
@@ -6673,6 +7065,9 @@ System alerts can be triggered by time series data and events.
 | no longer meet the trigger conditions. | The system |   |
 
 continuously monitors metrics of site pairs, such as the recovery point objective (RPO). If a metric exceeds the specified threshold, the system generates an alert. Event-triggered alerts: Alerts are triggered based on events. In most cases, you must manually handle event-triggered alerts because event-triggered alerts cannot be automatically cleared. The system automatically checks the virtual private cloud (VPC) availability, network availability, security group availability, and security group policy consistency of site pairs. The system generates alerts if the system detects changes in computing, network, and storage information at the production site and the disaster recovery site.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
@@ -6700,6 +7095,9 @@ range to search for inspection tasks that meet the specified conditions. Click t
 #### 11.2.5 Manage O&M tasks
 
 If operations cannot be performed on a protection group at the production site or the disaster recovery site due to data loss or corruption, you can use the Clear Protection Group feature to forcibly delete the protection group. If you want to perform an operation such as clearing a protection group, an O&M task of the operation is created and displayed in the O&M center. To prevent accidental operations, the system runs an O&M task only after the O&M task is confirmed by an O&M engineer. After an O&M task is run, the task execution status is displayed and the backup information about the O&M task is generated.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
@@ -6759,6 +7157,9 @@ The following services are accessible across clouds and the network configuratio
 **Important**
 
 To ensure security, create an account for an HDR user in the Apsara Uni-manager Management Console and an account for an O&M engineer in the Apsara Uni-manager Operations Console. Then, create an AccessKey pair for each account. The cross-cloud configuration switch is enabled for the cloud sites. (The value of multiCloudDrConfig is set to true.) For more information, see Manage O&M configurations.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
@@ -6785,6 +7186,9 @@ O&M engineers can view the capacity usage of Hybrid Disaster Recovery (HDR) prot
 **Usage notes**
 
 To increase the capacity of protected resources, contact Apsara Stack technical support.
+
+**Procedure**
+
 1. Log in to the CDS-OPS console.
 i. Log in to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS Operation**
 **CDS-OPS**.

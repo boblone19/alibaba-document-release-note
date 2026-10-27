@@ -5,12 +5,29 @@ doc_version: "20260729"
 pdf_pages: 13
 source_pdf: "37_云安全管理中心运维指南_cloud-security-management-center-operation-and-maintenance-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/sas/zh/cloud-security-management-center-operation-and-maintenance-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云安全中心（态势感知） 云安全管理中心运维指南
 
-## 登录飞天基础运维平台
+## 目录
+
+- 1 登录飞天基础运维平台
+- 2 云安全管理中心
+  - 2.1 检查服务状态
+    - 2.1.1 基础巡检
+    - 2.1.2 高级巡检
+      - 2.1.2.1 SocApp
+      - 2.1.2.2 SiemApp
+    - 2.1.3 业务巡检
+  - 2.2 重启SocApp服务
+  - 2.3 重启SiemApp服务
+
+础运维平台
+
+## 1 登录飞天基础运维平台
+
+本文介绍如何登录飞天基础运维平台。
 
 **前提条件**
 
@@ -20,46 +37,48 @@ converter: line-classifier (PyMuPDF)
 
 1. 打开浏览器。
 2. 在地址栏中，输入Apsara Uni-manager运维控制台的访问地址ops.asconsole.intranet-domain-
-id.com，按回车键。 您可以单击页面右上角的下拉按钮来进行语言切换。
+id.com，按回车键。
 
-**说明**
+> **说明：** 您可以单击页面右上角的下拉按钮来进行语言切换。
 
 3. 输入正确的用户名及密码。
-登录Apsara Uni-manager运维控制台的用户名和密码请从部署人员或管理员处获取。
 
-**说明**
+> **说明：** 登录Apsara Uni-manager运维控制台的用户名和密码请从部署人员或管理员处获取。
 
-首次登录Apsara Uni-manager运维控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。 为提高安全性，密码必须满足以下要求： 英文大小写字母阿拉伯数字（0~9） 特殊符号，包括感叹号（！）、at（@）、井号（#）、美元符号（$）、百分号（%）等密码长度10~20个字符
+首次登录Apsara Uni-manager运维控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。 为提高安全性，密码必须满足以下要求： 英文大小写字母础运维平台阿拉伯数字（0~9） 特殊符号，包括感叹号（！）、at（@）、井号（#）、美元符号（$）、百分号（%）等密码长度10~20个字符
 4. 单击**登录**。
-5. 在Apsara Uni-manager运维控制台的顶部菜单栏，选择**平台运维** > **飞天基础运维平台**。
-中心
+5. 在Apsara Uni-manager运维控制台的顶部菜单栏，选择**平台运维** **>** **飞天基础运维平台**。
 
-## 云安全管理中心
+## 2 云安全管理中心
 
-### 检查服务状态
+### 2.1 检查服务状态
 
-#### 基础巡检
+#### 2.1.1 基础巡检
+
+云安全管理中心基础巡检主要对产品状态进行巡查。本文介绍如何进行基础巡检。
 
 **操作步骤：**
 
 1. 登录飞天基础运维平台。
-2. 在顶部菜单栏，选择**产品运维** > **飞天基础运维平台**。
+2. 在顶部菜单栏，选择**产品运维** **>** **飞天基础运维平台**。
 3. 在左侧导航栏，单击**产品集群运维**。
-4. 在**产品** | **集群**搜索框输入sas-securityoperationscentercluster，点击**集群详情**。
+4. 在**产品** **|** **集群**搜索框输入sas-securityoperationscentercluster，点击**集群详情**。
 5. 在**服务列表**页签，点击服务名称。
 6. 在**组件列表**页点击 **yundun-soc**组件，查看状态详情是否为 Ready。
 
-#### 高级巡检
+#### 2.1.2 高级巡检
 
 Soc高级巡检内容主要为服务状态和功能检查。
 
-##### SocApp
+##### 2.1.2.1 SocApp
+
+本文介绍如何检查SocApp。
 
 **操作步骤**
 
 1. 登录ops1服务器。
 2. 根据不同的pod，分别进入不同的soc容器(一个pod对应一个soc的容器)。
-i. 执行 kubectl get pod -n sas | grep soc 命令，结果中格式是[yundun-soc-数字]的是soc服务 pod名称，如图里黄框中标注的yundun-soc-0、yundun-soc-1 中心 ii. 执行 `kubectl exec -it [pod`名称`] -n sas -- bash` 命令，进入对应的soc容器中。
+i. 执行 kubectl get pod -n sas | grep soc 命令，结果中格式是[yundun-soc-数字]的是soc服务 pod名称，如图里黄框中标注的yundun-soc-0、yundun-soc-1 ii. 执行 `kubectl exec -it [pod`名称`] -n sas -- bash` 命令，进入对应的soc容器中。
 3. 检查Java进程状态。
 执行 ps aux | grep java | grep soc ，如果进程存在，则表示正常。
 4. 健康状态检查。
@@ -67,7 +86,7 @@ i. 执行 kubectl get pod -n sas | grep soc 命令，结果中格式是[yundun-s
 5. 查看日志。
 查看/home/admin/yundunsoc/logs/isoc.log文件：查看云安全管理中心( Soc) 运营中心、风险分析、日志管理等服务运行期间的info日志。 查看/home/admin/yundunsoc/logs/common-default.log文件：查看云安全管理中心( Soc) 资产管理、告警规则等服务运行期间的info日志。 查看/home/admin/yundunsoc/logs/common-error.log文件：云安全管理中心( Soc)服运行出错时的日志信息。
 
-##### SiemApp
+##### 2.1.2.2 SiemApp
 
 1. 登录ops1服务器。
 2. 根据不同的pod名称，分别进入不同的siem容器。
@@ -75,17 +94,16 @@ i. 执行 kubectl get pod -n sas | grep siem 命令，结果中格式是[yundun-
 3. 检查Java进程状态。
 执行 ps aux | grep java | grep yundunsiem ，如果进程存在，则表示正常。
 4. 健康状态检查。
-中心执行 `sudo -u admin /home/admin/yundunsiem/bin/preload.sh` ，如果返回ok，则表示正常。
+执行 `sudo -u admin /home/admin/yundunsiem/bin/preload.sh` ，如果返回ok，则表示正常。
 5. 查看日志。
 查看/home/admin/yundunsiem/logs/importer_all.log文件：查看siemApp服务运行期间的info日志。 查看/home/admin/yundunsiem/logs/common-error.log文件：查看siemApp服运行出错时的日志信息。 查看/home/admin/yundunsiem/logs/common-default.log文件：查看siemApp服务运行期间的中间件服务日志。
 
-#### 业务巡检
+#### 2.1.3 业务巡检
 
 Soc业务巡检内容主要为业务级别的服务状态检查。
 1. 进入ASO控制台，点击进入云盾运维中心。
 2. 进入**监控告警** > **业务监控**页面，选择SOC云安全管理中心页签。
 3. 进入SocApp服务，查看详细系统监控信息。
-中心
 
 | 监控项 | 业务含义 | 异常现象及处理建议 |
 |---|---|---|
@@ -98,7 +116,6 @@ Soc业务巡检内容主要为业务级别的服务状态检查。
 | 磁盘使用情况 | 对磁盘的使用情况包含分区总量(磁盘总量)、分区已用（磁盘已用）、 容器已用（容器根目录总大小）和日志已用（日志目录总大小）四个指标。 | 当分区已用接近分区总量时，可查看物理机磁盘空间是否存在隐患。 容器已用和日志已用没有明确的指标，可以在排查磁盘空间时，分析是否需要清理。 |
 
 4. 进入SiemApp服务，查看详细系统监控信息。
-中心
 
 | 监控项 | 业务含义 | 异常现象及处理建议 |
 |---|---|---|
@@ -109,11 +126,11 @@ Soc业务巡检内容主要为业务级别的服务状态检查。
 
 5. 进入UEBA页签，查看详细系统监控信息。
 6. 进入ASM页签，查看详细系统监控信息。
-中心
 7. 进入报表页签，查看详细系统监控信息。
 
-### 重启SocApp服务
+### 2.2 重启SocApp服务
 
+在云安全管理中心 (Soc) 服务出现故障时，可参考以下操作步骤，重启soc服务：
 1. 登录ops机器
 2. 执行如下命令，确定soc的pod名称
 
@@ -121,9 +138,8 @@ Soc业务巡检内容主要为业务级别的服务状态检查。
 kubectl get pod -n sas | grep soc
 ```
 
-**重要**
+> **重要：** 结果中格式是[yundun-soc-数字]的是soc服务pod名称，如yundun-soc-0、yundun-soc-1，后缀不是数字的不是soc的pod名称
 
-结果中格式是[yundun-soc-数字]的是soc服务pod名称，如yundun-soc-0、yundun-soc-1，后缀不是数字的不是soc的pod名称
 3. 执行以下命令，进入soc容器内部。
 
 ```bash
@@ -136,12 +152,11 @@ kubectl exec -it [pod名称] -n sas -- bash
   ps aux |grep soc
 ```
 
-中心
 5. 执行以下命令，关闭当前进程。
 `kill -9` 进程`Id`
 6. 执行以下命令，重启进程。
 
-```bash
+```python
   sudo -u admin /home/admin/yundunsoc/bin/appctl.sh restart
 ```
 
@@ -151,8 +166,9 @@ kubectl exec -it [pod名称] -n sas -- bash
   curl http://127.0.0.1:10070/checkpreload.htm
 ```
 
-### 重启SiemApp服务
+### 2.3 重启SiemApp服务
 
+在云安全管理中心 (Siem) 服务出现故障时，可参考以下操作步骤，重启siem服务：
 1. 登录ops机器
 2. 执行如下命令，确定siem的pod名称
 
@@ -160,9 +176,8 @@ kubectl exec -it [pod名称] -n sas -- bash
 kubectl get pod -n sas | grep siem
 ```
 
-**重要**
+> **重要：** 结果中格式是[yundun-siem-数字]的是siem服务pod名称，如yundun-siem-0、yundun-siem- 1，后缀不是数字的不是siem的pod名称
 
-结果中格式是[yundun-siem-数字]的是siem服务pod名称，如yundun-siem-0、yundun-siem- 1，后缀不是数字的不是siem的pod名称
 3. 执行以下命令，进入siem容器内部。
 
 ```bash
@@ -179,7 +194,7 @@ kubectl exec -it [pod名称] -n sas -- bash
 `kill -9` 进程`Id`
 6. 执行以下命令，重启进程。
 
-```bash
+```python
   sudo -u admin /home/admin/yundunsiem/bin/appctl.sh restart
 ```
 

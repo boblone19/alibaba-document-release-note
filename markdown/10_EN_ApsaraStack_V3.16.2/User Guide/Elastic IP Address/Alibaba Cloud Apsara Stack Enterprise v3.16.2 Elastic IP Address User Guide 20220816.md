@@ -5,7 +5,7 @@ doc_version: "20220816"
 pdf_pages: 20
 source_pdf: "90c4e3579b6c23c0_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic IP Address User Guide 20220816.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20IP%20Address%20User%20Guide%2020220816.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic IP Address User Guide
@@ -49,14 +49,14 @@ Benefits EIPs have the following benefits: Purchase and use as independent resou
 
 ## 2 Log on to the EIP console
 
-This topic describes how to log on to the Apsara Uni-manager Management Console to manage your elastic IP addresses (EIPs). The Google Chrome browser is used as an example. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+This topic describes how to log on to the Apsara Uni-manager Management Console to manage your elastic IP addresses (EIPs). The Google Chrome browser is used as an example. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click Login.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
-in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
+in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
 5. In the top navigation bar, choose Product s > Net working > Elast ic IP Address.
 
 ## 3 Quick start
@@ -67,7 +67,7 @@ This topic describes how to create an elastic IP address (EIP) and associate the
 
 ### 3.2 Apply for an EIP
 
-This topic describes how to apply for an elastic IP address (EIP). An EIP is a public IP address that you can create and use as an independent resource.
+This topic describes how to apply for an elastic IP address (EIP). An EIP is a public IP address that you can create and use as an independent resource. Procedure
 1. Log on to the EIP console.
 2. On the Elast ic IP Addresses page, click Creat e an elast ic public IP.
 3. On the Creat e EIP page, set the following parameters and click Submit .
@@ -92,12 +92,13 @@ This topic describes how to apply for an elastic IP address (EIP). An EIP is a p
 
 ### 3.3 Associate an EIP with an ECS instance
 
-instance This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet. An ECS instance is created. For more information, see the Creat e an inst ance by using t he provided wizard topic in the Quick St art chapter of ECS User Guide.
+instance This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet. Prerequisites An ECS instance is created. For more information, see the Creat e an inst ance by using t he provided wizard topic in the Quick St art chapter of ECS User Guide. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to manage, and click Binding
 resource in the Operat ion column.
 4. In the Bind elast ic public net work IP t o resources dialog box, set the following parameters
+and click OK.
 
 | Parameter | Description |
 |---|---|
@@ -110,7 +111,7 @@ resource in the Operat ion column.
 
 ### 3.4 Disassociate an EIP from an ECS instance
 
-instance This topic describes how to disassociate an elastic IP address (EIP) from an Elastic Compute Service (ECS) instance. After the EIP is disassociated from the ECS instance, the ECS instance can no longer access the Internet by using the EIP.
+instance This topic describes how to disassociate an elastic IP address (EIP) from an Elastic Compute Service (ECS) instance. After the EIP is disassociated from the ECS instance, the ECS instance can no longer access the Internet by using the EIP. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to disassociate and click Unbind in
@@ -130,7 +131,7 @@ Act ions column.
 
 ### 4.1 Apply for an EIP
 
-This topic describes how to apply for an elastic IP address (EIP). An EIP is a public IP address that you can create and use as an independent resource.
+This topic describes how to apply for an elastic IP address (EIP). An EIP is a public IP address that you can create and use as an independent resource. Procedure
 1. Log on to the EIP console.
 2. On the Elast ic IP Addresses page, click Creat e an elast ic public IP.
 3. On the Creat e EIP page, set the following parameters and click Submit .
@@ -151,12 +152,13 @@ This topic describes how to apply for an elastic IP address (EIP). An EIP is a p
 
 #### 4.2.1 Associate an EIP with an ECS instance
 
-This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet. An ECS instance is created. For more information, see the Creat e an inst ance by using t he provided wizard topic in the Quick St art chapter of ECS User Guide.
+This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet. Prerequisites An ECS instance is created. For more information, see the Creat e an inst ance by using t he provided wizard topic in the Quick St art chapter of ECS User Guide. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to manage, and click Binding
 resource in the Operat ion column.
 4. In the Bind elast ic public net work IP t o resources dialog box, set the following parameters
+and click OK.
 
 | Parameter | Description |
 |---|---|
@@ -166,7 +168,7 @@ resource in the Operat ion column.
 
 #### 4.2.2 Associate an EIP with an SLB instance
 
-This topic describes how to associate an elastic IP address (EIP) with a Server Load Balancer (SLB) instance. After you associate an EIP with an SLB instance, the SLB instance can forward requests from the Internet. An SLB instance is created. For more information, see the Creat e an SLB inst ance topic in the Quick St art chapter of SLB User Guide.
+This topic describes how to associate an elastic IP address (EIP) with a Server Load Balancer (SLB) instance. After you associate an EIP with an SLB instance, the SLB instance can forward requests from the Internet. Prerequisites An SLB instance is created. For more information, see the Creat e an SLB inst ance topic in the Quick St art chapter of SLB User Guide. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to manage and click Bind Resource
@@ -180,7 +182,7 @@ in the Act ions column.
 
 #### 4.2.3 Associate an EIP with a NAT gateway
 
-This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT or SNAT entries. A NAT gateway is created. For more information, see the Creat e a NAT gat eway topic in the Quick St art chapter of NAT Gateway User Guide.
+This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT or SNAT entries. Prerequisites A NAT gateway is created. For more information, see the Creat e a NAT gat eway topic in the Quick St art chapter of NAT Gateway User Guide. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to manage and click Bind Resource
@@ -209,12 +211,13 @@ This topic describes how to associate an elastic IP address (EIP) with an elasti
 
 ##### 4.2.4.2 Associate an EIP with a secondary ENI in NAT mode
 
-mode This topic describes how to associate an elastic IP address (EIP) with a secondary elastic network interface (ENI) in NAT mode. After you associate an EIP with a secondary ENI, both the private IP address and public IP address of the secondary ENI are available. The EIP is not displayed on the secondary ENI. Before you associate an EIP with a secondary ENI in NAT mode, make sure that the following requirements are met: A secondary ENI is created in a virtual private cloud (VPC). The secondary ENI and the EIP that you want to associate with the secondary ENI are created in the same region. For more information, see the Creat e an ENI topic in the Elast ic Net work Int erf ace chapter of ECS User Guide. The secondary ENI is not associated with an Elastic Compute Service (ECS) instance. If the secondary ENI is associated with an ECS instance, disassociate the secondary ENI from the ECS instance, associate the EIP with the secondary ENI in NAT mode, and then associate the secondary ENI with the ECS instance. For more information, see the Disassociat e a secondary ENI f rom an ECS inst ance topic in the Elast ic Net work Int erf ace chapter of ECS User Guide.
+mode This topic describes how to associate an elastic IP address (EIP) with a secondary elastic network interface (ENI) in NAT mode. After you associate an EIP with a secondary ENI, both the private IP address and public IP address of the secondary ENI are available. The EIP is not displayed on the secondary ENI. Prerequisites Before you associate an EIP with a secondary ENI in NAT mode, make sure that the following requirements are met: A secondary ENI is created in a virtual private cloud (VPC). The secondary ENI and the EIP that you want to associate with the secondary ENI are created in the same region. For more information, see the Creat e an ENI topic in the Elast ic Net work Int erf ace chapter of ECS User Guide. The secondary ENI is not associated with an Elastic Compute Service (ECS) instance. If the secondary ENI is associated with an ECS instance, disassociate the secondary ENI from the ECS instance, associate the EIP with the secondary ENI in NAT mode, and then associate the secondary ENI with the ECS instance. For more information, see the Disassociat e a secondary ENI f rom an ECS inst ance topic in the Elast ic Net work Int erf ace chapter of ECS User Guide.
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to manage, and click Binding
 resource in the Act ions column.
 4. In the Bind elast ic public net work IP t o resources dialog box, set the following parameters
+and click OK.
 
 | Parameter | Description |
 |---|---|
@@ -224,7 +227,7 @@ resource in the Act ions column.
 
 ### 4.3 Upgrade the maximum bandwidth of an EIP
 
-bandwidth of an EIP This topic describes how to upgrade the maximum bandwidth of an elastic IP address (EIP). After you upgrade the maximum bandwidth of an EIP, the new maximum bandwidth immediately takes effect.
+bandwidth of an EIP This topic describes how to upgrade the maximum bandwidth of an elastic IP address (EIP). After you upgrade the maximum bandwidth of an EIP, the new maximum bandwidth immediately takes effect. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to manage and click Modif y
@@ -233,16 +236,16 @@ Conf igurat ion in the Act ions column.
 
 ### 4.4 Disassociate an EIP from a cloud resource
 
-resource This topic describes how to disassociate an elastic IP address (EIP) from a cloud resource. After the EIP is disassociated from the cloud resource, the cloud resource can no longer access the Internet by using the EIP.
+resource This topic describes how to disassociate an elastic IP address (EIP) from a cloud resource. After the EIP is disassociated from the cloud resource, the cloud resource can no longer access the Internet by using the EIP. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to disassociate and click Unbind in
-the Act ions column. If you want to disassociate the EIP from a NAT gateway, make sure that the EIP is not specified in a DNAT or SNAT entry. You can also click Force unbinding NAT in the Act ions column. Then, the system automatically disassociates the EIP from the DNAT or SNAT entry, and disassociates the EIP from the NAT gateway.
+the Act ions column. Not e If you want to disassociate the EIP from a NAT gateway, make sure that the EIP is not specified in a DNAT or SNAT entry. You can also click Force unbinding NAT in the Act ions column. Then, the system automatically disassociates the EIP from the DNAT or SNAT entry, and disassociates the EIP from the NAT gateway.
 4. In the message that appears, click OK.
 
 ### 4.5 Release an EIP
 
-This topic describes how to release an elastic IP address (EIP) that you no longer need. The EIP is not associated with a cloud resource. For more information, see Disassociate an EIP from a cloud resource.
+This topic describes how to release an elastic IP address (EIP) that you no longer need. Prerequisites The EIP is not associated with a cloud resource. For more information, see Disassociate an EIP from a cloud resource. Procedure
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, find the EIP that you want to release and click Release in the
@@ -270,7 +273,7 @@ the - icon or the right side of an existing tag in the T ag column, and click th
 
 In the Edit T ag dialog box, click Add multiple times to add multiple tags to the EIP.
 5. In the T he t agging operat ion succeeds dialog box, confirm the EIP and the associated tags,
-Add tags to EIPs
+and click OK. Add tags to EIPs
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, select the EIPs to which you want to add tags, and click Add
@@ -292,7 +295,7 @@ T ags in the lower part of the page.
 
 In the Add T ags dialog box, click Add multiple times to add multiple tags to the selected EIPs.
 5. In the T he t agging operat ion succeeds dialog box, confirm the EIPs and the associated tags,
-Search for EIPs by tag After you add tags to EIPs, you can search for the EIPs by tag.
+and click OK. Search for EIPs by tag After you add tags to EIPs, you can search for the EIPs by tag.
 1. Log on to the EIP console.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the Elast ic IP Addresses page, click T ag Filt er.

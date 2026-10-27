@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 316
 source_pdf: "bd45728b747ee2b2_Alibaba Cloud Apsara Stack V3.18.6 MaxCompute Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20MaxCompute%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # MaxCompute Developer Guide 20260629
@@ -2112,7 +2112,13 @@ in the directory by default.
 WITH SERDEPROPERTIES are the same as those supported by the MaxCompute external table. For example, the vehicle.csv file contains the following data:
 
 ```
-1,1,51,1,46.81006,-92.08174,9/14/2014 0:00,S 1,2,13,1,46.81006,-92.08174,9/14/2014 0:00,NE 1,3,48,1,46.81006,-92.08174,9/14/2014 0:00,NE 1,4,30,1,46.81006,-92.08174,9/14/2014 0:00,W 1,5,47,1,46.81006,-92.08174,9/14/2014 0:00,S 1,6,9,1,46.81006,-92.08174,9/14/2014 0:00,S 1,7,53,1,46.81006,-92.08174,9/14/2014 0:00,N 1,8,63,1,46.81006,-92.08174,9/14/2014 0:00,SW 1,9,4,1,46.81006,-92.08174,9/14/2014 0:00,NE 1,10,31,1,46.81006,-92.08174,9/14/2014 0:00,N oss://${accessKeyId}:${accessKeySecret}@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/ -- Save the vehicle.csv file to a folder in an OSS bucket. Obtain the structure of the directory where the MaxC ompute external table is saved. CREATE TABLE ambulance_data_csv_load ( vehicleId INT, recordId INT, patientId INT, calls INT, locationLatitute DOUBLE, locationLongtitue DOUBLE, recordTime STRING, direction STRING ); -- Create a destination table named ambulance_data_csv_load. LOAD OVERWRITE TABLE ambulance_data_csv_load FROM LOCATION 'oss://oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/' STORED BY 'com.aliyun.odps.CsvStorageHandler' WITH SERDEPROPERTIES ( 'odps.properties.rolearn'='acs:ram::xxxxx:role/aliyunodpsdefaultrole', -- The Alibaba Cloud Resource Name (AR N) of the AliyunODPSDefaultRole role. 'odps.text.option.delimiter'=','
+1,1,51,1,46.81006,-92.08174,9/14/2014 0:00,S 1,2,13,1,46.81006,-92.08174,9/14/2014 0:00,NE 1,3,48,1,46.81006,-92.08174,9/14/2014 0:00,NE 1,4,30,1,46.81006,-92.08174,9/14/2014 0:00,W 1,5,47,1,46.81006,-92.08174,9/14/2014 0:00,S 1,6,9,1,46.81006,-92.08174,9/14/2014 0:00,S 1,7,53,1,46.81006,-92.08174,9/14/2014 0:00,N 1,8,63,1,46.81006,-92.08174,9/14/2014 0:00,SW 1,9,4,1,46.81006,-92.08174,9/14/2014 0:00,NE 1,10,31,1,46.81006,-92.08174,9/14/2014 0:00,N
+```
+
+Examples:
+
+```
+oss://${accessKeyId}:${accessKeySecret}@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/ -- Save the vehicle.csv file to a folder in an OSS bucket. Obtain the structure of the directory where the MaxC ompute external table is saved. CREATE TABLE ambulance_data_csv_load ( vehicleId INT, recordId INT, patientId INT, calls INT, locationLatitute DOUBLE, locationLongtitue DOUBLE, recordTime STRING, direction STRING ); -- Create a destination table named ambulance_data_csv_load. LOAD OVERWRITE TABLE ambulance_data_csv_load FROM LOCATION 'oss://oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/' STORED BY 'com.aliyun.odps.CsvStorageHandler' WITH SERDEPROPERTIES ( 'odps.properties.rolearn'='acs:ram::xxxxx:role/aliyunodpsdefaultrole', -- The Alibaba Cloud Resource Name (AR N) of the AliyunODPSDefaultRole role. 'odps.text.option.delimiter'=','
 ```
 
 );
@@ -2148,7 +2154,7 @@ MaxCompute external tables. Mappings between file formats and SerDe classes: SEQ
 **SERDEPROPERTIES**: If you use STS to grant MaxCompute the required permissions, you must use this parameter to
 specify the value of the **odps.properties.rolearn** property. This property indicates the ARN of the
 **AliyunODPSDefaultRole** role. If the owner of MaxCompute and the owner of OSS use the same account, one-click
-authorization is allowed.
+authorization is allowed. Examples:
 
 ```
 oss://${accessKeyId}:${accessKeySecret}@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/ds=20200910/' -- The OSS directory where the MaxCompute external table is saved uses the preceding structure. The MaxCompute external table in the directory does not include partition key columns. The information of partition key column s is included in the directory information. CREATE TABLE ambulance_data_csv_load_pt ( vehicleId STRING, recordId STRING, patientId STRING, calls STRING, locationLatitute STRING, locationLongtitue STRING, recordTime STRING, direction STRING) PARTITIONED BY (ds STRING); -- Create a destination table named ambulance_data_csv_load_pt. LOAD OVERWRITE TABLE ambulance_data_csv_load_pt PARTITION(ds='20200910') FROM LOCATION 'oss://<yourAccessKeyId>:<yourAccessKeySecret>@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/data_location/' ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' STORED AS TEXTFILE; -- Import data stored in open source formats from OSS to the destination table.
@@ -2162,7 +2168,7 @@ oss://${accessKeyId}:${accessKeySecret}@oss-cn-hangzhou-zmf.aliyuncs.com/bucket/
 
 ##### 3.4.1.1 Create a table
 
-This topic describes how to use DDL statements to create a table.
+This topic describes how to use DDL statements to create a table. Syntax:
 
 ```
 CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name [(col_name data_type [DEFAULT value] [COMMENT col_comment], ...)] [COMMENT table_comment] [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] [CLUSTERED BY | RANGE CLUSTERED BY (col_name [, col_name, ...]) [SORTED BY (col_name [ASC | DESC] [, col_name [ ASC | DESC] ...])] INTO number_of_buckets BUCKETS] -- Specify the shuffle and sort attributes when you create a clustered table. [STORED BY StorageHandler] -- Used only for external tables. [WITH SERDEPROPERTIES (Options)] -- Used only for external tables. [LOCATION OSSLocation] -- Used only for external tables. [STORED AS AliOrc]-- Specify the storage format of the table. You can specify AliORC only for newly created int ernal tables. [TBLPROPERTIES("compressionstrategy"="normal/high/extreme",-- Specify the compression policy for data storage.
@@ -2349,7 +2355,7 @@ SHOW CREATE TABLE <table_name>;
 
 ##### 3.4.1.2 Delete a table
 
-This topic describes how to use a DDL statement to delete a table.
+This topic describes how to use a DDL statement to delete a table. Syntax:
 
 ```
 DROP TABLE [IF EXISTS] table_name;
@@ -2357,13 +2363,15 @@ DROP TABLE [IF EXISTS] table_name;
 
 > **Note:** If you do not specify **IF EXISTS** and the table does not exist, an error is returned. If this option is specified, a success message is returned regardless of whether the table exists.
 
+Examples:
+
 ```
 CREATE TABLE sale_detail_drop LIKE sale_detail; DROP TABLE sale_detail_drop; -- If the table exists, a success message is returned. If the table does not exist, an error is returned. DROP TABLE IF EXISTS sale_detail_drop2; -- A success message is returned regardless of whether the sale_detail_drop2 table exists.
 ```
 
 ##### 3.4.1.3 Rename a table
 
-This topic describes how to use a DDL statement to rename a table.
+This topic describes how to use a DDL statement to rename a table. Syntax:
 
 ```
 ALTER TABLE table_name RENAME TO new_table_name;
@@ -2373,13 +2381,15 @@ ALTER TABLE table_name RENAME TO new_table_name;
 > If a table that has the same name as the table specified by new_table_name exists, an error is returned.
 > If the table specified by **table_name** does not exist, an error is returned.
 
+Examples:
+
 ```
 CREATE TABLE sale_detail_rename1 LIKE sale_detail; ALTER TABLE sale_detail_rename1 RENAME TO sale_detail_rename2;
 ```
 
 ##### 3.4.1.4 Change the owner of a table
 
-This topic describes how to use a DDL statement to change the owner of a table. MaxCompute SQL allows you to execute the `CHANGEOWNER` statement to change the owner of a table.
+This topic describes how to use a DDL statement to change the owner of a table. MaxCompute SQL allows you to execute the `CHANGEOWNER` statement to change the owner of a table. Syntax:
 
 ```
 ALTER TABLE table_name CHANGEOWNER TO 'ALIYUN$xxx@aliyun.com';
@@ -2387,7 +2397,7 @@ ALTER TABLE table_name CHANGEOWNER TO 'ALIYUN$xxx@aliyun.com';
 
 ##### 3.4.1.5 Modify the comment of a table
 
-This topic describes how to use a DDL statement to modify the comment of a table.
+This topic describes how to use a DDL statement to modify the comment of a table. Syntax:
 
 ```
 ALTER TABLE table_name SET COMMENT 'tbl comment';
@@ -2404,7 +2414,7 @@ You can execute the DESC statement in MaxCompute to view the comment of the tabl
 
 ##### 3.4.1.6 Modify the lifecycle settings of a table
 
-MaxCompute provides the lifecycle management feature to facilitate storage release and simplify data reclamation. This topic describes how to use a DDL statement to modify the lifecycle settings of a table.
+MaxCompute provides the lifecycle management feature to facilitate storage release and simplify data reclamation. This topic describes how to use a DDL statement to modify the lifecycle settings of a table. Syntax:
 
 ```
 ALTER TABLE table_name SET lifecycle days;
@@ -2418,13 +2428,15 @@ ALTER TABLE table_name SET lifecycle days;
 > For a partitioned table, MaxCompute determines whether to reclaim a partition based on the value of **LastDataModifiedTime** for the partition. Unlike non-partitioned tables, a partitioned table is not deleted even if all of the partitions are reclaimed.
 > You can only modify the lifecycle settings instead of disabling the lifecycle for non-partitioned tables. You can disable the lifecycle for a specific partition in a partitioned table.
 
+Examples:
+
 ```
 create table test_lifecycle(key string) lifecycle 100; -- Create a table named test_lifecycle with a lifecycle of 100 days. alter table test_lifecycle set lifecycle 50; -- Change the lifecycle of the test_lifecycle table to 50 days.
 ```
 
 ##### 3.4.1.7 Disable or enable the lifecycle feature
 
-In some cases, if you do not want some partitions to be automatically reclaimed based on the lifecycle feature, you can disable the lifecycle feature for these partitions. This topic describes how to use a DDL statement to disable or enable the lifecycle feature.
+In some cases, if you do not want some partitions to be automatically reclaimed based on the lifecycle feature, you can disable the lifecycle feature for these partitions. This topic describes how to use a DDL statement to disable or enable the lifecycle feature. Syntax:
 
 ```
 ALTER TABLE table_name partition[partition_spec] ENABLE|DISABLE LIFECYCLE;
@@ -2444,7 +2456,7 @@ ALTER TABLE trans DISABLE LIFECYCLE; -- Disable the lifecycle feature for the tr
 
 ##### 3.4.1.8 Modify the value of LastDataModifiedTime for a table
 
-MaxCompute SQL allows you to perform the TOUCH operation to modify the value of **LastDataModifiedTime** for a table. This operation changes the value of **LastDataModifiedTime** for a table to the current time. This topic describes how to use a DDL statement to modify the value of LastDataModifiedTime for a table.
+MaxCompute SQL allows you to perform the TOUCH operation to modify the value of **LastDataModifiedTime** for a table. This operation changes the value of **LastDataModifiedTime** for a table to the current time. This topic describes how to use a DDL statement to modify the value of LastDataModifiedTime for a table. Syntax:
 
 ```
 ALTER TABLE table_name TOUCH;
@@ -2463,11 +2475,15 @@ This topic describes how to use a DDL statement to modify the clustering attribu
 
 **Add hash clustering attributes to a table**
 
+Syntax:
+
 ```
 ALTER TABLE table_name [CLUSTERED BY (col_name [, col_name, ...]) [SORTED BY (col_name [ASC | DESC] [, col_name [ASC | DESC] ...])] IN TO number_of_buckets BUCKETS]
 ```
 
 **Remove hash clustering attributes from a table**
+
+Syntax:
 
 ```
 ALTER TABLE table_name NOT CLUSTERED;
@@ -2483,13 +2499,15 @@ ALTER TABLE table_name [RANGE CLUSTERED BY (col_name [, col_name, ...]) [SORTED 
 
 **Remove range clustering attributes from a table or partition**
 
+Syntax:
+
 ```
 ALTER TABLE table_name NOT CLUSTERED; ALTER TABLE table_name partition_spec NOT CLUSTERED;
 ```
 
 ##### 3.4.1.10 Delete data from a non-partitioned table
 
-This topic describes how to use a DDL statement to delete data from a non-partitioned table.
+This topic describes how to use a DDL statement to delete data from a non-partitioned table. Syntax:
 
 ```
 TRUNCATE TABLE table_name;
@@ -2499,7 +2517,7 @@ TRUNCATE TABLE table_name;
 
 ##### 3.4.1.11 Archive table data
 
-This topic describes how to use a DDL statement to archive the data of a table. If a project does not have enough space and data needs to be compressed or deleted, you can use table archiving of MaxCompute to compress data by about 50%. Table archiving uses a compression algorithm with a high compression ratio. It saves data as redundant array of independent disks (RAID) files. Data is no longer simply stored in three copies. Instead, six copies and three check blocks are maintained to increase the compression ratio from 1:3 to 1:1.5. Table archiving allows data to consume only half of the physical space. However, this feature comes at a price. If a data block or machine is faulty, it requires a long time to restore the data block, and read performance deteriorates. Therefore, this feature is suitable for the compression of cold data. For example, you can use this feature to store a large number of logs that are less used as RAID files for a long time.
+This topic describes how to use a DDL statement to archive the data of a table. If a project does not have enough space and data needs to be compressed or deleted, you can use table archiving of MaxCompute to compress data by about 50%. Table archiving uses a compression algorithm with a high compression ratio. It saves data as redundant array of independent disks (RAID) files. Data is no longer simply stored in three copies. Instead, six copies and three check blocks are maintained to increase the compression ratio from 1:3 to 1:1.5. Table archiving allows data to consume only half of the physical space. However, this feature comes at a price. If a data block or machine is faulty, it requires a long time to restore the data block, and read performance deteriorates. Therefore, this feature is suitable for the compression of cold data. For example, you can use this feature to store a large number of logs that are less used as RAID files for a long time. Syntax:
 
 ```
 ALTER TABLE [table_name] <PARTITION(partition_name='partition_value')> ARCHIVE;
@@ -2507,6 +2525,8 @@ ALTER TABLE [table_name] <PARTITION(partition_name='partition_value')> ARCHIVE;
 
 > **Note:** If the table specified by **table_name** does not exist, an error is returned.
 > If the partition specified by **partition_name** does not exist, an error is returned.
+
+Examples:
 
 ```
 alter table my_log partition(ds='20170101') archive;
@@ -2525,17 +2545,23 @@ Summary: table name: test0128 /pt=a instance count: 1 run time: 21 before merge,
 
 ##### 3.4.1.12 Forcibly delete data from a table or partition
 
-This topic describes how to use a DDL statement to forcibly delete data from a table or partition. If you want to forcibly and irrecoverably delete data from a table or partition to immediately release storage, you can execute a DROP statement with the PURGE option.
+This topic describes how to use a DDL statement to forcibly delete data from a table or partition. If you want to forcibly and irrecoverably delete data from a table or partition to immediately release storage, you can execute a DROP statement with the PURGE option. Syntax:
 
 ```
-DROP TABLE tblname PURGE; ALTER TABLE tblname DROP PARTITION(part_spec) PURGE; drop table my_log purge; alter table my_log drop partition (ds='20170618') purge;
+DROP TABLE tblname PURGE; ALTER TABLE tblname DROP PARTITION(part_spec) PURGE;
+```
+
+Examples:
+
+```
+drop table my_log purge; alter table my_log drop partition (ds='20170618') purge;
 ```
 
 #### 3.4.2 View-based operation
 
 ##### 3.4.2.1 Create a view
 
-This topic describes how to use a DDL statement to create a view.
+This topic describes how to use a DDL statement to create a view. Syntax:
 
 ```
 CREATE [OR REPLACE] VIEW [IF NOT EXISTS] view_name [(col_name [COMMENT col_comment], ...)] [COMMENT view_comment] [AS select_statement];
@@ -2554,7 +2580,7 @@ create view if not exists sale_detail_view (store_name, customer_id, price, sale
 
 ##### 3.4.2.2 Delete a view
 
-This topic describes how to use a DDL statement to delete a view.
+This topic describes how to use a DDL statement to delete a view. Syntax:
 
 ```
 DROP VIEW [IF EXISTS] view_name;
@@ -2562,19 +2588,23 @@ DROP VIEW [IF EXISTS] view_name;
 
 > **Note:** If the partition does not exist and **IF EXISTS** is not specified, an error is returned.
 
+Examples:
+
 ```
 DROP VIEW IF EXISTS sale_detail_view;
 ```
 
 ##### 3.4.2.3 Rename a view
 
-This topic describes how to use a DDL statement to rename a view.
+This topic describes how to use a DDL statement to rename a view. Syntax:
 
 ```
 ALTER VIEW view_name RENAME TO new_view_name;
 ```
 
 > **Note:** If a view with the same name already exists, an error is returned.
+
+Examples:
 
 ```
 alter view sale_detail_view rename to market;
@@ -3075,7 +3105,7 @@ SELECT * FROM mv WHERE dt >= '20201230' AND dt<='20210102' AND id='5'; -- The mv
 
 ##### 3.4.4.1 Add partitions
 
-This topic describes how to use a DDL statement to add partitions.
+This topic describes how to use a DDL statement to add partitions. Syntax:
 
 ```
 alter table table_name add [if not exists] partition partition_spec; -- Add one partition at a time. alter table table_name add [if not exists] partition partition_spec [PARTITION partition_spec PARTITION partiti on_spec...] ; -- Add multiple partitions at a time.
@@ -3084,6 +3114,8 @@ alter table table_name add [if not exists] partition partition_spec; -- Add one 
 > **Note:** If you do not specify **IF NOT EXISTS** and another partition with the same name exists, an error is returned.
 > A MaxCompute table can contain a maximum of 60,000 partitions.
 > To add a partition to a table that has multi-level partitions, you must specify all partition values.
+
+Examples:
 
 ```
 alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou'); -- Add a partition to store the sales records of the China (Hangzhou) region for December 2017. alter table sale_detail add if not exists partition (sale_date='201712', region='shanghai'); -- Add a partition to store the sales records of the China (Shanghai) region for December 2017. alter table sale_detail add if not exists partition(sale_date='20171011'); -- Specify only the sale_date partition. An error is returned. alter table sale_detail add if not exists partition(region='shanghai'); -- Specify only the region partition. An error is returned. alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou') partition (sale_date='201712', region='shanghai'); -- Add two partitions to store the sales records of the China (Hangzhou) and China (Shanghai) regions for December 2017.
@@ -3132,7 +3164,7 @@ indicates the name of the partition key column, and **partition_col_value** indi
 data type of this value must be the same as that of the partition key column.
 **scalar()**: the scalar function. This function generates a scalar based on the input value, processes the value in
 **partition_col**, and uses the relational operator specified by **relational_operators** to compare the processed
-value with **partition_col_value**. The filter condition that is used to delete partitions supports the following logical operators: NOT, AND, and OR. You can use PARTITION (NOT partition_filtercondition) to obtain the complementary set of the condition. You can use PARTITION (partition_filtercondition1 AND|OR partition_filtercondition2) to obtain the condition that is used to match the partitions you want to delete. Multiple PARTITION partition_filtercondition clauses are supported. If these clauses are separated by commas (,), OR is used for each clause to obtain the condition that is used to match the partitions you want to delete. Limits: Each PARTITION partition_filtercondition clause can be used for only one partition key column. If you use an expression to specify PARTITION partition_filtercondition, only the built-in scalar function can be used for the expression. The filter condition is not specified.
+value with **partition_col_value**. The filter condition that is used to delete partitions supports the following logical operators: NOT, AND, and OR. You can use PARTITION (NOT partition_filtercondition) to obtain the complementary set of the condition. You can use PARTITION (partition_filtercondition1 AND|OR partition_filtercondition2) to obtain the condition that is used to match the partitions you want to delete. Multiple PARTITION partition_filtercondition clauses are supported. If these clauses are separated by commas (,), OR is used for each clause to obtain the condition that is used to match the partitions you want to delete. Limits: Each PARTITION partition_filtercondition clause can be used for only one partition key column. If you use an expression to specify PARTITION partition_filtercondition, only the built-in scalar function can be used for the expression. Examples: The filter condition is not specified.
 
 ```
 -- Delete a partition from the sale_detail table. The partition stores the sales records of the China (Hangzhou ) region in December 2017. ALTER TABLE sale_detail DROP IF EXISTS PARTITION(sale_date='201712',region='hangzhou'); -- Delete two partitions from the sale_detail table at a time. The partitions store the sales records of the Ch ina (Hangzhou) and China (Shanghai) regions in December 2017. ALTER TABLE sale_detail DROP IF EXISTS PARTITION(sale_date='201712',region='hangzhou'),PARTITION(sale_date='201712',region='shanghai');
@@ -3152,15 +3184,21 @@ exception - invalid column reference region, partition expression must have one 
 
 ##### 3.4.4.3 Add columns or comments
 
-This topic describes how to use DDL statements to add columns or comments.
+This topic describes how to use DDL statements to add columns or comments. Syntax:
 
 ```
-ALTER TABLE table_name ADD COLUMNS (col_name1 type1,col_name2 type2...) ; -- Add columns. ALTER TABLE table_name ADD COLUMNS (col_name1 type1 comment 'XXX',col_name2 type2 comment 'XXX'); -- Add both columns and comments. ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING, education BIGINT); -- Add two columns to the sale_detail table. ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING comment 'Customer', education BIGINT comment 'Educati on' ); -- Add two columns and their comments to the sale_detail table.
+ALTER TABLE table_name ADD COLUMNS (col_name1 type1,col_name2 type2...) ; -- Add columns. ALTER TABLE table_name ADD COLUMNS (col_name1 type1 comment 'XXX',col_name2 type2 comment 'XXX'); -- Add both columns and comments.
+```
+
+Examples:
+
+```
+ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING, education BIGINT); -- Add two columns to the sale_detail table. ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING comment 'Customer', education BIGINT comment 'Educati on' ); -- Add two columns and their comments to the sale_detail table.
 ```
 
 ##### 3.4.4.4 Change the name of a column
 
-This topic describes how to use a DDL statement to change the name of a column.
+This topic describes how to use a DDL statement to change the name of a column. Syntax:
 
 ```
 ALTER TABLE table_name CHANGE COLUMN old_col_name RENAME TO new_col_name;
@@ -3169,13 +3207,15 @@ ALTER TABLE table_name CHANGE COLUMN old_col_name RENAME TO new_col_name;
 > **Note:** The column specified by **old_col_name** must exist in the table.
 > The table cannot contain the column specified by **new_col_name**.
 
+Examples:
+
 ```
 ALTER TABLE sale_detail CHANGE COLUMN customer_name RENAME TO customer; -- Change the name of a column in the sale_detail table.
 ```
 
 ##### 3.4.4.5 Modify the comment of a column
 
-This topic describes how to use a DDL statement to modify the comment of a column.
+This topic describes how to use a DDL statement to modify the comment of a column. Syntax:
 
 ```
 ALTER TABLE table_name CHANGE COLUMN col_name COMMENT 'comment_string';
@@ -3184,6 +3224,8 @@ ALTER TABLE table_name CHANGE COLUMN col_name COMMENT 'comment_string';
 > **Note:** The value of **comment_string** cannot exceed 1,024 bytes.
 > The data type and position of a column cannot be changed.
 > The column specified by **col_name** must exist.
+
+Examples:
 
 ```
 ALTER TABLE sale_detail CHANGE COLUMN customer COMMENT 'customer'; -- Modify the comment of a column in the sale_detail table.
@@ -3204,6 +3246,8 @@ ALTER TABLE table_name CHANGE COLUMN old_col_name new_col_name column_type COMME
 > The data type and position of a column cannot be changed.
 > The value of **column_comment** cannot exceed 1,024 bytes.
 
+Examples:
+
 ```
 ALTER TABLE sale_detail CHANGE COLUMN customer customer_name string COMMENT 'Customer'; -- Modify the name and comment of a column in the sale_detail table.
 ```
@@ -3212,7 +3256,7 @@ ALTER TABLE sale_detail CHANGE COLUMN customer customer_name string COMMENT 'Cus
 
 **or a partition in a partitioned table.**
 
-MaxCompute SQL allows you to execute the TOUCH operation to modify the value of **LastDataModifiedTime** for a non-partitioned table or a partition in a partitioned table. This operation changes the value of **LastDataModifiedTime** to the current time. This topic describes how to use a DDL statement to change the value of LastDataModifiedTime for a non-partitioned table or a partition in a partitioned table.
+MaxCompute SQL allows you to execute the TOUCH operation to modify the value of **LastDataModifiedTime** for a non-partitioned table or a partition in a partitioned table. This operation changes the value of **LastDataModifiedTime** to the current time. This topic describes how to use a DDL statement to change the value of LastDataModifiedTime for a non-partitioned table or a partition in a partitioned table. Syntax:
 
 ```
 ALTER TABLE table_name TOUCH; -- Change the value of LastDataModifiedTime for a non-partitioned table. ALTER TABLE table_name TOUCH PARTITION(partition_col='partition_col_value', ...); -- Change the value of LastDataModifiedTime for a partition in a partitioned table.
@@ -3230,7 +3274,7 @@ ALTER TABLE result_table TOUCH; -- Change the value of LastDataModifiedTime for 
 
 ##### 3.4.4.8 Modify partition values
 
-This topic describes how to use a DDL statement to modify partition values.
+This topic describes how to use a DDL statement to modify partition values. Syntax:
 
 ```
 ALTER TABLE table_name PARTITION (partition_col1 = 'partition_col_value1', partition_col2 = 'partiton_col_value2', ...) RENAME TO PARTITION (partition_col1 = 'partition_col_newvalue1', partition_col2 = 'partiton_col_newvalue2', ... ) ;
@@ -3239,6 +3283,8 @@ ALTER TABLE table_name PARTITION (partition_col1 = 'partition_col_value1', parti
 > **Note:** This statement can modify only the values rather than the names of partition key columns.
 > To modify the values of one or more partitions in a table that has multi-level partitions, you must specify the partition values at each level.
 > If the table specified by **table_name** does not exist, an error is returned.
+
+Examples:
 
 ```
 ALTER TABLE sale_detail PARTITION (sale_date = '201712', region = 'hangzhou') RENAME TO PARTITION (sale_date = '201710', region = 'beijing'); -- Modify the partition values in the sale_detail table.
@@ -3335,7 +3381,7 @@ you can use this clause to place rows with similar data records in the columns s
 > If the destination table is a clustered table, ZORDER BY is not supported.
 > ZORDER BY can be used with DISTRIBUTE BY. However, ZORDER BY cannot be used with ORDER BY, CLUSTER BY, or SORT BY.
 
-Calculate the sales of different regions listed in the sale_detail table. Then, insert the obtained data into the sale_detail_insert table.
+Examples: Calculate the sales of different regions listed in the sale_detail table. Then, insert the obtained data into the sale_detail_insert table.
 
 ```
 -- Create a partitioned table named sale_detail, add partitions, and insert data into the table. You do not nee d to define partition key columns as standard columns in the statement that is used to create the source table. CREATE TABLE IF NOT EXISTS sale_detail
@@ -3389,7 +3435,7 @@ If you want to update table data to a dynamic partition, take note of the follow
 
 ##### 3.5.1.2 Insert data into multiple objects
 
-This topic describes how to use an INSERT statement to insert data to multiple objects. MaxCompute SQL allows you to insert data into different result tables or partitions by using one SQL statement.
+This topic describes how to use an INSERT statement to insert data to multiple objects. MaxCompute SQL allows you to insert data into different result tables or partitions by using one SQL statement. Syntax:
 
 ```
 FROM from_statement INSERT OVERWRITE | INTO TABLE tablename1 [PARTITION (partcol1=val1, partcol2=val2 ...)] select_statement1 [FROM from_statement] [INSERT OVERWRITE | INTO TABLE tablename2 [PARTITION (partcol1=val3, partcol2=val4 ...)] select_statement2 [FROM from_statement]];
@@ -3399,6 +3445,8 @@ FROM from_statement INSERT OVERWRITE | INTO TABLE tablename1 [PARTITION (partcol
 > In a MULTI INSERT statement, non-partitioned tables and destination partitions in a partitioned table must be unique.
 > The `INSERT OVERWRITE` and `INSERT INTO` operations cannot be simultaneously performed on different partitions of a table. If these operations are simultaneously performed on the partitions, an error is returned.
 > **PARTITION (partcol1=val1, partcol2=val2 ...)**: The parameter values can be only constants rather than expressions, such as functions.
+
+Examples:
 
 ```
 -- Create a destination table named sale_detail_multi. create table sale_detail_multi like sale_detail; -- Insert data from sale_detail into sale_detail_multi. set odps.sql.allow.fullscan=true; -- Enable the full table scan, which is valid only for this session. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price ; -- An error is returned because the same partition appears more than once. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price; -- An error is returned because the INSERT OVERWRITE and INSERT INTO operations are simultaneously performed on different partitions of a partitioned table. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert into table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price;
@@ -3424,7 +3472,7 @@ FAILED: ODPS-0123031:Partition exception - invalid dynamic partition value: prov
 > If the destination table is a hash-clustered table, dynamic partitions are not supported.
 > If you insert data into dynamic partitions, the mappings between the columns in **select_statement** and dynamic partitions in the destination table are determined by the column sequence, not by the column names. If the sequence of columns in the source table is different from that in the destination table, we recommend that you specify the columns in **select_statement** based on the column sequence in the destination table.
 
-Insert data from a source table into a destination table. You can obtain the partitions generated based on the region field only after the required statement is executed.
+Examples: Insert data from a source table into a destination table. You can obtain the partitions generated based on the region field only after the required statement is executed.
 
 ```
 -- Create a destination table named total_revenues. create table total_revenues (revenue bigint) partitioned by (region string); -- Insert the data from sale_detail into total_revenues. insert overwrite table total_revenues partition(region) select total_price as revenue, region from sale_detail;
@@ -3456,7 +3504,7 @@ If the data types of values in partition key columns are inconsistent with those
 
 ##### 3.5.1.4 VALUES
 
-This topic describes how to use the INSERT...VALUES statement to insert data into a table that contains small amounts of data.
+This topic describes how to use the INSERT...VALUES statement to insert data into a table that contains small amounts of data. Syntax:
 
 ```
 INSERT INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2,...)][(co1name1,colname2,...)] [VALUES (col1_value,col2_value,...),(col1_value,col2_value,...),...]
@@ -3553,7 +3601,7 @@ The following result is returned:
 
 **Features of VALUES TABLE**
 
-When you use INSERT…VALUES, the values after VALUES must be constants. If you want to perform simple computing operations on the inserted data, we recommend that you use VALUES TABLE of MaxCompute.
+When you use INSERT…VALUES, the values after VALUES must be constants. If you want to perform simple computing operations on the inserted data, we recommend that you use VALUES TABLE of MaxCompute. Syntax:
 
 ```xml
 values (<col1_value>,<col2_value>,...),(<col1_value>,<col2_value>,...),<table_name> (<col1_name> , <col2_name>,...)...
@@ -3792,13 +3840,15 @@ If project data protection is enabled, the number of rows to return is limited b
 
 ##### 3.5.2.2 Subquery
 
-This topic describes how to use a SELECT statement to perform subqueries. A common SELECT statement reads data from multiple tables, such as, `select column_1, column_2 ... from` `table_name` . The query object can be another SELECT operation, which is a subquery.
+This topic describes how to use a SELECT statement to perform subqueries. A common SELECT statement reads data from multiple tables, such as, `select column_1, column_2 ... from` `table_name` . The query object can be another SELECT operation, which is a subquery. Syntax:
 
 ```
 select * from (select shop_name from sale_detail) a;
 ```
 
 > **Important:** A subquery must have an alias.
+
+Examples:
 
 ```
 create table shop as select * from sale_detail; select a.shop_name, a.customer_id, a.total_price from (select * from shop) a join sale_detail on a.shop_name = sale_detail.shop_name;
@@ -3808,7 +3858,7 @@ create table shop as select * from sale_detail; select a.shop_name, a.customer_i
 
 ##### 3.5.2.3 UNION ALL
 
-This topic describes how to use a SELECT statement to perform UNION ALL operations.
+This topic describes how to use a SELECT statement to perform UNION ALL operations. Syntax:
 
 ```
 select_statement union all select_statement
@@ -3828,7 +3878,7 @@ Syntax after rewriting:
 select * from ( select * from sale_detail where region = 'hangzhou' union all select * from sale_detail where region = 'shanghai') t;
 ```
 
-The syntax that uses a pair of parentheses to specify the priority of UNION ALL is supported.
+The syntax that uses a pair of parentheses to specify the priority of UNION ALL is supported. Examples:
 
 ```
 SELECT * FROM src UNION ALL (SELECT * FROM src2 UNION ALL SELECT * FROM src3); -- Execute the UNION ALL clause for the src2 and src3 tables. Then, execute the UNION ALL clause for the src ta ble and the result of the first UNION ALL operation.
@@ -3839,7 +3889,7 @@ SELECT * FROM src UNION ALL (SELECT * FROM src2 UNION ALL SELECT * FROM src3); -
 
 ##### 3.5.2.4 JOIN
 
-This topic describes how to use SELECT statements to perform JOIN operations. MaxCompute supports multiple JOIN operations in an SQL statement. MaxCompute does not support CROSS JOIN. A CROSS JOIN operation joins two tables without the need to specify conditions in the ON clause.
+This topic describes how to use SELECT statements to perform JOIN operations. MaxCompute supports multiple JOIN operations in an SQL statement. MaxCompute does not support CROSS JOIN. A CROSS JOIN operation joins two tables without the need to specify conditions in the ON clause. Syntax:
 
 ```
 join_table:
@@ -3910,7 +3960,7 @@ You can use parentheses () to specify the priority of JOIN operations. The JOIN 
 SELECT * FROM src JOIN (src2 JOIN src3 on xxx) ON yyy; -- In the preceding statement, src2 JOIN src3 is first executed. Then, the JOIN operation is performed for the src table and the result of the first JOIN operation.
 ```
 
-The test_table_a and test_table_b tables are available. You want to query the two tables for the rows whose values in the **origin** column are equal to those in the **id** column and whose data timestamp is greater than 20180101. If you use LEFT JOIN, all rows in the left table test_table_a are returned.
+Examples: The test_table_a and test_table_b tables are available. You want to query the two tables for the rows whose values in the **origin** column are equal to those in the **id** column and whose data timestamp is greater than 20180101. If you use LEFT JOIN, all rows in the left table test_table_a are returned.
 
 ```
 SELECT s.id
@@ -3958,7 +4008,7 @@ FROM shop a JOIN sale_detail b ON a.total_price < b.total_price OR a.total_price
 
 ###### 3.5.2.6.1 Overview
 
-This topic describes the syntax of the SELECT TRANSFORM statement in MaxCompute. The SELECT TRANSFORM statement allows you to start a specific child process and insert data in the required format into the child process by using standard input. Then, the SELECT TRANSFORM statement parses the standard output of the child process to obtain the output data. The SELECT TRANSFORM statement allows you to run scripts in other programming languages without the need to write user-defined functions (UDFs).
+This topic describes the syntax of the SELECT TRANSFORM statement in MaxCompute. The SELECT TRANSFORM statement allows you to start a specific child process and insert data in the required format into the child process by using standard input. Then, the SELECT TRANSFORM statement parses the standard output of the child process to obtain the output data. The SELECT TRANSFORM statement allows you to run scripts in other programming languages without the need to write user-defined functions (UDFs). Syntax:
 
 ```
 SELECT TRANSFORM(arg1, arg2 ...) (ROW FORMAT DELIMITED (FIELDS TERMINATED BY field_delimiter (ESCAPED BY character_escape)) (LINES SEPARATED BY line_separator) (NULL DEFINED AS null_value)) USING 'unix_command_line' (RESOURCES 'res_name' (',' 'res_name')*) ( AS col1, col2 ...) (ROW FORMAT DELIMITED (FIELDS TERMINATED BY field_delimiter (ESCAPED BY character_escape)) (LINES SEPARATED BY line_separator) (NULL DEFINED AS null_value))
@@ -4233,7 +4283,7 @@ However, the execution of GROUPING SETS is simpler and more efficient.
 
 ###### 3.5.2.7.3 CUBE and ROLLUP
 
-This topic describes the CUBE and ROLLUP functions for GROUPING SETS. CUBE and ROLLUP are special GROUPING SETS functions. CUBE lists all the possible combinations of specific columns as grouping sets. ROLLUP aggregates data by level to generate grouping sets.
+This topic describes the CUBE and ROLLUP functions for GROUPING SETS. CUBE and ROLLUP are special GROUPING SETS functions. CUBE lists all the possible combinations of specific columns as grouping sets. ROLLUP aggregates data by level to generate grouping sets. Examples:
 
 ```
 GROUP BY CUBE(a, b, c) -- Equivalent to the following statement: GROUPING SETS((a,b,c),(a,b),(a,c),(b,c),(a),(b),(c),()) GROUP BY ROLLUP(a, b, c) -- Equivalent to the following statement: GROUPING SETS((a,b,c),(a,b),(a), ()) GROUP BY CUBE ( (a, b), (c, d) ) -- Equivalent to the following statement: GROUPING SETS (
@@ -4275,7 +4325,7 @@ GROUP BY grouping sets((b), (c),rollup(a,b,c)) -- Equivalent to the following st
 
 ###### 3.5.2.7.4 GROUPING and GROUPING_ID
 
-This topic describes the GROUPING and GROUPING_ID functions in GROUPING SETS. NULL is used as placeholders in the results of GROUPING SETS. As a result, the NULL placeholders cannot be distinguished from the NULL values. To address this issue, MaxCompute provides the GROUPING function. GROUPING allows you to specify the name of a column as a parameter. If specific rows are aggregated based on the column specified in the GROUPING function, 0 is returned, which indicates that NULL is an input value. Otherwise, 1 is returned, which indicates that NULL is a placeholder in GROUPING SETS. GROUPING_ID allows you to specify the names of one or more columns as parameters. The GROUPING results of these columns are formed into integers by using bitmap.
+This topic describes the GROUPING and GROUPING_ID functions in GROUPING SETS. NULL is used as placeholders in the results of GROUPING SETS. As a result, the NULL placeholders cannot be distinguished from the NULL values. To address this issue, MaxCompute provides the GROUPING function. GROUPING allows you to specify the name of a column as a parameter. If specific rows are aggregated based on the column specified in the GROUPING function, 0 is returned, which indicates that NULL is an input value. Otherwise, 1 is returned, which indicates that NULL is a placeholder in GROUPING SETS. GROUPING_ID allows you to specify the names of one or more columns as parameters. The GROUPING results of these columns are formed into integers by using bitmap. Examples:
 
 ```
 SELECT a,b,c ,COUNT(*), GROUPING(a) ga, GROUPING(b) gb, GROUPING(c) gc, GROUPING_ID(a,b,c) groupingid FROM VALUES (1,2,3) as t(a,b,c) GROUP BY CUBE(a,b,c);
@@ -4336,13 +4386,13 @@ The following result is returned:
 
 ##### 3.5.2.8 UNION, INTERSECT, and EXCEPT
 
-This topic describes the SQL statements that use the UNION, INTERSECT, and EXCEPT set operators, such as UNION, UNION ALL, UNION DISTINCT, INTERSECT, INTERSECT ALL, INTERSECT DISTINCT, EXCEPT, EXCEPT ALL, and EXCEPT DISTINCT.
+This topic describes the SQL statements that use the UNION, INTERSECT, and EXCEPT set operators, such as UNION, UNION ALL, UNION DISTINCT, INTERSECT, INTERSECT ALL, INTERSECT DISTINCT, EXCEPT, EXCEPT ALL, and EXCEPT DISTINCT. Syntax:
 
 ```
 select_statement UNION ALL select_statement; select_statement UNION [DISTINCT] select_statement; select_statement INTERSECT ALL select_statement; select_statement INTERSECT [DISTINCT] select_statement; select_statement EXCEPT ALL select_statement; select_statement EXCEPT [DISTINCT] select_statement; select_statement MINUS ALL select_statement; select_statement MINUS [DISTINCT] select_statement;
 ```
 
-Parameters: UNION: the union of two datasets. The UNION operation combines two datasets into one dataset. INTERSECT: the intersection of two datasets. The INTERSECT operation returns the records contained in both datasets. EXCEPT: the complement of the second dataset in the first dataset. The EXCEPT operation returns the records that are contained in the first dataset, but not in the second dataset. MINUS: equivalent to EXCEPT. UNION: If UNION ALL is used, all records of the two datasets are returned.
+Parameters: UNION: the union of two datasets. The UNION operation combines two datasets into one dataset. INTERSECT: the intersection of two datasets. The INTERSECT operation returns the records contained in both datasets. EXCEPT: the complement of the second dataset in the first dataset. The EXCEPT operation returns the records that are contained in the first dataset, but not in the second dataset. MINUS: equivalent to EXCEPT. Examples: UNION: If UNION ALL is used, all records of the two datasets are returned.
 
 ```
 SELECT * FROM VALUES (1, 2), (1, 2), (3, 4) t(a, b) SELECT * FROM VALUES (1, 2), (1, 4) t(a, b);
@@ -4487,7 +4537,7 @@ The following result is returned. The preceding statement is equivalent to the `
 
 #### 3.5.3 EXPLAIN
 
-This topic describes the EXPLAIN statement in MaxCompute SQL. This statement shows the structure of the execution plan of a DML statement. An execution plan is a program that executes SQL statements.
+This topic describes the EXPLAIN statement in MaxCompute SQL. This statement shows the structure of the execution plan of a DML statement. An execution plan is a program that executes SQL statements. Syntax:
 
 ```
 EXPLAIN <DML query>;
@@ -4497,6 +4547,8 @@ EXPLAIN <DML query>;
 > Dependencies among all the jobs of this DML statement
 > Dependencies among all the tasks of each job
 > Dependencies among all operators in a task
+
+Examples:
 
 ```
 SELECT abs(a.key), b.value FROM src a JOIN src1 b ON a.value = b.value;
@@ -4614,6 +4666,8 @@ You cannot specify clustered tables or external tables as transactional tables. 
 
 **DELETE**
 
+Syntax:
+
 ```
 delete from <table_name> [WHERE where_condition];
 ```
@@ -4681,6 +4735,8 @@ The following result is returned:
 ```
 
 **UPDATE**
+
+Syntax:
 
 ```
 update <table_name> set col1 = value1 [, col2 = value2 ...] [WHERE where_condition]; update <table_name> set (col1 [, col2 ...]) = (value1 [, value2 ...]);
@@ -4758,7 +4814,7 @@ Example 3: Update several columns and update a destination table by using the da
 
 **MERGE INTO**
 
-The MERGE INTO statement encapsulates the INSERT, UPDATE, and DELETE operations. You can use this statement to perform multiple operations on a destination table after the table is joined with a source table. MaxCompute DML provides the UPDATE and DELETE statements to enrich its expressions. However, if you want to use several INSERT, UPDATE, and DELETE statements to perform multiple UPDATE operations on a destination table at a time, you must execute several statements. These statements trigger multiple full table scans. The MERGE INTO statement requires only one full table scan for you to complete the operations. The MERGE INTO statement is more efficient than the INSERT, UPDATE, and DELETE statements. If you use the INSERT, UPDATE, and DELETE statements in a job to update a table, the update succeeds only when all the statements are successfully executed. If only some of these statements are successfully executed, the execution cannot be rolled back. However, the MERGE INTO statement is atomic, which can be used to prevent this issue.
+The MERGE INTO statement encapsulates the INSERT, UPDATE, and DELETE operations. You can use this statement to perform multiple operations on a destination table after the table is joined with a source table. MaxCompute DML provides the UPDATE and DELETE statements to enrich its expressions. However, if you want to use several INSERT, UPDATE, and DELETE statements to perform multiple UPDATE operations on a destination table at a time, you must execute several statements. These statements trigger multiple full table scans. The MERGE INTO statement requires only one full table scan for you to complete the operations. The MERGE INTO statement is more efficient than the INSERT, UPDATE, and DELETE statements. If you use the INSERT, UPDATE, and DELETE statements in a job to update a table, the update succeeds only when all the statements are successfully executed. If only some of these statements are successfully executed, the execution cannot be rolled back. However, the MERGE INTO statement is atomic, which can be used to prevent this issue. Syntax:
 
 ```
 MERGE INTO <target table> AS T USING <source expression/table> AS S ON <boolean expression1> WHEN MATCHED [AND <boolean expression2>] THEN UPDATE SET <set clause list> WHEN MATCHED [AND <boolean expression3>] THEN DELETE WHEN NOT MATCHED [AND <boolean expression4>] THEN INSERT VALUES <value list>
@@ -4808,7 +4864,7 @@ The following result is returned:
 
 **ALTER TABLE COMPACT**
 
-If you perform DELETE operations on a transactional table, the Base file that you want to delete is not modified. A Delta file is generated every time you perform a DELETE operation. As a result, if you perform multiple DELETE operations, the generated Delta files occupy more storage resources. If you perform several DELETE operations on the same table or partition, a large number of Delta files may be generated based on the amount of the data that you delete. Similarly, if you perform an UPDATE operation which is converted into the combination of the DELETE and INSERT INTO operations, Delta files are also generated. If the system reads data from the table, it must load the generated Delta files to find the deleted rows. A large number of Delta files reduce data reading efficiency. In this case, you can use the ALTER TABLE COMPACT statement to merge the Base files with Delta files to reduce storage usage and improve data reading efficiency.
+If you perform DELETE operations on a transactional table, the Base file that you want to delete is not modified. A Delta file is generated every time you perform a DELETE operation. As a result, if you perform multiple DELETE operations, the generated Delta files occupy more storage resources. If you perform several DELETE operations on the same table or partition, a large number of Delta files may be generated based on the amount of the data that you delete. Similarly, if you perform an UPDATE operation which is converted into the combination of the DELETE and INSERT INTO operations, Delta files are also generated. If the system reads data from the table, it must load the generated Delta files to find the deleted rows. A large number of Delta files reduce data reading efficiency. In this case, you can use the ALTER TABLE COMPACT statement to merge the Base files with Delta files to reduce storage usage and improve data reading efficiency. Syntax:
 
 ```
 alter table <table_name> [partition (partition_key = 'partition_value' [, ...])] compact [major|minor];
@@ -4848,6 +4904,8 @@ Description: This function calculates the absolute value of **number**. Paramete
 
 > **Note:** If the input value is of the BIGINT type and is greater than the maximum value of the BIGINT type, a value of the DOUBLE type is returned. However, the precision may be lost.
 
+Examples:
+
 ```
 abs(null)=null abs(-1)=1 abs(-1.2)=1.2 abs("-2")=2.0 abs(122320837456298376592387456923748)=1.2232083745629837e32
 ```
@@ -4860,13 +4918,13 @@ select abs(id) from tbl1; -- Calculate the absolute value of the id field in tbl
 
 ##### 3.6.1.2 ACOS
 
-This topic describes the ACOS function in mathematical functions and provides examples.
+This topic describes the ACOS function in mathematical functions and provides examples. Syntax:
 
 ```
 double acos(double number) decimal acos(decimal number)
 ```
 
-Description: This function calculates the arccosine of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. The value ranges from -1 to 1. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. The value ranges from 0 to π. If the input value is NULL, NULL is returned.
+Description: This function calculates the arccosine of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. The value ranges from -1 to 1. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. The value ranges from 0 to π. If the input value is NULL, NULL is returned. Examples:
 
 ```
 acos("0.87") = 0.5155940062460905 acos(0) = 1.5707963267948966
@@ -4874,7 +4932,7 @@ acos("0.87") = 0.5155940062460905 acos(0) = 1.5707963267948966
 
 ##### 3.6.1.3 ASIN
 
-This topic describes the ASIN function in mathematical functions and provides examples.
+This topic describes the ASIN function in mathematical functions and provides examples. Syntax:
 
 ```
 double asin(double number) decimal asin(decimal number)
@@ -4888,13 +4946,13 @@ asin(1) = 1.5707963267948966 asin(-1) = -1.5707963267948966
 
 ##### 3.6.1.4 ATAN
 
-This topic describes the ATAN function in mathematical functions and provides examples.
+This topic describes the ATAN function in mathematical functions and provides examples. Syntax:
 
 ```
 double atan(double number)
 ```
 
-Description: This function calculates the arctangent of **number**. Parameters: The **number** parameter supports a value of the DOUBLE type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE type is returned. The value ranges from -π/2 to π/2. If the input value is NULL, NULL is returned.
+Description: This function calculates the arctangent of **number**. Parameters: The **number** parameter supports a value of the DOUBLE type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE type is returned. The value ranges from -π/2 to π/2. If the input value is NULL, NULL is returned. Examples:
 
 ```
 atan(1) = 0.7853981633974483; atan(-1) = -0.7853981633974483
@@ -4902,13 +4960,13 @@ atan(1) = 0.7853981633974483; atan(-1) = -0.7853981633974483
 
 ##### 3.6.1.5 CEIL
 
-This topic describes the CEIL function in mathematical functions and provides examples.
+This topic describes the CEIL function in mathematical functions and provides examples. Syntax:
 
 ```
 bigint ceil(double value) bigint ceil(decimal value)
 ```
 
-Description: This function rounds up **value** and returns the nearest integer. Parameters: The **value** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned.
+Description: This function rounds up **value** and returns the nearest integer. Parameters: The **value** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 ceil(1.1) = 2 ceil(-1.1) = -1
@@ -4916,7 +4974,7 @@ ceil(1.1) = 2 ceil(-1.1) = -1
 
 ##### 3.6.1.6 CONV
 
-This topic describes the CONV function in mathematical functions and provides examples.
+This topic describes the CONV function in mathematical functions and provides examples. Syntax:
 
 ```
 string conv(string input, bigint from_base, bigint to_base)
@@ -4934,13 +4992,13 @@ conv('1100', 2, 10) = '12' conv('1100', 2, 16) = 'c' conv('ab', 16, 10) = '171' 
 
 ##### 3.6.1.7 COS
 
-This topic describes the COS function in mathematical functions and provides examples.
+This topic describes the COS function in mathematical functions and provides examples. Syntax:
 
 ```
 double cos(double number) decimal cos(decimal number)
 ```
 
-Description: This function calculates the cosine of **number**, which is a radian value. Parameters: **number**, a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+Description: This function calculates the cosine of **number**, which is a radian value. Parameters: **number**, a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 cos(3.1415926/2) = 2.6794896585028633e-8 cos(3.1415926) = -0.9999999999999986
@@ -4948,7 +5006,7 @@ cos(3.1415926/2) = 2.6794896585028633e-8 cos(3.1415926) = -0.9999999999999986
 
 ##### 3.6.1.8 COSH
 
-This topic describes the COSH function in mathematical functions.
+This topic describes the COSH function in mathematical functions. Syntax:
 
 ```
 double cosh(double number) decimal cosh(decimal number)
@@ -4958,7 +5016,7 @@ Description: This function calculates the hyperbolic cosine of **number**. Param
 
 ##### 3.6.1.9 COT
 
-This topic describes the COT function in mathematical functions.
+This topic describes the COT function in mathematical functions. Syntax:
 
 ```
 double cot(double number) decimal cot(decimal number)
@@ -4968,7 +5026,7 @@ Description: This function calculates the cotangent of **number**, which is a ra
 
 ##### 3.6.1.10 EXP
 
-This topic describes the EXP function in mathematical functions.
+This topic describes the EXP function in mathematical functions. Syntax:
 
 ```
 double exp(double number) decimal exp(decimal number)
@@ -4978,13 +5036,13 @@ Description: This function calculates the exponential value of **number**. Param
 
 ##### 3.6.1.11 FLOOR
 
-This topic describes the FLOOR function in mathematical functions and provides examples.
+This topic describes the FLOOR function in mathematical functions and provides examples. Syntax:
 
 ```
 bigint floor(double number) bigint floor(decimal number)
 ```
 
-Description: This function rounds down **number** and returns the nearest integer that is no greater than the value of number. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned.
+Description: This function rounds down **number** and returns the nearest integer that is no greater than the value of number. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 floor(1.2) = 1 floor(1.9) = 1 floor(0.1) = 0 floor(-1.2) = -2 floor(-0.1) = -1 floor(0.0) = 0 floor(-0.0) = 0
@@ -4992,13 +5050,13 @@ floor(1.2) = 1 floor(1.9) = 1 floor(0.1) = 0 floor(-1.2) = -2 floor(-0.1) = -1 f
 
 ##### 3.6.1.12 LN
 
-This topic describes the LN function in mathematical functions.
+This topic describes the LN function in mathematical functions. Syntax:
 
 ```
 double ln(double number) decimal ln(decimal number)
 ```
 
-Description: This function calculates the natural logarithm of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. If the input value is a negative value or 0, an error is returned.
+Description: This function calculates the natural logarithm of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. If the input value is a negative value or 0, an error is returned. Examples:
 
 ```
 select ln(1000);
@@ -5016,7 +5074,7 @@ The following result is returned:
 
 ##### 3.6.1.13 LOG
 
-This topic describes the LOG function in mathematical functions.
+This topic describes the LOG function in mathematical functions. Syntax:
 
 ```
 double log(double base, double x) decimal log(decimal base, decimal x)
@@ -5026,7 +5084,7 @@ Description: This function calculates the logarithm of **x** whose base number i
 **base**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly
 converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned.
 **x**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly
-converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: The logarithm value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned. If an input value is a negative value or 0, an error is returned. If the value of **base** is 1, an error is returned. The value 1 causes division by zero.
+converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: The logarithm value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned. If an input value is a negative value or 0, an error is returned. If the value of **base** is 1, an error is returned. The value 1 causes division by zero. Examples:
 
 ```
 select log(10,100);
@@ -5044,7 +5102,7 @@ The following result is returned:
 
 ##### 3.6.1.14 POW
 
-This topic describes the POW function in mathematical functions.
+This topic describes the POW function in mathematical functions. Syntax:
 
 ```
 double pow(double x, double y) decimal pow(decimal x, decimal y)
@@ -5054,7 +5112,7 @@ Description: This function calculates the **y**th power of **x**, namely, **x^y*
 **x**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly
 converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned.
 **y**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly
-converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned.
+converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 select pow(10,2);
@@ -5072,7 +5130,7 @@ The following result is returned:
 
 ##### 3.6.1.15 RAND
 
-This topic describes the RAND function in mathematical functions and provides examples.
+This topic describes the RAND function in mathematical functions and provides examples. Syntax:
 
 ```
 double rand(bigint seed)
@@ -5086,7 +5144,7 @@ select rand(); select rand(1);
 
 ##### 3.6.1.16 ROUND
 
-This topic describes the ROUND function in mathematical functions and provides examples.
+This topic describes the ROUND function in mathematical functions and provides examples. Syntax:
 
 ```
 double round(double number, [bigint decimal_places]) decimal round(decimal number, [bigint decimal_places])
@@ -5100,7 +5158,7 @@ input value is of another data type, an error is returned. If this parameter is 
 
 > **Note:** **decimal_places** supports negative values. A negative value indicates counting from the decimal point to the left, and the decimal part is excluded. If **decimal_places** exceeds the length of the integer part, 0 is returned.
 
-Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned.
+Return value: A value of the DOUBLE or DECIMAL type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 round(125.315) = 125.0 round(125.315, 0) = 125.0 round(125.315, 1) = 125.3 round(125.315, 2) = 125.32 round(125.315, 3) = 125.315 round(-125.315, 2) = -125.32 round(123.345, -2) = 100.0 round(null) = null round(123.345, 4) = 123.345 round(123.345, -4) = 0.0
@@ -5108,7 +5166,7 @@ round(125.315) = 125.0 round(125.315, 0) = 125.0 round(125.315, 1) = 125.3 round
 
 ##### 3.6.1.17 SIN
 
-This topic describes the SIN function in mathematical functions.
+This topic describes the SIN function in mathematical functions. Syntax:
 
 ```
 double sin(double number) decimal sin(decimal number)
@@ -5118,7 +5176,7 @@ Description: This function calculates the sine of **number**, which is a radian 
 
 ##### 3.6.1.18 SINH
 
-This topic describes the SINH function in mathematical functions.
+This topic describes the SINH function in mathematical functions. Syntax:
 
 ```
 double sinh(double number) decimal sinh(decimal number)
@@ -5128,7 +5186,7 @@ Description: This function calculates the hyperbolic sine of **number**. Paramet
 
 ##### 3.6.1.19 SQRT
 
-This topic describes the SQRT function in mathematical functions.
+This topic describes the SQRT function in mathematical functions. Syntax:
 
 ```
 double sqrt(double number) decimal sqrt(decimal number)
@@ -5138,7 +5196,7 @@ Description: This function calculates the square root of **number**. Parameters:
 
 ##### 3.6.1.20 TAN
 
-This topic describes the TAN function in mathematical functions.
+This topic describes the TAN function in mathematical functions. Syntax:
 
 ```
 double tan(double number) decimal tan(decimal number)
@@ -5148,7 +5206,7 @@ Description: This function calculates the tangent of **number**, which is a radi
 
 ##### 3.6.1.21 TANH
 
-This topic describes the TANH function in mathematical functions.
+This topic describes the TANH function in mathematical functions. Syntax:
 
 ```
 double tanh(double number) decimal tanh(decimal number)
@@ -5158,7 +5216,7 @@ Description: This function calculates the hyperbolic tangent of **number**. Para
 
 ##### 3.6.1.22 TRUNC
 
-This topic describes the TRUNC function in mathematical functions and provides examples.
+This topic describes the TRUNC function in mathematical functions and provides examples. Syntax:
 
 ```
 double trunc(double number[, bigint decimal_places]) decimal trunc(decimal number[, bigint decimal_places])
@@ -5176,6 +5234,8 @@ Return value: A value of the DOUBLE or DECIMAL type is returned. If an input val
 
 > **Note:** If a value of the DOUBLE type is returned, the return value may not be properly displayed. This issue exists in all systems. For more information, see **trunc(125.815,1)** in the following example.
 > The number is filled with zeros from the specified position.
+
+Examples:
 
 ```
 trunc(125.815) = 125.0 trunc(125.815, 0) =125.0 trunc(125.815, 1) = 125.80000000000001 trunc(125.815, 2) = 125.81 trunc(125.815, 3) = 125.815 trunc(-125.815, 2) = -125.81 trunc(125.815, -1) = 120.0 trunc(125.815, -2) = 100.0 trunc(125.815, -3) = 0.0 trunc(123.345, 4) = 123.345 trunc(123.345, -4) = 0.0
@@ -5195,13 +5255,13 @@ set odps.sql.type.system.odps2=true;
 
 ###### 3.6.1.23.2 LOG2
 
-This topic describes the LOG2 function in mathematical functions and provides examples.
+This topic describes the LOG2 function in mathematical functions and provides examples. Syntax:
 
 ```
 double log2(double number) double log2(decimal number)
 ```
 
-Description: This function calculates the logarithm of **number** with the base number of 2. Parameters: **number**, a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is 0 or NULL, NULL is returned.
+Description: This function calculates the logarithm of **number** with the base number of 2. Parameters: **number**, a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is 0 or NULL, NULL is returned. Examples:
 
 ```
 log2(null) = null log2(0) = null log2(8) = 3.0
@@ -5215,7 +5275,7 @@ This topic describes the LOG10 function in mathematical functions and provides e
 double log10(double number) double log10(decimal number)
 ```
 
-Description: This function calculates the logarithm of **number** with the base number of 10. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is 0 or NULL, NULL is returned.
+Description: This function calculates the logarithm of **number** with the base number of 10. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is 0 or NULL, NULL is returned. Examples:
 
 ```
 log10(null)=null log10(0)=null log10(8)=0.9030899869919435
@@ -5223,13 +5283,13 @@ log10(null)=null log10(0)=null log10(8)=0.9030899869919435
 
 ###### 3.6.1.23.4 BIN
 
-This topic describes the BIN function in mathematical functions and provides examples.
+This topic describes the BIN function in mathematical functions and provides examples. Syntax:
 
 ```
 string bin(bigint number)
 ```
 
-Description: This function calculates the binary code of **number**. Parameters: The **number** parameter supports a value of the BIGINT type. Return value: A value of the STRING type is returned. If the input value is 0, 0 is returned. If the input value is NULL, NULL is returned.
+Description: This function calculates the binary code of **number**. Parameters: The **number** parameter supports a value of the BIGINT type. Return value: A value of the STRING type is returned. If the input value is 0, 0 is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 bin(0) = '0' bin(null) = 'null' bin(12) = '1100'
@@ -5237,13 +5297,13 @@ bin(0) = '0' bin(null) = 'null' bin(12) = '1100'
 
 ###### 3.6.1.23.5 HEX
 
-This topic describes the HEX function in mathematical functions and provides examples.
+This topic describes the HEX function in mathematical functions and provides examples. Syntax:
 
 ```
 string hex(bigint number) string hex(string number) string hex(binary number)
 ```
 
-Description: This function converts an integer or a string into a hexadecimal number. Parameters: If **number** is of the BIGINT type, a hexadecimal number is returned. If **number** is of the STRING type, a string in hexadecimal format is returned. Return value: A value of the STRING type is returned. If the input value is 0, 0 is returned. If the input value is NULL, NULL is returned.
+Description: This function converts an integer or a string into a hexadecimal number. Parameters: If **number** is of the BIGINT type, a hexadecimal number is returned. If **number** is of the STRING type, a string in hexadecimal format is returned. Return value: A value of the STRING type is returned. If the input value is 0, 0 is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 hex(0) = '0' hex('abc') = '616263' hex(17) = '11' hex('17') = '3137' hex(null) -- An exception occurs and the execution fails.
@@ -5251,7 +5311,7 @@ hex(0) = '0' hex('abc') = '616263' hex(17) = '11' hex('17') = '3137' hex(null) -
 
 ###### 3.6.1.23.6 UNHEX
 
-This topic describes the UNHEX function in mathematical functions and provides examples.
+This topic describes the UNHEX function in mathematical functions and provides examples. Syntax:
 
 ```
 binary unhex(string number)
@@ -5265,13 +5325,13 @@ unhex('616263') = 'abc' unhex(616263) = 'abc'
 
 ###### 3.6.1.23.7 RADIANS
 
-This topic describes the RADIANS function in mathematical functions and provides examples.
+This topic describes the RADIANS function in mathematical functions and provides examples. Syntax:
 
 ```
 double radians(double number)
 ```
 
-Description: This function converts a degree into a radian value. Parameters: **number**, a value of the DOUBLE type. Return value: A value of the DOUBLE type is returned. If the input value is NULL, NULL is returned.
+Description: This function converts a degree into a radian value. Parameters: **number**, a value of the DOUBLE type. Return value: A value of the DOUBLE type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 radians(90) = 1.5707963267948966 radians(0) = 0.0 radians(null) = null
@@ -5279,13 +5339,13 @@ radians(90) = 1.5707963267948966 radians(0) = 0.0 radians(null) = null
 
 ###### 3.6.1.23.8 DEGREES
 
-This topic describes the DEGREES function in mathematical functions and provides examples.
+This topic describes the DEGREES function in mathematical functions and provides examples. Syntax:
 
 ```
 double degrees(double number) double degrees(decimal number)
 ```
 
-Description: This function converts a radian value to a degree. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is NULL, NULL is returned.
+Description: This function converts a radian value to a degree. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 degrees(1.5707963267948966) = 90.0 degrees(0) = 0.0 degrees(null) = null
@@ -5293,13 +5353,13 @@ degrees(1.5707963267948966) = 90.0 degrees(0) = 0.0 degrees(null) = null
 
 ###### 3.6.1.23.9 SIGN
 
-This topic describes the SIGN function in mathematical functions and provides examples.
+This topic describes the SIGN function in mathematical functions and provides examples. Syntax:
 
 ```
 double sign(double number) double sign(decimal number)
 ```
 
-Description: This function returns the sign of an input value. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is a positive value, 1.0 is returned. If the input value is a negative value, -1.0 is returned. If the input value is 0, 0.0 is returned. If the input value is NULL, NULL is returned.
+Description: This function returns the sign of an input value. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. Return value: A value of the DOUBLE type is returned. If the input value is a positive value, 1.0 is returned. If the input value is a negative value, -1.0 is returned. If the input value is 0, 0.0 is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 sign(-2.5) = -1.0 sign(2.5) = 1.0 sign(0) = 0.0 sign(null) = null
@@ -5307,13 +5367,13 @@ sign(-2.5) = -1.0 sign(2.5) = 1.0 sign(0) = 0.0 sign(null) = null
 
 ###### 3.6.1.23.10 E
 
-This topic describes the E function in mathematical functions and provides examples.
+This topic describes the E function in mathematical functions and provides examples. Syntax:
 
 ```
 double e()
 ```
 
-Description: This function returns the value of **e**. Return value: A value of the DOUBLE type is returned.
+Description: This function returns the value of **e**. Return value: A value of the DOUBLE type is returned. Examples:
 
 ```
 e() = 2.718281828459045
@@ -5321,13 +5381,13 @@ e() = 2.718281828459045
 
 ###### 3.6.1.23.11 PI
 
-This topic describes the PI function in mathematical functions and provides examples.
+This topic describes the PI function in mathematical functions and provides examples. Syntax:
 
 ```
 double pi()
 ```
 
-Description: This function calculates the value of π. Return value: A value of the DOUBLE type is returned.
+Description: This function calculates the value of π. Return value: A value of the DOUBLE type is returned. Examples:
 
 ```
 pi() = 3.141592653589793
@@ -5335,13 +5395,13 @@ pi() = 3.141592653589793
 
 ###### 3.6.1.23.12 FACTORIAL
 
-This topic describes the FACTORIAL function in mathematical functions and provides examples.
+This topic describes the FACTORIAL function in mathematical functions and provides examples. Syntax:
 
 ```
 bigint factorial(int number)
 ```
 
-Description: This function calculates the factorial of **number**. Parameters: **number** indicates a value of the INT type. The value ranges from 0 to 20. Return value: A value of the BIGINT type is returned. If the input value is 0, 1 is returned. If the input value is NULL or a value that does not fall into the range from 0 to 20, NULL is returned.
+Description: This function calculates the factorial of **number**. Parameters: **number** indicates a value of the INT type. The value ranges from 0 to 20. Return value: A value of the BIGINT type is returned. If the input value is 0, 1 is returned. If the input value is NULL or a value that does not fall into the range from 0 to 20, NULL is returned. Examples:
 
 ```
 factorial(5) = 120 --5! = 5*4*3*2*1 = 120
@@ -5349,13 +5409,13 @@ factorial(5) = 120 --5! = 5*4*3*2*1 = 120
 
 ###### 3.6.1.23.13 CBRT
 
-This topic describes the CBRT function in mathematical functions and provides examples on how to use the function.
+This topic describes the CBRT function in mathematical functions and provides examples on how to use the function. Syntax:
 
 ```
 double cbrt(double number)
 ```
 
-Description: This function calculates the cube root of **number**. Parameters: **number**: A value of the BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING type. Return value: A value of the DOUBLE type is returned. If **number** is not of the BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING type, an error is returned. If the input value is null, null is returned.
+Description: This function calculates the cube root of **number**. Parameters: **number**: A value of the BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING type. Return value: A value of the DOUBLE type is returned. If **number** is not of the BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING type, an error is returned. If the input value is null, null is returned. Examples:
 
 ```
 -- The return value is 2.0. select cbrt(8); -- The return value is null. select cbrt(null);
@@ -5363,7 +5423,7 @@ Description: This function calculates the cube root of **number**. Parameters: *
 
 ###### 3.6.1.23.14 SHIFTLEFT
 
-This topic describes the SHIFTLEFT function in mathematical functions and provides examples.
+This topic describes the SHIFTLEFT function in mathematical functions and provides examples. Syntax:
 
 ```
 int shiftleft(tinyint|smallint|int number1, int number2) bigint shiftleft(bigint number1, int number2)
@@ -5372,7 +5432,7 @@ int shiftleft(tinyint|smallint|int number1, int number2) bigint shiftleft(bigint
 Description: This function shifts a value left by a specific number of places (<<). Parameters:
 **number1**: an integer of the TINYINT, SMALLINT, INT, or BIGINT type.
 **number2**: an integer of the INT type.
-Return value: A value of the INT or BIGINT type is returned.
+Return value: A value of the INT or BIGINT type is returned. Examples:
 
 ```
 shiftleft(1,2)=4 -- Shift the binary value of 1 two places to the left (1<<2, 0001 shifted to 0100). shiftleft(4,3)=32 -- Shift the binary value of 4 three places to the left (4<<3, 0100 shifted to 100000).
@@ -5380,7 +5440,7 @@ shiftleft(1,2)=4 -- Shift the binary value of 1 two places to the left (1<<2, 00
 
 ###### 3.6.1.23.15 SHIFTRIGHT
 
-This topic describes the SHIFTRIGHT function in mathematical functions and provides examples.
+This topic describes the SHIFTRIGHT function in mathematical functions and provides examples. Syntax:
 
 ```
 int shiftright(tinyint|smallint|int number1, int number2) bigint shiftright(bigint number1, int number2)
@@ -5389,7 +5449,7 @@ int shiftright(tinyint|smallint|int number1, int number2) bigint shiftright(bigi
 Description: This function shifts a value right by a specific number of places (>>). Parameters:
 **number1**: an integer of the TINYINT, SMALLINT, INT, or BIGINT type.
 **number2**: an integer of the INT type.
-Return value: A value of the INT or BIGINT type is returned.
+Return value: A value of the INT or BIGINT type is returned. Examples:
 
 ```
 shiftright(4,2) = 1 -- Shift the binary value of 4 two places to the right (4>>2, 0100 shifted to 0001). shiftright(32,3) = 4 -- Shift the binary value of 32 three places to the right (32>>3, 100000 shifted to 0100).
@@ -5397,7 +5457,7 @@ shiftright(4,2) = 1 -- Shift the binary value of 4 two places to the right (4>>2
 
 ###### 3.6.1.23.16 SHIFTRIGHTUNSIGNED
 
-This topic describes the SHIFTRIGHTUNSIGNED function in mathematical functions and provides examples.
+This topic describes the SHIFTRIGHTUNSIGNED function in mathematical functions and provides examples. Syntax:
 
 ```
 int shiftrightunsigned(tinyint|smallint|int number1, int number2) bigint shiftrightunsigned(bigint number1, int number2)
@@ -5406,7 +5466,7 @@ int shiftrightunsigned(tinyint|smallint|int number1, int number2) bigint shiftri
 Description: This function shifts an unsigned value right by a specific number of places (>>>). Parameters:
 **number1**: an integer of the TINYINT, SMALLINT, INT, or BIGINT type.
 **number2**: an integer of the INT type.
-Return value: A value of the INT or BIGINT type is returned.
+Return value: A value of the INT or BIGINT type is returned. Examples:
 
 ```
 shiftrightunsigned(8,2) = 2 -- Shift the binary unsigned value of 8 two places to the right (8>>>2,1000 shifted to be 0010). shiftrightunsigned(-14,2) = 1073741820 -- Shift the binary value of -14 two places to the right (-14>>>2, 11111111 11111111 11111111 11110010 shifted to be 00111111 11111111 11111111 11111100).
@@ -5414,7 +5474,7 @@ shiftrightunsigned(8,2) = 2 -- Shift the binary unsigned value of 8 two places t
 
 ###### 3.6.1.23.17 FORMAT_NUMBER
 
-This topic describes the FORMAT_NUMBER function in mathematical functions and provides examples.
+This topic describes the FORMAT_NUMBER function in mathematical functions and provides examples. Syntax:
 
 ```
 string format_number(float|double|decimal expr1, expr2)
@@ -5429,7 +5489,7 @@ Description: This function converts a number to a string in the specified format
 > If **expr2** is equal to 0, the value has no decimal point or fractional part.
 > If **expr2** is less than 0 or greater than 340, an error is returned.
 
-Return value: A value of the STRING type is returned.
+Return value: A value of the STRING type is returned. Examples:
 
 ```
 select format_number(5.230134523424545456,3); -- The value 5.230 is returned. select format_number(12332.123456, '#,###,###,###. ###'); -- The value 12,332.123 is returned.
@@ -5437,7 +5497,7 @@ select format_number(5.230134523424545456,3); -- The value 5.230 is returned. se
 
 ###### 3.6.1.23.18 WIDTH_BUCKET
 
-This topic describes the WIDTH_BUCKET function in mathematical functions and provides examples on how to use the function.
+This topic describes the WIDTH_BUCKET function in mathematical functions and provides examples on how to use the function. Syntax:
 
 ```
 WIDTH_BUCKET(NUMERIC expr, NUMERIC min_value, NUMERIC max_value, INT num_buckets)
@@ -5453,7 +5513,13 @@ Return value: A value of the BIGINT type is returned. The value ranges from 0 to
 the value of num_buckets plus 1 is returned. If the value of expr is NULL, NULL is returned. In other cases, the ID of the bucket into which the value falls is returned. The bucket ID is named based on the following formula: `FLOOR(`
 
 ```
-num_buckets * (expr - min_value)/(max_value - min_value) + 1) . SELECT key,value,WIDTH_BUCKET(value,100,500,5) as value_group FROM VALUES
+num_buckets * (expr - min_value)/(max_value - min_value) + 1) .
+```
+
+Examples:
+
+```
+SELECT key,value,WIDTH_BUCKET(value,100,500,5) as value_group FROM VALUES
     (1,99),
     (2,100),
     (3,199),
@@ -5509,7 +5575,7 @@ A value of the BIGINT type is returned. If an input value is null, null is retur
 
 ##### 3.6.2.2 CHR
 
-This topic describes the CHR function in string functions.
+This topic describes the CHR function in string functions. Syntax:
 
 ```
 string chr(bigint ascii)
@@ -5519,13 +5585,13 @@ Description: This function converts specified an **ASCII** code into the require
 
 ##### 3.6.2.3 CONCAT
 
-This topic describes the CONCAT function in string functions and provides examples.
+This topic describes the CONCAT function in string functions and provides examples. Syntax:
 
 ```
 string concat(string a, string b...)
 ```
 
-Description: This function concatenates all specified strings. Parameters: **a** and **b**, values of the STRING type. If an input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If an input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the parameters are not specified or an input value is NULL, NULL is returned.
+Description: This function concatenates all specified strings. Parameters: **a** and **b**, values of the STRING type. If an input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If an input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the parameters are not specified or an input value is NULL, NULL is returned. Examples:
 
 ```
 concat('ab', 'c') = 'abc' concat() = null concat('a', null, 'b') = null
@@ -5586,7 +5652,7 @@ Example 4: An input parameter is set to null. Sample statement:
 
 ##### 3.6.2.5 IS_ENCODING
 
-This topic describes the IS_ENCODING function in string functions and provides examples.
+This topic describes the IS_ENCODING function in string functions and provides examples. Syntax:
 
 ```
 boolean is_encoding(string str, string from_encoding, string to_encoding)
@@ -5595,7 +5661,7 @@ boolean is_encoding(string str, string from_encoding, string to_encoding)
 Description: This function determines whether the input string **str** can be converted from the character set specified by **from_encoding** to the character set specified by **to_encoding**. It can be used to determine whether the input string is garbled. Generally, **from_encoding** is set to utf-8, and **to_encoding** is set to gbk. Parameters:
 **str**: a value of the STRING type. An empty string can belong to any character set.
 **from_encoding** and to_encoding: a value of the STRING type. The two parameters specify the source and
-destination character sets. If an input value is NULL, NULL is returned. Return value: A value of the BOOLEAN type is returned. If **str** can be converted, true is returned. Otherwise, false is returned.
+destination character sets. If an input value is NULL, NULL is returned. Return value: A value of the BOOLEAN type is returned. If **str** can be converted, true is returned. Otherwise, false is returned. Examples:
 
 ```
 is_encoding('test', 'utf-8', 'gbk') = true is_encoding('test', 'utf-8', 'gb2312') = true
@@ -5603,7 +5669,7 @@ is_encoding('test', 'utf-8', 'gbk') = true is_encoding('test', 'utf-8', 'gb2312'
 
 ##### 3.6.2.6 KEYVALUE
 
-This topic describes the KEYVALUE function in string functions and provides examples on how to use the function.
+This topic describes the KEYVALUE function in string functions and provides examples on how to use the function. Syntax:
 
 ```
 KEYVALUE(STRING srcStr,STRING split1,STRING split2, STRING key) KEYVALUE(STRING srcStr,STRING key) // split1 = ";", split2 = ":"
@@ -5616,7 +5682,7 @@ Parameters:
 **key**: A value of the STRING type. After you split the source string by **split1** and **split2**, the value of the specified
 **key** is returned.
 **split1 and split2**: Values of the STRING type. The delimiters that are used to split strings. You must split the source
-string by using the specified delimiters. If you do not configure the parameters, the default value of **split1** is a semicolon (**;**) and the default value of **split2** is a colon (**:**). If multiple key-value pairs are obtained after the source string is split by **split1** and multiple delimiters specified by **split2** are used to split the pairs, the returned result is undefined. Return value: A value of the STRING type is returned. If the value of **split1** or **split2** is null, null is returned. If the value of **srcStr** or **key** is null, or **key** is not matched, null is returned. If multiple key-value pairs match the key, the value that corresponds to the first matched **key** is returned. Example 1
+string by using the specified delimiters. If you do not configure the parameters, the default value of **split1** is a semicolon (**;**) and the default value of **split2** is a colon (**:**). If multiple key-value pairs are obtained after the source string is split by **split1** and multiple delimiters specified by **split2** are used to split the pairs, the returned result is undefined. Return value: A value of the STRING type is returned. If the value of **split1** or **split2** is null, null is returned. If the value of **srcStr** or **key** is null, or **key** is not matched, null is returned. If multiple key-value pairs match the key, the value that corresponds to the first matched **key** is returned. Examples: Example 1
 
 ```
 -- The return value is 2. select keyvalue('0:1\;1:2', 1);
@@ -5648,13 +5714,13 @@ decreaseStore 1 xcard 1 isB2C 1 tf 21910 cart 1 shipping 2 pf 0 market shoes ins
 
 ##### 3.6.2.7 LENGTH
 
-This topic describes the LENGTH function in string functions and provides examples.
+This topic describes the LENGTH function in string functions and provides examples. Syntax:
 
 ```
 bigint length(string str)
 ```
 
-Description: This function returns the length of the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. If the input value is not encoded in UTF-8, -1 is returned.
+Description: This function returns the length of the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. If the input value is not encoded in UTF-8, -1 is returned. Examples:
 
 ```
 length('china') = 5
@@ -5662,13 +5728,13 @@ length('china') = 5
 
 ##### 3.6.2.8 LENGTHB
 
-This topic describes the LENGTHB function in string functions and provides examples.
+This topic describes the LENGTHB function in string functions and provides examples. Syntax:
 
 ```
 bigint lengthb(string str)
 ```
 
-Description: This function calculates the length of **str** in bytes. Parameters: **str**, a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned.
+Description: This function calculates the length of **str** in bytes. Parameters: **str**, a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 lengthb('hi! China') = 10
@@ -5686,7 +5752,7 @@ Description: This function calculates the **MD5** value of **value**. Parameters
 
 ##### 3.6.2.10 PARSE_URL
 
-This topic describes the PARSE_URL function in string functions and provides examples.
+This topic describes the PARSE_URL function in string functions and provides examples. Syntax:
 
 ```
 string parse_url(string url, string part[,string key])
@@ -5697,7 +5763,7 @@ Description: This function parses **url** and extracts information by **key**. P
 **part**: a value of the STRING type. Valid values: HOST, PATH, QUERY, REF, PROTOCOL, AUTHORITY, FILE, and
 USERINFO. The input value is not case-sensitive. If the input value is invalid, an error is returned.
 **key**: If **part** is QUERY, the value of **key** is exacted from the query string in **URL** and is returned. Otherwise, **key** is
-omitted. Return value: A value of the STRING type is returned.
+omitted. Return value: A value of the STRING type is returned. Examples:
 
 ```
 url = file://username:password@example.com:8042/over/there/index.dtb? type=animal&name=narwhal#nose parse_url('url', 'HOST') = "example.com" parse_url('url', 'PATH') = "/over/there/index.dtb" parse_url('url', 'QUERY') = "type=animal&name=narwhal" parse_url('url', 'QUERY', 'name') = "narwhal" parse_url('url', 'REF') = "nose" parse_url('url', 'PROTOCOL') = "file" parse_url('url', 'AUTHORITY') = "username:password@example.com:8042" parse_url('url', 'FILE') = "/over/there/index.dtb? type=animal&name=narwhal" parse_url('url', 'USERINFO') = "username:password"
@@ -5705,7 +5771,7 @@ url = file://username:password@example.com:8042/over/there/index.dtb? type=anima
 
 ##### 3.6.2.11 REGEXP_EXTRACT
 
-This topic describes the REGEXP_EXTRACT function in string functions and provides examples.
+This topic describes the REGEXP_EXTRACT function in string functions and provides examples. Syntax:
 
 ```
 string regexp_extract(string source, string pattern[, bigint occurrence])
@@ -5720,7 +5786,7 @@ data type or is smaller than 0, an error is returned. If you do not specify this
 
 > **Note:** Data is encoded by using UTF-8.
 
-Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned.
+Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 regexp_extract('foothebar', 'foo(. *?)( bar)', 1) = the regexp_extract('foothebar', 'foo(. *?)( bar)', 2) = bar regexp_extract('foothebar', 'foo(. *?)( bar)', 0) = foothebar regexp_extract('8d99d8', '8d(\\d+)d8') = 99 -- If the regular expression is submitted on the MaxCompute client, use two backslashes (\\) as the escape char acters. regexp_extract('foothebar', 'foothebar') -- An error is returned because group is not specified in pattern.
@@ -5728,7 +5794,7 @@ regexp_extract('foothebar', 'foo(. *?)( bar)', 1) = the regexp_extract('footheba
 
 ##### 3.6.2.12 REGEXP_INSTR
 
-This topic describes the REGEXP_INSTR function in string functions and provides examples.
+This topic describes the REGEXP_INSTR function in string functions and provides examples. Syntax:
 
 ```
 bigint regexp_instr(string source, string pattern[,bigint start_position[, bigint nth_occurrence[, bigint retur n_option]]])
@@ -5745,7 +5811,7 @@ not specify this parameter, the default value 1 is used. If the value is of anot
 **nth_occurrence**: a constant of the BIGINT type. If you do not specify this parameter, the default value 1 is used.
 The default value 1 indicates the position where a substring matches pattern in the search for the first time. If the value is of another data type or less than or equal to 0, an error is returned.
 **return_option**: a constant of the BIGINT type. Valid values are 0 and 1. If the value is of another data type or
-invalid, an error is returned. The value 0 indicates that the start position of the matched substring is returned. The value 1 indicates that the end position of the matched substring is returned. Return value: A value of the BIGINT type is returned. This parameter indicates the start or end position of the matched substring returned in the **source** string based on the type specified by **return_option**. If an input value is NULL, NULL is returned.
+invalid, an error is returned. The value 0 indicates that the start position of the matched substring is returned. The value 1 indicates that the end position of the matched substring is returned. Return value: A value of the BIGINT type is returned. This parameter indicates the start or end position of the matched substring returned in the **source** string based on the type specified by **return_option**. If an input value is NULL, NULL is returned. Examples:
 
 ```
 -- The return value is 14. select regexp_instr("i love www.taobao.com", "o[[:alpha:]]{1}", 3, 2);
@@ -5753,7 +5819,7 @@ invalid, an error is returned. The value 0 indicates that the start position of 
 
 ##### 3.6.2.13 REGEXP_SUBSTR
 
-This topic describes the REGEXP_SUBSTR function in string functions and provides examples.
+This topic describes the REGEXP_SUBSTR function in string functions and provides examples. Syntax:
 
 ```
 string regexp_substr(string source, string pattern[, bigint start_position[, bigint nth_occurrence]])
@@ -5774,7 +5840,7 @@ regexp_substr ("I love aliyun very much", "a[[:alpha:]]{5}") = "aliyun" regexp_s
 
 ##### 3.6.2.14 REGEXP_COUNT
 
-This topic describes the REGEXP_COUNT function in string functions and provides examples.
+This topic describes the REGEXP_COUNT function in string functions and provides examples. Syntax:
 
 ```
 bigint regexp_count(string source, string pattern[, bigint start_position])
@@ -5786,7 +5852,7 @@ of another data type, an error is returned.
 **pattern**: a constant of the STRING type. It specifies the pattern used to match the substring. If the **pattern** value is
 an empty string or is of another data type, an error is returned.
 **start_position**: a constant of the BIGINT type. It must be greater than 0. If it is of another data type or is less than or
-equal to 0, the function returns an error. If start_position is not specified, the default value 1 is used. In this case, the function starts matching from the first character of the **source** string. Return value: A value of the BIGINT type is returned. If an input value is NULL, NULL is returned. If no substrings match the specified pattern, 0 is returned.
+equal to 0, the function returns an error. If start_position is not specified, the default value 1 is used. In this case, the function starts matching from the first character of the **source** string. Return value: A value of the BIGINT type is returned. If an input value is NULL, NULL is returned. If no substrings match the specified pattern, 0 is returned. Examples:
 
 ```
 regexp_count('abababc', 'a.c') = 1 regexp_count('abcde', '[[:alpha:]]{2}', 3) = 1
@@ -5794,7 +5860,7 @@ regexp_count('abababc', 'a.c') = 1 regexp_count('abcde', '[[:alpha:]]{2}', 3) = 
 
 ##### 3.6.2.15 REGEXP_REPLACE
 
-This topic describes the REGEXP_REPLACE function in string functions and provides examples.
+This topic describes the REGEXP_REPLACE function in string functions and provides examples. Syntax:
 
 ```
 string regexp_replace(string source, string pattern, string replace_string[, bigint occurrence])
@@ -5815,7 +5881,7 @@ pattern and is substituted with **replace_string**. It must be greater than or e
 
 Return value: A value of the STRING type is returned. If the function references a character class that does not exist, substitution is not performed. If **replace_string** is NULL and substrings match **pattern**, NULL is returned. If
 **replace_string** is NULL and no substrings match **pattern**, the source string is returned. If an input value is NULL,
-NULL is returned.
+NULL is returned. Examples:
 
 ```
 regexp_replace("123.456.7890", "([[:digit:]]{3})\\.([[:digit:]]{3})\\.([[:digit:]]{4})", "(\\1)\\2-\\3", 0) = " (123)456-7890" regexp_replace("abcd", "(.)", "\\1 ", 0) = "a b c d " regexp_replace("abcd", "(.)", "\\1 ", 1) = "a bcd" regexp_replace("abcd", "(.)", "\\2", 1) = "abcd" -- Only one character class is defined in pattern. The second referenced character class does not exist. -- Try to avoid this action. The result of referencing a non-existent group is undefined. regexp_replace("abcd", "(. *)(.)$", "\\2", 0) = "d" regexp_replace("abcd", "a", "\\1", 0) = "bcd" -- No character class is defined in pattern. \1 references a non-existent character class. -- Try to avoid this action. The result of referencing a non-existent group is undefined.
@@ -5823,7 +5889,7 @@ regexp_replace("123.456.7890", "([[:digit:]]{3})\\.([[:digit:]]{3})\\.([[:digit:
 
 ##### 3.6.2.16 SPLIT_PART
 
-This topic describes the SPLIT_PART function in string functions and provides examples.
+This topic describes the SPLIT_PART function in string functions and provides examples. Syntax:
 
 ```
 string split_part(string str, string separator, bigint start[, bigint end])
@@ -5838,7 +5904,7 @@ or string. If it is of another data type, an error is returned.
 data type, an error is returned. It indicates the start number of the segment to be returned. The number starts from
 1. If **end** is not specified, the segment specified by **start** is returned.
 **end**: a constant of the BIGINT type. It must be greater than or equal to the value of **start**. Otherwise, an error is
-returned. It indicates the end number of the segment to be returned. If the value is not a constant or is of another data type, an error is returned. If this parameter is not specified, the last segment is returned. Return value: A value of the STRING type is returned. If you set **start** to a value greater than the number of segments, an empty string is returned. If **separator** is absent in **str** and **start** is set to 1, the entire **str** is returned. If **str** is an empty string, an empty string is returned. If **separator** is an empty string, **str** is returned. If you set **end** to a value greater than the number of segments, all segments are returned. If an input value is NULL, NULL is returned.
+returned. It indicates the end number of the segment to be returned. If the value is not a constant or is of another data type, an error is returned. If this parameter is not specified, the last segment is returned. Return value: A value of the STRING type is returned. If you set **start** to a value greater than the number of segments, an empty string is returned. If **separator** is absent in **str** and **start** is set to 1, the entire **str** is returned. If **str** is an empty string, an empty string is returned. If **separator** is an empty string, **str** is returned. If you set **end** to a value greater than the number of segments, all segments are returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 split_part('a,b,c,d', ',', 1) = 'a' split_part('a,b,c,d', ',', 1, 2) = 'a,b' split_part('a,b,c,d', ',', 10) = ''
@@ -5846,7 +5912,7 @@ split_part('a,b,c,d', ',', 1) = 'a' split_part('a,b,c,d', ',', 1, 2) = 'a,b' spl
 
 ##### 3.6.2.17 SUBSTR
 
-This topic describes the SUBSTR function and provides examples of using this function.
+This topic describes the SUBSTR function and provides examples of using this function. Syntax:
 
 ```
 string substr(string str, bigint start_position[, bigint length])
@@ -5864,19 +5930,21 @@ greater than 0. If the input value is of another data type or is less than or eq
 
 > **Note:** If **length** is not specified, this function returns a substring that starts from **start_position** in **str** to the end of **str**.
 
+Examples:
+
 ```
 -- The return value is bc. select substr('abc', 2); -- The return value is b. select substr('abc', 2, 1); -- The return value is bc. select substr('abc',-2 , 2);
 ```
 
 ##### 3.6.2.18 TOLOWER
 
-This topic describes the TOLOWER function in string functions and provides examples.
+This topic describes the TOLOWER function in string functions and provides examples. Syntax:
 
 ```
 string tolower(string source)
 ```
 
-Description: This function converts the string **source** to lowercase letters. Parameters: The **source** parameter supports a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+Description: This function converts the string **source** to lowercase letters. Parameters: The **source** parameter supports a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 tolower("aBcd") = "abcd" tolower("HAHACd") = "hahacd"
@@ -5884,13 +5952,13 @@ tolower("aBcd") = "abcd" tolower("HAHACd") = "hahacd"
 
 ##### 3.6.2.19 TOUPPER
 
-This topic describes the TOUPPER function in string functions and provides examples.
+This topic describes the TOUPPER function in string functions and provides examples. Syntax:
 
 ```
 string toupper(string source)
 ```
 
-Description: This function converts **source** into uppercase letters. Parameters: **source**, a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+Description: This function converts **source** into uppercase letters. Parameters: **source**, a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 toupper("aBcd") = "ABCD" toupper("HahaCd") = "HAHACD"
@@ -5898,13 +5966,13 @@ toupper("aBcd") = "ABCD" toupper("HahaCd") = "HAHACD"
 
 ##### 3.6.2.20 TO_CHAR
 
-This topic describes the TO_CHAR function in string functions and provides examples on how to use the function.
+This topic describes the TO_CHAR function in string functions and provides examples on how to use the function. Syntax:
 
 ```
 string to_char(boolean value) string to_char(bigint value) string to_char(double value) string to_char(decimal value)
 ```
 
-Description: This function converts data of the BOOLEAN, BIGINT, DECIMAL, or DOUBLE type into the STRING type. Parameters: **value** is a value of the BOOLEAN, BIGINT, DECIMAL, or DOUBLE type. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is null, null is returned.
+Description: This function converts data of the BOOLEAN, BIGINT, DECIMAL, or DOUBLE type into the STRING type. Parameters: **value** is a value of the BOOLEAN, BIGINT, DECIMAL, or DOUBLE type. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is null, null is returned. Examples:
 
 ```
 -- The return value is 123. select to_char(123); -- The return value is TRUE. select to_char(true); -- The return value is 1.23. select to_char(1.23); -- The return value is null. select to_char(null);
@@ -5912,7 +5980,7 @@ Description: This function converts data of the BOOLEAN, BIGINT, DECIMAL, or DOU
 
 ##### 3.6.2.21 TRIM
 
-This topic describes the TRIM function in string functions.
+This topic describes the TRIM function in string functions. Syntax:
 
 ```
 string trim(string str)
@@ -5922,13 +5990,13 @@ Description: This function eliminates the spaces on the left and right sides of 
 
 ##### 3.6.2.22 LTRIM
 
-This topic describes the LTRIM function in string functions and provides examples.
+This topic describes the LTRIM function in string functions and provides examples. Syntax:
 
 ```
 string ltrim(string str)
 ```
 
-Description: This function removes the spaces on the left side of **str**. Parameters: **str**, a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+Description: This function removes the spaces on the left side of **str**. Parameters: **str**, a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 select ltrim(' abc '); -- The following result is returned: +-----+
@@ -5940,13 +6008,13 @@ select ltrim(' abc '); -- The following result is returned: +-----+
 
 ##### 3.6.2.23 RTRIM
 
-This topic describes the RTRIM function in string functions and provides examples.
+This topic describes the RTRIM function in string functions and provides examples. Syntax:
 
 ```
 string rtrim(string str)
 ```
 
-Description: This function eliminates the spaces on the right side of the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+Description: This function eliminates the spaces on the right side of the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 select rtrim('a abc '); -- The following result is returned: +-----+
@@ -5958,13 +6026,13 @@ select rtrim('a abc '); -- The following result is returned: +-----+
 
 ##### 3.6.2.24 REVERSE
 
-This topic describes the REVERSE function in string functions and provides examples.
+This topic describes the REVERSE function in string functions and provides examples. Syntax:
 
 ```
 string reverse(string str)
 ```
 
-Description: This function returns a string in reverse order. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, an error is returned.
+Description: This function returns a string in reverse order. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, an error is returned. Examples:
 
 ```
 select reverse('abcedfg'); -- The following result is returned: +-----+
@@ -5976,13 +6044,13 @@ select reverse('abcedfg'); -- The following result is returned: +-----+
 
 ##### 3.6.2.25 SPACE
 
-This topic describes the SPACE function in string functions and provides examples.
+This topic describes the SPACE function in string functions and provides examples. Syntax:
 
 ```
 string space(bigint n)
 ```
 
-Description: This function returns a string of a length specified by **n**. Parameters: The **n** parameter supports a value of the BIGINT type. The value cannot exceed 2 MB. If this parameter is left empty, an error is returned. Return value: A value of the STRING type is returned.
+Description: This function returns a string of a length specified by **n**. Parameters: The **n** parameter supports a value of the BIGINT type. The value cannot exceed 2 MB. If this parameter is left empty, an error is returned. Return value: A value of the STRING type is returned. Examples:
 
 ```
 select length(space(10)); -- The value 10 is returned. select space(400000000000); -- An error is returned because the length exceeds 2 MB.
@@ -5990,7 +6058,7 @@ select length(space(10)); -- The value 10 is returned. select space(400000000000
 
 ##### 3.6.2.26 REPEAT
 
-This topic describes the REPEAT function in string functions and provides examples.
+This topic describes the REPEAT function in string functions and provides examples. Syntax:
 
 ```
 string repeat(string str, bigint n)
@@ -6000,7 +6068,7 @@ Description: This function returns **n** duplicates of the string **str**. Param
 **str**: a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is
 implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned.
 **n**: a value of the BIGINT type. The returned string cannot exceed 2 MB in length. If this parameter is left empty, an
-error is returned. Return value: A value of the STRING type is returned.
+error is returned. Return value: A value of the STRING type is returned. Examples:
 
 ```
 select repeat('abc',5); -- abcabcabcabcabc is returned.
@@ -6008,13 +6076,13 @@ select repeat('abc',5); -- abcabcabcabcabc is returned.
 
 ##### 3.6.2.27 ASCII
 
-This topic describes the ASCII function in string functions and provides examples.
+This topic describes the ASCII function in string functions and provides examples. Syntax:
 
 ```
 bigint ascii(string str)
 ```
 
-Description: This function returns the ASCII code of the first character in the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned.
+Description: This function returns the ASCII code of the first character in the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. Examples:
 
 ```
 select ascii('abcde'); -- The value 97 is returned.
@@ -6034,7 +6102,7 @@ set odps.sql.type.system.odps2=true;
 
 ###### 3.6.2.28.2 CONCAT_WS
 
-This topic describes the CONCAT_WS function in string functions and provides examples.
+This topic describes the CONCAT_WS function in string functions and provides examples. Syntax:
 
 ```
 string concat_ws(string SEP, string a, string b...) string concat_ws(string SEP, array)
@@ -6051,7 +6119,7 @@ concat_ws(':','name','hanmeimei')='name:hanmeimei' concat_ws(':','avg',null,'34'
 
 ###### 3.6.2.28.3 LPAD
 
-This topic describes the LPAD function in string functions and provides examples.
+This topic describes the LPAD function in string functions and provides examples. Syntax:
 
 ```
 string lpad(string a, int len, string b)
@@ -6069,7 +6137,7 @@ A value of the STRING type is returned. The return value varies based on the fol
 
 ###### 3.6.2.28.4 RPAD
 
-This topic describes the RPAD function in string functions and provides examples.
+This topic describes the RPAD function in string functions and provides examples. Syntax:
 
 ```
 string rpad(string a, int len, string b)
@@ -6087,7 +6155,7 @@ A value of the STRING type is returned. The return value varies based on the fol
 
 ###### 3.6.2.28.5 REPLACE
 
-This topic describes the REPLACE function in string functions and provides examples.
+This topic describes the REPLACE function in string functions and provides examples. Syntax:
 
 ```
 string replace(string a, string OLD, string NEW)
@@ -6095,7 +6163,7 @@ string replace(string a, string OLD, string NEW)
 
 Description: This function substitutes the string **NEW** for the part of string **a** that is exactly the same as the string
 **OLD**, and returns the string **a**.
-Parameters: All the parameters support a value of the STRING type. Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned.
+Parameters: All the parameters support a value of the STRING type. Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 replace('ababab','abab','12')='12ab' replace('ababab','cdf','123')='ababab' replace('123abab456ab',null,'abab')=null
@@ -6103,13 +6171,13 @@ replace('ababab','abab','12')='12ab' replace('ababab','cdf','123')='ababab' repl
 
 ###### 3.6.2.28.6 SOUNDEX
 
-This topic describes the SOUNDEX function in string functions and provides examples.
+This topic describes the SOUNDEX function in string functions and provides examples. Syntax:
 
 ```
 string soundex(string a)
 ```
 
-Description: This function converts a normal string to a string of the **soundex** type. Parameters: The **a** parameter supports a value of the STRING type. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+Description: This function converts a normal string to a string of the **soundex** type. Parameters: The **a** parameter supports a value of the STRING type. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 soundex('hello') = 'H400'
@@ -6117,7 +6185,7 @@ soundex('hello') = 'H400'
 
 ###### 3.6.2.28.7 SUBSTRING_INDEX
 
-This topic describes the SUBSTRING_INDEX function in string functions and provides examples on how to use this function.
+This topic describes the SUBSTRING_INDEX function in string functions and provides examples on how to use this function. Syntax:
 
 ```
 string substring_index(string a, string SEP, int count))
@@ -6135,13 +6203,13 @@ Return value: A value of the STRING type is returned. If an input parameter is s
 
 ###### 3.6.2.28.8 TRANSLATE
 
-This topic describes the TRANSLATE function in string functions and provides examples.
+This topic describes the TRANSLATE function in string functions and provides examples. Syntax:
 
 ```
 string translate(string|varchar str1, string|varchar str2, string|varchar str3)
 ```
 
-Description: This function replaces the common substring of **str1** and **str2** with **str3**. Parameters: The **str** parameter supports a value of the STRING or VARCHAR type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned.
+Description: This function replaces the common substring of **str1** and **str2** with **str3**. Parameters: The **str** parameter supports a value of the STRING or VARCHAR type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 translate('MaxComputer','puter','pute')='MaxCompute' translate('aaa','b','c')='aaa' translate('MaxComputer','puter',null)=null
@@ -6149,7 +6217,7 @@ translate('MaxComputer','puter','pute')='MaxCompute' translate('aaa','b','c')='a
 
 ###### 3.6.2.28.9 URL_ENCODE
 
-This topic describes the URL_ENCODE function in string functions and provides examples.
+This topic describes the URL_ENCODE function in string functions and provides examples. Syntax:
 
 ```
 string url_encode(string input[, string encoding])
@@ -6166,7 +6234,7 @@ default value UTF-8 is used. Return value: A value of the STRING type is returne
 
 ###### 3.6.2.28.10 URL_DECODE
 
-This topic describes the URL_DECODE function in string functions and provides examples.
+This topic describes the URL_DECODE function in string functions and provides examples. Syntax:
 
 ```
 string url_decode(string input[, string encoding])
@@ -6177,7 +6245,7 @@ Description: This function converts an input string from the **application/x-www
 Other characters remain unchanged. The return value of the function is a string encoded in UTF-8. Parameters:
 **input**: the string that you want to decode.
 **encoding**: the specified encoding format. Valid values include GBK and UTF-8. If you do not specify this parameter,
-the default value UTF-8 is used. Return value: A value of the STRING type is returned. If the input value is null, null is returned.
+the default value UTF-8 is used. Return value: A value of the STRING type is returned. If the input value is null, null is returned. Examples:
 
 ```
 -- The return value is Example for url_decode:// (fdsf). select url_decode('%E7%A4%BA%E4%BE%8Bfor+url_decode%3A%2F%2F+%28fdsf%29'); -- The return value is Example for url_decode :// dsf(fasfs). select url_decode('Example+for+url_decode+%3A%2F%2F+dsf%28fasfs%29', 'GBK');
@@ -6185,7 +6253,7 @@ the default value UTF-8 is used. Return value: A value of the STRING type is ret
 
 ###### 3.6.2.28.11 JSON_TUPLE
 
-This topic describes the JSON_TUPLE function in string functions and provides examples.
+This topic describes the JSON_TUPLE function in string functions and provides examples. Syntax:
 
 ```
 STRING JSON_TUPLE(STRING json,STRING key1,STRING key2,...)
@@ -6205,7 +6273,7 @@ start with a dollar sign ($). Return value: A value of the STRING type is return
 > odps.sql.udf.getjsonobj.new=true; is added. To parse a **JSON** string multiple times, you must call the GET_JSON_OBJECT function multiple times. However, the JSON_TUPLE function allows you to enter multiple **keys** at a time and parse the **JSON** string only once. This improves parsing efficiency.
 > JSON_TUPLE is a user-defined table-valued function (UDTF). To select other columns, you can use JSON_TUPLE with LATERAL VIEW.
 
-Prepare a school table that contains the following data:
+Examples: Prepare a school table that contains the following data:
 
 ```json
 Table: school +------------+------------+
@@ -6293,7 +6361,7 @@ The following result is returned:
 
 ###### 3.6.2.28.12 FROM_JSON
 
-This topic describes the FROM_JSON function in string functions and provides examples.
+This topic describes the FROM_JSON function in string functions and provides examples. Syntax:
 
 ```
 FROM_JSON(jsonStr, schema)
@@ -6338,13 +6406,13 @@ SELECT from_json('{"a":1, "b":0.8}', 'a INT, b DOUBLE'); -- {"a":1, "b":0.8} is 
 
 ###### 3.6.2.28.13 TO_JSON
 
-This topic describes the TO_JSON function in string functions and provides examples.
+This topic describes the TO_JSON function in string functions and provides examples. Syntax:
 
 ```
 TO_JSON(expr)
 ```
 
-Description: This function returns a JSON string for a value of a given type. Parameters: The **expr** parameter supports a value of the ARRAY, MAP, or STRUCT type. Return value: A value of the STRING type is returned.
+Description: This function returns a JSON string for a value of a given type. Parameters: The **expr** parameter supports a value of the ARRAY, MAP, or STRUCT type. Return value: A value of the STRING type is returned. Examples:
 
 ```
 SELECT to_json(named_struct('a', 1, 'b', 2)); -- {"a":1,"b":2} is returned. SELECT to_json(named_struct('time', "26/08/2015")); -- {"time":"26/08/2015"} is returned. SELECT to_json(array(named_struct('a', 1, 'b', 2))); -- [{"a":1,"b":2}] is returned. SELECT to_json(map('a', named_struct('b', 1))); -- {"a":{"b":1}} is returned. SELECT to_json(map('a', 1)); -- {"a":1} is returned. SELECT to_json(array((map('a', 1)))); -- [{"a":1}] is returned.
@@ -6354,7 +6422,7 @@ SELECT to_json(named_struct('a', 1, 'b', 2)); -- {"a":1,"b":2} is returned. SELE
 
 ##### 3.6.3.1 DATEADD
 
-This topic describes the date function DATEADD and provides examples.
+This topic describes the date function DATEADD and provides examples. Syntax:
 
 ```
 datetime dateadd(datetime date, bigint delta, string datepart)
@@ -6370,7 +6438,7 @@ input value is of the STRING or DOUBLE type, it is implicitly converted into a v
 > If the DATEADD function adds an interval specified by **delta** to the month part of a date value of the DATETIME type and this operation does not cause an overflow of **day**, keep **day** unchanged. If the operation causes an overflow of day, set **day** to the last day of the specified month.
 
 **datepart**: the part you want to modify in the date value. The value is a constant of the STRING type. If the value is
-in an invalid format or is not a constant of the STRING type, an error is returned. The value of this parameter is specified in compliance with the rules of conversions between the STRING and DATETIME types. The value **yyyy** indicates that the DATEADD function adds an interval to the year part of the date value. The value **mm** indicates that the DATEADD function adds an interval to the month part of the date value. This parameter also supports extended date formats, such as **-year**, **-month**, **-mon**, **-day**, and **-hour**. For more information about the rules of data type conversions, see Conversion between string and datetime types. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned. Example 1: common usage
+in an invalid format or is not a constant of the STRING type, an error is returned. The value of this parameter is specified in compliance with the rules of conversions between the STRING and DATETIME types. The value **yyyy** indicates that the DATEADD function adds an interval to the year part of the date value. The value **mm** indicates that the DATEADD function adds an interval to the month part of the date value. This parameter also supports extended date formats, such as **-year**, **-month**, **-mon**, **-day**, and **-hour**. For more information about the rules of data type conversions, see Conversion between string and datetime types. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned. Examples: Example 1: common usage
 
 ```
 select dateadd(datetime '2005-02-28 00:00:00', 1, 'dd') ; -- The return value is 2005-03-01 00:00:00. After one day is added, the result is beyond the last day of Febr uary. The actual date value is the first day of March. select dateadd(datetime '2005-02-28 00:00:00', -1, 'dd'); -- The return value is 2005-02-27 00:00:00. One day is subtracted. select dateadd(datetime '2005-02-28 00:00:00', 20, 'mm'); -- The return value is 2006-10-28 00:00:00. After 20 months are added, the month overflows, and the year incr eases by 1. select dateadd(datetime '2005-02-28 00:00:00', 1, 'mm'); -- The return value is 2005-03-28 00:00:00. One month is added. select dateadd(datetime '2005-01-29 00:00:00', 1, 'mm'); -- The return value is 2005-02-28 00:00:00. February in 2005 has only 28 days. Therefore, the last day of Feb ruary is returned. select dateadd(datetime '2005-03-30 00:00:00', -1, 'mm'); -- The return value is 2005-02-28 00:00:00. One month is subtracted. February in 2005 has only 28 days. There fore, the last day of February is returned.
@@ -6384,7 +6452,7 @@ select dateadd(2005-03-30 00:00:00, -1, 'mm'); -- In MaxCompute SQL statements, 
 
 ##### 3.6.3.2 DATEDIFF
 
-This topic describes the date function DATEDIFF and provides examples.
+This topic describes the date function DATEDIFF and provides examples. Syntax:
 
 ```
 bigint datediff(datetime date1, datetime date2, string datepart)
@@ -6417,7 +6485,7 @@ yyyy-MM-dd hh:mi:ss.ff3') , 'ff3') = 16
 
 ##### 3.6.3.3 DATEPART
 
-This topic describes the date function DATEPART and provides examples.
+This topic describes the date function DATEPART and provides examples. Syntax:
 
 ```
 bigint datepart(datetime date, string datepart)
@@ -6427,7 +6495,7 @@ Description: This function returns a specific part of a **date** value. The part
 **date**: a date value of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, it is
 implicitly converted into a value of the DATETIME type before the calculation. If the input value is of another data type, an error is returned.
 **datepart**: a constant of the STRING type. This parameter supports extended date formats. If **datepart** is not in the
-specified format or is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If an input value is NULL, NULL is returned.
+specified format or is of another data type, an error is returned. Return value: A value of the BIGINT type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 datepart('2017-06-08 01:10:00', 'yyyy') = 2017 datepart('2017-06-08 01:10:00', 'mm') = 6
@@ -6435,7 +6503,7 @@ datepart('2017-06-08 01:10:00', 'yyyy') = 2017 datepart('2017-06-08 01:10:00', '
 
 ##### 3.6.3.4 DATETRUNC
 
-This topic describes the date function DATETRUNC and provides examples.
+This topic describes the date function DATETRUNC and provides examples. Syntax:
 
 ```
 datetime datetrunc (datetime date,string datepart)
@@ -6445,7 +6513,7 @@ Description: This function truncates a **date** value to the accuracy specified 
 **date**: a date value of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, it is
 implicitly converted into a value of the DATETIME type before the calculation. If the input value is of another data type, an error is returned.
 **datepart**: a constant of the STRING type. This parameter supports extended date formats. If **datepart** is not in the
-specified format or is of another data type, an error is returned. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned.
+specified format or is of another data type, an error is returned. Return value: A value of the DATETIME type is returned. If an input value is NULL, NULL is returned. Examples:
 
 ```
 datetrunc('2017-12-07 16:28:46', 'yyyy') = 2017-01-01 00:00:00 -- The function truncates the date value to the accuracy of the year 2017 and returns the date value that is ac curate to the year. In this example, the date value that is accurate to the year 2017 is returned. datetrunc('2017-12-07 16:28:46', 'month') = 2017-12-01 00:00:00 -- The function truncates the date value to the accuracy of the month December and returns the date value that is accurate to the month. In this example, the date value that is accurate to the month "2017-12" is returned. datetrunc('2017-12-07 16:28:46', 'DD') = 2017-12-07 00:00:00 -- The function truncates the date value to the accuracy of the day 07 and returns the date value that is accur ate to the day. In this example, the date value that is accurate to the day "2017-12-07" is returned.
@@ -6453,7 +6521,7 @@ datetrunc('2017-12-07 16:28:46', 'yyyy') = 2017-01-01 00:00:00 -- The function t
 
 ##### 3.6.3.5 GETDATE
 
-This topic describes the GETDATE function in date functions.
+This topic describes the GETDATE function in date functions. Syntax:
 
 ```
 datetime getdate()
@@ -6465,7 +6533,7 @@ Description: This function returns the current system time as a date value. MaxC
 
 ##### 3.6.3.6 ISDATE
 
-This topic describes the ISDATE function in date functions.
+This topic describes the ISDATE function in date functions. Syntax:
 
 ```
 boolean isdate(string date, string format)
@@ -6479,7 +6547,7 @@ of another data type, an error is returned. If redundant format strings exist in
 
 ##### 3.6.3.7 LASTDAY
 
-This topic describes the LASTDAY function in date functions.
+This topic describes the LASTDAY function in date functions. Syntax:
 
 ```
 datetime lastday(datetime date)
@@ -6489,7 +6557,7 @@ Description: This function returns the last day of the month in which the **date
 
 ##### 3.6.3.8 TO_DATE
 
-This topic describes the TO_DATE function and provides examples of using this function.
+This topic describes the TO_DATE function and provides examples of using this function. Syntax:
 
 ```
 datetime to_date(string date, string format)
@@ -6503,13 +6571,15 @@ the STRING type, an error is returned. The Extended Date/Time Format (EDTF) is n
 
 > **Note:** In the format, yyyy indicates a 4-digit year, mm indicates a 2-digit month, dd indicates a 2-digit day, hh indicates an hour in 24-hour display, mi indicates a 2-digit minute, ss indicates a 2-digit second, and ff3 indicates a 3-digit millisecond.
 
+Examples:
+
 ```
 to_date('Alibaba2017-12*03', 'Alibabayyyy-mm*dd') = 2017-12-03 00:00:00 to_date('20170718', 'yyyymmdd') = 2017-07-18 00:00:00 to_date('201707182030','yyyymmddhhmi')=2017-07-18 20:30:00 to_date('2017718', 'yyyymmdd') -- Invalid format. NULL is returned. to_date('Alibaba2017-12*3', 'Alibabayyyy-mm*dd') -- Invalid format. NULL is returned. to_date('2017-24-01', 'yyyy') -- Invalid format. NULL is returned. to_date('20181030 15-13-12.345','yyyymmdd hh-mi-ss.ff3')=2018-10-30 15:13:12
 ```
 
 ##### 3.6.3.9 TO_CHAR
 
-This topic describes the TO_CHAR function and provides examples of using this function.
+This topic describes the TO_CHAR function and provides examples of using this function. Syntax:
 
 ```
 string to_char(datetime date, string format)
@@ -6520,7 +6590,7 @@ Description: This function converts a **date** value of the DATETIME type into a
 the STRING type, it is implicitly converted into the DATETIME type before calculation. If the input value is not of the STRING type, an error is returned.
 **format**: a constant of the STRING type. If it is not a constant or is not of the STRING type, an error is returned. In the
 **format** parameter, the date format part is replaced by the related data and other characters remain unchanged in
-the output. Return value: A value of the STRING type is returned. If the value of an input parameter is NULL, NULL is returned.
+the output. Return value: A value of the STRING type is returned. If the value of an input parameter is NULL, NULL is returned. Examples:
 
 ```
 to_char('2017-12-03 00:00:00', 'Alibaba Cloud Financial Servicesyyyy-mm*dd') = 'Alibaba Cloud Financial Services2017-12*03' to_char('2017-07-18 00:00:00', 'yyyymmdd') = '20170718' to_char('Alibaba2017-12*3', 'Alibabayyyy-mm*dd') -- NULL is returned. to_char('2017-24-01', 'yyyy') -- NULL is returned. to_char('2017718', 'yyyymmdd') -- NULL is returned.
@@ -6528,7 +6598,7 @@ to_char('2017-12-03 00:00:00', 'Alibaba Cloud Financial Servicesyyyy-mm*dd') = '
 
 ##### 3.6.3.10 UNIX_TIMESTAMP
 
-This topic describes the UNIX_TIMESTAMP function and provides examples of using this function.
+This topic describes the UNIX_TIMESTAMP function and provides examples of using this function. Syntax:
 
 ```
 bigint unix_timestamp(datetime date)
@@ -6542,7 +6612,7 @@ select unix_timestamp(datetime'2009-03-20 11:11:00'); -- 1237518660 is returned.
 
 ##### 3.6.3.11 FROM_UNIXTIME
 
-This topic describes the FROM_UNIXTIME function and provides examples of using this function.
+This topic describes the FROM_UNIXTIME function and provides examples of using this function. Syntax:
 
 ```
 datetime from_unixtime(bigint unixtime)
@@ -6552,13 +6622,15 @@ Description: This function converts **unixtime** of the BIGINT type to a date va
 
 > **Note:** In the Hive-compatible mode where set odps.sql.hive.compatible=true; has been run, if the value of the input parameter is of the STRING type, a date value of the STRING type is returned.
 
+Examples:
+
 ```
 from_unixtime(123456789) = 1973-11-30 05:33:09;
 ```
 
 ##### 3.6.3.12 WEEKDAY
 
-This topic describes the WEEKDAY function.
+This topic describes the WEEKDAY function. Syntax:
 
 ```
 bigint weekday (datetime date)
@@ -6568,7 +6640,7 @@ Description: This function returns the day of the week for a specified **date**.
 
 ##### 3.6.3.13 WEEKOFYEAR
 
-This topic describes the WEEKOFYEAR function and provides examples of using this function.
+This topic describes the WEEKOFYEAR function and provides examples of using this function. Syntax:
 
 ```
 bigint weekofyear(datetime date)
@@ -6602,7 +6674,7 @@ set odps.sql.type.system.odps2=true;
 
 ###### 3.6.3.14.2 YEAR
 
-This topic describes the YEAR function and provides examples of using this function.
+This topic describes the YEAR function and provides examples of using this function. Syntax:
 
 ```
 INT YEAR(DATETIME/STRING date)
@@ -6610,7 +6682,7 @@ INT YEAR(DATETIME/STRING date)
 
 Description: This function returns the year in which the specified **date** value falls. Parameters: **date**: a date value of the DATETIME or STRING type. The format of the date value must include **yyyy-mm-**
 **dd** and exclude redundant strings. Otherwise, NULL is returned.
-Return value: A value of the INT type is returned.
+Return value: A value of the INT type is returned. Examples:
 
 ```
 SELECT YEAR('1970-01-01 12:30:00'); -- 1970 is returned. SELECT YEAR('1970-01-01'); -- 1970 is returned. SELECT YEAR('70-01-01'); -- 70 is returned. SELECT YEAR('1970-01-01'); -- 1970 is returned. SELECT YEAR('1970/03/09'); -- NULL is returned. SELECT YEAR(null); -- An error is returned.
@@ -6618,7 +6690,7 @@ SELECT YEAR('1970-01-01 12:30:00'); -- 1970 is returned. SELECT YEAR('1970-01-01
 
 ###### 3.6.3.14.3 QUARTER
 
-This topic describes the QUARTER function and provides examples of using this function.
+This topic describes the QUARTER function and provides examples of using this function. Syntax:
 
 ```
 INT QUARTER (DATETIME/TIMESTAMP/STRING date)
@@ -6632,13 +6704,13 @@ SELECT QUARTER('1970-11-12 10:00:00'); -- 4 is returned. SELECT QUARTER('1970-11
 
 ###### 3.6.3.14.4 MONTH
 
-This topic describes the MONTH function and provides examples of using this function.
+This topic describes the MONTH function and provides examples of using this function. Syntax:
 
 ```
 INT MONTH(DATETIME/STRING date)
 ```
 
-Description: This function returns the month part of a date value. Parameters: **date**: a value of the DATETIME or STRING type. The date format must include **yyyy-mm-dd**. If it is not of the DATETIME or STRING type, an error is returned. Return value: A value of the INT type is returned.
+Description: This function returns the month part of a date value. Parameters: **date**: a value of the DATETIME or STRING type. The date format must include **yyyy-mm-dd**. If it is not of the DATETIME or STRING type, an error is returned. Return value: A value of the INT type is returned. Examples:
 
 ```
 SELECT MONTH('2014-09-01'); -- 9 is returned. SELECT MONTH('20140901'); -- NULL is returned.
@@ -6646,7 +6718,7 @@ SELECT MONTH('2014-09-01'); -- 9 is returned. SELECT MONTH('20140901'); -- NULL 
 
 ###### 3.6.3.14.5 DAY
 
-The DAY function returns the day of a specified date value. This topic describes the DAY function and provides examples of using this function.
+The DAY function returns the day of a specified date value. This topic describes the DAY function and provides examples of using this function. Syntax:
 
 ```
 INT DAY(DATETIME/STRING date)
@@ -6654,7 +6726,7 @@ INT DAY(DATETIME/STRING date)
 
 Description: This function returns the day of a specified date value. Parameters: **date**: a date value of the DATETIME or STRING type. The format of the date value can be **yyyy-mm-dd** or
 **yyyy-mm-dd hh:mi:ss**. If the date value is not of the DATETIME or STRING type, an error is returned.
-Return value: A value of the INT type is returned.
+Return value: A value of the INT type is returned. Examples:
 
 ```
 SELECT DAY('2014-09-01'); -- 1 is returned. SELECT DAY('20140901'); -- NULL is returned.
@@ -6676,13 +6748,13 @@ dayofmonth('2019-09-01'); -- The return value is 1. dayofmonth('20190901'); -- T
 
 ###### 3.6.3.14.7 HOUR
 
-This topic describes the HOUR function and provides examples of using this function.
+This topic describes the HOUR function and provides examples of using this function. Syntax:
 
 ```
 INT HOUR(DATETIME/STRING date)
 ```
 
-Description: This function returns the value of the hour part of a date. Parameters: **date**: a value of the DATETIME or STRING type. If the value is not of the DATETIME or STRING type, an error is returned. Return value: A value of the INT type is returned.
+Description: This function returns the value of the hour part of a date. Parameters: **date**: a value of the DATETIME or STRING type. If the value is not of the DATETIME or STRING type, an error is returned. Return value: A value of the INT type is returned. Examples:
 
 ```
 SELECT HOUR('2014-09-01 12:00:00'); -- 12 is returned. SELECT HOUR('12:00:00'); -- 12 is returned. SELECT HOUR('20140901120000'); -- NULL is returned.
@@ -6690,13 +6762,13 @@ SELECT HOUR('2014-09-01 12:00:00'); -- 12 is returned. SELECT HOUR('12:00:00'); 
 
 ###### 3.6.3.14.8 MINUTE
 
-This topic describes the MINUTE function and provides examples of using this function.
+This topic describes the MINUTE function and provides examples of using this function. Syntax:
 
 ```
 INT MINUTE(DATETIME/STRING date)
 ```
 
-Description: This function returns the value of the minute part of a date. Parameters: **date**: a value of the DATETIME or STRING type. If the value is not of the DATETIME or STRING type, an error is returned. Return value: A value of the INT type is returned.
+Description: This function returns the value of the minute part of a date. Parameters: **date**: a value of the DATETIME or STRING type. If the value is not of the DATETIME or STRING type, an error is returned. Return value: A value of the INT type is returned. Examples:
 
 ```
 SELECT MINUTE('2014-09-01 12:30:00'); -- 30 is returned. SELECT MINUTE('12:30:00'); -- 30 is returned. SELECT MINUTE('20140901120000'); -- NULL is returned.
@@ -6704,7 +6776,7 @@ SELECT MINUTE('2014-09-01 12:30:00'); -- 30 is returned. SELECT MINUTE('12:30:00
 
 ###### 3.6.3.14.9 SECOND
 
-This topic describes the SECOND function and provides examples of using this function.
+This topic describes the SECOND function and provides examples of using this function. Syntax:
 
 ```
 INT SECOND(DATETIME/STRING date)
@@ -6718,7 +6790,7 @@ SELECT SECOND('2014-09-01 12:30:45'); -- 45 is returned. SELECT SECOND('12:30:45
 
 ###### 3.6.3.14.10 FROM_UTC_TIMESTAMP
 
-This topic describes the FROM_UTC_TIMESTAMP function and provides examples of using this function.
+This topic describes the FROM_UTC_TIMESTAMP function and provides examples of using this function. Syntax:
 
 ```
 timestamp from_utc_timestamp({any primitive type}*, string timezone)
@@ -6726,7 +6798,7 @@ timestamp from_utc_timestamp({any primitive type}*, string timezone)
 
 Description: This function converts a UTC timestamp to a timestamp for a specified time zone. Parameters: {any primitive type}*: the timestamp, which is a value of the TIMESTAMP, DATETIME, TINYINT, SMALLINT, INT, or BIGINT type. If the value is of the TINYINT, SMALLINT, INT, or BIGINT type, the unit is milliseconds.
 **timezone**: the time zone to which you want to convert the timestamp, such as Pacific Standard Time (PST).
-Return value: A value of the TIMESTAMP type is returned.
+Return value: A value of the TIMESTAMP type is returned. Examples:
 
 ```
 SELECT from_utc_timestamp(1501557840000, 'PST'); -- The unit of the input value is milliseconds and 2017-08-01 04:24:00 is returned. SELECT from_utc_timestamp('1970-01-30 16:00:00','PST'); -- 1970-01-30 08:00:00.0 is returned. SELECT from_utc_timestamp('1970-01-30','PST'); -- 1970-01-29 16:00:00.0 is returned.
@@ -6734,13 +6806,13 @@ SELECT from_utc_timestamp(1501557840000, 'PST'); -- The unit of the input value 
 
 ###### 3.6.3.14.11 CURRENT_TIMESTAMP
 
-This topic describes the CURRENT_TIMESTAMP function and provides examples of using this function.
+This topic describes the CURRENT_TIMESTAMP function and provides examples of using this function. Syntax:
 
 ```
 timestamp current_timestamp()
 ```
 
-Description: This function returns the current timestamp. The return value is not fixed. Return value: A value of the TIMESTAMP type is returned.
+Description: This function returns the current timestamp. The return value is not fixed. Return value: A value of the TIMESTAMP type is returned. Examples:
 
 ```
 select current_timestamp(); -- '2017-08-03 11:50:30.661' is returned.
@@ -6748,7 +6820,7 @@ select current_timestamp(); -- '2017-08-03 11:50:30.661' is returned.
 
 ###### 3.6.3.14.12 ADD_MONTHS
 
-This topic describes the ADD_MONTHS function and provides examples of using this function.
+This topic describes the ADD_MONTHS function and provides examples of using this function. Syntax:
 
 ```
 string add_months(string startdate, int nummonths)
@@ -6766,13 +6838,13 @@ add_months('2017-02-14',3) = '2017-05-14' add_months('17-2-14',3) = '0017-05-14'
 
 ###### 3.6.3.14.13 LAST_DAY
 
-This topic describes the LAST_DAY function and provides examples of using this function.
+This topic describes the LAST_DAY function and provides examples of using this function. Syntax:
 
 ```
 string last_day(string date)
 ```
 
-Description: This function returns the last date of the month part of a date value. Parameters: **date**: a date value of the STRING type and in the format of **yyyy-mm-dd hh:mi:ss** or **yyyy-mm-dd**. Return value: A value of the STRING type is returned and the value is in the format of **yyyy-mm-dd**.
+Description: This function returns the last date of the month part of a date value. Parameters: **date**: a date value of the STRING type and in the format of **yyyy-mm-dd hh:mi:ss** or **yyyy-mm-dd**. Return value: A value of the STRING type is returned and the value is in the format of **yyyy-mm-dd**. Examples:
 
 ```
 last_day('2017-03-04') = '2017-03-31' last_day('2017-07-04 11:40:00') = '2017-07-31' last_day('20170304') = null
@@ -6780,7 +6852,7 @@ last_day('2017-03-04') = '2017-03-31' last_day('2017-07-04 11:40:00') = '2017-07
 
 ###### 3.6.3.14.14 NEXT_DAY
 
-This topic describes the NEXT_DAY function and provides examples of using this function.
+This topic describes the NEXT_DAY function and provides examples of using this function. Syntax:
 
 ```
 string next_day(string startdate, string week)
@@ -6789,7 +6861,7 @@ string next_day(string startdate, string week)
 Description: This function returns the date of the first day that is later than **startdate** and matches the **week** value. The return value indicates the date of the specified day in the next week. Parameters:
 **startdate**: a date value of the STRING type and in the format of **yyyy-mm-dd hh:mi:ss** or **yyyy-mm-dd**.
 **week**: a date value of the STRING type. The full name of a day in a week, or the first two or three letters of the day,
-for example, MO, TUE, or FRIDAY. Return value: A value of the STRING type is returned and the value is in the format of **yyyy-mm-dd**.
+for example, MO, TUE, or FRIDAY. Return value: A value of the STRING type is returned and the value is in the format of **yyyy-mm-dd**. Examples:
 
 ```
 next_day('2017-08-01','TU') = '2017-08-08' next_day('2017-08-01 23:34:00','TU') = '2017-08-08' next_day('20170801','TU') = null
@@ -6797,7 +6869,7 @@ next_day('2017-08-01','TU') = '2017-08-08' next_day('2017-08-01 23:34:00','TU') 
 
 ###### 3.6.3.14.15 MONTHS_BETWEEN
 
-This topic describes the MONTHS_BETWEEN function and provides examples of using this function.
+This topic describes the MONTHS_BETWEEN function and provides examples of using this function. Syntax:
 
 ```
 double months_between(datetime/timestamp/string date1, datetime/timestamp/string date2)
@@ -6815,7 +6887,7 @@ months_between('1997-02-28 10:30:00', '1996-10-30') = 3.9495967741935485 months_
 
 ###### 3.6.3.14.16 EXTRACT
 
-This topic describes the EXTRACT function and provides examples of using this function.
+This topic describes the EXTRACT function and provides examples of using this function. Syntax:
 
 ```
 int extract(<datepart> from <timestamp>)
@@ -6824,7 +6896,7 @@ int extract(<datepart> from <timestamp>)
 Description: This function extracts the part specified by **datepart** from the time specified by **timestamp**. Parameters:
 **datepart**: a value that can be set to YEAR, MONTH, DAY, HOUR, or MINUTE.
 **timestamp**: a date value of the TIMESTAMP type.
-Return value: A value of the INT type is returned.
+Return value: A value of the INT type is returned. Examples:
 
 ```
 set odps.sql.type.system.odps2=true; select extract(year from '2019-05-01 11:21:00') year
@@ -6839,7 +6911,7 @@ set odps.sql.type.system.odps2=true; select extract(year from '2019-05-01 11:21:
 +------+-------+------+------+--------+
 ```
 
-If the time value specified in the SQL statement is invalid or exceeds the specified range, the return value is the remainder obtained by dividing the specified time value by the maximum value in the time range.
+If the time value specified in the SQL statement is invalid or exceeds the specified range, the return value is the remainder obtained by dividing the specified time value by the maximum value in the time range. Examples:
 
 ```
 set odps.sql.type.system.odps2=true; select extract(hour from '2019-05-01 31:01:01') hour
@@ -6884,7 +6956,7 @@ row to the current row.
 
 ##### 3.6.4.2 COUNT
 
-This topic describes the COUNT function and provides examples of using this function.
+This topic describes the COUNT function and provides examples of using this function. Syntax:
 
 ```
 Bigint count([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -6899,7 +6971,7 @@ window is returned. If **ORDER BY** is specified, the returned results are sorte
 
 > **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
 
-Return value: A value of the BIGINT type is returned. The test_src table contains the **user_id** column of the BIGINT type.
+Return value: A value of the BIGINT type is returned. Examples: The test_src table contains the **user_id** column of the BIGINT type.
 
 ```
 select user_id,count(user_id) over (partition by user_id) as count from test_src; +---------+------------+
@@ -6962,7 +7034,7 @@ COUNT for the third row because the prices of the two rows are the same.
 
 ##### 3.6.4.3 AVG
 
-This topic describes the AVG function and provides examples of using this function.
+This topic describes the AVG function and provides examples of using this function. Syntax:
 
 ```
 avg([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7021,7 +7093,7 @@ irst row to the third row.
 
 ##### 3.6.4.4 MAX
 
-This topic describes the MAX function.
+This topic describes the MAX function. Syntax:
 
 ```
 max([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7040,7 +7112,7 @@ Return value: A value of the same data type as **expr** is returned.
 
 ##### 3.6.4.5 MIN
 
-This topic describes the MIN function.
+This topic describes the MIN function. Syntax:
 
 ```
 min([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7059,7 +7131,7 @@ Return value: A value of the same data type as **expr** is returned.
 
 ##### 3.6.4.6 MEDIAN
 
-This topic describes the MEDIAN function.
+This topic describes the MEDIAN function. Syntax:
 
 ```
 double median(double number1,number2...) over(partition by [col1, col2…]) decimal median(decimal number1,number2...) over(partition by [col1, col2…])
@@ -7088,7 +7160,7 @@ rows in the current window is returned. If **ORDER BY** is specified, the return
 
 > **Note:** If the **distinct** keyword is specified, **ORDER BY** cannot be used.
 
-Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned.
+Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned. Examples:
 
 ```
 select window, seq, stddev_pop('1\01') over (partition by window order by seq) from dual;
@@ -7138,7 +7210,7 @@ to the third row.
 
 ##### 3.6.4.8 STDDEV_SAMP
 
-This topic describes the STDDEV_SAMP function.
+This topic describes the STDDEV_SAMP function. Syntax:
 
 ```
 Double stddev_samp([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause]) Decimal stddev_samp([distinct] expr) over((partition by [col1,col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7157,7 +7229,7 @@ Return value: If the input value is of the DECIMAL type, a value of the DECIMAL 
 
 ##### 3.6.4.9 SUM
 
-This topic describes the SUM function and provides examples of using this function.
+This topic describes the SUM function and provides examples of using this function. Syntax:
 
 ```
 sum([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7216,7 +7288,7 @@ hird row.
 
 ##### 3.6.4.10 DENSE_RANK
 
-This topic describes the DENSE_RANK function and provides examples of using this function.
+This topic describes the DENSE_RANK function and provides examples of using this function. Syntax:
 
 ```
 Bigint dense_rank() over(partition by [col1, col2…] order by [col1[asc|desc], col2[asc|desc]…])
@@ -7266,7 +7338,7 @@ select deptno
 
 ##### 3.6.4.11 RANK
 
-This topic describes the RANK function and provides examples of using this function.
+This topic describes the RANK function and provides examples of using this function. Syntax:
 
 ```
 Bigint rank() over(partition by [col1, col2…] order by [col1[asc|desc], col2[asc|desc]…])
@@ -7316,7 +7388,7 @@ select deptno
 
 ##### 3.6.4.12 LAG
 
-This topic describes the LAG function and provides examples of using this function.
+This topic describes the LAG function and provides examples of using this function. Syntax:
 
 ```
 lag(expr, Bigint offset, default) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]])
@@ -7330,7 +7402,7 @@ value is of the STRING or DOUBLE type, it is implicitly converted into the BIGIN
 constant. The default value of this parameter is NULL.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by col1[asc|desc], col2[asc|desc]**: specifies how values in the rows are sorted.
-Return value: A value of the same data type as **expr** is returned.
+Return value: A value of the same data type as **expr** is returned. Examples:
 
 ```
 select seq, lag(seq+100, 1) over (partition by window order by seq) as r from sliding_window; -- The following result is returned: +------------+------------+
@@ -7449,7 +7521,7 @@ Return value: A value of the DOUBLE type is returned. Valid values: [0,1]. The r
 
 ##### 3.6.4.15 ROW_NUMBER
 
-This topic describes the ROW_NUMBER function and provides examples of using this function.
+This topic describes the ROW_NUMBER function and provides examples of using this function. Syntax:
 
 ```
 row_number() over(partition by [col1, col2…] order by [col1[asc|desc], col2[asc|desc]…])
@@ -7458,7 +7530,7 @@ row_number() over(partition by [col1, col2…] order by [col1[asc|desc], col2[as
 Description: This function returns the ordinal number of the current row within a group of rows, counting from 1. Parameters:
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: the values that need to be sorted to return the ordinal number of the
-current row. Return value: A value of the BIGINT type is returned. The emp table contains the following data:
+current row. Return value: A value of the BIGINT type is returned. Examples: The emp table contains the following data:
 
 ```
 | empno | ename | job | mgr | hiredate| sal| comm | deptno |
@@ -7499,7 +7571,7 @@ select deptno
 
 ##### 3.6.4.16 CLUSTER_SAMPLE
 
-This topic describes the CLUSTER_SAMPLE function and provides examples of using this function.
+This topic describes the CLUSTER_SAMPLE function and provides examples of using this function. Syntax:
 
 ```
 boolean cluster_sample([Bigint x, Bigint y]) over(partition by [col1, col2..])
@@ -7511,7 +7583,7 @@ indicates that a window is divided into **x** portions. Otherwise, **x** indicat
 **y**: a constant of the BIGINT type. The value of y must be greater than or equal to 1 and less than or equal to x. y
 indicates that **y** records of the **x** portions in a window are extracted. In this case, True is returned for the **y** records. If the value of **y** is NULL, NULL is returned.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
-Return value: A value of the BOOLEAN type is returned. The test_tbl table contains two columns: **key** and **value**. **key** specifies a group, which can be **groupa** or **groupb**.
+Return value: A value of the BOOLEAN type is returned. Examples: The test_tbl table contains two columns: **key** and **value**. **key** specifies a group, which can be **groupa** or **groupb**.
 **value** indicates the value of key. Data in the test_tbl table:
 
 ```
@@ -7556,13 +7628,13 @@ select key, value from (select key, value, cluster_sample(10, 1) over(partition 
 
 ##### 3.6.4.17 NTILE
 
-This topic describes the NTILE function and provides examples of using this function.
+This topic describes the NTILE function and provides examples of using this function. Syntax:
 
 ```
 BIGINT ntile(BIGINT n) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause]))
 ```
 
-Description: This function divides rows into **n** ranking groups of as equal size as possible and returns the ranking group that a given row falls into. If rows are not evenly divided into ranking groups, more rows are included in the first ranking group. Parameters: **n**: a value of the BIGINT type. Return value: A value of the BIGINT type is returned. The emp table contains the following data:
+Description: This function divides rows into **n** ranking groups of as equal size as possible and returns the ranking group that a given row falls into. If rows are not evenly divided into ranking groups, more rows are included in the first ranking group. Parameters: **n**: a value of the BIGINT type. Return value: A value of the BIGINT type is returned. Examples: The emp table contains the following data:
 
 ```
 | empno | ename | job | mgr | hiredate| sal| comm | deptno |
@@ -7597,7 +7669,7 @@ select deptno,ename,sal,ntile(3) over(partition by deptno order by sal desc) as 
 
 ##### 3.6.4.18 NTH_VALUE
 
-This topic describes the NTH_VALUE function and provides examples of using this function.
+This topic describes the NTH_VALUE function and provides examples of using this function. Syntax:
 
 ```
 nth_value(expr, number [, skipNull]) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7680,13 +7752,13 @@ ow length.
 
 ##### 3.6.4.19 CUME_DIST
 
-This topic describes the CUME_DIST function and provides examples of using this function.
+This topic describes the CUME_DIST function and provides examples of using this function. Syntax:
 
 ```
 cume_dist() over(partition by [col1, col2…] order by [col1[asc|desc], col2[asc|desc]…]
 ```
 
-Description: This function calculates the cumulative distribution. The cumulative distribution is the ratio of rows whose values are greater than or equal to the current value to all rows in a group. Parameters: **ORDER BY**: the value used for comparison. Return value: The ratio of the number of rows whose values are greater than or equal to the current value in the group to the total number of rows in the group is returned. The emp table contains the following data:
+Description: This function calculates the cumulative distribution. The cumulative distribution is the ratio of rows whose values are greater than or equal to the current value to all rows in a group. Parameters: **ORDER BY**: the value used for comparison. Return value: The ratio of the number of rows whose values are greater than or equal to the current value in the group to the total number of rows in the group is returned. Examples: The emp table contains the following data:
 
 ```
 | empno | ename | job | mgr | hiredate| sal| comm | deptno |
@@ -7721,7 +7793,7 @@ select deptno , ename , sal , concat(round(cume_dist() over(partition by deptno 
 
 ##### 3.6.4.20 FIRST_VALUE
 
-This topic describes the FIRST_VALUE function and provides examples of using this function.
+This topic describes the FIRST_VALUE function and provides examples of using this function. Syntax:
 
 ```
 first_value(expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause]
@@ -7731,7 +7803,7 @@ Description: This function sorts rows and returns the first value in the range f
 **expr**: a value of any basic data type.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the value of **expr** of the starting row in
-the current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the value of **expr** of the starting row in the current window is returned. Return value: A value of the same data type as **expr** is returned.
+the current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the value of **expr** of the starting row in the current window is returned. Return value: A value of the same data type as **expr** is returned. Examples:
 
 ```
 select user_id, price, first_value(price) over
@@ -7765,7 +7837,7 @@ select user_id, price, first_value(price) over
 
 ##### 3.6.4.21 LAST_VALUE
 
-This topic describes the LAST_VALUE function and provides examples of using this function.
+This topic describes the LAST_VALUE function and provides examples of using this function. Syntax:
 
 ```
 last_value(expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -7775,7 +7847,7 @@ Description: This function sorts rows and returns the last value in the range fr
 **expr**: a value of any basic data type.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the value of **expr** of the last row in the
-current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the value of **expr** of the current row in the current window is returned. Return value: A value of the same data type as **expr** is returned.
+current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the value of **expr** of the current row in the current window is returned. Return value: A value of the same data type as **expr** is returned. Examples:
 
 ```
 select user_id, price, last_value(price) over
@@ -7813,9 +7885,15 @@ select user_id, price, last_value(price) over
 
 This topic describes the expressions of filter conditions in aggregate functions and provides examples. Filter conditions can be added for all aggregate functions. If FILTER is specified, only the rows for which the value of
 **where_condition** is TRUE are processed by the required aggregate functions.
+Syntax:
 
 ```
 aggregate_name(expression[,...]) [FILTER (WHERE where_condition)]
+```
+
+Examples:
+
+```
       SUM(x),
       SUM(x) FILTER (WHERE y > 1),
       SUM(x) FILTER (WHERE y > 2)
@@ -7837,7 +7915,7 @@ The following result is returned:
 
 ##### 3.6.5.2 COUNT
 
-This topic describes the COUNT function and provides examples on how to use this function.
+This topic describes the COUNT function and provides examples on how to use this function. Syntax:
 
 ```
 bigint count([distict|all] value)
@@ -7900,13 +7978,13 @@ select key, count(value) as count from test_src group by key; -- The following r
 
 ##### 3.6.5.3 COUNT_IF
 
-This topic describes the aggregate function COUNT_IF and provides examples.
+This topic describes the aggregate function COUNT_IF and provides examples. Syntax:
 
 ```
 bigint count_if(BOOLEAN expr)
 ```
 
-Description: This function calculates the number of records whose value of **expr** is TRUE. Parameters: **expr**, which is of the BOOLEAN type. If the value for a row is FALSE or NULL, the row is not counted. Return value: A value of the BIGINT type is returned.
+Description: This function calculates the number of records whose value of **expr** is TRUE. Parameters: **expr**, which is of the BOOLEAN type. If the value for a row is FALSE or NULL, the row is not counted. Return value: A value of the BIGINT type is returned. Examples:
 
 ```
 SELECT COUNT_IF(x > 1), COUNT_IF(x <=1) FROM VALUES(NULL),(0),(1),(2) AS t(x);
@@ -7924,13 +8002,13 @@ The following result is returned:
 
 ##### 3.6.5.4 AVG
 
-This topic describes the AVG function and provides examples of using this function.
+This topic describes the AVG function and provides examples of using this function. Syntax:
 
 ```
 double avg(double value) decimal avg(decimal value)
 ```
 
-Description: This function returns the average value of a column. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. If the input value for a row is NULL, this row is not used for calculation. Values of the BOOLEAN type cannot be used for calculation. Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. If the input value is not of the DECIMAL type, a value of the DOUBLE type is returned. The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
+Description: This function returns the average value of a column. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. If the input value for a row is NULL, this row is not used for calculation. Values of the BOOLEAN type cannot be used for calculation. Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. If the input value is not of the DECIMAL type, a value of the DOUBLE type is returned. Examples: The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
 
 ```
 +-------+
@@ -7954,13 +8032,13 @@ select avg(value) as avg from tbla; -- The average value of the value column is 
 
 ##### 3.6.5.5 MAX
 
-This topic describes the MAX function and provides examples of using this function.
+This topic describes the MAX function and provides examples of using this function. Syntax:
 
 ```
 max(value)
 ```
 
-Description: This function calculates the maximum value of values in a column. Parameters: **value**: a value of any data type. If the value for a row is NULL, this row that corresponds to the column is not used for calculation. Values of the BOOLEAN type are not used for calculation. Return value: A value of the same data type as **value** is returned. The tbla table contains the **col1** column of the BIGINT type. Data in the tbla table:
+Description: This function calculates the maximum value of values in a column. Parameters: **value**: a value of any data type. If the value for a row is NULL, this row that corresponds to the column is not used for calculation. Values of the BOOLEAN type are not used for calculation. Return value: A value of the same data type as **value** is returned. Examples: The tbla table contains the **col1** column of the BIGINT type. Data in the tbla table:
 
 ```
 +------+
@@ -7982,13 +8060,13 @@ select max(value) from tbla; -- 2 is returned.
 
 ##### 3.6.5.6 MIN
 
-This topic describes the MIN function and provides examples of using this function.
+This topic describes the MIN function and provides examples of using this function. Syntax:
 
 ```
 min(value)
 ```
 
-Description: This function calculates the minimum value of values in a column. Parameters: **value**: a value of any data type. If the value for a row is NULL, this row that corresponds to the column is not used for calculation. Values of the BOOLEAN type are not used for calculation. Return value: A value of the same data type as **value** is returned. The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
+Description: This function calculates the minimum value of values in a column. Parameters: **value**: a value of any data type. If the value for a row is NULL, this row that corresponds to the column is not used for calculation. Values of the BOOLEAN type are not used for calculation. Return value: A value of the same data type as **value** is returned. Examples: The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
 
 ```
 +------+
@@ -8010,13 +8088,13 @@ select min(value) from tbla; -- 1 is returned.
 
 ##### 3.6.5.7 MEDIAN
 
-This topic describes the MEDIAN function and provides examples of using this function.
+This topic describes the MEDIAN function and provides examples of using this function. Syntax:
 
 ```
 double median(double number) decimal median(decimal number)
 ```
 
-Description: This function calculates the median value for a group of values. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
+Description: This function calculates the median value for a group of values. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. Examples: The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
 
 ```
 +------+
@@ -8042,13 +8120,13 @@ select median(value) from tbla; -- 3.0 is returned.
 
 ##### 3.6.5.8 STDDEV
 
-This topic describes the STDDEV function and provides examples of using this function.
+This topic describes the STDDEV function and provides examples of using this function. Syntax:
 
 ```
 double stddev(double number) decimal stddev(decimal number)
 ```
 
-Description: This function calculates the population standard deviation. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
+Description: This function calculates the population standard deviation. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. Examples: The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
 
 ```
 +------+
@@ -8074,13 +8152,13 @@ select stddev(value) from tbla; -- 1.4142135623730951 is returned.
 
 ##### 3.6.5.9 STDDEV_SAMP
 
-This topic describes the STDDEV_SAMP function and provides examples of using this function.
+This topic describes the STDDEV_SAMP function and provides examples of using this function. Syntax:
 
 ```
 double stddev_samp(double number) decimal stddev_samp(decimal number)
 ```
 
-Description: This function returns the sample standard deviation of a group of values. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
+Description: This function returns the sample standard deviation of a group of values. Parameters: **value**: a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. Examples: The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
 
 ```
 +------+
@@ -8106,13 +8184,13 @@ select stddev_samp(value) from tbla; -- 1.58113883008418981 is returned.
 
 ##### 3.6.5.10 SUM
 
-This topic describes the SUM function and provides examples of using this function.
+This topic describes the SUM function and provides examples of using this function. Syntax:
 
 ```
 sum(value)
 ```
 
-Description: This function returns the sum of values in specified rows. Parameters: **value**: a value of the DOUBLE, DECIMAL, or BIGINT type. If the input value is of the STRING type, it is implicitly converted into the DOUBLE type before calculation. If the input value for a row is NULL, this row is not used for calculation. Values of the BOOLEAN type are not used for calculation. Return value: If the input value is of the BIGINT type, a value of the BIGINT type is returned. If the input value is of the DOUBLE or STRING type, a value of the DOUBLE type is returned. The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
+Description: This function returns the sum of values in specified rows. Parameters: **value**: a value of the DOUBLE, DECIMAL, or BIGINT type. If the input value is of the STRING type, it is implicitly converted into the DOUBLE type before calculation. If the input value for a row is NULL, this row is not used for calculation. Values of the BOOLEAN type are not used for calculation. Return value: If the input value is of the BIGINT type, a value of the BIGINT type is returned. If the input value is of the DOUBLE or STRING type, a value of the DOUBLE type is returned. Examples: The tbla table contains the **value** column of the BIGINT type. Data in the tbla table:
 
 ```
 +------+
@@ -8134,7 +8212,7 @@ select sum(value) from tbla; -- 3 is returned.
 
 ##### 3.6.5.11 WM_CONCAT
 
-This topic describes the WM_CONCAT function and provides examples of using this function.
+This topic describes the WM_CONCAT function and provides examples of using this function. Syntax:
 
 ```
 string wm_concat(string separator, string str)
@@ -8148,7 +8226,7 @@ converted into the STRING type before calculation. If the input value is not of 
 
 > **Note:** If **test_src** in **select wm_concat(',', name) from test_src;** is an empty set, NULL is returned.
 
-Group and sort values in the test table and use a string to list the values in the same group.
+Examples: Group and sort values in the test table and use a string to list the values in the same group.
 
 ```
 -- Create the test table. create table test(id int , alphabet string); -- Insert data into the test table. insert into test values (1,'a'),(1,'b'),(1,'c'),(2,'D'),(2,'E'),(2,'F'); -- Group and sort values in the test table based on the id column. Then, use a string to list values in the sam e group. select id,wm_concat('',alphabet) from test group by id order by id limit 100; +------------+------------+
@@ -8174,7 +8252,7 @@ Description: This function returns the **p**th percentile of the specified colum
 Parameters:
 **col**: the name of the table column of the BIGINT type.
 **p**: the percentile that must be between 0 and 1.
-The var_test table contains the **c1** column. Data in the var_test table:
+Examples: The var_test table contains the **c1** column. Data in the var_test table:
 
 ```
 +------------+
@@ -8215,7 +8293,7 @@ set odps.sql.type.system.odps2=true;
 
 ###### 3.6.5.13.2 COLLECT_LIST
 
-This topic describes the COLLECT_LIST function and provides examples of using this function.
+This topic describes the COLLECT_LIST function and provides examples of using this function. Syntax:
 
 ```
 ARRAY collect_list(col)
@@ -8225,7 +8303,7 @@ Description: This function aggregates the expressions that are specified by **co
 
 ###### 3.6.5.13.3 COLLECT_SET
 
-This topic describes the COLLECT_SET function.
+This topic describes the COLLECT_SET function. Syntax:
 
 ```
 array collect_set(col)
@@ -8235,13 +8313,13 @@ Description: This function aggregates the expressions that are specified by **co
 
 ###### 3.6.5.13.4 VARIANCE or VAR_POP
 
-This topic describes the VARIANCE or VAR_POP function and provides examples of using this function.
+This topic describes the VARIANCE or VAR_POP function and provides examples of using this function. Syntax:
 
 ```
 DOUBLE variance(col) DOUBLE var_pop(col)
 ```
 
-Description: This function calculates the variance of a specified column of a numeric data type. Parameters: **col**: the column of a numeric data type. If it is not of a numeric data type, NULL is returned. Return value: A value of the DOUBLE type is returned. The test table contains the**c1** column. Data in the test table:
+Description: This function calculates the variance of a specified column of a numeric data type. Parameters: **col**: the column of a numeric data type. If it is not of a numeric data type, NULL is returned. Return value: A value of the DOUBLE type is returned. Examples: The test table contains the**c1** column. Data in the test table:
 
 ```
 +------------+
@@ -8266,7 +8344,7 @@ select variance(c1) from test; -- You can also execute the following statement: 
 
 ###### 3.6.5.13.5 VAR_SAMP
 
-This topic describes the VAR_SAMP function and provides examples of using this function.
+This topic describes the VAR_SAMP function and provides examples of using this function. Syntax:
 
 ```
 DOUBLE var_samp(col)
@@ -8297,13 +8375,13 @@ select var_samp(c1) from test; -- The following result is returned: +-----------
 
 ###### 3.6.5.13.6 COVAR_POP
 
-This topic describes the COVAR_POP function and provides examples of using this function.
+This topic describes the COVAR_POP function and provides examples of using this function. Syntax:
 
 ```
 DOUBLE covar_pop(col1, col2)
 ```
 
-Description: This function calculates the population covariance of two columns of a numeric data type. Parameters: **col1 and col2**: the columns of a numeric data type. If they are not of a numeric data type, NULL is returned. Return value: A value of the DOUBLE type is returned. The test table contains the **c1** and **c2** columns. Data in the test table:
+Description: This function calculates the population covariance of two columns of a numeric data type. Parameters: **col1 and col2**: the columns of a numeric data type. If they are not of a numeric data type, NULL is returned. Return value: A value of the DOUBLE type is returned. Examples: The test table contains the **c1** and **c2** columns. Data in the test table:
 
 ```
 +------------+------------+
@@ -8328,7 +8406,7 @@ select covar_pop(c1,c2) from test; -- The following result is returned: +-------
 
 ###### 3.6.5.13.7 COVAR_SAMP
 
-This topic describes the COVAR_SAMP function and provides examples of using this function.
+This topic describes the COVAR_SAMP function and provides examples of using this function. Syntax:
 
 ```
 DOUBLE covar_samp(col1, col2)
@@ -8359,13 +8437,13 @@ select covar_samp(c1,c2) from test; -- The following result is returned: +------
 
 ###### 3.6.5.13.8 ANY_VALUE
 
-This topic describes the ANY_VALUE function and provides examples of using this function.
+This topic describes the ANY_VALUE function and provides examples of using this function. Syntax:
 
 ```
 ANY_VALUE(value)
 ```
 
-Description: This function returns a non-deterministic value from a specific column. Parameters: **value**: a value of any data type. If the input **value** for a row is NULL, this row is not used for calculation. Return value: A value of the same data type as the input value is returned.
+Description: This function returns a non-deterministic value from a specific column. Parameters: **value**: a value of any data type. If the input **value** for a row is NULL, this row is not used for calculation. Return value: A value of the same data type as the input value is returned. Examples:
 
 ```
 select key, ANY_VALUE(value) from values (1, 'value1'),(1, 'value2'),(2, 'value3'),(2, NULL),(3, NULL) as t(key, value) group by key; -- The following result is returned: +------------+------------+
@@ -8381,7 +8459,7 @@ select key, ANY_VALUE(value) from values (1, 'value1'),(1, 'value2'),(2, 'value3
 
 ###### 3.6.5.13.9 NUMERIC_HISTOGRAM
 
-This topic describes the NUMERIC_HISTOGRAM function.
+This topic describes the NUMERIC_HISTOGRAM function. Syntax:
 
 ```
 map<double, double> numeric_histogram(bigint buckets , double value)
@@ -8395,7 +8473,7 @@ Return value: A value of the MAP<DOUBLE,DOUBLE> type is returned. In the return 
 
 ###### 3.6.5.13.10 PERCENTILE_APPROX
 
-This topic describes the PERCENTILE_APPROX function and provides examples of using this function.
+This topic describes the PERCENTILE_APPROX function and provides examples of using this function. Syntax:
 
 ```
 double percentile_approx(double col, p [, B])) array<double> percentile_approx(double col, array(p1 [, p2]...) [, B])
@@ -8407,6 +8485,7 @@ percentile value or multiple percentages to return an array that consists of per
 **B**: the accuracy of the return value. A higher accuracy indicates a more accurate value. If you do not specify this
 parameter, 10000 is used. If the number of values in the **col** column is less than **B**, an exact percentile value is returned. Return value: **percentile_approx(double col, p [, B]))** returns a single approximate percentile value.
 **percentile_approx(double col, array(p1 [, p2]…) [, B])** returns an array that consists of multiple percentile values.
+Examples:
 
 ```
 select percentile_approx(10.0, 0.5, 100); -- 10.0 is returned. select percentile_approx(10.0, array(0.5, 0.4, 0.1), 100); -- [10.0,10.0,10.0] is returned.
@@ -8414,7 +8493,7 @@ select percentile_approx(10.0, 0.5, 100); -- 10.0 is returned. select percentile
 
 ###### 3.6.5.13.11 APPROX_DISTINCT
 
-This topic describes the APPROX_DISTINCT function and provides examples of using this function.
+This topic describes the APPROX_DISTINCT function and provides examples of using this function. Syntax:
 
 ```
 bigint approx_distinct(value)
@@ -8426,13 +8505,13 @@ Description: This function returns the approximate number of distinct input valu
 
 ##### 3.6.6.1 ARRAY
 
-This topic describes the ARRAY function and provides examples of using this function.
+This topic describes the ARRAY function and provides examples of using this function. Syntax:
 
 ```
 ARRAY array(value1,value2, ...)
 ```
 
-Description: This function creates an array of a given data type that is specified by **value**. Parameters: **value**: any data type. All the values must be of the same data type. Return value: A value of the ARRAY type is returned.
+Description: This function creates an array of a given data type that is specified by **value**. Parameters: **value**: any data type. All the values must be of the same data type. Return value: A value of the ARRAY type is returned. Examples:
 
 ```
 select array(123,456,789); -- The following result is returned: [123, 456, 789]
@@ -8449,7 +8528,7 @@ boolean array_contains(ARRAY<T> a, value v)
 Description: This function checks whether array **a** contains value **v**. Parameters:
 **a**: a value of the ARRAY type.
 **v**: a value of the same data type as other values in the array.
-Return value: A value of the BOOLEAN type is returned.
+Return value: A value of the BOOLEAN type is returned. Examples:
 
 ```
 select array_contains(array('a','b'), 'a'); -- True is returned. select array_contains(array(456,789),123); -- False is returned.
@@ -8457,7 +8536,7 @@ select array_contains(array('a','b'), 'a'); -- True is returned. select array_co
 
 ##### 3.6.6.3 CAST
 
-This topic describes the CAST function.
+This topic describes the CAST function. Syntax:
 
 ```
 cast(expr as <type>)
@@ -8467,7 +8546,7 @@ Description: This function converts the result of an expression into another dat
 
 ##### 3.6.6.4 COALESCE
 
-This topic describes the COALESCE function.
+This topic describes the COALESCE function. Syntax:
 
 ```
 coalesce(expr1, expr2, ...)
@@ -8481,7 +8560,7 @@ Return value: A value of the same data type as the expr parameter is returned.
 
 ##### 3.6.6.5 DECODE
 
-This topic describes the DECODE function and provides examples of using this function.
+This topic describes the DECODE function and provides examples of using this function. Syntax:
 
 ```
 decode(expression, search, result[, search, result]...[, default])
@@ -8497,6 +8576,8 @@ This parameter is optional. Return value: The matched **search** value is return
 > **Note:** Three or more parameters must be specified.
 > All **results** must be of the same data type or be NULL. Inconsistent data types will cause an error. All values of **search** and **expression** must be of the same data type. Otherwise, an error is returned.
 > If **search** in the **DECODE** function has duplicate values that match the expression, the first mapping result is returned.
+
+Examples:
 
 ```
 decode(customer_id, 1, 'Taobao', 2, 'Alipay', 3, 'Aliyun', NULL, 'N/A', 'Others') as result FROM VALUES (1,10),
@@ -8520,7 +8601,7 @@ if customer_id = 1 then result := 'Taobao'; elsif customer_id = 2 then result :=
 
 ##### 3.6.6.6 EXPLODE
 
-This topic describes the EXPLODE function and provides examples of using this function.
+This topic describes the EXPLODE function and provides examples of using this function. Syntax:
 
 ```
 explode (var)
@@ -8531,6 +8612,8 @@ Description: This function is a user-defined table-valued function (UDTF) that t
 > **Note:** Limits on the EXPLODE function:
 > A SELECT statement can specify only the column that is used for this function. Other columns cannot be specified.
 > This function cannot be used with the GROUP BY, CLUSTER BY, DISTRIBUTE BY, or SORT BY clause.
+
+Examples:
 
 ```
 select explode(array(null, 'a', 'b', 'c')); -- The following result is returned: +------------+
@@ -8545,7 +8628,7 @@ select explode(array(null, 'a', 'b', 'c')); -- The following result is returned:
 
 ##### 3.6.6.7 GET_IDCARD_AGE
 
-This topic describes the GET_IDCARD_AGE function.
+This topic describes the GET_IDCARD_AGE function. Syntax:
 
 ```
 get_idcard_age(idcardno)
@@ -8555,7 +8638,7 @@ Description: This function returns the current age based on the ID card number. 
 
 ##### 3.6.6.8 GET_IDCARD_BIRTHDAY
 
-This topic describes the GET_IDCARD_BIRTHDAY function.
+This topic describes the GET_IDCARD_BIRTHDAY function. Syntax:
 
 ```
 get_idcard_birthday(idcardno)
@@ -8565,7 +8648,7 @@ Description: This function returns the date of birth based on the ID card number
 
 ##### 3.6.6.9 GET_IDCARD_SEX
 
-This topic describes the GET_IDCARD_SEX function.
+This topic describes the GET_IDCARD_SEX function. Syntax:
 
 ```
 get_idcard_sex(idcardno)
@@ -8575,7 +8658,7 @@ Description: This function returns the gender based on the ID card number. The r
 
 ##### 3.6.6.10 GREATEST
 
-This topic describes the GREATEST function.
+This topic describes the GREATEST function. Syntax:
 
 ```
 greatest(var1, var2, ...)
@@ -8585,7 +8668,7 @@ Description: This function returns the maximum value of the input parameters. Pa
 
 ##### 3.6.6.11 INDEX
 
-This topic describes the INDEX function and provides examples of using this function.
+This topic describes the INDEX function and provides examples of using this function. Syntax:
 
 ```
 index(var1[var2])
@@ -8596,7 +8679,7 @@ Description: This function returns the **var2**th value if **var1** is of the AR
 Parameters:
 **var**: a value of the ARRAY<T> or MAP<K, V> type.
 **var2**: If the value of **var1** is of the ARRAY<T> type, the value of **var2** is of the BIGINT type and greater than or equal
-to 0. If the value of **var1** is of the MAP<K, V> type, the value of **var2** is of the K type. Return value: If the value of **var1** is of the ARRAY<T> type, a value of the T type is returned. If the value of **var2** is beyond the range of elements in the value of the ARRAY<T> type, NULL is returned. If the value of **var1** is of the MAP<K, V> type, a value of the V type is returned. If the value whose key is **var2** does not exist in values of the MAP<K, V> type, NULL is returned. If the value of **var1** is an array, execute the following SQL statement:
+to 0. If the value of **var1** is of the MAP<K, V> type, the value of **var2** is of the K type. Return value: If the value of **var1** is of the ARRAY<T> type, a value of the T type is returned. If the value of **var2** is beyond the range of elements in the value of the ARRAY<T> type, NULL is returned. If the value of **var1** is of the MAP<K, V> type, a value of the V type is returned. If the value whose key is **var2** does not exist in values of the MAP<K, V> type, NULL is returned. Examples: If the value of **var1** is an array, execute the following SQL statement:
 
 ```
 select array('a','b','c')[2] from dual; -- The following result is returned: +-----+
@@ -8621,13 +8704,13 @@ select str_to_map("test1=1,test2=2")["test1"] from dual; -- The following result
 
 ##### 3.6.6.12 MAX_PT
 
-This topic describes the MAX_PT function and provides examples of using this function.
+This topic describes the MAX_PT function and provides examples of using this function. Syntax:
 
 ```
 max_pt(table_full_name)
 ```
 
-Description: This function returns the maximum value of each first-level partition of a partitioned table in alphabetic order. This function also reads data from the data file in the first-level partitions. Parameters: **table_full_name**: the table name that has a project name, such as prj.src. The value of this parameter is of the STRING type. You must have the permissions to read the table. Return value: The maximum value in each first-level partition is returned. The tbl table is a partitioned table and contains the following partitions:
+Description: This function returns the maximum value of each first-level partition of a partitioned table in alphabetic order. This function also reads data from the data file in the first-level partitions. Parameters: **table_full_name**: the table name that has a project name, such as prj.src. The value of this parameter is of the STRING type. You must have the permissions to read the table. Return value: The maximum value in each first-level partition is returned. Examples: The tbl table is a partitioned table and contains the following partitions:
 
 ```
 pt ='20120901' pt ='20120902'
@@ -8644,7 +8727,7 @@ select * from tbl where pt=max_pt('myproject.tbl');
 
 ##### 3.6.6.13 ORDINAL
 
-This topic describes the ORDINAL function and provides examples of using this function.
+This topic describes the ORDINAL function and provides examples of using this function. Syntax:
 
 ```
 ordinal(bigint nth, var1, var2, ...)
@@ -8672,7 +8755,7 @@ Description: This function returns the minimum value of the input parameters. Pa
 
 ##### 3.6.6.15 SIZE
 
-This topic describes the SIZE function and provides examples of using this function.
+This topic describes the SIZE function and provides examples of using this function. Syntax:
 
 ```
 INT size(map) INT size(array)
@@ -8681,7 +8764,7 @@ INT size(map) INT size(array)
 Description: **size(map)** returns the number of key-value pairs in the specified **map** parameter. **size(array)** returns the number of elements in the specified **array** parameter. Parameters:
 **map**: a value of the MAP type.
 **array**: a value of the ARRAY type.
-Return value: A value of the INT type is returned.
+Return value: A value of the INT type is returned. Examples:
 
 ```
 select size(map('a',123,'b',456)); -- 2 is returned. select size(map('a',123,'b',456,'c',789)); -- 3 is returned. select size(array('a','b')); -- 2 is returned. select size(array(123,456,789)); -- 3 is returned.
@@ -8689,7 +8772,7 @@ select size(map('a',123,'b',456)); -- 2 is returned. select size(map('a',123,'b'
 
 ##### 3.6.6.16 SPLIT
 
-This topic describes the SPLIT function and provides examples of using this function.
+This topic describes the SPLIT function and provides examples of using this function. Syntax:
 
 ```
 split(str, pat)
@@ -8698,7 +8781,7 @@ split(str, pat)
 Description: This function returns an array after **str** is split with **pat**. Parameters:
 **str**: the string that you want to split, which is of the STRING type.
 **pat**: a delimiter of the STRING type, which supports regular expressions.
-Return value: The result after **str** is split with **pat** is returned. The return value is of the ARRAY<STRING> type.
+Return value: The result after **str** is split with **pat** is returned. The return value is of the ARRAY<STRING> type. Examples:
 
 ```
 select split("a,b,c",","); -- The following result is returned: +------+
@@ -8710,7 +8793,7 @@ select split("a,b,c",","); -- The following result is returned: +------+
 
 ##### 3.6.6.17 STR_TO_MAP
 
-This topic describes the STR_TO_MAP function and provides examples of using this function.
+This topic describes the STR_TO_MAP function and provides examples of using this function. Syntax:
 
 ```
 str_to_map(text [, delimiter1 [, delimiter2]])
@@ -8733,7 +8816,7 @@ select str_to_map("test1=1,test2=2"); -- Returned result: +------+
 
 ##### 3.6.6.18 UUID
 
-This topic describes the UUID function.
+This topic describes the UUID function. Syntax:
 
 ```
 string uuid()
@@ -8745,7 +8828,7 @@ Description: This function returns a random ID, for example, **29347a88-1e57-41a
 
 ##### 3.6.6.19 UNIQUE_ID
 
-This topic describes the UNIQUE_ID function.
+This topic describes the UNIQUE_ID function. Syntax:
 
 ```
 string unique_id()
@@ -8757,7 +8840,7 @@ Description: This function returns a unique random ID, for example, **29347a88-1
 
 ##### 3.6.6.20 SAMPLE
 
-This topic describes the SAMPLE function and provides examples of using this function.
+This topic describes the SAMPLE function and provides examples of using this function. Syntax:
 
 ```
 boolean sample(x, y, column_name1,column_name2,...)
@@ -8769,7 +8852,7 @@ not specified, random sampling is performed based on the values of x and y. This
 
 > **Note:** To avoid data skew due to NULL values, the system performs uniform hashing on NULL values in the columns specified by **column_name**. This ensures that data evenly falls into **x** portions. If **column_name** is not specified and the amount of data is small, random hashing may be performed. In this case, we recommend that you specify **column_name** for uniform hashing.
 
-The tbla table contains the **cola** column.
+Examples: The tbla table contains the **cola** column.
 
 ```
 select * from tbla where sample (4, 1 , cola) = true; -- The values in the cola column fall into four portions by calling the hash function, and data in the first po rtion is extracted. select * from tbla where sample (4, 2) = true; -- The values in each row are randomly hashed into four portions, and data in the second portion is extracted.
@@ -8807,7 +8890,7 @@ Parameters:
 **testCondition**: the expression that you want to evaluate. The value of this parameter is of the BOOLEAN type.
 **valueTrue**: the value returned if **testCondition** evaluates to true.
 **valueFalseOrNull**: the value returned if **testCondition** evaluates to false. It can be set to NULL.
-Return value: The data type of the return value is the same as that of **valueTrue** or **valueFalseOrNull**.
+Return value: The data type of the return value is the same as that of **valueTrue** or **valueFalseOrNull**. Examples:
 
 ```
 select if(1=2,100,200); -- The following result is returned: +------------+
@@ -8831,7 +8914,7 @@ set odps.sql.type.system.odps2=true;
 
 ###### 3.6.6.23.2 MAP
 
-This topic describes the MAP function and provides examples of using this function.
+This topic describes the MAP function and provides examples of using this function. Syntax:
 
 ```
 map map(K key1, V value1, K key2, V value2, ...)
@@ -8841,7 +8924,7 @@ Description: This function creates mappings by using the given key-value pairs. 
 **key**: All **keys** must be of the same data types, such as those after an implicit conversion. The data types must be
 basic types.
 **value**: All **value** types, such as those after an implicit conversion, must be the same and can be of any data types.
-Return value: A value of the MAP type is returned. The t_table table contains the **c1**, **c2**, **c3**, **c4**, and **c5** columns. The c1, c4, and C5 columns are of the BIGINT type, and the c2 and c3 columns are of the STRING type. Data in the t_table table:
+Return value: A value of the MAP type is returned. Examples: The t_table table contains the **c1**, **c2**, **c3**, **c4**, and **c5** columns. The c1, c4, and C5 columns are of the BIGINT type, and the c2 and c3 columns are of the STRING type. Data in the t_table table:
 
 ```
 +------------+----+----+------------+------------+
@@ -8867,13 +8950,13 @@ select map(c2,c4,c3,c5) from t_table; -- The following result is returned: +----
 
 ###### 3.6.6.23.3 MAP_KEYS
 
-This topic describes the MAP_KEYS function and provides examples of using this function.
+This topic describes the MAP_KEYS function and provides examples of using this function. Syntax:
 
 ```
 ARRAY map_keys(map<K, V>)
 ```
 
-Description: This function returns all keys in the MAP parameter as an array. Parameters: **map**: a value of the MAP type. Return value: A value of the ARRAY type is returned. If the input value is NULL, NULL is returned. The t_table_map table contains two columns: **c1** and **t_map**. c1 is of the BIGINT type and t_map is of the MAP<STRING,BIGINT> type.
+Description: This function returns all keys in the MAP parameter as an array. Parameters: **map**: a value of the MAP type. Return value: A value of the ARRAY type is returned. If the input value is NULL, NULL is returned. Examples: The t_table_map table contains two columns: **c1** and **t_map**. c1 is of the BIGINT type and t_map is of the MAP<STRING,BIGINT> type.
 
 ```
 +------------+-------+
@@ -8899,13 +8982,13 @@ select c1,map_keys(t_map) from t_table_map; -- The following result is returned:
 
 ###### 3.6.6.23.4 MAP_VALUES
 
-This topic describes the MAP_VALUES function and provides examples of using this function.
+This topic describes the MAP_VALUES function and provides examples of using this function. Syntax:
 
 ```
 ARRAY map_values(map<K, V>)
 ```
 
-Description: This function returns all values in the map parameter as an array. Parameters: **map**: a value of the MAP type. Return value: A value of the ARRAY type is returned. If the input value is NULL, NULL is returned.
+Description: This function returns all values in the map parameter as an array. Parameters: **map**: a value of the MAP type. Return value: A value of the ARRAY type is returned. If the input value is NULL, NULL is returned. Examples:
 
 ```
 select map_values(map('a',123,'b',456)); -- The following result is returned: [123, 456]
@@ -8919,7 +9002,7 @@ This topic describes the SORT_ARRAY function and provides examples of using this
 ARRAY sort_array(ARRAY<T>)
 ```
 
-Description: This function sorts data in a given array. Parameters: **ARRAY<T>**: data of the ARRAY type. Data in the array can be of any data type. Return value: A value of the ARRAY type is returned. The t_array table contains three columns: **c1**, **c2**, and **c3**. The c1 and c3 columns are of the ARRAY<STRING> type, and the c2 column is of the ARRAY<INT> type.
+Description: This function sorts data in a given array. Parameters: **ARRAY<T>**: data of the ARRAY type. Data in the array can be of any data type. Return value: A value of the ARRAY type is returned. Examples: The t_array table contains three columns: **c1**, **c2**, and **c3**. The c1 and c3 columns are of the ARRAY<STRING> type, and the c2 column is of the ARRAY<INT> type.
 
 ```
 +------------+---------+--------------+
@@ -8937,13 +9020,13 @@ select sort_array(c1),sort_array(c2),sort_array(c3) from t_array; -- The followi
 
 ###### 3.6.6.23.6 POSEXPLODE
 
-This topic describes the POSEXPLODE function and provides examples of using this function.
+This topic describes the POSEXPLODE function and provides examples of using this function. Syntax:
 
 ```
 posexplode(ARRAY<T>)
 ```
 
-Description: This function converts a given array into a table that has two columns. The first column lists subscripts of each value in the array, starting from 0. The second column lists array elements. Parameters: **ARRAY<T>**: a value of the ARRAY type. Data in the array can be of any data type. Return value: The generated table is returned.
+Description: This function converts a given array into a table that has two columns. The first column lists subscripts of each value in the array, starting from 0. The second column lists array elements. Parameters: **ARRAY<T>**: a value of the ARRAY type. Data in the array can be of any data type. Return value: The generated table is returned. Examples:
 
 ```
 select posexplode(array('a','c','f','b')); -- The following result is returned: +------------+-----+
@@ -8958,7 +9041,7 @@ select posexplode(array('a','c','f','b')); -- The following result is returned: 
 
 ###### 3.6.6.23.7 STRUCT
 
-This topic describes the STRUCT function and provides examples of using this function.
+This topic describes the STRUCT function and provides examples of using this function. Syntax:
 
 ```
 STRUCT struct(value1,value2, ...)
@@ -8973,7 +9056,7 @@ select struct('a',123,'ture',56.90); -- The following result is returned: {col1:
 
 ###### 3.6.6.23.8 NAMED_STRUCT
 
-This topic describes the NAMED_STRUCT function and provides examples of using this function.
+This topic describes the NAMED_STRUCT function and provides examples of using this function. Syntax:
 
 ```
 STRUCT named_struct(string name1, T1 value1, string name2, T2 value2, ...)
@@ -8984,6 +9067,7 @@ Description: This function creates a value of the STRUCT type based on the given
 **name**: the name of the field of the STRING type. This parameter is a constant.
 Return value: A value of the STRUCT type is returned. Fields in the return value are sequentially named as **name1,**
 **name2, ...**.
+Examples:
 
 ```
 select named_struct('user_id',10001,'user_name','bob','married','F','weight',63.50); -- The following result is returned: {user_id:10001, user_name:bob, married:F, weight:63.5}
@@ -8991,13 +9075,13 @@ select named_struct('user_id',10001,'user_name','bob','married','F','weight',63.
 
 ###### 3.6.6.23.9 INLINE
 
-This topic describes the INLINE function and provides examples of using this function.
+This topic describes the INLINE function and provides examples of using this function. Syntax:
 
 ```
 inline(array<STRUCT<f1:T1, f2:T2, ... >>)
 ```
 
-Description: This function expands a given STRUCT array. Each array element is given one row and each STRUCT element corresponds to one column in each row. Parameters: **STRUCT**: the values in the array, which are of any data type. Return value: The function generated by the table is returned. Column information of the t_table table is **t_struct**
+Description: This function expands a given STRUCT array. Each array element is given one row and each STRUCT element corresponds to one column in each row. Parameters: **STRUCT**: the values in the array, which are of any data type. Return value: The function generated by the table is returned. Examples: Column information of the t_table table is **t_struct**
 **struct<user_id:bigint,user_name:string,married:string,weight:double>**. Data in the t_table table:
 
 ```
@@ -9918,7 +10002,7 @@ As a type of UDFs, SQL functions allow you to create UDFs in SQL and use functio
 
 **Create a permanent SQL function**
 
-After you create a permanent SQL function and store it in the metadata system, all query statements can reference this function. To reference SQL functions, you must have function-level permissions. The following example shows the
+After you create a permanent SQL function and store it in the metadata system, all query statements can reference this function. To reference SQL functions, you must have function-level permissions. The following example shows the syntax:
 
 ```
 CREATE SQL FUNCTION function_name(@parameter_in1 datatype[, @parameter_in2 datatype...]) [RETURNS @parameter_out datatype] AS [BEGIN] function_expression [END];
@@ -11033,7 +11117,7 @@ This topic describes the Constructor function ST_AsJson and provides examples fo
 ST_AsJSON(ST_Geometry)
 ```
 
-Description: This function returns the JSON expression of the input geometry.
+Description: This function returns the JSON expression of the input geometry. Examples:
 
 ```
 SELECT ST_AsJSON(ST_Point(1.0, 2.0)) from onerow;
@@ -11187,7 +11271,7 @@ This topic describes the Constructor function ST_GeometryType and provides examp
 ST_GeometryType(geometry)
 ```
 
-Description: This function returns the type of the input geometry.
+Description: This function returns the type of the input geometry. Examples:
 
 ```
 SELECT ST_GeometryType(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11465,7 +11549,7 @@ This topic describes the Accessor function ST_CoordDim and provides examples for
 ST_CoordDim(geometry)
 ```
 
-Description: This function returns the coordinate dimension of the input geometry.
+Description: This function returns the coordinate dimension of the input geometry. Examples:
 
 ```
 SELECT ST_CoordDim(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11493,7 +11577,7 @@ This topic describes the Accessor function ST_Dimension and provides examples fo
 ST_Dimension(geometry)
 ```
 
-Description: This function returns the spatial dimension of the input geometry.
+Description: This function returns the spatial dimension of the input geometry. Examples:
 
 ```
 SELECT ST_Dimension(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11541,7 +11625,7 @@ This topic describes the Accessor function ST_GeodesicLengthWGS84 and provides e
 ST_GeodesicLengthWGS84(line)
 ```
 
-Description: This function returns the distance in meters on a spheroid based on World Geodetic System 1984 (WGS84). The geometry must be in WGS84. Otherwise, this function returns NULL.
+Description: This function returns the distance in meters on a spheroid based on World Geodetic System 1984 (WGS84). The geometry must be in WGS84. Otherwise, this function returns NULL. Examples:
 
 ```
 SELECT ST_GeodesicLengthWGS84(ST_SetSRID(ST_Linestring(0.0,0.0, 0.3,0.4), 4326)) FROM src LIMIT 1;
@@ -11567,7 +11651,7 @@ This topic describes the Accessor function ST_GeometryN and provides examples fo
 ST_GeometryN(ST_GeometryCollection, n)
 ```
 
-Description: This function returns the nth geometry in the input geometry collection. n starts from 1.
+Description: This function returns the nth geometry in the input geometry collection. n starts from 1. Examples:
 
 ```
 SELECT ST_GeometryN(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), (30 10))'), 3) FROM src LIMIT 1;
@@ -11713,7 +11797,7 @@ This topic describes the Accessor function ST_MaxM and provides examples for ref
 ST_MaxM(geometry)
 ```
 
-Description: This function returns the maximum M coordinate of the input geometry.
+Description: This function returns the maximum M coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MaxM(ST_PointM(1.5, 2.5, 2)) FROM src LIMIT 1;
@@ -11735,7 +11819,7 @@ This topic describes the Accessor function ST_MinM and provides examples for ref
 ST_MinM(geometry)
 ```
 
-Description: This function returns the minimum M coordinate of the input geometry.
+Description: This function returns the minimum M coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MinM(ST_PointM(1.5, 2.5, 2)) FROM src LIMIT 1;
@@ -11817,7 +11901,7 @@ This topic describes the Accessor function ST_MaxX and provides examples for ref
 ST_MaxX(geometry)
 ```
 
-Description: This function returns the maximum X coordinate of the input geometry.
+Description: This function returns the maximum X coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MaxX(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11843,7 +11927,7 @@ This topic describes the Accessor function ST_MaxX and provides examples for ref
 ST_MaxY(geometry)
 ```
 
-Description: This function returns the maximum Y coordinate of the input geometry.
+Description: This function returns the maximum Y coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MaxY(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11869,7 +11953,7 @@ This topic describes the Accessor function ST_MaxZ and provides examples for ref
 ST_MaxZ(geometry)
 ```
 
-Description: This function returns the maximum Z coordinate of the input geometry.
+Description: This function returns the maximum Z coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MaxZ(ST_PointZ(1.5, 2.5, 2)) FROM src LIMIT 1;
@@ -11891,7 +11975,7 @@ This topic describes the Accessor function ST_MinX and provides examples for ref
 ST_MinX(geometry)
 ```
 
-Description: This function returns the minimum X coordinate of the input geometry.
+Description: This function returns the minimum X coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MinX(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11917,7 +12001,7 @@ This topic describes the Accessor function ST_MinY and provides examples for ref
 ST_MinY(geometry)
 ```
 
-Description: This function returns the minimum Y coordinate of the input geometry.
+Description: This function returns the minimum Y coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MinY(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -11943,7 +12027,7 @@ This topic describes the Accessor function ST_MinZ and provides examples for ref
 ST_MinZ(geometry)
 ```
 
-Description: This function returns the minimum Z coordinate of the input geometry.
+Description: This function returns the minimum Z coordinate of the input geometry. Examples:
 
 ```
 SELECT ST_MinZ(ST_PointZ(1.5, 2.5, 2)) FROM src LIMIT 1;
@@ -11965,7 +12049,7 @@ This topic describes the Accessor function ST_NumGeometries and provides example
 ST_NumGeometries(ST_GeometryCollection)
 ```
 
-Description: This function returns the number of geometries in the input geometry collection.
+Description: This function returns the number of geometries in the input geometry collection. Examples:
 
 ```
 SELECT ST_NumGeometries(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), (30 10))')) FROM src LIMIT 1;
@@ -11987,7 +12071,7 @@ This topic describes the Accessor function ST_NumInteriorRing and provides examp
 ST_NumInteriorRing(ST_Polygon)
 ```
 
-Description: This function returns the number of interior rings of the input polygon.
+Description: This function returns the number of interior rings of the input polygon. Examples:
 
 ```
 SELECT ST_NumInteriorRing(ST_Polygon(1,1, 1,4, 4,1)) FROM src LIMIT 1;
@@ -12009,7 +12093,7 @@ This topic describes the Accessor function ST_NumPoints and provides examples fo
 ST_NumPoints(geometry)
 ```
 
-Description: This function returns the number of points in the input geometry.
+Description: This function returns the number of points in the input geometry. Examples:
 
 ```
 SELECT ST_NumPoints(ST_Point(1.5, 2.5)) FROM src LIMIT 1;
@@ -12187,7 +12271,7 @@ This topic describes the Operation function ST_Boundary and provides examples fo
 ST_Boundary(ST_Geometry)
 ```
 
-Description: This function returns the boundary of the input geometry ST_Geometry.
+Description: This function returns the boundary of the input geometry ST_Geometry. Examples:
 
 ```
 SELECT ST_Boundary(ST_LineString(0,1, 1,0))) FROM src LIMIT 1;
@@ -12243,7 +12327,7 @@ This topic describes the Operation function ST_Difference and provides examples 
 ST_Difference(ST_Geometry1, ST_Geometry2)
 ```
 
-Description: This function returns a geometry that indicates the difference between ST_Geometry1 and ST_Geometry2.
+Description: This function returns a geometry that indicates the difference between ST_Geometry1 and ST_Geometry2. Examples:
 
 ```
 SELECT ST_AsText(ST_Difference(ST_MultiPoint(1, 1, 1.5, 1.5, 2, 2), ST_Point(1.5, 1.5))) FROM onerow;
@@ -12273,7 +12357,7 @@ This topic describes the Operation function ST_Envelope and provides examples fo
 ST_Envelope(ST_Geometry)
 ```
 
-Description: This function returns the envelope of the input geometry. If the specified geometry is a point, a horizontal line, or a vertical line, this function returns the common difference or an empty envelope.
+Description: This function returns the envelope of the input geometry. If the specified geometry is a point, a horizontal line, or a vertical line, this function returns the common difference or an empty envelope. Examples:
 
 ```
 SELECT ST_Envelope(ST_LineString(0,0, 2,2)) from src LIMIT 1;
@@ -12299,7 +12383,7 @@ This topic describes the Operation function ST_ExteriorRing and provides example
 ST_ExteriorRing(polygon)
 ```
 
-Description: This function returns the exterior ring of a polygon as a linestring.
+Description: This function returns the exterior ring of a polygon as a linestring. Examples:
 
 ```
 SELECT ST_ExteriorRing(ST_Polygon(1,1, 1,4, 4,1)) FROM src LIMIT 1;
@@ -12345,7 +12429,7 @@ This topic describes the Operation function ST_Intersection and provides example
 ST_Intersection(ST_Geometry1, ST_Geometry2)
 ```
 
-Description: This function returns a geometry that indicates the intersection of the input geometries. If the input geometries intersect in a lower dimension, ST_Intersection may drop lower-dimension intersections or return a closed linestring.
+Description: This function returns a geometry that indicates the intersection of the input geometries. If the input geometries intersect in a lower dimension, ST_Intersection may drop lower-dimension intersections or return a closed linestring. Examples:
 
 ```
 SELECT ST_AsText(ST_Intersection(ST_Point(1,1), ST_Point(1,1))) FROM onerow;
@@ -12463,13 +12547,13 @@ SELECT ST_Crosses(st_linestring(0,0, 1,1), st_linestring(1,0, 0,1)) from src LIM
 
 ##### 3.12.5.3 ST_Disjoint
 
-This topic describes the ST_Disjoint function and provides examples of using this function.
+This topic describes the ST_Disjoint function and provides examples of using this function. Syntax:
 
 ```
 BOOLEAN ST_Disjoint(geometry1, geometry2)
 ```
 
-Description: This function is used to determine whether two geometry objects are disjoint. If two geometry objects do not have any intersection point, line, or plane, this function returns True. Otherwise, this function returns False.
+Description: This function is used to determine whether two geometry objects are disjoint. If two geometry objects do not have any intersection point, line, or plane, this function returns True. Otherwise, this function returns False. Examples:
 
 ```
 SELECT ST_Disjoint(ST_LineString(0,0, 0,1), ST_LineString(1,1, 1,0)) from src LIMIT 1; -- True is returned. SELECT ST_Disjoint(ST_LineString(0,0, 1,1), ST_LineString(1,0, 0,1)) from src LIMIT 1; -- False is returned.
@@ -12477,13 +12561,13 @@ SELECT ST_Disjoint(ST_LineString(0,0, 0,1), ST_LineString(1,1, 1,0)) from src LI
 
 ##### 3.12.5.4 ST_EnvIntersects
 
-This topic describes the ST_EnvIntersects function and provides examples of using this function.
+This topic describes the ST_EnvIntersects function and provides examples of using this function. Syntax:
 
 ```
 BOOLEAN ST_EnvIntersects(ST_Geometry1, ST_Geometry2)
 ```
 
-Description: This function is used to determine whether the envelopes of two geometry objects intersect. If the envelopes of two geometry objects intersect, this function returns True. Otherwise, this function returns False.
+Description: This function is used to determine whether the envelopes of two geometry objects intersect. If the envelopes of two geometry objects intersect, this function returns True. Otherwise, this function returns False. Examples:
 
 ```
 SELECT ST_EnvIntersects(ST_LineString(0,0, 1,1), ST_LineString(1,3, 2,2)) from src LIMIT 1; -- False is returned. SELECT ST_EnvIntersects(ST_LineString(0,0, 2,2), ST_LineString(1,0, 3,2)) from src LIMIT 1; -- True is returned.
@@ -12577,7 +12661,7 @@ SELECT ST_Within(st_point(2, 3), st_polygon(1,1, 1,4, 4,4, 4,1)) from src LIMIT 
 
 ##### 3.12.6.1 ST_GeoHash
 
-This topic describes the ST_GeoHash function and provides an example on how to use this function.
+This topic describes the ST_GeoHash function and provides an example on how to use this function. Syntax:
 
 ```
 string ST_GeoHash(st_geometry geometry, integer precision=full_precision) string ST_GeoHash(double longitude, double latitude, integer precision=full_precision)
@@ -12593,7 +12677,7 @@ SELECT ST_GeoHash(ST_Point(-102.849854, 36.451113), 8); SELECT ST_GeoHash(ST_Geo
 
 ##### 3.12.6.2 ST_PointFromGeoHash
 
-This topic describes the ST_PointFromGeoHash function and provides an example on how to use this function.
+This topic describes the ST_PointFromGeoHash function and provides an example on how to use this function. Syntax:
 
 ```
 st_geometry ST_PointFromGeoHash(string geohash, integer precision=full_precision)
@@ -12602,6 +12686,8 @@ st_geometry ST_PointFromGeoHash(string geohash, integer precision=full_precision
 Description: This function returns a point based on the input Geohash value.
 
 > **Note:** If the precision parameter is not configured, the maximum precision is used. The precision depends on your business requirements and the characteristics of the data.
+
+Examples:
 
 ```
 SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq')); SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq', 4));
@@ -12755,7 +12841,7 @@ SELECT ST_GeodesicDistance(ST_GeomFromText('POINT(152.352298 -24.875975)'), ST_G
 
 ##### 3.12.8.5 ST_Distance_Sphere
 
-This topic describes the ST_Distance_Sphere function and provides an example of using this function.
+This topic describes the ST_Distance_Sphere function and provides an example of using this function. Syntax:
 
 ```
 double ST_Distance_Sphere(st_point geo1, st_point2 geo2) double ST_Distance_Sphere(double lng1, double lat1, double lng2, double lat2)
@@ -12781,7 +12867,7 @@ Returned result:
 
 ##### 3.12.8.6 ST_Area_Sphere
 
-This topic describes the ST_Area_Sphere function and provides an example of using this function.
+This topic describes the ST_Area_Sphere function and provides an example of using this function. Syntax:
 
 ```
 double ST_Area_Sphere(st_geometry geo)
@@ -13685,7 +13771,7 @@ This topic describes the escape characters in MaxCompute SQL. In MaxCompute SQL,
 | \Z | Control-Z |
 | \0 or \00 | Ending character |
 
-Use an escape character to indicate a literal interpretation of the characters that follow the escape character. String constants in MaxCompute SQL can be expressed in single quotation marks (' ') or double quotation marks ('' ''). You can include double quotation marks ('' '') in a string that is enclosed in single quotation marks (' ') or include single quotation marks (' ') in a string that is enclosed in double quotation marks ('' ''). Examples:
+Examples: Use an escape character to indicate a literal interpretation of the characters that follow the escape character. String constants in MaxCompute SQL can be expressed in single quotation marks (' ') or double quotation marks ('' ''). You can include double quotation marks ('' '') in a string that is enclosed in single quotation marks (' ') or include single quotation marks (' ') in a string that is enclosed in double quotation marks ('' ''). Examples:
 
 ```
 "I'm a happy manong." 'I\'m a happy manong.'

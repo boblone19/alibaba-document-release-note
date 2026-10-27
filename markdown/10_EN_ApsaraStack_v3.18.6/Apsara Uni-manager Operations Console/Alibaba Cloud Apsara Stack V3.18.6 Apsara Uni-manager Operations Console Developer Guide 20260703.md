@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 580
 source_pdf: "f96b05bd0b0dd405_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Developer Guide 20260703.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020260703.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Uni-manager Operations Console Developer Guide 20260703
@@ -1186,7 +1186,13 @@ To handle the errors that are returned by the backend servers, you must parse th
 # Initiate a request and view the result.
 describeProductStatusResponse = client.do_action_with_exception(describeProductStatusInstance)
 # Configure the required parameters.
-describeProductStatusRequest.set_project("ASO") print(str(describeProductStatusResponse, encoding="utf-8")) from aliyuncs.sdk_manager import UniSdk from aliyunsdkcore.acs_exception.exceptions import ServerException, ClientException from aliyunsdkcore.client import AcsClient from aliyuncs.aliyunsdkasoops.request.v20220118.DescribeProductStatusRequest import Des cribeProductStatusRequest def testUniSDK():
+describeProductStatusRequest.set_project("ASO") print(str(describeProductStatusResponse, encoding="utf-8"))
+```
+
+**Example**
+
+```python
+from aliyuncs.sdk_manager import UniSdk from aliyunsdkcore.acs_exception.exceptions import ServerException, ClientException from aliyunsdkcore.client import AcsClient from aliyuncs.aliyunsdkasoops.request.v20220118.DescribeProductStatusRequest import Des cribeProductStatusRequest def testUniSDK():
   interDomain="<yourInternetDomain>"
   intraDomain="<yourIntranetDomain>"
   region="<yourRegion>"
@@ -5205,6 +5211,8 @@ Queries inspection scenarios.
 | -pageSize | Integer | 15 | The number of entries per page. |
 | -total | Integer | 20 | The total number of entries. |
 | -page | Integer | 1 | The page number. |
+
+**Example**
 
 Sample requests
 
@@ -13551,7 +13559,7 @@ Sample requests `{`
 
 ##### 7.3.2.4 DescribeMetrics
 
-Queries metric data. Metric types STORAGE_CLUSTER STORAGE_CLUSTER: metrics related to storage clusters. To query the metric data of a storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeStorageClusters operation to obtain the ID of the storage cluster. BLOCK_CLUSTER BLOCK_CLUSTER: metrics related to block storage clusters. To query the metric data of a block storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeBlockClusters operation to obtain the ID of the block storage cluster. OSS_CLUSTER OSS_CLUSTER: metrics related to Object Storage Service (OSS) clusters. To query the metric data of an OSS cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeOssCluster operation to obtain the ID of the OSS cluster. HOST HOST: metrics related to hosts. To query the metric data of a host, you must obtain the host ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeHosts operation to obtain the ID of the host. OSS_BUCKET OSS_BUCKET: metrics related to OSS buckets. To query the metric data of an OSS bucket, you can call the DescribeMetrics operation and set the entityId parameter to oss_bucket and the Tags parameter to the name of the bucket. You can call the ListBucket operation to obtain the name of the bucket. You want to obtain the data points of the qps1 and qps2 metrics of an OSS cluster. You can perform the following steps to obtain the metric data points: Step 1: Obtain the storage cluster ID Call the DescribeStorageClusters operation to obtain the value of storageClusterId. Step 2: Obtain the OSS cluster ID Specify the value of storageClusterId obtained in Step 1 as the value of ossClusterId and call the DescribeOssCluster operation to obtain the corresponding OSS cluster ID. Step 3: Obtain the data points of metrics Specify the value of ossClusterId obtained in Step 2 as the value of entiryId and set the metrics parameter to qps1 and qps2. Then, call the DescribeMetrics operation to obtain the data points of qps1 and qps2 metrics.
+Queries metric data. Metric types STORAGE_CLUSTER STORAGE_CLUSTER: metrics related to storage clusters. To query the metric data of a storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeStorageClusters operation to obtain the ID of the storage cluster. BLOCK_CLUSTER BLOCK_CLUSTER: metrics related to block storage clusters. To query the metric data of a block storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeBlockClusters operation to obtain the ID of the block storage cluster. OSS_CLUSTER OSS_CLUSTER: metrics related to Object Storage Service (OSS) clusters. To query the metric data of an OSS cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeOssCluster operation to obtain the ID of the OSS cluster. HOST HOST: metrics related to hosts. To query the metric data of a host, you must obtain the host ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeHosts operation to obtain the ID of the host. OSS_BUCKET OSS_BUCKET: metrics related to OSS buckets. To query the metric data of an OSS bucket, you can call the DescribeMetrics operation and set the entityId parameter to oss_bucket and the Tags parameter to the name of the bucket. You can call the ListBucket operation to obtain the name of the bucket. Example You want to obtain the data points of the qps1 and qps2 metrics of an OSS cluster. You can perform the following steps to obtain the metric data points: Step 1: Obtain the storage cluster ID Call the DescribeStorageClusters operation to obtain the value of storageClusterId. Step 2: Obtain the OSS cluster ID Specify the value of storageClusterId obtained in Step 1 as the value of ossClusterId and call the DescribeOssCluster operation to obtain the corresponding OSS cluster ID. Step 3: Obtain the data points of metrics Specify the value of ossClusterId obtained in Step 2 as the value of entiryId and set the metrics parameter to qps1 and qps2. Then, call the DescribeMetrics operation to obtain the data points of qps1 and qps2 metrics.
 
 **Request headers**
 
@@ -15565,7 +15573,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.3.4 FinishProdcutSwitch
 
-This operation ends a product drill in the primary data center.
+This operation ends a product drill in the primary data center. Description
 
 **Preparations**
 
@@ -15620,7 +15628,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.3.5 ListProductDrillPlan
 
-This API retrieves all executable drill plans from the primary data center.
+This API retrieves all executable drill plans from the primary data center. Description
 
 **Preparations**
 
@@ -15793,7 +15801,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.3.6 ExcuteProdcutSwitch
 
-Use this API to perform a drill switch for a product using the ASR API in the primary data center.
+Use this API to perform a drill switch for a product using the ASR API in the primary data center. Description
 
 **Preparations**
 
@@ -15926,7 +15934,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.4.1 GetProdcutSwitchLogs
 
-This operation retrieves the switch logs for a product drill from the ASR API in a secondary data center.
+This operation retrieves the switch logs for a product drill from the ASR API in a secondary data center. Description
 
 **Preparations**
 
@@ -16008,7 +16016,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.4.2 GetProductSwitchProcess
 
-Retrieves the switch status of a product during a drill from the ASR API of a secondary data center. You must specify the drill plan ID or the request ID of the switch task.
+Retrieves the switch status of a product during a drill from the ASR API of a secondary data center. You must specify the drill plan ID or the request ID of the switch task. Description
 
 **Preparations**
 
@@ -16105,7 +16113,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.4.3 GetSyncCheckResult
 
-This operation retrieves inspection information for all products from the ASR API in the secondary data center.
+This operation retrieves inspection information for all products from the ASR API in the secondary data center. Description
 
 **Usage notes**
 
@@ -16411,7 +16419,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.4.6 GetDrillProductStatus
 
-Call this operation to query the status of a product during a drill using the ASR API in a secondary data center to determine if a switch is possible.
+Call this operation to query the status of a product during a drill using the ASR API in a secondary data center to determine if a switch is possible. Description
 
 **Usage notes**
 
@@ -16485,7 +16493,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ##### 7.5.4.7 FinishProductSwitch
 
-This API operation ends a product drill flow that uses Automatic Speech Recognition (ASR) in a secondary data center.
+This API operation ends a product drill flow that uses Automatic Speech Recognition (ASR) in a secondary data center. Description
 
 **Preparations**
 

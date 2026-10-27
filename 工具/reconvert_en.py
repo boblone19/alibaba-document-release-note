@@ -33,6 +33,7 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.3
 SCRATCH_BASE = os.path.join(ROOT, os.pardir, os.pardir, ".scratch", "pdf_reconvert")
 SCRATCH = SCRATCH_BASE + "/en"          # main() 里按 --lang 重设（fork 出来的 worker 继承）
 NEW_TAG = "toc+numbered-headings+note-quotes+edge-junk"
+LANG = ["en"]                                # main() 按 --lang 设置；worker 靠它定目录标题行
 
 
 def quoted(url):
@@ -80,7 +81,8 @@ def worker(row):
     open(pdf, "wb").write(data)
     try:
         nchars, cerr = pdf2md.convert(pdf, md_path, url=url, title=title or row.get("label", ""),
-                                      prodver=prodver, docver=docver, src_pdf=src_pdf)
+                                      prodver=prodver, docver=docver, src_pdf=src_pdf,
+                                      lang=LANG[0])
         if not cerr:
             import pymupdf
             with pymupdf.open(pdf) as d:
@@ -110,6 +112,7 @@ def main():
 
     global SCRATCH
     SCRATCH = os.path.join(SCRATCH_BASE, a.lang)
+    LANG[0] = a.lang
     cached = cache.load(ROOT)
     rows = [r for r in cached.values() if r.get("lang") == a.lang and r.get("markdown")
             and os.path.exists(os.path.join(ROOT, r["markdown"]))]

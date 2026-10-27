@@ -5,18 +5,28 @@ doc_version: "20260729"
 pdf_pages: 12
 source_pdf: "14_分布式云容器平台ACK One 产品简介_ackoneproduct-introduction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/csk/zh/ackoneproduct-introduction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 容器服务Kubernetes版 分布式云容器平台ACK One 产品简介
 
-## 什么是分布式云容器平台 ACK
+## 目录
+
+- 1 什么是分布式云容器平台 ACK One
+- 2 产品详情
+- 3 产品价值
+- 4 功能特性
+- 5 应用场景
+
+CK One
+
+## 1 什么是分布式云容器平台 ACK One
 
 **One**
 
 分布式云容器平台 ACK One（Distributed Cloud Container Platform for Kubernetes）是阿里云面向混合云、多集群、分布式计算、容灾等场景推出的企业级云原生平台。ACK One可以连接并管理您任何地域、任何基础设施上的Kubernetes集群，并提供一致的管理和社区兼容的API，支持对计算、网络、存储、 安全、监控、日志、作业、应用、流量等进行统一运维管控。
 
-## 产品详情
+## 2 产品详情
 
 作为企业级云原生解决方案，ACK One帮助企业构建安全、标准、现代化的云原生IT架构，有效应对分布式云场景下的多集群管理挑战，实现从本地数据中心到专有云、边缘节点的全面覆盖与统一治理。
 
@@ -26,18 +36,18 @@ converter: line-classifier (PyMuPDF)
 
 **注册集群**
 
-|  | 提 |
+|   | 提 |
 |---|---|
 
 **User**
 
-阿里云
+提供与容器服务ACK 一致的用户体验阿里云
 
 **ACK One 注册集**
 
 **群**
 
-注册集群1 注册集群2 注册集群3 其他账号ACK集群第三方公共云本地数据中心非阿里云 Connector Connector Agent Agent API Server API Server KCM/Scheduler KCM/Scheduler K8s Cluster K8s Cluster 通过ACK注册集群，您可以将来自不同供应商和不同位置的K8s集群统一接入到阿里云容器服务ACK控制台，实现多个集群统一管理，并使用容器服务ACK丰富的集群扩展能力。 注册集群相关文档，请参见**《容器服务****ACK** **用户指南》** > **注册集群概述**章节。
+注册集群1 注册集群2 注册集群3 其他账号ACK集群第三方公共云本地数据中心非阿里云 Connector Connector Agent Agent API Server API Server KCM/Scheduler KCM/Scheduler K8s Cluster K8s Cluster 通过ACK注册集群，您可以将来自不同供应商和不同位置的K8s集群统一接入到阿里云容器服务ACK控制台，实现多个集群统一管理，并使用容器服务ACK丰富的集群扩展能力。 注册集群相关文档，请参见**《容器服务****ACK** **用户指南》** **>** **注册集群概述**章节。
 
 **多集群舰队**
 
@@ -47,13 +57,13 @@ converter: line-classifier (PyMuPDF)
 
 **队**
 
-多集群应用分发多集群资源分发 Open Cluster Management 阿里云本地数据中心 Deployment/Svc Deployment/Svc Multi-cluster Svc Multi-cluster Svc Job Job ACK Cluster K8s Cluster 当您同时运行多个K8s集群时，可以通过多集群舰队关联多个集群，并通过多集群舰队提供的统一控制面， 同时管理多个关联集群。 多集群舰队控制面基于K8s控制面构建，提供标准Kubernetes API。 多集群舰队可以接入多个K8s集群，非容器服务ACK集群，可以先通过注册集群接入。 多集群应用分发：托管开源ArgoCD，实现多集群应用分发。 多集群舰队相关文档，请参见**《分布式云容器平台****ACK One** **用户指南》** > **舰队管理概述**章节。
+多集群应用分发多集群资源分发 Open Cluster Management 阿里云本地数据中心 Deployment/Svc Deployment/Svc Multi-cluster Svc Multi-cluster Svc Job Job ACK Cluster K8s Cluster 当您同时运行多个K8s集群时，可以通过多集群舰队关联多个集群，并通过多集群舰队提供的统一控制面， 同时管理多个关联集群。 多集群舰队控制面基于K8s控制面构建，提供标准Kubernetes API。 多集群舰队可以接入多个K8s集群，非容器服务ACK集群，可以先通过注册集群接入。 多集群应用分发：托管开源ArgoCD，实现多集群应用分发。 多集群舰队相关文档，请参见**《分布式云容器平台****ACK One** **用户指南》** **>** **舰队管理概述**章节。
 
 **总结**
 
 分布式云容器平台 ACK One是阿里云为应对复杂分布式云场景打造的企业级解决方案。它突破了传统云原生平台的局限，实现了跨地域、跨基础设施的Kubernetes集群统一管理，为企业提供一致的运维体验、智能的资源调度、弹性的计算能力以及可靠的容灾保障。 无论是构建混合云架构、管理多集群环境、实现应用容灾，还是优化AI和大数据工作负载，ACK One都能提供全面、高效、安全的解决方案，助力企业加速云原生转型，提升IT基础设施的敏捷性和可靠性。
 
-## 产品价值
+## 3 产品价值
 
 分布式云容器平台 ACK One（Distributed Cloud Container Platform for Kubernetes）是阿里云面向混合云、多集群、分布式计算及容灾场景推出的企业级云原生平台。它通过统一控制面连接并管理任何地域、任何基础设施上的Kubernetes集群，提供一致的运维体验和社区兼容API，帮助企业构建安全、标准化的云原生架构。本文主要介绍ACK One的产品优势。
 
@@ -73,7 +83,7 @@ converter: line-classifier (PyMuPDF)
 
 通过注册集群功能，实现本地数据中心K8s集群与第三方公有云集群的统一管理。
 
-## 功能特性
+## 4 功能特性
 
 分布式云容器平台 ACK One是阿里云的企业级云原生平台，适用于混合云、多集群、分布式计算和容灾场景，可连接管理任何Kubernetes集群，提供一致API及统一运维，具体功能及相应的详细说明如下：
 
@@ -107,20 +117,20 @@ converter: line-classifier (PyMuPDF)
 |---|---|
 | IPv4/IPv6 双栈支持 | ACK One 集群全面支持 Kubernetes 原生 IPv4/IPv6 双栈网络模式。 |
 
-## 应用场景
+## 5 应用场景
 
 本文介绍分布式云容器平台 ACK One的应用场景。
 
-## 应用场景
+**应用场景**
 
 **场景1：注册集群，云上云下集群一致运维体验**
 
-|  | 提 |
+|   | 提 |
 |---|---|
 
 **User**
 
-阿里云
+提供与容器服务ACK 一致的用户体验阿里云
 
 **ACK One 注册集**
 
@@ -132,9 +142,9 @@ converter: line-classifier (PyMuPDF)
 
 **场景2：多集群舰队，多集群应用分发**
 
-| Developer Update Helm repo Watch and Pull |  |
+| Developer Update Helm repo Watch and Pull |   |
 |---|---|
-| tform teams ACK One 舰队 Serverless AgroCD Open Cluster Management compare/sync 阿阿里里云云本本地地数数据据中中心心 Connector Connector Deployment Deployment Agent Agent APSIe Srveircveer APSIe Srveircveer KCMI/nSgcrheesdsuler KCMI/nSgcrheesdsuler ACK Cluster K8s Cluster |  |
+| tform teams ACK One 舰队 Serverless AgroCD Open Cluster Management compare/sync 阿阿里里云云本本地地数数据据中中心心 Connector Connector Deployment Deployment Agent Agent APSIe Srveircveer APSIe Srveircveer KCMI/nSgcrheesdsuler KCMI/nSgcrheesdsuler ACK Cluster K8s Cluster |   |
 | 阿阿里里云云 Connector Deployment Agent APSIe Srveircveer KCMI/nSgcrheesdsuler ACK Cluster | 本本地地数数据据中中心心 Connector Deployment Agent APSIe Srveircveer KCMI/nSgcrheesdsuler K8s Cluster |
 
 场景描述

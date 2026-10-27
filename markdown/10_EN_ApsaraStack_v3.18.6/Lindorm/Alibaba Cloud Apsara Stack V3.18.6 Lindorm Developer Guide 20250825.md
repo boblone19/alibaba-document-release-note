@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 426
 source_pdf: "80ed8eab3e21b0f4_Alibaba Cloud Apsara Stack V3.18.6 Lindorm Developer Guide 20250825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Lindorm%20Developer%20Guide%2020250825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Lindorm Developer Guide 20250825
@@ -6029,6 +6029,8 @@ A LindormTSDBException can be triggered by server errors. It is thrown based on 
 | sqlstate | The sqlstate value that is returned by LindormTSDB. |
 | message | The error message that is returned by LindormTSDB. |
 
+**Note**
+
 For more information about the error messages that are returned by LindormTSDB, see Common error codes.
 
 **Examples**
@@ -6053,7 +6055,11 @@ TSDB, "
     System.out.println("Error Message: " + ce.getMessage());
 ```
 
-`}` For more information about the error messages that are returned by LindormTSDB, see Common error codes.
+`}`
+
+**Note**
+
+For more information about the error messages that are returned by LindormTSDB, see Common error codes.
 
 ##### 2.1.2.4 Release notes
 
@@ -6714,7 +6720,11 @@ ndorm.rds.aliyuncs.com:8242");// Specify the endpoint of LindormTSDB that you ob
         app.close();
 ```
 
-`}` `}` For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver.
+`}` `}`
+
+**Note**
+
+For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver.
 
 > The default username and password are both root.
 
@@ -6830,7 +6840,11 @@ ty);
                 e.printStackTrace();
 ```
 
-`}` `}` `}` `}` For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver.
+`}` `}` `}` `}`
+
+**Note**
+
+For more information about the parameters that you can configure for the JDBC URL, see URL of the JDBC driver.
 
 > For more information about the API operations and methods that are supported when you use the JDBC driver to access LindormTSDB, see Supported API operations and methods.
 
@@ -8504,6 +8518,8 @@ DESCRIBE sensor; +-------------+-----------+------------+
 
 **CURRENT_TIMESTAMP**
 
+**Description**
+
 You can call this function to obtain the current system time.
 
 **Syntax**
@@ -8599,6 +8615,8 @@ Sample response:
 
 **AVG**
 
+**Description**
+
 You can call this function to calculate the average value of values in a field column.
 
 **Syntax**
@@ -8670,6 +8688,8 @@ Sample response:
 ```
 
 **COUNT**
+
+**Description**
 
 You can call this function to count the number of values in a field column.
 
@@ -8745,6 +8765,8 @@ Sample response:
 
 **MIN**
 
+**Description**
+
 You can call this function to query the minimum value of values in a field column.
 
 **Syntax**
@@ -8816,6 +8838,8 @@ Sample response:
 ```
 
 **MAX**
+
+**Description**
 
 You can call this function to query the maximum value of values in a field column.
 
@@ -8889,6 +8913,8 @@ Sample response:
 
 **FIRST**
 
+**Description**
+
 You can call this function to query the first value of values in a field column.
 
 **Syntax**
@@ -8945,6 +8971,8 @@ Sample response:
 
 **LAST**
 
+**Description**
+
 You can call this function to query the last value of values in a field column.
 
 **Syntax**
@@ -9000,6 +9028,8 @@ Sample response:
 ```
 
 **PERCENTILE**
+
+**Description**
 
 You can call this function to query the specified percentile of values in a field column.
 
@@ -9059,6 +9089,8 @@ Sample response:
 **Conversion functions**
 
 **RATE**
+
+**Description**
 
 You can call this function to calculate the slope of values in a field column.
 
@@ -9156,6 +9188,8 @@ Example 4: The RATE operator must be separately used in an SQL statement. Do not
 ```
 
 **DELTA**
+
+**Description**
 
 You can call this function to calculate the difference between each value and the value in the previous row within the same field column.
 
@@ -9305,6 +9339,8 @@ Example 3: The LATEST operator must be separately used in an SQL statement. Do n
 
 **Time series anomaly detection functions**
 
+**Description**
+
 You can call this function to detect anomalies in a specified field column.
 
 **Syntax**
@@ -9407,6 +9443,8 @@ Sample response:
 ```
 
 **Feature binning functions**
+
+**Description**
 
 You can call this function to perform feature binning on the data in the specified field column of a time series table. Feature binning is also known as discrete binning or discrete bucketing and is a technique used to preprocess data.
 
@@ -9646,6 +9684,8 @@ alter_database_statement ::= ALTER DATABASE database_name [ WITH attribute_state
 | attribute statement _ | The additional attributes of the database. |
 | attr name _ | The name of the attribute. The name must be an SQL constant or an SQL identifier. |
 | attr val _ | The value of the attribute. The value must be a SQL constant. |
+
+**Note**
 
 For more information about the database attributes that are supported by this statement, see CREATE DATABASE.
 
@@ -9941,7 +9981,6 @@ After the DESCRIBE TABLE statement is executed, the result set is returned in a 
 
 ```
 > DESCRIBE TABLE sensor;
-
 +-------------+-----------+------------+
 | columnName  | typeName  | columnKind |
 +-------------+-----------+------------+
@@ -10002,6 +10041,8 @@ The result sets of SHOW statements are organized in tables and returned. The fol
 |---|---|---|
 | table privileges | VARCHAR | This column stores the names of the users that have table-level permissions. |
 
+**Note**
+
 1. The data in the permission columns is displayed in JSON format. This way, applications can directly
 process the data. JSON data is stored as key-value pairs.
 
@@ -10017,7 +10058,6 @@ The following example shows how to query all databases in the current Lindorm cl
 
 ```
 > SHOW DATABASES;
-
 +----------+
 | database |
 +----------+
@@ -10030,7 +10070,6 @@ The following example shows how to query all time series tables in the current L
 
 ```
 > SHOW TABLES;
-
 +-------------+------------+
 | tableSchema | tableName  |
 +-------------+------------+
@@ -10044,7 +10083,6 @@ The following example shows how to query all users of the current Lindorm cluste
 
 ```
 > SHOW USERS;
-
 +-----------+
 |   name    |
 +-----------+
@@ -10058,7 +10096,6 @@ The following example shows how to query the permissions of the users of the cur
 
 ```
 > SHOW PRIVILEGES;
-
 +------------+-------------------------------------+--------------------------------------+---------- ------+
 |    user    |          global privileges          |         database privileges          | table pri
 vileges | +------------+-------------------------------------+--------------------------------------+---------- ------+
@@ -10093,6 +10130,8 @@ show_parameter_statement ::= SHOW PARAMETER configuration_name
 |---|---|
 | configuration name _ | The name of the dynamic configuration parameter. The specified name must be an SQL identifier. |
 
+**Note**
+
 1. The SHOW PARAMETER statement is frequently used in combination with the ALTER SYSTEM
 statement.
 2. For information about dynamic configuration parameters that are supported by the SHOW
@@ -10104,7 +10143,6 @@ The following sample code provides an example on how to query the value of USER_
 
 ```
 > SHOW PARAMETER USER_AUTH;
-
 +-----------+
 | USER_AUTH |
 +-----------+
@@ -11648,6 +11686,8 @@ Click the icon in upper-right corner of the **A** section and switch the editor 
 SELECT region,time,avg(temperature) FROM sensor WHERE time >= $from AND time <= $to SAMPLE BY $ interval
 ```
 
+**Note**
+
 For more information about how to use Lindorm SQL, see Basic syntax of the SELECT statement.
 
 > time >= $from AND time <= $to specifies a time condition. This condition is required in the statement. If you do not specify it, the query result is not returned. The variables in the condition are automatically replaced with the time range selected on the dashboard page.
@@ -11900,6 +11940,8 @@ Generate a file that contains your query statements.
 # ${queryfile}: the name of the file that you generate to contain your query statements.
 GOGC=500 ./bulk_query_gen -seed 123 -queries 100000 -format lindormtsdb -use-case devops -query-typ e ${query_type} -scale-var ${scale} > ${queryfile}
 ```
+
+**Note**
 
 For more information about ${query_type} , see Results of query tests. Perform the query.
 
@@ -12341,7 +12383,6 @@ show_tables_statement ::= SHOW TABLES
 
 ```
 > show tables;
-
 +-------------+------------+
 | tableSchem  | tableName  |
 +-------------+------------+
@@ -12365,7 +12406,6 @@ describe_table_statement ::= DESCRIBE TABLE table_name
 
 ```
 > describe table sensor;
-
 +--------------+-----------+
 |  columnName  | typeName  |
 +--------------+-----------+
@@ -12410,7 +12450,6 @@ To count the number of data records generated for the device whose ID is `1234AB
 
 ```
 > select count(*) from sensor where device_id = '1234ABC' and time >= 1619076780000 and time <= 1
-
 619076800000; +---------+
 | EXPR$0  |
 +---------+
@@ -12422,7 +12461,6 @@ To query all metrics of the device whose ID is `1234ABC` within a time period, e
 
 ```
 > select * from sensor where device_id = '1234ABC' and time >= 1619076780000 and time <= 16190768
-
 00000; +------------+-----------+----------------+--------------+-----------+
 | device_id  |  region   |      time      | temperature  | humidity  |
 +------------+-----------+----------------+--------------+-----------+
@@ -12436,7 +12474,6 @@ To query the temperature and humidity of the device whose ID is `1234ABC` within
 
 ```
 > select region,time,temperature,humidity from sensor where device_id = '1234ABC' and time >= 161
-
 9076780000 and time <= 1619076800000; +-----------+----------------+--------------+-----------+
 |  region   |      time      | temperature  | humidity  |
 +-----------+----------------+--------------+-----------+
@@ -12450,7 +12487,6 @@ To query the maximum temperature of the device whose ID is `1234ABC` within a ti
 
 ```
 > select max(temperature) from sensor where device_id = '1234ABC' and time >= 1619076780000 and t
-
 ime <= 1619076800000; +---------+
 | EXPR$0  |
 +---------+
@@ -12495,7 +12531,6 @@ The SAMPLE BY clause cannot be used together with the GROUP BY or LIMIT OFFSET c
 
 ```
 > select region, max(avg_temperature) from (select device_id,region,time,avg(temperature) as avg_te
-
 mperature from sensor where time >= 1619076780000 and time <= 1619076800000 sample by 20s) group by region; +-----------+---------------------+
 |  region   |       EXPR$1        |
 +-----------+---------------------+
@@ -12508,7 +12543,6 @@ When you include the LIMIT OFFSET clause in SQL statements, we recommend that yo
 
 ```
 > select device_id,region, avg_temperature from (select device_id,region,time,avg(temperature) as a
-
 vg_temperature from sensor where time >= 1619076780000 and time <= 1619076800000 sample by 20s) lim it 1 offset 1; +------------+-----------+------------------+
 | device_id  |  region   | avg_temperature  |
 +------------+-----------+------------------+
@@ -12520,7 +12554,6 @@ Interpolate a specified value based on a specified time interval:
 
 ```
 > select device_id,region,time,avg(temperature) from sensor where time >= 1619076780000 and time <=
-
 1619076800000 sample by 20s fill 1; +------------+-----------+----------------+---------------------+
 | device_id  |  region   |      time      |       EXPR$3        |
 +------------+-----------+----------------+---------------------+
@@ -12537,7 +12570,6 @@ Interpolate the value that is collected within the previous time window:
 
 ```
 > select device_id,region,time,avg(temperature) from sensor where time >= 1619076780000 and time <=
-
 1619076800000 sample by 20s fill previous; +------------+-----------+----------------+---------------------+
 | device_id  |  region   |      time      |       EXPR$3        |
 +------------+-----------+----------------+---------------------+
@@ -14559,6 +14591,8 @@ For more information, see Apache Thrift Tutorial.
 
 **clients of earlier versions**
 
+**Description**
+
 This topic applies if your applications are reliant on the client of the HBase community edition and cannot be upgraded to the ApsaraDB for HBase client of the latest stable version by using the methods described in Install and upgrade ApsaraDB for HBase SDK for Java. You can modify the Maven dependency to upgrade your ApsaraDB for HBase client to a version that is compatible with the community edition.
 
 **Direct reliance of applications on the clients of the HBase community**
@@ -14740,6 +14774,8 @@ version of hbase-client. For more information, see the version mappings in the f
 ##### 4.1.1.4 Replace JAR files to upgrade your clients of earlier versions
 
 **earlier versions**
+
+**Description**
 
 This topic applies if your applications are reliant on the client of the HBase community edition and cannot be upgraded to the ApsaraDB for HBase client of the latest stable version by using the methods described in Install and upgrade ApsaraDB for HBase SDK for Java. You can replace the original JAR file with the ApsaraDB for HBase JAR file when you deploy the backend service. This way, you can upgrade your client to the ApsaraDB for HBase version that corresponds to the HBase community edition.
 

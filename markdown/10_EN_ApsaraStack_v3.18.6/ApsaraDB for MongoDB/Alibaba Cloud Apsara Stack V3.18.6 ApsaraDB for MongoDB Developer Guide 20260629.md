@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 223
 source_pdf: "7fe27903a11f45e8_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for MongoDB Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20MongoDB%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # ApsaraDB for MongoDB Developer Guide 20260629
@@ -364,6 +364,8 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 3.2 Use SDK
 
 #### 3.2.1 Install ApsaraDB for MongoDB SDK for Java
@@ -502,7 +504,7 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-or SDK for Python
+`}` or SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -774,9 +776,15 @@ func main() {
     response, err := client.DescribeAccounts(request)
     if err != nil {
         fmt.Print(err.Error())
+```
+
+`}`
+
+```
     fmt.Printf("response is %#v\n", response)
 ```
 
+`}`
 4. (Optional) Switch to HTTP or HTTPS.
 
 ```
@@ -866,6 +874,8 @@ response, err := client.DescribeAccounts(request) if err != nil {
     fmt.Print(err.Error())
 ```
 
+`}`
+
 **ClientError**
 
 If an error occurs in the SDK when you send a request and cannot be automatically handled, the SDK returns a `ClientError` . The following code provides an example on how to determine and obtain the error message in the `ClientError` :
@@ -896,6 +906,8 @@ response, err := Client.DescribeAccounts(request) if clientError, ok := err.(*er
     clientError.OriginError()
 ```
 
+`}`
+
 **ServerError**
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code provides an example on how to determine and obtain the error message in ServerError and Response:
@@ -924,7 +936,7 @@ response, err := Client.DescribeAccounts(request) if serverError, ok := err.(*er
     response.GetOriginHttpResponse()
 ```
 
-e API calls
+`}` e API calls
 
 ## 6 Use POP to make API calls
 
@@ -1055,7 +1067,7 @@ e API calls
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -1119,6 +1131,8 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 > **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
 > To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
@@ -1187,10 +1201,15 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
+`}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
 
 ```java
 package main import (
@@ -1231,8 +1250,15 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Proxy configuration**
 
@@ -1253,13 +1279,15 @@ iable.
 variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
 **SSL verification**
+
+**Description**
 
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
@@ -1300,7 +1328,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Only remote procedure call (RPC) APIs are supported. The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
+Only remote procedure call (RPC) APIs are supported.
+
+**Example**
+
+The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -1348,6 +1380,11 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -1663,7 +1700,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "OrderId":"2033xxxxxxxxxxxx"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>D8F1D721-6439-4257-A89C-F1E8E9C9624D</RequestId> <DBInstanceId>dds-bpxxxxxxxx</DBInstanceId> <OrderId>2033xxxxxxxxxxxx</OrderId>
@@ -1727,6 +1764,8 @@ Sample success responses `XML` format
   "OrderId": "20331066****"
 ```
 
+`}`
+
 #### 8.1.3 DeleteDBInstance
 
 Releases an ApsaraDB for MongoDB instance. The instance must be in the Running state when you call this operation. After an instance is released, all the data in the instance is deleted and cannot be restored. Proceed with caution. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource group and organization. For more information about the code, see SDK Description in Apsar aDB for MongoDB Developer Guide.
@@ -1768,6 +1807,8 @@ Sample success responses `XML` format
 ```json
   "RequestId": "72651AF9-7897-41A7-8B67-6C15C7F2****"
 ```
+
+`}`
 
 #### 8.1.4 CreateShardingDBInstance
 
@@ -1851,7 +1892,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "OrderId":"20331066****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>D8F1D721-6439-4257-A89C-F1E8E9C9****</RequestId> <DBInstanceId>dds-bp14ed961586****</DBInstanceId> <OrderId>20331066****</OrderId>
@@ -1906,6 +1947,8 @@ Sample success responses `XML` format
     "OrderId": "2034****"
 ```
 
+`}`
+
 #### 8.1.6 DeleteNode
 
 Deletes a shard or mongos node from an ApsaraDB for MongoDB sharded cluster instance. Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements: The instance is in the running state. The instance is a sharded cluster instance. The number of shard or mongos nodes in the instance is greater than 2.
@@ -1950,6 +1993,8 @@ Sample success responses `XML` format
     "RequestId": "9F9BDE64-BF30-41F3-BD29-C19CE4AB3404",
     "OrderId": "2033****"
 ```
+
+`}`
 
 #### 8.1.7 ModifyNodeSpec
 
@@ -2003,6 +2048,8 @@ Sample success responses `XML` format
     "RequestId": "EFFC5788-8BB5-41B5-9F15-9CFC5A0E8FCC"
 ```
 
+`}`
+
 ### 8.2 Region management
 
 #### 8.2.1 MigrateToOtherZone
@@ -2048,6 +2095,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
 ```
+
+`}`
 
 #### 8.2.2 DescribeRegions
 
@@ -2179,7 +2228,7 @@ Sample success responses `XML` format
        "ZoneId": "cn-hangzhou-g"
 ```
 
-`]` `]`
+`}` `]` `}` `}` `]` `}` `}`
 
 #### 8.2.3 MigrateAvailableZone
 
@@ -2226,6 +2275,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
 ```
+
+`}`
 
 ### 8.3 Resource management
 
@@ -2394,7 +2445,7 @@ B (maximum connections: 8000 IOPS: 14000)",
                                                     "InstanceClass":"dds.mongo.2xlarge"
 ```
 
-`]` `]` `]` `]` `]` `]`
+`}` `]` `}` `]` `}` `]` `}` `]` `}` `]` `}` `]` `}`
 
 ### 8.4 Connection management
 
@@ -2438,6 +2489,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "B6D17591-B48B-4D31-9CD6-9B9796B2270A"
 ```
+
+`}`
 
 #### 8.4.2 AllocateNodePrivateNetworkAddress
 
@@ -2487,6 +2540,8 @@ Sample success responses `XML` format
  "RequestId":"0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
 ```
 
+`}`
+
 #### 8.4.3 ReleasePublicNetworkAddress
 
 Call the ReleasePublicNetworkAddress operation to release the public endpoint of a MongoDB instance.
@@ -2531,7 +2586,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"1D6AFE36-1AF5-4DE4-A954-672159D4CC69"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>1D6AFE36-1AF5-4DE4-A954-672159D4CC69</RequestId>
@@ -2582,6 +2637,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "BA51E9D9-B14A-4542-B6E6-7DE00BECCB8C"
 ```
+
+`}`
 
 #### 8.4.5 DescribeShardingNetworkAddress
 
@@ -2711,7 +2768,7 @@ bp1shard12345678.mongodb.rds.aliyuncs.com</NetworkAddress>
                 "VswitchId": "vsw-bp1a2b3c4d5e6f7g"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "NetworkAddresses": {
@@ -2750,7 +2807,7 @@ bp1shard12345678.mongodb.rds.aliyuncs.com</NetworkAddress>
                 "ExpiredTime": "0"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 8.4.6 ModifyDBInstanceConnectionString
 
@@ -2794,6 +2851,8 @@ Sample success responses `XML` format
  "RequestId": "FF36A84C-0694-42D0-861D-C383E8E4FAAF"
 ```
 
+`}`
+
 #### 8.4.7 ReleasePrivateNetworkAddress
 
 Call the ReleasePrivateNetworkAddress operation to release the IPv6 private network address of a MongoDB replica set instance.
@@ -2836,7 +2895,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"F8CA8312-530A-413A-9129-F2BB32A8D404"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F8CA8312-530A-413A-9129-F2BB32A8D404</RequestId>
@@ -3051,7 +3110,7 @@ bpxxxxxxxx.mongodb.rds.aliyuncs.com</ConnectionDomain>
                 "IpAddressV6": "2001:0db8:85a3:0000:0000:8a2e:0370:7335"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 8.5.2 DescribeKernelReleaseNotes
 
@@ -3113,7 +3172,7 @@ Sample success responses `XML` format
                 "ReleaseNote":"Released the balancer limit for a sharded set"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 8.5.3 DescribeAvailableEngineVersion
 
@@ -3167,6 +3226,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "52507B6B-003B-47A3-A0A3-9FE992C7A243"
 ```
+
+`}`
 
 #### 8.5.4 DescribeDBInstances
 
@@ -3367,7 +3428,7 @@ Sample success responses `XML` format
           "NodeId": "d-d1n753c91603****"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "MongosList": [
@@ -3381,7 +3442,7 @@ Sample success responses `XML` format
           "NodeId": "s-d1n849c1788f****"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "Tags": [
@@ -3394,7 +3455,7 @@ Sample success responses `XML` format
           "Key": "test"
 ```
 
-`]` `]`
+`}` `]` `}` `]`
 
 #### 8.5.5 DescribeDBInstanceAttribute
 
@@ -3733,7 +3794,7 @@ OS:800,
                             "VpcCloudInstanceId": "s-bp1d8c262a158****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "ShardList": {
@@ -3754,7 +3815,7 @@ bp1af0680a9c6d3****.mongodb.rds.aliyuncs.com",
                             "MaxIOPS": 8000
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "ConfigserverList": {
@@ -3775,7 +3836,7 @@ s1730-pub.mongodb.rds.aliyuncs.com:3717",
                             "MaxIOPS": 8000
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "Tags": {
@@ -3789,7 +3850,7 @@ s1730-pub.mongodb.rds.aliyuncs.com:3717",
                             "Value": "api"
 ```
 
-`]` `},` `{`
+`}` `]` `}` `},` `{`
 
 ```json
                 "DBInstanceId": "dds-replicate-id****",
@@ -3819,7 +3880,7 @@ id****.mongodb.rds.aliyuncs.com",
                             "VPCCloudInstanceId": "vpc-bp1jk5vwkcri27qme****"
 ```
 
-`]` `]`
+`}` `]` `}` `}` `]` `}` `}`
 
 #### 8.5.6 DescribeRoleZoneInfo
 
@@ -3923,11 +3984,13 @@ Sample success responses `XML` format
     "RoleId": "83xxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "728B9A96-E262-4AE5-915E-3A51CCE2FDA9"
 ```
+
+`}`
 
 ### 8.6 Instance management
 
@@ -3973,6 +4036,8 @@ Sample success responses `XML` format
  "RequestId": "149C517D-B586-47BE-A107-8673E0ED77C6"
 ```
 
+`}`
+
 #### 8.6.2 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an ApsaraDB for MongoDB instance.
@@ -4016,6 +4081,8 @@ Sample success responses `XML` format
  "RequestId": "A9310426-C763-42A2-A3AD-70A8DA204531"
 ```
 
+`}`
+
 #### 8.6.3 ModifyDBInstanceDescription
 
 You can call this operation to change the name of an ApsaraDB for MongoDB instance.
@@ -4056,6 +4123,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "06F8F642-4009-4FFC-80C4-9D67DBF7B74E"
 ```
+
+`}`
 
 #### 8.6.4 SwitchDBInstanceHA
 
@@ -4147,6 +4216,8 @@ Sample success responses `XML` format
  "RequestId": "C4907B00-A208-4E0C-A636-AA85140E406C"
 ```
 
+`}`
+
 #### 8.6.6 UpgradeDBInstanceKernelVersion
 
 You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
@@ -4188,6 +4259,8 @@ Sample success responses `XML` format
  "RequestId": "27B9A130-7C4B-40D9-84E8-2FC081097AAC"
 ```
 
+`}`
+
 #### 8.6.7 ModifyDBInstanceNetExpireTime
 
 You can call this operation to extend the retention period of the classic network of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance must be running. The network of the instance is in hybrid access mode.
@@ -4228,6 +4301,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "459E7D5C-38DA-4E14-9C82-5B5AF693DBAB"
 ```
+
+`}`
 
 ### 8.7 Account management
 
@@ -4300,11 +4375,13 @@ Sample success responses `XML` format
                 "AccountName": "root"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "A806B0FC-CFCC-48D8-8AEC-34C892806B40"
 ```
+
+`}`
 
 #### 8.7.2 ResetAccountPassword
 
@@ -4354,6 +4431,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "06CBD06E-ABC9-4121-AB93-3C3820B3E7E6"
 ```
+
+`}`
 
 #### 8.7.3 ModifyAccountDescription
 
@@ -4441,7 +4520,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"F8CA8312-530A-413A-9129-F2BB32A8xxxx"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>F8CA8312-530A-413A-9129-F2BB32A8xxxx</RequestId>
@@ -4537,11 +4616,13 @@ Sample success responses `XML` format
     "NetType": "classic"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "D18F5B88-ACA6-470E-9493-384412EDD902"
 ```
+
+`}`
 
 #### 8.8.2 DescribeSecurityIps
 
@@ -4643,7 +4724,7 @@ Sample success responses `XML` format
         "SecurityIpGroupName": "default"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 8.8.3 ModifySecurityIps
 
@@ -4695,7 +4776,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"61B05CCF-EBAB-4BF3-BA67-D77256A721E2"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>61B05CCF-EBAB-4BF3-BA67-D77256A721E2</RequestId>
@@ -4743,6 +4824,8 @@ Sample success responses `XML` format
     "TDEStatus":"enabled",
     "RequestId":"F4DD0E29-361B-42F2-9301-B0048CCCE5D6"
 ```
+
+`}`
 
 #### 8.9.2 ModifyDBInstanceTDE
 
@@ -4856,6 +4939,8 @@ Sample success responses `XML` format
  "RequestId": "6D806B11-078F-4154-BF9F-844F56D08964"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -4931,6 +5016,8 @@ Sample success responses `XML` format
     "MinTLSVersion": "TLSv1.2",
     "CertSource": "aliyun"
 ```
+
+`}`
 
 ### 8.11 Audit logs
 
@@ -5027,7 +5114,7 @@ ns\\\" : \\\"123.test1\\\" }, \\\"result\\\": \\\"OK\\\" }",
             "AccountName":"root"
 ```
 
-`]`
+`}` `]`
 
 **Error codes**
 
@@ -5118,7 +5205,7 @@ hangzhou.aliyuncs.com/custinsxxxxxx/custinsxxxxxx_xxxxxx.csv",
     "LogSize": 98
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageNumber": 1,
@@ -5126,6 +5213,8 @@ hangzhou.aliyuncs.com/custinsxxxxxx/custinsxxxxxx_xxxxxx.csv",
  "RequestId": "F8CA8312-530A-413A-9129-F2BB32A8D404",
  "PageRecordCount": 1
 ```
+
+`}`
 
 **Error codes**
 
@@ -5178,6 +5267,8 @@ Sample success responses `XML` format
  "RequestId": "111E7B16-0A87-4CBA-B271-F34AD61E099F"
 ```
 
+`}`
+
 #### 8.11.4 ModifyAuditLogFilter
 
 You can call this operation to modify the type of audit logs to be collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances.
@@ -5218,6 +5309,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "E209BE2B-F264-4B9D-81F6-A5A5FB1FBF28"
 ```
+
+`}`
 
 #### 8.11.5 DescribeAuditLogFilter
 
@@ -5269,6 +5362,8 @@ Sample success responses `XML` format
  "RequestId": "D7C8BA0C-9350-487D-9B70-D69AF27FB1EB"
 ```
 
+`}`
+
 #### 8.11.6 ModifyAuditPolicy
 
 You can call this operation to enable or disable the audit log feature or set the retention period of audit logs for an ApsaraDB for MongoDB instance.
@@ -5309,6 +5404,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "DC04D812-F18D-4568-9B88-F260D9590116"
 ```
+
+`}`
 
 ### 8.12 Log management
 
@@ -5413,6 +5510,8 @@ Sample success responses `XML` format
     "Engine": "MongoDB"
 ```
 
+`}`
+
 #### 8.12.2 DescribeErrorLogRecords
 
 You can call this operation to view the error logs of an ApsaraDB for MongoDB instance.
@@ -5498,11 +5597,13 @@ Sample success responses `XML` format
                 "CreateTime":"2019-02-26T12:09:34Z"
 ```
 
-`]`
+`}` `]`
 
 ```
     },"Engine":"MongoDB"
 ```
+
+`}`
 
 #### 8.12.3 DescribeRunningLogRecords
 
@@ -5606,13 +5707,15 @@ now open)</Content>
 connections now open)"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": 1,
     "TotalRecordCount": 2,
     "RequestId": "45D2B592-DEBA-4347-BBF3-47FF6C97DBBC"
 ```
+
+`}`
 
 ### 8.13 Performance monitoring management
 
@@ -5710,7 +5813,7 @@ Sample success responses `XML` format
                     "Date":"2019-03-11T12:21:51Z"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
     "EndTime":"2019-03-11T12:30Z",
@@ -5719,6 +5822,8 @@ Sample success responses `XML` format
     "StartTime":"2019-03-11T12:20Z",
     "Engine":"MongoDB"
 ```
+
+`}`
 
 #### 8.13.2 DescribeDBInstanceMonitor
 
@@ -5760,6 +5865,8 @@ Sample success responses `XML` format
  "Granularity": 300,
  "RequestId": "EFD65226-08CC-4C4D-B6A4-CB3C382F67B0"
 ```
+
+`}`
 
 ### 8.14 Parameter management
 
@@ -5833,11 +5940,13 @@ Sample success responses `XML` format
     "ParameterName": "operationProfiling.slowOpThresholdMs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "B1BB6E0E-B4EF-4145-81FA-A07719860248"
 ```
+
+`}`
 
 #### 8.14.2 DescribeParameters
 
@@ -5981,7 +6090,7 @@ base profiler considers a query slow, default is 100.",
                 "ParameterName": "operationProfiling.slowOpThresholdMs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "3ADD0C7D-2D2A-4F15-88FF-E7AC9B9FDCC8",
@@ -6058,12 +6167,14 @@ e, default is 33554432(i.e. 32MB)",
                 "ParameterName": "setParameter.internalQueryExecMaxBlockingSortBytes"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "EngineVersion": "4.0",
     "Engine": "mongodb"
 ```
+
+`}`
 
 **Error codes**
 
@@ -6115,6 +6226,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "36923CC2-DDAB-4B48-A144-DA92C1E19537"
 ```
+
+`}`
 
 ### 8.15 Backup and recovery
 
@@ -6209,6 +6322,8 @@ Sample success responses `XML` format
  "RequestId": "644A359C-B871-4DD3-97B5-ED91EF5809C2"
 ```
 
+`}`
+
 #### 8.15.3 CreateBackup
 
 You can call this operation to manually back up an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
@@ -6251,6 +6366,8 @@ Sample success responses `XML` format
     "RequestId": "7016B12F-7F64-40A4-BAFF-013F02AC82FC",
     "BackupId": "5664xxxx"
 ```
+
+`}`
 
 #### 8.15.4 DescribeBackups
 
@@ -6353,7 +6470,7 @@ internal.example.com/xxxxx/xxxxx.tar.gz",
             "BackupStatus":"Success"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 8.15.5 RestoreDBInstance
 
@@ -6398,6 +6515,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "973DCB8F-56B3-4102-8777-3A90495927F7"
 ```
+
+`}`
 
 #### 8.15.6 DescribeBackupDBs
 
@@ -6462,13 +6581,15 @@ Sample success responses `XML` format
             "DBName":"mongodbtest"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageSize":"30",
     "RequestId":"1AF0AD89-ED4F-44AD-B65F-BFC1D5CD9455",
     "PageNumber":"1"
 ```
+
+`}`
 
 **Error codes**
 
@@ -6624,6 +6745,8 @@ le in the preceding step.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -6671,6 +6794,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

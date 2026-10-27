@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 147
 source_pdf: "e468a45feffc1fcb_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%20ACR/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Registry%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828
@@ -280,7 +280,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role.
 > <sts.aliyuns.com>: Replace it with your actual STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the act
@@ -300,6 +300,11 @@ ual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpo
@@ -325,9 +330,15 @@ e that is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the AccessKey pair assigned by STS to call API operations of cloud services. In the
 following code, the `CreateNamespace` API operation of Container Registry Advanced Edition is called.
 
@@ -369,6 +380,11 @@ ssKey ID, AccessKey secret, and security token that you obtained in the previous
         // The endpoint.
         config.endpoint = "cr.cn-shanghai.aliyuncs.com";
         return new com.aliyun.cr20181201.Client(config);
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         java.util.List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.cr20181201.Client client = Sample.createClient("accessKeyId", "acc
@@ -377,6 +393,8 @@ essKeySecret", "securityToken");
         // Obtain the return value of the API operation after the sample code is run.
         client.createNamespace(createNamespaceRequest);
 ```
+
+`}` `}`
 
 #### 1.2.5 Obtain the values of common headers
 
@@ -524,6 +542,8 @@ access-key-id>", "<your-access-key-secret>");
             e.printStackTrace();
 ```
 
+`}` `}`
+
 #### 1.3.2 SDK for Python
 
 ##### 1.3.2.1 Installation
@@ -666,6 +686,8 @@ catch (Exception e) {
     e.printStackTrace();
 ```
 
+`}`
+
 **Sample code**
 
 ```java
@@ -691,6 +713,11 @@ accessKeySecret> throws Exception {
         // The endpoint.
         config.endpoint = "cr-ee.registry.cn-wl-en****.inter.en****.shuguang.com";
         return new com.aliyun.cr20181201.Client(config);
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         java.util.List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.cr20181201.Client client = Sample.createClient<"accessKeyId",
@@ -702,6 +729,8 @@ accessKeySecret> throws Exception {
 e response data of the request:
         client.getNamespace(getNamespaceRequest);
 ```
+
+`}` `}`
 
 #### 1.4.2 SDK for Python
 
@@ -917,6 +946,11 @@ config := &openapi.Config{
   AccessKeyId: accessKeyId,
   // Your AccessKey secret.
   AccessKeySecret: accessKeySecret,
+```
+
+`}`
+
+```
 // The endpoint. config.Endpoint = tea.String("cr.cn-hangzhou.aliyuncs.com")
 ```
 
@@ -954,6 +988,7 @@ if err != nil {
   return
 ```
 
+`}`
 8. Obtain a response parameter by calling the corresponding property.
 In this example, the `requestId` response is obtained.
 
@@ -991,19 +1026,39 @@ func CreateClient (accessKeyId *string, accessKeySecret *string) (_result *cr201
     AccessKeyId: accessKeyId,
     // Your AccessKey secret.
     AccessKeySecret: accessKeySecret,
+```
+
+`}`
+
+```
   // The endpoint.
   config.Endpoint = tea.String("cr-ee.registry.cn-wl-en****.inter.en****.shuguang.com")
   _result = &cr20181201.Client{}
   _result, _err = cr20181201.NewClient(config)
   return _result, _err
+```
+
+`}`
+
+```
 func _main (args []*string) (_err error) {
   client, _err := CreateClient(tea.String("accessKeyId"),
 tea.String("accessKeySecret"))
   if _err != nil {
     return _err
+```
+
+`}`
+
+```
   getNamespaceRequest := &cr20181201.GetNamespaceRequest{
     InstanceId: tea.String("cri-pri****"),
     NamespaceName: tea.String("test12"),
+```
+
+`}`
+
+```
   // After you copy and run the sample code, use the following object to query the resp
 onse data of the request:
   _, _err = client.GetNamespace(getNamespaceRequest)
@@ -1018,6 +1073,8 @@ func main() {
   if err != nil {
     panic(err)
 ```
+
+`}` `}`
 
 ## 2 API references for Container Registry Standard Edition
 
@@ -1055,13 +1112,19 @@ Common request parameters must be included in all API requests.
 | x-acs-signature-nonce | A unique random number that is used to prevent replay attacks. A different random number is required for each request. | Yes |
 | x-acs-signature-method | The encryption method of the signature string. Set the value to HMAC-SHA1. | Yes |
 
+**Examples**
+
 ```
 GET /namespaces HTTP/1.1 Authorization: acs ACSbW2iBbyX1Pk9N:mp/6Wdr18V3qAc5gbgsqMe/iB0c Content-Length: 0 Content-Type: application/json;charset=utf-8 Date: Wed, 23 May 2018 12:00:01 GMT Host: cr.cn-hangzhou.aliyuncs.com Accept: application/json x-acs-version: 2016-06-07 x-acs-region-id: cn-hangzhou x-acs-signature-nonce: f63659d4-10ac-483b-99da-ea8fde61eae3 x-acs-signature-version: 1.0 x-acs-signature-method: HMAC-SHA1 User-Agent: cr-sdk-python/3.0.0 (Darwin/15.2.0/x86_64;2.7.10)
 ```
 
 **Common responses**
 
-Every response returns a unique request ID regardless of whether the call is successful. XML format:
+Every response returns a unique request ID regardless of whether the call is successful.
+
+**Examples**
+
+XML format:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <API operation name + Response>
@@ -1077,6 +1140,8 @@ JSON format:
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
     /* Returned data */
 ```
+
+`}`
 
 #### 2.1.2 Request syntax
 
@@ -1209,12 +1274,14 @@ None.
 
 **Request body**
 
-Request Body:
+Request Body: `{`
 
 ```json
     "Namespace": {
         "Namespace": "String",
 ```
+
+`}` `}`
 
 **Request body parameters**
 
@@ -1247,21 +1314,39 @@ None.
     "requestId":"String"
 ```
 
+`}`
+
+**Examples**
+
 **Sample requests**
 
-```json
+```
 PUT /namespace HTTP/1.1 <Common request headers>
+```
+
+`{`
+
+```json
     "Namespace": {
         "Namespace": "aliyun",
 ```
 
+`}` `}`
+
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "589EA3A1-9A67-4B82-95E5-11B1740178D1"
 ```
+
+`}`
 
 #### 2.2.2 DeleteNamespace
 
@@ -1309,10 +1394,16 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data":{},
     "requestId":"string"
 ```
+
+`}`
+
+**Examples**
 
 **Sample requests**
 
@@ -1322,11 +1413,18 @@ DELETE /namespace/[Namespace] HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "CBC151B2-C9B6-4393-9A7F-712C920F1DC7"
 ```
+
+`}`
 
 #### 2.2.3 UpdateNamespace
 
@@ -1352,11 +1450,15 @@ None.
 
 **Request body**
 
+`{`
+
 ```json
     "Namespace": {
         "AutoCreate": Boolean,
         "DefaultVisibility": String
 ```
+
+`}` `}`
 
 **Request body parameters**
 
@@ -1384,22 +1486,40 @@ None.
     "requestId": "string"
 ```
 
+`}`
+
+**Examples**
+
 **Sample requests**
 
-```json
+```
 POST /namespace/[Namespace] HTTP/1.1 <Common request headers>
+```
+
+`{`
+
+```json
     "Namespace": {
         "AutoCreate": false,
         "DefaultVisibility": "PUBLIC"
 ```
 
+`}` `}`
+
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
   "data": {},
     "requestId": "AL103117-2140-4A69-AC1A-BE69N040D01A"
 ```
+
+`}`
 
 #### 2.2.4 GetNamespace
 
@@ -1445,6 +1565,8 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
         "namespace": {
@@ -1455,11 +1577,13 @@ None.
             "namespaceStatus": "String"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "String"
 ```
+
+`}`
 
 **Response parameters**
 
@@ -1473,6 +1597,8 @@ None.
 | namespaceStatus | String | The state of the namespace. Valid values: NORMAL and DELETING. |
 |---|---|---|
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -1481,8 +1607,13 @@ GET /namespace/[Namespace] HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
         "namespace": {
             "namespace": "aliyun",
@@ -1492,11 +1623,13 @@ HTTP/1.1 200 OK <Common response headers>
             "namespaceStatus": "NORMAL"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "19228CE5-4905-4A24-A2C1-E774F32CCC31"
 ```
+
+`}`
 
 #### 2.2.5 GetNamespaceList
 
@@ -1540,19 +1673,28 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
         "namespace": [
+```
+
+`{`
+
+```json
                 "namespace": "String",
                 "authorizeType": "String",
                 "namespaceStatus": "String"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "string"
 ```
+
+`}`
 
 **Response body parameters**
 
@@ -1562,6 +1704,8 @@ None.
 | authorizeType | String | The permissions that the current account has on the namespace. You can acquire the permissions only in the Container Registry console. |
 | namespaceStatus | String | The state of the namespace. Valid values: NORMAL and DELETING. |
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -1570,16 +1714,26 @@ GET /namespace HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
         "namespaces": [
+```
+
+`{`
+
+```json
                 "namespace": "aliyun",
                 "authorizeType": "ADMIN",
                 "namespaceStatus": "NORMAL"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "namespace": "alibaba",
@@ -1587,11 +1741,13 @@ HTTP/1.1 200 OK <Common response headers>
                 "namespaceStatus": "NORMAL"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "AB034FC3-27E8-4E34-958B-0944E369270B"
 ```
+
+`}`
 
 ### 2.3 Image repository management
 
@@ -1633,6 +1789,8 @@ cannot exceed 2,000 characters in length. The Markdown syntax is supported.
 PUBLIC.
 ```
 
+`}` `}`
+
 **Request body parameters**
 
 | Parameter | Type | Required | Description |
@@ -1659,15 +1817,26 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {},
     "requestId": "String"
 ```
 
+`}`
+
+**Examples**
+
 **Sample requests**
 
-```json
+```
 PUT /repos HTTP/1.1 <Common request headers>
+```
+
+`{`
+
+```json
     "repo": {
         "RepoNamespace": "aliyun",
         "RepoName": "Tengine",
@@ -1675,10 +1844,17 @@ PUT /repos HTTP/1.1 <Common request headers>
         "RepoType": "PUBLIC"
 ```
 
+`}` `}`
+
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "80705201-FE46-4C08-AE30-FD50F5930993"
 ```
@@ -1733,6 +1909,10 @@ None.
     "requestId":"string"
 ```
 
+`}`
+
+**Examples**
+
 **Sample requests**
 
 ```
@@ -1741,11 +1921,18 @@ DELETE /repos/[RepoNamespace]/[RepoName] HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "7BF6D761-E7F8-454C-A235-983E5D183B4E"
 ```
+
+`}`
 
 #### 2.3.3 UpdateRepo
 
@@ -1779,6 +1966,8 @@ None.
         "RepoType": "String"
 ```
 
+`}` `}`
+
 **Request body parameters**
 
 | Parameter | Type | Required | Description |
@@ -1801,28 +1990,48 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {},
     "requestId": "String"
 ```
 
+`}`
+
+**Examples**
+
 **Sample requests**
 
-```json
+```
 POST /repos/[RepoNamespace]/[RepoName] HTTP/1.1 <Common request headers>
+```
+
+`{`
+
+```json
     "Repo": {
         "Summary": "Test repository",
         "Detail": "This is a test repository",
         "RepoType": "PRIVATE"
 ```
 
+`}` `}`
+
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "F3103017-5928-4A69-AC1A-BE69A840D01A"
 ```
+
+`}`
 
 #### 2.3.4 GetRepoTag
 
@@ -1862,6 +2071,8 @@ HTTP/1.1 200 OK
 
 **Response body**
 
+`{`
+
 ```json
     "imageUpdate": 1578625336000,
     "imageId": "6f08feb0be92c8ed2cc5b3e563313d2c08e468c1aa40d06908634884f236****",
@@ -1872,6 +2083,8 @@ HTTP/1.1 200 OK
     "imageCreate": 1577445220000,
     "status": "NORMAL"
 ```
+
+`}`
 
 **Response body parameters**
 
@@ -1886,6 +2099,8 @@ HTTP/1.1 200 OK
 | tag | String | The tag of the image. |
 | status | String | The status of the image. |
 
+**Examples**
+
 **Sample requests**
 
 ```json
@@ -1894,8 +2109,13 @@ GET /repos/RepoNamespace/RepoName/tags/Tag HTTP/1.1 Common request header { "Rep
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "imageUpdate": 1578625336000,
     "imageId": "6f08feb0be92c8ed2cc5b3e563313d2c08e468c1aa40d06908634884f236****",
     "requestId": "",
@@ -1905,6 +2125,8 @@ HTTP/1.1 200 OK <Common response headers>
     "imageCreate": 1577445220000,
     "status": "NORMAL"
 ```
+
+`}`
 
 #### 2.3.5 GetRepo
 
@@ -1972,11 +2194,13 @@ None.
         "repoAuthorizeType": String
 ```
 
-`},`
+`}` `},`
 
 ```json
 "requestId": string
 ```
+
+`}`
 
 **Response body parameters**
 
@@ -1997,6 +2221,8 @@ None.
 | repoAuthorizeType | String | The permission type of the repository. |
 |---|---|---|
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -2005,8 +2231,13 @@ GET /repos/[RepoNamespace]/[RepoName] HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
  "data":{
      "repo": {
        "summary": "test",
@@ -2030,11 +2261,13 @@ HTTP/1.1 200 OK <Common response headers>
        "repoAuthorizeType": "ADMIN"
 ```
 
-`},`
+`}` `},`
 
 ```json
  "requestId": "B21BE190-08BA-41B6-B8B5-CA4029F1CC58"
 ```
+
+`}`
 
 #### 2.3.6 GetRepoList
 
@@ -2135,6 +2368,8 @@ None.
 "requestId": String
 ```
 
+`}`
+
 **Response body parameters**
 
 | Parameter | Type | Description |
@@ -2157,6 +2392,8 @@ None.
 | pageSize | Integer | The number of entries returned per page. |
 | total | Integer | The total number of entries. |
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -2165,8 +2402,14 @@ GET /repos HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
+```
+HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK <Common response headers> "data": {
+"data": {
     "total": 2,
     "repos": [{
         "summary": "Test1",
@@ -2218,6 +2461,8 @@ HTTP/1.1 200 OK <Common response headers> "data": {
 ```json
 "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
 ```
+
+`}`
 
 #### 2.3.7 GetRepoListByNamespace
 
@@ -2317,6 +2562,8 @@ None.
 "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
 ```
 
+`}`
+
 **Response body parameters**
 
 | Parameter | Type | Description |
@@ -2341,6 +2588,8 @@ None.
 | PageSize | Integer | The number of entries returned per page. |
 | total | Integer | The total number of entries. |
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -2349,8 +2598,14 @@ GET /repos/[RepoNamespace] HTTP/1.1 <Common request headers>
 
 **Sample responses**
 
+```
+HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK <Common response headers> "data": {
+"data": {
     "total": 2,
     "repos": [{
         "summary": "Test1",
@@ -2402,6 +2657,8 @@ HTTP/1.1 200 OK <Common response headers> "data": {
 ```json
 "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
 ```
+
+`}`
 
 #### 2.3.8 GetRepoTags
 
@@ -2475,6 +2732,8 @@ None.
 "requestId": "9AFB10K1-2301-4B00-A817-932492040126"
 ```
 
+`}`
+
 **Response body parameters**
 
 | Parameter | Type | Description |
@@ -2498,8 +2757,13 @@ GET /repos/[RepoNamespace]/[RepoName]/tags HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
    "total": 2,
    "pageSize": 30,
    "page": 1,
@@ -2526,6 +2790,8 @@ HTTP/1.1 200 OK <Common response headers>
 ```json
  "requestId": "9AFB52D3-6631-4B00-A857-932492097726"
 ```
+
+`}`
 
 ### 2.4 Image management
 
@@ -2577,10 +2843,16 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data":{},
     "requestId":"string"
 ```
+
+`}`
+
+**Examples**
 
 **Sample requests**
 
@@ -2590,11 +2862,18 @@ DELETE /repos/[RepoNamespace]/[RepoName]/tags/[Tag] HTTP/1.1 <Common request hea
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "7BF6D761-E7F8-454C-A235-983E5D183B4E"
 ```
+
+`}`
 
 #### 2.4.2 GetImageManifest
 
@@ -2642,6 +2921,8 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
   "data": {
     "manifest": {
@@ -2654,11 +2935,13 @@ None.
       "schemaVersion": "Integer"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "requestId": "String"
 ```
+
+`}`
 
 **Response body parameters**
 
@@ -2672,6 +2955,8 @@ None.
 | tag | String | The tag of the image. |
 | schemaVersion | Integer | The schema version. A value of 1 indicates manifest v2 and schema 1. A value of 2 indicates manifest v2 and schema 2. |
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -2680,8 +2965,13 @@ GET /repos/[RepoNamespace]/[RepoName]/tags/[Tag]/manifest HTTP/1.1 <Common reque
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
   "data": {
     "manifest": {
       "name": "testNamespace/testRepo",
@@ -2698,6 +2988,11 @@ HTTP/1.1 200 OK <Common response headers>
           "config": {},
           "docker_version": "17.12.0-ce",
           "architecture": "amd64"
+```
+
+`}`
+
+```json
       }],
       "signatures": [{
         "signature": "e",
@@ -2716,11 +3011,13 @@ HTTP/1.1 200 OK <Common response headers>
       "schemaVersion": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
   "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
 ```
+
+`}`
 
 #### 2.4.3 GetImageLayer
 
@@ -2770,6 +3067,8 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
       "image": {
@@ -2780,11 +3079,13 @@ None.
         "region": "String"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "String"
 ```
+
+`}`
 
 **Response body parameters**
 
@@ -2798,6 +3099,8 @@ None.
 | region | String | The region where the image repository is deployed. |
 |---|---|---|
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -2806,8 +3109,13 @@ GET /repos/[RepoNamespace]/[RepoName]/tags/[Tag]/layers HTTP/1.1 <Common request
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
       "image": {
         "repoNamespace": "testNamespace",
@@ -2835,11 +3143,13 @@ HTTP/1.1 200 OK <Common response headers>
         "region": "cn-hangzhou"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
 ```
+
+`}`
 
 ### 2.5 Trigger management
 
@@ -2868,14 +3178,21 @@ None.
 
 **Request body**
 
-```json
+```
 Request Body:
+```
+
+`{`
+
+```json
     "Webhook": {
         "WebhookName": "String" This parameter is required.
         "WebhookUrl": "String" This parameter is required.
         "TriggerType": "String" This parameter is required. Valid values: ALL,
 TAG_REG_EXP, and TAG_LIST.
 ```
+
+`}` `}`
 
 **Request body parameters**
 
@@ -2899,6 +3216,8 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
         "webhookId": "String"
@@ -2910,20 +3229,36 @@ None.
     "requestId": "String"
 ```
 
+`}`
+
+**Examples**
+
 **Sample requests**
 
-```json
+```
 PUT /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1 <Common request headers>
+```
+
+`{`
+
+```json
     "Webhook": {
         "WebhookName": "MyTrigger",
         "WebhookUrl": "https://www.****.com",
         "TriggerType": "ALL"
 ```
 
+`}` `}`
+
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
         "webhookId": "39762"
 ```
@@ -2933,6 +3268,8 @@ HTTP/1.1 200 OK <Common response headers>
 ```json
     "requestId": "3666F8EA-1468-4BEA-883B-FC60A651A609"
 ```
+
+`}`
 
 #### 2.5.2 DeleteRepoWebhook
 
@@ -2980,10 +3317,16 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {},
     "requestId": "String"
 ```
+
+`}`
+
+**Examples**
 
 **Sample requests**
 
@@ -2993,8 +3336,13 @@ DELETE /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1 <Common r
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {},
     "requestId": "639F1195-56D9-49B7-BC47-B3BFCC9ED1C9"
 ```
@@ -3040,9 +3388,16 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
         "webhooks":[
+```
+
+`{`
+
+```json
                 "webhookId": Long,
                 "triggerTag": String,
                 "webhookName": String,
@@ -3050,11 +3405,13 @@ None.
                 "webhookUrl": String
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": String
 ```
+
+`}`
 
 **Response body parameters**
 
@@ -3068,6 +3425,8 @@ None.
 | syncTaskId | String | The ID of the synchronization task. |
 | RequestId | String | The unique ID of the request. |
 
+**Examples**
+
 **Sample requests**
 
 ```
@@ -3076,10 +3435,20 @@ GET /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
         "webhooks":[
+```
+
+`{`
+
+```json
                 "webhookId": 39726,
                 "triggerTag": "",
                 "webhookName": "justForTest",
@@ -3087,11 +3456,13 @@ HTTP/1.1 200 OK <Common response headers>
                 "webhookUrl": "https://www.****.com"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId": "A86AB63A-758B-4FD9-9CB1-1421083A2EF5"
 ```
+
+`}`
 
 #### 2.5.4 UpdateRepoWebhook
 
@@ -3119,6 +3490,8 @@ None.
 
 **Request body**
 
+`{`
+
 ```json
    "Webhook": {
       "WebhookName": "String",
@@ -3127,6 +3500,8 @@ None.
       "TriggerUrl": "String",
       "TriggerType": "String"
 ```
+
+`}` `}`
 
 **Request body parameters**
 
@@ -3149,6 +3524,8 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
 ```
@@ -3159,14 +3536,23 @@ None.
     "requestId": "String"
 ```
 
+`}`
+
 **Response body parameters**
 
 None.
 
+**Examples**
+
 **Sample requests**
 
-```json
+```
 POST /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1 <Common request headers>
+```
+
+`{`
+
+```json
    "Webhook": {
       "WebhookName": "justForTest",
       "WebhookUrl": "https://www.****.com",
@@ -3175,10 +3561,17 @@ POST /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1 <Common req
       "TriggerType": "ALL"
 ```
 
+`}` `}`
+
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
 ```
 
@@ -3187,6 +3580,8 @@ HTTP/1.1 200 OK <Common response headers>
 ```json
     "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
 ```
+
+`}`
 
 ### 2.6 Access credential management
 
@@ -3238,6 +3633,8 @@ None.
 
 **Response body**
 
+`{`
+
 ```json
     "data": {
         "authorizationToken": "String",
@@ -3251,6 +3648,8 @@ None.
     "requestId": "String"
 ```
 
+`}`
+
 **Response body parameters**
 
 | Parameter | Type | Description |
@@ -3258,6 +3657,8 @@ None.
 | authorizationToken | String | The token that you use to log on to the registry. |
 | tempUserName | String | The username that you use to log on to the registry. |
 | expireDate | Long | The timestamp when the token expires. Unit: milliseconds. |
+
+**Examples**
 
 **Sample requests**
 
@@ -3267,8 +3668,13 @@ Get /tokens HTTP/1.1 <Common request headers>
 
 **Sample success responses**
 
-```json
+```
 HTTP/1.1 200 OK <Common response headers>
+```
+
+`{`
+
+```json
     "data": {
         "authorizationToken": "eyJ0aW1lIjoiMTUyNjU0OTc5:0705733****",
         "tempUserName": "cr_temp_user",
@@ -3280,6 +3686,8 @@ HTTP/1.1 200 OK <Common response headers>
 ```json
     "requestId": "94E89857-B994-44B6-9C4F-DBD200E9E272"
 ```
+
+`}`
 
 ## 3 API references for Container Registry Advanced Edition
 
@@ -3314,6 +3722,8 @@ Creates a namespace.
 | RequestId | String | BC648259-91A7- 4502-BED3- EDF64361FA83 | The ID of the request. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3328,12 +3738,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <IsSuccess>true</IsSuccess> <Reques
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "IsSuccess" : true,
   "RequestId" : "BC648259-91A7-4502-BED3-EDF64361FA83",
   "Code" : "success"
 ```
+
+`}`
 
 #### 3.1.2 DeleteNamespace
 
@@ -3360,6 +3777,8 @@ Deletes a namespace.
 | IsSuccess | Boolean | true | Indicates whether the API call is successful. Valid values: true : The request is successful. false : The request fails. |
 | RequestId | String | BA08C185-8F76- 48D7-ACB3- BA11BF2778F9 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3372,13 +3791,15 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>BA08C185-8F76-48D7-ACB3-BA11BF2778F9</RequestId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess":true,
     "RequestId":"BA08C185-8F76-48D7-ACB3-BA11BF2778F9",
     "Code":"success"
 ```
+
+`}`
 
 #### 3.1.3 UpdateNamespace
 
@@ -3415,13 +3836,15 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>90B8475C-C066-4B92-946E-4D0DECB514E8</RequestId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess":true,
     "RequestId":"90B8475C-C066-4B92-946E-4D0DECB514E8",
     "Code":"success"
 ```
+
+`}`
 
 #### 3.1.4 GetNamespace
 
@@ -3453,6 +3876,8 @@ Queries details about a namespace.
 | NamespaceSta tus | String | NORMAL | The status of the namespace. |
 | RequestId | String | E4BC9E21-8AA5- 4582-83C1- C1209AB8196F | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3465,7 +3890,7 @@ Sample success responses `XML` format
 <AutoCreateRepo>true</AutoCreateRepo> <Code>success</Code> <DefaultRepoType>PUBLIC</DefaultRepoType> <InstanceId>cri-pri****</InstanceId> <IsSuccess>true</IsSuccess> <NamespaceName>test</NamespaceName> <NamespaceId>crn-tiw8t3f8i5lta4uv</NamespaceId> <NamespaceStatus>NORMAL</NamespaceStatus> <RequestId>E4BC9E21-8AA5-4582-83C1-C1209AB8196F</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "AutoCreateRepo": "true",
@@ -3478,6 +3903,8 @@ Sample success responses `XML` format
     "NamespaceStatus": "NORMAL",
     "RequestId": "E4BC9E21-8AA5-4582-83C1-C1209AB8196F"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3521,6 +3948,8 @@ Queries the namespaces.
 | RequestId | String | B7E5FCA5-55ED- 451C-9649- 0BB2B93387D0 | The ID of the request. |
 | TotalCount | String | 1 | The total number of returned entries. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3563,6 +3992,8 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
+`}`
+
 ### 3.2 Image repository management
 
 #### 3.2.1 CreateRepository
@@ -3594,6 +4025,8 @@ Creates an image repository.
 | RepoId | String | crr- xwvi3osiy4ff**** | The ID of the image repository. |
 | RequestId | String | 886FB272-15C3- 44FC-AA54- F4ABD5B93A28 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3606,7 +4039,7 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>886FB272-15C3-44FC-AA54-F4ABD5B93A28</RequestId> <RepoId>crr-xwvi3osiy4ff****</RepoId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess": true,
@@ -3614,6 +4047,8 @@ Sample success responses `XML` format
     "RepoId": "crr-xwvi3osiy4ff****",
     "Code": "success"
 ```
+
+`}`
 
 #### 3.2.2 DeleteRepository
 
@@ -3640,6 +4075,8 @@ Deletes an image repository.
 |---|---|---|---|
 | RequestId | String | 47DD9D56-09A0- 4C52-B520- C3805DBAB96B | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3652,13 +4089,15 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>47DD9D56-09A0-4C52-B520-C3805DBAB96B</RequestId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess": true,
     "RequestId": "47DD9D56-09A0-4C52-B520-C3805DBAB96B",
     "Code": "success"
 ```
+
+`}`
 
 #### 3.2.3 UpdateRepository
 
@@ -3687,6 +4126,8 @@ Updates an image repository.
 | IsSuccess | Boolean | true | Indicates whether the API call is successful. Valid values: true : The request is successful. false : The request fails. |
 | RequestId | String | CC43EC6B-0DD4- 40AE-8811- B0519617051A | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3705,12 +4146,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateRepositoryResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "Code" : "success",
   "IsSuccess" : true,
   "RequestId" : "CC43EC6B-0DD4-40AE-8811-B0519617051A"
 ```
+
+`}`
 
 #### 3.2.4 ListRepository
 
@@ -3756,6 +4204,8 @@ Queries image repositories.
 | RequestId | String | 5241C090-DA69- 4B0F-8E3F- 2F24FDE1110E | The ID of the request. |
 | TotalCount | String | 1 | The total number of returned entries. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3780,7 +4230,7 @@ Sample success responses `XML` format
 </Repositories> <IsSuccess>true</IsSuccess> <TotalCount>1</TotalCount> <PageSize>30</PageSize> <RequestId>5241C090-DA69-4B0F-8E3F-2F24FDE1110E</RequestId> <PageNo>1</PageNo> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "Repositories": {
@@ -3807,6 +4257,8 @@ Sample success responses `XML` format
     "PageNo": 1,
     "Code": "success"
 ```
+
+`}`
 
 #### 3.2.5 GetRepository
 
@@ -3850,6 +4302,8 @@ Queries details about an image repository.
 | Summary | String | Automatically created repository | The summary of the repository. |
 | TagImmutabili ty | Boolean | true | Indicates whether the feature of image tag immutability is enabled. Valid values: true : The feature of image tag immutability is enabled. false : The feature of image tag immutability is disabled. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3862,7 +4316,7 @@ Sample success responses `XML` format
 <RepoNamespaceName>test</RepoNamespaceName> <IsSuccess>true</IsSuccess> <RequestId>915E6734-3E50-4640-8DBA-126D2D94DE29</RequestId> <InstanceId>cri-pri****</InstanceId> <CreateTime>1570759546000</CreateTime> <RepoName>test</RepoName> <Code>success</Code> <TagImmutability>true</TagImmutability> <RepoBuildType>MANUAL</RepoBuildType> <ModifiedTime>1570759546100</ModifiedTime> <RepoType>PRIVATE</RepoType> <RepoStatus>NORMAL</RepoStatus> <Summary>Automatically created repository</Summary> <RepoId>crr-l5eoubonp0l****</RepoId> <Detail>test</Detail>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RepoNamespaceName": "test",
@@ -3881,6 +4335,8 @@ Sample success responses `XML` format
     "RepoId": "crr-l5eoubonp0l****",
     "Detail": "test"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3929,6 +4385,8 @@ Queries images in a repository.
 | RequestId | String | 031572FA-7D8F- 4C05-B790- 1071E0E05DE6 | The ID of the request. |
 | TotalCount | String | 1 | The total number of returned entries. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3973,6 +4431,8 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
+`}`
+
 #### 3.3.2 DeleteRepoTag
 
 Deletes an image from a repository.
@@ -3997,6 +4457,8 @@ Deletes an image from a repository.
 |---|---|---|---|
 | RequestId | String | 96E66B3A-C81A- 48BE-ACD6- C0AB1F9313C0 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4009,13 +4471,15 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>96E66B3A-C81A-48BE-ACD6-C0AB1F9313C0</RequestId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess": true,
     "RequestId": "96E66B3A-C81A-48BE-ACD6-C0AB1F9313C0",
     "Code": "success"
 ```
+
+`}`
 
 #### 3.3.3 GetRepoTag
 
@@ -4073,8 +4537,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetRepoTagResponse>
 
 `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "Status" : "NORMAL",
   "ImageCreate" : 1572839125000,
   "ImageSize" : 27107966,
@@ -4086,6 +4555,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "IsSuccess" : true,
   "ImageId" : "45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****"
 ```
+
+`}`
 
 #### 3.3.4 GetRepoTagLayers
 
@@ -4117,6 +4588,8 @@ Queries the information about image layers of an image that is corresponding to 
 | RequestId | String | D39D7151-0299- 47E3-B948- E49E1EA8D406 | The ID of the request. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4134,12 +4607,17 @@ Sample success responses `XML` format
 </Layers> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess":true,
     "RequestId":"D39D7151-0299-47E3-B948-E49E1EA8D406",
     "Layers":[
+```
+
+`{`
+
+```json
 "BlobDigest":"sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e",
             "LayerInstruction":"COPY",
             "BlobSize":23655489,
@@ -4147,11 +4625,13 @@ Sample success responses `XML` format
             "LayerIndex":0
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Code":"success"
 ```
+
+`}`
 
 #### 3.3.5 GetRepoTagManifest
 
@@ -4201,6 +4681,8 @@ Queries the manifest information of an image tag.
 | Tag | String | master | The tag of the image. |
 |---|---|---|---|
 | RequestId | String | D39D7151-0299- 47E3-B948- E49E1EA8D406 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -4292,11 +4774,13 @@ Sample success responses `XML` format
             "MediaType": "application/vnd.docker.container.image.v1+json"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Code": "success"
 ```
+
+`}`
 
 #### 3.3.6 CreateRepoTag
 
@@ -4324,6 +4808,8 @@ Creates an image tag based on an existing image tag in an image repository.
 | IsSuccess | Boolean | true | Indicates whether the API call is successful. Valid values: true : The request is successful. false : The request fails. |
 | RequestId | String | C4C7DD0C-C9D6- 437A-A7EE- 8BY***** | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4343,6 +4829,8 @@ Sample success responses `XML` format
     "RequestId": "C4C7DD0C-C9D6-437A-A7EE-8BY*****",
     "Code": "success"
 ```
+
+`}`
 
 ### 3.4 Trigger management
 
@@ -4374,6 +4862,8 @@ Updates a trigger for a repository.
 | IsSuccess | Boolean | true | Indicates whether the API call is successful. Valid values: true : The request is successful. false : The request fails. |
 | RequestId | String | 32535049-ED91- 4589-98C0- 7C88766EDF1F | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4386,13 +4876,15 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>32535049-ED91-4589-98C0-7C88766EDF1F</RequestId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess":true,
     "RequestId":"32535049-ED91-4589-98C0-7C88766EDF1F",
     "Code":"success"
 ```
+
+`}`
 
 #### 3.4.2 ListRepoTrigger
 
@@ -4424,6 +4916,8 @@ Queries the triggers of a repository.
 | TriggerType | String | ALL | The type of the trigger. Valid values: ALL : a trigger that supports both tags and regular expressions. TAG LISTTAG : a tag-based trigger. _ TAG REG EXP : a regular expression- _ _ based trigger. |
 | TriggerUrl | String | https://www.test.co m | The URL of the trigger. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4443,7 +4937,7 @@ Sample success responses `XML` format
 </Triggers> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess": true,
@@ -4462,6 +4956,8 @@ Sample success responses `XML` format
 ```json
     "Code": "success"
 ```
+
+`}`
 
 #### 3.4.3 CreateRepoTrigger
 
@@ -4493,6 +4989,8 @@ Creates a trigger for a repository.
 | TriggerId | String | crw- 0z4pf81pgz35**** | The ID of the trigger. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4505,7 +5003,7 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>B79F5E0E-8770-407D-BCB6-ECF4BA9C****</RequestId> <TriggerId>crw-0z4pf81pgz35****</TriggerId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess": true,
@@ -4513,6 +5011,8 @@ Sample success responses `XML` format
     "TriggerId": "crw-0z4pf81pgz35****",
     "Code": "success"
 ```
+
+`}`
 
 #### 3.4.4 DeleteRepoTrigger
 
@@ -4538,6 +5038,8 @@ Deletes a trigger of an image repository.
 | IsSuccess | Boolean | true | Indicates whether the API call is successful. Valid values: true : successful false : failed |
 | RequestId | String | 85180AE4-9A57- 48F8-9EF9- 68ECCE54B552 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4550,7 +5052,7 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <RequestId>85180AE4-9A57-48F8-9EF9-68ECCE54B552</RequestId> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess":true,
@@ -4587,6 +5089,8 @@ Obtains the temporary account and token that you use to log on to a Container Re
 | RequestId | String | E069EB86-E6AD- 4A98-ADDE- 0E993390239A | The ID of the request. |
 | TempUsernam e | String | temp user cr _ _ | The username that is used to log on to the instance. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4599,7 +5103,7 @@ Sample success responses `XML` format
 <IsSuccess>true</IsSuccess> <AuthorizationToken>shaunadadakks:uuczxnjcyeyhdjadkkajsjd****</AuthorizationToken> <TempUsername>temp_user_cr</TempUsername> <RequestId>E069EB86-E6AD-4A98-ADDE-0E993390239A</RequestId> <ExpireTime>1571242083000</ExpireTime> <Code>success</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "IsSuccess": true,
@@ -4609,6 +5113,8 @@ Sample success responses `XML` format
     "ExpireTime": 1571242083000,
     "Code": "success"
 ```
+
+`}`
 
 #### 3.5.2 ResetLoginPassword
 
@@ -4633,6 +5139,8 @@ Resets the logon password of a Container Registry instance.
 | IsSuccess | Boolean | true | Indicates whether the API call is successful. Valid values: true : successful false : failed |
 | RequestId | String | EB9C5722-51E2- 4497-A573- 575B0CA5CE0C | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4652,6 +5160,8 @@ Sample success responses `XML` format
     "RequestId":"EB9C5722-51E2-4497-A573-575B0CA5CE0C",
     "Code":"success"
 ```
+
+`}`
 
 ### 3.6 Artifact build
 
@@ -4688,6 +5198,8 @@ This operation uses common request headers and does not have any special request
 | RequestId | String | RQ1234567890abc def | 1234567890 |
 | BuildTaskId | String | i2ai-1yu**** | The ID of the artifact build task. |
 
+**Examples**
+
 Request example
 
 ```
@@ -4703,6 +5215,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "BuildTaskId":"i2a-1yu****",
  "Code":"0"
 ```
+
+`}`
 
 #### 3.6.2 CreateArtifactBuildRule
 
@@ -4735,13 +5249,15 @@ This operation uses only common request headers. For more information, see Commo
 | RequestId | String | RQ1234567890abc def | 1234567890 |
 | BuildRuleId | String | crabr- ly77w5i3t31f**** | The build rule ID. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=CreateArtifactBuildRule &RegionId=cn-wl-en**** &InstanceId=cri-pri**** &ScopeType=REPOSITORY &ScopeId=crr-pmajihou6cg0**** &ArtifactType=ACCELERATED_IMAGE &<Common request parameters>
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
  "IsSuccess":true,
@@ -4749,6 +5265,8 @@ Response example `JSON` format
  "RequestId":"RQ1234567890abcdef",
  "Code":"0"
 ```
+
+`}`
 
 #### 3.6.3 GetArtifactBuildTask
 
@@ -4793,6 +5311,8 @@ This operation uses common request headers. No special request headers are requi
 | -Version | String | 1 | The version number. |
 | -ArtifactType | String | EcsImage | The artifact type. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -4827,6 +5347,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "ArtifactType":"EcsImage",
   "RepoId":"1234567890"
 ```
+
+`}` `}`
 
 #### 3.6.4 ListArtifactBuildTask
 
@@ -4922,6 +5444,8 @@ This operation uses only common request headers. For more information, see Commo
 | Parameters | Struct | { "Status": { "Description": " (Required) The status of the Ecs instance.", "Type": "String" } } | The parameter information. |
 | - ImageIndexOn ly | Boolean | false | Indicates that image data is accessed only by index and does not include other metadata or processing logic. |
 
+**Examples**
+
 Request example
 
 ```
@@ -4947,6 +5471,8 @@ HTTP/1.1 200 OK Content-Type: application/json
  "ScopeId":"crr-nyrh2oko32xb****",
  "Code":"0"
 ```
+
+`}`
 
 #### 3.6.6 DeleteArtifactBuildRule
 
@@ -4980,6 +5506,8 @@ This operation uses common request headers. No special request headers are requi
 | IsSuccess | Boolean | true | Indicates whether the request was successful. |
 | RequestId | String | RQ1234567890abc def | The request ID. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -4988,12 +5516,19 @@ http(s)://[Endpoint]/?Action=DeleteArtifactBuildRule &RegionId=cn-wl-en**** &Ins
 
 Sample success response `JSON` format
 
-```json
+```
 HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
  "IsSuccess":true,
  "RequestId":"RQ1234567890abcdef",
  "Code":"0"
 ```
+
+`}`
 
 ## 4 Appendixes
 
@@ -5043,6 +5578,8 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495** **:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -5110,6 +5647,8 @@ le in the preceding step.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -5157,6 +5696,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

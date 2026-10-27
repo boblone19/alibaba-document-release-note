@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 186
 source_pdf: "62045049ee826d31_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Developer Guide 20251202.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1Kubernetes%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020251202.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Container Service for Kubernetes Developer Guide 20251202
@@ -228,7 +228,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace the field with the Alibaba Cloud Resource Name (ARN) of the RAM role that is assigned to the current user.
 > <sts.aliyuns.com>: Replace the field with the actual endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the act
@@ -248,6 +248,11 @@ ual values.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of STS. The format of an en
@@ -273,9 +278,15 @@ step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call the `DescribeUserQuota` operation of Container
 Service. The following code provides an example:
 
@@ -315,6 +326,8 @@ public class DescribeUserQuota {
         } catch (ClientException e) {
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 #### 1.1.5 Obtain the values of common header parameters
 
@@ -488,7 +501,7 @@ catch (ServerException e) {
     e.printStackTrace();
 ```
 
-Handle client errors
+`}` Handle client errors
 
 ```java
 catch (ClientException e) {
@@ -496,6 +509,8 @@ catch (ClientException e) {
     System.out.println("ErrMsg:" + e.getErrMsg());
     System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}`
 
 **Sample code**
 
@@ -527,6 +542,8 @@ rinted.
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 #### 1.2.3 Use CommonRequest
 
@@ -921,6 +938,7 @@ if err != nil {
   return
 ```
 
+`}`
 7. Obtain a response parameter.
 The following example shows how to obtain the RequestId parameter.
 
@@ -956,10 +974,17 @@ cessKeySecret>")
   if err != nil {
     fmt.Println(err)
     return
+```
+
+`}`
+
+```
   // Print response parameters as required. In this example, the RequestId parameter is
 printed.
   fmt.Println(response.RequestId)
 ```
+
+`}`
 
 #### 1.4.3 Use CommonRequest
 
@@ -1013,6 +1038,11 @@ ss-key-secret>", "<your-sts-token>")
  client, err := sdk.NewClientWithOptions("cn-qingdao-env8e-d01", config, credential)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  /**
   * Configure an HTTP proxy in the following way based on your business requirements:
   * client.SetHttpProxy("<http://192.168.XX.XX:33XX>")
@@ -1067,8 +1097,15 @@ Header parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-resourceg
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   fmt.Print(err.Error())
+```
+
+`}`
+
+```
  fmt.Printf(response.GetHttpContentString())
 ```
+
+`}`
 
 **Configure a proxy**
 
@@ -1089,7 +1126,7 @@ variable.
 ent variable.
 ```
 
-Configure a proxy on the client. Sample code:
+`}` Configure a proxy on the client. Sample code:
 
 ```
 // The proxy that is configured on the client take precedence over the proxy that is configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -1190,6 +1227,8 @@ JSON format `{`
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
     /* Return Result Data */
 ```
+
+`}`
 
 #### 2.1.3 Request syntax
 
@@ -1509,7 +1548,7 @@ POST /clusters HTTP/1.1 Common request headers
     "worker\_vswitch\_ids": vsw-2ze3ds0mdip0hdz8i****
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <cluster_id>cb95aa626a47740afbf6aa099b650****</cluster_id> <task_id>T-5a54309c80282e39ea00002f</task_id> <request_id>687C5BAA-D103-4993-884B-C35E4314A1E1</request_id>
@@ -1522,6 +1561,8 @@ Sample success responses `XML` format
     "task_id": "T-5a54309c80282e39ea00002f",
     "request_id": "687C5BAA-D103-4993-884B-C35E4314A1E1"
 ```
+
+`}`
 
 #### 2.2.2 Delete a cluster
 
@@ -1560,7 +1601,7 @@ DELETE /clusters/[ClusterId] HTTP/1.1 Common request headers
     "ClusterId": "c905d1364c2dd4b6284a3f41790c4****"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -1609,7 +1650,7 @@ GET /k8s/[ClusterId]/user_config HTTP/1.1 Common request headers
     "ClusterId": "c5b5e80b0b64a4bf6939d2d8fbbc5****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <expiration>2024-03-10T09:56:17Z</expiration> <config>apiVersion: v1****</config>
@@ -1621,6 +1662,8 @@ Sample success responses `XML` format
     "expiration": "2024-03-10T09:56:17Z",
     "config": "apiVersion: v1****"
 ```
+
+`}`
 
 #### 2.2.4 Query
 
@@ -1842,6 +1885,8 @@ c8a16bf0****",
             "maintenance_time": "03:00:00Z"
 ```
 
+`}` `}` `}`
+
 ##### 2.2.4.2 DescribeClusterDetail
 
 You can call the DescribeClusterDetail operation to query the information about a cluster by the cluster ID.
@@ -1881,6 +1926,8 @@ Sample success responses `JSON` format `{`
 ```json
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28D****"
 ```
+
+`}`
 
 ##### 2.2.4.3 Query resources in a cluster
 
@@ -1932,7 +1979,7 @@ GET /clusters/[ClusterId]/resources HTTP/1.1 Common request headers
     "ClusterId": "cb95aa626a47740afbf6aa099b65****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <resources>
@@ -1962,6 +2009,8 @@ Sample success responses `XML` format
         "auto_create": 0,
         "dependencies": "[]"
 ```
+
+`}` `}`
 
 ##### 2.2.4.4 Query the namespaces of a cluster
 
@@ -2003,7 +2052,7 @@ GET /k8s/[ClusterId]/namespaces HTTP/1.1 Common request headers
     "ClusterId": "c68069cade53b4558924a924b415f****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <namespaces>kube-system</namespaces>
@@ -2014,6 +2063,8 @@ Sample success responses `XML` format
 ```json
     "namespaces": ["kube-system"]
 ```
+
+`}`
 
 ##### 2.2.4.5 Query the agent of a cluster
 
@@ -2056,7 +2107,7 @@ GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1 Common request headers
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <config>apiVersion: v1****</config>
@@ -2115,6 +2166,8 @@ Sample success responses `XML` format
     "node_quota": 100
 ```
 
+`}`
+
 ##### 2.2.4.7 Query the logs of a cluster
 
 You can call the DescribeClusterLogs operation to query the logs of a cluster.
@@ -2163,7 +2216,7 @@ GET /clusters/[ClusterId]/logs HTTP/1.1 Common request headers
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <data>
@@ -2187,6 +2240,8 @@ Sample success responses `XML` format
         "ID": 590749245,
         "updated": "2020-09-11T10:11:51+08:00"
 ```
+
+`}` `}`
 
 ##### 2.2.4.8 Query information about a Kubernetes version supported by Container Service
 
@@ -2260,7 +2315,7 @@ GET /api/v1/metadata/versions HTTP/1.1 Common request headers
     "Region": "cn-beijing"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <data>
@@ -2328,6 +2383,8 @@ Sample success responses `XML` format
             "AuditProjectName": "k8s-log-c9bd1***"
 ```
 
+`}` `}` `}`
+
 #### 2.2.5 Modify
 
 ##### 2.2.5.1 Modify cluster configurations
@@ -2389,7 +2446,7 @@ PUT /api/v2/clusters/[ClusterId] HTTP/1.1 Common request headers
     "ClusterId": "cb95aa626a47740afbf6aa099b65****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <cluster_id>cb95aa626a47740afbf6aa09****</cluster_id> <task_id>T-5a54309c80282e39ea00****</task_id> <request_id>687C5BAA-D103-4993-884B-C35E4314****</request_id>
@@ -2402,6 +2459,8 @@ Sample success responses `XML` format
     "task_id": "T-5a54309c80282e39ea00****",
     "request_id": "687C5BAA-D103-4993-884B-C35E4314****"
 ```
+
+`}`
 
 ##### 2.2.5.2 Modify the labels of a cluster
 
@@ -2447,7 +2506,7 @@ POST /clusters/[ClusterId]/tags HTTP/1.1 Common request headers
     } ]
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```
 HTTP/1.1 200 OK
@@ -2504,7 +2563,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1 Common request headers
     "version" : "1.14.8-aliyun.1"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -2556,7 +2615,7 @@ GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1 Common request headers
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <error_message>subject to actual return</error_message> <upgrade_task>
@@ -2581,6 +2640,8 @@ Sample success responses `XML` format
     "status": "running",
     "upgrade_step": "prechecking"
 ```
+
+`}`
 
 ##### 2.2.6.3 Suspend the upgrade of a cluster
 
@@ -2616,7 +2677,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1 Common request headers
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -2656,7 +2717,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1 Common request headers
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -2698,7 +2759,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1 Common request headers
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -2780,7 +2841,7 @@ GET /clusters/[ClusterId]/nodes HTTP/1.1 Common request headers
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <nodes>
@@ -2845,6 +2906,8 @@ Sample success responses `XML` format
         "page_size": 10
 ```
 
+`}` `}`
+
 #### 2.3.2 Remove nodes from a cluster
 
 You can call the RemoveClusterNodes operation to remove nodes from a cluster.
@@ -2894,7 +2957,7 @@ POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1 Common request headers
     "drain_node": false
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -2960,7 +3023,7 @@ POST /clusters/[ClusterId]/attach HTTP/1.1 Common request headers
     "ClusterId": "c106f377e16f34eb1808d6b9362c9****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <task_id>T-5a544aff80282e39ea000039</task_id> <list>
@@ -2979,6 +3042,8 @@ Sample success responses `XML` format
         "instanceId": "i-2ze0lgm3y6iylcbt****",
         "message": "successful"
 ```
+
+`}` `}`
 
 #### 2.3.4 Manually add existing instances to a cluster
 
@@ -3034,7 +3099,7 @@ POST /clusters/[ClusterId]/attachscript HTTP/1.1 Common request headers
 true,\\\"quiet\\\": true,\\\"allowedClusterA ddons\\\": [\\\"kubeproxy\\\",\\\"flannel\\\",\\\"coredns\\\"]}"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -3204,7 +3269,7 @@ Sample requests `{`
     "count": 1
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <nodepool_id>np31da1b38983f4511b490fc62108a****</nodepool_id>
@@ -3221,6 +3286,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 ```json
   "nodepool_id" : "np31da1b38983f4511b490fc62108a****"
 ```
+
+`}`
 
 ##### 2.3.5.2 Synchronize node pool information
 
@@ -3262,7 +3329,7 @@ POST /clusters/[ClusterId]/sync_nodepools HTTP/1.1
 "ClusterId":"c905d1364c2dd4b6284a3f41790c4****"
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"2D69A58F-345C-4FDE-88E4-BF51894XXXXX"
@@ -3313,7 +3380,7 @@ POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request header
     "count": 1
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <task_id>T-5faa48fb31b6b8078d00****</task_id>
@@ -3324,6 +3391,8 @@ Sample success responses `XML` format
 ```json
     "task_id": "T-5faa48fb31b6b8078d00****"
 ```
+
+`}`
 
 ##### 2.3.5.4 Modify the configuration of a node pool
 
@@ -3421,7 +3490,7 @@ PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request headers
     "NodepoolId": "p31da1b38983f4511b490fc62108a****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <task_id>T-5fd211e924e1d00787000293</task_id> <nodepool_id>np737c3ac1ac684703b9e10673aa2c****</nodepool_id>
@@ -3439,6 +3508,8 @@ HTTP/1.1 200 OK Content-Type:application/json
     "task_id": "T-5fd211e924e1d00787000293",
     "nodepool_id": "np737c3ac1ac684703b9e10673aa2c****"
 ```
+
+`}`
 
 ##### 2.3.5.5 Query node pools
 
@@ -3564,7 +3635,7 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1 Common request headers
     "ClusterId": "cc0f87de0b8fb403f86e10e204f83****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <nodepools>
@@ -3772,6 +3843,8 @@ Sample success responses `XML` format
             "healthy_nodes": 3
 ```
 
+`}` `}` `}`
+
 ##### 2.3.5.6 Query the details of a node pool
 
 You can call the DescribeClusterNodePoolDetail operation to query the details of a node pool.
@@ -3896,7 +3969,7 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request headers
     "NodepoolId": "np31da1b38983f4511b490fc62108a****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <tee_config>
@@ -4050,7 +4123,7 @@ data_dss:{
             "key": "key"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "auto_scaling": {
@@ -4090,6 +4163,8 @@ data_dss:{
         "failed_nodes": 0,
         "healthy_nodes": 3
 ```
+
+`}`
 
 ##### 2.3.5.7 Delete a node pool
 
@@ -4133,7 +4208,7 @@ DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1 Common request head
     "NodepoolId": "np30db56bcac7843dca90b999c8928****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <request_id>7263C978-3DBD-4E06-B319-793B38A2****</request_id>
@@ -4144,6 +4219,8 @@ Sample success responses `XML` format
 ```json
     "request_id": "7263C978-3DBD-4E06-B319-793B38A2****"
 ```
+
+`}`
 
 ### 2.4 Templates
 
@@ -4198,7 +4275,7 @@ POST /templates HTTP/1.1 Common request headers
     "template_type": "kubernetes"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <template_id>ba1fe77b-b01e-4640-b77e-8f1b80e3****</template_id>
@@ -4244,7 +4321,7 @@ DELETE /templates/[TemplateId] HTTP/1.1 Common request headers
     "TemplateId": "20663627-81ee-4cfe-9b69-c96fcb84****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```
 HTTP/1.1 200 OK
@@ -4316,7 +4393,7 @@ GET /templates HTTP/1.1 Common request headers
     "template\_type": "kubernetes"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <templates>
@@ -4363,6 +4440,8 @@ deployment-basic\\n labels:\\n app: nginx\\nspec:\\n replicas: 2\\n selector:\\n
         "total_count": 50,
         "page_size": 3
 ```
+
+`}` `}`
 
 #### 2.4.4 Query an orchestration template
 
@@ -4417,7 +4496,7 @@ GET /templates/[TemplateId] HTTP/1.1 Common request headers
     "TemplateId": "874ec485-e7e6-4373-8a3b-47bde8a****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <body>
@@ -4450,6 +4529,8 @@ Sample success responses `XML` format
         "updated": "2020-09-16T19:21:29+08:00",
         "tags": "sa"
 ```
+
+`}` `}`
 
 #### 2.4.5 Update an orchestration template
 
@@ -4497,7 +4578,7 @@ PUT /templates/[TemplateId] HTTP/1.1 Common request headers
     "template_type": "kubernetes"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -4543,7 +4624,7 @@ POST /clusters/[ClusterId]/components/install HTTP/1.1 Common request headers
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```
 HTTP/1.1 200 OK
@@ -4610,7 +4691,7 @@ GET /clusters/components/metadata HTTP/1.1 Common request headers
     "region": "cn-beijing"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <StandardComponents>
@@ -4641,7 +4722,7 @@ Sample success responses `XML` format
             "required": false
 ```
 
-`},`
+`}` `},`
 
 ```json
     "ComponentGroups": {
@@ -4649,6 +4730,8 @@ Sample success responses `XML` format
         "items": {
             "name": "flexvolume"
 ```
+
+`}` `}` `}`
 
 #### 2.5.3 Query components
 
@@ -4703,7 +4786,7 @@ GET /clusters/[ClusterId]/components/version HTTP/1.1 Common request headers
     "ClusterId": "c82e6987e2961451182edacd74faf****"
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <key>
@@ -4741,6 +4824,8 @@ Kubernetes event center.",
         "changed": false,
         "next_version": "1.2.1"
 ```
+
+`}` `}`
 
 #### 2.5.4 Query the upgrade status of components in a cluster
 
@@ -4780,7 +4865,7 @@ GET /clusters/[ClusterId]/components/upgradestatus HTTP/1.1 Common request heade
     "componentIds": "[metric-server"]
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```
 HTTP/1.1 200 OK
@@ -4834,7 +4919,7 @@ POST /clusters/[ClusterId]/components/upgrade HTTP/1.1 Common request headers
     "ClusterId": "cf4299b79b3e34226abfdc80a4bda****"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -4879,7 +4964,7 @@ POST /clusters/[ClusterId]/components/uninstall HTTP/1.1 Common request headers
     "ClusterId": "c5b5e80b0b64a4bf6939d2d8fbbc5****"
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format
 
 ```
 HTTP/1.1 200 OK
@@ -4935,13 +5020,13 @@ POST /clusters/c8155823d057948c69a****/policies/ACKAllowedRepos HTTP/1.1
           "registry.cn-hangzhou.aliyuncs.com/acs/"
 ```
 
-`]` Sample success responses `JSON` format `{`
+`]` `}` Sample success responses `JSON` format `{`
 
 ```json
   "instances" : [ "allowed-repos-kqxnc" ]
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <DeployPolicyInstanceResponse>
@@ -5190,7 +5275,7 @@ al storage.",
     "medium" : 1
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <policy_instances><policy_category>k8s-general</policy_category> <policy_name>ACKBlockNodePort</policy_name><policy_description>Disallows all Services w ith type NodePort.</policy_description><policy_severity>high</policy_severity></policy_ instances><policy_instances><policy_category>k8s-general</policy_category> <policy_name>ACKExternalIPs</policy_name><policy_description>Restricts Services from co ntaining externalIPs except those in a provided allowlist.</policy_description><policy_ severity>high</policy_severity></policy_instances><policy_instances> <policy_category>psp</policy_category><policy_name>ACKPSPHostNamespace</policy_name><po licy_description>Controls usage of host namespaces.</policy_description> <policy_severity>high</policy_severity></policy_instances><policy_instances> <policy_category>psp</policy_category> <policy_name>ACKPSPReadOnlyRootFilesystem</policy_name><policy_description>Requires the use of a read only root file system.</policy_description> <policy_severity>medium</policy_severity></policy_instances><policy_instances><policy_c ategory>psp</policy_category><policy_name>ACKPSPVolumeTypes</policy_name> <policy_description>Controls usage of volume types.</policy_description>
@@ -5230,6 +5315,8 @@ PUT /clusters/ClusterId/policies/PolicyName HTTP/1.1
   "namespaces" : [ "String" ]
 ```
 
+`}`
+
 **Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
@@ -5259,7 +5346,7 @@ PUT /clusters/c8155823d057948c69a****/policies/ACKAllowedRepos HTTP/1.1
   "namespaces" : [ ["test3","test4" ]
 ```
 
-Sample success responses `JSON` format `{`
+`}` Sample success responses `JSON` format `{`
 
 ```json
   "instances" : [ "allowed-repos-kqxnc" ]
@@ -5509,7 +5596,7 @@ om a specified list.",
       } ]
 ```
 
-`XML` format
+`}` `}` `}` `XML` format
 
 ```xml
 <DescribePolicyGovernanceInClusterResponse>
@@ -5688,7 +5775,7 @@ ed list",
   "is_deleted" : 0
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <DescribePolicyDetailsResponse>
@@ -5744,7 +5831,7 @@ LoadBalancer", "ACKBlockNodePort", "ACKContainerLimits", "ACKExternalIPs", "ACKI
 Armor", "ACKPSPCapabilities", "ACKPSPFSGroup", "ACKPSPFlexVolumes", "ACKPSPForbiddenSysctls", "ACKPSPHostFilesystem", "ACKPSPHostNamespace", "ACKPSPHostNetworkingPorts", "ACKPSPPrivilegedContainer", "ACKPSPProcMount", "ACKPSPReadOnlyRootFilesystem", "ACKPSPSELinuxV2", "ACKPSPSeccomp", "ACKPSPVolumeTypes"
 ```
 
-`]` `XML` format
+`]` `}` `XML` format
 
 ```xml
 <DescribePoliciesResponse>
@@ -5828,7 +5915,7 @@ Sample success responses `JSON` format `{`
   "instances" : [ "allowed-repos-kqxnc" ]
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <instances>allowed-repos-kqxnc</instances>
@@ -5954,6 +6041,8 @@ le in the preceding step.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Sample requests**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -6006,6 +6095,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 **Error codes**
 

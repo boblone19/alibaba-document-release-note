@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 145
 source_pdf: "0e4378161fd9fc4f_Alibaba Cloud Apsara Stack V3.18.6 Elastic File System NAS Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%98%BF%E9%87%8C%E4%BA%91%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20EFS-NAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20File%20System%20NAS%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Elastic File System NAS Developer Guide 20260701
@@ -230,7 +230,7 @@ example shows how to call the operation using STS SDK for Java.
 
 > `<sts.aliyuns.com>` are placeholders. Replace them with your actual values. Do not include the angle brackets (<>).
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Replace the placeholders with your actual region ID, AccessKey ID, and AccessK
@@ -250,6 +250,11 @@ ey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual STS Endpoint. The format is typicall
@@ -275,6 +280,11 @@ t be a RAM role that has an ASCM user as a trusted entity. Replace "<yourRoleArn
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
@@ -331,6 +341,8 @@ esource belongs.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 1.3 Obtain the values of common request headers
 
@@ -523,6 +535,8 @@ eprintStackTrace();
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 ### 2.2 User guide
 
@@ -757,6 +771,8 @@ try {
     System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}`
+
 **Complete example**
 
 The following code provides an example of how to call the EFS-NAS `DescribeFileSystems` operation to query a list of file systems.
@@ -833,6 +849,8 @@ ultiple common header parameters, including x-acs-regionid, x-acs-organizationid
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 > **Note:** REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, the AccessKey ID, and the AccessKey secret of your account. Set them as environment variables.
 > In the code sample, replace all variables with your actual information. Do not include the angle brackets (<>) in your final code. The variables that need to be replaced are as follows:
 > <efs-nas.aliyuns.com>: Replace with the actual endpoint of the product.
@@ -870,7 +888,7 @@ provide the RequestID.
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-s
+`}` s
 
 ## 3 Python SDK call examples
 
@@ -1294,6 +1312,11 @@ SecurityToken of your account to the ALIBABA_CLOUD_STS_SECURITY_TOKEN environmen
 credential)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     // Create a request.
     request := requests.NewCommonRequest()
     request.Method = "POST"  // The method of the API request.
@@ -1321,9 +1344,16 @@ to isolate resources by organization.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     // Print the response.
     fmt.Println(response.GetHttpContentString())
 ```
+
+`}`
 
 ### 4.2 User guide
 
@@ -1481,6 +1511,8 @@ client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(),
     panic(err)
 ```
 
+`}`
+
 #### 4.2.3 Request connection configuration
 
 This topic describes how to configure request connection settings (HttpClientConfig). Use the following code to configure HttpClientConfig. Select and set the configuration items based on your requirements.
@@ -1488,6 +1520,11 @@ This topic describes how to configure request connection settings (HttpClientCon
 ```
 client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(), creden tial) if err != nil {
     panic(err)
+```
+
+`}`
+
+```
 // Specifies whether to ignore the certificate. `true` ignores the certificate. `false` does not. client.SetHTTPSInsecure(true) // (Optional) Sets the connection timeout in nanoseconds. Formula: X seconds × time.Sec ond = X × 1,000,000,000 nanoseconds. client.SetConnectTimeout(1 * time.Second) // (Optional) Sets the read timeout in nanoseconds. Formula: X seconds × time.Second = X × 1,000,000,000 nanoseconds. client.SetReadTimeout(10 * time.Second) /** (Optional) Set a proxy as needed. Replace the placeholder with your actual proxy IP address and port. client.SetHttpProxy("<http://192.168.XX.XX:33XX>") client.SetHttpsProxy("<https://192.168.XX.XX:33XX>")
 ```
 
@@ -1530,6 +1567,11 @@ Use the following code to make the request and process the response.
 ```
 response, err := client.ProcessCommonRequest(request) if err != nil {
     panic(err)
+```
+
+`}`
+
+```
 fmt.Println(response.GetHttpContentString())
 ```
 
@@ -1572,6 +1614,11 @@ ALIBABA_CLOUD_STS_SECURITY_TOKEN environment variable to your SecurityToken.
 edential)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     // Create a request.
     request := requests.NewCommonRequest()
     request.Method = "POST"  // The request method of the API.
@@ -1594,6 +1641,11 @@ o implement fencing by organization.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     // Print the response.
     fmt.Println(response.GetHttpContentString())
 ```
@@ -1615,6 +1667,8 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 The SDK returns a `ClientError` when an internal call fails and cannot be handled automatically. Use the following code to identify a `ClientError` and retrieve its error message.
@@ -1633,6 +1687,8 @@ response, err := client.ProcessCommonRequest(request) if clientError, ok := err.
     clientError.OriginError()
 ```
 
+`}`
+
 **ServerError**
 
 When the server returns an error response, the SDK encapsulates it into a `ServerError`. You can still retrieve the original HTTP response from the `Response` object. Use the following code to identify the `ServerError` and retrieve error information from both the `ServerError` and the `Response`.
@@ -1650,6 +1706,8 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
     // Get the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 ## 5 API reference
 
@@ -1671,7 +1729,11 @@ The service supports the HTTP GET method. For GET requests, the parameters must 
 
 **Communication protocol**
 
-You can send requests over HTTP or HTTPS channels. For greater security, use the HTTPS channel. Each request must specify an operation to execute using the Action parameter, such as CreateFileSystem. Each request must also include common request parameters and parameters that are specific to the specified operation.
+You can send requests over HTTP or HTTPS channels. For greater security, use the HTTPS channel.
+
+**Request parameters**
+
+Each request must specify an operation to execute using the Action parameter, such as CreateFileSystem. Each request must also include common request parameters and parameters that are specific to the specified operation.
 
 **Character encoding**
 
@@ -1685,6 +1747,8 @@ API calls return data in a standard format. An HTTP status code in the 2xx range
 
 **Successful results**
 
+`{`
+
 ```json
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
     /* Response data */
@@ -1692,7 +1756,7 @@ API calls return data in a standard format. An HTTP status code in the 2xx range
 
 **Error results**
 
-If an API call fails, no result data is returned. You can use the error code returned by the API to find the cause of the failure. A failed call returns an HTTP status code in the 4xx or 5xx range. The response body contains the specific error code and error message. The body also includes a globally unique request ID (RequestId) and the ID of the accessed site (HostId).
+If an API call fails, no result data is returned. You can use the error code returned by the API to find the cause of the failure. A failed call returns an HTTP status code in the 4xx or 5xx range. The response body contains the specific error code and error message. The body also includes a globally unique request ID (RequestId) and the ID of the accessed site (HostId). `{`
 
 ```json
     "RequestId": "8906582E-6722-409A-A6C4-0E7863B733A5",
@@ -1700,6 +1764,8 @@ If an API call fails, no result data is returned. You can use the error code ret
     "Code": "InvalidOwnerId",
     "Message": "The specified OwnerId is not valid."
 ```
+
+`}`
 
 ### 5.2 RAM authentication
 
@@ -1761,6 +1827,8 @@ Queries the zones that support a specified file system type in a region.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | FsType | Strin g | Query | No | Performance | The type of the file system. Valid values: Performance: a compute-optimized instance that uses all- flash media. Capacity: a storage- optimized instance that uses hybrid flash media. If you do not specify this parameter, the zones that support all file system types are returned. |
@@ -1779,21 +1847,32 @@ Request example
 http(s)://[Endpoint]/?Action=DescribeZones &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Zones":[
+```
+
+`{`
+
+```json
    "ZoneId":"cn-hangzhou-**"
 ```
 
-`]`
+`}` `]` `}`
 
 ### 5.5 File system
 
 #### 5.5.1 CreateFileSystem
 
-Creates a file system. This operation uses only common request headers. For more information, see Common request parameters.
+Creates a file system.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1815,13 +1894,15 @@ Creates a file system. This operation uses only common request headers. For more
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | FsId | String | efs-nas-0***** | The ID of the file system. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=CreateFileSystem &FsName=myfs &Capacity=1024 &FsType=Capacity &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -1835,6 +1916,8 @@ This operation queries a list of file systems and supports paged queries.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1882,16 +1965,23 @@ This operation uses common request headers. No special request headers are requi
 | PageSize | Integer | 10 | The number of resources on each page. |
 | PageNum | Integer | 1 | The page number. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DescribeFileSystems &Common request parameters
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
  "FileSystems":[
+```
+
+`{`
+
+```json
    "Status":"Running",
    "ModifyTime":"2025-10-16T09:55:41Z",
    "Description":"For testing",
@@ -1909,7 +1999,7 @@ Successful response example
    "RegionId":"cn-hangzhou"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":5,
@@ -1917,6 +2007,8 @@ Successful response example
  "PageSize":10,
  "PageNum":1
 ```
+
+`}`
 
 #### 5.5.3 ModifyFileSystem
 
@@ -1935,17 +2027,21 @@ Modifies the properties of a file system, such as its capacity and description. 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=ModifyFileSystem &FileSystemId=efs-nas-0***** &<Common request parameters>
 ```
 
-Sample response The response is returned in `JSON` format.
+Sample response The response is returned in `JSON` format. `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
+
+`}`
 
 #### 5.5.4 DeleteFileSystem
 
@@ -1953,7 +2049,13 @@ Deletes a file system.
 
 **Notes**
 
-Deleted file systems cannot be recovered. Proceed with caution. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Deleted file systems cannot be recovered. Proceed with caution.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1966,23 +2068,31 @@ Deleted file systems cannot be recovered. Proceed with caution. This operation u
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteFileSystem &FsId=efs-nas-8***** &Common request parameters
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
+`}`
+
 ### 5.6 User
 
 #### 5.6.1 CreateFsUser
 
-Creates a file system user. This operation uses only common request headers. For more information, see Common request parameters.
+Creates a file system user.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1999,6 +2109,8 @@ Creates a file system user. This operation uses only common request headers. For
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | FsUserId | Long | 100000 | The ID of the file system user. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -2012,9 +2124,17 @@ Sample response The response is in `JSON` format.
  "FsUserId":100000
 ```
 
+`}`
+
 #### 5.6.2 DescribeFsUsers
 
-Queries the users of a file system. This operation supports paged queries and queries by file system user ID. This operation uses only common request headers. For more information, see Common request parameters.
+Queries the users of a file system. This operation supports paged queries and queries by file system user ID.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2042,13 +2162,15 @@ Queries the users of a file system. This operation supports paged queries and qu
 | PageSize | Integer | 10 | The number of entries per page. |
 | TotalCount | Integer | 5 | The total number of file system users. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DescribeFsUsers &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "TotalCount":5,
@@ -2056,6 +2178,11 @@ Response example
  "PageNum":1,
  "PageSize":10,
  "FsUsers":[
+```
+
+`{`
+
+```json
    "Uid":10000,
    "CreateTime":"2025-10-15T09:55:41Z",
    "FsUserId":100000,
@@ -2064,11 +2191,17 @@ Response example
    "SecondaryGroupIds":"[10001,10002]"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.6.3 ModifyFsUser
 
-Modifies a file system user. This operation uses only common request headers. For more information, see Common parameters.
+Modifies a file system user.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2089,13 +2222,15 @@ Modifies a file system user. This operation uses only common request headers. Fo
 | Name | String | myuser | The username. |
 | Uid | Long | 10000 | The user ID. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=ModifyFsUser &FsUserId=100000 &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "Uid":1000000000000000,
@@ -2104,6 +2239,8 @@ Sample response
  "Name":"myuser"
 ```
 
+`}`
+
 #### 5.6.4 DeleteFsUser
 
 Deletes a file system user.
@@ -2111,6 +2248,8 @@ Deletes a file system user.
 **Notes**
 
 A file system user cannot be recovered after it is deleted. Proceed with caution. This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2123,24 +2262,32 @@ A file system user cannot be recovered after it is deleted. Proceed with caution
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Success | Boolean | true | Indicates whether the operation was successful. A value of true indicates success. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteFsUser &FsUserId=100000 &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Success":true
 ```
 
+`}`
+
 ### 5.7 User group
 
 #### 5.7.1 CreateFsUserGroup
 
-Creates a file system user group. This operation uses only common request headers. For more information, see Common request parameters.
+Creates a file system user group.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2155,18 +2302,22 @@ Creates a file system user group. This operation uses only common request header
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | FsUserGroupId | Long | 10000 | The ID of the file system user group. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CreateFsUserGroup &Name=myusergroup &GroupId=10000 &FsUserIds=[100000,100001] &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "FsUserGroupId":10000
 ```
+
+`}`
 
 #### 5.7.2 AddFsUsersToGroup
 
@@ -2184,18 +2335,22 @@ Adds file system users to a specified user group. This operation uses only commo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Success | Boolean | true | Indicates whether the operation was successful. A value of true indicates that the operation succeeded. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=AddFsUsersToGroup &FsUserGroupId=10000 &FsUserIds=[100000,100001] &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Success":true
 ```
+
+`}`
 
 #### 5.7.3 RemoveFsUsersFromGroup
 
@@ -2213,18 +2368,22 @@ Removes file system users from a specified user group. This operation uses commo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Success | Boolean | true | Indicates whether the operation was successful. A value of true is returned if the operation is successful. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=RemoveFsUsersFromGroup &FsUserGroupId=10000 &FsUserIds=[100000,100001] &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Success":true
 ```
+
+`}`
 
 #### 5.7.4 DescribeFsUserGroups
 
@@ -2257,17 +2416,24 @@ Queries a list of file system user groups. This operation supports paged queries
 | PageNum | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of resources per page. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeFsUserGroups &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "TotalCount":5,
  "FsUserGroups":[
+```
+
+`{`
+
+```json
    "FsUserIds":"[100000,100001]",
    "Gid":10000,
    "CreateTime":"2025-10-15T09:55:41Z",
@@ -2275,7 +2441,7 @@ Sample response
    "Name":"myusergroup"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -2283,9 +2449,17 @@ Sample response
  "PageSize":10
 ```
 
+`}`
+
 #### 5.7.5 DeleteFsUserGroup
 
-Deletes a file system user group. This operation uses only common request headers. For more information, see Common request parameters.
+Deletes a file system user group.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2298,24 +2472,34 @@ Deletes a file system user group. This operation uses only common request header
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. A value of true indicates success. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DeleteFsUserGroup &FsUserGroupId=10000 &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Success":true
 ```
 
+`}`
+
 ### 5.8 SMB share
 
 #### 5.8.1 CreateSmbShare
 
-Creates an SMB share. This operation uses common request headers. For more information, see Common request parameters.
+Creates an SMB share.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2350,22 +2534,32 @@ Creates an SMB share. This operation uses common request headers. For more infor
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | ShareId | String | 3e47da**** | The ID of the share. |
 
+**Examples**
+
 Request example
 
 ```json
 http(s)://[Endpoint]/?Action=CreateSmbShare &FileSystemId=efs-nas-c***** &ShareName=myshare &Acls= [{"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000000,"use ame":"JL-USER-02"}, {"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000001,"user me":"JL-USER-01"}] &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "ShareId":"3e47da****",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
+`}`
+
 #### 5.8.2 DescribeSmbConnections
 
-Retrieves the details and total number of connections for a Server Message Block (SMB) share. This operation uses only common request headers. For more information, see Common request parameters.
+Retrieves the details and total number of connections for a Server Message Block (SMB) share.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2394,13 +2588,15 @@ Retrieves the details and total number of connections for a Server Message Block
 | PageNum | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of resources on each page. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSmbConnections &ShareId=3e47****** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format
 
 ```json
  "TotalCount":5,
@@ -2408,6 +2604,11 @@ Sample response
  "PageNum":1,
  "PageSize":10,
  "SmbConnections":[
+```
+
+`{`
+
+```json
    "ShareId":"3e47******",
    "ProtocolVersion":"3.0",
    "ConnectTime":"1500",
@@ -2415,11 +2616,17 @@ Sample response
    "AccessUser":"myusertest"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.8.3 DescribeSmbShares
 
-Queries a list of Server Message Block (SMB) shares. This operation supports paged queries. This operation uses only common request headers. For more information, see Common request parameters.
+Queries a list of Server Message Block (SMB) shares. This operation supports paged queries.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2456,13 +2663,15 @@ Queries a list of Server Message Block (SMB) shares. This operation supports pag
 | PageNum | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of resources on each page. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSmbShares &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format
 
 ```json
  "SmbShares":[
@@ -2482,7 +2691,7 @@ Sample response
    "CaseSensitive":false
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":5,
@@ -2491,9 +2700,17 @@ Sample response
  "PageSize":10
 ```
 
+`}`
+
 #### 5.8.4 ModifySmbShare
 
-Modifies the configuration of a Server Message Block (SMB) share. This operation has no special request headers. For more information about common request headers, see Common parameters.
+Modifies the configuration of a Server Message Block (SMB) share.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2519,11 +2736,13 @@ Request example
 http(s)://[Endpoint]/?Action=ModifySmbShare &ShareId=3e47****** &ContactIpList=[192.168.10.1,192.168.10.2] &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
+
+`}`
 
 #### 5.8.5 DeleteSmbShare
 
@@ -2531,7 +2750,13 @@ Deletes an SMB share.
 
 **Notes**
 
-Before you delete an SMB share, confirm that no services depend on it. Deleting a share makes its resources inaccessible to all users. An SMB share cannot be recovered after it is deleted. Proceed with caution. This operation uses only common request headers. For more information, see Common request parameters.
+Before you delete an SMB share, confirm that no services depend on it. Deleting a share makes its resources inaccessible to all users. An SMB share cannot be recovered after it is deleted. Proceed with caution.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2544,23 +2769,33 @@ Before you delete an SMB share, confirm that no services depend on it. Deleting 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteSmbShare &ShareId=3e47****** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
+`}`
+
 ### 5.9 SMB ACL
 
 #### 5.9.1 BatchCreateSmbAcl
 
-Creates multiple Server Message Block (SMB) access control lists. This operation uses only common request headers. For more information, see Common request parameters.
+Creates multiple Server Message Block (SMB) access control lists.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2577,21 +2812,31 @@ Creates multiple Server Message Block (SMB) access control lists. This operation
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+**Examples**
+
 Request example
 
 ```json
 http(s)://[Endpoint]/?Action=BatchCreateSmbAcl &ShareId=3e47****** &Acls= [{"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000000,"use ame":"JL-USER-02"}, {"AccessType":"local","UserType":"user","Permission":"RO","UserId":1000000000000001,"user me":"JL-USER-01"}] &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
+`}`
+
 #### 5.9.2 DescribeSmbAcls
 
-Queries the Server Message Block (SMB) access control lists (ACLs). This operation supports paginated queries. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Queries the Server Message Block (SMB) access control lists (ACLs). This operation supports paginated queries.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2632,10 +2877,15 @@ Request example
 http(s)://[Endpoint]/?Action=DescribeSmbAcls &ShareId=3e47****** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "AclEntries":[
+```
+
+`{`
+
+```json
    "ModifyTime":"2025-10-17T09:55:41Z",
    "UserName":"myuser",
    "UserId":1000000000000000,
@@ -2648,7 +2898,7 @@ Response example
    "GroupId":10000
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":5,
@@ -2657,9 +2907,17 @@ Response example
  "PageSize":10
 ```
 
+`}`
+
 #### 5.9.3 BatchUpdateSmbAcl
 
-Updates multiple SMB access control lists at a time. This operation uses only common request headers. For more information, see Common request parameters.
+Updates multiple SMB access control lists at a time.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2676,17 +2934,21 @@ Updates multiple SMB access control lists at a time. This operation uses only co
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=BatchUpdateSmbAcl &ShareId=3e47****** &Acls=[{"AclId": 1000000000,"Permission":"RO"},{"AclId": 1000000001,"Permission":"RO"}] &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
+
+`}`
 
 #### 5.9.4 BatchDeleteSmbAcl
 
@@ -2694,7 +2956,13 @@ Deletes one or more Server Message Block (SMB) access control lists (ACLs).
 
 **Notes**
 
-Deleting an SMB ACL affects access permissions for users and groups. This action can interrupt access to shared resources. Confirm that no services depend on the ACL before you delete it. Deleted SMB ACLs cannot be recovered. Perform this operation with caution. This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
+Deleting an SMB ACL affects access permissions for users and groups. This action can interrupt access to shared resources. Confirm that no services depend on the ACL before you delete it. Deleted SMB ACLs cannot be recovered. Perform this operation with caution.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2708,6 +2976,8 @@ Deleting an SMB ACL affects access permissions for users and groups. This action
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
+**Examples**
+
 Request example
 
 ```
@@ -2720,7 +2990,13 @@ Response example
 
 #### 5.10.1 CreateNfsShare
 
-Creates a Network File System (NFS) share. This operation uses only common request headers. For more information, see Common request parameters.
+Creates a Network File System (NFS) share.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2745,22 +3021,30 @@ Creates a Network File System (NFS) share. This operation uses only common reque
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | ShareId | String | 3e47****** | The ID of the share. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CreateNfsShare &FileSystemId=efs-nas-c***** &ShareName=mynfsshare &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "ShareId":"3e47******",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
+`}`
+
 #### 5.10.2 DescribeNfsConnections
 
-Queries the details and the number of connections for a Network File System (NFS) share. This operation uses only common request headers. For more information, see Common request parameters.
+Queries the details and the number of connections for a Network File System (NFS) share.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2782,22 +3066,29 @@ Queries the details and the number of connections for a Network File System (NFS
 | PageNum | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of resources on each page. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeNfsConnections &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "NfsConnections":[
+```
+
+`{`
+
+```json
    "ShareId":"3e47******",
    "NfsVersion":"v3",
    "ClientIp":"10.10.10.**"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":5,
@@ -2806,9 +3097,17 @@ Sample response
  "PageSize":10
 ```
 
+`}`
+
 #### 5.10.3 DescribeNfsShares
 
-Queries a paginated list of Network File System (NFS) shares. This operation uses only common request headers. For more information, see Common request parameters.
+Queries a paginated list of Network File System (NFS) shares.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2844,7 +3143,7 @@ Sample request
 http(s)://[Endpoint]/?Action=DescribeNfsShares &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "TotalCount":5,
@@ -2852,6 +3151,11 @@ Sample response
  "PageNum":1,
  "PageSize":10,
  "NfsShares":[
+```
+
+`{`
+
+```json
    "Status":"ACTIVE",
    "Azone":"cn-hangzhou-**",
    "ShareId":"3e47******",
@@ -2864,7 +3168,7 @@ Sample response
    "VswitchId":"vsw-bp1e7clcw529l773d****"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.10.4 ModifyNfsShare
 
@@ -2873,6 +3177,8 @@ Modifies the configuration of an NFS share.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2889,17 +3195,21 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=ModifyNfsShare &ShareId=3e47****** &ShareName=mynfssharenew &<Common request parameters>
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
+
+`}`
 
 #### 5.10.5 DeleteNfsShare
 
@@ -2920,17 +3230,21 @@ Deleting an NFS share prevents all users from accessing resources on the share. 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteNfsShare &ShareId=3e47****** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
+
+`}`
 
 ### 5.11 NFS ACL
 
@@ -2956,21 +3270,31 @@ Creates multiple Network File System (NFS) access control lists (ACLs) in a batc
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=BatchCreateNfsAcl &Acls=[{"Type":"every-client","Permission":"RO","RootSquash":true,"AllSquash":false}] &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
+`}`
+
 #### 5.11.2 DescribeNfsAcls
 
-Queries the access control lists (ACLs) of a Network File System (NFS). This operation supports paged queries. This operation uses only common request headers. For more information, see the Common request parameters document.
+Queries the access control lists (ACLs) of a Network File System (NFS). This operation supports paged queries.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3005,16 +3329,23 @@ Queries the access control lists (ACLs) of a Network File System (NFS). This ope
 | PageNum | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of resources on each page. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeNfsAcls &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
  "AclEntries":[
+```
+
+`{`
+
+```json
    "AllSquash":false,
    "Type":"client",
    "AclId":2000000000,
@@ -3023,7 +3354,7 @@ Sample response
    "ClientIp":"10.10.10.**"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":5,
@@ -3031,6 +3362,8 @@ Sample response
  "PageNum":1,
  "PageSize":10
 ```
+
+`}`
 
 #### 5.11.3 BatchUpdateNfsAcl
 
@@ -3048,6 +3381,8 @@ Updates multiple Network File System (NFS) access control lists in a batch. This
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+
+**Examples**
 
 Sample request
 
@@ -3067,7 +3402,13 @@ Deletes multiple Network File System (NFS) access control lists (ACLs) in a batc
 
 **Notes**
 
-Deleting an NFS ACL affects the access permissions of users or groups for shared resources and can cause access interruptions. Before you delete an NFS ACL, confirm that no services depend on it. You cannot recover an NFS ACL after it is deleted. Proceed with caution. This operation uses only common request headers. For more information, see Common parameters.
+Deleting an NFS ACL affects the access permissions of users or groups for shared resources and can cause access interruptions. Before you delete an NFS ACL, confirm that no services depend on it. You cannot recover an NFS ACL after it is deleted. Proceed with caution.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3082,17 +3423,21 @@ Deleting an NFS ACL affects the access permissions of users or groups for shared
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=BatchDeleteNfsAcl &AclIds=[2000000000,2000000001] &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
+
+`}`
 
 ### 5.12 Snapshot
 
@@ -3102,7 +3447,13 @@ Create a snapshot.
 
 **Notes**
 
-A single file system supports a recommended maximum of 128 snapshots and an absolute maximum of 2,048 snapshots. You can create a maximum of 8,192 snapshots in total for all your file systems. If a snapshot is being created for a file system, you cannot create another snapshot for that file system. You must wait at least 10 minutes between creating snapshots. A snapshot backs up data at a specific point in time. Incremental data generated by file system operations during the snapshot creation process is not synchronized with the snapshot. This operation uses only common request headers. For more information, see Common parameters.
+A single file system supports a recommended maximum of 128 snapshots and an absolute maximum of 2,048 snapshots. You can create a maximum of 8,192 snapshots in total for all your file systems. If a snapshot is being created for a file system, you cannot create another snapshot for that file system. You must wait at least 10 minutes between creating snapshots. A snapshot backs up data at a specific point in time. Incremental data generated by file system operations during the snapshot creation process is not synchronized with the snapshot.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3122,13 +3473,15 @@ A single file system supports a recommended maximum of 128 snapshots and an abso
 | Success | Boolean | true | Indicates whether the operation was successful. A value of true indicates success. |
 | SnapshotId | String | snap- 1764836********** ** | The ID of the snapshot. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CreateSnapshot &FileSystemId=efs-nas-c***** &SnapshotName=testSnapshotName &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
     "SnapshotId":"snap-1764836************",
@@ -3136,9 +3489,17 @@ Sample response
     "Success":true
 ```
 
+`}`
+
 #### 5.12.2 ModifySnapshot
 
-Modify the properties of a specified snapshot, such as its name, description, and retention period. This operation uses only common request headers. For more information, see Common request parameters.
+Modify the properties of a specified snapshot, such as its name, description, and retention period.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Locat ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3158,13 +3519,15 @@ Modify the properties of a specified snapshot, such as its name, description, an
 | Success | Boolean | true | Indicates whether the operation was successful. A value of true indicates success. |
 | SnapshotId | String | snap- 1764836********** ** | The ID of the snapshot. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=ModifySnapshot &SnapshotId=snap-1764836************ &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
     "SnapshotId":"snap-1764836************",
@@ -3172,13 +3535,21 @@ Sample response
     "Success":true
 ```
 
+`}`
+
 #### 5.12.3 DescribeSnapshots
 
 Query information about one or more snapshots of a specified file system.
 
 **Notes**
 
-If you do not specify any parameters, this operation returns snapshots for all file systems. This operation uses only common request headers. For more information, see Common request parameters.
+If you do not specify any parameters, this operation returns snapshots for all file systems.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | > Document V | ersion: 2 | 0260701 |   |   | 10 |
 |---|---|---|---|---|---|
@@ -3211,13 +3582,15 @@ If you do not specify any parameters, this operation returns snapshots for all f
 | PageNum | Integer | 10 | The page number. |
 | PageSize | Integer | 1 | The number of resources on each page. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSnapshots &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format
 
 ```json
  "TotalCount":5,
@@ -3225,6 +3598,11 @@ Sample response
  "PageNum":10,
  "PageSize":1,
  "Snapshots":[
+```
+
+`{`
+
+```json
    "Status":"progressing",
    "SnapshotId":"snap-1764836************",
    "Description":"For testing.",
@@ -3236,7 +3614,7 @@ Sample response
    "Lock":true
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.12.4 DeleteSnapshot
 
@@ -3244,7 +3622,13 @@ Delete a specified snapshot or cancels an in-progress snapshot creation task.
 
 **Notes**
 
-Deleted snapshots cannot be recovered. Proceed with caution. Locked snapshots cannot be deleted. You can call the ModifySnapshot operation to unlock the snapshot before you delete it. This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+Deleted snapshots cannot be recovered. Proceed with caution. Locked snapshots cannot be deleted. You can call the ModifySnapshot operation to unlock the snapshot before you delete it.
+
+**Request headers**
+
+This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Locat ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3259,18 +3643,22 @@ Deleted snapshots cannot be recovered. Proceed with caution. Locked snapshots ca
 |---|---|---|---|
 | Result | String | true | Indicates whether the operation was successful. A value of `true` is returned on success. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DeleteSnapshot &SnapshotId=snap-1764836************ &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Result":"true"
 ```
+
+`}`
 
 #### 5.12.5 CreateScheduledSnapshot
 
@@ -3278,7 +3666,13 @@ Creates a scheduled snapshot for a file system. After the policy is created, the
 
 **Notes**
 
-We recommend that you retain up to 128 snapshots for a single file system. You can create a maximum of 2,048 snapshots for a single file system and 8,192 snapshots for all file systems. If a snapshot for a file system is still being created, you cannot create another snapshot for the same file system. To avoid conflicts, we recommend that you set an interval of more than 10 minutes between snapshot creations. A snapshot backs up data at a specific point in time. Any incremental data generated during the snapshot creation process will not be synchronized to the snapshot. If you associate multiple scheduled snapshot policies with a single file system, all these policies will take effect simultaneously on that file system. This operation uses common request headers. For more information, see Common request parameters.
+We recommend that you retain up to 128 snapshots for a single file system. You can create a maximum of 2,048 snapshots for a single file system and 8,192 snapshots for all file systems. If a snapshot for a file system is still being created, you cannot create another snapshot for the same file system. To avoid conflicts, we recommend that you set an interval of more than 10 minutes between snapshot creations. A snapshot backs up data at a specific point in time. Any incremental data generated during the snapshot creation process will not be synchronized to the snapshot. If you associate multiple scheduled snapshot policies with a single file system, all these policies will take effect simultaneously on that file system.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3299,13 +3693,15 @@ We recommend that you retain up to 128 snapshots for a single file system. You c
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 | ScheduledSna pshotId | String | snap- 17781404842***** *** | The association ID of the scheduled snapshot. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateScheduledSnapshot &SnapshotPolicyId=sp-17748631231******** &FileSystemId=efs-nas-c***** &Trigger=true &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3316,9 +3712,17 @@ Sample success responses
  "Success":true
 ```
 
+`}`
+
 #### 5.12.6 DescribeSnapshotPolicyBindings
 
-Lists the association relationships between snapshot policies and file systems. You can filter results by policy ID or file system ID, and you can paginate the results. This operation uses common request headers. For more information, see Common request parameters.
+Lists the association relationships between snapshot policies and file systems. You can filter results by policy ID or file system ID, and you can paginate the results.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3341,13 +3745,15 @@ Lists the association relationships between snapshot policies and file systems. 
 | PageSize | Integer | 10 | The number of resources per page. |
 | NextToken | String | FFmyTO70tTpLG6I 3FmYAXGKPd**** | The token that marks the start of the next query. If NextToken is empty, no more results are available. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSnapshotPolicyBindings &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format
 
 ```json
  "TotalCount":5,
@@ -3356,16 +3762,27 @@ Sample success responses
  "PageSize":10,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "SnapshotPolicyBindings":[
+```
+
+`{`
+
+```json
    "SnapshotPolicyId":"sp-17748631231********",
    "CreateTime":"2026-05-25T09:55:41Z",
    "FileSystemId":"efs-nas-0*****"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.12.7 DeleteScheduledSnapshot
 
-Disassociates a file system from a snapshot policy and stops scheduled snapshots for the file system. This operation uses common request headers only. For more information, see Common request parameters.
+Disassociates a file system from a snapshot policy and stops scheduled snapshots for the file system.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3385,13 +3802,15 @@ Disassociates a file system from a snapshot policy and stops scheduled snapshots
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 | ScheduledSna pshotId | String | snap- 17781404842***** *** | The association ID of the deleted scheduled snapshot. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DeleteScheduledSnapshot &SnapshotPolicyId=sp-17748631231******** &FileSystemId=efs-nas-c***** &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3401,6 +3820,8 @@ Sample success responses
  "Code":"200",
  "Success":true
 ```
+
+`}`
 
 ### 5.13 Snapshot policy
 
@@ -3431,13 +3852,15 @@ You can create up to 128 scheduled snapshot policies, and associate up to 8 poli
 |---|---|---|---|
 | SnapshotPolic yId | String | sp- 17748631431***** *** | The ID of the snapshot policy. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateSnapshotPolicy &SnapshotPolicyName=mysnapshotpolicy &CronExpression=0 0 2 ? * 1-7 &ExpireType=true &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "SnapshotPolicyId":"sp-17748631431********",
@@ -3445,9 +3868,17 @@ Sample success responses
  "Success":true
 ```
 
+`}`
+
 #### 5.13.2 ModifySnapshotPolicy
 
-Modifies the configuration of an existing snapshot policy, including the snapshot cycle and deletion upon expiration. This operation uses common request headers. For more information, see Common request parameters.
+Modifies the configuration of an existing snapshot policy, including the snapshot cycle and deletion upon expiration.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3475,7 +3906,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=ModifySnapshotPolicy &SnapshotPolicyId=sp-17748631431******** &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "SnapshotPolicyId":"sp-17748631431********",
@@ -3483,9 +3914,17 @@ Sample success responses
  "Success":true
 ```
 
+`}`
+
 #### 5.13.3 DescribeSnapshotPolicies
 
-List snapshot policies. You can filter the list by file system or policy ID. Pagination is supported. This operation uses common request headers only. For more information, see Common request parameters.
+List snapshot policies. You can filter the list by file system or policy ID. Pagination is supported.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3522,7 +3961,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeSnapshotPolicies &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":5,
@@ -3531,6 +3970,11 @@ Sample success responses
  "PageSize":10,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "SnapshotPolicies":[
+```
+
+`{`
+
+```json
    "RetentionNum":30,
    "AssociatedDirectoryCount":1,
    "SnapshotPolicyId":"sp-17748631431********",
@@ -3542,7 +3986,7 @@ Sample success responses
    "CronExpression":"0 0 * * *"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.13.4 DeleteSnapshotPolicy
 
@@ -3550,7 +3994,13 @@ Deletes a specified snapshot policy.
 
 **Notes**
 
-Before you delete a scheduled snapshot policy, ensure that it is not associated with any directories. Disassociating a policy does not delete the associated directories. Deleted scheduled snapshot policies cannot be restored. Proceed with caution. This operation uses common request headers only. For more information, see Common request parameters.
+Before you delete a scheduled snapshot policy, ensure that it is not associated with any directories. Disassociating a policy does not delete the associated directories. Deleted scheduled snapshot policies cannot be restored. Proceed with caution.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3567,19 +4017,23 @@ Before you delete a scheduled snapshot policy, ensure that it is not associated 
 | Success | Boolean | true | Indicates whether the operation was successful. A value of true indicates that the operation was successful. |
 | SnapshotPolic yId | String | sp- 17748631431***** *** | The ID of the deleted snapshot policy. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DeleteSnapshotPolicy &SnapshotPolicyId=sp-17748631431******** &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "SnapshotPolicyId":"sp-17748631431********",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Success":true
 ```
+
+`}`
 
 ### 5.14 WORM
 
@@ -3589,7 +4043,13 @@ Enables the Write Once Read Many (WORM) policy for a file system. Once enabled, 
 
 **Considerations**
 
-Currently, only compliance mode is supported. In this mode, no user can delete or modify directories or files that are under WORM protection. For compliance reasons, the WORM policy cannot be disabled or reconfigured once enabled for a file system. Proceed with caution. This operation uses only common request headers. For more information, see Common request parameters.
+Currently, only compliance mode is supported. In this mode, no user can delete or modify directories or files that are under WORM protection. For compliance reasons, the WORM policy cannot be disabled or reconfigured once enabled for a file system. Proceed with caution.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3614,13 +4074,15 @@ Currently, only compliance mode is supported. In this mode, no user can delete o
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 | WormId | String | worm-******** | The ID of the WORM policy. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateWorm &FileSystemId=efs-nas-c***** &MinProtectPeriod=5d &MaxProtectPeriod=1y &DefaultProtectPeriod=1t &AutoLockPeriod=3d &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3631,13 +4093,21 @@ Sample success responses
  "Success":true
 ```
 
+`}`
+
 #### 5.14.2 UpdateWorm
 
 Modifies the protection period configuration of a Write Once Read Many (WORM) protection policy.
 
 **Considerations**
 
-In compliance mode, you can only extend the protection period. You also cannot modify the automatic lock period. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+In compliance mode, you can only extend the protection period. You also cannot modify the automatic lock period.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3664,13 +4134,15 @@ In compliance mode, you can only extend the protection period. You also cannot m
 | WormId | String | worm-******** | The ID of the WORM policy. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=UpdateWorm &WormId=worm-******** &MinProtectPeriod=5d &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3681,9 +4153,17 @@ Sample success responses
  "Success":true
 ```
 
+`}`
+
 #### 5.14.3 DescribeWorms
 
-Lists WORM protection policies. You can filter the list by WORM ID or file system ID. Pagination is supported. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+Lists WORM protection policies. You can filter the list by WORM ID or file system ID. Pagination is supported.
+
+**Request headers**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3717,13 +4197,15 @@ Lists WORM protection policies. You can filter the list by WORM ID or file syste
 | PageNum | Integer | 1 | The number of pages returned. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeWorms &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
 
 ```json
  "TotalCount":1,
@@ -3731,6 +4213,11 @@ Sample success responses
  "PageNum":1,
  "PageSize":10,
  "Worms":[
+```
+
+`{`
+
+```json
    "Status":"active",
    "Path":"/efs-nas-********",
    "MinProtectPeriod":"5d",
@@ -3747,13 +4234,19 @@ Sample success responses
    "RootfsId":"busybox"
 ```
 
-`]`
+`}` `]` `}`
 
 ### 5.15 Recycle bin
 
 #### 5.15.1 EnableTrash
 
-Enable the recycle bin feature, which moves deleted files to the recycle bin instead of permanently deleting them. This operation requires only common request headers. For more information, see Common request parameters.
+Enable the recycle bin feature, which moves deleted files to the recycle bin instead of permanently deleting them.
+
+**Request headers**
+
+This operation requires only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3771,13 +4264,15 @@ Enable the recycle bin feature, which moves deleted files to the recycle bin ins
 | Message | String | success | The error message. |
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=EnableTrash &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3787,9 +4282,15 @@ Successful response example
     "Success":true
 ```
 
+`}`
+
 #### 5.15.2 UpdateTrash
 
-Update the retention period for data in the recycle bin or the file filtering rules. This operation uses only common request headers. For more information, see Common request parameters.
+Update the retention period for data in the recycle bin or the file filtering rules.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3817,13 +4318,15 @@ Update the retention period for data in the recycle bin or the file filtering ru
 | Message | String | success | The error message. |
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=UpdateTrash &FileSystemId=efs-nas-c***** &ExpiredTime=14400 &Common request parameters
 ```
 
-Successful response example
+Successful response example `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3833,9 +4336,17 @@ Successful response example
     "Success":true
 ```
 
+`}`
+
 #### 5.15.3 ListTrashFiles
 
-Query the files or folders in the recycle bin of a file system. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Query the files or folders in the recycle bin of a file system.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3864,17 +4375,24 @@ Query the files or folders in the recycle bin of a file system. This operation u
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 10 | This parameter is deprecated and is not returned. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=ListTrashFiles &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TrashFiles":[
+```
+
+`{`
+
+```json
             "Type":"Regular File",
             "Size":1024,
             "ExpiredTime":"2025-12-15T16:00:00Z",
@@ -3884,7 +4402,7 @@ Response example
             "Name":"file11"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.15.4 RestoreTrashFile
 
@@ -3893,6 +4411,8 @@ Recover a file or folder from the recycle bin.
 **Notes**
 
 You can recover only one file or folder at a time. When you recover a folder, all files in that folder are recursively recovered. After a file is recovered, the system organizes the data. During this process, the performance of read requests may slightly decrease. This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3912,13 +4432,15 @@ You can recover only one file or folder at a time. When you recover a folder, al
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 |---|---|---|---|
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=RestoreTrashFile &FileSystemId=efs-nas-c***** &Path=/test &<Common request parameters>
 ```
 
-Sample successful response
+Sample successful response `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3928,13 +4450,21 @@ Sample successful response
     "Success":true
 ```
 
+`}`
+
 #### 5.15.5 RemoveTrashFile
 
 Permanently delete files or folders from the recycle bin.
 
 **Usage notes**
 
-When you permanently delete a folder, its contents are recursively deleted. A file system can run only one permanent deletion operation at a time. While a file or folder is being permanently deleted, you cannot start other recovery or cleanup operations. This operation uses only common request headers. For more information, see Common request parameters.
+When you permanently delete a folder, its contents are recursively deleted. A file system can run only one permanent deletion operation at a time. While a file or folder is being permanently deleted, you cannot start other recovery or cleanup operations.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3951,13 +4481,15 @@ When you permanently delete a folder, its contents are recursively deleted. A fi
 | Message | String | success | The error message. |
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=RemoveTrashFile &FileSystemId=efs-nas-c***** &Path=/test &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -3967,6 +4499,8 @@ Sample response
     "Success":true
 ```
 
+`}`
+
 #### 5.15.6 DisableAndCleanTrash
 
 Disable the recycle bin feature for a file system and deletes all files in the recycle bin.
@@ -3974,6 +4508,8 @@ Disable the recycle bin feature for a file system and deletes all files in the r
 **Notes**
 
 Disabling the recycle bin permanently deletes all files within it. When you re-enable the recycle bin, it is empty. Files deleted before it was re-enabled cannot be recovered. This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3989,13 +4525,15 @@ Disabling the recycle bin permanently deletes all files within it. When you re-e
 | Message | String | success | The error message. |
 | HttpStatusCod e | String | 200 | The HTTP status code. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DisableAndCleanTrash &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -4005,13 +4543,21 @@ Response example
     "Success":true
 ```
 
+`}`
+
 #### 5.15.7 EmptyTrash
 
 Empty the recycle bin of a specified file system.
 
 **Notes**
 
-Deleted files cannot be recovered after you empty the recycle bin. Use this operation with caution. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Deleted files cannot be recovered after you empty the recycle bin. Use this operation with caution.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Locat ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4033,7 +4579,7 @@ Sample request
 http(s)://[Endpoint]/?Action=EmptyTrash &FileSystemId=efs-nas-c***** &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -4042,3 +4588,5 @@ Sample response
     "Code":"200",
     "Success":true
 ```
+
+`}`

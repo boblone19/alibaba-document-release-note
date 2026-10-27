@@ -5,16 +5,337 @@ doc_version: "20260729"
 pdf_pages: 343
 source_pdf: "22_RocketMQ开发指南_rocketmq-apsarastack-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/rocketmq/zh/rocketmq-apsarastack-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云消息队列 RocketMQ 版 RocketMQ开发指南
 
-消息队列
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+- 3 通过POP网关调用专有云API
+  - 3.2 调用前置
+  - 3.3 Java版
+- 4 API参考
+  - 4.1 RocketMQ_API
+    - 4.1.1 产品更新说明
+    - 4.1.2 RocketMQ Open API简介
+      - 4.1.2.1 面向用户和场景
+      - 4.1.2.2 适用场景和局限性
+      - 4.1.2.3 Open API基本原理
+    - 4.1.3 RocketMQ Open API接入指南
+      - 4.1.3.1 公共参数设置
+      - 4.1.3.2 公共返回值解析
+    - 4.1.4 RocketMQ Open API公共术语
+      - 4.1.4.1 账号安全类
+        - 4.1.4.1.1 AccessKey
+        - 4.1.4.1.2 SecretKey
+      - 4.1.4.2 RocketMQ资源管控类
+        - 4.1.4.2.1 Topic
+        - 4.1.4.2.2 Group ID（GID）
+    - 4.1.5 RocketMQ Open API错误码列表
+    - 4.1.6 API详细说明
+      - 4.1.6.1 Instance管理
+        - 4.1.6.1.1 QueryCommonGenRedirectUrl
+        - 4.1.6.1.2 QueryTrendFlowLimit
+        - 4.1.6.1.3 UnbindSystemTags
+        - 4.1.6.1.4 CreateInstance
+        - 4.1.6.1.5 BindSystemTags
+        - 4.1.6.1.6 QuerySystemTagList
+        - 4.1.6.1.7 DeleteInstance
+        - 4.1.6.1.8 QueryInstanceBaseInfo
+        - 4.1.6.1.9 QueryInstanceStatistics
+        - 4.1.6.1.10 QueryInstanceList
+        - 4.1.6.1.11 QueryRouterInstanceList
+        - 4.1.6.1.12 UpdateInstance
+        - 4.1.6.1.13 CheckFortestInstance
+      - 4.1.6.2 Topic管理
+        - 4.1.6.2.1 CheckFortestTopic
+        - 4.1.6.2.2 PageQueryTopicList
+        - 4.1.6.2.3 CreateSubscription
+        - 4.1.6.2.4 CreateTopic
+        - 4.1.6.2.5 DeleteTopic
+        - 4.1.6.2.6 DeleteSubscription
+        - 4.1.6.2.7 QueryTrendTopicInputTps
+        - 4.1.6.2.8 QueryTopicSubDetail
+        - 4.1.6.2.9 QueryTopicStatus
+        - 4.1.6.2.10 QueryTopicNameList
+        - 4.1.6.2.11 QueryTopicListByGroupId
+        - 4.1.6.2.12 QueryTopicList
+        - 4.1.6.2.13 QueryTopic
+        - 4.1.6.2.14 QuerySubscriptionList
+        - 4.1.6.2.15 QuerySubscription
+        - 4.1.6.2.16 QueryRouterTopicList
+        - 4.1.6.2.17 UpdateTopicInfo
+        - 4.1.6.2.18 UpdateTopic
+        - 4.1.6.2.19 UpdateSubscription
+        - 4.1.6.2.20 SearchSubscription
+      - 4.1.6.3 Cluster管理
+        - 4.1.6.3.1 QueryClusterList
+        - 4.1.6.3.2 QueryClusterCapacity
+      - 4.1.6.4 Group管理
+        - 4.1.6.4.1 CreateGroup
+        - 4.1.6.4.2 PageQueryGroupList
+        - 4.1.6.4.3 DeleteGroup
+        - 4.1.6.4.4 QueryGroupIdList
+        - 4.1.6.4.5 QueryGroupSubDetail
+        - 4.1.6.4.6 QueryGroupList
+        - 4.1.6.4.7 QueryTrendGroupOutputTps
+        - 4.1.6.4.8 UpdateGroupInfo
+        - 4.1.6.4.9 UpdateGroupConsumer
+      - 4.1.6.5 CloudInfo管理
+        - 4.1.6.5.1 QueryCloudInfoNoPage
+        - 4.1.6.5.2 UpdateCloudInfo
+        - 4.1.6.5.3 DeleteCloudInfo
+        - 4.1.6.5.4 CreateCloudInfo
+        - 4.1.6.5.5 QueryCloudInfo
+      - 4.1.6.6 Message管理
+        - 4.1.6.6.1 PushMessage
+        - 4.1.6.6.2 DownloadMessageBodyInDLQ
+        - 4.1.6.6.3 DownloadMessageAllInDLQ
+        - 4.1.6.6.4 DownloadMessage
+        - 4.1.6.6.5 QueryMessageByPagedTopic
+        - 4.1.6.6.6 QueryMessageByPagedDLQ
+        - 4.1.6.6.7 QueryMessageByKey
+        - 4.1.6.6.8 QueryMessageByIdInDLQ
+        - 4.1.6.6.9 QueryMessageById
+        - 4.1.6.6.10 TraceMessage
+        - 4.1.6.6.11 SendMessage
+        - 4.1.6.6.12 ResendMessageByIdInDLQ
+      - 4.1.6.7 Empower管理
+        - 4.1.6.7.1 CheckFortestRamAction
+        - 4.1.6.7.2 DeleteDauthToolByUserId
+        - 4.1.6.7.3 CreateGroupEmpowerBySub
+        - 4.1.6.7.4 CreateEmpowerBySub
+        - 4.1.6.7.5 CreateEmpower
+        - 4.1.6.7.6 QueryGroupEmpowerList
+        - 4.1.6.7.7 QueryEmpowerList
+        - 4.1.6.7.8 DeleteGroupEmpower
+        - 4.1.6.7.9 DeleteEmpower
+      - 4.1.6.8 MQTT管理接口
+        - 4.1.6.8.1 DeleteMqttGroupId
+        - 4.1.6.8.2 SendMqtt
+        - 4.1.6.8.3 QueryMqttMsgTransTask
+        - 4.1.6.8.4 CreateMqttInstanceStoreResource
+        - 4.1.6.8.5 CreateMqttInstance
+        - 4.1.6.8.6 CreateMqttGroupId
+        - 4.1.6.8.7 PageQueryMqttInstanceStoreResource
+        - 4.1.6.8.8 PageQueryMqttInstanceList
+        - 4.1.6.8.9 PageQueryMqttGroupId
+        - 4.1.6.8.10 DeleteMqttInstanceStoreResource
+        - 4.1.6.8.11 DeleteMqttInstance
+        - 4.1.6.8.12 QueryMqttInstanceReport
+        - 4.1.6.8.13 QueryMqttInstanceList
+        - 4.1.6.8.14 QueryMqttInstanceBaseInfo
+        - 4.1.6.8.15 QueryMqttGroupIdList
+        - 4.1.6.8.16 QueryMqttDeviceRunningInfo
+        - 4.1.6.8.17 QueryMqttConnectionSum
+        - 4.1.6.8.18 QueryMqttClientSetByTopic
+        - 4.1.6.8.19 QueryMqttClientSetByGroupId
+        - 4.1.6.8.20 QueryMqttTraceByTraceId
+        - 4.1.6.8.21 QueryMqttMsgByPubInfo
+        - 4.1.6.8.22 QueryMqttInstanceStoreResourceNameList
+        - 4.1.6.8.23 QueryMqttInstanceStoreInstanceList
+        - 4.1.6.8.24 UpdateMqttInstance
+        - 4.1.6.8.25 ChangeMqttInstanceSpec
+        - 4.1.6.8.26 BindMqttInstance
+      - 4.1.6.9 Trace管理
+        - 4.1.6.9.1 QueryTraceMapByQueryId
+        - 4.1.6.9.2 QueryPubTraceByQueryId
+        - 4.1.6.9.3 PageQueryTraceListByUserId
+        - 4.1.6.9.4 DeleteTraceQueryTask
+        - 4.1.6.9.5 QueryTraceByMsgTopic
+        - 4.1.6.9.6 QueryTraceByMsgKey
+        - 4.1.6.9.7 QueryTraceByMsgId
+      - 4.1.6.10 Consumer管理
+        - 4.1.6.10.1 CheckFortestConsumerId
+        - 4.1.6.10.2 QueryAllConsumerAccumulation
+        - 4.1.6.10.3 QueryConsumerTimespan
+        - 4.1.6.10.4 QueryConsumerStatus
+        - 4.1.6.10.5 QueryConsumerProgress
+        - 4.1.6.10.6 QueryConsumerJstackInfo
+        - 4.1.6.10.7 QueryConsumerConnection
+        - 4.1.6.10.8 QueryConsumerAccumulate
+        - 4.1.6.10.9 UpdateConsumerReadableByTopicAndGroup
+        - 4.1.6.10.10 ResetConsumerOffset
+        - 4.1.6.10.11 QueryUnitLatestConsumerTime
+      - 4.1.6.11 MQ Connector管理
+        - 4.1.6.11.1 ResumeMqConnector
+        - 4.1.6.11.2 PauseMqConnector
+        - 4.1.6.11.3 DeleteDeploymentMqConnector
+        - 4.1.6.11.4 CreateDeploymentMqConnector
+        - 4.1.6.11.5 DeployDeploymentMqConnector
+        - 4.1.6.11.6 QueryMqConnectorSysResourceName
+        - 4.1.6.11.7 QueryMqConnectorMetricsDetailList
+        - 4.1.6.11.8 QueryMqConnectorInfoList
+        - 4.1.6.11.9 QueryMqConnectorDeploymentList
+        - 4.1.6.11.10 UpdateMqConnectorDeployment
+      - 4.1.6.12 Router Task管理
+        - 4.1.6.12.1 DeleteCloudRouterTask
+        - 4.1.6.12.2 CreateRouterTask
+        - 4.1.6.12.3 CreateRouterInnerTask
+        - 4.1.6.12.4 CreateCloudRouterTask
+        - 4.1.6.12.5 QueryCloudRouterTaskStats
+        - 4.1.6.12.6 QueryCloudRouterTask
+        - 4.1.6.12.7 QueryCloudRouterItems
+        - 4.1.6.12.8 PageQueryCloudRouterTask
+        - 4.1.6.12.9 DeleteRouterTask
+        - 4.1.6.12.10 DeleteRouterInnerTask
+        - 4.1.6.12.11 QueryRouterTask
+        - 4.1.6.12.12 QueryRouterStat
+        - 4.1.6.12.13 QueryRouterInnerTask
+        - 4.1.6.12.14 QueryRouterInnerStat
+        - 4.1.6.12.15 UpdateRouterFilterRule
+        - 4.1.6.12.16 UpdateCloudRouterTask
+        - 4.1.6.12.17 StopRouterTask
+        - 4.1.6.12.18 StopCloudRouterTask
+        - 4.1.6.12.19 StartRouterTask
+        - 4.1.6.12.20 StartRouterInnerTask
+        - 4.1.6.12.21 StartCloudRouterTask
+        - 4.1.6.12.22 SearchRouterTask
+        - 4.1.6.12.23 AddRouterInnerConfig
+      - 4.1.6.13 VPC管理
+        - 4.1.6.13.1 CreateVpcTunnelInstanceSingleTunnel
+        - 4.1.6.13.2 DeleteVpcTunnelInstanceSingleTunnel
+        - 4.1.6.13.3 QueryVpcTunnelTunnelSwitch
+        - 4.1.6.13.4 QueryVpcTunnelInstanceSingleTunnelList
+      - 4.1.6.14 Region管理
+        - 4.1.6.14.1 QueryMetaData
+        - 4.1.6.14.2 QueryCommonRegionData
+        - 4.1.6.14.3 QueryRegionList
+        - 4.1.6.14.4 QueryRegionConsoleUrlList
+      - 4.1.6.15 UnitResetTask管理
+        - 4.1.6.15.1 CreateUnitResetTask
+        - 4.1.6.15.2 QueryUnitResetTask
+- 5 SDK参考
+  - 5.1 RocketMQ_SDK
+    - 5.1.2 消息模型
+    - 5.1.3 产品更新说明
+    - 5.1.4 传输协议与字符编码
+    - 5.1.5 常用类及其方法
+      - 5.1.5.1 常量类PropertyKeyConst
+      - 5.1.5.2 工厂类ONSFactory
+        - 5.1.5.2.1 createConsumer
+        - 5.1.5.2.2 createBatchConsumer
+        - 5.1.5.2.3 createOrderedConsumer
+        - 5.1.5.2.4 createOrderProducer
+        - 5.1.5.2.5 createProducer
+        - 5.1.5.2.6 createTransactionProducer
+      - 5.1.5.3 消息类Message
+        - 5.1.5.3.1 消息类Message概述
+        - 5.1.5.3.2 Message默认构造方法
+        - 5.1.5.3.3 Message有参构造方法（一）
+        - 5.1.5.3.4 Message有参构造方法（二）
+        - 5.1.5.3.5 putUserProperties
+        - 5.1.5.3.6 getUserProperties
+        - 5.1.5.3.7 getTopic
+        - 5.1.5.3.8 setTopic
+        - 5.1.5.3.9 getTag
+        - 5.1.5.3.10 setTag
+        - 5.1.5.3.11 getKey
+        - 5.1.5.3.12 setKey
+        - 5.1.5.3.13 getMsgID
+        - 5.1.5.3.14 setMsgID
+        - 5.1.5.3.15 getReconsumeTimes
+        - 5.1.5.3.16 setReconsumeTimes
+        - 5.1.5.3.17 getBornTimestamp
+        - 5.1.5.3.18 setBornTimestamp
+        - 5.1.5.3.19 getBornHost
+        - 5.1.5.3.20 setBornHost
+        - 5.1.5.3.21 getStartDeliverTime
+        - 5.1.5.3.22 setStartDeliverTime
+        - 5.1.5.3.23 getShardingKey
+        - 5.1.5.3.24 setShardingKey
+      - 5.1.5.4 异常类ONSClientException
+        - 5.1.5.4.1 ONSClientException默认构造方法
+        - 5.1.5.4.2 ONSClientException有参构造方法（一）
+        - 5.1.5.4.3 ONSClientException有参构造方法（二）
+        - 5.1.5.4.4 ONSClientException有参构造方法（三）
+      - 5.1.5.5 发送消息接口
+        - 5.1.5.5.1 发送消息接口概述
+        - 5.1.5.5.2 发送结果SendResult
+          - 5.1.5.5.2.1 SendResult默认构造方法
+          - 5.1.5.5.2.2 getMessageId
+          - 5.1.5.5.2.3 getTopic
+          - 5.1.5.5.2.4 toString
+        - 5.1.5.5.3 生产者实例Producer
+          - 5.1.5.5.3.1 生产者实例Producer概述
+          - 5.1.5.5.3.2 send
+          - 5.1.5.5.3.3 sendOneway
+          - 5.1.5.5.3.4 sendAsync
+          - 5.1.5.5.3.5 isStarted
+          - 5.1.5.5.3.6 isClosed
+          - 5.1.5.5.3.7 start
+          - 5.1.5.5.3.8 shutdown
+        - 5.1.5.5.4 分布式事务消息生产者实例 TransactionProducer
+          - 5.1.5.5.4.1 send
+          - 5.1.5.5.4.2 isStarted
+          - 5.1.5.5.4.3 isClosed
+          - 5.1.5.5.4.4 start
+          - 5.1.5.5.4.5 shutdown
+          - 5.1.5.5.4.6 本地事务执行器LocalTransactionExecuter
+          - 5.1.5.5.4.7 分布式事务消息状态TransactionStatus
+        - 5.1.5.5.5 顺序消息生产者实例OrderProducer
+          - 5.1.5.5.5.1 send
+          - 5.1.5.5.5.2 isStarted
+          - 5.1.5.5.5.3 isClosed
+          - 5.1.5.5.5.4 start
+          - 5.1.5.5.5.5 shutdown
+      - 5.1.5.6 订阅消息接口
+        - 5.1.5.6.1 订阅消息接口概述
+        - 5.1.5.6.2 消费者实例Consumer
+          - 5.1.5.6.2.1 消费者实例Consumer概述
+          - 5.1.5.6.2.2 subscribe
+          - 5.1.5.6.2.3 unsubscribe
+          - 5.1.5.6.2.4 isStarted
+          - 5.1.5.6.2.5 isClosed
+          - 5.1.5.6.2.6 start
+          - 5.1.5.6.2.7 shutdown
+        - 5.1.5.6.3 消息监听器MessageListener
+          - 5.1.5.6.3.1 消费监听器MessageListener概述
+          - 5.1.5.6.3.2 consume
+        - 5.1.5.6.4 消息消费结果Action
+          - 5.1.5.6.4.1 消息消费结果Action概述
+          - 5.1.5.6.4.2 valueOf
+          - 5.1.5.6.4.3 values
+        - 5.1.5.6.5 消费模式PropertyValueConst
+        - 5.1.5.6.6 顺序消费者实例OrderConsumer
+          - 5.1.5.6.6.1 顺序消费者实例OrderConsumer概述
+          - 5.1.5.6.6.2 subscribe
+          - 5.1.5.6.6.3 unsubscribe
+          - 5.1.5.6.6.4 isStarted
+          - 5.1.5.6.6.5 isClosed
+          - 5.1.5.6.6.6 start
+          - 5.1.5.6.6.7 shutdown
+        - 5.1.5.6.7 消息监听器MessageOrderListener
+          - 5.1.5.6.7.1 消息监听器MessageOrderListener概述
+          - 5.1.5.6.7.2 consume
+        - 5.1.5.6.8 顺序消息消费结果OrderAction
+          - 5.1.5.6.8.1 顺序消息消费结果OrderAction概述
+          - 5.1.5.6.8.2 valueOf
+          - 5.1.5.6.8.3 values
+        - 5.1.5.6.9 批量消费者实例BatchConsumer
+          - 5.1.5.6.9.1 批量消费者实例BatchConsumer概述
+          - 5.1.5.6.9.2 subscribe
+          - 5.1.5.6.9.3 unsubscribe
+          - 5.1.5.6.9.4 isStarted
+          - 5.1.5.6.9.5 isClosed
+          - 5.1.5.6.9.6 start
+          - 5.1.5.6.9.7 shutdown
+        - 5.1.5.6.10 批量消费消息监听器BatchMessageListener
+          - 5.1.5.6.10.1 批量消费消息监听器BatchMessageListener概述
+          - 5.1.5.6.10.2 consume
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,47 +352,47 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-消息队列
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
 
-消息队列
-
-| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |  |
+| 获取API信息获取AccessKey或STS AccessKey 获取公共Header参数 |   |
 |---|---|
-| 获取RocketMQ的Endpoint 获取RocketMQ的SDK包调用API |  |
+| 获取RocketMQ的Endpoint 获取RocketMQ的SDK包调用API |   |
 
-准备工正式调
+> 准备工
+> 正式调
 
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
 **说明**
 
 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
 **说明**
 
 调用API时，通过Header参数组织ID（<x-acs-organizationid>）和资源集ID（<x-acsresourcegroupid>）指定组织和资源集，实现实例资源的隔离查询。 组织ID（<x-acs-organizationid>）不指定则默认获取当前用户所属的组织。 资源集ID（<x-acs-resourcegroupid>）不指定默认为空，如果指定资源集需要同时指定组织ID。
 4. 查找API的开发文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，查找开发指南的方式请参见开发文档使用说明。 消息队列
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，查找开发指南的方式请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-消息队列
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -89,17 +410,17 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
-AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您
+AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 消息队列通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
 **警告**
 
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织
+个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -108,21 +429,28 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见《Apsara Uni-manager运营控制台开发指南》中的《ListResourceGroup》文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
+**获取个人账号AccessKey**
+
+获取个人账号AccessKey的方法如下：
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
 **说明**
 
-AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。 消息队列
+AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+
+**获取组织AccessKey**
+
+获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -154,13 +482,13 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 4. 单击
 按钮，选择**云平台** > **统一云管平台**，**版本**选择**2019-05-10**。
 5. 在文本框内输入 `ListResourceGroup` 进行在线调试，调用成功后查看**调用结果**中**id**的信息，即为资源
-集ID。接口信息详见Apsara Uni-manager运营控制台开发指南中的章节ListResourceGroup。 消息队列
+集ID。接口信息详见Apsara Uni-manager运营控制台开发指南中的章节ListResourceGroup。
 
 **获取实例ID**
 
 实例ID可以通过Apsara Uni-manager运营控制台中的云产品实例列表进行获取，本文中以API网关为例， 获取步骤如下：
 1. 登录Apsara Uni-manager运营控制台。
-2. 在顶部的菜单栏中，选择**产品** > **中间件** > **消息队列** > **消息队列** **RocketMQ** 版。
+2. 在顶部的菜单栏中，选择**产品** > **中间件** > **消息队列** > **消息队列** **RocketMQ** **版**。
 3. 在左侧导航栏中，单击**实例列表**。
 4. 在实例列表中查看**实例****ID**。
 
@@ -175,7 +503,7 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -188,7 +516,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-消息队列
 
 ```
 public static void main(String[] args) {
@@ -215,7 +542,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -237,11 +569,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，示例如下。
-消息队列
 
 ```java
 import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Config;
@@ -254,7 +585,17 @@ public class DemoStsTest {
     public static void main(String[] args) {
         Config credentialConfig = new Config();
         credentialConfig.setType("sts");
+```
+
+`//` 请替换为前一步获取到的`STS`三元组中`AccessKeyI`。
+
+```
         credentialConfig.setAccessKeyId("your_AccessKeyId");
+```
+
+`//` 请替换为前一步获取到的`STS`三元组中`AccessKeySecret`
+
+```
         credentialConfig.setAccessKeySecret("your__AccessKeySecret");
 ```
 
@@ -265,18 +606,11 @@ public class DemoStsTest {
         Client credentialClient = new Client(credentialConfig);
 ```
 
-`//` 继续调用`API`，完整参考的`API`文档
+`//` 继续调用`API`，完整参考的`API`文档 `}` `}` 用专有云API
 
-```
-    }
-}
-```
+## 3 通过POP网关调用专有云API
 
-消息队列
-
-## 通过POP网关调用专有云API
-
-### 概述
+### 3.1 概述
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍概述情况。
 
@@ -313,7 +647,7 @@ public class DemoStsTest {
 | CheckFortestTopic | 3.16.2-0 |
 | CreateCloudInfo | 3.16.2-0 |
 
-消息队列
+用专有云API
 
 | CreateCloudRouterTask | 3.16.2-0 |
 |---|---|
@@ -336,7 +670,7 @@ public class DemoStsTest {
 | DeleteTopic | 3.16.2-0 |
 | DeleteTraceQueryTask | 3.16.2-0 |
 
-消息队列
+用专有云API
 
 | DeleteVpcTunnelInstanceSingleTunnel | 3.16.2-0 |
 |---|---|
@@ -359,7 +693,7 @@ public class DemoStsTest {
 | QueryClusterList | 3.16.2-0 |
 | QueryCommonGenRedirectUrl | 3.16.2-0 |
 
-消息队列
+用专有云API
 
 | QueryCommonRegionData | 3.16.2-0 |
 |---|---|
@@ -382,7 +716,7 @@ public class DemoStsTest {
 | QueryMessageByKey | 3.16.2-0 |
 | QueryMessageByPagedDLQ | 3.16.2-0 |
 
-消息队列
+用专有云API
 
 | QueryMessageByPagedTopic | 3.16.2-0 |
 |---|---|
@@ -405,7 +739,7 @@ public class DemoStsTest {
 | QueryTopicStatus | 3.16.2-0 |
 | QueryTopicSubDetail | 3.16.2-0 |
 
-消息队列
+用专有云API
 
 | QueryTraceByMsgId | 3.16.2-0 |
 |---|---|
@@ -428,7 +762,7 @@ public class DemoStsTest {
 | StartCloudRouterTask | 3.16.2-0 |
 | StopCloudRouterTask | 3.16.2-0 |
 
-消息队列
+用专有云API
 
 | TraceMessage | 3.16.2-0 |
 |---|---|
@@ -443,7 +777,7 @@ public class DemoStsTest {
 | UpdateTopic | 3.16.2-0 |
 | UpdateTopicInfo | 3.16.2-0 |
 
-### 调用前置
+### 3.2 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -459,7 +793,7 @@ public class DemoStsTest {
 2. 在顶部菜单栏选择**产品** > **开发工具** > **API****与工具** > **开发者门户**。
 3. 在**开发者门户**页面，选择**API****集成** > **API****调试**。
 4. 在左侧导航栏中选择目标云产品。
-消息队列
+用专有云API
 5. 在**版本**下拉列表中，选择目标API版本。
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
@@ -479,15 +813,15 @@ ons_bizapi_endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见获取公共Header参数。
 
-### Java版
+### 3.3 Java版
 
 本文为您介绍通过POP网关的方式进行API调用时，高级SDK的使用示例。
 
 **安装说明**
 
-消息队列
+用专有云API
 
 **开发者门户获取SDK包**
 
@@ -502,7 +836,7 @@ ons_bizapi_endpoint值，即 `Endpoint` 。
 **导入SDK包**
 
 1. 通过以下任一方式创建Maven项目。
-方式一：在IDEA中添加一个Maven项目。 消息队列方式二：将已有的项目转换为Maven项目。 i. 右键单击要转换的项目，并选择**Add Framework Support...**。 消息队列 ii. 选择**Maven**，并单击**OK**。
+方式一：在IDEA中添加一个Maven项目。 用专有云API 方式二：将已有的项目转换为Maven项目。 i. 右键单击要转换的项目，并选择**Add Framework Support...**。 用专有云API ii. 选择**Maven**，并单击**OK****。**
 2. 在项目根目录下创建lib目录，通过开发者门户获取SDK包后放入到lib目录下，如下图。
 3. 在项目目录下的pom.xml中，添加Java SDK依赖。
 
@@ -520,7 +854,7 @@ ons_bizapi_endpoint值，即 `Endpoint` 。
 ```
 
 4. 查看IDEA右侧Maven栏。
-如图所示，表示已成功导入依赖。 消息队列
+如图所示，表示已成功导入依赖。 用专有云API
 
 **代码示例**
 
@@ -537,6 +871,10 @@ import com.aliyun.ons_inner20180205.Client; import com.aliyun.ons_inner20180205.
 
 ```
                 .setRegionId("<your-regionId>")
+                // 您的AccessKey ID
+                .setAccessKeyId("<AccessKey ID>")
+                // 您的AccessKey Secret
+                .setAccessKeySecret("<AccessKey Secret>")
 ```
 
 `//` 支持通过`Config`在初始化`Client`阶段设置请求的代理，根据实际情况替换下面示例。
@@ -584,7 +922,7 @@ import com.aliyun.ons_inner20180205.Client; import com.aliyun.ons_inner20180205.
         runtime.setExtendsParameters(new ExtendsParameters().setHeaders(headers));
 ```
 
-`//` 支持通过运行时参数（`RuntimeOptions`）配置当前请求的代理，代理配置优先级：`RuntimeOption` 配置配置根据需要选择种即可消息队列配置 `> Client`配置，根据需要选择一种即可。
+`//` 支持通过运行时参数（`RuntimeOptions`）配置当前请求的代理，代理配置优先级：`RuntimeOption` 配置配置根据需要选择种即可用专有云API 配置 `> Client`配置，根据需要选择一种即可。
 
 ```
         runtime.setHttpProxy("http://127.0.0.1:9898");
@@ -627,6 +965,7 @@ import com.aliyun.ons_inner20180205.Client; import com.aliyun.ons_inner20180205.
 `// 5.`通过 `client` 对象获得对应 `request` 响应 `response` 。
 
 ```
+            QueryInstanceListResponse response =
 client.queryInstanceListWithOptions(request, runtime);
 ```
 
@@ -660,10 +999,9 @@ client.queryInstanceListWithOptions(request, runtime);
 
 ```java
             System.out.println(error.getMessage());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **步骤介绍**
 
@@ -671,7 +1009,7 @@ client.queryInstanceListWithOptions(request, runtime);
 AccessKeySecret、Endpoint等配置，该配置信息参考获取AccessKey和获取API信息及其EndPoint进行获取。
 
 ```
-Config config = new Config() .setAccessKeyId(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")) .setAccessKeySecret(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
+Config config = new Config() // 您的AccessKey ID .setAccessKeyId(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")) // 您的AccessKey Secret .setAccessKeySecret(System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
 ```
 
 `//` 访问的域名
@@ -681,7 +1019,7 @@ config.endpoint = "************";
 ```
 
 2. 实例化一个客户端，从com.aliyun.ons_inner20180205.Client类生成对象client 。后续request
-消息队列 response从com.aliyun.ons_inner20180205.models中获得。
+用专有云API response从com.aliyun.ons_inner20180205.models中获得。
 
 ```
 Client client = new Client(config);
@@ -712,16 +1050,15 @@ String requestId = response.Body.requestId;
 ```
 catch (Exception e) {
     e.printStackTrace();
-}
 ```
 
-消息队列
+`}`
 
-## API参考
+## 4 API参考
 
-### RocketMQ_API
+### 4.1 RocketMQ_API
 
-#### 产品更新说明
+#### 4.1.1 产品更新说明
 
 本文介绍消息队列RocketMQ版（简称RocketMQ）从V3.8.0到V3.8.1的产品更新说明，帮助您更快地上手更新后的版本。
 
@@ -733,7 +1070,7 @@ RocketMQ开放实例化功能，解决多租之间的隔离问题，每个用户
 properties.put(PropertyKeyConst.NAMESRV_ADDR, "xxxx");
 ```
 
-`//` 兼容配置（不推荐继续使用, 建议逐渐升级为推荐配置）
+`//` 兼容配置（不推荐继续使用`,` 建议逐渐升级为推荐配置）
 
 ```
 properties.put(PropertyKeyConst.ONSAddr, "xxxx");
@@ -749,14 +1086,14 @@ ons-client客户端必须升级到最新版本： JAVA：1.8.7.1.Final C/C++：v
 
 **资源申请流程优化**
 
-原RocketMQ的资源包括3个部分：消息主题（Topic）、生产者（Producer ID）、消费者（Consumer ID），三者之间都是多对多的对应关系，三者之间的关系复杂而难以理解；对于中、大型企业客户来说，每创建一个Topic，都要关联或者更新Producer ID和Consumer ID，流程过于复杂。 因此，为进一步优化用户体验，降低新用户的接入门槛，对资源申请的接入流程进行简化。 资源申请方面，主要包括以下部分： 取消原Producer ID的申请，与原Consumer ID统一为Group ID，即对应控制台上，取消原生产者管消息队列取消原申请Producer ID或Consumer ID时需要指定Topic的关联约束，只需申请Group ID即可在代兼容性相关问题原申请的Producer ID列表将不再显示，不影响当前业务的正常使用。 原申请的以“CID-”或者“CID_”打头的Consumer ID仍可以正常使用，代码中既可在**PropertyKeyConst.ConsumerId**中设置，亦可在**PropertyKeyConst.GROUP_ID**中设置。 示例代码
+原RocketMQ的资源包括3个部分：消息主题（Topic）、生产者（Producer ID）、消费者（Consumer ID），三者之间都是多对多的对应关系，三者之间的关系复杂而难以理解；对于中、大型企业客户来说，每创建一个Topic，都要关联或者更新Producer ID和Consumer ID，流程过于复杂。 因此，为进一步优化用户体验，降低新用户的接入门槛，对资源申请的接入流程进行简化。 资源申请方面，主要包括以下部分： Topic管理（保持不变） Topic资源申请，一级消息类型，通过Topic对消息进行分类。 取消原Producer ID的申请，与原Consumer ID统一为Group ID，即对应控制台上，取消原生产者管理，与原消费者管理统一为Group管理。 取消原申请Producer ID或Consumer ID时需要指定Topic的关联约束，只需申请Group ID即可在代码中直接配置与Topic的关联使用。 兼容性相关问题原申请的Producer ID列表将不再显示，不影响当前业务的正常使用。 原申请的以“CID-”或者“CID_”打头的Consumer ID仍可以正常使用，代码中既可在**PropertyKeyConst.ConsumerId**中设置，亦可在**PropertyKeyConst.GROUP_ID**中设置。 示例代码
 
 **说明**
 
 建议您将ons-client客户端升级为最新版本： JAVA：1.8.7.1.Final C/C++：v2.0.0 .NET：1.1.3 原来已经在使用的Producer ID或者Consumer ID保持兼容，不影响当前在线业务的正常使用，但建议逐步替换为新的推荐配置方式。 推荐方式：将Producer ID、Consumer ID的概念融合成Group ID。
 
 ```
-// 设置PropertyKeyConst.GROUP_ID，原PropertyKeyConst.ProducerId和 properties.put(PropertyKeyConst.GROUP_ID, "原CID-XXX或GID-XXX");
+// 设置PropertyKeyConst.GROUP_ID，原PropertyKeyConst.ProducerId和 PropertyKeyConst.ConsumerId会被@Deprecated properties.put(PropertyKeyConst.GROUP_ID, "原CID-XXX或GID-XXX");
 ```
 
 兼容方式：Producer ID用来标识生产者，Consumer ID用来标识消费者。 `//` 创建`Producer`时需要配置`PropertyKeyConst.ProducerId`。
@@ -771,25 +1108,25 @@ properties.put(PropertyKeyConst.ProducerId, "原PID-XXX或GID-XXX");
 properties.put(PropertyKeyConst.ConsumerId, "原CID-XXX或GID-XXX");
 ```
 
-#### RocketMQ Open API简介
+#### 4.1.2 RocketMQ Open API简介
 
-##### 面向用户和场景
+##### 4.1.2.1 面向用户和场景
 
 Open API是RocketMQ提供给用户的管控手段，用于实现一系列资源管理和运维功能。同生产用SDK不同，Open API主要用于管理RocketMQ相关的资源，例如Topic、Group ID等。 Open API的主要用户： 已经熟悉RocketMQ控制台的主要功能。 需要实现类似控制台的管控，存在自定义管控功能等需求。
 
-##### 适用场景和局限性
+##### 4.1.2.2 适用场景和局限性
 
 1. Open API由于其实现原理，调用端必须具备访问RocketMQ控制台域名能力，否则无法调通。
 2. Open API底层基于HTTP协议实现，性能和效率不高，仅适用于管控场景，请勿用于大批量高并发的生产
 场景。
 
-##### Open API基本原理
+##### 4.1.2.3 Open API基本原理
 
-Open API底层通过HTTP接口提供服务，用户调用HTTP客户端，发出HTTP请求到RocketMQ的后端服务去执行。 消息队列用户将参数封装到每个请求中，每个请求即对应一个接口，执行的结果放在response中，请求和响应的字符编码都是采用UTF-8编码。 其中，HTTP请求的服务端地址即为控制台的域名地址。
+Open API底层通过HTTP接口提供服务，用户调用HTTP客户端，发出HTTP请求到RocketMQ的后端服务去执行。 用户将参数封装到每个请求中，每个请求即对应一个接口，执行的结果放在response中，请求和响应的字符编码都是采用UTF-8编码。 其中，HTTP请求的服务端地址即为控制台的域名地址。
 
-#### RocketMQ Open API接入指南
+#### 4.1.3 RocketMQ Open API接入指南
 
-##### 公共参数设置
+##### 4.1.3.1 公共参数设置
 
 客户端基于HTTPS方式调用RocketMQ Open API，所有API请求都需要传入一部分公共参数，供服务端进行权限校验。 公共参数列表如下：
 
@@ -812,9 +1149,9 @@ Open API底层通过HTTP接口提供服务，用户调用HTTP客户端，发出H
 https://mq.console.${global:internet-domain}/json/topic/create
 ```
 
-**说明**
+> **说明：** 在单region部署的情况下或接入多region部署中的中心region，使用${global:internet- domain}作为访问域名；接入多region部署下的普通region，使用 ${global:region}.${global:internet-domain}作为访问域名
 
-在单region部署的情况下或接入多region部署中的中心region，使用${global:internetdomain}作为访问域名；接入多region部署下的普通region，使用 ${global:region}.${global:internet-domain}作为访问域名参数列表有（参数包含公共参数和每个接口自定义的参数）：
+参数列表有（参数包含公共参数和每个接口自定义的参数）：
 
 **Key_2=Value_2&Key_1=Value_1&Key_3=Value_3**
 
@@ -824,7 +1161,7 @@ https://mq.console.${global:internet-domain}/json/topic/create
 https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Key_1=Value_1&Key_3=Value_3
 ```
 
-将**Key_2**，**Key_1**，**Key_3**这3对参数的key按字典序排序，然后将对应的value按字符串连接。Key的排序结果为：Key_1、Key_2、Key_3，排序后其对应值的连接结果为Value1Value2Value3。此时待签名字符串就是Value1Value2Value3。 然后使用您的secretKey作为秘钥，使用 HmacSHA1方法对上面的待签名字符串做签名，得到签名字符串。Hmac的算法实现，各个语言都有现成的函数库，请自行搜索。 Linux命令行的方式可以参考： 消息队列
+将**Key_2****，****Key_1****，****Key_3**这3对参数的key按字典序排序，然后将对应的value按字符串连接。Key的排序结果为：Key_1、Key_2、Key_3，排序后其对应值的连接结果为Value1Value2Value3。此时待签名字符串就是Value1Value2Value3。 然后使用您的secretKey作为秘钥，使用 HmacSHA1方法对上面的待签名字符串做签名，得到签名字符串。Hmac的算法实现，各个语言都有现成的函数库，请自行搜索。 Linux命令行的方式可以参考：
 
 ```
 echo -n 'Value1Value2Value3' | openssl dgst -hmac '用户的SecretKey' -sha1 -binary | base
@@ -836,12 +1173,11 @@ echo -n 'Value1Value2Value3' | openssl dgst -hmac '用户的SecretKey' -sha1 -bi
 https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Key_1=Value_1&Key_3=Value_3&_signature= eqweq%2Badwe23****%3D
 ```
 
-##### 公共返回值解析
+##### 4.1.3.2 公共返回值解析
 
-客户端发起HTTP请求到服务端，服务端处理完成后同样以HTTP响应形式返回结果，正常情况下返回结果 HTTP状态码都是200，返回的内容放在Body中，为JSON字符串，需要客户端自己做JSON解析，判断是否调用成功。 JSON格式如下：
+客户端发起HTTP请求到服务端，服务端处理完成后同样以HTTP响应形式返回结果，正常情况下返回结果 HTTP状态码都是200，返回的内容放在Body中，为JSON字符串，需要客户端自己做JSON解析，判断是否调用成功。 JSON格式如下： `{`
 
 ```json
- {
     "code": 200,
     "currentPage": 0,
     "data": { },
@@ -853,34 +1189,33 @@ https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Ke
     "status": "SUCCESS",
     "success": true,
     "total": 0
-}
 ```
 
-返回值说明： code：状态码，200代表成功，其他都是处理失败。 currentPage：当前请求如果是分页查询的请求，此变量代表结果所处的当前页。 dynamicMessage：错误异常信息字符串。 message：处理结果信息。 pageSize：当前请求如果是分页查询的请求，此变量代表结果所处的当前页大小。 success：是否成功。 data：业务信息返回，String类型，也是JSON，如果当前请求的返回结果中带有业务数据，则此处需要反解JSON内容。 RequestId：每个请求的唯一ID，String类型。
+`}` 返回值说明： code：状态码，200代表成功，其他都是处理失败。 currentPage：当前请求如果是分页查询的请求，此变量代表结果所处的当前页。 dynamicMessage：错误异常信息字符串。 message：处理结果信息。 pageSize：当前请求如果是分页查询的请求，此变量代表结果所处的当前页大小。 success：是否成功。 data：业务信息返回，String类型，也是JSON，如果当前请求的返回结果中带有业务数据，则此处需要反解JSON内容。 RequestId：每个请求的唯一ID，String类型。
 
-#### RocketMQ Open API公共术语
+#### 4.1.4 RocketMQ Open API公共术语
 
-##### 账号安全类
+##### 4.1.4.1 账号安全类
 
-###### AccessKey
+###### 4.1.4.1.1 AccessKey
 
-消息队列访问阿里云产品使用的账号的AccessKeyId，在控制台获得。调用时传入给RocketMQ后台用于身份验证， 调用RocketMQ Open API只能操作对应账号下的资源。
+访问阿里云产品使用的账号的AccessKeyId，在控制台获得。调用时传入给RocketMQ后台用于身份验证， 调用RocketMQ Open API只能操作对应账号下的资源。
 
-###### SecretKey
+###### 4.1.4.1.2 SecretKey
 
 访问阿里云产品使用的账号的AccessKeySecret，在控制台获得，调用时传入，用于计算访问请求的签名。RocketMQ后端根据对应账号比对签名实现鉴权。
 
-##### RocketMQ资源管控类
+##### 4.1.4.2 RocketMQ资源管控类
 
-###### Topic
+###### 4.1.4.2.1 Topic
 
-RocketMQ产品中消息按照Topic进行分类存储，因此Topic是RocketMQ中最重要的资源之一。
+RocketMQ产品中消息按照Topic进行分类存储，因此Topic是RocketMQ中最重要的资源之一。 RocketMQ中Topic全局唯一。
 
-###### Group ID（GID）
+###### 4.1.4.2.2 Group ID（GID）
 
 一类Producer或Consumer，这类Producer或Consumer通常生产或消费同一类消息，且消息发布或订阅的逻辑一致。 对于子账号创建的消费者Group ID或存量CID，该子账号及其主账号都有使用权限。 对于主账号创建的消费者Group ID或存量CID，仅该主账号有使用权限，其子账号无使用权限。 存量Producer ID和Consumer ID与Group ID的使用变更，请参见产品更新说明。
 
-#### RocketMQ Open API错误码列表
+#### 4.1.5 RocketMQ Open API错误码列表
 
 RocketMQ Open API调用成功时返回给客户端的ResponseCode=200，当出现调用失败时，会返回对应的异常错误码以及描述信息。您可以根据以下异常信息对照表查找对应的解决方法。
 
@@ -895,8 +1230,6 @@ RocketMQ Open API调用成功时返回给客户端的ResponseCode=200，当出�
 | BIZ PUBLISHER EXISTED _ _ | 指定GID已经存在 | 更换GID的名称重试请求 |
 | BIZ SUBSCRIPTION EXISTED _ _ | 指定GID已经存在 | 更换GID的名称重试请求 |
 
-消息队列
-
 | BIZ CONSUMER NOT ONLINE _ _ _ | 指定GID的客户端不在线 | 请确保消费端在线，然后重试请求 |
 |---|---|---|
 | BIZ NO MESSAGE _ _ | 当前查询条件没有匹配消息 | 请检查查询条件，并确认查询范围内是否发过消息 |
@@ -908,11 +1241,11 @@ RocketMQ Open API调用成功时返回给客户端的ResponseCode=200，当出�
 | EMPOWER EXIST ERROR _ _ | 当前授权关系已经存在 | 核实请求参数，重试或者先查询 |
 | EMPOWER OWNER CHECK ERROR _ _ _ | 当前用户不是授权Topic的Owner | 确认资源所属关系 |
 
-#### API详细说明
+#### 4.1.6 API详细说明
 
-##### Instance管理
+##### 4.1.6.1 Instance管理
 
-###### QueryCommonGenRedirectUrl
+###### 4.1.6.1.1 QueryCommonGenRedirectUrl
 
 生成通用重定向URL以支持消息队列RocketMQ版的相关操作。
 
@@ -928,7 +1261,7 @@ RocketMQ Open API调用成功时返回给客户端的ResponseCode=200，当出�
 | OnsRegio nId | Strin g | Query | 是 | REGION 001 _ | Ons服务的区域标识符，用于指定消息服务的地域节点。 |
 | PreventCa che | Long | Query | 是 | 324234234 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -956,20 +1289,18 @@ RocketMQ Open API调用成功时返回给客户端的ResponseCode=200，当出�
 http(s)://[Endpoint]/?Action=QueryCommonGenRedirectUrl &OnsRegionId=REGION_001 &PreventCache=324234234 &Key=TestKey
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryTrendFlowLimit
+`}`
+
+###### 4.1.6.1.2 QueryTrendFlowLimit
 
 查询消息队列RocketMQ版的流量限制趋势数据。
 
@@ -990,8 +1321,6 @@ http(s)://[Endpoint]/?Action=QueryCommonGenRedirectUrl &OnsRegionId=REGION_001 &
 | Period | Integ er | Query | 否 | 1 | 周期。 |
 | BeginTime | Long | Query | 否 | 2022 | 开始时间。 |
 | EndTime | Long | Query | 否 | 1706668721 | 结束时间。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1016,26 +1345,22 @@ http(s)://[Endpoint]/?Action=QueryCommonGenRedirectUrl &OnsRegionId=REGION_001 &
 http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12****** &OnsRegionId=Region001 &PreventCache=234234234 &MessageType=RAW
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UnbindSystemTags
+###### 4.1.6.1.3 UnbindSystemTags
 
 解绑指定实例上的系统标签。
 
@@ -1055,10 +1380,6 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 | TagKeys | Strin g | Query | 否 | ["k1","k2"] | 标签键。 |
 | Scope | Strin g | Query | 否 | 11 | 组织范围。 |
 
-消息队列
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -1073,29 +1394,27 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 请求示例
 
 ```
-&OnsRegionId=REGION001 &PreventCache=32424234234 &InstanceId=bastionhost-12****** &TagOwnerUid=123xxxx
+http(s)://[Endpoint]/?Action=UnbindSystemTags &OnsRegionId=REGION001 &PreventCache=32424234234 &InstanceId=bastionhost-12****** &TagOwnerUid=123xxxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### CreateInstance
+###### 4.1.6.1.4 CreateInstance
 
 创建实例。
 
@@ -1134,8 +1453,6 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Code | Integer | 200 | 接口状态或POP错误码。 |
@@ -1147,22 +1464,22 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 请求示例
 
 ```
-&OnsRegionId=Region001 &InstanceName=myinstance
+http(s)://[Endpoint]/?Action=CreateInstance &OnsRegionId=Region001 &InstanceName=myinstance
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-###### BindSystemTags
+`}`
+
+###### 4.1.6.1.5 BindSystemTags
 
 绑定系统标签至消息队列实例。
 
@@ -1178,7 +1495,7 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 | OnsRegio nId | Strin g | Query | 是 | Region001 | 代表某个特定的地理区域或逻辑区域标识符。 |
 | PreventCa che | Long | Query | 是 | 34234242 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1204,23 +1521,21 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=34234242 &InstanceId=bastionhost-12****** &Tags=tag1,tag2 &TagOwnerUid=
+http(s)://[Endpoint]/?Action=BindSystemTags &OnsRegionId=Region001 &PreventCache=34234242 &InstanceId=bastionhost-12****** &Tags=tag1,tag2 &TagOwnerUid=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QuerySystemTagList
+`}`
+
+###### 4.1.6.1.6 QuerySystemTagList
 
 查询系统标签列表API。
 
@@ -1246,8 +1561,6 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 | Data | String | [{}] | 返回数据。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -1263,32 +1576,26 @@ http(s)://[Endpoint]/?Action=QueryTrendFlowLimit &InstanceId=bastionhost-12*****
 http(s)://[Endpoint]/?Action=QuerySystemTagList &OnsRegionId=Region001 &PreventCache=3424234 &InstanceId=bastionhost-12****** &TagOwnerUid=123xxxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DeleteInstance
+###### 4.1.6.1.7 DeleteInstance
 
-删除指定的消息队列实例。 消息队列
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+删除指定的消息队列实例。
 
 **请求参数**
 
@@ -1313,21 +1620,19 @@ http(s)://[Endpoint]/?Action=QuerySystemTagList &OnsRegionId=Region001 &PreventC
 请求示例
 
 ```
-&OnsRegionId=Region01 &PreventCache=2321423 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=DeleteInstance &OnsRegionId=Region01 &PreventCache=2321423 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryInstanceBaseInfo
+`}`
+
+###### 4.1.6.1.8 QueryInstanceBaseInfo
 
 查询指定消息实例的基本信息，包括实例ID、名称、状态、规格配置等核心属性。
 
@@ -1353,7 +1658,7 @@ http(s)://[Endpoint]/?Action=QuerySystemTagList &OnsRegionId=Region001 &PreventC
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| ocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| ocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1369,9 +1674,9 @@ http(s)://[Endpoint]/?Action=QuerySystemTagList &OnsRegionId=Region001 &PreventC
 http(s)://[Endpoint]/?Action=QueryInstanceBaseInfo &OnsRegionId=REGION_001 &PreventCache=65443334456 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
-###### QueryInstanceStatistics
+###### 4.1.6.1.9 QueryInstanceStatistics
 
 查询指定消息实例的统计信息，包括消息量、Topic数量、消费者组数量等运行统计数据。
 
@@ -1388,8 +1693,6 @@ http(s)://[Endpoint]/?Action=QueryInstanceBaseInfo &OnsRegionId=REGION_001 &Prev
 | PreventCa che | Long | Query | 是 | 6553356777 | 启用防止缓存功能，确保每次请求都从服务器获取最新数据，避免使用本地缓存。 |
 | InstanceId | Strin g | Query | 是 | bastionhost-12****** | 实例ID。 |
 | EndTime | Long | Query | 否 | 1706668721 | 结束时间。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1413,25 +1716,23 @@ http(s)://[Endpoint]/?Action=QueryInstanceBaseInfo &OnsRegionId=REGION_001 &Prev
 http(s)://[Endpoint]/?Action=QueryInstanceStatistics &OnsRegionId=region123 &PreventCache=6553356777 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryInstanceList
+###### 4.1.6.1.10 QueryInstanceList
 
 查询消息队列RocketMQ版实例列表。
 
@@ -1456,8 +1757,6 @@ http(s)://[Endpoint]/?Action=QueryInstanceStatistics &OnsRegionId=region123 &Pre
 | Data | String | [{}] | 返回数据。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -1469,38 +1768,32 @@ http(s)://[Endpoint]/?Action=QueryInstanceStatistics &OnsRegionId=region123 &Pre
 请求示例
 
 ```
-&OnsRegionId=REGION12345 &PreventCache=4534534534
+http(s)://[Endpoint]/?Action=QueryInstanceList &OnsRegionId=REGION12345 &PreventCache=4534534534
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterInstanceList
+###### 4.1.6.1.11 QueryRouterInstanceList
 
 查询消息队列RocketMQ版的路由实例列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1528,26 +1821,23 @@ http(s)://[Endpoint]/?Action=QueryInstanceStatistics &OnsRegionId=region123 &Pre
 http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &PreventCache=8767767755
 ```
 
-&公共请求参数正常返回示例消息队列 `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateInstance
+###### 4.1.6.1.12 UpdateInstance
 
 更新消息队列实例的配置。
 
@@ -1566,7 +1856,7 @@ http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &Preve
 | InstanceN ame | Strin g | Query | 否 | myinstance | 实例名称。 |
 | Remark | Strin g | Query | 否 | remark | 备注。 |
 
-| ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1590,28 +1880,24 @@ http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &Preve
 请求示例
 
 ```
-&OnsRegionId=hangzhou &PreventCache=24234234 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=UpdateInstance &OnsRegionId=hangzhou &PreventCache=24234234 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### CheckFortestInstance
+###### 4.1.6.1.13 CheckFortestInstance
 
 检查测试实例的状态及权限。
 
@@ -1628,10 +1914,6 @@ http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &Preve
 | PreventCa che | Long | Quer y | 是 | 23423424 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 | InstanceId | Strin g | Quer y | 是 | bastionhost-12****** | 实例ID。 |
 | AuthAction Name | Strin g | Quer y | 是 | SessionRefresh | 校验用户对实例资源是否拥有指定操作权限的RAM权限动作名称。 |
-
-**返回数据**
-
-消息队列
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1650,28 +1932,24 @@ http(s)://[Endpoint]/?Action=QueryRouterInstanceList &OnsRegionId=region1 &Preve
 http(s)://[Endpoint]/?Action=CheckFortestInstance &OnsRegionId=region123 &PreventCache= &InstanceId=bastionhost-12****** &AuthActionName=SessionRefresh
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-##### Topic管理
+`}`
 
-###### CheckFortestTopic
+##### 4.1.6.2 Topic管理
 
-消息队列
+###### 4.1.6.2.1 CheckFortestTopic
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+用于测试环境验证Topic是否创建成功并校验当前用户是否拥有指定的发布/订阅权限。
 
 **请求参数**
 
@@ -1692,8 +1970,6 @@ http(s)://[Endpoint]/?Action=CheckFortestInstance &OnsRegionId=region123 &Preven
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-消息队列
-
 | Message | String | success | 附加信息。 |
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
@@ -1704,23 +1980,23 @@ http(s)://[Endpoint]/?Action=CheckFortestInstance &OnsRegionId=region123 &Preven
 请求示例
 
 ```
-&OnsRegionId=REGION01 &PreventCache= &Relation=6
+http(s)://[Endpoint]/?Action=CheckFortestTopic &OnsRegionId=REGION01 &PreventCache= &Topic=test &Relation=6
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### PageQueryTopicList
+`}`
+
+###### 4.1.6.2.2 PageQueryTopicList
 
 分页查询消息队列RocketMQ版中的主题列表。
 
@@ -1734,8 +2010,6 @@ http(s)://[Endpoint]/?Action=CheckFortestInstance &OnsRegionId=region123 &Preven
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | Region001 | Ons服务的区域标识，用于指定服务所在的地理区域。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1757,28 +2031,24 @@ http(s)://[Endpoint]/?Action=CheckFortestInstance &OnsRegionId=region123 &Preven
 | Message | String | success | 附加信息。 |
 | Total | Long | 1 | 总数。 |
 
-**示例**
-
-消息队列请求示例
-
 ```
 http(s)://[Endpoint]/?Action=PageQueryTopicList &OnsRegionId=Region001 &PreventCache=32423424
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateSubscription
+`}`
+
+###### 4.1.6.2.3 CreateSubscription
 
 创建订阅关系的API接口。
 
@@ -1794,8 +2064,6 @@ http(s)://[Endpoint]/?Action=PageQueryTopicList &OnsRegionId=Region001 &PreventC
 | OnsRegio nId | Strin g | Query | 是 | region1 | 表示某个特定的区域标识符，用于区分不同的服务区域或数据中心。 |
 | PreventCa che | Long | Query | 是 | 2332424232 | 用于防止浏览器或服务器缓存数据，确保每次请求都获取最新内容。 |
 | Consumer Id | Strin g | Query | 是 | kafka-test | Group名称。取值： 只能包含字母、数字、短划线（-）、下划线 （ ），且至少包含一个 _ 英文或数字。 长度限制在3～128字符，多于128字符将被自动截取。 Group名称一旦创建后， 将不能修改。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1817,25 +2085,23 @@ http(s)://[Endpoint]/?Action=PageQueryTopicList &OnsRegionId=Region001 &PreventC
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCache=2332424232
+http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCache=2332424232 &ConsumerId=kafka-test &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-消息队列
+###### 4.1.6.2.4 CreateTopic
 
-###### CreateTopic
+创建一个新消息主题（Topic）。
 
 **请求头**
 
@@ -1862,7 +2128,7 @@ http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCac
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 | Message | String | success | 附加信息。 |
 
-| 消息队列 |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1874,22 +2140,24 @@ http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCac
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=32342342
+http(s)://[Endpoint]/?Action=CreateTopic &OnsRegionId=Region001 &PreventCache=32342342 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteTopic
+`}`
+
+###### 4.1.6.2.5 DeleteTopic
+
+删除指定的消息主题（Topic）。
 
 **请求头**
 
@@ -1903,7 +2171,7 @@ http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCac
 | OnsRegio nId | Strin g | Query | 是 | region123 | Ons服务的区域标识符，用于指定消息服务的地理区域。 |
 | PreventCa che | Long | Query | 是 | 223432442 | 用于防止浏览器或系统缓存数据，确保每次请求都获取最新内容。 |
 
-| RocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| RocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1926,28 +2194,24 @@ http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCac
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=223432442
+http(s)://[Endpoint]/?Action=DeleteTopic &OnsRegionId=region123 &PreventCache=223432442 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteSubscription
+`}`
 
-消息队列删除消息队列RocketMQ版中的订阅关系。
+###### 4.1.6.2.6 DeleteSubscription
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+删除消息队列RocketMQ版中的订阅关系。
 
 **请求参数**
 
@@ -1969,7 +2233,7 @@ http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCac
 | Message | String | success | 附加信息。 |
 | Data | String | [{}] | 返回数据。 |
 
-|  | RocketMQ 开发指南 | ·API参考 |  | 消息队列 |  |
+|   | RocketMQ 开发指南 | ·API参考 |   | 消息队列 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1981,23 +2245,25 @@ http(s)://[Endpoint]/?Action=CreateSubscription &OnsRegionId=region1 &PreventCac
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DeleteSubscription &OnsRegionId=qingdao &PreventCache=2333333
+http(s)://[Endpoint]/?Action=DeleteSubscription &OnsRegionId=qingdao &PreventCache=2333333 &ConsumerId=kafka-test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryTrendTopicInputTps
+`}`
+
+###### 4.1.6.2.7 QueryTrendTopicInputTps
+
+用于查询Topic的消息发送TPS趋势数据，展示消息生产量的变化趋势。
 
 **请求头**
 
@@ -2034,32 +2300,32 @@ http(s)://[Endpoint]/?Action=DeleteSubscription &OnsRegionId=qingdao &PreventCac
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryTrendTopicInputTps &OnsRegionId=ExampleRegion01 &PreventCache=6454433343 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryTrendTopicInputTps &OnsRegionId=ExampleRegion01 &PreventCache=6454433343 &InstanceId=bastionhost-12****** &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicSubDetail
+###### 4.1.6.2.8 QueryTopicSubDetail
+
+用于查询指定Topic的订阅关系详情，包括订阅该Topic的所有消费者组信息。
 
 **请求头**
 
@@ -2072,8 +2338,6 @@ http(s)://[Endpoint]/?Action=QueryTrendTopicInputTps &OnsRegionId=ExampleRegion0
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | Region001 | 示例区域ID，用于标识特定的消息服务区域。 |
 | PreventCa che | Long | Query | 是 | 23432423 | 用于指示客户端或服务器不应缓存响应数据，确保每次请求都获取最新内容。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2096,28 +2360,26 @@ http(s)://[Endpoint]/?Action=QueryTrendTopicInputTps &OnsRegionId=ExampleRegion0
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryTopicSubDetail &OnsRegionId=Region001 &PreventCache=23432423 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryTopicSubDetail &OnsRegionId=Region001 &PreventCache=23432423 &InstanceId=bastionhost-12****** &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicStatus
+###### 4.1.6.2.9 QueryTopicStatus
+
+用于查询指定Topic的消息状态信息，包括消息总量、最后发送时间等统计信息。
 
 **请求头**
 
@@ -2139,7 +2401,7 @@ http(s)://[Endpoint]/?Action=QueryTopicSubDetail &OnsRegionId=Region001 &Prevent
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-|  | 消息队列 |  |  | RocketMQ 开发指南·API参考 |  |
+|   | 消息队列 |   |   | RocketMQ 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2155,35 +2417,29 @@ http(s)://[Endpoint]/?Action=QueryTopicSubDetail &OnsRegionId=Region001 &Prevent
 请求示例
 
 ```
-&OnsRegionId=region1 &PreventCache=1231231231
+http(s)://[Endpoint]/?Action=QueryTopicStatus &OnsRegionId=region1 &PreventCache=1231231231 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicNameList
+###### 4.1.6.2.10 QueryTopicNameList
 
-消息队列查询消息队列RocketMQ版的主题名称列表。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+查询消息队列RocketMQ版的主题名称列表。
 
 **请求参数**
 
@@ -2205,33 +2461,27 @@ http(s)://[Endpoint]/?Action=QueryTopicSubDetail &OnsRegionId=Region001 &Prevent
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 | Message | String | success | 附加信息。 |
 
-**示例**
-
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=QueryTopicNameList &OnsRegionId=region123 &PreventCache=23132132
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicListByGroupId
+###### 4.1.6.2.11 QueryTopicListByGroupId
 
 根据消费者组ID查询主题列表。
 
@@ -2272,26 +2522,22 @@ http(s)://[Endpoint]/?Action=QueryTopicNameList &OnsRegionId=region123 &PreventC
 http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 &PreventCache=2312313 &InstanceId=bastionhost-12****** &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicList
+###### 4.1.6.2.12 QueryTopicList
 
 查询消息队列RocketMQ版的主题列表。
 
@@ -2314,8 +2560,6 @@ http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
@@ -2330,31 +2574,27 @@ http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 
 请求示例
 
 ```
-&OnsRegionId=RegionUS &PreventCache=23123131
+http(s)://[Endpoint]/?Action=QueryTopicList &OnsRegionId=RegionUS &PreventCache=23123131
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-消息队列
-
-###### QueryTopic
+###### 4.1.6.2.13 QueryTopic
 
 查询主题信息的API接口。
 
@@ -2383,36 +2623,28 @@ http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 
 | Message | String | success | 附加信息。 |
 | Total | Long | 1 | 总数。 |
 
-消息队列
-
-**示例**
-
-请求示例
-
 ```
-&OnsRegionId=hangzhou &PreventCache=23134124
+http(s)://[Endpoint]/?Action=QueryTopic &OnsRegionId=hangzhou &PreventCache=23134124
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QuerySubscriptionList
+###### 4.1.6.2.14 QuerySubscriptionList
 
 查询订阅列表API，适用于消息队列RocketMQ版。
 
@@ -2427,10 +2659,6 @@ http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | REGION 001 _ | 区域标识id。 |
 | PreventCa che | Long | Query | 是 | 23324124 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
-
-消息队列
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2449,26 +2677,24 @@ http(s)://[Endpoint]/?Action=QueryTopicListByGroupId &OnsRegionId=ons1234567890 
 http(s)://[Endpoint]/?Action=QuerySubscriptionList &OnsRegionId=REGION_001 &PreventCache=23324124
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QuerySubscription
+###### 4.1.6.2.15 QuerySubscription
 
 查询消息队列RocketMQ版的订阅详情。
 
@@ -2494,8 +2720,6 @@ http(s)://[Endpoint]/?Action=QuerySubscriptionList &OnsRegionId=REGION_001 &Prev
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Message | String | success | 附加信息。 |
@@ -2507,39 +2731,31 @@ http(s)://[Endpoint]/?Action=QuerySubscriptionList &OnsRegionId=REGION_001 &Prev
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=23423424242
+http(s)://[Endpoint]/?Action=QuerySubscription &OnsRegionId=Region001 &PreventCache=23423424242 &ConsumerId=kafka-test &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterTopicList
+###### 4.1.6.2.16 QueryRouterTopicList
 
 查询消息队列RocketMQ版的路由主题列表。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2568,26 +2784,24 @@ http(s)://[Endpoint]/?Action=QuerySubscriptionList &OnsRegionId=REGION_001 &Prev
 http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &PreventCache=34234234234
 ```
 
-&公共请求参数消息队列正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateTopicInfo
+###### 4.1.6.2.17 UpdateTopicInfo
 
 更新消息队列RocketMQ版中指定主题的相关信息。
 
@@ -2606,10 +2820,6 @@ http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &Prevent
 | Topic | Strin g | Query | 是 | test | Topic名称。 |
 | Remark | Strin g | Query | 是 | remark | 备注。 |
 
-消息队列
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -2624,29 +2834,27 @@ http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &Prevent
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=4353453 &InstanceId=bastionhost-12****** &Remark=remark
+http(s)://[Endpoint]/?Action=UpdateTopicInfo &OnsRegionId=region123 &PreventCache=4353453 &InstanceId=bastionhost-12****** &Topic=test &Remark=remark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateTopic
+###### 4.1.6.2.18 UpdateTopic
 
 更新消息队列RocketMQ版中的主题配置。
 
@@ -2672,8 +2880,6 @@ http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &Prevent
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -2687,35 +2893,29 @@ http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &Prevent
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=2343243234
+http(s)://[Endpoint]/?Action=UpdateTopic &OnsRegionId=Region001 &PreventCache=2343243234 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateSubscription
+###### 4.1.6.2.19 UpdateSubscription
 
-消息队列更新订阅关系的API接口。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+更新订阅关系的API接口。
 
 **请求参数**
 
@@ -2737,8 +2937,6 @@ http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &Prevent
 | Message | String | success | 消息内容。 |
 | Data | String | [{}] | 返回数据。 |
 
-消息队列
-
 | Total | Long | 1 | 总数。 |
 |---|---|---|---|
 
@@ -2747,29 +2945,27 @@ http(s)://[Endpoint]/?Action=QueryRouterTopicList &OnsRegionId=shenzhen &Prevent
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=UpdateSubscription &OnsRegionId=REGION_001 &PreventCache=23423423423 &ReadEnable=true
+http(s)://[Endpoint]/?Action=UpdateSubscription &OnsRegionId=REGION_001 &PreventCache=23423423423 &ConsumerId=kafka-test &ReadEnable=true
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### SearchSubscription
+###### 4.1.6.2.20 SearchSubscription
 
 消息队列RocketMQ版提供的订阅关系查询接口。
 
@@ -2782,8 +2978,6 @@ http(s)://[Endpoint]/?Action=UpdateSubscription &OnsRegionId=REGION_001 &Prevent
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2810,28 +3004,24 @@ http(s)://[Endpoint]/?Action=UpdateSubscription &OnsRegionId=REGION_001 &Prevent
 http(s)://[Endpoint]/?Action=SearchSubscription &OnsRegionId=Region001 &PreventCache=324234243 &Search=1_1_1_1_1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Cluster管理
+##### 4.1.6.3 Cluster管理
 
-###### QueryClusterList
+###### 4.1.6.3.1 QueryClusterList
 
 查询消息队列RocketMQ版的集群列表。
 
@@ -2866,23 +3056,23 @@ http(s)://[Endpoint]/?Action=SearchSubscription &OnsRegionId=Region001 &PreventC
 请求示例
 
 ```
-&OnsRegionId=REGION01
+http(s)://[Endpoint]/?Action=QueryClusterList &OnsRegionId=REGION01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryClusterCapacity
+`}`
+
+###### 4.1.6.3.2 QueryClusterCapacity
 
 用于查询指定集群的容量信息，包括集群支持的最大主题数量、最大发送TPS和最大接收TPS等容量限制。
 
@@ -2894,8 +3084,6 @@ http(s)://[Endpoint]/?Action=SearchSubscription &OnsRegionId=Region001 &PreventC
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2923,22 +3111,20 @@ http(s)://[Endpoint]/?Action=SearchSubscription &OnsRegionId=Region001 &PreventC
 http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluster=tianji-A-006b
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-##### Group管理
+`}`
 
-###### CreateGroup
+##### 4.1.6.4 Group管理
+
+###### 4.1.6.4.1 CreateGroup
 
 创建一个新的消息消费组。
 
@@ -2958,10 +3144,6 @@ http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluste
 | GroupTyp e | Strin g | Query | 否 | ip | 安全组类型，分为普通安全组与企业安全组。取值范围： normal：普通安全组。 enterprise：企业安全组。 |
 | Remark | Strin g | Query | 否 | remark | 备注。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -2976,33 +3158,27 @@ http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluste
 请求示例
 
 ```
-&OnsRegionId=hangzhou &PreventCache=32342342 &GroupId=1
+http(s)://[Endpoint]/?Action=CreateGroup &OnsRegionId=hangzhou &PreventCache=32342342 &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### PageQueryGroupList
+`}`
+
+###### 4.1.6.4.2 PageQueryGroupList
 
 分页查询消息队列RocketMQ版中的分组列表。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3025,7 +3201,7 @@ http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluste
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3041,20 +3217,20 @@ http(s)://[Endpoint]/?Action=QueryClusterCapacity &OnsRegionId=region123 &Cluste
 http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventCache=234234234 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteGroup
+`}`
+
+###### 4.1.6.4.3 DeleteGroup
 
 删除消息队列消费组。
 
@@ -3070,7 +3246,7 @@ http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventC
 | OnsRegio nId | Strin g | Query | 是 | region123 | Ons服务的区域标识符，用于指定服务所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 324242344 | 用于指示客户端或服务器不应缓存响应数据，确保每次请求都获取最新内容。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3094,23 +3270,21 @@ http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventC
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=324242344 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=DeleteGroup &OnsRegionId=region123 &PreventCache=324242344 &InstanceId=bastionhost-12****** &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryGroupIdList
+`}`
+
+###### 4.1.6.4.4 QueryGroupIdList
 
 查询指定实例下的所有Group ID列表。
 
@@ -3135,8 +3309,6 @@ http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventC
 | Data | String | [{}] | 返回数据。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -3149,37 +3321,29 @@ http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventC
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=3445345345 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=QueryGroupIdList &OnsRegionId=region123 &PreventCache=3445345345 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryGroupSubDetail
+###### 4.1.6.4.5 QueryGroupSubDetail
 
 获取消费者组的完整订阅信息。
-
-**请求头**
-
-消息队列该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3201,34 +3365,28 @@ http(s)://[Endpoint]/?Action=PageQueryGroupList &OnsRegionId=region123 &PreventC
 | Data | Map | {} | 返回数据。 |
 | Total | Long | 1 | 总数。 |
 
-**示例**
-
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &PreventCache=1232131231 &InstanceId=bastionhost-12****** &GroupId=GID-1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryGroupList
+###### 4.1.6.4.6 QueryGroupList
 
 查询消息队列RocketMQ版的消费者组列表。
 
@@ -3242,8 +3400,6 @@ http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &Prevent
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegion Id | Strin g | Quer y | 是 | CN01 | Ons服务的区域标识符，用于指定消息服务的地理区域或逻辑分区。 |
-
-消息队列
 
 | PreventCa che | Long | Quer y | 是 | 3242431 | 用于防止浏览器或服务器缓存数据，确保每次请求都获取最新内容。 |
 |---|---|---|---|---|---|
@@ -3267,29 +3423,25 @@ http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &Prevent
 请求示例
 
 ```
-&OnsRegionId=CN01 &PreventCache=3242431
+http(s)://[Endpoint]/?Action=QueryGroupList &OnsRegionId=CN01 &PreventCache=3242431
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTrendGroupOutputTps
+###### 4.1.6.4.7 QueryTrendGroupOutputTps
 
 用于查询消费者组的消息消费TPS趋势数据，展示消费能力的变化情况。
 
@@ -3309,7 +3461,7 @@ http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &Prevent
 | GroupId | Strin g | Query | 是 | 1 | 组ID。 |
 | Type | Integ er | Query | 否 | 1 | 类型。 |
 
-| ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3335,12 +3487,12 @@ http(s)://[Endpoint]/?Action=QueryGroupSubDetail &OnsRegionId=region123 &Prevent
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &PreventCache=342342342 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &PreventCache=342342342 &InstanceId=bastionhost-12****** &Topic=test &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
-|  | { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "Total":1, "Data":{}, "Code":200, "Success":true } |
+|   | { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "Total":1, "Data":{}, "Code":200, "Success":true } |
 |---|---|
 
 `XML` 格式
@@ -3349,7 +3501,7 @@ http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &Pr
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateGroupInfo
+###### 4.1.6.4.8 UpdateGroupInfo
 
 更新消息队列RocketMQ版中组的相关信息。
 
@@ -3368,10 +3520,6 @@ http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &Pr
 | GroupId | Strin g | Query | 是 | 1 | 消费者组ID。 |
 | Remark | Strin g | Query | 是 | remark | 备注。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -3386,29 +3534,27 @@ http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &Pr
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=423423423 &GroupId=1 &Remark=remark
+http(s)://[Endpoint]/?Action=UpdateGroupInfo &OnsRegionId=region123 &PreventCache=423423423 &GroupId=1 &Remark=remark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateGroupConsumer
+###### 4.1.6.4.9 UpdateGroupConsumer
 
 更新消息队列RocketMQ版中指定消费者组的配置信息。
 
@@ -3435,7 +3581,7 @@ http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &Pr
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3452,38 +3598,30 @@ http(s)://[Endpoint]/?Action=QueryTrendGroupOutputTps &OnsRegionId=Region001 &Pr
 http(s)://[Endpoint]/?Action=UpdateGroupConsumer &OnsRegionId=region1 &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### CloudInfo管理
+##### 4.1.6.5 CloudInfo管理
 
-###### QueryCloudInfoNoPage
+###### 4.1.6.5.1 QueryCloudInfoNoPage
 
 查询云信息（无分页）API。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3512,20 +3650,20 @@ http(s)://[Endpoint]/?Action=UpdateGroupConsumer &OnsRegionId=region1 &GroupId=1
 http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &PreventCache=342432324
 ```
 
-&公共请求参数消息队列正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### UpdateCloudInfo
+`}`
+
+###### 4.1.6.5.2 UpdateCloudInfo
 
 更新指定云实例的相关信息。
 
@@ -3543,8 +3681,6 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 | CloudNam e | Strin g | Quer y | 否 | 212e | 云实例名称。 |
 | AddRegion Id | Strin g | Quer y | 否 | 1001 | 表示新增的区域ID，用于标识新加入的地理区域或逻辑区域，常用于系统中区域划分的唯一标识。 |
 | CloudId | Strin g | Quer y | 是 | ffe1********6d6d | 云实例ID。 |
-
-消息队列
 
 | Ak | Strin g | Quer y | 否 | LTAIpY33******** | AccessKeyId。 |
 |---|---|---|---|---|---|
@@ -3568,28 +3704,26 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=234234234 &CloudId=ffe1********6d6d
+http(s)://[Endpoint]/?Action=UpdateCloudInfo &OnsRegionId=region123 &PreventCache=234234234 &CloudId=ffe1********6d6d
 ```
 
-&公共请求参数消息队列正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DeleteCloudInfo
+###### 4.1.6.5.3 DeleteCloudInfo
 
 删除指定云实例的信息。
 
@@ -3612,7 +3746,7 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-|  | 消息队列 |  |  | RocketMQ 开发指南·API参考 |  |
+|   | 消息队列 |   |   | RocketMQ 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3627,22 +3761,22 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=2312342342 &CloudId=ffe1********6d6d
+http(s)://[Endpoint]/?Action=DeleteCloudInfo &OnsRegionId=Region001 &PreventCache=2312342342 &CloudId=ffe1********6d6d
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateCloudInfo
+`}`
+
+###### 4.1.6.5.4 CreateCloudInfo
 
 创建消息队列RocketMQ版的云实例。
 
@@ -3677,7 +3811,7 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 | Message | String | success | 附加信息。 |
 
-| 消息队列 |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3689,22 +3823,22 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 请求示例
 
 ```
-&OnsRegionId=region123 &CloudName=212e &AddRegionId=1001 &Ak=LTAIpY33******** &Sk=123456 &MqEndPoint=failover://[tcp://host1:61616,tcp://host2:61616] &ConsoleEndPoint=https://console.example.com &Remark=remark
+http(s)://[Endpoint]/?Action=CreateCloudInfo &OnsRegionId=region123 &CloudName=212e &AddRegionId=1001 &Ak=LTAIpY33******** &Sk=123456 &MqEndPoint=failover://[tcp://host1:61616,tcp://host2:61616] &ConsoleEndPoint=https://console.example.com &Remark=remark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryCloudInfo
+`}`
+
+###### 4.1.6.5.5 QueryCloudInfo
 
 提供分页查询功能以获取消息队列相关云服务信息。
 
@@ -3718,8 +3852,6 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | REGION 001 _ | Ons服务的区域标识符，用于指定资源所在的地理区域。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3742,28 +3874,28 @@ http(s)://[Endpoint]/?Action=QueryCloudInfoNoPage &OnsRegionId=region123 &Preven
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-&OnsRegionId=REGION_001 &PreventCache=213123123 &CurrentPage=1 &PageSize=10
+http(s)://[Endpoint]/?Action=QueryCloudInfo &OnsRegionId=REGION_001 &PreventCache=213123123 &CurrentPage=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-##### Message管理
+`}`
 
-###### PushMessage
+##### 4.1.6.6 Message管理
+
+###### 4.1.6.6.1 PushMessage
 
 PushMessage API用于向指定消费者组推送消息，适用于消息队列RocketMQ版。
 
@@ -3780,8 +3912,6 @@ PushMessage API用于向指定消费者组推送消息，适用于消息队列Ro
 | PreventCa che | Long | Query | 是 | 324243242 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 | InstanceId | Strin g | Query | 否 | bastionhost-12****** | 实例ID。 |
 | GroupId | Strin g | Query | 是 | 1 | 应用分组ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3805,29 +3935,25 @@ PushMessage API用于向指定消费者组推送消息，适用于消息队列Ro
 请求示例
 
 ```
-&OnsRegionId=REGION_001 &PreventCache=324243242 &GroupId=1 &ClientId=GID_test@@@test &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=PushMessage &OnsRegionId=REGION_001 &PreventCache=324243242 &GroupId=1 &Topic=test &ClientId=GID_test@@@test &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DownloadMessageBodyInDLQ
+###### 4.1.6.6.2 DownloadMessageBodyInDLQ
 
 从死信队列中下载指定消息的消息体。
 
@@ -3845,8 +3971,6 @@ PushMessage API用于向指定消费者组推送消息，适用于消息队列Ro
 | InstanceId | Strin g | Query | 是 | bastionhost-12****** | 实例ID。 |
 | GroupId | Strin g | Query | 是 | GID-01 | 消费者组ID。 |
 | MsgId | Strin g | Query | 是 | 0BC16699165C03B925D B8A404E2D**** | 需查询的消息的ID，即 Message ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3871,20 +3995,18 @@ PushMessage API用于向指定消费者组推送消息，适用于消息队列Ro
 http(s)://[Endpoint]/?Action=DownloadMessageBodyInDLQ &OnsRegionId=region123 &PreventCache=6262355332 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DownloadMessageAllInDLQ
+`}`
+
+###### 4.1.6.6.3 DownloadMessageAllInDLQ
 
 从死信队列中批量下载消息。
 
@@ -3904,10 +4026,6 @@ http(s)://[Endpoint]/?Action=DownloadMessageBodyInDLQ &OnsRegionId=region123 &Pr
 | MsgId | Strin g | Query | 是 | 0BC16699165C03B925D B8A404E2D**** | 需查询的消息的ID，即 Message ID。 |
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | 表示在使用阿里云消息服务 （ONS）时，客户端与服务端之间的一次会话标识，用于关联和管理消息的发送与接收过程。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -3925,28 +4043,22 @@ http(s)://[Endpoint]/?Action=DownloadMessageBodyInDLQ &OnsRegionId=region123 &Pr
 http(s)://[Endpoint]/?Action=DownloadMessageAllInDLQ &OnsRegionId=region123 &PreventCache=23423423424 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DownloadMessage
+`}`
+
+###### 4.1.6.6.4 DownloadMessage
 
 下载指定消息的API接口。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3968,27 +4080,25 @@ http(s)://[Endpoint]/?Action=DownloadMessageAllInDLQ &OnsRegionId=region123 &Pre
 | Message | String | success | 附加信息。 |
 | Data | String | [{}] | 返回数据。 |
 
-**示例**
-
-消息队列请求示例
-
 ```
-&OnsRegionId=Region001 &PreventCache=23432432 &InstanceId=bastionhost-12****** &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=DownloadMessage &OnsRegionId=Region001 &PreventCache=23432432 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryMessageByPagedTopic
+`}`
+
+###### 4.1.6.6.5 QueryMessageByPagedTopic
+
+分页查询指定Topic下的消息列表。
 
 **请求头**
 
@@ -4004,8 +4114,6 @@ http(s)://[Endpoint]/?Action=DownloadMessageAllInDLQ &OnsRegionId=region123 &Pre
 | Topic | Strin g | Query | 是 | test | Topic名称。 |
 | TaskId | Strin g | Query | 否 | 123456 | 任务ID。 |
 | BeginTime | Long | Query | 是 | 1570852800000 | 开始时间。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4027,32 +4135,30 @@ http(s)://[Endpoint]/?Action=DownloadMessageAllInDLQ &OnsRegionId=region123 &Pre
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryMessageByPagedTopic &OnsRegionId=region123 &BeginTime=1570852800000 &EndTime=1704938400 &PageSize=10
+http(s)://[Endpoint]/?Action=QueryMessageByPagedTopic &OnsRegionId=region123 &Topic=test &BeginTime=1570852800000 &EndTime=1704938400 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageByPagedDLQ
+###### 4.1.6.6.6 QueryMessageByPagedDLQ
 
 分页查询死信队列(DLQ)中的消息列表。
 
@@ -4068,7 +4174,7 @@ http(s)://[Endpoint]/?Action=QueryMessageByPagedTopic &OnsRegionId=region123 &Be
 | OnsRegio nId | Strin g | Query | 是 | region1 | Ons服务的区域标识符，用于指定资源所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 3244523452 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4093,36 +4199,28 @@ http(s)://[Endpoint]/?Action=QueryMessageByPagedTopic &OnsRegionId=region123 &Be
 | Data | Map | {} | 返回数据。 |
 | Total | Long | 1 | 总数。 |
 
-消息队列
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=QueryMessageByPagedDLQ &OnsRegionId=region1 &PreventCache=3244523452 &InstanceId=bastionhost-12****** &GroupId=GID-01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageByKey
+###### 4.1.6.6.7 QueryMessageByKey
 
 提供基于消息键值的消息查询功能。
 
@@ -4136,8 +4234,6 @@ http(s)://[Endpoint]/?Action=QueryMessageByPagedDLQ &OnsRegionId=region1 &Preven
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | region01 | 示例区域ID，用于标识消息服务中的特定区域。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4160,32 +4256,30 @@ http(s)://[Endpoint]/?Action=QueryMessageByPagedDLQ &OnsRegionId=region1 &Preven
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-&OnsRegionId=region01 &PreventCache=3453434534 &Key=TestKey
+http(s)://[Endpoint]/?Action=QueryMessageByKey &OnsRegionId=region01 &PreventCache=3453434534 &Topic=test &Key=TestKey
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageByIdInDLQ
+###### 4.1.6.6.8 QueryMessageByIdInDLQ
 
 根据消息ID查询死信队列(DLQ)中的单条消息详细信息。
 
@@ -4201,7 +4295,7 @@ http(s)://[Endpoint]/?Action=QueryMessageByPagedDLQ &OnsRegionId=region1 &Preven
 | OnsRegio nId | Strin g | Query | 是 | region1 | Ons服务的区域标识符，用于指定资源所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 5353453533 | 防止浏览器缓存页面内容， 确保每次请求都从服务器获取最新数据。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4230,26 +4324,24 @@ http(s)://[Endpoint]/?Action=QueryMessageByPagedDLQ &OnsRegionId=region1 &Preven
 http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &PreventCache=5353453533 &InstanceId=bastionhost-12****** &GroupId=GID-01 &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数消息队列正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageById
+###### 4.1.6.6.9 QueryMessageById
 
 根据消息ID查询单条消息的详细信息。
 
@@ -4268,7 +4360,7 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 | Topic | Strin g | Query | 是 | test | Topic名称。 |
 | MsgId | Strin g | Query | 是 | 0BC16699165C03B925D B8A404E2D**** | 需查询的消息的ID，即 Message ID。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | 客户端与服务端通信的唯一会话标识 |
@@ -4288,28 +4380,26 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 请求示例
 
 ```
-&OnsRegionId=REGION001 &PreventCache=2342424 &InstanceId=bastionhost-12****** &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=QueryMessageById &OnsRegionId=REGION001 &PreventCache=2342424 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### TraceMessage
+###### 4.1.6.6.10 TraceMessage
 
 查询消息轨迹API，支持定位和追踪消息队列中的消息流转路径。
 
@@ -4330,10 +4420,6 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | 表示在消息队列 ONS（Open Notification Service）中的一次会话或请求的唯一标识符，用于跟踪和管理消息的发送与接收过程。 |
 | NeedDeliv eryResult | Boole an | Query | 否 | false | 表示需要交付结果，通常用于标识某个流程或任务需要返回最终执行结果给调用方或系统。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
@@ -4348,29 +4434,27 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=23424234234 &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=TraceMessage &OnsRegionId=region123 &PreventCache=23424234234 &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### SendMessage
+###### 4.1.6.6.11 SendMessage
 
 发送消息至消息队列RocketMQ版的核心接口。
 
@@ -4397,8 +4481,6 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -4411,36 +4493,28 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=2342342342 &Message=*****
+http(s)://[Endpoint]/?Action=SendMessage &OnsRegionId=region123 &PreventCache=2342342342 &Topic=test &Message=*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### ResendMessageByIdInDLQ
+###### 4.1.6.6.12 ResendMessageByIdInDLQ
 
 重新发送死信队列中的消息。
-
-**请求头**
-
-消息队列该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4462,36 +4536,30 @@ http(s)://[Endpoint]/?Action=QueryMessageByIdInDLQ &OnsRegionId=region1 &Prevent
 | Data | String | [{}] | 返回数据。 |
 | Total | Long | 1 | 总数。 |
 
-**示例**
-
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=ResendMessageByIdInDLQ &OnsRegionId=hangzhou &PreventCache=423423424 &InstanceId=bastionhost-12****** &GroupId=1 &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Empower管理
+##### 4.1.6.7 Empower管理
 
-###### CheckFortestRamAction
+###### 4.1.6.7.1 CheckFortestRamAction
 
 检查测试环境下RAM权限的有效性。
 
@@ -4505,8 +4573,6 @@ http(s)://[Endpoint]/?Action=ResendMessageByIdInDLQ &OnsRegionId=hangzhou &Preve
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegion Id | Strin g | Quer y | 是 | region123 | Ons服务的区域标识符，用于指定服务所在的地理区域。 |
-
-消息队列
 
 | ResourceId | Strin g | Quer y | 是 | eas-r-asdasdasd**** | 资源ID。 |
 |---|---|---|---|---|---|
@@ -4537,20 +4603,18 @@ http(s)://[Endpoint]/?Action=CheckFortestRamAction
 &ResourceId=eas-r-asdasdasd**** &AuthActionName=RevokePermission
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteDauthToolByUserId
+`}`
+
+###### 4.1.6.7.2 DeleteDauthToolByUserId
 
 通过用户ID删除授权工具。
 
@@ -4577,30 +4641,24 @@ http(s)://[Endpoint]/?Action=CheckFortestRamAction
 | Data | String | [{}] | 返回数据。 |
 | Total | Long | 1 | 总数。 |
 
-消息队列
-
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=DeleteDauthToolByUserId &UserId=agent@ccc-test &SleepSecond=3
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateGroupEmpowerBySub
+`}`
+
+###### 4.1.6.7.3 CreateGroupEmpowerBySub
 
 通过子账号为指定用户创建消息队列RocketMQ版的消费者组授权。
 
@@ -4619,10 +4677,6 @@ http(s)://[Endpoint]/?Action=DeleteDauthToolByUserId &UserId=agent@ccc-test &Sle
 | GroupId | Strin g | Query | 是 | 1 | 应用分组ID。 |
 | InstanceId | Strin g | Query | 是 | bastionhost-12****** | 实例ID。 |
 
-消息队列
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -4640,26 +4694,22 @@ http(s)://[Endpoint]/?Action=DeleteDauthToolByUserId &UserId=agent@ccc-test &Sle
 http(s)://[Endpoint]/?Action=CreateGroupEmpowerBySub &OnsRegionId=REGION_001 &PreventCache=2343242342 &EmpowerUser=exportUserData &GroupId=1 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateEmpowerBySub
+`}`
 
-通过子账号为指定用户创建消息队列RocketMQ版的授权关系。 消息队列
+###### 4.1.6.7.4 CreateEmpowerBySub
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+通过子账号为指定用户创建消息队列RocketMQ版的授权关系。
 
 **请求参数**
 
@@ -4683,7 +4733,7 @@ http(s)://[Endpoint]/?Action=CreateGroupEmpowerBySub &OnsRegionId=REGION_001 &Pr
 | Message | String | success | 附加信息。 |
 | Data | String | [{}] | 返回数据。 |
 
-|  | 消息队列 |  |  | RocketMQ 开发指南·API参考 |  |
+|   | 消息队列 |   |   | RocketMQ 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4695,23 +4745,23 @@ http(s)://[Endpoint]/?Action=CreateGroupEmpowerBySub &OnsRegionId=REGION_001 &Pr
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCache=34242342 &EmpowerUser=revokeRole &Relation=6
+http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCache=34242342 &EmpowerUser=revokeRole &Topic=test &Relation=6
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateEmpower
+`}`
+
+###### 4.1.6.7.5 CreateEmpower
 
 创建消息队列RocketMQ版的授权关系。
 
@@ -4727,7 +4777,7 @@ http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCac
 | OnsRegio nId | Strin g | Query | 是 | Region001 | Ons服务的区域标识符，用于指定消息服务所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 23423424 | 防止浏览器缓存页面内容， 确保每次请求都从服务器获取最新数据。 |
 
-| ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4753,15 +4803,15 @@ http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCac
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache= &EmpowerUser=revokeRole &Relation=6
+http(s)://[Endpoint]/?Action=CreateEmpower &OnsRegionId=Region001 &PreventCache= &EmpowerUser=revokeRole &Topic=test &Relation=6
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
-|  | { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "Total":1, "Data":"[{}]", "Code":200, "Success":true } |
+|   | { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "Total":1, "Data":"[{}]", "Code":200, "Success":true } |
 |---|---|
 
-###### QueryGroupEmpowerList
+###### 4.1.6.7.6 QueryGroupEmpowerList
 
 查询指定实例和消费者组的授权列表。
 
@@ -4786,8 +4836,6 @@ http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCac
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-消息队列
-
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 |---|---|---|---|
 | Message | String | success | 附加信息。 |
@@ -4801,26 +4849,24 @@ http(s)://[Endpoint]/?Action=CreateEmpowerBySub &OnsRegionId=qingdao &PreventCac
 http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &GroupId=1 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryEmpowerList
+###### 4.1.6.7.7 QueryEmpowerList
 
 查询消息队列RocketMQ版授权列表的API。
 
@@ -4829,8 +4875,6 @@ http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &Group
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4856,29 +4900,26 @@ http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &Group
 请求示例
 
 ```
-&OnsRegionId=REGION01
+http(s)://[Endpoint]/?Action=QueryEmpowerList &OnsRegionId=REGION01
 ```
 
-&公共请求参数正常返回示例消息队列 `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DeleteGroupEmpower
+###### 4.1.6.7.8 DeleteGroupEmpower
 
 删除消息队列RocketMQ版中的授权组。
 
@@ -4897,10 +4938,6 @@ http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &Group
 | GroupId | Strin g | Query | 是 | 1 | 应用分组ID。 |
 | InstanceId | Strin g | Query | 是 | bastionhost-12****** | 实例ID。 |
 
-消息队列
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -4918,28 +4955,22 @@ http(s)://[Endpoint]/?Action=QueryGroupEmpowerList &OnsRegionId=Region001 &Group
 http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCache=32423423424 &GroupId=1 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteEmpower
+`}`
+
+###### 4.1.6.7.9 DeleteEmpower
 
 删除消息队列RocketMQ版中指定主题的授权关系。
-
-**请求头**
-
-消息队列该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4961,30 +4992,26 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 | Data | String | [{}] | 返回数据。 |
 | Total | Long | 1 | 总数。 |
 
-**示例**
-
-消息队列请求示例
-
 ```
-&OnsRegionId=Region001 &PreventCache=63636363
+http(s)://[Endpoint]/?Action=DeleteEmpower &OnsRegionId=Region001 &PreventCache=63636363 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-##### MQTT管理接口
+`}`
 
-###### DeleteMqttGroupId
+##### 4.1.6.8 MQTT管理接口
+
+###### 4.1.6.8.1 DeleteMqttGroupId
 
 删除指定的MQTT Group ID。
 
@@ -5000,8 +5027,6 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 | OnsRegio nId | Strin g | Query | 是 | Region001 | Ons服务的区域标识符，用于指定资源所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 123123123 | 用于指示系统或浏览器不要缓存当前请求或数据，确保每次请求都直接从服务器获取最新内容。 |
 | MqttInstan ceId | Strin g | Query | 是 | post-cn-7mz2d****** | CA证书所绑定的实例ID，即云消息队列 MQTT 版的实例ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5023,25 +5048,23 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=123123123 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=DeleteMqttGroupId &OnsRegionId=Region001 &PreventCache=123123123 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-消息队列
+`}`
 
-###### SendMqtt
+###### 4.1.6.8.2 SendMqtt
 
 通过指定MQTT实例发送消息的接口。
 
@@ -5069,8 +5092,6 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -5084,35 +5105,29 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=3423423424 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=SendMqtt &OnsRegionId=region123 &PreventCache=3423423424 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttMsgTransTask
+###### 4.1.6.8.3 QueryMqttMsgTransTask
 
-消息队列查询MQTT消息传输任务的历史发布/订阅数据。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+查询MQTT消息传输任务的历史发布/订阅数据。
 
 **请求参数**
 
@@ -5132,10 +5147,6 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 | EndTime | Long | Query | 否 | 1707118672 | 结束时间。 |
 | Period | Long | Query | 否 | 1 | 周期。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -5150,29 +5161,27 @@ http(s)://[Endpoint]/?Action=DeleteGroupEmpower &OnsRegionId=hangzhou &PreventCa
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryMqttMsgTransTask &OnsRegionId=qingdao &PreventCache=23423423 &ConsoleType=DesktopConsole &QueryType=1 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=QueryMqttMsgTransTask &OnsRegionId=qingdao &PreventCache=23423423 &ConsoleType=DesktopConsole &QueryType=1 &Topic=test &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### CreateMqttInstanceStoreResource
+###### 4.1.6.8.4 CreateMqttInstanceStoreResource
 
 创建MQTT实例的存储资源。
 
@@ -5196,8 +5205,6 @@ http(s)://[Endpoint]/?Action=QueryMqttMsgTransTask &OnsRegionId=qingdao &Prevent
 
 **返回数据**
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -5212,31 +5219,25 @@ http(s)://[Endpoint]/?Action=QueryMqttMsgTransTask &OnsRegionId=qingdao &Prevent
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateMqttInstanceStoreResource &OnsRegionId=REGION_001 &PreventCache=234242 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2
+http(s)://[Endpoint]/?Action=CreateMqttInstanceStoreResource &OnsRegionId=REGION_001 &PreventCache=234242 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateMqttInstance
+`}`
+
+###### 4.1.6.8.5 CreateMqttInstance
 
 创建MQTT实例以支持消息队列RocketMQ版的MQTT协议接入。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5257,7 +5258,7 @@ http(s)://[Endpoint]/?Action=CreateMqttInstanceStoreResource &OnsRegionId=REGION
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5276,28 +5277,22 @@ http(s)://[Endpoint]/?Action=CreateMqttInstanceStoreResource &OnsRegionId=REGION
 http(s)://[Endpoint]/?Action=CreateMqttInstance &OnsRegionId=region1 &PreventCache=342342342 &MaxConn=5000 &MaxSub=3 &MaxDownTps=150 &MaxUpTps=150 &IndependentNaming=true
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateMqttGroupId
+`}`
+
+###### 4.1.6.8.6 CreateMqttGroupId
 
 创建一个MQTT Group ID。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5320,26 +5315,26 @@ http(s)://[Endpoint]/?Action=CreateMqttInstance &OnsRegionId=region1 &PreventCac
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=23342342 &MqttInstanceId=post-cn-7mz2d******
+http(s)://[Endpoint]/?Action=CreateMqttGroupId &OnsRegionId=region123 &PreventCache=23342342 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### PageQueryMqttInstanceStoreResource
+`}`
+
+###### 4.1.6.8.7 PageQueryMqttInstanceStoreResource
 
 分页查询MQTT实例存储资源。
 
@@ -5358,7 +5353,7 @@ http(s)://[Endpoint]/?Action=CreateMqttInstance &OnsRegionId=region1 &PreventCac
 | StoreType | Integ er | Query | 是 | oss | 外部存储的类型。 |
 | InstanceId | Strin g | Query | 是 | bastionhost-12****** | 实例ID。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5386,20 +5381,18 @@ http(s)://[Endpoint]/?Action=CreateMqttInstance &OnsRegionId=region1 &PreventCac
 http(s)://[Endpoint]/?Action=PageQueryMqttInstanceStoreResource &OnsRegionId=ExampleRegion01 &PreventCache=32423 &MqttInstanceId=post-cn-7mz2d****** &StoreType=oss &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### PageQueryMqttInstanceList
+`}`
+
+###### 4.1.6.8.8 PageQueryMqttInstanceList
 
 分页查询MQTT实例列表。
 
@@ -5424,8 +5417,6 @@ http(s)://[Endpoint]/?Action=PageQueryMqttInstanceStoreResource &OnsRegionId=Exa
 | Data | String | [{}] | 返回数据。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -5441,20 +5432,20 @@ http(s)://[Endpoint]/?Action=PageQueryMqttInstanceStoreResource &OnsRegionId=Exa
 http(s)://[Endpoint]/?Action=PageQueryMqttInstanceList &OnsRegionId=REGION_001 &PreventCache=234234234
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### PageQueryMqttGroupId
+`}`
+
+###### 4.1.6.8.9 PageQueryMqttGroupId
 
 分页查询MQTT实例下的Group ID列表。
 
@@ -5501,20 +5492,20 @@ http(s)://[Endpoint]/?Action=PageQueryMqttInstanceList &OnsRegionId=REGION_001 &
 http(s)://[Endpoint]/?Action=PageQueryMqttGroupId &OnsRegionId=Region01 &PreventCache=234241212 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteMqttInstanceStoreResource
+`}`
+
+###### 4.1.6.8.10 DeleteMqttInstanceStoreResource
 
 删除指定MQTT实例的存储资源。
 
@@ -5530,7 +5521,7 @@ http(s)://[Endpoint]/?Action=PageQueryMqttGroupId &OnsRegionId=Region01 &Prevent
 | OnsRegio nId | Strin g | Query | 是 | region123 | 代表某个特定的区域标识符，用于区分不同的区域或服务节点。 |
 | PreventCa che | Long | Query | 是 | 53534342534 | 用于防止浏览器或系统缓存数据，确保每次请求都从服务器获取最新内容。 |
 
-| ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5556,23 +5547,23 @@ http(s)://[Endpoint]/?Action=PageQueryMqttGroupId &OnsRegionId=Region01 &Prevent
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=DeleteMqttInstanceStoreResource &OnsRegionId=region123 &PreventCache=53534342534 &MqttInstanceId=post-cn-7mz2d****** &StoreType=1
+http(s)://[Endpoint]/?Action=DeleteMqttInstanceStoreResource &OnsRegionId=region123 &PreventCache=53534342534 &MqttInstanceId=post-cn-7mz2d****** &StoreType=1 &Topic=test
 ```
 
-&公共请求参数消息队列正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteMqttInstance
+`}`
+
+###### 4.1.6.8.11 DeleteMqttInstance
 
 删除指定的MQTT实例。
 
@@ -5596,8 +5587,6 @@ http(s)://[Endpoint]/?Action=DeleteMqttInstanceStoreResource &OnsRegionId=region
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Code | Integer | 200 | 接口状态或POP错误码。 |
@@ -5613,20 +5602,20 @@ http(s)://[Endpoint]/?Action=DeleteMqttInstanceStoreResource &OnsRegionId=region
 http(s)://[Endpoint]/?Action=DeleteMqttInstance &OnsRegionId=region123 &PreventCache=234234324 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryMqttInstanceReport
+`}`
+
+###### 4.1.6.8.12 QueryMqttInstanceReport
 
 查询MQTT实例的运行报告统计数据。
 
@@ -5639,8 +5628,6 @@ http(s)://[Endpoint]/?Action=DeleteMqttInstance &OnsRegionId=region123 &PreventC
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5663,32 +5650,30 @@ http(s)://[Endpoint]/?Action=DeleteMqttInstance &OnsRegionId=region123 &PreventC
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=QueryMqttInstanceReport &OnsRegionId=REGION01 &PreventCache=234234242 &MqttInstanceId=post-cn-7mz2d****** &BeginTime=2022 &EndTime=1706668721
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttInstanceList
+###### 4.1.6.8.13 QueryMqttInstanceList
 
 查询指定区域内的MQTT实例列表。
 
@@ -5704,7 +5689,7 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceReport &OnsRegionId=REGION01 &Prev
 | OnsRegio nId | Strin g | Query | 是 | Region001 | 表示消息服务所在的区域标识符，用于区分不同地理区域的资源部署。 |
 | PreventCa che | Long | Query | 是 | 23423423 | 用于防止浏览器缓存页面内容，强制每次请求都从服务器获取最新数据。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5729,25 +5714,23 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceReport &OnsRegionId=REGION01 &Prev
 http(s)://[Endpoint]/?Action=QueryMqttInstanceList &OnsRegionId=Region001 &PreventCache=23423423
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttInstanceBaseInfo
+###### 4.1.6.8.14 QueryMqttInstanceBaseInfo
 
 查询MQTT实例的基本信息，包括实例ID、名称、规格配置等。
 
@@ -5774,7 +5757,7 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceList &OnsRegionId=Region001 &Preve
 | Message | String | success | 附加信息。 |
 | Data | Map | {} | 返回数据。 |
 
-| 消息队列 |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5789,26 +5772,24 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceList &OnsRegionId=Region001 &Preve
 http(s)://[Endpoint]/?Action=QueryMqttInstanceBaseInfo &OnsRegionId=Region001 &PreventCache=34234242 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttGroupIdList
+###### 4.1.6.8.15 QueryMqttGroupIdList
 
 查询指定MQTT实例下的所有Group ID列表。
 
@@ -5821,8 +5802,6 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceBaseInfo &OnsRegionId=Region001 &P
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5849,26 +5828,22 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceBaseInfo &OnsRegionId=Region001 &P
 http(s)://[Endpoint]/?Action=QueryMqttGroupIdList &OnsRegionId=REGION_US_01 &PreventCache=763465327325 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttDeviceRunningInfo
+###### 4.1.6.8.16 QueryMqttDeviceRunningInfo
 
 查询MQTT设备的运行状态信息。
 
@@ -5885,10 +5860,6 @@ http(s)://[Endpoint]/?Action=QueryMqttGroupIdList &OnsRegionId=REGION_US_01 &Pre
 | PreventCa che | Long | Query | 是 | true | 启用防止缓存功能，确保每次请求都从服务器获取最新数据，避免使用本地缓存。 |
 | MqttInstan ceId | Strin g | Query | 是 | post-cn-7mz2d****** | CA证书所绑定的实例ID，即云消息队列 MQTT 版的实例ID。 |
 | ClientId | Strin g | Query | 否 | ClientID | 客户端ID。 |
-
-**返回数据**
-
-消息队列
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5907,28 +5878,24 @@ http(s)://[Endpoint]/?Action=QueryMqttGroupIdList &OnsRegionId=REGION_US_01 &Pre
 http(s)://[Endpoint]/?Action=QueryMqttDeviceRunningInfo &OnsRegionId=region123 &PreventCache=true &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-消息队列
-
-###### QueryMqttConnectionSum
+###### 4.1.6.8.17 QueryMqttConnectionSum
 
 查询MQTT连接数的统计信息和趋势数据。
 
@@ -5970,36 +5937,30 @@ http(s)://[Endpoint]/?Action=QueryMqttDeviceRunningInfo &OnsRegionId=region123 &
 http(s)://[Endpoint]/?Action=QueryMqttConnectionSum &OnsRegionId=REGION01 &PreventCache=234235234243 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttClientSetByTopic
+###### 4.1.6.8.18 QueryMqttClientSetByTopic
 
 根据MQTT主题查询订阅该主题的客户端集合信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6023,32 +5984,28 @@ http(s)://[Endpoint]/?Action=QueryMqttConnectionSum &OnsRegionId=REGION01 &Preve
 
 **示例**
 
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=QueryMqttClientSetByTopic &OnsRegionId=region123 &PreventCache=124241212 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttClientSetByGroupId
+###### 4.1.6.8.19 QueryMqttClientSetByGroupId
 
 根据MQTT GroupId查询在线客户端集合信息。
 
@@ -6063,8 +6020,6 @@ http(s)://[Endpoint]/?Action=QueryMqttClientSetByTopic &OnsRegionId=region123 &P
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | REGION 001 _ | 表示ONS服务中某一特定区域的唯一标识符。 |
 | PreventCa che | Long | Query | 是 | 23214142 | 用于防止浏览器或系统缓存数据，确保每次请求都获取最新内容。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6090,26 +6045,22 @@ http(s)://[Endpoint]/?Action=QueryMqttClientSetByTopic &OnsRegionId=region123 &P
 http(s)://[Endpoint]/?Action=QueryMqttClientSetByGroupId &OnsRegionId=REGION_001 &PreventCache=23214142 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttTraceByTraceId
+###### 4.1.6.8.20 QueryMqttTraceByTraceId
 
 用于查询指定Trace ID下的MQTT消息轨迹。
 
@@ -6128,10 +6079,6 @@ http(s)://[Endpoint]/?Action=QueryMqttClientSetByGroupId &OnsRegionId=REGION_001
 | Topic | Strin g | Query | 否 | test | Topic名称。 |
 | TraceId | Strin g | Query | 否 | 0a98a33417022688050 2075****** | 调用链ID。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -6149,28 +6096,24 @@ http(s)://[Endpoint]/?Action=QueryMqttClientSetByGroupId &OnsRegionId=REGION_001
 http(s)://[Endpoint]/?Action=QueryMqttTraceByTraceId &OnsRegionId=hangzhou &PreventCache=324242342 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-消息队列
-
-###### QueryMqttMsgByPubInfo
+###### 4.1.6.8.21 QueryMqttMsgByPubInfo
 
 根据发布信息查询MQTT消息的API接口。
 
@@ -6199,8 +6142,6 @@ http(s)://[Endpoint]/?Action=QueryMqttTraceByTraceId &OnsRegionId=hangzhou &Prev
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Code | Integer | 200 | 接口状态或POP错误码。 |
@@ -6215,40 +6156,26 @@ http(s)://[Endpoint]/?Action=QueryMqttTraceByTraceId &OnsRegionId=hangzhou &Prev
 http(s)://[Endpoint]/?Action=QueryMqttMsgByPubInfo &OnsRegionId=REGION01 &PreventCache=2342342 &MqttInstanceId=post-cn-7mz2d******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-**4.1.6.8.22.**
-
-###### QueryMqttInstanceStoreResourceNameList
+###### 4.1.6.8.22 QueryMqttInstanceStoreResourceNameList
 
 查询MQTT实例存储资源名称列表。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6272,32 +6199,28 @@ http(s)://[Endpoint]/?Action=QueryMqttMsgByPubInfo &OnsRegionId=REGION01 &Preven
 
 **示例**
 
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreResourceNameList &OnsRegionId=region01 &PreventCache=234234234 &MqttInstanceId=post-cn-7mz2d****** &StoreType=3 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttInstanceStoreInstanceList
+###### 4.1.6.8.23 QueryMqttInstanceStoreInstanceList
 
 查询MQTT实例的存储实例列表。
 
@@ -6313,7 +6236,7 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreResourceNameList &OnsRegionId
 | OnsRegio nId | Strin g | Query | 是 | Region001 | 代表某个特定区域的唯一标识符，用于区分不同的地理或逻辑区域。 |
 | PreventCa che | Long | Query | 是 | 723635625425 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 
-| RocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| RocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -6339,26 +6262,24 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreResourceNameList &OnsRegionId
 http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreInstanceList &OnsRegionId=Region001 &PreventCache=723635625425
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateMqttInstance
+###### 4.1.6.8.24 UpdateMqttInstance
 
 更新指定MQTT实例的详细信息。
 
@@ -6384,7 +6305,7 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreInstanceList &OnsRegionId=Reg
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6402,34 +6323,26 @@ http(s)://[Endpoint]/?Action=QueryMqttInstanceStoreInstanceList &OnsRegionId=Reg
 http(s)://[Endpoint]/?Action=UpdateMqttInstance &OnsRegionId=REGION06 &PreventCache=2424324234 &MqttInstanceId=post-cn-7mz2d****** &MqttInstanceName=myMqtt &Remark=remark
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### ChangeMqttInstanceSpec
+###### 4.1.6.8.25 ChangeMqttInstanceSpec
 
 更改MQTT实例规格的API接口。
-
-**请求头**
-
-消息队列该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6450,7 +6363,7 @@ http(s)://[Endpoint]/?Action=UpdateMqttInstance &OnsRegionId=REGION06 &PreventCa
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6467,34 +6380,26 @@ http(s)://[Endpoint]/?Action=UpdateMqttInstance &OnsRegionId=REGION06 &PreventCa
 http(s)://[Endpoint]/?Action=ChangeMqttInstanceSpec &OnsRegionId=region123 &PreventCache=2342342 &MqttInstanceId=post-cn-7mz2d****** &MaxConn=5000 &MaxSub=5 &MaxDownTps=150 &MaxUpTps=150
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### BindMqttInstance
+###### 4.1.6.8.26 BindMqttInstance
 
 绑定MQTT实例到消息队列RocketMQ版服务。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6517,33 +6422,31 @@ http(s)://[Endpoint]/?Action=ChangeMqttInstanceSpec &OnsRegionId=region123 &Prev
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-&OnsRegionId=REGION_001 &PreventCache=3242423 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &InstanceId=bastionhost-12******
+http(s)://[Endpoint]/?Action=BindMqttInstance &OnsRegionId=REGION_001 &PreventCache=3242423 &MqttInstanceId=post-cn-7mz2d****** &StoreType=2 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Trace管理
+##### 4.1.6.9 Trace管理
 
-###### QueryTraceMapByQueryId
+###### 4.1.6.9.1 QueryTraceMapByQueryId
 
 根据查询ID获取完整的消息轨迹链路图，展示消息从发送到消费的完整链路信息。
 
@@ -6557,8 +6460,6 @@ http(s)://[Endpoint]/?Action=ChangeMqttInstanceSpec &OnsRegionId=region123 &Prev
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | OnsRegio nId | Strin g | Query | 是 | REGION01 | 表示消息服务中使用的区域 ID，用于指定资源所在的地理区域。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6585,25 +6486,21 @@ http(s)://[Endpoint]/?Action=ChangeMqttInstanceSpec &OnsRegionId=region123 &Prev
 http(s)://[Endpoint]/?Action=QueryTraceMapByQueryId &OnsRegionId=REGION01 &PreventCache=3665454 &InstanceId=bastionhost-12****** &QueryId=123
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryPubTraceByQueryId
+###### 4.1.6.9.2 QueryPubTraceByQueryId
 
 根据查询ID获取消息发布的轨迹详情信息。
 
@@ -6621,8 +6518,6 @@ http(s)://[Endpoint]/?Action=QueryTraceMapByQueryId &OnsRegionId=REGION01 &Preve
 | InstanceId | Strin g | Query | 是 | bastionhost-12****** | 实例ID。 |
 | QueryId | Strin g | Query | 是 | 123 | 查询ID，即查询的唯一标识。 |
 | CurrentPa ge | Integ er | Query | 否 | 1 | 当前页的页码。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6646,25 +6541,23 @@ http(s)://[Endpoint]/?Action=QueryTraceMapByQueryId &OnsRegionId=REGION01 &Preve
 http(s)://[Endpoint]/?Action=QueryPubTraceByQueryId &OnsRegionId=Region001 &PreventCache=231241431 &InstanceId=bastionhost-12****** &QueryId=123
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-消息队列 `XML` 格式
+`XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### PageQueryTraceListByUserId
+###### 4.1.6.9.3 PageQueryTraceListByUserId
 
 分页查询用户的消息轨迹列表。
 
@@ -6686,8 +6579,6 @@ http(s)://[Endpoint]/?Action=QueryPubTraceByQueryId &OnsRegionId=Region001 &Prev
 
 **返回数据**
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
@@ -6705,30 +6596,24 @@ http(s)://[Endpoint]/?Action=QueryPubTraceByQueryId &OnsRegionId=Region001 &Prev
 http(s)://[Endpoint]/?Action=PageQueryTraceListByUserId &OnsRegionId=Region001 &PreventCache=32423432424 &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteTraceQueryTask
+`}`
+
+###### 4.1.6.9.4 DeleteTraceQueryTask
 
 删除消息轨迹查询任务的API接口。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -6756,19 +6641,17 @@ http(s)://[Endpoint]/?Action=PageQueryTraceListByUserId &OnsRegionId=Region001 &
 http(s)://[Endpoint]/?Action=DeleteTraceQueryTask &OnsRegionId=REGION_001 &PreventCache=234555333232 &InstanceId=bastionhost-12****** &QueryId=272967562652883649157096685****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryTraceByMsgTopic
+`}`
+
+###### 4.1.6.9.5 QueryTraceByMsgTopic
 
 根据主题名称查询消息轨迹。
 
@@ -6789,10 +6672,6 @@ http(s)://[Endpoint]/?Action=DeleteTraceQueryTask &OnsRegionId=REGION_001 &Preve
 | EndTime | Long | Quer y | 是 | 1706668721 | 结束时间。 |
 | OnsSessio nId | Strin g | Quer y | 否 | abc123xyz | 表示在消息队列服务中标识一次客户端会话的唯一ID，用于跟踪和管理消息的发送与接收过程。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -6807,29 +6686,27 @@ http(s)://[Endpoint]/?Action=DeleteTraceQueryTask &OnsRegionId=REGION_001 &Preve
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryTraceByMsgTopic &OnsRegionId=ExampleRegion01 &PreventCache=231243123423 &InstanceId=bastionhost-12****** &EndTime=1706668721
+http(s)://[Endpoint]/?Action=QueryTraceByMsgTopic &OnsRegionId=ExampleRegion01 &PreventCache=231243123423 &InstanceId=bastionhost-12****** &Topic=test &EndTime=1706668721
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTraceByMsgKey
+###### 4.1.6.9.6 QueryTraceByMsgKey
 
 根据消息键值查询消息轨迹。
 
@@ -6851,10 +6728,6 @@ http(s)://[Endpoint]/?Action=QueryTraceByMsgTopic &OnsRegionId=ExampleRegion01 &
 | EndTime | Long | Query | 是 | 1706668721 | 结束时间。 |
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | 表示在消息队列服务中标识一个客户端会话的唯一ID， 用于维护客户端与服务端之间的连接状态。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -6869,29 +6742,27 @@ http(s)://[Endpoint]/?Action=QueryTraceByMsgTopic &OnsRegionId=ExampleRegion01 &
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventCache=342342423 &InstanceId=bastionhost-12****** &MsgKey=ORDERID_100 &EndTime=1706668721
+http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventCache=342342423 &InstanceId=bastionhost-12****** &Topic=test &MsgKey=ORDERID_100 &EndTime=1706668721
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTraceByMsgId
+###### 4.1.6.9.7 QueryTraceByMsgId
 
 查询指定消息ID的消息轨迹。
 
@@ -6916,8 +6787,6 @@ http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventC
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-消息队列
-
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -6930,32 +6799,28 @@ http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventC
 请求示例
 
 ```
-&OnsRegionId=REGION001 &PreventCache=23232423 &InstanceId=bastionhost-12****** &MsgId=0BC16699165C03B925DB8A404E2D****
+http(s)://[Endpoint]/?Action=QueryTraceByMsgId &OnsRegionId=REGION001 &PreventCache=23232423 &InstanceId=bastionhost-12****** &Topic=test &MsgId=0BC16699165C03B925DB8A404E2D****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Consumer管理
+##### 4.1.6.10 Consumer管理
 
-消息队列
-
-###### CheckFortestConsumerId
+###### 4.1.6.10.1 CheckFortestConsumerId
 
 验证测试环境中消费者ID的有效性。
 
@@ -6980,8 +6845,6 @@ http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventC
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-消息队列
-
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -6998,28 +6861,24 @@ http(s)://[Endpoint]/?Action=QueryTraceByMsgKey &OnsRegionId=region123 &PreventC
 http(s)://[Endpoint]/?Action=CheckFortestConsumerId &OnsRegionId=region123 &PreventCache=2342424 &Relation=6
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryAllConsumerAccumulation
+`}`
+
+###### 4.1.6.10.2 QueryAllConsumerAccumulation
+
+查询指定消费者组在特定Topic下的所有消息队列的消费堆积情况。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7042,26 +6901,26 @@ http(s)://[Endpoint]/?Action=CheckFortestConsumerId &OnsRegionId=region123 &Prev
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryAllConsumerAccumulation &OnsRegionId=Region001 &GroupId=GID-test
+http(s)://[Endpoint]/?Action=QueryAllConsumerAccumulation &OnsRegionId=Region001 &Topic=test &GroupId=GID-test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryConsumerTimespan
+`}`
+
+###### 4.1.6.10.3 QueryConsumerTimespan
 
 查询指定消费者组在特定主题下的消费时间跨度信息，包括最早和最晚消费时间、消费延迟等时间相关指标。
 
@@ -7080,7 +6939,7 @@ http(s)://[Endpoint]/?Action=QueryAllConsumerAccumulation &OnsRegionId=Region001
 | GroupId | Strin g | Query | 是 | 1 | 组ID。 |
 | Topic | Strin g | Query | 是 | test | Topic名称。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -7103,29 +6962,25 @@ http(s)://[Endpoint]/?Action=QueryAllConsumerAccumulation &OnsRegionId=Region001
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryConsumerTimespan &OnsRegionId=Region001 &PreventCache=464563643 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=QueryConsumerTimespan &OnsRegionId=Region001 &PreventCache=464563643 &InstanceId=bastionhost-12****** &GroupId=1 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerStatus
+###### 4.1.6.10.4 QueryConsumerStatus
 
 查询指定消费者组的综合状态信息，包括在线状态、消费TPS、消息堆积量、消费延迟以及订阅关系一致性等关键运行状态指标。
 
@@ -7145,7 +7000,7 @@ http(s)://[Endpoint]/?Action=QueryConsumerTimespan &OnsRegionId=Region001 &Preve
 | Detail | Boole an | Query | 否 | true | 内容。 |
 | NeedJstac k | Boole an | Query | 否 | true | 是否打印Jstack信息。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | 表示在消息队列ONS服务中标识一次客户端会话的唯一 ID，用于区分不同的生产或消费会话。 |
@@ -7169,26 +7024,22 @@ http(s)://[Endpoint]/?Action=QueryConsumerTimespan &OnsRegionId=Region001 &Preve
 http(s)://[Endpoint]/?Action=QueryConsumerStatus &OnsRegionId=REGION_001 &PreventCache=223435434 &InstanceId=bastionhost-12****** &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerProgress
+###### 4.1.6.10.5 QueryConsumerProgress
 
 用于查询指定消费者组的消费进度信息，包括各消息队列的消费位点、堆积量和最后消费时间等详细进度数据。
 
@@ -7206,8 +7057,6 @@ http(s)://[Endpoint]/?Action=QueryConsumerStatus &OnsRegionId=REGION_001 &Preven
 | GroupId | Strin g | Query | 否 | GID-01 | 组ID。 |
 | InstanceId | Strin g | Query | 否 | bastionhost-12****** | 实例ID。 |
 | Consumer Id | Strin g | Query | 否 | kafka-test | 消费者id。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7232,26 +7081,24 @@ http(s)://[Endpoint]/?Action=QueryConsumerStatus &OnsRegionId=REGION_001 &Preven
 http(s)://[Endpoint]/?Action=QueryConsumerProgress &OnsRegionId=hangzhou &PreventCache=23424234242
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerJstackInfo
+###### 4.1.6.10.6 QueryConsumerJstackInfo
 
 查询消息队列RocketMQ版中消费者的线程堆栈信息。
 
@@ -7277,8 +7124,6 @@ http(s)://[Endpoint]/?Action=QueryConsumerProgress &OnsRegionId=hangzhou &Preven
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -7296,28 +7141,24 @@ http(s)://[Endpoint]/?Action=QueryConsumerProgress &OnsRegionId=hangzhou &Preven
 http(s)://[Endpoint]/?Action=QueryConsumerJstackInfo &OnsRegionId=region123 &PreventCache=2342342342 &ClientId=GID_test@@@test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-消息队列
-
-###### QueryConsumerConnection
+###### 4.1.6.10.7 QueryConsumerConnection
 
 用于查询指定消费者组的连接信息，包括在线的消费者客户端连接列表和客户端详细信息。
 
@@ -7346,34 +7187,28 @@ http(s)://[Endpoint]/?Action=QueryConsumerJstackInfo &OnsRegionId=region123 &Pre
 | Data | Map | {} | 返回数据。 |
 | Total | Long | 1 | 总数。 |
 
-**示例**
-
-消息队列请求示例
-
 ```
 http(s)://[Endpoint]/?Action=QueryConsumerConnection &OnsRegionId=region01 &PreventCache=324234242 &GroupId=GID-01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerAccumulate
+###### 4.1.6.10.8 QueryConsumerAccumulate
 
 用于查询指定消费者组的消息堆积情况，包括总堆积量和各主题的详细堆积信息。
 
@@ -7389,7 +7224,7 @@ http(s)://[Endpoint]/?Action=QueryConsumerConnection &OnsRegionId=region01 &Prev
 | OnsRegio nId | Strin g | Query | 是 | region01 | 主区域1，用于标识消息服务的主要地理区域。 |
 | PreventCa che | Long | Query | 是 | 12312313 | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 
-| ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -7417,28 +7252,22 @@ http(s)://[Endpoint]/?Action=QueryConsumerConnection &OnsRegionId=region01 &Prev
 http(s)://[Endpoint]/?Action=QueryConsumerAccumulate &OnsRegionId=region01 &PreventCache=12312313 &GroupId=GID-1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-**4.1.6.10.9.**
-
-###### UpdateConsumerReadableByTopicAndGroup
+###### 4.1.6.10.9 UpdateConsumerReadableByTopicAndGroup
 
 更新指定主题和消费者组的可读状态。
 
@@ -7457,10 +7286,6 @@ http(s)://[Endpoint]/?Action=QueryConsumerAccumulate &OnsRegionId=region01 &Prev
 | ReadEnab le | Boole an | Query | 是 | true | 设置读消息开关。 |
 | InstanceId | Strin g | Query | 否 | bastionhost-12****** | 实例ID。 |
 
-**返回数据**
-
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -7475,29 +7300,27 @@ http(s)://[Endpoint]/?Action=QueryConsumerAccumulate &OnsRegionId=region01 &Prev
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=UpdateConsumerReadableByTopicAndGroup &OnsRegionId=Region001 &GroupId=1 &ReadEnable=true
+http(s)://[Endpoint]/?Action=UpdateConsumerReadableByTopicAndGroup &OnsRegionId=Region001 &Topic=test &GroupId=1 &ReadEnable=true
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### ResetConsumerOffset
+###### 4.1.6.10.10 ResetConsumerOffset
 
 重置消息队列RocketMQ版的消费者偏移量。
 
@@ -7524,7 +7347,7 @@ http(s)://[Endpoint]/?Action=UpdateConsumerReadableByTopicAndGroup &OnsRegionId=
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-| RocketMQ | ·API |  |  |
+| RocketMQ | ·API |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7540,31 +7363,27 @@ http(s)://[Endpoint]/?Action=UpdateConsumerReadableByTopicAndGroup &OnsRegionId=
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=ResetConsumerOffset &OnsRegionId=region123 &PreventCache=2342342342 &InstanceId=bastionhost-12****** &GroupId=1
+http(s)://[Endpoint]/?Action=ResetConsumerOffset &OnsRegionId=region123 &PreventCache=2342342342 &InstanceId=bastionhost-12****** &GroupId=1 &Topic=test
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-消息队列
-
-###### QueryUnitLatestConsumerTime
+###### 4.1.6.10.11 QueryUnitLatestConsumerTime
 
 查询指定消费者组在某个实例和主题下的最新消费时间。
 
@@ -7593,7 +7412,7 @@ http(s)://[Endpoint]/?Action=ResetConsumerOffset &OnsRegionId=region123 &Prevent
 | Message | String | success | 附加信息。 |
 | Data | String | [{}] | 返回数据。 |
 
-|  | RocketMQ 开发指南 | ·API参考 |  | 消息队列 |  |
+|   | RocketMQ 开发指南 | ·API参考 |   | 消息队列 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7605,31 +7424,29 @@ http(s)://[Endpoint]/?Action=ResetConsumerOffset &OnsRegionId=region123 &Prevent
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 &GroupId=1
+http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 &Topic=test &GroupId=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### MQ Connector管理
+##### 4.1.6.11 MQ Connector管理
 
-###### ResumeMqConnector
+###### 4.1.6.11.1 ResumeMqConnector
 
 恢复消息队列MQ连接器的服务状态。
 
@@ -7641,8 +7458,6 @@ http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7666,32 +7481,30 @@ http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=24234234
+http(s)://[Endpoint]/?Action=ResumeMqConnector &OnsRegionId=Region001 &PreventCache=24234234
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### PauseMqConnector
+###### 4.1.6.11.2 PauseMqConnector
 
 暂停消息队列MQ连接器的操作接口。
 
@@ -7708,8 +7521,6 @@ http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 
 
 **返回数据**
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -7724,33 +7535,27 @@ http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 
 请求示例
 
 ```
-&OnsRegionId=REGION01 &PreventCache=324234234242
+http(s)://[Endpoint]/?Action=PauseMqConnector &OnsRegionId=REGION01 &PreventCache=324234234242
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteDeploymentMqConnector
+`}`
+
+###### 4.1.6.11.3 DeleteDeploymentMqConnector
 
 删除消息队列MQ中的部署连接器。
 
 **请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7773,26 +7578,26 @@ http(s)://[Endpoint]/?Action=QueryUnitLatestConsumerTime &OnsRegionId=region123 
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DeleteDeploymentMqConnector &OnsRegionId=Region12345 &PreventCache=23442342432
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateDeploymentMqConnector
+`}`
+
+###### 4.1.6.11.4 CreateDeploymentMqConnector
 
 创建消息队列MQ的部署连接器。
 
@@ -7808,8 +7613,6 @@ http(s)://[Endpoint]/?Action=DeleteDeploymentMqConnector &OnsRegionId=Region1234
 | InstanceId | Strin g | Query | 否 | bastionhost-12****** | 实例ID。 |
 | Type | Strin g | Query | 否 | 1 | 保密配置类型，支持以下两种类型： Opaque：用户自定义数据类型。 kubernetes.io/tls：TLS 证书类型。 |
 | SourcePar ams | Strin g | Query | 否 | {"key1": "value1", "key2": 123, "key3": true} | 用于传递请求中的参数，通常以键值对形式表示，包含调用接口时所需的各类参数信息。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7836,12 +7639,12 @@ http(s)://[Endpoint]/?Action=DeleteDeploymentMqConnector &OnsRegionId=Region1234
 http(s)://[Endpoint]/?Action=CreateDeploymentMqConnector &TargetParams={"key1":"value1", "key2":"value2"} &OnsRegionId=REGION01 &PreventCache=7336353563
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数
 
-|  | { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "Total":1, "Data":"[{}]", "Code":200, "Success":true } |
+|   | { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Message":"success", "Total":1, "Data":"[{}]", "Code":200, "Success":true } |
 |---|---|
 
-###### DeployDeploymentMqConnector
+###### 4.1.6.11.5 DeployDeploymentMqConnector
 
 部署消息队列MQ连接器的API接口。
 
@@ -7867,7 +7670,7 @@ http(s)://[Endpoint]/?Action=CreateDeploymentMqConnector &TargetParams={"key1":"
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | Message | String | success | 附加信息。 |
@@ -7882,20 +7685,22 @@ http(s)://[Endpoint]/?Action=CreateDeploymentMqConnector &TargetParams={"key1":"
 http(s)://[Endpoint]/?Action=DeployDeploymentMqConnector &OnsRegionId=REGION_001 &PreventCache=234234234
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryMqConnectorSysResourceName
+`}`
+
+###### 4.1.6.11.6 QueryMqConnectorSysResourceName
+
+根据MQ连接器任务名称生成系统资源名称，包括错误处理Topic和消费者组等。
 
 **请求头**
 
@@ -7909,7 +7714,7 @@ http(s)://[Endpoint]/?Action=DeployDeploymentMqConnector &OnsRegionId=REGION_001
 | InstanceId | Strin g | Query | 否 | bastionhost-12****** | 实例ID。 |
 | RegionId | Strin g | Query | 否 | cn-hangzhou | 地域ID。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -7936,26 +7741,22 @@ http(s)://[Endpoint]/?Action=DeployDeploymentMqConnector &OnsRegionId=REGION_001
 http(s)://[Endpoint]/?Action=QueryMqConnectorSysResourceName &OnsRegionId=nanjing &PreventCache=12321313231
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqConnectorMetricsDetailList
+###### 4.1.6.11.7 QueryMqConnectorMetricsDetailList
 
 查询消息队列连接器的指标详情列表。
 
@@ -7977,8 +7778,6 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorSysResourceName &OnsRegionId=nanjin
 | Data | String | [{}] | 返回数据。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -7994,34 +7793,26 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorSysResourceName &OnsRegionId=nanjin
 http(s)://[Endpoint]/?Action=QueryMqConnectorMetricsDetailList &OnsRegionId=REGION_001 &PreventCache=2323434235242
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqConnectorInfoList
+###### 4.1.6.11.8 QueryMqConnectorInfoList
 
 查询消息队列MQ连接器信息列表。
-
-**请求头**
-
-消息队列该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8047,26 +7838,22 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorMetricsDetailList &OnsRegionId=REGI
 http(s)://[Endpoint]/?Action=QueryMqConnectorInfoList &OnsRegionId=REGION_001 &PreventCache=2323432423
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqConnectorDeploymentList
+###### 4.1.6.11.9 QueryMqConnectorDeploymentList
 
 查询消息队列MQ连接器的部署列表。
 
@@ -8088,8 +7875,6 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorInfoList &OnsRegionId=REGION_001 &P
 | Data | String | [{}] | 返回数据。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -8105,34 +7890,26 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorInfoList &OnsRegionId=REGION_001 &P
 http(s)://[Endpoint]/?Action=QueryMqConnectorDeploymentList &OnsRegionId=REGION01 &PreventCache=32532545543
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateMqConnectorDeployment
+###### 4.1.6.11.10 UpdateMqConnectorDeployment
 
 更新消息队列MQ连接器的部署配置。
-
-**请求头**
-
-消息队列该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8154,7 +7931,7 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorDeploymentList &OnsRegionId=REGION0
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8171,36 +7948,28 @@ http(s)://[Endpoint]/?Action=QueryMqConnectorDeploymentList &OnsRegionId=REGION0
 http(s)://[Endpoint]/?Action=UpdateMqConnectorDeployment &TargetParams={"age": 25, "gender": "male", "location": "Shanghai"} &OnsRegionId=singapore &PreventCache=23423423
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Router Task管理
+##### 4.1.6.12 Router Task管理
 
-###### DeleteCloudRouterTask
+###### 4.1.6.12.1 DeleteCloudRouterTask
 
 删除指定的云路由任务。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8228,20 +7997,20 @@ http(s)://[Endpoint]/?Action=UpdateMqConnectorDeployment &TargetParams={"age": 2
 http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &PreventCache=4535354353
 ```
 
-&公共请求参数消息队列正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateRouterTask
+`}`
+
+###### 4.1.6.12.2 CreateRouterTask
 
 创建一个消息路由任务，支持跨区域或实例的消息转发。
 
@@ -8262,22 +8031,20 @@ http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &Preven
 | FilterRule | Strin g | Query | 否 | {"field":"status","operat or":"=","value":"active"} | 用于筛选状态等于"active"的记录。 |
 | FilterProp erty | Strin g | Query | 否 | NOT | 用于筛选对象的分类属性。 |
 
-消息队列
-
-| 参数名称 | 类型 | 位置 |  | 是否必选 | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   | 是否必选 | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|
-| SrcTopic | Strin g | Query |  | 是 | /x7aWKW9***/testDataT oDataHub/user/update |  | 源Topic，即被订阅的 Topic。 如， SrcTopic.1=/x7aW |  |
-|  |  |  |  |  |  |  |  | SrcTopic.1=/x7aW |
-|  |  |  |  |  |  | ub/user/update | KW9****/testDataToDat |  |
-|  |  |  |  |  |  |  | aHub/user/update |  |
-| SrcRegion | Strin g | Query |  | 是 | cn-beijing |  | 源实例所在区域。 当备份恢复类型为已删除实例重建时，需要且必填当备份恢复类型为异地备份克隆时， 需要且必填 |  |
-| SrcInstanc eId | Strin g | Query |  | 否 | 1 |  | 源项目ID。 |  |
-| DesTopic | Strin g | Query |  | 是 | 用户登录 |  | 描述用户在系统中进行身份验证的过程。 |  |
-| DesRegio n | Strin g | Query |  | 是 | 亚洲 |  | 表示亚太地区，常用于地理区域划分，涵盖亚洲和太平洋周边国家及地区。 |  |
-| DesInstan ceId | Strin g | Query |  | 否 | example123 |  | instanceId是用于唯一标识一个实例的ID，通常在云计算或系统管理中使用。 |  |
-| OffsetFro mType | Strin g | Query |  | 是 | 示例值 |  | 描述信息。 |  |
-| OffsetFro mGroupId | Strin g | Query |  | 否 | 1001 |  | 表示从组ID为1001的元素开始计算偏移量。 |  |
-| OffsetFro mTimesta mp | Long | Query |  | 否 | 1630425600000 |  | 表示从1970年1月1日 00:00:00 UTC到某个特定时间点的毫秒数，常用于定义时间戳的偏移量。 |  |
+| SrcTopic | Strin g | Query |   | 是 | /x7aWKW9***/testDataT oDataHub/user/update |   | 源Topic，即被订阅的 Topic。 如， SrcTopic.1=/x7aW |   |
+|   |   |   |   |   |   |   |   | SrcTopic.1=/x7aW |
+|   |   |   |   |   |   | ub/user/update | KW9****/testDataToDat |   |
+|   |   |   |   |   |   |   | aHub/user/update |   |
+| SrcRegion | Strin g | Query |   | 是 | cn-beijing |   | 源实例所在区域。 当备份恢复类型为已删除实例重建时，需要且必填当备份恢复类型为异地备份克隆时， 需要且必填 |   |
+| SrcInstanc eId | Strin g | Query |   | 否 | 1 |   | 源项目ID。 |   |
+| DesTopic | Strin g | Query |   | 是 | 用户登录 |   | 描述用户在系统中进行身份验证的过程。 |   |
+| DesRegio n | Strin g | Query |   | 是 | 亚洲 |   | 表示亚太地区，常用于地理区域划分，涵盖亚洲和太平洋周边国家及地区。 |   |
+| DesInstan ceId | Strin g | Query |   | 否 | example123 |   | instanceId是用于唯一标识一个实例的ID，通常在云计算或系统管理中使用。 |   |
+| OffsetFro mType | Strin g | Query |   | 是 | 示例值 |   | 描述信息。 |   |
+| OffsetFro mGroupId | Strin g | Query |   | 否 | 1001 |   | 表示从组ID为1001的元素开始计算偏移量。 |   |
+| OffsetFro mTimesta mp | Long | Query |   | 否 | 1630425600000 |   | 表示从1970年1月1日 00:00:00 UTC到某个特定时间点的毫秒数，常用于定义时间戳的偏移量。 |   |
 
 **返回数据**
 
@@ -8298,51 +8065,43 @@ http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &Preven
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=1213123213 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing
+http(s)://[Endpoint]/?Action=CreateRouterTask &OnsRegionId=region123 &PreventCache=1213123213 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing
 ```
 
-`&DesRegion=`亚洲 `&OffsetFromType=`示例值 &公共请求参数正常返回示例 `JSON` 格式
+`&DesTopic=`用户登录 `&DesRegion=`亚洲 `&OffsetFromType=`示例值 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateRouterInnerTask
+`}`
+
+###### 4.1.6.12.3 CreateRouterInnerTask
 
 创建一个内部消息路由任务。
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
-
-| 参数名称 | 类型 | 位置 |  | 是否必选 | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 |   | 是否必选 | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|---|
-| RegionId | Strin g | Host |  | 否 | cn-hangzhou |  | 地域ID。 |  |
-| OnsRegio nId | Strin g | Query |  | 是 | ExampleRegion01 |  | 代表某个特定区域的唯一标识符，用于区分不同的服务区域或数据中心。 |  |
-| TaskDesc | Strin g | Query |  | 否 | task-desc |  | 任务描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |  |
-| TaskKey | Strin g | Query |  | 否 | EX003 |  | 任务标识符。 |  |
-| FilterType | Strin g | Query |  | 否 | Tag |  | 消息过滤类型。 |  |
-| FilterRule | Strin g | Query |  | 否 | {"field": "status", "value": "active", "operator": "="} |  | 根据指定字段进行过滤，示例表示筛选status等于 active的记录。 |  |
-| FilterProp erty | Strin g | Query |  | 否 | Date |  | 用于根据用户角色（如管理员、普通用户）进行过滤。 |  |
-| SrcTopic | Strin g | Query |  |  |  |  | 源Topic，即被订阅的 Topic。 如， SrcTopic.1=/x7aW |  |
-|  |  |  |  |  |  |  |  | SrcTopic.1=/x7aW |
-|  |  |  |  |  |  |  | KW9****/testDataToDat |  |
-|  |  |  |  | 是 | /x7aWKW9***/testDataT |  |  |  |
-|  |  |  |  |  |  |  | aHub/user/update |  |
-|  |  |  |  |  | oDataHub/user/update |  |  |  |
-| SrcRegion | Strin g | Query |  | 是 | cn-beijing |  | 源实例所在区域。 当备份恢复类型为已删除实例重建时，需要且必填当备份恢复类型为异地备份克隆时， 需要且必填 |  |
-| SrcInstanc eId | Strin g | Query |  | 否 | 1 |  | 源项目ID。 |  |
-
-消息队列
+| RegionId | Strin g | Host |   | 否 | cn-hangzhou |   | 地域ID。 |   |
+| OnsRegio nId | Strin g | Query |   | 是 | ExampleRegion01 |   | 代表某个特定区域的唯一标识符，用于区分不同的服务区域或数据中心。 |   |
+| TaskDesc | Strin g | Query |   | 否 | task-desc |   | 任务描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |   |
+| TaskKey | Strin g | Query |   | 否 | EX003 |   | 任务标识符。 |   |
+| FilterType | Strin g | Query |   | 否 | Tag |   | 消息过滤类型。 |   |
+| FilterRule | Strin g | Query |   | 否 | {"field": "status", "value": "active", "operator": "="} |   | 根据指定字段进行过滤，示例表示筛选status等于 active的记录。 |   |
+| FilterProp erty | Strin g | Query |   | 否 | Date |   | 用于根据用户角色（如管理员、普通用户）进行过滤。 |   |
+| SrcTopic | Strin g | Query |   |   |   |   | 源Topic，即被订阅的 Topic。 如， SrcTopic.1=/x7aW |   |
+|   |   |   |   |   |   |   |   | SrcTopic.1=/x7aW |
+|   |   |   |   |   |   |   | KW9****/testDataToDat |   |
+|   |   |   |   | 是 | /x7aWKW9***/testDataT |   |   |   |
+|   |   |   |   |   |   |   | aHub/user/update |   |
+|   |   |   |   |   | oDataHub/user/update |   |   |   |
+| SrcRegion | Strin g | Query |   | 是 | cn-beijing |   | 源实例所在区域。 当备份恢复类型为已删除实例重建时，需要且必填当备份恢复类型为异地备份克隆时， 需要且必填 |   |
+| SrcInstanc eId | Strin g | Query |   | 否 | 1 |   | 源项目ID。 |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8363,8 +8122,6 @@ http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &Preven
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Message | String | success | 附加信息。 |
@@ -8376,23 +8133,29 @@ http(s)://[Endpoint]/?Action=DeleteCloudRouterTask &OnsRegionId=REGION08 &Preven
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing &DesRegion=OC &NeedSrcInstance=true &NeedDesInstance=true
+http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&DesTopic=`用户登录
+
+```
+&DesRegion=OC &NeedSrcInstance=true &NeedDesInstance=true
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### CreateCloudRouterTask
+`}`
+
+###### 4.1.6.12.4 CreateCloudRouterTask
 
 创建跨云路由任务以实现消息队列之间的跨云通信。
 
@@ -8405,26 +8168,22 @@ http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-消息队列
-
-| SrcCloudId | Strin g | Quer y |  | 是 | 1001 |  | 表示源端云平台的唯一标识符，用于区分不同的云服务提供商或云实例。 |  |
+| SrcCloudId | Strin g | Quer y |   | 是 | 1001 |   | 表示源端云平台的唯一标识符，用于区分不同的云服务提供商或云实例。 |   |
 |---|---|---|---|---|---|---|---|---|
-| DesCloudI d | Strin g | Quer y |  | 是 | CLD123456 |  | 目标云平台的唯一标识符，用于区分不同的云服务提供商或云环境。 |  |
-| RegionId | Strin g | Quer y |  | 否 | cn-hangzhou |  | 地域ID。 |  |
-| OnsRegion Id | Strin g | Quer y |  | 是 | REGION001 |  | 代表某个特定的区域标识符， 用于区分不同的地域或数据中心。 |  |
-| PreventCa che | Long | Quer y |  | 是 | 33333332223 |  | 用于防止浏览器或系统缓存数据，确保每次请求都获取最新内容。 |  |
-| TaskDesc | Strin g | Quer y |  | 否 | task-desc |  | 任务描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |  |
-| TaskKey | Strin g | Quer y |  | 否 | task003 |  | 表示示例任务编号003。 |  |
-| FilterType | Strin g | Quer y |  | 否 | Tag |  | 消息过滤类型。 |  |
-| FilterRule | Strin g | Quer y |  | 否 | {"field": "category", "operator": "!=", "value": "expired"} |  | 用于筛选状态为"active"的记录。 |  |
-| FilterPrope rty | Strin g | Quer y |  | 否 | Tag |  | 用于过滤对象状态的属性。 |  |
-| SrcTopic | Strin g | Quer y |  | 是 | /x7aWKW9***/testDataTo DataHub/user/update |  | 源Topic，即被订阅的 Topic。 如， SrcTopic.1=/x7aWK |  |
-|  |  |  |  |  |  |  |  | SrcTopic.1=/x7aWK |
-|  |  |  |  |  |  | b/user/update | W9****/testDataToDataH |  |
-|  |  |  |  |  |  |  | ub/user/update |  |
-| SrcRegion | Strin g | Quer y |  | 是 | cn-beijing |  | 源实例所在区域。 |  |
-
-消息队列
+| DesCloudI d | Strin g | Quer y |   | 是 | CLD123456 |   | 目标云平台的唯一标识符，用于区分不同的云服务提供商或云环境。 |   |
+| RegionId | Strin g | Quer y |   | 否 | cn-hangzhou |   | 地域ID。 |   |
+| OnsRegion Id | Strin g | Quer y |   | 是 | REGION001 |   | 代表某个特定的区域标识符， 用于区分不同的地域或数据中心。 |   |
+| PreventCa che | Long | Quer y |   | 是 | 33333332223 |   | 用于防止浏览器或系统缓存数据，确保每次请求都获取最新内容。 |   |
+| TaskDesc | Strin g | Quer y |   | 否 | task-desc |   | 任务描述，描述长度为 2~256个字符，不能以 http://和https:// 开头。 |   |
+| TaskKey | Strin g | Quer y |   | 否 | task003 |   | 表示示例任务编号003。 |   |
+| FilterType | Strin g | Quer y |   | 否 | Tag |   | 消息过滤类型。 |   |
+| FilterRule | Strin g | Quer y |   | 否 | {"field": "category", "operator": "!=", "value": "expired"} |   | 用于筛选状态为"active"的记录。 |   |
+| FilterPrope rty | Strin g | Quer y |   | 否 | Tag |   | 用于过滤对象状态的属性。 |   |
+| SrcTopic | Strin g | Quer y |   | 是 | /x7aWKW9***/testDataTo DataHub/user/update |   | 源Topic，即被订阅的 Topic。 如， SrcTopic.1=/x7aWK |   |
+|   |   |   |   |   |   |   |   | SrcTopic.1=/x7aWK |
+|   |   |   |   |   |   | b/user/update | W9****/testDataToDataH |   |
+|   |   |   |   |   |   |   | ub/user/update |   |
+| SrcRegion | Strin g | Quer y |   | 是 | cn-beijing |   | 源实例所在区域。 |   |
 
 | SrcInstanc eId | Strin g | Quer y | 否 | 1 | 源实例ID。 |
 |---|---|---|---|---|---|
@@ -8445,8 +8204,6 @@ http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-消息队列
-
 | Message | String | success | 附加信息。 |
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
@@ -8457,23 +8214,29 @@ http(s)://[Endpoint]/?Action=CreateRouterInnerTask &OnsRegionId=ExampleRegion01 
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateCloudRouterTask &SrcCloudId=1001 &DesCloudId=CLD123456 &OnsRegionId=REGION001 &PreventCache= &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing &DesRegion=SG
+http(s)://[Endpoint]/?Action=CreateCloudRouterTask &SrcCloudId=1001 &DesCloudId=CLD123456 &OnsRegionId=REGION001 &PreventCache= &SrcTopic=/x7aWKW9***/testDataToDataHub/user/update &SrcRegion=cn-beijing
 ```
 
-`&OffsetFromType=`示例值 &公共请求参数正常返回示例 `JSON` 格式
+`&DesTopic=`用户登录
+
+```
+&DesRegion=SG
+```
+
+`&OffsetFromType=`示例值 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryCloudRouterTaskStats
+`}`
+
+###### 4.1.6.12.5 QueryCloudRouterTaskStats
 
 用于查询云路由任务的统计信息，包括任务的TPS、消息差值、延迟等性能指标数据。
 
@@ -8486,8 +8249,6 @@ http(s)://[Endpoint]/?Action=CreateCloudRouterTask &SrcCloudId=1001 &DesCloudId=
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8511,26 +8272,24 @@ http(s)://[Endpoint]/?Action=CreateCloudRouterTask &SrcCloudId=1001 &DesCloudId=
 
 **示例**
 
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=QueryCloudRouterTaskStats &OnsRegionId=REGION01 &PreventCache=true &FromDate=2020-03-06T02:58:16Z &ToDate=1560134212326
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryCloudRouterTask
+`}`
+
+###### 4.1.6.12.6 QueryCloudRouterTask
 
 查询指定云路由任务的详细信息。
 
@@ -8547,10 +8306,6 @@ http(s)://[Endpoint]/?Action=QueryCloudRouterTaskStats &OnsRegionId=REGION01 &Pr
 | PreventCa che | Long | Query | 是 | true | 用于防止浏览器缓存页面内容，确保每次请求都从服务器获取最新数据。 |
 | CloudRout erTaskId | Strin g | Query | 否 | TR20231001120000 | 标识一个具体的云路由器任务，用于唯一追踪和管理该任务的生命周期与操作记录。 |
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | OnsSessionId是用于标识一次会话或连接的唯一ID， 用于跟踪和管理消息服务中的会话状态。 |
-
-消息队列
-
-**返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -8569,28 +8324,22 @@ http(s)://[Endpoint]/?Action=QueryCloudRouterTaskStats &OnsRegionId=REGION01 &Pr
 http(s)://[Endpoint]/?Action=QueryCloudRouterTask &OnsRegionId=region123 &PreventCache=true
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryCloudRouterItems
+`}`
+
+###### 4.1.6.12.7 QueryCloudRouterItems
 
 查询云路由任务项的API接口。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8611,7 +8360,7 @@ http(s)://[Endpoint]/?Action=QueryCloudRouterTask &OnsRegionId=region123 &Preven
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-| 消息队列 |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -8627,20 +8376,20 @@ http(s)://[Endpoint]/?Action=QueryCloudRouterTask &OnsRegionId=region123 &Preven
 http(s)://[Endpoint]/?Action=QueryCloudRouterItems &OnsRegionId=Region001 &PreventCache=343532334
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### PageQueryCloudRouterTask
+`}`
+
+###### 4.1.6.12.8 PageQueryCloudRouterTask
 
 分页查询云路由任务列表。
 
@@ -8656,7 +8405,7 @@ http(s)://[Endpoint]/?Action=QueryCloudRouterItems &OnsRegionId=Region001 &Preve
 | OnsRegio nId | Strin g | Query | 是 | region123 | Ons服务的区域标识符，用于指定服务所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 3423424324 | 用于防止浏览器或系统缓存数据，确保每次请求都获取最新内容。 |
 
-| ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -8685,20 +8434,19 @@ http(s)://[Endpoint]/?Action=QueryCloudRouterItems &OnsRegionId=Region001 &Preve
 http(s)://[Endpoint]/?Action=PageQueryCloudRouterTask &OnsRegionId=region123 &PreventCache=3423424324 &CurrentPage=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例消息队列 `JSON` 格式
+`&`公共请求参数
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteRouterTask
+`}`
+
+###### 4.1.6.12.9 DeleteRouterTask
 
 删除指定的路由任务。
 
@@ -8721,8 +8469,6 @@ http(s)://[Endpoint]/?Action=PageQueryCloudRouterTask &OnsRegionId=region123 &Pr
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-消息队列
-
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -8736,33 +8482,29 @@ http(s)://[Endpoint]/?Action=PageQueryCloudRouterTask &OnsRegionId=region123 &Pr
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=234234234
+http(s)://[Endpoint]/?Action=DeleteRouterTask &OnsRegionId=Region001 &PreventCache=234234234
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteRouterInnerTask
+`}`
+
+###### 4.1.6.12.10 DeleteRouterInnerTask
 
 删除指定的任务。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8789,20 +8531,18 @@ http(s)://[Endpoint]/?Action=PageQueryCloudRouterTask &OnsRegionId=region123 &Pr
 http(s)://[Endpoint]/?Action=DeleteRouterInnerTask &OnsRegionId=Region001 &TaskId=123456
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryRouterTask
+`}`
+
+###### 4.1.6.12.11 QueryRouterTask
 
 查询消息路由任务的状态和相关信息。
 
@@ -8840,35 +8580,29 @@ http(s)://[Endpoint]/?Action=DeleteRouterInnerTask &OnsRegionId=Region001 &TaskI
 请求示例
 
 ```
-&OnsRegionId=REGION01 &PreventCache=78766544
+http(s)://[Endpoint]/?Action=QueryRouterTask &OnsRegionId=REGION01 &PreventCache=78766544
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterStat
+###### 4.1.6.12.12 QueryRouterStat
 
-查询消息路由统计信息。 消息队列
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+查询消息路由统计信息。
 
 **请求参数**
 
@@ -8901,39 +8635,33 @@ http(s)://[Endpoint]/?Action=DeleteRouterInnerTask &OnsRegionId=Region001 &TaskI
 请求示例
 
 ```
-&OnsRegionId=EU01 &PreventCache=978654545 &TaskId=123456 &FromDate=1560134212326 &ToDate=1560134212326
+http(s)://[Endpoint]/?Action=QueryRouterStat &OnsRegionId=EU01 &PreventCache=978654545 &TaskId=123456 &FromDate=1560134212326 &ToDate=1560134212326
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterInnerTask
+###### 4.1.6.12.13 QueryRouterInnerTask
 
 用于查询消息路由内部任务的详细信息，包括任务状态、源目标信息等。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -8960,26 +8688,22 @@ http(s)://[Endpoint]/?Action=DeleteRouterInnerTask &OnsRegionId=Region001 &TaskI
 http(s)://[Endpoint]/?Action=QueryRouterInnerTask &OnsRegionId=REGION01 &TaskId=123456
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterInnerStat
+###### 4.1.6.12.14 QueryRouterInnerStat
 
 查询消息路由任务的统计信息，包括任务的TPS、延迟等运行状态数据。
 
@@ -8997,8 +8721,6 @@ http(s)://[Endpoint]/?Action=QueryRouterInnerTask &OnsRegionId=REGION01 &TaskId=
 | TaskId | Strin g | Query | 是 | 123456 | 任务ID。 |
 | FromDate | Long | Query | 是 | 2020-03-06T02:58:16Z | 开始时间。 |
 | ToDate | Long | Query | 是 | 2020-03-17T02:26:28Z | 结束时间。 |
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9023,26 +8745,22 @@ http(s)://[Endpoint]/?Action=QueryRouterInnerTask &OnsRegionId=REGION01 &TaskId=
 http(s)://[Endpoint]/?Action=QueryRouterInnerStat &OnsRegionId=hangzhou &PreventCache=3423424 &TaskId=123456 &FromDate=2020-03-06T02:58:16Z &ToDate=2020-03-17T02:26:28Z
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateRouterFilterRule
+###### 4.1.6.12.15 UpdateRouterFilterRule
 
 更新消息路由的过滤规则。
 
@@ -9062,7 +8780,7 @@ http(s)://[Endpoint]/?Action=QueryRouterInnerStat &OnsRegionId=hangzhou &Prevent
 | FilterType | Strin g | Query | 否 | Tag | 消息过滤类型。 |
 | FilterRule | Strin g | Query | 是 | {"field":"status","operat or":"=","value":"active"} | 筛选规则。 |
 
-| RocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |
+| RocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9088,26 +8806,24 @@ http(s)://[Endpoint]/?Action=QueryRouterInnerStat &OnsRegionId=hangzhou &Prevent
 http(s)://[Endpoint]/?Action=UpdateRouterFilterRule &OnsRegionId=hangzhou &PreventCache=23342424234 &FilterRule={"field":"status","operator":"=","value":"active"}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateCloudRouterTask
+###### 4.1.6.12.16 UpdateCloudRouterTask
 
 更新消息队列RocketMQ版中的云路由任务配置。
 
@@ -9134,7 +8850,7 @@ http(s)://[Endpoint]/?Action=UpdateRouterFilterRule &OnsRegionId=hangzhou &Preve
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9153,32 +8869,26 @@ http(s)://[Endpoint]/?Action=UpdateRouterFilterRule &OnsRegionId=hangzhou &Preve
 http(s)://[Endpoint]/?Action=UpdateCloudRouterTask &OnsRegionId=hangzhou &PreventCache=453453535 &FilterRule={"field":"status","operator":"=","value":"active"}
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StopRouterTask
+###### 4.1.6.12.17 StopRouterTask
 
-消息队列停止消息路由任务的API接口。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+停止消息路由任务的API接口。
 
 **请求参数**
 
@@ -9203,32 +8913,30 @@ http(s)://[Endpoint]/?Action=UpdateCloudRouterTask &OnsRegionId=hangzhou &Preven
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=342342342
+http(s)://[Endpoint]/?Action=StopRouterTask &OnsRegionId=region123 &PreventCache=342342342
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StopCloudRouterTask
+###### 4.1.6.12.18 StopCloudRouterTask
 
 停止指定的云路由任务。
 
@@ -9244,7 +8952,7 @@ http(s)://[Endpoint]/?Action=UpdateCloudRouterTask &OnsRegionId=hangzhou &Preven
 | OnsRegio nId | Strin g | Query | 是 | shenzhen | Ons服务的区域标识符，用于指定资源所在的地理区域。 |
 | PreventCa che | Long | Query | 是 | 234234242 | 用于指示客户端或服务器不应缓存响应数据，确保每次请求都获取最新内容。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9270,26 +8978,24 @@ http(s)://[Endpoint]/?Action=UpdateCloudRouterTask &OnsRegionId=hangzhou &Preven
 http(s)://[Endpoint]/?Action=StopCloudRouterTask &OnsRegionId=shenzhen &PreventCache=234234242
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式消息队列
+`XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StartRouterTask
+###### 4.1.6.12.19 StartRouterTask
 
 启动消息路由任务的API接口。
 
@@ -9315,7 +9021,7 @@ http(s)://[Endpoint]/?Action=StopCloudRouterTask &OnsRegionId=shenzhen &PreventC
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-|  | 消息队列 |  |  | RocketMQ 开发指南·API参考 |  |
+|   | 消息队列 |   |   | RocketMQ 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9329,39 +9035,33 @@ http(s)://[Endpoint]/?Action=StopCloudRouterTask &OnsRegionId=shenzhen &PreventC
 请求示例
 
 ```
-&OnsRegionId=Region001 &PreventCache=4242342
+http(s)://[Endpoint]/?Action=StartRouterTask &OnsRegionId=Region001 &PreventCache=4242342
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StartRouterInnerTask
+###### 4.1.6.12.20 StartRouterInnerTask
 
 启动消息队列RocketMQ版中的路由内部任务。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9388,26 +9088,22 @@ http(s)://[Endpoint]/?Action=StopCloudRouterTask &OnsRegionId=shenzhen &PreventC
 http(s)://[Endpoint]/?Action=StartRouterInnerTask &OnsRegionId=REGION01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StartCloudRouterTask
+###### 4.1.6.12.21 StartCloudRouterTask
 
 启动消息队列RocketMQ版中的云路由任务。
 
@@ -9430,7 +9126,7 @@ http(s)://[Endpoint]/?Action=StartRouterInnerTask &OnsRegionId=REGION01
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-| RocketMQ 开发指南 | ·API参考 |  | 消息队列 |
+| RocketMQ 开发指南 | ·API参考 |   | 消息队列 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9449,32 +9145,26 @@ http(s)://[Endpoint]/?Action=StartRouterInnerTask &OnsRegionId=REGION01
 http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &PreventCache=3242342342
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### SearchRouterTask
+###### 4.1.6.12.22 SearchRouterTask
 
-搜索消息路由任务的API接口。 消息队列
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+搜索消息路由任务的API接口。
 
 **请求参数**
 
@@ -9491,8 +9181,6 @@ http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &Preven
 | DesInstanc eId | Strin g | Quer y | 否 | example123 | 目标实例的唯一标识符，用于指定操作的具体实例。 |
 | PageNo | Integ er | Quer y | 是 | 1 | 页码。 |
 | PageSize | Integ er | Quer y | 是 | 10 | 分页查询时设置的每页行数。 默认值：10。 |
-
-消息队列
 
 | OnsSessio nId | Strin g | Quer y | 否 | abc123xyz | 表示在ONS（Open Notification Service）服务中标识客户端会话的唯一ID， 用于区分不同的消息会话连接。 |
 |---|---|---|---|---|---|
@@ -9513,29 +9201,25 @@ http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &Preven
 请求示例
 
 ```
-&OnsRegionId=region123 &PreventCache=234234234 &PageNo=1 &PageSize=10
+http(s)://[Endpoint]/?Action=SearchRouterTask &OnsRegionId=region123 &PreventCache=234234234 &PageNo=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式消息队列
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### AddRouterInnerConfig
+###### 4.1.6.12.23 AddRouterInnerConfig
 
 向消息队列RocketMQ版添加内部路由配置。
 
@@ -9557,8 +9241,6 @@ http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &Preven
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
@@ -9575,32 +9257,28 @@ http(s)://[Endpoint]/?Action=StartCloudRouterTask &OnsRegionId=Region001 &Preven
 http(s)://[Endpoint]/?Action=AddRouterInnerConfig &OnsRegionId=REGION01 &OnsAddr=192.168.1.100:9876
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-##### VPC管理
+`}`
 
-###### CreateVpcTunnelInstanceSingleTunnel
+##### 4.1.6.13 VPC管理
+
+###### 4.1.6.13.1 CreateVpcTunnelInstanceSingleTunnel
 
 创建单个VPC隧道实例的API接口。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9625,25 +9303,23 @@ http(s)://[Endpoint]/?Action=AddRouterInnerConfig &OnsRegionId=REGION01 &OnsAddr
 
 **示例**
 
-请求示例消息队列
-
 ```
 http(s)://[Endpoint]/?Action=CreateVpcTunnelInstanceSingleTunnel &OnsRegionId=region3 &PreventCache=3223424234 &VpcId=vpc-4uftp58qtzn7t663xajtj &VpcName=Vpc-1 &VSwitchId=vsw-bp1s5fnvk4gn2tws0**** &Cluster=slbCluster-A-20231203-005b &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### DeleteVpcTunnelInstanceSingleTunnel
+`}`
+
+###### 4.1.6.13.2 DeleteVpcTunnelInstanceSingleTunnel
 
 删除指定的VPC隧道实例。
 
@@ -9662,7 +9338,7 @@ http(s)://[Endpoint]/?Action=CreateVpcTunnelInstanceSingleTunnel &OnsRegionId=re
 | VSwitchId | Strin g | Query | 否 | vsw- bp1s5fnvk4gn2tws0**** | 交换机ID。 |
 | Cluster | Strin g | Query | 是 | slbCluster-A-20231203- 005b | 集群名。 |
 
-| 消息队列 |  |  |  |  | RocketMQ 开发指南·API参考 |
+| 消息队列 |   |   |   |   | RocketMQ 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -9687,25 +9363,21 @@ http(s)://[Endpoint]/?Action=CreateVpcTunnelInstanceSingleTunnel &OnsRegionId=re
 http(s)://[Endpoint]/?Action=DeleteVpcTunnelInstanceSingleTunnel &OnsRegionId=REGION01 &PreventCache=23423424 &VpcId=vpc-4uftp58qtzn7t663xajtj &Cluster=slbCluster-A-20231203-005b &InstanceId=bastionhost-12******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryVpcTunnelTunnelSwitch
+`}`
 
-消息队列查询VPC隧道开关状态的API。
+###### 4.1.6.13.3 QueryVpcTunnelTunnelSwitch
 
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+查询VPC隧道开关状态的API。
 
 **请求参数**
 
@@ -9727,8 +9399,6 @@ http(s)://[Endpoint]/?Action=DeleteVpcTunnelInstanceSingleTunnel &OnsRegionId=RE
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 | Code | Integer | 200 | 接口状态或POP错误码。 |
 
-消息队列
-
 | Message | String | success | 附加信息。 |
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
@@ -9741,27 +9411,23 @@ http(s)://[Endpoint]/?Action=DeleteVpcTunnelInstanceSingleTunnel &OnsRegionId=RE
 http(s)://[Endpoint]/?Action=QueryVpcTunnelTunnelSwitch &OnsRegionId=Region001 &PreventCache=342342342 &Cluster=slbCluster-A-20231203-005b &TunnelType=Any_tunnel &Force=false
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-**4.1.6.13.4.**
-
-###### QueryVpcTunnelInstanceSingleTunnelList
+###### 4.1.6.13.4 QueryVpcTunnelInstanceSingleTunnelList
 
 查询VPC隧道实例中的单个隧道列表。
 
@@ -9773,8 +9439,6 @@ http(s)://[Endpoint]/?Action=QueryVpcTunnelTunnelSwitch &OnsRegionId=Region001 &
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-消息队列
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -9798,33 +9462,31 @@ http(s)://[Endpoint]/?Action=QueryVpcTunnelTunnelSwitch &OnsRegionId=Region001 &
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=QueryVpcTunnelInstanceSingleTunnelList &OnsRegionId=region123 &PreventCache=2342342 &Cluster=slbCluster-A-20231203-005b
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Region管理
+##### 4.1.6.14 Region管理
 
-###### QueryMetaData
+###### 4.1.6.14.1 QueryMetaData
 
 查询系统的元数据信息。
 
@@ -9840,10 +9502,6 @@ http(s)://[Endpoint]/?Action=QueryVpcTunnelInstanceSingleTunnelList &OnsRegionId
 | OnsRegio nId | Strin g | Query | 是 | region123 | Ons服务的区域标识符，用于指定资源所在的地理区域。 |
 | OnsSessio nId | Strin g | Query | 否 | abc123xyz | 表示在消息队列服务中标识一次客户端会话的唯一ID， 用于跟踪和管理消息的发送与接收过程。 |
 
-消息队列
-
-**返回数据**
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
@@ -9857,34 +9515,28 @@ http(s)://[Endpoint]/?Action=QueryVpcTunnelInstanceSingleTunnelList &OnsRegionId
 请求示例
 
 ```
-&OnsRegionId=region123
+http(s)://[Endpoint]/?Action=QueryMetaData &OnsRegionId=region123
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryCommonRegionData
+###### 4.1.6.14.2 QueryCommonRegionData
 
-用于查询指定区域的通用数据信息，包括该区域是否支持创建共享实例等配置信息。 消息队列
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+用于查询指定区域的通用数据信息，包括该区域是否支持创建共享实例等配置信息。
 
 **请求参数**
 
@@ -9907,25 +9559,25 @@ http(s)://[Endpoint]/?Action=QueryVpcTunnelInstanceSingleTunnelList &OnsRegionId
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=QueryCommonRegionData &OnsRegionId=Region001 &PreventCache=21312313
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":{},
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-###### QueryRegionList
+`}`
+
+###### 4.1.6.14.3 QueryRegionList
 
 查询消息队列RocketMQ版支持的区域列表。
 
@@ -9948,7 +9600,7 @@ http(s)://[Endpoint]/?Action=QueryCommonRegionData &OnsRegionId=Region001 &Preve
 |---|---|---|---|
 | Data | String | [{}] | 返回数据。 |
 
-|  | 消息队列 |  |  | RocketMQ 开发指南·API参考 |  |
+|   | 消息队列 |   |   | RocketMQ 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -9963,36 +9615,28 @@ http(s)://[Endpoint]/?Action=QueryCommonRegionData &OnsRegionId=Region001 &Preve
 请求示例
 
 ```
-&OnsRegionId=REGION_001 &PreventCache=86676756456465
+http(s)://[Endpoint]/?Action=QueryRegionList &OnsRegionId=REGION_001 &PreventCache=86676756456465
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRegionConsoleUrlList
+###### 4.1.6.14.4 QueryRegionConsoleUrlList
 
 获取各个Region控制台的URL地址列表，用于跳转到不同区域的控制台。
-
-**请求头**
-
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 消息队列
-
-**请求参数**
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -10013,33 +9657,33 @@ http(s)://[Endpoint]/?Action=QueryCommonRegionData &OnsRegionId=Region001 &Preve
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=QueryRegionConsoleUrlList &OnsRegionId=REGION_001 &PreventCache=true
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-##### UnitResetTask管理
+##### 4.1.6.15 UnitResetTask管理
 
-###### CreateUnitResetTask
+###### 4.1.6.15.1 CreateUnitResetTask
+
+为指定的Topic和消费者组创建一个重置任务。
 
 **请求头**
 
@@ -10053,7 +9697,7 @@ http(s)://[Endpoint]/?Action=QueryRegionConsoleUrlList &OnsRegionId=REGION_001 &
 | OnsRegio nId | Strin g | Query | 是 | region1 | 表示某个特定区域的唯一标识符，通常用于消息服务或云服务中区分不同的地理区域。 |
 | PreventCa che | Long | Query | 是 | 24232424324 | 用于指示客户端或服务器不应缓存响应内容，确保每次请求都返回最新的数据。 |
 
-| R | ocketMQ 开发 | 指南·API | 参考 |  |  | 消息队列 |  |
+| R | ocketMQ 开发 | 指南·API | 参考 |   |   | 消息队列 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10078,15 +9722,15 @@ http(s)://[Endpoint]/?Action=QueryRegionConsoleUrlList &OnsRegionId=REGION_001 &
 
 **示例**
 
-请求示例消息队列
+请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCache=24232424324 &GroupId=GID-1 &UnitRuleVersion=3.0.0 &OffsetTimestamp=1696845600 &AllUnitInfo={"unit_id": "U001", "name": "步兵", "attack": 10, "defense": 5, "health": 5 0}
+http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCache=24232424324 &GroupId=GID-1 &Topic=123456 &UnitRuleVersion=3.0.0 &OffsetTimestamp=1696845600 &AllUnitInfo={"unit_id": "U001", "name": "步兵", "attack": 10, "defense": 5, "health": 5
 ```
 
-&公共请求参数正常返回示例
+`0}` `&`公共请求参数正常返回示例
 
-###### QueryUnitResetTask
+###### 4.1.6.15.2 QueryUnitResetTask
 
 查询指定单元重置任务的执行状态和详细信息。
 
@@ -10110,8 +9754,6 @@ http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCa
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 请求ID。 |
 | Success | Boolean | true | 返回状态。 成功：true。 失败：false。 |
 
-消息队列
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Code | Integer | 200 | 接口状态或POP错误码。 |
@@ -10127,52 +9769,48 @@ http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCa
 http(s)://[Endpoint]/?Action=QueryUnitResetTask &OnsRegionId=region1 &TaskId=123456
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Total":1,
  "Data":{},
  "Code":200,
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-消息队列
+## 5 SDK参考
 
-## SDK参考
+### 5.1 RocketMQ_SDK
 
-### RocketMQ_SDK
-
-#### 概述
+#### 5.1.1 概述
 
 消息队列RocketMQ版（简称RocketMQ）是分布式系统中重要的组件，主要解决系统解耦、异步消息、削峰填谷等问题，实现高性能、高可用、可伸缩和最终一致性架构。 本参考规定RocketMQ应用节点与消息队列服务中心间数据传输服务管理方法，包括服务遵循的规范，以及服务管理相关的公共API。 本参考适用于使用RocketMQ Java SDK，基于TCP协议进行消息传输的场景。
 
-#### 消息模型
+#### 5.1.2 消息模型
 
 RocketMQ支持发布/订阅模型，发布者可以将一条消息发送至消息服务端，多个接收方进行订阅。如下图： 图 1. Pub-Sub模型
 
-#### 产品更新说明
+#### 5.1.3 产品更新说明
 
 本文介绍消息队列RocketMQ版（简称RocketMQ）从V3.8.0到V3.8.1的产品更新说明，帮助您更快地上手更新后的版本。
 
 **资源隔离优化（实例化支持）**
 
-RocketMQ开放实例化功能，解决多租之间的隔离问题，每个用户可以购买多个实例，每个实例之间逻辑隔离。 为兼容老用户的既有资源，RocketMQ实例的命名空间分为两种： 默认实例（兼容老用户的既有资源） 无独立命名空间，实例内或者跨实例之间，资源命名必须全局唯一。 消息队列对RocketMQ老用户来说，既有资源将自动生成一个默认的无独立命名空间实例；无既有资源，则可选择创建不带命名空间的实例，最多创建1个。 接入点配置（可在控制台**实例详情**页面中获取）。 `//` 推荐配置
+RocketMQ开放实例化功能，解决多租之间的隔离问题，每个用户可以购买多个实例，每个实例之间逻辑隔离。 为兼容老用户的既有资源，RocketMQ实例的命名空间分为两种： 默认实例（兼容老用户的既有资源） 无独立命名空间，实例内或者跨实例之间，资源命名必须全局唯一。 对RocketMQ老用户来说，既有资源将自动生成一个默认的无独立命名空间实例；无既有资源，则可选择创建不带命名空间的实例，最多创建1个。 接入点配置（可在控制台**实例详情**页面中获取）。 `//` 推荐配置
 
 ```
 properties.put(PropertyKeyConst.NAMESRV_ADDR, "xxxx");
 ```
 
-`//` 兼容配置（不推荐继续使用, 建议逐渐升级为推荐配置）
+`//` 兼容配置（不推荐继续使用`,` 建议逐渐升级为推荐配置）
 
 ```
 properties.put(PropertyKeyConst.ONSAddr, "xxxx");
@@ -10188,14 +9826,14 @@ ons-client客户端必须升级到最新版本： JAVA：1.8.7.1.Final C/C++：v
 
 **资源申请流程优化**
 
-原RocketMQ的资源包括3个部分：消息主题（Topic）、生产者（Producer ID）、消费者（Consumer ID），三者之间都是多对多的对应关系，三者之间的关系复杂而难以理解；对于中、大型企业客户来说，每创建一个Topic，都要关联或者更新Producer ID和Consumer ID，流程过于复杂。 因此，为进一步优化用户体验，降低新用户的接入门槛，对资源申请的接入流程进行简化。 资源申请方面，主要包括以下部分： 取消原Producer ID的申请，与原Consumer ID统一为Group ID，即对应控制台上，取消原生产者管取消原申请Producer ID或Consumer ID时需要指定Topic的关联约束，只需申请Group ID即可在代兼容性相关问题原申请的Producer ID列表将不再显示，不影响当前业务的正常使用。 原申请的以“CID-”或者“CID_”打头的Consumer ID仍可以正常使用，代码中既可在**PropertyKeyConst.ConsumerId**中设置，亦可在**PropertyKeyConst.GROUP_ID**中设置。 示例代码
+原RocketMQ的资源包括3个部分：消息主题（Topic）、生产者（Producer ID）、消费者（Consumer ID），三者之间都是多对多的对应关系，三者之间的关系复杂而难以理解；对于中、大型企业客户来说，每创建一个Topic，都要关联或者更新Producer ID和Consumer ID，流程过于复杂。 因此，为进一步优化用户体验，降低新用户的接入门槛，对资源申请的接入流程进行简化。 资源申请方面，主要包括以下部分： Topic管理（保持不变） Topic资源申请，一级消息类型，通过Topic对消息进行分类。 取消原Producer ID的申请，与原Consumer ID统一为Group ID，即对应控制台上，取消原生产者管理，与原消费者管理统一为Group管理。 取消原申请Producer ID或Consumer ID时需要指定Topic的关联约束，只需申请Group ID即可在代码中直接配置与Topic的关联使用。 兼容性相关问题原申请的Producer ID列表将不再显示，不影响当前业务的正常使用。 原申请的以“CID-”或者“CID_”打头的Consumer ID仍可以正常使用，代码中既可在**PropertyKeyConst.ConsumerId**中设置，亦可在**PropertyKeyConst.GROUP_ID**中设置。 示例代码
 
 **说明**
 
-建议您将ons-client客户端升级为最新版本： JAVA：1.8.7.1.Final C/C++：v2.0.0 .NET：1.1.3 原来已经在使用的Producer ID或者Consumer ID保持兼容，不影响当前在线业务的正常使用，但建议逐步替换为新的推荐配置方式。 消息队列推荐方式：将Producer ID、Consumer ID的概念融合成Group ID。
+建议您将ons-client客户端升级为最新版本： JAVA：1.8.7.1.Final C/C++：v2.0.0 .NET：1.1.3 原来已经在使用的Producer ID或者Consumer ID保持兼容，不影响当前在线业务的正常使用，但建议逐步替换为新的推荐配置方式。 推荐方式：将Producer ID、Consumer ID的概念融合成Group ID。
 
 ```
-// 设置PropertyKeyConst.GROUP_ID，原PropertyKeyConst.ProducerId和 properties.put(PropertyKeyConst.GROUP_ID, "原CID-XXX或GID-XXX");
+// 设置PropertyKeyConst.GROUP_ID，原PropertyKeyConst.ProducerId和 PropertyKeyConst.ConsumerId会被@Deprecated properties.put(PropertyKeyConst.GROUP_ID, "原CID-XXX或GID-XXX");
 ```
 
 兼容方式：Producer ID用来标识生产者，Consumer ID用来标识消费者。 `//` 创建`Producer`时需要配置`PropertyKeyConst.ProducerId`。
@@ -10210,7 +9848,7 @@ properties.put(PropertyKeyConst.ProducerId, "原PID-XXX或GID-XXX");
 properties.put(PropertyKeyConst.ConsumerId, "原CID-XXX或GID-XXX");
 ```
 
-#### 传输协议与字符编码
+#### 5.1.4 传输协议与字符编码
 
 RocketMQ SDK底层通过TCP协议提供服务，用户请求和响应的字符编码都是采用UTF-8编码。
 
@@ -10220,9 +9858,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 **配置方式：**在启动客户端程序时，设置JVM属性来决定是否使用加密的传输层链接。启动命令为**java -**
 **Dtls.enable=true**。默认情况下，TLS链接不开启，设置为true将启用加密的传输层链接。
 
-#### 常用类及其方法
+#### 5.1.5 常用类及其方法
 
-##### 常量类PropertyKeyConst
+##### 5.1.5.1 常量类PropertyKeyConst
 
 该类字段主要包括以下内容。
 
@@ -10237,8 +9875,6 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | ConsumeThreadNums | String | 64 | 消费线程数量。 |
 | MaxReconsumeTimes | String | 16 | 设置消息消费失败的最大重试次数。 |
 
-消息队列
-
 | ConsumeTimeout | String | 15 | 设置每条消息消费的最大超时时间，超过设置时间则被视为消费失败，等下次重新投递再次消费。每个业务需要设置一个合理的值，单位（分钟）。 |
 |---|---|---|---|
 | ConsumeMessageBatc hMaxSize | String | 1 | BatchConsumer每次批量消费的最大消息数量，默认值为1，允许自定义范围为[1, 32]，实际消费数量可能小于该值。 |
@@ -10246,9 +9882,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | shardingKey | String | - | 顺序消息中用来计算不同分区的值。 |
 | suspendTimeMillis | String | 3000 | 只适用于顺序消息，设置消息消费失败的重试间隔时间，单位（毫秒）。 |
 
-##### 工厂类ONSFactory
+##### 5.1.5.2 工厂类ONSFactory
 
-###### createConsumer
+###### 5.1.5.2.1 createConsumer
 
 语法：static Consumer createConsumer(Properties properties) 描述：创建RocketMQ普通消息、定时和延时消息、分布式事务消息等消息类型的消费者实例。 参数：
 
@@ -10262,14 +9898,12 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | Consumer | RocketMQ普通消息、定时和延时消息、分布式事务消息等消息类型的消费者实例。 |
 
-###### createBatchConsumer
+###### 5.1.5.2.2 createBatchConsumer
 
 语法：static BatchConsumer createBatchConsumer(Properties properties) 描述：创建RocketMQ批量消费者实例。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-消息队列
 
 | properties | Properties | 详情参考PropertyKeyConst说明; 必填属性：PropertyKeyConst.NAMESRV ADDR、 _ PropertyKeyConst.GROUP ID、 _ PropertyKeyConst.AccessKey、 PropertyKeyConst.SecretKey； 可选属性：PropertyKeyConst.ConsumeThreadNums、 PropertyKeyConst.ConsumeTimeout、 PropertyKeyConst.ConsumeMessageBatchMaxSize。 |
 |---|---|---|
@@ -10280,7 +9914,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | BatchConsumer | BatchConsumer |
 
-###### createOrderedConsumer
+###### 5.1.5.2.3 createOrderedConsumer
 
 语法：static OrderConsumer createOrderedConsumer(Properties properties) 描述：创建RocketMQ顺序消息消费者。 参数：
 
@@ -10294,14 +9928,12 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | OrderConsumer | RocketMQ顺序消息消费者实例 |
 
-###### createOrderProducer
+###### 5.1.5.2.4 createOrderProducer
 
 语法：static OrderProducer createOrderProducer(Properties properties) 描述：创建RocketMQ顺序消息发布者。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-消息队列
 
 | properties | Properties | 详情参考PropertyKeyConst说明; 必填属性：PropertyKeyConst.NAMESRV ADDR、 _ PropertyKeyConst.GROUP ID、 _ PropertyKeyConst.AccessKey、 PropertyKeyConst.SecretKey、 PropertyKeyConst.ShardingKey； 可选属性：PropertyKeyConst.SendMsgTimeoutMillis |
 |---|---|---|
@@ -10312,7 +9944,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | OrderProducer | RocketMQ顺序消息发布者实例 |
 
-###### createProducer
+###### 5.1.5.2.5 createProducer
 
 语法：static Producer createProducer(Properties properties) 描述：创建RocketMQ普通消息、定时和延时消息发布者。 参数：
 
@@ -10326,14 +9958,12 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | Producer | RocketMQ普通消息、定时和延时消息发布者实例。 |
 
-###### createTransactionProducer
+###### 5.1.5.2.6 createTransactionProducer
 
 语法：static TransactionProducer createTransactionProducer(Properties properties, LocalTransactionChecker checker) 描述：创建RocketMQ分布式事务消息发布者。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-消息队列
 
 | properties | Properties | 详情参考PropertyKeyConst说明; 必填属性：PropertyKeyConst.NAMESRV ADDR、 _ PropertyKeyConst.GROUP ID、 _ PropertyKeyConst.AccessKey、 PropertyKeyConst.SecretKey； 可选属性：PropertyKeyConst.SendMsgTimeoutMillis、 PropertyKeyConst.CheckImmunityTimeInSeconds。 |
 |---|---|---|
@@ -10345,17 +9975,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | TransactionProducer | RocketMQ分布式事务消息发布者实例 |
 
-##### 消息类Message
+##### 5.1.5.3 消息类Message
 
-###### 消息类Message概述
+###### 5.1.5.3.1 消息类Message概述
 
 消息类，表示要发送的消息。一条合法的消息，应包含主题(Topic)，消息体以及可选的标签和业务标识。 注意：我们对每条消息的自定义键值对的长度没有限制，但所有的自定义键值对，系统键值对序列化后，所占空间不能超过32767字节。
 
-###### Message默认构造方法
+###### 5.1.5.3.2 Message默认构造方法
 
 语法：Message() 描述：默认构造函数，创建消息对象。 参数：无
 
-###### Message有参构造方法（一）
+###### 5.1.5.3.3 Message有参构造方法（一）
 
 语法：public Message(String topic, String tag, String key, byte body) 描述：有参构造函数，创建消息对象。 参数：
 
@@ -10366,9 +9996,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | key | String | 业务标识。 |
 | body | byte | 消息体，消息体长度默认不超过4 MB（包含消息属性，其中消息属性不超过8 KB），具体请参阅集群部署文档描述。 |
 
-消息队列
-
-###### Message有参构造方法（二）
+###### 5.1.5.3.4 Message有参构造方法（二）
 
 语法：public Message(String topic, String tags, byte body) 描述：有参构造函数，创建消息对象。 参数：
 
@@ -10378,7 +10006,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | tags | String | 消息标签，请使用合法标识符，尽量简短且见名知意。 |
 | body | byte | 消息体，消息体长度默认不超过4 MB（包含消息属性，其中消息属性不超过8 KB），具体请参阅集群部署文档描述。 |
 
-###### putUserProperties
+###### 5.1.5.3.5 putUserProperties
 
 语法：public void putUserProperties(String key, String value) 描述：添加用户自定义属性键值对; 该键值对在消费消息时可被获取。 参数：
 
@@ -10389,7 +10017,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getUserProperties
+###### 5.1.5.3.6 getUserProperties
 
 语法：public String getUserProperties(String key) 描述：获取用户自定义属性的值。 参数：
 
@@ -10403,17 +10031,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | String | 用户自定义属性值 |
 
-###### getTopic
+###### 5.1.5.3.7 getTopic
 
-描述：获取消息的主题。 参数：无返回值： 消息队列
+语法：public String getTopic() 描述：获取消息的主题。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 消息主题 |
 
-###### setTopic
+###### 5.1.5.3.8 setTopic
 
-描述：设置消息主题。 参数：
+语法：public void setTopic(String topic) 描述：设置消息主题。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10421,17 +10049,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getTag
+###### 5.1.5.3.9 getTag
 
-描述：获取消息标签。 参数：无返回值：
+语法：public String getTag() 描述：获取消息标签。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 消息标签 |
 
-###### setTag
+###### 5.1.5.3.10 setTag
 
-描述：设置消息标签。 参数：
+语法：public void setTag(String tag) 描述：设置消息标签。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10439,19 +10067,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getKey
+###### 5.1.5.3.11 getKey
 
-描述：获取业务标识。 参数：无返回值：
+描述：获取业务标识。 语法：public String getKey() 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 业务标识 |
 
-消息队列
+###### 5.1.5.3.12 setKey
 
-###### setKey
-
-描述：设置业务标签。 参数：
+语法：public void setKey(String key) 描述：设置业务标签。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10459,17 +10085,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getMsgID
+###### 5.1.5.3.13 getMsgID
 
-描述：获取消息ID。 参数：无返回值：
+语法：public String getMsgID() 描述：获取消息ID。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 消息ID |
 
-###### setMsgID
+###### 5.1.5.3.14 setMsgID
 
-描述：设置消息ID 参数：
+语法：public void setMsgID(String msgid) 描述：设置消息ID 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10477,17 +10103,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getReconsumeTimes
+###### 5.1.5.3.15 getReconsumeTimes
 
-描述：消息消费时，获取消息已经被重试消费的次数。 参数：无返回值：
+语法：public int getReconsumeTimes() 描述：消息消费时，获取消息已经被重试消费的次数。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 重试消费次数 |
 
-###### setReconsumeTimes
+###### 5.1.5.3.16 setReconsumeTimes
 
-描述：设置消息重试消费次数。 消息队列参数：
+语法：public void setReconsumeTimes(int value) 描述：设置消息重试消费次数。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10495,17 +10121,17 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getBornTimestamp
+###### 5.1.5.3.17 getBornTimestamp
 
-描述：获取消息的生产时间。 参数：无返回值：
+语法：public long getBornTimestamp() 描述：获取消息的生产时间。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 消息的生产时间 |
 
-###### setBornTimestamp
+###### 5.1.5.3.18 setBornTimestamp
 
-描述：设置消息的产生时间。 参数：
+语法：public void setBornTimestamp(long value) 描述：设置消息的产生时间。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10513,37 +10139,35 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getBornHost
+###### 5.1.5.3.19 getBornHost
 
-描述：获取产生消息的主机。 参数：无返回值：
+语法：public String getBornHost() 描述：获取产生消息的主机。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 产生消息的主机 |
 
-###### setBornHost
+###### 5.1.5.3.20 setBornHost
 
-描述：设置生产消息的主机。 参数：
+语法：public void setBornHost(String value) 描述：设置生产消息的主机。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-消息队列
 
 | value | long | 生产消息的主机。 |
 |---|---|---|
 
 返回值：无
 
-###### getStartDeliverTime
+###### 5.1.5.3.21 getStartDeliverTime
 
-描述：获取定时消息开始投递时间。 参数：无返回值：
+语法：public long getStartDeliverTime() 描述：获取定时消息开始投递时间。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 定时消息开始投递时间 |
 
-###### setStartDeliverTime
+###### 5.1.5.3.22 setStartDeliverTime
 
 语法：public void setStartDeliverTime(long value) 描述：设置消息的定时投递时间（绝对时间)，最大延迟时间为40天。 参数：
 
@@ -10553,31 +10177,31 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### getShardingKey
+###### 5.1.5.3.23 getShardingKey
 
-描述：获取顺序消息中用来计算不同分区的值。 参数：无返回值：
+语法：public long getShardingKey() 描述：获取顺序消息中用来计算不同分区的值。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 顺序消息中用来计算不同分区的值 |
 
-###### setShardingKey
+###### 5.1.5.3.24 setShardingKey
 
-描述：设置顺序消息中用来计算不同分区的值。 参数：
+语法：public void setShardingKey(String value) 描述：设置顺序消息中用来计算不同分区的值。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | String | long | 顺序消息中用来计算不同分区的值。 |
 
-返回值：无消息队列
+返回值：无
 
-##### 异常类ONSClientException
+##### 5.1.5.4 异常类ONSClientException
 
-###### ONSClientException默认构造方法
+###### 5.1.5.4.1 ONSClientException默认构造方法
 
 语法：public ONSClientException() 描述：默认异常构造函数。 参数：无
 
-###### ONSClientException有参构造方法（一）
+###### 5.1.5.4.2 ONSClientException有参构造方法（一）
 
 语法：public ONSClientException(String message) 描述：异常接口构造函数。 参数：
 
@@ -10585,7 +10209,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|---|
 | message | String | 需要向外传递的异常信息 |
 
-###### ONSClientException有参构造方法（二）
+###### 5.1.5.4.3 ONSClientException有参构造方法（二）
 
 语法：public ONSClientException(Throwable cause) 描述：异常接口构造函数。 参数：
 
@@ -10593,7 +10217,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|---|
 | message | String | 需要向外传递的异常信息 |
 
-###### ONSClientException有参构造方法（三）
+###### 5.1.5.4.4 ONSClientException有参构造方法（三）
 
 语法：public ONSClientException(String message, Throwable cause) 描述：异常接口构造函数。 参数：
 
@@ -10602,51 +10226,51 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | message | String | 需要向外传递的异常信息 |
 | cause | Throwable | 需要向外传递的异常信息 |
 
-##### 发送消息接口
+##### 5.1.5.5 发送消息接口
 
-###### 发送消息接口概述
+###### 5.1.5.5.1 发送消息接口概述
 
-本单元主要详述RocketMQ发送各种类消息的接口规范。不同消息类型与各个接口、参数的对应关系如下图所示。 图 1. 发布消息相关接口参数说明消息队列
+本单元主要详述RocketMQ发送各种类消息的接口规范。不同消息类型与各个接口、参数的对应关系如下图所示。 图 1. 发布消息相关接口参数说明
 
-###### 发送结果SendResult
+###### 5.1.5.5.2 发送结果SendResult
 
-###### SendResult默认构造方法
+###### 5.1.5.5.2.1 SendResult默认构造方法
 
 语法：public SendResult() 描述：默认构造函数，创建消息发送结果对象。 参数：无
 
-###### getMessageId
+###### 5.1.5.5.2.2 getMessageId
 
-描述：获取被发送消息的消息 ID。 参数：无返回值：
+语法：public long getMessageId() 描述：获取被发送消息的消息 ID。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 被发送消息的消息 ID |
 
-###### getTopic
+###### 5.1.5.5.2.3 getTopic
 
-描述：获取被发送消息的消息主题。 参数：无返回值：
+语法：public String getTopic() 描述：获取被发送消息的消息主题。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 被发送消息的消息主题 |
 
-###### toString
+###### 5.1.5.5.2.4 toString
 
-描述：序列化发送结果。 参数：无消息队列返回值：
+语法：public String toString() 描述：序列化发送结果。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | String | 发送结果的String表示 |
 
-###### 生产者实例Producer
+###### 5.1.5.5.3 生产者实例Producer
 
-###### 生产者实例Producer概述
+###### 5.1.5.5.3.1 生产者实例Producer概述
 
 发布者对象，可以通过该对象接口发送普通消息，发送定时/延时消息。 线程安全性: 本接口的实现类都是线程安全的，可以多线并发发送消息。 一个实例可以发送多个主题的消息。 正常情况下，一个实例足够高效完成本模块的发送任务，无需创建多个实例 RocketMQ普通消息支持3种发送方式：可靠同步发送、可靠异步发送、单向（Oneway）发送。
 
-###### send
+###### 5.1.5.5.3.2 send
 
-描述：同步发送消息，只要不抛异常就表示成功；支持普通消息，发送定时/延时消息。 参数：
+语法：public SendResult send(Message message) 描述：同步发送消息，只要不抛异常就表示成功；支持普通消息，发送定时/延时消息。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10658,9 +10282,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | SendResult | 发送结果，含消息Id，消息主题等 |
 
-###### sendOneway
+###### 5.1.5.5.3.3 sendOneway
 
-描述：发送消息，Oneway形式，服务器不应答，无法保证消息是否成功到达服务器；支持普通消息，发送定时/延时消息。 参数：
+语法：public void sendOneway(Message message) 描述：发送消息，Oneway形式，服务器不应答，无法保证消息是否成功到达服务器；支持普通消息，发送定时/延时消息。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10668,9 +10292,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### sendAsync
+###### 5.1.5.5.3.4 sendAsync
 
-语法：public void sendAsync(Message message, SendCallback sendCallback) 描述：发送消息，异步Callback形式；支持普通消息，发送定时/延时消息。 参数： 消息队列
+语法：public void sendAsync(Message message, SendCallback sendCallback) 描述：发送消息，异步Callback形式；支持普通消息，发送定时/延时消息。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10679,37 +10303,37 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### isStarted
+###### 5.1.5.5.3.5 isStarted
 
-描述：检查服务是否已经启动。 参数：无返回值：
+语法：public boolean isStarted() 描述：检查服务是否已经启动。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果检查服务已经启动返回 true; 其它情况返回 false |
 
-###### isClosed
+###### 5.1.5.5.3.6 isClosed
 
-描述：检查服务是否已经关闭。 参数：无返回值：
+语法：public boolean isClosed() 描述：检查服务是否已经关闭。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果服务已关闭返回 true; 其它情况返回 false |
 
-###### start
+###### 5.1.5.5.3.7 start
 
-描述：启动消息发送 Producer 服务。 参数：无返回：无
+语法：public void start() 描述：启动消息发送 Producer 服务。 参数：无返回：无
 
-###### shutdown
+###### 5.1.5.5.3.8 shutdown
 
-描述：关闭消息发送 Producer 服务。 参数：无返回：无
+语法：public void shutdown() 描述：关闭消息发送 Producer 服务。 参数：无返回：无
 
-###### 分布式事务消息生产者实例
+###### 5.1.5.5.4 分布式事务消息生产者实例 TransactionProducer
 
 **TransactionProducer**
 
-###### send
+###### 5.1.5.5.4.1 send
 
-消息队列语法：SendResult send(Message message, LocalTransactionExecuter executer, Object arg) 描述：该方法用来发送一条事务型消息。事务型消息发送分为三个步骤： 本服务实现类首先发送一条半事务消息到消息服务器; 通过executer执行本地事务; 根据上一步骤执行结果, 决定发送提交或者回滚第一步发送的半事务消息; 参数：
+语法：SendResult send(Message message, LocalTransactionExecuter executer, Object arg) 描述：该方法用来发送一条事务型消息。事务型消息发送分为三个步骤： 本服务实现类首先发送一条半事务消息到消息服务器; 通过executer执行本地事务; 根据上一步骤执行结果, 决定发送提交或者回滚第一步发送的半事务消息; 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10723,33 +10347,33 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | SendResult | 返回发送结果，含消息Id, 消息主题等 |
 
-###### isStarted
+###### 5.1.5.5.4.2 isStarted
 
-描述：检查服务是否已经启动。 参数：无返回值：
+语法：public boolean isStarted() 描述：检查服务是否已经启动。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果检查服务已经启动返回 true; 其它情况返回 false |
 
-###### isClosed
+###### 5.1.5.5.4.3 isClosed
 
-描述：检查服务是否已经关闭。 参数：无返回值：
+语法：public boolean isClosed() 描述：检查服务是否已经关闭。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果服务已关闭返回 true; 其它情况返回 false |
 
-###### start
+###### 5.1.5.5.4.4 start
 
-描述：启动事务消息发送 Producer 服务。 参数：无消息队列返回值：无
+语法：public void start() 描述：启动事务消息发送 Producer 服务。 参数：无返回值：无
 
-###### shutdown
+###### 5.1.5.5.4.5 shutdown
 
-描述：关闭事务消息发送 Producer 服务。 参数：无返回值：无
+语法：public void shutdown() 描述：关闭事务消息发送 Producer 服务。 参数：无返回值：无
 
-###### 本地事务执行器LocalTransactionExecuter
+###### 5.1.5.5.4.6 本地事务执行器LocalTransactionExecuter
 
-语法：TransactionStatus execute(Message msg, Object arg) 描述：执行本地事务，由应用来重写； 参数：
+execute 语法：TransactionStatus execute(Message msg, Object arg) 描述：执行本地事务，由应用来重写； 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10762,7 +10386,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | TransactionStatus | 返回事务执行结果，包括提交事务、回滚事务、未知状态 |
 
-###### 分布式事务消息状态TransactionStatus
+###### 5.1.5.5.4.7 分布式事务消息状态TransactionStatus
 
 分布式事务半消息的状态，包括提交事务、回滚事务、未知状态。 枚举：
 
@@ -10772,16 +10396,14 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | RollbackTransaction | 回滚事务，对应的事务消息会被删除，不会投递给消费者 |
 | Unknow | 未知状态，一般在用户无法确定事务是成功还是失败时使用，对于未知状态的事务，服务端会定期进行事务回查 |
 
-###### 顺序消息生产者实例OrderProducer
+###### 5.1.5.5.5 顺序消息生产者实例OrderProducer
 
-###### send
+###### 5.1.5.5.5.1 send
 
 语法：SendResult send(Message message, String shardingKey) 描述：发送顺序消息。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-消息队列
 
 | message | Message | 要发送的顺序消息对象。 |
 |---|---|---|
@@ -10793,45 +10415,43 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | SendResult | 发送结果。含消息ID、消息主题等。 |
 
-###### isStarted
+###### 5.1.5.5.5.2 isStarted
 
-描述：检查服务是否已经启动。 参数：无返回值：
+语法：public boolean isStarted() 描述：检查服务是否已经启动。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果检查服务已经启动返回 true; 其它情况返回 false |
 
-###### isClosed
+###### 5.1.5.5.5.3 isClosed
 
-描述：检查服务是否已经关闭。 参数：无返回值：
+语法：public boolean isClosed() 描述：检查服务是否已经关闭。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果服务已关闭返回 true; 其它情况返回 false |
 
-###### start
+###### 5.1.5.5.5.4 start
 
-描述：启动顺序消息消息发送Producer服务。 参数：无返回：无
+语法：public void start() 描述：启动顺序消息消息发送Producer服务。 参数：无返回：无
 
-###### shutdown
+###### 5.1.5.5.5.5 shutdown
 
-描述：关闭顺序消息发送Producer服务。 参数：无返回：无
+语法：public void shutdown() 描述：关闭顺序消息发送Producer服务。 参数：无返回：无
 
-##### 订阅消息接口
+##### 5.1.5.6 订阅消息接口
 
-消息队列
+###### 5.1.5.6.1 订阅消息接口概述
 
-###### 订阅消息接口概述
+本节详述RocketMQ订阅各种类消息的接口规范。不同消息类型与各个接口、参数的对应关系如下图所示。 图 1. 订阅消息接口相关参数说明
 
-本节详述RocketMQ订阅各种类消息的接口规范。不同消息类型与各个接口、参数的对应关系如下图所示。
+###### 5.1.5.6.2 消费者实例Consumer
 
-###### 消费者实例Consumer
-
-###### 消费者实例Consumer概述
+###### 5.1.5.6.2.1 消费者实例Consumer概述
 
 消息消费者实例，用来订阅消息，支持普通消息、事务消息、定时消息/延时消息。
 
-###### subscribe
+###### 5.1.5.6.2.2 subscribe
 
 语法：public void subscribe(String topic, String subExpression, MessageListener listener) 描述：订阅消息，包括普通消息、事务消息、定时消息/延时消息。 参数：
 
@@ -10843,9 +10463,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### unsubscribe
+###### 5.1.5.6.2.3 unsubscribe
 
-参数： 消息队列
+语法：void unsubscribe(String topic) 描述：取消某个topic订阅。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10853,37 +10473,37 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### isStarted
+###### 5.1.5.6.2.4 isStarted
 
-描述：检查服务是否已经启动。 参数：无返回值：
+语法：public boolean isStarted() 描述：检查服务是否已经启动。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果检查服务已经启动返回 true; 其它情况返回 false |
 
-###### isClosed
+###### 5.1.5.6.2.5 isClosed
 
-描述：检查服务是否已经关闭。 参数：无返回值：
+语法：public boolean isClosed() 描述：检查服务是否已经关闭。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果服务已关闭返回 true; 其它情况返回 false |
 
-###### start
+###### 5.1.5.6.2.6 start
 
-参数：无返回值：无
+语法：public void start() 描述：启动消费者实例 Consumer 服务。 参数：无返回值：无
 
-###### shutdown
+###### 5.1.5.6.2.7 shutdown
 
-参数：无返回值：无
+语法：public void shutdown() 描述：关闭消费者实例 Consumer 服务。 参数：无返回值：无
 
-###### 消息监听器MessageListener
+###### 5.1.5.6.3 消息监听器MessageListener
 
-###### 消费监听器MessageListener概述
+###### 5.1.5.6.3.1 消费监听器MessageListener概述
 
-线程安全性要求：该接口会被Consumer的多个线程并发调用, 用户需要保证并发安全性消息队列
+消息监听器，Consumer注册消息监听器来订阅消息。 线程安全性要求：该接口会被Consumer的多个线程并发调用, 用户需要保证并发安全性
 
-###### consume
+###### 5.1.5.6.3.2 consume
 
 语法：Action consume(Message message, ConsumeContext context) 描述：消费消息接口，由应用来实现；网络抖动等不稳定的情形可能会带来消息重复，对重复消息敏感的业务可对消息做幂等处理。 参数：
 
@@ -10898,9 +10518,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | Action | 消费结果。 消费失败：如果应用抛出异常或者返回Null等价于返回Action.ReconsumeLater； 消费成功：返回 Action.CommitMessage。 |
 
-###### 消息消费结果Action
+###### 5.1.5.6.4 消息消费结果Action
 
-###### 消息消费结果Action概述
+###### 5.1.5.6.4.1 消息消费结果Action概述
 
 消费消息的返回结果。 枚举：
 
@@ -10909,9 +10529,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | CommitMessage | String | 消费成功，继续消费下一条消息 |
 | ReconsumeLater | String | 消费失败，告知服务器稍后再投递这条消息，继续消费其他消息 |
 
-###### valueOf
+###### 5.1.5.6.4.2 valueOf
 
-描述：返回带有指定名称的该类型的枚举常量，字符串必须与用于声明该类型的枚举常量的标识符完全匹配；（不允许有多余的空格字符）。 参数：
+语法：public static Action valueOf(String name) 描述：返回带有指定名称的该类型的枚举常量，字符串必须与用于声明该类型的枚举常量的标识符完全匹配；（不允许有多余的空格字符）。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10921,8 +10541,6 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 | 类型 | 描述 |
 |---|---|
-
-消息队列
 
 | Action | 返回带有指定名称的枚举常量 |
 |---|---|
@@ -10934,15 +10552,15 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | IllegalArgumentException | 如果该枚举类型没有带有指定名称的常量 |
 | NullPointerException | 如果参数为空值 |
 
-###### values
+###### 5.1.5.6.4.3 values
 
-描述：按照声明该枚举类型常量的顺序, 返回包含这些常量的数组。 参数：无返回值：
+语法：public static Action[] values() 描述：按照声明该枚举类型常量的顺序, 返回包含这些常量的数组。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | Action[] | 按照声明该枚举类型的常量的顺序返回的包含这些常量的数组 |
 
-###### 消费模式PropertyValueConst
+###### 5.1.5.6.5 消费模式PropertyValueConst
 
 消费模式常量类。 枚举：
 
@@ -10951,13 +10569,13 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | BROADCASTING | String | 广播消费模式 |
 | CLUSTERING | String | 集群消费模式 |
 
-###### 顺序消费者实例OrderConsumer
+###### 5.1.5.6.6 顺序消费者实例OrderConsumer
 
-###### 顺序消费者实例OrderConsumer概述
+###### 5.1.5.6.6.1 顺序消费者实例OrderConsumer概述
 
 顺序消息消费者实例，通过改对象的接口可以先进先出的方式进行顺序订阅。
 
-###### subscribe
+###### 5.1.5.6.6.2 subscribe
 
 语法：void subscribe(String topic, String subExpression, MessageOrderListener listener) 描述：订阅顺序消息。 参数：
 
@@ -10965,17 +10583,15 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|---|
 | topic | String | 消息主题 |
 
-消息队列
-
 | subExpression | String | 订阅过滤表达式字符串，RocketMQ服务器依据此表达式进行过滤， 只支持或 (\|\|) 运算； 示例1: "tag1 \|\| tag2 \|\| tag3"； 示例2：subExpression 等于null或者*，则表示全部订阅； |
 |---|---|---|
 | listener | MessageOrd erListener | 消息回调监听器 |
 
 返回值：无
 
-###### unsubscribe
+###### 5.1.5.6.6.3 unsubscribe
 
-参数：
+语法：void unsubscribe(String topic) 描述：取消某个topic订阅。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -10983,37 +10599,37 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### isStarted
+###### 5.1.5.6.6.4 isStarted
 
-描述：检查服务是否已经启动。 参数：无返回值：
+语法：public boolean isStarted() 描述：检查服务是否已经启动。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果检查服务已经启动返回 true; 其它情况返回 false |
 
-###### isClosed
+###### 5.1.5.6.6.5 isClosed
 
-描述：检查服务是否已经关闭。 参数：无返回值：
+语法：public boolean isClosed() 描述：检查服务是否已经关闭。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果服务已关闭返回 true; 其它情况返回 false |
 
-###### start
+###### 5.1.5.6.6.6 start
 
-参数：无消息队列返回值：无
+语法：public void start() 描述：启动消费者实例 Consumer 服务。 参数：无返回值：无
 
-###### shutdown
+###### 5.1.5.6.6.7 shutdown
 
-参数：无返回：无
+语法：public void shutdown() 描述：关闭消费者实例 Consumer 服务。 参数：无返回：无
 
-###### 消息监听器MessageOrderListener
+###### 5.1.5.6.7 消息监听器MessageOrderListener
 
-###### 消息监听器MessageOrderListener概述
+###### 5.1.5.6.7.1 消息监听器MessageOrderListener概述
 
-线程安全性要求：该接口会被Consumer的多个线程并发调用, 用户需要保证并发安全性
+顺序消息监听器，Consumer注册消息监听器来订阅消息。 线程安全性要求：该接口会被Consumer的多个线程并发调用, 用户需要保证并发安全性
 
-###### consume
+###### 5.1.5.6.7.2 consume
 
 语法：OrderAction consume(Message message, ConsumeOrderContext context) 描述：消费消息接口，由应用来实现；网络抖动等不稳定的情形可能会带来消息重复，对重复消息敏感的业务可对消息做幂等处理。 参数：
 
@@ -11028,9 +10644,9 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|
 | OrderAction | 消费结果。 消费失败：如果应用抛出异常或者返回Null等价于返回 Action.Suspend； 消费成功：返回Action.Success。 |
 
-###### 顺序消息消费结果OrderAction
+###### 5.1.5.6.8 顺序消息消费结果OrderAction
 
-###### 顺序消息消费结果OrderAction概述
+###### 5.1.5.6.8.1 顺序消息消费结果OrderAction概述
 
 顺序消息消费消息的返回结果。 枚举：
 
@@ -11039,9 +10655,7 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | Success | String | 消费成功，继续消费下一条消息 |
 | Suspend | String | 消费失败，挂起当前队列 |
 
-消息队列
-
-###### valueOf
+###### 5.1.5.6.8.2 valueOf
 
 语法：public static OrderAction valueOf(String name) 描述：返回带有指定名称的该类型的枚举常量，字符串必须与用于声明该类型的枚举常量的标识符完全匹配；（不允许有多余的空格字符）。 参数：
 
@@ -11062,21 +10676,21 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 | IllegalArgumentException | 如果该枚举类型没有带有指定名称的常量 |
 | NullPointerException | 如果参数为空值 |
 
-###### values
+###### 5.1.5.6.8.3 values
 
-描述：按照声明该枚举类型常量的顺序, 返回包含这些常量的数组。 参数：无返回值：
+语法：public static OrderAction[] values() 描述：按照声明该枚举类型常量的顺序, 返回包含这些常量的数组。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | OrderAction[] | 按照声明该枚举类型的常量的顺序返回的包含这些常量的数组 |
 
-###### 批量消费者实例BatchConsumer
+###### 5.1.5.6.9 批量消费者实例BatchConsumer
 
-###### 批量消费者实例BatchConsumer概述
+###### 5.1.5.6.9.1 批量消费者实例BatchConsumer概述
 
 批量消息消费者，用来通过批量的方式订阅消息。
 
-###### subscribe
+###### 5.1.5.6.9.2 subscribe
 
 语法：void subscribe(String topic, String subExpression, BatchMessageListener listener) 描述：订阅消息，包括普通消息、事务消息、定时消息/延时消息。 参数：
 
@@ -11084,17 +10698,15 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 |---|---|---|
 | topic | String | 消息主题 |
 
-消息队列
-
 | subExpression | String | 订阅过滤表达式字符串，RocketMQ服务器依据此表达式进行过滤， 只支持或 (\|\|) 运算； 示例1: "tag1 \|\| tag2 \|\| tag3"； 示例2：subExpression等于null或者*，则表示全部订阅； |
 |---|---|---|
 | listener | BatchMess ageListener | 消息回调监听器 |
 
 返回值：无
 
-###### unsubscribe
+###### 5.1.5.6.9.3 unsubscribe
 
-参数：
+语法：void unsubscribe(String topic) 描述：取消某个topic订阅。 参数：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -11102,39 +10714,39 @@ RocketMQ实例支持TLS v1.2及以上版本的传输层安全性协议，您可�
 
 返回值：无
 
-###### isStarted
+###### 5.1.5.6.9.4 isStarted
 
-描述：检查服务是否已经启动。 参数：无返回值：
+语法：public boolean isStarted() 描述：检查服务是否已经启动。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果检查服务已经启动返回 true; 其它情况返回 false |
 
-###### isClosed
+###### 5.1.5.6.9.5 isClosed
 
-描述：检查服务是否已经关闭。 参数：无返回值：
+语法：public boolean isClosed() 描述：检查服务是否已经关闭。 参数：无返回值：
 
 | 类型 | 描述 |
 |---|---|
 | boolean | 如果服务已关闭返回 true; 其它情况返回 false |
 
-###### start
+###### 5.1.5.6.9.6 start
 
-参数：无消息队列返回：无
+语法：public void start() 描述：启动消费者实例 Consumer 服务。 参数：无返回：无
 
-###### shutdown
+###### 5.1.5.6.9.7 shutdown
 
-参数：无返回：无
+语法：public void shutdown() 描述：关闭消费者实例 Consumer 服务。 参数：无返回：无
 
-###### 批量消费消息监听器BatchMessageListener
+###### 5.1.5.6.10 批量消费消息监听器BatchMessageListener
 
-###### 批量消费消息监听器
+###### 5.1.5.6.10.1 批量消费消息监听器BatchMessageListener概述
 
 **BatchMessageListener概述**
 
-线程安全性要求：该接口会被Consumer的多个线程并发调用, 用户需要保证并发安全性。
+批量消息监听器，BatchConsumer注册消息监听器来批量地消费消息。 线程安全性要求：该接口会被Consumer的多个线程并发调用, 用户需要保证并发安全性。
 
-###### consume
+###### 5.1.5.6.10.2 consume
 
 语法：Action consume(Message message, ConsumeContext context) 描述：批量消费消息接口，由应用来实现需要注意网络抖动等不稳定的情形可能会带来消息重复，对重复消息敏感的业务可对消息做幂等处理。 参数：
 

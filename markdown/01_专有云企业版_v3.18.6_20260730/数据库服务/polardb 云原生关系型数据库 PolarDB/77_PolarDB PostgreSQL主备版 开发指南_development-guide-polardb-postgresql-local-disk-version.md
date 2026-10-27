@@ -5,16 +5,130 @@ doc_version: "20260729"
 pdf_pages: 148
 source_pdf: "77_PolarDB PostgreSQL主备版 开发指南_development-guide-polardb-postgresql-local-disk-version.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/polardb/zh/development-guide-polardb-postgresql-local-disk-version.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云原生关系型数据库 PolarDB PolarDB PostgreSQL主备版 开发指南
 
-PolarDB PostgreSQL主备版开发指云原生数据库
+## 目录
 
-## API参考
+- 1 API参考
+  - 1.1 API概览
+  - 1.2 调用方式
+    - 1.2.1 请求结构
+    - 1.2.2 公共参数
+      - 1.2.2.1 公共请求参数
+      - 1.2.2.2 公共返回参数
+    - 1.2.3 返回结果
+      - 1.2.3.1 成功结果
+      - 1.2.3.2 错误结果
+  - 1.3 实例管理
+    - 1.3.1 创建实例
+    - 1.3.2 释放实例
+    - 1.3.3 重启实例
+    - 1.3.4 查看实例属性
+    - 1.3.5 查询实例列表
+    - 1.3.6 变更实例配置
+    - 1.3.7 申请外网连接地址
+    - 1.3.8 释放外网连接地址
+    - 1.3.9 申请内网连接地址（原内外网切换）
+    - 1.3.10 查看所有连接地址
+    - 1.3.11 修改连接地址
+    - 1.3.12 修改PolarDB实例访问模式
+    - 1.3.13 修改PolarDB实例网络类型
+    - 1.3.14 查看PolarDB实例IP白名单
+    - 1.3.15 修改PolarDB实例IP白名单
+    - 1.3.16 查询PolarDB地域和可用区信息
+    - 1.3.17 查询PolarDB可用区信息和数据复制状态
+    - 1.3.18 迁移PolarDB实例可用区
+    - 1.3.19 清理PolarDB实例日志
+    - 1.3.20 修改PolarDB实例备注
+    - 1.3.21 修改PolarDB实例可维护时间
+    - 1.3.22 修改PolarDB实例数据复制和高可用策略
+    - 1.3.23 切换PolarDB实例的主备库
+    - 1.3.24 创建PolarDB只读实例
+    - 1.3.25 查询实例SSL链路
+    - 1.3.26 修改实例SSL链路
+    - 1.3.27 查询实例数据加密状态
+    - 1.3.28 修改实例数据加密状态
+  - 1.4 数据库管理
+    - 1.4.1 创建数据库
+    - 1.4.2 删除数据库
+    - 1.4.3 查看数据库列表
+    - 1.4.4 修改数据库备注
+  - 1.5 账号管理
+    - 1.5.1 创建账号
+    - 1.5.2 删除账号
+    - 1.5.3 查看账号列表
+    - 1.5.4 授权账号权限
+    - 1.5.5 撤销账号权限
+    - 1.5.6 修改账号备注
+    - 1.5.7 重置密码
+    - 1.5.8 重置账号
+  - 1.6 备份恢复
+    - 1.6.1 创建备份
+    - 1.6.2 克隆PolarDB实例
+    - 1.6.3 查看备份列表
+    - 1.6.4 创建临时实例
+    - 1.6.5 查看备份策略
+    - 1.6.6 查询备份可恢复时间范围
+    - 1.6.7 修改备份策略
+    - 1.6.8 恢复备份集到实例
+    - 1.6.9 删除数据备份文件
+  - 1.7 插件管理
+    - 1.7.1 卸载插件
+    - 1.7.2 更新插件
+    - 1.7.3 查询插件详情
+    - 1.7.4 安装插件
+  - 1.8 监控管理
+    - 1.8.1 查看实例资源使用情况
+    - 1.8.2 查看实例性能数据
+    - 1.8.3 查询监控行为
+    - 1.8.4 修改监控行为
+  - 1.9 参数管理
+    - 1.9.1 查看数据库参数模板
+    - 1.9.2 查看当前实例数据库参数运行列表
+    - 1.9.3 修改数据库参数列表
+  - 1.10 日志管理
+    - 1.10.1 查看慢日志列表
+    - 1.10.2 查看慢日志明细
+    - 1.10.3 查看错误日志
+    - 1.10.4 查询SQL审计功能是否开启
+    - 1.10.5 切换SQL采集状态
+    - 1.10.6 查询SQL审计日志
+    - 1.10.7 查询SQL审计文件列表
+  - 1.11 数据迁移
+    - 1.11.1 获取文件上传地址
+    - 1.11.2 其他实例迁入
+    - 1.11.3 取消迁移
+  - 1.12 标签管理
+    - 1.12.1 绑定标签
+    - 1.12.2 查询标签
+    - 1.12.3 解绑标签
+  - 1.13 如何使用RAM授权
+    - 1.14.1 客户端错误代码表
+      - 1.14.1.1 公共错误
+      - 1.14.1.2 特定错误
+    - 1.14.2 服务器端错误代码表
+    - 1.14.3 实例状态表
+    - 1.14.4 字符集表
+- 2 SDK参考
+  - 2.1 获取SDK源代码
+  - 2.2 Java SDK调用
+    - 2.2.1 使用手册
+      - 2.2.1.1 使用CommonRequest进行调用
+  - 2.3 Python SDK调用
+    - 2.3.1 使用手册
+      - 2.3.1.1 使用CommonRequest进行调用
+  - 2.4 PHP SDK调用
+    - 2.4.1 快速开始
+  - 2.5 C# SDK调用
+- 3 获取endpoint
+- 4 获取Accesskey
 
-### API概览
+## 1 API参考
+
+### 1.1 API概览
 
 简单描述各个API。
 
@@ -38,8 +152,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeDBInstanceIPArrayList | 查看PolarDB实例IP白名单。 |
 | ModifySecurityIps | 修改PolarDB实例IP白名单。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DescribeRegions | 查询PolarDB地域和可用区信息。 |
 |---|---|
 | DescribeDBInstanceHAConfig | 查询PolarDB可用区信息和数据复制状态 |
@@ -56,13 +168,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeDBInstanceTDE | 查询实例数据加密状态。 |
 | ModifyDBInstanceTDE | 修改实例数据加密状态。 |
 
+**PolarDB数据库管理**
+
 | API | 描述 |
 |---|---|
 | CreateDatabase | 创建数据库。 |
 | DeleteDatabase | 删除数据库。 |
 | DescribeDatabases | 查看数据库列表。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | ModifyDBDescription | 修改数据库备注。 |
 |---|---|
@@ -90,8 +202,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | CreateTempDBInstance | 创建临时实例。 |
 | DescribeBackupPolicy | 查看备份策略。 |
 | DescribeLocalAvailableRecoveryTime | 查询备份可恢复时间范围。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | ModifyBackupPolicy | 修改备份策略。 |
 |---|---|
@@ -123,8 +233,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeParameterTemplates | 查看数据库参数模板。 |
 | DescribeParameters | 查看当前实例数据库参数运行列表。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | ModifyParameter | 修改数据库参数列表。 |
 |---|---|
 
@@ -153,17 +261,15 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **PolarDB标签管理**
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | API | 描述 |
 |---|---|
 | AddTagsToResource | 绑定标签。 |
 | DescribeTags | 查询标签。 |
 | RemoveTagsFromResource | 解绑标签。 |
 
-### 调用方式
+### 1.2 调用方式
 
-#### 请求结构
+#### 1.2.1 请求结构
 
 本章介绍云数据库PolarDB API的请求结构。
 
@@ -181,21 +287,21 @@ PolarDB API的服务接入地址为：polardb.example.com。关于如何获取�
 
 **请求参数**
 
-每个请求都需要指定要执行的操作，即Action参数（例如CreateDatabase），以及每个操作都需要包含的
+每个请求都需要指定要执行的操作，即Action参数（例如CreateDatabase），以及每个操作都需要包含的公共请求参数和指定操作所特有的请求参数。
 
 **字符编码**
 
 请求及返回结果都使用UTF-8字符集进行编码。
 
-#### 公共参数
+#### 1.2.2 公共参数
 
-##### 公共请求参数
+##### 1.2.2.1 公共请求参数
+
+公共请求参数是指每个接口都需要使用到的请求参数。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Format | Stri ng | 否 | 返回值的类型，支持JSON与XML。默认为XML。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | Version | Stri ng | 是 | API版本号，为日期形式：YYYY-MM-DD，本版本对应为2024-01-30。 |
 |---|---|---|---|
@@ -212,19 +318,17 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8gokVnxxxxx &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &OwnerId=12345678 &Timestamp=2024-07-12T12:00:00Z
 ```
 
-##### 公共返回参数
+##### 1.2.2.2 公共返回参数
 
 用户发送的每次接口调用请求，无论成功与否，系统都会返回一个唯一识别码RequestId给用户。
 
 **示例**
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+<!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
     <RequestId>4C4***38-****-****-****-*******6F216</RequestId>
@@ -232,11 +336,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 <!—返回结果数据`-->` `</`接口名称`+Response>`
 
-#### 返回结果
+#### 1.2.3 返回结果
 
-##### 成功结果
+##### 1.2.3.1 成功结果
 
-调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功。 调用成功返回的数据格式主要有XML和JSON两种，外部系统可以在请求时传入参数来制定返回的数据格式，默认为XML格式。 本文档中的返回示例为了便于用户查看，做了格式化处理，实际返回结果是没有进行换行、缩进等处理的。 XML返回结果包括请求是否成功信息和具体的业务数据。示例如下： <!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+调用API服务后返回数据采用统一格式，返回的HTTP状态码为2xx，代表调用成功。 调用成功返回的数据格式主要有XML和JSON两种，外部系统可以在请求时传入参数来制定返回的数据格式，默认为XML格式。 本文档中的返回示例为了便于用户查看，做了格式化处理，实际返回结果是没有进行换行、缩进等处理的。 XML返回结果包括请求是否成功信息和具体的业务数据。示例如下： <!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
 <RequestId>4C467B38-****-447D-****-AC04*******16</RequestId>
@@ -248,7 +352,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 { "RequestId": "4C467B38-****-447D-****-AC04*******16", /* 返回结果数据 */}
 ```
 
-##### 错误结果
+##### 1.2.3.2 错误结果
 
 调用接口出错后，将不会返回结果数据。调用方可根据附表错误代码表来定位错误原因。 当调用出错时，HTTP请求返回一个4xx或5xx的HTTP状态码。 返回的消息体中是具体的错误代码及错误信息。 另外还包含一个全局唯一的请求IDRequestId和一个您该次请求访问的站点IDHostId。在调用方找不到错误原因，可以联系阿里云客服，并提供该HostId和RequestId，以便我们尽快帮您解决问题。 XML示例：
 
@@ -256,15 +360,17 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 <Error> <RequestId>8906582E-****-****-A6C4-0E78*******5</RequestId> <HostId>polardb.example.com</HostId> <Code>UnsupportedOperation</Code> <Message>The specified action is not supported.</Message> </Error>
 ```
 
-JSON示例： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON示例：
 
 ```json
-{ "RequestId": "7463B73D-****-4D19-****-6B8*******2EF", "HostId": "polardb.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported." }
+{ "RequestId": "7463B73D-****-4D19-****-6B8*******2EF", "HostId": "polardb.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
 
-### 实例管理
+`}`
 
-#### 创建实例
+### 1.3 实例管理
+
+#### 1.3.1 创建实例
 
 **描述**
 
@@ -282,24 +388,20 @@ JSON示例： PolarDB PostgreSQL主备版开发指云原生数据库
 | DBInstanceClass | Strin g | 是 | 实例规格。 |
 | DBInstanceStora ge | Integ er | 是 | 自定义存储空间，取值： MySQL双机高可用版为 [5,2000] 。 PolarDB高可用版为 [5,2000] 。 以上版本实例存储空间每5 GB进行递增。单位：GB。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-| DBInstanceNetT ype |  | Strin g | 是 | 实例的网络连接类型： Internet：公网 Intranet：私网 |  |  |  |
+| DBInstanceNetT ype |   | Strin g | 是 | 实例的网络连接类型： Internet：公网 Intranet：私网 |   |   |   |
 |---|---|---|---|---|---|---|---|
-| DBInstanceDescr iption |  | Strin |  | 实例的描述或备注信息，用于标识或说明实例用途。 内容须以中文或英文字母开头，可包含中文、英文、数字、“ ”、 _ “-” ，长度为2~256字节，且不得以 http:// 或 https:// 开头。 |  |  |  |
-|  |  |  |  |  |  | 中文、英文、数字、“ ”、 _ |  |
-|  |  | g | 否 | “-” |  |  |  |
-| SecurityIPList |  | Strin g | 是 | 允许访问该实例下所有数据库的IP白名单，以英文逗号（,）分隔，不可重复，最多1000个。支持格式包括：%、0.0.0.0/0、单个IP（如 10.23.12.24）或CIDR网段（如10.23.12.24/24，前缀长度范围为 1~32）。其中，0.0.0.0/0表示不限制访问来源。 |  |  |  |
-| ClientToken |  | Strin g | 是 | 用于保证幂等性。 |  |  |  |
-| InstanceNetwork Type |  | Strin g | 否 | VPC：创建VPC实例；Classic：创建Classic实例；不填，默认创建 Classic实例。 |  |  |  |
-| ConnectionMode |  | Strin g | 否 | Performance为标准访问模式；Safty为高安全访问模式；默认为 PolarDB系统分配。 |  |  |  |
-| VPCId |  | Strin g | 否 | VPC ID。 |  |  |  |
-| VSwitchId |  | Strin g | 否 | VSwitch ID。 |  |  |  |
-| PrivateIpAddress |  | Strin g | 否 | 用户可以指定VSwitchId下的vpcIp，如果不输入，系统自动分配。 |  |  |  |
-| MultiAVZExPara m |  | Strin g | 否 | 包含主、备两个可用区信息的Json串。 |  |  |  |
-| License mode _ |  | Strin g | 否 | 许可方式，默认值为BYOL。 |  |  |  |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
+| DBInstanceDescr iption |   | Strin |   | 实例的描述或备注信息，用于标识或说明实例用途。 内容须以中文或英文字母开头，可包含中文、英文、数字、“ ”、 _ “-” ，长度为2~256字节，且不得以 http:// 或 https:// 开头。 |   |   |   |
+|   |   |   |   |   |   | 中文、英文、数字、“ ”、 _ |   |
+|   |   | g | 否 | “-” |   |   |   |
+| SecurityIPList |   | Strin g | 是 | 允许访问该实例下所有数据库的IP白名单，以英文逗号（,）分隔，不可重复，最多1000个。支持格式包括：%、0.0.0.0/0、单个IP（如 10.23.12.24）或CIDR网段（如10.23.12.24/24，前缀长度范围为 1~32）。其中，0.0.0.0/0表示不限制访问来源。 |   |   |   |
+| ClientToken |   | Strin g | 是 | 用于保证幂等性。 |   |   |   |
+| InstanceNetwork Type |   | Strin g | 否 | VPC：创建VPC实例；Classic：创建Classic实例；不填，默认创建 Classic实例。 |   |   |   |
+| ConnectionMode |   | Strin g | 否 | Performance为标准访问模式；Safty为高安全访问模式；默认为 PolarDB系统分配。 |   |   |   |
+| VPCId |   | Strin g | 否 | VPC ID。 |   |   |   |
+| VSwitchId |   | Strin g | 否 | VSwitch ID。 |   |   |   |
+| PrivateIpAddress |   | Strin g | 否 | 用户可以指定VSwitchId下的vpcIp，如果不输入，系统自动分配。 |   |   |   |
+| MultiAVZExPara m |   | Strin g | 否 | 包含主、备两个可用区信息的Json串。 |   |   |   |
+| License mode _ |   | Strin g | 否 | 许可方式，默认值为BYOL。 |   |   |   |
 
 | bucketUrlOpatch Tool | Strin g | 是 | 手工输入。需要用户上传OPatch工具包，无需检查校验和。 说明文件名必须为p6880880 112000 Linux-x86- _ _ 64.zip。 该文件Oracle不定期更新，最新包无法提前获得校验和的值。 |
 |---|---|---|---|
@@ -325,8 +427,6 @@ XML格式
 
 **返回示例**
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 ```xml
 <CreateDBInstanceResponse> <OrderId>100789370******</OrderId> <ConnectionString>rm-5ob3ye******.o.polardb.rds.inter.env17e.shuguang.com </ConnectionString> <DBInstanceId>polardb-****</DBInstanceId> <port>3433</port> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CreateDBInstanceResponse>
 ```
@@ -337,7 +437,7 @@ JSON格式
 { "OrderId": "100789370******", "ConnectionString": "rm-5ob3ye******.o.polardb.rds.inter.env17e.shuguang.com", "DBInstanceId": "polardb-****", "Port": "3433", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 释放实例
+#### 1.3.2 释放实例
 
 **描述**
 
@@ -364,7 +464,7 @@ JSON格式
 https://polardb.example.com/?Action=DeleteDBInstance &DBInstanceId=polardb-xxxxx
 ```
 
-PolarDB PostgreSQL主备版开发指云原生数据库
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -380,7 +480,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 重启实例
+#### 1.3.3 重启实例
 
 **描述**
 
@@ -413,11 +513,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-#### 查看实例属性
-
-**描述**
+#### 1.3.4 查看实例属性
 
 查看指定实例的详细属性。
 
@@ -432,14 +528,12 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 参数 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items |  |  | DBInstanceAttribute的参数。 |
+| Items |   |   | DBInstanceAttribute的参数。 |
 | DBInstanceId | String | rm-bpvxxxxx | 实例ID。 |
 | DBInstanceType | String | Primary | 实例类型。取值范围： Primary：表示主实例。 Readonly：表示只读实例。 Guard：表示灾备实例。 Temp：表示临时实例。 |
 | Category | String | Basic | 实例系列。取值范围： Basic：表示基础版。 Standard：表示高可用版。 Enterprise：表示金融版。 |
 | InstanceNetwork Type | String | Classic | 实例的网络类型。取值范围： Classic：表示经典网络。 VPC：表示VPC网络。 |
 | RegionId | String | cn-hangzhou | 地域的ID。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | ZoneId | String | cn-hangzhou-a | 可用区的ID。 |
 |---|---|---|---|
@@ -455,8 +549,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DBInstanceStatu s | String | Running | 实例状态，详见实例状态表。 |
 | DBInstanceDescr iption | String | 测试实例 | 实例描述或备注。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | LockMode | String | Unlock | 实例锁定状态。取值范围： Unlock：表示正常。 ManualLock：表示手动触发锁定。 LockByExpiration：表示实例过期自动锁定。 LockByRestoration：表示实例回滚前的自动锁定。 LockByDiskQuota：表示实例空间满自动锁定。 |
 |---|---|---|---|
 | LockReason | String | 无 | 被锁定的原因。 |
@@ -470,13 +562,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | MaxConnections | Integer | 60 | 实例最大并发连接数。 |
 | MasterInstanceId | String | null | 主实例的ID，如果没有返回此参数（即为null）则表示该实例是主实例。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | IncrementSource DBInstanceId | String | null | 增量数据来源的实例ID，如灾备实例的增量数据来源是主实例，只读实例的增量数据来源是主实例， 主实例的增量数据来源是NULL。 |
 |---|---|---|---|
 | GuardDBInstance Id | String | 无 | 该实例如果挂载着灾备实例，即为灾备实例的ID。 |
 | TempDBInstance Id | String | 无 | 该实例如果挂载着临时实例，即为临时实例的ID。 |
-| ReadOnlyDBInsta nceIds |  | rr-xxxxx | 主实例下挂载的只读实例的ID列表。 |
+| ReadOnlyDBInsta nceIds |   | rr-xxxxx | 主实例下挂载的只读实例的ID列表。 |
 | DBInstanceId | String | rm-bpxxxxx | 实例的名称。 |
 | VpcCloudInstanc eId | String | vpc-xxxxx | 专有网络实例的ID。 |
 | ResourceGroupId | String | 365378**** | 资源组ID。 |
@@ -484,9 +574,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 DBInstanceAttribute的参数
 
-**说明**
-
-实例主备节点信息请通过另一接口DescribeDBInstanceHAConfig查询。
+> **说明：** 实例主备节点信息请通过另一接口DescribeDBInstanceHAConfig查询。
 
 **示例**
 
@@ -496,9 +584,11 @@ DBInstanceAttribute的参数
 https://polardb.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **正常返回示例返回示例**
 
-JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON格式：
 
 ```json
 { "Items":
@@ -545,15 +635,11 @@ JSON格式：
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查询实例列表
+#### 1.3.5 查询实例列表
 
 **描述**
 
 查看实例列表或被RAM授权的实例列表。
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 参数 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -571,13 +657,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 参数 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | PageNumber | Integer | 1 | 页码。 |
 |---|---|---|---|
 | TotalRecordCount | Integer | 1 | 总记录数。 |
 | PageRecordCount | Integer | 1 | 本页实例个数。 |
-| Items |  |  | 由实例组成的数组。 |
+| Items |   |   | 由实例组成的数组。 |
 | └DBInstanceId | String | rm-xxxxx | 实例ID。 |
 | └DBInstanceDescriptio n | String | testforRemark s | 实例描述。 |
 | └PayType | String | Postpaid | 计费方式。取值范围： Postpaid：表示按量付费 Prepaid：表示包年包月 |
@@ -589,8 +673,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | └DBInstanceStatus | String | Intranet | 实例状态，详见实例状态表。 |
 | └Engine | String | PolarDB PG _ | 数据库类型。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | └DBInstanceNetType | String | Internet | 实例的网络连接类型。取值范围： Internet：表示外网 Intranet：表示内网 |
 |---|---|---|---|
 | └LockMode | String | Unlock | 实例的锁定状态。取值范围： Unlock：表示正常。 ManualLock：表示手动触发锁定。 LockByExpiration：表示实例过期自动锁定。 LockByRestoration：表示实例回滚前的自动锁定。 LockByDiskQuota：表示实例空间满自动锁定。 |
@@ -599,14 +681,12 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | └GuardDBInstanceId | String | 无 | 该实例如果挂载着灾备实例，即为灾备实例的ID。 |
 | └TempDBInstanceId | String | 无 | 该实例如果挂载着临时实例，即为临时实例的ID。 |
 | └VpcCloudInstanceId | String | vpc-xxxxx | 专有网络实例的ID。 |
-| └ReadOnlyDBInstanceI ds |  |  | 无 |
+| └ReadOnlyDBInstanceI ds |   |   | 无 |
 | └DBInstanceId | String | rm-xxxxx | 实例ID。 |
 | hostInfos | Array | 无 | 节点信息列表。 |
 | └role | String | 0 | 节点角色。取值范围： 0：主节点。 1：备节点。 |
 | └ip | String | 30** | 节点IP。 |
 | └port | String | 10.XX.XX.14 | 节点实际端口。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | RequestId | String | 1AD222E9- E606-4A42- BF6D- 8A4442913CEF | 请求ID。 |
 |---|---|---|---|
@@ -619,6 +699,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=DescribeDBInstances &RegionId=cn-hangzhou &Engine=PolarDB_PG
 ```
 
+`&<`公共请求参数`>`
+
 **正常返回示例**
 
 XML格式：
@@ -627,7 +709,7 @@ XML格式：
 <DescribeDBInstancesResponse> <PageRecordCount>2</PageRecordCount> <Items> <DBInstance> <DBInstanceDescription>testforRemarks</DBInstanceDescription> <ExpireTime>2014-10-10T16:00:00Z</ExpireTime> <DBInstanceId>polardbmjfirxxxxx</DBInstanceId> <DBInstanceNetType>Internet</DBInstanceNetType> <PayType>Prepaid</PayType> <DBInstanceStatus>Running</DBInstanceStatus> <DBInstanceType>Primary</DBInstanceType> <Engine>PolarDB_PG</Engine> <LockMode>Unlock</LockMode> <LockReason/> <RegionId>cn-hangzhou</RegionId> <ZoneId>cn-hangzhou-a</ZoneId> <MasterInstanceId/> <GuardDBInstanceId/> <TempDBInstanceId/> <ReadOnlyDBInstanceIds> <ReadOnlyDBInstanceId/> </ReadOnlyDBInstanceIds> </DBInstance> </Items> <PageNumber>1</PageNumber> <TotalRecordCount>2</TotalRecordCount> <RequestId>2553A660-E4EB-4AF4-A402-8AFF70A49143</RequestId> </DescribeDBInstancesResponse>
 ```
 
-JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON格式：
 
 ```json
 { "Items":
@@ -653,8 +735,9 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
     "PageRecordCount":2,
     "RequestId":"2553A660-E4EB-4AF4-A402-8AFF70A49143",
     "TotalRecordCount":2
-}
 ```
+
+`}`
 
 **异常返回示例**
 
@@ -664,7 +747,7 @@ JSON 格式：
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### 变更实例配置
+#### 1.3.6 变更实例配置
 
 **描述**
 
@@ -674,8 +757,6 @@ JSON 格式：
 
 | 参数 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | Action | String | 是 | ModifyDBInstanc eSpec | 系统规定参数。取值： ModifyDBInstanc eSpec |
 |---|---|---|---|---|
@@ -693,15 +774,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606-4A42- BF6D-8A4442913CEF | 请求ID。 |
 
-**示例**
-
 **请求示例**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 ```
 https://polardb.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=polardb-xxxxx &PayType=Postpaid &DBInstanceStorage=10
 ```
+
+`&<`公共请求参数`>`
 
 **正常返回示例返回示例**
 
@@ -725,7 +804,7 @@ JSON格式：
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### 申请外网连接地址
+#### 1.3.7 申请外网连接地址
 
 **描述**
 
@@ -740,10 +819,6 @@ JSON格式：
 | ConnectionString Prefix | Strin g | 是 | 外网连接地址的前缀。 |
 | Port | Strin g | 是 | 外网端口。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**返回参数**
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
@@ -755,6 +830,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=AllocateInstancePublicConnection &DBInstanceId=polardb-xxxxx &ConnectionStringPrefix=test0001 &Port=3306
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -770,7 +847,7 @@ JSON格式：
 { "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64"}
 ```
 
-#### 释放外网连接地址
+#### 1.3.8 释放外网连接地址
 
 **描述**
 
@@ -784,10 +861,6 @@ JSON格式：
 | DBInstanceId | String | 是 | 实例ID。 |
 | CurrentConnection String | String | 是 | 外网连接地址。 |
 
-**返回参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
@@ -799,6 +872,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=polardb-xxxxx &CurrentConnectionString=test0001.mysql.polardb.example.com
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -814,7 +889,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 申请内网连接地址（原内外网切换）
+#### 1.3.9 申请内网连接地址（原内外网切换）
 
 **描述**
 
@@ -830,11 +905,7 @@ JSON格式：
 
 **返回参数**
 
-#### 查看所有连接地址
-
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**描述**
+#### 1.3.10 查看所有连接地址
 
 查看指定实例的所有连接地址信息。
 
@@ -849,7 +920,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceNetInfos | List<DBInstanceAttribute> | 实例的连接信息。 |
 | InstanceNetworkType | String | VPC：VPC实例； Classic：经典实例。 |
 
@@ -864,13 +935,9 @@ DBInstanceNetInfo的参数
 | VPCId | String | VPC ID。 |
 | VSwitchId | String | VSwitch ID。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
+#### 1.3.11 修改连接地址
 
-#### 修改连接地址
-
-**描述**
-
-目前PolarDB提供内外网两种连接地址，并能支持特定访问模式下的连接地址并存。
+目前PolarDB提供内外网两种连接地址，并能支持特定访问模式下的连接地址并存。 通过本接口可以修改连接地址的名字和端口。
 
 **请求参数**
 
@@ -884,7 +951,9 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
-#### 修改PolarDB实例访问模式
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.12 修改PolarDB实例访问模式
 
 **描述**
 
@@ -896,23 +965,21 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|---|---|
 | Action | Stri ng | 是 | 系统规定参数，取值：ModifyDBInstanceConnectionMode。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DBInstance Id | Stri ng | 是 | 实例ID。 |
 |---|---|---|---|
 | Connection Mode | Stri ng | 是 | Performance为标准访问模式；Safe为高安全访问模式。 |
 
 **返回参数**
 
-#### 修改PolarDB实例网络类型
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.13 修改PolarDB实例网络类型
 
 **描述**
 
 将VPC PolarDB切换成Classic模式，或将Classic PolarDB切换成VPC模式。
 
-**说明**
-
-只有ConnectionMode为“Safety”的Classic实例才能切换成VPC模式。
+> **说明：** 只有ConnectionMode为“Safety”的Classic实例才能切换成VPC模式。
 
 **请求参数**
 
@@ -924,14 +991,14 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | VPCId | St ri n g | 否 | VPC ID。 |
 | VSwitchId | St ri n g | 否 | VSwitch ID；若传入VPCID的值，则该参数必传。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | PrivateIpAddres s | St ri n g | 否 | 用户可以指定VSwitchId下的vpcIp，如果不输入，系统通过vpcId和 VSwitchId 自动分配。 |
 |---|---|---|---|
 
 **返回参数**
 
-#### 查看PolarDB实例IP白名单
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.14 查看PolarDB实例IP白名单
 
 **描述**
 
@@ -948,7 +1015,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数 。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数 。 |
 | Items | List<DBInstanceIP Array> | 实例的IP白名单分组列表。 |
 
 DBInstanceIPArray的参数
@@ -958,12 +1025,10 @@ DBInstanceIPArray的参数
 | DBInstanceIPArrayN ame | Strin g | IP白名单分组的名字。 |
 | DBInstanceIPArrayAt tribute | Strin g | 默认为空。为了区分不同的属性值，控制台不显示带有“hidden”标签的分组。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | SecurityIPList | Strin g | IP白名单分组下的IP列表，最多1000个以逗号隔开，格式如下： 0.0.0.0/0，10.23.12.24（IP），或者10.23.12.24/24（CIDR模式，无类域间路由，/24表示了地址中前缀的长度，范围[1,32]）。 |
 |---|---|---|
 
-#### 修改PolarDB实例IP白名单
+#### 1.3.15 修改PolarDB实例IP白名单
 
 **描述**
 
@@ -981,6 +1046,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -989,9 +1056,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=ModifySecurityIps &DBInstanceId=polardb-xxxxx &SecurityIps=192.168.1.2
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-PolarDB PostgreSQL主备版开发指云原生数据库 XML格式：
+XML格式：
 
 ```xml
 <ModifySecurityIpsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifySecurityIpsResponse>
@@ -1003,7 +1072,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查询PolarDB地域和可用区信息
+#### 1.3.16 查询PolarDB地域和可用区信息
 
 **描述**
 
@@ -1033,11 +1102,11 @@ PolarDBRegion
 
 **请求示例**
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 ```
 https://polardb.example.com/?Action=DescribeRegions
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1058,10 +1127,11 @@ JSON格式：
             "ZoneId":"cn-hangzhou-b"},
              ]},
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"
-}
 ```
 
-#### 查询PolarDB可用区信息和数据复制状态
+`}`
+
+#### 1.3.17 查询PolarDB可用区信息和数据复制状态
 
 **描述**
 
@@ -1074,13 +1144,9 @@ JSON格式：
 | Action | String | 是 | 系统规定参数，取值：DescribeDBInstanceHAConfig。 |
 | DBInstanceI d | String | 是 | 实例ID。 |
 
-**返回参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceId | String | 实例ID。 |
 | SyncMode | String | Semi-sync：半同步；Async：异步。 |
 | HAMode | String | RPO：数据持久性优先；RTO：实例可用性优先。 |
@@ -1098,15 +1164,13 @@ NodeInfo的参数
 | LogSyncTime | String | 备库收到的日志时间点。 |
 | DataSyncTime | String | 备库当前的数据时间点。 |
 
-#### 迁移PolarDB实例可用区
+#### 1.3.18 迁移PolarDB实例可用区
 
 **描述**
 
-支持将一个实例迁移至其他可用区。 例如实例1目前位于华东 1 （杭州）的cn-hangzhou-a的可用区，调用此接口可以将该实例迁移至杭州的 cn-hangzhou-b。 PolarDB PostgreSQL主备版开发指云原生数据库
+支持将一个实例迁移至其他可用区。 例如实例1目前位于华东 1 （杭州）的cn-hangzhou-a的可用区，调用此接口可以将该实例迁移至杭州的 cn-hangzhou-b。
 
-**说明**
-
-跨可用区迁移必须迁移至相同物理位置内的。如华东（杭州）可用区内的实例不支持迁移至华北 1（青岛）的可用区。
+> **说明：** 跨可用区迁移必须迁移至相同物理位置内的。如华东（杭州）可用区内的实例不支持迁移至华北 1（青岛）的可用区。
 
 **请求参数**
 
@@ -1118,6 +1182,8 @@ NodeInfo的参数
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1125,6 +1191,8 @@ NodeInfo的参数
 ```
 https://polardb.example.com/?Action=MigrateToOtherZone &DBInstanceId=polardb-xxxxx &ZoneId=cn-hangzhou-b
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1140,15 +1208,11 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 清理PolarDB实例日志
+#### 1.3.19 清理PolarDB实例日志
 
 **描述**
 
 对于MySQL类型的实例，将清空实例的所有BINLOG日志。
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1157,6 +1221,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1164,6 +1230,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1179,7 +1247,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改PolarDB实例备注
+#### 1.3.20 修改PolarDB实例备注
 
 **描述**
 
@@ -1193,10 +1261,6 @@ JSON格式：
 | DBInstanceId | Strin g | 是 | 实例ID。 |
 | DBInstanceDesc ription | Stin g | 是 | 实例描述信息。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**返回参数**
-
 **示例**
 
 **请求示例**
@@ -1204,6 +1268,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=ModifyDBInstanceDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testdescribe
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1219,7 +1285,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改PolarDB实例可维护时间
+#### 1.3.21 修改PolarDB实例可维护时间
 
 **描述**
 
@@ -1233,10 +1299,6 @@ JSON格式：
 | DBInstanceI d | String | 是 | 实例ID。 |
 | MaintainTim e | String | 是 | 实例的维护时间，取值范围如下： 22:00Z-02:00Z：22点至凌晨2点。 02:00Z-06:00Z：凌晨2点至6点。 06:00-10:00：6点至10点。 10:00Z14:00Z：10点至14点。 14:00Z-18:00Z：14点至18点。 18:00Z-22:00Z：18点至22点。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**返回参数**
-
 **示例**
 
 **请求示例**
@@ -1244,6 +1306,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=polardb-xxxxx &MaintainTime=22:00Z-02:00Z
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1259,7 +1323,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 修改PolarDB实例数据复制和高可用策略
+#### 1.3.22 修改PolarDB实例数据复制和高可用策略
 
 **描述**
 
@@ -1276,13 +1340,11 @@ JSON格式：
 
 **返回参数**
 
-#### 切换PolarDB实例的主备库
+公共返回参数，具体请参见公共返回参数。
 
-**描述**
+#### 1.3.23 切换PolarDB实例的主备库
 
-PolarDB PostgreSQL主备版开发指云原生数据库 PolarDB主实例是由分布在不同服务器上面的主库和备库组成的。可以通过API进行主备库切换，并由新的主库来承担业务流量。
-
-**请求参数**
+PolarDB主实例是由分布在不同服务器上面的主库和备库组成的。可以通过API进行主备库切换，并由新的主库来承担业务流量。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1293,7 +1355,9 @@ PolarDB PostgreSQL主备版开发指云原生数据库 PolarDB主实例是由分
 
 **返回参数**
 
-#### 创建PolarDB只读实例
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.3.24 创建PolarDB只读实例
 
 **描述**
 
@@ -1307,8 +1371,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库 PolarDB主实例是由分
 | RegionId | String | 是 | 数据中心，长度不超过50个字符；通过函数DescribeRegions查看可用的数据中心。 |
 | ZoneId | String | 是 | 可用区id，通过函数DescribeRegions查看可用的可用区。 |
 | DBInstanceId | String | 是 | 主实例ID。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | EngineVersion | String | 是 | 数据库版本号。必须与主实例相同。取值： 14 16 |
 |---|---|---|---|
@@ -1329,8 +1391,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DBInstanceId | String | 实例ID。 |
 | OrderId | String | 订单ID。 |
 | ConnectionStrin g | String | 数据库连接地址。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | Port | String | 数据库连接端口。 |
 |---|---|---|
@@ -1357,7 +1417,7 @@ JSON格式：
 { "OrderId": "10078937023****", "ConnectionString": "rm-5obp******.o.polardb.rds.inter.env17e.shuguang.com", "DBInstanceId": "polardb-xxxxx", "Port": "3433", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 查询实例SSL链路
+#### 1.3.25 查询实例SSL链路
 
 **描述**
 
@@ -1370,10 +1430,6 @@ JSON格式：
 | Action | String | 是 | 系统规定参数，取值：DescribeDBInstanceSSL。 |
 | DBInstanceId | String | 是 | 实例ID。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**返回参数**
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，请参见公共返回参数。 |
@@ -1382,7 +1438,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | RequireUpdate | String | Yes：建议用户立即更新；No：不建议用户立即更新。 |
 | RequireUpdateRe ason | String | 建议更新的原因。 |
 
-#### 修改实例SSL链路
+#### 1.3.26 修改实例SSL链路
 
 **描述**
 
@@ -1403,11 +1459,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 | SSLExpireTime | String | SSL过期的时间，格式为YYYY-MM-DD’T’hh:mm:ssZ。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-#### 查询实例数据加密状态
-
-**描述**
+#### 1.3.27 查询实例数据加密状态
 
 调用该接口查询PolarDB实例的数据加密状态。
 
@@ -1422,7 +1474,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数 。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数 。 |
 | TDEStatus | String | 实例级别的TDE状态，Enabled：TDE开启；Disabled：TDE关闭。 |
 | Databases | List<DataBase> | 由Database组成的数据。 |
 
@@ -1433,7 +1485,7 @@ DataBase参数：
 | DBName | String | 数据库名称。 |
 | TDEStatus | String | 数据库级别的TDE状态，Enabled：TDE开启；Disabled：TDE关闭。 |
 
-#### 修改实例数据加密状态
+#### 1.3.28 修改实例数据加密状态
 
 **描述**
 
@@ -1441,10 +1493,8 @@ DataBase参数：
 
 **请求参数**
 
-| 2 |  |  | > 文档版本：2026072 |
+| 2 |   |   | > 文档版本：2026072 |
 |---|---|---|---|
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1455,17 +1505,17 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
-### 数据库管理
+公共返回参数，具体请参见公共返回参数。
 
-#### 创建数据库
+### 1.4 数据库管理
+
+#### 1.4.1 创建数据库
 
 **描述**
 
 在某个实例下创建一个新的数据库，接口必须满足以下条件，否则将调用失败： 实例状态运行中。 实例没有被锁定。 没有超出实例最大数据库数量。 实例类型是主实例。
 
-**说明**
-
-PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口不支持PolarDB。
+> **说明：** PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口不支持PolarDB。
 
 **请求参数**
 
@@ -1475,13 +1525,13 @@ PolarDB实例中用户有权限通过SQL做CREATE DATABASE操作，故此接口�
 | DBInstanceI d | String | 是 | 实例ID。 |
 | DBName | String | 是 | 数据库名，需唯一性检查，由小写字母，数字、下划线组成，字母开头，长度不超过64个字符。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | CharacterSet Name | String | 是 | 字符集，可通过实例详情页的数据库管理页面查看。 |
 |---|---|---|---|
 | DBDescriptio n | String | 否 | 实例的描述或备注信息，不超过256个字节。 不能以 http:// , https:// 开头。 以中文、英文字母开头，可以包含中文、英文字符、” ”，” -”， _ 数字字符长度2~256。 |
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -1490,6 +1540,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=CreateDatabase &CharacterSetName=GBK &DBName=testDB &DBInstanceId=polardb-xxxxx
 ```
+
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -1505,19 +1557,13 @@ JSON格式：
 { "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 删除数据库
+#### 1.4.2 删除数据库
 
 **描述**
 
 用户可以删除实例下的的某个数据库。 接口必须满足以下条件，否则将调用失败： 实例状态运行中。 实例类型为主实例。
 
-**说明**
-
-PolarDB实例中用户有权限通过SQL做DROP DATABASE操作，因此接口不支持PolarDB。
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
+> **说明：** PolarDB实例中用户有权限通过SQL做DROP DATABASE操作，因此接口不支持PolarDB。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -1539,6 +1585,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=DeleteDatabase &DBName=testDB &DBInstanceId=polardb-xxxxx
 ```
 
+`&<[`公共请求参数`]>`
+
 **返回示例**
 
 XML格式：
@@ -1553,7 +1601,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 查看数据库列表
+#### 1.4.3 查看数据库列表
 
 **描述**
 
@@ -1563,8 +1611,6 @@ JSON格式：
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | Action | String | 是 | 系统规定参数，取值：DescribeDatabases。 |
 |---|---|---|---|
@@ -1590,8 +1636,6 @@ DATABASE参数
 | CharacterSet Name | String | 字符集。 |
 | DBDescription | String | 数据库描述。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | Accounts | List<AccountPrivileg eInfo> | 有Accounts组成的list。 |
 |---|---|---|
 | Account | String | 账号名称。 |
@@ -1612,6 +1656,8 @@ AccountPrivilegeInfo参数
 https://polardb.example.com/?Action=DescribeDatabases &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -1620,7 +1666,7 @@ XML格式：
 <DescribeDatabasesResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Databases> <Database> <Engine>PolarDB_PG</Engine> <DBName>testdb</DBName> <CharacterSetName>utf8</CharacterSetName> <DBStatus>Creating</DBStatus> <DBInstanceId>polardb-xxxxx</DBInstanceId> <Accounts> <AccountPrivilegeInfo></AccountPrivilegeInfo> <Accounts> </Database> </Databases> </DescribeDatabasesResponse>
 ```
 
-JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON格式：
 
 ```json
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "Databases":
@@ -1632,10 +1678,11 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
             "DBInstanceId": "polardb-xxxxx",
             "Accounts": { " AccountPrivilegeInfo": [] },
             "DBName": "testdb" }] }
-            }
 ```
 
-#### 修改数据库备注
+`}`
+
+#### 1.4.4 修改数据库备注
 
 **描述**
 
@@ -1652,6 +1699,8 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
+公共返回参数，具体请参见公共返回参数。
+
 **示例**
 
 **请求示例**
@@ -1660,9 +1709,11 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=ModifyDBDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testDBdescribe
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： PolarDB PostgreSQL主备版开发指云原生数据库
+XML格式：
 
 ```xml
 <ModifyDBDescriptionResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyDBDescriptionResponse>
@@ -1674,9 +1725,9 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### 账号管理
+### 1.5 账号管理
 
-#### 创建账号
+#### 1.5.1 创建账号
 
 **描述**
 
@@ -1693,10 +1744,6 @@ JSON格式：
 | AccountType | Strin g | 否 | 取值为：Normal（普通账号），Super（高权限账号），默认为Normal。 PolarDB有且仅有一个初始账号，其他账号由初始账号连接数据库后创建。 |
 | AccountDescr iption | Strin g | 否 | 账号备注，长度不超过256个字符。请注意：开头不能以http://或https:// 开头；必须以中文、英文字母作为开头。可以包含中文、英文字符、” ”，” _ -”，数字字符长度2~256位。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**返回参数**
-
 **示例**
 
 **请求示例**
@@ -1704,6 +1751,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx
 ```
+
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -1719,11 +1768,11 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 删除账号
+#### 1.5.2 删除账号
 
 **描述**
 
-实例状态要求为运行中。
+调用此接口可以直接删除数据库账号。 实例状态要求为运行中。
 
 **请求参数**
 
@@ -1735,15 +1784,15 @@ JSON格式：
 
 **返回参数**
 
-**示例**
+公共返回参数，具体请参见公共返回参数。
 
 **请求示例**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 ```
 https://polardb.example.com/?Action=DeleteAccount &DBInstanceId=rds-xxxxx &AccountName=testacc01
 ```
+
+`&<[`公共请求参数`]>`
 
 **返回示例**
 
@@ -1759,7 +1808,7 @@ JSON格式：
 { "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 查看账号列表
+#### 1.5.3 查看账号列表
 
 **描述**
 
@@ -1777,10 +1826,10 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | Accounts | List<DBInstanceAccount > | 由Account组成的数组。 |
 
-DBInstanceAccount参数 PolarDB PostgreSQL主备版开发指云原生数据库
+DBInstanceAccount参数
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -1806,9 +1855,11 @@ DatabasePrivilege参数
 https://polardb.example.com/?Action=DescribeAccounts &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： PolarDB PostgreSQL主备版开发指云原生数据库
+XML格式：
 
 ```xml
 <DescribeAccountsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Accounts> <DBInstanceAccount> <AccountName>PolarDB_PG</AccountName> <DBInstanceId>testdb</DBInstanceId> <AccountStatus>utf8</AccountStatus> <AccountDescription> </AccountDescription> <DatabasePrivileges> <DatabasePrivilege></DatabasePrivilege> </DatabasePrivileges> <DBInstanceAccount> </Accounts> </DescribeAccountsResponse>
@@ -1827,7 +1878,7 @@ JSON格式：
  "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### 授权账号权限
+#### 1.5.4 授权账号权限
 
 **描述**
 
@@ -1842,12 +1893,12 @@ JSON格式：
 | AccountName | String | 是 | 账号名称。 |
 | DBName | String | 是 | 设置与该账号关联的数据库名数据库名称。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | AccountPrivileg e | String | 是 | 账号权限，ReadOnly 只读，ReadWrite读写。 |
 |---|---|---|---|
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -1856,6 +1907,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=GrantAccountPrivilege &AccountName=testacc02 &AccountPrivilege=readwrite &DBName=testdb03 &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1871,7 +1924,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 撤销账号权限
+#### 1.5.5 撤销账号权限
 
 **描述**
 
@@ -1885,12 +1938,12 @@ JSON格式：
 | DBInstanc eId | String | 是 | 实例ID。 |
 | AccountNa me | String | 是 | 账号名称。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DBName | String | 是 | 数据库名称。 |
 |---|---|---|---|
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -1899,6 +1952,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=RevokeAccountPrivilege &AccountName=testacc02 &DBName=testdb03 &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1914,7 +1969,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改账号备注
+#### 1.5.6 修改账号备注
 
 **描述**
 
@@ -1927,8 +1982,6 @@ JSON格式：
 | Action | Stri ng | 是 | 系统规定参数，取值：ModifyAccountDescription。 |
 | DBInstanceId | Stri ng | 是 | 实例ID。 |
 | AccountName | Stri ng | 是 | 操作账号，需唯一性检查，由小写字母，数字、下划线组成，字母开头， 长度不超过16个字符。其他非法字符，请参见禁用关键字表。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | AccountDescr iption | Stri ng | 是 | 修改账号备注。注：不能以http:// , https:// 开头。以中文、英文字母开头。可以包含中文、英文字符、” ”，” -”，数字字符长度2~256位。 _ |
 |---|---|---|---|
@@ -1947,6 +2000,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=ModifyAccountDescription &DBInstanceId=polardb-xxxxx &AccountName=testacc01 &AccountDescription=testAccoutdescribe
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -1961,7 +2016,7 @@ JSON格式：
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 重置密码
+#### 1.5.7 重置密码
 
 **描述**
 
@@ -1974,13 +2029,13 @@ JSON格式：
 | Action | Strin g | 是 | 系统规定参数，取值：ResetAccountPassword。 |
 | DBInstanceId | Strin g | 是 | 实例ID。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | AccountNam e | Strin g | 是 | 账号名称。 |
 |---|---|---|---|
 | AccountPass word | Strin g | 是 | 新密码，由字母、数字或下划线组成，长度为6~32位。 |
 
 **返回参数**
+
+公共返回参数，具体请参见公共返回参数。
 
 **示例**
 
@@ -1989,6 +2044,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=ResetAccountPassword &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2004,7 +2061,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 重置账号
+#### 1.5.8 重置账号
 
 **描述**
 
@@ -2019,17 +2076,13 @@ JSON格式：
 | AccountNam e | Strin g | 是 | 账号名称。 |
 | AccountPass word | Strin g | 是 | 账号密码。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**返回参数**
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 
-### 备份恢复
+### 1.6 备份恢复
 
-#### 创建备份
+#### 1.6.1 创建备份
 
 **描述**
 
@@ -2052,15 +2105,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**示例**
-
 **请求示例**
 
 ```
 https://polardb.example.com/?Action= CreateBackup &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2076,7 +2127,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 克隆PolarDB实例
+#### 1.6.2 克隆PolarDB实例
 
 **描述**
 
@@ -2091,8 +2142,6 @@ JSON格式：
 | BackupId | String | 否 | 备份集ID，可通过查询备份列表接口DescribeBackups获取。 |
 | RestoreTime | String | 否 | 用户指定备份保留周期内的任意时间点，如2011-06- 11T16:00:00Z。BackupId和RestoreTime两者至少传入一个。 |
 | DBInstanceClas s | String | 否 | 实例规格，详见规格列表附录。可选参数，若不传入，则默认规格和主实例一致。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | DBInstanceStor age | String | 否 | 磁盘空间，默认与主实例一致，单位GB。PolarDB独占物理机规格可传入范围为[3000，3000];其他规格可传入范围为[5,2000]。每5GB 递增。 |
 |---|---|---|---|
@@ -2109,7 +2158,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DBInstanceId | String | 实例ID。 |
 | OrderId | Integer | 订单号。 |
 
-#### 查看备份列表
+#### 1.6.3 查看备份列表
 
 **描述**
 
@@ -2118,10 +2167,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?><Error><Code>AccessDenied</Code> <Message>Request has expired.</Message><Expires>2012-12-25T09:47:52.000Z</Expires><Se rverTime>2012-12-25T09:49:00.000Z</ServerTime> <RequestId>50D9768CA801C2F102005C70</RequestId><HostId>oss-test.aliyuninc.com</HostId></Error>
 ```
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -2139,23 +2184,21 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TotalRecordCount | Integer | 总记录数。 |
 | PageNumber | Integer | 页码。 |
 | PageRecordCount | Integer | 本页备份集个数。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | Items | List<Backup> | 由Backup组成的数组。 |
 |---|---|---|
 
-#### 创建临时实例
+#### 1.6.4 创建临时实例
 
 **描述**
 
-**说明**
+> **说明：** 基于备份集或者7天内的一个时间点创建临时实例。临时实例创建成功后，账号，数据库将继承备份集数据。
 
-基于备份集或者7天内的一个时间点创建临时实例。临时实例创建成功后，账号，数据库将继承备份集数据。 实例状态必须满足以下条件，否则将操作失败： 运行中。 没有迁移任务。 没有被锁定。 当前实例备份集的状态为完成备份。
+实例状态必须满足以下条件，否则将操作失败： 运行中。 没有迁移任务。 没有被锁定。 当前实例备份集的状态为完成备份。
 
 **请求参数**
 
@@ -2170,18 +2213,16 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TempDBInstanceId | String | 临时实例ID。 |
 
-**示例**
-
 **请求示例**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 ```
 https://polardb.example.com/?Action=CreateTempDBInstance &BackupId=90262 &DBInstanceId=polardb-xxxxx
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2197,7 +2238,7 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "TempDBInstanceId":"sub-xxxxx"}
 ```
 
-#### 查看备份策略
+#### 1.6.5 查看备份策略
 
 **描述**
 
@@ -2214,18 +2255,16 @@ JSON格式：
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | BackupRetentionPeri od | String | 数据备份保留天数（1~30天）。 |
 | PreferredBackupTim e | String | 数据备份时间，格式：HH:mmZ- HH:mm Z。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | PreferredBackupPeri od | String | 数据备份周期：Monday：周一；Tuesday：周二；Wednesday：周三；Thursday：周四；Friday：周五；Saturday：周六；Sunday：周日。 |
 |---|---|---|
 | BackupLog | String | 日志备份状态，Enable：开启，Disabled：关闭。 |
 | LogBackupRetention Period | String | 日志备份保留天数（1~30天）。 |
 
-#### 查询备份可恢复时间范围
+#### 1.6.6 查询备份可恢复时间范围
 
 调用DescribeLocalAvailableRecoveryTime接口查询备份可恢复时间范围，即实例支持按时间点恢复的最早可恢复时间点（RPO）信息。
 
@@ -2234,6 +2273,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 PolarDB MySQL集群版 PolarDB PostgreSQL主备版
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -2249,8 +2290,6 @@ PolarDB MySQL集群版 PolarDB PostgreSQL主备版
 | Message | String | Successful | 请求返回消息。 请求成功时该参数返回Successful，请求失败时会返回请求异常信息（如错误码等）。 |
 | Success | Boolean | true | 请求结果。取值： true：请求成功。 false：请求失败。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | Data | Struct | {} | 返回数据。 |
 |---|---|---|---|
 | - RecoveryEndTi me | String | 2026-01- 26T13:01:15Z | 恢复截止时间。 |
@@ -2265,22 +2304,30 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 http(s)://[Endpoint]/?Action=DescribeLocalAvailableRecoveryTime &DBInstanceId=rm-wq64n542y9j******
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Data":{
   "RecoveryEndTime":"2026-01-26T13:01:15Z",
   "RecoveryBeginTime":"2026-01-21T04:30:32Z",
   "DBInstanceName":"rm-wq64n542y9j******"
- },
- "Success":true
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "Success":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Data>
@@ -2290,8 +2337,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </Data> <Success>true</Success>
 ```
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 **错误码**
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
@@ -2300,9 +2345,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 400 | MissingUserID | MissingUserID | The request is missing a user id parameter. _ |
 | 400 | MissingUID | MissingUID | The request is missing a uid parameter. |
 
-#### 修改备份策略
+#### 1.6.7 修改备份策略
 
 **描述**
+
+修改备份策略，PolarDB系统将根据用户设置的系统配置，定期做实例备份。
 
 **请求参数**
 
@@ -2314,8 +2361,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | PreferredBackupPeri od | String | 是 | 备份周期：Monday：周一；Tuesday：周二；Wednesday：周三；Thursday：周四；Friday：周五；Saturday：周六； Sunday：周日。 |
 | BackupRetentionPeri od | String | 否 | 数据备份保留天数（1~30天），默认为7。 |
 | BackupLog | String | 否 | 默认为Enable，可改为Disabled。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | LogBackupRetention Period | String | 否 | 日志备份保留天数（1~30天，且不大于数据备份保留天数）。 当开启日志备份时，可设置日志备份文件的保留天数，目前仅支持 MySQL/ PolarDB PostgreSQL/ PolarDB PPAS引擎设置该值。 _ _ |
 |---|---|---|---|
@@ -2334,6 +2379,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=ModifyBackupPolicy &DBInstanceId=polardb-xxxxx &PreferredBackupTime=00:00Z—01:00Z &PreferredBackupPeriod=Monday
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -2348,15 +2395,11 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 恢复备份集到实例
+#### 1.6.8 恢复备份集到实例
 
 **描述**
 
 将备份集覆盖性恢复到实例。 实例状态必须满足以下条件，否则将操作失败： 运行中。 没有迁移任务。 没有被锁定。 当前实例备份集的状态为完成备份。
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -2378,6 +2421,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=RestoreDBInstance &BackupId=103312 &DBInstanceId=polardb-xxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -2392,15 +2437,11 @@ JSON格式：
 {"RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 删除数据备份文件
+#### 1.6.9 删除数据备份文件
 
 **描述**
 
 支持删除的备份集范围：数据备份存储时长大于日志备份保留周期且大于7天的数据备份文件，可删除，详情查看备份文件删除说明。 只删除自身的备份集，不会删除所关联实例（只读、灾备、克隆等）的备份集。 实例状态必须满足以下条件，否则将创建失败： 实例状态为运行中。
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -2410,13 +2451,17 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
-### 插件管理
+公共返回参数，具体请参见公共返回参数。
 
-#### 卸载插件
+### 1.7 插件管理
+
+#### 1.7.1 卸载插件
 
 卸载插件。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -2427,8 +2472,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | OwnerId | Long | Quer y | 否 | 123456**** | 系统规定参数。用户账号ID。 |
 | ResourceO wnerAccou nt | Strin g | Quer y | 否 | aliyun123 | 系统规定参数。资源归属者账号ID。 |
 | ResourceO wnerId | Long | Quer y | 否 | 123456**** | 资源所属用户账号ID。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | ClientToke n | Strin g | Quer y | 否 | 6000170000591aed949d 0f54a343f1a4233c1e7d1 c5c****** | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，保证在不同请求间唯一，大小写敏感、不超过 64个ASCII字符。 |
 |---|---|---|---|---|---|
@@ -2449,23 +2492,27 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **示例**
 
-请求示例 PolarDB PostgreSQL主备版开发指云原生数据库
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DeleteExtensions &Action=DeleteExtensions &DBInstanceId=pc-**************** &Extensions=pase,hstore &DBNames=auto_test_db
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
@@ -2481,8 +2528,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | Current DB instance state does not support this operation. |
 | 403 | IncorrectDBInstanc e | IncorrectDBInstance | Current DB instance does not support this operation. |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 400 | InvalidParameters. Format | InvalidParameters.Format | Specified parameters is not valid. |
 |---|---|---|---|
 | 400 | ExtensionNum.Not Support | ExtensionNum.NotSupport | Current extension count exceeds the maximum supported extension count. |
@@ -2494,11 +2539,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 400 | Extension.Depende ncy | Extension.Dependency | required extension list existed, but had missing extensions |
 | 400 | -2001 | Extension.Dependency.Invalid | required extension list existed, but had missing extensions: %s |
 
-#### 更新插件
+#### 1.7.2 更新插件
 
 更新已安装插件。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -2506,8 +2553,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|---|---|---|---|
 | Action | Strin g | Syst em | 是 | UpdateExtensions | 系统规定参数。取值： UpdateExtensions |
 | AccessKeyI d | Strin g | Quer y | 否 | LTAI4G28PhwnizaSC***** *** | 账号的AccessKey ID。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | OwnerId | Long | Quer y | 否 | 123456**** | 系统规定参数。用户账号ID。 |
 |---|---|---|---|---|---|
@@ -2528,8 +2573,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | RequestId | String | 9B7BFB11-C077- 4FE3-B051- F69CEB****** | 请求ID。 |
 | Message | String | Successful | 返回信息。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | Success | Boolean | true | 请求结果。取值： true：请求成功 false：请求失败 |
 |---|---|---|---|
 
@@ -2541,17 +2584,21 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 http(s)://[Endpoint]/?Action=UpdateExtensions &Action=UpdateExtensions &DBInstanceId=pc-**************** &Extensions=postgres_fdw &DBNames=auto_test_db
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
@@ -2564,8 +2611,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidInnerParame ter | InvalidInnerParameter | Inner parameter is invalid. |
 | 400 | InvalidDBInstanceE ngineType.Format | InvalidDBInstanceEngineType. Format | the DB instance engine type does not support this operation. |
 | 400 | InvalidDBInstanceE ngineVersion.Form at | InvalidDBInstanceEngineVersio n.Format | the DB instance engine version does not support this operation. |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | Current DB instance state does not support this operation. |
 |---|---|---|---|
@@ -2581,15 +2626,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 403 | CurMinorVersionUn supportUpdateGive nExtension | CurMinorVersionUnsupportUpd ateGivenExtension | Current minor version does not support update given extension. |
 | 400 | Extension.Depende ncy | Extension.Dependency | Database not found. |
 
-#### 查询插件详情
+#### 1.7.3 查询插件详情
 
 查询已安装的插件。
 
 **请求头**
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**请求参数**
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2605,8 +2648,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DBInstanc eId | Strin g | Quer y | 是 | pc-**************** | 实例ID。 |
 | Extension Name | Strin g | Quer y | 否 | address standardizer _ | 插件名称。 |
 | DBName | Strin g | Quer y | 是 | testdb | 数据库名称。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回数据**
 
@@ -2625,8 +2666,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | --Requires | String | ganos networking _ | 此插件安装时所依赖的插件。 |
 | --Category | String | geography space, _ self develop _ | 插件类型。 |
 | --Restart | String | true | 是否重启应用。取值： true：重启 false：不重启 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | - InstalledExten sions | Array | 指定数据库下已安装插件信息。 | 指定数据库下已安装插件信息。 |
 |---|---|---|---|
@@ -2648,15 +2687,24 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 http(s)://[Endpoint]/?Action=DescribeExtensions &Action=DescribeExtensions &DBInstanceId=pc-**************** &DBName=testdb
 ```
 
-正常返回示例 `JSON` 格式 PolarDB PostgreSQL主备版开发指云原生数据库
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"success",
  "Data":{
   "UninstalledExtensions":[
-   {
+```
+
+`{`
+
+```json
     "Comment":"test",
     "Owner":"admin",
     "Category":"geography_space, self_develop",
@@ -2665,14 +2713,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "DefaultVersion":"7.7",
     "Restart":"true",
     "Name":"jueming"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "InstalledExtensions":[
-   {
+```
+
+`{`
+
+```json
     "Comment":"test",
     "Owner":"9527952****",
     "Category":"geography_space, self_develop",
@@ -2682,18 +2733,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "DefaultVersion":"7.7",
     "Restart":"true",
     "Name":"jueming"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "Success":true
-}
 ```
 
-`XML` 格式 PolarDB PostgreSQL主备版开发指云原生数据库
+`}` `XML` 格式
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>success</Message> <Data>
@@ -2731,8 +2779,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | Current DB instance state does not support this operation. |
 | 403 | IncorrectDBInstanc e | IncorrectDBInstance | Current DB instance does not support this operation. |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 400 | InvalidParameters. Format | InvalidParameters.Format | Specified parameters is not valid. |
 |---|---|---|---|
 | 404 | InvalidAccountNam e.NotFound | InvalidAccountName.NotFound | Specified account name does not exist. |
@@ -2742,11 +2788,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 404 | InternalError.Exten sionConfigNotFoun d | InternalError.ExtensionConfigN otFound | Extension config not found. |
 | 400 | InternalError.Exten sionConfigEmpty | InternalError.ExtensionConfigE mpty | Extension config is empty. |
 
-#### 安装插件
+#### 1.7.4 安装插件
 
 安装插件。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -2756,8 +2804,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | AccessKeyI d | Strin g | Quer y | 否 | LTAI4G28PhwnizaSC***** *** | 账号的AccessKey ID。 |
 | OwnerId | Long | Quer y | 否 | 123456**** | 系统规定参数。用户账号ID。 |
 | ResourceO wnerAccou nt | Strin g | Quer y | 否 | aliyun123 | 系统规定参数。资源归属者账号ID。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | ResourceO wnerId | Long | Quer y | 否 | 123456**** | 资源所属用户账号ID。 |
 |---|---|---|---|---|---|
@@ -2778,8 +2824,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | RequestId | String | 9B7BFB11-C077- 4FE3-B051- F69CEB****** | 请求ID。 |
 | Message | String | Successful | 返回信息。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | Success | Boolean | true | 请求结果。取值： true：请求成功。 false：请求失败。 |
 |---|---|---|---|
 
@@ -2791,17 +2835,21 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 http(s)://[Endpoint]/?Action=CreateExtensions &Action=CreateExtensions &DBInstanceId=pc-**************** &DBNames=testdb01 &AccountName=test_acc
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
@@ -2814,8 +2862,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidInnerParame ter | InvalidInnerParameter | Inner parameter is invalid. |
 | 400 | InvalidDBInstanceE ngineType.Format | InvalidDBInstanceEngineType. Format | the DB instance engine type does not support this operation. |
 | 400 | InvalidDBInstanceE ngineVersion.Form at | InvalidDBInstanceEngineVersio n.Format | the DB instance engine version does not support this operation. |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | Current DB instance state does not support this operation. |
 |---|---|---|---|
@@ -2833,8 +2879,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 403 | UnsupportDBOwne rForExtensionOps | UnsupportDBOwnerForExtensi onOps | DBOwner does not support specified extensions. |
 | 403 | CurMinorVersionPG 17UnsupportVector | CurMinorVersionPG17Unsuppo rtVector | Current minor version of pg17 does not support vector. |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 403 | CurrentMinorVersio nUnsupportSpecifie dExtensions | CurrentMinorVersionUnsupport SpecifiedExtensions | Current minor version does not support specified extensions. |
 |---|---|---|---|
 | 403 | PolarCsiExtensionN eedLogicalWalLeve l | PolarCsiExtensionNeedLogical WalLevel | Polar Csi Extension Need Logical Wal Level |
@@ -2842,9 +2886,9 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 400 | InternalError.Exten sionConfigEmpty | InternalError.ExtensionConfigE mpty | Extension config is empty. |
 | 400 | AccountNameOwne rNotDBOwner | AccountNameOwnerNotDBOw ner | The account name is not the owner of DB. |
 
-### 监控管理
+### 1.8 监控管理
 
-#### 查看实例资源使用情况
+#### 1.8.1 查看实例资源使用情况
 
 **描述**
 
@@ -2861,13 +2905,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | DBInstanceId | String | 实例ID。 |
 | Engine | String | 数据库类型。 |
 | DiskUsed | Integer | 已用空间（DataSize+LogSize），单位：Byte，-1表示没有数据。 |
 | DataSize | Integer | 数据文件占用空间，单位：Byte，-1表示没有数据。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | LogSize | Integer | 日志占用空间，单位：Byte，-1表示没有数据。 |
 |---|---|---|
@@ -2875,15 +2917,13 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | ColdBackupSize | Integer | 冷备的存储量，单位：Byte，-1表示没有数据。 |
 | SQLSize | Integer | SQL的存储量，单位：Byte，-1表示没有数据。 |
 
-#### 查看实例性能数据
+#### 1.8.2 查看实例性能数据
 
 **描述**
 
 根据性能参数查看某个用户实例，某时间段范围内的性能监控数据。 根据查询时间范围的不同，有如下3种输出形式： 当查询时间范围小于等于1天，按分钟描点性能值。 当查询时间范围1天到7天不支持，暂不支持。 当查询时间范围大于7天小于等于15天，按小时描点性能值。 当查询时间范围大于15天小于30天，暂不支持。 当查询时间范围大于等于30天小于等于1年时，按天描点。
 
-**说明**
-
-实例空间占用Key为MySQL_SpaceUsage，仅支持查询1天内的监控数据，即第1种输出形式。
+> **说明：** 实例空间占用Key为MySQL_SpaceUsage，仅支持查询1天内的监控数据，即第1种输出形式。
 
 **请求参数**
 
@@ -2900,22 +2940,20 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 名称 | 类型 | 描述 |
 |---|---|---|
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-| <公共返回参数> | - | 公共返回参数。 |  |  |
+| <公共返回参数> | - | 公共返回参数。 |   |   |
 |---|---|---|---|---|
-| DBInstanceId | String | 实例ID。 |  |  |
-| Engine | String | 数据库类型。 |  |  |
-| StartTime | String | 查询开始时间，格式： YYYY-MM-DD'T'HH:mmZ ，如 2025- 05-30T03:29Z 。 |  |  |
-|  |  |  | 2025- |  |
-| EndTime | String | 查询结束时间，格式： YYYY-MM-DD'T'HH:mmZ ，如 2025- 05-30T04:29Z ，大于查询开始时间。 |  |  |
-|  |  |  | 2025- |  |
-| PerformanceKey s | List<PerformanceKe y> | 数组格式： {perf1, perf2, perf3, …} 。 |  |  |
+| DBInstanceId | String | 实例ID。 |   |   |
+| Engine | String | 数据库类型。 |   |   |
+| StartTime | String | 查询开始时间，格式： YYYY-MM-DD'T'HH:mmZ ，如 2025- 05-30T03:29Z 。 |   |   |
+|   |   |   | 2025- |   |
+| EndTime | String | 查询结束时间，格式： YYYY-MM-DD'T'HH:mmZ ，如 2025- 05-30T04:29Z ，大于查询开始时间。 |   |   |
+|   |   |   | 2025- |   |
+| PerformanceKey s | List<PerformanceKe y> | 数组格式： {perf1, perf2, perf3, …} 。 |   |   |
 
-|  | 05-30T03:29Z |
+|   | 05-30T03:29Z |
 |---|---|
 
-|  | 05-30T04:29Z |
+|   | 05-30T04:29Z |
 |---|---|
 
 **示例**
@@ -2926,6 +2964,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId=polardb-xxxxx &key= PolarDB_PG_xxxxx &StartTime=2025-05-30T03:29Z &EndTime=2025-05-30T04:29Z
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -2934,7 +2974,7 @@ XML格式：
 <DescribeDBInstancePerformanceResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <StartTime>2025-05-30T03:29Z</StartTime> <EndTime>2025-05-30T04:29Z</EndTime> <Engine>PolarDB_PG</Engine> <PerformanceKeys> <PerformanceKey> <Key>MySQL_xxxxx</Key> <Unit>KB</Unit> <ValueFormat>recv_k&amp;sent_k</ValueFormat> <Values><Values/> </PerformanceKey> </PerformanceKeys> </DescribeDBInstancePerformanceResponse>
 ```
 
-JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON格式：
 
 ```json
 { “RequestId”1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC, "DBInstanceID": polardb-xxxxx, "StartTime": "2025-05-30T03:29Z", "EndTime": "2025-05-30T04:29Z", "Engine": "PolarDB_PG", "PerformanceKeys":
@@ -2945,7 +2985,7 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
         "Values": { "PerformanceValue":[] } } ] }}
 ```
 
-#### 查询监控行为
+#### 1.8.3 查询监控行为
 
 **描述**
 
@@ -2965,7 +3005,7 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 | Period | String | 监控的采集间隔，单位为秒。 |
 
-#### 修改监控行为
+#### 1.8.4 修改监控行为
 
 **描述**
 
@@ -2979,17 +3019,13 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
 | DBInstanceId | String | 是 | 实例ID。 |
 | Period | String | 是 | 监控的采集间隔，60或300（默认为300秒）。 |
 
-**返回参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数。 |
 
-### 参数管理
+### 1.9 参数管理
 
-#### 查看数据库参数模板
+#### 1.9.1 查看数据库参数模板
 
 **描述**
 
@@ -3005,25 +3041,23 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
-| 名称 |  | 类型 | 描述 |  |  |
+| 名称 |   | 类型 | 描述 |   |   |
 |---|---|---|---|---|---|
-| <公共返回参数> |  | - | 公共返回参数。 |  |  |
-| Engine |  | String | 数据库类型。 |  |  |
-| EngineVersion |  | String | 数据库版本号。 |  |  |
-| ParameterCount |  | Integer | 参数个数。 |  |  |
-| Parameters |  | List<TemplateRecord | 参数列表，格式： {parameter1, parameter2, parameter3, …} 。 |  |  |
-|  |  |  |  | {parameter1, parameter2, |  |
-|  |  | > | parameter3, …} |  |  |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-**示例**
+| <公共返回参数> |   | - | 公共返回参数。 |   |   |
+| Engine |   | String | 数据库类型。 |   |   |
+| EngineVersion |   | String | 数据库版本号。 |   |   |
+| ParameterCount |   | Integer | 参数个数。 |   |   |
+| Parameters |   | List<TemplateRecord | 参数列表，格式： {parameter1, parameter2, parameter3, …} 。 |   |   |
+|   |   |   |   | {parameter1, parameter2, |   |
+|   |   | > | parameter3, …} |   |   |
 
 **请求示例**
 
 ```
 https://polardb.example.com/?Action=DescribeParameterTemplates &Engine=PolarDB_PG &EngineVersion=16
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3049,13 +3083,9 @@ JSON格式：
 "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 查看当前实例数据库参数运行列表
+#### 1.9.2 查看当前实例数据库参数运行列表
 
-**描述**
-
-该接口返回用户某个实例当前的参数配置。 PolarDB PostgreSQL主备版开发指云原生数据库
-
-**请求参数**
+该接口返回用户某个实例当前的参数配置。
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -3064,19 +3094,19 @@ JSON格式：
 
 **返回参数**
 
-| 名称 | 类型 |  | 描述 |  |  |
+| 名称 | 类型 |   | 描述 |   |   |
 |---|---|---|---|---|---|
-| <公共返回参数> | - |  | 公共返回参数。 |  |  |
-| Engine | String |  | 数据库类型。 |  |  |
-| EngineVersion | String |  | 数据库版本号。 |  |  |
-| RunningParameters | List<DBInstanceParameter> |  | 当前运行的参数列表，格式为 {parameter1,parameter2,pa rameter3, …} 。 |  |  |
-|  |  |  |  | {parameter1,parameter2,pa |  |
-|  |  |  | rameter3, …} |  |  |
-| ConfigParameters | List<DBInstanceParameter> |  | 正在同步的参数列表，格式为 {parameter1,parameter2,pa rameter3,…} 。 |  |  |
+| <公共返回参数> | - |   | 公共返回参数。 |   |   |
+| Engine | String |   | 数据库类型。 |   |   |
+| EngineVersion | String |   | 数据库版本号。 |   |   |
+| RunningParameters | List<DBInstanceParameter> |   | 当前运行的参数列表，格式为 {parameter1,parameter2,pa rameter3, …} 。 |   |   |
+|   |   |   |   | {parameter1,parameter2,pa |   |
+|   |   |   | rameter3, …} |   |   |
+| ConfigParameters | List<DBInstanceParameter> |   | 正在同步的参数列表，格式为 {parameter1,parameter2,pa rameter3,…} 。 |   |   |
 
-|  |  | {parameter1,parameter2,pa |  |
+|   |   | {parameter1,parameter2,pa |   |
 |---|---|---|---|
-|  | rameter3,…} |  |  |
+|   | rameter3,…} |   |   |
 
 表 1. DBInstanceParameter参数
 
@@ -3094,7 +3124,7 @@ JSON格式：
 https://polardb.example.com/?Action=DescribeParameters &DBInstanceId=polardb-xxxxx
 ```
 
-PolarDB PostgreSQL主备版开发指云原生数据库
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3122,11 +3152,11 @@ JSON格式：
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 修改数据库参数列表
+#### 1.9.3 修改数据库参数列表
 
 **描述**
 
-用户可以修改实例参数，提交请求后，PolarDB将下达任务，新修改的参数应用到实例。如果所提交的参数中，有需要重启数据库的，PolarDB将重启数据库。 必须满足以下条件，否则调用失败： 当前实例状态：使用中。 当前实例锁定模式：正常。 参数值有如下3类： [1-65535]，表示数字范围，通过正则识别，从而提取出最小值和最大值。然后根据最小值和最大值对输入参数进行验证，另外，还需要是整除因子的倍数。 PolarDB PostgreSQL主备版开发指云原生数据库 [utf8|gbk|latin1]，表示固定的取值规则，通过正则识别，从而提取出固定的取值。然后根据这些固定的取值对输入参数进行验证。 其他，这种情况符合正则表达式。 下达任务之前，PolarDB将会进行参数检查，步骤如下：
+用户可以修改实例参数，提交请求后，PolarDB将下达任务，新修改的参数应用到实例。如果所提交的参数中，有需要重启数据库的，PolarDB将重启数据库。 必须满足以下条件，否则调用失败： 当前实例状态：使用中。 当前实例锁定模式：正常。 参数值有如下3类： [1-65535]，表示数字范围，通过正则识别，从而提取出最小值和最大值。然后根据最小值和最大值对输入参数进行验证，另外，还需要是整除因子的倍数。 [utf8|gbk|latin1]，表示固定的取值规则，通过正则识别，从而提取出固定的取值。然后根据这些固定的取值对输入参数进行验证。 其他，这种情况符合正则表达式。 下达任务之前，PolarDB将会进行参数检查，步骤如下：
 1. 检查参数是否存在。
 2. 检查参数是否可修改。
 3. 检查参数是否合法。
@@ -3155,11 +3185,11 @@ JSON格式：
 
 **请求示例**
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 ```
 https://polardb.example.com/?Action=ModifyeParameter &DBInstanceId=polardb-xxxxx &Parameters={"key_buffer_size":"456","character_set_client":"gbk"}
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3175,9 +3205,9 @@ JSON格式：
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC",}
 ```
 
-### 日志管理
+### 1.10 日志管理
 
-#### 查看慢日志列表
+#### 1.10.1 查看慢日志列表
 
 **描述**
 
@@ -3194,8 +3224,6 @@ JSON格式：
 | DBName | String | 否 | 数据库名称。 |
 | SortKey | String | 否 | 排序依据，取值： TotalExecutionCounts：总执行次数最多。 TotalQueryTimes：总执行时间最多。 TotalLogicalReads：总逻辑读最多。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | PageSize | Integer | 否 | 每页记录数，取值：30/50/100，默认值：30。 |
 |---|---|---|---|
 | PageNum ber | Integer | 否 | 页码大于0，且不超过Integer的最大值；默认值：1。 |
@@ -3204,7 +3232,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数。 |
 | Engine | String | 数据库类型。 |
 | StartTime | String | 查询开始日期，格式：YYYY-MM-DDZ，如2025-05-30Z。 |
 | EndTime | String | 查询结束日期，格式：YYYY-MM-DDZ，如2025-06-30Z。 |
@@ -3221,9 +3249,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=DescribeSlowLogs &DBInstanceId=polardb-xxxxx &StartTime=2025-05-30Z &EndTime=2025-06-30Z &SortKey= Totaxxxxx
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： PolarDB PostgreSQL主备版开发指云原生数据库
+XML格式：
 
 ```xml
 <DescribeSlowLogsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <Engine>PolarDB_PG</Engine> <StartTime>2025-05-30Z</StartTime> <EndTime>2025-06-30Z</EndTime> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowLog> <SQLText>update test.zxb set id=0 limit 1</SQLText> <MySQLTotalExecutionCounts>178</MySQLTotalExecutionCounts> <MySQLTotalExecutionTimes>189</MySQLTotalExecutionTimes> <TotalLogicalReadcounts>89</TotalLogicalReadcounts> <TotalPhysicalReadcounts>90</TotalPhysicalReadcounts> <ReportTime>2025-06-30Z</ReportTime> </SQLSlowLog> </Items> </DescribeSlowLogsResponse>
@@ -3242,7 +3272,7 @@ JSON格式：
         "ReportTime":"2025-06-30Z" }]}}
 ```
 
-#### 查看慢日志明细
+#### 1.10.2 查看慢日志明细
 
 **描述**
 
@@ -3253,8 +3283,6 @@ JSON格式：
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：DescribeSlowLogRecords。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | DBInstan ceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -3268,7 +3296,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数。 |
 | Engine | String | 数据库类型。 |
 | TotalRecordCount | Integer | 总记录数。 |
 | PageNumber | Integer | 页码。 |
@@ -3282,17 +3310,15 @@ SQLSlowLog参数
 | HostAddress | Strin g | 用户连接数据库的主机地址。 |
 | DBName | Strin g | 数据库名称。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
-| SQLText |  | Strin g | 查询语句。 |  |  |
+| SQLText |   | Strin g | 查询语句。 |   |   |
 |---|---|---|---|---|---|
-| QueryTimes |  | Long | 执行时长，单位：秒。 |  |  |
-| LockTimes |  | Long | 锁定时长，单位：秒。 |  |  |
-| ParseRowCounts |  | Long | 解析行数。 |  |  |
-| ReturnRowCount s |  | Long | 返回行数。 |  |  |
-| ExecutionStartTi me |  | Strin | 执行开始时间；格式： YYYY-MM-DD THH:mm:ss Z ，如 2025-06-11 T15:00:08Z 。 |  |  |
-|  |  |  |  | 2025-06-11 |  |
-|  |  | g | T15:00:08Z |  |  |
+| QueryTimes |   | Long | 执行时长，单位：秒。 |   |   |
+| LockTimes |   | Long | 锁定时长，单位：秒。 |   |   |
+| ParseRowCounts |   | Long | 解析行数。 |   |   |
+| ReturnRowCount s |   | Long | 返回行数。 |   |   |
+| ExecutionStartTi me |   | Strin | 执行开始时间；格式： YYYY-MM-DD THH:mm:ss Z ，如 2025-06-11 T15:00:08Z 。 |   |   |
+|   |   |   |   | 2025-06-11 |   |
+|   |   | g | T15:00:08Z |   |   |
 
 **示例**
 
@@ -3302,6 +3328,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-xxxxx &StartTime=2025-06-11 T15:00:08Z &EndTime=2025-06-11 T16:00:08Z
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3310,7 +3338,7 @@ XML格式：
 <DescribeSlowLogRecordsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>rm-xxxxx</DBInstanceID> <Engine>PolarDB_PG</Engine> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowRecord> <HostAddress>192.168.0.123</HostAddress> <DBName>test</DBName> <SQLText>update test.zxb set id=0 limit 1</SQLText> <QueryTimes>123</QueryTimes> <LockTimes>12</LockTimes> <ParseRowCounts>125</ParseRowCounts> <ReturnRowCounts>1</ReturnRowCounts> <ExecutionStartTime>2025-06-11T15:00:08Z</ExecutionStartTime> </SQLSlowRecord> </Items> </DescribeSlowLogRecordsResponse>
 ```
 
-PolarDB PostgreSQL主备版开发指云原生数据库 JSON格式：
+JSON格式：
 
 ```json
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "Engine":"PolarDB_PG", "PageNumber":1, "PageRecordCount":1, "TotalRecordCount":1, "Items":{
@@ -3325,7 +3353,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库 JSON格式：
   ExecutionStartTime:”2025-06-11T15:00:08Z”}]}}
 ```
 
-#### 查看错误日志
+#### 1.10.3 查看错误日志
 
 **描述**
 
@@ -3342,13 +3370,9 @@ PolarDB PostgreSQL主备版开发指云原生数据库 JSON格式：
 | PageSize | Inte ger | 否 | 每页记录数，取值：30/50/100，默认值：30。 |
 | PageNum ber | Inte ger | 否 | 页码大于0，且不超过Integer的最大值；默认值：1。 |
 
-**返回参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TotalRecordCount | Integer | 总记录数。 |
 | PageNumber | Integer | 页码。 |
 | PageRecordCount | Integer | 本页错误日志个数。 |
@@ -3369,9 +3393,11 @@ ErrorLogs参数
 https://polardb.example.com/?Action=DescribeErrorLogs &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00Z &EndTime=2011-06-11T20:00Z
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
-XML格式： PolarDB PostgreSQL主备版开发指云原生数据库
+XML格式：
 
 ```xml
 <DescribeErrorLogsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1<PageRecordCount> <Items> <ErrorLog> <ErrorInfo>spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required</ErrorInfo> <CreateTime>2013-06-04T15:00:00</CreateTime> </ErrorLog> </Items> </DescribeErrorLogsResponse>
@@ -3387,7 +3413,7 @@ ational message only; no user action is required”,
   CreateTime:”2013-06-04T15:00:00”}]}}
 ```
 
-#### 查询SQL审计功能是否开启
+#### 1.10.4 查询SQL审计功能是否开启
 
 **描述**
 
@@ -3404,14 +3430,12 @@ ational message only; no user action is required”,
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 
 | SQLCollectorStatu s | String | Enable：SQL采集开启；Disabled：SQL采集关闭。 |
 |---|---|---|
 
-#### 切换SQL采集状态
+#### 1.10.5 切换SQL采集状态
 
 **描述**
 
@@ -3427,7 +3451,9 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 **返回参数**
 
-#### 查询SQL审计日志
+公共返回参数，具体请参见公共返回参数。
+
+#### 1.10.6 查询SQL审计日志
 
 **描述**
 
@@ -3440,8 +3466,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | Action | Stri ng | 是 | 系统规定参数，取值：DescribeSQLLogRecords。 |
 | DBInstanc eId | Stri ng | 是 | 实例ID。 |
 | Database | Stri ng | 否 | 数据库名称，默认为所有数据库。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | User | Stri ng | 否 | 用户名称，默认为所有用户。 |
 |---|---|---|---|
@@ -3468,8 +3492,6 @@ SQLRecord参数
 |---|---|---|
 | DBName | String | 数据库名称。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | AccountName | String | 账号名。 |
 |---|---|---|
 | HostAddress | String | 客户端IP地址。 |
@@ -3486,6 +3508,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3510,7 +3534,7 @@ XML格式：
 </DescribeSQLLogRecordsResponse>
 ```
 
-JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON格式：
 
 ```json
 {"PageNumber":1,
@@ -3518,7 +3542,11 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
     "TotalRecordCounts":1,
     "SQLItems":{
         "SQLItem":[
-            {
+```
+
+`{`
+
+```json
                 "ReturnRowCounts":34,
                 "TotalExecutionTimes":12,
                 "HostAddress":"192.168.xx.xx",
@@ -3526,20 +3554,21 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
                 "SQLText":"update test.zxb set id=0 limit 1",
                 "AccountName":"accounttest",
                 "DBName":"test"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "ItemsCounts":1
-}
 ```
 
-#### 查询SQL审计文件列表
+`}`
+
+#### 1.10.7 查询SQL审计文件列表
 
 **描述**
+
+查询SQL审计文件列表。
 
 **请求参数**
 
@@ -3552,12 +3581,10 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | TotalRecordCount | Interger | 总记录数。 |
 | PageNumber | Interger | 页码。 |
 | PageRecordCount | Interger | 本页记录数。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | Items | List<LogFile> | 由审计文件组成的数组。 |
 |---|---|---|
@@ -3574,9 +3601,9 @@ LogFile参数
 | LogDownloadU RL | String | 下载链接的地址。若当前不可下载，则为空串。 |
 | LogSize | Long | 日志文件大小，单位：Byte。 |
 
-### 数据迁移
+### 1.11 数据迁移
 
-#### 获取文件上传地址
+#### 1.11.1 获取文件上传地址
 
 **描述**
 
@@ -3588,8 +3615,6 @@ LogFile参数
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值： CreateUploadPathForSQLServer。 |
 | DBInstanceId | String | 是 | 实例ID。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | DBName | String | 是 | 数据库名称。 |
 |---|---|---|---|
@@ -3615,6 +3640,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action= CreateUploadPathForSQLServer &DBInstanceId=polardb-xxxxx &DBName=testdb01
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3623,7 +3650,7 @@ XML格式：
 <CreateUploadPathForSQLServerResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <InternetFtpServer>10.230.239.1</InternetFtpServer> <InternetPort>3021</InternetPort> <IntranetFtpServer></IntranetFtpServer> <UserName>userxxx</UserName> <Password>pwxxxxx</Password> <FileName>testdb01_xxxxx.bak</FileName> </CreateUploadPathForSQLServerResponse>
 ```
 
-JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
+JSON格式：
 
 ```json
 {"RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC",
@@ -3635,7 +3662,7 @@ JSON格式： PolarDB PostgreSQL主备版开发指云原生数据库
  "FileName":"testdb01_xxxxx.bak"}
 ```
 
-#### 其他实例迁入
+#### 1.11.2 其他实例迁入
 
 **描述**
 
@@ -3655,8 +3682,6 @@ DBInfo参数
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DBNames | List | 是 | 待迁移的数据库名称列表，如["mydb","mydb2"]。 |
 |---|---|---|---|
 
@@ -3664,7 +3689,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-| <公共返回参数> |  | 公共返回参数，具体请参见公共返回参数。 |
+| <公共返回参数> |   | 公共返回参数，具体请参见公共返回参数。 |
 | ImportId | Integer | 导入实例ID。 |
 
 **示例**
@@ -3674,6 +3699,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 ```
 https://polardb.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=polardb-xxxxx &SourceDBInstanceId=polardb-xxxxx &{"DBNames":["mydb","mydb2"]}
 ```
+
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3693,7 +3720,7 @@ JSON格式：
  RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### 取消迁移
+#### 1.11.3 取消迁移
 
 **描述**
 
@@ -3704,8 +3731,6 @@ JSON格式：
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：CancelImport。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | DBInstanceId | String | 是 | 实例ID。 |
 |---|---|---|---|
@@ -3725,6 +3750,8 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 https://polardb.example.com/?Action=CancelImport &DBInstanceId=polardb-xxxxx &ImportId=127562
 ```
 
+`&<`公共请求参数`>`
+
 **返回示例**
 
 XML格式：
@@ -3739,17 +3766,13 @@ JSON格式：
 {"RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### 标签管理
+### 1.12 标签管理
 
-#### 绑定标签
+#### 1.12.1 绑定标签
 
 **描述**
 
 为实例绑定已有的或新创建的标签。 每个标签（Tag)由标签键（TagKey)和标签值（TagValue)组成，TagKey不能为空，TagValue可以为空。 TagKey，TagValue的值不允许以aliyun开头。 TagKey，TagValue不区分大小写。 TagKey 最长为64字符，TagValue 最长为128字符每个实例最多绑定10个Tag，每个实例绑定的TagKey不能重复。若绑定带有重复TagKey的Tag，则最后绑定的Tag将覆盖已绑定的Tag。
-
-**请求参数**
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -3764,7 +3787,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数 。 |
 
-#### 查询标签
+#### 1.12.2 查询标签
 
 **描述**
 
@@ -3777,8 +3800,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | Action | String | 是 | 系统规定参数，取值：DescribeTags。 |
 | RegionId | String | 是 | 地域。 |
 | DBInstanc eId | String | 否 | 实例ID，传入这个参数，其他过滤条件失效。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | Tags | Json String | 否 | 需要查询的Tag列表，包括TagKey和TagValue。TagKey不能为空，TagValue可以为空。 格式示例：{“key1”:”value1”} |
 |---|---|---|---|
@@ -3804,7 +3825,7 @@ DBInstanceId
 |---|---|---|
 | DBInstanceId | String | 实例名称。 |
 
-#### 解绑标签
+#### 1.12.3 解绑标签
 
 **描述**
 
@@ -3815,8 +3836,6 @@ DBInstanceId
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | String | 是 | 系统规定参数，取值：RemoveTagsFromResource。 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | RegionId | String | 是 | 地域。 |
 |---|---|---|---|
@@ -3829,7 +3848,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|---|
 | <公共返回参数> | - | 公共返回参数，具体请参见公共返回参数 。 |
 
-### 如何使用RAM授权
+### 1.13 如何使用RAM授权
 
 **使用RAM实现PolarDB资源授权**
 
@@ -3853,8 +3872,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 |---|---|
 | CreateDBInstance | ModifyDBInstanceSpec |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DeleteDBInstance | CreateReadonlyDBInstance |
 |---|---|
 | DescribeDBInstances | DescribeDBInstanceAttribute |
@@ -3876,8 +3893,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeDBInstancePerformance | DescribeSlowLogs |
 | DescribeSlowLogRecords | DescribeErrorLogs |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DescribeBinlogFiles | DescribeSQLLogReports |
 |---|---|
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
@@ -3885,9 +3900,7 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeOptimizeAdviceOnMissIndex | DescribeOptimizeAdviceByDBA |
 | DescribeParameters | ModifyeParameter |
 
-**说明**
-
-除了DescribeRegions，DescribeParameterTemplates参数外，其他接口都可以鉴权。
+> **说明：** 除了DescribeRegions，DescribeParameterTemplates参数外，其他接口都可以鉴权。
 
 **授权访问鉴权规则**
 
@@ -3902,8 +3915,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | ModifyDBInstanceDescription | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | ModifyDBInstanceMaintainTime | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | PurgeDBInstanceLog | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | DeleteDatabase | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
@@ -3922,8 +3933,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeBinlogFiles | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | DescribeSQLLogRecords | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DescribeOptimizeAdviceOnMissPK | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
 | DescribeOptimizeAdviceOnMissIndex | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
@@ -3940,8 +3949,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeDatabases | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | CreateUploadPathForSQLServer | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | ImportDataForSQLServer | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | ImportDataBaseBetweenInstances | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
@@ -3960,13 +3967,11 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | DescribeOptimizeAdviceByDBA | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | ModifyeParameter | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
+### 1.14 附表
 
-### 附表
+#### 1.14.1 客户端错误代码表
 
-#### 客户端错误代码表
-
-##### 公共错误
+##### 1.14.1.1 公共错误
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
@@ -3990,14 +3995,12 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | InsufficientBalance | Your account does not have enough balance. | 400 |
 | Forbidden.Authentication | This operation is forbidden by Aliyun Realname Authentication system. | 403 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | Invalid<parameter name>.ValueNotSupport ed | The specified parameter “parameter name” is not valid. | 400 |
 |---|---|---|
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
 
-##### 特定错误
+##### 1.14.1.2 特定错误
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
@@ -4012,8 +4015,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | QuotaExceeded.CreateInstance | The quota of create instance exceeds. | 403 |
 | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist in our records. | 404 |
 | MissingParameter | The input parameters "DBInstanceClass" and "DBInstanceStorage" all blank or no change. | 400 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | OperationDenied.DBInstanceType | The operation is not permitted due to type of instance. | 400 |
 |---|---|---|
@@ -4031,8 +4032,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | QuotaExceeded.DBName | The quota of db exceeds. | 400 |
 | InvalidDBName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
 | InvalidParameter.Keyword | The specified parameter "DBName" is keyword | 400 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | OperationDenied.DBStatus | The operation is not permitted due to status of database. | 403 |
 |---|---|---|
@@ -4052,8 +4051,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | InvalidAccountName.keyword | The specified parameter "AccountName" is a keyword. | 400 |
 | InvalidAccountName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | QuotaExceeded.AccountName | The quota of account exceeds. | 403 |
 |---|---|---|
 | OperationDenied.AccountStatus | The operation is not permitted due to status of account. | 403 |
@@ -4071,8 +4068,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | Forbidden.Authentication | The operation is forbidden by Aliyun Realname Authentication System. | 403 |
 | IncorrectDBInstanceConnType | Current DB instance conn type does not support this operation. | 404 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | IncorrecttVpcId.Mismatch | The specified parameter "VpcId " is not valid. | 400 |
 |---|---|---|
 | IntranetNetTypeNotExists | Current DB instance net type does not support this operation. | 404 |
@@ -4089,8 +4084,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | InvalidDBInstanceType.ValueNotSu pport | The specified parameter "DBInstanceType" is not valid. | 400 |
 | InvalidEngineVersion.Malformed | The specified parameter "EngineVersion" is not valid. | 400 |
 | InvalidInstanceNetworkType.ValueN otSupported | The specified parameter "InstanceNetworkType" is not valid. | 400 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | InvalidParameter | The specified parameter "dbInstanceId" is not valid. | 400 |
 |---|---|---|
@@ -4110,8 +4103,6 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | OperationDenied.Switch | Specified instance cannot be switched to VPC. | 403 |
 | OperationDenied.SwitchToVPC | Specified instance cannot be switched to VPC. | 403 |
 | OperationDenied | The resource is out of usage. | 403 |
-
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 | OperationDenied | The vpc cloudinstanceIp is use, please check params. | 406 |
 |---|---|---|
@@ -4136,14 +4127,14 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | 云原生数据库 | PolarDB PostgreS | QL主备版开发指南·API参考 |
 |---|---|---|
 
-#### 服务器端错误代码表
+#### 1.14.2 服务器端错误代码表
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
 
-#### 实例状态表
+#### 1.14.3 实例状态表
 
 | 状态 | 说明 |
 |---|---|
@@ -4160,14 +4151,12 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | Importing | 数据导入中。 |
 | ImportingFromOthers | 从其他PolarDB实例导入数据中。 |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
-
 | DBInstanceNetTypeChanging | 内外网切换中。 |
 |---|---|
 | GuardSwitching | 容灾切换中。 |
 | INS CLONING _ | 实例克隆中。 |
 
-#### 字符集表
+#### 1.14.4 字符集表
 
 本文为您介绍PolarDB支持的字符集表。
 
@@ -4186,14 +4175,12 @@ PolarDB PostgreSQL主备版开发指云原生数据库
 | gbk | latin6 | win1256 |
 | gb18030 | latin7 | win1257 |
 | koi8r | latin8 | win1258 |
-| koi8u | latin9 |  |
-| iso 8859 5 _ _ | latin10 |  |
+| koi8u | latin9 |   |
+| iso 8859 5 _ _ | latin10 |   |
 
-PolarDB PostgreSQL主备版开发指云原生数据库
+## 2 SDK参考
 
-## SDK参考
-
-### 获取SDK源代码
+### 2.1 获取SDK源代码
 
 您可以通过SDK工具，按需定制所需的SDK语言。
 
@@ -4208,13 +4195,13 @@ i. 在浏览器地址栏中，输入Apsara Stack运维系统的访问地址 http
 2. 登录阿里云专有云运维API平台。在页面左侧导航栏中，单击**产品运维管理** **> Opsapi**，进入**专有云运维**
 **API**平台。
 3. 下载SDK源代码。
-PolarDB PostgreSQL主备版开发指云原生数据库 i. 在左侧导航栏中，选择**版本管理** **> SDK****工具**。 ii. 单击页面顶部右上角**SDK****按需定制**。 iii. 在弹出的**专有云****SDK****定制**页面，从左到右依次选择对应的专有云版本、产品名称、产品版本、SDK版本、API版本和SDK语言。 iv. 填写完成后，单击**创建****SDK**。 v. 单击**下载**，下载对应的SDK。
+i. 在左侧导航栏中，选择**版本管理** **> SDK****工具**。 ii. 单击页面顶部右上角**SDK****按需定制**。 iii. 在弹出的**专有云****SDK****定制**页面，从左到右依次选择对应的专有云版本、产品名称、产品版本、SDK版本、API版本和SDK语言。 iv. 填写完成后，单击**创建****SDK****。** v. 单击**下载**，下载对应的SDK。
 
-### Java SDK调用
+### 2.2 Java SDK调用
 
-#### 使用手册
+#### 2.2.1 使用手册
 
-##### 使用CommonRequest进行调用
+##### 2.2.1.1 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -4224,7 +4211,10 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
-发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名（domain）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 PolarDB PostgreSQL主备版开发指云原生数据库接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName =` `"RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定 RESTful路径。 例如查看所有集群实例的API的**PathPattern**为 `/clusters` ，在发起CommonRequest请求时，要使用 `request.PathPattern = "/clusters"` 指定RESTful路径。
+
+**使用CommonRequest**
+
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名（domain）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName =` `"RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern = "<PathPattern>"` 的方式来指定 RESTful路径。 例如查看所有集群实例的API的**PathPattern**为 `/clusters` ，在发起CommonRequest请求时，要使用 `request.PathPattern = "/clusters"` 指定RESTful路径。
 
 **示例：调用RPC风格的API**
 
@@ -4263,14 +4253,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **示例：调用RESTful风格的API**
 
-以下代码展示了如何使用CommonRequest的方式调用的查看所有集群实例接口： PolarDB PostgreSQL主备版开发指云原生数据库
+以下代码展示了如何使用CommonRequest的方式调用的查看所有集群实例接口：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -4303,16 +4292,15 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Python SDK调用
+`}` `}` `}`
 
-#### 使用手册
+### 2.3 Python SDK调用
 
-##### 使用CommonRequest进行调用
+#### 2.3.1 使用手册
+
+##### 2.3.1.1 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -4322,24 +4310,15 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
-PolarDB PostgreSQL主备版开发指云原生数据库发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName`
 
-```
-                            =
-```
+**使用CommonRequest**
 
-`"<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName` `= "RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern`
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.ApiName` `=` `"<Action>"` 的方式来指定API名称。 例如RunInstances接口，在发起CommonRequest请求时，需要使用 `request.ApiName` `= "RunInstances"` 来指定API名称。 您需要获取**PathPattern**参数，使用 `request.PathPattern` `=` `"<PathPattern>"` 的方式来指定RESTful路径。
 
-```
-                            =
-```
-
-`"<PathPattern>"` 的方式来指定RESTful路径。
-
-|  | /clusters |  | ，在发起Comm |
+|   | /clusters |   | ，在发起Comm |
 |---|---|---|---|
-| request.PathPattern |  |  |  |
-|  |  | 指定RESTful路径。 |  |
+| request.PathPattern |   |   |   |
+|   |   | 指定RESTful路径。 |   |
 
 **示例：调用RPC风格的API**
 
@@ -4354,7 +4333,7 @@ ame='DescribeDBInstanceAttribute') request.add_query_param('PageNumber', '1') re
 
 **示例：调用RESTful风格的API**
 
-以下代码展示了Python2.x如何使用CommonRequest的方式调用的查看所有集群实例接口： PolarDB PostgreSQL主备版开发指云原生数据库
+以下代码展示了Python2.x如何使用CommonRequest的方式调用的查看所有集群实例接口：
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('polardb-xxxxx.xxx.com') request.set_version('2024-01-30') request.set_uri_pattern('/clusters')
@@ -4363,15 +4342,15 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 ern='/clusters') response = client.do_action_with_exception(request)
 ```
 
-### PHP SDK调用
+### 2.4 PHP SDK调用
 
-#### 快速开始
+#### 2.4.1 快速开始
 
 阿里云PHP SDK让您不用复杂编程即可访问。本操作介绍如何获取阿里云PolarDB PHP SDK并开始调用。
 
 **环境准备**
 
-使用PHP SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取 Accesskey在ASCM控制台上获取和查看您的AccessKey。 阿里云PHP SDK适用于PHP的5.3、5.4、5.5、5.6、7.0和7.1版本。（您可以通过**php -v**命令来获得当前使用的PHP版本号。）
+使用PHP SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取 Accesskey在ASCM控制台上获取和查看您的AccessKey。 获取产品的endpoint，具体操作参见获取endpoint。 阿里云PHP SDK适用于PHP的5.3、5.4、5.5、5.6、7.0和7.1版本。（您可以通过**php -v**命令来获得当前使用的PHP版本号。）
 
 **安装阿里云 PHP SDK**
 
@@ -4392,35 +4371,39 @@ require_once '/path/to/aliyun-openapi-php-sdk/aliyun-php-sdk-core/Config.php';
 **Secret**这三个参数的值。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-PolarDB PostgreSQL主备版开发指云原生数据库
 
 ```
 <?php use PolarDB\Request\V20140526\DescribeDBInstanceAttributeRequest;
 ```
 
-# 创建`DefaultAcsClient`实例并初始化
+`#` 创建`DefaultAcsClient`实例并初始化
 
 ```
 $clientProfile = DefaultProfile::getProfile(
     "<your-region-id>",                   # 您的 Region ID
     "<your-access-key-id>",               # 您的 AccessKey ID
     "<your-access-key-secret>"            # 您的 AccessKey Secret
-); $client = new DefaultAcsClient($clientProfile);
 ```
 
-# 设置当前产品的`endpoint`
+);
+
+```
+$client = new DefaultAcsClient($clientProfile);
+```
+
+`#` 设置当前产品的`endpoint`
 
 ```
 $profile->endpoint ="your-region-id", "your-region-id", "product", "endpoint";
 ```
 
-# 创建`API`请求并设置参数
+`#` 创建`API`请求并设置参数
 
 ```
 $request = new DescribeDBInstanceAttributeRequest(); $request->setPageSize(10);
 ```
 
-# 发起请求并处理返回
+`#` 发起请求并处理返回
 
 ```
 try {
@@ -4430,12 +4413,11 @@ try {
     print "Error: " . $e->getErrorCode() . " Message: " . $e->getMessage() . "\n";
 } catch(ClientException $e) {
     print "Error: " . $e->getErrorCode() . " Message: " . $e->getMessage() . "\n";
-}
 ```
 
-?>
+`}` ?>
 
-### C# SDK调用
+### 2.5 C# SDK调用
 
 **环境准备**
 
@@ -4448,22 +4430,22 @@ framework 2.0+
 **安装 SDK**
 
 1. 从上面的下载链接下载相应产品 C# SDK 的源代码，并编译成为 .dll 文件。
-2. 右击您的 Visual Studio 项目，然后单击**添加引用** > **浏览**（如果您用的是 MonoDevelop，请自行按照
+2. 右击您的 Visual Studio 项目，然后单击**添加引用** **>** **浏览**（如果您用的是 MonoDevelop，请自行按照
 相应导入 .dll 的方法导入这个.dll文件）。
 3. 选择上述的 .dll 文件，单击**确定**按钮，然后您就可以在工程中使用阿里云 C# SDK 了。
-PolarDB PostgreSQL主备版开发指云原生数据库
 
-## 获取endpoint
+## 3 获取endpoint
 
 您可以通过Apsara Stack运维系统获取产品的endpoint。
 
 **方式一**
 
 1. 登录Apsara Stack运维系统。
-登录Apsara Stack运维系统相关操作，请参见**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系** 统 > **登录****Apsara Stack****运维系统**章节的描述。
-2. 在页面左侧导航栏中，选择**产品运维管理** > **产品列表** > **云平台运维**。
+登录Apsara Stack运维系统相关操作，请参见**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系**
+**统** **>** **登录****Apsara Stack****运维系统**章节的描述。
+2. 在页面左侧导航栏中，选择**产品运维管理** **>** **产品列表** **>** **云平台运维**。
 3. 单击**天基**，跳转至天基portal。
-4. 在顶部菜单栏中，选择**报表** > **系统报表**。
+4. 在顶部菜单栏中，选择**报表** **>** **系统报表**。
 5. 在**系统报表**详情页面，单击**服务注册变量**。
 6. 在**服务注册变量**详情页面，找到polardb-yaochi行，右击对应的**Service Registration**列单元格，选
 择**显示更多**。
@@ -4473,21 +4455,23 @@ endpoint。
 **方式二**
 
 1. 登录Apsara Stack运维系统。
-登录Apsara Stack运维系统相关操作，请参考**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系** 统 > **登录****Apsara Stack****运维系统**章节的描述。
+登录Apsara Stack运维系统相关操作，请参考**《运维指南》**中**基础平台运维** **> Apsara Stack****运维系**
+**统** **>** **登录****Apsara Stack****运维系统**章节的描述。
 2. 在页面左侧导航栏中，选择菜单，进入**产品运维管理**产品列表页面。
 3. 单击**天基**，跳转至天基portal。
-4. 在顶部菜单栏中，选择**运维** > **机器运维**，进入**机器运维**页面。
+4. 在顶部菜单栏中，选择**运维** **>** **机器运维**，进入**机器运维**页面。
 5. 在机器列表中，选择任意一台机器，单击**Terminal**，登录到机器。
-PolarDB PostgreSQL主备版开发指云原生数据库
 6. 在机器中执行如下命令：**curl -l**
 
 **"http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?**
 
 **c.sr.service_registration"**，获取json数据。
 7. 根据PolarDB产品的ID（polardb-yaochi）和key值（polardb.openapi.endpoint），找到PolarDB的
-endpoint。 PolarDB PostgreSQL主备版开发指云原生数据库
+endpoint。
 
-## 获取Accesskey
+## 4 获取Accesskey
+
+您可以在ASCM控制台上获取Accesskey。
 
 **获取组织AccessKey**
 
@@ -4499,9 +4483,8 @@ endpoint。 PolarDB PostgreSQL主备版开发指云原生数据库
 。
 5. 在弹出的下拉菜单中，选择**获取组织****Accesskey**。
 6. 在弹出的对话框中，查看组织Accesskey信息。
-一级组织的AccessKey为系统自动分配，下级组织使用一级组织的AccessKey。
 
-**说明**
+> **说明：** 一级组织的AccessKey为系统自动分配，下级组织使用一级组织的AccessKey。
 
 **获取个人账号AccessKey**
 
@@ -4509,8 +4492,5 @@ endpoint。 PolarDB PostgreSQL主备版开发指云原生数据库
 1. 管理员登录ASCM控制台。
 2. 在系统界面右上角，单击当前登录用户的头像，选择**个人信息**。
 3. 在**阿里云****AccessKey**模块，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。

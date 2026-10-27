@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 121
 source_pdf: "f906165d5564fab4_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit User Guide 20260831.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Database%20Security%20Audit%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit User Guide 20260831
@@ -165,6 +165,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -186,6 +189,9 @@ operations in the following scenarios: It is the first time that you log on to t
 **specifications**
 
 If the current instance cannot meet your business requirements, you can upgrade the instance specifications on the instances page of Database Security Audit. This topic describes how to upgrade instance specifications.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Data Security > Database Audit**. On the **Database Audit** page, select a
@@ -217,6 +223,9 @@ This topic describes how to deploy a Database Security Audit instance.
 **Background information**
 
 Deployed on your server as an image, Database Security Audit provides precise auditing of access to both self-managed cloud databases and ApsaraDB RDS instances.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Data Security > Database Audit**. On the **Database Audit** page, select a
@@ -240,6 +249,9 @@ This topic describes how to log in to a Database Security Audit instance in Apsa
 **Background information**
 
 Make sure that your account has the permissions on the cloud resources of your department. For example, you have the permissions of the administrator role in your department.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Data Security > Database Audit**. On the **Database Audit** page, select a
@@ -265,6 +277,9 @@ Database Security Audit consists of a remote mirror agent (RMAgent) and a web co
 #### 3.3.2 Add a database instance to be audited
 
 Database Security Audit can audit self-managed databases and ApsaraDB instances.
+
+**Procedure**
+
 1. Log in to a Database Security Audit instance of Apsara Stack Security as a global
 organization security administrator. For more information, see Log in to a Database Security Audit instance in Apsara Stack Security Center.
 2. On the **Overview / All** page, click the
@@ -329,6 +344,9 @@ Agent程序需要部署到数据库或应用服务器上，用于获取访问数
 **separated application and database servers**
 
 This topic describes how to manually deploy a remote mirror agent (RMAgent) on Windows if your application and database are deployed on different servers.
+
+**Procedure**
+
 1. Log in to a Database Security Audit instance in Apsara Stack Security as a global
 organization security administrator. For more information, see Log in to a Database Security Audit instance in Apsara Stack Security Center.
 2. In the left-side navigation pane, choose **Configuration** > **RMAgent Component**. On the
@@ -348,6 +366,9 @@ and click **Install**.
 **combined application and database server**
 
 This topic describes how to manually deploy a remote mirror agent (RMAgent) on Windows if your application and database are deployed on the same server.
+
+**Procedure**
+
 1. Log in to a Database Security Audit instance in Apsara Stack Security as a global
 organization security administrator. For more information, see Log in to a Database Security Audit instance in Apsara Stack Security Center.
 2. In the left-side navigation pane, choose **Configuration** > **RMAgent Component**. On the
@@ -372,6 +393,9 @@ and click **Install**.
 **separated application and database servers**
 
 This topic describes how to manually deploy a remote mirror agent (RMAgent) on Linux if your application and database are deployed on different servers.
+
+**Procedure**
+
 1. Log in to a Database Security Audit instance in Apsara Stack Security as a global
 organization security administrator. For more information, see Log in to a Database Security Audit instance in Apsara Stack Security Center.
 2. In the left-side navigation pane, choose **Configuration** > **RMAgent Component**. On the
@@ -387,6 +411,9 @@ state.
 **combined application and database server**
 
 This topic describes how to manually deploy a remote mirror agent (RMAgent) on Linux if your application and database are deployed on the same server.
+
+**Procedure**
+
 1. Log in to a Database Security Audit instance in Apsara Stack Security as a global
 organization security administrator. For more information, see Log in to a Database Security Audit instance in Apsara Stack Security Center.
 2. In the left-side navigation pane, choose **Configuration** > **RMAgent Component**. On the
@@ -417,6 +444,9 @@ collects statistics on behaviors and displays them on the **Risk Hits**, **Behav
 #### 4.2.1 Risk hits
 
 This topic describes how to view the details of hit risks.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Behavior > Risk Hits**. On the page that appears,
 specify a time range to query the detailed hit information for each risk type. The hit list displays detailed risk information in the **Risk Name**, **Risk Type**, and **Hit**
 **quantity** columns.
@@ -443,7 +473,11 @@ This topic describes how to search for risks.
 
 **Overview**
 
-The **Risk Search** page collects statistics based on the specific behaviors of all hit risks. The details of all risky statements are displayed in a list. The details of each risky statement are displayed in the following columns: SQL Statement, Time, Risk Type, Risk Name, Risk Level, Database User, and Client IP. You can add a risky statement to the trust list, set it as a sensitive statement, or disable audit for the statement. In the left-side navigation pane, choose **Behavior > Risk Search**. On the page that appears, click a statement in the **SQL Statement** column to go to the **Statement details** page. On this page, you can view the access source, application identity, SQL statement, affected objects, SQL statement, statement template, result set, and SQL parameters of the statement.
+The **Risk Search** page collects statistics based on the specific behaviors of all hit risks. The details of all risky statements are displayed in a list. The details of each risky statement are displayed in the following columns: SQL Statement, Time, Risk Type, Risk Name, Risk Level, Database User, and Client IP. You can add a risky statement to the trust list, set it as a sensitive statement, or disable audit for the statement.
+
+**Procedure**
+
+In the left-side navigation pane, choose **Behavior > Risk Search**. On the page that appears, click a statement in the **SQL Statement** column to go to the **Statement details** page. On this page, you can view the access source, application identity, SQL statement, affected objects, SQL statement, statement template, result set, and SQL parameters of the statement.
 
 #### 4.2.4 Statistical comparison
 
@@ -548,6 +582,9 @@ This topic describes the details of custom reports.
 **Overview**
 
 You can specify report elements such as report statistics and analysis criteria to generate custom reports.
+
+**Procedure**
+
 1. Create a custom report.
 Click **New Report**. In the dialog box that appears, specify report elements such as the report type, query conditions, and report display mode.
 2. After the report is created, click the
@@ -574,6 +611,8 @@ This topic describes how to configure scheduled tasks for delivering reports.
 
 A report is a summary of the performance and status of the audited databases within a specific period of time, which can clearly reflect the status of the databases. Database Security Audit supports daily, weekly, and monthly reports. The scheduled delivery feature can periodically send reports of audit logs to specified recipients. When you preview a report, you can click **Join a Timing-Push-Task** in the upper-right corner to create a task for periodically delivering the created report. The task is then displayed on the **Scheduled Delivery** page.
 
+**Procedure**
+
 **Create a scheduled task**
 
 In the left-side navigation pane, choose **Reports > Scheduled Delivery**. On the page that appears, click **Add** in the upper-right corner. In the dialog box that appears, configure the Task Name, Mail Subject, Sending Period, and Sending Time parameters to create a scheduled task.
@@ -596,11 +635,18 @@ Find the scheduled task that you want to view and click the icon in the Operatio
 
 #### 4.5.7 Report export
 
-This topic describes how to export a report. Go to the page of the report that you want to export and click **Export** in the upper-right corner to export the report. Reports can be exported in the following formats: DOC, PDF, HTML, and CSV.
+This topic describes how to export a report.
+
+**Procedure**
+
+Go to the page of the report that you want to export and click **Export** in the upper-right corner to export the report. Reports can be exported in the following formats: DOC, PDF, HTML, and CSV.
 
 #### 4.5.8 Recipient management
 
 The recipient management feature allows you to manage the recipients to which reports are delivered in scheduled tasks. This topic describes how to manage recipients.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Reports > Recipient Management**. On the page
 that appears, click the icon.
 2. In the panel that appears, enter the username, email address, and mobile phone number of
@@ -617,6 +663,9 @@ Virtual patches are used to alert you about attacks that exploit database vulner
 ##### 4.6.2.1 Injection
 
 You can define SQL injection statements or high-risk SQL statements to be blocked by describing the characteristics of the statements. This way, you can prevent SQL injections that may occur within a specific time range by specific users with certain tools from specific IP addresses. This topic describes how to create an injection prevention rule.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Rules > Rule Management**. On the page that
 appears, click the icon. In the Basic Information section, select **Injection Attack** from the **Rule Type** drop-down list.
 2. Configure the rule.
@@ -625,6 +674,9 @@ In the rule management section on the left, you can view existing rules and add 
 ##### 4.6.2.2 Operation rules
 
 Operation rules are used to reduce the risk of specific operations on specific objects that are performed by a user from a specific IP address, using specific tools, within the specified time period. This topic describes how to create an operation rule.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Rules > Rule Management**. On the Rule
 Management page, click the icon. In the Basic Information section, select **Operation**
 **Rules** from the **Rule Type** drop-down list.
@@ -634,6 +686,9 @@ icon in the upper-right corner.
 ##### 4.6.2.3 Access rules
 
 Access rules are used to reduce risks arising from a user from a specific IP address, using specific tools, within the specified time period. This topic describes how to create an access rule.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Rules > Rule Management**. On the Rule
 Management page, click the icon. In the Basic Information section, select **Access Rules** from the **Rule Type** drop-down list.
 2. Configure the parameters in the Access Source, Response Action, and Time Limit Settings
@@ -642,6 +697,9 @@ sections, and then click the icon in the upper-right corner.
 ##### 4.6.2.4 Password attack rules
 
 Password attack rules are used to reduce the risk of failed logins originating from a specific IP address or user account within the specified time period. This topic describes how to create a password attack rule.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Rules > Rule Management**. On the Rule
 Management page, click the icon. In the Basic Information section, select **Password**
 **Attack** from the **Rule Type** drop-down list.
@@ -656,7 +714,11 @@ For databases in a database group, you can apply or remove rules, and set their 
 
 **management**
 
-You can configure associations to associate databases with rules so that the rules can be referenced. This topic describes how to configure associations during rule management. Configure associations when you create or edit a rule Click the icon next to **Associated Databases** to configure associations. Configure associations for an existing rule Select the rule for which you want to configure associations and click the icon in the upper-right corner. The following figure shows the dialog box for configuring associations. You can select multiple databases and click the icon to associate the databases with the rule. You can also click the icon to select all databases. After the databases are selected, click **OK**.
+You can configure associations to associate databases with rules so that the rules can be referenced. This topic describes how to configure associations during rule management.
+
+**Procedure**
+
+Configure associations when you create or edit a rule Click the icon next to **Associated Databases** to configure associations. Configure associations for an existing rule Select the rule for which you want to configure associations and click the icon in the upper-right corner. The following figure shows the dialog box for configuring associations. You can select multiple databases and click the icon to associate the databases with the rule. You can also click the icon to select all databases. After the databases are selected, click **OK**.
 
 ##### 4.6.3.2 Reference and dereference rules
 
@@ -669,6 +731,9 @@ icon for a dereferenced rule to reference the rule. Click the icon for a referen
 ##### 4.6.3.3 Configure priorities
 
 If the behavior of accessing a database matches multiple rules at the same time, the rule with the highest priority is hit. This topic describes how to configure priorities.
+
+**Procedure**
+
 1. Find a referenced rule for which you want to adjust the priority, and click the
 or icon in the **Operation** column.
 2. After you adjust the priority, click the
@@ -683,6 +748,9 @@ Auditing database behaviors is the core feature of Database Security Audit. The 
 ##### 4.7.1.1 Add a database
 
 This topic describes how to add a database.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Database**. On the page that
 appears, click the icon in the upper-right corner to add a database.
 2. Enter the database information, click the
@@ -691,6 +759,9 @@ icon to save the database connection information, and then click the icon in the
 ##### 4.7.1.2 Edit database information
 
 This topic describes how to edit database information.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Database**. On the page that
 appears, find the database that you want to manage.
 2. Click the
@@ -701,6 +772,9 @@ icon to save the configuration.
 ##### 4.7.1.3 Delete a database
 
 This topic describes how to delete a database.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Database**. On the page that
 appears, find the database that you want to delete.
 2. Click the
@@ -710,6 +784,9 @@ icon in the **Operation** column to delete the database.
 ##### 4.7.1.4 Import and export database information
 
 This topic describes how to import and export database information.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Database**. On the page that
 appears, click the icon in the upper-right corner of the database list. In the **Import**
 **database** dialog box, download the template file for importing database information.
@@ -718,7 +795,11 @@ icon in the upper-right corner of the database list to export database informati
 
 #### 4.7.2 Platform access
 
-This topic describes how to write platform logs to Simple Log Service (SLS). In the left-side navigation pane, choose **Configuration > Platform Access**. Find the database that you want to configure and click the Edit icon in the Operation column. In the dialog box that appears, configure the log storage parameters and click **Ok**.
+This topic describes how to write platform logs to Simple Log Service (SLS).
+
+**Procedure**
+
+In the left-side navigation pane, choose **Configuration > Platform Access**. Find the database that you want to configure and click the Edit icon in the Operation column. In the dialog box that appears, configure the log storage parameters and click **Ok**.
 
 #### 4.7.3 Database groups
 
@@ -730,6 +811,9 @@ Database Group page, click the icon in the upper-right corner to create a databa
 #### 4.7.4 Alert settings
 
 When Database Security Audit or an audited database triggers an alert, alert messages are sent to the specified email addresses by using the email server configured on the Notification Management page based on the predefined alert rule. To use the alerting feature, you must configure email settings on the **Notification Management** page.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Alert Settings**. On the page
 that appears, click the icon in the upper-right corner to add an alert rule.
 2. In the dialog box that appears, configure the Email Subject and Template Name parameters
@@ -739,7 +823,11 @@ to enable it.
 
 #### 4.7.5 IP address alias management
 
-You can add IP addresses of database clients and configure aliases for these IP addresses for easy identification. You can add a single IP address and configure an alias for it. Alternatively, you can import multiple IP addresses with specified aliases at a time. After you add aliases for IP addresses, they are displayed when you search for statements. Import multiple IP addresses at a time In the left-side navigation pane, choose **Configuration > IP Alias Management**. On the page that appears, click the icon in the upper-right corner. In the dialog box that appears, download the IP address template file. Enter the IP addresses and their aliases in the template file and then upload the file to import the IP addresses. Add a single IP address i. Click the icon to add a single IP address. ii. Click **Ok**.
+You can add IP addresses of database clients and configure aliases for these IP addresses for easy identification. You can add a single IP address and configure an alias for it. Alternatively, you can import multiple IP addresses with specified aliases at a time. After you add aliases for IP addresses, they are displayed when you search for statements.
+
+**Procedure**
+
+Import multiple IP addresses at a time In the left-side navigation pane, choose **Configuration > IP Alias Management**. On the page that appears, click the icon in the upper-right corner. In the dialog box that appears, download the IP address template file. Enter the IP addresses and their aliases in the template file and then upload the file to import the IP addresses. Add a single IP address i. Click the icon to add a single IP address. ii. Click **Ok**.
 
 #### 4.7.6 Sensitive data masking
 
@@ -750,6 +838,8 @@ This topic describes how to configure sensitive data masking.
 Database Security Audit provides the sensitive data masking feature, which masks the audited sensitive data of customers, such as social security numbers and bank card numbers, before displaying the data. When you configure a sensitive data masking rule, you need to specify the rule for matching the data that you want to mask and how the data is displayed after masking. Generally, the matching rules are written in regular expressions.
 
 > **Note:** The sensitive data masking feature affects the query and export efficiency.
+
+**Procedure**
 
 1. In the left-side navigation pane, choose **Configuration > Sensitive Data Masking**. On
 the page that appears, click the icon in the upper-right corner to add a masking rule.
@@ -765,6 +855,9 @@ You can create groups of IP addresses, database users, application users, time r
 ##### 4.7.7.1 IP address groups
 
 This topic describes how to create an IP address group.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Group Management**. On the **IP**
 **User Group** tab, click the
 icon in the upper-right corner to create an IP address group.
@@ -774,6 +867,9 @@ blocks, and then click Save.
 ##### 4.7.7.2 Database user groups
 
 This topic describes how to create a database user group.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Group Management**. Click the
 **Database User Group** tab, and then click the
 icon in the upper-right corner to create a database user group.
@@ -783,6 +879,9 @@ database users, and then click **Save**.
 ##### 4.7.7.3 Application user groups
 
 This topic describes how to create an application user group.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Group Management**. Click the
 **App User Group** tab, and then click the
 icon in the upper-right corner to create an application user group.
@@ -792,6 +891,9 @@ users, and then click **Save**.
 ##### 4.7.7.4 Time groups
 
 This topic describes how to create a time group.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Group Management**. Click the
 **Time Group** tab, and then click the
 icon in the upper-right corner to create a time group.
@@ -801,6 +903,9 @@ and hour settings, and then click **Save**.
 ##### 4.7.7.5 Object groups
 
 This topic describes how to create an object group.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Group Management**. Click the
 **Object Group** tab, and then click the
 icon in the upper-right corner to create an object group.
@@ -810,6 +915,9 @@ click the icon to add multiple conditions. Each condition can specify criteria a
 ##### 4.7.7.6 Operating system user groups
 
 This topic describes how to create an operating system user group.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Configuration > Group Management**. Click the
 **Operating System User Group** tab, and then click the
 icon in the upper-right corner to create an operating system user group.
@@ -822,7 +930,11 @@ A remote mirror agent (RMAgent) sends auditable traffic to Database Security Aud
 
 ##### 4.7.8.1 RMAgent management
 
-You can manage the remote mirror agents (RMAgents) that are connected to your audit server. This topic describes how to manage RMAgents. View the RMAgent list. In the RMAgent list, view the information about each RMAgent that can be managed, including the IP address and operating system of the host on which the RMAgent is deployed and the CPU utilization and status of the RMAgent. You can perform different operations on an RMAgent by clicking the following buttons in the Operation column: Configuration: remotely configures the runtime parameters of the RMAgent. Wake Up: resumes the activity of the RMAgent after it is suspended. Hang up: suspends the activity of the RMAgent, but keeps its process running. Interrupt: terminates the process of the RMAgent. Monitoring: monitors the CPU load of the host on which the RMAgent is deployed and the number of packets received by the RMAgent per second. Log: downloads the operation logs of the RMAgent to your local device. Uninstall: uninstalls the RMAgent. You must set a password when you uninstall the RMAgent for the first time. This password will then be required for all future uninstalls. You can select multiple RMAgents and perform the Configuration, Hang up, Wake Up, Interrupt, and Uninstall operations on them at a time.
+You can manage the remote mirror agents (RMAgents) that are connected to your audit server. This topic describes how to manage RMAgents.
+
+**Procedure**
+
+View the RMAgent list. In the RMAgent list, view the information about each RMAgent that can be managed, including the IP address and operating system of the host on which the RMAgent is deployed and the CPU utilization and status of the RMAgent. You can perform different operations on an RMAgent by clicking the following buttons in the Operation column: Configuration: remotely configures the runtime parameters of the RMAgent. Wake Up: resumes the activity of the RMAgent after it is suspended. Hang up: suspends the activity of the RMAgent, but keeps its process running. Interrupt: terminates the process of the RMAgent. Monitoring: monitors the CPU load of the host on which the RMAgent is deployed and the number of packets received by the RMAgent per second. Log: downloads the operation logs of the RMAgent to your local device. Uninstall: uninstalls the RMAgent. You must set a password when you uninstall the RMAgent for the first time. This password will then be required for all future uninstalls. You can select multiple RMAgents and perform the Configuration, Hang up, Wake Up, Interrupt, and Uninstall operations on them at a time.
 
 ### 4.8 维护
 
@@ -924,6 +1036,9 @@ You can manage the remote mirror agents (RMAgents) that are connected to your au
 #### 4.9.1 Vulnerability scan
 
 You can create a scan task to scan for vulnerabilities of databases.
+
+**Procedure**
+
 1. Log in to Database Security Audit as a global organization security administrator. In the
 instance list, find the Database Security Audit instance you want to access. In the Actions column, click **Details** to log in to the Database Security Audit instance. For more information, see Log in to a Database Security Audit instance in Apsara Stack Security Center.
 2. In the left-side navigation pane, choose **Vulnerability Scan > Vulnerability Scanning**.
@@ -939,6 +1054,9 @@ icon in the Operation column of the task to start the task. After the task is su
 #### 4.9.2 Scan policies
 
 This topic describes how to create and view scan policies.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **Vulnerability Scan > Scan Policy**. In the Policy
 List section, click the icon.
 2. On the New Policy page, configure the parameters to create a scan policy.
@@ -955,6 +1073,9 @@ On the Notification Management page, you can configure different notification me
 ##### 4.10.1.1 Email notifications
 
 You can use emails to send alert notifications. This topic describes how to configure email notifications.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **System > Notification Management**. The **Email**
 **Settings** tab appears.
 2. Specify the SMTP server address, port, username, password, and sender address, select an
@@ -969,6 +1090,9 @@ This topic describes how to use Syslog to send alert notifications.
 **Overview**
 
 To send alert notifications using Syslog, you must specify the delivery name, hostname, port, log type, and transport protocol for the notifications. Database Security Audit allows you to use Syslog to send the following types of data to external systems: Rule-based alert logs Audit data Logs for new statement types Session data
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **System > Notification Management**. Click the
 **SYSLOG** tab.
 2. Configure the Delivery Name, Hostname, and Port Number parameters, turn on **Enable**,
@@ -981,6 +1105,9 @@ This topic describes how to use Cloud Security Operations Center (SOC) to send a
 **Overview**
 
 To send alert notifications using Cloud SOC, you must specify the delivery name, hostname, port, log type, and transport protocol for the notifications. Database Security Audit allows you to use Cloud SOC to send the following types of data to external systems: Rule-based alert logs Audit data Logs for new statement types Session data
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **System > Notification Management**. Click the
 **Cloud SOC** tab.
 2. Configure the Delivery Name, Hostname, and Port Number parameters, turn on **Enable**,
@@ -989,6 +1116,9 @@ and then click **Add**. After a Cloud SOC destination is configured, you can mod
 #### 4.10.2 System alerts
 
 Database Security Audit generates alerts for various system events, including: partition usage exceeding limits, high CPU utilization, high memory usage, excessive sessions, high packet rates, high SQL statement rates, and remote mirror agent (RMAgent) errors. An alert is triggered whenever its corresponding condition is met. This topic describes how to view system alerts.
+
+**Procedure**
+
 1. In the left-side navigation pane, choose **System > System Alerts**. On the System Alerts
 page, select an alert type from the Alarm Type drop-down list, and then click **Search**.
 2. View the details of the queried system alerts in the System Name, Target Object,
@@ -1027,7 +1157,11 @@ s and data
 
 #### 5.1.1 View the overview of a database
 
-This topic describes how to view the overview of a database. The Overview / DB page displays the overview of an audited database in three charts. You can click data in a chart to access the corresponding page.
+This topic describes how to view the overview of a database.
+
+**Procedure**
+
+The Overview / DB page displays the overview of an audited database in three charts. You can click data in a chart to access the corresponding page.
 1. Go to the details page of a database. In the left-side navigation pane, click Overview / DB.
 On the **Overview / DB** page, select a preset time range or specify a custom time range to view data.
 2. View data in the Risk Statistics, Session Stats, and Statement charts.
@@ -1049,6 +1183,9 @@ The Risk Distribution chart is a column chart, which displays the distribution o
 #### 5.2.2 View risk hit rules
 
 The Risk Hits page extends the statistical risk overview by detailing each specific rule violation. You can search within the specified time range to examine the individual hit rules for any given risk type and risk level. This topic describes how to view the details of a risk hit rule.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **Risk > Risk**
 **Hits**. On the Risk Hits page, configure the Time, Risk Type, Risk Level, and Risk Name
 parameters.
@@ -1068,6 +1205,9 @@ This topic describes how to search for risks.
 **Overview**
 
 The Risk Search page is the core component of the Risk module. This page presents a detailed, itemized list of every risk statement. Each entry provides comprehensive details, including the SQL statement, trigger time, risk type, risk name, risk level, database user, and client IP address. From this page, you can manage any retrieved statement by adding it to a trusted rule, classifying it as sensitive, or exempting it from future auditing.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **Risk > Risk**
 **Search**. On the Risk Search page, select a preset time range or specify a custom time
 range and click the icon in the upper-right corner of the Search Condition section. Then, specify search conditions and click Search to search for risks. The search conditions include the risk type, risk level, database user, and client IP address. s and data
@@ -1099,6 +1239,9 @@ the **Number of executions** column to view the details of the template.
 #### 5.3.1 View SQL statistics
 
 The SQL Statistics page provides a statistical summary for various SQL statements on a specific database within a time range, presented in a combined table and chart format. The page is divided into an upper and a lower section, which separately aggregate statement execution counts by operation type and by statement source. This topic describes how to view SQL statistics.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **SQL**
 **Statements > SQL Statistics**. On the SQL Statistics page, select a preset time range or
 specify a custom time range and click **Refresh** in the upper-right corner of the Search Condition section. s and data The upper section displays the distribution of different statements in a column chart. Click each record in the table. The column chart on the right is changed to a pie chart, which displays the distribution of different client IP addresses for this operation type. Find the operation type that you want to view and click the value in the Execution times column to go to the Template Search page. The lower section displays the number of execution times of SQL statements by client IP address, database user, and tool and application. You can select one or more options at a time. Statistics are displayed in a pie chart for intuitive analysis. After you select Client IP, you can also select Database Users and Tools and Applications. s and data Click each record in the table. The pie chart on the right is changed to a column chart, which displays the distribution of operation types by statement source. Click Return in the upper-right corner to restore the column chart to the pie chart.
@@ -1106,6 +1249,9 @@ specify a custom time range and click **Refresh** in the upper-right corner of t
 #### 5.3.2 Search for statements
 
 This topic describes how to search for statements.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **SQL**
 **Statements > Statement Search**. On the Statement Search page, select a preset time
 range or specify a custom time range and click the icon in the upper-right corner of the Search Condition section. Then, specify search conditions and click Search to search for statements. s and data You can also click More Options in the upper-right corner to add search conditions.
@@ -1119,6 +1265,9 @@ the report.
 #### 5.3.3 Search for statement templates
 
 The **Template Search** page allows you to search for SQL statement templates. The system uses **statement templates** to group and manage SQL statements. This simplifies the structure of SQL statements and records SQL statements of the same type. You can quickly locate high-risk SQL statements on the Template Search page. This topic describes how to search for statement templates.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **SQL**
 **Statements > Template Search**. On the Template Search page, select a preset time
 range or specify a custom time range and click the icon in the upper-right corner of the Search Condition section. Then, specify search conditions and click Search to search for statement templates. The search conditions include the client IP address, database user, tool or application, MAC address, SQL identifier, and operation. s and data
@@ -1131,6 +1280,9 @@ icon in the **Depth**
 #### 5.3.4 View failed SQL statements
 
 The Failed SQL page displays all statements that failed to be executed within a time range. You can analyze failed SQL statements to help detect possible risk sessions for a database. This topic describes how to view failed SQL statements.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **SQL**
 **Statements > Failed SQL**. On the Failed SQL page, select a preset time range or specify
 a custom time range and click the icon in the upper-right corner of the Search Condition section. Then, specify search conditions and click Search to search for failed SQL statements. The search conditions include the time, database user, client IP address, MAC address, tool or application, operation, and error number. The system provides the **Error Number** search condition to query failed SQL statements. s and data
@@ -1154,6 +1306,9 @@ icon in the upper-right corner of the Search section to export the statistics of
 #### 5.3.6 Search for new SQL templates
 
 The New SQL Patterns page summarizes all statement templates newly audited on a specific database within a time range. You can configure policies for the new SQL templates and query their details. This topic describes how to search for new SQL templates.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **SQL**
 **Statements > New SQL Patterns**. On the New SQL Patterns page, select a preset time
 range or specify a custom time range and click the icon in the upper-right corner of the Search Condition section. Then, specify search conditions and click Search to search for new SQL templates. s and data
@@ -1164,6 +1319,9 @@ column to view the template details.
 #### 5.3.7 View access source statistics
 
 The Access Source Analysis page displays the statistics on access sources for a specific database within a time range, presented in a combined table and chart format. This topic describes how to view the statistics on access sources for a database.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **SQL**
 **Statements > Access Source Analysis**. On the Access Source Analysis page, select a
 preset time range or specify a custom time range and click **Search** in the upper-right corner of the Search Condition section to search for access sources. s and data You can select **Database Address**, Database Users, Client IP, and Tools and Applications to view the number of execution times of SQL statements.
@@ -1209,6 +1367,9 @@ time range and click the icon in the upper-right corner of the Search Condition 
 ### sessions
 
 This topic describes how to view the information about active sessions.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **Sessions >**
 **Active Sessions**. On the Active Sessions page, select a preset time range or specify a
 custom time range and click **Search** in the upper-right corner of the Search Condition section to search for active sessions.
@@ -1292,6 +1453,9 @@ s and data
 #### 5.5.4 Pre-store reports (single database)
 
 The Report Preset module allows you to pre-store reports of the specified types. After a report of the specified type is pre-stored, subsequent queries for that report directly load the prestored data, reducing system load. This topic describes how to pre-store a report.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **Reports >**
 **Report Preset**. On the Report Preset page, click **Prestore Settings** in the upper-right
 corner.
@@ -1340,6 +1504,9 @@ Rules are the soul of Database Security Audit. Database Security Audit allows yo
 #### 5.6.1 Enable or disable a virtual patch
 
 Virtual patching generates alerts for attacks that exploit database vulnerabilities. It relies on built-in rules based on vulnerability types such as Common Vulnerabilities and Exposures (CVEs). While these rules cannot be custom-added or deleted, they can be enabled or disabled. This topic describes how to enable or disable a virtual patch.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **Rules >**
 **Virtual Patch**. On the Virtual Patch page, specify search conditions and click **Search** in
 the upper-right corner. s and data The virtual patch list displays all vulnerability attack rules in the current database version. The displayed information includes Vulnerability Name, CVE, Type, Affected Range, Risk Level, Warning Notice, Control Action, and Status (enabled or disabled).
@@ -1353,6 +1520,9 @@ icon in the **Status** column.
 **statement rule**
 
 The SQL Rules module is the central panel for applying trust and risk rules to statements on a specific database. It lists all statement templates for that database, allowing you to select and classify them as trusted, sensitive, or exempt from audit.
+
+**Procedure**
+
 1. Go to the details page of a database. In the left-side navigation pane, choose **Rules > SQL**
 **Rules**. On the SQL Rules page, click the
 icon to add a statement rule.
@@ -1375,7 +1545,11 @@ icon in the **Operation** column to bind the statement template to the statement
 
 #### 5.6.3 View referenced rule details
 
-The Quoted Rules page displays all rules in use for a single database and allows you to search for them by name. This topic describes how to view the details of a referenced rule. s and data Go to the details page of a database. In the left-side navigation pane, choose **Rules >**
+The Quoted Rules page displays all rules in use for a single database and allows you to search for them by name. This topic describes how to view the details of a referenced rule.
+
+**Procedure**
+
+s and data Go to the details page of a database. In the left-side navigation pane, choose **Rules >**
 **Quoted Rules**. On the Quoted Rules page, find the referenced rule that you want to view and
 click its name. On the right side of the Quoted Rules page, view the details of the referenced rule.
 
@@ -1385,12 +1559,20 @@ click its name. On the right side of the Quoted Rules page, view the details of 
 
 #### 5.7.1 Configure business-oriented languages
 
-The Business-oriented Language module translates SQL statements from business systems into easy-to-understand descriptions. It works by first having you manually map audited database elements, such as tables and objects, to understandable business terms. The system then uses these mappings to translate executed statements into readable business language. Go to the details page of a database. In the left-side navigation pane, choose **Configuration**
+The Business-oriented Language module translates SQL statements from business systems into easy-to-understand descriptions. It works by first having you manually map audited database elements, such as tables and objects, to understandable business terms. The system then uses these mappings to translate executed statements into readable business language.
+
+**Procedure**
+
+Go to the details page of a database. In the left-side navigation pane, choose **Configuration**
 **> Business-oriented Language**. On the Business-oriented Language page, configure a
 business-oriented language and customize the schemas, table names, and field names.
 
 #### 5.7.2 Configure an engine action
 
-This topic describes how to configure an engine action. Go to the details page of a database. In the left-side navigation pane, choose **Configuration**
+This topic describes how to configure an engine action.
+
+**Procedure**
+
+Go to the details page of a database. In the left-side navigation pane, choose **Configuration**
 **> Engine Action**. On the Engine Action page, configure an engine action for the database to
 control the engine and determine whether to audit the database. s and data

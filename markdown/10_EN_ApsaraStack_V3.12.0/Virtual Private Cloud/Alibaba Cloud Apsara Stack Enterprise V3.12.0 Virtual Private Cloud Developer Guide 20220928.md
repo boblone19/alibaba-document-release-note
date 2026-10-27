@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 303
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Virtual Private Cloud Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Virtual%20Private%20Cloud%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Virtual Private Cloud Developer Guide 20220928
@@ -574,11 +574,13 @@ Common request parameters Common request parameters are request parameters that 
 | s | DDThh:mm:ssZ |
 |---|---|
 
+Example
+
 ```
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
 ```
 
-Common response parameters API responses use a unified format. 2xx HTTP status codes indicate a successful invocation. 4xx or 5xx HTTP status codes indicate a failed invocation. The responses can be returned in JSON or XML format. The XML format is used by default. You can specify the format when calling an API. Each time you send a request to call an API, the system returns a unique identifier RequestId, regardless of whether the invocation is successful or not.
+Common response parameters API responses use a unified format. 2xx HTTP status codes indicate a successful invocation. 4xx or 5xx HTTP status codes indicate a failed invocation. The responses can be returned in JSON or XML format. The XML format is used by default. You can specify the format when calling an API. Each time you send a request to call an API, the system returns a unique identifier RequestId, regardless of whether the invocation is successful or not. XML format
 
 ```xml
 <? xml version="1.0" encoding="utf-8"? >
@@ -595,11 +597,13 @@ Common response parameters API responses use a unified format. 2xx HTTP status c
       /*Returned results*/
 ```
 
+`}`
+
 ### 1.5 VPC
 
 #### 1.5.1 CreateVpc
 
-Creates a virtual private cloud (VPC). When you call this operation, follow these rules: You must specify the IP address range of the VPC in the form of a Classless Inter-domain Routing (CIDR) block. You can use a standard CIDR block or a subset of a standard CIDR block as the IP address range of the VPC. The standard CIDR blocks include 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. The subnet mask must be 8 to 28 bits in length. The default CIDR block is 172.16.0.0/12. After you create a VPC, you cannot modify its CIDR block. Each VPC can contain a maximum of 15,000 instances. After you create a VPC, a VRouter and a route table are automatically created for the VPC. You can add a maximum of three client-side CIDR blocks to a VPC. If one client-side CIDR block is a subset of another, the one with the shorter subnet mask takes effect. For example, if you specify 10.0.0.0/8 and 10.1.0.0/16 as the client-side CIDR blocks for a VPC, only 10.0.0.0/8 takes effect.
+Creates a virtual private cloud (VPC). Description When you call this operation, follow these rules: You must specify the IP address range of the VPC in the form of a Classless Inter-domain Routing (CIDR) block. You can use a standard CIDR block or a subset of a standard CIDR block as the IP address range of the VPC. The standard CIDR blocks include 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. The subnet mask must be 8 to 28 bits in length. The default CIDR block is 172.16.0.0/12. After you create a VPC, you cannot modify its CIDR block. Each VPC can contain a maximum of 15,000 instances. After you create a VPC, a VRouter and a route table are automatically created for the VPC. You can add a maximum of three client-side CIDR blocks to a VPC. If one client-side CIDR block is a subset of another, the one with the shorter subnet mask takes effect. For example, if you specify 10.0.0.0/8 and 10.1.0.0/16 as the client-side CIDR blocks for a VPC, only 10.0.0.0/8 takes effect. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -614,6 +618,8 @@ Creates a virtual private cloud (VPC). When you call this operation, follow thes
 | ClientToken | String | No | sha223ndd 2333 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | UserCidr | String | No | 189.16.0.0/ 12 | The client-side CIDR block. Separate multiple CIDR blocks with commas (,). You can specify a maximum of three CIDR blocks. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
@@ -621,13 +627,13 @@ Creates a virtual private cloud (VPC). When you call this operation, follow thes
 | VRouterId | String | vrt- bp1lhl0taikrteen8**** | The ID of the automatically created VRouter. |
 | RouteTableId | String | vtb- bp145q7glnuzdv**** | The ID of the automatically created route table. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=CreateVpc &RegionId=cn-hangzhou &CidrBlock=172.16.0.0/12 &Common request parameters
 ```
 
-```json
+```xml
 <? xml version="1.0" encoding="UTF-8"? >
  <CreateVpcResponse>
             <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
@@ -635,20 +641,29 @@ https://vpc.example.com/?Action=CreateVpc &RegionId=cn-hangzhou &CidrBlock=172.1
             <VRouterId>vrt-bp1lhl0taikrteen8****</VRouterId>
             <VpcId>vpc-bp15zckdt37pq72zv****</VpcId>
 </CreateVpcResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
      "RouteTableId": "vtb-bp145q7glnuzdv****",
      "VRouterId": "vrt-bp1lhl0taikrteen8****",
      "VpcId": "vpc-bp15zckdt37pq72zv****"
 ```
 
+`}`
+
 #### 1.5.2 DeleteVpc
 
-Deletes a VPC. When you call this operation, take note of the following: Before you delete a VPC, make sure that you have released or removed all resources in the VPC, such as VSwitches, instances, and router interfaces. You can only delete VPCs in the Available state.
+Deletes a VPC. Description When you call this operation, take note of the following: Before you delete a VPC, make sure that you have released or removed all resources in the VPC, such as VSwitches, instances, and router interfaces. You can only delete VPCs in the Available state. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteVpc | The operation that you want to perform. Set the value to DeleteVpc. |
 | VpcId | String | Yes | vpc- bp1m7v25emi1 h5mtc**** | The ID of the VPC that you want to delete. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -656,16 +671,29 @@ Deletes a VPC. When you call this operation, take note of the following: Before 
 
 Sample request s
 
-```json
-https://vpc.example.com/?Action=DeleteVpc &VpcId=vpc-bp1m7v25emi1h5mtc**** <? xml version="1.0" encoding="UTF-8"? > <DeleteVpcResponse>
+```
+https://vpc.example.com/?Action=DeleteVpc &VpcId=vpc-bp1m7v25emi1h5mtc****
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <DeleteVpcResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
  </DeleteVpcResponse>
+```
+
+JSON format `{`
+
+```json
    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.5.3 DescribeVpcs
 
-Queries created VPCs.
+Queries created VPCs. Request parameters
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -700,10 +728,16 @@ Vpcs list
 | IsDefault | Boolean | false | Indicates whether the VPC is the default VPC in the region. |
 | UserCidrs | String | 10.0.0.0/8 | The list of client-side CIDR blocks. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DescribeVpcs &RegionId=cn-hangzhou &CidrBlock=10.10.0.0/24 &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DescribeVpcs &RegionId=cn-hangzhou &CidrBlock=10.10.0.0/24 <<? xml version="1.0" encoding="UTF-8" ? > <DescribeVpcsResponse>
+<<? xml version="1.0" encoding="UTF-8" ? > <DescribeVpcsResponse>
     <PageNumber>1</PageNumber>
     <Vpcs>
         <Vpc>
@@ -731,10 +765,17 @@ https://vpc.example.com/?Action=DescribeVpcs &RegionId=cn-hangzhou &CidrBlock=10
 </DescribeVpcsResponse>
 ```
 
+JSON format
+
 ```json
     "PageNumber": 1,
     "Vpcs": {
         "Vpc": [
+```
+
+`{`
+
+```json
                 "VpcName": "vpc1",
                 "Description": "",
                 "IsDefault": false,
@@ -776,7 +817,7 @@ https://vpc.example.com/?Action=DescribeVpcs &RegionId=cn-hangzhou &CidrBlock=10
                 "RegionId": "cn-hangzhou"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "TotalCount": 1,
@@ -784,9 +825,11 @@ https://vpc.example.com/?Action=DescribeVpcs &RegionId=cn-hangzhou &CidrBlock=10
     "RequestId": "9B941224-B647-4644-A746-641906D6B954"
 ```
 
+`}`
+
 #### 1.5.4 ModifyVpcAttribute
 
-Modifies the name and description of a VPC.
+Modifies the name and description of a VPC. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -798,18 +841,33 @@ Modifies the name and description of a VPC.
 | VpcName | String | No | Vpc-1 | The name of the VPC. The name must be 2 to 128 characters in length. It can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start _ with a letter but cannot start with http:// or https:// . |
 | Description | String | No | This is my VPC | The description of the VPC. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyVpcAttribute &VpcId=vpc-bp1qtbach57ywecf**** &VpcName=Vpc02 <? xml version="1.0" encoding="UTF-8"? > <ModifyVpcAttributeResponse>
+```
+https://vpc.example.com/?Action=ModifyVpcAttribute &VpcId=vpc-bp1qtbach57ywecf**** &VpcName=Vpc02 &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <ModifyVpcAttributeResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </ModifyVpcAttributeResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 #### 1.5.5 DescribeVpcAttribute
 
@@ -821,6 +879,8 @@ Queries the configurations of a VPC.
 | VpcId | String | Yes | vpc- bp18sth14qii3pnv** ** | The ID of the VPC that you want to query. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the VPC. |
 | IsDefault | Boolea n | No | false | Specifies whether the VPC is the default VPC. Valid values: false: The VPC is not the default VPC. true: The VPC is the default VPC. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -843,11 +903,13 @@ CloudResources list
 | Resource Count | Integer | 1 | The number of resources in the VPC. |
 | Resource Type | String | VSwitch | The type of resources in the VPC. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=DescribeVpcAttribute &VpcId=vpc-bp13cwaie5zzb23s**** &RegionId=cn-hangzhou &CommonParameters
 ```
+
+Sample responses XML format
 
 ```xml
 <? xml version="1.0" encoding="utf-8"? > </DescribeVpcAttributeResponse>
@@ -888,6 +950,8 @@ https://vpc.example.com/?Action=DescribeVpcAttribute &VpcId=vpc-bp13cwaie5zzb23s
 </DescribeVpcAttributeResponse>
 ```
 
+JSON format
+
 ```json
     "VpcName": "k8s_vpc",
     "Description": "",
@@ -919,38 +983,43 @@ https://vpc.example.com/?Action=DescribeVpcAttribute &VpcId=vpc-bp13cwaie5zzb23s
     "RegionId": "cn-hangzhou",
     "CloudResources": {
         "CloudResourceSetType": [
+```
+
+`{`
+
+```json
                 "ResourceType": "NatGateway",
                 "ResourceCount": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "ResourceType": "VSwitch",
                 "ResourceCount": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "ResourceType": "VRouter",
                 "ResourceCount": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "ResourceType": "RouteTable",
                 "ResourceCount": 1
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 1.6 VRouter
 
 #### 1.6.1 DescribeVRouters
 
-Queries VRouters in a specified region.
+Queries VRouters in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -962,6 +1031,8 @@ Queries VRouters in a specified region.
 | VRouterId | String | No | vrt- bp1lhl0taikrteen**** | The ID of the VRouter. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -983,10 +1054,16 @@ Queries VRouters in a specified region.
 | Description | String | My VRouter | The description of the VRouter. |
 | CreationTime | String | 2018-03- 22T07:46:20Z | The time when the VRouter was created. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DescribeVRouters &RegionId=us-west-1 &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DescribeVRouters &RegionId=us-west-1 <? xml version="1.0" encoding="UTF-8" ? > <DescribeVRoutersResponse>
+<? xml version="1.0" encoding="UTF-8" ? > <DescribeVRoutersResponse>
     <PageNumber>1</PageNumber>
     <TotalCount>1</TotalCount>
     <VRouters>
@@ -1007,11 +1084,18 @@ https://vpc.example.com/?Action=DescribeVRouters &RegionId=us-west-1 <? xml vers
 </DescribeVRoutersResponse>
 ```
 
+JSON format
+
 ```json
     "PageNumber": 1,
     "TotalCount": 1,
     "VRouters": {
         "VRouter": [
+```
+
+`{`
+
+```json
                 "VRouterName": "doctest",
                 "RouteTableIds": {
                     "RouteTableId": [
@@ -1028,16 +1112,18 @@ https://vpc.example.com/?Action=DescribeVRouters &RegionId=us-west-1 <? xml vers
                 "VpcId": "vpc-rj905wotv6y030t1****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageSize": 10,
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.6.2 ModifyVRouterAttribute
 
-Modifies the name and description of a VRouter.
+Modifies the name and description of a VRouter. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1050,23 +1136,36 @@ Modifies the name and description of a VRouter.
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0taikrteen8**** &VRouterName=VRouter-1 <? xml version="1.0" encoding="UTF-8"? > <ModifyVRouterAttributeResponse>
+```
+https://vpc.example.com/?Action=ModifyVRouterAttribute &VRouterId=vrt-bp1lhl0taikrteen8**** &VRouterName=VRouter-1 &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <ModifyVRouterAttributeResponse>
    <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </ModifyVRouterAttributeResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
     "RouteTableId": "vtb-bp145q7glnuzdxxxxxxxx",
     "VRouterId": "vrt-bp1lhl0taikrtxxxxxxxx",
      "VpcId": "vpc-bp15zckdt37pqxxxxxxxx"
 ```
 
+`}`
+
 ### 1.7 VSwitch
 
 #### 1.7.1 CreateVSwitch
 
-Creates a VSwitch. When you call this operation, take note of the following: A maximum of 24 VSwitches can be created in a VPC. The first one and last three IP addresses of each VSwitch CIDR block are reserved. For example, if the CIDR block of a VSwitch is 192.168.1.0/24, IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved. The number of instances under a VSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances. Each instance can belong to only one VSwitch. VSwitches do not support broadcasting or multicasting. After you create a VSwitch, you cannot modify its CIDR block.
+Creates a VSwitch. Description When you call this operation, take note of the following: A maximum of 24 VSwitches can be created in a VPC. The first one and last three IP addresses of each VSwitch CIDR block are reserved. For example, if the CIDR block of a VSwitch is 192.168.1.0/24, IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved. The number of instances under a VSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances. Each instance can belong to only one VSwitch. VSwitches do not support broadcasting or multicasting. After you create a VSwitch, you cannot modify its CIDR block.
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1083,22 +1182,33 @@ Creates a VSwitch. When you call this operation, take note of the following: A m
 | RequestId | String | 861E6630-AEC0-4B2D- B214-6CB5E44B7F04 | The ID of the request. |
 | VSwitchId | String | vsw-25nsdf2aue4g**** | The ID of the VSwitch. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CreateVSwitch &CidrBlock=172.16.1.0/24 &VpcId=vpc-257fsegq6n**** &ZoneId=cn-hangzhou-b <? xml version="1.0" encoding="UTF-8"? > <CreateVSwitchResponse>
+```
+https://vpc.example.com/?Action=CreateVSwitch &CidrBlock=172.16.1.0/24 &VpcId=vpc-257fsegq6n**** &ZoneId=cn-hangzhou-b &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <CreateVSwitchResponse>
     <RequestId>861E6630-AEC0-4B2D-B214-6CB5E44B7F04</RequestId>
     <VSwitchId>vsw-25nsdf2aue4g****
 </VSwitchId> </CreateVSwitchResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "861E6630-AEC0-4B2D-B214-6CB5E44B7F04",
     "VSwitchId": "vsw-25nsdf2aue4g****
 ```
 
-`"`
+`"` `}`
 
 #### 1.7.2 DeleteVSwitch
 
-Deletes a VSwitch. When you call this operation, take note of the following: Before you delete a VSwitch, make sure that you have released or removed all resources in the VPC, such as instances and router interfaces. You can only delete VSwitches in the Available state. You cannot delete a VSwitch from a VPC in which a VSwitch or route entry is being created or deleted.
+Deletes a VSwitch. Description When you call this operation, take note of the following: Before you delete a VSwitch, make sure that you have released or removed all resources in the VPC, such as instances and router interfaces. You can only delete VSwitches in the Available state. You cannot delete a VSwitch from a VPC in which a VSwitch or route entry is being created or deleted. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1108,22 +1218,37 @@ Deletes a VSwitch. When you call this operation, take note of the following: Bef
 | Action | String | Yes | DeleteVSwitch | The operation that you want to perform. Set the value to DeleteVSwitch. |
 | VSwitchId | String | Yes | vsw-asdfjlna**** | The ID of the VSwitch to delete. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeleteVSwitch &VSwitchId=vsw-asdfjlna**** <? xml version="1.0" encoding="UTF-8"? > <DeleteVSwitchResponse>
+```
+https://vpc.example.com/?Action=DeleteVSwitch &VSwitchId=vsw-asdfjlna**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <DeleteVSwitchResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteVSwitchResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.7.3 ModifyVSwitchAttribute
 
-Modifies the name and description of a VSwitch.
+Modifies the name and description of a VSwitch. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1138,18 +1263,33 @@ Modifies the name and description of a VSwitch.
 | VSwitchName | String | No | VSwitch-1 | The name of the VSwitch. The name must be 2 to 128 characters in length. It can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start _ with a letter but cannot start with http:// or https:// . |
 | Description | String | No | This is my vswitch | The description of the VSwitch. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25naue4gz**** &VSwitchName=VS02 <? xml version="1.0" encoding="UTF-8"? > <ModifyVSwitchAttributeResponse>
+```
+https://vpc.example.com/?Action=ModifyVSwitchAttribute &VSwitchId=vsw-25naue4gz**** &VSwitchName=VS02 &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <ModifyVSwitchAttributeResponse>
        <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </ModifyVSwitchAttributeResponse>
+```
+
+JSON format `{`
+
+```json
   "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 #### 1.7.4 DescribeVSwitches
 
@@ -1165,6 +1305,8 @@ Queries created VSwitches.
 | IsDefault | Boolea n | No | true | Specifies whether to query the default VSwitches in the specified region. Default value: true. Valid values: true: All VSwitches in the specified region, including the default VSwitches, are queried. false: The default VSwitches are not queried. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1191,13 +1333,15 @@ Queries created VSwitches.
 | CreationTime | String | 2018-01- 18T12:43:57Z | The time when the VSwitch was created. |
 | IsDefault | Boolean | true | Indicates whether the VSwitch is the default VSwitch in the zone. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeVSwitches &RegionId=cn-hangzhou
+https://vpc.example.com/?Action=DescribeVSwitches &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <DescribeVSwitchesResponse>
     <RequestId>9A572171-4E27-40D1-BD36-D26C9E71E29E</RequestId>
     <VSwitches>
@@ -1214,12 +1358,22 @@ https://vpc.example.com/?Action=DescribeVSwitches &RegionId=cn-hangzhou
         </VSwitch>
     </VSwitches>
 </DescribeVSwitchesResponse>
+```
+
+JSON format `{`
+
+```json
     "PageNumber": 1,
     "PageSize": 10,
     "RequestId": "9A572171-4E27-40D1-BD36-D26C9E71E29E",
     "TotalCount": 1,
     "VSwitches": {
         "VSwitch": [
+```
+
+`{`
+
+```json
                 "AvailableIpAddressCount": 246,
                 "CidrBlock": "172.16.1.0/24",
                 "CreationTime": "2018-01-18T12:43:57Z",
@@ -1231,11 +1385,11 @@ https://vpc.example.com/?Action=DescribeVSwitches &RegionId=cn-hangzhou
                 "ZoneId": "cn-hangzhou-d"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.7.5 DescribeVSwitchAttributes
 
-Queries the configurations of a VSwitch.
+Queries the configurations of a VSwitch. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1247,6 +1401,8 @@ Queries the configurations of a VSwitch.
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
 | VSwitchId | String | Yes | vsw-25naue4g**** | The ID of the VSwitch. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1273,8 +1429,14 @@ RouteTable list
 
 Sample request s
 
-```json
-https://vpc.example.com/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**** <? xml version="1.0" encoding="utf-8"? > </DescribeVSwitchAttributesResponse>
+```
+https://vpc.example.com/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4g**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="utf-8"? > </DescribeVSwitchAttributesResponse>
     <RouteTable>
         <RouteTableId>vtb-bp145q7glnuzdv****</RouteTableId>
         <RouteTableType>System</RouteTableType>
@@ -1292,6 +1454,11 @@ https://vpc.example.com/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4
     <VSwitchName>HBase_verification</VSwitchName>
     <CloudResources></CloudResources>
 </DescribeVSwitchAttributesResponse>
+```
+
+JSON format `{`
+
+```json
     "RouteTable": {
         "RouteTableId": "vtb-bp145q7glnuzdv****",
         "RouteTableType": "System"
@@ -1315,11 +1482,13 @@ https://vpc.example.com/?Action=DescribeVSwitchAttributes &VSwitchId=vsw-25naue4
         "CloudResourceSetType": []
 ```
 
+`}` `}`
+
 ### 1.8 Routing table
 
 #### 1.8.1 CreateRouteEntry
 
-You can call this operation to create a custom route entry in the routing table of a VRouter or VBR. When you call this operation to create a custom route entry in the routing table of a VRouter, take note of the following items: A routing table can contain a maximum of 48 custom route entries. The destination CIDR block (DestinationCidrBlock) of a custom route entry and the CIDR block of a VSwitch in the VPC cannot be the same or be a subset of each other. The destination CIDR block (DestinationCidrBlock) of a custom route entry cannot be 100.64.0.0/10 or a subset of it. The destination CIDR blocks (DestinationCidrBlock) of route entries in the same routing table cannot be the same. If the specified destination CIDR block (DestinationCidrBlock) is an IP address, the 32-bit subnet mask is used. Multiple custom route entries can be destined for the same next hop (NextHopId). The next hop (NextHopId) of a custom route entry must belong to the same VPC as the routing table. ECMP route entries can be configured by specifying the NextHopList parameter. If you create a non-ECMP route entry, you must specify DestinationCidrBlock, NextHopType, and NextHopId, and you must not specify NextHopList. If you create an ECMP route entry, you must specify DestinationCidrBlock and NextHopList, and you cannot specify NextHopType and NextHopId. When you call this operation to create a custom route entry in the routing table of a VBR, take note of the following: A routing table can contain a maximum of 48 custom route entries. The NextHopList parameter is not supported. The destination CIDR block (DestinationCidrBlock) of a custom route entry cannot be 100.64.0.0/10 or a subset of it. The destination CIDR blocks (DestinationCidrBlock) of route entries in the same routing table cannot be the same. If the specified destination CIDR block (DestinationCidrBlock) is an IP address, the 32-bit subnet mask is used. Multiple custom route entries can be destined for the same next hop (NextHopId). The next hop (NextHopId) of a custom route entry must be a router interface associated with the VBR. You can create route entries only when the VBR is in the Active state, and the physical connection corresponding to the VBR is in the Enabled state and is not locked. You can create only non-ECMP route entries. To create such an entry, you must specify DestinationCidrBlock, NextHopType, and NextHopId and cannot specify NextHopList.
+You can call this operation to create a custom route entry in the routing table of a VRouter or VBR. Description When you call this operation to create a custom route entry in the routing table of a VRouter, take note of the following items: A routing table can contain a maximum of 48 custom route entries. The destination CIDR block (DestinationCidrBlock) of a custom route entry and the CIDR block of a VSwitch in the VPC cannot be the same or be a subset of each other. The destination CIDR block (DestinationCidrBlock) of a custom route entry cannot be 100.64.0.0/10 or a subset of it. The destination CIDR blocks (DestinationCidrBlock) of route entries in the same routing table cannot be the same. If the specified destination CIDR block (DestinationCidrBlock) is an IP address, the 32-bit subnet mask is used. Multiple custom route entries can be destined for the same next hop (NextHopId). The next hop (NextHopId) of a custom route entry must belong to the same VPC as the routing table. ECMP route entries can be configured by specifying the NextHopList parameter. If you create a non-ECMP route entry, you must specify DestinationCidrBlock, NextHopType, and NextHopId, and you must not specify NextHopList. If you create an ECMP route entry, you must specify DestinationCidrBlock and NextHopList, and you cannot specify NextHopType and NextHopId. When you call this operation to create a custom route entry in the routing table of a VBR, take note of the following: A routing table can contain a maximum of 48 custom route entries. The NextHopList parameter is not supported. The destination CIDR block (DestinationCidrBlock) of a custom route entry cannot be 100.64.0.0/10 or a subset of it. The destination CIDR blocks (DestinationCidrBlock) of route entries in the same routing table cannot be the same. If the specified destination CIDR block (DestinationCidrBlock) is an IP address, the 32-bit subnet mask is used. Multiple custom route entries can be destined for the same next hop (NextHopId). The next hop (NextHopId) of a custom route entry must be a router interface associated with the VBR. You can create route entries only when the VBR is in the Active state, and the physical connection corresponding to the VBR is in the Enabled state and is not locked. You can create only non-ECMP route entries. To create such an entry, you must specify DestinationCidrBlock, NextHopType, and NextHopId and cannot specify NextHopList. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1339,22 +1508,37 @@ You can call this operation to create a custom route entry in the routing table 
 | Enabled | Integer | No | 1 | Specifies whether the next hop is available. 1: available 0: unavailable |
 | Weight | Integer | No | 100 | The route weight of the next hop. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D0 06- F706- 4D23- 88ED- E11ED28 DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CreateRouteEntry &RouteTableId=vtb-bp145q7glnuzd**** &DestinationCidrBlock=0.0.0.0/0 &NextHopId=ri-2zeo3xzyf38r4**** <?xml version="1.0" encoding="UTF-8"?> <CreateRouteEntryResponse>
+```
+https://vpc.example.com/?Action=CreateRouteEntry &RouteTableId=vtb-bp145q7glnuzd**** &DestinationCidrBlock=0.0.0.0/0 &NextHopId=ri-2zeo3xzyf38r4**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?> <CreateRouteEntryResponse>
     <RequestId>12D086F6-8F31-4658-84C1-006DED011A85</RequestId>
 </CreateRouteEntryResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "12D086F6-8F31-4658-84C1-006DED011A85"
 ```
 
+`}`
+
 #### 1.8.2 DeleteRouteEntry
 
-You can call this operation to delete a route entry from the routing table of a VRouter or VBR. When you call this operation, take note of the following: You can only delete route entries in the Available state. If a VSwitch or route entry is being created or deleted in a VPC, you cannot delete route entries from that VPC.
+You can call this operation to delete a route entry from the routing table of a VRouter or VBR. Description When you call this operation, take note of the following: You can only delete route entries in the Available state. If a VSwitch or route entry is being created or deleted in a VPC, you cannot delete route entries from that VPC. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1376,26 +1560,37 @@ NextHopList list
 | Enabled | Integer | No | 1 | Specifies whether the next hop is available. 1: available 0: unavailable |
 | Weight | Integer | No | 10 | The route weight of the next hop. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DeleteRouteEntry &RouterTableId=vtb-bp145q7glnuzd**** &DestinationCidrBlock=192.168.1.0/24 &NextHopId=ri-2zeo3xzyf38r4urzd****
+https://vpc.example.com/?Action=DeleteRouteEntry &RouterTableId=vtb-bp145q7glnuzd**** &DestinationCidrBlock=192.168.1.0/24 &NextHopId=ri-2zeo3xzyf38r4urzd**** &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?> <DeleteRouteEntryResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteRouteEntryResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.8.3 DescribeRouteTables
 
-Queries the route entries of a route table.
+Queries the route entries of a route table. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1454,11 +1649,13 @@ NextHops list
 | Enabled | Integer | 1 | Indicates whether the next hop is available. Valid values: 1: available 0: unavailable |
 | Weight | Integer | 100 | The route weight of the next hop. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeRouteTables &RouteTableId=vtb-bp1krxxzp0c29fmon****
+https://vpc.example.com/?Action=DescribeRouteTables &RouteTableId=vtb-bp1krxxzp0c29fmon**** &<Common request parameters>
 ```
+
+Sample responses
 
 ```xml
 <? xml version="1.0" encoding="UTF-8"? > <DescribeRouteTablesResponse>
@@ -1488,6 +1685,8 @@ https://vpc.example.com/?Action=DescribeRouteTables &RouteTableId=vtb-bp1krxxzp0
 </DescribeRouteTablesResponse>
 ```
 
+JSON format
+
 ```json
     "PageNumber": 1,
     "TotalCount": 1,
@@ -1495,9 +1694,19 @@ https://vpc.example.com/?Action=DescribeRouteTables &RouteTableId=vtb-bp1krxxzp0
     "RequestId": "DC668356-BCB4-42FD-9BC3-FA2B2E04B634",
     "RouteTables": {
         "RouteTable": [
+```
+
+`{`
+
+```json
                 "CreationTime": "2017-08-22T10:40:25Z",
                 "RouteEntrys": {
                     "RouteEntry": [
+```
+
+`{`
+
+```json
                             "NextHops": {
                                 "NextHop": [ ]
 ```
@@ -1513,7 +1722,7 @@ https://vpc.example.com/?Action=DescribeRouteTables &RouteTableId=vtb-bp1krxxzp0
                             "DestinationCidrBlock": "100.64.0.0/10"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "RouteTableId": "vtb-2zevpmy9th8cvf43****",
@@ -1521,13 +1730,13 @@ https://vpc.example.com/?Action=DescribeRouteTables &RouteTableId=vtb-bp1krxxzp0
                 "VRouterId": "vrt-2zefso23vmu6vf35****"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 1.9 Elastic IP Address (EIP)
 
 #### 1.9.1 AllocateEipAddress
 
-Applies for an EIP. After you call this operation, an EIP in the Available state in a specified region is randomly allocated. EIPs support only the following transport layer protocols: ICMP, TCP, and UDP.
+Applies for an EIP. Description After you call this operation, an EIP in the Available state in a specified region is randomly allocated. EIPs support only the following transport layer protocols: ICMP, TCP, and UDP. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1539,21 +1748,31 @@ Applies for an EIP. After you call this operation, an EIP in the Available state
 | Bandwidth | String | No | 5 | The peak bandwidth of the EIP. Unit: Mbit/s. Default value: 5. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44-001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 | EipAddress | String | 123.xx.xx.206 | The EIP that was allocated. |
 | AllocationId | String | eip-25877c70gddh**** | The ID of the allocated EIP. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=AllocateEipAddress &RegionId=cn-beijing &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=AllocateEipAddress &RegionId=cn-beijing <? xml version="1.0" encoding="UTF-8" ? > <AllocateEipAddressResponse>
+<? xml version="1.0" encoding="UTF-8" ? > <AllocateEipAddressResponse>
         <AllocationId>eip-25877c70gddh****</AllocationId>
         <EipAddress>123.xx.xx.206</EipAddress>
         <RequestId>B6B9F518-60F8-4D81-9242-1207B356754D</RequestId>
 </AllocateEipAddressResponse>
 ```
+
+JSON format
 
 ```json
     "AllocationId": "eip-25877c70gddh****",
@@ -1561,9 +1780,11 @@ https://vpc.example.com/?Action=AllocateEipAddress &RegionId=cn-beijing <? xml v
      "RequestId": "B6B9F518-60F8-4D81-9242-1207B356754D"
 ```
 
+`}`
+
 #### 1.9.2 AllocateEipAddressPro
 
-Applies for a specified EIP. After you call this operation, a specified EIP in the Available state in a specified region is allocated. EIPs support only the following transport layer protocols: ICMP, TCP, and UDP.
+Applies for a specified EIP. Description After you call this operation, a specified EIP in the Available state in a specified region is allocated. EIPs support only the following transport layer protocols: ICMP, TCP, and UDP. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1573,6 +1794,8 @@ Applies for a specified EIP. After you call this operation, a specified EIP in t
 | IpAddress | String | No | 12.xx.xx.23 | The EIP that you want to apply. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44-001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
@@ -1581,20 +1804,33 @@ Applies for a specified EIP. After you call this operation, a specified EIP in t
 
 Sample request s
 
-```json
-https://vpc.example.com/?Action=AllocateEipAddress &RegionId=cn-beijing <? xml version="1.0" encoding="UTF-8" ? > <AllocateEipAddressResponse>
+```
+https://vpc.example.com/?Action=AllocateEipAddress &RegionId=cn-beijing &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <AllocateEipAddressResponse>
         <AllocationId>eip-25877c70gddh****</AllocationId>
         <EipAddress>123.xx.xx.206</EipAddress>
         <RequestId>B6B9F518-60F8-4D81-9242-1207B356754D</RequestId>
 </AllocateEipAddressResponse>
+```
+
+JSON format `{`
+
+```json
     "AllocationId": "eip-25877c70gddh****",
      "EipAddress": "123.xx.xx.206",
      "RequestId": "B6B9F518-60F8-4D81-9242-1207B356754D"
 ```
 
+`}`
+
 #### 1.9.3 AssociateEipAddress
 
-You can call this operation to associate an Elastic IP address with an instance in the same region. When you call this operation, take note of the following: You can only associate Elastic IP addresses in the Available state. Each Elastic IP address can only be associated with one instance.
+You can call this operation to associate an Elastic IP address with an instance in the same region. Description When you call this operation, take note of the following: You can only associate Elastic IP addresses in the Available state. Each Elastic IP address can only be associated with one instance. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1606,18 +1842,33 @@ You can call this operation to associate an Elastic IP address with an instance 
 | InstanceType | String | No | EcsInstance | The type of the instance with which you want to associate the Elastic IP address. Valid values: SlbInstance: an SLB instance. EcsInstance (default): an ECS instance in a VPC. Nat: a NAT gateway. NetworkInterface: a secondary ENI. |
 | InstanceId | String | Yes | i- 2zebb08phyczdw32 **** | The ID of the instance with which you want to associate the Elastic IP address. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C0FD0EED-F90D-4479- 803D-DD62335357E5 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=AssociateEipAddress &AllocationId=eip-2zeerraiwb7ujd342**** &InstanceId=i-2zebb08phyczdw32**** <?xml version="1.0" encoding="UTF-8"?> <AssociateEipAddressResponse>
+```
+https://vpc.example.com/?Action=AssociateEipAddress &AllocationId=eip-2zeerraiwb7ujd342**** &InstanceId=i-2zebb08phyczdw32**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?> <AssociateEipAddressResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </AssociateEipAddressResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 #### 1.9.4 UnassociateEipAddress
 
@@ -1630,22 +1881,35 @@ You can call this operation to disassociate an Elastic IP address from an instan
 | InstanceType | String | No | EcsInstance | The type of the instance from which you want to disassociate the Elastic IP address. Valid values: SlbInstance: an SLB instance. EcsInstance (default): an ECS instance in a VPC. Nat: a NAT gateway. NetworkInterface: a secondary ENI. |
 | InstanceId | String | Yes | i-12345678 | The ID of the instance from which you want to disassociate the Elastic IP address. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 220F3179-5238-47F0-A0CA- 1272AA2BC41F | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7uj6i0d**** &InstanceId=i-12345678 <?xml version="1.0" encoding="UTF-8"?> <UnassociateEipAddressResponse>
+```
+https://vpc.example.com/?Action=UnassociateEipAddress &AllocationId=eip-2zeerraiwb7uj6i0d**** &InstanceId=i-12345678 &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?> <UnassociateEipAddressResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </UnassociateEipAddressResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
 #### 1.9.5 ModifyEipAddressAttribute
 
-Modifies the name, description, and peak bandwidth of an EIP.
+Modifies the name, description, and peak bandwidth of an EIP. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1655,40 +1919,57 @@ Modifies the name, description, and peak bandwidth of an EIP.
 | Name | String | No | eip1 | The name of the EIP. The name must be 2 to 128 characters in length. It can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start _ with a letter but cannot start with http:// or https:// . |
 | Description | String | No | eip111 | The description of the EIP. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerraiwb7uj6i0d**** &Name=eip1
+https://vpc.example.com/?Action=ModifyEipAddressAttribute &AllocationId=eip-2zeerraiwb7uj6i0d**** &Name=eip1 &<Common request parameters>
 ```
 
-```json
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <ModifyEipAddressAttributeResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </ModifyEipAddressAttributeResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.9.6 ReleaseEipAddress
 
-Releases an EIP. You can only release EIPs in the Available state.
+Releases an EIP. Description You can only release EIPs in the Available state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ReleaseEipAddress | The operation that you want to perform. Set the value to ReleaseEipAddress. |
 | AllocationId | String | Yes | eip- 2zeerraiwb7uj6i0d** ** | The ID of the EIP. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 748C38F6-9A3D-482E- 83FB-DB6C39C68AEA | The ID of the request. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=ReleaseEipAddress &AllocationId=eip-2zeerraiwb7uj6i0d**** &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=ReleaseEipAddress &AllocationId=eip-2zeerraiwb7uj6i0d**** <? xml version="1.0" encoding="UTF-8"? > <ReleaseEipAddressResponse>
+<? xml version="1.0" encoding="UTF-8"? > <ReleaseEipAddressResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </ReleaseEipAddressResponse>
 ```
@@ -1697,9 +1978,11 @@ https://vpc.example.com/?Action=ReleaseEipAddress &AllocationId=eip-2zeerraiwb7u
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.9.7 DescribeEipAddresses
 
-You can call this operation to query the Elastic IP addresses created in a specified region.
+You can call this operation to query the Elastic IP addresses created in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -1715,6 +1998,8 @@ You can call this operation to query the Elastic IP addresses created in a speci
 |---|---|---|---|---|
 | Parameter | Type | Requi red | Example | Description |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1742,11 +2027,13 @@ EipAddresses list
 | AllocationTime | String | 2019-04- 23T01:37:38Z | The time when the Elastic IP address was created. |
 | OperationLocks | String | financial | The reason why the Elastic IP address was locked. Valid values: financial: The Elastic IP address was locked due to overdue payments. security: The Elastic IP address was locked for security reasons. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeEipAddresses &RegionId=cn-hangzhou-1
+https://vpc.example.com/?Action=DescribeEipAddresses &RegionId=cn-hangzhou-1 &<Common request parameters>
 ```
+
+Sample responses XML format
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <DescribeEipAddressesResponse>
@@ -1782,6 +2069,8 @@ https://vpc.example.com/?Action=DescribeEipAddresses &RegionId=cn-hangzhou-1
 </DescribeEipAddressesResponse>
 ```
 
+JSON format
+
 ```json
   "DescribeEipAddressesResponse": {
     "RequestId": "7EEF2D6B-D207-4197-AE37-01279C888757",
@@ -1806,16 +2095,18 @@ https://vpc.example.com/?Action=DescribeEipAddresses &RegionId=cn-hangzhou-1
         "Bandwidth": "1"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "TotalCount": "1",
     "PageSize": "10"
 ```
 
+`}` `}`
+
 #### 1.9.8 DescribeEipMonitorData
 
-Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days and specify up to 400 data points in each request.
+Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days and specify up to 400 data points in each request. Request parameters
 
 | Parameter | Type | Required | Example | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -1837,6 +2128,8 @@ Queries the monitoring data of an elastic IP address (EIP). You can query monito
 |   | MM-DDThh:mm:ssZ |
 |---|---|
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | EipMonitorDatas | Array of EipMonitorData |   | The detailed information about the monitoring data of the EIP. |
@@ -1856,15 +2149,15 @@ Queries the monitoring data of an elastic IP address (EIP). You can query monito
 |   | 21T09:50:23Z |
 |---|---|
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeEipMonitorData &AllocationId=eip-2zeerraiwb7uj6idcfv**** &EndTime=2020-01-05T03:05:10Z &StartTime=2020-01-05T01:05:05Z
+http(s)://[Endpoint]/?Action=DescribeEipMonitorData &AllocationId=eip-2zeerraiwb7uj6idcfv**** &EndTime=2020-01-05T03:05:10Z &StartTime=2020-01-05T01:05:05Z &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
-```json
+```xml
 <DescribeEipMonitorDataResponse>
   <RequestId>C8B26B44-0189-443E-9816-D951F59623A9</RequestId>
   <EipMonitorDatas>
@@ -1876,6 +2169,11 @@ Sample success responses
         <EipRX>122</EipRX>
   </EipMonitorDatas>
 </DescribeEipMonitorDataResponse>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "C8B26B44-0189-443E-9816-D951F59623A9",
     "EipMonitorDatas": {
         "EipPackets": 3434,
@@ -1902,7 +2200,7 @@ Error codes
 
 #### 1.9.9 MoveResourceGroup
 
-Moves a resource to a different resource group.
+Moves a resource to a different resource group. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1916,23 +2214,27 @@ Moves a resource to a different resource group.
 | ResourceId | String | Yes | vpc- hp31psbg8ec3023 s6**** | The ID of the cloud resource that you want to move. |
 | ResourceType | String | Yes | vpc | The type of the resource. Valid values: vpc: a virtual private cloud (VPC) eip: an elastic IP address (EIP) bandwidt hpackage: an EIP bandwidth plan |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F84A05B3-7275- 4C8B-8AEE- 9088C639C271 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=MoveResourceGroup &NewResourceGroupId=rg-acfm3peow3k**** &RegionId=cn-qingdao-env66-d01 &ResourceId=vpc-hp31psbg8ec3023s6**** &ResourceType=vpc
+http(s)://[Endpoint]/?Action=MoveResourceGroup &NewResourceGroupId=rg-acfm3peow3k**** &RegionId=cn-qingdao-env66-d01 &ResourceId=vpc-hp31psbg8ec3023s6**** &ResourceType=vpc &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <MoveResourceGroupResponse>
   <RequestId>F84A05B3-7275-4C8B-8AEE-9088C639C271</RequestId>
 </MoveResourceGroupResponse>
 ```
+
+`JSON` format
 
 ```json
     "RequestId": "F84A05B3-7275-4C8B-8AEE-9088C639C271"
@@ -1946,7 +2248,7 @@ Error codes
 
 #### 1.9.10 DescribeHighDefinitionMonitorLogAttribute
 
-Queries configurations about the fine-grained monitoring feature of an elastic IP address (EIP).
+Queries configurations about the fine-grained monitoring feature of an elastic IP address (EIP). Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1954,6 +2256,8 @@ Queries configurations about the fine-grained monitoring feature of an elastic I
 | InstanceId | String | Yes | eip- wz9fi6qboho9fwg x7**** | The ID of the instance whose fine- grained monitoring configurations you want to query. |
 | RegionId | String | Yes | cn-qingdao- env66-d01 | The region ID of the EIP. You can call the DescribeRegions operation to query the most recent region list. |
 | InstanceType | String | No | EIP | The type of the instance. Set the value to EIP. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1967,15 +2271,15 @@ Queries configurations about the fine-grained monitoring feature of an elastic I
 | RequestId | String | 54B48E3D-DF70- 471B-AA93- 08E683A1B457 | The ID of the request. |
 | Success | String | true | Indicates whether the operation is performed. Valid values: t rue: yes f alse: no |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeHighDefinitionMonitorLogAttribute &InstanceId=eip-wz9fi6qboho9fwgx7**** &RegionId=cn-qingdao-env66-d01
+http(s)://[Endpoint]/?Action=DescribeHighDefinitionMonitorLogAttribute &InstanceId=eip-wz9fi6qboho9fwgx7**** &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
-```json
+```xml
 <DescribeHighDefinitionMonitorLogAttributeResponse>
   <RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457</RequestId>
   <LogStore>hdmonitor</LogStore>
@@ -1984,6 +2288,11 @@ Sample success responses
   <LogProject>hdmonitor-cn-qingdao-1658206966225390</LogProject>
   <Success>true</Success>
 </DescribeHighDefinitionMonitorLogAttributeResponse>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "54B48E3D-DF70-471B-AA93-08E683A1B457",
     "LogStore": "hdmonitor",
     "InstanceId": "eip-wz9fi6qboho9fwgx7****",
@@ -1992,11 +2301,13 @@ Sample success responses
     "Success": true
 ```
 
+`}`
+
 ### 1.10 Router interface
 
 #### 1.10.1 ConnectRouterInterface
 
-Initiates a connection from the initiator router interface to the acceptor. After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments.
+Initiates a connection from the initiator router interface to the acceptor. Description After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2004,26 +2315,37 @@ Initiates a connection from the initiator router interface to the acceptor. Afte
 | RegionId | String | Yes | cn-hangzhou | The region ID of the router interface. You can call the DescribeRegions operation to query the most recent region list. |
 | RouterInterface Id | String | Yes | ri-2ze7fbuohm**** | The ID of the initiator router interface. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 079874CD-AEC1-43E6- AC03-ADD96B6E4907 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=ConnectRouterInterface &RegionId=cn-hangzhou &RouterInterfaceId=ri-2ze7fbuohm****
+https://vpc.example.com/?Action=ConnectRouterInterface &RegionId=cn-hangzhou &RouterInterfaceId=ri-2ze7fbuohm**** &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <ConnectRouterInterfaceResponse>
      <RequestId>079874CD-AEC1-43E6-AC03-ADD96B6E4907</RequestId>
 </ConnectRouterInterfaceResponse>
+```
+
+JSON format `{`
+
+```json
    "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
 
+`}`
+
 #### 1.10.2 DeactivateRouterInterface
 
-Deactivates a router interface. After you call this operation, the router interface enters the Deactivating state. When the router interface is deactivated, it enters the Inactive state. Not e You cannot deactivate a router interface that has overdue payments.
+Deactivates a router interface. Description After you call this operation, the router interface enters the Deactivating state. When the router interface is deactivated, it enters the Inactive state. Not e You cannot deactivate a router interface that has overdue payments. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2031,22 +2353,37 @@ Deactivates a router interface. After you call this operation, the router interf
 | RegionId | String | Yes | cn-hangzhou | The region ID of the router interface. You can call the DescribeRegions operation to query the most recent region list. |
 | RouterInterface Id | String | Yes | ri- 2zeo3xzyf38r4urz** ** | The ID of the router interface. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | BE7EB53A-99AB-4DA8- AEDE-75FA90D046A6 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeactivateRouterInterface &RegionId=cn-hangzhou &RouterInterfaceId=ri-2zeo3xzyf38r4urz**** <? xml version="1.0" encoding="UTF-8"? > <DeactivateRouterInterfaceResponse>
+```
+https://vpc.example.com/?Action=DeactivateRouterInterface &RegionId=cn-hangzhou &RouterInterfaceId=ri-2zeo3xzyf38r4urz**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <DeactivateRouterInterfaceResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeactivateRouterInterfaceResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.10.3 ModifyRouterInterfaceSpec
 
-Modifies the specifications of a router interface. After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot modify the specifications of a router interface that has overdue payments.
+Modifies the specifications of a router interface. Description After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot modify the specifications of a router interface that has overdue payments. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2059,25 +2396,40 @@ Modifies the specifications of a router interface. After you call this operation
 |---|---|---|---|---|
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 | Spec | String | Small.1 | The specifications of the router interface. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyRouterInterfaceSpec &RegionId=cn-hangzhou &Spec=Middle.2 &RouterInterfaceId=ri-2zeo3xzyf38r4urzd**** <? xml version="1.0" encoding="UTF-8"? > <ModifyRouterInterfaceSpecResponse>
+```
+https://vpc.example.com/?Action=ModifyRouterInterfaceSpec &RegionId=cn-hangzhou &Spec=Middle.2 &RouterInterfaceId=ri-2zeo3xzyf38r4urzd**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <ModifyRouterInterfaceSpecResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
      <Spec>Middle.2</Spec>
 </ModifyRouterInterfaceSpecResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
      "Spec":"Middle.2"
 ```
 
+`}`
+
 #### 1.10.4 DeleteRouterInterface
 
-Deletes a router interface. When you call this operation, take note of the following: You can only delete a router interface that is in the Idle or Inactive state. Before you delete a router interface, you must delete all custom route entries destined for the router interface.
+Deletes a router interface. When you call this operation, take note of the following: You can only delete a router interface that is in the Idle or Inactive state. Before you delete a router interface, you must delete all custom route entries destined for the router interface. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2086,26 +2438,37 @@ Deletes a router interface. When you call this operation, take note of the follo
 | RouterInterface Id | String | Yes | ri- 2zeo3xzyf38r4urz** ** | The ID of the router interface. |
 | ClientToken | String | No | qwefcc1212333333 4f | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DeleteRouterInterface &RegionId=cn-shanghai &RouterInterfaceId=ri-2zeo3xzyf38r4urz****
+https://vpc.example.com/?Action=DeleteRouterInterface &RegionId=cn-shanghai &RouterInterfaceId=ri-2zeo3xzyf38r4urz**** &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <DeleteRouterInterfaceResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteRouterInterfaceResponse>
+```
+
+JSON format `{`
+
+```json
    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.10.5 DescribeRouterInterfaces
 
-Queries router interfaces in a specified region.
+Queries router interfaces in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2118,6 +2481,8 @@ Queries router interfaces in a specified region.
 | Filter.n.Value.m | String | No | Filter.1.Active | Value m of filter condition n. Valid values of m: 1 to 5. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2148,11 +2513,13 @@ RouterInterfaceType list
 | Parameter | Type | Example | Description |
 | Status | String | active | The status of the router interface. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeRouterInterfaces &RegionId=cn-beijing
+https://vpc.example.com/?Action=DescribeRouterInterfaces &RegionId=cn-beijing &<Common request parameters>
 ```
+
+Sample responses XML format
 
 ```xml
 <? xml version="1.0" encoding="UTF-8" ? > <DescribeRouterInterfacesResponse>
@@ -2218,6 +2585,11 @@ https://vpc.example.com/?Action=DescribeRouterInterfaces &RegionId=cn-beijing
     "RequestId": "FC2B35C9-15C5-4972-94B7-F529A1620AE0",
     "RouterInterfaceSet": {
         "RouterInterfaceType": [
+```
+
+`{`
+
+```json
                 "ChargeType": "AfterPay",
                 "OppositeInterfaceBusinessStatus": "Normal",
                 "RouterInterfaceId": "ri-2zepoga55p33djxxxxxxxx",
@@ -2241,7 +2613,7 @@ https://vpc.example.com/?Action=DescribeRouterInterfaces &RegionId=cn-beijing
                 "EndTime": "2999-09-08T16:00:00Z"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "ChargeType": "Prepaid",
@@ -2271,7 +2643,7 @@ https://vpc.example.com/?Action=DescribeRouterInterfaces &RegionId=cn-beijing
 
 #### 1.10.6 ActivateRouterInterface
 
-Activates a router interface that is in the Inactive state. After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot activate a router interface that has overdue payments.
+Activates a router interface that is in the Inactive state. Description After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot activate a router interface that has overdue payments. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2279,26 +2651,37 @@ Activates a router interface that is in the Inactive state. After you call this 
 | RegionId | String | Yes | cn-hangzhou | The region ID of the router interface. You can call the DescribeRegions operation to query the most recent region list. |
 | RouterInterface Id | String | Yes | ri- 2zeo3xzyf38r4urz** ** | The ID of the router interface. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 079874CD-AEC1-43E6- AC03-ADD96B6E4907 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=ActivateRouterInterface &RegionId=cn-hangzhou &RouterInterfaceId=ri-2zeo3xzyf38r4urz****
+https://vpc.example.com/?Action=ActivateRouterInterface &RegionId=cn-hangzhou &RouterInterfaceId=ri-2zeo3xzyf38r4urz**** &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <ActivateRouterInterfaceResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
  </ActivateRouterInterfaceResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.10.7 ModifyRouterInterfaceAttribute
 
-Modifies the configurations of a router interface.
+Modifies the configurations of a router interface. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2317,26 +2700,35 @@ Modifies the configurations of a router interface.
 | Name | String | No | TEST | The name of the router interface. The name must be 2 to 128 characters in length. It can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start _ with a letter but cannot start with http:// or https:// . |
 | Description | String | No | aabbcc | The description of the router interface. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=ModifyRouterInterfaceAttribute &RouterInterfaceId=ri-2zeo3xzyf38r4urz**** &RegionId=cn-shanghai
+https://vpc.example.com/?Action=ModifyRouterInterfaceAttribute &RouterInterfaceId=ri-2zeo3xzyf38r4urz**** &RegionId=cn-shanghai &<Common request parameters>
 ```
 
-```json
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <ModifyRouterInterfaceAttributeResponse>
     <RequestId>980960B0-2969-40BF-8542-EBB34FD358AB</RequestId>
 </ModifyRouterInterfaceAttributeResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
 ```
 
+`}`
+
 #### 1.10.8 CreateRouterInterface
 
-Creates a router interface. When you call this operation, take note of the following: You can only create one pair of interconnected router interfaces between two routers. You can create a maximum of five router interfaces for a router. If your account contains any router interface that has overdue payments, you cannot create new router interfaces. The destination CIDR blocks (DestinationCidrBlock) of route entries in the same route table cannot be the same. The router interface created for a VBR must act as the connection initiator. You can create a router interface for a VBR only when it is in the Active state. Not e Router interfaces created by calling the operation are billed on a daily basis.
+Creates a router interface. Description When you call this operation, take note of the following: You can only create one pair of interconnected router interfaces between two routers. You can create a maximum of five router interfaces for a router. If your account contains any router interface that has overdue payments, you cannot create new router interfaces. The destination CIDR blocks (DestinationCidrBlock) of route entries in the same route table cannot be the same. The router interface created for a VBR must act as the connection initiator. You can create a router interface for a VBR only when it is in the Active state. Not e Router interfaces created by calling the operation are billed on a daily basis. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2368,27 +2760,42 @@ Creates a router interface. When you call this operation, take note of the follo
 |---|---|---|---|---|
 | ClientToken | String | No | sjffha123334 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 079874CD-AEC1-43E6- AC03-ADD96B6E4907 | The ID of the request. |
 | RouterInterfaceId | String | ri-2ze7fbuohm**** | The ID of the router interface. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CreateRouterInterface &RegionId=cn-beijing &Role=InitiatingSide &OppositeRegionId=cn-beijing &Spec=Mini.5 &RouterType=VRouter &RouterId=vrt-o6w678x9md98wp893**** &OppositeRouterId=vrt-bp1lhl0taikrteen8**** <? xml version="1.0" encoding="UTF-8"? > <CreateRouterInterfaceResponse>
+```
+https://vpc.example.com/?Action=CreateRouterInterface &RegionId=cn-beijing &Role=InitiatingSide &OppositeRegionId=cn-beijing &Spec=Mini.5 &RouterType=VRouter &RouterId=vrt-o6w678x9md98wp893**** &OppositeRouterId=vrt-bp1lhl0taikrteen8**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <CreateRouterInterfaceResponse>
     <RequestId>980960B0-2969-40BF-8542-EBB34FD358AB</RequestId>
     <RouterInterfaceId>ri-2ze7fbuohm****</RouterInterfaceId>
 </CreateRouterInterfaceResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
     "RouterInterfaceId": "ri-2ze7fbuohm****"
 ```
+
+`}`
 
 ### 1.11 Physical connection
 
 #### 1.11.1 CreatePhysicalConnection
 
-Creates a physical connection. After you create a physical connection, it enters the Initial state, and you can contact the carrier to begin construction. When you call this operation, take note of the following: If the number of physical connections that are not in the Enabled state exceeds five, you cannot create a physical connection. If your account contains a physical connection that has overdue payments, you cannot create a physical connection.
+Creates a physical connection. Description After you create a physical connection, it enters the Initial state, and you can contact the carrier to begin construction. When you call this operation, take note of the following: If the number of physical connections that are not in the Enabled state exceeds five, you cannot create a physical connection. If your account contains a physical connection that has overdue payments, you cannot create a physical connection. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2408,6 +2815,8 @@ Creates a physical connection. After you create a physical connection, it enters
 | Description | String | No | abcabc | The description of the physical connection. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 | ClientToken | String | No | dgfdg12344ff | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | pc- bp1qrb3044eqixog0*** * | The ID of the request. |
@@ -2419,21 +2828,34 @@ Creates a physical connection. After you create a physical connection, it enters
 |---|---|---|---|
 | PhysicalConnectio nId | String | 8A6A5EC5-6F6C-4906- 9689-56ACE58A13E0 | The ID of the VPC. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CreatePhysicalConnection &RegionId=cn-beijing &AccessPointId=ap-cn-beijing-ft-A &LineOperator=CT &PeerLocation=XXX <? xml version="1.0" encoding="UTF-8"? >
+```
+https://vpc.example.com/?Action=CreatePhysicalConnection &RegionId=cn-beijing &AccessPointId=ap-cn-beijing-ft-A &LineOperator=CT &PeerLocation=XXX &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? >
  <CreatePhysicalConnectionResponse>
      <RequestId>8A6A5EC5-6F6C-4906-9689-56ACE58A13E0"</RequestId>
      <PhysicalConnectionId>pc-bp1qrb3044eqixog0****</PhysicalConnectionId>
 </CreatePhysicalConnectionResponse>
+```
+
+JSON format `{`
+
+```json
     "PhysicalConnectionId": "pc-bp1qrb3044eqixog0****",
     "RequestId": "8A6A5EC5-6F6C-4906-9689-56ACE58A13E0"
 ```
 
+`}`
+
 #### 1.11.2 CancelPhysicalConnection
 
-Cancels a physical connection that is not enabled. After you have canceled the physical connection, it enters the Canceled state. You can only cancel a physical connection that is in the Initial, Approved, Allocated, or Confirmed state.
+Cancels a physical connection that is not enabled. After you have canceled the physical connection, it enters the Canceled state. Description You can only cancel a physical connection that is in the Initial, Approved, Allocated, or Confirmed state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2447,22 +2869,37 @@ Cancels a physical connection that is not enabled. After you have canceled the p
 |---|---|---|---|---|
 | PhysicalConnec tionId | String | Yes | pc-119mfjzm7**** | The ID of the physical connection. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CancelPhysicalConnection &PhysicalConnectionId=pc-119mfjzm7**** &RegionId=cn-beijing <? xml version="1.0" encoding="UTF-8"? > <CancelPhysicalConnectionResponse>
+```
+https://vpc.example.com/?Action=CancelPhysicalConnection &PhysicalConnectionId=pc-119mfjzm7**** &RegionId=cn-beijing &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <CancelPhysicalConnectionResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </CancelPhysicalConnectionResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.11.3 DeletePhysicalConnection
 
-Deletes a physical connection. You can only delete a physical connection that is in the Rejected, Canceled, AllocationFailed, or Terminated state.
+Deletes a physical connection. Description You can only delete a physical connection that is in the Rejected, Canceled, AllocationFailed, or Terminated state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2476,22 +2913,37 @@ Deletes a physical connection. You can only delete a physical connection that is
 | RegionId | String | Yes | cn-shanghai | The region ID of the physical connection. You can call the DescribeRegions operation to query the most recent region list. |
 | PhysicalConnec tionId | String | Yes | pc-119mfjzm7**** | The ID of the physical connection. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2B3670CD-670E-4540- 8C13-6DE929AEDD3B | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeletePhysicalConnection &PhysicalConnectionId=pc-119mfjzm7**** &RegionId=cn-beijing <? xml version="1.0" encoding="UTF-8"? > <DeletePhysicalConnectionResponse>
+```
+https://vpc.example.com/?Action=DeletePhysicalConnection &PhysicalConnectionId=pc-119mfjzm7**** &RegionId=cn-beijing &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <DeletePhysicalConnectionResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeletePhysicalConnectionResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.11.4 ModifyPhysicalConnectionAttribute
 
-Modifies the configurations of a physical connection. When you call this operation, take note of the following: You can modify the specifications of a physical connection or the ID of its redundant physical connection only when the physical connection is in the Initial or Rejected state. You cannot modify the configurations of a physical connection that is in the Canceled, Allocating, AllocationFailed, or Terminated state. After you modify the configurations of a physical connection in the Rejected state, the physical connection enters the Initial state.
+Modifies the configurations of a physical connection. Description When you call this operation, take note of the following: You can modify the specifications of a physical connection or the ID of its redundant physical connection only when the physical connection is in the Initial or Rejected state. You cannot modify the configurations of a physical connection that is in the Canceled, Allocating, AllocationFailed, or Terminated state. After you modify the configurations of a physical connection in the Rejected state, the physical connection enters the Initial state.
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2511,26 +2963,37 @@ Modifies the configurations of a physical connection. When you call this operati
 | Description | String | No | abcabc | The description of the physical connection. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 | ClientToken | String | No | efefe566754h | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 013EE132-A109-4247- 91B0-099A8FF49AD7 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=ModifyPhysicalConnectionAttribute &PhysicalConnectionId=pc-2zeoaxkq3x**** &RegionId=cn-beijing &Name=test3
+https://vpc.example.com/?Action=ModifyPhysicalConnectionAttribute &PhysicalConnectionId=pc-2zeoaxkq3x**** &RegionId=cn-beijing &Name=test3 &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <ModifyPhysicalConnectionAttributeResponse>
     <RequestId>8A6A5EC5-6F6C-4906-9689-56ACE58A13E0"</RequestId>
 </ModifyPhysicalConnectionAttributeResponse>
+```
+
+JSON format `{`
+
+```json
       "RequestId": "8A6A5EC5-6F6C-4906-9689-56ACE58A13E0"
 ```
 
+`}`
+
 #### 1.11.5 DescribePhysicalConnections
 
-You can call this operation to query physical connections in a specified region.
+You can call this operation to query physical connections in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2543,6 +3006,8 @@ You can call this operation to query physical connections in a specified region.
 | Filter.n.Value.m | String | No | Filter.1.pc- bp1qrb3044eqixog0 **** | Value m of filter condition n. Valid values of m: 1 to 5. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2583,10 +3048,16 @@ PhysicalConnectionSet list
 | CircuitCode | String | longtel001 | The circuit code provided by the carrier for the physical connection. |
 | Bandwidth | String | 10 | The bandwidth of the physical connection. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DescribePhysicalConnections &RegionId=cn-beijing
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DescribePhysicalConnections &RegionId=cn-beijing <?xml version="1.0" encoding="UTF-8"?> <DescribePhysicalConnectionsResponse>
+<?xml version="1.0" encoding="UTF-8"?> <DescribePhysicalConnectionsResponse>
     <PageNumber>1</PageNumber>
     <TotalCount>1</TotalCount>
     <PageSize>10</PageSize>
@@ -2612,6 +3083,8 @@ https://vpc.example.com/?Action=DescribePhysicalConnections &RegionId=cn-beijing
 </DescribePhysicalConnectionsResponse>
 ```
 
+JSON format
+
 ```json
   "PageNumber": 1,
   "TotalCount": 1,
@@ -2619,6 +3092,11 @@ https://vpc.example.com/?Action=DescribePhysicalConnections &RegionId=cn-beijing
   "RequestId": "7C07B0AF-4FC0-4BB2-9667-F75812824BCD",
   "PhysicalConnectionSet": {
     "PhysicalConnectionType": [
+```
+
+`{`
+
+```json
         "Type": "VPC",
         "PhysicalConnectionId": "pc-2zeoaxkq3jot5xxxxxxxx",
         "PeerLocation": "XXX-XX District--XXX Road",
@@ -2635,11 +3113,11 @@ https://vpc.example.com/?Action=DescribePhysicalConnections &RegionId=cn-beijing
         "Bandwidth": 2
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.11.6 TerminatePhysicalConnection
 
-You can call this operation to terminate an enabled leased line. After you call this operation, the physical connection enters the Terminating state. When the physical connection is terminated, it enters the Terminated state. When you call this operation, make sure that the following requirements are met: You can only terminate a physical connection in the Enabled state. Before you terminate a physical connection, you must delete the VBRs associated with it.
+You can call this operation to terminate an enabled leased line. Description After you call this operation, the physical connection enters the Terminating state. When the physical connection is terminated, it enters the Terminated state. When you call this operation, make sure that the following requirements are met: You can only terminate a physical connection in the Enabled state. Before you terminate a physical connection, you must delete the VBRs associated with it. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2650,22 +3128,37 @@ You can call this operation to terminate an enabled leased line. After you call 
 |---|---|---|---|---|
 | PhysicalConnec tionId | String | Yes | pc-2zeoaxkq3x**** | The ID of the physical connection. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=TerminatePhysicalConnection &PhysicalConnectionId=pc-2zeoaxkq3x**** &RegionId=cn-beijing <?xml version="1.0" encoding="UTF-8"?> <TerminatePhysicalConnectionResponse>
+```
+https://vpc.example.com/?Action=TerminatePhysicalConnection &PhysicalConnectionId=pc-2zeoaxkq3x**** &RegionId=cn-beijing &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?> <TerminatePhysicalConnectionResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </TerminatePhysicalConnectionResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.11.7 EnablePhysicalConnection
 
-Enables a physical connection that is in the Confirmed state. After you enable the physical connection, it enters the Enabled state.
+Enables a physical connection that is in the Confirmed state. After you enable the physical connection, it enters the Enabled state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2677,24 +3170,39 @@ Enables a physical connection that is in the Confirmed state. After you enable t
 | PhysicalConnec tionId | String | Yes | pc-2zeoaxkq3x**** | The ID of the physical connection. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 20365164-5b0d-460a- 83c2-2189972b3349 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=EnablePhysicalConnection &PhysicalConnectionId=pc-2zeoaxkq3x**** &RegionId=cn-beijing <? xml version="1.0" encoding="UTF-8"? > <EnablePhysicalConnectionResponse>
+```
+https://vpc.example.com/?Action=EnablePhysicalConnection &PhysicalConnectionId=pc-2zeoaxkq3x**** &RegionId=cn-beijing &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <EnablePhysicalConnectionResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </EnablePhysicalConnectionResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 ### 1.12 Virtual border router
 
 #### 1.12.1 CreateVirtualBorderRouter
 
-Creates a VBR. You can create two VBRs for each physical connection. One belongs to the current account and the other belongs to a different account. If you create a VBR for the current account, the VBR is in the Enabled state after the operation is called. If you create a VBR for another account, the VBR is in the Unconfirmed state after the operation is called.
+Creates a VBR. Description You can create two VBRs for each physical connection. One belongs to the current account and the other belongs to a different account. If you create a VBR for the current account, the VBR is in the Enabled state after the operation is called. If you create a VBR for another account, the VBR is in the Unconfirmed state after the operation is called. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2717,25 +3225,40 @@ Creates a VBR. You can create two VBRs for each physical connection. One belongs
 | Description | String | No | abcabc | The description of the VBR. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 | VbrId | String | vbr- bp1jcg5cmxjbl9xgc**** | The ID of the VBR. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CreateVirtualBorderRouter &PhysicalConnectionId=pc-2zeoaxkq3jotcd34**** &RegionId=cn-hangzhou &VlanId=10 <? xml version="1.0" encoding="UTF-8"? > <CreateRouterInterfaceResponse>
+```
+https://vpc.example.com/?Action=CreateVirtualBorderRouter &PhysicalConnectionId=pc-2zeoaxkq3jotcd34**** &RegionId=cn-hangzhou &VlanId=10 &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <CreateRouterInterfaceResponse>
         <RequestId>980960B0-2969-40BF-8542-EBB34FD358AB</RequestId>
         <VbrId>vbr-bp1jcg5cmxjbl9xgc****</VbrId>
 </CreateRouterInterfaceResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
      "VbrId": "vbr-bp1jcg5cmxjbl9xgc****"
 ```
 
+`}`
+
 #### 1.12.2 DeleteVirtualBorderRouter
 
-Deletes a VBR. When you call this operation, take note of the following: Before you delete a VBR, you must delete all router interfaces on the VBR. You can only delete a VBR that is in the Unconfirmed, Enabled, or Terminated state. The owner of a physical connection can delete a VBR under another account only when the VBR is in the Unconfirmed state.
+Deletes a VBR. Description When you call this operation, take note of the following: Before you delete a VBR, you must delete all router interfaces on the VBR. You can only delete a VBR that is in the Unconfirmed, Enabled, or Terminated state. The owner of a physical connection can delete a VBR under another account only when the VBR is in the Unconfirmed state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2747,18 +3270,31 @@ Deletes a VBR. When you call this operation, take note of the following: Before 
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeleteVirtualBorderRouter &VbrId=vbr-bp12mw1f8k3jgygk9**** <? xml version="1.0" encoding="UTF-8"? > <DeleteVirtualBorderRouterResponse>
+```
+https://vpc.example.com/?Action=DeleteVirtualBorderRouter &VbrId=vbr-bp12mw1f8k3jgygk9**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <DeleteVirtualBorderRouterResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteVirtualBorderRouterResponse>
+```
+
+JSON format `{`
+
+```json
    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.12.3 DescribeVirtualBorderRouters
 
-Queries created VBRs.
+Queries created VBRs. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2771,6 +3307,8 @@ Queries created VBRs.
 | Filter.n.Value.m | String | No | Filter.1.pc- 119mfjzm7az12**** | Value m of filter condition n. Valid values of m: 1 to 5. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2808,11 +3346,13 @@ VirtualBorderRouterSet list
 | Status | String | Initial | The status of the physical connection. Valid values: Initial: application in progress Approved: approved Allocating: resource allocation in progress Allocated: under construction Confirmed: waiting for user confirmation Enabled: enabled Rejected: rejected Canceled: canceled Allocation Failed: resource allocation failed Terminated: terminated |
 | BusinessStatus | String | Normal | The payment status of the physical connection. Valid values: Normal: normal FinancialLocked: locked due to overdue payments SecurityLocked: locked due to security reasons |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeVirtualBorderRouters &RegionId=cn-beijing
+https://vpc.example.com/?Action=DescribeVirtualBorderRouters &RegionId=cn-beijing &<Common request parameters>
 ```
+
+Sample responses XML format
 
 ```xml
 <? xml version="1.0" encoding="UTF-8"? > <DescribeVirtualBorderRoutersResponse>
@@ -2847,10 +3387,17 @@ https://vpc.example.com/?Action=DescribeVirtualBorderRouters &RegionId=cn-beijin
 </DescribeVirtualBorderRoutersResponse>
 ```
 
+JSON format
+
 ```json
   "PageNumber": 1,
   "VirtualBorderRouterSet": {
     "VirtualBorderRouterType": [
+```
+
+`{`
+
+```json
         "LocalGatewayIp": "116.62.xx.xx",
         "PeerGatewayIp": "116.62.xx.xx",
         "Description": "",
@@ -2871,14 +3418,21 @@ https://vpc.example.com/?Action=DescribeVirtualBorderRouters &RegionId=cn-beijin
         "VlanInterfaceId": "ri-2zeum6rgu0586gjro****",
         "AccessPointId": "ap-cn-beijing-dx-A",
         "VbrId": "vbr-2zecmmvg5gvu8i4te****"
+```
+
+`}`
+
+```json
   "TotalCount": 1,
   "PageSize": 10,
   "RequestId": "98B24329-ADC9-4725-A5F8-6C1B282DA17D"
 ```
 
+`}`
+
 #### 1.12.4 DescribeVirtualBorderRoutersForPhysicalConnection
 
-Queries the VBRs connected to a specified physical connection, including VBRs that belong to the physical connection owner and other accounts.
+Queries the VBRs connected to a specified physical connection, including VBRs that belong to the physical connection owner and other accounts. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -2890,6 +3444,8 @@ Queries the VBRs connected to a specified physical connection, including VBRs th
 | PhysicalConnec tionId | String | No | pc- bp1qrb3044eqixog0 f**** | The ID of the physical connection. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2915,10 +3471,16 @@ VirtualBorderRouterForPhysicalConnectionSet list
 |---|---|---|---|
 | CircuitCode | String | longtel001 | The circuit code provided by the carrier for the physical connection. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DescribeVirtualBorderRoutersForPhysicalConnection &RegionId=cn-beijing &PhysicalConnectionId=pc-bp1qrb3044eqixog0f**** &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DescribeVirtualBorderRoutersForPhysicalConnection &RegionId=cn-beijing &PhysicalConnectionId=pc-bp1qrb3044eqixog0f**** <? xml version="1.0" encoding="UTF-8"? > <DescribeVirtualBorderRoutersForPhysicalConnectionResponse>
+<? xml version="1.0" encoding="UTF-8"? > <DescribeVirtualBorderRoutersForPhysicalConnectionResponse>
     <RequestId>03E8CB87-5876-4034-BBB2-6E0851281C37</RequestId>
     <PageNumber>1</PageNumber>
     <TotalCount>2</TotalCount>
@@ -2949,6 +3511,8 @@ https://vpc.example.com/?Action=DescribeVirtualBorderRoutersForPhysicalConnectio
  </DescribeVirtualBorderRoutersForPhysicalConnectionResponse>
 ```
 
+JSON format
+
 ```json
     "PageNumber": 1,
     "TotalCount": 2,
@@ -2956,6 +3520,11 @@ https://vpc.example.com/?Action=DescribeVirtualBorderRoutersForPhysicalConnectio
     "RequestId": "03E8CB87-5876-4034-BBB2-6E0851281C37",
     "VirtualBorderRouterForPhysicalConnectionSet": {
         "VirtualBorderRouterForPhysicalConnectionType": [
+```
+
+`{`
+
+```json
                 "ActivationTime": "2018-03-06T11:16:34Z",
                 "CreationTime": "2018-03-06T11:16:34Z",
                 "CircuitCode": "",
@@ -2966,7 +3535,7 @@ https://vpc.example.com/?Action=DescribeVirtualBorderRoutersForPhysicalConnectio
                 "VbrId": "Vbr-2zecmmvg5gvu8ibgcd****"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "ActivationTime": "2018-01-04T13:34:18Z",
@@ -2979,11 +3548,11 @@ https://vpc.example.com/?Action=DescribeVirtualBorderRoutersForPhysicalConnectio
                 "VbrId": "vbr-2zee2e2cwetx4k0xswe****"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.12.5 ModifyVirtualBorderRouterAttribute
 
-Modifies the configurations of a VBR.
+Modifies the configurations of a VBR. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3005,18 +3574,31 @@ Modifies the configurations of a VBR.
 |---|---|---|---|
 | RequestId | String | 980960B0-2969-40BF- 8542-EBB34FD358AB | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyVirtualBorderRouterAttribute &VbrId=vbr-2zee2e2cwetxcdfv**** &Name=test <? xml version="1.0" encoding="UTF-8"? > <ModifyVirtualBorderRouterAttributeResponse>
+```
+https://vpc.example.com/?Action=ModifyVirtualBorderRouterAttribute &VbrId=vbr-2zee2e2cwetxcdfv**** &Name=test &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <ModifyVirtualBorderRouterAttributeResponse>
     <RequestId>980960B0-2969-40BF-8542-EBB34FD358AB</RequestId>
 </ModifyVirtualBorderRouterAttributeResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
 ```
 
+`}`
+
 #### 1.12.6 TerminateVirtualBorderRouter
 
-You can call this operation to terminate a VBR. After the operation is called, the VBR changes from the Enabled state to the Terminating state. After the VBR is terminated, it enters the Terminated state. When you call this operation, take note of the following: Only the owner of the leased line to which the VBR connects can call this operation. If the VBR has been in the Terminated state for seven days or longer, its VLAN ID can be allocated to other VBRs.
+You can call this operation to terminate a VBR. Description After the operation is called, the VBR changes from the Enabled state to the Terminating state. After the VBR is terminated, it enters the Terminated state. When you call this operation, take note of the following: Only the owner of the leased line to which the VBR connects can call this operation. If the VBR has been in the Terminated state for seven days or longer, its VLAN ID can be allocated to other VBRs. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3028,22 +3610,37 @@ You can call this operation to terminate a VBR. After the operation is called, t
 | Parameter | Type | Requi red | Example | Description |
 | VbrId | String | Yes | vbr- bp15zckdt37pq72** ** | The ID of the VBR. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=TerminateVirtualBorderRouter &VbrId=vbr-bp15zckdt37pq72**** <?xml version="1.0" encoding="UTF-8"?> <TerminateVirtualBorderRouterResponse>
+```
+https://vpc.example.com/?Action=TerminateVirtualBorderRouter &VbrId=vbr-bp15zckdt37pq72**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?> <TerminateVirtualBorderRouterResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </TerminateVirtualBorderRouterResponse>
+```
+
+JSON format `{`
+
+```json
    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.12.7 RecoverVirtualBorderRouter
 
-Recovers a terminated VBR. After the operation is called, the VBR changes from the Terminated state to the Recovering state. When the VBR recovers, it enters the Enabled state. When you call this operation, take note of the following: Only the owner of the physical connection to which the VBR connects can call this operation. The physical connection to which the VBR connects must be in the Enabled state. If the VBR has been in the Terminated state for seven days or longer, its VLAN ID can be allocated to other VBRs. In this case, the recovery fails.
+Recovers a terminated VBR. Description After the operation is called, the VBR changes from the Terminated state to the Recovering state. When the VBR recovers, it enters the Enabled state. When you call this operation, take note of the following: Only the owner of the physical connection to which the VBR connects can call this operation. The physical connection to which the VBR connects must be in the Enabled state. If the VBR has been in the Terminated state for seven days or longer, its VLAN ID can be allocated to other VBRs. In this case, the recovery fails.
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3051,18 +3648,33 @@ Recovers a terminated VBR. After the operation is called, the VBR changes from t
 | RegionId | String | Yes | cn-shanghai | The region ID of the VBR. You can call the DescribeRegions operation to query the most recent region list. |
 | VbrId | String | Yes | vbr- bp1lhl0taikrte**** | The ID of the VBR. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=RecoverVirtualBorderRouter &VbrId=vbr-bp1lhl0taikrte**** <? xml version="1.0" encoding="UTF-8"? > <RecoverVirtualBorderRouterResponse>
+```
+https://vpc.example.com/?Action=RecoverVirtualBorderRouter &VbrId=vbr-bp1lhl0taikrte**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <RecoverVirtualBorderRouterResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </RecoverVirtualBorderRouterResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 ### 1.13 NAT Gateway
 
@@ -3075,6 +3687,8 @@ You can call this operation to create a NAT gateway. When you call this operatio
 | Small | 10,000 | 1,000 |
 | Medium | 50,000 | 5,000 |
 | Large | 200,000 | 10,000 |
+
+Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3095,6 +3709,8 @@ You can call this operation to create a NAT gateway. When you call this operatio
 | Description | String | No | shefffxxddjehfh123 | The description of the NAT gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 | ClientToken | String | No | abcabc | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2315DEB7-5E92-423A- 91F7-4C1EC9AD97C3 | The ID of the request. |
@@ -3103,7 +3719,7 @@ You can call this operation to create a NAT gateway. When you call this operatio
 | ForwardTableIds | List | ftb-11tc6xgmv**** | The DNAT table of the NAT gateway. |
 | BandwidthPackag eIds | String | bwp-11odxu2k7**** | The NAT bandwidth package of the NAT gateway. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=CreateNatGateway &VpcId=vpc-bp1di7uewzmtvfuq8**** &Name=MyNatGW &BandwidthPackage.1.IpCount=5 &RegionId=cn-shanghai &BandwidthPackage.1.Bandwidth=150 &BandwidthPackage.1.Zone=cn-shanghai-a
@@ -3123,7 +3739,7 @@ https://vpc.example.com/?Action=CreateNatGateway &VpcId=vpc-bp1di7uewzmtvfuq8***
 </CreateNatGatewayResponse>
 ```
 
-JSON f format
+JSON f format `{`
 
 ```json
     "BandwidthPackageIds": {
@@ -3153,9 +3769,11 @@ JSON f format
     "NatGatewayId": "ngw-112za33e4****"
 ```
 
+`}`
+
 #### 1.13.2 DeleteNatGateway
 
-Deletes a specified NAT gateway.
+Deletes a specified NAT gateway. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3166,22 +3784,37 @@ Deletes a specified NAT gateway.
 |---|---|---|---|---|
 | NatGatewayId | String | Yes | ngw- bp1uewa15k4iy5770 **** | The ID of the NAT gateway. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534- BD0E-403F3EE64CAF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeleteNatGateway &RegionId=cn-beijing &NatGatewayId=ngw-bp1uewa15k4iy5770**** <? xml version="1.0" encoding="UTF-8"? > <DeleteNatGatewayResponse>
+```
+https://vpc.example.com/?Action=DeleteNatGateway &RegionId=cn-beijing &NatGatewayId=ngw-bp1uewa15k4iy5770**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8"? > <DeleteNatGatewayResponse>
      <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteNatGatewayResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.13.3 ModifyNatGatewaySpec
 
-Modifies the type of a NAT gateway. A NAT gateway is billed based on the type of the highest specifications that have been used on the current day. You can specify the type of a NAT gateway as needed. The type of a NAT gateway determines its SNAT performance, including the maximum number of connections and the number of new connections per second, but it does not affect the data throughput. The following table lists the mapping between NAT gateway types and SNAT performance metrics.
+Modifies the type of a NAT gateway. Description A NAT gateway is billed based on the type of the highest specifications that have been used on the current day. You can specify the type of a NAT gateway as needed. The type of a NAT gateway determines its SNAT performance, including the maximum number of connections and the number of new connections per second, but it does not affect the data throughput. The following table lists the mapping between NAT gateway types and SNAT performance metrics.
 
 | Type | Maximum connections | New connections per second |
 |---|---|---|
@@ -3195,6 +3828,8 @@ Modifies the type of a NAT gateway. A NAT gateway is billed based on the type of
 | Middle | 50,000 | 5,000 |
 | Large | 200,000 | 10,000 |
 
+Request parameters
+
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyNatGatewayS pec | The operation that you want to perform. Set the value to ModifyNatGatewaySpec. |
@@ -3203,22 +3838,37 @@ Modifies the type of a NAT gateway. A NAT gateway is billed based on the type of
 | Spec | String | No | Small | The type of the NAT gateway. Valid values: Small (default) Middle Large |
 | ClientToken | String | No | SHA234js121223xxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DBD4E4A2-786E-4BD2- 8EB6-107FFC2B5B7D | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4iy5770**** &Spec=Large <? xml version="1.0" encoding="UTF-8" ? > <ModifyNatGatewaySpecResponse>
+```
+https://vpc.example.com/?Action=ModifyNatGatewaySpec &NatGatewayId=ngw-bp1uewa15k4iy5770**** &Spec=Large &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <ModifyNatGatewaySpecResponse>
     <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </ModifyNatGatewaySpecResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
+`}`
+
 #### 1.13.4 ModifyNatGatewayAttribute
 
-Modifies the configurations of a NAT gateway.
+Modifies the configurations of a NAT gateway. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3232,18 +3882,31 @@ Modifies the configurations of a NAT gateway.
 |---|---|---|---|
 | RequestId | String | AB5F62CF-2B60-4458- A756-42C9DFE108D1 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyNatGatewayAttribute &NatGatewayId=ngw-xxoo123zas23**** &Spec=Large <? xml version="1.0" encoding="UTF-8" ? > <ModifyNatGatewayAttributeResponse>
+```
+https://vpc.example.com/?Action=ModifyNatGatewayAttribute &NatGatewayId=ngw-xxoo123zas23**** &Spec=Large &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <ModifyNatGatewayAttributeResponse>
     <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </ModifyNatGatewayAttributeResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
+`}`
+
 #### 1.13.5 DescribeNatGateways
 
-Queries created NAT gateways.
+Queries created NAT gateways. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3256,6 +3919,8 @@ Queries created NAT gateways.
 | VpcId | String | No | vpc- bp15zckdt37pq72z* *** | The ID of the VPC. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3283,11 +3948,13 @@ NatGateway list
 | BusinessStatus | String | Normal | The payment status of the NAT gateway. Valid values: Normal: normal FinancialLocked: locked due to overdue payments SecurityLocked: locked due to security reasons |
 | CreationTime | String | 2017-06-08T12:20:55 | The time when the NAT gateway was created. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeNatGateways &RegionId=cn-beijing
+https://vpc.example.com/?Action=DescribeNatGateways &RegionId=cn-beijing &<Common request parameters>
 ```
+
+Sample responses XML format
 
 ```xml
 <? xml version="1.0" encoding="UTF-8"? > <DescribeNatGatewaysResponse>
@@ -3331,6 +3998,8 @@ https://vpc.example.com/?Action=DescribeNatGateways &RegionId=cn-beijing
 </DescribeNatGatewaysResponse>
 ```
 
+JSON format
+
 ```json
     "PageNumber": 1,
     "TotalCount": 1,
@@ -3338,16 +4007,26 @@ https://vpc.example.com/?Action=DescribeNatGateways &RegionId=cn-beijing
     "RequestId": "1207C80C-7CAB-4874-A9A0-D19EC9F35490",
     "NatGateways": {
         "NatGateway": [
+```
+
+`{`
+
+```json
                 "Description": "",
                 "Spec": "Small",
                 "IpLists": {
                     "IpList": [
+```
+
+`{`
+
+```json
                             "IpAddress": "118.xx.xx.181",
                             "AllocationId": "eip-bp1xyg5ipmh3nlxxxxxxxx",
                             "UsingStatus": "UsedBySnatTable"
 ```
 
-`},`
+`},` `{`
 
 ```json
                             "IpAddress": "47.xx.xx.34",
@@ -3355,7 +4034,7 @@ https://vpc.example.com/?Action=DescribeNatGateways &RegionId=cn-beijing
                             "UsingStatus": "UsedByForwardTable"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "ForwardTableIds": {
@@ -3391,11 +4070,11 @@ https://vpc.example.com/?Action=DescribeNatGateways &RegionId=cn-beijing
                 "InstanceChargeType": "PostPaid"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.13.6 CreateBandwidthPackage
 
-Creates a NAT service plan. Descriptions A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources A group of public IP addresses
+Creates a NAT service plan. Descriptions A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources A group of public IP addresses Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3414,29 +4093,36 @@ Creates a NAT service plan. Descriptions A NAT service plan consists of bandwidt
 | Zone | String | No | cn-qingdao- env17- amtest11001-a | The zone to which the NAT service plan belongs. If you do not set this parameter, the service plan is randomly allocated to a zone. Not e Connectivity is not affected when the IP addresses provided by the NAT service plan and the backend Elastic Compute Service (ECS) instances belong to different zones. However, when the IP addresses and ECS instances belong to the same zone, latency can be reduced. |
 | InternetChargeTyp e | String | No | PayByBandwidth | The metering method of the NAT service plan. Valid values: PayByT raf f ic: pay-by-data-transfer PayByBandwidt h: pay-by-bandwidth |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BandwidthPacka geId | String | bwp-s6lmotmkk**** | The ID of the NAT service plan. |
 | RequestId | String | 54ED4074-3F89-4F11- B166-837DD3E20FE3 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &NatGatewayId=ngw-7mwb327j1**** &RegionId=cn-qingdao-env17-d01
+http(s)://[Endpoint]/?Action=CreateBandwidthPackage &Bandwidth=5 &IpCount=2 &NatGatewayId=ngw-7mwb327j1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
-```json
+```xml
 <CreateBandwidthPackageResponse>
   <RequestId>54ED4074-3F89-4F11-B166-837DD3E20FE3</RequestId>
   <BandwidthPackageId>bwp-s6lmotmkk****</BandwidthPackageId>
 </CreateBandwidthPackageResponse>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "54ED4074-3F89-4F11-B166-837DD3E20FE3",
     "BandwidthPackageId": "bwp-s6lmotmkk****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3457,7 +4143,7 @@ Error codes
 
 #### 1.13.7 ModifyBandwidthPackageSpec
 
-Modifies the bandwidth of a NAT service plan.
+Modifies the bandwidth of a NAT service plan. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3469,22 +4155,37 @@ Modifies the bandwidth of a NAT service plan.
 |---|---|---|---|---|
 | Bandwidth | Integer | Yes | 5 | The bandwidth specified in the NAT service plan. Valid values: 5 to 1000. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 079874CD-AEC1-43E6- AC03-ADD96B6E4907 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifyBandwidthPackageSpec &BandwidthPackageId=bwp-s6lmotmkkasdc**** &RegionId=cn-shanghai &Bandwidth=200 &IpCount=1 <? xml version="1.0" encoding="UTF-8" ? > <ModifyBandwidthPackageSpecResponse>
+```
+https://vpc.example.com/?Action=ModifyBandwidthPackageSpec &BandwidthPackageId=bwp-s6lmotmkkasdc**** &RegionId=cn-shanghai &Bandwidth=200 &IpCount=1
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <ModifyBandwidthPackageSpecResponse>
       <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </ModifyBandwidthPackageSpecResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "54ED4074-3F89-4F11-B166-837DD3E20FE3"
 ```
 
+`}`
+
 #### 1.13.8 DescribeBandwidthPackages
 
-Queries NAT service plans in a specified region.
+Queries NAT service plans in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3497,6 +4198,8 @@ Queries NAT service plans in a specified region.
 | BandwidthPack ageId | String | No | bwp- bp1xea10o8qxwdfs **** | The ID of the NAT service plan. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3535,11 +4238,13 @@ PublicIpAddresse list
 | AllocationId | String | nateip- bp1jb1uijvm9o**** | The ID of the public IP address. |
 | IpAddress | String | 118.xx.xx.33 | The public IP address. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeBandwidthPackages &RegionId=cn-beijing
+https://vpc.example.com/?Action=DescribeBandwidthPackages &RegionId=cn-beijing &<Common request parameters>
 ```
+
+Sample responses XML format
 
 ```xml
 <? xml version="1.0" encoding="UTF-8" ? > <DescribeBandwidthPackagesResponse>
@@ -3579,11 +4284,18 @@ https://vpc.example.com/?Action=DescribeBandwidthPackages &RegionId=cn-beijing
 </DescribeBandwidthPackagesResponse>
 ```
 
+JSON format
+
 ```json
   "PageNumber": 1,
   "TotalCount": 1,
   "BandwidthPackages": {
     "BandwidthPackage": [
+```
+
+`{`
+
+```json
         "Description": "",
         "IpCount": "2",
         "ISP": "BGP",
@@ -3599,12 +4311,17 @@ https://vpc.example.com/?Action=DescribeBandwidthPackages &RegionId=cn-beijing
         "InstanceChargeType": "PostPaid",
         "PublicIpAddresses": {
           "PublicIpAddresse": [
+```
+
+`{`
+
+```json
               "IpAddress": "118.xx.xx.33",
               "AllocationId": "nateip-bp1jb1uijvm9o****",
               "UsingStatus": "Idle"
 ```
 
-`},`
+`},` `{`
 
 ```json
               "IpAddress": "118.xx.xx.33",
@@ -3612,22 +4329,24 @@ https://vpc.example.com/?Action=DescribeBandwidthPackages &RegionId=cn-beijing
               "UsingStatus": "UsedBySnatTable"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "Bandwidth": "5"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "PageSize": 10,
   "RequestId": "8909013D-4A64-41A6-93E6-E3FD08A3EAFE"
 ```
 
+`}`
+
 #### 1.13.9 ModifyBandwidthPackageAttribute
 
-Modifies the name and description of a NAT service plan.
+Modifies the name and description of a NAT service plan. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3640,17 +4359,27 @@ Modifies the name and description of a NAT service plan.
 | Name | String | No | abc | The name of the NAT service plan. The name must be 2 to 128 characters in length. It can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start _ with a letter but cannot start with http:// or https:// . |
 | Description | String | No | abcabc | The description of the NAT service plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DFDDD35D-3F29-4E15- AA28-53F5341F9599 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com?Action=ModifyBandwidthPackageAttribute &BandwidthPackageId=bwp-s6lmotmkkzaw3**** &Name=modified &RegionId=cn-shanghai
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com?Action=ModifyBandwidthPackageAttribute &BandwidthPackageId=bwp-s6lmotmkkzaw3**** &Name=modified &RegionId=cn-shanghai <? xml version="1.0" encoding="UTF-8" ? > <ModifyBandwidthPackageAttributeResponse>
+<? xml version="1.0" encoding="UTF-8" ? > <ModifyBandwidthPackageAttributeResponse>
     <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </ModifyBandwidthPackageAttributeResponse>
 ```
+
+JSON format
 
 ```json
     "RequestId": "54ED4074-3F89-4F11-B166-837DD3E20FE3"
@@ -3658,7 +4387,7 @@ https://vpc.example.com?Action=ModifyBandwidthPackageAttribute &BandwidthPackage
 
 #### 1.13.10 DeleteBandwidthPackage
 
-Deletes a NAT service plan.
+Deletes a NAT service plan. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3666,14 +4395,22 @@ Deletes a NAT service plan.
 | RegionId | String | Yes | cn-hangzhou | The region ID of the NAT gateway. You can call the DescribeRegions operation to query the most recent region list. |
 | BandwidthPack ageId | String | Yes | bwp- bp1arsrmca9kp1q2s **** | The ID of the NAT service plan. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7D275A59-1EB0-4775- 8A20-2A47055EAC5C | The ID of the request. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DeleteBandwidthPackage &BandwidthPackageId=bwp-bp1arsrmca9kp1q2s**** &amp;RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DeleteBandwidthPackage &BandwidthPackageId=bwp-bp1arsrmca9kp1q2s**** &amp;RegionId=cn-hangzhou <? xml version="1.0" encoding="UTF-8"? > <DeleteBandwidthPackageResponse>
+<? xml version="1.0" encoding="UTF-8"? > <DeleteBandwidthPackageResponse>
     <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteBandwidthPackageResponse>
 ```
@@ -3684,7 +4421,7 @@ https://vpc.example.com/?Action=DeleteBandwidthPackage &BandwidthPackageId=bwp-b
 
 #### 1.13.11 AddBandwidthPackageIps
 
-Adds public IP addresses to a NAT service plan.
+Adds public IP addresses to a NAT service plan. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3694,26 +4431,35 @@ Adds public IP addresses to a NAT service plan.
 | IpCount | String | No | 5 | The number of public IP addresses in the NAT service plan. Valid values: 1 to 50. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | EC0B5C51-7F40-44D6- A642-1DE764B547EC | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=AddBandwidthPackageIps &BandwidthPackageId=bwp-s6lmotmkkaq12**** &RegionId=cn-hangzhou &IpCount=6
 ```
 
-```json
+```xml
 <? xml version="1.0" encoding="UTF-8" ? > <AddBandwidthPackageIpsResponse>
     <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </AddBandwidthPackageIpsResponse>
+```
+
+JSON format `{`
+
+```json
    "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
+`}`
+
 #### 1.13.12 RemoveBandwidthPackageIps
 
-Removes public IP addresses from a NAT service plan. When you call this operation, take note of the following: You cannot remove all public IP addresses from a NAT service plan. You cannot remove an IP address that is not included in the specified NAT service plan. You cannot remove an IP address that is listed in the DNAT table or the SNAT table.
+Removes public IP addresses from a NAT service plan. Description When you call this operation, take note of the following: You cannot remove all public IP addresses from a NAT service plan. You cannot remove an IP address that is not included in the specified NAT service plan. You cannot remove an IP address that is listed in the DNAT table or the SNAT table. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3722,22 +4468,37 @@ Removes public IP addresses from a NAT service plan. When you call this operatio
 | BandwidthPack ageId | String | Yes | bwp- s6lmotmkkza1w**** | The ID of the NAT bandwidth package. |
 | RemovedIpAdd resses.n | String | No | nateip- 1110a2l1ad2**** | The ID of public IP address n to be removed. n must start from 1 and cannot exceed 20. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7D275A59-1EB0-4775- 8A20-2A47055EAC5C | The ID of the request. |
 
 Sample request s
 
-```json
-https://vpc.example.com/?Action=RemoveBandwidthPackageIps &RemovedIpAddresses.1=nateip-1110a2l1ad2**** &BandwidthPackageId=bwp-s6lmotmkkza1w**** &amp;RegionId=cn-hangzhou <? xml version="1.0" encoding="UTF-8" ? > <RemoveBandwidthPackageIpsResponse>
+```
+https://vpc.example.com/?Action=RemoveBandwidthPackageIps &RemovedIpAddresses.1=nateip-1110a2l1ad2**** &BandwidthPackageId=bwp-s6lmotmkkza1w**** &amp;RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <RemoveBandwidthPackageIpsResponse>
        <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </RemoveBandwidthPackageIpsResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
+`}`
+
 #### 1.13.13 CreateForwardEntry
 
-Adds a DNAT entry to a DNAT table. Each DNAT entry consists of five elements: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol received from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following: A NAT gateway and a user-created SNAT gateway (using an ECS instance as the SNAT gateway) cannot coexist in a VPC. After you have created a NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block is 0.0.0.0/0 and the next hop is the NAT gateway. The route entry ensures that traffic is routed to the NAT gateway. If the route table of the VPC already contains an entry with a destination CIDR block of 0.0.0.0/0, delete this entry. Otherwise, you cannot create a NAT gateway.
+Adds a DNAT entry to a DNAT table. Description Each DNAT entry consists of five elements: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol received from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following: A NAT gateway and a user-created SNAT gateway (using an ECS instance as the SNAT gateway) cannot coexist in a VPC. After you have created a NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block is 0.0.0.0/0 and the next hop is the NAT gateway. The route entry ensures that traffic is routed to the NAT gateway. If the route table of the VPC already contains an entry with a destination CIDR block of 0.0.0.0/0, delete this entry. Otherwise, you cannot create a NAT gateway. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3753,29 +4514,38 @@ Adds a DNAT entry to a DNAT table. Each DNAT entry consists of five elements: Ex
 | InternalIp | String | Yes | 192.xx.xx.1 | The destination private IP address. |
 | InternalPort | String | No | Any | The destination private port. Valid values: 1 to 65535. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | A4AEE536-A97A-40EB- 9EBE-53A6948A6928 | The ID of the request. |
 | ForwardEntryId | String | fwd- 119smw5tkza12**** | The ID of the DNAT entry. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=CreateForwardEntry &ExternalIp=139.xx.xx.107 &RegionId=cn-shanghai &ExternalPort=Any &InternalIp=192.xx.xx.1 &ForwardTableId=ftb-bp1mbjubq34hlcqpa**** &IpProtocol=Any &InternalPort=Any
 ```
 
-```json
+```xml
 <? xml version="1.0" encoding="UTF-8" ? > <CreateForwardEntryResponse>
         <ForwardEntryId>fwd-119smw5tkza12****</ForwardEntryId>
         <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </CreateForwardEntryResponse>
+```
+
+JSON format `{`
+
+```json
        "ForwardEntryId": "fwd-119smw5tkza12****",
        "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
+`}`
+
 #### 1.13.14 DeleteForwardEntry
 
-Deletes a DNAT entry from a specified DNAT table.
+Deletes a DNAT entry from a specified DNAT table. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3784,22 +4554,37 @@ Deletes a DNAT entry from a specified DNAT table.
 | ForwardTableI d | String | Yes | ftb- 8vbx8xu2lqj9qb334* *** | The ID of the DNAT table. |
 | ForwardEntryId | String | Yes | fwd- 8vbn3bc8roygjp0gy **** | The ID of the DNAT entry. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23- 88ED-E11ED28DCAC0 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8roygjp0gy**** &RegionId=cn-shanghai &ForwardTableId=ftb-8vbx8xu2lqj9qb334**** <? xml version="1.0" encoding="UTF-8" ? > <DeleteForwardEntryResponse>
+```
+https://vpc.example.com/?Action=DeleteForwardEntry &ForwardEntryId=fwd-8vbn3bc8roygjp0gy**** &RegionId=cn-shanghai &ForwardTableId=ftb-8vbx8xu2lqj9qb334**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <DeleteForwardEntryResponse>
      <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </DeleteForwardEntryResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "69B31D6E-9F34-4A5A-8DBC-230A3918E828"
 ```
 
+`}`
+
 #### 1.13.15 ModifyForwardEntry
 
-Modifies a DNAT entry in a specified DNAT table. You cannot modify a DNAT entry if any DNAT entry in the DNAT table is in the Pending or Modifying state.
+Modifies a DNAT entry in a specified DNAT table. Description You cannot modify a DNAT entry if any DNAT entry in the DNAT table is in the Pending or Modifying state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3819,15 +4604,23 @@ Modifies a DNAT entry in a specified DNAT table. You cannot modify a DNAT entry 
 | InternalIp | String | No | 192.xx.xx.1 | The destination private IP address. |
 | InternalPort | String | No | Any | The destination private port. Valid values: 1 to 65535. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 24CC85DC-7700-4F09- 9624-99E988C7DD03 | The ID of the request. |
 | ForwardEntryId | String | fwd-119smw5zx12**** | The ID of the DNAT entry. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=CreateForwardEntry &ExternalIp=139.xx.xx.107 &RegionId=cn-shanghai &ExternalPort=Any &InternalIp=192.xx.xx.1 &ForwardTableId=ftb-8vbx8xu2lqj9qb334**** &IpProtocol=Any &InternalPort=Any &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=CreateForwardEntry &ExternalIp=139.xx.xx.107 &RegionId=cn-shanghai &ExternalPort=Any &InternalIp=192.xx.xx.1 &ForwardTableId=ftb-8vbx8xu2lqj9qb334**** &IpProtocol=Any &InternalPort=Any <? xml version="1.0" encoding="UTF-8" ? > <CreateForwardEntryResponse>
+<? xml version="1.0" encoding="UTF-8" ? > <CreateForwardEntryResponse>
         <ForwardEntryId>fwd-119smw5zx12****</ForwardEntryId>
         <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </CreateForwardEntryResponse>
@@ -3838,9 +4631,11 @@ https://vpc.example.com/?Action=CreateForwardEntry &ExternalIp=139.xx.xx.107 &Re
     "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3"
 ```
 
+`}`
+
 #### 1.13.16 DescribeForwardTableEntries
 
-You can call this operation to query DNAT entries in a specified DNAT table.
+You can call this operation to query DNAT entries in a specified DNAT table. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3849,6 +4644,8 @@ You can call this operation to query DNAT entries in a specified DNAT table.
 | ForwardTableI d | String | No | ftb- bp1mbjubq34hlcqp a**** | The ID of the DNAT table. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3871,13 +4668,15 @@ ForwardTableEntry list
 | InternalPort | String | any | The private port. |
 | Status | String | Available | The status of the DNAT entry. Valid values: Pending: The DNAT entry is being configured. Available: The DNAT entry is available. Modifying: The DNAT entry is being modified. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?&Action=DescribeForwardTableEntries &RegionId=cn-shanghai &ForwardTableId=ftb-bp1mbjubq34hlcqpa****
+https://vpc.example.com/?&Action=DescribeForwardTableEntries &RegionId=cn-shanghai &ForwardTableId=ftb-bp1mbjubq34hlcqpa**** &<Common request parameters>
 ```
 
-```json
+Sample responses XML format
+
+```xml
 <?xml version="1.0" encoding="UTF-8" ?> <DescribeForwardTableEntriesResponse>
     <PageNumber>1</PageNumber>
     <TotalCount>1</TotalCount>
@@ -3896,12 +4695,22 @@ https://vpc.example.com/?&Action=DescribeForwardTableEntries &RegionId=cn-shangh
         </ForwardTableEntry>
     </ForwardTableEntries>
 </DescribeForwardTableEntriesResponse>
+```
+
+JSON format `{`
+
+```json
     "PageNumber": 1,
     "TotalCount": 1,
     "PageSize": 10,
     "RequestId": "74F2BAD8-AF35-4C57-81F1-5E33BFB0F5F2",
     "ForwardTableEntries": {
         "ForwardTableEntry": [
+```
+
+`{`
+
+```json
                 "Status": "Available",
                 "IpProtocol": "any",
                 "ForwardEntryId": "fwd-bp18jpb1tlm55xxxxxxxx",
@@ -3912,11 +4721,11 @@ https://vpc.example.com/?&Action=DescribeForwardTableEntries &RegionId=cn-shangh
                 "InternalIp": "192.168.xx.xx"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.13.17 CreateSnatEntry
 
-Adds a SNAT entry to a specified SNAT table. Each SNAT entry consists of two elements: SourceVSwitchId (VSwitch ID) and SnatIp (public IP address). After you have added a SNAT entry, the ECS instances in the VSwitch can access the Internet through the public IP address. When you call this operation, take note of the following: The VSwitch must belong to the same VPC as the NAT gateway. Each VSwitch can be specified in only one SNAT entry. A public IP address cannot be used by a DNAT entry and a SNAT entry at the same time.
+Adds a SNAT entry to a specified SNAT table. Description Each SNAT entry consists of two elements: SourceVSwitchId (VSwitch ID) and SnatIp (public IP address). After you have added a SNAT entry, the ECS instances in the VSwitch can access the Internet through the public IP address. When you call this operation, take note of the following: The VSwitch must belong to the same VPC as the NAT gateway. Each VSwitch can be specified in only one SNAT entry. A public IP address cannot be used by a DNAT entry and a SNAT entry at the same time. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3927,25 +4736,40 @@ Adds a SNAT entry to a specified SNAT table. Each SNAT entry consists of two ele
 | SourceCIDR | String | Yes | 10.1.1.0/24 | The CIDR block of the VSwitch, such as 10.1.1.0/24. Not e You cannot specify this parameter and SourceVSwitchId at the same time. |
 | SnatIp | String | No | 139.xx.xx.40 | The public IP address. If multiple IP addresses are specified, separate them with commas (,), such as 47.XX.XX.98,47.XX.XX.99,47.XX.XX.241. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2315DEB7-5E92-423A- 91F7-4C1EC9AD97C3 | The ID of the request. |
 | SnatEntryId | String | snat-kmd6nv8fy**** | The ID of the SNAT entry. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=CreateSnatEntry &RegionId=cn-shanghai &SnatTableId=stb-bp190wu8io1vgev**** &SnatIp=139.xx.xx.40 &SourceVSwitchId=vsw-bp1nhx2s9ui5o**** <? xml version="1.0" encoding="UTF-8" ? > <CreateSnatEntryResponse>
+```
+https://vpc.example.com/?Action=CreateSnatEntry &RegionId=cn-shanghai &SnatTableId=stb-bp190wu8io1vgev**** &SnatIp=139.xx.xx.40 &SourceVSwitchId=vsw-bp1nhx2s9ui5o**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <CreateSnatEntryResponse>
      <SnatEntryId>snat-kmd6nv8fy****</SnatEntryId>
      <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
  </CreateSnatEntryResponse>
+```
+
+JSON format `{`
+
+```json
   "RequestId": "69B31D6E-9F34-4A5A-8DBC-230A3918E828",
   "SnatEntryId": "snat-kmd6nv8fy****"
 ```
 
+`}`
+
 #### 1.13.18 DeleteSnatEntry
 
-Deletes a SNAT entry from a specified SNAT table.
+Deletes a SNAT entry from a specified SNAT table. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3958,18 +4782,31 @@ Deletes a SNAT entry from a specified SNAT table.
 |---|---|---|---|
 | RequestId | String | 47B80B6A-759A-479C- A565-76D04BDA29F3 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=DeleteSnatEntry &SnatEntryId=snat-bp1vcgcf8tm0plqcg**** &RegionId=cn-shanghai &SnatTableId=stb-bp190wu8io1vgev80**** <? xml version="1.0" encoding="UTF-8" ? > <DeleteSnatEntryResponse>
+```
+https://vpc.example.com/?Action=DeleteSnatEntry &SnatEntryId=snat-bp1vcgcf8tm0plqcg**** &RegionId=cn-shanghai &SnatTableId=stb-bp190wu8io1vgev80**** &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <DeleteSnatEntryResponse>
     <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </DeleteSnatEntryResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "69B31D6E-9F34-4A5A-8DBC-230A3918E828"
 ```
 
+`}`
+
 #### 1.13.19 ModifySnatEntry
 
-Modifies the value of SnatIp (public IP address) in a specified SNAT entry.
+Modifies the value of SnatIp (public IP address) in a specified SNAT entry. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -3983,22 +4820,37 @@ Modifies the value of SnatIp (public IP address) in a specified SNAT entry.
 | Parameter | Type | Requi red | Example | Description |
 | SnatIp | String | No | 139.xx.xx.107 | The public IP address. If multiple IP addresses are specified, separate them with commas (,), such as 47.XX.XX.98,47.XX.XX.99,47.XX.XX.241. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2315DEB7-5E92-423A- 91F7-4C1EC9AD97C3 | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=ModifySnatEntry &SnatEntryId=snat-bs5bezbmxsw2**** &RegionId=cn-shanghai &SnatTableId=stb-8vbczigrhop8x5u3t**** &SnatIp=139.xx.xx.107 <? xml version="1.0" encoding="UTF-8" ? > <ModifySnatEntryResponse>
+```
+https://vpc.example.com/?Action=ModifySnatEntry &SnatEntryId=snat-bs5bezbmxsw2**** &RegionId=cn-shanghai &SnatTableId=stb-8vbczigrhop8x5u3t**** &SnatIp=139.xx.xx.107 &<Common request parameters>
+```
+
+Sample responses XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > <ModifySnatEntryResponse>
       <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
 </ModifySnatEntryResponse>
+```
+
+JSON format `{`
+
+```json
      "RequestId": "69B31D6E-9F34-4A5A-8DBC-230A3918E828"
 ```
 
+`}`
+
 #### 1.13.20 DescribeSnatTableEntries
 
-Queries SNAT entries in a specified SNAT table.
+Queries SNAT entries in a specified SNAT table. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -4013,6 +4865,8 @@ Queries SNAT entries in a specified SNAT table.
 | SnatTableId | String | Yes | stb- 8vbczigrhop8x5u3t* *** | The ID of the SNAT table. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4039,10 +4893,16 @@ SnatTableEntries list
 | SnatIp | String | 116.xx.xx.28 | The public IP address of the SNAT entry. |
 | Status | String | Available | The status of the SNAT entry. Valid values: Pending: The SNAT entry is being configured. Available: The SNAT entry is available. Modifying: The SNAT entry is being modified. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DescribeSnatTableEntries &RegionId=cn-shanghai &SnatTableId=stb-8vbczigrhop8x5u3t**** &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DescribeSnatTableEntries &RegionId=cn-shanghai &SnatTableId=stb-8vbczigrhop8x5u3t**** <? xml version="1.0" encoding="UTF-8" ? > <DescribeSnatTableEntriesResponse>
+<? xml version="1.0" encoding="UTF-8" ? > <DescribeSnatTableEntriesResponse>
     <PageNumber>1</PageNumber>
     <PageSize>10</PageSize>
     <RequestId>6D7E89B1-1C5B-412B-8585-4908E222EED5</RequestId>
@@ -4074,6 +4934,11 @@ https://vpc.example.com/?Action=DescribeSnatTableEntries &RegionId=cn-shanghai &
   "RequestId": "6D7E89B1-1C5B-412B-8585-4908E222EED5",
   "SnatTableEntries": {
     "SnatTableEntry": [
+```
+
+`{`
+
+```json
         "SnatEntryId": "snat-kmd6nvxxxxxxxx",
         "SnatIp": "139.xx.xx.40",
         "SnatTableId": "stb-gz3r3odxxxxxxxx",
@@ -4082,7 +4947,7 @@ https://vpc.example.com/?Action=DescribeSnatTableEntries &RegionId=cn-shanghai &
         "Status": "Available"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "SnatEntryId": "snat-bs5bezbxxxxxxxx",
@@ -4093,17 +4958,19 @@ https://vpc.example.com/?Action=DescribeSnatTableEntries &RegionId=cn-shanghai &
         "Status": "Available"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "TotalCount": 2
 ```
 
+`}`
+
 ### 1.14 VPN Gateway
 
 #### 1.14.1 CreateVpnGateway
 
-You can call this operation to create a VPN gateway.
+You can call this operation to create a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4123,6 +4990,8 @@ You can call this operation to create a VPN gateway.
 | SslConnections | Integer | No | 2 | The maximum number of clients that can be connected simultaneously. Valid values: 5, 10, and 20, |
 | VSwitchId | String | No | vsw- bp1j5miw2bae9s2 vt**** | The ID of the VSwitch to which the VPN gateway belongs. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Name | String | myVpn | The name of the VPN gateway. |
@@ -4131,21 +5000,34 @@ You can call this operation to create a VPN gateway.
 
 Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-hangzhou &VpcId=vpc-bp1ub1yt9cvakoelj**** <CreateVpnGatewayResponse>
+```
+http(s)://vpc.example.com/? Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-hangzhou &VpcId=vpc-bp1ub1yt9cvakoelj**** &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<CreateVpnGatewayResponse>
       <Name>myVpn</Name>
       <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId>
       <RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457</RequestId>
 </CreateVpnGatewayResponse>
+```
+
+`JSON` format `{`
+
+```json
  "CreateVpnGatewayResponse":{
   "Name":"myVpn",
   "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****",
   "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B457"
 ```
 
+`}` `}`
+
 #### 1.14.2 DescribeVpnGateways
 
-You can call this operation to query one or more VPN gateways.
+You can call this operation to query one or more VPN gateways. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4162,6 +5044,8 @@ You can call this operation to query one or more VPN gateways.
 | Status | String | No | init | The status of the VPN gateway. Valid values: init provisioning act ive updat ing delet ing |
 | VpcId | String | No | vpc- bp1ub1yt9cvakoel j**** | The ID of the VPC to which the VPN gateway belongs. |
 | VpnGatewayId | String | No | vpn- bp1q8bgx4xnkm2 ogj**** | The ID of the VPN gateway. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4189,13 +5073,15 @@ You can call this operation to query one or more VPN gateways.
 | PageSize | Integer | 10 | The number of entries on the current page. |
 | RequestId | String | DF11D6F6-E35A- 41C3-9B20- 6FC8A901FE65 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.com/?Action=DescribeVpnGateways &RegionId=cn-hangzhou
+https://vpc.example.com/?Action=DescribeVpnGateways &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-```json
+Sample responses `XML` format
+
+```xml
 <DescribeVpnGatewaysResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
@@ -4215,11 +5101,21 @@ https://vpc.example.com/?Action=DescribeVpnGateways &RegionId=cn-hangzhou
       </VpnGateways>
       <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId>
 </DescribeVpnGatewaysResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":1,
  "TotalCount":1,
  "PageSize":10,
  "VpnGateways":{
   "VpnGateway":[
+```
+
+`{`
+
+```json
     "Status":"active",
     "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****",
     "Spec":"5M",
@@ -4231,15 +5127,17 @@ https://vpc.example.com/?Action=DescribeVpnGateways &RegionId=cn-hangzhou
     "VpcId":"vpc-bp1ub1yt9cvakoelj****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId":"B2CD1315-CA2B-47B1-9DA5-8F1D69C48E82"
 ```
 
+`}`
+
 #### 1.14.3 DescribeVpnGateway
 
-Queries detailed information of a VPN gateway.
+Queries detailed information of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4249,6 +5147,8 @@ Queries detailed information of a VPN gateway.
 | Action | String | Yes | DescribeVpnGate way | The operation that you want to perform. Set the value to DescribeVpnGat eway. |
 | RegionId | String | Yes | cn-shanghai | The region ID of the VPN gateway. You can call the DescribeRegions operation to query the most recent region list. |
 | VpnGatewayId | String | Yes | vpn- bp1q8bgx4xnkm2 ogj**** | The ID of the VPN gateway. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4271,13 +5171,13 @@ Queries detailed information of a VPN gateway.
 | SslVpn | String | enable | Indicates whether SSL-VPN is enabled for the VPN gateway. |
 | Tag | String | tag1 | The tag associated with the VPN gateway. |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.comm/?Action=DescribeVpnGateway &RegionId=cn-shanghai &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
+https://vpc.example.comm/?Action=DescribeVpnGateway &RegionId=cn-shanghai &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeVpnGatewayResponse>
@@ -4294,6 +5194,8 @@ Sample success responses
 </DescribeVpnGatewayResponse>
 ```
 
+`JSON` format
+
 ```json
  "Status":"active",
  "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****",
@@ -4307,9 +5209,11 @@ Sample success responses
  "VpcId":"vpc-bp1ub1yt9cvakoelj****"
 ```
 
+`}`
+
 #### 1.14.4 DeleteVpnGateway
 
-You can call this operation to delete a VPN gateway. Not e You cannot delete a VPN gateway associated with an IPsec connection.
+You can call this operation to delete a VPN gateway. Not e You cannot delete a VPN gateway associated with an IPsec connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4318,22 +5222,37 @@ You can call this operation to delete a VPN gateway. Not e You cannot delete a V
 | VpnGatewayId | String | Yes | vpn- bp1q8bgx4xnkm2 ogj**** | The ID of the VPN gateway. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | >0ED8D006-F706- 4D23-88ED- E11ED28DCAC0 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=DeleteVpnGateway &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** <DeleteNatGatewayResponse>
+```
+https://vpc.example.com/?Action=DeleteVpnGateway &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<DeleteNatGatewayResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
 </DeleteNatGatewayResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 #### 1.14.5 CreateCustomerGateway
 
-You can call this operation to create a customer gateway.
+You can call this operation to create a customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4347,6 +5266,8 @@ You can call this operation to create a customer gateway.
 | Description | String | No | Gateway | The description of the customer gateway. The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 | Name | String | No | Gateway | The name of the customer gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CustomerGatew ayId | String | cgw- bp1aw0a5nfff03xp1* *** | The ID of the customer gateway. |
@@ -4358,22 +5279,35 @@ You can call this operation to create a customer gateway.
 
 Sample requests
 
-```json
-https://vpc.example.com/?Action=CreateCustomerGateway &IpAddress=116.62.222.xxx &RegionId=cn-shanghai <CreateCustomerGatewayResponse>
+```
+https://vpc.example.com/?Action=CreateCustomerGateway &IpAddress=116.62.222.xxx &RegionId=cn-shanghai &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<CreateCustomerGatewayResponse>
       <CustomerGatewayId>cgw-bp1aw0a5nfff03xp****</CustomerGatewayId>
       <RequestId>185E81B1-3916-4667-B48F-C52409B33F2B</RequestId>
       <CreateTime>1493363486000</CreateTime>
       <IpAddress>100.1.1.XX</IpAddress>
 </CreateCustomerGatewayResponse>
+```
+
+`JSON` format `{`
+
+```json
  "CustomerGatewayId":"cgw-bp1jrawp82av6bws9****",
  "RequestId":"D32B3C26-6C6C-4988-93E9-D2A6444CE6AE",
  "CreateTime":1493363599000,
  "IpAddress":"100.1.1.XX"
 ```
 
+`}`
+
 #### 1.14.6 DescribeCustomerGateways
 
-You can call this operation to query one or more customer gateways.
+You can call this operation to query one or more customer gateways. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4389,6 +5323,8 @@ You can call this operation to query one or more customer gateways.
 |---|---|---|---|---|
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CustomerGatew ays |   |   | The description of the customer gateway. |
@@ -4402,13 +5338,13 @@ You can call this operation to query one or more customer gateways.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.com/?Action=DescribeCustomerGateways &RegionId=cn-shanghai
+https://vpc.example.com/?Action=DescribeCustomerGateways &RegionId=cn-shanghai &<Common request parameters>
 ```
 
-```json
+```xml
 <DescribeCustomerGatewaysResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
@@ -4423,23 +5359,33 @@ https://vpc.example.com/?Action=DescribeCustomerGateways &RegionId=cn-shanghai
             </CustomerGateway>
       </CustomerGateways>
 </DescribeCustomerGatewaysResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":1,
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29",
  "CustomerGateways":{
   "CustomerGateway":[
+```
+
+`{`
+
+```json
     "CustomerGatewayId":"cgw-bp1pvpl9r9adju6l5****",
     "Name":"test",
     "CreateTime":1492747187000,
     "IpAddress":"139.196.32.xxx"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.14.7 DescribeCustomerGateway
 
-You can call this operation to query the details of a specified customer gateway.
+You can call this operation to query the details of a specified customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4450,6 +5396,8 @@ You can call this operation to query the details of a specified customer gateway
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-shanghai | The region ID of the customer gateway. You can call the DescribeRegions operation to query the most recent region list. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CustomerGatew ayId | String | cgw- bp1pvpl9r9adju6l5*** * | The ID of the customer gateway. |
@@ -4459,10 +5407,16 @@ You can call this operation to query the details of a specified customer gateway
 | RequestId | String | 99506ECB-218F- 45A5-AE8E- 79518451F615 | The ID of the request. |
 | CreateTime | Long | 1492747187000 | The time when the customer gateway was created. |
 
-Sample requests
+Examples Sample requests
+
+```
+https://vpc.example.com/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-shanghai &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-https://vpc.example.com/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-shanghai <DescribeCustomerGatewayResponse>
+<DescribeCustomerGatewayResponse>
       <Name>test</Name>
       <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId>
       <CreateTime>1492747187000</CreateTime>
@@ -4479,9 +5433,11 @@ https://vpc.example.com/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-b
  "IpAddress":"139.196.32.xxx"
 ```
 
+`}`
+
 #### 1.14.8 DeleteCustomerGateway
 
-You can call this operation to delete a customer gateway.
+You can call this operation to delete a customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4490,22 +5446,37 @@ You can call this operation to delete a customer gateway.
 | RegionId | String | Yes | cn-shanghai | The region ID of the customer gateway. You can call the DescribeRegions operation to query the most recent region list. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE- 8316-ACA81BB230DA | The ID of the request. |
 
 Sample requests
 
-```json
-https://vpc.example.com/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-shanghai <DeleteCustomerGatewayResesponse>
+```
+https://vpc.example.com/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-shanghai &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<DeleteCustomerGatewayResesponse>
   <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId>
 </DeleteCustomerGatewayResesponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
+`}`
+
 #### 1.14.9 ModifyCustomerGatewayAttribute
 
-You can call this operation to modify the name and description of a customer gateway.
+You can call this operation to modify the name and description of a customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4519,6 +5490,8 @@ You can call this operation to modify the name and description of a customer gat
 | Description | String | No | test | The description of the customer gateway. The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 | Name | String | No | test | The name of the customer gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CustomerGatew ayId | String | cgw- bp1pvpl9r9adju6l5*** * | The ID of the customer gateway. |
@@ -4528,34 +5501,43 @@ You can call this operation to modify the name and description of a customer gat
 | CreateTime | Long | 1492747187000 | The time when the customer gateway was created. |
 | RequestId | String | E61293C8-AF07-4E87- A272-542680038F93 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.com/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-shanghai &Name=test
+https://vpc.example.com/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-shanghai &Name=test &<Common request parameters>
 ```
 
-```json
+```xml
 <ModifyCustomerGatewayAttributeResponse>
       <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId>
       <RequestId>E61293C8-AF07-4E87-A272-542680038F93</RequestId>
       <CreateTime>1492747187000</CreateTime>
       <IpAddress>139.196.32.xxx</IpAddress>
 </ModifyCustomerGatewayAttributeResponse>
+```
+
+`JSON` format `{`
+
+```json
  "CustomerGatewayId":"cgw-bp1pvpl9r9adju6l5****",
  "CreateTime":1492747187000,
  "RequestId":"8AA5CE21-2E6A-4530-BDF5-F055849476E6",
  "IpAddress":"139.196.32.xxx"
 ```
 
+`}`
+
 #### 1.14.10 DescribeVpnConnection
 
-You can call this operation to query the details of an IPsec-VPN connection.
+You can call this operation to query the details of an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeVpnConne ction | The operation that you want to perform. Set the value to DescribeVpnConnect ion. |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the IPsec-VPN connection. You can call the DescribeRegions operation to query the most recent region list. |
 | VpnConnectionId | String | Yes | vco- bp1bbi27hojx80nc k**** | The ID of the IPsec-VPN connection. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4604,11 +5586,13 @@ You can call this operation to query the details of an IPsec-VPN connection.
 | Sip | String | 192.168.1.xx | The source IP address specified for health checks. |
 | Status | String | failed | The status of the health check. Valid values: |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.com/?Action=DescribeVpnConnection &RegionId=cn-hangzhou &VpnConnectionId=vco-bp1bbi27hojx80nck****
+https://vpc.example.com/?Action=DescribeVpnConnection &RegionId=cn-hangzhou &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
 ```
+
+Sample responses `XML` format
 
 ```xml
 <DescribeVpnConnectionResponse>
@@ -4649,10 +5633,17 @@ https://vpc.example.com/?Action=DescribeVpnConnection &RegionId=cn-hangzhou &Vpn
 </DescribeVpnConnectionResponse>
 ```
 
+`JSON` format
+
 ```json
  "PageNumber":1,
  "VpnConnections":{
   "VpnConnection":[
+```
+
+`{`
+
+```json
     "CustomerGatewayId":"cgw-bp1wl8dtz3auwlavw****",
     "Name":"c2",
     "Status":"ike_sa_not_established",
@@ -4684,7 +5675,7 @@ https://vpc.example.com/?Action=DescribeVpnConnection &RegionId=cn-hangzhou &Vpn
      "LocalId":"116.62.119.xxx"
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
  "TotalCount":1,
@@ -4692,9 +5683,11 @@ https://vpc.example.com/?Action=DescribeVpnConnection &RegionId=cn-hangzhou &Vpn
  "RequestId":"7D598A10-26EF-44F2-9F47-E417842F3CEA"
 ```
 
+`}`
+
 #### 1.14.11 DeleteVpnConnection
 
-You can call this operation to delete an IPsec-VPN connection. After the IPsec-VPN connection is deleted, the connection between the VPC and the on-premises data center is closed.
+You can call this operation to delete an IPsec-VPN connection. Description After the IPsec-VPN connection is deleted, the connection between the VPC and the on-premises data center is closed. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4706,14 +5699,22 @@ You can call this operation to delete an IPsec-VPN connection. After the IPsec-V
 | VpnConnectionId | String | Yes | vco- bp1bbi27hojx80nc k**** | The ID of the IPsec-VPN connection. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE- 8316-ACA81BB230DA | The ID of the request. |
 
-Sample requests
+Examples Sample requests
+
+```
+https://vpc.example.com/?Action=DeleteVpnConnection &RegionId=cn-hangzhou &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-https://vpc.example.com/?Action=DeleteVpnConnection &RegionId=cn-hangzhou &VpnConnectionId=vco-bp1bbi27hojx80nck**** <DeleteVpnConnectionResponse>
+<DeleteVpnConnectionResponse>
       <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId>
 </DeleteVpnConnectionResponse>
 ```
@@ -4724,13 +5725,15 @@ https://vpc.example.com/?Action=DeleteVpnConnection &RegionId=cn-hangzhou &VpnCo
 
 #### 1.14.12 DownloadVpnConnectionConfig
 
-You can call this operation to obtain the configuration information of an IPsec-VPN connection.
+You can call this operation to obtain the configuration information of an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DownloadVpnCon nectionConfig | The operation that you want to perform. Set the value to DownloadVpnConnect ionConf ig. |
 | RegionId | String | Yes | cn-shanghai | The region ID of the IPsec-VPN connection. You can call the DescribeRegions operation to query the most recent region list. |
 | VpnConnectionId | String | Yes | vco- bp1bbi27hojx80nc k**** | The name of the IPsec-VPN connection. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4761,8 +5764,14 @@ You can call this operation to obtain the configuration information of an IPsec-
 
 Sample requests
 
+```
+https://vpc.example.com/?Action=DownloadVpnConnectionConfig &RegionId=cn-shanghai &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
+```
+
+Sample responses `XML` format
+
 ```xml
-https://vpc.example.com/?Action=DownloadVpnConnectionConfig &RegionId=cn-shanghai &VpnConnectionId=vco-bp1bbi27hojx80nck**** <DownloadVpnConnectionConfigResponse>
+<DownloadVpnConnectionConfigResponse>
       <RequestId>6F4A035F-7060-45D7-B9BD-719372782AF6</RequestId>
       <VpnConnectionConfig>
             <RemoteSubnet>1.1.1.0/24,1.1.2.0/24</RemoteSubnet>
@@ -4789,6 +5798,8 @@ https://vpc.example.com/?Action=DownloadVpnConnectionConfig &RegionId=cn-shangha
       </VpnConnectionConfig>
 </DownloadVpnConnectionConfigResponse>
 ```
+
+`JSON` format
 
 ```json
  "RequestId":"0C68048B-0F70-40DA-B8AE-1B79B5CF62E3",
@@ -4819,9 +5830,11 @@ https://vpc.example.com/?Action=DownloadVpnConnectionConfig &RegionId=cn-shangha
    "LocalId":"139.196.32.xx"
 ```
 
+`}` `}` `}`
+
 #### 1.14.13 CreateSslVpnServer
 
-You can call this operation to create an SSL server.
+You can call this operation to create an SSL server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4842,24 +5855,39 @@ You can call this operation to create an SSL server.
 |---|---|---|---|---|
 | Proto | String | No | UDP | The protocol used by the SSL server. Valid values: UDP (def ault ) and T CP |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Name | String | test | The name of the SSL server. |
 | RequestId | String | E98A9651-7098- 40C7-8F85- C818D1EBBA85 | The ID of the request. |
 | SslVpnServerId | String | vss- bp18q7hzj6largv4v*** * | The ID of the SSL server. |
 
-Sample requests
+Examples Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &LocalSubnet=10.0.0.0/8 &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1hgim8by0kc9nga**** <CreateSslVpnServerResponse>
+```
+http(s)://vpc.example.com/? Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &LocalSubnet=10.0.0.0/8 &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1hgim8by0kc9nga**** &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<CreateSslVpnServerResponse>
   <RequestId>E98A9651-7098-40C7-8F85-C818D1EBBA85</RequestId>
   <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId>
   <Name>test</Name>
 </CreateSslVpnServerResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Name":"test",
  "RequestId":"E98A9651-7098-40C7-8F85-C818D1EBBA85",
  "SslVpnServerId":"vss-bp18q7hzj6largv4v****"
 ```
+
+`}`
 
 #### 1.14.14 DescribeSslVpnServers
 
@@ -4874,6 +5902,8 @@ You can call this operation to query one or more SSL servers.
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 | SslVpnServerId | String | No | vss- bp15j3du13gq1dg ey**** | The ID of the SSL server. |
 | VpnGatewayId | String | No | vpn- bp1on0xae9d771g gi**** | The ID of the VPN gateway. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4903,13 +5933,13 @@ You can call this operation to query one or more SSL servers.
 | VpnGatewayId | String | vpn- bp1on0xae9d771ggi* *** | The ID of the VPN gateway. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
-Sample requests
+Examples Sample requests
 
 ```
 https://vpc.example.com/?Action=DescribeSslVpnServers &RegionId=cn-hangzhou
 ```
 
-```json
+```xml
 <DescribeSslVpnServersResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
@@ -4934,6 +5964,11 @@ https://vpc.example.com/?Action=DescribeSslVpnServers &RegionId=cn-hangzhou
       </SslVpnServers>
       <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId>
 </DescribeSslVpnServersResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":"1",
  "TotalCount":"1",
  "SslVpnServers":{
@@ -4954,7 +5989,7 @@ https://vpc.example.com/?Action=DescribeSslVpnServers &RegionId=cn-hangzhou
    "Connections":"0"
 ```
 
-`},`
+`}` `},`
 
 ```json
  "PageSize":"10",
@@ -4963,7 +5998,7 @@ https://vpc.example.com/?Action=DescribeSslVpnServers &RegionId=cn-hangzhou
 
 #### 1.14.15 DeleteSslVpnServer
 
-You can call this operation to delete an SSL server.
+You can call this operation to delete an SSL server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4972,26 +6007,37 @@ You can call this operation to delete an SSL server.
 | SslVpnServerId | String | Yes | vss- bp18q7hzj6largv4 v**** | The ID of the SSL server. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE- 8316-ACA81BB230DA | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.com/?Action=DeleteSslVpnServer &RegionId=cn-hangzhou &SslVpnServerId=vss-bp18q7hzj6largv4v****
+https://vpc.example.com/?Action=DeleteSslVpnServer &RegionId=cn-hangzhou &SslVpnServerId=vss-bp18q7hzj6largv4v**** &<Common request parameters>
 ```
 
-```json
+Sample responses `XML` format
+
+```xml
 <DeleteSslVpnServerResponse>
       <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId>
 </DeleteSslVpnServerResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
+`}`
+
 #### 1.14.16 ModifySslVpnServer
 
-You can call this operation to modify the configuration of an SSL server.
+You can call this operation to modify the configuration of an SSL server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5009,6 +6055,8 @@ You can call this operation to modify the configuration of an SSL server.
 | Name | String | No | test | The name of the SSL server. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter but cannot start with http:// or https:// . |
 | Port | Integer | No | 1194 | The port used by the SSL server. Default value: 1194. The following ports cannot be used: 22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, and 4500 |
 | Proto | String | No | UDP | The protocol used by the SSL server. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5031,13 +6079,15 @@ You can call this operation to modify the configuration of an SSL server.
 | SslVpnServerId | String | vss- bp18q7hzj6largv4v*** * | The ID of the SSL server. |
 | VpnGatewayId | String | vpn- bp1q8bgx4xnkm2ogj **** | The ID of the VPN gateway. |
 
-Sample requests
+Examples Sample requests
 
 ```
-https://vpc.example.com/?Action=ModifySslVpnServer &RegionId=cn-hangzhou &SslVpnServerId=vss-bp18q7hzj6largv4****
+https://vpc.example.com/?Action=ModifySslVpnServer &RegionId=cn-hangzhou &SslVpnServerId=vss-bp18q7hzj6largv4**** &<Common request parameters>
 ```
 
-```json
+Sample responses `XML` format
+
+```xml
 <ModifySslVpnServerResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
@@ -5062,6 +6112,11 @@ https://vpc.example.com/?Action=ModifySslVpnServer &RegionId=cn-hangzhou &SslVpn
       </SslVpnServers>
       <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId>
 </ModifySslVpnServerResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":"1",
  "TotalCount":"1",
  "SslVpnServers":{
@@ -5082,12 +6137,14 @@ https://vpc.example.com/?Action=ModifySslVpnServer &RegionId=cn-hangzhou &SslVpn
    "Connections":"0"
 ```
 
-`},`
+`}` `},`
 
 ```json
  "PageSize":"10",
  "RequestId":"DF11D6F6-E35A-41C3-9B20-6FC8A901FE65"
 ```
+
+`}`
 
 #### 1.14.17 DeleteSslVpnClientCert
 
@@ -5100,14 +6157,22 @@ You can call this operation to delete an SSL client certificate.
 | SslVpnClientCertId | String | Yes | vsc- bp1n8wcf134yl0o sr**** | The ID of the SSL client certificate. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE- 8316-ACA81BB230DA | The ID of the request. |
 
-Sample requests
+Examples Sample requests
+
+```
+https://vpc.example.com/?Action=DeleteSslVpnClientCert &RegionId=cn-hangzhou &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr**** &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-https://vpc.example.com/?Action=DeleteSslVpnClientCert &RegionId=cn-hangzhou &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr**** <DeleteSslVpnClientCertResponse>
+<DeleteSslVpnClientCertResponse>
       <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId>
 </DeleteSslVpnClientCertResponse>
 ```
@@ -5116,9 +6181,11 @@ https://vpc.example.com/?Action=DeleteSslVpnClientCert &RegionId=cn-hangzhou &Ss
  "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
 
+`}`
+
 #### 1.14.18 ModifySslVpnClientCert
 
-You can call this operation to modify the name of an SSL client certificate.
+You can call this operation to modify the name of an SSL client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5127,6 +6194,8 @@ You can call this operation to modify the name of an SSL client certificate.
 | SslVpnClientCertId | String | Yes | vsc- bp1n8wcf134yl0o src**** | The ID of the SSL client certificate. |
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | Name | String | No | cert2 | The name of the SSL client certificate. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5137,22 +6206,35 @@ You can call this operation to modify the name of an SSL client certificate.
 | RequestId | String | 606998F0-B94D-48FE- 8316-ACA81BB230DA | The ID of the request. |
 | SslVpnClientCert Id | String | vsc- bp1n8wcf134yl0osr** ** | The ID of the SSL client certificate. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=ModifySslVpnClientCert &RegionId=cn-hangzhou &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr**** &Name=cert2 <ModifySslVpnClientCertResponse>
+```
+https://vpc.example.com/?Action=ModifySslVpnClientCert &RegionId=cn-hangzhou &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr**** &Name=cert2 &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<ModifySslVpnClientCertResponse>
       <SslVpnClientCertId>vsc-bp1n8wcf134yl0osr****</SslVpnClientCertId>
       <Name>cert2</Name>
       <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId>
 </ModifySslVpnClientCertResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Name":"cert2",
  "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA",
  "SslVpnClientCertId":"vsc-bp1n8wcf134yl0osr****"
 ```
 
+`}`
+
 #### 1.14.19 ModifyVpnGatewayAttribute
 
-You can call this operation to modify the name and description of a VPN gateway.
+You can call this operation to modify the name and description of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5165,6 +6247,8 @@ You can call this operation to modify the name and description of a VPN gateway.
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | Description | String | No | VPN Gateway | The description of the VPN gateway. The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 | Name | String | No | myvpn | The name of the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5187,10 +6271,16 @@ You can call this operation to modify the name and description of a VPN gateway.
 | IntranetIp | String | 172.16.104.xxx | The private IP address of the VPN gateway. |
 | RequestId | String | 54B48E3D-DF70- 471B-AA93- 08E683A1B457 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
+
+```
+https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-shanghai &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-shanghai &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** <ModifyVpnGatewayAttributeResponse>
+<ModifyVpnGatewayAttributeResponse>
       <Name>aaa</Name>
       <Status>active</Status>
       <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId>
@@ -5221,9 +6311,11 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-shanghai 
  "VpcId":"vpc-bp1ub1yt9cvakoelj****"
 ```
 
+`}`
+
 #### 1.14.20 CreateVpnConnection
 
-You can call this operation to create an IPsec-VPN connection.
+You can call this operation to create an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5250,6 +6342,8 @@ You can call this operation to create an IPsec-VPN connection.
 | IpsecConfig | String | No | ['IpsecAuthAlg':'m d5','IpsecEncAlg':' aes'] | The configurations of phase two negotiations. IpsecConf ig.IpsecEncAlg: The encryption algorithm of phase two negotiations. Valid values: aes \| aes192 \| aes256 \| des \| 3des. Default value: aes. IpsecConf ig. IpsecAut hAlg: The authentication algorithm of phase two negotiations. Valid values: md5 \| sha1. Default value: md5. IpsecConf ig. IpsecPf s: The Diffie- Hellman group for perfect forward secrecy (PFS). The Diffie-Hellman key exchange algorithm used by phase two negotiations. Valid values: group1 \| group2 \| group5 \| group14 \| group24. Default value: group2. IpsecConf ig. IpsecLif et ime: The SA lifetime value resulting from phase two negotiations. Valid values: 0 t o 86400. Unit: seconds. Default value: 86400. |
 | Name | String | No | IPsec | The name of the IPsec-VPN connection. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VpnConnectionI d | String | vco- bp15oes1py4i6**** | The ID of the IPsec-VPN connection. |
@@ -5259,18 +6353,31 @@ You can call this operation to create an IPsec-VPN connection.
 
 Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx4xnk**** &LocalSubnet=1.1.1.0/24,1.1.2.0/24 &RegionId=cn-shanghai &RemoteSubnet=1.1.1.0/24,1.1.2.0/24 &VpnGatewayId=vpn-bp1q8bgx4xnkm**** <CreateVpnConnectionResponse>
+```
+http(s)://vpc.example.com/? Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx4xnk**** &LocalSubnet=1.1.1.0/24,1.1.2.0/24 &RegionId=cn-shanghai &RemoteSubnet=1.1.1.0/24,1.1.2.0/24 &VpnGatewayId=vpn-bp1q8bgx4xnkm**** &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<CreateVpnConnectionResponse>
       <VpnConnectionId>vco-bp1bbi27hojx8****</VpnConnectionId>
       <CreateTime>1493363928000</CreateTime>
 </CreateVpnConnectionResponse>
+```
+
+`JSON` format `{`
+
+```json
  "VpnConnectionId":"vco-bp15oes1py4i6****",
  "CreateTime":1544666102000
 ```
 
+`}`
+
 #### 1.14.21 DescribeVpnConnections
 
-Queries one or more IPsec-VPN connections.
+Queries one or more IPsec-VPN connections. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5287,6 +6394,8 @@ Queries one or more IPsec-VPN connections.
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10 |
 | VpnConnectionId | String | No | vco- bp15oes1py4i6*** * | The ID of the IPsec-VPN connection. |
 | VpnGatewayId | String | No | vpn- bp1q8bgx4xnkx*** * | The ID of the VPN gateway. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5330,13 +6439,13 @@ Queries one or more IPsec-VPN connections.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | 54A4B3D0-DF4D- 4C54-B8DC- 5DC8DD49C939 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 https://vpc.example.com/?Action=DescribeVpnConnections &RegionId=cn-hangzhou
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeVpnConnections>
@@ -5377,10 +6486,17 @@ Sample success responses
 </DescribeVpnConnections>
 ```
 
+`JSON` format
+
 ```json
  "PageNumber":1,
  "VpnConnections":{
   "VpnConnection":[
+```
+
+`{`
+
+```json
     "CustomerGatewayId":"cgw-bp1pvpl9r9adjxxxxxxxx",
     "Name": "VPN connection test",
     "RemoteSubnet":"2.2.2.0/24",
@@ -5412,7 +6528,7 @@ Sample success responses
      "LocalId":"116.xx.xx.64"
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
  "TotalCount":1,
@@ -5420,9 +6536,11 @@ Sample success responses
  "RequestId":"54A4B3D0-DF4D-4C54-B8DC-5DC8DD49C939"
 ```
 
+`}`
+
 #### 1.14.22 ModifyVpnConnectionAttribute
 
-You can call this operation to modify the configuration of an IPsec-VPN connection.
+You can call this operation to modify the configuration of an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5488,10 +6606,16 @@ You can call this operation to modify the configuration of an IPsec-VPN connecti
 | Retry | Integer | 1 | The number of attempts for resending health check probes. |
 | Sip | String | 2.2.2.xx | The source IP address configured for health checks. |
 
-Sample requests
+Examples Sample requests
+
+```
+https://vpc.example.com/?Action=ModifyVpnConnectionAttribute &RegionId=cn-shanghai &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-https://vpc.example.com/?Action=ModifyVpnConnectionAttribute &RegionId=cn-shanghai &VpnConnectionId=vco-bp1bbi27hojx80nck**** <ModifyVpnConnectionAttributeResponse>
+<ModifyVpnConnectionAttributeResponse>
       <Name>VPN connection tsst</Name>
       <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId>
       <RemoteSubnet>2.2.2.0/24</RemoteSubnet>
@@ -5553,9 +6677,11 @@ https://vpc.example.com/?Action=ModifyVpnConnectionAttribute &RegionId=cn-shangh
   "LocalId":"116.62.69.xx"
 ```
 
+`}` `}`
+
 #### 1.14.23 CreateSslVpnClientCert
 
-You can call this operation to create an SSL client certificate.
+You can call this operation to create an SSL client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5568,16 +6694,24 @@ You can call this operation to create an SSL client certificate.
 | ClientToken | String | No | 02fb3da4-130e- 11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | Name | String | No | SslVpnClientCert1 | The name of the client certificate. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Name | String | SslVpnClientCert | The name of the client certificate. |
 | RequestId | String | 079874CD-AEC1- 43E6-AC03- ADD96B6E4907 | The ID of the request. |
 | SslVpnClientCert Id | String | vsc- m5euof6s5jy8vs5kd** ** | The ID of the client certificate. |
 
-Sample requests
+Examples Sample requests
+
+```
+https://vpc.example.com/?Action=CreateSslVpnClientCert &RegionId=cn-hangzhou &SslVpnServerId=vss-m5et0q3iy1qex328w**** &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-https://vpc.example.com/?Action=CreateSslVpnClientCert &RegionId=cn-hangzhou &SslVpnServerId=vss-m5et0q3iy1qex328w**** <CreateSslVpnClientCertResponse>
+<CreateSslVpnClientCertResponse>
       <SslVpnClientCertId>vsc-bp1n8wcf134yl0osr****</SslVpnClientCertId>
       <RequestId>606998F0-B94D-48FE-8316-ACA81BB230DA</RequestId>
 </CreateSslVpnClientCertResponse>
@@ -5588,9 +6722,11 @@ https://vpc.example.com/?Action=CreateSslVpnClientCert &RegionId=cn-hangzhou &Ss
  "SslVpnClientCertId":"vsc-bp1n8wcf134yl0osr****"
 ```
 
+`}`
+
 #### 1.14.24 DescribeSslVpnClientCerts
 
-You can call this operation to query one or more SSL client certificates.
+You can call this operation to query one or more SSL client certificates. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5601,6 +6737,8 @@ You can call this operation to query one or more SSL client certificates.
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 | SslVpnClientCertId | String | No | vsc- bp1n8wcf134yl0o sr**** | The name of the SSL client certificate. |
 | SslVpnServerId | String | No | vss- bp18q7hzj6largv4 v**** | The ID of the SSL server. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5622,13 +6760,13 @@ You can call this operation to query one or more SSL client certificates.
 | Status | String | normal | The status of the client certificate. expiring-soon: The certificate will expire in one week. normal: The certificate is in a normal state. expired: The certificate has expired. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://vpc.example.com/? Action=DescribeSslVpnClientCerts &RegionId=cn-hangzhou
+http(s)://vpc.example.com/? Action=DescribeSslVpnClientCerts &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-```json
+```xml
 <DescribeSslVpnServersResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
@@ -5653,6 +6791,11 @@ http(s)://vpc.example.com/? Action=DescribeSslVpnClientCerts &RegionId=cn-hangzh
       </SslVpnServers>
       <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId>
 </DescribeSslVpnServersResponse>
+```
+
+`JSON` format `{`
+
+```json
  "DescribeSslVpnServersResponse":{
   "PageNumber":"1",
   "TotalCount":"1",
@@ -5674,16 +6817,18 @@ http(s)://vpc.example.com/? Action=DescribeSslVpnClientCerts &RegionId=cn-hangzh
     "Connections":"0"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "PageSize":"10",
   "RequestId":"DF11D6F6-E35A-41C3-9B20-6FC8A901FE65"
 ```
 
+`}`
+
 #### 1.14.25 DeleteVpnPbrRouteEntry
 
-You can call this operation to delete a VPN policy-based route.
+You can call this operation to delete a VPN policy-based route. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5701,18 +6846,31 @@ You can call this operation to delete a VPN policy-based route.
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 <DeleteVpnPbrRouteEntryResponse>
+```
+http(s)://vpc.example.com/? Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<DeleteVpnPbrRouteEntryResponse>
       <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId>
 </DeleteVpnPbrRouteEntryResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
+`}`
+
 #### 1.14.26 DeleteVpnRouteEntry
 
-You can call this operation to delete a destination-based route for a VPN gateway.
+You can call this operation to delete a destination-based route for a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5731,26 +6889,35 @@ You can call this operation to delete a destination-based route for a VPN gatewa
 | ClientToken | String | No | d7d24a21-f4ba- 4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The tunneling protocol. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://vpc.example.com/? Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://vpc.example.com/? Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
 
-```json
+```xml
 <DeleteVpnRouteEntryResponse>
         <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId>
 </DeleteVpnRouteEntryResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
+`}`
+
 #### 1.14.27 CreateVpnPbrRouteEntry
 
-You can call this operation to create a policy-based route for a VPN gateway.
+You can call this operation to create a policy-based route for a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5772,6 +6939,8 @@ You can call this operation to create a policy-based route for a VPN gateway.
 | Description | String | No | vpnroute1 | The description of the policy-based route. |
 | OverlayMode | String | No | Ipsec | The tunneling protocol. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CreateTime | Long | 1492747187000 | The time when the policy-based route was created. |
@@ -5791,10 +6960,16 @@ You can call this operation to create a policy-based route for a VPN gateway.
 | VpnInstanceId | String | vpn- bp1cmw7jh1nfe43m9 **** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the policy-based route. Valid values: 0 and 100. |
 
-Sample requests
+Examples Sample requests
+
+```
+http(s)://vpc.example.com/? Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
+```
+
+Sample responses `XML` format
 
 ```xml
-http(s)://vpc.example.com/? Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 <CreateVpnPbrRouteEntryResponse>
+<CreateVpnPbrRouteEntryResponse>
    <RouteDest>10.0.0.0/24</RouteDest>
    <RouteSource>192.168.1.0/24</RouteSource>
    <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId>
@@ -5805,6 +6980,8 @@ http(s)://vpc.example.com/? Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1p
    <NextHop>vco-bp1tui07ob10fmuro****</NextHop>
 </CreateVpnPbrRouteEntryResponse>
 ```
+
+`JSON` format
 
 ```json
  "RouteDest":"10.0.0.0/24",
@@ -5817,9 +6994,11 @@ http(s)://vpc.example.com/? Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1p
  "RouteSource":"192.168.1.0/24"
 ```
 
+`}`
+
 #### 1.14.28 DescribeVpnRouteEntries
 
-You can call this operation to query one or more destination-based routes of a VPN gateway.
+You can call this operation to query one or more destination-based routes of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5828,6 +7007,8 @@ You can call this operation to query one or more destination-based routes of a V
 | VpnGatewayId | String | Yes | vpn- bp1a3kqjiiq9legfx* *** | The ID of the VPN gateway. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5846,13 +7027,15 @@ You can call this operation to query one or more destination-based routes of a V
 | VpnInstanceId | String | vpn- bp1cmw7jh1nfe43m9 **** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the destination-based route. Valid values: 0 and 100. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://vpc.example.com/? Action=DescribeVpnRouteEntries &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
+http(s)://vpc.example.com/? Action=DescribeVpnRouteEntries &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &<Common request parameters>
 ```
 
-```json
+Sample responses `XML` format
+
+```xml
 <DescribeVpnRouteEntriesResponse>
    <PageNumber>1</PageNumber>
    <TotalCount>1</TotalCount>
@@ -5869,11 +7052,21 @@ http(s)://vpc.example.com/? Action=DescribeVpnRouteEntries &RegionId=cn-hangzhou
    <PageSize>10</PageSize>
    <RequestId>BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5</RequestId>
 </DescribeVpnRouteEntriesResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":1,
  "TotalCount":1,
  "PageSize":10,
  "VpnRouteEntries":{
   "VpnRouteEntry":[
+```
+
+`{`
+
+```json
     "RouteDest":"10.0.0.0/24",
     "VpnInstanceId":"vpn-bp1cmw7jh1nfe43m9****",
     "Weight":100,
@@ -5882,15 +7075,17 @@ http(s)://vpc.example.com/? Action=DescribeVpnRouteEntries &RegionId=cn-hangzhou
     "CreateTime":1563874074000
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId":"BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5"
 ```
 
+`}`
+
 #### 1.14.29 ModifyVpnRouteEntryWeight
 
-You can call this operation to modify the weight of a destination-based route of a VPN gateway.
+You can call this operation to modify the weight of a destination-based route of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5907,22 +7102,37 @@ You can call this operation to modify the weight of a destination-based route of
 | ClientToken | String | No | d7d24a21-f4ba- 4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The tunneling protocol. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 <ModifyVpnRouteEntryWeightResponse>
+```
+http(s)://vpc.example.com/? Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<ModifyVpnRouteEntryWeightResponse>
         <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId>
 </ModifyVpnRouteEntryWeightResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
+`}`
+
 #### 1.14.30 PublishVpnRouteEntry
 
-You can call this operation to publish a route of a VPN gateway to the routing table of the associated VPC network.
+You can call this operation to publish a route of a VPN gateway to the routing table of the associated VPC network. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5938,26 +7148,37 @@ You can call this operation to publish a route of a VPN gateway to the routing t
 | VpnGatewayId | String | Yes | vpn- bp1a3kqjiiq9legfx* *** | The ID of the VPN gateway. |
 | ClientToken | String | No | d7d24a21-f4ba- 4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://vpc.example.com/? Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteType=PBR &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
+http(s)://vpc.example.com/? Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteType=PBR &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &<Common request parameters>
 ```
 
-```json
+Sample responses
+
+```xml
 <PublishVpnRouteEntryResponse>
       <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId>
 </PublishVpnRouteEntryResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78"
 ```
 
+`}`
+
 #### 1.14.31 DescribeVpnPbrRouteEntries
 
-You can call this operation to query one or more policy-based routes of a VPN gateway.
+You can call this operation to query one or more policy-based routes of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5966,6 +7187,8 @@ You can call this operation to query one or more policy-based routes of a VPN ga
 | VpnGatewayId | String | Yes | vpn- bp1a3kqjiiq9legfx* *** | The ID of the VPN gateway. |
 | PageNumber | Integer | No | 10 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5985,13 +7208,15 @@ You can call this operation to query one or more policy-based routes of a VPN ga
 | VpnInstanceId | String | vpn- bp1cmw7jh1nfe43m9 **** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the policy-based route. Valid values: 0 and 100. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://vpc.example.com/? Action=DescribeVpnPbrRouteEntries &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
+http(s)://vpc.example.com/? Action=DescribeVpnPbrRouteEntries &RegionId=cn-hangzhou &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &<Common request parameters>
 ```
 
-```json
+Sample responses
+
+```xml
 <DescribeVpnPbrRouteEntriesResponse>
    <PageNumber>1</PageNumber>
    <TotalCount>1</TotalCount>
@@ -6009,12 +7234,22 @@ http(s)://vpc.example.com/? Action=DescribeVpnPbrRouteEntries &RegionId=cn-hangz
       </VpnPbrRouteEntry>
    </VpnPbrRouteEntries>
 </DescribeVpnPbrRouteEntriesResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":1,
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"E5D94DC7-AEC7-4E73-A203-61B04D1F1160",
  "VpnPbrRouteEntries":{
   "VpnPbrRouteEntry":[
+```
+
+`{`
+
+```json
     "RouteDest":"10.0.0.0/32",
     "VpnInstanceId":"vpn-bp1cmw7jh1nfe43m9****",
     "Weight":100,
@@ -6024,11 +7259,11 @@ http(s)://vpc.example.com/? Action=DescribeVpnPbrRouteEntries &RegionId=cn-hangz
     "CreateTime":1563881012000
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 1.14.32 ModifyVpnPbrRouteEntryWeight
 
-You can call this operation to modify the weight of a policy-based route of a VPN gateway.
+You can call this operation to modify the weight of a policy-based route of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6049,22 +7284,37 @@ You can call this operation to modify the weight of a policy-based route of a VP
 | ClientToken | String | No | d7d24a21-f4ba- 4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The tunneling protocol. Set the value to Ipsec (IPsec tunneling protocol). |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
 Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=100 <ModifyVpnPbrRouteEntryWeightResponse>
+```
+http(s)://vpc.example.com/? Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=100 &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<ModifyVpnPbrRouteEntryWeightResponse>
         <RequestId>5BE01CD7-5A50-472D-AC14-CA181C5C03BE</RequestId>
 </ModifyVpnPbrRouteEntryWeightResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29"
 ```
 
+`}`
+
 #### 1.14.33 CreateVpnRouteEntry
 
-You can call this operation to create a destination-based route for a VPN gateway.
+You can call this operation to create a destination-based route for a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6080,6 +7330,8 @@ You can call this operation to create a destination-based route for a VPN gatewa
 | Weight | Integer | Yes | 0 | The weight of the destination-based route. Valid values: 0 and 100. |
 | ClientToken | String | No | d7d24a21-f4ba- 4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The tunneling protocol. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6098,10 +7350,16 @@ You can call this operation to create a destination-based route for a VPN gatewa
 | VpnInstanceId | String | vpn- bp1cmw7jh1nfe43m9 **** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the destination-based route. Valid values: 0 and 100. |
 
-Sample requests
+Examples Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 <CreateVpnRouteEntryResponse>
+```
+http(s)://vpc.example.com/? Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-hangzhou &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<CreateVpnRouteEntryResponse>
    <RouteDest>10.0.0.0/24</RouteDest>
    <VpnInstanceId>vpn-bp1cmw7jh1nfe43m9****</VpnInstanceId>
    <OverlayMode>Ipsec</OverlayMode>
@@ -6111,6 +7369,11 @@ http(s)://vpc.example.com/? Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i
    <NextHop>vco-bp1tui07ob10fmuro****</NextHop>
       <RequestId>EE4C2417-9437-4333-BDEB-8493F7AA7258</RequestId>
 </CreateVpnRouteEntryResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RouteDest":"10.0.0.0/24",
  "VpnInstanceId":"vpn-bp1cmw7jh1nfe43m9****",
  "OverlayMode":"Ipsec",
@@ -6123,7 +7386,7 @@ http(s)://vpc.example.com/? Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i
 
 #### 1.14.34 DescribeVpnSslServerLogs
 
-You can call this operation to query the logs of an SSL server.
+You can call this operation to query the logs of an SSL server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6135,6 +7398,8 @@ You can call this operation to query the logs of an SSL server.
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 | To | Integer | No | 2018020206 | The end time of the logs to be queried. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6148,10 +7413,16 @@ You can call this operation to query the logs of an SSL server.
 | PageSize | Integer | 1 | The number of entries returned per page. |
 | RequestId | String | 5BE01CD7-5A50- 472D-AC14- CA181C5C03BE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-http(s)://vpc.example.com/? Action=DescribeVpnSslServerLogs &RegionId=cn-hangzhou &VpnSslServerId=vss-bp155e9yclsg1xgq4**** <DescribeVpnSslServerLogsResponse>
+```
+http(s)://vpc.example.com/? Action=DescribeVpnSslServerLogs &RegionId=cn-hangzhou &VpnSslServerId=vss-bp155e9yclsg1xgq4**** &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<DescribeVpnSslServerLogsResponse>
    <Data></Data>
    <PageNumber>1</PageNumber>
    <Count>0</Count>
@@ -6159,6 +7430,11 @@ http(s)://vpc.example.com/? Action=DescribeVpnSslServerLogs &RegionId=cn-hangzho
    <IsCompleted>true</IsCompleted>
    <RequestId>26641E42-66C7-4942-9FEC-F99213914F8F</RequestId>
 </DescribeVpnSslServerLogsResponse>
+```
+
+`JSON` format `{`
+
+```json
  "PageNumber":1,
  "Data":{
   "Logs":[]
@@ -6173,15 +7449,19 @@ http(s)://vpc.example.com/? Action=DescribeVpnSslServerLogs &RegionId=cn-hangzho
  "RequestId":"26641E42-66C7-4942-9FEC-F99213914F8F"
 ```
 
+`}`
+
 #### 1.14.35 DescribeSslVpnClientCert
 
-You can call this operation to query an SSL client certificate.
+You can call this operation to query an SSL client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSslVpnClie ntCert | The operation that you want to perform. Set the value to DescribeSslVpnClient Cert . |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the SSL client certificate to be queried. You can call the DescribeRegions operation to query the most recent region list. |
 | SslVpnClientCertId | String | Yes | vsc- bp17r58rjf5r1gjyr* *** | The ID of the SSL client certificate to be queried. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6204,13 +7484,13 @@ You can call this operation to query an SSL client certificate.
 | EndTime | Long | 1647158980000 | The time when the SSL client certificate expires. |
 | Status | String | normal | The status of the client certificate. expiring-soon: The certificate will expire in one week. normal: The certificate is normal. expired: The certificate has expired. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://vpc.example.com/? Action=DescribeSslVpnClientCert &RegionId=cn-hangzhou &SslVpnClientCertId=vsc-bp17r58rjf5r1gjyr****
+http(s)://vpc.example.com/? Action=DescribeSslVpnClientCert &RegionId=cn-hangzhou &SslVpnClientCertId=vsc-bp17r58rjf5r1gjyr**** &<Common request parameters>
 ```
 
-`JSON` &nbsp;format
+Sample responses `JSON` &nbsp;format `{`
 
 ```json
     "Name": "df",
@@ -6226,6 +7506,8 @@ http(s)://vpc.example.com/? Action=DescribeSslVpnClientCert &RegionId=cn-hangzho
     "CaCert": "****",
     "SslVpnServerId": "vss-bp155e9yclsg1xgq4****"
 ```
+
+`}` `XML` format
 
 ```xml
 <DescribeSslVpnServersResponse>
@@ -6248,7 +7530,7 @@ http(s)://vpc.example.com/? Action=DescribeSslVpnClientCert &RegionId=cn-hangzho
 
 #### 1.15.1 CreateIpv6Gateway
 
-You can call this operation to create an IPv6 gateway.
+You can call this operation to create an IPv6 gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6263,29 +7545,40 @@ You can call this operation to create an IPv6 gateway.
 | Name | String | No | ipv6GW | The name of the IPv6 gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 | Spec | String | No | Small | The specification of the IPv6 gateway. Valid values: Small (default): free edition Medium: enterprise edition Large: enhanced enterprise edition |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Ipv6GatewayId | String | ipv6gw- hp3y0l3ln89j8bgnh*** * | The ID of the IPv6 gateway. |
 | RequestId | String | 0ED8D006-F706- 4D23-88ED- E11ED28DCAC | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 https://vpc.example.com/?Action=CreateIpv6Gateway &RegionId=cn-huhehaote &VpcId=vpc-hp3x04of74a6aqsw**** &Common request parameters
 ```
 
-```json
+Sample responses `XML` format
+
+```xml
 <CreateIpv6GatewayResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
       <Ipv6GatewayId>vipv6gw-hp3y0l3ln89j8qsw****</Ipv6GatewayId>
 </CreateIpv6GatewayResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
  "Ipv6GatewayId":"ipv6gw-hp3y0l3ln89j8qsw****"
 ```
 
+`}`
+
 #### 1.15.2 DeleteIpv6Gateway
 
-You can call this operation to delete an IPv6 gateway. API description Before you can delete an IPv6 gateway of the enterprise or enhanced enterprise type, you must delete the egress-only rules of the IPv6 gateway.
+You can call this operation to delete an IPv6 gateway. API description Before you can delete an IPv6 gateway of the enterprise or enhanced enterprise type, you must delete the egress-only rules of the IPv6 gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6293,22 +7586,37 @@ You can call this operation to delete an IPv6 gateway. API description Before yo
 | Ipv6GatewayId | String | Yes | ipv6gw- hp3y0l3ln89j8bgn h**** | The ID of the IPv6 gateway instance that you want to delete. |
 | RegionId | String | Yes | cn-huhehaote | The region ID of the IPv6 gateway. You can call the DescribeRegions operation to query the most recent region list. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | E9A8AABE-A84B- 4AF2-A68A- 8E2EA190E7AE | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=DeleteIpv6Gateway &Ipv6GatewayId=ipv6gw-hp3y0l3ln89j8bgnh**** &RegionId=cn-huhehaote <DeleteIpv6GatewayResponse>
+```
+https://vpc.example.com/?Action=DeleteIpv6Gateway &Ipv6GatewayId=ipv6gw-hp3y0l3ln89j8bgnh**** &RegionId=cn-huhehaote &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<DeleteIpv6GatewayResponse>
       <RequestId>E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE</RequestId>
 </DeleteIpv6GatewayResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE"
 ```
 
+`}`
+
 #### 1.15.3 ModifyIpv6GatewaySpec
 
-You can call this operation to modify the specification of an IPv6 gateway.
+You can call this operation to modify the specification of an IPv6 gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6321,22 +7629,37 @@ You can call this operation to modify the specification of an IPv6 gateway.
 |---|---|---|---|---|
 | ClientToken | String | No | 123456 | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9DFEDBEE-E5AB-49E8- A2DC-CC114C67AF75 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=ModifyIpv6GatewaySpec &RegionId=cn-huhehaote &Ipv6GatewayId=ipv6gw-123456cdvf**** &Spec=Middle &Common request parameters <ModifyIpv6GatewaySpecResponse>
+```
+https://vpc.example.com/?Action=ModifyIpv6GatewaySpec &RegionId=cn-huhehaote &Ipv6GatewayId=ipv6gw-123456cdvf**** &Spec=Middle &Common request parameters
+```
+
+Sample responses `XML` format
+
+```xml
+<ModifyIpv6GatewaySpecResponse>
    <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId>
 </ModifyIpv6GatewaySpecResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
 
+`}`
+
 #### 1.15.4 DescribeIpv6EgressOnlyRules
 
-You can call this operation to query the egress-only rules that match specific conditions.
+You can call this operation to query the egress-only rules that match specific conditions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6352,6 +7675,8 @@ You can call this operation to query the egress-only rules that match specific c
 | Name | String | No | rulename | The name of the egress-only rule. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6370,13 +7695,15 @@ You can call this operation to query the egress-only rules that match specific c
 | RequestId | String | E16671B7-DEA6- 48E0-8E9C- 41913DAD44DD | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
-Sample requests
+Examples Sample requests
 
 ```
 https://vpc.example.com/?Action=DescribeIpv6EgressOnlyRules &RegionId=cn-huhehaote &Ipv6GatewayId=ipv6gw-123456cdvf**** &Common request parameters
 ```
 
-```json
+Sample responses `XML` format
+
+```xml
 <DescribeIpv6EgressOnlyRulesResponse>
    <Ipv6EgressOnlyRules>
       <Ipv6EgressOnlyRule>
@@ -6393,8 +7720,18 @@ https://vpc.example.com/?Action=DescribeIpv6EgressOnlyRules &RegionId=cn-huhehao
    <PageSize>10</PageSize>
    <RequestId>D1FFB517-D1A7-49BA-9169-C7E7194A9B55</RequestId>
 </DescribeIpv6EgressOnlyRulesResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Ipv6EgressOnlyRules":{
   "Ipv6EgressOnlyRule":[
+```
+
+`{`
+
+```json
     "Name":"",
     "Status":"Available",
     "Description":"",
@@ -6403,7 +7740,7 @@ https://vpc.example.com/?Action=DescribeIpv6EgressOnlyRules &RegionId=cn-huhehao
     "InstanceType":"Ipv6Address"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageNumber":1,
@@ -6412,9 +7749,11 @@ https://vpc.example.com/?Action=DescribeIpv6EgressOnlyRules &RegionId=cn-huhehao
  "RequestId":"D1FFB517-D1A7-49BA-9169-C7E7194A9B55"
 ```
 
+`}`
+
 #### 1.15.5 CreateIpv6EgressOnlyRule
 
-You can call this operation to create and configure an egress-only rule with an IPv6 address.
+You can call this operation to create and configure an egress-only rule with an IPv6 address. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6430,6 +7769,8 @@ You can call this operation to create and configure an egress-only rule with an 
 | InstanceType | String | No | IPv6Address | The type of the instance that will be configured with the egress-only rule. Set the value to: Ipv6Address (Default): IPv6 address |
 | Name | String | No | rulename | The name of the egress-only rule. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -6438,20 +7779,33 @@ You can call this operation to create and configure an egress-only rule with an 
 | Ipv6EgressRuleId | String | ipv6py- hp3w98rmlbqp01245 **** | The ID of the egress-only rule. |
 | RequestId | String | 9DFEDBEE-E5AB-49E8- A2DC-CC114C67AF75 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=CreateIpv6EgressOnlyRule &RegionId=cn-huhehaote &InstanceId=ipv6-hp3nxjkfxn5pnhgl5**** &Ipv6GatewayId=ipv6gw-hp3c2paq0ywauasza**** &Common request parameters <CreateIpv6EgressOnlyRuleResponse>
+```
+https://vpc.example.com/?Action=CreateIpv6EgressOnlyRule &RegionId=cn-huhehaote &InstanceId=ipv6-hp3nxjkfxn5pnhgl5**** &Ipv6GatewayId=ipv6gw-hp3c2paq0ywauasza**** &Common request parameters
+```
+
+Sample responses `XML` format
+
+```xml
+<CreateIpv6EgressOnlyRuleResponse>
    <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId>
    <Ipv6EgressRuleId>ipv6py-hp3w98rmlbqp01245****</Ipv6EgressRuleId>
 </CreateIpv6EgressOnlyRuleResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75",
  "Ipv6EgressRuleId":"ipv6py-hp3w98rmlbqp01245****"
 ```
 
+`}`
+
 #### 1.15.6 DeleteIpv6EgressOnlyRule
 
-You can call this operation to delete an egress-only rule.
+You can call this operation to delete an egress-only rule. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6463,18 +7817,33 @@ You can call this operation to delete an egress-only rule.
 | RegionId | String | Yes | cn-huhehaote | The region ID of the IPv6 gateway. |
 | ClientToken | String | No | 123456 | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9DFEDBEE-E5AB-49E8- A2DC-CC114C67AF75 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=DeleteIpv6EgressOnlyRule &RegionId=cn-huhehaote &Ipv6EgressOnlyRuleId=ipv6py-hp3w98rmlbqp0vfbg**** &Common request parameters <DeleteIpv6EgressOnlyRuleResponse>
+```
+https://vpc.example.com/?Action=DeleteIpv6EgressOnlyRule &RegionId=cn-huhehaote &Ipv6EgressOnlyRuleId=ipv6py-hp3w98rmlbqp0vfbg**** &Common request parameters
+```
+
+Sample responses `XML` format
+
+```xml
+<DeleteIpv6EgressOnlyRuleResponse>
    <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId>
 </DeleteIpv6EgressOnlyRuleResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"4E40EAF1-783D-4C05-948D-DA0426C398C1"
 ```
+
+`}`
 
 #### 1.15.7 DeleteIpv6InternetBandwidth
 
@@ -6487,18 +7856,33 @@ You can call this operation to disable public access to an IPv6 address and set 
 | Ipv6AddressId | String | No | ipv6- 123456xxxxxxxx | The ID of the IPv6 address. |
 | Ipv6InternetBandw idthId | String | No | 2 | The public network bandwidth of the IPv6 address. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | E07E0FE6-5C21-405F- AF82-7613AA81EF92 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=DeleteIpv6InternetBandwidth &RegionId=cn-huhehaote <DeleteIpv6InternetBandwidthResponse>
+```
+https://vpc.example.com/?Action=DeleteIpv6InternetBandwidth &RegionId=cn-huhehaote &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<DeleteIpv6InternetBandwidthResponse>
    <RequestId>6972A26E-99B1-4367-9890-FBDEBB0F5E7D</RequestId>
 </DeleteIpv6InternetBandwidthResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"E07E0FE6-5C21-405F-AF82-7613AA81EF92"
 ```
+
+`}`
 
 #### 1.15.8 DescribeIpv6GatewayAttribute
 
@@ -6509,6 +7893,8 @@ You can call this operation to query the details of an IPV6 gateway.
 | Action | String | Yes | DescribeIpv6Gate wayAttribute | The operation that you want to perform. Set the value to DescribeIpv6Gat ewayAt t ribut e. |
 | Ipv6GatewayId | String | Yes | ipv6gw- 123456vfbg**** | The ID of the IPv6 gateway to query. |
 | RegionId | String | Yes | cn-huhehaote | The region ID of the IPv6 gateway. You can call the DescribeRegions operation to query the most recent region list. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6527,10 +7913,16 @@ You can call this operation to query the details of an IPV6 gateway.
 | Status | String | Available | The status of the IPv6 gateway. |
 | VpcId | String | vpc-123456vfbg**** | The ID of the VPC instance to which the IPv6 gateway belongs. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp33p10bdbt77vfbg**** &RegionId=cn-huhehaote &Common request parameters <DescribeIpv6GatewayAttributeResponse>
+```
+https://vpc.example.com/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6gw-hp33p10bdbt77vfbg**** &RegionId=cn-huhehaote &Common request parameters
+```
+
+Sample responses `XML` format
+
+```xml
+<DescribeIpv6GatewayAttributeResponse>
    <Name>ipv6gateway</Name>
    <CreationTime>2018-12-05T09:21:35Z</CreationTime>
    <Status>Available</Status>
@@ -6543,6 +7935,11 @@ https://vpc.example.com/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6
    <VpcId>vpc-hp3kzilwd9yflvfbg****</VpcId>
    <Ipv6GatewayId>ipv6gw-hp33p10bdbt77vfbg****</Ipv6GatewayId>
 </DescribeIpv6GatewayAttributeResponse>
+```
+
+`JSON` format `{`
+
+```json
  "CreationTime":"2018-12-05T09:21:35Z",
  "Name":"ipv6gateway",
  "Status":"Available",
@@ -6555,6 +7952,8 @@ https://vpc.example.com/?Action=DescribeIpv6GatewayAttribute &Ipv6GatewayId=ipv6
  "VpcId":"vpc-hp3kzilwd9yflvfbg****",
  "Ipv6GatewayId":"ipv6gw-hp33p10bdbt77vfbg****"
 ```
+
+`}`
 
 #### 1.15.9 DescribeIpv6Addresses
 
@@ -6578,6 +7977,8 @@ Queries one or more IPv6 addresses.
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 | VSwitchId | String | No | vsw- 123456nhmj**** | The ID of the VSwitch to which the IPv6 address belongs. |
 | VpcId | String | No | vpc- 123456nhmj**** | The ID of the VPC to which the IPv6 address belongs. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6605,13 +8006,13 @@ Queries one or more IPv6 addresses.
 | RequestId | String | AA4486A8-B6AE- 469E-AB09- 820EF8ECFA2B | The ID of the request. |
 | TotalCount | Integer | 2 | The total number of entries returned. |
 
-Sample requests
+Examples Sample requests
 
 ```
 https://vpc.example.com/?Action=DescribeIpv6Addresses &RegionId=cn-huhehaote
 ```
 
-Sample success responses
+Sample success responses `XML` format
 
 ```xml
 <DescribeIpv6Addresses>
@@ -6667,6 +8068,11 @@ Sample success responses
  "TotalCount":2,
  "Ipv6Addresses":{
   "Ipv6Address":[
+```
+
+`{`
+
+```json
     "Ipv6AddressId":"ipv6-hp32vv2klzw4ynhmj****",
     "AssociatedInstanceType":"EcsInstance",
     "AllocationTime":"2019-01-07T05:16:23Z",
@@ -6690,7 +8096,7 @@ Sample success responses
     "RealBandwidth":0
 ```
 
-`},`
+`},` `{`
 
 ```json
     "Ipv6AddressId":"ipv6-hp331xt3oqafdnhmj****",
@@ -6716,12 +8122,14 @@ Sample success responses
     "RealBandwidth":0
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageSize":10,
  "RequestId":"AA4486A8-B6AE-469E-AB09-820EF8ECFA2B"
 ```
+
+`}`
 
 #### 1.15.10 AllocateIpv6InternetBandwidth
 
@@ -6736,28 +8144,43 @@ You can call this operation to purchase public network bandwidth for an IPv6 add
 | RegionId | String | Yes | cn-huhehaote | The region ID of the IPv6 gateway. You can call the DescribeRegions operation to query the most recent region list. |
 | ClientToken | String | No | 123456 | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | InternetBandwid thId | String | 2 | The purchased public network bandwidth. |
 | Ipv6AddressId | String | ipv6- hp352ungkzckndcvf** ** | The instance ID of the IPv6 address. |
 | RequestId | String | 6972A26E-99B1- 4367-9890- FBDEBB0F5E7D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?AllocateIpv6InternetBandwidth &Ipv6AddressId=ipv6-123456cdvf**** &Ipv6GatewayId=ipv6gw-123456cdvf**** &RegionId=cn-huhehaote <AllocateIpv6InternetBandwidthResponse>
+```
+https://vpc.example.com/?AllocateIpv6InternetBandwidth &Ipv6AddressId=ipv6-123456cdvf**** &Ipv6GatewayId=ipv6gw-123456cdvf**** &RegionId=cn-huhehaote &<Common request parameters>
+```
+
+Sample responses `XML` format
+
+```xml
+<AllocateIpv6InternetBandwidthResponse>
    <RequestId>6972A26E-99B1-4367-9890-FBDEBB0F5E7D</RequestId>
    <InternetBandwidthId>2</InternetBandwidthId>
    <Ipv6AddressId>ipv6-hp352ungkzckncdvf****</Ipv6AddressId>
 </AllocateIpv6InternetBandwidthResponse>
+```
+
+`JSON` format `{`
+
+```json
  "Ipv6AddressId":"ipv6-hp352ungkzckncdvf****",
  "RequestId":"6972A26E-99B1-4367-9890-FBDEBB0F5E7D",
  "InternetBandwidthId":2
 ```
 
+`}`
+
 #### 1.15.11 ModifyIpv6InternetBandwidth
 
-You can call this operation to modifiy the public network bandwidth of an IPv6 address.
+You can call this operation to modifiy the public network bandwidth of an IPv6 address. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6770,18 +8193,33 @@ You can call this operation to modifiy the public network bandwidth of an IPv6 a
 | ClientToken | String | No | 123456 | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | Ipv6AddressId | String | No | ipv6- 1233456cdvf**** | The instance ID of the IPv6 address. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D560AF68-4CE8- 4A5C-B3FE- 469F558094D0 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=ModifyIpv6InternetBandwidth &Bandwidth=3 &Ipv6AddressId=ipv6-hp351bytt9inrcdvf**** &RegionId=cn-huhehaote &Common request parameters <ModifyIpv6InternetBandwidthResponse>
+```
+https://vpc.example.com/?Action=ModifyIpv6InternetBandwidth &Bandwidth=3 &Ipv6AddressId=ipv6-hp351bytt9inrcdvf**** &RegionId=cn-huhehaote &Common request parameters
+```
+
+Sample responses `XML` format
+
+```xml
+<ModifyIpv6InternetBandwidthResponse>
    <RequestId>D560AF68-4CE8-4A5C-B3FE-469F558094D0</RequestId>
 </ModifyIpv6InternetBandwidthResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
+
+`}`
 
 #### 1.15.12 ModifyIpv6GatewayAttribute
 
@@ -6795,18 +8233,33 @@ You can call this operation to modify the name and description of an IPv6 gatewa
 | Description | String | No | ipv6description | The description of the IPv6 gateway. |
 | Name | String | No | ipv6name | The name of the IPv6 gateway. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9DFEDBEE-E5AB-49E8- A2DC-CC114C67AF75 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
-```json
-https://vpc.example.com/?Action=ModifyIpv6GatewayAttribute &RegionId=cn-huhehaote &Ipv6GatewayId=ipv6gw-hp39kh1ya51yzp2lu**** &Common request parameters <ModifyIpv6GatewayAttributeResponse>
+```
+https://vpc.example.com/?Action=ModifyIpv6GatewayAttribute &RegionId=cn-huhehaote &Ipv6GatewayId=ipv6gw-hp39kh1ya51yzp2lu**** &Common request parameters
+```
+
+Sample responses `XML` format
+
+```xml
+<ModifyIpv6GatewayAttributeResponse>
    <RequestId>9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75</RequestId>
 </ModifyIpv6GatewayAttributeResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
+
+`}`
 
 #### 1.15.13 ModifyIpv6AddressAttribute
 
@@ -6820,26 +8273,35 @@ You can call this operation to modify the name and description of an IPv6 addres
 | Description | String | No | test | The description of the IPv6 address. The description must be 2 to 256 characters in length. It can contain letters, digits, periods (.), underscores ( ), and hyphens (-). It must start with a _ letter or Chinese character and cannot start with http:// or https:// . |
 | Name | String | No | test | The name of the IPv6 address. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores ( ), and hyphens _ (-). It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D560AF68-4CE8- 4A5C-B3FE- 469F558094D0 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://vpc.example.com/? Action=ModifyIpv6AddressAttribute &Ipv6AddressId=ipv6-hp32vv2klzw4yerdf**** &RegionId=cn-huhehaote
 ```
 
-```json
+```xml
 <ModifyIpv6AddressAttributeResponse>
    <RequestId>D560AF68-4CE8-4A5C-B3FE-469F558094D0</RequestId>
 </ModifyIpv6AddressAttributeResponse>
+```
+
+`JSON` format `{`
+
+```json
  "RequestId":"D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
 
+`}`
+
 #### 1.15.14 DescribeIpv6Gateways
 
-You can call this operation to query one or more IPv6 gateways.
+You can call this operation to query one or more IPv6 gateways. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6850,6 +8312,8 @@ You can call this operation to query one or more IPv6 gateways.
 | PageNumber | Integer | No | 1 | The number of the returned page. |
 | PageSize | Integer | No | 10 | The number of entries returned per page. |
 | VpcId | String | No | vpc- 123456xscd**** | The ID of the VPC to which the IPv6 gateway belongs. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6875,8 +8339,14 @@ You can call this operation to query one or more IPv6 gateways.
 
 Sample requests
 
+```
+https://vpc.example.com/?Action=DescribeIpv6Gateways &RegionId=cn-huhehaote &Common request parameters
+```
+
+Sample responses `XML` format
+
 ```xml
-https://vpc.example.com/?Action=DescribeIpv6Gateways &RegionId=cn-huhehaote &Common request parameters <DescribeIpv6GatewaysResponse>
+<DescribeIpv6GatewaysResponse>
    <PageNumber>1</PageNumber>
    <Ipv6Gateways>
       <Ipv6Gateway>
@@ -6912,9 +8382,16 @@ https://vpc.example.com/?Action=DescribeIpv6Gateways &RegionId=cn-huhehaote &Com
 </DescribeIpv6GatewaysResponse>
 ```
 
+`JSON` format
+
 ```json
  "Ipv6Gateways":{
   "Ipv6Gateway":[
+```
+
+`{`
+
+```json
     "CreationTime":"2018-12-20T14:51:23Z",
     "Name":"",
     "Status":"Available",
@@ -6928,7 +8405,7 @@ https://vpc.example.com/?Action=DescribeIpv6Gateways &RegionId=cn-huhehaote &Com
     "Ipv6GatewayId":"ipv6gw-hp33of4uz4k4kxscd****"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "Name":"IPv6 gateway",
@@ -6944,7 +8421,7 @@ https://vpc.example.com/?Action=DescribeIpv6Gateways &RegionId=cn-huhehaote &Com
     "Ipv6GatewayId":"ipv6gw-hp33p10bdbt77xscd****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageNumber":1,
@@ -6953,11 +8430,13 @@ https://vpc.example.com/?Action=DescribeIpv6Gateways &RegionId=cn-huhehaote &Com
  "RequestId":"E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
 ```
 
+`}`
+
 ### 1.16 High-Availability Virtual IP
 
 #### 1.16.1 CreateHaVip
 
-Creates a high-availability virtual IP address (HAVIP).
+Creates a high-availability virtual IP address (HAVIP). Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -6970,15 +8449,23 @@ Creates a high-availability virtual IP address (HAVIP).
 | IpAddress | String | No | 192.xx.xx.10 | The IP address of the HAVIP. If this parameter is not specified, an idle IP address of the specified VSwitch is allocated to the HAVIP. |
 | Description | String | No | abcabc | The description of the HAVIP. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C44F62BE-9CE7-4277- B117-69243F3988BF | The ID of the request. |
 | HaVipId | String | havip- 2zeo05qre24nhrqpy*** * | The ID of the HAVIP. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=CreateHaVip &VSwitchId=vsw-asdfjlnaue4g**** &RegionId=cn-hangzhou &Common request parameters
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=CreateHaVip &VSwitchId=vsw-asdfjlnaue4g**** &RegionId=cn-hangzhou &Common request parameters <CreateHaVipResponse>
+<CreateHaVipResponse>
     <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId>
     <HaVipId>havip-2zeo05qre24nhrqpy****</HaVipId>
 </CreateHaVipResponse>
@@ -6989,9 +8476,11 @@ https://vpc.example.com/?Action=CreateHaVip &VSwitchId=vsw-asdfjlnaue4g**** &Reg
     "HaVipId": "havip-2zeo05qre24nhrqpy****"
 ```
 
+`}`
+
 #### 1.16.2 ModifyHaVipAttribute
 
-Modifies the description of a high-availability virtual IP address (HAVIP).
+Modifies the description of a high-availability virtual IP address (HAVIP). Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -7000,14 +8489,22 @@ Modifies the description of a high-availability virtual IP address (HAVIP).
 | HaVipId | String | Yes | havip- 2zeo05qre24nhrqp* *** | The ID of the HAVIP. |
 | Description | String | No | abcabc | The new description of the HAVIP. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C44F62BE-9CE7-4277- B117-69243F3988BF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=ModifyHaVipAttribute &HaVipId=havip-2zeo05qre24nhrqp**** &RegionId=cn-shanghai &Common request parameters
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=ModifyHaVipAttribute &HaVipId=havip-2zeo05qre24nhrqp**** &RegionId=cn-shanghai &Common request parameters <ModifyHaVipAttributeResponse>
+<ModifyHaVipAttributeResponse>
     <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId>
 </ModifyHaVipAttributeResponse>
 ```
@@ -7018,7 +8515,7 @@ https://vpc.example.com/?Action=ModifyHaVipAttribute &HaVipId=havip-2zeo05qre24n
 
 #### 1.16.3 DeleteHaVip
 
-Deletes a high-availability virtual IP address (HAVIP). When you call this operation, follow these rules: You can only delete an HAVIP that is in the Available state. Make sure that there is no route destined to the HAVIP that you want to delete. Make sure that the HAVIP you want to delete is not associated with any elastic IP address (EIP).
+Deletes a high-availability virtual IP address (HAVIP). Description When you call this operation, follow these rules: You can only delete an HAVIP that is in the Available state. Make sure that there is no route destined to the HAVIP that you want to delete. Make sure that the HAVIP you want to delete is not associated with any elastic IP address (EIP). Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -7026,26 +8523,35 @@ Deletes a high-availability virtual IP address (HAVIP). When you call this opera
 | RegionId | String | Yes | cn-shanghai | The region ID of the HAVIP. You can call the DescribeRegions operation to query the most recent region list. |
 | HaVipId | String | Yes | havip- 2zeo05qre24nhrqpy **** | The ID of the HAVIP to be deleted. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C44F62BE-9CE7-4277- B117-69243F3988B | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=DeleteHaVip &HaVipId=havip-2zeo05qre24nhrqpy**** &RegionId=cn-shanghai &Common request parameters
 ```
 
-```json
+```xml
 <DeleteHaVipResponse>
     <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId>
 </DeleteHaVipResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF"
 ```
 
+`}`
+
 #### 1.16.4 AssociateHaVip
 
-Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). When you call this operation, follow these rules: The HAVIP takes effect immediately after it is associated with an ECS instance in a VPC. You do not need to restart the ECS instance. However, you must configure the HAVIP on the network interface controller (NIC) of the ECS instance. The HAVIP and the ECS instance must belong to the same VSwitch. You can associate an HAVIP with a maximum of two ECS instances. The ECS instance must either be in the Running or Stopped state. The HAVIP must either be in the Available or InUse state.
+Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). Description When you call this operation, follow these rules: The HAVIP takes effect immediately after it is associated with an ECS instance in a VPC. You do not need to restart the ECS instance. However, you must configure the HAVIP on the network interface controller (NIC) of the ECS instance. The HAVIP and the ECS instance must belong to the same VSwitch. You can associate an HAVIP with a maximum of two ECS instances. The ECS instance must either be in the Running or Stopped state. The HAVIP must either be in the Available or InUse state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -7054,22 +8560,37 @@ Associates a high-availability virtual IP address (HAVIP) with an Elastic Comput
 | HaVipId | String | Yes | havip- 2zeo05qre24nhrqpy **** | The ID of the HAVIP. |
 | InstanceId | String | Yes | i- faf344422ffsfad**** | The ID of the ECS instance that you want to associate. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C44F62BE-9CE7-4277- B117-69243F3988BF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=AssociateHaVip &HaVipId=havip-2zeo05qre24nhrqpy**** &RegionId=cn-shanghai &InstanceId=i-faf344422ffsfad**** &Common request parameters <AssociateHaVipResponse>
+```
+https://vpc.example.com/?Action=AssociateHaVip &HaVipId=havip-2zeo05qre24nhrqpy**** &RegionId=cn-shanghai &InstanceId=i-faf344422ffsfad**** &Common request parameters
+```
+
+Sample responses XML format
+
+```xml
+<AssociateHaVipResponse>
     <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId>
 </AssociateHaVipResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF"
 ```
 
+`}`
+
 #### 1.16.5 UnassociateHaVip
 
-Dissociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). When you call this operation, follow these rules: The ECS instance must either be in the Running or Stopped state. The HAVIP must either be in the Available or InUse state.
+Dissociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). Description When you call this operation, follow these rules: The ECS instance must either be in the Running or Stopped state. The HAVIP must either be in the Available or InUse state. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -7085,18 +8606,33 @@ Dissociates a high-availability virtual IP address (HAVIP) from an Elastic Compu
 | InstanceId | String | Yes | i- faf344422ffsfad**** | The ID of the ECS instance that you want to dissociate. |
 | Force | String | No | True | Specifies whether to force a dissociation. Valid values: True and False. Default value: False Not e If you set this parameter to False, you cannot disassociate an HAVIP from a primary ECS instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C44F62BE-9CE7-4277- B117-69243F3988BF | The ID of the request. |
 
-Sample request s
+Examples Sample request s
 
-```json
-https://vpc.example.com/?Action=UnassociateHaVip &HaVipId=havip-2zeo05qre24nhrqpy**** &RegionId=cn-shanghai &InstanceId=i-faf344422ffsfad**** &Common request parameters <UnassociateHaVipResponse>
+```
+https://vpc.example.com/?Action=UnassociateHaVip &HaVipId=havip-2zeo05qre24nhrqpy**** &RegionId=cn-shanghai &InstanceId=i-faf344422ffsfad**** &Common request parameters
+```
+
+Sample responses XML format
+
+```xml
+<UnassociateHaVipResponse>
     <RequestId>C44F62BE-9CE7-4277-B117-69243F3988BF</RequestId>
 </UnassociateHaVipResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "C44F62BE-9CE7-4277-B117-69243F3988BF"
 ```
+
+`}`
 
 #### 1.16.6 DescribeHaVips
 
@@ -7110,6 +8646,8 @@ Queries high-availability virtual IP address (HAVIPs) in a specified region.
 | Filter. n.Valu e.m | String | Yes | Filter.1.havip- bp149uyvut73dplq2q* *** | Specifies value m of filter condition n. Valid values of m: 1, 2, 3, 4, and 5. |
 | PageN umber | Integer | No | 1 | The number of the page to return. Default value: 1 |
 | PageSi ze | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10 |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7141,13 +8679,13 @@ HaVipItemType
 | Description | String | abcabc | The description of the HAVIP. |
 | CreationTime | String | 2018-07- 03T14:25:26Z | The time when the HAVIP was created. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=DescribeHaVips &RegionId=cn-hangzhou &Filter=HaVipId.havip-bp149uyvut73dplq2q**** &Common request parameters
 ```
 
-```json
+```xml
 <DescribeHaVipsResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <HaVips>
     <HaVip>
     <Status>Available</Status>
@@ -7163,10 +8701,20 @@ https://vpc.example.com/?Action=DescribeHaVips &RegionId=cn-hangzhou &Filter=HaV
     <VpcId>vpc-bp1kcm36tevkpdefr****</VpcId>
     </HaVip>
 </HaVips> <PageSize>10</PageSize> <RequestId>33E480C5-B46F-4CA5-B6FD-D77C746E86AB</RequestId> </DescribeHaVipsResponse>
+```
+
+JSON format `{`
+
+```json
     "PageNumber": 1,
     "TotalCount": 1,
     "HaVips": {
         "HaVip": [
+```
+
+`{`
+
+```json
                 "Status": "Available",
                 "Description": "",
                 "MasterInstanceId": "",
@@ -7192,12 +8740,14 @@ https://vpc.example.com/?Action=DescribeHaVips &RegionId=cn-hangzhou &Filter=HaV
                 "VpcId": "vpc-bp1kcm36tevkpmdefr****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageSize": 10,
     "RequestId": "33E480C5-B46F-4CA5-B6FD-D77C746E86AB"
 ```
+
+`}`
 
 ### 1.17 DescribeRegions
 
@@ -7207,16 +8757,24 @@ Queries available regions.
 |---|---|---|---|---|
 | Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 611CB80 C-B6A9- 43DB- 9E38- 0B0AC3 D9B58F | The ID of the request. |
 | Regions | List |   | The list of available regions. |
 | RegionId | String | cn- qingdao | The region ID. |
 
-Sample request s
+Examples Sample request s
+
+```
+https://vpc.example.com/?Action=DescribeRegions &<Common request parameters>
+```
+
+Sample responses XML format
 
 ```xml
-https://vpc.example.com/?Action=DescribeRegions <? xml version="1.0" encoding="utf-8"? > <DescribeRegionsResponse>
+<? xml version="1.0" encoding="utf-8"? > <DescribeRegionsResponse>
   <RequestId>611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F</RequestId>
   <Regions>
     <Region>
@@ -7229,29 +8787,38 @@ https://vpc.example.com/?Action=DescribeRegions <? xml version="1.0" encoding="u
 </DescribeRegionsResponse>
 ```
 
+JSON format
+
 ```json
     "RequestId": "611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F",
     "Regions": {
         "Region": [
+```
+
+`{`
+
+```json
                 "RegionId": "cn-hangzhou "
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "RegionId": "cn-qingdao"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 1.18 DescribeZones
 
-Queries zones in a specified region.
+Queries zones in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeZones | The operation that you want to perform. Set the value to DescribeZones. |
 | RegionId | String | Yes | cn-hangzhou | The region ID. You can call the DescribeRegions operation to query the most recent region list. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7260,7 +8827,7 @@ Queries zones in a specified region.
 | ZoneId | String | cn-hangzhou-b | The ID of the zone. |
 | LocalName | String | Hangzhou Zone B | The name of the zone. |
 
-Sample request s
+Examples Sample request s
 
 ```
 https://vpc.example.com/?Action=DescribeZones &amp;RegionId=cn-hangzhou
@@ -7297,54 +8864,61 @@ https://vpc.example.com/?Action=DescribeZones &amp;RegionId=cn-hangzhou
 <DescribeZonesResponse>
 ```
 
+JSON format
+
 ```json
  "RequestId":"6FEA0CF3-D3B9-43E5-A304-D217037876A8",
  "Zones":{
   "Zone":[
+```
+
+`{`
+
+```json
     "ZoneId":"cn-hangzhou-b",
     "LocalName":"Hangzhou Zone B"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "ZoneId":"cn-hangzhou-d",
     "LocalName":"Hangzhou Zone D"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "ZoneId":"cn-hangzhou-e",
     "LocalName":"Hangzhou Zone E"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "ZoneId":"cn-hangzhou-f",
     "LocalName":"Hangzhou Zone F"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "ZoneId":"cn-hangzhou-g",
     "LocalName":"Hangzhou Zone G"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "ZoneId":"cn-hangzhou-h",
     "LocalName":"Hangzhou Zone H"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 1.19 DescribeAccessPoints
 
-Queries the access points of physical connections in a specified region.
+Queries the access points of physical connections in a specified region. Request parameters
 
 | Parameter | Type | Requi red | Example | Description |
 |---|---|---|---|---|
@@ -7356,6 +8930,8 @@ Queries the access points of physical connections in a specified region.
 |---|---|---|---|---|
 | Parameter | Type | Requi red | Example | Description |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7376,15 +8952,20 @@ Queries the access points of physical connections in a specified region.
 | Status | String | recommended | The status of the access point. |
 | Type | String | VPC | The network type of the physical connection. |
 
-Sample request s
+Examples Sample request s
 
 ```
-https://vpc.example.com/?Action=DescribeAccessPoints &RegionId=cn-beijing
+https://vpc.example.com/?Action=DescribeAccessPoints &RegionId=cn-beijing &<Common request parameters>
 ```
 
 ```json
     "AccessPointSet": {
         "AccessPointType": [
+```
+
+`{`
+
+```json
                 "Name": "Beijing-Fengtai-A",
                 "Status": "recommended",
                 "Description": "cn-beijing-ft-cxp32",
@@ -7393,7 +8974,18 @@ https://vpc.example.com/?Action=DescribeAccessPoints &RegionId=cn-beijing
                 "HostOperator": "CNIX",
                 "AttachedRegionNo": "cn-beijing",
                 "AccessPointId": "ap-cn-beijing-ft-A"
-"PageNumber": 1, "TotalCount": 1, "PageSize": 10, "RequestId": "3E85D803-C7CF-4BCD-9CFE-6DBA1DFFA027" <? xml version="1.0" encoding="UTF-8" ? > </DescribeAccessPointsResponse>
+```
+
+`}`
+
+```json
+"PageNumber": 1, "TotalCount": 1, "PageSize": 10, "RequestId": "3E85D803-C7CF-4BCD-9CFE-6DBA1DFFA027"
+```
+
+`}` XML format
+
+```xml
+<? xml version="1.0" encoding="UTF-8" ? > </DescribeAccessPointsResponse>
       <AccessPointSet>
             <AccessPointType>
             <Name>Beijing-Fengtai-A</Name>
@@ -7599,7 +9191,7 @@ ng ASAPI
 1. Switch the gateway to ASAPI and add common parameters required by the API operation to the
 request header.
 2. Add the Product Name field to the request header.
-The following code provides an example on how to use POP SDK to call VPC OpenAPI.
+Example The following code provides an example on how to use POP SDK to call VPC OpenAPI.
 
 ```java
 try {
@@ -7618,3 +9210,5 @@ cret);
 } catch (Exception e) {
     e.printStackTrace();
 ```
+
+`}`

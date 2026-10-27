@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 60
 source_pdf: "85825e43c8b42d65_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) User Guide "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) User Guide 20260629
@@ -130,7 +130,11 @@ a. On the Bind Virtual MFA Device page, bind an MFA device as prompted. b. Re-en
 
 **You have enabled and bound MFA**
 
-Enter the 6-digit MFA code and click **Authenticate**. For more information about how to bind and enable MFA, see Manage multi-factor authentication.
+Enter the 6-digit MFA code and click **Authenticate**.
+
+**Note**
+
+For more information about how to bind and enable MFA, see Manage multi-factor authentication.
 
 **Related operations**
 

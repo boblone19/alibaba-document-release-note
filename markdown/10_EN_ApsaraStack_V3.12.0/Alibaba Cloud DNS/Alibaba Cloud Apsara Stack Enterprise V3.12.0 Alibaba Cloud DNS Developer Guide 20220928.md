@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 19
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Alibaba Cloud DNS Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Alibaba%20Cloud%20DNS%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Alibaba Cloud DNS Developer Guide 20220928
@@ -97,7 +97,7 @@ the current environment. The endpoint is the value corresponding to pop_out_endp
 
 ### 4.1 Create a client
 
-You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a client.
+You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a client. Go SDK
 
 ```
 1.    if client, err := genesisdns.NewClientWithAccessKey(RegionId, AccessKey, AccessSecret
@@ -106,6 +106,11 @@ You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a 
 3.    } else {
 4.      //Business logic to handle exceptions
 5.    }
+```
+
+Python SDK
+
+```
 1.    from aliyunsdkcore.client import AcsClient
 2.    from aliyunsdkcore.acs_exception.exceptions import ClientException
 3.    from aliyunsdkcore.acs_exception.exceptions import ServerException
@@ -117,6 +122,11 @@ You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a 
 6.    client = AcsClient("<access-key-id>",
 7.       "<access-key-secret>",
 8.       "<region-id>");
+```
+
+Java SDK
+
+```
 1.    public static void main(String[] args) {
 2.         DefaultProfile profile = DefaultProfile.getProfile("{regionid}","{ak}", "{secret
 }");
@@ -125,6 +135,8 @@ You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a 
 ```
 
 ### 4.2 Obtain global authoritative zones
+
+Go SDK
 
 ```
 1. if client, err := genesisdns.NewClientWithAccessKey("{regionid}","{ak}", "{secret}"); er
@@ -154,6 +166,11 @@ r == nil {
 10.     print(e)
 11. except ClientException as e:
 12.     print(e)
+```
+
+Java SDK
+
+```
 1. public static void main(String[] args) {
 2.     DefaultProfile profile = DefaultProfile.getProfile("{regionid}","{ak}", "{secret}");
 3.     IAcsClient client = new DefaultAcsClient(profile);
@@ -173,7 +190,7 @@ r == nil {
 
 ### 4.3 Obtain global authoritative RRSets
 
-RRSets
+RRSets Go SDK
 
 ```
 1. if client, err := genesisdns.NewClientWithAccessKey("{regionid}","{ak}", "{secret}")); e
@@ -193,7 +210,17 @@ rr == nil {
 3. from aliyunsdkcore.acs_exception.exceptions import ClientException
 4. from aliyunsdkcore.acs_exception.exceptions import ServerException
 5. from aliyunsdkgenesisdns.request.v20180925 import ObtainGlobalAuthRecordListRequest
+```
+
+`6.`
+
+```
 7. client = AcsClient("{ak}", "{secret}", "{regionid}")
+```
+
+`8.`
+
+```
 9. request = ObtainGlobalAuthRecordListRequest.ObtainGlobalAuthRecordListRequest()
 10. request.set_PageSize(10)
 11. request.set_Id({zone id})
@@ -205,6 +232,11 @@ rr == nil {
 17.     print(e)
 18. except ClientException as e:
 19.     print(e)
+```
+
+Java SDK
+
+```
 1. public static void main(String[] args) {
 2.     DefaultProfile profile = DefaultProfile.getProfile("{regionid}","{ak}", "{secret}");
 3.     IAcsClient client = new DefaultAcsClient(profile);
@@ -283,6 +315,8 @@ wo NS records
 30.         request.Type = "NS"
 ```
 
+Go SDK
+
 ```
 1. func main()  {
 2.     if client, err := genesisdns.NewClientWithAccessKey("{regionid}","{ak}", "{secret}")
@@ -300,12 +334,27 @@ wo NS records
 13.         }
 14.     }
 15. }
+```
+
+Python SDK
+
+```
 1. from aliyunsdkcore.client import AcsClient
 2. from aliyunsdkcore.profile import region_provider
 3. from aliyunsdkcore.acs_exception.exceptions import ClientException
 4. from aliyunsdkcore.acs_exception.exceptions import ServerException
 5. from aliyunsdkgenesisdns.request.v20180925 import AddGlobalRrSetRequest
+```
+
+`6.`
+
+```
 7. client = AcsClient("{ak}", "{secret}", "{regionid}")
+```
+
+`8.`
+
+```
 9. request = AddGlobalRrSetRequest.AddGlobalRrSetRequest()
 10. request.set_ZoneId(93)
 11. request.set_Rr("sdk_python_a")
@@ -322,6 +371,8 @@ wo NS records
 22. except ClientException as e:
 23.     print(e)
 ```
+
+Java SDK
 
 ```
 1. public static void main(String[] args) {
@@ -347,6 +398,8 @@ wo NS records
 
 ### 4.5 Delete global RRSets
 
+Go SDK
+
 ```
 1.    package main
 ```
@@ -359,6 +412,11 @@ wo NS records
 5.        "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 6.        "github.com/aliyun/alibaba-cloud-sdk-go/services/genesisdns"
 7.    )
+```
+
+`8.`
+
+```
 9.    func main()  {
 10.        if client, err := genesisdns.NewClientWithAccessKey("{regionid}","{ak}", "{secre
 t}"); err == nil {
@@ -373,13 +431,25 @@ t}"); err == nil {
 19.    }
 ```
 
+Python SDK
+
 ```
 1.    from aliyunsdkcore.client import AcsClient
 2.    from aliyunsdkcore.profile import region_provider
 3.    from aliyunsdkcore.acs_exception.exceptions import ClientException
 4.    from aliyunsdkcore.acs_exception.exceptions import ServerException
 5.    from aliyunsdkgenesisdns.request.v20180925 import DeleteGlobalRrSetRequest
+```
+
+`6.`
+
+```
 7.    client = AcsClient("{ak}", "{secret}", "{regionid}")
+```
+
+`8.`
+
+```
 9.    request = DeleteGlobalRrSetRequest.DeleteGlobalRrSetRequest()
 10.    request.set_Id(170)
 11.
@@ -391,6 +461,11 @@ t}"); err == nil {
 17.        print(e)
 18.    except ClientException as e:
 19.        print(e)
+```
+
+Java SDK
+
+```
 1.    public static void main(String[] args) {
 2.        DefaultProfile profile = DefaultProfile.getProfile("{regionid}","{ak}", "{secret}
 ");
@@ -410,6 +485,8 @@ t}"); err == nil {
 
 ### 4.6 Update global RRSets
 
+Go SDK
+
 ```
 1.    package main
 ```
@@ -422,6 +499,11 @@ t}"); err == nil {
 5.        "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 6.        "github.com/aliyun/alibaba-cloud-sdk-go/services/genesisdns"
 7.    )
+```
+
+`8.`
+
+```
 9.    func main()  {
 10.        if client, err := genesisdns.NewClientWithAccessKey("{regionid}","{ak}", "{secre
 t}"); err == nil {
@@ -438,12 +520,27 @@ t}"); err == nil {
 22.            }
 23.        }
 24.    }
+```
+
+Python SDK
+
+```
 1.    from aliyunsdkcore.client import AcsClient
 2.    from aliyunsdkcore.profile import region_provider
 3.    from aliyunsdkcore.acs_exception.exceptions import ClientException
 4.    from aliyunsdkcore.acs_exception.exceptions import ServerException
 5.    from aliyunsdkgenesisdns.request.v20180925 import UpdateGlobalRrSetRequest
+```
+
+`6.`
+
+```
 7.    client = AcsClient("{ak}", "{secret}", "{regionid}")
+```
+
+`8.`
+
+```
 9.    request = UpdateGlobalRrSetRequest.UpdateGlobalRrSetRequest()
 10.    request.set_RrsetId(165)
 11.    request.set_Type("A")
@@ -487,7 +584,7 @@ t}"); err == nil {
 
 ### 4.7 Configure descriptions for global RRSets
 
-RRSets
+RRSets Go SDK
 
 ```
 1. package main
@@ -501,6 +598,11 @@ RRSets
 5.     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 6.     "github.com/aliyun/alibaba-cloud-sdk-go/services/genesisdns"
 7. )
+```
+
+`8.`
+
+```
 9. func main()  {
 10.     if client, err := genesisdns.NewClientWithAccessKey(""{regionid}","{ak}", "{secret}
 "); err == nil {
@@ -514,12 +616,27 @@ RRSets
 19.         }
 20.     }
 21. }
+```
+
+Python SDK
+
+```
 1. from aliyunsdkcore.client import AcsClient
 2. from aliyunsdkcore.profile import region_provider
 3. from aliyunsdkcore.acs_exception.exceptions import ClientException
 4. from aliyunsdkcore.acs_exception.exceptions import ServerException
 5. from aliyunsdkgenesisdns.request.v20180925 import RemarkGlobalRrSetRequest
+```
+
+`6.`
+
+```
 7. client = AcsClient("{ak}", "{secret}", "{regionid}")
+```
+
+`8.`
+
+```
 9. request = RemarkGlobalRrSetRequest.RemarkGlobalRrSetRequest()
 10. request.set_Id(165)
 11. request.set_Remark("test remark python")
@@ -532,6 +649,8 @@ RRSets
 18. except ClientException as e:
 19.     print(e)
 ```
+
+Java SDK
 
 ```
 1. public static void main(String[] args) {

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 90
 source_pdf: "6d798e0979e2f8f0_Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL Developer Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%20AnalyticDB%20PostgreSQL%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20AnalyticDB%20for%20PostgreSQL%20Developer%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # AnalyticDB for PostgreSQL Developer Guide 20260630
@@ -250,7 +250,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role.
 > "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -269,6 +269,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. Format: sts-
@@ -293,9 +298,15 @@ tep for the RAM role.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
 sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
@@ -438,6 +449,8 @@ Common request parameters are parameters that every operation requires. Table 1.
 | SignatureVersion | String | Yes | The version of the signature algorithm. Set the value to 1.0. |
 | SignatureNonce | String | Yes | A unique, random number used to prevent replay attacks. You must use different numbers for different requests. |
 
+Example
+
 ```
 https://gpdb.aliyuncs.com/ ?Format=xml &Version=2016-05-03 &Signature=Pcxxxxxxxxxxxxxxxxxxxxxx &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2019-06-01T12:00:00Z
 ```
@@ -477,6 +490,8 @@ JSON format `{`
     /* The response data */
 ```
 
+`}`
+
 **Sample error responses**
 
 No result is returned after the API call fails. You can locate the cause of the error by referring to the error codes in Appendix. When a request fails, an HTTP response containing an HTTP status code (4xx or 5xx) is returned. The returned message body contains the specific error code and error message. The message body also contains a globally unique RequestId and the HostId of the site you request to access. If you are unable to find the error cause, you can contact Alibaba Cloud customer service and provide the HostId and RequestId to help solve the problem as quickly as possible. XML format
@@ -498,6 +513,8 @@ JSON format `{`
     "Code": "UnsupportedOperation",
     "Message": "The specified action is not supported."
 ```
+
+`}`
 
 ### 3.4 Signature mechanism
 
@@ -710,6 +727,8 @@ Sample success responses `XML` format
   "DBInstanceId":"gp-ty9wj0p3qy68*****"
 ```
 
+`}`
+
 #### 3.6.2 DescribeResourceUsage
 
 You can call this operation to query the disk space that is used by an instance.
@@ -769,6 +788,8 @@ Sample success responses `XML` format
     "DiskUsed":285212672
 ```
 
+`}`
+
 #### 3.6.3 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an instance. Typically, the maintenance window is set to the off-peak hours to minimize the impact on services. Alibaba Cloud performs instance maintenance at the maintenance window that you specify.
@@ -812,6 +833,8 @@ Sample success responses `XML` format
    "RequestId": "CA9A34C8-AC95-413B-AC6A-CEBF67429CCA"
 ```
 
+`}`
+
 #### 3.6.4 RestartDBInstance
 
 You can call this operation to restart an instance.
@@ -852,6 +875,8 @@ Sample success responses `XML` format
 ```json
   "RequestId":"A7356493-7141-4393-8951-CDA8AB5D67EC"
 ```
+
+`}`
 
 #### 3.6.5 AddBuDBInstanceRelation
 
@@ -901,6 +926,8 @@ Sample success responses `XML` format
   "DBInstanceName": "gp-xxxxxx"
 ```
 
+`}`
+
 ### 3.7 Database management
 
 ### 3.8 Account management
@@ -948,6 +975,8 @@ Sample success responses `XML` format
   "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
 ```
 
+`}`
+
 #### 3.8.2 ResetAccountPassword
 
 You can call this operation to reset the password for your account in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked.
@@ -989,6 +1018,8 @@ Sample success responses `XML` format
 ```json
     "RequestId":"187C80FC-75C4-477C-BBF2-A368A36D041C"
 ```
+
+`}`
 
 #### 3.8.3 DescribeAccounts
 
@@ -1056,11 +1087,13 @@ Sample success responses `XML` format
           "AccountName": "testaccount_1"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
 ```
+
+`}`
 
 #### 3.8.4 ModifyAccountDescription
 
@@ -1101,6 +1134,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "99BBBD5E-B5D8-4FC8-B8BF-FB1A0A38BBA2"
 ```
+
+`}`
 
 ### 3.9 Security management
 
@@ -1165,11 +1200,13 @@ Sample success responses `XML` format
               "securityIPList":"127.0.0.1"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId":"CB7AA0BF-BE41-480E-A3DC-C97BF85A391B"
 ```
+
+`}`
 
 #### 3.9.2 ModifySecurityIps
 
@@ -1215,6 +1252,8 @@ Sample success responses `XML` format
   "RequestId":"871C698F-B43D-4D1D-ACD6-DF56B0F89978"
 ```
 
+`}`
+
 ### 3.10 Log management
 
 #### 3.10.1 DescribeSQLCollectorPolicy
@@ -1258,6 +1297,8 @@ Sample success responses `XML` format
     "RequestId":"ABB39CC3-4488-4857-905D-2E4A051D0521",
     "SQLCollectorStatus":"Enable"
 ```
+
+`}`
 
 #### 3.10.2 DescribeSlowLogRecords
 
@@ -1361,7 +1402,7 @@ Sample success responses `XML` format
                 "ExecutionStartTime":"2018-07-09T09:00:08Z"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 3.10.3 DescribeSQLLogFiles
 
@@ -1441,7 +1482,7 @@ Sample success responses `XML` format
                 "LogStatus": "Success"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": 1,
@@ -1449,6 +1490,8 @@ Sample success responses `XML` format
     "RequestId": "66E164C1-D7F2-4D85-849D-E2883FCFFBA5",
     "PageRecordCount": 1
 ```
+
+`}`
 
 #### 3.10.4 ModifySQLCollectorPolicy
 
@@ -1491,6 +1534,8 @@ Sample success responses `XML` format
 ```json
   "RequestId":"4FA1F1D1-50A6-4F60-9A78-5752F2076A53"
 ```
+
+`}`
 
 #### 3.10.5 DescribeSQLLogRecords
 
@@ -1583,7 +1628,7 @@ Sample success responses `XML` format
                 "TotalExecutionTimes": "130"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "TotalRecordCount": 1,
@@ -1706,11 +1751,13 @@ Sample success responses `XML` format
                 "VSwitchId": "vsw-xxxxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
 ```
+
+`}`
 
 #### 3.11.3 ModifyDBInstanceConnectionString
 
@@ -1753,6 +1800,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "29B0BF34-D069-4495-92C7-FA6D94528A9E"
 ```
+
+`}`
 
 #### 3.11.4 ModifyDBInstanceNetworkType
 
@@ -1798,6 +1847,8 @@ Sample success responses `XML` format
   "RequestId":"2d0c35a9-f5da-44ba-852d-741e27b7eb0b"
 ```
 
+`}`
+
 #### 3.11.5 ReleaseInstancePublicConnection
 
 You can call this operation to release the public endpoint of an instance.
@@ -1838,6 +1889,8 @@ Sample success responses `XML` format
 ```json
    "RequestId": "9CEF7037-4158-4A65-BEC7-2A1541F6FE74"
 ```
+
+`}`
 
 #### 3.11.6 SwitchDBInstanceNetType
 
@@ -1989,6 +2042,8 @@ Sample success responses `XML` format
             "TagValue": "TestValue"
 ```
 
+`}` `}` `}`
+
 #### 3.12.3 UntagResources
 
 Removes tags from specific instances.
@@ -2082,7 +2137,7 @@ Sample success responses `XML` format
             "TagValue": "admin"
 ```
 
-`]`
+`}` `]` `}`
 
 ### 3.13 Appendix
 
@@ -2457,6 +2512,8 @@ step for the RAM role.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -2504,6 +2561,8 @@ in in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

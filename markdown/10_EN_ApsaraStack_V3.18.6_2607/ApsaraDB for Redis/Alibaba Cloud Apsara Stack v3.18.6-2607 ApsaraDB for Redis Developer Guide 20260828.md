@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 126
 source_pdf: "20a2e5139b21aa67_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828
@@ -309,6 +309,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -325,6 +330,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
 this example, the Elastic Compute Service (ECS) API is used.
 
@@ -334,6 +340,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -348,7 +359,7 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
 
-e API calls
+`}` e API calls
 
 ## 3 Use POP to make API calls
 
@@ -479,7 +490,7 @@ e API calls
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -544,6 +555,8 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 > **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
 > To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
@@ -612,10 +625,15 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
+`}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
 
 ```java
 package main import (
@@ -656,8 +674,15 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Proxy configuration**
 
@@ -678,13 +703,15 @@ iable.
 variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
 **SSL verification**
+
+**Description**
 
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
@@ -725,7 +752,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Only remote procedure call (RPC) APIs are supported. The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
+Only remote procedure call (RPC) APIs are supported.
+
+**Example**
+
+The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -773,6 +804,11 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -983,6 +1019,8 @@ JSON format `{`
 "RequestId": "4C4fdsf38-3910-447D-87AD-AC078932216", /* The result data returned */
 ```
 
+`}`
+
 **Sample error response**
 
 When an error occurs during an API call, no result data is returned. You can locate the cause of the error by referencing the attached list of error codes. If an error occurs when you call an operation over HTTP, an HTTP status code in the `4xx` or `5xx` format is returned. The returned message body includes the specific error code and error message. The message body also contains a globally unique request ID called RequestId and a target site ID called HostId. If you cannot locate the cause, request Apsara Stack customer service, and provide the HostId and RequestId for troubleshooting.
@@ -996,6 +1034,8 @@ JSON format `{`
 ```json
 "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
+
+`}`
 
 ### 4.5 Request signatures
 
@@ -1036,6 +1076,8 @@ an HMAC value.
 5. Add the signature string to the request as the Signature parameter.
 
 > **Note:** When you submit the signature string to the KVStore for Redis instance as the final request parameter value, perform URL encoding on this parameter based on RFC 3986 rules. This is the same method that is used to process other parameters.
+
+**Example**
 
 DescribeDrdsInstances is used in this example. The following section shows the canonicalized query string:
 
@@ -1199,6 +1241,8 @@ JSON format: `{`
 "InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb"
 ```
 
+`}`
+
 #### 4.7.2 DeleteInstance
 
 Deletes a specified instance. The instance must be in the **running** state.
@@ -1238,6 +1282,8 @@ JSON format `{`
 ```json
     "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D190D2"
 ```
+
+`}`
 
 #### 4.7.3 ModifyInstanceSpec
 
@@ -1288,6 +1334,8 @@ JSON format `{`
     "RequestId": "A4828C10-AF0A-4CD7-8FBE-737C6CC1193E",
     "OrderId": "20722623431****"
 ```
+
+`}`
 
 ### 4.8 Manage instances
 
@@ -1392,6 +1440,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "InstanceId":"r-bp1zxszhcgatnx****"
 ```
 
+`}`
+
 #### 4.8.3 DescribeLogicInstanceTopology
 
 Queries the logical topology of a Redis instance.
@@ -1469,6 +1519,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Connection":"320000"
 ```
 
+`}` `}`
+
 #### 4.8.4 DescribeEngineVersion
 
 Queries the major version and minor version of a Redis instance, including the release notes for the minor version.
@@ -1523,6 +1575,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "Engine":"redis",
  "EnableUpgradeMajorVersion":true
 ```
+
+`}`
 
 #### 4.8.5 DescribeInstanceAttribute
 
@@ -1693,7 +1747,7 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
        "Key": "Type"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "ArchitectureType": "standard",
@@ -1718,11 +1772,13 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
     "RegionId": "cn-hangzhou"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "D67A69DF-C1FC-4B01-B239-B17888CCFD2A"
 ```
+
+`}`
 
 #### 4.8.6 DescribeInstances
 
@@ -1842,7 +1898,7 @@ mple.com",
 "ChargeType":" PostPaid"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber" : 1,
@@ -1850,6 +1906,8 @@ mple.com",
     "TotalCount" : 1,
     "RequestId" : "969D0A1D-C91A-4837-9F70-49785DF9BDCE"
 ```
+
+`}`
 
 #### 4.8.7 DescribeRegions
 
@@ -1935,11 +1993,13 @@ n-hangzhou-b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-
                 "LocalName": "China (Hangzhou)"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "AD425AD3-CC7B-4EE2-A5CB-2F61BA73****"
 ```
+
+`}`
 
 #### 4.8.8 DescribeSecurityIps
 
@@ -2025,11 +2085,13 @@ JSON format: `{`
                 "SecurityIpGroupName": "rds_replica_group"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "EFC9161F-15E3-4A6E-8A99-C09916D1****"
 ```
+
+`}`
 
 #### 4.8.9 DescribeCpuTypes
 
@@ -2091,7 +2153,7 @@ HTTP/1.1 200 OK Content-Type:application/json
    "CpuType":"Itanium"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.8.10 DescribeZones
 
@@ -2145,6 +2207,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "IsRds":true
 ```
 
+`}` `}`
+
 #### 4.8.11 FlushInstance
 
 Deletes the data of a KVStore for Redis instance. Deleted data cannot be recovered.
@@ -2184,6 +2248,8 @@ JSON format `{`
 ```json
   "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E7"
 ```
+
+`}`
 
 #### 4.8.12 ModifyInstanceAttribute
 
@@ -2229,6 +2295,8 @@ JSON format `{`
 "RequestId" : "E3B35BEA-9EB0-402C-88CF-C46CCCC1EE59"
 ```
 
+`}`
+
 #### 4.8.13 ModifyInstanceMaintainTime
 
 Modifies the maintenance window of a KVStore for Redis instance. Alibaba Cloud maintains the KVStore for Redis instance in the specified maintenance window.
@@ -2273,6 +2341,8 @@ JSON format `{`
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76"
 ```
 
+`}`
+
 #### 4.8.14 ModifyInstanceNetExpireTime
 
 Extends the retention period of the classic network endpoint of a KVStore for Redis instance. You can call this operation after you change the network type of the KVStore for Redis instance from classic network to VPC with the classic network endpoint retained.
@@ -2316,6 +2386,8 @@ JSON format `{`
 ```json
     "RequestId": "9C4AF387-1EA3-4C84-8013-3F6B973EDDF5",
 ```
+
+`}`
 
 #### 4.8.15 ModifySecurityIps
 
@@ -2363,6 +2435,8 @@ JSON format: `{`
 ```json
     "RequestId" : "AAAF99B1-69ED-4E80-8CD5-272C09E4****"
 ```
+
+`}`
 
 #### 4.8.16 SwitchNetwork
 
@@ -2412,6 +2486,8 @@ JSON format `{`
     "TaskId":"578678678",
     "requestId": "F0997EE8-F4C2-4503-9168-85177ED78C70"
 ```
+
+`}`
 
 #### 4.8.17 SwitchInstanceHA
 
@@ -2463,7 +2539,7 @@ Sample success responses
  "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D1****"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>5D622714-AEDD-4609-9167-F5DDD3D1****</RequestId>
@@ -2531,6 +2607,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "DeleteDate":"2021-09-24T18:22:03Z"
 ```
 
+`}`
+
 #### 4.9.2 DescribeInstanceTDEStatus
 
 Queries whether transparent data encryption (TDE) is enabled for a KVStore for Redis instance.
@@ -2572,6 +2650,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "TDEStatus":"Enabled",
  "RequestId":"5D622714-AEDD-4609-9167-F5DDD3D1****"
 ```
+
+`}`
 
 #### 4.9.3 CheckCloudResourceAuthorized
 
@@ -2619,6 +2699,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "AuthorizationState":1,
  "RequestId":"A501A191-BD70-5E50-98A9-C2A486A82****"
 ```
+
+`}`
 
 ### 4.10 Account management
 
@@ -2673,6 +2755,8 @@ HTTP/1.1 200 OK Content-Type:application/json
   "EcsBought":22,
   "KVSBought":29
 ```
+
+`}` `}`
 
 #### 4.10.2 CreateAccount
 
@@ -2729,6 +2813,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "InstanceId":"r-bp1zxszhcgatnx****",
  "AcountName":"demoaccount"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2849,6 +2935,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "ExpireTime":"0"
 ```
 
+`}`
+
 #### 4.12.2 ModifyInstanceVpcAuthMode
 
 Enables or disables password-free access over Virtual Private Cloud (VPC) for a KVStore for Redis instance. Password-free access allows you to connect to databases more conveniently while ensuring security.
@@ -2896,6 +2984,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"ABAF95F6-35C1-4177-AF3A-70969EBD****"
 ```
 
+`}`
+
 #### 4.12.3 AllocateInstancePublicConnection
 
 Call the AllocateInstancePublicConnection operation to allocate a public endpoint for a Redis instance.
@@ -2940,6 +3030,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 ```json
  "RequestId":"20C8341E-B5AD-4B24-BD82-D73241522ABF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2997,6 +3089,8 @@ JSON format `{`
     "BackupJobID": "1162****"
 ```
 
+`}`
+
 #### 4.13.2 ModifyBackupPolicy
 
 Modifies the backup policy of a KVStore for Redis instance.
@@ -3042,6 +3136,8 @@ JSON format `{`
 ```json
     "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 #### 4.13.3 DescribeBackupPolicy
 
@@ -3093,6 +3189,8 @@ JSON format `{`
  "PreferredBackupTime": "19:00Z-20:00Z",
  "BackupRetentionPeriod": "7"
 ```
+
+`}`
 
 #### 4.13.4 DescribeBackups
 
@@ -3209,7 +3307,7 @@ hangzhou.aliyuncs.com/********",
                 "BackupStatus": "Success"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 4.13.5 RestoreInstance
 
@@ -3251,6 +3349,8 @@ JSON format `{`
 ```json
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 ### 4.14 Manage monitoring
 
@@ -3324,11 +3424,13 @@ JSON format `{`
                 "Unit" : "Counts/s"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId" : "B906A893-58A3-4644-AC2D-A2C9B08706C1"
 ```
+
+`}`
 
 #### 4.14.2 DescribeHistoryMonitorValues
 
@@ -3385,6 +3487,8 @@ JSON format `{`
     "RequestId": "689E8093-3094-4DC2-A2A2-30D40097****"
 ```
 
+`}`
+
 ### 4.15 Manage parameters
 
 #### 4.15.1 DescribeInstanceConfig
@@ -3431,6 +3535,8 @@ JSON format `{`
 cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplistentries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-int set-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabledcommands\":\"flushall\"}"
 ```
 
+`}`
+
 #### 4.15.2 ModifyInstanceConfig
 
 Modifies configuration parameters of a KVStore for Redis instance.
@@ -3473,6 +3579,8 @@ JSON format `{`
 ```json
   "requestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
+
+`}`
 
 ### 4.16 Appendixes
 

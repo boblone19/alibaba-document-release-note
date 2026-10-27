@@ -5,14 +5,35 @@ doc_version: "20260729"
 pdf_pages: 106
 source_pdf: "25_安骑士运维指南_server-guard-operation-and-maintenance-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/aegis/zh/server-guard-operation-and-maintenance-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云安全中心（安骑士） 安骑士运维指南
 
-## 安骑士运维手册
+## 目录
 
-### 产品介绍
+- 1 安骑士运维手册
+  - 1.1 产品介绍
+  - 1.2 部署架构
+  - 1.3 服务端模块功能与组件依赖关系
+  - 1.4 核心模块
+  - 1.5 高可靠性
+  - 1.6 容灾备份
+  - 1.7 监控告警
+  - 1.8 容量规划
+  - 1.9 XC支持
+  - 1.10 热升级
+- 2 安骑士运维操作
+  - 2.1 登录飞天基础运维平台
+  - 2.2 客户端状态检查
+  - 2.3 检查服务器端（Aegiserver）状态
+  - 2.4 检查更新服务（Aegisupdate）状态
+  - 2.5 检查Defender模块状态
+  - 2.6 重启安骑士服务
+
+## 1 安骑士运维手册
+
+### 1.1 产品介绍
 
 安骑士（主机安全+态势感知）是一款集持续监测、深度防御、全面分析、快速响应能力于一体的云上安全管理平台。 安骑士基于云原生架构优势，提供云上资产管理、配置核查、主动防御、安全加固、云产品配置评估和安全可视化等能力，可有效发现和阻止病毒传播、黑客攻击、勒索加密、漏洞利用等风险事件，实现一体化、自动化的安全运营闭环，保护云内云外的主机、容器、虚拟机等工作负载安全性，同时满足监管合规要求。 安骑士在服务器系统内核层面通过Agent插件实现云上文件和进程行为的全局监控和实时分析，对海量病毒样本持久化攻击方式的自动化分析，有效绕过顽固木马和恶意程序的反查杀能力；还可以基于程序行为分析，挖掘出黑名单未能辨识的恶意威胁，实现主动拦截；其云端病毒库实时更新，集成了国内外主流杀毒引擎、阿里云自研沙箱和机器学习引擎等前沿技术，可以避免因病毒库更新不及时而造成的损失。 防护策略和数据源自于多年的积累，是阿里云上多达百万级的用户，每天面临多达几十万次的各种攻击。 阿里云安全团队充分利用了这些安全攻防的数据积累，每天对公共云上10多TB的安全数据进行分析，形成恶意IP库、恶意行为库、恶意样本库、安全漏洞库等基础安全能力，并及时应用到态势感知的各个防护模块中，提升防护能力，为用户带来更好的安全保障。
 
@@ -22,7 +43,7 @@ converter: line-classifier (PyMuPDF)
 
 **(新版)V3.18.3版本产品架构**
 
-### 部署架构
+### 1.2 部署架构
 
 安骑士是典型的C/S架构，包括服务端和客户端。服务端负责资产、检测、防御等核心能力，客户端负责实时监测主机状态、执行检测脚本、实时防御等。
 
@@ -81,13 +102,13 @@ converter: line-classifier (PyMuPDF)
 
 参考文档：客户端支持的操作系统
 
-### 服务端模块功能与组件依赖关系
+### 1.3 服务端模块功能与组件依赖关系
 
 **模块功能**
 
 **服务端组件与依赖关系**
 
-### 核心模块
+### 1.4 核心模块
 
 **资产同步**
 
@@ -351,13 +372,13 @@ NDR：网络层攻击数据，Aegisbiz消费暴力破解数据，按资产、类
 **自定义防御规则**：用户可根据业务需求自定义规则，对特定行为（如命令行、进程Hash、文件读写、注册
 表操作等）进行放行或拦截，有效减少误报自定义规则的优先级高于系统防御规则
 
-### 高可靠性
+### 1.5 高可靠性
 
 **服务端高可用**
 
-**说明**
+> **说明：** 服务端整体设计原则：无状态应用
 
-服务端整体设计原则：无状态应用安骑士服务端全部是无状态应用，通过VIP+Dubbo实现负载均衡保证服务可用性。
+安骑士服务端全部是无状态应用，通过VIP+Dubbo实现负载均衡保证服务可用性。
 
 **V3.18.1及之前的版本**
 
@@ -371,13 +392,13 @@ NDR：网络层攻击数据，Aegisbiz消费暴力破解数据，按资产、类
 
 客户端高可用是为了保证客户端进程不会被操作系统或恶意程序kill，导致主机脱离安全管理。 客户端高可用有两个措施保证： 1、AliYunDun和AliYunDunUpdate互为守护进程，当其中一个被kill后，另一个进程会实时拉起对方。 2、当启用自保护（AliSecGuard）时，AliSecGuard会在驱动层保证客户端无法被Killed。
 
-### 容灾备份
+### 1.6 容灾备份
 
 **同城容灾**
 
-**说明**
+> **说明：** 设计原则：业务双活
 
-设计原则：业务双活安骑士同城容灾架构遵循双活原则，数据由云存储或中间件自身保证容灾。 各组件同城容灾实现方案介绍：
+安骑士同城容灾架构遵循双活原则，数据由云存储或中间件自身保证容灾。 各组件同城容灾实现方案介绍：
 
 | 组件 | 方案 |
 |---|---|
@@ -393,11 +414,11 @@ NDR：网络层攻击数据，Aegisbiz消费暴力破解数据，按资产、类
 
 **异地灾备**
 
-**说明**
+> **说明：** 设计原则：Region间相互独立
 
-设计原则：Region间相互独立安骑士多Region架构遵循独立原则，单元Region对中心Region无任何依赖，数据及服务保证完全隔离。
+安骑士多Region架构遵循独立原则，单元Region对中心Region无任何依赖，数据及服务保证完全隔离。
 
-### 监控告警
+### 1.7 监控告警
 
 **系统监控指标**
 
@@ -412,627 +433,627 @@ NDR：网络层攻击数据，Aegisbiz消费暴力破解数据，按资产、类
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisvirusscan cpu containe _ _ r host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvirusscan cpu containe _ _ r serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegisvirusscan cpu containe _ _ r cluster _ | CPU使用率（集群） |  |  |  |
+| aegisvirusscan cpu containe _ _ r serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegisvirusscan cpu containe _ _ r cluster _ | CPU使用率（集群） |   |   |   |
 
 | aegisvirusscan memo contai _ _ ner host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisvirusscan memo contai _ _ ner serverrole _ | 内存（服务角色） |  |  |  |
-| aegisvirusscan memo contai _ _ ner cluster _ | 内存（集群） |  |  |  |
+| aegisvirusscan memo contai _ _ ner serverrole _ | 内存（服务角色） |   |   |   |
+| aegisvirusscan memo contai _ _ ner cluster _ | 内存（集群） |   |   |   |
 | aegisvirusscan load contain _ _ er host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvirusscan load contain _ _ er serverrole _ | 负载（服务角色） |  |  |  |
-| aegisvirusscan load contain _ _ er cluster _ | 负载（集群） |  |  |  |
+| aegisvirusscan load contain _ _ er serverrole _ | 负载（服务角色） |   |   |   |
+| aegisvirusscan load contain _ _ er cluster _ | 负载（集群） |   |   |   |
 | aegisvirusscan tcp conns co _ _ _ ntainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisvirusscan tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegisvirusscan tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |  |  |  |
+| aegisvirusscan tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegisvirusscan tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegisvirusscan ntp container _ _ host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisvirusscan ntp container _ _ serverrole _ | NTP（服务角色） |  |  |  |
-| aegisvirusscan ntp container _ _ cluster _ | NTP（集群） |  |  |  |
+| aegisvirusscan ntp container _ _ serverrole _ | NTP（服务角色） |   |   |   |
+| aegisvirusscan ntp container _ _ cluster _ | NTP（集群） |   |   |   |
 | aegisvirusscan process coun _ _ t container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvirusscan process coun _ _ t container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegisvirusscan process coun _ _ t container host _ _ | 进程数（集群） |  |  |  |
+| aegisvirusscan process coun _ _ t container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegisvirusscan process coun _ _ t container host _ _ | 进程数（集群） |   |   |   |
 
 | aegisvirusscan nginx contai _ _ ner host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
 |---|---|---|---|---|
-| aegisvirusscan nginx contai _ _ ner serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisvirusscan nginx contai _ _ ner cluster _ | nginx QPS（集群） |  |  |  |
+| aegisvirusscan nginx contai _ _ ner serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisvirusscan nginx contai _ _ ner cluster _ | nginx QPS（集群） |   |   |   |
 | aegisvirusscan health contai _ _ ner host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvirusscan health contai _ _ ner serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisvirusscan health contai _ _ ner cluster _ | 健康检查（集群） |  |  |  |
+| aegisvirusscan health contai _ _ ner serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisvirusscan health contai _ _ ner cluster _ | 健康检查（集群） |   |   |   |
 
 **mordor应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | mordor cpu container host _ _ _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| mordor cpu container serve _ _ _ rrole | CPU使用率（服务角色） |  |  |  |
-| mordor cpu container cluste _ _ _ r | CPU使用率（集群） |  |  |  |
+| mordor cpu container serve _ _ _ rrole | CPU使用率（服务角色） |   |   |   |
+| mordor cpu container cluste _ _ _ r | CPU使用率（集群） |   |   |   |
 | mordor memo container ho _ _ _ st | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| mordor memo container ser _ _ _ verrole | 内存（服务角色） |  |  |  |
-| mordor memo container clu _ _ _ ster | 内存（集群） |  |  |  |
+| mordor memo container ser _ _ _ verrole | 内存（服务角色） |   |   |   |
+| mordor memo container clu _ _ _ ster | 内存（集群） |   |   |   |
 
 | mordor load container host _ _ _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| mordor load container serve _ _ _ rrole | 负载（服务角色） |  |  |  |
-| mordor load container clust _ _ _ er | 负载（集群） |  |  |  |
+| mordor load container serve _ _ _ rrole | 负载（服务角色） |   |   |   |
+| mordor load container clust _ _ _ er | 负载（集群） |   |   |   |
 | mordor tcp conns container _ _ _ host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| mordor tcp conns container _ _ _ serverrole _ | tcp连接数（服务角色） |  |  |  |
-| mordor tcp conns container _ _ _ cluster _ | tcp连接数（集群） |  |  |  |
+| mordor tcp conns container _ _ _ serverrole _ | tcp连接数（服务角色） |   |   |   |
+| mordor tcp conns container _ _ _ cluster _ | tcp连接数（集群） |   |   |   |
 | mordor ntp container host _ _ _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| mordor ntp container server _ _ _ role | NTP（服务角色） |  |  |  |
-| mordor ntp container cluste _ _ _ r | NTP（集群） |  |  |  |
+| mordor ntp container server _ _ _ role | NTP（服务角色） |   |   |   |
+| mordor ntp container cluste _ _ _ r | NTP（集群） |   |   |   |
 | mordor process count conta _ _ _ iner host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| mordor process count conta _ _ _ iner cluster _ | 进程数（服务角色） |  |  |  |
-| mordor process count conta _ _ _ iner host _ | 进程数（集群） |  |  |  |
+| mordor process count conta _ _ _ iner cluster _ | 进程数（服务角色） |   |   |   |
+| mordor process count conta _ _ _ iner host _ | 进程数（集群） |   |   |   |
 | mordor nginx container host _ _ _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| mordor nginx container serv _ _ _ errole | nginx QPS（服务角色） |  |  |  |
-| mordor nginx container clus _ _ _ ter | nginx QPS（集群） |  |  |  |
+| mordor nginx container serv _ _ _ errole | nginx QPS（服务角色） |   |   |   |
+| mordor nginx container clus _ _ _ ter | nginx QPS（集群） |   |   |   |
 
 | mordor health container hos _ _ _ t | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| mordor health container ser _ _ _ verrole | 健康检查（服务角色） |  |  |  |
-| mordor health container clu _ _ _ ster | 健康检查（集群） |  |  |  |
+| mordor health container ser _ _ _ verrole | 健康检查（服务角色） |   |   |   |
+| mordor health container clu _ _ _ ster | 健康检查（集群） |   |   |   |
 
 **defender应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | defender cpu container host _ _ _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| defender cpu container serv _ _ _ errole | CPU使用率（服务角色） |  |  |  |
-| defender cpu container clus _ _ _ ter | CPU使用率（集群） |  |  |  |
+| defender cpu container serv _ _ _ errole | CPU使用率（服务角色） |   |   |   |
+| defender cpu container clus _ _ _ ter | CPU使用率（集群） |   |   |   |
 | defender memo container h _ _ _ ost | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| defender memo container s _ _ _ erverrole | 内存（服务角色） |  |  |  |
-| defender memo container cl _ _ _ uster | 内存（集群） |  |  |  |
+| defender memo container s _ _ _ erverrole | 内存（服务角色） |   |   |   |
+| defender memo container cl _ _ _ uster | 内存（集群） |   |   |   |
 | defender load container hos _ _ _ t | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| defender load container ser _ _ _ verrole | 负载（服务角色） |  |  |  |
-| defender load container clu _ _ _ ster | 负载（集群） |  |  |  |
-| defender tcp conns contain _ _ _ er host _ | tcp连接数（单机） |  |  |  |
+| defender load container ser _ _ _ verrole | 负载（服务角色） |   |   |   |
+| defender load container clu _ _ _ ster | 负载（集群） |   |   |   |
+| defender tcp conns contain _ _ _ er host _ | tcp连接数（单机） |   |   |   |
 
-| 安骑士运维指南·安骑士运维手册 |  |  |  |  |
+| 安骑士运维指南·安骑士运维手册 |   |   |   |   |
 |---|---|---|---|---|
-|  |  | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| defender tcp conns contain _ _ _ er serverrole _ | tcp连接数（服务角色） |  |  |  |
-| defender tcp conns contain _ _ _ er cluster _ | tcp连接数（集群） |  |  |  |
+|   |   | tcp连接的最大值和平均值 | 暂无 | 暂无 |
+| defender tcp conns contain _ _ _ er serverrole _ | tcp连接数（服务角色） |   |   |   |
+| defender tcp conns contain _ _ _ er cluster _ | tcp连接数（集群） |   |   |   |
 | defender ntp container host _ _ _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| defender ntp container serv _ _ _ errole | NTP（服务角色） |  |  |  |
-| defender ntp container clust _ _ _ er | NTP（集群） |  |  |  |
+| defender ntp container serv _ _ _ errole | NTP（服务角色） |   |   |   |
+| defender ntp container clust _ _ _ er | NTP（集群） |   |   |   |
 | defender process count con _ _ _ tainer host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| defender process count con _ _ _ tainer cluster _ | 进程数（服务角色） |  |  |  |
-| defender process count con _ _ _ tainer host _ | 进程数（集群） |  |  |  |
+| defender process count con _ _ _ tainer cluster _ | 进程数（服务角色） |   |   |   |
+| defender process count con _ _ _ tainer host _ | 进程数（集群） |   |   |   |
 | defender nginx container ho _ _ _ st | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| defender nginx container se _ _ _ rverrole | nginx QPS（服务角色） |  |  |  |
-| defender nginx container cl _ _ _ uster | nginx QPS（集群） |  |  |  |
+| defender nginx container se _ _ _ rverrole | nginx QPS（服务角色） |   |   |   |
+| defender nginx container cl _ _ _ uster | nginx QPS（集群） |   |   |   |
 | defender health container h _ _ _ ost | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| defender health container s _ _ _ erverrole | 健康检查（服务角色） |  |  |  |
-| defender health container cl _ _ _ uster | 健康检查（集群） |  |  |  |
+| defender health container s _ _ _ erverrole | 健康检查（服务角色） |   |   |   |
+| defender health container cl _ _ _ uster | 健康检查（集群） |   |   |   |
 
 **banffaegisweb应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | banffaegisweb cpu containe _ _ r host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| banffaegisweb cpu containe _ _ r serverrole _ | CPU使用率（服务角色） |  |  |  |
-| banffaegisweb cpu containe _ _ r cluster _ | CPU使用率（集群） |  |  |  |
+| banffaegisweb cpu containe _ _ r serverrole _ | CPU使用率（服务角色） |   |   |   |
+| banffaegisweb cpu containe _ _ r cluster _ | CPU使用率（集群） |   |   |   |
 | banffaegisweb memo contai _ _ ner host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| banffaegisweb memo contai _ _ ner serverrole _ | 内存（服务角色） |  |  |  |
-| banffaegisweb memo contai _ _ ner cluster _ | 内存（集群） |  |  |  |
+| banffaegisweb memo contai _ _ ner serverrole _ | 内存（服务角色） |   |   |   |
+| banffaegisweb memo contai _ _ ner cluster _ | 内存（集群） |   |   |   |
 | banffaegisweb load containe _ _ r host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g >1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| banffaegisweb load containe _ _ r serverrole _ | 负载（服务角色） |  |  |  |
-| banffaegisweb load containe _ _ r cluster _ | 负载（集群） |  |  |  |
+| banffaegisweb load containe _ _ r serverrole _ | 负载（服务角色） |   |   |   |
+| banffaegisweb load containe _ _ r cluster _ | 负载（集群） |   |   |   |
 | banffaegisweb tcp conns co _ _ _ ntainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| banffaegisweb tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| banffaegisweb tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |  |  |  |
+| banffaegisweb tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| banffaegisweb tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |   |   |   |
 | banffaegisweb ntp container _ _ host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| banffaegisweb ntp container _ _ serverrole _ | NTP（服务角色） |  |  |  |
-| > 文档版本：20260729 |  |  |  | 5 |
+| banffaegisweb ntp container _ _ serverrole _ | NTP（服务角色） |   |   |   |
+| > 文档版本：20260729 |   |   |   | 5 |
 
-| banffaegisweb ntp container _ _ cluster _ | NTP（集群） |  |  |  |
+| banffaegisweb ntp container _ _ cluster _ | NTP（集群） |   |   |   |
 |---|---|---|---|---|
 | banffaegisweb process coun _ _ t container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| banffaegisweb process coun _ _ t container cluster _ _ | 进程数（服务角色） |  |  |  |
-| banffaegisweb process coun _ _ t container host _ _ | 进程数（集群） |  |  |  |
+| banffaegisweb process coun _ _ t container cluster _ _ | 进程数（服务角色） |   |   |   |
+| banffaegisweb process coun _ _ t container host _ _ | 进程数（集群） |   |   |   |
 | banffaegisweb nginx contain _ _ er host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| banffaegisweb nginx contain _ _ er serverrole _ | nginx QPS（服务角色） |  |  |  |
-| banffaegisweb nginx contain _ _ er cluster _ | nginx QPS（集群） |  |  |  |
+| banffaegisweb nginx contain _ _ er serverrole _ | nginx QPS（服务角色） |   |   |   |
+| banffaegisweb nginx contain _ _ er cluster _ | nginx QPS（集群） |   |   |   |
 | banffaegisweb health contai _ _ ner host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| banffaegisweb health contai _ _ ner serverrole _ | 健康检查（服务角色） |  |  |  |
-| banffaegisweb health contai _ _ ner cluster _ | 健康检查（集群） |  |  |  |
+| banffaegisweb health contai _ _ ner serverrole _ | 健康检查（服务角色） |   |   |   |
+| banffaegisweb health contai _ _ ner cluster _ | 健康检查（集群） |   |   |   |
 
 **aegisvulnerability应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisvulnerability cpu contai _ _ ner host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvulnerability cpu contai _ _ ner serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegisvulnerability cpu contai _ _ ner cluster _ | CPU使用率（集群） |  |  |  |
+| aegisvulnerability cpu contai _ _ ner serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegisvulnerability cpu contai _ _ ner cluster _ | CPU使用率（集群） |   |   |   |
 
 | aegisvulnerability memo co _ _ ntainer host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisvulnerability memo co _ _ ntainer serverrole _ | 内存（服务角色） |  |  |  |
-| aegisvulnerability memo co _ _ ntainer cluster _ | 内存（集群） |  |  |  |
+| aegisvulnerability memo co _ _ ntainer serverrole _ | 内存（服务角色） |   |   |   |
+| aegisvulnerability memo co _ _ ntainer cluster _ | 内存（集群） |   |   |   |
 | aegisvulnerability load conta _ _ iner host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvulnerability load conta _ _ iner serverrole _ | 负载（服务角色） |  |  |  |
-| aegisvulnerability load conta _ _ iner cluster _ | 负载（集群） |  |  |  |
+| aegisvulnerability load conta _ _ iner serverrole _ | 负载（服务角色） |   |   |   |
+| aegisvulnerability load conta _ _ iner cluster _ | 负载（集群） |   |   |   |
 | aegisvulnerability tcp conns _ _ container host _ _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisvulnerability tcp conns _ _ container serverrole _ _ | tcp连接数（服务角色） |  |  |  |
-| aegisvulnerability tcp conns _ _ container cluster _ _ | tcp连接数（集群） |  |  |  |
+| aegisvulnerability tcp conns _ _ container serverrole _ _ | tcp连接数（服务角色） |   |   |   |
+| aegisvulnerability tcp conns _ _ container cluster _ _ | tcp连接数（集群） |   |   |   |
 | aegisvulnerability ntp contai _ _ ner host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisvulnerability ntp contai _ _ ner serverrole _ | NTP（服务角色） |  |  |  |
-| aegisvulnerability ntp contai _ _ ner cluster _ | NTP（集群） |  |  |  |
+| aegisvulnerability ntp contai _ _ ner serverrole _ | NTP（服务角色） |   |   |   |
+| aegisvulnerability ntp contai _ _ ner cluster _ | NTP（集群） |   |   |   |
 | aegisvulnerability process c _ _ ount container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvulnerability process c _ _ ount container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegisvulnerability process c _ _ ount container host _ _ | 进程数（集群） |  |  |  |
+| aegisvulnerability process c _ _ ount container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegisvulnerability process c _ _ ount container host _ _ | 进程数（集群） |   |   |   |
 
 | aegisvulnerability nginx con _ _ tainer host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
 |---|---|---|---|---|
-| aegisvulnerability nginx con _ _ tainer serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisvulnerability nginx con _ _ tainer cluster _ | nginx QPS（集群） |  |  |  |
+| aegisvulnerability nginx con _ _ tainer serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisvulnerability nginx con _ _ tainer cluster _ | nginx QPS（集群） |   |   |   |
 | aegisvulnerability health co _ _ ntainer host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisvulnerability health co _ _ ntainer serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisvulnerability health co _ _ ntainer cluster _ | 健康检查（集群） |  |  |  |
+| aegisvulnerability health co _ _ ntainer serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisvulnerability health co _ _ ntainer cluster _ | 健康检查（集群） |   |   |   |
 
 **aegisupdate应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisupdate cpu container _ _ _ host | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisupdate cpu container s _ _ _ erverrole | CPU使用率（服务角色） |  |  |  |
-| aegisupdate cpu container c _ _ _ luster | CPU使用率（集群） |  |  |  |
+| aegisupdate cpu container s _ _ _ erverrole | CPU使用率（服务角色） |   |   |   |
+| aegisupdate cpu container c _ _ _ luster | CPU使用率（集群） |   |   |   |
 | aegisupdate memo containe _ _ r host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisupdate memo containe _ _ r serverrole _ | 内存（服务角色） |  |  |  |
-| aegisupdate memo containe _ _ r cluster _ | 内存（集群） |  |  |  |
+| aegisupdate memo containe _ _ r serverrole _ | 内存（服务角色） |   |   |   |
+| aegisupdate memo containe _ _ r cluster _ | 内存（集群） |   |   |   |
 
 | aegisupdate load container _ _ _ host | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisupdate load container _ _ _ serverrole | 负载（服务角色） |  |  |  |
-| aegisupdate load container _ _ _ cluster | 负载（集群） |  |  |  |
+| aegisupdate load container _ _ _ serverrole | 负载（服务角色） |   |   |   |
+| aegisupdate load container _ _ _ cluster | 负载（集群） |   |   |   |
 | aegisupdate tcp conns cont _ _ _ ainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisupdate tcp conns cont _ _ _ ainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegisupdate tcp conns cont _ _ _ ainer cluster _ | tcp连接数（集群） |  |  |  |
+| aegisupdate tcp conns cont _ _ _ ainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegisupdate tcp conns cont _ _ _ ainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegisupdate ntp container h _ _ _ ost | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisupdate ntp container s _ _ _ erverrole | NTP（服务角色） |  |  |  |
-| aegisupdate ntp container c _ _ _ luster | NTP（集群） |  |  |  |
+| aegisupdate ntp container s _ _ _ erverrole | NTP（服务角色） |   |   |   |
+| aegisupdate ntp container c _ _ _ luster | NTP（集群） |   |   |   |
 | aegisupdate process count _ _ _ container host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisupdate process count _ _ _ container cluster _ | 进程数（服务角色） |  |  |  |
-| aegisupdate process count _ _ _ container host _ | 进程数（集群） |  |  |  |
+| aegisupdate process count _ _ _ container cluster _ | 进程数（服务角色） |   |   |   |
+| aegisupdate process count _ _ _ container host _ | 进程数（集群） |   |   |   |
 | aegisupdate nginx container _ _ host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegisupdate nginx container _ _ serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisupdate nginx container _ _ cluster _ | nginx QPS（集群） |  |  |  |
+| aegisupdate nginx container _ _ serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisupdate nginx container _ _ cluster _ | nginx QPS（集群） |   |   |   |
 
 | aegisupdate health containe _ _ r host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisupdate health containe _ _ r serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisupdate health containe _ _ r cluster _ | 健康检查（集群） |  |  |  |
+| aegisupdate health containe _ _ r serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisupdate health containe _ _ r cluster _ | 健康检查（集群） |   |   |   |
 
 **aegissuspicious应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegissuspicious cpu contain _ _ er host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegissuspicious cpu contain _ _ er serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegissuspicious cpu contain _ _ er cluster _ | CPU使用率（集群） |  |  |  |
+| aegissuspicious cpu contain _ _ er serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegissuspicious cpu contain _ _ er cluster _ | CPU使用率（集群） |   |   |   |
 | aegissuspicious memo conta _ _ iner host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegissuspicious memo conta _ _ iner serverrole _ | 内存（服务角色） |  |  |  |
-| aegissuspicious memo conta _ _ iner cluster _ | 内存（集群） |  |  |  |
+| aegissuspicious memo conta _ _ iner serverrole _ | 内存（服务角色） |   |   |   |
+| aegissuspicious memo conta _ _ iner cluster _ | 内存（集群） |   |   |   |
 | aegissuspicious load contain _ _ er host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g >1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegissuspicious load contain _ _ er serverrole _ | 负载（服务角色） |  |  |  |
-| aegissuspicious load contain _ _ er cluster _ | 负载（集群） |  |  |  |
-| aegissuspicious tcp conns c _ _ _ ontainer host _ | tcp连接数（单机） |  |  |  |
+| aegissuspicious load contain _ _ er serverrole _ | 负载（服务角色） |   |   |   |
+| aegissuspicious load contain _ _ er cluster _ | 负载（集群） |   |   |   |
+| aegissuspicious tcp conns c _ _ _ ontainer host _ | tcp连接数（单机） |   |   |   |
 
-|  |  | 安 | 骑士运维指南· | 安骑士运维手册 |
+|   |   | 安 | 骑士运维指南· | 安骑士运维手册 |
 |---|---|---|---|---|
-|  |  | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegissuspicious tcp conns c _ _ _ ontainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegissuspicious tcp conns c _ _ _ ontainer cluster _ | tcp连接数（集群） |  |  |  |
+|   |   | tcp连接的最大值和平均值 | 暂无 | 暂无 |
+| aegissuspicious tcp conns c _ _ _ ontainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegissuspicious tcp conns c _ _ _ ontainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegissuspicious ntp containe _ _ r host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegissuspicious ntp containe _ _ r serverrole _ | NTP（服务角色） |  |  |  |
-| aegissuspicious ntp containe _ _ r cluster _ | NTP（集群） |  |  |  |
+| aegissuspicious ntp containe _ _ r serverrole _ | NTP（服务角色） |   |   |   |
+| aegissuspicious ntp containe _ _ r cluster _ | NTP（集群） |   |   |   |
 | aegissuspicious process cou _ _ nt container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegissuspicious process cou _ _ nt container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegissuspicious process cou _ _ nt container host _ _ | 进程数（集群） |  |  |  |
+| aegissuspicious process cou _ _ nt container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegissuspicious process cou _ _ nt container host _ _ | 进程数（集群） |   |   |   |
 | aegissuspicious nginx contai _ _ ner host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegissuspicious nginx contai _ _ ner serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegissuspicious nginx contai _ _ ner cluster _ | nginx QPS（集群） |  |  |  |
+| aegissuspicious nginx contai _ _ ner serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegissuspicious nginx contai _ _ ner cluster _ | nginx QPS（集群） |   |   |   |
 | aegissuspicious health conta _ _ iner host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegissuspicious health conta _ _ iner serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegissuspicious health conta _ _ iner cluster _ | 健康检查（集群） |  |  |  |
+| aegissuspicious health conta _ _ iner serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegissuspicious health conta _ _ iner cluster _ | 健康检查（集群） |   |   |   |
 
 **aegismaster应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegismaster cpu container _ _ _ host | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismaster cpu container s _ _ _ erverrole | CPU使用率（服务角色） |  |  |  |
-| aegismaster cpu container c _ _ _ luster | CPU使用率（集群） |  |  |  |
+| aegismaster cpu container s _ _ _ erverrole | CPU使用率（服务角色） |   |   |   |
+| aegismaster cpu container c _ _ _ luster | CPU使用率（集群） |   |   |   |
 | aegismaster memo containe _ _ r host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismaster memo containe _ _ r serverrole _ | 内存（服务角色） |  |  |  |
-| aegismaster memo containe _ _ r cluster _ | 内存（集群） |  |  |  |
+| aegismaster memo containe _ _ r serverrole _ | 内存（服务角色） |   |   |   |
+| aegismaster memo containe _ _ r cluster _ | 内存（集群） |   |   |   |
 | aegismaster load container _ _ _ host | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismaster load container _ _ _ serverrole | 负载（服务角色） |  |  |  |
-| aegismaster load container _ _ _ cluster | 负载（集群） |  |  |  |
+| aegismaster load container _ _ _ serverrole | 负载（服务角色） |   |   |   |
+| aegismaster load container _ _ _ cluster | 负载（集群） |   |   |   |
 | aegismaster tcp conns cont _ _ _ ainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegismaster tcp conns cont _ _ _ ainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegismaster tcp conns cont _ _ _ ainer cluster _ | tcp连接数（集群） |  |  |  |
+| aegismaster tcp conns cont _ _ _ ainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegismaster tcp conns cont _ _ _ ainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegismaster ntp container h _ _ _ ost | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegismaster ntp container s _ _ _ erverrole | NTP（服务角色） |  |  |  |
-| 4 |  |  | > 文档版 | 本：2026072 |
+| aegismaster ntp container s _ _ _ erverrole | NTP（服务角色） |   |   |   |
+| 4 |   |   | > 文档版 | 本：2026072 |
 
-|  |  | 安 | 骑士运维指南· | 安骑士运维手册 |
+|   |   | 安 | 骑士运维指南· | 安骑士运维手册 |
 |---|---|---|---|---|
-| aegismaster ntp container c _ _ _ luster | NTP（集群） |  |  |  |
+| aegismaster ntp container c _ _ _ luster | NTP（集群） |   |   |   |
 | aegismaster process count _ _ _ container host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismaster process count _ _ _ container cluster _ | 进程数（服务角色） |  |  |  |
-| aegismaster process count _ _ _ container host _ | 进程数（集群） |  |  |  |
+| aegismaster process count _ _ _ container cluster _ | 进程数（服务角色） |   |   |   |
+| aegismaster process count _ _ _ container host _ | 进程数（集群） |   |   |   |
 | aegismaster nginx container _ _ host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegismaster nginx container _ _ serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegismaster nginx container _ _ cluster _ | nginx QPS（集群） |  |  |  |
+| aegismaster nginx container _ _ serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegismaster nginx container _ _ cluster _ | nginx QPS（集群） |   |   |   |
 | aegismaster health containe _ _ r host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismaster health containe _ _ r serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegismaster health containe _ _ r cluster _ | 健康检查（集群） |  |  |  |
+| aegismaster health containe _ _ r serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegismaster health containe _ _ r cluster _ | 健康检查（集群） |   |   |   |
 
 **aegishealthcheck应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegishealthcheck cpu contai _ _ ner host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegishealthcheck cpu contai _ _ ner serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegishealthcheck cpu contai _ _ ner cluster _ | CPU使用率（集群） |  |  |  |
+| aegishealthcheck cpu contai _ _ ner serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegishealthcheck cpu contai _ _ ner cluster _ | CPU使用率（集群） |   |   |   |
 
 | aegishealthcheck memo con _ _ tainer host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegishealthcheck memo con _ _ tainer serverrole _ | 内存（服务角色） |  |  |  |
-| aegishealthcheck memo con _ _ tainer cluster _ | 内存（集群） |  |  |  |
+| aegishealthcheck memo con _ _ tainer serverrole _ | 内存（服务角色） |   |   |   |
+| aegishealthcheck memo con _ _ tainer cluster _ | 内存（集群） |   |   |   |
 | aegishealthcheck load conta _ _ iner host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegishealthcheck load conta _ _ iner serverrole _ | 负载（服务角色） |  |  |  |
-| aegishealthcheck load conta _ _ iner cluster _ | 负载（集群） |  |  |  |
+| aegishealthcheck load conta _ _ iner serverrole _ | 负载（服务角色） |   |   |   |
+| aegishealthcheck load conta _ _ iner cluster _ | 负载（集群） |   |   |   |
 | aegishealthcheck tcp conns _ _ _ container host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegishealthcheck tcp conns _ _ _ container serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegishealthcheck tcp conns _ _ _ container cluster _ | tcp连接数（集群） |  |  |  |
+| aegishealthcheck tcp conns _ _ _ container serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegishealthcheck tcp conns _ _ _ container cluster _ | tcp连接数（集群） |   |   |   |
 | aegishealthcheck ntp contai _ _ ner host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegishealthcheck ntp contai _ _ ner serverrole _ | NTP（服务角色） |  |  |  |
-| aegishealthcheck ntp contai _ _ ner cluster _ | NTP（集群） |  |  |  |
+| aegishealthcheck ntp contai _ _ ner serverrole _ | NTP（服务角色） |   |   |   |
+| aegishealthcheck ntp contai _ _ ner cluster _ | NTP（集群） |   |   |   |
 | aegishealthcheck process co _ _ unt container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegishealthcheck process co _ _ unt container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegishealthcheck process co _ _ unt container host _ _ | 进程数（集群） |  |  |  |
+| aegishealthcheck process co _ _ unt container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegishealthcheck process co _ _ unt container host _ _ | 进程数（集群） |   |   |   |
 
 | aegishealthcheck nginx cont _ _ ainer host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
 |---|---|---|---|---|
-| aegishealthcheck nginx cont _ _ ainer serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegishealthcheck nginx cont _ _ ainer cluster _ | nginx QPS（集群） |  |  |  |
+| aegishealthcheck nginx cont _ _ ainer serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegishealthcheck nginx cont _ _ ainer cluster _ | nginx QPS（集群） |   |   |   |
 | aegishealthcheck health con _ _ tainer host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegishealthcheck health con _ _ tainer serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegishealthcheck health con _ _ tainer cluster _ | 健康检查（集群） |  |  |  |
+| aegishealthcheck health con _ _ tainer serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegishealthcheck health con _ _ tainer cluster _ | 健康检查（集群） |   |   |   |
 
 **aegiserver应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegiserver cpu container ho _ _ _ st | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegiserver cpu container se _ _ _ rverrole | CPU使用率（服务角色） |  |  |  |
-| aegiserver cpu container clu _ _ _ ster | CPU使用率（集群） |  |  |  |
+| aegiserver cpu container se _ _ _ rverrole | CPU使用率（服务角色） |   |   |   |
+| aegiserver cpu container clu _ _ _ ster | CPU使用率（集群） |   |   |   |
 | aegiserver memo container _ _ _ host | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegiserver memo container _ _ _ serverrole | 内存（服务角色） |  |  |  |
-| aegiserver memo container _ _ _ cluster | 内存（集群） |  |  |  |
+| aegiserver memo container _ _ _ serverrole | 内存（服务角色） |   |   |   |
+| aegiserver memo container _ _ _ cluster | 内存（集群） |   |   |   |
 
 | aegiserver load container h _ _ _ ost | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 4 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegiserver load container se _ _ _ rverrole | 负载（服务角色） |  |  |  |
-| aegiserver load container cl _ _ _ uster | 负载（集群） |  |  |  |
+| aegiserver load container se _ _ _ rverrole | 负载（服务角色） |   |   |   |
+| aegiserver load container cl _ _ _ uster | 负载（集群） |   |   |   |
 | aegiserver tcp conns contai _ _ _ ner host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegiserver tcp conns contai _ _ _ ner serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegiserver tcp conns contai _ _ _ ner cluster _ | tcp连接数（集群） |  |  |  |
+| aegiserver tcp conns contai _ _ _ ner serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegiserver tcp conns contai _ _ _ ner cluster _ | tcp连接数（集群） |   |   |   |
 | aegiserver ntp container ho _ _ _ st | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegiserver ntp container ser _ _ _ verrole | NTP（服务角色） |  |  |  |
-| aegiserver ntp container clu _ _ _ ster | NTP（集群） |  |  |  |
+| aegiserver ntp container ser _ _ _ verrole | NTP（服务角色） |   |   |   |
+| aegiserver ntp container clu _ _ _ ster | NTP（集群） |   |   |   |
 | aegiserver process count co _ _ _ ntainer host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegiserver process count co _ _ _ ntainer cluster _ | 进程数（服务角色） |  |  |  |
-| aegiserver process count co _ _ _ ntainer host _ | 进程数（集群） |  |  |  |
+| aegiserver process count co _ _ _ ntainer cluster _ | 进程数（服务角色） |   |   |   |
+| aegiserver process count co _ _ _ ntainer host _ | 进程数（集群） |   |   |   |
 | aegiserver nginx container _ _ _ host | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegiserver nginx container _ _ _ serverrole | nginx QPS（服务角色） |  |  |  |
-| aegiserver nginx container _ _ _ cluster | nginx QPS（集群） |  |  |  |
+| aegiserver nginx container _ _ _ serverrole | nginx QPS（服务角色） |   |   |   |
+| aegiserver nginx container _ _ _ cluster | nginx QPS（集群） |   |   |   |
 
 | aegiserver health container _ _ _ host | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegiserver health container _ _ _ serverrole | 健康检查（服务角色） |  |  |  |
-| aegiserver health container _ _ _ cluster | 健康检查（集群） |  |  |  |
+| aegiserver health container _ _ _ serverrole | 健康检查（服务角色） |   |   |   |
+| aegiserver health container _ _ _ cluster | 健康检查（集群） |   |   |   |
 
 **aegisdetect应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisdetect cpu container h _ _ _ ost | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdetect cpu container s _ _ _ erverrole | CPU使用率（服务角色） |  |  |  |
-| aegisdetect cpu container cl _ _ _ uster | CPU使用率（集群） |  |  |  |
+| aegisdetect cpu container s _ _ _ erverrole | CPU使用率（服务角色） |   |   |   |
+| aegisdetect cpu container cl _ _ _ uster | CPU使用率（集群） |   |   |   |
 | aegisdetect memo container _ _ host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdetect memo container _ _ serverrole _ | 内存（服务角色） |  |  |  |
-| aegisdetect memo container _ _ cluster _ | 内存（集群） |  |  |  |
+| aegisdetect memo container _ _ serverrole _ | 内存（服务角色） |   |   |   |
+| aegisdetect memo container _ _ cluster _ | 内存（集群） |   |   |   |
 | aegisdetect load container _ _ _ host | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdetect load container s _ _ _ erverrole | 负载（服务角色） |  |  |  |
-| aegisdetect load container c _ _ _ luster | 负载（集群） |  |  |  |
-| aegisdetect tcp conns conta _ _ _ iner host _ | tcp连接数（单机） |  |  |  |
+| aegisdetect load container s _ _ _ erverrole | 负载（服务角色） |   |   |   |
+| aegisdetect load container c _ _ _ luster | 负载（集群） |   |   |   |
+| aegisdetect tcp conns conta _ _ _ iner host _ | tcp连接数（单机） |   |   |   |
 
-| 安骑士运维指南·安骑士运维手册 |  |  |  |  |
+| 安骑士运维指南·安骑士运维手册 |   |   |   |   |
 |---|---|---|---|---|
-|  |  | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisdetect tcp conns conta _ _ _ iner serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegisdetect tcp conns conta _ _ _ iner cluster _ | tcp连接数（集群） |  |  |  |
+|   |   | tcp连接的最大值和平均值 | 暂无 | 暂无 |
+| aegisdetect tcp conns conta _ _ _ iner serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegisdetect tcp conns conta _ _ _ iner cluster _ | tcp连接数（集群） |   |   |   |
 | aegisdetect ntp container h _ _ _ ost | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisdetect ntp container s _ _ _ erverrole | NTP（服务角色） |  |  |  |
-| aegisdetect ntp container cl _ _ _ uster | NTP（集群） |  |  |  |
+| aegisdetect ntp container s _ _ _ erverrole | NTP（服务角色） |   |   |   |
+| aegisdetect ntp container cl _ _ _ uster | NTP（集群） |   |   |   |
 | aegisdetect process count c _ _ _ ontainer host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdetect process count c _ _ _ ontainer cluster _ | 进程数（服务角色） |  |  |  |
-| aegisdetect process count c _ _ _ ontainer host _ | 进程数（集群） |  |  |  |
+| aegisdetect process count c _ _ _ ontainer cluster _ | 进程数（服务角色） |   |   |   |
+| aegisdetect process count c _ _ _ ontainer host _ | 进程数（集群） |   |   |   |
 | aegisdetect nginx container _ _ host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegisdetect nginx container _ _ serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisdetect nginx container _ _ cluster _ | nginx QPS（集群） |  |  |  |
+| aegisdetect nginx container _ _ serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisdetect nginx container _ _ cluster _ | nginx QPS（集群） |   |   |   |
 | aegisdetect health container _ _ host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdetect health container _ _ serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisdetect health container _ _ cluster _ | 健康检查（集群） |  |  |  |
+| aegisdetect health container _ _ serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisdetect health container _ _ cluster _ | 健康检查（集群） |   |   |   |
 
 **aegisbiz应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisbiz cpu container host _ _ _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisbiz cpu container serv _ _ _ errole | CPU使用率（服务角色） |  |  |  |
-| aegisbiz cpu container clust _ _ _ er | CPU使用率（集群） |  |  |  |
+| aegisbiz cpu container serv _ _ _ errole | CPU使用率（服务角色） |   |   |   |
+| aegisbiz cpu container clust _ _ _ er | CPU使用率（集群） |   |   |   |
 | aegisbiz memo container ho _ _ _ st | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisbiz memo container se _ _ _ rverrole | 内存（服务角色） |  |  |  |
-| aegisbiz memo container cl _ _ _ uster | 内存（集群） |  |  |  |
+| aegisbiz memo container se _ _ _ rverrole | 内存（服务角色） |   |   |   |
+| aegisbiz memo container cl _ _ _ uster | 内存（集群） |   |   |   |
 | aegisbiz load container host _ _ _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisbiz load container serv _ _ _ errole | 负载（服务角色） |  |  |  |
-| aegisbiz load container clus _ _ _ ter | 负载（集群） |  |  |  |
+| aegisbiz load container serv _ _ _ errole | 负载（服务角色） |   |   |   |
+| aegisbiz load container clus _ _ _ ter | 负载（集群） |   |   |   |
 | aegisbiz tcp conns containe _ _ _ r host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisbiz tcp conns containe _ _ _ r serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegisbiz tcp conns containe _ _ _ r cluster _ | tcp连接数（集群） |  |  |  |
+| aegisbiz tcp conns containe _ _ _ r serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegisbiz tcp conns containe _ _ _ r cluster _ | tcp连接数（集群） |   |   |   |
 | aegisbiz ntp container host _ _ _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisbiz ntp container serve _ _ _ rrole | NTP（服务角色） |  |  |  |
-| > 文档版本：20260729 |  |  |  | 7 |
+| aegisbiz ntp container serve _ _ _ rrole | NTP（服务角色） |   |   |   |
+| > 文档版本：20260729 |   |   |   | 7 |
 
-| aegisbiz ntp container clust _ _ _ er | NTP（集群） |  |  |  |
+| aegisbiz ntp container clust _ _ _ er | NTP（集群） |   |   |   |
 |---|---|---|---|---|
 | aegisbiz process count cont _ _ _ ainer host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisbiz process count cont _ _ _ ainer cluster _ | 进程数（服务角色） |  |  |  |
-| aegisbiz process count cont _ _ _ ainer host _ | 进程数（集群） |  |  |  |
+| aegisbiz process count cont _ _ _ ainer cluster _ | 进程数（服务角色） |   |   |   |
+| aegisbiz process count cont _ _ _ ainer host _ | 进程数（集群） |   |   |   |
 | aegisbiz nginx container ho _ _ _ st | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegisbiz nginx container ser _ _ _ verrole | nginx QPS（服务角色） |  |  |  |
-| aegisbiz nginx container clu _ _ _ ster | nginx QPS（集群） |  |  |  |
+| aegisbiz nginx container ser _ _ _ verrole | nginx QPS（服务角色） |   |   |   |
+| aegisbiz nginx container clu _ _ _ ster | nginx QPS（集群） |   |   |   |
 | aegisbiz health container ho _ _ _ st | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisbiz health container se _ _ _ rverrole | 健康检查（服务角色） |  |  |  |
-| aegisbiz health container cl _ _ _ uster | 健康检查（集群） |  |  |  |
+| aegisbiz health container se _ _ _ rverrole | 健康检查（服务角色） |   |   |   |
+| aegisbiz health container cl _ _ _ uster | 健康检查（集群） |   |   |   |
 
 **aegisassets应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisassets cpu container h _ _ _ ost | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisassets cpu container s _ _ _ erverrole | CPU使用率（服务角色） |  |  |  |
-| aegisassets cpu container cl _ _ _ uster | CPU使用率（集群） |  |  |  |
+| aegisassets cpu container s _ _ _ erverrole | CPU使用率（服务角色） |   |   |   |
+| aegisassets cpu container cl _ _ _ uster | CPU使用率（集群） |   |   |   |
 
 | aegisassets memo container _ _ host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisassets memo container _ _ serverrole _ | 内存（服务角色） |  |  |  |
-| aegisassets memo container _ _ cluster _ | 内存（集群） |  |  |  |
+| aegisassets memo container _ _ serverrole _ | 内存（服务角色） |   |   |   |
+| aegisassets memo container _ _ cluster _ | 内存（集群） |   |   |   |
 | aegisassets load container _ _ _ host | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 3 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisassets load container s _ _ _ erverrole | 负载（服务角色） |  |  |  |
-| aegisassets load container c _ _ _ luster | 负载（集群） |  |  |  |
+| aegisassets load container s _ _ _ erverrole | 负载（服务角色） |   |   |   |
+| aegisassets load container c _ _ _ luster | 负载（集群） |   |   |   |
 | aegisassets tcp conns conta _ _ _ iner host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisassets tcp conns conta _ _ _ iner serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegisassets tcp conns conta _ _ _ iner cluster _ | tcp连接数（集群） |  |  |  |
+| aegisassets tcp conns conta _ _ _ iner serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegisassets tcp conns conta _ _ _ iner cluster _ | tcp连接数（集群） |   |   |   |
 | aegisassets ntp container h _ _ _ ost | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisassets ntp container s _ _ _ erverrole | NTP（服务角色） |  |  |  |
-| aegisassets ntp container cl _ _ _ uster | NTP（集群） |  |  |  |
+| aegisassets ntp container s _ _ _ erverrole | NTP（服务角色） |   |   |   |
+| aegisassets ntp container cl _ _ _ uster | NTP（集群） |   |   |   |
 | aegisassets process count c _ _ _ ontainer host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisassets process count c _ _ _ ontainer cluster _ | 进程数（服务角色） |  |  |  |
-| aegisassets process count c _ _ _ ontainer host _ | 进程数（集群） |  |  |  |
+| aegisassets process count c _ _ _ ontainer cluster _ | 进程数（服务角色） |   |   |   |
+| aegisassets process count c _ _ _ ontainer host _ | 进程数（集群） |   |   |   |
 
 | aegisassets nginx container _ _ host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
 |---|---|---|---|---|
-| aegisassets nginx container _ _ serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisassets nginx container _ _ cluster _ | nginx QPS（集群） |  |  |  |
+| aegisassets nginx container _ _ serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisassets nginx container _ _ cluster _ | nginx QPS（集群） |   |   |   |
 | aegisassets health container _ _ host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisassets health container _ _ serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisassets health container _ _ cluster _ | 健康检查（集群） |  |  |  |
+| aegisassets health container _ _ serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisassets health container _ _ cluster _ | 健康检查（集群） |   |   |   |
 
 **aegisdefence应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisdefence cpu container _ _ _ host | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdefence cpu container _ _ _ serverrole | CPU使用率（服务角色） |  |  |  |
-| aegisdefence cpu container _ _ _ cluster | CPU使用率（集群） |  |  |  |
+| aegisdefence cpu container _ _ _ serverrole | CPU使用率（服务角色） |   |   |   |
+| aegisdefence cpu container _ _ _ cluster | CPU使用率（集群） |   |   |   |
 | aegisdefence memo contain _ _ er host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdefence memo contain _ _ er serverrole _ | 内存（服务角色） |  |  |  |
-| aegisdefence memo contain _ _ er cluster _ | 内存（集群） |  |  |  |
+| aegisdefence memo contain _ _ er serverrole _ | 内存（服务角色） |   |   |   |
+| aegisdefence memo contain _ _ er cluster _ | 内存（集群） |   |   |   |
 
 | aegisdefence load container _ _ host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisdefence load container _ _ serverrole _ | 负载（服务角色） |  |  |  |
-| aegisdefence load container _ _ cluster _ | 负载（集群） |  |  |  |
+| aegisdefence load container _ _ serverrole _ | 负载（服务角色） |   |   |   |
+| aegisdefence load container _ _ cluster _ | 负载（集群） |   |   |   |
 | aegisdefence tcp conns con _ _ _ tainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisdefence tcp conns con _ _ _ tainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegisdefence tcp conns con _ _ _ tainer cluster _ | tcp连接数（集群） |  |  |  |
+| aegisdefence tcp conns con _ _ _ tainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegisdefence tcp conns con _ _ _ tainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegisdefence ntp container _ _ _ host | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegisdefence ntp container _ _ _ serverrole | NTP（服务角色） |  |  |  |
-| aegisdefence ntp container _ _ _ cluster | NTP（集群） |  |  |  |
+| aegisdefence ntp container _ _ _ serverrole | NTP（服务角色） |   |   |   |
+| aegisdefence ntp container _ _ _ cluster | NTP（集群） |   |   |   |
 | aegisdefence process count _ _ container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisdefence process count _ _ container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegisdefence process count _ _ container host _ _ | 进程数（集群） |  |  |  |
+| aegisdefence process count _ _ container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegisdefence process count _ _ container host _ _ | 进程数（集群） |   |   |   |
 | aegisdefence nginx containe _ _ r host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegisdefence nginx containe _ _ r serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisdefence nginx containe _ _ r cluster _ | nginx QPS（集群） |  |  |  |
+| aegisdefence nginx containe _ _ r serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisdefence nginx containe _ _ r cluster _ | nginx QPS（集群） |   |   |   |
 
 | aegisdefence health contain _ _ er host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegisdefence health contain _ _ er serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisdefence health contain _ _ er cluster _ | 健康检查（集群） |  |  |  |
+| aegisdefence health contain _ _ er serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisdefence health contain _ _ er cluster _ | 健康检查（集群） |   |   |   |
 
 **aegismatcher应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegismatcher cpu container _ _ host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismatcher cpu container _ _ serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegismatcher cpu container _ _ cluster _ | CPU使用率（集群） |  |  |  |
+| aegismatcher cpu container _ _ serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegismatcher cpu container _ _ cluster _ | CPU使用率（集群） |   |   |   |
 | aegismatcher memo contain _ _ er host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismatcher memo contain _ _ er serverrole _ | 内存（服务角色） |  |  |  |
-| aegismatcher memo contain _ _ er cluster _ | 内存（集群） |  |  |  |
+| aegismatcher memo contain _ _ er serverrole _ | 内存（服务角色） |   |   |   |
+| aegismatcher memo contain _ _ er cluster _ | 内存（集群） |   |   |   |
 | aegismatcher load container _ _ host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismatcher load container _ _ serverrole _ | 负载（服务角色） |  |  |  |
-| aegismatcher load container _ _ cluster _ | 负载（集群） |  |  |  |
-| aegismatcher tcp conns con _ _ _ tainer host _ | tcp连接数（单机） |  |  |  |
+| aegismatcher load container _ _ serverrole _ | 负载（服务角色） |   |   |   |
+| aegismatcher load container _ _ cluster _ | 负载（集群） |   |   |   |
+| aegismatcher tcp conns con _ _ _ tainer host _ | tcp连接数（单机） |   |   |   |
 
-|  |  | 安 | 骑士运维指南· | 安骑士运维手册 |
+|   |   | 安 | 骑士运维指南· | 安骑士运维手册 |
 |---|---|---|---|---|
-|  |  | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegismatcher tcp conns con _ _ _ tainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegismatcher tcp conns con _ _ _ tainer cluster _ | tcp连接数（集群） |  |  |  |
+|   |   | tcp连接的最大值和平均值 | 暂无 | 暂无 |
+| aegismatcher tcp conns con _ _ _ tainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegismatcher tcp conns con _ _ _ tainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegismatcher ntp container _ _ _ host | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegismatcher ntp container _ _ _ serverrole | NTP（服务角色） |  |  |  |
-| aegismatcher ntp container _ _ _ cluster | NTP（集群） |  |  |  |
+| aegismatcher ntp container _ _ _ serverrole | NTP（服务角色） |   |   |   |
+| aegismatcher ntp container _ _ _ cluster | NTP（集群） |   |   |   |
 | aegismatcher process count _ _ container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismatcher process count _ _ container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegismatcher process count _ _ container host _ _ | 进程数（集群） |  |  |  |
+| aegismatcher process count _ _ container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegismatcher process count _ _ container host _ _ | 进程数（集群） |   |   |   |
 | aegismatcher nginx contain _ _ er host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegismatcher nginx contain _ _ er serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegismatcher nginx contain _ _ er cluster _ | nginx QPS（集群） |  |  |  |
+| aegismatcher nginx contain _ _ er serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegismatcher nginx contain _ _ er cluster _ | nginx QPS（集群） |   |   |   |
 | aegismatcher health contain _ _ er host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismatcher health contain _ _ er serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegismatcher health contain _ _ er cluster _ | 健康检查（集群） |  |  |  |
+| aegismatcher health contain _ _ er serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegismatcher health contain _ _ er cluster _ | 健康检查（集群） |   |   |   |
 
 **newsas应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | newsas cpu container host _ _ _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| newsas cpu container serve _ _ _ rrole | CPU使用率（服务角色） |  |  |  |
-| newsas cpu container cluste _ _ _ r | CPU使用率（集群） |  |  |  |
+| newsas cpu container serve _ _ _ rrole | CPU使用率（服务角色） |   |   |   |
+| newsas cpu container cluste _ _ _ r | CPU使用率（集群） |   |   |   |
 | newsas memo container ho _ _ _ st | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| newsas memo container ser _ _ _ verrole | 内存（服务角色） |  |  |  |
-| newsas memo container clu _ _ _ ster | 内存（集群） |  |  |  |
+| newsas memo container ser _ _ _ verrole | 内存（服务角色） |   |   |   |
+| newsas memo container clu _ _ _ ster | 内存（集群） |   |   |   |
 | newsas load container host _ _ _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| newsas load container serv _ _ _ errole | 负载（服务角色） |  |  |  |
-| newsas load container clust _ _ _ er | 负载（集群） |  |  |  |
+| newsas load container serv _ _ _ errole | 负载（服务角色） |   |   |   |
+| newsas load container clust _ _ _ er | 负载（集群） |   |   |   |
 | newsas tcp conns container _ _ _ host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| newsas tcp conns container _ _ _ serverrole _ | tcp连接数（服务角色） |  |  |  |
-| newsas tcp conns container _ _ _ cluster _ | tcp连接数（集群） |  |  |  |
+| newsas tcp conns container _ _ _ serverrole _ | tcp连接数（服务角色） |   |   |   |
+| newsas tcp conns container _ _ _ cluster _ | tcp连接数（集群） |   |   |   |
 | newsas ntp container host _ _ _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| newsas ntp container server _ _ _ role | NTP（服务角色） |  |  |  |
-| 8 |  |  | > 文档版 | 本：2026072 |
+| newsas ntp container server _ _ _ role | NTP（服务角色） |   |   |   |
+| 8 |   |   | > 文档版 | 本：2026072 |
 
-|  |  | 安 | 骑士运维指南· | 安骑士运维手册 |
+|   |   | 安 | 骑士运维指南· | 安骑士运维手册 |
 |---|---|---|---|---|
-| newsas ntp container cluste _ _ _ r | NTP（集群） |  |  |  |
+| newsas ntp container cluste _ _ _ r | NTP（集群） |   |   |   |
 | newsas process count conta _ _ _ iner host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| newsas process count conta _ _ _ iner cluster _ | 进程数（服务角色） |  |  |  |
-| newsas process count conta _ _ _ iner host _ | 进程数（集群） |  |  |  |
+| newsas process count conta _ _ _ iner cluster _ | 进程数（服务角色） |   |   |   |
+| newsas process count conta _ _ _ iner host _ | 进程数（集群） |   |   |   |
 | newsas nginx container hos _ _ _ t | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| newsas nginx container ser _ _ _ verrole | nginx QPS（服务角色） |  |  |  |
-| newsas nginx container clus _ _ _ ter | nginx QPS（集群） |  |  |  |
+| newsas nginx container ser _ _ _ verrole | nginx QPS（服务角色） |   |   |   |
+| newsas nginx container clus _ _ _ ter | nginx QPS（集群） |   |   |   |
 | newsas health container ho _ _ _ st | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| newsas health container ser _ _ _ verrole | 健康检查（服务角色） |  |  |  |
-| newsas health container clu _ _ _ ster | 健康检查（集群） |  |  |  |
+| newsas health container ser _ _ _ verrole | 健康检查（服务角色） |   |   |   |
+| newsas health container clu _ _ _ ster | 健康检查（集群） |   |   |   |
 
 **sasfileserver应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | sasfileserver cpu container _ _ _ host | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| sasfileserver cpu container _ _ _ serverrole | CPU使用率（服务角色） |  |  |  |
-| sasfileserver cpu container _ _ _ cluster | CPU使用率（集群） |  |  |  |
+| sasfileserver cpu container _ _ _ serverrole | CPU使用率（服务角色） |   |   |   |
+| sasfileserver cpu container _ _ _ cluster | CPU使用率（集群） |   |   |   |
 
 | sasfileserver memo contain _ _ er host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| sasfileserver memo contain _ _ er serverrole _ | 内存（服务角色） |  |  |  |
-| sasfileserver memo contain _ _ er cluster _ | 内存（集群） |  |  |  |
+| sasfileserver memo contain _ _ er serverrole _ | 内存（服务角色） |   |   |   |
+| sasfileserver memo contain _ _ er cluster _ | 内存（集群） |   |   |   |
 | sasfileserver load container _ _ _ host | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| sasfileserver load container _ _ _ serverrole | 负载（服务角色） |  |  |  |
-| sasfileserver load container _ _ _ cluster | 负载（集群） |  |  |  |
+| sasfileserver load container _ _ _ serverrole | 负载（服务角色） |   |   |   |
+| sasfileserver load container _ _ _ cluster | 负载（集群） |   |   |   |
 | sasfileserver tcp conns cont _ _ _ ainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| sasfileserver tcp conns cont _ _ _ ainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| sasfileserver tcp conns cont _ _ _ ainer cluster _ | tcp连接数（集群） |  |  |  |
+| sasfileserver tcp conns cont _ _ _ ainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| sasfileserver tcp conns cont _ _ _ ainer cluster _ | tcp连接数（集群） |   |   |   |
 | sasfileserver ntp container _ _ _ host | NTP（单机） | NTP | 暂无 | 暂无 |
-| sasfileserver ntp container s _ _ _ erverrole | NTP（服务角色） |  |  |  |
-| sasfileserver ntp container c _ _ _ luster | NTP（集群） |  |  |  |
+| sasfileserver ntp container s _ _ _ erverrole | NTP（服务角色） |   |   |   |
+| sasfileserver ntp container c _ _ _ luster | NTP（集群） |   |   |   |
 | sasfileserver process count _ _ _ container host _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| sasfileserver process count _ _ _ container cluster _ | 进程数（服务角色） |  |  |  |
-| sasfileserver process count _ _ _ container host _ | 进程数（集群） |  |  |  |
+| sasfileserver process count _ _ _ container cluster _ | 进程数（服务角色） |   |   |   |
+| sasfileserver process count _ _ _ container host _ | 进程数（集群） |   |   |   |
 
 | sasfileserver nginx containe _ _ r host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
 |---|---|---|---|---|
-| sasfileserver nginx containe _ _ r serverrole _ | nginx QPS（服务角色） |  |  |  |
-| sasfileserver nginx containe _ _ r cluster _ | nginx QPS（集群） |  |  |  |
+| sasfileserver nginx containe _ _ r serverrole _ | nginx QPS（服务角色） |   |   |   |
+| sasfileserver nginx containe _ _ r cluster _ | nginx QPS（集群） |   |   |   |
 | sasfileserver health containe _ _ r host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| sasfileserver health containe _ _ r serverrole _ | 健康检查（服务角色） |  |  |  |
-| sasfileserver health containe _ _ r cluster _ | 健康检查（集群） |  |  |  |
+| sasfileserver health containe _ _ r serverrole _ | 健康检查（服务角色） |   |   |   |
+| sasfileserver health containe _ _ r cluster _ | 健康检查（集群） |   |   |   |
 
 **aegismetadata应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegismetadata cpu containe _ _ r host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismetadata cpu containe _ _ r serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegismetadata cpu containe _ _ r cluster _ | CPU使用率（集群） |  |  |  |
+| aegismetadata cpu containe _ _ r serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegismetadata cpu containe _ _ r cluster _ | CPU使用率（集群） |   |   |   |
 | aegismetadata memo contai _ _ ner host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismetadata memo contai _ _ ner serverrole _ | 内存（服务角色） |  |  |  |
-| aegismetadata memo contai _ _ ner cluster _ | 内存（集群） |  |  |  |
+| aegismetadata memo contai _ _ ner serverrole _ | 内存（服务角色） |   |   |   |
+| aegismetadata memo contai _ _ ner cluster _ | 内存（集群） |   |   |   |
 
 | aegismetadata load contain _ _ er host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
 |---|---|---|---|---|
-| aegismetadata load contain _ _ er serverrole _ | 负载（服务角色） |  |  |  |
-| aegismetadata load contain _ _ er cluster _ | 负载（集群） |  |  |  |
+| aegismetadata load contain _ _ er serverrole _ | 负载（服务角色） |   |   |   |
+| aegismetadata load contain _ _ er cluster _ | 负载（集群） |   |   |   |
 | aegismetadata tcp conns co _ _ _ ntainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegismetadata tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| aegismetadata tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |  |  |  |
+| aegismetadata tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| aegismetadata tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |   |   |   |
 | aegismetadata ntp containe _ _ r host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| aegismetadata ntp containe _ _ r serverrole _ | NTP（服务角色） |  |  |  |
-| aegismetadata ntp containe _ _ r cluster _ | NTP（集群） |  |  |  |
+| aegismetadata ntp containe _ _ r serverrole _ | NTP（服务角色） |   |   |   |
+| aegismetadata ntp containe _ _ r cluster _ | NTP（集群） |   |   |   |
 | aegismetadata process coun _ _ t container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismetadata process coun _ _ t container cluster _ _ | 进程数（服务角色） |  |  |  |
-| aegismetadata process coun _ _ t container host _ _ | 进程数（集群） |  |  |  |
+| aegismetadata process coun _ _ t container cluster _ _ | 进程数（服务角色） |   |   |   |
+| aegismetadata process coun _ _ t container host _ _ | 进程数（集群） |   |   |   |
 | aegismetadata nginx contai _ _ ner host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegismetadata nginx contai _ _ ner serverrole _ | nginx QPS（服务角色） |  |  |  |
-| 2 |  |  | > 文档版 | 本：2026072 |
+| aegismetadata nginx contai _ _ ner serverrole _ | nginx QPS（服务角色） |   |   |   |
+| 2 |   |   | > 文档版 | 本：2026072 |
 
-|  |  | 安 | 骑士运维指南· | 安骑士运维手册 |
+|   |   | 安 | 骑士运维指南· | 安骑士运维手册 |
 |---|---|---|---|---|
-| aegismetadata nginx contai _ _ ner cluster _ | nginx QPS（集群） |  |  |  |
+| aegismetadata nginx contai _ _ ner cluster _ | nginx QPS（集群） |   |   |   |
 | aegismetadata health contai _ _ ner host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegismetadata health contai _ _ ner serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegismetadata health contai _ _ ner cluster _ | 健康检查（集群） |  |  |  |
+| aegismetadata health contai _ _ ner serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegismetadata health contai _ _ ner cluster _ | 健康检查（集群） |   |   |   |
 
 **baselinecheck应用**
 
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | baselinecheck cpu container _ _ host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| baselinecheck cpu container _ _ serverrole _ | CPU使用率（服务角色） |  |  |  |
-| baselinecheck cpu container _ _ cluster _ | CPU使用率（集群） |  |  |  |
+| baselinecheck cpu container _ _ serverrole _ | CPU使用率（服务角色） |   |   |   |
+| baselinecheck cpu container _ _ cluster _ | CPU使用率（集群） |   |   |   |
 | baselinecheck memo contai _ _ ner host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| baselinecheck memo contai _ _ ner serverrole _ | 内存（服务角色） |  |  |  |
-| baselinecheck memo contai _ _ ner cluster _ | 内存（集群） |  |  |  |
+| baselinecheck memo contai _ _ ner serverrole _ | 内存（服务角色） |   |   |   |
+| baselinecheck memo contai _ _ ner cluster _ | 内存（集群） |   |   |   |
 | baselinecheck load containe _ _ r host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| baselinecheck load containe _ _ r serverrole _ | 负载（服务角色） |  |  |  |
-| baselinecheck load containe _ _ r cluster _ | 负载（集群） |  |  |  |
+| baselinecheck load containe _ _ r serverrole _ | 负载（服务角色） |   |   |   |
+| baselinecheck load containe _ _ r cluster _ | 负载（集群） |   |   |   |
 
 | baselinecheck tcp conns co _ _ _ ntainer host _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
 |---|---|---|---|---|
-| baselinecheck tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |  |  |  |
-| baselinecheck tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |  |  |  |
+| baselinecheck tcp conns co _ _ _ ntainer serverrole _ | tcp连接数（服务角色） |   |   |   |
+| baselinecheck tcp conns co _ _ _ ntainer cluster _ | tcp连接数（集群） |   |   |   |
 | baselinecheck ntp container _ _ host _ | NTP（单机） | NTP | 暂无 | 暂无 |
-| baselinecheck ntp container _ _ serverrole _ | NTP（服务角色） |  |  |  |
-| baselinecheck ntp container _ _ cluster _ | NTP（集群） |  |  |  |
+| baselinecheck ntp container _ _ serverrole _ | NTP（服务角色） |   |   |   |
+| baselinecheck ntp container _ _ cluster _ | NTP（集群） |   |   |   |
 | baselinecheck process count _ _ container host _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| baselinecheck process count _ _ container cluster _ _ | 进程数（服务角色） |  |  |  |
-| baselinecheck process count _ _ container host _ _ | 进程数（集群） |  |  |  |
+| baselinecheck process count _ _ container cluster _ _ | 进程数（服务角色） |   |   |   |
+| baselinecheck process count _ _ container host _ _ | 进程数（集群） |   |   |   |
 | baselinecheck nginx contain _ _ er host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| baselinecheck nginx contain _ _ er serverrole _ | nginx QPS（服务角色） |  |  |  |
-| baselinecheck nginx contain _ _ er cluster _ | nginx QPS（集群） |  |  |  |
+| baselinecheck nginx contain _ _ er serverrole _ | nginx QPS（服务角色） |   |   |   |
+| baselinecheck nginx contain _ _ er cluster _ | nginx QPS（集群） |   |   |   |
 | baselinecheck health contai _ _ ner host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| baselinecheck health contai _ _ ner serverrole _ | 健康检查（服务角色） |  |  |  |
-| 4 |  |  | > 文档版 | 本：2026072 |
+| baselinecheck health contai _ _ ner serverrole _ | 健康检查（服务角色） |   |   |   |
+| 4 |   |   | > 文档版 | 本：2026072 |
 
-| baselinecheck health contai _ _ ner cluster _ | 健康检查（集群） |  |  |  |
+| baselinecheck health contai _ _ ner cluster _ | 健康检查（集群） |   |   |   |
 |---|---|---|---|---|
 
 **aegisimageanalyzer应用**
@@ -1040,37 +1061,37 @@ NDR：网络层攻击数据，Aegisbiz消费暴力破解数据，按资产、类
 | 监控指标（TianjiMon指标名称） | 监控名称 | 监控描述 | 告警阈值 | 告警描述 |
 |---|---|---|---|---|
 | aegisimageanalyzer cpu con _ _ tainer host _ | CPU使用率（单机） | CPU使用率 | util avg > _ 95 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisimageanalyzer cpu con _ _ tainer serverrole _ | CPU使用率（服务角色） |  |  |  |
-| aegisimageanalyzer cpu con _ _ tainer cluster _ | CPU使用率（集群） |  |  |  |
+| aegisimageanalyzer cpu con _ _ tainer serverrole _ | CPU使用率（服务角色） |   |   |   |
+| aegisimageanalyzer cpu con _ _ tainer cluster _ | CPU使用率（集群） |   |   |   |
 | aegisimageanalyzer memo c _ _ ontainer host _ | 内存（单机） | 内存使用率最大值和平均值 | util avg > _ 90 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisimageanalyzer memo c _ _ ontainer serverrole _ | 内存（服务角色） |  |  |  |
-| aegisimageanalyzer memo c _ _ ontainer cluster _ | 内存（集群） |  |  |  |
+| aegisimageanalyzer memo c _ _ ontainer serverrole _ | 内存（服务角色） |   |   |   |
+| aegisimageanalyzer memo c _ _ ontainer cluster _ | 内存（集群） |   |   |   |
 | aegisimageanalyzer load co _ _ ntainer host _ | 负载（单机） | CPU 负载最大值和平均值 （load1，load5，load 15） | load1 av _ g > 1 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisimageanalyzer load co _ _ ntainer serverrole _ | 负载（服务角色） |  |  |  |
-| aegisimageanalyzer load co _ _ ntainer cluster _ | 负载（集群） |  |  |  |
+| aegisimageanalyzer load co _ _ ntainer serverrole _ | 负载（服务角色） |   |   |   |
+| aegisimageanalyzer load co _ _ ntainer cluster _ | 负载（集群） |   |   |   |
 | aegisimageanalyzer tcp con _ _ ns container host _ _ | tcp连接数（单机） | tcp连接的最大值和平均值 | 暂无 | 暂无 |
-| aegisimageanalyzer tcp con _ _ ns container serverrole _ _ | tcp连接数（服务角色） |  |  |  |
-| aegisimageanalyzer tcp con _ _ ns container cluster _ _ | tcp连接数（集群） |  |  |  |
+| aegisimageanalyzer tcp con _ _ ns container serverrole _ _ | tcp连接数（服务角色） |   |   |   |
+| aegisimageanalyzer tcp con _ _ ns container cluster _ _ | tcp连接数（集群） |   |   |   |
 
 | aegisimageanalyzer ntp con _ _ tainer host _ | NTP（单机） | NTP | 暂无 | 暂无 |
 |---|---|---|---|---|
-| aegisimageanalyzer ntp con _ _ tainer serverrole _ | NTP（服务角色） |  |  |  |
-| aegisimageanalyzer ntp con _ _ tainer cluster _ | NTP（集群） |  |  |  |
+| aegisimageanalyzer ntp con _ _ tainer serverrole _ | NTP（服务角色） |   |   |   |
+| aegisimageanalyzer ntp con _ _ tainer cluster _ | NTP（集群） |   |   |   |
 | aegisimageanalyzer process _ count container host _ _ _ | 进程数（单机） | 进程数的最大值和平均值 | process n _ umber m _ ax > 100 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisimageanalyzer process _ count container cluster _ _ _ | 进程数（服务角色） |  |  |  |
-| aegisimageanalyzer process _ count container host _ _ _ | 进程数（集群） |  |  |  |
+| aegisimageanalyzer process _ count container cluster _ _ _ | 进程数（服务角色） |   |   |   |
+| aegisimageanalyzer process _ count container host _ _ _ | 进程数（集群） |   |   |   |
 | aegisimageanalyzer nginx c _ _ ontainer host _ | nginx QPS（单机） | nginx请求的QPS | 暂无 | 暂无 |
-| aegisimageanalyzer nginx c _ _ ontainer serverrole _ | nginx QPS（服务角色） |  |  |  |
-| aegisimageanalyzer nginx c _ _ ontainer cluster _ | nginx QPS（集群） |  |  |  |
+| aegisimageanalyzer nginx c _ _ ontainer serverrole _ | nginx QPS（服务角色） |   |   |   |
+| aegisimageanalyzer nginx c _ _ ontainer cluster _ | nginx QPS（集群） |   |   |   |
 | aegisimageanalyzer health c _ _ ontainer host _ | 健康检查（单机） | 应用使用启动是否正常 | health > 0 | 连续次数： 3次沉默时长： 300s 探测间隔： 60s |
-| aegisimageanalyzer health c _ _ ontainer serverrole _ | 健康检查（服务角色） |  |  |  |
-| aegisimageanalyzer health c _ _ ontainer cluster _ | 健康检查（集群） |  |  |  |
+| aegisimageanalyzer health c _ _ ontainer serverrole _ | 健康检查（服务角色） |   |   |   |
+| aegisimageanalyzer health c _ _ ontainer cluster _ | 健康检查（集群） |   |   |   |
 
-### 容量规划
+### 1.8 容量规划
 
 安骑士基于可用区内的NC数量ExpectedNcCountOfLocalZone（当前机房的机器预期数量）计算出规格。 每增加500台NC，BasicThinCluster和SasCluster都需增加2台物理机（NC和ECS的比例按照1:6，500 台NC对应3000台ECS）。
 
-|  | 重要安骑士最大规格只能支持到8000台NC，如超过上限需联系安骑士研发介入。 |  |
+|   | 重要安骑士最大规格只能支持到8000台NC，如超过上限需联系安骑士研发介入。 |   |
 |---|---|---|
 
 **V3.16.2~V3.18.1版本容量规划（on Tianji）**
@@ -1089,7 +1110,7 @@ NDR：网络层攻击数据，Aegisbiz消费暴力破解数据，按资产、类
 
 x86数据库规格
 
-| 容量规格 | small |  | standard |  | large |  | xlarge |  | 2xlarge |  |
+| 容量规格 | small |   | standard |   | large |   | xlarge |   | 2xlarge |   |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 数据库实例名称 | 数据库规格 | 磁盘 (单位:G) | 数据库规格 | 磁盘 (单位:G) | 数据库规格 | 磁盘 (单位:G) | 数据库规格 | 磁盘 (单位:G) | 数据库规格 | 磁盘 (单位:G) |
 | aegis erver | rds.m ys2.st andar d | 50 | rds.m ys2.st andar d | 50 | rds.m ys2.la rge | 100 | rds.m ys2.xl arge | 200 | rds.m ys2.2 xlarg e | 500 |
@@ -1154,7 +1175,7 @@ arm/sw数据库规格
 
 | 规格 | OSS容量(GB) | sls-Inner盘古磁盘总用 （GB） | sls-Inner盘古磁盘总用（GB） |
 |---|---|---|---|
-|  | 2GB/单台机器 | 0.1GB/单台机器 | 0.1GB/单台机器 |
+|   | 2GB/单台机器 | 0.1GB/单台机器 | 0.1GB/单台机器 |
 | small | 7000 | 350 | 350 |
 | standar d | 14000 | 700 | 700 |
 | large | 28000 | 1400 | 1400 |
@@ -1163,21 +1184,21 @@ arm/sw数据库规格
 
 **Tair资源容量规划**
 
-| 规格 | tair 各namespace所需分配配额（MB） |  |  |  |  |  |  |  |  |  |
+| 规格 | tair 各namespace所需分配配额（MB） |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-|  | 92 | 381 | 499 | 66 3 | 106 | 690 | 478 | 692 | 总计 (MB) | 总计 (MB) |
+|   | 92 | 381 | 499 | 66 3 | 106 | 690 | 478 | 692 | 总计 (MB) | 总计 (MB) |
 | smal l | 512 | 512 | 512 | 25 6 | 256 | 256 | 256 | 256 | 2816 | 2816 |
 | stan dard | 512 | 512 | 512 | 25 6 | 256 | 256 | 256 | 256 | 2816 | 2816 |
 | large | 512 | 512 | 512 | 25 6 | 256 | 256 | 256 | 256 | 2816 | 2816 |
 | xlarg e | 1024 | 102 4 | 102 4 | 51 2 | 512 | 512 | 512 | 512 | 5632 | 5632 |
-| 2xlar ge | 联系研发确认 |  |  |  |  |  |  |  |  |  |
+| 2xlar ge | 联系研发确认 |   |   |   |   |   |   |   |   |   |
 
 **MetaQ资源容量规划**
 
-| 规格 | metaq容量规划 (单位:万条) |  |  |  |  |  |  |
+| 规格 | metaq容量规划 (单位:万条) |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|
-|  | 进程消息 | 网络消息 | 文件消息 | 进程写文件消息 | 插件心跳消息 | 其他 | 总计 (单位:万条) |
-|  | 240 | 20 | 5 | 15 | 60 | 140 | 0.058 |
+|   | 进程消息 | 网络消息 | 文件消息 | 进程写文件消息 | 插件心跳消息 | 其他 | 总计 (单位:万条) |
+|   | 240 | 20 | 5 | 15 | 60 | 140 | 0.058 |
 | small | 84 | 7 | 1.75 | 5.25 | 21 | 49 | 203 |
 | standar d | 168 | 14 | 3.5 | 10.5 | 42 | 98 | 406 |
 | large | 336 | 28 | 7 | 21 | 84 | 196 | 812 |
@@ -1190,16 +1211,16 @@ arm/sw数据库规格
 
 | 安骑士规格 | 计算公式（整朵云的机器预期数量） | 备注 |
 |---|---|---|
-| small | ExpectedNcCountOfLocalZone < 500 |  |
-| standard | ExpectedNcCountOfLocalZone < 1000 |  |
+| small | ExpectedNcCountOfLocalZone < 500 |   |
+| standard | ExpectedNcCountOfLocalZone < 1000 |   |
 | standard plus 1 _ _ | ExpectedNcCountOfLocalZone < 1500 | 3.18.3之后版本支持 |
-| large | ExpectedNcCountOfLocalZone < 2000 |  |
+| large | ExpectedNcCountOfLocalZone < 2000 |   |
 | large plus 1 _ _ | ExpectedNcCountOfLocalZone < 3000 | 3.18.3之后版本支持 |
-| xlarge | ExpectedNcCountOfLocalZone < 4000 |  |
+| xlarge | ExpectedNcCountOfLocalZone < 4000 |   |
 | xlarge plus 1 _ _ | ExpectedNcCountOfLocalZone < 5000 | 3.18.3之后版本支持 |
 | xlarge plus 2 _ _ | ExpectedNcCountOfLocalZone < 6000 | 3.18.3之后版本支持 |
 | xlarge plus 3 _ _ | ExpectedNcCountOfLocalZone < 7000 | 3.18.3之后版本支持 |
-| 2xlarge | ExpectedNcCountOfLocalZone < 8000 |  |
+| 2xlarge | ExpectedNcCountOfLocalZone < 8000 |   |
 
 **安骑士（On PaaS）部署规格定义**
 
@@ -1213,7 +1234,7 @@ arm/sw数据库规格
 
 | 规格 | OSS容量(GB) | sls-Inner盘古磁盘总用（GB） |
 |---|---|---|
-|  | 2GB/单台机器 | 0.1GB/单台机器 |
+|   | 2GB/单台机器 | 0.1GB/单台机器 |
 | small | 7000 | 350 |
 | standard | 14000 | 700 |
 
@@ -1229,9 +1250,9 @@ arm/sw数据库规格
 
 **Tair资源容量规划**
 
-| 规格 | tair 各namespace所需分配配额（MB） |  |  |  |  |  |  |  |  |
+| 规格 | tair 各namespace所需分配配额（MB） |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  | 92 | 381 | 499 | 663 | 106 | 690 | 478 | 692 | 总计 (MB) |
+|   | 92 | 381 | 499 | 663 | 106 | 690 | 478 | 692 | 总计 (MB) |
 | small | 512 | 512 | 512 | 256 | 256 | 256 | 256 | 256 | 2816 |
 | stand ard | 512 | 512 | 512 | 256 | 256 | 256 | 256 | 256 | 2816 |
 | stand ard pl _ us 1 _ | 512 | 512 | 512 | 256 | 256 | 256 | 256 | 256 | 2816 |
@@ -1243,14 +1264,14 @@ arm/sw数据库规格
 |---|---|---|---|---|---|---|---|---|---|
 | xlarge plus _ _ 2 | 1024 | 1024 | 1024 | 512 | 512 | 512 | 512 | 512 | 5632 |
 | xlarge plus _ _ 3 | 1024 | 1024 | 1024 | 512 | 512 | 512 | 512 | 512 | 5632 |
-| 2xlar ge | 联系研发确认 |  |  |  |  |  |  |  |  |
+| 2xlar ge | 联系研发确认 |   |   |   |   |   |   |   |   |
 
 **MetaQ资源容量规划**
 
-| 规格 | metaq容量规划 (单位:万条) |  |  |  |  |  |
+| 规格 | metaq容量规划 (单位:万条) |   |   |   |   |   |
 |---|---|---|---|---|---|---|
-|  | 进程消息 | 网络消息 | 文件消息 | 进程写文件消息 | 插件心跳消息 | 其他 |
-|  | 240 | 20 | 5 | 15 | 60 | 140 |
+|   | 进程消息 | 网络消息 | 文件消息 | 进程写文件消息 | 插件心跳消息 | 其他 |
+|   | 240 | 20 | 5 | 15 | 60 | 140 |
 | small | 84 | 7 | 1.75 | 5.25 | 21 | 49 |
 | standard | 168 | 14 | 3.5 | 10.5 | 42 | 98 |
 | standard _ plus 1 _ | 252 | 21 | 5.25 | 15.75 | 63 | 147 |
@@ -1264,7 +1285,7 @@ arm/sw数据库规格
 | xlarge plu _ s 3 _ | 1176 | 98 | 24.5 | 73.5 | 294 | 686 |
 | 2xlarge | 1344 | 112 | 28 | 84 | 336 | 784 |
 
-### XC支持
+### 1.9 XC支持
 
 **企业版与自主可控能力差异**
 
@@ -1327,13 +1348,15 @@ arm/sw数据库规格
 | 异构多Region（x86+arm） 中心/单元机房级硬件异构 | 支持 |
 |---|---|
 
-### 热升级
+### 1.10 热升级
 
 安骑士默认支持热升级，无需额外运维操作。
 
-## 安骑士运维操作
+## 2 安骑士运维操作
 
-### 登录飞天基础运维平台
+### 2.1 登录飞天基础运维平台
+
+本文介绍如何登录飞天基础运维平台。
 
 **前提条件**
 
@@ -1351,18 +1374,17 @@ id.com 。
 2. 在地址栏中，输入Apsara Uni-manager运维控制台的访问地址 `region-id.aso.intranet-domain-`
 `id.com` ，按回车键。
 
-**说明**
+> **说明：** 您可以单击右上角的当前语言切换其它语言。当前支持简体中文、英文、繁体中文三种语言切换。
 
-您可以单击右上角的当前语言切换其它语言。当前支持简体中文、英文、繁体中文三种语言切换。
 3. 输入正确的用户名及密码。
 
-**说明**
+> **说明：** 登录Apsara Uni-manager运维控制台的用户名和密码请从部署人员或管理员处获取。
 
-登录Apsara Uni-manager运维控制台的用户名和密码请从部署人员或管理员处获取。 若连续输入密码错误三次，系统将启动图片验证码登录功能；若连续输入错误五次，账户将被锁定，请联系管理员进行激活。 首次登录Apsara Uni-manager运维控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。 为提高安全性，密码必须满足以下要求： 必须包含英文大小写字母。 必须包含阿拉伯数字（0~9）。 必须包含特殊符号，包括感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等。 密码长度为10~20个字符。
+若连续输入密码错误三次，系统将启动图片验证码登录功能；若连续输入错误五次，账户将被锁定，请联系管理员进行激活。 首次登录Apsara Uni-manager运维控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。 为提高安全性，密码必须满足以下要求： 必须包含英文大小写字母。 必须包含阿拉伯数字（0~9）。 必须包含特殊符号，包括感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等。 密码长度为10~20个字符。
 4. 单击**账号登录**。
 5. 在Apsara Uni-manager运维控制台的顶部菜单栏，选择**平台运维** > **飞天基础运维平台**。
 
-### 客户端状态检查
+### 2.2 客户端状态检查
 
 检查安骑士客户端以下状态信息，确定安骑士客户端正常运行。
 
@@ -1400,13 +1422,17 @@ id.com 。
 
 正常工作时上述两个进程都正常运行。
 
-|  | AliYunDunUpdate |  |
+|   | AliYunDunUpdate |   |
 |---|---|---|
-| Alibaba Security Aegis Detect Service |  |  |
+| Alibaba Security Aegis Detect Service |   |   |
 
 **说明**
 
-### 检查服务器端（Aegiserver）状态
+```
+Update Service 。
+```
+
+### 2.3 检查服务器端（Aegiserver）状态
 
 **背景信息**
 
@@ -1458,7 +1484,7 @@ root 153 0.6 25.8 2983812 1084588 ? Sl 12:13 1:01 /opt/taobao/java/bin/java -Dja
 **离线日志**：/home/admin/aegiserver/logs/AEGIS_OFFLINE_MESSAGE.log，查看客户端超时掉线
 日志。
 
-### 检查更新服务（Aegisupdate）状态
+### 2.4 检查更新服务（Aegisupdate）状态
 
 **背景信息**
 
@@ -1493,7 +1519,7 @@ root 153 0.6 25.8 2983812 1084588 ? Sl 12:13 1:01 /opt/taobao/java/bin/java -Dja
 
 如果返回success，表示服务正常。
 
-### 检查Defender模块状态
+### 2.5 检查Defender模块状态
 
 **背景信息**
 
@@ -1528,7 +1554,7 @@ root 153 0.6 25.8 2983812 1084588 ? Sl 12:13 1:01 /opt/taobao/java/bin/java -Dja
 
 如果返回success，表示服务正常运行。
 
-### 重启安骑士服务
+### 2.6 重启安骑士服务
 
 **背景信息**
 
@@ -1546,56 +1572,68 @@ docker ps -a |grep 应用名称
 ```
 
 4. 重启安骑士相关服务。
-重启安骑士客户端服务： Windows系统主机：进入服务管理器，找到服务Alibaba Security Aegis Detect Service，重启该服务。 Linux系统主机，可以使用以下两种方法： 执行 `service aegis restart` 命令，重启服务。 以root权限执行 `killall` `AliYunDun` 命令关闭当前进程后，重新启动/usr/local/aegis/aegis_client/aegis_xx_xx/AliYunDun进程。 a. 执行以下命令，查看相关Java进程的进程id。
+重启安骑士客户端服务： Windows系统主机：进入服务管理器，找到服务Alibaba Security Aegis Detect Service，重启该服务。 Linux系统主机，可以使用以下两种方法： 执行 `service aegis restart` 命令，重启服务。 以root权限执行 `killall` `AliYunDun` 命令关闭当前进程后，重新启动/usr/local/aegis/aegis_client/aegis_xx_xx/AliYunDun进程。 重启安骑士服务器端服务： a. 执行以下命令，查看相关Java进程的进程id。
 
-|  | ps aux \|grep |
+|   | ps aux \|grep |
 |---|---|
-| aegiserver |  |
+| aegiserver |   |
 
 b. 执行以下命令，关闭当前进程。 `kill -9` 进程 c. 执行以下命令，重启进程。
 
-|  | sudo -u admin |
+|   | sudo -u admin |
 |---|---|
-| /home/admin/aegiserever/bin/jbossctl |  |
+| /home/admin/aegiserever/bin/jbossctl |   |
+
+```
+ restart
+```
 
 d. 执行以下命令，检查进程是否重启成功。
 
-|  | curl |  |
+|   | curl |   |
 |---|---|---|
-| 127.0.0.1:7001/checkpreload.htm |  |  |
+| 127.0.0.1:7001/checkpreload.htm |   |   |
 
 重启安骑士更新服务（Aegisupdate）： a. 执行如下命令，查找java的进程id。
 
-|  | ps aux \|grep |  |
+|   | ps aux \|grep |   |
 |---|---|---|
-| aegisupdate |  |  |
+| aegisupdate |   |   |
 
 b. 执行如下命令，关闭当前进程。 `kill -9` 进程 c. 执行如下命令，重启进程。
 
-|  | sudo -u admin |
+|   | sudo -u admin |
 |---|---|
-| /home/admin/aegisupdate/bin/jbossctl |  |
+| /home/admin/aegisupdate/bin/jbossctl |   |
+
+```
+ restart
+```
 
 d. 执行如下命令，查看进程是否重启成功。
 
-|  | curl |  |
+|   | curl |   |
 |---|---|---|
-| 127.0.0.1:7001/checkpreload.htm |  |  |
+| 127.0.0.1:7001/checkpreload.htm |   |   |
 
 重启安骑士Defender服务： a. 执行以下命令，查找相关Java进程的进程id。
 
-|  | ps aux \|grep |  |
+|   | ps aux \|grep |   |
 |---|---|---|
-| secure-service |  |  |
+| secure-service |   |   |
 
 b. 执行以下命令，关闭当前进程。 `kill -9` 进程 c. 执行以下命令，重启进程。
 
-|  | sudo -u admin |
+|   | sudo -u admin |
 |---|---|
-| /home/admin/secure-service/bin/jbossctl |  |
+| /home/admin/secure-service/bin/jbossctl |   |
+
+```
+ restart
+```
 
 d. 执行以下命令，查看进程是否重启成功。
 
-|  | curl |  |
+|   | curl |   |
 |---|---|---|
-| 127.0.0.1:7001/checkpreload.htm |  |  |
+| 127.0.0.1:7001/checkpreload.htm |   |   |

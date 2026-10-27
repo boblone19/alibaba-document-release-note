@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 27
 source_pdf: "8b272d6e50700ba2_Alibaba Cloud Apsara Stack V3.18.6 Lindorm Operations and Maintenance Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Lindorm%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Lindorm Operations and Maintenance Guide
@@ -158,7 +158,11 @@ In normal cases, do not restart two or more replicas in a StatefulSet at the sam
 
 ### 4.1 Homepage
 
-The homepage of ApsaraDB Operations and Maintenance System provides an overview of your databases on dashboards. You can perform operations such as viewing exceptions, searching for instances, and using the advanced search features. Log on to the ApsaraDB Operations and Maintenance System console. On the homepage that appears, view and handle PolarDB alerts at the earliest opportunity, and continuously optimize existing metrics. Click the number next to the exception information to view the exception details. For example, you can click **Backup exception** in the **Backup information** section. On the page that appears, all the exceptions on PolarDB instances are displayed. You can click an exception for troubleshooting.
+The homepage of ApsaraDB Operations and Maintenance System provides an overview of your databases on dashboards. You can perform operations such as viewing exceptions, searching for instances, and using the advanced search features.
+
+**Procedure**
+
+Log on to the ApsaraDB Operations and Maintenance System console. On the homepage that appears, view and handle PolarDB alerts at the earliest opportunity, and continuously optimize existing metrics. Click the number next to the exception information to view the exception details. For example, you can click **Backup exception** in the **Backup information** section. On the page that appears, all the exceptions on PolarDB instances are displayed. You can click an exception for troubleshooting.
 
 ### 4.2 Instance management
 
@@ -167,6 +171,9 @@ The homepage of ApsaraDB Operations and Maintenance System provides an overview 
 ##### 4.2.1.1 Migrate multiple instances at a time
 
 This topic describes how to migrate multiple instances at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -191,6 +198,9 @@ the details of the migration operations.
 **time**
 
 This topic describes how to modify multiple instance parameters at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -213,6 +223,9 @@ You can click **Batch refresh parameter instance successful list** or **Batch re
 ##### 4.2.1.3 Modify multiple DIY parameters at a time
 
 This topic describes how to modify multiple DIY parameters at a time.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -276,6 +289,9 @@ This topic describes how to manage batch tasks.
 ##### 4.2.1.5 Manage batch task types
 
 This topic describes how to create a type of batch tasks.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -303,6 +319,9 @@ This topic describes how to create a type of batch tasks.
 ##### 4.2.1.6 Manage SQL templates
 
 This topic describes how to create an SQL template.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance batch management**.
@@ -337,6 +356,9 @@ On the Instance List page, you can perform the following operations: Click **Bat
 ##### 4.2.2.2 View an instance
 
 This topic describes how to view the information about an instance, such as the basic information and instance performance, on the instance details page.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. On the Instance List page, find the instance that you want to manage and click its name in
@@ -350,6 +372,9 @@ also click the options in the Instance details section to perform operations on 
 ##### 4.2.2.3 Manage instances
 
 This topic describes the operations that you can perform on instances, including exporting instances and migrating instances.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the Instance List page, you can perform the following operations by
@@ -362,6 +387,9 @@ Click **Instance dashboard** to view the CPU utilization, connections, IOPS, and
 ##### 4.2.2.4 Diagnose an instance
 
 You can use the instance diagnostics feature to view the performance metrics of an instance.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management** > **Instance List**.
 3. On the Instance List page, find the instance that you want to manage and click its name in
@@ -372,6 +400,9 @@ can view the performance metrics of the instance
 ##### 4.2.2.5 Manage emergency response plans
 
 This topic describes how to manage emergency response plans for instances.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Host management > System host**.
 3. In the upper part of the **System host** page, click **Emergency response plan**.
@@ -395,6 +426,9 @@ and disk usage of instances.
 ##### 4.2.2.7 Manage instance migration plans
 
 Instance migration plans can be uploaded by specifying the instances or the IP addresses of hosts. This topic describes how to migrate instances by instance plans.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 3. In the upper part of the **Instance List** page, click **Instance plan migration**
@@ -418,6 +452,9 @@ You can click **Push success list** or **Deleted list** in the upper part of the
 #### 4.3.1 Create a host
 
 This topic describes how to create a host.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Host management > System host**.
 3. In the upper part of the System host page, click **Emergency response plan**.
@@ -437,6 +474,9 @@ This topic describes how to configure multiple hosts at a time.
 #### 4.3.3 View the information about a host
 
 This topic describes how to view the information about a host.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Host management > System host**.
 3. On the System host page, search for the host that you want to view by IP address or host
@@ -477,6 +517,9 @@ This topic describes how to create a PolarDB for PostgreSQL cluster.
 #### 4.4.2 Manage service types
 
 This topic describes how to manage cloud service types.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the left-side navigation pane, click **Service Type Management**. The **Service Type**
@@ -486,6 +529,9 @@ Find the service type that you want to modify and click **Edit** in the **Operat
 #### 4.4.3 Manage service nodes
 
 This topic describes how to create, modify, and delete a service node.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the left-side navigation pane, click **Service node management**.
@@ -494,6 +540,9 @@ In the upper part of the Service node management page, click **New service node*
 #### 4.4.4 Manage DB configuration templates
 
 This topic describes how to manage DB configuration templates.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the left-side navigation pane, click **DB configuration template** to go to the **DB**
@@ -503,6 +552,9 @@ In the upper part of the page, click **New DB template**, enter the template inf
 #### 4.4.5 Manage Fangcunshan clusters
 
 This topic describes how to manage Fangcunshan clusters.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the left-side navigation pane, click **Fangcunshan cluster management** to go to the
@@ -521,6 +573,9 @@ the cluster group.
 #### 4.4.6 Manage locations
 
 This topic describes how to configure the locations of clusters.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Cluster management**.
 3. In the left-side navigation pane, click **Location**.
@@ -535,6 +590,9 @@ Click **Add** next to the required unit, region, or zone. In the dialog box that
 #### 4.5.1 Manage interrupted tasks
 
 This topic describes how to manage interrupted tasks, including user instance tasks, host instance tasks, and host tasks. In this example, a user instance task is managed.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System**
 console, click **Task Management**. In the upper-left corner of the **Instance tasks** page, select **Interrupted tasks** from the drop-down list.
@@ -589,6 +647,9 @@ This topic describes the features of system management. Table 1. System manageme
 ### 4.7 Handle exceptions
 
 This topic describes how to handle exceptions in ApsaraDB RDS databases in the ApsaraDB Operations and Maintenance System console and improve the databases based on monitoring metrics.
+
+**Procedure**
+
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, click **Home Page**.
 3. View the information about various types of exceptions on the homepage.
@@ -611,6 +672,9 @@ If you want to configure an IPv6 address when you create an instance in an Apsar
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: ops.asconsole.intranet-domain-id.com. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. **Log in to the Apsara Uni-manager Operations Console**
 i. Open a browser. ii. In the address bar, enter the URL of the Apsara Uni-manager Operations Console and press Enter.
 

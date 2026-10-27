@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 239
 source_pdf: "ff0cabb4146c216a_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828
@@ -261,6 +261,9 @@ You can obtain an instance ID from the cloud service instance list in the Apsara
 **And O&M** > **API Gateway**.
 3. In the left-side navigation pane, click **Instances**.
 4. View the **Instance ID** in the instance list.
+
+**Response parameters**
+
 The following response parameters are returned by default when you call operations to query the instances of cloud services.
 
 | Parameter | Description |
@@ -307,6 +310,11 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```
 public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -323,6 +331,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
         return asClient.doRequest(endpoint, headers, reqParams);
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
 this example, the Elastic Compute Service (ECS) API is used.
 
@@ -332,6 +341,11 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
+```
+
+`}`
+
+```
 public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
@@ -346,7 +360,7 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
 
-e API calls
+`}` e API calls
 
 ## 2 Use POP to make API calls
 
@@ -403,7 +417,11 @@ We recommend that you use CommonRequest to call Apsara Stack APIs. To view the r
 
 **Important**
 
-We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
+We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution.
+
+**Examples**
+
+The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException;
@@ -473,7 +491,7 @@ e API calls
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -539,6 +557,8 @@ u must add the x-acs-security-token field to the header.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 > **Important:** By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported.
 > To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting:
 
@@ -563,7 +583,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: e API calls
+Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported.
+
+**Examples**
+
+The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: e API calls
 
 ```java
 package main import (
@@ -602,10 +626,15 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
+`}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
 
 ```java
 package main import (
@@ -646,8 +675,15 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Proxy configuration**
 
@@ -668,13 +704,15 @@ iable.
 variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
 **SSL verification**
+
+**Description**
 
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
@@ -715,7 +753,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Only remote procedure call (RPC) APIs are supported. The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
+Only remote procedure call (RPC) APIs are supported.
+
+**Example**
+
+The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -763,6 +805,11 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -978,11 +1025,17 @@ cret}");
 
 ##### 3.4.2.1 TransferLeadership
 
-Switches a secondary node to become the primary node. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Switches a secondary node to become the primary node.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 343778269185 | The node ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -991,20 +1044,45 @@ Switches a secondary node to become the primary node. This operation does not ha
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"343778269185",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.2 DescribeDnsGtmAgents
 
-Queries a list of probe nodes for checking the health of addresses in address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of probe nodes for checking the health of addresses in address pools.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1027,8 +1105,19 @@ Queries a list of probe nodes for checking the health of addresses in address po
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -1043,7 +1132,10 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1057,11 +1149,19 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
 
 ##### 3.4.2.3 DeletePrivateDefaultForwardZone
 
-Deletes a tenant-specific default forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a tenant-specific default forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the tenant- specific default forwarding domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1070,15 +1170,34 @@ Deletes a tenant-specific default forwarding domain name. This operation does no
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific default forwarding domain name. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.4 UpdatePrivateZoneRecord
 
-Modifies a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a DNS record for a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1100,6 +1219,8 @@ Modifies a DNS record for a tenant-specific internal domain name. This operation
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 | Remark | Strin g | Body | No | remark | The description of the DNS record. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -1107,18 +1228,38 @@ Modifies a DNS record for a tenant-specific internal domain name. This operation
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord
 ```
 
+`{`
+
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.5 AddGlobalLine
 
-Creates a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a global line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1134,9 +1275,26 @@ Creates a global line. This operation does not have operation-specific request h
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -1164,6 +1322,8 @@ Modifies a DNS record for a global internal domain name. This operation does not
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 | Remark | Strin g | Body | No | remark | The description of the DNS record. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -1171,18 +1331,38 @@ Modifies a DNS record for a global internal domain name. This operation does not
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 ```
 
+`{`
+
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.7 DescribePrivateForwardZones
 
-Queries a list of tenant-specific forwarding configurations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of tenant-specific forwarding configurations.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1190,6 +1370,8 @@ Queries a list of tenant-specific forwarding configurations. This operation does
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 | Name | Strin g | Body | No | com. | The queried domain name. Partial match is supported. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1218,9 +1400,15 @@ Queries a list of tenant-specific forwarding configurations. This operation does
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
+http(s)://[Endpoint]/?Action=DescribePrivateForwardZones &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
@@ -1256,7 +1444,10 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1284,11 +1475,19 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 
 ##### 3.4.2.8 DeleteRecursorAcl
 
-Deletes a recursive access control list (ACL) configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a recursive access control list (ACL) configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the recursive ACL configuration. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1300,15 +1499,36 @@ Deletes a recursive access control list (ACL) configuration. This operation does
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the recursive ACL configuration. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteRecursorAcl &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteRecursorAcl
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.9 DeleteZoneVpc
 
-Disassociates one or more virtual private clouds (VPCs) from a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Disassociates one or more virtual private clouds (VPCs) from a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1318,15 +1538,31 @@ Disassociates one or more virtual private clouds (VPCs) from a tenant-specific i
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID of the VPC. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific internal domain name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteZoneVpc
+http(s)://[Endpoint]/?Action=DeleteZoneVpc &Common request parameters
 ```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
@@ -1334,12 +1570,20 @@ http(s)://[Endpoint]/?Action=DeleteZoneVpc
 
 ##### 3.4.2.10 DescribeNodes
 
-Queries a list of nodes. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of nodes.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1363,12 +1607,17 @@ Queries a list of nodes. This operation does not have operation-specific request
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeNodes
+http(s)://[Endpoint]/?Action=DescribeNodes &Common request parameters
 ```
 
 ```json
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Total":10,
  "Data":{
@@ -1384,6 +1633,12 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 ```
 
 `},`
+
+```json
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -1406,11 +1661,15 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 
 Creates a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ForwardM ode | Strin g | Body | Yes | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY _ (recommended): forwards all requests without recursion. FORWARD FIRST: falls _ back to recursive queries of public DNS servers if forwarding fails. |
 | Forwarder s | Strin g | Body | Yes | ["1.1.1.1","1.1.1.2"] | The IP addresses of the DNS servers used for forwarding. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1419,24 +1678,43 @@ Creates a tenant-specific default forwarding configuration. This operation does 
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific default forwarding configuration. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone
+http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone &Common request parameters
 ```
 
 ```json
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.12 FlushCache
 
-Clears the DNS cache. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Clears the DNS cache.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | com. | The domain name for cache clearing. |
 | IncludeSu bDomain | Boole an | Body | Yes | true | The domain name matching mode. Valid values: true: suffix match. false: exact match. |
 | MemberId | Long | Body | Yes | 343778263564 | The node ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1447,13 +1725,37 @@ Clears the DNS cache. This operation does not have operation-specific request he
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=FlushCache &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=FlushCache <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
 ```
 
 ##### 3.4.2.13 DescribeDnsGtmAddressPools
 
-Queries a list of address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of address pools.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1465,6 +1767,8 @@ Queries a list of address pools. This operation does not have operation-specific
 | Name | Strin g | Body | No | name | The name of the address pool. Fuzzy search is supported. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1494,9 +1798,16 @@ Queries a list of address pools. This operation does not have operation-specific
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
+```
+
+Sample success responses `JSON` format `{`
+
+```json
  "MonitoredAddressCount":1,
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -1522,7 +1833,10 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <MonitoredAddressCount>1</MonitoredAddressCount> <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1544,11 +1858,19 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 
 ##### 3.4.2.14 DeleteDnsGtmAddressPool
 
-Deletes an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes an address pool.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The address pool ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1563,20 +1885,45 @@ Deletes an address pool. This operation does not have operation-specific request
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 |---|---|---|---|
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.15 UpdatePrivateDefaultForwardZoneRemark
 
-Modifies the description of a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a tenant-specific default forwarding configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the tenant- specific default forwarding configuration. |
 | Remark | Strin g | Body | No | remark | The description of the tenant-specific default forwarding configuration. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1585,10 +1932,24 @@ Modifies the description of a tenant-specific default forwarding configuration. 
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific default forwarding configuration. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
@@ -1596,7 +1957,13 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-
 
 ##### 3.4.2.16 AddGlobalZoneRecord
 
-Creates a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a DNS record for a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1617,6 +1984,8 @@ Creates a DNS record for a global internal domain name. This operation does not 
 | - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -1624,22 +1993,42 @@ Creates a DNS record for a global internal domain name. This operation does not 
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
+**Examples**
+
+Sample requests
+
 ```json
-http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100
+http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.17 DeletePrivateForwardZone
 
-Deletes a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a tenant-specific forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the tenant- specific forwarding domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1648,15 +2037,34 @@ Deletes a tenant-specific forwarding domain name. This operation does not have o
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific forwarding domain name. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=DeletePrivateForwardZone
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.18 DescribeGlobalForwardZones
 
-Queries a list of global forwarding domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of global forwarding domain names.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1691,9 +2099,15 @@ Queries a list of global forwarding domain names. This operation does not have o
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
+http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
@@ -1729,7 +2143,10 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1757,7 +2174,13 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 
 ##### 3.4.2.19 DescribeResolveConf
 
-Queries the global recursion configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries the global recursion configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1768,17 +2191,39 @@ Queries the global recursion configuration. This operation does not have operati
 |---|---|---|---|
 | Enable | Boolean | true | Specifies whether to enable recursion. Valid values: true false |
 
-```json
+**Examples**
+
+Sample requests
+
+```
 http(s)://[Endpoint]/?Action=DescribeResolveConf
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "UpdateTime":"1702460677",
  "Enable":true,
  "UpdateTimestamp":1702460677,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <UpdateTime>1702460677</UpdateTime> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
 ##### 3.4.2.20 DescribePrivateLines
 
-Queries a list of a private lines. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of a private lines.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1790,6 +2235,8 @@ Queries a list of a private lines. This operation does not have operation-specif
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 | RegionId | Strin g | Body | No | cn-region-env1-d01 | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1811,9 +2258,15 @@ Queries a list of a private lines. This operation does not have operation-specif
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateLines
+http(s)://[Endpoint]/?Action=DescribePrivateLines &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
@@ -1832,6 +2285,12 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <V4Addresses>[&quot;1.1.1.1&quot;]</V4Addresses>
  <V6Addresses>[&quot;2400:3200::7777&quot;]</V6Addresses>
@@ -1846,7 +2305,13 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
 
 ##### 3.4.2.21 UpdatePrivateLine
 
-Modifies a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a private line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1859,6 +2324,8 @@ Modifies a private line. This operation does not have operation-specific request
 | V4Addres ses | Strin g | Body | No | ["1.1.1.1","2.2.2.2"] | The IPv4 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 | V6Addres ses | Strin g | Body | No | ["2400:3200::7777"] | The IPv6 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -1866,22 +2333,40 @@ Modifies a private line. This operation does not have operation-specific request
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UpdatePrivateLine
+http(s)://[Endpoint]/?Action=UpdatePrivateLine &Common request parameters
 ```
 
 ```json
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.22 DescribeConflictPrivateZones
 
-Queries the domain names that conflict with a private domain name in a virtual private cloud (VPC). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries the domain names that conflict with a private domain name in a virtual private cloud (VPC).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | No | com. | The domain name. Partial match is supported. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1897,8 +2382,19 @@ Queries the domain names that conflict with a private domain name in a virtual p
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Data":{
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "IsForward":true,
@@ -1909,7 +2405,10 @@ http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
@@ -1923,11 +2422,19 @@ http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 
 ##### 3.4.2.23 DeleteDnsGtmMonitor
 
-Deletes a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a health check configuration for address pools.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the health check configuration. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1936,19 +2443,40 @@ Deletes a health check configuration for address pools. This operation does not 
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the health check configuration. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=DeleteDnsGtmMonitor
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.24 DeletePrivateZone
 
-Deletes a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The domain ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1963,21 +2491,46 @@ Deletes a tenant-specific internal domain name. This operation does not have ope
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific internal domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeletePrivateZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeletePrivateZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.25 DescribeDnsGtmMonitor
 
-Queries health check configurations for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries health check configurations for address pools.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | GtmAddre ssPoolId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The address pool ID. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2002,9 +2555,15 @@ Queries health check configurations for address pools. This operation does not h
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
+http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
@@ -2026,6 +2585,12 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <ProtocolType>HTTP</ProtocolType>
  <Timeout>3</Timeout>
@@ -2055,6 +2620,8 @@ Creates a private line. This operation does not have operation-specific request 
 | V6Addres ses | Strin g | Body | No | ["2400:3200::7777"] | The IPv6 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -2062,15 +2629,38 @@ Creates a private line. This operation does not have operation-specific request 
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-region-env1-d01 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-region-env1-d01
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.27 DescribeDnsGtmAccessStrategies
 
-Queries a list of access policies. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of access policies.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2082,6 +2672,8 @@ Queries a list of access policies. This operation does not have operation-specif
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2123,8 +2715,19 @@ Queries a list of access policies. This operation does not have operation-specif
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2152,7 +2755,10 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2182,7 +2788,13 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 
 ##### 3.4.2.28 UpdatePrivateForwardZone
 
-Modifies a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a tenant-specific forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2195,6 +2807,8 @@ Modifies a tenant-specific forwarding domain name. This operation does not have 
 | Forwarder s | Strin g | Body | Yes | ["1.1.1.1","1.1.1.2"] | The IP addresses of the DNS servers used for forwarding. |
 | Remark | Strin g | Body | No | remark | The description of the tenant-specific forwarding domain name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -2202,18 +2816,36 @@ Modifies a tenant-specific forwarding domain name. This operation does not have 
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the tenant-specific forwarding domain name. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=UpdatePrivateForwardZone
 ```
 
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.29 AddGlobalForwardZone
 
-Creates a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a global forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2228,19 +2860,42 @@ Creates a global forwarding domain name. This operation does not have operation-
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the forwarding domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddGlobalForwardZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddGlobalForwardZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.30 DescribeConflictGlobalZones
 
-Queries domain names that conflict with a global domain name on Apsara Stack. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries domain names that conflict with a global domain name on Apsara Stack.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | No | com. | The domain name. Partial match is supported. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2253,9 +2908,15 @@ Queries domain names that conflict with a global domain name on Apsara Stack. Th
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
+http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Data":{
@@ -2268,6 +2929,12 @@ http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
  <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49
  </Id>
@@ -2278,12 +2945,20 @@ http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 
 ##### 3.4.2.31 UpdatePrivateZoneRecordRemark
 
-Modifies the description of a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a DNS record for a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The DNS record ID. |
 | Remark | Strin g | Body | No | remark | The description of the DNS record. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2292,15 +2967,36 @@ Modifies the description of a DNS record for a tenant-specific internal domain n
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The description of the DNS record. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.32 UpdateDnsGtmInstance
 
-Modifies the information about a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the information about a Global Traffic Manager (GTM) instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2310,6 +3006,8 @@ Modifies the information about a Global Traffic Manager (GTM) instance. This ope
 | Ttl | Integ er | Body | Yes | 300 | The time-to-live (TTL) of the cached record. |
 | Prefix | Strin g | Body | Yes | www | The name of the scheduling domain. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -2317,18 +3015,36 @@ Modifies the information about a Global Traffic Manager (GTM) instance. This ope
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance
+http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.33 AddDnsGtmAccessStrategy
 
-Creates an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates an access policy.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2354,9 +3070,26 @@ Creates an access policy. This operation does not have operation-specific reques
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the access policy. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -2369,6 +3102,8 @@ Modifies the description of a Global Traffic Manager (GTM) instance. This operat
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the GTM instance. |
 | Remark | Strin g | Body | No | remark | The description of the GTM instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -2376,10 +3111,24 @@ Modifies the description of a Global Traffic Manager (GTM) instance. This operat
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
@@ -2387,13 +3136,21 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark
 
 ##### 3.4.2.35 SetGlobalDefaultForward
 
-Specifies a global default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Specifies a global default forwarding configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Enable | Boole an | Body | No | true | Specifies whether to enable recursion. Valid values: true false |
 | ForwardM ode | Strin g | Body | No | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY _ (recommended): forwards all requests without recursion. FORWARD FIRST: falls _ back to recursive queries of public DNS servers if forwarding fails. |
 | Forwarder s | Strin g | Body | No | ["2.2.2.2","3.3.3.3"] | The IP addresses of the DNS servers used for forwarding. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2406,13 +3163,36 @@ Specifies a global default forwarding configuration. This operation does not hav
 |---|---|---|---|
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=SetGlobalDefaultForward &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=SetGlobalDefaultForward <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
 ```
 
 ##### 3.4.2.36 DescribePrivateDefaultForwardZones
 
-Queries tenant-specific default forwarding configurations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries tenant-specific default forwarding configurations.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2446,9 +3226,15 @@ Queries tenant-specific default forwarding configurations. This operation does n
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
+http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
@@ -2483,7 +3269,10 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2511,7 +3300,13 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 
 ##### 3.4.2.37 DescribeGlobalZones
 
-Queries a list of global internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of global internal domain names.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2521,6 +3316,8 @@ Queries a list of global internal domain names. This operation does not have ope
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | No | com. | The queried domain name. Partial match is supported. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2546,12 +3343,19 @@ Queries a list of global internal domain names. This operation does not have ope
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeGlobalZones
+http(s)://[Endpoint]/?Action=DescribeGlobalZones &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Data":{
   "KeyName":"my-tsig",
@@ -2571,6 +3375,12 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
  <KeyName>my-tsig</KeyName>
  <Masters>[&quot;1.1.1.1:53&quot;,&quot;2.2.2.2:53&quot;]</Masters>
@@ -2591,12 +3401,16 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 
 Queries DNS records for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The domain ID. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 | Name | Strin g | Body | No | name | The queried domain name. Partial match is supported. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2634,8 +3448,19 @@ Queries DNS records for a global internal domain name. This operation does not h
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2664,6 +3489,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
 
 ```xml
@@ -2690,7 +3516,13 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 
 ##### 3.4.2.39 UpdateGlobalLine
 
-Modifies a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a global line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2706,6 +3538,8 @@ Modifies a global line. This operation does not have operation-specific request 
 | V4Addres ses | Strin g | Body | No | ["1.1.1.1","2.2.2.2"] | The IPv4 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 | V6Addres ses | Strin g | Body | No | ["2400:3200::7777"] | The IPv6 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -2713,11 +3547,24 @@ Modifies a global line. This operation does not have operation-specific request 
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdateGlobalLine
- "RequestId":"",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdateGlobalLine &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId /> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
@@ -2725,20 +3572,34 @@ http(s)://[Endpoint]/?Action=UpdateGlobalLine
 
 ##### 3.4.2.40 EnableRecursor
 
-Specifies whether to enable recursion. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Specifies whether to enable recursion.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Enable | Boole an | Body | Yes | true | Specifies whether to enable recursion. Valid values: true false |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
+http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true &Common request parameters
 ```
+
+Sample success responses `JSON` format `}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
@@ -2746,7 +3607,13 @@ http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
 
 ##### 3.4.2.41 DescribeGlobalLines
 
-Queries a list of global lines. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of global lines.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2754,6 +3621,8 @@ Queries a list of global lines. This operation does not have operation-specific 
 | Name | Strin g | Body | No | name | The name of the line. Partial match is supported. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2778,8 +3647,12 @@ Queries a list of global lines. This operation does not have operation-specific 
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeGlobalLines
+http(s)://[Endpoint]/?Action=DescribeGlobalLines &Common request parameters
 ```
 
 ```json
@@ -2799,6 +3672,12 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <V4Addresses>[&quot;1.1.1.1&quot;]</V4Addresses>
  <V6Addresses>[&quot;2400:3200::7777&quot;]</V6Addresses>
@@ -2813,7 +3692,13 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 
 ##### 3.4.2.42 DescribeMetrics
 
-Queries the queries per second (QPS) data. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries the queries per second (QPS) data.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2828,12 +3713,19 @@ Queries the queries per second (QPS) data. This operation does not have operatio
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeMetrics
 ```
 
+Sample success responses `JSON` format
+
 ```json
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Total":10,
  "Data":{
@@ -2843,6 +3735,12 @@ http(s)://[Endpoint]/?Action=DescribeMetrics
 ```
 
 `},`
+
+```json
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -2854,11 +3752,19 @@ http(s)://[Endpoint]/?Action=DescribeMetrics
 
 ##### 3.4.2.43 DescribeDNSServerAddrs
 
-Queries a list of anycast IP addresses of the DNS service. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of anycast IP addresses of the DNS service.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2867,9 +3773,26 @@ Queries a list of anycast IP addresses of the DNS service. This operation does n
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
  "Addrs":"[\"10.200.0.12\", \"10.200.0.13\"]",
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <Addrs> [&quot;10.200.0.12&quot;, &quot;10.200.0.13&quot;]</Addrs>
  <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0
  </RequestId>
@@ -2881,12 +3804,18 @@ http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
 
 ##### 3.4.2.44 UpdateGlobalZoneRemark
 
-Modifies the description of a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The domain ID. |
 | Remark | Strin g | Body | No | remark | The description of the global internal domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2895,10 +3824,24 @@ Modifies the description of a global internal domain name. This operation does n
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
@@ -2906,7 +3849,13 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
 
 ##### 3.4.2.45 DescribeGlobalDefaultForward
 
-Queries the global default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries the global default forwarding configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2917,22 +3866,42 @@ Queries the global default forwarding configuration. This operation does not hav
 | Enable | Boolean | true | Indicates whether forwarding is enabled. Valid values: true false |
 | ForwardMode | String |   | The forwarding mode. Valid values: FORWARD ONLY (recommended): _ forwards all requests without recursion. FORWARD FIRST: falls back to recursive _ queries of public DNS servers if forwarding fails. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "ForwardMode":"",
  "Forwarders":"[\"2.2.2.2\",\"3.3.3.3\"]",
  "Enable":true,
  "UpdateTimestamp":1702460677,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <ForwardMode /> <Forwarders>[&quot;2.2.2.2&quot;,&quot;3.3.3.3&quot;]</Forwarders> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
 ##### 3.4.2.46 AddGlobalZone
 
-Creates a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | com. | The domain name, which must end with a period (.). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2947,20 +3916,43 @@ Creates a global internal domain name. This operation does not have operation-sp
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the global internal domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com. &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com.
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.47 UpdatePrivateZoneRemark
 
-Modifies the description of a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the tenant- specific internal domain name. |
 | Remark | Strin g | Body | No | remark | The description of the tenant-specific internal domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2969,10 +3961,24 @@ Modifies the description of a tenant-specific internal domain name. This operati
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific internal domain name. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
@@ -2980,7 +3986,13 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
 
 ##### 3.4.2.48 AddDnsGtmMonitor
 
-Creates a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a health check configuration for address pools.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2996,6 +4008,8 @@ Creates a health check configuration for address pools. This operation does not 
 | Evaluation Count | Integ er | Body | Yes | 5 | The number of retries. |
 | AgentIds | Strin g | Body | Yes | ["agent-id1","agent-id1"] | The list of probe node IDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3009,15 +4023,38 @@ Creates a health check configuration for address pools. This operation does not 
 |---|---|---|---|
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddDnsGtmMonitor &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddDnsGtmMonitor
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.49 UpdateDnsGtmAddressPool
 
-Modifies an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies an address pool.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3033,6 +4070,8 @@ Modifies an address pool. This operation does not have operation-specific reques
 | -Mode | Strin g |   | Yes | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
 | - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3040,20 +4079,43 @@ Modifies an address pool. This operation does not have operation-specific reques
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.50 UpdatePrivateLinePriority
 
-Modifies the priority of a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the priority of a private line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
 | Priority | Integ er | Body | Yes | 1 | The priority of the line. A value of 1 indicates the highest priority. A larger value indicates a lower priority. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3062,10 +4124,24 @@ Modifies the priority of a private line. This operation does not have operation-
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
@@ -3073,11 +4149,19 @@ http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority
 
 ##### 3.4.2.51 DeleteDnsGtmInstance
 
-Deletes a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a Global Traffic Manager (GTM) instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the GTM instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3086,23 +4170,41 @@ Deletes a Global Traffic Manager (GTM) instance. This operation does not have op
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance
+http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance &Common request parameters
 ```
 
 ```json
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.52 UpdateGlobalLinePriority
 
-Modifies the priority of a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the priority of a global line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
 | Priority | Integ er | Body | Yes | 1 | The priority of the line. A value of 1 indicates the highest priority. A larger value indicates a lower priority. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3114,15 +4216,38 @@ Modifies the priority of a global line. This operation does not have operation-s
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.53 AddDnsGtmInstance
 
-Creates a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a Global Traffic Manager (GTM) instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3134,6 +4259,8 @@ Creates a Global Traffic Manager (GTM) instance. This operation does not have op
 | Ttl | Integ er | Body | Yes | 300 | The time-to-live (TTL) of the cached record. |
 | Prefix | Strin g | Body | Yes | www | The name of the scheduling domain. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3141,14 +4268,34 @@ Creates a Global Traffic Manager (GTM) instance. This operation does not have op
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
-```json
-http(s)://[Endpoint]/?Action=AddDnsGtmInstance
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=AddDnsGtmInstance &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}`
 
 ##### 3.4.2.54 DescribeCache
 
-Queries the cached DNS records. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries the cached DNS records.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3157,6 +4304,8 @@ Queries the cached DNS records. This operation does not have operation-specific 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | No | A | The type of the cached record. Valid values: A: maps a domain name to an IPv4 address. AAAA: maps a domain name to an IPv6 address. CNAME: maps a domain name to another domain name. MX: maps a domain name to a mail server address. TXT: serves as a Sender Policy Framework (SPF) record to prevent email spam. The text can be up to 255 characters in length. PTR: maps an IP address to a domain name. SRV: specifies the servers that host specific services. NAPTR: records the Naming Authority Pointer (NAPTR) and is typically used for ENUM. CAA: specifies authorized certificate authorities (CAs) for a domain name. NS: maps a domain name to the specified DNS servers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3178,11 +4327,17 @@ Queries the cached DNS records. This operation does not have operation-specific 
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeCache
 ```
 
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Data":{
   "-RRset":{
    "Type":"A",
@@ -3200,6 +4355,12 @@ http(s)://[Endpoint]/?Action=DescribeCache
 
 `},`
 
+```json
+ "Code":"error code"
+```
+
+`}` `XML` format
+
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
  <-RRset>
@@ -3215,7 +4376,13 @@ http(s)://[Endpoint]/?Action=DescribeCache
 
 ##### 3.4.2.55 DescribeDnsGtmInstances
 
-Queries a list of Global Traffic Manager (GTM) instances. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of Global Traffic Manager (GTM) instances.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3225,6 +4392,8 @@ Queries a list of Global Traffic Manager (GTM) instances. This operation does no
 | Name | Strin g | Body | No | name | The name of the GTM instance. Partial match is supported. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3250,8 +4419,19 @@ Queries a list of Global Traffic Manager (GTM) instances. This operation does no
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -3270,7 +4450,10 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -3289,11 +4472,19 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
 
 ##### 3.4.2.56 EnableEmergencyGroup
 
-Enables an emergency group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Enables an emergency group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Ids | Strin g | Body | Yes | "1343778269181,34377 8269182,343778269183 " | The IDs of the nodes used for creating a cluster. Separate multiple IDs with commas (,). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3307,13 +4498,37 @@ Enables an emergency group. This operation does not have operation-specific requ
 |---|---|---|---|
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=EnableEmergencyGroup &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=EnableEmergencyGroup <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
 ```
 
 ##### 3.4.2.57 DisableEmergencyGroup
 
-Disables an emergency group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Disables an emergency group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3321,13 +4536,33 @@ Disables an emergency group. This operation does not have operation-specific req
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+```
+http(s)://[Endpoint]/?Action=DisableEmergencyGroup
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DisableEmergencyGroup <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Code>error code</Code>
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
 ##### 3.4.2.58 AddGlobalZone
 
-Creates a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3340,6 +4575,8 @@ Creates a global internal domain name. This operation does not have operation-sp
 | KeyAlgorit hm | Strin g | Body | No | HMAC-SHA512 | The algorithm used for the TSIG key. KeyName, KeyAlgorithm, and KeySecret must all be provided or all omitted. |
 | KeySecret | Strin g | Body | No | Ok1qR5IW1ajVka5cHPEJ QIXfLyx5V3PSkFBROAzO n21JumDq6nIpoj6H8rfj5 Uo+Ok55ZWQ0Wgrf302 fDscHLw== | The value of the TSIG key. KeyName, KeyAlgorithm, and KeySecret must all be provided or all omitted. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3347,11 +4584,24 @@ Creates a global internal domain name. This operation does not have operation-sp
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddGlobalZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddGlobalZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"\terror code"
 ```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code> error code</Code>
@@ -3359,12 +4609,20 @@ http(s)://[Endpoint]/?Action=AddGlobalZone
 
 ##### 3.4.2.59 UpdateRecursorAclRemark
 
-Modifies the description of a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a recursive access control list (ACL) policy.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the ACL policy. |
 | Remark | Strin g | Body | No | remark | The description of the ACL policy. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3373,18 +4631,36 @@ Modifies the description of a recursive access control list (ACL) policy. This o
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the ACL policy. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark
+http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark &Common request parameters
 ```
 
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.60 UpdateGlobalForwardZone
 
-Modifies a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a global forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3397,6 +4673,8 @@ Modifies a global forwarding domain name. This operation does not have operation
 | Forwarder s | Strin g | Body | Yes | ["1.1.1.1","1.1.1.2"] | The IP addresses of the DNS servers used for forwarding. |
 | Remark | Strin g | Body | No | remark | The description of the global forwarding domain name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3404,20 +4682,45 @@ Modifies a global forwarding domain name. This operation does not have operation
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the forwarding domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.61 AddPrivateZone
 
-Creates a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | com. | The domain name, which must end with a period (.). |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3426,18 +4729,36 @@ Creates a tenant-specific internal domain name. This operation does not have ope
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-d01
+http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-d01 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.62 AddPrivateForwardZone
 
-Creates a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a tenant-specific forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3453,15 +4774,38 @@ Creates a tenant-specific forwarding domain name. This operation does not have o
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the forwarding domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddPrivateForwardZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddPrivateForwardZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.63 UpdateDnsGtmAccessStrategy
 
-Modifies an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies an access policy.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3481,6 +4825,8 @@ Modifies an access policy. This operation does not have operation-specific reque
 | Specified GtmAddre ssPool | Strin g | Body | No | DEFAULT | The active address pool that you manually specify. Valid values: DEFAULT: the primary address pool. FAILOVER: the secondary address pool. |
 | SwitchMo de | Strin g | Body | No | BY PROBE RESULT _ _ | The policy that determines which address pool (primary or secondary) is active. Valid values: BY HAND: manually _ determines which address pool is active. BY PROBE RESULT: _ _ automatically determines which address pool is active. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3488,23 +4834,45 @@ Modifies an access policy. This operation does not have operation-specific reque
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the access policy. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy
 ```
 
+`{`
+
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.64 UpdateGlobalForwardZoneRemark
 
-Modifies the description of a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a global forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the global forwarding domain name. |
 | Remark | Strin g | Body | No | remark | The description of the global forwarding domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3519,19 +4887,44 @@ Modifies the description of a global forwarding domain name. This operation does
 |---|---|---|---|
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the global forwarding domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.65 DeletePrivateLine
 
-Deletes a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a private line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The private line ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3543,15 +4936,38 @@ Deletes a private line. This operation does not have operation-specific request 
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The private line ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeletePrivateLine &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeletePrivateLine
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.66 BindZoneVpc
 
-Associates a tenant-specific internal domain name with a virtual private cloud (VPC). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Associates a tenant-specific internal domain name with a virtual private cloud (VPC).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3561,15 +4977,31 @@ Associates a tenant-specific internal domain name with a virtual private cloud (
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID of the VPC. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific internal domain name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=BindZoneVpc
+http(s)://[Endpoint]/?Action=BindZoneVpc &Common request parameters
 ```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
@@ -3577,11 +5009,19 @@ http(s)://[Endpoint]/?Action=BindZoneVpc
 
 ##### 3.4.2.67 DeleteDnsGtmAccessStrategy
 
-Deletes an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes an access policy.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the GTM instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3590,22 +5030,42 @@ Deletes an access policy. This operation does not have operation-specific reques
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the GTM instance. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy
+http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.68 DeleteGlobalForwardZone
 
-Deletes a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a global forwarding domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The domain ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3614,15 +5074,36 @@ Deletes a global forwarding domain name. This operation does not have operation-
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
-```json
+**Examples**
+
+```
 http(s)://[Endpoint]/?Action=DeleteGlobalForwardZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.69 UpdateGlobalZone
 
-Modifies a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3636,6 +5117,8 @@ Modifies a global internal domain name. This operation does not have operation-s
 | KeyAlgorit hm | Strin g | Body | No | HMAC-SHA512 | The algorithm used for the TSIG key. KeyName, KeyAlgorithm, and KeySecret must all be provided or all omitted. |
 | KeySecret | Strin g | Body | No | Ok1qR5IW1ajVka5cHPEJ QIXfLyx5V3PSkFBROAzO n21JumDq6nIpoj6H8rfj5 Uo+Ok55ZWQ0Wgrf302 fDscHLw== | The value of the TSIG key. KeyName, KeyAlgorithm, and KeySecret must all be provided or all omitted. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3643,18 +5126,36 @@ Modifies a global internal domain name. This operation does not have operation-s
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UpdateGlobalZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Name=com.
+http(s)://[Endpoint]/?Action=UpdateGlobalZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Name=com. &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.70 UpdateRecursorAcl
 
-Modifies a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a recursive access control list (ACL) policy.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3662,6 +5163,8 @@ Modifies a recursive access control list (ACL) policy. This operation does not h
 | Name | Strin g | Body | Yes | Policy name | The name of the ACL policy. |
 | Policy | Strin g | Body | Yes | true | Specifies whether to enable recursion. Valid values: true false |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3673,20 +5176,45 @@ Modifies a recursive access control list (ACL) policy. This operation does not h
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the ACL policy. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateRecursorAcl &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=Policy name &Policy=true &LineIds=["default"] &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateRecursorAcl &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=Policy name &Policy=true &LineIds=["default"]
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.71 UpdateGlobalZoneRecordRemark
 
-Modifies the description of a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a DNS record for a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The DNS record ID. |
 | Remark | Strin g | Body | No | remark | The description of the DNS record. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3695,21 +5223,46 @@ Modifies the description of a DNS record for a global internal domain name. This
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.72 DescribeRecursorAcls
 
-Queries a list of recursive access control list (ACL) policies. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of recursive access control list (ACL) policies.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | No | Policy name | The name of the policy. Partial match is supported. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3731,8 +5284,18 @@ Queries a list of recursive access control list (ACL) policies. This operation d
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeRecursorAcls &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeRecursorAcls
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "Message":"error messga",
  "PageSize":10,
  "PageNumber":1,
@@ -3766,7 +5329,13 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 
 ##### 3.4.2.73 DescribePrivateZones
 
-Queries a list of tenant-specific internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of tenant-specific internal domain names.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3803,12 +5372,19 @@ Queries a list of tenant-specific internal domain names. This operation does not
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateZones
+http(s)://[Endpoint]/?Action=DescribePrivateZones &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Data":{
   "GtmInstanceCount":"",
@@ -3841,7 +5417,10 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId> 101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId>
@@ -3872,7 +5451,13 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
 
 ##### 3.4.2.74 AddRecursorAcl
 
-Creates a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a recursive access control list (ACL) policy.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3887,6 +5472,8 @@ Creates a recursive access control list (ACL) policy. This operation does not ha
 |---|---|---|---|---|---|
 | Remark | Strin g | Body | No | remark | The description of the ACL policy. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3894,15 +5481,34 @@ Creates a recursive access control list (ACL) policy. This operation does not ha
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the ACL policy. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddRecursorAcl &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddRecursorAcl
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.75 UpdateDnsGtmMonitor
 
 Modifies a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3919,6 +5525,8 @@ Modifies a health check configuration for address pools. This operation does not
 | Evaluation Count | Integ er | Body | Yes | 5 | The number of retries. |
 | AgentIds | Strin g | Body | Yes | ["agent-id1","agent-id1"] | The list of probe node IDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3926,10 +5534,24 @@ Modifies a health check configuration for address pools. This operation does not
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the health check configuration. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
@@ -3937,7 +5559,13 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 
 ##### 3.4.2.76 DescribePrivateZoneRecords
 
-Queries a list of DNS records for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of DNS records for a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3945,6 +5573,8 @@ Queries a list of DNS records for a tenant-specific internal domain name. This o
 | Name | Strin g | Body | No | www | The name of the DNS record. Partial match is supported. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3980,9 +5610,15 @@ Queries a list of DNS records for a tenant-specific internal domain name. This o
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44ee-b126-1cbdbcd24507
+http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "PageSize":10,
@@ -4014,7 +5650,10 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -4040,7 +5679,13 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
 
 ##### 3.4.2.77 DescribeGlobalZones
 
-Queries a list of global internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries a list of global internal domain names.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4065,9 +5710,18 @@ Queries a list of global internal domain names. This operation does not have ope
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-```json
+**Examples**
+
+```
 http(s)://[Endpoint]/?Action=DescribeGlobalZones
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Data":{
   "GtmInstanceCount":0,
@@ -4083,6 +5737,12 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
  <GtmInstanceCount>0</GtmInstanceCount>
  <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id>
@@ -4096,7 +5756,11 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 
 ##### 3.4.2.78 DescribeDnsGtmLogs
 
-Queries logs. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Queries logs.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4122,8 +5786,15 @@ Queries logs. This operation does not have operation-specific request headers an
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -4138,6 +5809,12 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <Target>Destination DNS instance</Target>
  <EventType  />
@@ -4149,11 +5826,19 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 
 ##### 3.4.2.79 DeleteGlobalZone
 
-Deletes a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the global internal domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4162,15 +5847,38 @@ Deletes a global internal domain name. This operation does not have operation-sp
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the global internal domain name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteGlobalZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteGlobalZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.80 UpdateNode
 
-Modifies the information about a node. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the information about a node.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4179,6 +5887,8 @@ Modifies the information about a node. This operation does not have operation-sp
 | AnycastAd drs | Strin g | Body | No | 10.1.0.12,10.1.0.13 | The anycast IP addresses. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -4186,18 +5896,36 @@ Modifies the information about a node. This operation does not have operation-sp
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UpdateNode
+http(s)://[Endpoint]/?Action=UpdateNode &Common request parameters
 ```
+
+Sample success responses
 
 ```json
  "Id":"343778269185",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.81 AddPrivateZoneRecord
 
-Creates a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates a DNS record for a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4220,6 +5948,8 @@ Creates a DNS record for a tenant-specific internal domain name. This operation 
 | - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -4227,18 +5957,36 @@ Creates a DNS record for a tenant-specific internal domain name. This operation 
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &LbaStrategy=ALL_RR &RDatas= &LineIds=["default"]
+http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &LbaStrategy=ALL_RR &RDatas= &LineIds=["default"] &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.82 AddDnsGtmAddressPool
 
-Creates an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Creates an address pool.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4254,6 +6002,8 @@ Creates an address pool. This operation does not have operation-specific request
 | -Mode | Strin g |   | Yes | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
 | - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -4261,23 +6011,42 @@ Creates an address pool. This operation does not have operation-specific request
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The address pool ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrategy=ALL_RR &Addr=
+http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrategy=ALL_RR &Addr= &Common request parameters
 ```
 
 ```json
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.83 UpdatePrivateForwardZoneRemark
 
-Modifies the description of a tenant-specific forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a tenant-specific forwarding configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding configuration. |
 | Remark | Strin g | Body | No | remark | The description of the tenant-specific forwarding configuration. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4292,15 +6061,38 @@ Modifies the description of a tenant-specific forwarding configuration. This ope
 |---|---|---|---|
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the tenant-specific forwarding configuration. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.2.84 BindForwardZoneVpc
 
-Associates a tenant-specific forwarding domain name with one or more virtual private clouds (VPCs). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Associates a tenant-specific forwarding domain name with one or more virtual private clouds (VPCs).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4313,15 +6105,31 @@ Associates a tenant-specific forwarding domain name with one or more virtual pri
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding configuration. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=BindForwardZoneVpc
+http(s)://[Endpoint]/?Action=BindForwardZoneVpc &Common request parameters
 ```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
@@ -4329,7 +6137,13 @@ http(s)://[Endpoint]/?Action=BindForwardZoneVpc
 
 ##### 3.4.2.85 DeleteForwardZoneVpc
 
-Disassociates one or more virtual private clouds (VPCs) from a tenant-specific forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Disassociates one or more virtual private clouds (VPCs) from a tenant-specific forwarding configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4339,19 +6153,43 @@ Disassociates one or more virtual private clouds (VPCs) from a tenant-specific f
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID of the VPC. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding configuration. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+**Examples**
+
+```
+http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env1-d01 &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env1-d01 &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
 ##### 3.4.2.86 UpdatePrivateDefaultForwardZone
 
-Modifies a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies a tenant-specific default forwarding configuration.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4363,6 +6201,8 @@ Modifies a tenant-specific default forwarding configuration. This operation does
 | Forwarder s | Strin g | Body | Yes | ["1.1.1.1","1.1.1.2"] | The IP addresses of the DNS servers used for forwarding. |
 | Remark | Strin g | Body | No | Remark | The description of the tenant-specific default forwarding configuration. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -4370,10 +6210,24 @@ Modifies a tenant-specific default forwarding configuration. This operation does
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the tenant-specific default forwarding configuration. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
@@ -4381,11 +6235,19 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
 
 ##### 3.4.2.87 DeleteGlobalLine
 
-Deletes a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a global line.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the global line. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4394,22 +6256,42 @@ Deletes a global line. This operation does not have operation-specific request h
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the global line. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteGlobalLine
+http(s)://[Endpoint]/?Action=DeleteGlobalLine &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.88 DeleteGlobalZoneRecord
 
-Deletes a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Deletes a DNS record for a global internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The DNS record ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4418,19 +6300,42 @@ Deletes a DNS record for a global internal domain name. This operation does not 
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
-```json
+**Examples**
+
+```
 http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1cbdbcd2
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
 ##### 3.4.2.89 DeletePrivateZoneRecord
 
-Delete a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Delete a DNS record for a tenant-specific internal domain name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The DNS record ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4442,9 +6347,26 @@ Delete a DNS record for a tenant-specific internal domain name. This operation d
 |---|---|---|---|
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4454,12 +6376,18 @@ http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
 
 ##### DescribeNodes
 
-You can call the DescribeNodes operation to query the node management list. The DescribeNodes operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the DescribeNodes operation to query the node management list.
+
+**Request headers**
+
+The DescribeNodes operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4483,9 +6411,20 @@ You can call the DescribeNodes operation to query the node management list. The 
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeNodes &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeNodes
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Total":10,
  "Data":{
@@ -4503,6 +6442,12 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 ```
 
 `},`
+
+```json
+ "Code":"error code"
+```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -4527,7 +6472,13 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 
 **cross-cloud DNS line: UpdateUniversalLinePriority**
 
-You can call the UpdateUniversalLinePriority operation to modify the priority of a cross-cloud DNS line. The UpdateUniversalLinePriority operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the UpdateUniversalLinePriority operation to modify the priority of a cross-cloud DNS line.
+
+**Request headers**
+
+The UpdateUniversalLinePriority operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4541,9 +6492,26 @@ You can call the UpdateUniversalLinePriority operation to modify the priority of
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4553,9 +6521,13 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority
 
 You can call the EnableEmergencyGroup operation to enable an emergency group. The EnableEmergencyGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Ids | Strin g | Body | Yes | "1343778269181,34377 8269182,343778269183 " | The IDs of the nodes that are used to create a new cluster (separated by commas). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4563,17 +6535,24 @@ You can call the EnableEmergencyGroup operation to enable an emergency group. Th
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=EnableEmergencyGroup
+http(s)://[Endpoint]/?Action=EnableEmergencyGroup &Common request parameters
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"",
+ "Code":"error code"
 ```
+
+`}` `XML` format
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
@@ -4583,11 +6562,19 @@ Sample success response
 
 **name: AddUniversalZone**
 
-Call the AddUniversalZone operation to add a cross-cloud shared domain name. The AddUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the AddUniversalZone operation to add a cross-cloud shared domain name.
+
+**Request headers**
+
+The AddUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | com. | The name of the cross- cloud shared domain name (must end with a period "."). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4596,12 +6583,26 @@ Call the AddUniversalZone operation to add a cross-cloud shared domain name. The
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=AddUniversalZone
 ```
 
+`{`
+
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4611,12 +6612,20 @@ http(s)://[Endpoint]/?Action=AddUniversalZone
 
 **UpdateUniversalZoneRecordRemark**
 
-You can call the UpdateUniversalZoneRecordRemark operation to modify the remark of a DNS record for a cross-cloud shared domain. The UpdateUniversalZoneRecordRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the UpdateUniversalZoneRecordRemark operation to modify the remark of a DNS record for a cross-cloud shared domain.
+
+**Request headers**
+
+The UpdateUniversalZoneRecordRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the DNS record. |
 | Remark | Strin g | Body | No | remark | The remark. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4625,9 +6634,26 @@ You can call the UpdateUniversalZoneRecordRemark operation to modify the remark 
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the DNS record. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4645,9 +6671,26 @@ Call the DisableEmergencyGroup operation to disable an emergency group. The Disa
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-```json
+**Examples**
+
+Sample requests
+
+```
 http(s)://[Endpoint]/?Action=DisableEmergencyGroup
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
 
@@ -4659,10 +6702,14 @@ http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 
 You can call the UpdateUniversalZoneRemark operation to modify the remark of a cross-cloud shared domain name. The UpdateUniversalZoneRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The domain ID. |
 | Remark | Strin g | Body | No | remark | The remark. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4671,20 +6718,42 @@ You can call the UpdateUniversalZoneRemark operation to modify the remark of a c
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
-```json
-http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}`
 
 ##### 3.4.3.8 Delete UniversalLine cross-cloud DNS line: DeleteUniversalLine
 
 **DeleteUniversalLine**
 
-You can call the DeleteUniversalLine operation to delete a cross-cloud DNS line. The DeleteUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the DeleteUniversalLine operation to delete a cross-cloud DNS line.
+
+**Request headers**
+
+The DeleteUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4693,12 +6762,24 @@ You can call the DeleteUniversalLine operation to delete a cross-cloud DNS line.
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49
+http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
@@ -4706,7 +6787,13 @@ http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 
 **resolution line: UpdateUniversalLine**
 
-You can call the UpdateUniversalLine operation to modify a cross-cloud resolution line. This operation uses common request headers without special request headers. For more information, see the common request parameters document.
+You can call the UpdateUniversalLine operation to modify a cross-cloud resolution line.
+
+**Request headers**
+
+This operation uses common request headers without special request headers. For more information, see the common request parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4723,9 +6810,26 @@ You can call the UpdateUniversalLine operation to modify a cross-cloud resolutio
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=name &Priority=1 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=name &Priority=1
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4734,6 +6838,8 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 **domain names: UpdateUniversalZoneRecord**
 
 You can call the UpdateUniversalZoneRecord operation to modify DNS records of cross-cloud shared domain names. The UpdateUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4764,15 +6870,38 @@ You can call the UpdateUniversalZoneRecord operation to modify DNS records of cr
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the DNS record. |
 
-```json
+**Examples**
+
+Sample requests
+
+```
 http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecord
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
 ##### 3.4.3.11 Modify a node: UpdateNode
 
-You can call the UpdateNode operation to modify a node. The UpdateNode operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the UpdateNode operation to modify a node.
+
+**Request headers**
+
+The UpdateNode operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4788,9 +6917,26 @@ You can call the UpdateNode operation to modify a node. The UpdateNode operation
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateNode &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=UpdateNode
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"343778269185",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
@@ -4798,11 +6944,17 @@ http(s)://[Endpoint]/?Action=UpdateNode
 
 **name: DeleteUniversalZone**
 
-You can call the DeleteUniversalZone operation to delete a cross-cloud shared domain name. The DeleteUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the DeleteUniversalZone operation to delete a cross-cloud shared domain name.
+
+**Request headers**
+
+The DeleteUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The domain ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4811,9 +6963,26 @@ You can call the DeleteUniversalZone operation to delete a cross-cloud shared do
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteUniversalZone &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteUniversalZone
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4821,11 +6990,19 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZone
 
 **node: TransferLeadership**
 
-You can call the TransferLeadership operation to switch a secondary node to the primary node. The TransferLeadership operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the TransferLeadership operation to switch a secondary node to the primary node.
+
+**Request headers**
+
+The TransferLeadership operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 343778269185 | The node ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4834,12 +7011,24 @@ You can call the TransferLeadership operation to switch a secondary node to the 
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
+http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Id":"343778269185",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
@@ -4847,7 +7036,13 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 
 **list: DescribeUniversalLines**
 
-You can call the DescribeUniversalLines operation to query the cross-cloud DNS line list. The DescribeUniversalLines operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the DescribeUniversalLines operation to query the cross-cloud DNS line list.
+
+**Request headers**
+
+The DescribeUniversalLines operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4873,11 +7068,16 @@ You can call the DescribeUniversalLines operation to query the cross-cloud DNS l
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeUniversalLines
+http(s)://[Endpoint]/?Action=DescribeUniversalLines &Common request parameters
 ```
 
 ```json
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -4894,6 +7094,12 @@ http(s)://[Endpoint]/?Action=DescribeUniversalLines
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <V4Addresses>[&quot;1.1.1.1&quot;]</V4Addresses>
  <V6Addresses>[&quot;2400:3200::7777&quot;]</V6Addresses>
@@ -4909,7 +7115,11 @@ http(s)://[Endpoint]/?Action=DescribeUniversalLines
 
 **AddUniversalLine**
 
-You can call the AddUniversalLine operation to add a cross-cloud DNS line. The AddUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the AddUniversalLine operation to add a cross-cloud DNS line.
+
+**Request headers**
+
+The AddUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4918,6 +7128,8 @@ You can call the AddUniversalLine operation to add a cross-cloud DNS line. The A
 | V4Addres ses | Strin g | Body | No | ["1.1.1.1","2.2.2.2"] | The list of IPv4 addresses. You must specify at least one of the V4Addresses and V6Addresses parameters. |
 | V6Addres ses | Strin g | Body | No | ["2400:3200::7777"] | The list of IPv6 addresses. You must specify at least one of the V4Addresses and V6Addresses parameters. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The ID of the request. |
@@ -4925,9 +7137,26 @@ You can call the AddUniversalLine operation to add a cross-cloud DNS line. The A
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the line. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -4935,7 +7164,13 @@ http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1
 
 **DeleteUniversalZoneRecord**
 
-You can call the DeleteUniversalZoneRecord operation to delete a DNS configuration record of a cross-cloud shared domain name. The DeleteUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the DeleteUniversalZoneRecord operation to delete a DNS configuration record of a cross-cloud shared domain name.
+
+**Request headers**
+
+The DeleteUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4950,9 +7185,26 @@ You can call the DeleteUniversalZoneRecord operation to delete a DNS configurati
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the record. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983d-c5dd4 8d05b49 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983d-c5dd4 8d05b49
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
@@ -4960,7 +7212,13 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983
 
 **DescribeUniversalZoneRecords**
 
-You can call the DescribeUniversalZoneRecords operation to query the resolution configuration list of a cross-cloud shared domain name. The DescribeUniversalZoneRecords operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the DescribeUniversalZoneRecords operation to query the resolution configuration list of a cross-cloud shared domain name.
+
+**Request headers**
+
+The DescribeUniversalZoneRecords operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4968,6 +7226,8 @@ You can call the DescribeUniversalZoneRecords operation to query the resolution 
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 | Name | Strin g | Body | No | www | The DNS record name (matched by inclusion). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5002,8 +7262,19 @@ You can call the DescribeUniversalZoneRecords operation to query the resolution 
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-44ee-b12 6-1cbdbcd24507&PageNumber=1&PageSize=10 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-44ee-b12 6-1cbdbcd24507&PageNumber=1&PageSize=10
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -5032,7 +7303,10 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
 ```
+
+`}`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -5058,7 +7332,13 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
 
 **DescribeUniversalZones**
 
-You can call the DescribeUniversalZones operation to query the list of cross-cloud shared domain names. The DescribeUniversalZones operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the DescribeUniversalZones operation to query the list of cross-cloud shared domain names.
+
+**Request headers**
+
+The DescribeUniversalZones operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5083,12 +7363,20 @@ You can call the DescribeUniversalZones operation to query the list of cross-clo
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 ```
 
+`{`
+
 ```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
+ "Message":"error message",
  "PageNumber":1,
  "Data":{
   "GtmInstanceCount":"",
@@ -5104,6 +7392,12 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 
 ```json
  "TotalItems":10,
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
  <GtmInstanceCount  />
  <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id>
@@ -5119,7 +7413,11 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 
 **AddUniversalZoneRecord**
 
-You can call the AddUniversalZoneRecord operation to add a DNS record for a cross-cloud shared domain name. The AddUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the AddUniversalZoneRecord operation to add a DNS record for a cross-cloud shared domain name.
+
+**Request headers**
+
+The AddUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5140,6 +7438,8 @@ You can call the AddUniversalZoneRecord operation to add a DNS record for a cros
 | - LbaWeigh t | Integ er |   | No | 100 | The weight. |
 | LineIds | Strin g | Body | Yes | ["default"] | The DNS line. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -5147,8 +7447,25 @@ You can call the AddUniversalZoneRecord operation to add a DNS record for a cros
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the DNS record. |
 
+**Examples**
+
+Sample requests
+
 ```json
-http(s)://[Endpoint]/?Action=AddUniversalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100
+http(s)://[Endpoint]/?Action=AddUniversalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+ "Message":"error message",
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+ "Code":"error code"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```

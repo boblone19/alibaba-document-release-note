@@ -5,7 +5,7 @@ doc_version: "20231208"
 pdf_pages: 66
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Server Load Balancer Developer Guide 20231208.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/SLB/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Server%20Load%20Balancer%20Developer%20Guide%2020231208.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Server Load Balancer Developer Guide 20231208
@@ -87,6 +87,9 @@ This topic describes how to navigate to the Server Load Balancer (SLB) console a
 **Prerequisites**
 
 Before you log on to the Apsara Uni-manager Management Console, you must obtain the endpoint of the console from the deployment personnel. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -158,6 +161,9 @@ This topic describes how to create a Server Load Balancer (SLB) instance. An SLB
 **Prerequisites**
 
 Elastic Compute Service (ECS) instances are created and applications are deployed on the ECS instances. The ECS instances and the SLB instance belong to the same organization. In addition, the security group rules configured for the ECS instances allow HTTP requests from port 80 and HTTPS requests from port 443 (HTTPS).
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose **Instances > Instances**.
 3. On the **Instances** page, click **Create Instance**.
@@ -184,6 +190,9 @@ Elastic Compute Service (ECS) instances are created and applications are deploye
 ### 3.4 Configure an SLB instance
 
 This topic describes how to configure a Server Load Balancer (SLB) instance. To enable an SLB instance to forward traffic, you must add at least one listener and one group of backend servers to the SLB instance. The following example shows how to add a TCP listener and Elastic Compute Service (ECS) instances to an SLB instance. The ECS instances are ECS01 and ECS02. These ECS instances function as backend servers that host static web pages.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. On the **Instance Management** page, find the instance that you want to manage and click
 **Configure Listener** in the **Actions** column.
@@ -217,6 +226,9 @@ balancing performance of the SLB instance. Figure 1. ECS01 Figure 2. ECS02
 ### 3.5 Release an SLB instance
 
 You can release SLB instances that are no longer needed to reduce costs. The backend Elastic Compute Service (ECS) instances are not deleted or affected after you release an SLB instance.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. On the **Instances** page, find the SLB instance that you want to release and choose
 
@@ -277,6 +289,9 @@ This topic describes how to create a Server Load Balancer (SLB) instance. An SLB
 **Prerequisites**
 
 Elastic Compute Service (ECS) instances are created and applications are deployed on the ECS instances. Make sure that the following requirements are met: The ECS instances and the SLB instance belong to the same organization. In addition, the security group rules configured for the ECS instances accept HTTP requests received on port 80 and HTTPS requests received on port 443.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose **Instances > Instance Management**.
 3. On the **Instances** page, click **Create SLB**.
@@ -305,6 +320,9 @@ address is not in use. Otherwise, the SLB instance cannot be created. If you do 
 **instance**
 
 This topic describes how to enable or disable a Server Load Balancer (SLB) instance. You can enable or disable SLB instances anytime. A disabled SLB instance does not receive or forward client requests.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose **Instances > Instance Management**.
 3. On the **Instances** page, find the SLB instance that you want to manage and choose
@@ -315,6 +333,9 @@ This topic describes how to enable or disable a Server Load Balancer (SLB) insta
 ### 4.4 Release an SLB instance
 
 This topic describes how to release a Server Load Balancer (SLB) instance. You can release SLB instances based on your needs.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. In the left-side navigation pane, choose **Instances > Instances**.
 3. Find the SLB instance that you want to release and choose
@@ -642,6 +663,9 @@ forward requests destined for other URLs of the domain name to Server Group 2. T
 ### 5.7 Enable access control
 
 This topic describes how to enable access control for a listener. You can enable access control for each listener of a Server Load Balancer (SLB) instance. You can set whitelists for different listeners.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Click the ID of the SLB instance for which you want to enable access control.
 3. Click the **Listener** tab, find the listener that you want to manage, and then choose
@@ -768,6 +792,9 @@ Before a Server Load Balancer (SLB) instance can process requests, you must add 
 **Prerequisites**
 
 Before you add an Elastic Compute Service (ECS) instance to the default server group, make sure that the following requirements are met: An SLB instance is created. For more information, see Create an SLB instance. ECS instances are created and applications are deployed on the ECS instances to receive requests.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the SLB instance that you want to manage and click the instance ID.
 3. Click the **Default Server Group** tab.
@@ -794,6 +821,9 @@ This topic describes how to add on-premises servers to the default server group.
 **Prerequisites**
 
 Applications are deployed on the on-premises servers, and the servers are ready to receive requests.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the SLB instance that you want to manage and click the instance ID.
 3. Click the **Default Server Group** tab.
@@ -813,6 +843,9 @@ premises server. A server with a higher weight receives more requests. You can c
 #### 6.2.3 Change the weight of a backend server
 
 This topic describes how to change the weight of a backend server to adjust the proportion of requests sent to the backend server.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the Server Load Balancer (SLB) instance that you want to manage and click the
 instance ID.
@@ -827,6 +860,9 @@ An Elastic Compute Service (ECS) instance or on-premises server with a higher we
 #### 6.2.4 Remove a backend server
 
 This topic describes how to remove a backend server that is no longer needed.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the Server Load Balancer (SLB) instance that you want to manage and click the
 instance ID.
@@ -848,6 +884,9 @@ Create an SLB instance. ECS instances are created and applications are deployed 
 **Background information**
 
 Before you create a vServer group, take note of the following items: An ECS instance can be added to multiple vServer groups. A vServer group can be associated with multiple listeners of a Server Load Balancer (SLB) instance. A vServer group consists of ECS instances and application service ports.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the SLB instance that you want to manage and click the instance ID.
 3. Click the **VServer Groups** tab.
@@ -881,6 +920,9 @@ Before you create a vServer group, make sure that applications are deployed on t
 **Background information**
 
 Before you create a vServer group, take note of the following items: An on-premises server can be added to multiple vServer groups. A vServer group can be associated with multiple listeners of a Server Load Balancer (SLB) instance. A vServer group consists of on-premises servers and application service ports.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the SLB instance that you want to manage and click the instance ID.
 3. Click the **VServer Groups** tab.
@@ -903,6 +945,9 @@ vii. Click **Add**.
 #### 6.3.3 Modify a vServer group
 
 This topic describes how to modify the settings of Elastic Compute Service (ECS) instances or on-premises servers in a vServer group.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the Server Load Balance (SLB) instance that you want to manage and click the
 instance ID.
@@ -913,6 +958,9 @@ instance ID.
 #### 6.3.4 Delete a vServer group
 
 This topic describes how to delete a vServer group. If a vServer group is no longer needed to receive traffic, you can delete the vServer group.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the Server Load Balance (SLB) instance that you want to manage and click the
 instance ID. s
@@ -933,6 +981,9 @@ This topic describes how to create a primary/secondary server group and then add
 **Prerequisites**
 
 Before you create a primary/secondary server group, make sure that the following requirements are met: An SLB instance is created. For more information, see Create an SLB instance. ECS instances are created and applications are deployed on the ECS instances to receive requests.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the SLB instance that you want to manage and click the instance ID.
 3. Click the **Primary/Secondary Server Groups** tab.
@@ -950,6 +1001,9 @@ This topic describes how to create a primary/secondary server group and then add
 **Prerequisites**
 
 Applications are deployed on the on-premises servers, and the servers are ready to receive requests.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the SLB instance that you want to manage and click the instance ID.
 3. Click the **Primary/Secondary Server Groups** tab.
@@ -982,6 +1036,8 @@ If multiple ENIs are attached to the ECS instance that you want to add to an SLB
 
 > **Note:** You can specify the primary and secondary ENIs of ECS instances only for high- performance SLB instances.
 > You can specify only secondary ENIs in the console. To specify primary ENIs, make an API request.
+
+**Procedure**
 
 1. Log on to the SLB console.
 2. In the top navigation bar, select the region where the SLB instance is deployed.
@@ -1092,6 +1148,9 @@ You can specify a domain name for HTTP health checks. This setting is optional. 
 ### 7.2 Configure health checks
 
 This topic describes how to conﬁgure health checks. You can conﬁgure health checks when you add a listener. The default health check settings can meet your requirements in most cases.
+
+**Procedure**
+
 1. Log on to the SLB console.
 2. Find the Server Load Balancer (SLB) instance that you want to manage and click the
 instance ID.
@@ -1128,6 +1187,8 @@ This topic describes how to disable the health check feature for a Server Load B
 **Background information**
 
 > **Note:** You can disable the health check feature only for HTTP and HTTPS listeners. The health check feature for UDP and TCP listeners cannot be disabled.
+
+**Procedure**
 
 1. Log on to the SLB console.
 2. On the **Instances** page, find the SLB instance that you want to manage and click its ID.
@@ -1398,6 +1459,9 @@ openssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes
 ### 8.6 Replace a certificate
 
 This topic describes how to replace a certificate with a new certificate. We recommend that you replace certificates before they expire to avoid impacts on your service.
+
+**Procedure**
+
 1. Create and upload a new certificate.
 For more information, see Upload certificates.
 2. Configure the new certificate for an HTTPS listener

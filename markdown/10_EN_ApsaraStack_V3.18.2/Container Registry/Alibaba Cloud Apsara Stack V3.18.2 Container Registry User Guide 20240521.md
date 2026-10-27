@@ -5,7 +5,7 @@ doc_version: "20240521"
 pdf_pages: 51
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Container Registry User Guide 20240521.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8FACR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Container%20Registry%20User%20Guide%2020240521.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Container Registry User Guide 20240521

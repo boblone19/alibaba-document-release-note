@@ -5,16 +5,21 @@ doc_version: "20260729"
 pdf_pages: 8
 source_pdf: "07_运维指南_enterprise-operation-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/acr/zh/enterprise-operation-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 容器镜像服务 运维指南
 
-容器镜像服务
+## 目录
 
-## 运维概述
+- 1 运维概述
+  - 1.1 运维简介
+  - 1.2 运维架构
+- 2 运维流程
 
-### 运维简介
+## 1 运维概述
+
+### 1.1 运维简介
 
 本文介绍容器镜像服务ACR运维的目的、要求、注意事项、以及寻求帮助的方式。
 
@@ -38,18 +43,16 @@ converter: line-classifier (PyMuPDF)
 
 维护人员在系统维护过程中，如果需要相关帮助，可以联系阿里云容器镜像服务ACR技术支持获取帮助。
 
-### 运维架构
+### 1.2 运维架构
 
-本文介绍容器镜像服务ACR的运维架构。 ACR的运维架构如下图所示： 容器镜像服务
+本文介绍容器镜像服务ACR的运维架构。 ACR的运维架构如下图所示：
 
 | 运维大类 | 描述 |
 |---|---|
 | 例行维护 | 包括统一巡检、查看和处理告警。 |
 | 故障处理 | 联系阿里云的TAM驻场和SRE专家组协助处理。 |
 
-容器镜像服务
-
-## 运维流程
+## 2 运维流程
 
 本文介绍容器镜像服务ACR的运维流程。
 
@@ -63,19 +66,19 @@ converter: line-classifier (PyMuPDF)
 **cr-manager**：ACR管控组件。
 **cr-openapi**： ACR中用于和RAM联动鉴权的组件。
 **cr-registry**：存储ACR中镜像的组件。
-**cr-sync**：ACR中用于同步镜像的组件。
-**cr-chart**：ACR中用于Chart的组件。
-**cr-convertor**：ACR中用于镜像加速的组件。
+**cr-sync****：**ACR中用于同步镜像的组件。
+**cr-chart****：**ACR中用于Chart的组件。
+**cr-convertor****：**ACR中用于镜像加速的组件。
 
 **PaaS 基线组件**
 
 **acr-ee**：ACR中负责注册API的组件。
 **cr-chart**：ACR负责Chart的组件。
-**cr-convertor**：ACR中用于镜像加速的组件。
+**cr-convertor****：**ACR中用于镜像加速的组件。
 **manager**：ACR管控组件。
 **cr-registry**：存储ACR中镜像的组件。
-**cr-unimanager-configinit**：ACR中的前端组件。
-**multi-instance**：ACR中用于多实例的组件。
+**cr-unimanager-configinit****：**ACR中的前端组件。
+**multi-instance****：**ACR中用于多实例的组件。
 
 **ACR PaaS 版本组件Pod巡检**
 
@@ -83,7 +86,7 @@ converter: line-classifier (PyMuPDF)
 
 **ACR 天基容器组件巡检**
 
-登录ACR所在VM，执行 sudo docker ps -a | grep acr 命令，查看ACRPaaS基线组件容器状态。 容器镜像服务
+登录ACR所在VM，执行 sudo docker ps -a | grep acr 命令，查看ACRPaaS基线组件容器状态。
 
 **ACR 天基管控组件日志查看**
 

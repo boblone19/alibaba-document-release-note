@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 64
 source_pdf: "53ea718a5ce0bec6_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Developer Guide 20260828
@@ -59,7 +59,7 @@ The name of an action is in the following format: `ACS::<name>` .
 Unless otherwise specified, each action has the following attributes:
 
 ```
----
+--- Tasks:
   - Name: task_name_1
     Action: 'Action'
     Description: describe the purpose of the task
@@ -67,6 +67,7 @@ Unless otherwise specified, each action has the following attributes:
 rs when the task is being executed. Default value: ACS::END, which specifies that the e xecution ends when an error occurs.
     OnSuccess: 'ACS::NEXT/<other-task-name>/ACS::END' # The process to be executed when
 the task is successfully executed. Default value: ACS::NEXT, which specifies that the n ext task is executed after the current task is successfully executed.
+    Properties:
       Service: ECS/RDS/RAM
       API: DeleteInstance/CreateDBInstance/CreateRamRole
       Parameters:
@@ -119,6 +120,7 @@ FormatVersion: OOS-2019-06-01 Description: Creates a cloud assistant command and
 es.
     Type: Number
     Default: 600
+Tasks:
 - Name: runCommand
   Action: 'ACS::ExecuteAPI'
   Description: Executes a cloud assistant command.
@@ -147,6 +149,7 @@ n attributes
   Description: Waits for the command to be completed.
   OnError: ACS::END
   Retries: 20
+  Properties:
     Service: ECS
     API: DescribeInvocations
     Parameters:
@@ -166,6 +169,7 @@ n attributes
 
 ```
     instance.
+  Properties:
     Service: ECS
     API: DescribeInvocationResults
     Parameters:
@@ -179,6 +183,7 @@ n attributes
   Action: 'ACS::CheckFor'
   Description: Check the command exitcode of a cloud assistant command.
   OnError: 'ACS::END'
+  Properties:
     Service: ECS
     API: DescribeInvocationResults
     Parameters:
@@ -198,7 +203,7 @@ Outputs:
       'Fn::Base64Decode': '{{ describeInvocationResults.invocationResult }}'
 ```
 
-JSON format
+JSON format `{`
 
 ```json
   "FormatVersion": "OOS-2019-06-01",
@@ -209,14 +214,29 @@ JSON format
       "Description": "The ID of region.",
       "Type": "String",
       "Default": "{{ ACS::RegionId }}"
+```
+
+`},`
+
+```json
     "commandContent": {
       "Description": "The content of command.",
       "Type": "String"
+```
+
+`},`
+
+```json
     "instanceId": {
       "Description": "The ID of ECS instance that will invoke command.",
       "Type": "String",
       "MinLength": 1,
       "MaxLength": 30
+```
+
+`},`
+
+```json
     "commandType": {
       "Description": "The type of command.",
       "Type": "String",
@@ -226,7 +246,7 @@ JSON format
         "RunShellScript"
 ```
 
-`]`
+`]` `},`
 
 ```json
     "workingDir": {
@@ -234,6 +254,11 @@ JSON format
 instances.",
       "Type": "String",
       "Default": ""
+```
+
+`},`
+
+```json
     "timeout": {
       "Description": "The value of the invocation timeout period of a command on ECS in
 stances.",
@@ -248,6 +273,7 @@ n attributes
       "Name": "runCommand",
       "Action": "ACS::ExecuteAPI",
       "Description": "Executes a cloud assistant command.",
+      "Properties": {
         "Service": "ECS",
         "API": "RunCommand",
         "Parameters": {
@@ -264,20 +290,36 @@ n attributes
           "Type": "{{ commandType }}",
           "WorkingDir": "{{ workingDir }}",
           "Timeout": "{{ timeout }}"
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "invokeId": {
           "Type": "String",
           "ValueSelector": "InvokeId"
+```
+
+`}` `}` `},` `{`
+
+```json
       "Name": "untilInvocationReady",
       "Action": "ACS::WaitFor",
       "Description": "Waits for the command to be completed.",
       "OnError": "ACS::END",
       "Retries": 20,
+      "Properties": {
         "Service": "ECS",
         "API": "DescribeInvocations",
         "Parameters": {
           "RegionId": "{{ regionId }}",
           "InvokeId": "{{ runCommand.invokeId }}"
+```
+
+`},`
+
+```json
         "DesiredValues": [
           "Finished"
 ```
@@ -293,6 +335,11 @@ n attributes
 
 ```json
         "PropertySelector": "Invocations.Invocation[].InvokeStatus"
+```
+
+`}` `},` `{`
+
+```json
       "Name": "describeInvocationResults",
       "Action": "ACS::ExecuteAPI",
       "Description": "Views the command output of a cloud assistant command in the spec
@@ -307,24 +354,40 @@ ified ECS instance.",
         "Parameters": {
           "RegionId": "{{ regionId }}",
           "InvokeId": "{{ runCommand.invokeId }}"
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "invocationResult": {
           "Type": "String",
           "ValueSelector": "Invocation.InvocationResults.InvocationResult[].Output"
+```
+
+`}` `}` `},` `{`
+
+```json
       "Name": "checkInvocationResult",
       "Action": "ACS::CheckFor",
       "Description": "Check the command exitcode of a cloud assistant command.",
       "OnError": "ACS::END",
+      "Properties": {
         "Service": "ECS",
         "API": "DescribeInvocationResults",
         "Parameters": {
           "RegionId": "{{ regionId }}",
           "InvokeId": "{{ runCommand.InvokeId }}"
+```
+
+`},`
+
+```json
         "PropertySelector": "Invocation.InvocationResults.InvocationResult[].ExitCode",
         "DesiredValues": [
 ```
 
-`]` `],`
+`]` `}` `}` `],`
 
 ```json
   "Outputs": {
@@ -333,6 +396,8 @@ ified ECS instance.",
       "Value": {
         "Fn::Base64Decode": "{{ describeInvocationResults.invocationResult }}"
 ```
+
+`}` `}` `}` `}`
 
 **Task output attributes**
 
@@ -351,9 +416,11 @@ FormatVersion: OOS-2019-06-01 Description: Views the ECS instances by specifying
   status:
     Description: The ECS instances status for query instances.
     Type: String
+Tasks:
 - Name: describeInstances
   Action: ACS::ExecuteAPI
   Description: Views the ECS instances by specifying instance status.
+  Properties:
     Service: ECS
     API: DescribeInstances
     Parameters:
@@ -405,8 +472,10 @@ The ACS::ExecuteAPI action can be used to call an API operation of a cloud servi
 API operation to be called, so you do not need to specify it again in the Parameters parameter. YAML format
 
 ```
+Tasks:
   - Name: executeAPITaskExample
     Action: ACS::ExecuteAPI
+    Properties:
       Service: ECS # Required. The Alibaba Cloud Resource Name (ARN) of the cloud servi
 ce in Resource Access Management (RAM). The name is case insensitive, such as ECS, RDS, and FC.
       API: DescribeInstances # Required. The name of an API operation of the cloud serv
@@ -430,27 +499,35 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Tasks": [
       "Name": "executeAPITaskExample",
       "Action": "ACS::ExecuteAPI",
+      "Properties": {
         "Service": "ECS",
         "API": "DescribeInstances",
         "AutoPaging": false,
         "Parameters": {
           "Parameter1": "Value1",
           "Parameter2": "Value2"
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "OutputParameter1": {
           "ValueSelector": "jq selector",
           "Type": "String/Boolean/List(Array)/Number/Object"
 ```
 
-`]`
+`}` `}` `}` `]` `}`
 
 **ROA API operations**
 
 YAML format
 
 ```xml
+Tasks:
   - Name: executeAPITaskExample2
     Action: ACS::ExecuteAPI
+    Properties:
       Service: OOS # Required. The ARN of the cloud service in RAM. The name is case in
 sensitive, such as OOS, ECS, RDS, and FC.
       API: PutBucket # Required. The name of an API operation of the cloud service. The
@@ -476,20 +553,31 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Tasks": [
       "Name": "executeAPITaskExample2",
       "Action": "ACS::ExecuteAPI",
+      "Properties": {
         "Service": "OOS",
         "API": "PutBucket",
         "Method": "PUT",
         "URI": "",
         "Headers": {
           "requestHeader1": "requestHeader1Value"
+```
+
+`},`
+
+```json
         "Parameters": {
           "commonParameter1": "commonParameter1Value",
           "commonParameter2": "commonParameter2Value"
+```
+
+`},`
+
+```json
         "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <supKey1> <parameter1>
 Value1\n</parameter1> <parameter2> Value2 </parameter2> </supKey1>\n"
 ```
 
-`]`
+`}` `}` `]` `}`
 
 **Sample code**
 
@@ -502,9 +590,11 @@ FormatVersion: OOS-2019-06-01 Description: Views the ECS instances by specifying
   status:
     Description: The ECS instances status for query instances.
     Type: String
+Tasks:
 - Name: describeInstances
   Action: ACS::ExecuteAPI
   Description: Views the ECS instances by specifying instance status.
+  Properties:
     Service: ECS
     API: DescribeInstances
     Parameters:
@@ -528,21 +618,37 @@ JSON format
     "status": {
       "Description": "The ECS instances status for query instances.",
       "Type": "String"
+```
+
+`}` `},`
+
+```json
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "describeInstances",
       "Action": "ACS::ExecuteAPI",
       "Description": "Views the ECS instances by specifying instance status.",
+      "Properties": {
         "Service": "ECS",
         "API": "DescribeInstances",
         "Parameters": {
           "Status": "{{ status }}"
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "instanceIds": {
           "Type": "List",
           "ValueSelector": "Instances.Instance[].InstanceId"
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "Outputs": {
@@ -550,6 +656,8 @@ JSON format
       "Type": "List",
       "Value": "{{ describeInstances.instanceIds }}"
 ```
+
+`}` `}` `}`
 
 **Sample code for calling ROA API operations**
 
@@ -603,11 +711,12 @@ Type:String
     Description: The RAM role to be assumed by OOS.
     Type: String
     Default: OOSServiceRole
-RamRole: '{{ OOSAssumeRole }}'
+RamRole: '{{ OOSAssumeRole }}' Tasks:
   - Name: PutBucket
     Action: 'ACS::ExecuteAPI'
     Description:
       en: Create buckets in different regions.
+    Properties:
       Service: OSS
       API: PutBucket
       Method: PUT
@@ -640,36 +749,71 @@ RamRole: '{{ OOSAssumeRole }}'
         ValueSelector: .
 ```
 
-JSON format
+JSON format `{`
 
 ```json
   "FormatVersion": "OOS-2019-06-01",
   "Description": {
     "en": "Create multiple buckets in different region at the same time."
+```
+
+`},`
+
+```json
   "Parameters": {
     "Regions": {
       "Description": {
         "en": "The region id.."
+```
+
+`},`
+
+```json
       "Type": "List"
+```
+
+`},`
+
+```json
     "BucketName": {
       "Description": {
         "en": "The bucket name."
+```
+
+`},`
+
+```json
       "Type": "String"
+```
+
+`},`
+
+```json
     "DataRedundancyType": {
       "Description": {
         "en": "Specifies the data disaster tolerance type of the bucket."
+```
+
+`},`
+
+```json
       "Type": "String",
       "AllowedValues": [
         "LRS",
         "ZRS"
 ```
 
-`]`
+`]` `},`
 
 ```json
     "StorageClass": {
       "Description": {
         "en": "Specify the bucket storage type."
+```
+
+`},`
+
+```json
       "Type": "String",
       "AllowedValues": [
         "Standard",
@@ -694,35 +838,76 @@ JSON format
         "private"
 ```
 
-`]`
+`]` `},`
 
 ```json
     "RateControl": {
       "Description": {
         "en": "Concurrency ratio of task execution."
+```
+
+`},`
+
+```json
       "Type": "Json",
       "AssociationProperty": "RateControl"
+```
+
+`},`
+
+```json
     "OOSAssumeRole": {
       "Description": "The RAM role to be assumed by OOS.",
       "Type": "String",
       "Default": "OOSServiceRole"
+```
+
+`}` `},`
+
+```json
   "RamRole": "{{ OOSAssumeRole }}",
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "PutBucket",
       "Action": "ACS::ExecuteAPI",
       "Description": {
         "en": "Create buckets in different regions."
+```
+
+`},`
+
+```json
+      "Properties": {
         "Service": "OSS",
         "API": "PutBucket",
         "Method": "PUT",
         "URI": "",
         "Headers": {
           "x-oss-acl": "{{ XOssAcl }}"
+```
+
+`},`
+
+```json
         "Parameters": {
           "BucketName": "{{ BucketName }}-{{ACS::TaskLoopItem}}",
           "RegionId": "{{ACS::TaskLoopItem}}"
+```
+
+`},`
+
+```json
         "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?
 >\n<CreateBucketConfiguration>\n <StorageClass>{{ StorageClass }}</StorageClass>\n <D ataRedundancyType>{{ DataRedundancyType }} </DataRedundancyType>\n</CreateBucketConfiguration>\n"
+```
+
+`},`
+
+```json
       "Loop": {
         "Items": "{{ Regions }}",
         "RateControl": "{{ RateControl }}",
@@ -745,13 +930,18 @@ stJo
 
 ```json
             "AggregateField": "imageIds"
+```
+
+`},`
+
+```json
       "Outputs": {
         "imageIds": {
           "Type": "String",
           "ValueSelector": "."
 ```
 
-`]`
+`}` `}` `}` `]` `}`
 
 #### 2.1.2 ACS::WaitFor
 
@@ -764,6 +954,7 @@ The ACS::WaitFor action is used to wait for the specified resource to enter the 
 ```bash
   - Name: waitForTaskExample
     Action: ACS::WaitFor
+    Properties:
       # The following attributes are the same as those of the ACS::ExecuteAPI action. F
 or more information, see the syntax description for the ACS::ExecuteAPI action.
       Service: ECS
@@ -800,10 +991,16 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Tasks": [
       "Name": "waitForTaskExample",
       "Action": "ACS::WaitFor",
+      "Properties": {
         "Service": "ECS",
         "API": "DescribeInstances",
         "Parameters": {
           "InstanceId": "i-12345678abcedfg"
+```
+
+`},`
+
+```json
         "PropertySelector": "jq selector",
         "StopRetryValues":["status1"],
         "DesiredValues": [
@@ -819,7 +1016,7 @@ JSON format (For more information, see the parameter description for the YAML fo
           "value4"
 ```
 
-`]`
+`]` `},`
 
 ```json
     "Outputs": {
@@ -828,7 +1025,7 @@ JSON format (For more information, see the parameter description for the YAML fo
           "Type": "String/Boolean/List(Array)/Number/Object"
 ```
 
-`]`
+`}` `}` `}` `]` `}`
 
 **Sample code**
 
@@ -839,9 +1036,11 @@ The following sample code is used to start an instance and call the ACS::WaitFor
   InstanceId:
     Description: the instance id that you will start.
     Type: String
+Tasks:
 - Name: startInstance
   Action: ACS::ExecuteAPI
   Description: start instance with specified parameters
+  Properties:
     Service: ECS
     API: StartInstance
     Parameters:
@@ -849,6 +1048,7 @@ The following sample code is used to start an instance and call the ACS::WaitFor
 - Name: untilInstanceReady
   Action: ACS::WaitFor
   Description: describe instances with specified parameters
+  Properties:
     Service: ECS
     API: DescribeInstances
     Parameters:
@@ -867,26 +1067,48 @@ JSON format
         "InstanceId": {
             "Description": "the instance id that you will start.",
             "Type": "String"
+```
+
+`}` `},`
+
+```json
     "Tasks": [
+```
+
+`{`
+
+```json
             "Name": "startInstance",
             "Action": "ACS::ExecuteAPI",
             "Description": "start instance with specified parameters",
+            "Properties": {
                 "Service": "ECS",
                 "API": "StartInstance",
                 "Parameters": {
                     "InstanceId": "{{ InstanceId }}"
+```
+
+`}` `}` `},` `{`
+
+```json
             "Name": "untilInstanceReady",
             "Action": "ACS::WaitFor",
             "Description": "describe instances with specified parameters",
+            "Properties": {
                 "Service": "ECS",
                 "API": "DescribeInstances",
                 "Parameters": {
                     "InstanceIds": [ "{{ InstanceId }}"]
+```
+
+`},`
+
+```json
                 "PropertySelector": "Instances.Instance[].Status",
                 "DesiredValues": [ "Running" ],
 ```
 
-`]`
+`}` `}` `]` `}`
 
 #### 2.1.3 ACS::CheckFor
 
@@ -901,6 +1123,7 @@ Except that the `Type` attribute is set to `ACS::CheckFor` , all other attribute
 ```bash
   - Name: checkForTaskExample
     Type: ACS::CheckFor
+    Properties:
       # The following attributes are the same as those of the ACS::ExecuteAPI action. F
 or more information, see the syntax description for the ACS::ExecuteAPI action.
       Service: ECS
@@ -932,10 +1155,16 @@ JSON format (For more information, see the parameter description for the YAML fo
     "Tasks": [
             "Name": "checkForTaskExample",
             "Type": "ACS::CheckFor",
+            "Properties": {
                 "Service": "ECS",
                 "API": "DescribeInstances",
                 "Parameters": {
                     "InstanceId": "i-12345678abcedfg"
+```
+
+`},`
+
+```json
                 "PropertySelector": "jq selector",
                 "DesiredValues": [
                     "value1",
@@ -950,7 +1179,7 @@ JSON format (For more information, see the parameter description for the YAML fo
                     "value4"
 ```
 
-`]`
+`]` `},`
 
 ```json
         "Outputs": {
@@ -959,7 +1188,7 @@ JSON format (For more information, see the parameter description for the YAML fo
           "Type": "String/Boolean/List(Array)/Number/Object"
 ```
 
-`]`
+`}` `}` `}` `]` `}`
 
 **Example**
 
@@ -992,6 +1221,7 @@ FormatVersion: OOS-2019-06-01 Parameters:
     PropertySelector: Instances.Instance[].Status
 - Name: createSnapshot
     Action: ACS::ExecuteAPI
+  Properties:
       Service: ECS
     API: CreateSnapshot
     Parameters:
@@ -1003,6 +1233,7 @@ FormatVersion: OOS-2019-06-01 Parameters:
         ValueSelector: SnapshotId
 - Name: waitSnapshotsReady
     Action: ACS::WaitFor
+  Properties:
       Service: ECS
     API: DescribeSnapshots
     DesiredValues:
@@ -1017,7 +1248,7 @@ Outputs:
     Value: '{{ createSnapshot.SnapshotId }}'
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "FormatVersion": "OOS-2019-06-01",
@@ -1025,6 +1256,11 @@ JSON format
         "DiskId": {
             "Description": "the disk id of the snap shot to copy ",
             "Type": "String"
+```
+
+`},`
+
+```json
         "InstanceId": {
             "Description": "the instances id  of the snap shot to copy ",
             "Type": "String"
@@ -1035,37 +1271,75 @@ JSON format
         SnapshotName: {
             "Description": "snap shot name of the new snap",
             "Type": "String"
+```
+
+`},`
+
+```json
     "Tasks": [
+```
+
+`{`
+
+```json
             "Name": "checkInstanceReady",
             "Action": "ACS::CheckFor",
+            "Properties": {
                 "Service": "ECS",
                 "API": "DescribeInstances",
                 "DesiredValues": ["Running", "Stopped"],
                 "Parameters": {
                     "InstanceIds": ["{{ InstanceId }} "]
+```
+
+`},`
+
+```json
                 "PropertySelector": "Instances.Instance[].Status"
+```
+
+`}` `},` `{`
+
+```json
             "Name": "createSnapshot",
             "Action": "ACS::ExecuteAPI",
+            "Properties": {
                 "Service": "ECS",
                 "API": "CreateSnapshot",
                 "Parameters": {
                     "DiskId": "{{ DiskId }}",
                     "SnapshotName": "{{ SnapshotName }}"
+```
+
+`}` `},`
+
+```json
             "Outputs": {
                 "SnapshotId": {
                     "Type": "String",
                     "ValueSelector": "SnapshotId"
+```
+
+`}` `}` `},` `{`
+
+```json
             "Name": "waitSnapshotsReady",
             "Action": "ACS::WaitFor",
+            "Properties": {
                 "Service": "ECS",
                 "API": "DescribeSnapshots",
                 "DesiredValues": ["accomplished"],
                 "Parameters": {
                     "SnapshotIds": ["{{ createSnapshot.SnapshotId }}"]
+```
+
+`},`
+
+```json
                 "PropertySelector": "Snapshots.Snapshot[].Status"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "Outputs": {
@@ -1159,6 +1433,7 @@ You can configure webhooks to send notifications to clients, such as DingTalk. Y
 ```
   - Name: approvalTask
     Action: ACS::Approve
+    Properties:
       NotifyType: WebHook
       AppendExecutionLink: 'true'  # Append execution link or not . ACS::Approve defaul
 t option is true.
@@ -1189,16 +1464,27 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Tasks": [
       "Name": "approvalTask",
       "Action": "ACS::Approve",
+      "Properties": {
         "NotifyType": "WebHook",
         "AppendExecutionLink": "true",
         "WebHook": {
           "URI": "url",
           "Headers": {
             "Content-Type": "application/json; charset=utf-8"
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content": "the approve notify to user"
+```
+
+`},`
+
+```json
             "at": {
               "atMobiles": [
                 "138albb1234",
@@ -1211,7 +1497,7 @@ JSON format (For more information, see the parameter description for the YAML fo
               "isAtAll": "false"
 ```
 
-`]`
+`}` `}` `}` `}` `}` `]` `}`
 
 **Example**
 
@@ -1262,11 +1548,12 @@ omes.'
       en: The RAM role to be assumed by OOS.
     Type: String
     Default: OOSServiceRole
-RamRole: '{{ OOSAssumeRole }}'
+RamRole: '{{ OOSAssumeRole }}' Tasks:
   - Name: getInstance
     Description:
       en: Views the ECS instances.
     Action: 'ACS::SelectTargets'
+    Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
       Filters:
         - '{{ targets }}'
@@ -1279,6 +1566,7 @@ RamRole: '{{ OOSAssumeRole }}'
         ValueSelector: 'Instances.Instance[].InstanceName'
   - Name: approveRestart
     Action: 'ACS::Approve'
+    Properties:
       NotifyType: WebHook
       WebHook:
         URI: '{{webhookUrl}}'
@@ -1300,6 +1588,7 @@ approve are {{getInstance.instanceNames}}, sent by {{ACS::RegionId}} oos {{ACS::
     Action: 'ACS::ECS::RebootInstance'
     Description:
       en: Restarts the ECS instances.
+    Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
@@ -1310,28 +1599,48 @@ Outputs:
     Value: '{{ getInstance.instanceIds }}'
 ```
 
-JSON format
+JSON format `{`
 
 ```json
   "FormatVersion": "OOS-2019-06-01",
   "Description": {
     "en": "Bulky restarts the ECS instances with Approval.",
     "name-en": "BulkyRebootInstancesWithApproval"
+```
+
+`},`
+
+```json
   "Parameters": {
     "targets": {
       "Type": "Json",
       "AssociationProperty": "Targets",
       "AssociationPropertyMetadata": {
         "ResourceType": "ALIYUN::ECS::Instance"
+```
+
+`}` `},`
+
+```json
     "rateControl": {
       "Description": {
         "en": "Concurrency ratio of task execution."
+```
+
+`},`
+
+```json
       "Type": "Json",
       "AssociationProperty": "RateControl",
       "Default": {
         "Mode": "Concurrency",
         "MaxErrors": 0,
         "Concurrency": "100%"
+```
+
+`}` `},`
+
+```json
     "webHookUrl": {
       "Description": {
         "en": "The webHook url of dingtalk group assistant,
@@ -1345,45 +1654,91 @@ e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414."
       "Description": {
         "en": "The telephone numbers of member in dingtalk group assistant @, when
 notify comes."
+```
+
+`},`
+
+```json
       "Type": "List",
       "Default": [
         "12345678901"
 ```
 
-`]`
+`]` `},`
 
 ```json
     "atAll": {
       "Description": {
         "en": "assistant @ all members in dingtalk group or not, when notify comes."
+```
+
+`},`
+
+```json
       "Type": "String",
       "Default": "false"
+```
+
+`},`
+
+```json
     "OOSAssumeRole": {
       "Description": {
         "en": "The RAM role to be assumed by OOS."
+```
+
+`},`
+
+```json
       "Type": "String",
       "Default": "OOSServiceRole"
+```
+
+`}` `},`
+
+```json
   "RamRole": "{{ OOSAssumeRole }}",
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "getInstance",
       "Description": {
         "en": "Views the ECS instances."
+```
+
+`},`
+
+```json
       "Action": "ACS::SelectTargets",
+      "Properties": {
         "ResourceType": "ALIYUN::ECS::Instance",
         "Filters": [
           "{{ targets }}"
 ```
 
-`]`
+`]` `},`
 
 ```json
       "Outputs": {
         "instanceIds": {
           "Type": "List",
           "ValueSelector": "Instances.Instance[].InstanceId"
+```
+
+`},`
+
+```json
         "instanceNames": {
           "Type": "List",
           "ValueSelector": "Instances.Instance[].InstanceName"
+```
+
+`}` `}` `},` `{`
+
+```json
       "Name": "approveRestart",
       "Action": "ACS::Approve",
         "NotifyType": "WebHook",
@@ -1402,25 +1757,51 @@ yype: eboo
           "URI": "{{webhookUrl}}",
           "Headers": {
             "Content-Type": "application/json"
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content": "Notify: please approve instances restart, instance names to
 approve are {{getInstance.instanceNames}}, sent by {{ACS::RegionId}} oos {{ACS::ExecutionId}}."
+```
+
+`},`
+
+```json
             "at": {
               "atMobiles": "{{atMobiles}}",
               "isAtAll": "{{atAll}}"
+```
+
+`}` `}` `}` `}` `},` `{`
+
+```json
       "Name": "rebootInstance",
       "Action": "ACS::ECS::RebootInstance",
       "Description": {
         "en": "Restarts the ECS instances."
+```
+
+`},`
+
+```json
+      "Properties": {
         "instanceId": "{{ ACS::TaskLoopItem }}"
+```
+
+`},`
+
+```json
       "Loop": {
         "RateControl": "{{ rateControl }}",
         "Items": "{{ getInstance.instanceIds }}"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "Outputs": {
@@ -1428,6 +1809,8 @@ approve are {{getInstance.instanceNames}}, sent by {{ACS::RegionId}} oos {{ACS::
       "Type": "List",
       "Value": "{{ getInstance.instanceIds }}"
 ```
+
+`}` `}` `}`
 
 #### 2.3.2 ACS::Choice
 
@@ -1440,8 +1823,10 @@ The ACS::Choice action can be used to determine the task to be run based on the 
 YAML JSON
 
 ```bash
+Tasks:
 - Name: chooseNextTaskToRun # The name of the task.
   Action: ACS::Choice
+  Properties:
     DefaultTask: task1 # The default task that is run if no condition specified by Choi
 ces is met after the chooseNextTaskToRun task is run. The name of the task1 task cannot be the name of a parameter. It must be a certain string.
     Choices:
@@ -1481,7 +1866,7 @@ Parameters:
       null-null-null
     Type: String
     Default: OOSServiceRole
-RamRole: '{{ OOSAssumeRole }}'
+RamRole: '{{ OOSAssumeRole }}' Tasks:
   - Name: getInstance
     Description:
       en: Views the ECS instances.
@@ -1501,6 +1886,7 @@ nllnllnll
   - Name: describeInstances
     Action: ACS::ExecuteAPI
     Description: Views A ECS instances Status.
+    Properties:
       Service: ECS
       API: DescribeInstances
       Parameters:
@@ -1511,6 +1897,7 @@ nllnllnll
         ValueSelector: Instances.Instance[].Status
   - Name: whetherStatusRunning
     Action: 'ACS::Choice'
+    Properties:
       DefaultTask: describeInstancesFinally
       Choices:
         - When:
@@ -1528,6 +1915,7 @@ nllnllnll
     Description:
       en: Starts the ECS instances.
       null-null-null
+    Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
@@ -1548,6 +1936,7 @@ instanceId:'{{ACS::TaskLoopItem}}'
   - Name: describeInstancesFinally
     Action: ACS::ExecuteAPI
     Description: Views the ECS instances Status.
+    Properties:
       Service: ECS
       API: DescribeInstances
       Parameters:
@@ -1579,6 +1968,7 @@ YAML format
 ```
   - Name: notifyTask
     Action: ACS::Notify
+    Properties:
       NotifyType: WebHook
    AppendExecutionLink: 'false' # Specifies whether to append execution links. Valid va
 lues: true and false. Default value: false.
@@ -1594,25 +1984,36 @@ ed on the requirements for the webhook. For information about the content of the
             content: 'this is a dingtalk message with a parameter {{ p1 }}'
 ```
 
-JSON format For more information, see the parameter description for the YAML format.
+JSON format For more information, see the parameter description for the YAML format. `{`
 
 ```json
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "notifyTask",
       "Action": "ACS::Notify",
+      "Properties": {
         "NotifyType": "WebHook",
         "AppendExecutionLink": "false",
         "WebHook": {
           "URI": "url",
           "Headers": {
             "Content-Type": "application/json; charset=utf-8"
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content": "this is a dingtalk message with a parameter {{ p1 }}"
 ```
 
-`]`
+`}` `}` `}` `}` `}` `]` `}`
 
 **Email**
 
@@ -1621,6 +2022,7 @@ YAML format
 ```
   - Action: ACS::Notify
     Name: testNotifyByMail
+    Properties:
         NotifyType: Mail
         Mail:
          Host: SMTPHostAddress # The Simple Mail Transfer Protocol (SMTP) server addres
@@ -1640,12 +2042,18 @@ usr001@example1.com.
 sr1234@example2.com,usr123@example2.com].
 ```
 
-JSON format For more information, see the parameter description for the YAML format.
+JSON format For more information, see the parameter description for the YAML format. `{`
 
 ```json
   "Tasks": [
+```
+
+`{`
+
+```json
       "Action": "ACS::Notify",
       "Name": "testNotifyByMail",
+      "Properties": {
         "NotifyType": "Mail",
         "Mail": {
           "Host": "SMTPHostAddress",
@@ -1658,7 +2066,7 @@ JSON format For more information, see the parameter description for the YAML for
           "To": "receiverAddresses"
 ```
 
-`]`
+`}` `}` `}` `]` `}`
 
 **Examples**
 
@@ -1686,7 +2094,7 @@ Parameters:
     VSwitchId:
         Description: the virtual switch id for the new instances.
         Type: String
-RamRole: '{{OOSAssumeRole}}'
+RamRole: '{{OOSAssumeRole}}' Tasks:
 -   Action: ACS::ExecuteAPI
     Description: 'run instances with specified parameters, refer them here:
 https://help.aliyun.com/document_detail/63440.html'
@@ -1695,6 +2103,7 @@ https://help.aliyun.com/document_detail/63440.html'
         InstanceIds:
             Type: List
             ValueSelector: .InstanceIdSets.InstanceIdSet[]
+    Properties:
         API: RunInstances
         Parameters:
             ImageId: '{{ ImageId }}'
@@ -1704,6 +2113,7 @@ https://help.aliyun.com/document_detail/63440.html'
         Service: ECS
 -   Action: ACS::Notify
     Name: test_notify
+    Properties:
         NotifyType: WebHook
         WebHook:
             Content:
@@ -1723,25 +2133,60 @@ JSON format
         "InstanceIds": {
             "Type": "List"
             "Value": " {{ runInstances.InstanceIds }} "
+```
+
+`}` `},`
+
+```json
     "Parameters": {
         "ImageId": {
             "Description": "the image id for the new instances.",
             "Type": "String"
+```
+
+`},`
+
+```json
         "InstanceType": {
             "Description": "the Instance Type for the new instances.",
             "Type": "String"
+```
+
+`},`
+
+```json
         "SecurityGroupId": {
             "Description": "the security group id for the new instances.",
             "Type": "String"
+```
+
+`},`
+
+```json
         "VSwitchId": {
             "Description": "the virtual switch id for the new instances.",
             "Type": "String"
+```
+
+`},`
+
+```json
           "OOSAssumeRole": {
         "Type": "String",
         "Description":  "oos assume this role to execution task",
         "Default": "OOSServiceRole"
+```
+
+`}` `},`
+
+```json
     "RamRole": "{{OOSAssumeRole}}",
     "Tasks": [
+```
+
+`{`
+
+```json
             "Action": "ACS::ExecuteAPI",
             "Description": "run instances with specified parameters, refer them here:
 https://help.aliyun.com/document_detail/63440.html",
@@ -1750,6 +2195,12 @@ https://help.aliyun.com/document_detail/63440.html",
                 "InstanceIds": {
                     "Type": "List",
                     "ValueSelector": ".InstanceIdSets.InstanceIdSet[]"
+```
+
+`}` `},`
+
+```json
+            "Properties": {
                 "API": "RunInstances",
                 "Parameters": {
                     "ImageId": "{{ ImageId }}",
@@ -1763,18 +2214,24 @@ https://help.aliyun.com/document_detail/63440.html",
                 "Service": "ECS"
       "Name": "test_notify",
       "Action": "ACS::Notify",
+      "Properties": {
         "NotifyType": "WebHook",
         "WebHook": {
           "URI": "https://oapi.dingtalk.com/robot/send?access_token=your_access_token",
           "Headers": {
             "Content-Type": "application/json"
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content":"test"
 ```
 
-`]`
+`}` `}` `}` `}` `}` `]` `}`
 
 #### 2.3.4 ACS::Sleep
 
@@ -1787,8 +2244,10 @@ The ACS::Sleep action can be used if waiting is required during O&M. For example
 YAML format
 
 ```
+Tasks:
   - Name: sleepTask # The name of the task.
     Action: ACS::Sleep
+    Properties:
       Duration: PT15M # Required. The waiting duration.
 ```
 
@@ -1798,10 +2257,11 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Tasks": [
       "Name": "sleepTask",
       "Action": "ACS::Sleep",
+      "Properties": {
         "Duration": "PT15M"
 ```
 
-`]`
+`}` `}` `]` `}`
 
 **Description**
 
@@ -1822,40 +2282,55 @@ The ACS::Template action can be used to embed another template to the current te
 General format (applicable to all embedded templates) YAML format
 
 ```
+Tasks:
 - Name: callChildTemplate1
-Action: ACS::Template TemplateName: child_template_name # Required. The name of the child template. Parameters: # Optional. The parameters required for executing the child template.
+Action: ACS::Template Properties: TemplateName: child_template_name # Required. The name of the child template. Parameters: # Optional. The parameters required for executing the child template.
   ParameterName1: value1
 ```
 
 JSON format (For more information, see the parameter description for the YAML format.)
 
 ```json
-"Tasks": [ "Name": "callChildTemplate1", "Action": "ACS::Template",
+"Tasks": [
+```
+
+`{`
+
+```json
+"Name": "callChildTemplate1", "Action": "ACS::Template", "Properties": {
   "TemplateName": "child_template_name",
   "Parameters": {
     "ParameterName1": "value1"
 ```
 
-`]` Simplified format (only applicable to the cloud product actions) YAML format
+`}` `}` `}` `]` `}` Simplified format (only applicable to the cloud product actions) YAML format
 
 ```
+Tasks:
 - Name: taskName # Required. The name of the task. Example: runMyInstances.
   Action: CloudProductActionName1 # Required. The name of the cloud product action.
 Example: ACS::ECS::RunInstances.
+  Properties:
     ParameterName1: value1 # Optional. The parameter required for executing the clo
 ud production action. Example: ImageId.
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
 "Tasks": [
+```
+
+`{`
+
+```json
     "Name": "taskName",
     "Action": "CloudProductActionName1",
+    "Properties": {
       "ParameterName1": "parameterName1"
 ```
 
-`]`
+`}` `}` `]` `}`
 
 **Restrictions**
 
@@ -1880,10 +2355,11 @@ The following template is used to create an image for an ECS instance by embeddi
     Type: String
     Description: oos assume this role to execution task
     Default: OOSServiceRole
-RamRole: '{{OOSAssumeRole}}'
+RamRole: '{{OOSAssumeRole}}' Tasks:
 - Name: createImage
   Action: ACS::Template
   Description: Creates a custom image.
+  Properties:
     TemplateName: 'ACS::ECS::CreateImage'
     Parameters:
       ImageName: '{{ imageName }}'
@@ -1907,32 +2383,58 @@ JSON format
         "imageName": {
             "Description": "The image name.",
             "Type": "String"
+```
+
+`},`
+
+```json
         "instanceId": {
             "Description": "The ID of the instance.",
             "Type": "String",
             "AllowedPattern": "i-[A-Za-z0-9]*",
             "MinLength": 1,
             "MaxLength": 30
+```
+
+`},`
+
+```json
         "OOSAssumeRole": {
             "Type": "String",
             "Description": "oos assume this role to execution task",
             "Default": "OOSServiceRole"
+```
+
+`}` `},`
+
+```json
     "RamRole": "{{OOSAssumeRole}}",
     "Tasks": [
+```
+
+`{`
+
+```json
             "Name": "createImage",
             "Action": "ACS::Template",
             "Description": "Creates a custom image.",
+            "Properties": {
                 "TemplateName": "ACS::ECS::CreateImage",
                 "Parameters": {
                     "ImageName": "{{ imageName }}",
                     "InstanceId": "{{ instanceId }}"
+```
+
+`}` `},`
+
+```json
             "Outputs": {
                 "imageId": {
                     "Type": "String",
                     "ValueSelector": "ImageId"
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
     "Outputs": {
@@ -1941,7 +2443,7 @@ JSON format
             "Value": "{{ createImage.imageId }}"
 ```
 
-Simplified format (only applicable to the cloud product actions) YAML format
+`}` `}` `}` Simplified format (only applicable to the cloud product actions) YAML format
 
 ```
 --- FormatVersion: OOS-2019-06-01 Description: Creates a new Image from existing ECS Instance. Parameters:
@@ -1955,9 +2457,10 @@ Simplified format (only applicable to the cloud product actions) YAML format
     Type: String
     Description: oos assume this role to execution task
     Default: OOSServiceRole
-RamRole: "{{OOSAssumeRole}}"
+RamRole: "{{OOSAssumeRole}}" Tasks:
   - Name: createImage
     Action: ACS::ECS::CreateImage
+    Properties:
       ImageName: "{{ ImageName }}"
       InstanceId: "{{ InstanceId }}"
     Outputs:
@@ -1979,26 +2482,52 @@ JSON format
     "InstanceId": {
       "Description": "the Instance Type for the new instances",
       "Type": "String"
+```
+
+`},`
+
+```json
     "ImageName": {
       "Description": "name of the new image",
       "Type": "String"
+```
+
+`},`
+
+```json
     "OOSAssumeRole": {
       "Type": "String",
       "Description": "oos assume this role to execution task",
       "Default": "OOSServiceRole"
+```
+
+`}` `},`
+
+```json
   "RamRole": "{{OOSAssumeRole}}",
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "createImage",
       "Action": "ACS::ECS::CreateImage",
+      "Properties": {
         "ImageName": "{{ ImageName }}",
         "InstanceId": "{{ InstanceId }}"
+```
+
+`},`
+
+```json
       "Outputs": {
         "ImageId": {
           "ValueSelector": "ImageId",
           "Type": "String"
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "Outputs": {
@@ -2007,7 +2536,7 @@ JSON format
       "Value": "{{ createImage.ImageId }}"
 ```
 
-actions
+`}` `}` `}` actions
 
 ## 3 Cloud product actions
 

@@ -5,7 +5,7 @@ doc_version: "20250102"
 pdf_pages: 28
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara File Storage NAS Operations and Maintenance Guide 20250102.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20File%20Storage%20NAS%20Operations%20and%20Maintenance%20Guide%2020250102.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara File Storage NAS Operations and Maintenance Guide 20250102
@@ -59,6 +59,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment engineer or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: ops.asconsole.intranet-domain-id.com. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -78,7 +81,11 @@ On the User Data page, you can view the details of user data and file systems.
 
 **Basic information management**
 
-You can view the list of users and the list of file systems. Perform the following steps: View the list of users i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > NAS Storage** iii. In the left-side navigation pane, choose **User Data > Basic Information > Users**. To view the data of a specific user in the list, click **Overview** in the Actions column. View the list of file systems i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > NAS Storage** iii. In the left-side navigation pane, choose **User Data > Basic Information > File**
+You can view the list of users and the list of file systems. Perform the following steps: View the list of users i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
+iii. In the left-side navigation pane, choose **User Data > Basic Information > Users**. To view the data of a specific user in the list, click **Overview** in the Actions column. View the list of file systems i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
+iii. In the left-side navigation pane, choose **User Data > Basic Information > File**
 **System List**.
 To view the details of a file system in the list, click the ID of the file system.
 
@@ -99,6 +106,7 @@ In the Cluster Management section, you can view the region information and clust
 You can view the region information by performing the following steps:
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **Cluster Management > Region Information**
 **Management**.
 4. On the **Region Information Management** page, view the region information.
@@ -110,6 +118,7 @@ You can view the region information by performing the following steps:
 You can view the details of each cluster, including the region, cluster name, cluster environment, nuwa address, and AG address. Perform the following steps:
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **Cluster Management > Cluster Information**
 **Management**.
 4. On the **Cluster Information** page, click the cluster name. In the **Cluster Details** dialog
@@ -139,6 +148,7 @@ Configure the following filter conditions: **Region**, **Network Type**, **Categ
 The system provides built-in inspection tasks. You can switch task status, query task details, edit task configurations, delete existing tasks, and immediately execute tasks. This helps you better understand the inspection status and ensure operational security.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **Monitoring Center > Inspection**
 **Configurations**.
 4. On the **Inspection Tasks** page, select a search type, enter a task category, set the **Type**
@@ -157,6 +167,7 @@ Delete a task If a task is in the **Disabled** state, click **Delete** in the **
 You can query the inspection results of a task in the Data Cube console, including the type, start time, end time, status, and logs of the task. This helps you better understand the inspection results and ensure the normal operation of your business.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **Monitoring Center > Inspection History**.
 4. On the **Inspection Results** page, select a task type, search method, and time range, and
 then click **Search**. You can turn off **Show All Tasks** or turn on **Show Abnormal Tasks** to view only abnormal tasks. After the configuration is complete, you can view the historical results of the specified task type, including the name, type, start time, end time, and status of the task. You can also perform the following operations based on your business requirements: View all details of a task Find the task that you want to view and click **View All** in the **Actions** column to view all details of the task, including the inspection results and alert information. View the details of an abnormal task Find the abnormal task that you want to view and click **View Exceptions** in the **Actions** column. On the View Exceptions page, you can view the details of the task, such as the inspection results and alert information. View the logs of a task Find the task that you want to view and click **View All** or **View Exceptions** in the
@@ -180,8 +191,12 @@ After you select a workflow type, select a cluster, scheduled execution type, ex
 ###### 2.6.1.1.1 Scale out a cluster
 
 This topic describes how to add servers of a service role to a cluster to scale out the cluster.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **O&M Support > Workflow Management >**
 **Workflow Release Order**.
 4. On the **Create Task** tab, select the name of the scale-out workflow from the **Workflow**
@@ -226,6 +241,7 @@ The scale-out workflow is successful.
 This topic describes how to remove servers of a service role from a cluster to scale in the cluster.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **O&M Support > Workflow Management >**
 **Workflow Release Order**.
 4. On the **Create Task** tab, select the name of the scale-in workflow from the **Workflow**
@@ -264,8 +280,12 @@ The scale-in workflow is successful.
 ###### 2.6.1.1.3 Shut down a server
 
 This topic describes how to shut down an abnormal server of a service role in a cluster.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **O&M Support > Workflow Management >**
 **Workflow Release Order**.
 4. On the **Create Task** tab, select **Remove Machine** from the **Workflow Name** drop-down
@@ -299,6 +319,7 @@ The server shutdown workflow is successful.
 You can view the list of workflow instances in the Data Cube console and manage the workflow instances based on your business requirements. For example, you can fix failed instances and remove obsolete instances. This helps you allocate resources and improve the automation level of your business.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **O&M Support > Workflow Management >**
 **Workflow Instances**.
 4. Select **Workflow Instance ID** or **Operator**, enter the content, and then click **Search**.
@@ -309,6 +330,7 @@ Click the icon to perform further filtering. After the search scope is configure
 You can view workflow definitions in the Data Cube console, including the activity steps of each workflow category, so that you can better manage workflows.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **O&M Support > Workflow Management >**
 **Workflow Definitions**.
 On the **Workflow Definitions** page, you can view the activity steps of each workflow category.
@@ -333,6 +355,7 @@ On the Business Overview page, you can view business data by region and time. On
 You can view various business data by region and time, including the storage volume, storage volume by type, storage volume by protocol, and number of file systems. Perform the following steps:
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **NAS Dashboard > Business Overview**.
 4. On the **Business Data Overview** page, select a region and a time range, and then click
 **View**.
@@ -366,6 +389,7 @@ On the Background Audit page, you can view the operation logs of the management 
 The audit logs record the modifications made by users to the system. During security maintenance, you can filter the audit logs by using different keywords to quickly locate and handle security issues in a timely manner.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **Background Audit > Operation Logs**.
 4. On the **Operation Logs** page, select a time range and click **Search**.
 You can also click the check box next to **Add Filter Condition** and select **Operator**, **IP**,
@@ -379,6 +403,7 @@ On the Platform Access Reports page, you can view the following information: **U
 **Access UV**. You can perform the following steps to query data based on a time range:
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation > Storage > NAS Storage**
+**Operations and Maintenance System**.
 3. In the left-side navigation pane, choose **Background Audit > Platform Access Reports**.
 4. On the **Platform Access Reports** page, select a time range and click **Search**.
 You can view the following information: **User Access Details**, **Percentage of All**
@@ -391,6 +416,9 @@ You can view the following information: **User Access Details**, **Percentage of
 **service**
 
 This topic describes how to check whether the KV service of a File Storage NAS (NAS) cluster is normal.
+
+**Procedure**
+
 1. Find the RecycleJob role in the nas-recycle service of the cluster and log on to the target
 machine.
 2. Use the kuadmin tool to view the NAS app service added to the KV service.
@@ -427,6 +455,8 @@ Sample response
 ### 3.2 Query the information about file systems and users
 
 **file systems and users**
+
+**Procedure**
 
 1. Find the RecycleJob role in the nas-recycle service of your cluster and log on to the target
 machine.
@@ -578,6 +608,8 @@ Sample response
 
 **of a NAS cluster**
 
+**Procedure**
+
 1. Find the RecycleJob role in the nas-recycle service of the cluster and view the logs of the KV
 service. After you use the ku and kuadmin tools to determine whether the KV service is abnormal, you can view the corresponding ku.LOG and kuadmin.LOG in the /apsara/deploy/log directory to obtain the error message.
 2. Log on to the OcmServer machine to view the ocm logs.
@@ -606,7 +638,11 @@ vim /cloud/log/nas-kvengine/KVServer#/kv_server/ganesha.LOG
 
 ### 3.5 Set the disk usage limit
 
-By setting the disk usage limit, you can control the total amount of data written to disks. When the data write volume reaches the limit, the system denies data writing. When the data write volume drops below the limit, the system resumes data writing. To set the disk usage limit, perform the following steps:
+By setting the disk usage limit, you can control the total amount of data written to disks. When the data write volume reaches the limit, the system denies data writing. When the data write volume drops below the limit, the system resumes data writing.
+
+**Procedure**
+
+To set the disk usage limit, perform the following steps:
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**.

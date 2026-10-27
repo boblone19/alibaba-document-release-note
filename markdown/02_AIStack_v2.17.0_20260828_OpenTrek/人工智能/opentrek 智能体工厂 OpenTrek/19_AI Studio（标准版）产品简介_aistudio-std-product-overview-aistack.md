@@ -5,16 +5,24 @@ doc_version: "20260902"
 pdf_pages: 8
 source_pdf: "19_AI Studio（标准版）产品简介_aistudio-std-product-overview-aistack.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/ai_stack/v_2_17_0_20260828/opentrek/zh/aistudio-std-product-overview-aistack.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 智能体工厂 OpenTrek AI Studio（标准版）产品简介
 
-智能体工厂 OpenTrek
+## 目录
 
-## AI Studio产品简介
+- 1 AI Studio产品简介
+  - 1.1 什么是AI Studio
+  - 1.2 产品详情
+  - 1.3 产品优势
+  - 1.4 应用场景
+  - 1.5 功能特性
+  - 1.6 基本概念
 
-### 什么是AI Studio
+## 1 AI Studio产品简介
+
+### 1.1 什么是AI Studio
 
 AI Studio是为企业级AI应用开发者提供大模型训练、调优、推理部署及算力管理的一站式AI开发与运维平台。 随着大语言模型技术的快速发展，企业面临从模型训练到推理部署的全链路工程化挑战。传统模式下，数据准备、模型训练、调优和部署分散在不同工具链中，开发者需要在多个平台间切换，环境配置和资源管理成本高。同时，异构算力（如NVIDIA GPU、华为昇腾NPU）的统一调度和管理缺乏有效手段，训练任务的容错性和弹性伸缩能力不足，模型推理服务的高性能部署和运维监控也存在技术门槛。AI Studio旨在解决上述问题，为企业提供从算力纳管到模型服务的端到端AI开发能力。 AI Studio是OpenTrek平台面向AI场景的核心产品，在功能架构上从下至上分为AI资源池及调度、AI资产管理、数据管理、模型训练、模型服务五大模块。AI资源池及调度层集中纳管NVIDIA A100/H20/H200、 华为昇腾910B等异构算力资源，通过资源组进行算力分配与管理，提供拓扑感知调度、任务优先级抢占调度等智能调度策略。AI资产管理层提供镜像库、代码集、训推套件等资产管理能力，内置TensorFlow、 PyTorch、Megatron、vLLM、SGLang等主流算法框架支持。数据管理层支持数据集生命周期管理与版本管理。模型训练层提供可视化建模、Notebook建模、任务建模三种训练方式，支持单机及多机多卡分布式训练，兼容PyTorch、TensorFlow、DeepSpeed、Megatron等主流训练框架，并提供SFT微调、RL强化学习（PPO、DPO、GRPO）调优能力及Agentic RL智能体训练能力。模型服务层支持模型在线服务部署，提供P/D分离、EP并行、分布式推理等高性能推理能力，以及智能路由、灰度发布、弹性伸缩等服务治理能力。
 **异构算力统一调度**：集中纳管NVIDIA和华为昇腾等多种算力资源，支持拓扑感知调度和弹性节点调度。
@@ -26,7 +34,7 @@ AI Studio是为企业级AI应用开发者提供大模型训练、调优、推理
 布。
 **Agentic RL****训练**：支持智能体场景下的模型逻辑推理和工具调用训练，提供完整训练Pipeline。
 
-### 产品详情
+### 1.2 产品详情
 
 OpenTrek AI Studio在功能架构上从下至上分为AI资源、模型开发训练、模型调优、模型服务四层：
 **AI****资源层：**通过资源组对算力资源进行分配及管理，供上层推理及训练等模型任务调度使用。
@@ -36,7 +44,7 @@ OpenTrek AI Studio在功能架构上从下至上分为AI资源、模型开发训
 **模型服务层：**支持模型在线服务，并支持对模型服务性能的实时监控，利用资源伸缩配置来及时保障对外
 服务稳定性。
 
-### 产品优势
+### 1.3 产品优势
 
 本文介绍OpenTrek AI Studio产品的产品优势。
 
@@ -46,7 +54,7 @@ OpenTrek AI Studio在功能架构上从下至上分为AI资源、模型开发训
 
 **全流程体系化模型训练能力**
 
-智能体工厂 OpenTrek 通过单机及分布式训练场景为用户提供一体化模型开发、训练监控、训练模型上架等全流程模型训练体系能力。
+通过单机及分布式训练场景为用户提供一体化模型开发、训练监控、训练模型上架等全流程模型训练体系能力。
 
 **高可用**
 
@@ -84,7 +92,7 @@ OpenTrek AI Studio在功能架构上从下至上分为AI资源、模型开发训
 
 提供Agentic RL训练Pipeline，支持智能体场景下的模型逻辑推理和工具调用训练，帮助用户构建具备复杂推理能力的智能体模型。
 
-### 应用场景
+### 1.4 应用场景
 
 AI Studio适用于大模型训练与部署、智能体开发、企业AI平台建设等多种AI应用场景。
 
@@ -94,7 +102,7 @@ AI Studio适用于大模型训练与部署、智能体开发、企业AI平台建
 
 **大规模分布式模型训练**
 
-企业需要训练百亿参数以上的大语言模型时，AI Studio提供多机多卡分布式训练能力，支持PyTorch、 TensorFlow、DeepSpeed、Megatron等主流训练框架。通过自动容错策略、弹性策略和CheckPoint断点续训保障训练稳定性，任务故障诊断能力从算力层到任务层进行一体化分析，帮助快速定位和修复问题。 适用于大语言模型预训练、行业模型训练等场景。 智能体工厂 OpenTrek
+企业需要训练百亿参数以上的大语言模型时，AI Studio提供多机多卡分布式训练能力，支持PyTorch、 TensorFlow、DeepSpeed、Megatron等主流训练框架。通过自动容错策略、弹性策略和CheckPoint断点续训保障训练稳定性，任务故障诊断能力从算力层到任务层进行一体化分析，帮助快速定位和修复问题。 适用于大语言模型预训练、行业模型训练等场景。
 
 **模型微调与强化学习调优**
 
@@ -112,11 +120,11 @@ AI Studio适用于大模型训练与部署、智能体开发、企业AI平台建
 
 企业同时拥有NVIDIA GPU和华为昇腾NPU等多种算力资源时，AI Studio提供统一的资源池管理能力，通过资源组机制进行算力分配，支持独享与共享资源组灵活配置。拓扑感知调度和优先级抢占调度策略保障高优业务优先获得算力。适用于多厂商算力混部、部门间算力共享等场景。
 
-### 功能特性
+### 1.5 功能特性
 
 本文介绍Opentrek AI Studio的功能特性。
 
-### 基本概念
+### 1.6 基本概念
 
 本文主要对AI Studio涉及的专有名词及术语进行定义和解析，方便您更好地理解相关概念并使用AI Studio。
 
@@ -130,7 +138,7 @@ P/D分离：将Prefill和Decode阶段分别进行资源配置。 EP并行：针�
 
 **训练与调优术语**
 
-Agentic RL：智能体强化学习训练。 SFT微调：监督微调。 LoRA微调：低秩适配微调方法。 PPO：近端策略优化。 智能体工厂 OpenTrek DPO：直接偏好优化。 GRPO：分组相对策略优化。 CheckPoint：训练过程中的模型状态保存点。
+Agentic RL：智能体强化学习训练。 SFT微调：监督微调。 LoRA微调：低秩适配微调方法。 PPO：近端策略优化。 DPO：直接偏好优化。 GRPO：分组相对策略优化。 CheckPoint：训练过程中的模型状态保存点。
 
 **其他术语**
 

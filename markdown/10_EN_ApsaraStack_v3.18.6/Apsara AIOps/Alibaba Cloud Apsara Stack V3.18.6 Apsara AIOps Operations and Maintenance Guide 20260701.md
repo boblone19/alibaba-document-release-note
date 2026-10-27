@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 22
 source_pdf: "8eb32685fdfd3230_Alibaba Cloud Apsara Stack V3.18.6 Apsara AIOps Operations and Maintenance Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%BB%B4%E5%B0%8F%E6%99%BA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20AIOps%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara AIOps Operations and Maintenance Guide 20260701

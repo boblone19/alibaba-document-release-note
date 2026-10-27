@@ -5,7 +5,7 @@ doc_version: "20220913"
 pdf_pages: 103
 source_pdf: "0cacde80a3bdd093_Alibaba Cloud Apsara Stack Enterprise v3.16.2 VPN Gateway Developer Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20VPN%20Gateway%20Developer%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 VPN Gateway Developer Guide
@@ -194,7 +194,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 2. Obtain the STS AccessKey 3-tuple.
 Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with your RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
-```java
+```
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -212,6 +212,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "<sts.aliyuns.com>" with the STS endpoint. The general format is sts-vpc.${global:region}.${global:internet-domain}.
@@ -234,9 +239,15 @@ private static String callAssumeRole(IAcsClient client) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample code provides an example on how to call the
 `DescribeCustomerGateway` operation of VPN Gateway. Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
 
@@ -277,6 +288,8 @@ evious step.
         System.out.println(e.getErrMsg());
 ```
 
+`}` `}`
+
 ### 2.5 Obtain the values of common header parameters
 
 You must set header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the return values of some parameters after you call API operations. Header parameters
@@ -299,7 +312,7 @@ Obtain an organization ID You must call an API operation to obtain an organizati
 2. In the top navigation bar, choose Product s > Net working > Virt ual Privat e Cloud.
 3. In the left-side navigation pane, choose VPN > VPN Gat eways.
 4. View t he IDs and names of VPN gateways on the VPN gat eway page.
-The following response parameters are returned by default when you call API operations to query the instances of cloud services.
+Response parameters The following response parameters are returned by default when you call API operations to query the instances of cloud services.
 
 | Paramet er | Descript ion |
 |---|---|
@@ -410,6 +423,8 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 3.2 Use SDK
 
 #### 3.2.1 Install VPC SDK for Java
@@ -486,11 +501,18 @@ DescribeCustomerGatewayRequest request = new DescribeCustomerGatewayRequest(); /
 DescribeCustomerGatewayResponse response; try {
     DescribeCustomerGatewayResponse response = client.getAcsResponse(request);
         System.out.println(new Gson().toJson(response));
+```
+
+`}`
+
+```
  catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
 ```
+
+`}`
 
 | In normal cases, all returned fields are deserialized into the response. You can directly use | response.getXXX() | to obtain the response fields. |
 |---|---|---|
@@ -530,6 +552,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 #### 3.2.6 Use CommonRequest to call API operations
 
@@ -592,7 +616,7 @@ want to delete, modify, or query an instance.
             e.printStackTrace();
 ```
 
-SDK for Python
+`}` `}` `}` SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -830,6 +854,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create a request and set the required parameters.
     request := vpc.CreateDescribeCustomerGatewaysRequest()
     // Specify the endpoint of the service.
@@ -841,9 +870,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -918,7 +953,7 @@ response,err := vpcClient.DescribeCustomerGateways(request) if err != nil {
    err.Error()
 ```
 
-ClientError When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain the error message in a `ClientError` of VPN Gateway: SDK for Go Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+`}` ClientError When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain the error message in a `ClientError` of VPN Gateway: SDK for Go Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -941,7 +976,7 @@ response, err := vpcClient.DescribeCustomerGateways(request) if clientError, ok 
     clientError.OriginError()
 ```
 
-ServerError When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain the error message in a server error and a response of VPN Gateway: Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+`}` ServerError When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain the error message in a server error and a response of VPN Gateway: Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -964,6 +999,8 @@ response, err := vpcClient.DescribeCustomerGateways(request) if serverError, ok 
     response.GetOriginHttpResponse()
 ```
 
+`}`
+
 #### 5.2.5 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following code shows how to obtain information about customer gateways by calling the DescribeCustomerGateways operation of VPN Gateway: Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ecs.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
@@ -985,6 +1022,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace the parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<vpc.aliyuncs.com>" // Replace the parameter with the endpoint of the service.
@@ -1018,8 +1060,15 @@ y, delete, or query an instance.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 6 API reference
 
@@ -1203,9 +1252,9 @@ Common parameters include common request parameters and common response paramete
 | SignatureVersion | String | Yes | The version of the signature encryption algorithm. Set the value to 1.0 |
 | SignatureNonce | String | Yes | A unique random number that is used to prevent replay attacks. You must use a unique random number for each request. |
 
-Common response parameters API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in the JSON or XML format. The default response format is JSON. You can specify the response format when you call an operation. Every response returns a unique RequestId regardless of whether the call is successful.
+Common response parameters API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in the JSON or XML format. The default response format is JSON. You can specify the response format when you call an operation. Every response returns a unique RequestId regardless of whether the call is successful. XML format
 
-```json
+```xml
 <?xml version="1.0" encoding="utf-8"?>
     <!--Result root node-->
     <Operation name + Response>
@@ -1213,15 +1262,22 @@ Common response parameters API responses use the HTTP response format where a 2x
         <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
         <!--Returned data-->
     </Operation name + Response>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
     /*Returned data*/
 ```
+
+`}`
 
 ### 6.3 VPN gateway
 
 #### 6.3.1 CreateVpnGateway
 
-Creates a VPN gateway.
+Creates a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1234,6 +1290,8 @@ Creates a VPN gateway.
 | Name | String | No | MYVPN | The name of the VPN gateway. The default value is the ID of the VPN gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter, and cannot start with http:// or https:// . |
 | SslConnections | Integer | No | 5 | The maximum number of concurrent connections. Valid values: 5, 10, and 20. |
 | VSwitchId | String | No | vsw-bp1j5miw2bae9s2vt**** | The ID of the vSwitch to which the VPN gateway belongs. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1255,7 +1313,7 @@ http(s)://vpc.example.com/?Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-qin
 
 #### 6.3.2 ModifyVpnGatewayAttribute
 
-Modifies the name and description of a VPN gateway.
+Modifies the name and description of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1265,6 +1323,8 @@ Modifies the name and description of a VPN gateway.
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | Description | String | No | vpngateway | The description of the VPN gateway. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with http:// or https:// . |
 | Name | String | No | myvpn | The name of the VPN gateway. The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter, and cannot start with http:// or https:// . |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1287,11 +1347,13 @@ Modifies the name and description of a VPN gateway.
 | IntranetIp | String | 172.XX.XX.104 | The private IP address of the VPN gateway. |
 | RequestId | String | 54B48E3D-DF70-471B-AA93- 08E683A1B457 | The ID of the request. |
 
+Examples Sample requests
+
 ```
-https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
+https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
 ```
 
-`&<`公共请求参数`>`
+`&<`公共请求参数`>` Sample success responses
 
 | XML | format |
 |---|---|
@@ -1303,7 +1365,7 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &VpnGatewayId=vpn-bp1q
 
 #### 6.3.3 DescribeVpnGateways
 
-Queries VPN gateways.
+Queries VPN gateways. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1321,6 +1383,8 @@ Queries VPN gateways.
 | BusinessStatus | String | No | Normal | The payment status of the VPN gateway. Valid values: Normal: The VPN gateway does not have overdue payments and is running as expected. FinancialLocked: The VPN gateway is locked due to overdue payments. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1353,9 +1417,13 @@ Queries VPN gateways.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | DF11D6F6-E35A-41C3-9B20- 6FC8A901FE65 | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVpnGateways
+http(s)://[Endpoint]/?Action=DescribeVpnGateways &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1364,6 +1432,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateways
 | JSON | format |
 |---|---|
 | { "PageNumber": 1, "TotalCount": 1, "VpnGateways": { "VpnGateway": [ { "Status": "active", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "BusinessStatus": "Normal", "Spec": "5M", "CreateTime": 1492753580000, "InternetIp": "116.XX.XX.69", "EndTime": 1495382400000, "VSwitchId": "vsw-bp1y9ovl1cu9ou4tv****", "VpcId": "vpc-bp1ub1yt9cvakoelj****" } ] }, "PageSize": 10, "RequestId": "B2CD1315-CA2B-47B1-9DA5-8F1D69C48E82" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1379,6 +1449,8 @@ Queries the details of a specified VPN gateway.
 | Action | String | Yes | DescribeVpnGateway | The operation that you want to perform. Set the value to DescribeVpnGat eway. |
 | RegionId | String | Yes | cn-qingdao-env66-d01 | The ID of the region where the VPN gateway is created. You can call the DescribeRegions operation to query the most recent region list. |
 | VpnGatewayId | String | Yes | vpn-bp1q8bgx4xnkm2ogj**** | The ID of the VPN gateway. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1406,9 +1478,13 @@ Queries the details of a specified VPN gateway.
 |---|---|---|---|
 | Tag | String | tag1 | The tag of the VPN gateway. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
+http(s)://[Endpoint]/?Action=DescribeVpnGateway &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1418,6 +1494,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2
 |---|---|
 | { "Status": "active", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "BusinessStatus": "Normal", "Spec": "5M", "CreateTime": 1492753580000, "RequestId": "E98A9651-7098-40C7-8F85-C818D1EBBA85", "InternetIp": "116.XX.XX.222", "EndTime": 1495382400000, "VSwitchId": "vsw-bp1y9ovl1cu9ou4tv****", "VpcId": "vpc-bp1ub1yt9cvakoelj****" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -1426,7 +1504,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2
 
 #### 6.3.5 DeleteVpnGateway
 
-Deletes a specified VPN gateway. Not e You cannot delete a VPN gateway that is associated with an IPsec-VPN connection.
+Deletes a specified VPN gateway. Not e You cannot delete a VPN gateway that is associated with an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1438,13 +1516,19 @@ Deletes a specified VPN gateway. Not e You cannot delete a VPN gateway that is a
 | VpnGatewayId | String | Yes | vpn-bp1q8bgx4xnkm2ogj**** | The ID of the VPN gateway. |
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23-88ED- E11ED28DCAC0 | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj****
+http(s)://[Endpoint]/?Action=DeleteVpnGateway &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1453,6 +1537,8 @@ http(s)://[Endpoint]/?Action=DeleteVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2og
 | JSON | format |
 |---|---|
 | { "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1473,6 +1559,8 @@ Queries the most recent region list.
 | ProductType | String | No | ECS | The type of the cloud service. |
 | AcceptLanguage | String | No | zh-CN | The language of the response. Valid values: zh-CN: Chinese. This is the default value. en-US: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Regions | Array of Region |   | The list of regions. |
@@ -1482,9 +1570,13 @@ Queries the most recent region list.
 | RegionId | String | cn-qingdao-env17-d01 | The ID of the region. |
 | RequestId | String | 611CB80C-B6A9-43DB-9E38- 0B0AC3D9B58F | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeRegions
+http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1498,7 +1590,7 @@ http(s)://[Endpoint]/?Action=DescribeRegions
 
 #### 6.4.1 CreateCustomerGateway
 
-Creates a customer gateway.
+Creates a customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1515,6 +1607,8 @@ Creates a customer gateway.
 | Name | String | No | Gateway | The name of the customer gateway. The name must be 2 to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. However, the name cannot start with http:// or https:// . |
 | Description | String | No | Gateway | The description of the customer gateway. The description must be 2 to 256 characters in length, and contain digits, hyphens (-), underscores (_), full width periods (。), full width commas (，), and full width colons (：). The description cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CustomerGatewayId | String | cgw-bp1aw0a5nfff03xp1**** | The ID of the customer gateway. |
@@ -1524,9 +1618,13 @@ Creates a customer gateway.
 | CreateTime | Long | 1493363486000 | The timestamp generated when the customer gateway was created. |
 | RequestId | String | cgw-bp1aw0a5nfff03xp1pcqc | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222
+http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222 &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1548,7 +1646,7 @@ http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222
 
 #### 6.4.2 ModifyCustomerGatewayAttribute
 
-Modifies the name and description of a customer gateway.
+Modifies the name and description of a customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1558,6 +1656,8 @@ Modifies the name and description of a customer gateway.
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | Name | String | No | test | The name of the customer gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter. It cannot start with http:// or https:// . |
 | Description | String | No | test | The description of the customer gateway. The description must be 2 to 256 characters in length and can contain digits, hyphens (-), underscores (_), periods (.), commas (,), and colons (:). The description must start with a letter, and cannot start with http:// or https:// . |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1574,9 +1674,13 @@ Modifies the name and description of a customer gateway.
 | CreateTime | Long | 1492747187000 | The timestamp generated when the customer gateway was created. |
 | RequestId | String | E61293C8-AF07-4E87-A272- 542680038F93 | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj****
+http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj**** &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1585,6 +1689,8 @@ http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=v
 | JSON | format |
 |---|---|
 | { "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****", "RequestId": "8AA5CE21-2E6A-4530-BDF5-F055849476E6", "CreateTime": 1492747187000, "IpAddress": "139.XX.XX.55", "Description": "modify" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1596,7 +1702,7 @@ http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=v
 
 #### 6.4.3 DescribeCustomerGateways
 
-Queries customer gateways in a specified region.
+Queries customer gateways in a specified region. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1608,6 +1714,8 @@ Queries customer gateways in a specified region.
 | CustomerGatewayId | String | No | cgw-bp1pvpl9r9adju6l5**** | The ID of the customer gateway. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1623,9 +1731,13 @@ Queries customer gateways in a specified region.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeCustomerGateways
+http(s)://[Endpoint]/?Action=DescribeCustomerGateways &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1638,13 +1750,18 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateways
     "RequestId": "E82612A9-CB90-4D7E-B394-1DB7F6509B29",
     "CustomerGateways": {
         "CustomerGateway": [
+```
+
+`{`
+
+```json
                 "Name": "test",
                 "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****",
                 "CreateTime": 1492747187000,
                 "IpAddress": "139.XX.XX.55"
 ```
 
-`]`
+`}` `]` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1653,13 +1770,15 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateways
 
 #### 6.4.4 DescribeCustomerGateway
 
-Queries details of a specified customer gateway.
+Queries details of a specified customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeCustomerGateway | The operation that you want to perform. Set the value to DescribeCust omerGat eway. |
 | CustomerGatewayId | String | Yes | cgw-bp1pvpl9r9adju6l5**** | The ID of the customer gateway. |
 | RegionId | String | Yes | cn-qingdao-env66-d01 | The region ID of the customer gateway. You can call the DescribeRegions operation to query the most recent region list. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1669,6 +1788,8 @@ Queries details of a specified customer gateway.
 | IpAddress | String | 139.XX.XX.32 | The IP address of the customer gateway. |
 | RequestId | String | 99506ECB-218F-45A5-AE8E- 79518451F615 | The ID of the request. |
 | CreateTime | Long | 1492747187000 | The timestamp generated when the customer gateway was created. |
+
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj****
@@ -1682,6 +1803,8 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q
 |---|---|
 | { "CustomerGatewayId": "cgw-bp1pvpl9r9adju6l5****", "Name": "test", "RequestId": "A0457BC9-6C0F-4437-AB9D-FB2EABC1D6A2", "CreateTime": 1492747187000, "IpAddress": "139.XX.XX.32" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. Acquire the required permissions and try again. |
@@ -1690,7 +1813,7 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q
 
 #### 6.4.5 DeleteCustomerGateway
 
-Deletes a specified customer gateway.
+Deletes a specified customer gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1699,9 +1822,13 @@ Deletes a specified customer gateway.
 | RegionId | String | Yes | cn-qingdao-env66-d01 | The ID of the region where the customer gateway is created. You can call the DescribeRegions operation to query the most recent region list. |
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE-8316- ACA81BB230DA | The ID of the request. |
+
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8bgx4xnkm2ogj****
@@ -1715,6 +1842,8 @@ http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8b
 |---|---|
 | { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -1725,7 +1854,7 @@ http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8b
 
 #### 6.5.1 CreateVpnRouteEntry
 
-Creates a destination-based route on a VPN gateway.
+Creates a destination-based route on a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1744,6 +1873,8 @@ Creates a destination-based route on a VPN gateway.
 | Description | String | No | mytest | The description of the destination-based route. |
 | OverlayMode | String | No | Ipsec | The overlay mode. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CreateTime | Long | 1492747187000 | The timestamp generated when the destination-based route was created. |
@@ -1756,9 +1887,13 @@ Creates a destination-based route on a VPN gateway.
 | VpnInstanceId | String | vpn-bp1cmw7jh1nfe43m9**** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the destination-based route. Valid values: 0 and 100. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1779,7 +1914,7 @@ http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 
 #### 6.5.2 ModifyVpnRouteEntryWeight
 
-Modifies the weight of a destination-based route for a VPN gateway.
+Modifies the weight of a destination-based route for a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1797,9 +1932,13 @@ Modifies the weight of a destination-based route for a VPN gateway.
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1808,6 +1947,8 @@ http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=v
 | JSON | format |
 |---|---|
 | { "RequestId": "E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1820,7 +1961,7 @@ http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=v
 
 #### 6.5.3 DeleteVpnRouteEntry
 
-Deletes a destination-based route from a VPN gateway.
+Deletes a destination-based route from a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1839,13 +1980,19 @@ Deletes a destination-based route from a VPN gateway.
 | ClientToken | String | No | d7d24a21-f4ba-4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The overlay mode. Set the value to Ipsec (IPsec tunneling). |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1854,6 +2001,8 @@ http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 | JSON | format |
 |---|---|
 | { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1872,7 +2021,7 @@ http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 
 #### 6.5.4 DescribeVpnRouteEntries
 
-Queries destination-based routes of a VPN gateway.
+Queries destination-based routes of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1881,6 +2030,8 @@ Queries destination-based routes of a VPN gateway.
 | VpnGatewayId | String | Yes | vpn-bp1a3kqjiiq9legfx**** | The ID of the VPN gateway. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1897,6 +2048,8 @@ Queries destination-based routes of a VPN gateway.
 | VpnInstanceId | String | vpn-bp1cmw7jh1nfe43m9**** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the destination-based route. Valid values: 0: indicates that the priority of the route entry is low. 100: indicates that the priority of the route entry is high. |
 
+Examples Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
 ```
@@ -1909,6 +2062,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &VpnGatewayId=vpn-bp1a3kqji
 |---|---|
 | { "PageNumber": 1, "TotalCount": 1, "VpnRouteEntries": { "VpnRouteEntry": [ { "RouteDest": "10.0.0.0/24", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "State": "normal", "Weight": 100, "CreateTime": 1563874074000, "NextHop": "vco-bp1tui07ob10fmuro****" } ] }, "PageSize": 10, "RequestId": "BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -1916,7 +2071,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &VpnGatewayId=vpn-bp1a3kqji
 
 #### 6.5.5 PublishVpnRouteEntry
 
-Advertises a route of a VPN gateway to the route table of the associated virtual private cloud (VPC).
+Advertises a route of a VPN gateway to the route table of the associated virtual private cloud (VPC). Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1935,13 +2090,19 @@ Advertises a route of a VPN gateway to the route table of the associated virtual
 | VpnGatewayId | String | Yes | vpn-bp1a3kqjiiq9legfx**** | The ID of the VPN gateway. |
 | ClientToken | String | No | d7d24a21-f4ba-4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RouteDest=10.0.0.0/24 &RouteType=pbr &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
+http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteType=pbr &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1950,6 +2111,8 @@ http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd
 | JSON | format |
 |---|---|
 | { "RequestId":"CB2793A8-845F-444C-8E93-76F1BBDF9C78" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1978,6 +2141,8 @@ Creates a policy-based route for a VPN gateway.
 | Description | String | No | vpnroute1 | The description of the policy-based route. |
 | OverlayMode | String | No | Ipsec | The overlay mode. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CreateTime | Long | 1492747187000 | The timestamp generated when the policy-based route was created. |
@@ -1997,9 +2162,13 @@ Creates a policy-based route for a VPN gateway.
 | VpnInstanceId | String | vpn-bp1cmw7jh1nfe43m9**** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the policy-based route. Valid values: 0 and 100. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &PublishVpc=true &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2008,6 +2177,8 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | JSON | format |
 |---|---|
 | { "RouteDest": "10.0.0.0/24", "RouteSource": "192.168.1.0/24", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "OverlayMode": "Ipsec", "State": "published", "Weight": 100, "CreateTime": 1563873294331, "NextHop": "vco-bp1tui07ob10fmuro****" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2026,7 +2197,7 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 
 #### 6.5.7 ModifyVpnPbrRouteEntryWeight
 
-Modifies the weight of a policy-based route of a VPN gateway.
+Modifies the weight of a policy-based route of a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2041,12 +2212,16 @@ Modifies the weight of a policy-based route of a VPN gateway.
 | ClientToken | String | No | d7d24a21-f4ba-4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The overlay mode. Set the value to Ipsec (IPsec tunneling). |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
 
 ```xml
@@ -2059,6 +2234,8 @@ http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHo
 |---|---|
 | { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2070,7 +2247,7 @@ http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHo
 
 #### 6.5.8 DeleteVpnPbrRouteEntry
 
-Deletes a policy-based route from a VPN gateway.
+Deletes a policy-based route from a VPN gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2087,13 +2264,19 @@ Deletes a policy-based route from a VPN gateway.
 | ClientToken | String | No | d7d24a21-f4ba-4454-9173- b3828dae492b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | OverlayMode | String | No | Ipsec | The overlay mode. Set the value to Ipsec (IPsec tunneling). |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0
+http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66rmd**** &RegionId=cn-qingdao-env66-d01 &RouteDest=10.0.0.0/24 &RouteSource=192.168.1.0/24 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &Weight=0 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2102,6 +2285,8 @@ http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | JSON | format |
 |---|---|
 | { "RequestId":"E82612A9-CB90-4D7E-B394-1DB7F6509B29" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2124,6 +2309,8 @@ Queries policy-based routes of a VPN gateway.
 | PageNumber | Integer | No | 10 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
@@ -2140,9 +2327,13 @@ Queries policy-based routes of a VPN gateway.
 | VpnInstanceId | String | vpn-bp1cmw7jh1nfe43m9**** | The ID of the VPN gateway. |
 | Weight | Integer | 0 | The weight of the policy-based route. Valid values: 0: indicates that the priority of the route entry is low. 100: indicates that the priority of the route entry is high. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &VpnGatewayId=vpn-bp1a3kqjiiq9legfx****
+http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1a3kqjiiq9legfx**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeVpnPbrRouteEntriesResponse>
@@ -2168,6 +2359,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &VpnGatewayId=vpn-bp1a3k
 |---|---|
 | { "PageNumber": 1, "TotalCount": 1, "RequestId": "E5D94DC7-AEC7-4E73-A203-61B04D1F1160", "PageSize": 10, "VpnPbrRouteEntries": { "VpnPbrRouteEntry": [ { "RouteDest": "10.0.0.0/32", "VpnInstanceId": "vpn-bp1cmw7jh1nfe43m9****", "State": "published", "Weight": 100, "CreateTime": 1563881012000, "NextHop": "vco-bp1tui07ob10fmuro****", "RouteSource": "11.0.0.0/32" } ] } } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2177,7 +2370,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &VpnGatewayId=vpn-bp1a3k
 
 #### 6.6.1 CreateVpnConnection
 
-Creates an IPsec-VPN connection.
+Creates an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2204,6 +2397,8 @@ Creates an IPsec-VPN connection.
 | HealthCheckConfig | String | No | {"enable":"true","dip":"192.168 .xx.2","sip":"192.168.xx.2","inte rval":"3","retry":"3"} | The health check configuration: Healt hCheckConf ig.enable: specifies whether to enable health checks. Valid values: t rue and f alse. Default value: false. Healt hCheckConf ig.dip: the destination IP address configured for health checks. Healt hCheckConf ig.sip: the source IP address configured for health checks. Healt hCheckConf ig.int erval: the time interval of health check retries. Unit: seconds. Healt hCheckConf ig.ret ry: the maximum number of health check retries. |
 | AutoConfigRoute | Boolean | No | true | Specifies whether to automatically configure routes. Valid values: t rue: enables automatic configuration. f alse: disables automatic configuration. This is the default value. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VpnConnectionId | String | vco-bp15oes1py4i6**** | The ID of the IPsec-VPN connection. |
@@ -2211,9 +2406,13 @@ Creates an IPsec-VPN connection.
 | Name | String | test | The name of the IPsec-VPN connection. |
 | RequestId | String | 082AD562-B8DB-4BB2-861F- DA1FCA01FD76 | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx4xnk**** &LocalSubnet=10.1.1.0/24,10.1.2.0/24 &RemoteSubnet=10.10.1.0/24,10.10.2.0/24 &VpnGatewayId=vpn-bp1q8bgx4xnkm****
+http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx4xnk**** &LocalSubnet=10.1.1.0/24,10.1.2.0/24 &RegionId=cn-qingdao-env66-d01 &RemoteSubnet=10.10.1.0/24,10.10.2.0/24 &VpnGatewayId=vpn-bp1q8bgx4xnkm**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2236,7 +2435,7 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 
 #### 6.6.2 ModifyVpnConnectionAttribute
 
-Modifies the configuration of an IPsec-VPN connection.
+Modifies the configuration of an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2302,13 +2501,19 @@ Modifies the configuration of an IPsec-VPN connection.
 | Retry | Integer | 1 | The maximum number of health check retries. |
 | Sip | String | 2.XX.XX.2 | The source IP address. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifyVpnConnectionAttribute &VpnConnectionId=vco-bp1bbi27hojx80nck****
+http(s)://[Endpoint]/?Action=ModifyVpnConnectionAttribute &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
 | <ModifyVpnConnectionAttributeResponse> <Name>vpn</Name> <CustomerGatewayId>cgw-bp1pvpl9r9adju6l5****</CustomerGatewayId> <RemoteSubnet>172.16.2.0/24</RemoteSubnet> <IpsecConfig> <IpsecLifetime>86400</IpsecLifetime> <IpsecAuthAlg>sha1</IpsecAuthAlg> <IpsecPfs>group2</IpsecPfs> <IpsecEncAlg>aes</IpsecEncAlg> </IpsecConfig> <EffectImmediately>false</EffectImmediately> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <CreateTime>1492753817000</CreateTime> <VpnConnectionId>vco-bp10lz7aejumd2vxo****</VpnConnectionId> <RequestId>57070A3D-38F2-40A6-A1C9-DB14542EF54D</RequestId> <LocalSubnet>10.1.1.0/24,10.1.2.0/24</LocalSubnet> <IkeConfig> <IkeEncAlg>aes</IkeEncAlg> <RemoteId>139.XX.XX.32</RemoteId> <IkePfs>group2</IkePfs> <IkeAuthAlg>sha1</IkeAuthAlg> <Psk>pgw6dy7d1i8i****</Psk> <IkeMode>main</IkeMode> <IkeLifetime>86400</IkeLifetime> <IkeVersion>ikev1</IkeVersion> <LocalId>116.XX.XX.69</LocalId> </IkeConfig> </ModifyVpnConnectionAttributeResponse> |   |
+
+`JSON` format
 
 ```json
     "Name": "vpn",
@@ -2342,6 +2547,8 @@ http(s)://[Endpoint]/?Action=ModifyVpnConnectionAttribute &VpnConnectionId=vco-b
         "LocalId": "116.XX.XX.69"
 ```
 
+`}` `}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2353,7 +2560,7 @@ http(s)://[Endpoint]/?Action=ModifyVpnConnectionAttribute &VpnConnectionId=vco-b
 
 #### 6.6.3 DescribeVpnConnections
 
-Queries one or more IPsec-VPN connections.
+Queries one or more IPsec-VPN connections. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2370,6 +2577,8 @@ Queries one or more IPsec-VPN connections.
 |---|---|---|---|---|
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 | VpnConnectionId | String | No | vco-bp15oes1py4i6**** | The ID of the IPsec-VPN connection. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2417,9 +2626,13 @@ Queries one or more IPsec-VPN connections.
 | PageSize | Integer | 10 | The number of entries returned on each page. |
 | RequestId | String | 54A4B3D0-DF4D-4C54-B8DC- 5DC8DD49C939 | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVpnConnections
+http(s)://[Endpoint]/?Action=DescribeVpnConnections &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeVpnConnections>
@@ -2464,6 +2677,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections
 |---|---|
 | { "PageNumber": 1, "VpnConnections": { "VpnConnection": [ { "Name": "vpn connection test", "CustomerGatewayId": "cgw-bp1pvpl9r9adjxxxxxxxx", "RemoteSubnet": "172.16.2.0/24", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "sha1", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "EffectImmediately": true, "VpnGatewayId": "vpn-bp1q8bgx4xnkmxxxxxxxx", "CreateTime": 1492753817000, "VpnConnectionId": "vco-bp10lz7aejumdxxxxxxxx", "status": "ipsec_sa_established", "LocalSubnet": "10.1.1.0/24,10.1.2.0/24", "IkeConfig": { "IkeEncAlg": "aes", "RemoteId": "139.XX.XX.167", "IkePfs": "group2", "IkeAuthAlg": "sha1", "Psk": "pgw6dy****", "IkeMode": "main", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "116.XX.XX.64" } } ] }, "TotalCount": 1, "PageSize": 10, "RequestId": "54A4B3D0-DF4D-4C54-B8DC-5DC8DD49C939" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
@@ -2474,13 +2689,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections
 
 #### 6.6.4 DescribeVpnConnection
 
-Queries the details of an IPsec-VPN connection.
+Queries the details of an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeVpnConnection | The operation that you want to perform. Set the value to DescribeVpnConnect ion. |
 | RegionId | String | Yes | cn-qingdao-env66-d01 | The ID of the region where the IPsec-VPN connection is created. You can call the DescribeRegions operation to query the most recent region list. |
 | VpnConnectionId | String | Yes | vco-bp1bbi27hojx80nck**** | The ID of the IPsec-VPN connection. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2523,9 +2740,13 @@ Queries the details of an IPsec-VPN connection.
 | Sip | String | 192.XX.XX.2 | The source IP address for health checks. |
 | Status | String | failed | The status of the health check. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeVpnConnection &VpnConnectionId=vco-bp1bbi27hojx80nck****
+http(s)://[Endpoint]/?Action=DescribeVpnConnection &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeVpnConnectionResponse>
@@ -2570,6 +2791,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnection &VpnConnectionId=vco-bp1bbi27
 |---|---|
 | { "PageNumber": 1, "VpnConnections": { "VpnConnection": [ { "Name": "c2", "CustomerGatewayId": "cgw-bp1wl8dtz3auwlavw****", "Status": "ike_sa_not_established", "RemoteSubnet": "192.168.0.0/16", "IpsecConfig": { "IpsecLifetime": 86400, "IpsecAuthAlg": "md5", "IpsecPfs": "group2", "IpsecEncAlg": "aes" }, "EffectImmediately": false, "VpnGatewayId": "vpn-bp1yfrjxn4d5t63t****", "CreateTime": 1519391420000, "VpnConnectionId": "vco-bp1w3m1p23iftycv****", "LocalSubnet": "172.16.0.0/12", "IkeConfig": { "IkeEncAlg": "aes", "RemoteId": "47.XX.XX.176", "IkePfs": "group2", "IkeAuthAlg": "sha1", "Psk": "1234567", "IkeMode": "aggressive", "IkeLifetime": 86400, "IkeVersion": "ikev1", "LocalId": "116.XX.XX.119" } } ] }, "TotalCount": 1, "PageSize": 10, "RequestId": "7D598A10-26EF-44F2-9F47-E417842F3CEA" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
@@ -2581,13 +2804,15 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnection &VpnConnectionId=vco-bp1bbi27
 
 #### 6.6.5 DownloadVpnConnectionConfig
 
-Queries the configuration of an IPsec-VPN connection.
+Queries the configuration of an IPsec-VPN connection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DownloadVpnConnectionConfi g | The operation that you want to perform. Set the value to DownloadVpnConnect ionConf ig. |
 | RegionId | String | Yes | cn-qingdao-env66-d01 | The ID of the region where the IPsec-VPN connection is created. You can call the DescribeRegions operation to query the most recent region list. |
 | VpnConnectionId | String | Yes | vco-bp1bbi27hojx80nck**** | The ID of the IPsec-VPN connection. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2619,13 +2844,19 @@ Queries the configuration of an IPsec-VPN connection.
 | Remote | String | 116.XX.XX.69 | The ID of the customer gateway. |
 | RemoteSubnet | String | 10.10.1.0/24,10.10.2.0/24 | The CIDR block of the data center. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &VpnConnectionId=vco-bp1bbi27hojx80nck****
+http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
 | <DownloadVpnConnectionConfigResponse> <RequestId>0C68048B-0F70-40DA-B8AE-1B79B5CF62E3</RequestId> <VpnConnectionConfig> <RemoteSubnet>10.10.1.0/24,10.10.2.0/24</RemoteSubnet> <Local>139.XX.XX.32</Local> <IpsecConfig> <IpsecLifetime>86400</IpsecLifetime> <IpsecAuthAlg>sha1</IpsecAuthAlg> <IpsecPfs>group2</IpsecPfs> <IpsecEncAlg>aes</IpsecEncAlg> </IpsecConfig> <Remote>116.XX.XX.69x</Remote> <LocalSubnet>172.16.2.0/24</LocalSubnet> <IkeConfig> <IkeEncAlg>aes</IkeEncAlg> <IkePfs>group2</IkePfs> <RemoteId>116.XX.XX.69</RemoteId> <IkeAuthAlg>sha1</IkeAuthAlg> <Psk>pgw6dy7d1i8i****</Psk> <IkeMode>main</IkeMode> <IkeLifetime>86400</IkeLifetime> <IkeVersion>ikev1</IkeVersion> <LocalId>139.XX.XX.32</LocalId> </IkeConfig> </VpnConnectionConfig> </DownloadVpnConnectionConfigResponse> |   |
+
+`JSON` format
 
 ```json
     "RequestId": "0C68048B-0F70-40DA-B8AE-1B79B5CF62E3",
@@ -2656,6 +2887,8 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &VpnConnectionId=vco-bp
             "LocalId": "139.XX.XX.32"
 ```
 
+`}` `}` `}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2664,7 +2897,7 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &VpnConnectionId=vco-bp
 
 #### 6.6.6 DeleteVpnConnection
 
-Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted.
+Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2673,6 +2906,8 @@ Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection be
 | VpnConnectionId | String | Yes | vco-bp1bbi27hojx80nck**** | The ID of the IPsec-VPN connection. |
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -2680,9 +2915,13 @@ Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection be
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE-8316- ACA81BB230DA | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteVpnConnection &VpnConnectionId=vco-bp1bbi27hojx80nck****
+http(s)://[Endpoint]/?Action=DeleteVpnConnection &RegionId=cn-qingdao-env66-d01 &VpnConnectionId=vco-bp1bbi27hojx80nck**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2691,6 +2930,8 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &VpnConnectionId=vco-bp1bbi27ho
 | JSON | format |
 |---|---|
 | { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2703,7 +2944,7 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &VpnConnectionId=vco-bp1bbi27ho
 
 #### 6.7.1 CreateSslVpnServer
 
-Creates an SSL-VPN server.
+Creates an SSL-VPN server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2722,15 +2963,21 @@ Creates an SSL-VPN server.
 | Port | Integer | No | 1194 | The port that is used by the SSL-VPN server. Default value: 1194. The following ports cannot be used: 22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, and 4500. |
 | Compress | Boolean | No | false | Specifies whether to enable data compression. Valid values: t rue: enables data compression. f alse: disables data compression. This is the default value. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Name | String | test | The name of the SSL-VPN server. |
 | RequestId | String | E98A9651-7098-40C7-8F85- C818D1EBBA85 | The ID of the request. |
 | SslVpnServerId | String | vss-bp18q7hzj6largv4v**** | The ID of the SSL-VPN server. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &LocalSubnet=10.0.0.0/8 &VpnGatewayId=vpn-bp1hgim8by0kc9nga****
+http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &LocalSubnet=10.0.0.0/8 &RegionId=cn-qingdao-env66-d01 &VpnGatewayId=vpn-bp1hgim8by0kc9nga**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <CreateSslVpnServerResponse>
@@ -2744,6 +2991,8 @@ http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &Lo
 |---|---|
 | { "RequestId": "E98A9651-7098-40C7-8F85-C818D1EBBA85", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "Name": "test" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2756,7 +3005,7 @@ http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &Lo
 
 #### 6.7.2 ModifySslVpnServer
 
-Modifies the configuration of an SSL-VPN server.
+Modifies the configuration of an SSL-VPN server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2777,6 +3026,8 @@ Modifies the configuration of an SSL-VPN server.
 | Cipher | String | No | AES-128-CBC | The encryption algorithm that is used in the SSL-VPN connection. Valid values: AES-128-CBC: the AES-128-CBC algorithm. This is the default value. AES-192-CBC: the AES-192-CBC algorithm. AES-256-CBC: the AES-256-CBC algorithm. none: If the parameter is set to this value, no encryption algorithm is used. |
 | Port | Integer | No | 1194 | The port that is used by the SSL-VPN server. Default value: 1194. The following ports cannot be used: 22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, and 4500. |
 | Compress | Boolean | No | false | Specifies whether to enable data compression. Valid values: t rue: enables data compression. f alse: disables data compression. This is the default value. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2800,6 +3051,8 @@ Modifies the configuration of an SSL-VPN server.
 http(s)://[Endpoint]/?Action=ModifySslVpnServer &SslVpnServerId=vss-bp18q7hzj6largv4v****
 ```
 
+Sample success responses
+
 | XML | format |
 |---|---|
 | <ModifySslVpnServerResponse> <PageNumber>1</PageNumber> <TotalCount>1</TotalCount> <PageSize>10</PageSize> <SslVpnServers> <SslVpnServer> <RegionId>cn-qingdao-env66-d01</RegionId> <SslVpnServerId>vss-bp18q7hzj6largv4v****</SslVpnServerId> <VpnGatewayId>vpn-bp1q8bgx4xnkm2ogj****</VpnGatewayId> <Name>test</Name> <CLientIpPool>10.30.30.0/24</CLientIpPool> <LocalSubnet>10.20.20.0/24</LocalSubnet> <Proto>UDP</Proto> <Port>1194</Port> <Cipher>AES-128-CBC</Cipher> <Compress>true</Compress> <CreateTime>1492753580000</CreateTime> <Connections>0</Connections> <MaxConnections>5</MaxConnections> <InternetIp>47.XX.XX.98</InternetIp> </SslVpnServer> </SslVpnServers> <RequestId>DF11D6F6-E35A-41C3-9B20-6FC8A901FE65</RequestId> </ModifySslVpnServerResponse> |   |
@@ -2807,6 +3060,8 @@ http(s)://[Endpoint]/?Action=ModifySslVpnServer &SslVpnServerId=vss-bp18q7hzj6la
 | JSON | format |
 |---|---|
 | { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.30.30.0/24", "LocalSubnet": "10.20.20.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.98" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2829,6 +3084,8 @@ Queries one or more SSL-VPN servers.
 | Name | String | No | test | The name of the SSL-VPN server. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2856,9 +3113,13 @@ Queries one or more SSL-VPN servers.
 | VpnGatewayId | String | vpn-bp1on0xae9d771ggi**** | The ID of the VPN gateway. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeSslVpnServers
+http(s)://[Endpoint]/?Action=DescribeSslVpnServers &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2867,6 +3128,8 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers
 | JSON | format |
 |---|---|
 | { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.10.10.0/24", "LocalSubnet": "10.10.20.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.167" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2881,7 +3144,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers
 
 #### 6.7.4 DescribeVpnSslServerLogs
 
-Queries the logs of an SSL-VPN server.
+Queries the logs of an SSL-VPN server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2894,6 +3157,8 @@ Queries the logs of an SSL-VPN server.
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Count | Integer | 10 | The number of log entries. |
@@ -2902,6 +3167,8 @@ Queries the logs of an SSL-VPN server.
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 1 | The number of entries returned per page. |
 | RequestId | String | 5BE01CD7-5A50-472D-AC14- CA181C5C03BE | The ID of the request. |
+
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &VpnSslServerId=vss-bp155e9yclsg1xgq4****
@@ -2915,6 +3182,8 @@ http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &VpnSslServerId=vss-bp155e
 |---|---|
 | { "Data": { "Logs": [] }, "PageNumber": 1, "Count": 0, "PageSize": 10, "IsCompleted": true, "RequestId": "26641E42-66C7-4942-9FEC-F99213914F8F" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2922,7 +3191,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &VpnSslServerId=vss-bp155e
 
 #### 6.7.5 DeleteSslVpnServer
 
-Deletes an SSL-VPN server.
+Deletes an SSL-VPN server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2931,9 +3200,13 @@ Deletes an SSL-VPN server.
 | SslVpnServerId | String | Yes | vss-bp18q7hzj6largv4v**** | The ID of the SSL-VPN server. |
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE-8316- ACA81BB230DA | The ID of the request. |
+
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DeleteSslVpnServer &SslVpnServerId=vss-bp18q7hzj6largv4v****
@@ -2947,6 +3220,8 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnServer &SslVpnServerId=vss-bp18q7hzj6la
 |---|---|
 | { "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -2956,7 +3231,7 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnServer &SslVpnServerId=vss-bp18q7hzj6la
 
 #### 6.7.6 CreateSslVpnClientCert
 
-Creates an SSL-VPN client certificate.
+Creates an SSL-VPN client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2966,6 +3241,8 @@ Creates an SSL-VPN client certificate.
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. |
 | Name | String | No | SslVpnClientCert1 | The name of the SSL-VPN client certificate. The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter, and cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Name | String | SslVpnClientCert | The name of the SSL-VPN client certificate. |
@@ -2973,8 +3250,10 @@ Creates an SSL-VPN client certificate.
 | SslVpnClientCertId | String | vsc-m5euof6s5jy8vs5kd**** | The ID of the SSL-VPN client certificate. |
 
 ```
-http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &SslVpnServerId=vss-m5et0q3iy1qex328w****
+http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &SslVpnServerId=vss-m5et0q3iy1qex328w**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2983,6 +3262,8 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &SslVpnServerId=vss-m5et0q3i
 | JSON | format |
 |---|---|
 | { "SslVpnClientCertId": "vsc-bp1n8wcf134yl0osr****", "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2995,7 +3276,7 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &SslVpnServerId=vss-m5et0q3i
 
 #### 6.7.7 ModifySslVpnClientCert
 
-Modifies the name of an SSL-VPN client certificate.
+Modifies the name of an SSL-VPN client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3008,15 +3289,21 @@ Modifies the name of an SSL-VPN client certificate.
 |---|---|---|---|---|
 | Name | String | No | cert2 | The name of the SSL-VPN client certificate. The name must be 2 to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. However, the name cannot start with http:// or https:// . |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Name | String | cert2 | The name of the SSL-VPN client certificate. |
 | RequestId | String | 606998F0-B94D-48FE-8316- ACA81BB230DA | The ID of the request. |
 | SslVpnClientCertId | String | vsc-bp1n8wcf134yl0osr**** | The ID of the SSL-VPN client certificate. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &SslVpnClientCertId=vsc-bp1n8wcf134yl0osrc****
+http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnClientCertId=vsc-bp1n8wcf134yl0osrc**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3026,6 +3313,8 @@ http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &SslVpnClientCertId=vsc-bp1n
 |---|---|
 | { "SslVpnClientCertId": "vsc-bp1n8wcf134yl0osr****", "Name": "cert2", "RequestId": "606998F0-B94D-48FE-8316-ACA81BB230DA" } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -3034,7 +3323,7 @@ http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &SslVpnClientCertId=vsc-bp1n
 
 #### 6.7.8 DescribeSslVpnClientCerts
 
-Queries one or more SSL-VPN client certificates.
+Queries one or more SSL-VPN client certificates. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3049,6 +3338,8 @@ Queries one or more SSL-VPN client certificates.
 | Name | String | No | cert1 | The name of the SSL-VPN client certificate. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3066,9 +3357,13 @@ Queries one or more SSL-VPN client certificates.
 | Status | String | normal | The status of the SSL-VPN client certificate. Valid values: expiring-soon: The SSL-VPN client certificate expires in one week. normal: The certificate is normal. expired: The certificate has expired. |
 | TotalCount | Integer | 1 | The number of returned entries. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts
+http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts &RegionId=cn-qingdao-env66-d01 &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeSslVpnServersResponse>
@@ -3101,6 +3396,8 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts
 |---|---|
 | { "DescribeSslVpnServersResponse": { "PageNumber": "1", "TotalCount": "1", "PageSize": "10", "SslVpnServers": { "SslVpnServer": { "RegionId": "cn-qingdao-env66-d01", "SslVpnServerId": "vss-bp18q7hzj6largv4v****", "VpnGatewayId": "vpn-bp1q8bgx4xnkm2ogj****", "Name": "test", "CLientIpPool": "10.10.20.0/24", "LocalSubnet": "10.10.10.0/24", "Proto": "UDP", "Port": "1194", "Cipher": "AES-128-CBC", "Compress": "true", "CreateTime": "1492753580000", "Connections": "0", "MaxConnections": "5", "InternetIp": "47.XX.XX.98" } }, "RequestId": "DF11D6F6-E35A-41C3-9B20-6FC8A901FE65" } } |   |
 
+Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -3108,7 +3405,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts
 
 #### 6.7.9 DescribeSslVpnClientCert
 
-Queries a specified SSL-VPN client certificate.
+Queries a specified SSL-VPN client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3118,6 +3415,8 @@ Queries a specified SSL-VPN client certificate.
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-qingdao-env66-d01 | The ID of the region where the SSL-VPN client certificate that you want to query is created. You can call the DescribeRegions operation to query the most recent region list. |
 | SslVpnClientCertId | String | Yes | vsc-bp17r58rjf5r1gjyr**** | The ID of the SSL-VPN client certificate that you want to query. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3134,9 +3433,13 @@ Queries a specified SSL-VPN client certificate.
 | SslVpnServerId | String | vss-bp155e9yclsg1xgq4**** | The ID of the SSL-VPN server. |
 | Status | String | normal | The status of the SSL-VPN client certificate. Valid values: expiring-soon: The SSL-VPN client certificate expires in one week. normal: The certificate is normal. expired: The certificate has expired. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &SslVpnClientCertId=vsc-bp17r58rjf5r1gjyr****
+http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnClientCertId=vsc-bp17r58rjf5r1gjyr**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3157,6 +3460,8 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &SslVpnClientCertId=vsc-bp
  "SslVpnServerId": "vss-bp155e9yclsg1xgq4****"
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
@@ -3164,7 +3469,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &SslVpnClientCertId=vsc-bp
 
 #### 6.7.10 DeleteSslVpnClientCert
 
-Deletes an SSL-VPN client certificate.
+Deletes an SSL-VPN client certificate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3173,13 +3478,19 @@ Deletes an SSL-VPN client certificate.
 | SslVpnClientCertId | String | Yes | vsc-bp1n8wcf134yl0osr**** | The ID of the SSL-VPN client certificate. |
 | ClientToken | String | No | 02fb3da4-130e-11e9-8e44- 0016e04115b | The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 606998F0-B94D-48FE-8316- ACA81BB230DA | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr****
+http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &RegionId=cn-qingdao-env66-d01 &SslVpnClientCertId=vsc-bp1n8wcf134yl0osr**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3188,6 +3499,8 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &SslVpnClientCertId=vsc-bp1n
 ```json
   "RequestId":"606998F0-B94D-48FE-8316-ACA81BB230DA"
 ```
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3245,6 +3558,8 @@ rectory.
     // Display the results.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
+
+`}`
 
 ### 7.2 Use the ASAPI gateway to make API calls
 
@@ -3366,7 +3681,7 @@ Security Token Service (STS) allows you to manage temporary credentials to your 
 
 #### 7.3.2 AssumeRole
 
-Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
+Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 
 | Paramet er | T ype | Required | Example | Descript ion |
 |---|---|---|---|---|
@@ -3389,7 +3704,7 @@ Responses
 | Arn | String | acs:ram::123456789012****:role/ad minrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495****:alice | The ID of the temporary identity that you use to assume the RAM role. |
 
-Add Project Object Model (POM) dependencies The Alibaba Cloud core library is required. Perform the following steps to add the Alibaba Cloud core library to POM:
+Examples Add Project Object Model (POM) dependencies The Alibaba Cloud core library is required. Perform the following steps to add the Alibaba Cloud core library to POM:
 
 ```xml
     <dependency>
@@ -3443,7 +3758,7 @@ package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.ali
             System.out.println(e.getErrMsg());
 ```
 
-Call examples In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
+`}` `}` `}` Call examples In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
 
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -3482,6 +3797,8 @@ ding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}` Error codes
 
 | Ht t pCode | Error code | Error message | Descript ion |
 |---|---|---|---|

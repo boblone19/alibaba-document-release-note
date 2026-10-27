@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 28
 source_pdf: "8b82b7a32ffa97ab_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Product Introduction 20260828

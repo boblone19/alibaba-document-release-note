@@ -5,16 +5,116 @@ doc_version: "20260729"
 pdf_pages: 134
 source_pdf: "06_开发指南_enterprise-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/acr/zh/enterprise-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 容器镜像服务 开发指南
 
-## SDK参考
+## 目录
 
-### 快速入门
+- 1 SDK参考
+  - 1.1 快速入门
+    - 1.1.1 开发文档使用说明
+    - 1.1.2 API调用流程说明
+  - 1.2 准备工作
+    - 1.2.1 登录开发者门户
+    - 1.2.2 获取API信息及其EndPoint
+    - 1.2.3 获取AccessKey
+    - 1.2.4 获取STS AccessKey
+    - 1.2.5 获取公共Header参数
+    - 1.2.6 获取容器镜像服务的SDK包
+  - 1.3 标准版SDK
+    - 1.3.1 Java SDK调用示例
+      - 1.3.1.1 安装Java
+      - 1.3.1.2 使用CommonRequest进行调用
+    - 1.3.2 Python SDK调用示例
+      - 1.3.2.1 安装Python SDK
+      - 1.3.2.2 使用CommonRequest进行调用
+  - 1.4 高级版SDK
+    - 1.4.1 Java SDK调用示例
+      - 1.4.1.1 安装Java SDK
+      - 1.4.1.2 调用Java SDK
+    - 1.4.2 Python SDK调用示例
+      - 1.4.2.1 安装Python SDK
+      - 1.4.2.2 调用Python SDK
+    - 1.4.3 Go SDK调用示例
+      - 1.4.3.1 安装Go SDK
+      - 1.4.3.2 调用Go SDK
+- 2 标准版API参考
+  - 2.1 容器镜像API调用方式
+    - 2.1.1 公共请求参数
+    - 2.1.2 请求结构
+    - 2.1.3 签名机制
+  - 2.2 命名空间管理
+    - 2.2.1 CreateNamespace
+    - 2.2.2 DeleteNamespace
+    - 2.2.3 UpdateNamespace
+    - 2.2.4 GetNamespace
+    - 2.2.5 GetNamespaceList
+  - 2.3 镜像仓库管理
+    - 2.3.1 CreateRepo
+    - 2.3.2 DeleteRepo
+    - 2.3.3 UpdateRepo
+    - 2.3.4 GetRepoTag
+    - 2.3.5 GetRepo
+    - 2.3.6 GetRepoList
+    - 2.3.7 GetRepoListByNamespace
+    - 2.3.8 GetRepoTags
+  - 2.4 镜像管理
+    - 2.4.1 DeleteImage
+    - 2.4.2 GetImageManifest
+    - 2.4.3 GetImageLayer
+  - 2.5 触发器管理
+    - 2.5.1 CreateRepoWebhook
+    - 2.5.2 DeleteRepoWebhook
+    - 2.5.3 GetRepoWebhook
+    - 2.5.4 UpdateRepoWebhook
+  - 2.6 访问凭证管理
+    - 2.6.1 GetAuthorizationToken
+- 3 高级版API参考
+  - 3.1 镜像命名空间管理
+    - 3.1.1 CreateNamespace
+    - 3.1.2 DeleteNamespace
+    - 3.1.3 UpdateNamespace
+    - 3.1.4 GetNamespace
+    - 3.1.5 ListNamespace
+  - 3.2 镜像仓库管理
+    - 3.2.1 CreateRepository
+    - 3.2.2 DeleteRepository
+    - 3.2.3 UpdateRepository
+    - 3.2.4 ListRepository
+    - 3.2.5 GetRepository
+  - 3.3 镜像管理
+    - 3.3.1 ListRepoTag
+    - 3.3.2 DeleteRepoTag
+    - 3.3.3 GetRepoTag
+    - 3.3.4 GetRepoTagLayers
+    - 3.3.5 GetRepoTagManifest
+    - 3.3.6 CreateRepoTag
+  - 3.4 镜像触发器管理
+    - 3.4.1 UpdateRepoTrigger
+    - 3.4.2 ListRepoTrigger
+    - 3.4.3 CreateRepoTrigger
+    - 3.4.4 DeleteRepoTrigger
+  - 3.5 访问凭证管理
+    - 3.5.1 GetAuthorizationToken
+    - 3.5.2 ResetLoginPassword
+  - 3.6 制品构建
+    - 3.6.1 CreateArtifactBuildTask
+    - 3.6.2 CreateArtifactBuildRule
+    - 3.6.3 GetArtifactBuildTask
+    - 3.6.4 ListArtifactBuildTask
+    - 3.6.5 GetArtifactBuildRule
+    - 3.6.6 DeleteArtifactBuildRule
+  - 4.1 STS概要
+    - 4.1.1 什么是STS
+    - 4.1.2 AssumeRole
 
-#### 开发文档使用说明
+## 1 SDK参考
+
+### 1.1 快速入门
+
+#### 1.1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -35,7 +135,7 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-#### API调用流程说明
+#### 1.1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云更一致的体验，自企业版V3.16.0 开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
@@ -50,21 +150,24 @@ converter: line-classifier (PyMuPDF)
 
 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
-|  | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |  |  |
+|   | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |   |   |
 |---|---|---|---|
-|  |  | <x-acs- |  |
+|   |   | <x-acs- |   |
 
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 
-### 准备工作
+### 1.2 准备工作
 
-#### 登录开发者门户
+#### 1.2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -85,11 +188,11 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
+绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
 **启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-#### 获取API信息及其EndPoint
+#### 1.2.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -107,17 +210,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-#### 获取AccessKey
+#### 1.2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -132,23 +233,20 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-#### 获取STS AccessKey
+#### 1.2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -188,11 +286,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -227,12 +330,17 @@ vpc.${global:region}.${global:internet-domain}
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以容器镜像服务高级版
+的 `CreateNamespace` 接口为示例。
 
 **说明**
 
@@ -243,7 +351,7 @@ vpc.${global:region}.${global:internet-domain}
     /**
 ```
 
-* 使用`AK&SK`初始化账号`Client`
+`*` 使用`AK&SK`初始化账号`Client`
 
 ```
      * @param accessKeyId
@@ -277,7 +385,11 @@ eySecret和Security Token。
 ```
         config.endpoint = "cr.cn-shanghai.aliyuncs.com";
         return new com.aliyun.cr20181201.Client(config);
-    }
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         java.util.List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.cr20181201.Client client = Sample.createClient("accessKeyId", "acc
@@ -289,11 +401,9 @@ essKeySecret", "securityToken");
 
 ```
         client.createNamespace(createNamespaceRequest);
-    }
-}
 ```
 
-#### 获取公共Header参数
+#### 1.2.5 获取公共Header参数
 
 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并对调用后的一些返回值做出解释。
 
@@ -341,7 +451,7 @@ essKeySecret", "securityToken");
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-#### 获取容器镜像服务的SDK包
+#### 1.2.6 获取容器镜像服务的SDK包
 
 通过POP网关调用专有云API时，需使用容器镜像服务的SDK。本文为您介绍如何获取阿里云开发工具包 （SDK）。 软件开发工具包（SDK）包括代码以及示例，用户可以自行选择语言创建云应用。 目前SDK的语言支持：Java、Python、Go，您可以前往阿里云开发工具包（SDK）中进行选择。
 
@@ -349,17 +459,19 @@ essKeySecret", "securityToken");
 
 推荐使用 Java、Python、Go三种语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。 SDK核心库推荐使用阿里云官网的SDK核心库，其内容所有云产品共用，且适用于专有云。
 
-### 标准版SDK
+### 1.3 标准版SDK
 
-#### Java SDK调用示例
+#### 1.3.1 Java SDK调用示例
 
-##### 安装Java
+##### 1.3.1.1 安装Java
+
+本文介绍如何安装Java。
 
 **环境要求**
 
-最低要求Java 6。 安装SDK核心库Core ，可以通过POM文件引入的方式来安装。 本文以4.5.21版本的SDK为例。
+最低要求Java 6。 安装SDK核心库Core ，可以通过POM文件引入的方式来安装。
 
-**说明**
+> **说明：** 本文以4.5.21版本的SDK为例。
 
 ```xml
 <dependency>
@@ -371,9 +483,9 @@ essKeySecret", "securityToken");
 
 **安装容器镜像SDK**
 
-在Maven项目文件中添加以下依赖： 本文以4.1.2版本的SDK为例。
+在Maven项目文件中添加以下依赖：
 
-**说明**
+> **说明：** 本文以4.1.2版本的SDK为例。
 
 ```xml
 <dependency>
@@ -383,16 +495,16 @@ essKeySecret", "securityToken");
 </dependency>
 ```
 
-##### 使用CommonRequest进行调用
+##### 1.3.1.2 使用CommonRequest进行调用
+
+本文介绍如何使用CommonRequest进行调用Java SDK。
 
 **前提条件**
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -413,6 +525,7 @@ pom.xml <dependency>
 `*/`
 
 ```java
+public class GetNamespace {
     public static void main(String[] args) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-wl-e****", "<your-
 access-key-id>", "<your-access-key-secret>");
@@ -441,16 +554,17 @@ access-key-id>", "<your-access-key-secret>");
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### Python SDK调用示例
+`}` `}`
+
+#### 1.3.2 Python SDK调用示例
 
 **背景信息**
 
-##### 安装Python SDK
+##### 1.3.2.1 安装Python SDK
+
+本文介绍如何安装Python SDK。
 
 **环境要求**
 
@@ -474,16 +588,16 @@ PyPI Anaconda
 conde install aliyun-python-sdk-cr=4.1.2
 ```
 
-##### 使用CommonRequest进行调用
+##### 1.3.2.2 使用CommonRequest进行调用
+
+本文介绍如何使用CommonRequest进行调用Python SDK。
 
 **前提条件**
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -498,17 +612,19 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 print(str(response, encoding = 'utf-8'))
 ```
 
-### 高级版SDK
+### 1.4 高级版SDK
 
-#### Java SDK调用示例
+#### 1.4.1 Java SDK调用示例
 
-##### 安装Java SDK
+##### 1.4.1.1 安装Java SDK
+
+本文介绍如何安装Java SDK。
 
 **环境要求**
 
-最低要求Java 8 安装SDK核心库OpenAPI ，可以通过POM文件引入的方式来安装。 本文以0.0.19版本为例。
+最低要求Java 8 安装SDK核心库OpenAPI ，可以通过POM文件引入的方式来安装。
 
-**说明**
+> **说明：** 本文以0.0.19版本为例。
 
 ```xml
 <dependency>
@@ -522,9 +638,7 @@ print(str(response, encoding = 'utf-8'))
 
 在Maven项目文件中添加以下依赖：
 
-**说明**
-
-本文以1.0.1版本为例。
+> **说明：** 本文以1.0.1版本为例。
 
 ```xml
 <dependency>
@@ -534,7 +648,9 @@ print(str(response, encoding = 'utf-8'))
 </dependency>
 ```
 
-##### 调用Java SDK
+##### 1.4.1.2 调用Java SDK
+
+本文介绍如何调用Java SDK。
 
 **操作步骤**
 
@@ -588,8 +704,9 @@ String requestId = response.Body.requestId;
 ```
 catch (Exception e) {
     e.printStackTrace();
-}
 ```
+
+`}`
 
 **完整代码示例**
 
@@ -598,7 +715,7 @@ catch (Exception e) {
     /**
 ```
 
-* 使用`AK&SK`初始化账号`Client`
+`*` 使用`AK&SK`初始化账号`Client`
 
 ```
      * @param accessKeyId
@@ -624,7 +741,11 @@ accessKeySecret> throws Exception {
 ```
         config.endpoint = "cr-ee.registry.cn-wl-en****.inter.en****.shuguang.com";
         return new com.aliyun.cr20181201.Client(config);
-    }
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         java.util.List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.cr20181201.Client client = Sample.createClient<"accessKeyId",
@@ -638,13 +759,13 @@ accessKeySecret> throws Exception {
 
 ```
         client.getNamespace(getNamespaceRequest);
-    }
-}
 ```
 
-#### Python SDK调用示例
+#### 1.4.2 Python SDK调用示例
 
-##### 安装Python SDK
+##### 1.4.2.1 安装Python SDK
+
+本文介绍如何安装Python SDK。
 
 **环境要求**
 
@@ -668,7 +789,9 @@ PyPI Anaconda
 conde install alibabacloud_cr20181201=1.0.3
 ```
 
-##### 调用Python SDK
+##### 1.4.2.2 调用Python SDK
+
+本文介绍如何调用Python SDK。
 
 **操作步骤**
 
@@ -679,7 +802,7 @@ Config对象包含 `access_key_id` 、 `access_key_secret` 和 `endpoint` 等配
 from alibabacloud_tea_openapi import models as open_api_models config = open_api_models.Config(
 ```
 
-# 您的`AccessKey ID`。
+`#` 您的`AccessKey ID`。
 
 ```bash
     access_key_id=access_key_id,
@@ -687,8 +810,7 @@ from alibabacloud_tea_openapi import models as open_api_models config = open_api
     access_key_secret=access_key_secret
 ```
 
-)
-# 访问的域名。
+`)` `#` 访问的域名。
 
 ```
 config.endpoint = 'cr.cn-hangzhou.aliyuncs.com'
@@ -703,6 +825,11 @@ from alibabacloud_cr20181201.client import Client as Client from alibabacloud_cr
 
 3. 创建对应API的Request。
 方法的命名规则为Create加上API方法名再加上Request。
+
+```
+request = models.CreateGetArtifactBuildTask()
+```
+
 4. 设置请求类Request的参数。
 通过设置Request类的属性设置参数，即API中必须要提供的信息。 `//` 该参数值为假设值，请您根据实际情况进行填写。
 
@@ -776,8 +903,7 @@ import sys from typing import List from alibabacloud_cr20181201.client import Cl
             access_key_secret=access_key_secret
 ```
 
-)
-# 访问的域名
+`)` `#` 访问的域名
 
 ```python
         config.endpoint = 'cr-ee.registry.cn-wl-en****.inter.en****.shuguang.com'
@@ -792,10 +918,10 @@ import sys from typing import List from alibabacloud_cr20181201.client import Cl
             namespace_name='test12'
 ```
 
-)
-# 复制代码运行请自行打印 `API` 的返回值
+`)` `#` 复制代码运行请自行打印 `API` 的返回值
 
 ```
+        client.get_namespace(get_namespace_request)
     @staticmethod
     async def main_async(
         args: List[str],
@@ -806,8 +932,7 @@ import sys from typing import List from alibabacloud_cr20181201.client import Cl
             namespace_name='test12'
 ```
 
-)
-# 复制代码运行请自行打印 `API` 的返回值
+`)` `#` 复制代码运行请自行打印 `API` 的返回值
 
 ```
         await client.get_namespace_async(get_namespace_request)
@@ -815,9 +940,11 @@ if __name__ == '__main__':
     Sample.main(sys.argv[1:])
 ```
 
-#### Go SDK调用示例
+#### 1.4.3 Go SDK调用示例
 
-##### 安装Go SDK
+##### 1.4.3.1 安装Go SDK
+
+本文介绍如何安装Go SDK。
 
 **环境要求**
 
@@ -835,7 +962,9 @@ go get github.com/alibabacloud-go/darabonba-openapi/client
 go get github.com/alibabacloud-go/cr-20181201
 ```
 
-##### 调用Go SDK
+##### 1.4.3.2 调用Go SDK
+
+本文介绍如何调用Go SDK。
 
 **操作步骤**
 
@@ -847,7 +976,7 @@ import (
   openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 ```
 
-)
+`)`
 2. 初始化配置对象&openapi.Config。
 Config对象包含 `access_key_id` 、 `access_key_secret` 和 `endpoint` 等配置。
 
@@ -861,10 +990,9 @@ config := &openapi.Config{
   AccessKeyId: accessKeyId,
   // 您的AccessKey Secret。
   AccessKeySecret: accessKeySecret,
-}
 ```
 
-`//` 访问的域名。
+`}` `//` 访问的域名。
 
 ```
 config.Endpoint = tea.String("cr.cn-hangzhou.aliyuncs.com")
@@ -878,6 +1006,11 @@ client, _ := cr.NewClient(config)
 
 4. 创建对应API的Request。
 方法的命名规则为API方法名再加上Request。
+
+```
+request := &cr.GetArtifactBuildTaskRequest{}
+```
+
 5. 设置请求Request的参数。
 通过Request设置必要的信息，即API中必须要提供的信息。 `//` 该参数值为假设值，请您根据实际情况进行填写。
 
@@ -903,9 +1036,9 @@ response, err := client.GetArtifactBuildTask(request) fmt.Println(response)
 if err != nil {
   fmt.Println(err)
   return
-}
 ```
 
+`}`
 8. 调用Response获得返回的参数值。
 本文以获取 `requestId` 为例。
 
@@ -923,13 +1056,13 @@ fmt.Println(tea.StringValue(response.Body.ImageId))
   "github.com/alibabacloud-go/tea/tea"
 ```
 
-)
+`)`
 
 ```
 /**
 ```
 
-* 使用`AK&SK`初始化账号`Client`
+`*` 使用`AK&SK`初始化账号`Client`
 
 ```
  * @param accessKeyId
@@ -947,29 +1080,36 @@ func CreateClient (accessKeyId *string, accessKeySecret *string) (_result *cr201
     AccessKeyId: accessKeyId,
     // 您的AccessKey Secret
     AccessKeySecret: accessKeySecret,
-  }
 ```
 
-`//` 访问的域名
+`}` `//` 访问的域名
 
 ```
   config.Endpoint = tea.String("cr-ee.registry.cn-wl-en****.inter.en****.shuguang.com")
   _result = &cr20181201.Client{}
   _result, _err = cr20181201.NewClient(config)
   return _result, _err
-} func _main (args []*string) (_err error) {
+```
+
+`}`
+
+```
+func _main (args []*string) (_err error) {
   client, _err := CreateClient(tea.String("accessKeyId"),
 tea.String("accessKeySecret"))
   if _err != nil {
     return _err
-  }
+```
+
+`}`
+
+```
   getNamespaceRequest := &cr20181201.GetNamespaceRequest{
     InstanceId: tea.String("cri-pri****"),
 ```
 
 ```
     NamespaceName: tea.String("test12"),
-  }
 ```
 
 `//` 复制代码运行请自行打印 `API` 的返回值
@@ -978,21 +1118,36 @@ tea.String("accessKeySecret"))
   _, _err = client.GetNamespace(getNamespaceRequest)
   if _err != nil {
     return _err
-  }
+```
+
+`}`
+
+```
   return _err
-} func main() {
+```
+
+`}`
+
+```
+func main() {
   err := _main(tea.StringSlice(os.Args[1:]))
   if err != nil {
     panic(err)
-  }
-}
 ```
 
-## 标准版API参考
+`}` `}`
 
-### 容器镜像API调用方式
+## 2 标准版API参考
 
-#### 公共请求参数
+### 2.1 容器镜像API调用方式
+
+#### 2.1.1 公共请求参数
+
+本文列举了容器镜像服务ACR的API的公共请求参数和公共返回信息。
+
+**公共请求参数**
+
+公共请求参数是指每个接口都需要使用到的请求参数。
 
 | 参数名称 | 说明 | 选项 |
 |---|---|---|
@@ -1008,14 +1163,14 @@ tea.String("accessKeySecret"))
 | x-acs-signature-nonce | 唯一随机数，用于防止网络重放攻击。您在不同请求间要使用不同的随机数值。 | 必须 |
 | x-acs-signature-method | 用户签名方式，目前只支持HMAC- SHA1。 | 必须 |
 
-|  |  | cr.cn- | 必须 |
+|   |   | cr.cn- | 必须 |
 |---|---|---|---|
-|  | hangzhou.aliyuncs.com |  |  |
+|   | hangzhou.aliyuncs.com |   |   |
 
 **示例**
 
 ```
-Authorization: acs ACSbW2iBbyX1Pk9N:mp/6Wdr18V3qAc5gbgsqMe/iB0c Content-Length: 0 Content-Type: application/json;charset=utf-8 Date: Wed, 23 May 2018 12:00:01 GMT Host: cr.cn-hangzhou.aliyuncs.com Accept: application/json x-acs-version: 2016-06-07 x-acs-region-id: cn-hangzhou x-acs-signature-nonce: f63659d4-10ac-483b-99da-ea8fde61eae3 x-acs-signature-version: 1.0 x-acs-signature-method: HMAC-SHA1 User-Agent: cr-sdk-python/3.0.0 (Darwin/15.2.0/x86_64;2.7.10)
+GET /namespaces HTTP/1.1 Authorization: acs ACSbW2iBbyX1Pk9N:mp/6Wdr18V3qAc5gbgsqMe/iB0c Content-Length: 0 Content-Type: application/json;charset=utf-8 Date: Wed, 23 May 2018 12:00:01 GMT Host: cr.cn-hangzhou.aliyuncs.com Accept: application/json x-acs-version: 2016-06-07 x-acs-region-id: cn-hangzhou x-acs-signature-nonce: f63659d4-10ac-483b-99da-ea8fde61eae3 x-acs-signature-version: 1.0 x-acs-signature-method: HMAC-SHA1 User-Agent: cr-sdk-python/3.0.0 (Darwin/15.2.0/x86_64;2.7.10)
 ```
 
 **公共返回**
@@ -1030,26 +1185,21 @@ XML示例：
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-<接口名称`+Response>` <!--返回请求标签`-->`
+`<`接口名称`+Response>` <!--返回请求标签`-->`
 
 ```xml
   <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
 ```
 
-<!--返回结果数据`-->` `</`接口名称`+Response>` JSON 示例：
+<!--返回结果数据`-->` `</`接口名称`+Response>` JSON 示例： `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
 ```
 
-`/*` 返回结果数据 `*/`
+`/*` 返回结果数据 `*/` `}`
 
-```
-}
-```
-
-#### 请求结构
+#### 2.1.2 请求结构
 
 本文主要介绍发起容器镜像服务Open API请求时的结构。
 
@@ -1063,11 +1213,13 @@ XML示例：
 
 **请求参数**
 
+每个请求都需要包含公共请求参数和指定API所特有的请求参数。
+
 **请求编码**
 
 请求及返回结果都使用 `UTF-8` 字符集进行编码。
 
-#### 签名机制
+#### 2.1.3 签名机制
 
 为保证API的安全调用，在调用API时阿里云会对每个API请求通过签名进行身份验证。
 
@@ -1075,11 +1227,11 @@ XML示例：
 
 API签名包含两部分：公共请求头（HTTP协议Header参数和阿里云协议Header参数）和 CanonicalizedResource（规范资源），Body不计入签名。
 
-| AccessKey ID |  | 和 | AccessKey Secret |  |
+| AccessKey ID |   | 和 | AccessKey Secret |   |
 |---|---|---|---|---|
-| 理），其中 |  |  |  | 用于标识访问 |
+| 理），其中 |   |   |   | 用于标识访问 |
 
-系统会对每个访问的请求进行验证，每个提交的请求都需要在请求中包含签名（Signature）信息。系统通过使用 `AccessKey ID` 和 `AccessKey Secret` 进行对称加密的方法来验证请求的发送者身份。如果计算出来的验证码和提供的一样，即认为该请求是有效的；否则请求将被拒绝处理，并返回HTTP403错误。 请求要求将签名包含在HTTP Header中，格式为 `Authorization: acs [Access Key Id]:`
+`AccessKey ID` 和 `AccessKey Secret` 由阿里云官方颁发给访问者（可以通过阿里云官方网站申请和管理），其中 `AccessKey ID` 用于标识访问者的身份； `AccessKey Secret` 是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密，只有阿里云和用户知道。 系统会对每个访问的请求进行验证，每个提交的请求都需要在请求中包含签名（Signature）信息。系统通过使用 `AccessKey ID` 和 `AccessKey Secret` 进行对称加密的方法来验证请求的发送者身份。如果计算出来的验证码和提供的一样，即认为该请求是有效的；否则请求将被拒绝处理，并返回HTTP403错误。 请求要求将签名包含在HTTP Header中，格式为 `Authorization: acs [Access Key Id]:`
 
 ```
 [Signature] 。
@@ -1099,22 +1251,23 @@ Signature = base64(hmac-sha1(VERB + "\n"
             + CanonicalizedResource))
 ```
 
-| VERB |  |
+| VERB |   |
 |---|---|
-| Accept |  |
-| Content-MD5 |  |
-| Content-Type |  |
+| Accept |   |
+| Content-MD5 |   |
+| Content-Type |   |
 | Date | 表示此次 |
 
-`GMT` 。 `CanonicalizedHeaders` 表示HTTP中以 `x-acs-` 开始的字段组合。 `CanonicalizedResource` 表示HTTP所请求资源的URI（统一资源标识符）。比如 `/namespaces` 。
+`VERB` 表示HTTP的Method。比如示例中的PUT。 `Accept` 客户端需要的返回值类型，支持application/json和application/xml。 `Content-MD5` 表示请求内容数据的MD5值。 `Content-Type` 表示请求内容的类型。 `Date` 表示此次操作的时间，不能为空，目前只支持GMT格式。如果请求时间与服务器时间相差超过15 分钟，系统会判定此请求不合法，并返回400错误。比如示例中的 `Thu, 17 Mar 2018 18:00:00` `GMT` 。 `CanonicalizedHeaders` 表示HTTP中以 `x-acs-` 开始的字段组合。 `CanonicalizedResource` 表示HTTP所请求资源的URI（统一资源标识符）。比如 `/namespaces` 。
 
 **CanonicalizedHeaders**
 
 CanonicalizedHeaders（即以 `x-acs-` 开头的Header）在签名验证前需要符合以下规范：
 
-| x-acs- 为前缀的HTTP请求头的名转换为 x-acs-meta-name: TaoBao |  | 为前缀的HTTP请求头的名 |
+| x-acs- 为前缀的HTTP请求头的名转换为 x-acs-meta-name: TaoBao |   | 为前缀的HTTP请求头的名 |
 |---|---|---|
 
+`TaoBao` 转换为 `x-acs-meta-name: TaoBao` 。阿里云规范请求头的名字是大小写不敏感的，建议全部使用小写。
 2. 如果一个公共请求头的值部分过长，则需要处理其中的 \t 、 \n 、 \r 、 \f 分隔符，将其替换
 为英文半角的空格。
 3. 将上一步得到的所有HTTP阿里云规范头按照字典序进行升序排列。
@@ -1140,9 +1293,11 @@ CanonicalizedResource应该为：
 /repository?name=repository1&namespace=namespace1
 ```
 
-### 命名空间管理
+### 2.2 命名空间管理
 
-#### CreateNamespace
+#### 2.2.1 CreateNamespace
+
+调用CreateNamespace创建一个新的命名空间。
 
 **请求信息**
 
@@ -1162,15 +1317,14 @@ PUT /namespace HTTP/1.1
 
 **请求体RequestBody**
 
-Request Body:
+Request Body: `{`
 
 ```json
-{
     "Namespace": {
         "Namespace": "String",
-    }
-}
 ```
+
+`}` `}`
 
 **请求体解析**
 
@@ -1192,14 +1346,20 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data":{
         "namespaceId":Long
-    },
-    "requestId":"String"
-}
 ```
+
+`},`
+
+```json
+    "requestId":"String"
+```
+
+`}`
 
 **示例**
 
@@ -1209,15 +1369,14 @@ HTTP/1.1 200 OK
 PUT /namespace HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>` `{`
 
 ```json
-{
     "Namespace": {
         "Namespace": "aliyun",
-    }
-}
 ```
+
+`}` `}`
 
 **返回示例**
 
@@ -1225,16 +1384,16 @@ PUT /namespace HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "589EA3A1-9A67-4B82-95E5-11B1740178D1"
-}
 ```
 
-#### DeleteNamespace
+`}`
+
+#### 2.2.2 DeleteNamespace
 
 调用DeleteNamespace删除一个已有命名空间，注意这个操作会将存在于该命名空间下的所有仓库以及所有仓库下的镜像一并删除。
 
@@ -1242,6 +1401,10 @@ HTTP/1.1 200 OK
 
 **请求行RequestLine**
 
+```
+DELETE /namespace/[Namespace] HTTP/1.1
+```
+
 **请求行参数URI Param**
 
 | 名称 | 类型 | 是否必须 | 描述 |
@@ -1274,18 +1437,24 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data":{},
     "requestId":"string"
-}
 ```
+
+`}`
 
 **示例**
 
 **请求示例**
 
-<公共请求头>
+```
+DELETE /namespace/[Namespace] HTTP/1.1
+```
+
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -1293,16 +1462,18 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "CBC151B2-C9B6-4393-9A7F-712C920F1DC7"
-}
 ```
 
-#### UpdateNamespace
+`}`
+
+#### 2.2.3 UpdateNamespace
+
+调用UpdateNamespace更新命名空间的基本信息。
 
 **请求信息**
 
@@ -1324,14 +1495,15 @@ POST /namespace/[Namespace] HTTP/1.1
 
 **请求体RequestBody**
 
+`{`
+
 ```json
-{
     "Namespace": {
         "AutoCreate": Boolean,
         "DefaultVisibility": String
-    }
-}
 ```
+
+`}` `}`
 
 **请求体解析**
 
@@ -1354,12 +1526,14 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {},
     "requestId": "string"
-}
 ```
+
+`}`
 
 **示例**
 
@@ -1369,16 +1543,15 @@ HTTP/1.1 200 OK
 POST /namespace/[Namespace] HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>` `{`
 
 ```json
-{
     "Namespace": {
         "AutoCreate": false,
         "DefaultVisibility": "PUBLIC"
-    }
-}
 ```
+
+`}` `}`
 
 **返回示例**
 
@@ -1386,20 +1559,26 @@ POST /namespace/[Namespace] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
   "data": {},
     "requestId": "AL103117-2140-4A69-AC1A-BE69N040D01A"
-}
 ```
 
-#### GetNamespace
+`}`
+
+#### 2.2.4 GetNamespace
+
+调用GetNamespace查询指定命名空间的详细信息。
 
 **请求信息**
 
 **请求行RequestLine**
+
+```
+GET /namespace/[Namespace] HTTP/1.1
+```
 
 **请求参数**
 
@@ -1433,8 +1612,9 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {
         "namespace": {
             "namespace": "String",
@@ -1442,11 +1622,15 @@ HTTP/1.1 200 OK
             "defaultVisibility": "String",
             "autoCreate": "Boolean",
             "namespaceStatus": "String"
-        }
-    },
-    "requestId": "String"
-}
 ```
+
+`}` `},`
+
+```json
+    "requestId": "String"
+```
+
+`}`
 
 **返回参数**
 
@@ -1462,7 +1646,11 @@ HTTP/1.1 200 OK
 
 **请求示例**
 
-<公共请求头>
+```
+GET /namespace/[Namespace] HTTP/1.1
+```
+
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -1470,10 +1658,9 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
         "namespace": {
             "namespace": "aliyun",
@@ -1481,17 +1668,27 @@ HTTP/1.1 200 OK
             "defaultVisibility": "PRIVATE",
             "autoCreate": true,
             "namespaceStatus": "NORMAL"
-        }
-    },
-    "requestId": "19228CE5-4905-4A24-A2C1-E774F32CCC31"
-}
 ```
 
-#### GetNamespaceList
+`}` `},`
+
+```json
+    "requestId": "19228CE5-4905-4A24-A2C1-E774F32CCC31"
+```
+
+`}`
+
+#### 2.2.5 GetNamespaceList
+
+调用GetNamespaceList查询命名空间列表。
 
 **请求信息**
 
 **请求行RequestLine**
+
+```
+GET /namespace HTTP/1.1
+```
 
 **请求行参数URI Param**
 
@@ -1524,23 +1721,25 @@ HTTP/1.1 200 OK
 **返回体ResponseBody**
 
 ```json
-{
     "data": {
         "namespace": [
-            {
+```
+
+`{`
+
+```json
                 "namespace": "String",
                 "authorizeType": "String",
                 "namespaceStatus": "String"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "requestId": "string"
-}
 ```
+
+`}`
 
 **返回体解析**
 
@@ -1554,7 +1753,11 @@ HTTP/1.1 200 OK
 
 **请求示例**
 
-<公共请求头>
+```
+GET /namespace HTTP/1.1
+```
+
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -1562,35 +1765,40 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
         "namespaces": [
-            {
+```
+
+`{`
+
+```json
                 "namespace": "aliyun",
                 "authorizeType": "ADMIN",
                 "namespaceStatus": "NORMAL"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "namespace": "alibaba",
                 "authorizeType": "ADMIN",
                 "namespaceStatus": "NORMAL"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "requestId": "AB034FC3-27E8-4E34-958B-0944E369270B"
-}
 ```
 
-### 镜像仓库管理
+### 2.3 镜像仓库管理
 
-#### CreateRepo
+#### 2.3.1 CreateRepo
+
+调用CreateRepo创建一个新的仓库。
 
 **请求信息**
 
@@ -1610,19 +1818,18 @@ PUT /repos HTTP/1.1
 
 **请求体RequestBody**
 
-Request Body:
+Request Body: `{`
 
 ```json
-{
        "Repo": {
            "RepoNamespace": "String" //必填 2~30,
            "RepoName": "String" //必填 2~30,
            "Summary": "String" //必填 1~100,
            "Detail": "String" //选填 *~2000 支持Markdown语法,
            "RepoType": "String" //必填枚举(PRIVATE PUBLIC),
-       }
-   }
 ```
+
+`}` `}`
 
 **请求体解析**
 
@@ -1650,12 +1857,14 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {},
     "requestId": "String"
-}
 ```
+
+`}`
 
 **示例**
 
@@ -1665,18 +1874,17 @@ HTTP/1.1 200 OK
 PUT /repos HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>` `{`
 
 ```json
-{
     "repo": {
         "RepoNamespace": "aliyun",
         "RepoName": "Tengine",
         "Summary": "This is Aliyun Nginx",
         "RepoType": "PUBLIC"
-    }
-}
 ```
+
+`}` `}`
 
 **返回示例**
 
@@ -1684,16 +1892,16 @@ PUT /repos HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "80705201-FE46-4C08-AE30-FD50F5930993"
-}
 ```
 
-#### DeleteRepo
+`}`
+
+#### 2.3.2 DeleteRepo
 
 调用DeleteRepo删除一个已有仓库，注意这个操作会将存在于该仓库下的所有镜像一并删除。
 
@@ -1738,12 +1946,14 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data":{},
     "requestId":"string"
-}
 ```
+
+`}`
 
 **示例**
 
@@ -1753,7 +1963,7 @@ HTTP/1.1 200 OK
 DELETE /repos/[RepoNamespace]/[RepoName] HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -1761,16 +1971,18 @@ DELETE /repos/[RepoNamespace]/[RepoName] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "7BF6D761-E7F8-454C-A235-983E5D183B4E"
-}
 ```
 
-#### UpdateRepo
+`}`
+
+#### 2.3.3 UpdateRepo
+
+调用UpdateRepo更新仓库的基本信息，包括：仓库性质、摘要信息、描述信息。
 
 **请求信息**
 
@@ -1793,15 +2005,16 @@ POST /repos/[RepoNamespace]/[RepoName] HTTP/1.1
 
 **请求体RequestBody**
 
+`{`
+
 ```json
-{
     "Repo": {
         "Summary": "String",
         "Detail": "String",
         "RepoType": "String"
-    }
-}
 ```
+
+`}` `}`
 
 **请求体解析**
 
@@ -1825,12 +2038,14 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {},
     "requestId": "String"
-}
 ```
+
+`}`
 
 **示例**
 
@@ -1840,17 +2055,16 @@ HTTP/1.1 200 OK
 POST /repos/[RepoNamespace]/[RepoName] HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>` `{`
 
 ```json
-{
     "Repo": {
         "Summary": "Test repository",
         "Detail": "This is a test repository",
         "RepoType": "PRIVATE"
-    }
-}
 ```
+
+`}` `}`
 
 **返回示例**
 
@@ -1858,16 +2072,18 @@ POST /repos/[RepoNamespace]/[RepoName] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "F3103017-5928-4A69-AC1A-BE69A840D01A"
-}
 ```
 
-#### GetRepoTag
+`}`
+
+#### 2.3.4 GetRepoTag
+
+调用GetRepoTag查询某镜像的信息。
 
 **请求信息**
 
@@ -1905,8 +2121,9 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "imageUpdate": 1578625336000,
     "imageId": "6f08feb0be92c8ed2cc5b3e563313d2c08e468c1aa40d06908634884f236****",
     "requestId": "9AFB10K1-2301-4B00-A817-93249204****",
@@ -1915,8 +2132,9 @@ HTTP/1.1 200 OK
     "imageSize": 558063443,
     "imageCreate": 1577445220000,
     "status": "NORMAL"
-}
 ```
+
+`}`
 
 **返回体解析**
 
@@ -1945,10 +2163,9 @@ GET /repos/RepoNamespace/RepoName/tags/Tag HTTP/1.1 公共请求头 { "RepoName"
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "imageUpdate": 1578625336000,
     "imageId": "6f08feb0be92c8ed2cc5b3e563313d2c08e468c1aa40d06908634884f236****",
     "requestId": "",
@@ -1957,14 +2174,21 @@ HTTP/1.1 200 OK
     "imageSize": 558063443,
     "imageCreate": 1577445220000,
     "status": "NORMAL"
-}
 ```
 
-#### GetRepo
+`}`
+
+#### 2.3.5 GetRepo
+
+调用GetRepo查询仓库的详细信息。
 
 **请求信息**
 
 **请求行RequestLine**
+
+```
+GET /repos/[RepoNamespace]/[RepoName] HTTP/1.1
+```
 
 **请求行参数URI Param**
 
@@ -1996,7 +2220,7 @@ HTTP/1.1 200 OK
 **返回体ResponseBody**
 
 ```json
-{ "data":{
+"data":{
     "repo": {
         "summary": String,
         "repoId": Long,
@@ -2009,15 +2233,24 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": String,
             "vpc": String
-        },
+```
+
+`},`
+
+```json
         "regionId": String,
         "repoStatus": String,
         "detail": String,
         "repoAuthorizeType": String
-    }
-}, "requestId": string
-    }
 ```
+
+`}` `},`
+
+```json
+"requestId": string
+```
+
+`}`
 
 **返回体解析**
 
@@ -2036,11 +2269,11 @@ HTTP/1.1 200 OK
 | detail | String | 仓库详情 |
 | repoAuthorizeType | String | 仓库权限 |
 
-**示例**
+```
+GET /repos/[RepoNamespace]/[RepoName] HTTP/1.1
+```
 
-**请求示例**
-
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2048,10 +2281,9 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
  "data":{
      "repo": {
        "summary": "test",
@@ -2064,22 +2296,36 @@ HTTP/1.1 200 OK
        "repoDomainList": {
          "public": "registry.cn-hangzhou.aliyuncs.com",
          "vpc": "registry-vpc.cn-hangzhou.aliyuncs.com"
-       },
+```
+
+`},`
+
+```json
        "regionId": "cn-hangzhou",
        "repoStatus": "NORMAL",
        "detail": "",
        "repoAuthorizeType": "ADMIN"
-     }
-},
- "requestId": "B21BE190-08BA-41B6-B8B5-CA4029F1CC58"
-}
 ```
 
-#### GetRepoList
+`}` `},`
+
+```json
+ "requestId": "B21BE190-08BA-41B6-B8B5-CA4029F1CC58"
+```
+
+`}`
+
+#### 2.3.6 GetRepoList
+
+调用GetRepoList查询仓库列表的信息。
 
 **请求信息**
 
 **请求行RequestLine**
+
+```
+GET /repos HTTP/1.1
+```
 
 **请求行参数URI Param**
 
@@ -2113,7 +2359,7 @@ HTTP/1.1 200 OK
 **返回体ResponseBody**
 
 ```json
-{ "data": {
+"data": {
     "total": Integer,
     "repos": [{
         "summary": String,
@@ -2127,7 +2373,11 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": String,
             "vpc": String
-        },
+```
+
+`},`
+
+```json
         "regionId": String,
         "repoStatus": String,
         "repoAuthorizeType": String
@@ -2143,15 +2393,26 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": String,
             "vpc": String
-        },
+```
+
+`},`
+
+```json
         "regionId": String,
         "repoStatus": String,
         "repoAuthorizeType": String
     }],
     "pageSize": Integer,
     "page": Integer
-}, "requestId": String }
 ```
+
+`},`
+
+```json
+"requestId": String
+```
+
+`}`
 
 **返回体解析**
 
@@ -2179,7 +2440,11 @@ HTTP/1.1 200 OK
 
 **请求示例**
 
-<公共请求头>
+```
+GET /repos HTTP/1.1
+```
+
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2187,10 +2452,10 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{ "data": {
+"data": {
     "total": 2,
     "repos": [{
         "summary": "测试1",
@@ -2204,7 +2469,11 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": "registry.cn-hangzhou.aliyuncs.com",
             "vpc": "registry-vpc.cn-hangzhou.aliyuncs.com"
-        },
+```
+
+`},`
+
+```json
         "regionId": "cn-hangzhou",
         "repoStatus": "NORMAL",
         "repoAuthorizeType": "ADMIN"
@@ -2220,21 +2489,38 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": "registry.cn-hangzhou.aliyuncs.com",
             "vpc": "registry-vpc.cn-hangzhou.aliyuncs.com"
-        },
+```
+
+`},`
+
+```json
         "regionId": "cn-hangzhou",
         "repoStatus": "NORMAL",
         "repoAuthorizeType": "ADMIN"
     }],
     "pageSize": 20,
     "page": 1
-}, "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E" }
 ```
 
-#### GetRepoListByNamespace
+`},`
+
+```json
+"requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
+```
+
+`}`
+
+#### 2.3.7 GetRepoListByNamespace
+
+调用GetRepoListByNamespace查询仓库列表的信息。
 
 **请求信息**
 
 **请求行RequestLine**
+
+```
+GET /repos/[RepoNamespace] HTTP/1.1
+```
 
 **请求行参数URI Param**
 
@@ -2269,7 +2555,7 @@ HTTP/1.1 200 OK
 **返回体ResponseBody**
 
 ```json
-{ "data": {
+"data": {
     "total": Integer,
     "repos": [{
         "summary": String,
@@ -2283,7 +2569,11 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": String,
             "vpc": String
-        },
+```
+
+`},`
+
+```json
         "regionId": String,
         "repoStatus": String,
         "repoAuthorizeType": String
@@ -2299,15 +2589,26 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": String,
             "vpc": String
-        },
+```
+
+`},`
+
+```json
         "regionId": String,
         "repoStatus": String,
         "repoAuthorizeType": String
     }],
     "pageSize": Integer,
     "page": Integer
-}, "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E" }
 ```
+
+`},`
+
+```json
+"requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
+```
+
+`}`
 
 **返回体解析**
 
@@ -2337,7 +2638,11 @@ HTTP/1.1 200 OK
 
 **请求示例**
 
-<公共请求头>
+```
+GET /repos/[RepoNamespace] HTTP/1.1
+```
+
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2345,10 +2650,10 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{ "data": {
+"data": {
     "total": 2,
     "repos": [{
         "summary": "测试1",
@@ -2362,7 +2667,11 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": "registry.cn-hangzhou.aliyuncs.com",
             "vpc": "registry-vpc.cn-hangzhou.aliyuncs.com"
-        },
+```
+
+`},`
+
+```json
         "regionId": "cn-hangzhou",
         "repoStatus": "NORMAL",
         "repoAuthorizeType": "ADMIN"
@@ -2378,17 +2687,30 @@ HTTP/1.1 200 OK
         "repoDomainList": {
             "public": "registry.cn-hangzhou.aliyuncs.com",
             "vpc": "registry-vpc.cn-hangzhou.aliyuncs.com"
-        },
+```
+
+`},`
+
+```json
         "regionId": "cn-hangzhou",
         "repoStatus": "NORMAL",
         "repoAuthorizeType": "ADMIN"
     }],
     "pageSize": 20,
     "page": 1
-}, "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E" }
 ```
 
-#### GetRepoTags
+`},`
+
+```json
+"requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
+```
+
+`}`
+
+#### 2.3.8 GetRepoTags
+
+调用GetRepoTags查询仓库的镜像信息。
 
 **请求信息**
 
@@ -2430,7 +2752,7 @@ HTTP/1.1 200 OK
 **返回体ResponseBody**
 
 ```json
-{ "data": {
+"data": {
  "total": Integer,
  "pageSize": Integer,
  "page": Integer,
@@ -2450,9 +2772,15 @@ HTTP/1.1 200 OK
    "imageSize": Long,
    "tag": String,
    "status": String
- }]
-}, "requestId": "9AFB10K1-2301-4B00-A817-932492040126" }
 ```
+
+`}]` `},`
+
+```json
+"requestId": "9AFB10K1-2301-4B00-A817-932492040126"
+```
+
+`}`
 
 **返回体解析**
 
@@ -2471,13 +2799,11 @@ HTTP/1.1 200 OK
 
 **示例**
 
-**请求示例**
-
 ```
 GET /repos/[RepoNamespace]/[RepoName]/tags HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2485,10 +2811,9 @@ GET /repos/[RepoNamespace]/[RepoName]/tags HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
    "total": 2,
    "pageSize": 30,
    "page": 1,
@@ -2508,15 +2833,21 @@ HTTP/1.1 200 OK
      "tag": "asdf",
      "imageCreate": 1514372044000,
      "status": "NORMAL"
-   }]
- },
- "requestId": "9AFB52D3-6631-4B00-A857-932492097726"
-}
 ```
 
-### 镜像管理
+`}]` `},`
 
-#### DeleteImage
+```json
+ "requestId": "9AFB52D3-6631-4B00-A857-932492097726"
+```
+
+`}`
+
+### 2.4 镜像管理
+
+#### 2.4.1 DeleteImage
+
+调用DeleteImage删除一个镜像版本（Tag），删除后无法恢复。
 
 **请求信息**
 
@@ -2562,12 +2893,14 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data":{},
     "requestId":"string"
-}
 ```
+
+`}`
 
 **示例**
 
@@ -2577,7 +2910,7 @@ HTTP/1.1 200 OK
 DELETE /repos/[RepoNamespace]/[RepoName]/tags/[Tag] HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2585,16 +2918,18 @@ DELETE /repos/[RepoNamespace]/[RepoName]/tags/[Tag] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "7BF6D761-E7F8-454C-A235-983E5D183B4E"
-}
 ```
 
-#### GetImageManifest
+`}`
+
+#### 2.4.2 GetImageManifest
+
+调用GetImageManifest查询镜像元数据（Manifest）信息。
 
 **请求信息**
 
@@ -2638,8 +2973,9 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
   "data": {
     "manifest": {
       "name": "String",
@@ -2649,11 +2985,15 @@ HTTP/1.1 200 OK
       "architecture": "String",
       "tag": "String",
       "schemaVersion": "Integer"
-    }
-  },
-  "requestId": "String"
-}
 ```
+
+`}` `},`
+
+```json
+  "requestId": "String"
+```
+
+`}`
 
 **返回体解析**
 
@@ -2677,7 +3017,7 @@ HTTP/1.1 200 OK
 GET /repos/[RepoNamespace]/[RepoName]/tags/[Tag]/manifest HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2685,10 +3025,9 @@ GET /repos/[RepoNamespace]/[RepoName]/tags/[Tag]/manifest HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
   "data": {
     "manifest": {
       "name": "testNamespace/testRepo",
@@ -2705,26 +3044,40 @@ HTTP/1.1 200 OK
           "config": {},
           "docker_version": "17.12.0-ce",
           "architecture": "amd64"
-        }
+```
+
+`}`
+
+```json
       }],
       "signatures": [{
         "signature": "e",
         "header": {
           "alg": "ES256",
           "jwk": {}
-        },
+```
+
+`},`
+
+```json
         "protected": "f"
       }],
       "architecture": "amd64",
       "tag": "tag1",
       "schemaVersion": 1
-    }
-  },
-  "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
-}
 ```
 
-#### GetImageLayer
+`}` `},`
+
+```json
+  "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
+```
+
+`}`
+
+#### 2.4.3 GetImageLayer
+
+调用GetImageLayer查询镜像层（Layer）信息。
 
 **请求信息**
 
@@ -2770,8 +3123,9 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {
       "image": {
         "repoNamespace": "String",
@@ -2779,11 +3133,15 @@ HTTP/1.1 200 OK
         "layers": "Array",
         "tag": "String",
         "region": "String"
-      }
-    },
-    "requestId": "String"
-}
 ```
+
+`}` `},`
+
+```json
+    "requestId": "String"
+```
+
+`}`
 
 **返回体解析**
 
@@ -2795,15 +3153,11 @@ HTTP/1.1 200 OK
 | tag | String | 镜像版本（Tag） |
 | region | String | 镜像仓库地域 |
 
-**示例**
-
-**请求示例**
-
 ```
 GET /repos/[RepoNamespace]/[RepoName]/tags/[Tag]/layers HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -2811,10 +3165,9 @@ GET /repos/[RepoNamespace]/[RepoName]/tags/[Tag]/layers HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
       "image": {
         "repoNamespace": "testNamespace",
@@ -2840,15 +3193,21 @@ HTTP/1.1 200 OK
         }],
         "tag": "latest",
         "region": "cn-hangzhou"
-      }
-    },
-    "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
-}
 ```
 
-### 触发器管理
+`}` `},`
 
-#### CreateRepoWebhook
+```json
+    "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
+```
+
+`}`
+
+### 2.5 触发器管理
+
+#### 2.5.1 CreateRepoWebhook
+
+调用CreateRepoWebhook创建仓库触发器。
 
 **请求信息**
 
@@ -2871,15 +3230,20 @@ PUT /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1
 
 **请求体RequestBody**
 
+```
+Request Body:
+```
+
+`{`
+
 ```json
-Request Body: {
     "Webhook": {
         "WebhookName": "String" 必填,
         "WebhookUrl": "String" 必填,
         "TriggerType": "String" 必填枚举(ALL TAG_REG_EXP TAG_LIST),
-    }
-}
 ```
+
+`}` `}`
 
 **请求体解析**
 
@@ -2903,34 +3267,33 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {
         "webhookId": "String"
-    },
-    "requestId": "String"
-}
 ```
 
-**示例**
+`},`
 
-**请求示例**
+```json
+    "requestId": "String"
+```
 
 ```
 PUT /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>` `{`
 
 ```json
-{
     "Webhook": {
         "WebhookName": "MyTrigger",
         "WebhookUrl": "https://www.****.com",
         "TriggerType": "ALL"
-    }
-}
 ```
+
+`}` `}`
 
 **返回示例**
 
@@ -2938,18 +3301,24 @@ PUT /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
         "webhookId": "39762"
-    },
-    "requestId": "3666F8EA-1468-4BEA-883B-FC60A651A609"
-}
 ```
 
-#### DeleteRepoWebhook
+`},`
+
+```json
+    "requestId": "3666F8EA-1468-4BEA-883B-FC60A651A609"
+```
+
+`}`
+
+#### 2.5.2 DeleteRepoWebhook
+
+调用DeleteRepoWebhook删除一个仓库的触发器。
 
 **请求信息**
 
@@ -2993,12 +3362,14 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {},
     "requestId": "String"
-}
 ```
+
+`}`
 
 **示例**
 
@@ -3008,7 +3379,7 @@ HTTP/1.1 200 OK
 DELETE /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -3016,16 +3387,18 @@ DELETE /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {},
     "requestId": "639F1195-56D9-49B7-BC47-B3BFCC9ED1C9"
-}
 ```
 
-#### GetRepoWebhook
+`}`
+
+#### 2.5.3 GetRepoWebhook
+
+调用GetRepoWebhook查询仓库触发器列表。
 
 **请求信息**
 
@@ -3064,26 +3437,30 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {
         "webhooks":[
-            {
+```
+
+`{`
+
+```json
                 "webhookId": Long,
                 "triggerTag": String,
                 "webhookName": String,
                 "triggerType": String,
                 "webhookUrl": String
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "requestId": String
-}
 ```
+
+`}`
 
 **返回体解析**
 
@@ -3105,7 +3482,7 @@ HTTP/1.1 200 OK
 GET /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -3113,30 +3490,34 @@ GET /repos/[RepoNamespace]/[RepoName]/webhooks HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
         "webhooks":[
-            {
+```
+
+`{`
+
+```json
                 "webhookId": 39726,
                 "triggerTag": "",
                 "webhookName": "justForTest",
                 "triggerType": "ALL",
                 "webhookUrl": "https://www.****.com"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "requestId": "A86AB63A-758B-4FD9-9CB1-1421083A2EF5"
-}
 ```
 
-#### UpdateRepoWebhook
+`}`
+
+#### 2.5.4 UpdateRepoWebhook
+
+调用UpdateRepoWebhook更新镜像仓库触发器。
 
 **请求信息**
 
@@ -3160,16 +3541,15 @@ POST /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1
 
 **请求体RequestBody**
 
+`{`
+
 ```json
-{
    "Webhook": {
       "WebhookName": "String",
       "WebhookUrl": "String",
       "TriggerName": "String",
       "TriggerUrl": "String",
       "TriggerType": "String"
-   }
-}
 ```
 
 **请求体解析**
@@ -3193,13 +3573,19 @@ HTTP/1.1 200 OK
 
 **返回体ResponseBody**
 
+`{`
+
 ```json
-{
     "data": {
-    },
-    "requestId": "String"
-}
 ```
+
+`},`
+
+```json
+    "requestId": "String"
+```
+
+`}`
 
 **返回体解析**
 
@@ -3213,19 +3599,18 @@ HTTP/1.1 200 OK
 POST /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>` `{`
 
 ```json
-{
    "Webhook": {
       "WebhookName": "justForTest",
       "WebhookUrl": "https://www.****.com",
       "TriggerName": "justForTest",
       "TriggerUrl": "https://www.****.com",
       "TriggerType": "ALL"
-   }
-}
 ```
+
+`}` `}`
 
 **返回示例**
 
@@ -3233,19 +3618,23 @@ POST /repos/[RepoNamespace]/[RepoName]/webhooks/[WebhookId] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
-    },
-    "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
-}
 ```
 
-### 访问凭证管理
+`},`
 
-#### GetAuthorizationToken
+```json
+    "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
+```
+
+`}`
+
+### 2.6 访问凭证管理
+
+#### 2.6.1 GetAuthorizationToken
 
 返回用于登录Registry的临时账号和临时密码，临时密码的有效时间为1小时，若使用STS方式请求时，临时密码的有效时间等同于本次请求STS Token的有效时间。
 
@@ -3292,15 +3681,19 @@ HTTP/1.1 200 OK
 **返回体ResponseBody**
 
 ```json
-{
     "data": {
         "authorizationToken": "String",
         "tempUserName": "String",
         "expireDate": Long
-    },
-    "requestId": "String"
-}
 ```
+
+`},`
+
+```json
+    "requestId": "String"
+```
+
+`}`
 
 **返回体解析**
 
@@ -3318,7 +3711,7 @@ HTTP/1.1 200 OK
 Get /tokens HTTP/1.1
 ```
 
-<公共请求头>
+`<`公共请求头`>`
 
 **返回示例**
 
@@ -3326,24 +3719,30 @@ Get /tokens HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-<公共响应头>
+`<`公共响应头`>` `{`
 
 ```json
-{
     "data": {
         "authorizationToken": "eyJ0aW1lIjoiMTUyNjU0OTc5:0705733****",
         "tempUserName": "cr_temp_user",
         "expireDate": 1526549792000
-    },
-    "requestId": "94E89857-B994-44B6-9C4F-DBD200E9E272"
-}
 ```
 
-## 高级版API参考
+`},`
 
-### 镜像命名空间管理
+```json
+    "requestId": "94E89857-B994-44B6-9C4F-DBD200E9E272"
+```
 
-#### CreateNamespace
+`}`
+
+## 3 高级版API参考
+
+### 3.1 镜像命名空间管理
+
+#### 3.1.1 CreateNamespace
+
+调用CreateNamespace创建镜像仓库命名空间。
 
 **请求参数**
 
@@ -3369,10 +3768,10 @@ HTTP/1.1 200 OK
 请求示例
 
 ```
-&InstanceId=cri-pri**** &NamespaceName=namespace1 &RegionId=cn-wl-env****
+http(s)://[Endpoint]/?Action=CreateNamespace &InstanceId=cri-pri**** &NamespaceName=namespace1 &RegionId=cn-wl-env****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <IsSuccess>true</IsSuccess> <RequestId>BC648259-91A7-4502-BED3-EDF64361FA83</RequestId> <Code>success</Code>
@@ -3380,21 +3779,25 @@ HTTP/1.1 200 OK Content-Type:application/xml <IsSuccess>true</IsSuccess> <Reques
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "IsSuccess" : true,
   "RequestId" : "BC648259-91A7-4502-BED3-EDF64361FA83",
   "Code" : "success"
-}
 ```
 
-#### DeleteNamespace
+`}`
 
-删除镜像仓库命名空间会将存在于该命名空间下的所有仓库以及所有仓库下的镜像一并删
+#### 3.1.2 DeleteNamespace
 
-**说明**
+调用DeleteNamespace删除镜像仓库命名空间。
 
-除。
+> **说明：** 删除镜像仓库命名空间会将存在于该命名空间下的所有仓库以及所有仓库下的镜像一并删除。
 
 **请求参数**
 
@@ -3418,26 +3821,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &NamespaceName=ns3 &RegionId=cn-wl-en****
+http(s)://[Endpoint]/?Action=DeleteNamespace &InstanceId=cri-pri**** &NamespaceName=ns3 &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>BA08C185-8F76-48D7-ACB3-BA11BF2778F9</RequestId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess":true,
     "RequestId":"BA08C185-8F76-48D7-ACB3-BA11BF2778F9",
     "Code":"success"
-}
 ```
 
-#### UpdateNamespace
+`}`
+
+#### 3.1.3 UpdateNamespace
+
+调用UpdateNamespace更新命名空间。
 
 **请求参数**
 
@@ -3465,10 +3870,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &NamespaceName=test &RegionId=cn-wl-en****
+http(s)://[Endpoint]/?Action=UpdateNamespace &InstanceId=cri-pri**** &NamespaceName=test &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>90B8475C-C066-4B92-946E-4D0DECB514E8</RequestId> <Code>success</Code>
@@ -3477,14 +3882,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 `JSON` 格式
 
 ```json
-{
     "IsSuccess":true,
     "RequestId":"90B8475C-C066-4B92-946E-4D0DECB514E8",
     "Code":"success"
-}
 ```
 
-#### GetNamespace
+`}`
+
+#### 3.1.4 GetNamespace
+
+调用GetNamespace查询命名空间信息。
 
 **请求参数**
 
@@ -3517,19 +3924,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &NamespaceName=test &RegionId=cn-wl-en****
+http(s)://[Endpoint]/?Action=GetNamespace &InstanceId=cri-pri**** &NamespaceName=test &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
-<Code>success</Code> <DefaultRepoType>PUBLIC</DefaultRepoType> <InstanceId>cri-pri****</InstanceId> <IsSuccess>true</IsSuccess> <NamespaceName>test</NamespaceName> <NamespaceId>crn-tiw8t3f8i5lta4uv</NamespaceId> <NamespaceStatus>NORMAL</NamespaceStatus> <RequestId>E4BC9E21-8AA5-4582-83C1-C1209AB8196F</RequestId>
+<AutoCreateRepo>true</AutoCreateRepo> <Code>success</Code> <DefaultRepoType>PUBLIC</DefaultRepoType> <InstanceId>cri-pri****</InstanceId> <IsSuccess>true</IsSuccess> <NamespaceName>test</NamespaceName> <NamespaceId>crn-tiw8t3f8i5lta4uv</NamespaceId> <NamespaceStatus>NORMAL</NamespaceStatus> <RequestId>E4BC9E21-8AA5-4582-83C1-C1209AB8196F</RequestId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "AutoCreateRepo": "true",
     "Code": "success",
     "DefaultRepoType": "PUBLIC",
@@ -3539,14 +3945,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "NamespaceId": "crn-tiw8t3f8i5lta4uv",
     "NamespaceStatus": "NORMAL",
     "RequestId": "E4BC9E21-8AA5-4582-83C1-C1209AB8196F"
-}
 ```
+
+`}`
 
 **错误码**
 
 访问错误中心查看更多错误码。 访问错误中心查看更多错误码。
 
-#### ListNamespace
+#### 3.1.5 ListNamespace
+
+调用ListNamespace查询命名空间列表。
 
 **请求参数**
 
@@ -3566,7 +3975,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | Code | String | success | 返回值 |
 | IsSuccess | Boolean | true | 是否调用成功，取值： true ：调用成功 false ：调用失败 |
-| Namespaces | Array of Namespaces |  | 命名空间列表 |
+| Namespaces | Array of Namespaces |   | 命名空间列表 |
 | AutoCreateRe po | Boolean | true | 开启自动创建仓库 |
 | DefaultRepoTy pe | String | PUBLIC | 默认仓库类型，取值： PUBLIC ：公开仓库 PRIVATE ：私有仓库 |
 
@@ -3585,10 +3994,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en****
+http(s)://[Endpoint]/?Action=ListNamespace &InstanceId=cri-pri**** &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <Namespaces>
@@ -3596,6 +4005,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
     <NamespaceName>test</NamespaceName>
     <DefaultRepoType>PUBLIC</DefaultRepoType>
     <InstanceId>cri-pri****</InstanceId>
+    <AutoCreateRepo>true</AutoCreateRepo>
     <NamespaceId>crn-tiw8t3f8i5lt****</NamespaceId>
 </Namespaces> <TotalCount>1</TotalCount> <PageSize>30</PageSize> <RequestId>B7E5FCA5-55ED-451C-9649-0BB2B93387D0</RequestId> <PageNo>1</PageNo> <Code>success</Code>
 ```
@@ -3603,7 +4013,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 `JSON` 格式
 
 ```json
-{
     "IsSuccess": true,
     "Namespaces": {
         "NamespaceStatus": "NORMAL",
@@ -3612,18 +4021,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "InstanceId": "cri-pri****",
         "AutoCreateRepo": true,
         "NamespaceId": "crn-tiw8t3f8i5lt****"
-    },
+```
+
+`},`
+
+```json
     "TotalCount": 1,
     "PageSize": 30,
     "RequestId": "B7E5FCA5-55ED-451C-9649-0BB2B93387D0",
     "PageNo": 1,
     "Code": "success"
-}
 ```
 
-### 镜像仓库管理
+`}`
 
-#### CreateRepository
+### 3.2 镜像仓库管理
+
+#### 3.2.1 CreateRepository
+
+调用CreateRepository创建镜像仓库。
 
 **请求参数**
 
@@ -3655,10 +4071,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoName=repo1 &RepoNamespaceName=namespace01 &RepoType=PRIVATE &Summary=repo1
+http(s)://[Endpoint]/?Action=CreateRepository &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoName=repo1 &RepoNamespaceName=namespace01 &RepoType=PRIVATE &Summary=repo1
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>886FB272-15C3-44FC-AA54-F4ABD5B93A28</RequestId> <RepoId>crr-xwvi3osiy4ff****</RepoId> <Code>success</Code>
@@ -3667,19 +4083,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 `JSON` 格式
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "886FB272-15C3-44FC-AA54-F4ABD5B93A28",
     "RepoId": "crr-xwvi3osiy4ff****",
     "Code": "success"
-}
 ```
 
-#### DeleteRepository
+`}`
 
-这个操作会将存在于该仓库下的所有镜像一并删除。
+#### 3.2.2 DeleteRepository
 
-**重要**
+调用DeleteRepository删除镜像仓库。
+
+> **重要：** 这个操作会将存在于该仓库下的所有镜像一并删除。
 
 **请求参数**
 
@@ -3703,26 +4119,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cn-wl-en**** &RegionId=cri-pri**** &RepoId=crr-l4933wbcmun2****
+http(s)://[Endpoint]/?Action=DeleteRepository &InstanceId=cn-wl-en**** &RegionId=cri-pri**** &RepoId=crr-l4933wbcmun2****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>47DD9D56-09A0-4C52-B520-C3805DBAB96B</RequestId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "47DD9D56-09A0-4C52-B520-C3805DBAB96B",
     "Code": "success"
-}
 ```
 
-#### UpdateRepository
+`}`
+
+#### 3.2.3 UpdateRepository
+
+调用UpdateRepository更新仓库信息。
 
 **请求参数**
 
@@ -3752,29 +4170,38 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RepoId=crr-tquyps22md8p**** &RepoType=PUBLIC &Summary=test repo &Detail=repo-for-test &TagImmutability=true
+http(s)://[Endpoint]/?Action=UpdateRepository &InstanceId=cri-pri**** &RepoId=crr-tquyps22md8p**** &RepoType=PUBLIC &Summary=test repo &Detail=repo-for-test &TagImmutability=true
 ```
 
-正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateRepositoryResponse>
     <Code>success</Code>
     <IsSuccess>true</IsSuccess>
     <RequestId>CC43EC6B-0DD4-40AE-8811-B0519617051A</RequestId>
+</UpdateRepositoryResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "Code" : "success",
   "IsSuccess" : true,
   "RequestId" : "CC43EC6B-0DD4-40AE-8811-B0519617051A"
-}
 ```
 
-#### ListRepository
+`}`
+
+#### 3.2.4 ListRepository
+
+调用ListRepository查询镜像仓库列表。
 
 **请求参数**
 
@@ -3799,7 +4226,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | PageNo | Integer | 1 | 页号 |
 | PageSize | Integer | 30 | 页大小 |
-| Repositories | Array of Repositories |  | 仓库列表 |
+| Repositories | Array of Repositories |   | 仓库列表 |
 | CreateTime | Long | 1564153576000 | 创建时间 |
 | InstanceId | String | cn-wl-en**** | 实例ID |
 | ModifiedTime | Long | 1564153576000 | 最近修改时间 |
@@ -3821,10 +4248,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en****
+http(s)://[Endpoint]/?Action=ListRepository &InstanceId=cri-pri**** &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Repositories>
@@ -3845,7 +4272,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 `JSON` 格式
 
 ```json
-{
     "Repositories": {
         "RepoNamespaceName": "test",
         "TagImmutability": true,
@@ -3858,17 +4284,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "RepoName": "test",
         "Summary": "test OK",
         "RepoId": "crr-03cuozrsqhkw****"
-    },
+```
+
+`},`
+
+```json
     "IsSuccess": true,
     "TotalCount": 1,
     "PageSize": 30,
     "RequestId": "5241C090-DA69-4B0F-8E3F-2F24FDE1110E",
     "PageNo": 1,
     "Code": "success"
-}
 ```
 
-#### GetRepository
+`}`
+
+#### 3.2.5 GetRepository
+
+调用GetRepository查询镜像仓库信息。
 
 **请求参数**
 
@@ -3903,24 +4336,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Summary | String | Automatically created repository | 摘要信息 |
 | TagImmutabili ty | Boolean | true | 镜像tag不可变性，取值： true ：开启 false ：关闭 |
 
-**示例**
-
-请求示例
-
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en****
+http(s)://[Endpoint]/?Action=GetRepository &InstanceId=cri-pri**** &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RepoNamespaceName>test</RepoNamespaceName> <IsSuccess>true</IsSuccess> <RequestId>915E6734-3E50-4640-8DBA-126D2D94DE29</RequestId> <InstanceId>cri-pri****</InstanceId> <CreateTime>1570759546000</CreateTime> <RepoName>test</RepoName> <Code>success</Code> <TagImmutability>true</TagImmutability> <RepoBuildType>MANUAL</RepoBuildType> <ModifiedTime>1570759546100</ModifiedTime> <RepoType>PRIVATE</RepoType> <RepoStatus>NORMAL</RepoStatus> <Summary>Automatically created repository</Summary> <RepoId>crr-l5eoubonp0l****</RepoId> <Detail>test</Detail>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RepoNamespaceName": "test",
     "IsSuccess": true,
     "RequestId": "915E6734-3E50-4640-8DBA-126D2D94DE29",
@@ -3936,16 +4364,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Summary": "Automatically created repository",
     "RepoId": "crr-l5eoubonp0l****",
     "Detail": "test"
-}
 ```
+
+`}`
 
 **错误码**
 
 访问错误中心查看更多错误码。 访问错误中心查看更多错误码。
 
-### 镜像管理
+### 3.3 镜像管理
 
-#### ListRepoTag
+#### 3.3.1 ListRepoTag
+
+调用ListRepoTag查询镜像版本（Tag）列表。
 
 **请求参数**
 
@@ -3963,7 +4394,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | Code | String | success | 返回值 |
-| Images | Array of Images |  | 镜像列表 |
+| Images | Array of Images |   | 镜像列表 |
 | Digest | String | 67bfbcc12b67936e c7f867927817cbb0 71832b873dbcaed 312a1930ba5f1*** * | digest值 |
 | ImageCreate | String | 1572839125000 | 镜像创建时间 |
 | ImageId | String | 45023655bf39c382 e26a8607d057c27 871dee163c1ecf48 cc1ebf2a1**** | 镜像ID |
@@ -3984,10 +4415,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-tquyps22md8p****
+http(s)://[Endpoint]/?Action=ListRepoTag &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-tquyps22md8p****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <TotalCount>1</TotalCount> <PageSize>30</PageSize> <RequestId>031572FA-7D8F-4C05-B790-1071E0E05DE6</RequestId> <Images>
@@ -4004,7 +4435,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 `JSON` 格式
 
 ```json
-{
     "IsSuccess": true,
     "TotalCount": 1,
     "PageSize": 30,
@@ -4017,13 +4447,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "ImageId": "45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****",
         "ImageUpdate": 1572875608000,
         "Tag": "v0.1"
-    },
-    "PageNo": 1,
-    "Code": "success"
-}
 ```
 
-#### DeleteRepoTag
+`},`
+
+```json
+    "PageNo": 1,
+    "Code": "success"
+```
+
+`}`
+
+#### 3.3.2 DeleteRepoTag
+
+调用DeleteRepoTag删除镜像。
 
 **请求参数**
 
@@ -4050,26 +4487,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-xwvi3osiy4ff**** &Tag=1.24
+http(s)://[Endpoint]/?Action=DeleteRepoTag &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-xwvi3osiy4ff**** &Tag=1.24
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>96E66B3A-C81A-48BE-ACD6-C0AB1F9313C0</RequestId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "96E66B3A-C81A-48BE-ACD6-C0AB1F9313C0",
     "Code": "success"
-}
 ```
 
-#### GetRepoTag
+`}`
+
+#### 3.3.3 GetRepoTag
+
+调用GetRepoTag获取单个镜像Tag信息。
 
 **请求参数**
 
@@ -4101,13 +4540,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RepoId=crr-tquyps22md8p**** &Tag=1.0
+http(s)://[Endpoint]/?Action=GetRepoTag &InstanceId=cri-pri**** &RepoId=crr-tquyps22md8p**** &Tag=1.0
 ```
 
-正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetRepoTagResponse>
     <Status>NORMAL</Status>
     <ImageCreate>1572839125000</ImageCreate>
     <ImageSize>27107966</ImageSize>
@@ -4118,12 +4557,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Tag>1.0</Tag>
     <IsSuccess>true</IsSuccess>
     <ImageId>45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****</ImageId>
+</GetRepoTagResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "Status" : "NORMAL",
   "ImageCreate" : 1572839125000,
   "ImageSize" : 27107966,
@@ -4134,10 +4579,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "Tag" : 1,
   "IsSuccess" : true,
   "ImageId" : "45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****"
-}
 ```
 
-#### GetRepoTagLayers
+`}`
+
+#### 3.3.4 GetRepoTagLayers
+
+调用GetRepoTagLayers获取某Tag对应镜像的层数据。
 
 **请求参数**
 
@@ -4157,7 +4605,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | Code | String | success | 返回值 |
 | IsSuccess | Boolean | true | 是否调用成功，取值： true ：调用成功 false ：调用失败 |
-| Layers | Array of Layers |  | 层数据 |
+| Layers | Array of Layers |   | 层数据 |
 | BlobDigest | String | sha256:36fb85fcb5 e919cb60e782397 a6be04201868fe7 b38ef7669fc01cae c1c8fc4e | 块digest值 |
 | BlobSize | Long | 23655489 | 块大小 |
 | LayerCMD | String | /usr/bin/virtual- kubelet /usr/bin/virtual- kubelet # buildkit | 层命令 |
@@ -4170,10 +4618,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-kwgb20p8wwmh**** &Tag=master
+http(s)://[Endpoint]/?Action=GetRepoTagLayers &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-kwgb20p8wwmh**** &Tag=master
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>D39D7151-0299-47E3-B948-E49E1EA8D406</RequestId> <Layers> <BlobDigest>sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e</Blob gest>
@@ -4184,30 +4632,35 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </Layers> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess":true,
     "RequestId":"D39D7151-0299-47E3-B948-E49E1EA8D406",
     "Layers":[
-        {
+```
+
+`{`
+
+```json
 "BlobDigest":"sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e",
             "LayerInstruction":"COPY",
             "BlobSize":23655489,
             "LayerCMD":"/usr/bin/virtual-kubelet /usr/bin/virtual-kubelet # buildkit",
             "LayerIndex":0
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Code":"success"
-}
 ```
 
-#### GetRepoTagManifest
+`}`
+
+#### 3.3.5 GetRepoTagManifest
+
+调用GetRepoTagManifest查询镜像版本Manifest信息。
 
 **请求参数**
 
@@ -4228,17 +4681,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | Code | String | success | 返回值 |
 | IsSuccess | Boolean | true | 是否调用成功，取值： true ：调用成功 false ：调用失败 |
-| Manifest | Struct |  | Manifest信息 |
+| Manifest | Struct |   | Manifest信息 |
 | Architecture | String | null | 架构 |
-| Config | Struct |  | 配置信息 |
+| Config | Struct |   | 配置信息 |
 | Digest | String | sha256:b5b2b2c50 7a0944348e03031 14d8d93aaaa0817 32b86451d9bce1f4 32a537bc7 | digest值 |
 | MediaType | String | application/vnd.doc ker.container.imag e.v1+json | 文件类型 |
 | Size | Long | 7023 | 大小 |
-| FsLayers | Array of FsLayers |  | 文件层信息 |
+| FsLayers | Array of FsLayers |   | 文件层信息 |
 | BlobSum | String | null | 块sum值 |
-| History | Array of History |  | 历史信息 |
+| History | Array of History |   | 历史信息 |
 | V1Compatibilit y | Map | null | v1兼容性 |
-| Layers | Array of Layers |  | 层列表 |
+| Layers | Array of Layers |   | 层列表 |
 
 | Digest | String | sha256:e692418e4 cbaf90ca69d05a66 403747baa33ee08 806650b51fab815 ad7fc331f | digest值 |
 |---|---|---|---|
@@ -4247,7 +4700,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | MediaType | String | application/vnd.doc ker.distribution.ma nifest.v2+json | 类型 |
 | Name | String | null | 名称 |
 | SchemaVersio n | Integer | 2 | schema版本 |
-| Signatures | Array of Signatures |  | 签名列表 |
+| Signatures | Array of Signatures |   | 签名列表 |
 | Header | Map | null | 头信息 |
 | Protected | String | null | 受保护 |
 | Signature | String | null | 签名信息 |
@@ -4262,7 +4715,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-kwgb20p8wwmh**** &Tag=master
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>D39D7151-0299-47E3-B948-E49E1EA8D406</RequestId> <Manifest>
@@ -4298,7 +4751,6 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 `JSON` 格式
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "D39D7151-0299-47E3-B948-E49E1EA8D406",
     "Manifest": {
@@ -4309,33 +4761,55 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
         "Name": "null",
         "FsLayers": {
             "BlobSum": "null"
-        },
+```
+
+`},`
+
+```json
         "History": {
             "V1Compatibility": "null"
-        },
+```
+
+`},`
+
+```json
         "Signatures": {
             "Protected": "null",
             "Header": "null",
             "Signature": "null"
-        },
+```
+
+`},`
+
+```json
         "Layers": {
             "Digest":
 "sha256:e692418e4cbaf90ca69d05a66403747baa33ee08806650b51fab815ad7fc331f",
             "Size": 32654,
             "MediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
-        },
+```
+
+`},`
+
+```json
         "Config": {
             "Digest":
 "sha256:b5b2b2c507a0944348e0303114d8d93aaaa081732b86451d9bce1f432a537bc7",
             "Size": 7023,
             "MediaType": "application/vnd.docker.container.image.v1+json"
-        }
-    },
-    "Code": "success"
-}
 ```
 
-#### CreateRepoTag
+`}` `},`
+
+```json
+    "Code": "success"
+```
+
+`}`
+
+#### 3.3.6 CreateRepoTag
+
+调用CreateRepoTag为仓库中现有镜像版本生成新版本。
 
 **请求参数**
 
@@ -4364,10 +4838,10 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 请求示例
 
 ```
-&FromTag=v1 &InstanceId=cri-pri**** &NamespaceName=ns &RegionId=cn-wl-en**** &RepoName=repo1 &ToTag=v2
+http(s)://[Endpoint]/?Action=CreateRepoTag &FromTag=v1 &InstanceId=cri-pri**** &NamespaceName=ns &RegionId=cn-wl-en**** &RepoName=repo1 &ToTag=v2
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>C4C7DD0C-C9D6-437A-A7EE-8BY*****</RequestId> <Code>success</Code>
@@ -4376,16 +4850,18 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 `JSON` 格式
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "C4C7DD0C-C9D6-437A-A7EE-8BY*****",
     "Code": "success"
-}
 ```
 
-### 镜像触发器管理
+`}`
 
-#### UpdateRepoTrigger
+### 3.4 镜像触发器管理
+
+#### 3.4.1 UpdateRepoTrigger
+
+调用UpdateRepoTrigger更新镜像仓库触发器。
 
 **请求参数**
 
@@ -4416,26 +4892,28 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-tquyps22md8p**** &TriggerId=crw-k7bdx4kt52ty**** &TriggerName=test_trigger
+http(s)://[Endpoint]/?Action=UpdateRepoTrigger &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-tquyps22md8p**** &TriggerId=crw-k7bdx4kt52ty**** &TriggerName=test_trigger
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>32535049-ED91-4589-98C0-7C88766EDF1F</RequestId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess":true,
     "RequestId":"32535049-ED91-4589-98C0-7C88766EDF1F",
     "Code":"success"
-}
 ```
 
-#### ListRepoTrigger
+`}`
+
+#### 3.4.2 ListRepoTrigger
+
+调用ListRepoTrigger查询仓库触发器列表。
 
 **请求参数**
 
@@ -4453,7 +4931,7 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 | Code | String | success | 返回值 |
 | IsSuccess | Boolean | true | 是否调用API成功，取值： true ：调用API成功 false ：调用API失败 |
 | RequestId | String | 2CA76D52-A8F0- 4D0B-854E- FBD9F6C99049 | 请求ID |
-| Triggers | Array of Triggers |  | 触发器列表 |
+| Triggers | Array of Triggers |   | 触发器列表 |
 | RepoEvent | String | BUILD SUCCESS _ | 触发事件类型，取值： BUILD SUCCESS ：触发成功 _ BUILD Fail ：触发失败 _ |
 | TriggerId | String | crw- vriyql9eq7ep**** | 触发器ID |
 | TriggerName | String | test | 触发器名称 |
@@ -4468,10 +4946,10 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-tquyps22md8p****
+http(s)://[Endpoint]/?Action=ListRepoTrigger &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-tquyps22md8p****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>2CA76D52-A8F0-4D0B-854E-FBD9F6C99049</RequestId> <Triggers>
@@ -4484,10 +4962,9 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 </Triggers> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "2CA76D52-A8F0-4D0B-854E-FBD9F6C99049",
     "Triggers": {
@@ -4497,34 +4974,41 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
         "TriggerName": "test",
         "TriggerTag": "*",
         "TriggerId": "crw-vriyql9eq7ep****"
-    },
-    "Code": "success"
-}
 ```
 
-#### CreateRepoTrigger
+`},`
+
+```json
+    "Code": "success"
+```
+
+`}`
+
+#### 3.4.3 CreateRepoTrigger
+
+调用CreateRepoTrigger创建镜像仓库触发器。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 
-| Action | String | 是 | CreateRepoTrigg er |  | 系统规定参数。取值： CreateRepoTrigger 。 |  |  |  |  |  |  |  |  |  |
+| Action | String | 是 | CreateRepoTrigg er |   | 系统规定参数。取值： CreateRepoTrigger 。 |   |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| InstanceId | String | 是 | cri-pri**** |  | 实例ID |  |  |  |  |  |  |  |  |  |
-| RegionId | String | 是 | cn-wl-en**** |  | 地域ID |  |  |  |  |  |  |  |  |  |
-| RepoId | String | 是 | crr- xwvi3osiy4ff**** |  | 镜像仓库ID |  |  |  |  |  |  |  |  |  |
-| TriggerName | String | 是 | trigger1 |  | 触发器名称 |  |  |  |  |  |  |  |  |  |
-| TriggerTag | String | 是 | [1] |  | 触发触发器的镜像版本。 说明 TriggerType 为 ALL ， TriggerTag 可以为任意字符串，示例 * 。 TriggerType 为 TAG _ LIST ， TriggerTag 为数组，示例 [1] 。 TriggerType 为 TAG _ REG EXP ， TriggerTag _ 为字符串，示例 * 。 |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | TriggerType |  |  | 为 | TAG _ |  |  |
-|  |  |  |  |  |  |  | LIST |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [1] |  |  |  |  |
-|  |  |  |  |  |  |  |  | TriggerType |  |  | 为 | TAG _ |  |  |
-|  |  |  |  |  |  |  | REG EXP _ |  |  |  |  |  |  |  |
-| TriggerType | String | 是 | ALL |  | 触发器类型，取值： ALL ：全部触发 TAG LIST ：Tag触发 _ TAG REG EXP ：表达式触发 _ _ |  |  |  |  |  |  |  |  |  |
-| TriggerUrl | String | 是 | http://www.mysit e.com |  | 触发器URL |  |  |  |  |  |  |  |  |  |
+| InstanceId | String | 是 | cri-pri**** |   | 实例ID |   |   |   |   |   |   |   |   |   |
+| RegionId | String | 是 | cn-wl-en**** |   | 地域ID |   |   |   |   |   |   |   |   |   |
+| RepoId | String | 是 | crr- xwvi3osiy4ff**** |   | 镜像仓库ID |   |   |   |   |   |   |   |   |   |
+| TriggerName | String | 是 | trigger1 |   | 触发器名称 |   |   |   |   |   |   |   |   |   |
+| TriggerTag | String | 是 | [1] |   | 触发触发器的镜像版本。 说明 TriggerType 为 ALL ， TriggerTag 可以为任意字符串，示例 * 。 TriggerType 为 TAG _ LIST ， TriggerTag 为数组，示例 [1] 。 TriggerType 为 TAG _ REG EXP ， TriggerTag _ 为字符串，示例 * 。 |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | TriggerType |   |   | 为 | TAG _ |   |   |
+|   |   |   |   |   |   |   | LIST |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [1] |   |   |   |   |
+|   |   |   |   |   |   |   |   | TriggerType |   |   | 为 | TAG _ |   |   |
+|   |   |   |   |   |   |   | REG EXP _ |   |   |   |   |   |   |   |
+| TriggerType | String | 是 | ALL |   | 触发器类型，取值： ALL ：全部触发 TAG LIST ：Tag触发 _ TAG REG EXP ：表达式触发 _ _ |   |   |   |   |   |   |   |   |   |
+| TriggerUrl | String | 是 | http://www.mysit e.com |   | 触发器URL |   |   |   |   |   |   |   |   |   |
 
-|  | TriggerType |  |
+|   | TriggerType |   |
 |---|---|---|
 
 **返回数据**
@@ -4543,27 +5027,29 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-xwvi3osiy4ff**** &TriggerName=trigger1 &TriggerTag=[1] &TriggerType=ALL &TriggerUrl=http://www.mysite.com
+http(s)://[Endpoint]/?Action=CreateRepoTrigger &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-xwvi3osiy4ff**** &TriggerName=trigger1 &TriggerTag=[1] &TriggerType=ALL &TriggerUrl=http://www.mysite.com
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>B79F5E0E-8770-407D-BCB6-ECF4BA9C****</RequestId> <TriggerId>crw-0z4pf81pgz35****</TriggerId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess": true,
     "RequestId": "B79F5E0E-8770-407D-BCB6-ECF4BA9C****",
     "TriggerId": "crw-0z4pf81pgz35****",
     "Code": "success"
-}
 ```
 
-#### DeleteRepoTrigger
+`}`
+
+#### 3.4.4 DeleteRepoTrigger
+
+调用DeleteRepoTrigger删除镜像仓库触发器。
 
 **请求参数**
 
@@ -4590,28 +5076,26 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 请求示例
 
 ```
-&InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-xwvi3osiy4ff**** &TriggerId=crw-0z4pf81pgz35****
+http(s)://[Endpoint]/?Action=DeleteRepoTrigger &InstanceId=cri-pri**** &RegionId=cn-wl-en**** &RepoId=crr-xwvi3osiy4ff**** &TriggerId=crw-0z4pf81pgz35****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>85180AE4-9A57-48F8-9EF9-68ECCE54B552</RequestId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess":true,
     "RequestId":"85180AE4-9A57-48F8-9EF9-68ECCE54B552",
     "Code":"success"
-}
 ```
 
-### 访问凭证管理
+### 3.5 访问凭证管理
 
-#### GetAuthorizationToken
+#### 3.5.1 GetAuthorizationToken
 
 调用GetAuthorizationToken获取用于登录实例的临时账号和临时密码。 临时密码的有效时间为1小时，若使用STS方式请求时，临时密码的有效时间等同于本次请求STS Token的有效时间。关于临时Token登录实例的权限说明如下： 使用通过阿里云账号获取的临时Token登录实例的权限等同于阿里云账号使用用户名和密码登录实例的权限。 使用通过RAM用户获取的临时Token登录实例的权限等同于RAM用户使用用户名和密码登录实例的权限。 使用STS方式获取的临时Token登录实例的权限等同于STS Token的权限。
 
@@ -4634,34 +5118,32 @@ http(s)://[Endpoint]/?Action=GetRepoTagManifest &InstanceId=cri-pri**** &RegionI
 | RequestId | String | E069EB86-E6AD- 4A98-ADDE- 0E993390239A | 请求ID |
 | TempUsernam e | String | temp user cr _ _ | 用于登录实例的用户名 |
 
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=GetAuthorizationToken &InstanceId=cri-pri**** &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <AuthorizationToken>shaunadadakks:uuczxnjcyeyhdjadkkajsjd****</AuthorizationToken> <TempUsername>temp_user_cr</TempUsername> <RequestId>E069EB86-E6AD-4A98-ADDE-0E993390239A</RequestId> <ExpireTime>1571242083000</ExpireTime> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess": true,
     "AuthorizationToken": "shaunadadakks:uuczxnjcyeyhdjadkkajsjd****",
     "TempUsername": "temp_user_cr",
     "RequestId": "E069EB86-E6AD-4A98-ADDE-0E993390239A",
     "ExpireTime": 1571242083000,
     "Code": "success"
-}
 ```
 
-#### ResetLoginPassword
+`}`
+
+#### 3.5.2 ResetLoginPassword
+
+调用ResetLoginPassword重置登录密码。
 
 **请求参数**
 
@@ -4688,43 +5170,45 @@ http(s)://[Endpoint]/?Action=GetAuthorizationToken &InstanceId=cri-pri**** &Regi
 http(s)://[Endpoint]/?Action=ResetLoginPassword &InstanceId=cri-pri**** &Password=test &RegionId=cn-wl-en****
 ```
 
-正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <IsSuccess>true</IsSuccess> <RequestId>EB9C5722-51E2-4497-A573-575B0CA5CE0C</RequestId> <Code>success</Code>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "IsSuccess":true,
     "RequestId":"EB9C5722-51E2-4497-A573-575B0CA5CE0C",
     "Code":"success"
-}
 ```
 
-### 制品构建
+`}`
 
-#### CreateArtifactBuildTask
+### 3.6 制品构建
+
+#### 3.6.1 CreateArtifactBuildTask
 
 用于创建容器镜像服务中的制品构建任务。
 
 **请求头**
 
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  | 说明 |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   | 说明 |   |   |
 |---|---|---|---|---|---|---|---|---|
-| RegionId | Strin g | Host | 是 | cn-wl-en**** |  | 区域ID |  |  |
-| InstanceId | Strin g | Query | 是 | cri-pri**** |  | 实例 ID。 |  |  |
-| ArtifactBui ldType | Strin g | Query | 是 | IMAGE TO ACCELERATE _ _ D IMAGE _ |  | 制品构建类型，目前支持： IMAGE TO ACCELERAT _ _ ED IMAGE ：ACK场景 _ 优化的加速镜像制作 |  |  |
-|  |  |  |  |  |  |  | IMAGE TO ACCELERAT _ _ |  |
-|  |  |  |  |  | E | ED IMAGE _ |  |  |
-| SourceArti fact | Json | Query | 是 | { \"repoId\" : \"crr- 1rgqu9n2e****\", \"version\": \"test\", \"artifactType\": \"IMAGE\" } |  | 源制品 |  |  |
-| TargetArti fact | Json | Query | 是 | { \"repoId\" : \"crr- 1rgqu9n2e****\", \"version\": \"test accelerated\", _ \"artifactType\": \"ACCELERATED IMAGE\ _ " } |  | 目的制品 |  |  |
-| Instructio ns | Repe atList | Query | 否 | [] |  | 附加构建指令 |  |  |
-| Parameter s | Map | Query | 否 | {} |  | 附加参数。 |  |  |
+| RegionId | Strin g | Host | 是 | cn-wl-en**** |   | 区域ID |   |   |
+| InstanceId | Strin g | Query | 是 | cri-pri**** |   | 实例 ID。 |   |   |
+| ArtifactBui ldType | Strin g | Query | 是 | IMAGE TO ACCELERATE _ _ D IMAGE _ |   | 制品构建类型，目前支持： IMAGE TO ACCELERAT _ _ ED IMAGE ：ACK场景 _ 优化的加速镜像制作 |   |   |
+|   |   |   |   |   |   |   | IMAGE TO ACCELERAT _ _ |   |
+|   |   |   |   |   | E | ED IMAGE _ |   |   |
+| SourceArti fact | Json | Query | 是 | { \"repoId\" : \"crr- 1rgqu9n2e****\", \"version\": \"test\", \"artifactType\": \"IMAGE\" } |   | 源制品 |   |   |
+| TargetArti fact | Json | Query | 是 | { \"repoId\" : \"crr- 1rgqu9n2e****\", \"version\": \"test accelerated\", _ \"artifactType\": \"ACCELERATED IMAGE\ _ " } |   | 目的制品 |   |   |
+| Instructio ns | Repe atList | Query | 否 | [] |   | 附加构建指令 |   |   |
+| Parameter s | Map | Query | 否 | {} |   | 附加参数。 |   |   |
 
 **返回数据**
 
@@ -4735,30 +5219,34 @@ http(s)://[Endpoint]/?Action=ResetLoginPassword &InstanceId=cri-pri**** &Passwor
 | RequestId | String | RQ1234567890abc def | 1234567890 |
 | BuildTaskId | String | i2ai-1yu**** | 制品构建任务ID |
 
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=CreateArtifactBuildTask &RegionId=cn-wl-en**** &InstanceId=cri-pri**** &ArtifactBuildType=IMAGE_TO_ACCELERATED_IMAGE &SourceArtifact={ \"repoId\" : \"crr-1rgqu9n2e****\", \"version\": \"test\", \"artifactType\": \"IMAGE\"} &TargetArtifact={ \"repoId\" : \"crr-1rgqu9n2e****\", \"version\": \"test_accelerated\", \"artifactType\": \"ACCELERATED_IMAGE\"}
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "IsSuccess":true,
  "RequestId":"RQ1234567890abcdef",
  "BuildTaskId":"i2a-1yu****",
  "Code":"0"
-}
 ```
 
-#### CreateArtifactBuildRule
+`}`
+
+#### 3.6.2 CreateArtifactBuildRule
 
 创建镜像仓库加速镜像构建规则。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -4774,7 +5262,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ArtifactTy pe | Strin g | Query | 是 | ACCELERATED IMAGE _ | 加速镜像类型，取值： ACCELERATED IMAGE _ ：表示生成加速镜像 |
 | Parameter s | Map | Query | 否 | {} | 附加参数。 |
 
-|  |  | ACCELERATED IMAGE _ |
+|   |   | ACCELERATED IMAGE _ |
 |---|---|---|
 
 **返回数据**
@@ -4794,22 +5282,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=CreateArtifactBuildRule &RegionId=cn-wl-en**** &InstanceId=cri-pri**** &ScopeType=REPOSITORY &ScopeId=crr-pmajihou6cg0**** &ArtifactType=ACCELERATED_IMAGE
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "IsSuccess":true,
  "BuildRuleId":"crbr-ly77w5i3t31f****",
  "RequestId":"RQ1234567890abcdef",
  "Code":"0"
-}
 ```
 
-#### GetArtifactBuildTask
+`}`
+
+#### 3.6.3 GetArtifactBuildTask
 
 获取创建容器镜像服务中的制品构建任务。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -4835,7 +5325,7 @@ http(s)://[Endpoint]/?Action=CreateArtifactBuildRule &RegionId=cn-wl-en**** &Ins
 | IsSuccess | Boolean | true | 是否成功 |
 | SourceArtifact | Struct | exampleValue | 源制品 |
 
-| 容器镜像服务 |  |  | 开发指南·高级版API参考 |
+| 容器镜像服务 |   |   | 开发指南·高级版API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4856,15 +5346,19 @@ http(s)://[Endpoint]/?Action=CreateArtifactBuildRule &RegionId=cn-wl-en**** &Ins
 http(s)://[Endpoint]/?Action=GetArtifactBuildTask &RegionId=cn-wl-en**** &InstanceId=cri-pri**** &BuildTaskId=i2a-1yu****
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "TargetArtifact":{
   "Version":"1",
   "ArtifactType":"EcsImage",
   "RepoId":"1234567890"
- },
+```
+
+`},`
+
+```json
  "ArtifactBuildType":"IMAGE_TO_ACCELERATED_IMAGE",
  "IsSuccess":true,
  "EndTime":2022,
@@ -4879,15 +5373,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "Version":"1",
   "ArtifactType":"EcsImage",
   "RepoId":"1234567890"
- }
-}
 ```
 
-#### ListArtifactBuildTask
+`}` `}`
+
+#### 3.6.4 ListArtifactBuildTask
 
 获取制品构建任务列表。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -4904,7 +5400,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | SourceArti factRepoI d | Strin g | Query | 否 | crr-1rgqu9n2e**** | 源制品仓库ID |
 | DestArtifa ctRepoId | Strin g | Query | 否 | crr-1rgqu9n2e**** | 目的制品仓库ID |
 
-|  |  | ACCELERATED IMAGE _ |
+|   |   | ACCELERATED IMAGE _ |
 |---|---|---|
 
 **返回数据**
@@ -4937,11 +5433,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | PageNo | Integer | 1 | 页号 |
 | PageSize | Integer | 10 | 分页数据条数。 |
 
-#### GetArtifactBuildRule
+#### 3.6.5 GetArtifactBuildRule
 
 查询镜像仓库加速镜像构建规则。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -4950,7 +5448,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RegionId | Strin g | Host | 是 | cn-wl-en**** | 区域ID |
 | InstanceId | Strin g | Query | 是 | cri-pri**** | 实例 ID。 |
 
-|  | 容器镜像服务 |  |  |  |  | 开发指南·高级版API参考 |  |
+|   | 容器镜像服务 |   |   |   |   | 开发指南·高级版API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4960,7 +5458,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ArtifactTy pe | Strin g | Query | 否 | ACCELERATED IMAGE _ | 加速镜像类型，取值： ACCELERATED IMAGE _ ：表示生成加速镜像 |
 | BuildRuleI d | Strin g | Query | 否 | crabr-ly77w5i3t31f**** | 构建规则ID |
 
-|  |  | ACCELERATED IMAGE _ |
+|   |   | ACCELERATED IMAGE _ |
 |---|---|---|
 
 **返回数据**
@@ -4977,36 +5475,44 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Parameters | Struct | { "Status": { "Description": " (Required) The status of the Ecs instance.", "Type": "String" } } | 参数信息 |
 | - ImageIndexOn ly | Boolean | false | 表示仅通过索引访问图像数据，不包含其他元信息或处理逻辑 |
 
-**示例**
-
-请求示例
-
 ```
 http(s)://[Endpoint]/?Action=GetArtifactBuildRule &RegionId=cn-wl-en**** &InstanceId=cri-pri****
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "ScopeType":"REPOSITORY",
  "IsSuccess":true,
  "BuildRuleId":"crbr-ly77w5i3t31f****",
  "Parameters":{
   "ImageIndexOnly":""
- },
+```
+
+`},`
+
+```json
  "RequestId":"RQ1234567890abcdef",
  "ArtifactType":"EcsImage",
  "ScopeId":"crr-nyrh2oko32xb****",
  "Code":"0"
-}
 ```
 
-#### DeleteArtifactBuildRule
+`}`
+
+#### 3.6.6 DeleteArtifactBuildRule
 
 删除镜像仓库加速镜像构建规则。
 
 **请求头**
+
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -5022,7 +5528,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ScopeId | Strin g | Query | 否 | crr-pmajihou6cg0**** | 规则生效范围的 ID，取值： ScopeId 配置为镜像仓库 ID。 |
 | ArtifactTy pe | Strin g | Query | 否 | ACCELERATED IMAGE _ | 加速镜像类型，取值： ACCELERATED IMAGE _ ：表示生成加速镜像 |
 
-|  |  | ACCELERATED IMAGE _ |
+|   |   | ACCELERATED IMAGE _ |
 |---|---|---|
 
 **返回数据**
@@ -5041,21 +5547,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DeleteArtifactBuildRule &RegionId=cn-wl-en**** &InstanceId=cri-pri****
 ```
 
-正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "IsSuccess":true,
  "RequestId":"RQ1234567890abcdef",
  "Code":"0"
-}
 ```
 
-## 附录
+`}`
 
-### STS概要
+## 4 附录
 
-#### 什么是STS
+### 4.1 STS概要
+
+#### 4.1.1 什么是STS
 
 阿里云STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。RAM提供RAM用户和RAM角色两种身份。其中，RAM角色不具备永久身份凭证，而只能通过STS获取可以自定义时效和访问权限的临时身份凭证，即安全令牌（STS Token）。
 
@@ -5067,7 +5579,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 使用STS Token，减少长期访问密钥（Accesskey）泄露的风险。 STS Token具有时效性，可以自定义有效期，到期后将自动失效，无需定期轮换。 可以为STS Token绑定自定义权限策略，提供更加灵活和精细的云资源授权。
 
-#### AssumeRole
+#### 4.1.2 AssumeRole
 
 RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证（STS Token）。该接口中RAM用户扮演的是可信实体为阿里云账号类型的RAM角色。
 
@@ -5097,8 +5609,6 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证�
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | 临时身份的ARN。 |
 | AssumedRoleId | String | 34458433936495** **:alice | 临时身份的ID。 |
 
-**示例**
-
 **引入Pom依赖**
 
 操作需要依赖阿里云核心库来实现，在Pom中引入阿里云核心库包的操作如下:
@@ -5110,6 +5620,8 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证�
       <version>[4.4.9,5.0.0)</version>
     </dependency>
 ```
+
+**调用API获取STS AccessKey三元组**
 
 以下代码示例为通过调用 `Sts::AssumeRole::2015-04-01` 获取STS AccessKey三元组信息。
 
@@ -5159,13 +5671,13 @@ vpc.${global:region}.${global:internet-domain}
 if(Sti Util
 ```
 
-iE
+`i``E` `t``(`
 
 ```
-t( Rl))
+Rl))
 ```
 
-t
+`t`
 
 ```
             if (StringUtils.isEmpty(assumeRole)) return;
@@ -5187,10 +5699,9 @@ t
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **调用示例**
 
@@ -5233,13 +5744,13 @@ stsAk、stsSk
         request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,资源集`id`
+`//` 非必填`,`资源集`id`
 
 ```
         // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,组织`id`
+`//` 必填`,`组织`id`
 
 ```java
         request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -5252,9 +5763,6 @@ stsAk、stsSk
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
 **错误码**

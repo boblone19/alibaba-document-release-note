@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 616
 source_pdf: "bebe5a3985330071_Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%91%E6%8E%A7/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20CloudMonitor%20Developer%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 20260902
@@ -10044,6 +10044,8 @@ This operation does not have operation-specific request headers and uses only co
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Code | Integer | 200 | The HTTP status code. |
 | Message | String | Success | The returned message. |
+
+**Example**
 
 `JSON` format `{`
 

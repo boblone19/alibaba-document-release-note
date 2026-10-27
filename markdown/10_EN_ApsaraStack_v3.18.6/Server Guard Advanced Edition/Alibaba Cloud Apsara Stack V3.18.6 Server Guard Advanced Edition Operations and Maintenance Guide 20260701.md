@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 12
 source_pdf: "991891e293443a91_Alibaba Cloud Apsara Stack V3.18.6 Server Guard Advanced Edition Operations and Maintenance Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E5%AE%89%E9%AA%91%E5%A3%AB%E9%AB%98%E7%BA%A7%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Guard%20Advanced%20Edition%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Server Guard Advanced Edition Operations and Maintenance Guide
@@ -33,6 +33,9 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -112,6 +115,9 @@ Service and Alibaba Security Aegis Detect Service .
 **Background information**
 
 To check the running status of Aegiserver, follow the following steps:
+
+**Procedure**
+
 1. Run the `ssh server IP address` command to log on to the server of Aegiserver.
 2. Run the following command to find the Aegiserver image ID:
 
@@ -165,6 +171,9 @@ the server and client in /home/admin/aegiserver/logs/AEGIS_MESSAGE.log.
 **Background information**
 
 To check the status of Server Guard Update Service, follow the following steps:
+
+**Procedure**
+
 1. Run the `ssh host IP address` command to log on to the server of Aegiserver.
 2. Run the following command to find the Aegiserver image ID:
 
@@ -199,6 +208,9 @@ If the response is "success", the service is normal.
 **Background information**
 
 To check the status of the Defender module of Server Guard, follow these steps:
+
+**Procedure**
+
 1. Run the `ssh server IP address` command to log on to the server that hosts the Defender
 module of Server Guard.
 2. Run the following command to find the image ID of the Defender module of Server Guard:
@@ -232,6 +244,9 @@ If the response is "success", the service is normal.
 **Background information**
 
 To restart Server Guard when a fault occurs, follow these steps:
+
+**Procedure**
+
 1. Run the `ssh server IP address` command to log on to the server that hosts Server Guard.
 2. Run the following command to find the image ID of Server Guard:
 

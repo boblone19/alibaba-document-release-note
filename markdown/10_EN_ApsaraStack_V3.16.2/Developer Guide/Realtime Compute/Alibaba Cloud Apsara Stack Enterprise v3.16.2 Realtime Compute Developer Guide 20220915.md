@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 406
 source_pdf: "03d0d6ca55dd25dd_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Realtime%20Compute%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide
@@ -1552,7 +1552,7 @@ CREATE TABLE tableName
      [ WITH (propertyName=propertyValue [, propertyName=propertyValue ]*) ];
 ```
 
-Realtime Compute does not store data from source and result tables. You can only perform operations on source and result tables by using DDL statements to declare references to data stores. Example:
+Description Realtime Compute does not store data from source and result tables. You can only perform operations on source and result tables by using DDL statements to declare references to data stores. Example:
 
 ```
 create table tt_stream(
@@ -7090,7 +7090,7 @@ If a sliding window cannot read the time at which data enters the window, the st
 
 #### 2.9.4 Session window
 
-This topic describes how to use the session window function in Realtime Compute for Apache Flink. A session window groups elements by session activity. Unlike tumbling and sliding windows, session windows do not overlap and are not fixed in size. If a session window does not receive elements within a period of time, the session is disconnected and the window is closed. A session window is configured by using a gap, which defines the length of the inactive period. For example, a data stream that represents mouse click activities may include highly clustered mouse click events, separated by inactive periods. The data that arrives after a specified gap is assigned to a new window. The following figure shows a session window. Different keys form different windows due to differences in data distribution. Syntax The SESSION function is used to define a session window in a GROUP BY clause.
+This topic describes how to use the session window function in Realtime Compute for Apache Flink. Description A session window groups elements by session activity. Unlike tumbling and sliding windows, session windows do not overlap and are not fixed in size. If a session window does not receive elements within a period of time, the session is disconnected and the window is closed. A session window is configured by using a gap, which defines the length of the inactive period. For example, a data stream that represents mouse click activities may include highly clustered mouse click events, separated by inactive periods. The data that arrives after a specified gap is assigned to a new window. The following figure shows a session window. Different keys form different windows due to differences in data distribution. Syntax The SESSION function is used to define a session window in a GROUP BY clause.
 
 ```xml
 SESSION(<time-attr>, <gap-interval>) <gap-interval>: INTERVAL 'string' timeUnit
@@ -7462,7 +7462,7 @@ Input parameters
 | A | INT |
 | B | INT |
 
-Returns TRUE if A is equal to B, and returns FALSE in other cases. Example Input example
+Description Returns TRUE if A is equal to B, and returns FALSE in other cases. Example Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7487,7 +7487,7 @@ Input parameters
 | A | INT |
 | B | INT |
 
-Returns TRUE if A is greater than B, and returns FALSE in other cases. Example Input example
+Description Returns TRUE if A is greater than B, and returns FALSE in other cases. Example Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7512,7 +7512,7 @@ Input parameters
 | A | INT |
 | B | INT |
 
-Returns TRUE if A is greater than or equal to B, and returns FALSE in other cases. Example Input example
+Description Returns TRUE if A is greater than or equal to B, and returns FALSE in other cases. Example Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7538,7 +7538,7 @@ Input parameters
 | A | INT |
 | B | INT |
 
-Returns TRUE if A is smaller than B, and returns FALSE in other cases. Example Input example
+Description Returns TRUE if A is smaller than B, and returns FALSE in other cases. Example Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7564,7 +7564,7 @@ Input parameters
 | A | INT |
 | B | INT |
 
-Returns TRUE if A is smaller than or equal to B, and returns FALSE in other cases. Example Input example
+Description Returns TRUE if A is smaller than or equal to B, and returns FALSE in other cases. Example Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7595,7 +7595,7 @@ Input parameters
 | A | INT |
 | B | INT |
 
-Returns TRUE if A is not equal to B, and returns FALSE in other cases. Example Input example
+Description Returns TRUE if A is not equal to B, and returns FALSE in other cases. Example Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7639,7 +7639,7 @@ Syntax
 A BETWEEN B AND C
 ```
 
-Argument s: A, B, and C are values of the DOUBLE, BIGINT, INT, VARCHAR, DATE, TIMESTAMP, or TIME type. Use the BETWEEN operator to select a value that is between the two given argument values. Example 1 Input example
+Argument s: A, B, and C are values of the DOUBLE, BIGINT, INT, VARCHAR, DATE, TIMESTAMP, or TIME type. Description Use the BETWEEN operator to select a value that is between the two given argument values. Example 1 Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7686,7 +7686,7 @@ Syntax
 A IS NOT FALSE
 ```
 
-Argument : A of the BOOLEAN type TRUE is returned if A is true. FALSE is returned if A is false. Examples Input example
+Argument : A of the BOOLEAN type Description TRUE is returned if A is true. FALSE is returned if A is false. Examples Input example
 
 | int1(INT) | int2(INT) |
 |---|---|
@@ -7708,7 +7708,7 @@ Syntax
 A IS NOT NULL
 ```
 
-Argument s: A of the INT type TRUE is returned if A is null. Otherwise, FALSE is returned. Examples Input example
+Argument s: A of the INT type Description TRUE is returned if A is null. Otherwise, FALSE is returned. Examples Input example
 
 | int1(INT) | int2(VARCHAR) |
 |---|---|
@@ -7731,7 +7731,7 @@ Syntax
 A IS NOT TRUE
 ```
 
-Argument : A specifies a condition of the BOOLEAN type. FALSE is returned if the condition is TRUE. TRUE is returned if the condition is FALSE. Examples Input example
+Argument : A specifies a condition of the BOOLEAN type. Description FALSE is returned if the condition is TRUE. TRUE is returned if the condition is FALSE. Examples Input example
 
 | int1 (INT) | int2 (INT) |
 |---|---|
@@ -7753,7 +7753,7 @@ Syntax
 A IS NOT UNKNOWN
 ```
 
-Argument : A is of the BOOLEAN type. A is a logical comparison expression, such as 6 < 8. The value of A is TRUE or FALSE if a logical comparison between two numeric values is performed successfully. If a numeric value is compared with a non-numeric value, the logical comparison fails, and the value of A is neither TRUE nor FALSE. IS NOT UNKNOWN is used to check for such failures. It returns FALSE if the value of A is neither TRUE nor FALSE and returns T RUE if the value of A is TRUE or FALSE. Examples Input example
+Argument : A is of the BOOLEAN type. Description A is a logical comparison expression, such as 6 < 8. The value of A is TRUE or FALSE if a logical comparison between two numeric values is performed successfully. If a numeric value is compared with a non-numeric value, the logical comparison fails, and the value of A is neither TRUE nor FALSE. IS NOT UNKNOWN is used to check for such failures. It returns FALSE if the value of A is neither TRUE nor FALSE and returns T RUE if the value of A is TRUE or FALSE. Examples Input example
 
 | int1 (INT) | int2 (INT) |
 |---|---|
@@ -7781,7 +7781,7 @@ Syntax
 value IS NULL
 ```
 
-Argument : value specifies a value of any type. TRUE is returned if A is null. Otherwise, FALSE is returned. Examples Input example
+Argument : value specifies a value of any type. Description TRUE is returned if A is null. Otherwise, FALSE is returned. Examples Input example
 
 | int1 (INT) | int2 (VARCHAR) |
 |---|---|
@@ -7826,7 +7826,7 @@ Syntax
 A IS UNKNOWN
 ```
 
-Argument : A of the BOOLEAN type A is a logical comparison expression, such as 6 <> 8. The value of A is TRUE or FALSE if a logical comparison between two numeric values is performed successfully. If a numeric value is compared with a non-numeric value, the logical comparison fails, and the value of A is neither TRUE nor FALSE. IS UNKNOWN is used to check for such failures. It returns T RUE if the value of A is neither TRUE nor FALSE and returns FALSE if the value of A is TRUE or FALSE. Examples Input example
+Argument : A of the BOOLEAN type Description A is a logical comparison expression, such as 6 <> 8. The value of A is TRUE or FALSE if a logical comparison between two numeric values is performed successfully. If a numeric value is compared with a non-numeric value, the logical comparison fails, and the value of A is neither TRUE nor FALSE. IS UNKNOWN is used to check for such failures. It returns T RUE if the value of A is neither TRUE nor FALSE and returns FALSE if the value of A is TRUE or FALSE. Examples Input example
 
 | int1(INT) | int2(INT) |
 |---|---|
@@ -7854,7 +7854,7 @@ Syntax
 A LIKE B
 ```
 
-Argument s: A and B of the VARCHAR type TRUE is returned if A matches B. Otherwise, FALSE is returned. Not e The percent sign (%) can be used as a wildcard. Examples Sample code
+Argument s: A and B of the VARCHAR type Description TRUE is returned if A matches B. Otherwise, FALSE is returned. Not e The percent sign (%) can be used as a wildcard. Examples Sample code
 
 | int1(INT) | VARCHAR2(VARCHAR) | VARCHAR3(VARCHAR) |
 |---|---|---|
@@ -7889,7 +7889,7 @@ Syntax
 NOT A
 ```
 
-Argument : A of the BOOLEAN type FALSE is returned if A is TRUE. TRUE is returned if A is FALSE. Examples Input example
+Argument : A of the BOOLEAN type Description FALSE is returned if A is TRUE. TRUE is returned if A is FALSE. Examples Input example
 
 | int2(INT) | int3(INT) |
 |---|---|
@@ -7911,7 +7911,7 @@ Syntax
 A NOT BETWEEN B AND C
 ```
 
-Argument s: A, B, and C can be of the DOUBLE, BIGINT, INT, VARCHAR, DATE, TIMESTAMP, or TIME types. The NOT BETWEEN operator is used to select a value that is not between the two given argument values. Example 1 Input example
+Argument s: A, B, and C can be of the DOUBLE, BIGINT, INT, VARCHAR, DATE, TIMESTAMP, or TIME types. Description The NOT BETWEEN operator is used to select a value that is not between the two given argument values. Example 1 Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7958,7 +7958,7 @@ Syntax
  A OR B
 ```
 
-Argument s: Both A and B are of the BOOLEAN type TRUE is returned if both A and B are TRUE. Otherwise, FALSE is returned. Examples Input example
+Argument s: Both A and B are of the BOOLEAN type Description TRUE is returned if both A and B are TRUE. Otherwise, FALSE is returned. Examples Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -7982,7 +7982,7 @@ SELECT column_name(s)
  WHERE column_name IN (value1,value2,...)
 ```
 
-Argument s: Both value1 and value2 must be constants. Query records that match the arguments. Examples Input example
+Argument s: Both value1 and value2 must be constants. Description Query records that match the arguments. Examples Input example
 
 | id (INT) | LastName (Varchar) |
 |---|---|
@@ -8020,7 +8020,7 @@ SELECT column_name(s)
  WHERE column_name NOT IN (value1,value2,...)
 ```
 
-Input paramet ers: value1 and value2, which must be constants Searches for records that do not match the values in the arguments. Example Input example
+Input paramet ers: value1 and value2, which must be constants Description Searches for records that do not match the values in the arguments. Example Input example
 
 | id (INT) | LastName (VARCHAR) |
 |---|---|
@@ -8049,7 +8049,7 @@ Syntax
 A IS DISTINCT FROM B
 ```
 
-Argument s: A and B of generic types Check whether two arguments are equal. TRUE is returned if their data types or values are different. FALSE is returned if their data types and values are the same. If either or both arguments are null, they are considered to be the same. Examples Input example
+Argument s: A and B of generic types Description Check whether two arguments are equal. TRUE is returned if their data types or values are different. FALSE is returned if their data types and values are the same. If either or both arguments are null, they are considered to be the same. Examples Input example
 
 | A(Int) | B(Varchar) |
 |---|---|
@@ -8075,7 +8075,7 @@ Syntax
 A IS NOT DISTINCT FROM B
 ```
 
-Argument s: A and B of generic types Check whether two arguments are equal. FALSE is returned if their data types or values are different. TRUE is returned if their data types and values are the same. If either or both arguments are null, they are considered to be the same. Examples Input example
+Argument s: A and B of generic types Description Check whether two arguments are equal. FALSE is returned if their data types or values are different. TRUE is returned if their data types and values are the same. If either or both arguments are null, they are considered to be the same. Examples Input example
 
 | A(Int) | B(Varchar) |
 |---|---|
@@ -8253,7 +8253,7 @@ Syntax
 CHAR_LENGTH(A)
 ```
 
-Input parameter A: VARCHAR data type Returns the number of characters in a string. Example Input example var1 (VARCHAR) ss 231ee Sample code
+Input parameter A: VARCHAR data type Description Returns the number of characters in a string. Example Input example var1 (VARCHAR) ss 231ee Sample code
 
 ```
 SELECT CHAR_LENGTH(var1) as aa FROM T1;
@@ -8295,7 +8295,7 @@ Syntax
 VARCHAR concat(VARCHAR var1, VARCHAR var2, ...)
 ```
 
-Arguments var1: specifies a common string of the VARCHAR type. var2: specifies a common string of the VARCHAR type. Concatenate two or more strings into a single string. If any argument is NULL, the argument is skipped. Examples Input example
+Arguments var1: specifies a common string of the VARCHAR type. var2: specifies a common string of the VARCHAR type. Description Concatenate two or more strings into a single string. If any argument is NULL, the argument is skipped. Examples Input example
 
 | var1 (VARCHAR) | var2 (VARCHAR) | var3 (VARCHAR) |
 |---|---|---|
@@ -8320,7 +8320,7 @@ Syntax
 VARCHAR CONCAT_WS(VARCHAR separator, VARCHAR var1, VARCHAR var2, ...)
 ```
 
-Arguments separator: specifies a separator of the VARCHAR type. var1: specifies a value of the VARCHAR type. var2: specifies a value of the VARCHAR type. Concatenate each argument's value with a separator to a new string and return the new string, whose length and type depend on the input values. Not e If the separator value is null, it is treated as an empty string for concatenating the argument's values. If any argument is null, the argument is skipped during concatenation. Examples Input example
+Arguments separator: specifies a separator of the VARCHAR type. var1: specifies a value of the VARCHAR type. var2: specifies a value of the VARCHAR type. Description Concatenate each argument's value with a separator to a new string and return the new string, whose length and type depend on the input values. Not e If the separator value is null, it is treated as an empty string for concatenating the argument's values. If any argument is null, the argument is skipped during concatenation. Examples Input example
 
 | sep (VARCHAR) | str1 (VARCHAR) | str2 (VARCHAR) | str3 (VARCHAR) |
 |---|---|---|---|
@@ -8351,7 +8351,7 @@ Syntax
 BINARY FROM_BASE64(str)
 ```
 
-Arguments str: specifies a Base64 string of the VARCHAR type. Parse a Base64 string into binary data. Examples Input example
+Arguments str: specifies a Base64 string of the VARCHAR type. Description Parse a Base64 string into binary data. Examples Input example
 
 | a (INT) | b (BIGINT) | c (VARCHAR) |
 |---|---|---|
@@ -8377,7 +8377,7 @@ Syntax
 INT HASH_CODE(VARCHAR str)
 ```
 
-Arguments str: VARCHAR type Return the absolute value of a string on which hashCode() has been executed. Examples Input example
+Arguments str: VARCHAR type Description Return the absolute value of a string on which hashCode() has been executed. Examples Input example
 
 | str1(VARCHAR) | str2(VARCHAR) | nullstr(VARCHAR) |
 |---|---|---|
@@ -8428,7 +8428,7 @@ Arguments content: specifies a JSON object to be parsed, which is represented as
 | * | Array wildcard |
 | . | Specified objects in a parent object |
 
-Extract the value of the specified path from a JSON string. If the JSON string is invalid or any argument is NULL, the return value is NULL. Examples Input example
+Description Extract the value of the specified path from a JSON string. If the JSON string is invalid or any argument is NULL, the return value is NULL. Examples Input example
 
 | id (INT) | json(VARCHAR) | path(VARCHAR) |
 |---|---|---|
@@ -8471,7 +8471,7 @@ Syntax
 VARCHAR KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name)
 ```
 
-Arguments str: specifies a string of key-value pairs. This argument is of the VARCHAR type. split1: specifies a delimiter of the VARCHAR type to separate the key-value pairs. split2: specifies a delimiter of the VARCHAR type to separate the key and value in a key-value pair. key_name: specifies a key value of the VARCHAR type. Parse the key-value pairs in a string to locate a key-value pair that matches the key-value pair delimiter and key-value delimiter. Then return the key value corresponding to the key name in the key-value pair. If the key name does not exist or an exception occurs, the return value is NULL. Examples Input example
+Arguments str: specifies a string of key-value pairs. This argument is of the VARCHAR type. split1: specifies a delimiter of the VARCHAR type to separate the key-value pairs. split2: specifies a delimiter of the VARCHAR type to separate the key and value in a key-value pair. key_name: specifies a key value of the VARCHAR type. Description Parse the key-value pairs in a string to locate a key-value pair that matches the key-value pair delimiter and key-value delimiter. Then return the key value corresponding to the key name in the key-value pair. If the key name does not exist or an exception occurs, the return value is NULL. Examples Input example
 
 | str (VARCHAR) | split1 (VARCHAR) | split2 (VARCHAR) | key1 (VARCHAR) |
 |---|---|---|---|
@@ -8498,7 +8498,7 @@ Syntax
 VARCHAR LOWER(A)
 ```
 
-Argument A: specifies a value of the VARCHAR type. Convert the specified string to a string of lowercase letters. Examples Input example var1 (VARCHAR) Ss yyT Sample code
+Argument A: specifies a value of the VARCHAR type. Description Convert the specified string to a string of lowercase letters. Examples Input example var1 (VARCHAR) Ss yyT Sample code
 
 ```
 SELECT LOWER(var1) as aa FROM T1;
@@ -8545,7 +8545,7 @@ Syntax
 VARCHAR MD5(VARCHAR str)
 ```
 
-Argument str: specifies a string of the VARCHAR type. Return the MD5 value of a string. If the argument is NULL, the return value is NULL. If the argument is an empty string, the return value is an empty string. Examples Input example
+Argument str: specifies a string of the VARCHAR type. Description Return the MD5 value of a string. If the argument is NULL, the return value is NULL. If the argument is an empty string, the return value is an empty string. Examples Input example
 
 | str1 (VARCHAR) | str2 (VARCHAR) |
 |---|---|
@@ -8574,7 +8574,7 @@ Syntax
 VARCHAR OVERLAY ( (VARCHAR x PLACING VARCHAR y FROM INT start_position [ FOR INT length ])
 ```
 
-`)` Arguments x: VARCHAR type y: VARCHAR type start_position: INT type length (optional): INT type Replace a substring of x with y. The replacement starts from start_position and a total of length+1 characters are to be replaced. Examples Sample code
+`)` Arguments x: VARCHAR type y: VARCHAR type start_position: INT type length (optional): INT type Description Replace a substring of x with y. The replacement starts from start_position and a total of length+1 characters are to be replaced. Examples Sample code
 
 ```
 OVERLAY('abcdefg' PLACING 'hij' FROM 2 FOR 2) as result FROM T1
@@ -8590,7 +8590,7 @@ Syntax
 VARCHAR PARSE_URL(VARCHAR urlStr, VARCHAR partToExtract [, VARCHAR key])
 ```
 
-Arguments urlStr: specifies a URL string of the VARCHAR type. partToExtract: specifies a value of the VARCHAR type obtained after parsing. key: specifies an argument name of the VARCHAR type. Parse a URL to obtain the value of partToExtract, such as QUERY. The options for partToExtract include HOST, PATH, QUERY, REF, PROTOCOL, FILE, AUTHORITY, and USERINFO. Not e If the partToExtract value is NULL, NULL is returned. Examples Input example
+Arguments urlStr: specifies a URL string of the VARCHAR type. partToExtract: specifies a value of the VARCHAR type obtained after parsing. key: specifies an argument name of the VARCHAR type. Description Parse a URL to obtain the value of partToExtract, such as QUERY. The options for partToExtract include HOST, PATH, QUERY, REF, PROTOCOL, FILE, AUTHORITY, and USERINFO. Not e If the partToExtract value is NULL, NULL is returned. Examples Input example
 
 | url1(VARCHAR) | nullstr(VARCHAR) |
 |---|---|
@@ -8627,7 +8627,7 @@ Syntax
 INTEGER POSITION( x IN y)
 ```
 
-Arguments x: specifies a value of the VARCHAR type. y: specifies a value of the VARCHAR type. Return the position of the first occurrence of string x within string y. The function is similar to LOCATE(substr,str). Examples Sample code
+Arguments x: specifies a value of the VARCHAR type. y: specifies a value of the VARCHAR type. Description Return the position of the first occurrence of string x within string y. The function is similar to LOCATE(substr,str). Examples Sample code
 
 ```
 POSITION('in' IN 'china') as result FROM T1
@@ -8643,7 +8643,7 @@ Syntax
 BOOLEAN REGEXP(VARCHAR str, VARCHAR pattern)
 ```
 
-Arguments str: specifies a string of the VARCHAR type. pattern: specifies a pattern of the VARCHAR type. Perform regular expression matching on a string to check whether it matches the specified pattern. If the string or pattern is empty or null, FALSE is returned. Examples Input example
+Arguments str: specifies a string of the VARCHAR type. pattern: specifies a pattern of the VARCHAR type. Description Perform regular expression matching on a string to check whether it matches the specified pattern. If the string or pattern is empty or null, FALSE is returned. Examples Input example
 
 | str1(VARCHAR) | pattern1 (VARCHAR) |
 |---|---|
@@ -8669,7 +8669,7 @@ Syntax
 VARCHAR REGEXP_EXTRACT(VARCHAR str, VARCHAR pattern, INT index)
 ```
 
-Arguments str: specifies a source string of the VARCHAR type. pattern: specifies the regular expression pattern used to match the string to be extracted. This argument is of the VARCHAR type. index: specifies the index number of the substring to be extracted from the source string. This argument is of the INT type. Not e Specify constants in the regular expression with Java format because SQL string constants are completely compiled to Java code. For example, you can specify a digit (0-9) in the regular expression as \d, which is the same as the digit in a regular expression in Java code. Use the regular expression pattern to match and extract the indexed substring from a source string. The index starts from 1. If any argument is NULL or the regular expression is invalid, the return value is NULL. Examples Input example
+Arguments str: specifies a source string of the VARCHAR type. pattern: specifies the regular expression pattern used to match the string to be extracted. This argument is of the VARCHAR type. index: specifies the index number of the substring to be extracted from the source string. This argument is of the INT type. Not e Specify constants in the regular expression with Java format because SQL string constants are completely compiled to Java code. For example, you can specify a digit (0-9) in the regular expression as \d, which is the same as the digit in a regular expression in Java code. Description Use the regular expression pattern to match and extract the indexed substring from a source string. The index starts from 1. If any argument is NULL or the regular expression is invalid, the return value is NULL. Examples Input example
 
 | str1 (VARCHAR) | pattern1 (VARCHAR) | index1 (INT) |
 |---|---|---|
@@ -8729,7 +8729,7 @@ Syntax
 VARCHAR REPEAT(VARCHAR str, INT n)
 ```
 
-Arguments str: specifies the string to be repeated. This argument is of the VARCHAR type. n: specifies the number of repetitions. This argument is of the INT type. Return a new string consisting of N repetitions of the specified string. If any argument is NULL, the return value is NULL. If the value of n is 0 or a negative number, the return value is an empty string. Examples Input example
+Arguments str: specifies the string to be repeated. This argument is of the VARCHAR type. n: specifies the number of repetitions. This argument is of the INT type. Description Return a new string consisting of N repetitions of the specified string. If any argument is NULL, the return value is NULL. If the value of n is 0 or a negative number, the return value is an empty string. Examples Input example
 
 | str(VARCHAR) | n(INT) |
 |---|---|
@@ -8782,7 +8782,7 @@ Syntax
 VARCHAR RPAD(VARCHAR str, INT len, VARCHAR pad)
 ```
 
-Arguments str: specifies a source string of the VARCHAR type. len: specifies the length of a new string. This argument is of the INT type. pad: specifies a string to be repeatedly padded to the source string. This argument is of the VARCHAR type. Right pad a string with another string several times until the new string reaches the specified length. If any argument is NULL, the return value is NULL. If the source string is an empty string or the specified length is a negative number, the return value is NULL. If the string to be padded to the source string is an empty string, there are two scenarios. A trimmed source string is returned when the specified length is equal to or less than the length of the source string. NULL is returned when the specified length is greater than the length of the source string. Examples Input example
+Arguments str: specifies a source string of the VARCHAR type. len: specifies the length of a new string. This argument is of the INT type. pad: specifies a string to be repeatedly padded to the source string. This argument is of the VARCHAR type. Description Right pad a string with another string several times until the new string reaches the specified length. If any argument is NULL, the return value is NULL. If the source string is an empty string or the specified length is a negative number, the return value is NULL. If the string to be padded to the source string is an empty string, there are two scenarios. A trimmed source string is returned when the specified length is equal to or less than the length of the source string. NULL is returned when the specified length is greater than the length of the source string. Examples Input example
 
 | str (VARCHAR) | len (INT) | pad (VARCHAR) |
 |---|---|---|
@@ -8813,7 +8813,7 @@ Syntax
 VARCHAR SPLIT_INDEX(VARCHAR str, VARCHAR sep, INT index)
 ```
 
-Arguments str: specifies the string to be split. This argument is of the VARCHAR type. sep: specifies the separator of the VARCHAR type. index: specifies the index number of the substring to be obtained from the split string. This argument is of the INT type. Use a separator to split a string into several substrings and return the indexed substring. If no substring is indexed, NULL is returned. The index starts from 0. If any argument is NULL, the return value is NULL. Examples Input example
+Arguments str: specifies the string to be split. This argument is of the VARCHAR type. sep: specifies the separator of the VARCHAR type. index: specifies the index number of the substring to be obtained from the split string. This argument is of the INT type. Description Use a separator to split a string into several substrings and return the indexed substring. If no substring is indexed, NULL is returned. The index starts from 0. If any argument is NULL, the return value is NULL. Examples Input example
 
 | str (VARCHAR) | sep (VARCHAR) | index (INT) |
 |---|---|---|
@@ -8838,7 +8838,7 @@ Syntax
 MAP STR_TO_MAP(VARCHAR text) MAP STR_TO_MAP(VARCHAR text, VARCHAR listDelimiter, VARCHAR keyValueDelimiter)
 ```
 
-Arguments text: specifies given text of the VARCHAR type. listDelimiter: specifies the delimiter used to splits the given text into key-value pairs. This argument is of the VARCHAR type. The default delimiter is a comma (,). keyValueDelimiter: specifies the delimiter used to separate the key and value in a key-value pair. This argument is of the VARCHAR type. The default delimiter is an equal sign (=). Not e The delimiters are defined by Java regular expressions. If a special character is used, it needs to be converted to an escape character. Use listDelimiter to split the given text into key-value pairs, use keyValueDelimiter to separate the key and value in each key-value pair, and then generate and return a map. Examples Sample code
+Arguments text: specifies given text of the VARCHAR type. listDelimiter: specifies the delimiter used to splits the given text into key-value pairs. This argument is of the VARCHAR type. The default delimiter is a comma (,). keyValueDelimiter: specifies the delimiter used to separate the key and value in a key-value pair. This argument is of the VARCHAR type. The default delimiter is an equal sign (=). Not e The delimiters are defined by Java regular expressions. If a special character is used, it needs to be converted to an escape character. Description Use listDelimiter to split the given text into key-value pairs, use keyValueDelimiter to separate the key and value in each key-value pair, and then generate and return a map. Examples Sample code
 
 ```
 SELECT
@@ -8856,7 +8856,7 @@ Syntax
 VARCHAR SUBSTRING(VARCHAR a, INT start) VARCHAR SUBSTRING(VARCHAR a, INT start, INT len)
 ```
 
-Arguments a: specifies the string from which a substring is to be obtained. This argument is of the VARCHAR type. len: specifies the length of the substring to be obtained. This argument is of the INT type. start: specifies the start position where the substring is to be obtained from the specified string. This argument is of the INT type. Obtain a substring of the specified length from a string, starting from the specified position. If the length is not specified, the entire string is obtained. start begins with 1. If the value is 0, it is regarded as
+Arguments a: specifies the string from which a substring is to be obtained. This argument is of the VARCHAR type. len: specifies the length of the substring to be obtained. This argument is of the INT type. start: specifies the start position where the substring is to be obtained from the specified string. This argument is of the INT type. Description Obtain a substring of the specified length from a string, starting from the specified position. If the length is not specified, the entire string is obtained. start begins with 1. If the value is 0, it is regarded as
 1. If the value is negative, obtain a substring of the specified length backwards starting from the last
 character in the string. Examples Input example
 
@@ -8910,7 +8910,7 @@ Syntax
 VARCHAR TRIM( VARCHAR x )
 ```
 
-Arguments x: VARCHAR type Trim leading or trailing characters from a string. The most common use is to trim leading or trailing blank spaces. Examples Test example
+Arguments x: VARCHAR type Description Trim leading or trailing characters from a string. The most common use is to trim leading or trailing blank spaces. Examples Test example
 
 ```
 SELECT TRIM(' Sample '); as result FROM T1
@@ -8926,7 +8926,7 @@ Syntax
 VARCHAR UPPER(A)
 ```
 
-Arguments A: VARCHAR type Convert the specified string to a string of uppercase letters. Examples Input example var1(VARCHAR) ss ttee Sample code
+Arguments A: VARCHAR type Description Convert the specified string to a string of uppercase letters. Examples Input example var1(VARCHAR) ss ttee Sample code
 
 ```
 SELECT UPPER(var1) as aa FROM T1;
@@ -8944,7 +8944,7 @@ Syntax
 A + B
 ```
 
-Arguments A and B: INT type Return the result of adding B to A. Examples Input example
+Arguments A and B: INT type Description Return the result of adding B to A. Examples Input example
 
 | int1(INT) | int2(INT) | int3(INT) |
 |---|---|---|
@@ -8966,7 +8966,7 @@ Syntax
 A – B
 ```
 
-Arguments A and B: specify values of the INT type. Return the result of subtracting B from A. Examples Input example
+Arguments A and B: specify values of the INT type. Description Return the result of subtracting B from A. Examples Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -8988,7 +8988,7 @@ Syntax
 A * B
 ```
 
-Arguments A and B: specify values of the INT type. Return the result of multiplying A by B. Examples Input example
+Arguments A and B: specify values of the INT type. Description Return the result of multiplying A by B. Examples Input example
 
 | int1 (INT) | int2 (INT) | int3 (INT) |
 |---|---|---|
@@ -9010,7 +9010,7 @@ Syntax
 A/B
 ```
 
-Arguments A and B: INT type Return the result of dividing A by B. Examples Input example
+Arguments A and B: INT type Description Return the result of dividing A by B. Examples Input example
 
 | int1(INT) | int2 (INT) |
 |---|---|
@@ -9032,7 +9032,7 @@ Syntax
 DOUBLE ABS(A)
 ```
 
-Arguments A: DOUBLE type Return the absolute value of the specified number. Examples Input example int1(DOUBLE) 4.3 Sample code
+Arguments A: DOUBLE type Description Return the absolute value of the specified number. Examples Input example int1(DOUBLE) 4.3 Sample code
 
 ```
 SELECT ABS(in1) as aa FROM T1;
@@ -9048,7 +9048,7 @@ Syntax
 DOUBLE ACOS(A)
 ```
 
-Argument A: specifies a number of DOUBLE type. Return the arccos value of the specified number. Examples Input example int1 (DOUBLE) 0.7173560908995228 0.4 Sample code
+Argument A: specifies a number of DOUBLE type. Description Return the arccos value of the specified number. Examples Input example int1 (DOUBLE) 0.7173560908995228 0.4 Sample code
 
 ```
 SELECT ACOS(in1) as aa FROM T1;
@@ -9069,7 +9069,7 @@ Syntax
 VARCHAR BIN(BIGINT number)
 ```
 
-Arguments number: BIGINT type. INT type arguments support implicit conversion, whereas other types of arguments do not. Convert a value of the BIGINT type to a binary string. Examples Input example
+Arguments number: BIGINT type. INT type arguments support implicit conversion, whereas other types of arguments do not. Description Convert a value of the BIGINT type to a binary string. Examples Input example
 
 | id(INT) | x (BIGINT) |
 |---|---|
@@ -9101,7 +9101,7 @@ Syntax
 DOUBLE ASIN(A)
 ```
 
-Arguments A: DOUBLE type Return the arcsine value of the specified number. Examples Input example int1 (DOUBLE) 0.7173560908995228 0.4 Sample code
+Arguments A: DOUBLE type Description Return the arcsine value of the specified number. Examples Input example int1 (DOUBLE) 0.7173560908995228 0.4 Sample code
 
 ```
 SELECT ASIN(in1) as aa FROM T1;
@@ -9133,7 +9133,7 @@ Syntax
 INT BITAND(INT number1,INT number2)
 ```
 
-Arguments number1: specifies a common argument of the INT type. number2: specifies a common argument of the INT type. Perform a bitwise AND operation on the specified values. The input and output values are both of the INT type. Examples Input example
+Arguments number1: specifies a common argument of the INT type. number2: specifies a common argument of the INT type. Description Perform a bitwise AND operation on the specified values. The input and output values are both of the INT type. Examples Input example
 
 | a(INT) | b(INT) |
 |---|---|
@@ -9155,7 +9155,7 @@ Syntax
 INT BITNOT((INT number)
 ```
 
-Arguments number: specifies a common argument of the INT type. Perform a bitwise NOT operation on the specified value. The input and output values are both integers. Examples Input example a(INT) Sample code
+Arguments number: specifies a common argument of the INT type. Description Perform a bitwise NOT operation on the specified value. The input and output values are both integers. Examples Input example a(INT) Sample code
 
 ```
 SELECT BITNOT(a) as var1, FROM T1
@@ -9171,7 +9171,7 @@ Syntax
 INT BITOR(INT number1, INT number2)
 ```
 
-Arguments number1: specifies a common argument of the INT type. number2: specifies a common argument of the INT type. Perform a bitwise OR operation on the specified values. The input and output values are both of the INT type. Examples Input example
+Arguments number1: specifies a common argument of the INT type. number2: specifies a common argument of the INT type. Description Perform a bitwise OR operation on the specified values. The input and output values are both of the INT type. Examples Input example
 
 | a(INT) | b(INT) |
 |---|---|
@@ -9193,7 +9193,7 @@ Syntax
 INT BITXOR(INT number1, INT number2)
 ```
 
-Arguments number1: specifies a common value of the INT type. number2: specifies a common value of the INT type. Return the bitwise XOR (exclusive OR) of two given numbers. The argument and result are both of the INT type. Examples Input example
+Arguments number1: specifies a common value of the INT type. number2: specifies a common value of the INT type. Description Return the bitwise XOR (exclusive OR) of two given numbers. The argument and result are both of the INT type. Examples Input example
 
 | a (INT) | b (INT) |
 |---|---|
@@ -9215,7 +9215,7 @@ Syntax
 CARDINALITY(str)
 ```
 
-Arguments str: specifies an array. Return the number of elements in an array. Examples Input example
+Arguments str: specifies an array. Description Return the number of elements in an array. Examples Input example
 
 | str(INT) | b (Array[INT]) |
 |---|---|
@@ -9237,7 +9237,7 @@ Syntax
 DOUBLE COS(A)
 ```
 
-Arguments A: DOUBLE type Return the cosine value of the specified number. Examples Input example in1(DOUBLE) 0.8 0.4 Sample code
+Arguments A: DOUBLE type Description Return the cosine value of the specified number. Examples Input example in1(DOUBLE) 0.8 0.4 Sample code
 
 ```
 SELECT COS(in1) as aa FROM T1;
@@ -9269,7 +9269,7 @@ Syntax
 DOUBLE E()
 ```
 
-Arguments DOUBLE type Return the DOUBLE type value of natural constant E. Examples Input example
+Arguments DOUBLE type Description Return the DOUBLE type value of natural constant E. Examples Input example
 
 | id(INT) | X(DOUBLE) |
 |---|---|
@@ -9295,7 +9295,7 @@ Syntax
 DOUBLE EXP(A)
 ```
 
-Argument A: specifies a value of the DOUBLE type. Return the power of e, where e is the base of the natural logarithm. Examples Input example in1 (DOUBLE) 8.0 10.0 Sample code
+Argument A: specifies a value of the DOUBLE type. Description Return the power of e, where e is the base of the natural logarithm. Examples Input example in1 (DOUBLE) 8.0 10.0 Sample code
 
 ```
 SELECT EXP(in1) as aa FROM T1;
@@ -9311,7 +9311,7 @@ Syntax
 DOUBLE FLOOR(A)
 ```
 
-Arguments A: DOUBLE type Return the maximum integer that is less than or equal to the provided number. Examples Input example in1(DOUBLE) 8.123 10.321 Sample code
+Arguments A: DOUBLE type Description Return the maximum integer that is less than or equal to the provided number. Examples Input example in1(DOUBLE) 8.123 10.321 Sample code
 
 ```
 SELECT FLOOR(in1) as aa FROM T1;
@@ -9327,7 +9327,7 @@ Syntax
 DOUBLE ln(DOUBLE number)
 ```
 
-Arguments number: specifies a number of the DOUBLE type. If the input value is of the VARCHAR or BIGINT type, it is implicitly converted to the DOUBLE type before an operation. Return the natural logarithm of the specified number. The return value is a logarithm of the DOUBLE type. Examples Input example
+Arguments number: specifies a number of the DOUBLE type. If the input value is of the VARCHAR or BIGINT type, it is implicitly converted to the DOUBLE type before an operation. Description Return the natural logarithm of the specified number. The return value is a logarithm of the DOUBLE type. Examples Input example
 
 | ID (INT) | X (DOUBLE) |
 |---|---|
@@ -9355,7 +9355,7 @@ Syntax
 DOUBLE LOG(DOUBLE base, DOUBLE x) DOUBLE LOG(DOUBLE x)
 ```
 
-Arguments base: specifies a value of the DOUBLE type. x: specifies a value of the DOUBLE type. Return the natural logarithm of x to the base specified by the base argument. The return value is a logarithm of the DOUBLE type. If there is only one argument value, the return value is a natural logarithm to the base specified by the argument. Examples Input example
+Arguments base: specifies a value of the DOUBLE type. x: specifies a value of the DOUBLE type. Description Return the natural logarithm of x to the base specified by the base argument. The return value is a logarithm of the DOUBLE type. If there is only one argument value, the return value is a natural logarithm to the base specified by the argument. Examples Input example
 
 | ID (INT) | BASE (DOUBLE) | X (DOUBLE) |
 |---|---|---|
@@ -9383,7 +9383,7 @@ Syntax
 DOUBLE LOG10(DOUBLE x)
 ```
 
-Argument x: specifies a value of the DOUBLE type. Return the base-10 logarithm of x. If x is NULL, the return value is NULL. If x is a negative number, an exception occurs. Examples Input example
+Argument x: specifies a value of the DOUBLE type. Description Return the base-10 logarithm of x. If x is NULL, the return value is NULL. If x is a negative number, an exception occurs. Examples Input example
 
 | id (INT) | X (INT) |
 |---|---|
@@ -9411,7 +9411,7 @@ Syntax
 DOUBLE LOG2(DOUBLE x)
 ```
 
-Arguments x: specifies a multiple of 2. This argument is of the DOUBLE type. Return the base-2 logarithm of x. If x is NULL, the return value is NULL. If x is a negative number, an exception occurs. Examples Input example
+Arguments x: specifies a multiple of 2. This argument is of the DOUBLE type. Description Return the base-2 logarithm of x. If x is NULL, the return value is NULL. If x is a negative number, an exception occurs. Examples Input example
 
 | id (INT) | X (INT) |
 |---|---|
@@ -9439,7 +9439,7 @@ Syntax
 DOUBLE PI( )
 ```
 
-Obtain the ratio of circumference to diameter, namely, Pi. Examples Input example
+Description Obtain the ratio of circumference to diameter, namely, Pi. Examples Input example
 
 | id (INT) | X (INT) |
 |---|---|
@@ -9465,7 +9465,7 @@ Syntax
 DOUBLE POWER(A, B)
 ```
 
-Input parameters A and B: DOUBLE data type Returns the result of raising A to the power of B. Example Input example
+Input parameters A and B: DOUBLE data type Description Returns the result of raising A to the power of B. Example Input example
 
 | int1 (DOUBLE) | in2 (DOUBLE) |
 |---|---|
@@ -9487,7 +9487,7 @@ Syntax
 DOUBLE RAND([BIGINT seed])
 ```
 
-Arguments seed: specifies a random number of the BIGINT type. This argument specifies the start number of a random number sequence. Return a random number of the DOUBLE type. The return value range is `[0, 1)` . Examples Input example
+Arguments seed: specifies a random number of the BIGINT type. This argument specifies the start number of a random number sequence. Description Return a random number of the DOUBLE type. The return value range is `[0, 1)` . Examples Input example
 
 | id(INT) | X(INT) |
 |---|---|
@@ -9513,7 +9513,7 @@ Syntax
 DOUBLE SIN(A)
 ```
 
-Arguments A: specifies a number of the DOUBLE type. Return the sine value of the specified number. Examples Input example in1 (DOUBLE) 8.0 0.4 Sample code
+Arguments A: specifies a number of the DOUBLE type. Description Return the sine value of the specified number. Examples Input example in1 (DOUBLE) 8.0 0.4 Sample code
 
 ```
 SELECT SIN(in1) as aa FROM T1;
@@ -9529,7 +9529,7 @@ Syntax
 DOUBLE SQRT(A)
 ```
 
-Arguments A: specifies a number of the DOUBLE type. Return the square root of the specified number. Examples Input example in1 (DOUBLE) 8.0 Sample code
+Arguments A: specifies a number of the DOUBLE type. Description Return the square root of the specified number. Examples Input example in1 (DOUBLE) 8.0 Sample code
 
 ```
 SELECT SQRT(in1) as aa FROM T1;
@@ -9545,7 +9545,7 @@ Syntax
 DOUBLE TAN(A)
 ```
 
-Arguments A: DOUBLE type Return the tangent value of the specified number. Examples Input example in1(DOUBLE) 8.0 0.4 Sample code
+Arguments A: DOUBLE type Description Return the tangent value of the specified number. Examples Input example in1(DOUBLE) 8.0 0.4 Sample code
 
 ```
 SELECT TAN(in1) as aa FROM T1;
@@ -9587,7 +9587,7 @@ Syntax
 INTEGER CHARACTER_LENGTH( VARCHAR x )
 ```
 
-Arguments x: specifies a value of the VARCHAR type. Return the number of characters contained in a string. Examples Input example
+Arguments x: specifies a value of the VARCHAR type. Description Return the number of characters contained in a string. Examples Input example
 
 | ID (INT) | X (VARCHAR) |
 |---|---|
@@ -9613,7 +9613,7 @@ Syntax
 DOUBLE DEGREES(double x)
 ```
 
-Arguments x: specifies a radian value of the DOUBLE type. Return the result of converting radians to degrees. Examples Sample code
+Arguments x: specifies a radian value of the DOUBLE type. Description Return the result of converting radians to degrees. Examples Sample code
 
 ```
 SELECT DEGREES( PI() ) as result FROM T1
@@ -9659,7 +9659,7 @@ Syntax
 DECIMAL ROUND(DECIMAL x, INT n)
 ```
 
-Argument x: DECIMAL type Round the x argument's value to n decimal places. Examples Input example in1 (DECIMAL) 0.7173560908995228 in1 (DECIMAL) 0.4 Sample code
+Argument x: DECIMAL type Description Round the x argument's value to n decimal places. Examples Input example in1 (DECIMAL) 0.7173560908995228 in1 (DECIMAL) 0.4 Sample code
 
 ```
 SELECT ROUND(in1,2) as `result` FROM T1;
@@ -9671,7 +9671,7 @@ Output example result (DECIMAL) 0.72 0.40
 
 ##### 2.11.3.1 CURRENT_TIMESTAMP
 
-Syntax Arguments None Return the current UTC (GMT+0) timestamp, which is eight hours earlier than Beijing time. Examples Sample code
+Syntax Arguments None Description Return the current UTC (GMT+0) timestamp, which is eight hours earlier than Beijing time. Examples Sample code
 
 ```
 SELECT CURRENT_TIMESTAMP as var1 FROM T1
@@ -9687,7 +9687,7 @@ Syntax Syntax
 INT DATEDIFF(VARCHAR enddate, VARCHAR startdate) INT DATEDIFF(TIMESTAMP enddate, VARCHAR startdate) INT DATEDIFF(VARCHAR enddate, TIMESTAMP startdate) INT DATEDIFF(TIMESTAMP enddate, TIMESTAMP startdate)
 ```
 
-Arguments startdate: specifies a start date of the TIMESTAMP or VARCHAR type. The format of a VARCHAR type date is yyyy-MM-dd or yyyy-MM-dd HH:mm:ss. enddate: specifies an end date of the TIMESTAMP or VARCHAR type. The format of a VARCHAR type date is yyyy-MM-dd or yyyy-MM-dd HH:mm:ss. Compute the number of days between the specified start date and end date. The return value is an integer of the TIMESTAMP type or in the format of `yy-MM-dd HH:mm:ss` or `yy-MM-dd` . If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example
+Arguments startdate: specifies a start date of the TIMESTAMP or VARCHAR type. The format of a VARCHAR type date is yyyy-MM-dd or yyyy-MM-dd HH:mm:ss. enddate: specifies an end date of the TIMESTAMP or VARCHAR type. The format of a VARCHAR type date is yyyy-MM-dd or yyyy-MM-dd HH:mm:ss. Description Compute the number of days between the specified start date and end date. The return value is an integer of the TIMESTAMP type or in the format of `yy-MM-dd HH:mm:ss` or `yy-MM-dd` . If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example
 
 | datetime1(VARCHAR) | datetime2 (VARCHAR) | nullstr(VARCHAR) |
 |---|---|---|
@@ -9720,7 +9720,7 @@ Syntax
 VARCHAR DATE_ADD(VARCHAR startdate, INT days) VARCHAR DATE_ADD(TIMESTAMP time, INT days)
 ```
 
-Arguments startdate: specifies a date of the VARCHAR type. The format is yyyy-MM-dd or yyyy-MM-dd HH:mm:ss. time: specifies a date of the TIMESTAMP type. days: specifies the number of days of the INT type. Return a date that is X (specified by days) days after the specified date of the VARCHAR type. The date format can be yyyy-MM-dd hh:mm:ss, yyyy-MM-dd, and timestamp string. The return value is a string type date in the format of yyyy-MM-dd. If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example
+Arguments startdate: specifies a date of the VARCHAR type. The format is yyyy-MM-dd or yyyy-MM-dd HH:mm:ss. time: specifies a date of the TIMESTAMP type. days: specifies the number of days of the INT type. Description Return a date that is X (specified by days) days after the specified date of the VARCHAR type. The date format can be yyyy-MM-dd hh:mm:ss, yyyy-MM-dd, and timestamp string. The return value is a string type date in the format of yyyy-MM-dd. If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example
 
 | datetime1 (VARCHAR) | nullstr (VARCHAR) |
 |---|---|
@@ -9811,7 +9811,7 @@ Syntax
  INT DAYOFMONTH(DATE date)
 ```
 
-Arguments date: specifies a date of the DATE type. time: specifies a date of the TIMESTAMP type. Return the day number of the specified timestamp or date. Valid range: [1,31]. Examples Input example
+Arguments date: specifies a date of the DATE type. time: specifies a date of the TIMESTAMP type. Description Return the day number of the specified timestamp or date. Valid range: [1,31]. Examples Input example
 
 | tsStr (VARCHAR) | dateStr (VARCHAR) | tdate (DATE) | ts (TIMESTAMP) |
 |---|---|---|---|
@@ -9843,7 +9843,7 @@ Syntax
  VARCHAR FROM_UNIXTIME(BIGINT unixtime[, VARCHAR format])
 ```
 
-Arguments unixtime: specifies a Unix timestamp (in seconds) of the BIGINT type. An exception occurs if this argument is of another type. format: specifies the target date format of the VARCHAR type. The default format is yyyy-MM-dd hh:mm:ss. This argument is optional. Return a VARCHAR type date in the specified date format. The default format is yyyy-MM-dd HH:mm:ss. If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example
+Arguments unixtime: specifies a Unix timestamp (in seconds) of the BIGINT type. An exception occurs if this argument is of another type. format: specifies the target date format of the VARCHAR type. The default format is yyyy-MM-dd hh:mm:ss. This argument is optional. Description Return a VARCHAR type date in the specified date format. The default format is yyyy-MM-dd HH:mm:ss. If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example
 
 | unixtime1(INT) | nullstr(VARCHAR) |
 |---|---|
@@ -9873,7 +9873,7 @@ Syntax
  INT HOUR(TIME time)
 ```
 
-Arguments time: specifies a time value of the TIME type. time: specifies a time value of the TIMESTAMP type. Return the hours (in 24-hour format) from the specified time or timestamp string. The return value ranges from 0 to 23. Examples Input example
+Arguments time: specifies a time value of the TIME type. time: specifies a time value of the TIMESTAMP type. Description Return the hours (in 24-hour format) from the specified time or timestamp string. The return value ranges from 0 to 23. Examples Input example
 
 | datetime1 (VARCHAR) | time1 (VARCHAR) | time2 (TIME) | timestamp1 (TIMESTAMP) |
 |---|---|---|---|
@@ -9905,7 +9905,7 @@ Syntax y
 TIME LOCALTIME
 ```
 
-Arguments The function is a non-parameterized constructor and can be used directly as a variable. Return the current time of the TIME type in the session time zone. Examples Sample code
+Arguments The function is a non-parameterized constructor and can be used directly as a variable. Description Return the current time of the TIME type in the session time zone. Examples Sample code
 
 ```
 SELECT LOCALTIME as `result` FROM T1
@@ -9922,7 +9922,7 @@ INT MINUTE(TIMESTAMP timestamp)
  INT MINUTE(TIME time)
 ```
 
-Arguments time: specifies a time value of the TIME type. time: specifies a time value of the TIMESTAMP type. Return the minutes from the specified time value. Valid range: [0, 59]. Examples Input example
+Arguments time: specifies a time value of the TIME type. time: specifies a time value of the TIMESTAMP type. Description Return the minutes from the specified time value. Valid range: [0, 59]. Examples Input example
 
 | datetime1 (VARCHAR) | time1 (VARCHAR) | time2 (TIME) | timestamp1 (TIMESTAMP) |
 |---|---|---|---|
@@ -9955,7 +9955,7 @@ INT MONTH(TIMESTAMP time)
  INT MONTH(DATE date)
 ```
 
-Arguments time: specifies a time value of the TIMESTAMP type. date: specifies a time value of the TIME type. Return the month number of the specified time or date. Valid range: [1, 12]. Examples Input example
+Arguments time: specifies a time value of the TIMESTAMP type. date: specifies a time value of the TIME type. Description Return the month number of the specified time or date. Valid range: [1, 12]. Examples Input example
 
 | tsStr (VARCHAR) | dateStr (VARCHAR) | tdate (DATE) | ts (TIMESTAMP) |
 |---|---|---|---|
@@ -9987,7 +9987,7 @@ Syntax
 BIGINT NOW()
 ```
 
-Arguments If no argument is specified, the Unix timestamp (in seconds) of the current system time is returned. Return the Unix timestamp (in seconds) of the current time zone. You can also specify an INT type argument as an offset (in seconds) and use UNIX_TIMESTAMP(CAST(NOW AS VARCHAR)) to convert the INT type argument to a timestamp value. Then add the offset to the current timestamp to return a value. Examples Input example b(VARCHAR) null Sample code
+Arguments If no argument is specified, the Unix timestamp (in seconds) of the current system time is returned. Description Return the Unix timestamp (in seconds) of the current time zone. You can also specify an INT type argument as an offset (in seconds) and use UNIX_TIMESTAMP(CAST(NOW AS VARCHAR)) to convert the INT type argument to a timestamp value. Then add the offset to the current timestamp to return a value. Examples Input example b(VARCHAR) null Sample code
 
 ```
 SELECT NOW() as big1, NOW(b) as big2 FROM T1
@@ -10008,7 +10008,7 @@ INT SECOND(TIMESTAMP timestamp)
  INT SECOND(TIME time)
 ```
 
-Arguments time: specifies a time value of the TIME type. time: specifies a time value of the TIMESTAMP type. Extract the seconds from the specified time value. The return value ranges from 0 to 59. Examples Input example
+Arguments time: specifies a time value of the TIME type. time: specifies a time value of the TIMESTAMP type. Description Extract the seconds from the specified time value. The return value ranges from 0 to 59. Examples Input example
 
 | datetime1(VARCHAR) | time1 (VARCHAR) | time2(TIME) | timestamp1(TIMESTAMP ) |
 |---|---|---|---|
@@ -10055,7 +10055,7 @@ Arguments interval
 | QUARTER | Specifies an interval in quarters. |
 | YEAR | Specifies an interval in years. |
 
-int_expr: specifies an interval that is added to the specified timestamp or date. The value must be an integer. datetime_expr: specifies a timestamp or date to which the interval is added. The data type of the result returned by the TIMESTAMPADD function is the same as that of the datetime_expr argument. The TIMESTAMPADD function adds an interval (int_expr) to a timestamp or date (datetime_expr) and returns the updated time. Examples Input example
+int_expr: specifies an interval that is added to the specified timestamp or date. The value must be an integer. datetime_expr: specifies a timestamp or date to which the interval is added. Description The data type of the result returned by the TIMESTAMPADD function is the same as that of the datetime_expr argument. The TIMESTAMPADD function adds an interval (int_expr) to a timestamp or date (datetime_expr) and returns the updated time. Examples Input example
 
 | a (TIMESTAMP) | b (DATE) |
 |---|---|
@@ -10081,7 +10081,7 @@ Syntax
 Date TO_DATE(INT time) Date TO_DATE(VARCHAR date) Date TO_DATE(VARCHAR date, VARCHAR format)
 ```
 
-Input parameters time: specifies the number of days from January 1, 1970 to a specified date. This parameter is of the INT data type. date: specifies a date of the VARCHAR data type. The default format is yyyy-MM-dd. format: specifies a date format of the VARCHAR data type. Converts a date of the INT or VARCHAR data type into a date of the DATE data type. Example Input example
+Input parameters time: specifies the number of days from January 1, 1970 to a specified date. This parameter is of the INT data type. date: specifies a date of the VARCHAR data type. The default format is yyyy-MM-dd. format: specifies a date format of the VARCHAR data type. Description Converts a date of the INT or VARCHAR data type into a date of the DATE data type. Example Input example
 
 | date1 (bigint) | date2 (VARCHAR) | date3 (VARCHAR) |
 |---|---|---|
@@ -10110,7 +10110,7 @@ Syntax
 TIMESTAMP TO_TIMESTAMP(BIGINT time) TIMESTAMP TO_TIMESTAMP(VARCHAR date) TIMESTAMP TO_TIMESTAMP(VARCHAR date, VARCHAR format)
 ```
 
-Arguments time: specifies a time value of the BIGINT type. The unit is milliseconds. date: specifies a date of the VARCHAR type. The default format is yyyy-MM-dd HH:mm:ss[. SSS]. format: specifies the source date format of the VARCHAR type. Convert a date of the BIGINT or VARCHAR type to a date of the TIMESTAMP type. Examples Input example
+Arguments time: specifies a time value of the BIGINT type. The unit is milliseconds. date: specifies a date of the VARCHAR type. The default format is yyyy-MM-dd HH:mm:ss[. SSS]. format: specifies the source date format of the VARCHAR type. Description Convert a date of the BIGINT or VARCHAR type to a date of the TIMESTAMP type. Examples Input example
 
 | timestamp1 (bigint) | timestamp2 (VARCHAR) | timestamp3 (VARCHAR) |
 |---|---|---|
@@ -10139,7 +10139,7 @@ Syntax
 BIGINT UNIX_TIMESTAMP() BIGINT UNIX_TIMESTAMP(VARCHAR date) BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
 ```
 
-Arguments date: specifies a date of the VARCHAR type. The default format is yyyy-MM-dd HH:mm:ss. format: specifies the source date format of the VARCHAR type. The default format is yyyy-MM-dd HH:mm:ss. Convert the specified date to a Unix timestamp (in seconds) of the BIGINT type. Both the date and format parameters are optional. If neither is specified, the Unix timestamp (in seconds) of the current time is returned. If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example nullstr (VARCHAR) null Sample code
+Arguments date: specifies a date of the VARCHAR type. The default format is yyyy-MM-dd HH:mm:ss. format: specifies the source date format of the VARCHAR type. The default format is yyyy-MM-dd HH:mm:ss. Description Convert the specified date to a Unix timestamp (in seconds) of the BIGINT type. Both the date and format parameters are optional. If neither is specified, the Unix timestamp (in seconds) of the current time is returned. If any argument is NULL or a parsing error occurs, the return value is NULL. Examples Input example nullstr (VARCHAR) null Sample code
 
 ```
 SELECT UNIX_TIMESTAMP() as big1,
@@ -10161,7 +10161,7 @@ Syntax
 INT WEEK(DATE date) INT WEEK(TIMESTAMP time)
 ```
 
-Arguments date: specifies a date of the DATE type. time: specifies a date of the TIMESTAMP type. Calculate the week number of the specified date in the year. The valid week number range is from 1 to 53. Examples Input example
+Arguments date: specifies a date of the DATE type. time: specifies a date of the TIMESTAMP type. Description Calculate the week number of the specified date in the year. The valid week number range is from 1 to 53. Examples Input example
 
 | dateStr(VARCHAR) | date1 (DATE) | ts1 (TIMESTAMP) |
 |---|---|---|
@@ -10189,7 +10189,7 @@ Syntax
 INT YEAR(TIMESTAMP time) INT YEAR(DATE date)
 ```
 
-Arguments date: specifies a date of the DATE type. time: specifies a date of the TIMESTAMP type. Extract the year from the specified date. Examples Input example
+Arguments date: specifies a date of the DATE type. time: specifies a date of the TIMESTAMP type. Description Extract the year from the specified date. Examples Input example
 
 | tsStr(VARCHAR) | dateStr(VARCHAR) | tdate (DATE) | ts(TIMESTAMP) |
 |---|---|---|---|
@@ -10233,7 +10233,7 @@ Input parameters
 | d | BOOLEAN |
 | e | BOOLEAN |
 
-If a is true, b is returned. If a is false and c is true, d is returned. If both a and c are false, e is returned. Example Not e If the CASE WHEN function returns a constant string, spaces are added after the string. An example is described as follows. When the return value is "ios", several spaces are added after this string.
+Description If a is true, b is returned. If a is false and c is true, d is returned. If both a and c are false, e is returned. Example Not e If the CASE WHEN function returns a constant string, spaces are added after the string. An example is described as follows. When the return value is "ios", several spaces are added after this string.
 
 ```
 case when device_type = 'android' then 'android' else 'ios' end as os
@@ -10303,7 +10303,7 @@ Syntax
 T IF(BOOLEAN testCondition, T valueTrue, T valueFalseOrNull)
 ```
 
-Not e T indicates any return type. Arguments testCondition: BOOLEAN type valueTrue and valueFalseOrNull: These two arguments must be of the same type. The specific type is not restricted. Use the BOOLEAN value of testCondition as the criterion. If the value is true, valueTrue is returned. If the value is false, valueFalseOrNull is returned. If testCondition is NULL, valueFalseOrNull is returned. If any other argument is NULL, the operation is performed based on normal semantics, and the return value is of the T type. Examples Input example
+Not e T indicates any return type. Arguments testCondition: BOOLEAN type valueTrue and valueFalseOrNull: These two arguments must be of the same type. The specific type is not restricted. Description Use the BOOLEAN value of testCondition as the criterion. If the value is true, valueTrue is returned. If the value is false, valueFalseOrNull is returned. If testCondition is NULL, valueFalseOrNull is returned. If any other argument is NULL, the operation is performed based on normal semantics, and the return value is of the T type. Examples Input example
 
 | int1(INT) | int2(INT) | str1(VARCHAR) | str2(VARCHAR) |
 |---|---|---|---|
@@ -10327,7 +10327,7 @@ Syntax
 BOOLEAN IS_ALPHA(VARCHAR str)
 ```
 
-Arguments str: specifies a string of the VARCHAR type. Check whether the specified string contains only letters. If it contains only letters, TRUE is returned. Otherwise, FALSE is returned. Examples Input example
+Arguments str: specifies a string of the VARCHAR type. Description Check whether the specified string contains only letters. If it contains only letters, TRUE is returned. Otherwise, FALSE is returned. Examples Input example
 
 | e (VARCHAR) | f (VARCHAR) | g (VARCHAR) |
 |---|---|---|
@@ -10353,7 +10353,7 @@ Syntax
  BOOLEAN IS_DECIMAL(VARCHAR str)
 ```
 
-Input parameter str: specifies a string of the VARCHAR data type. If a specified string contains only decimal characters, true is returned. Otherwise, false is returned. Example Input example
+Input parameter str: specifies a string of the VARCHAR data type. Description If a specified string contains only decimal characters, true is returned. Otherwise, false is returned. Example Input example
 
 | a (VARCHAR) | b (VARCHAR) | c (VARCHAR) | d (VARCHAR) | e (VARCHAR) | f (VARCHAR) | g (VARCHAR) |
 |---|---|---|---|---|---|---|
@@ -10381,7 +10381,7 @@ Syntax
  BOOLEAN IS_DIGIT(VARCHAR str)
 ```
 
-Arguments str: specifies a string of the VARCHAR type. Check whether the specified string contains only digits. If it only contains digits, TRUE is returned. Otherwise, FALSE is returned. The return value is of the BOOLEAN type. Examples Input example
+Arguments str: specifies a string of the VARCHAR type. Description Check whether the specified string contains only digits. If it only contains digits, TRUE is returned. Otherwise, FALSE is returned. The return value is of the BOOLEAN type. Examples Input example
 
 | e(VARCHAR) | f(VARCHAR) | g(VARCHAR) |
 |---|---|---|
@@ -10407,7 +10407,7 @@ Syntax
  NULLIF(A,B)
 ```
 
-Arguments A and B: INT type If A and B have the same value, null is returned. If A and B have different values, the value of the first argument is returned. Examples Input example
+Arguments A and B: INT type Description If A and B have the same value, null is returned. If A and B have different values, the value of the first argument is returned. Examples Input example
 
 | var1(INT) | var2(INT) |
 |---|---|
@@ -10431,7 +10431,7 @@ Syntax
  GENERATE_SERIES(INT from, INT to)
 ```
 
-Arguments from: specifies a lower limit of the INT type. to: specifies an upper limit of the INT type. Generate a series of continuous values from the lower limit to the upper limit minus one. Examples Input example
+Arguments from: specifies a lower limit of the INT type. to: specifies an upper limit of the INT type. Description Generate a series of continuous values from the lower limit to the upper limit minus one. Examples Input example
 
 | s(INT) | e(INT) |
 |---|---|
@@ -10468,7 +10468,7 @@ Syntax
 JSON_TUPLE(str, path1, path2 ..., pathN)
 ```
 
-Arguments str: specifies a JSON string. path1 to pathN: specify strings that represent paths, which do not need to begin with a dollar sign ($). Obtain the value represented by each path string from a JSON string. Examples Input example
+Arguments str: specifies a JSON string. path1 to pathN: specify strings that represent paths, which do not need to begin with a dollar sign ($). Description Obtain the value represented by each path string from a JSON string. Examples Input example
 
 | d(VARCHAR) | s(VARCHAR) |
 |---|---|
@@ -10504,7 +10504,7 @@ Syntax
 STRING_SPLIT(VARCHAR , separator)
 ```
 
-Arguments separator: specifies a separator of the VARCHAR type. Use a separator to split a string into multiple substrings. Examples Input example
+Arguments separator: specifies a separator of the VARCHAR type. Description Use a separator to split a string into multiple substrings. Examples Input example
 
 | d (VARCHAR) | s (VARCHAR) |
 |---|---|
@@ -10535,7 +10535,7 @@ Syntax
 CAST(A AS type)
 ```
 
-Argument A: For more information about the argument type, see Data types. Convert a value to a specified type. Examples Input example
+Argument A: For more information about the argument type, see Data types. Description Convert a value to a specified type. Examples Input example
 
 | var1 (VARCHAR) | var2 (INT) |
 |---|---|
@@ -10582,7 +10582,7 @@ Syntax
 CONCAT_AGG([linedelimiter, ] value)
 ```
 
-Argument linedelimiter: specifies a connector, which currently can only be a string constant. Use a connector to concatenate multiple fields. The default connector is "\n". The return value is a new concatenated string of the VARCHAR type. Examples Input example c (VARCHAR) Hi Hi Hi c (VARCHAR) Hi Hi Hi Hi Hi Hi Hi Sample code
+Argument linedelimiter: specifies a connector, which currently can only be a string constant. Description Use a connector to concatenate multiple fields. The default connector is "\n". The return value is a new concatenated string of the VARCHAR type. Examples Input example c (VARCHAR) Hi Hi Hi c (VARCHAR) Hi Hi Hi Hi Hi Hi Hi Sample code
 
 ```
 SELECT concat_agg(c) as var1,
@@ -10604,7 +10604,7 @@ Syntax
  COUNT(A)
 ```
 
-Arguments A Supported data types include numeric types (TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE), BOOLEAN, and VARCHAR. The DATE, TIME, TIMESTAMP, and VARBINARY data types are not supported. Return the number of input parameters. Examples Input example var1 (VARCHAR) Sample code
+Arguments A Supported data types include numeric types (TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE), BOOLEAN, and VARCHAR. The DATE, TIME, TIMESTAMP, and VARBINARY data types are not supported. Description Return the number of input parameters. Examples Input example var1 (VARCHAR) Sample code
 
 ```
 SELECT COUNT(var1) as aa FROM T1;
@@ -10626,7 +10626,7 @@ To obtain the first record based on parameters, define the function as follows:
  T FIRST_VALUE(value: T, order: Long)
 ```
 
-Arguments value: specifies a value of any type. Only one argument is supported. order: specifies a record with the smallest order value as the first record. Obtain the first non-null record of a stream. Examples Input example
+Arguments value: specifies a value of any type. Only one argument is supported. order: specifies a record with the smallest order value as the first record. Description Obtain the first non-null record of a stream. Examples Input example
 
 | a (BIGINT) | b (INT) | c (VARCHAR) |
 |---|---|---|
@@ -10686,7 +10686,7 @@ To return the last value in an ordered set of values, define the function as fol
 T LAST_VALUE(value: T, order: Long)
 ```
 
-Arguments value: specifies a value of any type. order: specifies the order of the values. A value with the greatest order value is considered as the last value. Obtain the last data record of a stream. Examples Input example
+Arguments value: specifies a value of any type. order: specifies the order of the values. A value with the greatest order value is considered as the last value. Description Obtain the last data record of a stream. Examples Input example
 
 | a(BIGINT) | b(INT) | c(VARCHAR) |
 |---|---|---|
@@ -10740,7 +10740,7 @@ Syntax
  MAX(A)
 ```
 
-Arguments A Supported data types include numeric values (TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE), BOOLEAN, and VARCHAR. The DATE, TIME, TIMESTAMP, and VARBINARY data types are not supported. Return the maximum value of all the input values. Examples Input example var1(INT) Sample code
+Arguments A Supported data types include numeric values (TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE), BOOLEAN, and VARCHAR. The DATE, TIME, TIMESTAMP, and VARBINARY data types are not supported. Description Return the maximum value of all the input values. Examples Input example var1(INT) Sample code
 
 ```
 SELECT MAX(a) as aa FROM T1;
@@ -10756,7 +10756,7 @@ Syntax
  MIN(A)
 ```
 
-Arguments A Supported data types include numeric values (TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE), BOOLEAN, and VARCHAR. The DATE, TIME, TIMESTAMP, and VARBINARY data types are not supported. Return the minimum value of all the input values. Examples Input example var1(INT) Sample code
+Arguments A Supported data types include numeric values (TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE), BOOLEAN, and VARCHAR. The DATE, TIME, TIMESTAMP, and VARBINARY data types are not supported. Description Return the minimum value of all the input values. Examples Input example var1(INT) Sample code
 
 ```
 SELECT MIN(a) as aa FROM T1;
@@ -10772,7 +10772,7 @@ Syntax
 T STDDEV_POP(T value)
 ```
 
-Argument value: specifies a number of the BIGINT or DOUBLE type. Return the standard deviation for the population of all values in the specified expression. Examples Input example
+Argument value: specifies a number of the BIGINT or DOUBLE type. Description Return the standard deviation for the population of all values in the specified expression. Examples Input example
 
 | a (DOUBLE) | c (VARCHAR) |
 |---|---|
@@ -10807,7 +10807,7 @@ Syntax
 SUM(A)
 ```
 
-Arguments A: specifies a value of the numeric types including TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE. Return the sum of all input values. Examples Input example var1 (INT) Sample code
+Arguments A: specifies a value of the numeric types including TINYINT, SMALLINT, INT, BIGINT, FLOAT, DECIMAL, and DOUBLE. Description Return the sum of all input values. Examples Input example var1 (INT) Sample code
 
 ```
 SELECT sum(a) as aa FROM T1;
@@ -10823,7 +10823,7 @@ Syntax
 T VAR_POP(T value)
 ```
 
-Argument value: specifies a number of the BIGINT or DOUBLE type. Return the statistical variance for the population of all values in the specified expression. Examples Input example
+Argument value: specifies a number of the BIGINT or DOUBLE type. Description Return the statistical variance for the population of all values in the specified expression. Examples Input example
 
 | a (BIGINT) | c (VARCHAR) |
 |---|---|
@@ -10869,7 +10869,7 @@ Syntax
 VARCHAR UUID()
 ```
 
-Arguments None Return a globally unique identifier. Examples Sample code
+Arguments None Description Return a globally unique identifier. Examples Sample code
 
 ```
 SELECT uuid() as `result` FROM T1

@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 1600
 source_pdf: "1490868c6bb90cff_Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0%20DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataWorks%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks User Guide 20260831
@@ -667,7 +667,11 @@ management exploration (beta)
 
 **governance**
 
-XStudio: Cloud-based IDE with plug-ins for various engines
+XStudio: Cloud-based IDE with plug-ins for various
+
+**DataWorks**
+
+engines
 
 **platform**
 
@@ -6042,6 +6046,9 @@ parameters. Then, click **Create**.
 3. . Configure network connections and resources**
 After you create a batch synchronization node, you must select a data source and a destination.
 1. In the **Source** section, select a data source. In the **Destination** side, select a data source.
+
+**Note**
+
 For more information about supported data sources and destinations, see Supported data sources.
 2. Select a resource group to run batch synchronization nodes.
 3. Click **Next**.
@@ -31954,6 +31961,8 @@ When you join the dimension table to another table, you can view metrics such as
 | dimJoin.fetchHit | Queries the correlation degree of the dimension table and the table to which the dimension table is joined. The metric name is blink.projectName.jobName.dimJoin.fetchHit . |
 | dimJoin.cacheHit | Queries the cache hit ratio of the dimension table. The metric name is blink.projectName.jobName.dimJoin.cacheHit . |
 
+**Note**
+
 We recommend that you use Realtime Compute V2.1.1 and later. To use a MaxCompute dimension table, you must grant the read permission to the account for accessing MaxCompute. When you declare a dimension table, you must specify the primary key. When you join a dimension table with another table, the ON condition must contain an equivalent condition that includes the primary key of either table. The primary key value for each row of a MaxCompute dimension table must be unique. Otherwise, the duplicate records are removed. If the dimension table is a partitioned table, Realtime Compute does not currently support writing the partition key column to the schema. When the cache policy is set to ALL, Realtime Compute reloads data asynchronously. Therefore, you must increase the memory of the JOIN operator. The size of the increased memory is twice the data size of the remote table. The following failover message may appear when you run a node:
 
 ```
@@ -32438,6 +32447,8 @@ The Ask feature of DataWorks Copilot is your coding assistant within DataWorks. 
 |   |   | quick table | Finds |   |
 |   | search |   |   |   |
 
+**Note**
+
 You can use DataWorks Copilot AI in Place within the code editor for SQL nodes.
 
 **Core features**
@@ -32545,7 +32556,11 @@ the conversation appears stuck, you can click **Stop** in the chat window to end
 
 ### 7.2 DataWorks Copilot AI in Place
 
-AI in Place is a collection of intelligent features embedded in various DataWorks interfaces. From intelligent code completion in the code editor to code generation during data development, it provides precise, context-aware, and real-time assistance, and makes intelligence an inherent attribute of your development tools. For more information about the comprehensive Data+AI capabilities of DataWorks, see DataWorks Copilot.
+AI in Place is a collection of intelligent features embedded in various DataWorks interfaces. From intelligent code completion in the code editor to code generation during data development, it provides precise, context-aware, and real-time assistance, and makes intelligence an inherent attribute of your development tools.
+
+**Note**
+
+For more information about the comprehensive Data+AI capabilities of DataWorks, see DataWorks Copilot.
 
 **Features**
 
@@ -35463,6 +35478,9 @@ page, find the table for which you want to configure monitoring rules and click 
 icon next to
 **Monitor Perspective**. The **Create Monitor** page appears.
 2. Configure the parameters for quality monitoring.
+
+**Note**
+
 You can create a monitor based on the quality check requirements of your table. For information about how to create a monitor, see Configure a monitoring rule for a single table.
 3. Click **Save**.
 
@@ -35470,7 +35488,11 @@ You can create a monitor based on the quality check requirements of your table. 
 
 1. On the **Rule Management** tab of the **Table Quality Details** page, click **Create Rule.**
 2. Create a monitoring rule. In this example, a built-in template is used to create a monitoring
-rule. You can create monitoring rules for your table based on your business requirements. For more information, see Configure a monitoring rule for a single table.
+rule.
+
+**Note**
+
+You can create monitoring rules for your table based on your business requirements. For more information, see Configure a monitoring rule for a single table.
 3. Add the monitoring rule to the created monitor.
 4. Click **Determine**.
 
@@ -38149,7 +38171,11 @@ Only **project administrators** and **project owners** can create, edit, and del
 
 **Create and edit asset directories**
 
-Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory. If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
+Create asset directories and specify the attributes of the directories. Click the icon to create a subdirectory in the current directory. You can create up to three levels of subdirectories. Click the icon to modify the name of the current directory or delete the directory.
+
+**Note**
+
+If a data asset is mounted to a directory, you must unmount the data asset from the directory before you delete the directory. For more information, see Manage data assets.
 
 > You must be a member of the current workspace before you can be an asset owner. An asset owner must be a member of the current workspace. For more information about how to add a workspace member, see Manage workspace members and roles.
 
@@ -41348,6 +41374,9 @@ manager Management Console and press Enter.
 
 2. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
+
+**Note**
+
 The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
 
 > The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.

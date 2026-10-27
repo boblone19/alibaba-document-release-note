@@ -5,7 +5,7 @@ doc_version: "20241107"
 pdf_pages: 18
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Operation Orchestration Service Operations and Maintenance Guide 20241107.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E8%BF%90%E7%BB%B4%E7%BC%96%E6%8E%92OSS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Operation%20Orchestration%20Service%20Operations%20and%20Maintenance%20Guide%2020241107.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Operation Orchestration Service Operations and Maintenance Guide 20241107
@@ -29,6 +29,9 @@ This topic describes how to quickly create and execute an Operation Orchestratio
 ## 2 Create a template
 
 This topic describes how to create an Operation Orchestration Service (OOS) template for querying the IDs of Elastic Compute Service (ECS) instances in the specified state, such as Running or Stopped, within the current account. The template assumes the OOSServiceRole role to call the DescribeInstances operation of ECS and automatically goes through the results to return the IDs of ECS instances in the specified state. If no more than 1,000 ECS instances are in the specified state, the IDs of all these ECS instances are returned. If more than 1,000 ECS instances are in the specified state, the IDs of the first 1,000 ECS instances in the specified state are returned. For more information, see Limits.
+
+**Procedure**
+
 1. Log on to the Apsara Stack OOS console.
 2. In the left-side navigation pane, click **Custom Template**. On the page that appears, click
 **Create Template**.
@@ -69,6 +72,9 @@ add multiple tasks and call API operations.
 ## 3 Create an execution
 
 After you create a template, you can create an execution based on the template and start the execution.
+
+**Procedure**
+
 1. Log on to the **Apsara Stack Operation Orchestration Service (OOS) console** .
 2. In the left-side navigation pane, click **Custom Template**. On the page that appears, find
 the DescribeInstances template that you created and click **Create Execution** in the Actions column.
@@ -97,9 +103,14 @@ a time
 
 **at a time**
 
+**Background information**
+
 Operation Orchestration Service (OOS) allows you to perform an operation on multiple Elastic Compute Service (ECS) instances at a time. OOS supports the following batch operations on multiple instances: **sending remote commands**, **performing basic O&M operations**, and
 **modifying instance attributes**. The supported remote commands include shell commands
 in Linux and Bat and PowerShell commands in Windows. The supported basic O&M operations include starting, stopping, and restarting ECS instances, and initializing and replacing the system disks of ECS instances. The attributes that can be modified for multiple instances include the instance name, hostname, and instance description.
+
+**Procedure**
+
 1. Log on to the Apsara Stack OOS console.
 2. In the left-side navigation pane, click **Common O&M Tasks**. In the left-side pane, click
 **Batch Instance Operations**. On the page that appears, click Create.
@@ -126,7 +137,12 @@ page that appears, click the **Log** tab in the output section to view the logs 
 
 **time**
 
+**Background information**
+
 You can use the Scheduled Startup/Shutdown feature of Operation Orchestration Service (OOS) to start or shut down multiple Elastic Compute Service (ECS) instances at a scheduled time. You can run a scheduled startup and shutdown task every day or on the specified days of each week.
+
+**Procedure**
+
 1. Log on to the Apsara Stack OOS console.
 2. In the left-side navigation pane, click **Common O&M Tasks**. In the left-side pane, click
 **Scheduled Startup/Shutdown**. On the page that appears, click Create.
@@ -159,7 +175,14 @@ page that appears, click the **Log** tab in the output section to view the logs 
 
 **bandwidth of ECS instances**
 
-This topic describes how to use Operation Orchestration Service (OOS) to temporarily upgrade the bandwidth of Elastic Compute Service (ECS) instances at a scheduled time. If you want to temporarily upgrade the bandwidth of ECS instances, you can use the Temporary Bandwidth Upgrade feature of OOS to specify the upgrade time. You can run a temporary bandwidth upgrade task every day or on the specified days of each week. After you configure the parameters on the Create Task Temporary Bandwidth Upgrade page, you can view the bandwidth fee for a single cycle in the lower-right corner of the page.
+This topic describes how to use Operation Orchestration Service (OOS) to temporarily upgrade the bandwidth of Elastic Compute Service (ECS) instances at a scheduled time.
+
+**Background information**
+
+If you want to temporarily upgrade the bandwidth of ECS instances, you can use the Temporary Bandwidth Upgrade feature of OOS to specify the upgrade time. You can run a temporary bandwidth upgrade task every day or on the specified days of each week. After you configure the parameters on the Create Task Temporary Bandwidth Upgrade page, you can view the bandwidth fee for a single cycle in the lower-right corner of the page.
+
+**Procedure**
+
 1. Log on to the Apsara Stack OOS console.
 2. In the left-side navigation pane, click **Common O&M Tasks**. In the left-side pane, click
 **Temporary Bandwidth Upgrade**.
@@ -176,30 +199,43 @@ role in the RAM console. For more information about the required policy, see the
 
 ```json
     "Version": "1",
+```
+
+`{`
+
+```json
+            "Action": "oos:*",
             "Resource": "*",
             "Effect": "Allow"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Action": "ram:PassRole",
             "Resource": "*",
+            "Effect": "Allow",
             "Condition": {
                 "StringEquals": {
                     "acs:Service": "oos.aliyuncs.com"
 ```
 
-`},`
+`}` `}` `},` `{`
 
 ```json
             "Action": [
                 "ecs:DescribeInstances",
                 "ecs:ModifyInstanceNetworkSpec"
+```
+
+`],`
+
+```json
             "Resource": "*",
             "Effect": "Allow"
 ```
 
+`}` `]` `}`
 8. In the **Select Instances** section, select **Manually Select Instances** and select one or
 more ECS instances for which you want to temporarily upgrade the bandwidth. Instance selection methods include **Manually Select Instances**, **Specify Instance Tags**, and
 **Specify Resource Group**.
@@ -211,7 +247,14 @@ Loop. You can select **Concurrency-based Control** or **Batch-based Control** as
 
 ## 7 Create or update an image
 
-This topic describes how to use Operation Orchestration Service (OOS) to create or update an image for an Elastic Compute Service (ECS) instance. You may often need to update the software of your ECS instances, such as updating the backend service version or installing security patches. You can use the Create or Update Images feature of OOS to facilitate software updates. OOS allows you to create an image from an existing ECS instance or update an image.
+This topic describes how to use Operation Orchestration Service (OOS) to create or update an image for an Elastic Compute Service (ECS) instance.
+
+**Background information**
+
+You may often need to update the software of your ECS instances, such as updating the backend service version or installing security patches. You can use the Create or Update Images feature of OOS to facilitate software updates. OOS allows you to create an image from an existing ECS instance or update an image.
+
+**Procedure**
+
 1. Log on to the Apsara Stack OOS console.
 2. In the left-side navigation pane, click **Common O&M Tasks**. In the left-side pane, click
 **Create or Update Images**. On the page that appears, click Create.
@@ -224,6 +267,11 @@ RAM Role and Use Permissions Granted to This Role. In this example, Specify RAM 
 
 ```json
   "Version": "1",
+```
+
+`{`
+
+```json
       "Action": [
         "ecs:CreateImage",
         "ecs:DescribeImages",
@@ -234,53 +282,74 @@ RAM Role and Use Permissions Granted to This Role. In this example, Specify RAM 
         "ecs:DescribeRegions",
         "ecs:DescribeInstances",
         "ecs:DescribeInvocations"
+```
+
+`],`
+
+```json
       "Resource": "*",
       "Effect": "Allow"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Action": [
         "ess:ModifyScalingConfiguration"
-      "Resource": "*",
-      "Effect": "Allow"
 ```
 
-`},`
+`],`
 
 ```json
       "Resource": "*",
       "Effect": "Allow"
 ```
 
-`},`
+`},` `{`
+
+```json
+      "Action": "oos:*",
+      "Resource": "*",
+      "Effect": "Allow"
+```
+
+`},` `{`
 
 ```json
       "Action": "ram:PassRole",
       "Resource": "*",
+      "Effect": "Allow",
       "Condition": {
         "StringEquals": {
           "acs:Service": "oos.aliyuncs.com"
 ```
+
+`}` `}` `}` `]` `}`
 
 ```json
   "Version": "1",
+```
+
+`{`
+
+```json
+      "Action": "oos:*",
       "Resource": "*",
       "Effect": "Allow"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Action": "ram:PassRole",
       "Resource": "*",
+      "Effect": "Allow",
       "Condition": {
         "StringEquals": {
           "acs:Service": "oos.aliyuncs.com"
 ```
 
-`},`
+`}` `}` `},` `{`
 
 ```json
       "Action": [
@@ -299,19 +368,30 @@ RAM Role and Use Permissions Granted to This Role. In this example, Specify RAM 
         "ecs:DescribeCloudAssistantStatus",
         "ecs:DescribeInstances",
         "ecs:DescribeInvocations"
+```
+
+`],`
+
+```json
       "Resource": "*",
       "Effect": "Allow"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Action": [
         "ess:ModifyScalingConfiguration"
+```
+
+`],`
+
+```json
       "Resource": "*",
       "Effect": "Allow"
 ```
 
+`}` `]` `}`
 7. In the **Select Instances** section, select an ECS instance.
 8. In the **Send Remote Commands** section, configure the Command Type parameter. In this
 example, **Linux Shell** is selected.
@@ -323,9 +403,14 @@ page that appears, click the **Log** tab in the output section to view the logs 
 
 ## 8 Perform scheduled O&M
 
+**Background information**
+
 If you want to perform O&M operations at a specific point in time, you can use the **Scheduled**
 **O&M** feature of Operation Orchestration Service (OOS). OOS allows you to run a scheduled
 O&M task once at the specified time or periodically.
+
+**Procedure**
+
 1. Log on to the Apsara Stack OOS console.
 2. In the left-side navigation pane, click **Scheduled O&M**. On the page that appears, click
 Create.
@@ -351,12 +436,27 @@ This topic provides answers to frequently asked questions about Operation Orches
 
 **(ListTemplates)?**
 
-Cause: The Resource Access Management (RAM) user does not have the permissions to call the specified API operation of OOS. Solution: Log on to the **RAM console** with an Apsara Stack tenant account or an administrator account. Authorize the RAM user to call the specified API operation or all API operations of OOS. For example, configure `"Action": "oos:*"` to authorize the RAM user to call all API operations of OOS. For more information, see **Access control**.
+Cause: The Resource Access Management (RAM) user does not have the permissions to call the specified API operation of OOS. Solution: Log on to the **RAM console** with an Apsara Stack tenant account or an administrator account. Authorize the RAM user to call the specified API operation or all API operations of OOS. For example, configure `"Action": "oos:*"` to authorize the RAM user to call all API operations of OOS. For more information, see **Access control**. `{`
 
 ```json
+  "Statement": [
+```
+
+`{`
+
+```json
+          "Effect": "Allow",
+          "Action": "oos:*",
           "Resource": "*"
+```
+
+`}` `],`
+
+```json
   "Version": "1"
 ```
+
+`}`
 
 **Why is the following error message returned when I use OOS**
 
@@ -367,9 +467,18 @@ Cause: The Resource Access Management (RAM) user does not have the permissions t
 Cause: The RAM user is not allowed to use OOS as the specified RAM role because the RAM user does not have the PassRole permission. Solution: Log on to the **RAM console** with an Apsara Stack tenant account or an administrator account. Grant the PassRole permission to the RAM user. For more information, see **Access control**.
 
 ```json
+          "Effect": "Allow",
+          "Action": "oos:*",
           "Resource": "*"
+```
+
+`}` `],`
+
+```json
   "Version": "1"
 ```
+
+`}`
 
 **Why is the following error message returned when I use a**
 
@@ -393,11 +502,24 @@ the Roles page, enter OOSServiceRole in the search box to search for the role.
 2. Click the role name to go to the details page of the role. Click the Trust Policy Management
 tab.
 3. Modify the trust policy of the role.Replace the trust policy with the following content:
+`{`
+
+```json
+  "Statement": [
+```
+
+`{`
 
 ```json
           "Action": "sts:AssumeRole",
+          "Effect": "Allow",
           "Principal": {
               "Service": [
                   "oos.aliyuncs.com"
+```
+
+`]` `}` `}` `],`
+
+```json
   "Version": "1"
 ```

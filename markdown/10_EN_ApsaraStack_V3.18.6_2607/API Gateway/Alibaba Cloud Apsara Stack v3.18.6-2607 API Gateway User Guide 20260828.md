@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 196
 source_pdf: "dc7c35c323604006_Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20API%20Gateway%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway User Guide 20260828
@@ -273,6 +273,9 @@ figure and click **Determine**.
 2. Click **Create an instance**.
 3. Configure the parameters as shown in the following figure and click **Submit**.
 **Kubernetes Cluster**: Select the imported cluster.
+
+**Note**
+
 For more information about the parameter settings, see Gateway instance (Kubernetes deployment architecture).
 
 **Step 3: Obtain the IP address and port number**
@@ -307,6 +310,9 @@ Specify the service you created in the previous step as **Backend Services**.
 1. On the **Route Management** page, find the new route and click **Debugging** in the
 **Operation** column. The **API debugging** page is displayed.
 2. Configure the parameters as shown in the following figure and click **Send**.
+
+**Note**
+
 For more information, see API debugging.
 
 ## 5 Instance management
@@ -2432,7 +2438,11 @@ Before you create a service, you need to first create a source by specifying the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Source Management**.
 5. On the Source Management page, click **Create Source**. In the **Create Source** panel,
-configure the parameters. For more information about how to create different types of sources, see Create a Nacos source, Create a microservice space source, Create an Eureka source, and Create a database source.
+configure the parameters.
+
+**Note**
+
+For more information about how to create different types of sources, see Create a Nacos source, Create a microservice space source, Create an Eureka source, and Create a database source.
 
 **Create a Nacos source**
 
@@ -2590,6 +2600,9 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Service List**.
 5. On the **Service List** page, click **Create Service**.
 6. Configure the parameters and then click **Submission**.
+
+**Note**
+
 For more information about the parameters in the **Basic information** section, see Protocol conversion.
 
 > The **Health Check** section is displayed only when you set **Service Type** to **RPC** **service** and **Upstream Type** to **Fixed node**, or when you set **Service Type** to **VPC**.
@@ -2606,6 +2619,8 @@ For more information about the parameters in the **Basic information** section, 
 | Check Threshold to Health Status | The number of consecutive times that an unhealthy node passes health checks before it is declared healthy. For example, a value of 3 indicates that an unhealthy node must pass three consecutive health checks before it is declared healthy. |
 |---|---|
 | Check Threshold to Unhealthy State | The number of consecutive times that a healthy node fails health checks before it is declared unhealthy. For example, a value of 3 indicates that a healthy node must fail three consecutive health checks before it is declared unhealthy. |
+
+**Note**
 
 Service types include **Fixed node** and **Service Discovery**. Before you select the
 **Service Discovery** type, you must create a service source. For more information, see
@@ -3569,7 +3584,6 @@ In compliance with the OAuth 2.0 specification, a successful response includes t
 *  issuer: CN=csb.online
 *  SSL certificate verify result: self signed certificate (18), continuing anyway.
 > GET /oauth2/authorize?
-
 client_id=oauth&redirect_uri=http://127.0.0.1:8080/authorized&response_type=code&scope=ph e HTTP/1.1
 > Host: 47.108.xx.xx:32724
 > User-Agent: curl/7.64.1
@@ -4630,7 +4644,11 @@ nagement
 **Management**.
 4. In the **Current Instance** section, click **Edit**.
 5. In the dialog box that appears, specify Tenant Account AccessKey Pair and Tenant Account
-AccessKey Secret, and click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the primary cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
+AccessKey Secret, and click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization.
+
+**Note**
+
+Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the primary cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 6. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
 personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account.
 
@@ -4639,14 +4657,22 @@ personal account you obtained. For more information about how to obtain the Acce
 7. In the **All Instances** section, click **Add Instance**, select the cloud instance that you want
 to add, and then click **Next**.
 8. In the dialog box that appears, select options from the **Organizations** and **Resource Set**
-drop-down lists, specify Tenant Account AccessKey Pair and Tenant Account AccessKey Secret, and then click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the peer cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
+drop-down lists, specify Tenant Account AccessKey Pair and Tenant Account AccessKey Secret, and then click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization.
+
+**Note**
+
+Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the peer cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 9. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
 personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. nagement
 
 > **Note:** Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User ************** and **User ****************** fields.
 
 0. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
-instance. The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+instance.
+
+**Note**
+
+The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Step 4: Create a disaster recovery relationship**
 

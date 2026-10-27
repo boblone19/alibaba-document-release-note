@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 143
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 ApsaraDB for RDS Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230221/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20ApsaraDB%20for%20RDS%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 ApsaraDB for RDS Developer Guide 20220928
@@ -540,7 +540,7 @@ http://rds.example.com/?TimeStamp=2013-06-01T10%3A33%3A56Z&Format=XML&AccessKeyI
 
 #### 2.3.1 CreateDBInstance
 
-You can call this operation to create an ApsaraDB for RDS instance. For information about instance types, see Instance types in Appendix.
+Description You can call this operation to create an ApsaraDB for RDS instance. For information about instance types, see Instance types in Appendix. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -567,6 +567,8 @@ You can call this operation to create an ApsaraDB for RDS instance. For informat
 | VSwitchId | Strin g | No | The ID of the VSwitch. |
 | PrivateIpAddress | Strin g | No | The VPC IP address that belongs to the specified VSwitch. If no value is specified, the system automatically assigns a VPC IP address. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see. |
@@ -589,12 +591,14 @@ JSON format
 
 #### 2.3.2 DeleteDBInstance
 
-You can call this operation to release an RDS instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not manually locked. The instance is a pay-as-you-go primary instance, read-only instance, disaster recovery instance, or temporary instance.
+Description You can call this operation to release an RDS instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not manually locked. The instance is a pay-as-you-go primary instance, read-only instance, disaster recovery instance, or temporary instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDBInstance. |
 | DBInstanceId | String | Yes | The ID of the instance to be released. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -620,12 +624,14 @@ JSON format
 
 #### 2.3.3 RestartDBInstance
 
-You can call this operation to restart an RDS instance. The instance will be restarted in 10 seconds. If there are a large number of transactions that must be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not performing a backup task.
+Description You can call this operation to restart an RDS instance. The instance will be restarted in 10 seconds. If there are a large number of transactions that must be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not performing a backup task. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to RestartDBInstance. |
 | DBInstanceId | String | Yes | The ID of the instance to be restarted. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -645,12 +651,14 @@ JSON format
 
 #### 2.3.4 DescribeDBInstanceAttribute
 
-You can call this operation to query attributes of an instance.
+Description You can call this operation to query attributes of an instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceAttribute. |
 | DBInstanceI d | String | Yes | The ID of the instance. Up to 30 IDs can be entered at a time. Separate multiple IDs with commas (,). |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -756,7 +764,7 @@ JSON format
 
 #### 2.3.5 DescribeDBInstances
 
-You can call this operation to query instances and RAM-authorized instances.
+Description You can call this operation to query instances and RAM-authorized instances.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -771,6 +779,8 @@ You can call this operation to query instances and RAM-authorized instances.
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | Tags | String | No | {“key1”:”value 1”} | The tag of the instance, in the JSON format. The tag includes a key-value pair of TagKey and TagValue. TagValue can be left empty, but TagValue cannot. Example: {“key1”:”value 1”}. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -856,7 +866,7 @@ JSON format
 
 #### 2.3.6 ModifyDBInstanceSpec
 
-You can call this operation to change the type or storage space of an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not performing a backup task. One of the instance type (DBInstanceClass) and storage space (DBInstanceStorage) parameters is specified in the request. When you downgrade the disk space configuration, the input disk space is no less than 1.1 times the actually used space. Only primary and read-only instances allow specification changes. Specifications of disaster recovery and temporary instances cannot be changed.
+Description You can call this operation to change the type or storage space of an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not performing a backup task. One of the instance type (DBInstanceClass) and storage space (DBInstanceStorage) parameters is specified in the request. When you downgrade the disk space configuration, the input disk space is no less than 1.1 times the actually used space. Only primary and read-only instances allow specification changes. Specifications of disaster recovery and temporary instances cannot be changed.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -868,6 +878,8 @@ You can call this operation to change the type or storage space of an instance. 
 | DBInstanceStorage | Integer | No | 20 | The user-defined storage space. Unit: GB. This value must be in 5 GB increments. For more information, see the Instance types topic in the User Guide of ApsaraDB for RDS. |
 | EffectiveTime | String | No | Immediate | The time when the changes take effect. Valid values: Immediate and MaintainTime. Default value: Immediate. |
 | OwnerAccount | String | No | testuser@aliyun.c om | The Apsara Stack tenant account. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -899,7 +911,7 @@ JSON format
 
 #### 2.3.7 DescribeDBInstanceNetInfo
 
-You can call this operation to query the connection information of a specified instance.
+Description You can call this operation to query the connection information of a specified instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -925,7 +937,7 @@ DBInstanceNetInfo parameters
 
 #### 2.3.8 ModifyDBInstanceConnectionString
 
-You can call this operation to modify the endpoint and port of a connection string. ApsaraDB for RDS provides the internal and public endpoints and allows both types to coexist in a specific access mode.
+Description You can call this operation to modify the endpoint and port of a connection string. ApsaraDB for RDS provides the internal and public endpoints and allows both types to coexist in a specific access mode. Request parameters
 
 | Parameter | Ty pe | Requir ed | Description |
 |---|---|---|---|
@@ -939,11 +951,11 @@ You can call this operation to modify the endpoint and port of a connection stri
 | ConnectionStringPr efix | Stri ng | No | The endpoint to be used by the instance. |
 | Port | Stri ng | No | The port to be used by the instance. |
 
-This operation returns only common response parameters. For more information, see Common response parameters.
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters.
 
 #### 2.3.9 ModifyDBInstanceNetworkType
 
-You can call this operation to switch the network type of an RDS instance between VPC and classic network. Not e Only the classic network instances with the ConnectionMode set to Safe can have their network type switched to VPC.
+Description You can call this operation to switch the network type of an RDS instance between VPC and classic network. Not e Only the classic network instances with the ConnectionMode set to Safe can have their network type switched to VPC. Request parameters
 
 | Parameter | Ty p e | Requir ed | Description |
 |---|---|---|---|
@@ -957,16 +969,18 @@ You can call this operation to switch the network type of an RDS instance betwee
 |---|---|---|---|
 | PrivateIpAddress | St rin g | No | The VPC IP address that belongs to the specified VSwitch. If no value is specified, the system automatically assigns a VPC IP address based on VPCId and VSwitchId. |
 
-This operation returns only common response parameters. For more information, see Common response parameters.
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters.
 
 #### 2.3.10 DescribeDBInstanceIPArrayList
 
-You can call this operation to query the IP whitelist of an instance.
+Description You can call this operation to query the IP whitelist of an instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceIPArrayList. |
 | DBInstanceId | String | Yes | The ID of the instance whose IP whitelist is queried. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -986,7 +1000,7 @@ DBInstanceIPArray parameters
 
 #### 2.3.11 ModifySecurityIps
 
-You can call this operation to modify the IP whitelist of an instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not locked by the system.
+Description You can call this operation to modify the IP whitelist of an instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not locked by the system. Request parameters
 
 | Parameter | Ty pe | Requir ed | Description |
 |---|---|---|---|
@@ -996,7 +1010,7 @@ You can call this operation to modify the IP whitelist of an instance. Before yo
 | DBInstanceIPArrayNam e | Stri ng | No | The name of the IP whitelist. If no value is specified, the whitelist named Default will be modified. |
 | DBInstanceIPArrayAttri bute | Stri ng | No | The attribute of the IP whitelist. Default value: null. Whitelists tagged with "hidden" are not displayed in the console. |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=ModifySecurityIps &DBInstanceId=rds-xxxxx &SecurityIps=192.168.1.2 &<Common request parameters>
@@ -1016,11 +1030,13 @@ JSON format
 
 #### 2.3.12 DescribeRegions
 
-You can call this operation to query the available RDS regions and zones. Before you call the CreateInstance operation, call this operation to query region IDs.
+Description You can call this operation to query the available RDS regions and zones. Before you call the CreateInstance operation, call this operation to query region IDs. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeRegions. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1063,7 +1079,7 @@ JSON format
 
 #### 2.3.13 DescribeDBInstanceHAConfig
 
-You can call this operation to query the zone information and data replication status of instances.
+Description You can call this operation to query the zone information and data replication status of instances. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1092,7 +1108,7 @@ NodeInfo parameters
 
 #### 2.3.14 MigrateToOtherZone
 
-You can call this operation to migrate an instance from one zone to another. For example, if instance 1 is located in the Hangzhou Zone A zone of the China (Hangzhou) region, you can call this operation to migrate the instance to the Hangzhou Zone B zone of the China (Hangzhou) region. Not e In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
+Description You can call this operation to migrate an instance from one zone to another. For example, if instance 1 is located in the Hangzhou Zone A zone of the China (Hangzhou) region, you can call this operation to migrate the instance to the Hangzhou Zone B zone of the China (Hangzhou) region. Not e In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1100,7 +1116,7 @@ You can call this operation to migrate an instance from one zone to another. For
 | DBInstanceId | String | Yes | The ID of the instance to be migrated. |
 | ZoneId | String | Yes | The zone ID of the instance. You can call the DescribeRegions operation to query available zones. |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=MigrateToOtherZone &DBInstanceId=rds-xxxxx &ZoneId=cn-hangzhou-b &<Common request parameters>
@@ -1120,14 +1136,14 @@ JSON format
 
 #### 2.3.15 PurgeDBInstanceLog
 
-You can call this operation to clear all binlogs for a MySQL instance.
+Description You can call this operation to clear all binlogs for a MySQL instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to PurgeDBInstanceLog. |
 | DBInstanceId | String | Yes | The ID of the instance for which all binlogs are cleared. |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=rds-xxxxx &<Common request parameters>
@@ -1147,7 +1163,7 @@ JSON format
 
 #### 2.3.16 ModifyDBInstanceDescription
 
-You can call this operation to modify the description of an instance to identify the instance easily. For example, you can modify the description of an instance to Alibaba Cloud testing environment instance.
+Description You can call this operation to modify the description of an instance to identify the instance easily. For example, you can modify the description of an instance to Alibaba Cloud testing environment instance. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -1175,7 +1191,7 @@ JSON format
 
 #### 2.3.17 ModifyDBInstanceMaintainTime
 
-You can call this operation to modify the scheduled period for routine maintenance. You can set the maintenance window to an off-peak period. Alibaba Cloud performs routine maintenance during the maintenance window to minimize the impact on your services.
+Description You can call this operation to modify the scheduled period for routine maintenance. You can set the maintenance window to an off-peak period. Alibaba Cloud performs routine maintenance during the maintenance window to minimize the impact on your services. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1186,7 +1202,7 @@ You can call this operation to modify the scheduled period for routine maintenan
 |---|---|---|---|
 | MaintainTime | String | Yes | The maintenance window of the instance. Valid values: 22:00Z-02:00Z 02:00Z-06:00Z 06:00Z-10:00Z 10:00Z-14:00Z 14:00Z-18:00Z 18:00Z-22:00Z |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=rds-xxxxx &MaintainTime=22:00Z-02:00Z &<Common request parameters>
@@ -1206,7 +1222,7 @@ JSON format
 
 #### 2.3.18 ModifyDBInstanceHAConfig
 
-You can call this operation to modify the instance data replication mode and high availability switching rules.
+Description You can call this operation to modify the instance data replication mode and high availability switching rules. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1218,11 +1234,11 @@ You can call this operation to modify the instance data replication mode and hig
 | SyncMode | String | Yes | The synchronization mode of the instance. Valid values: Semi-sync and Async. |
 | HAMode | String | Yes | The HA mode of the instance. RPO: Data persistence is preferred. RTO: Instance availability is preferred. |
 
-This operation returns only common response parameters.
+Response parameters This operation returns only common response parameters.
 
 #### 2.3.19 SwitchDBInstanceHA
 
-You can call this operation to change the database used as the primary database. RDS instances are composed of primary and secondary databases distributed across different servers. The new primary database bears the service traffic.
+Description You can call this operation to change the database used as the primary database. RDS instances are composed of primary and secondary databases distributed across different servers. The new primary database bears the service traffic. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1231,11 +1247,11 @@ You can call this operation to change the database used as the primary database.
 | NodeId | String | Yes | The unique ID of the node. You can call the DescribeDBInstanceHAConfig operation to query the value of this parameter. |
 | Force | String | Yes | Yes: forced. No: unforced. Default value: No. |
 
-This operation returns only common response parameters. For more information, see Common response parameters.
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters.
 
 #### 2.3.20 CreateReadOnlyDBInstance
 
-You can call this operation to create a read-only instance for a primary RDS instance. Before you call this operation, make sure that the following requirements are met: The primary instance is in the running state, but not in the failover state. The read-only instance and the primary instance are in the same region. A primary RDS instance can have up to five read-only instances.
+You can call this operation to create a read-only instance for a primary RDS instance. Before you call this operation, make sure that the following requirements are met: The primary instance is in the running state, but not in the failover state. The read-only instance and the primary instance are in the same region. A primary RDS instance can have up to five read-only instances. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -1258,6 +1274,8 @@ You can call this operation to create a read-only instance for a primary RDS ins
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
 | PrivateIpAddress | String | No | The IP address of the VPC that belongs to VSwitchId. If no value is specified, the system automatically allocates a VPC IP address based on VPCId and VSwitchId. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1287,12 +1305,14 @@ JSON format
 
 #### 2.3.21 DescribeDBInstanceSSL
 
-You can call this operation to query the SSL link of an instance.
+Description You can call this operation to query the SSL link of an instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceSSL. |
 | DBInstanceId | String | Yes | The ID of the instance. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1304,13 +1324,15 @@ You can call this operation to query the SSL link of an instance.
 
 #### 2.3.22 ModifyDBInstanceSSL
 
-You can call this operation to modify the SSL link of an instance.
+Description You can call this operation to modify the SSL link of an instance. Request parameters
 
 | Parameter | Type | Requ ired | Description |
 |---|---|---|---|
 | Action | Strin g | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceSSL. |
 | DBInstanceI d | Strin g | Yes | The ID of the instance. |
 | ConnectionS tring | Strin g | Yes | Each instance can only have one endpoint protected by the SSL certificate. The SSL certificate can be created or updated for the endpoint. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1319,12 +1341,14 @@ You can call this operation to modify the SSL link of an instance.
 
 #### 2.3.23 DescribeDBInstanceTDE
 
-You can call this operation to query the TDE status of an instance.
+Description You can call this operation to query the TDE status of an instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceTDE. |
 | DBInstanceId | String | Yes | The ID of the instance. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1341,7 +1365,7 @@ Database parameters:
 
 #### 2.3.24 ModifyDBInstanceTDE
 
-You can call this operation to modify the TDE status of an instance.
+Description You can call this operation to modify the TDE status of an instance. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -1350,13 +1374,13 @@ You can call this operation to modify the TDE status of an instance.
 | TDEStatus | String | Yes | The TDE status of the instance. Valid values: Enabled and Disabled. |
 | DBName | String | No | The name of the database. Up to 50 names can be entered in a single request. Separate multiple names with commas (,). |
 
-This operation returns only common response parameters. For more information, see Common response parameters.
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters.
 
 ### 2.4 Database management
 
 #### 2.4.1 CreateDatabase
 
-You can call this operation to create a new database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance. Not e This operation is not supported on PolarDB. You can create databases in PolarDB instances by executing CREATE DATABASE statements.
+Description You can call this operation to create a new database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance. Not e This operation is not supported on PolarDB. You can create databases in PolarDB instances by executing CREATE DATABASE statements.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1366,7 +1390,7 @@ You can call this operation to create a new database in an instance. Before you 
 | CharacterSet Name | String | Yes | The character set. Valid values: MySQL: utf8, gbk, latin1, and utf8mb4 SQL Server: Chinese PRC CI AS, Chinese PRC CS AS, _ _ _ _ _ _ SQL Latin1 General CP1 CI AS, _ _ _ _ _ SQL Latin1 General CP1 CS AS, and Chinese PRC BIN _ _ _ _ _ _ _ |
 | DBDescription | String | No | The description of the database. It must be 2 to 256 characters in length and can contain letters, digits, underscores ( ), and hyphens (-). _ It must start with a letter and cannot start with http:// or https://. |
 
-This operation returns only common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=CreateDatabase &CharacterSetName=gbk &DBName=testDB &DBInstanceId=rds-xxxxx &<[Common request parameters]>
@@ -1386,13 +1410,15 @@ JSON format
 
 #### 2.4.2 DeleteDatabase
 
-You can call this operation to delete a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance. Not e This operation is not supported on PolarDB. You can delete databases from PolarDB instances by executing DROP DATABASE statements.
+Description You can call this operation to delete a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance. Not e This operation is not supported on PolarDB. You can delete databases from PolarDB instances by executing DROP DATABASE statements. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDatabase. |
 | DBInstanceI d | String | Yes | The ID of the instance. |
 | DBName | String | Yes | The name of the database. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1418,7 +1444,7 @@ JSON format
 
 #### 2.4.3 DescribeDatabases
 
-You can call this operation to query the databases of a specified instance or information of a specified database. If the request parameters are entered incorrectly, an error prompt is returned, and the returned data is empty. Not e This operation is not supported on PolarDB.
+Description You can call this operation to query the databases of a specified instance or information of a specified database. If the request parameters are entered incorrectly, an error prompt is returned, and the returned data is empty. Not e This operation is not supported on PolarDB. Request parameters
 
 | Paramete r | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1426,6 +1452,8 @@ You can call this operation to query the databases of a specified instance or in
 | DBInstanc eId | String | Yes | The ID of the instance. |
 | DBName | String | No | The name of the database. |
 | DBStatus | String | No | The state of the database. Valid values: Creating, Running, and Deleting. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1489,7 +1517,7 @@ JSON format
 
 #### 2.4.4 ModifyDBDescription
 
-You can call this operation to modify the description of a database to facilitate user records. For example, you can modify the description of a database to Database A for Alibaba Cloud testing environment. Not e This operation is not supported on PolarDB.
+Description You can call this operation to modify the description of a database to facilitate user records. For example, you can modify the description of a database to Database A for Alibaba Cloud testing environment. Not e This operation is not supported on PolarDB. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1504,7 +1532,7 @@ You can call this operation to modify the description of a database to facilitat
 |---|---|---|---|
 | DBDescription | String | Yes | The description of the database. |
 
-This operation returns only common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=ModifyDBDescription &DBInstanceId=rds-xxxxx &DBInstanceDescription=testDBdescribe &<Common request parameters>
@@ -1526,7 +1554,7 @@ JSON format
 
 #### 2.5.1 CreateAccount
 
-In the same instance, one account can manage multiple databases by using different permissions. You can call this operation to create an account for a database. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The instance is not locked. The maximum number of accounts for a single instance is not reached.
+Description In the same instance, one account can manage multiple databases by using different permissions. You can call this operation to create an account for a database. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The instance is not locked. The maximum number of accounts for a single instance is not reached.
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1537,7 +1565,7 @@ In the same instance, one account can manage multiple databases by using differe
 | AccountType | Strin g | No | The type of the account. Valid values: Normal and Super. Default value: Normal. PolarDB can have only a single initial account. You must use the initial account to log on to the database and create other types of accounts. |
 | AccountDescri ption | Strin g | No | The description of the account. It must be 2 to 256 characters in length and can contain letters, digits, underscores ( ), and hyphens (-). _ It must start with a letter and cannot start with http:// or https://. |
 
-This operation returns only common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx &<[Common request parameters]>
@@ -1557,7 +1585,7 @@ JSON format
 
 #### 2.5.2 DeleteAccount
 
-You can call this operation to delete a database account. The instance must be in the running state.
+Description You can call this operation to delete a database account. The instance must be in the running state. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1565,7 +1593,7 @@ You can call this operation to delete a database account. The instance must be i
 | DBInstanceId | String | Yes | The ID of the instance to which the database belongs. |
 | AccountNam e | String | Yes | The unique name of the account. The name can be up to 16 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. For more _ information about invalid characters, see Forbidden keywords. |
 
-This operation returns only common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=DeleteAccount &DBInstanceId=rds-xxxxx &AccountName=testacc01 &<[Common request parameters]>
@@ -1585,13 +1613,15 @@ JSON format
 
 #### 2.5.3 DescribeAccounts
 
-You can call this operation to query the accounts for a specified instance and database or the information of a specified account.
+Description You can call this operation to query the accounts for a specified instance and database or the information of a specified account.
 
 | Parameter | Typ e | Required | Description |
 |---|---|---|---|
 | Action | Strin g | Yes | The operation that you want to perform. Set the value to DescribeAccounts. |
 | DBInstanceI d | Strin g | Yes | The ID of the instance. |
 | AccountNa me | Strin g | Yes | The name of the account. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1643,7 +1673,7 @@ JSON format
 
 #### 2.5.4 GrantAccountPrivilege
 
-You can call this operation to grant database access permissions to accounts. A single account can be associated with one or more databases. If the specified account already has access permissions on the specified database, the operation directly returns a successful response. The instance must be in the running state.
+Description You can call this operation to grant database access permissions to accounts. A single account can be associated with one or more databases. If the specified account already has access permissions on the specified database, the operation directly returns a successful response. The instance must be in the running state. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1656,7 +1686,7 @@ You can call this operation to grant database access permissions to accounts. A 
 | DBName | String | Yes | The name of the database associated with the account. |
 | AccountPrivilege | String | Yes | The permissions of the account. Valid values: ReadOnly and ReadWrite. |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=GrantAccountPrivilege &AccountName=testacc02 &AccountPrivilege=readwrite &DBName=testdb03 &DBInstanceId=rds-xxxxx &<Common request parameters>
@@ -1676,7 +1706,7 @@ JSON format
 
 #### 2.5.5 RevokeAccountPrivilege
 
-You can call this operation to revoke database access permissions from an account. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The database is in the running state.
+Description You can call this operation to revoke database access permissions from an account. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The database is in the running state.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1685,7 +1715,7 @@ You can call this operation to revoke database access permissions from an accoun
 | AccountNa me | String | Yes | The name of the account. |
 | DBName | String | Yes | The name of the database. |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=RevokeAccountPrivilege &AccountName=testacc02 &DBName=testdb03 &DBInstanceId=rds-xxxxx &<Common request parameters>
@@ -1705,7 +1735,7 @@ JSON format
 
 #### 2.5.6 ModifyAccountDescription
 
-You can call this operation to modify the description of an account to facilitate user records. For example, you can modify the description of an account to Account A for Alibaba Cloud testing environment.
+Description You can call this operation to modify the description of an account to facilitate user records. For example, you can modify the description of an account to Account A for Alibaba Cloud testing environment. Request parameters
 
 | Parameter | Typ e | Required | Description |
 |---|---|---|---|
@@ -1713,6 +1743,8 @@ You can call this operation to modify the description of an account to facilitat
 | DBInstanceId | Strin g | Yes | The ID of the instance for which the account description is modified. |
 | AccountName | Strin g | Yes | The unique name of the account. The name can be up to 16 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. For more information _ about invalid characters, see Forbidden keywords. |
 | AccountDescri ption | Strin g | Yes | The description of the account. It can be up to 256 characters in length and can contain letters, digits, underscores ( ), and hyphens _ (-). It cannot start with http:// or https://. It must start with a letter. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1738,7 +1770,7 @@ JSON format
 
 #### 2.5.7 ResetAccountPassword
 
-You can call this operation to reset the account password. Before you call this operation, ensure that the following requirements are met: The instance is in the running state and not locked by the system.
+You can call this operation to reset the account password. Before you call this operation, ensure that the following requirements are met: The instance is in the running state and not locked by the system. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1747,7 +1779,7 @@ You can call this operation to reset the account password. Before you call this 
 | AccountName | String | Yes | The name of the account. |
 | AccountPass word | String | Yes | The new password. It must be 6 to 32 characters in length and can contain letters, digits, and underscores ( ). _ |
 
-This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters. Examples Sample request s
 
 ```
 https://rds.example.com/?Action=ResetAccountPassword &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx &<Common request parameters>
@@ -1767,7 +1799,7 @@ JSON format
 
 #### 2.5.8 ResetAccount
 
-You can call this operation to reset the initial account of an instance.
+Description You can call this operation to reset the initial account of an instance.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1775,6 +1807,8 @@ You can call this operation to reset the initial account of an instance.
 | DBInstanceId | String | Yes | The ID of the instance. |
 | AccountNam e | String | Yes | The name of the account. |
 | AccountPass word | String | Yes | The password of the account. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1784,7 +1818,7 @@ You can call this operation to reset the initial account of an instance.
 
 #### 2.6.1 CreateBackup
 
-You can call this operation to manually create a backup. Up to 10 backups can be created for an instance in a single day. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The most recent backup has been completed.
+Description You can call this operation to manually create a backup. Up to 10 backups can be created for an instance in a single day. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The most recent backup has been completed. Request parameters
 
 | Parameter | Type | Requ ired | Description |
 |---|---|---|---|
@@ -1797,6 +1831,8 @@ You can call this operation to manually create a backup. Up to 10 backups can be
 | BackupStr ategy | String | No | The logical backup range. Valid values: db: single-database backup. instance: instance backup. This parameter is valid only when BackupMethod is set to Logical. |
 | DBName | String | No | The name of the database for logical single-database backup. This parameter is valid only when BackupMethod is set to Logical and BackupStrategy is set to db. |
 | BackupTyp e | String | No | The backup type. Valid values: Auto: specifies whether it is a full backup or an incremental backup through automatic calculation. FullBackup: specifies a full backup. Default value: Auto. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1822,7 +1858,7 @@ JSON format
 
 #### 2.6.2 CloneDBInstance
 
-You can call this operation to clone a new instance with historical data based on the backup file of an existing instance or a specified time. The new instance will have the same whitelist, SQL audit, alert threshold, backup, and parameter settings as the existing instance. The data in the new instance is the same as historical data in the backup file. The clone feature can only be used with MySQL engines. Database account information is cloned differently for different account types: If the primary instance has a privileged account, instances that are cloned from it will also carry the same privileged account information. If the primary instance has only standard accounts, instances that are cloned from it will also carry the information of the account used when the backup file is generated or at the specified time.
+Description You can call this operation to clone a new instance with historical data based on the backup file of an existing instance or a specified time. The new instance will have the same whitelist, SQL audit, alert threshold, backup, and parameter settings as the existing instance. The data in the new instance is the same as historical data in the backup file. The clone feature can only be used with MySQL engines. Database account information is cloned differently for different account types: If the primary instance has a privileged account, instances that are cloned from it will also carry the same privileged account information. If the primary instance has only standard accounts, instances that are cloned from it will also carry the information of the account used when the backup file is generated or at the specified time. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -1836,6 +1872,8 @@ You can call this operation to clone a new instance with historical data based o
 | VPCId | String | No | The ID of the VPC. |
 | VSwitchId | String | No | The ID of the VSwitch. |
 | PrivateIpAddress | String | No | The VPC IP address that belongs to the specified VSwitch. If no value is specified, the system automatically assigns a VPC IP address. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1851,11 +1889,13 @@ You can call this operation to clone a new instance with historical data based o
 
 #### 2.6.3 DescribeBackups
 
-You can call this operation to search for a set of instance backups. The set of backups must be in the Success state, indicating that they can be used to restore an instance. RDS provides backup files for you to download. When DownloadLink is NULL, RDS does not provide a download URL. When DownloadLink is not NULL, you can use this URL to download the backup file through Wget (with double quotation marks), a browser, or a user program. The expiration time for this URL is specified by LinkExpiredTime. Use it before the expiration time. If the BackupSet has expired, the following error code is displayed:
+Description You can call this operation to search for a set of instance backups. The set of backups must be in the Success state, indicating that they can be used to restore an instance. RDS provides backup files for you to download. When DownloadLink is NULL, RDS does not provide a download URL. When DownloadLink is not NULL, you can use this URL to download the backup file through Wget (with double quotation marks), a browser, or a user program. The expiration time for this URL is specified by LinkExpiredTime. Use it before the expiration time. If the BackupSet has expired, the following error code is displayed:
 
 ```
 <? xml version="1.0" encoding="UTF-8" ? ><Error><Code>AccessDenied</Code><Message>Request has expired. </Message><Expires>2012-12-25T09:47:52.000Z</Expires><ServerTime>2012-12-25T 09:49:00.000Z</ServerTime><RequestId>50D9768CA801C2F102005C70</RequestId><HostId>oss-test .aliyun-inc.com</HostId></Error>
 ```
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1872,6 +1912,8 @@ You can call this operation to search for a set of instance backups. The set of 
 | PageSize | Integ er | No | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integ er | No | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> |   | For more information, see Common response parameters. |
@@ -1882,7 +1924,7 @@ You can call this operation to search for a set of instance backups. The set of 
 
 #### 2.6.4 CreateTempDBInstance
 
-Not e You can create a temporary instance based on a backup set or a point in time within the past seven days. When a temporary instance is created, accounts and databases inherit the backup set data. You can call this operation to create a temporary instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not undergoing any migration tasks. The instance is not locked by the system. The current status of the instance backup set is Success.
+Description Not e You can create a temporary instance based on a backup set or a point in time within the past seven days. When a temporary instance is created, accounts and databases inherit the backup set data. You can call this operation to create a temporary instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not undergoing any migration tasks. The instance is not locked by the system. The current status of the instance backup set is Success. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -1896,6 +1938,8 @@ Not e You can create a temporary instance based on a backup set or a point in ti
 |---|---|---|---|
 | BackupId | Integer | No | The ID of the backup set. |
 | RestoreTime | String | No | The restoration time of the backup set. It can be any time within the past seven days that is more than 30 minutes before the current time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2011-06-11T16:00:00Z. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1922,12 +1966,14 @@ JSON format
 
 #### 2.6.5 DescribeBackupPolicy
 
-You can call this operation to query the backup policy configured for the system. RDS periodically backs up an instance based on the user-defined system configuration.
+Description You can call this operation to query the backup policy configured for the system. RDS periodically backs up an instance based on the user-defined system configuration.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeBackupPolicy. |
 | DBInstanceId | String | Yes | The ID of the instance for which the backup policy is queried. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1940,7 +1986,7 @@ You can call this operation to query the backup policy configured for the system
 
 #### 2.6.6 ModifyBackupPolicy
 
-You can call this operation to modify a backup policy. RDS periodically backs up instances based on the user-defined system configuration.
+Description You can call this operation to modify a backup policy. RDS periodically backs up instances based on the user-defined system configuration. Request parameters
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1954,6 +2000,8 @@ You can call this operation to modify a backup policy. RDS periodically backs up
 | BackupRetentionPerio d | String | No | The data backup retention period. Unit: days. Valid values: 1 to 30. Default value: 7. |
 | BackupLog | String | No | The log backup status. Valid values: Enable and Disabled. Default value: Enable. |
 | LogBackupRetentionP eriod | String | No | The log backup retention period. It cannot exceed BackupRetentionPeriod. Unit: days. Valid values: 1 to 30. When you enable log backup, you can configure the log backup retention period. This operation is only supported on MySQL, PostgreSQL, and PPAS. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1979,13 +2027,15 @@ JSON format
 
 #### 2.6.7 RestoreDBInstance
 
-You can call this operation to overwrite the contents of an instance and restore a backup set to that instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not undergoing any migration tasks. The instance is not locked by the system. The current status of the instance backup set is Success.
+Description You can call this operation to overwrite the contents of an instance and restore a backup set to that instance. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not undergoing any migration tasks. The instance is not locked by the system. The current status of the instance backup set is Success. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to RestoreDBInstance. |
 | DBInstanceId | String | Yes | The ID of the instance to which the backup set is restored. |
 | BackupId | Integer | Yes | The ID of the backup set. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2011,7 +2061,7 @@ JSON format
 
 #### 2.6.8 DeleteBackup
 
-You can call this operation to delete data backup files that have been stored for longer than seven days or longer than the log backup retention period. This operation only deletes the specified backup sets for the target instance. It does not delete the backup sets for associated instances, such as read-only, disaster recovery, or cloned instances. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database engine is MySQL or PolarDB.
+You can call this operation to delete data backup files that have been stored for longer than seven days or longer than the log backup retention period. This operation only deletes the specified backup sets for the target instance. It does not delete the backup sets for associated instances, such as read-only, disaster recovery, or cloned instances. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database engine is MySQL or PolarDB. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2019,13 +2069,13 @@ You can call this operation to delete data backup files that have been stored fo
 | DBInstanceI d | String | Yes | The ID of the instance. |
 | BackupId | String | Yes | The ID of the backup set. You can call the DescribeBackups operation to query the backup set IDs. You can enter up to 100 backup set IDs in a single request. Separate multiple IDs with commas (,). Among the query results of DescribeBackups, you can only delete the backup sets that are in the Enabled state. |
 
-This operation returns only common response parameters. For more information, see Common response parameters.
+Response parameters This operation returns only common response parameters. For more information, see Common response parameters.
 
 ### 2.7 Monitoring management
 
 #### 2.7.1 DescribeResourceUsage
 
-You can call this operation to query the resource usage information of an instance. When this operation is called, the system returns the amount of space occupied by the specified instance. DBInstanceId is used to obtain instance resource usage information.
+Description You can call this operation to query the resource usage information of an instance. When this operation is called, the system returns the amount of space occupied by the specified instance. DBInstanceId is used to obtain instance resource usage information. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2046,7 +2096,7 @@ You can call this operation to query the resource usage information of an instan
 
 #### 2.7.2 DescribeDBInstancePerformance
 
-You can call this operation to query the performance metrics of an instance over a specified period of time based on the performance parameters. There are three output formats based on different query time ranges: When the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. When the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. When the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals. Not e When the instance space usage key is MySQL_SpaceUsage or SQLServer_SpaceUsage, performance metrics can be queried only when the time range is less than or equal to one day.
+Description You can call this operation to query the performance metrics of an instance over a specified period of time based on the performance parameters. There are three output formats based on different query time ranges: When the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. When the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. When the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals. Not e When the instance space usage key is MySQL_SpaceUsage or SQLServer_SpaceUsage, performance metrics can be queried only when the time range is less than or equal to one day.
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -2055,6 +2105,8 @@ You can call this operation to query the performance metrics of an instance over
 | Key | Intege r | Yes | The performance metrics. Separate performance metrics with commas (,). For more information, see Performance parameters. |
 | StartTime | String | Yes | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. Example: 2012- 06-11T15:00Z. |
 | EndTime | String | Yes | The end of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. Example: 2012-06- 11T15:00Z. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2090,7 +2142,7 @@ JSON format
 
 #### 2.7.3 DescribeDBInstanceMonitor
 
-You can call this operation to query the monitoring behavior of an instance.
+Description You can call this operation to query the monitoring behavior of an instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2101,6 +2153,8 @@ You can call this operation to query the monitoring behavior of an instance.
 | Parameter | Type | Required | Description |
 | DBInstanceI d | String | Yes | The ID of the instance for which the monitoring behavior is queried. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | Common response parameters. |
@@ -2108,13 +2162,15 @@ You can call this operation to query the monitoring behavior of an instance.
 
 #### 2.7.4 ModifyDBInstanceMonitor
 
-You can call this operation to modify the monitoring behavior of an instance.
+Description You can call this operation to modify the monitoring behavior of an instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceMonitor. |
 | DBInstanceId | String | Yes | The ID of the instance for which the monitoring behavior is modified. |
 | Period | String | Yes | The monitoring period. Unit: seconds. Valid values: 60 and 300. Default value: 300. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2124,13 +2180,15 @@ You can call this operation to modify the monitoring behavior of an instance.
 
 #### 2.8.1 DescribeParameterTemplates
 
-You can call this operation to query the parameter template list. The list includes parameter names, default parameter values, whether they can be modified, whether the database must be restarted for the parameters to take effect, and regular expressions acting as parameter validation rules.
+Description You can call this operation to query the parameter template list. The list includes parameter names, default parameter values, whether they can be modified, whether the database must be restarted for the parameters to take effect, and regular expressions acting as parameter validation rules.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
 | Action | Strin g | Yes | The operation that you want to perform. Set the value to DescribeParameterTemplates. |
 | Engine | Strin g | Yes | The engine of the database. Valid values: mysql: MySQL mssql: SQL Server PostgreSQL: PostgreSQL POLARDB: PolarDB |
 | EngineVersi on | Strin g | Yes | The engine version of the database. Valid values: MySQL: 5.6 and 5.7 SQL Server: 2008 R2 PostgreSQL: 9.4 and 10.0 PolarDB: 11 |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2170,7 +2228,7 @@ JSON format
 
 #### 2.8.2 DescribeParameters
 
-You can call this operation to query the current instance parameter configuration.
+Description You can call this operation to query the current instance parameter configuration. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2225,7 +2283,7 @@ JSON format
 
 #### 2.8.3 ModifyParameter
 
-You can call this operation to modify instance parameters. After you submit a request, RDS assigns a task to apply new parameters to the instance. If there are any parameter modifications that require the database to be restarted, RDS restarts the database. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not locked by the system. There are three types of parameter values: 1 to 65,535: indicates a numerical range. Regular identification is used to extract the minimum and maximum values. The input parameter is then verified based on the extracted minimum and maximum values. The parameter must be a multiple of a divisible factor. utf8 | gbk | latin1: indicates a set value determination rule. Regular identification is used to extract the fixed value. The input parameter is then verified based on these fixed values. Others: These must be implemented with regular expressions. Before assigning the task, RDS checks the parameter as follows:
+Description You can call this operation to modify instance parameters. After you submit a request, RDS assigns a task to apply new parameters to the instance. If there are any parameter modifications that require the database to be restarted, RDS restarts the database. Before you call this operation, ensure that the following requirements are met: The instance is in the running state. The instance is not locked by the system. There are three types of parameter values: 1 to 65,535: indicates a numerical range. Regular identification is used to extract the minimum and maximum values. The input parameter is then verified based on the extracted minimum and maximum values. The parameter must be a multiple of a divisible factor. utf8 | gbk | latin1: indicates a set value determination rule. Regular identification is used to extract the fixed value. The input parameter is then verified based on these fixed values. Others: These must be implemented with regular expressions. Before assigning the task, RDS checks the parameter as follows:
 1. Whether the parameter exist.
 2. Whether the parameter can be modified.
 3. Whether the parameter is valid.
@@ -2235,12 +2293,16 @@ If the parameter is invalid, RDS returns the 400 HTTP status code and informatio
 {"HttpStatusCode":400, "Code":"InvalidParameter.Format", "Message":"Specified parameter is not valid.[auto_increment_increment:a,character_set_c lient:41]"}
 ```
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyParameter. |
 | DBInstanceId | String | Yes | The ID of the instance for which parameters are modified. |
 | Parameters | String | Yes | The JSON string for the parameter and its value. The parameter value must be of the string type. {"auto increment increment":"1", _ _ "character set client":"utf8"}. _ _ |
 | Forcerestart | String | No | Specifies whether to forcibly restart the database. Valid values: true and false. If a parameter can take effect only after database restart, Forcerestart must be set to true. Otherwise, the parameter modification will not take effect. Default value: false. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2268,7 +2330,7 @@ JSON format
 
 #### 2.9.1 DescribeSlowLogs
 
-You can call this operation to query the slow log summary of the databases in a specified instance over a specified period of time. This operation supports paged query.
+Description You can call this operation to query the slow log summary of the databases in a specified instance over a specified period of time. This operation supports paged query. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2283,6 +2345,8 @@ You can call this operation to query the slow log summary of the databases in a 
 | SortKey | String | No | The basis on which query results are sorted. Valid values: TotalExecutionCounts: in descending order of execution times. TotalQueryTimes: in descending order of the total execution duration. TotalLogicalReads: in descending order of the total number of logical reads. TotalPhysicalReads: in descending order of the total number of physical reads. This parameter is applicable to SQL Server instances. It must be used when you query SQL Server Instances. |
 | PageSize | Integer | No | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNum ber | Integer | No | The number of the page to return. Pages start from page 1. Default value: 1. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2322,7 +2386,7 @@ JSON format
 
 #### 2.9.2 DescribeSlowLogRecords
 
-p You can call this operation to query the slow log details of the databases in a specified instance over a specified period of time. This operation is only supported on MySQL instances.
+p You can call this operation to query the slow log details of the databases in a specified instance over a specified period of time. This operation is only supported on MySQL instances. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -2333,6 +2397,8 @@ p You can call this operation to query the slow log details of the databases in 
 | DBName | String | No | The name of the database. |
 | PageSize | Integer | No | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNum ber | Integer | No | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2389,7 +2455,7 @@ JSON format
 
 #### 2.9.3 DescribeErrorLogs
 
-You can call this operation to query the error logs generated for an instance over a specified period of time.
+Description You can call this operation to query the error logs generated for an instance over a specified period of time. Request parameters
 
 | Parameter | Typ e | Requir ed | Description |
 |---|---|---|---|
@@ -2399,6 +2465,8 @@ You can call this operation to query the error logs generated for an instance ov
 | EndTime | Stri ng | Yes | The end of the time range where the query is performed. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2011-05-30T20:10Z. |
 | PageSize | Inte ger | No | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumb er | Inte ger | No | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2439,11 +2507,13 @@ rmational message only; no user action is required”,
 
 #### 2.9.4 DescribeBinlogFiles
 
-You can call this operation to query binlogs of a MySQL instance. This operation supports querying by page. RDS provides binlog files for you to download. When the DownloadLink is NULL, RDS does not provide a download URL. When DownloadLink is not NULL, you can use this URL to download the backup file through Wget (with double quotation marks), a browser, or a user program. The expiration time for this URL is specified by LinkExpiredTime. Use it before the expiration time. If the BackupSet has expired, the following error code is displayed:
+Description You can call this operation to query binlogs of a MySQL instance. This operation supports querying by page. RDS provides binlog files for you to download. When the DownloadLink is NULL, RDS does not provide a download URL. When DownloadLink is not NULL, you can use this URL to download the backup file through Wget (with double quotation marks), a browser, or a user program. The expiration time for this URL is specified by LinkExpiredTime. Use it before the expiration time. If the BackupSet has expired, the following error code is displayed:
 
 ```xml
 <Error> <Code>AccessDenied</Code> <Message>Request has expired. </Message> <Expires>2012-12-25T09:47:52.000Z</Expires> <ServerTime>2012-12-25T09:49:00.000Z</ServerTime> <RequestId>50D9768CA801C2F102005C70</RequestId> <HostId>oss-test.aliyun-inc.com</HostId> </Error>
 ```
+
+Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -2459,6 +2529,8 @@ You can call this operation to query binlogs of a MySQL instance. This operation
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
 | PageNumber | Integer | No | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2506,7 +2578,7 @@ JSON format
 
 #### 2.9.5 DescribeSQLCollectorPolicy
 
-You can call this operation to check whether SQL collection is enabled for a specified RDS instance.
+Description You can call this operation to check whether SQL collection is enabled for a specified RDS instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2520,7 +2592,7 @@ You can call this operation to check whether SQL collection is enabled for a spe
 
 #### 2.9.6 ModifySQLCollectorPolicy
 
-You can call this operation to enable or disable SQL collection for the specified RDS instance.
+Description You can call this operation to enable or disable SQL collection for the specified RDS instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2528,11 +2600,11 @@ You can call this operation to enable or disable SQL collection for the specifie
 | DBInstanceId | String | Yes | The ID of the instance for which SQL collection is enabled or disabled. |
 | SQLCollectorS tatus | String | Yes | Specifies whether to enable SQL collection. Valid values: Enable and Disabled. |
 
-This operation returns only common response parameters.
+Response parameters This operation returns only common response parameters.
 
 #### 2.9.7 DescribeSQLLogRecords
 
-You can call this operation to query the SQL audit logs generated for an instance.
+Description You can call this operation to query the SQL audit logs generated for an instance. Request parameters
 
 | Parameter | Typ e | Requir ed | Description |
 |---|---|---|---|
@@ -2552,6 +2624,8 @@ You can call this operation to query the SQL audit logs generated for an instanc
 | EndTime | Strin g | Yes | The end of the time range where the query is performed. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time. |
 | PageSize | Inte ger | No | The number of entries to return on each page. Valid values: 30, 50, 100, and 200. Default value: 100. |
 | PageNumb er | Inte ger | No | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2639,12 +2713,14 @@ JSON format
 
 #### 2.9.8 DescribeSQLLogFiles
 
-You can call this operation to query SQL audit files.
+Description You can call this operation to query SQL audit files. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSQLLogFiles. |
 | DBInstanceId | String | Yes | The ID of the instance for which SQL audit files are queried. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2670,13 +2746,15 @@ LogFile parameters
 
 #### 2.10.1 CreateUploadPathForSQLServer
 
-You can call this operation to create the account and password of the file server and the file path. Based on this information, you can upload data files. After the upload is complete, you can migrate external data.
+Description You can call this operation to create the account and password of the file server and the file path. Based on this information, you can upload data files. After the upload is complete, you can migrate external data. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to CreateUploadPathForSQLServer. |
 | DBInstanceId | String | Yes | The ID of the instance. |
 | DBName | String | Yes | The name of the database. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2721,7 +2799,7 @@ JSON format
 
 #### 2.10.2 DescribeFilesForSQLServer
 
-You can call this operation to query files on the file server. SQLServer users can obtain their accounts to upload data files to the file server by calling the CreateUploadPathForSQLServer operation. After the data files are uploaded, RDS updates their status. You can also call this operation to check whether the data files are available. If they are available, you can import data and obtain the information about the import process.
+Description You can call this operation to query files on the file server. SQLServer users can obtain their accounts to upload data files to the file server by calling the CreateUploadPathForSQLServer operation. After the data files are uploaded, RDS updates their status. You can also call this operation to check whether the data files are available. If they are available, you can import data and obtain the information about the import process. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2731,6 +2809,8 @@ You can call this operation to query files on the file server. SQLServer users c
 | EndTime | String | Yes | The end of the time range where the query is performed. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2011-06-11T16:00Z. The end time must be later than the start time. |
 | PageSize | Integer | No | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integer | No | The number of the page to return. Pages start from page 1 but must be equal to or smaller than the maximum Integer value. Default value: 1. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2794,7 +2874,7 @@ JSON format
 
 #### 2.10.3 ImportDatabaseBetweenInstances
 
-You can call this operation to migrate data from one ApsaraDB for RDS instance to another. This operation is only supported on dedicated ApsaraDB RDS for MySQL instances. ApsaraDB RDS for MySQL instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The destination instance is not locked by the system. The reserved storage space of the destination instance is greater than the space calculated by the formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Databases to be migrated exist in both the source and destination instances and are activated. ApsaraDB RDS for SQL Server instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The destination instance is not locked by the system. The reserved storage space of the destination instance is greater than the space calculated by the formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance.
+Description You can call this operation to migrate data from one ApsaraDB for RDS instance to another. This operation is only supported on dedicated ApsaraDB RDS for MySQL instances. ApsaraDB RDS for MySQL instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The destination instance is not locked by the system. The reserved storage space of the destination instance is greater than the space calculated by the formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Databases to be migrated exist in both the source and destination instances and are activated. ApsaraDB RDS for SQL Server instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The destination instance is not locked by the system. The reserved storage space of the destination instance is greater than the space calculated by the formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Request parameters
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -2838,7 +2918,7 @@ JSON format
 
 #### 2.10.4 CancelImport
 
-You can call this operation to cancel migration tasks from ApsaraDB RDS for MySQL instances. Migration tasks from MySQL instances can be canceled.
+Description You can call this operation to cancel migration tasks from ApsaraDB RDS for MySQL instances. Migration tasks from MySQL instances can be canceled. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2872,7 +2952,7 @@ JSON format
 
 #### 2.11.1 AddTagsToResource
 
-You can call this operation to bind existing or newly created tags to instances. Before you call this operation, ensure that the following requirements are met: Each tag is composed of a TagKey and a TagValue. The TagKey cannot be blank, but the TagValue can. The values of TagKey and TagValue cannot start with aliyun. The values of TagKey and TagValue are not case sensitive. The maximum length of TagKey is 64 characters and the maximum length of TagValue is 128 characters. Each instance can only be bound to a maximum of 10 tags. Each tag bound to the same instance must have a unique TagKey. If tags with duplicate TagKeys are bound to the same instance, the tag bound last overwrites the existing tag.
+Description You can call this operation to bind existing or newly created tags to instances. Before you call this operation, ensure that the following requirements are met: Each tag is composed of a TagKey and a TagValue. The TagKey cannot be blank, but the TagValue can. The values of TagKey and TagValue cannot start with aliyun. The values of TagKey and TagValue are not case sensitive. The maximum length of TagKey is 64 characters and the maximum length of TagValue is 128 characters. Each instance can only be bound to a maximum of 10 tags. Each tag bound to the same instance must have a unique TagKey. If tags with duplicate TagKeys are bound to the same instance, the tag bound last overwrites the existing tag. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2884,13 +2964,15 @@ You can call this operation to bind existing or newly created tags to instances.
 | DBInstanceId | String | Yes | The ID of the instance for which a tag is be bound. Up to 30 IDs can be entered in a single request. Separate multiple IDs with commas (,) Format: instance1,instance2,instance3. |
 | Tags | JSON string | Yes | The tag pair to be bound. This parameter must include a TagKey, but does not need to include a corresponding TagValue. Up to five tag pairs can be entered in a single request. The TagKey is required, and TagValue is optional. Format: {“key1”:”value1”,“key2”:””}. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | Common response parameters. |
 
 #### 2.11.2 DescribeTags
 
-You can call this operation to view the bound tag information of an RDS instance belonging to the current account. This operation must meet the following requirements: If a specified instance ID is provided, all tags bound to this instance are queried and the other filter criteria are ignored. If the TagKey of a key is provided without a TagValue, the results of all tags matching the TagKey criteria are returned. If both TagKey and TagValue are provided, only the results that match both parameters are returned.
+Description You can call this operation to view the bound tag information of an RDS instance belonging to the current account. This operation must meet the following requirements: If a specified instance ID is provided, all tags bound to this instance are queried and the other filter criteria are ignored. If the TagKey of a key is provided without a TagValue, the results of all tags matching the TagKey criteria are returned. If both TagKey and TagValue are provided, only the results that match both parameters are returned. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2904,6 +2986,8 @@ You can call this operation to view the bound tag information of an RDS instance
 |---|---|---|---|
 | DBInstanceI d | String | No | The name of the instance. If this parameter is provided, all the other filter criteria are ignored. |
 | Tags | Json string | No | The tag pair. This parameter must include a TagKey, but does not need to include a corresponding TagValue. The TagKey cannot be blank, but the TagValue can. Format: {"key1":"value1 "}. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -2926,7 +3010,7 @@ DBInstanceIds parameters
 
 #### 2.11.3 RemoveTagsFromResource
 
-You can call this operation to unbind tags from an instance. This operation must meet the following requirements: A maximum of 10 tags can be unbound in a single request. If a tag is unbound from all of its bound instances, the tag itself is automatically deleted. If the TagKey of a key is provided without a TagValue, all tags matching the TagKey criteria are unbound.
+Description You can call this operation to unbind tags from an instance. This operation must meet the following requirements: A maximum of 10 tags can be unbound in a single request. If a tag is unbound from all of its bound instances, the tag itself is automatically deleted. If the TagKey of a key is provided without a TagValue, all tags matching the TagKey criteria are unbound.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2934,6 +3018,8 @@ You can call this operation to unbind tags from an instance. This operation must
 | RegionId | String | Yes | The region ID of the instance. |
 | DBInstanceId | String | Yes | The name of the instance. |
 | Tags | Json string | Yes | The tag pair to be unbound. This parameter must include a TagKey, but does not need to include a corresponding TagValue. The TagKey cannot be blank, but the TagValue can. Format: {"key1":"value1 "}. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|

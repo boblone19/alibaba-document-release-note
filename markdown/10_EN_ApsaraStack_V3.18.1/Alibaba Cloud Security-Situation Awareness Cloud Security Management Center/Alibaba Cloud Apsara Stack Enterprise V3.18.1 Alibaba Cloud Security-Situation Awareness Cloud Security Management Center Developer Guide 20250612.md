@@ -5,7 +5,7 @@ doc_version: "20250612"
 pdf_pages: 309
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Developer Guide 20250612.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%80%81%E5%8A%BF%E6%84%9F%E7%9F%A5/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20Developer%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Developer Guide 20250612
@@ -796,6 +796,8 @@ API responses use the HTTP response format: A 2xx status code indicates a succes
 ### 4.1 Request method
 
 #### 4.1.1 Request syntax
+
+**Description**
 
 where: `endpoint` : the endpoint of the Security Operations Center (SOC) API is `yundunnewsoc-pop.`
 
@@ -2209,6 +2211,8 @@ rations Center Sample success responses `XML` format
 
 ### 5.1 CreateEventType
 
+**Description**
+
 You can call this operation to create an audit event type.
 
 **Request parameters**
@@ -2266,6 +2270,8 @@ Sample responses (JSON format) `{`
 `}` `}`
 
 ### 5.2 DescribeEventType
+
+**Description**
 
 You can call this operation to query information about audit event types.
 
@@ -2337,6 +2343,8 @@ Sample responses (JSON format) `{`
 
 ### 5.3 DeleteEventType
 
+**Description**
+
 You can call this operation to delete an audit event type.
 
 **Request parameters**
@@ -2373,6 +2381,8 @@ Sample responses (JSON format) `{`
 `}`
 
 ### 5.4 CreateLogFilter
+
+**Description**
 
 You can call this operation to create a match criterion for audit log query.
 
@@ -2449,6 +2459,8 @@ Sample responses (JSON format) `{`
 `}` `}`
 
 ### 5.5 DescribeLogFilter
+
+**Description**
 
 You can call this operation to query audit log filter criteria.
 
@@ -2576,6 +2588,8 @@ Sample responses (JSON format) `{`
 
 ### 5.7 CreateReceiver
 
+**Description**
+
 Creates an alert recipient for audit events.
 
 **Request parameters**
@@ -2639,6 +2653,8 @@ Sample success responses in JSON format `{`
 `}` `}`
 
 ### 5.8 DescribeReceiver
+
+**Description**
 
 Queries information about alert recipients.
 
@@ -2717,6 +2733,8 @@ Sample success responses in JSON format `{`
 
 ### 5.9 DeleteReceiver
 
+**Description**
+
 You can call this operation to delete an audit event alert recipient.
 
 **Request parameters**
@@ -2753,6 +2771,8 @@ Sample responses (JSON format) `{`
 `}`
 
 ### 5.10 CreateRule
+
+**Description**
 
 You can call this operation to create an audit rule.
 
@@ -2835,6 +2855,8 @@ Sample responses (JSON format) `{`
 `}` `}`
 
 ### 5.11 DescribeRule
+
+**Description**
 
 You can call this operation to query audit rules.
 
@@ -2924,6 +2946,8 @@ arget INCLUDE \"4\" OR target INCLUDE \"5\" OR target INCLUDE \"6\" ) AND ( acti
 
 ### 5.12 EnableRule
 
+**Description**
+
 You can call this operation to enable an audit rule.
 
 **Request parameters**
@@ -2960,6 +2984,8 @@ Sample responses (JSON format) `{`
 `}`
 
 ### 5.13 DisableRule
+
+**Description**
 
 You can call this operation to disable an audit rule.
 
@@ -3000,6 +3026,8 @@ Sample responses (JSON format) `{`
 
 ### 5.14 DeleteRule
 
+**Description**
+
 You can call this operation to delete an audit rule.
 
 **Request parameters**
@@ -3036,6 +3064,8 @@ Sample responses (JSON format) `{`
 `}`
 
 ### 5.15 CreateTask
+
+**Description**
 
 You can call this operation to create an export task.
 
@@ -3090,6 +3120,8 @@ Sample responses (JSON format) `{`
 `}` `}`
 
 ### 5.16 DescribeTask
+
+**Description**
 
 Queries information about export tasks.
 
@@ -3161,6 +3193,8 @@ hangzhou.example.com/download/20180228184412_243797.log? Expires=1519901052&OSSA
 
 ### 5.17 DeleteTask
 
+**Description**
+
 You can call this operation to delete an export task.
 
 **Request parameters**
@@ -3197,6 +3231,8 @@ Sample responses (JSON format) `{`
 `}`
 
 ### 5.18 DescribeSetting
+
+**Description**
 
 You can call this operation to query the system parameter settings of security audit.
 
@@ -3253,6 +3289,8 @@ Sample responses (JSON format) `{`
 
 ### 5.19 ModifySetting
 
+**Description**
+
 You can call this operation to modify the system parameter settings of Security Audit.
 
 **Request parameters**
@@ -3290,6 +3328,8 @@ Sample responses (JSON format) `{`
 `}`
 
 ### 5.20 DescribeLogType
+
+**Description**
 
 You can call this operation to obtain a list of log types.
 
@@ -3337,6 +3377,8 @@ Sample responses (JSON format) `{`
 `}` `]` `}`
 
 ### 5.21 DescribeLogSource
+
+**Description**
 
 You can call this operation to query log source information.
 
@@ -3407,6 +3449,8 @@ Sample responses (JSON format) `{`
 
 ### 5.22 DescribeLogCountStat
 
+**Description**
+
 You can call this operation to query raw log statistics.
 
 **Request parameters**
@@ -3474,6 +3518,8 @@ Sample responses (JSON format) `{`
 `}` `]` `}`
 
 ### 5.23 DescribeLog
+
+**Description**
 
 Queries the details about raw logs.
 
@@ -3588,6 +3634,8 @@ Sample success responses in JSON format `{`
 
 ### 5.24 DescribeEventRisk
 
+**Description**
+
 You can call this operation to query the risk level information of an audit event.
 
 **Request parameters**
@@ -3634,6 +3682,8 @@ Sample responses (JSON format) `{`
 `}` `]` `}`
 
 ### 5.25 DescribeEventRiskStat
+
+**Description**
 
 Queries audit event statistics by risk level.
 
@@ -3697,6 +3747,8 @@ Sample success responses in JSON format `{`
 
 ### 5.26 DescribeEventTypeStat
 
+**Description**
+
 You can call this operation to query audit event statistics by event type.
 
 **Request parameters**
@@ -3752,6 +3804,8 @@ Sample responses (JSON format) `{`
 `}` `]` `}`
 
 ### 5.27 DescribeEventCountStat
+
+**Description**
 
 You can call this operation to query audit event statistics.
 
@@ -3815,6 +3869,8 @@ Sample responses (JSON format) `{`
 `}` `]` `}` `]` `}`
 
 ### 5.28 DescribeEvent
+
+**Description**
 
 Queries audit event details.
 
@@ -4006,6 +4062,8 @@ Sample responses (JSON format) `{`
 `}` `]` `}` `]` `}`
 
 ### 5.30 DescribeArchive
+
+**Description**
 
 You can call this operation to query log and event archive details.
 

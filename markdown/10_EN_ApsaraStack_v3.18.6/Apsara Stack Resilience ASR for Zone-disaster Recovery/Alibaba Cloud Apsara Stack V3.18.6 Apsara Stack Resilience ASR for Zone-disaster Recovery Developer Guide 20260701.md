@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 118
 source_pdf: "0b932e6f7aeda293_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Developer "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%90%8C%E5%9F%8E%E5%AE%B9%E7%81%BEASR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%20for%20Zone-disaster%20Recovery%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Resilience ASR for Zone-disaster Recovery Developer Guide 20260701
@@ -301,6 +301,11 @@ headers = {
             'x-acs-organizationid': '<yourOrganizationId>',
             'x-acs-resourcegroupid': '<yourResourceGroupId>',
             'x-acs-regionId': '<yourRegionId>',
+```
+
+`}`
+
+```
 extends_params = util_models.ExtendsParameters(
             headers=headers
 ```
@@ -395,8 +400,18 @@ com.aliyun.teaopenapi.models.Config()
         // The public domain name of the POP API for the product.
         config.endpoint = "<yourEndpoint>";
         return new Client(config);
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         testSwitchInstance();
+```
+
+`}`
+
+```java
     public static void testSwitchInstance() throws Exception {
         Client client = createClient();
         SwitchInstanceRequest switchInstanceRequest = new SwitchInstanceRequest();
@@ -574,7 +589,7 @@ This is the API reference content.
 
 #### 4.1.1 ListProtectionGroup
 
-This operation lists protection groups. The response contains creation information, instance information, and the current status of each group.
+This operation lists protection groups. The response contains creation information, instance information, and the current status of each group. Description
 
 **Preparations**
 
@@ -643,7 +658,7 @@ Sample request
 POST /api/pop/v1/listProtectionGroup HTTP/1.1
 ```
 
-`{` Sample response `JSON` format `{`
+`{` `}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -669,7 +684,7 @@ POST /api/pop/v1/listProtectionGroup HTTP/1.1
    "CreateUid":"999999999"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -679,7 +694,7 @@ POST /api/pop/v1/listProtectionGroup HTTP/1.1
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -697,7 +712,7 @@ POST /api/pop/v1/listProtectionGroup HTTP/1.1
 
 #### 4.1.2 ListProtectionGroupStatistics
 
-This operation queries overview information for a protection group, including the number of switches, involved products, instances, and the time of the last drill.
+This operation queries overview information for a protection group, including the number of switches, involved products, instances, and the time of the last drill. Description
 
 **Prerequisites**
 
@@ -777,7 +792,7 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 "ProtectionGroupIds":"12"
 ```
 
-Sample success response `JSON` format `{`
+`}` Sample success response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -799,7 +814,7 @@ Sample success response `JSON` format `{`
     "AbnormalCount":10
 ```
 
-`],`
+`}` `],`
 
 ```json
   "DrillPlanCount":10,
@@ -824,7 +839,7 @@ Sample success response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -852,7 +867,7 @@ Sample success response `JSON` format `{`
 
 #### 4.1.3 ListProtectionGroupStatus
 
-This operation lists the status of protection groups to check whether they are in a normal state.
+This operation lists the status of protection groups to check whether they are in a normal state. Description
 
 **Usage notes**
 
@@ -905,7 +920,7 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 "ProtectionGroupIds":"10"
 ```
 
-Example of a successful response `JSON` format `{`
+`}` Example of a successful response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -922,7 +937,7 @@ Example of a successful response `JSON` format `{`
    "CanEdit":true
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -932,7 +947,7 @@ Example of a successful response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -944,7 +959,7 @@ Example of a successful response `JSON` format `{`
 
 #### 4.1.4 GetProtectionGroup
 
-Retrieves the details of a protection group, including the products and instances that the group contains.
+Retrieves the details of a protection group, including the products and instances that the group contains. Description
 
 **Before you begin**
 
@@ -1025,7 +1040,7 @@ POST /api/pop/v1/getProtectionGroup HTTP/1.1
 "ProtectionGroupId":"10"
 ```
 
-Response example `JSON` format `{`
+`}` Response example `JSON` format `{`
 
 ```json
  "Path":"/xxx/xx",
@@ -1052,7 +1067,7 @@ Response example `JSON` format `{`
     "Result":"success"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "ProtectionName":"test",
@@ -1073,7 +1088,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8</RequestId> <Message>success</Message> <Data>
@@ -1164,7 +1179,7 @@ POST /api/pop/v1/checkProductInstance HTTP/1.1
 "CloudProduct":"RDS", "InstanceIds":"rm-2ze8g2am97624"
 ```
 
-Successful response example `JSON` format `{`
+`}` Successful response example `JSON` format `{`
 
 ```json
  "Path":"/xxx/xxx",
@@ -1182,7 +1197,7 @@ Successful response example `JSON` format `{`
     "Available":true
 ```
 
-`],`
+`}` `],`
 
 ```json
   "CloudProduct":"RDS"
@@ -1198,7 +1213,7 @@ Successful response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8</RequestId> <Message>success</Message> <Data>
@@ -1213,7 +1228,7 @@ Successful response example `JSON` format `{`
 
 #### 4.1.6 GetZoneInfo
 
-Retrieves information about the zones that are available when you create a recovery plan.
+Retrieves information about the zones that are available when you create a recovery plan. Description
 
 **Preparations**
 
@@ -1278,7 +1293,7 @@ Successful response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1368,7 +1383,7 @@ Sample request
 POST /api/pop/v1/listProcesses HTTP/1.1
 ```
 
-`{` Sample response `JSON` format `{`
+`{` `}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -1399,7 +1414,7 @@ POST /api/pop/v1/listProcesses HTTP/1.1
    "ProcessId":5
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -1409,7 +1424,7 @@ POST /api/pop/v1/listProcesses HTTP/1.1
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1504,7 +1519,7 @@ Request example
 POST /api/pop/v1/listDrillProcesses HTTP/1.1
 ```
 
-`{` Sample response `JSON` format `{`
+`{` `}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -1535,7 +1550,7 @@ POST /api/pop/v1/listDrillProcesses HTTP/1.1
    "ProcessId":5
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -1545,7 +1560,7 @@ POST /api/pop/v1/listDrillProcesses HTTP/1.1
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1568,7 +1583,7 @@ POST /api/pop/v1/listDrillProcesses HTTP/1.1
 
 #### 4.2.3 CloseProcess
 
-Call this operation to shut down a flow. You can shut down a flow after a recovery drill for a protection group is complete or shut it down early if an exception occurs.
+Call this operation to shut down a flow. You can shut down a flow after a recovery drill for a protection group is complete or shut it down early if an exception occurs. Description
 
 **Prerequisites**
 
@@ -1632,7 +1647,7 @@ POST /api/pop/v1/closeProcess HTTP/1.1
 "ProcessId":"10", "IsForce":"false"
 ```
 
-Sample successful response `JSON` format `{`
+`}` Sample successful response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -1655,7 +1670,7 @@ Sample successful response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1668,7 +1683,7 @@ Sample successful response `JSON` format `{`
 
 #### 4.2.4 CreateDrillProcess
 
-This operation creates a drill process for a drill plan. After the process starts, you can perform a switchover of the protection group.
+This operation creates a drill process for a drill plan. After the process starts, you can perform a switchover of the protection group. Description
 
 **Prerequisites**
 
@@ -1728,7 +1743,7 @@ POST /api/pop/v1/createDrillProcess HTTP/1.1
 "PlanId":"10"
 ```
 
-Response example `JSON` format `{`
+`}` Response example `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -1751,7 +1766,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1764,7 +1779,7 @@ Response example `JSON` format `{`
 
 #### 4.2.5 GetProcessTrace
 
-You can call this operation to retrieve flow logs. It is primarily used to obtain the switchover logs for a protection group.
+You can call this operation to retrieve flow logs. It is primarily used to obtain the switchover logs for a protection group. Description
 
 **Preparations**
 
@@ -1825,7 +1840,7 @@ POST /api/pop/v1/getProcessTrace HTTP/1.1
 "ProcessId":"10", "TraceId":"1760325130967#rm-jp7lct7rd5l61b7t0#1#615E81E0-82CA-40C3-8AC0-F002591EFC1C"
 ```
 
-Sample successful response `JSON` format `{`
+`}` Sample successful response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -1846,7 +1861,7 @@ Sample successful response `JSON` format `{`
    "StepMsg":"dr service status is good"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"500",
@@ -1856,7 +1871,7 @@ Sample successful response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1923,7 +1938,7 @@ POST /api/pop/v1/executeProcess HTTP/1.1
 "ProcessId":"10", "ProcessAction":"SWITCH", "Step":"1"
 ```
 
-Response example `JSON` format `{`
+`}` Response example `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -1936,7 +1951,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
@@ -2002,7 +2017,7 @@ POST /api/pop/v1/createNextProcess HTTP/1.1
 "ProcessId":"10", "ProcessAction":"SWITCH", "IsForce":"true"
 ```
 
-Sample response `JSON` format `{`
+`}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -2024,7 +2039,7 @@ Sample response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2129,7 +2144,7 @@ POST /api/pop/v1/getInstanceStatus HTTP/1.1
 "ProcessId":"10", "ProcessAction":"SWITCH"
 ```
 
-Sample response `JSON` format `{`
+`}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -2162,7 +2177,7 @@ true<br/> }",
       "info":"AutomaticFailover"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Info":"",
@@ -2178,7 +2193,7 @@ true<br/> }",
     "ConsumeTime":"120"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "EndTime":1759211487000,
@@ -2357,7 +2372,7 @@ POST /api/pop/v1/getProcessEntry HTTP/1.1
 "PlanId":"10"
 ```
 
-Sample response `JSON` format `{`
+`}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -2393,7 +2408,7 @@ true<br/> }",
     "ConsumeTime":"120"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "EndTime":1759211487000,
@@ -2486,7 +2501,7 @@ RECOVERY_CHECK</ShowAction>
 
 #### 4.2.10 CreateDisasterRecoveryProcess
 
-Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario.
+Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario. Description
 
 **Preparations**
 
@@ -2546,7 +2561,7 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 "PlanId":"10"
 ```
 
-Sample successful response `JSON` format `{`
+`}` Sample successful response `JSON` format `{`
 
 ```json
  "Path":"/xxx/",
@@ -2569,7 +2584,7 @@ Sample successful response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2582,7 +2597,7 @@ Sample successful response `JSON` format `{`
 
 #### 4.2.11 CreateHdrReverse
 
-Switches an HDR protection group.
+Switches an HDR protection group. Description
 
 **Preparations**
 
@@ -2634,7 +2649,7 @@ POST /api/pop/v1/createHdrReverse HTTP/1.1
 "ProcessId":"10", "Product":"HDR", "InstanceId":"xxxx", "RecoverOriginal":"true"
 ```
 
-Sample response `JSON` format `{`
+`}` Sample response `JSON` format `{`
 
 ```json
  "Path":"/xxx/xxx",
@@ -2647,7 +2662,7 @@ Sample response `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
@@ -2655,7 +2670,7 @@ Sample response `JSON` format `{`
 
 #### 4.2.12 GetDrillPlan
 
-Call this operation to retrieve the details of a drill plan. The details include the products, instances, and zones that are included in the plan.
+Call this operation to retrieve the details of a drill plan. The details include the products, instances, and zones that are included in the plan. Description
 
 **Preparations**
 
@@ -2738,7 +2753,7 @@ POST /api/pop/v1/getDrillPlan HTTP/1.1
 "PlanId":"10"
 ```
 
-Response example `JSON` format `{`
+`}` Response example `JSON` format `{`
 
 ```json
  "Path":"/xxx/xxx",
@@ -2779,13 +2794,13 @@ Response example `JSON` format `{`
       "info":"\"InstancePrimaryZoneMissMatch\""
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Info":"{}"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "LastTime":1756110161000
@@ -2801,7 +2816,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2836,7 +2851,7 @@ Response example `JSON` format `{`
 
 #### 4.2.13 ListDrillPlan
 
-This operation lists drill plans. You can query for a plan by its name. The response includes details about each plan, such as its execution mode and the zone where the drill is performed.
+This operation lists drill plans. You can query for a plan by its name. The response includes details about each plan, such as its execution mode and the zone where the drill is performed. Description
 
 **Prerequisites**
 
@@ -2903,7 +2918,7 @@ Sample request
 POST /api/pop/v1/listDrillPlan HTTP/1.1
 ```
 
-`{` Sample response `JSON` format `{`
+`{` `}` Sample response `JSON` format `{`
 
 ```json
   "Code": "200",
@@ -2952,7 +2967,7 @@ POST /api/pop/v1/listDrillPlan HTTP/1.1
         "Zone": "cn-wulan-env128-amtest128001-a"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "Message": "success",
@@ -2963,7 +2978,7 @@ POST /api/pop/v1/listDrillPlan HTTP/1.1
   "TotalCount": 3
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Code>200</Code> <Data>
@@ -3004,7 +3019,7 @@ POST /api/pop/v1/listDrillPlan HTTP/1.1
 
 #### 4.2.14 GetProcessCheck
 
-You can call this operation to retrieve the check result of a flow execution. This check verifies the instance status before a switch. The result includes information such as synchronization latency, primary node location, and whether a drill action is involved.
+You can call this operation to retrieve the check result of a flow execution. This check verifies the instance status before a switch. The result includes information such as synchronization latency, primary node location, and whether a drill action is involved. Description
 
 **Prerequisites**
 
@@ -3098,7 +3113,7 @@ POST /api/pop/v1/getProcessCheck HTTP/1.1
 "ProcessId":"10", "ProcessAction":"SWITCH"
 ```
 
-Successful response example `JSON` format `{`
+`}` Successful response example `JSON` format `{`
 
 ```json
   "Code": "200",
@@ -3169,7 +3184,7 @@ Successful response example `JSON` format `{`
               "cn-wulan-env128-amtest217002-b"
 ```
 
-`]` `},` `{`
+`]` `}` `},` `{`
 
 ```json
           "ActionId": 12,
@@ -3230,7 +3245,7 @@ Successful response example `JSON` format `{`
               "cn-wulan-env128-amtest217002-b"
 ```
 
-`]` `]` `},`
+`]` `}` `}` `]` `},`
 
 ```json
     "PrevActionStatus": {
@@ -3372,7 +3387,7 @@ Successful response example `JSON` format `{`
 
 #### 4.2.15 GetPrevProcess
 
-This operation retrieves the status of the previous process in a recovery drill plan. It obtains information about the previous step but does not change the status of the process.
+This operation retrieves the status of the previous process in a recovery drill plan. It obtains information about the previous step but does not change the status of the process. Description
 
 **Preparations**
 
@@ -3476,7 +3491,7 @@ POST /api/pop/v1/getPrevProcess HTTP/1.1
 "ProcessId":"10", "ProcessAction":"SWITCH"
 ```
 
-Successful response example `JSON` format `{`
+`}` Successful response example `JSON` format `{`
 
 ```json
   "Code": "200",
@@ -3552,7 +3567,7 @@ Successful response example `JSON` format `{`
               "cn-wulan-env128-amtest217002-b"
 ```
 
-`]` `]` `},`
+`]` `}` `}` `]` `},`
 
 ```json
     "PlanId": 6,
@@ -3584,7 +3599,7 @@ Successful response example `JSON` format `{`
   "Success": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Code>200</Code> <Data>
@@ -3659,7 +3674,7 @@ Successful response example `JSON` format `{`
 
 #### 4.2.16 GetProcessDetail
 
-Call this operation to retrieve the details of a flow. The details include the products and instances involved in the recovery plan, the switch direction, the current execution step, and the status of the preceding action.
+Call this operation to retrieve the details of a flow. The details include the products and instances involved in the recovery plan, the switch direction, the current execution step, and the status of the preceding action. Description
 
 **Prerequisites**
 
@@ -3761,7 +3776,7 @@ POST /api/pop/v1/getProcessDetail HTTP/1.1
 "ProcessId":"10"
 ```
 
-Successful response example `JSON` format `{`
+`}` Successful response example `JSON` format `{`
 
 ```json
   "Code": "200",
@@ -3922,7 +3937,7 @@ C16CF72D81C2"
   "Success": true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Code>200</Code> <Data>
@@ -4037,7 +4052,7 @@ C16CF72D81C2</TraceId>
 
 #### 4.2.17 SwitchInstance
 
-You can call this operation to retry a switch to a disaster recovery instance for a protection group. The operation performs an instance switch or switchback based on the scenario in the drill plan.
+You can call this operation to retry a switch to a disaster recovery instance for a protection group. The operation performs an instance switch or switchback based on the scenario in the drill plan. Description
 
 **Prerequisites**
 
@@ -4088,7 +4103,7 @@ POST /api/pop/v1/switchInstance HTTP/1.1
 "ProcessId":"10", "ProcessAction":"SWITCH", "InstanceIds":"rm-hg30ps8hg9vtcqf71r"
 ```
 
-Successful response example `JSON` format `{`
+`}` Successful response example `JSON` format `{`
 
 ```json
  "Path":"/xx/xx",
@@ -4101,7 +4116,7 @@ Successful response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
@@ -4109,7 +4124,7 @@ Successful response example `JSON` format `{`
 
 #### 4.2.18 SetProcessSwitchStep
 
-This API is used to skip a failed batch and proceed to the next one during a manual batch switchover for a protection group.
+This API is used to skip a failed batch and proceed to the next one during a manual batch switchover for a protection group. Description
 
 **Preparations**
 
@@ -4161,7 +4176,7 @@ POST /api/pop/v1/setProcessSwitchStep HTTP/1.1
 "ProcessId":"22", "ProcessAction":"SWITCH", "Step":"2"
 ```
 
-Response example `JSON` format `{`
+`}` Response example `JSON` format `{`
 
 ```json
  "Path":"/xxx/xxx",
@@ -4175,7 +4190,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>2</Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>

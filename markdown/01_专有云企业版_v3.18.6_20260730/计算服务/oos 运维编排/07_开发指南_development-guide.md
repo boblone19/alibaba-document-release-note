@@ -5,20 +5,47 @@ doc_version: "20260729"
 pdf_pages: 73
 source_pdf: "07_开发指南_development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/oos/zh/development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 运维编排 开发指南
 
-运维编排
+## 目录
 
-## Action通用属性
+- 1 Action通用属性
+- 2 原子动作
+  - 2.1 API类动作
+    - 2.1.1 ACS::ExecuteAPI
+    - 2.1.2 ACS::WaitFor
+    - 2.1.3 ACS::CheckFor
+    - 2.1.4 支持的云产品列表
+  - 2.2 触发器类动作
+  - 2.3 控制类动作
+    - 2.3.1 审批ACS::Approve
+    - 2.3.2 选择ACS::Choice
+    - 2.3.3 通知ACS::Notify
+    - 2.3.4 睡眠ACS::Sleep
+  - 2.4 嵌套类动作
+    - 2.4.1 嵌套ACS::Template
+- 3 云产品动作
+  - 3.1 弹性计算（ECS）类
+  - 3.2 钉钉（DingTalk）类
+  - 4.1 执行概述
+  - 4.2 全自动执行
+  - 4.3 单步执行
+  - 4.4 查看执行详情
+  - 4.5 取消执行
+  - 4.6 删除执行
+  - 4.7 查看执行日志
+  - 4.8 状态转换图
+
+## 1 Action通用属性
 
 动作（Action）定义了一个具体的操作，是操作的最小单位。
 
 **动作类型**
 
-动作分为以下几种类型： 原子动作（Atom Action） API动作（API Action） 触发器动作（Trigger Action） 关系型数据库（RDS）类
+动作分为以下几种类型： 原子动作（Atom Action） API动作（API Action） 触发器动作（Trigger Action） 控制类动作（Control Action） 嵌套类动作（ACS::Template） 云产品动作（Cloud Product Action） 关系型数据库（RDS）类
 
 **名称格式**
 
@@ -48,11 +75,11 @@ converter: line-classifier (PyMuPDF)
 
 **Action通用定义**
 
-Name：合法字符为：[a-zA-Z0-9-_]，长度限制200个内，不允许包含冒号（:）。 Description：描述当前task的用途。
+Name：合法字符为：[a-zA-Z0-9-_]，长度限制200个内，不允许包含冒号（:）。 Action：必须为以下类型之一，原子action，云产品动作。以 `ACS::` 开头。 Description：描述当前task的用途。 Properties：详细信息，请参见ACS::ExecuteAPI。
 
 **流程控制类**
 
-`OnError`：`ACS::END` ：默认，此任务出错时，中断执行。 运维编排 `OnSuccess`：`ACS::NEXT` ：默认，此任务成功时，后续如有任务，继续向后执行。 `OnError: <task_name>` ：此任务出错时执行指定的任务。 `OnSuccess: <task_name>` ：此任务成功时执行指定的任务。
+`OnError`：`ACS::END` ：默认，此任务出错时，中断执行。 `OnSuccess`：`ACS::NEXT` ：默认，此任务成功时，后续如有任务，继续向后执行。 `OnError: <task_name>` ：此任务出错时执行指定的任务。 `OnSuccess: <task_name>` ：此任务成功时执行指定的任务。
 
 **示例**
 
@@ -90,6 +117,7 @@ es.
     Default: 600
 Tasks:
 - Name: runCommand
+  Action: 'ACS::ExecuteAPI'
   Description: Executes a cloud assistant command.
   Properties:
     Service: ECS
@@ -103,21 +131,16 @@ Tasks:
       Type: '{{ commandType }}'
 ```
 
-运维编排
-
-|  | WorkingDir: '{{ workingDir }}' Timeout: '{{ timeout }}' Outputs: invokeId: Type: String ValueSelector: InvokeId - Name: untilInvocationReady Action: ACS::WaitFor Description: Waits for the command to be completed. OnError: ACS::END Retries: 20 Properties: Service: ECS API: DescribeInvocations Parameters: RegionId: '{{ regionId }}' InvokeId: '{{ runCommand.invokeId }}' DesiredValues: - Finished StopRetryValues: - Failed PropertySelector: Invocations.Invocation[].InvokeStatus - Name: describeInvocationResults Action: ACS::ExecuteAPI Description: Views the command output of a cloud assistant command in the specified E CS instance. Properties: Service: ECS API: DescribeInvocationResults Parameters: RegionId: '{{ regionId }}' InvokeId: '{{ runCommand.invokeId }}' Outputs: invocationResult: Type: String ValueSelector: 'Invocation.InvocationResults.InvocationResult[].Output' - Name: checkInvocationResult Action: 'ACS::CheckFor' Description: Check the command exitcode of a cloud assistant command. OnError: 'ACS::END' Properties: Service: ECS API: DescribeInvocationResults Parameters: RegionId: '{{ regionId }}' InvokeId: '{{ runCommand.InvokeId }}' PropertySelector: 'Invocation.InvocationResults.InvocationResult[].ExitCode' DesiredValues: - 0 Outputs: invocationOutput: Type: String Value: ' 64 d ' '{{ d ib i l i i l }}' |  |
+|   | WorkingDir: '{{ workingDir }}' Timeout: '{{ timeout }}' Outputs: invokeId: Type: String ValueSelector: InvokeId - Name: untilInvocationReady Action: ACS::WaitFor Description: Waits for the command to be completed. OnError: ACS::END Retries: 20 Properties: Service: ECS API: DescribeInvocations Parameters: RegionId: '{{ regionId }}' InvokeId: '{{ runCommand.invokeId }}' DesiredValues: - Finished StopRetryValues: - Failed PropertySelector: Invocations.Invocation[].InvokeStatus - Name: describeInvocationResults Action: ACS::ExecuteAPI Description: Views the command output of a cloud assistant command in the specified E CS instance. Properties: Service: ECS API: DescribeInvocationResults Parameters: RegionId: '{{ regionId }}' InvokeId: '{{ runCommand.invokeId }}' Outputs: invocationResult: Type: String ValueSelector: 'Invocation.InvocationResults.InvocationResult[].Output' - Name: checkInvocationResult Action: 'ACS::CheckFor' Description: Check the command exitcode of a cloud assistant command. OnError: 'ACS::END' Properties: Service: ECS API: DescribeInvocationResults Parameters: RegionId: '{{ regionId }}' InvokeId: '{{ runCommand.InvokeId }}' PropertySelector: 'Invocation.InvocationResults.InvocationResult[].ExitCode' DesiredValues: - 0 Outputs: invocationOutput: Type: String Value: ' 64 d ' '{{ d ib i l i i l }}' |   |
 |---|---|---|
-
-运维编排
 
 ```
       'Fn::Base64Decode': '{{ describeInvocationResults.invocationResult }}'
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
   "FormatVersion": "OOS-2019-06-01",
   "Description": "Creates a cloud assistant command and triggers it on one ECS instance
 .",
@@ -126,17 +149,29 @@ JSON格式：
       "Description": "The ID of region.",
       "Type": "String",
       "Default": "{{ ACS::RegionId }}"
-    },
+```
+
+`},`
+
+```json
     "commandContent": {
       "Description": "The content of command.",
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "instanceId": {
       "Description": "The ID of ECS instance that will invoke command.",
       "Type": "String",
       "MinLength": 1,
       "MaxLength": 30
-    },
+```
+
+`},`
+
+```json
     "commandType": {
       "Description": "The type of command.",
       "Type": "String",
@@ -146,34 +181,41 @@ JSON格式：
         "RunShellScript"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "workingDir": {
       "Description": "The directory where the created command runs on the ECS
 instances.",
       "Type": "String",
       "Default": ""
-    },
+```
+
+`},`
+
+```json
     "timeout": {
       "Description": "The value of the invocation timeout period of a command on ECS in
 stances.",
       "Type": "Number",
       "Default": 600
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Tasks": [
-    {
+```
+
+`{`
+
+```json
       "Name": "runCommand",
       "Action": "ACS::ExecuteAPI",
       "Description": "Executes a cloud assistant command.",
-      "Properties": {
         "Service": "ECS",
         "API": "RunCommand",
 ```
-
-运维编排
 
 ```json
         "Parameters": {
@@ -190,16 +232,20 @@ stances.",
           "Type": "{{ commandType }}",
           "WorkingDir": "{{ workingDir }}",
           "Timeout": "{{ timeout }}"
-        }
-      },
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "invokeId": {
           "Type": "String",
           "ValueSelector": "InvokeId"
-        }
-      }
-    },
-    {
+```
+
+`}` `}` `},` `{`
+
+```json
       "Name": "untilInvocationReady",
       "Action": "ACS::WaitFor",
       "Description": "Waits for the command to be completed.",
@@ -211,7 +257,11 @@ stances.",
         "Parameters": {
           "RegionId": "{{ regionId }}",
           "InvokeId": "{{ runCommand.invokeId }}"
-        },
+```
+
+`},`
+
+```json
         "DesiredValues": [
           "Finished"
 ```
@@ -227,9 +277,11 @@ stances.",
 
 ```json
         "PropertySelector": "Invocations.Invocation[].InvokeStatus"
-      }
-    },
-    {
+```
+
+`}` `},` `{`
+
+```json
       "Name": "describeInvocationResults",
       "Action": "ACS::ExecuteAPI",
       "Description": "Views the command output of a cloud assistant command in the spec
@@ -240,28 +292,21 @@ ified ECS instance.",
         "Parameters": {
           "RegionId": "{{ regionId }}",
           "InvokeId": "{{ runCommand.invokeId }}"
-        }
-      },
 "Ot
 ```
 
-t"
-
-```
-{
-```
-
-运维编排
+`t``"`
 
 ```json
       "Outputs": {
         "invocationResult": {
           "Type": "String",
           "ValueSelector": "Invocation.InvocationResults.InvocationResult[].Output"
-        }
-      }
-    },
-    {
+```
+
+`}` `}` `},` `{`
+
+```json
       "Name": "checkInvocationResult",
       "Action": "ACS::CheckFor",
       "Description": "Check the command exitcode of a cloud assistant command.",
@@ -272,19 +317,16 @@ t"
         "Parameters": {
           "RegionId": "{{ regionId }}",
           "InvokeId": "{{ runCommand.InvokeId }}"
-        },
+```
+
+`},`
+
+```json
         "PropertySelector": "Invocation.InvocationResults.InvocationResult[].ExitCode",
         "DesiredValues": [
 ```
 
-]
-
-```
-      }
-    }
-```
-
-`],`
+`]` `}` `}` `],`
 
 ```json
   "Outputs": {
@@ -292,11 +334,9 @@ t"
       "Type": "String",
       "Value": {
         "Fn::Base64Decode": "{{ describeInvocationResults.invocationResult }}"
-      }
-    }
-  }
-}
 ```
+
+`}` `}` `}` `}`
 
 **任务输出**
 
@@ -304,7 +344,7 @@ Task级别的Outputs由输出Type和输出ValueSelector组成。如果声明多�
 
 **示例**
 
-如下模板：获取指定状态的所有ECS实例。 YAML格式： 运维编排
+如下模板：获取指定状态的所有ECS实例。 YAML格式：
 
 ```
 FormatVersion: OOS-2019-06-01 Description: Views the ECS instances by specifying instance status. Parameters:
@@ -317,6 +357,7 @@ FormatVersion: OOS-2019-06-01 Description: Views the ECS instances by specifying
     Type: String
 Tasks:
 - Name: describeInstances
+  Action: ACS::ExecuteAPI
   Description: Views the ECS instances by specifying instance status.
   Properties:
     Service: ECS
@@ -350,17 +391,17 @@ Json格式：
 
 **ValueSelector（必需）**
 
-运维编排在任务调用Api执行完成时，将输出的属性值。支持JQ selector，对于该API返回值， 如".Instances",".Instances.Instance[].Status"。 运维编排
+在任务调用Api执行完成时，将输出的属性值。支持JQ selector，对于该API返回值， 如".Instances",".Instances.Instance[].Status"。
 
-## 原子动作
+## 2 原子动作
 
-### API类动作
+### 2.1 API类动作
 
-#### ACS::ExecuteAPI
+#### 2.1.1 ACS::ExecuteAPI
 
 **用途**
 
-此Action可以用来调用某个云产品（如ECS）的OpenAPI。如果OpenAPI是一个异步调用，则您可以使用
+此Action可以用来调用某个云产品（如ECS）的OpenAPI。如果OpenAPI是一个异步调用，则您可以使用 ACS::WaitFor来等待其资源达到预期的状态。请参考ACS::WaitFor动作。
 
 **语法**
 
@@ -373,6 +414,7 @@ Tasks.Properties.API就是云产品API的Action，所以无需在Tasks.Propertie
 ```
 Tasks:
   - Name: executeAPITaskExample
+    Action: ACS::ExecuteAPI
     Properties:
 ```
 
@@ -404,12 +446,10 @@ Tasks:
         Type: String/Boolean/List(Array)/Number/Object
 ```
 
-JSON格式（请参考YAML注释说明） 运维编排
+JSON格式（请参考YAML注释说明）
 
 ```json
-{
   "Tasks": [
-    {
       "Name": "executeAPITaskExample",
       "Action": "ACS::ExecuteAPI",
       "Properties": {
@@ -419,22 +459,18 @@ JSON格式（请参考YAML注释说明） 运维编排
         "Parameters": {
           "Parameter1": "Value1",
           "Parameter2": "Value2"
-        }
-      },
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "OutputParameter1": {
           "ValueSelector": "jq selector",
           "Type": "String/Boolean/List(Array)/Number/Object"
-        }
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `}` `]` `}`
 
 **ROA风格API**
 
@@ -443,6 +479,7 @@ YAML格式
 ```
 Tasks:
   - Name: executeAPITaskExample2
+    Action: ACS::ExecuteAPI
     Properties:
 ```
 
@@ -452,7 +489,7 @@ Tasks:
 、ECS, RDS, FC...
 ```
 
-`API: PutBucket #` 必填，云产品的`API`名称。大小写不敏感。如`OOS API "PutBucket"`。 `Method: PUT #` 必填，该`API HTTP`请求方法。 `URI: '' #` 该`AP`对应的I统一资源标识符。 `Headers: #` 选填，源`API`中请求头，定义在`Headers`部分，如下形式进行传递。
+`API: PutBucket #` 必填，云产品的`API`名称。大小写不敏感。如`OOS API "PutBucket"`。 `Method: PUT #` 必填，该`API HTTP`请求方法。 `URI: '' #` 该`AP`对应的`I`统一资源标识符。 `Headers: #` 选填，源`API`中请求头，定义在`Headers`部分，如下形式进行传递。
 
 ```
         requestHeader1: 'requestHeader1Value'
@@ -465,7 +502,7 @@ Tasks:
         commonParameter2: 'commonParameter2Value'
 ```
 
-# 选填，源`API`中的请求元素，定义在`Body`部分，通过`xml`方式进行传递。
+`#` 选填，源`API`中的请求元素，定义在`Body`部分，通过`xml`方式进行传递。
 
 ```xml
       Body: |
@@ -473,12 +510,10 @@ Tasks:
         </parameter1> <parameter2> Value2 </parameter2> </supKey1>
 ```
 
-JSON格式（请参考YAML注释说明） 运维编排
+JSON格式（请参考YAML注释说明）
 
 ```json
-{
   "Tasks": [
-    {
       "Name": "executeAPITaskExample2",
       "Action": "ACS::ExecuteAPI",
       "Properties": {
@@ -488,28 +523,30 @@ JSON格式（请参考YAML注释说明） 运维编排
         "URI": "",
         "Headers": {
           "requestHeader1": "requestHeader1Value"
-        },
+```
+
+`},`
+
+```json
         "Parameters": {
           "commonParameter1": "commonParameter1Value",
           "commonParameter2": "commonParameter2Value"
-        },
+```
+
+`},`
+
+```json
         "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <supKey1> <parameter1>
 Value1\n</parameter1> <parameter2> Value2 </parameter2> </supKey1>\n"
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `]` `}`
 
 **示例**
 
 **RPC示例模版**
 
-以下为含ECS云产品DescribeInstances API的模版。 YAML格式运维编排
+以下为含ECS云产品DescribeInstances API的模版。 YAML格式
 
 ```
 FormatVersion: OOS-2019-06-01 Description: Views the ECS instances by specifying instance status. Parameters:
@@ -518,6 +555,7 @@ FormatVersion: OOS-2019-06-01 Description: Views the ECS instances by specifying
     Type: String
 Tasks:
 - Name: describeInstances
+  Action: ACS::ExecuteAPI
   Description: Views the ECS instances by specifying instance status.
   Properties:
     Service: ECS
@@ -534,20 +572,26 @@ Outputs:
     Value: '{{ describeInstances.instanceIds }}'
 ```
 
-JSON格式运维编排
+JSON格式
 
 ```json
-{
   "FormatVersion": "OOS-2019-06-01",
   "Description": "Views the ECS instances by specifying instance status.",
   "Parameters": {
     "status": {
       "Description": "The ECS instances status for query instances.",
       "Type": "String"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "Tasks": [
-    {
+```
+
+`{`
+
+```json
       "Name": "describeInstances",
       "Action": "ACS::ExecuteAPI",
       "Description": "Views the ECS instances by specifying instance status.",
@@ -556,28 +600,27 @@ JSON格式运维编排
         "API": "DescribeInstances",
         "Parameters": {
           "Status": "{{ status }}"
-        }
-      },
+```
+
+`}` `},`
+
+```json
       "Outputs": {
         "instanceIds": {
           "Type": "List",
           "ValueSelector": "Instances.Instance[].InstanceId"
-        }
-      }
-    }
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "Outputs": {
     "instanceIds": {
       "Type": "List",
       "Value": "{{ describeInstances.instanceIds }}"
-    }
-  }
-}
 ```
+
+`}` `}` `}`
 
 **ROA示例模版**
 
@@ -605,7 +648,7 @@ Parameters:
     Description:
 ```
 
-运维编排 p
+`p`
 
 ```
       en: The bucket name.
@@ -669,6 +712,7 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}' Tasks:
   - Name: PutBucket
+    Action: 'ACS::ExecuteAPI'
     Description:
       en: Create buckets in different regions.
 ```
@@ -685,8 +729,6 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
         x-oss-acl: '{{ XOssAcl }}'
       Parameters:
 ```
-
-运维编排
 
 ```xml
         BucketName: '{{ BucketName }}-{{ACS::TaskLoopItem}}'
@@ -710,60 +752,62 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
         ValueSelector: .
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
   "FormatVersion": "OOS-2019-06-01",
   "Description": {
     "en": "Create multiple buckets in different region at the same time.",
 ```
 
-`"zh-cn": "`同时创建多个不同区域的`Bucket`。"
+`"zh-cn": "`同时创建多个不同区域的`Bucket`。`"` `},`
 
 ```json
-  },
   "Parameters": {
     "Regions": {
       "Description": {
         "en": "The region id..",
 ```
 
-`"zh-cn": "`区域`Id`。"
+`"zh-cn": "`区域`Id`。`"` `},`
 
 ```json
-      },
       "Type": "List"
-    },
+```
+
+`},`
+
+```json
     "BucketName": {
       "Description": {
         "en": "The bucket name.",
         "zh-cn": "Bucket名称。"
-      },
+```
+
+`},`
+
+```json
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "DataRedundancyType": {
       "Description": {
         "en": "Specifies the data disaster tolerance type of the bucket.",
 ```
 
-`"zh-cn": "`指定`Bucket`的数据容灾类型。"
+`"zh-cn": "`指定`Bucket`的数据容灾类型。`"` `},`
 
 ```json
-      },
       "Type": "String",
       "AllowedValues": [
         "LRS",
         "ZRS"
 ```
 
-]
-
-```
-    },
-```
-
-运维编排 ,
+`]` `,`
 
 ```json
     "StorageClass": {
@@ -771,10 +815,9 @@ JSON格式
         "en": "Specify the bucket storage type.",
 ```
 
-`"zh-cn": "`指定`Bucket`存储类型。"
+`"zh-cn": "`指定`Bucket`存储类型。`"` `},`
 
 ```json
-      },
       "Type": "String",
       "AllowedValues": [
         "Standard",
@@ -782,19 +825,17 @@ JSON格式
         "Archive"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "XOssAcl": {
       "Description": {
         "en": "Specify bucket access rights.",
 ```
 
-`"zh-cn": "`指定`Bucket`访问权限。"
+`"zh-cn": "`指定`Bucket`访问权限。`"` `},`
 
 ```json
-      },
       "Type": "String",
       "AllowedValues": [
         "public-read-write",
@@ -802,41 +843,49 @@ JSON格式
         "private"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "RateControl": {
       "Description": {
         "en": "Concurrency ratio of task execution.",
 ```
 
-`"zh-cn": "`任务执行的并发比率。"
+`"zh-cn": "`任务执行的并发比率。`"` `},`
 
 ```json
-      },
       "Type": "Json",
       "AssociationProperty": "RateControl"
-    },
+```
+
+`},`
+
+```json
     "OOSAssumeRole": {
       "Description": "The RAM role to be assumed by OOS.",
       "Type": "String",
       "Default": "OOSServiceRole"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "RamRole": "{{ OOSAssumeRole }}",
   "Tasks": [
-    {
+```
+
+`{`
+
+```json
       "Name": "PutBucket",
       "Action": "ACS::ExecuteAPI",
       "Description": {
         "en": "Create buckets in different regions.",
 ```
 
-`"zh-cn": "`创建不同区域的`Bucket`。"
+`"zh-cn": "`创建不同区域的`Bucket`。`"` `},`
 
 ```json
-      },
       "Properties": {
         "Service": "OSS",
         "API": "PutBucket",
@@ -846,17 +895,22 @@ JSON格式
           "x-oss-acl": "{{ XOssAcl }}"
 ```
 
-运维编排
-
 ```json
-        },
         "Parameters": {
           "BucketName": "{{ BucketName }}-{{ACS::TaskLoopItem}}",
           "RegionId": "{{ACS::TaskLoopItem}}"
-        },
+```
+
+`},`
+
+```json
         "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?
 >\n<CreateBucketConfiguration>\n <StorageClass>{{ StorageClass }}</StorageClass>\n <D ataRedundancyType>{{ DataRedundancyType }} </DataRedundancyType>\n</CreateBucketConfiguration>\n"
-      },
+```
+
+`},`
+
+```json
       "Loop": {
         "Items": "{{ Regions }}",
         "RateControl": "{{ RateControl }}",
@@ -864,41 +918,37 @@ JSON格式
           "imageIds": {
             "AggregateType": "Fn::ListJoin",
             "AggregateField": "imageIds"
-          }
-        }
-      },
+```
+
+`}` `}` `},`
+
+```json
       "Outputs": {
         "imageIds": {
           "Type": "String",
           "ValueSelector": "."
-        }
-      }
-    }
 ```
 
-]
+`}` `}` `}` `]` `}`
 
-```
-}
-```
-
-#### ACS::WaitFor
+#### 2.1.2 ACS::WaitFor
 
 **用途**
 
-使用该动作可以等待资源进入预期的状态。通过调用云产品的OpenAPI去查询指定资源的状态，直到资源的状态和预期的一致。如通过调用ECS的OpenAPI `RunInstances` 创建资源后，可以通过调
+使用该动作可以等待资源进入预期的状态。通过调用云产品的OpenAPI去查询指定资源的状态，直到资源的状态和预期的一致。如通过调用ECS的OpenAPI `RunInstances` 创建资源后，可以通过调用 `ACS::WaitFor` 等待实例被创建完成，即其状态为运行中（Running）。
 
 **语法**
 
-YAML格式： 运维编排
+YAML格式：
 
 ```
 Tasks:
   - Name: waitForTaskExample
+    Action: ACS::WaitFor
     Properties:
 ```
 
-# 以下属性和`ACS::ExecuteAPI`一致，请参考`ACS::ExecuteAPI`语法说明。
+`#` 以下属性和`ACS::ExecuteAPI`一致，请参考`ACS::ExecuteAPI`语法说明。
 
 ```
       Service: ECS
@@ -907,7 +957,7 @@ Tasks:
         InstanceId: i-12345678abcedfg
 ```
 
-`PropertySelector: "jq selector" #` 必填，需要等待的具体的`API`返回值，参考`ACS::ExecuteAP` I中的`ValueSelector`说明 `StopRetryValues: #` 可选，一旦任务`PropertySelector`结果为`status1`状态时终止任务等待及`API` 重试。比如`status1`为`Stopped`时，一旦`API`返回结果筛选后为`Stopped`，则该任务执行停止。
+`#` 以下属性为`ACS::WaitFor`的特殊属性 `PropertySelector: "jq selector" #` 必填，需要等待的具体的`API`返回值，参考`ACS::ExecuteAP` `I`中的`ValueSelector`说明 `StopRetryValues: #` 可选，一旦任务`PropertySelector`结果为`status1`状态时终止任务等待及`API` 重试。比如`status1`为`Stopped`时，一旦`API`返回结果筛选后为`Stopped`，则该任务执行停止。
 
 ```
         - status1
@@ -927,19 +977,17 @@ Tasks:
         - value4
 ```
 
-`Retries: #`可选，表示最大重试次数，填写正整数，如5。 `DelayType: #Exponential(`默认)，`Constant`，`Linear`。`Exponential`类型的重试间隔为：2 ^ time `s(`重试次数)；`Constant`类型的重试间隔固定为`Delay`；`Linear`类型的重试间隔为：`Delay + BackOff * tim` `es(`重试次数)。 `Delay: #DelayType`为`Constant`或`Linear`时需要添加此属性，表示重试间隔时间，填写正整数，如`10`，表示重试间隔为`10s`， `Backoff: #DelayType`为`Linear`时需要添加此属性，表示重试间隔补偿时间，填写正整数。 `Outputs: #WaitFor`动作所在的任务支持输出，当任务满足`NotDesiredValues/DesiredValues`的条件时，任务执行成功后会返回输出参数的。 `ValueSelector: # jq`的选择器语法，以`OpenAPI`的返回作为`JSON`输入，`jq`的语法请参考
+`Retries: #`可选，表示最大重试次数，填写正整数，如`5`。 `DelayType: #Exponential(`默认`)`，`Constant`，`Linear`。`Exponential`类型的重试间隔为：2 ^ time `s(`重试次数`)`；`Constant`类型的重试间隔固定为`Delay`；`Linear`类型的重试间隔为：`Delay + BackOff * tim` `es(`重试次数`)`。 `Delay: #DelayType`为`Constant`或`Linear`时需要添加此属性，表示重试间隔时间，填写正整数，如`10`，表示重试间隔为`10s`， `Backoff: #DelayType`为`Linear`时需要添加此属性，表示重试间隔补偿时间，填写正整数。 `Outputs: #WaitFor`动作所在的任务支持输出，当任务满足`NotDesiredValues/DesiredValues`的条件时，任务执行成功后会返回输出参数的。 `ValueSelector: # jq`的选择器语法，以`OpenAPI`的返回作为`JSON`输入，`jq`的语法请参考
 
 ```
 https://stedolan.github.io/jq
       Type: String/Boolean/List(Array)/Number/Object
 ```
 
-J常SON格式（请参考YAML注释说明）： 运维编排
+J常SON格式（请参考YAML注释说明）：
 
 ```json
-{
   "Tasks": [
-    {
       "Name": "waitForTaskExample",
       "Action": "ACS::WaitFor",
       "Properties": {
@@ -947,7 +995,11 @@ J常SON格式（请参考YAML注释说明）： 运维编排
         "API": "DescribeInstances",
         "Parameters": {
           "InstanceId": "i-12345678abcedfg"
-        },
+```
+
+`},`
+
+```json
         "PropertySelector": "jq selector",
         "StopRetryValues":["status1"],
         "DesiredValues": [
@@ -963,28 +1015,20 @@ J常SON格式（请参考YAML注释说明）： 运维编排
           "value4"
 ```
 
-]
+`]` `},`
 
 ```json
-      },
     "Outputs": {
         "OutputParameter1": {
           "ValueSelector": "jq selector",
           "Type": "String/Boolean/List(Array)/Number/Object"
-        }
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `}` `]` `}`
 
 **示例**
 
-如下模板：启动一台指定实例，通过调用WaitFor等待实例的状态变为Running。 YAML格式： 运维编排
+如下模板：启动一台指定实例，通过调用WaitFor等待实例的状态变为Running。 YAML格式：
 
 ```
 --- FormatVersion: OOS-2019-06-01 Parameters:
@@ -993,6 +1037,7 @@ J常SON格式（请参考YAML注释说明）： 运维编排
     Type: String
 Tasks:
 - Name: startInstance
+  Action: ACS::ExecuteAPI
   Description: start instance with specified parameters
   Properties:
     Service: ECS
@@ -1000,6 +1045,7 @@ Tasks:
     Parameters:
       InstanceId: '{{ InstanceId }}'
 - Name: untilInstanceReady
+  Action: ACS::WaitFor
   Description: describe instances with specified parameters
   Properties:
     Service: ECS
@@ -1012,19 +1058,25 @@ Tasks:
     - Running
 ```
 
-JSON格式： 运维编排
+JSON格式：
 
 ```json
-{
     "FormatVersion": "OOS-2019-06-01",
     "Parameters": {
         "InstanceId": {
             "Description": "the instance id that you will start.",
             "Type": "String"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "Tasks": [
-        {
+```
+
+`{`
+
+```json
             "Name": "startInstance",
             "Action": "ACS::ExecuteAPI",
             "Description": "start instance with specified parameters",
@@ -1033,10 +1085,11 @@ JSON格式： 运维编排
                 "API": "StartInstance",
                 "Parameters": {
                     "InstanceId": "{{ InstanceId }}"
-                }
-            }
-        },
-        {
+```
+
+`}` `}` `},` `{`
+
+```json
             "Name": "untilInstanceReady",
             "Action": "ACS::WaitFor",
             "Description": "describe instances with specified parameters",
@@ -1045,20 +1098,18 @@ JSON格式： 运维编排
                 "API": "DescribeInstances",
                 "Parameters": {
                     "InstanceIds": [ "{{ InstanceId }}"]
-                },
+```
+
+`},`
+
+```json
                 "PropertySelector": "Instances.Instance[].Status",
                 "DesiredValues": [ "Running" ],
-            }
-        }
 ```
 
-]
+`}` `}` `]` `}`
 
-```
-}
-```
-
-#### ACS::CheckFor
+#### 2.1.3 ACS::CheckFor
 
 **用法**
 
@@ -1066,15 +1117,16 @@ JSON格式： 运维编排
 
 **语法**
 
-此语法格式除了 `Type` 为 `ACS::CheckFor` 以外的所有字段和 `ACS::WaitFor` 一致，请参考 YAML格式运维编排
+此语法格式除了 `Type` 为 `ACS::CheckFor` 以外的所有字段和 `ACS::WaitFor` 一致，请参考 ACS::WaitFor语法和说明。 YAML格式
 
 ```
 Tasks:
   - Name: checkForTaskExample
+    Action: ACS::CheckFor
     Properties:
 ```
 
-# 以下属性和`ACS::ExecuteAPI`一致，请参考`ACS::ExecuteAPI`语法说明。
+`#` 以下属性和`ACS::ExecuteAPI`一致，请参考`ACS::ExecuteAPI`语法说明。
 
 ```
       Service: ECS
@@ -1083,7 +1135,7 @@ Tasks:
         InstanceId: i-12345678abcedfg
 ```
 
-`PropertySelector: "jq selector" #` 必填，需要等待的具体的`API`返回值，参考`ACS::ExecuteAPI` 中的`ValueSelector`说明 `DesiredValues: # DesiredValue`，`NotDesiredValues` 必填其一，指上面截取的值要匹配到以下值之一，匹配则表示成功，否则会超时然后失败。
+`#` 以下属性为`ACS::CheckFor`的特殊属性 `PropertySelector: "jq selector" #` 必填，需要等待的具体的`API`返回值，参考`ACS::ExecuteAPI` 中的`ValueSelector`说明 `DesiredValues: # DesiredValue`，`NotDesiredValues` 必填其一，指上面截取的值要匹配到以下值之一，匹配则表示成功，否则会超时然后失败。
 
 ```
         - value1
@@ -1110,12 +1162,10 @@ Tasks:
         Type: String/Boolean/List(Array)/Number/Object
 ```
 
-JSON格式（请参考YAML注释说明） 运维编排
+JSON格式（请参考YAML注释说明）
 
 ```json
-{
     "Tasks": [
-        {
             "Name": "checkForTaskExample",
             "Action": "ACS::CheckFor",
             "Properties": {
@@ -1123,7 +1173,11 @@ JSON格式（请参考YAML注释说明） 运维编排
                 "API": "DescribeInstances",
                 "Parameters": {
                     "InstanceId": "i-12345678abcedfg"
-                },
+```
+
+`},`
+
+```json
                 "PropertySelector": "jq selector",
                 "DesiredValues": [
                     "value1",
@@ -1138,27 +1192,20 @@ JSON格式（请参考YAML注释说明） 运维编排
                     "value4"
 ```
 
-] }，
+`]` `}`，
 
 ```json
   "Outputs": {
         "OutputParameter1": {
           "ValueSelector": "jq selector",
           "Type": "String/Boolean/List(Array)/Number/Object"
-        }
-      }
-        }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `}` `]` `}`
 
 **示例**
 
-如下模板：为指定磁盘创建快照。用CheckFor检查特定实例是否处于Running或Stopped状态。 YAML格式： 运维编排
+如下模板：为指定磁盘创建快照。用CheckFor检查特定实例是否处于Running或Stopped状态。 YAML格式：
 
 ```
 FormatVersion: OOS-2019-06-01 Parameters:
@@ -1173,6 +1220,7 @@ FormatVersion: OOS-2019-06-01 Parameters:
     Type: String
 Tasks:
 - Name: checkInstanceReady
+ Action: ACS::CheckFor
   Properties:
    Service: ECS
     API: DescribeInstances
@@ -1184,6 +1232,7 @@ Tasks:
       - '{{ InstanceId }} '
     PropertySelector: Instances.Instance[].Status
 - Name: createSnapshot
+ Action: ACS::ExecuteAPI
   Properties:
    Service: ECS
     API: CreateSnapshot
@@ -1195,6 +1244,7 @@ Tasks:
         Type: String
         ValueSelector: SnapshotId
 - Name: waitSnapshotsReady
+ Action: ACS::WaitFor
   Properties:
    Service: ECS
     API: DescribeSnapshots
@@ -1210,27 +1260,41 @@ Outputs:
     Value: '{{ createSnapshot.SnapshotId }}'
 ```
 
-JSON格式： 运维编排
+JSON格式：
 
 ```json
-{
     "FormatVersion": "OOS-2019-06-01",
     "Parameters": {
         "DiskId": {
             "Description": "the disk id of the snap shot to copy ",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
         "InstanceId": {
             "Description": "the instances id  of the snap shot to copy ",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
         "SnapshotName": {
             "Description": "snap shot name of the new snap",
             "Type": "String"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "Tasks": [
-        {
+```
+
+`{`
+
+```json
             "Name": "checkInstanceReady",
             "Action": "ACS::CheckFor",
             "Properties": {
@@ -1239,11 +1303,17 @@ JSON格式： 运维编排
                 "DesiredValues": ["Running", "Stopped"],
                 "Parameters": {
                     "InstanceIds": ["{{ InstanceId }} "]
-                },
+```
+
+`},`
+
+```json
                 "PropertySelector": "Instances.Instance[].Status"
-            }
-        },
-        {
+```
+
+`}` `},` `{`
+
+```json
             "Name": "createSnapshot",
             "Action": "ACS::ExecuteAPI",
             "Properties": {
@@ -1252,61 +1322,63 @@ JSON格式： 运维编排
                 "Parameters": {
                     "DiskId": "{{ DiskId }}",
                     "SnapshotName": "{{ SnapshotName }}"
-                }
-            },
+```
+
+`}` `},`
+
+```json
             "Outputs": {
                 "SnapshotId": {
                     "Type": "String",
                     "ValueSelector": "SnapshotId"
-                }
-            }
-        },
-        {
+```
+
+`}` `}` `},` `{`
+
+```json
             "Name": "waitSnapshotsReady",
             "Action": "ACS::WaitFor",
-            "Properties": {
                 "Service": "ECS",
                 "API": "DescribeSnapshots",
 ```
-
-运维编排
 
 ```json
                 "DesiredValues": ["accomplished"],
                 "Parameters": {
                     "SnapshotIds": ["{{ createSnapshot.SnapshotId }}"]
-                },
-                "PropertySelector": "Snapshots.Snapshot[].Status"
-            }
-        }
 ```
 
-`],`
+`},`
+
+```json
+                "PropertySelector": "Snapshots.Snapshot[].Status"
+```
+
+`}` `}` `],`
 
 ```json
     "Outputs": {
         "SnapshotId": {
             "Type": "String",
             "Value": "{{ createSnapshot.SnapshotId }}"
-        }
-    }
-}
 ```
 
-#### 支持的云产品列表
+`}` `}` `}`
 
-您如需其他云产品，请加钉钉群（群号：23330931）联系，我们将尽快满足您的需求。
+#### 2.1.4 支持的云产品列表
+
+API类动作目前支持以下云产品，表格以产品简称排序。 您如需其他云产品，请加钉钉群（群号：23330931）联系，我们将尽快满足您的需求。
 
 | 产品简称 | 产品中文名 | API版本号 |
 |---|---|---|
 | ECS | 云服务器 | v20140526 |
 | HDR | 混合云容灾 | v20170925 |
 
-### 触发器类动作
+### 2.2 触发器类动作
 
-### 控制类动作
+### 2.3 控制类动作
 
-#### 审批ACS::Approve
+#### 2.3.1 审批ACS::Approve
 
 用于审批任务的动作。
 
@@ -1315,8 +1387,6 @@ JSON格式： 运维编排
 在自动化运维的一些场景中，有些特殊的操作需要被特殊关注，例如删除重要资源，或使用费用较高的实例等。如果把这些操作也纳入自动化的范畴，您可能会担心失去控制，超过预算。若不纳入自动化的范畴，又会导致这些操作退化到手工执行或其他非自动化方式。审批动作能够让您在自动化和特殊关注之间寻找一个平衡。 当执行一个模板中包括审批动作，且执行到审批动作这一步时，OOS执行引擎会暂停执行，执行进入等待中状态，并发送一个包含通知的审批链接到管理员用户。在访问审批链接后，管理员可根据业务需求做出决定，同意或拒绝，同意后则OOS引擎继续执行后续任务，拒绝后引擎停止执行，执行状态为取消 （Cancelled）。
 
 **语法**
-
-运维编排
 
 **Webhook**
 
@@ -1352,19 +1422,17 @@ ngtalk.com/docs/doc.htm?treeId=257&articleId=105735&docType=1
           text:
 ```
 
-`content: 'the approve notify to user' #` 必填，发送审批通知的内容。 `at: #` 在钉钉群中@的用户 `atMobiles: #` 可选，@群里面的指定用户，此处的手机号为用户注册钉钉的手机号。
+`content: 'the approve notify to user' #` 必填，发送审批通知的内容。 `at: #` 在钉钉群中`@`的用户 `atMobiles: #` 可选，`@`群里面的指定用户，此处的手机号为用户注册钉钉的手机号。
 
 ```
                         - 138albb1234
                         - 130albb1234
 ```
 
-`isAtAll: 'false' #` 可选，是否@所有用户，可选`true` 或 `false`，默认为`false`。 JSON格式（请参照YAML注释说明） 运维编排
+`isAtAll: 'false' #` 可选，是否`@`所有用户，可选`true` 或 `false`，默认为`false`。 JSON格式（请参照YAML注释说明）
 
 ```json
-{
   "Tasks": [
-    {
       "Name": "approvalTask",
       "Action": "ACS::Approve",
       "Properties": {
@@ -1384,12 +1452,20 @@ ngtalk.com/docs/doc.htm?treeId=257&articleId=105735&docType=1
           "URI": "url",
           "Headers": {
             "Content-Type": "application/json; charset=utf-8"
-          },
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content": "the approve notify to user"
-            },
+```
+
+`},`
+
+```json
             "at": {
               "atMobiles": [
                 "138albb1234",
@@ -1400,18 +1476,9 @@ ngtalk.com/docs/doc.htm?treeId=257&articleId=105735&docType=1
 
 ```json
               "isAtAll": "false"
-            }
-          }
-        }
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `}` `}` `}` `]` `}`
 
 **示例**
 
@@ -1436,8 +1503,6 @@ Parameters:
     Type: Json
 AssociationProperty:Targets
 ```
-
-运维编排
 
 ```
     AssociationProperty: Targets
@@ -1477,7 +1542,7 @@ access_token=1234zxcvaksdq31414。
         notify comes.
 ```
 
-`zh-cn:` 当群助手向钉钉群中发送审批通知时，要被@的群成员注册钉钉所用手机号。
+`zh-cn:` 当群助手向钉钉群中发送审批通知时，要被`@`的群成员注册钉钉所用手机号。
 
 ```
     Type: List
@@ -1488,7 +1553,7 @@ access_token=1234zxcvaksdq31414。
       en: 'assistant @ all members in dingtalk group or not, when notify comes.'
 ```
 
-`zh-cn:` 当群助手向钉钉群中发送审批通知时是否@所有人。
+`zh-cn:` 当群助手向钉钉群中发送审批通知时是否`@`所有人。
 
 ```
     Type: String
@@ -1519,8 +1584,6 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
         - '{{ targets }}'
 Outputs:
 ```
-
-运维编排
 
 ```
     Outputs:
@@ -1568,10 +1631,9 @@ Outputs:
     Value: '{{ getInstance.instanceIds }}'
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
   "FormatVersion": "OOS-2019-06-01",
   "Description": {
     "en": "Bulky restarts the ECS instances with Approval.",
@@ -1583,10 +1645,9 @@ JSON格式
     "name-en": "BulkyRebootInstancesWithApproval",
 ```
 
-`"name-zh-cn": "`批量重启`ECS`实例带审批"
+`"name-zh-cn": "`批量重启`ECS`实例带审批`"` `},`
 
 ```json
-  },
   "Parameters": {
     "targets": {
       "Type": "Json",
@@ -1594,30 +1655,28 @@ JSON格式
 "AssociationPropertyMetadata":{
 ```
 
-运维编排
-
 ```json
       AssociationPropertyMetadata: {
         "ResourceType": "ALIYUN::ECS::Instance"
-      }
-    },
     "rateControl": {
       "Description": {
         "en": "Concurrency ratio of task execution.",
 ```
 
-`"zh-cn": "`任务执行的并发比率。"
+`"zh-cn": "`任务执行的并发比率。`"` `},`
 
 ```json
-      },
       "Type": "Json",
       "AssociationProperty": "RateControl",
       "Default": {
         "Mode": "Concurrency",
         "MaxErrors": 0,
         "Concurrency": "100%"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "webHookUrl": {
       "Description": {
         "en": "The webHook url of dingtalk group assistant,
@@ -1626,73 +1685,77 @@ e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414.",
 
 `"zh-cn": "`钉钉群助手的`webhook`地址，形如https://oapi.dingtalk.com/robot/send?access_
 
-```json
+```
 token=1234zxcvaksdq31414。"
-      },
+```
+
+`},`
+
+```json
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "atMobiles": {
       "Description": {
         "en": "The telephone numbers of member in dingtalk group assistant @, when
 notify comes.",
 ```
 
-`"zh-cn": "`当群助手向钉钉群中发送审批通知时，要被@的群成员注册钉钉所用手机号。"
+`"zh-cn": "`当群助手向钉钉群中发送审批通知时，要被`@`的群成员注册钉钉所用手机号。`"` `},`
 
 ```json
-      },
       "Type": "List",
       "Default": [
         "12345678901"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "atAll": {
       "Description": {
         "en": "assistant @ all members in dingtalk group or not, when notify comes.",
 ```
 
-`"zh-cn": "`当群助手向钉钉群中发送审批通知时是否@所有人。"
+`"zh-cn": "`当群助手向钉钉群中发送审批通知时是否`@`所有人。`"` `},`
 
 ```json
-      },
       "Type": "String",
       "Default": "false"
-    },
+```
+
+`},`
+
+```json
     "OOSAssumeRole": {
       "Description": {
         "en": "The RAM role to be assumed by OOS.",
 ```
 
-`"zh-cn": "OOS`扮演的`RAM`角色。"
+`"zh-cn": "OOS`扮演的`RAM`角色。`"` `},`
 
 ```json
-      },
       "Type": "String",
       "Default": "OOSServiceRole"
-    }
-  },
 "RamRole":"{{OOSAssumeRole}}",
 ```
 
-运维编排 a
+`a`
 
 ```json
 oe: {{OOSssueoe}},
   "Tasks": [
-    {
       "Name": "getInstance",
       "Description": {
         "en": "Views the ECS instances.",
 ```
 
-`"zh-cn": "`获取`ECS`实例。"
+`"zh-cn": "`获取`ECS`实例。`"` `},`
 
 ```json
-      },
       "Action": "ACS::SelectTargets",
       "Properties": {
         "ResourceType": "ALIYUN::ECS::Instance",
@@ -1700,22 +1763,26 @@ oe: {{OOSssueoe}},
           "{{ targets }}"
 ```
 
-]
+`]` `},`
 
 ```json
-      },
       "Outputs": {
         "instanceIds": {
           "Type": "List",
           "ValueSelector": "Instances.Instance[].InstanceId"
-        },
+```
+
+`},`
+
+```json
         "instanceNames": {
           "Type": "List",
           "ValueSelector": "Instances.Instance[].InstanceName"
-        }
-      }
-    },
-    {
+```
+
+`}` `}` `},` `{`
+
+```json
       "Name": "approveRestart",
       "Action": "ACS::Approve",
       "Properties": {
@@ -1724,60 +1791,65 @@ oe: {{OOSssueoe}},
           "URI": "{{webhookUrl}}",
           "Headers": {
             "Content-Type": "application/json"
-          },
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content": "Notify: please approve instances restart, instance names to
 approve are {{getInstance.instanceNames}}, sent by {{ACS::RegionId}} oos {{ACS::ExecutionId}}."
-            },
+```
+
+`},`
+
+```json
             "at": {
               "atMobiles": "{{atMobiles}}",
               "isAtAll": "{{atAll}}"
-            }
-          }
-        }
-      }
-    },
-    {
+```
+
+`}` `}` `}` `}` `},`
+
+```json
       "Name": "rebootInstance",
       "Action": "ACS::ECS::RebootInstance",
       "Description": {
 ```
 
-运维编排
-
 ```json
         "en": "Restarts the ECS instances.",
 ```
 
-`"zh-cn": "`重启实例。"
+`"zh-cn": "`重启实例。`"`
 
 ```json
-      },
       "Properties": {
         "instanceId": "{{ ACS::TaskLoopItem }}"
-      },
+```
+
+`},`
+
+```json
       "Loop": {
         "RateControl": "{{ rateControl }}",
         "Items": "{{ getInstance.instanceIds }}"
-      }
-    }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "Outputs": {
     "instanceIds": {
       "Type": "List",
       "Value": "{{ getInstance.instanceIds }}"
-    }
-  }
-}
 ```
 
-#### 选择ACS::Choice
+`}` `}` `}`
+
+#### 2.3.2 选择ACS::Choice
 
 **用途**
 
@@ -1800,36 +1872,42 @@ Tasks:
     Choices:
 ```
 
-  - `- When: condition1 #` 待判断的条件1。
+  - `- When: condition1 #` 待判断的条件`1`。
 `NextTask: task2 #` 当`condition1`为`true`时，执行完该`chooseNextTaskToRun`任务，将执行名称为`task2`的任务。`task2`不允许是对参数引用获取的任务名，其必须是确定的字符串格式的任务名称。
-  - `- When: condition2 #` 待判断的条件2。
-`NextTask: task3 #` 当`condition2`为`true`时，执行完该`chooseNextTaskToRun`任务，将执行名称为 `task3`的任务。`task3`不允许是对参数引用获取的任务名，其必须是确定的字符串格式的任务名称。
-# 如有需要，`Choices`中还可有多个`When`判断条件。
+  - `- When: condition2 #` 待判断的条件`2`。
+`NextTask: task3 #` 当`condition2`为`true`时，执行完该`chooseNextTaskToRun`任务，将执行名称为 `task3`的任务。`task3`不允许是对参数引用获取的任务名，其必须是确定的字符串格式的任务名称。 `#` 如有需要，`Choices`中还可有多个`When`判断条件。
 
 ```
                 #...
 ```
 
-JSON格式（请参照YAML注释说明） 运维编排
+JSON格式（请参照YAML注释说明）
 
 ```json
-{
   "Tasks": [{
       "Name": "chooseNextTaskToRun",
       "Action": "ACS::Choice",
       "Properties": {
         "DefaultTask": "task1",
         "Choices": [
-          {
+```
+
+`{`
+
+```json
             "When": "condition1",
             "NextTask": "task2"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "When": "condition2",
             "NextTask": "task3"
           }]}}]
-}
 ```
+
+`}`
 
 **示例**
 
@@ -1885,11 +1963,8 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
 
 ```
     Action: 'ACS::SelectTargets'
-    Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
 ```
-
-运维编排
 
 ```
       Filters:
@@ -1899,6 +1974,7 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
         Type: List
         ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: describeInstances
+    Action: ACS::ExecuteAPI
     Description: Views A ECS instances Status.
     Properties:
       Service: ECS
@@ -1955,11 +2031,9 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
   - Name: describeInstancesFinally
 ```
 
-运维编排
-
 ```
+    Action: ACS::ExecuteAPI
     Description: Views the ECS instances Status.
-    Properties:
       Service: ECS
       API: DescribeInstances
       Parameters:
@@ -1974,10 +2048,10 @@ Outputs:
     Value: '{{ getInstance.instanceIds }}'
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{ "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky restarts the ECS instances.",
+"FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky restarts the ECS instances.",
 ```
 
 `"zh-cn": "`批量重启`ECS`实例。`",`
@@ -1986,83 +2060,103 @@ JSON格式
 "name-en": "ACS-ECS-BulkyRebootInstances",
 ```
 
-`"name-zh-cn": "`批量重启`ECS`实例"
+`"name-zh-cn": "`批量重启`ECS`实例`"` `},`
 
 ```json
-}, "Parameters": { "targets": { "Type": "Json", "AssociationProperty": "Targets", "AssociationPropertyMetadata": {
+"Parameters": { "targets": { "Type": "Json", "AssociationProperty": "Targets", "AssociationPropertyMetadata": {
     "ResourceType": "ALIYUN::ECS::Instance"
-} }, "rateControl": { "Description": {
+```
+
+`}` `},`
+
+```json
+"rateControl": { "Description": {
     "en": "Concurrency ratio of task execution.",
 ```
 
-`"zh-cn": "`任务执行的并发比率。"
+`"zh-cn": "`任务执行的并发比率。`"` `},`
 
 ```json
-}, "Type": "Json", "AssociationProperty": "RateControl" }, "OOSAssumeRole": { "Description": {
+"Type": "Json", "AssociationProperty": "RateControl"
+```
+
+`},`
+
+```json
+"OOSAssumeRole": { "Description": {
     "en": "The RAM role to be assumed by OOS.",
 ```
 
-`"zh-cn": "OOS`扮演的`RAM`角色。"
+`"zh-cn": "OOS`扮演的`RAM`角色。`"` `},`
 
 ```json
-}, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": [
+"Type": "String", "Default": "OOSServiceRole" "RamRole": "{{ OOSAssumeRole }}", "Tasks": [
 ```
 
-运维编排
-
 ```json
-{ "Name": "getInstance", "Description": {
+"Name": "getInstance", "Description": {
     "en": "Views the ECS instances.",
 ```
 
-`"zh-cn": "`获取`ECS`实例。"
+`"zh-cn": "`获取`ECS`实例。`"` `},`
 
 ```json
-}, "Action": "ACS::SelectTargets", "Properties": {
+"Action": "ACS::SelectTargets", "Properties": {
     "ResourceType": "ALIYUN::ECS::Instance",
     "Filters": [
       "{{ targets }}"
 ```
 
-]
+`]` `},`
 
 ```json
-}, "Outputs": {
+"Outputs": {
     "instanceIds": {
       "Type": "List",
       "ValueSelector": "Instances.Instance[].InstanceId"
-    }
-} }, { "Name": "describeInstances", "Action": "ACS::ExecuteAPI", "Description": "Views A ECS instances Status.", "Properties": {
+```
+
+`}` `}` `},` `{`
+
+```json
+"Name": "describeInstances", "Action": "ACS::ExecuteAPI", "Description": "Views A ECS instances Status.", "Properties": {
     "Service": "ECS",
     "API": "DescribeInstances",
     "Parameters": {
       "InstanceIds": "{{ getInstance.instanceIds }}"
-    }
-}, "Outputs": {
+```
+
+`}` `},`
+
+```json
+"Outputs": {
     "status": {
       "Type": "String",
       "ValueSelector": "Instances.Instance[].Status"
-    }
-} }, { "Name": "whetherStatusRunning", "Action": "ACS::Choice", "Properties": {
+```
+
+`}` `}` `},` `{`
+
+```json
+"Name": "whetherStatusRunning", "Action": "ACS::Choice", "Properties": {
     "DefaultTask": "describeInstancesFinally",
     "Choices": [
-      {
+```
+
+`{`
+
+```json
         "When": {
           "Fn::Equals": [
             "Running",
             "{{ describeInstances.status }}"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "NextTask": "rebootInstance"
-      },
-      {
 ```
-
-运维编排
 
 ```json
         "When": {
@@ -2071,67 +2165,85 @@ JSON格式
             "{{ describeInstances.status }}"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "NextTask": "startInstance"
-      }
 ```
 
-]
+`}` `]` `}` `},` `{`
 
 ```json
-} }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": {
+"Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": {
     "en": "Starts the ECS instances.",
 ```
 
-`"zh-cn": "`启动实例。"
+`"zh-cn": "`启动实例。`"` `},`
 
 ```json
-}, "Properties": {
+"Properties": {
     "instanceId": "{{ ACS::TaskLoopItem }}"
-}, "Loop": {
+```
+
+`},`
+
+```json
+"Loop": {
     "RateControl": "{{ rateControl }}",
     "Items": "{{ getInstance.instanceIds }}"
-} }, { "Name": "rebootInstance", "Action": "ACS::ECS::RebootInstance", "Description": {
+```
+
+`}` `},` `{`
+
+```json
+"Name": "rebootInstance", "Action": "ACS::ECS::RebootInstance", "Description": {
     "en": "Restarts the ECS instances.",
 ```
 
-`"zh-cn": "`重启实例。"
+`"zh-cn": "`重启实例。`"` `},`
 
 ```json
-}, "Properties": {
+"Properties": {
     "instanceId": "{{ ACS::TaskLoopItem }}"
-}, "Loop": {
+```
+
+`},`
+
+```json
+"Loop": {
     "RateControl": "{{ rateControl }}",
     "Items": "{{ getInstance.instanceIds }}"
-} }, { "Name": "describeInstancesFinally", "Action": "ACS::ExecuteAPI", "Description": "Views the ECS instances Status.", "Properties": {
+```
+
+`}` `},` `{`
+
+```json
+"Name": "describeInstancesFinally", "Action": "ACS::ExecuteAPI", "Description": "Views the ECS instances Status.", "Properties": {
     "Service": "ECS",
     "API": "DescribeInstances",
     "Parameters": {
       "InstanceIds": "{{ getInstance.instanceIds }}"
-    }
-}, "Outputs": {
-    "status": {
 ```
 
-运维编排
+`}`
+
+```json
+"Outputs": {
+    "status": {
+```
 
 ```json
       "Type": "String",
       "ValueSelector": "Instances.Instance[].Status"
-    }
-} }
 ```
 
-`],`
+`}` `],`
 
 ```json
 "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" }}}
 ```
 
-#### 通知ACS::Notify
+#### 2.3.3 通知ACS::Notify
 
 **用途**
 
@@ -2176,12 +2288,10 @@ ngtalk.com/docs/doc.htm?treeId=257&articleId=105735&docType=1
             content: 'this is a dingtalk message with a parameter {{ p1 }}'
 ```
 
-JSON格式（请参照YAML注释说明） 运维编排
+JSON格式（请参照YAML注释说明）
 
 ```json
-{
   "Tasks": [
-    {
       "Name": "notifyTask",
       "Action": "ACS::Notify",
       "Properties": {
@@ -2191,23 +2301,18 @@ JSON格式（请参照YAML注释说明） 运维编排
           "URI": "url",
           "Headers": {
             "Content-Type": "application/json; charset=utf-8"
-          },
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content": "this is a dingtalk message with a parameter {{ p1 }}"
-            }
-          }
-        }
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `}` `}` `}` `]` `}`
 
 **Mail**
 
@@ -2240,12 +2345,10 @@ Tasks:
 [usr1234@example2.com,usr123@example2.com]
 ```
 
-JSON格式（请参照YAML注释说明） 运维编排
+JSON格式（请参照YAML注释说明）
 
 ```json
-{
   "Tasks": [
-    {
       "Action": "ACS::Notify",
       "Name": "testNotifyByMail",
       "Properties": {
@@ -2259,20 +2362,13 @@ JSON格式（请参照YAML注释说明） 运维编排
           "Body": "mailBody",
           "From": "senderAddress",
           "To": "receiverAddresses"
-        }
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `}` `]` `}`
 
 **示例**
 
-YAML格式运维编排
+YAML格式
 
 ```
 --- FormatVersion: OOS-2019-06-01 Outputs:
@@ -2297,6 +2393,7 @@ Parameters:
         Description: the virtual switch id for the new instances.
         Type: String
 RamRole: '{{OOSAssumeRole}}' Tasks:
+-   Action: ACS::ExecuteAPI
     Description: 'run instances with specified parameters'
     Name: runInstances
     Outputs:
@@ -2325,43 +2422,68 @@ RamRole: '{{OOSAssumeRole}}' Tasks:
             URI: https://oapi.dingtalk.com/robot/send?access_token=your_access_token
 ```
 
-运维编排 JSON格式
+JSON格式
 
 ```json
-{
     "FormatVersion": "OOS-2019-06-01",
     "Outputs": {
         "InstanceIds": {
             "Type": "List"
             "Value": " {{ runInstances.InstanceIds }} "
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "Parameters": {
         "ImageId": {
             "Description": "the image id for the new instances.",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
         "InstanceType": {
             "Description": "the Instance Type for the new instances.",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
         "SecurityGroupId": {
             "Description": "the security group id for the new instances.",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
         "VSwitchId": {
             "Description": "the virtual switch id for the new instances.",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
           "OOSAssumeRole": {
                       "Type": "String",
                       "Description":  "oos assume this role to execution task",
                       "Default": "OOSServiceRole"
-    }
-    },
+```
+
+`}` `},`
+
+```json
     "RamRole": "{{OOSAssumeRole}}",
     "Tasks": [
-        {
+```
+
+`{`
+
+```json
             "Action": "ACS::ExecuteAPI",
             "Description": "run instances with specified parametersl",
             "Name": "runInstances",
@@ -2369,8 +2491,11 @@ RamRole: '{{OOSAssumeRole}}' Tasks:
                 "InstanceIds": {
                     "Type": "List",
                     "ValueSelector": ".InstanceIdSets.InstanceIdSet[]"
-                }
-            },
+```
+
+`}` `},`
+
+```json
             "Properties": {
                 "API": "RunInstances",
                 "Parameters": {
@@ -2378,17 +2503,10 @@ RamRole: '{{OOSAssumeRole}}' Tasks:
                     "InstanceType": "{{ InstanceType }}",
                     "SecurityGroupId": "{{ SecurityGroupId }}",
                     "VSwitchId": "{{ VSwitchId }}"
-                },
                 "Service": "ECS"
-}
 ```
 
-运维编排
-
 ```json
-            }
-        },
-       {
       "Name": "test_notify",
       "Action": "ACS::Notify",
       "Properties": {
@@ -2397,25 +2515,20 @@ RamRole: '{{OOSAssumeRole}}' Tasks:
           "URI": "https://oapi.dingtalk.com/robot/send?access_token=your_access_token",
           "Headers": {
             "Content-Type": "application/json"
-          },
+```
+
+`},`
+
+```json
           "Content": {
             "msgtype": "text",
             "text": {
               "content":"test"
-            }
-          }
-        }
-      }
-    }
 ```
 
-]
+`}` `}` `}` `}` `}` `]` `}`
 
-```
-}
-```
-
-#### 睡眠ACS::Sleep
+#### 2.3.4 睡眠ACS::Sleep
 
 **用途**
 
@@ -2436,25 +2549,17 @@ Tasks:
     Properties:
 ```
 
-`Duration: PT15M #` 必填，需要睡眠的时间长度 JSON格式（请参照YAML注释说明） 运维编排
+`Duration: PT15M #` 必填，需要睡眠的时间长度 JSON格式（请参照YAML注释说明）
 
 ```json
-{
   "Tasks": [
-    {
       "Name": "sleepTask",
       "Action": "ACS::Sleep",
       "Properties": {
         "Duration": "PT15M"
-      }
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `]` `}`
 
 **说明**
 
@@ -2462,9 +2567,9 @@ Tasks:
 
 采取ISO8601标准进行时间长度定义。 限制：最短1秒钟，最长4小时。 不区分大小写。 示例： 1S或1s，简略写法，表示1秒钟 1M或1m，简略写法，表示1分钟。 1H或1h，简略写法，表示1小时。 1H2M，简略写法，表示1小时2分钟。 PT1H2M，标准写法，表示1小时2分钟。
 
-### 嵌套类动作
+### 2.4 嵌套类动作
 
-#### 嵌套ACS::Template
+#### 2.4.1 嵌套ACS::Template
 
 调用其他的模板作为子模板进行嵌套执行。
 
@@ -2474,7 +2579,7 @@ Tasks:
 
 **语法**
 
-通用格式（适用于所有可被嵌套模版） 运维编排 YAML
+通用格式（适用于所有可被嵌套模版） YAML
 
 ```
 Tasks:
@@ -2489,29 +2594,24 @@ Tasks:
       ParameterName1: value1
 ```
 
-JSON（请参考YAML注释说明）
+JSON（请参考YAML注释说明） `{`
 
 ```json
-{ "Tasks": [
-  {
+"Tasks": [
+```
+
+`{`
+
+```json
     "Name": "callChildTemplate1",
     "Action": "ACS::Template",
     "Properties": {
       "TemplateName": "child_template_name","TemplateVersion": "v2",
       "Parameters": {
         "ParameterName1": "value1"
-      }
-    }
-  }
 ```
 
-]
-
-```
-}
-```
-
-YAML
+`}` `}` `}` `]` `}` 简化格式（仅适用于嵌套云产品动作） YAML
 
 ```
 Tasks:
@@ -2524,32 +2624,30 @@ Tasks:
   Properties:
 ```
 
-`ParameterName1: value1 #` 可选，根据云产品动作需要的参数进行提供，如`ImageId`。 JSON（请参考YAML注释说明）
+`ParameterName1: value1 #` 可选，根据云产品动作需要的参数进行提供，如`ImageId`。 JSON（请参考YAML注释说明） `{`
 
 ```json
-{ "Tasks": [
-  {
+"Tasks": [
+```
+
+`{`
+
+```json
     "Name": "taskName",
     "Action": "CloudProductActionName1",
     "Properties": {
       "ParameterName1": "parameterName1"
-    }
-  }
 ```
 
-]
-
-```
-}
-```
+`}` `}` `]` `}`
 
 **限制**
 
-嵌套动作有如下限制： 运维编排模板不能嵌套自身。 不能循环嵌套，即A嵌套B，B嵌套C，然后C嵌套A。 总的嵌套层数不能超过3层。
+嵌套动作有如下限制： 模板不能嵌套自身。 不能循环嵌套，即A嵌套B，B嵌套C，然后C嵌套A。 总的嵌套层数不能超过3层。 云产品动作属于一层嵌套，循环任务不属于嵌套。
 
 **示例**
 
-通用定义格式（适用于所有可被嵌套模版） YAML
+通过嵌套云产品动作 `ACS::ECS::CreateImage` 为ECS实例创建镜像。 通用定义格式（适用于所有可被嵌套模版） YAML
 
 ```
 --- FormatVersion: OOS-2019-06-01 Description: Creates a custom image. Parameters:
@@ -2585,33 +2683,47 @@ Outputs:
     Value: '{{ createImage.imageId }}'
 ```
 
-JSON 运维编排
+JSON
 
 ```json
-{
     "FormatVersion": "OOS-2019-06-01",
     "Description": "Creates a custom image.",
     "Parameters": {
         "imageName": {
             "Description": "The image name.",
             "Type": "String"
-        },
+```
+
+`},`
+
+```json
         "instanceId": {
             "Description": "The ID of the instance.",
             "Type": "String",
             "AllowedPattern": "i-[A-Za-z0-9]*",
             "MinLength": 1,
             "MaxLength": 30
-        },
+```
+
+`},`
+
+```json
         "OOSAssumeRole": {
             "Type": "String",
             "Description": "oos assume this role to execution task",
             "Default": "OOSServiceRole"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "RamRole": "{{OOSAssumeRole}}",
     "Tasks": [
-        {
+```
+
+`{`
+
+```json
             "Name": "createImage",
             "Action": "ACS::Template",
             "Description": "Creates a custom image.",
@@ -2620,30 +2732,27 @@ JSON 运维编排
                 "Parameters": {
                     "ImageName": "{{ imageName }}",
                     "InstanceId": "{{ instanceId }}"
-                }
-            },
+```
+
+`}` `},`
+
+```json
             "Outputs": {
                 "imageId": {
                     "Type": "String",
                     "ValueSelector": "ImageId"
-                }
-            }
-        }
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
     "Outputs": {
         "imageId": {
             "Type": "String",
             "Value": "{{ createImage.imageId }}"
-        }
-    }
-}
 ```
 
-YAML 运维编排
+`}` `}` `}` 简化定义格式（仅适用于云产品动作） YAML
 
 ```
 --- FormatVersion: OOS-2019-06-01 Description: Creates a new Image from existing ECS Instance. Parameters:
@@ -2673,62 +2782,74 @@ Outputs:
     Value: "{{ createImage.ImageId }}"
 ```
 
-JSON 运维编排
+JSON
 
 ```json
-{
   "FormatVersion": "OOS-2019-06-01",
   "Description": "Creates a new Image from existing ECS Instance.",
   "Parameters": {
     "InstanceId": {
       "Description": "the Instance Type for the new instances",
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "ImageName": {
       "Description": "name of the new image",
       "Type": "String"
-    },
+```
+
+`},`
+
+```json
     "OOSAssumeRole": {
       "Type": "String",
       "Description": "oos assume this role to execution task",
       "Default": "OOSServiceRole"
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "RamRole": "{{OOSAssumeRole}}",
   "Tasks": [
-    {
+```
+
+`{`
+
+```json
       "Name": "createImage",
       "Action": "ACS::ECS::CreateImage",
       "Properties": {
         "ImageName": "{{ ImageName }}",
         "InstanceId": "{{ InstanceId }}"
-      },
+```
+
+`},`
+
+```json
       "Outputs": {
         "ImageId": {
           "ValueSelector": "ImageId",
           "Type": "String"
-        }
-      }
-    }
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "Outputs": {
     "ImageId": {
       "Type": "String",
       "Value": "{{ createImage.ImageId }}"
-    }
-  }
-}
 ```
 
-运维编排
+`}` `}` `}`
 
-## 云产品动作
+## 3 云产品动作
 
-### 弹性计算（ECS）类
+### 3.1 弹性计算（ECS）类
 
 本文介绍了各场景下的弹性计算（ECS）类云产品动作（包括其用途、涉及的API以及具体参数和输出、内容链接），您通过嵌套动作即可对云产品动作进行嵌套调用，关于具体如何调用云产品动作请参见嵌套 ACS::Template。
 
@@ -2743,7 +2864,7 @@ JSON 运维编排
 | ACS::ECS::StartIn stance | 启动一个ECS实例 | StartInstance DescribeInstan ces | instanceId： String类型 | - |
 | ACS::ECS::StopIn stance | 停止一个ECS实例 | StopInstance DescribeInstan ces | instanceId： String类型 | - |
 
-| 开发指南·云产品动作 |  |  |  | 运维编排 |
+| 开发指南·云产品动作 |   |   |   | 运维编排 |
 |---|---|---|---|---|
 
 | 云产品动作名称 | 用途 | 相关的 OpenAPI | 参数 | 动作输出 |
@@ -2760,8 +2881,6 @@ JSON 运维编排
 | ACS::ECS::ModifyI nstanceVpcAttrib ute | 修改一台ECS实例的专有网络VPC属性 | StopInstance DescribeInstan ces ModifyInstance VpcAttribute | instanceId： String类型 vSwitchId： String类型 | - |
 | ACS::ECS::ResetP assword | 修改一台ECS实例的密码 | ModifyInstance Attribute RebootInstanc e DescribeInstan ces | instanceId： String类型 password： String类型 | instanceId： String类型 |
 
-运维编排
-
 | 云产品动作名称 | 用途 | 相关的 OpenAPI | 参数 | 动作输出 |
 |---|---|---|---|---|
 | ACS::ECS::Modify VncPassword | 修改一台ECS实例 VNC密码 | ModifyInstance VncPasswd RebootInstanc e DescribeInstan ces | instanceId： String类型 vncPassword： String类型 | - |
@@ -2775,8 +2894,6 @@ JSON 运维编排
 |---|---|---|---|---|
 | ACS::ECS::Install CloudAssistant | 表示安装云助手 | ModifyInstance Spec RebootInstanc e DescribeInstan ces DescribeCloud AssistantStatus | instanceId： String类型 | - |
 
-运维编排
-
 | 云产品动作名称 | 用途 | 相关的 OpenAPI | 参数 | 动作输出 |
 |---|---|---|---|---|
 | ACS::ECS::RunCo mmand | 表示执行远程命令 | CreateComma nd InvokeComma nd DescribeInvoc ations DescribeInvoc ationResults DeleteComma nd | instanceId： String类型 commandCont ent：String类型 commandType ：String类型 | invocationResult ：String类型 |
@@ -2789,8 +2906,6 @@ JSON 运维编排
 | ACS::ECS::Create Snapshot | 表示创建快照 | DescribeInstan ces CreateSnapsho t | instanceId： String类型 diskId：String 类型 snapshotName ：String类型 | snapshotId： String类型 |
 | ACS::ECS::ResetD isk | 表示回滚磁盘 | StopInstance DescribeInstan ces ResetDisk | instanceId： String类型 diskId：String 类型 snapshotId： String类型 | - |
 
-运维编排
-
 | 云产品动作名称 | 用途 | 相关的 OpenAPI | 参数 | 动作输出 |
 |---|---|---|---|---|
 | ACS::ECS::Create AndAttachDisk | 表示创建并且安装磁盘 | DescribeInstan ces CreateDisk DescribeDisks AttachDisk | instanceId： String类型 diskName： String类型 zoneId：String 类型 diskCategory： String类型 size：String类型 | diskId：String类型 |
@@ -2800,13 +2915,11 @@ JSON 运维编排
 | ACS::ECS::Create AndAttachNetwor kInterface | 创建并安装网卡 | DescribeInstan ces CreateNetwork Interface AttachNetwork Interface | instanceId： String类型 securityGroupI d：String类型 vSwitchId： String类型 | networkInterfaceI d：String类型 |
 | ACS::ECS::DeleteI mage | 删除镜像 | DeleteImage | imageId：String 类型 | - |
 
-运维编排
-
 | 云产品动作名称 | 用途 | 相关的 OpenAPI | 参数 | 动作输出 |
 |---|---|---|---|---|
 | ACS::ECS::InstallL ogtail | 安装日志服务 | DescribeInstan ces CreateComma nd InvokeComma nd DescribeInvoc ations DescribeInvoc ationResults DeleteComma nd | instanceId： String类型 logTailUserDefi nedId：String 类型 OOSAssumeRo le：String类型 | exitCode： String类型 invocationResu lt：String类型 |
 
-### 钉钉（DingTalk）类
+### 3.2 钉钉（DingTalk）类
 
 本文介绍了钉钉（DingTalk）类云产品动作（包括其用途、参数和输出、内容链接），您通过嵌套动作即可对云产品动作进行嵌套调用，关于具体如何调用云产品动作请参见嵌套ACS::Template。
 
@@ -2815,85 +2928,74 @@ JSON 运维编排
 | ACS::Notify::DingTalk Webhook | 通过WebHook发送通知到钉钉 | webhook：String类型 msgtype：String类型 text：Json类型 link：Json类型 markdown：Json类型 at：Json类型 | - |
 | ACS::Approve::DingTal kWebhook | 通过WebHook发送关于待审批事项的钉钉通知。 此刻起，执行开始处于等待状态，直到待审批事项被同意或拒绝后，执行会根据审批结果继续或终止 | webhook：String类型 msgtype：String类型 text：Json类型 link：Json类型 markdown：Json类型 at：Json类型 | - |
 
-运维编排
+## 4 执行
 
-## 执行
-
-### 执行概述
+### 4.1 执行概述
 
 您可以对公共模版或自定义模版创建执行，同时OOS支持多种执行方式便于您更好地使用。
 
 **执行方式**
 
-自动执行：建议您先在测试环境使用，以便完全了解模板所进行的运维操作，并且结果符合预期，然后才在生产环境进行。 带风险提醒的执行：当执行到模版中定义的不可恢复性操作任务时（如删除、释放、停止类操作等），执行会切换为**等待中**状态，直到您对该任务执行完成了的审批操作其才会进行下一步。 单步执行：类似于调试（Debug）功能。当您需要详细地了解每一个任务的执行时，建议使用单步执行模式。
+自动执行：建议您先在测试环境使用，以便完全了解模板所进行的运维操作，并且结果符合预期，然后才在生产环境进行。 全自动执行：模版中定义的所有任务依次自动执行。 带风险提醒的执行：当执行到模版中定义的不可恢复性操作任务时（如删除、释放、停止类操作等），执行会切换为**等待中**状态，直到您对该任务执行完成了的审批操作其才会进行下一步。 单步执行：类似于调试（Debug）功能。当您需要详细地了解每一个任务的执行时，建议使用单步执行模式。
 
 **风险提醒**
 
 高风险操作需要二次确认：当一个运维任务的操作是不可撤销类型时，如删除ECS实例，您需要二次确认是否进行操作。建议您在执行新模板时，优先考虑此选择。 了解风险，无需确认：当您已经熟悉了模板所编排的所有任务后，您可以选择此模式跳过二次确认。
 
-### 全自动执行
+### 4.2 全自动执行
 
 使用运维编排（OOS）可对平台提供的公共模版或您自定义的模版进行执行创建，如果您对模版中所有任务的风险已充分了解，则可选择客户了解风险，无需确认的风险确认模式来启动全自动执行，下面来介绍启动公共模版执行的步骤。
 1. 登录**运维编排管理控制台**。
 2. 单击**公共模版**，选择您要执行的公共模版，单击**创建执行**。
-运维编排
 3. 单击**下一步：设置参数**。
 4. 输入该模版所需参数。为确保创建执行成功，请按如下操作确认OOS将使用的RAM角色的授权策略。请
-单击**查看授权策略**，然后登录**RAM****控制台**，先确认OOS将使用的RAM角色已存在，再确认此RAM角色已具备模版执行所需的授权策略（即该角色已被授权策略的权限不低于**查看授权策略**的结果）。若OOS 将使用的RAM角色仍未创建，或者此角色已创建但还没有模版执行所需授权策略。请单击**自动授权策略** 完成策略的授权。您也可单击**前往****RAM****手动授权策略**并参考**最佳实践**为**OOS****服务设置****RAM****权限**章节通过手动设置完成策略授权。
+单击**查看授权策略**，然后登录**RAM****控制台**，先确认OOS将使用的RAM角色已存在，再确认此RAM角色已具备模版执行所需的授权策略（即该角色已被授权策略的权限不低于**查看授权策略**的结果）。若OOS 将使用的RAM角色仍未创建，或者此角色已创建但还没有模版执行所需授权策略。请单击**自动授权策略** 完成策略的授权。您也可单击**前往****RAM****手动授权策略**并参考**最佳实践****为****OOS****服务设置****RAM****权限**章节通过手动设置完成策略授权。
 5. 单击**下一步：确认创建**。
-运维编排
 6. 单击**创建执行**。
 7. 您在执行管理栏中选择刚创建的执行，单击**详情**，查看执行状态。
 
-### 单步执行
+### 4.3 单步执行
 
 使用运维编排（OOS）可对平台提供的公共模版或您自定义的模版进行执行创建。如果您想手动执行模版中的单个任务，可以创建执行时选择单步执行模式，下面介绍如何在控制台下进行单步调试。
 1. 登录**运维编排管理控制台**。
 2. 单击**公共模版**，选择您要执行的公共模版，单击**创建执行**。
-运维编排
 3. 单击**单步执行。**
 4. 单击**下一步：设置参数**。
-运维编排
 5. 输入该模版所需参数。为确保创建执行成功，请按如下操作确认OOS将使用的RAM角色的授权策略。请
-单击**查看授权策略**，然后登录**RAM****控制台**，先确认OOS将使用的RAM角色已存在，再确认此RAM角色已具备模版执行所需的授权策略（即该角色已被授权策略的权限不低于**查看授权策略**的结果）。若OOS 将使用的RAM角色仍未创建，或者此角色已创建但还没有模版执行所需授权策略。请单击**自动授权策略** 完成策略的授权。您也可单击**前往****RAM****手动授权策略**并参考**最佳实践**为**OOS****服务设置****RAM****权限**章节通过手动设置完成策略授权。
+单击**查看授权策略**，然后登录**RAM****控制台**，先确认OOS将使用的RAM角色已存在，再确认此RAM角色已具备模版执行所需的授权策略（即该角色已被授权策略的权限不低于**查看授权策略**的结果）。若OOS 将使用的RAM角色仍未创建，或者此角色已创建但还没有模版执行所需授权策略。请单击**自动授权策略** 完成策略的授权。您也可单击**前往****RAM****手动授权策略**并参考**最佳实践****为****OOS****服务设置****RAM****权限**章节通过手动设置完成策略授权。
 6. 单击**下一步：确认创建**。
 7. 单击**创建执行**。
 8. 您可在执行管理栏中找到刚创建的执行，单击**详情**进行查看。
-运维编排
 9. 单击**设置下一步**。
 0. 单击**确认。**
 1. 单击**执行日志**。查看在调试任务执行情况。
-运维编排
 
-### 查看执行详情
+### 4.4 查看执行详情
 
 在使用运维编排（OOS）过程中，您随时可通过查看执行详情了解已存在执行的相关信息。
 1. 登录**运维编排管理控制台**。
 2. 单击**执行管理**。
 3. 在执行列表中选择要查看的执行，单击**详情**。
 4. 您可在执行详情页面查看到执行如下相关信息。
-运维编排
 5. 单击**可视化预览**，可查看当前各任务执行状态。
 
-### 取消执行
+### 4.5 取消执行
 
 在使用运维编排（OOS）过程中，您可对执行进行取消操作。
 1. 登录**运维编排管理控制台**。
 2. 查看某个执行的详情。
-运维编排
 3. 单击**取消执行**。
 4. 单击**确定**取消执行。
 
-### 删除执行
+### 4.6 删除执行
 
 在使用运维编排（OOS）过程中，您可对最终状态的执行进行删除操作；如待删除的执行处于非最终态（如等待中或运行中等），您取消该类执行后则可对其删除。
 1. 登录**运维编排管理控制台**。
 2. 单击**执行管理**。
 3. 在执行列表中选择可删除的执行，**单击删除**。
-运维编排
 4. 单击**确定**删除执行。
 
-### 查看执行日志
+### 4.7 查看执行日志
 
 您可以通过日志来了解执行的过程，且日志能够很好的帮助您定位和解决问题。
 
@@ -2905,9 +3007,11 @@ JSON 运维编排
 2. 在**执行管理**页中，找到要查询的执行ID，并单击**详情**。
 3. 单击**执行日志**。
 
-### 状态转换图
+### 4.8 状态转换图
 
-一个执行创建的初始状态为Started，直到最终状态可能进行多种状态转换，以下为状态转换图。 运维编排
+**状态转换图**
+
+一个执行创建的初始状态为Started，直到最终状态可能进行多种状态转换，以下为状态转换图。
 
 **状态说明**
 
@@ -2917,8 +3021,6 @@ JSON 运维编排
 | Queued | 排队中 | 表示一个Execution因流控正排队等待被允许。大部分情况下，您启动的 Execution会跳过此状态直接进入到 Running状态。 |
 | Running | 执行中 | 表示一个Execution正在执行。 |
 | Success | 成功 | 表示一个Execution执行结束且结果为成功。 |
-
-运维编排
 
 | Failed | 失败 | 表示一个Execution执行结束且结果为失败。 |
 |---|---|---|

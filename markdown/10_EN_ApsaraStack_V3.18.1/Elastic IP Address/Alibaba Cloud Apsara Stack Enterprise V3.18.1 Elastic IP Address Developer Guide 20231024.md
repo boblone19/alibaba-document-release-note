@@ -5,7 +5,7 @@ doc_version: "20231024"
 pdf_pages: 117
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Elastic IP Address Developer Guide 20231024.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/EIP/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Elastic%20IP%20Address%20Developer%20Guide%2020231024.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Elastic IP Address Developer Guide 20231024
@@ -886,7 +886,11 @@ API responses use the HTTP response format where a 2XX status code indicates a s
 
 #### 6.5.1 AllocateEipAddress
 
-Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
+Applies for an elastic IP address (EIP).
+
+**Description**
+
+After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
 
 **Request parameters**
 
@@ -1163,7 +1167,11 @@ Sample requests http(s)://[Endpoint]/?Action=DescribeEipSegment &RegionId=cn-qin
 
 #### 6.5.6 ReleaseEipSegmentAddress
 
-Releases contiguous elastic IP addresses (EIPs). You can call this operation to release all EIPs in a group of contiguous EIPs.
+Releases contiguous elastic IP addresses (EIPs).
+
+**Description**
+
+You can call this operation to release all EIPs in a group of contiguous EIPs.
 
 **Request parameters**
 
@@ -1413,7 +1421,11 @@ Sample requests http(s)://[Endpoint]/?Action=UnassociateEipAddress &AllocationId
 
 #### 6.5.10 ReleaseEipAddress
 
-Releases a specified elastic IP address (EIP). Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
+Releases a specified elastic IP address (EIP).
+
+**Description**
+
+Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
 
 **Request parameters**
 
@@ -1450,7 +1462,11 @@ Sample requests http(s)://[Endpoint]/?Action=ReleaseEipAddress &AllocationId=eip
 
 #### 6.5.11 DescribeEipGatewayInfo
 
-Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
+Queries information about the gateway and subnet mask of an elastic IP address (EIP).
+
+**Description**
+
+You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
 
 **Request parameters**
 

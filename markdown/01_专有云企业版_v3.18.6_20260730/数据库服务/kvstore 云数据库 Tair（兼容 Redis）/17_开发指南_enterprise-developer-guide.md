@@ -5,16 +5,90 @@ doc_version: "20260729"
 pdf_pages: 104
 source_pdf: "17_开发指南_enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/kvstore/zh/enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云数据库 Tair（兼容 Redis） 开发指南
 
-云数据库 Tair（兼容Redis）开发指
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其EndPoint
+  - 2.2 获取AccessKey
+  - 2.3 获取公共Header参数
+  - 2.4 获取STS AccessKey
+- 3 通过POP网关调用专有云API
+  - 3.1 调用前置
+  - 3.2 Java版
+  - 3.3 Go版
+  - 3.4 Python版
+- 4 API参考
+  - 4.1 API 概览
+  - 4.2 请求结构
+  - 4.3 公共参数
+  - 4.4 返回结果
+  - 4.5 签名机制
+  - 4.6 如何使用RAM授权
+    - 4.6.1 使用 RAM 实现资源授权
+    - 4.6.2 RAM 中可授权的资源类型
+    - 4.6.3 RAM 中可对资源进行授权的 Action
+    - 4.6.4 API 的鉴权规则
+  - 4.7 生命周期管理
+    - 4.7.1 CreateInstance
+    - 4.7.2 DeleteInstance
+    - 4.7.3 ModifyInstanceSpec
+  - 4.8 实例管理
+    - 4.8.1 RestartInstance
+    - 4.8.2 FlushExpireKeys
+    - 4.8.3 DescribeLogicInstanceTopology
+    - 4.8.4 DescribeEngineVersion
+    - 4.8.5 DescribeInstanceAttribute
+    - 4.8.6 DescribeInstances
+    - 4.8.7 DescribeRegions
+    - 4.8.8 DescribeSecurityIps
+    - 4.8.9 DescribeCpuTypes
+    - 4.8.10 DescribeZones
+    - 4.8.11 FlushInstance
+    - 4.8.12 ModifyInstanceAttribute
+    - 4.8.13 ModifyInstanceMaintainTime
+    - 4.8.14 ModifyInstanceNetExpireTime
+    - 4.8.15 ModifySecurityIps
+    - 4.8.16 SwitchNetwork
+    - 4.8.17 SwitchInstanceHA
+  - 4.9 数据加密
+    - 4.9.1 DescribeEncryptionKey
+    - 4.9.2 DescribeInstanceTDEStatus
+    - 4.9.3 CheckCloudResourceAuthorized
+  - 4.10 账号管理
+    - 4.10.1 DescribeUserInfo
+    - 4.10.2 CreateAccount
+  - 4.11 网络安全
+    - 4.11.1 DescribeInstanceSSL
+  - 4.12 连接管理
+    - 4.12.1 DescribeIntranetAttribute
+    - 4.12.2 ModifyInstanceVpcAuthMode
+    - 4.12.3 AllocateInstancePublicConnection
+  - 4.13 备份恢复
+    - 4.13.1 CreateBackup
+    - 4.13.2 ModifyBackupPolicy
+    - 4.13.3 DescribeBackupPolicy
+    - 4.13.4 DescribeBackups
+    - 4.13.5 RestoreInstance
+  - 4.14 监控管理
+    - 4.14.1 DescribeMonitorItems
+    - 4.14.2 DescribeHistoryMonitorValues
+  - 4.15 参数管理
+    - 4.15.1 DescribeInstanceConfig
+    - 4.15.2 ModifyInstanceConfig
+    - 4.16.1 错误码表
+    - 4.16.2 实例配置参数表
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,28 +105,28 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本单击**企业版**、**敏捷版**或**一体机**标签。
-云数据库 Tair（兼容Redis）开发指
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
 
-云数据库 Tair（兼容Redis）开发指
-
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
 **说明**
 
 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
 **说明**
 
@@ -61,11 +135,10 @@ converter: line-classifier (PyMuPDF)
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，查找开发指南的方式请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-云数据库 Tair（兼容Redis）开发指
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其EndPoint
+### 2.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -83,13 +156,13 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.2 获取AccessKey
 
 访问身份验证中通过使用AccessKey ID和AccessKey Secret对称加密的方法来验证某个请求的发送者身份。AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。本文将为您描述如何获取通过RAM授权的AccessKey。
 
 **前提条件**
 
-只有运营管理员和一级组织管理员可以获取组织AccessKey。 云数据库 Tair（兼容Redis）开发指
+只有运营管理员和一级组织管理员可以获取组织AccessKey。
 
 **背景信息**
 
@@ -102,11 +175,7 @@ AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的Acce
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
-
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 **获取个人账号AccessKey**
 
@@ -114,24 +183,20 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，将鼠标悬停在当前登录用户的头像上，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
-云数据库 Tair（兼容Redis）开发指
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 2.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -171,7 +236,6 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在顶部的菜单栏中，选择**产品**>应用服务>API网关。
 3. 在左侧导航栏中，单击**实例**。
-云数据库 Tair（兼容Redis）开发指
 4. 在实例列表中查看**实例****ID**。
 
 **返回参数**
@@ -185,7 +249,7 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -198,7 +262,6 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-云数据库 Tair（兼容Redis）开发指
 
 ```
 public static void main(String[] args) {
@@ -225,7 +288,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -247,11 +315,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，下列代码以ECS为示例。
-云数据库 Tair（兼容Redis）开发指
 
 ```
 public static void main(String[] args) {
@@ -263,7 +330,12 @@ public static void main(String[] args) {
 
 ```
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -275,14 +347,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-云数据库 Tair（兼容Redis）开发指
+`}`
 
-## 通过POP网关调用专有云API
+## 3 通过POP网关调用专有云API
 
-### 调用前置
+### 3.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -306,7 +377,6 @@ public static void main(String[] args) {
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。 您也可以自行获取Endpoint，本文以API网关为例为您介绍获取云产品业务域Endpoint的方法。
 1. 登录Apsara Uni-manager运维控制台。
-云数据库 Tair（兼容Redis）开发指
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在服务注册变量大盘页面，单击**高级筛选**。
@@ -318,9 +388,9 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见获取公共Header参数。
 
-### Java版
+### 3.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -329,9 +399,7 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -342,7 +410,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     public static void main(String[] args) {
 ```
 
-云数据库 Tair（兼容Redis）开发指 `//` 创建`DefaultAcsClient`实例并初始化。
+`//` 创建`DefaultAcsClient`实例并初始化。
 
 ```xml
         DefaultProfile profile = DefaultProfile.getProfile("<your-regionid>", "
@@ -433,13 +501,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -458,16 +526,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrMsg:" + e.getErrMsg());
 ```
 
-云数据库 Tair（兼容Redis）开发指
-
 ```java
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -546,7 +609,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.setSysAction("GetNamespaceList");
 ```
 
-`//`必填值，调用来源说明云数据库 Tair（兼容Redis）开发指 `//` 必填值，调用来源说明
+`//`必填值，调用来源说明 `//` 必填值，调用来源说明
 
 ```
         request.putHeadParameter("x-acs-caller-sdk-source", "ApiTestDemo");
@@ -558,19 +621,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -594,10 +657,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **重要**
 
@@ -613,7 +675,7 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Go版
+### 3.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -621,11 +683,8 @@ clientConfig.setIgnoreSSLCerts(true)
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
-云数据库 Tair（兼容Redis）开发指
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -633,7 +692,7 @@ clientConfig.setIgnoreSSLCerts(true)
 
 **CommonRequest调用示例**
 
-RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下： 云数据库 Tair（兼容Redis）开发指
+RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下：
 
 ```java
 package main import (
@@ -642,7 +701,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -686,19 +745,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 云数据库 Tair（兼容Redis）开发指
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 package main import (
@@ -708,7 +770,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -753,37 +815,41 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 云数据库 Tair（兼容Redis）开发指
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下：
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -815,9 +881,7 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-云数据库 Tair（兼容Redis）开发指
-
-### Python版
+### 3.4 Python版
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -826,9 +890,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -842,7 +904,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -851,13 +913,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -866,13 +922,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -882,36 +938,39 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-云数据库 Tair（兼容Redis）开发指
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -920,7 +979,7 @@ SecurityToken>"};
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -932,14 +991,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -954,19 +1012,17 @@ os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 SDK默认使用HTTPS协议。
 
 ```
-from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import from aliyunsdkcore.client import AcsClient client = AcsClient(
+from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
-request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
+request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-云数据库 Tair（兼容Redis）开发指
-
-**忽略证书**
+> **忽略证书**
 
 **重要**
 
@@ -977,7 +1033,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -987,11 +1043,13 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-) 云数据库 Tair（兼容Redis）开发指
+`)`
 
-## API参考
+## 4 API参考
 
-### API 概览
+### 4.1 API 概览
+
+表 1. 实例生命周期管理接口
 
 | API | 描述 |
 |---|---|
@@ -1029,8 +1087,6 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | API | 描述 |
 |---|---|
 
-云数据库 Tair（兼容Redis）开发指
-
 | DescribeMonitorItems | 查看监控项列表 |
 |---|---|
 | DescribeHistoryMonitorValues | 查看历史监控 |
@@ -1042,7 +1098,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | DescribeInstanceConfig | 查看实例参数配置 |
 | ModifyInstanceConfig | 修改参数配置 |
 
-### 请求结构
+### 4.2 请求结构
 
 **服务地址**
 
@@ -1068,7 +1124,7 @@ example.com是项目自定义的访问域名，请联系管理员获取该域名
 
 请求及返回结果都使用 UTF-8 字符集进行编码。
 
-### 公共参数
+### 4.3 公共参数
 
 公共请求参数是指每个接口都需要使用到的请求参数。
 
@@ -1081,8 +1137,6 @@ example.com是项目自定义的访问域名，请联系管理员获取该域名
 | Format | String | 是 | 返回值的类型，支持 JSON 与 XML。默认为 XML。 |
 | Version | String | 是 | API 版本号，为日期形式：YYYY-MM-DD，本版本对应为 2015-01-01。 |
 | AccessKeyId | String | 是 | 阿里云颁发给用户的访问服务所用的密钥 ID。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | Signature | String | 是 | 签名结果串，关于签名的计算方法，请参见签名机制。 |
 |---|---|---|---|
@@ -1103,7 +1157,7 @@ https:// r-kvstore.example.com/ ?Format=json &Version=2015-01-01 &Signature=Pc5x
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+<!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
 <RequestId>4C4fdsf38-3910-447D-87AD-AC078932216</RequestId>
@@ -1111,39 +1165,33 @@ https:// r-kvstore.example.com/ ?Format=json &Version=2015-01-01 &Signature=Pc5x
 
 <!—返回结果数据`-->` `</`接口名称`+Response>`
 
-### 返回结果
+### 4.4 返回结果
 
-调用 API 服务后返回数据采用统一格式。返回的 HTTP 状态码为 `2xx` 代表调用成功；返回 `4xx` 或 `5xx` 的 HTTP 状态码代表调用失败。调用成功返回的数据格式主要有 XML 和 JSON 两种， 外部系统可以在请求时传入参数来制定返回的数据格式，默认为 XML 格式。 本文档中的返回示例为了便于用户查看，做了格式化处理，实际返回结果是没有进行换
+调用 API 服务后返回数据采用统一格式。返回的 HTTP 状态码为 `2xx` 代表调用成功；返回 `4xx` 或 `5xx` 的 HTTP 状态码代表调用失败。调用成功返回的数据格式主要有 XML 和 JSON 两种， 外部系统可以在请求时传入参数来制定返回的数据格式，默认为 XML 格式。
 
-**说明**
-
-行、缩进等处理的。
+> **说明：** 本文档中的返回示例为了便于用户查看，做了格式化处理，实际返回结果是没有进行换行、缩进等处理的。
 
 **成功结果**
 
-XML 返回结果包括请求是否成功信息和具体的业务数据。示例如下： 云数据库 Tair（兼容Redis）开发指
+XML 返回结果包括请求是否成功信息和具体的业务数据。示例如下：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!—结果的根结点`-->` <接口名称`+Response>` <!—返回请求标签`-->`
+<!—结果的根结点`-->` `<`接口名称`+Response>` <!—返回请求标签`-->`
 
 ```xml
 <RequestId>4C4fdsf38-3910-447D-87AD-AC078932216</RequestId>
 ```
 
-<!—返回结果数据`-->` `</`接口名称`+Response>` JSON 示例：
+<!—返回结果数据`-->` `</`接口名称`+Response>` JSON 示例： `{`
 
 ```json
-{ "RequestId": "4C4fdsf38-3910-447D-87AD-AC078932216",
+"RequestId": "4C4fdsf38-3910-447D-87AD-AC078932216",
 ```
 
-`/*` 返回结果数据 `*/`
-
-```
-}
-```
+`/*` 返回结果数据 `*/` `}`
 
 **错误结果**
 
@@ -1153,36 +1201,38 @@ XML 返回结果包括请求是否成功信息和具体的业务数据。示例�
 <?xml version="1.0" encoding="UTF-8"?> <Error> <RequestId>8906582E-6722-409A-A6C4-0E7863B733A5</RequestId> <HostId> r-kvstore.example.com</HostId> <Code>UnsupportedOperation</Code> <Message>The specified action is not supported.</Message> </Error>
 ```
 
-JSON 示例：
+JSON 示例： `{`
 
 ```json
-{ "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported." }
+"RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
 
-### 签名机制
+`}`
 
-Redis 服务会对每个访问的请求进行身份验证，所以无论使用 HTTP 还是 HTTPS 协议提交请求，都需要在请求中包含签名（Signature）信息。Redis 服务通过使用 Access Key ID 和 Access Key Secret 进行对称加密的方法来验证请求的发送者身份。 Access Key ID 和 Access Key Secret 由阿里云官方颁发给访问者（可以通过阿里云官方网站申请和管理），其中 Access Key ID 用于标识访问者的身份；Access Key Secret 是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密，只有阿里云和用户知道。
+### 4.5 签名机制
+
+Redis 服务会对每个访问的请求进行身份验证，所以无论使用 HTTP 还是 HTTPS 协议提交请求，都需要在请求中包含签名（Signature）信息。Redis 服务通过使用 Access Key ID 和 Access Key Secret 进行对称加密的方法来验证请求的发送者身份。 Access Key ID 和 Access Key Secret 由阿里云官方颁发给访问者（可以通过阿里云官方网站申请和管理），其中 Access Key ID 用于标识访问者的身份；Access Key Secret 是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密，只有阿里云和用户知道。 AccessKey的获取方法，请参见获取AccessKey。
 
 **签名处理**
 
-用户在访问时，按照下面的方法对请求进行签名处理： 云数据库 Tair（兼容Redis）开发指
+用户在访问时，按照下面的方法对请求进行签名处理：
 1. 使用请求参数构造规范化的请求字符串（Canonicalized Query String）。
-i. 按照参数名称的字典顺序对请求中所有的请求参数（包括文档中描述的“公共请求参数”和指定请求接口的自定义参数，但不能包括“公共请求参数”中提到 Signature 参数本身）进行排序。 当使用 GET 方法提交请求时，这些参数就是请求 URI 中的参数部分（即 URI
+i. 按照参数名称的字典顺序对请求中所有的请求参数（包括文档中描述的“公共请求参数”和指定请求接口的自定义参数，但不能包括“公共请求参数”中提到 Signature 参数本身）进行排序。
 
-**说明**
+> **说明：** 当使用 GET 方法提交请求时，这些参数就是请求 URI 中的参数部分（即 URI 中“?”之后由“&”连接的部分）。
 
-中“?”之后由“&”连接的部分）。 ii. 对每个请求参数的名称和值进行编码。 名称和值要使用 UTF-8 字符集进行 URL 编码。URL 编码的编码规则如下： 对于字符 A~Z、a~z、0~9 以及字符“-”、“_”、“.”、“~”不编码；
+ii. 对每个请求参数的名称和值进行编码。 名称和值要使用 UTF-8 字符集进行 URL 编码。URL 编码的编码规则如下： 对于字符 A~Z、a~z、0~9 以及字符“-”、“_”、“.”、“~”不编码；
 
-|  |  |  | XY |
+|   |   |   | XY |
 |---|---|---|---|
-| %22 |  | ； |  |
-|  | %XY%ZA… |  |  |
+| %22 |   | ； |   |
+|   | %XY%ZA… |   |   |
 
-英文空格（）要编码成 %20 ，而不是加号（+）。 一般支持 URL 编码的库（比如 Java 中的 java.net.URLEncoder）都是按
+的双引号（”）对应的编码为 %22 ； 对于扩展的 UTF-8 字符，编码成 %XY%ZA… 的格式； 英文空格（）要编码成 %20 ，而不是加号（+）。
 
-**说明**
+> **说明：** 一般支持 URL 编码的库（比如 Java 中的 java.net.URLEncoder）都是按照 `application/x-www-form-urlencoded` 的 MIME 类型的规则进行编码的。实现时可以直接使用这类方式进行编码，把编码后的字符串中加号（+）替换成 %20 、星号（*）替换成 %2A 、 %7E 替换回波浪号（~），即可得到上述规则描述的编码字符串。
 
-照 `application/x-www-form-urlencoded` 的 MIME 类型的规则进行编码的。实现时可以直接使用这类方式进行编码，把编码后的字符串中加号（+）替换成 %20 、星号（*）替换成 %2A 、 %7E 替换回波浪号（~），即可得到上述规则描述的编码字符串。 iii. 对编码后的参数名称和值使用英文等号（=）进行连接。 iv. 再把英文等号连接得到的字符串按参数名称的字典顺序依次使用&符号连接，即得到规范化请求字符串。
+iii. 对编码后的参数名称和值使用英文等号（=）进行连接。 iv. 再把英文等号连接得到的字符串按参数名称的字典顺序依次使用&符号连接，即得到规范化请求字符串。
 2. 使用上一步构造的规范化字符串按照下面的规则构造用于计算签名的字符串：
 
 ```
@@ -1194,29 +1244,25 @@ i. 按照参数名称的字典顺序对请求中所有的请求参数（包括�
 
 其中：
 
-| HTTPMethod 是提交请求用的 HTTP 方法，比如 percentEncode(“/”) 是按照步骤 1.b 中描述的 %2F 。 |  |
+| HTTPMethod 是提交请求用的 HTTP 方法，比如 percentEncode(“/”) 是按照步骤 1.b 中描述的 %2F 。 |   |
 |---|---|
-|  | percentEncode(“/”) |
-| %2F |  |
-|  | percentEncode(CanonicalizedQueryString) |
+|   | percentEncode(“/”) |
+| %2F |   |
+|   | percentEncode(CanonicalizedQueryString) |
 
+percentEncode(“/”) 是按照步骤 1.b 中描述的 URL 编码规则对字符 “/” 进行编码得到的值，即中描述的 URL 编码规则编码后得到的字符串。
 3. 按照 RFC2104 的定义，使用上面的用于签名的字符串计算签名 HMAC 值。
-计算签名时使用的 Key 就是用户持有的 Access Key Secret 并加上一个“&”字符
 
-**说明**
+> **说明：** 计算签名时使用的 Key 就是用户持有的 Access Key Secret 并加上一个“&”字符 （ASCII:38），使用的哈希算法是 SHA1。
 
-（ASCII:38），使用的哈希算法是 SHA1。
 4. 按照 Base64 编码规则把上面的 HMAC 值编码成字符串，即得到签名值（Signature）。
 5. 将得到的签名值作为 Signature 参数添加到请求参数中，即完成对请求签名的过程。
-得到的签名值在作为最后的请求参数值提交给 Redis 服务器的时候，要和其他参数一
 
-**说明**
-
-样，按照 RFC3986 的规则进行 URL 编码。
+> **说明：** 得到的签名值在作为最后的请求参数值提交给 Redis 服务器的时候，要和其他参数一样，按照 RFC3986 的规则进行 URL 编码。
 
 **示例**
 
-以 DescribeDBInstances 为例，签名前的请求 URL 如下： 云数据库 Tair（兼容Redis）开发指
+以 DescribeDBInstances 为例，签名前的请求 URL 如下：
 
 ```
 http://r-kvstore.example.com/?Timestamp=2013-06- 01T10:33:56Z&Format=XML&AccessKeyId=testid&Action=DescribeInstances&SignatureMethod=HMAC- SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2015-01- 01&SignatureVersion=1.0
@@ -1240,15 +1286,15 @@ http://r-kvstore.example.com/?Timestamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acc
 SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Version=2015- 01-01&Signature=BIPOMlxxxxxxxxxxxxxxxxxxu8LXBeZtLQkJTw6iFvw1E%3D
 ```
 
-### 如何使用RAM授权
+### 4.6 如何使用RAM授权
 
-#### 使用 RAM 实现资源授权
+#### 4.6.1 使用 RAM 实现资源授权
 
-您通过云账号创建的实例，都是该账号拥有的资源。默认情况下，账号对自己的资源拥有完整的操作权限。 使用阿里云的 RAM（Resource Access Management）服务，您可以将云账号下的资源的访问及管理权限授予 RAM 中子用户。 如果您不需要使用 RAM，请略过此章节。
+您通过云账号创建的实例，都是该账号拥有的资源。默认情况下，账号对自己的资源拥有完整的操作权限。 使用阿里云的 RAM（Resource Access Management）服务，您可以将云账号下的资源的访问及管理权限授予 RAM 中子用户。
 
-**说明**
+> **说明：** 如果您不需要使用 RAM，请略过此章节。
 
-#### RAM 中可授权的资源类型
+#### 4.6.2 RAM 中可授权的资源类型
 
 云数据库KVStore for Redis可以在 RAM 中进行授权的资源类型仅一种：instance。 在通过 RAM 进行授权时，资源的描述方式如下：
 
@@ -1256,13 +1302,13 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 |---|---|
 | Instance | acs:kvstore:$regionid:$accountid:instance/$insta nceid acs:kvstore:$regionid:$accountid:instance/ acs:kvstore:::instance/ |
 
-其中，所有 $regionid 应为某个 region 的 ID，或者 * ；所有 $instanceid 应为某个 instance 的 ID，或者 * ；以此类推，$account-id 是云账号的数字 ID，可以用 * 代替。
+其中，所有 $regionid 应为某个 region 的 ID，或者 `*` ；所有 $instanceid 应为某个 instance 的 ID，或者 `*` ；以此类推，$account-id 是云账号的数字 ID，可以用 `*` 代替。
 
-#### RAM 中可对资源进行授权的 Action
+#### 4.6.3 RAM 中可对资源进行授权的 Action
 
-云数据库 Tair（兼容Redis）开发指 RenewInstance RenewMultiInstance TransformToPrePaid
+RAM 中可对资源进行授权的 Action 如下列表所示。 RenewInstance RenewMultiInstance TransformToPrePaid
 
-#### API 的鉴权规则
+#### 4.6.4 API 的鉴权规则
 
 当子用户通过 API 进行资源访问时，后台向 RAM 进行权限检查，以确保调用者拥有响应权限。 每个不同的 API 会根据涉及到的资源以及 API 的语义来确定需要检查哪些资源的权限。具体地，每个 API 的鉴权规则见下表。表 1. 鉴权规则
 
@@ -1275,8 +1321,6 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 | RenewMultiInstance | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 | TransformToPrePaid | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 | ModifyInstanceAttribute | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
-
-云数据库 Tair（兼容Redis）开发指
 
 | FlushInstance | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 |---|---|
@@ -1295,9 +1339,11 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 | DescribeInstanceConfig | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 | ModifyInstanceConfig | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 
-### 生命周期管理
+### 4.7 生命周期管理
 
-#### CreateInstance
+#### 4.7.1 CreateInstance
+
+调用CreateInstance接口创建一个Redis实例。
 
 **请求参数**
 
@@ -1306,23 +1352,19 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 | 名称 | 类型 | 是否必须 | 示例值 | 描述 |
 |---|---|---|---|---|
 
-云数据库 Tair（兼容Redis）开发指
-
-| <公共请求参数 > | 无 | 是 | 无 |  | 参见公共请求参数。 |  |  |  |  |
+| <公共请求参数 > | 无 | 是 | 无 |   | 参见公共请求参数。 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| Action | String | 是 | CreateInstanc e |  | 操作接口名，取值： CreateInstance。 |  |  |  |  |
-| InstanceName | String | 否 | apitest |  | 实例名称。 名称为2~128个字符，以大小写英文字母或中文开头，不支持空格和特殊字符 @/:=”<>{[]} 。 |  |  |  |  |
-| Password | String | 否 | Pass!123456 |  | 实例密码。 字符类型，8~30个字符， 需同时包含大写字母、小写字母和数字。 说明暂时不支持 !<>()[]{},`~.- @#$%^&* 之类的特殊符号。 _ |  |  |  |  |
-|  |  |  |  |  |  |  | !<>()[]{},`~.- |  |  |
-|  |  |  |  |  |  | @#$%^&* _ |  |  |  |
-| InstanceClass | String | 是 | redis.master.s mall.default |  | Redis实例规格，更多信息，请参见 《用户指南》中实例规格章节。 |  |  |  |  |
-| RegionId | String | 是 | cn-hangzhou |  | 申请的存储实例所在区域，可调用 DescribeRegions获取可用的数据中心。 |  |  |  |  |
-| ZoneId | String | 否 | cn-hangzhou-e |  | RegionId 下的可用区，可调用 DescribeRegions获取可用的可用区。 |  |  |  |  |
-| Token | String | 否 | ChargeType |  | 用于保证请求的幂等性。由客户端生成该参数值，要保证在不同请求间唯一， 大小写敏感、不超过64个ASCII字符。 |  |  |  |  |
-| NetworkType | String | 否 | VPC |  | 网络类型： CLASSIC：经典网络，默认为经典网络。 VPC：专有网络 |  |  |  |  |
-| VpcId | String | 否 | vpc- bp1nme44gek 34slfc**** |  | VPC 网络 ID。 |  |  |  |  |
-
-云数据库 Tair（兼容Redis）开发指
+| Action | String | 是 | CreateInstanc e |   | 操作接口名，取值： CreateInstance。 |   |   |   |   |
+| InstanceName | String | 否 | apitest |   | 实例名称。 名称为2~128个字符，以大小写英文字母或中文开头，不支持空格和特殊字符 @/:=”<>{[]} 。 |   |   |   |   |
+| Password | String | 否 | Pass!123456 |   | 实例密码。 字符类型，8~30个字符， 需同时包含大写字母、小写字母和数字。 说明暂时不支持 !<>()[]{},`~.- @#$%^&* 之类的特殊符号。 _ |   |   |   |   |
+|   |   |   |   |   |   |   | !<>()[]{},`~.- |   |   |
+|   |   |   |   |   |   | @#$%^&* _ |   |   |   |
+| InstanceClass | String | 是 | redis.master.s mall.default |   | Redis实例规格，更多信息，请参见 《用户指南》中实例规格章节。 |   |   |   |   |
+| RegionId | String | 是 | cn-hangzhou |   | 申请的存储实例所在区域，可调用 DescribeRegions获取可用的数据中心。 |   |   |   |   |
+| ZoneId | String | 否 | cn-hangzhou-e |   | RegionId 下的可用区，可调用 DescribeRegions获取可用的可用区。 |   |   |   |   |
+| Token | String | 否 | ChargeType |   | 用于保证请求的幂等性。由客户端生成该参数值，要保证在不同请求间唯一， 大小写敏感、不超过64个ASCII字符。 |   |   |   |   |
+| NetworkType | String | 否 | VPC |   | 网络类型： CLASSIC：经典网络，默认为经典网络。 VPC：专有网络 |   |   |   |   |
+| VpcId | String | 否 | vpc- bp1nme44gek 34slfc**** |   | VPC 网络 ID。 |   |   |   |   |
 
 | VSwitchId | String | 否 | vsw- bp1e7clcw529l 773d**** | 虚拟交换机 ID。 说明如果传入了VpcId参数，则本参数必须传入。 |
 |---|---|---|---|---|
@@ -1338,7 +1380,7 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 
 **返回参数**
 
-表 2. 返回参数云数据库 Tair（兼容Redis）开发指
+表 2. 返回参数
 
 | 名称 | 参数类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -1356,10 +1398,10 @@ SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Versi
 https://r-kvstore.example.com
 ```
 
-?<公共请求参数>
+?<公共请求参数`>`
 
 ```
-&RegionId=cn-hangzhou &Password=Pass!123456 &InstanceClass=redis.master.small.default
+&Action=CreateInstance &RegionId=cn-hangzhou &Password=Pass!123456 &InstanceClass=redis.master.small.default
 ```
 
 **返回示例**
@@ -1367,17 +1409,21 @@ https://r-kvstore.example.com
 XML格式：
 
 ```xml
+<CreateInstanceResponse>
     <InstanceId>r-n8r8c5119d2e****</InstanceId>
     <InstanceName>testdb</InstanceName>
+</CreateInstanceResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{ "InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb" }
+"InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb"
 ```
 
-#### DeleteInstance
+`}`
+
+#### 4.7.2 DeleteInstance
 
 调用DeleteInstance接口释放Redis实例，调用时要求实例状态为**运行中**。
 
@@ -1387,8 +1433,6 @@ JSON格式：
 
 | 名称 | 类型 | 是否必须 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库 Tair（兼容Redis）开发指
 
 | <公共请求参数> | 无 | 是 | 无 | 参见公共请求参数。 |
 |---|---|---|---|---|
@@ -1406,28 +1450,32 @@ JSON格式：
 **请求示例**
 
 ```
-https://r-kvstore.example.com &InstanceId=r-n8r8c5119d2e****
+https://r-kvstore.example.com &Action=DeleteInstance &InstanceId=r-n8r8c5119d2e****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<DeleteInstanceResponse>
       <RequestId>5D622714-AEDD-4609-9167-F5DDD3D190D2</RequestId>
+</DeleteInstanceResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D190D2"
-}
 ```
 
-#### ModifyInstanceSpec
+`}`
+
+#### 4.7.3 ModifyInstanceSpec
+
+调用ModifyInstanceSpec接口变更Tair实例的规格。
 
 **请求参数**
 
@@ -1435,8 +1483,6 @@ JSON格式：
 
 | 名称 | 类型 | 是否必须 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库 Tair（兼容Redis）开发指
 
 | Action | String | 是 | ModifyInsta nceSpec | 操作接口名，取值：ModifyInstanceSpec。 |
 |---|---|---|---|---|
@@ -1455,32 +1501,36 @@ JSON格式：
 **请求示例**
 
 ```
-https://r-kvstore.example.com &InstanceId=r-n8r8c5119d2e**** &InstanceClass= redis.master.mid.default
+https://r-kvstore.example.com &Action=ModifyInstanceSpec &InstanceId=r-n8r8c5119d2e**** &InstanceClass= redis.master.mid.default
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<ModifyInstanceSpecResponse>
       <RequestId>A4828C10-AF0A-4CD7-8FBE-737C6CC1193E</RequestId>
       <OrderId>20722623431****</OrderId>
+</ModifyInstanceSpecResponse>
 ```
 
-JSON格式： 云数据库 Tair（兼容Redis）开发指
+JSON格式：
 
 ```json
-{
     "RequestId": "A4828C10-AF0A-4CD7-8FBE-737C6CC1193E",
     "OrderId": "20722623431****"
-}
 ```
 
-### 实例管理
+`}`
 
-#### RestartInstance
+### 4.8 实例管理
+
+#### 4.8.1 RestartInstance
+
+调用RestartInstance接口重启运行中的Redis实例。
 
 **请求头**
 
@@ -1504,23 +1554,31 @@ JSON格式： 云数据库 Tair（兼容Redis）开发指
 
 **示例**
 
-请求示例云数据库 Tair（兼容Redis）开发指
+请求示例
 
 ```
-&Action= &InstanceId=r-bp1zxszhcgatnx****
+http(s)://[Endpoint]/?Action=RestartInstance &Action= &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TaskId":"11111****",
  "RequestId":"EFC9161F-15E3-4A6E-8A99-C33331****",
  "InstanceId":"r-bp1zxszhcgatnx****"
-}
 ```
 
-#### FlushExpireKeys
+`}`
+
+#### 4.8.2 FlushExpireKeys
+
+调用FlushExpireKeys接口清除Redis实例中的过期Key。
 
 **请求头**
 
@@ -1539,8 +1597,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-云数据库 Tair（兼容Redis）开发指
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | TaskId | String | 21986**** | 任务ID。 |
@@ -1552,20 +1608,26 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=r-bp1zxszhcgatnx****
+http(s)://[Endpoint]/?Action=FlushExpireKeys &InstanceId=r-bp1zxszhcgatnx**** &Action=FlushExpireKeys
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TaskId":"21986****",
  "RequestId":"82E30AB7-E3A4-46AC-88A0-3E4DCDC5****",
  "InstanceId":"r-bp1zxszhcgatnx****"
-}
 ```
 
-#### DescribeLogicInstanceTopology
+`}`
+
+#### 4.8.3 DescribeLogicInstanceTopology
 
 调用DescribeLogicInstanceTopology接口查询Redis实例的逻辑拓扑结构。
 
@@ -1583,9 +1645,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| RedisShardList | Array |  | 分片详情，包含NodeInfo等子节点信息。 |
+| RedisShardList | Array |   | 分片详情，包含NodeInfo等子节点信息。 |
 
-| 云数据库 Tair（兼容南·API参考 | Redis）开发指 |  |  |
+| 云数据库 Tair（兼容南·API参考 | Redis）开发指 |   |   |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -NodeId | String | r- bp10noxlhcoim2** **-db-0#688**** | 节点ID。 |
@@ -1595,7 +1657,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -NodeType | String | db | 节点类型，返回值： proxy ：代理节点。 db ：数据节点。 |
 | RequestId | String | 794120D1-E0CF- 4713-BAE4- EBAEA04506AF | 请求ID。 |
 | InstanceId | String | r- bp1zxszhcgatnx*** * | 实例的ID。 |
-| RedisProxyList | Array |  | 代理详情，包含代理节点信息。 |
+| RedisProxyList | Array |   | 代理详情，包含代理节点信息。 |
 | -NodeId | String | r- bp10noxlhcoim2** **-proxy- 3#542**** | 节点ID。 |
 | -Connection | String | 320000 | 连接数限制。 |
 | -Bandwidth | String | 96 | 节点的带宽限制，单位为MB/s。 |
@@ -1604,23 +1666,30 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例云数据库 Tair（兼容Redis）开发指
-
 ```
 http(s)://[Endpoint]/?Action=DescribeLogicInstanceTopology &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RedisShardList":{
   "Capacity":"2048",
   "Bandwidth":"96",
   "NodeType":"db",
   "NodeId":"r-bp10noxlhcoim2****-db-0#688****",
   "Connection":"10000"
- },
+```
+
+`},`
+
+```json
  "RequestId":"794120D1-E0CF-4713-BAE4-EBAEA04506AF",
  "InstanceId":"r-bp1zxszhcgatnx****",
  "RedisProxyList":{
@@ -1629,11 +1698,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "NodeType":"proxy",
   "NodeId":"r-bp10noxlhcoim2****-proxy-3#542****",
   "Connection":"320000"
- }
-}
 ```
 
-#### DescribeEngineVersion
+`}` `}`
+
+#### 4.8.4 DescribeEngineVersion
 
 调用DescribeEngineVersion接口查询Redis实例的大版本和小版本信息，同时可查询到小版本的发布日志信息。
 
@@ -1653,7 +1722,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | MajorVersion | String | 5.0 | 实例的大版本。 |
 
-|  | 云数据库 Tair（兼容南·API参考 | Redis）开发指 |  |  |  |
+|   | 云数据库 Tair（兼容南·API参考 | Redis）开发指 |   |   |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1673,10 +1742,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeEngineVersion &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式云数据库 Tair（兼容Redis）开发指
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "MajorVersion":"5.0",
  "IsLatestVersion":false,
  "RequestId":"A52974D1-9D57-4805-86CC-92E6EDE8****",
@@ -1684,10 +1753,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "EnableUpgradeMinorVersion":true,
  "Engine":"redis",
  "EnableUpgradeMajorVersion":true
-}
 ```
 
-#### DescribeInstanceAttribute
+`}`
+
+#### 4.8.5 DescribeInstanceAttribute
 
 调用DescribeInstanceAttribute查询Redis实例的详细信息。
 
@@ -1714,37 +1784,31 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Capacity | Long | 1024 | 申请到的存储实例容量； 单位：MB。 |
 | InstanceClass | String | redis.logic.sharding.drr edissdb1g.1db.0rodb.4 proxy.default | 实例规格。 |
 
-云数据库 Tair（兼容Redis）开发指
-
-| Bandwidth | Long | 10 |  | 实例带宽限制；单位： Mbps。 |  |  |
+| Bandwidth | Long | 10 |   | 实例带宽限制；单位： Mbps。 |   |   |
 |---|---|---|---|---|---|---|
-| Connections | Long | 10000 |  | 实例连接数限制；单位： 个。 |  |  |
-| ConnectionDomain | String | r- bp1d72gwl41z7f****.r edis.rds.aliyuncs.com |  | Redis 实例的连接域名 （仅支持内网访问）。 |  |  |
-| Port | Int | 6379 |  | Redis连接端口。 |  |  |
-| RegionId | String | cn-hangzhou |  | 申请的存储实例所在区域。参见Redis区域列表。 |  |  |
-| ZoneId | String | cn-hangzhou-b |  | RegionId下的可用区编码。参见Redis区域列表。 |  |  |
-| InstanceStatus | String | Normal |  | 实例状态： Normal：正常 Creating：创建中 Changing：修改中 Inactive：被禁用 |  |  |
-| CreateTime | String | 2019-03- 06T10:42:03Z |  | 实例创建时间。采用 ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 |  |  |
-|  |  |  |  |  | YYYY-MM- |  |
-|  |  |  |  | DDThh:mm:ssZ |  |  |
-| EndTime | String | 2019-04- 06T10:42:03Z |  | 预付费实例到期时间。采用ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 |  |  |
-| NetworkType | String | VPC |  | 网络类型：CLASSIC或 VPC。 |  |  |
-| VpcId | String | vpc- bp1nme44gek34slfc** ** |  | VPC ID。 |  |  |
-| VSwitchId | String | vsw- bp1e7clcw529l773d*** * |  | 虚拟交换机ID。 |  |  |
-| MaintainStartTime | String | 18:00Z |  | 可运维开始时间。 |  |  |
-| MaintainEndTime | String | 22:00Z |  | 可运维结束时间。 |  |  |
-| SecurityIPList | String | 127.0.0.1 |  | IP白名单。 |  |  |
-| AvailabilityValue | String | 100% |  | 当月的可用性指标。 |  |  |
+| Connections | Long | 10000 |   | 实例连接数限制；单位： 个。 |   |   |
+| ConnectionDomain | String | r- bp1d72gwl41z7f****.r edis.rds.aliyuncs.com |   | Redis 实例的连接域名 （仅支持内网访问）。 |   |   |
+| Port | Int | 6379 |   | Redis连接端口。 |   |   |
+| RegionId | String | cn-hangzhou |   | 申请的存储实例所在区域。参见Redis区域列表。 |   |   |
+| ZoneId | String | cn-hangzhou-b |   | RegionId下的可用区编码。参见Redis区域列表。 |   |   |
+| InstanceStatus | String | Normal |   | 实例状态： Normal：正常 Creating：创建中 Changing：修改中 Inactive：被禁用 |   |   |
+| CreateTime | String | 2019-03- 06T10:42:03Z |   | 实例创建时间。采用 ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 |   |   |
+|   |   |   |   |   | YYYY-MM- |   |
+|   |   |   |   | DDThh:mm:ssZ |   |   |
+| EndTime | String | 2019-04- 06T10:42:03Z |   | 预付费实例到期时间。采用ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 |   |   |
+| NetworkType | String | VPC |   | 网络类型：CLASSIC或 VPC。 |   |   |
+| VpcId | String | vpc- bp1nme44gek34slfc** ** |   | VPC ID。 |   |   |
+| VSwitchId | String | vsw- bp1e7clcw529l773d*** * |   | 虚拟交换机ID。 |   |   |
+| MaintainStartTime | String | 18:00Z |   | 可运维开始时间。 |   |   |
+| MaintainEndTime | String | 22:00Z |   | 可运维结束时间。 |   |   |
+| SecurityIPList | String | 127.0.0.1 |   | IP白名单。 |   |   |
+| AvailabilityValue | String | 100% |   | 当月的可用性指标。 |   |   |
 
-|  |  | YYYY-MM- |  |
+|   |   | YYYY-MM- |   |
 |---|---|---|---|
-|  | DDThh:mm:ssZ |  |  |
+|   | DDThh:mm:ssZ |   |   |
 
-云数据库 Tair（兼容Redis）开发指出于历史兼容性考虑，该函数会有些返回结构在文档中并未提及（如 Config、Region
-
-**说明**
-
-等），后续阿里云将逐步把这些字段删除，请您在调用 API 时不要依赖这些在文档中没有涉及的返回字段。
+> **说明：** 出于历史兼容性考虑，该函数会有些返回结构在文档中并未提及（如 Config、Region 等），后续阿里云将逐步把这些字段删除，请您在调用 API 时不要依赖这些在文档中没有涉及的返回字段。
 
 **请求示例**
 
@@ -1752,13 +1816,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 https://r-kvstore.aliyuncs.com/?Action=DescribeInstanceAttribute &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<DescribeInstanceAttributeResponse>
       <Instances>
             <DBInstanceAttribute>
                   <Connections>10000</Connections>
@@ -1801,8 +1866,6 @@ bp1wcw2rlw76acc5k****.redis.rds.aliyuncs.com</ConnectionDomain>
 tTi 20200331T145622Z/C tTi
 ```
 
-云数据库 Tair（兼容Redis）开发指
-
 ```xml
                   <CreateTime>2020-03-31T14:56:22Z</CreateTime>
 <InstanceClass>redis.logic.sharding.drredissdb1g.1db.0rodb.4proxy.default</InstanceClass>
@@ -1819,15 +1882,19 @@ tTi 20200331T145622Z/C tTi
             </DBInstanceAttribute>
       </Instances>
       <RequestId>D67A69DF-C1FC-4B01-B239-B17888CCFD2A</RequestId>
+</DescribeInstanceAttributeResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
  "Instances": {
   "DBInstanceAttribute": [
-   {
+```
+
+`{`
+
+```json
     "Connections": 10000,
     "ResourceGroupId": "rg-acfmyiu4ekp****",
     "Config": "{\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-
@@ -1852,19 +1919,11 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
     "MaintainStartTime": "18:00Z",
     "Tags": {
      "Tag": [
-      {
 ```
 
-`"Value": "`社区版`",` `"Key": "`类型" 云数据库 Tair（兼容Redis）开发指
-
-```
-      }
-```
-
-]
+`"Value": "`社区版`",` `"Key": "`类型`"` `]` `},`
 
 ```json
-    },
     "ArchitectureType": "standard",
     "EngineVersion": "5.0",
     "ZoneId": "cn-hangzhou-f",
@@ -1886,18 +1945,19 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
     "NodeType": "double",
     "VpcCloudInstanceId": "r-bp1wcw2rlw76ac****",
     "RegionId": "cn-hangzhou"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "RequestId": "D67A69DF-C1FC-4B01-B239-B17888CCFD2A"
-}
 ```
 
-#### DescribeInstances
+`}`
+
+#### 4.8.6 DescribeInstances
+
+调用DescribeInstances接口查询账户下一个或多个实例的信息。
 
 **请求参数**
 
@@ -1908,8 +1968,6 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
 | <公共请求参数> | 无 | 是 | 无 | 参见公共请求参数。 |
 | Action | String | 是 | DescribeIns tances | 操作接口名，取值：DescribeInstances。 |
 | InstanceIds | String | 否 | r- n8r8c5119d 2e**** | 实例 ID（全局唯一）。 说明如需传入多个实例ID，使用英文逗号（,）分隔。 不传入本参数即表示查询该用户名下所有实例。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | InstanceSta tus | String | 否 | Normal | 按状态过滤所需返回的实例： Normal：正常 Creating：创建中 Changing：修改中 Inactive：被禁用 |
 |---|---|---|---|---|
@@ -1940,8 +1998,6 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
 | Capacity | Long | 512 | 申请到的存储实例容量； 单位：MB。 |
 | InstanceClass | String | redis.master. mid.default | 实例规格信息 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | Bandwidth | Long | 128 | 实例带宽限制；单位：Mbps。 |
 |---|---|---|---|
 | Connections | Long | 300 | 实例连接数限制；单位：个。 |
@@ -1962,24 +2018,16 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
 | 42:03Z | DDThh:mm:ssZ |
 |---|---|
 
-出于历史兼容性考虑，该函数会有些返回结构在文档中并未提及（如 Config），后续阿里
-
-**说明**
-
-云将逐步把这些字段删除，请您在调用 API 时不要依赖这些在文档中没有涉及的返回字段。
-
-**请求示例**
-
-云数据库 Tair（兼容Redis）开发指
+> **说明：** 出于历史兼容性考虑，该函数会有些返回结构在文档中并未提及（如 Config），后续阿里云将逐步把这些字段删除，请您在调用 API 时不要依赖这些在文档中没有涉及的返回字段。
 
 ```
 https://r-kvstore.example.com
 ```
 
-?<公共请求参数>
+?<公共请求参数`>`
 
 ```
-&PageNumber=1 &PageSize=10 &InstanceId=r-n8r8c5119d2e****
+&Action=DescribeInstances &PageNumber=1 &PageSize=10 &InstanceId=r-n8r8c5119d2e****
 ```
 
 **返回示例**
@@ -1987,6 +2035,7 @@ https://r-kvstore.example.com
 XML格式：
 
 ```xml
+<DescribeInstancesResponse>
     <Instances>
         <Instance>
             <Bandwidth>128</Bandwidth>
@@ -2010,12 +2059,12 @@ kvstore.example.com</ConnectionDomain>
     <PageSize>10</PageSize>
     <TotalCount>1</TotalCount>
     <RequestId>969D0A1D-C91A-4837-9F70-49785DF9BDCE</RequestId>
+</DescribeInstancesResponse>
 ```
 
-JSON格式： 云数据库 Tair（兼容Redis）开发指
+JSON格式：
 
 ```json
-{
     "Instances" : {
         "Instance" : [{
                 "Bandwidth" : 128,
@@ -2033,21 +2082,22 @@ mple.com",
                 "UserName" : "testuser"
                 "NetworkType":"CLASSSIC"
 "ChargeType":" PostPaid"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "PageNumber" : 1,
     "PageSize" : 10,
     "TotalCount" : 1,
     "RequestId" : "969D0A1D-C91A-4837-9F70-49785DF9BDCE"
-}
 ```
 
-#### DescribeRegions
+`}`
+
+#### 4.8.7 DescribeRegions
+
+调用DescribeRegions查询可创建Redis实例的地域。
 
 **请求参数**
 
@@ -2062,8 +2112,6 @@ mple.com",
 |---|---|---|---|
 | <公共返回参数> | 无 | 无 | 参见公共返回参数。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | RegionIds | List | 无 | RegionIds 为一个 List， 里面每个元素由两部分组成：RegionId、 ZoneIds，其中的 ZoneIds 也是一个 String，多个 ZoneId 用“,”分隔。 |
 |---|---|---|---|
 
@@ -2073,13 +2121,14 @@ mple.com",
 https://r-kvstore.aliyuncs.com?Action=DescribeRegions
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<DescribeRegionsResponse>
       <RegionIds>
             <KVStoreRegion>
               <RegionId>cn-hangzhou</RegionId>
@@ -2099,18 +2148,18 @@ XML格式：
 hangzhou-b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-hangzhoug</ZoneIds>
 ```
 
-`<LocalName>`华东1（杭州）`</LocalName>`
+`<LocalName>`华东`1`（杭州）`</LocalName>`
 
 ```xml
             </KVStoreRegion>
       </RegionIds>
       <RequestId>AD425AD3-CC7B-4EE2-A5CB-2F61BA73****</RequestId>
+</DescribeRegionsResponse>
 ```
 
-JSON格式： 云数据库 Tair（兼容Redis）开发指
+JSON格式：
 
 ```json
-{
  "RegionIds": {
   "KVStoreRegion": [{
     "RegionId": "cn-hangzhou",
@@ -2127,30 +2176,25 @@ JSON格式： 云数据库 Tair（兼容Redis）开发指
       "cn-hangzhou-g"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "RegionEndpoint": "r-kvstore.aliyuncs.com",
     "ZoneIds": "cn-hangzhou-h,cn-hangzhou-MAZ10(h,i),cn-hangzhou-MAZ9(g,h),cn-hangzhou-
 b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-hangzhou-g",
 ```
 
-`"LocalName": "`华东1（杭州）"
-
-```
-   }
-```
-
-]
+`"LocalName": "`华东`1`（杭州）`"` `}` `]` `},`
 
 ```json
- },
  "RequestId": "AD425AD3-CC7B-4EE2-A5CB-2F61BA73****"
-}
 ```
 
-#### DescribeSecurityIps
+`}`
+
+#### 4.8.8 DescribeSecurityIps
+
+调用DescribeSecurityIps接口查询Redis实例的IP白名单。
 
 **请求参数**
 
@@ -2160,8 +2204,6 @@ b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-hangzhou-g"
 | Action | String | 是 | DescribeSecurityI ps | 系统规定参数，取值： DescribeSecurityI ps。 |
 | InstanceId | String | 是 | r- bp1zxszhcgatnx* *** | 实例ID。 |
 | WhitelistNetType | String | 否 | vpc | 白名单的网络类型。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | SecurityIpType | String | 否 | IPv4 | IP类型。 |
 |---|---|---|---|---|
@@ -2176,13 +2218,13 @@ b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-hangzhou-g"
 
 **SecurityIpGroups 的参数**
 
-| 名称 | 类型 | 示例值 |  |  | 描述 |  |  |  |  |
+| 名称 | 类型 | 示例值 |   |   | 描述 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| SecurityIpGroupName | String | default |  |  | IP 白名单分组的名字。 |  |  |  |  |
-| SecurityIpList | String | 100.100.202.***/24,10 .10.10.*** |  |  | IP 白名单分组下的 IP 列表，最多1000个。IP 之间以逗号隔开，格式如下： 0.0.0.0/0,10.23.12 .24（IP） ，或者 10.23.12.24/24 （CI DR 模式，无类域间路由，/24表示了地址中前缀的长度，范围[1,32]）。 |  |  |  |  |
-|  |  |  |  |  |  | 0.0.0.0/0,10.23.12 |  |  |  |
-|  |  |  | 10.*** |  | .24（IP） |  |  |  |  |
-|  |  |  |  |  |  |  | ，或者 |  |  |
+| SecurityIpGroupName | String | default |   |   | IP 白名单分组的名字。 |   |   |   |   |
+| SecurityIpList | String | 100.100.202.***/24,10 .10.10.*** |   |   | IP 白名单分组下的 IP 列表，最多1000个。IP 之间以逗号隔开，格式如下： 0.0.0.0/0,10.23.12 .24（IP） ，或者 10.23.12.24/24 （CI DR 模式，无类域间路由，/24表示了地址中前缀的长度，范围[1,32]）。 |   |   |   |   |
+|   |   |   |   |   |   | 0.0.0.0/0,10.23.12 |   |   |   |
+|   |   |   | 10.*** |   | .24（IP） |   |   |   |   |
+|   |   |   |   |   |   |   | ，或者 |   |   |
 
 **请求示例**
 
@@ -2190,13 +2232,14 @@ b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-hangzhou-g"
 https://r-kvstore.aliyuncs.com/?Action=DescribeSecurityIps &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式： 云数据库 Tair（兼容Redis）开发指
+XML格式：
 
 ```xml
+<DescribeSecurityIpsResponse>
       <SecurityIpGroups>
             <SecurityIpGroup>
                   <SecurityIpList>127.0.0.1</SecurityIpList>
@@ -2210,35 +2253,41 @@ XML格式： 云数据库 Tair（兼容Redis）开发指
             </SecurityIpGroup>
       </SecurityIpGroups>
       <RequestId>EFC9161F-15E3-4A6E-8A99-C09916D1****</RequestId>
+</DescribeSecurityIpsResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "SecurityIpGroups": {
         "SecurityIpGroup": [
-            {
+```
+
+`{`
+
+```json
                 "SecurityIpList": "127.0.0.1",
                 "SecurityIpGroupAttribute": "",
                 "SecurityIpGroupName": "default"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "SecurityIpList": "100.100.202.***/24,10.10.10.***",
                 "SecurityIpGroupAttribute": "hidden",
                 "SecurityIpGroupName": "rds_replica_group"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId": "EFC9161F-15E3-4A6E-8A99-C09916D1****"
-}
 ```
 
-#### DescribeCpuTypes
+`}`
+
+#### 4.8.9 DescribeCpuTypes
 
 查询云数据库Redis实例支持的CPU类型。
 
@@ -2251,8 +2300,6 @@ JSON格式：
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | AccessKey Id | Strin g | Query | 否 | LTAI4G28PhwnizaSC**** **** | 访问密钥ID。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2278,27 +2325,33 @@ JSON格式：
 请求示例
 
 ```
-&ZoneId=cn-hongkong-b
+http(s)://[Endpoint]/?Action=DescribeCpuTypes &ZoneId=cn-hongkong-b
 ```
 
-&公共请求参数云数据库 Tair（兼容Redis）开发指正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"5DEA3CC9-F81D-4387-8E97-CEA40F09****",
  "CpuTypes":[
-  {
+```
+
+`{`
+
+```json
    "CpuType":"Itanium"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+#### 4.8.10 DescribeZones
 
-#### DescribeZones
+调用DescribeZones接口查询支持Redis的可用区。
 
 **请求头**
 
@@ -2315,13 +2368,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 1D42F072-72FE- 4DC4-BB8E- 64B1D298**** | 请求ID。 |
-| Zones | Array |  | 可用区的集合。 |
+| Zones | Array |   | 可用区的集合。 |
 | -RegionId | String | cn-huhehaote | 该地域的ID。 |
 | -ZoneId | String | cn-huhehaote-b | 该地域下的某可用区的ID。 |
 | -ZoneName | String | 呼和浩特可用区B | 该地域下的某可用区的名称。 |
 | - SwitchNetwork | Boolean | true | 是否支持将Redis实例从经典网络切换为专有网络，返回值： true ：支持。 false ：不支持。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2329,10 +2380,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeZones
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"1D42F072-72FE-4DC4-BB8E-64B1D298****",
  "Zones":{
 ```
@@ -2344,11 +2406,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "SwitchNetwork":true,
   "RegionId":"cn-huhehaote",
   "IsRds":true
- }
-}
 ```
 
-#### FlushInstance
+`}` `}`
+
+#### 4.8.11 FlushInstance
+
+调用FlushInstance清空Redis实例中的数据，不可恢复。
 
 **请求参数**
 
@@ -2362,7 +2426,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **返回参数**
 
-表 2. 返回参数云数据库 Tair（兼容Redis）开发指
+表 2. 返回参数
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -2374,25 +2438,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
 https://r-kvstore.aliyuncs.com/?Action=FlushInstance &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<FlushInstanceResponse>
       <RequestId>8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76</RequestId>
+</FlushInstanceResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
   "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E7"
-}
 ```
 
-#### ModifyInstanceAttribute
+`}`
+
+#### 4.8.12 ModifyInstanceAttribute
 
 修改实例的属性，包括名称或密码。
 
@@ -2406,8 +2472,6 @@ JSON格式：
 | Action | String | 是 | ModifyInstanc eAttribute | 操作接口名，取值： ModifyInstanceAttribute。 |
 | InstanceId | String | 是 | r- bp1zxszhcgat nx**** | 实例 ID，全局唯一。 |
 | InstanceNam e | String | 否 | TestInstance | 修改后的实例名称。名称为2-128个字符，以大小写英文字母或中文开头，不支持字符@/:=”<>{[]}和空格。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | NewPassword | String | 否 | Qa12345678 | 实例密码。字符类型：8～30个字符，需同时包含大写字母、小写字母和数字。 说明对于特殊字符 ! <>()[]{},`~.- @#$%^&* _ 暂不支持。 |
 |---|---|---|---|---|
@@ -2423,26 +2487,30 @@ JSON格式：
 **请求示例**
 
 ```
-https://r-kvstore.example.com &InstanceId=r-bp1zxszhcgatnx**** &NewPassword=Qa12345678 &InstanceName=TestInstance
+https://r-kvstore.example.com &Action=ModifyInstanceAttribute &InstanceId=r-bp1zxszhcgatnx**** &NewPassword=Qa12345678 &InstanceName=TestInstance
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<ModifyInstanceAttributeResponse>
     <RequestId>E3B35BEA-9EB0-402C-88CF-C46CCCC1EE59</RequestId>
+</ModifyInstanceAttributeResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{ "RequestId" : "E3B35BEA-9EB0-402C-88CF-C46CCCC1EE59" }
+"RequestId" : "E3B35BEA-9EB0-402C-88CF-C46CCCC1EE59"
 ```
 
-#### ModifyInstanceMaintainTime
+`}`
+
+#### 4.8.13 ModifyInstanceMaintainTime
 
 调用ModifyInstanceMaintainTime修改Redis实例的可维护时间段，阿里云将在您设定的可维护时间段内对Redis实例进行例行维护。
 
@@ -2453,8 +2521,6 @@ JSON格式：
 | 名称 | 类型 | 是否必须 | 示例值 | 描述 |
 |---|---|---|---|---|
 | <公共请求参数> | 无 | 是 | 无 | 参见公共请求参数。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | Action | String | 是 | ModifyInstanceM aintainTime | 系统规定参数，取值： ModifyInstanceM aintainTime。 |
 |---|---|---|---|---|
@@ -2476,25 +2542,27 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=ModifyInstanceMaintainTime &InstanceId=r-bp1zxszhcgatnx**** &MaintainStartTime=17:00Z &MaintainEndTime=18:00Z
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<ModifyInstanceMaintainTimeResponse>
       <RequestId>8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76</RequestId>
+</ModifyInstanceMaintainTimeResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
  "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76"
-}
 ```
 
-#### ModifyInstanceNetExpireTime
+`}`
+
+#### 4.8.14 ModifyInstanceNetExpireTime
 
 若Redis实例之前执行过由经典网络向VPC网络切换，并保留了经典网络连接地址，则可调用 ModifyInstanceNetExpireTime延长经典网络连接地址的保留时间。
 
@@ -2502,8 +2570,6 @@ JSON格式：
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库 Tair（兼容Redis）开发指
 
 | <公共请求参数> | 无 | 是 | 无 | 参见公共请求参数。 |
 |---|---|---|---|---|
@@ -2526,33 +2592,29 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=ModifyInstanceNetExpireTime &ClassicExpiredDays=14 &ConnectionString=r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<ModifyInstanceNetExpireTimeResponse>
       <RequestId>9C4AF387-1EA3-4C84-8013-3F6B973EDDF5</RequestId>
+</ModifyInstanceNetExpireTimeResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId": "9C4AF387-1EA3-4C84-8013-3F6B973EDDF5",
-}
 ```
 
-#### ModifySecurityIps
+`}`
 
-**请求参数**
+#### 4.8.15 ModifySecurityIps
 
-云数据库 Tair（兼容Redis）开发指
-
-**请求参数**
-
-表 1. 请求参数
+调用ModifySecurityIps设置Redis实例的IP白名单。 表 1. 请求参数
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2577,25 +2639,27 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=ModifySecurityIps &InstanceId=r-bp1zxszhcgatnx**** &SecurityIps=100.64.***.0/24,10.101.11.***
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式： 云数据库 Tair（兼容Redis）开发指
+XML格式：
 
 ```xml
+<ModifySecurityIpsResponse>
       <RequestId>AAAF99B1-69ED-4E80-8CD5-272C09E4****</RequestId>
+</ModifySecurityIpsResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId" : "AAAF99B1-69ED-4E80-8CD5-272C09E4****"
-}
 ```
 
-#### SwitchNetwork
+`}`
+
+#### 4.8.16 SwitchNetwork
 
 调用SwitchNetwork切换Redis实例的专有网络VPC或交换机，如果Redis实例为经典网络，则会将其切换为专有网络。
 
@@ -2610,8 +2674,6 @@ JSON格式：
 | VpcId | String | 否 | vpc- bp1nme44gek34 slfc**** | 切换到的 VPC 的虚拟网络ID。 |
 | VSwitchId | String | 否 | vsw- bp1e7clcw529l77 3d**** | 切换到的 VPC 的虚拟交换机 ID。如果指定了 VPC ID，则该参数也必须指定。 |
 | RetainClassic | String | 否 | True | 是否保留经典网络 IP。默认是False。 True：保留 False：不保留 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | ClassicExpiredDa ys | String | 否 | 30 | 保留经典网络 IP 的时间。单位：天。 可选值：14、30、 60、120。若选择保留经典网络地址，则该参数必选。 |
 |---|---|---|---|---|
@@ -2630,35 +2692,35 @@ JSON格式：
 https://r-kvstore.aliyuncs.com?Action=SwitchNetwork &InstanceId=r-bp1zxszhcgatnx**** &TargetNetworkType=VPC &VpcId=vpc-bp1nme44gek34slfc**** &VSwitchId=vsw-bp1e7clcw529l773d**** &RetainClassic=True &ClassicExpiredDays=30
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<SwitchNetworkResponse>
       <TaskId>578678678</TaskId>
       <requestId>F0997EE8-F4C2-4503-9168-85177ED78C70</requestId>
+</SwitchNetworkResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "TaskId":"578678678",
     "requestId": "F0997EE8-F4C2-4503-9168-85177ED78C70"
-}
 ```
 
-#### SwitchInstanceHA
+`}`
+
+#### 4.8.17 SwitchInstanceHA
 
 执行主备切换（即切换节点角色），可应用于容灾演练、多可用区场景下的应用就近连接。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 云数据库 Tair（兼容Redis）开发指
-
-**请求参数**
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2666,8 +2728,6 @@ JSON格式：
 | InstanceId | Strin g | Quer y | 是 | r-bp1zxszhcgatnx**** | 实例ID，可调用 DescribeInstances获取。 |
 | NodeId | Strin g | Quer y | 否 | 56****19,56****20 | 数据分片节点ID，您可以调用 DescribeRoleZoneInfo获取 CustinsId参数，多个数据分片节点ID之间使用英文逗号 （,）分隔，如需指定所有节点请输入 all 。 当实例为集群或读写分离架构时，本参数才可用，且必填。 |
 | SwitchTyp e | Strin g | Quer y | 是 | AvailablePriority | 您需要根据业务场景对数据、 服务等方面的需求进行衡量， 然后选取切换模式。 枚举值: AvailablePriority(可用性优先，不考虑主备延迟， 立即执行主备切换，可能会丢失少量数据。) ReliabilityPriority(可靠性优先，确保主备同步无延迟时才执行主备切换，不会丢失数据。该模式在写入量较大且持续存在同步延迟的场景下，可能会造成主备切换失败。) ImmediatelyPriority(立即切换，设置改参数 SwitchMode只能是0，实例会跳过其他检测步骤立即触发HA切换，保障实例 RTO，但无法保证实例数据一致性。) |
-
-云数据库 Tair（兼容Redis）开发指
 
 | SwitchMod e | Integ er | Quer y | 否 | 0 | 执行时间，取值： 0：立即执行，默认值。 1：在可维护时间段执行。 您可以调用 ModifyInstanceMaint ainTime修改实例的可维护时间段。 |
 |---|---|---|---|---|---|
@@ -2683,36 +2743,30 @@ JSON格式：
 请求示例
 
 ```
-&InstanceId=r-bp1zxszhcgatnx****
+http(s)://[Endpoint]/?Action=SwitchInstanceHA &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D1****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>5D622714-AEDD-4609-9167-F5DDD3D1****</RequestId>
 ```
 
-### 数据加密
+### 4.9 数据加密
 
-#### DescribeEncryptionKey
+#### 4.9.1 DescribeEncryptionKey
 
 调用DescribeEncryptionKey接口查询Redis实例的透明数据加密TDE自定义密钥的详情。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
-
-**请求参数**
-
-云数据库 Tair（兼容Redis）开发指
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2733,20 +2787,21 @@ JSON格式：
 | Creator | String | 17649847******** | 密钥创建者的云账号ID。 |
 | DeleteDate | String | 2021-09- 24T18:22:03Z | 实例密钥的预计删除时间，格式为yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 本参数返回内容为空时，表示密钥不会被自动删除。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 **示例**
-
-请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeEncryptionKey &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Origin":"Aliyun_KMS",
  "Description":"testkey",
  "RequestId":"9A931CE5-C926-5E09-B0EC-6299C4A6****",
@@ -2756,10 +2811,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "EncryptionKey":"ad463061-992d-4195-8a94-ed63********",
  "Creator":"17649847********",
  "DeleteDate":"2021-09-24T18:22:03Z"
-}
 ```
 
-#### DescribeInstanceTDEStatus
+`}`
+
+#### 4.9.2 DescribeInstanceTDEStatus
 
 调用DescribeInstanceTDEStatus接口查询Redis实例是否开启了TDE加密功能。
 
@@ -2780,26 +2836,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | TDEStatus | String | Enabled | TDE加密功能是否开启，返回值： Enabled ：开启。 Disabled ：关闭。 |
 | RequestId | String | 5D622714-AEDD- 4609-9167- F5DDD3D1**** | 请求ID。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 **示例**
-
-请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeInstanceTDEStatus &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TDEStatus":"Enabled",
- "RequestId":"5D622714-AEDD-4609-9167-F5DDD3D1****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### CheckCloudResourceAuthorized
+`{`
+
+```json
+ "TDEStatus":"Enabled",
+ "RequestId":"5D622714-AEDD-4609-9167-F5DDD3D1****"
+```
+
+`}`
+
+#### 4.9.3 CheckCloudResourceAuthorized
 
 调用CheckCloudResourceAuthorized接口查询Redis实例是否已被授权使用KMS密钥服务。
 
@@ -2813,15 +2871,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | 是 | r-bp1zxszhcgatnx**** | 实例ID，可调用DescribeInstances获取。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RoleArn | Strin g | Query | 否 | acs:ram::123456789012 ****:role/AliyunRdsInsta nceEncryptionDefaultRol e | 指定待授权角色的全局资源描述符ARN（Alibaba Cloud Resource Name） 信息，完成该角色的授权后即可使用相关密钥管理服务，格式： acs:ram::$accoun tID:role/$roleName 。 $accountID ：云账号ID。您可以登录阿里云控制台，将鼠标悬停在右上角头像的位置，单击安全设置进行查看。 $roleName ： RAM角色名称，取值固定为：AliyunRdsIn stanceEncrypti onDefaultRol e 。 |
 
-|  |  | acs:ram::$accoun |
+|   |   | acs:ram::$accoun |
 |---|---|---|
-|  | tID:role/$roleName |  |
+|   | tID:role/$roleName |   |
 
 **返回数据**
 
@@ -2838,18 +2894,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=CheckCloudResourceAuthorized &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式云数据库 Tair（兼容Redis）开发指
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "AuthorizationState":1,
  "RequestId":"A501A191-BD70-5E50-98A9-C2A486A82****"
-}
 ```
 
-### 账号管理
+`}`
 
-#### DescribeUserInfo
+### 4.10 账号管理
+
+#### 4.10.1 DescribeUserInfo
+
+调用DescribeUserInfo接口获取用户信息。
 
 **请求头**
 
@@ -2863,16 +2922,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | IsAuthenticatio n | Boolean | true | 身份认证。 |
 | IsFinance | Boolean | false | 金融客户。 |
 | BalanceAmoun t | Long | 0 | 余额。 |
-| AlreadyHasRe sourceNum | Struct |  | 已有资源数。 |
+| AlreadyHasRe sourceNum | Struct |   | 已有资源数。 |
 | -EcsBought | Long | 22 | 从ECS购买。 |
 | -KVSBought | Long | 29 | 从KVS购买。 |
 
 **示例**
 
-请求示例正常返回示例 `JSON` 格式云数据库 Tair（兼容Redis）开发指
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeUserInfo
+```
+
+正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "BalanceAmount":0,
  "RequestId":"3A40BE4E-1890-4972-889C-FEFA376XXX",
  "IsAuthentication":true,
@@ -2880,11 +2945,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "AlreadyHasResourceNum":{
   "EcsBought":22,
   "KVSBought":29
- }
-}
 ```
 
-#### CreateAccount
+`}` `}`
+
+#### 4.10.2 CreateAccount
+
+调用CreateAccount接口可以在Redis实例中创建有特定权限的账号。
 
 **请求头**
 
@@ -2899,23 +2966,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | AccountPr ivilege | Strin g | Query | 否 | RoleReadOnly | 账号权限，取值： RoleReadOnly ：只读权限。 RoleReadWrite ： 读写权限，默认值。 |
 | AccountPa ssword | Strin g | Query | 是 | uWonno21**** | 账号的密码。长度为8~32 位，需包含大写字母、小写字母、特殊字符和数字中的至少三种，允许的特殊字符包括 !@#$%^&*() +- _ = 。 |
 
-|  | = |
+|   | = |
 |---|---|
-
-云数据库 Tair（兼容Redis）开发指
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | AccountD escription | Strin g | Query | 否 | testaccount | 账号描述。 需以中文、英文字母开头，不能以 http: // 或 https: // 开头。 可以包含中文、英文字母、数字、下划线（ ） _ 和短划线（-）。 长度为2~256个字符。 |
 | AccountTy pe | Strin g | Query | 否 | Normal | 账号类型，取值固定为Normal （普通账号）。 |
 
-|  | http: |
+|   | http: |
 |---|---|
-| https: |  |
+| https: |   |
 
-|  |  | // |
+|   |   | // |
 |---|---|---|
-|  |  | // |
+|   |   | // |
 
 **返回数据**
 
@@ -2930,20 +2995,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=r-bp1zxszhcgatnx**** &AccountName=demoaccount &AccountPassword=uWonno21****
+http(s)://[Endpoint]/?Action=CreateAccount &InstanceId=r-bp1zxszhcgatnx**** &AccountName=demoaccount &AccountPassword=uWonno21****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"ABAF95F6-35C1-4177-AF3A-70969EBD****",
  "InstanceId":"r-bp1zxszhcgatnx****",
  "AcountName":"demoaccount"
-}
 ```
-
-云数据库 Tair（兼容Redis）开发指
 
 **错误码**
 
@@ -2958,9 +3025,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidAccountNam e.Forbid | InvalidAccountName.Forbid | Specified AccountName is a keyword. |
 | 403 | AccountLimitExcee ded | AccountLimitExceeded | Exceeding the allowed amount of account. |
 
-### 网络安全
+### 4.11 网络安全
 
-#### DescribeInstanceSSL
+#### 4.11.1 DescribeInstanceSSL
 
 调用DescribeInstanceSSL接口查询实例是否开启了TLS（SSL）加密认证。
 
@@ -2980,8 +3047,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | SSLExpiredTim e | String | 2020-08- 05T09:05:53Z | CA证书的过期时间。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 02260F96-913E- 4655-9BA5- A3651CAF**** | 请求ID。 |
@@ -2997,17 +3062,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeInstanceSSL &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "SSLExpiredTime":"2020-08-05T09:05:53Z",
  "RequestId":"02260F96-913E-4655-9BA5-A3651CAF****",
  "SSLEnabled":"Enable",
  "InstanceId":"r-bp1zxszhcgatnx****",
  "CertCommonName":"r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3016,11 +3087,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | IncorrectCharacter Type | IncorrectCharacterType | Current DB instance CharacterType does not support this operation. |
 | 403 | IncorrectEngineVer sion | IncorrectEngineVersion | Current engine version does not support operations. |
 
-云数据库 Tair（兼容Redis）开发指
+### 4.12 连接管理
 
-### 连接管理
-
-#### DescribeIntranetAttribute
+#### 4.12.1 DescribeIntranetAttribute
 
 调用DescribeIntranetAttribute接口查询Redis实例当前的内网带宽。如果调整过带宽，您还可以查询到带宽的过期时间。
 
@@ -3050,19 +3119,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeIntranetAttribute &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "IntranetBandwidth":102,
  "RequestId":"25D42CC3-FBA1-4AEC-BCE2-B8DD3137****",
  "ExpireTime":"0"
-}
 ```
 
-云数据库 Tair（兼容Redis）开发指
-
-#### ModifyInstanceVpcAuthMode
+#### 4.12.2 ModifyInstanceVpcAuthMode
 
 调用ModifyInstanceVpcAuthMode接口开启或关闭专有网络免密访问，可在保障安全性的前提下，实现更便捷的数据库连接。
 
@@ -3091,17 +3162,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=ModifyInstanceVpcAuthMode &InstanceId=r-bp1zxszhcgatnx**** &VpcAuthMode=Close
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"ABAF95F6-35C1-4177-AF3A-70969EBD****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### AllocateInstancePublicConnection
+`{`
 
-云数据库 Tair（兼容Redis）开发指调用AllocateInstancePublicConnection接口为Redis实例申请公网连接地址。
+```json
+ "RequestId":"ABAF95F6-35C1-4177-AF3A-70969EBD****"
+```
+
+`}`
+
+#### 4.12.3 AllocateInstancePublicConnection
+
+调用AllocateInstancePublicConnection接口为Redis实例申请公网连接地址。
 
 **请求头**
 
@@ -3109,15 +3186,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **请求参数**
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  |  | 说明 |  |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   |   | 说明 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| InstanceId | Strin g | Quer y | 是 | r-bp1zxszhcgatnx**** |  |  | 实例ID。 |  |  |  |
-| Connectio nStringPref ix | Strin g | Quer y | 是 | r-bp1zxszhcgatnx**** |  |  | 公网连接地址的前缀，需由小写英文字母与数字组成，以小写字母开头，长度为8~40个字符。 公网连接地址格式为： <前缀 |  |  |  |
-|  |  |  |  |  |  |  |  |  | <前缀 |  |
-|  |  |  |  |  |  |  |  | >.redis.rds.aliyun |  |  |
-|  |  |  |  |  |  |  |  | cs.com |  |  |
-| Port | Strin g | Quer y | 是 | 6379 |  |  | Redis服务端口，取值范围：1024~65535。 |  |  |  |
-| IPVersionS electedTyp e | Strin g | Quer y | 否 | IPv4 |  |  | IP类型。默认IPv4，取值范围： IPv4 IPv6 |  |  |  |
+| InstanceId | Strin g | Quer y | 是 | r-bp1zxszhcgatnx**** |   |   | 实例ID。 |   |   |   |
+| Connectio nStringPref ix | Strin g | Quer y | 是 | r-bp1zxszhcgatnx**** |   |   | 公网连接地址的前缀，需由小写英文字母与数字组成，以小写字母开头，长度为8~40个字符。 公网连接地址格式为： <前缀 |   |   |   |
+|   |   |   |   |   |   |   |   |   | <前缀 |   |
+|   |   |   |   |   |   |   |   | >.redis.rds.aliyun |   |   |
+|   |   |   |   |   |   |   |   | cs.com |   |   |
+| Port | Strin g | Quer y | 是 | 6379 |   |   | Redis服务端口，取值范围：1024~65535。 |   |   |   |
+| IPVersionS electedTyp e | Strin g | Quer y | 否 | IPv4 |   |   | IP类型。默认IPv4，取值范围： IPv4 IPv6 |   |   |   |
 
 **返回数据**
 
@@ -3133,13 +3210,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=AllocateInstancePublicConnection &InstanceId=r-bp1zxszhcgatnx**** &ConnectionStringPrefix=r-bp1zxszhcgatnx**** &Port=6379
 ```
 
-&公共请求参数正常返回示例云数据库 Tair（兼容Redis）开发指 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"20C8341E-B5AD-4B24-BD82-D73241522ABF"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -3151,9 +3234,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | NetTypeExists | NetTypeExists | Specified net type already existed. |
 | 400 | InvalidConnectionS tring.Format | InvalidConnectionString.Forma t | Specified connection string is not valid. |
 
-### 备份恢复
+### 4.13 备份恢复
 
-#### CreateBackup
+#### 4.13.1 CreateBackup
+
+调用CreateBackup为Redis实例创建数据备份。
 
 **请求参数**
 
@@ -3165,8 +3250,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **返回参数**
 
-云数据库 Tair（兼容Redis）开发指
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | <公共返回参数> | 无 | 无 | 参见公共返回参数。 |
@@ -3177,40 +3260,42 @@ HTTP/1.1 200 OK Content-Type:application/json {
 https://r-kvstore.aliyuncs.com/?Action=CreateBackup &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<CreateBackupResponse>
       <RequestId>2FF6158E-3394-4A90-B634-79C49184****</RequestId>
       <BackupJobID>1162****</BackupJobID>
+</CreateBackupResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId": "2FF6158E-3394-4A90-B634-79C49184****",
     "BackupJobID": "1162****"
-}
 ```
 
-#### ModifyBackupPolicy
+`}`
+
+#### 4.13.2 ModifyBackupPolicy
+
+调用ModifyBackupPolicy修改Redis实例的自动备份策略。
 
 **请求参数**
 
-| 名称 | 类型 | 是否必选 | 示例值 |  | 描述 |  |  |
+| 名称 | 类型 | 是否必选 | 示例值 |   | 描述 |   |   |
 |---|---|---|---|---|---|---|---|
-| <公共请求参数> | 无 | 是 | 无 |  | 参见公共请求参数。 |  |  |
-| Action | String | 是 | ModifyBackupPoli cy |  | 系统规定参数，取值： ModifyBackupPoli cy。 |  |  |
-| InstanceId | String | 是 | r- bp1zxszhcgatnx* *** |  | 实例ID。 |  |  |
-| PreferredBackup Time | String | 是 | 00:00Z-04:00Z |  | 备份时间，格式： HH:mmZ- HH:mm Z 。 |  |  |
-|  |  |  |  |  |  | HH:mmZ- |  |
-|  |  |  |  |  | HH:mm Z |  |  |
-
-云数据库 Tair（兼容Redis）开发指
+| <公共请求参数> | 无 | 是 | 无 |   | 参见公共请求参数。 |   |   |
+| Action | String | 是 | ModifyBackupPoli cy |   | 系统规定参数，取值： ModifyBackupPoli cy。 |   |   |
+| InstanceId | String | 是 | r- bp1zxszhcgatnx* *** |   | 实例ID。 |   |   |
+| PreferredBackup Time | String | 是 | 00:00Z-04:00Z |   | 备份时间，格式： HH:mmZ- HH:mm Z 。 |   |   |
+|   |   |   |   |   |   | HH:mmZ- |   |
+|   |   |   |   |   | HH:mm Z |   |   |
 
 | PreferredBackupP eriod | String | 是 | Tuesday | 备份周期： Monday：周一 Tuesday：周二 Wednesday： 周三 Thursday：周四 Friday：周五 Saturday：周六 Sunday：周日 |
 |---|---|---|---|---|
@@ -3229,25 +3314,27 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=ModifyBackupPolicy &InstanceId=r-bp1zxszhcgatnx**** &PreferredBackupTime=00:00Z-04:00Z &PreferredBackupPeriod=Tuesday
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<ModifyBackupPolicyResponse>
       <RequestId>8D0C0AFC-E9CD-47A4-8395-5C31BF9B****</RequestId>
+</ModifyBackupPolicyResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
-}
 ```
 
-#### DescribeBackupPolicy
+`}`
+
+#### 4.13.3 DescribeBackupPolicy
 
 调用DescribeBackupPolicy查询Redis实例的备份策略，包括备份周期、备份时间等。
 
@@ -3256,8 +3343,6 @@ JSON格式：
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | <公共请求参数> | 无 | 是 | 无 | 参见公共请求参数。 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | Action | String | 是 | DescribeBackupP olicy | 系统规定参数，取值： DescribeBackupP olicy。 |
 |---|---|---|---|---|
@@ -3279,33 +3364,36 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=DescribeBackupPolicy &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
-<PreferredBackupPeriod>Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday</Preferre ackupPeriod>
+<DescribeBackupPolicyResponse> <PreferredBackupPeriod>Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday</Preferre ackupPeriod>
       <RequestId>90B82DB7-FB28-4CC2-ADBF-1F8659F3****</RequestId>
       <PreferredNextBackupTime>2018-10-26T19:05Z</PreferredNextBackupTime>
       <PreferredBackupTime>19:00Z-20:00Z</PreferredBackupTime>
       <BackupRetentionPeriod>7</BackupRetentionPeriod>
+</DescribeBackupPolicyResponse>
 ```
 
-JSON格式： 云数据库 Tair（兼容Redis）开发指
+JSON格式：
 
 ```json
-{
  "PreferredBackupPeriod": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
  "RequestId": "90B82DB7-FB28-4CC2-ADBF-1F8659F3****",
  "PreferredNextBackupTime": "2018-10-26T19:05Z",
  "PreferredBackupTime": "19:00Z-20:00Z",
  "BackupRetentionPeriod": "7"
-}
 ```
 
-#### DescribeBackups
+`}`
+
+#### 4.13.4 DescribeBackups
+
+调用DescribeBackups查询Redis实例的备份文件信息。
 
 **请求参数**
 
@@ -3330,8 +3418,6 @@ JSON格式： 云数据库 Tair（兼容Redis）开发指
 | TotalCount | Integer | 5 | 备份总个数。 |
 | PageSize | Integer | 30 | 每页记录数。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 **Backup 的参数构成**
 
 | 名称 | 类型 | 示例值 | 描述 |
@@ -3353,13 +3439,14 @@ JSON格式： 云数据库 Tair（兼容Redis）开发指
 https://r-kvstore.aliyuncs.com/?Action=DescribeBackups &InstanceId=r-bp1zxszhcgatnx**** &StartTime=2019-03-11T10:00Z &EndTime=2019-03-14T18:00Z
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式： 云数据库 Tair（兼容Redis）开发指
+XML格式：
 
 ```xml
+<DescribeBackupsResponse>
       <TotalCount>1</TotalCount>
       <RequestId>721E2D39-351D-40E2-BF7C-B5075B0A****</RequestId>
       <PageSize>30</PageSize>
@@ -3383,19 +3470,23 @@ hangzhou.aliyuncs.com/********</BackupDownloadURL>
                   <BackupStatus>Success</BackupStatus>
             </Backup>
       </Backups>
+</DescribeBackupsResponse>
 ```
 
-JSON格式： 云数据库 Tair（兼容Redis）开发指
+JSON格式：
 
 ```json
-{
     "TotalCount": 1,
     "RequestId": "721E2D39-351D-40E2-BF7C-B5075B0A****",
     "PageSize": 30,
     "PageNumber": 1,
     "Backups": {
         "Backup": [
-            {
+```
+
+`{`
+
+```json
                 "BackupMethod": "Physical",
                 "EngineVersion": "4.0",
                 "BackupIntranetDownloadURL": "http://rdsbak-hz-v3.oss-cn-hangzhou-intern
@@ -3411,17 +3502,11 @@ hangzhou.aliyuncs.com/********",
                 "BackupStartTime": "2020-10-30T17:28:28Z",
                 "BackupType": "FullBackup",
                 "BackupStatus": "Success"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-#### RestoreInstance
+#### 4.13.5 RestoreInstance
 
 调用RestoreInstance将备份文件中的数据恢复到当前Redis实例中，结合数据闪回更可实现将指定的Key 恢复至某个秒级时间点。
 
@@ -3439,9 +3524,7 @@ hangzhou.aliyuncs.com/********",
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库 Tair（兼容Redis）开发指
-
-| 南·API参考 |  |  |  |
+| 南·API参考 |   |   |   |
 |---|---|---|---|
 
 | <公共返回参数> | 无 | 无 | 参见公共返回参数。 |
@@ -3453,27 +3536,31 @@ hangzhou.aliyuncs.com/********",
 http(s)://r-kvstore.aliyuncs.com/?Action=RestoreInstance &InstanceId=r-bp1zxszhcgatnx**** &RestoreType=1 &RestoreTime=2021-07-06T07:25:57Z &FilterKey=key:00000007198*
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<RestoreInstanceResponse>
       <RequestId>8D0C0AFC-E9CD-47A4-8395-5C31BF9B****</RequestId>
+</RestoreInstanceResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
-}
 ```
 
-### 监控管理
+`}`
 
-#### DescribeMonitorItems
+### 4.14 监控管理
+
+#### 4.14.1 DescribeMonitorItems
+
+调用DescribeMonitorItems查询Redis实例支持的监控项列表。
 
 **请求参数**
 
@@ -3491,8 +3578,6 @@ JSON格式：
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库 Tair（兼容Redis）开发指
-
 | <公共返回参数> | 无 | 无 | 参见公共返回参数。 |
 |---|---|---|---|
 | MonitorItems | List | 无 | 每个可查看的监控参数 List。 |
@@ -3503,13 +3588,14 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=DescribeMonitorItems
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<DescribeMonitorItemsResponse>
  <MonitorItems>
   <MonitorItem>
    <MonitorKey>GetQ</MonitorKey>
@@ -3529,12 +3615,12 @@ XML格式：
   </MonitorItem>
  </MonitorItems>
  <RequestId>B906A893-58A3-4644-AC2D-A2C9B08706C1</RequestId>
+</DescribeMonitorItemsResponse>
 ```
 
-JSON格式： 云数据库 Tair（兼容Redis）开发指
+JSON格式：
 
 ```json
-{
     "MonitorItems" : {
         "MonitorItem" : [{
                 "MonitorKey" : "GetQ",
@@ -3548,40 +3634,37 @@ JSON格式： 云数据库 Tair（兼容Redis）开发指
             }, {
                 "MonitorKey" : "ReplaceQ",
                 "Unit" : "Counts/s"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId" : "B906A893-58A3-4644-AC2D-A2C9B08706C1"
-}
 ```
 
-#### DescribeHistoryMonitorValues
+`}`
+
+#### 4.14.2 DescribeHistoryMonitorValues
 
 调用DescribeHistoryMonitorValues查看Redis实例的性能监控信息。
 
 **请求参数**
 
-| 名称 | 类型 | 是否必须 | 示例值 |  | 描述 |  |  |
+| 名称 | 类型 | 是否必须 | 示例值 |   | 描述 |   |   |
 |---|---|---|---|---|---|---|---|
-| <公共请求参数> | 无 | 是 | 无 |  | 参见公共请求参数。 |  |  |
-| Action | String | 是 | DescribeHistoryM onitorValues |  | 系统规定参数，取值： DescribeHistoryM onitorValues。 |  |  |
-| InstanceId | String | 是 | r- bp1zxszhcgatnx* *** |  | 实例ID。 |  |  |
-| StartTime | String | 是 | 2018-10- 18T12:00:00Z |  | 历史监控开始时间点；采用ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 |  |  |
-|  |  |  |  |  |  | YYYY-MM- |  |
-|  |  |  |  |  | DDThh:mm:ssZ |  |  |
+| <公共请求参数> | 无 | 是 | 无 |   | 参见公共请求参数。 |   |   |
+| Action | String | 是 | DescribeHistoryM onitorValues |   | 系统规定参数，取值： DescribeHistoryM onitorValues。 |   |   |
+| InstanceId | String | 是 | r- bp1zxszhcgatnx* *** |   | 实例ID。 |   |   |
+| StartTime | String | 是 | 2018-10- 18T12:00:00Z |   | 历史监控开始时间点；采用ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 |   |   |
+|   |   |   |   |   |   | YYYY-MM- |   |
+|   |   |   |   |   | DDThh:mm:ssZ |   |   |
 
-云数据库 Tair（兼容Redis）开发指
-
-| EndTime | String | 是 | 2018-10- 19T12:00:00Z |  | 历史监控结束时间点；采用ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 EndTime 必须大于等于 StartTime。 |  |  |
+| EndTime | String | 是 | 2018-10- 19T12:00:00Z |   | 历史监控结束时间点；采用ISO8601 表示法，并使用 UTC 时间。格式为： YYYY-MM- DDThh:mm:ssZ 。 EndTime 必须大于等于 StartTime。 |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | YYYY-MM- |  |
-|  |  |  |  | 00Z | DDThh:mm:ssZ |  |  |
-| IntervalForHistor y | String | 是 | 01m |  | 取值必须是01m、 05m、15m、 60m。 监控信息采样间隔，即每隔 N 分钟取一个监控采样点。 |  |  |
-| MonitorKeys | String | 否 | CpuUsage |  | 监控项Key。通过函数 DescribeMonitorIt ems查询。 |  |  |
+|   |   |   |   |   |   | YYYY-MM- |   |
+|   |   |   |   | 00Z | DDThh:mm:ssZ |   |   |
+| IntervalForHistor y | String | 是 | 01m |   | 取值必须是01m、 05m、15m、 60m。 监控信息采样间隔，即每隔 N 分钟取一个监控采样点。 |   |   |
+| MonitorKeys | String | 否 | CpuUsage |   | 监控项Key。通过函数 DescribeMonitorIt ems查询。 |   |   |
 
 **返回参数**
 
@@ -3596,31 +3679,33 @@ JSON格式： 云数据库 Tair（兼容Redis）开发指
 https://r-kvstore.aliyuncs.com/?Action=DescribeHistoryMonitorValues &InstanceId=r-bp1zxszhcgatnx**** &StartTime=2018-10-18T12:00:00Z &EndTime=2018-10-18T12:03:00Z &IntervalForHistory=01m &MonitorKeys=CpuUsage
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式： 云数据库 Tair（兼容Redis）开发指
+XML格式：
 
 ```xml
+<DescribeHistoryMonitorValuesResponse>
       <MonitorHistory>{"2020-11-18T00:00:00Z":{"CpuUsage":"0.30"},"2020-11-
 18T00:02:00Z":{"CpuUsage":"0.60"},"2020-11-18T00:03:00Z":{"CpuUsage":"0.60"}} </MonitorHistory>
       <RequestId>689E8093-3094-4DC2-A2A2-30D40097****</RequestId>
+</DescribeHistoryMonitorValuesResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
  "MonitorHistory": "{\"2020-11-18T00:00:00Z\":{\"CpuUsage\":\"0.30\"},\"2020-11-18T00:0
 2:00Z\":{\"CpuUsage\":\"0.60\"},\"2020-11-18T00:03:00Z\":{\"CpuUsage\":\"0.60\"}}",
  "RequestId": "689E8093-3094-4DC2-A2A2-30D40097****"
-}
 ```
 
-### 参数管理
+`}`
 
-#### DescribeInstanceConfig
+### 4.15 参数管理
+
+#### 4.15.1 DescribeInstanceConfig
 
 调用DescribeInstanceConfig查询Redis实例的参数配置信息。
 
@@ -3642,8 +3727,6 @@ JSON格式：
 |---|---|---|---|
 | <公共返回参数> | 无 | 无 | 参见公共返回参数。 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | Config | String | {"#no loose statistics _ _ - cmds":"SET,GET","Evic tionPolicy":"volatile- lru","hash-max-ziplist- entries":512,"slowlog- log-slower- than":"1000","notify- keyspace- events":"$","zset-max- ziplist- entries":128,"list-max- ziplist- entries":512,"list-max- ziplist-value":64,"zset- max-ziplist- value":64,"set-max- intset- entries":512,"hash- max-ziplist- value":64,"#no loose _ _ disabled- commands":"flushall"} | 实例的配置参数。参见实例配置参数表。 |
 |---|---|---|---|
 
@@ -3653,30 +3736,30 @@ JSON格式：
 https://r-kvstore.aliyuncs.com/?Action=DescribeInstanceConfig &InstanceId=r-bp1zxszhcgatnx****
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式：
 
 ```xml
+<DescribeInstanceConfigResponse>
       <RequestId>4E2C08F6-2D11-4ECD-9A4C-27EF2D3D****</RequestId>
       <Config>{"#no_loose_statistics-cmds":"SET,GET","EvictionPolicy":"volatile-lru","h
-ash-max-ziplist-entries":512,"slowlog-log-slower-than":"1000","notify-keyspace-events": "$","zset-max-ziplist-entries":128,"list-max-ziplist-entries":512,"list-max-ziplist-val ue":64,"zset-max-ziplist-value":64,"set-max-intset-entries":512,"hash-max-ziplist-value ":64,"#no_loose_disabled-commands":"flushall"}</Config>
+ash-max-ziplist-entries":512,"slowlog-log-slower-than":"1000","notify-keyspace-events": "$","zset-max-ziplist-entries":128,"list-max-ziplist-entries":512,"list-max-ziplist-val ue":64,"zset-max-ziplist-value":64,"set-max-intset-entries":512,"hash-max-ziplist-value ":64,"#no_loose_disabled-commands":"flushall"}</Config> </DescribeInstanceConfigResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
     "RequestId": "4E2C08F6-2D11-4ECD-9A4C-27EF2D3D****",
     "Config": "{\"#no_loose_statistics-
-cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplistentries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-int set-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabledcommands\":\"flushall\"}" }
+cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplistentries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-int set-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabledcommands\":\"flushall\"}"
 ```
 
-云数据库 Tair（兼容Redis）开发指
+#### 4.15.2 ModifyInstanceConfig
 
-#### ModifyInstanceConfig
+调用ModifyInstanceConfig修改Redis实例的参数配置。
 
 **请求参数**
 
@@ -3703,27 +3786,29 @@ cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries
 https://r-kvstore.aliyuncs.com/?Action=ModifyInstanceConfig &InstanceId=r-bp1zxszhcgatnx**** &Config={"EvictionPolicy":"volatile-lru","list-max-ziplist-entries":512,"zset-max-zipli st-entries":128,"hash-max-ziplist-entries":512,"hash-max-ziplist-value":64,"list-max-zi plist-value":64,"set-max-intset-entries":512,"zset-max-ziplist-value":64}
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式： 云数据库 Tair（兼容Redis）开发指
+XML格式：
 
 ```xml
+<ModifyInstanceConfigResponse>
       <RequestId>8D0C0AFC-E9CD-47A4-8395-5C31BF9B****</RequestId>
+</ModifyInstanceConfigResponse>
 ```
 
-JSON格式：
+JSON格式： `{`
 
 ```json
-{
   "requestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
-}
 ```
 
-### 附表
+`}`
 
-#### 错误码表
+### 4.16 附表
+
+#### 4.16.1 错误码表
 
 | 错误码描述 | Code | message | httpStatusCode |
 |---|---|---|---|
@@ -3735,8 +3820,6 @@ JSON格式：
 | 普通用户调用管理类 API | Forbbiden.NotAdminUs er | User not authorized to operate on the specified API as you are not the administrator. | 403 |
 | 缺少参数 | MissingParameter | Specified parameter is missing. | 400 |
 | 至少需要包含 InstanceName 或 NewPassword 参数两者之一 | MissingParameter | InstanceName/NewPas sword at least one is mandatory for this action. | 400 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | 调用该接口没有指定 OwnerId | MissingParameter | The input parameter OwnerId, OwnerAccount that is mandatory for processing this request is not supplied. | 403 |
 |---|---|---|---|
@@ -3753,8 +3836,6 @@ JSON格式：
 | 容量配置不合法 | InvalidCapacity.NotFou nd | The Capacity provided does not exist in our records. | 400 |
 | 用了一个已经使用过的 ClientToken，但此次请求内容却又与上一次使用该 Token 的请求内容又不一样 | IdempotentParameter Mismatch | Request uses a client token in a previous request but is not identical to that request. | 400 |
 | 指定的可用区库存不足 | QuotaNotEnough | Quota not enough in this zone. | 400 |
-
-云数据库 Tair（兼容Redis）开发指
 
 | 无权调用订单类接口 | Forbbiden.SubUser | The specified action is not available for you. | 403 |
 |---|---|---|---|
@@ -3774,8 +3855,6 @@ JSON格式：
 | 必须输入一个参数 | ParameterLeastAssoci ate | Must input at least one optional parameter. | 400 |
 | 输入的备份周期不合法 | InvalidBackupRetentio nPeriod.Malformed | Specified backup retention period is not valid. | 400 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | 输入的下次备份时间不合法 | InvalidPreferredBacku pTime.Format | Specified preferred backup time is not valid. | 400 |
 |---|---|---|---|
 | 输入的备份周期不合法 | InvalidPreferredBacku pPeriod.Malformed | Specified backup period is not valid. | 400 |
@@ -3794,12 +3873,10 @@ JSON格式：
 | 输入的保留经典 ip 的时间长度不合法 | InvalidClassicExpiredD ays.Format | The specified classicExpiredDays format is not valid. | 400 |
 | 备份集状态不支持此操作 | IncorrectBackupSetSta te | Current backup set state does not support operations. | 400 |
 
-云数据库 Tair（兼容Redis）开发指
-
 | 白名单格式不合法 | InvalidSecurityIPList.Fo rmat | Specified security IP list format is not valid. | 400 |
 |---|---|---|---|
 
-#### 实例配置参数表
+#### 4.16.2 实例配置参数表
 
 表 1. Redis 实例参数配置表
 
@@ -3810,11 +3887,9 @@ JSON格式：
 | hash-max-ziplist-value | 当 hash 对象同时满足以下两个条件时， hash 对象使用 ziplist 编码： hash 对象保存的键值对数量小于或者等于 list-max-ziplist- entries 参数值。 hash 对象保存的所有键值对的键和值的字符串长度都小于或者等于 list-max-ziplist-value 参数值。 | 默认值：64 |
 | list-max-ziplist-entries | 当 list 对象同时满足以下两个条件时，list 对象使用 ziplist 编码： list 对象保存的键值对数量小于或者等于 list-max-ziplist-entries 参数值。 list 对象保存的所有键值对的键和值的字符串长度都小于或者等于 list-max-ziplist-value 参数值。 | 默认值：512 |
 
-云数据库 Tair（兼容Redis）开发指
-
-| list-max-ziplist-value | 当 list 对象同时满足以下两个条件时，list 对象使用 ziplist 编码： list 对象保存的键值对数量小于或者等于 list-max-ziplist-entries 参数值。 list 对象保存的所有键值对的键和值的字符串长度都小于或者等于 list-max-ziplist-value 参数值。 | 默认值：64 |  |  |
+| list-max-ziplist-value | 当 list 对象同时满足以下两个条件时，list 对象使用 ziplist 编码： list 对象保存的键值对数量小于或者等于 list-max-ziplist-entries 参数值。 list 对象保存的所有键值对的键和值的字符串长度都小于或者等于 list-max-ziplist-value 参数值。 | 默认值：64 |   |   |
 |---|---|---|---|---|
-| set-max-intset-entries | 当 set 对象满足条目小于或者等于 set-max-intset-entries 参数值并且都是十进制整数时，编码为 intset。 | 默认值：512 |  |  |
-| zset-max-ziplist-entries | 当 zset 对象同时满足以下两个条件时，zset 对象使用 ziplist 编码： zset 对象保存的键值对数量小于或者等于 zset-max-ziplist- entries 参数值。 zset 对象保存的所有键值对的键和值的字符串长度都小于或者等于 zset-max-ziplist-value 参数值。 | 默认值：128 |  |  |
-| zset-max-ziplist-value | 当 zset 对象同时满足以下两个条件时，zset 对象使用 ziplist 编码： zset 对象保存的键值对数量小于或者等于 zset-max-ziplist- entries 参数值。 zset 对象保存的所有键值对的键和值的字符串长度都小于或者等于 zset-max-ziplist-value 参数值。 | 默认值：64 |  |  |
-| notify-keyspace-events | 键空间通知使得客户端可以通过订阅频道或模式来接收那些以某种方式改动了 Redis 数据集的事件。 | K 键空间通知，所有通知以 \ keyspace\@ \ 为前缀。 __ _ _ E 键事件通知，所有通知以 keyevent@ 为前缀。 __ __ g DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知。 $ 字符串命令的通知。 l 列表命令的通知。 s 集合命令的通知。 h 哈希命令的通知。 z 有序集合命令的通知。 x 过期事件：每当有过期键被删除时发送。 e 驱逐（evict）事件：每当有键因为 maxmemory 政策而被删除时发送。 A 参数 g$lshzxe 的别名。 |  |  |
+| set-max-intset-entries | 当 set 对象满足条目小于或者等于 set-max-intset-entries 参数值并且都是十进制整数时，编码为 intset。 | 默认值：512 |   |   |
+| zset-max-ziplist-entries | 当 zset 对象同时满足以下两个条件时，zset 对象使用 ziplist 编码： zset 对象保存的键值对数量小于或者等于 zset-max-ziplist- entries 参数值。 zset 对象保存的所有键值对的键和值的字符串长度都小于或者等于 zset-max-ziplist-value 参数值。 | 默认值：128 |   |   |
+| zset-max-ziplist-value | 当 zset 对象同时满足以下两个条件时，zset 对象使用 ziplist 编码： zset 对象保存的键值对数量小于或者等于 zset-max-ziplist- entries 参数值。 zset 对象保存的所有键值对的键和值的字符串长度都小于或者等于 zset-max-ziplist-value 参数值。 | 默认值：64 |   |   |
+| notify-keyspace-events | 键空间通知使得客户端可以通过订阅频道或模式来接收那些以某种方式改动了 Redis 数据集的事件。 | K 键空间通知，所有通知以 \ keyspace\@ \ 为前缀。 __ _ _ E 键事件通知，所有通知以 keyevent@ 为前缀。 __ __ g DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知。 $ 字符串命令的通知。 l 列表命令的通知。 s 集合命令的通知。 h 哈希命令的通知。 z 有序集合命令的通知。 x 过期事件：每当有过期键被删除时发送。 e 驱逐（evict）事件：每当有键因为 maxmemory 政策而被删除时发送。 A 参数 g$lshzxe 的别名。 |   |   |

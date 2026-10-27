@@ -5,7 +5,7 @@ doc_version: "20231025"
 pdf_pages: 52
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Container Registry User Guide 20231025.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/ACR%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Container%20Registry%20User%20Guide%2020231025.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Container Registry User Guide 20231025
@@ -52,6 +52,7 @@ This topic describes how to use Container Registry.
 **Standard Edition**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. Create a namespace. For more information, see Create a namespace.
 3. Create an image repository. For more information, see Creates an image repository.
 4. Upload and download images. For more information, see Upload and download images.
@@ -59,6 +60,7 @@ This topic describes how to use Container Registry.
 **Advanced Edition**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. Create a namespace. For more information, see Create a namespace.
 3. Create an image repository. For more information, see Create an image repository.
 4. Upload and download images. For more information, see Upload and download images.
@@ -332,6 +334,7 @@ This topic describes how to create an image repository in the Container Registry
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Standard Edition Instance.
 3. In the left-side navigation pane of the management page of the Standard Edition instance,
 click **Repository**.
@@ -362,6 +365,7 @@ Access credentials ensure the secure upload and download of container images. Th
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Standard Edition Instance.
 3. In the left-side navigation pane of the management page of the Standard Edition instance,
 click **Access Credential**.
@@ -384,7 +388,7 @@ This topic describes how to upload and download images.
 **Procedure**
 
 1. Obtain the username.
-i. Log on to the Container Registry console. For more information, see Log on to the Container ii. On the **Instances** page, click the card of a Standard Edition Instance. iii. In the left-side navigation pane of the management page of the Standard Edition instance, click **Access Credential**. On the **Access Credential** page, view and record the username and the domain name of the repository.
+i. Log on to the Container Registry console. For more information, see Log on to the Container Registry console. ii. On the **Instances** page, click the card of a Standard Edition Instance. iii. In the left-side navigation pane of the management page of the Standard Edition instance, click **Access Credential**. On the **Access Credential** page, view and record the username and the domain name of the repository.
 2. Run the following command to log on to the image repository:
 sudo docker login --username=<Username> <Domain name of the repository> As prompted in the command output, enter the password that you set when you activated Container Registry. If you forget your password, you can reset it. For more information, see Configure an access credential.
 3. Upload and download an image.
@@ -403,6 +407,7 @@ A namespace is created. For more information, see Create a namespace. An image r
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Standard Edition Instance.
 3. In the left-side navigation pane of the management page of the Standard Edition instance,
 click **Repository**.
@@ -432,6 +437,7 @@ HTTP: Port 80 is used by default. If you want to use another port, append the po
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Standard Edition Instance.
 3. In the left-side navigation pane of the management page of the Standard Edition instance,
 click **Repository**.
@@ -702,6 +708,7 @@ This topic describes how to create a namespace on a Container Registry Advanced 
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Advanced Edition instance,
 choose **Repository > Namespace**.
@@ -716,6 +723,7 @@ This topic describes how to create an image repository on a Container Registry A
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Repositories**.
@@ -735,6 +743,7 @@ Access credentials are independent of Alibaba Cloud accounts and passwords. Acce
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Access Credential**.
@@ -751,7 +760,7 @@ This topic describes how to upload an image to and download an image from a Cont
 **Procedure**
 
 1. Obtain the address of the repository.
-i. Log on to the Container Registry console. For more information, see Log on to the Container ii. On the **Instances** page, click the card of a Container Registry Advanced Edition instance. iii. In the left-side navigation pane of the management page of the Container Registry Advanced Edition instance, choose **Repository > Repositories**. iv. On the **Repositories** page, click the name of the repository. On the **Details** page, obtain the address of the repository.
+i. Log on to the Container Registry console. For more information, see Log on to the Container Registry console. ii. On the **Instances** page, click the card of a Container Registry Advanced Edition instance. iii. In the left-side navigation pane of the management page of the Container Registry Advanced Edition instance, choose **Repository > Repositories**. iv. On the **Repositories** page, click the name of the repository. On the **Details** page, obtain the address of the repository.
 2. Run the following command to log on to the Advanced Edition instance.
 docker login --username=<Your Alibaba Cloud account> <Address of the repository> As prompted in the command output, enter the password that you set when you activated Container Registry. If you forget your password, you can reset it. For information about how to reset a password, see Configure an access credential.
 3. Upload and download an image.
@@ -768,6 +777,7 @@ HTTP: Port 80 is used by default. If you want to use another port, append the po
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Repositories**.
@@ -801,6 +811,7 @@ This topic describes how to manually and automatically replicate an image across
 
 You can configure a replication rule to automate image replication between two instances that belong to the same account. After you upload an image to the source instance that resides in one region, the system automatically replicates the image to the destination instance that resides in the other region.
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Distribution > Instance Replication**. On the page that appears, click
@@ -816,6 +827,7 @@ a namespace or repository, and enter a regular expression to filter repository v
 
 You can configure a replication rule to manually replicate an image from a source instance to a destination instance across regions.
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Repositories**.
@@ -847,6 +859,7 @@ You have obtained the permissions on the multi-cloud management platform. For mo
 
 You can configure a replication rule to automate image replication between two instances that belong to different accounts. After you upload an image to the source instance in one account, the system automatically replicates the image to the destination instance that belong to the other account.
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Distribution > Instance Replication**. On the page that appears, click
@@ -862,6 +875,7 @@ namespace or repository, and enter a regular expression to filter repository ver
 
 You can configure a replication rule to manually replicate an image from a source instance to a destination instance across accounts.
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Repositories**.
@@ -882,6 +896,7 @@ Container Registry allows you to configure a repository to be immutable to preve
 **Procedure**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Repositories**.
@@ -914,6 +929,7 @@ Container Registry allows you to delete multiple image tags of a Container Regis
 
 After you configure a tag retention policy, the image tags that do not match the policy are deleted.
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Tags**.
@@ -936,6 +952,7 @@ namespaces, the retention policy is applied to the specified repositories in the
 **Manually trigger a tag deletion task**
 
 1. Log on to the Container Registry console. For more information, see Log on to the Container
+Registry console.
 2. On the **Instances** page, click the card of a Container Registry Advanced Edition instance.
 3. In the left-side navigation pane of the management page of the Container Registry Advanced
 Edition instance, choose **Repository > Tags**.

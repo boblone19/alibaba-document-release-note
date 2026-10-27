@@ -5,7 +5,7 @@ doc_version: "20240517"
 pdf_pages: 39
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 MaxCompute Developer Guide 20240517.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/ODPS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20MaxCompute%20Developer%20Guide%2020240517.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 MaxCompute Developer Guide 20240517
@@ -202,6 +202,8 @@ This topic describes the Odps API provided by SDK for Java. This API is also con
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Table t : odps.tables()) { ....
 ```
 
+`}`
+
 #### 1.3.3 Projects
 
 This topic describes the Projects API provided by SDK for Java. This API is a collection of all projects in MaxCompute. Sample code:
@@ -219,8 +221,16 @@ This topic describes the Project API provided by SDK for Java. This API provides
 This topic describes the SQLTask API provided by SDK for Java. You can call this API to run and process SQL tasks. You can use SQLTask.run to run SQL tasks. SQLTask.run returns an instance, and obtains the running status and results of SQL tasks from the instance. Sample code:
 
 ```
-Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new O dps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Instance instance = SQLTask.run(odps, "my_project", "select ...") ; String id = instance.getId(); instance.waitforsuccess(); Set<String> taskNames = instance.getTaskNames(); for (String name taskNames) { TaskSummary summary = instance.getTaskSummary(name); String s = summary.getSummaryText(); Map<String, String> results = instance.getTaskResults(); Map<String, TaskStatus> taskStatus = instance.getTaskStatus(); for (Entry<String, TaskStatus> status : taskStatus.entrySet()) { String result = results.get(status.getKey());
+Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new O dps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Instance instance = SQLTask.run(odps, "my_project", "select ...") ; String id = instance.getId(); instance.waitforsuccess(); Set<String> taskNames = instance.getTaskNames(); for (String name taskNames) { TaskSummary summary = instance.getTaskSummary(name); String s = summary.getSummaryText();
 ```
+
+`}`
+
+```
+Map<String, String> results = instance.getTaskResults(); Map<String, TaskStatus> taskStatus = instance.getTaskStatus(); for (Entry<String, TaskStatus> status : taskStatus.entrySet()) { String result = results.get(status.getKey());
+```
+
+`}`
 
 > **Note:** To create a table, you must call the SQLTask API instead of the Table API. In this case, you must pass the CREATE TABLE statement into SQLTask.
 
@@ -232,12 +242,26 @@ This topic describes the Instances API provided by SDK for Java. This API is a c
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Instance i : odps.instances ()) { ....
 ```
 
+`}`
+
 #### 1.3.7 Instance
 
 This topic describes the Instance API provided by SDK for Java. This API provides descriptions of instances. You can call the Instances API to obtain the instances. Sample code:
 
 ```
-Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps (account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Instance ins = odps.instances().get("instance id"); Date startTime = instance.getStartTime(); Date endTime = instance.getEndTime(); ... Status instanceStatus = instance.getStatus(); String instanceStatusStr = null; if (instanceStatus == Status.TERMINATED) { instanceStatusStr = TaskStatus.Status.SUCCESS.toString(); Map<String, TaskStatus> taskStatus = instance.getTaskStatus(); for (Entry<String, TaskStatus> status : taskStatus.entrySet()) { if (status.getValue().getStatus() ! = TaskStatus.Status.SUCCESS) { instanceStatusStr = status.getValue().getStatus().toString(); break; } else { instanceStatusStr = instanceStatus.toString(); ... TaskSummary summary = instance.getTaskSummary("instance name"); String s = summary.getSummaryText();
+Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps (account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Instance ins = odps.instances().get("instance id"); Date startTime = instance.getStartTime(); Date endTime = instance.getEndTime(); ... Status instanceStatus = instance.getStatus(); String instanceStatusStr = null; if (instanceStatus == Status.TERMINATED) { instanceStatusStr = TaskStatus.Status.SUCCESS.toString(); Map<String, TaskStatus> taskStatus = instance.getTaskStatus(); for (Entry<String, TaskStatus> status : taskStatus.entrySet()) { if (status.getValue().getStatus() ! = TaskStatus.Status.SUCCESS) { instanceStatusStr = status.getValue().getStatus().toString(); break;
+```
+
+`}` `}`
+
+```
+} else { instanceStatusStr = instanceStatus.toString();
+```
+
+`}`
+
+```
+... TaskSummary summary = instance.getTaskSummary("instance name"); String s = summary.getSummaryText();
 ```
 
 #### 1.3.8 Tables
@@ -247,6 +271,8 @@ This topic describes the Tables API provided by SDK for Java. This API is a coll
 ```
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Table t : odps.tables()) { ....
 ```
+
+`}`
 
 #### 1.3.9 Table
 
@@ -264,15 +290,23 @@ This topic describes the Resources API provided by SDK for Java. This API is a c
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Resource r : odps.resources()) { ....
 ```
 
+`}`
+
 #### 1.3.11 Resource
 
 This topic describes the Resource API provided by SDK for Java. This API provides descriptions of resources. You can call the Resources API to obtain the resources. Sample code:
 
 ```
-Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Resource r = odps.resources().get("resource name"); r.reload(); if (r.getType() == Resource.Type.TABLE) { TableResource tr = new TableResource(r); String tableSource = tr.getSourceTable().getProject() + "." + tr.getSourceTable().getName(); if (tr.getSourceTablePartition() ! = null) { tableSource += " partition(" + tr.getSourceTablePartition().toString() + ")"; ....
+Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Resource r = odps.resources().get("resource name"); r.reload(); if (r.getType() == Resource.Type.TABLE) { TableResource tr = new TableResource(r); String tableSource = tr.getSourceTable().getProject() + "." + tr.getSourceTable().getName(); if (tr.getSourceTablePartition() ! = null) { tableSource += " partition(" + tr.getSourceTablePartition().toString() + ")";
 ```
 
-The following sample code shows how to create a file resource:
+`}`
+
+```
+....
+```
+
+`}` The following sample code shows how to create a file resource:
 
 ```
 String projectName = "my_porject"; String source = "my_local_file.txt"; File file = new File(source); InputStream is = new FileInputStream(file); FileResource resource = new FileResource(); String name = file.getName(); resource.setName(name); odps.resources().create(projectName, resource, is);
@@ -292,6 +326,8 @@ This topic describes the Functions API provided by SDK for Java. This API is a c
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); odps.setDefaultProject("my_project"); for (Function f : odps.functions()) { ....
 ```
 
+`}`
+
 #### 1.3.13 Function
 
 This topic describes the Function API provided by SDK for Java. This API provides descriptions of functions. You can call the Functions API to obtain the functions. Sample code:
@@ -303,7 +339,13 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 The following sample code shows how to create a function:
 
 ```
-String resources = "xxx:xxx"; String classType = "com.aliyun.odps.mapred.open.example.WordCount"; ArrayList<String> resourceList = new ArrayList<String>(); for (String r : resources.split(":")) { resourceList.add(r); Function func = new Function(); func.setName(name); func.setClassType(classType); func.setResources(resourceList); odps.functions().create(projectName, func);
+String resources = "xxx:xxx"; String classType = "com.aliyun.odps.mapred.open.example.WordCount"; ArrayList<String> resourceList = new ArrayList<String>(); for (String r : resources.split(":")) { resourceList.add(r);
+```
+
+`}`
+
+```
+Function func = new Function(); func.setName(name); func.setClassType(classType); func.setResources(resourceList); odps.functions().create(projectName, func);
 ```
 
 #### 1.3.14 Spark Shell
@@ -499,12 +541,29 @@ public void createExternalVolume() throws Exception {
 builder.project(projectName).volumeName(extVolumeName).type(Volume.Type.EXTERNAL).extLo tion(externalLocation);
     if (lifecycle != null) {
         builder.lifecycle(lifecycle);
+```
+
+`}`
+
+```
     if (comment != null) {
         builder.comment(comment);
+```
+
+`}`
+
+```
     if (roleArn != null) {
         builder.addProperty(Volumes.EXTERNAL_VOLUME_ROLEARN_KEY, roleArn);
+```
+
+`}`
+
+```
     getCurrentOdps().volumes().create(builder);
 ```
+
+`}`
 
 **Obtain the information about a specified external volume**
 
@@ -558,6 +617,8 @@ public Volume getVolume() {
     Volume volume = odps.volumes().get(projectName, extVolumeName);
     return volume;
 ```
+
+`}`
 
 **Obtain an external volume iterator**
 
@@ -644,6 +705,8 @@ public Iterator<Volume> getVolumeIterator() {
     return iterator;
 ```
 
+`}`
+
 **Delete an external volume**
 
 Delete
@@ -699,6 +762,8 @@ public void deleteVolume() {
         throw new RuntimeException(e);
 ```
 
+`}` `}`
+
 **Obtain the FS file of an external volume**
 
 getVolumeFSFile
@@ -738,6 +803,8 @@ volumeName).getVolumeFSFile(testFilePath);
     bool isDir = volumeFSFile.getIsdir());
     long length = volumeFSFile.getLength();
 ```
+
+`}`
 
 ## 2 SDK for Python
 
@@ -781,7 +848,7 @@ A project is the basic organizational unit in MaxCompute, similar to a database.
 
 Call the `exist_table` method to check whether a table exists. Call the `get_table` method to obtain information about a table.
 
-```python
+```
  t = odps.get_table('dual')
  t.schema
 odps.Schema {
@@ -795,6 +862,11 @@ odps.Schema {
   c_bool_b                boolean
   c_datetime_a            datetime
   c_datetime_b            datetime
+```
+
+`}`
+
+```python
  t.lifecycle
  print(t.creation_time)
 2014-05-15 14:58:43
@@ -1225,7 +1297,7 @@ movies = DataFrame(o.get_table('pyodps_ml_100k_movies')) ratings = DataFrame(o.g
   zip_code                            string
 ```
 
-Divide users who are aged from 0 to 80 into eight age groups. Example:
+`}` Divide users who are aged from 0 to 80 into eight age groups. Example:
 
 ```
  labels = ['0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79']

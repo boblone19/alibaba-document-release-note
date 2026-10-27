@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 110
 source_pdf: "43f5666ab5c24ba1_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1ARMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Real-time%20Monitoring%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 20260828
@@ -232,7 +232,7 @@ This topic describes response content and corresponding troubleshooting methods.
     "success": true
 ```
 
-Solutions: Verify whether the dataset ID is spelled correctly and whether the dataset ID belongs to the user in ARMS.
+`}` Solutions: Verify whether the dataset ID is spelled correctly and whether the dataset ID belongs to the user in ARMS.
 
 **ErrMsg query result is empty**
 
@@ -245,7 +245,7 @@ Solutions: Verify whether the dataset ID is spelled correctly and whether the da
     "success": true
 ```
 
-Solutions:
+`}` Solutions:
 1. Verify whether data exists between the requested start time and end time.
 2. If a dimension is selected, verify whether data exists for that dimension.
 3. Verify whether _userId is set incorrectly. In Apsara Stack, _userId is the same as the
@@ -540,6 +540,8 @@ Sample success responses `XML` format
     "Data": "success"
 ```
 
+`}`
+
 #### 5.3.3 GetTrace
 
 Queries the details of a trace.
@@ -652,6 +654,8 @@ Sample success responses `XML` format
                 "Key": "logLevel"
 ```
 
+`}` `}` `}` `}`
+
 #### 5.3.4 GetTraceApp
 
 Queries the details of a application monitoring task.
@@ -725,6 +729,8 @@ Sample success responses `XML` format
         "AppName": "arms-k8s-demo",
         "Labels": "[ \"test\", \"123123123\", \"uat\" ],"
 ```
+
+`}` `}`
 
 #### 5.3.5 GetStack
 
@@ -804,6 +810,8 @@ Sample success responses `XML` format
             "Type": 41,
             "Info": "input=254275&amp;"
 ```
+
+`}` `}` `}`
 
 #### 5.3.6 ListTraceApps
 
@@ -892,6 +900,8 @@ if the issue persists after multiple retries.",
     "Success": true
 ```
 
+`}`
+
 #### 5.3.7 SearchTraceAppByName
 
 Queries application monitoring jobs by application name.
@@ -970,6 +980,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "F7781D4A-2818-41E7-B7BB-79D809E9****"
 ```
+
+`}`
 
 #### 5.3.8 SearchTraceAppByPage
 
@@ -1061,11 +1073,13 @@ Sample success responses `XML` format
             "Labels": "prod"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "4B446DF2-3DDD-4B5B-8E3F-D5225120****"
 ```
+
+`}`
 
 #### 5.3.9 SearchTraces
 
@@ -1139,6 +1153,8 @@ Sample success responses `XML` format
         "Duration": 6,
         "Timestamp": 1595174436993
 ```
+
+`}` `}`
 
 #### 5.3.10 SearchTracesByPage
 
@@ -1226,11 +1242,13 @@ Sample success responses `XML` format
             "Timestamp": 1595174436994
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "4C518054-852F-4023-ABC1-4AF95FF7****"
 ```
+
+`}`
 
 #### 5.3.11 QueryMetric
 
@@ -1330,6 +1348,8 @@ Sample success responses `XML` format
 \"data\\\": [{\\\"date\\\":1583686800000,\\\"count\\\":0,\\\"rt\\\":0,\\\"rpc\\\":\\\"childSpan3\\\"}
 ```
 
+`}`
+
 #### 5.3.12 DeleteTraceApp
 
 Deletes an application based on a specified process identifier (PID) and application type.
@@ -1381,6 +1401,8 @@ Sample success responses `XML` format
 \"code\\\":200 ,\\ "data \\":\\\"{\\\\\\" code \\\\\\\\\ ":200 ,\\\\\\\\\" data \\\\":t rue ,\\\\\\\\" errorCode \\\\\\\\\ ":\\\\\\\ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \\\\\true,\\\"traceId\\\":\\\"0ab2646915954826692568137d****\\\"}\" }"
 ```
 
+`}`
+
 #### 5.3.13 GetArmsAgentDownLoadUrl
 
 You can call the GetArmsAgentDownLoadUrl operation to obtain the download link of the agent package.
@@ -1425,6 +1447,8 @@ Sample success responses `XML` format
     "RequestId": "46355DD8-FC56-40C5-BFC6-269DE4F9****"
 ```
 
+`}`
+
 #### 5.3.14 DescribeTraceLicenseKey
 
 Queries the license key.
@@ -1464,6 +1488,8 @@ Sample success responses `XML` format
     "RequestId": "29053944-6FE5-4240-8927-10095ECE****",
     "LicenseKey": "b590lhguqs@3a75d95f218****"
 ```
+
+`}`
 
 #### 5.3.15 DescribeTraceLocation
 
@@ -1511,6 +1537,8 @@ Sample success responses `XML` format
         "RegionNo": "cn-hangzhou",
         "Url": "arms.console.inter.env66.shuguang.com"
 ```
+
+`}` `}`
 
 ### 5.4 Alerting
 
@@ -1611,7 +1639,7 @@ on.
 condition. Valid values: CURRENT_GTE: greater than or equal to. CURRENT_LTE: less than or equal to. PREVIOUS_UP: the minute-to-minute increase percentage. PREVIOUS_DOWN: the minute-to-minute decrease percentage. HOH_UP: the increase percentage compared with the previous hour. HOH_DOWN: the decrease percentage compared with the previous hour. DOD_U P: the increase percentage compared with the last day. DOD_DOWN: the decrease percentag e compared with the last day.
 ```
 
-`],`
+`}` `],`
 
 ```json
       "operator": "|"                                    // The logical operator between
@@ -1703,6 +1731,8 @@ Sample success responses `XML` format
     "Data": "-"
 ```
 
+`}`
+
 #### 5.4.2 DeleteAlertRules
 
 Deletes alert rules.
@@ -1745,6 +1775,8 @@ Sample success responses `XML` format
     "IsSuccess": true,
     "RequestId": "C21AB7CF-B7AF-410F-BD61-82D1567F****"
 ```
+
+`}`
 
 #### 5.4.3 SearchAlertRules
 
@@ -1968,7 +2000,7 @@ t time: $Alert time \\nAlert content: $Alert content \\nNote: The alert is ongoi
                     "Measure": "appstat.jvm.SystemDiskFree"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "MetricParam": {
@@ -1982,7 +2014,7 @@ t time: $Alert time \\nAlert content: $Alert content \\nNote: The alert is ongoi
                     "Key": "rootIp"
 ```
 
-`},`
+`}` `},`
 
 ```json
             "Notice": {
@@ -1992,7 +2024,7 @@ t time: $Alert time \\nAlert content: $Alert content \\nNote: The alert is ongoi
                 "NoticeEndTime": 1480607940000
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "34ED024E-9E31-434A-9E4E-D9D15C3****"
@@ -2045,6 +2077,8 @@ Sample success responses `XML` format
     "ContactId": 12345
 ```
 
+`}`
+
 #### 5.4.5 DeleteAlertContact
 
 Deletes an alert contact.
@@ -2085,6 +2119,8 @@ Sample success responses `XML` format
     "IsSuccess": true,
     "RequestId": "78901766-3806-4E96-8E47-CFEF59E4****"
 ```
+
+`}`
 
 #### 5.4.6 UpdateAlertContact
 
@@ -2135,6 +2171,8 @@ Sample success responses `XML` format
     "IsSuccess": true,
     "RequestId": "1A474FF8-7861-4D00-81B5-5BC3DA4E****"
 ```
+
+`}`
 
 #### 5.4.7 SearchAlertContact
 
@@ -2233,11 +2271,13 @@ access_token=91f2f6****",
             "ContactName": "John Doe"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "21E85B16-75A6-429A-9F65-8AAC9A54****"
 ```
+
+`}`
 
 #### 5.4.8 CreateAlertContactGroup
 
@@ -2281,6 +2321,8 @@ Sample success responses `XML` format
     "RequestId": "70675725-8F11-4817-8106-CFE0AD71****"
 ```
 
+`}`
+
 #### 5.4.9 DeleteAlertContactGroup
 
 Deletes an alert contact group.
@@ -2321,6 +2363,8 @@ Sample success responses `XML` format
     "IsSuccess": true,
     "RequestId": "C21AB7CF-B7AF-410F-BD61-82D1567F****"
 ```
+
+`}`
 
 #### 5.4.10 UpdateAlertContactGroup
 
@@ -2366,6 +2410,8 @@ Sample success responses `XML` format
     "IsSuccess": true,
     "RequestId": "9319A57D-2D9E-472A-B69B-CF3CD16D****"
 ```
+
+`}`
 
 #### 5.4.11 SearchAlertContactGroup
 
@@ -2464,11 +2510,13 @@ access_token=91f2f6****",
             "ContactName": "John Doe"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "4D6C358A-A58B-4F4B-94CE-F5AAF023****"
 ```
+
+`}`
 
 #### 5.4.12 StartAlert
 
@@ -2511,6 +2559,8 @@ Sample success responses `XML` format
     "RequestId": "27E653FA-5958-45BE-8AA9-14D884DC****"
 ```
 
+`}`
+
 #### 5.4.13 StopAlert
 
 You can call this operation to stop an alert rule.
@@ -2551,6 +2601,8 @@ Sample success responses `XML` format
     "IsSuccess": true,
     "RequestId": "27E653FA-5958-45BE-8AA9-14D884DC****"
 ```
+
+`}`
 
 #### 5.4.14 SearchEvents
 
@@ -2654,12 +2706,14 @@ startTime=1595565300000&amp;endTime=1595569246633&amp;regionId=cnhangzhou&amp;pi
 startTime=1595565300000&amp;endTime=1595569246633&amp;regionId=cnhangzhou&amp;pid=****\" ]"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "32940175-181B-4B93-966E-4BB69176****",
     "IsTrigger": 1
 ```
+
+`}`
 
 #### 5.4.15 SearchAlertHistories
 
@@ -2761,8 +2815,10 @@ ert content: A total of four alerts are triggered: ****\"",
 access_token=91f2f65002fefe0ab9b71e6590c5ca504348cad742ff01e9c8ab204439ca****"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "RequestId": "2FC13182-B9AF-4E6B-BE51-72669B7C****"
 ```
+
+`}`

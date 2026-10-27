@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 33
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Container Service for Kubernetes Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%BC%B9%E6%80%A7%E8%AE%A1%E7%AE%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Container Service for Kubernetes Developer Guide 20220928
@@ -89,14 +89,14 @@ Common response headers Every response returns a unique RequestID regardless of 
 </Interface Name+Response>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
     /* Return Result Data */
 ```
 
-API invocation
+`}` API invocation
 
 ### 1.3 Request syntax
 
@@ -245,13 +245,13 @@ Cust om request headers None. See Common request headers. Response Response f or
 HTTP/1.1 200 OK
 ```
 
-Cust om response headers None. See Common response headers. Response body
+Cust om response headers None. See Common response headers. Response body `{`
 
 ```json
     "config": "string"
 ```
 
-Response body paramet ers
+`}` Response body paramet ers
 
 | Name | Type | Description |
 |---|---|---|
@@ -269,6 +269,8 @@ Sample response
 HTTP/1.1 200 OK <Common response header>
      "config": "xxxxxxxx"
 ```
+
+`}`
 
 ### 2.2 Create a Kubernetes cluster
 
@@ -404,10 +406,15 @@ Cust om response headers None. For more information, see Common response headers
     "task_id":"string"
 ```
 
-Examples Sample request s
+`}` Examples Sample request s
+
+```
+POST /clusters HTTP/1.1 <Common request headers>
+```
+
+`{`
 
 ```json
-POST /clusters HTTP/1.1 <Common request headers>
     "disable_rollback": true,
     "name": "my-test-Kubernetes-cluster",
     "timeout_mins": 60,
@@ -431,14 +438,21 @@ POST /clusters HTTP/1.1 <Common request headers>
     "login_password": "Hello1234"
 ```
 
-Sample success responses
+`}` Sample success responses
+
+```
+HTTP/1.1 202 Accepted <Common response headers>
+```
+
+`{`
 
 ```json
-HTTP/1.1 202 Accepted <Common response headers>
     "cluster_id": "cb95aa626a47740afbf6aa099b650d7ce",
     "request_id": "687C5BAA-D103-4993-884B-C35E4314A1E1",
     "task_id": "T-5a54309c80282e39ea00002f"
 ```
+
+`}`
 
 ### 2.3 Add one or more existing ECS instances to a Kubernetes cluster
 
@@ -454,7 +468,7 @@ Request paramet ers
 |---|---|---|---|
 | cluster id _ | string | Yes | The ID of the cluster that you want to manage. |
 
-Cust om request headers None. For more information, see Common request headers. Request body
+Cust om request headers None. For more information, see Common request headers. Request body `{`
 
 ```json
     "password": "The root password of the ECS instances.",
@@ -463,7 +477,7 @@ Cust om request headers None. For more information, see Common request headers. 
     "key_pair": "The key pair of the ECS instances."
 ```
 
-Request body paramet ers
+`}` Request body paramet ers
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -481,16 +495,21 @@ Response Response f ormat
 HTTP/1.1 202 OK
 ```
 
-Cust om response headers None. For more information, see Common response headers. Response body
+Cust om response headers None. For more information, see Common response headers. Response body `{`
 
 ```json
     "list": [
+```
+
+`{`
+
+```json
             "code": "200",
             "instanceId": "i-2zee3oiwcyoz7kwdo8bt",
             "message": "successful"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "code": "200",
@@ -498,33 +517,48 @@ Cust om response headers None. For more information, see Common response headers
             "message": "successful"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "task_id": "T-5a544aff80282e39ea000039"
 ```
 
-Examples Sample request s
+`}` Examples Sample request s
+
+```
+POST /clusters/Cccfd68c474454665ace07efce924f75f/attach HTTP/1.1 <Common request headers>
+```
+
+`{`
 
 ```json
-POST /clusters/Cccfd68c474454665ace07efce924f75f/attach HTTP/1.1 <Common request headers>
     "password": "Hello1234",
     "instances": [
         "i-xxxx",
         "i-yyyy"
 ```
 
-`]` Sample success responses
+`]` `}` Sample success responses
+
+```
+HTTP/1.1 202 Accepted <Common response headers>
+```
+
+`{`
 
 ```json
-HTTP/1.1 202 Accepted <Common response headers>
     "list": [
+```
+
+`{`
+
+```json
             "code": "200",
             "instanceId": "i-xxxx",
             "message": "successful"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "code": "200",
@@ -532,11 +566,13 @@ HTTP/1.1 202 Accepted <Common response headers>
             "message": "successful"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "task_id": "T-5a544aff80282e39ea000039"
 ```
+
+`}`
 
 ### 2.4 Get kubeconfig files
 
@@ -552,13 +588,13 @@ Cust om request headers None. See Common request headers. Response Response f or
 HTTP/1.1 200 OK
 ```
 
-Cust om response headers None. See Common response headers. Response body
+Cust om response headers None. See Common response headers. Response body `{`
 
 ```json
     "config": "string"
 ```
 
-Response body paramet ers
+`}` Response body paramet ers
 
 | Name | Type | Description |
 |---|---|---|
@@ -572,10 +608,17 @@ GET /k8s/c5b5e80b0b64a4bf6939d2d8fbbc5ded7/user_config HTTP/1.1 <Common request 
 
 Sample response
 
-```json
+```
 HTTP/1.1 200 OK <Common response header>
+```
+
+`{`
+
+```json
      "config": "xxxxxxxx"
 ```
+
+`}`
 
 ### 2.5 Query detailed information of a cluster
 
@@ -597,7 +640,7 @@ Cust om request headers None. For more information, see Common request headers. 
 HTTP/1.1 200 OK
 ```
 
-Cust om response headers None. For more information, see Common response headers. Response body
+Cust om response headers None. For more information, see Common response headers. Response body `{`
 
 ```json
     "agent_version": "string",
@@ -616,7 +659,7 @@ Cust om response headers None. For more information, see Common response headers
     "vswitch_id": "string"
 ```
 
-Response body paramet ers Cluster details
+`}` Response body paramet ers Cluster details
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -664,6 +707,8 @@ HTTP/1.1 200 Ok <Common response headers>
     "vswitch_id": ""
 ```
 
+`}`
+
 ### 2.6 Scale out Kubernetes clusters
 
 You can call this operation to increase the number of worker nodes in a cluster. This operation is only applicable to resources created by Resource Orchestration Service (ROS). Request Request f ormat
@@ -678,7 +723,7 @@ Request paramet ers
 |---|---|---|---|
 | cluster id _ | string | Yes | The ID of the cluster that you want to manage. |
 
-Cust om request headers None. For more information, see Common request headersCommon request headers. Request body
+Cust om request headers None. For more information, see Common request headersCommon request headers. Request body `{`
 
 ```json
     "disable_rollback": "Specifies whether to disable rollback if the operation fails.",
@@ -707,7 +752,7 @@ Response Response f ormat
 HTTP/1.1 202 Accepted
 ```
 
-Cust om response headers None. For more information, see Common response headers. Response body
+Cust om response headers None. For more information, see Common response headers. Response body `{`
 
 ```json
     "cluster_id":"string",
@@ -715,24 +760,36 @@ Cust om response headers None. For more information, see Common response headers
     "task_id":"string"
 ```
 
-Examples Sample request s
+`}` Examples Sample request s
+
+```
+PUT /clusters/Cccfd68c474454665ace07efce924f75f HTTP/1.1 <Common request headers>
+```
+
+`{`
 
 ```json
-PUT /clusters/Cccfd68c474454665ace07efce924f75f HTTP/1.1 <Common request headers>
     "disable_rollback": true,
     "timeout_mins": 60,
     "worker_instance_type": "ecs.sn1ne.large",
     "login_password": "Hello1234"
 ```
 
-Sample success responses
+`}` Sample success responses
+
+```
+HTTP/1.1 202 Accepted <Common response headers>
+```
+
+`{`
 
 ```json
-HTTP/1.1 202 Accepted <Common response headers>
     "cluster_id": "<yourClusterId>",
     "request_id": "687C5BAA-D103-4993-884B-C35E4314A1E1",
     "task_id": "T-5a54309c80282e39ea00002f"
 ```
+
+`}`
 
 ### 2.7 Delete clusters
 

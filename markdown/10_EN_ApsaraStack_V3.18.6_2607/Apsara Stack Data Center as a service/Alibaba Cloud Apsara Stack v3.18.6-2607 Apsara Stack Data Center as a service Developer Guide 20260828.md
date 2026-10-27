@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 139
 source_pdf: "2c3892db2c82cccd_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Developer Guide 202608"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86%20BMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Data%20Center%20as%20a%20service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Developer Guide 20260828
@@ -232,7 +232,7 @@ package main import (
 
 `)`
 
-```bash
+```
 func main() {
     RegionId := "xxxxxx"
     bmsDomain := "xxxxxx"
@@ -247,6 +247,11 @@ func main() {
         // Handle exceptions.
         fmt.Println("NewClientWithAccessKey err")
         fmt.Println(err)
+```
+
+`}`
+
+```bash
     request := requests.NewCommonRequest()
     #request.Headers = map[string]string{
         #    "accessKey": "xxxxxx",
@@ -268,6 +273,11 @@ func main() {
         fmt.Println(err)
         //panic(err)
         //return nil, err
+```
+
+`}`
+
+```
     fmt.Println("***flag***")
     fmt.Println("response")
     fmt.Println(response)
@@ -286,6 +296,8 @@ Call the ListInstance API to query all bare machine instances and display the re
 **Request header**
 
 This operation uses only common request headers. For more information, see the common parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -329,18 +341,26 @@ This operation uses only common request headers. For more information, see the c
 | success | Boolean | true | The return status. |
 | responseVersi on | String | v1 | Version |
 
+**Examples**
+
 Example request
 
 ```
-http(s)://[Endpoint]/?Action=ListInstance
+http(s)://[Endpoint]/?Action=ListInstance &<Common request parameters>
 ```
 
-Example of a successful response
+Example of a successful response `JSON` format `{`
 
 ```json
  "responseVersion":"v1",
+ "data":{
   "total":13,
   "data":[
+```
+
+`{`
+
+```json
     "DeployType":"bms",
     "Organization":"51",
     "Description":"",
@@ -349,6 +369,11 @@ Example of a successful response
     "Config":{
      "Memory":1,
      "CPUNumber":1
+```
+
+`},`
+
+```json
     "Operation":"",
     "Image":"rhel_7_9_x86_64_xxxxxx.qcow2",
     "Gpu":"",
@@ -386,16 +411,25 @@ Example of a successful response
     "Tag":"3.xx.xx"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageSize":10,
   "pageNum":1
- "errorTitle":"InternalError",
- "errorMessage":"The requested service is xxxxx",
 ```
 
-`XML` format
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested service is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}` `XML` format
 
 ```xml
 <responseVersion>v1</responseVersion> <data>
@@ -454,6 +488,10 @@ Loads the full overview data of an instance, such as SN, IP address, VpcID, VswI
 
 Creates a bare metal instance in Bare Metal Service (BMS). url:/v1/ascm/instance/applyManagedInstance Request method: POST Request parameters: content-type: application/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "StsTokenCallerUid": "xxxxxx",
   "UserName": "xxxxxx",
@@ -492,6 +530,10 @@ on, do not specify this parameter.
 
 Re-applies for a bare metal instance that fails to be created. url:/v1/ascm/instance/reApplyManagedInstance Request method: POST Request parameters: content-type: application/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ID": id,
   "UserId": "xxxxxx",
@@ -521,6 +563,8 @@ e available architecture API operation. If you specify "all" for this parameter,
 available architecture API operation. If you specify "all" for this parameter, the quer y results of all GPU manufacturers are returned.
 ```
 
+`}`
+
 #### 4.1.5 ListUnApplyCPUArch
 
 Queries the architecture of instances that have not been applied for in the resource pool. url:/v1/ascm/instance/listUnApplyCPUArch Request method: POST Request parameters: content-type: application/json;
@@ -531,9 +575,15 @@ Queries the architecture of instances that have not been applied for in the reso
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.1.6 ListUnApplyCPUMfr
 
 Queries the CPU manufacturers of instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyCPUMfr Request method: POST Request parameters: content-type: application/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "CPUArch": "CPUArch", # Required.
@@ -541,17 +591,25 @@ Queries the CPU manufacturers of instances that can be applied for in the resour
   "Zone": "xxxxxx", # Required.
   "DeployType": "service name"
 ```
+
+`}`
 
 #### 4.1.7 ListUnApplyGPUMfr
 
 Queries the GPU manufacturers of instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyGPUMfr Request method: POST Request parameters: content-type: application/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "Region": "xxxxxx", # Required.
   "Zone": "xxxxxx", # Required.
   "CPUArch": "CPUArch", # Required.
   "DeployType": "service name"
 ```
+
+`}`
 
 #### 4.1.8 ListUnApplyMachineType
 
@@ -568,9 +626,15 @@ ery results of all GPU manufacturers are returned.
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.1.9 ListUnApplyInstance
 
 Queries the instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyInstance Request method: POST Request parameters: content-type: application/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "CPUArch": "x86_64", # Required.
@@ -585,37 +649,63 @@ ery results of all GPU manufacturers are returned.
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.1.10 CheckIPAvailability
 
 Checks whether the specified IP address is duplicate and available. url:/v1/ascm/instance/checkIPAvailability Request method: POST Request parameters: content-type: multipart/form-data;
+
+**Sample requests**
+
+`{`
 
 ```json
   "IP": "xxx.xxx.xxx.xxx" # Required.
 ```
 
+`}`
+
 #### 4.1.11 ReleaseInstance
 
 Releases a bare metal instance. url:/v1/ascm/instance/releaseInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ID": 1 # Required.
 ```
+
+`}`
 
 #### 4.1.12 StartInstance
 
 Starts a bare metal instance. url:/v1/ascm/instance/startInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ID": 1 # Required.
 ```
+
+`}`
 
 #### 4.1.13 StopInstance
 
 Stops a bare metal instance that is in the Running state. url:/v1/ascm/instance/stopInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ID": 1 # Required.
 ```
+
+`}`
 
 #### 4.1.14 ReStartInstance
 
@@ -629,22 +719,38 @@ Restarts a bare metal instance that is in the Running state. url:/v1/ascm/instan
 
 Modifies the hostname of a bare metal instance. url:/v1/ascm/instance/modifyHostNameInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ID": 1 # Required.
   "HostName": "xxxxxx" # Required.
 ```
 
+`}`
+
 #### 4.1.16 DescribeInstance
 
 Loads the details of an instance. url:/v1/ascm/instance/describeInstance Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "ID": 1 # Required.
 ```
 
+`}`
+
 #### 4.1.17 ListImageName
 
 Queries the image information when a bare metal instance is created. url:/v1/ascm/image/listImageName Request method: POST Request parameters: content-type: multipart/form-data;
+
+**Sample requests**
+
+`{`
 
 ```json
   "Status": "available", # Optional.
@@ -662,13 +768,23 @@ Queries the subnet name when a bare metal instance is created. url:/v1/aso/netwo
 
 Queries a list of virtual private cloud (VPC) IDs that are used by all bare metal instances. url:/v1/ascm/instance/listOccupiedVPCId Request method: POST Request parameters: content-type: multipart/form-data;
 
+**Sample requests**
+
+`{`
+
 ```json
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.1.20 ListHistoryEvent
 
 Queries the information about the most recent operation or all operations that have been performed on a resource based on the resource ID. url:/v1/event/listHistoryEvent Request method: POST Request parameters: content-type: multipart/form-data; or content-type: application/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "ResourceId": 1, # Required. Specify the resource ID.
@@ -685,6 +801,8 @@ If you do not specify this parameter, the current time is used.
 #### 4.1.21 ListBmcpInstance
 
 Queries multiple bare metal instances at a time. You can filter and sort bare metal instances in multiple dimensions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -711,6 +829,8 @@ Queries multiple bare metal instances at a time. You can filter and sort bare me
 | UserId | Strin g | Query | No | agent@ccc-test | The user ID. |
 | Disable | Boole an | Query | No | false | Specifies whether to disable an instance. Valid values: false: The instance is enabled. true: The instance is disabled. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -724,19 +844,45 @@ Queries multiple bare metal instances at a time. You can filter and sort bare me
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ListBmcpInstance
+http(s)://[Endpoint]/?Action=ListBmcpInstance &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.22 ModifyInstanceIpConfig
 
-Modifies the IP address configurations of a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Modifies the IP address configurations of a bare metal instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -756,23 +902,51 @@ Modifies the IP address configurations of a bare metal instance. This operation 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ModifyInstanceIpConfig
+http(s)://[Endpoint]/?Action=ModifyInstanceIpConfig &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.23 EnableInstance
 
-Enables an instance in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Enables an instance in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ID | Long | Query | No | 1 | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -791,14 +965,44 @@ Enables an instance in Bare Metal Service (BMS). This operation does not have op
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=EnableInstance
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=EnableInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "responseVersion":"1.0",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.24 DisableInstance
 
-Disables an instance in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Disables an instance in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -815,14 +1019,40 @@ Disables an instance in Bare Metal Service (BMS). This operation does not have o
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=DisableInstance
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=DisableInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "responseVersion":"1.0",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.25 ListManageableInstance
 
-Queries a list of bare metal instances by specifying multiple filter conditions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries a list of bare metal instances by specifying multiple filter conditions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -838,6 +1068,8 @@ Queries a list of bare metal instances by specifying multiple filter conditions.
 | MachineT ype | Strin g | Query | No | mt-**** | The model of the bare metal instance. If you specify this parameter, the overview data of the current model is queried. If you do not specify this parameter, the overview data of all models is queried. |
 | DeployTy pe | Strin g | Query | No | bms | The deployment type. |
 | Disable | Boole an | Query | No | False | In programming or logic, if the value of the Disable parameter for a feature or option is False, it indicates that the feature or option is enabled and can be used. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -856,16 +1088,46 @@ Queries a list of bare metal instances by specifying multiple filter conditions.
 | Parameter | Type | Example | Description |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ListManageableInstance
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ListManageableInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.26 ApplyBmcpInstance
 
-Performs flexible management and deployment of physical server resources in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Performs flexible management and deployment of physical server resources in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -884,23 +1146,51 @@ Performs flexible management and deployment of physical server resources in Bare
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ApplyBmcpInstance
+http(s)://[Endpoint]/?Action=ApplyBmcpInstance &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.27 ReApplyBmcpInstance
 
-Re-applies for a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Re-applies for a bare metal instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ApplyBmc pInstance List | Json | Query | No | instance001,instance00 2,instance003 | Specifies one or more instance names to which you want to apply Bare Metal Computing Platform (BMCP) configurations. Instance IDs are separated with commas (,). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -921,19 +1211,47 @@ Re-applies for a bare metal instance. This operation does not have operation-spe
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ReApplyBmcpInstance
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ReApplyBmcpInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.28 ReleaseBmcpInstance
 
 Releases a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | BmcpInsta nceNameL ist | Json | Query | No | ["ins1","ins2","ins3"] | Specifies a group of Bare Metal Computing Platform (BMCP) instance names, which are used to identify different instance nodes. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -948,19 +1266,47 @@ Releases a bare metal instance. This operation does not have operation-specific 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ReleaseBmcpInstance
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
 ```
+http(s)://[Endpoint]/?Action=ReleaseBmcpInstance
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.1.29 CreateInstanceLvm
 
-Creates a logical volume manager (LVM) for an instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Creates a logical volume manager (LVM) for an instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceN ame | Strin g | Query | No | DBServer1 | The name of an instance. For example, the instance name DBServer1 represents the first database server instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -981,12 +1327,36 @@ Creates a logical volume manager (LVM) for an instance. This operation does not 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=CreateInstanceLvm
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=CreateInstanceLvm &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.2 Images
 
@@ -995,6 +1365,10 @@ You can call the following API operations to manage images: ListImage, UploadCus
 #### 4.2.1 ListImage
 
 Queries a list of images. You can dynamically specify query conditions to determine whether to paginate the responses of this operation. url:/v1/ascm/image/listImage Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "PageNumber": 1, # Required.
@@ -1010,9 +1384,13 @@ mages, "customize" for custom images, or "eflops" for Eflops dedicated images.
 r software. If you specify "image" for this parameter, an image package is returned. If you specify "software" for this parameter, a software package is returned.
 ```
 
+`}`
+
 #### 4.2.2 UploadCustomizedImage
 
 Uploads an on-premises image file to an Elastic Compute Service (ECS) instance. The uploaded image file can be used as a custom image for later installations. url:/v1/ascm/image/uploadCustomizedImage Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
 
 ```json
   "Name": "image name", # Required.
@@ -1041,38 +1419,60 @@ and software. Default value: image. If you do not specify this parameter, the de
 are package is uploaded. Tentatively, the following component types are supported.Cloud-native Component: AppStack; Acceleration Suite: AcceleratorKit; Docker: docker.
 ```
 
+`}`
+
 #### 4.2.3 DeleteImage
 
 Deletes a custom image. url:/v1/ascm/image/deleteImage Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "ID": "image ID", # Required.
   "Name": "image name", # Required.
 ```
 
+`}`
+
 #### 4.2.4 EnableImage
 
-Enables an image. url:/v1/ascm/image/enableImage Request method: POST Request parameters: content-type: multipart/json;
+Enables an image. url:/v1/ascm/image/enableImage Request method: POST Request parameters: content-type: multipart/json; `{`
 
 ```json
   "ID":1 # Specify the image ID. Required.
 ```
+
+`}`
 
 #### 4.2.5 DisableImage
 
 Disables an image. url:/v1/ascm/image/disableImage Request method: POST Request parameters: content-type: multipart/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ID":1 # Specify the image ID. Required.
 ```
+
+`}`
 
 #### 4.2.6 ListRelatedInstance
 
 Queries all bare metal instances that use an image by the image name. url:/v1/ascm/image/listRelatedInstance Request method: POST Request parameters: content-type: multipart/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "Name":1 # Specify the image name. Required.
 ```
+
+`}`
 
 ### 4.3 Models
 
@@ -1097,6 +1497,8 @@ ed responses. Valid values: true and false. Default value: true. If you specify 
   "DeployType": "service name"
 ```
 
+`}`
+
 ### 4.4 Hosted instances
 
 You can call the following API operations to manage hosted instances: HostInstance, ReHostInstance, DeleteHostedInstance, and ListInstance.
@@ -1104,6 +1506,8 @@ You can call the following API operations to manage hosted instances: HostInstan
 #### 4.4.1 HostInstance
 
 Hosts an in-band or out-of-band instance. url:/v1/ascm/instance/hostInstance Request method: POST Request parameters: content-type: application/json;
+
+**Sample requests**
 
 ```json
   # Fixed value.
@@ -1140,9 +1544,13 @@ host in-band instances, and "oob_stock" to host out-of-band instances.
   "Description": "",
 ```
 
+`}`
+
 #### 4.4.2 ReHostInstance
 
 Rehosts an in-band or out-of-band instance. url:/v1/ascm/instance/reHostInstance Request method: POST Request parameters: content-type: application/json;
+
+**Sample requests**
 
 ```json
   "ID": id,
@@ -1179,17 +1587,29 @@ host in-band instances, and "oob_stock" to host out-of-band instances.
   "Description": "",
 ```
 
+`}`
+
 #### 4.4.3 DeleteHostedInstance
 
 Deletes an in-band or out-of-band hosted instance. url:/v1/ascm/instance/deleteHostedInstance Request method: POST Request parameters: content-type: multipart/form-data;
+
+**Sample requests**
+
+`{`
 
 ```json
   "ID": 1 # Required.
 ```
 
+`}`
+
 #### 4.4.4 ListInstance
 
 Queries a list of in-band or out-of-band hosted instances. url:/v1/ascm/instance/listInstance Request method: POST Request parameters: content-type: application/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "PageNumber": 1,
@@ -1203,6 +1623,8 @@ sc.
   "ApplicationGroup": "ib_stoc/oob_stock/instance"
 ```
 
+`}`
+
 ### 4.5 Gateway
 
 You can call the following API operations to manage gateway: ListCgw and ListCgwPort.
@@ -1211,14 +1633,22 @@ You can call the following API operations to manage gateway: ListCgw and ListCgw
 
 Queries a list of compute gateways (CGWs). url:/v1/ascm/instance/listCgw Request method: POST Request parameters: content-type: application/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   // Specify the service to which the resource belongs.
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.5.2 ListCgwPort
 
 Queries a list of compute gateway (CGW) ports. url:/v1/ascm/instance/listCgwPort Request method: POST Request parameters: content-type: application/json;
+
+**Sample requests**
 
 ```json
   "CgwName": "" # Required.
@@ -1226,13 +1656,23 @@ Queries a list of compute gateway (CGW) ports. url:/v1/ascm/instance/listCgwPort
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.5.3 ListBorder
 
-Queries a list of private line gateways that can be used to create private line resources. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries a list of private line gateways that can be used to create private line resources.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | DeployTy pe | Strin g | Query | No | bms | The deployment type. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1250,16 +1690,46 @@ Queries a list of private line gateways that can be used to create private line 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ListBorder
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ListBorder &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.5.4 BindVswitchToBorder
 
-Binds a vSwitch to a gateway. This operation is suitable for network configuration scenarios in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Binds a vSwitch to a gateway. This operation is suitable for network configuration scenarios in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1275,6 +1745,8 @@ Binds a vSwitch to a gateway. This operation is suitable for network configurati
 | ZoneId | Strin g | Query | No | ZoneId | The zone ID. |
 | Departme nt | Strin g | Query | No | test | The organization. |
 | Resource Group | Strin g | Query | No | MyResources | The resource set. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1295,16 +1767,46 @@ Binds a vSwitch to a gateway. This operation is suitable for network configurati
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=BindVswitchToBorder
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=BindVswitchToBorder &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.5.5 UnBindVswitchToBorder
 
-Unbinds a vSwitch from a gateway. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Unbinds a vSwitch from a gateway.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1316,6 +1818,8 @@ Unbinds a vSwitch from a gateway. This operation does not have operation-specifi
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | VswitchId | Strin g | Query | No | vsw- bp1s5fnvk4gn2tws0**** | The vSwitch ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1330,19 +1834,45 @@ Unbinds a vSwitch from a gateway. This operation does not have operation-specifi
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UnBindVswitchToBorder
+http(s)://[Endpoint]/?Action=UnBindVswitchToBorder &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.5.6 ReBindVswitchToBorder
 
-Rebinds a vSwitch to a gateway. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Rebinds a vSwitch to a gateway.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1359,6 +1889,8 @@ Rebinds a vSwitch to a gateway. This operation does not have operation-specific 
 | Departme nt | Strin g | Query | No | test | The organization. |
 | Resource Group | Strin g | Query | No | MyResources | The resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -1372,24 +1904,52 @@ Rebinds a vSwitch to a gateway. This operation does not have operation-specific 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ReBindVswitchToBorder
+http(s)://[Endpoint]/?Action=ReBindVswitchToBorder &<Common request parameters>
 ```
+
+Sample success responses
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.5.7 ReUnbindVswitchToBorder
 
-Unbinds a vSwitch from a gateway again. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Unbinds a vSwitch from a gateway again.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | DeployTy pe | Strin g | Query | No | bms | The deployment type. |
 | VswitchId | Strin g | Query | No | vsw- bp1s5fnvk4gn2tws0**** | The vSwitch ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1410,16 +1970,44 @@ Unbinds a vSwitch from a gateway again. This operation does not have operation-s
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ReUnbindVswitchToBorder
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ReUnbindVswitchToBorder &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.5.8 ListVswitchBindToBorder
 
-Queries the binding relationship between a vSwitch and a gateway. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries the binding relationship between a vSwitch and a gateway.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1449,19 +2037,45 @@ Queries the binding relationship between a vSwitch and a gateway. This operation
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ListVswitchBindToBorder
+http(s)://[Endpoint]/?Action=ListVswitchBindToBorder &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.5.9 ListNetworkTopology
 
-Queries the network topology in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries the network topology in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1475,6 +2089,8 @@ Queries the network topology in Bare Metal Service (BMS). This operation does no
 | IP | Strin g | Query | No | 192.168.1.1 | The IP address. |
 | PageNum ber | Integ er | Query | No | 99 | The page number, which is part of pagination configurations. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1495,18 +2111,48 @@ Queries the network topology in Bare Metal Service (BMS). This operation does no
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ListNetworkTopology
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ListNetworkTopology &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.6 Security groups
 
 #### 4.6.1 CreateSecurityGroup
 
-Creates a security group in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Creates a security group in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1524,6 +2170,8 @@ Creates a security group in Bare Metal Service (BMS). This operation does not ha
 | Type | Strin g | Query | No | Image | The resource type. In this example, the resource is an Amazon Elastic Compute Cloud (EC2) instance, which provides compute services in the cloud. |
 | DeployTy pe | Strin g | Query | No | bms | The deployment type. |
 | Descriptio n | Strin g | Query | No | Web server in the production environment | The descriptive information. In this example, high hardware temperature of a device may cause performance degradation of or damage to the device. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1544,20 +2192,50 @@ Creates a security group in Bare Metal Service (BMS). This operation does not ha
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=CreateSecurityGroup
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=CreateSecurityGroup &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.2 DeleteSecurityGroup
 
-Deletes a security group by specifying its ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Deletes a security group by specifying its ID.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | Strin g | Query | No | sg-bp197668l6iupljy**** | The security group ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1572,25 +2250,53 @@ Deletes a security group by specifying its ID. This operation does not have oper
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteSecurityGroup
+http(s)://[Endpoint]/?Action=DeleteSecurityGroup &<Common request parameters>
 ```
+
+Sample success responses
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.3 ModifySecurityGroup
 
-Modifies security group configurations in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Modifies security group configurations in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | Strin g | Query | No | sg-bp197668l6iupljy**** | The security group ID. |
 | Name | Strin g | Query | No | Bob | The instance name. Ignore this parameter for now. It will be supported in later versions. |
 | Descriptio n | Strin g | Query | No | Description | The description of the security group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1611,16 +2317,46 @@ Modifies security group configurations in Bare Metal Service (BMS). This operati
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ModifySecurityGroup
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ModifySecurityGroup &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.4 AddSecurityGroupRule
 
-Adds a rule for a security group in Bare Metal Service (BMS) to control network traffic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Adds a rule for a security group in Bare Metal Service (BMS) to control network traffic.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1638,6 +2374,8 @@ Adds a rule for a security group in Bare Metal Service (BMS) to control network 
 | RelatedGr oupId | Strin g | Query | No | sg-bp197668l6iupljy**** | The authorized security group ID. |
 | Descriptio n | Strin g | Query | No | Description | The descriptive information. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -1651,19 +2389,43 @@ Adds a rule for a security group in Bare Metal Service (BMS) to control network 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddSecurityGroupRule
+http(s)://[Endpoint]/?Action=AddSecurityGroupRule &<Common request parameters>
 ```
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.5 ModifySecurityGroupRule
 
-Flexibly adjusts the configurations of security group rules in Bare Metal Service (BMS) to meet different network access control requirements. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Flexibly adjusts the configurations of security group rules in Bare Metal Service (BMS) to meet different network access control requirements.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1685,6 +2447,8 @@ Flexibly adjusts the configurations of security group rules in Bare Metal Servic
 | RelatedGr oupId | Strin g | Query | No | sg-bp12345678**** | The authorized security group ID. |
 | Descriptio n | Strin g | Query | No | Description | The description of the security group specifications. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -1704,16 +2468,44 @@ Flexibly adjusts the configurations of security group rules in Bare Metal Servic
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ModifySecurityGroupRule
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ModifySecurityGroupRule &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.6 ListSecurityGroupInstance
 
-Queries a list of bare metal instances that are associated with a security group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries a list of bare metal instances that are associated with a security group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1722,6 +2514,8 @@ Queries a list of bare metal instances that are associated with a security group
 | InstanceN ame | Strin g | Query | No | DBServer1 | The name of an instance. For example, the instance name DBServer1 represents the first database server instance. |
 | PageNum ber | Integ er | Query | No | 99 | The page number, which is part of pagination configurations. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1739,16 +2533,46 @@ Queries a list of bare metal instances that are associated with a security group
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ListSecurityGroupInstance
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ListSecurityGroupInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.7 ListSecurityGroup
 
-Queries a list of security groups in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries a list of security groups in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1763,6 +2587,8 @@ Queries a list of security groups in Bare Metal Service (BMS). This operation do
 | PageNum ber | Integ er | Query | No | 99 | The page number, which is part of pagination configurations. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -1776,19 +2602,45 @@ Queries a list of security groups in Bare Metal Service (BMS). This operation do
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ListSecurityGroup
+http(s)://[Endpoint]/?Action=ListSecurityGroup &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.8 ListSecurityGroupRule
 
-Queries a list of security group rules. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries a list of security group rules.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1796,6 +2648,8 @@ Queries a list of security group rules. This operation does not have operation-s
 | Direction | Strin g | Query | No | in | The network traffic direction. Valid values: in and out. |
 | PageNum ber | Integ er | Query | No | 99 | The page number, which is part of pagination configurations. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1816,21 +2670,49 @@ Queries a list of security group rules. This operation does not have operation-s
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListSecurityGroupRule &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListSecurityGroupRule
  "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
  "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
 ```
 
 #### 4.6.9 AddSecurityGroupInstance
 
-Adds a bare metal instance to a security group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Adds a bare metal instance to a security group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | Strin g | Query | No | sg-bp197668l6iupljy**** | The security group ID. |
 | InstanceN ameList | Json | Query | No | ["name1","name2"] | The instance names. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1845,22 +2727,50 @@ Adds a bare metal instance to a security group. This operation does not have ope
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=AddSecurityGroupInstance
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
 ```
+http(s)://[Endpoint]/?Action=AddSecurityGroupInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.10 DeleteSecurityGroupRule
 
-Deletes a security group rule. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Deletes a security group rule.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | Strin g | Query | No | sg-bp197668l6iupljy**** | The security group ID. |
 | SgrId | Strin g | Query | No | sgr-**** | The ID of the security group rule. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -1880,25 +2790,53 @@ Deletes a security group rule. This operation does not have operation-specific r
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteSecurityGroupRule
+http(s)://[Endpoint]/?Action=DeleteSecurityGroupRule &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.6.11 DeleteSecurityGroupInstance
 
-Deletes a bare metal instance from a specified security group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Deletes a bare metal instance from a specified security group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | Strin g | Query | No | sg-bp197668l6iupljy**** | The security group ID. |
 | InstanceN ameList | Json | Query | No | ["name1","name2"] | The instance names. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -1918,12 +2856,36 @@ Deletes a bare metal instance from a specified security group. This operation do
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=DeleteSecurityGroupInstance
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=DeleteSecurityGroupInstance &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.7 Overview
 
@@ -1933,20 +2895,32 @@ You can call the following API operations to manage overview: DescribeManagedIns
 
 Queries the total number of managed instances. url:/v1/ascm/instance/describeManagedInstanceQt Request method: POST Request parameters: content-type: multipart/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "RegionId": "region" # Required.
   // Specify the service to which the resource belongs.
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.7.2 DescribeHostedInstanceQt
 
 Queries the total number of hosted instances. url:/v1/ascm/instance/describeHostedInstanceQt Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   // Specify the service to which the resource belongs.
   "DeployType": "service name"
 ```
+
+`}`
 
 ### 4.8 Alerts
 
@@ -1955,6 +2929,10 @@ You can call the following API operations to manage alerts: ListHealthScore, Lis
 #### 4.8.1 ListHealthScore
 
 Queries the service health check score. url:/v1/aso/monitor/listHealthScore Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "ApplicationGroup": "application group" # Required.
@@ -1970,6 +2948,10 @@ Queries the service health check score. url:/v1/aso/monitor/listHealthScore Requ
 
 Queries the total number of unhandled alerts. url:/v1/aso/monitor/listWarningSummary Request method: POST Request parameters: content-type: multipart/json;
 
+**Sample requests**
+
+`{`
+
 ```json
   "ApplicationGroup": "application group" # Required.
   "Organization": "organization" # Required.
@@ -1980,9 +2962,15 @@ Queries the total number of unhandled alerts. url:/v1/aso/monitor/listWarningSum
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.8.3 ListWarningDetail
 
 Queries a list of alerts. url:/v1/aso/monitor/listWarningDetail Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "pageNum": "1". # Required.
@@ -2002,9 +2990,15 @@ dicate All, Unhandled, and Handled statuses, respectively.
   "DeployType": "service name"
 ```
 
+`}`
+
 #### 4.8.4 CreateWarningEvent
 
 Queries a list of new alert events. url:/v1/aso/monitor/createWarningEvent Request method: POST Request parameters: content-type: multipart/json;
+
+**Sample requests**
+
+`{`
 
 ```json
   "WarningID": "" # Required.
@@ -2016,11 +3010,19 @@ Queries a list of new alert events. url:/v1/aso/monitor/createWarningEvent Reque
   "Organizations": "" # Required.
 ```
 
+`}`
+
 ### 4.9 Cloud Assistant
 
 #### 4.9.1 RunCommand
 
-Runs custom commands on bare metal servers. This operation is suitable for automated O&M scenarios. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Runs custom commands on bare metal servers. This operation is suitable for automated O&M scenarios.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2036,6 +3038,8 @@ Runs custom commands on bare metal servers. This operation is suitable for autom
 |---|---|---|---|---|---|
 | Timeout | Long | Query | No | 60 | The timeout period of the change process. Unit: seconds. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -2049,19 +3053,46 @@ Runs custom commands on bare metal servers. This operation is suitable for autom
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=RunCommand
 ```
 
+`{`
+
 ```json
  "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.9.2 DescribeInvocationResults
 
-Queries the command execution results of Cloud Assistant. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries the command execution results of Cloud Assistant.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2086,21 +3117,47 @@ Queries the command execution results of Cloud Assistant. This operation does no
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeInvocationResults
+http(s)://[Endpoint]/?Action=DescribeInvocationResults &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.10 Key pairs
 
 #### 4.10.1 CreateKeyPair
 
-Creates a Secure Shell (SSH) key pair for secure login to a bare metal server. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Creates a Secure Shell (SSH) key pair for secure login to a bare metal server.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2113,6 +3170,8 @@ Creates a Secure Shell (SSH) key pair for secure login to a bare metal server. T
 |---|---|---|---|---|---|
 | PublicKey | Strin g | Query | No | c3NoLWVkMjU1MTkgQU FBQUMzTnphQzFsWkRJM U5URTVBQUFBSUhVcjY4 UENFYWFzZjFYRVpNYTV sMlNBQytHV3FpeXVsRV pndkV4dmlPM28gcm9vd EA5NjBkMmNhOTcwYjU = | The public key. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -2126,19 +3185,44 @@ Creates a Secure Shell (SSH) key pair for secure login to a bare metal server. T
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateKeyPair
+http(s)://[Endpoint]/?Action=CreateKeyPair &<Common request parameters>
 ```
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.10.2 ListKeyPair
 
-Queries a list of key pairs in Bare Metal Service (BMS) to manage them. This operation is suitable for scenarios where you want to manage and retrieve multiple key pairs at a time. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries a list of key pairs in Bare Metal Service (BMS) to manage them. This operation is suitable for scenarios where you want to manage and retrieve multiple key pairs at a time.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2150,6 +3234,8 @@ Queries a list of key pairs in Bare Metal Service (BMS) to manage them. This ope
 |---|---|---|---|---|---|
 | KeyPairFin gerPrint | Strin g | Query | No | ABC1234567 | The fingerprint of the key pair. The message- digest algorithm 5 (MD5) is used based on the public key fingerprint format defined in RFC 4716. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -2163,24 +3249,50 @@ Queries a list of key pairs in Bare Metal Service (BMS) to manage them. This ope
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ListKeyPair
+http(s)://[Endpoint]/?Action=ListKeyPair &<Common request parameters>
 ```
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.10.3 ConfigKeyPair
 
-Configures a key pair in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Configures a key pair in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | KeyPairNa me | Strin g | Query | No | test-KeyPairName | The name of the key pair. The name must be 2 to 128 characters in length and can contain digits, letters, colons (:), underscores ( ), periods _ (.), and hyphens (-). |
 | MachineS NList | Json | Query | No | ["SN1","SN2"] | The machine SNs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2201,22 +3313,50 @@ Configures a key pair in Bare Metal Service (BMS). This operation does not have 
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ConfigKeyPair
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ConfigKeyPair &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.10.4 UnbindKeyPair
 
-Unbinds a key pair from a specified bare metal server. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Unbinds a key pair from a specified bare metal server. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | KeyPairNa me | Strin g | Query | No | test-KeyPairName | The name of the key pair. The name must be 2 to 128 characters in length and can contain digits, letters, colons (:), underscores ( ), periods _ (.), and hyphens (-). |
 | MachineS NList | Json | Query | No | ** | The machine SNs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | InternalError | The error code. |
@@ -2230,16 +3370,42 @@ Unbinds a key pair from a specified bare metal server. This operation does not h
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=UnbindKeyPair
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
 ```
+http(s)://[Endpoint]/?Action=UnbindKeyPair &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.10.5 DeleteKeyPair
 
-Deletes a key pair. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Deletes a key pair.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2258,27 +3424,55 @@ Deletes a key pair. This operation does not have operation-specific request head
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteKeyPair
+http(s)://[Endpoint]/?Action=DeleteKeyPair &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.11 Tasks
 
 #### 4.11.1 CreateTask
 
-Creates a task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Creates a task in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | No | us | west |
 | Departme nt | Strin g | Query | No | test | The organization. |
 | Resource Group | Strin g | Query | No | MyResources | The resource set. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2299,16 +3493,42 @@ Creates a task in Bare Metal Service (BMS). This operation does not have operati
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=CreateTask
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=CreateTask &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 #### 4.11.2 ListTasks
 
-Queries a list of tasks in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries a list of tasks in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2322,6 +3542,8 @@ Queries a list of tasks in Bare Metal Service (BMS). This operation does not hav
 | PageSize | Integ er | Query | Yes | 10 | The number of entries per page, which is part of pagination configurations. |
 | Departme nt | Strin g | Query | No | test | The organization. |
 | Resource Group | Strin g | Query | No | MyResources | The resource set. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2343,24 +3565,52 @@ Queries a list of tasks in Bare Metal Service (BMS). This operation does not hav
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ListTasks &PageNumber=99 &PageSize=10
+http(s)://[Endpoint]/?Action=ListTasks &PageNumber=99 &PageSize=10 &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 #### 4.11.3 DescribeTask
 
-Queries the details of a task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the details of a task in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | UID | Strin g | Query | Yes | 1133166938931507 | UID |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2382,21 +3632,49 @@ Queries the details of a task in Bare Metal Service (BMS). This operation does n
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=DescribeTask &UID=1133166938931507
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=DescribeTask &UID=1133166938931507 &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 #### 4.11.4 GetResult
 
 Queries the execution results of a task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | UID | Strin g | Query | Yes | 1133166938931507 | UID |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2412,19 +3690,49 @@ Queries the execution results of a task in Bare Metal Service (BMS). This operat
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=GetResult &UID=1133166938931507
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=GetResult &UID=1133166938931507
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 ### 4.12 Diagnosis
 
 #### 4.12.1 GetDiagnoseItem
 
-Queries the information about a diagnostic item in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the information about a diagnostic item in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2435,6 +3743,8 @@ Queries the information about a diagnostic item in Bare Metal Service (BMS). Thi
 |---|---|---|---|---|---|
 | DiagnoseT ype | Strin g | Query | No | 10 | The type of diagnosis. This parameter indicates a comorbidity diagnosis, where two or more unrelated diseases exist. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestID | String | *****-*****-***** | The request ID. |
@@ -2443,19 +3753,40 @@ Queries the information about a diagnostic item in Bare Metal Service (BMS). Thi
 | Code | String | ERROR | 404 |
 | data | Map | {"data":"xxxxxx Success!"} | The data object that typically contains information or results in the response of the API operation. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetDiagnoseItem
+http(s)://[Endpoint]/?Action=GetDiagnoseItem &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Message":"You do not have the permissions to access this file",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "ExecuteStatus":"",
  "Code":"ERROR"
 ```
 
+`}`
+
 #### 4.12.2 GetDiagnoseStatusById
 
-Queries the current status of a diagnostic task based on the task ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the current status of a diagnostic task based on the task ID.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2463,6 +3794,8 @@ Queries the current status of a diagnostic task based on the task ID. This opera
 | Resource Groups | Strin g | Query | No | 23 | The ID of the resource set. |
 | DiagnoseI d | Strin g | Query | No | vpndgn- uf6kuxbe3iv028k3s**** | The ID of the diagnostic task. When you call the DiagnoseVpnGateway operation, the system returns a corresponding ID of the diagnostic task. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestID | String | *****-*****-***** | The request ID. |
@@ -2474,16 +3807,41 @@ Queries the current status of a diagnostic task based on the task ID. This opera
 | Code | String | ERROR | 404 |
 | data | Map | {"data":"xxxxxx Success!"} | The data object that typically contains information or results in the response of the API operation. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetDiagnoseStatusById &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetDiagnoseStatusById
+ "RequestID":"*****-*****-*****",
  "Message":"You do not have the permissions to access this file",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "ExecuteStatus":"",
  "Code":"ERROR"
 ```
 
+`}`
+
 #### 4.12.3 GetDiagnoseDetail
 
-Queries the details of a specific diagnostic task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the details of a specific diagnostic task in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2500,6 +3858,8 @@ Queries the details of a specific diagnostic task in Bare Metal Service (BMS). T
 | PageSize | Integ er | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
 | PageNum | Integ er | Query | No | 1 | The page number, which is part of pagination configurations. The example indicates that the first page of the result set is requested. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestID | String | *****-*****-***** | The request ID. |
@@ -2511,16 +3871,41 @@ Queries the details of a specific diagnostic task in Bare Metal Service (BMS). T
 |---|---|---|---|
 | data | Map | {"data":"xxxxxx Success!"} | The data object that typically contains information or results in the response of the API operation. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetDiagnoseDetail &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetDiagnoseDetail
+ "RequestID":"*****-*****-*****",
  "Message":"You do not have the permissions to access this file",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "ExecuteStatus":"",
  "Code":"ERROR"
 ```
 
+`}`
+
 #### 4.12.4 QueryDiagnose
 
-Queries diagnostic records in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries diagnostic records in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2541,6 +3926,8 @@ Queries diagnostic records in Bare Metal Service (BMS). This operation does not 
 | PageSize | Integ er | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
 | PageNum | Integ er | Query | No | 1 | The page number, which is part of pagination configurations. The example indicates that the first page of the result set is requested. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestID | String | *****-*****-***** | The request ID. |
@@ -2552,16 +3939,41 @@ Queries diagnostic records in Bare Metal Service (BMS). This operation does not 
 | Code | String | ERROR | 404 |
 | data | Map | {"data":"xxxxxx Success!"} | The data object that typically contains information or results in the response of the API operation. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=QueryDiagnose &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=QueryDiagnose
+ "RequestID":"*****-*****-*****",
  "Message":"You do not have the permissions to access this file",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "ExecuteStatus":"",
  "Code":"ERROR"
 ```
 
+`}`
+
 #### 4.12.5 StartDiagnose
 
-Starts a diagnostic task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Starts a diagnostic task in Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2584,6 +3996,8 @@ Starts a diagnostic task in Bare Metal Service (BMS). This operation does not ha
 | PageSize | Strin g | Query | No | 10 | The number of entries per page, which is part of pagination configurations. |
 | PageNum | Strin g | Query | No | 1 | The page number, which is part of pagination configurations. The example indicates that the first page of the result set is requested. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestID | String | *****-*****-***** | The request ID. |
@@ -2592,16 +4006,37 @@ Starts a diagnostic task in Bare Metal Service (BMS). This operation does not ha
 | Code | String | ERROR | 404 |
 | data | Map | {"data":"xxxxxx Success!"} | The data object that typically contains information or results in the response of the API operation. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=StartDiagnose
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestID":"*****-*****-*****",
  "Message":"You do not have the permissions to access this file",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "ExecuteStatus":"",
  "Code":"ERROR"
 ```
 
+`}`
+
 ### 4.13 DescribeServiceStatus
 
-Queries the status of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
+Queries the status of Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2620,14 +4055,44 @@ Queries the status of Bare Metal Service (BMS). This operation does not have ope
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=DescribeServiceStatus
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=DescribeServiceStatus
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "responseVersion":"1.0",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.14 QueryTotalAvailableResource
 
-Queries the total amount of all available resources in a Container Service for Kubernetes (ACK) cluster. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the total amount of all available resources in a Container Service for Kubernetes (ACK) cluster.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2648,20 +4113,46 @@ Queries the total amount of all available resources in a Container Service for K
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=QueryTotalAvailableResource &AckClusterID=cef51d60a6778415ab3a8026c24*****
+http(s)://[Endpoint]/?Action=QueryTotalAvailableResource &AckClusterID=cef51d60a6778415ab3a8026c24***** &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 ### 4.15 ListCluster
 
-Queries a list of Bare Metal Service (BMS) clusters. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries a list of Bare Metal Service (BMS) clusters.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2682,16 +4173,46 @@ Queries a list of Bare Metal Service (BMS) clusters. This operation does not hav
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ListCluster
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ListCluster
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.16 GetBaseline
 
-Queries the performance baseline data of Bare Metal Service (BMS). If you call this operation to query performance baseline data after a performance evaluation task is complete, the data will be retrieved and compared. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the performance baseline data of Bare Metal Service (BMS). If you call this operation to query performance baseline data after a performance evaluation task is complete, the data will be retrieved and compared.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2711,20 +4232,46 @@ Queries the performance baseline data of Bare Metal Service (BMS). If you call t
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetBaseline &UID=1133166938931507
+http(s)://[Endpoint]/?Action=GetBaseline &UID=1133166938931507 &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 ### 4.17 DescribeLicenseInfo
 
-Queries the license information of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the license information of Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2737,14 +4284,40 @@ Queries the license information of Bare Metal Service (BMS). This operation does
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=DescribeLicenseInfo
- "errorTitle":"InternalError",
 ```
+http(s)://[Endpoint]/?Action=DescribeLicenseInfo
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "responseVersion":"1.0",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "status":200
+```
+
+`}`
 
 ### 4.18 ListModels
 
-Queries a list of all models of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries a list of all models of Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2755,6 +4328,8 @@ Queries a list of all models of Bare Metal Service (BMS). This operation does no
 | Category | Strin g | Query | No | ecs | The abbreviation of the cloud service name. Valid values of N: 1 to 200. For information about how to query the abbreviations of cloud service names, see metricCategory in the response parameter Labels of the DescribeProjectMeta operation. |
 | Framewor k | Strin g | Query | No | 1 | The type of the framework. Valid values: 1: Tensorflow. 2: PyTorch. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | ERROR | 404 |
@@ -2772,22 +4347,52 @@ Queries a list of all models of Bare Metal Service (BMS). This operation does no
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
-```json
-http(s)://[Endpoint]/?Action=ListModels
- "dynamicCode":"PlatformResponseError.%s",
- "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ListModels &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
+ "dynamicMessage":"The specified store %s does not exist.",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 ### 4.19 GetLogLink
 
-Queries the log link of a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the log link of a bare metal instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | UID | Strin g | Query | Yes | 1133166938931507 | UID |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | ERROR | 404 |
@@ -2802,25 +4407,52 @@ Queries the log link of a bare metal instance. This operation does not have oper
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetLogLink &UID=1133166938931507
+http(s)://[Endpoint]/?Action=GetLogLink &UID=1133166938931507 &<Common request parameters>
 ```
 
 ```json
  "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
  "dynamicMessage":"The specified store %s does not exist.",
- "errorTitle":"InternalError",
- "Code":"ERROR",
+ "data":{
+  "data":"xxxxxx Success!"
 ```
+
+`},`
+
+```json
+ "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
+ "Code":"ERROR",
+ "status":200
+```
+
+`}`
 
 ### 4.20 GetLog
 
-Queries the logs of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the logs of Bare Metal Service (BMS).
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | UID | Strin g | Query | Yes | 1133166938931507 | UID |
 | TailLines | Strin g | Query | No | 10 | The number of lines read from the end of a file. For example, you can specify 10 for this parameter to display the last 10 lines of a log file. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2842,18 +4474,38 @@ Queries the logs of Bare Metal Service (BMS). This operation does not have opera
 | success | Boolean | true | The status of response. |
 | responseVersi on | String | 1.0 | The version of response. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetLog &UID=1133166938931507 &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetLog &UID=1133166938931507
  "dynamicCode":"PlatformResponseError.%s",
+ "responseVersion":"1.0",
  "dynamicMessage":"The specified store %s does not exist.",
  "data":"{\"data\":\"xxxxxx Success!\"}",
  "errorTitle":"InternalError",
+ "requestId":"*****-*****-*****",
+ "success":true,
+ "errorMessage":"The requested services is xxxxx",
+ "errorCode":"InternalError",
  "Code":"ERROR",
 ```
 
 ### 4.21 GetMachineIDbyCluster
 
-Queries the ID of a bare metal server based on the cluster information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
+Queries the ID of a bare metal server based on the cluster information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2861,6 +4513,8 @@ Queries the ID of a bare metal server based on the cluster information. This ope
 | Departme nt | Strin g | Query | No | test | The organization. |
 | Resource Groups | Strin g | Query | No | 23 | The resource set ID. |
 | ClusterTy pe | Strin g | Query | No | Kubernetes | The type of the cluster. The example shows that the cluster uses Kubernetes as its management and service orchestration platform. You can specify other cluster types such as Hadoop and Mesos. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2873,9 +4527,28 @@ Queries the ID of a bare metal server based on the cluster information. This ope
 | Code | String | ERROR | 404 |
 | data | Map | {"data":"xxxxxx Success!"} | The data object that typically contains information or results in the response of the API operation. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetMachineIDbyCluster &<Common request parameters>
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetMachineIDbyCluster
+ "RequestID":"*****-*****-*****",
  "Message":"You do not have the permissions to access this file",
+ "data":{
+  "data":"xxxxxx Success!"
+```
+
+`},`
+
+```json
  "ExecuteStatus":"",
  "Code":"ERROR"
 ```
+
+`}`

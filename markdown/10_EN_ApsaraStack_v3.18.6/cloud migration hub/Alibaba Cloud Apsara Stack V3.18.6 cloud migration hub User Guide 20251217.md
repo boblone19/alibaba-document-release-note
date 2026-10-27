@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 133
 source_pdf: "ae10e1172f80ac2c_Alibaba Cloud Apsara Stack V3.18.6 cloud migration hub User Guide 20251217.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20cloud%20migration%20hub%20User%20Guide%2020251217.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # cloud migration hub User Guide 20251217

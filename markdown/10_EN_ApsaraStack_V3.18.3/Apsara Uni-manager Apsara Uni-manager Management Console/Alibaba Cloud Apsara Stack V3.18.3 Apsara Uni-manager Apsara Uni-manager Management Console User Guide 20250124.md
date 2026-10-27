@@ -5,7 +5,7 @@ doc_version: "20250124"
 pdf_pages: 470
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Apsara Uni-manager Management Console User Guide 20250124.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1ASCM/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Uni-manager%20Apsara%20Uni-manager%20Management%20Console%20User%20Guide%2020250124.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Apsara Uni-manager Management Console User Guide 20250124
@@ -2294,6 +2294,8 @@ to assume this role. i. Select Company A from the Trust Organization drop-down l
  acs:ram::139900176770****:root .
 ```
 
+**Note**
+
 |   | acs:ram::<account- |   |
 |---|---|---|
 
@@ -4073,6 +4075,9 @@ ons
 is displayed.
 3. In the details panel, view the basic information and associated organizations of the IdP.
 **Basic Information**: The basic information about the local IdP is displayed on this tab.
+
+**Note**
+
 If the protocol type of the IdP is **SAML 2.0**, you can click **Download Metadata File** in the Basic Information section to download the metadata file.
 **Associated Organization**: The information about organizations associated with the
 local IdP is displayed on this tab. The information includes **Organization ID/Name**,
@@ -4537,6 +4542,9 @@ following table.
 | Service Catalog | This parameter is displayed only if the Scenario parameter is set to Service Catalog. After you select a service type, the corresponding service catalogs are displayed. In the service catalog list, select operations in the Operations column. For example, you can select Create and Change. |
 
 6. Click **Submit**.
+
+**Note**
+
 If you select **No permissions are required for the initiator** , the initiator can initiate a process without the need to obtain the permissions to perform the operations in the process.
 
 **View process associations**
@@ -5160,7 +5168,11 @@ This topic describes the quotas that you can configure for KVStore for Redis, ca
 
 **Standard (Master-replica) Edition**
 
-Memory usage = instanceClass.mem × Number of replicas The preceding formula is used to calculate the memory usage of a standard instance.
+Memory usage = instanceClass.mem × Number of replicas
+
+**Note**
+
+The preceding formula is used to calculate the memory usage of a standard instance.
 
 > instanceClass.mem indicates the memory size that is defined in the instance type.
 > The number of replicas is fixed as 2.
@@ -9465,7 +9477,11 @@ Click **Enable** or **Disable** in the Actions column to enable or disable a use
 
 > **Note:** You cannot disable the user that you currently use to log on to the multi-cloud management platform. To disable this user, you must use another administrator account to log on to the multi-cloud management platform.
 
-Click **Role Authorization** in the Operation column to view the roles of a user. In the Role Authorization panel, you can remove roles from the user. You can also assign roles to the user and specify the permission scope of roles. After a role is added to the user, the user is granted the permissions of the role. You can assign only the available roles to the user. For more information, see Role management.
+Click **Role Authorization** in the Operation column to view the roles of a user. In the Role Authorization panel, you can remove roles from the user. You can also assign roles to the user and specify the permission scope of roles. After a role is added to the user, the user is granted the permissions of the role.
+
+**Note**
+
+You can assign only the available roles to the user. For more information, see Role management.
 
 > If the permission scope of the role that you want to add is project, you must also specify the project.
 

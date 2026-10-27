@@ -5,7 +5,7 @@ doc_version: "20240305"
 pdf_pages: 37
 source_pdf: "4048e1e71bea4567_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide 20240305.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Migration%20Center%20User%20Guide%2020240305.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide

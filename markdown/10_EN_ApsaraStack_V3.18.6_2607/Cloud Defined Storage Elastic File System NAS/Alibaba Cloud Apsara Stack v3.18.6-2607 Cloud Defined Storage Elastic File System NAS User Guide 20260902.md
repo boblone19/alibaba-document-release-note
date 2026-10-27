@@ -5,7 +5,7 @@ doc_version: "20260902"
 pdf_pages: 50
 source_pdf: "03deb6b106b070a8_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 20260902
@@ -95,6 +95,9 @@ manager Management Console and press Enter.
 
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
+
+**Note**
+
 The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
 
 > The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 19
 source_pdf: "9a09fe11a908af83_Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8CPFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Parallel%20File%20Storage%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Parallel File Storage User Guide 20260701
@@ -37,7 +37,12 @@ ApsaraStack Parallel File System (APFS) is a cloud-defined, distributed parallel
 
 ### 2.1 Log on to the APFS console
 
+**Prerequisites**
+
 The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. On the login page, enter your username and password.
@@ -60,6 +65,9 @@ Parallel File System (APFS) console.
 ### 2.2 Create an APFS file system
 
 This topic describes how to create a file system in the ApsaraStack Parallel File System (APFS) console.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. On the **APFS File Systems** page, click **Create File System**.
 3. On the **Create a file system** page, configure parameters.
@@ -93,7 +101,12 @@ This topic describes the limits of ApsaraStack Parallel File System (APFS). Only
 
 **View an APFS file system**
 
+**Prerequisites**
+
 An ApsaraStack Parallel File System (APFS) file system is created. For more information, see Create an APFS file system.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. On the APFS page, you can search for a file system by **File System ID** or **File System**
 **Name**.
@@ -108,7 +121,12 @@ the file system.
 
 **Delete an APFS file system**
 
+**Prerequisites**
+
 Before you delete an APFS file system, the file system is unmounted from the mount target. Deleted APFS file systems cannot be restored. Make sure that you back up the data stored in an APFS file system before you delete it. After you delete an APFS file system, resources of the file system are not immediately released. The disk space occupied by the file system is released seven days later.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. On the APFS page, find the file system that you want to delete and click **Delete** in the
 **Actions** column.
@@ -125,9 +143,14 @@ the pointer over the **File System ID/Name** column, and click the icon.
 
 ### 3.2 Scale up an APFS file system
 
+**Prerequisites**
+
 1. An ApsaraStack Parallel File System (APFS) file system is created. For more information, see
 Create an APFS file system.
 2. No data is being read from or written to the APFS file system.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. On the APFS page, find the file system that you want to scale up and click **Scale Up** in the
 Actions column.
@@ -140,7 +163,14 @@ parameter.
 
 ### 3.3 Resource monitoring
 
-This topic describes how to view monitoring metrics and create alert rules for ApsaraStack Parallel File System (APFS) resources. An APFS file system is created. For more information, see Create an APFS file system.
+This topic describes how to view monitoring metrics and create alert rules for ApsaraStack Parallel File System (APFS) resources.
+
+**Prerequisites**
+
+An APFS file system is created. For more information, see Create an APFS file system.
+
+**Procedure**
+
 1. Log on to the APFS console.
 2. Click **APFS**, and then click the ID or name of a file system or click **Details** in the Actions
 column to go to the File System Details page.
@@ -164,7 +194,14 @@ You can create backup plans in the ApsaraStack Parallel File System (APFS) conso
 
 **Limits**
 
-For the same user and region, you can create only one backup plan for each file system. The names of backup plans for the same user and region must be unique. The minimum backup interval is 24 hours. If the source file system is in the Deleting, Deleted, Stopping, or Stopped state, the backup plan is automatically suspended. An APFS file system is created and is in the Available state. For more information, see Create an APFS file system. An OSS bucket is created.
+For the same user and region, you can create only one backup plan for each file system. The names of backup plans for the same user and region must be unique. The minimum backup interval is 24 hours. If the source file system is in the Deleting, Deleted, Stopping, or Stopped state, the backup plan is automatically suspended.
+
+**Prerequisites**
+
+An APFS file system is created and is in the Available state. For more information, see Create an APFS file system. An OSS bucket is created.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. In the left-side navigation pane, click **Data Flow**.
 3. On the **Backup Plan** tab, click **Create Backup Plan** and configure the following
@@ -195,7 +232,12 @@ parameters.
 
 **View a backup plan**
 
+**Prerequisites**
+
 A backup plan is created.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. In the left-side navigation pane, click **Data Flow**.
 3. On the **Backup Plan** tab, you can view the details of each backup plan in the list. Click the
@@ -203,7 +245,12 @@ ID of a backup plan in the **Plan ID/Name** column to view the details of the ba
 
 **Modify a backup plan**
 
+**Prerequisites**
+
 A backup plan is created.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. In the left-side navigation pane, click **Data Flow**.
 3. On the **Backup Plan** tab, click **Modify** in the Actions column of the desired backup plan.
@@ -212,6 +259,8 @@ disabled), cron expression, and migration speed.
 5. Click **Submit**.
 
 **Delete a backup plan**
+
+**Procedure**
 
 1. Log in to the APFS console.
 2. In the left-side navigation pane, click **Data Flow**.
@@ -241,6 +290,9 @@ Each user can run at most two replica tasks concurrently. At most five replica t
 **Manually create a replica task**
 
 A backup plan is created. For more information, see Create a backup plan.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. In the left-side navigation pane, click **Data Flow**.
 3. Click the **Replica Management** tab, click **Create Replica**, and configure the following
@@ -266,7 +318,12 @@ A user can run only one import job at a time. At most three import jobs can be r
 
 **Create an import job**
 
+**Prerequisites**
+
 An APFS file system is created and is in the Available state. For more information, see Create an APFS file system. An OSS bucket is created.
+
+**Procedure**
+
 1. Log in to the APFS console.
 2. In the left-side navigation pane, click **Data Flow**.
 3. Click the **Import Job** tab.

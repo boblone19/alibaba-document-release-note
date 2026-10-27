@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 623
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 Object Storage Service Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20Object%20Storage%20Service%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 Object Storage Service Developer Guide 20220928
@@ -2473,7 +2473,7 @@ Post policy The policy form field in a PostObject request is used to verify the 
  ["starts-with", "$key", "user/eric/"]
 ```
 
-`]` In the PostObject request, the policy must contain the expiration and conditions attributes. Expiration Expiration specifies the expiration time of the policy, which is expressed in ISO 8601 GMT. For example, "2014-12-01T12:00:00.000Z" indicates that the PostObject request must be sent before 12:00:00 on December 1, 2014. Conditions Conditions is a list that specifies the valid values of form fields in the PostObject request. The value of a form field is extended after OSS checks the policy. Therefore, the valid value of the form field set in policy is equivalent to the value of the form field before extension. For example, if the key form field is set to user/user1/${filename} and the object name before the upload is a.txt, the key form field in policy of the PostObject request must be set to ["eq", "$key", "user/user1/\${filename}"] instead of ["eq", "$key","$key", "user/user1/a.txt"]. The following table lists the conditions supported by the policy. Conditions
+`]` `}` In the PostObject request, the policy must contain the expiration and conditions attributes. Expiration Expiration specifies the expiration time of the policy, which is expressed in ISO 8601 GMT. For example, "2014-12-01T12:00:00.000Z" indicates that the PostObject request must be sent before 12:00:00 on December 1, 2014. Conditions Conditions is a list that specifies the valid values of form fields in the PostObject request. The value of a form field is extended after OSS checks the policy. Therefore, the valid value of the form field set in policy is equivalent to the value of the form field before extension. For example, if the key form field is set to user/user1/${filename} and the object name before the upload is a.txt, the key form field in policy of the PostObject request must be set to ["eq", "$key", "user/user1/\${filename}"] instead of ["eq", "$key","$key", "user/user1/a.txt"]. The following table lists the conditions supported by the policy. Conditions
 
 | Condition | Description |
 |---|---|
@@ -2541,13 +2541,13 @@ Examples of the JSON fields: `{`
 "callbackUrl":"121.101.166.30/test.php", "callbackHost":"oss-cn-hangzhou.aliyuncs.com", "callbackBody":"{\"mimeType\":${mimeType},\"size\":${size}}", "callbackBodyType":"application/json"
 ```
 
-`{`
+`}` `{`
 
 ```json
 "callbackUrl":"121.43.113.8:23456/index.html", "callbackBody":"bucket=${bucket}&object=${object}&etag=${etag}&size=${size}&mimeType=${mi meType}&imageInfo.height=${imageInfo.height}&imageInfo.width=${imageInfo.width}&imageInfo .format=${imageInfo.format}&my_var=${x:my_var}"
 ```
 
-The following table lists the system parameters you can configure for callbackBody.
+`}` The following table lists the system parameters you can configure for callbackBody.
 
 | System parameter | Description |
 |---|---|
@@ -2571,6 +2571,8 @@ Assume that you must configure two custom parameters x:var1 and x:var2. The valu
 ```
 "x:var1":"value1", "x:var2":"value2"
 ```
+
+`}`
 
 > Not e If the input callback parameter or callback-var parameter is invalid, HTTP status code 400 and error code InvalidArgument are returned. This error occurs in the following scenarios:
 > URLs and headers are passed in at the same time to the callback parameter (x-oss-callback) or the callback-var parameter (x-oss-callback-var) in PutObject and CompleteMultipartUpload operations.
@@ -2621,7 +2623,7 @@ Each custom parameter uses a separate form field. You cannot add the callback-va
 "x:var1":"value1", "x:var2":"value2"
 ```
 
-The form fields in the POST request:
+`}` The form fields in the POST request:
 
 ```
 --9431149156168 Content-Disposition: form-data; name="callback" eyJjYWxsYmFja1VybCI6IjEwLjEwMS4xNjYuMzA6ODA4My9jYWxsYmFjay5waHAiLCJjYWxsYmFja0hvc3QiOiI xMC4xMDEuMTY2LjMwIiwiY2FsbGJhY2tCb2R5IjoiZmlsZW5hbWU9JChmaWxlbmFtZSkmdGFibGU9JHt4OnRhYm xlfSIsImNhbGxiYWNrQm9keVR5cGUiOiJhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQifQ== --9431149156168 Content-Disposition: form-data; name="x:var1" value1 --9431149156168 Content-Disposition: form-data; name="x:var2" value2
@@ -2638,7 +2640,7 @@ WxsYmFja0hvc3QiOiIxMC4xMDEuMTY2LjMwIiwiY2FsbGJhY2tCb2R5IjoiZmlsZW5hbWU9JChmaWxlb
     ["starts-with", "$key", "user/eric/"],
 ```
 
-`]` Step 3: Initiate a callback request If an object is uploaded, OSS sends the content specified by the callback and callback-var parameters in the request to the application server by using the POST method. Example:
+`]` `}` Step 3: Initiate a callback request If an object is uploaded, OSS sends the content specified by the callback and callback-var parameters in the request to the application server by using the POST method. Example:
 
 ```
 POST /index.html HTTP/1.0 Host: 121.43.113.8 Connection: close Content-Length: 181 Content-Type: application/x-www-form-urlencoded User-Agent: http-client/0.0.1 bucket=callback-test&object=test.txt&etag=D8E8FCA2DC0F896FD7CB4CB0031BA249&size=5&mimeType= text%2Fplain&imageInfo.height=&imageInfo.width=&imageInfo.format=&x:var1=for-callback-test
@@ -3662,9 +3664,19 @@ Download an object The following code provides an example on how to query the co
         String line = reader.readLine();
         if (line == null) break;
         System.out.println("\n" + line);
+```
+
+`}`
+
+```
     // You must close the connection after each use to prevent connection leaks. Otherwise,
 requests may be unable to establish connections and the program cannot run properly.
     content.close();
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -3674,6 +3686,11 @@ List objects The following code provides an example on how to list objects in a 
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Call ossClient.listObjects to obtain an ObjectListing instance. The ObjectListing instan ce contains the response to the listObject request. ObjectListing objectListing = ossClient.listObjects(bucketName); // Call objectListing.getObjectSummaries to query the descriptions of all objects. for (OSSObjectSummary objectSummary : objectListing.getObjectSummaries()) {
     System.out.println(" - " + objectSummary.getKey() + "  " +
             "(size = " + objectSummary.getSize() + ")");
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -3700,6 +3717,11 @@ A bucket is a container for objects stored in OSS. Every object is contained in 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // List all buckets. List<Bucket> buckets = ossClient.listBuckets(); for (Bucket bucket : buckets) {
     System.out.println(" - " + bucket.getName());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -3710,19 +3732,21 @@ ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // List bucket
     System.out.println(" - " + bucket.getName());
 ```
 
-List buckets whose names come after a specified marker The marker parameter specifies the name of the bucket after which the list begins. The following code provides an example on how to list buckets whose names come after a specified marker:
+`}` List buckets whose names come after a specified marker The marker parameter specifies the name of the bucket after which the list begins. The following code provides an example on how to list buckets whose names come after a specified marker:
 
 ```java
 ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // List buckets whose names come after the specified marker. listBucketsRequest.setMarker("<yourBucketMarker>"); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
     System.out.println(" - " + bucket.getName());
 ```
 
-List a specified number of buckets The following code provides an example on how to specify the maxKeys parameter to list a specified number of buckets:
+`}` List a specified number of buckets The following code provides an example on how to specify the maxKeys parameter to list a specified number of buckets:
 
 ```java
 ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // Set the maximum number of buckets to list each time to 500. The default value is 100. Th e maximum value is 1000. listBucketsRequest.setMaxKeys(500); BucketList bucketList = ossClient.listBuckets(listBucketsRequest); for (Bucket bucket : bucketList.getBucketList()) {
     System.out.println(" - " + bucket.getName());
 ```
+
+`}`
 
 ##### 2.1.5.3 Determine whether buckets exist
 
@@ -3785,6 +3809,11 @@ View lifecycle rules The following code provides an example on how to view lifec
     if(rule.hasAbortMultipartUpload()) {
         System.out.println(rule.getAbortMultipartUpload().getExpirationDays());
         System.out.println(rule.getAbortMultipartUpload().getCreatedBeforeDate());
+```
+
+`}` `}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -3813,6 +3842,11 @@ Query the hotlink configurations of a bucket The following code provides an exam
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Query the Referer whitelist of the bucket. BucketReferer br = ossClient.getBucketReferer(bucketName); List<String> refererList = br.getRefererList(); for (String referer : refererList) {
     System.out.println(referer);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -3837,19 +3871,44 @@ Query CORS rules The following code provides an example on how to query CORS rul
     for (String allowedOrigin1 : rule.getAllowedOrigins()) {
         // Query the allowed origins from which CORS requests are sent.
         System.out.println(allowedOrigin1);
+```
+
+`}`
+
+```java
     for (String allowedMethod1 : rule.getAllowedMethods()) {
         // Query the allowed cross-origin request methods.
         System.out.println(allowedMethod1);
+```
+
+`}`
+
+```java
     if (rule.getAllowedHeaders().size() > 0){
         for (String allowedHeader1 : rule.getAllowedHeaders()) {
             // Query the list of headers allowed in cross-origin requests.
             System.out.println(allowedHeader1);
+```
+
+`}` `}`
+
+```java
     if (rule.getExposeHeaders().size() > 0) {
         for (String exposeHeader : rule.getExposeHeaders()) {
             // Query the list of response headers that can be accessed from an application.
             System.out.println(exposeHeader);
+```
+
+`}` `}`
+
+```java
     if ( null ! = rule.getMaxAgeSeconds()) {
         System.out.println(rule.getMaxAgeSeconds());
+```
+
+`}` `}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4058,6 +4117,11 @@ tream.
                     String inputValue = entry.getValue();
                     if (inputValue == null) {
                         continue;
+```
+
+`}`
+
+```
                     if (i == 0) {
                         strBuf.append("--").append(boundary).append("\r\n");
                         strBuf.append("Content-Disposition: form-data; name=\""
@@ -4068,8 +4132,23 @@ tream.
                         strBuf.append("Content-Disposition: form-data; name=\""
                                 + inputName + "\"\r\n\r\n");
                         strBuf.append(inputValue);
+```
+
+`}`
+
+```
                     i++;
+```
+
+`}`
+
+```
                 out.write(strBuf.toString().getBytes());
+```
+
+`}`
+
+```
             // Read the object and write it to the output stream.
             File file = new File(localFile);
             String filename = file.getName();
@@ -4079,7 +4158,7 @@ tream.
 StringBufferstrBuf=newStringBuffer();
 ```
 
-```java
+```
             StringBuffer strBuf = new StringBuffer();
             strBuf.append("\r\n").append("--").append(boundary)
                     .append("\r\n");
@@ -4092,6 +4171,11 @@ StringBufferstrBuf=newStringBuffer();
             byte[] bufferOut = new byte[1024];
             while ((bytes = in.read(bufferOut)) ! = -1) {
                 out.write(bufferOut, 0, bytes);
+```
+
+`}`
+
+```
             in.close();
             byte[] endData = ("\r\n--" + boundary + "--\r\n").getBytes();
             out.write(endData);
@@ -4104,6 +4188,11 @@ tream()));
             String line = null;
             while ((line = reader.readLine()) ! = null) {
                 strBuf.append(line).append("\n");
+```
+
+`}`
+
+```
             res = strBuf.toString();
             reader.close();
             reader = null;
@@ -4114,7 +4203,17 @@ tream()));
             if (conn ! = null) {
                 conn.disconnect();
                 conn = null;
+```
+
+`}` `}`
+
+```
         return res;
+```
+
+`}`
+
+```java
      private static void setCallBack(Map<String, String> formFields, Callback callback) {
         if (callback ! = null) {
             String jsonCb = OSSUtils.jsonizeCallback(callback);
@@ -4124,6 +4223,11 @@ tream()));
                 Map<String, String> varMap = callback.getCallbackVar();
                 for (Entry<String, String> entry : varMap.entrySet()) {
                     formFields.put(entry.getKey(), entry.getValue());
+```
+
+`}` `}`
+
+```
     public static void main(String[] args) throws Exception {
 PostObjectSampleossPostObject=newPostObjectSample();
 ```
@@ -4178,6 +4282,11 @@ After all parts are uploaded, call the ossClient.completeMultipartUpload method 
 ```
 sk. You can initiate related requests based on the upload ID, such as canceling a multipart upload and querying a multipart upload. String uploadId = upresult.getUploadId(); // partETags is a set of PartETags. A PartETag consists of an ETag and a part number. List<PartETag> partETags = new ArrayList<PartETag>(); // Calculate the total number of parts to upload. final long partSize = 1 * 1024 * 1024L; // 1MB final File sampleFile = new File("<localFile>"); long fileLength = sampleFile.length(); int partCount = (int) (fileLength / partSize); if (fileLength % partSize ! = 0) {
     partCount++;
+```
+
+`}`
+
+```
 // Upload each part sequentially until all parts are uploaded. for (int i = 0; i < partCount; i++) {
     long startPos = i * partSize;
     long curPartSize = (i + 1 == partCount) ? (fileLength - startPos) : partSize;
@@ -4201,6 +4310,11 @@ clients. OSS sorts the parts based on their part numbers and combines them to ob
     // After you upload a part, OSS returns a result that contains a PartETag. The PartETag
 is stored in partETags.
     partETags.add(uploadPartResult.getPartETag());
+```
+
+`}`
+
+```
 // Create a CompleteMultipartUploadRequest object. // When the multipart upload task is complete, you must provide all valid partETags. After OSS receives the partETags, OSS verifies the validity of all parts one by one. After all pa rts are validated, OSS combines these parts into a complete object. CompleteMultipartUploadRequest completeMultipartUploadRequest =
         new CompleteMultipartUploadRequest(bucketName, objectName, uploadId, partETags);
 // Optional. Set the ACL. // completeMultipartUploadRequest.setObjectACL(CannedAccessControlList.PublicRead); // Complete the multipart upload task. CompleteMultipartUploadResult completeMultipartUploadResult = ossClient.completeMultipartUp load(completeMultipartUploadRequest); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4235,6 +4349,11 @@ PartListing partListing = ossClient.listParts(listPartsRequest); for (PartSummar
     part.getETag();
     // Query the last modified time.
     part.getLastModified();
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4252,6 +4371,11 @@ List all uploaded parts By default, listParts can list up to 1,000 parts at a ti
         part.getETag();
         // Query the last modified time.
         part.getLastModified();
+```
+
+`}`
+
+```
 // Specify the start point of the list. Only the parts whose part numbers are greater tha n the value of this parameter are listed. listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker()); } while (partListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown()
 ```
 
@@ -4269,6 +4393,11 @@ List all uploaded parts by page The following code provides an example on how to
         part.getETag();
         // Query the last modified time.
         part.getLastModified();
+```
+
+`}`
+
+```
     listPartsRequest.setPartNumberMarker(partListing.getNextPartNumberMarker());
 } while (partListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -4296,6 +4425,11 @@ Simple list The following code provides an example for simple list:
     multipartUpload.getKey();
     // Query the time the multipart upload tasks are initiated.
     multipartUpload.getInitiated();
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4316,6 +4450,11 @@ If the value of the isTruncated field in the returned result is false, values of
         multipartUpload.getKey();
         // Query the time the multipart upload tasks are initiated.
         multipartUpload.getInitiated();
+```
+
+`}`
+
+```
     listMultipartUploadsRequest.setKeyMarker(multipartUploadListing.getNextKeyMarker());
     listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUploadIdM
 arker()); } while (multipartUploadListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4338,6 +4477,11 @@ List all multipart upload tasks by page The following code provides an example o
         multipartUpload.getKey();
         // Query the time the multipart upload tasks are initiated.
         multipartUpload.getInitiated();
+```
+
+`}`
+
+```
     listMultipartUploadsRequest.setKeyMarker(multipartUploadListing.getNextKeyMarker());
     listMultipartUploadsRequest.setUploadIdMarker(multipartUploadListing.getNextUploadIdM
 arker()); } while (multipartUploadListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4382,6 +4526,11 @@ rogress: " + percent + "%(" + this.bytesWritten + "/" + this.totalBytes + ")");
             } else {
                 System.out.println(bytes + " bytes have been written at this time, upload r
 atio: unknown" + "(" + this.bytesWritten + "/...)");
+```
+
+`}`
+
+```java
             break;
         case TRANSFER_COMPLETED_EVENT:
             this.succeed = true;
@@ -4394,8 +4543,18 @@ transferred");
             break;
         default:
             break;
+```
+
+`}` `}`
+
+```
     public boolean isSucceed() {
         return succeed;
+```
+
+`}`
+
+```
     public static void main(String[] args) {
         // The endpoint of the China (Hangzhou) region is used in this example. Specify the
 actual endpoint.
@@ -4432,7 +4591,7 @@ rLocalFile>")).
         ossClient.shutdown();
 ```
 
-You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile.
+`}` You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile.
 
 ##### 2.1.6.8 Upload callback
 
@@ -4463,6 +4622,11 @@ The following code provides an example on how to download an object by using str
     String line = reader.readLine();
     if (line == null) break;
     System.out.println("\n" + line);
+```
+
+`}`
+
+```
 // You must close the stream that is obtained by using ossClient.getObject after the object is read. Otherwise, connection leaks may occur. As a result, no connections are available a nd an exception occurs. reader.close(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4481,6 +4645,11 @@ If you need only part of the data in an object, you can use range download to do
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object you want to download from OSS . The path must include the file extension of the object. Example: abc/efg/123.jpg. String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectName); // The valid range for an object whose size is 1,000 bytes is from byte 0 to byte 999. // Query the data that is within the range from byte 0 to byte 999, which includes a total of 1,000 bytes. If the specified range is invalid, for example, the specified range include s a negative number, or the specified value is larger than the object size, the entire obje ct is downloaded. getObjectRequest.setRange(0, 999); // Start range download. OSSObject ossObject = ossClient.getObject(getObjectRequest); // Read the data. byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n ! = -1; ) {
     n = in.read(buf, 0, buf.length);
+```
+
+`}`
+
+```
 // You must close the stream that is obtained by using ossClient.getObject after the object is read. Otherwise, connection leaks may occur. As a result, no connections are available a nd an exception occurs. in.close(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4489,6 +4658,11 @@ Streaming download may not read all data at a time. To read 64 KB of data from O
 ```
 byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n ! = -1; ) {
     n = in.read(buf, 0, buf.length);
+```
+
+`}`
+
+```
 in.close();
 ```
 
@@ -4504,6 +4678,11 @@ following code. The returned HTTP status code is 416 and the returned error code
     ossClient.getObject(getObjectRequest);
 } catch (OSSException e) {
     System.out.println("standard get " + "1000~2000:" + "error code:" + e.getErrorCode());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4582,6 +4761,11 @@ d progress: " +
                     System.out.println(bytes + " bytes have been read at this time, downloa
 d ratio: unknown" +
                             "(" + this.bytesRead + "/...)");
+```
+
+`}`
+
+```java
                 break;
             case TRANSFER_COMPLETED_EVENT:
                 this.succeed = true;
@@ -4594,6 +4778,11 @@ een transferred");
                 break;
             default:
                 break;
+```
+
+`}` `}`
+
+```
         public boolean isSucceed() {
             return succeed;
 ```
@@ -4620,11 +4809,16 @@ ual endpoint.
                     new File("<yourLocalFile>"));
     } catch (Exception e) {
         e.printStackTrace();
+```
+
+`}`
+
+```
     // Shut down the OSSClient instance.
     ossClient.shutdown();
 ```
 
-You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile.
+`}` You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile.
 
 #### 2.1.8 Manage objects
 
@@ -4723,6 +4917,11 @@ Simple list The following code provides an example on how to list objects in a s
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String KeyPrefix = "<yourKeyPrefix>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // List objects. If you do not set KeyPrifex, all objects in the bucket are listed. If you set KeyPrifex, objects whose names contain the specified prefix in the bucket are listed. ObjectListing objectListing = ossClient.listObjects(bucketName, KeyPrefix); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4741,6 +4940,11 @@ List a specified number of objects The following code provides an example on how
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Specifies the maximum number of objects that can be listed each time. final int maxKeys = 200; // List objects. ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).wi thMaxKeys(maxKeys)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4749,6 +4953,11 @@ List objects whose names contain a specified prefix The following code provides 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Specify a prefix. final String keyPrefix = "<yourkeyPrefix>"; // List the objects whose names contain the specified prefix. By default, a maximum of 10 0 objects can be listed. ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).wi thPrefix(keyPrefix)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4757,6 +4966,11 @@ List objects whose names come after a specified marker The marker parameter spec
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); final String marker = "<yourMarker>"; // List the objects whose names come after the specified marker. By default, a maximum of 100 objects can be listed. ObjectListing objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).wi thMarker(marker)); List<OSSObjectSummary> sums = objectListing.getObjectSummaries(); for (OSSObjectSummary s : sums) {
     System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4769,6 +4983,11 @@ extMarker).withMaxKeys(maxKeys));
     List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
     for (OSSObjectSummary s : sums) {
         System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -4782,6 +5001,11 @@ List objects whose names contain a specified prefix by page The following code p
     List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
     for (OSSObjectSummary s : sums) {
         System.out.println("\t" + s.getKey());
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -4800,17 +5024,27 @@ List objects and specify the encoding type of the object names in the response A
     // Decode the object names.
     for (OSSObjectSummary objectSummary: objectListing.getObjectSummaries()) {
         System.out.println("Key:" + URLDecoder.decode(objectSummary.getKey(), "UTF-8"));
+```
+
+`}`
+
+```java
     // Decode the value of commonPrefixes.
     for (String commonPrefixes: objectListing.getCommonPrefixes()) {
         System.out.println("CommonPrefixes:" + URLDecoder.decode(commonPrefixes, "UTF-8")
 ```
 
-);
+); `}`
 
 ```
     // Decode the value of nextMarker.
     if (objectListing.getNextMarker() ! = null) {
         nextMarker = URLDecoder.decode(objectListing.getNextMarker(), "UTF-8");
+```
+
+`}`
+
+```
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4819,8 +5053,18 @@ List objects by folder OSS does not use a hierarchical structure for objects, bu
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create ListObjectsRequest. ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName); // List all objects in the bucket. ObjectListing listing = ossClient.listObjects(listObjectsRequest); // Traverse all the objects to display them. System.out.println("Objects:"); for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
+```
+
+`}`
+
+```java
 // Traverse all the commonPrefix elements to display them. System.out.println("CommonPrefixes:"); for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4835,8 +5079,18 @@ List all objects in a specified folder The following code provides an example on
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create ListObjectsRequest. ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName); // Set prefix to fun/ to list all objects in the fun/ folder. listObjectsRequest.setPrefix("fun/"); // Lists all objects in the fun/ folder. ObjectListing listing = ossClient.listObjects(listObjectsRequest); // Traverse the listed objects to display them. System.out.println("Objects:"); for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
+```
+
+`}`
+
+```java
 // Traverse the listed commonPrefix elements to display them. System.out.println("\nCommonPrefixes:"); for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4851,8 +5105,18 @@ List the objects and subfolders in a folder The following code provides an examp
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create ListObjectsRequest. ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName); // Set the delimiter to a forward slash (/). listObjectsRequest.setDelimiter("/"); // List all objects and subfolders in the fun folder. listObjectsRequest.setPrefix("fun/"); ObjectListing listing = ossClient.listObjects(listObjectsRequest); // Traverse all objects to display them. System.out.println("Objects:"); // In the response, objectSummaries lists the objects in the fun folder. for (OSSObjectSummary objectSummary : listing.getObjectSummaries()) {
     System.out.println(objectSummary.getKey());
+```
+
+`}`
+
+```java
 // Traverse all commonPrefix elements to display them. System.out.println("\nCommonPrefixes:"); // commonPrefixs lists the subfolders in the fun folder. The fun/movie/001.avi and fun/mo vie/007.avi objects are not listed because they are in the movie subfolder of the fun fol der. for (String commonPrefix : listing.getCommonPrefixes()) {
     System.out.println(commonPrefix);
+```
+
+`}`
+
+```
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
@@ -4881,15 +5145,25 @@ lder) {
 lder).withMaxKeys(1000);
 ```
 
-```java
+```
             if (objectListing ! = null) {
                 request.setMarker(objectListing.getNextMarker());
             objectListing = ossClient.listObjects(request);
             List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
             for (OSSObjectSummary s : sums) {
                 size += s.getSize();
+```
+
+`}`
+
+```
         } while (objectListing.isTruncated());
         return size;
+```
+
+`}`
+
+```
     public void Calculate() {
         // The endpoint of the China (Hangzhou) region is used in this example. Specify t
 he actual endpoint.
@@ -4910,17 +5184,34 @@ older, leave this parameter empty.
 ("/").withPrefix(keyPrefix);
             if (objectListing ! = null) {
                 request.setMarker(objectListing.getNextMarker());
+```
+
+`}`
+
+```java
             objectListing = ossClient.listObjects(request);
             List<String> folders = objectListing.getCommonPrefixes();
             for (String folder : folders) {
                 System.out.println(folder + " : " + (calculateFolderLength(ossClient, buc
 ketName, folder) / 1024) + "KB");
+```
+
+`}`
+
+```java
             List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
             for (OSSObjectSummary s : sums) {
                 System.out.println(s.getKey() + " : " + (s.getSize() / 1024) + "KB");
+```
+
+`}`
+
+```
         } while (objectListing.isTruncated());
         ossClient.shutdown();
 ```
+
+`}`
 
 ##### 2.1.8.6 Query objects
 
@@ -4949,10 +5240,15 @@ public class SelectObjectSample {
 
 );
 
-```java
+```
         selectCsvSample("test.csv", ossClient);
         selectJsonSample("test.json", ossClient);
         ossClient.shutdown();
+```
+
+`}`
+
+```java
     private static void selectCsvSample(String key, OSS ossClient) throws Exception {
         String content = "name,school,company,age\r\n" +
                 "Lora Francis,School A,Staples Inc,27\r\n" +
@@ -4991,6 +5287,11 @@ tContent()));
             System.out.println(line);
         reader.close();
         ossClient.deleteObject(bucketName, key);
+```
+
+`}`
+
+```java
     private static void selectJsonSample(String key, OSS ossClient) throws Exception {
         final String content = "{\n" +
                 "\t\"name\": \"Lora Francis\",\n" +
@@ -5031,10 +5332,22 @@ tContent()));
             String line = reader.readLine();
             if (line == null) {
                 break;
+```
+
+`}`
+
+```java
             System.out.println(line);
+```
+
+`}`
+
+```
         reader.close();
         ossClient.deleteObject(bucketName, key);
 ```
+
+`}`
 
 ##### 2.1.8.7 Delete objects
 
@@ -5082,9 +5395,19 @@ For the complete code used to delete multiple objects, visit GitHub. Delete obje
         for (OSSObjectSummary s : objectListing.getObjectSummaries()) {
             System.out.println("key name: " + s.getKey());
             keys.add(s.getKey());
+```
+
+`}`
+
+```
         DeleteObjectsRequest deleteObjectsRequest = new DeleteObjectsRequest(bucketName).wi
 thKeys(keys);
         ossClient.deleteObjects(deleteObjectsRequest);
+```
+
+`}`
+
+```
     nextMarker = objectListing.getNextMarker();
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
@@ -5153,9 +5476,14 @@ For the complete code that is used to perform multipart copy, visit GitHub. The 
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String sourceBucketName = "<yourSourceBucketName>"; String sourceObjectName = "<yourSourceObjectName>"; String destinationBucketName = "<yourDestinationBucketName>"; String destinationObjectName = "<yourDestinationObjectName>"; ObjectMetadata objectMetadata = ossClient.getObjectMetadata(sourceBucketName, sourceObjectN ame); // Query the size of the object to copy. long contentLength = objectMetadata.getContentLength(); // Set the size of each part to 10 MB. longpartSize=1024*1024*10;
 ```
 
-```java
+```
 long partSize = 1024 * 1024 * 10; // Calculate the total number of parts. int partCount = (int) (contentLength / partSize); if (contentLength % partSize ! = 0) {
     partCount++;
+```
+
+`}`
+
+```java
 System.out.println("total part count:" + partCount); // Initiate a multipart copy task. You can call the InitiateMultipartUploadRequest operatio n to specify the metadata of the target object. InitiateMultipartUploadRequest initiateMultipartUploadRequest = new InitiateMultipartUpload Request(destinationBucketName, destinationObjectName); InitiateMultipartUploadResult initiateMultipartUploadResult = ossClient.initiateMultipartUp load(initiateMultipartUploadRequest); String uploadId = initiateMultipartUploadResult.getUploadId(); // Start the multipart copy task. List<PartETag> partETags = new ArrayList<PartETag>(); for (int i = 0; i < partCount; i++) {
      // Calculate the size of each part.
     long skipBytes = partSize * i;
@@ -5178,6 +5506,11 @@ tion to specify conditions.
 est);
     // Store the returned part ETag in partETags.
     partETags.add(uploadPartCopyResult.getPartETag());
+```
+
+`}`
+
+```
 // Complete the multipart copy task. CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUpload Request(
                     destinationBucketName, destinationObjectName, uploadId, partETags);
 ossClient.completeMultipartUpload(completeMultipartUploadRequest); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -5445,7 +5778,7 @@ try {
         client.shutdown();
 ```
 
-ClientException ClientException indicates the exception that occurs when a client sends a request or transmit data to OSS. For example, ClientException is returned when a request is sent under poor network conditions. ClientException is also returned when an I/O exception occurs during object upload. OSSException OSSException indicates an error response from OSS. The error code and error message are returned so that you can find the problem and handle it properly. OSSException involves the following error information: Code: the error code that OSS returns to the user. Message: the detailed error message provided by OSS. RequestId: the UUID of a request. If the problem persists, you can seek help from OSS development engineers and provide them with the request ID. HostId: the ID of a host to identify the accessed OSS cluster, which is the same as the host ID specified in the request. Error codes
+`}` `}` ClientException ClientException indicates the exception that occurs when a client sends a request or transmit data to OSS. For example, ClientException is returned when a request is sent under poor network conditions. ClientException is also returned when an I/O exception occurs during object upload. OSSException OSSException indicates an error response from OSS. The error code and error message are returned so that you can find the problem and handle it properly. OSSException involves the following error information: Code: the error code that OSS returns to the user. Message: the detailed error message provided by OSS. RequestId: the UUID of a request. If the problem persists, you can seek help from OSS development engineers and provide them with the request ID. HostId: the ID of a host to identify the accessed OSS cluster, which is the same as the host ID specified in the request. Error codes
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
@@ -5745,6 +6078,8 @@ Cause: A background thread IdleConnectionReaper from OSSClient shuts down idle c
 ```
 try { serviceClient.shutdown(); } catch(Exception e) {
 ```
+
+`}`
 
 ### 2.2 Python-SDK
 
@@ -7470,7 +7805,7 @@ i. Go to the root directory of your project and run the `composer require aliyun
     "aliyuncs/oss-sdk-php": "~2.x.x"
 ```
 
-ii. Run the `composer install` command to install the dependency. After the dependency is installed, check whether your directory structure complies with the following structure: `.`
+`}` ii. Run the `composer install` command to install the dependency. After the dependency is installed, check whether your directory structure complies with the following structure: `.`
 
 ```
         ├── app.php
@@ -7509,21 +7844,41 @@ An OSSClient serves as the OSS PHP client to manage OSS resources such as bucket
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 } catch (OssException $e) {
     print $e->getMessage();
 ```
 
-Use STS to create an OSSClient The following code provides an example on how to create an OSSClient instance based on Security Token Service (STS):
+`}` Use STS to create an OSSClient The following code provides an example on how to create an OSSClient instance based on Security Token Service (STS):
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $securityToken = "<yourSecurityToken>"; try {
     $ossClient = new OssClient(
         $accessKeyId, $accessKeySecret, $endpoint, false, $securityToken);
@@ -7531,26 +7886,46 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-Use a proxy server to create an OSSClient You can use a proxy server to create an OSSClient when you use OSS SDK for PHP version 5.3 and later. The following code provides an example on how to use a proxy server to create an OSSClient:
+`}` Use a proxy server to create an OSSClient You can use a proxy server to create an OSSClient when you use OSS SDK for PHP version 5.3 and later. The following code provides an example on how to use a proxy server to create an OSSClient:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // Specify the IP address of the proxy server. Example: http://<username>:<password>@<pro xyip>:<proxyport>. $requestProxy = "<yourRequestProxy>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $request
 Proxy); } catch (OssException $e) {
     print $e->getMessage();
 ```
 
-Configure network parameters The following code provides an example on how to configure network parameters for an OSSClient:
+`}` Configure network parameters The following code provides an example on how to configure network parameters for an OSSClient:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try {
     $ossClient = new OssClient(
         $accessKeyId, $accessKeySecret, $endpoint);
@@ -7568,6 +7943,8 @@ ault value: 5184000.
     print $e->getMessage();
 ```
 
+`}`
+
 #### 2.3.4 Quick start
 
 This topic describes how to use OSS SDK for PHP to perform routine operations, such as creating buckets, uploading objects, and downloading objects. Create a bucket
@@ -7575,8 +7952,18 @@ This topic describes how to use OSS SDK for PHP to perform routine operations, s
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket = "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->createBucket($bucket);
@@ -7584,13 +7971,23 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
+`}` For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= " <yourBucketName>"; // <yourObjectName> indicates the complete path of the object that you want to upload to OS S. The path must include the extension of the object name. Example: abc/efg/123.jpg. $object = " <yourObjectName>"; $content = "Hi, OSS."; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content);
@@ -7598,13 +7995,23 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-Download objects The following code provides an example on how to download an object:
+`}` Download objects The following code provides an example on how to download an object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object that you want to download fro m OSS. The path must include the extension of the object name. Example: abc/efg/123.jpg. $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object);
@@ -7613,13 +8020,23 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-List objects The following code provides an example on how to list objects stored in a bucket named examplebucket. By default, a maximum of 100 objects are listed.
+`}` List objects The following code provides an example on how to list objects stored in a bucket named examplebucket. By default, a maximum of 100 objects are listed.
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $listObjectInfo = $ossClient->listObjects($bucket);
@@ -7627,23 +8044,41 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     if (! empty($objectList)) {
         foreach ($objectList as $objectInfo) {
         print($objectInfo->getKey() . "\t" . $objectInfo->getSize() . "\t" . $objectInfo->g
-etLastModified() . "\n"); } catch (OssException $e) {
+etLastModified() . "\n");
+```
+
+`}` `}`
+
+```
+} catch (OssException $e) {
     print $e->getMessage();
 ```
 
-Delete objects The following code provides an example on how to delete an object:
+`}` Delete objects The following code provides an example on how to delete an object:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object that you want to delete from OSS. The path must include the extension of the object name. Example: abc/efg/123.jpg. $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObject($bucket, $object);
 } catch (OssException $e) {
     print $e->getMessage();
 ```
+
+`}`
 
 #### 2.3.5 Buckets
 
@@ -7654,8 +8089,18 @@ A bucket is a container used to store objects in Object Storage Service (OSS). E
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Set the storage class of the bucket to Standard. The default storage class is Standa
@@ -7666,13 +8111,18 @@ rd.
 
 );
 
-```python
+```
     // Set the ACL of the bucket to public read. The default bucket ACL is private.
     $ossClient->createBucket($bucket, OssClient::OSS_ACL_TYPE_PUBLIC_READ, $options);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -7682,11 +8132,21 @@ For the complete code used to create a bucket, visit GitHub.
 
 A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following code provides an example on how to list buckets that belong to the current Alibaba Cloud account in all regions:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $bucketListInfo = $ossClient->listBuckets();
@@ -7694,20 +8154,37 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 $bucketList = $bucketListInfo->getBucketList(); foreach($bucketList as $bucket) {
     print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreatedat
 e() . "\n");
 ```
 
+`}`
+
 ##### 2.3.5.3 Determine whether buckets exist
 
 A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to determine whether a bucket exists.
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $res = $ossClient->doesBucketExist($bucket);
@@ -7715,11 +8192,18 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 if ($res === true) {
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
     print(__FUNCTION__ . ": FAILED" . "\n");
 ```
+
+`}`
 
 ##### 2.3.5.4 Manage bucket ACLs
 
@@ -7736,11 +8220,21 @@ A bucket is a container used to store objects in Object Storage Service (OSS). E
 
 The following code provides an example on how to configure the ACL of a bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Set the ACL of the bucket to private. $acl = OssClient::OSS_ACL_TYPE_PRIVATE; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketAcl($bucket, $acl);
@@ -7748,16 +8242,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Query the ACL of a bucket The following code provides an example on how to query the ACL of a bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $res = $ossClient->getBucketAcl($bucket);
@@ -7765,6 +8274,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print('acl: ' . $res);
 ```
 
@@ -7772,11 +8286,21 @@ print(__FUNCTION__ . ": OK" . "\n"); print('acl: ' . $res);
 
 If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucket($bucket);
@@ -7784,6 +8308,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -7791,11 +8320,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\LifecycleConfig; use OSS\Model\LifecycleRule; use OSS\Model\LifecycleAction; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Set the rule ID and the prefix of the object names that match the rule. $ruleId0 = "rule0"; $matchPrefix0 = "A0/"; $ruleId1 = "rule1"; $matchPrefix1 = "A1/"; $lifecycleConfig = new LifecycleConfig(); $actions = array(); // Specify that objects expire three days after they are last modified. $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECY CLE_TIMING_DAYS, 3); $lifecycleRule = new LifecycleRule($ruleId0, $matchPrefix0, "Enabled", $actions); $lifecycleConfig->addRule($lifecycleRule); $actions = array(); // Specify that the objects that are last modified before the specified date expire. $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECY CLE_TIMING_DATE, '2022-10-12T00:00:00.000Z'); $lifecycleRule = new LifecycleRule($ruleId1, $matchPrefix1, "Enabled", $actions); $lifecycleConfig->addRule($lifecycleRule); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketLifecycle($bucket, $lifecycleConfig);
@@ -7803,16 +8342,31 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\LifecycleConfig; use
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 View lifecycle rules The following code provides an example on how to query the lifecycle rules configured for the bucket named examplebucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $lifecycleConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $lifecycleConfig = $ossClient->getBucketLifecycle($bucket);
@@ -7820,16 +8374,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($lifecycleConfig->serializeToXml() . "\n");
 ```
 
 Delete lifecycle rules The following code provides an example on how to delete lifecycle rules configured for the bucket named examplebucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketLifecycle($bucket);
@@ -7837,6 +8406,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -7844,11 +8418,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Configure hotlink protection Run the following code to configure the referer whitelist:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = new RefererConfig(); // Allow empty Referers. $refererConfig->setAllowEmptyReferer(true); // Add a Referer whitelist. You can use an asterisk (*) or a question mark (?) as a wildcar d to set the Referer parameter. $refererConfig->addReferer("www.aliiyun.com"); $refererConfig->addReferer("www.aliiyuncs.com"); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketReferer($bucket, $refererConfig);
@@ -7856,16 +8440,31 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $acce
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Query hotlink protection information Run the following code to obtain a referer whiltelist:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $refererConfig = $ossClient->getBucketReferer($bucket);
@@ -7873,16 +8472,31 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $acce
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($refererConfig->serializeToXml() . "\n");
 ```
 
 Delete hotlink protection configurations Run the following code to clear a referer whitelist:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\RefererConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $refererConfig = new RefererConfig(); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // You cannot delete hotlink protection configurations directly. To delete hotlink prot
@@ -7892,6 +8506,11 @@ ection configurations, you must create a rule that allows an empty Referer field
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -7905,11 +8524,21 @@ UniqueString .
 
 Enable logging Run the following code to enable bucket access logging:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $option = array(); // Specify the bucket used to store log objects. $targetBucket = "<yourBucketName>"; $targetPrefix = "access.log"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Enable logging.
@@ -7918,16 +8547,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 View logging configurations Run the following code to view the access logging configurations for a bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $loggingConfig = null; $options = array(); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // View the logging configurations.
@@ -7936,16 +8580,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($loggingConfig->serializeToXml() . "\n");
 ```
 
 Disable logging Run the following code to disable access logging for a bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Disable logging.
@@ -7954,6 +8613,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -7961,11 +8625,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 You can set the static website hosting mode for your bucket. After the configurations take effect, you can use the bucket domain name to access this static website and be redirected to a specified index page or error page. For the complete static website hosting code, visit GitHub. Configure static website hosting Run the following code to configure static website hosting:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\WebsiteConfig; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Set the index page to index.html and the error page to error.html. $websiteConfig = new WebsiteConfig("index.html", "error.html"); try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putBucketWebsite($bucket, $websiteConfig);
@@ -7973,16 +8647,31 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\WebsiteConfig; $acce
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 View static website hosting configurations Run the following code to view static website hosting configurations:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $websiteConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $websiteConfig = $ossClient->getBucketWebsite($bucket);
@@ -7990,16 +8679,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($websiteConfig->serializeToXml() . "\n");
 ```
 
 Delete static website hosting configurations Run the following code to delete static website hosting configurations:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketWebsite($bucket);
@@ -8007,6 +8711,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8014,11 +8723,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate cross-origin access control. For the complete CORS rule code, visit GitHub. Configure CORS rules Run the following code to configure CORS rules for the specified bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\CorsConfig; use OSS\Model\CorsRule; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $corsConfig = new CorsConfig(); $rule = new CorsRule(); // AllowedHeaders and ExposeHeaders do not support wildcards. $rule->addAllowedHeader("x-oss-header"); // AllowedOlowedMethods allows only one wildcard asterisk (*). Asterisks (*) indicate that all domain names or operations are allowed. $rule->addAllowedOrigin("http://www.b.com"); $rule->addAllowedMethod("POST"); $rule->setMaxAgeSeconds(10); // A maximum of 10 rules can be configured for each bucket. $corsConfig->addRule($rule); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // The existing rules are replaced.
@@ -8027,16 +8746,31 @@ use OSS\OssClient; use OSS\Core\OssException; use OSS\Model\CorsConfig; use OSS\
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Query CORS rules Run the following code to obtain CORS rules:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $corsConfig = null; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $corsConfig = $ossClient->getBucketCors($bucket);
@@ -8044,16 +8778,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); print($corsConfig->serializeToXml() . "\n");
 ```
 
 Delete CORS rules Run the following code to delete all CORS rules for a specified bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteBucketCors($bucket);
@@ -8061,6 +8810,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8074,11 +8828,21 @@ Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides 
 
 In simple upload, you can upload strings or local files. This topic describes how to upload strings and local files. String upload The following code provides an example on how to upload a string to the exampleobject.txt object in the exampledir directory of the examplebucket bucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Configure the object content. $content = "Hello OSS"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content);
@@ -8086,6 +8850,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); // You can configure headers in upload requests to specify the information of the uploaded object. For example, you can set the object ACL to private and configure the user metadata of the object. $options = array(
     OssClient::OSS_HEADERS => array(
         'x-oss-object-acl' => 'private',
@@ -8094,7 +8863,7 @@ print(__FUNCTION__ . ": OK" . "\n"); // You can configure headers in upload requ
 
 `),` );
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObject($bucket, $object, $content, $options);
@@ -8102,16 +8871,31 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Local file upload The following code provides an example on how to upload a local file to OSS:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // <yourLocalFile> consists of a local file path and a file name with an extension. Example : /users/local/myfile.txt. $filePath = "<yourLocalFile>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->uploadFile($bucket, $object, $filePath);
@@ -8119,6 +8903,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8126,11 +8915,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 You can append strings and local files when you use append upload. The CopyObject operation cannot be performed on append objects. Append strings The following code provides an example on how to upload strings to OSS by using append upload:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Query the content of the object to upload. $content_array = array('Hello OSS', 'Hi OSS', 'OSS OK'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // Start the first append. // If the object is appended for the first time, the append
@@ -8142,17 +8941,32 @@ position is 0. The return value is the position for the next append. The positio
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Append local files The following code provides an example on how to upload local files to OSS by using append upload:
 
-```python
+```
  <? php
 if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Specify the bucket name. $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Obtain Local File 1. $filePath = "<yourLocalFile1>"; // Obtain Local File 2. $filePath1 = "<yourLocalFile2>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $position = $ossClient->appendFile($bucket, $object, $filePath, 0);
@@ -8161,6 +8975,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8171,6 +8990,11 @@ OSS allows you to use multipart upload to split an object into several parts and
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
 use OSS\OssClient;
@@ -8183,7 +9007,7 @@ use OSS\Core\OssException; use OSS\Core\OssUtil; $accessKeyId = "<yourAccessKeyI
 
 `*/`
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     // An upload ID is returned. It is the unique identifier for a multipart upload task. Y
@@ -8193,6 +9017,11 @@ ou can initiate related operations such as cancel or query a multipart upload ta
     printf(__FUNCTION__ . ": initiateMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
 ```
 
@@ -8223,6 +9052,11 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
     if ($isCheckMd5) {
         $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
         $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
+```
+
+`}`
+
+```
     try {
         // Upload the parts.
         $responseUploadPart[] = $ossClient->uploadPart($bucket, $object, $uploadId, $upOpti
@@ -8239,14 +9073,24 @@ ons);
 ```
         printf($e->getMessage() . "\n");
         return;
+```
+
+`}`
+
+```
     printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
+```
+
+`}`
+
+```
 // $uploadParts is an array that consists of the ETags and the PartNumbers of each part. $uploadParts = array(); foreach ($responseUploadPart as $i => $eTag) {
     $uploadParts[] = array(
         'PartNumber' => ($i + 1),
         'ETag' => $eTag,
 ```
 
-);
+); `}`
 
 ```
 /**
@@ -8264,6 +9108,11 @@ s the validity of each part after it receives the submitted $uploadParts. After 
     printf(__FUNCTION__ . ": completeMultipartUpload FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```
 printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
 ```
 
@@ -8280,11 +9129,21 @@ The following table describes the parameters contained in $options from the prec
 
 Cancel a multipart upload task You can call $ossClient->abortMultipartUpload to cancel a multipart upload task. If you cancel a multipart upload task, you cannot use the upload ID to perform any operations on the parts. The uploaded parts are deleted. The following code provides an example on how to cancel a multipart upload task:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $upload_id = "<yourUploadId>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->abortMultipartUpload($bucket, $object, $upload_id);
@@ -8292,6 +9151,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8300,8 +9164,18 @@ Multipart upload of local files The following code provides an example on how to
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $file = "<yourLocalFile>"; $options = array(
     OssClient::OSS_CHECK_MD5 => true,
     OssClient::OSS_PART_SIZE => 1,
@@ -8309,7 +9183,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 );
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->multiuploadFile($bucket, $object, $file, $options);
@@ -8317,16 +9191,31 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Multipart upload of local folders The following code provides an example on how to upload a local folder including all files in the folder to OSS by using multipart upload:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $localDirectory = "."; $prefix = "samples/codes"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->uploadDir($bucket, $prefix, $localDirectory);
@@ -8334,25 +9223,51 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 List uploaded parts The following code provides an example on how to list uploaded parts:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $uploadId = "<yourUploadId>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $listPartsInfo = $ossClient->listParts($bucket, $object, $uploadId);
     foreach ($listPartsInfo->getListPart() as $partInfo) {
         print($partInfo->getPartNumber() . "\t" . $partInfo->getSize() . "\t" . $partInfo->
-getETag() . "\t" . $partInfo->getLastModified() . "\n"); } catch(OssException $e) {
+getETag() . "\t" . $partInfo->getLastModified() . "\n");
+```
+
+`}`
+
+```
+} catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8361,8 +9276,18 @@ List multipart upload tasks The following code provides an example on how to lis
 ```
 <? php <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $options = array(
     'delimiter' => '/',
     'max-uploads' => 100,
@@ -8381,6 +9306,11 @@ try {
     printf(__FUNCTION__ . ": listMultipartUploads FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```
 printf(__FUNCTION__ . ": listMultipartUploads OK\n"); $listUploadInfo = $listMultipartUploadInfo->getUploads(); var_dump($listUploadInfo);
 ```
 
@@ -8404,8 +9334,18 @@ This topic describes how to use upload callback in simple upload and multipart u
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); // Configure callback for upload. // callbackUrl is the IP address of the callback server. Examples: http://oss-demo.aliyuncs .com:23450 and http://127.0.0.1:9090. // Optional. callbackHost is the value of the host field carried in the callback request. $url =
 ```
 
@@ -8484,6 +9424,11 @@ $partSize = 10 * 1024 * 1024; $uploadFileSize = filesize($uploadFile); $pieces =
     if ($isCheckMd5) {
         $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
         $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
+```
+
+`}`
+
+```
     try {
         // Upload the parts.
         $responseUploadPart[] = $ossClient->uploadPart($bucket, $object, $uploadId, $upOpti
@@ -8507,7 +9452,7 @@ ons);
         'ETag' => $eTag,
 ```
 
-);
+); `}`
 
 ```
 /**
@@ -8556,15 +9501,25 @@ This topic describes how to use OSS SDK for PHP to download specific objects to 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object you want to download from OSS . The path must include the extension of the object name. Example: abc/efg/123.jpg. $object = "<yourObjectName>"; // <yourLocalFile> consists of a local file path and a file name with an extension. Example : /users/local/myfile.txt. $localfile = "<yourLocalFile>"; $options = array(
         OssClient::OSS_FILE_DOWNLOAD => $localfile
 ```
 
 );
 
-```python
+```
 // Use try catch to catch exceptions. If an exception is returned, the download fails. If n o exceptions are returned, the object is downloaded. try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->getObject($bucket, $object, $options);
@@ -8572,6 +9527,11 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt'" . "\n");
 ```
 
@@ -8579,11 +9539,21 @@ print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt
 
 This topic describes how to use OSS SDK for PHP to download specified objects to local memory. The following code provides an example on how to download a specified object to local memory and display the content of the object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object);
@@ -8591,6 +9561,11 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8600,11 +9575,21 @@ print($content); print(__FUNCTION__ . ": OK" . "\n");
 
 If you need only part of the data in an object, you can use range download to download data within the specified range. The following code provides an example on how to download data within the range from byte 0 to byte 4 in an object to local memory:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; // Query the data within the range from byte 0 to byte 4, including a total of 5 bytes of d ata. If the specified range is invalid, for example, the specified range includes a negativ e number, or the specified value is larger than the object size, the entire object is downl oaded. $options = array(OssClient::OSS_RANGE => '0-4'); try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object, $options);
@@ -8612,6 +9597,11 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8638,8 +9628,18 @@ You can use conditional download to download objects to the local file or local 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $options = array(
         OssClient::OSS_HEADERS => array(
@@ -8648,13 +9648,18 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 
 );
 
-```python
+```
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $content = $ossClient->getObject($bucket, $object, $options);
 } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8668,11 +9673,21 @@ You can manage objects in a bucket by using a variety of operations including Se
 
 This topic describes how to determine whether an object exists. Use the following code to determine whether a specified object exists:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $exist = $ossClient->doesObjectExist($bucket, $object);
@@ -8680,6 +9695,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); var_dump($exist);
 ```
 
@@ -8699,11 +9719,21 @@ This topic describes how to manage the access control list (ACL) of an object. T
 
 The ACL of objects take precedence over that of buckets. For example, if the ACL of a bucket is private, while the object ACL is public read-write, all users can read and write the object. If an object is not configured with an ACL, its ACL is the same as that of its bucket by default. Configure ACL for an object You can run the following code to configure an ACL for a specified object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; // Set the ACL for the object to public read. By default, the ACL for the object inherit th e ACL for the bucket. $acl = "public-read"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->putObjectAcl($bucket, $object, $acl);
@@ -8711,16 +9741,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Query the ACL for an object You can run the following code to obtain the ACL for a specified object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $objectAcl = $ossClient->getObjectAcl($bucket, $object);
@@ -8728,6 +9773,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); var_dump($objectAcl);
 ```
 
@@ -8735,11 +9785,21 @@ print(__FUNCTION__ . ": OK" . "\n"); var_dump($objectAcl);
 
 This topic describes how to manage object metadata. Configure object metadata The following code provides an example on how to configure object metadata:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $content = file_get_contents(__FILE__); $options = array(
     OssClient::OSS_HEADERS => array(
         'Expires' => '2012-10-01 08:00:00',
@@ -8753,6 +9813,11 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8761,8 +9826,18 @@ Modify object metadata The following code provides an example on how to modify o
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $fromBucket = "<yourFromBucketName>"; $fromObject = "<yourFromObjectName>"; $toBucket = "<yourToBucketName>"; $toObject = "<yourToObjectName>"; $copyOptions = array(
     OssClient::OSS_HEADERS => array(
         'Expires' => '2018-10-01 08:00:00',
@@ -8772,7 +9847,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 `),` );
 
-```python
+```
 try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $copyOptions);
@@ -8780,16 +9855,31 @@ try{
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Query object metadata
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $objectMeta = $ossClient->getObjectMeta($bucket, $object);
@@ -8797,6 +9887,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-Disposition')]) &&
     'attachment; filename="xxxxxx"' === $objectMeta[strtolower('Content-Disposition')]
 ) {
@@ -8805,6 +9900,8 @@ print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-D
     print(__FUNCTION__ . ": ObjectMeta checked FAILED" . "\n");
 ```
 
+`}`
+
 ##### 2.3.8.5 List objects
 
 This topic describes how to list all objects or objects that meet specific conditions in a specified bucket. List all objects The following code provides an example on how to list all the objects in a specified bucket:
@@ -8812,8 +9909,18 @@ This topic describes how to list all objects or objects that meet specific condi
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); $nextMarker = ''; while (true) {
     try {
         $options = array(
@@ -8823,12 +9930,17 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 );
 
-```python
+```
         $listObjectInfo = $ossClient->listObjects($bucket, $options);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
         return;
+```
+
+`}`
+
+```python
     // Obtain nextMarker to list the remaining objects. The reading starts from the object
 next to the last object previously obtained through the listObjects operation.
     $nextMarker = $listObjectInfo->getNextMarker();
@@ -8838,13 +9950,25 @@ next to the last object previously obtained through the listObjects operation.
         print("objectList:\n");
         foreach ($listObject as $objectInfo) {
             print($objectInfo->getKey() . "\n");
+```
+
+`}` `}`
+
+```python
     if (! empty($listPrefix)) {
         print("prefixList: \n");
         foreach ($listPrefix as $prefixInfo) {
             print($prefixInfo->getPrefix() . "\n");
+```
+
+`}` `}`
+
+```
     if ($listObjectInfo->getIsTruncated() ! == "true") {
        break;
 ```
+
+`}` `}`
 
 > Not e
 > In the preceding sample code, $options is optional and can be used to list all objects in the entire bucket or in a folder.
@@ -8855,8 +9979,18 @@ List the objects that meet specific conditions The following code provides an ex
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); $prefix = 'dir/'; $delimiter = '/'; $nextMarker = ''; $maxkeys = 10; $options = array(
     'delimiter' => $delimiter,
     'prefix' => $prefix,
@@ -8866,24 +10000,34 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 
 );
 
-```python
+```
 try {
     $listObjectInfo = $ossClient->listObjects($bucket, $options);
 } catch (OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n"); $objectList = $listObjectInfo->getObjectList(); // object list $prefixList = $listObjectInfo->getPrefixList(); // directory list if (! empty($objectList)) {
     print("objectList:\n");
     foreach ($objectList as $objectInfo) {
         print($objectInfo->getKey() . "\n");
+```
+
+`}` `}`
+
+```python
 if (! empty($prefixList)) {
     print("prefixList: \n");
     foreach ($prefixList as $prefixInfo) {
         print($prefixInfo->getPrefix() . "\n");
 ```
 
-The following table describes the parameters contained in $options from the preceding sample code.
+`}` `}` The following table describes the parameters contained in $options from the preceding sample code.
 
 | Parameter | Description | Required |
 |---|---|---|
@@ -8900,11 +10044,21 @@ This topic describes how to delete objects.
 
 Delete a single object The following code provides an example on how to delete an object named exampleobject.txt from a bucket named examplebucket:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObject($bucket, $object);
@@ -8912,16 +10066,31 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
 Delete multiple objects
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $objects = array(); $objects[] = "<yourObjectName1>"; $objects[] = "<yourObjectName2>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->deleteObjects($bucket, $objects);
@@ -8929,6 +10098,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8938,11 +10112,21 @@ print(__FUNCTION__ . ": OK" . "\n");
 
 This topic describes how to copy an object. Object copy has the following limits: You must have read permissions on the source object and write permissions on the destination bucket. You cannot copy an object across regions. Copy a small object You can call $ossClient->copyObject to copy an object smaller than or equal to 1 GB from the source bucket to the destination bucket within the same region. The following code provides an example on how to copy a small object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $from_bucket = "<yourFromBucketName>"; $from_object = "<yourFromObjectName>"; $to_bucket = $bucket; $to_object = $from_object . '.copy'; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
     $ossClient->copyObject($from_bucket, $from_object, $to_bucket, $to_object);
@@ -8950,6 +10134,11 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -8963,8 +10152,18 @@ The following code provides an example on how to perform multipart copy:
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint="http://oss-cn-hangzhoualiyuncscom";
 ```
 
@@ -8994,6 +10193,11 @@ $endpoint = http://oss-cn-hangzhou.aliyuncs.com; $src_bucket = "<yourSourceBucke
         $response_upload_part[] = $ossClient->uploadPartCopy( $src_bucket, $src_object, $ds
 t_bucket, $dst_object, $copyId, $upload_id, $up_options);
         $copyId = $copyId + 1;
+```
+
+`}`
+
+```
     // Complete the multipart copy task.
     $upload_parts = array();
     foreach ($response_upload_part as $i => $etag) {
@@ -9002,14 +10206,19 @@ t_bucket, $dst_object, $copyId, $upload_id, $up_options);
             'ETag' => $etag,
 ```
 
-);
+); `}`
 
-```python
+```
     $result = $ossClient->completeMultipartUpload($dst_bucket, $dst_object, $upload_id, $up
 load_parts); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -9020,8 +10229,18 @@ This topic describes how to use Security Token Service (STS) and a signed URL to
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; $content = "Hi, OSS."; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $securityT
 oken);
@@ -9030,13 +10249,23 @@ oken);
     print $e->getMessage();
 ```
 
-Use a signed URL to authorize temporary access You can generate a signed URL and provide the URL to a visitor for temporary access. When you generate a signed URL, you can specify the validity period of the URL to limit the period of time during which the visitor can access OSS. For the complete code of authorized access, visit GitHub. Generate a signed URL to download an object The following code provides an example on how to generate a signed URL to download an object:
+`}` Use a signed URL to authorize temporary access You can generate a signed URL and provide the URL to a visitor for temporary access. When you generate a signed URL, you can specify the validity period of the URL to limit the period of time during which the visitor can access OSS. For the complete code of authorized access, visit GitHub. Generate a signed URL to download an object The following code provides an example on how to generate a signed URL to download an object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; // Set the validity period of a URL to 3,600 seconds. $timeout = 3600; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $securit
 yToken);
@@ -9046,6 +10275,11 @@ yToken);
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); // You can run code to access the signed URL, or access the signed URL in a browser. $request = new RequestCore($signedUrl); // Set GET as the default method to access the singed URL. $request->set_method('GET'); $request->add_header('Content-Type', ''); $request->send_request(); $res = new ResponseCore($request->get_response_header(), $request->get_response_body(), $ request->get_response_code()); if ($res->isOK()) {
     print(__FUNCTION__ . ": OK" . "\n");
 } else {
@@ -9054,11 +10288,21 @@ print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); // You can run code t
 
 }; Generate a signed URL to upload an object The following code provides an example on how to generate a signed URL to upload an object:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; use OSS\Core\OssException; use OSS\Http\RequestCore; use OSS\Http\ResponseCore; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $securityToken = "<yourSecurityToken>"; $timeout = 3600; try {
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false, $securit
 yToken);
@@ -9068,6 +10312,11 @@ yToken);
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n"); $content = "Hello OSS."; $request = new RequestCore($signedUrl); // Set PUT as the default method to access the signed URL. $request->set_method('PUT'); $request->add_header('Content-Type', ''); $request->add_header('Content-Length', strlen($content)); $request->set_body($content); $request->send_request(); $res = new ResponseCore($request->get_response_header(),
     $request->get_response_body(), $request->get_response_code());
 if ($res->isOK()) {
@@ -9156,11 +10405,21 @@ If the ACL of an image object is private, you must have permissions on the image
 
 The following code provides an example on how to generate a signed URL to access IMG:
 
-```python
+```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```python
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actua l endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; $object = "<yourObjectName>"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); // Generate a signed URL that you can directly access by using a browser. The validity pe riod of the URL is 3,600 seconds. $timeout = 3600; $options = array(
     OssClient::OSS_PROCESS => "image/resize,m_lfit,h_100,w_100" );
 $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, "GET", $options); print("rtmp url: \n" . $signedUrl);
@@ -9171,8 +10430,18 @@ Access by using SDKs You can use OSS SDKs to access and process the image object
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket = "<yourBucketName>";
 ```
 
@@ -9208,8 +10477,18 @@ Custom image styles
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket = "<yourBucketName>"; $object = "<yourObjectName>"; $download_file = "download.jpg"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint); // Upload a sample image. $ossClient->uploadFile($bucket, $object, "example.jpg"); // Customize the image style. $style = "style/oss-pic-style-w-300"; $options = array(
     OssClient::OSS_FILE_DOWNLOAD => $download_file,
     OssClient::OSS_PROCESS => $style);
@@ -9221,8 +10500,18 @@ Cascade processing
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the act ual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket = "<yourBucketName>"; $object = "<yourObjectName>"; $download_file = "download.jpg"; $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint, false); // Upload a sample image. $ossClient->uploadFile($bucket, $object, "example.jpg"); // Perform cascade processing. $style = "image/resize,m_fixed,w_100,h_100/rotate,90"; $options = array(
     OssClient::OSS_FILE_DOWNLOAD => $download_file,
     OssClient::OSS_PROCESS => $style);
@@ -9234,8 +10523,18 @@ Persistent storage of processed images The following code provides an example on
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
     require_once __DIR__ . '/../autoload.php';
+```
+
+`}`
+
+```
 if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+`}`
+
+```
 use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<yourAccessKeySecret>"; // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. $endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; $bucket= "<yourBucketName>"; // Specify the object name. $object = "<yourObjectName>"; // Specify the object name for the processed image. $targetObject = "<yourTargetObjectName>"; try{
     $ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
 // The following code provides an example on how to convert the image format of a processed image. To crop, rotate, or watermark an image, modify the $options parameters. $options = array(
@@ -9244,11 +10543,16 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 
 );
 
-```python
+```
 $content = $ossClient->getObject($bucket, $object, $options); $ossClient->putObject($bucket, $targetObject, $content); } catch(OssException $e) {
     printf(__FUNCTION__ . ": FAILED\n");
     printf($e->getMessage() . "\n");
     return;
+```
+
+`}`
+
+```python
 print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
@@ -9263,7 +10567,7 @@ OSS SDK for PHP exceptions (OssException) include errors caused by invalid param
         print("Exception:" . $e->getMessage() . "\n");
 ```
 
-The following table describes the error messages you can obtain.
+`}` The following table describes the error messages you can obtain.
 
 | Parameter | Description |
 |---|---|
@@ -9469,12 +10773,22 @@ used. */
     /* Configure network parameters. The second parameter in this function indicates the ow
 nership of ctl. By default, the value is 0. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
     /* Initialize global variables, which are run before the program starts. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         return -1;
+```
+
+`}`
+
+```
     /* Initialize the memory pool and options. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -9506,12 +10820,22 @@ const char *endpoint = "<yourCustomEndpoint>"; const char *access_key_id = "<you
     /* Enable the CNAME and bind the custom domain name to the bucket. */
     options->config->is_cname = 1;
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
     /* Initialize global variables, which are run before the program starts. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         return -1;
+```
+
+`}`
+
+```
     /* Initialize the memory pool and options. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -9529,7 +10853,7 @@ int main() {
     return 0;
 ```
 
-Use STS to initialize request options The following code provides an example on how to use STS to initialize request options:
+`}` Use STS to initialize request options The following code provides an example on how to use STS to initialize request options:
 
 ```
 #include "oss_api.h"
@@ -9551,12 +10875,22 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 used. */
     options->config->is_cname = 0;
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main() {
     aos_pool_t *p;
     oss_request_options_t *options;
     /* Initialize global variables, which are run before the program starts. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         return -1;
+```
+
+`}`
+
+```
     /* Initialize the memory pool and options. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -9574,7 +10908,7 @@ int main() {
     return 0;
 ```
 
-Configure a timeout period The following code provides an example on how to configure a timeout period:
+`}` Configure a timeout period The following code provides an example on how to configure a timeout period:
 
 ```
 #include "oss_api.h"
@@ -9621,6 +10955,8 @@ seconds.
     options->ctl->options->speed_time = 15;
 ```
 
+`}`
+
 #### 2.4.4 Quick start
 
 This topic describes how to use OSS SDK for C to complete routine operations such as bucket creation, object upload, and object download. Sample projects Sample projects for Linux i. Download a sample project and decompress it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: ***********************. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent third-party libraries. iii. Set OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample code to valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./mai` `n` to run the executable program. To re-compile the project, run `make clean` . For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and decompress it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project. Not e For more information about how to use Visual Studio, see Use Alibaba Cloud OSS SDK for C in Windows. Create a bucket
@@ -9644,6 +10980,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -9654,6 +10995,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -9688,6 +11034,11 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -9700,7 +11051,7 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
     return 0;
 ```
 
-Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
+`}` Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
 
 ```
 #include "oss_api.h"
@@ -9735,6 +11086,11 @@ int main(int argc, char argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -9772,6 +11128,11 @@ headers, &resp_headers);
         printf("put file succeeded\n");
     } else {
         printf("put file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -9805,6 +11166,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -9815,6 +11181,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -9852,6 +11223,11 @@ ams, &file, &resp_headers);
         printf("get object to local file succeeded\n");
     } else {
         printf("get object to local file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -9864,7 +11240,7 @@ ams, &file, &resp_headers);
     return 0;
 ```
 
-List objects The following code provides an example on how to list objects in a specified bucket.
+`}` List objects The following code provides an example on how to list objects in a specified bucket.
 
 ```
 #include "oss_api.h"
@@ -9885,6 +11261,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -9895,6 +11276,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool = NULL;
@@ -9938,6 +11324,11 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
 
 ```
         printf("list object failed\n");
+```
+
+`}`
+
+```
     else{
         /* Display the objects. */
         printf("Object\tSize\tLastModified\n");
@@ -9949,7 +11340,17 @@ data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         printf("Total %d\n", size);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -9962,7 +11363,7 @@ data,
     return 0;
 ```
 
-Delete objects The following code provides an example on how to delete an object:
+`}` Delete objects The following code provides an example on how to delete an object:
 
 ```
 #include "oss_api.h"
@@ -9987,6 +11388,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -9997,6 +11403,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool = NULL;
@@ -10036,6 +11447,8 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
     return 0;
 ```
 
+`}`
+
 #### 2.4.5 Buckets
 
 ##### 2.4.5.1 Create buckets
@@ -10061,6 +11474,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10071,6 +11489,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t *pool is equivalent to apr_pool_t.
 The code to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -10103,6 +11526,11 @@ tion such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
         printf("create bucket succeeded\n");
     } else {
         printf("create bucket failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10115,7 +11543,7 @@ tion such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
     return 0;
 ```
 
-The following code provides an example on how to set the ACL of a bucket when you create the bucket:
+`}` The following code provides an example on how to set the ACL of a bucket when you create the bucket:
 
 ```
     /* Create a bucket and set the ACL of the bucket to public read (the default ACL is pri
@@ -10127,6 +11555,8 @@ _headers);
     } else {
         printf("create bucket failed\n");
 ```
+
+`}`
 
 ##### 2.4.5.2 List buckets
 
@@ -10157,6 +11587,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout period. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10167,6 +11602,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t *pool is equivalent to apr_pool_t.
 The code to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -10193,6 +11633,11 @@ tion such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
         printf("list buckets succeeded\n");
     } else {
         printf("list buckets failed\n");
+```
+
+`}`
+
+```
     /* Display the list of buckets. */
     aos_list_for_each_entry(oss_list_bucket_content_t, content, &params->bucket_list, node)
 ```
@@ -10202,6 +11647,11 @@ tion such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
 ```
         printf("BucketName: %s\n", content->name.data);
         ++size;
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10259,6 +11709,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10285,6 +11740,11 @@ p_headers);
         printf("set bucket acl succeeded\n");
     } else {
         printf("set bucket acl failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10297,7 +11757,7 @@ p_headers);
     return 0;
 ```
 
-Query the ACL of a bucket The following code provides an example on how to query the ACL of a bucket:
+`}` Query the ACL of a bucket The following code provides an example on how to query the ACL of a bucket:
 
 ```
 #include "oss_api.h"
@@ -10321,6 +11781,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10331,6 +11796,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10357,6 +11827,11 @@ ion, such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
         printf("get bucket acl succeeded : %s \n", oss_acl.data);
     } else {
         printf("get bucket acl failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10368,6 +11843,8 @@ ion, such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.5.4 Delete buckets
 
@@ -10392,6 +11869,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10402,6 +11884,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t *pool is equivalent to apr_pool_t.
 The code to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -10450,6 +11937,8 @@ t(deetebucetsucceeded\
     return 0;
 ```
 
+`}`
+
 ##### 2.4.5.5 Manage lifecycle rules
 
 Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules
@@ -10477,6 +11966,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10487,6 +11981,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10543,6 +12042,11 @@ t, &resp_headers);
 id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status
 ->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10555,7 +12059,7 @@ id:%s\n",
     return 0;
 ```
 
-View lifecycle rules The following code provides an example on how to query the lifecycle rules configured for the bucket named examplebucket:
+`}` View lifecycle rules The following code provides an example on how to query the lifecycle rules configured for the bucket named examplebucket:
 
 ```
 #include "oss_api.h"
@@ -10576,6 +12080,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10631,6 +12140,11 @@ us.data);
             date = apr_psprintf(pool, "%.*s", rule_content->date.len, rule_content->date.da
 ta);
             days = rule_content->days;
+```
+
+`}`
+
+```
         printf("rule_id: %s \n", rule_id);
         printf("prefix: %s \n", prefix);
         printf("status: %s \n", status);
@@ -10656,7 +12170,7 @@ id:%s\n",
     return 0;
 ```
 
-Delete lifecycle rules The following code provides an example on how to delete lifecycle rules configured for the bucket named examplebucket:
+`}` Delete lifecycle rules The following code provides an example on how to delete lifecycle rules configured for the bucket named examplebucket:
 
 ```
 #include "oss_api.h"
@@ -10677,6 +12191,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10687,6 +12206,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10719,6 +12243,11 @@ aosstringtbucket;
 st_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status
 ->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10730,6 +12259,8 @@ st_id:%s\n",
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.5.6 CORS
 
@@ -10787,6 +12318,11 @@ egoba esoucessuc
 eto s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10848,7 +12384,7 @@ eaders);
     return 0;
 ```
 
-Query CORS rules Run the following code to obtain CORS rules:
+`}` Query CORS rules Run the following code to obtain CORS rules:
 
 ```
 #include "oss_api.h"
@@ -10869,6 +12405,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10879,6 +12420,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10916,17 +12462,42 @@ eaders);
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule->allowed
 _origin_list, node) {
                 printf("allowed_origin_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule->allowed
 _method_list, node) {
                 printf("allowed_method_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule->allowed
 _head_list, node) {
                 printf("allowed_head_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}`
+
+```
             aos_list_for_each_entry(oss_sub_cors_rule_t, sub_cors_rule, &cors_rule->expose_
 head_list, node) {
                 printf("expose_head_list: %s \n", sub_cors_rule->rule.data);
+```
+
+`}` `}`
+
+```
     } else {
         printf("get bucket cors failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -10939,7 +12510,7 @@ head_list, node) {
     return 0;
 ```
 
-Delete CORS rules Run the following code to delete all CORS rules for the specified bucket:
+`}` Delete CORS rules Run the following code to delete all CORS rules for the specified bucket:
 
 ```
 #include "oss_api.h"
@@ -10964,6 +12535,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -10974,6 +12550,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -10998,6 +12579,11 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
         printf("get bucket cors succeeded\n");
     } else {
         printf("get bucket cors failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11009,6 +12595,8 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.5.7 Configure logging
 
@@ -11039,6 +12627,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11049,6 +12642,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11084,6 +12682,11 @@ s);
         printf("put symlink failed, code:%d, error_code:%s, error_msg:%s, request_id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status
 ->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11096,7 +12699,7 @@ s);
     return 0;
 ```
 
-View logging configurations Run the following code to view the access logging configurations for a bucket:
+`}` View logging configurations Run the following code to view the access logging configurations for a bucket:
 
 ```
 #include "oss_api.h"
@@ -11117,6 +12720,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11127,6 +12735,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11169,6 +12782,11 @@ s);
 :%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status
 ->req_id);
+```
+
+`}`
+
+```
     printf("bucket:%s, prefix:%s\n", content->target_bucket.data, content->prefix.data);
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
@@ -11182,7 +12800,7 @@ s);
     return 0;
 ```
 
-Disable logging Run the following code to disable access logging for a bucket:
+`}` Disable logging Run the following code to disable access logging for a bucket:
 
 ```
 #include "oss_api.h"
@@ -11206,6 +12824,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11216,6 +12839,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11243,6 +12871,11 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
 _id:%s\n",
             resp_status->code, resp_status->error_code, resp_status->error_msg, resp_status
 ->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11254,6 +12887,8 @@ _id:%s\n",
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.5.8 Configure hotlink protection
 
@@ -11278,6 +12913,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11288,6 +12928,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11322,6 +12967,11 @@ p_headers);
         printf("put bucket referer succeeded\n");
     } else {
         printf("put bucket referer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11334,7 +12984,7 @@ p_headers);
     return 0;
 ```
 
-Query hotlink protection information Run the following code to obtain a referer whiltelist:
+`}` Query hotlink protection information Run the following code to obtain a referer whiltelist:
 
 ```
 #include "oss_api.h"
@@ -11355,6 +13005,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11401,8 +13056,18 @@ p_headers);
 
 ```
             printf("get referer %s\n", referer->referer.data);
+```
+
+`}`
+
+```
     } else {
         printf("get bucket referer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11415,7 +13080,7 @@ p_headers);
     return 0;
 ```
 
-Delete hotlink protection configurations Run the following code to clear a referer whitelist:
+`}` Delete hotlink protection configurations Run the following code to clear a referer whitelist:
 
 ```
 #include "oss_api.h"
@@ -11439,6 +13104,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11449,6 +13119,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11478,6 +13153,11 @@ p_headers);
         printf("delete bucket referer succeeded\n");
     } else {
         printf("delete bucket referer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11513,6 +13193,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11523,6 +13208,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11555,6 +13245,11 @@ p_headers);
         printf("put bucket website succeeded\n");
     } else {
         printf("put bucket website failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11567,7 +13262,7 @@ p_headers);
     return 0;
 ```
 
-View static website hosting configurations Run the following code to view static website hosting configurations:
+`}` View static website hosting configurations Run the following code to view static website hosting configurations:
 
 ```
 #include "oss_api.h"
@@ -11588,6 +13283,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11629,6 +13329,11 @@ p_headers);
 key_str.data);
     } else {
         printf("get bucket website failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11641,7 +13346,7 @@ key_str.data);
     return 0;
 ```
 
-Delete static website hosting configurations Run the following code to delete static website hosting configurations:
+`}` Delete static website hosting configurations Run the following code to delete static website hosting configurations:
 
 ```
 #include "oss_api.h"
@@ -11665,6 +13370,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11675,6 +13385,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11699,6 +13414,11 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
         printf("delete bucket website succeeded\n");
     } else {
         printf("delete bucket website failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11710,6 +13430,8 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 #### 2.4.6 Upload objects
 
@@ -11740,6 +13462,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11795,6 +13522,11 @@ headers, &resp_headers);
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -11807,7 +13539,7 @@ headers, &resp_headers);
     return 0;
 ```
 
-Upload a local file The following code provides an example on how to upload a local file to OSS:
+`}` Upload a local file The following code provides an example on how to upload a local file to OSS:
 
 ```
 #include "oss_api.h"
@@ -11846,6 +13578,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -11856,6 +13593,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -11899,7 +13641,7 @@ ders, &resp_headers);
     return 0;
 ```
 
-FAQ: How can I upload objects whose names contain Chinese characters? On Windows systems, you can use UTF-8 to encode the object names that contain Chinese characters and upload the object. The following code provides an example on how to upload objects whose names contain Chinese characters:
+`}` FAQ: How can I upload objects whose names contain Chinese characters? On Windows systems, you can use UTF-8 to encode the object names that contain Chinese characters and upload the object. The following code provides an example on how to upload objects whose names contain Chinese characters:
 
 ```
 #include "oss_api.h"
@@ -11911,7 +13653,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 `{`
 
 ```
-options->config = oss_config_create(options->pool); /* Use a char* string to initialize aos_string_t. */ aos_str_set(&options->config->endpoint, endpoint); aos_str_set(&options->config->access_key_id, access_key_id); aos_str_set(&options->config->access_key_secret, access_key_secret); /* Specify whether to use CNAME to access OSS. A value of 0 indicates that CNAME is not used. */ options->config->is_cname = 0; /* Configure network parameters such as timeout periods. */ options->ctl = aos_http_controller_create(options->pool, 0); char* multibyte_to_utf8(const char * ch, char *str, int size)
+options->config = oss_config_create(options->pool); /* Use a char* string to initialize aos_string_t. */ aos_str_set(&options->config->endpoint, endpoint); aos_str_set(&options->config->access_key_id, access_key_id); aos_str_set(&options->config->access_key_secret, access_key_secret); /* Specify whether to use CNAME to access OSS. A value of 0 indicates that CNAME is not used. */ options->config->is_cname = 0; /* Configure network parameters such as timeout periods. */ options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
+char* multibyte_to_utf8(const char * ch, char *str, int size)
 ```
 
 `{`
@@ -11923,6 +13671,11 @@ int chlen = strlen(ch); int multi_byte_cnt = 0; for (int i = 0; i < chlen - 1; i
         if ((ch[i] & 0x80) && (ch[i + 1] & 0x80)) {
             i++;
             multi_byte_cnt++;
+```
+
+`}` `}`
+
+```
 if (multi_byte_cnt == 0)
         return ch;
 int len = MultiByteToWideChar(CP_ACP, 0, ch, -1, NULL, 0); if (len <= 0)
@@ -11936,7 +13689,18 @@ if (! wch)
 wmemset(wch, 0, len + 1); MultiByteToWideChar(CP_ACP, 0, ch, -1, wch, len); len = WideCharToMultiByte(CP_UTF8, 0, wch, -1, NULL, 0, NULL, NULL); if ((len <= 0) || (size < len + 1)) {
         free(wch);
         return NULL;
-memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL, NULL); free(wch); return str; int main(int argc, char argv[])
+```
+
+`}`
+
+```
+memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL, NULL); free(wch); return str;
+```
+
+`}`
+
+```
+int main(int argc, char argv[])
 ```
 
 `{`
@@ -11944,6 +13708,11 @@ memset(str, 0, len + 1); WideCharToMultiByte(CP_UTF8, 0, wch, -1, str, len, NULL
 ```
 /* Call aos_http_io_initialize in main() to initialize global resources such as networks and memory. */ if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
     exit(1);
+```
+
+`}`
+
+```
 /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The co de used to create a memory pool is included in the APR library. */ aos_pool_t pool; /* Create a memory pool. The second parameter is NULL. This parameter indicates that the pool does not inherit any other memory pool. */ aos_pool_create(&pool, NULL);
     /* Create and initialize options. This parameter specifies global configuration informa
 tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */ oss_request_options_t oss_client_options; /* Allocate a memory chunk in the memory pool to options. */ oss_client_options = oss_request_options_create(pool); /* Call oss_client_options to initialize the client options. */ init_options(oss_client_options); /* Initialize the parameters. */ aos_string_t bucket; aos_string_t object;
@@ -11973,6 +13742,8 @@ ders, &resp_headers); /* Determine whether the object is uploaded. */ if (aos_st
 aos_pool_destroy(pool); /* Release the allocated global resources. */ aos_http_io_deinitialize(); return 0;
 ```
 
+`}`
+
 ##### 2.4.6.3 Append upload
 
 You can append strings and files during append upload. You cannot perform CopyObject for append objects.
@@ -12000,6 +13771,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12010,6 +13786,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12049,6 +13830,11 @@ ders);
         next_append_position = (char*)(apr_table_get(resp_headers, "x-oss-next-append-posit
 ion"));
         position = atoi(next_append_position);
+```
+
+`}`
+
+```
     /* Append the object. */
     headers2 = aos_table_make(pool, 0);
     aos_list_init(&buffer);
@@ -12060,6 +13846,11 @@ ion, &buffer, headers2, &resp_headers);
         printf("append object from buffer succeeded\n");
     } else {
         printf("append object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12072,7 +13863,7 @@ ion, &buffer, headers2, &resp_headers);
     return 0;
 ```
 
-Append data from a local file The following code provides an example on how to append data from a local file:
+`}` Append data from a local file The following code provides an example on how to append data from a local file:
 
 ```
 #include "oss_api.h"
@@ -12093,6 +13884,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12103,6 +13899,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12141,6 +13942,11 @@ ders);
         next_append_position = (char*)(apr_table_get(resp_headers, "x-oss-next-append-posit
 ion"));
         position = atoi(next_append_position);
+```
+
+`}`
+
+```
     /* Append the object. */
     resp_status = oss_append_object_from_file(oss_client_options, &bucket, &object, positio
 n, &file, headers2, &resp_headers);
@@ -12149,6 +13955,11 @@ n, &file, headers2, &resp_headers);
         printf("append object from file succeeded\n");
     } else {
         printf("append object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12160,6 +13971,8 @@ n, &file, headers2, &resp_headers);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.6.4 Resumable upload
 
@@ -12196,6 +14009,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12206,6 +14024,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12245,6 +14068,11 @@ aders, NULL, clt_params, NULL, &resp_headers, &resp_body);
         printf("resumable upload succeeded\n");
     } else {
         printf("resumable upload failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12256,6 +14084,8 @@ aders, NULL, clt_params, NULL, &resp_headers, &resp_body);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.6.5 Multipart upload
 
@@ -12298,7 +14128,17 @@ int64_t get_file_size(const char *file_path)
         return filesize;
     } else {
         filesize = statbuff.st_size;
+```
+
+`}`
+
+```
     return filesize;
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12309,6 +14149,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12351,6 +14196,11 @@ if(aosstatusisok(respstatus)){
     } else {
         printf("Init multipart upload failed, upload_id:%.*s\n",
                upload_id.len, upload_id.data);
+```
+
+`}`
+
+```
     /* Upload the parts. */
     int64_t file_length = 0;
     int64_t pos = 0;
@@ -12367,6 +14217,11 @@ ad_id, part_num++, upload_file, &resp_headers);
             printf("Multipart upload part from file succeeded\n");
         } else {
             printf("Multipart upload part from file failed\n");
+```
+
+`}` `}`
+
+```
     oss_list_upload_part_params_t *params = NULL;
     aos_list_t complete_part_list;
     /* Query the uploaded parts. */
@@ -12380,6 +14235,11 @@ rams, &resp_headers);
         printf("List multipart succeeded\n");
     } else {
         printf("List multipart failed\n");
+```
+
+`}`
+
+```
     oss_complete_part_content_t *complete_part_content = NULL;
     oss_list_part_content_t *part_content = NULL;
     aos_list_for_each_entry(oss_list_part_content_t, part_content, &params->part_list, node
@@ -12388,6 +14248,11 @@ rams, &resp_headers);
         aos_str_set(&complete_part_content->part_number, part_content->part_number.data);
         aos_str_set(&complete_part_content->etag, part_content->etag.data);
         aos_list_add_tail(&complete_part_content->node, &complete_part_list);
+```
+
+`}`
+
+```
     /* Complete the multipart upload task. */
     resp_status = oss_complete_multipart_upload(oss_client_options, &bucket, &object, &uplo
 ad_id,
@@ -12403,6 +14268,11 @@ ad_id,
                upload_id.len, upload_id.data);
     } else {
         printf("Complete multipart upload from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12414,6 +14284,8 @@ ad_id,
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > Not e Query the uploaded parts. You must provide the ETag value of each part to call the oss_complete_multipart_upload operation. You can use one of the following method to obtain the ETag values: First, the response of a part upload contains the ETag value of the part. You can save the values for future use. Second, you can call the oss_list_upload_part operation to query the ETag values of the uploaded parts. In this example, the second method is used.
 
@@ -12438,6 +14310,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12448,6 +14325,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12484,6 +14366,11 @@ d, headers, &resp_headers);
     } else {
         printf("Init multipart upload failed, upload_id:%.*s\n",
                upload_id.len, upload_id.data);
+```
+
+`}`
+
+```
     /* Cancel the multipart upload task. */
     resp_status = oss_abort_multipart_upload(oss_client_options, &bucket, &object, &upload_
 id, &resp_headers);
@@ -12493,6 +14380,11 @@ id, &resp_headers);
                upload_id.len, upload_id.data);
     } else {
         printf("Abort multipart upload failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12504,6 +14396,8 @@ id, &resp_headers);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > Not e If a multipart upload task is canceled, the upload ID can no longer be used to upload any parts. The parts uploaded by using that upload ID are also deleted.
 
@@ -12530,6 +14424,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
 
@@ -12538,6 +14437,11 @@ void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
     assert(total_bytes >= consumed_bytes);
     printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12548,6 +14452,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12584,6 +14493,11 @@ NULL, NULL, percentage, &resp_headers, &resp_body);
         printf("put object from file succeeded\n");
     } else {
         printf("put object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12596,7 +14510,7 @@ NULL, NULL, percentage, &resp_headers, &resp_body);
     return 0;
 ```
 
-You cannot use progress bars when you use oss_put_object_from_file and oss_put_object_from_buffer.
+`}` You cannot use progress bars when you use oss_put_object_from_file and oss_put_object_from_buffer.
 
 ##### 2.4.6.7 Upload callback
 
@@ -12660,6 +14574,11 @@ ype}\","
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Initialize the parameters. */
     aos_pool_create(&p, NULL);
     options = oss_request_options_create(p);
@@ -12687,6 +14606,11 @@ s and memory. */
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Obtain the buffer length. */
     len = aos_buf_list_len(&resp_body);
     buf = (char *)aos_pcalloc(p, (apr_size_t)(len + 1));
@@ -12696,6 +14620,11 @@ s and memory. */
         size = aos_buf_size(content);
         memcpy(buf + pos, content->pos, (size_t)size);
         pos += size;
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12707,6 +14636,8 @@ s and memory. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 #### 2.4.7 Download objects
 
@@ -12747,6 +14678,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12757,6 +14693,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12793,6 +14734,11 @@ ams, &file, &resp_headers);
         printf("Get object from file succeeded\n");
     } else {
         printf("Get object from file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12804,6 +14750,8 @@ ams, &file, &resp_headers);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > Not e Compared with OSS SDK for C V1.0.0, this version adds the params parameter to the oss_get_object_to_file operation, and the values of the headers and params parameters can be NULL.
 
@@ -12830,6 +14778,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12886,8 +14839,18 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
         size = aos_buf_size(content);
             memcpy(buf + pos, content->pos, size);
             pos += size;
+```
+
+`}` `}`
+
+```
     else {
         printf("get object to buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12923,6 +14886,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -12933,6 +14901,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -12976,6 +14949,11 @@ arams, &buffer, &resp_headers);
         /* Obtain the buffer length. */
         aos_list_for_each_entry(aos_buf_t, content, &buffer, node) {
             len += aos_buf_size(content);
+```
+
+`}`
+
+```
         buf = aos_pcalloc(pool, (apr_size_t)(len + 1));
         buf[len] = '\0';
         /* Copy the content in the buffer to the memory. */
@@ -12983,8 +14961,18 @@ arams, &buffer, &resp_headers);
             size = aos_buf_size(content);
             memcpy(buf + pos, content->pos, (size_t)size);
             pos += size;
+```
+
+`}` `}`
+
+```
     else {
         printf("get object to buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -12996,6 +14984,8 @@ arams, &buffer, &resp_headers);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.7.5 Resumable download
 
@@ -13029,6 +15019,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13039,6 +15034,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -13075,6 +15075,11 @@ headers, NULL, clt_params, NULL, &resp_headers);
         printf("download succeeded\n");
     } else {
         printf("download failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -13086,6 +15091,8 @@ headers, NULL, clt_params, NULL, &resp_headers);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.7.6 Use progress bars
 
@@ -13115,6 +15122,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
 
@@ -13123,6 +15135,11 @@ void percentage(int64_t consumed_bytes, int64_t total_bytes)
 ```
     assert(total_bytes >= consumed_bytes);
     printf("%%%" APR_INT64_T_FMT "\n", consumed_bytes * 100 / total_bytes);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13133,6 +15150,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -13177,6 +15199,11 @@ L, &file, percentage, NULL);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -13189,7 +15216,7 @@ L, &file, percentage, NULL);
     return 0;
 ```
 
-oss_get_object_from_file and oss_get_object_from_buffer does not support the progress bar feature.
+`}` oss_get_object_from_file and oss_get_object_from_buffer does not support the progress bar feature.
 
 #### 2.4.8 Manage objects
 
@@ -13235,6 +15262,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13245,6 +15277,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -13285,6 +15322,11 @@ eaders);
         printf("put object acl success! \n");
     } else {
         printf("put object acl failed! \n");
+```
+
+`}`
+
+```
     /* Query the ACL of the object. */
     aos_string_t oss_acl_string;
     resp_status = oss_get_object_acl(oss_client_options, &bucket, &object, &oss_acl_string,
@@ -13294,6 +15336,11 @@ eaders);
         printf("acl: %s \n", oss_acl_string.data);
     } else {
         printf("get object acl failed! \n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -13305,6 +15352,8 @@ eaders);
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.8.3 Manage object metadata
 
@@ -13333,6 +15382,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13343,6 +15397,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -13389,18 +15448,33 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
         printf("put object from buffer with md5 succeeded\n");
     } else {
         printf("put object from buffer with md5 failed\n");
+```
+
+`}`
+
+```
     /* Query the ACL of the object. */
     resp_status = oss_get_object_meta(oss_client_options, &bucket, &object, &resp_headers);
     if (aos_status_is_ok(resp_status)) {
         content_length_str = (char*)apr_table_get(resp_headers, OSS_CONTENT_LENGTH);
         if (content_length_str ! = NULL) {
             content_length = atol(content_length_str);
+```
+
+`}`
+
+```
         object_author = (char*)apr_table_get(resp_headers, OSS_AUTHORIZATION);
         object_type = (char*)apr_table_get(resp_headers, OSS_OBJECT_TYPE);
         printf("get object meta succeeded, object author:%s, object type:%s, content_length
 :%ld\n", object_author, object_type, content_length);
     } else {
         printf("req:%s, get object meta failed\n", resp_status->req_id);
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -13412,6 +15486,8 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > Not e For more information about HTTP headers, see RFC 2616.
 
@@ -13451,6 +15527,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13461,6 +15542,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -13503,6 +15589,11 @@ ion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, n
 ode) {
             ++size;
@@ -13511,6 +15602,11 @@ data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_marke
 r.data);
         aos_str_set(&params->marker, nextMarker);
@@ -13525,6 +15621,8 @@ est is released. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 > Not e If a bucket contains more than 1,000 objects, only the first 1,000 objects are returned, and the value of the truncated parameter in the response is true. Additionally, the next_marker parameter is returned as the start point for the next read. To list more than 1,000 objects at a time, you can modify the max_ret parameter. You can also use the marker parameter to perform multiple read operations.
 
@@ -13549,6 +15647,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13559,6 +15662,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is incl
 uded in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -13601,6 +15709,11 @@ the pool. */
 
 ```
         printf("list object failed\n");
+```
+
+`}`
+
+```
     aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node)
 ```
 
@@ -13617,6 +15730,11 @@ the pool. */
             content->size.len, content->size.data,
             content->last_modified.len, content->last_modified.data);
         printf("%s", line);
+```
+
+`}`
+
+```
     printf("Total %d\n", size);
     /* Release the memory pool after the request is complete. In this case, the memory allo
 cated to various resources used for the request is released. */
@@ -13627,7 +15745,7 @@ global resources. */
     return 0;
 ```
 
-List objects whose names contain the specified prefix
+`}` List objects whose names contain the specified prefix
 
 ```
 #include "oss_api.h"
@@ -13648,6 +15766,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13704,6 +15827,11 @@ the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, n
 ode) {
             ++size;
@@ -13712,6 +15840,11 @@ data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_marke
 r.data);
         aos_str_set(&params->marker, nextMarker);
@@ -13732,7 +15865,7 @@ global resources. */
     return 0;
 ```
 
-List objects that come after a specified marker
+`}` List objects that come after a specified marker
 
 ```
 #include "oss_api.h"
@@ -13753,6 +15886,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13763,6 +15901,11 @@ int main(int argc, char *argv[])
 s and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is incl
 uded in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -13807,6 +15950,11 @@ the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, n
 ode) {
             ++size;
@@ -13815,6 +15963,11 @@ data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_marke
 r.data);
         aos_str_set(&params->marker, nextMarker);
@@ -13831,7 +15984,7 @@ global resources. */
     return 0;
 ```
 
-Folder simulation OSS does not use folders. All elements are stored as objects. To simulate a folder on the OSS console, you actually create a 0 MB object whose name ends with a forward slash (/). This object can be uploaded and downloaded. By default, the OSS console displays an object whose name ends with a forward slash (/) as a folder. The delimiter and prefix parameters can be used to simulate folder functions. Prefix: specifies the prefix as the name of a folder. The folder is used to list all files (in the folder) and subfolders (directories in the folder) that start with this prefix. These files and subfolders are included in the Objects list. Delimiter: If the delimiter is specified as a forward slash (/), only the files and subfolders (directories) are displayed. Subfolders (directories) are included in the CommonPrefixes list, while the files and folders in subfolders are not displayed. For the complete code used to create a folder, visit GitHub. Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. Forward slashes (/) are used as delimiters for folders. The subsequent examples show how to simulate folder functions. List all objects in a bucket Run the following code to list all objects in a bucket:
+`}` Folder simulation OSS does not use folders. All elements are stored as objects. To simulate a folder on the OSS console, you actually create a 0 MB object whose name ends with a forward slash (/). This object can be uploaded and downloaded. By default, the OSS console displays an object whose name ends with a forward slash (/) as a folder. The delimiter and prefix parameters can be used to simulate folder functions. Prefix: specifies the prefix as the name of a folder. The folder is used to list all files (in the folder) and subfolders (directories in the folder) that start with this prefix. These files and subfolders are included in the Objects list. Delimiter: If the delimiter is specified as a forward slash (/), only the files and subfolders (directories) are displayed. Subfolders (directories) are included in the CommonPrefixes list, while the files and folders in subfolders are not displayed. For the complete code used to create a folder, visit GitHub. Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. Forward slashes (/) are used as delimiters for folders. The subsequent examples show how to simulate folder functions. List all objects in a bucket Run the following code to list all objects in a bucket:
 
 ```
 #include "oss_api.h"
@@ -13852,6 +16005,11 @@ ot used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13862,6 +16020,11 @@ int main(int argc, char *argv[])
 rks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The
 code used to create a memory pool is included in the apr library. */
     aos_pool_t *pool;
@@ -13903,6 +16066,11 @@ ation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list,
 node) {
             ++size;
@@ -13911,6 +16079,11 @@ y.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_mar
 ker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -13926,7 +16099,7 @@ quest is released. */
     return 0;
 ```
 
-The returned results are as follows:
+`}` The returned results are as follows:
 
 ```
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg oss.jpg CommonPrefixes:
@@ -13953,6 +16126,11 @@ ot used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -13963,6 +16141,11 @@ int main(int argc, char *argv[])
 rks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is in
 cluded in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -14008,6 +16191,11 @@ aosstatust*respstatus=NULL;
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list,
 node) {
             ++size;
@@ -14016,6 +16204,11 @@ y.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_mar
 ker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -14032,7 +16225,7 @@ ed global resources.
     return 0;
 ```
 
-The returned results are as follows:
+`}` The returned results are as follows:
 
 ```
 Objects: fun/movie/001.avi fun/movie/007.avi fun/test.jpg CommonPrefixes:
@@ -14059,6 +16252,11 @@ ot used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14069,6 +16267,11 @@ int main(int argc, char *argv[])
 rks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is in
 cluded in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -14118,6 +16321,11 @@ osslistobjectparamst*params=NULL;
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list,
 node) {
             ++size;
@@ -14126,11 +16334,21 @@ y.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_common_prefix_t, commonPrefix, &params->c
 ommon_prefix_list, node) {
             line = apr_psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix->pre
 fix.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_mar
 ker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -14174,6 +16392,11 @@ ot used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int64_t calculateFolderLength (aos_string_t bucketName, char* folder)
 ```
 
@@ -14210,6 +16433,11 @@ int64_t calculateFolderLength (aos_string_t bucketName, char* folder)
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list,
 node) {
             size += content->size.len;
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(p, "%.*s", params->next_marker.len, params->next_marker
 .data);
         aos_str_set(&params->marker, nextMarker);
@@ -14220,6 +16448,11 @@ node) {
 located to various resources used for the request is released. */
     aos_pool_destroy(p);
     return size;
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14230,6 +16463,11 @@ int main(int argc, char *argv[])
 rks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. The code used to create a memory pool is in
 cluded in the APR library. aos_pool_t is equivalent to apr_pool_t. */
     aos_pool_t *pool;
@@ -14278,6 +16516,11 @@ h the pool. */
 ```
             printf("list object failed\n");
             break;
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list,
 node) {
             ++size;
@@ -14286,12 +16529,22 @@ y.data,
                 content->size.len, content->size.data,
                 content->last_modified.len, content->last_modified.data);
             printf("%s", line);
+```
+
+`}`
+
+```
         aos_list_for_each_entry(oss_list_object_common_prefix_t, commonPrefix, &params->c
 ommon_prefix_list, node) {
             line = apr_psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix->pre
 fix.data);
             int64_t size = calculateFolderLength(bucket, commonPrefix->prefix.data);
             printf("Total %d\n", size);
+```
+
+`}`
+
+```
         nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_mar
 ker.data);
         aos_str_set(&params->marker, nextMarker);
@@ -14307,6 +16560,8 @@ ed global resources. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 ##### 2.4.8.5 Delete objects
 
@@ -14335,6 +16590,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14345,6 +16605,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -14376,6 +16641,11 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
         printf("delete object succeed\n");
     } else {
         printf("delete object failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -14388,7 +16658,7 @@ tion such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */
     return 0;
 ```
 
-Delete multiple objects
+`}` Delete multiple objects
 
 ```
 #include "oss_api.h"
@@ -14409,6 +16679,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14419,6 +16694,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -14467,6 +16747,11 @@ resp_headers, &deleted_object_list);
         printf("delete objects succeeded\n");
     } else {
         printf("delete objects failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the request.
 ```
 
@@ -14479,7 +16764,7 @@ resp_headers, &deleted_object_list);
     return 0;
 ```
 
-Delete multiple objects whose names contain a specified prefix You can delete multiple objects whose names contain a specified prefix to delete a folder. For example, if you delete objects whose names contain dir/, the dir folder is deleted. The following code provides an example on how to delete multiple objects whose names contain a specified prefix:
+`}` Delete multiple objects whose names contain a specified prefix You can delete multiple objects whose names contain a specified prefix to delete a folder. For example, if you delete objects whose names contain dir/, the dir folder is deleted. The following code provides an example on how to delete multiple objects whose names contain a specified prefix:
 
 ```
 #include "oss_api.h"
@@ -14516,6 +16801,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14564,6 +16854,11 @@ _bucket, &dest_object, headers, &resp_headers);
         printf("copy object succeeded\n");
     } else {
         printf("copy object failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. The memory allocated to various resources used for the requ
 est is released. */
     aos_pool_destroy(pool);
@@ -14572,7 +16867,7 @@ est is released. */
     return 0;
 ```
 
-Copy a large object We recommend that you use the oss_upload_part_copy operation to copy an object larger than 1 GB in size. The following code provides an example on how to perform multipart copy:
+`}` Copy a large object We recommend that you use the oss_upload_part_copy operation to copy an object larger than 1 GB in size. The following code provides an example on how to perform multipart copy:
 
 ```
 #include "oss_api.h"
@@ -14598,6 +16893,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int64_t get_file_size(const char *file_path)
 ```
 
@@ -14610,7 +16910,17 @@ int64_t get_file_size(const char *file_path)
         return filesize;
     } else {
         filesize = statbuff.st_size;
+```
+
+`}`
+
+```
     return filesize;
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14621,6 +16931,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -14670,6 +16985,11 @@ ion such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
         printf("init multipart upload succeeded, upload_id is %s\n", upload_id.data);
     } else {
         printf("init multipart upload failed\n");
+```
+
+`}`
+
+```
     /* Copy the first part. */
     upload_part_copy_params1 = oss_create_upload_part_copy_params(pool);
     aos_str_set(&upload_part_copy_params1->source_bucket, source_bucket_name);
@@ -14687,6 +17007,11 @@ s, &resp_headers);
         printf("upload part 1 copy succeeded\n");
     } else {
         printf("upload part 1 copy failed\n");
+```
+
+`}`
+
+```
     /* Copy the second part. */
     range_end2 = get_file_size(local_filename) - 1;
     upload_part_copy_params2 = oss_create_upload_part_copy_params(pool);
@@ -14709,6 +17034,11 @@ s, &resp_headers);
         printf("upload part 2 copy succeeded\n");
     } else {
         printf("upload part 2 copy failed\n");
+```
+
+`}`
+
+```
     /* List the copied parts. */
     headers = aos_table_make(pool, 0);
     list_upload_part_params = oss_create_list_upload_part_params(pool);
@@ -14722,6 +17052,11 @@ oad_id, list_upload_part_params, &list_part_resp_headers);
        aos_str_set(&complete_content->part_number, part_content->part_number.data);
        aos_str_set(&complete_content->etag, part_content->etag.data);
        aos_list_add_tail(&complete_content->node, &complete_part_list);
+```
+
+`}`
+
+```
     /* Complete the multipart copy task. */
     resp_status = oss_complete_multipart_upload(oss_client_options, &dest_bucket, &dest_obj
 ect, &upload_id, &complete_part_list, headers, &complete_resp_headers);
@@ -14729,6 +17064,11 @@ ect, &upload_id, &complete_part_list, headers, &complete_resp_headers);
         printf("complete multipart upload succeeded\n");
     } else {
         printf("complete multipart upload failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. The memory allocated to various resources used for the requ
 est is released. */
     aos_pool_destroy(pool);
@@ -14736,6 +17076,8 @@ est is released. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 #### 2.4.9 Authorized access
 
@@ -14761,6 +17103,11 @@ used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14771,6 +17118,11 @@ int main(int argc, char *argv[])
 as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The c
 ode to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -14820,6 +17172,11 @@ headers, &resp_headers);
         printf("put object from buffer succeeded\n");
     } else {
         printf("put object from buffer failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. The memory allocated to various resources used for the requ
 est is released. */
     aos_pool_destroy(pool);
@@ -14828,7 +17185,7 @@ est is released. */
     return 0;
 ```
 
-Use a signed URL to authorize temporary access Use a signed URL to upload an object The following code provides an example on how to upload an object by using a signed URL:
+`}` Use a signed URL to authorize temporary access Use a signed URL to upload an object The following code provides an example on how to upload an object by using a signed URL:
 
 ```
 #include "oss_api.h"
@@ -14862,6 +17219,11 @@ int main(int argc, char *argv[])
 ch as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The
 code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -14919,7 +17281,7 @@ quest is released. */
     return 0;
 ```
 
-Use a signed URL to download an object The following code provides an example on how to download a specified object by using a signed URL:
+`}` Use a signed URL to download an object The following code provides an example on how to download a specified object by using a signed URL:
 
 ```
 #include "oss_api.h"
@@ -14940,6 +17302,11 @@ ot used. */
     options->config->is_cname = 0;
     /* Configure network parameters such as the timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -14950,6 +17317,11 @@ int main(int argc, char *argv[])
 ch as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The
 code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -15000,6 +17372,11 @@ ation such as endpoint, access_key_id, acces_key_secret, is_cname, and curl. */
         printf("get object succeeded\n");
     } else {
         printf("get object failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool. The memory allocated to various resources used for the re
 quest is released. */
     aos_pool_destroy(pool);
@@ -15007,6 +17384,8 @@ quest is released. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 #### 2.4.10 IMG
 
@@ -15088,6 +17467,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -15098,6 +17482,11 @@ int main(int argc, char *argv[])
 ch as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. The
 code to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -15144,7 +17533,7 @@ mation such as endpoint, access_key_id, access_key_secret, is_cname, and curl. *
     return 0;
 ```
 
-Access by using SDKs You can use OSS SDKs to access and process image objects of any ACLs. Basic operations The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
+`}` Access by using SDKs You can use OSS SDKs to access and process image objects of any ACLs. Basic operations The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
 
 ```
 #include "oss_api.h"
@@ -15164,6 +17553,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -15174,6 +17568,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -15211,6 +17610,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Crop the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/crop,w_100,h_100,x_100,y_100,r_1");
@@ -15222,6 +17626,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Rotate the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/rotate,90");
@@ -15233,6 +17642,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Sharpen the image. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/sharpen,100");
@@ -15261,6 +17675,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Convert the image format. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/format,png");
@@ -15272,6 +17691,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Obtain image information. */
     params = aos_table_make(pool, 1);
     apr_table_set(params, OSS_PROCESS, "image/info");
@@ -15283,6 +17707,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -15291,7 +17720,7 @@ st. */
     return 0;
 ```
 
-Custom image styles
+`}` Custom image styles
 
 ```
 #include "oss_api.h"
@@ -15315,6 +17744,11 @@ const char *access_key_secret = "<yourAccessKeySecret>"; const char *bucket_name
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -15325,6 +17759,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -15370,7 +17809,7 @@ st. */
     return 0;
 ```
 
-Cascade processing
+`}` Cascade processing
 
 ```
 #include "oss_api.h"
@@ -15390,6 +17829,11 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->config->is_cname = 0;
     /* Configure network parameters such as timeout periods. */
     options->ctl = aos_http_controller_create(options->pool, 0);
+```
+
+`}`
+
+```
 int main(int argc, char *argv[])
 ```
 
@@ -15400,6 +17844,11 @@ int main(int argc, char *argv[])
 such as networks and memory. */
     if (aos_http_io_initialize(NULL, 0) ! = AOSE_OK) {
         exit(1);
+```
+
+`}`
+
+```
     /* Create a memory pool to manage memory. aos_pool_t is equivalent to apr_pool_t. T
 he code used to create a memory pool is included in the APR library. */
     aos_pool_t *pool;
@@ -15438,6 +17887,11 @@ params, &file, &resp_headers);
         printf("get object to file succeeded\n");
     } else {
         printf("get object to file failed\n");
+```
+
+`}`
+
+```
     /* Release the memory pool, which releases memory resources allocated for the reque
 st. */
     aos_pool_destroy(pool);
@@ -15445,6 +17899,8 @@ st. */
     aos_http_io_deinitialize();
     return 0;
 ```
+
+`}`
 
 #### 2.4.11 Error handling
 
@@ -15556,6 +18012,8 @@ func main() {
   fmt.Println("OSS Go SDK Version: ", oss.Version)
 ```
 
+`}`
+
 #### 2.5.3 Initialization
 
 OSSClient serves as the client of OSS SDK for Go to manage OSS resources such as buckets and objects. To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient instance, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The following table describes the parameters you can configure for this operation.
@@ -15584,13 +18042,15 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     os.Exit(-1)
 ```
 
-Create an OSSClient instance based on a custom domain name For the complete code of custom domain names, visit GitHub. The following code provides an example on how to create an OSSClient instance based on a custom domain name:
+`}` Create an OSSClient instance based on a custom domain name For the complete code of custom domain names, visit GitHub. The following code provides an example on how to create an OSSClient instance based on a custom domain name:
 
 ```java
 import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.UseCname(true) indicates that CNAME is enabled. If CNAME is enabled, a custom domain name can be bound to a bucket. client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>", oss. UseCname(true)) if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}`
 
 > Not ice When you use CNAME, you cannot list buckets because a custom domain name is bound to a specified bucket.
 
@@ -15602,7 +18062,7 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     os.Exit(-1)
 ```
 
-Configure the connection timeout period The following code provides an example on how to configure the connection timeout period:
+`}` Configure the connection timeout period The following code provides an example on how to configure the connection timeout period:
 
 ```java
 import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.Timeout(10, 120) indicates that the HTTP connection timeout period is 10 seconds and the HTTP read/write timeout period is 120 seconds. The default HTTP connection timeout peri od is 30 seconds. The default HTTP read/write timeout period is 60 seconds. A value of 0 in dicates that the connection never times out. client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>", oss. Timeout(10, 120)) if err ! = nil {
@@ -15610,7 +18070,7 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // oss.Timeout(10, 120) indicat
     os.Exit(-1)
 ```
 
-Disable CRC By default, CRC is enabled to ensure data integrity when you upload or download objects. The following code provides an example on how to disable CRC:
+`}` Disable CRC By default, CRC is enabled to ensure data integrity when you upload or download objects. The following code provides an example on how to disable CRC:
 
 > **Warning:** We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object upload and download.
 
@@ -15619,6 +18079,8 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     fmt.Println("Error:", err)
     os.Exit(-1)
 ```
+
+`}`
 
 #### 2.5.4 Quick start
 
@@ -15637,6 +18099,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // The endpoint of the China (Hangzhou) region is used in this example. Specify the act
 ual endpoint.
@@ -15648,13 +18115,18 @@ ual endpoint.
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Create a bucket.
     err = client.CreateBucket(bucketName)
     if err ! = nil {
         handleError(err)
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
+`}` `}` For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
 
 ```java
 package main import (
@@ -15669,6 +18141,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // The endpoint of the China (Hangzhou) region is used in this example. Specify the act
 ual endpoint.
@@ -15686,17 +18163,27 @@ Example: /users/local/myfile.txt.
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Specify the bucket name.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Upload the object.
     err = bucket.PutObjectFromFile(objectName, localFileName)
     if err ! = nil {
         handleError(err)
 ```
 
-Download objects The following code provides an example on how to download an object to a local file:
+`}` `}` Download objects The following code provides an example on how to download an object to a local file:
 
 ```java
 package main import (
@@ -15711,6 +18198,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // The endpoint of the China (Hangzhou) region is used in this example. Specify the act
 ual endpoint.
@@ -15726,17 +18218,27 @@ from OSS. The path must include the extension of the object name. Example: abc/e
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Specify the bucket name.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Download the object.
     err = bucket.GetObjectToFile(objectName, downloadedFileName)
     if err ! = nil {
         handleError(err)
 ```
 
-List objects The following code provides an example on how to list objects in a specified bucket. By default, a maximum of 100 objects can be listed.
+`}` `}` List objects The following code provides an example on how to list objects in a specified bucket. By default, a maximum of 100 objects can be listed.
 
 ```java
 package main import (
@@ -15751,32 +18253,57 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the bucket name.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // List objects.
     marker := ""
     for {
         lsRes, err := bucket.ListObjects(oss.Marker(marker))
         if err ! = nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the listed objects. By default, 100 records are returned each time.
         for _, object := range lsRes.Objects {
             fmt.Println("Bucket: ", object.Key)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
 ```
 
-Delete objects The following code provides an example on how to delete an object:
+`}` `}` `}` Delete objects The following code provides an example on how to delete an object:
 
 ```java
 package main import (
@@ -15791,6 +18318,11 @@ package main import (
 func handleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // The endpoint of the China (Hangzhou) region is used in this example. Specify the act
 ual endpoint.
@@ -15805,15 +18337,27 @@ rom OSS. The path must include the extension of the object name. Example: abc/ef
     client, err := oss.New(endpoint, accessKeyId, accessKeySecret)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Specify the bucket name.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         handleError(err)
+```
+
+`}`
+
+```
     // Delete the object.
     err = bucket.DeleteObject(objectName)
     if err ! = nil {
         handleError(err)
 ```
+
+`}` `}`
 
 #### 2.5.5 Buckets
 
@@ -15838,6 +18382,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Create a bucket. By default, the storage class of the bucket is Standard, and the AC
 L of the bucket is private.
     err = client.CreateBucket("<yourBucketName>")
@@ -15845,6 +18394,8 @@ L of the bucket is private.
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.5.2 List buckets
 
@@ -15866,6 +18417,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List all buckets.
     marker := ""
     for {
@@ -15873,16 +18429,26 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         // By default, a maximum of 100 buckets are listed each time.
         for _, bucket := range lsRes.Buckets {
             fmt.Println("Bucket: ", bucket.Name)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
 ```
 
-List buckets whose names contain a specified prefix The following code provides an example on how to list buckets whose names contain the example prefix in all regions within the current Alibaba Cloud account:
+`}` `}` `}` List buckets whose names contain a specified prefix The following code provides an example on how to list buckets whose names contain the example prefix in all regions within the current Alibaba Cloud account:
 
 ```
 // List the buckets whose names contain a specified prefix.
@@ -15890,13 +18456,18 @@ List buckets whose names contain a specified prefix The following code provides 
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the list of buckets.
     fmt.Println("Buckets with prefix: ", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with prefix: ", bucket.Name)
 ```
 
-List buckets whose names come after a specified marker The following code provides an example on how to list buckets whose names are alphabetically after examplebucket in all regions within the current Alibaba Cloud account:
+`}` List buckets whose names come after a specified marker The following code provides an example on how to list buckets whose names are alphabetically after examplebucket in all regions within the current Alibaba Cloud account:
 
 ```
     // List buckets whose names come after the specified marker.
@@ -15904,13 +18475,18 @@ List buckets whose names come after a specified marker The following code provid
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the list of buckets.
     fmt.Println("My buckets with marker :", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with marker: ", bucket.Name)
 ```
 
-List a specified number of buckets The following code provides an example on how to list buckets that belong to the current Alibaba Cloud account in all regions and set the maximum number of buckets to 500:
+`}` List a specified number of buckets The following code provides an example on how to list buckets that belong to the current Alibaba Cloud account in all regions and set the maximum number of buckets to 500:
 
 ```
     // Set the maximum number of buckets to list each time to 500. The default value is 100
@@ -15919,11 +18495,18 @@ List a specified number of buckets The following code provides an example on how
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the list of buckets.
     fmt.Println("My buckets max num:", lsRes.Buckets)
     for _, bucket := range lsRes.Buckets {
         fmt.Println("Bucket with maxKeys: ", bucket.Name)
 ```
+
+`}`
 
 ##### 2.5.5.3 Manage bucket ACLs
 
@@ -15959,6 +18542,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Set the ACL of the bucket to public read.
     err = client.SetBucketACL("<yourBucketName>", oss.ACLPublicRead)
     if err ! = nil {
@@ -15966,7 +18554,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Query the ACL of a bucket The following code provides an example on how to query the ACL of a bucket:
+`}` `}` Query the ACL of a bucket The following code provides an example on how to query the ACL of a bucket:
 
 ```java
 package main import (
@@ -15984,13 +18572,25 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the ACL of the bucket.
     aclRes, err := client.GetBucketACL("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Bucket ACL:", aclRes.ACL)
 ```
+
+`}`
 
 ##### 2.5.5.4 Delete buckets
 
@@ -16012,12 +18612,19 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Delete the bucket.
     err = client.DeleteBucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.5.5 Manage lifecycle rules
 
@@ -16039,6 +18646,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // rule1 (id:"rule1", enable:true, prefix:"foo/", expiry:Days 3) indicates that objects
 whose names contain prefix foo/ expire three days after they are last modified.
     rule1 := oss.BuildLifecycleRuleByDays("rule1", "foo/", true, 3)
@@ -16051,7 +18663,7 @@ whose names contain prefix foo/ expire three days after they are last modified.
         os.Exit(-1)
 ```
 
-View lifecycle rules The following code provides an example on how to query the lifecycle rules configured for the bucket named examplebucket:
+`}` `}` View lifecycle rules The following code provides an example on how to query the lifecycle rules configured for the bucket named examplebucket:
 
 ```java
 package main import (
@@ -16069,16 +18681,26 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // View the lifecycle rules.
     lcRes, err := client.GetBucketLifecycle(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Lifecycle Rules:", lcRes.Rules)
 ```
 
-Delete lifecycle rules The following code provides an example on how to delete lifecycle rules configured for the bucket named examplebucket:
+`}` Delete lifecycle rules The following code provides an example on how to delete lifecycle rules configured for the bucket named examplebucket:
 
 ```java
 package main import (
@@ -16096,6 +18718,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete the lifecycle rules.
     err = client.DeleteBucketLifecycle(bucketName)
@@ -16103,6 +18730,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}`
 
 ##### 2.5.5.6 Hotlink protection
 
@@ -16124,6 +18753,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Add a Referer whitelist. Specify that an empty Referer field is not allowed. You can
 use an asterisk (*) or a question mark (?) as a wildcard to set the Referer parameter.
@@ -16136,7 +18770,7 @@ use an asterisk (*) or a question mark (?) as a wildcard to set the Referer para
         os.Exit(-1)
 ```
 
-Query hotlink protection configurations Run the following code to obtain a referer whiltelist:
+`}` `}` Query hotlink protection configurations Run the following code to obtain a referer whiltelist:
 
 ```java
 package main import (
@@ -16154,17 +18788,27 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Query hotlink protection information.
     refRes, err := client.GetBucketReferer(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Referers: ", refRes.RefererList)
     fmt.Println("AllowEmptyReferer: ", refRes.AllowEmptyReferer)
 ```
 
-Delete hotlink protection configurations Run the following code to clear a referer whitelist:
+`}` Delete hotlink protection configurations Run the following code to clear a referer whitelist:
 
 ```java
 package main import (
@@ -16182,6 +18826,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete hotlink protection configurations. // You cannot delete hotlink protection co
 nfigurations directly. To delete hotlink protection configurations, you must create a rule that allows an empty Referer field to replace the existing rule.
@@ -16217,6 +18866,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     targetBucketName := "<yourTargetBucketName>"
     targetPrefix := "<yourTargetPrefix>"
@@ -16228,7 +18882,7 @@ objects. targetPrefix specifies the prefix of the stored log objects. The log ob
         os.Exit(-1)
 ```
 
-View logging configurations Run the following code to view the access logging configurations for a bucket:
+`}` `}` View logging configurations Run the following code to view the access logging configurations for a bucket:
 
 ```java
 package main import (
@@ -16246,17 +18900,27 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // View logging configurations of the bucket.
     logRes, err := client.GetBucketLogging(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Target Bucket: ", logRes.LoggingEnabled.TargetBucket)
     fmt.Println("Target Prefix: ", logRes.LoggingEnabled.TargetPrefix)
 ```
 
-Disable logging Run the following code to disable access logging for a bucket:
+`}` Disable logging Run the following code to disable access logging for a bucket:
 
 ```java
 package main import (
@@ -16279,6 +18943,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Disable logging.
     err = client.DeleteBucketLogging(bucketName)
@@ -16286,6 +18955,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}`
 
 ##### 2.5.5.8 Static website hosting
 
@@ -16307,6 +18978,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Configure static web hosting. Set the index page to index.html and the error page to
 error.html.
@@ -16316,7 +18992,7 @@ error.html.
         os.Exit(-1)
 ```
 
-View static website hosting configurations Run the following code to view static website hosting configurations:
+`}` `}` View static website hosting configurations Run the following code to view static website hosting configurations:
 
 ```java
 package main import (
@@ -16334,17 +19010,27 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // View the static website hosting configurations.
     wsRes, err := client.GetBucketWebsite(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("indexWebsite: ", wsRes.IndexDocument.Suffix)
     fmt.Println("errorWebsite: ", wsRes.ErrorDocument.Key)
 ```
 
-Delete static website hosting configurations Run the following code to delete static website hosting configurations:
+`}` Delete static website hosting configurations Run the following code to delete static website hosting configurations:
 
 ```java
 package main import (
@@ -16362,6 +19048,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete the static website hosting configurations.
     err = client.DeleteBucketWebsite(bucketName)
@@ -16369,6 +19060,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.5.9 CORS
 
@@ -16390,6 +19083,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     rule1 := oss.CORSRule{
         AllowedOrigin: []string{"*"},
@@ -16397,12 +19095,22 @@ func main() {
         AllowedHeader: []string{},
         ExposeHeader:  []string{},
         MaxAgeSeconds: 200,
+```
+
+`}`
+
+```
     rule2 := oss.CORSRule{
         AllowedOrigin: []string{"http://www.a.com", "http://www.b.com"},
         AllowedMethod: []string{"POST"},
         AllowedHeader: []string{"Authorization"},
         ExposeHeader:  []string{"x-oss-test", "x-oss-test1"},
         MaxAgeSeconds: 100,
+```
+
+`}`
+
+```
     // Configure the CORS rules.
     err = client.SetBucketCORS(bucketName, []oss.CORSRule{rule1, rule2})
     if err ! = nil {
@@ -16410,7 +19118,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Query CORS rules Run the following code to obtain CORS rules:
+`}` `}` Query CORS rules Run the following code to obtain CORS rules:
 
 ```java
 package main import (
@@ -16428,16 +19136,26 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Query the CORS rules.
     corsRes, err := client.GetBucketCORS(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Bucket CORS:", corsRes.CORSRules)
 ```
 
-Delete CORS rules Run the following code to delete all CORS rules for the specified bucket:
+`}` Delete CORS rules Run the following code to delete all CORS rules for the specified bucket:
 
 ```java
 package main import (
@@ -16455,6 +19173,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Delete the CORS rules.
     err = client.DeleteBucketCORS(bucketName)
@@ -16462,6 +19185,8 @@ func main() {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 #### 2.5.6 Upload objects
 
@@ -16490,11 +19215,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Set the storage class to Standard. The default storage class is Standard.
     storageType := oss.ObjectStorageClass(oss.StorageStandard)
     // Set the object ACL to public read. By default, the object inherits the bucket ACL.
@@ -16507,7 +19242,7 @@ eType, objectAcl)
         os.Exit(-1)
 ```
 
-Upload a byte array The following code provides an example on how to upload a byte array:
+`}` `}` Upload a byte array The following code provides an example on how to upload a byte array:
 
 ```java
 package main import (
@@ -16526,11 +19261,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload the byte array.
     err = bucket.PutObject("<yourObjectName>", bytes.NewReader([]byte("yourObjectValueByteA
 rrary")))
@@ -16539,7 +19284,7 @@ rrary")))
         os.Exit(-1)
 ```
 
-Upload a file stream The following code provides an example on how to upload a file stream:
+`}` `}` Upload a file stream The following code provides an example on how to upload a file stream:
 
 ```java
 package main import (
@@ -16557,16 +19302,31 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Read the local file.
     fd, err := os.Open("<yourLocalFile>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer fd.Close()
     // Upload the file stream.
     err = bucket.PutObject("<yourObjectName>", fd)
@@ -16575,7 +19335,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Upload a local file
+`}` `}` Upload a local file
 
 ```java
 package main import (
@@ -16593,17 +19353,29 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload the local file.
     err = bucket.PutObjectFromFile("<yourObjectName>", "<yourLocalFile>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.6.3 Append upload
 
@@ -16632,11 +19404,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     var nextPos int64 = 0
     // If the object is appended for the first time, the append position is 0. The returned
 value is the position for the next append. The position to start the next append is the tot al length of appended bytes and the append object.
@@ -16645,16 +19427,26 @@ endValue1"), nextPos)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Start the second append.
     nextPos, err = bucket.AppendObject("<yourObjectName>", strings.NewReader("YourObjectApp
 endValue2"), nextPos)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // You can append content to an object multiple times.
 ```
 
-You can specify object metadata when you perform the first append from the position of 0. Object metadata cannot be specified during subsequent append operations.
+`}` You can specify object metadata when you perform the first append from the position of 0. Object metadata cannot be specified during subsequent append operations.
 
 ```
     // Specify the metadata of a new object when you perform the first append.
@@ -16706,11 +19498,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // The part size is 100 KB. Start resumable upload. Upload the parts by using three con
 current threads.
     // <yourObjectName> is equivalent to objectKey and indicates the complete path of the o
@@ -16722,6 +19524,8 @@ bject that you want to upload to OSS. The path must include the extension of the
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.6.5 Multipart upload
 
@@ -16743,6 +19547,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     locaFilename := "<yourLocalFilename>"
@@ -16751,6 +19560,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
     fd, err := os.Open(locaFilename)
     defer fd.Close()
@@ -16769,7 +19583,17 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         parts = append(parts, part)
+```
+
+`}`
+
+```
     // Set the object ACL to public read. By default, the object inherits the bucket ACL.
     objectAcl := oss.ObjectACL(oss.ACLPublicRead)
     // Step 3: Complete the multipart upload task. Set the object ACL to public read.
@@ -16798,16 +19622,31 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Initiate a multipart upload task.
     imur, err := bucket.InitiateMultipartUpload("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Cancel the multipart upload task.
     err = bucket.AbortMultipartUpload(imur)
     if err ! = nil {
@@ -16815,7 +19654,7 @@ func main() {
         os.Exit(-1)
 ```
 
-List uploaded parts The following code provides an example on how to list the parts that are uploaded during a specified multipart upload task:
+`}` `}` List uploaded parts The following code provides an example on how to list the parts that are uploaded during a specified multipart upload task:
 
 ```java
 package main import (
@@ -16837,6 +19676,11 @@ client err:=ossNew("<yourEndpoint>" "<yourAccessKeyId>" "<yourAccessKeySecret>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     locaFilename := "<yourLocalFilename>"
@@ -16846,6 +19690,11 @@ client err:=ossNew("<yourEndpoint>" "<yourAccessKeyId>" "<yourAccessKeySecret>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Split the local file. In this example, the local file is split into three parts.
     chunks, err := oss.SplitFileByPartNum(locaFilename, 3)
     fd, err := os.Open(locaFilename)
@@ -16857,6 +19706,11 @@ client err:=ossNew("<yourEndpoint>" "<yourAccessKeyId>" "<yourAccessKeySecret>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload the parts.
     var parts []oss.UploadPart
     for _, chunk := range chunks {
@@ -16866,14 +19720,29 @@ client err:=ossNew("<yourEndpoint>" "<yourAccessKeyId>" "<yourAccessKeySecret>")
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         fmt.Println("UploadPartNumber: ", part.PartNumber, ", ETag: ", part.ETag)
         parts = append(parts, part)
+```
+
+`}`
+
+```
     // List the uploaded parts based on the result obtained by using the InitiateMultipartU
 ploadResult operation.
     lsRes, err := bucket.ListUploadedParts(imur)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the uploaded parts.
     fmt.Println("\nParts:", lsRes.UploadedParts)
     for _, upload := range lsRes.UploadedParts {
@@ -16893,20 +19762,35 @@ teMultipartUploadResult operation. The result is generated based on the specifie
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the uploaded parts.
     fmt.Println("\nListUploadedParts by UploadID: ", uploadID)
     for _, upload := range lsRes.UploadedParts {
         fmt.Println("List PartNumber:  ", upload.PartNumber, ", ETag: " ,upload.ETag, ", La
 stModified: ", upload.LastModified)
+```
+
+`}`
+
+```
     // Complete the multipart upload task.
     cmur, err := bucket.CompleteMultipartUpload(imur, parts)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("cmur:", cmur)
 ```
 
-List multipart upload tasks You can call the `Bucket.ListMultipartUploads` method to list all ongoing multipart upload tasks that are initiated but not completed or that are canceled. The following table describes the parameters you can configure.
+`}` List multipart upload tasks You can call the `Bucket.ListMultipartUploads` method to list all ongoing multipart upload tasks that are initiated but not completed or that are canceled. The following table describes the parameters you can configure.
 
 | Parameter | Description |
 |---|---|
@@ -16942,12 +19826,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket to which to upload the object.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List all multipart upload tasks.
     keyMarker := ""
     uploadIdMarker := ""
@@ -16958,9 +19852,19 @@ arker(uploadIdMarker))
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         // Display all multipart upload tasks.
         for _, upload := range lsRes.Uploads {
             fmt.Println("Upload: ", upload.Key, ", UploadID: ",upload.UploadID)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             keyMarker = lsRes.NextKeyMarker
             uploadIdMarker = lsRes.NextUploadIDMarker
@@ -16968,7 +19872,7 @@ arker(uploadIdMarker))
             break
 ```
 
-List multipart upload tasks by specifying a prefix
+`}` `}` `}` List multipart upload tasks by specifying a prefix
 
 ```
     lsRes, err := bucket.ListMultipartUploads(oss.Prefix("<yourObjectNamePrefix>"))
@@ -16985,6 +19889,11 @@ List up to 100 multipart upload tasks
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
@@ -16996,6 +19905,11 @@ axUploads(100))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
@@ -17013,7 +19927,13 @@ package main import (
 `)`
 
 ```
-// Define a progress bar listener. type OssProgressListener struct { // Define the progress event handler. func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
+// Define a progress bar listener. type OssProgressListener struct {
+```
+
+`}`
+
+```
+// Define the progress event handler. func (listener *OssProgressListener) ProgressChanged(event *oss.ProgressEvent) {
     switch event.EventType {
     case oss.TransferStartedEvent:
         fmt.Printf("Transfer Started, ConsumedBytes: %d, TotalBytes %d.\n",
@@ -17033,12 +19953,22 @@ package main import (
         fmt.Printf("\nTransfer Failed, ConsumedBytes: %d, TotalBytes %d.\n",
             event.ConsumedBytes, event.TotalBytes)
     default:
+```
+
+`}` `}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFile := "<yourLocalFile>"
@@ -17047,6 +19977,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // View the upload progress information while you upload an object.
     err = bucket.PutObjectFromFile(objectName, localFile, oss.Progress(&OssProgressListener
 {}))
@@ -17082,16 +20017,31 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to a stream.
     body, err := bucket.GetObject("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // If you do not close the connection after it is used, connection leaks may occur. Con
 sequently, no connections are available and the program cannot run properly.
     defer body.Close()
@@ -17099,10 +20049,15 @@ sequently, no connections are available and the program cannot run properly.
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("data:", string(data))
 ```
 
-Download an object to the buffer The following code provides an example on how to download an object to the buffer:
+`}` Download an object to the buffer The following code provides an example on how to download an object to the buffer:
 
 ```java
 package main import (
@@ -17122,23 +20077,38 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to the buffer.
     body, err := bucket.GetObject("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer body.Close()
     buf := new(bytes.Buffer)
     io.Copy(buf, body)
     fmt.Println("buf:", buf)
 ```
 
-Download an object to a local file stream The following code provides an example on how to download a specified object to a local file stream:
+`}` Download an object to a local file stream The following code provides an example on how to download a specified object to a local file stream:
 
 ```java
 package main import (
@@ -17157,24 +20127,46 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to a local file stream.
     body, err := bucket.GetObject("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer body.Close()
     fd, err := os.OpenFile("LocalFile", os.O_WRONLY|os.O_CREATE, 0660)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     defer fd.Close()
     io.Copy(fd, body)
 ```
+
+`}`
 
 ##### 2.5.7.3 Range download
 
@@ -17197,11 +20189,21 @@ func main() {
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Specify the name of the bucket.
   bucket, err := client.Bucket("<yourBucketName>")
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // Query the data that is within the range from byte 15 to byte 35, which includes a tota
 l of 21 bytes.
   If the specified range is invalid, for example, the specified range includes a negative n
@@ -17210,6 +20212,11 @@ umber, or the specified value is larger than the object size, the entire object 
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   // If you do not close the connection after it is used, connection leaks may occur. Conse
 quently, no connections are available and the program cannot run properly.
   defer body.Close()
@@ -17217,10 +20224,15 @@ quently, no connections are available and the program cannot run properly.
   if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
   fmt.Println("data:", string(data))
 ```
 
-Specify an invalid range The valid range for an object whose size is 1,000 bytes is from byte 0 to byte 999. If the specified range is not within the range, the range does not take effect. Then, OSS returns the 200 HTTP status code and the data of the entire object. The following list provides examples of invalid requests and the returned results: If you set Range: bytes to 500-2000, the value at the end of the range is invalid. Then, OSS returns the 200 HTTP status code and the data of the entire object. If you set Range: bytes to 1000-2000, the value at the start of the range is invalid. Then, OSS returns the 200 HTTP status code and the data of the entire object. Compatible download If you add x-oss-range-behavior:standard to the request header, the download behavior is modified when the specified range is not within the valid range. Example: Use range download to download an object whose size is 1,000 bytes. If you set Range: bytes to 500-2000, the value at the end of the range is invalid. Then, OSS returns HTTP status code 206 and the data that is within the range from byte 500 to byte 999. If you set Range: bytes to 1000-2000, the value at the start of the range is invalid. Then, OSS returns HTTP status code 416 and error code InvalidRange. The following code provides an example on how to specify standard behaviors to download data by range:
+`}` Specify an invalid range The valid range for an object whose size is 1,000 bytes is from byte 0 to byte 999. If the specified range is not within the range, the range does not take effect. Then, OSS returns the 200 HTTP status code and the data of the entire object. The following list provides examples of invalid requests and the returned results: If you set Range: bytes to 500-2000, the value at the end of the range is invalid. Then, OSS returns the 200 HTTP status code and the data of the entire object. If you set Range: bytes to 1000-2000, the value at the start of the range is invalid. Then, OSS returns the 200 HTTP status code and the data of the entire object. Compatible download If you add x-oss-range-behavior:standard to the request header, the download behavior is modified when the specified range is not within the valid range. Example: Use range download to download an object whose size is 1,000 bytes. If you set Range: bytes to 500-2000, the value at the end of the range is invalid. Then, OSS returns HTTP status code 206 and the data that is within the range from byte 500 to byte 999. If you set Range: bytes to 1000-2000, the value at the start of the range is invalid. Then, OSS returns HTTP status code 416 and error code InvalidRange. The following code provides an example on how to specify standard behaviors to download data by range:
 
 ```java
 package main import (
@@ -17240,21 +20252,41 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Upload 1,000 bytes.
     strContent := ""
     for i := 0; i < 100; i++ {
         strContent += "abcdefghij"
+```
+
+`}`
+
+```
     fmt.Printf("content len:%d\n", len(strContent))
     // Upload a string.
     err = bucket.PutObject("<yourObjectName>", strings.NewReader(strContent))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // If you set Range: bytes to 500-2000, the value at the end of the range is invalid. O
 SS returns the 206 HTTP status code and the data that is within the range from byte 500 to byte 999.
     // If you set Range: bytes to 1000-2000, the value at the start of the range is invalid
@@ -17274,11 +20306,23 @@ sequently, no connections are available and the program cannot run properly.
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     if len(data) ! = 500 {
         fmt.Println("read data error, len:%d", len(data))
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("data:", string(data))
 ```
+
+`}`
 
 ##### 2.5.7.4 Download to local files
 
@@ -17300,17 +20344,29 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Download the object to the local file.
     err = bucket.GetObjectToFile("<yourObjectName>", "LocalFile")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}`
 
 ##### 2.5.7.5 Resumable download
 
@@ -17360,11 +20416,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Start resumable download. Download the parts by using three threads concurrently.
     // yourObjectName is equivalent to objectKey and indicates the complete path of the obj
 ect that you want to download from OSS. The path must include the extension of the object n ame. Example: abc/efg/123.jpg.
@@ -17375,6 +20441,8 @@ ss.Checkpoint(true, ""))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.7.6 Conditional download
 
@@ -17409,11 +20477,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Configure the download conditions.
     date := time.Date(2015, time.November, 10, 23, 0, 0, 0, time.UTC)
     // The object is not downloaded if it does not meet the specified conditions.
@@ -17426,6 +20504,11 @@ func main() {
     if err == nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // The object is downloaded if it meets the specified conditions.
     err = bucket.GetObjectToFile("<yourObjectName>", "LocalFile", oss.IfUnmodifiedSince(dat
 e))
@@ -17433,6 +20516,8 @@ e))
         fmt.Println("Error:", err)
         os.Exit(-1)
 ```
+
+`}` `}`
 
 ##### 2.5.7.7 Use a progress bar
 
@@ -17472,12 +20557,22 @@ type OssProgressListener struct { // Define the progress event handler. func (li
         fmt.Printf("\nTransfer Failed, ConsumedBytes: %d, TotalBytes %d.\n",
             event.ConsumedBytes, event.TotalBytes)
     default:
+```
+
+`}` `}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFile := "<yourLocalFile>"
@@ -17486,6 +20581,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // View the download progress while you download an object.
     err = bucket.GetObjectToFile(objectName, localFile, oss.Progress(&OssProgressListener{}
 ```
@@ -17496,8 +20596,15 @@ func main() {
     if err ! = nil {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Transfer Completed.")
 ```
+
+`}`
 
 #### 2.5.8 Manage objects
 
@@ -17525,18 +20632,35 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Determine whether the object exists.
     isExist, err := bucket.IsObjectExist("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Exist:", isExist)
 ```
+
+`}`
 
 ##### 2.5.8.3 Manage object ACLs
 
@@ -17567,23 +20691,45 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Configure ACL for the object.
     err = bucket.SetObjectACL("<yourObjectName>", oss.ACLPublicReadWrite)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the ACL of the object.
     aclRes, err := bucket.GetObjectACL("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object ACL:", aclRes.ACL)
 ```
+
+`}`
 
 ##### 2.5.8.4 Manage object metadata
 
@@ -17628,11 +20774,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Configure object metadata: Set the expiration time to 23:00:00, 10 January 2049 in G
 MT, ACL to public read, and MyProp to MyPropVal as user metadata.
     expires := time.Date(2049, time.January, 10, 23, 0, 0, 0, time.UTC)
@@ -17640,21 +20796,36 @@ MT, ACL to public read, and MyProp to MyPropVal as user metadata.
         oss.Expires(expires),
         oss.ObjectACL(oss.ACLPublicRead),
         oss.Meta("MyProp", "MyPropVal"),
+```
+
+`}`
+
+```
     // Use a data stream to upload the object.
     err = bucket.PutObject("<yourObjectName>", strings.NewReader("MyObjectValue"), options.
 ..)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the object metadata.
     props, err := bucket.GetObjectDetailedMeta("<yourObjectName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object Meta:", props)
 ```
 
-Modify object metadata The following code provides an example on how to modify a single or multiple object metadata parameters at a time:
+`}` Modify object metadata The following code provides an example on how to modify a single or multiple object metadata parameters at a time:
 
 ```java
 package main import (
@@ -17672,6 +20843,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
@@ -17679,28 +20855,53 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Modify a single object metadata parameter at a time.
     err = bucket.SetObjectMeta(objectName, oss.Meta("MyMeta", "MyMetaValue1"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Modify multiple object metadata parameters at a time.
     options := []oss.Option{
         oss.Meta("MyMeta", "MyMetaValue2"),
         oss.Meta("MyObjectLocation", "HangZhou"),
+```
+
+`}`
+
+```
     err = bucket.SetObjectMeta(objectName, options...)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the object metadata.
     props, err := bucket.GetObjectDetailedMeta(objectName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object Meta:", props)
 ```
 
-Obtain object metadata The following code provides an example on how to obtain object metadata:
+`}` Obtain object metadata The following code provides an example on how to obtain object metadata:
 
 ```java
 package main import (
@@ -17718,6 +20919,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
@@ -17725,13 +20931,25 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Query the object metadata.
     props, err := bucket.GetObjectDetailedMeta(objectName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Object Meta:", props)
 ```
+
+`}`
 
 ##### 2.5.8.5 List objects
 
@@ -17759,33 +20977,58 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // List all objects.
     marker := ""
     for {
         lsRes, err := bucket.ListObjects(oss.Marker(marker))
         if err ! = nil {
             HandleError(err)
+```
+
+`}`
+
+```
         // Display the listed objects. By default, a maximum of 100 records are returned ea
 ch time.
         for _, object := range lsRes.Objects {
             fmt.Println("Bucket: ", object.Key)
+```
+
+`}`
+
+```
         if lsRes.IsTruncated {
             marker = lsRes.NextMarker
         } else {
             break
 ```
 
-List a specified number of objects
+`}` `}` `}` List a specified number of objects
 
 ```java
 package main import (
@@ -17803,24 +21046,39 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Set the maximum number of objects to list and list the objects.
     lsRes, err := bucket.ListObjects(oss.MaxKeys(200))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the listed objects.
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
 ```
 
-List objects whose names contain a specified prefix
+`}` `}` List objects whose names contain a specified prefix
 
 ```java
 package main import (
@@ -17838,25 +21096,40 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names contain the specified prefix. By default, a maximum of
 100 objects are listed.
     lsRes, err := bucket.ListObjects(oss.Prefix("my-object-"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the listed objects.
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
 ```
 
-List objects whose names come after a specified marker
+`}` `}` List objects whose names come after a specified marker
 
 ```java
 package main import (
@@ -17874,25 +21147,40 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names come after the specified marker. By default, a maximum
 of 100 objects are listed.
     lsRes, err := bucket.ListObjects(oss.Marker("my-object-xx"))
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Display the listed objects.
     fmt.Println("Objects:", lsRes.Objects)
     for _, object := range lsRes.Objects {
         fmt.Println("Object:", object.Key)
 ```
 
-List all objects by page
+`}` `}` List all objects by page
 
 ```java
 package main import (
@@ -17910,12 +21198,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List all objects by page, with up to 200 objects on each page.
     marker := oss.Marker("")
     for {
@@ -17923,13 +21221,18 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if ! lsRes.IsTruncated {
             break
 ```
 
-List objects whose names come after a specified marker by page The following code provides an example on how to list the objects that follow a specified marker by page. The maximum number of objects that can be listed on each page is specified by MaxKeys.
+`}` `}` `}` List objects whose names come after a specified marker by page The following code provides an example on how to list the objects that follow a specified marker by page. The maximum number of objects that can be listed on each page is specified by MaxKeys.
 
 ```java
 package main import (
@@ -17947,12 +21250,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names come after the specified marker by page, with up to 50
 objects on each page.
     marker = oss.Marker("my-object-xx")
@@ -17961,13 +21274,18 @@ objects on each page.
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
         if ! lsRes.IsTruncated {
             break
 ```
 
-List objects whose names contain a specified prefix by page The following code provides an example on how to list the objects whose names contain a specified prefix by page. The maximum number of objects to list on each page is specified by maxKeys.
+`}` `}` `}` List objects whose names contain a specified prefix by page The following code provides an example on how to list the objects whose names contain a specified prefix by page. The maximum number of objects to list on each page is specified by maxKeys.
 
 ```java
 package main import (
@@ -17985,12 +21303,22 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List the objects whose names contain the specified prefix by page, with up to 80 obj
 ects on each page.
     prefix := oss.Prefix("my-object-")
@@ -18000,6 +21328,11 @@ ects on each page.
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lsRes.Prefix)
         marker = oss.Marker(lsRes.NextMarker)
         fmt.Println("Objects:", lsRes.Objects)
@@ -18007,7 +21340,7 @@ ects on each page.
             break
 ```
 
-List the information about the objects whose names contain a specified prefix The following code provides an example on how to list the information about the objects whose names contain a specified prefix. Such information includes the object size, the time when the object was last modified, and the object name.
+`}` `}` `}` List the information about the objects whose names contain a specified prefix The following code provides an example on how to list the information about the objects whose names contain a specified prefix. Such information includes the object size, the time when the object was last modified, and the object name.
 
 ```java
 package main import (
@@ -18025,11 +21358,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Traverse the objects.
     marker := oss.Marker("")
     prefix := oss.Prefix("<yourObjectPrefix>")
@@ -18038,15 +21381,25 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         for _, object := range lor.Objects {
             fmt.Printf("%s %d %s\n", object.LastModified, object.Size, object.Key)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if ! lor.IsTruncated {
             break
 ```
 
-List the information about the subfolders whose names contain a specified prefix The following code provides an example on how to list the information about the subfolders whose names contain a specified prefix:
+`}` `}` `}` List the information about the subfolders whose names contain a specified prefix The following code provides an example on how to list the information about the subfolders whose names contain a specified prefix:
 
 ```java
 import (
@@ -18064,11 +21417,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     marker := oss.Marker("")
     prefix := oss.Prefix("<yourDirPrefix>")
     for {
@@ -18076,13 +21439,25 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         for _, dirName := range lor.CommonPrefixes {
             fmt.Println(dirName)
+```
+
+`}`
+
+```
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if ! lor.IsTruncated {
             break
 ```
+
+`}` `}` `}`
 
 ##### 2.5.8.6 Delete objects
 
@@ -18108,6 +21483,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
@@ -18115,6 +21495,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Delete a single object. objectName indicates the full path that includes the extensi
 on of the object. Example: abc/efg/123.jpg.
     // To delete a folder, set objectName to the folder name. If the folder is not empty, y
@@ -18125,7 +21510,7 @@ ou must delete all objects from the folder before you can delete it.
         os.Exit(-1)
 ```
 
-Delete multiple objects
+`}` `}` Delete multiple objects
 
 | You can call the | Bucket.DeleteObjects |   |
 |---|---|---|
@@ -18149,17 +21534,32 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify that information of deleted objects is returned.
     delRes, err := bucket.DeleteObjects([]string{"my-object-1", "my-object-2"})
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     fmt.Println("Deleted Objects:", delRes.DeletedObjects)
     // Specify that results of delete operations are not returned.
     _, err = bucket.DeleteObjects([]string{"my-object-3", "my-object-4"},
@@ -18169,7 +21569,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Delete objects whose names contain a specified prefix The following code provides an example on how to delete objects whose names contain a specified prefix:
+`}` `}` Delete objects whose names contain a specified prefix The following code provides an example on how to delete objects whose names contain a specified prefix:
 
 ```java
 package main import (
@@ -18187,11 +21587,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify the name of the bucket.
     bucket, err := client.Bucket("<yourBucketName>")
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // List and delete objects whose names contain the specified prefix.
     marker := oss.Marker("")
     prefix := oss.Prefix("<yourObjectPrefix>")
@@ -18201,21 +21611,46 @@ func main() {
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         objects := []string{}
         for _, object := range lor.Objects {
             objects = append(objects, object.Key)
+```
+
+`}`
+
+```
         delRes, err := bucket.DeleteObjects(objects, oss.DeleteObjectsQuiet(true))
         if err ! = nil {
             fmt.Println("Error:", err)
             os.Exit(-1)
+```
+
+`}`
+
+```
         if len(delRes.DeletedObjects) > 0 {
             fmt.Println("these objects deleted failure,", delRes.DeletedObjects)
             os.Exit(-1)
+```
+
+`}`
+
+```
         count += len(objects)
         prefix = oss.Prefix(lor.Prefix)
         marker = oss.Marker(lor.NextMarker)
         if ! lor.IsTruncated {
             break
+```
+
+`}` `}`
+
+```
     fmt.Printf("success,total delete object count:%d\n", count)
 ```
 
@@ -18239,6 +21674,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     destObjectName := "<yourDestObjectName>"
@@ -18247,6 +21687,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Copy the object to another object within the bucket.
     _, err = bucket.CopyObject(objectName, destObjectName)
     if err ! = nil {
@@ -18254,7 +21699,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Copy objects across buckets You can copy objects from other buckets to the current bucket or copy objects from the current bucket to other buckets. The following code provides an example on how to copy objects across buckets:
+`}` `}` Copy objects across buckets You can copy objects from other buckets to the current bucket or copy objects from the current bucket to other buckets. The following code provides an example on how to copy objects across buckets:
 
 ```java
 package main import (
@@ -18272,6 +21717,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     srcBucketName := "<yourSrcBucketName>"
     dstBucketName := "<yourDstBucketName>"
@@ -18282,11 +21732,21 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Copy srcObjectName from srcBucketName to the current bucket.
     bucket.CopyObjectFrom(srcBucketName, srcObjectName, dstObjectName)
     if err ! = nil {
         fmt.Println("CopyObjectFrom Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Copy srcObjectName from the current bucket to dstBucketName.
     bucket.CopyObjectTo(dstBucketName, dstObjectName, srcObjectName)
     if err ! = nil {
@@ -18294,7 +21754,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Process object metadata during object copy You can use MetadataDirective to process object metadata during object copy. Valid values of MetadataDirective: oss.MetaCopy: This is the default value. Copy metadata of the source object. The metadata of the destination object is the same as the metadata of the source object. oss.MetaReplace: overwrites the source object metadata by using the specified object metadata.
+`}` `}` Process object metadata during object copy You can use MetadataDirective to process object metadata during object copy. Valid values of MetadataDirective: oss.MetaCopy: This is the default value. Copy metadata of the source object. The metadata of the destination object is the same as the metadata of the source object. oss.MetaReplace: overwrites the source object metadata by using the specified object metadata.
 
 > Not ice All metadata of the source object is overwritten if you use oss.MetaReplace. The metadata of the source object cannot be recovered. Exercise caution when you perform this operation.
 
@@ -18329,6 +21789,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     destObjectName := "<yourDestObjectName>"
@@ -18337,6 +21802,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // Specify metadata for the destination object.
     expires := time.Date(2049, time.January, 10, 23, 0, 0, 0, time.UTC)
     options := []oss.Option{
@@ -18351,7 +21821,7 @@ func main() {
         os.Exit(-1)
 ```
 
-Conditional copy OSS allows you to configure one or more conditions for object copy. If the specified conditions are met, the object can be copied. If the specified conditions are not met, an error code is returned and the object cannot be copied. The following table describes the conditions that you can configure in object copy.
+`}` `}` Conditional copy OSS allows you to configure one or more conditions for object copy. If the specified conditions are met, the object can be copied. If the specified conditions are not met, an error code is returned and the object cannot be copied. The following table describes the conditions that you can configure in object copy.
 
 | Parameter | Description |
 |---|---|
@@ -18382,6 +21852,11 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     // bucketName := "<yourBucketName>"
     // objectName := "<yourObjectName>"
     bucketName := "<yourBucketName>"
@@ -18393,18 +21868,30 @@ func main() {
     if err ! = nil {
         fmt.Println("Error:", err)
         os.Exit(-1)
+```
+
+`}`
+
+```
     date := time.Date(2011, time.November, 10, 23, 0, 0, 0, time.UTC)
     // Copy the objects that meet the specified condition.
     _, err = bucket.CopyObject(objectName, destMatchObjectName, oss.CopySourceIfModifiedSin
 ce(date))
     if err ! = nil {
         fmt.Println("CopyObject CopySourceIfModifiedSince Error:", err)
+```
+
+`}`
+
+```
     // Do not copy the objects that cannot meet the specified condition.
     _, err = bucket.CopyObject(objectName, destUnMatchObjectName, oss.CopySourceIfUnmodifie
 dSince(date))
     if err ! = nil {
         fmt.Println("CopyObject CopySourceIfUnmodifiedSince Error:", err)
 ```
+
+`}` `}`
 
 #### 2.5.9 Authorized access
 
@@ -18417,7 +21904,7 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" // After you obtain a temporary
 // Perform an operation in OSS.
 ```
 
-Use a signed URL to authorize temporary access For the complete code of using a signed URL to authorize temporary access, visit GitHub. Use a signed URL to upload an object
+`}` Use a signed URL to authorize temporary access For the complete code of using a signed URL to authorize temporary access, visit GitHub. Use a signed URL to upload an object
 
 ```java
 package main import (
@@ -18433,6 +21920,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>"
 ```
@@ -18442,6 +21934,11 @@ func main() {
 ```
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localFilename := "<yourLocalFilename>"
@@ -18449,25 +21946,52 @@ func main() {
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Upload the object by using the signed URL.
     signedURL, err := bucket.SignURL(objectName, oss.HTTPPut, 60)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     var val = "Go with Alibaba Cloud"
     err = bucket.PutObjectWithURL(signedURL, strings.NewReader(val))
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Upload the object by using the signed URL with optional parameters configured.
     options := []oss.Option{
         oss.Meta("myprop", "mypropval"),
         oss.ContentType("image/tiff"),
+```
+
+`}`
+
+```
     signedURL, err = bucket.SignURL(objectName, oss.HTTPPut, 60, options...)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     err = bucket.PutObjectFromFileWithURL(signedURL, localFilename, options...)
     if err ! = nil {
         HandleError(err)
 ```
+
+`}` `}`
 
 > Not e For more information, see Manage object metadata.
 
@@ -18487,6 +22011,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>"
 ```
@@ -18496,6 +22025,11 @@ func main() {
 ```
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     localDownloadedFilename := "<yourDownloadedFilename>"
@@ -18503,13 +22037,28 @@ func main() {
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Download the object to a stream by using the signed URL.
     signedURL, err := bucket.SignURL(objectName, oss.HTTPGet, 60)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     body, err := bucket.GetObjectWithURL(signedURL)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Read the object content.
     data, err := ioutil.ReadAll(body)
     body.Close()
@@ -18519,6 +22068,8 @@ func main() {
     if err ! = nil {
         HandleError(err)
 ```
+
+`}` `}`
 
 #### 2.5.10 IMG
 
@@ -18595,6 +22146,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>"
@@ -18605,11 +22161,21 @@ func main() {
 ```
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     ossImageName := "<yourImageName>"
     signedURL, err := bucket.SignURL(ossImageName, oss.HTTPGet, 600, oss.Process("image/f
 ormat,png"))
@@ -18619,7 +22185,7 @@ ormat,png"))
     fmt.Println(signedURL)
 ```
 
-Access by using SDKs You can use OSS SDKs to access and process image objects of any ACLs. Basic operations The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
+`}` `}` Access by using SDKs You can use OSS SDKs to access and process image objects of any ACLs. Basic operations The following code provides an example on how to perform basic IMG operations including obtaining image information, converting image formats, resizing, cropping, rotating, watermarking, and applying effects:
 
 ```java
 package main import (
@@ -18657,17 +22223,32 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret
 >")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
      HandleError(err)
+```
+
+`}`
+
+```
     // Customize the image style.
     sourceImageName := "example.png"
     targetImageName := "example-custom.png"
@@ -18677,7 +22258,7 @@ func main() {
     HandleError(err)
 ```
 
-Cascade processing
+`}` `}` Cascade processing
 
 ```java
 package main import (
@@ -18692,17 +22273,32 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret
 >")
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Obtain the bucket.
     bucketName := "<yourBucketName>"
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
     HandleError(err)
+```
+
+`}`
+
+```
     // Customize the image style.
     sourceImageName := "example.png"
     targetImageName := "example-cascade.png"
@@ -18712,7 +22308,7 @@ func main() {
      HandleError(err)
 ```
 
-Persistent storage of processed images
+`}` `}` Persistent storage of processed images
 
 ```java
 package main import (
@@ -18728,6 +22324,11 @@ package main import (
 func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
@@ -18741,6 +22342,11 @@ func main() {
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
      HandleError(err)
+```
+
+`}`
+
+```
     // Scale the image and store the processed image. By default, the processed image is st
 ored in the same bucket as the original image.
     sourceImageName := "example.png"
@@ -18753,6 +22359,11 @@ ored in the same bucket as the original image.
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Scale the image and store the processed image. The processed image is stored in the
 different bucket from the original image.
     targetBucketName := "<yourTargetBucketName>"
@@ -18765,6 +22376,11 @@ ng([]byte(targetImageName)), base64.URLEncoding.EncodeToString([]byte(targetBuck
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Crop the image and store the processed image.
     targetImageName = "example-crop.png"
     style = "image/crop,w_100,h_100,x_100,y_100,r_1"
@@ -18775,6 +22391,11 @@ byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Rotate the image and store the processed image.
     targetImageName = "example-rotate.png"
     style = "image/rotate,90"
@@ -18800,6 +22421,11 @@ byte(targetImageName)))
     HandleError(err)
     } else {
        fmt.Println(result)
+```
+
+`}`
+
+```
     // Add watermarks to the image and store the processed image.
     targetImageName = "example-watermark.png"
     style = "image/watermark,text_SGVsbG8g5Zu-54mH5pyN5YqhIQ"
@@ -18810,6 +22436,11 @@ byte(targetImageName)))
     HandleError(err)
     } else {
         fmt.Println(result)
+```
+
+`}`
+
+```
     // Convert the image format and store the processed image.
     targetImageName = "example-formatconvert.jpg"
     style = "image/format,jpg"
@@ -18822,6 +22453,8 @@ byte(targetImageName)))
         fmt.Println(result)
 ```
 
+`}` `}`
+
 #### 2.5.11 Error handling
 
 This topic describes how to handle errors when you use OSS SDK for Go. Client errors If errors occur when you use OSS SDK for Go, a unified operation used to handle errors is returned. The following code defines the error operation:
@@ -18831,7 +22464,7 @@ type error interface {
     Error() string
 ```
 
-Other specific errors are further defined based on this error operation. The following code provides an example of the operation used to handle an HTTP request error:
+`}` Other specific errors are further defined based on this error operation. The following code provides an example of the operation used to handle an HTTP request error:
 
 ```
 //net.Error type Error interface {
@@ -18840,7 +22473,7 @@ Other specific errors are further defined based on this error operation. The fol
     Temporary() bool // Is the error temporary
 ```
 
-Server errors If request errors occur when you use OSS SDK for Go, corresponding errors are returned. In case of HTTP request errors and I/O errors, errors defined in OSS SDK for Go are returned. If an error occurs when the OSS server processes a request, the following error is returned, which is an implementation of the error operation:
+`}` Server errors If request errors occur when you use OSS SDK for Go, corresponding errors are returned. In case of HTTP request errors and I/O errors, errors defined in OSS SDK for Go are returned. If an error occurs when the OSS server processes a request, the following error is returned, which is an implementation of the error operation:
 
 ```
 type ServiceError struct {
@@ -18851,7 +22484,7 @@ type ServiceError struct {
     StatusCode int       // The HTTP status code.
 ```
 
-If the HTTP status code returned by OSS is not as expected, the following error is returned, which is an implementation of the error operation:
+`}` If the HTTP status code returned by OSS is not as expected, the following error is returned, which is an implementation of the error operation:
 
 ```
 type UnexpectedStatusCodeError struct {
@@ -18859,7 +22492,7 @@ type UnexpectedStatusCodeError struct {
     got     int      // The actual HTTP status code returned by OSS.
 ```
 
-Example The following code provides an example on how to handle errors:
+`}` Example The following code provides an example on how to handle errors:
 
 ```java
 package main import (
@@ -18875,24 +22508,39 @@ package main import (
 // The function used to handle the error. func HandleError(err error) {
     fmt.Println("Error:", err)
     os.Exit(-1)
+```
+
+`}`
+
+```
 func main() {
     // Create an OSSClient instance.
     client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>")
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     bucketName := "<yourBucketName>"
     objectName := "<yourObjectName>"
     // Specify the name of the bucket.
     bucket, err := client.Bucket(bucketName)
     if err ! = nil {
         HandleError(err)
+```
+
+`}`
+
+```
     // Use simple upload to upload strings.
     err = bucket.PutObject(objectName, strings.NewReader("yourObjectValueContentString"))
     if err ! = nil {
         HandleError(err)
 ```
 
-OSS error codes The following table describes the OSS error codes.
+`}` OSS error codes The following table describes the OSS error codes.
 
 | Error code | Error message | HTTP status code |
 |---|---|---|

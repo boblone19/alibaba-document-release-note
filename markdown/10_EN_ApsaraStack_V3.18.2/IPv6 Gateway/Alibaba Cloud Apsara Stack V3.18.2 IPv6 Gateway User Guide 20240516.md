@@ -5,7 +5,7 @@ doc_version: "20240516"
 pdf_pages: 24
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 IPv6 Gateway User Guide 20240516.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/IPv6%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20IPv6%20Gateway%20User%20Guide%2020240516.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 IPv6 Gateway User Guide 20240516
@@ -101,7 +101,7 @@ If you enable IPv6 for an existing VPC, the VPC supports both IPv4 and IPv6. Ass
 
 **the Internet by using IPv6 addresses**
 
-After you enable IPv6 Internet bandwidth for the IPv6 addresses of the ECS instances in a VPC, the IPv6 addresses can be used for communication over the Internet. IPv6 traffic between the ECS instances in the VPC and the Internet passes through the IPv6 gateway. The IPv6 gateway processes inbound and outbound IPv6 traffic. way? The ECS instances in the VPC can use IPv4 addresses to communicate with the IPv4 clients over the Internet over elastic IP addresses, Server Load Balancer (SLB) instances, and NAT gateways. ... ... IPv4 Server IPv6 Ser IPv4 Client IPv6 Client IPv4 IPv4 Traffic Traffic Traffic Traffic VPC (With IPv4 NAT Gateway EIP Load balancing and IPv6 Enabled) ... ECS ECS ECS ECS ECS Instances (With IPv4 and IPv6 Enabled)
+After you enable IPv6 Internet bandwidth for the IPv6 addresses of the ECS instances in a VPC, the IPv6 addresses can be used for communication over the Internet. IPv6 traffic between the ECS instances in the VPC and the Internet passes through the IPv6 gateway. The IPv6 gateway processes inbound and outbound IPv6 traffic. way? The ECS instances in the VPC can use IPv4 addresses to communicate with the IPv4 clients over the Internet over elastic IP addresses, Server Load Balancer (SLB) instances, and NAT gateways. ... ... IPv4 Server IPv6 Ser IPv4 Client IPv6 Client IPv4 IPv4 IPv6 IPv6 Traffic Traffic Traffic Traffic VPC (With IPv4 NAT Gateway EIP Load balancing IPv6 Gateway and IPv6 Enabled) ... ECS ECS ECS ECS ECS Instances (With IPv4 and IPv6 Enabled)
 
 **Scenario 3: Configure egress-only rules to manage IPv6 traffic**
 
@@ -135,6 +135,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console 
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -279,6 +282,9 @@ Log on to the ECS instance and **ping** an IPv6 service to verify the network co
 **both IPv4 and IPv6**
 
 This topic describes how to enable both Internet Protocol version 4 (IPv4) and Internet Protocol version 6 (IPv6) for a virtual private cloud (VPC) when you create the VPC. By default, IPv4 is enabled and cannot be disabled. You can choose whether to enable IPv6.
+
+**Procedure**
+
 1. Log on to the VPC consoleLog on to the VPC console.
 2. In the top navigation bar, select the region where you want to create a VPC.
 3. On the **Virtual Private Clouds** page, click **Create VPC**.
@@ -303,6 +309,9 @@ table and click **Submit**.
 **VPC**
 
 This topic describes how to enable Internet Protocol version 6 (IPv6) for an existing virtual private cloud (VPC). After IPv6 is enabled, the system automatically creates a free IPv6 gateway for the VPC. You can use the IPv6 gateway to manage IPv6 Internet bandwidth and configure egress-only rules.
+
+**Procedure**
+
 1. Log on to the VPC consoleLog on to the VPC console.
 2. In the top navigation bar, select the region where the desired VPC is deployed.
 3. On the **Virtual Private Clouds** page, find the desired VPC and click **Enable IPv6** in the
@@ -318,6 +327,9 @@ If you do not select **Automatically turn on IPv6 function of all switches in VP
 **both IPv4 and IPv6**
 
 This topic describes how to enable both Internet Protocol version 4 (IPv4) and Internet Protocol version 6 (IPv6) for a virtual private cloud (VPC) when you create the VPC. By default, IPv4 is enabled and cannot be disabled. You can choose whether to enable IPv6.
+
+**Procedure**
+
 1. Log on to the VPC consoleLog on to the VPC console.
 2. In the top navigation bar, select the region where you want to create a VPC.
 3. On the **Virtual Private Clouds** page, click **Create VPC**.
@@ -344,6 +356,9 @@ ches
 **vSwitch**
 
 This topic describes how to enable Internet Protocol version 6 (IPv6) for an existing vSwitch. After IPv6 is enabled, the system automatically allocates an IPv6 CIDR block for the vSwitch.
+
+**Procedure**
+
 1. Log on to the Virtual Private Cloud consoleLog on to the Virtual Private Cloud console.
 2. In the left-side navigation pane, click **VSwitches**.
 3. Select the region where the desired vSwitch is deployed.
@@ -365,6 +380,9 @@ An Internet Protocol version 6 (IPv6) gateway is a device in a virtual private c
 **Prerequisites**
 
 IPv6 is enabled for the VPC for which you want to create an IPv6 gateway. For more information, see Create a VPC that supports both IPv4 and IPv6 and Enable IPv6 for an existing VPC.
+
+**Procedure**
+
 1. Log on to the VPC console.
 2. Click IPv6 Gateways in the left-side navigation pane. On the **IPv6 Gateways** page, click
 **Create IPv6 gateway**.
@@ -389,6 +407,9 @@ ys
 **about an IPv6 gateway**
 
 This topic describes how to change the name and description of an Internet Protocol version 6 (IPv6) gateway.
+
+**Procedure**
+
 1. Log on to the Virtual Private Cloud console.
 2. Click IPv6 Gateways in the left-side navigation pane. Select the region where the IPv6
 gateway resides.
@@ -405,6 +426,9 @@ This topic describes how to delete an Internet Protocol version 6 (IPv6) gateway
 **Prerequisites**
 
 Before you delete an Enterprise Edition or Enhanced Enterprise Edition IPv6 gateway, you must delete the egress-only rules configured for the IPv6 gateway. For more information, see Delete an egress-only rule.
+
+**Procedure**
+
 1. Log on to the VPC console.
 2. Click IPv6 Gateways in the left-side navigation pane. Select the region where the IPv6
 gateway resides.
@@ -426,6 +450,9 @@ This topic describes how to purchase Internet Protocol version 6 (IPv6) Internet
 **Prerequisites**
 
 An Elastic Compute Service (ECS) instance is created in a virtual private cloud (VPC). In addition, the ECS instance is assigned an IPv6 address.
+
+**Procedure**
+
 1. Log on to the VPC console.
 2. Click IPv6 Gateways in the left-side navigation pane. In the top navigation bar, select the
 region where the IPv6 gateway resides.
@@ -441,6 +468,9 @@ region where the IPv6 gateway resides.
 **bandwidth of an IPv6 gateway**
 
 This topic describes how to modify the maximum bandwidth of an Internet Protocol version 6 (IPv6) gateway. The modification takes effect immediately.
+
+**Procedure**
+
 1. Log on to the Virtual Private Cloud console.
 2. Click IPv6 Gateways in the left-side navigation pane. In the top navigation bar, select the
 region where the IPv6 gateway resides.
@@ -457,6 +487,9 @@ bandwidth
 **bandwidth**
 
 If you no longer use an Internet Protocol version 6 (IPv6) address to communicate with the Internet, you can delete the Internet bandwidth of the IPv6 address.
+
+**Procedure**
+
 1. Log on to the Virtual Private Cloud console.
 2. Click IPv6 Gateways in the left-side navigation pane. In the top navigation bar, select the
 region where the IPv6 gateway resides.
@@ -481,6 +514,9 @@ IPv6 Internet bandwidth is purchased for the IPv6 address for which you want to 
 **Background information**
 
 Free Edition IPv6 gateways do not support egress-only rules. An Enterprise Edition IPv6 gateway supports up to 50 egress-only rules. An Enhanced Enterprise Edition IPv6 gateway supports up to 200 egress-only rules.
+
+**Procedure**
+
 1. Log on to the VPC console.
 2. Click IPv6 Gateways in the left-side navigation pane. In the top navigation bar, select the
 region where the IPv6 gateway resides.
@@ -494,6 +530,9 @@ instance that uses an IPv6 address to communicate with the Internet and click **
 ### 8.2 Delete an egress-only rule
 
 This topic describes how to delete an egress-only rule. After the rule is deleted, the related Internet Protocol version 6 (IPv6) address with Internet bandwidth can be used to access the Internet, and the cloud service instance assigned the IPv6 address in the virtual private cloud (VPC) can be accessed by IPv6 clients over the Internet.
+
+**Procedure**
+
 1. Log on to the VPC console.
 2. Click IPv6 Gateways in the left-side navigation pane. In the top navigation bar, select the
 region where the desired IPv6 gateway resides.

@@ -5,7 +5,7 @@ doc_version: "20241023"
 pdf_pages: 62
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Web Application Firewall (WAF) User Guide 20241023.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20User%20Guide%2020241023.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Web Application Firewall (WAF) User Guide 20241023

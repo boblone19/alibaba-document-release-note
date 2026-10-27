@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 26
 source_pdf: "9d4261c30de1b284_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20AI%20Studio%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide 20260901
@@ -109,6 +109,9 @@ This topic describes how to log on to AI Studio OPS from the Apsara Uni-manager 
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Log on to Apsara Uni-manager Operations Console.
 i. Open your browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key.
 
@@ -135,6 +138,9 @@ iv. Click **Agree to Private Policy and Log On** .
 #### 4.2.1 Check resource pool availability
 
 This topic describes how to check the availability of an AI resource pool and add features.
+
+**Procedure**
+
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Resource Availability Check > Resource Pool**.
 The page displays the health status and the last check time of all resource pools.
@@ -155,6 +161,9 @@ You can perform the following operations on the details page.
 #### 4.2.2 Check resource group availability
 
 This topic describes how to check the availability of a resource group and add features.
+
+**Procedure**
+
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Resource Availability Check > Resource Group**.
 The page displays the health status and last check time of all resource groups.
@@ -180,6 +189,9 @@ You can perform the following operations on the details page.
 #### 4.3.1 Kubectl
 
 This section describes how to query pods in a resource pool using commands.
+
+**Procedure**
+
 1. You can log on to the AI Studio OPS console. For more information, see Log on to AI Studio
 OPS.
 2. In the left navigation pane, choose **Toolbox > Kubectl**.
@@ -192,6 +204,8 @@ Supported commands are get and describe.
 This topic describes how to manually enter chip models.
 
 > **Important:** The system presets supported chip models. You can use this feature to manually enter specific chip models.
+
+**Procedure**
 
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
 2. In the left-side navigation pane, select **Tools Box > Chip Model**.
@@ -347,6 +361,8 @@ This section describes task monitoring metrics, including how to view them and t
 
 > **Note:** The system collects metrics every 60 seconds. When a resource type supports multiple container groups, the metrics support both the task and container group dimensions.
 
+**Procedure**
+
 1. Log on to the AI Studio console.
 2. In the top menu bar, select an organization, a resource set, and a region.
 3. In the left-side navigation pane, click **Model Service** > **Online Services**.
@@ -423,6 +439,9 @@ ails
 #### 5.1.3 Gateway monitoring metrics
 
 This topic describes the metrics for gateway monitoring. It also explains how to view these metrics and what they represent.
+
+**Procedure**
+
 1. Log on to the AI Studio console.
 2. In the top menu bar, select an organization, resource set, and region.
 3. In the navigation pane on the left, click **Model Service** > **Online Services**.

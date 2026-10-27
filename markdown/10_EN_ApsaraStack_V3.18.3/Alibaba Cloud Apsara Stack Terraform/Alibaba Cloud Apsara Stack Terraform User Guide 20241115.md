@@ -5,7 +5,7 @@ doc_version: "20241115"
 pdf_pages: 229
 source_pdf: "Alibaba Cloud Apsara Stack Terraform User Guide 20241115.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/3.18.3/Alibaba%20Cloud%20Apsara%20Stack%20Terraform%20User%20Guide%2020241115.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Terraform User Guide 20241115
@@ -86,6 +86,8 @@ IaC uses code management tools such as Git to manage and track changes to the in
 **Terms**
 
 **Standard terms**
+
+**Terraform**
 
 Terraform is an open source IaC tool developed by HashiCorp. Terraform allows developers and O&M teams to define and manage the configurations of infrastructure resources such as virtual machines, storage, and network by using a declarative language. m
 

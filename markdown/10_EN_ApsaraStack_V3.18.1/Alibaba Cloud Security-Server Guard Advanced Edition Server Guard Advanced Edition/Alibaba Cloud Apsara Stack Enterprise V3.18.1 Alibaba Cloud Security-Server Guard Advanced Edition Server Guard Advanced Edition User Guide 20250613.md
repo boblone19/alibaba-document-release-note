@@ -5,7 +5,7 @@ doc_version: "20250613"
 pdf_pages: 90
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20250613.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%89%E9%AA%91%E5%A3%AB/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20User%20Guide%2020250613.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20250613
@@ -330,7 +330,11 @@ This topic describes how to view the information about the listening port on a s
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -397,6 +401,9 @@ Apsara Stack Security automatically scans software that is installed on your ser
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Linux Software** tab, view the detected Linux vulnerabilities.
@@ -438,6 +445,9 @@ Apsara Stack Security automatically checks whether the latest Microsoft updates 
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Windows System** tab, view the detected Windows system vulnerabilities.
@@ -511,6 +521,9 @@ Apsara Stack Security automatically detects vulnerabilities on servers, such as 
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Application(Urgent Vulnerability Included)** tab, view all vulnerabilities.
@@ -543,6 +556,9 @@ A vulnerability whitelist allows you to exclude vulnerabilities from the detecti
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. In the upper-right corner, click **Settings** to configure vulnerability management policies.
@@ -560,7 +576,11 @@ Select vulnerabilities in the whitelist and click **Remove** to enable the syste
 
 ##### 3.3.2.1 Baseline check overview
 
-The baseline check feature automatically checks the security configurations on servers and provides detailed check results and suggestions for baseline reinforcement. After you enable the baseline check feature, Apsara Stack Security automatically checks for risks related to the operating systems, accounts, databases, passwords, and security compliance configurations of your servers, and provides reinforcement suggestions. For more information, see Baselines. By default, a full baseline check is automatically performed from 00:00 to 06:00 every day. You can create and manage scan policies for baseline checks. When you create or modify a policy, you can specify the baselines, interval, and time period, and select the servers to which you want to apply this policy. For more information, see Add a custom baseline check policy.
+The baseline check feature automatically checks the security configurations on servers and provides detailed check results and suggestions for baseline reinforcement.
+
+**Description**
+
+After you enable the baseline check feature, Apsara Stack Security automatically checks for risks related to the operating systems, accounts, databases, passwords, and security compliance configurations of your servers, and provides reinforcement suggestions. For more information, see Baselines. By default, a full baseline check is automatically performed from 00:00 to 06:00 every day. You can create and manage scan policies for baseline checks. When you create or modify a policy, you can specify the baselines, interval, and time period, and select the servers to which you want to apply this policy. For more information, see Add a custom baseline check policy.
 
 **Precautions**
 
@@ -597,6 +617,9 @@ By default, the baseline check feature uses **default baseline check policies** 
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Baseline Check**.
 4. In the upper-right corner of the Baseline Check page, click **Manage Policies**. In the
@@ -903,6 +926,9 @@ Server Guard provides the anti-virus feature. This feature allows you to configu
 The anti-virus feature can automatically quarantine common Internet viruses, such as common trojans, ransomware, mining programs, and DDoS trojans. Apsara Stack Security experts check and verify all the automatically quarantined viruses to ensure a minimum false positive rate. If the virus blocking feature is disabled, Server Guard generates alerts when viruses are detected. You must manually manage detected viruses in Apsara Stack Security Center. We recommend that you enable the virus blocking feature to improve the security of your servers.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Defense** > **Virus Defense**.
 4. On the **Anti-virus** tab, click **Scan**.
@@ -961,6 +987,9 @@ You can add up to 10 directories that you want to protect for each server. If yo
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Defense** > **Tamper Proofing**.
 4. On the **Tamper Proofing** page, click **Add Servers for Protection**.
@@ -1501,7 +1530,11 @@ If you want to monitor the security of assets in Server Guard, you must install 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1977,7 +2010,11 @@ a. In the **Traffic Forwarding Configuration - Service CIDR Block** section, cli
 | Type | The type of the CIDR block for traffic redirection. Value values: Test and Business. |
 | Service Description | The service-related description. |
 
-After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
+After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections.
+
+**Note**
+
+In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
 
 > icon to manually refresh the check frequency for the CIDR block.
 

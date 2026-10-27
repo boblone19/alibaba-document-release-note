@@ -5,16 +5,91 @@ doc_version: "20260729"
 pdf_pages: 151
 source_pdf: "06_开发指南_enterprise-ascm-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/ros/zh/enterprise-ascm-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 资源编排 开发指南
 
-资源编排
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取公共Header参数
+  - 2.6 获取ROS的SDK
+- 3 ROS SDK for Java调用示例
+  - 3.1 快速开始
+  - 3.2 使用手册
+    - 3.2.1 安装ROS SDK for Java
+    - 3.2.2 设置身份验证凭证
+    - 3.2.3 请求连接配置
+    - 3.2.4 调用ROS SDK for Java
+    - 3.2.5 错误处理
+- 4 ROS SDK for Python调用示例
+  - 4.1 快速开始
+  - 4.2 使用手册
+    - 4.2.1 安装ROS SDK for Python
+    - 4.2.2 设置身份验证凭证
+    - 4.2.3 设置HTTPS请求
+    - 4.2.4 调用ROS SDK for Python
+    - 4.2.5 错误处理
+- 5 ROS SDK for Go调用示例
+  - 5.1 快速开始
+  - 5.2 使用手册
+    - 5.2.1 安装Go SDK核心包
+    - 5.2.2 设置身份验证凭证
+    - 5.2.3 错误处理
+    - 5.2.4 使用CommonRequest调用OpenAPI接口
+- 6 通过POP网关调用专有云API
+  - 6.1 调用前置
+  - 6.2 Java版
+  - 6.3 Go版
+  - 6.4 Python版
+- 7 API参考
+  - 7.1 API概览
+  - 7.2 调用方式
+  - 7.3 签名机制
+  - 7.4 公共参数
+  - 7.5 公共错误码
+  - 7.6 资源栈相关接口
+    - 7.6.1 CreateStack
+    - 7.6.2 ContinueCreateStack
+    - 7.6.3 UpdateStack
+    - 7.6.4 CancelUpdateStack
+    - 7.6.5 GetStack
+    - 7.6.6 DeleteStack
+    - 7.6.7 ListStacks
+    - 7.6.8 PreviewStack
+    - 7.6.9 ListStackEvents
+  - 7.7 资源相关接口
+    - 7.7.1 GetResourceTypeTemplate
+    - 7.7.2 ListStackResources
+    - 7.7.3 GetStackResource
+    - 7.7.4 GetResourceType
+  - 7.8 模板相关接口
+    - 7.8.1 ValidateTemplate
+    - 7.8.2 GetTemplate
+    - 7.8.3 DeleteTemplate
+    - 7.8.4 ListTemplates
+    - 7.8.5 CreateTemplate
+    - 7.8.6 UpdateTemplate
+    - 7.8.7 GetTemplateSummary
+  - 7.9 其他接口
+    - 7.9.1 DescribeRegions
+    - 7.9.2 SignalResource
+    - 7.9.3 ListStackOperationRisks
+  - 8.1 STS概要
+    - 8.1.1 什么是STS
+    - 8.1.2 AssumeRole
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,12 +106,11 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本单击**企业版**、**敏捷版**或**一体机**标签。
-资源编排
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公共云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
@@ -45,30 +119,33 @@ converter: line-classifier (PyMuPDF)
 **调用步骤**
 
 1. 获取AccessKey。
-获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。 资源编排
+获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取地域ID。
+获取调用时所需要的地域ID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrganiza tionList章节。 资源集ID需要通过API获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResour ceGroup章节。
 
-**说明**
-
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空。如果指定资源集，需要同时指定组织ID。
+> **说明：** 调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-`
+> `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。
+> 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。
+> 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空。如果指定资源集，需要同时指定组织ID。
+
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-资源编排
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户
+### 2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -80,26 +157,26 @@ converter: line-classifier (PyMuPDF)
 2. 输入正确的用户名及密码。
 请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 管理员强制开启MFA后的首次登录： a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b. 按照步骤2重新输入账号和密码，单击**登录**。 c. 输入6位MFA码后单击**认证**。 您已开启并绑定MFA： 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开** **启虚拟****MFA****设备》**章节。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
-**启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者服务**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者服务**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
 **背景信息**
 
-资源编排 Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
+Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
 
 **操作步骤**
 
@@ -111,17 +188,15 @@ converter: line-classifier (PyMuPDF)
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，调用时选择其中一种授权模式即可。本文将为您描述如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，验证某个请求发送者的身份。其中 AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参资源编排 Apsara Uni-manager运营控制台提供了个人账号AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足。 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，验证某个请求发送者的身份。其中 AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人账号AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足。
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -135,29 +210,26 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，然后单击**个人信息**。
 3. 在**AccessKey**区域，查看个人账号的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****AccessKey**。
 6. 在**管理****AccessKey**对话框，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何通过STS方式调用专有云的产品API。
 
 **背景信息**
 
-资源编排阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。您可以通过STS方式调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret及Security Token组成。通过STS方式调用专有
+阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。您可以通过STS方式调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret及Security Token组成。通过STS方式调用专有云的产品API时，三者缺一不可。更多信息，请参见什么是STS。
 
 **操作步骤**
 
@@ -165,9 +237,14 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，然后单击**个人信息**。 iii. 单击**查看当前角色策略**。 iv. 在**当前选择角色策略**对话框，选择组织，然后查看**RAM Role**。
 2. 获取STS AccessKey参数。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <yourRoleSessionName>：请替换为您实际的会话名称。 <yourRoleArn>：请替换为您实际的RAM Role。 <sts.aliyuncs.com> ：请替换为您实际的STS Endpoint。 资源编排
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <yourRoleSessionName>：请替换为您实际的会话名称。
+> <yourRoleArn>：请替换为您实际的RAM Role。
+> <sts.aliyuncs.com> ：请替换为您实际的STS Endpoint。
 
 ```
 public static void main(String[] args) {
@@ -191,11 +268,16 @@ public static void main(String[] args) {
 
 `//STS AccessKey`参数。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -230,17 +312,25 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey调用云产品的接口，下列代码以ROS的DescribeRegions接口为例。
-资源编排
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS AccessKey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS AccessKey Secret。 <yourStsToken>：请替换为您实际STS三元组中的Security Token。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourStsAccesskeyID>：请替换为您实际的STS AccessKey ID。
+> <yourStsAccessKeySecret>：请替换为您实际的STS AccessKey Secret。
+> <yourStsToken>：请替换为您实际STS三元组中的Security Token。
+> <yourResourceGroupID>：请替换为您实际的资源集ID。
+> <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -298,13 +388,11 @@ y ID和AccessKey Secret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-资源编排
+`}` `}`
 
-### 获取公共Header参数
+### 2.5 获取公共Header参数
 
 调用专有云API时需要提供多个Header参数。本文为您介绍这些参数的含义及其获取方式，并解释调用后的返回值。
 
@@ -346,7 +434,7 @@ y ID和AccessKey Secret。
 |---|---|
 | Department | 组织ID。 |
 
-### 获取ROS的SDK
+### 2.6 获取ROS的SDK
 
 通过POP网关调用专有云API时，需使用ROS的阿里云开发工具包（SDK）。本文为您介绍如何获取ROS的 SDK。
 
@@ -356,15 +444,17 @@ y ID和AccessKey Secret。
 | Alibaba Cloud SDK for Python | ROS SDK for Python |
 | Alibaba Cloud SDK for Go | ROS SDK for Go |
 
-资源编排例
+例
 
-## ROS SDK for Java调用示例
+## 3 ROS SDK for Java调用示例
 
-### 快速开始
+### 3.1 快速开始
+
+本文为您介绍如何获取并调用ROS SDK for Java。
 
 **环境准备**
 
-使用ROS SDK for Java前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操阿里云专有云Java SDK仅支持1.8及以上的JDK版本。
+使用ROS SDK for Java前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取ROS的Endpoint。具体操作，请参见获取ROS的SDK。 阿里云专有云Java SDK仅支持1.8及以上的JDK版本。
 
 **安装阿里云专有云Java SDK**
 
@@ -376,17 +466,19 @@ y ID和AccessKey Secret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionId>：请替换为您实际的地域ID。 <yourAccessKeyId>：请替换为您实际的AccessKey ID。 <yourAccessKeySecrect>：请替换为您实际的AccessKey Secret。 <Endpoint>：请替换为ROS Endpoint。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionId>：请替换为您实际的地域ID。
+> <yourAccessKeyId>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecrect>：请替换为您实际的AccessKey Secret。
+> <Endpoint>：请替换为ROS Endpoint。
 
 ```java
 package com.aliyun.sample; import com.aliyun.ros20190910.Client; import com.aliyun.tea.*; import com.aliyun.ros20190910.*; import com.aliyun.ros20190910.models.*; import com.aliyun.teaopenapi.*; import com.aliyun.teaopenapi.models.*; public class Sample {
     /**
 ```
 
-* 使用`AK`和`SK`初始化账号`Client`。
-*
+`*` 使用`AK`和`SK`初始化账号`Client`。 `*`
 
 ```
      * @param accessKeyId
@@ -394,7 +486,7 @@ package com.aliyun.sample; import com.aliyun.ros20190910.Client; import com.aliy
 *@returnClient
 ```
 
-资源编排例
+例
 
 ```
       @return Client
@@ -424,7 +516,11 @@ package com.aliyun.sample; import com.aliyun.ros20190910.Client; import com.aliy
 ```
         config.endpoint = "<Endpoint>";
         return new com.aliyun.ros20190910.Client(config);
-    }
+```
+
+`}`
+
+```
     public static void describeRegions(Client client) throws Exception {
         DescribeRegionsRequest describeRegionsRequest = new DescribeRegionsRequest();
 ```
@@ -432,8 +528,13 @@ package com.aliyun.sample; import com.aliyun.ros20190910.Client; import com.aliy
 `//`复制代码运行后，请自行打印`API`的返回值。
 
 ```
+        DescribeRegionsResponse resp =
 client.describeRegions(describeRegionsRequest);
-    }
+```
+
+`}`
+
+```
     public static void getStack(Client client, String stackId, String regionId) throw
 s Exception {
         GetStackRequest getStackRequest = new GetStackRequest()
@@ -446,7 +547,11 @@ s Exception {
 ```
         GetStackResponse resp = client.getStack(getStackRequest);
 com.aliyun.teaconsole.Client.log(com.aliyun.teautil.Common.toJSONString(TeaModel.buildM (resp)));
-    }
+```
+
+`}`
+
+```
     public static void deleteStack(Client client, String stackId, String regionId) th
 rows Exception {
         DeleteStackRequest deleteStackRequest = new DeleteStackRequest()
@@ -459,7 +564,11 @@ rows Exception {
 ```
         DeleteStackResponse resp = client.deleteStack(deleteStackRequest);
 com.aliyun.teaconsole.Client.log(com.aliyun.teautil.Common.toJSONString(TeaModel.buildM (resp)));
-    }
+```
+
+`}`
+
+```
     public static void main(String[] args_) throws Exception {
         java.util.List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.ros20190910.Client client = Sample.createClient();
@@ -468,7 +577,7 @@ CreateStackRequest.CreateStackRequestParameters()
                 .setParameterKey("VpcName")
 ```
 
-资源编排例
+例
 
 ```
                 .setParameterValue("TestVpc");
@@ -521,15 +630,15 @@ CreateStackRequest.CreateStackRequestParameters()
         Sample.describeRegions(client);
         Sample.getStack(client, "yourStackId", REGIONID);
         Sample.deleteStack(client, "yourStackId", REGIONID);
-    }
-}
 ```
 
-### 使用手册
+`}` `}`
 
-资源编排例
+### 3.2 使用手册
 
-#### 安装ROS SDK for Java
+例
+
+#### 3.2.1 安装ROS SDK for Java
 
 安装ROS SDK for Java时，您需要先获取ROS SDK for Java，然后添加Maven依赖。
 
@@ -556,13 +665,11 @@ CreateStackRequest.CreateStackRequestParameters()
 </dependencies>
 ```
 
-#### 设置身份验证凭证
+#### 3.2.2 设置身份验证凭证
 
-当您使用阿里云专有云SDK访问阿里云专有云服务时，需要提供授权的账号进行身份验证。本文为您介绍如目前，Java SDK支持通过AccessKey进行身份验证。具体操作，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化客户端时设置凭据。
+当您使用阿里云专有云SDK访问阿里云专有云服务时，需要提供授权的账号进行身份验证。本文为您介绍如何设置身份验证凭证。 目前，Java SDK支持通过AccessKey进行身份验证。具体操作，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化客户端时设置凭据。
 
-**警告**
-
-请确保包含AccessKey的代码不会泄露（例如：不要将代码提交到外部公开的GitHub项目），否则将会危及您的信息安全。
+> **警告：** 请确保包含AccessKey的代码不会泄露（例如：不要将代码提交到外部公开的GitHub项目），否则将会危及您的信息安全。
 
 ```java
 private static String ACCESSKEYID = "<yourAccessKeyId>"; //请替换为您实际的AccessKey ID
@@ -580,17 +687,23 @@ private static String SECRET = "<yourAccessKeySecrect>"; //请替换为您实际
 private static String REGIONID = "<yourRegionId>"; //请替换为您实际的RegionId。
 ```
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 资源编排例
+例
 
-#### 请求连接配置
+#### 3.2.3 请求连接配置
 
 本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 `//` 获取`HttpClientConfig`对象
+`//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -602,31 +715,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -650,7 +763,9 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### 调用ROS SDK for Java
+#### 3.2.4 调用ROS SDK for Java
+
+本文介绍如何调用ROS SDK for Java。
 
 **操作步骤**
 
@@ -661,7 +776,7 @@ new com.aliyun.ros20190910.Client(config)
 ```
 
 2. 创建请求。
-资源编排例请求类的命名规范为 ${apiName}Request 。其中，**${apiName}**为API名称，例如：GetStack。 在引入多个ROS SDK for Java时，有可能存在Request类同名的情况，请注意按照package区分。
+例请求类的命名规范为 ${apiName}Request 。其中，**${apiName}**为API名称，例如：GetStack。 在引入多个ROS SDK for Java时，有可能存在Request类同名的情况，请注意按照package区分。
 
 ```
 GetStackRequest getStackRequest = new GetStackRequest()
@@ -675,7 +790,7 @@ GetStackRequest getStackRequest = new GetStackRequest()
 GetStackResponse resp = client.getStack(getStackRequest); com.aliyun.teaconsole.Client.log(com.aliyun.teautil.Common.toJSONString(TeaModel.buildM (resp)));
 ```
 
-#### 错误处理
+#### 3.2.5 错误处理
 
 在使用ROS SDK for Java时，如果服务端或者SDK出错，SDK会返回服务端异常信息 （ `ServerException` ）或SDK异常信息（ `ClientException` ）。这些异常信息中包含错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要处理SDK异常信息，只需要处理服务端异常信息。 如果您需要处理SDK异常信息，可以参考如下示例编写代码：
 
@@ -704,23 +819,27 @@ try {
 }catch (ClientException e){
 ```
 
-/添加您自己的异常处理逻辑。 `//`例如：打印具体的异常信息。
+`/`添加您自己的异常处理逻辑。 `//`例如：打印具体的异常信息。
 
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-资源编排示例
+`}` 示例
 
-## ROS SDK for Python调用示例
+## 4 ROS SDK for Python调用示例
 
-### 快速开始
+### 4.1 快速开始
+
+本文为您介绍如何获取并调用ROS SDK for Python。
 
 **环境准备**
 
-使用ROS SDK for Python前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具获取ROS的Endpoint。具体操作，请参见获取ROS的Endpoint。
+使用ROS SDK for Python前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取ROS的Endpoint。具体操作，请参见获取ROS的Endpoint。
+
+**步骤一：安装ROS SDK for Python**
+
 1. 安装阿里云Python SDK核心库。
 如果您使用的是Python 2.x，执行以下命令。
 
@@ -753,11 +872,15 @@ pip3 install aliyun-python-sdk-ros
 Secret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <ros.aliyuncs.com>：请替换为您实际的产品访问地址。
 
-保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <ros.aliyuncs.com>：请替换为您实际的产品访问地址。 资源编排示例
+示例
 
 ```python
 #!/usr/bin/env python
@@ -788,11 +911,11 @@ request = ListResourceTypesRequest()
 response = clt.do_action_with_exception(request) print response
 ```
 
-### 使用手册
+### 4.2 使用手册
 
-#### 安装ROS SDK for Python
+#### 4.2.1 安装ROS SDK for Python
 
-阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上版本，您可以通过pip安装专有云Python SDK。
+本文为您介绍如何安装ROS SDK for Python。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上版本，您可以通过pip安装专有云Python SDK。
 1. 安装阿里云Python SDK核心库。
 如果您使用的是Python 2.x，执行以下命令。
 
@@ -819,25 +942,21 @@ pip install aliyun-python-sdk-ros
 pip3 install aliyun-python-sdk-ros
 ```
 
-#### 设置身份验证凭证
+#### 4.2.2 设置身份验证凭证
 
-当您使用阿里云专有云SDK访问阿里云专有云服务时，需要提供授权的账号进行身份验证。本文为您介绍如目前，ROS SDK for Python支持通过AccessKey进行身份验证。具体操作，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化客户端时设置凭据。 资源编排示例请确保包含AccessKey的代码不会泄露（例如：不要将代码提交到外部公开的GitHub项
+当您使用阿里云专有云SDK访问阿里云专有云服务时，需要提供授权的账号进行身份验证。本文为您介绍如何设置身份验证凭证。 目前，ROS SDK for Python支持通过AccessKey进行身份验证。具体操作，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化客户端时设置凭据。 示例
 
-**警告**
-
-目），否则将会危及您的信息安全。
+> **警告：** 请确保包含AccessKey的代码不会泄露（例如：不要将代码提交到外部公开的GitHub项目），否则将会危及您的信息安全。
 
 ```python
 from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, region_id, endpoint=endpoint)
 ```
 
-#### 设置HTTPS请求
+#### 4.2.3 设置HTTPS请求
 
 Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
-**说明**
-
-产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
@@ -845,13 +964,11 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 
 | 行 | python -c "import ssl" | 检查Pyth |
 |---|---|---|
-| ImportError: No module named ssl |  |  |
+| ImportError: No module named ssl |   |   |
 
-若没有OpenSSL，运行以下命令安装： `pip install pyopenssl # Python 2`使用此命令。
+运行 `python -c "import ssl"` 检查Python环境是否支持OpenSSL。运行后，如果没有出若没有OpenSSL，运行以下命令安装： `pip install pyopenssl # Python 2`使用此命令。
 
-**说明**
-
-若本地环境为Python 3，则运行 `pip3 install pyopenssl` 命令。
+> **说明：** 若本地环境为Python 3，则运行 `pip3 install pyopenssl` 命令。
 
 **设置单个请求的HTTP/HTTPS协议**
 
@@ -861,7 +978,7 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 import DescribeInstancesRequest request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -871,11 +988,11 @@ import DescribeInstancesRequest request = DescribeInstancesRequest() request.set
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-#### 调用ROS SDK for Python
+#### 4.2.4 调用ROS SDK for Python
 
-资源编排示例
+示例本文介绍如何调用ROS SDK for Python。
 
 **操作步骤**
 
@@ -903,7 +1020,7 @@ request = ListResourceTypesRequest() request.set_accept_format('json')
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### 错误处理
+#### 4.2.5 错误处理
 
 在使用ROS SDK for Python时，如果服务端或者SDK出错，SDK会返回服务端异常信息 （ `ServerException` ）或SDK异常信息（ `ClientException` ）。这些异常信息中包含错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要处理SDK异常信息，只需要处理服务端异常信息。 如果您需要处理SDK异常信息，可以参考如下示例编写代码：
 
@@ -914,8 +1031,7 @@ try:
 except ServerException as e:
 ```
 
-# 添加您自己的异常处理逻辑。
-# 例如：打印具体的异常信息。
+`#` 添加您自己的异常处理逻辑。 `#` 例如：打印具体的异常信息。
 
 ```
     print e.get_http_status()
@@ -923,17 +1039,15 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-资源编排
+## 5 ROS SDK for Go调用示例
 
-## ROS SDK for Go调用示例
-
-### 快速开始
+### 5.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可使用。本文为您介绍如何获取并调用ROS SDK for Go。
 
 **环境准备**
 
-使用ROS SDK for Go前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操获取ROS的Endpoint。具体操作，请参见获取ROS的Endpoint。
+使用ROS SDK for Go前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体操作，请参见获取AccessKey。 获取ROS的Endpoint。具体操作，请参见获取ROS的Endpoint。
 
 **步骤一：安装阿里云Go SDK核心包**
 
@@ -948,11 +1062,13 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化客户端实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <Endpoint>：请替换为ROS Endpoint。 资源编排
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <Endpoint>：请替换为ROS Endpoint。
 
 ```java
 package main import (
@@ -961,7 +1077,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -979,10 +1095,9 @@ func main() {
 
 ```
         panic(err)
-    }
 ```
 
-`//`创建`API`请求并设置参数。
+`}` `//`创建`API`请求并设置参数。
 
 ```
     request := requests.NewCommonRequest()
@@ -990,50 +1105,51 @@ func main() {
     request.Scheme = "https" // https | http
     request.Domain = "ros.aliyuncs.com"
     request.Version = "2019-09-10"
+   request.ApiName = "GetStack"
     request.QueryParams["RegionId"] = "<yourRegionID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-     }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 4. （可选）切换HTTP/HTTPS协议。
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### 使用手册
+### 5.2 使用手册
 
-#### 安装Go SDK核心包
+#### 5.2.1 安装Go SDK核心包
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### 设置身份验证凭证
+#### 5.2.2 设置身份验证凭证
 
-当您使用阿里云专有云SDK访问阿里云专有云服务时，需要提供授权的账号进行身份验证。本文为您介绍如目前，ROS SDK for Go支持通过AccessKey进行身份验证。具体操作，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化客户端时设置凭据。 资源编排请确保包含AccessKey的代码不会泄露（例如：不要将代码提交到外部公开的GitHub项
+当您使用阿里云专有云SDK访问阿里云专有云服务时，需要提供授权的账号进行身份验证。本文为您介绍如何设置身份验证凭证。 目前，ROS SDK for Go支持通过AccessKey进行身份验证。具体操作，请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化客户端时设置凭据。
 
-**警告**
+> **警告：** 请确保包含AccessKey的代码不会泄露（例如：不要将代码提交到外部公开的GitHub项目），否则将会危及您的信息安全。
 
-目），否则将会危及您的信息安全。 `//` 初始化客户端实例。
+`//` 初始化客户端实例。
 
 ```
 client, err := sdk.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<your AccessKeySecret>")
 ```
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-留。
-
-#### 错误处理
+#### 5.2.3 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准错误接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
@@ -1049,8 +1165,9 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
@@ -1058,13 +1175,11 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 | 您可以通过以下代码来获取并判断ROS | ClientError | 中的错误信息： |
 |---|---|---|
-| client, err := sdk.NewClientWithAccessKey("cn-hangzhou-ste4-d01", "<accessKeyId>", "<ac cessSecret>") if clientError, ok := err.(*errors.ClientError); ok{ //获取错误码。 clientError.ErrorCode() //获取错误描述。 clientError.Message() //获取原始错误。 clientError.OriginError() } |  |  |
+| client, err := sdk.NewClientWithAccessKey("cn-hangzhou-ste4-d01", "<accessKeyId>", "<ac cessSecret>") if clientError, ok := err.(*errors.ClientError); ok{ //获取错误码。 clientError.ErrorCode() //获取错误描述。 clientError.Message() //获取原始错误。 clientError.OriginError() } |   |   |
 
-资源编排
-
-| 说明使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参见以下代码： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" //新增错误包。 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 说明使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参见以下代码： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" //新增错误包。 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 **ServerError**
 
@@ -1072,19 +1187,25 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 | 您可以通过以下代码来获取并判断ROS | ServerError | 以及Response中的错误信息： |
 |---|---|---|
-| response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{ //获取错误码。 serverError.ErrorCode() //获取错误描述。 serverError.Message() //获取原始HTTP应答。 response.GetOriginHttpResponse() } |  |  |
+| response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{ //获取错误码。 serverError.ErrorCode() //获取错误描述。 serverError.Message() //获取原始HTTP应答。 response.GetOriginHttpResponse() } |   |   |
 
-| 说明使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参见以下代码： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" //新增错误包。 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 说明使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参见以下代码： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" //新增错误包。 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
-#### 使用CommonRequest调用OpenAPI接口
+#### 5.2.4 使用CommonRequest调用OpenAPI接口
 
-当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求参数和返回值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意OpenAPI 接口的调用。 资源编排以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求参数和返回值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意OpenAPI 接口的调用。 以下代码为调用ROS的GetStack接口获取资源栈详情的示例。
 
-**说明**
-
-留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <ros.aliyuncs.com>：请替换为您实际的产品访问地址。 <yourSecurityToken>：请替换为您实际的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。 资源编排
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <ros.aliyuncs.com>：请替换为您实际的产品访问地址。
+> <yourSecurityToken>：请替换为您实际的SecurityToken。
+> <yourResourceGroupID>：请替换为您实际的资源集ID。
+> <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```java
 package main import (
@@ -1093,7 +1214,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1105,7 +1226,11 @@ func main() {
 ```
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
 ```
@@ -1116,7 +1241,13 @@ func main() {
     request.Version = "2019-09-10"
 ```
 
-`//`因为是`RPC`接口，所以需指定`API`名称。 `//`业务参数。
+`//`因为是`RPC`接口，所以需指定`API`名称。
+
+```
+    request.ApiName = "GetStack"
+```
+
+`//`业务参数。
 
 ```
     request.QueryParams["RegionId"] = "<yourRegionID>"
@@ -1152,16 +1283,19 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-资源编排
+`}`
 
-## 通过POP网关调用专有云API
+```
+    fmt.Print(response.GetHttpContentString())
+```
 
-### 调用前置
+`}`
+
+## 6 通过POP网关调用专有云API
+
+### 6.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -1185,7 +1319,6 @@ func main() {
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。 您也可以自行获取Endpoint，本文以API网关为例为您介绍获取云产品业务域Endpoint的方法。
 1. 登录Apsara Uni-manager运维控制台。
-资源编排
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在服务注册变量大盘页面，单击**高级筛选**。
@@ -1197,9 +1330,9 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见获取公共Header参数。
 
-### Java版
+### 6.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -1221,7 +1354,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     public static void main(String[] args) {
 ```
 
-`//` 创建`DefaultAcsClient`实例并初始化。 资源编排
+`//` 创建`DefaultAcsClient`实例并初始化。
 
 ```xml
         DefaultProfile profile = DefaultProfile.getProfile("<your-regionid>", "
@@ -1312,13 +1445,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -1338,29 +1471,20 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-资源编排
+`}` `}` `}`
 
-```
-        }
-    }
-}
-```
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置：
 
-**重要**
-
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置： Java
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-`//` 设置不校验服务端证书
+> `//` 设置不校验服务端证书 `clientConfig.setIgnoreSSLCerts(true)`
 
-```
-clientConfig.setIgnoreSSLCerts(true)
-```
-
-### Go版
+### 6.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -1379,7 +1503,7 @@ clientConfig.setIgnoreSSLCerts(true)
 
 **CommonRequest调用示例**
 
-调用示例接口信息：产品（ROS）、接口（ListStacks）、版本（2019-09-10）。 示例代码如下： 资源编排
+调用示例接口信息：产品（ROS）、接口（ListStacks）、版本（2019-09-10）。 示例代码如下：
 
 ```java
 package main import (
@@ -1388,7 +1512,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1402,6 +1526,7 @@ cessKey Secret>")
 ```
     request.Product = "ROS"
     request.Version = "2019-09-10"
+    request.ApiName = "ListStacks"
 ```
 
 `//` 云产品的`Endpoint`地址
@@ -1447,37 +1572,41 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 资源编排
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下：
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -1495,9 +1624,9 @@ client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpPro
 
 **设置**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。 `//` 设置请求 `HTTPSInsecure`（只影响当前）
+`//` 设置请求 `HTTPSInsecure`（只影响当前）
 
 ```
 request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure := request.GetHTTPSInsecure() // 获取请求 HTTPSInsecure
@@ -1509,9 +1638,7 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-资源编排
-
-### Python版
+### 6.4 Python版
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -1536,7 +1663,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -1545,13 +1672,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# client和`https`或`http`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `# client`和`https`或`http`一起使用
 
 ```python
 # client.set_verify(False)
@@ -1560,13 +1681,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -1576,50 +1697,54 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-# 非必填，资源集`ID`
-资源编排
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2019-09-10")
+    request.set_action_name("ListStacks")
     request.set_endpoint("<ROSEndpoint>")   //ROSEndpoint请替换为真实地址
     request.set_product("ROS")
     request.set_method("POST")
 ```
 
-# 设置请求协议类型
+`#` 设置请求协议类型
 
 ```
     request.set_protocol_type('http')
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -1631,14 +1756,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -1657,26 +1781,23 @@ from aliyunsdkros.request.v20190910.ListStacksRequest import ListStacksRequest f
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
-request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
+request = ListStacksRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
-
-资源编排
 
 **忽略证书**
 
-**重要**
-
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -1686,13 +1807,15 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-) 资源编排
+`)`
 
-## API参考
+## 7 API参考
 
-### API概览
+### 7.1 API概览
 
 资源编排服务ROS（Resource Orchestration Service）提供以下API接口。
+
+**资源栈相关接口**
 
 | API | 描述 |
 |---|---|
@@ -1706,12 +1829,16 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | PreviewStack | 调用PreviewStack接口预览指定模板将要创建的资源栈信息。 |
 | ListStackEvents | 调用ListStackEvents接口查询资源栈及栈内资源的事件。 |
 
+**资源相关接口**
+
 | API | 描述 |
 |---|---|
 | GetResourceTypeTemplate | 调用GetResourceTypeTemplate接口根据资源类型查询该资源的模板。 |
 | ListStackResources | 调用ListStackResources接口查询某个资源栈的资源列表。 |
 | GetStackResource | 调用GetStackResource接口查询某个资源栈的资源。 |
 | GetResourceType | 调用GetResourceType接口查询资源类型的详细信息。 |
+
+**模板相关接口**
 
 | API | 描述 |
 |---|---|
@@ -1722,12 +1849,10 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | CreateTemplate | 调用CreateTemplate接口创建自定义模板。 |
 | UpdateTemplate | 调用UpdateTemplate接口更新模板。 |
 
-资源编排
-
 | GetTemplateSummary | 调用GetTemplateSummary接口获取新模板或者现有模板的信息。 |
 |---|---|
 
-### 其他接口
+**其他接口**
 
 | API | 描述 |
 |---|---|
@@ -1735,7 +1860,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | SignalResource | 调用SignalResource接口发送信号。 |
 | ListStackOperationRisks | 调用ListStackOperationRisks接口检测删除资源栈操作可能涉及的高风险资源，并返回每个资源对应的风险原因。 |
 
-### 调用方式
+### 7.2 调用方式
 
 资源编排服务ROS（Resource Orchestration Service）接口调用是向ROS API的服务端地址发送HTTPS GET或POST请求。您需要按照接口说明在请求中加入相应请求参数，调用后系统会返回处理结果。请求及返回结果都使用UTF-8字符集进行编码。
 
@@ -1757,13 +1882,15 @@ https://Endpoint/?Action=xx&Parameters
 
 **请求示例**
 
+调用ListStacks接口查询资源栈列表的示例如下。
+
 ```
-&RegionId=cn-hangzhou-180e-d01 &Format=JSON &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &Timestamp=2020-06-01T12:00:00Z
+https://ros.aliyuncs.com/?Action=ListStacks &RegionId=cn-hangzhou-180e-d01 &Format=JSON &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &Timestamp=2020-06-01T12:00:00Z
 ```
 
-… 资源编排
+…
 
-### 签名机制
+### 7.3 签名机制
 
 为保证API的安全调用，在调用API时阿里云会对每个API请求通过签名（Signature）进行身份验证。无论使用HTTP还是HTTPS协议提交请求，都需要在请求中包含签名信息。
 
@@ -1790,11 +1917,11 @@ Signature = Base64( HMAC-SHA1( AccessKey Secret, UTF-8-Encoding-Of(StringToSign)
 **步骤一：构造待签名字符串**
 
 1. 使用请求参数构造规范化的请求字符串（Canonicalized Query String）。
-i. 按照参数名称的字典顺序对请求中所有的请求参数（包括公共请求参数和接口的自定义参数，但不包括公共请求参数中的Signature参数）进行排序。 当使用GET方法提交请求时，这些参数就是请求URI中的参数部分，即URI中“?”之后
+i. 按照参数名称的字典顺序对请求中所有的请求参数（包括公共请求参数和接口的自定义参数，但不包括公共请求参数中的Signature参数）进行排序。
 
-**说明**
+> **说明：** 当使用GET方法提交请求时，这些参数就是请求URI中的参数部分，即URI中“?”之后由“&”连接的部分。
 
-由“&”连接的部分。 资源编排 ii. 对排序之后的请求参数的名称和值分别用UTF-8字符集进行URL编码。编码规则请参考下表。
+ii. 对排序之后的请求参数的名称和值分别用UTF-8字符集进行URL编码。编码规则请参考下表。
 
 | 字符 | 编码方式 |
 |---|---|
@@ -1803,7 +1930,7 @@ i. 按照参数名称的字典顺序对请求中所有的请求参数（包括�
 | 扩展的UTF-8字符 | 编码成 %XY%ZA… 的格式。 |
 | 英文空格 | 编码成 %20 ，而不是加号（+）。 该编码方式和一般采用的 application/x-www-form- urlencoded MIME格式编码算法（例如Java标准库中的 java.net.URLEncoder 的实现）存在区别。编码时可以先用标准库的方式进行编码，然后把编码后的字符串中的加号（+）替换成 %20 ，星号（*）替换成 %2A ， %7E 替换回波浪号（~），即可得到上述规则描述的编码字符串。本算法可以用下面的 percentEncode 方法来实现： private static final String ENCODING = "UTF-8"; private static String percentEncode(String value) throws UnsupportedEncodingException { return value != null ? URLEncoder.encode(value, ENCODING).replace("+", "%20").replace("*", "%2A").replace("%7E", "~") : null; } |
 
-|  | urlencoded |  |
+|   | urlencoded |   |
 |---|---|---|
 
 iii. 将编码后的参数名称和值用英文等号（=）进行连接。 iv. 将等号连接得到的参数组合按步骤i排好的顺序依次使用“&”符号连接，即得到规范化请求字符串。
@@ -1825,18 +1952,13 @@ StringToSign=
 **步骤二：计算签名值**
 
 1. 按照RFC2104的定义，计算待签名字符串（StringToSign）的HMAC值。
-计算签名时使用的Key就是您持有的AccessKey Secret并加上一个“&”字符
 
-**说明**
+> **说明：** 计算签名时使用的Key就是您持有的AccessKey Secret并加上一个“&”字符 （ASCII:38）, 使用的哈希算法是SHA1。
 
-（ASCII:38）, 使用的哈希算法是SHA1。
 2. 按照Base64编码规则把上面的HMAC值编码成字符串，即得到签名值（Signature）。
 3. 将得到的签名值作为**Signature**参数添加到请求参数中。
-资源编排得到的签名值在作为最后的请求参数值提交时要和其它参数一样，按照RFC3986的规则
 
-**说明**
-
-进行URL编码。
+> **说明：** 得到的签名值在作为最后的请求参数值提交时要和其它参数一样，按照RFC3986的规则进行URL编码。
 
 **示例**
 
@@ -1853,10 +1975,10 @@ http://ros.aliyuncs.com/?Timestamp=2019-08- 23T12%3A46%3A24Z&Format=XML&AccessKe
 GET&%2F&AccessKeyId%3Dtestid%26Action%3DDescribeRegions%26Format%3DXML%26SignatureMetho 3DHMAC-SHA1%26SignatureNonce%3D3ee8c1b8-83d3-44af-a94f- 4e0ad82fd6cf%26SignatureVersion%3D1.0%26Timestamp%3D2019-08- 23T12%253A46%253A24Z%26Version%3D2019-09-10
 ```
 
-| 值。因为 | AccessKeySecret=testsecret |  |
+| 值。因为 | AccessKeySecret=testsecret |   |
 |---|---|---|
-| OLeaidS1JvxuMvnyHOwuJ+uX5qY= |  |  |
-|  |  | 。示例 |
+| OLeaidS1JvxuMvnyHOwuJ+uX5qY= |   |   |
+|   |   | 。示例 |
 
 ```
 Signature = Base64( HMAC-SHA1( AccessSecret, UTF-8-Encoding-Of(StringToSign) ) )
@@ -1870,7 +1992,7 @@ http://ros.aliyuncs.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML
 
 通过以上URL，您可以使用浏览器、curl或者wget等工具发起HTTP请求调用 `DescribeRegions` ，查看阿里云的地域列表。
 
-### 公共参数
+### 7.4 公共参数
 
 公共参数分为公共请求参数和公共返回参数。
 
@@ -1880,8 +2002,6 @@ http://ros.aliyuncs.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML
 |---|---|---|---|
 | Format | String | 否 | 返回消息的格式。取值： JSON（默认值） XML |
 | Version | String | 是 | API版本号，使用YYYY- MM-DD日期格式。取值：2019-09-10。 |
-
-资源编排
 
 | AccessKeyId | String | 是 | 访问密钥ID。由阿里云颁发给用户，用于API调用时的身份验证。 |
 |---|---|---|---|
@@ -1899,32 +2019,29 @@ https://ros.aliyuncs.com/?Action=XXXXXX &Format=xml &Version=2019-09-10 &Signatu
 
 **公共返回参数**
 
-API返回结果采用统一格式，调用成功返回的数据格式有XML和JSON两种，可以在发送请求时指定返回的数据格式，默认为JSON格式。每次接口调用，无论成功与否，系统都会返回一个唯一识别码**RequestId**。 返回 `2xx` HTTP状态码表示调用成功。 返回 `4xx` 或 `5xx` HTTP状态码表示调用失败。 公共返回参数示例如下： XML格式资源编排
+API返回结果采用统一格式，调用成功返回的数据格式有XML和JSON两种，可以在发送请求时指定返回的数据格式，默认为JSON格式。每次接口调用，无论成功与否，系统都会返回一个唯一识别码**RequestId**。 返回 `2xx` HTTP状态码表示调用成功。 返回 `4xx` 或 `5xx` HTTP状态码表示调用失败。 公共返回参数示例如下： XML格式
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!--结果的根结点`-->` <接口名称`+Response>` <!--返回请求标签`-->`
+<!--结果的根结点`-->` `<`接口名称`+Response>` <!--返回请求标签`-->`
 
 ```xml
         <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
 ```
 
-<!--返回结果数据`-->` `</`接口名称`+Response>` JSON格式
+<!--返回结果数据`-->` `</`接口名称`+Response>` JSON格式 `{`
 
 ```json
-{
     "RequestId":"4C467B38-3910-447D-87BC-AC049166F216"
 ```
 
-`/*`返回结果数据`*/`
+`/*`返回结果数据`*/` `}`
 
-```
-}
-```
+### 7.5 公共错误码
 
-### 公共错误码
+公共错误码分为客户端错误码和服务端错误码。
 
 **客户端错误码**
 
@@ -1932,17 +2049,15 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 |---|---|---|---|
 | UnknownError | The request processing has failed due to some unknown error. | 400 | 客户端出现非服务端原因的未知错误。 |
 | MissingParameter | The input parameter {name} should be specified. | 400 | 缺少参数，name为参数名。 |
-|  | One of the input parameters {names} should be specified. | 400 | 缺少参数，必须指定多个参数中的一个。names为相关的参数的列表。 |
-|  | The input parameter {name} should be specified, {reason}. | 400 | 缺少参数，name为参数名，reason为原因。 |
+|   | One of the input parameters {names} should be specified. | 400 | 缺少参数，必须指定多个参数中的一个。names为相关的参数的列表。 |
+|   | The input parameter {name} should be specified, {reason}. | 400 | 缺少参数，name为参数名，reason为原因。 |
 | InvalidParameter | The specified parameter {name} is invalid. | 400 | 无效参数，name为参数名。 |
-|  | The specified parameter {name} is invalid, {reason}. | 400 | 无效参数，name为参数名，reason为原因。 |
+|   | The specified parameter {name} is invalid, {reason}. | 400 | 无效参数，name为参数名，reason为原因。 |
 | MultipleParameter | Only one of the input parameters {names} can be specified. | 400 | 指定参数过多，只能指定多个参数中的一个。names为相关的参数的列表。 |
 | InvalidIdempotence Parameter | The specified parameters are different from before. | 400 | 幂等token相同但是参数不同。 |
 | LastTokenProcessin g | The last token request is processing. | 400 | 正在处理上一条令牌请求，请您稍后再试。 |
 | Invalid | Data supplied was not valid: {reason}. | 400 | 无效值，reason为原因。 |
 | InvalidValue | {reason}. | 400 | 无效值，reason为原因。 |
-
-资源编排
 
 | RequestLimitExcee ded | Request limit exceeded: {reason}. | 400 | 请求包含超过限制的内容，reason为原因。部分限制可通过调整配额改变。 |
 |---|---|---|---|
@@ -1950,7 +2065,7 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | MismatchNextToke n | {name} mismatches next token. | 400 | NextToken不匹配，name为不匹配项。 |
 | AssumeRoleFailure | Fail to assume role {name}: {reason} | 400 | ROS获取一个扮演该角色的临时身份失败。name为RAM角色名，reason为原因。 |
 | Forbidden | You are not authorized to complete this action. | 403 | 您无权完成此操作。 |
-|  | A required authorization for the specified action {api} is not supplied. Code: {code} RequestId: {request id} _ | 403 | 用户没有授权ROS调用接口。api 为接口名，code为错误码，request id为请求ID。 _ |
+|   | A required authorization for the specified action {api} is not supplied. Code: {code} RequestId: {request id} _ | 403 | 用户没有授权ROS调用接口。api 为接口名，code为错误码，request id为请求ID。 _ |
 | AccountTypeNotSu pported | Account type not supported. | 403 | 账号类型不支持。 |
 | NotFound | {reason}. | 404 | 请求包含不存在的内容，reason 为原因。 |
 
@@ -1961,17 +2076,17 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | InternalError | Server error. | 500 | 内部错误。 |
 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | 503 | 服务器故障，请重试。如果多次尝试失败，请提交工单。 |
 
-### 资源栈相关接口
+### 7.6 资源栈相关接口
 
-#### CreateStack
+#### 7.6.1 CreateStack
+
+调用CreateStack接口创建资源栈。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateStack | 要执行的操作，取值：CreateStack。 |
-
-资源编排
 
 | Parameters.N.Pa rameterKey | String | 是 | InstanceId | 参数名称。 如果未指定参数的名称和取值，ROS将使用模板中指定的默认值。 N最大值为：200。 说明 Parameters为可选参数。 如果需要指定Parameters， 则 Parameters.N.Parameter Key和 Parameters.N.Parameter Value必须同时指定。 |
 |---|---|---|---|---|
@@ -1981,8 +2096,6 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | DisableRollback | Boolean | 否 | false | 当创建资源栈失败时，是否禁用回滚策略。 取值： true：禁用回滚，即在创建资源栈失败时不进行回滚。 false（默认值）：不禁用回滚，即在创建资源栈失败时进行回滚。 |
 | TemplateBody | String | 否 | { "ROSTemplateF ormatVersion": "2015-09-01" } | 模板主体的结构。长度为1~524,288个字节。如果长度较大，则建议通过HTTP POST+Body Param的方式，将参数放在请求体中进行传递，避免因URL过长而导致请求失败。 说明您必须指定参数 TemplateBody或TemplateURL， 但不能同时指定。 |
 
-资源编排
-
 | StackPolicyURL | String | 否 | oss://ros-stack- policy/demo | 包含资源栈策略的文件的位置。 URL必须指向位于Web服务器（HTTP或HTTPS） 或阿里云OSS存储桶（例如： oss://ros/stack-policy/demo、 oss://ros/stack-policy/demo? RegionId=cn-hangzhou）中的策略，策略文件最大长度为16,384个字节。 如未指定OSS地域，默认与接口参数RegionId相同。 说明您必须指定参数 StackPolicyBody或 StackPolicyURL，但不能同时指定。 URL最大长度为1350个字节。 |
 |---|---|---|---|---|
 | TimeoutInMinute s | Long | 否 | 10 | 创建资源栈的超时时间。 默认值：60。 单位：分钟。 |
@@ -1990,12 +2103,8 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 保证请求的幂等性。该值由客户端生成， 并且必须是全局唯一的。 长度不超过64个字符，可包含英文字母、 数字、短划线（-）和下划线（ ）。 _ |
 | TemplateURL | String | 否 | oss://ros- template/demo | 包含模板主体的文件的位置。URL必须指向位于HTTP Web服务器（HTTP或 HTTPS）或阿里云OSS存储桶中的模板 （1~524,288个字节）。OSS存储桶的 URL例如oss://ros/template/demo或 oss://ros/template/demo? RegionId=cn-hangzhou。如未指定OSS 地域，默认与接口参数RegionId相同。 说明您必须指定 TemplateBody或TemplateURL参数，但不能同时指定。 |
 
-资源编排
-
 | NotificationURLs .N | RepeatL ist | 否 | http://my- site.com/ros- event | 接收资源栈事件的URL回调地址。目前仅支持HTTP POST。 N最大值：5。 每个URL的最大长度：1024个字节。 资源栈的状态发生变化时，会进行通知。 当资源栈启用回滚时，CREATE FAILED（创建失败）和 _ UPDATE FAILED（更新失败）不会通 _ 知，而CREATE ROLLBACK（创建失败回 _ 滚）和ROLLBACK（更新失败回滚）会进行通知。 说明 IN PROGRESS状态不 _ 会通知。 无论资源栈是否定义了Outputs都会进行通知。通知内容示例如下： { "Outputs": [ { "Description": "No description given", "OutputKey": "InstanceId", "OutputValue": "i-xxx" } ], "StackId": "80bd6b6c- e888-4573-ae3b- 93d29113****", "StackName": "test- notification-url", "Status": "CREATE COMPLETE" _ } |
 |---|---|---|---|---|
-
-资源编排
 
 | RamRoleName | String | 否 | test-role | RAM角色名称。ROS会扮演该角色创建资源栈，使用角色的凭证代表用户进行接口调用。 ROS始终将此角色用于资源栈上将进行的操作。只要用户有权在资源栈上进行操作，即使用户无权使用角色，ROS也会使用此角色，确保角色授予最少的权限。 如果用户未指定该值，ROS将使用以前与资源栈关联的角色。如果没有可用角色，ROS将使用从您的用户凭证中生成的临时凭证。 RAM角色名称最大长度为64个字符。 |
 |---|---|---|---|---|
@@ -2011,27 +2120,29 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 
 **示例**
 
-请求示例资源编排
+请求示例
 
 ```
-&RegionId=cn-hangzhou &StackName=MyStack &Parameters.1.ParameterKey=InstanceId &Parameters.1.ParameterValue=i-xxxxxx &TimeoutInMinutes=10
+http(s)://ros.aliyuncs.com/?Action=CreateStack &RegionId=cn-hangzhou &StackName=MyStack &Parameters.1.ParameterKey=InstanceId &Parameters.1.ParameterValue=i-xxxxxx &TimeoutInMinutes=10
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateStackResponse>
           <StackId>4a6c9851-3b0f-4f5f-b4ca-a14bf691****</StackId>
           <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</CreateStackResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "StackId": "4a6c9851-3b0f-4f5f-b4ca-a14bf691****",
     "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`}`
 
 | 错误代码 | 错误信息 | Http状态码 | 描述 |
 |---|---|---|---|
@@ -2042,8 +2153,6 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | InvalidTemplateRefere nce | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | 模板包含不正确的引用，name为引用名，referencer为引用者。 |
 | InvalidTemplateSectio n | The template section is invalid: {section}. | 400 | 模板包含无效的字段，section为字段名。 |
 
-资源编排
-
 | InvalidTemplateVersio n | The template version is invalid: {reason}. | 400 | 模板版本不正确，reason 为具体原因。 |
 |---|---|---|---|
 | StackValidationFailed | {reason}. | 400 | 资源栈校验失败，reason 为具体原因。 |
@@ -2052,7 +2161,9 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | 409 | 资源栈在变更中，name 为资源栈名称或 ID，action为变更操作。 |
 | StackExists | The Stack ({name}) already exists. | 409 | 同名资源栈已存在，name为资源栈名称。 |
 
-#### ContinueCreateStack
+#### 7.6.2 ContinueCreateStack
+
+资源栈创建失败后，调用ContinueCreateStack接口重新创建资源栈。
 
 **请求参数**
 
@@ -2062,20 +2173,14 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 | Parameters.N.Pa rameterKey | String | 是 | Amount | 覆盖的模板参数的名称。如果未指定特定参数的名称和值，ROS将使用上一次创建时的取值。N的最大值为200。 说明仅在Mode为Recreate 时生效。 |
 | Parameters.N.Pa rameterValue | String | 是 | 12 | 覆盖的模板参数的值。N的最大值为200。 仅在Mode为Recreate时生效，覆盖的模板参数限制如下： 不能引发模板Conditions部分中任何 Condition的值的变化，由true变 false，或由false变true。 覆盖参数不能被不重新创建的资源引用。 |
 
-资源编排
-
 | RegionId | String | 是 | cn-hangzhou | 资源栈所属的地域ID。 |
 |---|---|---|---|---|
 | StackId | String | 是 | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 资源栈ID。 |
 | RecreatingResou rces.N | RepeatL ist | 否 | WebServer | 创建失败的资源将会被重新创建。您可以指定额外需要重新创建的资源列表，ROS 会重新创建所有依赖于其的资源。 |
 | RamRoleName | String | 否 | test-role | RAM角色名称。ROS会扮演该角色创建资源栈，使用角色的凭证代表用户进行接口调用。 ROS始终将此角色用于资源栈上将进行的操作。只要用户有权在资源栈上进行操作，即使用户无权使用角色，ROS也会使用此角色，确保角色授予最少的权限。 如果用户未指定该值，ROS将使用以前与资源栈关联的角色。如果没有可用角色，ROS将使用从您的用户凭证中生成的临时凭证。 RAM角色名称最大长度为64个字节。 |
 
-资源编排
-
 | Mode | String | 否 | Recreate | 继续创建模式，取值： Recreate（默认值）： 重新创建如下4类资源，其它为不重新创建的资源： 创建失败的资源。 指定重新创建的资源 （RecreatingResources.N）。 依赖于指定重新创建的资源 （RecreatingResources.N）的资源。 未创建的资源。 RecreatingResources.N、 TemplateBody、TemplateURL、 Parameters参数仅在此模式下生效。 Ignore： 忽略并丢弃所有创建失败的资源、未创建的资源，直接把资源栈标记为成功。 模板内容会发生变化。 |
 |---|---|---|---|---|
-
-资源编排
 
 | TemplateBody | String | 否 | { "ROSTemplateF ormatVersion": "2015-09-01" } | 模板主体的结构。长度为1~524,288个字节。 如果长度较大，则建议通过HTTP POST+Body Param的方式，将参数放在请求体中进行传递，避免URL过长而导致请求失败。 说明您必须指定参数 TemplateBody或TemplateURL， 但不能同时指定。 仅在Mode为Recreate时生效，模板限制如下： 只能修改模板的Description、 Metadata、Resources、Outputs部分。 不能增加或删除Section（模板内容的第一层）。 模板的Resources部分限制如下： 对于不重新创建的资源，既不能删除，也不能修改其模板内容。 对于重新创建的资源，既可以删除， 也可以修改其模板内容。 可以增加新资源。 |
 |---|---|---|---|---|
@@ -2088,8 +2193,6 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 |---|---|---|---|
 | RequestId | String | B288A0BE-D927- 4888-B0F7- B35EF84B6E6 | 请求ID。 |
 
-资源编排
-
 | StackId | String | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 资源栈ID。 |
 |---|---|---|---|
 
@@ -2101,21 +2204,23 @@ API返回结果采用统一格式，调用成功返回的数据格式有XML和JS
 http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ContinueCreateStackResponse>
        <RequestId type="string">B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
        <StackId type="string">0a7c379a-566f-4bc0-b3fb-a301df51****</StackId>
+</ContinueCreateStackResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F",
    "StackId": "0a7c379a-566f-4bc0-b3fb-a301df51****"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -2123,8 +2228,6 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 | 400 | InvalidSchema | {reason}. | 模板格式不正确，reason 为具体原因。 |
 | 400 | InvalidTemplateAttribu te | The Referenced Attribute ({resource} {name}) is incorrect. | 模板包含不正确的资源属性（输出）引用，resource为资源名，name为属性名。 |
 | 400 | InvalidTemplateProper tyType | The specified value type of ({resource} {section}) is incorrect. | 模板资源定义中，字段类型不正确，resource为资源名，section为字段名。 |
-
-资源编排
 
 | 400 | InvalidTemplateRefere nce | The specified reference "{name}" (in {referencer}) is incorrect. | 模板包含不正确的引用，name为引用名，referencer为引用者。 |
 |---|---|---|---|
@@ -2138,13 +2241,11 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | 资源栈在变更中。name 为资源栈名称或 ID，action为变更操作。 |
 
-#### UpdateStack
+#### 7.6.3 UpdateStack
 
-请求中Parameters和UsePreviousParameters取值相关。若Parameters中未指定模板中定义的参数： 当UsePreviousParameters取值为false时：如果模板中参数有默认值，则使用默认值；如果模板中参数没有默认值，则需要在Parameters中指定该参数。 当UsePreviousParameters取值为true时：如果创建资源栈时指定了该参数，则使用指定值；如果创建资源栈时未指定该参数，参数在模板中有默认值，则使用默认值。
+调用UpdateStack接口更新资源栈。 请求中Parameters和UsePreviousParameters取值相关。若Parameters中未指定模板中定义的参数： 当UsePreviousParameters取值为false时：如果模板中参数有默认值，则使用默认值；如果模板中参数没有默认值，则需要在Parameters中指定该参数。 当UsePreviousParameters取值为true时：如果创建资源栈时指定了该参数，则使用指定值；如果创建资源栈时未指定该参数，参数在模板中有默认值，则使用默认值。
 
 **请求参数**
-
-资源编排
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2155,23 +2256,17 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 | StackId | String | 是 | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 资源栈ID。 |
 | ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 保证请求的幂等性。此参数值由客户端生成，并且必须全局唯一。 长度不超过64个字符，可包含英文字母、 数字、短划线（-）和下划线（ ）。 _ |
 
-资源编排
-
 | StackPolicyDurin gUpdateBody | String | 否 | {"Statement": [{"Effect": "Allow", "Action": "Update:*", "Principal": "*", "Resource": "*"}]} | 临时覆盖资源栈策略主体的结构。长度为 1~16,384个字节。 如果要更新受保护的资源，请在更新期间指定临时覆盖资源栈策略。如果未指定资源栈策略，将使用与资源栈关联的当前策略。 此参数仅在更改集类型为UPDATE时生效。 您只能指定以下参数之一： StackPolicyBody StackPolicyURL StackPolicyDuringUpdateBody StackPolicyDuringUpdateURL |
 |---|---|---|---|---|
 | TimeoutInMinute s | Long | 否 | 10 | 更新资源栈的超时时间。 默认值：60。 单位：分钟。 |
 | TemplateBody | String | 否 | {"ROSTemplate FormatVersion": "2015-09-01"} | 模板主体的结构。长度为1~524,288个字节。 如果长度较大，则建议通过HTTP POST+Body Param的方式，将参数放在请求体中进行传递，避免URL过长而导致请求失败。 说明您必须指定参数 TemplateBody或TemplateURL， 但不能同时指定。 |
 | StackPolicyURL | String | 否 | oss://ros-stack- policy/demo | 包含资源栈策略的文件的位置。 URL必须指向位于Web服务器（HTTP或HTTPS） 或阿里云OSS存储桶（例如： oss://ros/stack-policy/demo、 oss://ros/stack-policy/demo? RegionId=cn-hangzhou）的策略，策略的文件最大值为16,384个字节。如未指定 OSS地域，默认与接口参数RegionId相同。 说明您必须指定参数 StackPolicyBody或 StackPolicyURL，但不能同时指定。 URL最大长度为1350个字节。 |
 
-资源编排
-
 | StackPolicyDurin gUpdateURL | String | 否 | oss://ros-stack- policy/demo | 更新资源栈策略的文件的位置。URL必须指向位于Web服务器（HTTP或HTTPS） 或阿里云OSS存储空间（例如： oss://ros/stack-policy/demo、 oss://ros/stack-policy/demo? RegionId=cn-hangzhou）中的策略，策略的文件最大值为16,384个字节。 如未指定OSS地域，默认与接口参数RegionId相同。 说明您必须指定参数 StackPolicyBody或 StackPolicyURL，但不能同时指定。 URL最大长度为1350个字节。 如果要更新受保护的资源，请在更新期间指定临时覆盖资源栈策略。如果未指定资源栈策略，则将使用与资源栈关联的当前策略。此参数仅在更改集类型为UPDATE 时生效。您只能指定以下参数之一： StackPolicyBody StackPolicyURL StackPolicyDuringUpdateBody StackPolicyDuringUpdateURL |
 |---|---|---|---|---|
 | StackPolicyBody | String | 否 | {"Statement": [{"Action": "Update:*", "Resource": "*", "Effect": "Allow", "Principal": "*"}]} | 资源栈策略主体的结构，长度为 1~16,384个字节。 说明您必须指定参数 StackPolicyBody或 StackPolicyURL，但不能同时指定。 |
 | UsePreviousPara meters | Boolean | 否 | true | 未传递的参数是否使用上次传递的值。取值： true：未传递的参数使用上次传递的值。 false：未传递的参数不使用上次传递的值。 |
 | DisableRollback | Boolean | 否 | false | 当更新资源栈时，此参数无效。如果更新失败，则强制回滚。 |
-
-资源编排
 
 | TemplateURL | String | 否 | oss://ros- template/demo | 包含模板主体的文件的位置。URL必须指向位于HTTP Web服务器（HTTP或 HTTPS）或阿里云OSS存储桶中的模板 （1~524,288个字节）。OSS存储桶的 URL，例如oss://ros/template/demo或 oss://ros/template/demo? RegionId=cn-hangzhou。如未指定OSS 地域，默认与接口参数RegionId相同。 说明您必须指定 TemplateBody或TemplateURL参数，但不能同时指定。 |
 |---|---|---|---|---|
@@ -2187,27 +2282,29 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 
 **示例**
 
-资源编排请求示例
+请求示例
 
 ```
-&RegionId=cn-beijing &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691**** &Parameters.1.ParameterKey=Amount &Parameters.1.ParameterValue=12
+http(s)://ros.aliyuncs.com/?Action=UpdateStack &RegionId=cn-beijing &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691**** &Parameters.1.ParameterKey=Amount &Parameters.1.ParameterValue=12
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<UpdateStackResponse>
       <StackId>4a6c9851-3b0f-4f5f-b4ca-a14bf691****</StackId>
       <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</UpdateStackResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "StackId": "4a6c9851-3b0f-4f5f-b4ca-a14bf691****",
     "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -2218,8 +2315,6 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 | 400 | InvalidTemplateRefere nce | The specified reference "{name}" (in {referencer}) is incorrect. | 模板包含不正确的引用。 name为引用名，referencer为引用者。 |
 | 400 | InvalidTemplateSectio n | The template section is invalid: {section}. | 模板包含无效的字段。 section为字段名。 |
 
-资源编排
-
 | 400 | InvalidTemplateVersio n | The template version is invalid: {reason}. | 模板版本不正确。reason 为具体原因。 |
 |---|---|---|---|
 | 400 | StackPolicyValidationF ailed | Action denied by stack policy: {reason}. | 未通过资源栈策略校验。 reason为具体原因。 |
@@ -2229,7 +2324,9 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | 资源栈在变更中。name 为资源栈名称或 ID，action为具体的变更操作。 |
 
-#### CancelUpdateStack
+#### 7.6.4 CancelUpdateStack
+
+调用CancelUpdateStack接口取消更新资源栈。
 
 **请求参数**
 
@@ -2241,8 +2338,6 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 | CancelType | String | 否 | Safe | 取消更新资源栈类型。取值： Quick：尽快取消更新资源栈。 Safe：尽可能安全地取消更新资源栈。 |
 
 **返回数据**
-
-资源编排
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -2256,35 +2351,37 @@ http(s)://ros.aliyuncs.com/?Action=ContinueCreateStack &RegionId=cn-hangzhou &St
 http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CancelUpdateStackResponse>
          <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
          <StackId>4a6c9851-3b0f-4f5f-b4ca-a14bf691****</StackId>
+</CancelUpdateStackResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F",
    "StackId": "4a6c9851-3b0f-4f5f-b4ca-a14bf691****"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | 资源栈在变更中。name 为资源栈名称或 ID，action为具体的变更操作。 |
 
-#### GetStack
+#### 7.6.5 GetStack
+
+调用GetStack接口查询资源栈信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-资源编排
 
 | Action | String | 是 | GetStack | 要执行的操作，取值：GetStack。 |
 |---|---|---|---|---|
@@ -2301,19 +2398,15 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | DisableRollbac k | Boolean | false | 当创建资源栈失败时，是否禁用回滚策略。取值： true：禁用回滚，即当创建资源栈失败时不进行回滚。 false（默认值）：不禁用回滚，即当创建资源栈失败时进行回滚。 |
 | NotificationUR Ls | List | ["http://127.XX.XX. 1:8080/x", "http://127.0.XX.XX :8080/y"] | 接收资源栈事件的URL回调地址。 |
 | Outputs | List | [{"Description": "Instance ID","OutputKey": "InstanceId","Outp utValue": "i- a****"}] | 资源栈输出列表。 |
-| Parameters | Array of Parameter |  | 资源栈入参。 |
+| Parameters | Array of Parameter |   | 资源栈入参。 |
 | ParameterKey | String | InstanceType | 参数名称。 |
 | ParameterValu e | String | ecs.cm4.6xlarge | 参数值。 |
-
-资源编排
 
 | ParentStackId | String | 4a6c9851-3b0f- 4f5f-b4ca- a14bf692**** | 父资源栈ID。 |
 |---|---|---|---|
 | RegionId | String | cn-beijing | 要创建的资源栈所属的地域ID。 |
 | Status | String | CREATE COMPLET _ E | 资源栈状态，取值： CREATE IN PROGRESS _ _ CREATE FAILED _ CREATE COMPLETE _ UPDATE IN PROGRESS _ _ UPDATE FAILED _ UPDATE COMPLETE _ DELETE IN PROGRESS _ _ DELETE FAILED _ DELETE COMPLETE _ CREATE ROLLBACK IN PROGRESS _ _ _ CREATE ROLLBACK FAILED _ _ CREATE ROLLBACK COMPLETE _ _ ROLLBACK IN PROGRESS _ _ ROLLBACK FAILED _ ROLLBACK COMPLETE _ CHECK IN PROGRESS _ _ CHECK FAILED _ CHECK COMPLETE _ REVIEW IN PROGRESS _ _ IMPORT CREATE IN PROGRESS _ _ _ IMPORT CREATE FAILED _ _ IMPORT CREATE COMPLETE _ _ IMPORT CREATE ROLLBACK IN PROGR _ _ _ _ ESS IMPORT CREATE ROLLBACK FAILED _ _ _ IMPORT CREATE ROLLBACK COMPLETE _ _ _ IMPORT UPDATE IN PROGRESS _ _ _ IMPORT UPDATE FAILED _ _ IMPORT UPDATE COMPLETE _ _ IMPORT UPDATE ROLLBACK IN PROGR _ _ _ _ ESS IMPORT UPDATE ROLLBACK FAILED _ _ _ IMPORT UPDATE ROLLBACK COMPLETE _ _ _ |
 | StackId | String | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 资源栈ID。 |
-
-资源编排
 
 | StackName | String | MyStack | 资源栈名称。 长度不超过255个字符，必须以数字或英文字母开头，可包含数字、英文字母、短划线（-）和下划线（ ）。 _ |
 |---|---|---|---|
@@ -2327,8 +2420,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | RamRoleName | String | test-role | RAM角色名称。ROS会扮演该角色创建资源栈， 使用角色的凭证代表用户进行接口调用。 ROS始终将此角色用于资源栈上将进行的操作。 只要用户有权在资源栈上进行操作，即使用户无权使用角色，ROS也会使用此角色，确保角色授予最少的权限。 如果用户未指定该值，ROS将使用以前与资源栈关联的角色。如果没有可用角色，ROS将使用从您的用户凭证中生成的临时凭证。 RAM角色名称最大长度为64个字节。 |
 | RootStackId | String | 4a6c9851-3b0f- 4f5f-b4ca- a14bf692**** | 最顶层的资源栈的ID。当资源栈为嵌套资源栈时，会返回该属性。 |
 
-资源编排
-
 | StackDriftStat us | String | IN SYNC _ | 资源栈最近一次成功的偏差检测中的资源栈的状态，取值： DRIFTED：资源栈处于偏差状态。 NOT CHECKED：资源栈未进行过成功的偏 _ 差检测。 IN SYNC：资源栈处于同步状态。 _ |
 |---|---|---|---|
 | StackType | String | ROS | 资源栈类型，取值： ROS：使用ROS模板的资源栈。 Terraform：使用Terraform模板的资源栈。 |
@@ -2338,12 +2429,13 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 请求示例
 
 ```
-&RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
+http(s)://ros.aliyuncs.com/?Action=GetStack &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式资源编排
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<GetStackResponse>
     <CreationTime>2019-08-01T04:07:39</CreationTime>
     <Description>No description</Description>
     <DisableRollback>false</DisableRollback>
@@ -2374,12 +2466,12 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
     <RootStackId>4a6c9851-3b0f-4f5f-b4ca-a14bf692****</RootStackId>
     <StackType>ROS</StackType>
     <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</GetStackResponse>
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式 `{`
 
 ```json
-{
     "CreationTime": "2019-08-01T04:07:39",
     "Description": "No description",
     "DisableRollback": false,
@@ -2392,24 +2484,30 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 
 ```json
     "Outputs": [
-        {
+```
+
+`{`
+
+```json
             "Description": "Instance ID",
             "OutputKey": "InstanceId",
             "OutputValue": "i-a****"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Parameters": [
-        {
-            "ParameterKey": "InstanceType",
-            "ParameterValue": "ecs.cm4.6xlarge"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "ParameterKey": "InstanceType",
+            "ParameterValue": "ecs.cm4.6xlarge"
+```
+
+`}` `],`
 
 ```json
     "RegionId": "cn-hangzhou",
@@ -2428,18 +2526,19 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
     "RootStackId": "4a6c9851-3b0f-4f5f-b4ca-a14bf692****",
     "StackType": "ROS",
     "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 
-#### DeleteStack
+#### 7.6.6 DeleteStack
+
+调用DeleteStack接口删除资源栈。
 
 **请求参数**
-
-资源编排
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2461,22 +2560,24 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 请求示例
 
 ```
-&RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
+http(s)://ros.aliyuncs.com/?Action=DeleteStack &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式资源编排
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteStackResponse>
       <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</DeleteStackResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -2484,7 +2585,9 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | 资源栈在变更中。name 为资源栈名称或 ID，action为具体的变更操作。 |
 
-#### ListStacks
+#### 7.6.7 ListStacks
+
+调用ListStacks接口查询资源栈列表。
 
 **请求参数**
 
@@ -2493,14 +2596,10 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | Action | String | 是 | ListStacks | 要执行的操作，取值：ListStacks。 |
 | RegionId | String | 是 | cn-hangzhou | 资源栈所属的地域ID。 |
 
-资源编排
-
 | Status.N | RepeatL ist | 否 | CREATE COMPL _ ETE | 资源栈状态，取值： CREATE IN PROGRESS _ _ CREATE FAILED _ CREATE COMPLETE _ UPDATE IN PROGRESS _ _ UPDATE FAILED _ UPDATE COMPLETE _ DELETE IN PROGRESS _ _ DELETE FAILED _ DELETE COMPLETE _ CREATE ROLLBACK IN PROGRESS _ _ _ CREATE ROLLBACK FAILED _ _ CREATE ROLLBACK COMPLETE _ _ ROLLBACK IN PROGRESS _ _ ROLLBACK FAILED _ ROLLBACK COMPLETE _ CHECK IN PROGRESS _ _ CHECK FAILED _ CHECK COMPLETE _ REVIEW IN PROGRESS _ _ IMPORT CREATE IN PROGRESS _ _ _ IMPORT CREATE FAILED _ _ IMPORT CREATE COMPLETE _ _ IMPORT CREATE ROLLBACK IN PR _ _ _ _ OGRESS IMPORT CREATE ROLLBACK FAILE _ _ _ D IMPORT CREATE ROLLBACK COMP _ _ _ LETE IMPORT UPDATE IN PROGRESS _ _ _ IMPORT UPDATE FAILED _ _ IMPORT UPDATE COMPLETE _ _ IMPORT UPDATE ROLLBACK IN PR _ _ _ _ OGRESS IMPORT UPDATE ROLLBACK FAILE _ _ _ D IMPORT UPDATE ROLLBACK COM _ _ _ PLETE N的取值范围为：1~5。 |
 |---|---|---|---|---|
 | PageSize | Long | 否 | 10 | 分页查询时设置的每页行数。 最大值：50。 默认值：10。 |
 | ParentStackId | String | 否 | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 父资源栈ID。 |
-
-资源编排
 
 | StackName.N | RepeatL ist | 否 | MyStack | 资源栈名称。 长度不超过255个字符，必须以数字或英文字母开头，可包含数字、英文字母、短划线（-）和下划线（ ）。支持使用星号 _ （*）进行模糊搜索。 N的取值范围为：1~5。 |
 |---|---|---|---|---|
@@ -2514,10 +2613,8 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Stacks | Array of Stack |  | 资源栈列表。 |
+| Stacks | Array of Stack |   | 资源栈列表。 |
 | CreateTime | String | 2019-08- 01T04:07:39 | 创建时间。按照ISO8601标准表示，需使用UTC 时间，格式：YYYY-MM-DDThh:mm:ss。 |
-
-资源编排
 
 | DisableRollbac k | Boolean | false | 当创建资源栈失败时，是否禁用回滚策略。取值： true：禁用回滚，即当创建资源栈失败时不进行回滚。 false（默认值）：不禁用回滚，即当创建资源栈失败时进行回滚。 |
 |---|---|---|---|
@@ -2529,8 +2626,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | StackName | String | MyStack | 资源栈名称。 |
 | StackType | String | ROS | 资源栈类型。取值为ROS，表示使用ROS模板的资源栈。 |
 
-资源编排
-
 | Status | String | CREATE COMPLET _ E | 资源栈状态，取值： CREATE IN PROGRESS _ _ CREATE FAILED _ CREATE COMPLETE _ UPDATE IN PROGRESS _ _ UPDATE FAILED _ UPDATE COMPLETE _ DELETE IN PROGRESS _ _ DELETE FAILED _ DELETE COMPLETE _ CREATE ROLLBACK IN PROGRESS _ _ _ CREATE ROLLBACK FAILED _ _ CREATE ROLLBACK COMPLETE _ _ ROLLBACK IN PROGRESS _ _ ROLLBACK FAILED _ ROLLBACK COMPLETE _ CHECK IN PROGRESS _ _ CHECK FAILED _ CHECK COMPLETE _ REVIEW IN PROGRESS _ _ IMPORT CREATE IN PROGRESS _ _ _ IMPORT CREATE FAILED _ _ IMPORT CREATE COMPLETE _ _ IMPORT CREATE ROLLBACK IN PROGR _ _ _ _ ESS IMPORT CREATE ROLLBACK FAILED _ _ _ IMPORT CREATE ROLLBACK COMPLETE _ _ _ IMPORT UPDATE IN PROGRESS _ _ _ IMPORT UPDATE FAILED _ _ IMPORT UPDATE COMPLETE _ _ IMPORT UPDATE ROLLBACK IN PROGR _ _ _ _ ESS IMPORT UPDATE ROLLBACK FAILED _ _ _ IMPORT UPDATE ROLLBACK COMPLETE _ _ _ |
 |---|---|---|---|
 | StatusReason | String | Stack successfully created | 资源栈状态原因。 |
@@ -2538,7 +2633,7 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | UpdateTime | String | 2019-08- 01T04:07:39 | 资源栈更新时间。按照ISO8601标准表示，需使用UTC时间，格式：YYYY-MM- DDThh:mm:ss。 |
 | PageSize | Integer | 10 | 分页查询时设置的每页行数。 最大值：50。 默认值：10。 |
 
-| 资源编排 |  |  | 开发指南·API参考 |
+| 资源编排 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | PageNumber | Integer | 1 | 资源栈列表的页码。 |
@@ -2551,12 +2646,13 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 请求示例
 
 ```
-&RegionId=cn-hangzhou
+http(s)://ros.aliyuncs.com/?Action=ListStacks &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListStacksResponse>
     <Stacks>
         <Stack>
             <StackId>4a6c9851-3b0f-4f5f-b4ca-a14bf691****</StackId>
@@ -2578,14 +2674,18 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
     <PageSize>10</PageSize>
     <TotalCount>1</TotalCount>
     <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</ListStacksResponse>
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式 `{`
 
 ```json
-{
     "Stacks": [
-        {
+```
+
+`{`
+
+```json
             "StackId": "4a6c9851-3b0f-4f5f-b4ca-a14bf691****",
             "ParentStackId": "4a6c9851-3b0f-4f5f-b4ca-a14bf692****",
             "StackName": "MyStack",
@@ -2599,20 +2699,22 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
             "DriftDetectionTime": "2020-02-27T07:47:47",
       "StackDriftStatus": "IN_SYNC",
             "StackType": "ROS"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageNumber": 1,
     "PageSize": 10,
     "TotalCount": 1,
     "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
 
-#### PreviewStack
+`}`
+
+#### 7.6.8 PreviewStack
+
+调用PreviewStack接口预览指定模板将要创建的资源栈信息。
 
 **请求参数**
 
@@ -2621,8 +2723,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | Action | String | 是 | PreviewStack | 要执行的操作，取值：PreviewStack。 |
 | Parameters.N.Pa rameterKey | String | 是 | InstanceType | 参数的名称。如果未指定参数的名称和值，则ROS将使用模板中指定的默认值。 N的最大值为200。 说明 Parameters为可选参数。 如果需要指定Parameters， 则 Parameters.N.Parameter Key和 Parameters.N.Parameter Value必须同时指定。 |
 
-资源编排
-
 | Parameters.N.Pa rameterValue | String | 是 | ecs.cm4.6xlarge | 参数值。N的最大值为200。 说明 Parameters为可选参数。 如果需要指定Parameters， 则 Parameters.N.Parameter Key和 Parameters.N.Parameter Value必须同时指定。 |
 |---|---|---|---|---|
 | RegionId | String | 是 | cn-beijing | 资源栈所属的地域ID。 |
@@ -2630,8 +2730,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | DisableRollback | Boolean | 否 | false | 当创建资源栈失败时，是否禁用回滚策略。取值： true：禁用回滚，即当创建资源栈失败时不进行回滚。 false（默认值）：不禁用回滚，即当创建资源栈失败时进行回滚。 |
 | TimeoutInMinute s | Long | 否 | 10 | 创建资源栈的超时时间。 单位：分钟。 默认值：60。 |
 | TemplateBody | String | 否 | {"ROSTemplate FormatVersion": "2015-09-01" } | 模板主体的结构。长度为1~524,288个字节。如果长度较大，则建议通过HTTP POST+Body Param的方式，将参数放在请求体中进行传递，避免因URL过长而导致请求失败。 说明您必须指定参数 TemplateBody或TemplateURL， 但不能同时指定。 |
-
-资源编排
 
 | StackPolicyURL | String | 否 | oss://ros-stack- policy/demo | 包含资源栈策略的文件的位置。 URL必须指向位于Web服务器（HTTP或HTTPS） 或阿里云OSS存储桶（例如： oss://ros/stack-policy/demo、 oss://ros/stack-policy/demo? RegionId=cn-hangzhou）中的策略，策略文件最大长度为16,384个字节。 如未指定OSS地域，默认与接口参数RegionId相同。 说明您必须指定参数 StackPolicyBody或 StackPolicyURL，但不能同时指定。 URL最大长度为1350个字节。 |
 |---|---|---|---|---|
@@ -2644,22 +2742,18 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-资源编排
-
 | RequestId | String | B288A0BE-D927- 4888-B0F7- B35EF84B6E6F | 请求ID。 |
 |---|---|---|---|
-| Stack | Struct |  | 资源栈预览数据。 |
+| Stack | Struct |   | 资源栈预览数据。 |
 | Description | String | One ECS instance. | 资源栈描述。 |
 | DisableRollbac k | Boolean | false | 是否禁用回滚。 |
-| Parameters | Array of Parameter |  | 资源栈参数。 |
+| Parameters | Array of Parameter |   | 资源栈参数。 |
 | ParameterKey | String | SystemDiskCatego ry | 参数的键。 |
 | ParameterValu e | String | cloud ssd _ | 参数的值。 |
 | RegionId | String | cn-beijing | 资源栈所在地域。 |
-| Resources | Array of Resource |  | 资源栈中的资源列表。 |
+| Resources | Array of Resource |   | 资源栈中的资源列表。 |
 | Description | String | ECS instance. | 资源描述。 |
 | LogicalResour ceId | String | WebServer | 资源逻辑ID。 |
-
-资源编排
 
 | Properties | Map | { "DiskMappings": [ { "Category": "cloud ssd", "Size": _ "20" } ], "SystemDisk Categ _ ory": "cloud ssd", _ "InstanceChargeTy pe": "PostPaid", "AutoRenew": "False", "WillReplace": true, "ImageId": "centos 7", _ "InstanceType": "ecs.g6.large", "AllocatePublicIP": true, "AutoRenewPeriod" : 1, "IoOptimized": "optimized", "ZoneId": "cn- beijing-g", "VSwitchId": "", "SecurityGroupId": "", "Period": 1, "InternetChargeTy pe": "PayByTraffic", "SystemDiskCateg ory": "cloud efficiency", _ "InternetMaxBand widthOut": 1, "VpcId": "", "InternetMaxBand widthIn": 200, "PeriodUnit": "Month" } | 资源属性。 |
 |---|---|---|---|
@@ -2667,8 +2761,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | ResourceType | String | ALIYUN::ECS::Insta nce | 资源类型。 |
 | Stack | Map | {} | 子资源栈信息。数据结构同整个返回值。 |
 | StackName | String | MyStack | 资源栈名称。 |
-
-资源编排
 
 | StackPolicyBo dy | Map | { "Statement": [ { "Action": "Update:*", "Resource": "*", "Effect": "Allow", "Principal": "*" }, { "Action": "Update:*", "Resource": "LogicalResourceId /apple1", "Effect": "Deny", "Principal": "*" } ] } | 资源栈策略内容。 |
 |---|---|---|---|
@@ -2680,12 +2772,13 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 请求示例
 
 ```
-&RegionId=cn-beijing &Parameters.1.ParameterValue=ecs.cm4.6xlarge &Parameters.1.ParameterKey=InstanceType &StackName=MyStack &TimeoutInMinutes=10
+http(s)://ros.aliyuncs.com/?Action=PreviewStack &RegionId=cn-beijing &Parameters.1.ParameterValue=ecs.cm4.6xlarge &Parameters.1.ParameterKey=InstanceType &StackName=MyStack &TimeoutInMinutes=10
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<PreviewStackResponse>
     <Stack>
        <Description>No description</Description>
        <DisableRollback>true</DisableRollback>
@@ -2706,8 +2799,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
        </Resources>
        <Resources>
 ```
-
-资源编排
 
 ```xml
           <Description></Description>
@@ -2766,8 +2857,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
                    <Principal>*</Principal>
 ```
 
-资源编排
-
 ```xml
                    <Resource>LogicalResourceId/apple1</Resource>
                 </Statement>
@@ -2795,170 +2884,213 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
        <TimeoutInMinutes>10</TimeoutInMinutes>
     </Stack>
     <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</PreviewStackResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Stack": {
         "Description": "No description",
         "DisableRollback": true,
         "Parameters": [
-            {
-                "ParameterKey": "UpdateVersion",
-                "ParameterValue": "1"
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "ParameterKey": "UpdateVersion",
+                "ParameterValue": "1"
+```
+
+`}` `],`
 
 ```json
         "RegionId": "cn-beijing",
         "Resources": [
-            {
+```
+
+`{`
+
+```json
                 "Description": "",
                 "LogicalResourceId": "WaitConditionHandle",
                 "Properties": {
                     "Count": -1,
                     "Mode": "Full",
                     "UpdateVersion": 1
-                },
-                "RequiredBy": [],
-                "ResourceType": "ALIYUN::ROS::WaitConditionHandle"
-            },
-            {
 ```
 
-资源编排
+`},`
 
 ```json
-{
+                "RequiredBy": [],
+                "ResourceType": "ALIYUN::ROS::WaitConditionHandle"
+```
+
+`},` `{` `{`
+
+```json
                 "Description": "",
                 "LogicalResourceId": "nested",
                 "Properties": {
                     "Parameters": null,
                     "TemplateURL": "oss://nested-stack/test/demo",
                     "TimeoutMins": 16
-                },
+```
+
+`},`
+
+```json
                 "RequiredBy": [],
                 "ResourceType": "ALIYUN::ROS::Stack",
                 "Stack": {
                     "Description": "No description",
                     "DisableRollback": true,
                     "Parameters": [
-                        {
-                            "ParameterKey": "ALIYUN::AccountId",
-                            "ParameterValue": "1666666****"
-                        },
-                        {
-                            "ParameterKey": "ALIYUN::NoValue",
-                            "ParameterValue": "None"
-                        },
-                        {
-                            "ParameterKey": "ALIYUN::Region",
-                            "ParameterValue": "cn-beijing"
-                        },
-                        {
-                            "ParameterKey": "ALIYUN::StackId",
-                            "ParameterValue": "None"
-                        },
-                        {
-                            "ParameterKey": "ALIYUN::StackName",
-                            "ParameterValue": "test-preview-stack-complex-nested"
-                        }
 ```
 
-`],`
+`{`
+
+```json
+                            "ParameterKey": "ALIYUN::AccountId",
+                            "ParameterValue": "1666666****"
+```
+
+`},` `{`
+
+```json
+                            "ParameterKey": "ALIYUN::NoValue",
+                            "ParameterValue": "None"
+```
+
+`},` `{`
+
+```json
+                            "ParameterKey": "ALIYUN::Region",
+                            "ParameterValue": "cn-beijing"
+```
+
+`},` `{`
+
+```json
+                            "ParameterKey": "ALIYUN::StackId",
+                            "ParameterValue": "None"
+```
+
+`},` `{`
+
+```json
+                            "ParameterKey": "ALIYUN::StackName",
+                            "ParameterValue": "test-preview-stack-complex-nested"
+```
+
+`}` `],`
 
 ```json
                     "RegionId": "cn-beijing",
                     "Resources": [
-                        {
+```
+
+`{`
+
+```json
                             "Description": "",
                             "LogicalResourceId": "WaitConditionHandle",
                             "Properties": {
                                 "Count": -1,
                                 "Mode": "Full",
                                 "UpdateVersion": 1
-                            },
-                            "RequiredBy": [],
-                            "ResourceType": "ALIYUN::ROS::WaitConditionHandle"
-                        }
 ```
 
-`],`
+`},`
+
+```json
+                            "RequiredBy": [],
+                            "ResourceType": "ALIYUN::ROS::WaitConditionHandle"
+```
+
+`}` `],`
 
 ```json
                     "StackName": "test-preview-stack-complex-nested",
                     "StackPolicyBody": {
                         "Statement": [
-                            {
+```
+
+`{`
+
+```json
                                 "Action": "Update:*",
                                 "Effect": "Allow",
 ```
 
-资源编排
-
 ```json
                                 "Principal": "*",
                                 "Resource": "*"
-                            },
-                            {
+```
+
+`},` `{`
+
+```json
                                 "Action": "Update:*",
                                 "Effect": "Deny",
                                 "Principal": "*",
                                 "Resource": "LogicalResourceId/apple1"
-                            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-                    },
                     "TemplateDescription": "No description",
                     "TimeoutInMinutes": 12
-                }
-            }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
         "StackName": "test-preview-stack-complex",
         "StackPolicyBody": {
             "Statement": [
-                {
+```
+
+`{`
+
+```json
                     "Action": "Update:*",
                     "Effect": "Allow",
                     "Principal": "*",
                     "Resource": "*"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "Action": "Update:*",
                     "Effect": "Deny",
                     "Principal": "*",
                     "Resource": "LogicalResourceId/apple1"
-                }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-        },
         "TemplateDescription": "No description",
         "TimeoutInMinutes": 10
-    },
-    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`},`
+
+```json
+    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
+```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | CircularDependency | Circular Dependency Found: {reason}. | 模板包含循环引用。 reason为具体原因。 |
 | 400 | InvalidSchema | {reason}. | 模板格式不正确。reason 为具体原因。 |
-
-资源编排
 
 | 400 | InvalidTemplateAttribu te | The Referenced Attribute ({resource} {name}) is incorrect. | 模板包含不正确的资源属性（输出）引用。 resource为资源名，name为属性名。 |
 |---|---|---|---|
@@ -2971,7 +3103,9 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 | 400 | UserParameterMissing | The Parameter {name} was not provided. | 参数在模板中已定义，但未传递值。name为参数名。 |
 | 409 | StackExists | The Stack ({name}) already exists. | 同名资源栈已存在。 name为资源栈名称。 |
 
-#### ListStackEvents
+#### 7.6.9 ListStackEvents
+
+调用ListStackEvents接口查询资源栈及栈内资源的事件。
 
 **请求参数**
 
@@ -2979,8 +3113,6 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 |---|---|---|---|---|
 | Action | String | 是 | ListStackEvents | 要执行的操作，取值： ListStackEvents。 |
 | RegionId | String | 是 | cn-hangzhou | 资源栈所属的地域ID。 |
-
-资源编排
 
 | StackId | String | 是 | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 资源栈ID。 |
 |---|---|---|---|---|
@@ -2994,11 +3126,9 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Events | Array of Event |  | 事件对象列表。 |
+| Events | Array of Event |   | 事件对象列表。 |
 | CreateTime | String | 2019-08- 01T04:07:39 | 创建时间。按照ISO8601标准表示，需使用UTC 时间，格式：YYYY-MM-DDThh:mm:ss。 |
 | EventId | String | 0086612d-77cf- 4056-b0b5- ff8e94ad**** | 事件ID。 |
-
-资源编排
 
 | LogicalResour ceId | String | WebServer | 资源逻辑ID，即模板中资源的名称。 |
 |---|---|---|---|
@@ -3021,17 +3151,16 @@ http(s)://ros.aliyuncs.com/?Action=CancelUpdateStack &RegionId=cn-hangzhou &Stac
 http(s)://ros.aliyuncs.com/?Action=ListStackEvents &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListStackEventsResponse>
        <Events class="array">
               <Event class="object">
 <CreationTimetype="string">2019-08-01T05:57:56</CreationTime>
 ```
 
-资源编排
-
-```xml
+```
                      <CreationTime type
 string>20190801T05:57:56</CreationTime>
                      <EventId type="string">0086612d-77cf-4056-b0b5-ff8e94ad****</EventI
@@ -3039,7 +3168,7 @@ string>20190801T05:57:56</CreationTime>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">test-describe-
 events</LogicalResourceId>
                      <PhysicalResourceId type="string">57d0946e-c7f4-4f4e-89ae-0d4301a2*
@@ -3050,7 +3179,7 @@ events</LogicalResourceId>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_COMPLETE</Status>
                      <StatusReason type="string">Stack successfully
@@ -3063,7 +3192,7 @@ updated</StatusReason>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">dummy</LogicalResourceId>
                      <PhysicalResourceId type="string">a</PhysicalResourceId>
                      <ResourceType type="string">ALIYUN::DEBUG::Dummy</ResourceType>
@@ -3072,7 +3201,7 @@ updated</StatusReason>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_COMPLETE</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3084,7 +3213,7 @@ updated</StatusReason>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">dummy3</LogicalResourceId>
                      <PhysicalResourceId type="string">a</PhysicalResourceId>
                      <ResourceType type="string">ALIYUN::DEBUG::Dummy</ResourceType>
@@ -3093,7 +3222,7 @@ updated</StatusReason>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">CREATE_COMPLETE</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3105,7 +3234,7 @@ updated</StatusReason>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId
 type="string">WaitConditionHandle</LogicalResourceId>
                      <ResourceType
@@ -3115,16 +3244,14 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_COMPLETE</Status>
                      <StatusReason type="string">state changed</StatusReason>
               </Event>
 ```
 
-资源编排
-
-```xml
+```
               <Event class="object">
                      <CreationTime type="string">2019-08-01T05:57:53</CreationTime>
                      <EventId type="string">a01e5730-7244-414e-b9ff-f97e3885****</EventI
@@ -3132,7 +3259,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">dummy3</LogicalResourceId>
                      <ResourceType type="string">ALIYUN::DEBUG::Dummy</ResourceType>
                      <StackId type="string">57d0946e-c7f4-4f4e-89ae-0d4301a2****</StackI
@@ -3140,7 +3267,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">CREATE_IN_PROGRESS</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3152,7 +3279,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">dummy</LogicalResourceId>
                      <PhysicalResourceId type="string">a</PhysicalResourceId>
                      <ResourceType type="string">ALIYUN::DEBUG::Dummy</ResourceType>
@@ -3161,7 +3288,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_IN_PROGRESS</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3173,7 +3300,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">nested</LogicalResourceId>
                      <PhysicalResourceId type="string">4ed7ab13-c912-4239-b064-8cea7caa*
 ***</PhysicalResourceId>
@@ -3183,7 +3310,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_COMPLETE</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3195,7 +3322,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">nested</LogicalResourceId>
                      <PhysicalResourceId type="string">4ed7ab13-c912-4239-b064-8cea7caa*
 ***</PhysicalResourceId>
@@ -3205,7 +3332,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_IN_PROGRESS</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3213,16 +3340,14 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
               <Event class="object">
 ```
 
-资源编排
-
-```xml
+```
                      <CreationTime type="string">2019-08-01T05:57:53</CreationTime>
                      <EventId type="string">a5a0eb9e-7abe-44a1-a376-70955211****</EventI
 ```
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId
 type="string">WaitConditionHandle</LogicalResourceId>
                      <ResourceType
@@ -3232,7 +3357,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_IN_PROGRESS</Status>
                      <StatusReason type="string">state changed</StatusReason>
@@ -3244,7 +3369,7 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 `d>`
 
-```xml
+```
                      <LogicalResourceId type="string">test-describe-
 events</LogicalResourceId>
                      <PhysicalResourceId type="string">57d0946e-c7f4-4f4e-89ae-0d4301a2*
@@ -3255,7 +3380,7 @@ events</LogicalResourceId>
 
 `d>`
 
-```xml
+```
                      <StackName type="string">test-describe-events</StackName>
                      <Status type="string">UPDATE_IN_PROGRESS</Status>
                      <StatusReason type="string">Stack UPDATE started</StatusReason>
@@ -3265,14 +3390,18 @@ events</LogicalResourceId>
        <PageSize type="number">10</PageSize>
        <RequestId type="string">B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
        <TotalCount type="number">20</TotalCount>
+</ListStackEventsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
    "Events": [
-       {
+```
+
+`{`
+
+```json
            "CreationTime": "2019-08-01T05:57:56",
            "EventId": "0086612d-77cf-4056-b0b5-ff8e94ad****",
            "LogicalResourceId": "test-describe-events",
@@ -3282,20 +3411,21 @@ events</LogicalResourceId>
            "StackName": "test-describe-events",
            "Status": "UPDATE_COMPLETE",
            "StatusReason": "Stack successfully updated"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:55",
            "EventId": "2b900d01-959b-49a8-8cfe-f7de87aa****",
            "LogicalResourceId": "dummy",
 ```
 
-资源编排
-
 ```
 ogca esouced:
 ```
 
-`du` y,
+`du` `y``,`
 
 ```json
            "PhysicalResourceId": "a",
@@ -3304,8 +3434,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_COMPLETE",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:55",
            "EventId": "30f721d4-8124-4fd4-8afd-7b21471f****",
            "LogicalResourceId": "dummy3",
@@ -3315,8 +3448,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "CREATE_COMPLETE",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:54",
            "EventId": "b5ecc0ac-f855-4503-945c-82d398a2****",
            "LogicalResourceId": "WaitConditionHandle",
@@ -3325,8 +3461,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_COMPLETE",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:53",
            "EventId": "a01e5730-7244-414e-b9ff-f97e3885****",
            "LogicalResourceId": "dummy3",
@@ -3335,8 +3474,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "CREATE_IN_PROGRESS",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:53",
            "EventId": "262b2f54-7ae7-4cf6-9c8a-eb4d0801****",
            "LogicalResourceId": "dummy",
@@ -3346,15 +3488,16 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_IN_PROGRESS",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:53",
            "EventId": "163c3965-1617-4787-ba08-1eed0e3a****",
            "LogicalResourceId": "nested",
            "PhysicalResourceId": "4ed7ab13-c912-4239-b064-8cea7caa****",
 ```
-
-资源编排
 
 ```json
            "ResourceType": "ALIYUN::ROS::Stack",
@@ -3362,8 +3505,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_COMPLETE",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:53",
            "EventId": "71f7c25c-2ac7-4336-9934-85482111****",
            "LogicalResourceId": "nested",
@@ -3373,8 +3519,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_IN_PROGRESS",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:53",
            "EventId": "a5a0eb9e-7abe-44a1-a376-70955211****",
            "LogicalResourceId": "WaitConditionHandle",
@@ -3383,8 +3532,11 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_IN_PROGRESS",
            "StatusReason": "state changed"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T05:57:53",
            "EventId": "250f5003-f59d-46f9-8471-65d0c630****",
            "LogicalResourceId": "test-describe-events",
@@ -3394,28 +3546,26 @@ ogca esouced:
            "StackName": "test-describe-events",
            "Status": "UPDATE_IN_PROGRESS",
            "StatusReason": "Stack UPDATE started"
-       }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "PageNumber": 1,
    "PageSize": 10,
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F",
    "TotalCount": 20
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 
-资源编排
+### 7.7 资源相关接口
 
-### 资源相关接口
-
-#### GetResourceTypeTemplate
+#### 7.7.1 GetResourceTypeTemplate
 
 调用GetResourceTypeTemplate接口根据资源类型查询该资源的模板。
 
@@ -3441,9 +3591,10 @@ ogca esouced:
 http(s)://ros.aliyuncs.com/?Action=GetResourceTypeTemplate &ResourceType=ALIYUN::ECS::VPC
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式资源编排
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<GetResourceTypeTemplateResponse>
        <RequestId type="string">87F54B2B-AEF0-4C33-A72A-3F8856A575E9</RequestId>
        <TemplateBody class="object">
               <Parameters class="object">
@@ -3482,59 +3633,87 @@ http(s)://ros.aliyuncs.com/?Action=GetResourceTypeTemplate &ResourceType=ALIYUN:
                      </Vpc>
               </Resources>
        </TemplateBody>
+</GetResourceTypeTemplateResponse>
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "87F54B2B-AEF0-4C33-A72A-3F8856A575E9",
   "TemplateBody": {
     "Parameters": {
       "CidrBlock": {
         "Type": "String"
-      },
+```
+
+`},`
+
+```json
       "Description": {
         "Type": "String"
-      },
+```
+
+`},`
+
+```json
       "ResourceGroupId": {
         "Type": "String"
-      },
+```
+
+`},`
+
+```json
       "VpcName": {
         "Type": "String"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "ROSTemplateFormatVersion": "2015-09-01",
     "Resources": {
       "Vpc": {
         "Properties": {
           "CidrBlock": {
             "Ref": "CidrBlock"
-          },
+```
+
+`},`
+
+```json
           "Description": {
             "Ref": "Description"
-          },
+```
+
+`},`
+
+```json
           "ResourceGroupId": {
             "Ref": "ResourceGroupId"
-          },
+```
+
+`},`
+
+```json
           "VpcName": {
             "Ref": "VpcName"
-          }
-        },
-        "Type": "ALIYUN::ECS::VPC"
-      }
-    }
-  }
-}
 ```
+
+`}` `},`
+
+```json
+        "Type": "ALIYUN::ECS::VPC"
+```
+
+`}` `}` `}` `}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | ResourceTypeNotFoun d | The Resource Type ({name}) could not be found. | 资源类型不存在。name 为资源类型名。 |
 
-#### ListStackResources
+#### 7.7.2 ListStackResources
 
-资源编排
+调用ListStackResources接口查询某个资源栈的资源列表。
 
 **请求参数**
 
@@ -3549,15 +3728,13 @@ http(s)://ros.aliyuncs.com/?Action=GetResourceTypeTemplate &ResourceType=ALIYUN:
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | B288A0BE-D927- 4888-B0F7- B35EF84B6E6 | 请求ID。 |
-| Resources | Array of Resource |  | 资源对象的列表。 |
+| Resources | Array of Resource |   | 资源对象的列表。 |
 | CreateTime | String | 2019-08- 01T06:01:23 | 创建时间，按照ISO8601标准表示，并需要使用 UTC时间。格式为：YYYY-MM- DDThh:mm:ssZ。 |
 | DriftDetection Time | String | 2020-02- 27T07:47:47 | 资源栈最近一次成功的偏差检测中资源偏差检测的时间。 |
 | LogicalResour ceId | String | dummy | 资源逻辑ID，即模板定义的名称。 |
 | PhysicalResou rceId | String | d04af923-e6b7- 4272-aeaa- 47ec9777**** | 资源的物理ID，即实际资源ID。 |
 | ResourceDriftS tatus | String | IN SYNC _ | 资源栈最近一次成功的偏差检测中的资源的偏差状态。取值： DELETED：资源与预期的模板配置不同，因为资源已被删除。 MODIFIED：资源与预期的模板配置不同。 NOT CHECKED：ROS没有检测资源是否与 _ 预期的模板配置不同。 IN SYNC：资源的当前配置与其预期的模板配 _ 置相匹配。 |
 | ResourceType | String | ALIYUN::ROS::Stac k | 资源类型。 |
-
-资源编排
 
 | StackId | String | 4a6c9851-3b0f- 4f5f-b4ca- a14bf691**** | 资源栈ID。 |
 |---|---|---|---|
@@ -3574,9 +3751,10 @@ http(s)://ros.aliyuncs.com/?Action=GetResourceTypeTemplate &ResourceType=ALIYUN:
 http(s)://ros.aliyuncs.com/?Action=ListStackResources &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListStackResourcesResponse>
        <RequestId type="string">B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
        <Resources class="array">
               <Resource class="object">
@@ -3584,15 +3762,13 @@ http(s)://ros.aliyuncs.com/?Action=ListStackResources &RegionId=cn-hangzhou &Sta
                      <LogicalResourceId type="string">dummy</LogicalResourceId>
 ```
 
-资源编排
-
 ```
 ogca esoucedtype
 ```
 
-`st` g `du`
+`st` `g` `du`
 
-```xml
+```
 y/ogca esouced
                      <PhysicalResourceId type="string">a</PhysicalResourceId>
                      <ResourceType type="string">ALIYUN::DEBUG::Dummy</ResourceType>
@@ -3666,21 +3842,23 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
                      <DriftDetectionTime>2020-02-27T07:47:47</DriftDetectionTime>
 ```
 
-资源编排
-
 ```xml
                      <ResourceDriftStatus>IN_SYNC</ResourceDriftStatus>
               </Resource>
        </Resources>
+</ListStackResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F",
    "Resources": [
-       {
+```
+
+`{`
+
+```json
            "CreationTime": "2019-08-01T06:01:23",
            "LogicalResourceId": "dummy",
            "PhysicalResourceId": "a",
@@ -3692,8 +3870,11 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
            "UpdatedTime": "2019-08-01T06:01:29",
            "DriftDetectionTime": "2020-02-27T07:47:47",
         "ResourceDriftStatus": "IN_SYNC"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T06:01:28",
            "LogicalResourceId": "dummy3",
            "PhysicalResourceId": "a",
@@ -3705,8 +3886,11 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
            "UpdatedTime": "2019-08-01T06:01:29",
            "DriftDetectionTime": "2020-02-27T07:47:47",
         "ResourceDriftStatus": "IN_SYNC"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T06:01:23",
            "LogicalResourceId": "WaitConditionHandle",
            "PhysicalResourceId": "",
@@ -3718,15 +3902,16 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
            "UpdatedTime": "2019-08-01T06:01:29",
            "DriftDetectionTime": "2020-02-27T07:47:47",
         "ResourceDriftStatus": "IN_SYNC"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "CreationTime": "2019-08-01T06:01:23",
            "LogicalResourceId": "nested",
            "PhysicalResourceId": "d04af923-e6b7-4272-aeaa-47ec9777****",
 "ResourceType":"ALIYUN::ROS::Stack",
 ```
-
-资源编排
 
 ```json
            ResourceType: ALIYUN::ROS::Stack,
@@ -3737,20 +3922,17 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
            "UpdatedTime": "2019-08-01T06:01:28",
            "DriftDetectionTime": "2020-02-27T07:47:47",
         "ResourceDriftStatus": "IN_SYNC"
-       }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 | 错误代码 | 错误信息 | Http状态码 | 描述 |
 |---|---|---|---|
 | StackNotFound | The Stack ({name}) could not be found. | 404 | 资源栈不存在，name为资源栈名称或ID。 |
 
-#### GetStackResource
+#### 7.7.3 GetStackResource
+
+调用GetStackResource接口查询某个资源栈的资源。
 
 **请求参数**
 
@@ -3765,8 +3947,6 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 **返回数据**
 
-资源编排
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | Status | String | CREATE COMPLET _ E | 资源状态。取值： CREATE COMPLETE _ CREATE FAILED _ CREATE IN PROGRESS _ _ UPDATE IN PROGRESS _ _ UPDATE FAILED _ UPDATE COMPLETE _ DELETE IN PROGRESS _ _ DELETE FAILED _ CHECK IN PROGRESS _ _ CHECK FAILED _ CHECK COMPLETE _ IMPORT IN PROGRESS _ _ IMPORT FAILED _ IMPORT COMPLETE _ |
@@ -3780,8 +3960,6 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 | CreateTime | String | 2019-08- 01T06:01:23 | 创建时间。 按照ISO8601标准表示，需使用UTC时间，格式：YYYY-MM-DDThh:mm:ss。 |
 | Metadata | Map | {"key": "value"} | 元数据。 |
 
-资源编排
-
 | UpdateTime | String | 2019-08- 01T06:01:29 | 更新时间。 按照ISO8601标准表示，需使用UTC时间，格式：YYYY-MM-DDThh:mm:ss。 |
 |---|---|---|---|
 | ResourceAttrib utes | List | [ { "ResourceAttribute Value":"curl -Uri \"http://100.100.XX .XX/waitcondition? stackname=test- describe- resource&stackid= efdf5c10-96a5- 4fd7-ab89- 68e7baa2****&res ource=WaitConditi onHandle&expire= 156468****&signat ure=991d910a901 a89db6580d74233 119960c004****\" - Method Post - Headers @{\"Content- Type\"=\"applicatio n/json\"; \"Accept\"=\"applic ation/json\"; \"x- acs-region- id\"=\"cn- beijing\"}", "ResourceAttribute Key":"PowerShellC urlCli" } ] | 资源属性列表。 |
@@ -3791,15 +3969,16 @@ type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
 
 **示例**
 
-请求示例资源编排
+请求示例
 
 ```
 http(s)://ros.aliyuncs.com/?Action=GetStackResource &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691**** &LogicalResourceId=WebServer
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<GetStackResourceResponse>
     <CreateTime>2019-08-01T06:01:23</CreateTime>
     <Description></Description>
     <LogicalResourceId>WaitConditionHandle</LogicalResourceId>
@@ -3829,12 +4008,12 @@ stackname=test-describe-resource&amp;stackid=efdf5c10-96a5-4fd7-ab89- 68e7baa2**
     <UpdateTime>2019-08-01T06:01:29</UpdateTime>
     <DriftDetectionTime>2020-02-27T07:47:47</DriftDetectionTime>
     <ResourceDriftStatus>IN_SYNC</ResourceDriftStatus>
+</GetStackResourceResponse>
 ```
 
-资源编排 `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "CreateTime": "2019-08-01T06:01:23",
     "Description": "",
     "LogicalResourceId": "WaitConditionHandle",
@@ -3842,24 +4021,33 @@ stackname=test-describe-resource&amp;stackid=efdf5c10-96a5-4fd7-ab89- 68e7baa2**
     "PhysicalResourceId": "",
     "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F",
     "ResourceAttributes": [
-        {
+```
+
+`{`
+
+```json
             "ResourceAttributeKey": "CurlCli",
             "ResourceAttributeValue": "curl -i -X POST -H 'Content-Type: application/jso
 n' -H 'Accept: application/json' -H 'x-acs-region-id: cn-beijing' http://100.100.XX.XX/waitcondition?stackname=test-describe-resource\\&stackid=efdf5c10- 96a5-4fd7-ab89- 68e7baa2****\\&resource=WaitConditionHandle\\&expire=156468****\\&signature=991d910a901a8 b6580d74233119960c004****"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "ResourceAttributeKey": "WindowsCurlCli",
             "ResourceAttributeValue": "curl -i -X POST -H \"Content-Type: application/js
 on\" -H \"Accept: application/json\" -H \"x-acs-region-id: cn-beijing\" \"http://100.100.XX.XX/waitcondition?stackname=test-describe-resource&stackid=efdf5c10- 96a5-4fd7-ab89- 68e7baa2****&resource=WaitConditionHandle&expire=156468****&signature=991d910a901a89db658 74233119960c004****\""
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "ResourceAttributeKey": "PowerShellCurlCli",
             "ResourceAttributeValue": "curl -Uri \"http://100.100.XX.XX/waitcondition?
 stackname=test-describe-resource&stackid=efdf5c10-96a5-4fd7-ab89- 68e7baa2****&resource=WaitConditionHandle&expire=156468****&signature=991d910a901a89db658 74233119960c004****\" -Method Post -Headers @{\"Content-Type\"=\"application/json\"; \" Accept\"=\"application/json\"; \"x-acs-region-id\"=\"cn-beijing\"}"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "ResourceType": "ALIYUN::ROS::WaitConditionHandle",
@@ -3870,19 +4058,20 @@ stackname=test-describe-resource&stackid=efdf5c10-96a5-4fd7-ab89- 68e7baa2****&r
     "UpdateTime": "2019-08-01T06:01:29",
     "DriftDetectionTime": "2020-02-27T07:47:47",
  "ResourceDriftStatus": "IN_SYNC"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-资源编排
 
 | 404 | ResourceNotFound | The Resource ({name}) could not be found in Stack {stack}. | 资源栈中不存某资源。 name为资源名，stack为资源栈名称或ID。 |
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 
-#### GetResourceType
+#### 7.7.4 GetResourceType
+
+调用GetResourceType接口查询资源类型的详细信息。
 
 **请求参数**
 
@@ -3903,15 +4092,16 @@ stackname=test-describe-resource&stackid=efdf5c10-96a5-4fd7-ab89- 68e7baa2****&r
 
 **示例**
 
-请求示例资源编排
+请求示例
 
 ```
 http(s)://ros.aliyuncs.com/?Action=GetResourceType &ResourceType=ALIYUN::SLB::LoadBalancer
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<GetResourceTypeResponse>
        <Attributes class="object">
               <CurlCli class="object">
                      <Description type="string">Convenience attribute, provides curl CLI
@@ -3940,9 +4130,7 @@ t taking effect: 1.Mode is set to Full. 2.Count &gt;= 0. 3.The id of signal is n
                      <Constraints class="array">
 ```
 
-资源编排
-
-```xml
+```
                             <e class="object">
                                    <AllowedValues class="array">
                                           <e type="string">Increment</e>
@@ -3962,32 +4150,37 @@ l be deleted before update. In this mode, WaitCondition.Count should reference a
        <RequestId type="string">BA4C8BF3-482E-4B03-A1E3-C60DB7A95DE0</RequestId>
        <ResourceType type="string">ALIYUN::ROS::WaitConditionHandle</ResourceType>
        <SupportDriftDetection type="boolean">false</SupportDriftDetection>
+</GetResourceTypeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Attributes": {
         "CurlCli": {
             "Description": "Convenience attribute, provides curl CLI command prefix,
 which can be used for signalling handle completion or failure. You can signal success by adding --data-binary '{\"status\": \"SUCCESS\"}' , or signal failure by adding --dat a-binary '{\"status\": \"FAILURE\"}'"
-        },
+```
+
+`},`
+
+```json
         "PowerShellCurlCli": {
             "Description": "Convenience attribute, provides curl CLI command prefix for
 PowerShell, which can be used for signalling handle completion or failure. As this cmdl et was introduced in PowerShell 3.0, ensure the version of PowerShell satisfies the con straint. (Show the version via $PSVersionTable.PSVersion.) You can signal success by ad ding -Body '{\"status\": \"SUCCESS\"}' , or signal failure by adding -Body '{\"status\" : \"FAILURE\"}' "
-        },
+```
+
+`},`
+
+```json
         "WindowsCurlCli": {
             "Description": "Convenience attribute, provides curl CLI command prefix for
 Windows, which can be used for signalling handle completion or failure. As Windows does not support curl command, you need to install curl.exe and add it to PATH first. You ca n signal success by adding --data-binary \"{\\\"status\\\": \\\"SUCCESS\\\"}\" , or sig nal failure by adding --data-binary \"{\\\"status\\\": \\\"FAILURE\\\"}\" "
-        }
 ```
 
-资源编排
+`}` `}` `},`
 
 ```json
-}
-    },
     "Properties": {
         "Count": {
             "Default": -1,
@@ -3997,22 +4190,24 @@ effect:\n1.Mode is set to Full.\n2.Count >= 0.\n3.The id of signal is not specif
             "Required": false,
             "Type": "integer",
             "UpdateAllowed": true
-        },
+```
+
+`},`
+
+```json
         "Mode": {
             "Constraints": [
-                {
+```
+
+`{`
+
+```json
                     "AllowedValues": [
                         "Increment",
                         "Full"
 ```
 
-]
-
-```
-                }
-```
-
-`],`
+`]` `}` `],`
 
 ```json
             "Default": "Full",
@@ -4022,23 +4217,27 @@ update. In this mode, WaitCondition.Count should reference an incremental value 
             "Required": false,
             "Type": "string",
             "UpdateAllowed": true
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "RequestId": "BA4C8BF3-482E-4B03-A1E3-C60DB7A95DE0",
     "ResourceType": "ALIYUN::ROS::WaitConditionHandle",
     "SupportDriftDetection": false
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | ResourceTypeNotFoun d | The Resource Type ({name}) could not be found. | 资源类型不存在。name 为资源类型名。 |
 
-资源编排
+### 7.8 模板相关接口
 
-### 模板相关接口
+#### 7.8.1 ValidateTemplate
 
-#### ValidateTemplate
+调用ValidateTemplate接口验证将要创建资源栈的模板。
 
 **请求参数**
 
@@ -4055,8 +4254,6 @@ update. In this mode, WaitCondition.Count should reference an incremental value 
 |---|---|---|---|
 | Description | String | No description | 描述此资源栈模板的相关信息。 |
 
-资源编排
-
 | Parameters | List | [{"Description": "", "Label": "param integer", _ "NoEcho": "false", "ParameterKey": "param integer", _ "Type": "Number"},{ "Description": "", "Label": "param float", _ "NoEcho": "false", "ParameterKey": "param float", _ "Type": "Number"}] | 输入参数。 输入参数中，定义了通过此模板创建资源栈时需要指定的参数，这些参数用来定制每次资源栈创建的细节，例如：用户名、密码、环境相关的 ECS规格等。 |
 |---|---|---|---|
 | RequestId | String | B288A0BE-D927- 4888-B0F7- B35EF84B6E6 | 请求ID。 |
@@ -4069,9 +4266,10 @@ update. In this mode, WaitCondition.Count should reference an incremental value 
 http(s)://ros.aliyuncs.com/?Action=ValidateTemplate &TemplateURL=oss://ros/template/demo
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ValidateTemplateResponse>
        <Description type="string">No description</Description>
        <Parameters class="array">
               <Parameter class="object">
@@ -4098,9 +4296,9 @@ http(s)://ros.aliyuncs.com/?Action=ValidateTemplate &TemplateURL=oss://ros/templ
               <Parameter class="object">
 ```
 
-资源编排 j
+`j`
 
-```xml
+```
                      <Description type="string"></Description>
                      <Label type="string">param_json_list</Label>
                      <NoEcho type="string">false</NoEcho>
@@ -4147,106 +4345,132 @@ http(s)://ros.aliyuncs.com/?Action=ValidateTemplate &TemplateURL=oss://ros/templ
               </Parameter>
        </Parameters>
        <RequestId type="string">B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</ValidateTemplateResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
    "Description": "No description",
    "Parameters": [
-{
 ```
 
-资源编排
+`{` `{`
 
 ```json
-       {
            "Description": "",
            "Label": "param_integer",
            "NoEcho": "false",
            "ParameterKey": "param_integer",
            "Type": "Number"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
            "Label": "param_float",
            "NoEcho": "false",
            "ParameterKey": "param_float",
            "Type": "Number"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
            "Label": "param_bool",
            "NoEcho": "false",
            "ParameterKey": "param_bool",
            "Type": "Boolean"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
            "Label": "param_json_list",
            "NoEcho": "false",
            "ParameterKey": "param_json_list",
            "Type": "Json"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Default": {
                "c": []
-           },
+```
+
+`},`
+
+```json
            "Description": "",
            "Label": "param_has_default",
            "NoEcho": "false",
            "ParameterKey": "param_has_default",
            "Type": "Json"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
            "Label": "UpdateVersion",
            "NoEcho": "false",
            "ParameterKey": "UpdateVersion",
            "Type": "Number"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
            "Label": "param_str",
            "NoEcho": "false",
            "ParameterKey": "param_str",
            "Type": "String"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
 "Label":"paramlist",
 ```
-
-资源编排
 
 ```json
            Label: param_list,
            "NoEcho": "false",
            "ParameterKey": "param_list",
            "Type": "CommaDelimitedList"
-       },
-       {
+```
+
+`},` `{`
+
+```json
            "Description": "",
            "Label": "param_json_dict",
            "NoEcho": "false",
            "ParameterKey": "param_json_dict",
            "Type": "Json"
-       }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`}`
 
 | 错误代码 | 错误信息 | Http状态码 | 描述 |
 |---|---|---|---|
 | InvalidTemplate | {reason}. | 400 | 模板不正确，reason为具体原因。 |
 
-#### GetTemplate
+#### 7.8.2 GetTemplate
+
+调用GetTemplate接口查询模板详情。
 
 **请求参数**
 
@@ -4263,8 +4487,6 @@ http(s)://ros.aliyuncs.com/?Action=ValidateTemplate &TemplateURL=oss://ros/templ
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-资源编排
-
 | RequestId | String | B288A0BE-D927- 4888-B0F7- B35EF84B6E6 | 请求ID。 |
 |---|---|---|---|
 | TemplateBody | String | {\"ROSTemplateFo rmatVersion\": \"2015-09-01\"} | 模板的结构。 |
@@ -4274,32 +4496,37 @@ http(s)://ros.aliyuncs.com/?Action=ValidateTemplate &TemplateURL=oss://ros/templ
 请求示例
 
 ```
-&RegionId=cn-hangzhou
+http(s)://ros.aliyuncs.com/?Action=GetTemplate &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
+<GetTemplateResponse>
         <TemplateBody>{"ROSTemplateFormatVersion": "2015-09-01", "Resources":
 {"dummy2": {"Type": "ALIYUN::DEBUG::Dummy", "Properties": {"Map": {"Ref": "param_has_default"}, "List": {"Ref": "param_list"}}}, "dummy": {"Type": "ALIYUN::DEBUG::Dummy", "Properties": {"Map": {"Ref": "param_json_dict"}, "String": {"R ef": "param_str"}, "List": {"Ref": "param_json_list"}, "Number": {"Ref": "param_float"}, "Bool": {"Ref": "param_bool"}, "Integer": {"Ref": "param_integer"}}}, " nested": {"Type": "ALIYUN::ROS::Stack", "Properties": {"TemplateURL": "oss://nested-sta ck/simple/nested_demo", "TimeoutMins": 16}}, "WaitConditionHandle": {"Type": "ALIYUN::R OS::WaitConditionHandle", "Properties": {"UpdateVersion": {"Ref": "UpdateVersion"}}}}, "Parameters": {"param_integer": {"Type": "Number"}, "param_float": {"Type": "Number"}, "param_bool": {"Type": "Boolean"}, "param_json_list": {"Type": "Json"}, "param_has_default": {"Default": "{\"c\": []}", "Type": "Json"}, "UpdateVersion": {"Typ e": "Number"}, "param_str": {"Type": "String"}, "param_list": {"Type": "CommaDelimitedList"}, "param_json_dict": {"Type": "Json"}}, "Outputs": {"param_integer": {"Value": {"Ref": "param_integer"}}, "param_float": {"Value": {"Ref": "param_float"}}, "param_bool": {"Value": {"Ref": "param_bool"}}, "param_json_list": {"V alue": {"Ref": "param_json_list"}}, "param_has_default": {"Value": {"Ref": "param_has_default"}}, "param_str": {"Value": {"Ref": "param_str"}}, "CurlCli": {"Value ": {"Fn::GetAtt": ["WaitConditionHandle", "CurlCli"]}}, "param_list": {"Value": {"Ref": "param_list"}}, "param_json_dict": {"Value": {"Ref": "param_json_dict"}}}} </TemplateBody>
         <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</GetTemplateResponse>
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式 `{`
 
 ```json
-{
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F",
    "TemplateBody": "{\"ROSTemplateFormatVersion\": \"2015-09-01\", \"Resources\": {\"du
-mmy2\": {\"Type\": \"ALIYUN::DEBUG::Dummy\", \"Properties\": {\"Map\": {\"Ref\": \"para m_has_default\"}, \"List\": {\"Ref\": \"param_list\"}}}, \"dummy\": {\"Type\": \"ALIYUN ::DEBUG::Dummy\", \"Properties\": {\"Map\": {\"Ref\": \"param_json_dict\"}, \"String\": {\"Ref\": \"param_str\"}, \"List\": {\"Ref\": \"param_json_list\"}, \"Number\": {\"Ref\ ": \"param_float\"}, \"Bool\": {\"Ref\": \"param_bool\"}, \"Integer\": {\"Ref\": \"para m_integer\"}}}, \"nested\": {\"Type\": \"ALIYUN::ROS::Stack\", \"Properties\": {\"Templ ateURL\": \"oss://nested-stack/simple/nested_demo\", \"TimeoutMins\": 16}}, \"WaitCondi tionHandle\": {\"Type\": \"ALIYUN::ROS::WaitConditionHandle\", \"Properties\": {\"Updat eVersion\": {\"Ref\": \"UpdateVersion\"}}}}, \"Parameters\": {\"param_integer\": {\"Typ e\": \"Number\"}, \"param_float\": {\"Type\": \"Number\"}, \"param_bool\": {\"Type\": \ "Boolean\"}, \"param_json_list\": {\"Type\": \"Json\"}, \"param_has_default\": {\"Defau lt\": \"{\\\"c\\\": []}\", \"Type\": \"Json\"}, \"UpdateVersion\": {\"Type\": \"Number\"}, \"param_str\": {\"Type\": \"String\"}, \"param_list\": {\"Type\": \"CommaD elimitedList\"}, \"param_json_dict\": {\"Type\": \"Json\"}}, \"Outputs\": {\"param_integer\": {\"Value\": {\"Ref\": \"param_integer\"}}, \"param_float\": {\"Valu e\": {\"Ref\": \"param_float\"}}, \"param_bool\": {\"Value\": {\"Ref\": \"param_bool\"}}, \"param_json_list\": {\"Value\": {\"Ref\": \"param_json_list\"}}, \"p aram_has_default\": {\"Value\": {\"Ref\": \"param_has_default\"}}, \"param_str\": {\"Va lue\": {\"Ref\": \"param_str\"}}, \"CurlCli\": {\"Value\": {\"Fn::GetAtt\": [\"WaitCond itionHandle\", \"CurlCli\"]}}, \"param_list\": {\"Value\": {\"Ref\": \"param_list\"}}, \"param_json_dict\": {\"Value\": {\"Ref\": \"param_json_dict\"}}}}" }
+mmy2\": {\"Type\": \"ALIYUN::DEBUG::Dummy\", \"Properties\": {\"Map\": {\"Ref\": \"para m_has_default\"}, \"List\": {\"Ref\": \"param_list\"}}}, \"dummy\": {\"Type\": \"ALIYUN ::DEBUG::Dummy\", \"Properties\": {\"Map\": {\"Ref\": \"param_json_dict\"}, \"String\": {\"Ref\": \"param_str\"}, \"List\": {\"Ref\": \"param_json_list\"}, \"Number\": {\"Ref\ ": \"param_float\"}, \"Bool\": {\"Ref\": \"param_bool\"}, \"Integer\": {\"Ref\": \"para m_integer\"}}}, \"nested\": {\"Type\": \"ALIYUN::ROS::Stack\", \"Properties\": {\"Templ ateURL\": \"oss://nested-stack/simple/nested_demo\", \"TimeoutMins\": 16}}, \"WaitCondi tionHandle\": {\"Type\": \"ALIYUN::ROS::WaitConditionHandle\", \"Properties\": {\"Updat eVersion\": {\"Ref\": \"UpdateVersion\"}}}}, \"Parameters\": {\"param_integer\": {\"Typ e\": \"Number\"}, \"param_float\": {\"Type\": \"Number\"}, \"param_bool\": {\"Type\": \ "Boolean\"}, \"param_json_list\": {\"Type\": \"Json\"}, \"param_has_default\": {\"Defau lt\": \"{\\\"c\\\": []}\", \"Type\": \"Json\"}, \"UpdateVersion\": {\"Type\": \"Number\"}, \"param_str\": {\"Type\": \"String\"}, \"param_list\": {\"Type\": \"CommaD elimitedList\"}, \"param_json_dict\": {\"Type\": \"Json\"}}, \"Outputs\": {\"param_integer\": {\"Value\": {\"Ref\": \"param_integer\"}}, \"param_float\": {\"Valu e\": {\"Ref\": \"param_float\"}}, \"param_bool\": {\"Value\": {\"Ref\": \"param_bool\"}}, \"param_json_list\": {\"Value\": {\"Ref\": \"param_json_list\"}}, \"p aram_has_default\": {\"Value\": {\"Ref\": \"param_has_default\"}}, \"param_str\": {\"Va lue\": {\"Ref\": \"param_str\"}}, \"CurlCli\": {\"Value\": {\"Fn::GetAtt\": [\"WaitCond itionHandle\", \"CurlCli\"]}}, \"param_list\": {\"Value\": {\"Ref\": \"param_list\"}}, \"param_json_dict\": {\"Value\": {\"Ref\": \"param_json_dict\"}}}}"
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 | 404 | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 模板不存在。ID为模板 ID。 |
 
-#### DeleteTemplate
+#### 7.8.3 DeleteTemplate
+
+调用DeleteTemplate接口删除模板。
 
 **请求参数**
 
@@ -4307,8 +4534,6 @@ mmy2\": {\"Type\": \"ALIYUN::DEBUG::Dummy\", \"Properties\": {\"Map\": {\"Ref\":
 |---|---|---|---|---|
 | Action | String | 是 | DeleteTemplate | 要执行的操作，取值： DeleteTemplate。 |
 | TemplateId | String | 是 | 5ecd1e10-b0e9- 4389-a565- e4c15efc**** | 模板ID。 |
-
-资源编排
 
 **返回数据**
 
@@ -4324,25 +4549,29 @@ mmy2\": {\"Type\": \"ALIYUN::DEBUG::Dummy\", \"Properties\": {\"Map\": {\"Ref\":
 http(s)://ros.aliyuncs.com/?Action=DeleteTemplate &TemplateId=5ecd1e10-b0e9-4389-a565-e4c15efc****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteTemplateResponse>
           <RequestId>8C5D90E1-66B6-496C-9371-3807F8DA80A8</RequestId>
+</DeleteTemplateResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "8C5D90E1-66B6-496C-9371-3807F8DA80A8"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 模板不存在。 |
 
-#### ListTemplates
+#### 7.8.4 ListTemplates
+
+调用ListTemplates接口查询模板列表。
 
 **请求参数**
 
@@ -4350,8 +4579,6 @@ http(s)://ros.aliyuncs.com/?Action=DeleteTemplate &TemplateId=5ecd1e10-b0e9-4389
 |---|---|---|---|---|
 | Action | String | 是 | ListTemplates | 要执行的操作，取值：ListTemplates。 |
 | TemplateName | String | 否 | MyTemplate | 模板名称。 长度不超过255个字符，必须以数字或英文字母开头，可包含数字、英文字母、短划线（-）和下划线（ ）。 _ |
-
-资源编排
 
 | PageNumber | Long | 否 | 10 | 模板列表的页码。 起始值：1。 默认值：1。 |
 |---|---|---|---|---|
@@ -4367,22 +4594,27 @@ http(s)://ros.aliyuncs.com/?Action=DeleteTemplate &TemplateId=5ecd1e10-b0e9-4389
 | PageSize | Integer | 10 | 分页查询时设置的每页行数。 |
 | PageNumber | Integer | 1 | 模板列表的页码。 起始值：1。 |
 | TotalCount | Integer | 3 | 模板总数。 |
-| Templates | Array of Template |  | 模板列表。 |
+| Templates | Array of Template |   | 模板列表。 |
 | CreateTime | String | 2019-10- 15T08:17:14.0000 00 | 创建时间。 |
 | Description | String | test-description | 模板描述。 |
 | TemplateId | String | 4d4f5aa2-3260- 4e47-863b- 763fbb12**** | 模板ID。 |
 | TemplateNam e | String | test-list-templates | 模板名称。 |
-
-资源编排
 
 | UpdateTime | String | 2019-10- 15T08:17:14.0000 00 | 更新时间。 |
 |---|---|---|---|
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://ros.aliyuncs.com/?Action=ListTemplates
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListTemplatesResponse>
     <PageNumber>1</PageNumber>
     <PageSize>10</PageSize>
     <RequestId>C3A8413B-1F16-4DED-AC3E-61A00718DE8A</RequestId>
@@ -4408,47 +4640,59 @@ http(s)://ros.aliyuncs.com/?Action=DeleteTemplate &TemplateId=5ecd1e10-b0e9-4389
        <UpdateTime>2019-10-15T08:17:14.000000</UpdateTime>
     </Templates>
     <TotalCount>3</TotalCount>
+</ListTemplatesResponse>
 ```
 
-`JSON` 格式资源编排
+`JSON` 格式 `{`
 
 ```json
-{
     "PageNumber": 1,
     "PageSize": 10,
     "RequestId": "C3A8413B-1F16-4DED-AC3E-61A00718DE8A",
     "Templates": [
-        {
+```
+
+`{`
+
+```json
             "CreateTime": "2019-10-15T08:17:15.000000",
             "Description": "test-description-update",
             "TemplateId": "c8b8bd07-c488-4302-ac15-b88ef073****",
             "TemplateName": "test-template-name-update",
             "UpdateTime": "2019-10-15T08:17:15.000000"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "CreateTime": "2019-10-15T08:17:15.000000",
             "Description": "test-description",
             "TemplateId": "4d4f5aa2-3260-4e47-863b-763fbb12****",
             "TemplateName": "test-list-templates-2",
             "UpdateTime": "2019-10-15T08:17:15.000000"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "CreateTime": "2019-10-15T08:17:14.000000",
             "Description": "test-description",
             "TemplateId": "1e808bb6-c2d1-4196-98a3-3b2cb2a4****",
             "TemplateName": "test-list-templates-1",
             "UpdateTime": "2019-10-15T08:17:14.000000"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount": 3
-}
 ```
 
-#### CreateTemplate
+`}`
+
+#### 7.8.5 CreateTemplate
+
+调用CreateTemplate接口创建自定义模板。
 
 **请求参数**
 
@@ -4456,8 +4700,6 @@ http(s)://ros.aliyuncs.com/?Action=DeleteTemplate &TemplateId=5ecd1e10-b0e9-4389
 |---|---|---|---|---|
 | Action | String | 是 | CreateTemplate | 要执行的操作，取值： CreateTemplate。 |
 | TemplateName | String | 是 | MyTemplate | 模板的名称。 长度不超过255个字符，必须以数字或英文字母开头，可包含数字、英文字母、短划线（-）和下划线（ ）。 _ |
-
-资源编排
 
 | TemplateURL | String | 否 | oss://ros/templat e/demo | 包含模板主体的文件的位置。URL必须指向位于Web服务器（HTTP或HTTPS）或阿里云OSS存储桶（例如： oss://ros/template/demo、 oss://ros/template/demo? RegionId=cn-hangzhou）中的模板，模板最大为524,288个字节。如果OSS地域未指定，默认与接口参数RegionId相同。 说明您可以指定 TemplateBody或TemplateURL参数，但不能同时指定。 URL的最大长度为：1024个字节。 |
 |---|---|---|---|---|
@@ -4479,21 +4721,23 @@ http(s)://ros.aliyuncs.com/?Action=DeleteTemplate &TemplateId=5ecd1e10-b0e9-4389
 http(s)://ros.aliyuncs.com/?Action=CreateTemplate &TemplateName=MyTemplate &TemplateURL=oss://ros/template/demo
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式资源编排
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<CreateTemplateResponse>
           <RequestId>8C5D90E1-66B6-496C-9371-3807F8DA80A8</RequestId>
           <TemplateId>5ecd1e10-b0e9-4389-a565-e4c15efc****</TemplateId>
+</CreateTemplateResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "8C5D90E1-66B6-496C-9371-3807F8DA80A8",
     "TemplateId": "5ecd1e10-b0e9-4389-a565-e4c15efc****"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -4504,14 +4748,14 @@ http(s)://ros.aliyuncs.com/?Action=CreateTemplate &TemplateName=MyTemplate &Temp
 | 400 | InvalidTemplateSectio n | The template section is invalid: {section}. | 模板包含无效的字段。 section为字段名。 |
 | 400 | InvalidTemplateVersio n | The template version is invalid: {reason}. | 模板版本不正确。reason 为具体原因。 |
 
-#### UpdateTemplate
+#### 7.8.6 UpdateTemplate
+
+调用UpdateTemplate接口更新模板。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-资源编排
 
 | Action | String | 是 | UpdateTemplate | 要执行的操作，取值： UpdateTemplate。 |
 |---|---|---|---|---|
@@ -4528,8 +4772,6 @@ http(s)://ros.aliyuncs.com/?Action=CreateTemplate &TemplateName=MyTemplate &Temp
 | RequestId | String | 8C5D90E1-66B6- 496C-9371- 3807F8DA80A8 | 请求ID。 |
 | TemplateId | String | 5ecd1e10-b0e9- 4389-a565- e4c15efc**** | 模板ID。 |
 
-资源编排
-
 **示例**
 
 请求示例
@@ -4538,21 +4780,23 @@ http(s)://ros.aliyuncs.com/?Action=CreateTemplate &TemplateName=MyTemplate &Temp
 http(s)://ros.aliyuncs.com/?Action=UpdateTemplate &TemplateId=5ecd1e10-b0e9-4389-a565-e4c15efc**** &TemplateURL=oss://ros/template/demo
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<UpdateTemplateResponse>
     <RequestId>8C5D90E1-66B6-496C-9371-3807F8DA80A8</RequestId>
     <TemplateId>5ecd1e10-b0e9-4389-a565-e4c15efc****</TemplateId>
+</UpdateTemplateResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "8C5D90E1-66B6-496C-9371-3807F8DA80A8",
     "TemplateId": "5ecd1e10-b0e9-4389-a565-e4c15efc****"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -4563,14 +4807,12 @@ http(s)://ros.aliyuncs.com/?Action=UpdateTemplate &TemplateId=5ecd1e10-b0e9-4389
 | 400 | InvalidTemplateRefere nce | The specified reference "{name}" (in {referencer}) is incorrect. | 模板包含不正确的引用。 name为引用名，referencer为引用者。 |
 | 400 | InvalidTemplateSectio n | The template section is invalid: {section}. | 模板包含无效的字段。 section为字段名。 |
 
-资源编排
-
 | 400 | InvalidTemplateVersio n | The template version is invalid: {reason}. | 模板版本不正确。reason 为具体原因。 |
 |---|---|---|---|
 
-#### GetTemplateSummary
+#### 7.8.7 GetTemplateSummary
 
-请求中至少指定StackId、ChangeSetId、TemplateId、TemplateBody或者TemplateURL其中一个参数，以确定查询对象。
+调用GetTemplateSummary接口获取新模板或者现有模板的信息。 请求中至少指定StackId、ChangeSetId、TemplateId、TemplateBody或者TemplateURL其中一个参数，以确定查询对象。
 
 **请求参数**
 
@@ -4583,8 +4825,6 @@ http(s)://ros.aliyuncs.com/?Action=UpdateTemplate &TemplateId=5ecd1e10-b0e9-4389
 | TemplateId | String | 否 | 5ecd1e10-b0e9- 4389-a565- e4c15efc**** | 模板ID。 |
 | TemplateURL | String | 否 | oss://ros/templat e/demo | 包含模板主体的文件的位置。URL必须指向位于Web服务器（HTTP或HTTPS）或阿里云OSS存储桶（例如： oss://ros/template/demo、 oss://ros/template/demo? RegionId=cn-hangzhou）中的模板，模板最大为524,288个字节。如果OSS地域未指定，默认与接口参数RegionId相同。 说明您必须指定 TemplateBody或TemplateURL参数，但不能同时指定。 URL的最大长度为：1024个字节。 |
 
-资源编排
-
 | ChangeSetId | String | 否 | 1f6521a4-05af- 4975-afe9- bc4b45ad**** | 更改集ID。 |
 |---|---|---|---|---|
 
@@ -4596,7 +4836,7 @@ http(s)://ros.aliyuncs.com/?Action=UpdateTemplate &TemplateId=5ecd1e10-b0e9-4389
 | Metadata | Map | {"key": "value"} | 模板中定义的Metadata。 |
 | Parameters | List | [{"Description":"", "Label":"Name", "NoEcho":"false", "ParameterKey":"N ame", "Type":"String"}] | 参数声明的列表。描述参数的属性。 |
 | RequestId | String | B288A0BE-D927- 4888-B0F7- B35EF84B6E6 | 请求ID。 |
-| ResourceIdenti fierSummaries | Array of ResourceIdenti fierSummary |  | 资源标识符摘要的列表。 摘要描述了导入操作的目标资源以及在导入过程中可以提供的用于标识目标资源的属性。例如： VpcId是ALIYUN::ECS::VPC资源的标识符属性。 |
+| ResourceIdenti fierSummaries | Array of ResourceIdenti fierSummary |   | 资源标识符摘要的列表。 摘要描述了导入操作的目标资源以及在导入过程中可以提供的用于标识目标资源的属性。例如： VpcId是ALIYUN::ECS::VPC资源的标识符属性。 |
 | LogicalResour ceIds | List | ["Vpc"] | 模板中类型为ResourceType的所有资源的逻辑 ID。 |
 | ResourceIdenti fiers | List | ["VpcId"] | 资源属性。用来标识目标资源。 例如：VpcId是 ALIYUN::ECS::VPC资源的标识符属性。 |
 | ResourceType | String | ALIYUN::ECS::VPC | 资源类型。 说明该资源类型支持资源导入。 |
@@ -4605,15 +4845,16 @@ http(s)://ros.aliyuncs.com/?Action=UpdateTemplate &TemplateId=5ecd1e10-b0e9-4389
 
 **示例**
 
-请求示例资源编排
+请求示例
 
 ```
 http(s)://ros.aliyuncs.com/?Action=GetTemplateSummary &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691**** &RegionId=cn-hangzhou &TemplateURL=oss://ros/template/demo
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<GetTemplateSummary>
     <Description>No description</Description>
     <Metadata></Metadata>
     <Parameters>
@@ -4659,8 +4900,6 @@ the default is empty.</Description>
        <Label>ResourceGroupId</Label>
 ```
 
-资源编排
-
 ```xml
        <NoEcho>false</NoEcho>
        <ParameterKey>ResourceGroupId</ParameterKey>
@@ -4694,52 +4933,65 @@ P address ranges and their subnets:
     </ResourceIdentifierSummaries>
     <ResourceTypes>ALIYUN::ECS::VPC</ResourceTypes>
     <Version>2015-09-01</Version>
+</GetTemplateSummary>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Description": "No description",
     "Metadata": {},
     "Parameters": [
-        {
+```
+
+`{`
+
+```json
             "Description": "Description of the vpc, [2, 256] characters. Do not fill or
 empty, the default is empty.",
             "Label": "Description",
             "NoEcho": "false",
             "ParameterKey": "Description",
             "Type": "String"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "Description": "Tags to attach to vpc. Max support 20 tags to add during
 create vpc. Each tag with two properties Key and Value, and Key is required.",
             "Label": "Tags",
             "MaxLength": 20,
 ```
 
-资源编排 a
+`a`
 
 ```
 egt
 ```
 
-: `0,`
+`:` `0,`
 
 ```json
             "NoEcho": "false",
             "ParameterKey": "Tags",
             "Type": "Json"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "Description": "IPv6 network cidr of the VPC.",
             "Label": "Ipv6CidrBlock",
             "MinLength": 1,
             "NoEcho": "false",
             "ParameterKey": "Ipv6CidrBlock",
             "Type": "String"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "AllowedValues": [
                 "True",
                 "true",
@@ -4757,43 +5009,53 @@ egt
             "NoEcho": "false",
             "ParameterKey": "EnableIpv6",
             "Type": "Boolean"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "Description": "Resource group id.",
             "Label": "ResourceGroupId",
             "NoEcho": "false",
             "ParameterKey": "ResourceGroupId",
             "Type": "String"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "Description": "Display name of the vpc instance, [2, 128] English or
 Chinese characters, must start with a letter or Chinese in size, can contain numbers, ' _' or '.', '-'",
             "Label": "VpcName",
             "NoEcho": "false",
             "ParameterKey": "VpcName",
             "Type": "String"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "Description": "The IP address range of the VPC in the CIDR block form. You
 can use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0.0/12 ( Default)\n192.168.0.0/16",
             "Label": "CidrBlock",
             "NoEcho": "false",
             "ParameterKey": "CidrBlock",
             "Type": "String"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId": "FD70598C-3F4B-4E66-9A76-67F2E2D36938",
 ```
 
-资源编排
-
 ```json
     "ResourceIdentifierSummaries": [
-        {
+```
+
+`{`
+
+```json
             "LogicalResourceIds": [
                 "Vpc"
 ```
@@ -4809,10 +5071,9 @@ can use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0
 
 ```json
             "ResourceType": "ALIYUN::ECS::VPC"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "ResourceTypes": [
@@ -4823,8 +5084,9 @@ can use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0
 
 ```json
     "Version": "2015-09-01"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -4832,9 +5094,11 @@ can use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 | 404 | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 模板不存在。ID为模板 ID。 |
 
-### 其他接口
+### 7.9 其他接口
 
-#### DescribeRegions
+#### 7.9.1 DescribeRegions
+
+调用DescribeRegions接口查询地域列表。
 
 **请求参数**
 
@@ -4843,13 +5107,11 @@ can use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0
 | Action | String | 是 | DescribeRegions | 要执行的操作，取值： DescribeRegions。 |
 | AcceptLanguage | String | 否 | zh-CN | 根据汉语、英语和日语筛选返回结果。 取值： zh-CN（默认值） en-US ja |
 
-资源编排
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Regions | Array of Region |  | 地域信息集合。 |
+| Regions | Array of Region |   | 地域信息集合。 |
 | LocalName | String | 华东1（杭州） | 可用地域本地语言名。 |
 | RegionEndpoin t | String | ros.aliyuncs.com | 地域访问地址。 |
 | RegionId | String | cn-hangzhou | 地域ID。 |
@@ -4863,9 +5125,10 @@ can use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0
 http(s)://ros.aliyuncs.com/?Action=DescribeRegions
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DescribeRegionsResponse>
     <Regions>
         <Region>
             <RegionId>cn-qingdao</RegionId>
@@ -4892,7 +5155,7 @@ http(s)://ros.aliyuncs.com/?Action=DescribeRegions
             <RegionEndpoint>ros.aliyuncs.com</RegionEndpoint>
 ```
 
-华东资源编排
+华东
 
 ```xml
             <LocalName>华东 1</LocalName>
@@ -4912,7 +5175,7 @@ http(s)://ros.aliyuncs.com/?Action=DescribeRegions
             <RegionEndpoint>ros.aliyuncs.com</RegionEndpoint>
 ```
 
-`<LocalName>`西南1（成都）`</LocalName>`
+`<LocalName>`西南`1`（成都）`</LocalName>`
 
 ```xml
         </Region>
@@ -4983,7 +5246,7 @@ http(s)://ros.aliyuncs.com/?Action=DescribeRegions
             <RegionId>us-west-1</RegionId>
 ```
 
-`<R` i Ed
+`<R` `i` `E``d`
 
 ```
 it>
@@ -4995,13 +5258,11 @@ it>
 </R
 ```
 
-i Ed
+`i` `E``d`
 
 ```
 it>
 ```
-
-资源编排
 
 ```xml
             <RegionEndpoint>ros.aliyuncs.com</RegionEndpoint>
@@ -5036,171 +5297,169 @@ it>
         </Region>
     </Regions>
     <RequestId>59F0F0A0-A637-4292-9B91-251EF5010913</RequestId>
+</DescribeRegionsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Regions": [
-        {
+```
+
+`{`
+
+```json
             "LocalName": "华北 1",
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-qingdao"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "LocalName": "华北 2",
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-beijing"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "LocalName": "华北 3",
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-zhangjiakou"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "LocalName": "华北 5",
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-huhehaote"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "LocalName": "华东 1",
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-hangzhou"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "LocalName": "华东 2",
             "RegionEndpoint": "ros.aliyuncs.com",
 ```
 
-资源编排
-
 ```json
             "RegionId": "cn-shanghai"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "LocalName": "华南 1",
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-shenzhen"
-        },
-        {
 ```
 
-`"LocalName": "`西南1（成都）`",`
+`},` `{` `"LocalName": "`西南`1`（成都）`",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "cn-chengdu"
-        },
-        {
 ```
 
-`"LocalName": "`亚太东北 `1 (`东京`)",`
+`},` `{` `"LocalName": "`亚太东北 `1 (`东京`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "ap-northeast-1"
-        },
-        {
 ```
 
-`"LocalName": "`亚太东南 `1 (`新加坡`)",`
+`},` `{` `"LocalName": "`亚太东南 `1 (`新加坡`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "ap-southeast-1"
-        },
-        {
 ```
 
-`"LocalName": "`亚太东南 `2 (`悉尼`)",`
+`},` `{` `"LocalName": "`亚太东南 `2 (`悉尼`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "ap-southeast-2"
-        },
-        {
 ```
 
-`"LocalName": "`亚太东南 `3 (`吉隆坡`)",`
+`},` `{` `"LocalName": "`亚太东南 `3 (`吉隆坡`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "ap-southeast-3"
-        },
-        {
 ```
 
-`"LocalName": "`亚太东南 `5 (`雅加达`)",`
+`},` `{` `"LocalName": "`亚太东南 `5 (`雅加达`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "ap-southeast-5"
-        },
-        {
 ```
 
-`"LocalName": "`亚太南部 `1 (`孟买`)",`
+`},` `{` `"LocalName": "`亚太南部 `1 (`孟买`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "ap-south-1"
-        },
-        {
 ```
 
-`"LocalName": "`美国东部 `1 (`弗吉尼亚`)",`
+`},` `{` `"LocalName": "`美国东部 `1 (`弗吉尼亚`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "us-east-1"
-        },
-        {
 ```
 
-`"LocalName": "`美国西部 `1 (`硅谷`)",`
+`},` `{` `"LocalName": "`美国西部 `1 (`硅谷`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "us-west-1"
-        },
-        {
 ```
 
-`"LocalName": "`英国 (伦敦`)",` 资源编排
+`},` `{` `"LocalName": "`英国 `(`伦敦`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "eu-west-1"
-        },
-        {
 ```
 
-`"LocalName": "`中东东部 `1 (`迪拜`)",`
+`},` `{` `"LocalName": "`中东东部 `1 (`迪拜`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "me-east-1"
-        },
-        {
 ```
 
-`"LocalName": "`欧洲中部 `1 (`法兰克福`)",`
+`},` `{` `"LocalName": "`欧洲中部 `1 (`法兰克福`)",`
 
 ```json
             "RegionEndpoint": "ros.aliyuncs.com",
             "RegionId": "eu-central-1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId": "59F0F0A0-A637-4292-9B91-251EF5010913"
-}
 ```
 
-#### SignalResource
+`}`
+
+#### 7.9.2 SignalResource
+
+调用SignalResource接口发送信号。
 
 **请求参数**
 
@@ -5212,8 +5471,6 @@ it>
 | LogicalResourceI d | String | 是 | WebServer | 资源逻辑ID，即模板中资源的名称。 |
 | Status | String | 是 | SUCCESS | 信号的状态。故障信号会导致无法创建或更新资源栈，如果所有信号都是警告信号，则将无法创建或更新资源栈。取值： SUCCESS FAILURE WARNING |
 | UniqueId | String | 是 | 27c7347b-352a- 4377-accf- 63d361c1**** | 信号的唯一ID。长度为1~64个字符。如果向单个资源发送多个信号（例如：发信号通知等待条件），则每个信号都需要不同的信息ID。 |
-
-资源编排
 
 | ClientToken | String | 否 | 123e4567-e89b- 12d3-a456- 42665544**** | 保证请求的幂等性。 该值由客户端生成， 并且必须是全局唯一的。 长度最大为64个字符，可包含英文字母、 数字、短划线（-）和下划线（ ）。 _ |
 |---|---|---|---|---|
@@ -5232,31 +5489,31 @@ it>
 http(s)://ros.aliyuncs.com/?Action=SignalResource &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691**** &LogicalResourceId=WebServer &Status=SUCCESS &UniqueId=27c7347b-352a-4377-accf-63d361c1****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<SignalResourceResponse>
       <RequestId>B288A0BE-D927-4888-B0F7-B35EF84B6E6F</RequestId>
+</SignalResourceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
    "RequestId": "B288A0BE-D927-4888-B0F7-B35EF84B6E6F"
-}
 ```
+
+`}`
 
 | HttpCode | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | ResourceNotAvailable | The Resource ({name}) is not available. | 资源处于不可用状态。 name为资源名。 |
 | 404 | ResourceNotFound | The Resource ({name}) could not be found in Stack {stack}. | 资源栈中不存某资源。 name为资源名，stack为资源栈名称或ID。 |
 
-资源编排
-
 | 404 | StackNotFound | The Stack ({name}) could not be found. | 资源栈不存在。name为资源栈名称或ID。 |
 |---|---|---|---|
 
-#### ListStackOperationRisks
+#### 7.9.3 ListStackOperationRisks
 
 调用ListStackOperationRisks接口检测删除资源栈操作可能涉及的高风险资源，并返回每个资源对应的风险原因。
 
@@ -5272,8 +5529,6 @@ http(s)://ros.aliyuncs.com/?Action=SignalResource &RegionId=cn-hangzhou &StackId
 | RamRoleName | String | 否 | test-role | RAM角色名称。 如果指定RAM角色，ROS将根据RAM角色的权限创建资源栈，使用角色的凭证代表用户进行接口调用。 如果不指定RAM角色，ROS将使用当前账号相关权限创建资源栈。 RAM角色名称最大长度为64个字节。 |
 | RetainAllResourc es | Boolean | 否 | false | 是否保留该资源栈下的所有资源。取值： true：保留。 false（默认值）：不保留。 说明当OperationType取值为DeleteStack时该参数有效。 |
 
-资源编排
-
 | RetainResources .N | RepeatL ist | 否 | WebServer | 需要保留资源的列表。 说明当OperationType取值为DeleteStack时该参数有效。 |
 |---|---|---|---|---|
 
@@ -5282,7 +5537,7 @@ http(s)://ros.aliyuncs.com/?Action=SignalResource &RegionId=cn-hangzhou &StackId
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 72108E7A-E874- 4A5E-B22C- A61E94AD12CD | 请求ID。 |
-| RiskResources | Array of Resource |  | 风险信息。 |
+| RiskResources | Array of Resource |   | 风险信息。 |
 | Code | String | NoPermission | 对资源进行风险检测失败时的错误码，风险检测正常时不返回该参数。 |
 | LogicalResour ceId | String | MySG | 资源逻辑ID，即模板定义的资源名称。 |
 | Message | String | You are not authorized to complete this action. | 对资源进行风险检测失败时的错误信息，风险检测正常时不返回该参数。 |
@@ -5294,15 +5549,16 @@ http(s)://ros.aliyuncs.com/?Action=SignalResource &RegionId=cn-hangzhou &StackId
 
 **示例**
 
-资源编排请求示例
+请求示例
 
 ```
-http(s)://ros.aliyuncs.com/?Action=ListStackOperationRisks &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
+http(s)://ros.aliyuncs.com/?Action=ListStackOperationRisks &OperationType=DeleteStack &RegionId=cn-hangzhou &StackId=4a6c9851-3b0f-4f5f-b4ca-a14bf691****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<ListStackOperationRisks>
     <RequestId>72108E7A-E874-4A5E-B22C-A61E94AD12CD</RequestId>
     <RiskResources>
        <LogicalResourceId>MySG</LogicalResourceId>
@@ -5312,37 +5568,34 @@ http(s)://ros.aliyuncs.com/?Action=ListStackOperationRisks &RegionId=cn-hangzhou
 ecurity group.</Reason>
        <RiskType>Referenced</RiskType>
     </RiskResources>
+</ListStackOperationRisks>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "772108E7A-E874-4A5E-B22C-A61E94AD12CD",
   "RiskResources": [
-    {
+```
+
+`{`
+
+```json
       "LogicalResourceId": "MySG",
       "PhysicalResourceId": "sg-bp1dpioafqphedg9****",
       "ResourceType": "ALIYUN::ECS::SecurityGroup",
       "Reason": "There are some ECS instances (i-bp18el96s4wq635e****) depending on the
 security group.",
       "RiskType": "Referenced"
-    }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+## 8 附录
 
-资源编排
+### 8.1 STS概要
 
-## 附录
-
-### STS概要
-
-#### 什么是STS
+#### 8.1.1 什么是STS
 
 阿里云STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。RAM提供RAM用户和RAM角色两种身份。其中，RAM角色不具备永久身份凭证，而只能通过STS获取可以自定义时效和访问权限的临时身份凭证，即安全令牌（STS Token）。
 
@@ -5354,7 +5607,7 @@ security group.",
 
 使用STS Token，减少长期访问密钥（Accesskey）泄露的风险。 STS Token具有时效性，可以自定义有效期，到期后将自动失效，无需定期轮换。 可以为STS Token绑定自定义权限策略，提供更加灵活和精细的云资源授权。
 
-#### AssumeRole
+#### 8.1.2 AssumeRole
 
 RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证STS Token。该接口中RAM用户扮演的是可信实体为阿里云账号类型的RAM角色。
 
@@ -5365,8 +5618,6 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | Action | String | 是 | AssumeRole | 要执行的操作。取值：AssumeRole |
 | RoleArn | String | 是 | acs:ram::123456 789012****:role/ adminrole | 要扮演的RAM角色ARN。 该角色是可信实体为阿里云账号类型的RAM 角色。 |
 | RoleSessionNa me | String | 是 | alice | 角色会话名称。 该参数为用户自定义参数。通常设置为调用该API的用户身份，例如：用户名。在操作审计日志中，即使是同一个RAM角色执行的操作，也可以根据不同的RoleSessionName来区分实际操作者，以实现用户级别的访问审计。 长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-） 和下划线（ ）。 _ |
-
-资源编排
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -5390,7 +5641,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 
 **引入Pom依赖**
 
-资源编排操作需要依赖阿里云核心库来实现，在Pom中引入阿里云核心库包的操作如下:
+操作需要依赖阿里云核心库来实现，在Pom中引入阿里云核心库包的操作如下:
 
 ```xml
     <dependency>
@@ -5399,6 +5650,8 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
       <version>[4.4.9,5.0.0)</version>
     </dependency>
 ```
+
+**调用API获取STS AccessKey三元组**
 
 以下代码示例为通过调用 `Sts::AssumeRole::2015-04-01` 获取STS AccessKey三元组信息。
 
@@ -5448,13 +5701,13 @@ vpc.${global:region}.${global:internet-domain}
 if(Sti Util
 ```
 
-iE
+`i``E` `t``(`
 
 ```
-t( Rl))
+Rl))
 ```
 
-t 资源编排
+`t`
 
 ```
             if (StringUtils.isEmpty(assumeRole)) return;
@@ -5476,14 +5729,13 @@ t 资源编排
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **调用示例**
 
-下列代码以调用ECS的 `DescribeZones` 接口为示例。 资源编排
+下列代码以调用ECS的 `DescribeZones` 接口为示例。
 
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -5522,13 +5774,13 @@ stsAk、stsSk
         request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,资源集`id`
+`//` 非必填`,`资源集`id`
 
 ```
         // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,组织`id`
+`//` 必填`,`组织`id`
 
 ```java
         request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -5541,12 +5793,9 @@ stsAk、stsSk
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
-资源编排
+`}` `}` `}`
 
 **错误码**
 

@@ -5,7 +5,7 @@ doc_version: "20250208"
 pdf_pages: 152
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Defined Storage Operations and Maintenance Guide 20250208.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Defined%20Storage%20Operations%20and%20Maintenance%20Guide%2020250208.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Defined Storage Operations and Maintenance Guide 20250208
@@ -143,6 +143,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key. ager Operations Console
@@ -341,7 +344,7 @@ click the **Users** tab.
 
 On the CDS-Overview page, you can view the overall information of Cloud Defined Storage (CDS), such as the total capacity usage, current alerts, used capacity distribution in different storage services, hardware resources, storage resources, and cluster status. This way, you can understand the overall information of CDS and handle exceptions at the earliest opportunity.
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, click **CDS-Overview**.
 3. On the **CDS-Overview** page, view the following information of CDS.
 Overview information On the CDS-Overview page, you can view the overall information of CDS, such as the capacity usage, current alerts, hardware resources, and storage resources. The following table describes the metrics.
@@ -373,8 +376,10 @@ The following table describes the resources that can be managed by CDS Ops.
 | Cloud disk | Frontend ID | A block storage resource for Elastic Compute Service (ECS). Cloud disks use a distributed triplicate mechanism and support the erasure coding (EC) replica policy. |
 | Bucket | Bucket name | A container for objects that are stored in Object Storage Service (OSS). Every object in OSS is contained in a bucket. |
 
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Resource Management > Resource**
 **Search**.
 3. On the **Resource Search** page, enter a keyword in the search box and select a resource
@@ -391,7 +396,7 @@ On the Cluster page, you can view all the clusters that are managed in the Cloud
 **Manage clusters in the cluster list**
 
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Resource Management > Cluster**.
 3. On the **Cluster** page, view the clusters and perform operations on the clusters based on
 your business requirements. The following table describes the operations.
@@ -424,7 +429,7 @@ On the Host page, you can view the hosts of all clusters and click the name of a
 **Manage hosts in the host list**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Resource Management > Host**.
 3. On the **Host** page, view the hosts in the host list and perform operations on the hosts
 based on your business requirements. The following table describes the operations that you can perform on the hosts.
@@ -451,7 +456,7 @@ On the Hard Disk page, you can view the information of hard disks in all cluster
 **Manage hard disks in the hard disk list**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Resource Management > Hard Disk**.
 3. On the **Hard Disk** page, view the hard disks in the hard disk list and perform operations on
 the hard disks based on your business requirements. The following table describes the operations that you can perform.
@@ -505,8 +510,11 @@ OSS and EBS can be deployed together only in CDS clusters. You cannot use CDS Op
 #### 6.2.1 Overview of EBS clusters
 
 On the Cluster O&M page of Elastic Block Storage (EBS) clusters, you can view the total capacity usage, current alerts, number of disks, and number of snapshots of the EBS clusters. You can also view the information about the deployed EBS clusters. This way, you can understand the overall information about the clusters and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. On the **Cluster O&M** page, view the overall information about EBS clusters.
 Overall information about EBS clusters On the Cluster O&M page, you can view the total capacity usage, current alerts, number of disks, and number of snapshots of all EBS clusters. The following table describes the metrics.
@@ -531,8 +539,11 @@ Clusters can be sorted in ascending or descending order by name, total capacity,
 **cluster**
 
 On the Overview tab of a cluster, you can view the physical capacity usage, number of disks, number of snapshots, and inspection items of the cluster. This way, you can understand the overall information about the cluster and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -568,7 +579,7 @@ You can click the name of a metric to show or hide the monitoring data in a char
 
 On the Capacity tab of an Elastic Block Storage (EBS) cluster, you can view the logical capacity usage, physical capacity usage, capacity distribution, physical capacity usage trend, and inventory capacity trend of the EBS cluster.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -576,7 +587,11 @@ manage and click **O&M**.
 > **Note:** You can also directly select the cluster in the upper-right corner of the page to view and manage the cluster.
 
 4. Click the **Capacity** tab to view the capacity information about the cluster.
-Logical Capacity Usage: You can view the used logical capacity, total logical capacity, and percentage of used logical capacity. The total logical capacity indicates the maximum volume of data that can be written. It includes the storage space that is occupied by internal logic modules, such as the metadata, GC, and recycle bin. The used logical capacity indicates the volume of data that has been written. Click **More** in the upper-right corner of the Logical Capacity Usage section. On the Overview tab, view the number of replicas in the cluster. Physical Capacity Usage: You can view the used physical capacity, total physical capacity, and percentage of used physical capacity. The total physical capacity indicates the maximum size of data that can be written to the cluster. The used physical capacity indicates the used physical capacity reported by PANGU. Click**More** in the upper-right corner of the Physical Capacity Usage section. On the Overview tab, view the details of the bare disk capacity, total capacity, system reserved capacity, OP reserved storage capacity, used capacity, and available capacity. If the inventory capacity is sufficient and the physical capacity usage reaches 80%, disk creation is not allowed. If the unused inventory capacity is less than the capacity of the newly created disk, disk creation also fails.
+Logical Capacity Usage: You can view the used logical capacity, total logical capacity, and percentage of used logical capacity. The total logical capacity indicates the maximum volume of data that can be written. It includes the storage space that is occupied by internal logic modules, such as the metadata, GC, and recycle bin. The used logical capacity indicates the volume of data that has been written. Click **More** in the upper-right corner of the Logical Capacity Usage section. On the Overview tab, view the number of replicas in the cluster. Physical Capacity Usage: You can view the used physical capacity, total physical capacity, and percentage of used physical capacity. The total physical capacity indicates the maximum size of data that can be written to the cluster. The used physical capacity indicates the used physical capacity reported by PANGU. Click**More** in the upper-right corner of the Physical Capacity Usage section. On the Overview tab, view the details of the bare disk capacity, total capacity, system reserved capacity, OP reserved storage capacity, used capacity, and available capacity.
+
+**Note**
+
+If the inventory capacity is sufficient and the physical capacity usage reaches 80%, disk creation is not allowed. If the unused inventory capacity is less than the capacity of the newly created disk, disk creation also fails.
 
 > If the physical capacity usage reaches 95%, data writing is not allowed.
 > After you move the pointer over the
@@ -594,8 +609,11 @@ Capacity prediction depends on the accumulation of sufficient samples. If the nu
 ##### 6.2.4.1 View cluster monitoring information
 
 You can view the real-time and historical monitoring data of a cluster to obtain the cluster resource usage. Historical monitoring data includes the average latency in a specific time range and total IOPS of the cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -626,8 +644,11 @@ Move the pointer over the data trendline to show data at a specific point in tim
 **nodes**
 
 You can view the real-time monitoring data and historical monitoring data of a BlockServer node, such as the average latency within a specific time range and total IOPS. This allows you to know the resource usage of the BlockServer node at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -655,7 +676,7 @@ Move the pointer over the data trendline to show data at a specific point in tim
 
 You can view PANGU monitoring data to analyze the cluster status in real time.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -676,8 +697,11 @@ By default, the block rebalance feature is enabled. If data is unevenly distribu
 **Background information**
 
 O&M engineers can determine whether the segments are evenly distributed by checking the average number of segments on each BlockServer node and the variance in the number of segments on all BlockServer nodes.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -699,7 +723,7 @@ After you modify the EC configurations for clusters, the configurations take eff
 **Specify an EC type for a cluster**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -729,7 +753,7 @@ You can view and configure the replica traffic control, cluster recycle bin, and
 
 Configure replica traffic control You can configure the maximum and minimum replication speeds based on your business requirements to control data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to consume a large amount of resources, you can reduce the maximum and minimum replication speeds.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -796,8 +820,11 @@ Basic Information: In this section, you can view the cluster type, QoS feature s
 ##### 6.2.6.1 Manage BlockMaster nodes
 
 BlockMaster is a type of management node that can be used to perform multiple operations. For example, you can manage the metadata of disks, and generate the information about a block device when you create the virtual block device. BlockMaster nodes can distribute segments to different BlockServer nodes and schedule garbage collection (GC) threads based on the invalid data and fragment data reported by BlockServer nodes. This feature allows you to view the information about a BlockMasrter node, such as the IP address and service location, check the server status, and obtain version information.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -822,8 +849,11 @@ BlockServer can call the FlatLogFile API to manage the segments that are stored 
 **Background information**
 
 BlockServer nodes use the Index Map data structure to maintain the relationship between the logical block address (LBA) of data in segments and the offset address in the actual storage file. This way, read requests can quickly locate the actual data in the files of PANGU. In addition, BlockServer nodes use read-ahead cache to reduce the I/O of flies. This can optimize the read speed. BlockServer nodes collect the percentage of garbage data and the fragmentation degree in segments and report them to BlockMaster nodes. Then, BlockMaster nodes schedule garbage collection (GC) threads to perform a GC or defragmentation task. After a GC task is complete, the system compacts block data to update the Index Map data structure and deletes invalid data files.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -837,8 +867,11 @@ information about BlockServer nodes and obtain the server information based on y
 ##### 6.2.6.3 Manage snapshot servers
 
 You can view the information about snapshot servers, such as the service address, load rate, number of uploads, number of replications, and number of lazy loads. You can also obtain version information.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -853,7 +886,7 @@ servers and obtain the server information based on your business requirements. Y
 
 You can manage meta servers, chunk servers, and file information based on your business requirements. Manage meta servers Meta servers are used to maintain cluster metadata and instruct upper-layer services on how to read and write data. You can manage a meta server to view the meta server information, switch the secondary meta server to the primary meta server, generate checkpoints for the meta server, and obtain the build information about the meta server.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -914,8 +947,11 @@ You can search for an Elastic Block Storage (EBS) storage set by cluster name or
 **es**
 
 A storage set is available. For information about how to create a storage set, see the "Create a storage set" topic under the EBS document in **CDS User Guide**.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Storage Set**.
 3. On the **Storage Set** page, select a cluster or enter a storage set ID. Then, you can view
 the information in the storage set list and perform operations based on your business requirements.
@@ -957,7 +993,7 @@ After you search for disks, you can view the disk information and perform operat
 **View disk details**
 
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Disk**.
 3. On the **Disk** page, click the ID of the disk whose details you want to view.
 4. On the **Disk Details** page, view the attributes and monitoring data of the disk, and the
@@ -986,7 +1022,7 @@ Only premium performance disks and standard performance disks can be migrated. T
 **Create a disk migration job**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Hot Migration of**
 **Disks**.
 3. On the **Hot Migration of Disks** page, configure and run a hot migration job.
@@ -1007,8 +1043,11 @@ You can initiate canary O&M tasks to run a common O&M command on multiple hosts 
 **Background information**
 
 You can execute canary O&M tasks to run multiple common O&M commands at the same time, such as hostname and /apsara/deploy/pangu_blockadmin. Canary O&M provides the following features: You can configure canary policies to determine the duration of a canary O&M task, the interval between canary O&M tasks, and other O&M settings. You can configure a command whitelist. Only commands in the whitelist can be run on specific clusters. You can specify the cluster and the command status to filter O&M tasks.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Administration**.
 3. On the **Canary O&M** page, click **Initiate Execution**.
 4. In the **Initiate Execution** dialog box, configure the parameters. The following table
@@ -1035,8 +1074,11 @@ After a canary O&M task is executed, you can perform the following operations: V
 #### 6.3.1 Overview of EBS clusters
 
 On the Cluster O&M page of Elastic Block Storage (EBS) clusters, you can view the total capacity usage, current alerts, number of disks, and number of snapshots of the EBS clusters. You can also view the information about the deployed EBS clusters. This way, you can understand the overall information about the clusters and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. On the **Cluster O&M** page, view the overall information about EBS clusters.
 Overall information about EBS clusters On the Cluster O&M page, you can view the total capacity usage, current alerts, number of disks, and number of snapshots of all EBS clusters. The following table describes the metrics.
@@ -1063,8 +1105,11 @@ On the Overview tab of an Elastic Block Storage (EBS) cluster, you can view the 
 **Background information**
 
 To manage the existing clusters, Cloud Defined Storage (CDS)-OPS displays EBS clusters that are based on PANGU V1.0 and PANGU clusters. This allows you to view the cluster information and manage PANGU clusters. You can use CDS-OPS to perform O&M operations on PANGU clusters but not EBS clusters that are based on PANGU V1.0.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1088,8 +1133,11 @@ Inspection items You can view the name, statistics, last execution time, and rem
 #### 6.3.3 View capacity information
 
 The physical capacity usage of a cluster shows the capacity usage of the cluster. O&M engineers can scale up or scale down the cluster based on the capacity usage of the cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1108,8 +1156,11 @@ The physical capacity information includes the total physical capacity, the cons
 ##### 6.3.4.1 View the information about a RiverCluster
 
 A RiverCluster is a management node of a storage service. The RiverCluster manages the information about disks, such as metadata, and allocates RiverServers to disks to achieve high availability. This topic describes how to view the information about a RiverCluster, such as the IP address and location.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1123,8 +1174,11 @@ RiverClusters.
 ##### 6.3.4.2 View the information about a RiverServer
 
 This topic describes how to view the information about a RiverServer, such as the IP address and location.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1139,7 +1193,7 @@ information about RiverServers.
 
 CDS Ops allows you to perform O&M operations on PANGU clusters of Elastic Block Storage (EBS) 1.0, such as managing meta servers, managing chunk servers, and viewing file information. Manage meta servers Meta servers are used to maintain cluster metadata and instruct upper-layer services how to read and write data. You can manage a meta server to view the meta server information, switch the secondary meta server to the primary meta server, generate checkpoints for the meta server, and obtain the build information about the meta server.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Elastic Block Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1195,7 +1249,7 @@ the information about the system root directories and perform operations on the 
 
 On the Cluster O&M page of Object Storage Service (OSS) clusters, you can view the total capacity usage, current alerts, number of buckets, and number of objects of the OSS clusters. You can also view the information about the deployed OSS clusters. This way, you can understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. On the **Cluster O&M** page, view the overall information about OSS clusters.
 Overall information about OSS clusters On the Cluster O&M page, you can view the total capacity usage, current alerts, number of buckets, and number of objects of all OSS clusters. The following table describes the metrics.
@@ -1249,7 +1303,7 @@ Monitoring data You can specify a time range or click a time range to view the m
 
 You can view the top 10 buckets within a specific time range in several dimensions, such as internal errors, requests, and inbound and outbound traffic over the internal network.
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1263,7 +1317,7 @@ buckets in the cluster. Click a bucket name in a ranking list. On the Bucket Det
 
 On the Capacity tab, you can view the logical capacity usage, physical capacity usage, capacity distribution, and physical capacity usage trend of an Object Storage Service (OSS) cluster based on your business requirements.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1286,8 +1340,11 @@ Capacity prediction depends on the accumulation of sufficient samples. If the nu
 ##### 6.4.4.1 View cluster monitoring information
 
 You can view the cluster information within a specific time range to obtain the cluster status. The cluster information includes the service level agreement (SLA), status of HTTP requests, storage capacity, queries per second (QPS), bandwidth statistics, and latency.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1309,8 +1366,11 @@ HTTP Status: the numbers of the returned 2XX, 3XX, 5XX, 403, 404, 499, and other
 ##### 6.4.4.2 Check the health status of a cluster
 
 Key-value (KV) engine is a KV storage layer to store KV pairs. This helps you manage large amounts of index information. You can view the status of KV engines by checking the health status of a cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1328,8 +1388,11 @@ You can execute background tasks based on your business requirements. For exampl
 **Background information**
 
 Background tasks can be manually or automatically executed. By default, the system automatically executes background tasks every day. You cannot disable the automatic execution of background tasks. Manual execution: You manually execute background tasks at a time. Automatic execution: The system automatically executes background tasks at the specified point in time every day. For more information, see Configure execution time for background tasks.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1365,8 +1428,10 @@ The following table describes the third-party modules on which Object Storage Se
 | proxy | The module provides features related to the upper-layer proxy of OSS. |
 | ubsms | The module is used to check the security of user accounts. |
 
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1381,7 +1446,7 @@ preset time range or specify a custom time range to view the monitoring data of 
 
 You can view PANGU monitoring data to analyze the cluster status in real time.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1397,8 +1462,11 @@ After the analysis is complete, you can view the check items, check levels, and 
 ##### 6.4.5.1 Modify KV configurations
 
 You can modify the monitoring data capacity and other configurations of key-value (KV) servers. You can also enable or disable automatic partition splitting for KM masters. In most cases, you can retain the default KV configurations. We recommend that you modify the KV configurations under the guidance of technical experts.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1422,8 +1490,11 @@ EC is a data protection method in which data is split, encoded, and then stored 
 **Usage notes**
 
 After the EC mode is enabled for a cluster, you cannot disable this mode for the cluster, which means you cannot switch to the triplicate storage mode. Proceed with caution.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1451,8 +1522,11 @@ of the page that appears, select a time period and click OK to view the number o
 **tasks**
 
 If you want to run background tasks at a specific point in time, such as lifecycle tasks and garbage collection (GC) tasks, you can configure the execution time of tasks.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1474,8 +1548,11 @@ Configure execution time for GC tasks On the **GC** tab, find the task that you 
 ##### 6.4.5.4 Configure a global flag
 
 You can configure the settings of each service in the cluster based on your business requirements. In most cases, you can use the default global flag configuration. If you need to configure a global flag, configure the settings under the guidance of professional staff.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1499,7 +1576,7 @@ configure global flags by using one of the following methods: On the **Lite Edit
 
 You can view and configure the replica traffic control, cluster recycle bin, and full-cluster offline inspection features and service quotas based on your business requirements. Configure replica traffic control You can configure the maximum and minimum replication speeds based on your business requirements to control data replica traffic. If you want to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to consume a large amount of resources, you can reduce the maximum and minimum replication speeds.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1567,8 +1644,11 @@ Basic Information: In this section, you can view the cluster type, QoS feature s
 ##### 6.4.6.1 Manage KV services
 
 In an index system, Key-value (KV) Master nodes can manage and schedule partitions. KV Server nodes can configure indexes of partitions and store data. Key Management (KM) Master nodes can schedule and distribute loads to balance loads of each partition. KM Server nodes can execute tasks. If O&M personnel need to analyze an issue, O&M personnel can locate and troubleshoot the issue by using the information about KV services such as KV Master and KV Server nodes or restarting the corresponding KV services.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1614,8 +1694,10 @@ If O&M personnel analyzes an error and determines that the error is caused by an
 
 > **Warning:** Do not restart services on frontend servers. Contact Alibaba Cloud for technical support if you need help.
 
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1637,7 +1719,7 @@ Manage OssImageServer On the **OssImageServer** tab, you can view the server IP 
 
 You can manage meta servers, chunk servers, and file information based on your business requirements. Manage meta servers
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -1697,7 +1779,7 @@ Object Storage Service (OSS) buckets are created. For more information, see the 
 **Query buckets**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Bucket > Buckets**.
 3. On the **Buckets** page, select a cluster or a location.
 After you search for the buckets, you can view the list of buckets and perform operations based on your business requirements. The following table describes the operations that you can perform.
@@ -1732,8 +1814,11 @@ Traffic: the traffic that is generated by the bucket. QPS: the number of API req
 ##### 6.4.7.2 Query bucket information
 
 You can query buckets by Apsara Stack tenant account, user ID (UID), or bucket name. After you query a bucket, you can view the bucket details, manage the bucket, and delete the bucket.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Bucket > Bucket Query**.
 3. On the **Bucket Query** page, select a filter condition and enter a value.
 The following table describes the supported filter conditions.
@@ -1817,8 +1902,11 @@ This topic describes how to manage the cross-region or cross-cloud synchronizati
 **Prerequisites**
 
 Cross-region or cross-cloud synchronization processes are configured. For more information, see Configure cross-region synchronization processes and Configure crosscloud synchronization processes. Cross-region replication or cross-cloud replication is enabled for buckets in the Object Storage Service (OSS) console by using the Apsara Uni-manager Management Console. For more information, see the "Configure CRR rules" or "Configure cross-cloud replication" section of the Cloud Defined Storage User Guide.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Synchronization Management >**
 **Synchronization Process Management**.
 3. On the **Synchronization Process Management** page, select a source cluster and click
@@ -1846,8 +1934,11 @@ The region ID of the destination region is obtained.
 **Usage notes**
 
 The source and destination regions must reside in the same cloud, and the network between the two regions is connected.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Synchronization Management >**
 **Cross-region Synchronization Process Configuration**.
 3. On the **Cross-region Synchronization Process Configuration** page, click **Add**.
@@ -2005,9 +2096,12 @@ The following sample code provides an example on how to configure a policy.
 
 `]` `}` `]` `}`
 6. Click **Save**.
+
+**Procedure**
+
 Log on to the Apsara Uni-manager Operations Console of the source cloud and go to the Cloud Defined Storage (CDS)-OPS console to configure cross-cloud synchronization.
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > Synchronization Management >**
 **Cross-cloud Synchronization Configuration**.
 3. On the **Cross-cloud Synchronization Configuration** page, click **Create**.
@@ -2057,7 +2151,7 @@ The system displays the synchronization monitoring data of clusters in each regi
 
 You can use O&M robots to perform automatic O&M tasks, such as intelligent analysis and diagnostics on faulty machines, automatic adjustment of KV recycle bins, intelligent analysis and diagnostics on frequent issues, automatic remediation of KV CheckReady failures, automatic write prohibition and recovery of PANGU, and emergency solutions for file damages. O&M robots simplify O&M operations and improve O&M efficiency.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > O&M Robot**.
 3. On the **O&M Robot** tab, perform operations based on your business requirements.
 By default, all O&M robots are enabled. You can click **Disable** in the **Operation** column of an O&M robot to disable the robot. After you disable an O&M robot, you can click **Enable** in the **Operation** column to re-enable the O&M robot.
@@ -2079,8 +2173,11 @@ By default, all O&M robots are enabled. You can click **Disable** in the **Opera
 ##### 6.4.9.2 View historical O&M tasks
 
 On the O&M History tab, you can view the history of different types of O&M tasks that are automatically executed by O&M robots.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-OSS > O&M Robot**.
 3. Click the **O&M History** tab, select an O&M task type and specify a time range.
 After you query an O&M task, you can view the name, batch sequence number, status, start time, and end time of the O&M task.
@@ -2096,8 +2193,11 @@ You can click the plus icon before an O&M task to view the running information a
 **clusters**
 
 On the Cluster O&M page, you can view the capacity usage, current alerts, and deployment information about Simple Log Service clusters. This way, you can obtain the overall cluster information and manage issues at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
 3. On the **Cluster O&M** page, view the overall information about Simple Log Service clusters.
 Overall information about Simple Log Service clusters View the capacity usage and current alerts of all Simple Log Service clusters. The following table describes the monitoring metrics.
@@ -2113,7 +2213,7 @@ View cluster deployment information You can view the information about all the d
 
 On the Overview tab, you can view the top 10 Logstores with the highest traffic and all projects in a cluster. You can also search for a specific project, modify project configurations, and delete projects that you no longer use.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -2135,6 +2235,9 @@ Find the project that you want to delete and click **Delete** in the **Actions**
 #### 6.5.3 View capacity information
 
 On the Capacity tab, you can view the logical capacity usage, physical capacity usage, and physical capacity usage trend of a Simple Log Service cluster.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
 ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
@@ -2164,7 +2267,7 @@ Capacity prediction depends on the accumulation of sufficient samples. If the nu
 
 You can view PANGU monitoring data to analyze the cluster status in real time.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -2208,7 +2311,7 @@ You can view and configure the replica traffic control, cluster recycle bin, and
 
 View replica traffic control settings You can configure the maximum and minimum replication speeds based on your business requirements to control the rate of data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to occupy a large amount of resources, you can decrease the maximum and minimum replication speeds.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -2272,7 +2375,7 @@ The quota information includes the consumed capacity, capacity quota on cluster 
 
 You can manage meta servers, chunk servers, and file information based on your business requirements. Manage meta servers
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Log Storage > Cluster O&M**.
 3. In the **Deploy Cluster** section of the **Cluster O&M** page, find the cluster that you want to
 manage and click **O&M**.
@@ -2326,8 +2429,11 @@ tab, view the information about the system root directories and perform operatio
 ### 7.1 View the custom dashboard
 
 You can view the monitoring metrics that you select from the Resource Monitoring page on the Custom Dashboard page.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Custom Dashboard**.
 3. On the **Custom Dashboard** page, query or remove custom monitoring data.
 Query monitoring data You can specify a time range to query the monitoring data of metrics that you select from the Resource Monitoring page. Remove monitoring data If you no longer need to view a monitoring data chart, click **Remove** in the upper-right corner of the chart.
@@ -2335,8 +2441,11 @@ Query monitoring data You can specify a time range to query the monitoring data 
 ### 7.2 Monitor resources
 
 You can monitor the performance of various resources, such as clusters, hosts, and disks. You can also add monitoring metrics to your custom dashboard. This way, you can quickly view monitoring data of resources.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Resource**
 **Monitoring**.
 3. On the **Resource Monitoring** page, select a resource type.
@@ -2349,7 +2458,7 @@ You can query the storage metrics of Elastic Block Storage (EBS) and Object Stor
 **Query storage metrics of EBS**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Storage Metrics**.
 3. On the Storage Metrics page, click the **Elastic Block Storage** tab. On the Elastic Block
 Storage tab, query the cluster storage metrics of EBS. Specify a time range or click a time range to view the monitoring data of EBS within the specified time range, such as the inventory capacity trend chart, cloud disk and snapshot trend chart, physical capacity usage trend chart, average latency, and total IOPS and throughput of the EBS cluster. The following table describes the metrics.
@@ -2368,10 +2477,14 @@ Storage tab, query the cluster storage metrics of EBS. Specify a time range or c
 **Query storage metrics of OSS**
 
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-Monitoring Center > Storage Metrics**.
 3. On the Storage Metrics page, click the **OSS** tab. On the OSS tab, query the storage metrics
-of OSS. View cluster metrics of OSS In the left-side pane, click **Cluster Metrics**. You can specify a time range or click a time range to view the monitoring data within the specified time range, such as the bucket storage size, service level agreement (SLA), HTTP status, requests per second (QPS), bandwidth, and latency of the OSS cluster. View bucket metrics Click **Bucket Metrics**. In the Bucket Metrics section, enter a bucket name and specify a time range. You can also click a time range to view the metrics of the specified bucket, such as the storage usage, SLA, HTTP status, QPS, traffic, and Latency. To obtain the bucket name, go to the **Buckets** page of CDS-OSS. For more information, see Manage bucket information.
+of OSS. View cluster metrics of OSS In the left-side pane, click **Cluster Metrics**. You can specify a time range or click a time range to view the monitoring data within the specified time range, such as the bucket storage size, service level agreement (SLA), HTTP status, requests per second (QPS), bandwidth, and latency of the OSS cluster. View bucket metrics Click **Bucket Metrics**. In the Bucket Metrics section, enter a bucket name and specify a time range. You can also click a time range to view the metrics of the specified bucket, such as the storage usage, SLA, HTTP status, QPS, traffic, and Latency.
+
+**Note**
+
+To obtain the bucket name, go to the **Buckets** page of CDS-OSS. For more information, see Manage bucket information.
 
 **What to do next**
 
@@ -2394,7 +2507,7 @@ On the**Apsara Distributed File System** tab, select a cluster, a host, a time p
 
 On the Alert Overview page, you can view the current alerts, alert statistics, and alert history.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Event Alerts > Alert Overview**.
 3. On the **Alert Overview** page, view the alert information.
 
@@ -2416,8 +2529,11 @@ alerts. The alert owner must check and handle alerts in a timely manner after re
 #### 8.2.2 Handle current alerts
 
 The alerts that are managed by Cloud Defined Storage (CDS)-OPS come from the CDS clusters and the clusters that are managed by CDS-OPS. After alerts are triggered in the system, you can view the list of alerts and the details of each alert, including the alert name, service, cluster name, description, resource name, and alert time. We recommend that you handle alerts at the earliest opportunity by confirming or clearing the alerts based on your business requirements.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Event Alerts > Current Alert**.
 The system automatically obtains and displays the current alert information about all clusters.
 3. On the **Current Alert** page, select an alert name, a service, a cluster name, an alert level,
@@ -2433,8 +2549,11 @@ and a time range to view alerts that meet the filter alerts. To view the details
 #### 8.2.3 View alert history
 
 Alerts that are automatically or manually cleared are displayed on the Alert History page. You can view the information about alerts within a specified time period, including the alert name, service, cluster name, description, resource name, auto recovery status, confirmation status, and recovery time.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Event Alerts > Alert History**.
 The system automatically obtains and displays the information about historical alerts of all clusters within one day.
 3. On the **Alert History** page, select a service, a cluster, an alert level, and a time period to
@@ -2456,8 +2575,11 @@ view the corresponding historical alerts. The following table describes the item
 ### 8.3 Event center
 
 On the Event Center page, you can view the events generated for Elastic Block Storage (EBS) clusters of all types. EBS clusters include EBS-1.0 clusters, EBS-2.0 clusters, and CDS-EBS clusters.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Event Alerts > Event Center**.
 The system automatically obtains and displays the event information within the last day in all clusters that contain the EBS service. Click **Details** in the **Actions** column of the event whose information you want to view. In the Event Details panel, you can view the information about the event such as the ID, event level, event type, submitter IP, occurrence time, and data.
 
@@ -2471,8 +2593,11 @@ Simple query You can specify a time range to view all events within the specifie
 ### 9.1 Inspection Center
 
 By default, the system uses built-in inspection items to regularly inspect clusters. On the Inspection Center page, you can view the information about the latest inspection results of different inspection items and manually run inspection tasks.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Routine Inspection > Inspection Center**.
 The last inspection result of each inspection item is displayed.
 
@@ -2494,7 +2619,7 @@ The system monitors key service level agreement (SLA) metrics of Cloud Defined S
 **View the SLA monitoring information**
 
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Routine Inspection > SLA Monitoring**.
 3. On the **SLA Monitoring** page, view the check results of SLA system links. The check is
 performed every minute. You can also view the details of real-time SLA exceptions. In normal cases, the heartbeat check results in the last 5 minutes are displayed. The system automatically refreshes the heartbeat status and the details of real-time SLA exceptions every 1 minute. This allows O&M engineers to obtain the SLA system link status at the earliest opportunity when updating the system.
@@ -2532,8 +2657,11 @@ On the All Workflows tab of the Host O&M page, you can view the details of the s
 **Background information**
 
 You can select one of the following types of workflow based on your business requirements: CDS Cluster Scale Up, CDS Cluster Scale Down, CDS Cluster Node Replacement, and CDS Cluster Node Repair. If you need to add or remove physical hosts in a cluster to optimize the allocation of computing and storage resources, you can initiate a CDS Cluster Scale Up or CDS Cluster Scale Down workflow. For more information, see Initiate a CDS Cluster Scale Up workflow and Initiate a CDS Cluster Scale Down workflow. If a physical host in a cluster is abnormal and needs to be replaced, you can initiate a CDS Cluster Node Replacement workflow. For more information, see Initiate a CDS Cluster Node Replacement workflow. If a physical host in the cluster fails and needs to be repaired, you can initiate a CDS Cluster Node Repair workflow. For more information, see Initiate a CDS Cluster Node Maintenance workflow.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
 3. On the **All Workflows** tab, view all workflows and perform operations based on your
 business requirements.
@@ -2562,8 +2690,11 @@ Before you scale up a cluster, make sure that the hosts used for the scale-up ex
 3. On the **Product & Cluster O&M** page, enter **buffer** in the **Product & Cluster** field.
 4. Click **Cluster Details** in the **Actions** column, and then click the **Machines** tab. The list of
 available hosts in the buffer is displayed.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
 3. On the Host O&M page, click the **Initiate Workflow** tab. On the Initiate Workflow tab, find
 the CDS Cluster Scale Up workflow and click **Initiate** in the **Actions** column.
@@ -2591,8 +2722,11 @@ Before you initiate a CDS Cluster Scale Down workflow, take note of the followin
 > **Important:** The minimum number of nodes required varies depending on the storage service. The value displayed on the user interface shall prevail.
 
 You cannot undeploy master nodes by performing scale-down operations. If you need to undeploy a master node, contact Apsara Stack technical support.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Host O&M**.
 3. On the Host O&M page, click the **Initiate Workflow** tab. On the Initiate Workflow tab, find
 the CDS Cluster Scale Down workflow and click **Initiate** in the **Actions** column.
@@ -2641,7 +2775,7 @@ When a hard disk drive (HDD) or Non-Volatile Memory Express (NVMe) SSD disk of a
 **Replace an HDD disk**
 
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Disk Maintenance**.
 3. On the Disk Maintenance page, click the Corrupted Disks tab. On the **Corrupted Disks** tab,
 view and maintain corrupted disks. You can view the information about the disks, such as Chunk Server, Chunk Server IP Address, Disk ID, Disk Type, Status, Backup Status, and Process Status. When a disk is corrupted, the cluster automatically backs up the data of the disk. If the value of the **Backup Status** column of the disk is **Backup Completed**, the data of the disk is backed up.
@@ -2661,7 +2795,7 @@ a. Click **Replace Disk** in the **Actions** column of the corrupted disk. b. In
 **Replace an NVMe SSD disk**
 
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Disk Maintenance**.
 3. On the Disk Maintenance page, click the Corrupted Disks tab. On the **Corrupted Disks** tab,
 view and maintain corrupted disks. You can view the information about the disks, such as Chunk Server, Chunk Server IP Address, Disk ID, Disk Type, Status, Backup Status, and Process Status. When a disk is corrupted, the cluster automatically backs up the data of the disk. If the value of the **Backup Status** column of the disk is **Backup Completed**, the data of the disk is backed up.
@@ -2689,8 +2823,11 @@ When a running hard disk needs to be replaced due to capacity upgrade, hard disk
 **Usage notes**
 
 Change the status of the hard disk from Normal to **Error** before disk replacement. Do not manually restart the ChunkServer service during disk replacement.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Disk Maintenance**.
 3. On the **Disk Maintenance** page, click the **Actively Replace Disk** tab.
 4. Submit an active disk replacement request.
@@ -2706,8 +2843,11 @@ After the disk is replaced, you can view the maintenance history of the disk on 
 #### 10.2.3 View disk maintenance history
 
 After you replace a disk, you can view the detailed disk maintenance history, including the cluster, chunk server, disk ID, disk type, and execution status.
+
+**Procedure**
+
 1. Log on to the CDS O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Disk Maintenance**.
 3. On the **Disk Maintenance** page, click the **Disk Maintenance History** tab.
 4. On the **Disk Maintenance History** tab, view the disk maintenance history and perform
@@ -2723,12 +2863,18 @@ After you identify the abnormal services or modules based on an issue, you can m
 
 > **Warning:** You must be granted the required permissions before you can collect and export user logs. You must follow the principle of least privilege (PoLP) and collect only the logs of the services that are related to the issue.
 
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Log Collection**.
 3. On the **Log Collection** page, click **Data Collection**.
 4. In the **Data Collection** dialog box, configure the Type, Service Name, Cluster Name, Host
-Name, and Time Range parameters, and click **Initiate Collection**. Current logs overwrite previous logs. You can select multiple values for the Type, Service Name, and Host name parameters. The **Service Name** parameter is required only if you set the **Type** parameter to **Service**
+Name, and Time Range parameters, and click **Initiate Collection**.
+
+**Note**
+
+Current logs overwrite previous logs. You can select multiple values for the Type, Service Name, and Host name parameters. The **Service Name** parameter is required only if you set the **Type** parameter to **Service**
 **Logs**.
 After the data collection is complete, you can view the logs that are generated in the specified time range. To save the logs to your local computer, you can click **Download** in the **Result File** column of the log data that you want to save. A message indicating that the certificate is insecure appears. Click Trust to download the logs. The downloaded log file is in the tar.gz format. Decompress the file and view the logs.
 
@@ -2739,8 +2885,11 @@ The system centrally stores and indexes logs of key services. You can query logs
 **Background information**
 
 Logs are not permanently stored. The system automatically clears logs on a regular basis. The log retention period varies based on service. The log retention period is determined by the size and the importance of logs, but cannot exceed 30 days.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Intelligent O&M > Log Search**.
 3. On the **Log Search** page, configure the Type, Project, Storage, and Select Date
 parameters. You can also specify a search condition. Valid values of the Type parameter are MANAGEMENT, OSS, SLS, and CHIJI.
@@ -2775,8 +2924,11 @@ By default, the system registers the deployed Apsara Stack data services, such a
 **Usage notes**
 
 Cloud Defined Storage (CDS) automatically registers plug-ins, including cds-plugin-sgw and HDR-OPS. The plug-ins used by different storage clusters may be different. The actual plugins used by the cluster prevail. The cds-plugin-sgw plug-in can be installed only in CDS-OSS clusters and hybrid clusters of CDS-OSS and CDS-EBS. The HDR-OPS can be installed only in CDS-OSS clusters and hybrid clusters of Elastic Compute Service (ECS), CDS-OSS, and CDS-EBS.
+
+**Procedure**
+
 1. Log on to the CDS-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > Plug-ins**.
 3. On the **Plug-ins** page, view the information about the registered data services.
 Registered plug-ins may include cds-plugin-sgw and HDR-OPS. cds-plugin-sgw indicates the CSG service and HDR-OPS indicates the HDR-OPS service. To view the registration details of a plug-in, click the Plus icon on the left side of the plug-in name.
@@ -2788,8 +2940,11 @@ Perform O&M operations on a registered data service. For more information, see D
 ### 11.2 View tasks
 
 The system executes time-consuming tasks in an asynchronous manner. You can view the execution status of asynchronous tasks on the Tasks page.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > Tasks**.
 The system automatically obtains and displays the tasks of the last day.
 3. On the **Tasks** page, select a time range to view the information about the tasks within the
@@ -2807,8 +2962,11 @@ Redirect to the execution location Find the task that you want to manage and cli
 ### 11.3 Query audit logs
 
 The audit logs record the modifications made by users to the system. During security maintenance, you can filter the audit logs by using different keywords to quickly locate and handle security issues in a timely manner.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > ActionTrail**.
 Each time you go to the **ActionTrail** page, the system automatically queries your operations in the audit logs.
 3. On the **ActionTrail** page, select a time range and specify filter conditions.
@@ -2822,8 +2980,11 @@ After you find a log record, you can view the user, operation, object, and objec
 #### 11.4.1 Manage cleanup configurations
 
 By default, the feature of automatically triggering compression tasks and cleanup tasks is disabled. You can manually enable the feature based on your business requirements. After you enable the auto trigger feature, the system automatically compresses service logs or clears tasks when the storage space reaches the specified threshold. You can also modify the automatic cleanup configurations such as enabling or disabling the auto trigger feature, modifying the thresholds, or deleting log cleanup configurations.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
-ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > System Cleanup**.
 3. On the **System Cleanup** page, click **Automatic Cleaning Configuration** in the upper-
 right corner.
@@ -2855,8 +3016,11 @@ If the log cleanup configurations of a service are deleted but the service is st
 #### 11.4.2 Clear tasks
 
 The task logs are stored in system disks. You can view the size, space usage, and compression status of the logs in the following aggregation dimensions: Cluster, Cluster + Host, Service, and Service + Component. You can compress or delete logs based on your business requirements to save storage space in system disks and improve the stability of system services.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-System Management > System Cleanup**.
 3. On the **System Cleanup** page, select the aggregation dimension, cluster, host, service,
 and component to query logs that you want to clear. You can view the size, space usage, and compression status of the logs.
@@ -2879,8 +3043,11 @@ After you create and configure a Cloud Storage Gateway (CSG) instance, you can v
 **Prerequisites**
 
 An CSG instance is created and configured. For more information, see the Quick Start topic in the Cloud Storage Gateway chapter of the **OSS User Guide**.
+
+**Procedure**
+
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
-ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Products > Storage > CDS - OPS**.
 2. In the left-side navigation pane, choose **CDS-Data Service > Storage Gateway Service**.
 3. On the **Storage Gateway Service** page, click the **Overview** tab. You can perform the
 following operations: View gateway information You can view the information about all gateways in the current system such as the ID, name, version, service IP address, type, and status. Collect and download the gateway logs You can collect the logs of only gateways that are in the **Running** state. Find the gateway that you want to manage. Click **Collect the logs** in the **Operation** column. You can collect the Object Storage Service (OSS) access logs that are generated by a Network File System (NFS) file share or Server Message Block (SMB) file share. You can also collect the logs that are generated by sharing operations. After the logs are collected, wait for a while and click **Refresh** to refresh the gateway information. Click **Download the logs** in the **Operation** column to download the logs.

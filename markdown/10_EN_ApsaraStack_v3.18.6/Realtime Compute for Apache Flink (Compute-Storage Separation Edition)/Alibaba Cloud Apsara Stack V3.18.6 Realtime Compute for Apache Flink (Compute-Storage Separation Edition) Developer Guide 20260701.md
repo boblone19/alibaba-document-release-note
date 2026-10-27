@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 370
 source_pdf: "6fbe874eebbdd54b_Alibaba Cloud Apsara Stack V3.18.6 Realtime Compute for Apache Flink (Compute-Storage Separation Edi"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97FLink/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260701
@@ -710,6 +710,8 @@ variable.
 
 **SSL verification**
 
+**Description**
+
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
 **Default value**
@@ -746,7 +748,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Only remote procedure call (RPC) APIs are supported. The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
+Only remote procedure call (RPC) APIs are supported.
+
+**Example**
+
+The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -11737,6 +11743,8 @@ CREATE TEMPORARY VIEW viewName AS [ (columnName[ , columnName]* ) ] queryStateme
 
 viewName: the name of the view. columnName: the name of the field. queryStatement: the alias of the nested statement.
 
+**Example**
+
 ```
 CREATE TEMPORARY VIEW tmp_view AS SELECT
 ```
@@ -12455,6 +12463,8 @@ Use a sliding window identifier function to select the start time or end time of
 |---|---|
 | 00:15 |   |
 
+**Example**
+
 Count the number of clicks for each user over the past minute. Update the count every 30 seconds. This means the system uses a 1-minute window and slides it every 30 seconds. Test data QL reference
 
 | username (VARCHAR) | click url (VARCHAR) _ | ts (TIMESTAMP) |
@@ -12609,6 +12619,8 @@ Use an identifier function to select the start time or end time of a window. The
 |---|---|
 | 00:14:59.999 |   |
 
+**Example**
+
 Count the number of clicks for each user during each active session. The session timeout duration is 30 seconds. Test data
 
 | username (VARCHAR) | click url (VARCHAR) _ | ts (TIMESTAMP) |
@@ -12719,7 +12731,7 @@ QL reference
 
 **ROWS OVER windows**
 
-For a ROWS OVER window, each element is assigned to a window. Syntax
+Description For a ROWS OVER window, each element is assigned to a window. Syntax
 
 ```
 SELECT
@@ -12731,7 +12743,7 @@ SELECT
 FROM Tab1;
 ```
 
-value_expression: specifies the value expression used for partitioning. timeCol: specifies the time field used to sort elements. rowCount: specifies the number of rows that precede the current row. This example describes bounded ROWS OVER windows. Assume that an on-sale product table contains item IDs, item types, on-sale time, and prices. Calculate the highest price among the three products similar to the current product before the current product is on sale. Test data
+value_expression: specifies the value expression used for partitioning. timeCol: specifies the time field used to sort elements. rowCount: specifies the number of rows that precede the current row. Example This example describes bounded ROWS OVER windows. Assume that an on-sale product table contains item IDs, item types, on-sale time, and prices. Calculate the highest price among the three products similar to the current product before the current product is on sale. Test data
 
 | Item ID | Item type | On-sale time | Price |
 |---|---|---|---|
@@ -12865,7 +12877,7 @@ SELECT
 ... FROM Tab1;
 ```
 
-value_expression: specifies the value expression used for partitioning. timeCol: specifies the time field used to sort elements. timeInterval: specifies the time interval between the time of the current row and that of the element row to which it can be traced back. This example describes bounded RANGE OVER windows. Assume that an on-sale product table contains item IDs, item types, on-sale time, and prices. Calculate the highest price among similar products that are on sale 2 minutes earlier than the current product. Test data
+value_expression: specifies the value expression used for partitioning. timeCol: specifies the time field used to sort elements. timeInterval: specifies the time interval between the time of the current row and that of the element row to which it can be traced back. Example This example describes bounded RANGE OVER windows. Assume that an on-sale product table contains item IDs, item types, on-sale time, and prices. Calculate the highest price among similar products that are on sale 2 minutes earlier than the current product. Test data
 
 | Item ID | Item type | On-sale time | Price |
 |---|---|---|---|
@@ -13019,6 +13031,8 @@ INT BITAND(INT number1,INT number2)
 | number1 | INT |
 | number2 | INT |
 
+**Example**
+
 Test data
 
 | a(INT) | b(INT) |
@@ -13056,6 +13070,8 @@ INT BITNOT(INT number)
 | Parameter | Data type |
 |---|---|
 | number | INT |
+
+**Example**
 
 Test data
 
@@ -13096,6 +13112,8 @@ QL reference
 
 > **Note:** The input and output parameters are both of the INT type.
 
+**Example**
+
 Test data
 
 | a(INT) | b(INT) |
@@ -13132,6 +13150,8 @@ INT BITXOR(INT number1, INT number2)
 | number2 | INT |
 
 > **Note:** The input and output parameters are both of the INT type.
+
+**Example**
 
 Test data
 
@@ -13175,6 +13195,8 @@ VARCHAR CONV(VARCHAR number, INT FROM_BASE, INT TO_BASE)
 | number | BIGINT or VARCHAR | Note If the value of the number parameter is NULL or an invalid character, NULL is returned. |
 | FROM BASE _ | INT | Valid values: [2, 36]. |
 | TO BASE _ | INT | Positive valid values: [2, 36]. Negative valid values: [-36, -2]. |
+
+**Example**
 
 Test data
 
@@ -13221,6 +13243,8 @@ INT DATEDIFF(VARCHAR enddate, VARCHAR startdate) INT DATEDIFF(TIMESTAMP enddate,
 
 > **Note:** A date of the VARCHAR type is in the **yyyy-MM-dd** or **yyyy-MM-dd HH:mm:ss** format.
 > If an input parameter is NULL or a parsing error occurs, NULL is returned.
+
+**Example**
 
 Test data
 
@@ -13269,6 +13293,8 @@ VARCHAR DATE_ADD(VARCHAR startdate, INT days) VARCHAR DATE_ADD(TIMESTAMP time, I
 
 > **Note:** If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
+**Example**
+
 Test data
 
 | datetime1(VATCHAR) | nullstr(VATCHAR) |
@@ -13313,6 +13339,8 @@ VARCHAR DATE_FORMAT(TIMESTAMP time, VARCHAR to_format) VARCHAR DATE_FORMAT(VARCH
 
 > **Note:** If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
+**Example**
+
 Test data
 
 | date1(VARCHAR) | datetime1(VARCHAR) | nullstr(VARCHAR) |
@@ -13356,6 +13384,8 @@ VARCHAR DATE_FORMAT_TZ(TIMESTAMP timestamp, VARCHAR format, VARCHAR timezone) VA
 | timestamp | TIMESTAMP | The data type of time. |
 | format | VARCHAR | The format of the output date, for example, yyyy- MM-dd HH:mm:ss. |
 | timezone | VARCHAR | The time zone, for example, Asia/Shanghai. |
+
+**Example**
 
 Test data
 
@@ -13404,6 +13434,8 @@ VARCHAR DATE_SUB(VARCHAR startdate, INT days) VARCHAR DATE_SUB(TIMESTAMP time, I
 
 > **Note:** If one of the input parameters is NULL or a parsing error occurs, the return value is NULL.
 
+**Example**
+
 Test data
 
 | date1(VARCHAR) | nullstr(VARCHAR) |
@@ -13446,6 +13478,8 @@ VARCHAR FROM_UNIXTIME(BIGINT unixtime, VARCHAR format)
 
 > **Note:** If an input parameter is NULL or a parsing error occurs, NULL is returned.
 
+**Example**
+
 Test data
 
 | unixtime1(BIGINT) | nullstr(VARCHAR) |
@@ -13487,6 +13521,8 @@ QL reference
 |---|---|
 | d | DOUBLE |
 | f | FLOAT |
+
+**Example**
 
 Test dataTable 1. T1
 
@@ -13532,6 +13568,8 @@ QL reference
 |---|---|---|
 
 > **Note:** If the input parameters contain invalid JSON or NULL values, NULL is returned.
+
+**Example**
 
 Test data Table 1. T1
 
@@ -13594,6 +13632,8 @@ VARCHAR KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name)
 > If the str or key_name parameter is NULL, NULL is returned.
 > If no key is found, NULL is returned.
 > If multiple key-value pairs exist, the value that first matches the key is returned.
+
+**Example**
 
 Test dataTable 1. T1
 
@@ -13753,6 +13793,8 @@ QL reference
 | partToExtract | VARCHAR | The part that you want to parse from the URL. Valid values: HOST PATH QUERY REF PROTOCOL FILE AUTHORITY USERINFO |
 | key | VARCHAR | The name of the key whose value you want to extract. This parameter is optional. |
 
+**Example**
+
 Test data
 
 | url1(VARCHAR) | nullstr(VARCHAR) |
@@ -13805,6 +13847,8 @@ BOOLEAN REGEXP(VARCHAR str, VARCHAR pattern)
 
 > **Note:** If the string or pattern parameter is empty or NULL, false is returned.
 
+**Example**
+
 Test dataTable 1. T1
 
 | str1(VARCHAR) | pattern1(VARCHAR) |
@@ -13850,6 +13894,8 @@ VARCHAR REGEXP_REPLACE(VARCHAR str, VARCHAR pattern, VARCHAR replacement)
 > **Important:** If an input parameter is NULL or the regular expression is invalid, NULL is returned.
 > The system parses the pattern and replacement parameters into regular expressions. The regular expressions are processed by using Java Pattern. Therefore, the pattern and replacement parameters must follow the syntax for Java Regex.
 
+**Example**
+
 Test data Table 1. T1
 
 | str1(VARCHAR) | pattern1(VARCHAR) | replace1(VARCHAR) |
@@ -13894,6 +13940,8 @@ VARCHAR SPLIT_INDEX(VARCHAR str, VARCHAR sep, INT index)
 
 > **Note:** If an input parameter is set to NULL, NULL is returned.
 
+**Example**
+
 Test dataTable 1. T1
 
 | str(VARCHAR) | sep(VARCHAR) | index(INT) |
@@ -13935,6 +13983,8 @@ Date TO_DATE(INT time) Date TO_DATE(VARCHAR date) Date TO_DATE(VARCHAR date,VARC
 | date | VARCHAR | The default format is yyyy-MM-dd. |
 | format | VARCHAR | The date format. |
 
+**Example**
+
 Test dataTable 1. T1
 
 | date1(INT) | date2(VARCHAR) | date3(VARCHAR) |
@@ -13975,6 +14025,8 @@ TIMESTAMP TO_TIMESTAMP_TZ(VARCHAR date, VARCHAR timezone) TIMESTAMP TO_TIMESTAMP
 | timezone | VARCHAR | The time zone, for example, Asia/Shanghai. |
 | date | VARCHAR | The default format is yyyy-MM-dd HH:mm:ss. |
 | format | VARCHAR | The date format. |
+
+**Example**
 
 Test dataTable 1. T1
 
@@ -14024,6 +14076,8 @@ QL reference
 
 |   | hh:mm:ss |
 |---|---|
+
+**Example**
 
 Test data Table 1. T1
 
@@ -14107,6 +14161,8 @@ JSON_TUPLE(str, path1, path2 ..., pathN)
 |---|---|---|
 | str | VARCHAR | The JSON string. |
 | path1 to pathN | VARCHAR | A path string, which does not start with a dollar sign ( $ ). |
+
+**Example**
 
 Test data Table 1. T1
 
@@ -14214,6 +14270,8 @@ string_split(string, separator)
 > If the string contains two or more consecutive delimiters, an empty substring that does not contain characters is returned.
 > If the string does not contain the specified delimiter, the whole string that you want to split is returned.
 
+**Example**
+
 Test data Table 1. T1
 
 | d(varchar) | s(varchar) |
@@ -14263,6 +14321,8 @@ APPROX_COUNT_DISTINCT(col [, accuracy])
 |---|---|---|
 | col | All data types | The name of the field. |
 | accuracy | FLOAT | The computation accuracy. This parameter is optional. A larger value indicates a higher accuracy, which leads to a higher state overhead. A higher state overhead weakens the performance of the APPROX COUNT DISTINCT function. Valid values: _ _ (0.0, 1.0). Default value: 0.99. |
+
+**Example**
 
 Test dataTable 1. T1
 
@@ -14315,6 +14375,8 @@ FIRST_VALUE( T value ) FIRST_VALUE( T value, BIGINT order )
 | order | BIGINT | The non-null record that has the smallest order value is considered the first non-null record. |
 
 > **Important:** All input parameters must be of the same data type.
+
+**Example**
 
 Test data Table 1. T1
 
@@ -14380,6 +14442,8 @@ QL reference
 | order | BIGINT | The non-null record that has the largest order value is considered the last non-null record. |
 
 > **Important:** All input parameters must be of the same data type.
+
+**Example**
 
 Test data Table 1. T1
 
@@ -15144,6 +15208,8 @@ QL reference
 |---|---|---|
 | uri | String | The data ID. |
 | data | String | The returned data. |
+
+**Example**
 
 Test dataTable 1. input.csv
 

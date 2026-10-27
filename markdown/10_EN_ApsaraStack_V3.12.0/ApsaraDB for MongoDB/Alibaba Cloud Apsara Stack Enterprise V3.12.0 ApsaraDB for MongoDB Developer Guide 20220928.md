@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 64
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 ApsaraDB for MongoDB Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 ApsaraDB for MongoDB Developer Guide 20220928
@@ -416,6 +416,8 @@ This API supports both data restoration and instance clone functions.
 
 ###### 1.1.3.4.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.3.4.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -440,6 +442,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.4.1 DescribeRegions
 
 ###### 1.1.4.1.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.4.1.2 Request parameters
 
@@ -472,6 +476,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.4.2 DescribeDBInstances
 
 ###### 1.1.4.2.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.4.2.2 Request parameters
 
@@ -543,6 +549,8 @@ This API supports both data restoration and instance clone functions.
 
 ###### 1.1.4.3.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.4.3.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -559,6 +567,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.4.4 ModifyDBInstanceMaintainTime
 
 ###### 1.1.4.4.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.4.4.2 Request parameters
 
@@ -578,6 +588,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.4.5 ModifyDBInstanceDescription
 
 ###### 1.1.4.5.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.4.5.2 Request parameters
 
@@ -599,6 +611,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.4.6 DescribeInstanceAttribute
 
 ###### 1.1.4.6.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.4.6.2 Request parameters
 
@@ -640,6 +654,8 @@ This API supports both data restoration and instance clone functions.
 
 ###### 1.1.4.7.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.4.7.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -673,6 +689,8 @@ This API supports both data restoration and instance clone functions.
 
 ###### 1.1.4.8.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.4.8.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -696,6 +714,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.4.9 ModifyDBInstanceNetExpireTime
 
 ###### 1.1.4.9.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.4.9.2 Request parameters
 
@@ -721,6 +741,8 @@ This API supports both data restoration and instance clone functions.
 
 ###### 1.1.5.1.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.5.1.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -745,6 +767,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.5.2 DescribeAccounts
 
 ###### 1.1.5.2.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.5.2.2 Request parameters
 
@@ -773,6 +797,8 @@ This API supports both data restoration and instance clone functions.
 
 ###### 1.1.5.3.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.5.3.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -793,6 +819,8 @@ This API supports both data restoration and instance clone functions.
 ##### 1.1.6.1 DescribeSecurityIps
 
 ###### 1.1.6.1.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.6.1.2 Request parameters
 
@@ -829,6 +857,8 @@ SecurityIpGroup parameters
 
 ###### 1.1.6.2.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.6.2.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -852,6 +882,8 @@ SecurityIpGroup parameters
 ##### 1.1.6.3 DescribeAuditRecords
 
 ###### 1.1.6.3.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.6.3.2 Request parameters
 
@@ -907,6 +939,8 @@ SQLRecord parameters
 
 ###### 1.1.6.4.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.6.4.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -949,6 +983,8 @@ LogFile parameters
 
 ###### 1.1.7.1.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.7.1.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -968,6 +1004,8 @@ LogFile parameters
 ##### 1.1.7.2 ModifyBackupPolicy
 
 ###### 1.1.7.2.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.7.2.2 Request parameters
 
@@ -990,6 +1028,8 @@ LogFile parameters
 ##### 1.1.7.3 CreateBackup
 
 ###### 1.1.7.3.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.7.3.2 Request parameters
 
@@ -1014,6 +1054,8 @@ LogFile parameters
 ##### 1.1.7.4 DescribeBackups
 
 ###### 1.1.7.4.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.7.4.2 Request parameters
 
@@ -1063,6 +1105,8 @@ Backup data structure
 
 ###### 1.1.7.5.1 Description
 
+This API supports replica set instances only.
+
 ###### 1.1.7.5.2 Request parameters
 
 | Parameter | Type | Required | Description |
@@ -1082,6 +1126,8 @@ Backup data structure
 ##### 1.1.8.1 DescribeDBInstancePerformance
 
 ###### 1.1.8.1.1 Description
+
+This API supports replica set instances only.
 
 ###### 1.1.8.1.2 Request parameters
 

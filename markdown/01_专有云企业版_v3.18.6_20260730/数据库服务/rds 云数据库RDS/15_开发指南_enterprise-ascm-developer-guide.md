@@ -5,18 +5,177 @@ doc_version: "20260729"
 pdf_pages: 351
 source_pdf: "15_开发指南_enterprise-ascm-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/rds/zh/enterprise-ascm-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云数据库RDS 开发指南
 
-云数据库RDS
+## 目录
 
-## 调用云产品SDK
+- 1 调用云产品SDK
+  - 1.1 准备工作
+    - 1.1.1 登录开发者门户
+    - 1.1.2 获取API信息及其EndPoint
+    - 1.1.3 获取AccessKey
+    - 1.1.4 获取公共Header参数
+    - 1.1.5 获取STS AccessKey
+  - 1.2 通过POP网关调用专有云API
+    - 1.2.1 调用前置
+    - 1.2.2 Java版
+    - 1.2.3 Go版
+    - 1.2.4 Python版
+- 2 API参考
+  - 2.1 实例管理
+    - 2.1.1 创建RDS实例
+    - 2.1.2 查询实例详细信息
+    - 2.1.3 查询实例列表
+    - 2.1.4 变更配置
+    - 2.1.5 释放RDS实例
+    - 2.1.6 重启实例
+    - 2.1.7 查询地域信息
+    - 2.1.8 迁移可用区
+    - 2.1.9 修改实例名称
+    - 2.1.10 修改可维护时间段
+    - 2.1.11 查询RDS支持的字符集
+    - 2.1.12 查询底层ECS实例
+    - 2.1.13 修改实例资源组
+  - 2.2 只读实例
+    - 2.2.1 创建只读实例
+    - 2.2.2 查询只读实例延迟信息
+  - 2.3 版本升级
+    - 2.3.1 修改小版本升级方式
+    - 2.3.2 升级内核小版本
+  - 2.4 网络与连接地址
+    - 2.4.1 申请外网地址
+    - 2.4.2 释放外网地址
+    - 2.4.3 切换内外网地址
+    - 2.4.4 查询连接地址
+    - 2.4.5 修改连接地址
+    - 2.4.6 释放实例连接地址
+    - 2.4.7 切换网络类型
+    - 2.4.8 切换VPC或交换机
+    - 2.4.9 修改地址过期时间
+  - 2.5 数据库管理
+    - 2.5.1 创建数据库
+    - 2.5.2 删除数据库
+    - 2.5.3 查询数据库信息
+    - 2.5.4 修改数据库备注
+    - 2.5.5 复制数据库
+  - 2.6 账号管理
+    - 2.6.1 创建数据库账号
+    - 2.6.2 删除数据库账号
+    - 2.6.3 查询实例账号名称
+    - 2.6.4 检查数据库名称可用性
+    - 2.6.5 查询账号信息
+    - 2.6.6 授权账号
+    - 2.6.7 撤销账号权限
+    - 2.6.8 修改数据库账号描述
+    - 2.6.9 重置数据库账号密码
+    - 2.6.10 重置高权限账号权限
+    - 2.6.11 授予服务账号权限
+    - 2.6.12 锁定账号
+    - 2.6.13 撤销服务账号权限
+    - 2.6.14 解锁账号
+  - 2.7 备份恢复
+    - 2.7.1 创建备份
+    - 2.7.2 恢复数据（克隆实例）
+    - 2.7.3 查看备份列表
+    - 2.7.4 查询备份设置
+    - 2.7.5 修改备份设置
+    - 2.7.6 删除数据备份
+    - 2.7.7 删除SQL Server备份
+    - 2.7.8 查询备份任务
+    - 2.7.9 查询日志备份
+    - 2.7.10 查询备份集的库表信息
+    - 2.7.11 单库单表恢复
+    - 2.7.12 查看已删除实例的备份
+  - 2.8 数据库代理
+    - 2.8.1 查询系统权重分配值
+    - 2.8.2 查询数据库代理设置
+    - 2.8.3 查询独享代理设置详情
+    - 2.8.4 查询独享代理地址信息
+    - 2.8.5 查询独享代理性能
+    - 2.8.6 开关独享代理
+    - 2.8.7 修改独享代理终端设置
+    - 2.8.8 修改独享代理设置
+    - 2.8.9 修改读权重和延迟阈值
+    - 2.8.10 释放读写分离地址
+  - 2.9 主备高可用和数据复制方式
+    - 2.9.1 查询高可用模式
+    - 2.9.2 修改高可用模式
+    - 2.9.3 查看主备切换日志
+    - 2.9.4 查询主备切换设置
+    - 2.9.5 切换主备实例
+    - 2.9.6 设置主备自动切换
+  - 2.10 安全加密
+    - 2.10.1 查询IP白名单
+    - 2.10.2 修改IP白名单
+    - 2.10.3 查询云盘加密状态及密钥详情
+    - 2.10.4 设置分布式事务白名单
+    - 2.10.5 查询分布式事务白名单
+    - 2.10.6 查询SSL设置
+    - 2.10.7 修改SSL设置
+    - 2.10.8 开启TDE
+    - 2.10.9 查询TDE设置
+  - 2.11 监控管理
+    - 2.11.1 查询空间使用信息
+    - 2.11.2 查询性能数据
+    - 2.11.3 查询监控频率
+    - 2.11.4 修改监控频率
+  - 2.12 参数管理
+    - 2.12.1 查询参数配置
+    - 2.12.2 修改实例参数
+    - 2.12.3 查询参数修改日志
+  - 2.13 日志管理
+    - 2.13.1 查询慢日志统计
+    - 2.13.2 查看慢日志明细
+    - 2.13.3 查询错误日志
+    - 2.13.4 查询Binlog日志
+    - 2.13.5 查询SQL洞察（SQL审计）状态
+    - 2.13.6 开关SQL洞察（SQL审计）
+    - 2.13.7 查询SQL洞察（SQL审计）日志
+    - 2.13.8 查询SQL洞察（SQL审计）列表
+    - 2.13.9 查看SQL日志运行报告列表
+    - 2.13.10 清理本地日志
+  - 2.14 历史事件
+    - 2.14.1 开启或关闭历史事件
+    - 2.14.2 查询历史事件功能是否开启
+    - 2.14.3 查询历史事件
+  - 2.15 性能优化诊断（CloudDBA）
+    - 2.15.1 创建诊断报告
+    - 2.15.2 查询诊断报告列表
+  - 2.16 数据迁移
+    - 2.16.1 获取文件上传地址
+    - 2.16.2 查询数据文件列表
+    - 2.16.3 迁入实例
+    - 2.16.4 取消迁移任务
+    - 2.16.5 创建上云任务
+    - 2.16.6 查询实例迁移状态
+    - 2.16.7 查询单个上云任务
+    - 2.16.8 查询上云任务列表
+    - 2.16.9 查询上云任务文件
+  - 2.17 标签管理
+    - 2.17.1 创建标签
+    - 2.17.2 绑定标签
+    - 2.17.3 查询标签
+    - 2.17.4 解绑标签
+  - 2.18 如何使用RAM授权
+    - 2.19.1 客户端错误代码表
+      - 2.19.1.1 公共错误
+      - 2.19.1.2 特定错误
+    - 2.19.2 服务器端错误代码表
+    - 2.19.3 实例状态表
+    - 2.19.4 性能参数表
+    - 2.19.5 禁用关键字表
+    - 2.19.6 实例规格
 
-### 准备工作
+## 1 调用云产品SDK
 
-#### 登录开发者门户
+### 1.1 准备工作
+
+#### 1.1.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -28,22 +187,22 @@ converter: line-classifier (PyMuPDF)
 2. 输入正确的用户名及密码。
 请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 管理员强制开启MFA后的首次登录： a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b. 按照步骤2重新输入账号和密码，单击**登录**。 c. 输入6位MFA码后单击**认证**。 您已开启并绑定MFA： 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开** **启虚拟****MFA****设备》**章节。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
-**启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者服务**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者服务**。
 
-#### 获取API信息及其EndPoint
+#### 1.1.2 获取API信息及其EndPoint
 
-首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。 云数据库RDS
+首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
 **背景信息**
 
@@ -59,7 +218,7 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-#### 获取AccessKey
+#### 1.1.3 获取AccessKey
 
 访问身份验证中通过使用AccessKey ID和AccessKey Secret对称加密的方法来验证某个请求的发送者身份。AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。本文将为您描述如何获取通过RAM授权的AccessKey。
 
@@ -69,7 +228,7 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 
 **背景信息**
 
-AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。 本文仅为您介绍如何获取通过RAM授权的AccessKey。 云数据库RDS 推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。 本文仅为您介绍如何获取通过RAM授权的AccessKey。 推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
 | 参数名称 | 描述 |
 |---|---|
@@ -78,9 +237,7 @@ AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的Acce
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
-**警告**
-
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 **获取个人账号AccessKey**
 
@@ -89,22 +246,19 @@ AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的Acce
 2. 在系统界面右上角，将鼠标悬停在当前登录用户的头像上，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
-
-AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+> **说明：** AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-云数据库RDS
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-#### 获取公共Header参数
+#### 1.1.4 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -143,7 +297,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 实例ID可以通过Apsara Uni-manager运营控制台中的云产品实例列表进行获取，本文中以API网关为例， 获取步骤如下：
 1. 登录Apsara Uni-manager运营控制台。
 2. 在顶部的菜单栏中，选择**产品** > **开发与工具** > **开发与运维** > **API****网关**。
-云数据库RDS
 3. 在左侧导航栏中，单击**实例**。
 4. 在实例列表中查看**实例****ID**。
 
@@ -158,7 +311,7 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-#### 获取STS AccessKey
+#### 1.1.5 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -171,7 +324,6 @@ AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-云数据库RDS
 
 ```
 public static void main(String[] args) {
@@ -198,7 +350,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -220,11 +377,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，下列代码以ECS为示例。
-云数据库RDS
 
 ```
 public static void main(String[] args) {
@@ -236,7 +392,12 @@ public static void main(String[] args) {
 
 ```
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -248,12 +409,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-### 通过POP网关调用专有云API
+`}`
 
-#### 调用前置
+### 1.2 通过POP网关调用专有云API
+
+#### 1.2.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -268,7 +430,6 @@ public static void main(String[] args) {
 1. 登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏选择**产品** > **开发工具** > **API****与工具** > **开发者门户**。
 3. 在**开发者门户**页面，选择**API****集成** > **API****调试**。
-云数据库RDS
 4. 在左侧导航栏中选择目标云产品。
 5. 在**版本**下拉列表中，选择目标API版本。
 6. 在下方API列表中可浏览当前版本的所有API接口。
@@ -289,9 +450,9 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-云数据库RDS 通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见本手册**准备工作**下的**获取公共****Header****参数**章节。
 
-#### Java版
+#### 1.2.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -359,7 +520,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.setSysDomain("<apigatewayEndpoint>");
 ```
 
-云数据库RDS `//` 设置访问接口版本
+`//` 设置访问接口版本
 
 ```
         request.setSysVersion("2016-07-14");
@@ -404,13 +565,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -428,18 +589,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` `}` `}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
 ```
-
-云数据库RDS
 
 ```
     public static void main(String[] args) {
@@ -529,19 +685,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -563,34 +719,32 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 e.printStackTrace();
 ```
 
-云数据库RDS
-
 ```java
             e.printStackTrace();
         } catch (ClientException e) {
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-**重要**
+`}` `}` `}`
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置： Java
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置：
+
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-`//` 设置不校验服务端证书
+> `//` 设置不校验服务端证书
 
 ```
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-#### Go版
+#### 1.2.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -609,7 +763,7 @@ clientConfig.setIgnoreSSLCerts(true)
 
 **CommonRequest调用示例**
 
-RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下： 云数据库RDS
+RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下：
 
 ```java
 package main import (
@@ -618,7 +772,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -662,19 +816,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 云数据库RDS
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 package main import (
@@ -684,7 +841,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -729,37 +886,41 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 云数据库RDS
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下：
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -777,9 +938,9 @@ client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpPro
 
 **设置**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。 `//` 设置请求 `HTTPSInsecure`（只影响当前）
+`//` 设置请求 `HTTPSInsecure`（只影响当前）
 
 ```
 request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure := request.GetHTTPSInsecure() // 获取请求 HTTPSInsecure
@@ -791,9 +952,7 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-云数据库RDS
-
-#### Python版
+#### 1.2.4 Python版
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -818,7 +977,7 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -827,13 +986,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -842,13 +995,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -858,36 +1011,39 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-云数据库RDS
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -896,7 +1052,7 @@ SecurityToken>"};
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -908,14 +1064,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -934,26 +1089,23 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-云数据库RDS
-
 **忽略证书**
 
-**重要**
-
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -963,13 +1115,15 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-) 云数据库RDS
+`)`
 
-## API参考
+## 2 API参考
 
-### 实例管理
+### 2.1 实例管理
 
-#### 创建RDS实例
+#### 2.1.1 创建RDS实例
+
+调用CreateDBInstance接口创建RDS实例。
 
 **请求头**
 
@@ -985,8 +1139,6 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | EngineVers ion | Strin g | Quer y | 是 | 5.6 | 数据库版本。取值： MySQL：5.5/5.6/5.7/8.0 SQL Server： 2008r2/08r2 ent ha/2012/2012 ent ha/20 _ _ _ _ 12 std ha/2012 web/2014 std ha/2016 en _ _ _ _ _ _ t ha/2016 std ha/2016 web/2017 std ha/2 _ _ _ _ _ _ 017 ent/2019 std ha/2019 ent _ _ _ _ PostgreSQL：9.4/10.0/11.0/12.0/13.0 POLARDB：11 |
 | DBInstance Class | Strin g | Quer y | 是 | rds.mysql.s1.s mall | 实例规格。详情请参见云数据库RDS > 产品简介中的实例规格表。您也可以调用 DescribeAvailableResource接口查询目标地域中可用的实例规格列表。 |
 
-云数据库RDS
-
 | DBInstance Storage | Inte ger | Quer y | 是 | 20 | 实例存储空间。单位：GB。每5GB进行递增，取值范围请参见云数据库RDS > 产品简介中的实例规格表。您也可以调用DescribeAvailableResource接口查询目标实例规格中可用的存储空间范围。 |
 |---|---|---|---|---|---|
 | DBInstance StorageTyp e | Strin g | Quer y | 否 | cloud ssd _ | 实例存储类型。取值： local ssd：本地SSD盘（推荐） _ cloud ssd：SSD云盘 _ cloud essd：ESSD PL1云盘 _ cloud essd2：ESSD PL2云盘 _ cloud essd3：ESSD PL3云盘 _ |
@@ -995,8 +1147,6 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | SecurityIPLi st | Strin g | Quer y | 是 | 10.23.12.27/2 4 | 该实例的IP白名单。多条记录请以英文逗号（,）隔开，不可重复，最多1000条记录。支持如下两种格式： IP地址形式，例如：10.23.12.24。 CIDR形式，例如：10.23.12.24/24（无类域间路由，24表示地址中前缀的长度，范围为 1~32）。 |
 | ClientToke n | Strin g | Quer y | 否 | ETnLKlblzczsh OTUbOCzxxxx xxxxxx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII字符，且该参数值中不能包含非 ASCII字符。 |
 | PayType | Strin g | Quer y | 是 | Postpaid | 实例的付费类型。取值固定为Postpaid（按量付费）。 |
-
-云数据库RDS
 
 | ZoneId | Strin g | Quer y | 否 | cn-hangzhou-b | 主节点可用区ID。 指定了VPC和交换机时，为匹配交换机对应的可用区，该参数必填。 对于高可用版实例，还需传入ZoneIdSlave1，以决定实例是单可用区部署还是多可用区部署。 |
 |---|---|---|---|---|---|
@@ -1007,8 +1157,6 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | PrivateIpAd dress | Strin g | Quer y | 否 | 172.XX.XXX.69 | 设置实例的内网IP。需要在指定交换机的IP地址范围内。系统默认通过VPCId和VSwitchId自动分配。 |
 | ResourceGr oupId | Strin g | Quer y | 否 | rg-acfmy****** | 资源组ID。 |
 | Category | Strin g | Quer y | 否 | HighAvailabilit y | 实例系列。取值： Basic：基础版 HighAvailability：高可用版 AlwaysOn：集群版 |
-
-云数据库RDS
 
 | ZoneIdSlav e1 | Strin g | Quer y | 否 | cn-hangzhou-c | 备节点可用区ID。如果和ZoneId相同，则为单可用区部署；如果和ZoneId不同，则为多可用区部署。 |
 |---|---|---|---|---|---|
@@ -1027,8 +1175,6 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | OrderId | String | 1007893702xxxxx | 订单ID。 |
 | ConnectionStri ng | String | rm- uf6wjk5xxxxxxx.my sql.rds.aliyuncs.co m | 数据库连接地址。 说明参数DBInstanceNetType决定该地址为内网或外网。 |
 
-云数据库RDS
-
 | Port | String | 3306 | 数据库连接端口。 说明参数DBInstanceNetType决定该地址为内网或外网。 |
 |---|---|---|---|
 
@@ -1040,19 +1186,23 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 http(s)://rds.example.com/?Action=CreateDBInstance &RegionId=cn-hangzhou &Engine=MySQL &EngineVersion=5.6 &DBInstanceClass=rds.mysql.s1.small &DBInstanceStorage=20 &DBInstanceNetType=Internet &SecurityIPList=10.23.12.27/24 &PayType=Postpaid
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC",
  "DBInstanceId":"rm-uf6wjk5******",
  "Port":"3306",
  "OrderId":"100789370******",
  "ConnectionString":"rm-uf6wjk5******.mysql.rds.aliyuncs.com"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId> <DBInstanceId>rm-uf6wjk5******</DBInstanceId> <Port>3306</Port> <OrderId>100789370******</OrderId> <ConnectionString>rm-uf6wjk5******.mysql.rds.aliyuncs.com</ConnectionString>
@@ -1064,8 +1214,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 400 | InvalidIzNo.NotSup ported | InvalidZoneId.NotSupported | The Specified vpc Zone not supported. |
 
-云数据库RDS
-
 | 400 | InvalidZone.NotSup ported | InvalidZone.NotSupported | The Specified Zone not supported. |
 |---|---|---|---|
 | 500 | InsufficientResourc eCapacity | InsufficientResourceCapacity | %s |
@@ -1076,7 +1224,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | SUBNET IP EXHAU _ _ STED | SUBNET IP EXHAUSTED _ _ | error subnet ip exhaust |
 | 400 | SpecifiedMinorVersi onProcessFailed | SpecifiedMinorVersionProcessF ailed | Specified minor version process failed. |
 
-#### 查询实例详细信息
+#### 2.1.2 查询实例详细信息
 
 调用DescribeDBInstanceAttribute接口查询RDS实例的详细信息。
 
@@ -1088,14 +1236,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DBInstanceI d | String | 是 | rm- uf6wjk5xxxxxxxxxx | 实例ID。可以一次输入最多30个，以英文逗号（,）分隔。 |
 | Expired | String | 否 | False | 实例过期状态，取值： True：已过期 False：未过期 |
 
-云数据库RDS
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of DBInstanceAtt ribute |  | 实例属性列表。 |
-| DBInstanceAttri bute |  |  |  |
+| Items | Array of DBInstanceAtt ribute |   | 实例属性列表。 |
+| DBInstanceAttri bute |   |   |   |
 | DBInstanceId | String | rm- uf6wjk5xxxxxxx xxx | 实例ID。 |
 | PayType | String | Postpaid | 实例付费方式，取值： Postpaid：按量付费 Prepaid：包年包月 |
 | DBInstanceTyp e | String | Primary | 实例类型，取值： Primary：主实例 Readonly：只读实例 Guard：灾备实例 Temp：临时实例 |
@@ -1104,8 +1250,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RegionId | String | cn-hangzhou | 地域ID。 |
 | ZoneId | String | cn-hangzhou-a | 可用区ID。 |
 | ConnectionStri ng | String | rm- uf6wjk5xxxxxxx xxx.mysql.rds.al iyuncs.com | 内网连接地址。 |
-
-云数据库RDS
 
 | Port | String | 3306 | 内网连接端口。 |
 |---|---|---|---|
@@ -1119,8 +1263,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DBInstanceStat us | String | Running | 实例状态，详情请参见本手册中的实例状态表。 |
 | DBInstanceDes cription | String | 测试数据库 | 实例备注。 |
 | LockMode | String | Unlock | 实例锁定模式： Unlock：正常 ManualLock：手动触发锁定 LockByExpiration：实例过期自动锁定 LockByRestoration：实例回滚前的自动锁定 LockByDiskQuota：实例空间满自动锁定 LockReadInstanceByDiskQuota：只读实例空间满自动锁定 |
-
-云数据库RDS
 
 | LockReason | String | instance expire _ d | 锁定原因。 |
 |---|---|---|---|
@@ -1137,11 +1279,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | GuardDBInstan ceId | String | rm- uf64zsuxxxxxxx xxx | 该实例如果挂载着灾备实例，即为灾备实例的ID。 |
 | TempDBInstan ceId | String | rm- uf64zsuxxxxxxx xxx | 该实例如果挂载着临时实例，即为临时实例ID。 |
 
-云数据库RDS
-
-| ReadOnlyDBIns tanceIds | Array of ReadOnlyDBIn stanceId |  | 主实例下挂载的只读实例ID列表。 |
+| ReadOnlyDBIns tanceIds | Array of ReadOnlyDBIn stanceId |   | 主实例下挂载的只读实例ID列表。 |
 |---|---|---|---|
-| ReadOnlyDBIns tanceId |  |  |  |
+| ReadOnlyDBIns tanceId |   |   |   |
 | DBInstanceId | String | rm- bpxxxxxxxxx | 只读实例ID。 |
 | AdvancedFeatu res | String | LinkedServer | 目前只针对SQL Server，获取高级特性值，多个值之间用英文逗号（,）隔开，现返回值如下： LinkedServer：链接服务器 DistributeTransaction：分布式事务 |
 | AutoUpgradeMi norVersion | String | Auto | 实例升级小版本的方式，取值： Auto：自动升级小版本 Manual：不自动升级，仅在当前版本下线时才强制升级 |
@@ -1151,13 +1291,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | CurrentKernelV ersion | String | rds 20181010 _ | 当前内核版本。 |
 | DBInstanceStor ageType | String | local ssd _ | 实例储存类型，取值： local ssd/ephemeral ssd：本地SSD盘 _ _ cloud ssd：SSD云盘 _ cloud essd：ESSD云盘 _ |
 
-云数据库RDS
-
 | DispenseMode | String | 无 | 无效参数。 |
 |---|---|---|---|
 | EncryptionKey | String | 无 | 无效参数。 |
 | EncryptionKey | String | 无 | 无效参数。 |
-| Extra | Struct |  | 无效参数。 |
+| Extra | Struct |   | 无效参数。 |
 | ActiveReplicaD BInstanceID | String | 无 | 无效参数。 |
 | DBInstanceId | List | 无 | 无效参数。 |
 | ReplicaGroupID | String | 无 | 无效参数。 |
@@ -1168,13 +1306,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ReadonlyInstan ceSQLDelayedT ime | String | 30 | 只读实例延迟复制时间，只读实例延迟ReadonlyInstanceSQLDelayedTime的时间后再同步主实例数据，单位：秒。 |
 | ResourceGroup Id | String | rg- acfmyxxxxxxxx xx | 资源组ID。 |
 
-云数据库RDS
-
 | SecurityIPMode | String | normal | 白名单模式。取值： normal：通用模式 safety：高安全模式 |
 |---|---|---|---|
 | SlaveConnectio nString | String | 无 | 无效参数。 |
-| SlaveZones | Array of SlaveZone |  | 组成SlaveZones的参数。 |
-| SlaveZone |  |  |  |
+| SlaveZones | Array of SlaveZone |   | 组成SlaveZones的参数。 |
+| SlaveZone |   |   |   |
 | ZoneId | String | cn-hangzhou-a | 可用区。 |
 | TimeZone | String | Central Standard Time | 时区。 |
 | VSwitchId | String | vsw-xxxxxx | 交换机ID。 |
@@ -1190,7 +1326,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://rds.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceAttributeResponse>
@@ -1201,7 +1337,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=rm-u
               <ResourceGroupId>rg-acfmyxxxxxxxxxx</ResourceGroupId>
 ```
 
-/ 云数据库RDS
+`/`
 
 ```xml
               <Port>3306</Port>
@@ -1261,8 +1397,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 <SupportUpgradeAccountType>No</SupportUpgradeAccountType>
 ```
 
-云数据库RDS
-
 ```xml
               <SupportUpgradeAccountType>No</SupportUpgradeAccountType>
               <SlaveZones>
@@ -1281,14 +1415,17 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 </DescribeDBInstanceAttributeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "BD3A30D8-32E7-40CF-AAEA-6BFD4E3DC55E",
  "Items": {
   "DBInstanceAttribute": [
-   {
+```
+
+`{`
+
+```json
     "DBInstanceMemory": 8192,
     "ResourceGroupId": "rg-acfmyxxxxxxxxxx",
     "Port": "3306",
@@ -1322,8 +1459,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
     "TempUpgradeTimeEnd": "2021-06-18 00:00:00",
 ```
 
-云数据库RDS
-
 ```json
     "CreationTime": "2020-06-17T09:03:57Z",
     "ConnectionMode": "Standard",
@@ -1342,7 +1477,11 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
     "OriginConfiguration": "",
     "ReadOnlyDBInstanceIds": {
      "ReadOnlyDBInstanceId": []
-    },
+```
+
+`},`
+
+```json
     "SecurityIPMode": "normal",
     "MaintainTime": "23:00Z-00:00Z",
     "DispenseMode": "MultiAVZDispenseMode",
@@ -1353,39 +1492,36 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
     "SupportUpgradeAccountType": "No",
     "SlaveZones": {
      "SlaveZone": [
-      {
-       "ZoneId": "cn-hangzhou-h"
-      }
 ```
 
-]
+`{`
 
 ```json
-    },
+       "ZoneId": "cn-hangzhou-h"
+```
+
+`}` `]` `},`
+
+```json
     "Extra": {
      "DBInstanceIds": {
       "DBInstanceId": []
-     }
-    },
+```
+
+`}` `},`
+
+```json
     "CanTempUpgrade": true,
     "RegionId": "cn-hangzhou"
-   }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
- }
-}
-```
-
-#### 查询实例列表
+#### 2.1.3 查询实例列表
 
 调用DescribeDBInstances接口查询RDS实例列表。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -1401,8 +1537,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | SearchKey | String | 否 | rm-uf6w | 可基于实例ID或者实例备注模糊搜索。 |
 | DBInstanceId | String | 否 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances获取。 |
 
-云数据库RDS
-
 | DBInstanceType | String | 否 | Primary | 实例类型，取值： Primary：主实例 Readonly：只读实例 Guard：灾备实例 Temp：临时实例默认返回所有实例类型。 |
 |---|---|---|---|---|
 | PageSize | Integer | 否 | 30 | 每页记录数，取值：1~100。 默认值：30。 |
@@ -1414,8 +1548,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | EngineVersion | String | 否 | 5.7 | 数据库版本。 |
 | PayType | String | 否 | Postpaid | 付费类型，取值： Postpaid：按量付费 Prepaid：包年包月 |
 | ConnectionMode | String | 否 | Standard | 实例的访问模式，取值： Standard：标准访问模式 Safe：数据库代理模式默认返回所有访问模式下的实例。 |
-
-云数据库RDS
 
 | Tag.1.key | String | 否 | testkey1 | 第一个标签键。 |
 |---|---|---|---|---|
@@ -1439,12 +1571,10 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | PageRecordCo unt | Integer | 10 | 当前页实例个数。 |
 | TotalRecordCo unt | Integer | 100 | 总记录数。 |
 
-云数据库RDS
-
 | PageNumber | Integer | 1 | 页码。 |
 |---|---|---|---|
-| Items | Array of DBInstance |  | 由实例信息组成的数组。 |
-| DBInstance |  |  |  |
+| Items | Array of DBInstance |   | 由实例信息组成的数组。 |
+| DBInstance |   |   |   |
 | DBInstanceId | String | rm- uf6wjk5xxxxxxxxxx | 实例ID。 |
 | DBInstanceDe scription | String | 测试数据库 | 实例描述。 |
 | PayType | String | Postpaid | 实例的付费类型，取值Postpaid（按量付费）。 |
@@ -1454,8 +1584,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | RegionId | String | cn-hangzhou | 地域ID。 |
 | ExpireTime | String | 2019-02- 27T16:00:00Z | 到期时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 说明按量付费实例无到期时间。 |
 | DBInstanceSta tus | String | Running | 实例状态，详情请参见本手册的实例状态表。 |
-
-云数据库RDS
 
 | Engine | String | MySQL | 数据库类型。 |
 |---|---|---|---|
@@ -1470,8 +1598,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | DBInstanceCla ss | String | rds.mys2.small | 实例规格，详见云数据库RDS > 产品简介中的实例规格表。 |
 | DBInstanceSto rageType | String | ModuleList.4.Modul eCode | 实例储存类型。 |
 
-云数据库RDS
-
 | DestroyTime | String | 2018-11- 05T11:26:02Z | 销毁时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 |---|---|---|---|
 | DispenseMode | String | 无 | 实例的部署模式。 |
@@ -1479,18 +1605,16 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | InsId | Integer | 0 | 无效参数。 |
 | MasterZone | String | 无 | 无效参数。 |
 | MutriORsignle | Boolean | true | 是否是多可用区，取值：true \| false |
-| ReadOnlyDBIn stanceIds | Array of ReadOnlyDBIn stanceId |  | 主实例下如果有只读实例，该参数为只读实例的 ID列表。 |
-| ReadOnlyDBIn stanceId |  |  |  |
+| ReadOnlyDBIn stanceIds | Array of ReadOnlyDBIn stanceId |   | 主实例下如果有只读实例，该参数为只读实例的 ID列表。 |
+| ReadOnlyDBIn stanceId |   |   |   |
 | DBInstanceId | String | rr-uf6wjk5xxxxxxx | 只读实例ID。 |
 | ReplicateId | String | 无 | 无效参数。 |
 | ResourceGrou pId | String | rg-acfmyxxxxxxx | 资源组ID。 |
-| SlaveZones | Array of SlaveZone |  | 备实例可用区列表。 |
-| SlaveZone |  |  |  |
+| SlaveZones | Array of SlaveZone |   | 备实例可用区列表。 |
+| SlaveZone |   |   |   |
 | ZoneId | String | cn-hangzhou-h | 备实例所在可用区的可用区ID。 |
 | VSwitchId | String | vsw- uf6adz52c2pxxxxx xx | 交换机ID。 |
 | VpcCloudInsta nceId | String | rm-uf6wjk5xxxxxxx | 专有网络实例ID。 |
-
-云数据库RDS
 
 | VpcId | String | vpc- uf6f7l4fg90xxxxxx x | VPC ID。 |
 |---|---|---|---|
@@ -1506,7 +1630,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
                     &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstancesResponse>
@@ -1548,17 +1672,20 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
                     </DescribeDBInstancesResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
                     "TotalRecordCount": 1,
                     "PageRecordCount": 1,
                     "RequestId": "B4309486-26EF-47B3-ADDE-6140B4C1109D",
                     "PageNumber": 1,
                     "Items": {
                     "DBInstance": [
-                    {
+```
+
+`{`
+
+```json
                     "ResourceGroupId": "rg-acxxxxx",
                     "DBInstanceNetType": "Intranet",
                     "DBInstanceType": "Primary",
@@ -1567,7 +1694,11 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
                     "DBInstanceId": "rm-bpxxxxx",
                     "ReadOnlyDBInstanceIds": {
                     "ReadOnlyDBInstanceId": []
-                    },
+```
+
+`},`
+
+```json
                     "LockReason": "",
                     "DBInstanceDescription": "test",
                     "Engine": "MySQL",
@@ -1587,15 +1718,9 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
                     "VpcCloudInstanceId": "rm-bpxxxxx-1",
                     "RegionId": "cn-hangzhou",
                     "ExpireTime": "2021-06-17T16:00:00Z"
-                    }
 ```
 
-]
-
-```
-                    }
-                    }
-```
+`}` `]` `}` `}`
 
 **错误码**
 
@@ -1603,15 +1728,11 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
 |---|---|---|---|
 | 400 | InvalidDBInstanceT ype.ValueNotSuppo rt | The specified parameter"DBInstanceType" is not valid. | 操作失败，指定实例类型无效。请选择正确的实例类型。 |
 
-云数据库RDS
-
-#### 变更配置
+#### 2.1.4 变更配置
 
 调用ModifyDBInstanceSpec接口变更RDS实例的（包括常规实例和只读实例，不包括灾备实例和临时实例）的规格或存储空间。 升级调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例没有正在执行的备份任务。 请求参数中必须至少指定实例规格（DBInstanceClass）和存储空间（DBInstanceStorage）其中一个参数。 若降低磁盘空间配置，输入的磁盘空间不能小于实际使用空间大小的1.1倍。 当前只支持对常规实例和只读实例变更配置，不支持灾备实例和临时实例。
 
-**说明**
-
-升级数据库版本（例如从基础版升级高可用版），选择相应的实例规格即可。
+> **说明：** 升级数据库版本（例如从基础版升级高可用版），选择相应的实例规格即可。
 
 **请求参数**
 
@@ -1621,8 +1742,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 待变更配置的实例ID。 |
 | PayType | String | 是 | Postpaid | 实例当前的付费类型，取值固定为Postpaid（按量付费）。 |
 | DBInstanceClass | String | 否 | rds.mys2.small | 目标实例规格，详情请参见云数据库RDS > 产品简介中的实例规格。您也可以调用 DescribeAvailableClasses接口查询目标地域中可用的实例规格列表。 说明本参数和DBInstanceStorage参数两者至少传入一项。 |
-
-云数据库RDS
 
 | DBInstanceStora ge | Integer | 否 | 20 | 目标存储空间大小，单位：GB。每5GB进行递增，详情请参见云数据库RDS > 产品简介中的实例规格。您也可以调用 DescribeAvailableClasses接口查询目标实例规格中可用的存储空间范围。 说明本参数和DBInstanceClass参数两者至少传入一项。 RDS MySQL高可用版本地盘实例支持存储空间缩容，每 5GB递减。 |
 |---|---|---|---|---|
@@ -1639,13 +1758,13 @@ http(s)://rds.example.com/?Action=DescribeDBInstances
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=rm-uf6wjk5xxxxxxx &PayType=Postpaid &DBInstanceClass=rds.mys2.small
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceSpecResponse>
@@ -1655,19 +1774,19 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=rm-uf6wjk5x
 </ModifyDBInstanceSpecResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "3C5CFDEE-F774-4DED-89A2-1D76EC63C575",
  "DBInstanceId": "rm-uf6wjk5xxxxxxx",
  "OrderId": 207938506080728
-}
 ```
 
-#### 释放RDS实例
+`}`
 
-调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例已关闭读写分离。 实例类型为主实例、只读实例、灾备实例、临时实例。
+#### 2.1.5 释放RDS实例
+
+调用DeleteDBInstance接口释放RDS实例。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例已关闭读写分离。 实例类型为主实例、只读实例、灾备实例、临时实例。
 
 **请求参数**
 
@@ -1678,8 +1797,6 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=rm-uf6wjk5x
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCz********** | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 
 **返回数据**
-
-云数据库RDS
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
@@ -1693,7 +1810,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=rm-uf6wjk5x
 http(s)://rds.example.com/?Action=DeleteDBInstance &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DeleteDBInstanceResponse>
@@ -1702,16 +1819,16 @@ http(s)://rds.example.com/?Action=DeleteDBInstance &DBInstanceId=rm-uf6wjk5xxxxx
 </DeleteDBInstanceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId":"65BDA532-28AF-4122-AA39-B382721EEE64",
   "RegionId":"ap-southeast-1"
-}
 ```
 
-#### 重启实例
+`}`
+
+#### 2.1.6 重启实例
 
 调用RestartDBInstance接口重启RDS实例。 如果有大量的事务需要提交或回滚，可能会延长1分钟左右。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中； 实例没有进行中的备份。
 
@@ -1721,8 +1838,6 @@ http(s)://rds.example.com/?Action=DeleteDBInstance &DBInstanceId=rm-uf6wjk5xxxxx
 |---|---|---|---|---|
 | Action | String | 是 | RestartDBInstan ce | 系统规定参数，取值：RestartDBInstance。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxx | 实例ID。可调用DescribeDBInstances获取。 |
-
-云数据库RDS
 
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 |---|---|---|---|---|
@@ -1741,7 +1856,7 @@ http(s)://rds.example.com/?Action=DeleteDBInstance &DBInstanceId=rm-uf6wjk5xxxxx
 http(s)://rds.example.com/?Action=RestartDBInstance &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RestartDBInstanceResponse>
@@ -1749,29 +1864,25 @@ http(s)://rds.example.com/?Action=RestartDBInstance &DBInstanceId=rm-uf6wjk5xxxx
 </RestartDBInstanceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 查询地域信息
+`}`
+
+#### 2.1.7 查询地域信息
 
 调用DescribeRegions接口查询所有RDS地域的详情。 调用创建实例接口CreateDBInstance之前，可以先用本接口查询RegionId和ZoneId。
 
-**说明**
-
-多可用区包含MAZ字样，例如cn-hangzhou-MAZ6(b,f)、cn-hangzhou-MAZ5(b,e,f)。
+> **说明：** 多可用区包含MAZ字样，例如cn-hangzhou-MAZ6(b,f)、cn-hangzhou-MAZ5(b,e,f)。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeRegions | 系统规定参数，取值：DescribeRegions。 |
-
-云数据库RDS
 
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxxx xx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 |---|---|---|---|---|
@@ -1780,8 +1891,8 @@ http(s)://rds.example.com/?Action=RestartDBInstance &DBInstanceId=rm-uf6wjk5xxxx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Regions | Array of RDSRegion |  | 可选的地域和可用区列表。 |
-| RDSRegion |  |  |  |
+| Regions | Array of RDSRegion |   | 可选的地域和可用区列表。 |
+| RDSRegion |   |   |   |
 | RegionId | String | cn-hangzhou | 地域ID。 |
 | ZoneId | String | cn-hangzhou-b | 可用区ID。 |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | 请求ID。 |
@@ -1794,7 +1905,7 @@ http(s)://rds.example.com/?Action=RestartDBInstance &DBInstanceId=rm-uf6wjk5xxxx
 https://rds.example.com/?Action=DescribeRegions
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeRegionsResponse>
@@ -1822,49 +1933,48 @@ https://rds.example.com/?Action=DescribeRegions
 </DescribeRegionsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "1CE1DC20-7EFC-464F-9583-0AB8915C5697",
   "Regions": {
     "RDSRegion": [
-      {
+```
+
+`{`
+
+```json
         "ZoneId": "cn-hangzhou-h",
         "RegionId": "cn-hangzhou",
         "LocalName": "China (Hangzhou)",
         "RegionEndpoint": "rds.aliyuncs.com"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ZoneId": "cn-hangzhou-MAZ10(h,i)",
         "RegionId": "cn-hangzhou",
         "LocalName": "China (Hangzhou)",
         "RegionEndpoint": "rds.aliyuncs.com"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ZoneId": "cn-hangzhou-MAZ8(f,g)",
         "RegionId": "cn-hangzhou",
         "LocalName": "China (Hangzhou)",
         "RegionEndpoint": "rds.aliyuncs.com"
-      }
 ```
 
-]
+`}` `]` `}`
 
-```
-  }
-}
-```
+#### 2.1.8 迁移可用区
 
-云数据库RDS
+调用MigrateToOtherZone接口将RDS实例迁移至其他可用区。 例如，实例目前位于华东1（杭州）的cn-hangzhou-a可用区，调用此接口可以将该实例迁移至杭州的cnhangzhou-b可用区。
 
-#### 迁移可用区
-
-调用MigrateToOtherZone接口将RDS实例迁移至其他可用区。 例如，实例目前位于华东1（杭州）的cn-hangzhou-a可用区，调用此接口可以将该实例迁移至杭州的cnhangzhou-b可用区。 仅支持迁移到同一地域的其它可用区，不支持迁移到其它地域的可用区，如华东1（杭州）
-
-**说明**
-
-可用区内的实例不支持迁移至华北1（青岛）的可用区。
+> **说明：** 仅支持迁移到同一地域的其它可用区，不支持迁移到其它地域的可用区，如华东1（杭州） 可用区内的实例不支持迁移至华北1（青岛）的可用区。
 
 **请求参数**
 
@@ -1890,7 +2000,7 @@ https://rds.example.com/?Action=DescribeRegions
 http(s)://rds.example.com/?Action=MigrateToOtherZone &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &ZoneId=cn-hangzhou-b
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <MigrateToOtherZoneResponse>
@@ -1898,13 +2008,13 @@ http(s)://rds.example.com/?Action=MigrateToOtherZone &DBInstanceId=rm-uf6wjk5xxx
 </MigrateToOtherZoneResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -1914,7 +2024,7 @@ http(s)://rds.example.com/?Action=MigrateToOtherZone &DBInstanceId=rm-uf6wjk5xxx
 | 403 | OperationDenied.O utofUsage | The resource is out of usage. | 当前集群的资源不足，请选择其它可用区。 |
 | 404 | InvalidVPCId.NotFo und | Specified virtual vpc is not found. | 参数VPC ID不存在，请检查该参数的正确性。 |
 
-#### 修改实例名称
+#### 2.1.9 修改实例名称
 
 调用ModifyDBInstanceDescription接口修改RDS实例的名称。
 
@@ -1926,8 +2036,6 @@ http(s)://rds.example.com/?Action=MigrateToOtherZone &DBInstanceId=rm-uf6wjk5xxx
 | DBInstanceDesc ription | String | 是 | 阿里云测试环境实例 | RDS实例名称。 说明长度为2-64个字符。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx xxx | 实例ID。 |
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxxx xx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -1949,7 +2057,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceDescription
 &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceDescriptionResponse>
@@ -1957,15 +2065,15 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceDescription
 </ModifyDBInstanceDescriptionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### 修改可维护时间段
+`}`
+
+#### 2.1.10 修改可维护时间段
 
 调用ModifyDBInstanceMaintainTime接口修改RDS实例可维护时间段。 实例可维护时间段一般设置为业务的低峰时间段。阿里云会在您设置的可维护时间段内进行实例维护，保证对业务的影响降到最低。
 
@@ -1976,8 +2084,6 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceDescription
 | Action | String | 是 | ModifyDBInstanc eMaintainTime | 系统规定参数，取值：ModifyDBInstanceMaintainTi me。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | MaintainTime | String | 是 | 22:00Z-02:00Z | 实例的可维护时间段。格式：HH:mmZ-HH:mmZ（UTC时间）。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -1993,7 +2099,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceDescription
 http(s)://rds.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=rm-uf6wjk5xxxxxxx &MaintainTime=22:00Z-02:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceMaintainTimeResponse>
@@ -2001,15 +2107,15 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=rm-
 </ModifyDBInstanceMaintainTimeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 查询RDS支持的字符集
+`}`
+
+#### 2.1.11 查询RDS支持的字符集
 
 调用DescribeCharacterSetName接口查询RDS实例支持的字符集。
 
@@ -2020,8 +2126,6 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=rm-
 | Action | String | 是 | DescribeCharact erSetName | 系统规定参数。取值：DescribeCharacterSetName。 |
 | Engine | String | 是 | mysql | 数据库引擎类型。取值： mysql：MySQL mssql：SQL Server PostgreSQL：PostgreSQL MariaDB：MariaDB |
 | RegionId | String | 是 | cn-hangzhou | RDS实例所在的地域ID。您可以通过 DescribeRegions查看。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -2039,7 +2143,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=rm-
 http(s)://example/?Action=DescribeCharacterSetName &Engine=mysql &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId> <CharacterSetNameItems>
@@ -2047,25 +2151,27 @@ http(s)://example/?Action=DescribeCharacterSetName &Engine=mysql &RegionId=cn-ha
 </CharacterSetNameItems> <Engine>mysql</Engine>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC",
     "CharacterSetNameItems": {
         "CharacterSetName": "[\"gbk\",\"utf8\",\"euckr\",\"ascii\"]"
-    },
-    "Engine": "mysql"
-}
 ```
 
-#### 查询底层ECS实例
+`},`
+
+```json
+    "Engine": "mysql"
+```
+
+`}`
+
+#### 2.1.12 查询底层ECS实例
 
 调用DescribeDBInstanceIpHostname接口查询RDS实例的底层ECS实例的hostname。 RDS实例是基于ECS实例搭建的，本接口用于设置分布式事务白名单时查询RDS实例的底层ECS实例的 hostname。 仅适用于RDS SQL Server高可用系列（2012标准版、2012企业版、2014标准版、2016标准版、2016 企业版、2017标准版）。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2088,7 +2194,7 @@ http(s)://example/?Action=DescribeCharacterSetName &Engine=mysql &RegionId=cn-ha
 http(s)://rds.example.com/?Action=DescribeDBInstanceIpHostname &DBInstanceId=rm-uf6wjk5******
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceIpHostnameResponse>
@@ -2098,19 +2204,15 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIpHostname &DBInstanceId=rm-
 </DescribeDBInstanceIpHostnameResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "IpHostnameInfos": "172.16.xx.xx,sdxxxxxxxxB;172.16.xx.xx,sdxxxxxxxxA",
  "DBInstanceId": "rm-uf6wjk5******",
  "RequestId": "67CD4719-51E3-4A76-A38C-02F45FAE7E36"
-}
 ```
 
-云数据库RDS
-
-#### 修改实例资源组
+#### 2.1.13 修改实例资源组
 
 调用ModifyResourceGroup接口将RDS实例移动到指定资源组。 通过资源管理服务，您可以按照业务需要搭建合适的资源组织关系，使用目录、资源夹、账号以及资源组， 分层次地组织和管理您的云资源。
 
@@ -2137,7 +2239,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIpHostname &DBInstanceId=rm-
 http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &ResourceGroupId=rg-acxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyResourceGroupResponse>
@@ -2145,12 +2247,10 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 </ModifyResourceGroupResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
 **错误码**
@@ -2159,11 +2259,15 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 |---|---|---|---|
 | 400 | ResourceGroupId.In Valid | The Specified resource group id is not found. | 资源组ID不存在。请检查ID是否正确。 |
 
-### 只读实例
+### 2.2 只读实例
 
-#### 创建只读实例
+#### 2.2.1 创建只读实例
 
-调用CreateReadOnlyDBInstance接口为某个实例创建一个只读实例。 主实例（非专属集群）的版本必须为以下其中一种： MySQL 8.0高可用版 MySQL 5.7高可用版 MySQL 5.6 SQL Server 2017集群版 PostgreSQL 10（本地SSD盘）、11、12高可用版对于MySQL实例： 如果主实例内存≥64GB，最多允许创建10个只读实例。 如果主实例内存＜64GB，最多允许创建5个只读实例。 对于SQL Server实例，最多允许创建7个只读实例。 对于PostgreSQL实例，本地盘主实例最多允许创建5个只读实例，云盘主实例最多允许创建32个只读实例。
+调用CreateReadOnlyDBInstance接口为某个实例创建一个只读实例。
+
+**调用该接口创建只读实例时，请注意：**
+
+主实例（非专属集群）的版本必须为以下其中一种： MySQL 8.0高可用版 MySQL 5.7高可用版 MySQL 5.6 SQL Server 2017集群版 PostgreSQL 10（本地SSD盘）、11、12高可用版对于MySQL实例： 如果主实例内存≥64GB，最多允许创建10个只读实例。 如果主实例内存＜64GB，最多允许创建5个只读实例。 对于SQL Server实例，最多允许创建7个只读实例。 对于PostgreSQL实例，本地盘主实例最多允许创建5个只读实例，云盘主实例最多允许创建32个只读实例。
 
 **请求参数**
 
@@ -2171,8 +2275,6 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 |---|---|---|---|---|
 | Action | String | 是 | CreateReadOnly DBInstance | 系统规定参数，取值：CreateReadOnlyDBInstance。 |
 | DBInstanceClass | String | 是 | rds.mys2.small | 实例规格。更多信息，请参见云数据库 RDS > 产品简介中的实例规格表。建议只读实例规格不小于主实例规格，否则易导致只读实例延迟高、负载高等现象。 |
-
-云数据库RDS
 
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 主实例ID。可调用DescribeDBInstances 获取。 |
 |---|---|---|---|---|
@@ -2184,8 +2286,6 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxxx xx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII字符，且该参数值中不能包含非ASCII字符。 |
 | DBInstanceStora geType | String | 否 | local ssd _ | 实例储存类型，取值： local ssd：本地SSD盘 _ cloud ssd：SSD云盘 _ 说明 MySQL仅支持本地盘存储类型，SQL Server仅支持云盘存储类型。 |
 
-云数据库RDS
-
 | DBInstanceDesc ription | String | 否 | 测试只读实例 | 实例描述，长度为2~256个字符。以中文、英文字母开头，可以包含数字、中文、英文、下划线（ ）、短横线（-）。 _ 说明不能以 http:// 和 https:// 开头。 |
 |---|---|---|---|---|
 | InstanceNetwork Type | String | 否 | Classic | 只读实例的网络类型，取值： VPC：专有网络 Classic：经典网络默认创建专有网络实例，需要传入VPCId和VSwitchId。 说明只读实例的网络类型可以和主实例不同。 |
@@ -2193,8 +2293,6 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 | VSwitchId | String | 否 | vsw- uf6adz52c2pxxx xxxxxxx | 只读实例的虚拟交换机ID。 当InstanceNetworkType配置为空或VPC时需要传入。 |
 | PrivateIpAddress | String | 否 | 172.16.201.69 | 设置只读实例的内网IP，需要在指定交换机的IP地址范围内。系统默认通过VPCId和VSwitchId自动分配。 |
 | ResourceGroupI d | String | 否 | rg- acfmyxxxxxxxxx x | 资源组ID。 |
-
-云数据库RDS
 
 | Category | String | 否 | HighAvailability | 实例系列，取值： Basic：基础版 HighAvailability：高可用版（默认值） 说明 PostgreSQL云盘实例的只读实例为基础版，因此必须传入Basic。 |
 |---|---|---|---|---|
@@ -2218,7 +2316,7 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou &ZoneId=cn-hangzhou-b &DBInstanceId=rm-uf6wjk5xxxxxxx &DBInstanceClass=rds.mys2.small &DBInstanceStorage=20 &EngineVersion=5.6 &PayType=Postpaid &VPCId=vpc-uf6f7l4fg90xxxxxxxxxx &VSwitchId=vsw-uf6adz52c2pxxxxxxxxxx
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateReadOnlyDBInstanceResponse>
@@ -2230,19 +2328,18 @@ http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou
 </CreateReadOnlyDBInstanceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "CreateReadOnlyDBInstanceResponse": {
         "OrderId": "10078937xxxxx",
         "ConnectionString": "rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com",
         "DBInstanceId": "rm-uf6wjk5xxxxxxx",
         "Port": 3306,
         "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -2255,13 +2352,11 @@ http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou
 | 403 | OperationDenied.Pr imaryDBInstanceSt atus | The operation is not permitted due to status of primary instance. | 操作失败，无法迁移专属集群内非运行状态的RDS实例。 |
 | 400 | OperationDenied | VPC IP is in use, please check. | 操作失败，当前VPC IP已经被使用。 |
 
-云数据库RDS
-
 | 404 | IncorrectDBInstanc eConnType | Current DB instance conn type does not support this operation. | 当前数据库实例的连接类型不支持此操作。 |
 |---|---|---|---|
 | 400 | InvalidZoneId.NotS upported | The Specified vpc Zone not supported. | 当前可用区不支持创建VPC网络类型实例，请更换可用区。 |
 
-#### 查询只读实例延迟信息
+#### 2.2.2 查询只读实例延迟信息
 
 调用DescribeReadDBInstanceDelay接口查询RDS只读实例的延迟信息。 调用该接口时，实例必须满足以下条件： 实例为MySQL、PostgreSQL、PolarDB。 实例已有只读实例。
 
@@ -2279,17 +2374,15 @@ http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou
 |---|---|---|---|
 | DBInstanceId | String | rm-bpxxxxxxx | 主实例ID。 |
 | DelayTime | Integer | 0 | 延迟时间。 |
-| Items | Array of Items |  | 延迟信息列表。 |
-| Items |  |  |  |
+| Items | Array of Items |   | 延迟信息列表。 |
+| Items |   |   |   |
 | DBInstanceId | String | rm-bpxxxxxxx | 主实例ID。 |
 | ReadDBInstan ceNames | List | "ReadDBInstanceN ame": ["rr- bpxxxxx"] | 只读实例的信息列表。 说明仅MySQL返回此参数。 |
 
-云数据库RDS
-
 | ReadDelayTim es | List | "ReadDelayTime": ["0"] | 延迟时间列表。 说明仅MySQL返回此参数。 |
 |---|---|---|---|
-| ReadonlyInsta nceDelay | Array of ReadonlyInsta nceDelay |  | 预写式日志（WAL）延迟信息列表。 说明仅PostgreSQL和PPAS返回此参数。 |
-| ReadonlyInsta nceDelay |  |  |  |
+| ReadonlyInsta nceDelay | Array of ReadonlyInsta nceDelay |   | 预写式日志（WAL）延迟信息列表。 说明仅PostgreSQL和PPAS返回此参数。 |
+| ReadonlyInsta nceDelay |   |   |   |
 | FlushLag | String | 0 | 预写式日志（WAL）持久化延迟时间。单位： 秒。 |
 | FlushLatency | String | 0 | 预写式日志（WAL）持久化延迟空间。单位： MB。 |
 | ReadDBInstan ceName | String | rr-bpxxxxxxx | 只读实例ID。 |
@@ -2303,13 +2396,13 @@ http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=DescribeReadDBInstanceDelay &RegionId=cn-hangzhou &DBInstanceId=rm-bpxxxxxxx &ReadInstanceId=rr-bpxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeReadDBInstanceDelayResponse>
@@ -2332,51 +2425,50 @@ http(s)://rds.example.com/?Action=DescribeReadDBInstanceDelay &RegionId=cn-hangz
 </DescribeReadDBInstanceDelayResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "11152741-D854-4E18-920E-64E75D484D57",
  "DBInstanceId": "rm-bpxxxxx",
  "Items": {
   "Items": [
-   {
+```
+
+`{`
+
+```json
     "ReadDBInstanceNames": {
      "ReadDBInstanceName": [
       "rr-bpxxxxx"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ReadDelayTimes": {
      "ReadDelayTime": [
       "0"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "DBInstanceId": "rm-bpxxxxx",
     "ReadonlyInstanceDelay": {
      "ReadonlyInstanceDelay": []
-    }
-   }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
- },
  "DelayTime": "0"
-}
 ```
 
-### 版本升级
+`}`
 
-#### 修改小版本升级方式
+### 2.3 版本升级
+
+#### 2.3.1 修改小版本升级方式
 
 调用ModifyDBInstanceAutoUpgradeMinorVersion接口修改RDS实例升级小版本的方式。 仅支持MySQL实例。
 
@@ -2387,8 +2479,6 @@ http(s)://rds.example.com/?Action=DescribeReadDBInstanceDelay &RegionId=cn-hangz
 | Action | String | 是 | ModifyDBInstanc eAutoUpgradeMi norVersion | 系统规定参数，取值：ModifyDBInstanceAutoUpgra deMinorVersion。 |
 | AutoUpgradeMin orVersion | String | 是 | Auto | 实例升级小版本的方式，取值： Auto：自动升级小版本。 Manual：不自动升级，仅在当前版本下线时才强制升级。 |
 | DBInstanceId | String | 是 | rm-uf6wjk5xxx | 实例ID。 |
-
-云数据库RDS
 
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxxx xx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 |---|---|---|---|---|
@@ -2407,7 +2497,7 @@ http(s)://rds.example.com/?Action=DescribeReadDBInstanceDelay &RegionId=cn-hangz
 http(s)://rds.example.com/?Action=ModifyDBInstanceAutoUpgradeMinorVersion &DBInstanceId=rm-uf6wjk5xxx &AutoUpgradeMinorVersion=Auto
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceAutoUpgradeMinorVersionResponse>
@@ -2415,26 +2505,24 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceAutoUpgradeMinorVersion &DBIns
 </ModifyDBInstanceAutoUpgradeMinorVersionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "A31818D5-0550-4A81-8D13-B45948D7193F"
-}
 ```
 
-#### 升级内核小版本
+`}`
 
-调用UpgradeDBInstanceKernelVersion接口升级RDS实例的内核小版本。 核小版本的升级涉及性能提升、新功能或问题修复等。更多信息，请参见MySQL升级内核小版本、SQL 该接口当前仅支持RDS MySQL、RDS SQL Server、RDS PostgreSQL实例。
+#### 2.3.2 升级内核小版本
 
-**说明**
+调用UpgradeDBInstanceKernelVersion接口升级RDS实例的内核小版本。 核小版本的升级涉及性能提升、新功能或问题修复等。更多信息，请参见MySQL升级内核小版本、SQL Server升级内核小版本、PostgreSQL升级内核小版本。
+
+> **说明：** 该接口当前仅支持RDS MySQL、RDS SQL Server、RDS PostgreSQL实例。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库RDS
 
 | Action | String | 是 | UpgradeDBInsta nceKernelVersio n | 系统规定参数，取值：UpgradeDBInstanceKernelVer sion。 |
 |---|---|---|---|---|
@@ -2453,13 +2541,13 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceAutoUpgradeMinorVersion &DBIns
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=UpgradeDBInstanceKernelVersion &DBInstanceId=rm-bpxxxxx &UpgradeTime=SpecifyTime &SwitchTime=2020-01-15T00:00:00Z &TargetMinorVersion=xcluster80_20210305
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <UpgradeDBInstanceKernelVersion>
@@ -2470,20 +2558,20 @@ http(s)://rds.example.com/?Action=UpgradeDBInstanceKernelVersion &DBInstanceId=r
 </UpgradeDBInstanceKernelVersion>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "TaskId": "226917711",
  "RequestId": "DA2ECBA0-4745-4491-9166-799FF8984AC9",
  "TargetMinorVersion": "xcluster80_20210305",
  "DBInstanceName": "rm-bpxxxxx"
-}
 ```
 
-### 网络与连接地址
+`}`
 
-#### 申请外网地址
+### 2.4 网络与连接地址
+
+#### 2.4.1 申请外网地址
 
 调用AllocateInstancePublicConnection接口申请实例的外网地址。
 
@@ -2493,8 +2581,6 @@ http(s)://rds.example.com/?Action=UpgradeDBInstanceKernelVersion &DBInstanceId=r
 |---|---|---|---|---|
 | Action | String | 是 | AllocateInstance PublicConnectio n | 系统规定参数，取值：AllocateInstancePublicConnec tion。 |
 | ConnectionStrin gPrefix | String | 是 | test1234 | 外网连接地址的前缀。完整外网连接地址为：前缀.引擎名.rds.aliyuncs.com。例如test1234.mysql.rds.aliyuncs.com。 说明长度5~40，不能包含汉字和非法字符（~!#%^&*=+\| {};:'",<>/?），建议由字母、数字、短横线（-）组成。 |
-
-云数据库RDS
 
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 |---|---|---|---|---|
@@ -2514,7 +2600,7 @@ http(s)://rds.example.com/?Action=UpgradeDBInstanceKernelVersion &DBInstanceId=r
 http(s)://rds.example.com/?Action=AllocateInstancePublicConnection &ConnectionStringPrefix=test1234 &DBInstanceId=rm-uf6wjk5xxxxxxx &Port=3306
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <AllocateInstancePublicConnectionResponse>
@@ -2522,25 +2608,23 @@ http(s)://rds.example.com/?Action=AllocateInstancePublicConnection &ConnectionSt
 </AllocateInstancePublicConnectionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 释放外网地址
+`}`
 
-调用ReleaseInstancePublicConnection接口释放实例的外网连接地址。
+#### 2.4.2 释放外网地址
+
+调用ReleaseInstancePublicConnection接口释放实例的外网连接地址。 为了数据安全，不需要外网直接访问数据库时，可以使用该接口释放外网地址。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ReleaseInstance PublicConnectio n | 系统规定参数，取值：ReleaseInstancePublicConnec tion。 |
-
-云数据库RDS
 
 | CurrentConnecti onString | String | 是 | rm- uf6wjk5xxxx.my sql.rds.aliyuncs. com | 外网连接地址。 |
 |---|---|---|---|---|
@@ -2560,7 +2644,7 @@ http(s)://rds.example.com/?Action=AllocateInstancePublicConnection &ConnectionSt
 http(s)://rds.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=rm-uf6wjk5xxxxxxx &CurrentConnectionString=rm-uf6wjk5xxxx.mysql.rds.aliyuncs.com
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ReleaseInstancePublicConnectionResponse>
@@ -2568,21 +2652,19 @@ http(s)://rds.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=
 </ReleaseInstancePublicConnectionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 切换内外网地址
+`}`
 
-为了节约地址资源，您可以使用该接口进行内外网切换，即原来是内网，则会切换到外网，反之亦然。切换后连接地址会发生变化，需要您修改代码中的连接地址并重启应用。 必须满足以下条件，否则将修改失败： 实例只有内网地址和外网地址其中一个。 实例状态为运行中。 24小时内切换次数低于20次。 实例的网络类型为经典网络。
+#### 2.4.3 切换内外网地址
+
+调用SwitchDBInstanceNetType接口切换内外网地址。 为了节约地址资源，您可以使用该接口进行内外网切换，即原来是内网，则会切换到外网，反之亦然。切换后连接地址会发生变化，需要您修改代码中的连接地址并重启应用。 必须满足以下条件，否则将修改失败： 实例只有内网地址和外网地址其中一个。 实例状态为运行中。 24小时内切换次数低于20次。 实例的网络类型为经典网络。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2607,7 +2689,7 @@ http(s)://rds.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=
 http(s)://rds.example.com/?Action=SwitchDBInstanceNetType &DBInstanceId=rm-uf6wjk5xxxxxxx &ConnectionStringPrefix=rm-xxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <SwitchDBInstanceNetTypeResponse>
@@ -2615,15 +2697,15 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceNetType &DBInstanceId=rm-uf6wj
 </SwitchDBInstanceNetTypeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 查询连接地址
+`}`
+
+#### 2.4.4 查询连接地址
 
 调用DescribeDBInstanceNetInfo接口查询实例的所有连接地址信息。
 
@@ -2641,10 +2723,8 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceNetType &DBInstanceId=rm-uf6wj
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DBInstanceNet Infos | Array of DBInstanceNet Info |  | 实例的连接地址信息列表。 |
-| DBInstanceNet Info |  |  |  |
-
-云数据库RDS
+| DBInstanceNet Infos | Array of DBInstanceNet Info |   | 实例的连接地址信息列表。 |
+| DBInstanceNet Info |   |   |   |
 
 | ConnectionStri ng | String | rm- uf6wxxxxx.mysql.r ds.aliyuncs.com | 连接地址。 |
 |---|---|---|---|
@@ -2656,19 +2736,17 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceNetType &DBInstanceId=rm-uf6wj
 | ConnectionStri ngType | String | Normal | 连接地址类型，取值： Normal：普通连接地址 ReadWriteSplitting：读写分离连接地址 |
 | MaxDelayTime | String | 12 | 延迟阈值，只在读写分离连接地址返回该参数， 单位：秒。 说明超过该延迟阈值的只读实例不会被分配流量。 |
 | DistributionTy pe | String | Standard | 读请求分配策略，只在读写分离连接地址返回该参数，取值： Standard：按规格权重自动分配 Custom：自定义分配权重 |
-| DBInstanceWe ights | Array of DBInstanceWe ight |  | 实例权重信息列表，开通了读写分离地址的实例会返回该参数。 |
-| DBInstanceWe ight |  |  |  |
+| DBInstanceWe ights | Array of DBInstanceWe ight |   | 实例权重信息列表，开通了读写分离地址的实例会返回该参数。 |
+| DBInstanceWe ight |   |   |   |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
-
-云数据库RDS
 
 | DBInstanceTy pe | String | Master | 实例类型，取值： Master：主实例； Readonly：只读实例。 |
 |---|---|---|---|
 | Weight | String | 100 | 实例当前权重。 |
 | Availability | String | Unavailable | 实例可用状态，取值： Unavailable：不可用； Available：可用。 |
 | ExpiredTime | String | 1209534 | 混访模式下，经典网络的剩余时间，单位：秒。 |
-| SecurityIPGrou ps | Array of securityIPGrou p |  | 实例的IP白名单分组列表。 |
-| securityIPGrou p |  |  |  |
+| SecurityIPGrou ps | Array of securityIPGrou p |   | 实例的IP白名单分组列表。 |
+| securityIPGrou p |   |   |   |
 | SecurityIPGrou pName | String | Default | IP白名单分组名称。 |
 | SecurityIPs | String | 127.0.0.1 | 白名单IP。 |
 | Upgradeable | String | Disabled | IP版本是否能够升级，取值：Enable \| Disabled 说明 IPv4版本可以升级到IPv6版本。 |
@@ -2678,13 +2756,13 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceNetType &DBInstanceId=rm-uf6wj
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceNetInfoResponse>
@@ -2702,12 +2780,15 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=rm-uf6
 </DescribeDBInstanceNetInfoResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "dBInstanceNetInfos": [
-        {
+```
+
+`{`
+
+```json
             "connectionString": "rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com",
             "connectionStringType": "Normal",
             "dBInstanceWeights": [],
@@ -2717,24 +2798,23 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=rm-uf6
             "securityIPGroups": [],
             "upgradeable": "Disabled",
             "vPCId": ""
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "instanceNetworkType": "Classic",
     "requestId": "777C4593-8053-427B-99E2-105593277CAB"
-}
 ```
 
-#### 修改连接地址
+`}`
 
-调用ModifyDBInstanceConnectionString接口修改实例的连接地址和端口。 目前RDS提供内外网两种连接地址，同时也支持混访模式下的专有网络和经典网络地址并存。 云数据库RDS
+#### 2.4.5 修改连接地址
 
-**说明**
+调用ModifyDBInstanceConnectionString接口修改实例的连接地址和端口。 目前RDS提供内外网两种连接地址，同时也支持混访模式下的专有网络和经典网络地址并存。
 
-不支持修改读写分离地址。
+> **说明：** 仅支持修改连接地址的前缀；
+> 不支持修改读写分离地址。
 
 **请求参数**
 
@@ -2760,7 +2840,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=rm-uf6
 http(s)://rds.example.com/?Action=ModifyDBInstanceConnectionString &DBInstanceId=rm-uf6wjk5xxxxxxx &CurrentConnectionString=rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com &ConnectionStringPrefix=rm-xxxxxx &Port=3306
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceConnectionStringResponse>
@@ -2768,15 +2848,15 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceConnectionString &DBInstanceId
 </ModifyDBInstanceConnectionStringResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 释放实例连接地址
+`}`
+
+#### 2.4.6 释放实例连接地址
 
 调用ReleaseInstanceConnection接口释放RDS实例的连接地址。
 
@@ -2797,13 +2877,13 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceConnectionString &DBInstanceId
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=ReleaseInstanceConnection &CurrentConnectionString=rm-uf6wjk5xxxx.mysql.rds.aliyuncs.com &DBInstanceId=rm-uf6wjk5xxxxxxx &InstanceNetworkType=Classic
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ReleaseInstanceConnectionResponse>
@@ -2811,15 +2891,15 @@ http(s)://rds.example.com/?Action=ReleaseInstanceConnection &CurrentConnectionSt
 </ReleaseInstanceConnectionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### 切换网络类型
+`}`
+
+#### 2.4.7 切换网络类型
 
 调用ModifyDBInstanceNetworkType接口切换RDS实例网络类型。 该接口用于将实例的网络类型从专有网络切换成经典网络，或从经典网络切换成专有网络。
 
@@ -2831,8 +2911,6 @@ http(s)://rds.example.com/?Action=ReleaseInstanceConnection &CurrentConnectionSt
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | InstanceNetwork Type | String | 是 | Classic | 目标网络类型，取值： VPC：专有网络 Classic：经典网络 |
 | RetainClassic | String | 否 | True | 是否保留经典网络地址，取值： True：保留 False：不保留默认值：False。 说明从经典网络切换到专有网络时该参数有效。 |
-
-云数据库RDS
 
 | ClassicExpiredD ays | String | 否 | 7 | 经典网络地址保留的天数，取值1-120， 单位：天。默认值：7。 说明若传入参数RetainClassic=True，则该参数必传。 |
 |---|---|---|---|---|
@@ -2857,7 +2935,7 @@ http(s)://rds.example.com/?Action=ReleaseInstanceConnection &CurrentConnectionSt
 http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=rm-uf6wjk5xxxxxxx &InstanceNetworkType=Classic
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceNetworkTypeResponse>
@@ -2865,13 +2943,13 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=rm-u
 </ModifyDBInstanceNetworkTypeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -2880,7 +2958,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=rm-u
 | 400 | NetTypeExists | Specified network type already exists. | 网络类型切换失败，当前网络类型已经存在。 |
 | 403 | OperationDenied.D BInstanceConnTyp e | The current DB instance connection type does not support this operation. | 操作失败，当前的网络连接类型不支持该操作。 |
 
-#### 切换VPC或交换机
+#### 2.4.8 切换VPC或交换机
 
 调用SwitchDBInstanceVpc接口切换RDS实例的专有网络VPC或交换机。 实例必须是RDS MySQL或RDS PostgreSQL（云盘版）。
 
@@ -2890,8 +2968,6 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=rm-u
 |---|---|---|---|---|
 | Action | String | 是 | SwitchDBInstanc eVpc | 系统规定参数。取值：SwitchDBInstanceVpc。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances获取。 说明实例必须是RDS MySQL或 RDSPostgreSQL（云盘版）。 实例必须处于运行状态。 实例的网络类型必须是专有网络。 实例不能是临时实例或共享实例。 |
-
-云数据库RDS
 
 | VPCId | String | 否 | vpc- uf6f7l4fg90xxxx xxxxxx | VPC ID。 说明与RDS实例需属于同一地域。 仅当RDS实例为RDS MySQL本地盘版时，才可以更换VPC。 |
 |---|---|---|---|---|
@@ -2912,21 +2988,19 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=rm-u
 http(s)://rds.example.com/?Action=SwitchDBInstanceVpc &DBInstanceId=rm-uf6wjk5xxxxxxx &VPCId=vpc-uf6f7l4fg90xxxxxxxxxx &VSwitchId=vsw-uf6adz52c2pxxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>777C4593-8053-427B-99E2-10xxxxxxxxxx </RequestId>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "777C4593-8053-427B-99E2-10xxxxxxxxxx"
-}
 ```
 
-#### 修改地址过期时间
+#### 2.4.9 修改地址过期时间
 
 调用ModifyDBInstanceNetworkExpireTime接口修改连接地址过期时间。 当实例在混访模式下（同时包含VPC连接地址和经典网络连接地址），该接口用于延长保留的经典网络地址过期时间。
 
@@ -2954,7 +3028,7 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceVpc &DBInstanceId=rm-uf6wjk5xx
 http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkExpireTime &DBInstanceId=rm-uf6wjk5xxxxxxx &ConnectionString=rm-uf6wjk5xxxxx.mysql.rds.aliyuncs.com &ClassicExpiredDays=7
 ```
 
-`&<`公共请求参数> 正常返回示例云数据库RDS `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceNetworkExpireTimeResponse>
@@ -2962,31 +3036,27 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkExpireTime &DBInstanceI
     </ModifyDBInstanceNetworkExpireTimeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
-}
 ```
 
-### 数据库管理
+`}`
 
-#### 创建数据库
+### 2.5 数据库管理
 
-如需进行数据变更、结构设计等数据管理任务，请使用数据管理DMS。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例中的数据库数量没有超出实例最大数据库数量，可以通过接口DescribeDBInstanceAttribute查询最大数据库数量。 实例类型不能为只读实例。 该接口暂不支持PostgreSQL（本地SSD盘）和SQL Server 2017集群版，您可以通过
+#### 2.5.1 创建数据库
 
-**说明**
+调用CreateDatabase接口在某个实例下创建数据库。 如需进行数据变更、结构设计等数据管理任务，请使用数据管理DMS。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例中的数据库数量没有超出实例最大数据库数量，可以通过接口DescribeDBInstanceAttribute查询最大数据库数量。 实例类型不能为只读实例。
 
-SQL做CREATE DATABASE操作。
+> **说明：** 该接口暂不支持PostgreSQL（本地SSD盘）和SQL Server 2017集群版，您可以通过 SQL做CREATE DATABASE操作。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateDatabase | 系统规定参数，取值：CreateDatabase。 |
-
-云数据库RDS
 
 | CharacterSetNa me | String | 是 | gbk | 字符集，取值： MySQL类型：utf8、gbk、latin1、 utf8mb4 SQL Server类型：Chinese PRC CI AS、 _ _ _ Chinese PRC CS AS、 _ _ _ SQL Latin1 General CP1 CI AS _ _ _ _ _ 、 SQL Latin1 General CP1 CS A _ _ _ _ _ S、Chinese PRC BIN _ _ PostgreSQL类型：KOI8U、UTF8、 WIN866、WIN874、WIN1250、 WIN1251、WIN1252、 WIN1253、WIN1254、 WIN1255、WIN1256、 WIN1257、WIN1258、EUC CN、 _ EUC KR、EUC TW、EUC JP、 _ _ _ EUC JIS 2004、KOI8R、 _ _ MULE INTERNAL、LATIN1、 _ LATIN2、LATIN3、LATIN4、 LATIN5、LATIN6、LATIN7、 LATIN8、LATIN9、LATIN10、 ISO 8859 5、ISO 8859 6、 _ _ _ _ ISO 8859 7、ISO 8859 8、 _ _ _ _ SQL ASCII _ |
 |---|---|---|---|---|
@@ -2999,8 +3069,6 @@ SQL做CREATE DATABASE操作。
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库RDS
-
 | RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | 请求 ID。 |
 |---|---|---|---|
 
@@ -3012,7 +3080,7 @@ SQL做CREATE DATABASE操作。
 http(s)://rds.example.com/?Action=CreateDatabase &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBName=rds_mysql &CharacterSetName=gbk
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateDatabaseResponse>
@@ -3020,19 +3088,19 @@ http(s)://rds.example.com/?Action=CreateDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx
 </CreateDatabaseResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestID":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-  }
 ```
 
-#### 删除数据库
+`}`
 
-调用DeleteDatabase接口删除实例下的某个数据库。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例类型为主实例。 数据库类型为MySQL、SQL Server。 该接口不支持PostgreSQL类型的实例，您可以通过SQL做DROP DATABASE操作。
+#### 2.5.2 删除数据库
 
-**说明**
+调用DeleteDatabase接口删除实例下的某个数据库。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例类型为主实例。 数据库类型为MySQL、SQL Server。
+
+> **说明：** 该接口不支持PostgreSQL类型的实例，您可以通过SQL做DROP DATABASE操作。
 
 **请求参数**
 
@@ -3041,8 +3109,6 @@ http(s)://rds.example.com/?Action=CreateDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx
 | Action | String | 是 | DeleteDatabase | 系统规定参数，取值：DeleteDatabase。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | DBName | String | 是 | testdb01 | 数据库名称。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -3058,26 +3124,26 @@ http(s)://rds.example.com/?Action=CreateDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx
 http(s)://rds.example.com/?Action=DeleteDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx &DBName=testdb01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DeleteDatabaseResponse>
    <RequestId>07F6177E-6DE4-408A-BB4F-0723301340F3</RequestId></DeleteDatabaseResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"07F6177E-6DE4-408A-BB4F-0723301340F3"
-}
 ```
 
-#### 查询数据库信息
+`}`
 
-调用DescribeDatabases接口查询RDS实例下的数据库信息。 如果请求参数错误，返回数据为空。
+#### 2.5.3 查询数据库信息
 
-**说明**
+调用DescribeDatabases接口查询RDS实例下的数据库信息。
+
+> **说明：** 如果请求参数错误，返回数据为空。
 
 **请求参数**
 
@@ -3086,8 +3152,6 @@ http(s)://rds.example.com/?Action=DeleteDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx
 | Action | String | 是 | DescribeDataba ses | 系统规定参数，取值：DescribeDatabases。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | DBName | String | 否 | testDB01 | 数据库名称。 |
-
-云数据库RDS
 
 | DBStatus | String | 否 | Creating | 数据库状态，取值： Creating：创建中 Running：使用中 Deleting：删除中 |
 |---|---|---|---|---|
@@ -3098,18 +3162,16 @@ http(s)://rds.example.com/?Action=DeleteDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Databases | Array of Database |  | 数据库信息列表。 |
-| Database |  |  |  |
+| Databases | Array of Database |   | 数据库信息列表。 |
+| Database |   |   |   |
 | DBName | String | testDB01 | 数据库名称。 |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 数据库所属实例ID。 |
 | Engine | String | MySQL | 数据库实例类型。 |
 | DBStatus | String | Creating | 数据库状态，取值： Creating：创建中 Running：使用中 Deleting：删除中 |
 | CharacterSetN ame | String | utf8 | 字符集。 |
 | DBDescription | String | 测试数据库 | 数据库描述。 |
-| Accounts | Array of AccountPrivile geInfo |  | 拥有数据库相关权限的账号信息。 |
-| AccountPrivile geInfo |  |  |  |
-
-云数据库RDS
+| Accounts | Array of AccountPrivile geInfo |   | 拥有数据库相关权限的账号信息。 |
+| AccountPrivile geInfo |   |   |   |
 
 | Account | String | test | 账号名称。 |
 |---|---|---|---|
@@ -3124,7 +3186,7 @@ http(s)://rds.example.com/?Action=DeleteDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx
 http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDatabasesResponse>
@@ -3151,14 +3213,17 @@ http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxx
    </Databases></DescribeDatabasesResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "2603CA96-B17D-4903-BC04-61A2C829CD94",
     "Databases": {
         "Database": [
-            {
+```
+
+`{`
+
+```json
                 "Engine": "MySQL",
                 "CharacterSetName": "utf8",
                 "DBStatus": "Creating",
@@ -3166,10 +3231,17 @@ http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxx
                 "DBInstanceId": "rdsaiiabnaiiabn",
                 "Accounts": {
                     " AccountPrivilegeInfo": []
-                },
+```
+
+`},`
+
+```json
                 "DBName": "testdb"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Engine": "MySQL",
                 "CharacterSetName": "gbk",
                 "DBStatus": "Creating",
@@ -3177,23 +3249,21 @@ http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxx
                 "DBInstanceId": "rdsaiiabnaiiabn",
                 "Accounts": {
                     " AccountPrivilegeInfo": []
-                },
+```
+
+`},`
+
+```json
                 "DBName": "testdb2"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
+#### 2.5.4 修改数据库备注
 
-#### 修改数据库备注
+调用ModifyDBDescription接口修改数据库备注。
 
-该接口不支持PostgreSQL和PolarDB实例。
-
-**说明**
+> **说明：** 该接口不支持PostgreSQL和PolarDB实例。
 
 **请求参数**
 
@@ -3203,8 +3273,6 @@ http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxx
 | DBDescription | String | 是 | 测试数据库A | 数据库描述。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | DBName | String | 是 | testDB01 | 数据库名称。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -3220,13 +3288,13 @@ http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxx
 http(s)://rds.example.com/?Action=ModifyDBDescription
 ```
 
-`&DBDescription=`测试数据库A
+`&DBDescription=`测试数据库`A`
 
 ```
 &DBInstanceId=rm-uf6wjk5xxxxxxx &DBName=testDB01
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBDescriptionResponse>
@@ -3234,28 +3302,24 @@ http(s)://rds.example.com/?Action=ModifyDBDescription
 </ModifyDBDescriptionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### 复制数据库
+`}`
 
-调用CopyDatabaseBetweenInstances接口在RDS实例间复制数据库。 该接口还适用于按时间点或备份集恢复到已有实例。 调用该接口时，实例必须满足以下条件，否则将操作失败： 源实例和目标实例同属于一个账户。 源实例和目标实例的版本相同。 源实例和目标实例在同一地域，可用区可以不同，网络类型需相同。 目标实例中没有和源实例同名的数据库。 仅适用于RDS SQL Server 2012/2016实例。您可以恢复RDS MySQL实例的某些数据库
+#### 2.5.5 复制数据库
 
-**说明**
+调用CopyDatabaseBetweenInstances接口在RDS实例间复制数据库。 该接口还适用于按时间点或备份集恢复到已有实例。 调用该接口时，实例必须满足以下条件，否则将操作失败： 源实例和目标实例同属于一个账户。 源实例和目标实例的版本相同。 源实例和目标实例在同一地域，可用区可以不同，网络类型需相同。 目标实例中没有和源实例同名的数据库。 目标实例的可用存储空间大于源实例中待复制数据库占用的空间。
 
-或表到原实例或新实例。
+> **说明：** 仅适用于RDS SQL Server 2012/2016实例。您可以恢复RDS MySQL实例的某些数据库或表到原实例或新实例。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库RDS
 
 | Action | String | 是 | CopyDatabaseB etweenInstances | 系统规定参数，取值为CopyDatabaseBetweenInstance s。 |
 |---|---|---|---|---|
@@ -3280,7 +3344,7 @@ http(s)://rds.example.com/?Action=ModifyDBDescription
 http(s)://rds.example.com/?Action=CopyDatabaseBetweenInstances &DBInstanceId=rm-uf6wjk5xxxxxxx &TargetDBInstanceId=rm-ut5ajk3xxxxxxx &DbNames={"test1":"test2"}
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CopyDatabaseBetweenInstancesResponse>
@@ -3288,23 +3352,24 @@ http(s)://rds.example.com/?Action=CopyDatabaseBetweenInstances &DBInstanceId=rm-
 </CopyDatabaseBetweenInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "803D11AF-C370-465B-AB46-CB3A642DC303"
-}
 ```
 
-### 账号管理
+`}`
 
-#### 创建数据库账号
+### 2.6 账号管理
+
+#### 2.6.1 创建数据库账号
 
 调用CreateAccount接口创建管理数据库的账号。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 数据库状态为运行中。 没有超出单个实例内的最大账号数量。
 
-**说明**
-
-该接口仅适用于MySQL、MariaDB、PostgreSQL、SQL Server（除SQL Server 2017集群版和2019集群版）实例。 PostgreSQL云盘版支持多个高权限账号以及多个普通账号。 PostgreSQL 9.4和10.0本地盘版本实例只能创建一个高权限账号。 PPAS实例仅能创建一个高权限账号，普通账号可以连接数据库后使用SQL语句创建。
+> **说明：** 该接口仅适用于MySQL、MariaDB、PostgreSQL、SQL Server（除SQL Server 2017集群版和2019集群版）实例。
+> PostgreSQL云盘版支持多个高权限账号以及多个普通账号。
+> PostgreSQL 9.4和10.0本地盘版本实例只能创建一个高权限账号。
+> PPAS实例仅能创建一个高权限账号，普通账号可以连接数据库后使用SQL语句创建。
 
 **请求参数**
 
@@ -3312,15 +3377,11 @@ http(s)://rds.example.com/?Action=CopyDatabaseBetweenInstances &DBInstanceId=rm-
 |---|---|---|---|---|
 | Action | String | 是 | CreateAccount | 系统规定参数，取值：CreateAccount。 |
 
-云数据库RDS
-
 | AccountName | String | 是 | test1 | 数据库账号名称。 说明名称唯一。 以字母开头，以字母或数字结尾。 由小写字母、数字或下划线组成。 长度： MySQL 5.6支持账号长度为2~16个字符，MySQL 5.7和 8.0支持账号长度为 2~32个字符。 SQL Server支持账号长度为2~64个字符。 PostgreSQL云盘版支持账号长度为 2~63个字符，本地盘版支持账号长度为 2~16个字符。 MariaDB支持账号长度为2~16个字符。 其他非法字符，参见本手册中的禁用关键字表。 |
 |---|---|---|---|---|
 | AccountPasswor d | String | 是 | Test123456 | 数据库账号的密码。 说明长度为8~32个字符。 由大写字母、小写字母、数字、特殊字符中的任意三种组成。 特殊字符为!@#$%^&* () +-= _ |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances获取。 |
 | AccountDescripti on | String | 否 | 测试账号A | 账号描述，长度为2~256个字符。以中文、英文字母开头，可以包含数字、中文、英文、下划线（ ）、短横线（-）。 _ 说明不能以 http:// 和 https:// 开头。 |
-
-云数据库RDS
 
 | AccountType | String | 否 | Normal | 账号类型，取值： Normal：普通账号 Super：高权限账号默认值：Normal。 |
 |---|---|---|---|---|
@@ -3339,7 +3400,7 @@ http(s)://rds.example.com/?Action=CopyDatabaseBetweenInstances &DBInstanceId=rm-
 http(s)://rds.example.com/?Action=CreateAccount &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &AccountPassword=Test123456
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateAccountResponse>
@@ -3347,25 +3408,22 @@ http(s)://rds.example.com/?Action=CreateAccount &DBInstanceId=rm-uf6wjk5xxxxxxx 
 </CreateAccountResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
 ```
 
-#### 删除数据库账号
+`}`
 
-调用该接口时，实例状态需要为运行中，否则将操作失败：
+#### 2.6.2 删除数据库账号
 
-**说明**
+调用DeleteAccount接口删除数据库账号。 调用该接口时，实例状态需要为运行中，否则将操作失败：
 
-该接口暂不支持SQL Server 2017集群版、PostgreSQL本地盘、PPAS实例。 对于PostgreSQL云盘实例，如果要删除的账号有数据库、表或其他对象的权限，执行删除账号操作只会锁定账号，取消相关权限后才能正常删除账号。
+> **说明：** 该接口暂不支持SQL Server 2017集群版、PostgreSQL本地盘、PPAS实例。
+> 对于PostgreSQL云盘实例，如果要删除的账号有数据库、表或其他对象的权限，执行删除账号操作只会锁定账号，取消相关权限后才能正常删除账号。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -3387,7 +3445,7 @@ http(s)://rds.example.com/?Action=CreateAccount &DBInstanceId=rm-uf6wjk5xxxxxxx 
 http(s)://rds.example.com/?Action=DeleteAccount &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DeleteAccountResponse>
@@ -3395,15 +3453,15 @@ http(s)://rds.example.com/?Action=DeleteAccount &DBInstanceId=rm-uf6wjk5xxxxxxx 
 </DeleteAccountResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestID":"91E855E5-7E80-4955-929B-C74EE1D38C66"
-}
 ```
 
-#### 查询实例账号名称
+`}`
+
+#### 2.6.3 查询实例账号名称
 
 调用CheckAccountNameAvailable接口查询目标需要创建的账号名称是否可用。
 
@@ -3411,8 +3469,6 @@ http(s)://rds.example.com/?Action=DeleteAccount &DBInstanceId=rm-uf6wjk5xxxxxxx 
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库RDS
 
 | Action | String | 是 | CheckAccountN ameAvailable | 系统规定参数。取值：CheckAccountNameAvailable 。 |
 |---|---|---|---|---|
@@ -3434,7 +3490,7 @@ http(s)://rds.example.com/?Action=DeleteAccount &DBInstanceId=rm-uf6wjk5xxxxxxx 
 http(s)://rds.example.com/?Action=CheckAccountNameAvailable &AccountName=DatabaseTest &DBInstanceId=rm-uf6wjk5xxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CheckAccountNameAvailableResponse>
@@ -3442,21 +3498,19 @@ http(s)://rds.example.com/?Action=CheckAccountNameAvailable &AccountName=Databas
 </CheckAccountNameAvailableResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"5E4AA101-1EE5-41C0-AE6D-0F066331AC1C"
-}
 ```
 
-#### 检查数据库名称可用性
+`}`
+
+#### 2.6.4 检查数据库名称可用性
 
 调用CheckDBNameAvailable接口检查数据库名称是否重复或不符合命名规范。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -3479,7 +3533,7 @@ http(s)://rds.example.com/?Action=CheckAccountNameAvailable &AccountName=Databas
 http(s)://rds.example.com/?Action=CheckDBNameAvailable &DBInstanceId=rm-t4n3axxxxx &DBName=test1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CheckDBNameAvailableResponse>
@@ -3493,13 +3547,11 @@ http(s)://rds.example.com/?Action=CheckDBNameAvailable &DBInstanceId=rm-t4n3axxx
 {"RequestId":"6EF82B07-28D2-48D1-B5D6-7E78FED277C7"}
 ```
 
-#### 查询账号信息
+#### 2.6.5 查询账号信息
 
-云数据库RDS 调用DescribeAccounts接口查询实例的账号信息。
+调用DescribeAccounts接口查询实例的账号信息。
 
-**说明**
-
-该接口暂不支持SQL Server 2017集群版、PostgreSQL实例。
+> **说明：** 该接口暂不支持SQL Server 2017集群版、PostgreSQL实例。
 
 **请求参数**
 
@@ -3515,17 +3567,15 @@ http(s)://rds.example.com/?Action=CheckDBNameAvailable &DBInstanceId=rm-t4n3axxx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Accounts | Array of DBInstanceAcc ount |  | 账号信息列表。 |
-| DBInstanceAcc ount |  |  |  |
+| Accounts | Array of DBInstanceAcc ount |   | 账号信息列表。 |
+| DBInstanceAcc ount |   |   |   |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 账号所属实例ID。 |
 | AccountName | String | test1 | 数据库账号名称。 |
 | AccountStatus | String | Available | 账号状态： Unavailable：不可用 Available：可用 |
 | AccountDescri ption | String | 测试数据库账号 | 账号描述。 |
-| DatabasePrivil eges | Array of DatabasePrivil ege |  | 账号拥有的数据库权限列表。 |
+| DatabasePrivil eges | Array of DatabasePrivil ege |   | 账号拥有的数据库权限列表。 |
 
-云数据库RDS
-
-| DatabasePrivil ege |  |  |  |
+| DatabasePrivil ege |   |   |   |
 |---|---|---|---|
 | DBName | String | test1 | 数据库名称。 |
 | AccountPrivile ge | String | ReadWrite | 账号的权限类型，取值： ReadWrite：读写 ReadOnly：只读 DDLOnly：仅DDL DMLOnly：只DML Custom：自定义（可以通过SQL命令修改） |
@@ -3544,7 +3594,7 @@ http(s)://rds.example.com/?Action=CheckDBNameAvailable &DBInstanceId=rm-t4n3axxx
 http(s)://rds.example.com/?Action=DescribeAccounts &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例云数据库RDS `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeAccountsResponse>
@@ -3569,49 +3619,53 @@ http(s)://rds.example.com/?Action=DescribeAccounts &DBInstanceId=rm-uf6wjk5xxxxx
 </DescribeAccountsResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "Accounts": {
         "DBInstanceAccount": [
-            {
+```
+
+`{`
+
+```json
                 "DatabasePrivileges": {
                     "DatabasePrivilege": [
-                        {
+```
+
+`{`
+
+```json
                             "AccountPrivilege": "ReadWrite",
                             "AccountPrivilegeDetail":
 "SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,REFERENCES,INDEX,ALTER,CREATE TEMPORARY TABLES ,LOCK TABLES,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,EXECUTE,EVENT,TRIGGER",
                             "DBName": "testdb"
-                        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-                },
                 "AccountStatus": "Available",
                 "AccountDescription": "",
                 "DBInstanceId": "rm-uf6wjk5xxxxxxx",
                 "AccountName": "testacc02",
                 "PrivExceeded": "0",
                 "AccountType": "Normal"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId": "A2E94301-D07F-4457-9B49-6AA2BB388C85"
-}
 ```
 
-#### 授权账号
+`}`
 
-调用GrantAccountPrivilege接口授权账号访问数据库。 一个账号可授权访问一个或多个数据库。调用该接口时，请确保实例状态为运行中，否则将操作失败。 该接口暂不支持SQL Server 2017集群版、PostgreSQL本地盘版、PolarDB实例。
+#### 2.6.6 授权账号
 
-**说明**
+调用GrantAccountPrivilege接口授权账号访问数据库。 一个账号可授权访问一个或多个数据库。调用该接口时，请确保实例状态为运行中，否则将操作失败。
+
+> **说明：** 该接口暂不支持SQL Server 2017集群版、PostgreSQL本地盘版、PolarDB实例。
 
 **请求参数**
 
@@ -3619,8 +3673,6 @@ http(s)://rds.example.com/?Action=DescribeAccounts &DBInstanceId=rm-uf6wjk5xxxxx
 |---|---|---|---|---|
 | Action | String | 是 | GrantAccountPri vilege | 系统规定参数，取值：GrantAccountPrivilege。 |
 | AccountName | String | 是 | test1 | 账号名称。 |
-
-云数据库RDS
 
 | AccountPrivilege | String | 是 | ReadWrite | 账号权限，取值： ReadWrite：读写 ReadOnly：只读 DDLOnly：仅执行DDL DMLOnly：只执行DML DBOwner：数据库所有者说明 MySQL可传入ReadWrite、ReadOnl y、DDLOnly或DMLOnly 。 SQL Server可传入ReadWrite、ReadOnl y或DBOwner。 PostgreSQL云盘版可传入DBOwner。 |
 |---|---|---|---|---|
@@ -3642,7 +3694,7 @@ http(s)://rds.example.com/?Action=DescribeAccounts &DBInstanceId=rm-uf6wjk5xxxxx
 http(s)://rds.example.com/?Action=GrantAccountPrivilege &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &DBName=test &AccountPrivilege=ReadWrite
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <GrantAccountPrivilegeResponse>
@@ -3650,21 +3702,20 @@ http(s)://rds.example.com/?Action=GrantAccountPrivilege &DBInstanceId=rm-uf6wjk5
 </GrantAccountPrivilegeResponse>
 ```
 
-云数据库RDS `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
        "RequestId":"81BC9559-7B22-4B7F-B705-5F56DEECDEA7"
-}
 ```
 
-#### 撤销账号权限
+`}`
+
+#### 2.6.7 撤销账号权限
 
 调用RevokeAccountPrivilege接口撤销账号对数据库的访问权限。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 数据库状态为运行中。
 
-**说明**
-
-具体撤销的权限包括SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、 REFERENCES、INDEX、ALTER、CREATE TEMPORARY TABLES、LOCK TABLES、 EXECUTE、CREATE VIEW、SHOW VIEW、CREATE ROUTINE 、ALTER ROUTINE、 EVENT、TRIGGER； 该接口暂不支持SQL Server 2017集群版、PostgreSQL、POLARDB实例。
+> **说明：** 具体撤销的权限包括SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、 REFERENCES、INDEX、ALTER、CREATE TEMPORARY TABLES、LOCK TABLES、 EXECUTE、CREATE VIEW、SHOW VIEW、CREATE ROUTINE 、ALTER ROUTINE、 EVENT、TRIGGER；
+> 该接口暂不支持SQL Server 2017集群版、PostgreSQL、POLARDB实例。
 
 **请求参数**
 
@@ -3682,15 +3733,13 @@ http(s)://rds.example.com/?Action=GrantAccountPrivilege &DBInstanceId=rm-uf6wjk5
 |---|---|---|---|
 | RequestId | String | E22099CA-A61E- 4992-A0B7- CE82DC175626 | 请求ID。 |
 
-**示例**
-
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=RevokeAccountPrivilege &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &DBName=testDB
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RevokeAccountPrivilegeResponse>
@@ -3698,19 +3747,19 @@ http(s)://rds.example.com/?Action=RevokeAccountPrivilege &DBInstanceId=rm-uf6wjk
 </RevokeAccountPrivilegeResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
        "RequestId":"E22099CA-A61E-4992-A0B7-CE82DC175626"
-}
 ```
 
-#### 修改数据库账号描述
+`}`
 
-调用ModifyAccountDescription接口修改数据库账号的描述。 该接口暂不支持SQL Server 2017集群版、PostgreSQL、PolarDB实例。
+#### 2.6.8 修改数据库账号描述
 
-**说明**
+调用ModifyAccountDescription接口修改数据库账号的描述。
+
+> **说明：** 该接口暂不支持SQL Server 2017集群版、PostgreSQL、PolarDB实例。
 
 **请求参数**
 
@@ -3726,8 +3775,6 @@ http(s)://rds.example.com/?Action=RevokeAccountPrivilege &DBInstanceId=rm-uf6wjk
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库RDS
-
 | RequestId | String | 17F57FEE-EA4F- 4337-8D2E- 9C23CAA63D74 | 请求ID。 |
 |---|---|---|---|
 
@@ -3739,13 +3786,13 @@ http(s)://rds.example.com/?Action=RevokeAccountPrivilege &DBInstanceId=rm-uf6wjk
 http(s)://rds.example.com/?Action=ModifyAccountDescription
 ```
 
-`&AccountDescription=`测试账号A
+`&AccountDescription=`测试账号`A`
 
 ```
 &AccountName=test1 &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyAccountDescriptionResponse>
@@ -3753,21 +3800,19 @@ http(s)://rds.example.com/?Action=ModifyAccountDescription
 </ModifyAccountDescriptionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### 重置数据库账号密码
+`}`
 
-实例状态需要为运行中，否则操作将失败。 该接口暂不支持对SQL Server 2017集群版、PostgreSQL、PolarDB实例通过SQL创建
+#### 2.6.9 重置数据库账号密码
 
-**说明**
+调用ResetAccountPassword接口重置数据库账号密码。 实例状态需要为运行中，否则操作将失败。
 
-的账号进行密码重置。
+> **说明：** 该接口暂不支持对SQL Server 2017集群版、PostgreSQL、PolarDB实例通过SQL创建的账号进行密码重置。
 
 **请求参数**
 
@@ -3775,8 +3820,6 @@ http(s)://rds.example.com/?Action=ModifyAccountDescription
 |---|---|---|---|---|
 | Action | String | 是 | ResetAccountPa ssword | 系统规定参数，取值：ResetAccountPassword。 |
 | AccountName | String | 是 | test1 | 数据库账号名称。 |
-
-云数据库RDS
 
 | AccountPasswor d | String | 是 | Test123456 | 新密码。 说明长度为8~32个字符。 由大写字母、小写字母、数字、特殊字符中的任意三种组成。 特殊字符为!@#$&%^* () +-= _ |
 |---|---|---|---|---|
@@ -3796,7 +3839,7 @@ http(s)://rds.example.com/?Action=ModifyAccountDescription
 http(s)://rds.example.com/?Action=ResetAccountPassword &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &AccountPassword=Test123456
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ResetAccountPasswordResponse>
@@ -3804,21 +3847,19 @@ http(s)://rds.example.com/?Action=ResetAccountPassword &DBInstanceId=rm-uf6wjk5x
 </ResetAccountPasswordResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
        "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
 ```
 
-#### 重置高权限账号权限
+`}`
 
-调用ResetAccount接口重置高权限账号的权限。 该接口不适用于没有高权限账号的SQL Server 2008 R2实例。
+#### 2.6.10 重置高权限账号权限
 
-**说明**
+调用ResetAccount接口重置高权限账号的权限。
 
-云数据库RDS
+> **说明：** 该接口不适用于没有高权限账号的SQL Server 2008 R2实例。
 
 **请求参数**
 
@@ -3843,7 +3884,7 @@ http(s)://rds.example.com/?Action=ResetAccountPassword &DBInstanceId=rm-uf6wjk5x
 http(s)://rds.example.com/?Action=ResetAccount &AccountName=test1 &AccountPassword=Test123456 &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ResetAccountResponse>
@@ -3851,15 +3892,13 @@ http(s)://rds.example.com/?Action=ResetAccount &AccountName=test1 &AccountPasswo
 </ResetAccountResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
        "RequestId":"81BC9559-7B22-4B7F-B705-5F56DEECDEA7"
-}
 ```
 
-#### 授予服务账号权限
+#### 2.6.11 授予服务账号权限
 
 调用GrantOperatorPermission接口为RDS服务账号授权。 当您在使用RDS过程中需要阿里云技术支持时，您需要授权RDS服务账号，技术支持人员才可以通过服务账号提供技术支持服务。 该接口仅支持如下实例： RDS MySQL RDS SQL Server RDS PostgreSQL
 
@@ -3880,13 +3919,13 @@ http(s)://rds.example.com/?Action=ResetAccount &AccountName=test1 &AccountPasswo
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=GrantOperatorPermission &DBInstanceId=rm-uf6wjk5xxxxxxx &ExpiredTime=2019-03-27T16:00:00Z &Privileges=Control
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <GrantOperatorPermissionResponse>
@@ -3894,15 +3933,15 @@ http(s)://rds.example.com/?Action=GrantOperatorPermission &DBInstanceId=rm-uf6wj
 </GrantOperatorPermissionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"842B73C8-5776-4BD9-9872-69C8C46DD7D3"
-}
 ```
 
-#### 锁定账号
+`}`
+
+#### 2.6.12 锁定账号
 
 调用LockAccount接口锁定RDS PostgreSQL实例的账号。 RDS PostgreSQL云盘实例支持锁定账号，被锁定的账号无法登录实例。
 
@@ -3922,13 +3961,13 @@ http(s)://rds.example.com/?Action=GrantOperatorPermission &DBInstanceId=rm-uf6wj
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=LockAccount &AccountName=testaccount &DBInstanceId=pgm-bpxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <LockAccountResponse>
@@ -3936,15 +3975,15 @@ http(s)://rds.example.com/?Action=LockAccount &AccountName=testaccount &DBInstan
 </LockAccountResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "1B291C4B-DDCD-4D0A-8F6D-7F3241DE9228"
-}
 ```
 
-#### 撤销服务账号权限
+`}`
+
+#### 2.6.13 撤销服务账号权限
 
 调用RevokeOperatorPermission接口撤销阿里云服务账号对RDS实例的访问权限。 当阿里云技术支持通过服务账号解决了您的问题后，您可以通过该接口释放阿里云服务账号对您RDS实例的访问权限。 该接口仅支持如下实例： RDS MySQL RDS SQL Server RDS PostgreSQL
 
@@ -3961,15 +4000,13 @@ http(s)://rds.example.com/?Action=LockAccount &AccountName=testaccount &DBInstan
 |---|---|---|---|
 | RequestId | String | 842B73C8-5776- 4BD9-9872- 69C8C46DD7D3 | 请求ID。 |
 
-**示例**
-
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=RevokeOperatorPermission &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RevokeOperatorPermissionResponse>
@@ -3977,15 +4014,15 @@ http(s)://rds.example.com/?Action=RevokeOperatorPermission &DBInstanceId=rm-uf6w
 </RevokeOperatorPermissionResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"842B73C8-5776-4BD9-9872-69C8C46DD7D3"
-}
 ```
 
-#### 解锁账号
+`}`
+
+#### 2.6.14 解锁账号
 
 调用UnlockAccount接口解锁RDS PostgreSQL实例的账号。 RDS PostgreSQL云盘实例被锁定的账号无法使用，需要解锁后才能继续使用。
 
@@ -4005,13 +4042,13 @@ http(s)://rds.example.com/?Action=RevokeOperatorPermission &DBInstanceId=rm-uf6w
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=UnlockAccount &AccountName=testaccount &DBInstanceId=pgm-bpxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <UnlockAccountResponse>
@@ -4019,17 +4056,17 @@ http(s)://rds.example.com/?Action=UnlockAccount &AccountName=testaccount &DBInst
 </UnlockAccountResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "AA65190D-852A-4C9B-88DA-E92698CAA350"
-}
 ```
 
-### 备份恢复
+`}`
 
-#### 创建备份
+### 2.7 备份恢复
+
+#### 2.7.1 创建备份
 
 调用CreateBackup接口为实例创建一个备份集。 本接口调用的是RDS自带的备份功能接口，您也可以使用数据库备份DBS。更多信息，请参见**数据库备份**
 **DBS** > **开发指南**中的**API****概览**。
@@ -4043,8 +4080,6 @@ http(s)://rds.example.com/?Action=UnlockAccount &AccountName=testaccount &DBInst
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances获取。 |
 | DBName | String | 否 | rds mysql _ | 数据库列表，多个数据库之间用英文逗号 （,）隔开。 说明 MySQL进行单库逻辑备份或SQL Server进行单库全量物理备份时可传入该参数。 |
 
-云数据库RDS
-
 | BackupStrategy | String | 否 | db | 备份策略，取值： db：单库备份 instance：实例备份说明 MySQL进行逻辑备份或 SQL Server进行全量物理备份时可传入该参数。 |
 |---|---|---|---|---|
 | BackupMethod | String | 否 | Physical | 备份类型，取值： Logical：逻辑备份 Physical：物理备份 Snapshot：快照备份默认值：Physical。 说明实例必须存在数据库才能进行逻辑备份。 各实例支持的备份类型请参见对应实例的用户指南手册。 SQL Server云盘实例进行快照备份时请填写Snapshot。 |
@@ -4057,17 +4092,13 @@ http(s)://rds.example.com/?Action=UnlockAccount &AccountName=testaccount &DBInst
 | BackupJobId | String | 5073731 | 备份任务ID。 |
 | RequestId | String | 2C125605-266F- 41CA-8AC5- 3A643D4F42C5 | 请求ID。 |
 
-云数据库RDS
-
-**示例**
-
 请求示例
 
 ```
 http(s)://rds.example.com/?Action=CreateBackup &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateBackupResponse>
@@ -4076,20 +4107,20 @@ http(s)://rds.example.com/?Action=CreateBackup &DBInstanceId=rm-uf6wjk5xxxxxxx
 </CreateBackupResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "2C125605-266F-41CA-8AC5-3A643D4F42C5",
     "BackupJobId": "5073731"
-}
 ```
 
-#### 恢复数据（克隆实例）
+`}`
 
-调用CloneDBInstance接口将历史数据恢复至一个新实例（称为克隆实例）。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例当前没有正在执行的迁移任务。 实例已开启日志备份（用于按时间点恢复）。 若要按备份集克隆实例，则主实例必须至少有一个已完成备份的备份集。 RDS支持RAM子账号创建克隆实例，请务必保证子账号已添加克隆实例的授权策略。
+#### 2.7.2 恢复数据（克隆实例）
 
-**说明**
+调用CloneDBInstance接口将历史数据恢复至一个新实例（称为克隆实例）。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例当前没有正在执行的迁移任务。 实例已开启日志备份（用于按时间点恢复）。 若要按备份集克隆实例，则主实例必须至少有一个已完成备份的备份集。
+
+> **说明：** RDS支持RAM子账号创建克隆实例，请务必保证子账号已添加克隆实例的授权策略。
 
 实例内数据库账号信息克隆以及其他功能的设置克隆将遵循如下方式： 实例内的白名单设置、SQL洞察（SQL审计）设置、阈值报警设置、备份设置、参数设置将和当前实例状态保持一致。 实例内的数据信息、账号信息与备份文件或时间点当时信息一致。
 
@@ -4099,8 +4130,6 @@ http(s)://rds.example.com/?Action=CreateBackup &DBInstanceId=rm-uf6wjk5xxxxxxx
 |---|---|---|---|---|
 | Action | String | 是 | CloneDBInstanc e | 系统规定参数，取值：CloneDBInstance。 |
 | PayType | String | 是 | Postpaid | 付费类型，取值固定为Postpaid（按量付费）。 |
-
-云数据库RDS
 
 | DBInstanceClass | String | 否 | mysql.n1.micro. 1 | 实例规格，详见云数据库RDS > 产品简介中的实例规格。 说明默认规格和主实例一致。 |
 |---|---|---|---|---|
@@ -4112,7 +4141,7 @@ http(s)://rds.example.com/?Action=CreateBackup &DBInstanceId=rm-uf6wjk5xxxxxxx
 | VPCId | String | 否 | vpc- uf6f7l4fg90xxxx xxxxxx | 专有网络VPC ID。 说明请确保VPC属于对应的地域。 |
 | VSwitchId | String | 否 | vsw- uf6adz52c2pxxx xxxxxxx | 虚拟交换机ID。 说明请确保虚拟交换机属于对应的和VPC和地域。 |
 
-| 开发指南·API参考 |  |  |  | 云数据库RD |
+| 开发指南·API参考 |   |   |   | 云数据库RD |
 |---|---|---|---|---|
 
 | PrivateIpAddress | String | 否 | 172.16.201.69 | 新实例的内网IP，需要在指定交换机的IP 地址范围内。系统默认通过VPCId和VSwitchId自动分配。 |
@@ -4136,7 +4165,7 @@ http(s)://rds.example.com/?Action=CreateBackup &DBInstanceId=rm-uf6wjk5xxxxxxx
 http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBInstanceStorageType=cloud_essd
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CloneDBInstanceResponse>
@@ -4146,21 +4175,21 @@ http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceI
 </CloneDBInstanceResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "OrderId": "100789370xxxxx",
     "DBInstanceId": "rm-uf6wjk5xxxxxxx",
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-}
 ```
 
-#### 查看备份列表
+`}`
 
-调用DescribeBackups接口查看备份集列表。 备份集的状态**BackupStatus**必须是**Success**，才能用于恢复。
+#### 2.7.3 查看备份列表
 
-**说明**
+调用DescribeBackups接口查看备份集列表。
+
+> **说明：** 备份集的状态**BackupStatus**必须是**Success**，才能用于恢复。
 
 **请求参数**
 
@@ -4175,7 +4204,7 @@ http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceI
 | EndTime | String | 否 | 2011-06- 15T16:00Z | 查询结束时间，需要大于查询开始时间。 格式：yyyy-MM-ddTHH:mmZ（UTC时间）。 |
 | PageSize | Integer | 否 | 30 | 每页记录数，取值： 30 50 100 默认值：30。 |
 
-| 开发指南·API参考 |  |  |  | 云数据库RD |
+| 开发指南·API参考 |   |   |   | 云数据库RD |
 |---|---|---|---|---|
 
 | PageNumber | Integer | 否 | 1 | 页码，取值：大于0且不超过Integer的最大值。 默认值：1。 |
@@ -4188,8 +4217,8 @@ http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceI
 | TotalRecordCo unt | String | 100 | 总记录数。 |
 | PageNumber | String | 1 | 页码。 |
 | PageRecordCo unt | String | 30 | 本页备份集个数。 |
-| Items | Array of Backup |  | 备份集列表。 |
-| Backup |  |  |  |
+| Items | Array of Backup |   | 备份集列表。 |
+| Backup |   |   |   |
 | BackupId | String | 321020562 | 备份集ID。 |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
 | HostInstanceI D | String | 5882781 | 产生备份集的实例编号，用于区分该备份集产生于主实例或备实例。 |
@@ -4197,8 +4226,6 @@ http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceI
 | BackupStartTi me | String | 2019-02- 03T12:20:00Z | 本次备份开始时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 | BackupEndTim e | String | 2019-02- 13T12:20:00Z | 本次备份结束时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 | BackupType | String | FullBackup | 备份类型，取值： FullBackup：全量备份 IncrementalBackup：增量备份 |
-
-云数据库RDS
 
 | BackupMode | String | Automated | 备份模式，取值： Automated：系统自动备份 Manual：手动备份 |
 |---|---|---|---|
@@ -4219,7 +4246,7 @@ http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceI
 http(s)://rds.example.com/?Action=DescribeBackups &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeBackupsResponse>
@@ -4266,10 +4293,9 @@ internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
 </DescribeBackupsResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "DescribeBackupsResponse": {
         "TotalRecordCount": 100,
         "TotalEcsSnapshotSize": 0,
@@ -4307,21 +4333,15 @@ hangzhou.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
                         "IntranetDownloadLink": "https://cn-hangzhou-
 internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_2021072909473127987849.zip?E xpires=*****&amp;dbList=tb1",
                         "DataBase": "dbs"
-                    }
-                }
-            }
-        }
-    }
-}
 ```
 
-#### 查询备份设置
+`}` `}` `}` `}` `}` `}`
+
+#### 2.7.4 查询备份设置
 
 调用DescribeBackupPolicy接口查询实例备份设置。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4341,8 +4361,6 @@ internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
 | EnableBackup Log | String | 1 | 是否开启日志备份，取值： 1：表示开启 0：表示关闭 |
 | HighSpaceUsa geProtection | String | Enable | 实例使用空间大于80%，或者剩余空间小于5GB 时，是否强制清理Binlog： Disable：不清理 Enable：清理 |
 
-云数据库RDS
-
 | LocalLogReten tionHours | Integer | 0 | 本地日志备份保留小时数。 |
 |---|---|---|---|
 | LocalLogReten tionSpace | String | 30 | 本地日志最大空间使用率。 |
@@ -4355,11 +4373,9 @@ internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
 | CompressType | Integer | 1 | 备份压缩方式，取值： 0：不压缩 1：zlib压缩 2：并行zlib压缩 4：quicklz压缩，开启了库表恢复 8：MySQL8.0 quicklz压缩但是还未支持库表恢复 |
 | Duplication | String | 无 | 无效参数。 |
 | DuplicationCo ntent | String | 无 | 无效参数。 |
-| DuplicationLoc ation | Struct |  | 无效参数。 |
-| Location | Struct |  | 无效参数。 |
+| DuplicationLoc ation | Struct |   | 无效参数。 |
+| Location | Struct |   | 无效参数。 |
 | Bucket | String | 无 | 无效参数。 |
-
-云数据库RDS
 
 | Endpoint | String | 无 | 无效参数。 |
 |---|---|---|---|
@@ -4375,7 +4391,7 @@ internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
 http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeBackupPolicyResponse>
@@ -4413,10 +4429,9 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
 </DescribeBackupPolicyResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "Category": "Standard",
  "ArchiveBackupRetentionPeriod": 0,
  "RequestId": "292884FE-D689-47A2-9829-C05E63366201",
@@ -4431,8 +4446,11 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
   "Location": {
    "Endpoint": "",
    "Bucket": ""
-  }
- },
+```
+
+`}` `},`
+
+```json
  "HighSpaceUsageProtection": "Enable",
  "CompressType": "1",
  "LogBackupFrequency": "LogInterval",
@@ -4448,10 +4466,11 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
  "BackupRetentionPeriod": 10,
  "DuplicationContent": "",
  "BackupInterval": "30"
-}
 ```
 
-#### 修改备份设置
+`}`
+
+#### 2.7.5 修改备份设置
 
 调用ModifyBackupPolicy接口修改RDS实例备份设置。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例不能为只读实例。 实例状态为运行中。
 
@@ -4461,27 +4480,19 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
 |---|---|---|---|---|
 | Action | String | 是 | ModifyBackupPo licy | 系统规定参数，取值：ModifyBackupPolicy。 |
 
-云数据库RDS
-
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可通过接口 DescribeDBInstances获取。 |
 |---|---|---|---|---|
 | BackupPolicyMo de | String | 否 | DataBackupPolic y | 备份类型： DataBackupPolicy：数据备份 LogBackupPolicy：日志备份 |
 | PreferredBackup Time | String | 否 | 00:00Z-01:00Z | 执行备份任务的时间。格式：HH:mmZ-HH:mmZ（UTC时间）。 说明 BackupPolicyMode为D ataBackupPolicy时，该参数必传。 仅在BackupPolicyMode参数为DataBackupPolicy时生效。 |
 
-云数据库RDS
-
 | PreferredBackup Period | String | 否 | Monday | 备份周期。至少需要指定2天，多个取值用英文逗号（,）隔开。取值： Monday：周一 Tuesday：周二 Wednesday：周三 Thursday：周四 Friday：周五 Saturday：周六 Sunday：周日说明与BackupInterval参数共同决定备份策略。例如：本参数指定周六周日备份，BackupInterval参数指定30分钟，则在每周的周六和周日每隔30分钟执行一次备份。 BackupPolicyMode参数为DataBackupPolicy时 ，该参数必传。 仅在BackupPolicyMode参数为DataBackupPolicy时生效。 |
 |---|---|---|---|---|
 | BackupRetentio nPeriod | String | 否 | 7 | 数据备份保留天数，取值：7~730。 说明 BackupPolicyMode为D ataBackupPolicy时，该参数必传。 仅在BackupPolicyMode参数为DataBackupPolicy时生效。 |
-
-云数据库RDS
 
 | BackupLog | String | 否 | Enable | 是否开启日志备份。取值： Enable：开启。 Disabled：关闭。 说明 BackupPolicyMode为D ataBackupPolicy时，用于开启或关闭日志备份。 仅在BackupPolicyMode参数为DataBackupPolicy时生效。 |
 |---|---|---|---|---|
 | LogBackupReten tionPeriod | String | 否 | 7 | 日志备份保留天数。取值：7~730，且不大于数据备份保留天数。 说明当开启日志备份时，可设置日志备份文件的保留天数， 目前仅支持MySQL、 PostgreSQL、PPAS实例设置该值。 BackupPolicyMode参数为DataBackupPolicy或L ogBackupPolicy时都适用。 |
 | EnableBackupLo g | String | 否 | 1 | 是否开启日志备份。取值： True或1：开启。 False或0：关闭。 说明 BackupPolicyMode为L ogBackupPolicy时，用于开启或关闭日志备份。 仅在BackupPolicyMode参数为LogBackupPolicy时生效。 |
-
-云数据库RDS
 
 | LocalLogRetenti onHours | String | 否 | 18 | 日志备份本地保留小时数。取值：0~7*24，0表示不保留。 说明 BackupPolicyMode为L ogBackupPolicy时，该参数必传。 仅在BackupPolicyMode参数为LogBackupPolicy时生效。 |
 |---|---|---|---|---|
@@ -4490,8 +4501,6 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
 | Duplication | String | 否 | 无 | 无效参数。 |
 | DuplicationCont ent | String | 否 | 无 | 无效参数。 |
 | DuplicationLocat ion | String | 否 | 无 | 无效参数。 |
-
-云数据库RDS
 
 | LogBackupFrequ ency | String | 否 | LogInterval | 日志备份频率，取值： LogInterval：每30分钟备份一次。 默认与数据备份频率一致。 说明 LogInterval参数仅适用于 SQL Server。 仅在BackupPolicyMode参数为DataBackupPolicy时生效。 |
 |---|---|---|---|---|
@@ -4503,8 +4512,6 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-云数据库RDS
 
 | CompressType | String | 4 | 备份压缩方式，取值： 0：不压缩。 1：zlib压缩。 2：并行zlib压缩。 4：quicklz压缩，开启了库表恢复。 8：MySQL8.0 quicklz压缩但是还未支持库表恢复。 |
 |---|---|---|---|
@@ -4524,7 +4531,7 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
 http(s)://rds.example.com/?Action=ModifyBackupPolicy &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyBackupPolicyResponse>
@@ -4538,10 +4545,9 @@ http(s)://rds.example.com/?Action=ModifyBackupPolicy &DBInstanceId=rm-uf6wjk5xxx
 </ModifyBackupPolicyResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "HighSpaceUsageProtection": "Disable",
     "DBInstanceID": "rm-bp1z3xxxxx",
     "RequestId": "E4BF5598-ED12-4406-AAA4-F375428BE741",
@@ -4549,12 +4555,13 @@ http(s)://rds.example.com/?Action=ModifyBackupPolicy &DBInstanceId=rm-uf6wjk5xxx
     "EnableBackupLog": "1",
     "LocalLogRetentionSpace": "30",
     "LogBackupLocalRetentionNumber": 60
-}
 ```
 
-#### 删除数据备份
+`}`
 
-调用该接口删除数据备份文件只删除实例自身的备份集，不会删除所关联实例（只读、灾备、克隆等）的备份集。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例为MySQL、PostgreSQL的高可用版本。 如果日志备份已关闭，RDS实例不支持按时间点恢复功能。此时您可以删除已生成超过7天的任意数据备份文件。 如果日志备份已开启，且日志备份保留时间小于数据备份保留时间，则超过日志备份保留时间的数据备份文件可以删除。
+#### 2.7.6 删除数据备份
+
+调用DeleteBackup接口删除数据备份文件。 调用该接口删除数据备份文件只删除实例自身的备份集，不会删除所关联实例（只读、灾备、克隆等）的备份集。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例为MySQL、PostgreSQL的高可用版本。 如果日志备份已关闭，RDS实例不支持按时间点恢复功能。此时您可以删除已生成超过7天的任意数据备份文件。 如果日志备份已开启，且日志备份保留时间小于数据备份保留时间，则超过日志备份保留时间的数据备份文件可以删除。
 
 **请求参数**
 
@@ -4562,8 +4569,6 @@ http(s)://rds.example.com/?Action=ModifyBackupPolicy &DBInstanceId=rm-uf6wjk5xxx
 |---|---|---|---|---|
 | Action | String | 是 | DeleteBackup | 系统规定参数，取值：DeleteBackup。 |
 | BackupId | String | 是 | 324909958 | 备份集ID。可通过接口DescribeBackups 查询。多组值以英文逗号（,）隔开，单次最多传入100个。 说明只支持删除 DescribeBackups 中StoreStatus为Enabled的备份集。 |
-
-云数据库RDS
 
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 |---|---|---|---|---|
@@ -4582,7 +4587,7 @@ http(s)://rds.example.com/?Action=ModifyBackupPolicy &DBInstanceId=rm-uf6wjk5xxx
 http(s)://rds.example.com/?Action=DeleteBackup &DBInstanceId=rm-uf6wjk5xxxxxxx &BackupId=324909958
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DeleteBackupResponse>
@@ -4590,15 +4595,15 @@ http(s)://rds.example.com/?Action=DeleteBackup &DBInstanceId=rm-uf6wjk5xxxxxxx &
 </DeleteBackupResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "37441409-FFD1-40AA-8EC5-9ECF5E2F7C29"
-}
 ```
 
-#### 删除SQL Server备份
+`}`
+
+#### 2.7.7 删除SQL Server备份
 
 调用DeleteBackupFile接口删除RDS SQL Server的备份文件。
 
@@ -4608,8 +4613,6 @@ http(s)://rds.example.com/?Action=DeleteBackup &DBInstanceId=rm-uf6wjk5xxxxxxx &
 |---|---|---|---|---|
 | Action | String | 是 | DeleteBackupFil e | 系统规定参数。取值：DeleteBackupFile。 |
 | DBInstanceId | String | 是 | rm- bp6wjk5xxxxxx | 实例ID。 |
-
-云数据库RDS
 
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 说明可以通过接口 DescribeRegions查看可用的地域 ID。 |
 |---|---|---|---|---|
@@ -4632,7 +4635,7 @@ http(s)://rds.example.com/?Action=DeleteBackup &DBInstanceId=rm-uf6wjk5xxxxxxx &
 http(s)://rds.example.com/?Action=DeleteBackupFile &DBInstanceId=rm-bp6wjk5xxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>C7B3A91C-0ACD-4948-ACAE-xxxxxxxD4069</RequestId> <DeletedBaksetIds>
@@ -4640,13 +4643,13 @@ http(s)://rds.example.com/?Action=DeleteBackupFile &DBInstanceId=rm-bp6wjk5xxxxx
 </DeletedBaksetIds>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式
 
 ```json
 {"RequestId":"C7B3A91C-0ACD-4948-ACAE-xxxxxxxD4069","DeletedBaksetIds": {"DeletedBaksetIds":"1111"}}
 ```
 
-#### 查询备份任务
+#### 2.7.8 查询备份任务
 
 调用DescribeBackupTasks接口查询实例的备份任务列表。
 
@@ -4666,10 +4669,8 @@ http(s)://rds.example.com/?Action=DeleteBackupFile &DBInstanceId=rm-bp6wjk5xxxxx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of BackupJob |  | 备份任务详情。 |
-| BackupJob |  |  |  |
-
-云数据库RDS
+| Items | Array of BackupJob |   | 备份任务详情。 |
+| BackupJob |   |   |   |
 
 | BackupId | String | 346650271 | 任务生成的备份集ID。 说明当返回参数BackupStatus=Finished之后，传入请求参数BackupJobId才能够查看到备份集ID。 |
 |---|---|---|---|
@@ -4681,15 +4682,13 @@ http(s)://rds.example.com/?Action=DeleteBackupFile &DBInstanceId=rm-bp6wjk5xxxxx
 | TaskAction | String | NormalBackupTask | 任务类型，取值： TempBackupTask：临时备份任务 NormalBackupTask：普通备份任务 |
 | RequestId | String | 90496720-2319- 42A8-87CD- FCE4DF95EBED | 请求ID。 |
 
-**示例**
-
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeBackupTasksResponse>
@@ -4706,30 +4705,32 @@ http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xx
 </DescribeBackupTasksResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Items": {
         "BackupJob": [
-            {
+```
+
+`{`
+
+```json
                 "JobMode": "Automated",
                 "BackupProgressStatus": "NoStart",
                 "TaskAction": "NormalBackupTask",
                 "BackupStatus": "NoStart",
                 "BackupJobId": 4762614
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId": "90496720-2319-42A8-87CD-FCE4DF95EBED"
-}
 ```
 
-#### 查询日志备份
+`}`
+
+#### 2.7.9 查询日志备份
 
 调用DescribeLogBackupFiles接口查询实例的日志备份文件。
 
@@ -4739,8 +4740,6 @@ http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xx
 |---|---|---|---|---|
 | Action | String | 是 | DescribeLogBac kupFiles | 系统规定参数。取值：DescribeLogBackupFiles。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
-
-云数据库RDS
 
 | EndTime | String | 是 | 2018-10- 31T08:40Z | 查询结束时间，必须晚于查询开始时间。 格式：yyyy-MM-ddTHH:mmZ（UTC时间）。 |
 |---|---|---|---|---|
@@ -4752,8 +4751,8 @@ http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of BinLogFile |  | 日志文件列表。 |
-| BinLogFile |  |  |  |
+| Items | Array of BinLogFile |   | 日志文件列表。 |
+| BinLogFile |   |   |   |
 | DownloadLink | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | HTTP协议的下载链接。若当前不可下载，则为空串。 |
 | FileSize | Long | 788480 | 日志文件大小。单位：Byte。 |
 | IntranetDownl oadLink | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | 内网下载地址，若当前不可下载，则为空串。有效期1小时。 |
@@ -4762,8 +4761,6 @@ http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xx
 | LogEndTime | String | 2018-10- 31T08:40Z | 日志文件记录的结束时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 100 | 本页日志文件个数。 |
-
-云数据库RDS
 
 | RequestId | String | F8EC669C-FC85- 43D7-AF06- C3641626B37E | 请求ID。 |
 |---|---|---|---|
@@ -4778,7 +4775,7 @@ http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xx
 http(s)://rds.example.com/?Action=DescribeLogBackupFiles &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2018-10-01T08:40Z &EndTime=2018-10-31T08:40Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeLogBackupFilesResponse>
@@ -4790,27 +4787,29 @@ http(s)://rds.example.com/?Action=DescribeLogBackupFiles &DBInstanceId=rm-uf6wjk
 </DescribeLogBackupFilesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Items": {
         "BinLogFile": [ ]
-    },
+```
+
+`},`
+
+```json
     "PageNumber": 1,
     "TotalRecordCount": 0,
     "RequestId": "F8EC669C-FC85-43D7-AF06-C3641626B37E",
     "PageRecordCount": 0
-}
 ```
 
-#### 查询备份集的库表信息
+`}`
 
-调用DescribeMetaList查询目标备份集中可恢复的库表信息。 在使用RestoreTable接口进行MySQL单库单表恢复之前，您可以通过本接口查询可恢复的库表信息。 实例为MySQL 8.0、5.7、5.6高可用版（本地SSD盘）。
+#### 2.7.10 查询备份集的库表信息
 
-**说明**
+调用DescribeMetaList查询目标备份集中可恢复的库表信息。 在使用RestoreTable接口进行MySQL单库单表恢复之前，您可以通过本接口查询可恢复的库表信息。
 
-云数据库RDS
+> **说明：** 实例为MySQL 8.0、5.7、5.6高可用版（本地SSD盘）。
 
 **请求参数**
 
@@ -4824,8 +4823,6 @@ http(s)://rds.example.com/?Action=DescribeLogBackupFiles &DBInstanceId=rm-uf6wjk
 | RestoreTime | String | 否 | 2019-05- 30T03:29:10Z | 基于时间点查询时，使用的时间节点，需要早于当前时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。可调用 DescribeBackups获取。 说明 RestoreType为RestoreTime时必传 。 |
 | GetDbName | String | 否 | testdb1 | 要查询的数据库名。精确匹配，会返回具体的数据库名以及库内所有的表。 说明为空则返回包含所有数据库的列表。 |
 
-云数据库RDS
-
 | Pattern | String | 否 | test | 要查询的数据库名。模糊匹配，只返回匹配的数据库名，不返回表名。 说明例如传入 test 匹配 testdb1 和 testdb2 ，确定目标数据库名称后再通过GetDbName参数传入精确的数据库名称查看目标库下所有表的信息。 |
 |---|---|---|---|---|
 | PageSize | String | 否 | 1 | 每页记录数。默认值：1。 说明需要和PageIndex一起传入才生效。 |
@@ -4836,16 +4833,14 @@ http(s)://rds.example.com/?Action=DescribeLogBackupFiles &DBInstanceId=rm-uf6wjk
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | DBInstanceNa me | String | rm-uf6wjk5xxxxxxx | 实例名称。 |
-| Items | Array of Meta |  | 备份中的库表信息列表。 |
-| Meta |  |  |  |
+| Items | Array of Meta |   | 备份中的库表信息列表。 |
+| Meta |   |   |   |
 | Database | String | testdb1 | 数据库名称。 |
 | Size | String | 64 | 表的大小，单位：KB。 |
 | Tables | String | test1 | 表名称。 |
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 1 | 本页记录数。 |
 | RequestId | String | 60F9A12A-16B8- 4728-B099- 4CA38D32C31C | 请求ID。 |
-
-云数据库RDS
 
 | TotalPageCou nt | Integer | 1 | 总页数。 |
 |---|---|---|---|
@@ -4859,7 +4854,7 @@ http(s)://rds.example.com/?Action=DescribeLogBackupFiles &DBInstanceId=rm-uf6wjk
 http(s)://rds.example.com/?Action=DescribeMetaList &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeMetaList>
@@ -4879,10 +4874,9 @@ http(s)://rds.example.com/?Action=DescribeMetaList &DBInstanceId=rm-uf6wjk5xxxxx
 </DescribeMetaList>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "TotalPageCount": "1",
  "TotalRecordCount": "1",
  "PageRecordCount": "1",
@@ -4893,19 +4887,21 @@ http(s)://rds.example.com/?Action=DescribeMetaList &DBInstanceId=rm-uf6wjk5xxxxx
    "Size": "64",
    "Database": "testdb1",
    "Tables": "test1"
-  }]
- },
- "DBInstanceName": "rm-uf6wjk5xxxxxxx"
-}
 ```
 
-云数据库RDS
+`}]` `},`
 
-#### 单库单表恢复
+```json
+ "DBInstanceName": "rm-uf6wjk5xxxxxxx"
+```
 
-调用RestoreTable接口恢复RDS实例的某些数据库或表到原实例。 RDS MySQL支持单库和单表的数据恢复，可以通过备份指定恢复误删的数据库或表，快速恢复MySQL的数据。详情请参见单库单表备份。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例当前没有正在执行的迁移任务。 如果需要按时间点恢复，实例必须已开启日志备份。 实例已开启单库单表备份，并且开启后已创建新的备份。 恢复后的表名在实例中不存在。 仅适用于RDS MySQL实例。
+`}`
 
-**说明**
+#### 2.7.11 单库单表恢复
+
+调用RestoreTable接口恢复RDS实例的某些数据库或表到原实例。 RDS MySQL支持单库和单表的数据恢复，可以通过备份指定恢复误删的数据库或表，快速恢复MySQL的数据。详情请参见单库单表备份。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例状态为运行中。 实例当前没有正在执行的迁移任务。 如果需要按时间点恢复，实例必须已开启日志备份。 实例已开启单库单表备份，并且开启后已创建新的备份。 恢复后的表名在实例中不存在。
+
+> **说明：** 仅适用于RDS MySQL实例。
 
 **请求参数**
 
@@ -4916,8 +4912,6 @@ http(s)://rds.example.com/?Action=DescribeMetaList &DBInstanceId=rm-uf6wjk5xxxxx
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxxx xx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 | BackupId | String | 否 | 9026262 | 备份集ID。 您可以通过DescribeBackups接口获取备份集列表。 说明 BackupId和RestoreTime两者至少传入一个。 |
 | RestoreTime | String | 否 | 2011-06- 11T16:00:00Z | 备份保留周期内的任意时间点。格式：yyyy-MM-ddTHH:mm:ssZ（UTC时间）。 说明 BackupId和RestoreTim e两者至少传入一个。 实例必须已开启日志备份。 |
-
-云数据库RDS
 
 | TableMeta | String | 否 | [{"type":"db","n ame":"testdb1"," newname":"test db1 new","table _ s": [{"type":"table", "name":"testdb1 table1","newna me":"testdb1tab le1 new"}]}] _ | 指定恢复的库表。格式： [{"type":"db","name":"<数据库 1名称>","newname":"<新数据库1名称>","tables": [{"type":"table","name":"<数据库1内的表1名称>","newname":"< 新的表1名称>"}, {"type":"table","name":"<数据库1内的表2名称>","newname":"<新的表2名称>"}]}, {"type":"db","name":"<数据库2 名称>","newname":"<新数据库2名称>","tables": [{"type":"table","name":"<数据库2内的表3名称>","newname":"< 新的表3名称>"}, {"type":"table","name":"<数据库2内的表4名称>","newname":"<新的表4名称>"}]}] |
 |---|---|---|---|---|
@@ -4936,7 +4930,7 @@ http(s)://rds.example.com/?Action=DescribeMetaList &DBInstanceId=rm-uf6wjk5xxxxx
 http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &RestoreTime=2019-08-20T16:00:00Z &TableMeta=[{"type":"db","name":"dtstestdata","newname":"dtstestdata","tables":[{"type" :"table","name":"customer_old","newname":"customer_old123"}, {"type":"table","name":"order","newname":"order123"}]}]
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RestoreTableResponse>
@@ -4944,15 +4938,13 @@ http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxx
 </RestoreTableResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "EA2D4F34-01A7-46EB-A339-D80882135206"
-}
 ```
 
-#### 查看已删除实例的备份
+#### 2.7.12 查看已删除实例的备份
 
 调用DescribeDetachedBackups接口查看已删除实例的备份集列表。 本接口适用于RDS MySQL的本地盘实例。关于如何在实例释放后保留备份，请参见自动备份。
 
@@ -4970,8 +4962,6 @@ http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxx
 | StartTime | String | 否 | 2021-03- 01T16:00Z | 查询开始时间。 格式：yyyy-MM-ddTHH:mmZ（UTC时间）。 |
 | EndTime | String | 否 | 2021-03- 15T16:00Z | 查询结束时间，需要大于查询开始时间。 格式：yyyy-MM-ddTHH:mmZ（UTC时间）。 |
 
-云数据库RDS
-
 | PageSize | Integer | 否 | 30 | 每页记录数，取值： 30（默认值） 50 100 |
 |---|---|---|---|---|
 | PageNumber | Integer | 否 | 1 | 页码。 取值：大于0且不超过Integer的最大值。 默认值：1。 |
@@ -4980,8 +4970,8 @@ http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Backup | Array of Items |  | 备份集列表。 |
-| Items |  |  |  |
+| Backup | Array of Items |   | 备份集列表。 |
+| Items |   |   |   |
 | BackupDBNam es | String | testdb | 数据库名称。 |
 | BackupDownlo adURL | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | 公网下载地址，若当前不可下载，则为空串。 |
 | BackupEndTim e | String | 2019-02- 13T12:20:00Z | 本次备份结束时间。 格式：yyyy-MM-ddTHH:mmZ（UTC时间）。 |
@@ -4990,8 +4980,6 @@ http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxx
 | BackupIntrane tDownloadURL | String | http://rdsbak-hz- v3.oss-cn- hangzhou- internal.aliyuncs.co m/xxxxx | 内网下载地址，若当前不可下载，则为空串。 |
 | BackupLocatio n | String | cn-hangzhou | 备份集所在地域。 |
 | BackupMethod | String | Physical | 备份方式，取值： Logical：逻辑备份 Physical：物理备份 |
-
-云数据库RDS
 
 | BackupMode | String | Automated | 备份模式，取值： Automated：系统自动备份 Manual：手动备份 |
 |---|---|---|---|
@@ -5009,8 +4997,6 @@ http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxx
 | TotalBackupSi ze | Long | 2167808 | 所有备份文件的大小，单位：Byte。 |
 | PageNumber | String | 1 | 页码。 |
 
-云数据库RDS
-
 | PageRecordCo unt | String | 30 | 本页备份集个数。 |
 |---|---|---|---|
 | RequestId | String | 1A6D328C-84B8- 40DC-BF49- 6C73984D7494 | 请求ID。 |
@@ -5025,7 +5011,7 @@ http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxx
 http(s)://rds.example.com/?Action=DescribeDetachedBackups &Region=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDetachedBackupsResponse>
@@ -5061,17 +5047,20 @@ http(s)://rds.example.com/?Action=DescribeDetachedBackups &Region=cn-hangzhou
 </DescribeDetachedBackupsResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "TotalRecordCount": 1,
  "PageRecordCount": 1,
  "RequestId": "B0BBC25A-6B3E-4BFD-A052-48664294E20D",
  "PageNumber": 1,
  "Items": {
   "Backup": [
-   {
+```
+
+`{`
+
+```json
           "BackupMethod":"Physical",
      "BackupIntranetDownloadURL":"http://...",
      "BackupMode":"Automated",
@@ -5091,26 +5080,23 @@ http(s)://rds.example.com/?Action=DescribeDetachedBackups &Region=cn-hangzhou
      "BackupScale":"DBInstance",
      "BackupStatus":"Success",
      "BackupLocation":"OSS"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "TotalBackupSize": "161061273600"
-}
 ```
 
-### 数据库代理
+`}`
 
-#### 查询系统权重分配值
+### 2.8 数据库代理
 
-在开启读写分离的情况下，该接口用于计算系统指定的权重。如果是自定义读权重，请使用 DescribeDBInstanceNetInfo接口。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例使用的是共享代理。 实例为如下版本： MySQL 5.7高可用版（本地SSD盘） MySQL 5.6 SQL Server 2017集群版
+#### 2.8.1 查询系统权重分配值
+
+调用CalculateDBInstanceWeight接口查询系统权重分配值。 在开启读写分离的情况下，该接口用于计算系统指定的权重。如果是自定义读权重，请使用 DescribeDBInstanceNetInfo接口。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例使用的是共享代理。 实例为如下版本： MySQL 5.7高可用版（本地SSD盘） MySQL 5.6 SQL Server 2017集群版
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -5121,8 +5107,8 @@ http(s)://rds.example.com/?Action=DescribeDetachedBackups &Region=cn-hangzhou
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of DBInstanceWe ight |  | 系统指定权重列表。 |
-| DBInstanceWe ight |  |  |  |
+| Items | Array of DBInstanceWe ight |   | 系统指定权重列表。 |
+| DBInstanceWe ight |   |   |   |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
 | DBInstanceTy pe | String | Master | 实例类型，取值： Master：主实例 Readonly：只读实例 |
 | Weight | String | 100 | 系统实时计算的实例权重。 |
@@ -5137,7 +5123,7 @@ http(s)://rds.example.com/?Action=DescribeDetachedBackups &Region=cn-hangzhou
 http(s)://rds.example.com/?Action=CalculateDBInstanceWeight &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CalculateDBInstanceWeightResponse>
@@ -5151,27 +5137,30 @@ http(s)://rds.example.com/?Action=CalculateDBInstanceWeight &DBInstanceId=rm-uf6
 </CalculateDBInstanceWeightResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "items": [
-        {
+```
+
+`{`
+
+```json
             "DBInstanceId": "rm-uf6wjk5xxxxxxx",
             "DBInstanceType": "Master",
             "Weight": "",
             "Availability": ""
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "requestId": "C816A4BF-A6EC-4722-95F9-2055859CCFD2"
-}
 ```
 
-#### 查询数据库代理设置
+`}`
+
+#### 2.8.2 查询数据库代理设置
 
 调用DescribeDBInstanceProxyConfiguration接口查看数据库代理设置。 该API查看的为原数据库代理的设置，而不是最新的数据库独享代理。查看数据库独享代理请参见 DescribeDBProxy。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例使用的是共享代理。 实例已开通读写分离。
 
@@ -5187,8 +5176,6 @@ http(s)://rds.example.com/?Action=CalculateDBInstanceWeight &DBInstanceId=rm-uf6
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库RDS
-
 | AttacksProtect ionConfigurati on | String | {\"check interval s _ _ econds\":\"0\",\"ma x failed login atte _ _ _ mpts\":\"0\",\"block ing seconds\":\"0\", _ \"status\":\"Disable \"} | 是否开启防暴力破解： Enable：开启 Disable：关闭返回值格式为JSON字符串，如： {"status":"Disable", "check interval seconds": 60, _ _ "max failed login attempts": 60, _ _ _ "blocking seconds": 600} _ 参数说明及取值范围： 对于每一个客户端，check interval seconds秒内最多允许 _ _ max failed login attempts次错误密码登 _ _ _ 录，否则将对该客户端IP禁止登录 blocking seconds秒钟。 _ 取值范围： check interval seconds：30-600，单 _ _ 位为秒。 max failed login attempts：10- _ _ _ 5000，单位为次。 blocking seconds：30-3600，单位为 _ 秒。 |
 |---|---|---|---|
 | PersistentCon nectionsConfig uration | String | {\"status\":\"Disabl e\"} | 是否开启短连接优化： Enable：开启 Disable：关闭返回值格式为JSON字符串，如： {"status":"Disable"}。 |
@@ -5203,7 +5190,7 @@ http(s)://rds.example.com/?Action=CalculateDBInstanceWeight &DBInstanceId=rm-uf6
 http(s)://rds.example.com/?DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <DescribeDBInstanceProxyConfigurationResponse>
@@ -5216,19 +5203,19 @@ http(s)://rds.example.com/?DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBInstanceId=rm-uf
 </DescribeDBInstanceProxyConfigurationResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "PersistentConnectionsConfiguration": "{\"status\":\"Disable\"}",
     "TransparentSwitchConfiguration": "{\"status\":\"Enable\"}",
     "AttacksProtectionConfiguration": "
 {\"check_interval_seconds\":\"0\",\"max_failed_login_attempts\":\"0\",\"blocking_seconds\ \"0\",\"status\":\"Disable\"}",
     "RequestId": "E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34"
-}
 ```
 
-#### 查询独享代理设置详情
+`}`
+
+#### 2.8.3 查询独享代理设置详情
 
 调用DescribeDBProxy接口查询RDS实例的数据库独享代理设置详情。 RDS提供数据库独享代理服务，包括读写分离、短连接优化等能力。 调用该接口时，需要实例为如下版本： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
 
@@ -5242,12 +5229,10 @@ http(s)://rds.example.com/?DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBInstanceId=rm-uf
 
 **返回数据**
 
-云数据库RDS
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DBProxyConne ctStringItems | Array of DBProxyConne ctStringItems |  | 独享代理的连接地址信息列表。 |
-| DBProxyConne ctStringItems |  |  |  |
+| DBProxyConne ctStringItems | Array of DBProxyConne ctStringItems |   | 独享代理的连接地址信息列表。 |
+| DBProxyConne ctStringItems |   |   |   |
 | DBProxyConne ctString | String | gos787jog2wk0ye1 ****- rw4rm.rwlb.rds.aliy uncs.com | 代理终端连接地址。 |
 | DBProxyConne ctStringNetTyp e | String | InnerString | 代理连接地址的网络类型。取值： InnerString：内网。 OuterString：外网。 |
 | DBProxyConne ctStringNetWo rkType | String | 1 | 代理网络类型，取值： 0：公网。 1：经典网络。 2：专有网络。 |
@@ -5257,8 +5242,6 @@ http(s)://rds.example.com/?DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBInstanceId=rm-uf
 | DBProxyVpcIn stanceId | String | rm- bp145737x5****13 1161274792**** | 代理的实例ID。 |
 | DBProxyInstan ceCurrentMino rVersion | String | 1.13.11 | 代理实例当前版本。 |
 | DBProxyInstan ceLatestMinor Version | String | 1.13.12 | 代理实例最新版本。 |
-
-云数据库RDS
 
 | DBProxyInstan ceNum | Integer | 1 | 开通的代理实例数量。 |
 |---|---|---|---|
@@ -5275,7 +5258,7 @@ http(s)://rds.example.com/?DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBInstanceId=rm-uf
 http(s)://rds.example.com/?Action=DescribeDBProxy &DBInstanceId=rm-bp1ja4f56s7us****
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBProxyResponse>
@@ -5311,10 +5294,9 @@ tanceId>
 </DescribeDBProxyResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "DBProxyInstanceName": "gos787jog2wk0ye1****",
  "DBProxyInstanceCurrentMinorVersion": "1.13.11",
  "DBProxyServiceStatus": "Startup",
@@ -5323,21 +5305,27 @@ tanceId>
  "RequestId": "909A69EE-71C8-4417-A0B9-FF085407E1E3",
  "DbProxyEndpointItems": {
   "DbProxyEndpointItems": [
-   {
+```
+
+`{`
+
+```json
     "DbProxyEndpointName": "gos787jog2wk0ye1****",
     "DbProxyEndpointAliases": "proxy-test",
     "DbProxyEndpointType": "RWSplit",
     "DbProxyReadWriteMode": "ReadWrite"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "DBProxyConnectStringItems": {
   "DBProxyConnectStringItems": [
-   {
+```
+
+`{`
+
+```json
     "DBProxyConnectString": "gos787jog2wk0ye1****-rw4rm.rwlb.rds.aliyuncs.com",
     "DBProxyEndpointId": 209090,
     "DBProxyEndpointName": "gos787jog2wk0ye1****",
@@ -5345,19 +5333,18 @@ tanceId>
     "DBProxyConnectStringNetType": "InnerString",
     "DBProxyConnectStringPort": "3306",
     "DBProxyVpcInstanceId": "rm-bp145737x5****131161274792****"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "DBProxyInstanceStatus": "Running",
  "DBProxyInstanceType": "2"
-}
 ```
 
-#### 查询独享代理地址信息
+`}`
+
+#### 2.8.4 查询独享代理地址信息
 
 调用DescribeDBProxyEndpoint接口查询RDS实例独享代理的连接地址信息。 RDS提供数据库独享代理服务，包括读写分离、短连接优化等能力。 调用该接口时，需要实例为如下版本： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
 
@@ -5365,8 +5352,6 @@ tanceId>
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库RDS
 
 | Action | String | 是 | DescribeDBProx yEndpoint | 系统规定参数，取值：DescribeDBProxyEndpoint。 |
 |---|---|---|---|---|
@@ -5385,8 +5370,6 @@ tanceId>
 | DBProxyEndpo intId | String | keaxncrjluwu0gue* *** | 代理连接地址ID。可以通过本接口查询。 |
 | DBProxyFeatur es | String | TransactionReadSq lRouteOptimizeStat us:1;ConnectionPer sist:0;ReadWriteSpl iting:1 | 代理终端的设置信息，格式为JSON，包含下述参数： TransactionReadSqlRouteOptimize Status：事务拆分设置，取值为0（关闭） 或1（开启）。 ConnectionPersist：连接池设置：取值为0（关闭）、1（会话级连接池）或2（事务级连接池）。 ReadWriteSpliting：读写分离设置，取值为0（关闭）或1（开启）。 |
 
-云数据库RDS
-
 | ReadOnlyInsta nceDistributio nType | String | Standard | 读权重分配模式。取值： Standard：按规格权重自动分配。 Custom：自定义分配权重。 |
 |---|---|---|---|
 | ReadOnlyInsta nceMaxDelayT ime | String | 30 | 读写分离的延迟阈值，当只读实例延迟时间超过该阈值时，读取流量不发往该实例，单位：秒。 |
@@ -5401,7 +5384,7 @@ tanceId>
 http(s)://rds.example.com/?Action=DescribeDBProxyEndpoint &DBInstanceId=rm-bp1ja4f56s7us**** &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```json
 <DescribeDBProxyEndpointResponse>
@@ -5432,10 +5415,9 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
 </DescribeDBProxyEndpointResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "DbProxyEndpointReadWriteMode": "ReadWrite",
  "ReadOnlyInstanceDistributionType": "Standard",
  "DBProxyConnectString": "testproxy****.rwlb.rds.aliyuncs.com",
@@ -5450,25 +5432,31 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
  "DBProxyConnectStringNetType": "InnerString",
  "EndpointConnectItems": {
   "EndpointConnectItems": [
-   {
+```
+
+`{`
+
+```json
     "DbProxyEndpointNetType": "2",
     "DbProxyEndpointPort": "3306",
     "DbProxyEndpointConnectString": "testproxy****.rwlb.rds.aliyuncs.com"
-   },
-   {
+```
+
+`},` `{`
+
+```json
     "DbProxyEndpointNetType": "0",
     "DbProxyEndpointPort": "3306",
     "DbProxyEndpointConnectString": "test****.rwlb.rds.aliyuncs.com"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "DBProxyConnectStringPort": "3306"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -5476,9 +5464,9 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
 |---|---|---|---|
 | 404 | Endpoint.NotFound | Specified endpoint is not found. | 未找到指定独享代理连接地址的端口。 |
 
-#### 查询独享代理性能
+#### 2.8.5 查询独享代理性能
 
-调用DescribeDBProxyPerformance接口查询独享代理的性能数据。 RDS提供数据库独享代理服务，包括读写分离、短连接优化等能力。 调用该接口时，实例必须满足以下条件： 实例已开通数据库独享代理功能。 实例版本如下： 云数据库RDS MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
+调用DescribeDBProxyPerformance接口查询独享代理的性能数据。 RDS提供数据库独享代理服务，包括读写分离、短连接优化等能力。 调用该接口时，实例必须满足以下条件： 实例已开通数据库独享代理功能。 实例版本如下： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
 
 **请求参数**
 
@@ -5499,15 +5487,13 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
 | DBInstanceId | String | lsmexxxxxxx | 监控实例的ID。 |
 | EndTime | String | 2019-09- 21T18:00:00Z | 查询结束时间。 |
 
-云数据库RDS
-
-| PerformanceK eys | Array of PerformanceK ey |  | 性能列表。 |
+| PerformanceK eys | Array of PerformanceK ey |   | 性能列表。 |
 |---|---|---|---|
-| PerformanceK ey |  |  |  |
+| PerformanceK ey |   |   |   |
 | Key | String | cpu ratio _ | 性能参数。 |
 | ValueFormat | String | docker container c _ _ pu | 性能值的格式。 |
-| Values | Array of PerformanceV alue |  | 数组格式：{value1, value2, …}。 |
-| PerformanceV alue |  |  |  |
+| Values | Array of PerformanceV alue |   | 数组格式：{value1, value2, …}。 |
+| PerformanceV alue |   |   |   |
 | Date | String | 2019-10- 10T09:00:00Z | 记录日期。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 | Value | String | 2.83 | 性能值。 |
 | RequestId | String | DD31056F-A0CE- 41D7-AD39- 689B6ABAE982 | 请求ID。 |
@@ -5521,7 +5507,7 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
 http(s)://rds.example.com/?Action=DescribeDBProxyPerformance &RegionId=cn-hangzhou &DBInstanceId=rm-t4n3axxxxx &MetricsName=Maxscale_CpuUsage &StartTime=2019-09-19T01:00:00Z &EndTime=2019-09-21T18:00:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBProxyPerformanceResponse>
@@ -5544,52 +5530,54 @@ http(s)://rds.example.com/?Action=DescribeDBProxyPerformance &RegionId=cn-hangzh
 </DescribeDBProxyPerformanceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "DBInstanceId": "lsmexxxxxxx",
  "RequestId": "DD31056F-A0CE-41D7-AD39-689B6ABAE982",
  "PerformanceKeys": {
   "PerformanceKey": [
-   {
+```
+
+`{`
+
+```json
     "Values": {
      "PerformanceValue": [
-      {
+```
+
+`{`
+
+```json
        "Value": "2.83",
        "Date": "2019-10-10T09:00:00Z"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "Key": "cpu_ratio",
     "ValueFormat": "docker_container_cpu"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "EndTime": "2019-10-10T09:39:28Z",
  "StartTime": "2019-10-01T09:39:28Z"
-}
 ```
+
+`}`
 
 **错误码**
 
 | HttpCod e | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 
-云数据库RDS
-
 | 404 | Endpoint.NotFound | Specified endpoint is not found. | 未找到指定独享代理连接地址的端口。 |
 |---|---|---|---|
 
-#### 开关独享代理
+#### 2.8.6 开关独享代理
 
 调用ModifyDBProxy接口开启或者关闭RDS实例的数据库独享代理功能。 RDS提供数据库独享代理服务，包括读写分离、短连接优化等能力。 调用该接口时，需要实例为如下版本： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
 
@@ -5603,8 +5591,6 @@ http(s)://rds.example.com/?Action=DescribeDBProxyPerformance &RegionId=cn-hangzh
 | DBProxyInstance Num | String | 否 | 1 | 开通代理实例数量，取值：1~60。默认值：1。 说明更多的代理实例能处理更多的请求，您可以根据监控数据了解代理实例的负载，然后设置合理的代理实例数量。 |
 | RegionId | String | 否 | cn-hangzhou | 地域ID，可以通过接口DescribeRegions查看地域 ID。 |
 | InstanceNetwork Type | String | 否 | VPC | 实例的网络类型。当前仅支持VPC网络，取值：VPC。 |
-
-云数据库RDS
 
 | VPCId | String | 否 | vpc- xxxxxxxxxxx x | 实例所属VPC ID。 |
 |---|---|---|---|---|
@@ -5624,7 +5610,7 @@ http(s)://rds.example.com/?Action=DescribeDBProxyPerformance &RegionId=cn-hangzh
 http(s)://rds.example.com/?Action=ModifyDBProxy &DBInstanceId=rm-uf6wjk5xxxxxxx &ConfigDBProxyService=Startup
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBProxyResponse>
@@ -5632,41 +5618,39 @@ http(s)://rds.example.com/?Action=ModifyDBProxy &DBInstanceId=rm-uf6wjk5xxxxxxx 
 </ModifyDBProxyResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "FC452BB1-EED8-4278-95C7-0324B3710DF1"
-}
 ```
 
-#### 修改独享代理终端设置
+`}`
 
-调用ModifyDBProxyEndpoint接口修改RDS实例独享代理终端设置。 RDS提供数据库独享代理服务，包括读写分离、连接池等能力。 调用该接口时，实例必须满足以下条件： 实例已开通数据库独享代理功能。 实例版本如下： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） 云数据库RDS MySQL 5.6高可用版（内核小版本20200229或以上）
+#### 2.8.7 修改独享代理终端设置
+
+调用ModifyDBProxyEndpoint接口修改RDS实例独享代理终端设置。 RDS提供数据库独享代理服务，包括读写分离、连接池等能力。 调用该接口时，实例必须满足以下条件： 实例已开通数据库独享代理功能。 实例版本如下： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
 
 **请求参数**
 
-| 名称 | 类型 | 是否必选 |  | 示例值 | 描述 |  |  |
+| 名称 | 类型 | 是否必选 |   | 示例值 | 描述 |   |   |
 |---|---|---|---|---|---|---|---|
-| Action | String | 是 |  | ModifyDBProxyE ndpoint | 系统规定参数，取值：ModifyDBProxyEndpoint。 |  |  |
-| DBInstanceId | String | 是 |  | rm- bp145737x5bi6* *** | 实例ID。 |  |  |
-| DBProxyEndpoin tId | String | 是 |  | gos787jog2wk0y **** | 代理连接地址ID。可以通过接口 DescribeDBProxyEndpoint查看。 说明当DbEndpointOperator取值为Delete或Modify时，本参数必须传入。 |  |  |
-| ConfigDBProxyF eatures | String | 否 |  |  | 设置代理连接地址想要开通的独享代理功能，各功能之间以英文分号（;）隔开。格式： 功能1:开通情况;功能2:开通情况;... 功能取值： ReadWriteSpliting：读写分离 ConnectionPersist：连接池 TransactionReadSqlRouteOpti mizeStatus：事务拆分开通情况取值： 1：功能已开通 0：功能未开通 |  |  |
-|  |  |  |  |  |  | 功能1:开通情况;功能2:开通情 |  |
-|  |  |  |  |  | 况;... |  |  |
-|  |  |  |  | ReadWriteSplitin g:1;ConnectionP ersist:0; |  |  |  |
-| RegionId | String | 否 |  | cn-hangzhou | 地域ID，可以通过接口DescribeRegions 查看地域ID。 |  |  |
-| ReadOnlyInstanc eMaxDelayTime | String | 否 |  | 30 | 读写分离的延迟阈值，当只读实例延迟时间超过该阈值时，读取流量不发往该实例，单位：秒。不传该参数则保持原值。 取值：30~3600。默认值：30。 说明开通读写分离时才需要传入该参数。 |  |  |
-
-云数据库RDS
+| Action | String | 是 |   | ModifyDBProxyE ndpoint | 系统规定参数，取值：ModifyDBProxyEndpoint。 |   |   |
+| DBInstanceId | String | 是 |   | rm- bp145737x5bi6* *** | 实例ID。 |   |   |
+| DBProxyEndpoin tId | String | 是 |   | gos787jog2wk0y **** | 代理连接地址ID。可以通过接口 DescribeDBProxyEndpoint查看。 说明当DbEndpointOperator取值为Delete或Modify时，本参数必须传入。 |   |   |
+| ConfigDBProxyF eatures | String | 否 |   |   | 设置代理连接地址想要开通的独享代理功能，各功能之间以英文分号（;）隔开。格式： 功能1:开通情况;功能2:开通情况;... 功能取值： ReadWriteSpliting：读写分离 ConnectionPersist：连接池 TransactionReadSqlRouteOpti mizeStatus：事务拆分开通情况取值： 1：功能已开通 0：功能未开通 |   |   |
+|   |   |   |   |   |   | 功能1:开通情况;功能2:开通情 |   |
+|   |   |   |   |   | 况;... |   |   |
+|   |   |   |   | ReadWriteSplitin g:1;ConnectionP ersist:0; |   |   |   |
+| RegionId | String | 否 |   | cn-hangzhou | 地域ID，可以通过接口DescribeRegions 查看地域ID。 |   |   |
+| ReadOnlyInstanc eMaxDelayTime | String | 否 |   | 30 | 读写分离的延迟阈值，当只读实例延迟时间超过该阈值时，读取流量不发往该实例，单位：秒。不传该参数则保持原值。 取值：30~3600。默认值：30。 说明开通读写分离时才需要传入该参数。 |   |   |
 
 | ReadOnlyInstanc eDistributionTyp e | String | 否 | Standard | 读权重分配模式。取值： Standard：按规格权重自动分配。 Custom：自定义分配权重。 说明开通读写分离时才需要传入该参数。 |
 |---|---|---|---|---|
 | ReadOnlyInstanc eWeight | String | 否 | {“rm- uf6wjk5xxxx“:”5 00”,”rr- tfhfgk5xxx”:”20 0”...} | 自定义读权重分配，即传入主实例和只读实例的读请求权重。以100递增，最大值为10000，格式： {“实例1ID“:”权重”,”实例2ID”:”权重”...} 。 说明当ReadOnlyInstanceDistributi onType取值为Custom时，您需要传入本参数。 |
 
-|  |  | {“实例1ID“:”权 |
+|   |   | {“实例1ID“:”权 |
 |---|---|---|
-| m- | 重”,”实例2ID”:”权重”...} |  |
+| m- | 重”,”实例2ID”:”权重”...} |   |
 
 **返回数据**
 
@@ -5682,7 +5666,7 @@ http(s)://rds.example.com/?Action=ModifyDBProxy &DBInstanceId=rm-uf6wjk5xxxxxxx 
 http(s)://rds.example.com/?Action=ModifyDBProxyEndpoint &DBInstanceId=rm-bp145737x5bi6**** &DBProxyEndpointId=gos787jog2wk0y**** &ConfigDBProxyFeatures=ReadWriteSpliting:1;ConnectionPersist:1; &ReadOnlyInstanceMaxDelayTime=30 &ReadOnlyInstanceDistributionType=Standard
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBProxyEndpointResponse>
@@ -5690,15 +5674,13 @@ http(s)://rds.example.com/?Action=ModifyDBProxyEndpoint &DBInstanceId=rm-bp14573
 </ModifyDBProxyEndpointResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "6B50D92C-1960-4D4F-A290-AFADD6B1A5C8"
-}
 ```
 
-#### 修改独享代理设置
+#### 2.8.8 修改独享代理设置
 
 调用ModifyDBProxyInstance接口修改RDS数据库独享代理设置。 RDS提供数据库独享代理服务，包括读写分离、短连接优化等能力。 调用该接口时，实例必须满足以下条件： 实例已开通数据库独享代理功能。 实例版本如下： MySQL 8.0高可用版（内核小版本20190915或以上） MySQL 5.7高可用版（内核小版本20190925或以上） MySQL 5.6高可用版（内核小版本20200229或以上）
 
@@ -5710,8 +5692,6 @@ http(s)://rds.example.com/?Action=ModifyDBProxyEndpoint &DBInstanceId=rm-bp14573
 | DBInstanceId | String | 是 | rm-t4n3axxxxx | 实例ID。可调用DescribeDBInstances获取。 |
 | DBProxyInstance Num | String | 是 | 2 | 设置代理实例数量。当取值为0的时候，表示这个实例关闭此种类型代理服务。取值：0~60。 说明更多的代理实例能处理更多的请求， 您可以根据监控数据了解代理实例的负载，然后设置合理的代理实例数量。 |
 | DBProxyInstance Type | String | 是 | DedicatedProxy | 代理服务类型。当前仅支持独享代理服务，取值：DedicatedProxy。 |
-
-云数据库RDS
 
 | EffectiveTime | String | 否 | MaintainTime | 生效时间，取值： Immediate：立即生效。 MaintainTime：在可运维时间段内生效。 SpecificTime：指定时间生效。 默认值：MaintainTime。 |
 |---|---|---|---|---|
@@ -5732,7 +5712,7 @@ http(s)://rds.example.com/?Action=ModifyDBProxyEndpoint &DBInstanceId=rm-bp14573
 http(s)://rds.example.com/?Action=ModifyDBProxyInstance &DBInstanceId=rm-t4n3axxxxx &DBProxyInstanceType=DedicatedProxy &DBProxyInstanceNum=2 &EffectiveTime=Immediate
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBProxyInstanceResponse>
@@ -5740,15 +5720,13 @@ http(s)://rds.example.com/?Action=ModifyDBProxyInstance &DBInstanceId=rm-t4n3axx
 </ModifyDBProxyInstanceResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "65C55572-530E-4A53-BE03-1D08CAF0F046"
-}
 ```
 
-#### 修改读权重和延迟阈值
+#### 2.8.9 修改读权重和延迟阈值
 
 调用ModifyReadWriteSplittingConnection接口修改读写分离链路的延迟阈值和各个实例的读权重。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例使用的是共享代理。 实例已开通读写分离。 实例为如下版本： MySQL 5.7高可用版（本地SSD盘） MySQL 5.6 SQL Server 2017集群版
 
@@ -5761,8 +5739,6 @@ http(s)://rds.example.com/?Action=ModifyDBProxyInstance &DBInstanceId=rm-t4n3axx
 | ConnectionStrin gPrefix | String | 否 | rm- m5xxxxxxxxrw. mysql.rds.aliyun cs.com | 读写分离地址前缀名，不可重复，由小写字母和中划线组成，需以字母开头，长度不超过30个字符。 说明默认以“实例名+rw”字符串组成前缀。 |
 | Port | String | 否 | 3306 | 读写分离地址端口号。 |
 | MaxDelayTime | String | 否 | 12 | 延迟阈值，单位为秒。当只读实例延迟时间超过该阈值时，读取流量不发往该实例。不传该参数则保持原值。 说明参数MaxDelayTime不适用于SQL Server 2017集群版实例。 至少传入MaxDelayTime或Dist ributionType中的一个。 |
-
-云数据库RDS
 
 | DistributionType | String | 否 | Standard | 读权重分配模式，取值： Standard：按规格权重自动分配 Custom：自定义分配权重说明至少传入MaxDelayTime或Distributio nType中的一个。 |
 |---|---|---|---|---|
@@ -5782,7 +5758,7 @@ http(s)://rds.example.com/?Action=ModifyDBProxyInstance &DBInstanceId=rm-t4n3axx
 http(s)://rds.example.com/?Action=ModifyReadWriteSplittingConnection &DistributionType=Standard &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyReadWriteSplittingConnectionResponse>
@@ -5790,15 +5766,13 @@ http(s)://rds.example.com/?Action=ModifyReadWriteSplittingConnection &Distributi
 </ModifyReadWriteSplittingConnectionResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestID":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-  }
 ```
 
-#### 释放读写分离地址
+#### 2.8.10 释放读写分离地址
 
 调用ReleaseReadWriteSplittingConnection接口释放读写分离地址。 调用该接口时，实例必须满足以下条件，否则将操作失败： 实例使用的是共享代理。 实例已开通读写分离。 实例为如下版本： MySQL 5.7高可用版（本地SSD盘） MySQL 5.6 SQL Server 2017集群版
 
@@ -5823,7 +5797,7 @@ http(s)://rds.example.com/?Action=ModifyReadWriteSplittingConnection &Distributi
 http(s)://rds.example.com/?Action=ReleaseReadWriteSplittingConnection &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ReleaseReadWriteSplittingConnectionResponse>
@@ -5831,17 +5805,17 @@ http(s)://rds.example.com/?Action=ReleaseReadWriteSplittingConnection &DBInstanc
 </ReleaseReadWriteSplittingConnectionResponse>
 ```
 
-云数据库RDS `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestID":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-  }
 ```
 
-### 主备高可用和数据复制方式
+`}`
 
-#### 查询高可用模式
+### 2.9 主备高可用和数据复制方式
+
+#### 2.9.1 查询高可用模式
 
 调用DescribeDBInstanceHAConfig接口查询RDS实例高可用模式和数据复制方式。
 
@@ -5859,11 +5833,9 @@ http(s)://rds.example.com/?Action=ReleaseReadWriteSplittingConnection &DBInstanc
 | DBInstanceId | String | rm-uf6wjk5xxxxxx | 实例ID。 |
 | HAMode | String | RPO | 高可用模式，取值： RPO：数据一致性优先，实例会尽可能保障数据的可靠性，即数据丢失量最少。对于数据一致性要求比较高的用户应该使用RPO模式。 RTO：实例可用性优先，实例会尽快恢复服务，即可用时间最长。对于数据库在线时间要求比较高的用户应该使用RTO模式。 说明仅MySQL实例返回此参数。 |
 | SyncMode | String | Sync | 数据复制方式，取值： Sync：强同步 Semi-sync：半同步 Async：异步说明仅MySQL实例返回此参数。 |
-| HostInstanceIn fos | Array of NodeInfo |  | 主备实例信息列表。 |
+| HostInstanceIn fos | Array of NodeInfo |   | 主备实例信息列表。 |
 
-云数据库RDS
-
-| NodeInfo |  |  |  |
+| NodeInfo |   |   |   |
 |---|---|---|---|
 | NodeId | String | 3397027 | 实例的唯一标识。 |
 | NodeType | String | Master | 节点类型，取值： Master：主节点 Slave：备节点 |
@@ -5883,7 +5855,7 @@ http(s)://rds.example.com/?Action=ReleaseReadWriteSplittingConnection &DBInstanc
 http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf6wjk5xxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceHAConfigResponse>
@@ -5914,16 +5886,19 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf
 </DescribeDBInstanceHAConfigResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "103D4ACC-F2F9-4A7E-9ACC-14B0A25613E0",
  "DBInstanceId": "rm-uf6wjk5xxxxxx",
  "HAMode": "RPO",
  "HostInstanceInfos": {
   "NodeInfo": [
-   {
+```
+
+`{`
+
+```json
     "DataSyncTime": "",
     "ZoneId": "cn-hangzhou-h",
     "LogSyncTime": "",
@@ -5931,8 +5906,11 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf
     "NodeId": "13567431",
     "SyncStatus": "NotSupport",
     "RegionId": "cn-hangzhou"
-   },
-   {
+```
+
+`},` `{`
+
+```json
     "DataSyncTime": "",
     "ZoneId": "cn-hangzhou-h",
     "LogSyncTime": "",
@@ -5940,18 +5918,17 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf
     "NodeId": "14565107",
     "SyncStatus": "NotSupport",
     "RegionId": "cn-hangzhou"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "SyncMode": "Semi-sync"
-}
 ```
 
-#### 修改高可用模式
+`}`
+
+#### 2.9.2 修改高可用模式
 
 调用ModifyDBInstanceHAConfig接口修改实例的高可用模式和数据复制方式。
 
@@ -5962,8 +5939,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf
 | Action | String | 是 | ModifyDBInstanc eHAConfig | 系统规定参数，取值：ModifyDBInstanceHAConfig。 |
 | DbInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | SyncMode | String | 否 | Sync | 数据复制方式，取值： Sync：强同步 Semi-sync：半同步 Async：异步说明暂不支持SQL Server 2017集群版。 |
-
-云数据库RDS
 
 | HAMode | String | 否 | RPO | 高可用模式，取值： RPO：数据一致性优先，实例会尽可能保障数据的可靠性，即数据丢失量最少。对于数据一致性要求比较高的用户应该使用RPO模式。 RTO：实例可用性优先，实例会尽快恢复服务，即可用时间最长。对于数据库在线时间要求比较高的用户应该使用 RTO模式。 |
 |---|---|---|---|---|
@@ -5983,7 +5958,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf
 http(s)://rds.example.com/?Action=ModifyDBInstanceHAConfig &DbInstanceId=rm-uf6wjk5xxxxxxx &HAMode=RPO &SyncMode=Sync
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceHAConfigResponse>
@@ -5991,17 +5966,17 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceHAConfig &DbInstanceId=rm-uf6w
 </ModifyDBInstanceHAConfigResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
 ```
 
-#### 查看主备切换日志
+`}`
 
-调用DescribeDBInstanceSwitchLog接口查看实例的主备切换日志。 该接口用于查看实例的主备切换日志，适用于MySQL实例、SQL Server实例、PostgreSQL实例、 PolarDB实例。 云数据库RDS
+#### 2.9.3 查看主备切换日志
+
+调用DescribeDBInstanceSwitchLog接口查看实例的主备切换日志。 该接口用于查看实例的主备切换日志，适用于MySQL实例、SQL Server实例、PostgreSQL实例、 PolarDB实例。
 
 **请求参数**
 
@@ -6019,16 +5994,14 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceHAConfig &DbInstanceId=rm-uf6w
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | DBInstanceNa me | String | rdsaiiabnaiiabn | 实例名称。 |
-| Items | Array of Item |  | 主备日志列表。 |
-| Item |  |  |  |
+| Items | Array of Item |   | 主备日志列表。 |
+| Item |   |   |   |
 | AffectedSessio ns | String | 无 | 切换时影响会话数。 |
 | HAStatus | String | 无 | 无 |
 | SwitchCauseC ode | String | 无 | 切换原因。 |
 | SwitchFinishTi me | String | 无 | 切换结束时间。 |
 | SwitchId | String | 无 | 切换实例的ID。 |
 | SwitchStartTi me | String | 无 | 切换开始时间。 |
-
-云数据库RDS
 
 | TotalSessions | String | 无 | 切换时总会话数。 |
 |---|---|---|---|
@@ -6045,7 +6018,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceHAConfig &DbInstanceId=rm-uf6w
 http(s)://rds.example.com/?Action=DescribeDBInstanceSwitchLog &EndTime=2018-06-11T15:00Z &StartTime=2014-06-11T15:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceSwitchLogResponse>
@@ -6058,22 +6031,22 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceSwitchLog &EndTime=2018-06-1
 </DescribeDBInstanceSwitchLogResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Items": {},
     "PageNumber": 1,
     "TotalRecordCount": 5,
     "RequestId": "D1CA494F-CC13-4EB6-8C4D-5352EE4045BD",
     "PageRecordCount": 60,
     "DBInstanceName": "rm-m5el220b25im05g7g"
-}
 ```
 
-#### 查询主备切换设置
+`}`
 
-调用DescribeHASwitchConfig接口查询RDS实例主备自动切换设置。 主备实例切换后原来的主实例会变成备实例。 云数据库RDS 调用该接口时，实例必须为高可用版或集群版。
+#### 2.9.4 查询主备切换设置
+
+调用DescribeHASwitchConfig接口查询RDS实例主备自动切换设置。 主备实例切换后原来的主实例会变成备实例。 调用该接口时，实例必须为高可用版或集群版。
 
 **请求参数**
 
@@ -6099,7 +6072,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceSwitchLog &EndTime=2018-06-1
 http(s)://rds.example.com/?Action=DescribeHASwitchConfig &RegionId=cn-hangzhou &DBInstanceId=rm-uf6wjk5xxxxxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeHASwitchConfigResponse>
@@ -6109,17 +6082,17 @@ http(s)://rds.example.com/?Action=DescribeHASwitchConfig &RegionId=cn-hangzhou &
 </DescribeHASwitchConfigResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "ManualHATime": "2019-08-29T15:00:00Z",
  "RequestId": "4FDF4B79-2741-4C5F-8C76-4B953FC5C2B1",
  "HAConfig": "Manual"
-}
 ```
 
-#### 切换主备实例
+`}`
+
+#### 2.9.5 切换主备实例
 
 调用SwitchDBInstanceHA接口切换RDS实例的主备实例。 本接口可用于切换非基础版RDS实例的主备实例，切换主备实例后，原来的备实例成为主实例并承担业务流量。
 
@@ -6135,8 +6108,6 @@ http(s)://rds.example.com/?Action=DescribeHASwitchConfig &RegionId=cn-hangzhou &
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx xxx | 主实例ID。可调用DescribeDBInstances 获取。 |
 | NodeId | String | 是 | 349054 | 备实例的唯一标识，通过接口 DescribeDBInstanceHAConfig可查询该值。 |
 | Operation | String | 否 | 无 | 无效参数。 |
-
-云数据库RDS
 
 | Force | String | 否 | No | 切换方式，取值： Yes：强制 No：非强制默认值：No。 |
 |---|---|---|---|---|
@@ -6156,7 +6127,7 @@ http(s)://rds.example.com/?Action=DescribeHASwitchConfig &RegionId=cn-hangzhou &
 http(s)://rds.example.com/?Action=SwitchDBInstanceHA &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &NodeId=349054
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <SwitchDBInstanceHAResponse>
@@ -6164,21 +6135,21 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceHA &DBInstanceId=rm-uf6wjk5xxx
 </SwitchDBInstanceHAResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-  }
 ```
 
-#### 设置主备自动切换
+`}`
+
+#### 2.9.6 设置主备自动切换
 
 调用ModifyHASwitchConfig接口开启或关闭RDS实例的主备自动切换功能。 本接口可用于切换非基础版RDS实例的主备实例，切换主备实例后，原来的备实例成为主实例并承担业务流量。
 
 **注意事项**
 
-（重要）主备实例的数据会实时同步，备实例仅可作为只读实例或备份形式存在，请不要对备实例做任何云数据库RDS 修改，否则可能导致主实例的数据被误删或覆盖，造成不可挽回的业务损失。 （重要）如果将备实例作为只读实例，需要考虑发生主备切换时，备实例成为新主实例后承担的读写压力。建议提前做好资源预留和规划。 主备实例切换过程中可能会有闪断，请确保您的应用程序具有自动重连机制。 如果实例下挂载有只读实例，那么主备实例切换后，只读实例的数据同步会有几分钟的延迟，因为需要重建复制链路、同步增量数据等。
+（重要）主备实例的数据会实时同步，备实例仅可作为只读实例或备份形式存在，请不要对备实例做任何修改，否则可能导致主实例的数据被误删或覆盖，造成不可挽回的业务损失。 （重要）如果将备实例作为只读实例，需要考虑发生主备切换时，备实例成为新主实例后承担的读写压力。建议提前做好资源预留和规划。 主备实例切换过程中可能会有闪断，请确保您的应用程序具有自动重连机制。 如果实例下挂载有只读实例，那么主备实例切换后，只读实例的数据同步会有几分钟的延迟，因为需要重建复制链路、同步增量数据等。
 
 **请求参数**
 
@@ -6198,13 +6169,13 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceHA &DBInstanceId=rm-uf6wjk5xxx
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &HAConfig=Manual &ManualHATime=2019-08-28T15:00:00
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyHASwitchConfigResponse>
@@ -6212,13 +6183,13 @@ http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DB
 </ModifyHASwitchConfigResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "B6AE1448-D846-4831-B1C7-CFF3E99D5470"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -6227,9 +6198,9 @@ http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DB
 | 400 | HaConfig.Format | The value of HaConfig must be auto or manual | 主备自动切换值必须配置为自动或手动。 |
 | 400 | HaConfigIsNull | HaConfig is null. | 主备自动切换参数值为null。 |
 
-### 安全加密
+### 2.10 安全加密
 
-#### 查询IP白名单
+#### 2.10.1 查询IP白名单
 
 调用DescribeDBInstanceIPArrayList接口查询RDS实例IP白名单。
 
@@ -6240,8 +6211,6 @@ http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DB
 | Action | String | 是 | DescribeDBInsta nceIPArrayList | 系统规定参数，取值：DescribeDBInstanceIPArrayLi st。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 
-云数据库RDS
-
 | WhitelistNetwork Type | String | 否 | VPC | 白名单的网络类型，取值： Classic：高安全白名单模式下的经典网络 VPC：高安全白名单模式下的专有网络 MIX：通用白名单模式默认返回所有网络类型的白名单IP。 |
 |---|---|---|---|---|
 
@@ -6249,8 +6218,8 @@ http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DB
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of DBInstanceIPA rray |  | IP白名单分组列表。 |
-| DBInstanceIPA rray |  |  |  |
+| Items | Array of DBInstanceIPA rray |   | IP白名单分组列表。 |
+| DBInstanceIPA rray |   |   |   |
 | DBInstanceIPA rrayName | String | rds default _ | IP白名单分组名称。 |
 | DBInstanceIPA rrayAttribute | String | hidden | 白名单分组属性，默认为空。 说明控制台不显示带有hidden属性的分组，带有该标签的分组通常是用于访问DTS等服务的。 |
 | SecurityIPList | String | 192.168.1.0/24 | IP白名单分组下的IP列表。 |
@@ -6265,7 +6234,7 @@ http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DB
 http(s)://rds.example.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceIPArrayListResponse>
@@ -6282,34 +6251,36 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=rm
 </DescribeDBInstanceIPArrayListResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "Items": {
   "DBInstanceIPArray": [
-   {
+```
+
+`{`
+
+```json
     "DBInstanceIPArrayName": "rds_default",
     "DBInstanceIPArrayAttribute": "",
     "WhitelistNetworkType": "VPC",
     "SecurityIPList": "192.168.1.0/24",
     "SecurityIPType": "IPv4"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "RequestId": "E2B6AF71-DC32-4055-B477-43B348798D10"
-}
 ```
 
-#### 修改IP白名单
+`}`
 
-调用ModifySecurityIps接口修改RDS实例IP白名单。 添加IP地址到IP白名单内，允许这些IP地址访问该RDS实例。 调用该接口时，实例状态必须为运行中，否则将操作失败。
+#### 2.10.2 修改IP白名单
 
-**说明**
+调用ModifySecurityIps接口修改RDS实例IP白名单。 添加IP地址到IP白名单内，允许这些IP地址访问该RDS实例。
+
+> **说明：** 调用该接口时，实例状态必须为运行中，否则将操作失败。
 
 **请求参数**
 
@@ -6317,8 +6288,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=rm
 |---|---|---|---|---|
 | Action | String | 是 | ModifySecurityIp s | 系统规定参数，取值：ModifySecurityIps。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
-
-云数据库RDS
 
 | SecurityIps | String | 是 | 10.23.12.24 | 该实例的IP白名单，多个IP地址请以英文逗号（,）隔开，不可重复。支持IPv4和 IPv6两种格式的IP地址，并且支持如下两种形式： IP地址形式，例如：10.23.12.24。 CIDR形式，例如：10.23.12.0/24（无类域间路由，24表示了地址中前缀的长度，范围为1~32）。 说明每个实例最多添加 1000个IP或IP段，即所有IP白名单分组内的IP或IP段总和不能超过1000。 当IP较多时，建议合并为IP段填入， 例如10.23.12.0/24。 |
 |---|---|---|---|---|
@@ -6333,8 +6302,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=rm
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库RDS
-
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | 请求ID。 |
 |---|---|---|---|
 | TaskId | String | 115855279 | 任务ID。 |
@@ -6347,7 +6314,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=rm
 http(s)://rds.example.com/?Action=ModifySecurityIps &DBInstanceId=rm-uf6wjk5xxxxxxx &SecurityIps=10.23.12.24
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifySecurityIpsResponse>
@@ -6356,16 +6323,16 @@ http(s)://rds.example.com/?Action=ModifySecurityIps &DBInstanceId=rm-uf6wjk5xxxx
 </ModifySecurityIpsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": " 1AD222E9-E606-4A42-BF6D-8A4442913CEF",
     "TaskId": 115855279
-}
 ```
 
-#### 查询云盘加密状态及密钥详情
+`}`
+
+#### 2.10.3 查询云盘加密状态及密钥详情
 
 调用DescribeDBInstanceEncryptionKey查询RDS实例是否开启了云盘加密，以及密钥详情。 本接口支持MySQL、SQL Server、PostgreSQL实例。
 
@@ -6376,8 +6343,6 @@ http(s)://rds.example.com/?Action=ModifySecurityIps &DBInstanceId=rm-uf6wjk5xxxx
 | Action | String | 是 | DescribeDBInsta nceEncryptionKe y | 系统规定参数，取值：DescribeDBInstanceEncryptio nKey。 |
 | DBInstanceId | String | 否 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances接口获取。 |
 | EncryptionKey | String | 否 | 749c1df7-xxxx- xxxx-xxxx- xxxxxxxxxxxx | 自定义密钥ID。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -6401,7 +6366,7 @@ http(s)://rds.example.com/?Action=ModifySecurityIps &DBInstanceId=rm-uf6wjk5xxxx
 http(s)://rds.example.com/?Action=DescribeDBInstanceEncryptionKey &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceEncryptionKeyResponse>
@@ -6417,10 +6382,9 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceEncryptionKey &DBInstanceId=
 </DescribeDBInstanceEncryptionKeyResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "Origin": "Aliyun_KMS",
     "Description": "Description of the key",
     "EncryptionKeyStatus": "Enabled",
@@ -6430,10 +6394,11 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceEncryptionKey &DBInstanceId=
     "EncryptionKey": "5306d1b6-7fd3-42d9-9511-xxxxxxx",
     "Creator": "1443*****9604",
     "DeleteDate": "2022-05-08T08:14:16Z"
-}
 ```
 
-#### 设置分布式事务白名单
+`}`
+
+#### 2.10.4 设置分布式事务白名单
 
 调用ModifyDTCSecurityIpHostsForSQLServer接口设置分布式事务白名单。 分布式事务白名单可以让ECS实例和RDS实例之间支持分布式事务。 仅适用于RDS SQL Server高可用系列（2012标准版、2012企业版、2014标准版、2016标准版、2016 企业版、2017标准版）。
 
@@ -6444,8 +6409,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceEncryptionKey &DBInstanceId=
 | Action | String | 是 | ModifyDTCSecur ityIpHostsForSQ LServer | 系统规定参数，取值：ModifyDTCSecurityIpHostsFor SQLServer。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5******** | RDS实例ID。 |
 | SecurityIpHosts | String | 是 | 192.168.1.100,k 3ecstest | ECS实例的IP地址和Windows系统的计算机名。格式：ip,hostname。多个实例之间以英文分号（;）隔开。 |
-
-云数据库RDS
 
 | WhiteListGroupN ame | String | 是 | test1 | 白名单分组名称。 |
 |---|---|---|---|---|
@@ -6467,7 +6430,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceEncryptionKey &DBInstanceId=
 http(s)://rds.example.com/?Action=ModifyDTCSecurityIpHostsForSQLServer &DBInstanceId=rm-uf6wjk5******** &SecurityIpHosts=192.168.1.100,k3ecstest &WhiteListGroupName=test1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDTCSecurityIpHostsForSQLServerResponse>
@@ -6478,20 +6441,16 @@ http(s)://rds.example.com/?Action=ModifyDTCSecurityIpHostsForSQLServer &DBInstan
 </ModifyDTCSecurityIpHostsForSQLServerResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "671B6D32-B907-4EFF-A3B7-94D2EAD5E3A3",
  "DBInstanceId": "rm-uf6wjk5********",
  "DTCSetResult": "Success",
  "TaskId": "17896****"
-}
 ```
 
-云数据库RDS
-
-#### 查询分布式事务白名单
+#### 2.10.5 查询分布式事务白名单
 
 调用DescribeDTCSecurityIpHostsForSQLServer接口查询RDS实例的分布式事务白名单信息。 仅适用于RDS SQL Server高可用系列（2012标准版、2012企业版、2014标准版、2016标准版、2016 企业版、2017标准版）。
 
@@ -6508,21 +6467,19 @@ http(s)://rds.example.com/?Action=ModifyDTCSecurityIpHostsForSQLServer &DBInstan
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5******** | 实例ID。 |
 | IpHostPairNum | String | 1 | 分布式事务白名单条目数。 |
-| Items | Array of WhiteListGrou ps |  | 分布式事务白名单分组列表。 |
-| WhiteListGrou ps |  |  |  |
+| Items | Array of WhiteListGrou ps |   | 分布式事务白名单分组列表。 |
+| WhiteListGrou ps |   |   |   |
 | SecurityIpHost s | String | 192.168.1.100,k3e cstest | ECS实例的IP地址和Windows系统的计算机名。 格式：ip,hostname。多个实例之间以英文分号 （;）隔开。 |
 | WhitelistGroup Name | String | test1 | 分布式事务白名单分组名称。 |
 | RequestId | String | 2CA62A70-2203- 45C6-8E90- 8971D5ACC0C2 | 请求ID。 |
 
-**示例**
-
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=DescribeDTCSecurityIpHostsForSQLServer &DBInstanceId=rm-uf6wjk5********
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDTCSecurityIpHostsForSQLServerResponse>
@@ -6537,34 +6494,34 @@ http(s)://rds.example.com/?Action=DescribeDTCSecurityIpHostsForSQLServer &DBInst
 </DescribeDTCSecurityIpHostsForSQLServerResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "Items": {
   "WhiteListGroups": [
-   {
-    "WhitelistGroupName": "test1",
-    "SecurityIpHosts": "192.168.1.100,k3ecstest"
-   }
 ```
 
-]
+`{`
 
 ```json
- },
- "IpHostPairNum": 1,
- "RequestId": "2CA62A70-2203-45C6-8E90-8971D5ACC0C2"
-}
+    "WhitelistGroupName": "test1",
+    "SecurityIpHosts": "192.168.1.100,k3ecstest"
 ```
 
-#### 查询SSL设置
+`}` `]` `},`
 
-调用DescribeDBInstanceSSL接口查询实例SSL设置。 该接口支持MySQL 5.6、MySQL 5.7高可用本地盘、MySQL 8.0高可用本地盘、SQL
+```json
+ "IpHostPairNum": 1,
+ "RequestId": "2CA62A70-2203-45C6-8E90-8971D5ACC0C2"
+```
 
-**说明**
+`}`
 
-Server所有版本和PostgreSQL云盘版本。
+#### 2.10.6 查询SSL设置
+
+调用DescribeDBInstanceSSL接口查询实例SSL设置。
+
+> **说明：** 该接口支持MySQL 5.6、MySQL 5.7高可用本地盘、MySQL 8.0高可用本地盘、SQL Server所有版本和PostgreSQL云盘版本。
 
 **请求参数**
 
@@ -6572,8 +6529,6 @@ Server所有版本和PostgreSQL云盘版本。
 |---|---|---|---|---|
 | Action | String | 是 | DescribeDBInsta nceSSL | 系统规定参数，取值：DescribeDBInstanceSSL。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
-
-云数据库RDS
 
 **返回数据**
 
@@ -6593,13 +6548,13 @@ Server所有版本和PostgreSQL云盘版本。
 http(s)://rds.example.com/?Action=DescribeDBInstanceSSL &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ClientCertRevocationList>-----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL-----</ ClientCertRevocationList> <RequestId>1AD222E9-E606-4A42-BF6D-8A4442913CEF</RequestId> <RequireUpdateItem>-</RequireUpdateItem> <CAType>aliyun</CAType> <LastModifyStatus>setting</LastModifyStatus> <ACL>cert</ACL> <RequireUpdate>Yes</RequireUpdate> <ModifyStatusReason>Modify DB Instance SSL Config.</ModifyStatusReason> <ClientCACertExpireTime>-</ClientCACertExpireTime> <ServerKey>-----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----</ServerKey
 ```
 
->
+`>`
 
 ```xml
 <SSLExpireTime>2022-05-08T08:14:16Z</SSLExpireTime> <SSLCreateTime>-</SSLCreateTime> <ServerCert>-----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----</ServerCer
@@ -6611,10 +6566,9 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceSSL &DBInstanceId=rm-uf6wjk5
 <SSLEnabled>on</SSLEnabled> <ClientCACert>-----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----</Client CACert> <ReplicationACL>cert</ReplicationACL> <RequireUpdateReason>-</RequireUpdateReason> <ConnectionString>rm-uf6wjk5xxxxxx.mysql.rds.aliyuncs.com</ConnectionString> <ServerCAUrl>-</ServerCAUrl>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ClientCertRevocationList": "-----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL
 -----",
     "RequestId": "1AD222E9-E606-4A42-BF6D-8A4442913CEF",
@@ -6633,23 +6587,23 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceSSL &DBInstanceId=rm-uf6wjk5
     "ClientCACert": "-----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----"
 ```
 
-,
+`,`
 
 ```json
     "ReplicationACL": "cert",
     "RequireUpdateReason": "-",
     "ConnectionString": "rm-uf6wjk5xxxxxx.mysql.rds.aliyuncs.com",
     "ServerCAUrl": "-"
-}
 ```
 
-#### 修改SSL设置
+`}`
 
-云数据库RDS 调用ModifyDBInstanceSSL接口修改实例SSL链路。 该接口用于为实例设置SSL（Secure Sockets Layer）加密。
+#### 2.10.7 修改SSL设置
 
-**说明**
+调用ModifyDBInstanceSSL接口修改实例SSL链路。 该接口用于为实例设置SSL（Secure Sockets Layer）加密。
 
-支持MySQL 5.6、MySQL 5.7高可用本地盘版、8.0高可用本地盘版、SQL Server所有版本和 PostgreSQL云盘版本。 读写分离地址不支持SSL加密。
+> **说明：** 支持MySQL 5.6、MySQL 5.7高可用本地盘版、8.0高可用本地盘版、SQL Server所有版本和 PostgreSQL云盘版本。
+> 读写分离地址不支持SSL加密。
 
 **请求参数**
 
@@ -6674,21 +6628,19 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceSSL &DBInstanceId=rm-uf6wjk5
 http(s)://rds.example.com/?Action=ModifyDBInstanceSSL &ConnectionString=rm-uf6wjk5xxxxx.mysql.rds.aliyuncs.com &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>777C4593-8053-427B-99E2-105593277CAB</RequestId>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "777C4593-8053-427B-99E2-105593277CAB"
-}
 ```
 
-#### 开启TDE
+#### 2.10.8 开启TDE
 
 调用ModifyDBInstanceTDE接口开启RDS实例透明数据加密功能。 透明数据加密TDE可对数据文件执行实时I/O加密和解密，数据在写入磁盘之前进行加密，从磁盘读入内存时进行解密。 调用该接口时，实例必须满足以下条件，否则将操作失败： 已开通KMS。如果您未开通KMS，可在开通TDE过程中根据引导开通KMS。 实例类型为： MySQL 5.6 MySQL 5.7高可用版（本地SSD盘） SQL Server 2019标准版或SQL Server企业版
 
@@ -6701,8 +6653,6 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSSL &ConnectionString=rm-uf6wj
 | TDEStatus | String | 是 | Enabled | TDE状态，取值： Enabled Disabled |
 | DBName | String | 否 | testDB | 想要开启TDE的数据库名称，可以一次输入多个，以英文逗号（,）分隔，最多传入 50个。 说明此参数仅SQL Server 2019标准版和SQL Server企业版实例可用（必传）。 |
 | EncryptionKey | String | 否 | 749c1df7-****- ****-****-**** | 自定义密钥ID。 说明仅MySQL实例可以传入此参数。 |
-
-云数据库RDS
 
 | RoleArn | String | 否 | acs:ram::14069 26****:role/aliyu nrdsinstanceenc ryptiondefaultrol e | 角色的全局资源描述符，用来指定具体角色。 说明仅MySQL实例可以传入此参数。 |
 |---|---|---|---|---|
@@ -6722,7 +6672,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSSL &ConnectionString=rm-uf6wj
 http(s)://rds.example.com/?Action=ModifyDBInstanceTDE &DBInstanceId=rm-uf6wjk5**** &TDEStatus=Enabled
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceTDEResponse>
@@ -6730,21 +6680,20 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceTDE &DBInstanceId=rm-uf6wjk5**
 </ModifyDBInstanceTDEResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "ModifyDBInstanceTDEResponse": {
         "RequestId": "777C4593-8053-427B-99E2-105593277CAB"
-    }
-}
 ```
 
-#### 查询TDE设置
+`}` `}`
 
-调用DescribeDBInstanceTDE接口查询实例数据加密状态。 该接口用于查看实例的透明数据加密TDE（Transparent Data Encryption）配置。 云数据库RDS 该接口只支持MySQL 5.6、SQL Server 2019标准版和SQL Server企业版实例。
+#### 2.10.9 查询TDE设置
 
-**说明**
+调用DescribeDBInstanceTDE接口查询实例数据加密状态。 该接口用于查看实例的透明数据加密TDE（Transparent Data Encryption）配置。
+
+> **说明：** 该接口只支持MySQL 5.6、SQL Server 2019标准版和SQL Server企业版实例。
 
 **请求参数**
 
@@ -6758,8 +6707,8 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceTDE &DBInstanceId=rm-uf6wjk5**
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | TDEStatus | String | Enabled | 实例级别的TDE状态，取值：Enabled \| Disabled |
-| Databases | Array of Database |  | 数据库级别的TDE状态列表。 说明对于SQL Server 2019标准版和SQL Server企业版实例，可以在实例级别的TDE开启时，控制数据库级别的TDE 开启或关闭。 |
-| Database |  |  |  |
+| Databases | Array of Database |   | 数据库级别的TDE状态列表。 说明对于SQL Server 2019标准版和SQL Server企业版实例，可以在实例级别的TDE开启时，控制数据库级别的TDE 开启或关闭。 |
+| Database |   |   |   |
 | DBName | String | test02 | 数据库名称。 |
 | TDEStatus | String | Enabled | 数据库级别的TDE状态，取值：Enabled \| Disabled |
 | EncryptAlgorit hm | String | AES 256 CBC _ _ | TDE的加密方式。返回值： SM4：通过国密方式加密。 AES 256 CBC：通过AES256的CBC模式 _ _ 加密。 |
@@ -6773,7 +6722,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceTDE &DBInstanceId=rm-uf6wjk5**
 http(s)://rds.example.com/?Action=DescribeDBInstanceTDE &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceTDEResponse>
@@ -6786,28 +6735,31 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceTDE &DBInstanceId=rm-uf6wjk5
 </DescribeDBInstanceTDEResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "TDEStatus": "Enabled",
     "Databases": [
-        {
-            "DBName": "test02",
-            "TDEStatus": "Enabled"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "DBName": "test02",
+            "TDEStatus": "Enabled"
+```
+
+`}` `],`
 
 ```json
     "requestId": "C816A4BF-A6EC-4722-95F9-2055859CCFD2"
-}
 ```
 
-### 监控管理
+`}`
 
-#### 查询空间使用信息
+### 2.11 监控管理
+
+#### 2.11.1 查询空间使用信息
 
 调用DescribeResourceUsage接口查询RDS实例的空间使用信息。
 
@@ -6823,8 +6775,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceTDE &DBInstanceId=rm-uf6wjk5
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-云数据库RDS
 
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
 |---|---|---|---|
@@ -6847,7 +6797,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceTDE &DBInstanceId=rm-uf6wjk5
 http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeResourceUsageResponse>
@@ -6869,10 +6819,9 @@ http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5
 </DescribeResourceUsageResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "PaidBackupSize": 0,
  "RequestId": "28E73580-103C-4925-A48D-9A7E25F24297",
  "BackupSize": 51305057407,
@@ -6888,12 +6837,13 @@ http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5
  "SQLSize": 446228522,
  "DiskUsed": 3200253952,
  "Engine": "MySQL"
-}
 ```
 
-#### 查询性能数据
+`}`
 
-调用DescribeDBInstancePerformance接口查询实例性能数据。 根据性能参数查询某个实例、某时间段范围内的性能监控数据。根据版本、监控频率 （ModifyDBInstanceMonitor）和查询时间范围的不同，有如下几种输出形式： MySQL： 监控频率为5秒： 查询时间范围大于7天，数据粒度为1天； 查询时间范围大于1天，小于等于7天，数据粒度为1小时； 查询时间范围大于等于1小时，小于等于1天，数据粒度为1分钟； 查询时间范围小于1小时，数据粒度为5秒。 云数据库RDS 监控频率为60秒： 查询范围大于30天，数据粒度为1天； 查询范围大于7天小于等于30天，数据粒度为1小时； 查询范围小于等于7天，数据粒度为1分钟。 监控频率为300秒： 查询范围大于30天，数据粒度为1天； 查询范围大于7天小于等于30天，数据粒度为1小时； 查询范围小于等于7天，数据粒度为5分钟。 PostgreSQL本地盘和云盘版： 查询范围小于等于1小时，数据粒度为5秒； 查询范围小于等于2小时，数据粒度为10秒； 查询范围小于等于6小时，数据粒度为30秒； 查询范围小于等于12小时，数据粒度为1分钟； 查询范围小于等于1天，数据粒度为2分钟； 查询范围小于等于5天，数据粒度为10分钟； 查询范围小于等于15天，数据粒度为30分钟； 查询范围小于等于30天，数据粒度为1小时； 查询范围大于30天，数据粒度为1天。
+#### 2.11.2 查询性能数据
+
+调用DescribeDBInstancePerformance接口查询实例性能数据。 根据性能参数查询某个实例、某时间段范围内的性能监控数据。根据版本、监控频率 （ModifyDBInstanceMonitor）和查询时间范围的不同，有如下几种输出形式： MySQL： 监控频率为5秒： 查询时间范围大于7天，数据粒度为1天； 查询时间范围大于1天，小于等于7天，数据粒度为1小时； 查询时间范围大于等于1小时，小于等于1天，数据粒度为1分钟； 查询时间范围小于1小时，数据粒度为5秒。 监控频率为60秒： 查询范围大于30天，数据粒度为1天； 查询范围大于7天小于等于30天，数据粒度为1小时； 查询范围小于等于7天，数据粒度为1分钟。 监控频率为300秒： 查询范围大于30天，数据粒度为1天； 查询范围大于7天小于等于30天，数据粒度为1小时； 查询范围小于等于7天，数据粒度为5分钟。 PostgreSQL本地盘和云盘版： 查询范围小于等于1小时，数据粒度为5秒； 查询范围小于等于2小时，数据粒度为10秒； 查询范围小于等于6小时，数据粒度为30秒； 查询范围小于等于12小时，数据粒度为1分钟； 查询范围小于等于1天，数据粒度为2分钟； 查询范围小于等于5天，数据粒度为10分钟； 查询范围小于等于15天，数据粒度为30分钟； 查询范围小于等于30天，数据粒度为1小时； 查询范围大于30天，数据粒度为1天。
 
 **请求参数**
 
@@ -6903,8 +6853,6 @@ http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances获取。 |
 | Key | String | 是 | MySQL Sessions _ | 想要查询的性能指标，多个值用英文逗号 （,）分隔，详细参数请参见本手册的性能参数表。 说明 Key为MySQL SpaceUsage或S _ QLServer SpaceUsage时，仅 _ 支持查询1天内的监控数据。 |
 | StartTime | String | 是 | 2012-06- 08T15:00Z | 查询开始时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 说明开始和结束时间间隔需要大于您实例的监控频率，否则可能返回空列表。 |
-
-云数据库RDS
 
 | EndTime | String | 是 | 2012-06- 18T15:00Z | 查询结束时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 说明开始和结束时间间隔需要大于您实例的监控频率，否则可能返回空列表。 |
 |---|---|---|---|---|
@@ -6917,16 +6865,14 @@ http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5
 | Engine | String | MySQL | 数据库类型。 |
 | StartTime | String | 2012-06- 10T15:00Z | 查询开始时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 | EndTime | String | 2012-06- 19T15:00Z | 查询结束时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
-| PerformanceK eys | Array of PerformanceK ey |  | 实例性能参数列表。 |
-| PerformanceK ey |  |  |  |
+| PerformanceK eys | Array of PerformanceK ey |   | 实例性能参数列表。 |
+| PerformanceK ey |   |   |   |
 | Key | String | MySQL Sessions _ | 性能参数。 |
 | Unit | String | KB | 数据单位。 |
 | ValueFormat | String | recv k&sent k _ _ | 性能值的格式。如果性能值由多个参数构成， 以“&amp;”分隔，例如 com delete&amp;com insert&amp;com in _ _ _ sert select&amp;com replace。 _ _ |
-| Values | Array of PerformanceV alue |  | 数组格式：{value1, value2, …}。 |
-| PerformanceV alue |  |  |  |
+| Values | Array of PerformanceV alue |   | 数组格式：{value1, value2, …}。 |
+| PerformanceV alue |   |   |   |
 | Value | String | 0.0&13.6 | 性能值。 |
-
-云数据库RDS
 
 | Date | String | 2011-05- 30T03:29:00Z | 记录日期。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 |---|---|---|---|
@@ -6940,7 +6886,7 @@ http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5
 http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= rm-uf6wjk5xxxxxxx &Key=MySQL_Sessions &StartTime=2012-06-08T15:00Z &EndTime=2012-06-18T15:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstancePerformanceResponse>
@@ -6960,10 +6906,9 @@ http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= r
 </DescribeDBInstancePerformanceResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "A5409D02-D661-4BF3-8F3D-0A814D0574E7",
     "DBInstanceID": " rm-uf6wjk5xxxxxxx",
     "StartTime": "2012-06-11T15:00Z",
@@ -6971,28 +6916,25 @@ http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= r
     "Engine": "MySQL",
     "PerformanceKeys": {
         "PerformanceKey": [
-            {
+```
+
+`{`
+
+```json
                 "Key": "MySQL_NetworkTraffic",
                 "Unit": "KB",
                 "ValueFormat": "recv_k&sent_k",
                 "Values": {
                     "PerformanceValue": []
-                }
-            }
 ```
 
-]
+`}` `}` `]` `}` `}`
 
-```
-    }
-}
-```
+#### 2.11.3 查询监控频率
 
-#### 查询监控频率
+调用DescribeDBInstanceMonitor接口查询监控频率。
 
-该接口不适用于PostgreSQL，PostgreSQL根据查询时间范围自适应时间粒度。
-
-**说明**
+> **说明：** 该接口不适用于PostgreSQL，PostgreSQL根据查询时间范围自适应时间粒度。
 
 **请求参数**
 
@@ -7008,8 +6950,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= r
 |---|---|---|---|
 | Period | String | 60 | 监控的采集数据间隔，单位：秒。 |
 
-云数据库RDS
-
 | RequestId | String | 30829FD4-1A84- 4C2A-A625- 2EADECB95CA3 | 请求ID。 |
 |---|---|---|---|
 
@@ -7021,7 +6961,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= r
 http(s)://rds.example.com/?Action=DescribeDBInstanceMonitor &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstanceMonitorResponse>
@@ -7030,20 +6970,20 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceMonitor &DBInstanceId=rm-uf6
 </DescribeDBInstanceMonitorResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "period": "60",
     "requestId": "30829FD4-1A84-4C2A-A625-2EADECB95CA3"
-}
 ```
 
-#### 修改监控频率
+`}`
 
-阿里云对不同实例提供不同的监控频率，详情请参见**云数据库****RDS** > **用户指南**中的**设置监控频率**。 该接口不适用于PostgreSQL，PostgreSQL根据查询时间范围自适应时间粒度。
+#### 2.11.4 修改监控频率
 
-**说明**
+调用ModifyDBInstanceMonitor接口修改监控频率。 阿里云对不同实例提供不同的监控频率，详情请参见**云数据库****RDS** > **用户指南**中的**设置监控频率**。
+
+> **说明：** 该接口不适用于PostgreSQL，PostgreSQL根据查询时间范围自适应时间粒度。
 
 **请求参数**
 
@@ -7051,8 +6991,6 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceMonitor &DBInstanceId=rm-uf6
 |---|---|---|---|---|
 | Action | String | 是 | ModifyDBInstanc eMonitor | 系统规定参数，取值：ModifyDBInstanceMonitor。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可调用DescribeDBInstances获取。 |
-
-云数据库RDS
 
 | Period | String | 是 | 60 | 监控的采集间隔，取值： 5 10 60 300 单位：秒。 |
 |---|---|---|---|---|
@@ -7072,7 +7010,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceMonitor &DBInstanceId=rm-uf6
 http(s)://rds.example.com/?Action=ModifyDBInstanceMonitor &DBInstanceId=rm-uf6wjk5xxxxxxx &Period=60
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyDBInstanceMonitorResponse>
@@ -7080,13 +7018,13 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMonitor &DBInstanceId=rm-uf6wj
 </ModifyDBInstanceMonitorResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "52B9805C-432C-4ED1-83FD-2F916B6D2733"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -7094,13 +7032,11 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMonitor &DBInstanceId=rm-uf6wj
 |---|---|---|---|
 | 404 | InvalidDBInstanceI d.NotFound | The DBInstanceId provided does not exist in our records. | 指定的实例不存在，请检查该实例是否存在，未被删除。 |
 
-云数据库RDS
+### 2.12 参数管理
 
-### 参数管理
+#### 2.12.1 查询参数配置
 
-#### 查询参数配置
-
-调用DescribeParameters接口查询实例当前的参数配置。 该接口适用的实例如下： MySQL PostgreSQL PolarDB
+调用DescribeParameters接口查询实例当前的参数配置。 该接口适用的实例如下： MySQL SQL Server PostgreSQL PolarDB
 
 **请求参数**
 
@@ -7116,17 +7052,15 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMonitor &DBInstanceId=rm-uf6wj
 |---|---|---|---|
 | Engine | String | MySQL | 数据库类型。 |
 | EngineVersion | String | 5.7 | 数据库版本号。 |
-| RunningParam eters | Array of DBInstancePar ameter |  | 当前运行的参数列表。 |
-| DBInstancePar ameter |  |  |  |
+| RunningParam eters | Array of DBInstancePar ameter |   | 当前运行的参数列表。 |
+| DBInstancePar ameter |   |   |   |
 | ParameterNa me | String | fill factor | 参数名称。 |
 | ParameterValu e | String | 0 | 参数值。 |
 
-云数据库RDS
-
 | ParameterDes cription | String | 此选项设置服务器范围内的默认填充因子值。提供填充因子是为了优化索引数据存储和性能。 | 参数描述。 |
 |---|---|---|---|
-| ConfigParamet ers | Array of DBInstancePar ameter |  | 正在同步的参数列表。修改并提交参数后，需要等待实例同步参数，同步结束后从此列表删除。 |
-| DBInstancePar ameter |  |  |  |
+| ConfigParamet ers | Array of DBInstancePar ameter |   | 正在同步的参数列表。修改并提交参数后，需要等待实例同步参数，同步结束后从此列表删除。 |
+| DBInstancePar ameter |   |   |   |
 | ParameterNa me | String | fill factor | 参数名称。 |
 | ParameterValu e | String | 50 | 参数值。 |
 | ParameterDes cription | String | 此选项设置服务器范围内的默认填充因子值。提供填充因子是为了优化索引数据存储和性能。 | 参数描述。 |
@@ -7140,7 +7074,7 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMonitor &DBInstanceId=rm-uf6wj
 http(s)://rds.example.com/?Action=DescribeParameters &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeParametersResponse>
@@ -7172,55 +7106,49 @@ http(s)://rds.example.com/?Action=DescribeParameters &DBInstanceId=rm-uf6wjk5xxx
 </DescribeParametersResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "ConfigParameters": {
       "DBInstanceParameter": [
-          {
 ```
 
-`"ParameterDescription": "`此选项设置服务器范围内的默认填充因子值。提供填充因子是为了优化索引数据存储和性能。`",`
+`{` `"ParameterDescription": "`此选项设置服务器范围内的默认填充因子值。提供填充因子是为了优化索引数据存储和性能。`",`
 
 ```json
               "ParameterName": "fill factor",
               "ParameterValue": "50"
-          }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Engine": "mysql",
   "EngineVersion": "5.7",
   "RunningParameters": {
       "DBInstanceParameter": [
-          {
 ```
 
-`"ParameterDescription": "`此选项设置服务器范围内的默认填充因子值。提供填充因子是为了优化索引数据存储和性能。`",`
+`{` `"ParameterDescription": "`此选项设置服务器范围内的默认填充因子值。提供填充因子是为了优化索引数据存储和性能。`",`
 
 ```json
               "ParameterName": "fill factor",
               "ParameterValue": "0"
-          }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "RequestId": "2A748162-8040-4D6B-813E-6910C8C033F1"
-}
 ```
 
-#### 修改实例参数
+`}`
 
-云数据库RDS 调用ModifyParameter接口修改RDS实例参数。 您可以直接修改RDS实例的参数值，也可以通过参数模板修改。提交修改请求后，RDS将下发任务，将新修改的参数应用到实例，如果所提交的参数中有需要重启数据库的，RDS将重启数据库。 RDS会在执行任务前检查参数是否存在、是否可修改以及是否合法。
+#### 2.12.2 修改实例参数
 
-**说明**
+调用ModifyParameter接口修改RDS实例参数。 您可以直接修改RDS实例的参数值，也可以通过参数模板修改。提交修改请求后，RDS将下发任务，将新修改的参数应用到实例，如果所提交的参数中有需要重启数据库的，RDS将重启数据库。
+
+> **说明：** RDS会在执行任务前检查参数是否存在、是否可修改以及是否合法。
 
 **请求参数**
 
@@ -7238,8 +7166,6 @@ http(s)://rds.example.com/?Action=DescribeParameters &DBInstanceId=rm-uf6wjk5xxx
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-云数据库RDS
-
 | RequestId | String | 542BB8D6-4268- 45CC-A557- B03EFD7AB30A | 请求ID。 |
 |---|---|---|---|
 
@@ -7251,7 +7177,7 @@ http(s)://rds.example.com/?Action=DescribeParameters &DBInstanceId=rm-uf6wjk5xxx
 http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxxx &Parameters={"delayed_insert_timeout":"600","max_length_for_sort_data":"2048"}
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifyParameterResponse>
@@ -7259,15 +7185,15 @@ http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxx
 </ModifyParameterResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
        "RequestId":"542BB8D6-4268-45CC-A557-B03EFD7AB30A"
-}
 ```
 
-#### 查询参数修改日志
+`}`
+
+#### 2.12.3 查询参数修改日志
 
 调用DescribeModifyParameterLog接口查询RDS实例的参数修改日志。
 
@@ -7280,8 +7206,6 @@ http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxx
 | StartTime | String | 是 | 2020-03- 01T00:00Z | 查询开始时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 | EndTime | String | 是 | 2020-03- 01T10:00Z | 查询结束时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 
-云数据库RDS
-
 | PageSize | Integer | 否 | 30 | 每页记录数。取值： 30 50 100 默认值：30。 |
 |---|---|---|---|---|
 | PageNumber | Integer | 否 | 1 | 页码，取值：大于0且不超过Integer的最大值。 默认值：1。 |
@@ -7293,8 +7217,8 @@ http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxx
 | DBInstanceId | String | rm-uf6wjk5xxxxx | 实例ID。 |
 | Engine | String | mysql | 数据库类型。 |
 | EngineVersion | String | 5.6 | 数据库版本。 |
-| Items | Array of ParameterCha ngeLog |  | 日志记录列表。 |
-| ParameterCha ngeLog |  |  |  |
+| Items | Array of ParameterCha ngeLog |   | 日志记录列表。 |
+| ParameterCha ngeLog |   |   |   |
 | ModifyTime | String | 1584076066000 | 修改参数的Unix时间戳。单位：毫秒。 |
 | NewParameter Value | String | 3 | 修改后参数值。 |
 | OldParameter Value | String | 8 | 修改前参数值。 |
@@ -7302,8 +7226,6 @@ http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxx
 | Status | String | Syncing | 状态。取值： Applied：已生效。 Syncing：正在应用，尚未生效。 |
 | PageNumber | Integer | 1 | 页数。 |
 | PageRecordCo unt | Integer | 1 | 每页记录数。 |
-
-云数据库RDS
 
 | RequestId | String | C8E88DED-533F- 4B3C-9207- 731FBF394CCA | 请求ID。 |
 |---|---|---|---|
@@ -7317,7 +7239,7 @@ http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxx
 http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf6wjk5xxxxx &StartTime=2020-03-01T00:00Z &EndTime=2020-03-01T10:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeModifyParameterLogResponse>
@@ -7340,7 +7262,7 @@ http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf
 </DescribeModifyParameterLogResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式
 
 ```json
 {"EngineVersion":"5.6",
@@ -7357,12 +7279,15 @@ http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf
         "NewParameterValue":"3",
         "OldParameterValue":"8",
         "ParameterName":"innodb_stats_sample_pages"}]}
-   }
 ```
 
-### 日志管理
+`}`
 
-#### 查询慢日志统计
+### 2.13 日志管理
+
+#### 2.13.1 查询慢日志统计
+
+调用DescribeSlowLogs查询慢日志统计情况。
 
 **注意事项**
 
@@ -7380,8 +7305,6 @@ http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf
 | DBInstanc eId | Strin g | Query | 是 | REDLINE LOG STATISTIC _ _ S-rm-uf6wjk5**** | 实例ID。可调用 DescribeDBInstances获取。 |
 | StartTime | Strin g | Query | 是 | 2025-05-17T16:00:00Z | 查询开始时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
 | EndTime | Strin g | Query | 是 | 2025-05-18T16:00:00Z | 查询结束时间，需要大于查询开始时间，与查询开始时间间隔小于15天。格式： yyyy-MM- ddTHH:mmZ（UTC时间）。 |
-
-云数据库RDS
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7402,7 +7325,7 @@ http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf
 | -SQLIdStr | String | None | 对应的是慢日志统计模板SQL的ID，现已废弃， 请使用SQLHASH 。 |
 | -DBName | String | testDB | 数据库名称。 |
 
-| 云数据库RDS |  |  | 开发指南·API参考 |
+| 云数据库RDS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7424,7 +7347,7 @@ http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf
 | - AvgExecutionT ime | Long | 1 | 执行时间（平均值），单位：秒。 |
 | RequestId | String | 08A3B71B-FE08- 4B03-974F- CC7EA6DB1828 | 请求ID。 |
 
-| 开发指南·API参考 |  |  | 云数据库RD |
+| 开发指南·API参考 |   |   | 云数据库RD |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | DBInstanceId | String | REDLINE LOG STA _ _ TISTICS-rm- uf6wjk5**** | 实例ID。 |
@@ -7443,10 +7366,15 @@ http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf
 http(s)://rds.example.com/?Action=DescribeSlowLogs &Action=DescribeSlowLogs &DBInstanceId=REDLINE_LOG_STATISTICS-rm-uf6wjk5**** &StartTime=2025-05-17T16:00Z &EndTime=2025-05-18T16:00Z
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式云数据库RDS
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalRecordCount":3,
  "PageRecordCount":30,
  "RequestId":"08A3B71B-FE08-4B03-974F-CC7EA6DB1828",
@@ -7455,7 +7383,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "PageNumber":1,
  "StartTime":"2025-05-17T16:00:00Z",
  "Items":[
-  {
+```
+
+`{`
+
+```json
    "MaxLockTime":0,
    "CreateTime":"2025-05-18T12:11:04Z",
    "SlowLogId":26584213,
@@ -7476,17 +7408,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "DBName":"testDB",
    "SQLId":1111,
    "MySQLTotalExecutionTimes":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Engine":"MySQL"
-}
 ```
 
-`XML` 格式云数据库RDS
+`}` `XML` 格式
 
 ```xml
 <TotalRecordCount>3</TotalRecordCount> <PageRecordCount>30</PageRecordCount> <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId> <EndTime>2025-05-18T16:00:00Z</EndTime> <DBInstanceId>REDLINE_LOG_STATISTICS-rm-uf6wjk5****</DBInstanceId> <PageNumber>1</PageNumber> <StartTime>2025-05-17T16:00:00Z</StartTime> <Items>
@@ -7524,7 +7454,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | IncorrectTaskStatu s | OperationDenied.IncorrectTask Status | The operation is not permitted due to status of import. |
 | 403 | IncorrectMigrationS tatus | OperationDenied.IncorrectMigr ationStatus | Migration status does not support this operation. |
 
-| 云数据库RDS |  |  | 开发指南·API参考 |
+| 云数据库RDS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7548,7 +7478,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | TOO MANY DOWN _ _ LOAD REQUEST T _ _ O OSS _ | TOO MANY DOWNLOAD REQU _ _ _ EST TO OSS _ _ | too many download request is made in 30 minutes, please wait pre request complete. |
 | 400 | IGNITE LOG CLUST _ _ ER DEACTIVATED _ | IGNITE LOG CLUSTER DEACTI _ _ _ VATED | backend app is upgrading, please try again later. |
 
-|  | 开发指南·API参 | 考 |  | 云数据库RD | S |
+|   | 开发指南·API参 | 考 |   | 云数据库RD | S |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7573,7 +7503,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | SecurityIPList.Dupli cate | OperationDenied.SecurityIPList Duplicate | The Specified same security IP already exists. |
 | 403 | BackupSetDeleteN otSupport | OperationDenied.BackupSetDe leteNotSupport | The Specified backup does not support this operation. |
 
-| 云数据库RDS |  |  | 开发指南·API参考 |
+| 云数据库RDS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
@@ -7595,7 +7525,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidAction | InvalidAction | Specified action is not valid. |
 | 400 | Abs.InvalidDBinsta nceNetType.ValueN otSupported | InvalidDBinstanceNetType.Val ueNotSupport | The specified parameter "DBinstanceNetType" is not valid. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7618,7 +7548,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | InvalidTargetDBInst anceName.Format | OperationDenied.DBInstanceId | The operation is not permitted due to DBInstanceId and SourceDBInstanceId is same. |
 | 400 | InvalidFileName.Fo rmat | InvalidFileName.Malformed | The specified parameter "FileName" is not valid. |
 
-| RDS |  |  | ·API |
+| RDS |   |   | ·API |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7643,7 +7573,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | VPC SYSTEM ERRO _ _ R | OperationDenied | VPC system error, please check params. |
 | 400 | VPC CLOUD INSTA _ _ NCEIP USED _ | InvalidPrivateIpAddress.Duplic ated | Specified private IP address is duplicated. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7664,8 +7594,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | MissingParameter | MissingParameter | The input parameters "DBInstanceClass" and "DBInstanceStorage" all blank or no change. |
 | 400 | LX RDS BIZ INSTA _ _ _ NCE UPGRADE ER _ _ ROR | MissingParameter | The input parameters "DBInstanceClass" and "DBInstanceStorage" all blank or no change. |
 | 400 | Abs.dbInstanceClas sOrdbInstanceStor age.MissParameter | MissingParameter | The input parameters "DBInstanceClass" and "DBInstanceStorage" all blank or no change. |
-
-云数据库RDS
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -7708,7 +7636,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | Tag.TagKeyCanNot BeAll | Tag.TagKeyCanNotBeAll | tag key can not be all. |
 | 400 | Tag.TagKeyDuplex | Tag.TagKeyDuplex | tag key must be sole in one operation. |
 
-|  | 云数据库RDS |  |  | 开发指南·API参考 |  |
+|   | 云数据库RDS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7733,8 +7661,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidOrderTask.N otSupport | InvalidOrderTask.NotSupport | The Current InstanceId exist Order Task in RDS. |
 | 400 | RenewChange.Exis t | RenewChange.Exist | The Current InstanceId exist renewChange order in RDS. |
 
-云数据库RDS
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | INVITATION CODE _ _ BIZ FAIL _ | InvalidEActionCode.CodeBizNo tSupported | The specified action code biz is not valid. |
@@ -7752,7 +7678,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ | FUWU BIZ COMMODITY VERIF _ _ _ Y FAIL _ | Oops, unable to complete your payment. The reason for this error may be due to one of the following: 1. Your bank account funds are insufficient. 2. Your account is not yet verified. 3. You have already exceeded the maximum limit of RDS instances. |
 | 400 | QUERY PRICE RES _ _ PONSE ERROR _ | QueryPriceResonse.Failed | query price response error. |
 
-|  | 云数据库RDS |  |  | 开发指南·API参考 |  |
+|   | 云数据库RDS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7774,8 +7700,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | MONEY LESSTHAN _ _ 100 | MoneyLessThan100 | The Account Monet less Than 100. |
 | 403 | InvalidOrderCharge .NotPay | InvalidOrderCharge.NotPay | The specified parameter OrderCharge is not pay. |
 
-云数据库RDS
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | Abs.MissingOwnerI dOrOwnerAccount | MissingParameter | The input parameter "OwnerId" or "OwnerAccount" that is mandatory for processing this request is not supplied. |
@@ -7794,8 +7718,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | Abs.backupSetStat us.ValueNotSuppor ted | InvalidBackupStatus.ValueNot Support | The specified parameter "BackupStatus" is not valid. |
 | 400 | Abs.jobMode.Value NotSupported | InvalidBackupMode.ValueNotS upport | The specified parameter "BackupMode" is not valid. |
 | 400 | Abs.InvalidDescript ion.Malformed | InvalidDBDescription.Malforme d | The specified parameter "DBDescription" is not valid. |
-
-云数据库RDS
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -7818,7 +7740,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidDBDescriptio n.Format | InvalidDBDescription.Malforme d | The specified parameter "DBDescription" is not valid. |
 | 400 | InvalidDBName.For bid | InvalidParameter.Keyword | The specified parameter "DBName" is keyword. |
 
-|  | 开发指南·API参 | 考 |  | 云数据库RD | S |
+|   | 开发指南·API参 | 考 |   | 云数据库RD | S |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7843,7 +7765,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | Forbidden | Forbidden.RAM | User not authorized to operate on the specified resource, or this API doesn't support RAM. |
 | 403 | RAM.ApiNotSupport ed | Forbidden.NotSupportRAM | This action does not support accessed by RAM mode. |
 
-|  | 云数据库RDS |  |  | 开发指南·API参考 |  |
+|   | 云数据库RDS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7867,7 +7789,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | IncorrectAccountSt atus | OperationDenied.AccountStatu s | The operation is not permitted due to status of account. |
 | 403 | IncorrectAccountTy pe | OperationDenied.AccountType | The operation is not permitted due to type of account. |
 
-|  | 开发指南·API参 | 考 |  | 云数据库RD | S |
+|   | 开发指南·API参 | 考 |   | 云数据库RD | S |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7890,8 +7812,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | InvalidDBInstance. NotFound | InvalidDBInstanceId.NotFound | The specified instance is not found. |
 | 404 | RAM.InstanceNotFo und | Forbidden.InstanceNotFound | The specified instance is not found. |
 
-云数据库RDS
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | InvalidConnectionS tring.Duplicate | InvalidConnectionStringPrefix. Duplicated | Specified connection string needs to be same as current network type. |
@@ -7913,7 +7833,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | ParamNotFound | Param.NotFound | The specified params is not found. |
 | 404 | InvalidAccountNam e.NotFound | InvalidAccountName.NotFound | The specified account is not found. |
 
-|  | 开发指南·API参 | 考 |  | 云数据库RD | S |
+|   | 开发指南·API参 | 考 |   | 云数据库RD | S |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -7930,15 +7850,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | 403 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 503 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error, exception or failure. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 
-#### 查看慢日志明细
+#### 2.13.2 查看慢日志明细
 
 调用DescribeSlowLogRecords接口查看实例的慢日志明细。
 
 **注意事项**
 
-云数据库RDS 慢日志明细至多查询1000条。
+慢日志明细至多查询1000条。
 
 **请求头**
 
@@ -7965,7 +7885,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -LockTimes | Long | 0 | 锁定时长。单位：秒（s）。 |
 | - ParseRowCoun ts | Long | 1 | 解析行数。 |
 
-| 开发指南·API参考 |  |  | 云数据库RD |
+| 开发指南·API参考 |   |   | 云数据库RD |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7987,17 +7907,26 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://rds.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-uf6wjk5**** &StartTime=2025-05-17T16:00Z &EndTime=2025-05-18T16:00Z
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式云数据库RDS
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalRecordCount":3,
  "PageRecordCount":1,
  "RequestId":"08A3B71B-FE08-4B03-974F-CC7EA6DB1828",
  "DBInstanceId":"rm-uf6wjk5****",
  "PageNumber":1,
  "Items":[
-  {
+```
+
+`{`
+
+```json
    "QueryTimes":2,
    "ExecutionStartTime":"2025-05-18T01:40:44Z",
    "ReturnRowCounts":1,
@@ -8007,17 +7936,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "HostAddress":"rm-uf6wjk5****[****] @  [100.14.XX.XX]",
    "QueryTimeMS":2001,
    "SQLText":"select sleep(2)"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Engine":"MySQL"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <TotalRecordCount>3</TotalRecordCount> <PageRecordCount>1</PageRecordCount> <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId> <DBInstanceId>rm-uf6wjk5****</DBInstanceId> <PageNumber>1</PageNumber> <Items>
@@ -8038,8 +7965,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 404 | CallEcsApi.Failure | CallEcsApi.Failure | call ecs api failure. |
-
-云数据库RDS
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -8062,7 +7987,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | TIME RANGE OVER _ _ LIMIT _ | TIME RANGE OVER LIMIT _ _ _ | search time range cannot be longer than three days. |
 | 400 | TIME RANGE OVER _ _ LIMIT.AUDIT _ | TIME RANGE OVER LIMIT.AUDI _ _ _ T | search time range cannot be longer than 7 days. |
 
-|  | 云数据库RDS |  |  | 开发指南·API参考 |  |
+|   | 云数据库RDS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8087,7 +8012,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | InvalidBackupSetID .NotFound | InvalidBackupId.NotFound | The BackupId provided does not exist. |
 | 403 | InvalidBackup.NotF ound | OperationDenied.NotFoundBac kup | The operation is not permitted due to no backup. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
@@ -8129,7 +8054,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | OASBackupSetExtr actFinished | QuotaExceeded.BackupExtract Finished | The Specified OAS backup set had extracted finish. |
 | 400 | OASExtractTimesE xceeded | QuotaExceeded.OASExtractTi mesExceeded | The Current DB Instance backup set had extracted too many times from OAS today. |
 
-|  | 开发指南·API参 | 考 |  | 云数据库RD | S |
+|   | 开发指南·API参 | 考 |   | 云数据库RD | S |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8154,7 +8079,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | IntranetNetTypeNo tExists | IntranetNetTypeNotExists | Current DB instance network type does not support this operation. |
 | 400 | InvalidVSwitchId.Mi smatch | InvalidVSwitchId.Mismatch | Specified instance and vSwitch are not in the same zone. |
 
-| 云数据库RDS |  |  | 开发指南·API参考 |
+| 云数据库RDS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
@@ -8178,7 +8103,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | INST NOT BELONG _ _ TO USER _ _ | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist. |
 | 400 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ 26915 | InvalidDBInstanceStorage.Valu eNotSupported | The specified parameter "DBInstanceStorage" is not valid. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
@@ -8196,8 +8121,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidSourceDatab aseUserName.Malf ormed | InvalidDBInfo.Format | The specified parameter "SourceDatabaseUserName" is not valid. |
 | 400 | InvalidQueryTime.F ormat | InvalidQueryTime.Format | he specified parameter "QueryTime" is not valid. |
 | 400 | Abs.SourceDatabas ePort.Malformed | InvalidSourceDatabasePort.Mal formed | The specified parameter 'SourceDatabasePort' is not valid. |
-
-云数据库RDS
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -8221,7 +8144,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidTag.4.value. Malformed | InvalidTag.4.value.Malformed | The specified parameter 'Tag.4.value' is not valid. |
 | 400 | InvalidTag.5.value. Malformed | InvalidTag.5.value.Malformed | The specified parameter 'Tag.5.value' is not valid. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 
@@ -8245,8 +8168,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | Abs.InvalidTimePeri od | OperationDenied.TimePeriod | The specified parameter "TimePeriod" is not valid. |
 | 400 | Abs.InvalidStartTim e | InvalidStartTime.Malformed | The specified parameter "StartTime" is not valid. |
 
-云数据库RDS
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 400 | Abs.InvalidEndTime | InvalidEndTime.Malformed | The specified parameter "EndTime" is not valid. |
@@ -8267,7 +8188,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ MissingParameter | InvalidDBInstanceClass.ValueN otSupported | The specified parameter "DBInstanceClass" is not valid. |
 | 400 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ 26037 | InvalidDBInstanceStorage.Valu eNotSupported | The specified parameter "DBInstanceStorage" is not valid. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8286,8 +8207,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ 26044 | InvalidEngineVersionInRegion. NotAvailable | The EngineVersion in the Region is not available. |
 | 403 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ 26045 | InvalidEngineVersionInRegion. NotAvailable | The EngineVersion in the Region is not available. |
 | 403 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ 26175 | InvaildEngineInRegion.NotAvail able | The engine type in this region is not available. |
-
-云数据库RDS
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -8309,7 +8228,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | TaskExists | TaskExists | Specified task have existed. |
 | 400 | InvalidDBInstanceD escription.Format | InvalidDBInstanceDescription. Malformed | The specified parameter "DBInstanceDescription" is not valid. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8332,7 +8251,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidAccountPrivil ege.Malformed | InvalidAccountPrivilege.ValueN otSupport | The specified "AccountPrivilege" is not valid. |
 | 400 | IncorrectEngineVer sion | InvaildEngineInRegion.ValueNo tSupported | The engine is not supported in the region. |
 
-| RDS |  |  | ·API |
+| RDS |   |   | ·API |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8357,7 +8276,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidKey.Malform ed | InvalidPerformanceKey.Malfor med | The specified parameter "Key" is not valid. |
 | 400 | InvalidQueryKeywo rd.NotSupport | InvalidQueryKeyword.Malform ed | the query key contains exception character. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8381,7 +8300,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | IncorrectDBInstanc eConnType | OperationDenied.PublicConnec tionExists | The specified public connection already existed. |
 | 403 | InsufficientResourc eCapacity | OperationDenied | The resource is out of usage. |
 
-|  | 云数据库RDS |  |  | 开发指南·API参考 |  |
+|   | 云数据库RDS |   |   | 开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8404,7 +8323,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | INSUFFICIENT BAL _ ANCE | InsufficientBalance | Your account does not have enough balance. |
 | 400 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL I _ _ _ NSUFFICIENT BALA _ NCE | InsufficientBalance | Your account does not have enough balance. |
 
-| ·API |  |  | RD |
+| ·API |   |   | RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -8428,7 +8347,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | ChildDBInstanceExi sts | OperationDenied.ChildDBInsta nceExists | The specified instance had child instance. |
 | 404 | GuardInstance.Exis t | InvalidGuardInstanceId.Exist | The guard instance has exist. |
 
-| 云数据库RDS |  |  | 开发指南·API参考 |
+| 云数据库RDS |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 | 404 | InvalidDBInstanceC lass.NotFound | InvalidDBInstanceClass.NotFou nd | The specified instance class is not found. |
@@ -8448,16 +8367,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | 400 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 500 | 403 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 
-| 开发指南·API参 | 考 |  | 云数据库RD |
+| 开发指南·API参 | 考 |   | 云数据库RD |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 503 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error, exception or failure. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 
-#### 查询错误日志
+#### 2.13.3 查询错误日志
 
 调用DescribeErrorLogs接口查询实例某段时间内的错误日志。 错误日志包含具体的错误信息和错误日志生成时间。
 
@@ -8478,13 +8397,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | TotalRecordCo unt | Integer | 100 | 总记录数。 |
 
-云数据库RDS
-
 | PageNumber | Integer | 1 | 页码。 |
 |---|---|---|---|
 | PageRecordCo unt | Integer | 30 | 本页错误日志个数。 |
-| Items | Array of ErrorLog |  | 错误日志明细列表。 |
-| ErrorLog |  |  |  |
+| Items | Array of ErrorLog |   | 错误日志明细列表。 |
+| ErrorLog |   |   |   |
 | ErrorInfo | String | spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informational message only; no user action is required | 错误日志信息。 |
 | CreateTime | String | 2011-05- 30T12:11:04Z | 错误日志生成时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 | RequestId | String | 98504E07-BB0E- 40FC-B152- E4882615812C | 请求ID。 |
@@ -8497,7 +8414,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://rds.example.com/?Action=DescribeErrorLogs &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2011-05-01T20:10Z &EndTime=2011-05-30T20:10Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeErrorLogsResponse>
@@ -8515,29 +8432,25 @@ nformational message only; no user action is required</ErrorInfo>
 </DescribeErrorLogsResponse>
 ```
 
-云数据库RDS `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{ "RequestId":"98504E07-BB0E-40FC-B152-E4882615812C", "PageNumber":1, "TotalRecordCount":1, "PageRecordCount":1, "Items": {"ErrorLog":
+"RequestId":"98504E07-BB0E-40FC-B152-E4882615812C", "PageNumber":1, "TotalRecordCount":1, "PageRecordCount":1, "Items": {"ErrorLog":
 ```
 
-[
+`[` `{`
 
 ```json
-{ "ErrorInfo":"spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required", "CreateTime":"2013-06-04T15:00:00" }
+"ErrorInfo":"spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required", "CreateTime":"2013-06-04T15:00:00"
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-} }
-```
+#### 2.13.4 查询Binlog日志
 
-#### 查询Binlog日志
+调用DescribeBinlogFiles接口查询Binlog日志。 当**DownloadLink**为NULL时，表示RDS没有提供下载链接URL； 当**DownloadLink**不为NULL时，用户可以根据此URL下载备份文件，此URL已设置过期时间**LinkExpiredTime**，请在过期时间之前下载。 返回的日志列表为日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志，即LogEndTime>=StartTime and LogBeginTime<=EndTime。
 
-当**DownloadLink**为NULL时，表示RDS没有提供下载链接URL； 当**DownloadLink**不为NULL时，用户可以根据此URL下载备份文件，此URL已设置过期时间**LinkExpiredTime**，请在过期时间之前下载。 返回的日志列表为日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志，即LogEndTime>=StartTime and LogBeginTime<=EndTime。 本接口不适用于SQL Server实例。
-
-**说明**
+> **说明：** 本接口不适用于SQL Server实例。
 
 **请求参数**
 
@@ -8549,8 +8462,6 @@ nformational message only; no user action is required</ErrorInfo>
 | StartTime | String | 是 | 2011-06- 01T15:00:00Z | 查询开始时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 | PageSize | Integer | 否 | 30 | 每页记录数，取值：30~100。默认值：30。 |
 
-云数据库RDS
-
 | PageNumber | Integer | 否 | 1 | 页码，取值：大于0且不超过Integer的最大值。 默认值：1。 |
 |---|---|---|---|---|
 
@@ -8561,8 +8472,8 @@ nformational message only; no user action is required</ErrorInfo>
 | TotalRecordCo unt | Integer | 100 | Binlog文件总数。 |
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 30 | 当前页Binlog文件个数。 |
-| Items | Array of BinLogFile |  | Binlog明细列表。 |
-| BinLogFile |  |  |  |
+| Items | Array of BinLogFile |   | Binlog明细列表。 |
+| BinLogFile |   |   |   |
 | FileSize | Long | 2269410 | Binlog文件大小，单位：Byte。 |
 | LogBeginTime | String | 2019-02- 09T17:45:21Z | Binlog文件记录的开始时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 | LogEndTime | String | 2019-02- 15T13:10:28Z | Binlog文件记录的结束时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
@@ -8572,8 +8483,6 @@ nformational message only; no user action is required</ErrorInfo>
 | Checksum | String | 183583043934687 01857 | 校验和。 |
 | IntranetDownl oadLink | String | http://rdslog-hz- v3.oss-cn- hangzhou- internal.aliyuncs.co m/xxxxxx | 内网下载链接URL。 |
 | LogFileName | String | 000000040000000 000000019 | Binlog文件名称。 |
-
-云数据库RDS
 
 | RequestId | String | ED169A3E-1657- 4104-82AB- 24EA8CD0DB75 | 请求ID。 |
 |---|---|---|---|
@@ -8587,7 +8496,7 @@ nformational message only; no user action is required</ErrorInfo>
 http(s)://rds.example.com/?Action=DescribeBinlogFiles &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2011-06-01T15:00:00Z &EndTime=2011-06-20T15:00:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeBinlogFilesResponse>
@@ -8600,24 +8509,28 @@ http(s)://rds.example.com/?Action=DescribeBinlogFiles &DBInstanceId=rm-uf6wjk5xx
 </DescribeBinlogFilesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "Items": {
   "BinLogFile": []
- },
+```
+
+`},`
+
+```json
  "PageNumber": 1,
  "TotalRecordCount": 0,
  "TotalFileSize": "0",
  "RequestId": "ED169A3E-1657-4104-82AB-24EA8CD0DB75",
  "PageRecordCount": 0
-}
 ```
 
-#### 查询SQL洞察（SQL审计）状态
+`}`
 
-调用DescribeSQLCollectorPolicy接口查询RDS实例的SQL洞察（SQL审计）功能是否开启。 支持的实例版本如下： MySQL PostgreSQL PolarDB 云数据库RDS
+#### 2.13.5 查询SQL洞察（SQL审计）状态
+
+调用DescribeSQLCollectorPolicy接口查询RDS实例的SQL洞察（SQL审计）功能是否开启。 支持的实例版本如下： MySQL SQL Server PostgreSQL PolarDB
 
 **请求参数**
 
@@ -8643,7 +8556,7 @@ http(s)://rds.example.com/?Action=DescribeBinlogFiles &DBInstanceId=rm-uf6wjk5xx
 http(s)://rds.example.com/?Action=DescribeSQLCollectorPolicy &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeSQLCollectorPolicyResponse>
@@ -8651,18 +8564,18 @@ http(s)://rds.example.com/?Action=DescribeSQLCollectorPolicy &DBInstanceId=rm-uf
    <SQLCollectorStatus>Enable</SQLCollectorStatus></DescribeSQLCollectorPolicyResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "C3565F9F-76E9-4F7E-A662-D1B2488EC2FC",
     "SQLCollectorStatus": "Enable"
-}
 ```
 
-#### 开关SQL洞察（SQL审计）
+`}`
 
-调用ModifySQLCollectorPolicy接口开启或关闭实例的SQL洞察（SQL审计）功能。 支持的实例版本如下： MySQL PostgreSQL PolarDB
+#### 2.13.6 开关SQL洞察（SQL审计）
+
+调用ModifySQLCollectorPolicy接口开启或关闭实例的SQL洞察（SQL审计）功能。 支持的实例版本如下： MySQL SQL Server PostgreSQL PolarDB
 
 **请求参数**
 
@@ -8682,13 +8595,13 @@ http(s)://rds.example.com/?Action=DescribeSQLCollectorPolicy &DBInstanceId=rm-uf
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6wjk5xxxxxxx &SQLCollectorStatus=Enable
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ModifySQLCollectorPolicyResponse>
@@ -8696,17 +8609,17 @@ http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6w
 </ModifySQLCollectorPolicyResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "C3565F9F-76E9-4F7E-A662-D1B2488EC2FC",
-}
 ```
 
-#### 查询SQL洞察（SQL审计）日志
+`}`
 
-调用DescribeSQLLogRecords接口查询实例的SQL洞察（SQL审计）日志。 支持的实例如下： MySQL PostgreSQL PolarDB
+#### 2.13.7 查询SQL洞察（SQL审计）日志
+
+调用DescribeSQLLogRecords接口查询实例的SQL洞察（SQL审计）日志。 支持的实例如下： MySQL SQL Server PostgreSQL PolarDB
 
 **请求参数**
 
@@ -8716,8 +8629,6 @@ http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6w
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
 | EndTime | String | 是 | 2011-06- 11T15:00:00Z | 查询结束时间，大于查询开始时间，与查询开始时间间隔小于31天。格式：yyyy- MM-ddTHH:mm:ssZ（UTC时间）。 |
 | StartTime | String | 是 | 2011-06- 01T15:00:00Z | 查询开始时间，格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
-
-云数据库RDS
 
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 |---|---|---|---|---|
@@ -8737,11 +8648,9 @@ http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6w
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 30 | 本页SQL审计日志个数。 |
 
-云数据库RDS
-
-| Items | Array of SQLRecord |  | SQL审计日志列表。 |
+| Items | Array of SQLRecord |   | SQL审计日志列表。 |
 |---|---|---|---|
-| SQLRecord |  |  |  |
+| SQLRecord |   |   |   |
 | DBName | String | testDB | 数据库名称。 |
 | AccountName | String | accounttest | 执行操作的账号名称。 |
 | HostAddress | String | 192.168.0.121 | 连接数据库的客户端IP地址。 |
@@ -8760,7 +8669,7 @@ http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6w
 http(s)://rds.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=rm-uf6wjk5xxxxxx &StartTime=2011-06-01T15:00:00Z &EndTime=2011-06-11T15:00:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeSQLLogRecordsResponse>
@@ -8782,27 +8691,29 @@ http(s)://rds.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=rm-uf6wjk5
 </DescribeSQLLogRecordsResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{ "PageNumber":1, "TotalRecordCounts":1, "ItemsCounts":1, "SQLItems": {"SQLItem":
+"PageNumber":1, "TotalRecordCounts":1, "ItemsCounts":1, "SQLItems": {"SQLItem":
 ```
 
-[
+`[` `{`
 
 ```json
-{ "DBName":"test", "AccountName":"accounttest", "HostAddress":"192.168.0.121", "SQLText":"update test.zxb set id=0 limit 1", "TotalExecutionTimes":12, "ReturnRowCounts":34, "ExecuteTime":"2011-06-11T15:00:23Z" }
+"DBName":"test", "AccountName":"accounttest", "HostAddress":"192.168.0.121", "SQLText":"update test.zxb set id=0 limit 1", "TotalExecutionTimes":12, "ReturnRowCounts":34, "ExecuteTime":"2011-06-11T15:00:23Z"
 ```
 
-]
+`}` `]` `},`
 
 ```json
-}, "RequestId": "08A3B71B-FE08-4B03-974F-CC7EA6DB1828" }
+"RequestId": "08A3B71B-FE08-4B03-974F-CC7EA6DB1828"
 ```
 
-#### 查询SQL洞察（SQL审计）列表
+`}`
 
-支持的实例版本如下： MySQL SQL Server 2008 R2 PostgreSQL PolarDB 云数据库RDS
+#### 2.13.8 查询SQL洞察（SQL审计）列表
+
+调用DescribeSQLLogFiles接口查询SQL洞察（SQL审计）列表。 支持的实例版本如下： MySQL SQL Server 2008 R2 PostgreSQL PolarDB
 
 **请求参数**
 
@@ -8821,14 +8732,12 @@ http(s)://rds.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=rm-uf6wjk5
 | TotalRecordCo unt | Integer | 10 | 总记录数。 |
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 10 | 本页记录数。 |
-| Items | Array of LogFile |  | 审计文件列表。 |
-| LogFile |  |  |  |
+| Items | Array of LogFile |   | 审计文件列表。 |
+| LogFile |   |   |   |
 | FileID | String | custinsxxxxx.csv | 文件名称。 |
 | LogStatus | String | Success | 文件当前状态，取值： Success：生成成功 Failed：生成失败 Generating：生成中 |
 | LogStartTime | String | 2015-05- 23T07:00:00Z | SQL起始时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 | LogEndTime | String | 2015-05- 24T07:00:00Z | SQL结束时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
-
-云数据库RDS
 
 | LogDownloadU RL | String | http://rdslog-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | 下载地址。若当前不可下载，则为空。 |
 |---|---|---|---|
@@ -8843,7 +8752,7 @@ http(s)://rds.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=rm-uf6wjk5
 http(s)://rds.example.com/?Action=DescribeSQLLogFiles &DBInstanceId=rm-uf6wjk5xxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeSQLLogFilesResponse>
@@ -8861,31 +8770,34 @@ http(s)://rds.example.com/?Action=DescribeSQLLogFiles &DBInstanceId=rm-uf6wjk5xx
 </DescribeSQLLogFilesResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "items": [
-        {
+```
+
+`{`
+
+```json
             "FileID": "ZUBaS964T3OYtxxxxxxxx",
             "LogStatus": "Success",
             "LogStartTime": "2015-05-23T07:00:00Z",
             "LogEndTime": "2015-05-23T07:00:00Z",
             "LogDownloadURL": "xxxxxx.cn-hangzhou.oss.aliyun-inc.com/xxxxx",
             "LogSize": "257"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageRecordCount": 1,
     "requestId": " 1AD222E9-E606-4A42-BF6D-8A4442913CEF",
     "totalRecordCount": 1
-}
 ```
 
-#### 查看SQL日志运行报告列表
+`}`
+
+#### 2.13.9 查看SQL日志运行报告列表
 
 调用DescribeSQLLogReportList接口查看SQL日志运行报告列表。
 
@@ -8899,8 +8811,6 @@ http(s)://rds.example.com/?Action=DescribeSQLLogFiles &DBInstanceId=rm-uf6wjk5xx
 | StartTime | String | 是 | 2021-03- 13T16:00:00Z | 查询开始时间，格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
 | PageSize | Integer | 否 | 30 | 每页记录数。取值： 30 50 100 默认值：30 |
 
-云数据库RDS
-
 | PageNumber | Integer | 否 | 1 | 页码。大于0，且不超过Integer类型的最大值。 默认值：1 |
 |---|---|---|---|---|
 
@@ -8908,22 +8818,20 @@ http(s)://rds.example.com/?Action=DescribeSQLLogFiles &DBInstanceId=rm-uf6wjk5xx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of Item |  | SQL日志运行报告列表。 |
-| Item |  |  |  |
-| LatencyTopNIt ems | Array of LatencyTopNIt em |  | 延迟最高的SQL列表。 |
-| LatencyTopNIt em |  |  |  |
+| Items | Array of Item |   | SQL日志运行报告列表。 |
+| Item |   |   |   |
+| LatencyTopNIt ems | Array of LatencyTopNIt em |   | 延迟最高的SQL列表。 |
+| LatencyTopNIt em |   |   |   |
 | AvgLatency | Long | 500 | SQL平均执行时间。单位：ms |
 | SQLExecuteTi mes | Long | 5 | SQL执行次数。 |
 | SQLText | String | SELECT * FROM table name; _ | SQL语句。 说明展示SQL语句的前128个字符，仅统计执行时间大于100ms的SQL。 |
-| QPSTopNItems | Array of QPSTopNItem |  | 执行次数最多的SQL列表。 |
-| QPSTopNItem |  |  |  |
+| QPSTopNItems | Array of QPSTopNItem |   | 执行次数最多的SQL列表。 |
+| QPSTopNItem |   |   |   |
 | SQLExecuteTi mes | Long | 5 | SQL执行次数。 |
 | SQLText | String | SELECT * FROM table name; _ | SQL语句。 说明展示SQL语句的前128个字符，仅统计执行时间大于5ms的SQL。 |
 | ReportTime | String | 2019-03- 27T16:00:00Z | 运行报告生成时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间） |
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 30 | 本页SQL日志运行报告个数。 |
-
-云数据库RDS
 
 | RequestId | String | 08A3B71B-FE08- 4B03-974F- CC7EA6DB1828 | 请求ID。 |
 |---|---|---|---|
@@ -8937,7 +8845,7 @@ http(s)://rds.example.com/?Action=DescribeSQLLogFiles &DBInstanceId=rm-uf6wjk5xx
 http(s)://rds.example.com/?Action=DescribeSQLLogReportList &DBInstanceId=rm-uf6wjk5xxxxxxx &EndTime=2021-03-18T16:00:00Z &StartTime=2021-03-13T16:00:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeSQLLogReportListResponse>
@@ -8966,10 +8874,9 @@ http(s)://rds.example.com/?Action=DescribeSQLLogReportList &DBInstanceId=rm-uf6w
 </DescribeSQLLogReportListResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "TotalRecordCount": "60",
  "PageRecordCount": "30",
  "RequestId": "08A3B71B-FE08-4B03-974F-CC7EA6DB1828\t",
@@ -8982,26 +8889,27 @@ http(s)://rds.example.com/?Action=DescribeSQLLogReportList &DBInstanceId=rm-uf6w
      "AvgLatency": "500",
      "SQLExecuteTimes": "5",
      "SQLText": "SELECT * FROM table_name;"
-    }]
-   },
+```
+
+`}]` `},`
+
+```json
    "QPSTopNItems": {
     "QPSTopNItem": [{
      "SQLExecuteTimes": "5",
      "SQLText": "SELECT * FROM table_name;"
-    }]
-   }
-  }]
- }
-}
 ```
 
-#### 清理本地日志
+`}]` `}` `}]` `}` `}`
+
+#### 2.13.10 清理本地日志
 
 调用PurgeDBInstanceLog接口清理RDS实例本地日志。 RDS实例有自动上传日志备份机制，但是在实例空间不足时，您可以使用本接口手动上传日志备份，提前释放存储空间。上传后系统会自动清理本地重复的日志备份。 调用本接口会将本地日志备份上传到OSS上（SQL Server会先收缩事务日志再上传），然后清理本地日志备份，释放存储空间。
 
-**说明**
-
-该接口仅适用于MySQL、SQL Server实例。 上传日志备份不会影响数据恢复功能。 释放的是存储空间，不是备份空间，因此不会降低备份空间使用量。 日志备份上传到的OSS由RDS提供，不需要您购买，同时也不支持访问此OSS。
+> **说明：** 该接口仅适用于MySQL、SQL Server实例。
+> 上传日志备份不会影响数据恢复功能。
+> 释放的是存储空间，不是备份空间，因此不会降低备份空间使用量。
+> 日志备份上传到的OSS由RDS提供，不需要您购买，同时也不支持访问此OSS。
 
 **请求参数**
 
@@ -9009,8 +8917,6 @@ http(s)://rds.example.com/?Action=DescribeSQLLogReportList &DBInstanceId=rm-uf6w
 |---|---|---|---|---|
 | Action | String | 是 | PurgeDBInstanc eLog | 系统规定参数，取值：PurgeDBInstanceLog。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 待清理或收缩日志的实例ID。 |
-
-云数据库RDS
 
 | ClientToken | String | 否 | ETnLKlblzczshOT UbOCzxxxxxxxx xx | 用于保证请求的幂等性，防止重复提交请求。由客户端生成该参数值，要保证在不同请求间唯一，最大值不超过64个ASCII 字符，且该参数值中不能包含非ASCII字符。 |
 |---|---|---|---|---|
@@ -9029,7 +8935,7 @@ http(s)://rds.example.com/?Action=DescribeSQLLogReportList &DBInstanceId=rm-uf6w
 http(s)://rds.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <PurgeDBInstanceLogResponse>
@@ -9037,17 +8943,17 @@ http(s)://rds.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=rm-uf6wjk5xxx
 </PurgeDBInstanceLogResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-### 历史事件
+`}`
 
-#### 开启或关闭历史事件
+### 2.14 历史事件
+
+#### 2.14.1 开启或关闭历史事件
 
 调用ModifyActionEventPolicy接口开启或关闭RDS历史事件功能。
 
@@ -9059,8 +8965,6 @@ http(s)://rds.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=rm-uf6wjk5xxx
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-云数据库RDS
 
 | Action | Strin g | Syst em | 是 | ModifyActionEventPolicy | 系统规定参数。取值： ModifyActionEventPolicy |
 |---|---|---|---|---|---|
@@ -9083,17 +8987,21 @@ http(s)://rds.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=rm-uf6wjk5xxx
 http(s)://[Endpoint]/?Action=ModifyActionEventPolicy &RegionId=cn-hangzhou &EnableEventLog=True
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC",
  "EnableEventLog":"True",
  "RegionId":"cn-hangzhou "
-}
 ```
 
-`XML` 格式云数据库RDS
+`}` `XML` 格式
 
 ```xml
 <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId> <EnableEventLog>True</EnableEventLog> <RegionId>cn-hangzhou </RegionId>
@@ -9105,7 +9013,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 404 | InvalidRegion.NotF ound | InvalidRegion.NotFound | Specified Region does not exist in RDS. |
 
-#### 查询历史事件功能是否开启
+#### 2.14.2 查询历史事件功能是否开启
 
 调用DescribeActionEventPolicy接口查询RDS历史事件功能是否开启。 RDS提供历史事件功能，开启后可查看所处地域内某时间段的历史事件。例如在某个时间创建了实例、修改了参数等。
 
@@ -9128,27 +9036,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RegionId | String | cn-hangzhou | 地域ID。 |
 | EnableEventLo g | String | True | 历史事件功能开启情况。 |
 
-云数据库RDS
-
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeActionEventPolicy &RegionId=cn-hangzhou
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"CCECD3CD-AB2D-4F6D-BEDE-47BC90A398D2",
  "EnableEventLog":"True",
  "RegionId":"cn-hangzhou"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>CCECD3CD-AB2D-4F6D-BEDE-47BC90A398D2</RequestId> <EnableEventLog>True</EnableEventLog> <RegionId>cn-hangzhou</RegionId>
@@ -9160,7 +9068,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 404 | InvalidRegion.NotF ound | InvalidRegion.NotFound | Specified Region does not exist in RDS. |
 
-#### 查询历史事件
+#### 2.14.3 查询历史事件
 
 调用DescribeEvents接口查询RDS历史事件记录列表。 RDS提供历史事件功能，开启后您可以在所处地域内查看某时间段的历史事件，例如在某个时间创建了实例、修改了参数等等。 调用该接口时，实例必须已开启历史事件功能，否则将操作失败。
 
@@ -9170,8 +9078,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | Action | String | 是 | DescribeEvents | 系统规定参数，取值：DescribeEvents。 |
 | RegionId | String | 是 | cn-hangzhou | 地域ID，可以通过接口DescribeRegions 查看地域ID。 |
-
-云数据库RDS
 
 | ResourceType | String | 否 | instance | 事件关联资源类型。当前仅支持传入Instance。 |
 |---|---|---|---|---|
@@ -9185,15 +9091,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| EventItems | Array of EventItems |  | 事件列表。 |
-| EventItems |  |  |  |
+| EventItems | Array of EventItems |   | 事件列表。 |
+| EventItems |   |   |   |
 | EventId | Integer | 11000053 | 事件ID。 |
 | EventName | String | ModifySecurityIPLis t | 事件名称。 |
 | EventPayload | String | {\"Domain\": \"rds- inc- share.aliyuncs.com \", \"Api\": \"ReleaseInstanceP ublicConnection\"} | 事件的请求参数或上下文参数。 |
 | EventReason | String | FROM USER _ | 事件操作的来源。 |
 | EventRecordTi me | String | 2019-08- 20T01:12:49Z | 事件的记录时间。会稍晚于事件的发生时间。 |
-
-云数据库RDS
 
 | EventTime | String | 2019-08- 20T01:08:22Z | 事件发生时间。 |
 |---|---|---|---|
@@ -9215,7 +9119,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=2019-08-20T01:30:00Z &EndTime=2019-08-20T01:35:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeEventsResponse>
@@ -9254,13 +9158,16 @@ http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=
 </DescribeEventsResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
  "EventItems": {
   "EventItems": [
-   {
+```
+
+`{`
+
+```json
     "EventName": "ModifySecurityIPList",
     "EventUserType": "SYSTEM",
     "ResourceType": "instance",
@@ -9272,8 +9179,11 @@ http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=
     "EventId": 11000048,
     "ResourceName": "rm-bpxxxxxxx",
     "EventType": "SecurityManagement"
-   },
-   {
+```
+
+`},` `{`
+
+```json
     "EventName": "ModifySecurityIPList",
     "EventUserType": "SYSTEM",
     "ResourceType": "instance",
@@ -9285,19 +9195,18 @@ http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=
     "EventId": 11000047,
     "ResourceName": "rm-bpxxxxxxx",
     "EventType": "SecurityManagement"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "TotalRecordCount": 2,
  "PageNumber": 1,
  "PageSize": 2,
  "RequestId": "B5FF9EE6-830E-4DBE-8498-9890A62D2875"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9305,13 +9214,13 @@ http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=
 |---|---|---|---|
 | 400 | InvalidStartTime.Fo rmat | Specified start time is not valid. | 指定的起始时间无效。 |
 
-### 性能优化诊断（CloudDBA）
+### 2.15 性能优化诊断（CloudDBA）
 
-#### 创建诊断报告
+#### 2.15.1 创建诊断报告
+
+调用CreateDiagnosticReport接口创建诊断报告。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9335,7 +9244,7 @@ http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=
 http(s)://rds.example.com/?Action=CreateDiagnosticReport &DBInstanceId=rm-uf6wjk5xxxxxx &StartTime=2018-06-11T15:00Z &EndTime=2018-06-12T15:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateDiagnosticReportResponse>
@@ -9344,22 +9253,18 @@ http(s)://rds.example.com/?Action=CreateDiagnosticReport &DBInstanceId=rm-uf6wjk
 </CreateDiagnosticReportResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "reportId": "10166270",
     "requestId": "8DA8956A-53DA-423E-9540-387428ED37FF-5711"
-}
 ```
 
-云数据库RDS
+#### 2.15.2 查询诊断报告列表
 
-#### 查询诊断报告列表
+调用DescribeDiagnosticReportList接口查询诊断报告列表。 返回诊断报告的数据采集时间、生成时间和下载地址等，诊断报告保留15天。
 
-调用DescribeDiagnosticReportList接口查询诊断报告列表。 返回诊断报告的数据采集时间、生成时间和下载地址等，诊断报告保留15天。 SQL Server 2017集群版不支持该接口。
-
-**说明**
+> **说明：** SQL Server 2017集群版不支持该接口。
 
 **请求参数**
 
@@ -9373,7 +9278,7 @@ http(s)://rds.example.com/?Action=CreateDiagnosticReport &DBInstanceId=rm-uf6wjk
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | B7E9A79C-DE1B- 4398-845F- D654FC0958BD | 请求ID。 |
-| ReportList | Array of Report |  | 返回的诊断报告列表。 |
+| ReportList | Array of Report |   | 返回的诊断报告列表。 |
 | DiagnosticTim e | String | 2018-01- 17T12:46:09Z | 诊断时间。 |
 | DownloadURL | String | http://rdsreport-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | 公网下载地址，若当前不可下载，则为空串。 |
 | EndTime | String | 2018-01- 10T15:31:00Z | 监控数据结束时间。 |
@@ -9388,7 +9293,7 @@ http(s)://rds.example.com/?Action=CreateDiagnosticReport &DBInstanceId=rm-uf6wjk
 http(s)://rds.example.com/?Action=DescribeDiagnosticReportList &DBInstanceId=rm-uf6wjk5xxxxxxx
 ```
 
-`&<`公共请求参数> 云数据库RDS 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDiagnosticReportListResponse>
@@ -9404,35 +9309,38 @@ i.aliyuncs.com/xxxxx</downloadURL>
 </DescribeDiagnosticReportListResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "reportList": [
-        {
+```
+
+`{`
+
+```json
             "diagnosticTime": "2018-01-17T12:46:09Z",
             "downloadURL": "http://rdsreport-hzi-v2.oss-cn-hangzhou-
 i.aliyuncs.com/xxxxx",
             "endTime": "2018-01-10T15:31:00Z",
             "score": 100,
             "startTime": "2018-01-10T15:30:00Z"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "requestId": "B7E9A79C-DE1B-4398-845F-D654FC0958BD"
-}
 ```
 
-### 数据迁移
+`}`
 
-#### 获取文件上传地址
+### 2.16 数据迁移
 
-调用CreateUploadPathForSQLServer接口获取文件上传地址。 该接口只适用于SQL Server类型的实例。
+#### 2.16.1 获取文件上传地址
 
-**说明**
+调用CreateUploadPathForSQLServer接口获取文件上传地址。
+
+> **说明：** 该接口只适用于SQL Server类型的实例。
 
 创建文件服务器的账号、密码以及上传文件的路径信息。用户根据此信息，可上传数据文件，待上传完成， 调用导入数据接口，进行外部数据迁移操作。限制条件如下： 实例的状态：使用中。 数据库的状态：使用中。 一个数据库一天只能创建20个文件名，按24小时为一天计算，如上一次创建时间点为2012-03-15 18:30:12，则下次创建时间点大于2012-03-16 18:30:12。
 
@@ -9440,8 +9348,6 @@ i.aliyuncs.com/xxxxx",
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库RDS
 
 | Action | String | 是 | CreateUploadPat hForSQLServer | 系统规定参数，取值：CreateUploadPathForSQLServ er。 |
 |---|---|---|---|---|
@@ -9469,7 +9375,7 @@ i.aliyuncs.com/xxxxx",
 http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rdsaiiabnaiiabn &DBName=RDS_MySQL
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateUploadPathForSQLServerResponse>
@@ -9484,10 +9390,9 @@ http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rds
 </CreateUploadPathForSQLServerResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "CreateUploadPathForSQLServerResponse": {
         "RequestId": "66816822-CEC1-4C8D-AB26-2530A7D4DCA5",
         "InternetFtpServer": "10.230.239.1",
@@ -9495,9 +9400,9 @@ http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rds
         "UserName": "test",
         "Password": "test12345",
         "FileName": "testdb01_1370572475975.bak"
-    }
-}
 ```
+
+`}` `}`
 
 **错误码**
 
@@ -9506,15 +9411,13 @@ http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rds
 | 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | 操作失败，原因是FTP服务器发生临时故障。 |
 | 403 | OperationDenied.D BStatus | The operation is not permitted due to status of database. | 操作失败，当前数据库状态不支持。实例和实例下的数据库是只读状态，支持SQLServer（仅限专享型实例） 必须满足以下条件：1、 实例状态：可用；2、当前实例没有临时备份任务；3、当前实例没有迁移任务；4、 当前实例没有恢复备份任务；5、文件已上传完成，并且是有效的。 |
 
-#### 查询数据文件列表
+#### 2.16.2 查询数据文件列表
 
-通过该接口，您可以得到文件服务器上传账号。在数据文件上传结束后，RDS会更新数据文件状态。通过该接口，也可以查看数据文件是否可用。如果文件可用，则可以进行数据导入，并得到导入过程信息。 该接口只适用于SQL Server类型的实例。
+调用DescribeFilesForSQLServer接口查询数据文件列表。 通过该接口，您可以得到文件服务器上传账号。在数据文件上传结束后，RDS会更新数据文件状态。通过该接口，也可以查看数据文件是否可用。如果文件可用，则可以进行数据导入，并得到导入过程信息。
 
-**说明**
+> **说明：** 该接口只适用于SQL Server类型的实例。
 
 **请求参数**
-
-云数据库RDS
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9533,12 +9436,10 @@ http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rds
 | TotalRecordCo unt | Integer | 1 | 总记录数。 |
 | PageNumber | Integer | 1 | 页码。 |
 | PageRecordCo unt | Integer | 1 | 本页SQL语句个数。 |
-| Items | Array of SQLServerUplo adFile |  | 无。 |
-| SQLServerUplo adFile |  |  |  |
+| Items | Array of SQLServerUplo adFile |   | 无。 |
+| SQLServerUplo adFile |   |   |   |
 | DBName | String | testdb01 | 数据库名。 |
 | FileName | String | testdb01 1370572 _ 475975.bak | 数据文件名，带扩展名。 |
-
-云数据库RDS
 
 | FileSize | Long | 1243435 | 数据文件大小，单位：Byte。 |
 |---|---|---|---|
@@ -9555,13 +9456,13 @@ http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rds
 
 **示例**
 
-请求示例云数据库RDS
+请求示例
 
 ```
 https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp1842vmucoa5w874 &EndTime=2011-06-11T16:00Z &StartTime=2011-06-11T16:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeFilesForSQLServerResponse>
@@ -9587,16 +9488,19 @@ https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp184
 </DescribeFilesForSQLServerResponse>
 ```
 
-`JSON` 格式云数据库RDS
+`JSON` 格式 `{`
 
 ```json
-{
     "PageNumber":1,
     "TotalRecordCount":1,
     "PageRecordCount":1,
     "Items":{
         "SQLServerUploadFile":[
-            {
+```
+
+`{`
+
+```json
                 "DBName":"testdb01",
                 "FileName":"testdb01_1370572475975.bak",
                 "FileSize ":"1243435",
@@ -9608,16 +9512,15 @@ https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp184
                 "Password":"aT2Y_XN1GGnOLzm",
                 "FileStatus":"Success ",
                 "CreationTime":"2014-06-11T15:02:40Z"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId":"08A3B71B-FE08-4B03-974F-CC7EA6DB1828"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9625,13 +9528,12 @@ https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp184
 |---|---|---|---|
 | 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | 操作失败，原因是FTP服务器发生临时故障。 |
 
-#### 迁入实例
+#### 2.16.3 迁入实例
 
-调用ImportDatabaseBetweenInstances接口从其它RDS实例迁入数据。 建议您使用数据传输服务DTS，集数据迁移、订阅、同步于一体，为您提供稳定安全的传输链路。 迁移过程中，源实例的状态处于**迁移中**，目标实例的状态处于**数据导入中**。 调用该接口时，实例必须满足以下条件，否则将操作失败： 仅支持SQL Server的独享和独占规格的实例，关于实例规格详情，请参见**云数据库****RDS** > **产品简介**中的**实例规格**； 仅适用于不同实例间（实例都属于同一个用户）的数据库迁移； 实例状态为运行中； 数据库状态为运行中； 确保目标实例的剩余存储空间>源实例数据库的存储空间； 云数据库RDS
+调用ImportDatabaseBetweenInstances接口从其它RDS实例迁入数据。 建议您使用数据传输服务DTS，集数据迁移、订阅、同步于一体，为您提供稳定安全的传输链路。 迁移过程中，源实例的状态处于**迁移中**，目标实例的状态处于**数据导入中**。 调用该接口时，实例必须满足以下条件，否则将操作失败： 仅支持SQL Server的独享和独占规格的实例，关于实例规格详情，请参见**云数据库****RDS** > **产品简介**中的**实例规格**； 仅适用于不同实例间（实例都属于同一个用户）的数据库迁移； 实例状态为运行中； 数据库状态为运行中； 确保目标实例的剩余存储空间>源实例数据库的存储空间；
 
-**说明**
-
-暂不支持SQL Server 2017集群版实例。 支持批量数据库迁入。
+> **说明：** 暂不支持SQL Server 2017集群版实例。
+> 支持批量数据库迁入。
 
 **请求参数**
 
@@ -9648,8 +9550,6 @@ https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp184
 |---|---|---|---|
 | ImportId | String | 85265475235 | 导入任务的ID。 |
 
-云数据库RDS
-
 | RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | 请求ID。 |
 |---|---|---|---|
 
@@ -9661,7 +9561,7 @@ https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp184
 http(s)://rds.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=rm-uf6wjk5xxxxxxx &SourceDBInstanceId=rm-g4a1jk8xxxxxxx &DBInfo={“DBNames”:[“mydb”,”mydb2”]}
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ImportDatabaseBetweenInstancesResponse>
@@ -9670,20 +9570,20 @@ http(s)://rds.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=r
 </ImportDatabaseBetweenInstancesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
        "ImportId":2122321,
        "RequestId":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-}
 ```
 
-#### 取消迁移任务
+`}`
 
-调用CancelImport接口取消RDS实例迁移任务。 支持SQL Server的独享和独占规格的实例。发起迁移任务请参见ImportDatabaseBetweenInstances。 该接口暂不支持SQL Server 2017 集群版实例。
+#### 2.16.4 取消迁移任务
 
-**说明**
+调用CancelImport接口取消RDS实例迁移任务。 支持SQL Server的独享和独占规格的实例。发起迁移任务请参见ImportDatabaseBetweenInstances。
+
+> **说明：** 该接口暂不支持SQL Server 2017 集群版实例。
 
 **请求参数**
 
@@ -9691,8 +9591,6 @@ http(s)://rds.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=r
 |---|---|---|---|---|
 | Action | String | 是 | CancelImport | 系统规定参数，取值：CancelImport。 |
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
-
-云数据库RDS
 
 | ImportId | Integer | 是 | 8562584 | 迁移任务ID。 说明发起迁移任务时会返回此参数，参见ImportDatabaseBetweenInsta nces。 |
 |---|---|---|---|---|
@@ -9711,7 +9609,7 @@ http(s)://rds.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=r
 http(s)://rds.example.com/?Action=CancelImport &DBInstanceId=rm-uf6wjk5xxxxxxx &ImportId=8562584
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CancelImportResponse>
@@ -9719,15 +9617,15 @@ http(s)://rds.example.com/?Action=CancelImport &DBInstanceId=rm-uf6wjk5xxxxxxx &
 </CancelImportResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### 创建上云任务
+`}`
+
+#### 2.16.5 创建上云任务
 
 调用CreateMigrateTask接口将OSS上的备份文件还原到RDS SQL Server实例，实现数据上云。
 
@@ -9737,8 +9635,6 @@ http(s)://rds.example.com/?Action=CancelImport &DBInstanceId=rm-uf6wjk5xxxxxxx &
 |---|---|---|---|---|
 | Action | String | 是 | CreateMigrateTa sk | 系统规定参数，取值：CreateMigrateTask。 |
 
-云数据库RDS
-
 | BackupMode | String | 是 | FULL | 迁移上云任务类型，取值： FULL：通过全量备份文件去执行还原操作。 UPDF：通过增量文件或者日志文件去还原增量部分的数据。 |
 |---|---|---|---|---|
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。 |
@@ -9746,8 +9642,6 @@ http(s)://rds.example.com/?Action=CancelImport &DBInstanceId=rm-uf6wjk5xxxxxxx &
 | IsOnlineDB | String | 是 | True | 是否将还原后的数据库带上线，便于用户访问，取值： True：将数据库带上线。 False：不将数据库带上线。 说明目前SQL Server 2008 R2 版本该值恒定为True。 |
 | CheckDBMode | String | 否 | AsyncExecuteDB Check | 打开数据库后一致性检查方法，取值： SyncExecuteDBCheck：同步执行 DB检查。 AsyncExecuteDBCheck：异步执行DB检查。 默认值为AsyncExecuteDBCheck（兼容 SQL Server 2008 R2）。 说明当 IsOnlineDB=True时，该值有效。 |
 | OssObjectPositio ns | String | 否 | oss-ap- southeast- 1.aliyuncs.com:r dsmssqlsingapor e:autotest 2008 _ R2 TestMigratio _ n FULL.bak _ | OSS的组成部分。 取值由3段组成，用英文冒号（:）分隔： OSS Endpoint地址：oss-ap- southeast-1.aliyuncs.com。 OSS Bucket名字： rdsmssqlsingapore。 OSS上的备份文件Key： autotest 2008R2 TestMigration F _ _ _ ULL.bak。 说明该参数对于 SQL Server 2008 R2 版本实例是可选参数。 该参数对于 SQL Server 2008 R2 以上版本实例是必传参数。 |
-
-云数据库RDS
 
 | OSSUrls | String | 否 | check cdn oss.s _ _ h www.xxxxxx.mo bi | 备份文件所在OSS共享URL地址（Encode 编码后的URL）。 有多个地址时，先使用“\|”隔开，再编码后传入参数。 说明 SQL Server 2008 R2 必须传入该参数。 |
 |---|---|---|---|---|
@@ -9771,7 +9665,7 @@ http(s)://rds.example.com/?Action=CancelImport &DBInstanceId=rm-uf6wjk5xxxxxxx &
 http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxxxxx &DBName=testDB &BackupMode=FULL &IsOnlineDB=True &OssObjectPositions=oss-ap-southeast- 1.aliyuncs.com:rdsmssqlsingapore:autotest_2008R2_TestMigration_FULL.bak
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <CreateMigrateTaskResponse>
@@ -9784,18 +9678,18 @@ http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxx
 </CreateMigrateTaskResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "MigrateTaskId": "135847",
  "DBInstanceId": "rm-bp178grbxxxxxxx",
  "RequestId": "5F2B3757-BD56-40B3-B5F2-FCDD9FA0E2E2",
  "BackupMode": "UPDF",
  "TaskId": "128301751",
  "DBName": "test02"
-}
 ```
+
+`}`
 
 **错误码**
 
@@ -9804,7 +9698,7 @@ http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxx
 | 400 | InvalidDBName | The instance does not have the specified DB name. | 目标数据库不存在，请确认目标数据库名称正确性及状态，或更换其他数据库。 |
 | 400 | InvalidOSSURL | The Specified OSS URL is not valid | OSS的地址信息错误，请检查。 |
 
-#### 查询实例迁移状态
+#### 2.16.6 查询实例迁移状态
 
 调用DescibeImportsFromDatabase接口查看实例迁移状态列表。 因为仅MySQL和SQL Server可执行迁移任务，所以仅能查询这两个数据库类型的迁移任务。执行迁移任务请使用ImportDatabaseBetweenInstances接口。
 
@@ -9815,8 +9709,6 @@ http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxx
 | Action | String | 是 | DescibeImportsF romDatabase | 系统规定参数，取值：DescibeImportsFromDatabas e。 |
 | DBInstanceId | String | 是 | rm-bpxxxxx | 实例ID。 |
 | EndTime | String | 是 | 2011-06- 11T16:00Z | 查询结束时间。格式：yyyy-MM- ddTHH:mmZ（UTC时间）。 |
-
-云数据库RDS
 
 | Engine | String | 是 | MySQL | 数据库类型。取值： MySQL SQLServer |
 |---|---|---|---|---|
@@ -9830,11 +9722,9 @@ http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxx
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Items | Array of ImportResultFr omDB |  | 迁移状态列表。 |
-| ImportResultFr omDB |  |  |  |
+| Items | Array of ImportResultFr omDB |   | 迁移状态列表。 |
+| ImportResultFr omDB |   |   |   |
 | ImportDataSta tus | String | NotStart | 迁移任务状态。取值： NotStart：未开始 FullExporting：全量导出中 FullImporting：全量导入中 Success：成功 Failed：失败 Canceled：已取消 Canceling：正在取消 IncrementalWaiting：增量同步等待 IncrementalImporting：增量同步中 StopSyncing：停止同步 |
-
-云数据库RDS
 
 | ImportDataSta tusDescription | String | 描述信息 | 迁移任务描述。 |
 |---|---|---|---|
@@ -9854,7 +9744,7 @@ http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxx
 http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bpxxxxx &EndTime=2011-06-11T16:00Z &Engine=MySQL &StartTime=2011-06-11T15:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescibeImportsFromDatabaseResponse>
@@ -9874,31 +9764,28 @@ http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bp
 </DescibeImportsFromDatabaseResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "TotalRecordCount": 0,
   "PageRecordCount": 30,
   "RequestId": "B000AA91-393D-46F9-8D9B-098E28931A3A",
   "PageNumber": 1,
   "Items": {
     "ImportResultFromDB": [
-      {
+```
+
+`{`
+
+```json
         "ImportId":"123",
         "ImportDataType":"Full",
         "ImportDataStatus":"NotStart",
         "ImportDataStatusDescription":"描述信息",
         "IncrementalImportingTime":""
-      }
 ```
 
-]
-
-```
-  }
-}
-```
+`}` `]` `}` `}`
 
 **错误码**
 
@@ -9906,7 +9793,7 @@ http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bp
 |---|---|---|---|
 | 403 | OperationDenied.D BInstanceType | The operation is not permitted due to type of instance. | 实例类型不支持该操作，请核实是否是主实例。 |
 
-#### 查询单个上云任务
+#### 2.16.7 查询单个上云任务
 
 调用DescribeMigrateTaskById查询SQL Server的某个OSS备份上云任务的信息。
 
@@ -9914,8 +9801,6 @@ http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bp
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-云数据库RDS
 
 | Action | String | 是 | DescribeMigrate TaskById | 系统规定参数。取值 |
 |---|---|---|---|---|
@@ -9936,8 +9821,6 @@ http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bp
 | MigrateTaskId | String | 235943 | OSS备份上云任务的ID。 |
 | RequestId | String | 6ED3635A-01F9- 47BD-B9C8- CB3FD70A336E | 请求ID。 |
 
-云数据库RDS
-
 | Status | String | Success | 备份数据上云任务的状态，取值： NoStart：未开始 Running：运行中 Success：成功 Failed：失败 Waiting：等待（等待增量备份文件导入） |
 |---|---|---|---|
 
@@ -9949,7 +9832,7 @@ http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bp
 http(s)://rds.example.com/?Action=DescribeMigrateTaskById &DBInstanceId=rm-bp11e1tzgxxxx4ox &MigrateTaskId=235943
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeMigrateTaskByIdResponse>
@@ -9965,10 +9848,9 @@ http(s)://rds.example.com/?Action=DescribeMigrateTaskById &DBInstanceId=rm-bp11e
 </DescribeMigrateTaskByIdResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "Status": "Success",
   "Description": "Success",
   "RequestId": "6ED3635A-01F9-47BD-B9C8-CB3FD70A336E",
@@ -9978,16 +9860,16 @@ http(s)://rds.example.com/?Action=DescribeMigrateTaskById &DBInstanceId=rm-bp11e
   "BackupMode": "FULL",
   "DBName": "mytestdb",
   "DBInstanceName": "rm-bp11e1tzgxxxxx4ox"
-}
 ```
 
-#### 查询上云任务列表
+`}`
 
-调用DescribeMigrateTasks接口查询RDS SQL Server实例备份数据上云任务列表。 该接口可以查询实例在最近一周内的备份数据上云任务记录。 云数据库RDS 该接口可以查询实例在最近周内的备份数据上云任务记录
+#### 2.16.8 查询上云任务列表
 
-**说明**
+调用DescribeMigrateTasks接口查询RDS SQL Server实例备份数据上云任务列表。 该接口可以查询实例在最近一周内的备份数据上云任务记录。 该接口可以查询实例在最近周内的备份数据上云任务记录
 
-备份数据上云的源备份文件必须是全量备份（FULL）文件。 暂不支持SQL Server 2017集群版实例。
+> **说明：** 备份数据上云的源备份文件必须是全量备份（FULL）文件。
+> 暂不支持SQL Server 2017集群版实例。
 
 **请求参数**
 
@@ -10005,12 +9887,10 @@ http(s)://rds.example.com/?Action=DescribeMigrateTaskById &DBInstanceId=rm-bp11e
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
-| Items | Array of MigrateTask |  | 备份数据上云任务信息列表。 |
-| MigrateTask |  |  |  |
+| Items | Array of MigrateTask |   | 备份数据上云任务信息列表。 |
+| MigrateTask |   |   |   |
 | BackupMode | String | FULL | 备份数据上云任务类型，取值： FULL：表示通过全量备份文件去执行还原操作。 UPDF：表示通过增量文件或者日志文件去还原增量部分的数据。 |
 | CreateTime | String | 2017-05- 30T12:11:04Z | 备份数据上云任务创建时间。格式：yyyy-MM- ddTHH:mm:ssZ（UTC时间）。 |
-
-云数据库RDS
 
 | DBName | String | testDB | 数据库名称。 |
 |---|---|---|---|
@@ -10032,7 +9912,7 @@ http(s)://rds.example.com/?Action=DescribeMigrateTaskById &DBInstanceId=rm-bp11e
 http(s)://rds.example.com/?Action=DescribeMigrateTasks &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2017-10-20T01:00Z &EndTime=2017-10-25T01:00Z
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeMigrateTasksResponse>
@@ -10053,10 +9933,9 @@ http(s)://rds.example.com/?Action=DescribeMigrateTasks &DBInstanceId=rm-uf6wjk5x
 </DescribeMigrateTasksResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "A5409D02-D661-4BF3-8F3D-0A814D0574E7",
     "PageRecordCount": 1,
     "PageNumber": 1,
@@ -10070,23 +9949,21 @@ http(s)://rds.example.com/?Action=DescribeMigrateTasks &DBInstanceId=rm-uf6wjk5x
         "Status": "Success",
         "BackupMode": "FULL",
         "Description": "Api description"
-    }
-}
 ```
 
-#### 查询上云任务文件
+`}` `}`
 
-调用DescribeOssDownloads接口查询RDS SQL Server备份数据上云任务的文件详情。 该接口暂不支持SQL Server 2017企业版和2019 企业版实例。
+#### 2.16.9 查询上云任务文件
 
-**说明**
+调用DescribeOssDownloads接口查询RDS SQL Server备份数据上云任务的文件详情。
+
+> **说明：** 该接口暂不支持SQL Server 2017企业版和2019 企业版实例。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | DescribeOssDow nloads | 系统规定参数，取值：DescribeOssDownloads。 |
-
-云数据库RDS
 
 | DBInstanceId | String | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可通过DescribeDBInstances接口查询。 |
 |---|---|---|---|---|
@@ -10097,16 +9974,14 @@ http(s)://rds.example.com/?Action=DescribeMigrateTasks &DBInstanceId=rm-uf6wjk5x
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
-| Items | Array of OssDownload |  | 导入的文件列表。 |
-| OssDownload |  |  |  |
+| Items | Array of OssDownload |   | 导入的文件列表。 |
+| OssDownload |   |   |   |
 | BackupMode | String | Database | 备份类型，取值： Database：全量备份文件 Differential Database：增量备份文件 _ Transaction Log：日志备份文件 _ |
 | CreateTime | String | 2017-08- 17T12:45:15Z | 备份文件在下载列表中的创建时间。格式：yyyy-MM-ddTHH:mm:ssZ（UTC时间）。 |
 | Description | String | App description | 文件描述信息。 |
 | FileName | String | test | 备份文件在OSS上的名称。 |
 | FileSize | String | 2 | 备份文件大小，单位MB。 |
 | IsAvailable | String | True | 是否可用，取值：True \| False |
-
-云数据库RDS
 
 | Status | String | Finished | 文件状态，取值： NoStart：未开始 Downloading：下载中 Finished：下载完成 DownloadFailed：下载失败 VerifyFailed：MD5校验失败 Deleted：已删除 DeleteFailed：删除失败 CheckSuccess：检查成功 CheckFailed：检查失败 Restoring：还原中 Restored：还原成功 RestoreFailed：还原失败 |
 |---|---|---|---|
@@ -10121,7 +9996,7 @@ http(s)://rds.example.com/?Action=DescribeMigrateTasks &DBInstanceId=rm-uf6wjk5x
 http(s)://rds.example.com/?Action=DescribeOssDownloads &DBInstanceId=rm-uf6wjk5xxxxxxx &MigrateTaskId=5625458541
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DescribeDBInstancesResponse>
@@ -10143,10 +10018,9 @@ http(s)://rds.example.com/?Action=DescribeOssDownloads &DBInstanceId=rm-uf6wjk5x
 </DescribeDBInstancesResponse>
 ```
 
-云数据库RDS `JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "DescribeDBInstancesResponse": {
         "RequestId": "A5409D02-D661-4BF3-8F3D-0A814D0574E7",
         "DBInstanceId": "rm-uf6wjk5xxxxxxx",
@@ -10161,15 +10035,13 @@ http(s)://rds.example.com/?Action=DescribeOssDownloads &DBInstanceId=rm-uf6wjk5x
                 "CreateTime": "2017-08-17T12:45:15Z",
                 "FileName": "test",
                 "FileSize": 2
-            }
-        }
-    }
-}
 ```
 
-### 标签管理
+`}` `}` `}` `}`
 
-#### 创建标签
+### 2.17 标签管理
+
+#### 2.17.1 创建标签
 
 调用TagResources接口为指定的RDS实例创建并绑定标签。 在实例数量较多的情况下，您可以创建多个标签，为实例绑定不同的标签对其进行分类，之后通过标签进行实例筛选。 标签由一对键（key）值（value）组成，键在同账号同地域下唯一，值无此限制。 若设置的标签不存在，则自动创建该标签并绑定到目标实例。 若实例已经绑定了有相同键的标签，则进行覆盖绑定。 每个实例最多可以绑定20个标签。 每次调用最多设置50个实例进行批量标签绑定。
 
@@ -10180,8 +10052,6 @@ http(s)://rds.example.com/?Action=DescribeOssDownloads &DBInstanceId=rm-uf6wjk5x
 | Action | String | 是 | TagResources | 系统规定参数。取值：TagResources。 |
 | RegionId | String | 是 | cn-hangzhou | 地域ID，可以通过接口DescribeRegions 查看可用的地域ID。 |
 | ResourceId.N | RepeatL ist | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可以同时对N个实例绑定标签，N 的取值范围：1~50。 |
-
-云数据库RDS
 
 | ResourceType | String | 是 | INSTANCE | 资源类型定义。唯一取值：INSTANCE。 |
 |---|---|---|---|---|
@@ -10202,7 +10072,7 @@ http(s)://rds.example.com/?Action=DescribeOssDownloads &DBInstanceId=rm-uf6wjk5x
 http(s)://rds.example.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &Tag.1.Key=testkey1 &Tag.1.Value=testvalue1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TagResourcesResponse>
@@ -10210,17 +10080,17 @@ http(s)://rds.example.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceTy
 </TagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"224DB9F7-3100-4899-AB9C-C938BCCB43E7"
-}
 ```
 
-#### 绑定标签
+`}`
 
-调用AddTagsToResource接口为实例绑定标签。 为实例绑定已有的或新创建的标签，限制如下： 每个标签（Tag）由标签键（TagKey）和标签值（TagValue）组成，TagKey不能为空，TagValue可以为空； 云数据库RDS TagKey和TagValue的值不允许以aliyun开头； TagKey和TagValue不区分大小写； TagKey最长为64个字符，TagValue最长为128个字符； 每个实例最多绑定10个Tag，每个实例绑定的TagKey不能重复。若绑定带有重复TagKey的Tag，则后绑定的Tag将覆盖之前的Tag。
+#### 2.17.2 绑定标签
+
+调用AddTagsToResource接口为实例绑定标签。 为实例绑定已有的或新创建的标签，限制如下： 每个标签（Tag）由标签键（TagKey）和标签值（TagValue）组成，TagKey不能为空，TagValue可以为空； TagKey和TagValue的值不允许以aliyun开头； TagKey和TagValue不区分大小写； TagKey最长为64个字符，TagValue最长为128个字符； 每个实例最多绑定10个Tag，每个实例绑定的TagKey不能重复。若绑定带有重复TagKey的Tag，则后绑定的Tag将覆盖之前的Tag。
 
 **请求参数**
 
@@ -10233,8 +10103,6 @@ http(s)://rds.example.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceTy
 | Tag.1.key | String | 否 | key1 | 当前第一组key。需要绑定的Tag，包括 TagKey和TagValue，单次最多支持传入 5组值。TagKey不能为空，TagValue可以为空。 |
 | Tag.2.key | String | 否 | key2 | 当前第二组key。需要绑定的Tag，包括 TagKey和TagValue，单次最多支持传入 5组值。TagKey不能为空，TagValue可以为空。 |
 | Tag.3.key | String | 否 | key3 | 当前第三组key。需要绑定的Tag，包括 TagKey和TagValue，单次最多支持传入 5组值。TagKey不能为空，TagValue可以为空。 |
-
-云数据库RDS
 
 | Tag.4.key | String | 否 | key4 | 当前第四组key。需要绑定的Tag，包括 TagKey和TagValue，单次最多支持传入 5组值。TagKey不能为空，TagValue可以为空。 |
 |---|---|---|---|---|
@@ -10253,17 +10121,13 @@ http(s)://rds.example.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceTy
 |---|---|---|---|
 | RequestId | String | 224DB9F7-3100- 4899-AB9C- C938BCCB43E7 | 请求ID。 |
 
-云数据库RDS
-
-**示例**
-
 请求示例
 
 ```
 http(s)://rds.example.com/?Action=AddTagsToResource &RegionId=cn-hagnzhou &DBInstanceId=rm-uf6wjk5xxxxxxx &Tags=%7B%22test%22%3A%221%22%7D
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <AddTagsToResourceResponse>
@@ -10271,15 +10135,15 @@ http(s)://rds.example.com/?Action=AddTagsToResource &RegionId=cn-hagnzhou &DBIns
 </AddTagsToResourceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "requestId": "224DB9F7-3100-4899-AB9C-C938BCCB43E7"
-}
 ```
 
-#### 查询标签
+`}`
+
+#### 2.17.3 查询标签
 
 调用ListTagResources查询一个或多个RDS实例已经绑定的标签列表。
 
@@ -10293,8 +10157,6 @@ http(s)://rds.example.com/?Action=AddTagsToResource &RegionId=cn-hagnzhou &DBIns
 | ResourceType | String | 是 | INSTANCE | 资源类型定义。唯一取值：INSTANCE。 |
 | NextToken | String | 否 | 212db86sca438 4811e0b5e8707 ec21345 | 用来返回更多结果。第一次查询不需要提供这个参数，如果一次查询没有返回全部结果，则可在后续查询中传入前一次返回的token继续查询。 |
 
-云数据库RDS
-
 | Tag.N.Key | String | 否 | testkey1 | 标签键。可以同时查询N个标签键，N的取值范围：1~20。不允许传入空字符串。 说明 ResourceId.N参数和Tag.N.Key参数至少传入一个。 |
 |---|---|---|---|---|
 | Tag.N.Value | String | 否 | testvalue1 | 标签键对应的标签值。可以同时查询N个标签值，N的取值范围：1~20。允许传入空字符串。 |
@@ -10305,8 +10167,8 @@ http(s)://rds.example.com/?Action=AddTagsToResource &RegionId=cn-hagnzhou &DBIns
 |---|---|---|---|
 | NextToken | String | 212db86sca43848 11e0b5e8707ec21 345 | 如果一次查询没有返回全部结果，则可在后续查询中传入前一次返回的token继续查询。 |
 | RequestId | String | 47A514A1-4B77- 4E30-B4C5- 2A880650B3FD | 请求ID。 |
-| TagResources | Array of TagResource |  | 查询到的实例和标签的信息。 |
-| TagResource |  |  |  |
+| TagResources | Array of TagResource |   | 查询到的实例和标签的信息。 |
+| TagResource |   |   |   |
 | ResourceId | String | rm-uf6wjk5xxxxxxx | 实例ID。 |
 | ResourceType | String | ALIYUN::RDS::INST ANCE | 资源类型， ALIYUN::RDS::INSTANCE 即云数据库RDS实例。 |
 | TagKey | String | testkey1 | 标签键。 |
@@ -10320,7 +10182,7 @@ http(s)://rds.example.com/?Action=AddTagsToResource &RegionId=cn-hagnzhou &DBIns
 http(s)://rds.example.com/?Action=ListTagResources &RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &Tag.1.Key=testkey1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式云数据库RDS
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ListTagResourcesResponse>
@@ -10336,35 +10198,36 @@ http(s)://rds.example.com/?Action=ListTagResources &RegionId=cn-hangzhou &Resour
 </ListTagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "TagResources":{
   "TagResource":[
-   {
+```
+
+`{`
+
+```json
     "ResourceType":"ALIYUN::RDS::INSTANCE",
     "TagValue":"testvalue1",
     "ResourceId":"rm-uf6wjk5xxxxxxx",
     "TagKey":"testkey1"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "RequestId":"47A514A1-4B77-4E30-B4C5-2A880650B3FD"
-}
 ```
 
-#### 解绑标签
+`}`
+
+#### 2.17.4 解绑标签
 
 调用UntagResources接口为指定的RDS实例解绑标签。
 
-**说明**
-
-每次解绑的标签数量不能超过20个。 标签从一个实例解绑后，如果没有绑定到其它实例，则该标签自动被删除。
+> **说明：** 每次解绑的标签数量不能超过20个。
+> 标签从一个实例解绑后，如果没有绑定到其它实例，则该标签自动被删除。
 
 **请求参数**
 
@@ -10373,8 +10236,6 @@ http(s)://rds.example.com/?Action=ListTagResources &RegionId=cn-hangzhou &Resour
 | Action | String | 是 | UntagResources | 系统规定参数。取值：UntagResources。 |
 | RegionId | String | 是 | cn-hangzhou | 地域ID，可以通过接口DescribeRegions 查看可用的地域ID。 |
 | ResourceId.N | RepeatL ist | 是 | rm- uf6wjk5xxxxxxx | 实例ID。可以同时对N个实例解绑标签，N 的取值范围：1~50。 |
-
-云数据库RDS
 
 | ResourceType | String | 是 | INSTANCE | 资源类型定义。唯一取值：INSTANCE。 |
 |---|---|---|---|---|
@@ -10395,7 +10256,7 @@ http(s)://rds.example.com/?Action=ListTagResources &RegionId=cn-hangzhou &Resour
 http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &TagKey.1=testkey1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <UntagResourcesResponse>
@@ -10403,19 +10264,19 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 </UntagResourcesResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId":"601B6F25-21E7-4484-99D5-3EF2625C0088"
-}
 ```
 
-### 如何使用RAM授权
+`}`
+
+### 2.18 如何使用RAM授权
 
 **使用RAM实现RDS资源授权**
 
-云数据库RDS 您通过云账号创建的RDS实例，都是该账号自己拥有的资源。默认情况下，账号对自己的资源拥有完整的操作权限。 使用阿里云的RAM（Resource Access Management）服务，您可以将您云账号下RDS资源的访问及管理权限授予RAM中子用户。 如果您不需要使用RAM，请略过此章节。
+您通过云账号创建的RDS实例，都是该账号自己拥有的资源。默认情况下，账号对自己的资源拥有完整的操作权限。 使用阿里云的RAM（Resource Access Management）服务，您可以将您云账号下RDS资源的访问及管理权限授予RAM中子用户。 如果您不需要使用RAM，请略过此章节。
 
 **RAM中可授权的RDS资源类型**
 
@@ -10449,8 +10310,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | RevokeAccountPrivilege | DescribeAccounts |
 | DeleteAccount | ModifyAccountDescription |
 
-云数据库RDS
-
 | CreateBackup | DescribeBackups |
 |---|---|
 | CreateTempDBInstance | DescribeBackupPolicy |
@@ -10463,11 +10322,7 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | DescribeOptimizeAdviceOnMissIndex | DescribeOptimizeAdviceByDBA |
 | DescribeParameters | ModifyeParameter |
 
-除了DescribeRegions，DescribeParameterTemplates参数外，其他接口都可以鉴
-
-**说明**
-
-权。
+> **说明：** 除了DescribeRegions，DescribeParameterTemplates参数外，其他接口都可以鉴权。
 
 **授权访问鉴权规则**
 
@@ -10488,8 +10343,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | DescribeImportsForSQLServer | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | CancelImport | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | ResetAccountPassword | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
-
-云数据库RDS
 
 | RevokeAccountPrivilege | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 |---|---|
@@ -10522,8 +10375,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | DescribeAccounts | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | ModifyAccountDescription | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 
-云数据库RDS
-
 | DescribeBackups | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 |---|---|
 | DescribeBackupPolicy | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
@@ -10536,11 +10387,11 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | DescribeOptimizeAdviceByDBA | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | ModifyeParameter | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 
-### 附表
+### 2.19 附表
 
-#### 客户端错误代码表
+#### 2.19.1 客户端错误代码表
 
-##### 公共错误
+##### 2.19.1.1 公共错误
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
@@ -10556,8 +10407,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | InvalidAction | The specified action is not valid. | 403 |
 | ActionUnauthorized | The specified action is not available for you | 403 |
 
-云数据库RDS
-
 | UnsupportedHTTPMethod | This http method not supported. | 403 |
 |---|---|---|
 | UnsupportedParameter | The parameter "<parameter name>" is not supported. | 400 |
@@ -10571,7 +10420,7 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
 
-##### 特定错误
+##### 2.19.1.2 特定错误
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
@@ -10584,8 +10433,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | OperationDenied | The resource is out of usage. | 403 |
 | RegionUnauthorized | There is no authority to create instance in the specified region. | 403 |
 | QuotaExceeded.CreateInstance | The quota of create instance exceeds. | 403 |
-
-云数据库RDS
 
 | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist in our records. | 404 |
 |---|---|---|
@@ -10611,8 +10458,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | QuotaExceeded.Upload | The quota of file exceeds. | 403 |
 | InvalidFileName.NotCompleted | The specified "FileName" is not completed . | 404 |
 
-云数据库RDS
-
 | InvalidFileName.NotAvailable | The specified "FileName" is not Available . | 404 |
 |---|---|---|
 | QuotaExceeded.FileSize | The quota of file size exceeds. | 403 |
@@ -10636,8 +10481,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | InvalidBackupId.NotFound | The BackupId provided does not exist in our records. | 404 |
 | OperationDenied.NotFoundBackup | The operation is not permitted due to no backup. | 403 |
 
-云数据库RDS
-
 | OperationDenied.BackupStatus | The operation is not permitted due to type of backup. | 403 |
 |---|---|---|
 | OperationDenied.BackupMethod | The operation is not permitted method of backup. | 403 |
@@ -10660,8 +10503,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | InvalidEngineVersion.Malformed | The specified parameter "EngineVersion" is not valid. | 400 |
 | InvalidInstanceNetworkType.ValueN otSupported | The specified parameter "InstanceNetworkType" is not valid. | 400 |
 | InvalidParameter | The specified parameter "dbInstanceId" is not valid. | 400 |
-
-云数据库RDS
 
 | InvalidPort.Malformed | Specified port is not valid. | 400 |
 |---|---|---|
@@ -10690,8 +10531,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | OperationDenied.DBInstanceType | The operation is not permitted due to type of instance. | 403 |
 | OperationDenied.LockMode | The operation is not permitted due to lock of instance. | 403 |
 
-云数据库RDS
-
 | OperationDenied.Switch | Specified instance cannot be switched. | 400 |
 |---|---|---|
 | OperationDenied.SwitchToVPC | Specified instance cannot be switched to VPC. | 403 |
@@ -10703,14 +10542,14 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | PublicConnectionExists | PublicConnection exists. | 403 |
 | bpcIzNoNotEqualsRdsMultIzNo | Specified vpc IzNo not equal rds IzNo. | 400 |
 
-#### 服务器端错误代码表
+#### 2.19.2 服务器端错误代码表
 
 | 错误代码 | 描述 | HTTP状态码 |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
 
-#### 实例状态表
+#### 2.19.3 实例状态表
 
 | 状态 | 说明 |
 |---|---|
@@ -10726,15 +10565,13 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | Restoring | 备份恢复中 |
 | Importing | 数据导入中 |
 
-云数据库RDS
-
 | ImportingFromOthers | 从其他RDS实例导入数据中 |
 |---|---|
 | DBInstanceNetTypeChanging | 内外网切换中 |
 | GuardSwitching | 容灾切换中 |
 | INS CLONING _ | 实例克隆中 |
 
-#### 性能参数表
+#### 2.19.4 性能参数表
 
 **云数据库MySQL版**
 
@@ -10754,8 +10591,6 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | MySQL RowDML _ | 平均每秒从InnoDB表读取的行数，平均每秒从InnoDB表更新的行数，平均每秒从 InnoDB表删除的行数，平均每秒从InnoDB表插入的行数，平均每秒向日志文件的物理写次数 |
 | MySQL MemCpuUsage _ | MySQL实例CPU使用率(占操作系统总数)，MySQL实例内存使用率(占操作系统总数) |
 | MySQL IOPS _ | MySQL实例的IOPS（每秒IO请求次数） |
-
-云数据库RDS
 
 | MySQL DetailedSpaceUsag _ e | MySQL实例空间占用详情：ins size实例总空间使用量；data size数据空间； _ _ log size日志空间；tmp size临时空间；other size系统空间 _ _ _ |
 |---|---|
@@ -10781,14 +10616,12 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | SQLServer IOPS _ | MSSQL实例的IOPS（每秒IO请求次数）。 |
 | SQLServer SpaceUsage _ | MSSQL实例空间占用。 |
 
-#### 禁用关键字表
+#### 2.19.5 禁用关键字表
 
 **云数据库MySQL版**
 
 | 参数字段 | 关键字描述 |
 |---|---|
-
-云数据库RDS
 
 | DBName/ AccountName | admin,aurora,replicator,xtrabak,root（MySQL5.5/5.6）,mysql,test,eagleye,infor mation schema,guest,add,analyze,asc,between,blob,call,c _ hange,check,condition,continue,cross,current timestamp,database,day micros _ _ econd,dec,default,desc,distinct,double,e ach,enclosed,exit,fetch,float8,foreign,goto,having,hour minute,ignore,infile,inse _ nsitive,int1,int4,interval,iterate,keys,lea ding,like,lines,localtimestamp,longblob,low priority,mediumint,minute microse _ _ cond,modifies,no write to binlog,on, _ _ _ optionally,out,precision,purge,read,references,rename,require,revoke,schema,s elect,set,spatial,sqlexception,sql big re _ _ sult,ssl,table,tinyblob,to,true,unique,update,using,utc timestamp,varchar,when, _ with,xor,all,and,asensitive,bigint,both,c ascade,char,collate,connection,convert,current date,current user,databases,da _ _ y minute,decimal,delayed,describe,dis _ tinctrow,drop,else,escaped,explain,float,for,from,grant,high priority,hour secon _ _ d,in,inner,insert,int2,int8,into,join,kill,le ave,limit,load,lock,longtext,match,mediumtext,minute second,natural,null,opti _ mize,or,outer,primary,raid0,reads,regex p,repeat,restrict,right,schemas,sensitive,show,specific,sqlstate,sql calc found r _ _ _ ows,starting,terminated,tinyint,trailing, undo,unlock,usage,utc date,values,varcharacter,where,write,year month,alter, _ _ as,before,binary,by,case,character,colu mn,constraint,create,current time,cursor,day hour,day second,declare,delete, _ _ _ deterministic,div,dual,elseif,exists,false, float4,force,fulltext,group,hour microsecond,if,index,inout,int,int3,integer,is,key _ ,label,left,linear,localtime,long,loop,me diumblob,middleint,mod,not,numeric,option,order,outfile,procedure,range,real,r elease,replace,return,rlike,second mi _ crosecond,separator,smallint,sql,sqlwarning,sql small result,straight join,then,t _ _ _ inytext,trigger,union,unsigned,use,utc _ time,varbinary,varying,while,x509,zerofill,galaxy |
 |---|---|
@@ -10798,142 +10631,130 @@ http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &Resource
 | 参数字段 | 关键字描述 |
 |---|---|
 
-云数据库RDS
-
 | DBName/ AccountName | root,admin,eagleye,master,aurora,sa,sysadmin,administrator,mssqld,public,security admin,serveradmin,setupadmin,pr ocessadmin,diskadmin,dbcreator,bulkadmin,tempdb,msdb,model,distribution,mssqls ystemresource,guest,add,except, percent,all,exec,plan,alter,execute,precision,and,exists,primary,any,exit,print,as,fetc h,proc,asc,file,procedure,authorizati on,fillfactor,public,backup,for,raiserror,begin,foreign,read,between,freetext,readtext, break,freetexttable,reconfigure,br owse,from,references,bulk,full,replication,by,function,restore,cascade,goto,restrict,c ase,grant,return,check,group,rev oke,checkpoint,having,right,close,holdlock,rollback,clustered,identity,rowcount,coale sce,identity insert,rowguidcol,coll _ ate,identitycol,rule,column,if,save,commit,in,schema,compute,index,select,constrain t,inner,session user,contains,insert, _ set,containstable,intersect,setuser,continue,into,shutdown,convert,is,some,create,jo in,statistics,cross,key,system user, _ current,kill,table,current date,left,textsize,current time,like,then,current timestamp, _ _ _ lineno,to,current user,load,top,cur _ sor,national,tran,database,nocheck,transaction,dbcc,nonclustered,trigger,deallocate ,not,truncate,declare,null,tsequal, default,nullif,union,delete,of,unique,deny,off,update,desc,offsets,updatetext,disk,on, use,distinct,open,user,distributed, opendatasource,values,double,openquery,varying,drop,openrowset,view,dummy,op enxml,waitfor,dump,option,when, else,or,where,end,order,while,errlvl,outer,with,escape,over,writetext,galaxy |
 |---|---|
 
-#### 实例规格
+#### 2.19.6 实例规格
 
 实例有不同的系列、版本、规格，性能也有区别。 表 1. RDS MySQL实例规格参数
 
 | 系列 | 规格类型 | 规格代码 | CPU/内存 | 最大连接数 | 最大 IOPS | 磁盘空间 | 同城容灾部署情况 |
 |---|---|---|---|---|---|---|---|
-|  |  | 5.6、5.7、8.0 mysql.x8.medium .2 | 2核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysql.x8.large.2 | 4核32GB | 5000 | 9000 | 50GB- 1000GB（ 步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysql.x8.xlarge.2 | 8核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |  |
+|   |   | 5.6、5.7、8.0 mysql.x8.medium .2 | 2核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysql.x8.large.2 | 4核32GB | 5000 | 9000 | 50GB- 1000GB（ 步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysql.x8.xlarge.2 | 8核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |   |
 
-云数据库RDS
-
-|  | 独享套餐 （X8） |  |  |  |  |  |  |
+|   | 独享套餐 （X8） |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  | 5.6、5.7、8.0 mysql.x8.2xlarge. 2 | 16核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |  |
-| 双机高可用版本 |  |  |  |  |  |  | 单机房、 双机房 |
-|  |  | 5.6、5.7、8.0 mysql.x8.4xlarge. 2 | 32核 256GB | 4000 0 | 7200 0 | 1000GB~6 000GB |  |
-|  |  | 5.6、5.7、8.0 mysql.x8.8xlarge. 2 | 64核 512GB | 8000 0 | 1440 00 |  |  |
-|  | 独享套餐 （X4） | 5.6、5.7、8.0 mysql.x4.large.2 | 4核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysql.x4.xlarge.2 | 8核32GB | 5000 | 9000 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysql.x4.2xlarge. 2 | 16核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysql.x4.4xlarge. 2 | 32核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |  |
-|  | 独占物理机 | 5.6、5.7、8.0 rds.mysql.st.v52 | 90核 720GB | 1500 00 | 1400 00 | 1000GB- 6000GB |  |
-|  |  | 5.6、5.7 rds.mysql.st.h43 | 60核 470GB | 1500 00 | 1200 00 |  |  |
-|  | 独享型 （高 CPU） | 5.7 mysql.x4.large.25 | 4核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.7 mysql.x4.xlarge.2 5 | 8核32GB | 5000 | 9000 | 500GB- 3000GB （步长5G） |  |
+|   |   | 5.6、5.7、8.0 mysql.x8.2xlarge. 2 | 16核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |   |
+| 双机高可用版本 |   |   |   |   |   |   | 单机房、 双机房 |
+|   |   | 5.6、5.7、8.0 mysql.x8.4xlarge. 2 | 32核 256GB | 4000 0 | 7200 0 | 1000GB~6 000GB |   |
+|   |   | 5.6、5.7、8.0 mysql.x8.8xlarge. 2 | 64核 512GB | 8000 0 | 1440 00 |   |   |
+|   | 独享套餐 （X4） | 5.6、5.7、8.0 mysql.x4.large.2 | 4核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysql.x4.xlarge.2 | 8核32GB | 5000 | 9000 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysql.x4.2xlarge. 2 | 16核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysql.x4.4xlarge. 2 | 32核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |   |
+|   | 独占物理机 | 5.6、5.7、8.0 rds.mysql.st.v52 | 90核 720GB | 1500 00 | 1400 00 | 1000GB- 6000GB |   |
+|   |   | 5.6、5.7 rds.mysql.st.h43 | 60核 470GB | 1500 00 | 1200 00 |   |   |
+|   | 独享型 （高 CPU） | 5.7 mysql.x4.large.25 | 4核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.7 mysql.x4.xlarge.2 5 | 8核32GB | 5000 | 9000 | 500GB- 3000GB （步长5G） |   |
 
-云数据库RDS
-
-| 三节点企业版 |  |  |  |  |  |  | 支持单机房三节点形态 |
+| 三节点企业版 |   |   |   |   |   |   | 支持单机房三节点形态 |
 |---|---|---|---|---|---|---|---|
-|  |  | 5.7 mysql.x4.2xlarge. 25 | 16核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.7 mysql.x4.4xlarge. 25 | 32核 128GB | 2000 0 | 3600 0 | 1000GB- 3000GB （步长5G） |  |
-|  | 独享型 （高内存） | 5.7 mysql.x8.medium .25 | 2核 16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.7 mysql.x8.xlarge.2 5 | 4核 32GB | 5000 | 9000 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.7 mysql.x8.xlarge.2 5 | 8核 64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.7 mysql.x8.2xlarge. 25 | 16核 128GB | 2000 0 | 3600 0 |  |  |
-|  |  | 5.7 mysql.x8.4xlarge. 25 | 32核 256GB | 4000 0 | 7200 0 | 1000GB- 3000GB （步长5G） |  |
-|  | 独占物理机型 | 5.7 mysql.st.8xlarge.2 5 | 60核 470GB | 1000 00 | 1200 00 | 1000GB- 6000GB （步长5G） |  |
-|  |  | 5.7 mysql.st.12xlarge. 25 | 90核 720GB | 1500 00 | 1400 00 | 1000GB- 6000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x8.mediu m.1 | 2核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x8.large. 1 | 4核32GB | 5000 | 9000 | 50GB- 1000GB （步长5G） |  |
+|   |   | 5.7 mysql.x4.2xlarge. 25 | 16核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.7 mysql.x4.4xlarge. 25 | 32核 128GB | 2000 0 | 3600 0 | 1000GB- 3000GB （步长5G） |   |
+|   | 独享型 （高内存） | 5.7 mysql.x8.medium .25 | 2核 16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.7 mysql.x8.xlarge.2 5 | 4核 32GB | 5000 | 9000 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.7 mysql.x8.xlarge.2 5 | 8核 64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.7 mysql.x8.2xlarge. 25 | 16核 128GB | 2000 0 | 3600 0 |   |   |
+|   |   | 5.7 mysql.x8.4xlarge. 25 | 32核 256GB | 4000 0 | 7200 0 | 1000GB- 3000GB （步长5G） |   |
+|   | 独占物理机型 | 5.7 mysql.st.8xlarge.2 5 | 60核 470GB | 1000 00 | 1200 00 | 1000GB- 6000GB （步长5G） |   |
+|   |   | 5.7 mysql.st.12xlarge. 25 | 90核 720GB | 1500 00 | 1400 00 | 1000GB- 6000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x8.mediu m.1 | 2核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x8.large. 1 | 4核32GB | 5000 | 9000 | 50GB- 1000GB （步长5G） |   |
 
-| 开发指南·API | 参考 |  |  |  |  |  | 云数据库RD |
+| 开发指南·API | 参考 |   |   |   |   |   | 云数据库RD |
 |---|---|---|---|---|---|---|---|
-| 只读实例 | 独享套餐 （X8） |  |  |  |  |  | 单机房、 双机房 |
-|  |  | 5.6、5.7、8.0 mysqlro.x8.xlarge .1 | 8核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x8.2xlarg e.1 | 16核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x8.4xlarg e.1 | 32核 256GB | 4000 0 | 7200 0 | 1000GB- 6000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x8.8xlarg e.1 | 64核 512GB | 8000 0 | 1440 0 | 1000GB- 6000GB （步长5G） |  |
-|  | 独享套餐 （X4） | 5.6、5.7、8.0 mysqlro.x4.large. 1 | 4核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x4.xlarge .1 | 8核32GB | 5000 | 9000 | 50GB- 1000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x4.2xlarg e.1 | 16核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |  |
-|  |  | 5.6、5.7、8.0 mysqlro.x4.4xlarg e.1 | 32核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |  |
-|  | 独占物理机 | 5.6、5.7、8.0 rds.mysql.st.v52 | 90核 720GB | 1500 00 | 1400 00 | 1000GB- 6000GB （步长5G） |  |
-|  |  | 5.6、5.7 rds.mysql.st.h43 | 60核 470GB | 1000 00 | 1200 00 |  |  |
+| 只读实例 | 独享套餐 （X8） |   |   |   |   |   | 单机房、 双机房 |
+|   |   | 5.6、5.7、8.0 mysqlro.x8.xlarge .1 | 8核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x8.2xlarg e.1 | 16核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x8.4xlarg e.1 | 32核 256GB | 4000 0 | 7200 0 | 1000GB- 6000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x8.8xlarg e.1 | 64核 512GB | 8000 0 | 1440 0 | 1000GB- 6000GB （步长5G） |   |
+|   | 独享套餐 （X4） | 5.6、5.7、8.0 mysqlro.x4.large. 1 | 4核16GB | 2500 | 4500 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x4.xlarge .1 | 8核32GB | 5000 | 9000 | 50GB- 1000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x4.2xlarg e.1 | 16核64GB | 1000 0 | 1800 0 | 500GB- 3000GB （步长5G） |   |
+|   |   | 5.6、5.7、8.0 mysqlro.x4.4xlarg e.1 | 32核 128GB | 2000 0 | 3600 0 | 500GB- 3000GB （步长5G） |   |
+|   | 独占物理机 | 5.6、5.7、8.0 rds.mysql.st.v52 | 90核 720GB | 1500 00 | 1400 00 | 1000GB- 6000GB （步长5G） |   |
+|   |   | 5.6、5.7 rds.mysql.st.h43 | 60核 470GB | 1000 00 | 1200 00 |   |   |
 
 表 2. RDS SQL Server实例规格参数
 
 | 系列 | 版本 | 规格类型 | 规格代码 | CPU/内存 | 最大连接数 | 最大 IOPS | 磁盘空间 | 同城容灾部署情况 |
 |---|---|---|---|---|---|---|---|---|
 
-云数据库RDS
-
 | 双机高可用版本 | 2008 R2 | 独享套餐 | mssql.x8.mediu m.2 | 2核16GB | 2500 | 4500 | 250GB | 单机房、双机房， 不支持 V5机型，新局点不输出。 |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | mssql.x8.large.2 | 4核32GB | 5000 | 9000 | 500GB |  |
-|  |  |  | mssql.x8.xlarge. 2 | 8核64GB | 1000 0 | 1800 0 | 1000GB |  |
-|  |  |  | mssql.x8.2xlarg e.2 | 16核 128GB | 2000 0 | 3600 0 | 2000GB |  |
-|  |  | 独占物理机 | rds.mssql.st.d13 | 30核 220GB | 6400 0 | 2000 0 | 2TB |  |
-|  | 2012 企业版： 2012 ent _ _ ha 2016 企业版： 2016 ent _ _ ha | 独享型 | mssql.x4.mediu m.e2 | 2核 8GB |  |  |  |  |
-|  |  |  | mssql.x8.mediu m.e2 | 2核 16GB |  |  |  |  |
-|  |  |  | mssql.x4.large.e 2 | 4核 16GB |  |  |  |  |
-|  |  |  | mssql.x8.large.e 2 | 4核 32GB |  |  |  |  |
-|  |  |  | mssql.x4.xlarge. e2 | 8核 32GB |  |  |  |  |
-|  |  |  | mssql.x8.xlarge. e2 | 8核 64GB |  |  |  |  |
-|  |  |  | mssql.x4.2xlarg e.e2 | 16核 64GB |  |  |  |  |
-|  |  |  | mssql.x8.2xlarg e.e2 | 16核 128GB |  |  |  |  |
-|  |  |  | mssql.x4.3xlarg e.e2 | 24核 96GB |  |  |  |  |
-|  |  |  | mssql.x4.4xlarg e.e2 | 32核 128GB |  |  |  |  |
+|   |   |   | mssql.x8.large.2 | 4核32GB | 5000 | 9000 | 500GB |   |
+|   |   |   | mssql.x8.xlarge. 2 | 8核64GB | 1000 0 | 1800 0 | 1000GB |   |
+|   |   |   | mssql.x8.2xlarg e.2 | 16核 128GB | 2000 0 | 3600 0 | 2000GB |   |
+|   |   | 独占物理机 | rds.mssql.st.d13 | 30核 220GB | 6400 0 | 2000 0 | 2TB |   |
+|   | 2012 企业版： 2012 ent _ _ ha 2016 企业版： 2016 ent _ _ ha | 独享型 | mssql.x4.mediu m.e2 | 2核 8GB |   |   |   |   |
+|   |   |   | mssql.x8.mediu m.e2 | 2核 16GB |   |   |   |   |
+|   |   |   | mssql.x4.large.e 2 | 4核 16GB |   |   |   |   |
+|   |   |   | mssql.x8.large.e 2 | 4核 32GB |   |   |   |   |
+|   |   |   | mssql.x4.xlarge. e2 | 8核 32GB |   |   |   |   |
+|   |   |   | mssql.x8.xlarge. e2 | 8核 64GB |   |   |   |   |
+|   |   |   | mssql.x4.2xlarg e.e2 | 16核 64GB |   |   |   |   |
+|   |   |   | mssql.x8.2xlarg e.e2 | 16核 128GB |   |   |   |   |
+|   |   |   | mssql.x4.3xlarg e.e2 | 24核 96GB |   |   |   |   |
+|   |   |   | mssql.x4.4xlarg e.e2 | 32核 128GB |   |   |   |   |
 
-云数据库RDS
-
-|  |  |  |  |  | 无限制 | 取决于云盘性能 | 20GB- 4000GB | 仅支持单机房 |
+|   |   |   |   |   | 无限制 | 取决于云盘性能 | 20GB- 4000GB | 仅支持单机房 |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | mssql.x8.4xlarg e.e2 | 32核 256GB |  |  |  |  |
-|  |  |  | mssql.x8.7xlarg e.e2 | 56核 480GB |  |  |  |  |
-|  |  |  | mssql.x4.8xlarg e.e2 | 64核 256GB |  |  |  |  |
-|  |  |  | mssql.x8.8xlarg e.e2 | 64核 512GB |  |  |  |  |
-|  |  |  | mssql.x4.mediu m.s2 | 2核 8GB |  |  |  |  |
-|  |  |  | mssql.x8.mediu m.s2 | 2核 16GB |  |  |  |  |
-|  |  |  | mssql.x4.large.s 2 | 4核 16GB |  |  |  |  |
-|  | 2012 标准版： 2012 std _ _ ha 2016 标准版： 2016 std _ _ ha | 独享型 |  |  |  |  |  |  |
-|  |  |  | mssql.x8.large.s 2 | 4核 32GB |  |  |  |  |
-|  |  |  | mssql.x4.xlarge. s2 | 8核 32GB |  |  |  |  |
-|  |  |  | mssql.x8.xlarge. s2 | 8核 64GB |  |  |  |  |
-|  |  |  | mssql.x4.2xlarg e.s2 | 16核 64GB |  |  |  |  |
-|  |  |  | mssql.x8.2xlarg e.s2 | 16核 128GB |  |  |  |  |
-|  |  |  | mssql.x4.3xlarg e.s2 | 24核 96GB |  |  |  |  |
+|   |   |   | mssql.x8.4xlarg e.e2 | 32核 256GB |   |   |   |   |
+|   |   |   | mssql.x8.7xlarg e.e2 | 56核 480GB |   |   |   |   |
+|   |   |   | mssql.x4.8xlarg e.e2 | 64核 256GB |   |   |   |   |
+|   |   |   | mssql.x8.8xlarg e.e2 | 64核 512GB |   |   |   |   |
+|   |   |   | mssql.x4.mediu m.s2 | 2核 8GB |   |   |   |   |
+|   |   |   | mssql.x8.mediu m.s2 | 2核 16GB |   |   |   |   |
+|   |   |   | mssql.x4.large.s 2 | 4核 16GB |   |   |   |   |
+|   | 2012 标准版： 2012 std _ _ ha 2016 标准版： 2016 std _ _ ha | 独享型 |   |   |   |   |   |   |
+|   |   |   | mssql.x8.large.s 2 | 4核 32GB |   |   |   |   |
+|   |   |   | mssql.x4.xlarge. s2 | 8核 32GB |   |   |   |   |
+|   |   |   | mssql.x8.xlarge. s2 | 8核 64GB |   |   |   |   |
+|   |   |   | mssql.x4.2xlarg e.s2 | 16核 64GB |   |   |   |   |
+|   |   |   | mssql.x8.2xlarg e.s2 | 16核 128GB |   |   |   |   |
+|   |   |   | mssql.x4.3xlarg e.s2 | 24核 96GB |   |   |   |   |
 
 表 3. PolarDB实例规格参数
 
 | 系列 | 版本 | 规格类型 | 规格代码 | CPU/内存 | 最大连接数 | 最大 IOPS | 磁盘空间 | 同城容灾部署情况 |
 |---|---|---|---|---|---|---|---|---|
 
-云数据库RDS
-
 | 双机高可用版本 | 11 | 独享型 | polardb .x4.sma ll.2 | 1核 4GB | 200 | 5000 | 250GB | 单机房、 双机房 |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | polardb .x4.med ium.2 | 2核 8GB | 400 | 10000 |  |  |
-|  |  |  | polardb .x8.med ium.2 | 2核 16GB | 2500 | 15000 |  |  |
-|  |  |  | polardb .x4.larg e.2 | 4核 16GB | 2500 | 20000 | 250GB- 500GB （步长 5G） |  |
-|  |  |  | polardb .x8.larg e.2 | 4核 32GB | 5000 | 30000 |  |  |
-|  |  |  | polardb .x4.xlar ge.2 | 8核 32GB | 5000 | 40000 | 500GB- 1000GB （步长 5G） |  |
-|  |  |  | polardb .x8.xlar ge.2 | 8核 64GB | 10000 | 60000 |  |  |
-|  |  |  | polardb .x4.2xla rge.2 | 16核 64GB | 10000 | 80000 | 1000GB - 2000GB （步长 5G） |  |
-|  |  |  | polardb .x8.2xla rge.2 | 16核 128GB | 12000 | 120000 |  |  |
-|  |  |  | polardb .x4.4xla rge.2 | 32核 128GB | 12000 | 160000 | 2000GB - 3000GB （步长 5G） |  |
-|  |  |  | polardb .x8.4xla rge.2 | 32核 256GB | 12000 | 240000 |  |  |
-|  |  | 独占物理机型 | rds.pola rdb.st.h 43 | 60核 470GB | 12000 | 450000 | 6000GB |  |
+|   |   |   | polardb .x4.med ium.2 | 2核 8GB | 400 | 10000 |   |   |
+|   |   |   | polardb .x8.med ium.2 | 2核 16GB | 2500 | 15000 |   |   |
+|   |   |   | polardb .x4.larg e.2 | 4核 16GB | 2500 | 20000 | 250GB- 500GB （步长 5G） |   |
+|   |   |   | polardb .x8.larg e.2 | 4核 32GB | 5000 | 30000 |   |   |
+|   |   |   | polardb .x4.xlar ge.2 | 8核 32GB | 5000 | 40000 | 500GB- 1000GB （步长 5G） |   |
+|   |   |   | polardb .x8.xlar ge.2 | 8核 64GB | 10000 | 60000 |   |   |
+|   |   |   | polardb .x4.2xla rge.2 | 16核 64GB | 10000 | 80000 | 1000GB - 2000GB （步长 5G） |   |
+|   |   |   | polardb .x8.2xla rge.2 | 16核 128GB | 12000 | 120000 |   |   |
+|   |   |   | polardb .x4.4xla rge.2 | 32核 128GB | 12000 | 160000 | 2000GB - 3000GB （步长 5G） |   |
+|   |   |   | polardb .x8.4xla rge.2 | 32核 256GB | 12000 | 240000 |   |   |
+|   |   | 独占物理机型 | rds.pola rdb.st.h 43 | 60核 470GB | 12000 | 450000 | 6000GB |   |
 
-云数据库RDS 表 4. RDS PostgreSQL实例规格参数
+表 4. RDS PostgreSQL实例规格参数
 
 | 系列 | 版本 | 规格类型 | 规格代码 | CPU/内存 | 最大连接数 | 最大 IOPS | 磁盘空间 | 同城容灾部署情况 |
 |---|---|---|---|---|---|---|---|---|
 | 双机高可用版本/ 只读实例 | 9.4/10 | 独享型 （高内存） | pg.x8.m edium.2 | 2核 16GB | 2500 | 4500 | 20GB- 6000GB (步长 5G) | 单机房、 双机房 |
-|  |  |  | pg.x8.la rge.2 | 4核 32GB | 5000 | 9000 |  |  |
-|  |  |  | pg.x8.xl arge.2 | 8核 64GB | 10000 | 18000 |  |  |
-|  |  |  | pg.x8.2 xlarge.2 | 16核 128GB | 12000 | 36000 |  |  |
-|  |  | 独享型 （高 CPU） | pg.x4.la rge.2 | 4核 16GB | 2500 | 4500 |  |  |
-|  |  |  | pg.x4.xl arge.2 | 8核 32GB | 5000 | 9000 |  |  |
-|  |  |  | pg.x4.2 xlarge.2 | 16核 64GB | 10000 | 18000 |  |  |
-|  |  |  | pg.x4.4 xlarge.2 | 32核 128GB | 12000 | 36000 |  |  |
-|  |  | 独占物理机型 | rds.pg.s t.h43 | 60核 470GB | 4000 | 50000 |  |  |
+|   |   |   | pg.x8.la rge.2 | 4核 32GB | 5000 | 9000 |   |   |
+|   |   |   | pg.x8.xl arge.2 | 8核 64GB | 10000 | 18000 |   |   |
+|   |   |   | pg.x8.2 xlarge.2 | 16核 128GB | 12000 | 36000 |   |   |
+|   |   | 独享型 （高 CPU） | pg.x4.la rge.2 | 4核 16GB | 2500 | 4500 |   |   |
+|   |   |   | pg.x4.xl arge.2 | 8核 32GB | 5000 | 9000 |   |   |
+|   |   |   | pg.x4.2 xlarge.2 | 16核 64GB | 10000 | 18000 |   |   |
+|   |   |   | pg.x4.4 xlarge.2 | 32核 128GB | 12000 | 36000 |   |   |
+|   |   | 独占物理机型 | rds.pg.s t.h43 | 60核 470GB | 4000 | 50000 |   |   |

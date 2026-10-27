@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 46
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 VPN Gateway User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20VPN%20Gateway%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 VPN Gateway User Guide 20220928
@@ -59,15 +59,15 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 
 ## 1 What is VPN Gateway?
 
-VPN Gateway is an Internet-based service that allows you to connect enterprise data centers, office networks, or Internet-facing terminals to Alibaba Cloud Virtual Private Cloud (VPC) networks through secure and reliable connections. VPN Gateway supports both IPsec-VPN connections and SSL-VPN connections. The Alibaba Cloud VPN Gateway service complies with the local regulations and policies. VPN Gateway does not provide Internet access services. Features VPN Gateway supports the following features: IPsec-VPN Route-based IPsec-VPN allows you to route network traffic in multiple ways, and also facilitates the configuration and maintenance of VPN policies. You can use IPsec-VPN to connect an on-premises data center to a VPC network or connect two VPC networks. IPsec-VPN supports the IKEv1 and IKEv2 protocols. Any devices that support these two protocols can connect to Alibaba Cloud VPN Gateway, such as devices manufactured by Huawei, H3C, Hillstone, Sangfor, Cisco ASA, Juniper, SonicWall, Nokia, IBM, and Ixia. SSL-VPN SSL-VPN is implemented based on the OpenVPN framework. You can create an SSL-VPN connection to connect a remote client to applications and services deployed in a VPC network. After you deploy your applications or services, you only need to import the certificate to the client to initiate a connection. Benefits VPN Gateway offers the following benefits: High security: You can use the IKE and IPsec protocols to encrypt data for secure and reliable data transmission. High availability: VPN Gateway adopts the hot-standby architecture to achieve failover within a few seconds, session persistence, and zero service downtime. Cost-effectiveness: The encrypted Internet connections provided by VPN Gateway are more costeffective than leased lines. Ease of use: VPN Gateway is a ready-to-use service. VPN gateways start to work immediately after they are deployed. way console
+VPN Gateway is an Internet-based service that allows you to connect enterprise data centers, office networks, or Internet-facing terminals to Alibaba Cloud Virtual Private Cloud (VPC) networks through secure and reliable connections. VPN Gateway supports both IPsec-VPN connections and SSL-VPN connections. Not e The Alibaba Cloud VPN Gateway service complies with the local regulations and policies. VPN Gateway does not provide Internet access services. Features VPN Gateway supports the following features: IPsec-VPN Route-based IPsec-VPN allows you to route network traffic in multiple ways, and also facilitates the configuration and maintenance of VPN policies. You can use IPsec-VPN to connect an on-premises data center to a VPC network or connect two VPC networks. IPsec-VPN supports the IKEv1 and IKEv2 protocols. Any devices that support these two protocols can connect to Alibaba Cloud VPN Gateway, such as devices manufactured by Huawei, H3C, Hillstone, Sangfor, Cisco ASA, Juniper, SonicWall, Nokia, IBM, and Ixia. SSL-VPN SSL-VPN is implemented based on the OpenVPN framework. You can create an SSL-VPN connection to connect a remote client to applications and services deployed in a VPC network. After you deploy your applications or services, you only need to import the certificate to the client to initiate a connection. Benefits VPN Gateway offers the following benefits: High security: You can use the IKE and IPsec protocols to encrypt data for secure and reliable data transmission. High availability: VPN Gateway adopts the hot-standby architecture to achieve failover within a few seconds, session persistence, and zero service downtime. Cost-effectiveness: The encrypted Internet connections provided by VPN Gateway are more costeffective than leased lines. Ease of use: VPN Gateway is a ready-to-use service. VPN gateways start to work immediately after they are deployed. way console
 
 ## 2 Log on to the VPN Gateway console
 
-console This topic describes how to log on to the Apsara Uni-manager Management Console. You can manage your VPN gateways in the console. The Google Chrome browser is used as an example. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+console This topic describes how to log on to the Apsara Uni-manager Management Console. You can manage your VPN gateways in the console. The Google Chrome browser is used as an example. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
-Obtain the username and password that you can use to log on to the console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that you can use to log on to the console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click Login.
 4. In the top menu bar, choose Product s > Net working > Virt ual Privat e Cloud.
 5. In the left-side navigation pane, choose Int erconnect ions > VPN.
@@ -77,7 +77,7 @@ PN
 
 ### 3.1 Connect a data center to a VPC
 
-This topic describes how to connect a data center to a virtual private cloud (VPC) by using an IPsec-VPN connection. Before you start, make sure that the following requirements are met: The gateway device in the data center is checked. VPN Gateway supports the standard IKEv1 and IKEv2 protocols. Gateway devices that support these two protocols can connect to VPN gateways on Alibaba Cloud, such as gateway devices that are manufactured by H3C, 华为、Hillstone, Sangfor, Cisco ASA, Juniper, SonicWall, Nokia, IBM, or Ixia. A static public IP address is assigned to the gateway device in the data center. The CIDR block of the data center does not overlap with that of the VPC. Context An enterprise has created a VPC on Alibaba Cloud. The CIDR block of the VPC is 192.168.0.0/16. The CIDR block of the data center is 172.16.0.0/12. The static public IP address for the gateway device in the data center is 211.XX.XX.68. To meet business requirements, the enterprise needs to connect the data center to the VPC. As shown in the preceding figure, you can establish an IPsec-VPN connection between the data center and the VPC. Step 1: Create a VPN gateway Take the following steps to create a VPN gateway:
+This topic describes how to connect a data center to a virtual private cloud (VPC) by using an IPsec-VPN connection. Prerequisites Before you start, make sure that the following requirements are met: The gateway device in the data center is checked. VPN Gateway supports the standard IKEv1 and IKEv2 protocols. Gateway devices that support these two protocols can connect to VPN gateways on Alibaba Cloud, such as gateway devices that are manufactured by H3C, 华为、Hillstone, Sangfor, Cisco ASA, Juniper, SonicWall, Nokia, IBM, or Ixia. A static public IP address is assigned to the gateway device in the data center. The CIDR block of the data center does not overlap with that of the VPC. Context An enterprise has created a VPC on Alibaba Cloud. The CIDR block of the VPC is 192.168.0.0/16. The CIDR block of the data center is 172.16.0.0/12. The static public IP address for the gateway device in the data center is 211.XX.XX.68. To meet business requirements, the enterprise needs to connect the data center to the VPC. As shown in the preceding figure, you can establish an IPsec-VPN connection between the data center and the VPC. Step 1: Create a VPN gateway Take the following steps to create a VPN gateway:
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways .
 3. On the VPN Gat eways page, click Creat e VPN Gat eway.
@@ -88,14 +88,14 @@ click Submit . Organizat ion: Select the organization to which the VPN gateway b
  https:// .
 ```
 
-VPC: Select the VPC to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Select a maximum bandwidth value for the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Enable is selected. After IPsec-VPN is enabled, you can create a secure IPsec tunnel to connect a data center to a VPC, or connect two VPCs. SSL-VPN: Specify whether to enable SSL-VPN. In this example, Disable is selected. SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without the need to configure a customer gateway. SSL Connect ions: Select the maximum number of concurrent SSL connections that the VPN gateway supports. This parameter is available only after SSL-VPN is enabled.
+VPC: Select the VPC to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Select a maximum bandwidth value for the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Enable is selected. After IPsec-VPN is enabled, you can create a secure IPsec tunnel to connect a data center to a VPC, or connect two VPCs. SSL-VPN: Specify whether to enable SSL-VPN. In this example, Disable is selected. SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without the need to configure a customer gateway. SSL Connect ions: Select the maximum number of concurrent SSL connections that the VPN gateway supports. Not e This parameter is available only after SSL-VPN is enabled.
 5. Go to the VPN Gateways page to view the newly created VPN gateway.
-The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create a customer gateway Perform the following operations to create a customer gateway.
+The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. Not e It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create a customer gateway Perform the following operations to create a customer gateway.
 1. In the left-side navigation pane, choose VPN > Cust omer Gat eways.
 2. Select the region where you want to create the customer gateway.
 3. On the Cust omer Gat eways page, click Creat e Cust omer Gat eway.
 4. On the Creat e Cust omer Gat eway page, set the following parameters, and click Submit .
-Organizat ion: Select the organization to which the customer gateway belongs. Resource Set : Select the resource set to which the customer gateway belongs. Region: Select the region where you want to deploy the customer gateway. Make sure that the customer gateway and the VPN gateway to be connected are deployed in the same region. Zone: Select the zone where you want to deploy the customer gateway. Name: Enter a name for the customer gateway. PN The name must be 2 to 128 characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter and cannot start with `http://` or `https://` . IP Address: Enter the public IP address of the gateway device in the data center that you want to connect to the VPC. In this example, 211.XX.XX.68 is entered. Descript ion: Enter a description for the customer gateway. The description must be 2 to 256 characters in length, and can contain digits, hyphens (-), underscores (_), full width periods (。), full width commas (，), and full width colons (：). The description must start with a letter and cannot start with `http://` or `https://` . Step 3: Create an IPsec-VPN connection Perform the following operations to create an IPsec-VPN connection:
+Organizat ion: Select the organization to which the customer gateway belongs. Resource Set : Select the resource set to which the customer gateway belongs. Region: Select the region where you want to deploy the customer gateway. Not e Make sure that the customer gateway and the VPN gateway to be connected are deployed in the same region. Zone: Select the zone where you want to deploy the customer gateway. Name: Enter a name for the customer gateway. PN The name must be 2 to 128 characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter and cannot start with `http://` or `https://` . IP Address: Enter the public IP address of the gateway device in the data center that you want to connect to the VPC. In this example, 211.XX.XX.68 is entered. Descript ion: Enter a description for the customer gateway. The description must be 2 to 256 characters in length, and can contain digits, hyphens (-), underscores (_), full width periods (。), full width commas (，), and full width colons (：). The description must start with a letter and cannot start with `http://` or `https://` . Step 3: Create an IPsec-VPN connection Perform the following operations to create an IPsec-VPN connection:
 1. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 2. Select the region where you want to create an IPsec-VPN connection.
 3. On the IPsec Connect ions page, click Creat e IPsec Connect ion.
@@ -120,14 +120,14 @@ Dest inat ion CIDR Block: Enter the CIDR block of the data center. In this examp
 
 ### 4.1 Connect a Linux client to a VPC
 
-This topic describes how to connect a Linux client to a virtual private cloud (VPC) through SSL-VPN connections. Before you start, make sure that the following requirements are met: A VPC is created. The CIDR block of the VPC must be different from that of the on-premises device. Your client can access the Internet. Step 1: Create a VPN gateway Perform the following operations to create a VPN gateway:
+This topic describes how to connect a Linux client to a virtual private cloud (VPC) through SSL-VPN connections. Prerequisites Before you start, make sure that the following requirements are met: A VPC is created. The CIDR block of the VPC must be different from that of the on-premises device. Your client can access the Internet. Step 1: Create a VPN gateway Perform the following operations to create a VPN gateway:
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways.
 3. On the VPN Gat eways page, click Creat e VPN Gat eway.
 4. On the Creat e VPN Gat eway page, set the following parameters for the VPN gateway, and then
-click Submit . Organizat ion: Select the organization to which the VPN gateway belongs. Resource Set : Select the resource set to which the VPN gateway belongs. Region: Select the region where you want to deploy the VPN gateway. Make sure that the VPC and the VPN gateway for the VPC are deployed in the same region. Inst ance Name: Enter a name for the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` . N VPC: Select the VPC network to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Specify the maximum bandwidth of the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Disable is selected. SSL-VPN: Specify whether to enable SSL-VPN for the VPN gateway. In this example, Enable is selected. SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without configuring a gateway for the client. SSL Connect ions: Specify the maximum number of concurrent SSL connections that the VPN gateway supports.
+click Submit . Organizat ion: Select the organization to which the VPN gateway belongs. Resource Set : Select the resource set to which the VPN gateway belongs. Region: Select the region where you want to deploy the VPN gateway. Not e Make sure that the VPC and the VPN gateway for the VPC are deployed in the same region. Inst ance Name: Enter a name for the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` . N VPC: Select the VPC network to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Specify the maximum bandwidth of the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Disable is selected. SSL-VPN: Specify whether to enable SSL-VPN for the VPN gateway. In this example, Enable is selected. SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without configuring a gateway for the client. SSL Connect ions: Specify the maximum number of concurrent SSL connections that the VPN gateway supports.
 5. Return to the VPN Gat eways page to view the VPN gateway.
-The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create an SSL server Perform the following steps to create an SSL server:
+The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. Not e It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create an SSL server Perform the following steps to create an SSL server:
 1. In the left-side navigation pane, choose VPN > SSL Servers.
 2. In the top navigation bar, select the region where you want to create the SSL server.
 3. On the SSL Servers page, click Creat e SSL Server.
@@ -154,18 +154,18 @@ yum install -y openvpn
 openvpn --config /etc/openvpn/conf/config.ovpn --daemon
 ```
 
-Step 5: Test the connectivity Run the ping command to test the connectivity between the client and an Elastic Compute Service (ECS) instance in the VPC. Make sure that the security group rules of the ECS instance allow remote access from Linux clients.
+Step 5: Test the connectivity Run the ping command to test the connectivity between the client and an Elastic Compute Service (ECS) instance in the VPC. Not e Make sure that the security group rules of the ECS instance allow remote access from Linux clients.
 
 ### 4.2 Connect a Windows client to a VPC
 
-VPC This topic describes how to connect a Windows client to a virtual private cloud (VPC) through SSL-VPN connections. Context N The following scenario is used as an example. Before you start, make sure that the following requirements are met: A VPC is created. The CIDR block of the VPC must be different from that of the on-premises device. Your client can access the Internet. Step 1: Create a VPN gateway Perform the following operations to create a VPN gateway:
+VPC This topic describes how to connect a Windows client to a virtual private cloud (VPC) through SSL-VPN connections. Context N The following scenario is used as an example. Prerequisites Before you start, make sure that the following requirements are met: A VPC is created. The CIDR block of the VPC must be different from that of the on-premises device. Your client can access the Internet. Step 1: Create a VPN gateway Perform the following operations to create a VPN gateway:
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways.
 3. On the VPN Gat eways page, click Creat e VPN Gat eway.
 4. On the Creat e VPN Gat eway page, set the following parameters for the VPN gateway, and then
-click Submit . Organizat ion: Select the organization to which the VPN gateway belongs. Resource Set : Select the resource set to which the VPN gateway belongs. Region: Select the region where you want to deploy the VPN gateway. Make sure that the VPC and the VPN gateway for the VPC are deployed in the same region. Inst ance Name: Enter a name for the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` . VPC: Select the VPC network to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Specify the maximum bandwidth of the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Disable is selected. SSL-VPN: Specify whether to enable SSL-VPN for the VPN gateway. In this example, Enable is selected. N SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without configuring a gateway for the client. SSL Connect ions: Specify the maximum number of concurrent SSL connections that the VPN gateway supports.
+click Submit . Organizat ion: Select the organization to which the VPN gateway belongs. Resource Set : Select the resource set to which the VPN gateway belongs. Region: Select the region where you want to deploy the VPN gateway. Not e Make sure that the VPC and the VPN gateway for the VPC are deployed in the same region. Inst ance Name: Enter a name for the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` . VPC: Select the VPC network to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Specify the maximum bandwidth of the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Disable is selected. SSL-VPN: Specify whether to enable SSL-VPN for the VPN gateway. In this example, Enable is selected. N SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without configuring a gateway for the client. SSL Connect ions: Specify the maximum number of concurrent SSL connections that the VPN gateway supports.
 5. Return to the VPN Gat eways page to view the VPN gateway.
-The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create an SSL server Perform the following steps to create an SSL server:
+The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. Not e It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create an SSL server Perform the following steps to create an SSL server:
 1. In the left-side navigation pane, choose VPN > SSL Servers.
 2. In the top navigation bar, select the region where you want to create the SSL server.
 3. On the SSL Servers page, click Creat e SSL Server.
@@ -183,18 +183,18 @@ Download OpenVPN.
 2. Extract the downloaded SSL client certificate and copy it to the OpenVPN\config directory.
 In this example, the certificate is copied to the C:\Program Files\OpenVPN\config directory. You must copy the certificate to the directory where the OpenVPN client is installed.
 3. Start the OpenVPN client and click Connect to initiate a connection.
-Step 5: Test the connectivity Run the ping command to test the connectivity between the client and an Elastic Compute Service (ECS) instance in the VPC. Make sure that the security group rules of the ECS instance allow remote access from Windows clients. N
+Step 5: Test the connectivity Run the ping command to test the connectivity between the client and an Elastic Compute Service (ECS) instance in the VPC. Not e Make sure that the security group rules of the ECS instance allow remote access from Windows clients. N
 
 ### 4.3 Connect a macOS client to a VPC
 
-This topic describes how to connect a macOS client to a virtual private cloud (VPC) through SSL-VPN connections. Before you start, make sure that the following requirements are met: A VPC is created. The CIDR block of the VPC must be different from that of the on-premises device. Your client can access the Internet. Step 1: Create a VPN gateway Perform the following operations to create a VPN gateway:
+This topic describes how to connect a macOS client to a virtual private cloud (VPC) through SSL-VPN connections. Prerequisites Before you start, make sure that the following requirements are met: A VPC is created. The CIDR block of the VPC must be different from that of the on-premises device. Your client can access the Internet. Step 1: Create a VPN gateway Perform the following operations to create a VPN gateway:
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways.
 3. On the VPN Gat eways page, click Creat e VPN Gat eway.
 4. On the Creat e VPN Gat eway page, set the following parameters for the VPN gateway, and then
-click Submit . Organizat ion: Select the organization to which the VPN gateway belongs. Resource Set : Select the resource set to which the VPN gateway belongs. Region: Select the region where you want to deploy the VPN gateway. Make sure that the VPC and the VPN gateway for the VPC are deployed in the same region. Inst ance Name: Enter a name for the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` . VPC: Select the VPC network to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Specify the maximum bandwidth of the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Disable is selected. N SSL-VPN: Specify whether to enable SSL-VPN for the VPN gateway. In this example, Enable is selected. SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without configuring a gateway for the client. SSL Connect ions: Specify the maximum number of concurrent SSL connections that the VPN gateway supports.
+click Submit . Organizat ion: Select the organization to which the VPN gateway belongs. Resource Set : Select the resource set to which the VPN gateway belongs. Region: Select the region where you want to deploy the VPN gateway. Not e Make sure that the VPC and the VPN gateway for the VPC are deployed in the same region. Inst ance Name: Enter a name for the VPN gateway. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://` . VPC: Select the VPC network to be associated with the VPN gateway. vSwit ch: Select the vSwitch to which you want to attach the VPN gateway. Bandwidt h: Specify the maximum bandwidth of the VPN gateway. The bandwidth is used for data transfer over the Internet. IPsec-VPN: Specify whether to enable IPsec-VPN for the VPN gateway. In this example, Disable is selected. N SSL-VPN: Specify whether to enable SSL-VPN for the VPN gateway. In this example, Enable is selected. SSL-VPN connections are point-to-site connections. SSL-VPN allows you to connect a client to Alibaba Cloud without configuring a gateway for the client. SSL Connect ions: Specify the maximum number of concurrent SSL connections that the VPN gateway supports.
 5. Return to the VPN Gat eways page to view the VPN gateway.
-The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create an SSL server Perform the following steps to create an SSL server:
+The newly created VPN gateway is in the Preparing state. The VPN gateway changes to the Normal state after about 2 minutes. The Normal state indicates that the VPN gateway is initialized and ready for use. Not e It takes about 1 to 5 minutes to create a VPN gateway. Step 2: Create an SSL server Perform the following steps to create an SSL server:
 1. In the left-side navigation pane, choose VPN > SSL Servers.
 2. In the top navigation bar, select the region where you want to create the SSL server.
 3. On the SSL Servers page, click Creat e SSL Server.
@@ -213,7 +213,7 @@ column. The SSL client certificate is downloaded to your on-premises device. Ste
 brew install openvpn
 ```
 
-Make sure that homebrew is installed before you install OpenVPN.
+Not e Make sure that homebrew is installed before you install OpenVPN.
 2. Extract the certificate that you downloaded in Step 3 and copy it to the directory where the
 OpenVPN client is installed. Then, initiate an SSL-VPN connection. i. Back up the default configuration file. ii. Run the following command to delete the default configuration file:
 
@@ -239,13 +239,13 @@ v. Run the following command to initiate a connection:
 sudo /usr/local/opt/openvpn/sbin/openvpn --config /usr/local/etc/openvpn/config.ovp
 ```
 
-`n` Step 5: Test the connectivity Run the ping command to test the connectivity between the client and an Elastic Compute Service (ECS) instance in the VPC. Make sure that the security group rules of the ECS instance allow remote access from macOS clients.
+`n` Step 5: Test the connectivity Run the ping command to test the connectivity between the client and an Elastic Compute Service (ECS) instance in the VPC. Not e Make sure that the security group rules of the ECS instance allow remote access from macOS clients.
 
 ## 5 Manage a VPN Gateway
 
 ### 5.1 Create a VPN gateway
 
-This topic describes how to create a VPN gateway. You must create a VPN gateway before you can use the IPsec-VPN and SSL-VPN features. After you create a VPN gateway, a public IP address is assigned to the VPN gateway.
+This topic describes how to create a VPN gateway. You must create a VPN gateway before you can use the IPsec-VPN and SSL-VPN features. After you create a VPN gateway, a public IP address is assigned to the VPN gateway. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways .
 3. On the VPN Gat eways page, click Creat e VPN Gat eway.
@@ -270,7 +270,7 @@ click Submit .
 
 ### 5.2 Modify a VPN gateway
 
-This topic describes how to modify the name and description of a VPN gateway. A VPN gateway is created. For more information, see Create and manage a VPN gateway.
+This topic describes how to modify the name and description of a VPN gateway. Prerequisites A VPN gateway is created. For more information, see Create and manage a VPN gateway. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways.
 3. Select the region where the VPN gateway is deployed.
@@ -285,11 +285,11 @@ Gateway
 
 #### 5.3.1 Route overview
 
-After you create an IPsec-VPN connection by using a VPN gateway, you must add a route to the VPN gateway. Route-based IPsec-VPN allows you to route network traffic in multiple ways, and facilitates the configuration and maintenance of VPN policies. You can add the following two types of route to a VPN gateway: Policy-based routes. Destination-based routes. Policy-based routes Policy-based routes forward traffic based on source and destination IP addresses. For more information, see Add a policy-based route entry. Policy-based routes take precedence over destination-based routes. Destination-based routes Destination-based routes forward traffic to specified destination IP addresses. For more information, see Create a destination-based route.
+After you create an IPsec-VPN connection by using a VPN gateway, you must add a route to the VPN gateway. Route-based IPsec-VPN allows you to route network traffic in multiple ways, and facilitates the configuration and maintenance of VPN policies. You can add the following two types of route to a VPN gateway: Policy-based routes. Destination-based routes. Policy-based routes Policy-based routes forward traffic based on source and destination IP addresses. For more information, see Add a policy-based route entry. Not e Policy-based routes take precedence over destination-based routes. Destination-based routes Destination-based routes forward traffic to specified destination IP addresses. For more information, see Create a destination-based route.
 
 #### 5.3.2 Work with a policy-based route
 
-A policy-based route forwards traffic based on source and destination IP addresses. This topic describes how to create, advertise, modify, and delete a policy-based route. An IPsec-VPN connection is created. For more information, see Create an IPsec-VPN connection. Add a policy-based route After you create an IPsec-VPN connection, you can create a policy-based route for the IPsec-VPN connection.
+A policy-based route forwards traffic based on source and destination IP addresses. This topic describes how to create, advertise, modify, and delete a policy-based route. Prerequisites An IPsec-VPN connection is created. For more information, see Create an IPsec-VPN connection. Add a policy-based route After you create an IPsec-VPN connection, you can create a policy-based route for the IPsec-VPN connection.
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways .
 3. In the top navigation bar, select the region of the VPN gateway.
@@ -343,7 +343,7 @@ Delet e in the Act ions column.
 
 #### 5.3.3 Manage destination-based routes
 
-Destination-based routing is a technique that routes network traffic to specified destination IP addresses. This topic describes how to create, advertise, modify, and delete a destination-based route. An IPsec-VPN connection is created. For more information, see Create an IPsec-VPN connection. Create a destination-based route After you create an IPsec-VPN connection, you can create a destination-based route for the IPsec-VPN connection.
+Destination-based routing is a technique that routes network traffic to specified destination IP addresses. This topic describes how to create, advertise, modify, and delete a destination-based route. Prerequisites An IPsec-VPN connection is created. For more information, see Create an IPsec-VPN connection. Create a destination-based route After you create an IPsec-VPN connection, you can create a destination-based route for the IPsec-VPN connection.
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways.
 3. In the top navigation bar, select the region of the VPN gateway.
@@ -389,7 +389,7 @@ manage and click Delet e in the Act ions column.
 
 ### 5.4 Delete a VPN gateway
 
-This topic describes how to delete a VPN gateway. After you delete a VPN gateway, you can no longer use the VPN gateway to establish IPsec-VPN or SSL-VPN connections. Context Before you delete a VPN gateway, make sure that the following conditions are met: The IPsec-VPN connections on the VPN gateway are deleted. For more information, see Delete an IPsec-VPN connection. The SSL server associated with the VPN gateway is deleted. For more information, see Delete an SSL server.
+This topic describes how to delete a VPN gateway. After you delete a VPN gateway, you can no longer use the VPN gateway to establish IPsec-VPN or SSL-VPN connections. Context Before you delete a VPN gateway, make sure that the following conditions are met: The IPsec-VPN connections on the VPN gateway are deleted. For more information, see Delete an IPsec-VPN connection. The SSL server associated with the VPN gateway is deleted. For more information, see Delete an SSL server. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > VPN Gat eways.
 3. Select the region where the VPN gateway is deployed.
@@ -399,7 +399,7 @@ Delet e in the Act ions column.
 
 ### 5.5 View the monitoring information about a VPN gateway
 
-about a VPN gateway This topic describes how to view the monitoring information about a VPN gateway. Before you start, make sure that the following requirements are met: Log Service is activated. CloudMonitor is activated.
+about a VPN gateway This topic describes how to view the monitoring information about a VPN gateway. Prerequisites Before you start, make sure that the following requirements are met: Log Service is activated. CloudMonitor is activated. Procedure
 1. Log on to the VPN Gateway console.
 2. In the top navigation bar, select the region of the VPN gateway.
 3. On the VPN Gat eway page, find the VPN gateway you want to manage and click the gateway ID.
@@ -421,11 +421,11 @@ eway
 
 ### 6.1 Create a customer gateway
 
-This topic describes how to create a customer gateway. You can use a customer gateway to establish an IPsec-VPN connection between a virtual private cloud (VPC) and a data center or between two VPCs. After you create a customer gateway, you can update the information about a gateway device in the data center to Alibaba Cloud. Then, you can connect the customer gateway to a VPN gateway. A customer gateway can connect to multiple VPN gateways.
+This topic describes how to create a customer gateway. You can use a customer gateway to establish an IPsec-VPN connection between a virtual private cloud (VPC) and a data center or between two VPCs. After you create a customer gateway, you can update the information about a gateway device in the data center to Alibaba Cloud. Then, you can connect the customer gateway to a VPN gateway. A customer gateway can connect to multiple VPN gateways. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > Cust omer Gat eways.
 3. Select the region where you want to deploy the customer gateway.
-Make sure that the customer gateway and the VPN gateway to be connected belong to the same region.
+Not e Make sure that the customer gateway and the VPN gateway to be connected belong to the same region.
 4. On the Cust omer Gat eways page, click Creat e Cust omer Gat eway.
 5. On the Creat e Cust omer Gat eway page, set the following parameters and click Submit .
 
@@ -447,7 +447,7 @@ eway
 
 ### 6.2 Modify a customer gateway
 
-This topic describes how to modify the name and description of a customer gateway. A customer gateway is created. For more information, see Create a customer gateway.
+This topic describes how to modify the name and description of a customer gateway. Prerequisites A customer gateway is created. For more information, see Create a customer gateway. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > Cust omer Gat eways.
 3. Select the region where the customer gateway is deployed.
@@ -458,7 +458,7 @@ icon in the Descript ion column. In the dialog box that appears, enter a new des
 
 ### 6.3 Delete a customer gateway
 
-This topic describes how to delete a customer gateway.
+This topic describes how to delete a customer gateway. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > Cust omer Gat eways.
 3. In the top navigation bar, select the region of the customer gateway.
@@ -473,7 +473,7 @@ connections
 
 ### 7.1 Configuration overview
 
-This topic describes how to connect a VPC to an on-premises data center through IPsec-VPN. Before creating a site-to-site VPN connection, make sure the following conditions are met: The protocols IKEv1 and IKEv2 are supported by the gateway device of the on-premises data center. IPsec-VPN supports IKEv1 and IKEv2 protocols. Devices that support these two protocols can connect to Alibaba Cloud VPN Gateway, including devices of Huawei, H3C, Hillstone, SANGFOR, Cisco ASA, Juniper, SonicWall, Nokia, IBM, and Ixia. A static public IP address is configured for the local gateway. The IP address ranges of the VPC and on-premises data center to be connected do not conflict with each other. The following figure shows the procedure of connecting a VPC to an on-premises data center through IPsec-VPN. Enable the IPsec-VPN function. Up to 10 IPsec-VPN connections can be established in a VPN Gateway. By creating a customer gateway, you can register the local gateway to Alibaba Cloud and connect the customer gateway to the VPN Gateway. A customer gateway can be connected to multiple VPN Gateways.
+This topic describes how to connect a VPC to an on-premises data center through IPsec-VPN. Prerequisites Before creating a site-to-site VPN connection, make sure the following conditions are met: The protocols IKEv1 and IKEv2 are supported by the gateway device of the on-premises data center. IPsec-VPN supports IKEv1 and IKEv2 protocols. Devices that support these two protocols can connect to Alibaba Cloud VPN Gateway, including devices of Huawei, H3C, Hillstone, SANGFOR, Cisco ASA, Juniper, SonicWall, Nokia, IBM, and Ixia. A static public IP address is configured for the local gateway. The IP address ranges of the VPC and on-premises data center to be connected do not conflict with each other. Procedure The following figure shows the procedure of connecting a VPC to an on-premises data center through IPsec-VPN. Enable the IPsec-VPN function. Up to 10 IPsec-VPN connections can be established in a VPN Gateway. By creating a customer gateway, you can register the local gateway to Alibaba Cloud and connect the customer gateway to the VPN Gateway. A customer gateway can be connected to multiple VPN Gateways.
 3. Create an IPsec connection
 An IPsec connection is a VPN channel established between a VPN Gateway and a customer gateway. The encrypted communication between the VPN Gateway and the on-premises data center can be achieved only after the IPsec connection is established.
 4. Configure the local gateway
@@ -487,7 +487,7 @@ Log on to an ECS instance (without a public IP address) in the connected VPC. pi
 
 #### 7.2.1 Create an IPsec-VPN connection
 
-This topic describes how to create an IPsec-VPN connection. After you create a VPN gateway and a customer gateway, you can create an IPsec-VPN connection between the two gateways for encrypted data transmission.
+This topic describes how to create an IPsec-VPN connection. After you create a VPN gateway and a customer gateway, you can create an IPsec-VPN connection between the two gateways for encrypted data transmission. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where you want to create the IPsec-VPN connection.
@@ -539,7 +539,7 @@ nections
 
 #### 7.2.2 Modify an IPsec-VPN connection
 
-This topic describes how to modify the name, advanced settings, and health check for an IPsec-VPN connection. An IPsec-VPN connection is created. For more information, see Create an IPsec-VPN connection.
+This topic describes how to modify the name, advanced settings, and health check for an IPsec-VPN connection. Prerequisites An IPsec-VPN connection is created. For more information, see Create an IPsec-VPN connection. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where the IPsec-VPN connection is created.
@@ -550,16 +550,16 @@ check, and click Submit . nections
 
 #### 7.2.3 Download the configuration file of an IPsec-VPN connection
 
-IPsec-VPN connection This topic describes how to download the configurations of an IPsec-VPN connection, and load the configurations to the customer gateway device after an IPsec-VPN connection is configured. An IPsec-VPN connection is created. For more information, see Create and manage IPsec-VPN connections.
+IPsec-VPN connection This topic describes how to download the configurations of an IPsec-VPN connection, and load the configurations to the customer gateway device after an IPsec-VPN connection is configured. Prerequisites An IPsec-VPN connection is created. For more information, see Create and manage IPsec-VPN connections. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where the IPsec-VPN connection is created.
 4. On the IPsec Connect ions page, find the target IPsec-VPN connection, and then choose More >
-Download Conf igurat ion in the Act ions column. RemoteSubnet and LocalSubnet in the downloaded configurations are opposite to RemoteSubnet and LocalSubnet that you specify when you create an IPsec-VPN connection. For a VPN gateway, RemotSubnet refers to the CIDR block of the on-premises data center and LocalSubnet refers to the CIDR block of the VPC network. For a customer gateway, LocalSubnet refers to the CIDR block of the on-premises data center and RemoteSubnet refers to the CIDR block of the VPC network.
+Download Conf igurat ion in the Act ions column. Not e RemoteSubnet and LocalSubnet in the downloaded configurations are opposite to RemoteSubnet and LocalSubnet that you specify when you create an IPsec-VPN connection. For a VPN gateway, RemotSubnet refers to the CIDR block of the on-premises data center and LocalSubnet refers to the CIDR block of the VPC network. For a customer gateway, LocalSubnet refers to the CIDR block of the on-premises data center and RemoteSubnet refers to the CIDR block of the VPC network.
 
 #### 7.2.4 Configure a security group
 
-This topic describes how to configure a security group to control the inbound and outbound traffic of ECS instances in the security group after an IPsec-VPN connection is created.
+This topic describes how to configure a security group to control the inbound and outbound traffic of ECS instances in the security group after an IPsec-VPN connection is created. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where the IPsec-VPN connection is created.
@@ -594,7 +594,7 @@ nections
 
 #### 7.2.5 View IPsec-VPN connection logs
 
-This topic describes how to view IPsec-VPN connection logs that are generated within the last 30 days to troubleshoot connection errors. You can query log data generated within 10 minutes.
+This topic describes how to view IPsec-VPN connection logs that are generated within the last 30 days to troubleshoot connection errors. You can query log data generated within 10 minutes. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where the IPsec-VPN connection is created.
@@ -604,7 +604,7 @@ View Logs in the Act ions column.
 
 #### 7.2.6 Delete an IPsec-VPN connection
 
-This topic describes how to delete an IPsec-VPN connection.
+This topic describes how to delete an IPsec-VPN connection. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where you want to delete the IPsec-VPN connection.
@@ -614,7 +614,7 @@ Delet e in the Act ions column.
 
 ### 7.3 View the monitoring information about an IPsec-VPN connection
 
-about an IPsec-VPN connection This topic describes how to view the monitoring information about an IPsec-VPN connection. Before you start, make sure that the following requirements are met: Log Service is activated. CloudMonitor is activated.
+about an IPsec-VPN connection This topic describes how to view the monitoring information about an IPsec-VPN connection. Prerequisites Before you start, make sure that the following requirements are met: Log Service is activated. CloudMonitor is activated. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > IPsec Connect ions.
 3. In the top navigation bar, select the region where you want to delete the IPsec-VPN connection.
@@ -638,7 +638,7 @@ The maximum transmission unit (MTU) is the size of the largest packet that can b
 
 ### 8.1 SSL-VPN configuration overview
 
-This topic describes how to remotely access a VPC through SSL-VPN. The following conditions must be met before you deploy a VPN Gateway: The client and the VPC are not using the same private CIDR block. The client is able to access the Internet. The following figure describes the process for configuring remote access to a VPC through SSL-VPN. Create a VPN gateway and enable the SSL-VPN function. Specify the range of IP addresses to be accessed and the range of IP addresses to be allocated to the client for making connections.
+This topic describes how to remotely access a VPC through SSL-VPN. Prerequisites The following conditions must be met before you deploy a VPN Gateway: The client and the VPC are not using the same private CIDR block. The client is able to access the Internet. Procedure The following figure describes the process for configuring remote access to a VPC through SSL-VPN. Create a VPN gateway and enable the SSL-VPN function. Specify the range of IP addresses to be accessed and the range of IP addresses to be allocated to the client for making connections.
 3. Create a client certificate
 Create a client certificate according to the SSL server configuration, and then download the client certificate and the configuration file.
 4. Configure the client
@@ -650,7 +650,7 @@ Make sure that the rules in the security group of the ECS instance allow remote 
 
 #### 8.2.1 Create an SSL server
 
-This topic describes how to create an SSL server. Before you can create an SSL-VPN connection, you must create an SSL server. A VPN gateway is created and SSL-VPN is enabled for the VPN gateway. For more information, see Create and manage a VPN gateway.
+This topic describes how to create an SSL server. Before you can create an SSL-VPN connection, you must create an SSL server. Prerequisites A VPN gateway is created and SSL-VPN is enabled for the VPN gateway. For more information, see Create and manage a VPN gateway. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Servers.
 3. In the top navigation bar, select the region where you want to create the SSL server.
@@ -674,7 +674,7 @@ This topic describes how to create an SSL server. Before you can create an SSL-V
 
 #### 8.2.2 Modify an SSL server
 
-This topic describes how to modify the name, server CIDR block, client CIDR block, and advanced settings of an SSL server. An SSL server is created. For more information, see Create an SSL server.
+This topic describes how to modify the name, server CIDR block, client CIDR block, and advanced settings of an SSL server. Prerequisites An SSL server is created. For more information, see Create an SSL server. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Servers.
 3. In the top navigation bar, select the region where the SSL server is created.
@@ -684,7 +684,7 @@ settings of the SSL server, and then click OK.
 
 #### 8.2.3 Configure a security group
 
-This topic describes how to configure a security group to control the inbound and outbound traffic of ECS instances in the security group after an IPsec-VPN connection is created.
+This topic describes how to configure a security group to control the inbound and outbound traffic of ECS instances in the security group after an IPsec-VPN connection is created. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Servers.
 3. Select the region where the SSL server is deployed.
@@ -711,7 +711,7 @@ Rout ing Group in the Act ions column.
 
 #### 8.2.4 Delete an SSL server
 
-This topic describes how to delete an SSL server.
+This topic describes how to delete an SSL server. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Servers.
 3. In the top navigation bar, select the region where you want to delete the SSL server.
@@ -723,7 +723,7 @@ Act ions column.
 
 #### 8.3.1 Create an SSL client certificate
 
-After you create an SSL server, you must create an SSL client certificate based on the configuration of the SSL server. An SSL server is created. For more information, see Create an SSL server.
+After you create an SSL server, you must create an SSL client certificate based on the configuration of the SSL server. Prerequisites An SSL server is created. For more information, see Create an SSL server. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Client s.
 3. Select the region where the SSL client is deployed.
@@ -746,7 +746,7 @@ following information, and then click Submit .
 
 #### 8.3.2 Download an SSL client certificate
 
-This topic describes how to download an SSL client certificate. Before you use an SSL client to initiate an SSL-VPN connection, you must import the SSL client certificate to the SSL client. An SSL client certificate is created. For information, see Create an SSL client certificate.
+This topic describes how to download an SSL client certificate. Before you use an SSL client to initiate an SSL-VPN connection, you must import the SSL client certificate to the SSL client. Prerequisites An SSL client certificate is created. For information, see Create an SSL client certificate. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Client s.
 3. Select the region where the SSL client is deployed.
@@ -755,7 +755,7 @@ Act ions column.
 
 #### 8.3.3 Delete an SSL client certificate
 
-This topic describes how to delete an SSL client certificate.
+This topic describes how to delete an SSL client certificate. Procedure
 1. Log on to the VPN Gateway console.
 2. In the left-side navigation pane, choose VPN > SSL Client s.
 3. Select the region where the SSL client is deployed.

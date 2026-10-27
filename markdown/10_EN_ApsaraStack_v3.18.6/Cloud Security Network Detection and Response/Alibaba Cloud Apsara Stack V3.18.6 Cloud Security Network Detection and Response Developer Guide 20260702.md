@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 457
 source_pdf: "c47e6c942d0c1cc2_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Developer Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Network%20Detection%20and%20Response%20Developer%20Guide%2020260702.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Security Network Detection and Response Developer Guide 20260702
@@ -494,7 +494,11 @@ STS. The STS token is obtained in the preceding step.
 
 ### 3.1 Request structure
 
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests.
+
+**Description**
+
+You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -507,7 +511,11 @@ where:
 | [RegionId].example.com |   |   |   |
 |   | Action | : the name of t |   |
 
-`Endpoint` : The endpoint of the Network Traffic Monitoring System API is `secspy.` `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `Parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
+`Endpoint` : The endpoint of the Network Traffic Monitoring System API is `secspy.` `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `Parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description.
+
+**Example**
+
+The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
 
 ```
 https://secspy.[RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-test&For mat=JSON&SecureTransport=true&SignatureMethod=HMAC- SHA1&SignatureNonce=15215528852396&SignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2019- 12-02Txxxxxxx&Version=2019-08-05&Signature=xxxx%xxxx%3D
@@ -971,7 +979,7 @@ https://[Endpoint]/?Action=DescribeNtaTrafficTrend&RegionId=cnhangzhou&Lang=zh&A
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1087,7 +1095,7 @@ https://[Endpoint]/?Action=DescribeNtaTrafficTopInfo&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1214,7 +1222,7 @@ https://[Endpoint]/?Action=DescribeNtaTrafficListByIp&RegionId=cnhangzhou&Lang=z
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1336,7 +1344,7 @@ https://[Endpoint]/?Action=DescribeVpcInfoByUid&RegionId=cnhangzhou&Lang=zh&AliU
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1372,7 +1380,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeVpcInfoByUidResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeVpcInfoByUidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <VpcId>vpc-test****</VpcId>
@@ -1441,7 +1449,7 @@ https://[Endpoint]/?Action=DescribeNtaTrafficStatisticsByUid&RegionId=cnhangzhou
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1552,7 +1560,7 @@ https://[Endpoint]/?Action=DescribeSessionByApp&RegionId=cnhangzhou&Lang=zh&Dire
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1690,7 +1698,7 @@ https://[Endpoint]/?Action=DescribeNtaTrafficListByApp&RegionId=cnhangzhou&Lang=
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1807,7 +1815,7 @@ https://[Endpoint]/?Action=DescribeIncAppInfo&RegionId=cnhangzhou&Lang=zh&Direct
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -1822,7 +1830,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeIncAppInfoResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeIncAppInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <IncCount>3</IncCount>
     <AliUid>1234567890</AliUid>
@@ -1940,7 +1948,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeEcsByIpResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeEcsByIpResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <PrivateIp>192.167.*.*</PrivateIp>
@@ -2036,7 +2044,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAssetByIpResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetByIpResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Type>ecs</Type>
     <InstanceId>i-test***</InstanceId>
@@ -2144,7 +2152,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeNtaAppTrendResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeNtaAppTrendResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <InBps>10</InBps>
@@ -2245,7 +2253,7 @@ https://[Endpoint]/?Action=DescribeSessionByIp&RegionId=cnhangzhou&Lang=zh&Direc
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2385,7 +2393,7 @@ https://[Endpoint]/?Action=DescribeHitLogColumns&RegionId=cnhangzhou&Lang=zh&Ali
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2492,7 +2500,7 @@ https://[Endpoint]/?Action=DescribeSearchTemplate&RegionId=cnhangzhou&Lang=zh&Al
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2589,7 +2597,7 @@ https://[Endpoint]/?Action=UpdateVisibleLogFields&RegionId=cnhangzhou&Lang=zh&In
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2679,7 +2687,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportHitlogsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportHitlogsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
@@ -2742,7 +2750,7 @@ https://[Endpoint]/?Action=DescribeGivenFieldStatistics&RegionId=cnhangzhou&Lang
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2764,7 +2772,7 @@ Content-Type:application/json
 `}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeGivenFieldStatisticsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeGivenFieldStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -2835,7 +2843,7 @@ https://[Endpoint]/?Action=DescribeHitLogColumnsData&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2941,7 +2949,7 @@ https://[Endpoint]/?Action=DescribeHitStatistics&RegionId=cnhangzhou&Lang=zh&Ali
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -2965,7 +2973,7 @@ Content-Type:application/json
 `}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeHitStatisticsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeHitStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -3221,7 +3229,7 @@ Content-Type:application/json
 `}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeHitDetailListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeHitDetailListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -3565,7 +3573,7 @@ https://[Endpoint]/?Action=DelSearchTemplate&RegionId=cnhangzhou&Lang=zh&AliUid=
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3637,7 +3645,7 @@ https://[Endpoint]/?Action=AddSearchTemplate&RegionId=cnhangzhou&Lang=zh&AliUid=
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3875,7 +3883,7 @@ https://[Endpoint]/?Action=ExportAggAttackEventMergePcap&RegionId=cnhangzhou&Lan
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -3889,7 +3897,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportAggAttackEventMergePcapResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportAggAttackEventMergePcapResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
@@ -4175,7 +4183,7 @@ https://[Endpoint]/?Action=DescribeAggAttackEventList&RegionId=cnhangzhou&Lang=z
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4304,7 +4312,7 @@ https://[Endpoint]/?Action=DescribeAggAttackEventMergePcapCount&RegionId=cn-hang
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4318,7 +4326,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggAttackEventMergePcapCountResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggAttackEventMergePcapCountResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>10</TotalCount>
@@ -4403,7 +4411,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportAttackEventPcapResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportAttackEventPcapResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <PcapName>test.cap</PcapName>
@@ -4477,7 +4485,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeExportMergePcapTaskByUuidResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeExportMergePcapTaskByUuidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>d5b969bf-cd21-4dd0-84ff-*******</TaskUUID>
@@ -4536,7 +4544,7 @@ https://[Endpoint]/?Action=AddCustomTag&RegionId=cnhangzhou&Lang=zh&AliUid=12345
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4626,7 +4634,7 @@ https://[Endpoint]/?Action=ExportAttackRecordsPcap&RegionId=cnhangzhou&Lang=zh&S
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4642,7 +4650,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportAttackRecordsPcapResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportAttackRecordsPcapResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PcapName>test.cap</PcapName>
     <PcapUrl>https://xxx.com</PcapUrl>
@@ -4731,7 +4739,7 @@ https://[Endpoint]/?Action=DescribeAggAttackTopIPRecords&RegionId=cnhangzhou&Lan
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4856,7 +4864,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeDeptInfoResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeDeptInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <DeptName>test</DeptName>
@@ -4927,7 +4935,7 @@ https://[Endpoint]/?Action=AddIDSWhiteRule&RegionId=cnhangzhou&Lang=zh&IPList=1.
 Sample response `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -4942,7 +4950,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddIDSWhiteRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddIDSWhiteRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -4996,7 +5004,7 @@ https://[Endpoint]/?Action=DescribeExportTaskByUuid&RegionId=cnhangzhou&Lang=zh&
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5012,7 +5020,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeExportTaskByUuidResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeExportTaskByUuidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>d5b969bf-cd21-4dd0-84ff-*******</TaskUUID>
@@ -5082,7 +5090,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteIDSWhiteRulesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteIDSWhiteRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -5156,7 +5164,7 @@ https://[Endpoint]/?Action=DescribeAggAttackTopStatistics&RegionId=cnhangzhou&La
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5493,7 +5501,7 @@ https://[Endpoint]/?Action=DescribeThreatSrcIPInfo&RegionId=cnhangzhou&Lang=zh&S
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5513,7 +5521,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeThreatSrcIPInfoResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeThreatSrcIPInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Source>10.x.x.x</Source>
     <VulLevel>1</VulLevel>
@@ -5570,7 +5578,7 @@ https://[Endpoint]/?Action=ModifyCustomAttackLogFields&RegionId=cnhangzhou&Lang=
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5583,7 +5591,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ModifyCustomAttackLogFieldsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyCustomAttackLogFieldsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </ModifyCustomAttackLogFieldsResponse>
@@ -5694,7 +5702,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggAttackPPSResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggAttackPPSResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <TimeOut>false</TimeOut>
@@ -5781,7 +5789,7 @@ https://[Endpoint]/?Action=AddAttackDisposal&RegionId=cnhangzhou&Lang=zh&StartTi
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5797,7 +5805,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddAttackDisposalResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddAttackDisposalResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -5849,7 +5857,7 @@ https://[Endpoint]/?Action=DescribeCustomAttackLogFields&RegionId=cnhangzhou&Lan
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -5935,7 +5943,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TagAttackRecodesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TagAttackRecodesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -6036,7 +6044,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggAttackVulLevelResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggAttackVulLevelResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TimeOut>false</TimeOut>
     <TotalCount>100</TotalCount>
@@ -6122,7 +6130,7 @@ https://[Endpoint]/?Action=DescribeAggAttackType&RegionId=cnhangzhou&Lang=zh&Sta
 Sample response `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -6152,7 +6160,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggAttackTypeResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggAttackTypeResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <TimeOut>false</TimeOut>
@@ -6450,7 +6458,7 @@ https://[Endpoint]/?Action=DescribeAttackRecord&RegionId=cnhangzhou&Lang=zh&Star
 Response example `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -6626,7 +6634,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeIDSWhiteRulesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeIDSWhiteRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -6700,7 +6708,7 @@ https://[Endpoint]/?Action=DescribeCustomTags&RegionId=cnhangzhou&Lang=zh&AliUid
 Sample successful response `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -6716,7 +6724,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeCustomTagsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeCustomTagsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Tags>
         <Tags>['tag1','tag2','tag3' ...]</Tags>
@@ -6801,7 +6809,7 @@ https://[Endpoint]/?Action=ExportAggAttackRecords&RegionId=cnhangzhou&Lang=zh&St
 Response examples `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -6927,7 +6935,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggAttackEventDetailResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggAttackEventDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <SrcIP>1.1.1.1</SrcIP>
     <AttackerIP>1.1.1.1</AttackerIP>
@@ -7001,7 +7009,7 @@ https://[Endpoint]/?Action=DescribeIDSRuleInfo&RegionId=cnhangzhou&Lang=en&RuleI
 Response examples `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -7105,7 +7113,7 @@ https://[Endpoint]/?Action=DescribeAggResetData&RegionId=cnhangzhou&Lang=zh&Task
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -7217,7 +7225,7 @@ https://[Endpoint]/?Action=DescribeAggResetTopIPRecordsData&RegionId=cnhangzhou&
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -7254,7 +7262,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggResetTopIPRecordsDataResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggResetTopIPRecordsDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -7347,7 +7355,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportAggResetRecordsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportAggResetRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.cap</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -7421,7 +7429,7 @@ https://[Endpoint]/?Action=DescribeAggResetPPS&RegionId=cnhangzhou&Lang=zh&Start
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -7570,7 +7578,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAggResetTopIPRecordsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggResetTopIPRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -7668,7 +7676,7 @@ https://[Endpoint]/?Action=DescribeAggResetRecords&RegionId=cnhangzhou&Lang=zh&C
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -7806,7 +7814,7 @@ https://[Endpoint]/?Action=DescribeAggResetDayCount&RegionId=cnhangzhou&Lang=zh&
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8070,7 +8078,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaAggDnsTunnelRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaAggDnsTunnelRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RangeTime>100</RangeTime>
     <Length>10</Length>
@@ -8160,7 +8168,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaDnsWhiteListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaDnsWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8230,7 +8238,7 @@ https://[Endpoint]/?Action=GetBhaDnsTunnelAggTopHost&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8319,7 +8327,7 @@ https://[Endpoint]/?Action=AddBhaDnsWhiteList&RegionId=cnhangzhou&Lang=zh&AliUid
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8332,7 +8340,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddBhaDnsWhiteListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddBhaDnsWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </AddBhaDnsWhiteListResponse>
@@ -8392,7 +8400,7 @@ https://[Endpoint]/?Action=ExportBhaAggDnsRecords&RegionId=cnhangzhou&Lang=zh&St
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8530,7 +8538,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaAggDnsRecordsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaAggDnsRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -8613,7 +8621,7 @@ https://[Endpoint]/?Action=GetBhaAggDnsRecordsDetail&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8649,7 +8657,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaAggDnsRecordsDetailResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaAggDnsRecordsDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -8720,7 +8728,7 @@ https://[Endpoint]/?Action=UpdateBhaAggDnsTunnelRule&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8735,7 +8743,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <UpdateBhaAggDnsTunnelRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateBhaAggDnsTunnelRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <Success>true</Success>
@@ -8800,7 +8808,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteBhaDnsWhiteListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteBhaDnsWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </DeleteBhaDnsWhiteListResponse>
@@ -8871,7 +8879,7 @@ https://[Endpoint]/?Action=GetBhaAggAttackDnsHost&RegionId=cnhangzhou&Lang=zh&St
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -8901,7 +8909,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaAggAttackDnsHostResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaAggAttackDnsHostResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8969,7 +8977,7 @@ https://[Endpoint]/?Action=GetBhaDgaAggTopHost&RegionId=cnhangzhou&Lang=zh&Start
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9060,7 +9068,7 @@ https://[Endpoint]/?Action=AddBhaEncryptWhiteList&RegionId=cnhangzhou&Lang=zh&Al
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9073,7 +9081,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddBhaEncryptWhiteListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddBhaEncryptWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </AddBhaEncryptWhiteListResponse>
@@ -9134,7 +9142,7 @@ https://[Endpoint]/?Action=GetBhaTLsTopApp&RegionId=cnhangzhou&Lang=zh&StartTime
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9223,7 +9231,7 @@ https://[Endpoint]/?Action=DeleteBhaEncryptWhiteList&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9236,7 +9244,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteBhaEncryptWhiteListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteBhaEncryptWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </DeleteBhaEncryptWhiteListResponse>
@@ -9297,7 +9305,7 @@ https://[Endpoint]/?Action=GetBhaTLsTopDstIP&RegionId=cnhangzhou&Lang=zh&StartTi
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9425,7 +9433,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaEncryptWhiteListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaEncryptWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -9512,7 +9520,7 @@ https://[Endpoint]/?Action=GetBhaAggTlsRecordsDetail&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9633,7 +9641,7 @@ https://[Endpoint]/?Action=GetBhaTLsTopSrcIP&RegionId=cnhangzhou&Lang=zh&StartTi
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -9786,7 +9794,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaAggTlsRecordsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaAggTlsRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -9895,7 +9903,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetBhaTLsTopToolsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetBhaTLsTopToolsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -9970,7 +9978,7 @@ https://[Endpoint]/?Action=ExportBhaAggTlsRecords&RegionId=cnhangzhou&Lang=zh&Cu
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -10066,7 +10074,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ModL4RuleActionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModL4RuleActionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </ModL4RuleActionResponse>
@@ -10134,7 +10142,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ModifySafetySwitchResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifySafetySwitchResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </ModifySafetySwitchResponse>
@@ -10215,7 +10223,7 @@ pe=src_ip&AddressCidrList=127.85.10.10;10.25.0.0/16;10.126.11.26:8888;10.126.11.
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -10230,7 +10238,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddL4RuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddL4RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RuleId>100</RuleId>
     <RuleUuid>cfa13285-5330-xxx-xxx-5075c12c6aa8</RuleUuid>
@@ -10308,7 +10316,7 @@ https://[Endpoint]/?Action=ModifyL4Rule&RegionId=cnhangzhou&Lang=zh&RuleName=bot
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -10382,7 +10390,7 @@ https://[Endpoint]/?Action=ImportSrcIpFile&RegionId=cnhangzhou&Lang=zh&AliUid=12
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -10402,7 +10410,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ImportSrcIpFileResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ImportSrcIpFileResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Host>https://xxx.com</Host>
     <AccessId>xxxyyyzzz</AccessId>
@@ -10473,7 +10481,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DelL4RuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DelL4RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </DelL4RuleResponse>
@@ -10537,7 +10545,7 @@ Sample success responses `JSON` format
 `XML` format
 
 ```xml
-Content-Type:application/xml <ImportL4RulesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ImportL4RulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TemplateName>test.csv</TemplateName>
     <TemplateUrl>https://xxx.com</TemplateUrl>
@@ -10607,7 +10615,7 @@ https://[Endpoint]/?Action=DescribeOssInfo&RegionId=cnhangzhou&Lang=zh&AliUid=12
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -10717,7 +10725,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeSafetySwitchStatusResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeSafetySwitchStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <SwitchType>black</SwitchType>
@@ -10786,7 +10794,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <SwitchL4RuleStatusResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <SwitchL4RuleStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </SwitchL4RuleStatusResponse>
@@ -10859,7 +10867,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportL4RulesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportL4RulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.csv</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -11137,7 +11145,7 @@ https://[Endpoint]/?Action=AddL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=12345678
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -11154,7 +11162,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddL7RuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RuleId>100</RuleId>
     <RuleUuid>cfa13285-5330-xxx-xxx-5075c12c6aa8</RuleUuid>
@@ -11222,7 +11230,7 @@ https://[Endpoint]/?Action=ModifyL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=12345
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -11237,7 +11245,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ModifyL7RuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -11509,7 +11517,7 @@ https://[Endpoint]/?Action=DelL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=12345678
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -11524,7 +11532,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DelL7RuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DelL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -11584,7 +11592,7 @@ https://[Endpoint]/?Action=SwitchL7RuleStatus&RegionId=cnhangzhou&Lang=zh&AliUid
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -11599,7 +11607,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <SwitchL7RuleStatusResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <SwitchL7RuleStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -11663,7 +11671,7 @@ https://[Endpoint]/?Action=ExportL7Rules&RegionId=cnhangzhou&Lang=zh&AliUid=1234
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -11681,7 +11689,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ExportL7RulesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ExportL7RulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.csv</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -11929,7 +11937,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAllHttpFieldsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAllHttpFieldsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <HttpFileds>
         <string>['Method', 'URL', 'Host', 'X-Forwarded-For', 'Cookie', 'User-Agent']</s
@@ -11994,7 +12002,7 @@ https://[Endpoint]/?Action=UpdateWafRuleAction&RegionId=cnhangzhou&Lang=zh&RuleI
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -12009,7 +12017,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <UpdateWafRuleActionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateWafRuleActionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -12129,7 +12137,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribePortScanProtectRulesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePortScanProtectRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -12208,7 +12216,7 @@ https://[Endpoint]/?Action=UpdatePortScanProtectRule&RegionId=cnhangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -12223,7 +12231,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <UpdatePortScanProtectRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdatePortScanProtectRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -12292,7 +12300,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeletePortScanProtectRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeletePortScanProtectRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -12365,7 +12373,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <SwitchPortProtectRuleStatusResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <SwitchPortProtectRuleStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -12428,7 +12436,7 @@ https://[Endpoint]/?Action=DescribeAssetsAddressAndPorts&RegionId=cnhangzhou&Lan
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -12457,7 +12465,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAssetsAddressAndPortsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetsAddressAndPortsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -12543,7 +12551,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddPortScanProtectRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddPortScanProtectRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
@@ -12625,7 +12633,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAssetsAddressTypesResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetsAddressTypesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Types>
         <Types>['EIP','WAF', 'Public SLB']</Types>
@@ -12695,7 +12703,7 @@ https://[Endpoint]/?Action=ModifyAddressGroup&RegionId=cnhangzhou&Lang=zh&AliUid
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -12708,7 +12716,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ModifyAddressGroupResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyAddressGroupResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
 </ModifyAddressGroupResponse>
@@ -12759,7 +12767,7 @@ https://[Endpoint]/?Action=DelAddressGroup&RegionId=cnhangzhou&Lang=zh&User=user
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -12843,7 +12851,7 @@ https://[Endpoint]/?Action=AddAddressGroup&RegionId=cnhangzhou&Lang=zh&AliUid=12
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -12859,7 +12867,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddAddressGroupResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddAddressGroupResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>dispatch_rule</Module>
@@ -12921,7 +12929,7 @@ https://[Endpoint]/?Action=GetAllAddressGroupName&RegionId=cnhangzhou&Lang=zh&Gr
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13341,7 +13349,7 @@ https://[Endpoint]/?Action=UpdateSingleIdsDefaultStatus&RegionId=cnhangzhou&Lang
 Sample responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13356,7 +13364,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <UpdateSingleIdsDefaultStatusResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateSingleIdsDefaultStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
@@ -13450,7 +13458,7 @@ https://[Endpoint]/?Action=AddCustomIdsRule&RegionId=cnhangzhou&Lang=zh&RuleEngi
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13465,7 +13473,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <AddCustomIdsRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <AddCustomIdsRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
@@ -13519,7 +13527,7 @@ https://[Endpoint]/?Action=DeleteIdsRule&RegionId=cn-hangzhou&Lang=zh&RuleUuid=R
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13534,7 +13542,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteIdsRuleResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteIdsRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
@@ -13587,7 +13595,7 @@ https://[Endpoint]/?Action=UpdateIdsDefaultStatus&RegionId=cnhangzhou&Lang=zh&Ru
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13698,7 +13706,7 @@ https://[Endpoint]/?Action=UpdateIdsRule&RegionId=cnhangzhou&Lang=zh&RuleEngine=
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13772,7 +13780,7 @@ https://[Endpoint]/?Action=ModifyIpSegment&RegionId=cnhangzhou&Lang=zh&IpSegment
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13784,7 +13792,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <ModifyIpSegmentResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </ModifyIpSegmentResponse>
 ```
@@ -13833,7 +13841,7 @@ https://[Endpoint]/?Action=CreateIpSegment&RegionId=cnhangzhou&Lang=zh&InfoType=
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13845,7 +13853,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <CreateIpSegmentResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </CreateIpSegmentResponse>
 ```
@@ -13896,7 +13904,7 @@ https://[Endpoint]/?Action=DescribeRegionName&RegionId=cn-hangzhou&Lang=zh
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -13999,7 +14007,7 @@ https://[Endpoint]/?Action=DescribeIpSegment&RegionId=cnhangzhou&Lang=zh&IpSegme
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -14091,7 +14099,7 @@ https://[Endpoint]/?Action=DeleteIpSegment&RegionId=cn-hangzhou&Lang=zh&IpId=102
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -14103,7 +14111,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteIpSegmentResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </DeleteIpSegmentResponse>
 ```
@@ -14164,7 +14172,7 @@ Content-Type:application/json
 `}` `XML` format
 
 ```xml
-Content-Type:application/xml <CheckIpSegmentResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CheckIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </CheckIpSegmentResponse>
 ```
@@ -14240,7 +14248,7 @@ https://[Endpoint]/?Action=DescribeDownloadTasks&RegionId=cnhangzhou&Lang=zh&Ali
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -14347,7 +14355,7 @@ https://[Endpoint]/?Action=DescribeDownloadModules&RegionId=cnhangzhou&Lang=zh&A
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`
@@ -14423,7 +14431,7 @@ https://[Endpoint]/?Action=DeleteDownloadTaskByUuid&RegionId=cnhangzhou&Lang=zh&
 Sample success responses `JSON` format
 
 ```
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
 `{`

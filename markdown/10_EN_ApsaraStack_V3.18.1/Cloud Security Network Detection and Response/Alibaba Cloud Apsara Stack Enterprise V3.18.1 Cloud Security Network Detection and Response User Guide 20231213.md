@@ -5,7 +5,7 @@ doc_version: "20231213"
 pdf_pages: 46
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Cloud Security Network Detection and Response User Guide 20231213.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Cloud%20Security%20Network%20Detection%20and%20Response%20User%20Guide%2020231213.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Cloud Security Network Detection and Response User Guide 20231213
@@ -118,6 +118,9 @@ operations in the following scenarios: It is the first time that you log on to t
 ### 3.1 View traffic trends
 
 The security administrator can analyze traffic trends and obtain the traffic rate, peaks, and troughs. The security administrator can also view the top five IP addresses that have the largest amount of traffic and identify malicious IP addresses. This topic describes how to view network traffic trends and statistics about inbound and outbound traffic.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Network Detection Response**. On the **Network**
@@ -137,6 +140,9 @@ Network Detection Response allows you to view traffic at the Internet border. Yo
 **Prerequisites**
 
 The **Network Traffic Monitoring System** module is purchased and deployed at the egress (ISW) of Apsara Stack. This module audits, analyzes, and manages both inbound and outbound traffic at Internet borders.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Network Detection Response**. On the **Network**
@@ -176,6 +182,9 @@ Network Detection Response allows you to view traffic at the internal network bo
 **Prerequisites**
 
 The **Network Traffic Monitoring System** module is purchased and deployed at the ingress (CSW) of Apsara Stack. This module audits, analyzes, and manages both inbound and outbound traffic routed over leased lines between on-premises data centers and virtual private clouds (VPCs).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Network Detection Response**. On the **Network**
@@ -210,6 +219,9 @@ address.
 ### 3.3 Create packet capture tasks
 
 You can enable the packet capture feature to capture network data packets for specific IP addresses and ports and analyze the packets. This way, you can locate faults, analyze attacks, and identify security risks to network communications. This topic describes how to create a packet capture task.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Network Detection Response**. On the **Network**
@@ -536,6 +548,9 @@ On the **Address Book Management** tab, query address books in the address book 
 #### 3.8.5 Configure an IDS rule
 
 Network Detection Response provides built-in intrusion detection system (IDS) rules. You can configure custom IDS rules based on your business requirements and network environment. This topic describes how to create and manage IDS rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Network Detection Response**. On the **Network**
@@ -572,6 +587,8 @@ CIDR blocks are configured for Network Traffic Monitoring System. Security admin
 > **Note:** Changes to CIDR block settings immediately take effect without the need for intervention of security administrators.
 > If you add the same CIDR block on the traffic collection CIDR block setting page and the region setting page, make sure that you select the same region on both pages.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Network Security > Network Detection Response**. On the **Network**
@@ -591,6 +608,9 @@ After you complete the preceding configurations, you can manage the internal CID
 ### 3.9 Inspect services
 
 This topic describes how to inspect services such as Cloud Firewall and Network Traffic Monitoring System in Apsara Stack Security Center. You can monitor the status and features of the services.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**.In the **Global**
 **Platform Security** section, click **Alibaba Cloud Security**.
@@ -618,6 +638,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -687,6 +710,9 @@ After you create a custom IPS rule, you can perform the following operations on 
 #### 4.3.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -710,6 +736,9 @@ If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbi
 #### 4.3.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -730,6 +759,8 @@ You can view vulnerabilities, baselines, and server exceptions on the Server Gua
 #### 4.3.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
+
+**Procedure**
 
 > **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
@@ -797,6 +828,9 @@ see Update the feature library or the version of Apsara Stack Security.
 **of Apsara Stack Security**
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update feature libraries or the version of Apsara Stack Security. This topic describes how to update feature libraries or the version of Apsara Stack Security.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -887,6 +921,9 @@ You can configure global brute-force attack detection rules to prevent hosts fro
 **Important**
 
 If you modify global brute-force attack detection rules, all host assets, including tenantside hosts and platform-side physical servers, are affected. The modification also affects the attack analysis results of Threat Detection Service (TDS). Proceed with caution.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -908,6 +945,8 @@ If a normal request is considered an attack by the attack blocking feature of Th
 
 > **Note:** Make sure that only trusted IP addresses are included in the whitelist.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -927,6 +966,9 @@ You can **delete** a whitelist that is no longer required.
 #### 4.6.3 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -939,6 +981,9 @@ disable the attack blocking feature. After you disable the attack blocking featu
 #### 4.6.4 Add a Server Guard account
 
 After you add a Server Guard account, you can use the account to configure and manage Server Guard and Web Application Firewall (WAF) resources. This topic describes how to add a Server Guard account.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -957,6 +1002,9 @@ Installed on Physical Machines dialog box, configure the parameters and click **
 ### 4.7 Cloud Firewall monitoring
 
 You can use the Cloud Firewall monitoring feature to monitor the status of Cloud Firewall, detect abnormal traffic, and handle abnormal events at the earliest opportunity. This topic describes how to perform system inspection and service monitoring.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -983,7 +1031,11 @@ a. In the **Traffic Forwarding Configuration - Service CIDR Block** section, cli
 | Type | The type of the CIDR block for traffic redirection. Value values: Test and Business. |
 | Service Description | The service-related description. |
 
-After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
+After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections.
+
+**Note**
+
+In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
 
 > icon to manually refresh the check frequency for the CIDR block.
 
@@ -1012,6 +1064,8 @@ This topic describes how to view and modify the information about your Apsara St
 
 > **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -1023,7 +1077,11 @@ tenant account. i. Find your Apsara Stack tenant account and click **Revised** i
 
 #### 4.8.2 Manage Alibaba Cloud accounts
 
-After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
+After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center.
+
+**Procedure**
+
+To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**

@@ -5,7 +5,7 @@ doc_version: "20260826"
 pdf_pages: 552
 source_pdf: "7ec3d22d9fa18d33_Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260826.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%20MaxCompute/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20MaxCompute%20Developer%20Guide%2020260826.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260826
@@ -2511,13 +2511,23 @@ SHOW CREATE TABLE <table_name>;
 
 ##### 3.4.1.2 Drop a table
 
-This topic describes how to use a DDL statement to drop a table in MaxCompute. You can use this statement to drop a table that you no longer need.
+This topic describes how to use a DDL statement to drop a table in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+You can use this statement to drop a table that you no longer need.
+
+**Function syntax**
 
 ```
 DROP TABLE [IF EXISTS] table_name;
 ```
 
 > **Note:** If you do not specify **IF EXISTS** and the table does not exist, an error is returned. If you specify this parameter, the system returns a success message regardless of whether the table exists.
+
+**Parameters**
 
 table_name: required. This parameter specifies the name of the table that you want to drop.
 
@@ -2527,7 +2537,15 @@ CREATE TABLE sale_detail_drop LIKE sale_detail; -- If the table exists, the syst
 
 ##### 3.4.1.3 Rename a table
 
-This topic describes how to use a DDL statement to rename a table in MaxCompute. You can use this statement to rename a table.
+This topic describes how to use a DDL statement to rename a table in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+You can use this statement to rename a table.
+
+**Function syntax**
 
 ```
 ALTER TABLE table_name RENAME TO new_table_name;
@@ -2536,6 +2554,8 @@ ALTER TABLE table_name RENAME TO new_table_name;
 > **Note:** The **RENAME** operation modifies only the table name and does not change the data in the table.
 > If a table with the same name as new_table_name already exists, the system returns an error.
 > If **table_name** does not exist, the system returns an error.
+
+**Parameters**
 
 table_name: required. This parameter specifies the name of the table that you want to rename. new_table_name: required. This parameter specifies the new name of the table.
 
@@ -3209,7 +3229,7 @@ Sample query result:
 
 **Query the status of a materialized view**
 
-You can query the status of a materialized view. This operation allows you to view changes to the source table and determines whether the materialized view is valid. A materialized view can be in one of the following states: Valid When you execute a query statement, MaxCompute queries data from the materialized view instead of querying data from the source table. Invalid When you execute a query statement, MaxCompute cannot directly query data from the materialized view. In this case, MaxCompute queries data from the source table. As a result, the query speed is not accelerated. You can use a function to check whether data in a materialized view is valid.
+You can query the status of a materialized view. This operation allows you to view changes to the source table and determines whether the materialized view is valid. A materialized view can be in one of the following states: Valid When you execute a query statement, MaxCompute queries data from the materialized view instead of querying data from the source table. Invalid When you execute a query statement, MaxCompute cannot directly query data from the materialized view. In this case, MaxCompute queries data from the source table. As a result, the query speed is not accelerated. You can use a function to check whether data in a materialized view is valid. Function syntax
 
 ```
 boolean materialized_view_is_valid(<mv_name>,<partition_value>);
@@ -4956,7 +4976,11 @@ This topic describes the UPDATE and DELETE statements in MaxCompute SQL. The UPD
 
 **Background information**
 
-MaxCompute data manipulation language (DML) statements have limits on table operations. MaxCompute allows you to use only the INSERT OVERWRITE and INSERT INTO statements to delete and update some rows in a table. For example, if you use an INSERT statement to modify small amounts of data in a table or partition, you must use a SELECT statement to read all data and modify the data. Then, you can execute the INSERT statement to insert the modified data into the table or partition. This is a low-efficiency process. However, if you use the UPDATE and DELETE statements, the amount of data read or written in a query significantly decreases. History tables were considered the best to perform multiple UPDATE operations at a time. If you use a history table, you must add auxiliary columns, such as **start_date** and **end_date**, in the table. These columns indicate the lifecycle of the data records in a row. To query the current status of a table, you must find the latest status from large amounts of data based on the timestamp. This is a time-consuming process. However, the UPDATE and DELETE statements directly read data from the current table. When you execute a DELETE statement, the system automatically generates a Delta file.
+MaxCompute data manipulation language (DML) statements have limits on table operations. MaxCompute allows you to use only the INSERT OVERWRITE and INSERT INTO statements to delete and update some rows in a table. For example, if you use an INSERT statement to modify small amounts of data in a table or partition, you must use a SELECT statement to read all data and modify the data. Then, you can execute the INSERT statement to insert the modified data into the table or partition. This is a low-efficiency process. However, if you use the UPDATE and DELETE statements, the amount of data read or written in a query significantly decreases. History tables were considered the best to perform multiple UPDATE operations at a time. If you use a history table, you must add auxiliary columns, such as **start_date** and **end_date**, in the table. These columns indicate the lifecycle of the data records in a row. To query the current status of a table, you must find the latest status from large amounts of data based on the timestamp. This is a time-consuming process. However, the UPDATE and DELETE statements directly read data from the current table.
+
+**Description**
+
+When you execute a DELETE statement, the system automatically generates a Delta file.
 **txnid(bigint)** and **rowid(bigint)** in the Delta file indicate which rows in which transactional
 table are deleted from the Base file.
 
@@ -5216,13 +5240,27 @@ Summary: table name: acid_update_pt /ds=2019 instance count: 2 run time: 16
 
 ##### 3.6.1.1 ABS
 
-This topic describes how to use the ABS mathematical function in MaxCompute. This function calculates the absolute value.
+This topic describes how to use the ABS mathematical function in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+This function calculates the absolute value.
+
+**Function syntax**
 
 ```
 DOUBLE ABS(DOUBLE number); BIGINT ABS(BIGINT number) ; DECIMAL ABS(DECIMAL number);
 ```
 
-number: This parameter supports the BIGINT, DOUBLE, or DECIMAL type. The return type is the same as the input type. If the input is of the STRING type, the system implicitly converts it to the DOUBLE type before the calculation. If the input is of any other type, the system returns an error. The type of the return value depends on the input parameter type and can be DOUBLE, BIGINT, or DECIMAL. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+number: This parameter supports the BIGINT, DOUBLE, or DECIMAL type. The return type is the same as the input type. If the input is of the STRING type, the system implicitly converts it to the DOUBLE type before the calculation. If the input is of any other type, the system returns an error.
+
+**Return value**
+
+The type of the return value depends on the input parameter type and can be DOUBLE, BIGINT, or DECIMAL. If the input parameter is NULL, the function returns NULL.
 
 > **Note:** If the input BIGINT value exceeds the maximum representation range of the BIGINT type, the function returns a DOUBLE value, which may cause a loss of precision.
 
@@ -5260,14 +5298,28 @@ CREATE TABLE IF NOT EXISTS tbl1 (
 
 ##### 3.6.1.2 ACOS
 
-This topic describes how to use the ACOS mathematical function in MaxCompute. This function calculates the arc cosine of a specified **number**.
+This topic describes how to use the ACOS mathematical function in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+This function calculates the arc cosine of a specified **number**.
+
+**Function syntax**
 
 ```
 DOUBLE ACOS(DOUBLE number); DECIMAL ACOS(DECIMAL number);
 ```
 
+**Parameters**
+
 **number**: The DOUBLE or DECIMAL type. The value range is [-1, 1]. If the input value is of
-the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input is of any other type, the system returns an error. The return value is of the DOUBLE or DECIMAL type, and the value range is [0, π]. If the input value is NULL, the function returns NULL.
+the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input is of any other type, the system returns an error.
+
+**Return value**
+
+The return value is of the DOUBLE or DECIMAL type, and the value range is [0, π]. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT ACOS("0.87"); -- Result +---------------------+
@@ -5283,13 +5335,27 @@ SELECT ACOS("0.87"); -- Result +---------------------+
 
 ##### 3.6.1.3 ASIN
 
-This topic describes how to use the ASIN mathematical function in MaxCompute to calculate the arcsine of an input value. This function calculates the arcsine of a specified `number` and returns the result in radians.
+This topic describes how to use the ASIN mathematical function in MaxCompute to calculate the arcsine of an input value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the arcsine of a specified `number` and returns the result in radians.
+
+**Function syntax**
 
 ```
 DOUBLE ASIN(DOUBLE number); DECIMAL ASIN(DECIMAL number);
 ```
 
-number: required. The value must be of the DOUBLE or DECIMAL type and fall within the range of [-1, 1]. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error. The function returns a value of the DOUBLE or DECIMAL type. The return value falls within the range of -π/2 to π/2. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The value must be of the DOUBLE or DECIMAL type and fall within the range of [-1, 1]. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. The return value falls within the range of -π/2 to π/2. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT ASIN(1); -- Result +----------------------+
@@ -5311,7 +5377,13 @@ This topic describes how to use the ATAN mathematical function in MaxCompute to 
 DOUBLE ATAN(DOUBLE number);
 ```
 
-number: required. The DOUBLE type. If the input value is of the STRING or BIGINT type, the function implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the function returns an error. The function returns a value of the DOUBLE type in the range of -π/2 to π/2. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The DOUBLE type. If the input value is of the STRING or BIGINT type, the function implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the function returns an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE type in the range of -π/2 to π/2. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT ATAN(1); -- Return result +----------------------+
@@ -5327,11 +5399,21 @@ SELECT ATAN(1); -- Return result +----------------------+
 
 ##### 3.6.1.5 CEIL
 
-This topic describes how to use the CEIL mathematical function in MaxCompute to round up an input value. This function rounds up an input value and returns the smallest integer that is greater than or equal to the input value.
+This topic describes how to use the CEIL mathematical function in MaxCompute to round up an input value.
+
+**Instructions**
+
+**Description**
+
+This function rounds up an input value and returns the smallest integer that is greater than or equal to the input value.
+
+**Function syntax**
 
 ```
 BIGINT CEIL(DOUBLE value); BIGINT CEIL(DECIMAL value);
 ```
+
+**Parameters**
 
 value: Required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error. This function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL.
 
@@ -5349,13 +5431,27 @@ SELECT CEIL(1.1); -- Result +-------+
 
 ##### 3.6.1.6 CONV
 
-This topic describes how to use the CONV mathematical function in MaxCompute for base conversion. This function converts a numeric value from a specified base to another.
+This topic describes how to use the CONV mathematical function in MaxCompute for base conversion.
+
+**Instructions**
+
+**Description**
+
+This function converts a numeric value from a specified base to another.
+
+**Function syntax**
 
 ```
 STRING CONV(STRING input, BIGINT from_base, BIGINT to_base);
 ```
 
-input: required. This parameter must be of the STRING type. It specifies the integer value to be converted. This parameter supports implicit conversions from the BIGINT and DOUBLE types. from_base: required. This parameter must be of the BIGINT type. It specifies the original base. Valid values are 2, 8, 10, and 16. This parameter supports implicit conversions from the STRING and DOUBLE types. to_base: required. This parameter must be of the BIGINT type. It specifies the target base. Valid values are 2, 8, 10, and 16. This parameter supports implicit conversions from the STRING and DOUBLE types. This function returns a value of the STRING type. If any input value is NULL, the function returns NULL. If any input value is a negative value that starts with a hyphen (-), the system returns an error. If any input value is a decimal, the system converts the value to an integer before the base conversion and discards the decimal part.
+**Parameters**
+
+input: required. This parameter must be of the STRING type. It specifies the integer value to be converted. This parameter supports implicit conversions from the BIGINT and DOUBLE types. from_base: required. This parameter must be of the BIGINT type. It specifies the original base. Valid values are 2, 8, 10, and 16. This parameter supports implicit conversions from the STRING and DOUBLE types. to_base: required. This parameter must be of the BIGINT type. It specifies the target base. Valid values are 2, 8, 10, and 16. This parameter supports implicit conversions from the STRING and DOUBLE types.
+
+**Return value**
+
+This function returns a value of the STRING type. If any input value is NULL, the function returns NULL. If any input value is a negative value that starts with a hyphen (-), the system returns an error. If any input value is a decimal, the system converts the value to an integer before the base conversion and discards the decimal part.
 
 ```
 SELECT CONV('1100', 2, 10); -- Result +------+
@@ -5379,13 +5475,25 @@ SELECT CONV('1100', 2, 10); -- Result +------+
 
 ##### 3.6.1.7 COS
 
-This topic describes how to use the COS mathematical function in MaxCompute to calculate the cosine of an input radian value. This function calculates the cosine of number, which is a radian value.
+This topic describes how to use the COS mathematical function in MaxCompute to calculate the cosine of an input radian value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the cosine of number, which is a radian value.
 
 ```
 DOUBLE COS(DOUBLE number); DECIMAL COS(DECIMAL number);
 ```
 
-number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the DOUBLE or DECIMAL type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT COS(3.1415926/2); -- Result +-------------------------+
@@ -5401,11 +5509,21 @@ SELECT COS(3.1415926/2); -- Result +-------------------------+
 
 ##### 3.6.1.8 COSH
 
-This topic describes how to use the COSH mathematical function in MaxCompute to calculate the hyperbolic cosine of an input value. This function calculates the hyperbolic cosine of a number.
+This topic describes how to use the COSH mathematical function in MaxCompute to calculate the hyperbolic cosine of an input value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the hyperbolic cosine of a number.
+
+**Function syntax**
 
 ```
 DOUBLE COSH(DOUBLE number); DECIMAL COSH(DECIMAL number);
 ```
+
+**Parameters**
 
 number: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error. The return value is of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
@@ -5423,13 +5541,27 @@ SELECT COSH(1); -- Result +----------------------+
 
 ##### 3.6.1.9 COT
 
-This topic describes how to use the COT mathematical function in MaxCompute to calculate the cotangent of an input value in radians. This function calculates the cotangent of a number. The input value is in radians.
+This topic describes how to use the COT mathematical function in MaxCompute to calculate the cotangent of an input value in radians.
+
+**Instructions**
+
+**Description**
+
+This function calculates the cotangent of a number. The input value is in radians.
+
+**Function syntax**
 
 ```
 DOUBLE COT(DOUBLE number); DECIMAL COT(DECIMAL number);
 ```
 
-number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error. The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT COT(0.7853981633974483); -- Output +--------------------+
@@ -5445,13 +5577,27 @@ SELECT COT(0.7853981633974483); -- Output +--------------------+
 
 ##### 3.6.1.10 EXP
 
-This topic describes how to use the EXP mathematical function in MaxCompute to calculate the power of the natural constant e. This function calculates the exponential value of a specified number.
+This topic describes how to use the EXP mathematical function in MaxCompute to calculate the power of the natural constant e.
+
+**Instructions**
+
+**Description**
+
+This function calculates the exponential value of a specified number.
+
+**Function syntax**
 
 ```
 DOUBLE EXP(DOUBLE number); DECIMAL EXP(DECIMAL number);
 ```
 
-number: required. The value must be of the DOUBLE or DECIMAL type. If the input data type is STRING or BIGINT, the system implicitly converts the value to the DOUBLE type before calculation. If the input is of any other type, the system reports an error. The function returns a value of the DOUBLE or DECIMAL type. The value indicates e raised to the power of number. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The value must be of the DOUBLE or DECIMAL type. If the input data type is STRING or BIGINT, the system implicitly converts the value to the DOUBLE type before calculation. If the input is of any other type, the system reports an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. The value indicates e raised to the power of number. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT EXP(1); -- Result +---------------------+
@@ -5467,13 +5613,27 @@ SELECT EXP(1); -- Result +---------------------+
 
 ##### 3.6.1.11 FLOOR
 
-This topic describes how to use the FLOOR mathematical function in MaxCompute to round down an input value. This function rounds down a number and returns the largest integer that is less than or equal to the number.
+This topic describes how to use the FLOOR mathematical function in MaxCompute to round down an input value.
+
+**Instructions**
+
+**Description**
+
+This function rounds down a number and returns the largest integer that is less than or equal to the number.
+
+**Function syntax**
 
 ```
 BIGINT FLOOR(DOUBLE number); BIGINT FLOOR(DECIMAL number);
 ```
 
-number: required. The value is of the DOUBLE or DECIMAL type. If the input is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input is of any other type, an error occurs. The return value is of the BIGINT type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The value is of the DOUBLE or DECIMAL type. If the input is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input is of any other type, an error occurs.
+
+**Return value**
+
+The return value is of the BIGINT type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT FLOOR(1.2); -- Return result +------+
@@ -5513,13 +5673,27 @@ SELECT FLOOR(1.2); -- Return result +------+
 
 ##### 3.6.1.12 LN
 
-This topic describes how to use the LN mathematical function in MaxCompute to calculate the natural logarithm of an input value. This function returns the natural logarithm of a number.
+This topic describes how to use the LN mathematical function in MaxCompute to calculate the natural logarithm of an input value.
+
+**Instructions**
+
+**Description**
+
+This function returns the natural logarithm of a number.
+
+**Function syntax**
 
 ```
 DOUBLE LN(DOUBLE number); DECIMAL LN(DECIMAL number);
 ```
 
-number: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts the value into the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error. The return value is of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL. If the input value is a negative number or 0, the system returns an error.
+**Parameters**
+
+number: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts the value into the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The return value is of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL. If the input value is a negative number or 0, the system returns an error.
 
 ```
 SELECT LN(1000); -- Result +--------------------+
@@ -5559,13 +5733,27 @@ The following result is returned:
 
 ##### 3.6.1.14 POW
 
-This topic describes how to use the POW mathematical function in MaxCompute to calculate x raised to the power of y. This function returns x raised to the power of y, which is xy.
+This topic describes how to use the POW mathematical function in MaxCompute to calculate x raised to the power of y.
+
+**Instructions**
+
+**Description**
+
+This function returns x raised to the power of y, which is xy.
+
+**Function syntax**
 
 ```
 DOUBLE POW(DOUBLE x, DOUBLE y); DECIMAL POW(DECIMAL x, DECIMAL y);
 ```
 
-x: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs. y: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs. The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+x: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs. y: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT POW(10, 2); -- Return result +-------+
@@ -5577,13 +5765,27 @@ SELECT POW(10, 2); -- Return result +-------+
 
 ##### 3.6.1.15 RAND
 
-This topic describes how to use the RAND mathematical function in MaxCompute to generate a random number with a specified seed. This function returns a random number of the DOUBLE type based on the specified seed, and the return value ranges from 0 to 1.
+This topic describes how to use the RAND mathematical function in MaxCompute to generate a random number with a specified seed.
+
+**Instructions**
+
+**Description**
+
+This function returns a random number of the DOUBLE type based on the specified seed, and the return value ranges from 0 to 1.
+
+**Function syntax**
 
 ```
 DOUBLE RAND(BIGINT seed);
 ```
 
-seed: optional. The data type is BIGINT. This parameter specifies the random number seed and determines the starting value of the random number sequence. If you do not specify this parameter, the function returns a different random value each time it runs. The return value is of the DOUBLE type and ranges from 0 to 1. If you specify the same seed, the function returns the same random number sequence. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+seed: optional. The data type is BIGINT. This parameter specifies the random number seed and determines the starting value of the random number sequence. If you do not specify this parameter, the function returns a different random value each time it runs.
+
+**Return value**
+
+The return value is of the DOUBLE type and ranges from 0 to 1. If you specify the same seed, the function returns the same random number sequence. If the input value is NULL, the function returns NULL.
 
 ```
 -- Do not specify a seed. The function returns a different result each time it runs. SELECT RAND(); -- Return result (example; the actual value varies based on the execution time) +--------------------+
@@ -5605,9 +5807,13 @@ This topic describes how to use the ROUND mathematical function in MaxCompute to
 DOUBLE ROUND(DOUBLE number [, BIGINT decimal_places]); DECIMAL ROUND(DECIMAL number [, BIGINT decimal_places]);
 ```
 
+**Parameters**
+
 number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs. decimal_places: optional. The value must be a BIGINT constant that specifies the number of decimal places to which the function rounds the number. If the value is of any other type, an error occurs. If you omit this parameter, the function rounds the number to the nearest integer. The default value is 0.
 
 > **Note:** This parameter can be a negative number. A negative value causes the function to count digits to the left of the decimal point and discard the fractional part. If the absolute value of decimal_places exceeds the number of digits in the integer part, the function returns 0.
+
+**Return value**
 
 The function returns a value of the DOUBLE or DECIMAL type. If an input value is NULL, the function returns NULL.
 
@@ -5665,13 +5871,27 @@ SELECT ROUND(125.315); -- Return result +-------+
 
 ##### 3.6.1.17 SIN
 
-This topic describes how to use the SIN mathematical function in MaxCompute to calculate the sine of an input value in radians. This function calculates the sine of a number. The input value must be in radians.
+This topic describes how to use the SIN mathematical function in MaxCompute to calculate the sine of an input value in radians.
+
+**Instructions**
+
+**Description**
+
+This function calculates the sine of a number. The input value must be in radians.
+
+**Function syntax**
 
 ```
 DOUBLE SIN(DOUBLE number); DECIMAL SIN(DECIMAL number);
 ```
 
-number: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs. The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT SIN(0); -- Return result +------+
@@ -5687,13 +5907,27 @@ SELECT SIN(0); -- Return result +------+
 
 ##### 3.6.1.18 SINH
 
-This topic describes how to use the SINH mathematical function in MaxCompute to calculate the hyperbolic sine of an input value. This function calculates the hyperbolic sine of a number.
+This topic describes how to use the SINH mathematical function in MaxCompute to calculate the hyperbolic sine of an input value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the hyperbolic sine of a number.
+
+**Function syntax**
 
 ```
 DOUBLE SINH(DOUBLE number); DECIMAL SINH(DECIMAL number);
 ```
 
-number: Required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error. This function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, this function returns NULL.
+**Parameters**
+
+number: Required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+This function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, this function returns NULL.
 
 ```
 SELECT SINH(0); -- Result +------+
@@ -5709,13 +5943,25 @@ SELECT SINH(0); -- Result +------+
 
 ##### 3.6.1.19 SQRT
 
-This topic describes how to use the SQRT mathematical function in MaxCompute to calculate the square root of an input value. This function calculates the square root of a number.
+This topic describes how to use the SQRT mathematical function in MaxCompute to calculate the square root of an input value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the square root of a number.
 
 ```
 DOUBLE SQRT(DOUBLE number); DECIMAL SQRT(DECIMAL number);
 ```
 
-number: Required. The data type is DOUBLE or DECIMAL. The value must be greater than 0. If the value is less than 0, the function returns NULL. If the input data type is STRING or BIGINT, the system implicitly converts the value to the DOUBLE type before the calculation. If the input data type is of any other type, the system returns an error. The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: Required. The data type is DOUBLE or DECIMAL. The value must be greater than 0. If the value is less than 0, the function returns NULL. If the input data type is STRING or BIGINT, the system implicitly converts the value to the DOUBLE type before the calculation. If the input data type is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT SQRT(4); -- Result +------+
@@ -5731,11 +5977,21 @@ SELECT SQRT(4); -- Result +------+
 
 ##### 3.6.1.20 TAN
 
-This topic describes how to use the TAN mathematical function in MaxCompute to calculate the tangent of an input value in radians. This function calculates the tangent of a number. The input value must be in radians.
+This topic describes how to use the TAN mathematical function in MaxCompute to calculate the tangent of an input value in radians.
+
+**Instructions**
+
+**Description**
+
+This function calculates the tangent of a number. The input value must be in radians.
+
+**Function syntax**
 
 ```
 DOUBLE TAN(DOUBLE number); DECIMAL TAN(DECIMAL number);
 ```
+
+**Parameters**
 
 number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, an error occurs. The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
@@ -5753,13 +6009,27 @@ SELECT TAN(0); -- Return result +------+
 
 ##### 3.6.1.21 TANH
 
-This topic describes how to use the TANH mathematical function in MaxCompute to calculate the hyperbolic tangent of an input value. This function calculates the hyperbolic tangent of a number.
+This topic describes how to use the TANH mathematical function in MaxCompute to calculate the hyperbolic tangent of an input value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the hyperbolic tangent of a number.
+
+**Function syntax**
 
 ```
 DOUBLE TANH(DOUBLE number); DECIMAL TANH(DECIMAL number);
 ```
 
-number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT TANH(0); -- Result +------+
@@ -5803,7 +6073,11 @@ trunc(125.815) = 125.0 trunc(125.815, 0) =125.0 trunc(125.815, 1) = 125.80000000
 
 ###### 3.6.1.23.1 Usage notes
 
-This topic describes the settings for using the newly extended mathematical functions. MaxCompute 2.0 introduces new mathematical functions. To use these new functions in SQL statements, you must add the following SET statement.
+This topic describes the settings for using the newly extended mathematical functions.
+
+**Instructions**
+
+MaxCompute 2.0 introduces new mathematical functions. To use these new functions in SQL statements, you must add the following SET statement.
 
 ```
 SET odps.sql.type.system.odps2=true;
@@ -5813,11 +6087,21 @@ SET odps.sql.type.system.odps2=true;
 
 ###### 3.6.1.23.2 LOG2
 
-This topic describes how to use the LOG2 mathematical function in MaxCompute to calculate the base-2 logarithm of a number. This function returns the base-2 logarithm of a number.
+This topic describes how to use the LOG2 mathematical function in MaxCompute to calculate the base-2 logarithm of a number.
+
+**Instructions**
+
+**Description**
+
+This function returns the base-2 logarithm of a number.
+
+**Function syntax**
 
 ```
 DOUBLE LOG2(DOUBLE number); DOUBLE LOG2(DECIMAL number);
 ```
+
+**Parameters**
 
 number: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the function implicitly converts it to the DOUBLE type before the calculation. If the input value is of any other type, the function returns an error. This function returns a value of the DOUBLE type. If the input value is NULL, the function returns NULL. If the input value is 0, the function returns NULL.
 
@@ -5839,13 +6123,27 @@ SELECT LOG2(NULL); -- Return result +------+
 
 ###### 3.6.1.23.3 LOG10
 
-This topic describes how to use the LOG10 function in MaxCompute to calculate the base-10 logarithm of a number. This function returns the base-10 logarithm of a number.
+This topic describes how to use the LOG10 function in MaxCompute to calculate the base-10 logarithm of a number.
+
+**Instructions**
+
+**Description**
+
+This function returns the base-10 logarithm of a number.
+
+**Function syntax**
 
 ```
 DOUBLE LOG10(DOUBLE number); DOUBLE LOG10(DECIMAL number);
 ```
 
-number: required. The value must be of the DOUBLE or DECIMAL type. This function returns a value of the DOUBLE type. If the input value is NULL, the function returns NULL. If the input value is 0, the function returns NULL.
+**Parameters**
+
+number: required. The value must be of the DOUBLE or DECIMAL type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. If the input value is NULL, the function returns NULL. If the input value is 0, the function returns NULL.
 
 ```
 SELECT LOG10(NULL); -- Result +------+
@@ -5865,13 +6163,27 @@ SELECT LOG10(NULL); -- Result +------+
 
 ###### 3.6.1.23.4 BIN
 
-This topic describes how to use the BIN mathematical function in MaxCompute to return the binary representation of an input value. This function returns the binary representation of a number.
+This topic describes how to use the BIN mathematical function in MaxCompute to return the binary representation of an input value.
+
+**Instructions**
+
+**Description**
+
+This function returns the binary representation of a number.
+
+**Function syntax**
 
 ```
 STRING BIN(BIGINT number);
 ```
 
-number: required. The value is of the BIGINT type. The function returns a value of the STRING type. If the input value is 0, the function returns
+**Parameters**
+
+number: required. The value is of the BIGINT type.
+
+**Return value**
+
+The function returns a value of the STRING type. If the input value is 0, the function returns
 0. If the input value is NULL, the function returns NULL.
 
 ```
@@ -5892,13 +6204,27 @@ SELECT BIN(0); -- Result +------+
 
 ###### 3.6.1.23.5 HEX
 
-This topic describes how to use the HEX mathematical function in MaxCompute to convert integers or strings into hexadecimal. This function converts an integer or a string into hexadecimal.
+This topic describes how to use the HEX mathematical function in MaxCompute to convert integers or strings into hexadecimal.
+
+**Instructions**
+
+**Description**
+
+This function converts an integer or a string into hexadecimal.
+
+**Function syntax**
 
 ```
 STRING HEX(BIGINT number); STRING HEX(STRING number); STRING HEX(BINARY number);
 ```
 
-number: required. If number is of the BIGINT type, the function returns the hexadecimal representation of number. If number is of the STRING type, the function returns the hexadecimal representation of the string. The return value is of the STRING type. If the input value is 0, the function returns 0. If the input value is NULL, the function returns an error.
+**Parameters**
+
+number: required. If number is of the BIGINT type, the function returns the hexadecimal representation of number. If number is of the STRING type, the function returns the hexadecimal representation of the string.
+
+**Return value**
+
+The return value is of the STRING type. If the input value is 0, the function returns 0. If the input value is NULL, the function returns an error.
 
 ```
 SELECT HEX(0); -- Result +------+
@@ -5922,7 +6248,15 @@ SELECT HEX(0); -- Result +------+
 
 ###### 3.6.1.23.6 UNHEX
 
-This topic describes how to use the UNHEX mathematical function in MaxCompute to convert a hexadecimal string into the corresponding string. This function converts a hexadecimal string into the corresponding string.
+This topic describes how to use the UNHEX mathematical function in MaxCompute to convert a hexadecimal string into the corresponding string.
+
+**Instructions**
+
+**Description**
+
+This function converts a hexadecimal string into the corresponding string.
+
+**Function syntax**
 
 ```
 BINARY UNHEX(STRING number);
@@ -5944,13 +6278,27 @@ SELECT UNHEX('616263'); -- Result +------+
 
 ###### 3.6.1.23.7 RADIANS
 
-This topic describes how to use the RADIANS mathematical function in MaxCompute to convert degreesto radians. This function converts degreesto radians.
+This topic describes how to use the RADIANS mathematical function in MaxCompute to convert degreesto radians.
+
+**Instructions**
+
+**Description**
+
+This function converts degreesto radians.
+
+**Function syntax**
 
 ```
 DOUBLE RADIANS(DOUBLE number);
 ```
 
-number: required. This parameter is of the DOUBLE type. This function returns a value of the DOUBLE type. If the input value is NULL, this function returns NULL.
+**Parameters**
+
+number: required. This parameter is of the DOUBLE type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. If the input value is NULL, this function returns NULL.
 
 ```
 SELECT RADIANS(90); -- Result +----------------------+
@@ -5970,13 +6318,27 @@ SELECT RADIANS(90); -- Result +----------------------+
 
 ###### 3.6.1.23.8 DEGREES
 
-This topic describes how to use the DEGREES mathematical function in MaxCompute to convert radians to degrees. This function converts radians to degrees.
+This topic describes how to use the DEGREES mathematical function in MaxCompute to convert radians to degrees.
+
+**Instructions**
+
+**Description**
+
+This function converts radians to degrees.
+
+**Function syntax**
 
 ```
 DOUBLE DEGREES(DOUBLE number); DOUBLE DEGREES(DECIMAL number);
 ```
 
-number: required. This parameter must be of the DOUBLE or DECIMAL type. This function returns a value of the DOUBLE type. If the input value is NULL, this function returns NULL.
+**Parameters**
+
+number: required. This parameter must be of the DOUBLE or DECIMAL type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. If the input value is NULL, this function returns NULL.
 
 ```
 SELECT DEGREES(1.5707963267948966); -- Result +------+
@@ -5996,13 +6358,27 @@ SELECT DEGREES(1.5707963267948966); -- Result +------+
 
 ###### 3.6.1.23.9 SIGN
 
-This topic describes how to use the SIGN mathematical function in MaxCompute to obtain the sign of an input parameter. This function obtains the sign of an input parameter.
+This topic describes how to use the SIGN mathematical function in MaxCompute to obtain the sign of an input parameter.
+
+**Instructions**
+
+**Description**
+
+This function obtains the sign of an input parameter.
+
+**Function syntax**
 
 ```
 DOUBLE SIGN(DOUBLE number); DOUBLE SIGN(DECIMAL number);
 ```
 
-number: required. This parameter must be of the DOUBLE or DECIMAL type. This function returns a value of the DOUBLE type. If the input value is a positive number, this function returns 1.0. If the input value is a negative number, this function returns -1.0. If the input value is 0, this function returns 0.0. If the input value is NULL, this function returns NULL.
+**Parameters**
+
+number: required. This parameter must be of the DOUBLE or DECIMAL type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. If the input value is a positive number, this function returns 1.0. If the input value is a negative number, this function returns -1.0. If the input value is 0, this function returns 0.0. If the input value is NULL, this function returns NULL.
 
 ```
 SELECT SIGN(-2.5); -- Result +------+
@@ -6026,11 +6402,21 @@ SELECT SIGN(-2.5); -- Result +------+
 
 ###### 3.6.1.23.10 E
 
-This topic describes how to use the E mathematical function in MaxCompute to return the value of a natural constant e. This function returns the value of e.
+This topic describes how to use the E mathematical function in MaxCompute to return the value of a natural constant e.
+
+**Instructions**
+
+**Description**
+
+This function returns the value of e.
+
+**Function syntax**
 
 ```
 DOUBLE E();
 ```
+
+**Parameters**
 
 None. This function returns a value of the DOUBLE type.
 
@@ -6044,13 +6430,27 @@ SELECT E(); -- Result +---------------------+
 
 ###### 3.6.1.23.11 PI
 
-This topic describes how to use the PI mathematical function in MaxCompute to return the value of pi (π). This function returns the value of pi (π).
+This topic describes how to use the PI mathematical function in MaxCompute to return the value of pi (π).
+
+**Instructions**
+
+**Description**
+
+This function returns the value of pi (π).
+
+**Function syntax**
 
 ```
 DOUBLE PI()
 ```
 
-None. This function returns a value of the DOUBLE type.
+**Parameters**
+
+None.
+
+**Return value**
+
+This function returns a value of the DOUBLE type.
 
 ```
 SELECT PI(); -- Result +---------------------+
@@ -6062,13 +6462,23 @@ SELECT PI(); -- Result +---------------------+
 
 ###### 3.6.1.23.12 FACTORIAL
 
-This topic describes how to use the FACTORIAL mathematical function in MaxCompute to calculate the factorial of an input value. This function returns the factorial of a number.
+This topic describes how to use the FACTORIAL mathematical function in MaxCompute to calculate the factorial of an input value.
+
+**Instructions**
+
+**Description**
+
+This function returns the factorial of a number.
 
 ```
 BIGINT FACTORIAL(INT number);
 ```
 
-number: required. This parameter is of the INT type. Valid values: 0 to 20. This function returns a value of the BIGINT type. If the input value is 0, this function returns 1. If the input value is NULL or a value outside `[0,20]` , this function returns NULL.
+number: required. This parameter is of the INT type. Valid values: 0 to 20.
+
+**Return value**
+
+This function returns a value of the BIGINT type. If the input value is 0, this function returns 1. If the input value is NULL or a value outside `[0,20]` , this function returns NULL.
 
 ```
 SELECT FACTORIAL(5); -- Result +------+
@@ -6080,13 +6490,27 @@ SELECT FACTORIAL(5); -- Result +------+
 
 ###### 3.6.1.23.13 CBRT
 
-This topic describes how to use the CBRT mathematical function in MaxCompute to calculate the cube root of an input value. This function calculates the cube root of a number.
+This topic describes how to use the CBRT mathematical function in MaxCompute to calculate the cube root of an input value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the cube root of a number.
+
+**Function syntax**
 
 ```
 DOUBLE CBRT(DOUBLE number);
 ```
 
-number: Required. This parameter must be of the BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING type. This function returns a value of the DOUBLE type. If the data type of number is not BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING, the system returns an error. If the input value is NULL, this function returns NULL.
+**Parameters**
+
+number: Required. This parameter must be of the BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. If the data type of number is not BIGINT, INT, SMALLINT, TINYINT, DOUBLE, FLOAT, or STRING, the system returns an error. If the input value is NULL, this function returns NULL.
 
 ```
 SELECT CBRT(8); -- Result +------+
@@ -6102,13 +6526,27 @@ SELECT CBRT(8); -- Result +------+
 
 ###### 3.6.1.23.14 SHIFTLEFT
 
-This topic describes how to use the SHIFTLEFT mathematical function in MaxCompute to perform a bitwise left shift operation. This function performs a bitwise left shift operation (<<).
+This topic describes how to use the SHIFTLEFT mathematical function in MaxCompute to perform a bitwise left shift operation.
+
+**Instructions**
+
+**Description**
+
+This function performs a bitwise left shift operation (<<).
+
+**Function syntax**
 
 ```
 INT SHIFTLEFT(TINYINT|SMALLINT|INT number1, INT number2); BIGINT SHIFTLEFT(BIGINT number1, INT number2);
 ```
 
-number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGINT type. number2: required. This parameter must be of the INT type. This function returns an INT or BIGINT value.
+**Parameters**
+
+number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGINT type. number2: required. This parameter must be of the INT type.
+
+**Return value**
+
+This function returns an INT or BIGINT value.
 
 ```
 -- Shift the binary representation of 1 to the left by 2 bits (1<<2, 0001 shifted lef t by 2 bits is 0100) SELECT SHIFTLEFT(1, 2); -- Result +------+
@@ -6124,13 +6562,27 @@ number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGI
 
 ###### 3.6.1.23.15 SHIFTRIGHT
 
-This topic describes how to use the SHIFTRIGHT mathematical function in MaxCompute to perform a bitwise right shift operation. This function performs a bitwise right shift operation (>>).
+This topic describes how to use the SHIFTRIGHT mathematical function in MaxCompute to perform a bitwise right shift operation.
+
+**Instructions**
+
+**Description**
+
+This function performs a bitwise right shift operation (>>).
+
+**Function syntax**
 
 ```
 INT SHIFTRIGHT(TINYINT|SMALLINT|INT number1, INT number2); BIGINT SHIFTRIGHT(BIGINT number1, INT number2);
 ```
 
-number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGINT type. number2: required. This parameter must be of the INT type. This function returns a value of the INT or BIGINT type.
+**Parameters**
+
+number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGINT type. number2: required. This parameter must be of the INT type.
+
+**Return value**
+
+This function returns a value of the INT or BIGINT type.
 
 ```
 - Shift the binary representation of 4 to the right by 2 bits (4>>2, shifting 0100 to
@@ -6147,13 +6599,27 @@ the right by 2 bits yields 0001) SELECT SHIFTRIGHT(4, 2); -- Result +------+
 
 ###### 3.6.1.23.16 SHIFTRIGHTUNSIGNED
 
-This topic describes how to use the SHIFTRIGHTUNSIGNED mathematical function in MaxCompute to perform unsigned bitwise right shift operations. This function performs an unsigned bitwise right shift operation (>>>).
+This topic describes how to use the SHIFTRIGHTUNSIGNED mathematical function in MaxCompute to perform unsigned bitwise right shift operations.
+
+**Instructions**
+
+**Description**
+
+This function performs an unsigned bitwise right shift operation (>>>).
+
+**Function syntax**
 
 ```
 INT SHIFTRIGHTUNSIGNED(TINYINT|SMALLINT|INT number1, INT number2); BIGINT SHIFTRIGHTUNSIGNED(BIGINT number1, INT number2);
 ```
 
-number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGINT type. number2: required. This parameter must be of the INT type. This function returns a value of the INT or BIGINT type.
+**Parameters**
+
+number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGINT type. number2: required. This parameter must be of the INT type.
+
+**Return value**
+
+This function returns a value of the INT or BIGINT type.
 
 ```
 -- Perform an unsigned bitwise right shift of 2 bits on the binary representation of 8 (8>>>2, shifting 1000 right by 2 bits results in 0010) SELECT SHIFTRIGHTUNSIGNED(8, 2); -- Return result +------+
@@ -6169,11 +6635,21 @@ number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGI
 
 ###### 3.6.1.23.17 FORMAT_NUMBER
 
-This topic describes how to use the FORMAT_NUMBER mathematical function in MaxCompute to convert a number into a string of a specified format. This function converts a number into a string of a specified format.
+This topic describes how to use the FORMAT_NUMBER mathematical function in MaxCompute to convert a number into a string of a specified format.
+
+**Instructions**
+
+**Description**
+
+This function converts a number into a string of a specified format.
+
+**Function syntax**
 
 ```
 STRING FORMAT_NUMBER(FLOAT|DOUBLE|DECIMAL expr1, expr2);
 ```
+
+**Parameters**
 
 expr1: required. This parameter specifies the data that you want to format. expr2: required. This parameter specifies the target format for the conversion.
 
@@ -6198,11 +6674,21 @@ SELECT FORMAT_NUMBER(5.230134523424545456, 3); -- Result +------+
 
 ###### 3.6.1.23.18 WIDTH_BUCKET
 
-This topic describes how to use the WIDTH_BUCKET mathematical function in MaxCompute to define bucket ranges and return the ID of the bucket into which the value of a specific expression falls. This function specifies the number of buckets and the minimum and maximum values of the acceptable range for a bucket. This function allows you to construct equi-width buckets, in which the bucket range is divided into intervals that have an identical size. This function returns the ID of the bucket into which the value of a specific expression falls. This function supports the following data types: DECIMAL(precision,scale) in the MaxCompute V2.0 data type edition, BIGINT, INT, FLOAT, DOUBLE, and DECIMAL.
+This topic describes how to use the WIDTH_BUCKET mathematical function in MaxCompute to define bucket ranges and return the ID of the bucket into which the value of a specific expression falls.
+
+**Instructions**
+
+**Description**
+
+This function specifies the number of buckets and the minimum and maximum values of the acceptable range for a bucket. This function allows you to construct equi-width buckets, in which the bucket range is divided into intervals that have an identical size. This function returns the ID of the bucket into which the value of a specific expression falls. This function supports the following data types: DECIMAL(precision,scale) in the MaxCompute V2.0 data type edition, BIGINT, INT, FLOAT, DOUBLE, and DECIMAL.
+
+**Function syntax**
 
 ```
 BIGINT WIDTH_BUCKET(NUMERIC expr, NUMERIC min_value, NUMERIC max_value, INT num_buckets);
 ```
+
+**Parameters**
 
 expr: required. This parameter specifies the expression for which you want to identify the matching bucket ID. min_value: required. This parameter specifies the minimum value of the acceptable range for the bucket.. max_value: required. This parameter specifies the maximum value of the acceptable range for the bucket.. The maximum value must be greater than the minimum value. num_buckets: required. This parameter specifies the number of buckets. The value must be greater than 0. This function returns a value of the BIGINT type. The value ranges from 0 to num_buckets plus 1. If the value of expr is less than min_value, the function returns 0. If the value of expr is greater than max_value, the function returns num_buckets plus 1. If the value of expr is NULL, the function returns NULL. In other cases, the function returns the ID of the bucket into which the value of expr falls. The ID of the bucket is calculated by using the following formula: `FLOOR(num_buckets x`
 
@@ -6234,7 +6720,13 @@ AS t(key, value); -- Return result +-------+--------+-------------+
 
 ##### 3.6.2.1 CHAR_MATCHCOUNT
 
-The CHAR_MATCHCOUNT function counts the number of identical characters between two strings. Specifically, it counts how many characters in `str1` also appear in `str2` . This topic describes how to use the CHAR_MATCHCOUNT function in MaxCompute. This function counts the number of characters in the first string that also appear in the second string.
+The CHAR_MATCHCOUNT function counts the number of identical characters between two strings. Specifically, it counts how many characters in `str1` also appear in `str2` . This topic describes how to use the CHAR_MATCHCOUNT function in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+This function counts the number of characters in the first string that also appear in the second string.
 
 ```
 BIGINT char_matchcount(STRING str1, STRING str2);
@@ -6242,7 +6734,11 @@ BIGINT char_matchcount(STRING str1, STRING str2);
 
 > **Note:** The strings must be valid UTF-8 strings. If the comparison detects invalid characters, the function returns `0` .
 
-str1: required. This parameter is of the STRING type and specifies the source string to match. str2: required. This parameter is of the STRING type and specifies the target string for comparison. The function returns a value of the BIGINT type. If any input parameter is NULL, the function returns NULL.
+str1: required. This parameter is of the STRING type and specifies the source string to match. str2: required. This parameter is of the STRING type and specifies the target string for comparison.
+
+**Return value**
+
+The function returns a value of the BIGINT type. If any input parameter is NULL, the function returns NULL.
 
 ```
 SELECT CHAR_MATCHCOUNT('abd', 'aabc'); -- Return result +--------+
@@ -6254,13 +6750,27 @@ SELECT CHAR_MATCHCOUNT('abd', 'aabc'); -- Return result +--------+
 
 ##### 3.6.2.2 CHR
 
-This topic describes how to use the CHR string function in MaxCompute to convert a specified ASCII code into the corresponding character. This function converts a specified ASCII code into a character.
+This topic describes how to use the CHR string function in MaxCompute to convert a specified ASCII code into the corresponding character.
+
+**Instructions**
+
+**Description**
+
+This function converts a specified ASCII code into a character.
+
+**Function syntax**
 
 ```
 STRING CHR(BIGINT ascii);
 ```
 
-ascii: required. An ASCII value of the BIGINT type. If the input is of the STRING, DOUBLE, or DECIMAL type, the system implicitly converts it into the BIGINT type before the calculation. If the input is of any other type, the system returns an error. A value of the STRING type is returned. The input value must range from 0 to 255. If the value exceeds this range, the system returns an error. If the input value is NULL, the system returns NULL.
+**Parameters**
+
+ascii: required. An ASCII value of the BIGINT type. If the input is of the STRING, DOUBLE, or DECIMAL type, the system implicitly converts it into the BIGINT type before the calculation. If the input is of any other type, the system returns an error.
+
+**Return value**
+
+A value of the STRING type is returned. The input value must range from 0 to 255. If the value exceeds this range, the system returns an error. If the input value is NULL, the system returns NULL.
 
 ```
 SELECT CHR(65); -- Result +------+
@@ -6276,13 +6786,27 @@ SELECT CHR(65); -- Result +------+
 
 ##### 3.6.2.3 CONCAT
 
-This topic describes how to use the CONCAT string function in MaxCompute to concatenate all input strings. This function concatenates all input strings and returns the result.
+This topic describes how to use the CONCAT string function in MaxCompute to concatenate all input strings.
+
+**Instructions**
+
+**Description**
+
+This function concatenates all input strings and returns the result.
+
+**Function syntax**
 
 ```
 STRING CONCAT(STRING a, STRING b...);
 ```
 
-a, b...: required. The STRING type. If an input parameter is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type for calculation. If an input parameter is of any other type, the system returns an error. This function returns a value of the STRING type. If you do not provide any parameters or if any input parameter is NULL, this function returns NULL.
+**Parameters**
+
+a, b...: required. The STRING type. If an input parameter is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type for calculation. If an input parameter is of any other type, the system returns an error.
+
+**Return value**
+
+This function returns a value of the STRING type. If you do not provide any parameters or if any input parameter is NULL, this function returns NULL.
 
 ```
 SELECT CONCAT('ab', 'c'); -- Result +------+
@@ -6302,13 +6826,27 @@ SELECT CONCAT('ab', 'c'); -- Result +------+
 
 ##### 3.6.2.4 INSTR
 
-This topic describes how to use the INSTR string function in MaxCompute to calculate the position of a substring in a string. This function calculates the position of the substring str2 in the string str1.
+This topic describes how to use the INSTR string function in MaxCompute to calculate the position of a substring in a string.
+
+**Instructions**
+
+**Description**
+
+This function calculates the position of the substring str2 in the string str1.
+
+**Function syntax**
 
 ```
 BIGINT INSTR(STRING str1, STRING str2 [, BIGINT start_position [, BIGINT nth_appearance]]);
 ```
 
-str1: required. This parameter must be of the STRING type. It specifies a string in which you search for a substring. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of a data type that cannot be converted into a value of the STRING type, an error is returned. str2: required. This parameter must be of the STRING type. It specifies a substring you want to search for. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of a data type that cannot be converted into a value of the STRING type, an error is returned. start_position: optional. This parameter must be of the BIGINT type. If the input value is of another data type, an error is returned. This parameter specifies the position of the character in str1 from which the search starts. The default start position is the first character, marked as 1. If start_position is a negative value, the search starts from the end to the start of the string and the last character is -1. nth_appearance: optional. This parameter must be of the BIGINT type. If the value is greater than 0, it indicates the position where the substring matches the string for the nth_appearance time. If the value is of another data type or less than or equal to 0, an error is returned. This function returns a value of the BIGINT type. If the system does not find str2 in str1, the function returns 0. If str2 is an empty string, the match always succeeds. For example, SELECT INSTR('abc','') returns 1. If the value of str1, str2, start_position, or nth_appearance is NULL, the function returns NULL.
+**Parameters**
+
+str1: required. This parameter must be of the STRING type. It specifies a string in which you search for a substring. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of a data type that cannot be converted into a value of the STRING type, an error is returned. str2: required. This parameter must be of the STRING type. It specifies a substring you want to search for. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of a data type that cannot be converted into a value of the STRING type, an error is returned. start_position: optional. This parameter must be of the BIGINT type. If the input value is of another data type, an error is returned. This parameter specifies the position of the character in str1 from which the search starts. The default start position is the first character, marked as 1. If start_position is a negative value, the search starts from the end to the start of the string and the last character is -1. nth_appearance: optional. This parameter must be of the BIGINT type. If the value is greater than 0, it indicates the position where the substring matches the string for the nth_appearance time. If the value is of another data type or less than or equal to 0, an error is returned.
+
+**Return value**
+
+This function returns a value of the BIGINT type. If the system does not find str2 in str1, the function returns 0. If str2 is an empty string, the match always succeeds. For example, SELECT INSTR('abc','') returns 1. If the value of str1, str2, start_position, or nth_appearance is NULL, the function returns NULL.
 
 ```
 -- Example 1: Calculate the position of the character e in the string Tech on the net SELECT INSTR('Tech on the net', 'e'); -- Result +------+
@@ -6338,13 +6876,27 @@ SELECT INSTR('Tech on the net', 'on'); -- Result +------+
 
 ##### 3.6.2.5 IS_ENCODING
 
-This topic describes how to use the IS_ENCODING string function in MaxCompute to determine whether an input string can be converted between specified character sets. This function determines whether the input string str can be converted from a specified source character set from_encoding to another character set to_encoding. You can also use this function to detect corrupted data. A common approach is to set from_encoding to UTF- 8 and to_encoding to GBK.
+This topic describes how to use the IS_ENCODING string function in MaxCompute to determine whether an input string can be converted between specified character sets.
+
+**Instructions**
+
+**Description**
+
+This function determines whether the input string str can be converted from a specified source character set from_encoding to another character set to_encoding. You can also use this function to detect corrupted data. A common approach is to set from_encoding to UTF- 8 and to_encoding to GBK.
+
+**Function syntax**
 
 ```
 BOOLEAN IS_ENCODING(STRING str, STRING from_encoding, STRING to_encoding);
 ```
 
-str: required. This parameter is of the STRING type. An empty string belongs to any character set. from_encoding: required. This parameter is of the STRING type. The source character set. to_encoding: required. This parameter is of the STRING type. The destination character set. A value of the BOOLEAN type is returned. If str is successfully converted, the function returns True. Otherwise, it returns False. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+str: required. This parameter is of the STRING type. An empty string belongs to any character set. from_encoding: required. This parameter is of the STRING type. The source character set. to_encoding: required. This parameter is of the STRING type. The destination character set.
+
+**Return value**
+
+A value of the BOOLEAN type is returned. If str is successfully converted, the function returns True. Otherwise, it returns False. If any input parameter is NULL, the function returns NULL.
 
 ```
 SELECT IS_ENCODING('测试', 'utf-8', 'gbk'); -- Result +------+
@@ -6364,13 +6916,27 @@ SELECT IS_ENCODING('测试', 'utf-8', 'gbk'); -- Result +------+
 
 ##### 3.6.2.6 KEYVALUE
 
-This topic describes how to use the KEYVALUE string function in MaxCompute to split a source string into key-value pairs by using specified delimiters and return the value that corresponds to a specified key. The function splits the source string srcStr into key-value pairs by using split1, separates the keys and values by using split2, and returns the value that corresponds to the specified key.
+This topic describes how to use the KEYVALUE string function in MaxCompute to split a source string into key-value pairs by using specified delimiters and return the value that corresponds to a specified key.
+
+**Instructions**
+
+**Description**
+
+The function splits the source string srcStr into key-value pairs by using split1, separates the keys and values by using split2, and returns the value that corresponds to the specified key.
+
+**Function syntax**
 
 ```
 KEYVALUE(STRING srcStr, STRING split1, STRING split2, STRING key); KEYVALUE(STRING srcStr, STRING key);
 ```
 
-srcStr: required. This parameter must be of the STRING type. It specifies the source string to be split. key: required. This parameter must be of the STRING type. The target key whose corresponding value will be returned after the string is split. split1: optional. This parameter must be of the STRING type. It specifies the delimiter for key-value pairs. If this parameter is not specified, the default value is a semicolon (;). split2: optional. This parameter must be of the STRING type. It specifies the delimiter used to separate keys from values. If this parameter is not specified, the default value is a colon (:). The function returns a value of the STRING type. If split1 or split2 is NULL, the function returns NULL. If the srcStr or key is NULL, or if no matching key exists, the function returns NULL. If multiple matching key-value pairs exist, the function returns the value of the first matching key.
+**Parameters**
+
+srcStr: required. This parameter must be of the STRING type. It specifies the source string to be split. key: required. This parameter must be of the STRING type. The target key whose corresponding value will be returned after the string is split. split1: optional. This parameter must be of the STRING type. It specifies the delimiter for key-value pairs. If this parameter is not specified, the default value is a semicolon (;). split2: optional. This parameter must be of the STRING type. It specifies the delimiter used to separate keys from values. If this parameter is not specified, the default value is a colon (:).
+
+**Return value**
+
+The function returns a value of the STRING type. If split1 or split2 is NULL, the function returns NULL. If the srcStr or key is NULL, or if no matching key exists, the function returns NULL. If multiple matching key-value pairs exist, the function returns the value of the first matching key.
 
 ```
 -- Example 1: Use the default delimiters and return the Value that corresponds to the key 1 SELECT KEYVALUE('0:1\;1:2', 1); -- Result +------+
@@ -6386,13 +6952,27 @@ srcStr: required. This parameter must be of the STRING type. It specifies the so
 
 ##### 3.6.2.7 LENGTH
 
-This topic describes how to use the LENGTH string function in MaxCompute to return the length of a string. This function returns the length of the string str.
+This topic describes how to use the LENGTH string function in MaxCompute to return the length of a string.
+
+**Instructions**
+
+**Description**
+
+This function returns the length of the string str.
+
+**Function syntax**
 
 ```
 BIGINT LENGTH(STRING str);
 ```
 
-str: required. The STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the function implicitly converts the input value to the STRING type before calculation. If the input value is of any other type, an error is returned. This function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL. If the input value is not in UTF-8 encoding, the function returns -1.
+**Parameters**
+
+str: required. The STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the function implicitly converts the input value to the STRING type before calculation. If the input value is of any other type, an error is returned.
+
+**Return value**
+
+This function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL. If the input value is not in UTF-8 encoding, the function returns -1.
 
 ```
 SELECT LENGTH('hi! China'); -- Return result +------+
@@ -6404,13 +6984,27 @@ SELECT LENGTH('hi! China'); -- Return result +------+
 
 ##### 3.6.2.8 LENGTHB
 
-This topic describes how to use the LENGTHB string function in MaxCompute to return the length of a string in bytes. This function returns the length of the string str in bytes.
+This topic describes how to use the LENGTHB string function in MaxCompute to return the length of a string in bytes.
+
+**Instructions**
+
+**Description**
+
+This function returns the length of the string str in bytes.
+
+**Function syntax**
 
 ```
 BIGINT LENGTHB(STRING str);
 ```
 
-str: required. The data type is STRING. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. If the input value is of any other type, the system reports an error. This function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+str: required. The data type is STRING. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. If the input value is of any other type, the system reports an error.
+
+**Return value**
+
+This function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT LENGTHB('hi! 中国'); -- Return result +------+
@@ -6422,7 +7016,11 @@ SELECT LENGTHB('hi! 中国'); -- Return result +------+
 
 ##### 3.6.2.9 MD5
 
-This topic describes how to use the string function MD5 in MaxCompute to compute the MD5 hash of an input string. Computes the MD5 hash of the input string value.
+This topic describes how to use the string function MD5 in MaxCompute to compute the MD5 hash of an input string.
+
+**Description**
+
+Computes the MD5 hash of the input string value.
 
 **Syntax**
 
@@ -6430,7 +7028,11 @@ This topic describes how to use the string function MD5 in MaxCompute to compute
 STRING MD5(STRING value);
 ```
 
-value: required. The value is of the STRING type. If the input is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type before computation. If the input is of any other type, an error occurs. The return value is of the STRING type. If the input parameter is NULL, the function returns NULL.
+value: required. The value is of the STRING type. If the input is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type before computation. If the input is of any other type, an error occurs.
+
+**Return value**
+
+The return value is of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT MD5('abc'); -- Return result +----------------------------------+
@@ -6446,11 +7048,21 @@ SELECT MD5('abc'); -- Return result +----------------------------------+
 
 ##### 3.6.2.10 PARSE_URL
 
-This topic describes how to use the PARSE_URL string function in MaxCompute to parse URLs and extract information based on specified parts. This function parses a URL and extracts information based on a key.
+This topic describes how to use the PARSE_URL string function in MaxCompute to parse URLs and extract information based on specified parts.
+
+**Instructions**
+
+**Description**
+
+This function parses a URL and extracts information based on a key.
+
+**Function syntax**
 
 ```
 STRING PARSE_URL(STRING url, STRING part [, STRING key]);
 ```
+
+**Parameters**
 
 url: required. The URL to parse. If the URL is NULL, the function returns NULL. If the URL is invalid, an error is returned. part: required. The STRING type. Valid values include HOST, PATH, QUERY, REF, PROTOCOL, AUTHORITY, FILE, and USERINFO. This parameter is case-insensitive. If you specify a value outside this range, an error is returned. key: optional. The STRING type. When the part parameter is QUERY, the function extracts the value from the query string based on the key. Otherwise, the function ignores the key parameter. The function returns a value of the STRING type.
 
@@ -6499,13 +7111,23 @@ url: required. The URL to parse. If the URL is NULL, the function returns NULL. 
 
 ##### 3.6.2.11 REGEXP_EXTRACT
 
-This topic describes how to use the REGEXP_EXTRACT string function in MaxCompute to extract the content of a specified group from a string based on a regular expression. This function splits the source string based on the regular expression pattern and returns the characters of the group at the specified occurrence index.
+This topic describes how to use the REGEXP_EXTRACT string function in MaxCompute to extract the content of a specified group from a string based on a regular expression.
+
+**Instructions**
+
+This function splits the source string based on the regular expression pattern and returns the characters of the group at the specified occurrence index.
 
 ```
 STRING REGEXP_EXTRACT(STRING source, STRING pattern [, BIGINT occurrence]);
 ```
 
-source: required. This parameter is of the STRING type and specifies the string to search. pattern: required. This parameter is a STRING constant. If the pattern is an empty string or does not specify a group, the system returns an error. occurrence: optional. This parameter is a BIGINT constant. The value must be greater than or equal to 0. If the value is of another data type or less than 0, the system returns an error. If you do not specify this parameter, the default value is 1, which indicates that the system returns the first group. If the occurrence is 0, the system returns the substring that matches the entire pattern. The return value is of the STRING type. If any input parameter is NULL, the system returns NULL. The system stores data in UTF- 8 format. Chinese characters can be represented by their corresponding hexadecimal encodings, with a valid range of [\x{4e00},\x{9fa5}].
+**Parameters**
+
+source: required. This parameter is of the STRING type and specifies the string to search. pattern: required. This parameter is a STRING constant. If the pattern is an empty string or does not specify a group, the system returns an error. occurrence: optional. This parameter is a BIGINT constant. The value must be greater than or equal to 0. If the value is of another data type or less than 0, the system returns an error. If you do not specify this parameter, the default value is 1, which indicates that the system returns the first group. If the occurrence is 0, the system returns the substring that matches the entire pattern.
+
+**Return value**
+
+The return value is of the STRING type. If any input parameter is NULL, the system returns NULL. The system stores data in UTF- 8 format. Chinese characters can be represented by their corresponding hexadecimal encodings, with a valid range of [\x{4e00},\x{9fa5}].
 
 ```
 SELECT REGEXP_EXTRACT('foothebar', 'foo(.*?)(bar)', 1); -- Result +------+
@@ -6529,13 +7151,25 @@ SELECT REGEXP_EXTRACT('foothebar', 'foo(.*?)(bar)', 1); -- Result +------+
 
 ##### 3.6.2.12 REGEXP_INSTR
 
-This topic describes how to use the REGEXP_INSTR string function in MaxCompute to return the start or end position of the substring that matches a regular expression for the nth time in a string. This function returns the start or end position of the substring in the source string that matches the pattern for the nth occurrence, starting from start_position.
+This topic describes how to use the REGEXP_INSTR string function in MaxCompute to return the start or end position of the substring that matches a regular expression for the nth time in a string.
+
+**Instructions**
+
+**Description**
+
+This function returns the start or end position of the substring in the source string that matches the pattern for the nth occurrence, starting from start_position.
 
 ```
 BIGINT REGEXP_INSTR(STRING source, STRING pattern [, BIGINT start_position [, BIGINT nth_occurrence [, BIGINT return_option]]]);
 ```
 
-source: required. This parameter is of the STRING type and specifies the string to search. pattern: required. This parameter is a STRING constant. An error is returned if pattern is an empty string. start_position: optional. This parameter is a BIGINT constant and specifies the position where the search starts. The default value is 1 if you do not specify this parameter. An error is returned if the value is of another type or is less than or equal to 0. nth_occurrence: optional. This parameter is a BIGINT constant. The default value is 1 if you do not specify this parameter, which indicates the first occurrence. An error is returned if the value is of another type or is less than or equal to 0. return_option: optional. This parameter is a BIGINT constant. The value is 0 or 1. An error is returned if the value is of another type or is not an allowed value. A value of 0 indicates that the function returns the start position of the match. A value of 1 indicates that the function returns the end position of the match. The function returns a value of the BIGINT type. The function returns the start or end position of the matched substring in the source string based on the value of return_option. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+source: required. This parameter is of the STRING type and specifies the string to search. pattern: required. This parameter is a STRING constant. An error is returned if pattern is an empty string. start_position: optional. This parameter is a BIGINT constant and specifies the position where the search starts. The default value is 1 if you do not specify this parameter. An error is returned if the value is of another type or is less than or equal to 0. nth_occurrence: optional. This parameter is a BIGINT constant. The default value is 1 if you do not specify this parameter, which indicates the first occurrence. An error is returned if the value is of another type or is less than or equal to 0. return_option: optional. This parameter is a BIGINT constant. The value is 0 or 1. An error is returned if the value is of another type or is not an allowed value. A value of 0 indicates that the function returns the start position of the match. A value of 1 indicates that the function returns the end position of the match.
+
+**Return value**
+
+The function returns a value of the BIGINT type. The function returns the start or end position of the matched substring in the source string based on the value of return_option. If any input parameter is NULL, the function returns NULL.
 
 ```
 SELECT REGEXP_INSTR('i love www.taobao.com', 'o[[:alpha:]]{1}', 3, 2); -- Return result +------+
@@ -6547,7 +7181,15 @@ SELECT REGEXP_INSTR('i love www.taobao.com', 'o[[:alpha:]]{1}', 3, 2); -- Return
 
 ##### 3.6.2.13 REGEXP_SUBSTR
 
-This topic describes how to use the REGEXP_SUBSTR string function in MaxCompute to return a substring that matches a regular expression for the nth time in a string. This function returns the substring that matches the specified pattern for the nth_occurrence time in source, starting from the start_position.
+This topic describes how to use the REGEXP_SUBSTR string function in MaxCompute to return a substring that matches a regular expression for the nth time in a string.
+
+**Instructions**
+
+**Description**
+
+This function returns the substring that matches the specified pattern for the nth_occurrence time in source, starting from the start_position.
+
+**Function syntax**
 
 ```
 STRING REGEXP_SUBSTR(STRING source, STRING pattern [, BIGINT start_position [, BIGINT nth_occurrence]]);
@@ -6555,7 +7197,11 @@ STRING REGEXP_SUBSTR(STRING source, STRING pattern [, BIGINT start_position [, B
 
 source: required. This parameter is of the STRING type and specifies the string to search. pattern: required. This parameter is a STRING constant and specifies the pattern to match. An error is returned if pattern is an empty string. start_position: optional. This parameter is a BIGINT constant and must be greater than 0. An error is returned if the value is of another type or is less than or equal to 0. If you do not specify this parameter, the default value is 1, which indicates that the match starts from the first character of source. nth_occurrence: optional. This parameter is a BIGINT constant and must be greater than
 0. An error is returned if the value is of another type or is less than or equal to 0. If you do
-not specify this parameter, the default value is 1, which indicates that the function returns the substring of the first match. This function returns a value of the STRING type. If any input parameter is NULL, this function returns NULL. This function also returns NULL when no match is found.
+not specify this parameter, the default value is 1, which indicates that the function returns the substring of the first match.
+
+**Return value**
+
+This function returns a value of the STRING type. If any input parameter is NULL, this function returns NULL. This function also returns NULL when no match is found.
 
 ```
 SELECT REGEXP_SUBSTR('I love aliyun very much', 'a[[:alpha:]]{5}'); -- Return result +--------+
@@ -6577,11 +7223,19 @@ SELECT REGEXP_SUBSTR('I love aliyun very much', 'a[[:alpha:]]{5}'); -- Return re
 
 This topic describes how to use the REGEXP_COUNT string function in MaxCompute to count the occurrences of substrings that match a regular expression in a string. This function counts the occurrences of substrings that match the specified pattern in the source string, starting from start_position.
 
+**Function syntax**
+
 ```
 BIGINT REGEXP_COUNT(STRING source, STRING pattern [, BIGINT start_position]);
 ```
 
-source: required. This parameter is of the STRING type and specifies the string to search. The function returns an error if the value is of another data type. pattern: required. The parameter must be a STRING constant and specifies the pattern to match. The function returns an error if the pattern is an empty string or of another data type. start_position: optional. The value must be a BIGINT constant greater than 0. The function returns an error if the value is of another data type or is less than or equal to 0. If you do not specify this parameter, the default value is 1, which indicates that the match starts from the first character of the source string. The function returns a value of the BIGINT type. The function returns NULL if any input parameter is NULL. The function returns 0 if it finds no match.
+**Parameters**
+
+source: required. This parameter is of the STRING type and specifies the string to search. The function returns an error if the value is of another data type. pattern: required. The parameter must be a STRING constant and specifies the pattern to match. The function returns an error if the pattern is an empty string or of another data type. start_position: optional. The value must be a BIGINT constant greater than 0. The function returns an error if the value is of another data type or is less than or equal to 0. If you do not specify this parameter, the default value is 1, which indicates that the match starts from the first character of the source string.
+
+**Return value**
+
+The function returns a value of the BIGINT type. The function returns NULL if any input parameter is NULL. The function returns 0 if it finds no match.
 
 ```
 SELECT REGEXP_COUNT('abababc', 'a.c'); -- Result +------+
@@ -6603,7 +7257,13 @@ This topic describes how to use the REGEXP_REPLACE string function in MaxCompute
 STRING REGEXP_REPLACE(STRING source, STRING pattern, STRING replace_string[, BIGINT o ccurrence]);
 ```
 
-source: required. This parameter is of the STRING type and specifies the string that you want to process. pattern: required. This parameter is a STRING constant and specifies the pattern to match. If pattern is an empty string, the system returns an error. replace_string: required. This parameter is of the STRING type and specifies the string that replaces the matched pattern. occurrence: optional. This parameter is a BIGINT constant and must be greater than or equal to 0. This parameter specifies which match to replace with replace_string. A value of 0 indicates that the function replaces all matched substrings. If the value is of another type or less than 0, the system returns an error. If this parameter is omitted, the default value is 0. This function returns a value of the STRING type. When you reference a non-existent group, the function does not perform the replacement. If replace_string is NULL and the pattern has a match, the function returns NULL. If replace_string is NULL but the pattern does not match, the function returns the original string. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+source: required. This parameter is of the STRING type and specifies the string that you want to process. pattern: required. This parameter is a STRING constant and specifies the pattern to match. If pattern is an empty string, the system returns an error. replace_string: required. This parameter is of the STRING type and specifies the string that replaces the matched pattern. occurrence: optional. This parameter is a BIGINT constant and must be greater than or equal to 0. This parameter specifies which match to replace with replace_string. A value of 0 indicates that the function replaces all matched substrings. If the value is of another type or less than 0, the system returns an error. If this parameter is omitted, the default value is 0.
+
+**Return value**
+
+This function returns a value of the STRING type. When you reference a non-existent group, the function does not perform the replacement. If replace_string is NULL and the pattern has a match, the function returns NULL. If replace_string is NULL but the pattern does not match, the function returns the original string. If any input parameter is NULL, the function returns NULL.
 
 ```
 -- Example 1: Replace all matches (occurrence is 0) SELECT REGEXP_REPLACE("123.456.7890", "([[:digit:]]{3})\\.([[:digit:]]{3})\\.([[:digi t:]]{4})", "(\\1)\\2-\\3", 0); -- Return result +------------------+
@@ -6623,13 +7283,25 @@ source: required. This parameter is of the STRING type and specifies the string 
 
 ##### 3.6.2.16 SPLIT_PART
 
-This topic describes how to use the SPLIT_PART string function in MaxCompute to split a string by a delimiter and return the substring of a specified segment. This function splits the string str by the specifiedseparator and returns the substring from the start segment to the end segment (inclusive).
+This topic describes how to use the SPLIT_PART string function in MaxCompute to split a string by a delimiter and return the substring of a specified segment.
+
+**Description**
+
+This function splits the string str by the specifiedseparator and returns the substring from the start segment to the end segment (inclusive).
+
+**Function syntax**
 
 ```
 STRING SPLIT_PART(STRING str, STRING separator, BIGINT start[, BIGINT end]);
 ```
 
-str: required. This parameter is of the STRING type and specifies the string to split. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the function returns an error. separator: required. This parameter is a STRING constant and specifies the delimiter for splitting. It can be a single character or a string. If the value is of any other type, the function returns an error. start: required. This parameter is a BIGINT constant greater than 0. If the value is not a constant or is of any other type, the function returns an error. This parameter specifies the starting segment number (starting from 1). If you do not specify end, the function returns the segment specified by start. end: optional. This parameter is a BIGINT constant. The value must be greater than or equal to start. Otherwise, the function returns an error. This parameter specifies the ending segment number. If the value is not a constant or is of any other type, the function returns an error. You can omit this parameter. If you omit this parameter, the function returns the last segment. The function returns a value of the STRING type. If the value of start exceeds the actual number of segments after splitting, the function returns an empty string. If separator does not exist in str and start is set to 1, the function returns the entire str. If str is an empty string, the function returns an empty string. If separator is an empty string, the function returns the original string str. If end exceeds the number of segments, the function processes the value as the total number of segments. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+str: required. This parameter is of the STRING type and specifies the string to split. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the function returns an error. separator: required. This parameter is a STRING constant and specifies the delimiter for splitting. It can be a single character or a string. If the value is of any other type, the function returns an error. start: required. This parameter is a BIGINT constant greater than 0. If the value is not a constant or is of any other type, the function returns an error. This parameter specifies the starting segment number (starting from 1). If you do not specify end, the function returns the segment specified by start. end: optional. This parameter is a BIGINT constant. The value must be greater than or equal to start. Otherwise, the function returns an error. This parameter specifies the ending segment number. If the value is not a constant or is of any other type, the function returns an error. You can omit this parameter. If you omit this parameter, the function returns the last segment.
+
+**Return value**
+
+The function returns a value of the STRING type. If the value of start exceeds the actual number of segments after splitting, the function returns an empty string. If separator does not exist in str and start is set to 1, the function returns the entire str. If str is an empty string, the function returns an empty string. If separator is an empty string, the function returns the original string str. If end exceeds the number of segments, the function processes the value as the total number of segments. If any input parameter is NULL, the function returns NULL.
 
 ```
 -- Example 1: Split a string and return the first segment SELECT SPLIT_PART('a,b,c,d', ',', 1); -- Result +------+
@@ -6643,11 +7315,21 @@ str: required. This parameter is of the STRING type and specifies the string to 
 
 ##### 3.6.2.17 SUBSTR
 
-This topic describes how to use the SUBSTR string function in MaxCompute to return a substring of a specified length starting from a specified position in a string. This function returns a substring of the string str, starting at start_position with a length of length.
+This topic describes how to use the SUBSTR string function in MaxCompute to return a substring of a specified length starting from a specified position in a string.
+
+**Instructions**
+
+**Description**
+
+This function returns a substring of the string str, starting at start_position with a length of length.
+
+**Function syntax**
 
 ```
 STRING SUBSTR(STRING str, BIGINT start_position[, BIGINT length]);
 ```
+
+**Parameters**
 
 str: required. The data type is STRING. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. If the input value is of any other type, the system reports an error. start_position: required. The data type is BIGINT. The starting position is 1. If start_position is 0, the function returns NULL. If start_position is a negative number, the starting position counts backward from the end of the string, and the last character is -1. If the input value is of any other type, the system reports an error. length: optional. The data type is BIGINT. This parameter specifies the length of the substring and must be greater than 0. If the input value is of any other type or is less than or equal to 0, the system reports an error. The return value is of the STRING type. If any input parameter is NULL, the function returns NULL. If you omit length, the function returns the substring of str from start_position to the end of str.
 
@@ -6663,13 +7345,27 @@ str: required. The data type is STRING. If the input value is of the BIGINT, DEC
 
 ##### 3.6.2.18 TOLOWER
 
-This topic describes how to use the TOLOWER string function in MaxCompute to convert an English string to lowercase. This function converts the English string specified by source to lowercase.
+This topic describes how to use the TOLOWER string function in MaxCompute to convert an English string to lowercase.
+
+**Instructions**
+
+**Description**
+
+This function converts the English string specified by source to lowercase.
+
+**Function syntax**
 
 ```
 STRING TOLOWER(STRING source);
 ```
 
-source: required. The value is of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. If the input value is of any other type, the system returns an error. The return value is of the STRING type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+source: required. The value is of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The return value is of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 -- Convert an English string to lowercase. SELECT TOLOWER("aBcd"); -- Result +------+
@@ -6685,13 +7381,27 @@ source: required. The value is of the STRING type. If the input value is of the 
 
 ##### 3.6.2.19 TOUPPER
 
-This topic describes how to use the TOUPPER string function in MaxCompute to convert an English string to uppercase. This function converts the English string specified by source to uppercase.
+This topic describes how to use the TOUPPER string function in MaxCompute to convert an English string to uppercase.
+
+**Instructions**
+
+**Description**
+
+This function converts the English string specified by source to uppercase.
+
+**Function syntax**
 
 ```
 STRING TOUPPER(STRING source);
 ```
 
-source: required. The value is of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other type, an error is returned. This function returns a value of the STRING type. If the input parameter is NULL, this function returns NULL.
+**Parameters**
+
+source: required. The value is of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other type, an error is returned.
+
+**Return value**
+
+This function returns a value of the STRING type. If the input parameter is NULL, this function returns NULL.
 
 ```
 -- Convert an English string to uppercase. SELECT TOUPPER("aBcd"); -- Result +------+
@@ -6703,13 +7413,27 @@ source: required. The value is of the STRING type. If the input value is of the 
 
 ##### 3.6.2.20 TO_CHAR
 
-This topic describes how to use the TO_CHAR string function in MaxCompute to convert BOOLEAN, BIGINT, DECIMAL, or DOUBLE values into their corresponding STRING representations. This function converts BOOLEAN, BIGINT, DECIMAL, or DOUBLE values into their corresponding STRING representations.
+This topic describes how to use the TO_CHAR string function in MaxCompute to convert BOOLEAN, BIGINT, DECIMAL, or DOUBLE values into their corresponding STRING representations.
+
+**Instructions**
+
+**Description**
+
+This function converts BOOLEAN, BIGINT, DECIMAL, or DOUBLE values into their corresponding STRING representations.
+
+**Function syntax**
 
 ```
 STRING TO_CHAR(BOOLEAN value); STRING TO_CHAR(BIGINT value); STRING TO_CHAR(DOUBLE value); STRING TO_CHAR(DECIMAL value);
 ```
 
-value: Required. This parameter accepts BOOLEAN, BIGINT, DECIMAL, or DOUBLE values. If you specify a value of another type, the system returns an error. This function returns a STRING value. If the input parameter is NULL, this function returns NULL.
+**Parameters**
+
+value: Required. This parameter accepts BOOLEAN, BIGINT, DECIMAL, or DOUBLE values. If you specify a value of another type, the system returns an error.
+
+**Return value**
+
+This function returns a STRING value. If the input parameter is NULL, this function returns NULL.
 
 ```
 SELECT TO_CHAR(123); -- Result +------+
@@ -6725,7 +7449,15 @@ SELECT TO_CHAR(123); -- Result +------+
 
 ##### 3.6.2.21 TRIM
 
-This topic describes how to use the TRIM string function in MaxCompute to remove leading and trailing spaces from an input string. This function removes leading and trailing spaces from the input string str.
+This topic describes how to use the TRIM string function in MaxCompute to remove leading and trailing spaces from an input string.
+
+**Instructions**
+
+**Description**
+
+This function removes leading and trailing spaces from the input string str.
+
+**Function syntax**
 
 ```
 STRING TRIM(STRING str);
@@ -6733,7 +7465,11 @@ STRING TRIM(STRING str);
 
 **Parameter description**
 
-str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. This function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
+str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+This function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT TRIM(' abc '); -- Return result +------+
@@ -6743,13 +7479,27 @@ SELECT TRIM(' abc '); -- Return result +------+
 
 ##### 3.6.2.22 LTRIM
 
-This topic describes how to use the LTRIM string function in MaxCompute to remove leading spaces from an input string. This function removes leading spaces from the input string str.
+This topic describes how to use the LTRIM string function in MaxCompute to remove leading spaces from an input string.
+
+**Instructions**
+
+**Description**
+
+This function removes leading spaces from the input string str.
+
+**Function syntax**
 
 ```
 STRING LTRIM(STRING str);
 ```
 
-str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT LTRIM(' abc '); -- Result +------+
@@ -6759,7 +7509,15 @@ SELECT LTRIM(' abc '); -- Result +------+
 
 ##### 3.6.2.23 RTRIM
 
-This topic describes how to use the RTRIM string function in MaxCompute to remove trailing spaces from an input string. This function removes trailing spaces from the input string str.
+This topic describes how to use the RTRIM string function in MaxCompute to remove trailing spaces from an input string.
+
+**Instructions**
+
+**Description**
+
+This function removes trailing spaces from the input string str.
+
+**Function syntax**
 
 ```
 STRING RTRIM(STRING str);
@@ -6767,7 +7525,11 @@ STRING RTRIM(STRING str);
 
 **Parameter description**
 
-str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
+str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT RTRIM('a abc '); -- Return result +------+
@@ -6777,13 +7539,27 @@ SELECT RTRIM('a abc '); -- Return result +------+
 
 ##### 3.6.2.24 REVERSE
 
-This topic describes how to use the REVERSE string function in MaxCompute to return a reversed string. The function returns a reversed string.
+This topic describes how to use the REVERSE string function in MaxCompute to return a reversed string.
+
+**Instructions**
+
+**Description**
+
+The function returns a reversed string.
+
+**Function syntax**
 
 ```
 STRING REVERSE(STRING str);
 ```
 
-str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT REVERSE('abcedfg'); -- Result +---------+
@@ -6799,7 +7575,13 @@ This topic describes how to use the SPACE string function in MaxCompute to retur
 STRING SPACE(BIGINT n);
 ```
 
-n: required. The value must be of the BIGINT type and must not exceed `2 MB` . If the value is null, an error is returned. The function returns a value of the STRING type.
+**Parameters**
+
+n: required. The value must be of the BIGINT type and must not exceed `2 MB` . If the value is null, an error is returned.
+
+**Return value**
+
+The function returns a value of the STRING type.
 
 ```
 -- Verify the length of the spaces returned by SPACE(10). SELECT LENGTH(SPACE(10)); -- Result +------+
@@ -6809,13 +7591,27 @@ n: required. The value must be of the BIGINT type and must not exceed `2 MB` . I
 
 ##### 3.6.2.26 REPEAT
 
-This topic describes how to use the REPEAT string function in MaxCompute to repeat a string a specified number of times. This function returns the str string repeated n times.
+This topic describes how to use the REPEAT string function in MaxCompute to repeat a string a specified number of times.
+
+**Instructions**
+
+**Description**
+
+This function returns the str string repeated n times.
+
+**Function syntax**
 
 ```
 STRING REPEAT(STRING str, BIGINT n);
 ```
 
-str: Required. The value must be of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. n: Required. The value must be of the BIGINT type. The length must not exceed 2 MB. If this parameter is empty, the system returns an error. This function returns a value of the STRING type.
+**Parameters**
+
+str: Required. The value must be of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. n: Required. The value must be of the BIGINT type. The length must not exceed 2 MB. If this parameter is empty, the system returns an error.
+
+**Return value**
+
+This function returns a value of the STRING type.
 
 ```
 -- Repeat the string 'abc' 5 times. SELECT REPEAT('abc', 5); -- Result +-------------------+
@@ -6825,13 +7621,27 @@ str: Required. The value must be of the STRING type. If the input value is of th
 
 ##### 3.6.2.27 ASCII
 
-This topic describes how to use the ASCII string function in MaxCompute. This function returns the ASCII code of the first character in the string **str**.
+This topic describes how to use the ASCII string function in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+This function returns the ASCII code of the first character in the string **str**.
+
+**Function syntax**
 
 ```
 BIGINT ascii(STRING str);
 ```
 
-str: This parameter must be of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the BIGINT type.
+**Parameters**
+
+str: This parameter must be of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the BIGINT type.
 
 ```
 SELECT ASCII('abcde'); -- Result +-------+
@@ -6845,7 +7655,11 @@ SELECT ASCII('abcde'); -- Result +-------+
 
 ###### 3.6.2.28.1 Usage notes
 
-This topic describes the settings that you must configure to use the newly extended string functions. After an upgrade to MaxCompute 2.0, MaxCompute provides newly extended string functions. To use these new functions in SQL statements, you must add the following SET statement.
+This topic describes the settings that you must configure to use the newly extended string functions.
+
+**Instructions**
+
+After an upgrade to MaxCompute 2.0, MaxCompute provides newly extended string functions. To use these new functions in SQL statements, you must add the following SET statement.
 
 ```
 SET odps.sql.type.system.odps2=true;
@@ -6873,13 +7687,27 @@ concat_ws(':','name','hanmeimei')='name:hanmeimei' concat_ws(':','avg',null,'34'
 
 ###### 3.6.2.28.3 LPAD
 
-This topic describes how to use the LPAD string function in MaxCompute to pad a string to a specified length on the left. This function pads the string `a` to the length `len` on the left using the string `b` .
+This topic describes how to use the LPAD string function in MaxCompute to pad a string to a specified length on the left.
+
+**Instructions**
+
+**Description**
+
+This function pads the string `a` to the length `len` on the left using the string `b` .
+
+**Function syntax**
 
 ```
 STRING LPAD(STRING a, INT len, STRING b);
 ```
 
-a: required. The data type is STRING. len: required. The data type is INT. b: required. The data type is STRING. This function returns a value of the STRING type. If len is less than the length of string a, the function returns the leftmost len characters of string a. If len is 0, the function returns an empty string. If you do not specify any input parameters or if any input parameter is NULL, the function returns NULL. If len is greater than the length of string a but less than the sum of the lengths of strings a and b, the function left-pads string a to a length of len by using the characters of string b from left to right.
+**Parameters**
+
+a: required. The data type is STRING. len: required. The data type is INT. b: required. The data type is STRING.
+
+**Return value**
+
+This function returns a value of the STRING type. If len is less than the length of string a, the function returns the leftmost len characters of string a. If len is 0, the function returns an empty string. If you do not specify any input parameters or if any input parameter is NULL, the function returns NULL. If len is greater than the length of string a but less than the sum of the lengths of strings a and b, the function left-pads string a to a length of len by using the characters of string b from left to right.
 
 ```
 -- Left-pad to a length of 10 characters. The function returns 12abcdefgh. SELECT LPAD('abcdefgh', 10, '12'); -- Result +----------------+
@@ -6899,11 +7727,19 @@ a: required. The data type is STRING. len: required. The data type is INT. b: re
 
 This topic describes how to use the RPAD string function in MaxCompute to pad a string to a specified length on the right. This function pads the string a to the length len on the right using the string b.
 
+**Function syntax**
+
 ```
 STRING RPAD(STRING a, INT len, STRING b);
 ```
 
-a: required. The data type is STRING. len: required. The data type is INT. b: required. The data type is STRING. This function returns a value of the STRING type. If len is less than the length of a, the function returns the leftmost len characters of a. If len is 0, the function returns an empty string. If you do not specify any input parameters or any input parameter is NULL, the function returns NULL. If len is greater than the length of a and less than the sum of the lengths of a and b, the function right-pads string a to a length of len by using the characters of string b from left to right.
+**Parameters**
+
+a: required. The data type is STRING. len: required. The data type is INT. b: required. The data type is STRING.
+
+**Return value**
+
+This function returns a value of the STRING type. If len is less than the length of a, the function returns the leftmost len characters of a. If len is 0, the function returns an empty string. If you do not specify any input parameters or any input parameter is NULL, the function returns NULL. If len is greater than the length of a and less than the sum of the lengths of a and b, the function right-pads string a to a length of len by using the characters of string b from left to right.
 
 ```
 -- Right-pad to a length of 10 characters. The function returns abcdefgh12. SELECT RPAD('abcdefgh', 10, '12'); -- Result +----------------+
@@ -6921,13 +7757,23 @@ a: required. The data type is STRING. len: required. The data type is INT. b: re
 
 ###### 3.6.2.28.5 REPLACE
 
-This topic describes how to use the REPLACE string function in MaxCompute to replace matched substrings in a source string with a specified string. This function replaces the exact matches of the OLD string in string a with the NEW string, and returns string a.
+This topic describes how to use the REPLACE string function in MaxCompute to replace matched substrings in a source string with a specified string.
+
+**Instructions**
+
+**Description**
+
+This function replaces the exact matches of the OLD string in string a with the NEW string, and returns string a.
 
 ```
 STRING REPLACE(STRING a, STRING OLD, STRING NEW);
 ```
 
-a: required. This parameter must be of the STRING type and specifies the source string. OLD: required. This parameter must be of the STRING type and specifies the substring to be replaced. NEW: required. This parameter must be of the STRING type and specifies the replacement string. This function returns a value of the STRING type. If any input parameter is NULL, this function returns NULL.
+a: required. This parameter must be of the STRING type and specifies the source string. OLD: required. This parameter must be of the STRING type and specifies the substring to be replaced. NEW: required. This parameter must be of the STRING type and specifies the replacement string.
+
+**Return value**
+
+This function returns a value of the STRING type. If any input parameter is NULL, this function returns NULL.
 
 ```
 -- Replace matched substrings. SELECT REPLACE('ababab', 'abab', '12'); -- Result +------+
@@ -6941,7 +7787,13 @@ a: required. This parameter must be of the STRING type and specifies the source 
 
 ###### 3.6.2.28.6 SOUNDEX
 
-This topic describes how to use the SOUNDEX string function in MaxCompute to convert a regular string into a SOUNDEX string. This function converts a regular string into a SOUNDEX string.
+This topic describes how to use the SOUNDEX string function in MaxCompute to convert a regular string into a SOUNDEX string.
+
+**Instructions**
+
+**Description**
+
+This function converts a regular string into a SOUNDEX string.
 
 ```
 STRING SOUNDEX(STRING a);
@@ -6957,13 +7809,27 @@ a: required. This parameter must be of the STRING type. The function returns a v
 
 ###### 3.6.2.28.7 SUBSTRING_INDEX
 
-This topic describes how to use the SUBSTRING_INDEX string function in MaxCompute to extract the substring before a specified segment of a string by using a delimiter. This function extracts the substring before the count-th delimiter in string a. If count is positive, the extraction starts from the left. If count is negative, it starts from the right.
+This topic describes how to use the SUBSTRING_INDEX string function in MaxCompute to extract the substring before a specified segment of a string by using a delimiter.
+
+**Instructions**
+
+**Description**
+
+This function extracts the substring before the count-th delimiter in string a. If count is positive, the extraction starts from the left. If count is negative, it starts from the right.
+
+**Function syntax**
 
 ```
 STRING SUBSTRING_INDEX(STRING a, STRING SEP, INT count);
 ```
 
-a: required. This parameter must be of the STRING type and specifies the source string. SEP: required. This parameter must be of the STRING type and specifies the delimiter. count: required. This parameter must be of the INT type and specifies the occurrence of the delimiter. The function returns a value of the STRING type. If an input parameter is NULL, the function returns NULL.
+**Parameters**
+
+a: required. This parameter must be of the STRING type and specifies the source string. SEP: required. This parameter must be of the STRING type and specifies the delimiter. count: required. This parameter must be of the INT type and specifies the occurrence of the delimiter.
+
+**Return value**
+
+The function returns a value of the STRING type. If an input parameter is NULL, the function returns NULL.
 
 ```
 -- Extract the substring before the second delimiter from the left. The function retu rns https://help.aliyun. SELECT SUBSTRING_INDEX('https://help.aliyun.com', '.', 2); -- Result +----------------------+
@@ -6977,11 +7843,21 @@ a: required. This parameter must be of the STRING type and specifies the source 
 
 ###### 3.6.2.28.8 TRANSLATE
 
-This topic describes how to use the TRANSLATE string function in MaxCompute to replace specified characters in a string with corresponding characters one by one. This function replace each character in str1 that appears in str2 with the character at the corresponding position in str3.
+This topic describes how to use the TRANSLATE string function in MaxCompute to replace specified characters in a string with corresponding characters one by one.
+
+**Instructions**
+
+**Description**
+
+This function replace each character in str1 that appears in str2 with the character at the corresponding position in str3.
+
+**Function syntax**
 
 ```
 STRING TRANSLATE(STRING|VARCHAR str1, STRING|VARCHAR str2, STRING|VARCHAR str3);
 ```
+
+**Parameters**
 
 str1: required. This parameter must be of the STRING or VARCHAR type and specifies the source string to be replaced. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. str2: required. This parameter must be of the STRING or VARCHAR type and specifies the set of characters to be replaced. str3: required. This parameter must be of the STRING or VARCHAR type and specifies the set of target characters for replacement. The function returns a value of the STRING type. If any input parameter is NULL, the function returns NULL.
 
@@ -6997,11 +7873,21 @@ str1: required. This parameter must be of the STRING or VARCHAR type and specifi
 
 ###### 3.6.2.28.9 URL_ENCODE
 
-This topic describes how to use the URL_ENCODE string function in MaxCompute to encode an input string into the application/x-www-form-urlencoded MIME format. This function encodes an input string into the application/x-www-form-urlencoded MIME format. Letters a through z and A through Z remain unchanged. Periods (.), hyphens (-), asterisks (*), and underscores (_) also remain unchanged. The function converts spaces to plus signs (+). For all other characters, the function converts them to byte values based on the specified encoding format and then represents each byte value in the %xy format, where xy is the hexadecimal representation of the character.
+This topic describes how to use the URL_ENCODE string function in MaxCompute to encode an input string into the application/x-www-form-urlencoded MIME format.
+
+**Instructions**
+
+**Description**
+
+This function encodes an input string into the application/x-www-form-urlencoded MIME format. Letters a through z and A through Z remain unchanged. Periods (.), hyphens (-), asterisks (*), and underscores (_) also remain unchanged. The function converts spaces to plus signs (+). For all other characters, the function converts them to byte values based on the specified encoding format and then represents each byte value in the %xy format, where xy is the hexadecimal representation of the character.
+
+**Function syntax**
 
 ```
 STRING URL_ENCODE(STRING input[, STRING encoding]);
 ```
+
+**Parameters**
 
 input: required. This parameter must be of the STRING type and specifies the input string. encoding: optional. This parameter must be of the STRING type and specifies the encoding format. Standard encoding formats such as GBK and UTF-8 are supported. If you do not specify this parameter, the default value is UTF-8. The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
 
@@ -7015,13 +7901,27 @@ input: required. This parameter must be of the STRING type and specifies the inp
 
 ###### 3.6.2.28.10 URL_DECODE
 
-This topic describes how to use the URL_DECODE string function in MaxCompute to convert a URL-encoded string to a regular string, which is the reverse process of URL_ENCODE. This function converts an input string from the application/x-www-form-urlencoded MIME format to a regular string, which is the reverse process of URL_ENCODE. Characters a through z and A through Z remain unchanged. Periods (.), hyphens (-), asterisks (*), and underscores (_) remain unchanged. Plus signs (+) are converted to spaces. The function first performs percent-decoding, converting %xy sequences into their corresponding byte values. Then, it decodes continuous byte values into a string based on the encoding format specified by the second parameter. All other characters remain unchanged. The final return value is a UTF-8 encoded string.
+This topic describes how to use the URL_DECODE string function in MaxCompute to convert a URL-encoded string to a regular string, which is the reverse process of URL_ENCODE.
+
+**Instructions**
+
+**Description**
+
+This function converts an input string from the application/x-www-form-urlencoded MIME format to a regular string, which is the reverse process of URL_ENCODE. Characters a through z and A through Z remain unchanged. Periods (.), hyphens (-), asterisks (*), and underscores (_) remain unchanged. Plus signs (+) are converted to spaces. The function first performs percent-decoding, converting %xy sequences into their corresponding byte values. Then, it decodes continuous byte values into a string based on the encoding format specified by the second parameter. All other characters remain unchanged. The final return value is a UTF-8 encoded string.
+
+**Function syntax**
 
 ```
 STRING URL_DECODE(STRING input[, STRING encoding]);
 ```
 
-input: required. This parameter must be of the STRING type and specifies the input string. encoding: optional. This parameter must be of the STRING type and specifies the encoding format. Standard encoding formats such as GBK and UTF-8 are supported. If you do not specify this parameter, the default value is UTF-8. The return value is of the STRING type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+input: required. This parameter must be of the STRING type and specifies the input string. encoding: optional. This parameter must be of the STRING type and specifies the encoding format. Standard encoding formats such as GBK and UTF-8 are supported. If you do not specify this parameter, the default value is UTF-8.
+
+**Return value**
+
+The return value is of the STRING type. If the input parameter is NULL, the function returns NULL.
 
 ```
 -- Decode the string by using the default UTF-8 encoding. SELECT URL_DECODE('%E7%A4%BA%E4%BE%8Bfor+url_decode%3A%2F%2F+%28fdsf%29'); -- Result +--------------------------------+
@@ -7033,13 +7933,27 @@ input: required. This parameter must be of the STRING type and specifies the inp
 
 ###### 3.6.2.28.11 JSON_TUPLE
 
-This topic describes how to use the JSON_TUPLE string function in MaxCompute to extract strings from a standard JSON string based on a set of keys. This function extracts the strings specified by a set of keys (key1, key2, ...) from a standard JSON string.
+This topic describes how to use the JSON_TUPLE string function in MaxCompute to extract strings from a standard JSON string based on a set of keys.
+
+**Instructions**
+
+**Description**
+
+This function extracts the strings specified by a set of keys (key1, key2, ...) from a standard JSON string.
+
+**Function syntax**
 
 ```
 STRING JSON_TUPLE(STRING json, STRING key1, STRING key2, ...);
 ```
 
-json: required. The value is of the STRING type and must be a standard JSON string. key: required. The value is of the STRING type and specifies a path in the JSON string. You can specify multiple keys at a time. A key must not start with a dollar sign ($). The function returns a value of the STRING type. If the JSON string is empty or in an invalid JSON Format, the function returns NULL. If a key is empty or invalid (does not exist in the JSON string), the function returns NULL. If the JSON string is valid and the key exists, the function returns the corresponding string. The function supports parsing of JSON data that contains Chinese characters, multi-level nested JSON data, and JSON data that contains multi-level nested arrays. The parsing behavior is consistent with the behavior of GET_JSON_OBJECT after you
+**Parameters**
+
+json: required. The value is of the STRING type and must be a standard JSON string. key: required. The value is of the STRING type and specifies a path in the JSON string. You can specify multiple keys at a time. A key must not start with a dollar sign ($).
+
+**Return value**
+
+The function returns a value of the STRING type. If the JSON string is empty or in an invalid JSON Format, the function returns NULL. If a key is empty or invalid (does not exist in the JSON string), the function returns NULL. If the JSON string is valid and the key exists, the function returns the corresponding string. The function supports parsing of JSON data that contains Chinese characters, multi-level nested JSON data, and JSON data that contains multi-level nested arrays. The parsing behavior is consistent with the behavior of GET_JSON_OBJECT after you
 
 ```
 set SET odps.sql.udf.getjsonobj.new=true; .
@@ -7084,11 +7998,21 @@ l;
 
 ###### 3.6.2.28.12 FROM_JSON
 
-This topic describes how to use the FROM_JSON string function in MaxCompute to return an object of the ARRAY, MAP, or STRUCT type based on a JSON string and schema information. This function returns an object of the ARRAY, MAP, or STRUCT type based on the specified JSON string and schema information.
+This topic describes how to use the FROM_JSON string function in MaxCompute to return an object of the ARRAY, MAP, or STRUCT type based on a JSON string and schema information.
+
+**Instructions**
+
+**Description**
+
+This function returns an object of the ARRAY, MAP, or STRUCT type based on the specified JSON string and schema information.
+
+**Function syntax**
 
 ```
 FROM_JSON(STRING jsonStr, STRING schema);
 ```
+
+**Parameters**
 
 jsonStr: required. This parameter must be of the STRING type and specifies the input JSON string. schema: required. This parameter must be of the STRING type and specifies the data structure. The syntax is the same as that used in CREATE TABLE statements. Examples:
 
@@ -7108,6 +8032,8 @@ jsonStr: required. This parameter must be of the STRING type and specifies the i
 
 > **Note:** For the Object and Array types, the function parses as many elements as possible and ignores elements of mismatched types.
 
+**Return value**
+
 The function returns a value of the ARRAY, MAP, or STRUCT type. If the schema is empty, an error is returned.
 
 ```
@@ -7124,13 +8050,23 @@ The function returns a value of the ARRAY, MAP, or STRUCT type. If the schema is
 
 ###### 3.6.2.28.13 TO_JSON
 
-This topic describes how to use the TO_JSON string function in MaxCompute. This function converts a given data type to a JSON string.
+This topic describes how to use the TO_JSON string function in MaxCompute.
+
+**Instructions**
+
+This function converts a given data type to a JSON string.
 
 ```
 TO_JSON(expr);
 ```
 
-expr: required. This parameter must be of the ARRAY, MAP, or STRUCT type. This function returns a string in JSON format.
+**Parameters**
+
+expr: required. This parameter must be of the ARRAY, MAP, or STRUCT type.
+
+**Return value**
+
+This function returns a string in JSON format.
 
 ```
 SELECT TO_JSON(named_struct('a', 1, 'b', 2)); -- Result +---------------+
@@ -7164,18 +8100,32 @@ SELECT TO_JSON(named_struct('a', 1, 'b', 2)); -- Result +---------------+
 
 ##### 3.6.3.1 DATEADD
 
-This topic describes how to use the DATEADD date function in MaxCompute to modify a date value based on a specified datepart and delta. This function modifies a date value based on a specified datepart and delta.
+This topic describes how to use the DATEADD date function in MaxCompute to modify a date value based on a specified datepart and delta.
+
+**Instructions**
+
+**Description**
+
+This function modifies a date value based on a specified datepart and delta.
+
+**Function syntax**
 
 ```
 DATETIME DATEADD(DATETIME date, BIGINT delta, STRING datepart);
 ```
+
+**Parameters**
 
 date: This parameter specifies the date value of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the function implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, an error is returned. delta: This parameter must be of the BIGINT type and specifies the modification magnitude. If the input value is of the STRING or DOUBLE type, the function implicitly converts it to the BIGINT type before calculation. If the input value is of any other data type, an error is returned. If delta is greater than 0, the function adds the value. Otherwise, it subtracts the value.
 
 > **Note:** When you add or subtract delta by the specified unit, carry-over or borrow may occur to higher units. Years, months, hours, and minutes and seconds use base-10, base-12, base-24, and base-60 calculations, respectively.
 > When the unit of delta is month, if adding delta to the month part of the DATETIME value does not cause the day to overflow, the day value remains unchanged. Otherwise, the function sets the day value to the last day of the resulting month.
 
-datepart: This parameter must be a STRING constant and specifies the datepartfor modification. If the value is a non-constant, an unsupported format, or any other type, an error is returned. The valid values for this parameter follow the conventions for converting between the STRING and DATETIME types (such as, yyyy for year and mm for month). Extended date formats are also supported, including year, month or mon, day, and hour. For more information about the conversion rules, see Conversions between the STRING and DATETIME types. The return value is of the DATETIME type. If any input parameter is NULL, the function returns NULL. Example 1: common usage of DATEADD.
+datepart: This parameter must be a STRING constant and specifies the datepartfor modification. If the value is a non-constant, an unsupported format, or any other type, an error is returned. The valid values for this parameter follow the conventions for converting between the STRING and DATETIME types (such as, yyyy for year and mm for month). Extended date formats are also supported, including year, month or mon, day, and hour. For more information about the conversion rules, see Conversions between the STRING and DATETIME types.
+
+**Return value**
+
+The return value is of the DATETIME type. If any input parameter is NULL, the function returns NULL. Example 1: common usage of DATEADD.
 
 ```
 -- Add 1 day SELECT DATEADD(DATETIME '2005-02-28 00:00:00', 1, 'dd'); -- Result: The result exceeds the last day of February in that year, so the actual value is the first day of the next month. +---------------------+
@@ -7213,7 +8163,13 @@ SELECT DATEADD(DATETIME '2005-03-30 00:00:00', -1, 'mm'); -- In MaxCompute SQL, 
 
 ##### 3.6.3.2 DATEDIFF
 
-This topic describes how to use the DATEDIFF date function in MaxCompute to calculate the difference between two dates in a specified datepart. This function calculates the difference between `date1` and `date2` in the specified
+This topic describes how to use the DATEDIFF date function in MaxCompute to calculate the difference between two dates in a specified datepart.
+
+**Instructions**
+
+**Description**
+
+This function calculates the difference between `date1` and `date2` in the specified
 
 ```
  datepart .
@@ -7221,11 +8177,19 @@ This topic describes how to use the DATEDIFF date function in MaxCompute to calc
 
 If the precision of the input dates is higher than `datepart` , the system discards the more precise parts. For example, if `datepart` specifies days, the system discards hours, minutes, and seconds. The system truncates the lower-unit parts based on `datepart` before calculating the result. The lower-unit parts refer to the discarded parts described above.
 
+**Function syntax**
+
 ```
 BIGINT DATEDIFF(DATETIME date1, DATETIME date2, STRING datepart);
 ```
 
-`date1` and `date2` : the minuend and subtrahend. The value must be of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. An error is returned if the input value is of any other data type. `datepart` : the time unit. The value must be a STRING constant. Extended date formats are supported. An error is returned if `datepart` does not conform to the specified format or is of any other data type. The function returns a value of the BIGINT type. If any input parameter is NULL, the function returns NULL. If `date1` is earlier than `date2` , the function returns a negative value.
+**Parameters**
+
+`date1` and `date2` : the minuend and subtrahend. The value must be of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. An error is returned if the input value is of any other data type. `datepart` : the time unit. The value must be a STRING constant. Extended date formats are supported. An error is returned if `datepart` does not conform to the specified format or is of any other data type.
+
+**Return value**
+
+The function returns a value of the BIGINT type. If any input parameter is NULL, the function returns NULL. If `date1` is earlier than `date2` , the function returns a negative value.
 
 ```
 -- Assume that start='2005-12-31 23:59:59' and end='2006-01-01 00:00:00'. SELECT DATEDIFF(DATETIME '2006-01-01 00:00:00', DATETIME '2005-12-31 23:59:59', 'dd')
@@ -7307,13 +8271,27 @@ SELECT DATEDIFF(DATETIME '2013-05-31 13:00:00', TO_DATE('2013-05-31 12:30:00', '
 
 ##### 3.6.3.3 DATEPART
 
-This topic describes how to use the DATEPART date function in MaxCompute to extract a value from a date based on a specified datepart. This function extracts a value from `date` based on the specified `datepart` .
+This topic describes how to use the DATEPART date function in MaxCompute to extract a value from a date based on a specified datepart.
+
+**Instructions**
+
+**Description**
+
+This function extracts a value from `date` based on the specified `datepart` .
+
+**Function syntax**
 
 ```
 BIGINT DATEPART(DATETIME date, STRING datepart);
 ```
 
-`date` : This parameter must be of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the system returns an error. `datepart` : This parameter must be a STRING constant. Extended date formats are supported. If `datepart` does not match the specified format or data type, the system returns an error. The function returns a value of the BIGINT type. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+`date` : This parameter must be of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the system returns an error. `datepart` : This parameter must be a STRING constant. Extended date formats are supported. If `datepart` does not match the specified format or data type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the BIGINT type. If any input parameter is NULL, the function returns NULL.
 
 ```
 SELECT DATEPART(TO_DATE('2017-06-08 01:10:00', 'yyyy-mm-dd hh:mi:ss'), 'yyyy'); -- Result +--------+
@@ -7329,13 +8307,27 @@ SELECT DATEPART(TO_DATE('2017-06-08 01:10:00', 'yyyy-mm-dd hh:mi:ss'), 'yyyy'); 
 
 ##### 3.6.3.4 DATETRUNC
 
-This topic describes how to use the DATETRUNC date function in MaxCompute to truncate a date to a specified datepart and return the resulting date value. This function returns the date value after the specified datepart has been truncated from a date.
+This topic describes how to use the DATETRUNC date function in MaxCompute to truncate a date to a specified datepart and return the resulting date value.
+
+**Instructions**
+
+**Description**
+
+This function returns the date value after the specified datepart has been truncated from a date.
+
+**Function syntax**
 
 ```
 DATETIME DATETRUNC(DATETIME date, STRING datepart);
 ```
 
-date: The value must be of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the system returns an error. datepart: a constant of the STRING type. Extended date formats are supported. If the value of datepart does not conform to the specified format or data type, the system returns an error. This function returns a value of the DATETIME type. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+date: The value must be of the DATE, DATETIME, or TIMESTAMP type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the system returns an error. datepart: a constant of the STRING type. Extended date formats are supported. If the value of datepart does not conform to the specified format or data type, the system returns an error.
+
+**Return value**
+
+This function returns a value of the DATETIME type. If any input parameter is NULL, the function returns NULL.
 
 ```
 -- Return the date value truncated to the specified time unit yyyy. In this example, the date is truncated to yyyy=2017. SELECT DATETRUNC(TO_DATE('2017-12-07 16:28:46', 'yyyy-mm-dd hh:mi:ss'), 'yyyy'); -- Result +---------------------+
@@ -7355,11 +8347,21 @@ date: The value must be of the DATE, DATETIME, or TIMESTAMP type. If the input v
 
 ##### 3.6.3.5 GETDATE
 
-This topic describes how to use the GETDATE date function in MaxCompute to obtain the current system time. This function obtains the current system time. MaxCompute uses UTC+8 as its standard time zone.
+This topic describes how to use the GETDATE date function in MaxCompute to obtain the current system time.
+
+**Instructions**
+
+**Description**
+
+This function obtains the current system time. MaxCompute uses UTC+8 as its standard time zone.
+
+**Function syntax**
 
 ```
 DATETIME GETDATE();
 ```
+
+**Parameters**
 
 None. This function returns the current date and time. The return value is of the DATETIME type.
 
@@ -7375,13 +8377,27 @@ SELECT GETDATE(); -- Result +---------------------+
 
 ##### 3.6.3.6 ISDATE
 
-This topic describes how to use the ISDATE date function in MaxCompute to determine whether a date string can be converted to a date value based on a format string. This function checks whether a date string can be converted to a date value based on the specified format string. If the conversion succeeds, the function returns `true` . Otherwise, it returns `false` .
+This topic describes how to use the ISDATE date function in MaxCompute to determine whether a date string can be converted to a date value based on a format string.
+
+**Instructions**
+
+**Description**
+
+This function checks whether a date string can be converted to a date value based on the specified format string. If the conversion succeeds, the function returns `true` . Otherwise, it returns `false` .
+
+**Function syntax**
 
 ```
 BOOLEAN ISDATE(STRING date, STRING format);
 ```
 
-date: the date string, which is of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other data type, an error is returned. format: a format string constant of the STRING type. Extended date formats are not supported. If the input value is of any other data type, an error is returned. If the format string contains duplicate format patterns, the function uses only the date value that corresponds to the first pattern and treats the remaining patterns as delimiters. For example, ISDATE("1234-yyyy", "yyyy-yyyy") returns `true` . The return value is of the BOOLEAN type. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+date: the date string, which is of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other data type, an error is returned. format: a format string constant of the STRING type. Extended date formats are not supported. If the input value is of any other data type, an error is returned. If the format string contains duplicate format patterns, the function uses only the date value that corresponds to the first pattern and treats the remaining patterns as delimiters. For example, ISDATE("1234-yyyy", "yyyy-yyyy") returns `true` .
+
+**Return value**
+
+The return value is of the BOOLEAN type. If any input parameter is NULL, the function returns NULL.
 
 ```
 SELECT ISDATE('2023-01-15', 'yyyy-MM-dd'); -- Result +------+
@@ -7397,13 +8413,27 @@ SELECT ISDATE('2023-01-15', 'yyyy-MM-dd'); -- Result +------+
 
 ##### 3.6.3.7 LASTDAY
 
-This topic describes how to use the LASTDAY date function in MaxCompute to obtain the last day of the month for a given date. This function returns the last day of the month for the specified date. The result is truncated to the day, with the time portion set to 00:00:00.
+This topic describes how to use the LASTDAY date function in MaxCompute to obtain the last day of the month for a given date.
+
+**Instructions**
+
+**Description**
+
+This function returns the last day of the month for the specified date. The result is truncated to the day, with the time portion set to 00:00:00.
+
+**Function syntax**
 
 ```
 DATETIME LASTDAY(DATETIME date)
 ```
 
-date: the DATETIME type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the system returns an error. This function returns a DATETIME value. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+date: the DATETIME type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the system returns an error.
+
+**Return value**
+
+This function returns a DATETIME value. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT LASTDAY(DATETIME '2023-02-15 10:30:45'); -- Result +---------------------+
@@ -7419,17 +8449,29 @@ SELECT LASTDAY(DATETIME '2023-02-15 10:30:45'); -- Result +---------------------
 
 ##### 3.6.3.8 TO_DATE
 
-This topic describes how to use the TO_DATE date function in MaxCompute to convert a string in a specified format into a date value. This function converts a string in a specified format into a date value.
+This topic describes how to use the TO_DATE date function in MaxCompute to convert a string in a specified format into a date value.
+
+**Instructions**
+
+**Description**
+
+This function converts a string in a specified format into a date value.
+
+**Function syntax**
 
 ```
 DATETIME TO_DATE(STRING date, STRING format);
 ```
+
+**Parameters**
 
 date: The value of this parameter must be of the STRING type. It specifies the date value to be converted. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, the system implicitly converts it to the STRING type before calculation. If the input value is of any other type or is an empty string, an error is returned. format: a constant of the STRING type. This parameter specifies the date format. An error is returned if the value is not a constant or is of another type. The function does not support extended date formats and ignores other characters during parsing. The parameter must contain at least yyyy. Otherwise, an error is returned. If redundant format strings exist, the function uses only the date value that corresponds to the first format string and treats the remaining strings as delimiters. For example,
 
 ```
  TO_DATE('1234-2234 ', 'yyyy-yyyy ')  returns  1234-01-01 00:00:00 .
 ```
+
+**Return value**
 
 The function returns a value of the DATETIME type in the `yyyy-mm-dd hh:mi:ss:ff3` format. If any input parameter is NULL, the function returns NULL.
 
@@ -7474,13 +8516,27 @@ SELECT TO_DATE('Alibaba2017-12*03', 'Alibabayyyy-mm*dd'); -- Result +-----------
 
 ##### 3.6.3.9 TO_CHAR
 
-This topic describes how to use the TO_CHAR date function in MaxCompute to convert a date value into a string based on a specified format. The function converts a date value into a string based on the specified format.
+This topic describes how to use the TO_CHAR date function in MaxCompute to convert a date value into a string based on a specified format.
+
+**Instructions**
+
+**Description**
+
+The function converts a date value into a string based on the specified format.
+
+**Function syntax**
 
 ```
 STRING TO_CHAR(DATETIME date, STRING format);
 ```
 
-date: a DATETIME value to be converted. If the input value is of the STRING type, the function implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the function returns an error. format: a constant of the STRING type. If the value is not a constant or is of another data type, the function returns an error. The function replaces the date format elements in the format string with the corresponding data values and outputs all other characters as-is. The function returns a value of the STRING type. If any input parameter is NULL, the function returns NULL.
+**Parameters**
+
+date: a DATETIME value to be converted. If the input value is of the STRING type, the function implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, the function returns an error. format: a constant of the STRING type. If the value is not a constant or is of another data type, the function returns an error. The function replaces the date format elements in the format string with the corresponding data values and outputs all other characters as-is.
+
+**Return value**
+
+The function returns a value of the STRING type. If any input parameter is NULL, the function returns NULL.
 
 ```
 SELECT TO_CHAR(TO_DATE('2017-12-03 00:00:00', 'yyyy-mm-dd hh:mi:ss'), 'Alibaba Cloud Financial Services yyyy-mm*dd'); -- Result +--------------------+
@@ -7496,13 +8552,27 @@ SELECT TO_CHAR(TO_DATE('2017-12-03 00:00:00', 'yyyy-mm-dd hh:mi:ss'), 'Alibaba C
 
 ##### 3.6.3.10 UNIX_TIMESTAMP
 
-This topic describes how to use the UNIX_TIMESTAMP date function in MaxCompute to convert a date into an integer UNIX timestamp. This function converts a `date` into an integer UNIX timestamp.
+This topic describes how to use the UNIX_TIMESTAMP date function in MaxCompute to convert a date into an integer UNIX timestamp.
+
+**Instructions**
+
+**Description**
+
+This function converts a `date` into an integer UNIX timestamp.
+
+**Function syntax**
 
 ```
 BIGINT UNIX_TIMESTAMP(DATETIME date)
 ```
 
-`date` : a date value of the DATETIME type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value uses any other data type, the system returns an error. When the new data type flag is enabled, implicit conversion fails. In this case, you must use the CAST function for conversion, such as `UNIX_TIMESTAMP(CAST(... AS DATETIME))` . The function returns a value of the BIGINT type, which represents a UNIX timestamp. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+`date` : a date value of the DATETIME type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value uses any other data type, the system returns an error. When the new data type flag is enabled, implicit conversion fails. In this case, you must use the CAST function for conversion, such as `UNIX_TIMESTAMP(CAST(... AS DATETIME))` .
+
+**Return value**
+
+The function returns a value of the BIGINT type, which represents a UNIX timestamp. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT UNIX_TIMESTAMP(DATETIME '2009-03-20 11:11:00'); -- Result +------------+
@@ -7514,13 +8584,27 @@ SELECT UNIX_TIMESTAMP(DATETIME '2009-03-20 11:11:00'); -- Result +------------+
 
 ##### 3.6.3.11 FROM_UNIXTIME
 
-This topic describes how to use the FROM_UNIXTIME date function in MaxCompute to convert a numeric UNIX timestamp into a date value. This function converts a numeric UNIX timestamp unixtime into a date value.
+This topic describes how to use the FROM_UNIXTIME date function in MaxCompute to convert a numeric UNIX timestamp into a date value.
+
+**Instructions**
+
+**Description**
+
+This function converts a numeric UNIX timestamp unixtime into a date value.
+
+**Function syntax**
 
 ```
 DATETIME FROM_UNIXTIME(BIGINT unixtime)
 ```
 
-unixtime: a value of the BIGINT type. It represents the number of seconds in a UNIX timestamp. The function returns a date value of the DATETIME type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+unixtime: a value of the BIGINT type. It represents the number of seconds in a UNIX timestamp.
+
+**Return value**
+
+The function returns a date value of the DATETIME type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT FROM_UNIXTIME(123456789); -- Result +---------------------+
@@ -7532,7 +8616,15 @@ SELECT FROM_UNIXTIME(123456789); -- Result +---------------------+
 
 ##### 3.6.3.12 WEEKDAY
 
-This topic describes how to use the WEEKDAY date function in MaxCompute to return the day of the week for a given date. This function returns the day of the week for the specified date.
+This topic describes how to use the WEEKDAY date function in MaxCompute to return the day of the week for a given date.
+
+**Instructions**
+
+**Description**
+
+This function returns the day of the week for the specified date.
+
+**Function syntax**
 
 ```
 BIGINT WEEKDAY(DATETIME date);
@@ -7558,7 +8650,13 @@ SELECT WEEKDAY(DATETIME '2023-06-26 00:00:00'); -- Return result (Monday) +-----
 
 ##### 3.6.3.13 WEEKOFYEAR
 
-This topic describes how to use the WEEKOFYEAR date function in MaxCompute to return the week number of the year for a given date. This function returns the week number of the year for the specified date. Monday is the first day of each week.
+This topic describes how to use the WEEKOFYEAR date function in MaxCompute to return the week number of the year for a given date.
+
+**Instructions**
+
+**Description**
+
+This function returns the week number of the year for the specified date. Monday is the first day of each week.
 
 > **Note:** If a week spans two years, the year to which the week belongs depends on which year contains the majority of the days in that week (four or more days). If the majority of the days fall in the previous year, the week is the last week of the previous year. If the majority of the days fall in the next year, the week is the first week of the next year.
 
@@ -7568,7 +8666,11 @@ This topic describes how to use the WEEKOFYEAR date function in MaxCompute to re
 BIGINT WEEKOFYEAR(DATETIME date)
 ```
 
-date: a date value of the DATETIME type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, an error is returned. The function returns a value of the BIGINT type. If the input parameter is NULL, the function returns NULL.
+date: a date value of the DATETIME type. If the input value is of the STRING type, the system implicitly converts it to the DATETIME type before calculation. If the input value is of any other data type, an error is returned.
+
+**Return value**
+
+The function returns a value of the BIGINT type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT WEEKOFYEAR(TO_DATE("20141229", "yyyymmdd")); -- Result +------------+
@@ -7590,7 +8692,11 @@ SELECT WEEKOFYEAR(TO_DATE("20141229", "yyyymmdd")); -- Result +------------+
 
 ###### 3.6.3.14.1 Usage notes
 
-This topic describes the settings required for using the newly extended date functions. MaxCompute 2.0 introduces new date functions. To use these new functions in SQL statements, you must add the following SET statement.
+This topic describes the settings required for using the newly extended date functions.
+
+**Instructions**
+
+MaxCompute 2.0 introduces new date functions. To use these new functions in SQL statements, you must add the following SET statement.
 
 ```
 SET odps.sql.type.system.odps2=true;
@@ -7600,13 +8706,27 @@ SET odps.sql.type.system.odps2=true;
 
 ###### 3.6.3.14.2 YEAR
 
-This topic describes how to use the YEAR date function in MaxCompute to return the year of a given date. This function returns the year of the specified `date` .
+This topic describes how to use the YEAR date function in MaxCompute to return the year of a given date.
+
+**Instructions**
+
+**Description**
+
+This function returns the year of the specified `date` .
+
+**Function syntax**
 
 ```
 INT YEAR(DATETIME/STRING date);
 ```
 
-`date` : a date value of the DATETIME or STRING type. The date format must contain at least yyyy-mm-dd without any extra characters. Otherwise, the function returns NULL. The function returns a value of the INT type.
+**Parameters**
+
+`date` : a date value of the DATETIME or STRING type. The date format must contain at least yyyy-mm-dd without any extra characters. Otherwise, the function returns NULL.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT YEAR('1970-01-01 12:30:00'); -- Result +--------+
@@ -7640,11 +8760,19 @@ SELECT YEAR('1970-01-01 12:30:00'); -- Result +--------+
 
 This topic describes how to use the QUARTER date function in MaxCompute to return the quarter of a date. This function returns the quarter of a date. The return value ranges from 1 to 4.
 
+**Function syntax**
+
 ```
 INT QUARTER(DATETIME/TIMESTAMP/STRING date);
 ```
 
-date: a date value of the DATETIME, TIMESTAMP, or STRING type. The date format must include at least `yyyy-mm-dd` . The function returns NULL for other data types. The function returns a value of the INT type. If the input parameter is NULL, the function returns NULL.
+**Parameters**
+
+date: a date value of the DATETIME, TIMESTAMP, or STRING type. The date format must include at least `yyyy-mm-dd` . The function returns NULL for other data types.
+
+**Return value**
+
+The function returns a value of the INT type. If the input parameter is NULL, the function returns NULL.
 
 ```
 SELECT QUARTER('1970-11-12 10:00:00'); -- Return result +------------+
@@ -7660,11 +8788,21 @@ SELECT QUARTER('1970-11-12 10:00:00'); -- Return result +------------+
 
 ###### 3.6.3.14.4 MONTH
 
-This topic describes how to use the MONTH date function in MaxCompute to return the month of a date. This function returns the month of a date.
+This topic describes how to use the MONTH date function in MaxCompute to return the month of a date.
+
+**Instructions**
+
+**Description**
+
+This function returns the month of a date.
+
+**Function syntax**
 
 ```
 INT MONTH(DATETIME/STRING date)
 ```
+
+**Parameters**
 
 date: a date value of the DATETIME or STRING type. The date format must include at least yyyy-mm-dd. If the date is of another data type, the system returns an error. The function returns a value of the INT type.
 
@@ -7682,13 +8820,27 @@ SELECT MONTH('2014-09-01'); -- Result +------+
 
 ###### 3.6.3.14.5 DAY
 
-This topic describes how to use the DAY date function in MaxCompute to return the day of a date. This function returns the day of a date.
+This topic describes how to use the DAY date function in MaxCompute to return the day of a date.
+
+**Instructions**
+
+**Description**
+
+This function returns the day of a date.
+
+**Function syntax**
 
 ```
 INT DAY(DATETIME/STRING date);
 ```
 
-date: a date value of the DATETIME or STRING type. The format must be yyyy-mm-dd or yyyy-mm-dd hh:mi:ss. The system returns an error for other data types. The function returns a value of the INT type.
+**Parameters**
+
+date: a date value of the DATETIME or STRING type. The format must be yyyy-mm-dd or yyyy-mm-dd hh:mi:ss. The system returns an error for other data types.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT DAY('2014-09-01'); -- Result +------+
@@ -7704,13 +8856,27 @@ SELECT DAY('2014-09-01'); -- Result +------+
 
 ###### 3.6.3.14.6 DAYOFMONTH
 
-This topic describes how to use the DAYOFMONTH date function in MaxCompute to return the day part of a date. This function returns the day part in a date. For example, if you run the `INT` `DAYOFMONTH(2019-10-13)` command for October 13, 2019, the function returns 13.
+This topic describes how to use the DAYOFMONTH date function in MaxCompute to return the day part of a date.
+
+**Instructions**
+
+**Description**
+
+This function returns the day part in a date. For example, if you run the `INT` `DAYOFMONTH(2019-10-13)` command for October 13, 2019, the function returns 13.
+
+**Function syntax**
 
 ```
 INT DAYOFMONTH(STRING date);
 ```
 
-date: a date value of the STRING type. The date format must include at least yyyy-mm-dd. If the date is of another data type, an error is returned. The function returns a value of the INT type.
+**Parameters**
+
+date: a date value of the STRING type. The date format must include at least yyyy-mm-dd. If the date is of another data type, an error is returned.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT DAYOFMONTH('2019-09-01'); -- Result +------+
@@ -7726,13 +8892,27 @@ SELECT DAYOFMONTH('2019-09-01'); -- Result +------+
 
 ###### 3.6.3.14.7 HOUR
 
-This topic describes how to use the HOUR date function in MaxCompute to return the hour part of a date. This function returns the hour part of a date.
+This topic describes how to use the HOUR date function in MaxCompute to return the hour part of a date.
+
+**Instructions**
+
+**Description**
+
+This function returns the hour part of a date.
+
+**Function syntax**
 
 ```
 INT HOUR(DATETIME/STRING date);
 ```
 
-`date` : A date value of the DATETIME or STRING type. The system returns an error if you specify a value of another data type. The function returns a value of the INT type.
+**Parameters**
+
+`date` : A date value of the DATETIME or STRING type. The system returns an error if you specify a value of another data type.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT HOUR('2014-09-01 12:00:00'); -- Result +--------+
@@ -7752,13 +8932,27 @@ SELECT HOUR('2014-09-01 12:00:00'); -- Result +--------+
 
 ###### 3.6.3.14.8 MINUTE
 
-This topic describes how to use the MINUTE date function in MaxCompute to return the minute part of a date. The function returns the minute part of a date.
+This topic describes how to use the MINUTE date function in MaxCompute to return the minute part of a date.
+
+**Instructions**
+
+**Description**
+
+The function returns the minute part of a date.
+
+**Function syntax**
 
 ```
 INT MINUTE(DATETIME/STRING date);
 ```
 
-date: a date value of the DATETIME or STRING type. The system returns an error if you specify a value of another data type. The function returns a value of the INT type.
+**Parameters**
+
+date: a date value of the DATETIME or STRING type. The system returns an error if you specify a value of another data type.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT MINUTE('2014-09-01 12:30:00'); -- Result +------------+
@@ -7778,13 +8972,27 @@ SELECT MINUTE('2014-09-01 12:30:00'); -- Result +------------+
 
 ###### 3.6.3.14.9 SECOND
 
-This topic describes how to use the SECOND date function in MaxCompute to return the second part of a date. The function returns the second part of a date.
+This topic describes how to use the SECOND date function in MaxCompute to return the second part of a date.
+
+**Instructions**
+
+**Description**
+
+The function returns the second part of a date.
+
+**Function syntax**
 
 ```
 INT SECOND(DATETIME/STRING date);
 ```
 
-`date` : a date value of the DATETIME or STRING type. If you specify a value of another data type, the system returns an error. The function returns a value of the INT type.
+**Parameters**
+
+`date` : a date value of the DATETIME or STRING type. If you specify a value of another data type, the system returns an error.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT SECOND('2014-09-01 12:30:45'); -- Result +--------+
@@ -7804,13 +9012,27 @@ SELECT SECOND('2014-09-01 12:30:45'); -- Result +--------+
 
 ###### 3.6.3.14.10 FROM_UTC_TIMESTAMP
 
-This topic describes how to use the FROM_UTC_TIMESTAMP function in MaxCompute to convert a Coordinated Universal Time (UTC) timestamp to a timestamp in a specified time zone. This function converts a UTC timestamp to a timestamp in a specified time zone.
+This topic describes how to use the FROM_UTC_TIMESTAMP function in MaxCompute to convert a Coordinated Universal Time (UTC) timestamp to a timestamp in a specified time zone.
+
+**Instructions**
+
+**Description**
+
+This function converts a UTC timestamp to a timestamp in a specified time zone.
+
+**Function syntax**
 
 ```
 TIMESTAMP FROM_UTC_TIMESTAMP({any primitive type}*, STRING timezone);
 ```
 
-{any primitive type}*: the timestamp. The data type must be TIMESTAMP, DATETIME, TINYINT, SMALLINT, INT, or BIGINT. If the parameter is of the TINYINT, SMALLINT, INT, or BIGINT type, the unit is milliseconds. timezone: the destination time zone for the conversion, such as PST. The return value must be of the TIMESTAMP type.
+**Parameters**
+
+{any primitive type}*: the timestamp. The data type must be TIMESTAMP, DATETIME, TINYINT, SMALLINT, INT, or BIGINT. If the parameter is of the TINYINT, SMALLINT, INT, or BIGINT type, the unit is milliseconds. timezone: the destination time zone for the conversion, such as PST.
+
+**Return value**
+
+The return value must be of the TIMESTAMP type.
 
 ```
 -- The input parameter is in milliseconds (ms), and the function returns 2017-08-01 0 4:24:00. SELECT FROM_UTC_TIMESTAMP(1501557840000, 'PST'); -- Result +---------------------+
@@ -7830,13 +9052,27 @@ TIMESTAMP FROM_UTC_TIMESTAMP({any primitive type}*, STRING timezone);
 
 ###### 3.6.3.14.11 CURRENT_TIMESTAMP
 
-This topic describes how to use the CURRENT_TIMESTAMP date function in MaxCompute to return a timestamp of the TIMESTAMP type. This function returns the current timestamp of the TIMESTAMP type. The returned value is not fixed.
+This topic describes how to use the CURRENT_TIMESTAMP date function in MaxCompute to return a timestamp of the TIMESTAMP type.
+
+**Instructions**
+
+**Description**
+
+This function returns the current timestamp of the TIMESTAMP type. The returned value is not fixed.
+
+**Function syntax**
 
 ```
 TIMESTAMP CURRENT_TIMESTAMP();
 ```
 
-None. The function returns a value of the TIMESTAMP type.
+**Parameters**
+
+None.
+
+**Return value**
+
+The function returns a value of the TIMESTAMP type.
 
 ```
 SELECT CURRENT_TIMESTAMP(); -- Result +-------------------------+
@@ -7848,13 +9084,27 @@ SELECT CURRENT_TIMESTAMP(); -- Result +-------------------------+
 
 ###### 3.6.3.14.12 ADD_MONTHS
 
-This topic describes how to use the ADD_MONTHS date function in MaxCompute to return a date that results from adding a specified number of months to a start date. This function returns the date that results from adding nummonths months to the start date startdate.
+This topic describes how to use the ADD_MONTHS date function in MaxCompute to return a date that results from adding a specified number of months to a start date.
+
+**Instructions**
+
+**Description**
+
+This function returns the date that results from adding nummonths months to the start date startdate.
+
+**Function syntax**
 
 ```
 STRING ADD_MONTHS(STRING startdate, INT num_months);
 ```
 
-startdate: a date value of the STRING type. The date format must include at least yyyymm-dd. Otherwise, the function returns NULL. num_months: a numeric value of the INT type. The function returns a date value of the STRING type in the yyyy-mm-dd format.
+**Parameters**
+
+startdate: a date value of the STRING type. The date format must include at least yyyymm-dd. Otherwise, the function returns NULL. num_months: a numeric value of the INT type.
+
+**Return value**
+
+The function returns a date value of the STRING type in the yyyy-mm-dd format.
 
 ```
 SELECT ADD_MONTHS('2017-02-14', 3); -- Result +------------+
@@ -7878,11 +9128,21 @@ SELECT ADD_MONTHS('2017-02-14', 3); -- Result +------------+
 
 ###### 3.6.3.14.13 LAST_DAY
 
-This topic describes how to use the LAST_DAY date function in MaxCompute to return the last day of the month for a given date. This function returns the last day of the month for a given date.
+This topic describes how to use the LAST_DAY date function in MaxCompute to return the last day of the month for a given date.
+
+**Instructions**
+
+**Description**
+
+This function returns the last day of the month for a given date.
+
+**Function syntax**
 
 ```
 STRING LAST_DAY(STRING date);
 ```
+
+**Parameters**
 
 `date` : a date value of the STRING type. The format is yyyy-mm-dd hh:mi:ss or yyyy-mmdd. The function returns a date value of the STRING type in the yyyy-mm-dd format.
 
@@ -7904,13 +9164,27 @@ SELECT LAST_DAY('2017-03-04'); -- Result +------------+
 
 ###### 3.6.3.14.14 NEXT_DAY
 
-This topic describes how to use the NEXT_DAY date function in MaxCompute to return the first date that is later than the specified date and falls on the specified day of the week. This function returns the first date that is later than the specified startdate and falls on the specified day of the week.
+This topic describes how to use the NEXT_DAY date function in MaxCompute to return the first date that is later than the specified date and falls on the specified day of the week.
+
+**Instructions**
+
+**Description**
+
+This function returns the first date that is later than the specified startdate and falls on the specified day of the week.
+
+**Function syntax**
 
 ```
 STRING NEXT_DAY(STRING startdate, STRING week);
 ```
 
-startdate: a date value of the STRING type in the yyyy-mm-dd hh:mi:ss or yyyy-mm-dd format. week: a date value of the STRING type. It can be the first 2 or 3 letters of a day of the week, or the full name of the day. Example: MO, TUE, or FRIDAY. The function returns a date value of the STRING type in the yyyy-mm-dd format.
+**Parameters**
+
+startdate: a date value of the STRING type in the yyyy-mm-dd hh:mi:ss or yyyy-mm-dd format. week: a date value of the STRING type. It can be the first 2 or 3 letters of a day of the week, or the full name of the day. Example: MO, TUE, or FRIDAY.
+
+**Return value**
+
+The function returns a date value of the STRING type in the yyyy-mm-dd format.
 
 ```
 SELECT NEXT_DAY('2017-08-01','TU'); -- Return result +------------+
@@ -7930,13 +9204,27 @@ SELECT NEXT_DAY('2017-08-01','TU'); -- Return result +------------+
 
 ###### 3.6.3.14.15 MONTHS_BETWEEN
 
-This topic describes how to use the MONTHS_BETWEEN function in MaxCompute to return the number of months between date1 and date2. This function returns the number of months between date1 and date2.
+This topic describes how to use the MONTHS_BETWEEN function in MaxCompute to return the number of months between date1 and date2.
+
+**Instructions**
+
+**Description**
+
+This function returns the number of months between date1 and date2.
+
+**Function syntax**
 
 ```
 DOUBLE MONTHS_BETWEEN(DATETIME/TIMESTAMP/STRING date1, DATETIME/TIMESTAMP/STRING date 2);
 ```
 
-date1: the DATETIME, TIMESTAMP, or STRING type in the `yyyy-mm-dd hh:mi:ss` or `yyyy-mm-dd` format. date2: the DATETIME, TIMESTAMP, or STRING type in the `yyyy-mm-dd hh:mi:ss` or `yyyy-mm-dd` format. The function returns a value of the DOUBLE type. If date1 is later than date2, the function returns a positive value. If date2 is later than date1, the function returns a negative value. If date1 and date2 correspond to the last day of their respective months, the function returns an integer number of months. Otherwise, the function calculates the result by dividing the number of days between date1 and date2 by 31.
+**Parameters**
+
+date1: the DATETIME, TIMESTAMP, or STRING type in the `yyyy-mm-dd hh:mi:ss` or `yyyy-mm-dd` format. date2: the DATETIME, TIMESTAMP, or STRING type in the `yyyy-mm-dd hh:mi:ss` or `yyyy-mm-dd` format.
+
+**Return value**
+
+The function returns a value of the DOUBLE type. If date1 is later than date2, the function returns a positive value. If date2 is later than date1, the function returns a negative value. If date1 and date2 correspond to the last day of their respective months, the function returns an integer number of months. Otherwise, the function calculates the result by dividing the number of days between date1 and date2 by 31.
 
 ```
 SELECT MONTHS_BETWEEN('1997-02-28 10:30:00', '1996-10-30'); -- Result +---------------------+
@@ -7956,11 +9244,21 @@ SELECT MONTHS_BETWEEN('1997-02-28 10:30:00', '1996-10-30'); -- Result +---------
 
 ###### 3.6.3.14.16 EXTRACT
 
-This topic describes how to use the EXTRACT date function in MaxCompute to extract a specified datepart from a date. The function extracts the specified `datepart` unit from the date `timestamp` . If the time value is invalid, such as exceeding the valid range, the function returns the remainder of the out-of-range value divided by the maximum value of the corresponding valid time range.
+This topic describes how to use the EXTRACT date function in MaxCompute to extract a specified datepart from a date.
+
+**Instructions**
+
+**Description**
+
+The function extracts the specified `datepart` unit from the date `timestamp` . If the time value is invalid, such as exceeding the valid range, the function returns the remainder of the out-of-range value divided by the maximum value of the corresponding valid time range.
+
+**Function syntax**
 
 ```
 INT EXTRACT(<datepart> FROM <timestamp>);
 ```
+
+**Parameters**
 
 `datepart` : Supported time units include YEAR, MONTH, DAY, HOUR, and MINUTE. `timestamp` : data of the TIMESTAMP type. The function returns a value of the INT type.
 
@@ -7987,7 +9285,13 @@ SET odps.sql.type.system.odps2=true; SELECT EXTRACT(YEAR FROM '2019-05-01 11:21:
 
 ##### 3.6.4.1 Overview
 
-MaxCompute SQL supports window functions for flexible data analysis and processing. This topic describes the usage notes and syntax for window functions. MaxCompute SQL supports window functions for flexible data analysis and processing.
+MaxCompute SQL supports window functions for flexible data analysis and processing. This topic describes the usage notes and syntax for window functions.
+
+**Instructions**
+
+**Description**
+
+MaxCompute SQL supports window functions for flexible data analysis and processing.
 
 > **Important:** Window functions can appear only in SELECT clauses.
 > You cannot nest window functions or aggregation functions inside a window function.
@@ -7998,6 +9302,8 @@ MaxCompute SQL supports window functions for flexible data analysis and processi
 window_func() OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DESC], col2 [ASC| DESC]…]] windowing_clause);
 ```
 
+**Parameters**
+
 PARTITION BY: specifies the columns used for partitioning. Rows with the same values in the partition columns are considered to be in the same window. A single window can contain up to 100 million rows of data. We recommend that you limit the number to no more than 5 million rows. Otherwise, a runtime error occurs. ORDER BY: specifies the sorting order of data within a window. windowing_clause: You can use ROWS to specify the window frame. The following two methods are available: ROWS BETWEEN x PRECEDING|FOLLOWING AND y PRECEDING|FOLLOWING : The window frame spans from x rows before or after the current row to y rows before or after the current row. ROWS x PRECEDING|FOLLOWING : The window frame spans from the x-th row before or after the current row to the current row.
 
 > **Note:** x, y: must be integer constants greater than or equal to 0, with a valid range of 0 to 10000. A value of 0 indicates the current row.
@@ -8006,11 +9312,21 @@ PARTITION BY: specifies the columns used for partitioning. Rows with the same va
 
 ##### 3.6.4.2 COUNT
 
-This topic describes how to use the COUNT window function in MaxCompute to calculate the count. This function calculates the count.
+This topic describes how to use the COUNT window function in MaxCompute to calculate the count.
+
+**Instructions**
+
+**Description**
+
+This function calculates the count.
+
+**Function syntax**
 
 ```
 BIGINT COUNT([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|D ESC], col2 [ASC|DESC]…]] [windowing_clause]);
 ```
+
+**Parameters**
 
 expr: required. This parameter accepts any data type. If the value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function returns the count of unique values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the count of expr within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative count from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified. The function returns a value of the BIGINT type.
 
@@ -8070,13 +9386,25 @@ he count for the second row equals the count for the third row.
 
 ##### 3.6.4.3 AVG
 
-This topic describes how to use the AVG window function in MaxCompute to calculate the average value. This function calculates the average value.
+This topic describes how to use the AVG window function in MaxCompute to calculate the average value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the average value.
 
 ```
 DOUBLE AVG([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DES C], col2 [ASC|DESC]…]] [windowing_clause]);
 ```
 
-expr: Required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other data type, an error is returned. If the value is NULL, the system excludes the row from calculation. BOOLEAN values are not allowed in the calculation. If the DISTINCT keyword is specified, the function calculates the average of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the average of all values within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative average from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified. The function returns a value of the DOUBLE type.
+**Parameters**
+
+expr: Required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other data type, an error is returned. If the value is NULL, the system excludes the row from calculation. BOOLEAN values are not allowed in the calculation. If the DISTINCT keyword is specified, the function calculates the average of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the average of all values within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative average from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified.
+
+**Return value**
+
+The function returns a value of the DOUBLE type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Non-Hive-compatible mode: When ORDER BY values are duplicated, the function return s the AVG for each individual row. SET odps.sql.hive.compatible=false; SELECT user_id, price, AVG(price) OVER (PARTITION BY user_id ORDER BY price) FROM tes t_src; -- Result +---------+-------+---------------------+
@@ -8106,13 +9434,27 @@ expr: Required. This parameter must be of the DOUBLE or DECIMAL type. If the inp
 
 ##### 3.6.4.4 MAX
 
-This topic describes how to use the MAX window function in MaxCompute to calculate the maximum value. This function calculates the maximum value.
+This topic describes how to use the MAX window function in MaxCompute to calculate the maximum value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the maximum value.
+
+**Function syntax**
 
 ```
 MAX([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DESC], col 2 [ASC|DESC]…]] [windowing_clause]);
 ```
 
-expr: required. This parameter accepts any data type except BOOLEAN. If the value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function returns the maximum value among unique values. Specifying this keyword does not affect the result. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the maximum value in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the maximum value from the start row to the current row within the current window. ORDER BY cannot be used when the DISTINCT keyword is specified. The return value has the same data type as expr.
+**Parameters**
+
+expr: required. This parameter accepts any data type except BOOLEAN. If the value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function returns the maximum value among unique values. Specifying this keyword does not affect the result. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the maximum value in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the maximum value from the start row to the current row within the current window. ORDER BY cannot be used when the DISTINCT keyword is specified.
+
+**Return value**
+
+The return value has the same data type as expr.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Do not specify ORDER BY to return the maximum value in the window. SELECT user_id, price, MAX(price) OVER (PARTITION BY user_id) FROM test_src; -- Results +---------+-------+------+
@@ -8144,11 +9486,19 @@ expr: required. This parameter accepts any data type except BOOLEAN. If the valu
 
 This topic describes how to use the MIN window function in MaxCompute to calculate the minimum value. This function calculates the minimum value.
 
+**Function syntax**
+
 ```
 MIN([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DESC], col 2 [ASC|DESC]…]] [windowing_clause]);
 ```
 
-expr: required. This parameter accepts any data type except BOOLEAN. If the value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function calculates the minimum value among distinct values. Specifying this keyword does not affect the result. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the minimum value in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the minimum value from the first row to the current row in the current window. ORDER BY cannot be used when the DISTINCT keyword is specified. The return value has the same data type as the expr parameter.
+**Parameters**
+
+expr: required. This parameter accepts any data type except BOOLEAN. If the value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function calculates the minimum value among distinct values. Specifying this keyword does not affect the result. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the minimum value in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the minimum value from the first row to the current row in the current window. ORDER BY cannot be used when the DISTINCT keyword is specified.
+
+**Return value**
+
+The return value has the same data type as the expr parameter.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Return the minimum value in the window without specifying ORDER BY. SELECT user_id, price, MIN(price) OVER (PARTITION BY user_id) FROM test_src; -- Results +---------+-------+------+
@@ -8180,11 +9530,19 @@ expr: required. This parameter accepts any data type except BOOLEAN. If the valu
 
 This topic describes how to use the MEDIAN window function in MaxCompute to calculate the median. This function calculates the median.
 
+**Function syntax**
+
 ```
 DOUBLE MEDIAN(DOUBLE number1, number2...) OVER (PARTITION BY [col1, col2…]); DECIMAL MEDIAN(DECIMAL number1, number2...) OVER (PARTITION BY [col1, col2…]);
 ```
 
-number1, number2...: required. These parameters must be numbers of the DOUBLE or DECIMAL type. A minimum of 1 and a maximum of 255 numbers can be specified. If an input value is of the DOUBLE type, the system converts it to a DOUBLE array for calculation by default. If an input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If an input value is of any other data type, an error is returned. If an input value is NULL, the function returns NULL. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. The function returns a value of the DOUBLE or DECIMAL type.
+**Parameters**
+
+number1, number2...: required. These parameters must be numbers of the DOUBLE or DECIMAL type. A minimum of 1 and a maximum of 255 numbers can be specified. If an input value is of the DOUBLE type, the system converts it to a DOUBLE array for calculation by default. If an input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If an input value is of any other data type, an error is returned. If an input value is NULL, the function returns NULL. PARTITION BY [col1, col2...]: specifies the columns used for partitioning.
+
+**Return value**
+
+The function returns a value of the DOUBLE or DECIMAL type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Calculate the median within the window. SELECT user_id, price, MEDIAN(price) OVER (PARTITION BY user_id) FROM test_src; -- Return result +---------+-------+------+
@@ -8203,14 +9561,26 @@ number1, number2...: required. These parameters must be numbers of the DOUBLE or
 
 ##### 3.6.4.7 STDDEV
 
-This topic describes how to use the STDDEV window function in MaxCompute to calculate the population standard deviation. This function calculates the population standard deviation.
+This topic describes how to use the STDDEV window function in MaxCompute to calculate the population standard deviation.
+
+**Description**
+
+This function calculates the population standard deviation.
+
+**Function syntax**
 
 ```
 DOUBLE STDDEV([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC| DESC], col2 [ASC|DESC]…]] [windowing_clause]); DECIMAL STDDEV([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC
 |DESC], col2 [ASC|DESC]…]] [windowing_clause]);
 ```
 
-expr: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, an error is returned. If the input value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function calculates the population standard deviation of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the population standard deviation within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the population standard deviation from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. Otherwise, the function returns a value of the DOUBLE type.
+**Parameters**
+
+expr: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, an error is returned. If the input value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function calculates the population standard deviation of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the population standard deviation within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the population standard deviation from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified.
+
+**Return value**
+
+If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. Otherwise, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Non-Hive-compatible mode: When ORDER BY values are duplicated, the function return s the STDDEV for each individual row. SET odps.sql.hive.compatible=false; SELECT user_id, price, STDDEV(price) OVER (PARTITION BY user_id ORDER BY price) FROM test_src; -- Results +---------+-------+----------------------+
@@ -8240,13 +9610,27 @@ expr: required. The value must be of the DOUBLE or DECIMAL type. If the input va
 
 ##### 3.6.4.8 STDDEV_SAMP
 
-This topic describes how to use the STDDEV_SAMP window function in MaxCompute to calculate the sample standard deviation. This function calculates the sample standard deviation.
+This topic describes how to use the STDDEV_SAMP window function in MaxCompute to calculate the sample standard deviation.
+
+**Instructions**
+
+**Description**
+
+This function calculates the sample standard deviation.
+
+**Function syntax**
 
 ```
 DOUBLE STDDEV_SAMP([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]…]] [windowing_clause]); DECIMAL STDDEV_SAMP([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]…]] [windowing_clause]);
 ```
 
-expr: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, an error is returned. If the input value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function calculates the sample standard deviation of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the sample standard deviation within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative sample standard deviation from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. Otherwise, the function returns a value of the DOUBLE type.
+**Parameters**
+
+expr: required. The data type is DOUBLE or DECIMAL. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, an error is returned. If the input value is NULL, the system excludes the row from the calculation. If the DISTINCT keyword is specified, the function calculates the sample standard deviation of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the sample standard deviation within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative sample standard deviation from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified.
+
+**Return value**
+
+If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. Otherwise, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Do not specify ORDER BY. The function returns the sample standard deviation within the window. SELECT user_id, price, STDDEV_SAMP(price) OVER (PARTITION BY user_id) FROM test_src; -- Result +---------+-------+----------------------+
@@ -8277,13 +9661,25 @@ n cannot calculate the sample standard deviation.
 
 ##### 3.6.4.9 SUM
 
-This topic describes how to use the SUM window function in MaxCompute to calculate the sum. This function calculates the sum.
+This topic describes how to use the SUM window function in MaxCompute to calculate the sum.
+
+**Description**
+
+This function calculates the sum.
+
+**Function syntax**
 
 ```
 SUM([DISTINCT] expr) OVER (PARTITION BY [col1, col2…] [ORDER BY [col1 [ASC|DESC], col 2 [ASC|DESC]…]] [windowing_clause]);
 ```
 
-expr: required. The data type must be of the DOUBLE, DECIMAL, or BIGINT type. If the input value is of the STRING type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, the system returns an error. If the input value is NULL, the system skips the row in the calculation. If the DISTINCT keyword is specified, the function calculates the sum of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the sum of expr within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative sum from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified. If the input value is of the BIGINT type, the function returns a value of the BIGINT type. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of the DOUBLE or STRING type, the function returns a value of the DOUBLE type.
+**Parameters**
+
+expr: required. The data type must be of the DOUBLE, DECIMAL, or BIGINT type. If the input value is of the STRING type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, the system returns an error. If the input value is NULL, the system skips the row in the calculation. If the DISTINCT keyword is specified, the function calculates the sum of distinct values. PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: If ORDER BY is not specified, the function returns the sum of expr within the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the cumulative sum from the first row to the current row within the window. ORDER BY cannot be used when the DISTINCT keyword is specified.
+
+**Return value**
+
+If the input value is of the BIGINT type, the function returns a value of the BIGINT type. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of the DOUBLE or STRING type, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE test_src (user_id BIGINT, price DOUBLE); INSERT INTO test_src VALUES (1, 4.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 5.5); INSERT INTO test_src VALUES (1, 6.5); INSERT INTO test_src VALUES (2, NULL); INSERT INTO test_src VALUES (2, 3.0); INSERT INTO test_src VALUES (3, NULL); INSERT INTO test_src VALUES (3, 4.0); -- Non-Hive-compatible mode: when ORDER BY values are duplicated, the function return s the SUM for each individual row. SET odps.sql.hive.compatible=false; SELECT user_id, price, SUM(price) OVER (PARTITION BY user_id ORDER BY price) FROM tes t_src; -- Results +---------+-------+------+
@@ -8313,13 +9709,27 @@ expr: required. The data type must be of the DOUBLE, DECIMAL, or BIGINT type. If
 
 ##### 3.6.4.10 DENSE_RANK
 
-This topic describes how to use the DENSE_RANK window function in MaxCompute to calculate consecutive ranks. This function calculates consecutive ranks. Rows with the same values in the ORDER BY columns receive the same rank.
+This topic describes how to use the DENSE_RANK window function in MaxCompute to calculate consecutive ranks.
+
+**Instructions**
+
+**Description**
+
+This function calculates consecutive ranks. Rows with the same values in the ORDER BY columns receive the same rank.
+
+**Function syntax**
 
 ```
 BIGINT DENSE_RANK() OVER (PARTITION BY [col1, col2…] ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]…]);
 ```
 
-PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: specifies the values used for ranking. This function returns a value of the BIGINT type.
+**Parameters**
+
+PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: specifies the values used for ranking.
+
+**Return value**
+
+This function returns a value of the BIGINT type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE emp (
@@ -8371,7 +9781,13 @@ This topic describes how to use the RANK window function in MaxCompute to calcul
 BIGINT RANK() OVER (PARTITION BY [col1, col2…] ORDER BY [col1 [ASC|DESC], col2 [ASC|D ESC]…]);
 ```
 
-PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: specifies the values by which to rank the rows. This function returns a value of the BIGINT type.
+**Parameters**
+
+PARTITION BY [col1, col2...]: specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC]]: specifies the values by which to rank the rows.
+
+**Return value**
+
+This function returns a value of the BIGINT type.
 
 ```
 -- Create a test table and insert data. CREATE TABLE emp (
@@ -8417,13 +9833,25 @@ ULL, 20); INSERT INTO emp VALUES (7934, 'MILLER', 'CLERK', 7782, '1982-01-23 00:
 
 ##### 3.6.4.12 LAG
 
-This topic describes how to use the LAG window function in MaxCompute to retrieve the value of a preceding row at a specified offset. This function retrieves the value of a row that precedes the current row by a specified offset. For example, if the current row number is rn, the function retrieves the value from the row numbered rn-offset.
+This topic describes how to use the LAG window function in MaxCompute to retrieve the value of a preceding row at a specified offset.
+
+**Instructions**
+
+**Description**
+
+This function retrieves the value of a row that precedes the current row by a specified offset. For example, if the current row number is rn, the function retrieves the value from the row numbered rn-offset.
 
 ```
 LAG(expr, BIGINT offset, default) OVER (PARTITION BY [col1, col2, ...] [ORDER BY [col 1 [ASC|DESC], col2 [ASC|DESC], ...]]);
 ```
 
-expr: required. This parameter can be of any data type. offset: required. This parameter must be a BIGINT constant greater than 0. If the input value is of the STRING or DOUBLE type, the system implicitly converts the value to the BIGINT type. default: optional. This parameter must be a constant and defines the default value when the range specified by the offset exceeds the boundary. The default value is NULL. PARTITION BY [col1, col2, ...]: optional. This parameter specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. This parameter specifies the sort order of the returned results. The function returns a value of the same data type as expr.
+**Parameters**
+
+expr: required. This parameter can be of any data type. offset: required. This parameter must be a BIGINT constant greater than 0. If the input value is of the STRING or DOUBLE type, the system implicitly converts the value to the BIGINT type. default: optional. This parameter must be a constant and defines the default value when the range specified by the offset exceeds the boundary. The default value is NULL. PARTITION BY [col1, col2, ...]: optional. This parameter specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. This parameter specifies the sort order of the returned results.
+
+**Return value**
+
+The function returns a value of the same data type as expr.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS sliding_window (
@@ -8452,13 +9880,25 @@ expr: required. This parameter can be of any data type. offset: required. This p
 
 ##### 3.6.4.13 LEAD
 
-This topic describes how to use the LEAD window function in MaxCompute to return the expression value from a subsequent row at a specified offset. The LEAD function returns the value of the expression expr from the offset-th row after the current row towards the end of the partition. The expression expr can be a column, a column operation, or a function operation.
+This topic describes how to use the LEAD window function in MaxCompute to return the expression value from a subsequent row at a specified offset.
+
+**Instructions**
+
+**Description**
+
+The LEAD function returns the value of the expression expr from the offset-th row after the current row towards the end of the partition. The expression expr can be a column, a column operation, or a function operation.
+
+**Function syntax**
 
 ```
 LEAD(expr, BIGINT offset, default) OVER (PARTITION BY [col1, col2, ...] [ORDER BY [co l1 [ASC|DESC], col2 [ASC|DESC], ...]]);
 ```
 
-expr: required. This parameter accepts any data type. offset: required. This parameter must be a BIGINT constant greater than 0. If the input value is of the STRING or DOUBLE type, the system implicitly converts the value to the BIGINT type. default: optional. This parameter must be a constant. It specifies the default value when the offset exceeds the partition boundary. The default value is NULL. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. This clause specifies the sort order of the results. The return value is of the same data type as expr.
+expr: required. This parameter accepts any data type. offset: required. This parameter must be a BIGINT constant greater than 0. If the input value is of the STRING or DOUBLE type, the system implicitly converts the value to the BIGINT type. default: optional. This parameter must be a constant. It specifies the default value when the offset exceeds the partition boundary. The default value is NULL. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. This clause specifies the sort order of the results.
+
+**Return value**
+
+The return value is of the same data type as expr.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS emp (
@@ -8510,13 +9950,25 @@ SELECT deptno, ename, sal, LEAD(sal, 1) OVER (PARTITION BY deptno ORDER BY sal) 
 
 ##### 3.6.4.14 PERCENT_RANK
 
-This topic describes how to use the PERCENT_RANK window function in MaxCompute to calculate the relative rank of a row within a group of data. This function calculates the relative rank of a row within a group of data.
+This topic describes how to use the PERCENT_RANK window function in MaxCompute to calculate the relative rank of a row within a group of data.
+
+**Instructions**
+
+**Description**
+
+This function calculates the relative rank of a row within a group of data.
+
+**Function syntax**
 
 ```
 PERCENT_RANK() OVER (PARTITION BY [col1, col2, ...] ORDER BY [col1 [ASC|DESC], col2 [ ASC|DESC], ...]);
 ```
 
-PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: required. This clause specifies the values used for ranking. The function returns a value of the DOUBLE type within the range of `[0,1]` . The relative rank is calculated by using the formula `(rank-1)/(partition_row_count -`
+PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: required. This clause specifies the values used for ranking.
+
+**Return value**
+
+The function returns a value of the DOUBLE type within the range of `[0,1]` . The relative rank is calculated by using the formula `(rank-1)/(partition_row_count -`
 1. ` .
 
 > **Note:** A single window cannot contain more than 10 million rows.
@@ -8573,13 +10025,25 @@ PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used
 
 ##### 3.6.4.15 ROW_NUMBER
 
-This topic describes how to use the ROW_NUMBER window function in MaxCompute to calculate the row number. This function calculates the row number, starting from 1.
+This topic describes how to use the ROW_NUMBER window function in MaxCompute to calculate the row number.
+
+**Instructions**
+
+**Description**
+
+This function calculates the row number, starting from 1.
 
 ```
 ROW_NUMBER() OVER (PARTITION BY [col1, col2, ...] ORDER BY [col1 [ASC|DESC], col2 [AS C|DESC], ...]);
 ```
 
-PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. This clause specifies the values used for sorting the returned results. This function returns a value of the BIGINT type.
+**Parameters**
+
+PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. This clause specifies the values used for sorting the returned results.
+
+**Return value**
+
+This function returns a value of the BIGINT type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS emp (
@@ -8625,13 +10089,27 @@ PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used
 
 ##### 3.6.4.16 CLUSTER_SAMPLE
 
-This topic describes how to use the CLUSTER_SAMPLE window function in MaxCompute for cluster sampling. This function performs cluster sampling.
+This topic describes how to use the CLUSTER_SAMPLE window function in MaxCompute for cluster sampling.
+
+**Instructions**
+
+**Description**
+
+This function performs cluster sampling.
+
+**Function syntax**
 
 ```
 BOOLEAN CLUSTER_SAMPLE([BIGINT x, BIGINT y]) OVER (PARTITION BY [col1, col2, ...]);
 ```
 
-x: required. The value must be a BIGINT constant greater than or equal to 1. If the y parameter is specified, x divides a window into x parts. Otherwise, x extracts x rows of records from a window, which means the function returns True for x rows. If x is NULL, the function returns NULL. y: optional. The value must be a BIGINT constant greater than or equal to 1. In addition, the value of y must not exceed the value of x. This parameter specifies the number of partitions to sample from the x partitions of a window (that is, the return value is True for y partitions). If y is NULL, the function returns NULL. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. This function returns a value of the BOOLEAN type.
+**Parameters**
+
+x: required. The value must be a BIGINT constant greater than or equal to 1. If the y parameter is specified, x divides a window into x parts. Otherwise, x extracts x rows of records from a window, which means the function returns True for x rows. If x is NULL, the function returns NULL. y: optional. The value must be a BIGINT constant greater than or equal to 1. In addition, the value of y must not exceed the value of x. This parameter specifies the number of partitions to sample from the x partitions of a window (that is, the return value is True for y partitions). If y is NULL, the function returns NULL. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type.
 
 ```
 - Create a table
@@ -8652,13 +10130,27 @@ CREATE TABLE IF NOT EXISTS test_tbl (
 
 ##### 3.6.4.17 NTILE
 
-This topic describes how to use the NTILE window function in MaxCompute. This function divides grouped data into **n** sequential slices and returns the current slice value. If the slices are uneven, the system adds the extra rows to the first slice by default.
+This topic describes how to use the NTILE window function in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+This function divides grouped data into **n** sequential slices and returns the current slice value. If the slices are uneven, the system adds the extra rows to the first slice by default.
+
+**Function syntax**
 
 ```
 BIGINT NTILE(BIGINT n) OVER(PARTITION BY [col1, col2…] [ORDER BY [col1[ASC|DESC], col2[ASC|DESC]…]] [windowing_clause]));
 ```
 
-n: the BIGINT data type. The function returns a value of the BIGINT type.
+**Parameters**
+
+n: the BIGINT data type.
+
+**Return value**
+
+The function returns a value of the BIGINT type.
 
 **Prepare sample data**
 
@@ -8705,13 +10197,27 @@ SELECT deptno,ename,sal,NTILE(3) OVER(PARTITION BY deptno ORDER BY sal DESC) AS 
 
 ##### 3.6.4.18 NTH_VALUE
 
-This topic describes how to use the NTH_VALUE window function in MaxCompute to calculate the nth value in a window. This function calculates the nth value in a window. If n exceeds the maximum length of the window, the function returns NULL.
+This topic describes how to use the NTH_VALUE window function in MaxCompute to calculate the nth value in a window.
+
+**Instructions**
+
+**Description**
+
+This function calculates the nth value in a window. If n exceeds the maximum length of the window, the function returns NULL.
+
+**Function syntax**
 
 ```
 NTH_VALUE(expr, number [, skipNull]) OVER (PARTITION BY [col1, col2, ...] [ORDER BY [ col1 [ASC|DESC], col2 [ASC|DESC], ...]] [windowing_clause]);
 ```
 
-expr: required. This parameter accepts any basic data type. number: required. This parameter must be an integer greater than or equal to 1. skipNull: optional. This parameter must be of the BOOLEAN type. It specifies whether to ignore rows with NULL values when calculating the nth value. The default value is False. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. If ORDER BY is not specified, the function returns the expr value of the nth row in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the expr value of the nth row from the start row to the current row in the window. The return value is of the same type as expr.
+**Parameters**
+
+expr: required. This parameter accepts any basic data type. number: required. This parameter must be an integer greater than or equal to 1. skipNull: optional. This parameter must be of the BOOLEAN type. It specifies whether to ignore rows with NULL values when calculating the nth value. The default value is False. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. If ORDER BY is not specified, the function returns the expr value of the nth row in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the expr value of the nth row from the start row to the current row in the window.
+
+**Return value**
+
+The return value is of the same type as expr.
 
 ```
 -- Create a table. CREATE TABLE IF NOT EXISTS test_src (
@@ -8775,14 +10281,26 @@ ond row exceeds the window length.
 
 ##### 3.6.4.19 CUME_DIST
 
-This topic describes how to use the CUME_DIST window function in MaxCompute to calculate the cumulative distribution. The function calculates the cumulative distribution, which is the ratio of the number of rows with values greater than or equal to the current value to the total number of rows in the group. The ORDER BY clause specifies the values used for comparison.
+This topic describes how to use the CUME_DIST window function in MaxCompute to calculate the cumulative distribution.
+
+**Description**
+
+The function calculates the cumulative distribution, which is the ratio of the number of rows with values greater than or equal to the current value to the total number of rows in the group. The ORDER BY clause specifies the values used for comparison.
+
+**Function syntax**
 
 ```
 CUME_DIST() OVER (PARTITION BY [col1, col2, ...] ORDER BY [col1 [ASC|DESC], col2 [ASC
 |DESC], ...]);
 ```
 
-PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: required. This clause specifies the values used for sorting. The function returns a DOUBLE value that represents the ratio of the number of rows with values greater than or equal to the current value to the total number of rows in the group.
+**Parameters**
+
+PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: required. This clause specifies the values used for sorting.
+
+**Return value**
+
+The function returns a DOUBLE value that represents the ratio of the number of rows with values greater than or equal to the current value to the total number of rows in the group.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS emp (
@@ -8830,11 +10348,19 @@ INSERT INTO emp VALUES (7839, 'KING', 'PRESIDENT', NULL, DATETIME'1981-11-17 00:
 
 This topic describes how to use the FIRST_VALUE window function in MaxCompute to obtain the first value up to the current row after sorting within a group. This function obtains the first value from the start of a group up to the current row after sorting.
 
+**Function syntax**
+
 ```
 FIRST_VALUE(expr) OVER (PARTITION BY [col1, col2, ...] [ORDER BY [col1 [ASC|DESC], co l2 [ASC|DESC], ...]] [windowing_clause]);
 ```
 
-expr: required. This parameter can be any basic data type. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. If ORDER BY is not specified, the function returns the expr value of the first row in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the expr value of the first row in the current window. The return value has the same data type as expr.
+**Parameters**
+
+expr: required. This parameter can be any basic data type. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. If ORDER BY is not specified, the function returns the expr value of the first row in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the expr value of the first row in the current window.
+
+**Return value**
+
+The return value has the same data type as expr.
 
 ```
 -- Create a table. CREATE TABLE IF NOT EXISTS test_src (
@@ -8875,13 +10401,27 @@ expr: required. This parameter can be any basic data type. PARTITION BY [col1, c
 
 ##### 3.6.4.21 LAST_VALUE
 
-This topic describes how to use the LAST_VALUE window function in MaxCompute to obtain the last value up to the current row after sorting within a group. This function obtains the last value from the start of a group up to the current row after sorting.
+This topic describes how to use the LAST_VALUE window function in MaxCompute to obtain the last value up to the current row after sorting within a group.
+
+**Instructions**
+
+**Description**
+
+This function obtains the last value from the start of a group up to the current row after sorting.
+
+**Function syntax**
 
 ```
 LAST_VALUE(expr) OVER (PARTITION BY [col1, col2, ...] [ORDER BY [col1 [ASC|DESC], col 2 [ASC|DESC], ...]] [windowing_clause]);
 ```
 
-expr: required. This parameter can be any basic data type. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. If ORDER BY is not specified, the function returns the expr value of the last row in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the expr value of the current row in the current window. The return value is of the same data type as expr.
+**Parameters**
+
+expr: required. This parameter can be any basic data type. PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used for partitioning. ORDER BY [col1 [ASC|DESC], col2 [ASC|DESC], ...]: optional. If ORDER BY is not specified, the function returns the expr value of the last row in the current window. If ORDER BY is specified, the function sorts the results in the specified order and returns the expr value of the current row in the current window.
+
+**Return value**
+
+The return value is of the same data type as expr.
 
 ```
 -- Create a table
@@ -8927,16 +10467,30 @@ CREATE TABLE IF NOT EXISTS test_src (
 
 #### aggregate functions
 
-This topic describes how to use filter condition expressions in MaxCompute to specify filter conditions for aggregate functions. You can add a filter condition expression to any aggregate function. If you specify the FILTER clause, the system passes only the rows where where_condition evaluates to TRUE to the corresponding aggregate function for processing.
+This topic describes how to use filter condition expressions in MaxCompute to specify filter conditions for aggregate functions.
+
+**Instructions**
+
+**Description**
+
+You can add a filter condition expression to any aggregate function. If you specify the FILTER clause, the system passes only the rows where where_condition evaluates to TRUE to the corresponding aggregate function for processing.
 
 > **Note:** Currently, only built-in aggregate functions support a FILTER (WHERE where_condition) clause. User-defined aggregate functions (UDAFs) do not support this clause.
 > You cannot use COUNT(*) together with a FILTER (WHERE where_condition) clause. If you need to use them together, use the COUNT_IF function.
+
+**Function syntax**
 
 ```
 aggregate_name(expression [, ...]) [FILTER (WHERE where_condition)];
 ```
 
-aggregate_name: the name of the aggregate function. expression: the expression parameter of the aggregate function. FILTER (WHERE where_condition): optional. The filter condition expression. Only the rows where where_condition evaluates to TRUE participate in aggregate computing. The type of the return value depends on the aggregate function that you use.
+**Parameters**
+
+aggregate_name: the name of the aggregate function. expression: the expression parameter of the aggregate function. FILTER (WHERE where_condition): optional. The filter condition expression. Only the rows where where_condition evaluates to TRUE participate in aggregate computing.
+
+**Return value**
+
+The type of the return value depends on the aggregate function that you use.
 
 ```
 -- Use the VALUES clause to construct test data and demonstrate the FILTER condition
@@ -8952,13 +10506,27 @@ FROM VALUES (NULL, 1), (1, 2), (2, 3), (3, NULL) AS t(x, y); -- Output +-----+--
 
 ##### 3.6.5.2 COUNT
 
-This topic describes how to use the COUNT function in MaxCompute to calculate the number of records and provides reference examples. This function calculates the number of records.
+This topic describes how to use the COUNT function in MaxCompute to calculate the number of records and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function calculates the number of records.
+
+**Function syntax**
 
 ```
 BIGINT COUNT([DISTINCT|ALL] value);
 ```
 
-distinct|all: specifies whether to remove duplicate records during counting. The default value is **all**, which counts all records. If **distinct** is specified, the function counts only the number of distinct values. value: This parameter can be of any data type. When **value** is NULL, the function excludes that row from the calculation. **value** can be *. When count(*) is used, the function returns the total number of rows. The function returns a value of the BIGINT type. Example 1: Simple counting
+**Parameters**
+
+distinct|all: specifies whether to remove duplicate records during counting. The default value is **all**, which counts all records. If **distinct** is specified, the function counts only the number of distinct values. value: This parameter can be of any data type. When **value** is NULL, the function excludes that row from the calculation. **value** can be *. When count(*) is used, the function returns the total number of rows.
+
+**Return value**
+
+The function returns a value of the BIGINT type. Example 1: Simple counting
 
 ```
 CREATE TABLE IF NOT EXISTS tbla (
@@ -9001,13 +10569,27 @@ INSERT INTO test_src VALUES ('a', 2.0), ('a', 4.0), ('b', 1.0), ('b', 3.0); SELE
 
 ##### 3.6.5.3 COUNT_IF
 
-This topic describes how to use the COUNT_IF aggregation function in MaxCompute to count the number of records where the value of expr is TRUE. This function counts the number of records where the value of expr is TRUE.
+This topic describes how to use the COUNT_IF aggregation function in MaxCompute to count the number of records where the value of expr is TRUE.
+
+**Instructions**
+
+**Description**
+
+This function counts the number of records where the value of expr is TRUE.
+
+**Function syntax**
 
 ```
 BIGINT COUNT_IF(BOOLEAN expr);
 ```
 
-expr: required. This parameter must be of the BOOLEAN type. If the value of expr is FALSE or NULL, the system excludes the row from the calculation. This function returns a value of the BIGINT type.
+**Parameters**
+
+expr: required. This parameter must be of the BOOLEAN type. If the value of expr is FALSE or NULL, the system excludes the row from the calculation.
+
+**Return value**
+
+This function returns a value of the BIGINT type.
 
 ```
 SELECT COUNT_IF(x > 1), COUNT_IF(x <= 1) FROM VALUES (NULL), (0), (1), (2) AS t(x); -- Result +-----+-----+
@@ -9019,13 +10601,27 @@ SELECT COUNT_IF(x > 1), COUNT_IF(x <= 1) FROM VALUES (NULL), (0), (1), (2) AS t(
 
 ##### 3.6.5.4 AVG
 
-This topic describes how to use the AVG aggregate function in MaxCompute to calculate the average value. This function calculates the average value.
+This topic describes how to use the AVG aggregate function in MaxCompute to calculate the average value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the average value.
+
+**Function syntax**
 
 ```
 DOUBLE AVG(DOUBLE value); DECIMAL AVG(DECIMAL value);
 ```
 
-value: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, an error is returned. If the value is NULL, the system excludes the row from calculation. The BOOLEAN type is not allowed for calculation. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of any other valid type, the function returns a value of the DOUBLE type.
+**Parameters**
+
+value: required. The value must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If the input value is of any other type, an error is returned. If the value is NULL, the system excludes the row from calculation. The BOOLEAN type is not allowed for calculation.
+
+**Return value**
+
+If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of any other valid type, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a table. CREATE TABLE IF NOT EXISTS tbla (
@@ -9044,13 +10640,27 @@ value: required. The value must be of the DOUBLE or DECIMAL type. If the input v
 
 ##### 3.6.5.5 MAX
 
-This topic describes how to use the MAX aggregate function in MaxCompute to calculate the maximum value. This function calculates the maximum value.
+This topic describes how to use the MAX aggregate function in MaxCompute to calculate the maximum value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the maximum value.
+
+**Function syntax**
 
 ```
 MAX(value);
 ```
 
-value: required. This parameter accepts any data type. If a value in the column is NULL, the system skips the row during the calculation. The system does not allow BOOLEAN data types in calculations. The return value has the same data type as the value parameter.
+**Parameters**
+
+value: required. This parameter accepts any data type. If a value in the column is NULL, the system skips the row during the calculation. The system does not allow BOOLEAN data types in calculations.
+
+**Return value**
+
+The return value has the same data type as the value parameter.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9069,13 +10679,27 @@ value: required. This parameter accepts any data type. If a value in the column 
 
 ##### 3.6.5.6 MIN
 
-This topic describes how to use the MIN aggregate function in MaxCompute to calculate the minimum value. This function calculates the minimum value.
+This topic describes how to use the MIN aggregate function in MaxCompute to calculate the minimum value.
+
+**Instructions**
+
+**Description**
+
+This function calculates the minimum value.
+
+**Function syntax**
 
 ```
 MIN(value);
 ```
 
-value: required. This parameter accepts any data type. If a column value is NULL, the system excludes the row from the calculation. The system does not allow BOOLEAN values in calculations. The return value has the same data type as the value parameter.
+**Parameters**
+
+value: required. This parameter accepts any data type. If a column value is NULL, the system excludes the row from the calculation. The system does not allow BOOLEAN values in calculations.
+
+**Return value**
+
+The return value has the same data type as the value parameter.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9094,13 +10718,27 @@ value: required. This parameter accepts any data type. If a column value is NULL
 
 ##### 3.6.5.7 MEDIAN
 
-This topic describes how to use the MEDIAN aggregate function in MaxCompute to calculate the median. This function calculates the median.
+This topic describes how to use the MEDIAN aggregate function in MaxCompute to calculate the median.
+
+**Instructions**
+
+**Description**
+
+This function calculates the median.
+
+**Function syntax**
 
 ```
 DOUBLE MEDIAN(DOUBLE number); DECIMAL MEDIAN(DECIMAL number);
 ```
 
-number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts the value to the DOUBLE type for calculation. If a value of another type is specified, the system returns an error. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of another valid type, the function returns a value of the DOUBLE type.
+**Parameters**
+
+number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts the value to the DOUBLE type for calculation. If a value of another type is specified, the system returns an error.
+
+**Return value**
+
+If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of another valid type, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9119,13 +10757,27 @@ number: required. This parameter must be of the DOUBLE or DECIMAL type. If the i
 
 ##### 3.6.5.8 STDDEV
 
-This topic describes how to use the aggregation function STDDEV in MaxCompute to calculate the population standard deviation. This function calculates the population standard deviation.
+This topic describes how to use the aggregation function STDDEV in MaxCompute to calculate the population standard deviation.
+
+**Instructions**
+
+**Description**
+
+This function calculates the population standard deviation.
+
+**Function syntax**
 
 ```
 DOUBLE STDDEV(DOUBLE number); DECIMAL STDDEV(DECIMAL number);
 ```
 
-number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If you enter a value of another type, the system returns an error. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of another valid type, the function returns a value of the DOUBLE type.
+**Parameters**
+
+number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If you enter a value of another type, the system returns an error.
+
+**Return value**
+
+If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of another valid type, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9144,13 +10796,27 @@ number: required. This parameter must be of the DOUBLE or DECIMAL type. If the i
 
 ##### 3.6.5.9 STDDEV_SAMP
 
-This topic describes how to use the STDDEV_SAMP aggregation function in MaxCompute to calculate the sample standard deviation. This function calculates the sample standard deviation.
+This topic describes how to use the STDDEV_SAMP aggregation function in MaxCompute to calculate the sample standard deviation.
+
+**Instructions**
+
+**Description**
+
+This function calculates the sample standard deviation.
+
+**Function syntax**
 
 ```
 DOUBLE STDDEV_SAMP(DOUBLE number); DECIMAL STDDEV_SAMP(DECIMAL number);
 ```
 
-number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If you specify a value of any other type, the system returns an error. If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of any other valid type, the function returns a value of the DOUBLE type.
+**Parameters**
+
+number: required. This parameter must be of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, the system implicitly converts it to the DOUBLE type before calculation. If you specify a value of any other type, the system returns an error.
+
+**Return value**
+
+If the input value is of the DECIMAL type, the function returns a value of the DECIMAL type. If the input value is of any other valid type, the function returns a value of the DOUBLE type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9169,13 +10835,27 @@ number: required. This parameter must be of the DOUBLE or DECIMAL type. If the i
 
 ##### 3.6.5.10 SUM
 
-This topic describes how to use the SUM aggregate function in MaxCompute to calculate the aggregate sum. This function calculates the aggregate sum.
+This topic describes how to use the SUM aggregate function in MaxCompute to calculate the aggregate sum.
+
+**Instructions**
+
+**Description**
+
+This function calculates the aggregate sum.
+
+**Function syntax**
 
 ```
 SUM(value);
 ```
 
-value: required. This parameter must be of the DOUBLE, DECIMAL, or BIGINT. If the input value is of the STRING type, the system implicitly converts it to the DOUBLE type before calculation. If the value in a column is NULL, the system excludes that row from the calculation. The BOOLEAN type is not allowed in the calculation. If the input value is of the BIGINT type, the function returns a BIGINT value. If the input value is of the DOUBLE or STRING type, the function returns a DOUBLE value.
+**Parameters**
+
+value: required. This parameter must be of the DOUBLE, DECIMAL, or BIGINT. If the input value is of the STRING type, the system implicitly converts it to the DOUBLE type before calculation. If the value in a column is NULL, the system excludes that row from the calculation. The BOOLEAN type is not allowed in the calculation.
+
+**Return value**
+
+If the input value is of the BIGINT type, the function returns a BIGINT value. If the input value is of the DOUBLE or STRING type, the function returns a DOUBLE value.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9194,13 +10874,27 @@ value: required. This parameter must be of the DOUBLE, DECIMAL, or BIGINT. If th
 
 ##### 3.6.5.11 WM_CONCAT
 
-This topic describes how to use the WM_CONCAT aggregate function in MaxCompute to concatenate values with a specified delimiter. This function concatenates values in str by using the specified separator as the delimiter.
+This topic describes how to use the WM_CONCAT aggregate function in MaxCompute to concatenate values with a specified delimiter.
+
+**Instructions**
+
+**Description**
+
+This function concatenates values in str by using the specified separator as the delimiter.
+
+**Function syntax**
 
 ```
 STRING WM_CONCAT(STRING separator, STRING str);
 ```
 
-separator: required. This parameter must be a STRING constant that specifies the delimiter. An error is returned if a value of another type or a non-constant value is specified. str: required. This parameter must be of the STRING type. If the input value is of the BIGINT, DOUBLE, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. An error is returned if a value of another type is specified. This function returns a value of the STRING type.
+**Parameters**
+
+separator: required. This parameter must be a STRING constant that specifies the delimiter. An error is returned if a value of another type or a non-constant value is specified. str: required. This parameter must be of the STRING type. If the input value is of the BIGINT, DOUBLE, or DATETIME type, the system implicitly converts the value to the STRING type before calculation. An error is returned if a value of another type is specified.
+
+**Return value**
+
+This function returns a value of the STRING type.
 
 > **Note:** In the statement SELECT WM_CONCAT(',', name) FROM test_src; , if test_src is an empty collection, this statement returns NULL.
 
@@ -9223,13 +10917,27 @@ separator: required. This parameter must be a STRING constant that specifies the
 
 ##### 3.6.5.12 PERCENTILE
 
-This topic describes how to use the PERCENTILE aggregate function in MaxCompute to return the exact p-th percentile of a specified column. This function returns the exact p-th percentile of a specified column. The value of p must be between 0 and 1. Only integer values produce true percentiles.
+This topic describes how to use the PERCENTILE aggregate function in MaxCompute to return the exact p-th percentile of a specified column.
+
+**Instructions**
+
+**Description**
+
+This function returns the exact p-th percentile of a specified column. The value of p must be between 0 and 1. Only integer values produce true percentiles.
+
+**Function syntax**
 
 ```
 DOUBLE PERCENTILE(BIGINT col, DOUBLE p); ARRAY<DOUBLE> PERCENTILE(BIGINT col, ARRAY(DOUBLE p1 [, DOUBLE p2, ...]));
 ```
 
-col: required. The name of a BIGINT column. p: required. This parameter specifies the exact percentile to be calculated. It must be of the DOUBLE type and have a value between 0 and 1. If p is a single DOUBLE value, the function returns a DOUBLE value. If p is of the ARRAY type, the function returns an ARRAY value.
+**Parameters**
+
+col: required. The name of a BIGINT column. p: required. This parameter specifies the exact percentile to be calculated. It must be of the DOUBLE type and have a value between 0 and 1.
+
+**Return value**
+
+If p is a single DOUBLE value, the function returns a DOUBLE value. If p is of the ARRAY type, the function returns an ARRAY value.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS var_test (
@@ -9254,7 +10962,11 @@ col: required. The name of a BIGINT column. p: required. This parameter specifie
 
 ###### 3.6.5.13.1 Usage notes
 
-This topic describes the settings that you must configure to use the new aggregation functions. MaxCompute 2.0 introduces new aggregation functions. To use these new functions in SQL statements, you must add the following SET statement.
+This topic describes the settings that you must configure to use the new aggregation functions.
+
+**Instructions**
+
+MaxCompute 2.0 introduces new aggregation functions. To use these new functions in SQL statements, you must add the following SET statement.
 
 ```
 SET odps.sql.type.system.odps2=true;
@@ -9264,13 +10976,27 @@ SET odps.sql.type.system.odps2=true;
 
 ###### 3.6.5.13.2 COLLECT_LIST
 
-This topic describes how to use the COLLECT_LIST aggregate function in MaxCompute to aggregate the values of a specified column into an array. Within a given group, the function aggregates the expression specified by col into an array.
+This topic describes how to use the COLLECT_LIST aggregate function in MaxCompute to aggregate the values of a specified column into an array.
+
+**Instructions**
+
+**Description**
+
+Within a given group, the function aggregates the expression specified by col into an array.
+
+**Function syntax**
 
 ```
 ARRAY COLLECT_LIST(col);
 ```
 
-col: required. This parameter specifies the name of a column. It can be of any data type. The function returns a value of the ARRAY type.
+**Parameters**
+
+col: required. This parameter specifies the name of a column. It can be of any data type.
+
+**Return value**
+
+The function returns a value of the ARRAY type.
 
 ```
 -- Create a table. CREATE TABLE IF NOT EXISTS tbla (
@@ -9297,7 +11023,13 @@ This topic describes how to use the COLLECT_SET aggregate function in MaxCompute
 ARRAY COLLECT_SET(col);
 ```
 
-col: required. This parameter specifies the name of a column and can be of any data type. This function returns a value of the ARRAY type.
+**Parameters**
+
+col: required. This parameter specifies the name of a column and can be of any data type.
+
+**Return value**
+
+This function returns a value of the ARRAY type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbla (
@@ -9318,7 +11050,15 @@ col: required. This parameter specifies the name of a column and can be of any d
 
 ###### 3.6.5.13.4 VARIANCE/VAR_POP
 
-This topic describes how to use the VARIANCE/VAR_POP aggregate function in MaxCompute to calculate the variance of a specified numeric column. This function calculates the variance of a specified numeric column.
+This topic describes how to use the VARIANCE/VAR_POP aggregate function in MaxCompute to calculate the variance of a specified numeric column.
+
+**Instructions**
+
+**Description**
+
+This function calculates the variance of a specified numeric column.
+
+**Function syntax**
 
 ```
 DOUBLE VARIANCE(col); DOUBLE VAR_POP(col);
@@ -9343,13 +11083,27 @@ col: required. The column must be of the numeric type. If the column is of anoth
 
 ###### 3.6.5.13.5 VAR_SAMP
 
-This topic describes how to use the VAR_SAMP aggregate function in MaxCompute to calculate the sample variance of a specified numeric column. This function calculates the sample variance of a specified numeric column.
+This topic describes how to use the VAR_SAMP aggregate function in MaxCompute to calculate the sample variance of a specified numeric column.
+
+**Instructions**
+
+**Description**
+
+This function calculates the sample variance of a specified numeric column.
+
+**Function syntax**
 
 ```
 DOUBLE VAR_SAMP(col);
 ```
 
-col: required. This parameter specifies a numeric column. If a column of another data type is specified, the function returns NULL. The function returns a value of the DOUBLE type.
+**Parameters**
+
+col: required. This parameter specifies a numeric column. If a column of another data type is specified, the function returns NULL.
+
+**Return value**
+
+The function returns a value of the DOUBLE type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS test (
@@ -9368,13 +11122,27 @@ col: required. This parameter specifies a numeric column. If a column of another
 
 ###### 3.6.5.13.6 COVAR_POP
 
-This topic describes how to use the COVAR_POP aggregate function in MaxCompute to calculate the population covariance of two specified numeric columns. This function calculates the population covariance of two specified numeric columns.
+This topic describes how to use the COVAR_POP aggregate function in MaxCompute to calculate the population covariance of two specified numeric columns.
+
+**Instructions**
+
+**Description**
+
+This function calculates the population covariance of two specified numeric columns.
+
+**Function syntax**
 
 ```
 DOUBLE COVAR_POP(col1, col2);
 ```
 
-col1: required. This parameter specifies a numeric column. The function returns NULL for columns of other data types. col2: required. This parameter specifies a numeric column. The function returns NULL for columns of other data types. The function returns a value of the DOUBLE type.
+**Parameters**
+
+col1: required. This parameter specifies a numeric column. The function returns NULL for columns of other data types. col2: required. This parameter specifies a numeric column. The function returns NULL for columns of other data types.
+
+**Return value**
+
+The function returns a value of the DOUBLE type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS test (
@@ -9394,13 +11162,27 @@ col1: required. This parameter specifies a numeric column. The function returns 
 
 ###### 3.6.5.13.7 COVAR_SAMP
 
-This topic describes how to use the COVAR_SAMP aggregate function in MaxCompute to calculate the sample covariance of two specified numeric columns. This function calculates the sample covariance of two specified numeric columns.
+This topic describes how to use the COVAR_SAMP aggregate function in MaxCompute to calculate the sample covariance of two specified numeric columns.
+
+**Instructions**
+
+**Description**
+
+This function calculates the sample covariance of two specified numeric columns.
+
+**Function syntax**
 
 ```
 DOUBLE COVAR_SAMP(col1, col2);
 ```
 
-col1: required. This parameter specifies a numeric column. The function returns NULL if col1 is of another data type. col2: required. This parameter specifies a numeric column. The function returns NULL if col2 is of another data type. The function returns a value of the DOUBLE type.
+**Parameters**
+
+col1: required. This parameter specifies a numeric column. The function returns NULL if col1 is of another data type. col2: required. This parameter specifies a numeric column. The function returns NULL if col2 is of another data type.
+
+**Return value**
+
+The function returns a value of the DOUBLE type.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS test (
@@ -9420,13 +11202,27 @@ col1: required. This parameter specifies a numeric column. The function returns 
 
 ###### 3.6.5.13.8 ANY_VALUE
 
-This topic describes how to use the ANY_VALUE aggregate function in MaxCompute to return an arbitrary non-NULL value from a specified range. The function returns an arbitrary value from a specified range.
+This topic describes how to use the ANY_VALUE aggregate function in MaxCompute to return an arbitrary non-NULL value from a specified range.
+
+**Instructions**
+
+**Description**
+
+The function returns an arbitrary value from a specified range.
+
+**Function syntax**
 
 ```
 ANY_VALUE(value);
 ```
 
-value: required. This parameter can be of any data type. If the value is NULL, the system excludes the row from the calculation. The type of the return value is the same as the input type.
+**Parameters**
+
+value: required. This parameter can be of any data type. If the value is NULL, the system excludes the row from the calculation.
+
+**Return value**
+
+The type of the return value is the same as the input type.
 
 ```
 SELECT key, ANY_VALUE(value) FROM VALUES (1, 'value1'), (1, 'value2'), (2, 'value3'), (2, NULL), (3, NULL) AS t(ke y, value) GROUP BY key; -- Results +------------+------------+
@@ -9440,13 +11236,27 @@ SELECT key, ANY_VALUE(value) FROM VALUES (1, 'value1'), (1, 'value2'), (2, 'valu
 
 ###### 3.6.5.13.9 NUMERIC_HISTOGRAM
 
-This topic describes how to use the NUMERIC_HISTOGRAM aggregate function in MaxCompute to calculate the approximate histogram of a specified column. This function calculates the approximate histogram of a specified column.
+This topic describes how to use the NUMERIC_HISTOGRAM aggregate function in MaxCompute to calculate the approximate histogram of a specified column.
+
+**Instructions**
+
+**Description**
+
+This function calculates the approximate histogram of a specified column.
+
+**Function syntax**
 
 ```
 MAP<DOUBLE, DOUBLE> NUMERIC_HISTOGRAM(BIGINT buckets, DOUBLE value);
 ```
 
-buckets: required. This parameter must be of the BIGINT type. It specifies the maximum number of buckets (columns) in the returned approximate histogram. value: required. This parameter must be of the DOUBLE type. It specifies the data column for which the approximate histogram needs to be calculated. The return value is of the MAP<DOUBLE, DOUBLE> type. In the return value, the key represents the x-axis coordinate of the approximate histogram, and the value represents the approximate height of a histogram bucket.
+**Parameters**
+
+buckets: required. This parameter must be of the BIGINT type. It specifies the maximum number of buckets (columns) in the returned approximate histogram. value: required. This parameter must be of the DOUBLE type. It specifies the data column for which the approximate histogram needs to be calculated.
+
+**Return value**
+
+The return value is of the MAP<DOUBLE, DOUBLE> type. In the return value, the key represents the x-axis coordinate of the approximate histogram, and the value represents the approximate height of a histogram bucket.
 
 ```
 SELECT NUMERIC_HISTOGRAM(5, value) FROM VALUES (1.0), (2.0), (3.0), (4.0), (5.0), (6.0), (7.0), (8.0), (9.0), (10.0) AS t(value); -- Result +-------------------------------------+
@@ -9458,13 +11268,25 @@ SELECT NUMERIC_HISTOGRAM(5, value) FROM VALUES (1.0), (2.0), (3.0), (4.0), (5.0)
 
 ###### 3.6.5.13.10 PERCENTILE_APPROX
 
-This topic describes how to use the PERCENTILE_APPROX aggregate function in MaxCompute to return the approximate value for a specified percentile in a specified numeric column. This function returns the value that corresponds to a specified percentile p in a specified numeric column col.
+This topic describes how to use the PERCENTILE_APPROX aggregate function in MaxCompute to return the approximate value for a specified percentile in a specified numeric column.
+
+**Description**
+
+This function returns the value that corresponds to a specified percentile p in a specified numeric column col.
+
+**Function syntax**
 
 ```
 DOUBLE PERCENTILE_APPROX(DOUBLE col, p [, B]); ARRAY<DOUBLE> PERCENTILE_APPROX(DOUBLE col, ARRAY(p1 [, p2]...) [, B]);
 ```
 
-col: required. This parameter must be of the DOUBLE type. It specifies the numeric column for which you want to calculate the approximate percentile. p: required. This parameter must be a percentile. Valid values: [0.0, 1.0]. It can specify a single percentile value or an array of percentile values to be returned. B: optional. This parameter specifies the accuracy. A higher accuracy yields a smaller error for the approximate value. If this parameter is not specified, the default value is 10000. When the number of values in col is less than B, the function returns the exact percentile value. PERCENTILE_APPROX(DOUBLE col, p [, B]) returns a single percentile value. PERCENTILE_APPROX(DOUBLE col, ARRAY(p1 [, p2]...) [, B]) returns an array of percentile values.
+**Parameters**
+
+col: required. This parameter must be of the DOUBLE type. It specifies the numeric column for which you want to calculate the approximate percentile. p: required. This parameter must be a percentile. Valid values: [0.0, 1.0]. It can specify a single percentile value or an array of percentile values to be returned. B: optional. This parameter specifies the accuracy. A higher accuracy yields a smaller error for the approximate value. If this parameter is not specified, the default value is 10000. When the number of values in col is less than B, the function returns the exact percentile value.
+
+**Return value**
+
+PERCENTILE_APPROX(DOUBLE col, p [, B]) returns a single percentile value. PERCENTILE_APPROX(DOUBLE col, ARRAY(p1 [, p2]...) [, B]) returns an array of percentile values.
 
 ```
 SELECT PERCENTILE_APPROX(10.0, 0.5, 100); -- Result +------+
@@ -9482,11 +11304,19 @@ SELECT PERCENTILE_APPROX(10.0, 0.5, 100); -- Result +------+
 
 This topic describes how to use the APPROX_DISTINCT aggregate function in MaxCompute to return the approximate number of distinct values in input data. This function returns the approximate number of distinct values in input data.
 
+**Function syntax**
+
 ```
 BIGINT APPROX_DISTINCT(value);
 ```
 
-value: required. This parameter specifies the input data for deduplication. The function returns a value of the BIGINT type. If all input values are null, the function returns 0. This function has a standard error of 5%.
+**Parameters**
+
+value: required. This parameter specifies the input data for deduplication.
+
+**Return value**
+
+The function returns a value of the BIGINT type. If all input values are null, the function returns 0. This function has a standard error of 5%.
 
 ```
 SELECT APPROX_DISTINCT(value) FROM VALUES (1), (2), (2), (3), (3), (3), (4) AS t(valu e); -- Result +------+
@@ -9500,13 +11330,27 @@ SELECT APPROX_DISTINCT(value) FROM VALUES (1), (2), (2), (3), (3), (3), (4) AS t
 
 ##### 3.6.6.1 ARRAY
 
-This topic describes how to use the ARRAY function in MaxCompute to construct an array from specified values. This function constructs an array from specified values.
+This topic describes how to use the ARRAY function in MaxCompute to construct an array from specified values.
+
+**Instructions**
+
+**Description**
+
+This function constructs an array from specified values.
+
+**Function syntax**
 
 ```
 ARRAY ARRAY(value1, value2, ...);
 ```
 
-value: required. This parameter can be of any data type, but all values must be of the same type. This function returns a value of the ARRAY type.
+**Parameters**
+
+value: required. This parameter can be of any data type, but all values must be of the same type.
+
+**Return value**
+
+This function returns a value of the ARRAY type.
 
 ```
 SELECT ARRAY(123, 456, 789); -- Result +---------------+
@@ -9518,13 +11362,27 @@ SELECT ARRAY(123, 456, 789); -- Result +---------------+
 
 ##### 3.6.6.2 ARRAY_CONTAINS
 
-This topic describes how to use the ARRAY_CONTAINS function in MaxCompute to check whether a given ARRAY contains a specified value. This function checks whether ARRAY a contains v.
+This topic describes how to use the ARRAY_CONTAINS function in MaxCompute to check whether a given ARRAY contains a specified value.
+
+**Instructions**
+
+**Description**
+
+This function checks whether ARRAY a contains v.
+
+**Function syntax**
 
 ```
 BOOLEAN ARRAY_CONTAINS(ARRAY<T> a, value v);
 ```
 
-a: required. This parameter must be of the ARRAY type. v: required. The data type of this parameter must match the data type of the elements in the ARRAY. This function return a value of the BOOLEAN type.
+**Parameters**
+
+a: required. This parameter must be of the ARRAY type. v: required. The data type of this parameter must match the data type of the elements in the ARRAY.
+
+**Return value**
+
+This function return a value of the BOOLEAN type.
 
 ```
 SELECT ARRAY_CONTAINS(ARRAY('a', 'b'), 'a'); -- Result +------+
@@ -9540,7 +11398,13 @@ SELECT ARRAY_CONTAINS(ARRAY('a', 'b'), 'a'); -- Result +------+
 
 ##### 3.6.6.3 CAST
 
-This topic describes how to use the CAST function in MaxCompute to convert the result of an expression to a target data type and provides reference examples. This function converts the result of an expression to a target data type. For example, `cast('1' as bigint)` converts the string **1** to the integer **1**.
+This topic describes how to use the CAST function in MaxCompute to convert the result of an expression to a target data type and provides reference examples.
+
+**Description**
+
+This function converts the result of an expression to a target data type. For example, `cast('1' as bigint)` converts the string **1** to the integer **1**.
+
+**Function syntax**
 
 ```
 CAST(expr AS <type>);
@@ -9550,7 +11414,13 @@ CAST(expr AS <type>);
 > CAST(STRING AS BIGINT): converts a string to the BIGINT type. The function directly converts a string to BIGINT if the string represents an integer. If a string represents a floating-point number or a number in exponential notation, the function first converts the string to DOUBLE and then to BIGINT.
 > For CAST(STRING AS DATETIME) or CAST(DATETIME AS STRING), the function applies the default date format **yyyy-mm-dd hh:mi:ss**.
 
-expr: required. This parameter specifies the source expression to be converted. type: required. This parameter specifies the target data type, such as BIGINT, STRING, or DATETIME. The type of the return value matches the specified target type `<type>` . If the conversion fails or the types are incompatible, the function throws an exception.
+**Parameters**
+
+expr: required. This parameter specifies the source expression to be converted. type: required. This parameter specifies the target data type, such as BIGINT, STRING, or DATETIME.
+
+**Return value**
+
+The type of the return value matches the specified target type `<type>` . If the conversion fails or the types are incompatible, the function throws an exception.
 
 ```
 SELECT CAST('12' AS BIGINT); -- Result +--------+
@@ -9562,13 +11432,23 @@ SELECT CAST('12' AS BIGINT); -- Result +--------+
 
 ##### 3.6.6.4 COALESCE
 
-This topic describes how to use the COALESCE function in MaxCompute to return the first non-NULL value in a list. This function returns the first non-NULL value in a list.
+This topic describes how to use the COALESCE function in MaxCompute to return the first non-NULL value in a list.
+
+**Instructions**
+
+**Description**
+
+This function returns the first non-NULL value in a list.
 
 ```
 COALESCE(expr1, expr2, ...);
 ```
 
-expr: required. This parameter specifies the values to test. All values must be of the same data type or be NULL. Otherwise, an error is returned. At least one parameter must be specified. Otherwise, an error is returned. The return value must be of the same data type as the parameters.
+expr: required. This parameter specifies the values to test. All values must be of the same data type or be NULL. Otherwise, an error is returned. At least one parameter must be specified. Otherwise, an error is returned.
+
+**Return value**
+
+The return value must be of the same data type as the parameters.
 
 ```
 SELECT COALESCE(NULL, NULL, 3); -- Result +------+
@@ -9584,11 +11464,21 @@ SELECT COALESCE(NULL, NULL, 3); -- Result +------+
 
 ##### 3.6.6.5 DECODE
 
-This topic describes how to use the DECODE function in MaxCompute to implement if-thenelse conditional branching. This function implements if-then-else conditional branching.
+This topic describes how to use the DECODE function in MaxCompute to implement if-thenelse conditional branching.
+
+**Instructions**
+
+**Description**
+
+This function implements if-then-else conditional branching.
+
+**Function syntax**
 
 ```
 DECODE(expression, search, result[, search, result]...[, default]);
 ```
+
+**Parameters**
 
 expression: required. This parameter specifies the expression to be compared. search: required. This parameter specifies the search item to be compared with the expression. result: required. This parameter specifies the value to be returned when the search item matches the expression. default: optional. This parameter specifies the default value to be returned if no search item matches. If this parameter is not specified, the function returns NULL. The function returns the matched result. If no match is found, the function returns the default value. If no default value is specified, the function returns NULL. You must specify at least three parameters. All result parameters must be of the same data type or be NULL. Inconsistent data types cause an error. All search items and the expression must be of the same data type. Otherwise, an error is returned. If the DECODE function contains duplicate search items and a match is found, the function returns the first matched value.
 
@@ -9620,16 +11510,28 @@ END IF;
 
 ##### 3.6.6.6 EXPLODE
 
-This topic describes how to use the EXPLODE function in MaxCompute. EXPLODE is a User- Defined Table-generating Function (UDTF) that converts one row of data into multiple rows. EXPLODE is a UDTF that converts one row of data into multiple rows. If var is of the ARRAY type, the function converts the array stored in the column into multiple rows. If var is of the MAP<K, V> type, the function converts each key-value pair of the map stored in the column into a row with two columns, where one column stores the key and the other stores the value.
+This topic describes how to use the EXPLODE function in MaxCompute. EXPLODE is a User- Defined Table-generating Function (UDTF) that converts one row of data into multiple rows.
+
+**Description**
+
+EXPLODE is a UDTF that converts one row of data into multiple rows. If var is of the ARRAY type, the function converts the array stored in the column into multiple rows. If var is of the MAP<K, V> type, the function converts each key-value pair of the map stored in the column into a row with two columns, where one column stores the key and the other stores the value.
 
 > **Note:** You can use only one EXPLODE function in a SELECT statement, and you cannot include other columns from the table in the same statement.
 > You cannot use the EXPLODE function with GROUP BY, CLUSTER BY, DISTRIBUTE BY, or SORT BY.
+
+**Function syntax**
 
 ```
 EXPLODE(var);
 ```
 
-var: required. This parameter must be of the ARRAY or MAP<K, V> type. This function returns the converted rows.
+**Parameters**
+
+var: required. This parameter must be of the ARRAY or MAP<K, V> type.
+
+**Return value**
+
+This function returns the converted rows.
 
 ```
 SELECT EXPLODE(ARRAY(NULL, 'a', 'b', 'c')); -- Result +------+
@@ -9644,13 +11546,23 @@ SELECT EXPLODE(ARRAY(NULL, 'a', 'b', 'c')); -- Result +------+
 
 ##### 3.6.6.7 GET_IDCARD_AGE
 
-This topic describes how to use the GET_IDCARD_AGE function in MaxCompute to return the current age based on an ID card number. This function returns the current age based on an ID card number. The return value is the difference between the current year and the birth year specified in the ID card number.
+This topic describes how to use the GET_IDCARD_AGE function in MaxCompute to return the current age based on an ID card number.
+
+**Instructions**
+
+**Description**
+
+This function returns the current age based on an ID card number. The return value is the difference between the current year and the birth year specified in the ID card number.
 
 ```
 BIGINT GET_IDCARD_AGE(STRING idcardno);
 ```
 
-`idcardno` : required. This parameter must be of the STRING type. The value is a 15-digit or 18-digit ID card number. During calculation, the system checks the validity of the ID card number based on the province code and the last check digit. If the verification fails, the system returns NULL. The function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL. If the difference between the current year and the birth year is greater than 100, the function returns NULL.
+`idcardno` : required. This parameter must be of the STRING type. The value is a 15-digit or 18-digit ID card number. During calculation, the system checks the validity of the ID card number based on the province code and the last check digit. If the verification fails, the system returns NULL.
+
+**Return value**
+
+The function returns a value of the BIGINT type. If the input value is NULL, the function returns NULL. If the difference between the current year and the birth year is greater than 100, the function returns NULL.
 
 ```
 SELECT GET_IDCARD_AGE('id_card_number'); -- Return result (Enter a valid ID card number. The function returns the age, such as "18".) SELECT GET_IDCARD_AGE(NULL); -- Return result +------+
@@ -9662,13 +11574,27 @@ SELECT GET_IDCARD_AGE('id_card_number'); -- Return result (Enter a valid ID card
 
 ##### 3.6.6.8 GET_IDCARD_BIRTHDAY
 
-This topic describes how to use the GET_IDCARD_BIRTHDAY function in MaxCompute to return the date of birth based on an ID card number. This function returns the date of birth based on an ID card number.
+This topic describes how to use the GET_IDCARD_BIRTHDAY function in MaxCompute to return the date of birth based on an ID card number.
+
+**Instructions**
+
+**Description**
+
+This function returns the date of birth based on an ID card number.
+
+**Function syntax**
 
 ```
 DATETIME GET_IDCARD_BIRTHDAY(STRING idcardno);
 ```
 
-idcardno: required. This parameter must be of the STRING type and must be a 15-digit or 18-digit ID card number. During calculation, the system checks the validity of the ID card based on the province code and the last check digit. If the verification fails, the function returns NULL. The function returns a value of the DATETIME type. If the input is NULL, the function returns NULL.
+**Parameters**
+
+idcardno: required. This parameter must be of the STRING type and must be a 15-digit or 18-digit ID card number. During calculation, the system checks the validity of the ID card based on the province code and the last check digit. If the verification fails, the function returns NULL.
+
+**Return value**
+
+The function returns a value of the DATETIME type. If the input is NULL, the function returns NULL.
 
 ```
 SELECT GET_IDCARD_BIRTHDAY('ID card number'); -- Returned result (returns the birth date based on a real ID card number, for exampl e, "2001-01-01 00:00:00") SELECT GET_IDCARD_BIRTHDAY(NULL); -- Returned result +------+
@@ -9680,13 +11606,27 @@ SELECT GET_IDCARD_BIRTHDAY('ID card number'); -- Returned result (returns the bi
 
 ##### 3.6.6.9 GET_IDCARD_SEX
 
-This topic describes how to use the GET_IDCARD_SEX function in MaxCompute to return the gender based on an ID card number. The function returns the gender based on an ID card number. The return value is M (male) or F (female).
+This topic describes how to use the GET_IDCARD_SEX function in MaxCompute to return the gender based on an ID card number.
+
+**Instructions**
+
+**Description**
+
+The function returns the gender based on an ID card number. The return value is M (male) or F (female).
+
+**Function syntax**
 
 ```
 STRING GET_IDCARD_SEX(STRING idcardno);
 ```
 
-idcardno: required. The value must be of the STRING type and contain a 15-digit or 18-digit ID card number. The function checks the validity of the ID card number based on the province code and the last check digit during calculation. If the verification fails, the function returns NULL. The return value is of the STRING type. If the input value is NULL, the function returns NULL.
+**Parameters**
+
+idcardno: required. The value must be of the STRING type and contain a 15-digit or 18-digit ID card number. The function checks the validity of the ID card number based on the province code and the last check digit during calculation. If the verification fails, the function returns NULL.
+
+**Return value**
+
+The return value is of the STRING type. If the input value is NULL, the function returns NULL.
 
 ```
 SELECT GET_IDCARD_SEX('ID card number'); -- Return result: The function returns the gender based on the actual ID card number, such as "M". SELECT GET_IDCARD_SEX(NULL); -- Return result +------+
@@ -9698,15 +11638,27 @@ SELECT GET_IDCARD_SEX('ID card number'); -- Return result: The function returns 
 
 ##### 3.6.6.10 GREATEST
 
-This topic describes how to use the GREATEST function in MaxCompute to return the maximum value among the input parameters. The function returns the maximum value among the input parameters.
+This topic describes how to use the GREATEST function in MaxCompute to return the maximum value among the input parameters.
+
+**Instructions**
+
+**Description**
+
+The function returns the maximum value among the input parameters.
+
+**Function syntax**
 
 ```
 GREATEST(var1, var2, ...);
 ```
 
+**Parameters**
+
 var1: required. The data type can be BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING. var2: required. The data type can be BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING.
 
 > **Note:** If all parameter values are NULL, the function returns NULL.
+
+**Return value**
 
 The function returns the maximum value among the input parameters. When no implicit type conversion occurs, the return value type is the same as the input parameter type. When type conversion occurs, the following rules apply: Comparisons among DOUBLE, BIGINT, and STRING types return the DOUBLE type; comparisons between STRING and DATETIME types return the DATETIME type; and comparisons between the DECIMAL type and the DOUBLE, BIGINT, or STRING type return the DECIMAL type. No other implicit type conversions are allowed. When SET odps.sql.hive.compatible=true; is configured, the function returns NULL if any input parameter is NULL.
 
@@ -9728,14 +11680,24 @@ SELECT GREATEST(1, 2, 3); -- Result +------+
 
 ##### 3.6.6.11 INDEX
 
-This topic describes how to use the INDEX function in MaxCompute to return the element value at a specified position in an array or a map. If var1 is of the ARRAY type, the function returns the value of the var2-th element. If var1 is of the MAP<K, V> type, the function returns the value whose key is var2 in var1.
+This topic describes how to use the INDEX function in MaxCompute to return the element value at a specified position in an array or a map.
+
+**Instructions**
+
+**Description**
+
+If var1 is of the ARRAY type, the function returns the value of the var2-th element. If var1 is of the MAP<K, V> type, the function returns the value whose key is var2 in var1.
 
 > **Note:** When you use this function, omit INDEX and directly execute `var1[var2]` . Otherwise, a syntax error is returned.
 > If **var1** is NULL, the function returns NULL.
 
+**Function syntax**
+
 ```
 INDEX(var1[var2]);
 ```
+
+**Parameters**
 
 var1: required. This parameter must be of the ARRAY or MAP<K, V> type. var2: required. If var1 is of the ARRAY type, var2 must be of the BIGINT type and must be greater than or equal to 0. If var1 is of the MAP<K, V> type, var2 must be of the K type. If var1 is of the ARRAY type, the function returns a value of the T type. If var2 exceeds the number of elements in the array, the function returns NULL. If var1 is of the MAP<K, V> type, the function returns a value of the V type. If no key in the MAP<K, V> matches var2, the function returns NULL. If var1 is NULL, the function returns NULL.
 
@@ -9753,13 +11715,27 @@ var1: required. This parameter must be of the ARRAY or MAP<K, V> type. var2: req
 
 ##### 3.6.6.12 MAX_PT
 
-This topic describes how to use the MAX_PT function in MaxCompute to return the maximum value of a level-1 partition in a partitioned table and read the data files in the partition. For a partitioned table, this function returns the maximum value of a level-1 partition in lexicographic order and reads the data files in the partition.
+This topic describes how to use the MAX_PT function in MaxCompute to return the maximum value of a level-1 partition in a partitioned table and read the data files in the partition.
+
+**Instructions**
+
+**Description**
+
+For a partitioned table, this function returns the maximum value of a level-1 partition in lexicographic order and reads the data files in the partition.
+
+**Function syntax**
 
 ```
 MAX_PT(table_full_name);
 ```
 
-table_full_name: required. This parameter must be of the STRING type. It specifies the table name, which must include the project name, such as prj.src. You must have read permissions on this table. This function returns the maximum value of a level-1 partition. If a new partition is added by using the ALTER TABLE statement but contains no data files, this partition will not be returned as a value.
+**Parameters**
+
+table_full_name: required. This parameter must be of the STRING type. It specifies the table name, which must include the project name, such as prj.src. You must have read permissions on this table.
+
+**Return value**
+
+This function returns the maximum value of a level-1 partition. If a new partition is added by using the ALTER TABLE statement but contains no data files, this partition will not be returned as a value.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS tbl (
@@ -9792,13 +11768,25 @@ Return value: The value in the **nth** bit is returned. If no implicit conversio
 
 ##### 3.6.6.14 LEAST
 
-This topic describes how to use the LEAST function in MaxCompute to return the minimum value among input parameters. This function returns the minimum value among the input parameters.
+This topic describes how to use the LEAST function in MaxCompute to return the minimum value among input parameters.
+
+**Description**
+
+This function returns the minimum value among the input parameters.
+
+**Function syntax**
 
 ```
 LEAST(var1, var2, ...);
 ```
 
-var: required. This parameter must be of the BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING type. If all parameter values are NULL, the function returns NULL. This function returns the minimum value among the input parameters. When no implicit conversion occurs, the return type is the same as the input parameter type. When type conversion occurs, the following rules apply: Comparisons among DOUBLE, BIGINT, and STRING types return a DOUBLE value; comparisons between STRING and DATETIME types return a DATETIME value; and comparisons between the DECIMAL type and the DOUBLE, BIGINT, or STRING type return a DECIMAL value. No other implicit type conversions are allowed. NULL is considered the minimum value.
+**Parameters**
+
+var: required. This parameter must be of the BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING type. If all parameter values are NULL, the function returns NULL.
+
+**Return value**
+
+This function returns the minimum value among the input parameters. When no implicit conversion occurs, the return type is the same as the input parameter type. When type conversion occurs, the following rules apply: Comparisons among DOUBLE, BIGINT, and STRING types return a DOUBLE value; comparisons between STRING and DATETIME types return a DATETIME value; and comparisons between the DECIMAL type and the DOUBLE, BIGINT, or STRING type return a DECIMAL value. No other implicit type conversions are allowed. NULL is considered the minimum value.
 
 ```
 SELECT LEAST(1, 2, 3); -- Result +------+
@@ -9818,13 +11806,27 @@ SELECT LEAST(1, 2, 3); -- Result +------+
 
 ##### 3.6.6.15 SIZE
 
-This topic describes how to use the SIZE function in MaxCompute to return the number of key-value pairs in a specified MAP or the number of elements in a specified ARRAY. SIZE(MAP) returns the number of key-value pairs in a specified MAP. SIZE(ARRAY) returns the number of elements in a specified ARRAY.
+This topic describes how to use the SIZE function in MaxCompute to return the number of key-value pairs in a specified MAP or the number of elements in a specified ARRAY.
+
+**Instructions**
+
+**Description**
+
+SIZE(MAP) returns the number of key-value pairs in a specified MAP. SIZE(ARRAY) returns the number of elements in a specified ARRAY.
+
+**Function syntax**
 
 ```
 INT SIZE(MAP map); INT SIZE(ARRAY array);
 ```
 
-map: required. This parameter must be of the MAP type. array: required. This parameter must be of the ARRAY type. The function returns a value of the INT type.
+**Parameters**
+
+map: required. This parameter must be of the MAP type. array: required. This parameter must be of the ARRAY type.
+
+**Return value**
+
+The function returns a value of the INT type.
 
 ```
 SELECT SIZE(MAP('a', 123, 'b', 456)); -- Return result +------+
@@ -9848,11 +11850,21 @@ SELECT SIZE(MAP('a', 123, 'b', 456)); -- Return result +------+
 
 ##### 3.6.6.16 SPLIT
 
-This topic describes how to use the SPLIT function in MaxCompute to split a string with a specified delimiter and return an array. This function splits str by using pat and returns an array.
+This topic describes how to use the SPLIT function in MaxCompute to split a string with a specified delimiter and return an array.
+
+**Instructions**
+
+**Description**
+
+This function splits str by using pat and returns an array.
+
+**Function syntax**
 
 ```
 ARRAY<STRING> SPLIT(STRING str, STRING pat);
 ```
+
+**Parameters**
 
 str: required. This parameter must be of the STRING type. It specifies the string to be split. pat: required. This parameter must be of the STRING type. It specifies the delimiter used for splitting, which supports regular expressions. The function returns a value of the ARRAY type. The return value contains the substrings that result from splitting str by pat.
 
@@ -9866,13 +11878,27 @@ SELECT SPLIT("a,b,c", ","); -- Result +-----------+
 
 ##### 3.6.6.17 STR_TO_MAP
 
-This topic describes how to use the STR_TO_MAP function in MaxCompute to split a string into key-value pairs by using specified delimiters and return a MAP. This function uses delimiter1 to split text into key-value pairs and then uses delimiter2 to split the key and value of each key-value pair.
+This topic describes how to use the STR_TO_MAP function in MaxCompute to split a string into key-value pairs by using specified delimiters and return a MAP.
+
+**Instructions**
+
+**Description**
+
+This function uses delimiter1 to split text into key-value pairs and then uses delimiter2 to split the key and value of each key-value pair.
+
+**Function syntax**
 
 ```
 MAP<STRING, STRING> STR_TO_MAP(STRING text [, STRING delimiter1 [, STRING delimiter2]]);
 ```
 
-text: required. This parameter must be of the STRING type. It specifies the string to be split. delimiter1: optional. This parameter must be of the STRING type. It specifies the delimiter. If you do not specify this parameter, the default value is a comma (,). delimiter2: optional. This parameter must be of the STRING type. It specifies the delimiter. If you do not specify this parameter, the default value is an equal sign (=). The return value is of the MAP<STRING, STRING> type. The function returns the result of splitting text by using delimiter1 and delimiter2.
+**Parameters**
+
+text: required. This parameter must be of the STRING type. It specifies the string to be split. delimiter1: optional. This parameter must be of the STRING type. It specifies the delimiter. If you do not specify this parameter, the default value is a comma (,). delimiter2: optional. This parameter must be of the STRING type. It specifies the delimiter. If you do not specify this parameter, the default value is an equal sign (=).
+
+**Return value**
+
+The return value is of the MAP<STRING, STRING> type. The function returns the result of splitting text by using delimiter1 and delimiter2.
 
 ```
 SELECT STR_TO_MAP("test1=1,test2=2"); -- Result +------------------------+
@@ -9884,13 +11910,27 @@ SELECT STR_TO_MAP("test1=1,test2=2"); -- Result +------------------------+
 
 ##### 3.6.6.18 UUID
 
-This topic describes how to use the UUID function in MaxCompute to return a random globally unique identifier (GUID). This function returns a random ID in the format of 29347a88-1e57-41ae-bb68a9edbdd94212. A UUID is a random GUID with a very low probability of duplication.
+This topic describes how to use the UUID function in MaxCompute to return a random globally unique identifier (GUID).
+
+**Instructions**
+
+**Description**
+
+This function returns a random ID in the format of 29347a88-1e57-41ae-bb68a9edbdd94212. A UUID is a random GUID with a very low probability of duplication.
+
+**Function syntax**
 
 ```
 STRING UUID();
 ```
 
-None. The function returns a value of the STRING type.
+**Parameters**
+
+None.
+
+**Return value**
+
+The function returns a value of the STRING type.
 
 ```
 SELECT UUID(); -- Result +--------------------------------------+
@@ -9902,7 +11942,13 @@ SELECT UUID(); -- Result +--------------------------------------+
 
 ##### 3.6.6.19 UNIQUE_ID
 
-This topic describes how to use the UNIQUE_ID function in MaxCompute to return a random unique ID. This function returns a random unique ID in the format of 29347a88-1e57-41ae-bb68a9edbdd94212_1. It runs more efficiently than the UUID function.
+This topic describes how to use the UNIQUE_ID function in MaxCompute to return a random unique ID.
+
+**Instructions**
+
+**Description**
+
+This function returns a random unique ID in the format of 29347a88-1e57-41ae-bb68a9edbdd94212_1. It runs more efficiently than the UUID function.
 
 ```
 STRING UNIQUE_ID();
@@ -9920,15 +11966,27 @@ SELECT UNIQUE_ID(); -- Result +----------------------------------------+
 
 ##### 3.6.6.20 SAMPLE
 
-This topic describes how to use the SAMPLE function in MaxCompute to sample and filter data based on specified conditions. For all values in column_name, the SAMPLE function performs sampling based on the values of x and y, and filters out rows that do not meet the sampling conditions.
+This topic describes how to use the SAMPLE function in MaxCompute to sample and filter data based on specified conditions.
+
+**Instructions**
+
+**Description**
+
+For all values in column_name, the SAMPLE function performs sampling based on the values of x and y, and filters out rows that do not meet the sampling conditions.
+
+**Function syntax**
 
 ```
 BOOLEAN SAMPLE(BIGINT x, BIGINT y [, column_name1, column_name2, ...]);
 ```
 
+**Parameters**
+
 x: required. This parameter must be of the BIGINT type. The value must be an integer constant greater than 0. It indicates that the data is divided into x parts by hash, and the y-th part is selected. y: required. This parameter must be of the BIGINT type. The value must be an integer constant greater than 0. You can omit y. If you omit y, the function selects the first part by default. If you omit y, you must also omit column_name. column_name: optional. This parameter specifies the target column for sampling. You can omit this parameter. If you omit it, the function performs random sampling based on the values of x and y. The column can be of any type, and its values can be NULL. The function does not perform implicit type conversion. If column_name is a constant, an error is returned.
 
 > **Note:** If x or y is of a different type or has a value less than or equal to 0, an error is returned. If y is greater than x, an error is also returned. If either x or y is NULL, the function returns NULL.
+
+**Return value**
 
 The function returns a value of the BOOLEAN type. To prevent data skew caused by NULL values, the function evenly distributes NULL values in column_name across x hash parts. If you do not specify column_name and the data volume is small, the output may not be evenly distributed. In such cases, we recommend that you specify column_name to obtain better results.
 
@@ -9955,7 +12013,11 @@ The function returns a value of the BOOLEAN type. To prevent data skew caused by
 
 ##### 3.6.6.21 CASE WHEN expression
 
-This topic describes how to use the CASE WHEN expression function in MaxCompute to return different values based on calculation results of expressions. The CASE WHEN expression returns different values based on the calculation result of the value expression. MaxCompute supports two syntax formats for the CASE WHEN expression:
+This topic describes how to use the CASE WHEN expression function in MaxCompute to return different values based on calculation results of expressions.
+
+**Instructions**
+
+The CASE WHEN expression returns different values based on the calculation result of the value expression. MaxCompute supports two syntax formats for the CASE WHEN expression:
 
 ```
 -- Syntax 1 CASE value
@@ -9972,7 +12034,13 @@ END; -- Syntax 2 CASE
 END;
 ```
 
-value: required. This parameter specifies the expression to be compared. value1, value2, ...: required. This parameter specifies the values to be compared with value. result1, result2, ...: required. This parameter specifies the results to return when value matches the corresponding values. _condition1, _condition2, ...: required. This parameter specifies the conditional expressions. resultn: optional. This parameter specifies the default value to be returned when no conditions match, which corresponds to the ELSE clause. If the result types include only BIGINT and DOUBLE, the system converts all results to the DOUBLE type before returning them. If the result types include STRING, the system converts all results to the STRING type before returning them. If the conversion fails, the system returns an error. For example, the system cannot convert the BOOLEAN type to the STRING type. The system does not allow conversions between other types.
+**Parameters**
+
+value: required. This parameter specifies the expression to be compared. value1, value2, ...: required. This parameter specifies the values to be compared with value. result1, result2, ...: required. This parameter specifies the results to return when value matches the corresponding values. _condition1, _condition2, ...: required. This parameter specifies the conditional expressions. resultn: optional. This parameter specifies the default value to be returned when no conditions match, which corresponds to the ELSE clause.
+
+**Return value**
+
+If the result types include only BIGINT and DOUBLE, the system converts all results to the DOUBLE type before returning them. If the result types include STRING, the system converts all results to the STRING type before returning them. If the conversion fails, the system returns an error. For example, the system cannot convert the BOOLEAN type to the STRING type. The system does not allow conversions between other types.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS sale_detail (
@@ -10000,11 +12068,21 @@ FROM sale_detail; -- Output +---------------+
 
 ##### 3.6.6.22 IF
 
-This topic describes how to use the IF function in MaxCompute to return different values based on a conditional expression and provides examples. The IF function returns a value based on whether a conditional expression evaluates to true or false.
+This topic describes how to use the IF function in MaxCompute to return different values based on a conditional expression and provides examples.
+
+**Instructions**
+
+**Description**
+
+The IF function returns a value based on whether a conditional expression evaluates to true or false.
+
+**Function syntax**
 
 ```
 IF(testCondition, valueTrue, valueFalseOrNull);
 ```
+
+**Parameters**
 
 testCondition: This parameter must be of the BOOLEAN type. It specifies the expression to be evaluated. valueTrue: the value that the function returns when the **testCondition** expression evaluates to true. valueFalseOrNull: the value that the function returns when the **testCondition** expression does not evaluate to true. You can set this value to NULL. The return value has the same data type as either valueTrue or valueFalseOrNull.
 
@@ -10020,7 +12098,11 @@ SELECT IF(1=2,100,200); -- Result +--------+
 
 ###### 3.6.6.23.1 Usage notes
 
-This topic describes the configurations required for using other newly extended functions. After an upgrade to MaxCompute 2.0, MaxCompute provides other newly extended functions. To use these new functions in SQL statements, you must add the following SET statement.
+This topic describes the configurations required for using other newly extended functions.
+
+**Instructions**
+
+After an upgrade to MaxCompute 2.0, MaxCompute provides other newly extended functions. To use these new functions in SQL statements, you must add the following SET statement.
 
 ```
 SET odps.sql.type.system.odps2=true;
@@ -10030,13 +12112,27 @@ SET odps.sql.type.system.odps2=true;
 
 ###### 3.6.6.23.2 MAP
 
-This topic describes how to use the MAP function and provides reference examples. The MAP function creates a map from the specified key-value pairs.
+This topic describes how to use the MAP function and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The MAP function creates a map from the specified key-value pairs.
+
+**Function syntax**
 
 ```
 MAP MAP(K key1, V value1, K key2, V value2, ...);
 ```
 
-key: All **keys** must be of the same data type (including after implicit conversion) and must use primitive data types. value: All **values** must be of the same data type (including after implicit conversion) and can be of any data type. The function returns a value of the MAP type.
+**Parameters**
+
+key: All **keys** must be of the same data type (including after implicit conversion) and must use primitive data types. value: All **values** must be of the same data type (including after implicit conversion) and can be of any data type.
+
+**Return value**
+
+The function returns a value of the MAP type.
 
 ```
 CREATE TABLE IF NOT EXISTS t_table (
@@ -10061,13 +12157,27 @@ INSERT INTO t_table VALUES (1000, 'k11', 'k21', 86, 15), (1001, 'k12', 'k22', 97
 
 ###### 3.6.6.23.3 MAP_KEYS
 
-This topic describes how to use the MAP_KEYS function in MaxCompute to return all keys in a map as an array. This function returns all keys in a map as an array.
+This topic describes how to use the MAP_KEYS function in MaxCompute to return all keys in a map as an array.
+
+**Instructions**
+
+**Description**
+
+This function returns all keys in a map as an array.
+
+**Function syntax**
 
 ```
 ARRAY MAP_KEYS(MAP<K, V> map);
 ```
 
-map: required. This parameter must be of the MAP type. This function returns a value of the ARRAY type. If the input is NULL, the function returns NULL.
+**Parameters**
+
+map: required. This parameter must be of the MAP type.
+
+**Return value**
+
+This function returns a value of the ARRAY type. If the input is NULL, the function returns NULL.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS t_table_map (
@@ -10089,13 +12199,27 @@ map: required. This parameter must be of the MAP type. This function returns a v
 
 ###### 3.6.6.23.4 MAP_VALUES
 
-This topic describes how to use the MAP_VALUES function in MaxCompute to return all values in a map as an array. This function returns all values in a map as an array.
+This topic describes how to use the MAP_VALUES function in MaxCompute to return all values in a map as an array.
+
+**Instructions**
+
+**Description**
+
+This function returns all values in a map as an array.
+
+**Function syntax**
 
 ```
 ARRAY MAP_VALUES(MAP<K, V> map);
 ```
 
-map: required. This parameter must be of the MAP type. The return value is of the ARRAY type. If the input is NULL, the function returns NULL.
+**Parameters**
+
+map: required. This parameter must be of the MAP type.
+
+**Return value**
+
+The return value is of the ARRAY type. If the input is NULL, the function returns NULL.
 
 ```
 SELECT MAP_VALUES(MAP('a', 123, 'b', 456)); -- Result +------------+
@@ -10107,13 +12231,25 @@ SELECT MAP_VALUES(MAP('a', 123, 'b', 456)); -- Result +------------+
 
 ###### 3.6.6.23.5 SORT_ARRAY
 
-This topic describes how to use the SORT_ARRAY function in MaxCompute to sort the data in a specified array. This function sorts data in a specified array.
+This topic describes how to use the SORT_ARRAY function in MaxCompute to sort the data in a specified array.
+
+**Description**
+
+This function sorts data in a specified array.
+
+**Function syntax**
 
 ```
 ARRAY SORT_ARRAY(ARRAY<T>);
 ```
 
-ARRAY: required. This parameter must be of the ARRAY type. The elements in the array can be of any type. This function returns a value of the ARRAY type.
+**Parameters**
+
+ARRAY: required. This parameter must be of the ARRAY type. The elements in the array can be of any type.
+
+**Return value**
+
+This function returns a value of the ARRAY type.
 
 ```
 -- Create a table. CREATE TABLE IF NOT EXISTS t_array (
@@ -10134,13 +12270,23 @@ ARRAY: required. This parameter must be of the ARRAY type. The elements in the a
 
 ###### 3.6.6.23.6 POSEXPLODE
 
-This topic describes how to use the POSEXPLODE function in MaxCompute to expand a given ARRAY into multiple rows of data with subscripts. The function expands a given ARRAY and generates one row for each value. Each row consists of two columns, which represent the zero-based subscript and the array element, respectively.
+This topic describes how to use the POSEXPLODE function in MaxCompute to expand a given ARRAY into multiple rows of data with subscripts.
+
+**Instructions**
+
+**Description**
+
+The function expands a given ARRAY and generates one row for each value. Each row consists of two columns, which represent the zero-based subscript and the array element, respectively.
 
 ```
 POSEXPLODE(ARRAY<T>);
 ```
 
-ARRAY: required. This parameter must be of the ARRAY type. The elements in the array can be of any type. The function returns a table that contains two columns: pos (the 0-based subscript) and val (the array element).
+ARRAY: required. This parameter must be of the ARRAY type. The elements in the array can be of any type.
+
+**Return value**
+
+The function returns a table that contains two columns: pos (the 0-based subscript) and val (the array element).
 
 ```
 SELECT POSEXPLODE(ARRAY('a', 'c', 'f', 'b')); -- Result +-----+-----+
@@ -10155,13 +12301,27 @@ SELECT POSEXPLODE(ARRAY('a', 'c', 'f', 'b')); -- Result +-----+-----+
 
 ###### 3.6.6.23.7 STRUCT
 
-This topic describes how to use the STRUCT function in MaxCompute to create a STRUCT from a specified list of values. This function creates a STRUCT from a specified list of values.
+This topic describes how to use the STRUCT function in MaxCompute to create a STRUCT from a specified list of values.
+
+**Instructions**
+
+**Description**
+
+This function creates a STRUCT from a specified list of values.
+
+**Function syntax**
 
 ```
 STRUCT STRUCT(value1, value2, ...);
 ```
 
-value: required. Each value can be of any data type. The function returns a value of the STRUCT type. The field names are col1, col2, and so on.
+**Parameters**
+
+value: required. Each value can be of any data type.
+
+**Return value**
+
+The function returns a value of the STRUCT type. The field names are col1, col2, and so on.
 
 ```
 SELECT STRUCT('a', 123, 'true', 56.90); -- Result +------------------------------------------+
@@ -10173,13 +12333,25 @@ SELECT STRUCT('a', 123, 'true', 56.90); -- Result +-----------------------------
 
 ###### 3.6.6.23.8 NAMED_STRUCT
 
-This topic describes how to use the NAMED_STRUCT function in MaxCompute to create a STRUCT from a given list of name and value pairs. This function creates a STRUCT from a given list of name and value pairs.
+This topic describes how to use the NAMED_STRUCT function in MaxCompute to create a STRUCT from a given list of name and value pairs.
+
+**Description**
+
+This function creates a STRUCT from a given list of name and value pairs.
+
+**Function syntax**
 
 ```
 STRUCT NAMED_STRUCT(STRING name1, T1 value1, STRING name2, T2 value2, ...);
 ```
 
-name: required. This parameter specifies the name of the field. The value must be a STRING constant. value: required. This parameter specifies the value of the field. The value can be of any data type. This function returns a value of the STRUCT type. The field names are name1, name2, and so on in sequence.
+**Parameters**
+
+name: required. This parameter specifies the name of the field. The value must be a STRING constant. value: required. This parameter specifies the value of the field. The value can be of any data type.
+
+**Return value**
+
+This function returns a value of the STRUCT type. The field names are name1, name2, and so on in sequence.
 
 ```
 SELECT NAMED_STRUCT('user_id', 10001, 'user_name', 'bob', 'married', 'F', 'weight', 6 3.50); -- Return result +------------------------------------------------------------+
@@ -10191,13 +12363,27 @@ SELECT NAMED_STRUCT('user_id', 10001, 'user_name', 'bob', 'married', 'F', 'weigh
 
 ###### 3.6.6.23.9 INLINE
 
-This topic describes how to use the INLINE function in MaxCompute to expand a given STRUCT array into multiple rows and columns. The function expands a given STRUCT array, where each array element corresponds to a row and each STRUCT element within the row corresponds to a column.
+This topic describes how to use the INLINE function in MaxCompute to expand a given STRUCT array into multiple rows and columns.
+
+**Instructions**
+
+**Description**
+
+The function expands a given STRUCT array, where each array element corresponds to a row and each STRUCT element within the row corresponds to a column.
+
+**Function syntax**
 
 ```
 INLINE(ARRAY<STRUCT<f1:T1, f2:T2, ...>>);
 ```
 
-STRUCT: required. The values in the array can be of any data type. This function generates a table.
+**Parameters**
+
+STRUCT: required. The values in the array can be of any data type.
+
+**Return value**
+
+This function generates a table.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS t_table (
@@ -10217,13 +12403,27 @@ STRUCT: required. The values in the array can be of any data type. This function
 
 ###### 3.6.6.23.10 BETWEEN AND expression
 
-This topic describes how to use the BETWEEN AND expression function in MaxCompute to determine whether a value falls within a specified range. If A, B, or C is null, the result is null. If A is greater than or equal to B and less than or equal to C, the result is true. Otherwise, the result is false.
+This topic describes how to use the BETWEEN AND expression function in MaxCompute to determine whether a value falls within a specified range.
+
+**Instructions**
+
+**Description**
+
+If A, B, or C is null, the result is null. If A is greater than or equal to B and less than or equal to C, the result is true. Otherwise, the result is false.
+
+**Function syntax**
 
 ```
 A [NOT] BETWEEN B AND C;
 ```
 
-A: required. This parameter specifies the expression to be evaluated. B: required. This parameter specifies the lower bound of the range. C: required. This parameter specifies the upper bound of the range. This function returns a value of the BOOLEAN type. If A, B, or C is null, the function returns NULL. If A is greater than or equal to B and less than or equal to C, the function returns true. Otherwise, the function returns false.
+**Parameters**
+
+A: required. This parameter specifies the expression to be evaluated. B: required. This parameter specifies the lower bound of the range. C: required. This parameter specifies the upper bound of the range.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. If A, B, or C is null, the function returns NULL. If A is greater than or equal to B and less than or equal to C, the function returns true. Otherwise, the function returns false.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS emp (
@@ -10271,13 +12471,27 @@ hiredateDATETIME
 
 ###### 3.6.6.23.11 NVL
 
-When you need to replace a NULL value with a specific value in a query, you can use the NVL function in MaxCompute to replace the NULL value with a specified value. This prevents unexpected null values in the results during data analysis or report generation. This topic describes how to use the NVL function in MaxCompute. If the value is NULL, the function returns default_value. Otherwise, it returns value. The two parameters of this function must be of the same type.
+When you need to replace a NULL value with a specific value in a query, you can use the NVL function in MaxCompute to replace the NULL value with a specified value. This prevents unexpected null values in the results during data analysis or report generation. This topic describes how to use the NVL function in MaxCompute.
+
+**Instructions**
+
+**Description**
+
+If the value is NULL, the function returns default_value. Otherwise, it returns value. The two parameters of this function must be of the same type.
+
+**Function syntax**
 
 ```
 NVL(T value, T default_value);
 ```
 
-value: required. This parameter specifies an input parameter. T represents the input data type and can be any data type that MaxCompute supports. default_value: required. This parameter specifies the replacement value. The data type of this parameter must be the same as the data type of value. If the value is NULL, the function returns default_value. Otherwise, it returns value.
+**Parameters**
+
+value: required. This parameter specifies an input parameter. T represents the input data type and can be any data type that MaxCompute supports. default_value: required. This parameter specifies the replacement value. The data type of this parameter must be the same as the data type of value.
+
+**Return value**
+
+If the value is NULL, the function returns default_value. Otherwise, it returns value.
 
 ```
 -- Create a table CREATE TABLE nvl_test (
@@ -10301,13 +12515,27 @@ value: required. This parameter specifies an input parameter. T represents the i
 
 ###### 3.6.6.23.12 TABLE_EXISTS
 
-This topic describes how to use the TABLE_EXISTS function in MaxCompute to query whether a specified table exists. This function queries whether a specified table exists.
+This topic describes how to use the TABLE_EXISTS function in MaxCompute to query whether a specified table exists.
+
+**Instructions**
+
+**Description**
+
+This function queries whether a specified table exists.
+
+**Function syntax**
 
 ```
 BOOLEAN TABLE_EXISTS(STRING table_name);
 ```
 
-table_name: required. This parameter specifies the name of the table. It must be of the STRING type. You can specify the project name in the table name (for example, my_proj.my_table). If you do not specify a project name, the system uses the current project by default. This function returns a value of the BOOLEAN type. It returns True if the specified table exists. Otherwise, the function returns False.
+**Parameters**
+
+table_name: required. This parameter specifies the name of the table. It must be of the STRING type. You can specify the project name in the table name (for example, my_proj.my_table). If you do not specify a project name, the system uses the current project by default.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. It returns True if the specified table exists. Otherwise, the function returns False.
 
 ```
 -- Create a table CREATE TABLE IF NOT EXISTS abd (
@@ -10327,13 +12555,27 @@ table_name: required. This parameter specifies the name of the table. It must be
 
 ###### 3.6.6.23.13 PARTITION_EXISTS
 
-This topic describes how to use the PARTITION_EXISTS function in MaxCompute to check whether a specified partition exists. This function checks whether a specified partition exists.
+This topic describes how to use the PARTITION_EXISTS function in MaxCompute to check whether a specified partition exists.
+
+**Instructions**
+
+**Description**
+
+This function checks whether a specified partition exists.
+
+**Function syntax**
 
 ```
 BOOLEAN PARTITION_EXISTS(STRING table_name, STRING... partitions);
 ```
 
-table_name: required. This parameter specifies the name of the table. It must be of the STRING type. You can specify a project name in the table name, such as my_project.my_table. If you do not specify a project name, the system uses the current project by default. partitions: required. This parameter specifies the partition names. It must be of the STRING type. The partition values must be specified in the order of the partition columns in the table, and the number of partition values must match the number of partition columns. This function returns a value of the BOOLEAN type. If the specified partition exists, the function returns `true` . Otherwise, the function returns `false` .
+**Parameters**
+
+table_name: required. This parameter specifies the name of the table. It must be of the STRING type. You can specify a project name in the table name, such as my_project.my_table. If you do not specify a project name, the system uses the current project by default. partitions: required. This parameter specifies the partition names. It must be of the STRING type. The partition values must be specified in the order of the partition columns in the table, and the number of partition values must match the number of partition columns.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. If the specified partition exists, the function returns `true` . Otherwise, the function returns `false` .
 
 ```
 -- Create a partitioned table named foo CREATE TABLE IF NOT EXISTS foo (
@@ -10355,7 +12597,11 @@ This topic describes the categories, invocation rules, and cross-project usage o
 
 **Feature overview**
 
-MaxCompute provides various built-in functions to meet your computing requirements, and you can also create UDFs to address additional computing needs. You use UDFs in a similar way to built-in functions. For the mapping between Java and MaxCompute data types, see Parameters and return value types.
+MaxCompute provides various built-in functions to meet your computing requirements, and you can also create UDFs to address additional computing needs.
+
+**Instructions**
+
+You use UDFs in a similar way to built-in functions. For the mapping between Java and MaxCompute data types, see Parameters and return value types.
 
 |   | Note When a UDF has the same name as a built-in function, use the select ::function name(expression) ; statement to call the built-in function. For example, if _ MaxCompute contains a UDF named CONCAT, the system calls this UDF by default instead of the built-in CONCAT function. To call the built-in CONCAT function, execute the select ::concat('ab', 'c') ; statement. |   |   |
 |---|---|---|---|
@@ -10376,6 +12622,8 @@ MaxCompute supports three types of UDFs, as described in the following table.
 
 > **Note:** When you use UDFs in SQL statements, the system may report an out-of-memory (OOM) error. This occurs when the data volume is excessively large and data skew exists, causing the task to exceed the default allocated memory. In this case, you can use the
 > set odps.sql.udf.joiner.jvm.memory=xxxx; statement to manually configure the memory and resolve this issue.
+
+**Examples**
 
 MaxCompute UDFs support cross-project sharing, which allows you to use a UDF from Project B in Project A. The SQL statement for cross-project sharing is as follows.
 
@@ -10500,6 +12748,8 @@ To implement a UDF, you must extend the **com.aliyun.odps.udf.UDF** class and im
 > **Note:** Do not include classes with the same name but different implementation logic in different JAR packages. For example, if **UDF(UDAF/UDTF): udf1 and udf2** correspond to the resources **udf1.jar** and **udf2.jar** respectively, and both JAR packages contain a **com.aliyun.UserFunction** class, the system randomly loads one of the classes when a single SQL statement uses both UDFs. This causes inconsistent UDF execution behavior or even compilation failures.
 > If a single SQL statement uses two UDFs, the two UDFs share one classpath during execution without isolation. If the resources referenced by both UDFs contain the same class, the class that the classloader references is unpredictable. Therefore, avoid using the same class in different resources.
 
+**Examples**
+
 You can implement `void setup(ExecutionContext ctx)` and `void close()` to define the initialization and termination code of a UDF respectively.
 
 **Java type**
@@ -10601,7 +12851,11 @@ the UDAF. * @throws UDFException.
 
 **Implementation process**
 
-The three most important methods are **iterate**, **merge**, and **terminate**. The core logic of a UDAF depends on the implementation of these three methods. In addition, you must implement a custom Writable buffer. The average function (**avg**) is used as an example.The following figure briefly describes the implementation logic and computing process of the **avg** function in MaxCompute UDAF. iterate(a): r.count += 1; r.sum += a; terminate: r.sum/r.count merge(PartialResult pr): 4.2 r.count += pr.count; r.sum += pr.sum; iterate(a): r.count += 1; In the preceding figure, the system splits input data into shards of a specific size. Each shard has a size suitable for a worker to process within an appropriate time period. You must manually configure the shard size. The UDAF computing process consists of two phases: Phase 1: Each worker counts the number of data records and calculates the sum within a shard. You can regard the record count and sum within each shard as an intermediate result. Phase 2: A worker aggregates the information from each shard produced in the previous phase. In the final output, **r.sum / r.count** represents the average value of all input data. The following example shows a UDAF that calculates the average value.
+The three most important methods are **iterate**, **merge**, and **terminate**. The core logic of a UDAF depends on the implementation of these three methods. In addition, you must implement a custom Writable buffer. The average function (**avg**) is used as an example.The following figure briefly describes the implementation logic and computing process of the **avg** function in MaxCompute UDAF. iterate(a): r.count += 1; r.sum += a; terminate: r.sum/r.count merge(PartialResult pr): 4.2 r.count += pr.count; r.sum += pr.sum; iterate(a): r.count += 1; In the preceding figure, the system splits input data into shards of a specific size. Each shard has a size suitable for a worker to process within an appropriate time period. You must manually configure the shard size. The UDAF computing process consists of two phases: Phase 1: Each worker counts the number of data records and calculates the sum within a shard. You can regard the record count and sum within each shard as an intermediate result. Phase 2: A worker aggregates the information from each shard produced in the previous phase. In the final output, **r.sum / r.count** represents the average value of all input data.
+
+**Examples**
+
+The following example shows a UDAF that calculates the average value.
 
 ```java
 package org.alidata.odps.udf.examples; import java.io.DataInput; import java.io.DataOutput; import java.io.IOException; import com.aliyun.odps.io.DoubleWritable; import com.aliyun.odps.io.Writable; import com.aliyun.odps.udf.Aggregator; import com.aliyun.odps.udf.UDFException; import com.aliyun.odps.udf.annotation.Resolve; @Resolve("double->double") public class AggrAvg extends Aggregator {
@@ -10691,6 +12945,8 @@ A UDTF must extend the **com.aliyun.odps.udf.UDTF** class. This class requires y
 | public void process(Object[] args) throws UDFException | The framework calls this method once for each record in the SQL statement. The parameters of process are the UDTF input parameters that the SQL statement specifies. The system passes input parameters as an Object[] array, and you use the forward function to produce output. You must call forward within the process function to determine the output data. |
 | public void close() throws UDFException | The termination method of the UDTF. The framework calls this method only once after it processes the last record. |
 | public void forward(Object …o) throws UDFException | The system calls the forward method to output data. Each call to forward produces one output record. The columns that the AS clause of the UDTF in the SQL statement specifies must match the columns in this record. |
+
+**Examples**
 
 1. Prepare the sample code.
 
@@ -10963,7 +13219,11 @@ Returned result:
 
 ##### 3.7.2.1 Prerequisites
 
-This topic describes the prerequisites for using Python UDFs. Before you use Python UDFs, you must enable the isolation sandbox feature for your project. To do this, navigate to project management in adminconsole and set **ISOLATION SETTING >**
+This topic describes the prerequisites for using Python UDFs.
+
+**Instructions**
+
+Before you use Python UDFs, you must enable the isolation sandbox feature for your project. To do this, navigate to project management in adminconsole and set **ISOLATION SETTING >**
 **odps.isolation.enable** to True.
 
 > **Note:** The Python UDF feature currently is supported only in the Job Scheduler (sp44 kernel) version. The Unified Scheduling (sp52 kernel) version does not support this feature. To use Python UDFs in the Unified Scheduling version, submit a ticket.
@@ -10992,7 +13252,11 @@ The runtime environment also includes common third-party libraries such as NumPy
 
 ##### 3.7.2.4 Parameters and return value types
 
-This topic describes the parameters and return value types for Python UDFs. Specify parameters and return values in the following way:
+This topic describes the parameters and return value types for Python UDFs.
+
+**Description**
+
+Specify parameters and return values in the following way:
 
 ```
 @odps.udf.annotate(signature)
@@ -11011,6 +13275,8 @@ arg_type_list '->' type_list arg_type_list: type_list | '*' | '' | 'char(n)' | '
 > An asterisk (*) represents variable-length parameters. When you use variable- length parameters, UDFs, UDTFs, and UDAFs can match any input parameters.
 > If a project uses MaxCompute V2.0 data types, you can set precision and scale for **decimal**.
 > Return values do not support the CHAR and VARCHAR types.
+
+**Examples**
 
 The following examples show valid function signatures.
 
@@ -11050,7 +13316,11 @@ During the query semantic parsing phase, the system checks for usage that does n
 
 ##### 3.7.2.5 UDF
 
-This topic introduces user-defined scalar functions in Python UDFs and provides reference examples. To implement a Python UDF, define a new-style class and use the **evaluate** method.
+This topic introduces user-defined scalar functions in Python UDFs and provides reference examples.
+
+**Examples**
+
+To implement a Python UDF, define a new-style class and use the **evaluate** method.
 
 ```python
 from odps.udf import annotate @annotate("bigint,bigint->bigint") class MyPlus(object):
@@ -11066,6 +13336,8 @@ from odps.udf import annotate @annotate("bigint,bigint->bigint") class MyPlus(ob
 
 This topic describes user-defined aggregation functions (UDAFs) in Python UDFs and provides reference examples.
 
+**Description**
+
 | Class/Method | Description |
 |---|---|
 | class odps.udf.BaseUDAF | Inherits this class to implement a Python UDAF. |
@@ -11073,6 +13345,8 @@ This topic describes user-defined aggregation functions (UDAFs) in Python UDFs a
 | BaseUDAF.iterate(buffer[, args, ...]) | Aggregates args into the intermediate value buffer. |
 | BaseUDAF.merge(buffer, pbuffer) | Aggregates two intermediate value buffer objects by merging pbuffer into buffer. |
 | BaseUDAF.terminate(buffer ) | Converts the intermediate value buffer into a basic MaxCompute SQL data type. |
+
+**Examples**
 
 The following example uses a UDAF to calculate the average value.
 
@@ -11097,6 +13371,8 @@ from odps.udf import BaseUDAF, annotate @annotate('double->double') class Averag
 
 This topic describes user-defined table-valued functions (UDTFs) in Python UDFs and provides reference examples.
 
+**Description**
+
 | Class or method | Description |
 |---|---|
 | class odps.udf.BaseUDTF | The base class for Python UDTFs. You can inherit this class to implement methods such as process or close. |
@@ -11106,6 +13382,8 @@ This topic describes user-defined table-valued functions (UDTFs) in Python UDFs 
 | BaseUDTF.forward([args, ...]) | The output method of the UDTF. User code calls this method. Each call to forward outputs one record. The parameters of forward are the UDTF output parameters specified in the SQL statement. |
 |---|---|
 | BaseUDTF.close() | The termination method of the UDTF. The MaxCompute SQL framework calls this method only once, specifically after the system processes the last record. |
+
+**Examples**
 
 ```python
 # coding:utf-8
@@ -11122,7 +13400,11 @@ from odps.udf import annotate from odps.udf import BaseUDTF @annotate('string ->
 
 ##### 3.7.2.8 Reference resources
 
-This topic describes how to reference resources in Python UDFs and provides examples. Python UDFs can reference file and table resources through the **odps.distcache** module.
+This topic describes how to reference resources in Python UDFs and provides examples.
+
+**Instructions**
+
+Python UDFs can reference file and table resources through the **odps.distcache** module.
 
 **Reference file resources**
 
@@ -11133,7 +13415,11 @@ odps.distcache.get_cache_file(resource_name) -- Returns the content of the speci
 ```
 
 **resource_name**: the STRING type. This parameter specifies the name of an existing
-resource in the current project. If the resource name is invalid or the resource does not exist, the system returns an exception. The return value is a file-like object. After this object is used, the `close` method must be called to release the opened resource file.
+resource in the current project. If the resource name is invalid or the resource does not exist, the system returns an exception.
+
+**Return value**
+
+The return value is a file-like object. After this object is used, the `close` method must be called to release the opened resource file.
 
 ```python
 from odps.udf import annotate from odps.distcache import get_cache_file @annotate('bigint->string') class DistCacheExample(object):
@@ -11160,8 +13446,14 @@ from odps.udf import annotate from odps.distcache import get_cache_file @annotat
 odps.distcache.get_cache_table(resource_name)
 ```
 
+**Parameters**
+
 **resource_name**: the STRING type. This parameter specifies the name of an existing
-resource table in the current project. If the resource name is invalid or the resource does not exist, the system returns an exception. The return value is of the GENERATOR type. The caller obtains the table content by traversing the table. Each traversal returns a record from the table in the form of an array.
+resource table in the current project. If the resource name is invalid or the resource does not exist, the system returns an exception.
+
+**Return value**
+
+The return value is of the GENERATOR type. The caller obtains the table content by traversing the table. Each traversal returns a record from the table in the form of an array.
 
 ```python
 from odps.udf import annotate from odps.distcache import get_cache_table @annotate('->string') class DistCacheTableExample(object):
@@ -11241,6 +13533,8 @@ After you create a permanent SQL Function and store it in the Meta system, all q
 ```
 CREATE SQL FUNCTION function_name(@parameter_in1 datatype[, @parameter_in2 datatype.. .]) [RETURNS @parameter_out datatype] AS [BEGIN] function_expression [END];
 ```
+
+**Parameters**
 
 **function_name**: the name of the new SQL-defined function. The function name must be
 unique. You can register a function with the same name only once, and the name must not conflict with any built-in function name in the system.
@@ -11340,7 +13634,11 @@ Foo f = new Foo(); f.execute(); f.getResult();
 
 ##### 3.7.5.2 Feature overview
 
-This topic describes the features supported by embedded UDFs. Embedded UDFs allow you to embed Java or Python code in SQL scripts. The Janino compiler identifies and extracts the embedded code to compile the Java code, dynamically generate resources, and create temporary functions. Embedded UDFs allow you to place SQL scripts and third-party code in the same source code file, reducing the steps to use UDTs or UDFs and facilitating routine development.
+This topic describes the features supported by embedded UDFs.
+
+**Instructions**
+
+Embedded UDFs allow you to embed Java or Python code in SQL scripts. The Janino compiler identifies and extracts the embedded code to compile the Java code, dynamically generate resources, and create temporary functions. Embedded UDFs allow you to place SQL scripts and third-party code in the same source code file, reducing the steps to use UDTs or UDFs and facilitating routine development.
 
 ##### 3.7.5.3 Usage limits
 
@@ -11482,7 +13780,15 @@ All operators use MaxCompute SQL semantics, not UDT semantics. UDTs cannot be us
 
 #### 3.8.2 Feature overview
 
-This topic describes UDT features and provides examples. In many SQL engines, UDTs are similar to the complex STRUCT type in MaxCompute. In contrast, UDTs in MaxCompute resemble the CREATE TYPE concept more closely, where a type includes data fields and methods. MaxCompute does not require special DDL syntax to define new types. You can use new types directly in SQL statements by using UDTs. The following examples demonstrate UDT features. You can call the `java.lang` package in SQL by using one of the following two methods.
+This topic describes UDT features and provides examples.
+
+**Instructions**
+
+In many SQL engines, UDTs are similar to the complex STRUCT type in MaxCompute. In contrast, UDTs in MaxCompute resemble the CREATE TYPE concept more closely, where a type includes data fields and methods. MaxCompute does not require special DDL syntax to define new types. You can use new types directly in SQL statements by using UDTs. The following examples demonstrate UDT features.
+
+**Examples**
+
+You can call the `java.lang` package in SQL by using one of the following two methods.
 
 **UDT method**
 
@@ -11676,6 +13982,8 @@ The UDT runtime includes a built-in JSON dependency (version 2.2.4), so you can 
 
 > **Note:** In addition to JSON, the MaxCompute runtime also includes built-in dependencies such as commons-logging (version 1.1.1), commons-lang (version 2.5), commons-io (version 2.4), and protobuf-java (version 2.4.1).
 
+**Examples**
+
 ```
 SET odps.sql.type.system.odps2=true; SET odps.sql.session.java.imports=java.util.*,java,com.google.gson.*; -- Separate multi ple packages with commas when you import them. @a := SELECT new Gson() gson; -- Create a Gson object. gson.toJson(new ArrayList<Integer>(Arrays.asList(1, 2, 3))), -- Convert any object to a JSON string. cast(gson.fromJson('["a","b","c"]', List.class) as List<String>) -- Deserialize the JSO N string. Note that the Gson API returns a List<Object> type after direct deserialization. This example forcibly converts it to a List<String> type for subsequen t use. FROM @a;
 ```
@@ -11701,6 +14009,8 @@ This topic provides examples of complex type operations on UDTs for your referen
 Built-in types have the following mapping relationships with Java types: ARRAY maps to
 **java.util.List** and MAP maps to **java.util.Map**:
 Objects of classes that implement the **java.util.List** or **java.util.Map** interface in Java can be used in complex type operations in MaxCompute SQL. ARRAY or MAP data in MaxCompute can directly call the methods of the List or Map interfaces.
+
+**Examples**
 
 ```
 SET odps.sql.type.system.odps2=true; SET odps.sql.session.java.imports=java.util.*;
@@ -11733,7 +14043,11 @@ This topic provides UDT aggregate operation examples for your reference.
 
 **Usage notes**
 
-To implement aggregation, a UDT first uses the built-in COLLECT_SET or COLLECT_LIST function to convert data into a list, and then applies a UDT scalar method to the list to calculate the aggregate value. The following example calculates the median of BigInteger values. Because the data is of the java.math.BigInteger type, you cannot directly use the built-in MEDIAN function.
+To implement aggregation, a UDT first uses the built-in COLLECT_SET or COLLECT_LIST function to convert data into a list, and then applies a UDT scalar method to the list to calculate the aggregate value.
+
+**Examples**
+
+The following example calculates the median of BigInteger values. Because the data is of the java.math.BigInteger type, you cannot directly use the built-in MEDIAN function.
 
 ```
 SET odps.sql.session.java.imports=java.math.*; @test_data := SELECT * FROM VALUES (1),(2),(3),(5) AS t(value); @a := SELECT collect_list(new BigInteger(value)) VALUES FROM @test_data; -- Aggregate the data into a list first. @b := SELECT sort_array(values) AS VALUES, values.size() cnt FROM @a; -- Calculate the median: sort the data first. @c := SELECT if(cnt % 2 == 1, new BigDecimal(values[cnt div 2]), new BigDecimal(values[cnt div 2 - 1].add(values[cnt div 2])).divide(new BigDecimal(2))) med from @b; -- Final result. SELECT med.toString() FROM @c;
@@ -11757,7 +14071,11 @@ This topic provides table-valued function examples for UDTs for your reference.
 
 **Usage notes**
 
-Table-valued functions allow you to input and output multiple rows and columns of data. You can implement this feature by performing the following steps: Input multiple rows and columns of data. For more information, see Aggregate operation examples. Output multiple rows and columns of data. You can use a UDT method to output a Collection type (List or MAP) and then call the Explode function to expand the collection into multiple rows. Since a UDT can contain multiple data fields, you can expand it into multiple columns by calling different Getter methods to obtain the content of each field. The following example expands the content of a JSON string.
+Table-valued functions allow you to input and output multiple rows and columns of data. You can implement this feature by performing the following steps: Input multiple rows and columns of data. For more information, see Aggregate operation examples. Output multiple rows and columns of data. You can use a UDT method to output a Collection type (List or MAP) and then call the Explode function to expand the collection into multiple rows. Since a UDT can contain multiple data fields, you can expand it into multiple columns by calling different Getter methods to obtain the content of each field.
+
+**Examples**
+
+The following example expands the content of a JSON string.
 
 ```
 @a := SELECT '[{"a":"1","b":"2"},{"a":"1","b":"2"}]' str; -- Sample data. @b := SELECT new com.google.gson.Gson().fromJson(str, java.util.List.class) l FROM @a; -- Deserialize JSON. @c := SELECT cast(e AS java.util.Map<Object,Object>) m FROM @b lateral view explode(l) t AS e; -- Use explode to expand the data into multiple rows. @d := SELECT m.get('a') AS a, m.get('b') AS b FROM @c; -- Expand the data into multiple columns. SELECT a.toString() a, b.toString() b FROM @d; -- Output the final result. Note that co lumns a and b in the output of variable d are of the Object type.
@@ -11820,6 +14138,8 @@ For each record in the user_client_log table, find the payment record that has t
 | 8881237 | 2018-02-13 00:30:00 | click MpkvilgWSmhUuPn, pay pYvotuLDIT |
 | 8881237 | 2018-02-13 06:14:00 | click OkTYNUHMqZzlDyL, pay pYvotuLDIT |
 | 8881237 | 2018-02-13 10:30:00 | click OkTYNUHMqZzlDyL, pay KBuMzRpsko |
+
+**Examples**
 
 To meet this requirement, use the UDJ method.
 1. Create a UDJ function.
@@ -12216,11 +14536,19 @@ The schema of the destination table must be compatible with the schema of the so
 
 The CLONE TABLE statement is used to clone data from the src_table_name table to the desc_table_name table. After you clone data to the desc_table_name table, we recommend that you verify the data accuracy. For example, you can execute the SELECT COUNT statement to view the number of rows in the destination table or execute the DESC statement to view the table size.
 
+**Function syntax**
+
 ```
 CLONE TABLE <[src_project_name.]src_table_name> [PARTITION(spec), ...] TO <[dest_project_name.]desc_table_name> [IF EXISTS (OVERWRITE | IGNORE)];
 ```
 
-`src_table_name` : required. This parameter specifies the name of the source table. `src_project_name` : optional. This parameter specifies the name of the project to which the source table belongs. If you do not specify this parameter, the name of the current project is used by default. `desc_table_name` : required. This parameter specifies the name of the destination table. If a destination table is not created, the table is created by using the CREATE TABLE LIKE statement when you execute the CLONE TABLE statement. If a destination table is created and IF EXISTS OVERWRITE is specified, data in the partitions of the destination table is overwritten when you execute the CLONE TABLE statement. If a destination table is created and IF EXISTS IGNORE is specified, the existing partitions in the table are skipped and the data in these partitions is not overwritten when you execute the CLONE TABLE statement. `dest_project_name` : optional. The name of the project to which the destination table belongs. If you do not specify this parameter, the name of the current project is used by default. None. i. Prepare sample data To help you better understand how to use this statement, this section provides sample source data。 The following example shows how to create the source table and insert data:
+**Parameters**
+
+`src_table_name` : required. This parameter specifies the name of the source table. `src_project_name` : optional. This parameter specifies the name of the project to which the source table belongs. If you do not specify this parameter, the name of the current project is used by default. `desc_table_name` : required. This parameter specifies the name of the destination table. If a destination table is not created, the table is created by using the CREATE TABLE LIKE statement when you execute the CLONE TABLE statement. If a destination table is created and IF EXISTS OVERWRITE is specified, data in the partitions of the destination table is overwritten when you execute the CLONE TABLE statement. If a destination table is created and IF EXISTS IGNORE is specified, the existing partitions in the table are skipped and the data in these partitions is not overwritten when you execute the CLONE TABLE statement. `dest_project_name` : optional. The name of the project to which the destination table belongs. If you do not specify this parameter, the name of the current project is used by default.
+
+**Return value**
+
+None. i. Prepare sample data To help you better understand how to use this statement, this section provides sample source data。 The following example shows how to create the source table and insert data:
 
 ```
 -- Create a non-partitioned table CREATE TABLE IF NOT EXISTS src_copy (
@@ -12357,13 +14685,27 @@ For more information about how to use the geographic function, see UDF-Documenta
 
 ##### 3.12.2.1 ST_AsBinary
 
-This topic describes how to use the ST_AsBinary function in MaxCompute and provides reference examples. This function returns the Well-Known Binary (WKB) representation of a geometry.
+This topic describes how to use the ST_AsBinary function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the Well-Known Binary (WKB) representation of a geometry.
+
+**Function syntax**
 
 ```
 ST_AsBinary(ST_Geometry);
 ```
 
-ST_Geometry: required. This parameter specifies a geometry. This function returns the WKB representation of a geometry.
+**Parameters**
+
+ST_Geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns the WKB representation of a geometry.
 
 ```
 SELECT ST_AsBinary(ST_Point(1, 2)); -- Result +--------------------------------------------------------------+
@@ -12375,13 +14717,25 @@ SELECT ST_AsBinary(ST_Point(1, 2)); -- Result +---------------------------------
 
 ##### 3.12.2.2 ST_AsGeoJson
 
-This topic describes how to use the ST_AsGeoJson function in MaxCompute and provides reference examples. This function returns the GeoJSON expression of a geometry.
+This topic describes how to use the ST_AsGeoJson function in MaxCompute and provides reference examples.
+
+**Description**
+
+This function returns the GeoJSON expression of a geometry.
+
+**Function syntax**
 
 ```
 ST_ASGEOJSON(ST_GEOMETRY geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. This function returns the GeoJSON expression of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns the GeoJSON expression of a geometry.
 
 ```
 SELECT ST_ASGEOJSON(ST_POINT(1.0, 2.0)); -- Result +-------------------------------------------------+
@@ -12393,13 +14747,27 @@ SELECT ST_ASGEOJSON(ST_POINT(1.0, 2.0)); -- Result +----------------------------
 
 ##### 3.12.2.3 ST_AsJson
 
-This topic describes how to use the ST_ASJSON function in MaxCompute and provides reference examples. This function returns the JSON expression of a geometry.
+This topic describes how to use the ST_ASJSON function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the JSON expression of a geometry.
+
+**Function syntax**
 
 ```
 ST_ASJSON(ST_GEOMETRY);
 ```
 
-ST_GEOMETRY: required. This parameter specifies a geometry. This function returns the JSON expression of a geometry.
+**Parameters**
+
+ST_GEOMETRY: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns the JSON expression of a geometry.
 
 ```
 SELECT ST_ASJSON(ST_POINT(1.0, 2.0)); -- Result +-----------------------+
@@ -12415,13 +14783,27 @@ SELECT ST_ASJSON(ST_POINT(1.0, 2.0)); -- Result +-----------------------+
 
 ##### 3.12.2.4 ST_AsShape
 
-This topic describes how to use the ST_AsShape function in MaxCompute and provides reference examples. This function returns the Esri shape representation of a geometry.
+This topic describes how to use the ST_AsShape function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the Esri shape representation of a geometry.
+
+**Function syntax**
 
 ```
 ST_AsShape(ST_GEOMETRY);
 ```
 
-ST_GEOMETRY: required. This parameter specifies a geometry. This function returns the Esri shape representation of a geometry.
+**Parameters**
+
+ST_GEOMETRY: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns the Esri shape representation of a geometry.
 
 ```
 SELECT ST_AsShape(ST_POINT(1, 2));
@@ -12429,7 +14811,13 @@ SELECT ST_AsShape(ST_POINT(1, 2));
 
 ##### 3.12.2.5 ST_AsText
 
-This topic describes how to use the ST_AsText function in MaxCompute and provides reference examples. This function returns the Well-Known Text (WKT) expression of a geometry.
+This topic describes how to use the ST_AsText function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the Well-Known Text (WKT) expression of a geometry.
 
 ```
 ST_ASTEXT(ST_GEOMETRY);
@@ -12447,13 +14835,27 @@ SELECT ST_ASTEXT(ST_POINT(1, 2)); -- Result +-------------+
 
 ##### 3.12.2.6 ST_GeomCollection
 
-This topic describes how to use the ST_GeomCollection function in MaxCompute and provides reference examples. This function constructs a multi-part geometry by using a Well-Known Text (WKT) expression of the Open Geospatial Consortium (OGC). ST_GeomCollection in MaxCompute does not support the collection feature and supports only multi-part geometries.
+This topic describes how to use the ST_GeomCollection function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a multi-part geometry by using a Well-Known Text (WKT) expression of the Open Geospatial Consortium (OGC). ST_GeomCollection in MaxCompute does not support the collection feature and supports only multi-part geometries.
+
+**Function syntax**
 
 ```
 ST_GeomCollection(STRING wkt);
 ```
 
-wkt: required. This parameter must be of the STRING type. It specifies an OGC WKT expression. This function returns a multi-part geometry.
+**Parameters**
+
+wkt: required. This parameter must be of the STRING type. It specifies an OGC WKT expression.
+
+**Return value**
+
+This function returns a multi-part geometry.
 
 ```
 SELECT ST_GeomCollection('MULTIPOINT ((1 0), (2 3))'); -- The following usage is not supported (collection feature) -- ST_GeomCollection('POINT(1 1), LINESTRING(2 0,3 0)')
@@ -12461,13 +14863,23 @@ SELECT ST_GeomCollection('MULTIPOINT ((1 0), (2 3))'); -- The following usage is
 
 ##### 3.12.2.7 ST_GeomFromGeoJson
 
-This topic describes how to use the ST_GeomFromGeoJson function in MaxCompute and provides reference examples. This function constructs a geometry from a GeoJSON expression.
+This topic describes how to use the ST_GeomFromGeoJson function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+This function constructs a geometry from a GeoJSON expression.
 
 ```
 ST_GeomFromGeoJson(STRING json);
 ```
 
-json: required. This parameter must be of the STRING type. It specifies a GeoJSON expression. This function returns a geometry.
+**Parameters**
+
+json: required. This parameter must be of the STRING type. It specifies a GeoJSON expression.
+
+**Return value**
+
+This function returns a geometry.
 
 ```
 SELECT ST_GeomFromGeoJson('{"type":"Point", "coordinates":[1.2, 2.4]}'); -- Construct an ST_LineString SELECT ST_GeomFromGeoJson('{"type":"LineString", "coordinates":[[1,2], [3,4]]}');
@@ -12475,13 +14887,27 @@ SELECT ST_GeomFromGeoJson('{"type":"Point", "coordinates":[1.2, 2.4]}'); -- Cons
 
 ##### 3.12.2.8 ST_GeomFromJSON
 
-This topic describes how to use the ST_GeomFromJSON function in MaxCompute and provides reference examples. This function constructs a geometry from an Esri JSON expression.
+This topic describes how to use the ST_GeomFromJSON function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a geometry from an Esri JSON expression.
+
+**Function syntax**
 
 ```
 ST_GeomFromJSON(STRING json);
 ```
 
-json: required. This parameter must be of the STRING type. It specifies an Esri JSON expression. This function returns a geometry.
+**Parameters**
+
+json: required. This parameter must be of the STRING type. It specifies an Esri JSON expression.
+
+**Return value**
+
+This function returns a geometry.
 
 ```
 SELECT ST_GeomFromJSON('{"x":0.0,"y":0.0}');
@@ -12489,7 +14915,15 @@ SELECT ST_GeomFromJSON('{"x":0.0,"y":0.0}');
 
 ##### 3.12.2.9 ST_GeomFromShape
 
-This topic describes how to use the ST_GeomFromShape function in MaxCompute and provides reference examples. This function constructs a geometry from an Esri shape expression.
+This topic describes how to use the ST_GeomFromShape function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a geometry from an Esri shape expression.
+
+**Function syntax**
 
 ```
 ST_GeomFromShape(shape);
@@ -12503,13 +14937,27 @@ SELECT ST_GeomFromShape(ST_AsShape(ST_Point(1, 2)));
 
 ##### 3.12.2.10 ST_GeomFromText
 
-This topic describes how to use the ST_GeomFromText function in MaxCompute and provides reference examples. This function constructs a geometry from a Well-Known Text (WKT) expression of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_GeomFromText function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a geometry from a Well-Known Text (WKT) expression of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_GeomFromText(STRING wkt);
 ```
 
-wkt: required. This parameter must be of the STRING type. It specifies an OGC WKT expression. This function returns a geometry.
+**Parameters**
+
+wkt: required. This parameter must be of the STRING type. It specifies an OGC WKT expression.
+
+**Return value**
+
+This function returns a geometry.
 
 ```
 -- Construct an ST_Linestring SELECT ST_GeomFromText('linestring (1 0, 2 3)'); -- Construct an ST_MultiPoint SELECT ST_GeomFromText('multipoint ((1 0), (2 3))');
@@ -12517,7 +14965,15 @@ wkt: required. This parameter must be of the STRING type. It specifies an OGC WK
 
 ##### 3.12.2.11 ST_GeomFromWKB
 
-This topic describes how to use the ST_GeomFromWKB function in MaxCompute and provides reference examples. This function constructs a geometry from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_GeomFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a geometry from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_GeomFromWKB(BINARY wkb);
@@ -12531,13 +14987,27 @@ wkb: required. This parameter specifies an OGC WKB expression of the BINARY type
 
 ##### 3.12.2.12 ST_GeometryType
 
-This topic describes how to use the ST_GeometryType function in MaxCompute and provides reference examples. This function returns the type of a geometry.
+This topic describes how to use the ST_GeometryType function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the type of a geometry.
+
+**Function syntax**
 
 ```
 ST_GeometryType(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the STRING type. This function returns the type name, such as ST_Point, ST_LineString, or ST_Polygon, of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the STRING type. This function returns the type name, such as ST_Point, ST_LineString, or ST_Polygon, of a geometry.
 
 ```
 SELECT ST_GeometryType(ST_Point(1.5, 2.5)); -- Result +----------+
@@ -12557,11 +15027,21 @@ SELECT ST_GeometryType(ST_Point(1.5, 2.5)); -- Result +----------+
 
 ##### 3.12.2.13 ST_LineString
 
-This topic describes how to use the ST_LineString function in MaxCompute and provides reference examples. This function constructs a 2D line string.
+This topic describes how to use the ST_LineString function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D line string.
+
+**Function syntax**
 
 ```
 ST_LineString(x, y, [x, y]*); ST_LineString('linestring( ... )'); ST_LineString(ARRAY(x+), ARRAY(y+)); ST_LineString(ARRAY(ST_Point(x,y)+));
 ```
+
+**Parameters**
 
 x, y: required. These parameters specify the coordinate values of a point. The values must be of the DOUBLE type. linestring( ... ): required. This parameter specifies a linestring expression in Well-Known Text (WKT) format. The value must be of the STRING type. ARRAY(x+), ARRAY(y+): required. These parameters specify the arrays of x-coordinates and y-coordinates. The values must be of the ARRAY type. ARRAY(ST_Point(x,y)+): required. This parameter specifies an ST_Point object array. The value must be of the ARRAY type. This function returns a geometry of the ST_LineString type.
 
@@ -12571,13 +15051,27 @@ x, y: required. These parameters specify the coordinate values of a point. The v
 
 ##### 3.12.2.14 ST_LineFromWKB
 
-This topic describes how to use the ST_LineFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D line string by using the well-known binary (WKB) format of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_LineFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D line string by using the well-known binary (WKB) format of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_LineFromWKB(BINARY wkb);
 ```
 
-wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression. This function returns a geometry of the ST_LineString type.
+**Parameters**
+
+wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression.
+
+**Return value**
+
+This function returns a geometry of the ST_LineString type.
 
 ```
 SELECT ST_LineFromWKB(ST_AsBinary(ST_GeomFromText('linestring (1 0, 2 3)')));
@@ -12585,13 +15079,25 @@ SELECT ST_LineFromWKB(ST_AsBinary(ST_GeomFromText('linestring (1 0, 2 3)')));
 
 ##### 3.12.2.15 ST_MultiLineString
 
-This topic describes how to use the ST_MultiLineString function in MaxCompute and provides reference examples. This function constructs 2D multilinestrings.
+This topic describes how to use the ST_MultiLineString function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs 2D multilinestrings.
 
 ```
 ST_MultiLineString(ARRAY(x1, y1, x2, y2, ...), ARRAY(x1, y1, x2, y2, ...), ...); ST_MultiLineString('multilinestring( ... )');
 ```
 
-ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type and it specifies the coordinate values for each line. multilinestring( ... ): required. This parameter must be of the STRING type and it specifies a multilinestring expression in Well-Known Text (WKT) format. This function returns a geometry of the ST_MultiLineString type.
+**Parameters**
+
+ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type and it specifies the coordinate values for each line. multilinestring( ... ): required. This parameter must be of the STRING type and it specifies a multilinestring expression in Well-Known Text (WKT) format.
+
+**Return value**
+
+This function returns a geometry of the ST_MultiLineString type.
 
 ```
 -- Construct a two-dimensional multilinestring from coordinate arrays SELECT ST_MultiLineString(ARRAY(1, 1, 2, 2), ARRAY(10, 10, 20, 20)); -- Construct a two-dimensional multilinestring from a WKT expression SELECT ST_MultiLineString('multilinestring ((1 1, 2 2), (10 10, 20 20))');
@@ -12599,13 +15105,27 @@ ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type a
 
 ##### 3.12.2.16 ST_MLineFromWKB
 
-This topic describes how to use the ST_MLineFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D multilinestring from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_MLineFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D multilinestring from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_MLineFromWKB(BINARY wkb);
 ```
 
-wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression. This function returns a geometry of the ST_MultiLineString type.
+**Parameters**
+
+wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression.
+
+**Return value**
+
+This function returns a geometry of the ST_MultiLineString type.
 
 ```
 -- Construct a 2D multilinestring. SELECT ST_MLineFromWKB(ST_AsBinary(ST_GeomFromText('multilinestring ((1 0, 2 3), (5 7 , 7 5))')));
@@ -12619,7 +15139,13 @@ This topic describes how to use the ST_MultiPoint function in MaxCompute and pro
 ST_MultiPoint(x1, y1, x2, y2, x3, y3); ST_MultiPoint('multipoint( ... )');
 ```
 
-x1, y1, x2, y2, ...: required. These parameters must be of the DOUBLE type. They specify the coordinate values of points. multipoint( ... ): required. This parameter must be of the STRING type. It specifies a multipoint expression in Well-Known Text (WKT) format. This function returns a multipoint geometry of the GEOMETRY (MULTIPOINT) type.
+**Parameters**
+
+x1, y1, x2, y2, ...: required. These parameters must be of the DOUBLE type. They specify the coordinate values of points. multipoint( ... ): required. This parameter must be of the STRING type. It specifies a multipoint expression in Well-Known Text (WKT) format.
+
+**Return value**
+
+This function returns a multipoint geometry of the GEOMETRY (MULTIPOINT) type.
 
 ```
 -- Construct three points from coordinate values SELECT ST_MultiPoint(1, 1, 2, 2, 3, 3); -- Construct two points from a WKT expression SELECT ST_MultiPoint('MULTIPOINT ((10 40), (40 30))');
@@ -12627,13 +15153,27 @@ x1, y1, x2, y2, ...: required. These parameters must be of the DOUBLE type. They
 
 ##### 3.12.2.18 ST_MPointFromWKB
 
-This topic describes how to use the ST_MPointFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D multipoint geometry from a Well-Known Binary (WKB) representation of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_MPointFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D multipoint geometry from a Well-Known Binary (WKB) representation of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_MPointFromWKB(BINARY wkb);
 ```
 
-wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB representation. This function returns a geometry of the ST_MultiPoint type.
+**Parameters**
+
+wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB representation.
+
+**Return value**
+
+This function returns a geometry of the ST_MultiPoint type.
 
 ```
 SELECT ST_MPointFromWKB(ST_AsBinary(ST_GeomFromText('multipoint ((1 0), (2 3))')));
@@ -12647,7 +15187,13 @@ This topic describes how to use the ST_MultiPolygon function in MaxCompute and p
 ST_MultiPolygon(ARRAY(x1, y1, x2, y2, ...), ARRAY(x1, y1, x2, y2, ...), ...); ST_MultiPolygon('multipolygon ( ... )');
 ```
 
-ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type. It specifies the coordinate values for a polygon. multipolygon ( ... ): required. This parameter specifies a multipolygon expression in Well- Known Text (WKT) format. It must be of the STRING type. This function returns a geometry of the ST_MultiPolygon type.
+**Parameters**
+
+ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type. It specifies the coordinate values for a polygon. multipolygon ( ... ): required. This parameter specifies a multipolygon expression in Well- Known Text (WKT) format. It must be of the STRING type.
+
+**Return value**
+
+This function returns a geometry of the ST_MultiPolygon type.
 
 ```
 SELECT ST_MultiPolygon(ARRAY(1, 1, 1, 2, 2, 2, 2, 1), ARRAY(3, 3, 3, 4, 4, 4, 4, 3)); SELECT ST_MultiPolygon('multipolygon (((0 0, 0 1, 1 0, 0 0)), ((2 2, 2 3, 3 2, 2 2))) ');
@@ -12655,13 +15201,27 @@ SELECT ST_MultiPolygon(ARRAY(1, 1, 1, 2, 2, 2, 2, 1), ARRAY(3, 3, 3, 4, 4, 4, 4,
 
 ##### 3.12.2.20 ST_MPolyFromWKB
 
-This topic describes how to use the ST_MPolyFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D polygon from a Well-Known Text (WKB) expression of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_MPolyFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D polygon from a Well-Known Text (WKB) expression of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_MPolyFromWKB(BINARY wkb);
 ```
 
-wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression. This function returns a geometry of the ST_MultiPolygon type.
+**Parameters**
+
+wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression.
+
+**Return value**
+
+This function returns a geometry of the ST_MultiPolygon type.
 
 ```
 SELECT ST_MPolyFromWKB(ST_AsBinary(ST_GeomFromText('multipolygon (((0 0, 1 0, 0 1, 0 0)), ((2 2, 1 2, 2 1, 2 2)))')));
@@ -12671,11 +15231,19 @@ SELECT ST_MPolyFromWKB(ST_AsBinary(ST_GeomFromText('multipolygon (((0 0, 1 0, 0 
 
 This topic describes how to use the ST_Point function in MaxCompute and provides reference examples. This function constructs a 2D point.
 
+**Function syntax**
+
 ```
 ST_Point(DOUBLE x, DOUBLE y); ST_Point(STRING 'point (x y)');
 ```
 
-x, y: required. These parameters must be of the DOUBLE type. They specify the coordinate values of a point. point (x y): required. This parameter must be of the STRING type. It specifies a point expression in the Well-Known Text (WKT) format. The function returns a geometry of the ST_Point type.
+**Parameters**
+
+x, y: required. These parameters must be of the DOUBLE type. They specify the coordinate values of a point. point (x y): required. This parameter must be of the STRING type. It specifies a point expression in the Well-Known Text (WKT) format.
+
+**Return value**
+
+The function returns a geometry of the ST_Point type.
 
 ```
 -- Use coordinate values to construct a two-dimensional point SELECT ST_Point(1, 2); -- Use a WKT expression to construct a two-dimensional point SELECT ST_Point('point (0 0)');
@@ -12683,13 +15251,27 @@ x, y: required. These parameters must be of the DOUBLE type. They specify the co
 
 ##### 3.12.2.22 ST_PointFromWKB
 
-This topic describes how to use the ST_PointFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D point from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_PointFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D point from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+
+**Function syntax**
 
 ```
 ST_PointFromWKB(BINARY wkb);
 ```
 
-wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression. This function returns a geometry of the ST_Point type.
+**Parameters**
+
+wkb: required. This parameter must be of the BINARY type. It specifies an OGC WKB expression.
+
+**Return value**
+
+This function returns a geometry of the ST_Point type.
 
 ```
 SELECT ST_PointFromWKB(ST_AsBinary(ST_GeomFromText('point (1 0)')));
@@ -12697,13 +15279,25 @@ SELECT ST_PointFromWKB(ST_AsBinary(ST_GeomFromText('point (1 0)')));
 
 ##### 3.12.2.23 ST_PointZ
 
-This topic describes how to use the ST_PointZ function in MaxCompute and provides reference examples. This function constructs a 3D point.
+This topic describes how to use the ST_PointZ function in MaxCompute and provides reference examples.
+
+**Description**
+
+This function constructs a 3D point.
+
+**Function syntax**
 
 ```
 ST_PointZ(DOUBLE x, DOUBLE y, DOUBLE z);
 ```
 
-x: required. This parameter must be of the DOUBLE type. It specifies the X-coordinate of a point. y: required. This parameter must be of the DOUBLE type. It specifies the Y-coordinate of a point. z: required. This parameter must be of the DOUBLE type. It specifies the Z-coordinate of a point. This function returns a 3D geometry of the ST_Point type.
+**Parameters**
+
+x: required. This parameter must be of the DOUBLE type. It specifies the X-coordinate of a point. y: required. This parameter must be of the DOUBLE type. It specifies the Y-coordinate of a point. z: required. This parameter must be of the DOUBLE type. It specifies the Z-coordinate of a point.
+
+**Return value**
+
+This function returns a 3D geometry of the ST_Point type.
 
 ```
 -- Construct a 3D point SELECT ST_PointZ(1, 2, 3);
@@ -12711,13 +15305,27 @@ x: required. This parameter must be of the DOUBLE type. It specifies the X-coord
 
 ##### 3.12.2.24 ST_Polygon
 
-This topic describes how to use the ST_Polygon function in MaxCompute and provides reference examples. This function constructs a 2D polygon.
+This topic describes how to use the ST_Polygon function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D polygon.
+
+**Function syntax**
 
 ```
 ST_Polygon(DOUBLE x, DOUBLE y, [DOUBLE x, DOUBLE y]*); ST_Polygon(STRING 'polygon( ... )');
 ```
 
-x, y: required. These parameters must be of the DOUBLE type. They specify the coordinate values for each vertex of a polygon. polygon( ... ): required. This parameter must be of the STRING type. It specifies a polygon expression in Well-Known Text (WKT) format. This function returns a geometry of the ST_Polygon type.
+**Parameters**
+
+x, y: required. These parameters must be of the DOUBLE type. They specify the coordinate values for each vertex of a polygon. polygon( ... ): required. This parameter must be of the STRING type. It specifies a polygon expression in Well-Known Text (WKT) format.
+
+**Return value**
+
+This function returns a geometry of the ST_Polygon type.
 
 ```
 -- Construct a square from coordinate values SELECT ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1); -- Construct a triangle from a WKT expression SELECT ST_Polygon('polygon ((1 1, 4 1, 1 4, 1 1))');
@@ -12725,7 +15333,13 @@ x, y: required. These parameters must be of the DOUBLE type. They specify the co
 
 ##### 3.12.2.25 ST_PolyFromWKB
 
-This topic describes how to use the ST_PolyFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D polygon from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
+This topic describes how to use the ST_PolyFromWKB function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function constructs a 2D polygon from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
 
 **Syntax**
 
@@ -12733,7 +15347,13 @@ This topic describes how to use the ST_PolyFromWKB function in MaxCompute and pr
 ST_PolyFromWKB(BINARY wkb);
 ```
 
-wkb: required. This parameter must be of the BINARY type and it specifies an OGC WKB expression. This function returns a geometry of the ST_Polygon type.
+**Parameters**
+
+wkb: required. This parameter must be of the BINARY type and it specifies an OGC WKB expression.
+
+**Return value**
+
+This function returns a geometry of the ST_Polygon type.
 
 ```
 SELECT ST_PolyFromWKB(ST_AsBinary(ST_GeomFromText('polygon ((0 0, 10 0, 0 10, 0 0))') ));
@@ -12741,13 +15361,27 @@ SELECT ST_PolyFromWKB(ST_AsBinary(ST_GeomFromText('polygon ((0 0, 10 0, 0 10, 0 
 
 ##### 3.12.2.26 ST_SetSRID
 
-This topic describes how to use the ST_SetSRID function and provides reference examples. This function sets the Spatial Reference Identifier (SRID) of a geometry.
+This topic describes how to use the ST_SetSRID function and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function sets the Spatial Reference Identifier (SRID) of a geometry.
+
+**Function syntax**
 
 ```
 ST_SetSRID(ST_Geometry, SRID);
 ```
 
-ST_Geometry: required. This parameter specifies a geometry. SRID: required. This parameter specifies an SRID of the BIGINT type. This function returns a geometry with a specified SRID.
+**Parameters**
+
+ST_Geometry: required. This parameter specifies a geometry. SRID: required. This parameter specifies an SRID of the BIGINT type.
+
+**Return value**
+
+This function returns a geometry with a specified SRID.
 
 ```
 SELECT ST_SetSRID(ST_Point(1.5, 2.5), 4326);
@@ -12757,13 +15391,27 @@ SELECT ST_SetSRID(ST_Point(1.5, 2.5), 4326);
 
 ##### 3.12.3.1 ST_Area
 
-This topic describes how to use the ST_Area function in MaxCompute and provides reference examples. This function returns the area of one or more polygons.
+This topic describes how to use the ST_Area function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the area of one or more polygons.
+
+**Function syntax**
 
 ```
 ST_Area(ST_Polygon);
 ```
 
-ST_Polygon: required. This parameter specifies a geometry of the ST_Polygon type. This function returns the area of a polygon. The return value is of the DOUBLE type.
+**Parameters**
+
+ST_Polygon: required. This parameter specifies a geometry of the ST_Polygon type.
+
+**Return value**
+
+This function returns the area of a polygon. The return value is of the DOUBLE type.
 
 ```
 SELECT ST_Area(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result +------------+
@@ -12775,11 +15423,21 @@ SELECT ST_Area(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result +------------+
 
 ##### 3.12.3.2 ST_Centroid
 
-This topic describes how to use the ST_Centroid function in MaxCompute and provides reference examples. This function returns the center point of the minimum bounding rectangle of a polygon.
+This topic describes how to use the ST_Centroid function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the center point of the minimum bounding rectangle of a polygon.
+
+**Function syntax**
 
 ```
 ST_Centroid(ST_Polygon polygon);
 ```
+
+**Parameters**
 
 polygon: required. This parameter specifies a geometry of the ST_Polygon type. This function returns a geometry of the ST_Point type, which represents the center point of the minimum bounding rectangle of a polygon.
 
@@ -12789,13 +15447,27 @@ SELECT ST_Centroid(ST_GeomFromText('polygon ((0 0, 3 6, 6 0, 0 0))')); SELECT ST
 
 ##### 3.12.3.3 ST_CoordDim
 
-This topic describes how to use the ST_CoordDim function in MaxCompute and provides reference examples. This function returns the number of coordinate dimensions of a point.
+This topic describes how to use the ST_CoordDim function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the number of coordinate dimensions of a point.
+
+**Function syntax**
 
 ```
 ST_CoordDim(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. This function returns a value of the BIGINT type. It indicates the number of coordinate dimensions of a point, which can be 2, 3, or 4.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns a value of the BIGINT type. It indicates the number of coordinate dimensions of a point, which can be 2, 3, or 4.
 
 ```
 -- 2D point SELECT ST_CoordDim(ST_Point(1.5, 2.5)); -- Result +------+
@@ -12815,13 +15487,27 @@ geometry: required. This parameter specifies a geometry. This function returns a
 
 ##### 3.12.3.4 ST_Dimension
 
-This topic describes how to use the ST_Dimension function in MaxCompute and provides reference examples. This function returns the spatial dimension of a geometry.
+This topic describes how to use the ST_Dimension function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the spatial dimension of a geometry.
+
+**Function syntax**
 
 ```
 ST_Dimension(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. This function returns a value of the BIGINT type. The value indicates the spatial dimension of a geometry. A value of 0 indicates a point, 1 indicates a line, and 2 indicates a surface.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns a value of the BIGINT type. The value indicates the spatial dimension of a geometry. A value of 0 indicates a point, 1 indicates a line, and 2 indicates a surface.
 
 ```
 SELECT ST_Dimension(ST_Point(1.5, 2.5)); -- Return result +------+
@@ -12841,13 +15527,27 @@ SELECT ST_Dimension(ST_Point(1.5, 2.5)); -- Return result +------+
 
 ##### 3.12.3.5 ST_Distance
 
-This topic describes how to use the ST_Distance function in MaxCompute and provides reference examples. This function returns the distance between two geometries.
+This topic describes how to use the ST_Distance function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the distance between two geometries.
+
+**Function syntax**
 
 ```
 ST_Distance(ST_Geometry, ST_Geometry);
 ```
 
-ST_Geometry1: required. This parameter specifies the first geometry. ST_Geometry2: required. This parameter specifies the second geometry. This function returns a DOUBLE value that represents the distance between two geometries.
+**Parameters**
+
+ST_Geometry1: required. This parameter specifies the first geometry. ST_Geometry2: required. This parameter specifies the second geometry.
+
+**Return value**
+
+This function returns a DOUBLE value that represents the distance between two geometries.
 
 ```
 SELECT ST_Distance(ST_Point(0.0, 0.0), ST_Point(3.0, 4.0)); -- Result +------+
@@ -12859,13 +15559,27 @@ SELECT ST_Distance(ST_Point(0.0, 0.0), ST_Point(3.0, 4.0)); -- Result +------+
 
 ##### 3.12.3.6 ST_GeodesicLengthWGS84
 
-This topic describes how to use the ST_GeodesicLengthWGS84 function in MaxCompute and provides reference examples. The function returns the distance along a line on the WGS84 spheroid in meters. The geometry must use the WGS84 coordinate system. Otherwise, the function returns NULL.
+This topic describes how to use the ST_GeodesicLengthWGS84 function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function returns the distance along a line on the WGS84 spheroid in meters. The geometry must use the WGS84 coordinate system. Otherwise, the function returns NULL.
+
+**Function syntax**
 
 ```
 ST_GeodesicLengthWGS84(ST_Geometry line);
 ```
 
-line: required. This parameter must be of the ST_Geometry type. It specifies a geometry that uses the WGS84 coordinate system with an SRID of 4326. Otherwise, the function returns NULL. This function returns a DOUBLE value that represents the distance along a line on the WGS84 spheroid in meters.
+**Parameters**
+
+line: required. This parameter must be of the ST_Geometry type. It specifies a geometry that uses the WGS84 coordinate system with an SRID of 4326. Otherwise, the function returns NULL.
+
+**Return value**
+
+This function returns a DOUBLE value that represents the distance along a line on the WGS84 spheroid in meters.
 
 ```
 SELECT ST_GeodesicLengthWGS84(ST_SetSRID(ST_LineString(0.0, 0.0, 0.3, 0.4), 4326)); -- Result +---------------------+
@@ -12881,13 +15595,27 @@ SELECT ST_GeodesicLengthWGS84(ST_SetSRID(ST_LineString(0.0, 0.0, 0.3, 0.4), 4326
 
 ##### 3.12.3.7 ST_GeometryN
 
-This topic describes how to use the ST_GeometryN function in MaxCompute and provides reference examples. The function returns the nth ST_Geometry object in a collection, where n starts from 1.
+This topic describes how to use the ST_GeometryN function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function returns the nth ST_Geometry object in a collection, where n starts from 1.
+
+**Function syntax**
 
 ```
 ST_GeometryN(ST_GeometryCollection, BIGINT n);
 ```
 
-ST_GeometryCollection: required. This parameter specifies a geometry collection. n: required. This parameter must be of the BIGINT type. It specifies the offset of the geometry to be returned in the collection, starting from 1. The function returns the nth geometry in a collection.
+**Parameters**
+
+ST_GeometryCollection: required. This parameter specifies a geometry collection. n: required. This parameter must be of the BIGINT type. It specifies the offset of the geometry to be returned in the collection, starting from 1.
+
+**Return value**
+
+The function returns the nth geometry in a collection.
 
 ```
 -- Return the third point in the multipoint SELECT ST_GeometryN(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), (30 10))' ), 3); -- Return the second line in the multilinestring SELECT ST_GeometryN(ST_GeomFromText('multilinestring ((2 4, 10 10), (20 20, 7 8))'), 2);
@@ -12895,13 +15623,27 @@ ST_GeometryCollection: required. This parameter specifies a geometry collection.
 
 ##### 3.12.3.8 ST_Is3D
 
-This topic describes how to use the ST_Is3D function in MaxCompute and provides reference examples. This function determines whether a geometry is a 3D geometry. It returns true if the geometry is 3D, and false otherwise.
+This topic describes how to use the ST_Is3D function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether a geometry is a 3D geometry. It returns true if the geometry is 3D, and false otherwise.
+
+**Function syntax**
 
 ```
 ST_Is3D(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. This function returns a value of the BOOLEAN type. The function returns true if the geometry is a 3D geometry, and false otherwise.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. The function returns true if the geometry is a 3D geometry, and false otherwise.
 
 ```
 -- 2D polygon SELECT ST_Is3D(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result +-------+
@@ -12925,13 +15667,23 @@ geometry: required. This parameter specifies a geometry. This function returns a
 
 ##### 3.12.3.9 ST_IsClosed
 
-This topic describes how to use the ST_IsClosed function in MaxCompute and provides reference examples. If a linestring or multiple linestrings are closed, this function returns True. Otherwise, it returns False.
+This topic describes how to use the ST_IsClosed function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+If a linestring or multiple linestrings are closed, this function returns True. Otherwise, it returns False.
 
 ```
 ST_IsClosed(ST_[Multi]LineString);
 ```
 
-ST_[Multi]LineString: required. This parameter specifies a geometry of the ST_LineString or ST_MultiLineString type. This function returns a value of the BOOLEAN type. The function returns true if the linestring is closed. Otherwise, it returns false.
+ST_[Multi]LineString: required. This parameter specifies a geometry of the ST_LineString or ST_MultiLineString type.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. The function returns true if the linestring is closed. Otherwise, it returns false.
 
 ```
 -- Closed linestring SELECT ST_IsClosed(ST_LineString(0., 0., 3., 4., 0., 4., 0., 0.)); -- Result +------+
@@ -12947,13 +15699,27 @@ ST_[Multi]LineString: required. This parameter specifies a geometry of the ST_Li
 
 ##### 3.12.3.10 ST_IsEmpty
 
-This topic describes how to use the ST_IsEmpty function in MaxCompute and provides reference examples. The function returns true if a geometry is empty and returns false otherwise.
+This topic describes how to use the ST_IsEmpty function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function returns true if a geometry is empty and returns false otherwise.
+
+**Function syntax**
 
 ```
 ST_IsEmpty(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. This function returns a value of the BOOLEAN type. The function returns true if a geometry is empty and returns false otherwise.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. The function returns true if a geometry is empty and returns false otherwise.
 
 ```
 -- Non-empty geometry object SELECT ST_IsEmpty(ST_Point(1.5, 2.5)); -- Result +-------+
@@ -12983,13 +15749,27 @@ SELECT ST_IsMeasured(ST_Polygon(1,1, 1,4, 4,4, 4,1)) FROM src LIMIT 1; -- False 
 
 ##### 3.12.3.12 ST_IsSimple
 
-This topic describes how to use the ST_IsSimple function in MaxCompute and provides reference examples. This function determines whether a geometry is a simple object. The function returns true if the geometry is simple, and returns false otherwise. Simple geometries include the following types: Simple point: A point has no interior rings and consists of only one coordinate. Simple line: A linestring has no self-intersections or intersections, no overlapping parts, and no interior rings. Simple multipoint: A multipoint geometry consists of multiple simple points, and each point has no interior rings. Simple multilinestring: A multilinestring geometry consists of multiple simple linestrings, and each linestring has no self-intersections or intersections, no overlapping segments, and no interior rings. Simple polygon: A polygon geometry consists of one exterior ring and zero or more interior rings. Each ring is a simple linestring, and no self-intersections, intersections, or overlapping segments exist between the exterior ring and the interior rings.
+This topic describes how to use the ST_IsSimple function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether a geometry is a simple object. The function returns true if the geometry is simple, and returns false otherwise. Simple geometries include the following types: Simple point: A point has no interior rings and consists of only one coordinate. Simple line: A linestring has no self-intersections or intersections, no overlapping parts, and no interior rings. Simple multipoint: A multipoint geometry consists of multiple simple points, and each point has no interior rings. Simple multilinestring: A multilinestring geometry consists of multiple simple linestrings, and each linestring has no self-intersections or intersections, no overlapping segments, and no interior rings. Simple polygon: A polygon geometry consists of one exterior ring and zero or more interior rings. Each ring is a simple linestring, and no self-intersections, intersections, or overlapping segments exist between the exterior ring and the interior rings.
+
+**Function syntax**
 
 ```
 ST_IsSimple(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. This function returns a value of the BOOLEAN type. The function returns true if a geometry is a simple object, and returns false otherwise.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. The function returns true if a geometry is a simple object, and returns false otherwise.
 
 ```
 -- Simple object (point) SELECT ST_IsSimple(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13005,13 +15785,25 @@ geometry: required. This parameter specifies a geometry. This function returns a
 
 ##### 3.12.3.13 ST_IsRing
 
-This topic describes how to use the ST_IsRing function in MaxCompute and provides reference examples. This function determines whether a geometry is a closed ring, meaning that the start point and end point are identical. The function returns true if the geometry is a closed ring, and returns false otherwise.
+This topic describes how to use the ST_IsRing function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+This function determines whether a geometry is a closed ring, meaning that the start point and end point are identical. The function returns true if the geometry is a closed ring, and returns false otherwise.
+
+**Function syntax**
 
 ```
 ST_IsRing(ST_LineString);
 ```
 
-ST_LineString: required. This parameter specifies a geometry of the ST_LineString type. This function returns a value of the BOOLEAN type. The function returns true if a linestring is a closed ring (the start point and end point are identical, and the linestring does not intersect itself), and returns false otherwise.
+**Parameters**
+
+ST_LineString: required. This parameter specifies a geometry of the ST_LineString type.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. The function returns true if a linestring is a closed ring (the start point and end point are identical, and the linestring does not intersect itself), and returns false otherwise.
 
 ```
 -- Closed ring SELECT ST_IsRing(ST_LineString(0., 0., 3., 4., 0., 4., 0., 0.)); -- Result +------+
@@ -13037,7 +15829,13 @@ This topic describes how to use the ST_Length function in MaxCompute and provide
 ST_Length(line);
 ```
 
-line: required. This parameter specifies a geometry of the ST_LineString type. This function returns a value of the DOUBLE type. The value indicates the length of a linestring.
+**Parameters**
+
+line: required. This parameter specifies a geometry of the ST_LineString type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. The value indicates the length of a linestring.
 
 ```
 SELECT ST_Length(ST_LineString(0.0, 0.0, 3.0, 4.0)); -- Result +------+
@@ -13109,13 +15907,27 @@ Returned results:
 
 ##### 3.12.3.18 ST_X
 
-This topic describes how to use the ST_X function in MaxCompute and provides reference examples. This function returns the X-axis coordinate of a point.
+This topic describes how to use the ST_X function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the X-axis coordinate of a point.
+
+**Function syntax**
 
 ```
 ST_X(ST_Point point);
 ```
 
-point: required. This parameter specifies a geometry of the ST_Point type. This parameter returns a value of the DOUBLE type. This value indicates the X-axis coordinate of a point.
+**Parameters**
+
+point: required. This parameter specifies a geometry of the ST_Point type.
+
+**Return value**
+
+This parameter returns a value of the DOUBLE type. This value indicates the X-axis coordinate of a point.
 
 ```
 SELECT ST_X(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13127,13 +15939,27 @@ SELECT ST_X(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.19 ST_Y
 
-This topic describes how to use the ST_Y function in MaxCompute and provides reference examples. This function returns the Y-axis coordinate of a point.
+This topic describes how to use the ST_Y function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the Y-axis coordinate of a point.
+
+**Function syntax**
 
 ```
 ST_Y(ST_Point point);
 ```
 
-point: required. This parameter specifies a geometry of the ST_Point type. This function returns a value of the DOUBLE type. The value indicates the Y-axis coordinate of a point.
+**Parameters**
+
+point: required. This parameter specifies a geometry of the ST_Point type.
+
+**Return value**
+
+This function returns a value of the DOUBLE type. The value indicates the Y-axis coordinate of a point.
 
 ```
 SELECT ST_Y(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13145,7 +15971,13 @@ SELECT ST_Y(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.20 ST_Z
 
-This topic describes how to use the ST_Z function in MaxCompute and provides reference examples. This function returns the Z-axis coordinate of a point.
+This topic describes how to use the ST_Z function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the Z-axis coordinate of a point.
 
 ```
 ST_Z(ST_Point point);
@@ -13163,13 +15995,27 @@ SELECT ST_Z(ST_Point(1.5, 2.5, 3.0)); -- Result +------+
 
 ##### 3.12.3.21 ST_MaxX
 
-This topic describes how to use the ST_MaxX function in MaxCompute and provides reference examples. This function returns the maximum X-axis coordinate of a geometry.
+This topic describes how to use the ST_MaxX function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the maximum X-axis coordinate of a geometry.
+
+**Function syntax**
 
 ```
 ST_MaxX(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the DOUBLE type. The function returns the maximum X-axis coordinate among all coordinate points of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the DOUBLE type. The function returns the maximum X-axis coordinate among all coordinate points of a geometry.
 
 ```
 SELECT ST_MaxX(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13185,13 +16031,27 @@ SELECT ST_MaxX(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.22 ST_MaxY
 
-This topic describes how to use the ST_MaxY function in MaxCompute and provides reference examples. This function returns the maximum Y-axis coordinate of a geometry.
+This topic describes how to use the ST_MaxY function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the maximum Y-axis coordinate of a geometry.
+
+**Function syntax**
 
 ```
 ST_MaxY(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the DOUBLE type. The function returns the maximum Y-axis coordinate among all coordinate points of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the DOUBLE type. The function returns the maximum Y-axis coordinate among all coordinate points of a geometry.
 
 ```
 SELECT ST_MaxY(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13207,13 +16067,27 @@ SELECT ST_MaxY(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.23 ST_MaxZ
 
-This topic describes how to use the ST_MaxZ function in MaxCompute and provides reference examples. This function returns the maximum Z-axis coordinate of a geometry.
+This topic describes how to use the ST_MaxZ function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the maximum Z-axis coordinate of a geometry.
+
+**Function syntax**
 
 ```
 ST_MaxZ(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the DOUBLE type. The function returns the maximum Z-axis coordinate among all coordinate points of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the DOUBLE type. The function returns the maximum Z-axis coordinate among all coordinate points of a geometry.
 
 ```
 SELECT ST_MaxZ(ST_PointZ(1.5, 2.5, 2)); -- Return result +------+
@@ -13229,13 +16103,27 @@ SELECT ST_MaxZ(ST_PointZ(1.5, 2.5, 2)); -- Return result +------+
 
 ##### 3.12.3.24 ST_MinX
 
-This topic describes how to use the ST_MinX function in MaxCompute and provides reference examples. This function returns the minimum X-axis coordinate of a geometry.
+This topic describes how to use the ST_MinX function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the minimum X-axis coordinate of a geometry.
+
+**Function syntax**
 
 ```
 ST_MinX(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the DOUBLE type. The function returns the minimum X-axis coordinate among all coordinate points of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the DOUBLE type. The function returns the minimum X-axis coordinate among all coordinate points of a geometry.
 
 ```
 SELECT ST_MinX(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13251,13 +16139,27 @@ SELECT ST_MinX(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.25 ST_MinY
 
-This topic describes how to use the ST_MinY function in MaxCompute and provides reference examples. This function returns the minimum Y-axis coordinate of a geometry.
+This topic describes how to use the ST_MinY function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the minimum Y-axis coordinate of a geometry.
+
+**Function syntax**
 
 ```
 ST_MinY(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the DOUBLE type. This function returns the minimum Y-axis coordinate among all coordinate points of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the DOUBLE type. This function returns the minimum Y-axis coordinate among all coordinate points of a geometry.
 
 ```
 SELECT ST_MinY(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13273,13 +16175,27 @@ SELECT ST_MinY(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.26 ST_MinZ
 
-This topic describes how to use the ST_MinZ function in MaxCompute and provides reference examples. This function returns the minimum Z-axis coordinate of a geometry.
+This topic describes how to use the ST_MinZ function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the minimum Z-axis coordinate of a geometry.
+
+**Function syntax**
 
 ```
 ST_MinZ(ST_Geometry geometry);
 ```
 
-geometry: required. This parameter specifies a geometry. The return value is of the DOUBLE type. The function returns the minimum Z-axis coordinate among all coordinate points of a geometry.
+**Parameters**
+
+geometry: required. This parameter specifies a geometry.
+
+**Return value**
+
+The return value is of the DOUBLE type. The function returns the minimum Z-axis coordinate among all coordinate points of a geometry.
 
 ```
 SELECT ST_MinZ(ST_PointZ(1.5, 2.5, 2)); -- Result +------+
@@ -13295,13 +16211,27 @@ SELECT ST_MinZ(ST_PointZ(1.5, 2.5, 2)); -- Result +------+
 
 ##### 3.12.3.27 ST_NumGeometries
 
-This topic describes how to use the ST_NumGeometries function in MaxCompute and provides reference examples. This function returns the number of geometries in a geometry collection.
+This topic describes how to use the ST_NumGeometries function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the number of geometries in a geometry collection.
+
+**Function syntax**
 
 ```
 ST_NumGeometries(ST_GeometryCollection);
 ```
 
-ST_GeometryCollection: required. This parameter specifies a geometry collection. The return value is of the BIGINT type. This function returns the number of geometries in a geometry collection.
+**Parameters**
+
+ST_GeometryCollection: required. This parameter specifies a geometry collection.
+
+**Return value**
+
+The return value is of the BIGINT type. This function returns the number of geometries in a geometry collection.
 
 ```
 SELECT ST_NumGeometries(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), (30 1 0))')); -- Result +------+
@@ -13317,13 +16247,27 @@ SELECT ST_NumGeometries(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), 
 
 ##### 3.12.3.28 ST_NumInteriorRing
 
-This topic describes how to use the ST_NumInteriorRing function in MaxCompute and provides reference examples. This function returns the number of interior rings of a polygon.
+This topic describes how to use the ST_NumInteriorRing function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the number of interior rings of a polygon.
+
+**Function syntax**
 
 ```
 ST_NumInteriorRing(ST_Polygon);
 ```
 
-ST_Polygon: required. This parameter specifies a geometry of the ST_Polygon type. The function returns a value of the BIGINT type. This value indicates the number of interior rings of a polygon.
+**Parameters**
+
+ST_Polygon: required. This parameter specifies a geometry of the ST_Polygon type.
+
+**Return value**
+
+The function returns a value of the BIGINT type. This value indicates the number of interior rings of a polygon.
 
 ```
 -- A polygon without interior rings SELECT ST_NumInteriorRing(ST_Polygon(1, 1, 1, 4, 4, 1)); -- Result +------+
@@ -13339,13 +16283,27 @@ ST_Polygon: required. This parameter specifies a geometry of the ST_Polygon type
 
 ##### 3.12.3.29 ST_NumPoints
 
-This topic describes how to use the ST_NumPoints function in MaxCompute and provides reference examples. This function returns the number of points in a geometry.
+This topic describes how to use the ST_NumPoints function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the number of points in a geometry.
+
+**Function syntax**
 
 ```
 BIGINT ST_NumPoints(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry. This function returns a value of the BIGINT type. This value indicates the number of points in a geometry.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry.
+
+**Return value**
+
+This function returns a value of the BIGINT type. This value indicates the number of points in a geometry.
 
 ```
 SELECT ST_NumPoints(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13365,13 +16323,27 @@ SELECT ST_NumPoints(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.3.30 ST_PointN
 
-This topic describes how to use the ST_PointN function in MaxCompute and provides reference examples. This function returns the nth vertex of one or more linestrings.
+This topic describes how to use the ST_PointN function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the nth vertex of one or more linestrings.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_PointN(GEOMETRY geometry, BIGINT n);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input linestring geometry. n: required. This parameter must be of the BIGINT type. It specifies the sequence number of the vertex to be returned. This function returns a value of the GEOMETRY type. The value indicates the nth vertex of a linestring. If n is out of range, this function returns NULL.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input linestring geometry. n: required. This parameter must be of the BIGINT type. It specifies the sequence number of the vertex to be returned.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the nth vertex of a linestring. If n is out of range, this function returns NULL.
 
 ```
 SELECT ST_PointN(ST_LineString(1.5, 2.5, 3.0, 2.2), 2);
@@ -13379,13 +16351,27 @@ SELECT ST_PointN(ST_LineString(1.5, 2.5, 3.0, 2.2), 2);
 
 ##### 3.12.3.31 ST_StartPoint
 
-This topic describes how to use the ST_StartPoint function in MaxCompute and provides reference examples. The function returns the first point of a linestring.
+This topic describes how to use the ST_StartPoint function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function returns the first point of a linestring.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_StartPoint(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input linestring geometry. The function returns a value of the GEOMETRY type. The value indicates the first point of a linestring.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input linestring geometry.
+
+**Return value**
+
+The function returns a value of the GEOMETRY type. The value indicates the first point of a linestring.
 
 ```
 SELECT ST_StartPoint(ST_LineString(1.5, 2.5, 3.0, 2.2));
@@ -13393,13 +16379,27 @@ SELECT ST_StartPoint(ST_LineString(1.5, 2.5, 3.0, 2.2));
 
 ##### 3.12.3.32 ST_EndPoint
 
-This topic describes how to use the ST_EndPoint function in MaxCompute and provides reference examples. This function returns the last point of a linestring.
+This topic describes how to use the ST_EndPoint function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the last point of a linestring.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_EndPoint(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input linestring geometry. The return value is of the GEOMETRY type and indicates the last point of a linestring.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input linestring geometry.
+
+**Return value**
+
+The return value is of the GEOMETRY type and indicates the last point of a linestring.
 
 ```
 SELECT ST_EndPoint(ST_LineString(1.5, 2.5, 3.0, 2.2));
@@ -13417,11 +16417,19 @@ This topic describes how to use the ST_SRID function in MaxCompute and provides 
 
 This function returns the Spatial Reference Identifier (SRID) of a geometry.
 
+**Function syntax**
+
 ```
 BIGINT ST_SRID(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry. This function returns a value of the BIGINT type. The value indicates the SRID of a geometry.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry.
+
+**Return value**
+
+This function returns a value of the BIGINT type. The value indicates the SRID of a geometry.
 
 ```
 SELECT ST_SRID(ST_Point(1.5, 2.5)); -- Result +------+
@@ -13435,13 +16443,27 @@ SELECT ST_SRID(ST_Point(1.5, 2.5)); -- Result +------+
 
 ##### 3.12.4.1 ST_Aggr_ConvexHull
 
-This topic describes how to use the ST_Aggr_ConvexHull function in MaxCompute and provides reference examples. This function returns the convex hull geometry after aggregating all geometries.
+This topic describes how to use the ST_Aggr_ConvexHull function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the convex hull geometry after aggregating all geometries.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_Aggr_ConvexHull(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies the column of geometries to be aggregated. This function returns a value of the GEOMETRY type. The value indicates the convex hull geometry after aggregating all input geometries.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies the column of geometries to be aggregated.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the convex hull geometry after aggregating all input geometries.
 
 ```
 SELECT ST_Aggr_ConvexHull(ST_Point(1.5, 2.5));
@@ -13449,13 +16471,25 @@ SELECT ST_Aggr_ConvexHull(ST_Point(1.5, 2.5));
 
 ##### 3.12.4.2 ST_Aggr_Intersection
 
-This topic describes how to use the ST_Aggr_Intersection function in MaxCompute and provides reference examples. This function returns a geometry formed by the intersection of all specified geometries.
+This topic describes how to use the ST_Aggr_Intersection function in MaxCompute and provides reference examples.
+
+**Description**
+
+This function returns a geometry formed by the intersection of all specified geometries.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_Aggr_Intersection(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies the column of geometries to be aggregated. This function returns a value of the GEOMETRY type. It indicates the geometry formed by the intersection of all input geometries.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies the column of geometries to be aggregated.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. It indicates the geometry formed by the intersection of all input geometries.
 
 ```
 SELECT ST_Aggr_Intersection(ST_Point(1.5, 2.5));
@@ -13463,13 +16497,27 @@ SELECT ST_Aggr_Intersection(ST_Point(1.5, 2.5));
 
 ##### 3.12.4.3 ST_Aggr_Union
 
-This topic describes how to use the ST_Aggr_Union function in MaxCompute and provides reference examples. This function returns a geometry formed by the union of all specified geometries.
+This topic describes how to use the ST_Aggr_Union function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns a geometry formed by the union of all specified geometries.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_Aggr_Union(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies the column of geometries to be aggregated. This function returns a value of the GEOMETRY type. The value indicates a geometry formed by the union of all input geometries.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies the column of geometries to be aggregated.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates a geometry formed by the union of all input geometries.
 
 ```
 SELECT ST_Aggr_Union(ST_Point(1.5, 2.5));
@@ -13503,13 +16551,27 @@ Description: This function returns the binary envelope for the input bin ID.
 
 ##### 3.12.4.6 ST_Boundary
 
-This topic describes how to use the ST_Boundary function in MaxCompute and provides reference examples. This function returns the boundary of an input geometry.
+This topic describes how to use the ST_Boundary function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the boundary of an input geometry.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_Boundary(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry. This function returns a value of the GEOMETRY type. The value indicates the boundary of an input geometry.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the boundary of an input geometry.
 
 ```
 SELECT ST_Boundary(ST_LineString(0, 1, 1, 0)); SELECT ST_Boundary(ST_Polygon(1, 1, 4, 1, 1, 4));
@@ -13517,13 +16579,25 @@ SELECT ST_Boundary(ST_LineString(0, 1, 1, 0)); SELECT ST_Boundary(ST_Polygon(1, 
 
 ##### 3.12.4.7 ST_Buffer
 
-This topic describes how to use the ST_Buffer function in MaxCompute and provides reference examples. This function takes a geometry and a distance, and returns a geometry consisting of all points whose distance from the input geometry is less than or equal to the specified distance.
+This topic describes how to use the ST_Buffer function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function takes a geometry and a distance, and returns a geometry consisting of all points whose distance from the input geometry is less than or equal to the specified distance.
 
 ```
 GEOMETRY ST_Buffer(GEOMETRY geometry, DOUBLE distance);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry. distance: required. This parameter must be of the DOUBLE type. It specifies a buffer distance. This function returns a value of the GEOMETRY type. The value indicates a geometry consisting of all points whose distance from the input geometry is less than or equal to the specified distance.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry. distance: required. This parameter must be of the DOUBLE type. It specifies a buffer distance.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates a geometry consisting of all points whose distance from the input geometry is less than or equal to the specified distance.
 
 ```
 SELECT ST_Buffer(ST_Point(1.5, 2.5), 1.0);
@@ -13531,13 +16605,27 @@ SELECT ST_Buffer(ST_Point(1.5, 2.5), 1.0);
 
 ##### 3.12.4.8 ST_ConvexHull
 
-This topic describes how to use the ST_ConvexHull function in MaxCompute and provides reference examples. This function returns the convex hull of geometries.
+This topic describes how to use the ST_ConvexHull function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the convex hull of geometries.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_ConvexHull(GEOMETRY geometry1, GEOMETRY geometry2, ...);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. This function returns a value of the GEOMETRY type. It indicates the convex hull of all input geometries.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. It indicates the convex hull of all input geometries.
 
 ```
 SELECT ST_AsText(ST_ConvexHull(ST_Point(0, 0), ST_Point(0, 1), ST_Point(1, 1))); -- Return result +---------------------------------------+
@@ -13549,13 +16637,27 @@ SELECT ST_AsText(ST_ConvexHull(ST_Point(0, 0), ST_Point(0, 1), ST_Point(1, 1)));
 
 ##### 3.12.4.9 ST_Difference
 
-This topic describes how to use the ST_Difference function in MaxCompute and provides reference examples. This function returns the first geometry minus its intersection with the second geometry.
+This topic describes how to use the ST_Difference function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the first geometry minus its intersection with the second geometry.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_Difference(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. This function returns a value of the GEOMETRY type. The value indicates the first geometry minus its intersection with the second geometry.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the first geometry minus its intersection with the second geometry.
 
 ```
 SELECT ST_AsText(ST_Difference(ST_MultiPoint(1, 1, 1.5, 1.5, 2, 2), ST_Point(1.5, 1.5 ))); -- Return result +--------------------------+
@@ -13577,7 +16679,13 @@ This topic describes how to use the ST_Envelope function in MaxCompute and provi
 GEOMETRY ST_Envelope(GEOMETRY geometry);
 ```
 
-geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry. This function returns a value of the GEOMETRY type. The value indicates the envelope (minimum bounding rectangle) of an input geometry.
+**Parameters**
+
+geometry: required. This parameter must be of the GEOMETRY type. It specifies an input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the envelope (minimum bounding rectangle) of an input geometry.
 
 ```
 SELECT ST_Envelope(ST_LineString(0, 0, 2, 2)); SELECT ST_Envelope(ST_Polygon(2, 0, 2, 3, 3, 0));
@@ -13585,13 +16693,27 @@ SELECT ST_Envelope(ST_LineString(0, 0, 2, 2)); SELECT ST_Envelope(ST_Polygon(2, 
 
 ##### 3.12.4.11 ST_ExteriorRing
 
-This topic describes how to use the ST_ExteriorRing function in MaxCompute and provides reference examples. This function returns the exterior ring of a polygon as a linestring.
+This topic describes how to use the ST_ExteriorRing function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the exterior ring of a polygon as a linestring.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_ExteriorRing(GEOMETRY polygon);
 ```
 
-polygon: required. This parameter must be of the GEOMETRY type. It specifies an input polygon geometry. This function returns a value of the GEOMETRY type (LINESTRING). The value indicates the exterior ring of a polygon.
+**Parameters**
+
+polygon: required. This parameter must be of the GEOMETRY type. It specifies an input polygon geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type (LINESTRING). The value indicates the exterior ring of a polygon.
 
 ```
 SELECT ST_ExteriorRing(ST_Polygon(1, 1, 1, 4, 4, 1)); SELECT ST_ExteriorRing(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 1, 1 1 ))'));
@@ -13605,7 +16727,13 @@ This topic describes how to use the ST_InteriorRingN function in MaxCompute and 
 GEOMETRY ST_InteriorRingN(GEOMETRY polygon, BIGINT n);
 ```
 
-polygon: required. This parameter must be of the GEOMETRY type. It specifies an input polygon geometry. n: required. This parameter must be of the BIGINT type. It specifies the index of the interior ring to be returned. This function returns a value of the GEOMETRY type (LINESTRING). The value indicates the nth interior ring of a polygon.
+**Parameters**
+
+polygon: required. This parameter must be of the GEOMETRY type. It specifies an input polygon geometry. n: required. This parameter must be of the BIGINT type. It specifies the index of the interior ring to be returned.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type (LINESTRING). The value indicates the nth interior ring of a polygon.
 
 ```
 SELECT ST_InteriorRingN(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 1, 1 1))'), 1);
@@ -13613,13 +16741,27 @@ SELECT ST_InteriorRingN(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 
 
 ##### 3.12.4.13 ST_Intersection
 
-This topic describes how to use the ST_Intersection function in MaxCompute and provides reference examples. This function returns the intersection of two geometries. If the dimension of the intersection is lower than the dimension of the input geometries, the ST_Intersection function may drop the lower-dimensional intersection geometry or return it as a closed linestring.
+This topic describes how to use the ST_Intersection function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns the intersection of two geometries. If the dimension of the intersection is lower than the dimension of the input geometries, the ST_Intersection function may drop the lower-dimensional intersection geometry or return it as a closed linestring.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_Intersection(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. This function returns a value of the GEOMETRY type. The value indicates the intersection of the two geometries. The dimension of the intersection may be lower than the dimension of the input geometries.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the intersection of the two geometries. The dimension of the intersection may be lower than the dimension of the input geometries.
 
 ```
 SELECT ST_AsText(ST_Intersection(ST_Point(1, 1), ST_Point(1, 1))); -- Result +--------------+
@@ -13649,11 +16791,19 @@ SELECT ST_AsText(ST_Intersection(ST_Point(1, 1), ST_Point(1, 1))); -- Result +--
 
 This topic describes how to use the ST_SymmetricDiff function in MaxCompute and provides reference examples. This function returns a geometry that consists of the non-intersecting portions of two geometries.
 
+**Function syntax**
+
 ```
 GEOMETRY ST_SymmetricDiff(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. This function returns a value of the GEOMETRY type. The value indicates a geometry that consists of the non-intersecting portions of two geometries.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates a geometry that consists of the non-intersecting portions of two geometries.
 
 ```
 SELECT ST_AsText(ST_SymmetricDiff(ST_LineString('linestring(0 2, 2 2)'), ST_LineString('linestring(1 2, 3 2)'))); -- Result +------------------------------------------+
@@ -13680,7 +16830,13 @@ This topic describes how to use the ST_Union function in MaxCompute and provides
 GEOMETRY ST_Union(GEOMETRY geometry1, GEOMETRY geometry2, ...);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. This function returns a value of the GEOMETRY type. The value indicates the union of all input geometries.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type. The value indicates the union of all input geometries.
 
 ```
 SELECT ST_AsText(ST_Union(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1), ST_Polygon(4, 1, 4, 4, 4, 8, 8, 1))); -- Output +------------------------------------------------------+
@@ -13694,13 +16850,27 @@ SELECT ST_AsText(ST_Union(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1), ST_Polygon(4, 1, 4
 
 ##### 3.12.5.1 ST_Contains
 
-This topic describes how to use the ST_Contains function in MaxCompute and provides reference examples. If a geometry geometry1 contains another geometry geometry2, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_Contains function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+If a geometry geometry1 contains another geometry geometry2, the function returns true. Otherwise, it returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Contains(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies a container geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies a geometry to be checked for containment. The return value is of the BOOLEAN type. If geometry1 contains geometry2, the function returns true. Otherwise, it returns false.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies a container geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies a geometry to be checked for containment.
+
+**Return value**
+
+The return value is of the BOOLEAN type. If geometry1 contains geometry2, the function returns true. Otherwise, it returns false.
 
 ```
 SELECT ST_Contains(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1), ST_Point(2, 3)); -- Result +------+
@@ -13716,13 +16886,27 @@ SELECT ST_Contains(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1), ST_Point(2, 3)); -- Resul
 
 ##### 3.12.5.2 ST_Crosses
 
-This topic describes how to use the ST_Crosses function in MaxCompute and provides reference examples. This function determines whether two geometries intersect, excluding tangent or containment relationships. The function returns true if the two geometries have a crossing point, and returns false otherwise. This function is applicable to the relationship evaluation between lines and lines, lines and polygons, and polygons and polygons.
+This topic describes how to use the ST_Crosses function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether two geometries intersect, excluding tangent or containment relationships. The function returns true if the two geometries have a crossing point, and returns false otherwise. This function is applicable to the relationship evaluation between lines and lines, lines and polygons, and polygons and polygons.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Crosses(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. The function returns a value of the BOOLEAN type. If the two geometries have a crossing point, excluding tangent or containment relationships, the function returns true. Otherwise, the function returns false.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+The function returns a value of the BOOLEAN type. If the two geometries have a crossing point, excluding tangent or containment relationships, the function returns true. Otherwise, the function returns false.
 
 ```
 SELECT ST_Crosses(ST_LineString(0, 0, 1, 1), ST_LineString(1, 0, 0, 1)); -- Result +------+
@@ -13742,13 +16926,27 @@ SELECT ST_Crosses(ST_LineString(0, 0, 1, 1), ST_LineString(1, 0, 0, 1)); -- Resu
 
 ##### 3.12.5.3 ST_Disjoint
 
-This topic describes how to use the ST_Disjoint function in MaxCompute and provides reference examples. This function determines whether two geometries are completely disjoint. If the two geometries share no intersecting points, lines, or surfaces, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_Disjoint function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether two geometries are completely disjoint. If the two geometries share no intersecting points, lines, or surfaces, the function returns true. Otherwise, it returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Disjoint(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. The function returns a value of the BOOLEAN type. If the two geometries are completely disjoint and have no intersection, the function returns true. Otherwise, it returns false.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+The function returns a value of the BOOLEAN type. If the two geometries are completely disjoint and have no intersection, the function returns true. Otherwise, it returns false.
 
 ```
 SELECT ST_Disjoint(ST_LineString(0, 0, 0, 1), ST_LineString(1, 1, 1, 0)); -- Result +------+
@@ -13764,13 +16962,27 @@ SELECT ST_Disjoint(ST_LineString(0, 0, 0, 1), ST_LineString(1, 1, 1, 0)); -- Res
 
 ##### 3.12.5.4 ST_EnvIntersects
 
-This topic describes how to use the ST_EnvIntersects function in MaxCompute and provides reference examples. This function determines whether the bounding rectangles of two geometries intersect. If the bounding rectangles intersect, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_EnvIntersects function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether the bounding rectangles of two geometries intersect. If the bounding rectangles intersect, the function returns true. Otherwise, it returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_EnvIntersects(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. This function returns a value of the BOOLEAN type. If the bounding rectangles of the two geometries intersect, the function returns true. Otherwise, it returns false.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+This function returns a value of the BOOLEAN type. If the bounding rectangles of the two geometries intersect, the function returns true. Otherwise, it returns false.
 
 ```
 SELECT ST_EnvIntersects(ST_LineString(0, 0, 1, 1), ST_LineString(1, 3, 2, 2)); -- Result +-------+
@@ -13786,13 +16998,27 @@ SELECT ST_EnvIntersects(ST_LineString(0, 0, 1, 1), ST_LineString(1, 3, 2, 2)); -
 
 ##### 3.12.5.5 ST_Equals
 
-This topic describes how to use the ST_Equals function in MaxCompute and provides reference examples. The function determines whether two geometries are identical. If geometry1 and geometry2 are spatially identical, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_Equals function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function determines whether two geometries are identical. If geometry1 and geometry2 are spatially identical, the function returns true. Otherwise, it returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Equals(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. The return value is of the BOOLEAN type. If the two geometries are spatially identical, the function returns true. Otherwise, it returns false.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+The return value is of the BOOLEAN type. If the two geometries are spatially identical, the function returns true. Otherwise, it returns false.
 
 ```
 SELECT ST_Equals(ST_LineString(0, 0, 1, 1), ST_LineString(1, 1, 0, 0)); -- Result +------+
@@ -13808,13 +17034,27 @@ SELECT ST_Equals(ST_LineString(0, 0, 1, 1), ST_LineString(1, 1, 0, 0)); -- Resul
 
 ##### 3.12.5.6 ST_Intersects
 
-This topic describes how to use the ST_Intersects function in MaxCompute and provides reference examples. This function determines whether two geometries share a common intersection. If geometry1 and geometry2 share a common intersection, the function returns true. Otherwise, the function returns false.
+This topic describes how to use the ST_Intersects function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether two geometries share a common intersection. If geometry1 and geometry2 share a common intersection, the function returns true. Otherwise, the function returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Intersects(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. The function returns a value of the BOOLEAN type. If the two geometries share a common intersection, the function returns true. Otherwise, the function returns false.
+**Parameters**
+
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+The function returns a value of the BOOLEAN type. If the two geometries share a common intersection, the function returns true. Otherwise, the function returns false.
 
 ```
 SELECT ST_Intersects(ST_LineString(0, 0, 1, 1), ST_LineString(1, 1, 0, 0)); -- Return result +------+
@@ -13838,7 +17078,15 @@ SELECT ST_Intersects(ST_LineString(0, 0, 1, 1), ST_LineString(1, 1, 0, 0)); -- R
 
 ##### 3.12.5.7 ST_Overlaps
 
-This topic describes how to use the ST_Overlaps function in MaxCompute and provides reference examples. This function determines whether two geometries overlap (excluding tangency). This function returns true if geometry1 and geometry2 overlap, and returns false otherwise.
+This topic describes how to use the ST_Overlaps function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether two geometries overlap (excluding tangency). This function returns true if geometry1 and geometry2 overlap, and returns false otherwise.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Overlaps(GEOMETRY geometry1, GEOMETRY geometry2);
@@ -13860,11 +17108,21 @@ SELECT ST_Overlaps(ST_Polygon(2, 0, 2, 3, 3, 0), ST_Polygon(1, 1, 1, 4, 4, 4, 4,
 
 ##### 3.12.5.8 ST_Relate
 
-This topic describes how to use the ST_Relate function in MaxCompute and provides reference examples. This function determines whether two geometries have a DE-9IM topological relationship. If geometry1 and geometry2 match the specified DE-9IM topological pattern, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_Relate function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether two geometries have a DE-9IM topological relationship. If geometry1 and geometry2 match the specified DE-9IM topological pattern, the function returns true. Otherwise, it returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Relate(GEOMETRY geometry1, GEOMETRY geometry2, STRING pattern);
 ```
+
+**Parameters**
 
 geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. pattern: required. This parameter must be of the STRING type. It specifies a DE-9IM topological pattern string. The string is 9 characters in length and represents a pattern matrix consisting of T, F, and *. The function returns a value of the BOOLEAN type. If the two geometries match the specified DE-9IM topological pattern, the function returns true. Otherwise, it returns false.
 
@@ -13894,13 +17152,23 @@ SELECT ST_Relate(ST_Polygon(2, 0, 2, 1, 3, 1), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1
 
 ##### 3.12.5.9 ST_Touches
 
-This topic describes how to use the ST_Touches function in MaxCompute and provides reference examples. This function determines whether two geometries touch only at their boundaries. If geometry1 and geometry2 intersect at least at one point and their interiors do not intersect, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_Touches function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function determines whether two geometries touch only at their boundaries. If geometry1 and geometry2 intersect at least at one point and their interiors do not intersect, the function returns true. Otherwise, it returns false.
 
 ```
 BOOLEAN ST_Touches(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
 
-geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry. The function returns a value of the BOOLEAN type. If the two geometries touch only at their boundaries (they share at least one point and their interiors do not intersect), the function returns true. Otherwise, it returns false.
+geometry1: required. This parameter must be of the GEOMETRY type. It specifies the first input geometry. geometry2: required. This parameter must be of the GEOMETRY type. It specifies the second input geometry.
+
+**Return value**
+
+The function returns a value of the BOOLEAN type. If the two geometries touch only at their boundaries (they share at least one point and their interiors do not intersect), the function returns true. Otherwise, it returns false.
 
 ```
 SELECT ST_Touches(ST_Point(1, 2), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result +------+
@@ -13916,11 +17184,21 @@ SELECT ST_Touches(ST_Point(1, 2), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result
 
 ##### 3.12.5.10 ST_Within
 
-This topic describes how to use the ST_Within function in MaxCompute and provides reference examples. The function determines whether one geometry contains another. If geometry2 contains geometry1, the function returns true. Otherwise, it returns false.
+This topic describes how to use the ST_Within function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function determines whether one geometry contains another. If geometry2 contains geometry1, the function returns true. Otherwise, it returns false.
+
+**Function syntax**
 
 ```
 BOOLEAN ST_Within(GEOMETRY geometry1, GEOMETRY geometry2);
 ```
+
+**Parameters**
 
 geometry1: required. This parameter must be of the GEOMETRY type. It specifies a geometry to be checked for containment. geometry2: required. This parameter must be of the GEOMETRY type. It specifies a container geometry. The function returns a value of the BOOLEAN type. If geometry2 contains geometry1, the function returns true. Otherwise, it returns false.
 
@@ -13940,11 +17218,21 @@ SELECT ST_Within(ST_Point(2, 3), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result 
 
 ##### 3.12.6.1 ST_GeoHash
 
-This topic describes how to use the ST_GeoHash function in MaxCompute and provides reference examples. This function calculates the GeoHash value of an input point geometry and returns the result as a string. The function accepts longitude and latitude values or geometries returned by ST_ functions. If the precision is not specified, the maximum precision is used by default. The precision value depends on your application requirements and the characteristics of your spatial data.
+This topic describes how to use the ST_GeoHash function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function calculates the GeoHash value of an input point geometry and returns the result as a string. The function accepts longitude and latitude values or geometries returned by ST_ functions. If the precision is not specified, the maximum precision is used by default. The precision value depends on your application requirements and the characteristics of your spatial data.
+
+**Function syntax**
 
 ```
 STRING ST_GeoHash(GEOMETRY geometry, INT precision); STRING ST_GeoHash(DOUBLE longitude, DOUBLE latitude, INT precision);
 ```
+
+**Parameters**
 
 geometry: required. This parameter must be of the GEOMETRY type. It specifies an input point geometry. longitude: required. This parameter must be of the DOUBLE type. It specifies a longitude value. latitude: required. This parameter must be of the DOUBLE type. It specifies a latitude value. precision: optional. This parameter must be of the INT type. It specifies the precision of GeoHash encoding. The default value is the maximum precision. This function returns a value of the STRING type. The value indicates the GeoHash encoding of an input point geometry.
 
@@ -13966,11 +17254,21 @@ SELECT ST_GeoHash(ST_Point(-102.849854, 36.451113), 8); -- Return result +------
 
 ##### 3.12.6.2 ST_PointFromGeoHash
 
-This topic describes how to use the ST_PointFromGeoHash function in MaxCompute and provides reference examples. This function returns a point geometry based on an input GeoHash value. If the precision is not specified, the function uses the maximum precision by default. The precision value depends on your application requirements and the characteristics of your spatial data.
+This topic describes how to use the ST_PointFromGeoHash function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns a point geometry based on an input GeoHash value. If the precision is not specified, the function uses the maximum precision by default. The precision value depends on your application requirements and the characteristics of your spatial data.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_PointFromGeoHash(STRING geohash, INT precision);
 ```
+
+**Parameters**
 
 geohash: required. This parameter must be of the STRING type. It specifies an input GeoHash encoded value. precision: optional. This parameter must be of the INT type. It specifies the precision of GeoHash encoding. The default value is the maximum precision. This function returns a value of the GEOMETRY type (POINT). The value indicates the point geometry that corresponds to the GeoHash encoded value.
 
@@ -13988,13 +17286,27 @@ SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq')); -- Result +--------------
 
 ##### 3.12.6.3 ST_EnvelopeFromGeoHash
 
-This topic describes how to use the ST_EnvelopeFromGeoHash function in MaxCompute and provides reference examples. This function returns a bounding rectangle of a specified precision based on an input GeoHash value. If the precision is not specified, the maximum precision is used by default. The precision value depends on your application requirements and the characteristics of your spatial data.
+This topic describes how to use the ST_EnvelopeFromGeoHash function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function returns a bounding rectangle of a specified precision based on an input GeoHash value. If the precision is not specified, the maximum precision is used by default. The precision value depends on your application requirements and the characteristics of your spatial data.
+
+**Function syntax**
 
 ```
 GEOMETRY ST_EnvelopeFromGeoHash(STRING geohash, INT precision);
 ```
 
-geohash: required. This parameter must be of the STRING type. It specifies an input GeoHash encoded value. precision: optional. This parameter must be of the INT type. It specifies the precision of GeoHash encoding. The default value is the maximum precision. This function returns a value of the GEOMETRY type (POLYGON). The value indicates the bounding rectangle of the specified precision corresponding to the GeoHash encoded value.
+**Parameters**
+
+geohash: required. This parameter must be of the STRING type. It specifies an input GeoHash encoded value. precision: optional. This parameter must be of the INT type. It specifies the precision of GeoHash encoding. The default value is the maximum precision.
+
+**Return value**
+
+This function returns a value of the GEOMETRY type (POLYGON). The value indicates the bounding rectangle of the specified precision corresponding to the GeoHash encoded value.
 
 ```
 SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq', 8)); -- Result +------------------------------------------------------------+
@@ -14010,13 +17322,29 @@ SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq', 8)); -- Result +--------
 
 ##### 3.12.6.4 ST_GeoHashNeighbours
 
-This topic describes how to use the ST_GeoHashNeighbours function in MaxCompute and provides reference examples. This function is a User-Defined Table-Generating Function (UDTF) that generates nine rows of data. Based on the input longitude, latitude, and precision, this function returns nine GeoHash string values that represent the current point and its surrounding neighbors. The precision parameter must be specified.
+This topic describes how to use the ST_GeoHashNeighbours function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+This function is a User-Defined Table-Generating Function (UDTF) that generates nine rows of data. Based on the input longitude, latitude, and precision, this function returns nine GeoHash string values that represent the current point and its surrounding neighbors. The precision parameter must be specified.
+
+**Function syntax**
 
 ```
 list_of_string ST_GeoHashNeighbours(DOUBLE longitude, DOUBLE latitude, INT precision)
 ```
 
-; longitude: required. This parameter must be of the DOUBLE type. It specifies a longitude value. latitude: required. This parameter must be of the DOUBLE type. It specifies a latitude value. precision: required. This parameter must be of the INT type. It specifies the precision of GeoHash encoding. The function returns nine GeoHash string values, which represent the GeoHash encodings of the current point and its eight surrounding neighbors. This function is a UDTF that generates nine rows of data.
+;
+
+**Parameters**
+
+longitude: required. This parameter must be of the DOUBLE type. It specifies a longitude value. latitude: required. This parameter must be of the DOUBLE type. It specifies a latitude value. precision: required. This parameter must be of the INT type. It specifies the precision of GeoHash encoding.
+
+**Return value**
+
+The function returns nine GeoHash string values, which represent the GeoHash encodings of the current point and its eight surrounding neighbors. This function is a UDTF that generates nine rows of data.
 
 ```
 SELECT ST_GeoHashNeighbours(-102.849854, 36.451113, 10) AS geohash; -- Result +------------+
@@ -14080,13 +17408,27 @@ SELECT ST_S2CellCenterPoint('549015'); SELECT ST_AsText(ST_S2CellCenterPoint('89
 
 ##### 3.12.7.4 ST_S2CellNeighbours
 
-This topic describes how to use the ST_S2CellNeighbours function in MaxCompute and provides reference examples. The function calculates all neighboring cells of a specified S2 cell at a given level, and returns a list of S2 cell IDs for all neighboring cells.
+This topic describes how to use the ST_S2CellNeighbours function in MaxCompute and provides reference examples.
+
+**Instructions**
+
+**Description**
+
+The function calculates all neighboring cells of a specified S2 cell at a given level, and returns a list of S2 cell IDs for all neighboring cells.
+
+**Function syntax**
 
 ```
 list_of_string ST_S2CellNeighbours(STRING cellId, INT level);
 ```
 
-cellId: required. This parameter must be of the STRING type. It specifies the ID of an S2 cell. level: required. This parameter must be of the INT type. It specifies the level of the S2 cell. The function returns a list of strings (LIST_OF_STRING). The value includes the S2 cell IDs for all neighboring cells of the given cell at the specified level.
+**Parameters**
+
+cellId: required. This parameter must be of the STRING type. It specifies the ID of an S2 cell. level: required. This parameter must be of the INT type. It specifies the level of the S2 cell.
+
+**Return value**
+
+The function returns a list of strings (LIST_OF_STRING). The value includes the S2 cell IDs for all neighboring cells of the given cell at the specified level.
 
 ```
 SELECT ST_S2CellNeighbours('549015', 10) AS neighbour; -- Return result +-----------+
@@ -14492,6 +17834,8 @@ You can use the following statement to create a hash-clustered table. You must s
 CREATE TABLE [IF NOT EXISTS] table_name [(col_name data_type [comment col_comment], ...)] [comment table_comment] [PARTITIONED BY (col_name data_type [comment col_comment], ...)] [CLUSTERED BY (col_name [, col_name, ...]) [SORTED BY (col_name [ASC | DESC] [, col_nam e [ASC | DESC] ...])] INTO number_of_buckets BUCKETS] [AS select_statement]
 ```
 
+**Parameters**
+
 The following sections describe the CLUSTERED BY, SORTED BY, and INTO number_of_buckets BUCKETS clauses.
 
 **CLUSTERED BY**
@@ -14504,7 +17848,11 @@ The SORTED BY clause specifies how fields are sorted in a bucket. We recommend t
 
 **INTO number_of_buckets BUCKETS**
 
-The INTO number_of_buckets BUCKETS clause specifies the number of hash buckets, which is required. The number of hash buckets is determined by the volume of data. More buckets indicate higher concurrency, which shortens the job running time. However, if a large number of buckets exist, excessive small files may be generated. In addition, high concurrency increases CPU time. We recommend that you set the data size of each bucket to a value that ranges from 500 MB to 1 GB. If a large table is used, you can adjust the value to a larger value based on your business requirements. You can remove the shuffle operation only for tables with the same number of buckets in MaxCompute. The maximum number of buckets is 4,096. If the number of buckets exceeds the value, the performance and resource usage may be affected. If you want to remove the shuffle and sort operations during a JOIN operation on two tables, the numbers of hash buckets in the tables must be the same. If the numbers that are calculated based on the aforementioned method are inconsistent, we recommend that you use the larger number for the JOIN operation. This ensures that SQL statements can be concurrently executed in an efficient manner. If the size of the large table is much larger than the size of the small table, you can set the number of buckets for the large table to a value that is several times the number of buckets for the small table. For example, you can set the number of buckets for the large table to 1,024 and set the number of buckets for the small table to 256. If automatic hash bucket split and merging are supported, you can perform the JOIN operation based on the data characteristics of MaxCompute. You can use the following statement to create a standard table:
+The INTO number_of_buckets BUCKETS clause specifies the number of hash buckets, which is required. The number of hash buckets is determined by the volume of data. More buckets indicate higher concurrency, which shortens the job running time. However, if a large number of buckets exist, excessive small files may be generated. In addition, high concurrency increases CPU time. We recommend that you set the data size of each bucket to a value that ranges from 500 MB to 1 GB. If a large table is used, you can adjust the value to a larger value based on your business requirements. You can remove the shuffle operation only for tables with the same number of buckets in MaxCompute. The maximum number of buckets is 4,096. If the number of buckets exceeds the value, the performance and resource usage may be affected. If you want to remove the shuffle and sort operations during a JOIN operation on two tables, the numbers of hash buckets in the tables must be the same. If the numbers that are calculated based on the aforementioned method are inconsistent, we recommend that you use the larger number for the JOIN operation. This ensures that SQL statements can be concurrently executed in an efficient manner. If the size of the large table is much larger than the size of the small table, you can set the number of buckets for the large table to a value that is several times the number of buckets for the small table. For example, you can set the number of buckets for the large table to 1,024 and set the number of buckets for the small table to 256. If automatic hash bucket split and merging are supported, you can perform the JOIN operation based on the data characteristics of MaxCompute.
+
+**Examples**
+
+You can use the following statement to create a standard table:
 
 ```
 CREATE TABLE t1 (a string, b string, c bigint) CLUSTERED BY (c) SORTED by (c) INTO 1024 BUCKETS;
@@ -14602,7 +17950,11 @@ In addition to computation optimization, storage space is greatly saved if table
 
 #### 3.13.4 ShuffleRemove
 
-This topic describes the operations that are related to ShuffleRemove. Range-clustered tables support the join and aggregate operations. If a join key or group key is a range-clustered key or its prefix, data redistribution is not required. This mechanism is called ShuffleRemove, which improves execution efficiency.
+This topic describes the operations that are related to ShuffleRemove.
+
+**Instructions**
+
+Range-clustered tables support the join and aggregate operations. If a join key or group key is a range-clustered key or its prefix, data redistribution is not required. This mechanism is called ShuffleRemove, which improves execution efficiency.
 **Usage**: The `odps.optimizer.enable.range.partial.repartitioning` flag specifies whether
 to enable this feature. By default, this feature is disabled. If the two hash-clustered tables you want to join have different numbers of buckets but the numbers are multiples of each other, data redistribution is not required. This improves execution efficiency.
 **Usage**: The `odps.optimizer.enable.hash.partial.repartitioning` flag specifies whether to
@@ -14626,6 +17978,8 @@ This topic describes the common SET parameters that are used in MaxCompute to co
 
 **Set the number of CPUs**
 
+**Description**
+
 This parameter specifies the number of CPUs used by each instance in a Map task. Default value: 100. Valid values: [50, 800].
 
 **SET command**
@@ -14635,6 +17989,8 @@ SET odps.sql.mapper.cpu=100;
 ```
 
 **Set the memory size**
+
+**Description**
 
 This parameter specifies the memory size of each instance in a Map task. Unit: MB. Default value: 1024. Valid values: [256, 12288].
 
@@ -14646,6 +18002,8 @@ SET odps.sql.mapper.memory=1024;
 
 **Set the file merge threshold**
 
+**Description**
+
 This parameter specifies the maximum size of control files to be merged. Unit: MB. Default value: 64. Valid values: [0, Integer.MAX_VALUE]. You can configure this variable to control the input of mappers.
 
 **SET command**
@@ -14655,6 +18013,8 @@ SET odps.sql.mapper.merge.limit.size=64;
 ```
 
 **Set the Map input size**
+
+**Description**
 
 This parameter specifies the maximum data input volume for a Map task. Unit: MB. Default value: 256. Valid values: [1, Integer.MAX_VALUE]. You can configure this variable to control the input of mappers.
 
@@ -14670,6 +18030,8 @@ This topic describes common SET parameters that are used to configure Join task 
 
 **Set the number of instances**
 
+**Description**
+
 This parameter specifies the number of instances of a Join task. Default value: -1. Valid values: [0, 2000].
 
 **SET command**
@@ -14679,6 +18041,8 @@ SET odps.sql.joiner.instances=-1;
 ```
 
 **Set the number of CPUs**
+
+**Description**
 
 This parameter specifies the number of CPUs used by each instance of a Join task. Default value: 100. Valid values: [50, 800].
 
@@ -14704,6 +18068,8 @@ This topic describes the common SET parameters that are used to configure Reduce
 
 **Set the number of instances**
 
+**Description**
+
 This parameter specifies the number of instances in a Reduce task. Default value: -1. Valid values: [0, 2000].
 
 **SET command**
@@ -14714,6 +18080,8 @@ SET odps.sql.reducer.instances=-1;
 
 **Set the number of CPUs**
 
+**Description**
+
 This parameter specifies the number of CPUs used by each instance in a Reduce task. Default value: 100. Valid values: [50, 800].
 
 **SET command**
@@ -14723,6 +18091,8 @@ SET odps.sql.reducer.cpu=100;
 ```
 
 **Set the memory size**
+
+**Description**
 
 This parameter specifies the memory size of each instance in a Reduce task. Unit: MB. Default value: 1024. Valid values: [256, 12288].
 
@@ -14738,6 +18108,8 @@ This topic describes common SET parameters that are used to control the executio
 
 **Set the number of CPUs**
 
+**Description**
+
 This parameter specifies the maximum memory size used by the UDF JVM heap. Unit: MB. Default value: 1024. Valid values: [256, 12288].
 
 **SET command**
@@ -14747,6 +18119,8 @@ SET odps.sql.udf.jvm.memory=1024;
 ```
 
 **Set the timeout period**
+
+**Description**
 
 This parameter specifies the timeout period of a UDF. Unit: seconds. Default value: 600. Valid values: [0, 3600].
 
@@ -14758,6 +18132,8 @@ SET odps.sql.udf.timeout=600;
 
 **Set the maximum memory**
 
+**Description**
+
 This parameter specifies the maximum memory size used by the UDF Python API. Unit: MB. Default value: 256. Valid values: [64, 3072].
 
 **SET command**
@@ -14768,6 +18144,8 @@ SET odps.sql.udf.python.memory=256;
 
 **Enable result reuse**
 
+**Description**
+
 When this parameter is set to true, each UDF function expression can be calculated only once. This improves performance. Default value: true.
 
 **SET command**
@@ -14777,6 +18155,8 @@ SET odps.sql.udf.optimize.reuse=true/false;
 ```
 
 **Enable strict mode**
+
+**Description**
 
 This parameter specifies whether functions return NULL or an error if dirty data is found. If the parameter is set to true, an error is returned. Otherwise, NULL is returned.
 
@@ -14791,6 +18171,8 @@ SET odps.sql.udf.strict.mode=false/true;
 This topic describes MapJoin configurations.
 
 **Set the maximum memory**
+
+**Description**
 
 This parameter specifies the maximum memory size for a small table that is involved in a MapJoin operation. Unit: MB. Default value: 512.
 
@@ -14816,6 +18198,8 @@ This topic describes configurations of data skew.
 
 **Enable GROUP BY optimization**
 
+**Description**
+
 This parameter allows you to enable GROUP BY optimization.
 
 **SET command**
@@ -14825,6 +18209,8 @@ SET odps.sql.groupby.skewindata=true/false;
 ```
 
 **Enable JOIN optimization**
+
+**Description**
 
 This parameter allows you to enable JOIN optimization. This is effective only when
 **odps.sql.skewinfo** is specified.
@@ -14836,6 +18222,8 @@ SET odps.sql.skewjoin=true/false;
 ```
 
 **Configure JOIN optimization**
+
+**Description**
 
 This parameter allows you to configure detailed information for JOIN optimization.
 
@@ -14850,6 +18238,8 @@ Command syntax:
 ```
 SET odps.sql.skewinfo=skewed_src:(skewed_key)[("skewed_value")]
 ```
+
+**Examples**
 
 Configure a single skewed value for a single field.
 
@@ -15167,6 +18557,8 @@ SELECT /*+ skewjoin(a(c0, c1)(("1", "2"), ("3", "4"))) */ * FROM T0 a JOIN T1 b 
 
 Method 3 in which the **skewvalue** parameter is specified is more efficient than Method 1 and Method 2 in which the skewvalue parameter is not specified. If you use Analyze and Freeride to collect TopK skewed hot key values, SKEWJOIN may automatically take effect without requiring you to specify a hint.
 
+**Examples**
+
 **Identify the JOIN statement that causes data skew**
 
 1. In the following screenshot captured on LogView, J5_3_4 is the Fuxi task that took the
@@ -15353,6 +18745,8 @@ In MaxCompute SQL, the backslash (\) is an escape character that invokes an alte
 | \Z | Ctrl-Z. |
 | \0 or \00 | An end character. |
 
+**Examples**
+
 Use an escape character to indicate a literal interpretation of the characters that follow the escape character. String constants in MaxCompute SQL can be expressed in single quotation marks (' ') or double quotation marks ('' ''). You can include double quotation marks ('' '') in a string that is enclosed in single quotation marks (' ') or include single quotation marks (' ') in a string that is enclosed in double quotation marks ('' ''). Examples:
 
 ```
@@ -15371,7 +18765,11 @@ This topic describes how to use the LIKE operator for character matching.
 
 **Usage notes**
 
-In LIKE character matching, a percent sign (%) is a wildcard character that matches an arbitrary number of characters. An underscore (_) is a wildcard character that matches a single character. To match percent signs (**%**) or underscores (**_**), escape them with double backslashes (\\). Specifically, **\\%**or **\\_** is used for the match.
+In LIKE character matching, a percent sign (%) is a wildcard character that matches an arbitrary number of characters. An underscore (_) is a wildcard character that matches a single character.
+
+**Examples**
+
+To match percent signs (**%**) or underscores (**_**), escape them with double backslashes (\\). Specifically, **\\%**or **\\_** is used for the match.
 
 ```
 SELECT 'abcd' LIKE 'ab%' ; -- Result +-------+
@@ -15659,7 +19057,7 @@ This topic describes open source features of MaxCompute.
 
 **SDK**
 
-MaxCompute provides APIs for SDK for Java and SDK for Python to create, view, and delete MaxCompute tables. You can use SDKs to edit code and perform required operations on Technical support: View the official documentation or submit a ticket.
+MaxCompute provides APIs for SDK for Java and SDK for Python to create, view, and delete MaxCompute tables. You can use SDKs to edit code and perform required operations on MaxCompute Technical support: View the official documentation or submit a ticket.
 
 **MaxCompute RODPS**
 

@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 174
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 DataWorks Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%A4%A7%E6%95%B0%E6%8D%AE/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20DataWorks%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 DataWorks Developer Guide 20220928
@@ -201,7 +201,7 @@ In this command, the license is provided by the DataWorks technical support staf
 
 after you run the command, you can use the authorized account to make API requests. Sample code
 
-```java
+```
 public void setup () throws IOException, ClientException {
    popEndpoint = "dataworks. envxxx.yyyyy.com";
    popEndpointName = "default";
@@ -213,6 +213,11 @@ public void setup () throws IOException, ClientException {
    DefaultProfile.addEndpoint(popEndpointName, regionId, popProduct, popEndpoint);
    IClientProfile profile = DefaultProfile.getProfile(regionId, accessId, accessKey);
    IAcsClient client = new DefaultAcsClient(profile);
+```
+
+`}`
+
+```java
 /** * Example: DemoApiRequest * @throws ServerException * @throws ClientException */ @Test public void test_DemoApi() throws ServerException, ClientException {
    DemoApiRequest request = new DemoApiRequest();
    request.setKeyword("abc");
@@ -220,7 +225,7 @@ public void setup () throws IOException, ClientException {
    System.out.println(gson.toJson(response));
 ```
 
-Specify the account for calling API operations that involve the scheduling system If you call an API operation that involves the scheduling system, you must specify the following three common request parameters: accountId, accountPwd, and clientName. The following procedure describes how to specify these three parameters:
+`}` Specify the account for calling API operations that involve the scheduling system If you call an API operation that involves the scheduling system, you must specify the following three common request parameters: accountId, accountPwd, and clientName. The following procedure describes how to specify these three parameters:
 1. You can ask a field engineer to log on to the database that hosts the base-biz-tsp service. The
 name of the database is dwtsp.
 2. The field engineer inserts a record into the cloudapi_account table to specify the accountId,
@@ -255,6 +260,8 @@ Sample GET request In this example, User B provides an HTTP GET API: /getapi. Th
 
 #### 4.2.6 Response parameters
 
+`{`
+
 ```json
     "requestId": <STRING>, # The request ID, which is used to locate the log entries for tr
 oubleshooting.
@@ -264,6 +271,8 @@ oubleshooting.
     "count": <INTEGER>,
     "returnValue": <The returned result>
 ```
+
+`}`
 
 #### 4.2.7 API example
 
@@ -282,15 +291,49 @@ request.setHeader("tenant_id", "tenant ID"); request.setHeader("base_id", "Apsar
 `y` `p` `g` `g`
 
 ```java
-private static String byteArrayToHexString(byte[] byteArray) { final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b','c', 'd', 'e', 'f'}; String result = null; int l = byteArray.length; char[] str = new char[l << 1]; int k = 0; for (int i = 0; i < l; i++) { byte byte0 = byteArray[i]; str[k++] = HEX_DIGITS[byte0 >>> 4 & 0xf]; str[k++] = HEX_DIGITS[byte0 & 0xf]; result = new String(str); return result; public static String tokenSign(String param, String salt) t hrows Exception { if (StringUtils.isEmpty(param) || StringUtils.isEmpty(salt)) {
+private static String byteArrayToHexString(byte[] byteArray) { final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b','c', 'd', 'e', 'f'}; String result = null; int l = byteArray.length; char[] str = new char[l << 1]; int k = 0; for (int i = 0; i < l; i++) { byte byte0 = byteArray[i]; str[k++] = HEX_DIGITS[byte0 >>> 4 & 0xf]; str[k++] = HEX_DIGITS[byte0 & 0xf];
+```
+
+`}`
+
+```
+result = new String(str); return result;
+```
+
+`}`
+
+```
+public static String tokenSign(String param, String salt) t hrows Exception { if (StringUtils.isEmpty(param) || StringUtils.isEmpty(salt)) {
   return null;
-String query = URLDecoder.decode(param, "UTF-8"); String[] pStr = query.trim().split("&"); Arrays.sort(pStr); StringBuilder buf = new StringBuilder(); for (int i = 0; i < pStr.length; ++i) { buf.append(pStr[i]); buf.append("&"); String paramStr = buf.substring(0, buf.length() - 1); String sourceStr = salt + ":" + paramStr + ":" + salt; MessageDigest md = MessageDigest.getInstance("SHA-256"); byte[] byteArray = md.digest(sourceStr.getBytes("UTF-8")); return byteArrayToHexString(byteArray); protected static HttpUriRequest createHttpRequest(String baseKey, String baseToken, String uri) { StringBuilder buf; int index = uri.indexOf('?') ; if (index == -1) {
+```
+
+`}`
+
+```
+String query = URLDecoder.decode(param, "UTF-8"); String[] pStr = query.trim().split("&"); Arrays.sort(pStr); StringBuilder buf = new StringBuilder(); for (int i = 0; i < pStr.length; ++i) { buf.append(pStr[i]); buf.append("&");
+```
+
+`}`
+
+```
+String paramStr = buf.substring(0, buf.length() - 1); String sourceStr = salt + ":" + paramStr + ":" + salt; MessageDigest md = MessageDigest.getInstance("SHA-256"); byte[] byteArray = md.digest(sourceStr.getBytes("UTF-8")); return byteArrayToHexString(byteArray);
+```
+
+`}`
+
+```java
+protected static HttpUriRequest createHttpRequest(String baseKey, String baseToken, String uri) { StringBuilder buf; int index = uri.indexOf('?') ; if (index == -1) {
    index = uri.length();
    buf = new StringBuilder(uri.length() + baseKey.length() + 13);
    buf.append(uri).append('?') ;
 } else {
    buf = new StringBuilder(uri.length() + baseKey.length() + 13);
    buf.append(uri).append('&');
+```
+
+`}`
+
+```
    buf.append("baseKey=").append(baseKey);
    buf.append("&timestamp=").append(System.currentTimeMillis());
    HttpUriRequest request = new HttpGet(buf.toString()); String signature;
@@ -298,6 +341,11 @@ String query = URLDecoder.decode(param, "UTF-8"); String[] pStr = query.trim().s
        signature = tokenSign(buf.substring(index + 1), baseToken);
    } catch (Exception ex) {
      throw new RuntimeException("error on sign for uri: " + uri, ex);
+```
+
+`}`
+
+```
    request.addHeader("signature", signature);
    return request;
 ```
@@ -314,7 +362,7 @@ URL: /v1.0/node/{projectEnv}/sync Method: POST Path parameters
 |---|---|---|
 | projectEnv | String | The type of the environment. Valid values: DEV and PROD. The value DEV specifies the development environment. The value PROD specifies the production environment. |
 
-Body
+Body `{`
 
 ```json
     "executeMethod": CREATE_NODE_SYNC, # The type of the operation.
@@ -340,7 +388,7 @@ nd 3. The value 0 specifies that the node can be run without waiting for the pre
 "uniqueId": <STRING>, # The unique ID that you define for the request.
 ```
 
-Response ests
+`}` Response ests
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -352,6 +400,8 @@ the operation is successful.
     "returnValue": <LONG>, # Node ID
 ```
 
+`}`
+
 ### 5.2 Update a node
 
 URL: /v1.0/node/{projectEnv}/sync Method: POST Path parameters
@@ -360,7 +410,7 @@ URL: /v1.0/node/{projectEnv}/sync Method: POST Path parameters
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": CREATE_NODE_SYNC, # The operation type.
@@ -386,7 +436,7 @@ e node is executed only after the current cycle of another node is completed. 1:
 "uniqueId": <STRING>, # The unique ID that you define for the request.
 ```
 
-Response ests
+`}` Response ests
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs diagnose the issues.
@@ -396,6 +446,8 @@ Response ests
     "returnValue": true
 ```
 
+`}`
+
 ### 5.3 Update multiple nodes at a time
 
 URL: /v1.0/node/{projectEnv} Method: POST Path parameters
@@ -404,7 +456,7 @@ URL: /v1.0/node/{projectEnv} Method: POST Path parameters
 |---|---|---|
 | projectEnv | String | The type of the environment. Valid values: DEV and PROD. The value DEV specifies the development environment. The value PROD specifies the production environment. |
 
-Body `[`
+Body `[` `{`
 
 ```json
         "executeMethod": "CREATE_NODE", # The operation that you want to perform. Valid val
@@ -464,6 +516,11 @@ ue of updateNodeOnly is set to false.
         "nodeFrom": <STRING>, # Optional. The source of the node, that is, the system from
 which the node is deployed.
         "inputs": [
+```
+
+`{`
+
+```json
                 "data": <STRING>, # Required. The input data of the node.
 ```
 
@@ -473,7 +530,17 @@ which the node is deployed.
             ...
         ], # Required. The input data of the node.
         "outputs": [
+```
+
+`{`
+
+```json
                 "data": <STRING>, # Required. The output data of the node.
+```
+
+`}`
+
+```json
             , ...
         ], # Required. The output data of the node.
         "relatedFlowId": <LONG>, # Optional. The ID of the sub-flow to which the node belon
@@ -510,7 +577,7 @@ pdated when the node is updated.
     ...
 ```
 
-`]` Response
+`]` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -522,6 +589,8 @@ the operation is successful.
     "returnValue": <STRING> # requestId
 ```
 
+`}`
+
 ### 5.4 Delete a node
 
 URL: /v1.0/node/{projectEnv}/sync Method: POST Path parameters
@@ -530,14 +599,14 @@ URL: /v1.0/node/{projectEnv}/sync Method: POST Path parameters
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": DELETE_NODE_SYNC, # The operation type.
     "nodeId": <LONG>, # The node ID.
 ```
 
-Response ests
+`}` Response ests
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -553,7 +622,7 @@ Response ests
         "Node ID": "success",
 ```
 
-…
+… `}` `}`
 
 ### 5.5 Query parent nodes
 
@@ -573,7 +642,7 @@ URL query string parameters
 | nodeIds | String | (Optional) The node IDs, separated by commas (,). |
 | cloudUUID | Long | (Optional) The node ID that is stored in the code library. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -609,7 +678,7 @@ URL query string parameters
 | nodeIds | String | (Optional) The node IDs, separated by commas (,). |
 | cloudUUID | Long | (Optional) The node ID that is stored in the code library. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -624,6 +693,8 @@ Response
     "count": <INTEGER>,
     "returnValue": [<NodeEntity>, ...]
 ```
+
+`}`
 
 ### 5.7 Query the node code
 
@@ -641,7 +712,7 @@ Query parameters in the request URL
 | cloudUUID | Long | The node ID that is stored in the code library. |
 | version | Long | The version of the node code. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -653,6 +724,8 @@ the operation is successful.
     "count": <INTEGER>,
     "returnValue": <STRING> # The node code.
 ```
+
+`}`
 
 ### 5.8 Query nodes
 
@@ -728,7 +801,7 @@ Query parameters in the request URL
 | pageStart | Integer | None. |
 | pageSize | Integer | None. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -743,7 +816,7 @@ the operation is successful.
         ...
 ```
 
-`]`
+`]` `}`
 
 ### 5.9 Query a node by ID
 
@@ -761,7 +834,7 @@ URL query string parameters
 | nodeId | Long | None. |
 | isDetail | Boolean | Indicates whether to query the details about the node. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -776,6 +849,8 @@ Response
     "count": <INTEGER>,
     "returnValue": <NodeEntity>
 ```
+
+`}`
 
 ### 5.10 Obtain the total number of nodes
 
@@ -801,6 +876,8 @@ ests Response
     "returnValue": 283232, # The total number of nodes.
     "success": true
 ```
+
+`}`
 
 ### 5.11 Query node instances
 
@@ -893,7 +970,7 @@ the operation is successful.
         ...
 ```
 
-`]`
+`]` `}`
 
 ### 5.12 Query the operational logs of a node instance
 
@@ -923,6 +1000,8 @@ the operation is successful.
     "returnValue": <STRING>
 ```
 
+`}`
+
 ### 5.13 Query a node instance by ID
 
 URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: GET Path parameters
@@ -939,7 +1018,7 @@ Query parameters in the request URL
 | taskId | Long | The ID of the node instance to query. |
 | isDetail | Boolean | Specifies whether to obtain the application details. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -969,7 +1048,7 @@ URL query string parameters
 | taskId | Long | The ID of the business flow instance that contains the task instance. |
 | depth | Integer | The level of the node. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -987,7 +1066,7 @@ Response
         ...
 ```
 
-`]`
+`]` `}`
 
 ### 5.15 Query the child node instances at a specified level
 
@@ -1005,7 +1084,7 @@ Query parameters in the request URL
 | taskId | Long | The ID of the node instance. |
 | depth | Integer | The level where the node instance resides. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -1020,7 +1099,7 @@ the operation is successful.
         ...
 ```
 
-`]`
+`]` `}`
 
 ### 5.16 Query the number of node instances in each status of an application
 
@@ -1038,7 +1117,7 @@ Query parameters in the request URL
 | appId | Long | - |
 | bizdate | String | - |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -1060,6 +1139,8 @@ the operation is successful.
         "waittingTime": <INTEGER>
 ```
 
+`}` `}`
+
 ### 5.17 Query the number of task instances in each status on a specified business date
 
 instances in each status on a specified business date URL: /v1.0/task/{projectEnv} ests Headers: application/json; charset=UTF-8 Method: GET Path parameters
@@ -1075,7 +1156,7 @@ URL query string parameters
 | executeMethod | String | The operation that you want to perform. Set the value to SEARCH TASK STATISTICS BY OW _ _ _ _ NER. |
 | bizdate | String | None. |
 
-Response
+Response `{`
 
 ```json
    "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues.
@@ -1094,6 +1175,8 @@ Response
          "success": <INTEGER>,
         "waittingTime": <INTEGER>
 ```
+
+`}` `}`
 
 ### 5.18 Query the number of node instances in each status for applications
 
@@ -1160,6 +1243,8 @@ the operation is successful.
         "successCount": <INTEGER>
 ```
 
+`}` `}`
+
 ### 5.19 Rerun an instance
 
 URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: POST Path parameters
@@ -1168,14 +1253,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": "RERUN_TASK",
     "taskId": <LONG>
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1190,7 +1275,7 @@ Response
     "returnValue": true
 ```
 
-ests
+`}` ests
 
 ### 5.20 Restore an instance
 
@@ -1200,14 +1285,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": "RESUM_TASK",
     "taskId": <LONG>
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1221,6 +1306,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.21 Set the instance status to Success and trigger descendant instances
 
@@ -1237,7 +1324,7 @@ Request body ests
     "taskId": <LONG>
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1251,6 +1338,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.22 Terminate a task
 
@@ -1260,14 +1349,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": "KILL_TASK",
     "taskId": <LONG>
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1282,6 +1371,8 @@ Response
     "returnValue": true
 ```
 
+`}`
+
 ### 5.23 Rerun a descendant instance
 
 ests URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: POST Path parameters
@@ -1290,7 +1381,7 @@ ests URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Metho
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": "FIXDATA",
@@ -1298,7 +1389,7 @@ Request body
     "includeTaskIds": [<LONG>, ...]
 ```
 
-Response
+`}` Response `{`
 
 ```json
      "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issue
@@ -1312,6 +1403,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.24 Update the scheduling configurations of an instance
 
@@ -1328,7 +1421,7 @@ Request body ests
     "taskId": <LONG>
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1342,6 +1435,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.25 Pause an instance
 
@@ -1351,14 +1446,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
     "executeMethod": "STOP_TASK",
     "taskId": <LONG>
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1372,6 +1467,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.26 Terminate multiple instances
 
@@ -1381,14 +1478,14 @@ ests URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Metho
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
      "executeMethod": "BATCH_KILL_TASK",
      "includeTaskIds": [<LONG>, ...]
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1402,6 +1499,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.27 Rerun multiple instances
 
@@ -1411,14 +1510,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
      "executeMethod": "BATCH_RESUM_TASK",
      "includeTaskIds": [<LONG>, ...]
 ```
 
-Response ests
+`}` Response ests
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1432,6 +1531,8 @@ Response ests
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.28 Resume multiple tasks
 
@@ -1441,14 +1542,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
       "executeMethod": "BATCH_RESUM_TASK",
       "includeTaskIds": [<LONG>, ...]
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1462,6 +1563,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.29 Pause multiple instances
 
@@ -1471,14 +1574,14 @@ URL: /v1.0/task/{projectEnv} Headers: application/json; charset=UTF-8 Method: PO
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
       "executeMethod": "BATCH_STOP_TASK",
       "includeTaskIds": [<LONG>, ...]
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1492,6 +1595,8 @@ Response
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.30 Set the status of multiple instances to Success
 
@@ -1501,14 +1606,14 @@ instances to Success URL: /v1.0/task/{projectEnv} Headers: application/json; cha
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
      "executeMethod": "BATCH_SETSUCCESS_TASK",
      "includeTaskIds": [<LONG>, ...]
 ```
 
-Response ests
+`}` Response ests
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1522,6 +1627,8 @@ Response ests
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.31 Retrieve the total number of instances on the day
 
@@ -1539,7 +1646,7 @@ URL query string parameters
 | dagType | Integer | (Optional) Default value: 1. |
 | bizdate | String | (Optional) The day before the current day, in the format of yyyy-MM- dd. |
 
-Response
+Response `{`
 
 ```json
     "returnCode": "0",
@@ -1549,6 +1656,8 @@ Response
     "Redding value": 283232, # The number of instances.
     "success": true
 ```
+
+`}`
 
 ### 5.32 Query business flow instances
 
@@ -1565,7 +1674,7 @@ URL query string parameters
 | executeMetho d | String | The operation that you want to perform. Set the value to SEARCH DAG BY ID. _ _ _ |
 | dagId | Long | The ID of the business flow instance that contains the task instance. |
 
-Response
+Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1580,6 +1689,8 @@ Response
     "count": <INTEGER>,
     "returnValue": [<DagEntity>, ...]
 ```
+
+`}`
 
 ### 5.33 Retroactive execution
 
@@ -1615,7 +1726,7 @@ a node. The key is node ID. The value is the ID of the node.
 s to all instances in the DAG.
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1629,6 +1740,8 @@ Response
     "successCode": "0",
     "returnValue": <LONG>, # The DAG ID.
 ```
+
+`}`
 
 ### 5.34 Run a smoke test
 
@@ -1659,7 +1772,7 @@ a node. Set the keys to node ID and the values to the scheduling parameters of t
 or a workflow instance. It applies to all node instances that belong to the workflow instan ce.
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID. It is used to find the log entries for trouble
@@ -1670,6 +1783,8 @@ the operation is successful.
     "successCode": "0",
     "returnValue": <LONG>, # dag id
 ```
+
+`}`
 
 ### 5.35 Execute an ad-hoc business flow
 
@@ -1698,7 +1813,7 @@ a node. The key is node ID. The value is the ID of the node.
 s to all instances in the DAG.
 ```
 
-Response
+`}` Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1714,6 +1829,8 @@ Response
     "returnValue": <LONG>, # The DAG ID.
 ```
 
+`}`
+
 ### 5.36 Terminate a business flow
 
 URL: /v1.0/dag/{projectEnv} Method: POST Path parameters
@@ -1722,14 +1839,14 @@ URL: /v1.0/dag/{projectEnv} Method: POST Path parameters
 |---|---|---|
 | projectEnv | String | Valid values: DEV and PROD. |
 
-Request body
+Request body `{`
 
 ```json
         "executeMethod": "CREATE_DAG",
        "Dagids": [<long>,...], # The ID of the DAGs to be terminated.
 ```
 
-Response ests
+`}` Response ests
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1744,9 +1861,11 @@ Response ests
     "Charlevalue": <Boolean>
 ```
 
+`}`
+
 ### 5.37 Submit a resource package
 
-Description: You can call this operation to submit a resource package that contains flow and node definitions and resources. After the operation is called, RequestID is returned. URL: /submission/project/{projectIdentifier} Method: POST Headers: Content-type: multipart/form-data Data type: zipped files Response
+Description: You can call this operation to submit a resource package that contains flow and node definitions and resources. After the operation is called, RequestID is returned. URL: /submission/project/{projectIdentifier} Method: POST Headers: Content-type: multipart/form-data Data type: zipped files Response `{`
 
 ```json
     "requestId": <STRING>, # The request ID, used to search for logs to diagnose the issues
@@ -1760,6 +1879,8 @@ Description: You can call this operation to submit a resource package that conta
     "successCode": "0",
     "returnValue": true
 ```
+
+`}`
 
 ### 5.38 Query the submission status of a resource package
 
@@ -1790,9 +1911,13 @@ e system.
         "message": <STRING>
 ```
 
+`}` `}`
+
 ### 5.39 Data structure
 
 #### 5.39.1 NodeModifyDto
+
+`{`
 
 ```json
         "nodeId": <LONG>, # The ID of the node in the scheduling system. This parameter mus
@@ -1842,6 +1967,11 @@ ue of updateNodeOnly is set to false.
         "nodeFrom": <STRING>, # Optional. The source of the node, that is, the system from
 which the node is deployed.
         "inputs": [
+```
+
+`{`
+
+```json
                 "data": <STRING>, # Required. The input data of the node.
 ```
 
@@ -1851,7 +1981,17 @@ which the node is deployed.
             ...
         ], # Required. The input data of the node.
         "outputs": [
+```
+
+`{`
+
+```json
                 "data": <STRING>, # Required. The output data of the node.
+```
+
+`}`
+
+```json
             , ...
         ], # Required. The output data of the node.
         "relatedFlowId": <LONG>, # Optional. The ID of the sub-flow to which the node belon
@@ -1900,6 +2040,8 @@ ally triggered.
 s reloading node.
         "flowId": <LONG> # Required. The ID of the flow to which the node belongs.
 ```
+
+`}`
 
 #### 5.39.2 TaskEntity
 
@@ -2034,7 +2176,7 @@ NONE(0), // The node can be run without waiting for the previous cycle of a spec
 
 ### 6.1 GetInstanceSummary
 
-You can call this operation to query the information about instances of readers or writers based on the specified Apsara Stack tenant account ID.
+You can call this operation to query the information about instances of readers or writers based on the specified Apsara Stack tenant account ID. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2043,6 +2185,8 @@ You can call this operation to query the information about instances of readers 
 | EndTime | String | Yes | The end time of time range where this operation is performed. Specify the time in the yyyy-mm-dd format. |
 | StartTime | String | Yes | The start time of time range where this operation is performed. Specify the time in the yyyy-mm-dd format. |
 | Type | String | Yes | Specifies whether to return the instance information about readers or writers. A value of 1 indicates that the result is the information about instances of readers. A value of 2 indicates that the result is the information about instances of writers. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2063,21 +2207,29 @@ Sample request
 http(s)://[Endpoint]/? Action=GetInstanceSummary &Aliuid=178*****2537 &EndTime=2019-02-21 &StartTime=2019-02-21 &Type=1 &<Common request parameters>
 ```
 
-Sample response
+Sample response `{`
 
 ```json
-"Data": [ "InstanceCnt": 17, "AliyunKp": "1782****62537", "PluginName": "mysql", "TotalRecords": 4255624, "TotalBytes": 266409932
+"Data": [
 ```
 
-`],`
+`{`
+
+```json
+"InstanceCnt": 17, "AliyunKp": "1782****62537", "PluginName": "mysql", "TotalRecords": 4255624, "TotalBytes": 266409932
+```
+
+`}` `],`
 
 ```json
 "ErrMsg": "success", "RequestId": "e19f8502-76d2-4cb1-ab54-b93013cfad17", "ErrCode": 0
 ```
 
+`}`
+
 ### 6.2 AddResGroupGateWay
 
-You can call this operation to add a gateway to a resource group.
+You can call this operation to add a gateway to a resource group. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2093,6 +2245,8 @@ You can call this operation to add a gateway to a resource group.
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
 | TenantId | Long | Yes | The ID of the tenant. |
 | VCpu | Integer | Yes | The number of cores in the vCPU of the gateway. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2116,7 +2270,11 @@ Sample success responses
     "errCode": 0
 ```
 
+`}`
+
 ### 6.3 CreateConnection
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2134,6 +2292,8 @@ Sample success responses
 |---|---|---|---|
 | SubType | String | No | The subtype of the data source. Currently, only MySQL is supported. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | Long | The returned data. If the operation is successful, it returns the ID of the connected data source. If the operation fails, it returns null. |
@@ -2148,6 +2308,8 @@ http(s)://[Endpoint]/? Action=CreateConnection &<Common request parameters>
 ```
 
 ### 6.4 CreateDag
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2166,6 +2328,8 @@ http(s)://[Endpoint]/? Action=CreateConnection &<Common request parameters>
 | ProjectEnv | String | Yes | The type of the environment. Valid values: DEV and PROD. The value DEV specifies the development environment. The value PROD specifies the production environment. |
 | TenantId | Long | Yes | The ID of the tenant. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. If an error occurs, send the request ID to the developers of the scheduling system for troubleshooting. |
@@ -2174,7 +2338,7 @@ http(s)://[Endpoint]/? Action=CreateConnection &<Common request parameters>
 | ReturnMessage | String | The error message. |
 | ReturnValue | Long | The value of the DagID parameter. |
 
-Sample success responses
+Sample success responses `{`
 
 ```json
     "returnCode":"0",
@@ -2185,7 +2349,11 @@ Sample success responses
     "success":true
 ```
 
+`}`
+
 ### 6.5 CreateDQCEntity
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2194,6 +2362,8 @@ Sample success responses
 | MatchExpression | String | Yes | The name of the partition filter expression. |
 | ProjectName | String | Yes | The name of the MaxCompute project. |
 | TableName | String | Yes | The name of the table. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2206,15 +2376,17 @@ Sample requests
 /? Action=CreateDQCEntity &EntityLevel=0 &EnvType=odps &MatchExpression=ds=${yyyymmdd-1} &ProjectName=autotest &TableName=test_dqc_decimal_1119_2 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "ReturnCode": "0", "ReturnValue": 4003923
 ```
 
+`}`
+
 ### 6.6 CreateDQCFollower
 
-You can call this operation to subscribe to messages from Data Quality. The messages are generated for the partitions that are specified by the partition filter expression. The methods of receiving messages include the emails, Short Message Service (SMS), and DingTalk. Not e To receive messages by using DingTalk, specify a DingTalk group that receives the messages on the Robot Management page and add a chatbot. After you add the chatbot, a webhook URL for the chatbot is automatically generated. You can then enable Data Quality to send HTTP POST requests to this URL to send messages to the specified DingTalk group.
+You can call this operation to subscribe to messages from Data Quality. The messages are generated for the partitions that are specified by the partition filter expression. The methods of receiving messages include the emails, Short Message Service (SMS), and DingTalk. Not e To receive messages by using DingTalk, specify a DingTalk group that receives the messages on the Robot Management page and add a chatbot. After you add the chatbot, a webhook URL for the chatbot is automatically generated. You can then enable Data Quality to send HTTP POST requests to this URL to send messages to the specified DingTalk group. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2227,6 +2399,8 @@ You can call this operation to subscribe to messages from Data Quality. The mess
 | AlarmMode | Integer | No | The method of receiving alerts and notifications. The value 1 specifies that you receive alerts and notifications by using emails. The value 2 specifies that you receive alerts and notifications by using emails and the SMS. The value 3 specifies that you receive alerts and notifications from the specified DingTalk group by using the webhook URL. The value 4 specifies that you receive alerts and notifications from the specified DingTalk group and mention all members in the group. |
 | EntityId | Long | No | The ID of the partition filter expression. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | ReturnCode | String | The return code. |
@@ -2238,7 +2412,7 @@ Sample requests
 /? Action=CreateDQCFollower &AlarmMode=2 &EntityId=4003922 &Follower=50624 &ProjectName=autotest &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "ReturnValue": 1726, "ReturnCode": "0"
@@ -2246,12 +2420,16 @@ Sample success responses
 
 ### 6.7 CreateDQCRule
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to CreateDQCRule. |
 | EntityId | Integer | Yes | The ID of the partition expression. |
 | ProjectName | String | Yes | The name of the MaxCompute project. |
 | Rules | String | Yes | The rules to be created. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2264,15 +2442,17 @@ Sample request
 /? EntityId=4003922 &ProjectName=autotest &Rules={ "addTemplateRules":[{ "property":"table_count", "propertyType":"table", "blockType":"0", "templateId":"7", "trend":"abs", "warningThreshold":10, "critical Threshold":50, "ruleType":"0" }], "addSelfserviceRules":[{ "property":"table_count", "propertyType":"table", "blockType":"0", "methodName":"count/table_count", "w hereCondition":"id>100", "checker":"9", "trend":"abs", "operator":">", "expectValue":0, "comment":"This is a rule.", "ruleType":"1", "warningThreshold":null, "criticalThreshold":null}], "envType":"o dps", "projectName":"autotest", "entityId":4003922} &<Common request parameters>
 ```
 
-Sample response
+Sample response `{`
 
 ```json
 "ReturnValue": true, "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.8 CreateManualDag
 
-You can call this API operation in OpenAPI Explorer for debugging. OpenAPI Explorer allows you to call API operations through its web interface. It automatically generates SDK code examples based on the specified request parameters.
+You can call this API operation in OpenAPI Explorer for debugging. OpenAPI Explorer allows you to call API operations through its web interface. It automatically generates SDK code examples based on the specified request parameters. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2296,6 +2476,8 @@ You can call this API operation in OpenAPI Explorer for debugging. OpenAPI Explo
 |   |   |   |   |   |   |   |   | "key1=val1 |   |   |   |
 |   |   |   |   |   |   |   |   | key2=val2" } |   |   |   |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -2307,13 +2489,17 @@ You can call this API operation in OpenAPI Explorer for debugging. OpenAPI Explo
 |---|---|---|
 | ReturnValue | Long | The value of the dagId parameter. |
 
-Sample response
+Sample response `{`
 
 ```json
 "RequestId": "****", "ReturnCode": 0, "ReturnMessage": "", "ReturnErrorSolution": "", "ReturnValue": 123142124124
 ```
 
+`}`
+
 ### 6.9 CreateMetaSpiderJob
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2324,6 +2510,8 @@ Sample response
 | SpiderConfig | String | Yes | The configuration information about the job to create. |
 | TenantId | Long | Yes | The ID of the tenant. |
 | SpiderCron | String | No | The CRON expression of the job to create. |
+
+Response parameters
 
 | Parameter | Type |
 |---|---|
@@ -2344,6 +2532,8 @@ http(s)://[Endpoint]/? Action=CreateMetaSpiderJob &<Common request parameters>
 
 ### 6.10 CreateResGroup
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to CreateResGroup. |
@@ -2352,6 +2542,8 @@ http(s)://[Endpoint]/? Action=CreateMetaSpiderJob &<Common request parameters>
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
 | ProjectIds | JSON | Yes | The IDs of the DataWorks workspaces. |
 | TenantId | Long | Yes | The ID of the tenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2366,19 +2558,23 @@ Sample requests
 http(s)://[Endpoint]/? Action=CreateResGroup &BaseId=1486821399873474 &Name=test20190509 &ProjectId=75059 &ProjectIds=["75059"] &TenantId=267883377178690 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0a98***e0b1b", "data": { "id": 334603176233473, "identifier": "e86f****64dde44", "name": "test1234", "nick": null, "type": "DI", "mode": "ISOLATE", "tenantId": 267883377178690, "enableKp": false, "cluster": "e86f1****64dde44", "quota": null, "isDefault": false, "sequence": null, "action": "create", "specs": { "resourceGroupTag": "1"
 ```
 
-`},`
+`}` `},`
 
 ```json
 "errMsg": "success", "errCode": 0
 ```
 
+`}`
+
 ### 6.11 DeleteConnections
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2400,12 +2596,16 @@ http(s)://[Endpoint]/? Action=DeleteConnections &<Common request parameters>
 
 ### 6.12 DeleteDQCEntity
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDQCEntity. |
 | EntityId | Long | Yes | The ID of the partition filter expression. |
 | EnvType | String | Yes | The type of the computing engine. Supported computing engines are MaxCompute, Hive, and Realtime Compute. |
 | ProjectName | String | Yes | The name of the MaxCompute project. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2418,19 +2618,25 @@ Sample requests
 /? Action=DeleteDQCEntity &EntityId=4003922 &EnvType=odps &ProjectName=autotest &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "ReturnValue": true, "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.13 DeleteDQCFollower
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DeleteDQCFollower. |
 | ProjectName | Long | No | The name of the MaxCompute project. |
 | Id | Long | No | The ID of the subscription. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2449,13 +2655,19 @@ Sample response
 "ReturnValue": true, "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.14 DeleteDQCRule
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDQCRule. |
 | ProjectName | String | No | The name of the MaxCompute project. |
 | Id | Long | No | The ID of the Data Quality check (DQC) rule to delete. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2468,11 +2680,13 @@ Sample requests
 /? Action=DeleteDQCRule &Id=279580661 &ProjectName=autotest &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "ReturnCode": "0", "ReturnValue": true
 ```
+
+`}`
 
 ### 6.15 DeleteProjectResGroup
 
@@ -2486,6 +2700,8 @@ Requestparameters
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
 | ResGroupId | Long | Yes | The ID of the resource group. |
 | TenantId | Long | Yes | The ID of the tenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2506,7 +2722,11 @@ Sample success responses
 "requestId": "0bc1746d15574010397142703e6afb", "data": true, "errMsg": "success", "errCode": 0
 ```
 
+`}`
+
 ### 6.16 DeleteResGroupGateWay
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2516,6 +2736,8 @@ Sample success responses
 | NodeName | String | Yes | The name of the gateway. |
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
 | TenantId | Long | Yes | The ID of the tenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2530,13 +2752,17 @@ Sample requests
 http(s)://[Endpoint]/? Action=DeleteResGroupGateWay &BaseId=1486821399873474 &Identifier=3907f9a5832942f9b63b0908476b2506 &NodeName=hostname &ProjectId=75059 &TenantId=267883377178690 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0bc1748b15574028120678613e5f16", "data": true, "errMsg": "success", "errCode": 0
 ```
 
+`}`
+
 ### 6.17 GetDagDetail
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2552,6 +2778,8 @@ Sample success responses
 | TenantId | Long | Yes | The ID of the tenant. |
 | DagId | Long | No | The ID of the workflow instance. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Count | Integer | The number of the returned workflow instances. |
@@ -2561,13 +2789,19 @@ Sample success responses
 | ReturnErrorSolution | String | The solution to resolve the issue. |
 | ReturnValue | Long | The returned data. |
 
-Sample success responses
+Sample success responses `{`
 
 ```json
-"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "14***4-e059-4bf4-a2c1-***323f", "returnValue": [ "name": "Retroactive Instance Test 15", "type": 3, "rootNodeId": 1, "status": 6, "flowId": 1
+"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "14***4-e059-4bf4-a2c1-***323f", "returnValue": [
 ```
 
-`],`
+`{`
+
+```json
+"name": "Retroactive Instance Test 15", "type": 3, "rootNodeId": 1, "status": 6, "flowId": 1
+```
+
+`}` `],`
 
 ```json
 "success": true
@@ -2575,11 +2809,15 @@ Sample success responses
 
 ### 6.18 GetDataServiceApiDetail
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDataServiceApiDetail . |
 | ApiId | Long | Yes | The ID of the API to query. |
 | Verbose | Long | No | Specifies whether to return the details of the API. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2596,6 +2834,8 @@ http(s)://[Endpoint]/? Action=GetDataServiceApiDetail &<Common request parameter
 
 ### 6.19 GetDataServiceAppDetail
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDataServiceAppDetai l. |
@@ -2604,6 +2844,8 @@ http(s)://[Endpoint]/? Action=GetDataServiceApiDetail &<Common request parameter
 |---|---|---|---|
 | BaseId | String | Yes | The ID of the Apsara Stack account. |
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2620,9 +2862,13 @@ http(s)://[Endpoint]/? Action=GetDataServiceAppDetail &<Common request parameter
 
 ### 6.20 GetDefaultTenant
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDefaultTenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2647,6 +2893,8 @@ http(s)://[Endpoint]/? Action=GetDefaultTenant &<Common request parameters>
 
 ### 6.21 GetDQCEntity
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDQCEntity. |
@@ -2654,6 +2902,8 @@ http(s)://[Endpoint]/? Action=GetDefaultTenant &<Common request parameters>
 | TableName | String | No | The name of the table. |
 | EnvType | String | No | The type of the computing engine. Supported computing engines are MaxCompute, Hive, and Realtime Compute. |
 | MatchExpression | String | No | The partition filter expression. If you do not specify this parameter, the operation returns all the partition filter expressions of the specified table. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2672,34 +2922,46 @@ http(s)://[Endpoint]/? Action=GetDQCEntity &EnvType=odps &MatchExpression=dt=${y
 Sample success responses
 
 ```json
-"ReturnValue": { "Entity": [ "EntityLevel": 0, "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-3}", "Followers": "050624", "OnDuty": "050624", "Sql": 0, "GmtCreate": "2018-11-26 15:06:32", "EnvType": "odps", "Task": 0, "HasRelativeNode": false, "Id": 4003918, "TableName": "test_dqc_decimal_1119_2", "GmtModify": "2018-11-26 15:06:32"
+"ReturnValue": { "Entity": [
 ```
 
-`},`
+`{`
+
+```json
+"EntityLevel": 0, "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-3}", "Followers": "050624", "OnDuty": "050624", "Sql": 0, "GmtCreate": "2018-11-26 15:06:32", "EnvType": "odps", "Task": 0, "HasRelativeNode": false, "Id": 4003918, "TableName": "test_dqc_decimal_1119_2", "GmtModify": "2018-11-26 15:06:32"
+```
+
+`},` `{`
 
 ```json
 "EntityLevel": 0, "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Followers": "050624", "OnDuty": "050624", "Sql": 0, "GmtCreate": "2018-11-26 22:31:13", "EnvType": "odps", "Task": 0, "HasRelativeNode": false, "Id": 4003922, "TableName": "test_dqc_decimal_1119_2", "GmtModify": "2018-11-26 22:31:13"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "EntityLevel": 0, "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-2}", "Followers": "050624", "OnDuty": "050624", "Sql": 0, "GmtCreate": "2018-11-26 23:18:34", "EnvType": "odps", "Task": 0, "HasRelativeNode": false, "Id": 4003923, "TableName": "test_dqc_decimal_1119_2", "GmtModify": "2018-11-26 23:18:34"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
 "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.22 GetDQCFollower
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDQCFollower. |
 | ProjectName | String | No | The name of the DataWorks workspace. |
 | EntityId | Long | No | The ID of the partition filter expression. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2712,21 +2974,31 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetDQCFollower &EntityId=4003922 &ProjectName=odps &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
-"ReturnCode": "0", "ReturnValue": { "Follower": [ "ProjectName": "autotest", "AlarmMode": 1, "Follower": "050624", "Id": 1726, "TableName": "test_dqc_decimal_1119_2", "EntityId": "4003922"
+"ReturnCode": "0", "ReturnValue": { "Follower": [
 ```
 
-`]`
+`{`
+
+```json
+"ProjectName": "autotest", "AlarmMode": 1, "Follower": "050624", "Id": 1726, "TableName": "test_dqc_decimal_1119_2", "EntityId": "4003922"
+```
+
+`}` `]`
 
 ### 6.23 GetDQCRule
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDQCRule. |
 | ProjectName | String | No | The name of the DataWorks workspace. |
 | EntityId | Long | No | The ID of the partition filter expression. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2739,23 +3011,29 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetDQCRule &EntityId=4003922 &ProjectName=autotest &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
-"ReturnValue": { "TemplateRules": { "TemplateRule": [ "TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "40", "RuleCheckerRelationId": 1008005, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "80", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7,
+"ReturnValue": { "TemplateRules": { "TemplateRule": [
+```
+
+`{`
+
+```json
+"TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "40", "RuleCheckerRelationId": 1008005, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "80", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7,
 ```
 
 ```json
 "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:40%,history min:10%", "BlockType": 1, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id": 279580663, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:80%,history min:50%", "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "10", "RuleCheckerRelationId": 1008007, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "50", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7, "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:10%,history min:10%", "BlockType": 0, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id": 279580665, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:50%,history min:50%", "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "10", "RuleCheckerRelationId": 1008009, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "50", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7, "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:10%,history min:10%", "BlockType": 0, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id":279580667
@@ -2765,13 +3043,19 @@ Sample success responses
 "Id": 279580667, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:50%,history min:50%", "Trend": "abs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
-"SelfserviceRules": { "SelfserviceRule": [ "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008004, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580662, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
+"SelfserviceRules": { "SelfserviceRule": [
 ```
 
-`},`
+`{`
+
+```json
+"ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008004, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580662, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
+```
+
+`},` `{`
 
 ```json
 "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008006, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580664, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
@@ -2787,19 +3071,23 @@ Sample success responses
 Checker: 9, "RuleCheckerRelationId": 1008008, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580666, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008010, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580668, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
 "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.24 GetNodeDetail
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2815,6 +3103,8 @@ Checker: 9, "RuleCheckerRelationId": 1008008, "WhereCondition": "id>100", "RuleT
 | ProjectEnv | String | Yes | The type of the environment. Valid values: DEV and PROD. The value DEV specifies the development environment. The value PROD specifies the production environment. |
 | TenantId | Long | Yes | The ID of the tenant. |
 | IsDetail | Boolean | No | Specifies whether to return the detailed information about this node. Valid values: true and false. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2833,10 +3123,16 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetNodeDetail &EntityId=4003922 &ProjectName=autotest &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
-"ReturnValue": { "TemplateRules": { "TemplateRule": [ "TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "40", "RuleCheckerRelationId": 1008005, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "80", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7, "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:40%,history min:10%", "BlockType": 1, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id": 279580663, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:80%,history min:50%", "Trend": "abs"
+"ReturnValue": { "TemplateRules": { "TemplateRule": [
+```
+
+`{`
+
+```json
+"TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "40", "RuleCheckerRelationId": 1008005, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "80", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7, "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:40%,history min:10%", "BlockType": 1, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id": 279580663, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:80%,history min:50%", "Trend": "abs"
 ```
 
 `},`
@@ -2845,13 +3141,13 @@ Sample success responses
 "TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "10", "RuleCheckerRelationId": 1008007, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "50", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7, "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:10%,history min:10%", "BlockType": 0, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id": 279580665, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:50%,history min:50%", "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "TemplateName": "SQL task table rows, 1,7, 30 days fluctuation test", "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "WarningThreshold": "10", "RuleCheckerRelationId": 1008009, "RuleType": 0, "MethodId": 8, "CriticalThreshold": "50", "FixCheck": false, "OnDuty": "050624", "Property": "table_count", "TemplateId": 7, "PropertyKey": "table_count", "MethodName": "table_count", "HistoryWarningThreshold": "history max:10%,history min:10%", "BlockType": 0, "CheckerId": 7, "TableName": "test_dqc_decimal_1119_2", "Id": 279580667, "EntityId": 4003922, "HistoryCriticalThreshold": "history max:50%,history min:50%", "Trend": "abs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
 "SelfserviceRules": { "SelfserviceRule": [
@@ -2861,13 +3157,13 @@ Sample success responses
 "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008004, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580662, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008006, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580664, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008008, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count",
@@ -2879,19 +3175,23 @@ Sample success responses
 "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580666, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "ProjectName": "autotest", "MatchExpression": "dt=${yyyymmdd-1}", "Checker": 9, "RuleCheckerRelationId": 1008010, "WhereCondition": "id>100", "RuleType": 1, "MethodId": 21, "FixCheck": true, "CheckerName": "compared with a fixed value", "OnDuty": "050624", "Property": "table_count", "PropertyKey": "table_count", "MethodName": "count/table_count", "BlockType": 0, "TableName": "test_dqc_decimal_1119_2", "Id": 279580668, "CheckerId": 6, "EntityId": 4003922, "Trend": "abs"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
 "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.25 GetNodeUpdateStatus
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2907,6 +3207,8 @@ Sample success responses
 | TenantId | LONG | No | The ID of the tenant. |
 | IsDetail | Boolean | No | Specifies whether to return the detailed information about the node update. Valid values: true and false. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. If an error occurs, send the request ID to the developers of the scheduling system for troubleshooting. |
@@ -2921,40 +3223,48 @@ Sample success responses
 Sample success responses
 
 ```json
-"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "0bbaa24515574698398786934e12b8", "returnValue": { "requestId": "0a64886b-1d63-4e5c-ad3e-d4eda4c2381c", "createTime": 1555065345000, "name": "ide-base", "status": "SUCCESS", "isDetail": true, "flowId": 28620441, "executeDetails": [ "uniqueId": "9745681_2", "cloudUUID": 111164284, "executeStatus": "SUCCESS", "executeMsg": "success", "dagId": null
+"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "0bbaa24515574698398786934e12b8", "returnValue": { "requestId": "0a64886b-1d63-4e5c-ad3e-d4eda4c2381c", "createTime": 1555065345000, "name": "ide-base", "status": "SUCCESS", "isDetail": true, "flowId": 28620441, "executeDetails": [
 ```
 
-`},`
+`{`
+
+```json
+"uniqueId": "9745681_2", "cloudUUID": 111164284, "executeStatus": "SUCCESS", "executeMsg": "success", "dagId": null
+```
+
+`},` `{`
 
 ```json
 "uniqueId": "9745682_5", "cloudUUID": 111001035, "executeStatus": "SUCCESS", "executeMsg": "success", "dagId": null
 ```
 
-`},`
+`},` `{`
 
 ```json
 "uniqueId": "9745683_9", "cloudUUID": 111087244, "executeStatus": "SUCCESS", "executeMsg": "success", "dagId": null
 ```
 
-`},`
+`},` `{`
 
 ```json
 "uniqueId": "9745680_12", "cloudUUID": 111087242, "executeStatus": "SUCCESS", "executeMsg": "success", "dagId": null
 ```
 
-`},`
+`},` `{`
 
 ```json
 "uniqueId": "9745680_12", "cloudUUID": 111087242, "executeStatus": "INIT", "executeMsg": null, "dagId": null
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
 "success": true
 ```
 
 ### 6.26 GetResGroupAk
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2963,6 +3273,8 @@ Sample success responses
 | Identifier | String | Yes | The identifier of the resource group. |
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
 | TenantId | Long | Yes | The ID of the tenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2988,7 +3300,11 @@ Sample response
 "errMsg": "success", "errCode": 0
 ```
 
+`}`
+
 ### 6.27 GetResGroupGatewayList
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2997,6 +3313,8 @@ Sample response
 | Identifier | String | Yes | The identifier of the resource group. |
 | ProjectId | Long | Yes | The ID of the DataWorks workspace. |
 | TenantId | Long | Yes | The ID of the tenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3011,7 +3329,7 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetResGroupGatewayList &BaseId=1486****73474 &Identifier=3907f9a5******76b2506 &ProjectId=75059 &TenantId=2678****78690 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0a98a35415574015996432719e2c97", "data": [{
@@ -3033,7 +3351,11 @@ Sample success responses
     "errCode": 0
 ```
 
+`}`
+
 ### 6.28 GetResGroupList
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3048,6 +3370,8 @@ Sample success responses
 | ResourceGroupType | String | Yes | The type of the resource group. |
 | TenantId | Long | Yes | The ID of the tenant. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | List | The returned data. |
@@ -3061,7 +3385,7 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetResGroupList &AlisaDetail=true &BaseId=14*****3474 &Level=project &ProjectId=75059 &ResourceGroupType=di &TenantId=2678*****690 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0a98a3****52214e2c97", "data": [{ "id": 29810****9522, "identifier": "group_267****178690", "name": "default resource group",
@@ -3073,13 +3397,13 @@ Sample success responses
 "nick": null, "isDefault": true, "networkType": null, "nodes": null, "maxSlot": null, "useSlot": null, "useDmu": null, "maxDmu": null, "projects": null, "resourceGroupType": null, "diResourceGroupType": 0, "buyType": "pay-as-you-go"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "id": 200000003001, "identifier": "3907f9a58***08476b2506", "name": "y1y1y1", "nick": null, "isDefault": false, "networkType": 1, "nodes": [{ "clusterName": "3907f9a583****8476b2506", "nodeName": "1.2.3.50", "nodeAddress": "1.2.3.50", "maxSlot": 32, "useSlot": 0, "state": 1, "live": false, "startMon": false, "regionId": 1, "nodeProperties": "{\"memory\":8,\"vCpu\":4}", "vCpu": 4, "memory": 8, "useDmu": 0 }], "maxSlot": 32, "useSlot": 0, "useDmu": 0, "maxDmu": 16, "projects": null, "resourceGroupType": null, "diResourceGroupType": 1, "buyType": "pay-as-you-go"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "id": 33224***49920, "identifier": "c43d****cb7fef18c137", "name": "cfr", "nick": null, "isDefault": false, "networkType": 1, "nodes": [{ "clusterName": "c43da72697****c137", "nodeName": "deide",
@@ -3089,13 +3413,15 @@ Sample success responses
 "nodeAddress": "10.0.0.22", "maxSlot": 8, "useSlot": 0, "state": 1, "live": false, "startMon": false, "regionId": 1, "nodeProperties": "{\"memory\":4,\"vCpu\":2}", "vCpu": 2, "memory": 4, "useDmu": 0 }], "maxSlot": 8, "useSlot": 0, "useDmu": 0, "maxDmu": 4, "projects": null, "resourceGroupType": null, "diResourceGroupType": 1, "buyType": "pay-as-you-go"
 ```
 
-`},`
+`},` `{`
 
 ```json
 "id": 329080157014786, "identifier": "bd49c8014fb64f53835793e94932a9ac", "name": "hello", "nick": null, "isDefault": false, "networkType": 1, "nodes": [{ "clusterName": "bd49c801******e94932a9ac", "nodeName": "djed***qduew", "nodeAddress": "0.1.0.0", "maxSlot": 24, "useSlot": 0, "state": 1, "live": false, "startMon": false, "regionId": 1, "nodeProperties": "{\"memory\":8,\"vCpu\":8}", "vCpu": 8, "memory": 8, "useDmu": 0 }], "maxSlot": 24, "useSlot": 0, "useDmu": 0, "maxDmu": 12, "projects": null, "resourceGroupType": null, "diResourceGroupType": 1, "buyType": "pay-as-you-go" }], "errMsg": "success", "errCode": 0
 ```
 
 ### 6.29 GetTableColumn
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3108,6 +3434,8 @@ Sample success responses
 | Table | String | Yes | The name of the table in the data source. |
 | TenantId | Long | Yes | The ID of the tenant. |
 | Id | String | No | The ID of the data source. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3122,7 +3450,7 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetTableColumn &BaseId=148682***73474 &DatasourceName=odps_first &DatasourceType=odps &ProjectId=75059 &SubType=public &Table=t &TenantId=2678***78690 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0bc1748b15574030794246845e5f16", "data": { "splitPk": [], "columns": [{ "name": "id", "type": "STRING" }], "partitionColumns": [], "extraInfo": {}
@@ -3134,7 +3462,11 @@ Sample success responses
 "errMsg": "success", "errCode": 0
 ```
 
+`}`
+
 ### 6.30 GetTableList
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3152,6 +3484,8 @@ Sample success responses
 | Id | Long | No | The ID of the data store. |
 | PageSize | Long | No | The number of entries to return on each page. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | - | The returned data. |
@@ -3165,7 +3499,7 @@ Sample request
 http(s)://[Endpoint]/? Action=GetTableList &BaseId=1486821399873474 &DatasourceName=odps_first &DatasourceType=odps &ProjectId=75059 &SubType=public &Table=t &TenantId=267883377178690 &<Common request parameters>
 ```
 
-Sample response
+Sample response `{`
 
 ```json
 "requestId": "0bc17****2e5f16", "data": { "tables": ["c", "t", "t1", "t2", "wowo", "zzyx", "oss_test", "oss_tes00t", "test_input"]
@@ -3178,6 +3512,8 @@ Sample response
 ```
 
 ### 6.31 GetTaskLog
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3204,13 +3540,17 @@ Sample requests
 http(s)://[Endpoint]/? Action=GetTaskLog &AccountId=C00000 &AccountPwd=account_pwd &BaseId=0I0001 &ClientName=aone_app_name &ProjectEnv=DEV &TenantId=1 &TaskId=20000000 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "ReturnValue": "I'm alog", "ReturnCode": "0", "RequestId": "023dbca2-3****f23fa26", "ReturnErrorSolution": "", "ReturnMessage": ""
 ```
 
+`}`
+
 ### 6.32 GetUserInfo
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3218,6 +3558,8 @@ Sample success responses
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | STRING | Yes | The operation that you want to perform. Set the value to GetUserInfo. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3228,7 +3570,7 @@ Sample success responses
 
 ### 6.33 ListConnection
 
-You can call this operation to query data sources.
+You can call this operation to query data sources. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3248,6 +3590,8 @@ You can call this operation to query data sources.
 |---|---|---|---|---|
 | PageNum | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Default value: 10. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3300,6 +3644,11 @@ Sample success responses JSON format
     "PageNum":1,
     "PageSize":10,
     "Connections":[
+```
+
+`{`
+
+```json
         "Id":12345,
         "TenantId":12345,
         "ProjectId":12345,
@@ -3328,7 +3677,7 @@ Sample success responses JSON format
   "requestId":"c9afd89b-7aef-47c9-9902-e0500d843268"
 ```
 
-Sample error responses JSON format
+`}` Sample error responses JSON format `{`
 
 ```json
   "data":null,
@@ -3337,7 +3686,11 @@ Sample error responses JSON format
   "requestId":"c9afd89b-7aef-47c9-9902-e0500d843268"
 ```
 
+`}`
+
 ### 6.34 ListDataServiceApps
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3350,6 +3703,8 @@ Sample error responses JSON format
 | PageSize | Integer | No | The number of entries to return on each page. |
 | PageNum | Integer | No | The number of the page to return. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | N/A | The returned data. |
@@ -3358,6 +3713,8 @@ Sample error responses JSON format
 | RequestId | String | The ID of the request. |
 
 ### 6.35 ListDataServiceAuthedApi
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3375,6 +3732,8 @@ Sample error responses JSON format
 | PageSize | Integer | No | The number of entries to return on each page. |
 | Verbose | Boolean | No | Indicates whether to return the details of the operation. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | N/A | The returned data. |
@@ -3384,7 +3743,7 @@ Sample error responses JSON format
 
 ### 6.36 ListPermission
 
-You can call this operation to query permissions.
+You can call this operation to query permissions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3393,6 +3752,8 @@ You can call this operation to query permissions.
 | tenantId | Long | No | The ID of the tenant. |
 | projectId | Long | No | The ID of the DataWorks workspace. |
 | modules | String | No | The modules of the DataWorks workspace. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3408,10 +3769,14 @@ Sample requests
 
 ### 6.37 ListProjectModule
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ListProjectModule. |
 | ProjectId | Long | No | The ID of the DataWorks workspace. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3428,10 +3793,14 @@ Sample requests
 
 ### 6.38 ListProjectModules
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ListProjectModules. |
 | ProjectId | Long | No | The ID of the DataWorks workspace. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3442,9 +3811,13 @@ Sample requests
 
 ### 6.39 ListProject
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ListProject. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3461,10 +3834,14 @@ Sample requests
 
 ### 6.40 ListTenantModule
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ListTenantModule. |
 | TenantId | Long | No | The ID of the tenant. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3475,7 +3852,7 @@ Sample requests
 
 ### 6.41 ListUserPermission
 
-You can call this operation to query permissions of a user.
+You can call this operation to query permissions of a user. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3489,6 +3866,8 @@ You can call this operation to query permissions of a user.
 | ProjectId | Long | No | The ID of the DataWorks workspace. |
 | Modules | String | No | The modules of the DataWorks workspace. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | N/A | The returned data. |
@@ -3497,6 +3876,8 @@ You can call this operation to query permissions of a user.
 | RequestId | String | The ID of the request. If an error occurs, send the request ID to the developers of the scheduling system for troubleshooting. The request ID must be globally unique. |
 
 ### 6.42 ModifyBusiness
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3521,6 +3902,8 @@ You can call this operation to query permissions of a user.
 
 ### 6.43 ModifyNode
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyNode. |
@@ -3539,6 +3922,8 @@ You can call this operation to query permissions of a user.
 | BaseId | String | No | The ID of the Apsara Stack account that you use to call this operation. |
 | TenantId | Long | No | The ID of the tenant. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. If an error occurs, send the request ID to the developers of the scheduling system for troubleshooting. |
@@ -3553,7 +3938,11 @@ Sample success responses
 "returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "82e4c****a39fbda", "returnValue": "82e4c04****f5a39fbda", "success": true
 ```
 
+`}`
+
 ### 6.44 ModifySolution
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3564,6 +3953,8 @@ Sample success responses
 | ClientName | String | No | The name of the client that is assigned by the scheduling system to call this operation. |
 | TenantId | Long | No | The ID of the tenant. |
 | SolutionModifyDto | String | No | The information about the solution in the JSON format. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3576,13 +3967,13 @@ Sample success responses
 | ReturnMessage | String | The error message. |
 | ReturnValue | String | None |
 
-Example of the SolutionModifyDto parameter
+Example of the SolutionModifyDto parameter `{`
 
 ```json
 "executeMethod": "UPDATE_SOLUTION", "solId": 100000001, "solName": "sol_name_01_xxxx", "appId": 78918, "tenantId": 279717776488706
 ```
 
-Sample success responses
+`}` Sample success responses `{`
 
 ```json
 "returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "53ca5f***11bab4d0975", "returnValue": { "solId": 100000001, "solName": "sol_name_01_xxxx", "appId": 78918, "tenantId": 279717776488706
@@ -3594,7 +3985,11 @@ Sample success responses
 "success": true
 ```
 
+`}`
+
 ### 6.45 RerunTask
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3610,6 +4005,8 @@ Sample success responses
 | TaskId | Long | Yes | None |
 | TenantId | Long | Yes | The ID of the tenant. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -3624,7 +4021,11 @@ Sample success responses
 "RequestID": "", "RetrunCode": 12344, "ReturnErrorSolution": "****", "ReturnMessage": "****", "ReturnValue": true
 ```
 
+`}`
+
 ### 6.46 ResumeTask
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3644,13 +4045,17 @@ Sample success responses
 | ReturnErrorSolution | String | The solution to resolve the issue. |
 | ReturnMessage | String | The error message. |
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "RequestId": "1212adf***s-adfsdsf", "ReturnCode": 0, "ReturnMessage": "", "ReturnErrorSolution": "", "ReturnValue": true
 ```
 
+`}`
+
 ### 6.47 SearchBusiness
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3669,6 +4074,8 @@ Sample success responses
 | AppId | Long | No | The ID of the DataWorks workspace. |
 | AppIds | String | No | Optional. The IDs of the DataWorks workspaces. Separate multiple IDs with commas (,). |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. If an error occurs, send the request ID to the developers of the scheduling system for troubleshooting. |
@@ -3680,22 +4087,34 @@ Sample success responses
 Sample success responses
 
 ```json
-"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "d4605f***145312", "returnValue": [ "bizId": 10010759, "bizName": "Control Node 0", "bizKey": "10010759", "appId": 12344, "tenantId": 121**212
+"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "d4605f***145312", "returnValue": [
 ```
 
-`],`
+`{`
+
+```json
+"bizId": 10010759, "bizName": "Control Node 0", "bizKey": "10010759", "appId": 12344, "tenantId": 121**212
+```
+
+`}` `],`
 
 ```json
 "success": true
 ```
 
+`}`
+
 ### 6.48 SearchManualDagNodeInstance
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to SearchManualDagNodeI nstance. |
 | ProjectName | String | No | The name of the DataWorks workspace. |
 | DagId | Long | No | The ID of the instance for a manually triggered workflow. You can obtain this ID by calling the CreateManualDag operation. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3713,6 +4132,8 @@ Sample success responses
 
 ### 6.49 SearchSolution
 
+Request parameters
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to SearchSolution. |
@@ -3725,6 +4146,8 @@ Sample success responses
 | TenantId | Long | No | The ID of the tenant. |
 | AppId | Long | No | The ID of the DataWorks workspace. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. If an error occurs, you can send the request ID to the developers of the scheduling system for troubleshooting. |
@@ -3732,19 +4155,29 @@ Sample success responses
 | ReturnErrorSolution | String | The solution to resolve the issue. |
 | ReturnMessage | String | The error message. |
 
-Sample response
+Sample response `{`
 
 ```json
-"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "1381****b98d87c", "returnValue": [ "solId": 100000007, "solName": "Solution Test 222", "appId": 33646, "tenantId": 27***9020672
+"returnCode": "0", "returnErrorSolution": "", "returnMessage": "", "requestId": "1381****b98d87c", "returnValue": [
 ```
 
-`],`
+`{`
+
+```json
+"solId": 100000007, "solName": "Solution Test 222", "appId": 33646, "tenantId": 27***9020672
+```
+
+`}` `],`
 
 ```json
 "success": true
 ```
 
+`}`
+
 ### 6.50 SearchTasks
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3765,6 +4198,8 @@ Sample response
 |---|---|---|---|
 | Bizdate | String | No | The date-based timestamp. The value is in the format of yyyy- mm-dd 00:00:00. You can use this data timestamp to filter the node instances. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Count | Integer | The number of the node instances that meet the search conditions. |
@@ -3783,12 +4218,20 @@ http(s)://[Endpoint]/? Action=SearchTasks &AccountId=C00000 &AccountPwd=account-
 Sample success responses
 
 ```json
-"Count": 3236869, "ReturnValue": [ "DqcInstance": "", "BeginWaitResTime": "", "ResGroupId": 30004716, "AppId": 14255, "TaskId": 9993181585, "PrgName": "", "Gmtdate": "2018-11-17 00:00:00", "NodeId": 20636213, "DqcDescription": "", "BeginRunningTime": "", "AlisaReturnTime": "", "FinishTime": "", "GwLogLocalFile": "", "DagId": 300041822, "ParaValue": "", "DueTime": "2018-11-17 00:06:00", "BaseLineId": 332, "NodeName": "trewtes", "CycType": 0, "DagType": 2, "InGroupId": 1, "Priority": 1, "RerunAble": true, "Status": 1, "ResGroupIdentifier": "group_30004716", "GwProcessId": "", "PrgType": 10, "Bizdate": "2018-11-16 00:00:00", "ExecName": "/opt/taobao/tbdpapp/odpswrapper/odpswrapper.py", "BeginWaitTimeTime": "", "Gateway": "", "GwLogFile": "", "TaskType": 0
+"Count": 3236869, "ReturnValue": [
 ```
 
-`]`
+`{`
+
+```json
+"DqcInstance": "", "BeginWaitResTime": "", "ResGroupId": 30004716, "AppId": 14255, "TaskId": 9993181585, "PrgName": "", "Gmtdate": "2018-11-17 00:00:00", "NodeId": 20636213, "DqcDescription": "", "BeginRunningTime": "", "AlisaReturnTime": "", "FinishTime": "", "GwLogLocalFile": "", "DagId": 300041822, "ParaValue": "", "DueTime": "2018-11-17 00:06:00", "BaseLineId": 332, "NodeName": "trewtes", "CycType": 0, "DagType": 2, "InGroupId": 1, "Priority": 1, "RerunAble": true, "Status": 1, "ResGroupIdentifier": "group_30004716", "GwProcessId": "", "PrgType": 10, "Bizdate": "2018-11-16 00:00:00", "ExecName": "/opt/taobao/tbdpapp/odpswrapper/odpswrapper.py", "BeginWaitTimeTime": "", "Gateway": "", "GwLogFile": "", "TaskType": 0
+```
+
+`}` `]` `}`
 
 ### 6.51 TestConnectivity
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3809,6 +4252,8 @@ Sample success responses
 | Id | Long | No | The ID of the data source. |
 | UseUserDefinedSecret | Boolean | No | Specifies whether to use the saved password for logging on to the data source. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | Boolean | Indicates whether the data source is successfully connected. |
@@ -3822,13 +4267,17 @@ Sample requests
 http(s)://[Endpoint]/? Action=TestConnectivity &BaseId=1486*****474 &Connection={"jdbcUrl":"jdbc:mysql://12.11.12.1:3306/data", "username":"root ", "password":"***", "tag":"public"} &Name="test" &ProjectId=75059 &SubType=public &TenantId=26788***178690 &Type=mysql &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0a98***7e2c95", "data": null, "errMsg": "Test for the data source connectivity failed:error message: Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driv er has not received any packets from the server. error with code: PROJECT_DATASOURCE_CONN_E RROR", "errCode": 610008
 ```
 
+`}`
+
 ### 6.52 UpdateDQCFollower
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3841,6 +4290,8 @@ Sample success responses
 | Follower | String | No | The object of receiving the subscribed messages. If you want to receive the messages by using emails or the SMS, specify your employee ID. If you want to receive the messages by using DingTalk, specify the webhook URL. |
 | AlarmMode | Integer | No | The method of receiving alerts and notifications. A value of 1 indicates that you receive alerts and notifications by using emails. A value of 2 indicates that you receive alerts and notifications by using emails and the SMS. A value of 3 indicates that you receive alerts and notifications from the specified DingTalk group by using the webhook URL. A value of 4 indicates that you receive alerts and notifications from the specified DingTalk group and mention all members in the group. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | ReturnCode | String | The return code. |
@@ -3852,13 +4303,17 @@ Sample request
 http(s)://[Endpoint]/? Id=279580663 &ProjectName=autotest &BlockType=1 &Checker=9 &Comment=Test &CriticalThreshold=40 &EntityId=4003922 &ExpectValue=0 &MethodName=count/table_count &Operator=50624 &Property=table_count &PropertyType=table &RuleType=0 &TemplateId=7 &Trend=abs &WarningThreshold=20 &WhereCondition=60 &<Common request parameters>
 ```
 
-Sample response
+Sample response `{`
 
 ```json
 "ReturnValue": true, "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.53 UpdateDQCRule
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3884,7 +4339,7 @@ Sample response
 | WarningThreshold | String | No | The warning threshold. |
 | TemplateId | Integer | No | The ID of the template to use for changing the DQC rule. |
 
-Checkers Methods
+Checkers Methods Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3897,13 +4352,17 @@ Sample requests
 http(s)://[Endpoint]/? Action=UpdateDQCFollower &AlarmMode=1 &Follower=50624 &Id=1724 &ProjectName=autotest &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "ReturnValue": true, "ReturnCode": "0"
 ```
 
+`}`
+
 ### 6.54 UpdateResGroupGateWay
+
+Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3922,6 +4381,8 @@ Sample success responses
 | TenantId | Long | Yes | The ID of the tenant. |
 | VCpu | Integer | Yes | The number of cores in the vCPU of the gateway. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Data | Boolean | Indicates whether the gateway configuration has been changed. |
@@ -3936,11 +4397,13 @@ http(s)://[Endpoint]/? Action=UpdateResGroupGateWay &BaseId=1486821399873474 &Id
  &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `{`
 
 ```json
 "requestId": "0bc174***5f15", "data": true, "errMsg": "success", "errCode": 0
 ```
+
+`}`
 
 ### 6.55 CheckMetaTable
 
@@ -3949,6 +4412,8 @@ Checks whether a table exists.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | TableGuid | STRING | No | The GUID of the table. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3962,11 +4427,13 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.56 GetMetaDB
 
-Queries the information about a MaxCompute project.
+Queries the information about a MaxCompute project. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | DbGuid | STRING | No | The GUID of the MaxCompute project. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3992,7 +4459,7 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.57 GetMetaTable
 
-Queries the detailed information about a table.
+Queries the detailed information about a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4024,12 +4491,14 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.58 GetMetaTableIntroWiki
 
-Queries the instructions of the specified version on how to use a table.
+Queries the instructions of the specified version on how to use a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | TableGuid | STRING | Yes | The GUID of the table. |
 | WikiVersion | LONG | No | The version number of Wiki. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4047,13 +4516,15 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.59 ListMetaColumnLineage
 
-Queries the lineage of a field.
+Queries the lineage of a field. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | TableGuid | STRING | Yes | The GUID of the table. |
 | ColumnName | STRING | Yes | The name of the field in the table. |
 | Direction | STRING | Yes | Specifies whether to query the ancestor or descendant lineage of the field. A value of UP specifies that ancestor fields are to be queried, and a value of DOWN specifies that descendant fields are to be queried. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4069,7 +4540,7 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.60 ListMetaTableChangeLog
 
-Queries the change logs of a table.
+Queries the change logs of a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4086,6 +4557,8 @@ Queries the change logs of a table.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | PageSize | INTEGER | No | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4111,6 +4584,8 @@ Queries the information about fields in a table.
 |---|---|---|---|
 | TableGuid | String | Yes | The GUID of the table. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | TableGuid | STRING | The GUID of the table. |
@@ -4132,13 +4607,15 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.62 ListMetaTableImpact
 
-Queries the impact analysis result of a table.
+Queries the impact analysis result of a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | TableGuid | STRING | Yes | The GUID of the table. |
 | ColumnName | STRING | No | The name of the field. |
 | Direction | STRING | Yes | Specifies whether to query the impacts on ancestor or descendant tables. Valid values: OUT and PUT. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4152,11 +4629,13 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.63 ListMetaTableIntroWiki
 
-Queries the instructions on how to use a table.
+Queries the instructions on how to use a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | TableGuid | STRING | Yes | The GUID of the table. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4176,7 +4655,7 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.64 ListMetaTableLineage
 
-Queries the lineage of a table.
+Queries the lineage of a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4184,6 +4663,8 @@ Queries the lineage of a table.
 | Direction | STRING | Yes | Specifies whether to query the ancestor or descendant lineage of the table. Valid values: UP, DOWN, and ALL. |
 | PageNum | INTEGER | No | The number of the page to return. |
 | PageSize | INTEGER | No | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4198,7 +4679,7 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.65 ListMetaTableOutput
 
-Queries the information about the node instances that generate data for a table.
+Queries the information about the node instances that generate data for a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4207,6 +4688,8 @@ Queries the information about the node instances that generate data for a table.
 | EndDate | STRING | No | The end of the time range to query, in the yyyy-MM-dd format. |
 | PageNum | INTEGER | No | The number of the page to return. |
 | PageSize | INTEGER | No | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4233,7 +4716,7 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.66 ListMetaTablePartition
 
-Queries the partition information of a table.
+Queries the partition information of a table. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4246,6 +4729,8 @@ Queries the partition information of a table.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | PageSize | INTEGER | No | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4267,13 +4752,15 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.67 SearchMetaTables
 
-Queries MaxCompute tables.
+Queries MaxCompute tables. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Keyword | STRING | Yes | The keyword used to query MaxCompute tables. |
 | PageNum | INTEGER | No | The number of the page to return. |
 | PageSize | INTEGER | No | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4293,13 +4780,15 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.68 GetStorageAndCalcMetrics
 
-Queries the storage and computing data of a specific project or the current Apsara Stack tenant account.
+Queries the storage and computing data of a specific project or the current Apsara Stack tenant account. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | AppGuids | STRING | No | The GUIDs of the MaxCompute projects. The GUIDs are separated with commas (,). |
 | DateString | STRING | No | The query date. The default value is the data timestamp. |
 | PageSize | INTEGER | No | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4314,14 +4803,14 @@ private String product = "dataworks-private-cloud"; private String version = "20
 
 ### 6.69 GetInstanceStatistic
 
-Queries instance statistics.
+Queries instance statistics. Request parameters
 
 | Parameter | Required | Type | Description |
 |---|---|---|---|
 | Bizdate | No | STRING | The data timestamp, in the yyyy-MM-dd format. |
 | AppId | No | LONG | The ID of the workspace. |
 
-Sample response
+Sample response `{`
 
 ```json
   "ReturnErrorSolution": "",
@@ -4344,7 +4833,7 @@ Sample response
   "Success": true
 ```
 
-Sample code
+`}` Sample code
 
 ```java
 @Test public void testGetInstanceStatistic() throws ClientException {
@@ -4359,16 +4848,18 @@ stanceStatistic");
     System.out.println(GsonUtils.gson.toJson(response.getHttpContentString()));
 ```
 
+`}`
+
 ### 6.70 GetInstanceLog
 
-Queries the operational logs of a node instance.
+Queries the operational logs of a node instance. Request parameters
 
 | Parameter | Required | Type | Description |
 |---|---|---|---|
 | InstanceId | No | LONG | The ID of the instance. |
 | ProjectEnv | Yes | STRING | The environment of the node instance. Valid values: PROD and DEV. |
 
-Sample response
+Sample response `{`
 
 ```json
   "ReturnErrorSolution": "",
@@ -4379,7 +4870,7 @@ Sample response
   "Success": true
 ```
 
-Sample code
+`}` Sample code
 
 ```java
 @Test
@@ -4395,16 +4886,18 @@ etInstanceLog");
         System.out.println(GsonUtils.gson.toJson(response.getHttpContentString()));
 ```
 
+`}`
+
 ### 6.71 GetNodeCode
 
-Queries the code of a node.
+Queries the code of a node. Request parameters
 
 | Parameter | Required | Type | Description |
 |---|---|---|---|
 | NodeId | Yes | LONG | The ID of the node. |
 | ProjectEnv | Yes | STRING | The environment of the node. Valid values: PROD and DEV. Default value: PROD. |
 
-Sample response
+Sample response `{`
 
 ```json
   "ReturnErrorSolution": "",
@@ -4414,7 +4907,7 @@ Sample response
   "ReturnValue": "echo 'hello'"
 ```
 
-Sample code
+`}` Sample code
 
 ```java
     @Test
@@ -4430,9 +4923,11 @@ etNodeCode");
         System.out.println(GsonUtils.gson.toJson(response.getHttpContentString()));
 ```
 
+`}`
+
 ### 6.72 QueryInstances
 
-Queries instances.
+Queries instances. Request parameters
 
 | Parameter | Required | Type | Description |
 |---|---|---|---|
@@ -4451,6 +4946,11 @@ Sample response
   "RequestId": "7AFA7207-2F44-4ECC-AE77-XXXX",
   "ReturnMessage": "",
   "ReturnValue": [
+```
+
+`{`
+
+```json
       "Status": "SUCCESS",
       "ModifyTime": 15881766XXXX,
       "InstanceId": 70652XXXX,
@@ -4467,7 +4967,7 @@ Sample response
       "BeginWaitResTime": 1588176601707
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Status": "SUCCESS",
@@ -4486,7 +4986,7 @@ Sample response
       "BeginWaitResTime": 1588090203188
 ```
 
-`]` Sample code
+`}` `]` Sample code
 
 ```java
     @Test
@@ -4512,7 +5012,7 @@ ueryInstances");
         System.out.println(GsonUtils.gson.toJson(response.getHttpContentString()));
 ```
 
-ey pair
+`}` ey pair
 
 ## 7 Obtain an AccessKey pair
 

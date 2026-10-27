@@ -5,7 +5,7 @@ doc_version: "20241028"
 pdf_pages: 68
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 NAT Gateway Developer Guide 20241028.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/NAT%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20NAT%20Gateway%20Developer%20Guide%2020241028.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 NAT Gateway Developer Guide 20241028
@@ -109,7 +109,11 @@ You can go to the Apsara Stack documentation center and view the desired product
 
 ### 1.2 Call an API operation
 
-Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure th You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpo
+Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure th
+
+**Note**
+
+You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpo
 
 **Procedure**
 
@@ -247,7 +251,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 > <yourRoleArn>: Replace the parameter with your RAM role.
 > <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
-```java
+```
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -265,6 +269,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpoint is sts-vpc.${global:region}.${global:internet-
@@ -288,9 +297,15 @@ domain}.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample code provides an example on how to call the
 
 | DescribeNatGateways | operation of NAT Gateway. |
@@ -333,6 +348,8 @@ he previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 2.5 Obtain the values of common header parameters
 
@@ -499,6 +516,8 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 3.2 Use SDK
 
 #### 3.2.1 Install VPC SDK for Java
@@ -620,6 +639,8 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
+`}`
+
 #### 3.2.6 Use CommonRequest
 
 Before you use point of presence (POP) SDK for Java to make API calls, you must first understand the remote procedure call (RPC) and resourceoriented architecture (ROA) styles.
@@ -629,6 +650,8 @@ Before you use point of presence (POP) SDK for Java to make API calls, you must 
 We recommend that you use CommonRequest to call Apsara Stack APIs. To view the recommended SDK version and sample code, log on to the Apsara Uni-manager Management Console and choose **Products** > **Application Services** > **OpenAPI Explorer** in the top navigation bar. On the OpenAPI Explorer page, choose **API Integration** > **SDK Sample Code** in the top navigation bar.
 
 > **Important:** We recommend that you do not download SDKs from the SDK Center and use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution.
+
+**Examples**
 
 The following example code is used to call the `DescribeNatGateways` operation to query NAT gateways (RPC style): or SDK for Java
 
@@ -700,6 +723,8 @@ when you want to delete, modify, or query an instance.
             // TODO Auto-generated catch block
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 > **Important:** By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown.
 > To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting:
@@ -923,6 +948,8 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 Only the remote procedure call (RPC) style is supported for API calls.
 
+**Examples**
+
 | The following sample code provides an example on how to call the | DescribeNatGateways | operation. |
 |---|---|---|
 | Note Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <vpc.aliyuncs.com>: Replace it with the endpoint of the service. |   |   |
@@ -1058,6 +1085,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create an API request and specify parameters.
     request := vpc.CreateDescribeNatGatewaysRequest()
     // Specify the endpoint of the service.
@@ -1069,9 +1101,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. (Optional) Switch to HTTP or HTTPS.
 
 ```
@@ -1157,6 +1195,8 @@ response,err := vpcClient.DescribeNatGateways(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain information in a `ClientError` : or SDK for Go
@@ -1183,6 +1223,8 @@ response, err := vpcClient.DescribeNatGateways(request) if clientError, ok := er
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
 ```
+
+`}`
 
 **ServerError**
 
@@ -1211,6 +1253,8 @@ response, err := vpcClient.DescribeNatGateways(request) if serverError, ok := er
     response.GetOriginHttpResponse()
 ```
 
+`}`
+
 #### 5.2.5 Use CommonRequest
 
 This topic describes how to use CommonRequest to call SDK for Go.
@@ -1225,7 +1269,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Both remote procedure call (RPC) and resource-oriented architecture (ROA) styles are supported for API calls. The following example code is used to call the `DescribeNatGateways` operation to query NAT gateways (RPC style): or SDK for Go
+Both remote procedure call (RPC) and resource-oriented architecture (ROA) styles are supported for API calls.
+
+**Examples**
+
+The following example code is used to call the `DescribeNatGateways` operation to query NAT gateways (RPC style): or SDK for Go
 
 > **Note:** Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code.
 > The following section describes the variables.
@@ -1255,6 +1303,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace it with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<vpc.aliyuncs.com>" // Replace it with the endpoint of the service.
@@ -1289,8 +1342,15 @@ o modify, delete, or query an instance.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Proxy configuration**
 
@@ -1309,7 +1369,7 @@ func main(){
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment variable.
 ```
 
-Configure proxies on the client. Sample code: or SDK for Go
+`}` Configure proxies on the client. Sample code: or SDK for Go
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -1491,6 +1551,8 @@ Common request parameters must be included in all EIP API requests. Table 1. Com
 | SignatureVersion | String | Yes | The version of the signature encryption algorithm. Set the value to 1.0 |
 | SignatureNonce | String | Yes | A unique, random number used to prevent replay attacks. You must use different numbers for different requests. |
 
+**Examples**
+
 ```
 http://vpc.example.com/?Action=DescribeEipAddresses &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
 ```
@@ -1515,6 +1577,8 @@ JSON format `{`
       "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
       /*Return Result Data*/
 ```
+
+`}`
 
 ### 6.5 NAT gateways
 
@@ -1563,6 +1627,8 @@ When you call this operation, take note of the following items: You cannot deplo
 | BandwidthPackageIds | List | bwp-11odxu2k7**** | The list of NAT service plans. |
 | RequestId | String | 2315DEB7-5E92-423A-91F7- 4C1EC9AD97C3 | The ID of the request. |
 | SnatTableIds | List | stb-SnatTableIds**** | The list of SNAT entries. |
+
+**Examples**
 
 Sample requests
 
@@ -1628,6 +1694,8 @@ Modifies the name and description of a NAT gateway.
 |---|---|---|---|
 | RequestId | String | AB5F62CF-2B60-4458-A756- 42C9DFE108D1 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -1655,7 +1723,11 @@ Sample success responses
 
 #### 6.5.3 ModifyNatGatewaySpec
 
-Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
+Resizes a NAT gateway.
+
+**Description**
+
+NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
 | Size | Maximum connection | Number of new connections per second |
 |---|---|---|
@@ -1681,6 +1753,8 @@ Resizes a NAT gateway. NAT gateways are available in different sizes. The size o
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DBD4E4A2-786E-4BD2-8EB6- 107FFC2B5B7D | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -1729,6 +1803,8 @@ Deletes a specified NAT gateway.
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74-4534-BD0E- 403F3EE64CAF | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -1884,6 +1960,8 @@ Sample success responses
             "VswitchId": "vsw-bp1s2laxhdf9ayjbo****"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -1894,7 +1972,11 @@ Sample success responses
 
 #### 6.6.1 CreateForwardEntry
 
-Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
+Adds a DNAT entry to a DNAT table.
+
+**Description**
+
+Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
 
 **Request parameters**
 
@@ -1919,6 +2001,8 @@ Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following par
 | ForwardEntryId | String | fwd-119smw5tkasdf**** | The ID of the DNAT entry. |
 | RequestId | String | A4AEE536-A97A-40EB-9EBE- 53A6948A6928 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -1938,6 +2022,8 @@ Sample success responses
         "RequestId": "A4AEE536-A97A-40EB-9EBE-53A6948A6928",
         "ForwardEntryId": "fwd-119smw5tkasdf****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1985,6 +2071,8 @@ Deletes a DNAT entry.
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706-4D23-88ED- E11ED28DCAC0 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2044,6 +2132,8 @@ You cannot modify a DNAT entry if it is in the **Pending** or **Modifying** stat
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 24CC85DC-7700-4F09-9624- 99E988C7DD03 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2126,6 +2216,8 @@ Queries DNAT entries.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | A6C4A8B1-7561-4509-949C- 20DEB40D71E6 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2157,6 +2249,8 @@ Sample success responses
         "ForwardTableId": "ftb-11tc6xgmv****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2169,7 +2263,11 @@ Sample success responses
 
 #### 6.7.1 CreateSnatEntry
 
-Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
+Adds an SNAT entry to an SNAT table.
+
+**Description**
+
+When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
 
 **Request parameters**
 
@@ -2192,6 +2290,8 @@ Adds an SNAT entry to an SNAT table. When you call this operation, take note of 
 |---|---|---|---|
 | SnatEntryId | String | snat-kmd6nv8fy**** | The ID of the SNAT entry. |
 | RequestId | String | 2315DEB7-5E92-423A-91F7- 4C1EC9AD97C3 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2253,6 +2353,8 @@ Deletes a specified SNAT entry.
 |---|---|---|---|
 | RequestId | String | 47B80B6A-759A-479C-A565- 76D04BDA29F3 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2302,6 +2404,8 @@ Modifies a specified SNAT entry.
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2315DEB7-5E92-423A-91F7- 4C1EC9AD97C3 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2371,6 +2475,8 @@ Queries SNAT entries.
 | PageSize | Integer | 5 | The number of entries returned on each page. |
 | RequestId | String | 6D7E89B1-1C5B-412B-8585- 4908E222EED5 | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2399,6 +2505,8 @@ Sample success responses
         "SnatIp": "116.XX.XX.28",
         "SnatTableId": "stb-8vbczigrhop8x5u3t****"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -2441,6 +2549,8 @@ A NAT service plan consists of bandwidth resources and public IP addresses. You 
 |---|---|---|---|
 | BandwidthPackageId | String | bwp-s6lmotmkk**** | The ID of the NAT service plan. |
 | RequestId | String | 54ED4074-3F89-4F11-B166- 837DD3E20FE3 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2494,6 +2604,8 @@ Modifies the bandwidth value of a specified NAT service plan.
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 079874CD-AEC1-43E6-AC03- ADD96B6E4907 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2567,6 +2679,8 @@ Queries NAT service plans in a specified region.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | 4EC47282-1B74-4534-BD0E- 403F3EE64CAF | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2608,6 +2722,8 @@ Sample success responses
             "IpAddress": "116.52.XX.XX"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2633,6 +2749,8 @@ Modifies the name and description of a specified NAT service plan.
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DFDDD35D-3F29-4E15-AA28- 53F5341F9599 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2680,6 +2798,8 @@ Deletes a specified NAT service plan.
 |---|---|---|---|
 | RequestId | String | 7D275A59-1EB0-4775-8A20- 2A47055EAC5C | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2725,6 +2845,8 @@ Removes public IP addresses from a NAT service plan. When you call this operatio
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7D275A59-1EB0-4775-8A20- 2A47055EAC5C | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -2802,6 +2924,8 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 |---|---|---|---|
 | Arn | String | acs:ram::123456789012****:role/ adminrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495****:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 

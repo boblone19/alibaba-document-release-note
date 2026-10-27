@@ -5,7 +5,7 @@ doc_version: "20220916"
 pdf_pages: 855
 source_pdf: "3e7bc98fd82b40f7_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20Compute%20Service%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Developer Guide
@@ -1465,7 +1465,7 @@ Not e When you call API operations of various Alibaba Cloud services, you must i
 
 ##### 5.1.4.1 RunInstances
 
-Creates one or more Elastic Compute Service (ECS) instances. Preparat ions: Instance type selection: Call the DescribeInstanceTypes operation to query the performance data of instance types. Query for available resources: Call the DescribeAvailableResource operation to query available resources in a specific region or zone. Network planning: Make sure that you have security groups available for use. For more information, see CreateSecurityGroup in ECS Developer Guide. Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. Precaut ions: You can create a maximum of 100 instances at a time. You can use the `AutoReleaseTime` parameter to set the time when to automatically release the instances. After instances are created, you can call the DescribeInstances operation to check their states. By default, instances automatically start after they are created. Instances are ready for use when they are in the Running ( `Running` ) state. After you call this operation, an error is returned if a parameter is invalid or if available resources are insufficient. For more information, see the "Error codes" section of this topic. Best pract ices: You can call the `RunInstances` operation to batch create instances. To better manage and search for these instances, we recommend that you specify tags by using the `Tag.N.Key` and `T` `ag.N.Value` parameters for the instances. You can also append incremental suffixes ( `UniqueSuff`
+Creates one or more Elastic Compute Service (ECS) instances. Description Preparat ions: Instance type selection: Call the DescribeInstanceTypes operation to query the performance data of instance types. Query for available resources: Call the DescribeAvailableResource operation to query available resources in a specific region or zone. Network planning: Make sure that you have security groups available for use. For more information, see CreateSecurityGroup in ECS Developer Guide. Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. Precaut ions: You can create a maximum of 100 instances at a time. You can use the `AutoReleaseTime` parameter to set the time when to automatically release the instances. After instances are created, you can call the DescribeInstances operation to check their states. By default, instances automatically start after they are created. Instances are ready for use when they are in the Running ( `Running` ) state. After you call this operation, an error is returned if a parameter is invalid or if available resources are insufficient. For more information, see the "Error codes" section of this topic. Best pract ices: You can call the `RunInstances` operation to batch create instances. To better manage and search for these instances, we recommend that you specify tags by using the `Tag.N.Key` and `T` `ag.N.Value` parameters for the instances. You can also append incremental suffixes ( `UniqueSuff`
 
 |   | ag.N.Value |   |
 |---|---|---|
@@ -2156,7 +2156,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.2 CreateInstance
 
-Creates an Elastic Compute Service (ECS) instance. Not e You can call the DescribeAvailableResource operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the RunInstances operation. When you call this operation, take note of the following items: Inst ance t ype: You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance. Select an appropriate instance type. To learn about the performance data about instance types, see the "Instance families and instance types" topic in ECS Production Introduction or call the DescribeInstanceTypes operation. Query available resources. You can call the DescribeAvailableResource operation to query available resources in a specific region or zone. Image: The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image. If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images. If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit operating system image. Net work t ype: Each instance that resides in a virtual private cloud (VPC) must be connected only to a single vSwitch. If the `VSwitchId` parameter is specified, the security group specified by `SecurityGroupId` and
+Creates an Elastic Compute Service (ECS) instance. Description Not e You can call the DescribeAvailableResource operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the RunInstances operation. When you call this operation, take note of the following items: Inst ance t ype: You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance. Select an appropriate instance type. To learn about the performance data about instance types, see the "Instance families and instance types" topic in ECS Production Introduction or call the DescribeInstanceTypes operation. Query available resources. You can call the DescribeAvailableResource operation to query available resources in a specific region or zone. Image: The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image. If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images. If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit operating system image. Net work t ype: Each instance that resides in a virtual private cloud (VPC) must be connected only to a single vSwitch. If the `VSwitchId` parameter is specified, the security group specified by `SecurityGroupId` and
 
 | pecified by VSwitchId must belong to the same VPC PrivateIpAddress depends on that of VSwitchId oth the VSwitchId and PrivateIpAddress parame ified by PrivateIpAddress must be available in the CI |   |
 |---|---|
@@ -2669,7 +2669,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.3 StartInstance
 
-You can call this operation to start an ECS instance. After the operation is called, the instance enters the Starting state. When you call this operation, take note of the following items: The ECS instance to be started must be in the St opped ( `Stopped` ) state. If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be started through calls to this operation. Request parameters
+You can call this operation to start an ECS instance. After the operation is called, the instance enters the Starting state. Description When you call this operation, take note of the following items: The ECS instance to be started must be in the St opped ( `Stopped` ) state. If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be started through calls to this operation. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2739,7 +2739,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.4 StopInstance
 
-You can call this operation to stop an ECS instance in the Running state. After the operation is called, the status of the instance changes to Stopping and then to Stopped. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be stopped through calls to this operation. To stop an instance of an instance family equipped with local SSDs, take note of the following items: After the instance is stopped, data in its local disks is cleared. To ensure data availability, we recommend that you implement data redundancy at the application layer. ECS automatically ignores the `ConfirmStop` parameter in the requests to stop instances of other instance families. Request parameters
+You can call this operation to stop an ECS instance in the Running state. After the operation is called, the status of the instance changes to Stopping and then to Stopped. Description If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be stopped through calls to this operation. To stop an instance of an instance family equipped with local SSDs, take note of the following items: After the instance is stopped, data in its local disks is cleared. To ensure data availability, we recommend that you implement data redundancy at the application layer. ECS automatically ignores the `ConfirmStop` parameter in the requests to stop instances of other instance families. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2808,7 +2808,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.5 RebootInstance
 
-You can call this operation to restart an instance in the Running state. Only instances in the Running ( `Running` ) state can be restarted. After the operation is called, the status of the corresponding instance changes to St art ing ( `Starti` `ng` ). Instances can be forcibly restarted. A forced restart ( `ForceStop` ) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted through calls to this operation. Request parameters
+You can call this operation to restart an instance in the Running state. Description Only instances in the Running ( `Running` ) state can be restarted. After the operation is called, the status of the corresponding instance changes to St art ing ( `Starti` `ng` ). Instances can be forcibly restarted. A forced restart ( `ForceStop` ) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted through calls to this operation. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2875,7 +2875,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.6 DeleteInstance
 
-You can call this operation to release an ECS instance. After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered. Disks attached to the instance:
+You can call this operation to release an ECS instance. Description After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered. Disks attached to the instance:
 
 |   | DeleteWithInstance |
 |---|---|
@@ -3150,7 +3150,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.9 DescribeInstanceStatus
 
-You can call this operation to query the status information of multiple instances. You can also call this operation to query the list of instances. Request parameters
+You can call this operation to query the status information of multiple instances. Description You can also call this operation to query the list of instances. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3228,7 +3228,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.10 DescribeInstances
 
-You can call this operation to query the details of one or more instances. You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned. If you are using a RAM user or RAM role, an empty list is returned when the user or the role does not have the permission to call this operation. You can include the `DryRun` parameter in your request to check whether the empty list is caused by the lack of permissions. Request parameters
+You can call this operation to query the details of one or more instances. Description You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned. If you are using a RAM user or RAM role, an empty list is returned when the user or the role does not have the permission to call this operation. You can include the `DryRun` parameter in your request to check whether the empty list is caused by the lack of permissions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3735,7 +3735,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.11 DescribeUserData
 
-You can call this operation to query the user data of an ECS instance. The returned user data is encoded in Base64. If the instance does not have user data configured, an empty result is returned. Request parameters
+You can call this operation to query the user data of an ECS instance. Description The returned user data is encoded in Base64. If the instance does not have user data configured, an empty result is returned. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4069,7 +4069,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.14 DescribeInstanceTypes
 
-Queries instance types provided by Elastic Compute Service (ECS). The DescribeInstanceTypes operation is used to query only the specifications and performance data of instance types. To query instance types that are available in a region or zone, call the DescribeAvailableResource operation. Request parameters
+Queries instance types provided by Elastic Compute Service (ECS). Description The DescribeInstanceTypes operation is used to query only the specifications and performance data of instance types. To query instance types that are available in a region or zone, call the DescribeAvailableResource operation. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4210,7 +4210,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.15 ModifyInstanceAttribute
 
-Modifies some attributes of an Elastic Compute Service (ECS) instance, such as the password, name, description, hostname, security group, and user data. If the instance is a burstable instance, you can also change its performance mode. When you query the instance information and the responses contain `{"OperationLocks":` `{"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance. When you call this operation, take note of the following items: Modify the hostname ( `HostName` ): After the hostname is modified, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system. Reset the password ( `Password` ): The instance must not be in the St art ing ( `Starting` ) state. After the password is reset, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system. Modify user data ( `UserData` ): The instance must be in the St opped ( `Stopped` ) state. The instance must meet the limits on user data. Request parameters
+Modifies some attributes of an Elastic Compute Service (ECS) instance, such as the password, name, description, hostname, security group, and user data. If the instance is a burstable instance, you can also change its performance mode. Description When you query the instance information and the responses contain `{"OperationLocks":` `{"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance. When you call this operation, take note of the following items: Modify the hostname ( `HostName` ): After the hostname is modified, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system. Reset the password ( `Password` ): The instance must not be in the St art ing ( `Starting` ) state. After the password is reset, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system. Modify user data ( `UserData` ): The instance must be in the St opped ( `Stopped` ) state. The instance must meet the limits on user data. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4324,7 +4324,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.16 ModifyInstanceVpcAttribute
 
-Modifies the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance in a VPC. The instance must be in the St opped ( `Stopped` ) state. When you call this operation to modify the private IP address or vSwitch of an instance, take note of the following items: If the instance is a new instance, you must restart the instance before you call this operation on it. After the private IP address or vSwitch of an instance is modified, you must restart the instance before you can call this operation again. When you call this operation to modify the VPC of an instance, take note of the following items: Instance: The instance cannot be associated with Server Load Balancer (SLB) instances. The instance cannot be in the Locked or To Be Released state. The instance cannot be used in other cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission (DTS). Network: The instance cannot have secondary ENIs bound. The instance cannot have IPv6 addresses assigned. The primary ENI of the instance cannot be associated with multiple IP addresses. The vSwitch specified by the VSwitchId parameter must belong to the new VPC. The vSwitches before and after the modification must reside within the same zone. If the private IP address of the primary ENI is specified, the private IP address must be available and within the CIDR block of the vSwitch. If the private IP address is not specified, the system randomly assigns one. The available IP addresses in the CIDR block of the new vSwitch must be sufficient. The Alibaba Cloud account that owns the new VPC cannot share the VPC to other accounts. Security group (SecurityGroupId.N): The valid values of N depend on the maximum number of security groups to which an instance can belong. Make sure that the quota for security groups within your account is sufficient. The specified security groups must belong to the new VPC. Request parameters
+Modifies the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance in a VPC. Description The instance must be in the St opped ( `Stopped` ) state. When you call this operation to modify the private IP address or vSwitch of an instance, take note of the following items: If the instance is a new instance, you must restart the instance before you call this operation on it. After the private IP address or vSwitch of an instance is modified, you must restart the instance before you can call this operation again. When you call this operation to modify the VPC of an instance, take note of the following items: Instance: The instance cannot be associated with Server Load Balancer (SLB) instances. The instance cannot be in the Locked or To Be Released state. The instance cannot be used in other cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission (DTS). Network: The instance cannot have secondary ENIs bound. The instance cannot have IPv6 addresses assigned. The primary ENI of the instance cannot be associated with multiple IP addresses. The vSwitch specified by the VSwitchId parameter must belong to the new VPC. The vSwitches before and after the modification must reside within the same zone. If the private IP address of the primary ENI is specified, the private IP address must be available and within the CIDR block of the vSwitch. If the private IP address is not specified, the system randomly assigns one. The available IP addresses in the CIDR block of the new vSwitch must be sufficient. The Alibaba Cloud account that owns the new VPC cannot share the VPC to other accounts. Security group (SecurityGroupId.N): The valid values of N depend on the maximum number of security groups to which an instance can belong. Make sure that the quota for security groups within your account is sufficient. The specified security groups must belong to the new VPC. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4402,7 +4402,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.17 ModifyInstanceVncPasswd
 
-You can call this operation to change the VNC password of an instance. The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits. After you change the VNC password of an instance: If the instance is I/O optimized, the new password takes effect immediately. If the instance is not I/O optimized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect. Request parameters
+You can call this operation to change the VNC password of an instance. Description The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits. After you change the VNC password of an instance: If the instance is I/O optimized, the new password takes effect immediately. If the instance is not I/O optimized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4452,7 +4452,7 @@ Sample success responses `XML` format
 
 ##### 5.1.4.18 SoftDeleteInstances
 
-Logically deletes one or more Elastic Compute Service (ECS) instances. Logical deletion is a new method to delete ECS resources. Different from the DeleteInstance operation, after an instance is logically deleted by calling the SoftDeleteInstances operation, the instance is moved to the recycle bin and is retained here for a specified period of time, which is specified by the Hours parameter. During the retention period, computing resources such as CPUs and memory are released, elastic IP addresses (EIPs) are disassociated from the instance, and storage resources are retained. After the retention period, all ECS resources including storage resources are permanently deleted and cannot be restored. When you call this operation, take note of the following items: Instances of instance families equipped with local disks cannot be logically deleted. The instance must be in the St opped (Stopped) or Running (Running) state. After an instance is logically deleted, the instance enters a retention period. During the retention period, you can only recover or permanently delete the instance but cannot associate or disassociate other resources with or from it, such as attaching or detaching a disk. Request parameters
+Logically deletes one or more Elastic Compute Service (ECS) instances. Description Logical deletion is a new method to delete ECS resources. Different from the DeleteInstance operation, after an instance is logically deleted by calling the SoftDeleteInstances operation, the instance is moved to the recycle bin and is retained here for a specified period of time, which is specified by the Hours parameter. During the retention period, computing resources such as CPUs and memory are released, elastic IP addresses (EIPs) are disassociated from the instance, and storage resources are retained. After the retention period, all ECS resources including storage resources are permanently deleted and cannot be restored. When you call this operation, take note of the following items: Instances of instance families equipped with local disks cannot be logically deleted. The instance must be in the St opped (Stopped) or Running (Running) state. After an instance is logically deleted, the instance enters a retention period. During the retention period, you can only recover or permanently delete the instance but cannot associate or disassociate other resources with or from it, such as attaching or detaching a disk. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4550,7 +4550,7 @@ Sample success responses `XML` format
 
 ##### 5.1.5.1 AllocateDedicatedHosts
 
-You can call this operation to create one or more dedicated hosts. A dedicated host is a physical server dedicated to a single tenant. You can create ECS instances on a dedicated host and view the attributes of the dedicated host. Before you create a dedicated host, you can call the DescribeAvailableResource operation to view the available resources in the target region or zone. You can create a maximum of 100 dedicated hosts at a time. After you create a dedicated host, you can use its ID that is returned by the system as the request parameter to call the DescribeDedicatedHosts operation to query the status of the dedicated host. After you submit a request to create a dedicated host, an error is returned if a specified parameter is invalid or the requested resources are insufficient. For more information about error causes, see Error codes. After a dedicated host is created, you can call the ModifyInstanceDeployment operation to migrate ECS instances from a shared host to the dedicated host. You can also migrate ECS instances from another dedicated host to the created dedicated host. Request parameters
+You can call this operation to create one or more dedicated hosts. A dedicated host is a physical server dedicated to a single tenant. You can create ECS instances on a dedicated host and view the attributes of the dedicated host. Description Before you create a dedicated host, you can call the DescribeAvailableResource operation to view the available resources in the target region or zone. You can create a maximum of 100 dedicated hosts at a time. After you create a dedicated host, you can use its ID that is returned by the system as the request parameter to call the DescribeDedicatedHosts operation to query the status of the dedicated host. After you submit a request to create a dedicated host, an error is returned if a specified parameter is invalid or the requested resources are insufficient. For more information about error causes, see Error codes. After a dedicated host is created, you can call the ModifyInstanceDeployment operation to migrate ECS instances from a shared host to the dedicated host. You can also migrate ECS instances from another dedicated host to the created dedicated host. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4730,7 +4730,7 @@ Sample success responses `XML` format
 
 ##### 5.1.5.3 ModifyInstanceDeployment
 
-You can call this operation to change the deployment set of an instance or migrate an instance to a dedicated host. When you migrate an instance, you can change its instance type. When you migrate an instance to a dedicated host or change the instance type during the migration, make sure that the following requirements are met: The instance is in the St opped (Stopped) state. The instance is automatically restarted after the migration. The instance is located in a VPC. The instance and the dedicated host belong to the same region, zone, and account. Request parameters
+You can call this operation to change the deployment set of an instance or migrate an instance to a dedicated host. When you migrate an instance, you can change its instance type. Description When you migrate an instance to a dedicated host or change the instance type during the migration, make sure that the following requirements are met: The instance is in the St opped (Stopped) state. The instance is automatically restarted after the migration. The instance is located in a VPC. The instance and the dedicated host belong to the same region, zone, and account. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5172,7 +5172,7 @@ Sample success responses `XML` format
 
 ##### 5.1.5.6 ReleaseDedicatedHost
 
-You can call this operation to release a dedicated host. Before you release a dedicated host, make sure that no ECS instances are deployed on the dedicated host. Request parameters
+You can call this operation to release a dedicated host. Description Before you release a dedicated host, make sure that no ECS instances are deployed on the dedicated host. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5855,7 +5855,7 @@ Sample success responses `XML` format
 
 ##### 5.1.7.1 CreateStorageSet
 
-Creates a storage set in a zone within a specified region. A storage set can distribute disks or Shared Block Storage devices to different locations. You can specify the number of partitions in a storage set. A larger number of partitions indicate more discrete distribution of disks or Shared Block Storage devices. For more information about storage sets, see Create a storage set in Defined Storage User Guide. Request parameters
+Creates a storage set in a zone within a specified region. Description A storage set can distribute disks or Shared Block Storage devices to different locations. You can specify the number of partitions in a storage set. A larger number of partitions indicate more discrete distribution of disks or Shared Block Storage devices. For more information about storage sets, see Create a storage set in Defined Storage User Guide. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6206,7 +6206,7 @@ Error codes
 
 ##### 5.1.8.1 CreateDisk
 
-Creates a data disk. By default, the DeleteAutoSnapshot parameter is set to true when a disk is created. This indicates that when the disk is released, the automatic snapshots of the disk are deleted. You can call the ModifyDiskAttribute operation to modify the value of this parameter. You must specify one of the Size and SnapshotId parameters. The Size parameter specifies the size of the disk and the SnapshotId parameter specifies the snapshot that is used to create the disk. When you create a disk, you can enable the multi-attach feature. Before you create a disk, we recommend that you familiarize yourself with the functions and limits of this feature. For more information, see Enable the multi-attach feature for disks that support NVMe in ECS User Guide. You can create premium performance disks, standard performance disks, ultra disks, and SSDs. Not e By default, shared SSDs and shared ultra disks cannot be created. To create shared SSDs and shared ultra disks, submit a ticket. Request parameters
+Creates a data disk. Description By default, the DeleteAutoSnapshot parameter is set to true when a disk is created. This indicates that when the disk is released, the automatic snapshots of the disk are deleted. You can call the ModifyDiskAttribute operation to modify the value of this parameter. You must specify one of the Size and SnapshotId parameters. The Size parameter specifies the size of the disk and the SnapshotId parameter specifies the snapshot that is used to create the disk. When you create a disk, you can enable the multi-attach feature. Before you create a disk, we recommend that you familiarize yourself with the functions and limits of this feature. For more information, see Enable the multi-attach feature for disks that support NVMe in ECS User Guide. You can create premium performance disks, standard performance disks, ultra disks, and SSDs. Not e By default, shared SSDs and shared ultra disks cannot be created. To create shared SSDs and shared ultra disks, submit a ticket. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6381,7 +6381,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.2 DescribeDisks
 
-Queries one or more Elastic Block Storage (EBS) devices that you created, including cloud disks and local disks. You can specify multiple request parameters such as `RegionId` , `ZoneId` , `DiskIds` , and `Insta` `nceId` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+Queries one or more Elastic Block Storage (EBS) devices that you created, including cloud disks and local disks. Description You can specify multiple request parameters such as `RegionId` , `ZoneId` , `DiskIds` , and `Insta` `nceId` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
 
 | The | DiskIds |   |
 |---|---|---|
@@ -6808,7 +6808,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.4 DetachDisk
 
-You can call this operation to detach a data disk or system disk from an instance. When you call this operation, take note of the following items: The disk to be detached must be in the Running ( `In_Use` ) state. The instance from which you want to detach a data disk must be in the Running ( `Running` ) or St opped ( `Stopped` ) state. The instance from which you want to detach the system disk must be in the St opped ( `Stopped` ) state.
+You can call this operation to detach a data disk or system disk from an instance. Description When you call this operation, take note of the following items: The disk to be detached must be in the Running ( `In_Use` ) state. The instance from which you want to detach a data disk must be in the Running ( `Running` ) or St opped ( `Stopped` ) state. The instance from which you want to detach the system disk must be in the St opped ( `Stopped` ) state.
 
 | {"OperationLocks": | {"LockReason" : "security"}} |
 |---|---|
@@ -6879,7 +6879,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.5 ModifyDiskAttribute
 
-You can call this operation to modify the attributes of one or more Block Storage devices, including their names, descriptions, and whether they are released along with their attached instances. If you set DeleteWithInstance to false for a disk and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance parameter will be ignored and the disk will be released along with the instance. (If the value of `LockReason` is security in OperationLocks of the API response when you query information of an instance, the instance is locked for security reasons.) Request parameters
+You can call this operation to modify the attributes of one or more Block Storage devices, including their names, descriptions, and whether they are released along with their attached instances. Description If you set DeleteWithInstance to false for a disk and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance parameter will be ignored and the disk will be released along with the instance. (If the value of `LockReason` is security in OperationLocks of the API response when you query information of an instance, the instance is locked for security reasons.) Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6942,7 +6942,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.6 ReInitDisk
 
-Re-initializes a disk. When you call this operation, take note of the following items: The disk to be re-initialized must be in the In Use (In_use) state and the instance to which the disk is attached must be in the St opped (Stopped) state. If the instance has never been started since it was created, the disks attached to it cannot be reinitialized. When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized. When a separately created data disk is re-initialized, it is restored to an empty data disk. When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot. If the snapshot has been deleted, the disk cannot be re-initialized and an error is returned. Request parameters
+Re-initializes a disk. Description When you call this operation, take note of the following items: The disk to be re-initialized must be in the In Use (In_use) state and the instance to which the disk is attached must be in the St opped (Stopped) state. If the instance has never been started since it was created, the disks attached to it cannot be reinitialized. When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized. When a separately created data disk is re-initialized, it is restored to an empty data disk. When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot. If the snapshot has been deleted, the disk cannot be re-initialized and an error is returned. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7016,7 +7016,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.7 ResetDisk
 
-Restores a disk to a specific point in time from a snapshot of the disk. When you call this operation, take note of the following items: The disk must be in the In Use (In_Use) state. The instance to which the disk is attached must be in the Stopped (Stopped) state. The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter. When you call the DescribeInstances operation to query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance. Request parameters
+Restores a disk to a specific point in time from a snapshot of the disk. Description When you call this operation, take note of the following items: The disk must be in the In Use (In_Use) state. The instance to which the disk is attached must be in the Stopped (Stopped) state. The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter. When you call the DescribeInstances operation to query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7088,7 +7088,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.8 ReplaceSystemDisk
 
-You can call this operation to replace the system disk or operating system of an ECS instance. After the system disk is replaced, the ID of the system disk changes and the original disk is released. When you call this operation, take note of the following items: You cannot change the category of the system disk. The instance to which the system disk to be replaced is attached must be in the Stopped (Stopped) state. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted. You can use the SystemDisk.Size parameter to specify the capacity of the new system disk. Request parameters
+You can call this operation to replace the system disk or operating system of an ECS instance. After the system disk is replaced, the ID of the system disk changes and the original disk is released. Description When you call this operation, take note of the following items: You cannot change the category of the system disk. The instance to which the system disk to be replaced is attached must be in the Stopped (Stopped) state. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted. You can use the SystemDisk.Size parameter to specify the capacity of the new system disk. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7229,7 +7229,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.9 ResizeDisk
 
-You can call this operation to resize a system disk or data disk. Not e Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize an MBR disk to larger than 2 TiB in size without data loss. To resize an MBR disk to larger than 2 TiB in size, we recommend that you create and attach a new data disk with the desired size. Then, we recommend that you use the GPT partition format to partition and format the new data disk and copy data from the MBR-formatted data disk to the new GPTformatted data disk. For more information, see Expand a disk in ECS User Guide. You can resize the disks of different categories, including basic disks ( `cloud` ), ultra disks ( `cloud_e` `fficiency` ), and standard SSDs ( `cloud_ssd` ). You cannot resize a disk when a snapshot is being created for the disk. The instance to which the disk to be resized is attached must be in the Running ( `Running` ) or St opped ( `Stopped` ) state. After you resize a disk, its partitions and file systems are not changed. You must manually allocate the storage space on the disk after it is resized. Request parameters
+You can call this operation to resize a system disk or data disk. Description Not e Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize an MBR disk to larger than 2 TiB in size without data loss. To resize an MBR disk to larger than 2 TiB in size, we recommend that you create and attach a new data disk with the desired size. Then, we recommend that you use the GPT partition format to partition and format the new data disk and copy data from the MBR-formatted data disk to the new GPTformatted data disk. For more information, see Expand a disk in ECS User Guide. You can resize the disks of different categories, including basic disks ( `cloud` ), ultra disks ( `cloud_e` `fficiency` ), and standard SSDs ( `cloud_ssd` ). You cannot resize a disk when a snapshot is being created for the disk. The instance to which the disk to be resized is attached must be in the Running ( `Running` ) or St opped ( `Stopped` ) state. After you resize a disk, its partitions and file systems are not changed. You must manually allocate the storage space on the disk after it is resized. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7323,7 +7323,7 @@ Sample success responses `XML` format
 
 ##### 5.1.8.10 DeleteDisk
 
-Releases a data disk. When you call this operation to release a data disk, take note of the following items: Manual snapshots of the disk are retained. You can call the ModifyDiskAttribute operation to configure whether to retain automatic snapshots of the disk or release them along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots. The disk must be in the Unattached (Available) state. If the specified DiskId parameter does not exist, the request is ignored. Request parameters
+Releases a data disk. Description When you call this operation to release a data disk, take note of the following items: Manual snapshots of the disk are retained. You can call the ModifyDiskAttribute operation to configure whether to retain automatic snapshots of the disk or release them along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots. The disk must be in the Unattached (Available) state. If the specified DiskId parameter does not exist, the request is ignored. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7385,7 +7385,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.1 CreateSnapshot
 
-Creates a snapshot for a disk. In the following scenarios, snapshots cannot be created for a disk: The number of manual snapshots of the disk has reached 256. A snapshot is being created for the disk. The Elastic Compute Service (ECS) instance to which the disk is attached has never been started. The instance to which the disk is attached is not in the St opped ( `Stopped` ) or Running ( `Running` ) state. If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it. When you create a snapshot, take note of the following items: About 1 hour after an instance is created or the system disk of an instance is replaced, you can create a snapshot for a disk that is attached to the instance. After a data disk is attached to an instance, you must wait a period of time before you can create a snapshot for the data disk. The amount of time to wait depends on the volume of data stored on the disk. If a snapshot is being created, this snapshot cannot be used to create a custom image by calling the CreateImage operation. If the disk for which you want to create a snapshot is attached to an ECS instance, do not change the instance state during snapshot creation. Request parameters
+Creates a snapshot for a disk. Description In the following scenarios, snapshots cannot be created for a disk: The number of manual snapshots of the disk has reached 256. A snapshot is being created for the disk. The Elastic Compute Service (ECS) instance to which the disk is attached has never been started. The instance to which the disk is attached is not in the St opped ( `Stopped` ) or Running ( `Running` ) state. If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it. When you create a snapshot, take note of the following items: About 1 hour after an instance is created or the system disk of an instance is replaced, you can create a snapshot for a disk that is attached to the instance. After a data disk is attached to an instance, you must wait a period of time before you can create a snapshot for the data disk. The amount of time to wait depends on the volume of data stored on the disk. If a snapshot is being created, this snapshot cannot be used to create a custom image by calling the CreateImage operation. If the disk for which you want to create a snapshot is attached to an ECS instance, do not change the instance state during snapshot creation. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7507,7 +7507,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.2 DescribeSnapshots
 
-Queries all snapshots of an Elastic Compute Service (ECS) instance or disk. You can specify multiple request parameters such as InstanceId, DiskId, and SnapshotIds to be queried. Specified parameters are used as filter conditions and have logical AND relations. Request parameters
+Queries all snapshots of an Elastic Compute Service (ECS) instance or disk. Description You can specify multiple request parameters such as InstanceId, DiskId, and SnapshotIds to be queried. Specified parameters are used as filter conditions and have logical AND relations. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7722,7 +7722,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.3 DeleteSnapshot
 
-Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled. When you call this operation, take note of the following items: If the specified snapshot does not exist, the request is ignored. A snapshot that has already been used to create custom images cannot be deleted. You must call the DeleteImage operation to delete the custom images before you can delete the snapshot. If the specified snapshot has been used to create disks and the `Force` parameter is not specified or is set to `false` , the snapshot cannot be deleted directly. If you want to delete the snapshot,
+Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled. Description When you call this operation, take note of the following items: If the specified snapshot does not exist, the request is ignored. A snapshot that has already been used to create custom images cannot be deleted. You must call the DeleteImage operation to delete the custom images before you can delete the snapshot. If the specified snapshot has been used to create disks and the `Force` parameter is not specified or is set to `false` , the snapshot cannot be deleted directly. If you want to delete the snapshot,
 
 | to | false |   |
 |---|---|---|
@@ -7779,7 +7779,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.4 CopySnapshot
 
-You can call this operation to copy a normal snapshot from one region to another. When you call this operation, take note of the following items: New snapshots, which are the copies of source snapshots, cannot be used to roll back the disks for which the source snapshots were created. Encrypted snapshots cannot be copied. Local snapshots cannot be copied. Request parameters
+You can call this operation to copy a normal snapshot from one region to another. Description When you call this operation, take note of the following items: New snapshots, which are the copies of source snapshots, cannot be used to roll back the disks for which the source snapshots were created. Encrypted snapshots cannot be copied. Local snapshots cannot be copied. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7843,7 +7843,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.5 DescribeSnapshotLinks
 
-You can call this operation to query the snapshot chains of one or more disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots. When you call this operation, take note of the following items: You can specify multiple request parameters such as `RegionId` , `DiskIds` , and `InstanceId` to be queried. Specified parameters have logical AND relations. Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned. Request parameters
+You can call this operation to query the snapshot chains of one or more disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots. Description When you call this operation, take note of the following items: You can specify multiple request parameters such as `RegionId` , `DiskIds` , and `InstanceId` to be queried. Specified parameters have logical AND relations. Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8018,7 +8018,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.7 CreateAutoSnapshotPolicy
 
-You can call this operation to create an automatic snapshot policy. After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to disks. You can also call the ModifyAutoSnapshotPolicyEx operation to modify the automatic snapshot policy. When you call this operation, take note of the following items: A maximum of 100 automatic snapshot policies can be created in each region per Apsara Stack tenant account. If an automatic snapshot is being created when the time scheduled for a new automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, an automatic snapshot policy is applied to a disk that contains a large volume of data, and the policy specifies that snapshots are created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00. The snapshot creation process takes 80 minutes and ends at 10:20. The system skips the automatic snapshot task scheduled for 10:00 and creates the next automatic snapshot for the disk at 11:00. Request parameters
+You can call this operation to create an automatic snapshot policy. Description After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to disks. You can also call the ModifyAutoSnapshotPolicyEx operation to modify the automatic snapshot policy. When you call this operation, take note of the following items: A maximum of 100 automatic snapshot policies can be created in each region per Apsara Stack tenant account. If an automatic snapshot is being created when the time scheduled for a new automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, an automatic snapshot policy is applied to a disk that contains a large volume of data, and the policy specifies that snapshots are created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00. The snapshot creation process takes 80 minutes and ends at 10:20. The system skips the automatic snapshot task scheduled for 10:00 and creates the next automatic snapshot for the disk at 11:00. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8378,7 +8378,7 @@ me>
 
 ##### 5.1.9.12 ApplyAutoSnapshotPolicy
 
-Applies an automatic snapshot policy to one or more disks. If you apply an automatic snapshot policy to a disk that already has an automatic snapshot policy, the new policy replaces the original policy to take effect on the disk. Each disk can have only one automatic snapshot policy applied. A single automatic snapshot policy can be applied to multiple disks. Request parameters
+Applies an automatic snapshot policy to one or more disks. If you apply an automatic snapshot policy to a disk that already has an automatic snapshot policy, the new policy replaces the original policy to take effect on the disk. Description Each disk can have only one automatic snapshot policy applied. A single automatic snapshot policy can be applied to multiple disks. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8590,7 +8590,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.15 DescribeSnapshotGroups
 
-Queries the details of one or more snapshot-consistent groups. You can specify multiple request parameters such as `InstanceId` , `SnapshotGroupId.N` , and `Status.N` in the request. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. Request parameters
+Queries the details of one or more snapshot-consistent groups. Description You can specify multiple request parameters such as `InstanceId` , `SnapshotGroupId.N` , and `Status.N` in the request. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8702,7 +8702,7 @@ Sample success responses `XML` format
 
 ##### 5.1.9.16 DeleteSnapshotGroup
 
-Deletes a snapshot-consistent group. If you have custom images that were created from a disk snapshot contained in a snapshot-consistent group, the disk snapshot is retained when the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the DeleteImage operation to delete the custom images. Then, you can call the DeleteSnapshot operation to delete the disk snapshot. Request parameters
+Deletes a snapshot-consistent group. Description If you have custom images that were created from a disk snapshot contained in a snapshot-consistent group, the disk snapshot is retained when the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the DeleteImage operation to delete the custom images. Then, you can call the DeleteSnapshot operation to delete the disk snapshot. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8820,7 +8820,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.1 CreateImage
 
-You can call this operation to create a custom image. The created custom image can be used to create ECS instances (RunInstances) and replace system disks (ReplaceSystemDisk). When you call this operation, take note of the following items: The created custom image can be used only when it is in the Available (Available) state. If the API response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information of an instance, the instance is locked for security reasons and all operations are prohibited on it. You can call the CreateImage operation to create a custom image by using one of the following methods. The request parameters have the following priorities: `InstanceId` > `DiskDeviceMapping`
+You can call this operation to create a custom image. The created custom image can be used to create ECS instances (RunInstances) and replace system disks (ReplaceSystemDisk). Description When you call this operation, take note of the following items: The created custom image can be used only when it is in the Available (Available) state. If the API response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information of an instance, the instance is locked for security reasons and all operations are prohibited on it. You can call the CreateImage operation to create a custom image by using one of the following methods. The request parameters have the following priorities: `InstanceId` > `DiskDeviceMapping`
 > `SnapshotId` . If your request contains two or more parameters, the custom image is created based
 
 on the parameter with a higher priority by default. Met hod 1: Create a custom image from an instance. You only need to specify the instance ID ( `Inst` `anceId` ). The instance must be in the Running ( `Running` ) or Stopped ( `Stopped` ) state. After the CreateImage operation is called, a new snapshot is created for each disk of the instance. Met hod 2: Create a custom image from the system disk snapshot of an ECS instance. You only need to specify the ID of the system disk snapshot ( `SnapshotId` ). The specified snapshot cannot be created on or before July 15, 2013. Met hod 3: Create a custom image from multiple disk snapshots. You must specify the data mapping between the disks corresponding to the snapshots ( `DiskDeviceMapping` parameters). When you use method 3 to create a custom image, take note of the following items: You can specify only one system disk snapshot. The device name of the system disk must be /dev/xvda. You can specify multiple data disk snapshots. The device names of the data disks are automatically allocated by the system. The device names are unique and ascend from /dev/xvdb to /dev/xvdz. `SnapshotId` may not be specified. In this case, an empty data disk with a specific size is created. The specified snapshot cannot be created on or before July 15, 2013. Request parameters
@@ -8957,7 +8957,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.2 DescribeImages
 
-Queries available images. You can query your custom images, public images provided by Apsara Stack, and images shared from other Apsara Stack tenant accounts. This operation supports paged query. The response contains the total number of available images and the images on the returned page. By default, ten entries are displayed on each page. When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. Request parameters
+Queries available images. Description You can query your custom images, public images provided by Apsara Stack, and images shared from other Apsara Stack tenant accounts. This operation supports paged query. The response contains the total number of available images and the images on the returned page. By default, ten entries are displayed on each page. When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9335,7 +9335,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.5 CopyImage
 
-You can call this operation to copy a custom image from one region to another. You can deploy or copy instances across regions by copying images. You can use the image copy to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk) in the destination region. When you call this operation, take note of the following items: Only custom images that are in the Available ( `Available` ) state can be copied. You can copy only the images in your Apsara Stack tenant account. Images cannot be copied across accounts. When an image is being copied, you cannot delete the image copy by calling the DeleteImage operation, but you can cancel the copy task by calling the CancelCopyImage operation. Request parameters
+You can call this operation to copy a custom image from one region to another. You can deploy or copy instances across regions by copying images. Description You can use the image copy to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk) in the destination region. When you call this operation, take note of the following items: Only custom images that are in the Available ( `Available` ) state can be copied. You can copy only the images in your Apsara Stack tenant account. Images cannot be copied across accounts. When an image is being copied, you cannot delete the image copy by calling the DeleteImage operation, but you can cancel the copy task by calling the CancelCopyImage operation. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9432,7 +9432,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.6 CancelCopyImage
 
-You can call this operation to cancel an ongoing image copy (CopyImage) task. When you call this operation, take note of the following items: After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged. If the image copy task is complete, the CancelCopyImage operation fails and an error is returned. Request parameters
+You can call this operation to cancel an ongoing image copy (CopyImage) task. Description When you call this operation, take note of the following items: After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged. If the image copy task is complete, the CancelCopyImage operation fails and an error is returned. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9493,7 +9493,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.7 ModifyImageSharePermission
 
-Manages the share permission on a custom image. After you share a custom image to another Apsara Stack tenant account, the account can use the shared image to create Elastic Compute Service (ECS) instances (RunInstances) or replace the system disks of ECS instances (ReplaceSystemDisk). When you call this operation, take note of the following items: You can share only your own custom images to other Apsara Stack tenant accounts. A custom image can be shared to up to 10 Apsara Stack tenant accounts at a time. You can specify up to 10 Apsara Stack tenant account IDs in the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter is ignored. A single custom image can be shared to up to 50 Apsara Stack tenant accounts. If an instance was created (RunInstances) from a shared image, the system disk of this instance cannot be re-initialized (ReInitDisk) after the image owner unshares or deletes the image (DeleteImage). Request parameters
+Manages the share permission on a custom image. After you share a custom image to another Apsara Stack tenant account, the account can use the shared image to create Elastic Compute Service (ECS) instances (RunInstances) or replace the system disks of ECS instances (ReplaceSystemDisk). Description When you call this operation, take note of the following items: You can share only your own custom images to other Apsara Stack tenant accounts. A custom image can be shared to up to 10 Apsara Stack tenant accounts at a time. You can specify up to 10 Apsara Stack tenant account IDs in the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter is ignored. A single custom image can be shared to up to 50 Apsara Stack tenant accounts. If an instance was created (RunInstances) from a shared image, the system disk of this instance cannot be re-initialized (ReInitDisk) after the image owner unshares or deletes the image (DeleteImage). Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9657,7 +9657,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.9 ImportImage
 
-You can call this operation to import a local image to ECS. The imported local image appears as a custom image in the corresponding region. You can use the imported image to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk). When you call this operation, take note of the following items: You must upload an image to an Object Storage Service (OSS) bucket before you can import the image. You must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets before you upload an image for the first time. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. The following example shows some steps in the authorization procedure:
+You can call this operation to import a local image to ECS. The imported local image appears as a custom image in the corresponding region. You can use the imported image to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk). Description When you call this operation, take note of the following items: You must upload an image to an Object Storage Service (OSS) bucket before you can import the image. You must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets before you upload an image for the first time. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. The following example shows some steps in the authorization procedure:
 1. Create a role named `AliyunECSImageImportDefaultRole` . You must use this exact name.
 Otherwise, the image will fail to be imported. Configure the following trust policy for the role: `{`
 
@@ -9821,7 +9821,7 @@ Sample success responses `XML` format
 
 ##### 5.1.10.10 ExportImage
 
-You can call this operation to export a custom image to an OSS bucket in the same region. A custom image cannot be exported if it contains more than four data disk snapshots or if one of the data disk snapshots exceeds 500 GiB in size. Before you export a custom image, you must use Resource Access Management (RAM) to create a RAM role for ECS and authorize ECS to write data to OSS.
+You can call this operation to export a custom image to an OSS bucket in the same region. Description A custom image cannot be exported if it contains more than four data disk snapshots or if one of the data disk snapshots exceeds 500 GiB in size. Before you export a custom image, you must use Resource Access Management (RAM) to create a RAM role for ECS and authorize ECS to write data to OSS.
 1. Create a role named `AliyunECSImageExportDefaultRole` . Any other role names are invalid.
 Configure the following trust policy for the role: `{`
 
@@ -10159,7 +10159,7 @@ Sample success responses `XML` format
 
 ##### 5.1.11.2 AttachClassicLinkVpc
 
-Links an instance that is deployed in the classic network to a virtual private cloud (VPC) by establishing a ClassicLink connection between the classic network and the VPC. This way, the instance can communicate with cloud resources in the VPC over the internal network. When you call this operation, take note of the following items: The instance that you want to connect to a VPC must be in the Running or St opped state. The instance and the VPC must reside in the same region. Request parameters
+Links an instance that is deployed in the classic network to a virtual private cloud (VPC) by establishing a ClassicLink connection between the classic network and the VPC. This way, the instance can communicate with cloud resources in the VPC over the internal network. Description When you call this operation, take note of the following items: The instance that you want to connect to a VPC must be in the Running or St opped state. The instance and the VPC must reside in the same region. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -10218,7 +10218,7 @@ Sample success responses `XML` format
 
 ##### 5.1.11.3 ModifyInstanceSpec
 
-Changes the instance type and network bandwidth of an Elastic Compute Service (ECS) instance. When you call this operation, take note of the following items: You can adjust the network bandwidth of an instance only when the instance is in the Running ( `Run` `ning` ) or St opped ( `Stopped` ) state. Before you change the instance type of an instance, you can call the DescribeResourcesModification operation to query the instance types to which you can change. You can change the instance type of an instance only when the instance is in the St opped ( `Stoppe` `d` ) state. You can only change either the instance type or the network bandwidth each time. After you change the instance type or the network bandwidth of an instance, you cannot initiate another change for this instance within 5 minutes. Request parameters
+Changes the instance type and network bandwidth of an Elastic Compute Service (ECS) instance. Description When you call this operation, take note of the following items: You can adjust the network bandwidth of an instance only when the instance is in the Running ( `Run` `ning` ) or St opped ( `Stopped` ) state. Before you change the instance type of an instance, you can call the DescribeResourcesModification operation to query the instance types to which you can change. You can change the instance type of an instance only when the instance is in the St opped ( `Stoppe` `d` ) state. You can only change either the instance type or the network bandwidth each time. After you change the instance type or the network bandwidth of an instance, you cannot initiate another change for this instance within 5 minutes. Request parameters
 
 | Parameter | Type | Required |   | Example | Description |   |   |
 |---|---|---|---|---|---|---|---|
@@ -10367,7 +10367,7 @@ Sample success responses `XML` format
 
 ##### 5.1.11.4 DescribeClassicLinkInstances
 
-You can call this operation to query one or more classic network-type instances that are linked to VPCs. When you call this operation, take note of the following items: This operation applies only to instances in the classic network. You can query a maximum of 100 classic network-type instances each time. At least one of VpcId and InstanceId must be specified. Request parameters
+You can call this operation to query one or more classic network-type instances that are linked to VPCs. Description When you call this operation, take note of the following items: This operation applies only to instances in the classic network. You can query a maximum of 100 classic network-type instances each time. At least one of VpcId and InstanceId must be specified. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -10517,7 +10517,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.1 CreateSecurityGroup
 
-You can call this operation to create a security group. For a new security group, only instances in the security group can access each other by default. Access requests to the security group from outside are denied. If you want to accept requests from resources on the Internet or requests from instances in other security groups, you can call the AuthorizeSecurityGroup operation to grant access permissions to those resources or instances. When you call this operation, take note of the following items: You can create a maximum of 100 security groups within a single region. To create a security group of the VPC type, you must specify the VpcId parameter. Request parameters
+You can call this operation to create a security group. For a new security group, only instances in the security group can access each other by default. Access requests to the security group from outside are denied. If you want to accept requests from resources on the Internet or requests from instances in other security groups, you can call the AuthorizeSecurityGroup operation to grant access permissions to those resources or instances. Description When you call this operation, take note of the following items: You can create a maximum of 100 security groups within a single region. To create a security group of the VPC type, you must specify the VpcId parameter. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -10596,7 +10596,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.2 AuthorizeSecurityGroup
 
-You can call this operation to create an inbound security group rule. The created rule allows or denies the inbound traffic from other devices to the ECS instances in the security group to which the rule belongs. In the security group-related API documents, inbound traffic refers to the traffic sent by the source device and received at the destination device. When you call this operation, take note of the following items: The total number of outbound and inbound security group rules in each security group cannot exceed 200. The priority ( `Priority` ) of a security group rule ranges from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop ( `drop` ) rules take precedence. The source devices can belong to a specified range of IP addresses (SourceCidrIp) or can be ECS instances in another security group (SourceGroupId). If the rule to be created matches an existing rule, the AuthorizeSecurityGroup operation succeeds but no rule is created. You can determine a security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying a single parameter. Parameters used to determine an inbound security group rule that controls access from a specified range of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and SourceCidrIp. For a security group of the classic network type, you can set the NicType parameter to internet or intranet. For a security group of the VPC type, you can set the NicType parameter only to intranet. Sample request:
+You can call this operation to create an inbound security group rule. The created rule allows or denies the inbound traffic from other devices to the ECS instances in the security group to which the rule belongs. Description In the security group-related API documents, inbound traffic refers to the traffic sent by the source device and received at the destination device. When you call this operation, take note of the following items: The total number of outbound and inbound security group rules in each security group cannot exceed 200. The priority ( `Priority` ) of a security group rule ranges from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop ( `drop` ) rules take precedence. The source devices can belong to a specified range of IP addresses (SourceCidrIp) or can be ECS instances in another security group (SourceGroupId). If the rule to be created matches an existing rule, the AuthorizeSecurityGroup operation succeeds but no rule is created. You can determine a security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying a single parameter. Parameters used to determine an inbound security group rule that controls access from a specified range of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and SourceCidrIp. For a security group of the classic network type, you can set the NicType parameter to internet or intranet. For a security group of the VPC type, you can set the NicType parameter only to intranet. Sample request:
 
 ```
         https://ecs.example.com/?Action=AuthorizeSecurityGroup
@@ -10743,7 +10743,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.3 AuthorizeSecurityGroupEgress
 
-You can call this operation to create an outbound security group rule in a specific security group. The created rule allows or denies outbound traffic from the instances in the security group to other devices. In the security group-related API documents, inbound traffic refers to the traffic sent by the source device and received at the destination device. When you call this operation, take note of the following items: The total number of outbound and inbound security group rules in each security group cannot exceed 200. You can set Policy to accept or drop for each security group rule to grant or deny access. The value of Priority ranges from 1 to 100. A smaller value indicates a higher priority. When several security group rules have the same priority, drop rules take precedence. The destination devices can be a specified range of IP addresses (DestCidrIp) or ECS instances in another security group (DestGroupId). If the rule to be created matches an existing rule, the AuthorizeSecurityGroupEgress operation succeeds but no rule is created. You can determine a security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying a single parameter. Parameters used to determine an outbound bound security group rule that controls access to a specified range of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestCidrIp. Sample request:
+You can call this operation to create an outbound security group rule in a specific security group. The created rule allows or denies outbound traffic from the instances in the security group to other devices. Description In the security group-related API documents, inbound traffic refers to the traffic sent by the source device and received at the destination device. When you call this operation, take note of the following items: The total number of outbound and inbound security group rules in each security group cannot exceed 200. You can set Policy to accept or drop for each security group rule to grant or deny access. The value of Priority ranges from 1 to 100. A smaller value indicates a higher priority. When several security group rules have the same priority, drop rules take precedence. The destination devices can be a specified range of IP addresses (DestCidrIp) or ECS instances in another security group (DestGroupId). If the rule to be created matches an existing rule, the AuthorizeSecurityGroupEgress operation succeeds but no rule is created. You can determine a security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying a single parameter. Parameters used to determine an outbound bound security group rule that controls access to a specified range of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestCidrIp. Sample request:
 
 ```
         https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress
@@ -10897,7 +10897,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.4 RevokeSecurityGroup
 
-You can call this operation to delete an inbound security group rule. After the rule is deleted, the access control implemented by it is removed. In the security group-related API documents, traffic is sent by the source device and received at the destination device. You can determine an inbound rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an inbound security group rule that controls access from a specified security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. If the security group rule to be deleted does not exist, the RevokeSecurityGroup operation succeeds but no rule is deleted. Request parameters
+You can call this operation to delete an inbound security group rule. After the rule is deleted, the access control implemented by it is removed. Description In the security group-related API documents, traffic is sent by the source device and received at the destination device. You can determine an inbound rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an inbound security group rule that controls access from a specified security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. If the security group rule to be deleted does not exist, the RevokeSecurityGroup operation succeeds but no rule is deleted. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11006,7 +11006,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.5 JoinSecurityGroup
 
-You can call this operation to add an ECS instance to a security group. When you call this operation, take note of the following items: Before you add an ECS instance to a security group, make sure that the instance is in the St opped (Stopped) or Running (Running) state. An instance can long to a maximum of five security groups. You can request to increase the maximum number of security groups to which an instance can belong to up to 16. Each security group can contain a maximum of 1,000 instances. The specified security group and the instance must belong to the same region. The security group and the instance must be of the same network type. If the network type is VPC, the security group and the instance must belong to the same VPC. Request parameters
+You can call this operation to add an ECS instance to a security group. Description When you call this operation, take note of the following items: Before you add an ECS instance to a security group, make sure that the instance is in the St opped (Stopped) or Running (Running) state. An instance can long to a maximum of five security groups. You can request to increase the maximum number of security groups to which an instance can belong to up to 16. Each security group can contain a maximum of 1,000 instances. The specified security group and the instance must belong to the same region. The security group and the instance must be of the same network type. If the network type is VPC, the security group and the instance must belong to the same VPC. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11063,7 +11063,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.6 LeaveSecurityGroup
 
-You can call this operation to remove an ECS instance from a security group. When you call this operation, take note of the following items: Before you remove an ECS instance from a security group, make sure that the instance is in the St opped (Stopped) or Running (Running) state. An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails. Request parameters
+You can call this operation to remove an ECS instance from a security group. Description When you call this operation, take note of the following items: Before you remove an ECS instance from a security group, make sure that the instance is in the St opped (Stopped) or Running (Running) state. An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11121,7 +11121,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.7 DeleteSecurityGroup
 
-You can call this operation to delete a security group. Before you delete a security group, make sure that no instances exist in the security group and that the security group is not referenced by rules of other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. Request parameters
+You can call this operation to delete a security group. Description Before you delete a security group, make sure that no instances exist in the security group and that the security group is not referenced by rules of other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11407,7 +11407,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.9 DescribeSecurityGroups
 
-Queries the basic information about security groups. The basic information about security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs. When you use Alibaba Cloud CLI to call an API operation, you must specify request parameters of different data types in required formats. Request parameters
+Queries the basic information about security groups. Description The basic information about security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs. When you use Alibaba Cloud CLI to call an API operation, you must specify request parameters of different data types in required formats. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11526,7 +11526,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.10 DescribeSecurityGroupReferences
 
-You can call this operation to query whether one or more security groups are referenced by rules of other security groups. When you call this operation, take note of the following items: Security group-level authorization includes authorization for inbound and outbound traffic. A maximum of 100 entries can be returned each time. If you fail to delete a security group by calling the DeleteSecurityGroup operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. If the security group is referenced by a rule of another security group, you must remove the reference before you can delete the security group. Request parameters
+You can call this operation to query whether one or more security groups are referenced by rules of other security groups. Description When you call this operation, take note of the following items: Security group-level authorization includes authorization for inbound and outbound traffic. A maximum of 100 entries can be returned each time. If you fail to delete a security group by calling the DeleteSecurityGroup operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. If the security group is referenced by a rule of another security group, you must remove the reference before you can delete the security group. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11670,7 +11670,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.12 ModifySecurityGroupPolicy
 
-You can call this operation to modify the internal access policy of a basic security group. The internal access policies of advanced security groups cannot be modified. When you call this operation, take note of the following items: When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. The Accept internal access policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other. When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. User-created security group rules take precedence over the Drop internal access policy and can be used to allow access between the instances. For example, you can call the AuthorizeSecurityGroup operation to create an inbound security group rule that allows the instances in the security group to communicate with each other. You can call the DescribeSecurityGroupAttribute operation to query the internal access policy of a security group. Request parameters
+You can call this operation to modify the internal access policy of a basic security group. The internal access policies of advanced security groups cannot be modified. Description When you call this operation, take note of the following items: When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. The Accept internal access policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other. When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. User-created security group rules take precedence over the Drop internal access policy and can be used to allow access between the instances. For example, you can call the AuthorizeSecurityGroup operation to create an inbound security group rule that allows the instances in the security group to communicate with each other. You can call the DescribeSecurityGroupAttribute operation to query the internal access policy of a security group. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11716,7 +11716,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.13 ModifySecurityGroupRule
 
-You can call this operation to modify the description of an inbound rule of a security group. You can call this operation to modify only the description of an inbound security group rule. If you want to modify other attributes such as the policy, port range, and authorization objects of the rule, log on to the ECS console. In the security group-related API documents, inbound traffic refers to the traffic that is sent from the source device and received at the destination device. You can determine an inbound rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to control access from other security groups: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. Request parameters
+You can call this operation to modify the description of an inbound rule of a security group. You can call this operation to modify only the description of an inbound security group rule. If you want to modify other attributes such as the policy, port range, and authorization objects of the rule, log on to the ECS console. Description In the security group-related API documents, inbound traffic refers to the traffic that is sent from the source device and received at the destination device. You can determine an inbound rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to control access from other security groups: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11831,7 +11831,7 @@ Sample success responses `XML` format
 
 ##### 5.1.12.14 ModifySecurityGroupEgressRule
 
-You can call this operation to modify the description of outbound rules of a security group. You can modify only the description by calling this operation. If you want to modify the policies, port ranges, and authorization objects of security group rules, log on to the ECS console. You can determine an outbound rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter. Parameters used to specify an outbound security group rule that controls access to a specified range of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an outbound security group rule that controls access to another security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. Request parameters
+You can call this operation to modify the description of outbound rules of a security group. You can modify only the description by calling this operation. If you want to modify the policies, port ranges, and authorization objects of security group rules, log on to the ECS console. Description You can determine an outbound rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter. Parameters used to specify an outbound security group rule that controls access to a specified range of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an outbound security group rule that controls access to another security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -11948,7 +11948,7 @@ Sample success responses `XML` format
 
 ##### 5.1.13.1 CreateKeyPair
 
-You can call this operation to create an SSH key pair. Apsara Stack stores the public key and returns the unencrypted private key. The private key is PEM-encoded in the PKCS#8 format. You must securely lock away the private key on your own. In addition to calling CreateKeyPair, you can create a key pair by using other key pair generation tools and call ImportKeyPair to upload the key pair to a region. You have a maximum of 500 key pairs in each region. Request parameters
+You can call this operation to create an SSH key pair. Apsara Stack stores the public key and returns the unencrypted private key. The private key is PEM-encoded in the PKCS#8 format. You must securely lock away the private key on your own. Description In addition to calling CreateKeyPair, you can create a key pair by using other key pair generation tools and call ImportKeyPair to upload the key pair to a region. You have a maximum of 500 key pairs in each region. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -12180,7 +12180,7 @@ Sample success responses `XML` format
 
 ##### 5.1.13.4 DetachKeyPair
 
-You can call this operation to detach an SSH key pair from one or more Linux instances. When you call this operation, take note of the following items: After you detach an SSH key pair from an instance, you must call the RebootInstance operation to restart the instance for the detach operation to take effect. By default, the username and password authentication method is used for an instance after you detach an SSH key pair from the instance. Request parameters
+You can call this operation to detach an SSH key pair from one or more Linux instances. Description When you call this operation, take note of the following items: After you detach an SSH key pair from an instance, you must call the RebootInstance operation to restart the instance for the detach operation to take effect. By default, the username and password authentication method is used for an instance after you detach an SSH key pair from the instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -12606,7 +12606,7 @@ Sample success responses `XML` format
 
 ##### 5.1.14.3 AssignPrivateIpAddresses
 
-Assigns one or more secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that hosts the ENI. Alternatively, you can specify the number of private IP addresses for Elastic Compute Service (ECS) to automatically assign them. The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state. Request parameters
+Assigns one or more secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that hosts the ENI. Alternatively, you can specify the number of private IP addresses for Elastic Compute Service (ECS) to automatically assign them. Description The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -12708,7 +12708,7 @@ Sample success responses `XML` format
 
 ##### 5.1.14.4 UnassignPrivateIpAddresses
 
-You can call this operation to unassign one or more secondary private IP addresses from an elastic network interface (ENI). The ENI from which you want to unassign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running (Running) or St opped (Stopped) state. Request parameters
+You can call this operation to unassign one or more secondary private IP addresses from an elastic network interface (ENI). Description The ENI from which you want to unassign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running (Running) or St opped (Stopped) state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13033,7 +13033,7 @@ ss>
 
 ##### 5.1.14.6 DetachNetworkInterface
 
-You can call this operation to unbind an elastic network interface (ENI) from an ECS instance. When you call this operation, take note of the following items: The primary ENIs of ECS instances cannot be unbound. The ENI must be in the Detaching (Detaching) or Bound (InUse) state. The instance must be in the Running (Running) or Stopped (Stopped) state. Request parameters
+You can call this operation to unbind an elastic network interface (ENI) from an ECS instance. Description When you call this operation, take note of the following items: The primary ENIs of ECS instances cannot be unbound. The ENI must be in the Detaching (Detaching) or Bound (InUse) state. The instance must be in the Running (Running) or Stopped (Stopped) state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13112,7 +13112,7 @@ Sample success responses `XML` format
 
 ##### 5.1.14.7 DeleteNetworkInterface
 
-You can call this operation to delete an elastic network interface (ENI). The ENI must be in the Available (Available) state. If the ENI is bound to an ECS instance, you must unbind the ENI from the ECS instance (DetachNetworkInterface) before you can delete the ENI. After an ENI is deleted: The primary private IP address of the ENI is automatically released. The ENI is automatically removed from its security groups. Request parameters
+You can call this operation to delete an elastic network interface (ENI). Description The ENI must be in the Available (Available) state. If the ENI is bound to an ECS instance, you must unbind the ENI from the ECS instance (DetachNetworkInterface) before you can delete the ENI. After an ENI is deleted: The primary private IP address of the ENI is automatically released. The ENI is automatically removed from its security groups. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13272,7 +13272,7 @@ Sample success responses `XML` format
 
 ##### 5.1.14.9 AssignIpv6Addresses
 
-Assigns one or more IPv6 addresses to an elastic network interface (ENI). You can specify IPv6 addresses within the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically assign. When you call this operation, take note of the following items: The ENI must be in the Available ( `Available` ) or Bound ( `InUse` ) state. The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the Running ( `Running` ) or St opped ( `Stopped` ) state. The maximum number of IPv6 addresses that can be assigned to an ENI varies per instance type. If the ENI is in the Available ( `Available` ) state, it can be assigned up to 10 IPv6 addresses. If the ENI is already bound to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI depends on the instance type. Request parameters
+Assigns one or more IPv6 addresses to an elastic network interface (ENI). Description You can specify IPv6 addresses within the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically assign. When you call this operation, take note of the following items: The ENI must be in the Available ( `Available` ) or Bound ( `InUse` ) state. The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the Running ( `Running` ) or St opped ( `Stopped` ) state. The maximum number of IPv6 addresses that can be assigned to an ENI varies per instance type. If the ENI is in the Available ( `Available` ) state, it can be assigned up to 10 IPv6 addresses. If the ENI is already bound to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI depends on the instance type. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13357,7 +13357,7 @@ Sample success responses `XML` format
 
 ##### 5.1.14.10 UnassignIpv6Addresses
 
-You can call this operation to reclaim one or multiple IPv6 addresses assigned to an elastic network interface (ENI). When you call this operation, take note of the following items: The ENI must be in the Available (Available) or Bound (InUse) state. If the ENI is a primary ENI, the ECS instance to which the primary ENI is attached must be in the Running (Running) or St opped (Stopped) state. Request parameters
+You can call this operation to reclaim one or multiple IPv6 addresses assigned to an elastic network interface (ENI). Description When you call this operation, take note of the following items: The ENI must be in the Available (Available) or Bound (InUse) state. If the ENI is a primary ENI, the ECS instance to which the primary ENI is attached must be in the Running (Running) or St opped (Stopped) state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13657,7 +13657,7 @@ Sample success responses `XML` format
 
 ##### 5.1.15.3 DescribeAvailableResource
 
-Queries resources in a specific zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you modify instance types by calling the ModifyInstanceSpec operation. Values of the `DestinationResource` parameter have dependencies. When you select a value in the following chain for the DestinationResource parameter, the more to the right the selected value is ordered, the more parameters you must specify.
+Queries resources in a specific zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you modify instance types by calling the ModifyInstanceSpec operation. Description Values of the `DestinationResource` parameter have dependencies. When you select a value in the following chain for the DestinationResource parameter, the more to the right the selected value is ordered, the more parameters you must specify.
 
 | Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|
@@ -13978,7 +13978,7 @@ Sample success responses `XML` format
 
 ##### 5.1.16.1 GetInstanceConsoleOutput
 
-You can call this operation to obtain the command output of an instance. The returned command output is encoded in Base64. ECS is a virtualized cloud-based service and cannot be connected to display devices. However, the command output for the last start, restart, or shutdown of each instance is cached. You can call GetInstanceConsoleOutput to obtain this information. You cannot obtain the command output of Windows instances. Request parameters
+You can call this operation to obtain the command output of an instance. The returned command output is encoded in Base64. Description ECS is a virtualized cloud-based service and cannot be connected to display devices. However, the command output for the last start, restart, or shutdown of each instance is cached. You can call GetInstanceConsoleOutput to obtain this information. You cannot obtain the command output of Windows instances. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -14040,7 +14040,7 @@ GwgZmlsZSBzeXN0ZW1zLgpbL3NiaW4vZnNjay5leHQ0ICgxKSAtLSAvXSBmc2NrLmV4dDQgLWEgL2Rld
 
 ##### 5.1.16.2 GetInstanceScreenshot
 
-You can call this operation to obtain screenshots of an instance. ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items: The instance must be in the Running state. If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned. Request parameters
+You can call this operation to obtain screenshots of an instance. Description ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items: The instance must be in the Running state. If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -14099,7 +14099,7 @@ Sample success responses `XML` format
 
 ##### 5.1.16.3 DescribeDiskMonitorData
 
-You can call this operation to query the monitoring data of a disk over a specific period of time. The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (μs), and write latency (μs) of the disk. When you call this operation, take note of the following items: Only monitoring data about disks that are in the Running ( `In_use` ) state can be queried.
+You can call this operation to query the monitoring data of a disk over a specific period of time. Description The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (μs), and write latency (μs) of the disk. When you call this operation, take note of the following items: Only monitoring data about disks that are in the Running ( `In_use` ) state can be queried.
 
 |   | Not e A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information, such as when a disk is not in the Running ( In Us _ e ) state. |
 |---|---|
@@ -14474,7 +14474,7 @@ Sample success responses `XML` format
 
 ##### 5.1.16.6 DescribeEniMonitorData
 
-You can call this operation to query all monitoring data about traffic on a secondary elastic network interface (ENI) over a specific period of time. The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and in the Available state, monitoring data about traffic on the ENI cannot be obtained. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: (EndTime − StartTime)/Period. You can query monitoring data from up to the past 30 days. If the value of StartTime is more than 30 days earlier than the current time, an error is returned. Request parameters
+You can call this operation to query all monitoring data about traffic on a secondary elastic network interface (ENI) over a specific period of time. Description The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and in the Available state, monitoring data about traffic on the ENI cannot be obtained. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: (EndTime − StartTime)/Period. You can query monitoring data from up to the past 30 days. If the value of StartTime is more than 30 days earlier than the current time, an error is returned. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -14727,7 +14727,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.2 InvokeCommand
 
-Triggers a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. You can call the InvokeCommand operation up to 5,000 times per day in a region. ECS instances on which to run the Cloud Assistant command must meet the following requirements. If you specify multiple ECS instances and one of the instances does not meet the requirements for running the command, the call fails. Specify instances that meet the requirements and call the InvokeCommand operation again. The ECS instances resides within vrituale private clouds (VPCs). The instances are in the Running ( `Running` ) state. The Cloud Assistant client is installed on the instances. For information about how to install the Cloud Assistant client, see InstallCloudAssistant. Before you run PowerShell commands, make sure that the instances have the PowerShell module configured. If `Timed` is set to false, the command is run only once. If `Timed` is set to true, the command is run on a periodic basis. The command is periodically run based on the schedule specified by the `Frequency` parameter. The results of each execution of a command do not affect the next execution of the command. The schedule on which a recurring execution of the command takes place on an ECS instance must be specified based on the system time of the instance in UTC. Make sure that the time or time zone of the instance meets your business needs. Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated. If you enable the custom parameter feature by setting EnableParameter to true when you create a command, you must specify custom parameters ( `Parameters` ) when you run the command. Request parameters
+Triggers a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Description You can call the InvokeCommand operation up to 5,000 times per day in a region. ECS instances on which to run the Cloud Assistant command must meet the following requirements. If you specify multiple ECS instances and one of the instances does not meet the requirements for running the command, the call fails. Specify instances that meet the requirements and call the InvokeCommand operation again. The ECS instances resides within vrituale private clouds (VPCs). The instances are in the Running ( `Running` ) state. The Cloud Assistant client is installed on the instances. For information about how to install the Cloud Assistant client, see InstallCloudAssistant. Before you run PowerShell commands, make sure that the instances have the PowerShell module configured. If `Timed` is set to false, the command is run only once. If `Timed` is set to true, the command is run on a periodic basis. The command is periodically run based on the schedule specified by the `Frequency` parameter. The results of each execution of a command do not affect the next execution of the command. The schedule on which a recurring execution of the command takes place on an ECS instance must be specified based on the system time of the instance in UTC. Make sure that the time or time zone of the instance meets your business needs. Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated. If you enable the custom parameter feature by setting EnableParameter to true when you create a command, you must specify custom parameters ( `Parameters` ) when you run the command. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -14809,7 +14809,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.3 RunCommand
 
-Runs a shell, PowerShell, or bat command on one or more instances. Unlike the CreateCommand and InvokeCommand operations, RunCommand can be used to create and run a command in a single request. When you call this operation, take note of the following items: The Elastic Compute Service (ECS) instance on which you want to run a command must be an instance that is deployed in a virtual private cloud (VPC). The instance must be in the Running ( `Running` ) state. The Cloud Assistant client must be installed on the instance. For more information, see InstallCloudAssistant. Before you run a PowerShell command, make sure that the Windows instance on which you want to run the command is installed with the PowerShell module. The schedule on which a recurring execution of the command takes place on an ECS instance must be specified based on the system time of the instance in UTC. Make sure that the time or time zone of the ECS instance meets your business needs. You can specify the `TimeOut` parameter to set the timeout period of command executions on an instance. When an execution times out, the command process is forcefully terminated. After a one-time execution times out, the execution state (InvokeRecordStatus) of the command becomes Failed. For recurring executions, the timeout period takes effect on each execution. The timeout of each execution does not affect the next execution. After an execution times out, the execution state (InvokeRecordStatus) of the command becomes Failed. Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated. When `EnableParameter` is set to true, the custom parameter feature is enabled. When you specify the `CommandContent` parameter, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in. Request parameters
+Runs a shell, PowerShell, or bat command on one or more instances. Description Unlike the CreateCommand and InvokeCommand operations, RunCommand can be used to create and run a command in a single request. When you call this operation, take note of the following items: The Elastic Compute Service (ECS) instance on which you want to run a command must be an instance that is deployed in a virtual private cloud (VPC). The instance must be in the Running ( `Running` ) state. The Cloud Assistant client must be installed on the instance. For more information, see InstallCloudAssistant. Before you run a PowerShell command, make sure that the Windows instance on which you want to run the command is installed with the PowerShell module. The schedule on which a recurring execution of the command takes place on an ECS instance must be specified based on the system time of the instance in UTC. Make sure that the time or time zone of the ECS instance meets your business needs. You can specify the `TimeOut` parameter to set the timeout period of command executions on an instance. When an execution times out, the command process is forcefully terminated. After a one-time execution times out, the execution state (InvokeRecordStatus) of the command becomes Failed. For recurring executions, the timeout period takes effect on each execution. The timeout of each execution does not affect the next execution. After an execution times out, the execution state (InvokeRecordStatus) of the command becomes Failed. Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated. When `EnableParameter` is set to true, the custom parameter feature is enabled. When you specify the `CommandContent` parameter, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -15069,7 +15069,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.5 ModifyCommand
 
-Modifies the parameters and content of a Cloud Assistant command. You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions. The command type cannot be modified. For example, a shell command (RunShellScript) cannot be changed to a batch command (RunBatScript). Request parameters
+Modifies the parameters and content of a Cloud Assistant command. Description You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions. The command type cannot be modified. For example, a shell command (RunShellScript) cannot be changed to a batch command (RunBatScript). Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -15130,7 +15130,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.6 StopInvocation
 
-Stops the process of a Cloud Assistant command that is running on one or more Elastic Compute Service (ECS) instances. If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled. If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled. Request parameters
+Stops the process of a Cloud Assistant command that is running on one or more Elastic Compute Service (ECS) instances. Description If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled. If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -15177,7 +15177,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.7 DescribeInvocationResults
 
-Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances. After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results. You can query the information about command executions within the last two weeks. A maximum of 100,000 pieces of execution information can be retained. Request parameters
+Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances. Description After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results. You can query the information about command executions within the last two weeks. A maximum of 100,000 pieces of execution information can be retained. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -15317,7 +15317,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.8 DescribeInvocations
 
-Queries the execution list and state of Cloud Assistant commands. After you run a command, the command may not succeed or deliver the expected results. You can call this operation to query the execution results. You can query the information about command executions within the last two weeks. A maximum of 100,000 pieces of execution information can be retained. Request parameters
+Queries the execution list and state of Cloud Assistant commands. Description After you run a command, the command may not succeed or deliver the expected results. You can call this operation to query the execution results. You can query the information about command executions within the last two weeks. A maximum of 100,000 pieces of execution information can be retained. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -15703,7 +15703,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.11 SendFile
 
-Sends a file to one or more Elastic Compute Service (ECS) instances. The instances to which you want to send a file must be in the Running ( `Running` ) state. The Cloud Assistant client must be installed on the instances. Only the Cloud Assistant client versions that are later than the following ones support file sending. If the `ClientNeedUpgrade` error code is returned, update the Cloud Assistant client to the latest version. The file to be sent must not exceed 32 KB in size after it is encoded in Base64. The file may fail to be sent due to exceptions on the instances, network, or the Cloud Assistance client. Call the DescribeSendFileResults operation to troubleshoot the issues. Request parameters
+Sends a file to one or more Elastic Compute Service (ECS) instances. Description The instances to which you want to send a file must be in the Running ( `Running` ) state. The Cloud Assistant client must be installed on the instances. Only the Cloud Assistant client versions that are later than the following ones support file sending. If the `ClientNeedUpgrade` error code is returned, update the Cloud Assistant client to the latest version. The file to be sent must not exceed 32 KB in size after it is encoded in Base64. The file may fail to be sent due to exceptions on the instances, network, or the Cloud Assistance client. Call the DescribeSendFileResults operation to troubleshoot the issues. Request parameters
 
 | Parameter | Type | Required | Example | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -15787,7 +15787,7 @@ Sample success responses `XML` format
 
 ##### 5.1.17.12 DescribeSendFileResults
 
-Queries the files sent by Cloud Assistant and their status. When you send a file, the file may fail to be sent to specified instances. You must call this operation to check the file sending results. You can call this operation to query the file sending records of the last two weeks. A maximum of 100,000 file sending records can be retained. Request parameters
+Queries the files sent by Cloud Assistant and their status. Description When you send a file, the file may fail to be sent to specified instances. You must call this operation to check the file sending results. You can call this operation to query the file sending records of the last two weeks. A maximum of 100,000 file sending records can be retained. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -15945,7 +15945,7 @@ print $2}')",
 
 ##### 5.1.18.1 AddTags
 
-You can call this operation to add or overwrite one or more tags on your ECS resources. You can add or overwrite tags on instances, disks, snapshots, images, and security groups to facilitate resource management. When you call this operation, take note of the following items: Up to 20 tags can be added to each ECS resource.
+You can call this operation to add or overwrite one or more tags on your ECS resources. You can add or overwrite tags on instances, disks, snapshots, images, and security groups to facilitate resource management. Description When you call this operation, take note of the following items: Up to 20 tags can be added to each ECS resource.
 
 | match Tag.N.Value based on t t has the same key ( Tag.N.Key Tag.N.Value ) overwrites the or | Tag.N.Value | based on t |
 |---|---|---|
@@ -16182,7 +16182,7 @@ Sample success responses `XML` format
 
 ##### 5.1.18.4 TagResources
 
-You can call this operation to create and bind tags to specified ECS resources. Before you bind tags to a resource, the system checks the number of existing tags on the resource. An error message is returned if the maximum number of tags is reached. Request parameters
+You can call this operation to create and bind tags to specified ECS resources. Description Before you bind tags to a resource, the system checks the number of existing tags on the resource. An error message is returned if the maximum number of tags is reached. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16255,7 +16255,7 @@ Sample success responses `XML` format
 
 ##### 5.1.18.5 ListTagResources
 
-Queries the tags that are added to one or more Elastic Compute Service (ECS) resources and these ECS resources. You must specify at least one of the following parameters or parameter pairs in the request to determine a query object: the `ResourceId.N` parameter, the `Tag.N` parameter pair ( `Tag.N.Key` and `Tag.N.Value` ), and the `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N). If one of the following sets of request parameters is specified as filter conditions, the response contains only ECS resources that meet all these filter conditions:
+Queries the tags that are added to one or more Elastic Compute Service (ECS) resources and these ECS resources. Description You must specify at least one of the following parameters or parameter pairs in the request to determine a query object: the `ResourceId.N` parameter, the `Tag.N` parameter pair ( `Tag.N.Key` and `Tag.N.Value` ), and the `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N). If one of the following sets of request parameters is specified as filter conditions, the response contains only ECS resources that meet all these filter conditions:
 
 | Tag.N.Key, Tag.N.Value | , and | ResourceId.N |   |
 |---|---|---|---|
@@ -16320,7 +16320,7 @@ Response parameters
 | TagKey | String | FinanceDeptKey | The tag key of the resource. |
 | TagValue | String | FinanceDeptValue | The tag value of the resource. |
 
-Sample requests
+Example Sample requests
 
 ```
 https://ecs.example.com/?Action=ListTagResources &RegionId=cn-qingdao-env17-d01 &ResourceType=instance &ResourceId.1=i-bp1j6qtvdm8w0z1o0*** &<Common request parameters>
@@ -16769,7 +16769,7 @@ Sample success responses `XML` format
 
 ##### 5.1.19.3 CancelTask
 
-You can call this operation to cancel a running task. You can call this operation to cancel the following tasks: Image import (ImportImage) Image export (ExportImage) Request parameters
+You can call this operation to cancel a running task. Description You can call this operation to cancel the following tasks: Image import (ImportImage) Image export (ExportImage) Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16823,7 +16823,7 @@ Sample success responses `XML` format
 
 ##### 5.1.19.4 JoinResourceGroup
 
-You can call this operation to add an ECS resource or service to a resource group. A resource is a cloud service entity created in Apsara Stack, such as an ECS instance, elastic network interface (ENI), or ECS image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without switching between Apsara Stack services. Request parameters
+You can call this operation to add an ECS resource or service to a resource group. Description A resource is a cloud service entity created in Apsara Stack, such as an ECS instance, elastic network interface (ENI), or ECS image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without switching between Apsara Stack services. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16878,7 +16878,7 @@ Sample success responses `XML` format
 
 ##### 5.1.20.1 Glossary
 
-This topic describes the terms that you may encounter in ECS API operations. Terms
+This topic describes the terms that you may encounter in ECS API operations. Terms Description
 
 | Term | Definition | Description |
 |---|---|---|

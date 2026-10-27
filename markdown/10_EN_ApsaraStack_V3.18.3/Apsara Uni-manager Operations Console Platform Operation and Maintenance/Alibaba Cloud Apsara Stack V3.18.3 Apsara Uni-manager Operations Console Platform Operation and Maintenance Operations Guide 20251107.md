@@ -5,7 +5,7 @@ doc_version: "20251107"
 pdf_pages: 348
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Operations Console Platform Operation and Maintenance Operations Guide 20251107.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Uni-manager%20Operations%20Console%20Platform%20Operation%20and%20Maintenance%20Operations%20Guide%2020251107.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Uni-manager Operations Console Platform Operation and Maintenance Operations Guide 20251107
@@ -159,8 +159,12 @@ O&M
 #### 1.1.1 Computing overview
 
 This topic describes the Computing Overview page of the Compute Operations Console. On the Computing Overview page, you can obtain a high-level overview of services in IaaS O&M, stay updated with service status, and view service information, such as diagnostic results, alerts, inventory usage, key metrics, and health status.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. View information on the **Computing Overview** page.
 4. In the **Service Check** section, view the diagnostic score that is displayed on the dashboard
 and the numbers of check items that are in the Normal, Risk, Abnormal, and Suggestion states.
@@ -275,6 +279,9 @@ c. Click an instance ID in the **Instance ID** column. The **Instance Details** 
 **Log on to the AG of a cluster**
 
 You can log on to the AG of a cluster to go to the Terminal Service page. Then, you can perform O&M operations on VMs in the cluster by using the CLI.
+
+**Procedure**
+
 1. On the Computing Cluster O&M page, find the cluster that you want to manage and click
 **Connect to Cluster AG** in the **Operation** column. The Terminal Service page appears.
 2. Perform O&M operations by using the CLI on the Terminal Service page based on your
@@ -291,8 +298,12 @@ You can change the CPU oversold ratio only at the cluster level. The CPU oversol
 **Precautions**
 
 Before you change the CPU oversold ratio of a cluster, the system checks whether the CPU oversold ratios of all servers in the cluster are the same. If the CPU oversold ratios of the servers are different, the system does not allow you to change the CPU oversold ratio of the cluster. O&M When you change the CPU oversold ratio of a cluster, a precheck task is initiated. If the precheck task fails, you cannot change the CPU oversold ratio of the cluster. In this case, you must handle the error based on the failure message reported by the precheck task, and then change the CPU oversold ratio of the cluster again. You can change the CPU oversold ratio of a cluster only once within 3 hours. This limit does not apply to the precheck task. When you change the CPU oversold ratio of a cluster, the CPU oversold ratios of dedicated hosts associated with the cluster are not affected. The following specific rules apply: After you change the CPU oversold ratio of a cluster, the number of saleable vCPUs of a dedicated host remains unchanged. After a dedicated host is released, the number of saleable vCPUs of the dedicated host is recalculated based on the CPU oversold ratio that you last configured for the cluster. When you reduce the CPU oversold ratio of a cluster, the system checks whether the number of used vCPUs is greater than 80% of the number of saleable vCPUs in the cluster after the reduction. If yes, you cannot reduce the CPU oversold ratio of the cluster. A high CPU oversold ratio may cause performance degradation issues, such as extended response time, intensified resource contention, and host instability. Proceed with caution. After you change the CPU oversold ratio of a cluster, you can view the details of the change on the **CPU Oversold Ratio Configuration Records** tab. An extended period of time is required to complete the change. You cannot terminate, cancel, or roll back the change. The CPU oversold ratio change may fail on specific servers. In this case, you can contact O&M engineers to change the CPU oversold ratios of these servers in the Emergency Operation Command Center (EOCC).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 4. On the Computing Cluster O&M page, find the cluster that you want to manage and click
 the cluster name to go to the **Computing Cluster Details** page.
@@ -331,6 +342,7 @@ You can perform O&M operations on computing servers to view server information a
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Server O&M**.
 In the upper-right corner of the Computing Server O&M page, view the total number of computing servers and the numbers of computing servers in the **free**, **mlock**, and
 **nc_down** states.
@@ -379,6 +391,8 @@ O&M
 
 **Perform diagnostics on a computing server**
 
+**Procedure**
+
 1. On the Computing Server Details page of a computing server, click **Diagnose** in the upper-
 right corner.
 2. On the **End-to-end Demarcation** page, view the diagnostic results. For more information,
@@ -389,6 +403,9 @@ see ECS Diagnosis.
 **Background information**
 
 During the O&M of a computing server, the operations that may cause risks are audited. You can view the detailed audit information about the computing server.
+
+**Procedure**
+
 1. Find the computing server that you want to view and click **Audit Operations** in the
 **Operation** column.
 2. View the information displayed in the **Audit Operations** panel. For more information, see
@@ -401,6 +418,9 @@ O&M
 **Background information**
 
 You can lock physical servers based on your business requirements. If a physical server is locked, you cannot create instances on it. mlock: If a physical server is locked and enters the mlock state, ECS instances on it are restarted and scheduled to other physical servers, excluding the instances for which failover is disabled. rlock: If normal physical servers do not meet the failover requirements, the physical servers in the rlock state are used to restore instances that fail.
+
+**Procedure**
+
 1. Find the computing server that you want to lock, and click **Lock** in the **Operation** column.
 2. In the **Lock NC** dialog box, confirm the server and configure the **Lock Status**, **Changed**
 **By**, **Change Ticket Title**, and **Locking Reason** parameters.
@@ -410,7 +430,11 @@ You can lock physical servers based on your business requirements. If a physical
 
 **Background information**
 
-You can unlock physical servers that are in the no heartbeat, mlock, and rlock states. After you unlock a physical server, the server is automatically activated and you can schedule instances to the server. O&M
+You can unlock physical servers that are in the no heartbeat, mlock, and rlock states. After you unlock a physical server, the server is automatically activated and you can schedule instances to the server.
+
+**Procedure**
+
+O&M
 1. Find the computing server that you want to unlock and click **Unlock** in the **Operation**
 column.
 2. In the **Unlock NC** dialog box, confirm the server and enter the reason.
@@ -425,6 +449,9 @@ You can activate computing servers that are in the mlock, rlock, no heartbeat, n
 **Prerequisites**
 
 The computing server that you want to activate is in the **mlock** state.
+
+**Procedure**
+
 1. Find the computing server that you want to activate, move the pointer over the
 icon in the **Operation** column, and then select **Activate**.
 2. In the dialog box that appears, confirm the computing server information and enter the
@@ -444,6 +471,9 @@ The computing server is in the free or mlock state.
 **Usage notes**
 
 After you submit a migration task, the server enters the mlock state. After the migration task is complete, fails, or is canceled, you must submit an application to unlock the server. The ECS instances on the server are migrated to other computing servers based on the ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Stopped** or **Pending** state is migrated, the system attempts to start the ECS instance and bring the ECS instance to the **Running** state. You cannot specify the computing server to which the ECS instances are migrated. After the migration task is complete, you must check for any remaining ECS instances on the original server to ensure that all ECS instances are migrated.
+
+**Procedure**
+
 1. Find the computing server that you want to manage, move the pointer over the
 icon in the **Operation** column, and then select **Migrate All Instances**.
 2. On the Create Machine Migration Task page, configure the following parameters.
@@ -521,11 +551,17 @@ ii. In the message that appears, click **OK**.
 
 **Back information**
 
-O&M If a physical machine cannot be repaired at the software level in the current environment and must be deactivated for maintenance, you must notify your customers at the earliest opportunity and obtain their authorization before you can deactivate the physical machine for maintenance on site. After the physical machine is repaired, reactivate the physical machine and put it back into service in its original computing cluster. We recommend that you deactivate physical machines for maintenance on the **ECS**
+O&M If a physical machine cannot be repaired at the software level in the current environment and must be deactivated for maintenance, you must notify your customers at the earliest opportunity and obtain their authorization before you can deactivate the physical machine for maintenance on site. After the physical machine is repaired, reactivate the physical machine and put it back into service in its original computing cluster.
+
+**Note**
+
+We recommend that you deactivate physical machines for maintenance on the **ECS**
 **Intelligent O&M** > **ECS Physical Machine O&M** page. For more information, see ECS
 physical machine O&M.
 
 > **Warning:** Service interruptions may occur during the instance migration process. We recommend that you deactivate the physical machine during off-peak hours.
+
+**Procedure**
 
 1. Find the computing server that you want to manage, move the pointer over the
 icon in the **Operation** column, and then select **Deactivate for Maintenance**.
@@ -552,6 +588,7 @@ An Elastic Compute Service (ECS) instance is a virtual computing environment tha
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M** > **ECS Instances**.
 4. In the upper-right corner of the ECS Instances page, view the total number of ECS instances
 and the numbers of ECS instances that are in the **Running**, **Stopped**, **Creating**, and
@@ -617,6 +654,8 @@ i. In the ECS instance list, find an instance that you want to view and click th
 
 **Perform diagnostics on an instance**
 
+**Procedure**
+
 1. On the ECS Instances page, find the instance that you want to manage and click **Diagnose**
 in the **Operation** column.
 2. On the **End-to-end Demarcation** page, view the diagnostic results. For more information,
@@ -627,6 +666,9 @@ see the "ECS Diagnostics" documentation.
 **Background information**
 
 When an ECS instance or the physical server on which the instance resides fails, you must migrate the instance to a healthy physical server. You can perform a cold migration task or hot migration task based on the status of an instance to migrate the instance. Cold migration tasks: migrates instances that are in the Pending, Shutted, or ShutFailure state. Hot migration tasks: migrates instances that are in the running state.
+
+**Procedure**
+
 1. On the ECS Instances page, find the instance that you want to manage, move the pointer
 over **Migrate** in the **Operation** column, and then select **Migrate Instance**.
 2. On the Create ECS Migration Task page, configure the parameters that are described in the
@@ -715,6 +757,9 @@ If an ECS instance is in a state in which the instance cannot provide services, 
 **Prerequisites**
 
 The instance to be started is in the **Pending**, **Shutted**, or **ShutFailure** state.
+
+**Procedure**
+
 1. On the ECS Instances page, find the instance that you want to start, move the pointer over
 the icon in the **Operation** column, and then select **Start**. You can also select multiple instances and click **Start** in the lower part of the page. This way, multiple instances are started at a time.
 2. In the dialog box that appears, confirm the instance ID, enter a reason, and then click **OK**.
@@ -733,6 +778,8 @@ The instance to be stopped is in the **Running** state.
 
 > **Important:** After you stop an instance, the applications running on the instance are interrupted. Make sure that you stop an instance during off-peak hours to minimize the impact on services.
 
+**Procedure**
+
 1. On the ECS Instances page, find the instance that you want to stop, move the pointer over
 the icon in the **Operation** column, and then select **Stop**. You can also select multiple instances and click **Stop** in the lower part of the page. This way, multiple instances are stopped at a time.
 2. In the dialog box that appears, confirm the instance ID, enter a reason, and then click **OK**.
@@ -749,6 +796,8 @@ The instance to be restarted is in the **Running** state.
 
 > **Warning:** After you restart an instance, the instance is stopped for a short period of time and the services that are running on the instance are interrupted. Proceed with caution.
 
+**Procedure**
+
 1. On the ECS Instances page, find the instance that you want to restart, move the pointer
 over the icon in the **Operation** column, and then select **Restart**. O&M You can also select multiple instances and click **Restart** in the lower part of the page. This way, multiple instances are restarted at a time.
 2. In the dialog box that appears, confirm the instance ID, configure the **Restart Mode** and
@@ -763,6 +812,9 @@ You can mount an ISO to or unmount an ISO from an instance. After you mount an I
 **Prerequisites**
 
 ISOs can be mounted to or unmounted from instances that are in the **Shutted** state.
+
+**Procedure**
+
 1. On the ECS Instances page, find the instance that you want to manage, move the pointer
 over the icon in the **Operation** column, and then click **Manage ISO**.
 2. In the **Manage ISO** dialog box, mount or unmount an ISO based on your business
@@ -778,6 +830,7 @@ You can attach disks to Elastic Compute Service (ECS) instances to increase the 
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M** > **Disk**.
 4. In the upper part of the Disks page, configure the **Disk ID**, **Disk Type**, **Status**, and **ECS**
 **Instance** parameters to filter disks. You can also select **All in ECS Project** in the upper-
@@ -810,6 +863,9 @@ i. On the Disks page, find the disk and click the cluster name in the **Cluster*
 **Background information**
 
 You can use the operation audit feature to view the operation records of a disk.
+
+**Procedure**
+
 1. On the Disks page, find the disk whose operation records you want to view and click **Audit**
 **Operations** in the **Operation** column.
 2. In the **Audit Operations** panel, view the information about the operations performed on
@@ -824,6 +880,9 @@ You can use snapshots to back up data, restore ECS instances that were accidenta
 **Precautions**
 
 You can create snapshots only for disks that are attached to instances in the Stopped or Running state. You cannot create snapshots for disks attached to instances that have not been started. O&M If you create a snapshot for a new system disk or a new data disk created from another snapshot, an error is returned because the process of loading data to the disk is not complete. In most cases, you can create snapshots for a system disk one hour after the system disk is created. After a data disk is attached, you must wait for a period of time before you can create snapshots for the data disk. The amount of time that you need to wait varies based on the amount of the disk data. You cannot create snapshots for a new disk if the instance to which the disk is attached has not been started. If the creation progress has not reached 100%, the snapshot is being created. In this case, you cannot create another snapshot for the disk. The snapshot quota depends on the total number of disks that are available within your account. The maximum number of snapshots you can create = The number of disks × 6 + 6. You can create snapshots for a disk only after the instance to which the disk is attached has been started. An error is returned if you create a snapshot for an independent basic disk that has never been attached to an instance.
+
+**Procedure**
+
 1. On the Disks page, find the disk for which you want to create a snapshot and click **Create**
 **Snapshot** in the **Operation** column.
 2. In the **Create Snapshot** dialog box, check the disk ID, configure the parameters that are
@@ -844,6 +903,9 @@ O&M
 **Background information**
 
 You can view the snapshots of disks, manage snapshots, and view automatic snapshot policies.
+
+**Procedure**
+
 1. On the Disks page, find the disk whose snapshots you want to view and click **View**
 **Snapshots** in the **Operation** column.
 2. View the snapshots and automatic snapshot policies on the **Snapshots** page. For more
@@ -854,6 +916,7 @@ information, see Snapshots.
 An image is a template for running environments within Elastic Compute Service (ECS) instances. An image includes an operating system and pre-installed applications. An image works as a copy that stores data from one or more disks. An ECS image may store data from a system disk or from both system and data disks. You can use an image to create an ECS instance or replace the system disk of an ECS instance. O&M
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M** > **Image**.
 4. On the **Images** tab, view the image details.
 In the upper part of the tab, you can filter images by **image ID** and **image type**
@@ -877,6 +940,7 @@ You can use snapshots to back up data, restore Elastic Compute Service (ECS) ins
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M** > **Snapshots**.
 O&M
 4. On the **Snapshots** tab, select an account from the **Apsara Stack Tenant Account ID**
@@ -888,6 +952,9 @@ drop-down list to view all the snapshots that are created within the account. In
 View the information about snapshots in the following columns: **Snapshot ID/Name**,
 **Snapshot ID in Server Controller**, **Snapshot Type**, **Disk ID/Type**, **Progress**,
 **Region**, **Creation Time**, and **Modification Time**.
+
+**Note**
+
 **Snapshot ID in Server Controller**: the unique ID that is generated for a
 snapshot when the snapshot is created. This ID is only used in the Server Controller database for ECS.
 
@@ -906,6 +973,9 @@ snapshot policy, including the policy ID, policy name, and number of associated 
 **Prerequisites**
 
 If a snapshot has been used to create custom images, you must delete those custom images before the snapshot can be deleted.
+
+**Procedure**
+
 1. On the **Snapshots** tab, find the snapshot that you want to delete and click **Delete** in the
 **Operation** column.
 2. In the dialog box that appears, enter a reason and click **Delete**.
@@ -915,6 +985,9 @@ If a snapshot has been used to create custom images, you must delete those custo
 **Background information**
 
 This section describes how to view the audit logs of snapshots.
+
+**Procedure**
+
 1. On the **Snapshots** tab, find the snapshot that you want to manage and click **Audit**
 **Operations** in the **Operation** column.
 2. In the **Audit Operations** panel, view the operation records of the snapshot. For more
@@ -929,6 +1002,9 @@ You can create a custom image and use it to create identical instances or replac
 **Prerequisites**
 
 The progress of the snapshot is 100%. The disk of the snapshot is a system disk.
+
+**Procedure**
+
 1. On the **Snapshots** tab, find the snapshot that you want to manage and click **Create**
 **Image** in the **Operation** column.
 2. In the **Create Image** dialog box, configure the parameters and click **OK**. The following
@@ -948,6 +1024,7 @@ An elastic network interface (ENI) is a virtual network interface controller (NI
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M** > **ENIs**.
 4. On the ENIs page, search for ENIs by **Apsara Stack Tenant Account ID**, **ENI ID**, **VPC**,
 **Instance ID**, **Private IP Address**, or their combinations.
@@ -1041,6 +1118,9 @@ On the Specifications page, you can query and manage Elastic Compute Service (EC
 | XXX |   |
 
 You can specify the instance type name, number of vCPUs, and memory size. Parameter settings such as the bandwidth, packet forwarding rate, and network interface controller (NIC) multi-queue are automatically specified by the system.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
 3. In the left-side navigation pane, choose **ECS O&M** > **Specifications**.
@@ -1080,8 +1160,12 @@ instance type that you created in the previous step and click **Creating** in th
 **Usage notes**
 
 On the All Specifications tab, you can manage all standard instance types and custom instance types in the region, but you cannot manage dedicated host types. Instance types that are available for Tiangong products and instance types that are out of stock are unavailable in the Apsara Uni-manager Management Console regardless of whether the instance types are in the **Enabled** state. After you enable or disable an instance type, do not perform operations on the instance type until the state of the instance type changes to **Enabled** or **Disabled**.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M** > **Specifications**.
 4. On the **All Specifications** tab of the Specifications page, select an instance family from
 the **Instance Family** drop-down list and enter an instance type name in the **Instance**
@@ -1147,8 +1231,12 @@ O&M
 #### 1.1.5 Compute capacity analytics
 
 You can query the capacity and inventory usage of Elastic Compute Service (ECS) instance types to check their capacity and inventory usage trends.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Compute Capacity Analytics**.
 4. On the Compute Capacity Analytics page, view the following information.
 In the **Allocated Capacity Ratio** section, view the total number of resources, number of used resources, and resource usage by resource type. The resources include vCPU cores, memory, GPUs, and local disks. In the **vCPU/Memory Usage Trend** section, specify a time range in the upper right corner to view the usage trends of vCPUs and memory within the specified period of time.
@@ -1166,8 +1254,12 @@ This topic describes how to start, view, and configure a migration task.
 **Background information**
 
 O&M ECS migration tasks If an instance or a physical server fails, you can migrate the instance from the failed physical server to a normal physical server to ensure system stability. On the **ECS Migration Tasks** tab, you can view the information about Elastic Compute Service (ECS) migration tasks, machine migration tasks, and batch migration tasks. A machine migration task or batch migration task consists of multiple subtasks. Each subtask is an ECS migration task. Therefore, the information about subtasks is also displayed on the ECS Migration Tasks tab, and ECS migration tasks contain migration tasks that are created for migrating single ECS instances and subtasks of machine migration tasks and batch migration tasks. You can also find an ECS instance on the **ECS Instances** page and create a migration task for the instance. For more information, see the "Migrate an instance" section of the Migrate an instance topic. Machine migration tasks When you scale down or maintain a computing server, you must migrate all ECS instances on the server before you can perform operations on the server. In this case, you can migrate all ECS instances on the server to other computing servers. The computing server must be in the `free` or `mlock` state. After you submit a migration task, the server enters the mlock state. If the migration task is complete, fails, or is canceled, you must submit an application to manually unlock the server. The ECS instances on the server are migrated to other computing servers based on ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Shutted** or **Pending** state is migrated, the ECS instance remains in the same state after the migration. After the migration task is complete, you must check whether all ECS instances are migrated. You can also find the server to be migrated on the **Computing Server O&M** page and create a machine migration task for the server. For more information, see the "Migrate all instances on a server" section of the Computing server O&M topic. Batch migration tasks A batch migration task migrates multiple ECS instances in a batch to the destination server based on the migration destination configurations. The migration result is affected by multiple factors, and the batch migration task may fail. You can use a batch migration task to migrate only ECS instances of the same instance family. Only ECS instances that are in the **Running**, **Shutted**, or **Pending** state can be migrated at a time. If ECS instances in the **Shutted** or **Pending** state are migrated, the ECS instances remain in the same state after the migration.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Migration Tasks**.
 O&M
 4. On the **ECS Migration Tasks** subtab of the **Tasks** tab, create an ECS migration task and
@@ -1460,8 +1552,11 @@ instructions in this section to view the CPU models that are supported for migra
 > You cannot add the CPU compatibility information for hot migration in the Apsara Uni-manager Operations Console.
 > You can contact Alibaba Cloud technical support to add the CPU compatibility information for hot migration. After the CPU compatibility information is added, you can create hot migration tasks. However, the migration tasks may fail.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Migration Tasks**.
 4. On the Migration Task Management page, click the **CPU Compatibility Configurations**
 tab. On this tab, you can view the compatible CPU models of the source and destination servers. You can also search for a source CPU model to view its compatible destination CPU model.
@@ -1482,8 +1577,12 @@ You can query events by instance. This allows you to know the exceptions of Elas
 **Prerequisites**
 
 ECS has reached the desired state. The Apsara Uni-manager Operations Console is in the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS Intelligent O&M** > **ECS Instance Events**.
 4. On the ECS Instance Events page, you can query all ECS instance events. You can also filter
 ECS instance events by **Time Range**, **OpsCode**, **Event ID**, **Instance ID**, and **Physical**
@@ -1519,8 +1618,12 @@ O&M In the Compute Operations Console, you can use the Elastic Compute Service (
 **Prerequisites**
 
 ECS has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS Intelligent O&M** > **ECS Physical Machine**
 **Events**.
 4. On the ECS Physical Machine Events page, view all ECS physical machine events. You can
@@ -1570,6 +1673,7 @@ You can view proactive O&M workflows in the ECS O&M Event module. You can also s
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS Intelligent O&M** > **ECS O&M Event**.
 4. On the Proactive O&M page, click **Advanced Filter** and filter proactive O&M workflows by
 **Date Range**, **Proactive O&M Type**, **NC IP**, **Event Status**, **O&M Object**, and **Instance**
@@ -1602,6 +1706,8 @@ you can perform the following operations on the workflow details page. O&M
 **Submit proactive O&M events**
 
 > **Warning:** During proactive O&M, services may be interrupted due to operations such as server restarts. Therefore, you must obtain the authorization from users and proceed with caution.
+
+**Procedure**
 
 1. Click **Submit Proactive O&M Event**.
 2. In the dialog box that appears, configure the following parameters and click **OK**.
@@ -1665,6 +1771,8 @@ O&M
 
 > **Note:** If the machine already has a pending workflow, complete the workflow before you submit a repair ticket. Otherwise, the submission does not take effect.
 
+**Procedure**
+
 1. Click **Submit Repair Ticket for Local Disks**.
 2. In the dialog box that appears, configure the following parameters and click **Report**.
 
@@ -1678,7 +1786,11 @@ O&M
 
 **Prerequisites**
 
-The proactive O&M workflow is in the Running state. Complete a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
+The proactive O&M workflow is in the Running state.
+
+**Procedure**
+
+Complete a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
 **Status** in the **Operation** column, and then select **Complete Workflow**.
 O&M ii. In the message that appears, click **OK**. Cancel a workflow i. Find the workflow that you want to manage, move the pointer over **Change Workflow**
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
@@ -1753,8 +1865,12 @@ This topic describes how to configure Elastic Compute Service (ECS) metrics and 
 **Background information**
 
 This section describes how to enable the feature of pushing alerts to the Apsara Uni-manager Operations Console for ECS metrics and configure alert levels.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M Settings**.
 4. On the **Monitoring** tab, view different types of metrics. The metric information is displayed
 in the following columns: **Metric**, **Description**, **Monitoring Type**, **Resource Type**, **Push**
@@ -1788,8 +1904,12 @@ O&M
 **Background information**
 
 This section describes how to configure throttling and approval settings for active O&M actions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M Settings**.
 4. On the **O&M Actions** tab, view the information about active O&M actions in the following
 columns: **OpsCode** (O&M Type), **Throttling Status**, **Throttling Effective Time**, **Support**
@@ -1842,6 +1962,7 @@ This topic describes how to view the workflow information of an ECS instance, in
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS Workflow**.
 4. On the Workflow page, click **Advanced Filter**. Then, specify parameters such as
 **Workflow ID**, **Workflow Name**, **Workflow Status**, **Business ID**, **Apsara Stack Tenant**
@@ -1870,6 +1991,9 @@ and **End Time**.
 
 The workflow that you want to restart is in the **COMPLETED**, **FAILED**, or
 **HUMAN_PROCESSING** state.
+
+**Procedure**
+
 1. On the Workflow page, find the workflow that you want to restart and click **Restart** in the
 **Operation** column.
 2. In the message that appears, click **OK**.
@@ -1888,6 +2012,9 @@ the **Operation** column.
 **Prerequisites**
 
 The workflow that you want to terminate is in the HUMAN_PROCESSING state.
+
+**Procedure**
+
 1. On the Workflow page, find the workflow that you want to terminate and click **Terminate** in
 the **Operation** column.
 2. In the message that appears, click **OK**.
@@ -1895,8 +2022,12 @@ the **Operation** column.
 #### 1.1.10 Computing O&M data
 
 The Computing O&M Data module intuitively displays data in the current environment, including migrated data, data of custom instance types, O&M data, and monitoring data. The data helps you understand the abnormal monitoring data, changes in the resources on which proactive O&M operations are performed, migrated data changes, and status changes in the current environment. This topic describes how to view computing O&M data.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing O&M Data**.
 4. View computing O&M data.
 By default, the computing O&M data of the last seven days is displayed on the Computing O&M Data page. You can select 7 Days, 1 Month, 3 Months, or 6 Months from the Time Range drop-down list in the upper-right corner of the page to view data in the time range. To analyze detailed O&M data, click **Export O&M Data** in the upper-right corner to export the O&M data to your computer for analysis.
@@ -1919,8 +2050,12 @@ O&M
 ##### 1.1.11.1 Tiangong products
 
 This topic describes how to view the basic information about cloud products that are deployed on ECS in the Tiangong 1.0 and Tiangong 2.0 architectures.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Tiangong O&M** > **Tiangong Product**.
 4. View data on the Tiangong cloud products page. By default, the system displays the details
 of cloud products deployed on ECS, including the cloud product name, Tiangong architecture, and number of Tiangong machine groups. In the upper-left corner of the Tiangong cloud products page, you can enter a cloud product name in the search box to search for the cloud product.
@@ -1944,6 +2079,9 @@ instances.
 ##### 1.1.11.2 Tiangong workflows
 
 This topic describes how to view the information about Tiangong workflows that are triggered by the tasks sent by Apsara Infrastructure Management Framework. The workflow information includes status information such as resource processing and instance cloning. This topic also describes common O&M operations to facilitate the Tiangong management.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
 O&M
@@ -1976,8 +2114,12 @@ O&M ii. In the Workflow logs panel, specify a time range and view the workflow l
 ##### 2.1.1.1 Overview
 
 The Overview page displays the key metrics of network services to help users keep track of the status of services and devices at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Dashboard** > **Overview**.
 4. View the network dashboard information.
 
@@ -2002,8 +2144,12 @@ On the Network Topology page, you can view the physical network topology.
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Dashboard** > **Network Topology**.
 4. Select a data center from the **Data Center** drop-down list and view the physical network
 topology of the selected data center. Click **Baseline topology** or **Dynamic Topology** to view the network topology of the corresponding type. If the **dynamic topology** or the **base topology** has data discrepancies, you can click
@@ -2024,6 +2170,7 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and h
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Dashboard** > **Custom Views**.
 4. On the Custom Views page, click **Create View**.
 5. In the Create View dialog box, configure the **View Name** and **View Description**
@@ -2085,8 +2232,12 @@ On the **Network Monitoring** tab, you can view the basic information, status, a
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
 **Management**.
 4. On the **Network Monitoring** tab of the **Device Management** tab, specify the **IDC**
@@ -2133,8 +2284,12 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has rea
 **Background information**
 
 If you use the network element management feature of the Network Operations Console for the first time, you must add the loopback CIDR block planned by the current network device in Apsara Stack. In most cases, the loopback CIDR block is the CIDR block specified by the netdev.loopback field in the planned IP address list. To expand the network and the loopback CIDR block, you must add the CIDR block involved in the expansion to the management scope. The procedure to add an expanded CIDR block is the same as that used to add the loopback CIDR block for the first time. Then, you can search for the CIDR block of the managed device on the Collection settings tab.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
 **Management**.
 4. On the **Device Management** tab, click the **Collection settings** tab.
@@ -2151,8 +2306,12 @@ If you use the network element management feature of the Network Operations Cons
 **Manage passwords**
 
 You can modify the password of a physical network device.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
 **Management**.
 4. On the Network Element Management page, click the Password management tab. On the
@@ -2184,6 +2343,9 @@ You can compare the current configurations of a device with its configurations o
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **Network Element**
@@ -2207,6 +2369,7 @@ The Syslog module records and stores the logs generated by network hardware devi
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** >**Syslog**.
 4. On the Syslog page, click **Advanced Filter**. Then, configure the **Data Center**, **Source**
 **Device**, **Recorded At**, **Log Content**, **Parsing Status**, **Log Level**, **Manufacturer**, and
@@ -2281,8 +2444,12 @@ The remote direct memory access (RDMA) network interface O&M feature can regular
 
 **RDMA** is a high-speed network technology used to resolve delays in server-side data
 processing during network transmission. RDMA directly sends data to the storage area of a computer over the network. During the process, data is quickly transmitted from one system to the memory of a remote system. RDMA implements direct memory access between hosts without affecting the operating system, accelerates data transmission, and reduces CPU load.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **RDMA**
 **Card O&M**.
 4. In the upper-right corner of the RDMA Card O&M page, select a data source from the **Data**
@@ -2329,6 +2496,9 @@ processing during network transmission. RDMA directly sends data to the storage 
 ###### 2.1.2.3.3 HPN performance analysis
 
 The Apsara Uni-manager Operations Console provides the High Performance Network (HPN) performance analysis feature. This feature analyzes the maximum load and pressure resistance of the software and hardware by testing the performance of a machine under stress conditions. This helps you identify the pressure resistance limit of the machine and provides data support for O&M personnal to improve network performance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **HPN Management** > **HPN**
@@ -2403,8 +2573,12 @@ drop-down lists and then click **Diagnosis**.
 ###### 2.1.2.4.1 CPN diagnosis
 
 The Computing Platform Network (CPN) diagnosis feature checks the nodes in CPN and displays the diagnostic items, diagnostic details, and diagnostic results to help administrators better understand and manage network performance and troubleshoot issues.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Diagnosis**.
 4. Click **Create a diagnosis**, select a **cluster** and a **test node**, and then click **OK**.
@@ -2506,8 +2680,12 @@ The following table describes the operations that you can perform on the **CPN p
 ###### 2.1.2.4.3.1 Manage RDMA devices
 
 This topic describes how to manage Remote Direct Memory Access (RDMA) devices, including how to scan for and delete RDMA devices.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Select the **RDMA Device Management** tab.
@@ -2519,8 +2697,12 @@ down list. b. In the search box, enter the device name or manufacturer, or selec
 ###### 2.1.2.4.3.2 Manage RDMA device policies
 
 This topic describes how to configure policies for Remote Direct Memory Access (RDMA) devices to manage RDMA devices in a centralized manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Click the **RDMA device policy management** tab.
@@ -2558,6 +2740,7 @@ On the **RDMA device policy management** tab, you can perform the following oper
 This topic describes how to manage interface policies, such as policy configuration, query, and retry.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Click the **RDMA device interface policy management** tab.
@@ -2594,8 +2777,12 @@ To perform O&M on Remote Direct Memory Access (RDMA) network interface cards (NI
 
 **RDMA**: RDMA is a high-speed network technology developed to reduce the delay of server-
 side data processing in network transmission. RDMA transfers data directly into the memory of a computer over the RDMA network and enables direct memory access between hosts without affecting the operating system. This increases the data transfer speed and reduces the CPU load.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > RDMA**
 **Card O&M**.
 4. In the upper-right corner of the page, select **Data Source** and **Cluster**. You can set Data
@@ -2632,8 +2819,12 @@ Source only to CPN.
 ###### 2.1.2.4.5.1 CPN topology
 
 This topic describes how to query the topology information about clusters and nodes.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Topology**.
 4. In the upper-left corner of the page, select **Cluster** and **Nodes**.
@@ -2655,8 +2846,11 @@ After the topology is displayed, you can perform the following operations:
 
 > This topic describes how to view network devices and monitoring and O&M information in the cloud platform.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Network Element**.
 4. Select a data center from the drop-down list and enter a network element name in the
@@ -2687,8 +2881,12 @@ On the **CPN network element** page, you can also perform the following operatio
 ###### 2.1.2.4.6.1 CPN host monitoring dashboard
 
 You can use this feature to monitor the key metrics of remote direct memory access (RDMA) networks on the server side of the intelligent computing network. The metrics include bandwidth, packet loss rate, and traffic control.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Host Monitoring**.
 4. In the upper-right corner of the CPN host monitoring dashboard page, click **Variable**
@@ -2704,8 +2902,12 @@ icon to the left of each metric to view details.
 ###### 2.1.2.4.6.2 CPN switch dashboard
 
 You can use this feature to monitor the running status metrics of vSwitches. The metrics include bandwidth, packet loss, and traffic control.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Switcher**.
 4. In the upper-right corner of the CPN switch dashboard page, click **Variable Filtering**. In
@@ -2718,8 +2920,12 @@ icon to the left of each metric to view details.
 ###### 2.1.2.4.6.3 NAK packet analysis tool
 
 You can use this tool to collect NAK packets in real time. After the packets are aggregated and analyzed, a matrix diagram is generated to help you quickly identify abnormal nodes.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > NAK Message Analysis Tool**.
 4. In the upper-right corner of the NAK message Analysis Tool page, click **Variable Filtering**.
@@ -2743,6 +2949,7 @@ On the Instance Management page, you can manage the added CGW instances in a cen
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Instance Management** tab. On the **Display**
 **Devices** tab, view the instance details.
@@ -2762,6 +2969,7 @@ On the Instance Management page, you can manage the added CGW instances in a cen
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Instance Management** tab. Then, click the **Scan**
 **for New Devices** tab.
@@ -2791,6 +2999,7 @@ neighbor and does not provide server access.
 You can view records and results of CGW API operations that are called by the bare metal controller or Apsara Uni-manager Operations Console based on your O&M requirements.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Operation Logs** tab.
 5. Optional. Select **Start/End Time** and configure the start time and end time.
@@ -2819,6 +3028,7 @@ view the details, including the region ID, initiator, and HTTP status code.
 Create a bare metal instance and connect it to a VPC based on your O&M requirements. After the bare metal instance is connected to the VPC, the bare metal instance can communicate with other resources in the VPC over a private network.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **Bare Metal Network Management** tab.
 5. On the Bare Metal Network Management tab, click **Create Bare Metal Instance**. In the
@@ -2890,6 +3100,9 @@ CGW works with Bare-metal Management Service (BMS). BMS is used to install bare 
 **Prerequisites**
 
 A bare metal instance is connected to a VPC.
+
+**Procedure**
+
 1. Find the bare metal instance and click **Manage** in the **Bare Metal IP Address** column.
 2. In the **Bare Metal IP Address Management** panel, click **Apply for Bare Metal IP**
 **Address**.
@@ -2911,6 +3124,8 @@ In O&M emergency scenarios, you can use this feature to add the physical port of
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 > This feature can only be used to connect the bare metal instance to the CGW instance port but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance.
 > Typically, you cannot use this feature to apply for a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to enable the bare metal network.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -2946,8 +3161,11 @@ In O&M emergency scenarios, you can use this feature to disconnect the physical 
 > This feature can only be used to connect the bare metal instance to the CGW instance port but cannot be used to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the corresponding product team for guidance.
 > Typically, you cannot use this feature to release a bare metal instance in the VPC. You can use the bare metal controller to call an API operation to delete the bare metal network.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Release Bare Metal in VPC** from the drop-down list in the upper-left corner of the
@@ -2977,8 +3195,11 @@ In O&M emergency scenarios, you can use this feature to delete route entries tha
 > Typically, you cannot use this feature to delete a VPC route entry. This operation is only for emergency scenarios.
 > You can perform this operation to delete only one route entry at a time. To delete multiple route entries, you must perform this operation multiple times.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete Route Table Entry** from the drop-down list in the upper-left corner of the
@@ -3011,8 +3232,11 @@ In O&M emergency scenarios, you can use this feature to delete a VPC router inte
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete Router Interface** from the drop-down list in the upper-left corner of the tab.
@@ -3044,8 +3268,11 @@ In O&M emergency scenarios, you can use this feature to delete a VBR.
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete VBR** from the drop-down list in the upper-left corner of the tab.
@@ -3075,8 +3302,11 @@ In O&M emergency scenarios, you can use this feature to delete an Express Connec
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete Express Connect Circuit** from the drop-down list in the upper-left corner of
@@ -3109,8 +3339,11 @@ In O&M emergency scenarios, you can use this feature to delete all resources, in
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of R&D engineers. Otherwise, normal business operations may be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Delete ALL Resources** from the drop-down list in the upper-left corner of the tab.
@@ -3146,6 +3379,7 @@ The system begins to deliver the configurations. After the configurations are de
 You can view the bandwidth of the Express Connect circuit to which a router interface corresponds based on your O&M requirements when a CGW instance is connected to a VPC in the system.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View Express Connect Circuit Bandwidth** from the drop-down list in the upper-
@@ -3189,8 +3423,12 @@ In O&M emergency scenarios, you can use this feature to change the bandwidth of 
 **Warning**
 
 This operation may affect your business. Unauthorized operations are prohibited. Configuration changes must be performed under the guidance of technical support.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Change Express Connect Circuit Bandwidth** from the drop-down list in the
@@ -3211,8 +3449,12 @@ If yes, click **Confirm**. After the configurations are delivered, check whether
 **View trunk usage**
 
 You can view trunk usage to obtain up-to-date information about the usage of hardware ports in a timely manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View Trunk Usage** from the drop-down list in the upper-left corner of the tab.
@@ -3225,8 +3467,12 @@ view trunk usage. Valid values of the **Status** parameter are **Idle**, **Used*
 **View VPN usage of a bare metal instance**
 
 You can view the VPN usage of a bare metal instance, and the VPN is assigned to a CGW instance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View BM VPN Usage** from the drop-down list in the upper-left corner of the tab.
@@ -3236,8 +3482,12 @@ and the VPN name of a bare metal instance, select a state, and then click **Sear
 **View BD usage**
 
 You can view BD usage to learn about the BD configuration distribution in a timely manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **View BD Usage** from the drop-down list in the upper-left corner of the tab.
@@ -3276,8 +3526,12 @@ In O&M emergency scenarios, you can use this feature to locate abnormal operatio
 **Background information**
 
 You can use this operation to locate the exception and scan the HSW after a bare metal instance fails to be added. This feature only checks whether the route configurations of the bare metal instance are valid. No operation is performed on the bare metal instance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Check the Route Configuration** from the drop-down list in the upper-left corner of
@@ -3303,8 +3557,12 @@ In O&M emergency scenarios, you can use this feature to check the gateway of a v
 **Background information**
 
 This operation is only for emergency scenarios in which the bare metal network is inaccessible. This operation is used to check the vSwitch gateway information and has no impact on the bare metal instance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the Cloud Gateway page, click the **O&M Settings** tab.
 5. Select **Display the Information of Bare Metal Network Gateways** from the drop-down
@@ -3328,8 +3586,12 @@ about the bare metal network gateway.
 ###### 2.1.2.6.1 Leased lines
 
 The Apsara Uni-manager Operations Console allows you to manage virtual private cloud (VPC), Data Center Interconnect (DCI), and interconnection leased lines. You can also view the monitoring data of the leased lines.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Leased Line Management** >
 **Leased Line Dashboard**.
 4. In the upper part of the Leased Line Instances page, view the number of alerting instances,
@@ -3401,6 +3663,7 @@ Leased line management allows you to manage groups of data center interconnectio
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Leased Line Management** >
 **Leased Line Groups**.
 4. On the Leased Line Group Management page, click **Create Express Connect Circuit**
@@ -3451,6 +3714,7 @@ Access points are Apsara Stack data centers located in different regions. One or
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Leased Line Management** >
 **Access Point Management**.
 4. The list of access points is displayed. View the access point information in the following
@@ -3584,8 +3848,12 @@ To manage the VBR, click **Release**, **Modify**, **Terminate**, or **Show Detai
 ###### 2.1.2.6.7 Router interface management
 
 After you create a virtual border router (VBR), you must create a pair of router interfaces to connect the VBR and a virtual private cloud (VPC). The connection initiator must be a VBR.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Leased Line Management** >
 **Router Interface Management**.
 4. On the Router interface management page, click **Create a route interface**.
@@ -3643,8 +3911,13 @@ previous steps. If the router interfaces are in the **active** state, they are c
 ###### 2.1.2.6.8 Route table management
 
 A route table contains a set of rules that are called route entries. This topic describes how to manage route tables.
+
+**Procedure**
+
 1. Configure routes that point to a virtual private cloud (VPC) and a data center for a virtual
-border router (VBR). i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation** > **Networking** > **Network** iii. In the left-side navigation pane, choose **Basic Network** > **Leased Line Management** >
+border router (VBR). i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
+iii. In the left-side navigation pane, choose **Basic Network** > **Leased Line Management** >
 **Router Table Management**.
 iv. On the Route table management page, specify the BID, UID, Route table ID, and Router ID parameters and click **Search** to search for route tables. v. Find the route table to which you want to add a route entry and click **Add Route Entry** in the **Operation** column. vi. In the Add Route Entry dialog box, configure the parameters to add a route whose destination CIDR block is the VPC CIDR block and click **Create**. The following table describes the parameters.
 
@@ -3667,8 +3940,11 @@ vii. Repeat the preceding steps to configure a route that points to a data cente
 
 ###### 2.1.2.7.1 opsDNS monitoring
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **opsDNS Management** >
 **opsDNS Monitoring**.
 4. On the opsDNS Monitoring page, configure the **Cluster** and **Start/End Time** parameters.
@@ -3691,6 +3967,9 @@ CNAME record to a domain name, remove other records from the domain name. A doma
 5. You cannot add CNAME records to defined zones in the cloud, such as tbsite.net.
 6. You can add domain names only to defined zones in the cloud. You cannot register a
 domain name for a zone outside the cloud.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 3. In the left-side navigation pane, choose **Basic Network** > **opsDNS Management** >
@@ -3726,8 +4005,12 @@ You can use access gateways such as dedicated computing host switches (CHSWs) on
 ###### 2.1.2.8.1 Manage access gateways
 
 On the Instance Management tab, you can view information about access gateways on the computing power platform, such as the access gateway name, internal Border Gateway Protocol (IBGP) role, and creation time.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > Cloud Gateways**.
 4. Click the **Instance Management** tab. Then, click the **Scan for New Devices** tab.
 i. Find the device that you want to manage and click **Manage** in the **Actions** column. Select the devices that you want to manage and click **Batch Manage** below the device list. ii. Configure the **IBGP Role** parameter for the device. The IBGP role specifies the role of the access gateway on the computing power platform in the environment. Valid values: Client, Deploy Client and RR on A Device, and Deploy RR on a Device.
@@ -3762,8 +4045,12 @@ On the **Instance Management** tab, click the **Display Devices** tab to view th
 ###### 2.1.2.8.2 Manage operation logs
 
 To meet O&M requirements, you can view the records and results of API operations that are managed by bare metal instances and called by the Apsara Uni-manager Operations Console. The API records and results are provided by the access gateway of the computing power platform.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Operation Logs** tab.
 5. Optional. In the Start/End Time section, configure the **Start Date** and **End Date**
@@ -3787,8 +4074,12 @@ parameters.
 **instances**
 
 On the Bare Metal Network Management tab, view information about the bare metal instance that is connected to a virtual private cloud (VPC) by using the access gateway on the computing power platform.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Bare Metal Network Management** tab.
 5. Create a bare metal instance and add it to a VPC.
@@ -3859,8 +4150,11 @@ In O&M emergency scenarios, you can use the feature to disconnect the physical p
 > The feature can only be used to disconnect the bare metal instance from the access gateway port. You cannot use the feature to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the product team.
 > In most cases, you cannot use the feature to release a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to delete the network of the bare metal instance.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Release Bare Metal in VPC** from the drop-down list in the upper-left corner of the
@@ -3888,8 +4182,12 @@ In O&M emergency scenarios, you can use the feature to delete route table entrie
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support personnel. Otherwise, normal business operations will be affected.
 
 In most scenarios, you cannot use this feature to delete a VPC route table entry. This operation is only used for emergency scenarios. You can perform this operation to delete only one route table entry at a time. To delete multiple route table entries, you must perform this operation multiple times.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete Route Table Entry** from the drop-down list in the upper-left corner of the
@@ -3913,8 +4211,11 @@ In emergency O&M scenarios, you can use this feature to delete the router interf
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support personnel. Otherwise, normal business operations will be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete Router Interface** from the drop-down list in the upper-left corner of the tab.
@@ -3935,6 +4236,8 @@ are delivered, the **Success** message appears.
 In O&M emergency scenarios, you can use this feature to delete a virtual border router (VBR).
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support. Otherwise, normal business operations will be affected.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -3958,8 +4261,11 @@ In O&M emergency scenarios, you can use this feature to delete an Express Connec
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support. Otherwise, normal business operations will be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete Express Connect Circuit** from the drop-down list in the upper-left corner of
@@ -3983,8 +4289,11 @@ In O&M emergency scenarios, you can use this feature to delete all resources. Th
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support. Otherwise, normal business operations will be affected.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete ALL Resources** from the drop-down list in the upper-left corner of the tab.
@@ -4017,8 +4326,12 @@ In O&M emergency scenarios, you can use this feature to delete all resources. Th
 **Connect circuit**
 
 You can view the bandwidth of the Express Connect circuit when the access gateway is connected to a virtual private cloud (VPC) based on your O&M requirements.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View Express Connect Circuit Bandwidth**.
@@ -4052,8 +4365,12 @@ Express Connect circuit that meets the search conditions is displayed. The bandw
 ###### 2.1.2.8.4.9 View trunk usage
 
 You can view trunk usage to obtain the latest information about the usage of hardware ports at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View Trunk Usage**.
@@ -4067,8 +4384,12 @@ click **Search**. The trunk state can be Idle, Used, Creating, or Deleting.
 ###### 2.1.2.8.4.10 View BM VPN usage
 
 You can view information about the BM VPN that is assigned to a computing access gateway.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** **>** **Networking** **>** **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View BM VPN Usage**.
@@ -4079,8 +4400,12 @@ a trunk state, and then click **Search**. The trunk state can be Succeeded or Cr
 ###### 2.1.2.8.4.11 View BD usage
 
 You can view the BD usage to learn about the BD configuration distribution at the earliest opportunity.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View BD Usage**.
@@ -4094,8 +4419,11 @@ You can use this feature to check whether the initialization configuration of vS
 
 > **Note:** The feature only checks the initialization status and whether the initialization configuration is successful. The feature does not perform operations on bare metal instances.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **Check the Initialization Configuration**.
@@ -4116,8 +4444,11 @@ You can use this feature to identify abnormal operations and scan the vSwitches 
 
 > **Note:** The feature only checks whether the route configuration of a bare metal instance is valid. The feature does not perform operations on the instance.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **Check the Route Configuration**.
@@ -4136,9 +4467,17 @@ You can use this feature to identify abnormal operations and scan the vSwitches 
 
 **network gateways**
 
-You can use this feature to check the gateways of vSwitches in scenarios where bare metal networks are unavailable and O&M emergency is performed. The feature only checks the gateway information of vSwitches. The feature does not perform operations on bare metal instances.
+You can use this feature to check the gateways of vSwitches in scenarios where bare metal networks are unavailable and O&M emergency is performed.
+
+**Note**
+
+The feature only checks the gateway information of vSwitches. The feature does not perform operations on bare metal instances.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **Display the Information of Bare Metal Network**
@@ -4164,8 +4503,12 @@ network gateways.
 ###### 2.1.3.1.1 SLB cluster management
 
 After you add tags to Server Load Balancer (SLB) clusters, you can easily select clusters in the tenant console. This improves the usability of SLB clusters.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **SLB O&M** > **SLB Cluster**
 **Management**.
 4. On the SLB Cluster Management page, select a region ID and click **Search** to view the
@@ -4188,8 +4531,12 @@ The SLB Proxy Management module displays information about Layer 7 Server Load B
 **View information about proxy clusters**
 
 On the Proxy Cluster tab, you can view the node status, usage data, and aggregation monitoring metrics of an SLB proxy cluster.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **Proxy O&M** > **SLB Proxy**.
 4. On the **Proxy Cluster** tab of the SLB Proxy Management page, select the cluster that you
 want to view from the **Cluster** drop-down list. Then, view the cluster information in the
@@ -4320,6 +4667,7 @@ You can view the monitoring metrics and usage data charts of SLB proxy instances
 The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and has reached the desired state.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **Proxy O&M** > **SLB Proxy**.
 4. On the **Proxy Instance** tab, select a cluster from the **Cluster** drop-down list, enter an
 instance ID or a virtual IP address in the **Enter Instance ID or VIP** field, select a listener, and then click **Search**.
@@ -4348,8 +4696,11 @@ data charts of the corresponding metrics. The following table describes the metr
 
 ###### 2.1.3.3.1 XGW cluster management
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **XGW Cluster**
 **Management**.
 4. On the XGW Cluster Management page, select a region ID from the **Region** drop-down list
@@ -4373,8 +4724,12 @@ The XGW Management module allows you to view the basic information, status, aggr
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **XGW**
 **Management**.
 4. On the **XGW Cluster** tab of the XGW Management page, select the cluster that you want to
@@ -4405,8 +4760,12 @@ On the Instance Monitoring tab, you can view the usage of an instance in an XGW 
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **XGW**
 **Management**.
 4. Click the **Instance Monitoring** tab. On this tab, select the cluster that you want to manage
@@ -4438,8 +4797,12 @@ from the **Cluster** drop-down list, enter the IP address of the instance that y
 ###### 2.1.3.3.3 NAT gateway monitoring
 
 In scenarios such as multi-cloud geo-disaster recovery and hybrid cloud, you can query the monitoring data of a NAT gateway by tunnel ID.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **NAT**
 **Gateway Monitoring**.
 4. On the NAT Gateway Monitoring page, select a cluster, specify a time range, enter the
@@ -4467,8 +4830,12 @@ The following table describes the metrics displayed in the chart.
 ###### 2.1.3.3.4 Router interface instances
 
 This topic describes how to view the instances of a router interface and the O&M information about the instances.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **XGW O&M** > **RI Instances**.
 4. On the RI Instances page, click Advanced Filter. In the **Search Condition** section, select
 **VPC ID** or **UID** from the drop-down list and enter the corresponding value in the field.
@@ -4493,8 +4860,12 @@ The CGW Management module allows you to view the basic information, status, aggr
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **CGW O&M** > **CGW**
 **Management**.
 4. On the **CGW Cluster** tab of the CGW Management page, select the cluster that you want to
@@ -4557,8 +4928,12 @@ monitoring data of the node within a specific period of time, including the traf
 ###### 2.1.3.5.2 CEN workflows
 
 On the CEN Workflows page, you can view the workflow event details and relevant information of a Cloud Enterprise Network (CEN) instance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **CEN O&M** > **CEN**
 **Workflows**.
 4. On the page that appears, select a value from the **Business Foundation System Type**
@@ -4581,8 +4956,12 @@ the **StepMessage** column.
 ###### 2.1.3.6.1 AVS management
 
 The Apsara virtual switch (AVS) management feature allows you to view the basic information and usage dashboard of AVSes.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **AVS O&M** > **AVS**
 **Management**.
 4. On the AVS management page, you can view the ASV information in the following columns:
@@ -4710,8 +5089,11 @@ The following table describes the metrics.
 
 ##### 2.1.3.7 VPC-On-ECS
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Products** > **VPC-On-ECS**.
 4. On the VPC-On-ECS page, click **Advanced Filter** and then specify the **VPC ID**, **Status**, and
 **Created At** parameters to filter virtual private clouds (VPCs).
@@ -4744,8 +5126,12 @@ The Network Alert Dashboard module displays the alert information of all network
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Monitoring & Alerting** > **Network**
 **Alert Dashboard**.
 4. On the **Current Alerts** tab, view the alerts of all network components on the platform. You
@@ -4785,6 +5171,7 @@ Monitoring rules can be configured only for the interface monitoring metrics of 
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Monitoring & Alerting** > **Network**
 **Alert Settings** > **Monitoring Rules**.
 4. Click **Create a monitoring rule**. On the page that appears, complete all configurations in
@@ -4864,6 +5251,7 @@ Alert templates can be created only for the monitoring metrics of physical netwo
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Monitoring & Alerting** > **Network**
 **Alert Settings** > **Alert Templates**.
 4. On the Alert Templates page, click **Create an alert template**. In the dialog box that
@@ -4984,8 +5372,12 @@ On the Trap Template Setting page, click **Export Table** to export all trap inf
 ##### 2.1.5.1 Network inspection
 
 The network inspection feature allows you to schedule network inspection tasks on a regular basis and convert inspection results into inspection events or alerts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Inspection**.
 4. On the Network Inspection page, view the information about inspection configurations in
 the following columns: **Name**, **Description**, **Execution Cycle**, **Status**, **Number of**
@@ -5035,8 +5427,12 @@ The intelligent path analysis and forwarding feature provides path diagnostics c
 **Prerequisites**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Intelligent Path**
 **Analysis**.
 4. On the Intelligent Path Analysis page, click **Create Path Analysis**. On the page that
@@ -5088,8 +5484,12 @@ The network instance diagnostics feature helps you quickly analyze a network ins
 **Limits**
 
 The NetworkBaseServiceCluster cluster for BaseServiceAll has been deployed and has reached the desired state. After a diagnostic task is started, it does not stop until the diagnosis is complete. You cannot pause or terminate the task.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Instance**
 **Diagnosis**.
 4. In the **One-click analysis of the running status of network instances** section, select
@@ -5113,8 +5513,12 @@ This topic describes the automated intelligent diagnostics capabilities for cont
 **Scenarios**
 
 The container network diagnostics feature helps you quickly analyze container networks to determine whether the container networks have unexpected states. Visualized and automated diagnostics capabilities are provided. This feature can improve the O&M efficiency of network O&M engineers, reduce O&M risks, and improve the O&M quality of virtual private clouds (VPCs).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Diagnose Container**
 **Network**.
 4. On the Container Network Diagnostics page, click **Create Diagnosis Task**. On the page
@@ -5142,8 +5546,12 @@ in the lower part of the page.
 ##### 2.1.5.5 Network health assessment
 
 The Network Health Assessment module evaluates and diagnoses the health status of each layer of the network based on the dimensions such as performance, capacity, function, and status. This module provides an overview of the network health status and detects issues and risks at all layers of the network in real time to ensure that the network runs as expected.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Network Health**
 **Assessment**.
 4. On the Network Health Assessment page, view the health assessment status of different
@@ -5200,8 +5608,12 @@ a. Find the abnormal event that you want to view and click **Details** in the Op
 ##### 2.1.5.6 Optical transceiver module diagnostics
 
 The Optical Module Diagnostics module analyzes and predicts the status of optical transceiver modules based on AI algorithms and assists O&M personnel in troubleshooting issues.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Intelligent Diagnostics** > **Optical Module**
 **Diagnostics**.
 4. In the upper part of the Optical Module Diagnostics page, view the status distribution of
@@ -5250,8 +5662,12 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and at desi
 **Background information**
 
 Only some instances in VPCs are displayed on the Network Asset Management page. You can query specific instances by instance IP address or ID. Filter properties include Asset Type, IP Address, IP Address Version, Network Type, Instance ID, Zone, Product, ClusterName, Service, ServerRole, IP Address Pool ID, Base Resource, Inband Resource, and vpcId. When you query a network asset, you must specify the Product and ClusterName parameters before you specify the Service parameter. When you query a network asset, you must specify the Product, ClusterName, and Service parameters before you specify the ServiceRole parameter.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **Network Asset**
 **Management**.
 4. On the Network Asset Management page, click **Advanced Filter** and search for a network
@@ -5271,8 +5687,12 @@ You can view the CIDR blocks of each cloud service on the IP segment management 
 **Background information**
 
 The IP address pool feature is applicable to scenarios such as multi-cloud geo-disaster recovery and hybrid clouds. This feature allows you to perform the following operations: Multiple cloud services are deployed in a cloud instance. In O&M scenarios such as network changes and security reviews, you can obtain CIDR blocks of cloud services based on your business requirements to analyze the scope of changes and security policies. The IP address pool feature allows you to view the CIDR block of each cloud service in a cloud instance. You can also use this feature to add custom CIDR blocks.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **IP Address Pool**
 **Management** > **IP Address Pools**.
 On the IP segment management page, you can view the distribution of the CIDR block category, protocol, IPv4 prefixes, IPv6 prefixes, and the CIDR block list.
@@ -5316,8 +5736,12 @@ On the Collection Settings page, you can view the collection settings of the IP 
 **Background information**
 
 The collection settings feature is applicable to scenarios such as multi-cloud geo-disaster recovery and hybrid clouds. This feature allows you to perform the following operations: View the collection rules of IP address pools of all cloud services across the cloud platform. Trigger a data update for a single IP address pool.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **IP Address Pool**
 **Management** > **Collection Settings**.
 4. On the Collection Settings page, find the IP address pool that you want to manage by the IP
@@ -5335,6 +5759,7 @@ The reverse access feature implements active access from base cloud services to 
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Resources** > **Reverse Access**.
 4. On the Cloud Service Reverse Access page, click **Create Reverse Access Instance**. In the
 dialog box that appears, configure the following parameters and click **Create Application**. After the instance is created, an application ID that is automatically assigned by the system for the instance is displayed on the Cloud Service Reverse Access page.
@@ -5439,8 +5864,12 @@ section of this topic.
 **Manage analysis devices**
 
 Analysis devices include analyzers and analysis ports. The collection and analysis of traffic depends on the analysis devices. Before you collect and analyze traffic, you must create the required analysis devices. An **analyzer**, also known as a network performance monitor (NPM), refers to a device that performs traffic analysis. The following types of analyzers are supported: NPM physical machines and NPM central control machines. An **analysis port**refers to the traffic collection port of an NPM device. Traffic is received on the port for collection and analysis.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. On the **Analyze Device Management** tab, you can perform the following operations.
 
@@ -5472,8 +5901,12 @@ A collection rule defines the data source and analysis mode of traffic. The anal
 **Prerequisites**
 
 You have created an analyzer and an analysis port. For more information, see the Manage analysis devices section of this topic.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. Click the **Collection rule management** tab. On this tab, you can perform the following
 operations.
@@ -5553,8 +5986,12 @@ You can associate different collection rules with different analysis scenarios b
 **Prerequisites**
 
 You have created a collection rule. For more information, see the Manage collection rules section of this topic.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. Click the **Scenario Management** tab. On this tab, you can perform the following
 operations.
@@ -5572,8 +6009,12 @@ operations.
 **View network resources**
 
 You can view all the SLB instances that are created in the traffic visualization module.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. Click the **Network Resource List** tab. On this tab, view the network resource information
 in the following columns: **Zone**, **Resource ID**, **Resource Value**, **Resource Type**, **VpcId**,
@@ -5586,8 +6027,12 @@ The Overview page in the Traffic Visualization module displays the traffic detai
 **Prerequisites**
 
 The initial configurations for traffic visualization are complete. For more information, see Visual settings.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Overview**.
 4. In the upper-right corner of the Overview page, specify a time range to view the traffic
 details within the specified time range.
@@ -5604,8 +6049,12 @@ details within the specified time range.
 ##### 2.1.7.3 Traffic search and scheduling
 
 You can use the traffic search and scheduling feature to view the detailed traffic data and perform traffic scheduling. This allows you to balance the workload and efficiently utilize system resources.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Traffic Query and**
 **Scheduling**.
 4. On the Streams Search and Scheduling page, click **2-tuples** or **5-tuples**, click **Advanced**
@@ -5652,6 +6101,7 @@ In scenarios that require large storage capacities, the dynamic VIP feature can 
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Cloud Service Interconnection** > **Dynamic**
 **VIPs**.
 4. On the Dynamic VIP page, click **Create Dynamic VIP**. In the dialog box that appears,
@@ -5711,6 +6161,7 @@ The dynamic DNS feature is applicable to scenarios such as multi-cloud geo-disas
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Cloud Service Interconnection** > **Dynamic**
 **DNS**.
 4. On the Dynamic VIP page, click **Add DNS Record**. In the dialog box that appears,
@@ -5787,8 +6238,11 @@ The following table describes the available change plans that are preset in the 
 | Expansion of the virtual IP address (VIP) range of a Server Load Balancer (SLB) instance | Low risk | If the IP addresses in the VIP resource pool are insufficient or the reserved CIDR blocks are insufficient, you can use this change plan to expand the VIP range. |
 | Expansion of the mapping server CIDR _ blocks of a VPC | Low risk | Apsara Stack provides the reverse access feature that allows one-way access from the classic network to VPCs. A certain number of IP addresses are reserved for reverse access during the delivery. The reserved IP addresses may be used up. In this case, you must expand the IP addresses for reverse access. |
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Change** > **Change Plans**.
 4. On the Change scheme List page, view the information about the change plans in the
 columns, such as **Scheme name**, **Risk level**, **Impact Products**, **Number of executions**, and **Description**. To filter change plans, click **Advanced Filter** and then specify the **Scheme name**, **Risk**
@@ -5826,8 +6280,12 @@ workflow ends. If the execution is in an abnormal state, such as Failed or `W_Ma
 ##### 2.1.9.2 Execution history
 
 You can view the execution history of change plans on the Program execution history page in the Network Change module.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Network Change** > **Execution History**.
 4. On the Program execution history page, you can view the execution details of change plans
 in the columns, such as **Workflow ID**, **Scheme name**, **Description**, **Execution time**,

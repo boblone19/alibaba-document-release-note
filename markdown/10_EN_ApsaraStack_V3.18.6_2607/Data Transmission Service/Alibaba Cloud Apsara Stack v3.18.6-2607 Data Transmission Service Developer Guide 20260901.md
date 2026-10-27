@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 572
 source_pdf: "e86046d619ddf910_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901

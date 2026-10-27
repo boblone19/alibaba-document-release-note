@@ -5,7 +5,7 @@ doc_version: "20250212"
 pdf_pages: 21
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Tracing Analysis Operations and Maintenance Guide 20250212.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Tracing%20Analysis%20Operations%20and%20Maintenance%20Guide%2020250212.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Tracing Analysis Operations and Maintenance Guide 20250212
@@ -103,6 +103,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -127,6 +130,9 @@ This topic describes how to log on to the Apsara Infrastructure Management conso
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from a deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key.
@@ -155,6 +161,9 @@ in a normal state. If so, the `middleWare-jmenv` service is normal. If not, cont
 ### 3.4 Inspect HBase
 
 This topic describes how to inspect HBase.
+
+**Procedure**
+
 1. Log on to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane, choose **O&M Tools > Service Management**.
 3. In the upper part of the **Service Management** page, search for and select `tlog-`
@@ -200,6 +209,9 @@ If so, the service is normal. If not, contact on-site technical support.
 ### 3.5 Inspect JStorm
 
 This topic describes how to inspect JStorm.
+
+**Procedure**
+
 1. Log on to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane, choose **O&M Tools > Service Management**.
 3. In the upper part of the **Service Management** page, search for and select `tlog-`
@@ -232,6 +244,9 @@ If so, the service is normal. If not, contact on-site technical support.
 ### 3.6 Inspect ESDB
 
 This topic describes how to inspect ESDB.
+
+**Procedure**
+
 1. Log on to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane, choose **O&M Tools > Service Management**.
 3. In the upper part of the **Service Management** page, search for and select `tlog-`
@@ -288,6 +303,9 @@ If the cluster does not have abnormal indexes, the service is normal.
 ### 3.7 Inspect Collector
 
 This topic describes how to inspect Collector.
+
+**Procedure**
+
 1. Log on to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane, choose **O&M Tools > Service Management**.
 3. In the upper part of the **Service Management** page, search for and select `arms-arms-`

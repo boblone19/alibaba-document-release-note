@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 47
 source_pdf: "bbadfc9cf27efdc8_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%EF%BC%88%E9%BB%98%E5%AE%89%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Scanner%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Security Scanner User Guide 20260701
@@ -89,6 +89,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -131,11 +134,18 @@ rule management. For more information, see View log audit.
 ### 3.1 Today's overview
 
 Vulnerabilities identified by Cloud Security Scanner include security vulnerabilities, external exposure risks, and compliance vulnerabilities. This topic describes the overall results of Cloud Security Scanner so that security administrators can quickly understand the vulnerability situation.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -159,11 +169,15 @@ In multi-level organization mode,all data permissions are managed by using resou
 #### 3.2.1 Asset analysis
 
 You can use the asset analysis feature to view the number of assets, assets at risk, and assets updated. You can also obtain information about host assets, such as host ports, host services, and operating systems. This topic describes how to view the analysis results of website assets, host assets, and domain assets.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -178,11 +192,15 @@ In multi-level organization mode,all data permissions are managed by using resou
 #### 3.2.2 Website assets
 
 This topic describes how to view and manage website assets that are imported to Cloud Security Scanner.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -203,11 +221,18 @@ You can also search for assets based on **Update Time** and keywords. You can cl
 #### 3.2.3 Host assets
 
 This topic describes how to view and manage host assets that are imported to Cloud Security Scanner.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -229,11 +254,15 @@ on **Update Time** and keywords. Click **Edit** next to the filter condition to 
 #### 3.2.4 Domain assets
 
 This topic describes how to view and manage domain assets that are imported to Cloud Security Scanner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -257,11 +286,18 @@ Click **Edit** next to the filter condition to add an asset group, owner, or ass
 #### 3.3.1 Risk analysis
 
 This topic describes how to view the analysis results of security vulnerabilities, compliance vulnerabilities, and external exposure risks.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -282,7 +318,11 @@ This topic describes how to view and handle the security vulnerabilities detecte
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -311,6 +351,8 @@ vulnerability details page. You can view the CVSS score, threat level, risk over
 
 This article describes how to view and confirm host compliance vulnerabilities.
 
+**Procedure**
+
 **View risks**
 
 Security administrators can view the host compliance issues that are detected by Cloud Security Scanner.
@@ -318,7 +360,11 @@ Security administrators can view the host compliance issues that are detected by
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -359,6 +405,8 @@ This topic describes how to view and confirm external exposure risks, such as co
 
 A GitHub account is available, and the tokens of the account are obtained.
 
+**Procedure**
+
 **View risks**
 
 Security administrators can use Cloud Security Scanner to check whether the GitHub repository has risks of code leaks.
@@ -366,7 +414,8 @@ Security administrators can use Cloud Security Scanner to check whether the GitH
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -409,7 +458,11 @@ Cloud Security Scanner scans only imported assets, so you must import assets bef
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -486,11 +539,18 @@ can also search for and filter assets by **Task Status**, **Task Template**, or 
 ##### 3.4.1.2 Risk scan
 
 This topic describes how to create a risk scan task for an asset.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -512,11 +572,15 @@ section and click **Confirm**. The following table describes the parameters.
 ##### 3.4.1.3 Scan assets
 
 This topic describes how to create an asset discovery task.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -542,11 +606,18 @@ This topic describes how to create an asset scan template for asset discovery an
 **Scan template configuration description**
 
 Manage the asset scan rate, lost packet retransmission times, scan ports, and host liveness detection policies. You can customize port settings and restore the default settings. Select a scan policy and specify additional ports and excluded ports. If a port is added to both additional ports and excluded ports, it is treated as an excluded port. Specify the switches of the asset discovery policy, including whether to enable automatic synchronization of asset information, automatic import of associated IP addresses, subdomain discovery, and reverse lookup of IP addresses. (These features are disabled by default.)
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -562,11 +633,17 @@ This topic describes how to create a risk scan template for the scans of asset v
 **Scan template configuration description**
 
 Manages the basic detection switch (enabled by default), risk type detection items, web risk detection, and user agent settings.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -585,7 +662,10 @@ A security administrator can create a report to view the security status of spec
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -662,11 +742,14 @@ This topic describes how to configure and manage security scan rules for Cloud S
 **Background information**
 
 You can view and manage the monitoring items and detection results in Cloud Security Scanner based on security scanning rules. The details of scan rules are maintained and managed in the upgrade center of Alibaba Cloud.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -718,12 +801,17 @@ Before you add assets to a whitelist, make sure that the assets are secure.
 
 #### 3.6.2 Task management
 
-This topic describes how to view and manage asset import, risk scan, and asset scan tasks. The task management feature of Cloud Security Scanner allows you to view pending tasks, running tasks, and tasks in the task queue. You can also manually stop running tasks based on the situation of blocked tasks.
+This topic describes how to view and manage asset import, risk scan, and asset scan tasks.
+
+**Procedure**
+
+The task management feature of Cloud Security Scanner allows you to view pending tasks, running tasks, and tasks in the task queue. You can also manually stop running tasks based on the situation of blocked tasks.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -736,12 +824,20 @@ i. Click **Stop Task** in the upper-right corner of the page. ii. In the dialog 
 
 #### 3.6.3 System information
 
-This topic describes how to view the vulnerability database version and update records of Cloud Security Scanner, and how to configure the syslog parameter. System information includes the current vulnerability database information (version and update records) and system parameters (syslog settings).
+This topic describes how to view the vulnerability database version and update records of Cloud Security Scanner, and how to configure the syslog parameter.
+
+**Procedure**
+
+System information includes the current vulnerability database information (version and update records) and system parameters (syslog settings).
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -753,11 +849,17 @@ view the current vulnerability database version and update records.
 
 #### 3.6.4 O&M check
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -772,11 +874,15 @@ This topic describes how to view the operation logs of Cloud Security Scanner.
 **Background information**
 
 The log audit feature records operation logs and operation results for asset import, risk scans, asset scans, report creation, and scan rule management.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -793,11 +899,15 @@ This topic describes how to configure a scan engine.
 **Usage notes**
 
 The private asset engine (private engine) is used to discover and scan private assets. You must add a scan engine for a virtual private cloud (VPC) before you can scan for vulnerabilities on the assets of the VPC. The public asset engine (public engine) is used to discover and scan public assets. You can maintain a list of private engines for each VPC and add an unlimited number of private engines. By default, only two public engines are available and cannot be added or deleted.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Security Management > Cloud Security Scanner**. On the **Cloud Security**
 **Scanner** page, select a region from the **Region** drop-down list and click **Access with**
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -821,6 +931,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -842,6 +955,9 @@ rations
 #### 4.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -874,6 +990,9 @@ After you create a custom IPS rule, you can perform the following operations on 
 #### 4.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -897,6 +1016,9 @@ If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbi
 #### 4.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -919,6 +1041,8 @@ rations
 #### 4.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
+
+**Procedure**
 
 > **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
@@ -952,6 +1076,9 @@ After you create a rule, you can perform the following operations on the rule: F
 #### 4.3.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -970,6 +1097,8 @@ This topic describes how to view and modify the information about your Apsara St
 
 > **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -981,7 +1110,11 @@ tenant account. i. Find your Apsara Stack tenant account and click **Revised** i
 
 #### 4.4.2 Manage Alibaba Cloud accounts
 
-After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
+After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center.
+
+**Procedure**
+
+To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**

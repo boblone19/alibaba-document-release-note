@@ -5,7 +5,7 @@ doc_version: "20220913"
 pdf_pages: 221
 source_pdf: "62916d8b6b6ac546_Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for MongoDB Developer Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for MongoDB Developer Guide
@@ -147,13 +147,13 @@ PDF.
 
 ### 1.2 Process of API calls
 
-You can use POP Gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. Since Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure that the user experience is consistent with that in Alibaba Cloud public cloud. This topic describes how to use POP Gateway to call Apsara Stack API operations. You can continue to use the ASAPI gateway to call API operations in Apsara Stack that is earlier than V3.16.0. For more information, see Process of API calls by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain Apsara Stack SDKs. Procedure
+You can use POP Gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. Since Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure that the user experience is consistent with that in Alibaba Cloud public cloud. This topic describes how to use POP Gateway to call Apsara Stack API operations. Not e You can continue to use the ASAPI gateway to call API operations in Apsara Stack that is earlier than V3.16.0. For more information, see Process of API calls by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain Apsara Stack SDKs. Procedure
 1. Obtain an AccessKey pair.
-Obtain the AccessKey pair that is required for the API call. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey pair assigned by STS. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey pair that is required for the API call. For more information, see Obtain an AccessKey pair or Obtain an STS AccessKey pair assigned by STS. Not e We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
 For more information about how to obtain the value of the RegionID parameter, see Obtain the values of common headers.
 3. Obtain the organization ID and resource set ID.
-You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained, and set the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set. If you do not set the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is queried. If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is left empty by default. If you specify a resource set, you must also specify an organization ID.
+You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. Not e When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained, and set the `<x-acs-resourcegroupid>` parameter to the resource set ID that you obtained. This way, you can query resources in the specified organization and resource set. If you do not set the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is queried. If you do not set the `<x-acs-resourcegroupid>` parameter, this parameter is left empty by default. If you specify a resource set, you must also specify an organization ID.
 4. View the developer guide of the cloud service that you want to use to learn how to make the API
 call. Obtain the developer guide of the cloud service that you want to use. This way, you can learn the features of API operations and how to call the API operations. For more information, see Usage notes on development documentation.
 5. Obtain the endpoint of ApsaraDB for MongoDB. For more information, see Obtain the endpoint of
@@ -171,7 +171,7 @@ You can log on to the API Tool console from the Apsara Uni-manager Management Co
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
@@ -202,7 +202,7 @@ Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of 
 2. In the upper-right corner of the homepage, click the profile picture and then click User
 Inf ormat ion.
 3. In the AccessKey Pair section, view the AccessKey pair of your account.
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
+Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane, choose Resources > Organizat ions.
@@ -283,7 +283,7 @@ This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Java. En
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exceptions.
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. SDK for Java
+Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. SDK for Java
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dds.model.v20151201.*; public class DescribeAccounts {
@@ -326,13 +326,13 @@ This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. A
 
 #### 3.2.2 Configure authentication credentials
 
-When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
+When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Not e Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
 ```xml
 DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAccessKeyID>", " <yourAccessKeySecret>")
 ```
 
-You must use actual values to replace the variables in the preceding sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
+Not e You must use actual values to replace the variables in the preceding sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
 #### 3.2.3 Configure connection requests
 
@@ -506,11 +506,11 @@ When you use Apsara Stack SDKs to access Apsara Stack services, you can use an A
 clt = client.AcsClient(<yourRegionID>, <yourAccessKeyID>, <yourAccessKeySecret>)
 ```
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
+Not e In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
 #### 4.2.3 Set HTTPS requests
 
-The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. SDK for Python Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python. Run the `python -c "import ssl"` command to check if the Python environment supports OpenSSL. If the `ImportError: No module named ssl` error message does not appear, OpenSSL is supported in Python. If Python does not support OpenSSL, run the following command to install OpenSSL:
+The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. SDK for Python Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python. Run the `python -c "import ssl"` command to check if the Python environment supports OpenSSL. If the `ImportError: No module named ssl` error message does not appear, OpenSSL is supported in Python. If Python does not support OpenSSL, run the following command to install OpenSSL:
 
 ```
 pip install pyopenssl
@@ -547,7 +547,7 @@ credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') 
 ```
 
 3. Create a request object.
-<yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+Not e <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
 request = DescribeAccountsRequest() request.set_accept_format('json') request.set_DBInstanceId("<yourDBInstanceId>")
@@ -598,7 +598,7 @@ Use ApsaraDB for MongoDB SDK for Go The following code provides an example on ho
 1. Initialize a client instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exceptions.
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. SDK for Go
+Not e In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. SDK for Go
 
 ```java
 package main import (
@@ -664,14 +664,14 @@ package main import (
 
 `)`
 2. Create a service client that contains all API operations of the service.
-You must use actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+Not e You must use actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
 client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<your AccessKeySecret>")
 ```
 
 3. Use the `xxx.CreateXXXRequest` method to create a request.
-The naming convention for this method is ${service}.Create${apiName}Request . The ${service} part specifies a service name. Service names must use lowercase letters. Example: dds. This value indicates ApsaraDB for MongoDB. The ${apiName} part specifies an API name. Example: DescribeRegions. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+The naming convention for this method is ${service}.Create${apiName}Request . The ${service} part specifies a service name. Service names must use lowercase letters. Example: dds. This value indicates ApsaraDB for MongoDB. The ${apiName} part specifies an API name. Example: DescribeRegions. Not e <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
 request := dds.CreateDescribeAccountsRequest()
@@ -1352,7 +1352,7 @@ Sample success responses `XML` format
 
 #### 7.2.1 MigrateToOtherZone
 
-You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call the ReleasePublicNet workAddress operation to release the public endpoint. Request parameters
+You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances. Not e If you have applied for a public endpoint of the instance, you must first call the ReleasePublicNet workAddress operation to release the public endpoint. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1525,7 +1525,7 @@ Sample success responses `XML` format
 
 #### 7.2.3 MigrateAvailableZone
 
-You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call ReleasePublicNet workAddress to release the public endpoint. Request parameters
+You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. Not e If you have applied for a public endpoint of the instance, you must first call ReleasePublicNet workAddress to release the public endpoint. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2021,7 +2021,7 @@ Sample success responses `XML` format
 
 #### 7.4.6 ReleaseNodePrivateNetworkAddress
 
-You can call this operation to release the internal endpoint of the shard or Configserver node of a sharded cluster instance. This operation is only applicable to sharded cluster instances. For more information, see Release endpoints of shard or Configserver nodes. This operation releases the internal endpoint of the node. If you have also applied for a public endpoint of the node and want to release it, you can call the ReleasePublicNetworkAddress operation to release the public endpoint. Request parameters
+You can call this operation to release the internal endpoint of the shard or Configserver node of a sharded cluster instance. This operation is only applicable to sharded cluster instances. For more information, see Release endpoints of shard or Configserver nodes. Not e This operation releases the internal endpoint of the node. If you have also applied for a public endpoint of the node and want to release it, you can call the ReleasePublicNetworkAddress operation to release the public endpoint. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3155,7 +3155,7 @@ Sample success responses `XML` format
 
 #### 7.6.4 SwitchDBInstanceHA
 
-You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes. Request parameters
+You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3198,7 +3198,7 @@ Sample success responses `XML` format
 
 #### 7.6.5 UpgradeDBInstanceEngineVersion
 
-You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The available database versions are subject to the storage engine used by the instance. You can call the DescribeAvailableEngineVersion operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours. Request parameters
+You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e The available database versions are subject to the storage engine used by the instance. You can call the DescribeAvailableEngineVersion operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3317,7 +3317,7 @@ Sample success responses `XML` format
 
 #### 7.7.1 DescribeAccounts
 
-You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance. This operation can display only the information of the root account. Request parameters
+You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance. Not e This operation can display only the information of the root account. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3389,7 +3389,7 @@ Sample success responses `XML` format
 
 #### 7.7.2 ResetAccountPassword
 
-You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. This operation can reset only the password of the root account of an instance. Request parameters
+You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. Not e This operation can reset only the password of the root account of an instance. Request parameters
 
 | Parameter | Type | Required |   | Example | Description |   |
 |---|---|---|---|---|---|---|
@@ -3535,7 +3535,7 @@ Sample success responses `XML` format
 
 #### 7.8.2 ModifySecurityGroupConfiguration
 
-You can call this operation to modify the ECS Security group that is bound to an ApsaraDB for MongoDB instance. For a sharded cluster instance, the bound ECS security group takes effect only for the mongos node. Request parameters
+You can call this operation to modify the ECS Security group that is bound to an ApsaraDB for MongoDB instance. Not e For a sharded cluster instance, the bound ECS security group takes effect only for the mongos node. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3740,7 +3740,7 @@ Sample success responses `XML` format
 
 #### 7.9.2 ModifyDBInstanceTDE
 
-You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. Request parameters
+You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. Not e After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3794,7 +3794,7 @@ Sample success responses `XML` format
 
 #### 7.10.1 ModifyDBInstanceSSL
 
-You can call this operation to modify the SSL settings of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A replica set instance is used. The database engine version of the instance is 3.4, 4.0, or 4.2. Whenever you enable or disable SSL encryption, or update the SSL certificate, the instance will restart. We recommend that you call this operation during off-peak hours. Request parameters
+You can call this operation to modify the SSL settings of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A replica set instance is used. The database engine version of the instance is 3.4, 4.0, or 4.2. Not e Whenever you enable or disable SSL encryption, or update the SSL certificate, the instance will restart. We recommend that you call this operation during off-peak hours. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4177,7 +4177,7 @@ Sample success responses `XML` format
 
 #### 7.11.5 DescribeAuditLogFilter
 
-You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
+You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. Not e This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5031,7 +5031,7 @@ default is 33554432(i.e. 32MB)",
 
 #### 7.14.3 ModifyParameters
 
-You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the DescribeParamet erT emplat es operation to query the parameters that take effect only after the instance is restarted. Request parameters
+You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the DescribeParamet erT emplat es operation to query the parameters that take effect only after the instance is restarted. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5301,7 +5301,7 @@ xxxxx/xxxxx.tar.gz",
 
 #### 7.15.5 RestoreDBInstance
 
-You can call this operation to restore data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances. You also can use the following methods to clone an instance: Create an instance from a backup to clone a standalone instance. Call the CreateShardingDBInstance operation to clone a sharded cluster instance. This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution. Request parameters
+You can call this operation to restore data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances. You also can use the following methods to clone an instance: Create an instance from a backup to clone a standalone instance. Call the CreateShardingDBInstance operation to clone a sharded cluster instance. Not e This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5454,11 +5454,11 @@ You can use the Apsara Stack API (ASAPI) gateway to call API operations of most 
 Before you use ASAPI to call an API operation, you must obtain ASAPI SDK. For more information, see Obtain ASAPI SDK.
 2. Obtain the endpoint of ASAPI. For more information, see Obtain the endpoint of ASAPI .
 3. Obtain an AccessKey pair.
-Obtain the AccessKey pair that is required when you call an API operation. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey pair that is required when you call an API operation. Not e We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 4. Obtain the region ID.
 Obtain the region ID that is required when you call an API operation.
 5. Obtain the organization ID and resource set ID.
-You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management C onsole Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Con sole Developer Guide. When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources. If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default. If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
+You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management C onsole Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Con sole Developer Guide. Not e When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources. If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default. If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
 6. Refer to API references.
 Obtain the developer guide of the cloud service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Use developer guides.
 7. Use ASAPI SDK to call API operations.
@@ -5541,6 +5541,7 @@ Method 3: Concatenate strings to generate an endpoint You can also concatenate s
 https://public.asapi.<region>.<internet-domain>/asapi/v3
 ```
 
+Not e
 1. Replace <region> with the actual region ID.
 2. Replace <internet-domain> with the root domain of your Apsara Stack service. To obtain the
 root domain, contact Apsara Stack O&M personnel. Take note of this point: Use the internetdomain parameter instead of the intranet-domain parameter. If the region value is `cn-****-****-d01` and the int ernet -domain value is `inter.****.****.com` , the following endpoint is used:
@@ -5561,11 +5562,11 @@ ${global:region} and ${global:internet-domain} are variables. You must replace t
  http://server.asapi.${global:region}.${global:intranet-domain}/asapi/v3
 ```
 
-${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained. Procedure To obtain the actual values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following operations:
+Not e ${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained. Procedure To obtain the actual values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following operations:
 1. In the address bar, enter the region-id.aso.intranet-domain-id.com URL and press the Enter key.
-You can select a language from the drop-down list in the upper-right corner of the page.
+Not e You can select a language from the drop-down list in the upper-right corner of the page.
 2. Enter your username and password.
-Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+Not e Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from the deployment personnel or an administrator. When you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 3. Click Log On to log on to the Apsara Uni-manager Operat ions Console.
 4. In the top navigation bar, choose Product s > Plat f orms > Apsara Inf rast ruct ure Management
 Framework to go to Apsara Infrastructure Management.
@@ -5574,7 +5575,7 @@ Framework to go to Apsara Infrastructure Management.
 name.
 7. On the Clust er Dashboard page, click Operat ions Menu > Conf igurat ion Files.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
-file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. ${global:} is not included in the endpoint of ASAPI that you can use.
+file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
 #### 8.2.2 Obtain Apsara Stack SDKs
 
@@ -5615,7 +5616,7 @@ Apsara Stack SDK for Python
 | requests | 2.26.0 |
 | urllib3 | 1.26.6 |
 
-You can use the version for each package listed in the preceding table or a later version.
+Not e You can use the version for each package listed in the preceding table or a later version.
 
 ### 8.3 STS overview
 

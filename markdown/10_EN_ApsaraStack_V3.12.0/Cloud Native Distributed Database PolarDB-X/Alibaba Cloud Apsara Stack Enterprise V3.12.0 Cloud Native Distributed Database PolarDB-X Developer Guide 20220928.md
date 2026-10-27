@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 229
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Cloud Native Distributed Database PolarDB-X Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Cloud%20Native%20Distributed%20Database%20PolarDB-X%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Cloud Native Distributed Database PolarDB-X Developer Guide 20220928
@@ -286,9 +286,9 @@ Common request parameters
 | SignatureNonce | String | Yes | A unique and random number used to prevent replay attacks. You must use different numbers for different requests. |
 | ResourceOwnerAccount | String | No | The owner account (the logon username) of the resource you want to access by using this API request. |
 
-Common response parameters Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. Each time you send a request to call an API operation, the system returns a unique identifier RequestId, regardless of whether the request is successful or not. An HTTP status code of `2xx` indicates that the call succeeds. An HTTP status code of `4xx` or `5xx` indicates that the call failed. The following are sample responses:
+Common response parameters Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. Each time you send a request to call an API operation, the system returns a unique identifier RequestId, regardless of whether the request is successful or not. An HTTP status code of `2xx` indicates that the call succeeds. An HTTP status code of `4xx` or `5xx` indicates that the call failed. The following are sample responses: XML format
 
-```json
+```xml
 <? xml version="1.0" encoding="utf-8"? >
     <!—Result root node-->
     <API operation name+response>
@@ -296,9 +296,16 @@ Common response parameters Responses can be returned in either the JSON or XML f
         <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
         <!—Response data-->
     </API name+Response>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
     /*Response data*/
 ```
+
+`}`
 
 #### 1.1.4 Request signature
 
@@ -320,7 +327,7 @@ HTTPMethod specifies the HTTP method that is used to submit a request, such as G
 as the key. Not ice The key used for calculating the signature is your AccessKey secret followed by an ampersand (&). The SHA1 algorithm is used for the calculation.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 5. Add the signature string to the request as the Signature parameter.
-Not ice When the signature string is submitted to the PolarDB-X 1.0 server as the final request parameter value, the string must be URL encoded like other parameters based on the rules defined in RFC 3986. DescribeDrdsInstances is used in this example. The canonicalized query string is as follows:
+Not ice When the signature string is submitted to the PolarDB-X 1.0 server as the final request parameter value, the string must be URL encoded like other parameters based on the rules defined in RFC 3986. Example DescribeDrdsInstances is used in this example. The canonicalized query string is as follows:
 
 ```
 AccessKeyId=testid&Action=DescribeDrdsInstances&Format=XML&RegionId=cn-hangzhou&SignatureMe thod=HMAC-SHA1&SignatureNonce=ae5bdbeb-9b44-40a1-8bb4-b40784bff686&SignatureVersion=1.0&Tim estamp=2016-01-20T14%3A26%3A15Z&Version=2015-04-13
@@ -353,7 +360,7 @@ public static void drdsOpenAPI() throws NoSuchAlgorithmException, InvalidKeyExce
 StringaccessSecret="testsecret";
 ```
 
-```java
+```
         String accessSecret  testsecret;
         //Common parameters
         Map<String, String> parameters = new TreeMap<String, String>();
@@ -372,6 +379,11 @@ operation
         for(Map.Entry<String, String> entry : parameters.entrySet()) {
           paramStr.append(percentEncode(entry.getKey())).append("=").append(percentEncode(e
 ntry.getValue())).append("&");
+```
+
+`}`
+
+```
         paramStr.deleteCharAt(paramStr.length()-1);
         //Calculate the signature
         StringBuilder stringToSign = new StringBuilder();
@@ -399,7 +411,17 @@ ntry.getValue())).append("&");
            final int read = content.read(buff);
            if(read == -1) break;
            outputStream.write(buff,0,read);
+```
+
+`}`
+
+```java
         System.out.println(new String(outputStream.toByteArray()));;
+```
+
+`}`
+
+```
   public static String percentEncode(String value) throws UnsupportedEncodingException{
         return value ! = null ? URLEncoder.encode(value, "UTF-8").replace("+", "%20")
                 .replace("*", "%2A").replace("%7E", "~") : null;
@@ -412,11 +434,13 @@ ntry.getValue())).append("&");
         return df.format(new Date());
 ```
 
+`}`
+
 #### 1.1.5 Database management
 
 ##### 1.1.5.1 ChangeAccountPassword
 
-Resets the password of a PolarDB-X 1.0 database.
+Resets the password of a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -426,26 +450,46 @@ Resets the password of a PolarDB-X 1.0 database.
 | Password | String | Yes | Test123 | The new password. |
 | AccessKeyId | String | No | sdfgssdsf | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=ChangeAccountPassword &AccountName=test &DrdsInstanceId=drdsxxxxxxxxxx &Password=Test123 <ChangeAccountPasswordResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ChangeAccountPassword &AccountName=test &DrdsInstanceId=drdsxxxxxxxxxx &Password=Test123 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<ChangeAccountPasswordResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
 </ChangeAccountPasswordResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "Success":true
 ```
+
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.2 CheckDrdsDbName
 
-Checks whether the name of a PolarDB-X 1.0 database is valid.
+Checks whether the name of a PolarDB-X 1.0 database is valid. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -456,17 +500,33 @@ Checks whether the name of a PolarDB-X 1.0 database is valid.
 | DbName | String | Yes | testdb | The name of the PolarDB-X 1.0 database. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Result | Boolean | true | Indicates whether the name of the PolarDB-X database is valid. Valid values: true: valid false: invalid |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=CheckDrdsDbName &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxx <CheckDrdsDbNameResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CheckDrdsDbName &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<CheckDrdsDbNameResponse>
       <Result>true</Result>
       <RequestId>CF38538C-68BD-4278-B58F-EDE96FA8A5CE</RequestId>
+      <Success>true</Success>
 </CheckDrdsDbNameResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":true,
     "RequestId":"CF38538C-68BD-4278-B58F-EDE96FA8A5CE",
     "Success":true
@@ -474,13 +534,15 @@ http(s)://[Endpoint]/? Action=CheckDrdsDbName &DbName=testdb &DrdsInstanceId=drd
 
 ##### 1.1.5.3 CheckExpandStatus
 
-Verifies whether scale-out operations such as smooth scale-out can be performed on a PolarDB-X 1.0 database.
+Verifies whether scale-out operations such as smooth scale-out can be performed on a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CheckExpandStatu s | The operation that you want to perform. Set the value to CheckExpandStatu s. |
 | DbName | String | Yes | testdb | The name of the PolarDB-X database. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -490,14 +552,26 @@ Verifies whether scale-out operations such as smooth scale-out can be performed 
 | RequestId | String | drds sample request i _ _ _ d | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=CheckExpandStatus &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxx <CheckExpandStatus>
+```
+http(s)://[Endpoint]/? Action=CheckExpandStatus &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<CheckExpandStatus>
       <Data>
             <IsActive>true</IsActive>
             <Msg></Msg>
       </Data>
       <RequestId>7CDBA7D5-8D62-4D24-9C65-510D621278DB</RequestId>
+      <Success>true</Success>
 </CheckExpandStatus>
+```
+
+JSON format `{`
+
+```json
     "Data":{
         "IsActive":true,
         "Msg":""
@@ -510,9 +584,11 @@ http(s)://[Endpoint]/? Action=CheckExpandStatus &DbName=testdb &DrdsInstanceId=d
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.4 CheckSqlAuditEnableStatus
 
-Verifies whether SQL audit is enabled for a PolarDB-X 1.0 logical database.
+Verifies whether SQL audit is enabled for a PolarDB-X 1.0 logical database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -526,25 +602,43 @@ Verifies whether SQL audit is enabled for a PolarDB-X 1.0 logical database.
 |---|---|---|---|---|
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | drds sample request i _ _ _ d | The ID of the request. |
 | Status | String | enabled | Indicates whether SQL audit was enabled for the logical database. Valid values: enabled and disabled. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=CheckSqlAuditEnableStatus &DbName=drds_db &DrdsInstanceId=drdsxxxxxxxxxxx <CheckSqlAuditEnableStatus>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CheckSqlAuditEnableStatus &DbName=drds_db &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<CheckSqlAuditEnableStatus>
       <Status>"disabled"</Status>
       <RequestId>FF13E47D-4E38-4A5A-BA68-32A554E6FE10</RequestId>
+      <Success>true</Success>
 </CheckSqlAuditEnableStatus>
+```
+
+JSON format `{`
+
+```json
     "Status":"\"disabled\"",
     "RequestId":"FF13E47D-4E38-4A5A-BA68-32A554E6FE10",
     "Success":true
 ```
 
+`}`
+
 ##### 1.1.5.5 CreateDrdsDB
 
-Creates a PolarDB-X 1.0 database.
+Creates a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -567,13 +661,23 @@ Creates a PolarDB-X 1.0 database.
 | RdsSuperAccount. N.Password | String | No | rds password _ | The password of the ApsaraDB RDS for MySQL privileged account. |
 | Type | String | No | HORIZONTAL | The partition mode of the database. Set the value to HORIZONTAL. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | drds sample request i _ _ _ d | The ID of the request. |
 | Success | Boolean | true | Indicates whether the PolarDB-X database was created. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CreateDrdsDB &DrdsInstanceId=drdsxxxxxxxxxxx &DbName=drds_db &Encode=utf8mb4 &Password=drds_sample_password &RdsInstance=["rds_id1", "rds_id2"] &Type=HORIZONTAL &DbInstType=RDS &DbInstanceIsCreating=false &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=CreateDrdsDB &DrdsInstanceId=drdsxxxxxxxxxxx &DbName=drds_db &Encode=utf8mb4 &Password=drds_sample_password &RdsInstance=["rds_id1", "rds_id2"] &Type=HORIZONTAL &DbInstType=RDS &DbInstanceIsCreating=false <CreateDrdsDB>
+<CreateDrdsDB>
       <RequestId>FF13E47D-4E38-4A5A-BA68-32A554E610EF</RequestId>
 </CreateDrdsDB>
 ```
@@ -583,9 +687,11 @@ http(s)://[Endpoint]/? Action=CreateDrdsDB &DrdsInstanceId=drdsxxxxxxxxxxx &DbNa
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.6 CreateShardTask
 
-Creates a partitioning task for a PolarDB-X database.
+Creates a partitioning task for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -603,15 +709,31 @@ Creates a partitioning task for a PolarDB-X database.
 | RequestId | String | F8997D95-94AD-416A- AE70-E24D087045ED | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=CreateShardTask &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxxxx &SourceTableName=student_tb1 &TargetTableName=student_tb2 &TaskType=SINGLE_TO_SHARD <CreateShardTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CreateShardTask &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxxxx &SourceTableName=student_tb1 &TargetTableName=student_tb2 &TaskType=SINGLE_TO_SHARD &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<CreateShardTaskResponse>
       <Data>true</Data>
       <RequestId>F8997D95-94AD-416A-AE70-E24D087045ED</RequestId>
+      <Success>true</Success>
 </CreateShardTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":true,
     "RequestId":"F8997D95-94AD-416A-AE70-E24D087045ED",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.7 DatalinkReplicationPrecheck
 
@@ -626,29 +748,41 @@ Prechecks a partitioning task of a PolarDB-X database.
 | SrcTableName | String | Yes | student 2 _ | The name of the source table. |
 | AccessKeyId | String | No | XXXXXX | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | Long | 20190886 | The ID of the precheck task. |
 | RequestId | String | F8997D95-94AD-416A- AE70-E24D087045ED | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DatalinkReplicationPrecheck &DbName=test_db &DrdsInstanceId=drdsxxxxxxxx &DstTableName=student_1 &SrcTableName=student_2
+http(s)://[Endpoint]/? Action=DatalinkReplicationPrecheck &DbName=test_db &DrdsInstanceId=drdsxxxxxxxx &DstTableName=student_1 &SrcTableName=student_2 &<Common request parameters>
 ```
 
-```json
+```xml
 <DatalinkReplicationPrecheckResponse>
       <Data>20190886</Data>
       <RequestId>F8997D95-94AD-416A-AE70-E24D087045ED</RequestId>
+      <Success>true</Success>
 </DatalinkReplicationPrecheckResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":20190886,
     "RequestId":"F8997D95-94AD-416A-AE70-E24D087045ED",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.8 DeleteShardTasks
 
-Deletes partitioning tasks from a PolarDB-X database.
+Deletes partitioning tasks from a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -665,19 +799,35 @@ Deletes partitioning tasks from a PolarDB-X database.
 | RequestId | String | F8997D95-94AD-416A- AE70-E24D087045ED | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=DeleteShardTasks &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxx <DeleteShardTasksResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DeleteShardTasks &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<DeleteShardTasksResponse>
       <Data>true</Data>
       <RequestId>F8997D95-94AD-416A-AE70-E24D087045ED</RequestId>
+      <Success>true</Success>
 </DeleteShardTasksResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":true,
     "RequestId":"F8997D95-94AD-416A-AE70-E24D087045ED",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.9 DescribeBackMenu
 
-Queries whether a PolarDB-X instance supports backup and recovery.
+Queries whether a PolarDB-X instance supports backup and recovery. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -688,6 +838,8 @@ Queries whether a PolarDB-X instance supports backup and recovery.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | xxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | List | - | - | The list of supported items. |
@@ -697,11 +849,13 @@ Queries whether a PolarDB-X instance supports backup and recovery.
 | RequestId | String | 60C21BE4-EDFE-454C- 95ED-3A5C7493D74A | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeBackMenu &DrdsInstanceId=drdsxxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeBackMenu &DrdsInstanceId=drdsxxxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+```xml
 <DescribeBackMenuResponse>
       <List>
             <MenuName>phy</MenuName>
@@ -712,26 +866,37 @@ http(s)://[Endpoint]/? Action=DescribeBackMenu &DrdsInstanceId=drdsxxxxxxxxxxxx
             <Support>true</Support>
       </List>
       <RequestId>60C21BE4-EDFE-454C-95ED-3A5C7493D74A</RequestId>
+      <Success>true</Success>
 </DescribeBackMenuResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"60C21BE4-EDFE-454C-95ED-3A5C7493D74A",
     "Success":true,
     "List":[
+```
+
+`{`
+
+```json
             "MenuName":"phy",
             "Support":true
 ```
 
-`},`
+`},` `{`
 
 ```json
             "MenuName":"logic",
             "Support":true
 ```
 
-`]`
+`}` `]` `}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.10 DescribeBackupDbs
 
-Queries the databases that can be restored for a PolarDB-X instance.
+Queries the databases that can be restored for a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -744,6 +909,8 @@ Queries the databases that can be restored for a PolarDB-X instance.
 | BackupId | String | No | 201908367 | Query by backup set. |
 | PreferredRestoreTi me | String | No | 1568632541236 | Query by restoration time. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DbNames | - | ["db1","db2"] | The list of returned databases. |
@@ -751,10 +918,19 @@ Queries the databases that can be restored for a PolarDB-X instance.
 | RequestId | String | 9EF10719-C34F-4E64- 8260-D29C1A78B5DD | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeBackupDbs &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeBackupDbs &DrdsInstanceId=drdsxxxxxxxxx <DescribeBackupDbsResponse>
+<DescribeBackupDbsResponse>
       <DbNames></DbNames>
       <RequestId>9EF10719-C34F-4E64-8260-D29C1A78B5DD</RequestId>
+      <Success>true</Success>
 </DescribeBackupDbsResponse>
 ```
 
@@ -770,15 +946,19 @@ http(s)://[Endpoint]/? Action=DescribeBackupDbs &DrdsInstanceId=drdsxxxxxxxxx <D
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.11 DescribeBackupTimes
 
-Queries the point in time to which a PolarDB-X instance can be restored.
+Queries the point in time to which a PolarDB-X instance can be restored. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeBackupTi mes | The operation that you want to perform. Set the value to DescribeBackupTi mes. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | xxxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -791,14 +971,28 @@ Queries the point in time to which a PolarDB-X instance can be restored.
 | StartTime | String | 1568632853000 | The timestamp that specifies the beginning of the time range to query. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=DescribeBackupTimes &DrdsInstanceId=drdsxxxxxxxxxxx <DescribeBackupTimesResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeBackupTimes &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<DescribeBackupTimesResponse>
       <RequestId>4780A19F-5ECB-4C56-AD20-966A3FF99772</RequestId>
+      <Success>true</Success>
       <RestoreTime>
             <EndTime>1568636922671</EndTime>
             <StartTime>1568632853000</StartTime>
       </RestoreTime>
 </DescribeBackupTimesResponse>
+```
+
+JSON format `{`
+
+```json
     "RestoreTime":{
         "EndTime":"1568636922671",
         "StartTime":"1568632853000"
@@ -810,6 +1004,8 @@ http(s)://[Endpoint]/? Action=DescribeBackupTimes &DrdsInstanceId=drdsxxxxxxxxxx
     "RequestId":"4780A19F-5ECB-4C56-AD20-966A3FF99772",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.12 DescribeBroadcastTables
 
@@ -824,6 +1020,8 @@ Queries the broadcast tables in a PolarDB-X database.
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -844,11 +1042,15 @@ Queries the broadcast tables in a PolarDB-X database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | Integer | 2 | The total number of entries. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeBroadcastTables &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxx &Query=tb1
+http(s)://[Endpoint]/? Action=DescribeBroadcastTables &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxx &Query=tb1 &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <DescribeBroadcastTablesResponse>
       <PageSize>40</PageSize>
       <RequestId>86E420ED-43F2-4788-A58C-9218491FFB09</RequestId>
@@ -870,12 +1072,23 @@ http(s)://[Endpoint]/? Action=DescribeBroadcastTables &DbName=test_db &DrdsInsta
             <Broadcast>true</Broadcast>
             <BroadcastType>1</BroadcastType>
       </List>
+      <Success>true</Success>
 </DescribeBroadcastTablesResponse>
+```
+
+JSON format `{`
+
+```json
     "PageNumber":1,
     "PageSize":40,
     "RequestId":"86E420ED-43F2-4788-A58C-9218491FFB09",
     "Success":true,
     "List":[
+```
+
+`{`
+
+```json
             "Status":1,
             "IsShard":false,
             "BroadcastType":1,
@@ -884,7 +1097,7 @@ http(s)://[Endpoint]/? Action=DescribeBroadcastTables &DbName=test_db &DrdsInsta
             "DbInstType":0
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Status":1,
@@ -895,7 +1108,7 @@ http(s)://[Endpoint]/? Action=DescribeBroadcastTables &DbName=test_db &DrdsInsta
             "DbInstType":0
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Total":2
@@ -903,7 +1116,7 @@ http(s)://[Endpoint]/? Action=DescribeBroadcastTables &DbName=test_db &DrdsInsta
 
 ##### 1.1.5.13 DescribeDbInstanceDbs
 
-Queries the databases on a storage instance of a PolarDB-X instance.
+Queries the databases on a storage instance of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -926,9 +1139,13 @@ Queries the databases on a storage instance of a PolarDB-X instance.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | String | 1 | The total number of databases. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeDbInstanceDbs &DbInstanceId=pc-bpxxxxxxxxxxxxxx &DrdsInstanceId=drdsxxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeDbInstanceDbs &DbInstanceId=pc-bpxxxxxxxxxxxxxx &DrdsInstanceId=drdsxxxxxxxxxxxx &<Common request parameters>
 ```
+
+Sample success responses XML format
 
 ```xml
 <DescribeDbInstanceDbsResponse>
@@ -940,31 +1157,46 @@ http(s)://[Endpoint]/? Action=DescribeDbInstanceDbs &DbInstanceId=pc-bpxxxxxxxxx
 
 `n>`
 
-```json
+```xml
                   <DbName>db_newsudbv</DbName>
             </Database>
       </Databases>
       <total>1</total>
       <RequestId>E9F3D991-08DE-4B74-BE0E-06B80958F5DC</RequestId>
+      <Success>true</Success>
 </DescribeDbInstanceDbsResponse>
+```
+
+JSON format `{`
+
+```json
     "total":1,
     "Databases":{
         "Database":[
+```
+
+`{`
+
+```json
                 "Status":1,
                 "Description":"Created by PolarDB-X 1.0, do NOT change password",
                 "DbName":"db_newsudbv"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId":"E9F3D991-08DE-4B74-BE0E-06B80958F5DC",
     "Success":true
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
+
+For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.14 DescribeDbInstances
 
@@ -979,6 +1211,8 @@ Queries the storage instances, namely, ApsaraDB RDS for MySQL instances of a Pol
 | PageNumber | Integer | No | 1 | The number of the page to return. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | Search | String | No | pc- bp1xxxxxxxxxxxx | Query by storage instance ID. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1006,8 +1240,16 @@ Queries the storage instances, namely, ApsaraDB RDS for MySQL instances of a Pol
 | ZoneId | String | cn-hangzhou-a | The ID of the zone where the storage instance is located. |
 | RequestId | String | 05670C01-093E-4DF4- 99FA-0C63FF60250D | The ID of the request. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxxx <DescribeDbInstancesResponse>
+<DescribeDbInstancesResponse>
       <RequestId>05670C01-093E-4DF4-99FA-0C63FF60250D</RequestId>
       <Items>
             <DBInstance>
@@ -1025,9 +1267,16 @@ http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxx
 </DescribeDbInstancesResponse>
 ```
 
+JSON format
+
 ```json
     "Items":{
         "DBInstance":[
+```
+
+`{`
+
+```json
                 "RegionId":"cn-hangzhou",
                 "DBInstanceType":"Primary",
                 "DBInstanceId":"pc-bp1xxxxxxxxxxxxxx",
@@ -1040,19 +1289,23 @@ http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxx
                     "ReadOnlyDBInstanceId":[]
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
     "RequestId":"05670C01-093E-4DF4-99FA-0C63FF60250D"
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.15 DescribeDrdsDB
 
-Queries the details about a database on a PolarDB-X instance.
+Queries the details about a database on a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1067,6 +1320,8 @@ Queries the details about a database on a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxx | The ID of PolarDB- X instance. |
 | AccessKeyId | String | No | xxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | - | - | The details about the database. |
@@ -1080,8 +1335,14 @@ Queries the details about a database on a PolarDB-X instance.
 | RequestId | String | 05203D07-8447-48D0- BED5-2F00BFD40630 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=DescribeDrdsDB &DbName=db_test &DrdsInstanceId=drdsxxxxxxxxxxxx <DescribeDrdsDBResponse>
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsDB &DbName=db_test &DrdsInstanceId=drdsxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<DescribeDrdsDBResponse>
       <RequestId>45203D07-8447-48D0-BED5-2F00BFD40630</RequestId>
       <Data>
             <Status>NORMAL</Status>
@@ -1092,7 +1353,13 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDB &DbName=db_test &DrdsInstanceId=drd
             <Mode>HORIZONTAL</Mode>
             <DbName>db_0</DbName>
       </Data>
+      <Success>true</Success>
 </DescribeDrdsDBResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":{
         "Status":"NORMAL",
         "DbName":"db_0",
@@ -1110,6 +1377,8 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDB &DbName=db_test &DrdsInstanceId=drd
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.16 DescribeDrdsDbInstance
 
 Queries the details about an ApsaraDB RDS for MySQL instance of a PolarDB-X 1.0 database.
@@ -1121,6 +1390,8 @@ Queries the details about an ApsaraDB RDS for MySQL instance of a PolarDB-X 1.0 
 | DbName | String | Yes | drds test _ | The name of the PolarDB-X 1.0 database. |
 | DrdsInstanceId | String | Yes | rm-drdsxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ASU678xxxxxxxxxx xxxx | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1169,8 +1440,14 @@ Queries the details about an ApsaraDB RDS for MySQL instance of a PolarDB-X 1.0 
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsDbInstance &DbInstanceId=rm-bp1xxxxxxxxxxxxx &DbName=drds_test &DrdsInstanceId=rm-drdsxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsDbInstance &DbInstanceId=rm-bp1xxxxxxxxxxxxx &DbName=drds_test &DrdsInstanceId=rm-drdsxxxxxxxx <DescribeDrdsDbInstance>
+<DescribeDrdsDbInstance>
       <RequestId>2F7F8080-9132-4279-85D0-B7E5C4305162</RequestId>
       <DbInstance>
             <DbInstType>RDS</DbInstType>
@@ -1188,8 +1465,11 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbInstance &DbInstanceId=rm-bp1xxxxxxx
             <RemainDays>0</RemainDays>
             <Engine>MySQL</Engine>
       </DbInstance>
+      <Success>true</Success>
 </DescribeDrdsDbInstance>
 ```
+
+JSON format
 
 ```json
     "DbInstance":{
@@ -1222,9 +1502,11 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbInstance &DbInstanceId=rm-bp1xxxxxxx
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.17 DescribeDrdsDbInstances
 
-Queries the ApsaraDB RDS for MySQL instances of a PolarDB-X 1.0 database. When you query the primary ApsaraDB RDS for MySQL instances of a PolarDB-X 1.0 database, the ReadOnlyInstances attribute of each primary ApsaraDB RDS for MySQL instance specifies the list of read-only ApsaraDB RDS for MySQL instances used by this primary ApsaraDB RDS for MySQL instance for the current database.
+Queries the ApsaraDB RDS for MySQL instances of a PolarDB-X 1.0 database. When you query the primary ApsaraDB RDS for MySQL instances of a PolarDB-X 1.0 database, the ReadOnlyInstances attribute of each primary ApsaraDB RDS for MySQL instance specifies the list of read-only ApsaraDB RDS for MySQL instances used by this primary ApsaraDB RDS for MySQL instance for the current database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1239,6 +1521,8 @@ Queries the ApsaraDB RDS for MySQL instances of a PolarDB-X 1.0 database. When y
 |---|---|---|---|---|
 | PageNumber | Integer | No | 1 | The number of the page to return. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. |
+
+Response parameters
 
 | DbInstances | - | - | The list of ApsaraDB RDS for MySQL instances of the PolarDB-X 1.0 database. |
 |---|---|---|---|
@@ -1284,9 +1568,13 @@ Queries the ApsaraDB RDS for MySQL instances of a PolarDB-X 1.0 database. When y
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | String | 1 | The total number of primary read-only ApsaraDB RDS for MySQL instances. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeDrdsDbInstances &DbName=dbname &DrdsInstanceId=drdsxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeDrdsDbInstances &DbName=dbname &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
 ```
+
+Sample success responses XML format
 
 ```xml
 <DescribeDrdsDbInstances>
@@ -1312,8 +1600,11 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbInstances &DbName=dbname &DrdsInstan
                   <Engine>MySQL</Engine>
             </DbInstance>
       </DbInstances>
+      <Success>true</Success>
 </DescribeDrdsDbInstances>
 ```
+
+JSON format
 
 ```json
     "PageNumber":1,
@@ -1321,6 +1612,11 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbInstances &DbName=dbname &DrdsInstan
     "RequestId":"658B6F25-442A-4996-8AAE-F77DAFBC9BAA",
     "DbInstances":{
         "DbInstance":[
+```
+
+`{`
+
+```json
                 "RemainDays":0,
                 "ReadOnlyInstances":{
                     "ReadOnlyInstance":[]
@@ -1343,16 +1639,18 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbInstances &DbName=dbname &DrdsInstan
                 "PayType":"Postpaid"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Success":true,
     "Total":1
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.18 DescribeDrdsDbRdsNameList
 
-Queries the IDs of the storage instances of a PolarDB-X 1.0 database.
+Queries the IDs of the storage instances of a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1367,6 +1665,8 @@ Queries the IDs of the storage instances of a PolarDB-X 1.0 database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ASU67xxxxxxxxxxx xxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | InstanceNameList | - | rm-m5xxxxxxxxx82 | The IDs of storage instances. |
@@ -1374,14 +1674,25 @@ Queries the IDs of the storage instances of a PolarDB-X 1.0 database.
 | RequestId | String | 37537B38-A663-45CB- A81F-E3B202BB2415 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsNameList &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsNameList &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxx <DescribeDrdsDbRdsNameList>
+<DescribeDrdsDbRdsNameList>
       <RequestId>37537B38-A663-45CB-A81F-E3B202BB2415</RequestId>
       <InstanceNameList>
             <InstanceName>rm-m5xxxxxxxxx82</InstanceName>
       </InstanceNameList>
+      <Success>true</Success>
 </DescribeDrdsDbRdsNameList>
 ```
+
+JSON format
 
 ```json
     "InstanceNameList":{
@@ -1396,9 +1707,11 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsNameList &DbName=drds_test &DrdsI
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.19 DescribeDrdsDbRdsRelationInfo
 
-Queries the structure information of storage instances for a PolarDB-X 1.0 database.
+Queries the structure information of storage instances for a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1406,6 +1719,8 @@ Queries the structure information of storage instances for a PolarDB-X 1.0 datab
 | DbName | String | Yes | drds test _ | The name of the PolarDB-X 1.0 database. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ASU67xxxxxxxxxxx x | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1422,8 +1737,16 @@ Queries the structure information of storage instances for a PolarDB-X 1.0 datab
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsRelationInfo &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxx <DescribeDrdsDbRdsRelationInfo>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsRelationInfo &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<DescribeDrdsDbRdsRelationInfo>
       <RequestId>E827BEE8-A8BE-4E86-992A-E6400B263CB1</RequestId>
       <Data>
             <Data>
@@ -1435,9 +1758,20 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsRelationInfo &DbName=drds_test &D
                   <RdsInstanceId>rm-m5xxxxxxxxx82</RdsInstanceId>
             </Data>
       </Data>
+      <Success>true</Success>
 </DescribeDrdsDbRdsRelationInfo>
+```
+
+JSON format `{`
+
+```json
     "Data":{
         "Data":[
+```
+
+`{`
+
+```json
                 "UsedInstanceType":"RDS",
                 "RdsInstanceId":"rm-m5xxxxxxxxx82",
                 "UsedInstanceId":"rm-m5xxxxxxxxx82",
@@ -1446,12 +1780,14 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbRdsRelationInfo &DbName=drds_test &D
                         "rm-m5xxxxxxxxx82"
 ```
 
-`]` `]` `},`
+`]` `}` `}` `]` `},`
 
 ```json
     "RequestId":"E827BEE8-A8BE-4E86-992A-E6400B263CB1",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.20 DescribeDrdsDbTasks
 
@@ -1464,6 +1800,8 @@ Queries incomplete tasks for a PolarDB-X 1.0 database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ASU678Uxxxxxxxxx xxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 | TaskType | String | No | create db _ | The type of the task. If this parameter is not specified, all types of tasks are queried. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1491,11 +1829,13 @@ Queries incomplete tasks for a PolarDB-X 1.0 database.
 | TaskStatus | Integer | 1 | The status of the incomplete task. Valid values: 0: running 1: success 2: failed 3: canceled |
 | TaskType | Integer | 8 | The type of the incomplete task. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeDrdsDbTasks &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeDrdsDbTasks &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+```xml
 <DescribeDrdsDbTasks>
       <Tasks>
             <Task>
@@ -1515,10 +1855,21 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbTasks &DbName=drds_test &DrdsInstanc
             </Task>
       </Tasks>
       <RequestId>7E54C57C-DF5A-4FE8-8E25-DC888817B54D</RequestId>
+      <Success>true</Success>
 </DescribeDrdsDbTasks>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"7E54C57C-DF5A-4FE8-8E25-DC888817B54D",
     "Tasks":{
         "Task":[
+```
+
+`{`
+
+```json
                 "ParentJobId":123,
                 "AllowCancel":false,
                 "GmtCreate":1568696422000,
@@ -1534,15 +1885,17 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDbTasks &DbName=drds_test &DrdsInstanc
                 "TaskType":8
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Success":true
 ```
 
+`}`
+
 ##### 1.1.5.21 DescribeDrdsInstanceDbMonitor
 
-Queries the performance monitoring data of a PolarDB-X 1.0 database.
+Queries the performance monitoring data of a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1554,6 +1907,8 @@ Queries the performance monitoring data of a PolarDB-X 1.0 database.
 | StartTime | Long | Yes | 1568701920000 | The timestamp that specifies the beginning of the time range to query. |
 | AccessKeyId | String | No | ASU67xxxxxxxxxxx xxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1571,8 +1926,16 @@ Queries the performance monitoring data of a PolarDB-X 1.0 database.
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsInstanceDbMonitor &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxxxx &EndTime=1568705520000 &Key=qps &StartTime=1568701920000 &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsInstanceDbMonitor &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxxxx &EndTime=1568705520000 &Key=qps &StartTime=1568701920000 <DescribeDrdsInstanceDbMonitor>
+<DescribeDrdsInstanceDbMonitor>
       <RequestId>D6A88429-BA1E-4294-BE37-E82167355122</RequestId>
       <Data>
             <Values>
@@ -1582,37 +1945,49 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstanceDbMonitor &DbName=drds_test &D
             <Unit>qps</Unit>
             <Key>qps</Key>
       </Data>
+      <Success>true</Success>
 </DescribeDrdsInstanceDbMonitor>
 ```
+
+JSON format
 
 ```json
     "Data":[
             "Values":[
+```
+
+`{`
+
+```json
                     "Value":10000,
                     "Date":1568705520000
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Key":"qps",
             "Unit":"qps"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"D6A88429-BA1E-4294-BE37-E82167355122",
     "Success":true
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.22 DescribeDrdsShardingDbs
 
-Queries details about a horizontally partitioned PolarDB-X 1.0 database.
+Queries details about a horizontally partitioned PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1627,6 +2002,8 @@ Queries details about a horizontally partitioned PolarDB-X 1.0 database.
 |---|---|---|---|---|
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
 | DbNamePattern | String | No | test | The matching pattern of the database name. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1654,8 +2031,16 @@ Queries details about a horizontally partitioned PolarDB-X 1.0 database.
 | UserName | String | pg284mi8 | The username used to connect to the ApsaraDB RDS for MySQL instance. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Request parameters
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsShardingDbs &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsShardingDbs &DbName=drds_test &DrdsInstanceId=drdsxxxxxxxxx <DescribeDrdsShardingDbsResponse>
+<DescribeDrdsShardingDbsResponse>
       <RequestId>509BDE17-505A-4B3B-854D-30D3F092502F</RequestId>
       <ShardingDbs>
             <ShardingDb>
@@ -1805,16 +2190,21 @@ Only=false;socketTimeout=900000;rewriteBatchedStatements=true;characterEncoding=
 Only=false;socketTimeout=900000;rewriteBatchedStatements=true;characterEncoding=utf8</Conne ctionProperties>
             </ShardingDb>
       </ShardingDbs>
+      <Success>true</Success>
 </DescribeDrdsShardingDbsResponse>
 ```
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.23 DescribeDrdsSlowSqls
 
-Queries slow SQL statements of a PolarDB-X 1.0 database.
+Queries slow SQL statements of a PolarDB-X 1.0 database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1830,6 +2220,8 @@ Queries slow SQL statements of a PolarDB-X 1.0 database.
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
 | PageNumber | Integer | No | 1 | The number of the page to return. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1852,8 +2244,16 @@ Queries slow SQL statements of a PolarDB-X 1.0 database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | Integer | 1 | The total number of slow SQL statements. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsSlowSqls &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsSlowSqls <DescribeDrdsSlowSqlsResponse>
+<DescribeDrdsSlowSqlsResponse>
       <Items>
             <Item>
                   <Host> 10.xx.xx.26 </Host>
@@ -1871,9 +2271,12 @@ http(s)://[Endpoint]/? Action=DescribeDrdsSlowSqls <DescribeDrdsSlowSqlsResponse
       <PageNumber>1</PageNumber>
       <PageSize>30</PageSize>
       <RequestId>B2493C08-AB69-44AB-8C1D-6AB17C2CF48F</RequestId>
+      <Success>true</Success>
       <Total>0</Total>
 </DescribeDrdsSlowSqlsResponse>
 ```
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1882,15 +2285,19 @@ http(s)://[Endpoint]/? Action=DescribeDrdsSlowSqls <DescribeDrdsSlowSqlsResponse
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.24 DescribeDrdsSqlAuditStatus
 
-Queries the details about SQL audit for a PolarDB-X 1.0 instance.
+Queries the details about SQL audit for a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDrdsSqlAu ditStatus | The operation that you want to perform. Set the value to DescribeDrdsSqlAu ditStatus. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1908,20 +2315,31 @@ Queries the details about SQL audit for a PolarDB-X 1.0 instance.
 | RequestId | String | DC3ABA3E-0F8A-4596- 9104-F5155C34315B | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsSqlAuditStatus &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsSqlAuditStatus <DescribeGlobalBroadcastTypeResponse>
+<DescribeGlobalBroadcastTypeResponse>
       <Data>
             <DbName>table1</DbName>
             <Detailed>test</Detailed>
             <Enabled>true</Enabled>
       </Data>
       <RequestId>DC3ABA3E-0F8A-4596-9104-F5155C34315B</RequestId>
+      <Success>true</Success>
 </DescribeGlobalBroadcastTypeResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.25 DescribeExpandLogicTableInfoList
 
-Queries the shard keys of a PolarDB-X database.
+Queries the shard keys of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1936,6 +2354,8 @@ Queries the shard keys of a PolarDB-X database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx x | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | - | - | The returned data set. |
@@ -1946,9 +2366,13 @@ Queries the shard keys of a PolarDB-X database.
 | RequestId | String | 0B6B7BDC-575D-4A77- A4F8-24B7EF027B75 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeExpandLogicTableInfoList
+http(s)://[Endpoint]/? Action=DescribeExpandLogicTableInfoList &<Common request parameters>
 ```
+
+Sample success responses XML format
 
 ```xml
 <DescribeExpandLogicTableInfoListResponse>
@@ -1960,12 +2384,15 @@ http(s)://[Endpoint]/? Action=DescribeExpandLogicTableInfoList
             </data>
       </Data>
       <RequestId>0B6B7BDC-575D-4A77-A4F8-24B7EF027B75</RequestId>
+      <Success>true</Success>
 </DescribeExpandLogicTableInfoListResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.26 DescribeGlobalBroadcastType
 
-Queries whether the table in a PolarDB-X database is a broadcast table.
+Queries whether the table in a PolarDB-X database is a broadcast table. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1973,6 +2400,8 @@ Queries whether the table in a PolarDB-X database is a broadcast table.
 | DbName | String | Yes | drds db _ | The name of the PolarDB-X database. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1987,18 +2416,29 @@ Queries whether the table in a PolarDB-X database is a broadcast table.
 | RequestId | String | DC3ABA3E-0F8A-4596- 9104-F5155C34315B | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeGlobalBroadcastType &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeGlobalBroadcastType <DescribeGlobalBroadcastTypeResponse>
+<DescribeGlobalBroadcastTypeResponse>
       <Data>
             <IsSyncType>false</IsSyncType>
       </Data>
       <RequestId>DC3ABA3E-0F8A-4596-9104-F5155C34315B</RequestId>
+      <Success>true</Success>
 </DescribeGlobalBroadcastTypeResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.27 DescribeHotDbList
 
-Queries the available databases for hot-spot scale-out of a PolarDB-X database.
+Queries the available databases for hot-spot scale-out of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2010,6 +2450,8 @@ Queries the available databases for hot-spot scale-out of a PolarDB-X database.
 |---|---|---|---|---|
 | Parameter | Type | Required | Example | Description |
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2023,9 +2465,13 @@ Queries the available databases for hot-spot scale-out of a PolarDB-X database.
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeHotDbList
+http(s)://[Endpoint]/? Action=DescribeHotDbList &<Common request parameters>
 ```
+
+Sample success responses XML format
 
 ```xml
 <DescribeHotDbListResponse>
@@ -2040,9 +2486,11 @@ http(s)://[Endpoint]/? Action=DescribeHotDbList
 </DescribeHotDbListResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.28 DescribeInstDbLogInfo
 
-Queries the time range of historical SQL data that can be imported to a PolarDB-X database.
+Queries the time range of historical SQL data that can be imported to a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2050,6 +2498,8 @@ Queries the time range of historical SQL data that can be imported to a PolarDB-
 | DbName | String | Yes | drds test _ | The name of the PolarDB-X database. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2065,19 +2515,30 @@ Queries the time range of historical SQL data that can be imported to a PolarDB-
 | RequestId | String | DC3ABA3E-0F8A-4596- 9104-F5155C34315B | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeInstDbLogInfo &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeInstDbLogInfo <DescribeInstDbLogInfoResponse>
+<DescribeInstDbLogInfoResponse>
       <LogTimeRange>
             <SupportLatestTime>1568267711</SupportLatestTime>
             <SupportOldestTime>1568267711</SupportOldestTime>
       </LogTimeRange>
       <RequestId>DC3ABA3E-0F8A-4596-9104-F5155C34315B</RequestId>
+      <Success>true</Success>
 </DescribeInstDbLogInfoResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.29 DescribeRDSPerformance
 
-Queries the performance data of ApsaraDB RDS for MySQL instances for a PolarDB-X instance.
+Queries the performance data of ApsaraDB RDS for MySQL instances for a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2095,6 +2556,8 @@ Queries the performance data of ApsaraDB RDS for MySQL instances for a PolarDB-X
 | DbInstType | String | No | mysql | The type of the ApsaraDB RDS for MySQL database. |
 | EndTime | Long | No | 1568267711 | The end of the time range to query. |
 | StartTime | Long | No | 1568267711 | The beginning of the time range to query. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2115,8 +2578,16 @@ Queries the performance data of ApsaraDB RDS for MySQL instances for a PolarDB-X
 | RequestId | String | F06B92ED-EF1B-4F8E- 8ACA-ECEFD5E4271C | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeRDSPerformance &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeRDSPerformance <DescribeRDSPerformanceResponse>
+<DescribeRDSPerformanceResponse>
       <Data>
             <Key>cpuusage</Key>
             <NodeName>1</NodeName>
@@ -2127,12 +2598,15 @@ http(s)://[Endpoint]/? Action=DescribeRDSPerformance <DescribeRDSPerformanceResp
             </Values>
       </Data>
       <RequestId>DC3ABA3E-0F8A-4596-9104-F5155C34315B</RequestId>
+      <Success>true</Success>
 </DescribeRDSPerformanceResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.30 DescribeRdsPerformanceSummary
 
-Queries the performance metrics of ApsaraDB RDS for MySQL instances for a PolarDB-X instance, including CPU, input/output operations per second (IOPS), and active sessions.
+Queries the performance metrics of ApsaraDB RDS for MySQL instances for a PolarDB-X instance, including CPU, input/output operations per second (IOPS), and active sessions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2143,6 +2617,8 @@ Queries the performance metrics of ApsaraDB RDS for MySQL instances for a PolarD
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | RdsInstanceId.N | RepeatList | Yes | ['rm- bp1xxxxxxxxxxxx',' rm- bp1xxxxxxxxxxx'] | The list of ApsaraDB RDS for MySQL instances. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2155,8 +2631,14 @@ Queries the performance metrics of ApsaraDB RDS for MySQL instances for a PolarD
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=DescribeRdsPerformanceSummary &DrdsInstanceId=drdsxxxxxxxxxxx &RdsInstanceId.1=['rm-bp1xxxxxxxxxxxx','rm-bp1xxxxxxxxxxx'] <DescribeRdsPerformanceSummaryResponse>
+```
+http(s)://[Endpoint]/? Action=DescribeRdsPerformanceSummary &DrdsInstanceId=drdsxxxxxxxxxxx &RdsInstanceId.1=['rm-bp1xxxxxxxxxxxx','rm-bp1xxxxxxxxxxx'] &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<DescribeRdsPerformanceSummaryResponse>
         <code>200</code>
         <data>
                 <RequestId>395533CB-12E8-4FDC-8934-127FD2024C0A</RequestId>
@@ -2167,15 +2649,26 @@ http(s)://[Endpoint]/? Action=DescribeRdsPerformanceSummary &DrdsInstanceId=drds
                         <RdsId>rm-bp1xxxxxxxxxxxx</RdsId>
                         <ActiveSessions>0</ActiveSessions>
                 </RdsPerformanceInfos>
+                <Success>true</Success>
         </data>
         <requestId>395533CB-12E8-4FDC-8934-127FD2024C0A</requestId>
         <successResponse>true</successResponse>
 </DescribeRdsPerformanceSummaryResponse>
+```
+
+JSON format `{`
+
+```json
     "successResponse":true,
     "requestId":"395533CB-12E8-4FDC-8934-127FD2024C0A",
     "data":{
         "RequestId":"395533CB-12E8-4FDC-8934-127FD2024C0A",
         "RdsPerformanceInfos":[
+```
+
+`{`
+
+```json
                 "Cpu":0.65,
                 "RdsId":"rm-bp1xxxxxxxxxxxx",
                 "TotalSessions":241,
@@ -2183,7 +2676,7 @@ http(s)://[Endpoint]/? Action=DescribeRdsPerformanceSummary &DrdsInstanceId=drds
                 "ActiveSessions":0
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Success":true
@@ -2195,9 +2688,11 @@ http(s)://[Endpoint]/? Action=DescribeRdsPerformanceSummary &DrdsInstanceId=drds
     "code":"200"
 ```
 
+`}`
+
 ##### 1.1.5.31 DescribeRdsSuperAccountInstances
 
-Queries the privileged accounts of ApsaraDB RDS for MySQL instances for a PolarDB-X instance.
+Queries the privileged accounts of ApsaraDB RDS for MySQL instances for a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2207,14 +2702,24 @@ Queries the privileged accounts of ApsaraDB RDS for MySQL instances for a PolarD
 | AccessKeyId | String | No | **** | The AccessKey ID provided to you by Alibaba Cloud. |
 | DbInstType | String | No | RDS | The type of the database instance. Default value: RDS. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DbInstances | - | rm-bp1xxxxxxxxxxx | The ID of the ApsaraDB RDS for MySQL instance. |
 | DbInstance | - | - | The list of privileged accounts. |
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 
-```json
-http(s)://[Endpoint]/? Action=DescribeRdsSuperAccountInstances &DrdsInstanceId=drdsxxxxxxxxxx &RdsInstance.1=['rm-bp1xxxxxxxxxxx','rm-bp1xxxxxxxxxx'] <DescribeRdsSuperAccountInstancesResponse>
+Examples
+
+```
+http(s)://[Endpoint]/? Action=DescribeRdsSuperAccountInstances &DrdsInstanceId=drdsxxxxxxxxxx &RdsInstance.1=['rm-bp1xxxxxxxxxxx','rm-bp1xxxxxxxxxx'] &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<DescribeRdsSuperAccountInstancesResponse>
       <code>200</code>
       <data>
             <RequestId>62CA96F4-B94F-4059-B23E-A58CCF318D3E</RequestId>
@@ -2223,6 +2728,11 @@ http(s)://[Endpoint]/? Action=DescribeRdsSuperAccountInstances &DrdsInstanceId=d
       <requestId>62CA96F4-B94F-4059-B23E-A58CCF318D3E</requestId>
       <successResponse>true</successResponse>
 </DescribeRdsSuperAccountInstancesResponse>
+```
+
+JSON format `{`
+
+```json
     "successResponse":true,
     "requestId":"62CA96F4-B94F-4059-B23E-A58CCF318D3E",
     "data":{
@@ -2231,15 +2741,19 @@ http(s)://[Endpoint]/? Action=DescribeRdsSuperAccountInstances &DrdsInstanceId=d
             "DbInstance":[]
 ```
 
-`},`
+`}` `},`
 
 ```json
     "code":"200"
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
+
+For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.32 DescribeRecycleBinStatus
 
@@ -2252,26 +2766,36 @@ Queries the status of the table recycle bin for a PolarDB-X database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Status | String | disable | The status of the table recycle bin. Valid values: disable enable |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeRecycleBinStatus &DbName=tpch_db &DrdsInstanceId=drdsxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeRecycleBinStatus &DbName=tpch_db &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+```xml
 <DescribeRecycleBinStatusResponse>
       <code>200</code>
       <data>
             <Status>enable</Status>
             <RequestId>E7D9B458-2C2D-44E3-BD55-92AD2172303F</RequestId>
+            <Success>true</Success>
       </data>
       <requestId>E7D9B458-2C2D-44E3-BD55-92AD2172303F</requestId>
       <successResponse>true</successResponse>
 </DescribeRecycleBinStatusResponse>
+```
+
+JSON format `{`
+
+```json
     "successResponse":true,
     "requestId":"E7D9B458-2C2D-44E3-BD55-92AD2172303F",
     "data":{
@@ -2286,9 +2810,11 @@ http(s)://[Endpoint]/? Action=DescribeRecycleBinStatus &DbName=tpch_db &DrdsInst
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.33 DescribeRecycleBinTables
 
-Queries the tables that can be recycled for a PolarDB-X database.
+Queries the tables that can be recycled for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2300,6 +2826,8 @@ Queries the tables that can be recycled for a PolarDB-X database.
 |---|---|---|---|---|
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | - | - | The returned data set. |
@@ -2309,11 +2837,15 @@ Queries the tables that can be recycled for a PolarDB-X database.
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeRecycleBinTables
+http(s)://[Endpoint]/? Action=DescribeRecycleBinTables &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <DescribeRecycleBinTablesResponse>
       <code>200</code>
       <data>
@@ -2323,20 +2855,31 @@ http(s)://[Endpoint]/? Action=DescribeRecycleBinTables
                   <TableName>BIN_T4AG3CY5WWXPKHITCHJY</TableName>
                   <CreateTime>2019-09-16 14:42:06</CreateTime>
             </Data>
+            <Success>true</Success>
       </data>
       <requestId>EC985705-2D6B-4B84-9732-BF8F5DCA247A</requestId>
       <successResponse>true</successResponse>
 </DescribeRecycleBinTablesResponse>
+```
+
+JSON format `{`
+
+```json
     "successResponse":true,
     "requestId":"EC985705-2D6B-4B84-9732-BF8F5DCA247A",
     "data":{
         "Data":[
+```
+
+`{`
+
+```json
                 "OriginalTableName":"drds_params",
                 "CreateTime":"2019-09-16 14:42:06",
                 "TableName":"BIN_T4AG3CY5WWXPKHITCHJY"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "RequestId":"EC985705-2D6B-4B84-9732-BF8F5DCA247A",
@@ -2349,9 +2892,11 @@ http(s)://[Endpoint]/? Action=DescribeRecycleBinTables
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.34 DescribeShardTaskInfo
 
-Queries details about a partitioning task of a PolarDB-X database.
+Queries details about a partitioning task of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2364,6 +2909,8 @@ Queries details about a partitioning task of a PolarDB-X database.
 | SourceTableName | String | Yes | a1 | The name of the source table. |
 | TargetTableName | String | Yes | a2 | The name of the destination table. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2414,9 +2961,13 @@ Queries details about a partitioning task of a PolarDB-X database.
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeShardTaskInfo
+http(s)://[Endpoint]/? Action=DescribeShardTaskInfo &<Common request parameters>
 ```
+
+Sample success responses XML format
 
 ```xml
 <DescribeShardTaskInfoResponse>
@@ -2461,11 +3012,14 @@ http(s)://[Endpoint]/? Action=DescribeShardTaskInfo
                         <Expired>0</Expired>
                   </Full>
             </Data>
+            <Success>true</Success>
       </data>
       <requestId>42A9A85B-60F3-4858-88CD-2EE75251D19F</requestId>
       <successResponse>true</successResponse>
 </DescribeShardTaskInfoResponse>
 ```
+
+JSON format
 
 ```json
     "successResponse":true,
@@ -2543,9 +3097,11 @@ http(s)://[Endpoint]/? Action=DescribeShardTaskInfo
     "code":"200"
 ```
 
+`}` Error codes
+
 ##### 1.1.5.35 DescribeShardTaskList
 
-Queries the partitioning tasks of a PolarDB-X database.
+Queries the partitioning tasks of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2557,6 +3113,8 @@ Queries the partitioning tasks of a PolarDB-X database.
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2580,11 +3138,15 @@ Queries the partitioning tasks of a PolarDB-X database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | Integer | 1 | The total number of tables. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeShardTaskList
+http(s)://[Endpoint]/? Action=DescribeShardTaskList &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <DescribeShardTaskListResponse>
       <code>200</code>
       <data>
@@ -2600,10 +3162,16 @@ http(s)://[Endpoint]/? Action=DescribeShardTaskList
                   <TargetTableName>a2</TargetTableName>
                   <Delay>0</Delay>
             </List>
+            <Success>true</Success>
       </data>
       <requestId>890BB376-5746-4145-A088-A455F8D359D0</requestId>
       <successResponse>true</successResponse>
 </DescribeShardTaskListResponse>
+```
+
+JSON format `{`
+
+```json
     "successResponse":true,
     "requestId":"890BB376-5746-4145-A088-A455F8D359D0",
     "data":{
@@ -2612,6 +3180,11 @@ http(s)://[Endpoint]/? Action=DescribeShardTaskList
         "RequestId":"890BB376-5746-4145-A088-A455F8D359D0",
         "Success":true,
         "List":[
+```
+
+`{`
+
+```json
                 "Delay":0,
                 "Expired":0,
                 "SourceTableName":"a1",
@@ -2620,7 +3193,7 @@ http(s)://[Endpoint]/? Action=DescribeShardTaskList
                 "Progress":0
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Total":1
@@ -2632,6 +3205,8 @@ http(s)://[Endpoint]/? Action=DescribeShardTaskList
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.36 DescribeSqlFlashbakTask
 
 Queries the flashback tasks of a PolarDB-X database.
@@ -2641,6 +3216,8 @@ Queries the flashback tasks of a PolarDB-X database.
 | Action | String | Yes | DescribeSqlFlashb akTask | The operation that you want to perform. Set the value to DescribeSqlFlashb akTask. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ***** | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2673,8 +3250,10 @@ Queries the flashback tasks of a PolarDB-X database.
 | TraceId | String | trace | The trace ID of the SQL statement. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeSqlFlashbakTask &DrdsInstanceId=drdsxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeSqlFlashbakTask &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
 ```
 
 ```xml
@@ -2704,11 +3283,14 @@ http(s)://[Endpoint]/? Action=DescribeSqlFlashbakTask &DrdsInstanceId=drdsxxxxxx
                   </SqlFlashbackTask>
             </SqlFlashbackTasks>
             <RequestId>11449CF1-6D32-4759-8F93-EAF36F176C41</RequestId>
+            <Success>true</Success>
       </data>
       <requestId>11449CF1-6D32-4759-8F93-EAF36F176C41</requestId>
       <successResponse>true</successResponse>
 </DescribeSqlFlashbakTaskResponse>
 ```
+
+JSON format
 
 ```json
     "successResponse":true,
@@ -2717,6 +3299,11 @@ http(s)://[Endpoint]/? Action=DescribeSqlFlashbakTask &DrdsInstanceId=drdsxxxxxx
         "RequestId":"11449CF1-6D32-4759-8F93-EAF36F176C41",
         "SqlFlashbackTasks":{
             "SqlFlashbackTask":[
+```
+
+`{`
+
+```json
                     "SearchStartTime":1568609597000,
                     "DbName":"drds_flashback",
                     "RecallStatus":2,
@@ -2737,7 +3324,7 @@ http(s)://[Endpoint]/? Action=DescribeSqlFlashbakTask &DrdsInstanceId=drdsxxxxxx
                     "RecallType":1
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "Success":true
@@ -2749,9 +3336,11 @@ http(s)://[Endpoint]/? Action=DescribeSqlFlashbakTask &DrdsInstanceId=drdsxxxxxx
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.37 DescribeTable
 
-Queries the table schema of a PolarDB-X database.
+Queries the table schema of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2763,6 +3352,8 @@ Queries the table schema of a PolarDB-X database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | TableName | String | Yes | employee split _ | The name of the table. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2777,8 +3368,14 @@ Queries the table schema of a PolarDB-X database.
 | RequestId | String | 5DC75BC2-3F3F-4FE5- 8DC9-2A808B9AA401 | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+```
+http(s)://[Endpoint]/? Action=DescribeTable
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
+<DescribeTableResponse>
       <code>200</code>
       <data>
             <RequestId>5DC75BC2-3F3F-4FE5-8DC9-2A808B9AA401</RequestId>
@@ -2808,11 +3405,14 @@ http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
                         <Index></Index>
                   </List>
             </Data>
+            <Success>true</Success>
       </data>
       <requestId>5DC75BC2-3F3F-4FE5-8DC9-2A808B9AA401</requestId>
       <successResponse>true</successResponse>
 </DescribeTableResponse>
 ```
+
+JSON format
 
 ```json
     "successResponse":true,
@@ -2820,6 +3420,11 @@ http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
     "data":{
         "Data":{
             "List":[
+```
+
+`{`
+
+```json
                     "IsPk":"YES",
                     "Extra":"auto_increment",
                     "Index":"PRI",
@@ -2828,7 +3433,7 @@ http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
                     "ColumnName":"Id"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "IsPk":"NO",
@@ -2839,7 +3444,7 @@ http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
                     "ColumnName":"Name"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "IsPk":"NO",
@@ -2850,7 +3455,7 @@ http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
                     "ColumnName":"Address"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "RequestId":"5DC75BC2-3F3F-4FE5-8DC9-2A808B9AA401",
@@ -2863,9 +3468,11 @@ http(s)://[Endpoint]/? Action=DescribeTable <DescribeTableResponse>
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.38 DescribeTableListByType
 
-Queries type-specific tables of a PolarDB-X database.
+Queries type-specific tables of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2881,6 +3488,8 @@ Queries type-specific tables of a PolarDB-X database.
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | List | - | - | The list of returned tables. |
@@ -2895,8 +3504,16 @@ Queries type-specific tables of a PolarDB-X database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | Integer | 1 | The total number of tables. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeTableListByType &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeTableListByType <DescribeTableListByTypeResponse>
+<DescribeTableListByTypeResponse>
       <code>200</code>
       <data>
             <PageSize>10</PageSize>
@@ -2907,11 +3524,14 @@ http(s)://[Endpoint]/? Action=DescribeTableListByType <DescribeTableListByTypeRe
                   <TableName>employee_split</TableName>
                   <Property>single</Property>
             </List>
+            <Success>true</Success>
       </data>
       <requestId>B360F47B-59E3-4D1C-BA03-6BFB1C993F88</requestId>
       <successResponse>true</successResponse>
 </DescribeTableListByTypeResponse>
 ```
+
+JSON format
 
 ```json
     "successResponse":true,
@@ -2922,11 +3542,16 @@ http(s)://[Endpoint]/? Action=DescribeTableListByType <DescribeTableListByTypeRe
         "RequestId":"B360F47B-59E3-4D1C-BA03-6BFB1C993F88",
         "Success":true,
         "List":[
+```
+
+`{`
+
+```json
                 "TableName":"employee_split",
                 "Property":"single"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Total":1
@@ -2938,9 +3563,11 @@ http(s)://[Endpoint]/? Action=DescribeTableListByType <DescribeTableListByTypeRe
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.39 DescribeTables
 
-Queries the details about tables in a PolarDB-X database.
+Queries the details about tables in a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2954,6 +3581,8 @@ Queries the details about tables in a PolarDB-X database.
 |---|---|---|---|---|
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2970,8 +3599,14 @@ Queries the details about tables in a PolarDB-X database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | Integer | 1 | The total number of tables. |
 
+```
+http(s)://[Endpoint]/? Action=DescribeTables
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeTables <DescribeTablesResponse>
+<DescribeTablesResponse>
       <code>200</code>
       <data>
             <PageSize>40</PageSize>
@@ -2996,11 +3631,14 @@ http(s)://[Endpoint]/? Action=DescribeTables <DescribeTablesResponse>
                   <IsLocked>false</IsLocked>
                   <AllowFullTableScan>true</AllowFullTableScan>
             </List>
+            <Success>true</Success>
       </data>
       <requestId>83AC3D7E-461C-4D87-8ACD-6CC295178C6F</requestId>
       <successResponse>true</successResponse>
 </DescribeTablesResponse>
 ```
+
+JSON format
 
 ```json
     "successResponse":true,
@@ -3011,6 +3649,11 @@ http(s)://[Endpoint]/? Action=DescribeTables <DescribeTablesResponse>
         "RequestId":"83AC3D7E-461C-4D87-8ACD-6CC295178C6F",
         "Success":true,
         "List":[
+```
+
+`{`
+
+```json
                 "IsLocked":false,
                 "IsShard":false,
                 "ShardKey":"null",
@@ -3020,7 +3663,7 @@ http(s)://[Endpoint]/? Action=DescribeTables <DescribeTablesResponse>
                 "AllowFullTableScan":false
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "IsLocked":false,
@@ -3032,7 +3675,7 @@ http(s)://[Endpoint]/? Action=DescribeTables <DescribeTablesResponse>
                 "AllowFullTableScan":true
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Total":2
@@ -3044,9 +3687,11 @@ http(s)://[Endpoint]/? Action=DescribeTables <DescribeTablesResponse>
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.40 DisableSqlAudit
 
-Disables SQL audit for a PolarDB-X database.
+Disables SQL audit for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3058,17 +3703,28 @@ Disables SQL audit for a PolarDB-X database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ***** | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Result | Boolean | true | Indicates whether SQL audit was disabled for the PolarDB-X database. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DisableSqlAudit &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DisableSqlAudit <DisableSqlAuditResponse>
+<DisableSqlAuditResponse>
       <code>200</code>
       <data>
             <RequestId>5F72CB0C-7A49-458E-AAC7-F53BCDAACEEF</RequestId>
+            <Success>true</Success>
             <Result>true</Result>
       </data>
       <requestId>5F72CB0C-7A49-458E-AAC7-F53BCDAACEEF</requestId>
@@ -3091,9 +3747,11 @@ http(s)://[Endpoint]/? Action=DisableSqlAudit <DisableSqlAuditResponse>
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.41 ModifyAccountPrivilege
 
-Modifies account permissions for a PolarDB-X instance.
+Modifies account permissions for a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3109,17 +3767,33 @@ Modifies account permissions for a PolarDB-X instance.
 | RequestId | String | 40E313AD-3B7C-4E34- B3BF-58AD0174D638 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=ModifyAccountPrivilege &AccountName=mytest@% &DrdsInstanceId=drdsxxxxxxxxxxxx <ModifyAccountPrivilegeResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ModifyAccountPrivilege &AccountName=mytest@% &DrdsInstanceId=drdsxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<ModifyAccountPrivilegeResponse>
       <RequestId>40E313AD-3B7C-4E34-B3BF-58AD0174D638</RequestId>
+      <Success>true</Success>
 </ModifyAccountPrivilegeResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"40E313AD-3B7C-4E34-B3BF-58AD0174D638",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.42 ModifyDrdsIpWhiteList
 
-Modifies the IP address whitelist of a PolarDB-X database.
+Modifies the IP address whitelist of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3140,8 +3814,15 @@ Modifies the IP address whitelist of a PolarDB-X database.
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ModifyDrdsIpWhiteList &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx &IpWhiteList=127.xx.xx.1,10.xx.xx.1 &<Common request parameters>
+```
+
+Sample success responses JSON format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=ModifyDrdsIpWhiteList &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx &IpWhiteList=127.xx.xx.1,10.xx.xx.1
     "successResponse":true,
     "requestId":"CAC59657-4B81-478E-BB68-6C8FF8FFDF22",
     "data":{
@@ -3155,9 +3836,11 @@ http(s)://[Endpoint]/? Action=ModifyDrdsIpWhiteList &DbName=test &DrdsInstanceId
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.43 ModifyRdsReadWeight
 
-Modifies the read weights of ApsaraDB RDS for MySQL instances.
+Modifies the read weights of ApsaraDB RDS for MySQL instances. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3170,26 +3853,39 @@ Modifies the read weights of ApsaraDB RDS for MySQL instances.
 | Weights | String | Yes | 14,86 | The weight of each ApsaraDB RDS for MySQL instance. Use commas (,) to separate multiple weights. |
 | AccessKeyId | String | No | LTAI8Gxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=ModifyRdsReadWeight &DbName=db_test &DrdsInstanceId=drdsxxxxxxxxxx &InstanceNames=rm-bp1qxxxxxxxxxx,rm-bp1xxxxxxxxxxx &Weights=14,86
+http(s)://[Endpoint]/? Action=ModifyRdsReadWeight &DbName=db_test &DrdsInstanceId=drdsxxxxxxxxxx &InstanceNames=rm-bp1qxxxxxxxxxx,rm-bp1xxxxxxxxxxx &Weights=14,86 &<Common request parameters>
 ```
 
-```json
+Sample success responses
+
+```xml
 <ModifyRdsReadWeightResponse>
       <RequestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</RequestId>
 </ModifyRdsReadWeightResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"B12FC174-D5CE-4A6E-83C1-0F8F864FF70A",
     "Success":"true"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.44 DescribeDbInstances
 
-Queries the storage instances, namely, ApsaraDB RDS for MySQL instances of a PolarDB-X instance.
+Queries the storage instances, namely, ApsaraDB RDS for MySQL instances of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3206,6 +3902,8 @@ Queries the storage instances, namely, ApsaraDB RDS for MySQL instances of a Pol
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Search | String | No | pc- bp1xxxxxxxxxxxx | Query by storage instance ID. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3227,11 +3925,15 @@ Queries the storage instances, namely, ApsaraDB RDS for MySQL instances of a Pol
 | ZoneId | String | cn-hangzhou-a | The ID of the zone where the storage instance is located. |
 | RequestId | String | 05670C01-093E-4DF4- 99FA-0C63FF60250D | The ID of the request. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <DescribeDbInstancesResponse>
       <RequestId>05670C01-093E-4DF4-99FA-0C63FF60250D</RequestId>
       <Items>
@@ -3248,8 +3950,18 @@ http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxx
             </DBInstance>
       </Items>
 </DescribeDbInstancesResponse>
+```
+
+JSON format `{`
+
+```json
     "Items":{
         "DBInstance":[
+```
+
+`{`
+
+```json
                 "RegionId":"cn-hangzhou",
                 "DBInstanceType":"Primary",
                 "DBInstanceId":"pc-bp1xxxxxxxxxxxxxx",
@@ -3262,11 +3974,13 @@ http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxx
                     "ReadOnlyDBInstanceId":[]
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
     "RequestId":"05670C01-093E-4DF4-99FA-0C63FF60250D"
 ```
+
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3274,7 +3988,7 @@ http(s)://[Endpoint]/? Action=DescribeDbInstances &DrdsInstanceId=drdsxxxxxxxxxx
 
 ##### 1.1.5.45 ReleaseHiStoreInstance
 
-Releases a columnar storage instance, namely, a HiStore instance of a PolarDB-X instance.
+Releases a columnar storage instance, namely, a HiStore instance of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3282,14 +3996,25 @@ Releases a columnar storage instance, namely, a HiStore instance of a PolarDB-X 
 | HistoreInstanceId | String | Yes | hi-hbgxxxxxxxxx | The ID of the HiStore instance. |
 | RegionId | String | No | cn-beijing | The region ID of the PolarDB-X 1.0 instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ReleaseHiStoreInstance &DrdsInstanceId=drdsxxxxxxxxxx &HistoreInstanceId=hi-hbgxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=ReleaseHiStoreInstance &DrdsInstanceId=drdsxxxxxxxxxx &HistoreInstanceId=hi-hbgxxxxxxxxx <ReleaseHiStoreInstanceResponse>
+<ReleaseHiStoreInstanceResponse>
       <RequestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</RequestId>
+      <Success>true</Success>
 </ReleaseHiStoreInstanceResponse>
 ```
 
@@ -3298,9 +4023,11 @@ http(s)://[Endpoint]/? Action=ReleaseHiStoreInstance &DrdsInstanceId=drdsxxxxxxx
     "Success":"true"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.46 RemoveBackupsSet
 
-Removes a backup set from a PolarDB-X instance.
+Removes a backup set from a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3309,23 +4036,39 @@ Removes a backup set from a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | LTAI8xxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Result | String | success | Indicates whether the backup set was removed. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=RemoveBackupsSet &BackupId=c778036f-d464-11e9-8d45-7370dca6206b &DrdsInstanceId=drdsxxxxxxxxxx <RemoveBackupsSetResponse>
+```
+http(s)://[Endpoint]/? Action=RemoveBackupsSet &BackupId=c778036f-d464-11e9-8d45-7370dca6206b &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<RemoveBackupsSetResponse>
       <RequestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</RequestId>
+      <Success>true</Success>
 </RemoveBackupsSetResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"B12FC174-D5CE-4A6E-83C1-0F8F864FF70A",
     "Success":"true"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.47 RemoveDrdsDbFailedRecord
 
-Removes database creation failure records from a PolarDB-X instance.
+Removes database creation failure records from a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3340,23 +4083,36 @@ Removes database creation failure records from a PolarDB-X instance.
 |---|---|---|---|---|
 | AccessKeyId | String | No | LTAI8Gxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The ID of the request. |
 | Result | Boolean | true | Indicates whether the database creation failure records were removed from the PolarDB-X instance. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=RemoveDrdsDbFailedRecord &DbName=db_test &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=RemoveDrdsDbFailedRecord &DbName=db_test &DrdsInstanceId=drdsxxxxxxxxxx <RemoveDrdsDbFailedRecordResponseponse>
+<RemoveDrdsDbFailedRecordResponseponse>
       <code>200</code>
       <data>
             <RequestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</RequestId>
+            <Success>true</Success>
             <Result>true</Result>
       </data>
       <requestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</requestId>
       <successResponse>true</successResponse>
 </RemoveDrdsDbFailedRecordResponseponse>
 ```
+
+JSON format
 
 ```json
     "successResponse":true,
@@ -3373,9 +4129,11 @@ http(s)://[Endpoint]/? Action=RemoveDrdsDbFailedRecord &DbName=db_test &DrdsInst
     "code":"200"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.48 RemoveRecycleBinTable
 
-Removes tables from the recycle bin for a PolarDB-X database.
+Removes tables from the recycle bin for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3384,6 +4142,8 @@ Removes tables from the recycle bin for a PolarDB-X database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | TableName | String | Yes | buy order _ | The name of the PolarDB-X 1.0 logical table. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3394,15 +4154,31 @@ Removes tables from the recycle bin for a PolarDB-X database.
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=RemoveRecycleBinTable &DbName=my_drds_db &DrdsInstanceId=drdsxxxxxxxxxx &TableName=buy_order <RemoveRecycleBinTableResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=RemoveRecycleBinTable &DbName=my_drds_db &DrdsInstanceId=drdsxxxxxxxxxx &TableName=buy_order &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<RemoveRecycleBinTableResponse>
       <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+      <Success>true</Success>
       <Data>true</Data>
 </RemoveRecycleBinTableResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":true,
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.49 ResetDrdsToRdsConnections
 
@@ -3415,29 +4191,42 @@ Resets the number of connections from the PolarDB-X 1.0 instance to ApsaraDB RDS
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | fab3xxxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Result | String | true | Indicates whether the number of connections from the PolarDB-X instance to ApsaraDB RDS for MySQL instances was reset. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=ResetDrdsToRdsConnections &DbName=test_my_db &DrdsInstanceId=drdsxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=ResetDrdsToRdsConnections &DbName=test_my_db &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <ResetDrdsToRdsConnectionsResponse>
       <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
       <Result>true</Result>
 </ResetDrdsToRdsConnectionsResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":true,
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.50 SetupBroadcastTables
 
-Configures a broadcast table for a PolarDB-X database.
+Configures a broadcast table for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3452,19 +4241,35 @@ Configures a broadcast table for a PolarDB-X database.
 |---|---|---|---|---|
 | Parameter | Type | Required | Example | Description |
 
-```json
-http(s)://[Endpoint]/? Action=SetupBroadcastTables &Active=true &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxxxxx &TableName.1=tb1 <SetupBroadcastTablesResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SetupBroadcastTables &Active=true &DbName=test_db &DrdsInstanceId=drdsxxxxxxxxxxxxx &TableName.1=tb1 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SetupBroadcastTablesResponse>
         <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+        <Success>true</Success>
         <Data>true</Data>
 </SetupBroadcastTablesResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":true,
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.51 SetupRecycleBinStatus
 
-Enables the table recycle bin for a PolarDB-X database.
+Enables the table recycle bin for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3477,29 +4282,40 @@ Enables the table recycle bin for a PolarDB-X database.
 | StatusAction | String | Yes | enable | Specifies whether to enable the recycle bin. Valid values: enable disable |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | Boolean | true | The returned results. |
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=SetupRecycleBinStatus &DbName=db1 &DrdsInstanceId=drdsxxxxxxxxxxxx &StatusAction=enable
+http(s)://[Endpoint]/? Action=SetupRecycleBinStatus &DbName=db1 &DrdsInstanceId=drdsxxxxxxxxxxxx &StatusAction=enable &<Common request parameters>
 ```
 
-```json
+```xml
 <SetupRecycleBinStatusResponse>
         <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
         <Data>true</Data>
 </SetupRecycleBinStatusResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":"true",
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.52 SetupTable
 
-Enables full table scan for a PolarDB-X database.
+Enables full table scan for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3516,15 +4332,31 @@ Enables full table scan for a PolarDB-X database.
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=SetupTable &AllowFullTableScan=true &DbName=dbtest &DrdsInstanceId=drdsxxxxxxxxx &TableName.1=tbtest <SetupTableResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SetupTable &AllowFullTableScan=true &DbName=dbtest &DrdsInstanceId=drdsxxxxxxxxx &TableName.1=tbtest &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SetupTableResponse>
         <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+        <Success>true</Success>
         <Data>true</Data>
 </SetupTableResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":"true",
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.53 StartRestore
 
@@ -3547,15 +4379,31 @@ Starts a backup-based recovery task for a PolarDB-X instance.
 | Result | String | success | Indicates whether the recovery task was successful. If success was returned, the recovery task was successful. If an error message was returned, the recovery task failed. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=StartRestore &DrdsInstanceId=drds43dsaew1 <StartRestoreResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=StartRestore &DrdsInstanceId=drds43dsaew1 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<StartRestoreResponse>
      <Result>success</Result>
      <RequestId>FE104D26-AC19-49B5-AC67-947F6915E07E</RequestId>
+     <Success>true</Success>
 </StartRestoreResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":"success",
     "RequestId":"721C71DD-D3D0-4327-BFDD-67832698F55B",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.54 SubmitCleanTask
 
@@ -3574,18 +4422,36 @@ Submits a cleanup task for smooth scale-out of a PolarDB-X database.
 |---|---|---|---|---|
 | AccessKeyId | String | No | sejkxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=SubmitCleanTask &DbName=test1 &DrdsInstanceId=drdsxxxxxxxxxxx &ExpandType=smooth_expand &JobId=123 &ParentJobId=123 <SubmitCleanTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SubmitCleanTask &DbName=test1 &DrdsInstanceId=drdsxxxxxxxxxxx &ExpandType=smooth_expand &JobId=123 &ParentJobId=123 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SubmitCleanTaskResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
 </SubmitCleanTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.55 SubmitSmoothExpandPreCheck
 
@@ -3599,6 +4465,8 @@ Submits a precheck task for smooth scale-out of a PolarDB-X database.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | sdjwxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Msg | String | true | Indicates whether the precheck task was submitted. |
@@ -3606,25 +4474,35 @@ Submits a precheck task for smooth scale-out of a PolarDB-X database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | TaskId | Long | 2321 | The ID of the precheck task. |
 
+Examples Sample requests
+
 ```
 http(s)://[Endpoint]/? Action=SubmitSmoothExpandPreCheck &DbInstType=RDS &DbName=test &DrdsInstanceId=drdsxxxxxxxxx
 ```
 
-```json
+```xml
 <SubmitSmoothExpandPreCheckResponse>
      <Msg>success</Msg>
      <RequestId>FE104D26-AC19-49B5-AC67-947F6915E07E</RequestId>
+     <Success>true</Success>
      <TaskId>97358</TaskId>
 </SubmitSmoothExpandPreCheckResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"FE104D26-AC19-49B5-AC67-947F6915E07E",
     "Msg":"success",
     "TaskId":97358,
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.56 SubmitSmoothExpandPreCheckTask
 
-Submits a precheck task for smooth scale-out of a PolarDB-X database.
+Submits a precheck task for smooth scale-out of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3640,17 +4518,33 @@ Submits a precheck task for smooth scale-out of a PolarDB-X database.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | TaskId | Long | 2321 | The ID of the precheck task. |
 
-```json
-http(s)://[Endpoint]/? Action=SubmitSmoothExpandPreCheckTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx <SubmitSmoothExpandPreCheckTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SubmitSmoothExpandPreCheckTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SubmitSmoothExpandPreCheckTaskResponse>
      <Msg>success</Msg>
      <RequestId>FE104D26-AC19-49B5-AC67-947F6915E07E</RequestId>
+     <Success>true</Success>
      <TaskId>97358</TaskId>
 </SubmitSmoothExpandPreCheckTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"FE104D26-AC19-49B5-AC67-947F6915E07E",
     "Msg":"success",
     "TaskId":97358,
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.57 SubmitSmoothExpandTask
 
@@ -3677,17 +4571,33 @@ Submits a smooth scale-out task for a PolarDB-X database.
 | TransferTaskInfos. N.InstanceType | String | No | RDS | The type of the instance to be migrated. Set the value to ApsaraDB RDS for MySQL. |
 | TransferTaskInfos. N.SrcInstanceNam e | String | No | rm-m23xxxxxxxxxx | The ID of the instance to be migrated. |
 
-```json
-http(s)://[Endpoint]/? Action=SubmitSmoothExpandTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx <SubmitSmoothExpandTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SubmitSmoothExpandTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SubmitSmoothExpandTaskResponse>
      <RequestId>DSSDF-SEWE-23ERW</RequestId>
+     <success>true</success>
 </SubmitSmoothExpandTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.58 SubmitSwitchTask
 
-Submits a switchover task for smooth scale-out of a PolarDB-X database.
+Submits a switchover task for smooth scale-out of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3702,17 +4612,31 @@ Submits a switchover task for smooth scale-out of a PolarDB-X database.
 | ParentJobId | String | Yes | 123 | The parent job ID of the smooth scale-out task. The value of this parameter is the same as that of the JobId parameter. |
 | AccessKeyId | String | No | sejkwxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
-```json
-http(s)://[Endpoint]/? Action=SubmitSwitchTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxx &ExpandType=smooth_expand &JobId=123 &ParentJobId=123 <SubmitSwitchTaskResponse>
+```
+http(s)://[Endpoint]/? Action=SubmitSwitchTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxx &ExpandType=smooth_expand &JobId=123 &ParentJobId=123 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SubmitSwitchTaskResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
 </SubmitSwitchTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.59 ValidateShardTask
 
-Verifies whether a partitioning task of a PolarDB-X database is valid.
+Verifies whether a partitioning task of a PolarDB-X database is valid. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3727,6 +4651,8 @@ Verifies whether a partitioning task of a PolarDB-X database is valid.
 | TaskType | String | Yes | SINGLE TO SHARD _ _ | The type of the task. Valid values: SINGLE TO SHA _ _ RD: converts a single table to a table shard. SHARD TO SING _ _ LE: converts a table shard to a single table. SHARD TO SHA _ _ RD: converts a table shard to another table shard. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | List | - | - | The list of returned check results. |
@@ -3735,8 +4661,14 @@ Verifies whether a partitioning task of a PolarDB-X database is valid.
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+```
+http(s)://[Endpoint]/? Action=ValidateShardTask &DbName=test &DrdsInstanceId=drds23dser21 &SourceTableName=buyer &TargetTableName=buyer_new &TaskType=SINGLE_TO_SHARD &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=ValidateShardTask &DbName=test &DrdsInstanceId=drds23dser21 &SourceTableName=buyer &TargetTableName=buyer_new &TaskType=SINGLE_TO_SHARD <ValidateShardTaskResponse>
+<ValidateShardTaskResponse>
      <List>
           <element>
                <Item>has_data</Item>
@@ -3756,46 +4688,56 @@ http(s)://[Endpoint]/? Action=ValidateShardTask &DbName=test &DrdsInstanceId=drd
           </element>
      </List>
      <RequestId>DSSDF-SEWE-23ERW</RequestId>
+     <success>true</success>
 </ValidateShardTaskResponse>
 ```
+
+JSON format
 
 ```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "List":[
+```
+
+`{`
+
+```json
             "Result":0,
             "Item":"has_data"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "result":0,
             "item":"same_schema"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "result":0,
             "item":"uk_in_source_table"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "result":0,
             "item":"uk_in_target_table"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.5.60 RemoveDrdsDb
 
-Deletes a database from a PolarDB-X 1.0 instance.
+Deletes a database from a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3807,18 +4749,36 @@ Deletes a database from a PolarDB-X 1.0 instance.
 |---|---|---|---|---|
 | AccessKeyId | String | No | LTAI8xxxxxxxxxxxx x | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=RemoveDrdsDb &DbName=db_test &DrdsInstanceId=drds****c6vxxyzd <RemoveDrdsDbResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=RemoveDrdsDb &DbName=db_test &DrdsInstanceId=drds****c6vxxyzd &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<RemoveDrdsDbResponse>
       <RequestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</RequestId>
+      <Success>true</Success>
 </RemoveDrdsDbResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"B12FC174-D5CE-4A6E-83C1-0F8F864FF70A",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.5.61 RefreshDrdsAtomUrl
 
@@ -3831,29 +4791,42 @@ Refreshes the connection between the PolarDB-X 1.0 instance and the ApsaraDB RDS
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | LTAI8xxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5D64DE5944A1E541E0CB 908A | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Result | Boolean | true | Indicates whether the connection after refresh was smooth. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=RefreshDrdsAtomUrl &DbName=db_test &DrdsInstanceId=drds****c6vxxyzd
+http(s)://[Endpoint]/? Action=RefreshDrdsAtomUrl &DbName=db_test &DrdsInstanceId=drds****c6vxxyzd &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <RefreshDrdsAtomUrlResponse>
       <RequestId>B12FC174-D5CE-4A6E-83C1-0F8F864FF70A</RequestId>
 </RefreshDrdsAtomUrlResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"B12FC174-D5CE-4A6E-83C1-0F8F864FF70A",
     "Success":"true"
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 #### 1.1.6 Instance management
 
 ##### 1.1.6.1 CreateInstanceAccount
 
-Creates an account for a PolarDB-X 1.0 instance.
+Creates an account for a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3869,17 +4842,33 @@ Creates an account for a PolarDB-X 1.0 instance.
 | RequestId | String | drds sample request i _ _ _ d | The ID of the request. |
 | Success | Boolean | true | Indicates whether the account was created. |
 
-```json
-http(s)://[Endpoint]/? Action=CreateInstanceAccount &AccountName=drds_sample_account &DrdsInstanceId=drdsxxxxxxxxxxxxxx &Password=password &DbPrivilege=[{"DbName":"testdb", "Privilege":"RW"}] <CreateInstanceAccount>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CreateInstanceAccount &AccountName=drds_sample_account &DrdsInstanceId=drdsxxxxxxxxxxxxxx &Password=password &DbPrivilege=[{"DbName":"testdb", "Privilege":"RW"}] &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<CreateInstanceAccount>
       <RequestId>FF13E47D-4E38-4A5A-BA68-4E610EF35A25</RequestId>
+      <Success>true</Success>
 </CreateInstanceAccount>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"FF13E47D-4E38-4A5A-BA68-4E610EF35A25",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.2 DescribeDrdsDBs
 
-Queries the details about databases on a PolarDB-X 1.0 instance.
+Queries the details about databases on a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3891,6 +4880,8 @@ Queries the details about databases on a PolarDB-X 1.0 instance.
 | AccessKeyId | String | No | DJKSJKF12831283 | The AccessKey ID provided to you by Alibaba Cloud. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3914,8 +4905,16 @@ Queries the details about databases on a PolarDB-X 1.0 instance.
 | Success | Boolean | true | Indicates whether the request was successful. |
 | Total | String | 1 | The total number of databases. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsDBs &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsDBs &DrdsInstanceId=drdsxxxxxxxxxx <DescribeDrdsDBs>
+<DescribeDrdsDBs>
       <PageSize>10</PageSize>
       <RequestId>006B7D19-8CDB-4AA6-AAE7-23C1075276E1</RequestId>
       <PageNumber>1</PageNumber>
@@ -3930,12 +4929,20 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDBs &DrdsInstanceId=drdsxxxxxxxxxx <De
                   <DbName>george</DbName>
             </Db>
       </Data>
+      <Success>true</Success>
 </DescribeDrdsDBs>
 ```
+
+JSON format
 
 ```json
     "Data":{
         "Db":[
+```
+
+`{`
+
+```json
                 "Status":"NORMAL",
                 "DbName":"george",
                 "CreateTime":1563773824000,
@@ -3944,7 +4951,7 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDBs &DrdsInstanceId=drdsxxxxxxxxxx <De
                 "Mode":"HORIZONTAL"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber":1,
@@ -3954,13 +4961,17 @@ http(s)://[Endpoint]/? Action=DescribeDrdsDBs &DrdsInstanceId=drdsxxxxxxxxxx <De
     "Total":1
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.3 DescribeDrdsInstance
 
-Queries the details about a PolarDB-X 1.0 instance.
+Queries the details about a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3973,6 +4984,8 @@ Queries the details about a PolarDB-X 1.0 instance.
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | AccessKeyId | String | No | ASU678xxxxxxxxxx xx | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4023,8 +5036,16 @@ Queries the details about a PolarDB-X 1.0 instance.
 | RequestId | String | B4F76641-BA45-4320- BE7C-9C62CFDAC9B2 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsInstance &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsInstance &DrdsInstanceId=drdsxxxxxxxxx <DescribeDrdsInstance>
+<DescribeDrdsInstance>
       <RequestId>B4F76641-BA45-4320-BE7C-9C62CFDAC9B2</RequestId>
       <Data>
             <Status>RUN</Status>
@@ -4053,6 +5074,7 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstance &DrdsInstanceId=drdsxxxxxxxxx
                   </Vip>
             </Vips>
       </Data>
+      <Success>true</Success>
 </DescribeDrdsInstance>
 ```
 
@@ -4069,13 +5091,18 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstance &DrdsInstanceId=drdsxxxxxxxxx
         "ExpireDate":4724323200000,
         "Vips":{
             "Vip":[
+```
+
+`{`
+
+```json
                     "Dns":"drdsxxxxxxxxx.drds.aliyuncs.com",
                     "Port":3306,
                     "Type":"intranet",
                     "VpcId":""
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "VersionAction":"Can_Be_Rolled_Back",
@@ -4095,9 +5122,13 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstance &DrdsInstanceId=drdsxxxxxxxxx
     "Success":true
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
+
+For a list of error codes, visit the API Error Center.
 
 ##### 1.1.6.4 DescribeDrdsInstanceLevelTasks
 
@@ -4108,6 +5139,8 @@ Queries incomplete tasks for a PolarDB-X 1.0 instance.
 | Action | String | Yes | DescribeDrdsInsta nceLevelTasks | The operation that you want to perform. Set the value to DescribeDrdsInsta nceLevelTasks. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ASU67xxxxxxxxxxx xx | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4132,8 +5165,16 @@ Queries incomplete tasks for a PolarDB-X 1.0 instance.
 | TaskStatus | Integer | 0 | The status of the task. Valid values: 0: executing 1: successful 2: failed 3: canceled |
 | TaskType | Integer | 11 | The type of the task. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsInstanceLevelTasks &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsInstanceLevelTasks &DrdsInstanceId=drdsxxxxxxxxxx <DescribeDrdsInstanceLevelTasks>
+<DescribeDrdsInstanceLevelTasks>
       <Tasks>
             <Task>
                   <AllowCancel>false</AllowCancel>
@@ -4151,13 +5192,21 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstanceLevelTasks &DrdsInstanceId=drd
             </Task>
       </Tasks>
       <RequestId>1BEEBC05-437E-456D-94A4-CEE1F5676BCF</RequestId>
+      <Success>true</Success>
 </DescribeDrdsInstanceLevelTasks>
 ```
+
+JSON format
 
 ```json
     "RequestId":"1BEEBC05-437E-456D-94A4-CEE1F5676BCF",
     "Tasks":{
         "Task":[
+```
+
+`{`
+
+```json
                 "ShowProgress":true,
                 "TaskPhase":1,
                 "TaskDetail":"",
@@ -4172,15 +5221,17 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstanceLevelTasks &DrdsInstanceId=drd
                 "Progress":90
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.5 DescribeDrdsInstanceMonitor
 
-Queries the monitoring data of a PolarDB-X 1.0 instance.
+Queries the monitoring data of a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4197,6 +5248,8 @@ Queries the monitoring data of a PolarDB-X 1.0 instance.
 | AccessKeyId | String | No | ASU6xxxxxxxxxxxx xxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 | PeriodMultiple | Integer | No | 1 | The multiple of the monitoring data period. By default, the monitoring data period is 5 minutes. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | - | - | The list of returned monitoring data. |
@@ -4208,8 +5261,14 @@ Queries the monitoring data of a PolarDB-X 1.0 instance.
 | Value | String | 1.00 | The metric value. |
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsInstanceMonitor &DrdsInstanceId=drdsxxxxxxxxxx &EndTime=1568705520000 &Key=cpu &RegionId=cn-hangzhou &StartTime=1568701920000 &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsInstanceMonitor &DrdsInstanceId=drdsxxxxxxxxxx &EndTime=1568705520000 &Key=cpu &RegionId=cn-hangzhou &StartTime=1568701920000 <DescribeDrdsInstanceMonitor>
+<DescribeDrdsInstanceMonitor>
       <RequestId>0EB04DD8-A3C8-4C40-A7DC-865BE490216B</RequestId>
       <Data>
             <NodeNum>1</NodeNum>
@@ -4231,28 +5290,35 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstanceMonitor &DrdsInstanceId=drdsxx
 </DescribeDrdsInstanceMonitor>
 ```
 
+JSON format
+
 ```json
     "Data":[
             "Values":[
+```
+
+`{`
+
+```json
                     "Value":"1.00",
                     "Date":1568703720000
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Value":"0.93",
                     "Date":1568703780000
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Value":"0.67",
                     "Date":1568703840000
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Key":"cpu",
@@ -4260,19 +5326,23 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstanceMonitor &DrdsInstanceId=drdsxx
             "Unit":"%"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"0EB04DD8-A3C8-4C40-A7DC-865BE490216B"
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.6 DescribeDrdsInstances
 
-Queries PolarDB-X 1.0 instances that meet specific criteria in a region.
+Queries PolarDB-X 1.0 instances that meet specific criteria in a region. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4289,6 +5359,8 @@ Queries PolarDB-X 1.0 instances that meet specific criteria in a region.
 | Tag.N.Key | String | No | acs:newretail:do main | The key of the Nth tag. |
 | Tag.N.Value | String | No | NEW RETAIL _ | The value of the Nth tag. |
 | Type | String | No | 1 | The type of the PolarDB-X instance. Valid values: 0: the shared instance. 1: the dedicated instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4344,6 +5416,8 @@ Queries PolarDB-X 1.0 instances that meet specific criteria in a region.
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 | Total | Integer | 1 | The total number of PolarDB-X instances. |
 
+Examples Sample requests
+
 ```
 http(s)://[Endpoint]/? Action=DescribeDrdsInstances &RegionId=cn-hangzhou
 ```
@@ -4380,12 +5454,19 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstances &RegionId=cn-hangzhou
 </DescribeDrdsInstances>
 ```
 
+JSON format
+
 ```json
     "PageNumber":1,
     "PageSize":20,
     "RequestId":"8734773E-7B21-4A22-9106-CBD245F8AF7D",
     "Instances":{
         "Instance":[
+```
+
+`{`
+
+```json
                 "MachineType":"ecs",
                 "Description":"drds_test",
                 "OrderInstanceId":"drdsxxxxxxxxxx",
@@ -4413,15 +5494,19 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstances &RegionId=cn-hangzhou
                 "DrdsInstanceId":"drdsxxxxxxxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Total":1
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
+
+For a list of error codes, visit the API Error Center.
 
 ##### 1.1.6.7 DescribeDrdsInstanceVersion
 
@@ -4433,6 +5518,8 @@ Queries the versions of a PolarDB-X 1.0 instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ASU6xxxxxxxxxxxx xxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | - | - | The version data of the PolarDB-X 1.0 instance. |
@@ -4441,18 +5528,28 @@ Queries the versions of a PolarDB-X 1.0 instance.
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DescribeDrdsInstanceVersion &DrdsInstanceId=drdsxxxxxxxxxx
+http(s)://[Endpoint]/? Action=DescribeDrdsInstanceVersion &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <DescribeDrdsInstanceVersion>
       <RequestId>88AFEF28-DF04-4E21-9CE9-277D3C19E3CD</RequestId>
       <Data>
             <InstanceVersion>5.3.12-15682777</InstanceVersion>
             <NewestVersion>5.3.12-15682777</NewestVersion>
       </Data>
+      <Success>true</Success>
 </DescribeDrdsInstanceVersion>
+```
+
+JSON format `{`
+
+```json
     "Data":{
         "InstanceVersion":"5.3.12-15682777",
         "NewestVersion":"5.3.12-15682777"
@@ -4465,13 +5562,17 @@ http(s)://[Endpoint]/? Action=DescribeDrdsInstanceVersion &DrdsInstanceId=drdsxx
     "Success":true
 ```
 
+`}` Error codes
+
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.8 DescribeDrdsParams
 
-Queries the parameters of a PolarDB-X 1.0 instance or database.
+Queries the parameters of a PolarDB-X 1.0 instance or database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4486,6 +5587,8 @@ Queries the parameters of a PolarDB-X 1.0 instance or database.
 | ParamLevel | String | Yes | INSTANCE | The parameter level. Valid values: INSTANCE: the instance level. DB: the database level. |
 | DbName | String | No | drds test _ | The name of the PolarDB-X 1.0 database. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4510,8 +5613,16 @@ Queries the parameters of a PolarDB-X 1.0 instance or database.
 | RequestId | String | 2F7F8080-9132-4279- 85D0-B7E5C4305162 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsParams &DrdsInstanceId=DescribeDrdsParams &ParamLevel=INSTANCE &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsParams &DrdsInstanceId=DescribeDrdsParams &ParamLevel=INSTANCE <DescribeDrdsParams>
+<DescribeDrdsParams>
       <RequestId>29D7422F-24DD-42D8-A04E-EBCE4B4A416A</RequestId>
       <List>
             <ParamLevel>INSTANCE</ParamLevel>
@@ -4543,7 +5654,7 @@ http(s)://[Endpoint]/? Action=DescribeDrdsParams &DrdsInstanceId=DescribeDrdsPar
 -X 1.0 (unit: ms)</ParamDesc>
 ```
 
-```json
+```xml
       </List>
       <List>
             <ParamLevel>INSTANCE</ParamLevel>
@@ -4575,10 +5686,21 @@ and PolarDB-X 1.0 (unit: byte).</ParamDesc>
             <ParamDesc>The maximum size of the memory pool for a read-only instance. If the
 memory usage on an instance exceeds the value, an error occurs and the query fails.</ParamD esc>
       </List>
+      <Success>true</Success>
 </DescribeDrdsParams>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"29D7422F-24DD-42D8-A04E-EBCE4B4A416A",
     "Success":true,
     "List":[
+```
+
+`{`
+
+```json
             "NeedRestart":false,
             "ParamEnglishName":"SLOW_SQL_TIME",
             "ParamDesc":"The slow SQL query threshold (unit: ms).",
@@ -4617,7 +5739,7 @@ ages:[000900000]
             "ParamRanges":"[3600000-86400000]"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "NeedRestart":false,
@@ -4635,7 +5757,7 @@ olarDB-X 1.0 (unit: byte).",
             "ParamRanges":"[4194304-33554432]"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "NeedRestart":false,
@@ -4653,11 +5775,11 @@ he memory usage on an instance exceeds the value, an error occurs and the query 
             "ParamRanges":"[1073741824-6442450944]"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.1.6.9 DescribeDrdsTasks
 
-Queries the change tasks of a PolarDB-X instance.
+Queries the change tasks of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4666,6 +5788,8 @@ Queries the change tasks of a PolarDB-X instance.
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
 | DbName | String | No | test | The name of the PolarDB-X database. |
 | TaskType | String | No | test | The type of the task. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4677,8 +5801,14 @@ Queries the change tasks of a PolarDB-X instance.
 | Id | Long | 64148 | The ID of the task. |
 | State | String | FAILED | The status of the task. |
 
+```
+http(s)://[Endpoint]/? Action=DescribeDrdsTasks
+```
+
+Sample success responses
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeDrdsTasks <DescribeDrdsTasksResponse>
+<DescribeDrdsTasksResponse>
       <RequestId>CD412DF7-F21D-44CE-88FF-ED24917174A8</RequestId>
       <Tasks>
             <Task>
@@ -4687,16 +5817,21 @@ http(s)://[Endpoint]/? Action=DescribeDrdsTasks <DescribeDrdsTasksResponse>
                   <Content>upgrade_instance</Content>
             </Task>
       </Tasks>
+      <Success>true</Success>
 </DescribeDrdsTasksResponse>
 ```
+
+Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ActionUnauthorized | The specified action is not available for you | The error message returned because you are not authorized to perform this action. Perform RAM authorization first. |
 
+For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.10 DescribeHiStoreInstanceInfo
 
-Queries the details about a HiStore instance of a PolarDB-X instance.
+Queries the details about a HiStore instance of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4711,14 +5846,24 @@ Queries the details about a HiStore instance of a PolarDB-X instance.
 | HistoreInstanceId | String | Yes | hi-hbxxxxxxxxxxx | The ID of the HiStore instance. |
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | HiStoreInstanceInfo | - | - | The details about the HiStore instance. |
 | RequestId | String | 509BDE17-505A-4B3B- 854D-30D3F092502F | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeHiStoreInstanceInfo &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeHiStoreInstanceInfo <DescribeHiStoreInstanceInfoResponse>
+<DescribeHiStoreInstanceInfoResponse>
       <RequestId>509BDE17-505A-4B3B-854D-30D3F092502F</RequestId>
           <HiStoreInstanceInfo>
                 <DiskSize>100</DiskSize>
@@ -4727,8 +5872,11 @@ http(s)://[Endpoint]/? Action=DescribeHiStoreInstanceInfo <DescribeHiStoreInstan
                 <MachineSpec>4C8G</MachineSpec>
                 <RpmVersion>1.0.15</RpmVersion>
           </HiStoreInstanceInfo>
+      <Success>true</Success>
 </DescribeHiStoreInstanceInfoResponse>
 ```
+
+Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.6.11 DescribeInstanceAccounts
 
@@ -4739,6 +5887,8 @@ Queries the account information of a PolarDB-X instance.
 | Action | String | Yes | DescribeInstanceA ccounts | The operation that you want to perform. Set the value to DescribeInstanceA ccounts. |
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx xxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | ABCxxxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4761,8 +5911,16 @@ Queries the account information of a PolarDB-X instance.
 | RequestId | String | 2D77B55F-50C4-4FC5- A89A-7746B7D5781D | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeInstanceAccounts &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeInstanceAccounts <DescribeInstanceAccountsResponse>
+<DescribeInstanceAccountsResponse>
       <InstanceAccounts>
             <InstanceAccount>
                   <Description>Created by DRDS</Description>
@@ -4778,8 +5936,11 @@ http(s)://[Endpoint]/? Action=DescribeInstanceAccounts <DescribeInstanceAccounts
             </InstanceAccount>
       </InstanceAccounts>
       <RequestId>2D77B55F-50C4-4FC5-A89A-7746B7D5781D</RequestId>
+      <Success>true</Success>
 </DescribeInstanceAccountsResponse>
 ```
+
+Error codes
 
 | HttpCode | Error codes | Error message | Description |
 |---|---|---|---|
@@ -4793,16 +5954,27 @@ Queries the switch configuration of a PolarDB-X instance.
 |---|---|---|---|---|
 | Action | String | Yes | DescribeInstanceM enuSwitch | The operation that you want to perform. Set the value to DescribeInstanceM enuSwitch. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeInstanceMenuSwitch &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeInstanceMenuSwitch <DescribeInstanceMenuSwitchResponse>
+<DescribeInstanceMenuSwitchResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
       <Config>Config</Config>
 </DescribeInstanceMenuSwitchResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.13 DescribeInstDbSlsInfo
 
-Queries the names of the Log Service project and Logstore used by SQL audit.
+Queries the names of the Log Service project and Logstore used by SQL audit. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4817,6 +5989,8 @@ Queries the names of the Log Service project and Logstore used by SQL audit.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | test | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AuditInfo | - | - | The SQL audit details. |
@@ -4825,19 +5999,30 @@ Queries the names of the Log Service project and Logstore used by SQL audit.
 | RequestId | String | DC3ABA3E-0F8A-4596- 9104-F5155C34315B | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeInstDbSlsInfo &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeInstDbSlsInfo <DescribeInstDbSlsInfoResponse>
+<DescribeInstDbSlsInfoResponse>
       <AuditInfo>
             <LogStore>test</LogStore>
             <Project>test2</Project>
       </AuditInfo>
       <RequestId>DC3ABA3E-0F8A-4596-9104-F5155C34315B</RequestId>
+      <Success>true</Success>
 </DescribeInstDbSlsInfoResponse>
 ```
 
+Error codes
+
 ##### 1.1.6.14 DescribePreCheckResult
 
-Queries precheck results of a PolarDB-X instance.
+Queries precheck results of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4845,6 +6030,8 @@ Queries precheck results of a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0instance. |
 | TaskId | String | Yes | 4561 | The ID of the precheck task. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4865,9 +6052,18 @@ Queries precheck results of a PolarDB-X instance.
 |---|---|---|---|
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribePreCheckResult &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribePreCheckResult <DescribePreCheckResultResponse>
+<DescribePreCheckResultResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
       <PreCheckResult>
         <PreCheckName>Whether a unique key exists</PreCheckName>
         <State>FAIL</State>
@@ -4882,9 +6078,11 @@ http(s)://[Endpoint]/? Action=DescribePreCheckResult <DescribePreCheckResultResp
 </DescribePreCheckResultResponse>
 ```
 
+Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.15 DescribeStorageInstanceSubDbInfo
 
-Queries the details about a storage instance of a PolarDB-X database.
+Queries the details about a storage instance of a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4897,6 +6095,8 @@ Queries the details about a storage instance of a PolarDB-X database.
 | InstanceId | String | Yes | rm- bp1xxxxxxxxxxxxxx x | The ID of the storage instance, namely, ApsaraDB RDS for MySQL instance. |
 | AccessKeyId | String | No | ****** | The AccessKey ID provided to you by Alibaba Cloud. |
 | InstType | String | No | null | The type of the instance. This parameter is currently unavailable. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4920,8 +6120,16 @@ Queries the details about a storage instance of a PolarDB-X database.
 | RequestId | String | 78BA6289-5E03-4A31- 8CB8-FC298DB63184 | The unique ID of the request. If any problem occurs, provide this request ID for troubleshooting. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageInstanceSubDbInfoResponse>
+<DescribeStorageInstanceSubDbInfoResponse>
       <code>200</code>
       <data>
             <RequestId>78BA6289-5E03-4A31-8CB8-FC298DB63184</RequestId>
@@ -4948,7 +6156,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                               <SubDbName>drds_flashback_b8cd_0002</SubDbName>
 ```
 
-```json
+```xml
                         </SubDb>
                         <SubDb>
                               <WarningLevel>0</WarningLevel>
@@ -4982,10 +6190,16 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                   <TipsType>0</TipsType>
                   <RdsInstanceId>rm-bp1xxxxxxxxxxxxxxx</RdsInstanceId>
             </Data>
+            <Success>true</Success>
       </data>
       <requestId>78BA6289-5E03-4A31-8CB8-FC298DB63184</requestId>
       <successResponse>true</successResponse>
 </DescribeStorageInstanceSubDbInfoResponse>
+```
+
+JSON format `{`
+
+```json
     "successResponse":true,
     "requestId":"78BA6289-5E03-4A31-8CB8-FC298DB63184",
     "data":{
@@ -5011,7 +6225,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":0,
@@ -5019,7 +6233,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":0,
@@ -5027,7 +6241,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":0,
@@ -5035,7 +6249,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":0,
@@ -5043,7 +6257,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":0,
@@ -5051,7 +6265,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":0,
@@ -5059,7 +6273,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":0
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "WarningLevel":3,
@@ -5067,7 +6281,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
                         "Use":2293
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
             "Capacity":194560,
@@ -5089,7 +6303,7 @@ http(s)://[Endpoint]/? Action=DescribeStorageInstanceSubDbInfo <DescribeStorageI
 
 ##### 1.1.6.16 EnableSqlAudit
 
-Enables SQL audit for a PolarDB-X database.
+Enables SQL audit for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5101,6 +6315,8 @@ Enables SQL audit for a PolarDB-X database.
 | RecallEndTimesta mp | String | No | 1568875132000 | The end time of the backtracking. |
 | RecallStartTimest amp | String | No | 1568875132000 | The start time of the backtracking. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 463A5F0F-12AD-4544- A902-B2B983CD2C11 | The ID of the request. |
@@ -5110,15 +6326,31 @@ Enables SQL audit for a PolarDB-X database.
 | Result | Boolean | true | Indicates whether SQL audit was enabled for the database. Valid values: true: enabled. false: failed. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=EnableSqlAudit &DbName=tpch_50g_4c32gx4 &DrdsInstanceId=drdsxxxxxxxxxxxx <EnableSqlAuditResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=EnableSqlAudit &DbName=tpch_50g_4c32gx4 &DrdsInstanceId=drdsxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<EnableSqlAuditResponse>
       <Result>true</Result>
       <RequestId>463A5F0F-12AD-4544-A902-B2B983CD2C11</RequestId>
+      <Success>true</Success>
 </EnableSqlAuditResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":true,
     "RequestId":"463A5F0F-12AD-4544-A902-B2B983CD2C11",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.6.17 EnableSqlFlashbackMatchSwitch
 
@@ -5131,29 +6363,43 @@ Enables SQL flashback matching. After it is enabled, the query information is ad
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx | The ID of the PolarDB-X instance. |
 | AccessKeyId | String | No | 2zAEvsxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 463A5F0F-12AD-4544- A902-B2B983CD2C11 | The ID of the request. |
 | Result | Boolean | true | Indicates whether SQL flashback matching was enabled for the database. Valid values: true: enabled. false: failed. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=EnableSqlFlashbackMatchSwitch &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=EnableSqlFlashbackMatchSwitch &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <EnableSqlFlashbackMatchSwitchResponse>
       <Result>true</Result>
       <RequestId>463A5F0F-12AD-4544-A902-B2B983CD2C11</RequestId>
+      <Success>true</Success>
 </EnableSqlFlashbackMatchSwitchResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":true,
     "RequestId":"463A5F0F-12AD-4544-A902-B2B983CD2C11",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.18 FlashbackRecycleBinTable
 
-Restores a logical table in the recycle bin.
+Restores a logical table in the recycle bin. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5169,15 +6415,31 @@ Restores a logical table in the recycle bin.
 | RequestId | String | 463A5F0F-12AD-4544- A902-B2B983CD2C11 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=FlashbackRecycleBinTable &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxxxxx &TableName=test <FlashbackRecycleBinTableResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=FlashbackRecycleBinTable &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxxxxxx &TableName=test &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<FlashbackRecycleBinTableResponse>
       <Result>true</Result>
       <RequestId>463A5F0F-12AD-4544-A902-B2B983CD2C11</RequestId>
+      <Success>true</Success>
 </FlashbackRecycleBinTableResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":true,
     "RequestId":"463A5F0F-12AD-4544-A902-B2B983CD2C11",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.6.19 ModifyAccountDescription
 
@@ -5191,13 +6453,23 @@ Modifies the account description of a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxx | The ID of the PolarDB-X instance. |
 | AccessKeyId | String | No | 2zAEvxxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2F93CCD5-806F-4470- BBC7-20476AC48DC6 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ModifyAccountDescription &AccountName=testuser &Description=Created by PolarDB-X 1.0 &DrdsInstanceId=drdsxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
 ```xml
-http(s)://[Endpoint]/? Action=ModifyAccountDescription &AccountName=testuser &Description=Created by PolarDB-X 1.0 &DrdsInstanceId=drdsxxxxxxxxxxxx <ModifyAccountDescriptionResponse>
+<ModifyAccountDescriptionResponse>
       <RequestId>2F93CCD5-806F-4470-BBC7-20476AC48DC6</RequestId>
 </ModifyAccountDescriptionResponse>
 ```
@@ -5207,9 +6479,11 @@ http(s)://[Endpoint]/? Action=ModifyAccountDescription &AccountName=testuser &De
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.20 ModifyDrdsInstanceDescription
 
-Modifies the description of a PolarDB-X instance.
+Modifies the description of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5218,22 +6492,40 @@ Modifies the description of a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | 2zAEvsxxxxxxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C44CA24C-C7C4-4C0F- 8AC9-1343F279B09C | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=ModifyDrdsInstanceDescription &Description=Long occupied &DrdsInstanceId=drdsxxxxxxxxxxxxx <ModifyDrdsInstanceDescriptionResponse>
+Examples
+
+```
+http(s)://[Endpoint]/? Action=ModifyDrdsInstanceDescription &Description=Long occupied &DrdsInstanceId=drdsxxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<ModifyDrdsInstanceDescriptionResponse>
       <RequestId>C44CA24C-C7C4-4C0F-8AC9-1343F279B09C</RequestId>
+      <Success>true</Success>
 </ModifyDrdsInstanceDescriptionResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"C44CA24C-C7C4-4C0F-8AC9-1343F279B09C",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.21 RemoveDrdsInstance
 
-Releases a PolarDB-X 1.0 instance. Not e You cannot release a PolarDB-X instance that is changing configuration or has associated databases.
+Releases a PolarDB-X 1.0 instance. Not e You cannot release a PolarDB-X instance that is changing configuration or has associated databases. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5246,17 +6538,33 @@ Releases a PolarDB-X 1.0 instance. Not e You cannot release a PolarDB-X instance
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=RemoveDrdsInstance &DrdsInstanceId=drdsxxxxxxxxxxxxx <RemoveDrdsInstanceResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=RemoveDrdsInstance &DrdsInstanceId=drdsxxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<RemoveDrdsInstanceResponse>
       <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+      <Success>true</Success>
 </RemoveDrdsInstanceResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.22 RemoveInstanceAccount
 
-Deletes the instance management account of a PolarDB-X instance.
+Deletes the instance management account of a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5268,22 +6576,38 @@ Deletes the instance management account of a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | f3d13xxxxxxxxxxxx xxxxxxx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Success | Boolean | true | Indicates whether the instance management account was deleted. |
 
-```json
-http(s)://[Endpoint]/? Action=RemoveInstanceAccount &AccountName=testaccount &DrdsInstanceId=drdsxxxxxxxxxxxxx <RemoveInstanceAccountResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=RemoveInstanceAccount &AccountName=testaccount &DrdsInstanceId=drdsxxxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<RemoveInstanceAccountResponse>
       <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+      <Success>true</Success>
 </RemoveInstanceAccountResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
 
 ##### 1.1.6.23 RestartDrdsInstance
 
-Restarts a PolarDB-X instance.
+Restarts a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5291,29 +6615,42 @@ Restarts a PolarDB-X instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | AccessKeyId | String | No | fds14xxxxxxxxxxxx xx | The AccessKey ID provided to you by Alibaba Cloud. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6F70CE62-5077-4B7B- 95BC-4DAC45614DBE | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 | TaskId | Long | 1 | The ID of the task. |
 
+Examples Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=RestartDrdsInstance &DrdsInstanceId=drdsxxxxxxxxxxxxx
+http(s)://[Endpoint]/? Action=RestartDrdsInstance &DrdsInstanceId=drdsxxxxxxxxxxxxx &<Common request parameters>
 ```
 
-```json
+Sample success responses XML format
+
+```xml
 <RestartDrdsInstanceResponse>
       <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
       <TaskId>1</TaskId>
 </RestartDrdsInstanceResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "TaskId":1,
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.24 RollbackInstanceVersion
 
-Rolls back the version of a PolarDB-X 1.0 instance.
+Rolls back the version of a PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5321,23 +6658,38 @@ Rolls back the version of a PolarDB-X 1.0 instance.
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | true | Indicates whether the request was successful. |
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 
-```json
-http(s)://[Endpoint]/? Action=RollbackInstanceVersion &DrdsInstanceId=drdsxxxxxxxxxxx <RollbackInstanceVersionResponse>
+```
+http(s)://[Endpoint]/? Action=RollbackInstanceVersion &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<RollbackInstanceVersionResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
       <Data>True</Data>
 </RollbackInstanceVersionResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":"true",
     "RequestId":"DSSDF-SEWE-23ERW"
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.25 SetBackupPolicy
 
-Configures a backup policy for a PolarDB-X instance.
+Configures a backup policy for a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5363,15 +6715,31 @@ Configures a backup policy for a PolarDB-X instance.
 | PreferredBackupPe riod | String | No | 0 | The backup period. Valid values: 0: Monday. 1: Tuesday. 2: Wednesday. 3: Thursday. 4: Friday. 5: Saturday. 6: Sunday. |
 | PreferredBackupSt artTime | String | No | 11:30:30 | The start time of the backup. |
 
-```json
-http(s)://[Endpoint]/? Action=SetBackupPolicy &DrdsInstanceId=drdsxxxxxxxxxxx <SetBackupPolicyResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SetBackupPolicy &DrdsInstanceId=drdsxxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SetBackupPolicyResponse>
         <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+        <Success>true</Success>
         <Result>success</Result>
 </SetBackupPolicyResponse>
+```
+
+JSON format `{`
+
+```json
     "Result":"success",
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ##### 1.1.6.26 SetupDrdsParams
 
@@ -5395,19 +6763,35 @@ Configures parameters for a PolarDB-X 1.0 instance or database.
 | Data.N.ParamVaria bleName | String | No | FORBID EXECUTE D _ _ ML ALL _ | The name of the variable, which is specific to the program. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
-```json
-http(s)://[Endpoint]/? Action=SetupDrdsParams &DrdsInstanceId=drdsxxxxxxxxxxx &ParamLevel=DB <SetupDrdsParamsResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SetupDrdsParams &DrdsInstanceId=drdsxxxxxxxxxxx &ParamLevel=DB &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SetupDrdsParamsResponse>
         <RequestId>A3140FC7-B78B-4D8E-B0C8-926D28669934</RequestId>
+        <Success>true</Success>
         <Data>true</Data>
 </SetupDrdsParamsResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":true,
     "RequestId":"A3140FC7-B78B-4D8E-B0C8-926D28669934",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.27 SubmitRollbackTask
 
-Submits a smooth scale-out rollback task for a PolarDB-X database.
+Submits a smooth scale-out rollback task for a PolarDB-X database. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5427,17 +6811,33 @@ Submits a smooth scale-out rollback task for a PolarDB-X database.
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=SubmitRollbackTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx &ExpandType=smooth_expand &JobId=123 &ParentJobId=123 <SubmitRollbackTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SubmitRollbackTask &DbName=test &DrdsInstanceId=drdsxxxxxxxxxx &ExpandType=smooth_expand &JobId=123 &ParentJobId=123 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SubmitRollbackTaskResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
 </SubmitRollbackTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "Success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.28 SubmitSqlFlashbackTask
 
-Submits an SQL flashback task for a PolarDB-X instance.
+Submits an SQL flashback task for a PolarDB-X instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5463,11 +6863,25 @@ Submits an SQL flashback task for a PolarDB-X instance.
 | TableName | String | No | tb1 | The name of the table on which you want to perform SQL flashback. |
 | TraceId | String | No | asenw3sa | The trace ID of the flashback SQL statement. You can query it in the PolarDB-X 1.0 SQL audit results. |
 
-```json
-http(s)://[Endpoint]/? Action=SubmitSqlFlashbackTask &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxx &EndTime=2019-09-10 23:23:23 &RecallRestoreType=0 &StartTime=2019-09-10 20:23:23 <SubmitSqlFlashbackTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SubmitSqlFlashbackTask &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxxx &EndTime=2019-09-10 23:23:23 &RecallRestoreType=0 &StartTime=2019-09-10 20:23:23 &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<SubmitSqlFlashbackTaskResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
+      <Success>True</Success>
       <TaskId>2323</TaskId>
 </SubmitSqlFlashbackTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "RequestId":"DSSDF-SEWE-23ERW",
     "TaskId":2323,
     "Success":true
@@ -5475,7 +6889,7 @@ http(s)://[Endpoint]/? Action=SubmitSqlFlashbackTask &DbName=testdb &DrdsInstanc
 
 ##### 1.1.6.29 SwitchGlobalBroadcastType
 
-Switches the broadcast table in a PolarDB-X database from the multi-write mode to the asynchronous link mode.
+Switches the broadcast table in a PolarDB-X database from the multi-write mode to the asynchronous link mode. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5484,25 +6898,43 @@ Switches the broadcast table in a PolarDB-X database from the multi-write mode t
 | DrdsInstanceId | String | Yes | drdsxxxxxxxxx | The ID of the PolarDB-X 1.0 instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the PolarDB-X instance. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | Boolean | true | Indicates whether the broadcast table was switched from multi- write mode to asynchronous link mode. |
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-```json
-http(s)://[Endpoint]/? Action=SwitchGlobalBroadcastType &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxx <ValidateShardTaskResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=SwitchGlobalBroadcastType &DbName=testdb &DrdsInstanceId=drdsxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<ValidateShardTaskResponse>
      <RequestId>DSSDF-SEWE-23ERW</RequestId>
+     <Success>true</Success>
      <Data>true</Data>
 </ValidateShardTaskResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":true,
     "RequestId":"DSSDF-SEWE-23ERW",
     "success":true
 ```
 
+`}` Error codes For a list of error codes, visit the API Error Center.
+
 ##### 1.1.6.30 UpgradeInstanceVersion
 
-Upgrades the version of the PolarDB-X 1.0 instance.
+Upgrades the version of the PolarDB-X 1.0 instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5515,14 +6947,29 @@ Upgrades the version of the PolarDB-X 1.0 instance.
 | Data | String | true | Indicates whether the request was successful. |
 | RequestId | String | DSSDF-SEWE-23ERW | The ID of the request. |
 
-```json
-http(s)://[Endpoint]/? Action=UpgradeInstanceVersion &DrdsInstanceId=drdsxxxxxxxxxx <UpgradeInstanceVersionResponse>
+Examples Sample requests
+
+```
+http(s)://[Endpoint]/? Action=UpgradeInstanceVersion &DrdsInstanceId=drdsxxxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses XML format
+
+```xml
+<UpgradeInstanceVersionResponse>
       <RequestId>DSSDF-SEWE-23ERW</RequestId>
       <Data>True</Data>
 </UpgradeInstanceVersionResponse>
+```
+
+JSON format `{`
+
+```json
     "Data":"true",
     "RequestId":"DSSDF-SEWE-23ERW"
 ```
+
+`}` Error codes For a list of error codes, visit the API Error Center.
 
 ### 1.2 Call SDKs for cloud services by using ASAPI
 
@@ -5678,7 +7125,7 @@ local: {
 1. Switch the gateway to ASAPI and add common parameters required by the API operation to the
 request header, so the API operation can be called in a transparent manner.
 2. Add the Product field to the request header.
-The following code is an example of calling a PolarDB-X API operation.
+Example The following code is an example of calling a PolarDB-X API operation.
 
 ```java
         try {
@@ -5691,3 +7138,5 @@ The following code is an example of calling a PolarDB-X API operation.
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}`

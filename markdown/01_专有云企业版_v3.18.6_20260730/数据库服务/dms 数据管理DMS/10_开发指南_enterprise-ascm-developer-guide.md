@@ -5,16 +5,218 @@ doc_version: "20260729"
 pdf_pages: 399
 source_pdf: "10_开发指南_enterprise-ascm-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/dms/zh/enterprise-ascm-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 数据管理DMS 开发指南
 
-数据管理
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取DMS的Endpoint
+  - 2.6 获取DMS的SDK包
+- 3 Java SDK调用示例
+  - 3.1 快速开始
+  - 3.2 使用手册
+    - 3.2.1 安装Java SDK
+    - 3.2.2 设置身份验证凭证
+    - 3.2.3 请求连接配置
+    - 3.2.4 发起调用
+    - 3.2.5 错误处理
+    - 3.2.6 使用CommonRequest进行调用
+- 4 Python SDK调用示例
+  - 4.1 快速开始
+  - 4.2 使用手册
+    - 4.2.1 安装Python SDK
+    - 4.2.2 设置身份验证凭证
+    - 4.2.3 设置HTTPS请求
+    - 4.2.4 发起调用
+    - 4.2.5 错误处理
+    - 4.2.6 使用CommonRequest进行调用
+- 5 Go SDK调用示例
+  - 5.1 快速开始
+  - 5.2 使用手册
+    - 5.2.1 安装Go SDK核心包
+    - 5.2.2 设置身份验证凭证
+    - 5.2.3 发起调用
+    - 5.2.4 错误处理
+    - 5.2.5 使用CommonRequest进行调用
+- 6 API参考
+  - 6.1 API概览
+  - 6.2 用户管理
+    - 6.2.1 RegisterUser
+    - 6.2.2 DisableUser
+    - 6.2.3 EnableUser
+    - 6.2.4 UpdateUser
+    - 6.2.5 DeleteUser
+    - 6.2.6 ListUsers
+    - 6.2.7 ListUserTenants
+    - 6.2.8 GetUserActiveTenant
+    - 6.2.9 GetUser
+  - 6.3 实例管理
+    - 6.3.1 ListServers
+    - 6.3.2 ListServerGroups
+    - 6.3.3 RegisterInstance
+    - 6.3.4 ListInstances
+    - 6.3.5 GetInstance
+    - 6.3.6 UpdateInstance
+    - 6.3.7 DeleteInstance
+  - 6.4 操作日志
+    - 6.4.1 GetOpLog
+  - 6.5 审批流程
+    - 6.5.1 ListWorkFlowTemplates
+    - 6.5.2 ListWorkFlowNodes
+  - 6.6 库表元数据
+    - 6.6.1 SearchDatabase
+    - 6.6.2 SearchTable
+    - 6.6.3 ListDatabases
+    - 6.6.4 ListLogicDatabases
+    - 6.6.5 ListTables
+    - 6.6.6 ListLogicTables
+    - 6.6.7 ListColumns
+    - 6.6.8 ListIndexes
+    - 6.6.9 GetDatabase
+    - 6.6.10 GetLogicDatabase
+    - 6.6.11 GetMetaTableDetailInfo
+    - 6.6.12 GetTableDBTopology
+    - 6.6.13 GetMetaTableColumn
+    - 6.6.14 SyncDatabaseMeta
+    - 6.6.15 SyncInstanceMeta
+    - 6.6.16 GetPhysicalDatabase
+    - 6.6.17 GetTableTopology
+  - 6.7 工单操作
+      - 6.7.1.1 ApproveOrder
+      - 6.7.1.2 CloseOrder
+      - 6.7.1.3 GetApprovalDetail
+      - 6.7.1.4 GetOrderBaseInfo
+      - 6.7.1.5 ListOrders
+      - 6.7.1.6 SubmitOrderApproval
+      - 6.7.1.7 CreateOrder
+    - 6.7.2 数据变更
+      - 6.7.2.1 ExecuteDataCorrect
+      - 6.7.2.2 GetDataCorrectBackupFiles
+      - 6.7.2.3 GetDataCorrectOrderDetail
+      - 6.7.2.4 CreateFreeLockCorrectOrder
+      - 6.7.2.5 CreateDataCorrectOrder
+      - 6.7.2.6 GetDataCronClearTaskDetailList
+      - 6.7.2.7 GetDataCorrectTaskDetail
+      - 6.7.2.8 GetDataCorrectSQLFile
+      - 6.7.2.9 CreateDataCronClearOrder
+      - 6.7.2.10 CreateDataImportOrder
+    - 6.7.3 结构设计
+      - 6.7.3.1 CreatePublishGroupTask
+      - 6.7.3.2 ListDDLPublishRecords
+    - 6.7.4 数据导出
+      - 6.7.4.1 ExecuteDataExport
+      - 6.7.4.2 GetDataExportDownloadURL
+      - 6.7.4.3 GetDataExportOrderDetail
+    - 6.7.5 库表同步
+      - 6.7.5.1 GetStructSyncOrderDetail
+      - 6.7.5.2 GetStructSyncExecSqlDetail
+      - 6.7.5.3 ExecuteStructSync
+      - 6.7.5.4 GetStructSyncJobAnalyzeResult
+      - 6.7.5.5 SubmitStructSyncOrderApproval
+      - 6.7.5.6 CreateStructSyncOrder
+      - 6.7.5.7 GetStructSyncJobDetail
+    - 6.7.6 SQL审核
+      - 6.7.6.1 GetSQLReviewCheckResultStatus
+      - 6.7.6.2 CreateSQLReviewOrder
+      - 6.7.6.3 ListSQLReviewOriginSQL
+    - 6.7.7 附件上传
+      - 6.7.7.1 CreateUploadOSSFileJob
+      - 6.7.7.2 GetUserUploadFileJob
+      - 6.7.7.3 CreateUploadFileJob
+    - 6.7.8 权限申请
+      - 6.7.8.1 GetOwnerApplyOrderDetail
+      - 6.7.8.2 GetPermApplyOrderDetail
+  - 6.8 SQL任务
+    - 6.8.1 ListDBTaskSQLJob
+    - 6.8.2 ListDBTaskSQLJobDetail
+  - 6.9 权限管理
+    - 6.9.1 RevokeUserPermission
+    - 6.9.2 ListDatabaseUserPermssions
+    - 6.9.3 SetOwners
+    - 6.9.4 ListUserPermissions
+    - 6.9.5 GrantUserPermission
+  - 6.10 安全管理
+    - 6.10.1 ListSensitiveColumns
+    - 6.10.2 ListSensitiveColumnsDetail
+    - 6.10.3 ChangeColumnSecLevel
+    - 6.10.4 AddDesensitizationRule
+    - 6.10.5 ListDesensitizationRule
+    - 6.10.6 ModifyDesensitizationStrategy
+  - 6.11 数据查询
+    - 6.11.1 ExecuteScript
+  - 6.12 任务编排
+    - 6.12.1 UpdateTaskFlowConstants
+    - 6.12.2 DeleteTaskFlow
+    - 6.12.3 OfflineTaskFlow
+    - 6.12.4 ListTaskFlow
+    - 6.12.5 GetTaskInstanceRelation
+    - 6.12.6 ListTaskFlowInstance
+    - 6.12.7 ListDAGVersions
+    - 6.12.8 ReDeployLhDagVersion
+    - 6.12.9 UpdateScenario
+    - 6.12.10 ResumeTaskFlowInstance
+    - 6.12.11 UpdateTaskContent
+    - 6.12.12 ListTaskFlowsByPage
+    - 6.12.13 ListScenarios
+    - 6.12.14 UpdateTaskConfig
+    - 6.12.15 ListTaskFlowConstants
+    - 6.12.16 BackFill
+    - 6.12.17 UpdateTaskTimeVariables
+    - 6.12.18 ListTaskFlowTimeVariables
+    - 6.12.19 UpdateTaskFlowTimeVariables
+    - 6.12.20 UpdateTaskFlowCooperators
+    - 6.12.21 CreateScenario
+    - 6.12.22 DeleteScenario
+    - 6.12.23 UpdateSLARules
+    - 6.12.24 GetRuleNumLimitOfSLA
+    - 6.12.25 GetIntervalLimitOfSLA
+    - 6.12.26 ListDefaultSLARules
+    - 6.12.27 ListTaskFlowCooperators
+    - 6.12.28 ListSLARules
+    - 6.12.29 GetTask
+    - 6.12.30 MoveTaskFlowToScenario
+    - 6.12.31 GetTaskFlowNotification
+    - 6.12.32 UpdateTaskName
+    - 6.12.33 UpdateTaskOutput
+    - 6.12.34 DeleteTaskFlowEdgesByCondition
+    - 6.12.35 ListTaskFlowEdgesByCondition
+    - 6.12.36 AddTaskFlowEdges
+    - 6.12.37 UpdateTaskFlowNameAndDesc
+    - 6.12.38 GetTaskFlowGraph
+    - 6.12.39 UpdateTaskFlowEdges
+    - 6.12.40 UpdateTaskFlowOwner
+    - 6.12.41 UpdateTaskFlowSchedule
+    - 6.12.42 UpdateTaskFlowRelations
+    - 6.12.43 UpdateTaskFlowNotification
+    - 6.12.44 ListTasksInTaskFlow
+    - 6.12.45 CreateTaskFlow
+    - 6.12.46 SuspendTaskFlowInstance
+    - 6.12.47 ReRunTaskFlowInstance
+    - 6.12.48 MakeTaskFlowInstanceSuccess
+    - 6.12.49 DeleteTask
+    - 6.12.50 PublishAndDeployTaskFlow
+    - 6.12.51 StopTaskFlowInstance
+    - 6.12.52 CreateTask
+  - 6.13 逻辑库表
+    - 6.13.1 GetDBTopology
+  - 7.1 NodeType参数说明
+  - 7.2 STS概要
+    - 7.2.1 什么是STS
+    - 7.2.2 AssumeRole
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,47 +233,46 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本，单击**飞天企业版**、**敏捷版****&XStack**或**一体机**页签。
-数据管理
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 为了使您拥有与阿里云公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍通过POP网关调用专有云API的流程。
 
 **流程图**
-
-数据管理
 
 **调用步骤**
 
 1. 获取AccessKey。
 获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
-**说明**
-
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+> **说明：** 调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-`
+> `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。
+> 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。
+> 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织ID。
+
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参数据管理
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-数据管理
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户
+### 2.1 登录开发者门户
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户。
 
 **前提条件**
 
@@ -83,26 +284,26 @@ converter: line-classifier (PyMuPDF)
 2. 输入正确的用户名及密码。
 请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 管理员强制开启MFA后的首次登录： a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b. 按照步骤2重新输入账号和密码，单击**登录**。 c. 输入6位MFA码后单击**认证**。 您已开启并绑定MFA： 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开** **启虚拟****MFA****设备》**章节。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
-**启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
 **背景信息**
 
-数据管理 Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
+Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南支持情况为准。
 
 **操作步骤**
 
@@ -114,17 +315,15 @@ converter: line-classifier (PyMuPDF)
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
-数据管理 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
+AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -139,29 +338,26 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
-数据管理获取组织AccessKey的方法如下：
+获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
 **背景信息**
 
-阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。您可以选择使用STS方式，调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret及SecurityToken三元组组成，使用STS方式调用
+阿里云临时安全令牌STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。您可以选择使用STS方式，调用专有云的产品API。 STS AccessKey由AccessKey ID、AccessKey Secret及SecurityToken三元组组成，使用STS方式调用云产品API时，三元组缺一不可。更多STS内容请参见什么是STS。
 
 **操作步骤**
 
@@ -169,9 +365,14 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 获取STS Accesskey三元组。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourRoleSessionName>，请替换为您当前实际的会话名称。 <yourRoleArn>，请替换为您实际的RAM Role。 <sts.aliyuns.com> ，请替换为实际的STS Endpoint。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourRoleSessionName>，请替换为您当前实际的会话名称。
+> <yourRoleArn>，请替换为您实际的RAM Role。
+> <sts.aliyuns.com> ，请替换为实际的STS Endpoint。
 
 ```
 public static void main(String[] args) {
@@ -195,11 +396,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -234,17 +440,25 @@ vpc.${global:region}.${global:internet-domain}
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
-数据管理
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourStsAccesskeyID>,请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>，请替换为您实际的STS Accesskey Secret。 <yourStsToken>，请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourStsAccesskeyID>,请替换为您实际的STS Accesskey ID。
+> <yourStsAccessKeySecret>，请替换为您实际的STS Accesskey Secret。
+> <yourStsToken>，请替换为实际STS三元组中的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -282,13 +496,13 @@ AccessKeyID、AccessKeySecret
     request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,请替换为您实际的资源集`ID`
+`//` 非必填`,`请替换为您实际的资源集`ID`
 
 ```
     // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,请替换为您实际的组织`ID`
+`//` 必填`,`请替换为您实际的组织`ID`
 
 ```java
     request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -301,13 +515,13 @@ AccessKeyID、AccessKeySecret
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-数据管理
+`}`
 
-### 获取DMS的Endpoint
+### 2.5 获取DMS的Endpoint
+
+本文介绍了如何获取DMS的Endpoint。
 
 **背景信息**
 
@@ -316,13 +530,13 @@ AccessKeyID、AccessKeySecret
 **操作步骤**
 
 1. 登录Apsara Uni-manager运维控制台。
-2. 在顶部菜单栏中，选择**平台运维** > **飞天基础运维平台** > **运维工具**。
-3. 在左侧导航栏中，选择**运维工具** > **服务注册变量大盘**。
+2. 在顶部菜单栏中，选择**平台运维** **>** **飞天基础运维平台** **>** **运维工具**。
+3. 在左侧导航栏中，选择**运维工具** **>** **服务注册变量大盘**。
 4. 在**服务注册变量大盘**页面，在搜索框选择**服务**并输入 `dts-dtm` 。
 5. 在 `dts-dtm` 服务的**Service Registration**列中，单击
 图标展示隐藏的内容，然后单击该内容。 在弹出的**注册变量**对话框中，查看**dms.openapi.endpoint**的值，即 `Endpoint` 。
 
-### 获取DMS的SDK包
+### 2.6 获取DMS的SDK包
 
 通过POP网关调用专有云API时，需使用数据管理DMS的SDK。本文为您介绍如何获取阿里云开发工具包 （SDK）。
 
@@ -332,19 +546,17 @@ AccessKeyID、AccessKeySecret
 | Alibaba Cloud SDK for Python | DMS SDK for Python | 快速开始（Python） |
 | Alibaba Cloud SDK for Go | DMS SDK for Go | 快速开始（Go） |
 
-**说明**
+> **说明：** 推荐使用 Java、Python、Go三种语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。
 
-推荐使用 Java、Python、Go三种语言的SDK包，使用其他语言的SDK包可能发生不兼容情况。 数据管理
+## 3 Java SDK调用示例
 
-## Java SDK调用示例
-
-### 快速开始
+### 3.1 快速开始
 
 本节介绍如何获取数据管理DMSJava SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取AccessKey在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 阿里云专有云Java SDK需要1.8及以上的JDK。
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取AccessKey在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取数据管理DMS的Endpoint，具体操作参见获取DMS的Endpoint。 阿里云专有云Java SDK需要1.8及以上的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -357,12 +569,16 @@ AccessKeyID、AccessKeySecret
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <DMSProductCode>，请替换为您专有云环境DMS的产品Code。 <DMSProductEndpoint>，请替换为您专有云环境DMS产品的Endpoint地址。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <DMSProductCode>，请替换为您专有云环境DMS的产品Code。
+> <DMSProductEndpoint>，请替换为您专有云环境DMS产品的Endpoint地址。
 
 ```java
-import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.dms_enterprise.model.v20181101.GetOpLogRequest; import com.aliyuncs.dms_enterprise.model.v20181101.GetOpLogResponse; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.dms_enterprise.model.v20181101.GetOpLogRequest; import com.aliyuncs.dms_enterprise.model.v20181101.GetOpLogResponse; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class GetOpLogSampleTest {
     public static void main(String[] args) {
         String regionId = "<yourRegionID>";
         String accessKey = "<yourAccessKeyID>";
@@ -382,23 +598,26 @@ secretKey);
             GetOpLogResponse response = client.getAcsResponse(request);
             System.out.println("RequestId: " + response.getRequestId());
             System.out.println("OpLogCount: " + response.getTotalCount());
-        }
+```
+
+`}`
+
+```java
         catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### 使用手册
+`}` `}` `}`
 
-#### 安装Java SDK
+### 3.2 使用手册
 
-本文介绍如何安装及调用数据管理DMS Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 数据管理要使用数据管理DMS的开发工具包，必须安装阿里云Java SDK核心库以及数据管理DMS的Java SDK。 SDK核心库推荐使用4.5.17及以上版本，SDK的版本为1.18.0。 以使用数据管理DMS的Java SDK为例，您需要安装阿里云Java SDK核心库和DMS Java SDK，并在 pom.xml文件中添加以下依赖即可。准确的SDK版本号，请参见获取DMS的SDK包。
+#### 3.2.1 安装Java SDK
+
+本文介绍如何安装及调用数据管理DMS Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用数据管理DMS的开发工具包，必须安装阿里云Java SDK核心库以及数据管理DMS的Java SDK。 SDK核心库推荐使用4.5.17及以上版本，SDK的版本为1.18.0。 以使用数据管理DMS的Java SDK为例，您需要安装阿里云Java SDK核心库和DMS Java SDK，并在 pom.xml文件中添加以下依赖即可。准确的SDK版本号，请参见获取DMS的SDK包。
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -412,13 +631,11 @@ secretKey);
 </dependency>
 ```
 
-#### 设置身份验证凭证
+#### 3.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。本文介绍了如何设置身份验证凭证。 目前，Java SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**说明**
-
-确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **说明：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -426,17 +643,21 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 `"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID` "<yourAccessKeySecret>"); // 请替换为您实际的`AccessKey Secret`
 
-**说明**
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+#### 3.2.3 请求连接配置
 
-#### 请求连接配置
+本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。
 
-本文介绍了如何配置请求连接（HttpClientConfig）。 您可通过以下代码配置HttpClientConfig，具体请根据自身服务能力自行选择配置项并做相应配置。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。
+> <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。
+> <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。
+> <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <readTimeout>，请您根据自身服务的能力，配置读取超时时间，单位为毫秒（ms）。 <connectionTimeout>，请您根据自身服务的能力，配置连接超时时间，单位为毫秒 （ms）。 <maxRequestsPerHost>，请您根据自身服务的能力，配置每台服务器的最大请求数，数据类型为INT。 <maxRequests>，请您根据自身服务的能力，配置最大请求数，数据类型为INT。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。 `//` 获取`HttpClientConfig`对象
+`//` 获取`HttpClientConfig`对象
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
@@ -448,31 +669,31 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true);
 ```
 
-`// (`可选)设置读取超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置读取超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setReadTimeoutMillis(<readTimeout>);
 ```
 
-`// (`可选)设置创建连接超时时间，单位毫秒（`ms`）
+`// (`可选`)`设置创建连接超时时间，单位毫秒（`ms`）
 
 ```
 clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);
 ```
 
-`// (`可选)设置每个主机的最大请求数，数据类型为`INT`
+`// (`可选`)`设置每个主机的最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);
 ```
 
-`// (`可选)设置最大请求数，数据类型为`INT`
+`// (`可选`)`设置最大请求数，数据类型为`INT`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>);
 ```
 
-`// (`可选)设置协议类型
+`// (`可选`)`设置协议类型
 
 ```
 clientConfig.setProtocolType(ProtocolType.HTTP);
@@ -496,7 +717,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>");
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### 发起调用
+#### 3.2.4 发起调用
 
 本文介绍如何使用数据管理DMS Java SDK发起请求。
 
@@ -509,7 +730,7 @@ IAcsClient client = new DefaultAcsClient(profile);
 ```
 
 2. 创建请求。
-请求类的命名规范为 ${apiName}Request ，其中**${apiName}**为API名称，例如GetOpLog。 在引入多个产品SDK时，有可能存在Request类同名的情况，请注意按照package区分。 数据管理
+请求类的命名规范为 ${apiName}Request ，其中**${apiName}**为API名称，例如GetOpLog。 在引入多个产品SDK时，有可能存在Request类同名的情况，请注意按照package区分。
 
 ```
 GetOpLogRequest request = new GetOpLogRequest(); request.setStartTime("2022-01-01 00:00:00"); request.setEndTime("2022-01-02 00:00:00"); request.setPageNumber(1); request.setPageSize(100);
@@ -533,7 +754,7 @@ OpLogCount := response.getTotalCount()
 HttpResponse response = client.doAction(request);
 ```
 
-#### 错误处理
+#### 3.2.5 错误处理
 
 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -574,12 +795,9 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-数据管理
-
-#### 使用CommonRequest进行调用
+#### 3.2.6 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -589,21 +807,29 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
-发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.setSysAction("<Action>")` 的方式来指定API名称。 用 `request.setSysAction("RegisterUser")` 来指定API名称。
+
+**使用CommonRequest**
+
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.setSysAction("<Action>")` 的方式来指定API名称。 例如RegisterUser接口，在发起CommonRequest请求时，需要使用 `request.setSysAction("RegisterUser")` 来指定API名称。
 
 **调用RPC风格的API示例**
 
 以下代码为获取实例状态列表的调用示例（DMS产品属于RPC的调用风格)。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
+> <http://192.168.XX.XX:33XX>，请替换为您实际的代理IP+端口。
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; importcomaliyuncsprofileDefaultProfile;
 ```
-
-数据管理
 
 ```java
 import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -678,7 +904,7 @@ import com.aliyuncs.profile.DefaultProfile; public class Sample {
         // request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// 非必填（修
 ```
 
-改、删除、查询单实例详情时需要）,请替换为您实际的实例`ID`
+改、删除、查询单实例详情时需要）`,`请替换为您实际的实例`ID`
 
 ```
         /**
@@ -702,22 +928,20 @@ import com.aliyuncs.profile.DefaultProfile; public class Sample {
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-数据管理
+## 4 Python SDK调用示例
 
-## Python SDK调用示例
-
-### 快速开始
+### 4.1 快速开始
 
 本节介绍如何获取数据管理DMS的Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体请参
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体请参见获取AccessKey。 获取数据管理DMS的Endpoint，具体操作参见获取DMS的Endpoint。
+
+**安装Python SDK**
+
 1. 安装SDK核心库。
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -750,29 +974,32 @@ pip3 install aliyun-python-sdk-dms-enterprise
 1. 创建Client实例。在创建Client实例时，您需要获取Region ID、AccessKey ID和AccessKey Secret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <DMSProductCode>，请替换为您专有云环境DMS的产品Code。 <DMSProductEndpoint>，请替换为您专有云环境DMS产品的Endpoint地址。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <DMSProductCode>，请替换为您专有云环境DMS的产品Code。
+> <DMSProductEndpoint>，请替换为您专有云环境DMS产品的Endpoint地址。
 
 ```python
 #!/usr/bin/env python
 #coding=utf-8
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdms_enterprise.request.v20181101.GetOpLogRequest import GetOpLogRequest credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) request.set_accept_format('json') request.set_endpoint('<DMSProductEndpoint>') response = client.do_action_with_exception(request)
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdms_enterprise.request.v20181101.GetOpLogRequest import GetOpLogRequest credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) request = GetOpLogRequest() request.set_accept_format('json') request.set_endpoint('<DMSProductEndpoint>') response = client.do_action_with_exception(request)
 # python2:  print(response)
 print(str(response, encoding='utf-8'))
 ```
 
-### 使用手册
+### 4.2 使用手册
 
-#### 安装Python SDK
+#### 4.2.1 安装Python SDK
 
-本文档介绍如何安装及调用数据管理DMS Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用DMS
+本文档介绍如何安装及调用数据管理DMS Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。例如，如果要使用DMS 的Python SDK，您需要安装阿里云Python SDK核心库和DMS的Python SDK。
 
-的Python SDK，您需要安装阿里云Python SDK核心库和DMS的Python SDK。 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -796,23 +1023,21 @@ pip install aliyun-python-sdk-dms-enterprise
 pip3 install aliyun-python-sdk-dms-enterprise
 ```
 
-#### 设置身份验证凭证
+#### 4.2.2 设置身份验证凭证
 
-当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 数据管理使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危
+当使用阿里云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Python SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
-**重要**
-
-害您的信息安全。
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### 设置HTTPS请求
+#### 4.2.3 设置HTTPS请求
 
-Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
+Python SDK支持使用HTTP和HTTPS协议发起 API 请求。 使用Python SDK时，您可以为某个请求指定使用HTTP或HTTPS协议，您也可以设置全局默认协议。
 
-**说明**
+> **说明：** 产品的默认协议（HTTP/HTTPS）优先于设置的全局默认协议。
 
 **添加OpenSSL依赖**
 
@@ -820,11 +1045,11 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 
 | 行 | python -c "import ssl" | 检查Pyth |
 |---|---|---|
-| ImportError: No module named ssl |  |  |
+| ImportError: No module named ssl |   |   |
 
-若没有OpenSSL，运行以下命令安装： `pip install pyopenssl #Python2`使用此命令。 若本地环境为Python3，则运行 `pip3 install pyopenssl` 命令。
+运行 `python -c "import ssl"` 检查Python环境是否支持OpenSSL。运行后，如果没有出若没有OpenSSL，运行以下命令安装： `pip install pyopenssl #Python2`使用此命令。
 
-**说明**
+> **说明：** 若本地环境为Python3，则运行 `pip3 install pyopenssl` 命令。
 
 **设置单个请求的HTTP/HTTPS协议**
 
@@ -834,7 +1059,7 @@ Python SDK的HTTPS协议依赖Python的OpenSSL支持。要使用阿里云SDK通�
 request = DescribeInstancesRequest() request.set_protocol_type("https")
 ```
 
-# 取值：`"https"` 或 `"http"`
+`#` 取值：`"https"` 或 `"http"`
 
 **设置全局默认协议**
 
@@ -844,16 +1069,15 @@ request = DescribeInstancesRequest() request.set_protocol_type("https")
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 ```
 
-# 创建请求并调用 `client.do_action_with_exception()` 来发送请求
+`#` 创建请求并调用 `client.do_action_with_exception()` 来发送请求
 
-#### 发起调用
+#### 4.2.4 发起调用
 
 本节介绍如何使用数据管理DMS Python SDK发起请求。
 
 **操作步骤**
 
 1. 导入DMS的SDK。
-数据管理
 
 ```
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdms_enterprise.request.v20181101.GetOpLogRequest import GetOpLogRequest
@@ -868,7 +1092,7 @@ credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') 
 3. 创建Request对象。
 
 ```
-request.set_accept_format('json') request.set_endpoint('<DMSProductEndpoint>')
+request = GetOpLogRequest() request.set_accept_format('json') request.set_endpoint('<DMSProductEndpoint>')
 ```
 
 4. 发起调用并处理返回。
@@ -879,7 +1103,7 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding='utf-8')) response = clt.do_action_with_exception(request) print response
 ```
 
-#### 错误处理
+#### 4.2.5 错误处理
 
 在使用Python SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要对Python SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 `ServerException` 是服务端错误信息。 `ClientException` 是SDK端错误信息。 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
@@ -895,8 +1119,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑
-# 例如，打印具体的错误信息
+`#` 这里可以添加您自己的错误处理逻辑 `#` 例如，打印具体的错误信息
 
 ```
     print e.get_http_status()
@@ -904,9 +1127,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-数据管理
-
-#### 使用CommonRequest进行调用
+#### 4.2.6 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -916,25 +1137,37 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
-发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.set_action_name('Action')` 的方式来指定API名称。 用 `request.set_action_name('ListUsers')` 来指定API名称。
+
+**使用CommonRequest**
+
+发起一次CommonRequest请求，您需要获取以下几个参数的值。您可以在各产品的API文档中获取以下参数的值。 域名(domain)：该产品的服务地址。 API版本(version)：该API的版本号，格式为YYYY-MM-DD。 您可以在各产品的API文档的公共参数部分获取API版本。 接口信息：要调用的接口名称。 您需要获取**Action**参数，使用 `request.set_action_name('Action')` 的方式来指定API名称。 例如ListUsers接口，在发起CommonRequest请求时，需要使用 `request.set_action_name('ListUsers')` 来指定API名称。
 
 **调用RPC风格的API示例**
 
-**说明**
+以下代码为数据管理DMS的ListUsers接口，获取用户详情列表的调用示例：
 
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 <ecs.aliyuncs.com>，请替换为您实际的产品访问地址。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
+> <ecs.aliyuncs.com>，请替换为您实际的产品访问地址。
 
 ```
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
 ```
 
-# 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
+`#` 请替换为您实际的`AccessKey ID`、`AccessKey Secret`、地域`ID`
 
 ```
-client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('dms-enterprise') request.set_version('2018-11-01')
+client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('dms-enterprise') request.set_action_name('ListUsers') request.set_version('2018-11-01')
 ```
 
-`request.set_domain('<dms-enterprise.aliyuncs.com>') #`产品访问域名,当前为示例值,请替换为您实际的产品访问地址
+`request.set_domain('<dms-enterprise.aliyuncs.com>') #`产品访问域名`,`当前为示例值`,`请替换为您实际的产品访问地址
 
 ```bash
 # or:
@@ -943,8 +1176,7 @@ action_name='ListUsers',version='2018-11-01',domain='dms-enterprise.aliyuncs.com
 ######
 ```
 
-# 设置请求协议类型,支持`https`或`http,`默认为`http`
-# 设置`https`方法如下：
+`#` 设置请求协议类型`,`支持`https`或`http,`默认为`http` `#` 设置`https`方法如下：
 
 ```bash
 # request.set_protocol_type('https')
@@ -953,61 +1185,58 @@ request.set_accept_format('json') request.set_method('POST') request.add_query_p
 ######
 ```
 
-# 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段
-# 调用方法如下：
+`#` 当使用`STS AccessKey`调用接口时，需要在参数中加上`SecurityToken`字段 `#` 调用方法如下：
 
 ```bash
 # request.add_query_param("SecurityToken", "<yourSecurityToken>");
 ```
 
-# 请替换为您实际的`SecurityToken`
+`#` 请替换为您实际的`SecurityToken`
 
 ```
 ######
 ```
 
-# 非必填，请替换为您实际的资源集`ID`
+`#` 非必填，请替换为您实际的资源集`ID`
 
 ```
 request.add_header("x-acs-resourcegroupid", "<yourResourceGroupID>")
 ```
 
-# 必填，请替换为您实际的组织`ID`
+`#` 必填，请替换为您实际的组织`ID`
 
 ```
 request.add_header("x-acs-organizationid", "<yourOrganizationID>")
 ```
 
-# 必填，调用来源说明
+`#` 必填，调用来源说明
 
 ```
 request.add_header("x-acs-caller-sdk-source","ApiTestDemo")
 ```
 
-# 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
+`#` 非必填（企业版`V3.15.0`及之前历史版本需要），请替换为您实际的地域`ID`
 
 ```
 request.add_header("x-acs-regionid", "<yourRegionID>")
 ```
 
-# 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
+`#` 非必填（修改、删除、查询单实例详情时需要），请替换为您实际的实例`ID`
 
 ```python
 # request.add_header("x-acs-instanceid", "<yourInstanceID>")
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-数据管理
+## 5 Go SDK调用示例
 
-## Go SDK调用示例
-
-### 快速开始
+### 5.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本操作介绍如何获取阿里云数据管理DMS Go SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取 AccessKey在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。参见获取 AccessKey在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取数据管理DMS的Endpoint，具体操作参见获取DMS的Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -1023,19 +1252,22 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化Client实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
-
-保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <DMSProductCode>，请替换为您专有云环境DMS的产品Code。 <DMSProductEndpoint>，请替换为您专有云环境DMS产品的Endpoint地址。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <DMSProductCode>，请替换为您专有云环境DMS的产品Code。
+> <DMSProductEndpoint>，请替换为您专有云环境DMS产品的Endpoint地址。
 
 ```java
-package main
+package main import (
  "fmt"
    dms_enterprise "github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1044,36 +1276,41 @@ eyID>", "<yourAccessKeySecret>")
  request := dms_enterprise.CreateGetOpLogRequest()
  request.Scheme = "https"
     request.Domain = "<DMSProductEndpoint>"
+ response, err := client.GetOpLog(request)
  if err != nil {
   fmt.Print(err.Error())
- }
- fmt.Printf("response is %#v\n", response)
-}
 ```
 
+`}`
+
+```
+ fmt.Printf("response is %#v\n", response)
+```
+
+`}`
 4. （可选）切换HTTP/HTTPS协议。
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### 使用手册
+### 5.2 使用手册
 
-#### 安装Go SDK核心包
+#### 5.2.1 安装Go SDK核心包
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### 设置身份验证凭证
+#### 5.2.2 设置身份验证凭证
 
-当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危
+当使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 目前Go SDK支持通过AccessKey进行身份验证，获取AccessKey的方法请参见获取AccessKey。 使用AccessKey作为访问凭据，需要在初始化Client时设置凭证。
 
-**重要**
+> **重要：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
 
-害您的阿里云账号的信息安全。 以下代码以DMS为例，展示初始化Client实例。 数据管理 `//` 初始化`Client`实例
+以下代码以DMS为例，展示初始化Client实例。 `//` 初始化`Client`实例
 
 ```
 Client, err := dms-enterprise.NewClientWithAccessKey(
@@ -1085,13 +1322,9 @@ Client, err := dms-enterprise.NewClientWithAccessKey(
         "<yourAccessKeySecret>")        // 请替换为您实际的AccessKey Secret
 ```
 
-以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保
+> **说明：** 以上代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-**说明**
-
-留。
-
-#### 发起调用
+#### 5.2.3 发起调用
 
 本文介绍如何使用阿里云数据管理DMS Go SDK发起调用。 以下步骤以数据管理DMS为例，展示使用DMS Go SDK发起调用。
 1. 导入数据管理DMS SDK。
@@ -1101,14 +1334,14 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise
 ```
 
 2. 新建一个产品名Client，该Client中包含产品名的所有API。
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不
 
-**说明**
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
 
-保留。 `Client,err := dms_enterprise.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret`
+`Client,err := dms_enterprise.NewClientWithAccessKey( //`请替换为您实际的产品名称 `"<yourRegionID>", //` 请替换为您实际的`RegionID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>") //` 请替换为您实际的`AccessKeySecret`
 3. 使用 `xxx.CreateXXXRequest` 方法创建一个请求。
 该方法的命名规范为 ${service}.Create${apiName}Request ，其中：
 **${service}**为产品名称(小写)。例如dms_enterprise。
+**${apiName}**为API名称，例如GetOpLog。
 
 ```
 request := dms_enterprise.CreateGetOpLogRequest() request.Scheme = "https" request.Domain = "<DMSProductEndpoint>"
@@ -1116,13 +1349,17 @@ request := dms_enterprise.CreateGetOpLogRequest() request.Scheme = "https" reque
 
 4. 发起调用。
 
-#### 错误处理
+```
+response, err := client.GetOpLog(request)
+```
+
+#### 5.2.4 错误处理
 
 阿里云Go SDK在服务端或者SDK端出错时，会返回相应的错误信息，即 `sdk.errors` 包下的 `ClientError` 和 `ServerError` 。这些错误是基于Go的标准Error接口实现的，您可以像处理Go标准错误一样来处理阿里云Go SDK返回的错误。
 
 **简单处理异常**
 
-您可以通过以下代码来简单处理错误。 数据管理
+您可以通过以下代码来简单处理错误。
 
 ```
 response,err := Client.DescribeInstances(request) if err != nil {
@@ -1132,19 +1369,20 @@ response,err := Client.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
 当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个 `ClientError` 。 以下以DMS为例，您可以通过以下代码来判断并获取 `ClientError` 中的错误信息：
 
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise" "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 ```
-if clientError, ok := err.(*errors.ClientError); ok{
+response, err := Client.ListInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
 ```
 
 `//` 获取错误码
@@ -1159,20 +1397,21 @@ if clientError, ok := err.(*errors.ClientError); ok{
     clientError.Message()
 ```
 
-`//` 获取原始错误(可能为`nil)`
+`//` 获取原始错误`(`可能为`nil)`
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
-当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从 Response中获得原始的HTTP应答。 以下以DMS为例，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息： 数据管理
+当服务端返回错误的应答时，SDK会将该应答封装成 `ServerError` 返回。在这种情况下，您依然可以从 Response中获得原始的HTTP应答。 以下以DMS为例，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息：
 
-| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise" //dms请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |  |  |
+| 重要使用具体异常结构时需要引入异常结构包 github.com/aliyun/alibaba-cloud-sdk- go/sdk/errors ，引入方法请参考： package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/services/dms-enterprise" //dms请替换为您实际的产品名称 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" // 新增的错误包 "github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors" "fmt" ) |   |   |
 |---|---|---|
-|  | github.com/aliyun/alibaba-cloud-sdk- |  |
+|   | github.com/aliyun/alibaba-cloud-sdk- |   |
 
 ```
 response, err := Client.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1194,10 +1433,11 @@ response, err := Client.DescribeInstances(request) if serverError, ok := err.(*e
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
 
-#### 使用CommonRequest进行调用
+`}`
+
+#### 5.2.5 使用CommonRequest进行调用
 
 当您要调用的某个产品的API没有提供SDK时，或者提供的SDK中的请求Request参数和返回Response值不符合需求时，可以采用泛用型的API调用方式（CommonRequest）。使用CommonRequest调用方式可实现任意Open API接口的调用。
 
@@ -1205,18 +1445,25 @@ response, err := Client.DescribeInstances(request) if serverError, ok := err.(*e
 
 以下代码为数据管理DMS的ListUserTenants接口，获取当前的租户列表的调用示例（DMS产品属于RPC 的调用风格）：
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>，请替换为您实际的地域ID。 <yourAccessKeyID>，请替换为您实际的AccessKey ID。 <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。 <ecs.aliyuncs.com>，请替换为您实际的产品访问请求地址。 <yourSecurityToken>，请替换为您实际的SecurityToken。 <yourResourceGroupID>，请替换为您实际的资源集ID。 <yourOrganizationID>，请替换为您实际的组织ID。 <yourInstanceID>，请替换为您实际的实例ID。 数据管理
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>，请替换为您实际的地域ID。
+> <yourAccessKeyID>，请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>，请替换为您实际的AccessKey Secret。
+> <ecs.aliyuncs.com>，请替换为您实际的产品访问请求地址。
+> <yourSecurityToken>，请替换为您实际的SecurityToken。
+> <yourResourceGroupID>，请替换为您实际的资源集ID。
+> <yourOrganizationID>，请替换为您实际的组织ID。
+> <yourInstanceID>，请替换为您实际的实例ID。
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1228,19 +1475,29 @@ func main() {
 ```
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
 ```
 
-`request.Domain = "<dms-enterprise.aliyuncs.com>" //` 请求访问地址,当前为示例值,请根据实际请求地址替换
+`request.Domain = "<dms-enterprise.aliyuncs.com>" //` 请求访问地址`,`当前为示例值`,`请根据实际请求地址替换
 
 ```
     request.Product = "dms-enterprise"
     request.Version = "2018-11-01"
 ```
 
-`//` 因为是`RPC`接口，因此需指定`APIName(Action)` `//` 业务参数
+`//` 因为是`RPC`接口，因此需指定`APIName(Action)`
+
+```
+    request.ApiName = "ListUserTenants"
+```
+
+`//` 业务参数
 
 ```
     request.QueryParams["PageNumber"] = "1"
@@ -1277,20 +1534,23 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-数据管理
+`}`
 
-## API参考
+```
+    fmt.Print(response.GetHttpContentString())
+```
 
-### API概览
+`}`
+
+## 6 API参考
+
+### 6.1 API概览
 
 数据管理DMS提供以下API接口。
 
-### 用户管理
+**用户管理**
 
 | API | 描述 |
 |---|---|
@@ -1304,7 +1564,7 @@ func main() {
 | GetUserActiveTenant | 获取当前租户信息。 |
 | GetUser | 获取用户信息。 |
 
-### 实例管理
+**实例管理**
 
 | API | 描述 |
 |---|---|
@@ -1314,22 +1574,22 @@ func main() {
 | UpdateInstance | 更新实例信息，检查连通性。 |
 | DeleteInstance | 删除DMS管理的实例。 |
 
-### 操作日志
+**操作日志**
 
 | API | 描述 |
 |---|---|
 | GetOpLog | 获取指定时间内的操作日志详情列表。 |
 
-### 审批流程
+**审批流程**
 
 | API | 描述 |
 |---|---|
 | ListWorkFlowTemplates | 获取审批模板列表。 |
 
-数据管理
-
 | ListWorkFlowNodes | 获取审批节点列表。 |
 |---|---|
+
+**库表元数据**
 
 | API | 描述 |
 |---|---|
@@ -1351,61 +1611,61 @@ func main() {
 | GetPhysicalDatabase | 获取物理库的详情。 |
 | GetTableTopology | 获取数据表的拓扑信息。 |
 
-### 工单操作
+**工单操作**
 
 | 分类 | API | 描述 |
 |---|---|---|
 | 通用 | ApproveOrder | 处理工单审批。 |
-|  | CloseOrder | 关闭工单。 |
-|  | GetApprovalDetail | 获取工单审批详情。 |
-|  | GetOrderBaseInfo | 获取工单基本信息。 |
-|  | ListOrders | 获取工单列表信息。 |
-|  | SubmitOrderApproval | 提交工单审批。 |
-|  | CreateOrder | 创建工单。 |
-
-数据管理
+|   | CloseOrder | 关闭工单。 |
+|   | GetApprovalDetail | 获取工单审批详情。 |
+|   | GetOrderBaseInfo | 获取工单基本信息。 |
+|   | ListOrders | 获取工单列表信息。 |
+|   | SubmitOrderApproval | 提交工单审批。 |
+|   | CreateOrder | 创建工单。 |
 
 | 数据变更 | ExecuteDataCorrect | 执行数据变更工单。 |
 |---|---|---|
-|  | GetDataCorrectBackupFiles | 获取数据变更备份文件附件下载地址。 |
-|  | GetDataCorrectOrderDetail | 获取数据变更工单详情信息。 |
-|  | CreateFreeLockCorrectOrder | 在DMS中创建无锁变更工单。 |
-|  | CreateDataCorrectOrder | 在DMS中创建普通数据变更工单。 |
-|  | GetDataCronClearTaskDetailList | 获取历史数据清理任务执行列表。 |
-|  | GetDataCorrectTaskDetail | 获取普通数据变更、无锁变更、数据导入工单任务执行详情。 |
-|  | GetDataCorrectSQLFile | 获取数据变更工单的SQL脚本附件。 |
-|  | CreateDataCronClearOrder | 创建历史数据清理工单。 |
-|  | CreateDataImportOrder | 在DMS中创建数据导入工单。 |
+|   | GetDataCorrectBackupFiles | 获取数据变更备份文件附件下载地址。 |
+|   | GetDataCorrectOrderDetail | 获取数据变更工单详情信息。 |
+|   | CreateFreeLockCorrectOrder | 在DMS中创建无锁变更工单。 |
+|   | CreateDataCorrectOrder | 在DMS中创建普通数据变更工单。 |
+|   | GetDataCronClearTaskDetailList | 获取历史数据清理任务执行列表。 |
+|   | GetDataCorrectTaskDetail | 获取普通数据变更、无锁变更、数据导入工单任务执行详情。 |
+|   | GetDataCorrectSQLFile | 获取数据变更工单的SQL脚本附件。 |
+|   | CreateDataCronClearOrder | 创建历史数据清理工单。 |
+|   | CreateDataImportOrder | 在DMS中创建数据导入工单。 |
 | 结构设计 | CreatePublishGroupTask | 执行结构设计变更。 |
-|  | ListDDLPublishRecords | 获取结构设计工单的发布详情。 |
+|   | ListDDLPublishRecords | 获取结构设计工单的发布详情。 |
 | 数据导出 | ExecuteDataExport | 执行数据导出工单。 |
-|  | GetDataExportDownloadURL | 获取数据导出结果附件下载地址。 |
-|  | GetDataExportOrderDetail | 获取数据导出工单详情。 |
+|   | GetDataExportDownloadURL | 获取数据导出结果附件下载地址。 |
+|   | GetDataExportOrderDetail | 获取数据导出工单详情。 |
 | 库表同步 | GetStructSyncOrderDetail | 获取结构同步的工单详情信息。 |
-|  | GetStructSyncExecSqlDetail | 获取结构同步的执行SQL脚本。 |
-|  | ExecuteStructSync | 执行结构同步工单。 |
-|  | GetStructSyncJobAnalyzeResult | 获取结构同步的任务分析结果。 |
-|  | SubmitStructSyncOrderApproval | 提交结构同步工单至审批流程。 |
-|  | CreateStructSyncOrder | 创建结构同步工单。 |
-|  | GetStructSyncJobDetail | 获取结构同步的任务详情。 |
+|   | GetStructSyncExecSqlDetail | 获取结构同步的执行SQL脚本。 |
+|   | ExecuteStructSync | 执行结构同步工单。 |
+|   | GetStructSyncJobAnalyzeResult | 获取结构同步的任务分析结果。 |
+|   | SubmitStructSyncOrderApproval | 提交结构同步工单至审批流程。 |
+|   | CreateStructSyncOrder | 创建结构同步工单。 |
+|   | GetStructSyncJobDetail | 获取结构同步的任务详情。 |
 | SQL审核 | GetSQLReviewCheckResultStatu s | 获取SQL审核工单的审核结果。 |
-|  | CreateSQLReviewOrder | 创建SQL审核工单。 |
-|  | ListSQLReviewOriginSQL | 获取SQL审核工单的SQL详情结果。 |
+|   | CreateSQLReviewOrder | 创建SQL审核工单。 |
+|   | ListSQLReviewOriginSQL | 获取SQL审核工单的SQL详情结果。 |
 | 附件上传 | CreateUploadOSSFileJob | 创建上传OSS附件任务。 |
-|  | GetUserUploadFileJob | 获取上传附件的任务信息。 |
-|  | CreateUploadFileJob | 创建上传附件任务。 |
+|   | GetUserUploadFileJob | 获取上传附件的任务信息。 |
+|   | CreateUploadFileJob | 创建上传附件任务。 |
 | 权限申请 | GetOwnerApplyOrderDetail | 获取申请库Owner、表Owner、实例Owner的工单详情。 |
 
-| 权限申请 |  |  |
+| 权限申请 |   |   |
 |---|---|---|
-|  | GetPermApplyOrderDetail | 获取权限申请的工单详情。 |
+|   | GetPermApplyOrderDetail | 获取权限申请的工单详情。 |
+
+**SQL任务**
 
 | API | 描述 |
 |---|---|
 | ListDBTaskSQLJob | 获取SQL任务列表。 |
 | ListDBTaskSQLJobDetail | 获取SQL任务详情列表。 |
 
-### 权限管理
+**权限管理**
 
 | API | 描述 |
 |---|---|
@@ -1415,7 +1675,7 @@ func main() {
 | ListUserPermissions | 展示指定用户所具备的库表权限。 |
 | GrantUserPermission | 授权用户库表权限。 |
 
-### 安全管理
+**安全管理**
 
 | API | 描述 |
 |---|---|
@@ -1426,21 +1686,19 @@ func main() {
 | ListDesensitizationRule | 获取脱敏规则列表。 |
 | ModifyDesensitizationStrategy | 修改字段绑定的脱敏规则。 |
 
-### 数据查询
+**数据查询**
 
 | API | 描述 |
 |---|---|
 | ExecuteScript | 执行SQL脚本。 |
 
-### 任务编排
+**任务编排**
 
 | API | 描述 |
 |---|---|
 | UpdateTaskFlowConstants | 更新任务流常量列表。 |
 | DeleteTaskFlow | 删除任务流。 |
 | OfflineTaskFlow | 下线已发布的任务流。 |
-
-数据管理
 
 | ListTaskFlow | 获取任务流信息列表。 |
 |---|---|
@@ -1473,8 +1731,6 @@ func main() {
 | GetTaskFlowNotification | 获取任务流通知设置。 |
 | UpdateTaskName | 更新任务名称。 |
 
-数据管理
-
 | UpdateTaskOutput | 更新任务节点的输出变量。 |
 |---|---|
 | DeleteTaskFlowEdgesByCondition | 按照多条件删除任务流边。 |
@@ -1497,21 +1753,17 @@ func main() {
 | StopTaskFlowInstance | 停止运行中的任务流实例。 |
 | CreateTask | 创建任务流任务。 |
 
-### 逻辑库表
+**逻辑库表**
 
 | API | 描述 |
 |---|---|
 | GetDBTopology | 获取逻辑库与其对应物理分库的拓扑信息。 |
 
-### 用户管理
+### 6.2 用户管理
 
-#### RegisterUser
+#### 6.2.1 RegisterUser
 
-DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管理】中的管理员角色的用户）都可以通过这个接口增加录入本企业的新用户。
-
-**请求参数**
-
-数据管理
+调用RegisterUser接口录入本企业的新用户。 DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管理】中的管理员角色的用户）都可以通过这个接口增加录入本企业的新用户。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -1534,35 +1786,35 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
-&Tid=-1 &Uid=12345678 &UserNick=dmstest
+http(s)://[Endpoint]/?Action=RegisterUser &Tid=-1 &Uid=12345678 &UserNick=dmstest
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<RegisterUserResponse>
       <RequestId>ADE24A7C-DB8B-4D32-94AD-E50E3B921197</RequestId>
       <Success>true</Success>
+</RegisterUserResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success": true
-}
 ```
 
-#### DisableUser
+`}`
 
-此OpenAPI为产品内【系统管理】-【用户管理】内的“禁用用户”功能，支持DMS企业版内的“管理员”角色用户通过调用API的方式对暂时不需要的云账号进行产品内的禁用操作。禁用后，对应云账号开通的数据源权限、数据owner配置、DBA配置均会回收与失效。 禁用只是临时限制该云账号不能登录本企业的DMS企业版产品，并不是禁用云账号本身。
+#### 6.2.2 DisableUser
 
-**说明**
+调用DisableUser接口禁用云账号。 此OpenAPI为产品内【系统管理】-【用户管理】内的“禁用用户”功能，支持DMS企业版内的“管理员”角色用户通过调用API的方式对暂时不需要的云账号进行产品内的禁用操作。禁用后，对应云账号开通的数据源权限、数据owner配置、DBA配置均会回收与失效。
 
-禁用的效果是用户通过该账号不再能登录到DMS企业版（除非再次启用），此时仍占用企业开通规格。
+> **说明：** 禁用只是临时限制该云账号不能登录本企业的DMS企业版产品，并不是禁用云账号本身。 禁用的效果是用户通过该账号不再能登录到DMS企业版（除非再次启用），此时仍占用企业开通规格。
 
 **请求参数**
 
@@ -1578,8 +1830,6 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-数据管理
-
 | ErrorCode | String | 403 | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | The specified user not exists. | 错误消息。 |
@@ -1591,39 +1841,37 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 请求示例
 
 ```
-&Tid=-1 &Uid=12345
+http(s)://[Endpoint]/?Action=DisableUser &Tid=-1 &Uid=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DisableUserResponse>
     <RequestId>ADE24A7C-DB8B-4D32-94AD-E50E3B921197</RequestId>
     <Success>true</Success>
+</DisableUserResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success":true
-}
 ```
 
-#### EnableUser
+`}`
 
-此OpenAPI为产品内【系统管理】-【用户管理】内的“启用用户”功能，支持DMS企业版内的“管理员”角色用户，通过调用API的方式对先前禁用的云账号进行产品内的启用操作。启用后，对应云账号可恢复产品的登录和相关使用。 启用只是解除该云账号之前禁用不能登录本企业的DMS企业版产品的限制，非云账号本身
+#### 6.2.3 EnableUser
 
-**说明**
+调用EnableUser接口启用被禁用的云账号。 此OpenAPI为产品内【系统管理】-【用户管理】内的“启用用户”功能，支持DMS企业版内的“管理员”角色用户，通过调用API的方式对先前禁用的云账号进行产品内的启用操作。启用后，对应云账号可恢复产品的登录和相关使用。
 
-的其他操作。
+> **说明：** 启用只是解除该云账号之前禁用不能登录本企业的DMS企业版产品的限制，非云账号本身的其他操作。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | Action | String | 是 | EnableUser | 系统规定参数。取值：EnableUser。 |
 |---|---|---|---|---|
@@ -1645,28 +1893,28 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 请求示例
 
 ```
-&Tid=-1 &Uid=12345
+http(s)://[Endpoint]/?Action=EnableUser &Tid=-1 &Uid=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<EnableUserResponse>
     <RequestId>ADE24A7C-DB8B-4D32-94AD-E50E3B921197</RequestId>
     <Success>true</Success>
+</EnableUserResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success": true
-}
 ```
 
-数据管理
+#### 6.2.4 UpdateUser
 
-#### UpdateUser
+调用UpdateUser接口更新用户信息。
 
 **请求参数**
 
@@ -1691,36 +1939,32 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | RequestId | String | E9BEBF41-4F69- 4605-A5D5- A67955173941 | API请求唯一ID。 |
 | Success | Boolean | false | 更新用户是否成功。 |
 
-**示例**
-
-数据管理请求示例
+请求示例
 
 ```
-&Tid=-1 &Uid=123456789 &UserNick=test
+http(s)://[Endpoint]/?Action=UpdateUser &Tid=-1 &Uid=123456789 &UserNick=test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E9BEBF41-4F69-4605-A5D5-A67955173941</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "E9BEBF41-4F69-4605-A5D5-A67955173941",
   "Success": true
-}
 ```
 
-#### DeleteUser
+`}`
 
-此OpenAPI为产品内【系统管理】-【用户管理】内的“删除用户”功能，支持DMS企业版内的“管理员”角色用户通过调用API的方式对不再需要的云账号进行产品内的删除操作。删除后，对应云账号开通的数据源权限、数据owner配置、DBA配置均会回收与失效。 删除只是去除与本企业的DMS企业版产品内的用户的关联关系，并不是删除云账号本身。
+#### 6.2.5 DeleteUser
 
-**说明**
+调用DeleteUser接口删除云账号。 此OpenAPI为产品内【系统管理】-【用户管理】内的“删除用户”功能，支持DMS企业版内的“管理员”角色用户通过调用API的方式对不再需要的云账号进行产品内的删除操作。删除后，对应云账号开通的数据源权限、数据owner配置、DBA配置均会回收与失效。
 
-删除的效果是用户通过该账号不再能登录到DMS企业版（除非再次加入）。
+> **说明：** 删除只是去除与本企业的DMS企业版产品内的用户的关联关系，并不是删除云账号本身。 删除的效果是用户通过该账号不再能登录到DMS企业版（除非再次加入）。
 
 **请求参数**
 
@@ -1736,8 +1980,6 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-数据管理
-
 | ErrorCode | String | 403 | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | The specified user not exists. | 错误消息。 |
@@ -1749,26 +1991,30 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 请求示例
 
 ```
-&Tid=-1 &Uid=12345
+http(s)://[Endpoint]/?Action=DeleteUser &Tid=-1 &Uid=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<DeleteUserResponse>
     <RequestId>ADE24A7C-DB8B-4D32-94AD-E50E3B921197</RequestId>
     <Success>true</Success>
+</DeleteUserResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId":"34E01EDD-6A16-4CF0-9541-C644D1BE01AA",
     "Success":true
-}
 ```
 
-#### ListUsers
+`}`
+
+#### 6.2.6 ListUsers
+
+调用ListUsers接口获取用户详情列表。
 
 **请求参数**
 
@@ -1777,8 +2023,6 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | Action | String | 是 | ListUsers | 系统规定参数。取值：ListUsers。 |
 | Tid | Long | 是 | -1 | 租户ID。 |
 | Role | String | 否 | DBA | 角色，取值为参考RegisterUser接口。 |
-
-数据管理
 
 | UserState | String | 否 | NORMAL | 用户状态，取值和说明如下： NORMAL：正常 DISABLE：禁用 DELETE：已删除 |
 |---|---|---|---|---|
@@ -1796,14 +2040,12 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | RequestId | String | 98D35416-2B92- 4CE5-8FD2- B1E61E165536 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 | TotalCount | Long | 1 | 满足条件的记录总数。 |
-| UserList | Array of User |  | 用户详情列表。 |
-| User |  |  |  |
+| UserList | Array of User |   | 用户详情列表。 |
+| User |   |   |   |
 | CurExecuteCo unt | Long | 0 | 当天查询次数。 |
 | CurResultCoun t | Long | 0 | 当天查询行数。 |
 | LastLoginTime | String | 2020-02-02 00:00:00 | 最后登录时间。 |
 | MaxExecuteCo unt | Long | 1000 | 当天查询次数上限。 |
-
-数据管理
 
 | MaxResultCou nt | Long | 1000 | 当天查询行数上限。 |
 |---|---|---|---|
@@ -1821,10 +2063,10 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 请求示例
 
 ```
-&Tid=-1
+http(s)://[Endpoint]/?Action=ListUsers &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <UserList>
@@ -1860,21 +2102,23 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 </UserList> <TotalCount>2</TotalCount> <RequestId>2D346B20-BF4A-4C96-8295-DE8EB9BF5B90</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "UserList": {
     "User": [
-      {
+```
+
+`{`
+
+```json
         "RoleIdList": {
           "RoleIds": [
 ```
 
-`3,` ]
+`3,` `]` `},`
 
 ```json
-        },
         "State": "NORMAL",
         "RoleNameList": {
           "RoleNames": [
@@ -1882,23 +2126,24 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
             "USER"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "NickName": "xxx",
         "UserId": 2,
         "Uid": "111"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "RoleIdList": {
           "RoleIds": [
 ```
 
-`1,` ]
+`1,` `]` `},`
 
 ```json
-        },
         "State": "NORMAL",
         "RoleNameList": {
           "RoleNames": [
@@ -1906,32 +2151,28 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
             "ADMIN"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "NickName": "xxx[子账号]",
         "ParentUid": "111",
         "UserId": 1,
         "Uid": "111"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 2,
   "RequestId": "2D346B20-BF4A-4C96-8295-DE8EB9BF5B90",
   "Success": true
-}
 ```
 
-#### ListUserTenants
+`}`
 
-**请求参数**
+#### 6.2.7 ListUserTenants
 
-数据管理
+调用ListUserTenants接口获取当前的租户列表。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -1946,7 +2187,7 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | CA1F4A4D-EE49- 472F-8DF9- F537101E263A | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-| TenantList | Array of Tenant |  | 租户信息列表。 |
+| TenantList | Array of Tenant |   | 租户信息列表。 |
 | Status | String | ACTIVE | 租户状态。取值： ACTIVE：活跃，表示用户正处于当前租户下。 IN ACTIVE：非活跃。 _ |
 | TenantName | String | test | 租户名。 |
 | Tid | Long | -1 | 租户ID。 |
@@ -1956,10 +2197,10 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 请求示例
 
 ```
-&RegionId=cn-hangzhou
+http(s)://[Endpoint]/?Action=ListUserTenants &RegionId=cn-hangzhou
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>CA1F4A4D-EE49-472F-8DF9-F537101E263A</RequestId> <TenantList>
@@ -1977,44 +2218,48 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 </TenantList>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "CA1F4A4D-EE49-472F-8DF9-F537101E263A",
   "TenantList": [
-    {
+```
+
+`{`
+
+```json
       "Status": "ACTIVE",
       "TenantName": "test1",
       "Tid": -1
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "Status": "IN_ACTIVE",
       "TenantName": "test2",
       "Tid": -2
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "Status": "IN_ACTIVE",
       "TenantName": "tes",
       "Tid": -3
-    }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+#### 6.2.8 GetUserActiveTenant
 
-#### GetUserActiveTenant
+调用GetUserActiveTenant接口获取当前所处的租户信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | GetUserActiveTe nant | 系统规定参数。取值：GetUserActiveTenant。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域，用于调用该接口。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
@@ -2027,7 +2272,7 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | E20EAB9F-A3DB- 42EC-BD0C- 102A886340F5 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-| Tenant | Struct |  | 租户信息。 |
+| Tenant | Struct |   | 租户信息。 |
 | Status | String | ACTIVE | 租户状态。取值： ACTIVE：活跃，表示用户正处于当前租户下。 IN ACTIVE：非活跃。 _ |
 | TenantName | String | test | 租户名。 |
 | Tid | Long | -1 | 租户ID。 |
@@ -2040,7 +2285,7 @@ DMS企业版用户的**管理员**（即产品内【系统管理】-【用户管
 http(s)://[Endpoint]/?Action=GetUserActiveTenant
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Tenant>
@@ -2050,21 +2295,27 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 </Tenant> <RequestId>E20EAB9F-A3DB-42EC-BD0C-102A886340F5</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "Tenant": {
     "Status": "ACTIVE",
     "TenantName": "test",
     "Tid": -1
-  },
-  "RequestId": "E20EAB9F-A3DB-42EC-BD0C-102A886340F5",
-  "Success": true
-}
 ```
 
-#### GetUser
+`},`
+
+```json
+  "RequestId": "E20EAB9F-A3DB-42EC-BD0C-102A886340F5",
+  "Success": true
+```
+
+`}`
+
+#### 6.2.9 GetUser
+
+调用GetUser接口获取用户信息。
 
 **请求参数**
 
@@ -2083,12 +2334,10 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 
-数据管理
-
 | RequestId | String | CFF30064-5985- 4ACB-B3F9- 9557596913C8 | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。 |
-| User | Struct |  | 用户信息。 |
+| User | Struct |   | 用户信息。 |
 | CurExecuteCo unt | Long | 0 | 当天查询次数。 |
 | CurResultCoun t | Long | 0 | 当天查询行数。 |
 | LastLoginTime | String | 2020-02-02 00:00:00 | 最后登录时间。 |
@@ -2108,10 +2357,10 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 请求示例
 
 ```
-&Tid=-1
+http(s)://[Endpoint]/?Action=GetUser &Tid=-1
 ```
 
-`&<`公共请求参数> 数据管理正常返回示例 `XML` 格式
+`&<`公共请求参数`>` `XML` 格式
 
 ```xml
 <User>
@@ -2139,47 +2388,49 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 </User> <RequestId>CFF30064-5985-4ACB-B3F9-9557596913C8</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "User": {
     "RoleIdList": {
       "RoleIds": [
 ```
 
-`1,` `4,` `3,` ]
+`1,` `4,` `3,` `]` `},`
 
 ```json
-    },
     "State": "NORMAL",
     "RoleNameList": {
       "RoleNames": [
 ```
 
-"普通用户`",` "安全管理员`",` "管理员`",`
+`"`普通用户`",` `"`安全管理员`",` `"`管理员`",`
 
 ```
         "DBA"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "NickName": "xxx",
     "ParentUid": "114324325",
     "UserId": 432143,
     "Uid": "41234234324"
-  },
-  "RequestId": "CFF30064-5985-4ACB-B3F9-9557596913C8",
-  "Success": true
-}
 ```
 
-### 实例管理
+`},`
 
-#### ListServers
+```json
+  "RequestId": "CFF30064-5985-4ACB-B3F9-9557596913C8",
+  "Success": true
+```
+
+`}`
+
+### 6.3 实例管理
+
+#### 6.3.1 ListServers
 
 提供对DMS中机器的查询能力，支持灵活的分页与排序功能。
 
@@ -2195,7 +2446,7 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 | RegionId | Strin g | Host | 否 | cn-hangzhou | 地域ID。 |
 | Keyword | Strin g | Query | 否 | sg- bp1i4c0xgq0g7uw**** | 搜索关键词。 |
 
-| 数据管理 |  |  |  |  | 开发指南·API参考 |
+| 数据管理 |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2221,7 +2472,7 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 | ErrorCode | String | UnknownError | 调用失败时，返回的错误码。 |
 | ErrorMessage | String | UnknownError | 调用失败时，返回的错误信息。 |
 
-| 开发指南·API参考 |  |  | 数据管理 |
+| 开发指南·API参考 |   |   | 数据管理 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2231,33 +2482,40 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListServers
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "TotalCount":1,
  "RequestId":"0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
  "ServerList":[
-  {
+```
+
+`{`
+
+```json
    "User":"root",
    "ServerName":"test",
    "Ip":"127.XX.XX.1",
    "Id":"1",
    "SshPort":22,
    "Password":"******"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "ErrorCode":"UnknownError",
  "ErrorMessage":"UnknownError",
  "Success":true
-}
 ```
 
-`XML` 格式数据管理
+`}` `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId> <ServerList>
@@ -2270,7 +2528,7 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 </ServerList> <ErrorCode>UnknownError</ErrorCode> <ErrorMessage>UnknownError</ErrorMessage> <Success>true</Success>
 ```
 
-#### ListServerGroups
+#### 6.3.2 ListServerGroups
 
 提供对DMS中机器集群的查询功能，支持灵活的筛选条件。
 
@@ -2292,8 +2550,6 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 
 **返回数据**
 
-数据管理
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ServerGroupLi st | Array | test | 机器集群的列表，用于对机器进行逻辑分组管理。 |
@@ -2314,7 +2570,7 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 | --User | String | root | 用户名。 |
 | --Password | String | ****** | 密码。 |
 
-| 数据管理 |  |  | 开发指南·API参考 |
+| 数据管理 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2327,57 +2583,70 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式数据管理
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListServerGroups
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "TotalCount":1,
  "RequestId":"0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
  "ErrorCode":"UnknownError",
  "ErrorMessage":"UnknownError",
  "ServerGroupList":[
-  {
+```
+
+`{`
+
+```json
    "GroupName":"test",
    "MasterServer":[
-    {
+```
+
+`{`
+
+```json
      "User":"root",
      "ServerName":"test",
      "Ip":"192.XXX.XX.1",
      "Id":"1",
      "SshPort":22,
      "Password":"******"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "SlaveServerList":[
-    {
+```
+
+`{`
+
+```json
      "User":"root",
      "ServerName":"test",
      "Ip":"192.XXX.XX.1",
      "Id":"1",
      "SshPort":22,
      "Password":"******"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Id":"sg-bp1i4c0xgq0g7uw****"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Success":true
-}
 ```
 
-`XML` 格式数据管理
+`}` `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId> <ErrorCode>UnknownError</ErrorCode> <ErrorMessage>UnknownError</ErrorMessage> <ServerGroupList>
@@ -2402,9 +2671,9 @@ http(s)://[Endpoint]/?Action=GetUserActiveTenant
 </ServerGroupList> <Success>true</Success>
 ```
 
-#### RegisterInstance
+#### 6.3.3 RegisterInstance
 
-DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-【用户管理】中的管理员与DBA角色的用户）都可以通过这个接口增加录入本企业的新数据库实例。
+调用RegisterInstance接口录入本企业新数据库实例。 DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-【用户管理】中的管理员与DBA角色的用户）都可以通过这个接口增加录入本企业的新数据库实例。
 
 **请求参数**
 
@@ -2412,8 +2681,6 @@ DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-�
 |---|---|---|---|---|
 | Action | String | 是 | RegisterInstance | 系统规定参数。取值：RegisterInstance。 |
 | Tid | Long | 是 | -1 | 租户ID。 |
-
-数据管理
 
 | InstanceType | String | 是 | MySQL | 数据库类型，取值为： MySQL SQLServer PostgreSQL Oracle DRDS OceanBase Mongo Redis |
 |---|---|---|---|---|
@@ -2428,8 +2695,6 @@ DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-�
 | DbaUid | Long | 是 | 12345678 | 实例的DBA，传入DBA的阿里云UID。 |
 | SafeRule | String | 是 | 测试使用 | 实例的安全规则，传入企业内的安全规则名称。 |
 
-数据管理
-
 | QueryTimeout | Integer | 是 | 60 | 查询超时时间，单位：s（秒）。 |
 |---|---|---|---|---|
 | ExportTimeout | Integer | 是 | 600 | 导出超时时间，单位：s（秒）。 |
@@ -2442,8 +2707,6 @@ DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-�
 | UseDsql | Integer | 否 | 1 | 是否启用跨实例查询，取值： 0：不开启 1：开启 |
 | SkipTest | Boolean | 否 | true | 是否跳过测试连接，取值： true：跳过测试连接。 false：不跳过测试连接。 |
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
-
-数据管理
 
 **返回数据**
 
@@ -2459,7 +2722,7 @@ DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-�
 请求示例
 
 ```
-&Tid=-1 &InstanceType=MySQL &InstanceSource=RDS &NetworkType=VPC &EnvType=product &Host=dmstest.rds.aliyun.com &Port=3306 &DatabaseUser=dmstest &DatabasePassword=password
+http(s)://[Endpoint]/?Action=RegisterInstance &Tid=-1 &InstanceType=MySQL &InstanceSource=RDS &NetworkType=VPC &EnvType=product &Host=dmstest.rds.aliyun.com &Port=3306 &DatabaseUser=dmstest &DatabasePassword=password
 ```
 
 `&InstanceAlias=`测试实例
@@ -2474,23 +2737,21 @@ DMS企业版用户的**管理员、****DBA**（即产品内【系统管理】-�
 &QueryTimeout=60 &ExportTimeout=600
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<RegisterInstanceResponse>
       <RequestId>D4F02899-CE79-4DFD-9893-5217DA70B363</RequestId>
       <Success>true</Success>
+</RegisterInstanceResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "RequestId": "F4E2A94B-604F-43FF-93E7-F4EE3DCF412E",
     "Success": true
-}
 ```
-
-数据管理
 
 **Python sdk示例**
 
@@ -2504,46 +2765,50 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkdms_enterprise.request.
     "<your-region-id>"
 ```
 
-)
-# VPC_IDC实例注册示例
-# 租户`ID`
+`)` `# VPC_IDC`实例注册示例
+
+```
+request = RegisterInstanceRequest()
+```
+
+`#` 租户`ID`
 
 ```
 request.set_Tid(1)
 ```
 
-# 实例`host`
+`#` 实例`host`
 
 ```
 request.set_Host("192.168.16.113")
 ```
 
-# 实例`port`
+`#` 实例`port`
 
 ```
 request.set_Port(3314)
 ```
 
-# 实例`db`类型 `eg : MySQL`
+`#` 实例`db`类型 `eg : MySQL`
 
 ```
 request.set_InstanceType("MySQL")
 ```
 
-# 实例来源 `eg : VPC_IDC`
+`#` 实例来源 `eg : VPC_IDC`
 
 ```
 request.set_InstanceSource("VPC_IDC")
 ```
 
-# 网络类型 `type: eg : VPC`
+`#` 网络类型 `type: eg : VPC`
 
 ```bash
 request.set_NetworkType("VPC") request.set_EnvType("PRODUCT")
 # request.set_EcsInstanceId()
 ```
 
-# 实例 `vpc id`
+`#` 实例 `vpc id`
 
 ```bash
 request.set_VpcId（"实例 VPC ID"）
@@ -2552,29 +2817,21 @@ request.set_EcsRegion（"实例 ecs region"）
 # request.set_Sid();
 ```
 
-# 实例`db`登录用户
-`request.set_DatabaseUser`（"实例`db`登录用户"）
-# 实例`db`登录密码
-`request.set_DatabasePassword`（"实例`db`登录密码"）
-# 实例别名, 方便`DMS`企业版里面区分实例用
-`request.set_InstanceAlias`（"实例别名"）
-# 实例`dba` 阿里云`uid`（此用户必须先在`DMS`企业版录入, 或者使用`API`提前录入）
+`#` 实例`db`登录用户 `request.set_DatabaseUser`（`"`实例`db`登录用户`"`） `#` 实例`db`登录密码 `request.set_DatabasePassword`（`"`实例`db`登录密码`"`） `#` 实例别名`,` 方便`DMS`企业版里面区分实例用 `request.set_InstanceAlias`（`"`实例别名`"`） `#` 实例`dba` 阿里云`uid`（此用户必须先在`DMS`企业版录入`,` 或者使用`API`提前录入）
 
 ```
 request.set_DbaUid(-1)
 ```
 
-`request.set_SafeRule`（`"DMS`企业版里面配置的安全规则的规则名"）
+`request.set_SafeRule`（`"DMS`企业版里面配置的安全规则的规则名`"`）
 
 ```
 request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do_action_with_exception(request) print response
 ```
 
-#### ListInstances
+#### 6.3.4 ListInstances
 
-数据管理
-
-**请求参数**
+调用ListInstances接口检索实例列表并获取实例详情。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2596,10 +2853,8 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| InstanceList | Array of Instance |  | 实例列表。 |
-| Instance |  |  |  |
-
-数据管理
+| InstanceList | Array of Instance |   | 实例列表。 |
+| Instance |   |   |   |
 
 | DataLinkName | String | dblink test _ | DataLink名称。 |
 |---|---|---|---|
@@ -2622,8 +2877,6 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 | Port | Integer | 3306 | 实例端口。 |
 | QueryTimeout | Integer | 60 | 查询超时时间。 |
 
-数据管理
-
 | SafeRuleId | String | 1 | 实例安全规则ID。 |
 |---|---|---|---|
 | Sid | String | test | 实例SID。 |
@@ -2636,16 +2889,21 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListInstances
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>7</TotalCount> <RequestId>98D35416-2B92-4CE5-8FD2-B1E61E165536</RequestId> <Success>true</Success> <InstanceList> </InstanceList>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "TotalCount": 7,
   "RequestId": "98D35416-2B92-4CE5-8FD2-B1E61E165536",
   "Success": true,
@@ -2653,16 +2911,11 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
     "Instance": [
 ```
 
-]
+`]`
 
-```
-  }
-}
-```
+#### 6.3.5 GetInstance
 
-数据管理
-
-#### GetInstance
+调用GetInstance接口获取实例详细信息。
 
 **请求参数**
 
@@ -2681,14 +2934,12 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| Instance | Struct |  | 实例详细信息。 |
+| Instance | Struct |   | 实例详细信息。 |
 | DataLinkName | String | test | 实例DataLink名称。 |
 | DatabasePass word | String | ****** | 实例登录账号密码。 |
 | DatabaseUser | String | dbuser | 实例登录用户名。 |
 | DbaId | String | 1 | 实例DBA ID，与ListUsers中的ID对应。 |
 | DbaNickName | String | dbaname | 实例DBA名称。 |
-
-数据管理
 
 | DdlOnline | Integer | 1 | 实例onlineddl配置。 |
 |---|---|---|---|
@@ -2711,8 +2962,6 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 | UseDsql | Integer | 1 | 实例是否开启跨库查询。 |
 | VpcId | String | xxx | 实例所属VPC ID。 |
 
-数据管理
-
 | RequestId | String | 8BE73E78-76E2- 46AA-970D- A4579A16CD4A | API请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 接口调用是否成功。 |
@@ -2722,10 +2971,10 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 请求示例
 
 ```
-&Host=xxxx.mysql.rds.aliyuncs.com &Port=3306 &Tid=-1
+http(s)://[Endpoint]/?Action=GetInstance &Host=xxxx.mysql.rds.aliyuncs.com &Port=3306 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <Instance>
@@ -2753,10 +3002,9 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 </Instance> <RequestId>8BE73E78-76E2-46AA-970D-A4579A16CD4A</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "Instance": {
     "SafeRuleId": 1037,
     "UseDsql": "1",
@@ -2779,15 +3027,20 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
     "DatabasePassword": "******",
     "EcsRegion": "cn-hangzhou",
     "ExportTimeout": 300
-  },
-  "RequestId": "8BE73E78-76E2-46AA-970D-A4579A16CD4A",
-  "Success": true
-}
 ```
 
-#### UpdateInstance
+`},`
 
-调用UpdateInstance更新实例，请先通过GetInstance API获取对应实例的完整信息，再根据具体需要修改的内容进行设置，然后再调用此API
+```json
+  "RequestId": "8BE73E78-76E2-46AA-970D-A4579A16CD4A",
+  "Success": true
+```
+
+`}`
+
+#### 6.3.6 UpdateInstance
+
+调用UpdateInstance接口更新实例信息，同时会检查连通性。 调用UpdateInstance更新实例，请先通过GetInstance API获取对应实例的完整信息，再根据具体需要修改的内容进行设置，然后再调用此API
 
 **请求参数**
 
@@ -2797,8 +3050,6 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 | DatabasePasswo rd | String | 是 | ****** | 数据库账号密码。 |
 | DatabaseUser | String | 是 | dbuser | 数据库账号。 |
 | DbaId | String | 是 | 1 | 实例DBA ID，与ListUsers接口中的ID对应。 |
-
-数据管理
 
 | EnvType | String | 是 | test | 实例所属环境。 |
 |---|---|---|---|---|
@@ -2820,8 +3071,6 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 | DdlOnline | Integer | 否 | 1 | 实例onlineddl设置，取值请参考RegisterInstance接口。 |
 | UseDsql | Integer | 否 | 1 | 实例是否启用跨库查询。 |
 
-数据管理
-
 | SkipTest | Boolean | 否 | true | 是否跳过测试连接，取值如下： true：跳过测试连接。 false：不跳过测试连接。 |
 |---|---|---|---|---|
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
@@ -2837,28 +3086,30 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=UpdateInstance
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E9BEBF41-4F69-4605-A5D5-A67955173941</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "E9BEBF41-4F69-4605-A5D5-A67955173941",
   "Success": true
-}
 ```
 
-#### DeleteInstance
+`}`
 
-注意此删除是指将DMS企业版中录入的实例从企业版的管理里面移除，不会导致您的实例下线
+#### 6.3.7 DeleteInstance
 
-**请求参数**
-
-数据管理
+调用DeleteInstance接口删除DMS企业版管理的实例。 注意此删除是指将DMS企业版中录入的实例从企业版的管理里面移除，不会导致您的实例下线
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -2883,26 +3134,24 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 请求示例
 
 ```
-&Host=xxx.mysql.rds.aliyuncs.com &Port=3306 &Tid=-1
+http(s)://[Endpoint]/?Action=DeleteInstance &Host=xxx.mysql.rds.aliyuncs.com &Port=3306 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>B4B07137-F6AE-4756-8474-7F92BB6C4E04</RequestId> <ErrorCode>UnknownError</ErrorCode> <ErrorMessage>UnknownError</ErrorMessage> <Success>true</Success>
 ```
 
-数据管理 `JSON` 格式
-
 ```json
 {"RequestId":"B4B07137-F6AE-4756-8474- 7F92BB6C4E04","ErrorCode":"UnknownError","ErrorMessage":"UnknownError","Success":"true"}
 ```
 
-### 操作日志
+### 6.4 操作日志
 
-#### GetOpLog
+#### 6.4.1 GetOpLog
 
-账户角色为**管理员**、**安全管理员**可调用该接口。
+调用GetOpLog接口获取指定时间内的操作日志详情列表。 账户角色为**管理员**、**安全管理员**可调用该接口。
 
 **请求参数**
 
@@ -2915,8 +3164,6 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 | PageNumber | Integer | 是 | 3 | 页码，从1开始。 |
 | PageSize | Integer | 是 | 30 | 每页记录数，取值： 30 50 100 |
 
-数据管理
-
 | Module | String | 否 | PERMISSION | 日志模块，缺省则对应时间段内所有模块返回，日志模块取值和说明如下： PERMISSION：权限 OWNER：数据Owner SQL CONSOLE：数据查询 _ SQL CONSOLE EXPORT：查询结 _ _ 果导出 DATA CHANGE：数据变更 _ DATA EXPORT：数据导出 _ SQL REVIEW：SQL审核 _ DT SYNC：库表同步 _ DT DETAIL：库表详情 _ DB TASK：任务管理 _ INSTANCE MANAGE：实例管理 _ USER MANAGE：用户管理 _ SECURITY RULE：安全规则 _ CONFIG MANAGE：配置管理 _ RESOURCE AUTH：资源授权 _ ACCESS WHITE IP：访问IP白名单 _ _ |
 |---|---|---|---|---|
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
@@ -2927,13 +3174,11 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 |---|---|---|---|
 | ErrorCode | String | 403 | 错误码。 |
 | ErrorMessage | String | 请求参数不合法 | 错误消息。 |
-| OpLogDetails | Array of OpLogDetail |  | 操作日志详情列表。 |
-| OpLogDetail |  |  |  |
+| OpLogDetails | Array of OpLogDetail |   | 操作日志详情列表。 |
+| OpLogDetail |   |   |   |
 | Database | String | dmstest prod data _ _ base@dmstest.rds. ..【测试实例】 | 数据库访问地址，只有当实例类型为LocalInstance时，这个参数才有值。 说明仅任务类型区域的各功能模块操作才有这个属性。 |
 | Module | String | PERMISSION | 功能模块。 |
 | OpContent | String | 申请权限 | 操作内容。 |
-
-数据管理
 
 | OpTime | String | 2018-11-01 10:00:00 | 操作时间。 |
 |---|---|---|---|
@@ -2949,10 +3194,10 @@ request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do
 请求示例
 
 ```
-&Tid=-1 &StartTime=2018-11-01 10:00:00 &EndTime=2018-11-01 11:00:00 &PageNumber=3 &PageSize=30
+http(s)://[Endpoint]/?Action=GetOpLog &Tid=-1 &StartTime=2018-11-01 10:00:00 &EndTime=2018-11-01 11:00:00 &PageNumber=3 &PageSize=30
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <OpLogDetails>
@@ -2973,9 +3218,7 @@ M information_schema.tables WHERE table_type = &amp;#39;BASE TABLE&amp;#39; AND 
         <OpContent>(成功,行数:1)SELECT (data_length + index_length) AS store_capacity FRO
 ```
 
-#
-#
-` 数据管理
+`#` `#` `
 
 ```xml
 M information_schema.tables WHERE table_type = &amp;#39;BASE TABLE&amp;#39; AND `table_ schema` = &amp;#39;dmstest_database&amp;#39; AND `table_name` = &amp;#39;multi_db_multi_tbl&amp;#39;</OpContent>
@@ -3048,8 +3291,6 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 <OpTime>2018112214:33:54</OpTime>
 ```
 
-数据管理
-
 ```xml
         <OpTime>2018-11-22 14:33:54</OpTime>
 ```
@@ -3059,6 +3300,11 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```xml
     </OpLogDetail>
     <OpLogDetail>
+```
+
+`<OpContent>`新增`SQL`任务，任务号：`5486</OpContent>`
+
+```xml
         <UserNick>dmstest</UserNick>
         <Database>dmstest_database@dmstest.rds...(test)</Database>
         <UserId>12345678</UserId>
@@ -3070,6 +3316,11 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```xml
     </OpLogDetail>
     <OpLogDetail>
+```
+
+`<OpContent>`新增`SQL`任务，任务号：`5485</OpContent>`
+
+```xml
         <UserNick>dmstest</UserNick>
         <Database>dmstest_database@dmstest.rds...(test)</Database>
         <UserId>12345678</UserId>
@@ -3081,6 +3332,11 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```xml
     </OpLogDetail>
     <OpLogDetail>
+```
+
+`<OpContent>`新增`SQL`任务，任务号：`5484</OpContent>`
+
+```xml
         <UserNick>dmstest</UserNick>
         <Database>dmstest_database@dmstest.rds...(test)</Database>
         <UserId>12345678</UserId>
@@ -3092,6 +3348,11 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```xml
     </OpLogDetail>
     <OpLogDetail>
+```
+
+`<OpContent>`新增`SQL`任务，任务号：`5483</OpContent>`
+
+```xml
         <UserNick>dmstest</UserNick>
         <Database>dmstest_database@dmstest.rds...(test)</Database>
         <UserId>12345678</UserId>
@@ -3131,8 +3392,6 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 <OpContent>(成功,行数:2)SELECT`TABLENAME`FROMinformationschema.tablesWHERE
 ```
 
-数据管理
-
 ```xml
         <OpContent>(成功,行数:2)SELECT TABLE_NAME FROM information_schema.tables WHERE
 TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_database&amp;#39;</OpContent>
@@ -3147,6 +3406,11 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```xml
     </OpLogDetail>
     <OpLogDetail>
+```
+
+`<OpContent>`新增`SQL`任务，任务号：`5482</OpContent>`
+
+```xml
         <UserNick>dmstest</UserNick>
         <Database>dmstest_database@dmstest.rds...(test)</Database>
         <UserId>12345678</UserId>
@@ -3171,6 +3435,11 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```xml
     </OpLogDetail>
     <OpLogDetail>
+```
+
+`<OpContent>`新增`SQL`任务，任务号：`5481</OpContent>`
+
+```xml
         <UserNick>dmstest</UserNick>
         <Database>dmstest_database@dmstest.rds...(test)</Database>
         <UserId>12345678</UserId>
@@ -3208,8 +3477,6 @@ TABLE_TYPE = &amp;#39;BASE TABLE&amp;#39; AND table_schema = &amp;#39;dmstest_da
 ```
     </OpLogDetail>
 ```
-
-数据管理
 
 ```xml
     <OpLogDetail>
@@ -3254,10 +3521,9 @@ ontent>
 </OpLogDetails> <TotalCount>22</TotalCount> <RequestId>47D56208-DB1D-4FD3-BE32-300E43185488</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
     "OpLogDetails": {
         "OpLogDetail": [{
             "OpContent": "(成功,行数:1)SELECT (data_length + index_length) AS store_capac
@@ -3268,7 +3534,7 @@ ity FROM information_schema.tables WHERE table_type = &#39;BASE TABLE&#39; AND `
             "OpTime": "2018-11-22 20:04:10",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3280,13 +3546,11 @@ ity FROM information_schema.tables WHERE table_type = &#39;BASE TABLE&#39; AND `
 "OpTime":"2018-11-2220:04:06"
 ```
 
-数据管理
-
 ```
             OpTime: 20181122 20:04:06,
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3297,7 +3561,7 @@ ity FROM information_schema.tables WHERE table_type = &#39;BASE TABLE&#39; AND `
             "OpTime": "2018-11-22 20:03:55",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3309,7 +3573,7 @@ ity FROM information_schema.tables WHERE table_type = &#39;BASE TABLE&#39; AND `
             "OpTime": "2018-11-22 20:02:59",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3321,7 +3585,7 @@ ity FROM information_schema.tables WHERE table_type = &#39;BASE TABLE&#39; AND `
             "OpTime": "2018-11-22 20:02:49",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3332,7 +3596,7 @@ ity FROM information_schema.tables WHERE table_type = &#39;BASE TABLE&#39; AND `
             "OpTime": "2018-11-22 14:34:05",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3344,7 +3608,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:33:54",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```
         }, {
@@ -3359,7 +3623,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:26:57",
 ```
 
-`"Module": "`任务管理"
+`"Module": "`任务管理`"`
 
 ```
         }, {
@@ -3374,7 +3638,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:23:55",
 ```
 
-数据管理 p , `"Module": "`任务管理"
+`p` `,` `"Module": "`任务管理`"`
 
 ```
         }, {
@@ -3389,7 +3653,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:23:30",
 ```
 
-`"Module": "`任务管理"
+`"Module": "`任务管理`"`
 
 ```
         }, {
@@ -3404,7 +3668,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:23:11",
 ```
 
-`"Module": "`任务管理"
+`"Module": "`任务管理`"`
 
 ```json
         }, {
@@ -3415,7 +3679,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:22:30",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3427,7 +3691,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:22:15",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3439,7 +3703,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:19:31",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```
         }, {
@@ -3454,7 +3718,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:19:25",
 ```
 
-`"Module": "`任务管理"
+`"Module": "`任务管理`"`
 
 ```json
         }, {
@@ -3466,13 +3730,13 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:18:57",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```
         }, {
 ```
 
-数据管理 `"OpContent": "`新增`SQL`任务，任务号：`5481",`
+`"OpContent": "`新增`SQL`任务，任务号：`5481",`
 
 ```json
             "UserNick": "dmstest",
@@ -3481,7 +3745,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:18:46",
 ```
 
-`"Module": "`任务管理"
+`"Module": "`任务管理`"`
 
 ```json
         }, {
@@ -3493,7 +3757,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:04:13",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3505,7 +3769,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 14:04:08",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```json
         }, {
@@ -3517,7 +3781,7 @@ WHERE TABLE_TYPE = &#39;BASE TABLE&#39; AND table_schema = &#39;dmstest_database
             "OpTime": "2018-11-22 12:11:41",
 ```
 
-`"Module": "`数据查询"
+`"Module": "`数据查询`"`
 
 ```
         }, {
@@ -3544,15 +3808,15 @@ dmstest_prod_database@dmstest.rds...(test)",
             "UserId": 12345678,
             "OpTime": "2018-11-22 12:11:07",
             "Module": "数据Owner"
-        }]
-    },
+```
+
+`}]` `},`
+
+```json
     "TotalCount": 22,
     "RequestId": "47D56208-DB1D-4FD3-BE32-300E43185488",
     "Success": true
-}
 ```
-
-数据管理
 
 **SDK示例**
 
@@ -3565,15 +3829,23 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkdms_enterprise.request.
    "<your-region-id>"
 ```
 
-) `request.set_Tid("`请输入你的企业租户`id")`
+`)`
+
+```
+request = GetOpLogRequest()
+```
+
+`request.set_Tid("`请输入你的企业租户`id")`
 
 ```
 request.set_StartTime("2018-11-20 00:00:00") request.set_EndTime("2018-11-23 00:00:00") request.set_PageNumber(1) request.set_PageSize(50) response = client.do_action_with_exception(request) print response
 ```
 
-### 审批流程
+### 6.5 审批流程
 
-#### ListWorkFlowTemplates
+#### 6.5.1 ListWorkFlowTemplates
+
+调用ListWorkFlowTemplates接口获取审批模板列表。
 
 **请求参数**
 
@@ -3590,28 +3862,24 @@ request.set_StartTime("2018-11-20 00:00:00") request.set_EndTime("2018-11-23 00:
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 
-数据管理
-
 | ErrorMessage | String | UnknownError | 错误消息。 |
 |---|---|---|---|
 | RequestId | String | 41067071-0243- 4AAB-B3CF- 4DE6D54F53B4 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-| WorkFlowTem plates | Array of WorkFlowTem plate |  | 审批模板列表。 |
-| WorkFlowTem plate |  |  |  |
+| WorkFlowTem plates | Array of WorkFlowTem plate |   | 审批模板列表。 |
+| WorkFlowTem plate |   |   |   |
 | Comment | String | test | 备注。 |
 | CreateUserId | Long | 1234 | 创建人ID。 |
 | Enabled | String | Y | 模板是否启用，取值和说明如下： Y：启用 N：禁用 |
 | IsSystem | Integer | 1 | 是否系统定义的审批模板，取值和说明如下： 1：是 0：否 |
 | TemplateId | Long | 12345 | 模板ID。 |
 | TemplateNam e | String | Admin | 模板名称。 |
-| WorkflowNode s | Array of WorkflowNode |  | 审批节点信息。 |
-| WorkflowNode |  |  |  |
+| WorkflowNode s | Array of WorkflowNode |   | 审批节点信息。 |
+| WorkflowNode |   |   |   |
 | Comment | String | test | 备注。 |
 | CreateUserId | Long | 1234 | 创建人ID。 |
 | NodeId | Long | 123 | 节点ID。 |
 | NodeName | String | test | 节点名称。 |
-
-数据管理
 
 | NodeType | String | SYS | 节点类型，取值和说明如下： SYS：系统定义 USER LIST：用户自定义 _ |
 |---|---|---|---|
@@ -3626,7 +3894,7 @@ request.set_StartTime("2018-11-20 00:00:00") request.set_EndTime("2018-11-23 00:
 http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>41067071-0243-4AAB-B3CF-4DE6D54F53B4</RequestId> <Success>true</Success> <WorkFlowTemplates>
@@ -3677,8 +3945,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 <WorkFlowNode>
 ```
 
-数据管理
-
 ```xml
             <WorkFlowNode>
 ```
@@ -3713,26 +3979,23 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 </WorkFlowTemplates>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "41067071-0243-4AAB-B3CF-4DE6D54F53B4",
   "Success": true,
   "WorkFlowTemplates": {
     "WorkFlowTemplate": [
-      {
 ```
 
-`"Comment": "`系统定义审批线，仅需管理员审批`",`
+`{` `"Comment": "`系统定义审批线，仅需管理员审批`",`
 
 ```json
         "WorkFlowNodes": {
           "WorkFlowNode": [
-            {
 ```
 
-`"Comment": "`系统节点，动态计算，由管理员来完成审批`",`
+`{` `"Comment": "`系统节点，动态计算，由管理员来完成审批`",`
 
 ```json
               "NodeName": "Admin",
@@ -3740,33 +4003,22 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
               "NodeType": "SYS",
               "NodeId": 3763,
               "TemplateId": 6243
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-        },
         "TemplateName": "Admin",
         "Enabled": "Y",
         "IsSystem": 1,
         "TemplateId": 6243
-      },
-      {
 ```
 
-`"Comment": "`系统定义审批线，先数据`Owner`审批，再`DBA`审批，最后`Admin`审批`",`
+`},` `{` `"Comment": "`系统定义审批线，先数据`Owner`审批，再`DBA`审批，最后`Admin`审批`",`
 
 ```json
         "WorkflowNodes": {
           "WorkFlowNode": [
-{
-```
-
-数据管理
-
-```
-            {
 ```
 
 `"Comment": "`系统节点，动态计算，由用户操作的资源对应的`Owner`来完成审批`",`
@@ -3777,11 +4029,9 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
               "NodeType": "SYS",
               "NodeId": 3762,
               "TemplateId": 6244
-            },
-            {
 ```
 
-`"Comment": "`系统节点，动态计算，由用户操作的资源对应的`DBA`来完成审批`",`
+`},` `{` `"Comment": "`系统节点，动态计算，由用户操作的资源对应的`DBA`来完成审批`",`
 
 ```json
               "NodeName": "DBA",
@@ -3789,11 +4039,9 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
               "NodeType": "SYS",
               "NodeId": 3761,
               "TemplateId": 6244
-            },
-            {
 ```
 
-`"Comment": "`系统节点，动态计算，由管理员来完成审批`",`
+`},` `{` `"Comment": "`系统节点，动态计算，由管理员来完成审批`",`
 
 ```json
               "NodeName": "Admin",
@@ -3801,28 +4049,22 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
               "NodeType": "SYS",
               "NodeId": 3763,
               "TemplateId": 6244
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-        },
         "TemplateName": "Owner-->DBA-->Admin",
         "Enabled": "Y",
         "IsSystem": 1,
         "TemplateId": 6244
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.5.2 ListWorkFlowNodes
 
-#### ListWorkFlowNodes
+调用ListWorkFlowNodes接口获取审批节点列表。
 
 **请求参数**
 
@@ -3831,8 +4073,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | Action | String | 是 | ListWorkFlowNo des | 系统规定参数。取值：ListWorkFlowNodes。 |
 | Tid | Long | 是 | -1 | 租户ID。 |
 | SearchName | String | 否 | admin | 搜索审批节点名称。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
 |---|---|---|---|---|
@@ -3845,10 +4085,10 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | ErrorMessage | String | UnknownError | 错误消息。 |
 | RequestId | String | CFD8FE00-36D9- 4C1B-940D- 65A7B73D9066 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-| WorkflowNode s | Array of WorkflowNode |  | 审批节点信息。 |
-| WorkflowNode |  |  |  |
-| AuditUsers | Array of AuditUser |  | 审批人信息。 |
-| AuditUser |  |  |  |
+| WorkflowNode s | Array of WorkflowNode |   | 审批节点信息。 |
+| WorkflowNode |   |   |   |
+| AuditUsers | Array of AuditUser |   | 审批人信息。 |
+| AuditUser |   |   |   |
 | NickName | String | test | 审批人名称。 |
 | RealName | String | test | 审批人真实名。 |
 | UserId | Long | 123 | 审批人用户ID，注意不是阿里云UID。 |
@@ -3858,8 +4098,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | NodeId | Long | 123 | 节点ID。 |
 | NodeName | String | test | 节点名称。 |
 
-数据管理
-
 | NodeType | String | SYS | 节点类型，取值和说明如下： SYS：系统定义 USER LIST：用户自定义 _ |
 |---|---|---|---|
 
@@ -3868,10 +4106,10 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 请求示例
 
 ```
-&Tid=-1
+http(s)://[Endpoint]/?Action=ListWorkFlowNodes &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <WorkFlowNodes>
@@ -3890,16 +4128,14 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 </WorkFlowNodes> <RequestId>CFD8FE00-36D9-4C1B-940D-65A7B73D9066</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "WorkFlowNodes": {
     "WorkflowNode": [
-      {
 ```
 
-`"Comment": "`系统节点，动态计算，由管理员来完成审批`",`
+`{` `"Comment": "`系统节点，动态计算，由管理员来完成审批`",`
 
 ```json
         "NodeName": "Admin",
@@ -3907,24 +4143,22 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
         "NodeId": 3763,
         "AuditUsers": {
           "AuditUser": []
-        }
-      }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
-  },
   "RequestId": "CFD8FE00-36D9-4C1B-940D-65A7B73D9066",
   "Success": true
-}
 ```
 
-### 库表元数据
+`}`
 
-数据管理
+### 6.6 库表元数据
 
-#### SearchDatabase
+#### 6.6.1 SearchDatabase
+
+调用SearchDatabase接口搜索库详情信息。
 
 **请求参数**
 
@@ -3941,8 +4175,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | DbType | String | 否 | MySQL | 数据库类型，取值为： MySQL SQLServer PostgreSQL Oracle DRDS OceanBase Mongo Redis |
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
 
-数据管理
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
@@ -3950,8 +4182,8 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | E0D21075-CD3E- 4D98-8264- FD8AD04A63B6 | API请求ID。 |
-| SearchDataba seList | Array of SearchDataba se |  | 搜索库详情列表。 |
-| SearchDataba se |  |  |  |
+| SearchDataba seList | Array of SearchDataba se |   | 搜索库详情列表。 |
+| SearchDataba se |   |   |   |
 | Alias | String | test | 数据库别名。 |
 | DatabaseId | String | 1 | 数据库ID。 |
 | DatalinkName | String | datalink name _ | 数据库所对应DataLink。 |
@@ -3960,8 +4192,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | Encoding | String | utf8 | 数据库编码。 |
 | EnvType | String | product | 数据库的环境类型。 |
 | Host | String | xxx.xxx.xxx.xxx | 库所在的实例对应连接地址。 |
-
-数据管理
 
 | Logic | Boolean | false | 是否为逻辑库，取值： true：是 false：否 |
 |---|---|---|---|
@@ -3979,13 +4209,14 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 请求示例
 
 ```
-&PageNumber=1 &SearchKey=testdb &Tid=-1
+http(s)://[Endpoint]/?Action=SearchDatabase &PageNumber=1 &SearchKey=testdb &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
-<TotalCount>1</TotalCount> <RequestId>E0D21075-CD3E-4D98-8264-FD8AD04A63B6</RequestId>
+<TotalCount>1</TotalCount> <RequestId>E0D21075-CD3E-4D98-8264-FD8AD04A63B6</RequestId> <SearchDatabaseList>
+    <SearchDatabase>
         <Encoding>utf8mb4</Encoding>
         <Host>pc-xxx.mysql.polardb.rds.aliyuncs.com</Host>
         <DbType>polardb</DbType>
@@ -4013,16 +4244,22 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 ```xml
         <DatalinkName>dblink_38</DatalinkName>
         <SchemaName>xxx_0000</SchemaName>
-<Success>true</Success>
+    </SearchDatabase>
+</SearchDatabaseList> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "TotalCount": 1,
   "RequestId": "E0D21075-CD3E-4D98-8264-FD8AD04A63B6",
-      {
+  "SearchDatabaseList": {
+    "SearchDatabase": [
+```
+
+`{`
+
+```json
         "Encoding": "utf8mb4",
         "Host": "pc-xxx.mysql.polardb.rds.aliyuncs.com",
         "DbType": "polardb",
@@ -4034,10 +4271,9 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
             104442
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "Logic": false,
         "DbaId": 88653,
         "OwnerNameList": {
@@ -4046,10 +4282,9 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
             "xx",
 ```
 
-`"xx[`子账号`]"` ]
+`"xx[`子账号`]"` `]` `},`
 
 ```json
-        },
         "Port": 3306,
         "DatabaseId": 117567,
 ```
@@ -4060,18 +4295,19 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
         "SearchName": "xxx@pc-xxx.mysql.polardb.rds.aliyuncs.com:3306【xx线下库】",
         "DatalinkName": "dblink_38",
         "SchemaName": "xxx_0000"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### SearchTable
+`}`
+
+#### 6.6.2 SearchTable
+
+调用SearchTable接口搜索表详情列表。
 
 **请求参数**
 
@@ -4079,8 +4315,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 |---|---|---|---|---|
 | Action | String | 是 | SearchTable | 系统规定参数。取值：SearchTable。 |
 | Tid | Long | 否 | 1 | 租户ID。 |
-
-数据管理
 
 | SearchKey | String | 否 | test | 搜索表名称的关键字。 |
 |---|---|---|---|---|
@@ -4100,12 +4334,10 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 
-数据管理
-
 | RequestId | String | 1489257F-1B5D- 4B5B-89EF- 923C12CEEBD1 | 请求ID。 |
 |---|---|---|---|
-| SearchTableLi st | Array of SearchTable |  | 搜索表详情列表。 |
-| SearchTable |  |  |  |
+| SearchTableLi st | Array of SearchTable |   | 搜索表详情列表。 |
+| SearchTable |   |   |   |
 | DBSearchNam e | String | test | 表所对应的库搜索名。 |
 | DatabaseId | String | 1 | 所属的库ID。 |
 | DbName | String | test | 数据库名。 |
@@ -4119,8 +4351,6 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 | OwnerNameLi st | List | user | 表Owner昵称列表。 |
 | TableGuid | String | IDB L 9032.db- _ _ test.yuyang test _ | 表GUID。 |
 
-数据管理
-
 | TableId | String | 1 | 表ID。 |
 |---|---|---|---|
 | TableName | String | test table _ | 表名。 |
@@ -4130,9 +4360,17 @@ http(s)://[Endpoint]/?Action=ListWorkFlowTemplates &Tid=-1
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=SearchTable
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<SearchTableList>
+    <SearchTable>
         <TableGuid>IDB_L_9032.db-test.yuyang_test</TableGuid>
         <Logic>false</Logic>
         <TableSchemaName>xxx_0000</TableSchemaName>
@@ -4154,14 +4392,18 @@ BSearchName>
         <EnvType>dev</EnvType>
         <Engine>InnoDB</Engine>
         <TableId>18396767</TableId>
-<TotalCount>1</TotalCount> <RequestId>1489257F-1B5D-4B5B-89EF-923C12CEEBD1</RequestId> <Success>true</Success>
+    </SearchTable>
+</SearchTableList> <TotalCount>1</TotalCount> <RequestId>1489257F-1B5D-4B5B-89EF-923C12CEEBD1</RequestId> <Success>true</Success>
 ```
 
-数据管理 `JSON` 格式
+```json
+  "SearchTableList": {
+    "SearchTable": [
+```
+
+`{`
 
 ```json
-{
-      {
         "TableGuid" : "IDB_L_9032.db-test.yuyang_test",
         "Logic": false,
         "TableSchemaName": "xxx_0000",
@@ -4172,10 +4414,9 @@ BSearchName>
             "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "DBSearchName": "xxx_0000@pc-xxx.mysql.polardb.rds.aliyuncs.com:3306【xxx线下库】
 ```
 
@@ -4192,35 +4433,33 @@ BSearchName>
             104442
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "EnvType": "dev",
         "Engine": "InnoDB",
         "TableId": 18396767
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 1,
   "RequestId": "1489257F-1B5D-4B5B-89EF-923C12CEEBD1",
   "Success": true
-}
 ```
 
-#### ListDatabases
+`}`
+
+#### 6.6.3 ListDatabases
+
+调用ListDatabases接口获取指定实例下的数据库列表详情信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ListDatabases | 系统规定参数。取值：ListDatabases。 |
-
-数据管理
 
 | InstanceId | String | 是 | 1 | 实例ID，取值来自ListInstances接口返回的实例信息中的实例ID，注意不是RDS 的实例ID。 |
 |---|---|---|---|---|
@@ -4233,8 +4472,8 @@ BSearchName>
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DatabaseList | Array of Database |  | 数据库详情列表。 |
-| Database |  |  |  |
+| DatabaseList | Array of Database |   | 数据库详情列表。 |
+| Database |   |   |   |
 | CatalogName | String | 1 | 数据库目录名称。 说明若数据库类型为PG系列，此处表示PG数据库名。 |
 | DatabaseId | String | 1 | 数据库ID。 |
 | DbType | String | mysql | 数据库类型。 |
@@ -4244,8 +4483,6 @@ BSearchName>
 | EnvType | String | dev | 数据库所属环境类型。 |
 | Host | String | xxx.xxx.xxx.xxx | 实例连接地址。 |
 | InstanceId | String | 1 | 数据库所属实例ID。 |
-
-数据管理
 
 | OwnerIdList | List | 1 | 数据库Owner ID列表。 |
 |---|---|---|---|
@@ -4266,10 +4503,10 @@ BSearchName>
 请求示例
 
 ```
-&InstanceId=1 &PageNumber=1 &Tid=-1
+http(s)://[Endpoint]/?Action=ListDatabases &InstanceId=1 &PageNumber=1 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>5541CDA6-F674-435C-81BD-40C2FB926CE3</RequestId> <Success>true</Success> <DatabaseList>
@@ -4296,16 +4533,19 @@ BSearchName>
 </DatabaseList>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "TotalCount": 1,
   "RequestId": "5541CDA6-F674-435C-81BD-40C2FB926CE3",
   "Success": true,
   "DatabaseList": {
     "Database": [
-      {
+```
+
+`{`
+
+```json
         "Encoding": "utf8",
         "Host": "pc-xxx.rwlb.rds.aliyuncs.com",
         "InstanceId": 24710,
@@ -4316,37 +4556,31 @@ BSearchName>
             88653
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "DbaId": 104442,
         "OwnerNameList": {
           "OwnerNames": [
             "dmstest"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "Port": 3306,
         "DatabaseId": 116366,
         "State": "NORMAL",
         "SearchName": "xxx_test@pc-xxx.rwlb.rds.aliyuncs.com:3306【xxx_test】",
         "DbaName": "xxx[子账号]",
         "SchemaName": "xxx_test"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.6.4 ListLogicDatabases
 
-#### ListLogicDatabases
+调用ListLogicDatabases接口获取逻辑库详情列表。
 
 **请求参数**
 
@@ -4355,8 +4589,6 @@ BSearchName>
 | Action | String | 是 | ListLogicDataba ses | 系统规定参数。取值：ListLogicDatabases。 |
 | PageNumber | Integer | 否 | 1 | 页码。 |
 | Tid | Long | 否 | -1 | 租户ID。 |
-
-数据管理
 
 | PageSize | Integer | 否 | 50 | 每页记录数。 |
 |---|---|---|---|---|
@@ -4368,8 +4600,8 @@ BSearchName>
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| LogicDatabase List | Array of LogicDatabase |  | 逻辑库详情列表。 |
-| LogicDatabase |  |  |  |
+| LogicDatabase List | Array of LogicDatabase |   | 逻辑库详情列表。 |
+| LogicDatabase |   |   |   |
 | DatabaseId | String | 1 | 逻辑库ID。 |
 | DbType | String | mysql | 逻辑库数据库类型。 |
 | EnvType | String | test | 逻辑库所属环境。 |
@@ -4382,15 +4614,13 @@ BSearchName>
 | Success | Boolean | true | 请求是否成功。 |
 | TotalCount | Long | 13 | 逻辑库总数。 |
 
-**示例**
-
-数据管理请求示例
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>13</TotalCount> <RequestId>BAD154C0-DA38-48FA-97AB-E72912EEAA24</RequestId> <LogicDatabaseList>
@@ -4437,25 +4667,27 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </LogicDatabaseList> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "TotalCount": 13,
   "RequestId": "BAD154C0-DA38-48FA-97AB-E72912EEAA24",
   "LogicDatabaseList": {
     "LogicDatabase": [
-      {
+```
+
+`{`
+
+```json
         "Logic": true,
         "OwnerNameList": {
           "OwnerNames": [
             "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "DatabaseId": 257,
 ```
 
@@ -4468,14 +4700,16 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             88653
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "EnvType": "dev",
         "SchemaName": "test_db"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "Logic": true,
         "OwnerNameList": {
           "OwnerNames": [
@@ -4484,10 +4718,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "DatabaseId": 258,
 ```
 
@@ -4502,28 +4735,24 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             101252
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "EnvType": "product",
         "SchemaName": "idb_test"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### ListTables
+`}`
 
-数据管理
+#### 6.6.5 ListTables
 
-**请求参数**
+调用ListTables接口获取数据库中表的详情列表。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4544,12 +4773,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | B16FB618-5E96- 4FFD-BB0D- 490C890A4030 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-| TableList | Array of Table |  | 表详情列表。 |
-| Table |  |  |  |
+| TableList | Array of Table |   | 表详情列表。 |
+| Table |   |   |   |
 | DatabaseId | String | 1 | 数据库ID。 |
 | Description | String | test | 表描述信息。 |
-
-数据管理
 
 | Encoding | String | utf8 | 表编码。 |
 |---|---|---|---|
@@ -4570,10 +4797,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 请求示例
 
 ```
-&DatabaseId=1 &PageNumber=1 &Tid=-1
+http(s)://[Endpoint]/?Action=ListTables &DatabaseId=1 &PageNumber=1 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TableList>
@@ -4619,18 +4846,16 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </TableList> <TotalCount>12</TotalCount> <RequestId>B16FB618-5E96-4FFD-BB0D-490C890A4030</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "TableList": {
     "Table": [
-      {
         "TableSchemaName": "yuyang_test",
         "OwnerNameList": {
 ```
 
-`"O` N " [ 数据管理
+`"O` `N` `"` `[`
 
 ```json
           "OwnerNames": [
@@ -4638,10 +4863,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "DatabaseId": 116367,
         "Encoding": "utf8mb4",
         "NumRows": 3,
@@ -4655,14 +4879,16 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             104442
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "Engine": "InnoDB",
         "TableId": 18396363
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "TableSchemaName": "yuyang_test",
         "OwnerNameList": {
           "OwnerNames": [
@@ -4670,10 +4896,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "DatabaseId": 116367,
         "Encoding": "utf8mb4",
         "NumRows": 2,
@@ -4686,30 +4911,26 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             104442
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "Engine": "InnoDB",
         "TableId": 18390459
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 12,
   "RequestId": "B16FB618-5E96-4FFD-BB0D-490C890A4030",
   "Success": true
-}
 ```
 
-#### ListLogicTables
+`}`
 
-数据管理
+#### 6.6.6 ListLogicTables
 
-**请求参数**
+调用ListLogicTables接口获取指定逻辑库下面的逻辑表详情列表。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -4728,14 +4949,12 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| LogicTableList | Array of LogicTable |  | 逻辑表详情列表。 |
-| LogicTable |  |  |  |
+| LogicTableList | Array of LogicTable |   | 逻辑表详情列表。 |
+| LogicTable |   |   |   |
 | DatabaseId | String | 1 | 逻辑库ID。 |
 | Logic | Boolean | true | 是否为逻辑表，固定为true。 |
 | OwnerIdList | List | 1 | 逻辑表Owner ID列表。 |
 | OwnerNameLi st | List | owner name _ | 逻辑表Owner名称列表。 |
-
-数据管理
 
 | SchemaName | String | yuyang test _ | 逻辑表对应逻辑库名。 |
 |---|---|---|---|
@@ -4753,10 +4972,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 请求示例
 
 ```
-&DatabaseId=1 &PageNumber=1 &Tid=-1
+http(s)://[Endpoint]/?Action=ListLogicTables &DatabaseId=1 &PageNumber=1 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>F1E6484F-9DF1-4406-9BDE-0861C4629B69</RequestId> <LogicTableList>
@@ -4781,15 +5000,18 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </LogicTableList> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "TotalCount": 1,
   "RequestId": "F1E6484F-9DF1-4406-9BDE-0861C4629B69",
   "LogicTableList": {
     "LogicTable": [
-      {
+```
+
+`{`
+
+```json
         "Logic": true,
         "OwnerNameList": {
           "OwnerNames": [
@@ -4797,10 +5019,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "TableExpr": "t[1-4]",
         "DatabaseId": 267,
         "SchemaName": "yuyang_test",
@@ -4813,23 +5034,23 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
             104442
 ```
 
-]
+`]` `},`
 
 ```json
-        },
         "TableId": 3057
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### ListColumns
+`}`
+
+#### 6.6.7 ListColumns
+
+调用ListColumns接口获取表的列信息。
 
 **请求参数**
 
@@ -4840,8 +5061,6 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 | TableId | String | 是 | 1 | 表ID。 |
 | Tid | Long | 是 | 0 | 租户ID。 |
 
-数据管理
-
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
 |---|---|---|---|---|
 
@@ -4849,8 +5068,8 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ColumnList | Array of Column |  | 列信息详情。 |
-| Column |  |  |  |
+| ColumnList | Array of Column |   | 列信息详情。 |
+| Column |   |   |   |
 | AutoIncrement | Boolean | false | 当前字段是否自增。取值： true：自增。 false：不自增。 |
 | ColumnId | String | 1 | 字段ID。 |
 | ColumnName | String | name | 字段名。 |
@@ -4862,8 +5081,6 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 | Description | String | test | 字段描述。 |
 | FunctionType | String | default | 字段遮掩算法类型，取值如下： null：无遮掩 DEFAULT：全遮掩 FIX POS：固定位置遮掩 _ FIX CHAR：固定字符替换 _ |
 | Nullable | Boolean | true | 字段是否可空。 |
-
-数据管理
 
 | SecurityLevel | String | INNER | 安全级别，取值如下： INNER：内部（非敏感） SENSITIVE：敏感 CONFIDENTIAL：机密 |
 |---|---|---|---|
@@ -4878,10 +5095,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 请求示例
 
 ```
-&Logic=false &TableId=1 &Tid=0
+http(s)://[Endpoint]/?Action=ListColumns &Logic=false &TableId=1 &Tid=0
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ColumnList>
@@ -4933,13 +5150,14 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </ColumnList> <RequestId>0AD9AC55-5873-474A-9F33-4285806A3619</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
-
 ```json
-{
   "ColumnList": {
     "Column": [
-      {
+```
+
+`{`
+
+```json
         "ColumnId": 314036829,
         "DataScale": 0,
         "Sensitive": false,
@@ -4950,8 +5168,11 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         "SecurityLevel": "INNER",
         "AutoIncrement": true,
         "Nullable": false
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ColumnId": 314036830,
         "Sensitive": false,
 ```
@@ -4965,8 +5186,11 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         "SecurityLevel": "INNER",
         "AutoIncrement": false,
         "Nullable": false
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ColumnId": 314036831,
         "Sensitive": false,
 ```
@@ -4980,8 +5204,11 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         "SecurityLevel": "INNER",
         "AutoIncrement": false,
         "Nullable": false
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ColumnId": 314036832,
         "Sensitive": false,
         "Description": "base_user",
@@ -4991,21 +5218,18 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         "SecurityLevel": "INNER",
         "AutoIncrement": false,
         "Nullable": true
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "RequestId": "0AD9AC55-5873-474A-9F33-4285806A3619",
   "Success": true
-}
 ```
 
-数据管理
+#### 6.6.8 ListIndexes
 
-#### ListIndexes
+调用ListIndexes接口返回表索引信息。
 
 **请求参数**
 
@@ -5023,14 +5247,12 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| IndexList | Array of Index |  | 索引详情列表。 |
-| Index |  |  |  |
+| IndexList | Array of Index |   | 索引详情列表。 |
+| Index |   |   |   |
 | IndexCommen t | String | test | 索引描述。 |
 | IndexId | String | 1 | 索引ID。 |
 | IndexName | String | idx test _ | 索引名称。 |
 | IndexType | String | Primary | 索引类型，取值如下： Primary Unique Normal FullText Spatial |
-
-数据管理
 
 | TableId | String | 1 | 表ID。 |
 |---|---|---|---|
@@ -5042,10 +5264,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 请求示例
 
 ```
-&Logic=false &TableId=1 &Tid=0
+http(s)://[Endpoint]/?Action=ListIndexes &Logic=false &TableId=1 &Tid=0
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>1F4DE2F1-5B47-462A-A973-E02EB7AF386B</RequestId> <IndexList>
@@ -5059,33 +5281,33 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </IndexList> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "1F4DE2F1-5B47-462A-A973-E02EB7AF386B",
   "IndexList": {
     "Index": [
-      {
+```
+
+`{`
+
+```json
         "IndexComment": "",
         "IndexType": "Primary",
         "IndexName": "PRIMARY",
         "IndexId": 49331416,
         "TableId": 18396274
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-数据管理
+#### 6.6.9 GetDatabase
 
-#### GetDatabase
+调用GetDatabase接口获取具体库的详情信息。
 
 **请求参数**
 
@@ -5103,15 +5325,13 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| Database | Struct |  | 库详情信息。 |
+| Database | Struct |   | 库详情信息。 |
 | CatalogName | String | def | 数据库目录名。 说明若数据库类型为PG系列，此处表示PG数据库名。 |
 | DatabaseId | String | 1 | 数据库ID。 |
 | DbType | String | mysql | 数据库类型。 |
 | DbaId | String | 1 | DBA ID。 |
 | DbaName | String | dba name _ | DBA名称。 |
 | Encoding | String | utf8mb4 | 数据库编码。 |
-
-数据管理
 
 | EnvType | String | test | 库环境类型。 |
 |---|---|---|---|
@@ -5134,10 +5354,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 请求示例
 
 ```
-&Host=xxx.xxx.xxx.xxx &Port=3306 &SchemaName=test_db &Tid=-1
+http(s)://[Endpoint]/?Action=GetDatabase &Host=xxx.xxx.xxx.xxx &Port=3306 &SchemaName=test_db &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` `XML` 格式
 
 ```xml
 <Database>
@@ -5164,10 +5384,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </Database> <RequestId>3CDB8601-AD74-4A47-8114-08E08CD6319D</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "Database": {
     "Encoding": "utf8mb4",
     "Host": "pc-xxx.rwlb.rds.aliyuncs.com",
@@ -5179,10 +5398,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         104442
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "EnvType": "product",
     "DbaId": 104442,
     "OwnerNameList": {
@@ -5190,23 +5408,29 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         "xxx",
 ```
 
-`"xxx[`子账号`]"` ]
+`"xxx[`子账号`]"` `]` `},`
 
 ```json
-    },
     "Port": 3306,
     "DatabaseId": 116367,
     "State": "NORMAL",
     "SearchName": "xxx_test@pc-xxx.rwlb.rds.aliyuncs.com:3306【xxx_test】",
     "DbaName": "xxx[子账号]",
     "SchemaName": "xxx_test"
-  },
-  "RequestId": "3CDB8601-AD74-4A47-8114-08E08CD6319D",
-  "Success": true
-}
 ```
 
-#### GetLogicDatabase
+`},`
+
+```json
+  "RequestId": "3CDB8601-AD74-4A47-8114-08E08CD6319D",
+  "Success": true
+```
+
+`}`
+
+#### 6.6.10 GetLogicDatabase
+
+调用GetLogicDatabase接口获取逻辑库详情信息。
 
 **请求参数**
 
@@ -5219,13 +5443,11 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 
 **返回数据**
 
-数据管理
-
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| LogicDatabase | Struct |  | 逻辑库详情信息。 |
+| LogicDatabase | Struct |   | 逻辑库详情信息。 |
 | DatabaseId | String | 1 | 逻辑库ID。 |
 | DbType | String | mysql | 数据库类型。 |
 | EnvType | String | dev | 库环境类型。 |
@@ -5242,10 +5464,10 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 请求示例
 
 ```
-&DbId=1 &Tid=0
+http(s)://[Endpoint]/?Action=GetLogicDatabase &DbId=1 &Tid=0
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <LogicDatabase>
@@ -5268,10 +5490,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 </LogicDatabase> <RequestId>90260530-565C-42B9-A6E8-893481FE6AB6</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "LogicDatabase": {
     "Logic": true,
     "OwnerNameList": {
@@ -5281,10 +5502,9 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "DatabaseId": 265,
     "SearchName": "test_logic_db(xxx)",
     "DbType": "mysql",
@@ -5295,23 +5515,25 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
         88654
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "EnvType": "dev",
     "SchemaName": "test_logic_db"
-  },
-  "RequestId": "90260530-565C-42B9-A6E8-893481FE6AB6",
-  "Success": true
-}
 ```
 
-#### GetMetaTableDetailInfo
+`},`
 
-数据管理
+```json
+  "RequestId": "90260530-565C-42B9-A6E8-893481FE6AB6",
+  "Success": true
+```
 
-**请求参数**
+`}`
+
+#### 6.6.11 GetMetaTableDetailInfo
+
+调用GetMetaTableDetailInfo接口获取表的字段、索引等信息。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -5324,15 +5546,13 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DetailInfo | Struct |  | 表详情。 |
-| ColumnList | Array of Column |  | 字段列表。 |
+| DetailInfo | Struct |   | 表详情。 |
+| ColumnList | Array of Column |   | 字段列表。 |
 | AutoIncrement | Boolean | true | 当前字段是否自增。取值： true：自增。 false：不自增。 |
 | ColumnId | String | 191234849 | 字段ID。 |
 | ColumnName | String | id | 字段名。 |
 | ColumnType | String | bigint(20) unsigned | 字段的数据类型。例如：Bigint、Int、Varchar。 |
 | DataLength | Integer | 0 | 字段长度。 |
-
-数据管理
 
 | DataPrecision | Integer | 0 | 字段精度。 |
 |---|---|---|---|
@@ -5340,7 +5560,7 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 | Description | String | test | 字段描述。 |
 | Nullable | Boolean | false | 是否可空。取值： true：允许为空。 false：不允许为空。 |
 | Position | String | 1 | 字段在表中的顺序。 |
-| IndexList | Array of Index |  | 索引列表。 |
+| IndexList | Array of Index |   | 索引列表。 |
 | IndexColumns | List | id,name | 索引字段。 |
 | IndexId | String | 123 | 索引ID。 |
 | IndexName | String | PRIMARY | 索引名。 |
@@ -5353,13 +5573,13 @@ http(s)://[Endpoint]/?Action=ListLogicDatabases &PageNumber=1 &Tid=-1
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-test.yuyang_test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>E881CB2F-DE42-42E5-90EB-8B3173DCB9B9</RequestId> <DetailInfo>
@@ -5402,14 +5622,17 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
 </DetailInfo> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "RequestId": "E881CB2F-DE42-42E5-90EB-8B3173DCB9B9",
   "DetailInfo": {
     "ColumnList": [
-      {
+```
+
+`{`
+
+```json
         "ColumnId": 191234849,
         "ColumnName": "id",
         "Description": "test",
@@ -5419,8 +5642,11 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
         "DataScale": 0,
         "DataPrecision": 20,
         "Nullable": false
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ColumnId": 191234850,
         "ColumnName": "gmt_create",
         "Description": "test",
@@ -5428,8 +5654,11 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
         "Position": 2,
         "AutoIncrement": false,
         "Nullable": false
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ColumnId": 191234851,
         "ColumnName": "gmt_modified",
         "Description": "test",
@@ -5437,14 +5666,17 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
         "Position": 3,
         "AutoIncrement": false,
         "Nullable": false
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "IndexList": [
-      {
+```
+
+`{`
+
+```json
         "IndexName": "PRIMARY",
         "IndexId": 33008763,
         "IndexColumns": [
@@ -5456,22 +5688,19 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
 ```json
         "Unique": false,
         "IndexType": "Primary"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### GetTableDBTopology
+`}`
 
-数据管理目前仅支持逻辑库实例调用该API。
+#### 6.6.12 GetTableDBTopology
 
-**请求参数**
+调用GetTableDBTopology接口获取数据表的拓扑图。 目前仅支持逻辑库实例调用该API。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -5484,18 +5713,16 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DBTopology | Struct |  | 数据库拓扑信息。 |
-| DataSourceLis t | Array of DataSource |  | 数据源列表。 |
-| DatabaseList | Array of Database |  | 物理分库列表。 |
+| DBTopology | Struct |   | 数据库拓扑信息。 |
+| DataSourceLis t | Array of DataSource |   | 数据源列表。 |
+| DatabaseList | Array of Database |   | 物理分库列表。 |
 | DbId | String | 489347 | 数据库ID。 |
 | DbName | String | db-test | 物理库库名。 |
 | DbType | String | mysql | 数据库类型。 |
 
-数据管理
-
 | EnvType | String | pre | 环境类型，取值和说明如下： product：生产环境 dev：开发环境 pre：预发环境 test：测试环境 sit：SIT环境 uat：UAT环境 pet：压测环境 stag：STAG环境 |
 |---|---|---|---|
-| TableList | Array of Table |  | 物理分表列表。 |
+| TableList | Array of Table |   | 物理分表列表。 |
 | TableId | String | 151977812 | 表ID。 |
 | TableName | String | yuyang test 0000 _ _ | 物理表表名。 |
 | TableType | String | NORMAL | 表类型，保留字段。 |
@@ -5507,8 +5734,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
 | TableName | String | yuyang test _ | 表名。 说明如果查询逻辑表，将返回逻辑表表名。 如果查询物理表，将返回物理表表名。 |
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-
-数据管理
 
 | RequestId | String | 853F7FD4-D922- 4EFB-931C- D253EF159E06 | 请求ID。 |
 |---|---|---|---|
@@ -5522,7 +5747,7 @@ http(s)://[Endpoint]/?Action=GetMetaTableDetailInfo &TableGuid=IDB_L_9032.db-tes
 http(s)://[Endpoint]/?Action=GetTableDBTopology &TableGuid=IDB_L_9032.db-test.yuyang_test
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>55B7CF50-4610-4707-B2B2-5EF2BE000367</RequestId> <DBTopology>
@@ -5562,73 +5787,91 @@ http(s)://[Endpoint]/?Action=GetTableDBTopology &TableGuid=IDB_L_9032.db-test.yu
 </DBTopology> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "RequestId": "55B7CF50-4610-4707-B2B2-5EF2BE000367",
   "DBTopology": {
     "TableName": "yuyang_test",
     "TableGuid": "IDB_L_9032.db-test.yuyang_test",
     "DataSourceList": [
-      {
+```
+
+`{`
+
+```json
         "DatabaseList": [
-          {
+```
+
+`{`
+
+```json
             "DbId": 489347,
             "DbName": "db-test",
             "TableList": [
-              {
-                "TableId": 151977811,
-                "TableName": "yuyang_test_0000"
-              },
-              {
-                "TableId": 151977812,
-                "TableName": "yuyang_test_0001"
-              },
-              {
-                "TableId": 151977813,
-                "TableName": "yuyang_test_0002"
-              },
-              {
-                "TableId": 151977814,
-                "TableName": "yuyang_test_0003"
-              },
-              {
-                "TableId": 151977815,
-                "TableName": "yuyang_test_0004"
-              }
 ```
 
-`],`
+`{`
+
+```json
+                "TableId": 151977811,
+                "TableName": "yuyang_test_0000"
+```
+
+`},` `{`
+
+```json
+                "TableId": 151977812,
+                "TableName": "yuyang_test_0001"
+```
+
+`},` `{`
+
+```json
+                "TableId": 151977813,
+                "TableName": "yuyang_test_0002"
+```
+
+`},` `{`
+
+```json
+                "TableId": 151977814,
+                "TableName": "yuyang_test_0003"
+```
+
+`},` `{`
+
+```json
+                "TableId": 151977815,
+                "TableName": "yuyang_test_0004"
+```
+
+`}` `],`
 
 ```json
             "EnvType": "dev",
             "DbType": "polardb"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Port": 3306,
         "Host": "xxx.mysql.polardb.rds.aliyuncs.com",
         "DbType": "polardb"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### GetMetaTableColumn
+`}`
 
-**请求参数**
+#### 6.6.13 GetMetaTableColumn
 
-数据管理
+调用GetMetaTableColumn接口获取表的字段信息。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -5641,7 +5884,7 @@ http(s)://[Endpoint]/?Action=GetTableDBTopology &TableGuid=IDB_L_9032.db-test.yu
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ColumnList | Array of Column |  | 字段列表。 |
+| ColumnList | Array of Column |   | 字段列表。 |
 | AutoIncrement | Boolean | true | 字段是否自增。取值： true：自增。 false：不自增。 |
 | ColumnId | String | 191234849 | 字段ID。 |
 | ColumnName | String | id | 字段名。 |
@@ -5649,8 +5892,6 @@ http(s)://[Endpoint]/?Action=GetTableDBTopology &TableGuid=IDB_L_9032.db-test.yu
 | DataLength | Integer | 0 | 字段长度。 |
 | DataPrecision | Integer | 0 | 字段精度。 |
 | DataScale | Integer | 0 | 字段小数后的位数。 |
-
-数据管理
 
 | Description | String | test | 字段描述。 |
 |---|---|---|---|
@@ -5671,9 +5912,10 @@ http(s)://[Endpoint]/?Action=GetTableDBTopology &TableGuid=IDB_L_9032.db-test.yu
 http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_test.base_user
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
+<GetMetaTableColumnResponse>
       <RequestId>2B581A5E-D4FE-4F77-BADE-DD944D7BEBE2</RequestId>
       <ErrorCode>UnknownError</ErrorCode>
       <ColumnList>
@@ -5692,12 +5934,12 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
       </ColumnList>
       <ErrorMessage>UnknownError</ErrorMessage>
       <Success>true</Success>
+</GetMetaTableColumnResponse>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "2B581A5E-D4FE-4F77-BADE-DD944D7BEBE2",
  "ErrorCode": "UnknownError",
  "ColumnList": [{
@@ -5716,17 +5958,16 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
  }],
  "ErrorMessage": "UnknownError",
  "Success": "true"
-}
 ```
 
-#### SyncDatabaseMeta
+`}`
 
-**请求参数**
+#### 6.6.14 SyncDatabaseMeta
+
+调用SyncDatabaseMeta接口同步数据库字典元数据。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | Action | String | 是 | SyncDatabaseM eta | 系统规定参数。取值：SyncDatabaseMeta。 |
 |---|---|---|---|---|
@@ -5749,27 +5990,25 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
 请求示例
 
 ```
-&DbId=123 &Tid=-1
+http(s)://[Endpoint]/?Action=SyncDatabaseMeta &DbId=123 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
-}
 ```
 
-数据管理
+#### 6.6.15 SyncInstanceMeta
 
-#### SyncInstanceMeta
+调用SyncInstanceMeta接口同步实例下所有数据库字典元数据。
 
 **请求参数**
 
@@ -5792,22 +6031,30 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=SyncInstanceMeta
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
-}
 ```
 
-#### GetPhysicalDatabase
+`}`
+
+#### 6.6.16 GetPhysicalDatabase
+
+调用GetPhysicalDatabase接口获取物理库的详情。
 
 **请求参数**
 
@@ -5823,11 +6070,9 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 7FAD400F-7A5C- 4193-8F9A- 39D86C4F0231 | 请求ID。 |
-| Database | object |  | 物理库信息。 |
+| Database | object |   | 物理库信息。 |
 | DatabaseId | String | 43125312 | 物理库ID。 |
 | Host | String | rm- xxxab3r272.mysql. rds.aliyuncs.com | 数据库连接地址。 |
-
-数据管理
 
 | CatalogName | String | def | 数据库目录名。 说明 PG系列的数据库将显示数据库名。 |
 |---|---|---|---|
@@ -5845,8 +6090,6 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
 | OwnerNameLi st | Array of String | dmstest | 库Owner昵称。 |
 | SearchName | String | dmstest@rm- xxxab3r272.mysql. rds.aliyuncs.com:3 306 | 库搜索名称。 |
 
-数据管理
-
 | ErrorCode | String | UnknownError | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | UnknownError | 错误信息。 |
@@ -5860,10 +6103,10 @@ http(s)://[Endpoint]/?Action=GetMetaTableColumn &TableGuid=IDB_L_11345.yuyang_te
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetPhysicalDatabase &DbId=43153 &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetPhysicalDatabaseResponse>
     <RequestId>4EE2B004-9131-44B7-B6EE-6151B6329F68</RequestId>
     <Database>
         <SearchName>film@rm-uf64e.mysql.rds.aliyuncs.com:3306</SearchName>
@@ -5887,12 +6130,16 @@ HTTP/1.1 200 OK Content-Type:application/xml
         </OwnerIdList>
     </Database>
     <Success>true</Success>
+</GetPhysicalDatabaseResponse>
 ```
 
-`JSON` 格式数据管理
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "4EE2B004-9131-44B7-B6EE-6151B6329F68",
   "Database" : {
     "SearchName" : "film@rm-uf64e.mysql.rds.aliyuncs.com:3306",
@@ -5909,17 +6156,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "CatalogName" : "def",
     "OwnerNameList" : {
       "OwnerNames" : [ "enlun" ]
-    },
+```
+
+`},`
+
+```json
     "SchemaName" : "film",
     "OwnerIdList" : {
       "OwnerIds" : [ 26000 ]
-    }
-  },
-  "Success" : true
-}
 ```
 
-#### GetTableTopology
+`}` `},`
+
+```json
+  "Success" : true
+```
+
+`}`
+
+#### 6.6.17 GetTableTopology
+
+调用GetTableTopology接口，获取数据表的拓扑信息。
 
 **请求参数**
 
@@ -5927,8 +6184,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | TableGuid | String | 是 | IDB L 308302.y _ _ uyang test.test _ _ ch | 表在DMS中的唯一识别码 GUID（Globally Unique Identifier）。 说明逻辑库：可调用ListLogicTables接口获取，需要将ReturnGuid参数设置为true。 物理库：可调用ListTables接口获取，需要将ReturnGuid参数设置为 true。 |
 | Tid | Long | 否 | 1 | 租户ID。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
@@ -5941,17 +6196,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| TableTopology | object |  | 拓扑信息。 |
+| TableTopology | object |   | 拓扑信息。 |
 | TableGuid | String | IDB L 308302.yuy _ _ ang test.test ch _ _ | 表在DMS中的唯一识别码GUID（Globally Unique Identifier）。 |
 | TableName | String | test ch _ | 表名。 |
-| TableTopology InfoList | Array of TableTopology Info |  | 表拓扑信息列表。 |
+| TableTopology InfoList | Array of TableTopology Info |   | 表拓扑信息列表。 |
 | TableNameList | String | test ch 0000,test _ _ _ ch 0001,test ch 0 _ _ _ 002,test ch 0003,t _ _ est ch 0004,test c _ _ _ h 0005 _ | 表名列表。 说明以逗号隔开。 |
 | TableNameEx pr | String | test ch [0000- _ _ 0005] | 逻辑表的表名表达式。 说明物理表则不会显示该参数。 |
 | TableCount | Long | 6 | 表数量。 |
 | DbId | Long | 43215 | 物理库ID。 |
 | DbSearchNam e | String | yuyang test@local _ host:3306【yuyang test dev】 _ _ | 库搜索名。 |
-
-数据管理
 
 | InstanceId | Long | 4325325 | 物理库对应的实例ID。 |
 |---|---|---|---|
@@ -5970,10 +6223,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetTableTopology &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetTableTopologyResponse>
     <RequestId>7A7F0E34-8E21-4CF7-93C8-27212B122145</RequestId>
     <TableTopology>
         <TableName>big_table</TableName>
@@ -5994,12 +6247,18 @@ o】</DbSearchName>
         </TableTopologyInfoList>
     </TableTopology>
     <Success>true</Success>
+</GetTableTopologyResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "7A7F0E34-8E21-4CF7-93C8-27212B122145",
   "TableTopology" : {
     "TableName" : "big_table",
@@ -6022,16 +6281,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "RegionId" : "cn-shanghai",
       "DbType" : "mysql"
     } ]
-  },
-  "Success" : true
-}
 ```
 
-### 工单操作
+`},`
 
-#### 通用
+```json
+  "Success" : true
+```
 
-##### ApproveOrder
+`}`
+
+### 6.7 工单操作
+
+#### 6.7.1 通用
+
+##### 6.7.1.1 ApproveOrder
+
+调用ApproveOrder接口审批工单。
 
 **请求参数**
 
@@ -6039,8 +6305,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | Action | String | 是 | ApproveOrder | 系统规定参数。取值：ApproveOrder。 |
 | ApprovalType | String | 是 | agree | 审批动作，取值和说明如下： AGREE：同意 CANCEL：取消 REJECT：拒绝 |
-
-数据管理
 
 | Tid | Long | 是 | -1 | 租户ID。 说明 DMS控制台右上角头像处悬停鼠标即可展示租户ID信息。 |
 |---|---|---|---|---|
@@ -6062,25 +6326,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&ApprovalType=agree &Tid=-1 &WorkflowInstanceId=1234
+http(s)://[Endpoint]/?Action=ApproveOrder &ApprovalType=agree &Tid=-1 &WorkflowInstanceId=1234
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "RequestId": "427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D",
   "Success": true
-}
 ```
 
-##### CloseOrder
+`}`
+
+##### 6.7.1.2 CloseOrder
+
+调用CloseOrder接口关闭工单。
 
 **请求参数**
 
@@ -6106,25 +6372,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&CloseReason=close reason &OrderId=1343 &Tid=-1
+http(s)://[Endpoint]/?Action=CloseOrder &CloseReason=close reason &OrderId=1343 &Tid=-1
 ```
 
-`&<`公共请求参数> 数据管理正常返回示例 `XML` 格式
+`&<`公共请求参数`>` `XML` 格式
 
 ```xml
 <RequestId>427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D",
   "Success": true
-}
 ```
 
-##### GetApprovalDetail
+`}`
+
+##### 6.7.1.3 GetApprovalDetail
+
+调用GetApprovalDetail接口获取工单审批详情。
 
 **请求参数**
 
@@ -6139,12 +6407,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| ApprovalDetail | Struct |  | 审批详情信息。 |
+| ApprovalDetail | Struct |   | 审批详情信息。 |
 | AuditId | Long | 277 | 审批流ID。 |
-| CurrentHandle rs | Array of CurrentHandle r |  | 当前审批处理人信息。 |
-| CurrentHandle r |  |  |  |
-
-数据管理
+| CurrentHandle rs | Array of CurrentHandle r |   | 当前审批处理人信息。 |
+| CurrentHandle r |   |   |   |
 
 | Id | Long | 1 | 用户ID。 |
 |---|---|---|---|
@@ -6155,8 +6421,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ReasonList | List | ["reason1"] | 审批原因。 |
 | Title | String | 数据导出工单-1234 | 审批标题。 |
 | WorkflowInsCo de | String | APPROVED | 审批状态码。 |
-| WorkflowNode s | Array of WorkflowNode |  | 审批流程节点信息。 |
-| WorkflowNode |  |  |  |
+| WorkflowNode s | Array of WorkflowNode |   | 审批流程节点信息。 |
+| WorkflowNode |   |   |   |
 | AuditUserIdLis t | List | 104442 | 审批人ID列表。 |
 | NodeName | String | DBA | 审批节点名称。 |
 | OperateComm ent | String | 理由：同意 | 审批操作备注。 |
@@ -6167,8 +6433,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | 427688B8-ADFB- 4C4E-9D45- EF5C1FD6E23D | 请求ID。 |
 
-数据管理
-
 | Success | Boolean | true | 请求是否成功。 |
 |---|---|---|---|
 
@@ -6177,10 +6441,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&Tid=-1 &WorkflowInstanceId=12345
+http(s)://[Endpoint]/?Action=GetApprovalDetail &Tid=-1 &WorkflowInstanceId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <ApprovalDetail>
@@ -6214,16 +6478,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </ApprovalDetail> <RequestId>FE8EE2F1-4880-46BC-A704-5CF63EAF9A04</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "ApprovalDetail": {
     "Description": "xxx",
     "WorkflowInsCode": "APPROVED",
     "CurrentHandlers": {
       "CurrentHandler": []
-    },
+```
+
+`},`
+
+```json
     "OrderId": 737047,
     "OrderType": "DATA_EXPORT",
     "ReasonList": {
@@ -6231,10 +6498,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "xxx"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "AuditId": 277,
 ```
 
@@ -6243,7 +6509,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
     "WorkflowNodes": {
       "WorkflowNode": [
-        {
+```
+
+`{`
+
+```json
           "OperatorId": 104442,
           "WorkflowInsCode": "APPROVED",
 ```
@@ -6256,26 +6526,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
               104442
 ```
 
-]
+`]` `},`
 
 ```json
-          },
           "OperateTime": "2019-10-15 13:47:54",
           "NodeName": "DBA"
-        }
 ```
 
-]
+`}` `]` `}` `},`
 
 ```json
-    }
-  },
   "RequestId": "FE8EE2F1-4880-46BC-A704-5CF63EAF9A04",
   "Success": true
-}
 ```
 
-##### GetOrderBaseInfo
+`}`
+
+##### 6.7.1.4 GetOrderBaseInfo
+
+调用GetOrderBaseInfo接口获取工单基本信息。
 
 **请求参数**
 
@@ -6283,8 +6552,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | Action | String | 是 | GetOrderBaseInf o | 系统规定参数。取值：GetOrderBaseInfo。 |
 | OrderId | Long | 是 | 12345 | 工单ID。 |
-
-数据管理
 
 | Tid | Long | 是 | -1 | 租户ID。 |
 |---|---|---|---|---|
@@ -6296,7 +6563,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| OrderBaseInfo | Struct |  | 工单基本信息。 |
+| OrderBaseInfo | Struct |   | 工单基本信息。 |
 | Comment | String | test | 备注信息。 |
 | Committer | String | xxx | 提交者。 |
 | CommitterId | Long | 1 | 提交者ID，注意不是提交者的阿里云UID。 |
@@ -6306,8 +6573,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | PluginType | String | DC COMMON _ | 工单类型，取值和说明参考CreateOrder接口相对应入参说明。 |
 | RelatedUserLis t | List | 1,2,3 | 工单相关人ID列表。 |
 | RelatedUserNi ckList | List | a,b,c | 工单相关人名称列表。 |
-
-数据管理
 
 | StatusCode | String | success | 工单状态码，取值和说明如下： new：新建 toaudit：审批中 approved：审批通过 reject：审批拒绝 processing：执行中 success：执行成功 closed：已关闭 |
 |---|---|---|---|
@@ -6322,10 +6587,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&OrderId=12345 &Tid=-1
+http(s)://[Endpoint]/?Action=GetOrderBaseInfo &OrderId=12345 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <OrderBaseInfo>
@@ -6355,7 +6620,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 {"OrderBaseInfo":{"Comment":"test","CreateTime":"2019-10-10 00:00:00","LastModifyTime":"2019-10-10 00:00:00","OrderId":"12345","CommitterId":"1","PluginType":"DC_COMMON","StatusCode":"succ s","RelatedUserNickList": {"UserNicks":"a,b,c"},"StatusDesc":"success","WorkflowStatusDesc":"approved","WorkflowIns nceId":"1","Committer":"xxx","RelatedUserList": {"UserIds":"1,2,3"}},"RequestId":"7133DF67-5B25-460F-8285- C4CC93472C2F","ErrorCode":"UnknownError","ErrorMessage":"UnknownError","Success":"true"}
 ```
 
-##### ListOrders
+##### 6.7.1.5 ListOrders
+
+调用ListOrders接口获取工单列表信息。
 
 **请求参数**
 
@@ -6363,8 +6630,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | Action | String | 是 | ListOrders | 系统规定参数。取值：ListOrders。 |
 | Tid | Long | 否 | -1 | 租户ID。 |
-
-数据管理
 
 | PluginType | String | 否 | PERM APPLY _ | 工单类型，取值和说明如下： PERM APPLY：权限申请 _ OWNER APPLY： owner申请 _ DATA CORRECT：数据变更 _ NDDL：结构设计 DATA TRACK：数据追踪 _ TABLE SYNC：库表同步 _ DATA EXPORT：数据导出 _ SENSITIVITY：敏感列等级调整 |
 |---|---|---|---|---|
@@ -6383,13 +6648,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-数据管理
-
 | ErrorCode | String | UnknownError | 错误码。 |
 |---|---|---|---|
 | ErrorMessage | String | UnknownError | 错误信息。 |
-| Orders | Array of Order |  | 工单列表信息。 |
-| Order |  |  |  |
+| Orders | Array of Order |   | 工单列表信息。 |
+| Order |   |   |   |
 | Comment | String | test | 工单备注信息。 |
 | Committer | String | test | 工单提交者。 |
 | CommitterId | Long | 1 | 工单提交者ID。 |
@@ -6405,7 +6668,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例数据管理 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListOrders
+```
+
+`&<`公共请求参数`>` `XML` 格式
 
 ```xml
 <TotalCount>5</TotalCount> <RequestId>7AC17A86-9E6F-484B-AE8D-F9416986A108</RequestId> <Orders>
@@ -6493,8 +6762,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 tMdifTi 20190817140754/L tMdifTi
 ```
 
-数据管理
-
 ```xml
         <LastModifyTime>2019-08-17 14:07:54</LastModifyTime>
         <CreateTime>2019-08-17 14:07:42</CreateTime>
@@ -6509,15 +6776,18 @@ tMdifTi 20190817140754/L tMdifTi
 </Orders> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "TotalCount": 5,
   "RequestId": "7AC17A86-9E6F-484B-AE8D-F9416986A108",
   "Orders": {
     "Order": [
-      {
+```
+
+`{`
+
+```json
         "StatusCode": "success",
         "PluginType": "DC_COMMON",
         "Committer": "xxx[子账号]",
@@ -6535,8 +6805,11 @@ tMdifTi 20190817140754/L tMdifTi
 
 ```json
         "CommitterId": 104442
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "StatusCode": "new",
         "PluginType": "DC_COMMON",
         "Committer": "xxx[子账号]",
@@ -6554,8 +6827,11 @@ tMdifTi 20190817140754/L tMdifTi
 
 ```json
         "CommitterId": 104442
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "StatusCode": "closed",
         "PluginType": "DC_COMMON",
         "Committer": "xxx[子账号]",
@@ -6573,14 +6849,17 @@ tMdifTi 20190817140754/L tMdifTi
 
 ```json
         "CommitterId": 104442
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "StatusCode": "new",
         "PluginType": "DC_COMMON",
         "Committer": "xxx[子账号]",
 ```
 
-`"StatusDesc": "`预检查失败`",` 数据管理
+`"StatusDesc": "`预检查失败`",`
 
 ```json
         "LastModifyTime": "2019-09-30 16:58:35",
@@ -6588,8 +6867,11 @@ tMdifTi 20190817140754/L tMdifTi
         "OrderId": 737016,
         "Comment": "测试",
         "CommitterId": 104442
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "StatusCode": "success",
         "PluginType": "DC_COMMON",
         "Committer": "xxx[子账号]",
@@ -6607,18 +6889,19 @@ tMdifTi 20190817140754/L tMdifTi
 
 ```json
         "CommitterId": 104442
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-##### SubmitOrderApproval
+`}`
+
+##### 6.7.1.6 SubmitOrderApproval
+
+调用SubmitOrderApproval接口提交工单审批。
 
 **请求参数**
 
@@ -6636,8 +6919,6 @@ tMdifTi 20190817140754/L tMdifTi
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 
-数据管理
-
 | RequestId | String | 427688B8-ADFB- 4C4E-9D45- EF5C1FD6E23D | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。 |
@@ -6650,22 +6931,24 @@ tMdifTi 20190817140754/L tMdifTi
 http(s)://[Endpoint]/?Action=SubmitOrderApproval &OrderId=12345 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7AC17A86-9E6F-484B-AE8D-F9416986A108</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7AC17A86-9E6F-484B-AE8D-F9416986A108",
   "Success": true
-}
 ```
 
-##### CreateOrder
+`}`
+
+##### 6.7.1.7 CreateOrder
+
+调用CreateOrder接口创建工单。
 
 **请求参数**
 
@@ -6674,11 +6957,9 @@ http(s)://[Endpoint]/?Action=SubmitOrderApproval &OrderId=12345 &Tid=-1
 | Action | String | 是 | CreateOrder | 系统规定参数。取值：CreateOrder。 |
 | Comment | String | 是 | test | 创建工单描述信息。 |
 
-| 开发指南·API参考 |  |  |  | 数据管理 |
+| 开发指南·API参考 |   |   |   | 数据管理 |
 |---|---|---|---|---|
 | PluginParam | Json | 是 | {} | 创建工单参数，格式为JSON形式的字符串，每个工单类型的参数设置不一致。详情请参考PluginParam参数补充说明JSON # 普通数据变更 "pluginParam" : { "classify" : "测试", // 原因分类 "estimateAffectRows" : 1, // 用户预估影响行数 "execSQL" : "update base op log set id=1 where id=1;", _ _ // 执行SQL "dbItemList" : [ { // 执行的 db列表 "dbId" : 179694, "logic" : false } ], "rbSQL" : "update base op log _ _ set id=1 where id=1;", // 用户填写的回滚SQL "rbAttachmentName" : null, // 回滚SQL附件 "sqlType" : "TEXT", // SQL类型，取值为TEXT, ATTACHMENT "rbSQLType" : "TEXT", // 回滚SQL类型，取值同上 "attachmentName" : // SQL附件 } # 无锁数据变更 "pluginParam" : { "classify" : "测试", "execSQL" : "update base op log set _ _ op type=op type where 1=1;", // 执 _ _ 行SQL "dbItemList" : [ { "dbId" : 179694, // 变更库id "logic" : false } ] } # 历史数据清理 "pluginParam" : { "duration" : 10, // 指定时长（小时）， 当不指定时长时，值为0； "specifyDuration" : true, // 是否指定时长，true：是，false：否，默认是false "classify" : "测试", "cronFormat" : "0 1 21 * * ?", // 定时执行的表达式 "execSql" : null, "dbItemList" : [ { "dbId" : 179694, // 变更库id "logic" : false } ], "cronClearItemList" : [ { "filterSQL" : null, // 过滤条件 "columnName" : "gmt create", // 时间 _ 字段 "remainDays" : 60, // 保留时长 "tableName" : "base app" // 表名 } ] _ } # 结构设计 “pluginParam”: { "title": "test", // 标题 "description": "test", // 描述 "dbId": 118989, // 基准库 "logic": false, // 是否逻辑库 "relatedIds": [], // 变更相关人id } # 数据导出 "pluginParam" : { "classify": "原因分类", // 原因分类 "dbId": 179719, // 导出库id "exeSQL": "select 1", // 导出SQL "logic": false, // 是否逻辑库 "ignoreAffectRows": false, // 是否忽略校验影响行数 "affectRows": 1, // 用户预估影响行数 "ignoreAffectRowsReason": "" // 忽略影响行数校验原因 }。 |
-
-数据管理
 
 | PluginType | String | 是 | DATA EXPORT _ | 工单类型。取值如下： DC COMMON：普通数据变更 _ DC CHUNK：无锁数据变更 _ DC CRON CLEAR：历史数据清理 _ _ NDDL：结构设计 DATA EXPORT：数据导出 _ PERM APPLY：权限申请 _ OWNER APPLY：Owner申请 _ |
 |---|---|---|---|---|
@@ -6692,7 +6973,7 @@ http(s)://[Endpoint]/?Action=SubmitOrderApproval &OrderId=12345 &Tid=-1
 JSON
 ```
 
-# 普通数据变更
+`#` 普通数据变更
 
 ```json
 "pluginParam" : {
@@ -6715,14 +6996,13 @@ JSON
     "sqlType" : "TEXT", // SQL类型，取值为TEXT, ATTACHMENT
 ```
 
-`"rbSQLType" : "TEXT", //` 回滚`SQL`类型，取值同上数据管理
+`"rbSQLType" : "TEXT", //` 回滚`SQL`类型，取值同上
 
 ```json
     "attachmentName" : // SQL附件
-  }
 ```
 
-# 无锁数据变更
+`#` 无锁数据变更
 
 ```json
 "pluginParam" : {
@@ -6732,16 +7012,15 @@ JSON
       "dbId" : 179694, // 变更库id
       "logic" : false
     } ]
-  }
 ```
 
-# 历史数据清理
+`}` `#` 历史数据清理
 
 ```json
 "pluginParam" : {
 ```
 
-`"duration" : 10, //` 指定时长（小时），当不指定时长时，值为0； `"specifyDuration" : true, //` 是否指定时长，`true`：是，`false`：否，默认是`false`
+`"duration" : 10, //` 指定时长（小时），当不指定时长时，值为`0`； `"specifyDuration" : true, //` 是否指定时长，`true`：是，`false`：否，默认是`false`
 
 ```json
     "classify" : "测试",
@@ -6769,10 +7048,9 @@ JSON
 ```json
       "tableName" : "base_app" // 表名
     } ]
-  }
 ```
 
-# 结构设计
+`}` `#` 结构设计
 
 ```json
 “pluginParam”: {
@@ -6781,13 +7059,7 @@ JSON
     "dbId": 118989, // 基准库
 ```
 
-`"logic": false, //` 是否逻辑库 `"relatedIds": [], //` 变更相关人`id`
-
-```
-  }
-```
-
-# 数据导出
+`"logic": false, //` 是否逻辑库 `"relatedIds": [], //` 变更相关人`id` `}` `#` 数据导出
 
 ```json
 "pluginParam" : {
@@ -6800,11 +7072,7 @@ JSON
   "exeSQL": "select 1", // 导出SQL
 ```
 
-`"logic": false, //` 是否逻辑库 `"ignoreAffectRows": false, //` 是否忽略校验影响行数 `"affectRows": 1, //` 用户预估影响行数 `"ignoreAffectRowsReason": "" //` 忽略影响行数校验原因数据管理
-
-```
- }
-```
+`"logic": false, //` 是否逻辑库 `"ignoreAffectRows": false, //` 是否忽略校验影响行数 `"affectRows": 1, //` 用户预估影响行数 `"ignoreAffectRowsReason": "" //` 忽略影响行数校验原因
 
 **返回数据**
 
@@ -6821,33 +7089,36 @@ JSON
 请求示例
 
 ```
-&Comment=test &PluginParam={} &PluginType=DATA_EXPORT &RelatedUserList=1,2,3
+http(s)://[Endpoint]/?Action=CreateOrder &Comment=test &PluginParam={} &PluginType=DATA_EXPORT &RelatedUserList=1,2,3
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
-<RequestId>427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D</RequestId>
+<RequestId>427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D</RequestId> <CreateOrderResult>
     <OrderIds>123</OrderIds>
-<Success>true</Success>
+</CreateOrderResult> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D",
+  "CreateOrderResult": {
     "OrderIds": [123]
-  },
-  "Success": true
-}
 ```
 
-数据管理
+`},`
 
-#### 数据变更
+```json
+  "Success": true
+```
 
-##### ExecuteDataCorrect
+#### 6.7.2 数据变更
+
+##### 6.7.2.1 ExecuteDataCorrect
+
+调用ExecuteDataCorrect接口执行数据变更工单。
 
 **请求参数**
 
@@ -6866,8 +7137,6 @@ JSON
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 
-数据管理
-
 | RequestId | String | 427688B8-ADFB- 4C4E-9D45- EF5C1FD6E23D | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。 |
@@ -6880,22 +7149,22 @@ JSON
 http(s)://[Endpoint]/?Action=ExecuteDataCorrect &OrderId=123
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7133DF67-5B25-460F-8285-C4CC93472C2F</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7133DF67-5B25-460F-8285-C4CC93472C2F",
   "Success": true
-}
 ```
 
-##### GetDataCorrectBackupFiles
+`}`
+
+##### 6.7.2.2 GetDataCorrectBackupFiles
 
 调用GetDataCorrectBackupFiles接口获取数据变更备份文件附件下载地址。
 
@@ -6908,8 +7177,6 @@ http(s)://[Endpoint]/?Action=ExecuteDataCorrect &OrderId=123
 | Tid | Long | 否 | -1 | 租户ID。 |
 | ActionDetail | Json | 否 | {} | 操作参数，无需传递。 |
 | RegionId | String | 否 | cn-hangzhou | 地域ID。 |
-
-数据管理
 
 **返回数据**
 
@@ -6929,7 +7196,7 @@ http(s)://[Endpoint]/?Action=ExecuteDataCorrect &OrderId=123
 http(s)://[Endpoint]/?Action=GetDataCorrectBackupFiles &OrderId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DataCorrectBackupFiles>
@@ -6937,26 +7204,25 @@ http(s)://[Endpoint]/?Action=GetDataCorrectBackupFiles &OrderId=12345
 Expires=1574382979&amp;OSSAccessKeyId=wSa97B52GzF****&amp;Signature=ykWSysajKcQjXjG0X4ApO lIXQ%3D</FileUrl> </DataCorrectBackupFiles> <RequestId>4AFF4109-FEFB-44E8-96A3-923B1FA8C46E</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "DataCorrectBackupFiles": {
     "FileUrl": [
       "https://xxx.oss-cn-hangzhou.aliyuncs.com/xxx.zip?
 Expires=1574382979&OSSAccessKeyId=wSa97B52GzF****&Signature=ykWSysajKcQjXjG0X4ApOQvlIXQ%3
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "RequestId": "4AFF4109-FEFB-44E8-96A3-923B1FA8C46E",
   "Success": true
-}
 ```
 
-##### GetDataCorrectOrderDetail
+`}`
+
+##### 6.7.2.3 GetDataCorrectOrderDetail
 
 调用GetDataCorrectOrderDetail接口获取数据变更工单详情信息。
 
@@ -6973,19 +7239,17 @@ Expires=1574382979&OSSAccessKeyId=wSa97B52GzF****&Signature=ykWSysajKcQjXjG0X4Ap
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DataCorrectOr derDetail | Struct |  | 数据变更工单详情信息。 |
-| DatabaseList | Array of Database |  | 变更数据库信息。 |
-| Database |  |  |  |
+| DataCorrectOr derDetail | Struct |   | 数据变更工单详情信息。 |
+| DatabaseList | Array of Database |   | 变更数据库信息。 |
+| Database |   |   |   |
 | DbId | Integer | 123456 | 数据库ID。 |
 | DbType | String | mysql | 数据库类型。 |
 | EnvType | String | product | 环境类型。 |
 
-数据管理
-
 | Logic | Boolean | false | 是否为逻辑库。 |
 |---|---|---|---|
 | SearchName | String | xxx@xxx:3306 | 逻辑库的搜索名。 |
-| OrderDetail | Struct |  | 工单详情信息。 |
+| OrderDetail | Struct |   | 工单详情信息。 |
 | ActualAffectRo ws | Long | 100 | 系统校验的影响行数。 |
 | AttachmentNa me | String | xxx | SQL附件。 |
 | Classify | String | test | 变更原因分类。 |
@@ -6997,10 +7261,8 @@ Expires=1574382979&OSSAccessKeyId=wSa97B52GzF****&Signature=ykWSysajKcQjXjG0X4Ap
 | RbSQL | String | empty | 用户填写的回滚SQL。 |
 | RbSQLType | String | text | 回滚SQL类型，取值和说明如下： TEXT：文本 ATTACHMENT：附件 |
 | SqlType | String | text | SQL类型，取值和说明如下： TEXT：文本 ATTACHMENT：附件 |
-| PreCheckDetai l | Array of TaskCheckDO |  | 预校验详情信息。 |
-| TaskCheckDO |  |  |  |
-
-数据管理
+| PreCheckDetai l | Array of TaskCheckDO |   | 预校验详情信息。 |
+| TaskCheckDO |   |   |   |
 
 | CheckStatus | String | SUCCESS | 预校验状态，取值和说明如下： WAITING：等待检查 RUNNING：检查中 SUCCESS：通过 FAIL：不通过 |
 |---|---|---|---|
@@ -7019,7 +7281,7 @@ Expires=1574382979&OSSAccessKeyId=wSa97B52GzF****&Signature=ykWSysajKcQjXjG0X4Ap
 http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>ACE263E5-CF5F-44DD-A7B1-42C5E78E9650</RequestId> <DataCorrectOrderDetail>
@@ -7058,27 +7320,39 @@ http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
 </DataCorrectOrderDetail> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "RequestId": "ACE263E5-CF5F-44DD-A7B1-42C5E78E9650",
   "DataCorrectOrderDetail": {
     "PreCheckDetail": {
       "TaskCheckDO": [
-        {
+```
+
+`{`
+
+```json
           "CheckStatus": "SUCCESS",
           "CheckStep": "SQL_PARSE"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "CheckStatus": "SUCCESS",
           "CheckStep": "SQL_TYPE_CHECK"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "CheckStatus": "SUCCESS",
           "CheckStep": "PERMISSION_CHECK"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "CheckStatus": "SUCCESS",
 ```
 
@@ -7086,13 +7360,11 @@ http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
 
 ```json
           "CheckStep": "ROW_CHECK"
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "OrderDetail": {
       "ActualAffectRows": 0,
       "RbSQLType": "TEXT",
@@ -7101,13 +7373,17 @@ http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
       "SqlType": "TEXT",
       "Classify": "test",
       "IgnoreAffectRowsReason": ""
-    }
-  },
-  "Success": true
-}
 ```
 
-##### CreateFreeLockCorrectOrder
+`}` `},`
+
+```json
+  "Success": true
+```
+
+`}`
+
+##### 6.7.2.4 CreateFreeLockCorrectOrder
 
 调用CreateFreeLockCorrectOrder接口，在DMS中创建无锁变更工单。 目前仅支持管控模式为安全协同的实例调用该API。
 
@@ -7117,12 +7393,10 @@ http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
 |---|---|---|---|---|
 | Action | String | 是 | CreateFreeLock CorrectOrder | 系统规定参数。取值：CreateFreeLockCorrectOrder 。 |
 
-数据管理
-
 | Comment | String | 是 | test | 业务背景，以减少沟通成本。 |
 |---|---|---|---|---|
 | RelatedUserList | Array of Long | 否 | 51**** | 变更相关人的用户ID，设置的相关人员可查看工单，并协同工作，非相关人员则不能查看工单（管理员、DBA除外）。 |
-| Param | Object | 是 |  | 工单参数。 |
+| Param | Object | 是 |   | 工单参数。 |
 | Classify | String | 否 | test | 数据变更原因。 |
 | ExecSQL | String | 是 | delete from base user _ where 1 = 1; | 变更SQL语句。 |
 | SqlType | String | 是 | TEXT | 变更SQL的提交方式，取值如下： TEXT：文本 ATTACHMENT：附件，暂不支持。 |
@@ -7130,11 +7404,9 @@ http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
 | RollbackSQL | String | 否 | empty | 回滚SQL语句。 |
 | RollbackAttachm entName | String | 否 | test rollback.sql _ | 回滚SQL附件Key，暂不支持该参数。 |
 | RollbackSqlType | String | 否 | TEXT | 回滚SQL的提交方式，取值： TEXT：文本 ATTACHMENT：附件，暂不支持。 |
-| DbItemList | Array | 是 |  | 变更的数据库列表。 |
+| DbItemList | Array | 是 |   | 变更的数据库列表。 |
 | DbId | Long | 是 | 1860**** | 数据库ID（DatabaseId），数据库分为物理库和逻辑库两种： 物理库ID：可通过调用接口ListDatabases或SearchDatabase 获取该参数的值。 逻辑库ID：可通过调用接口ListLogicDatabases或SearchData base获取该参数的值。 |
 | Logic | Boolean | 是 | false | 是否为逻辑库，取值如下： true：逻辑库 false：物理库 |
-
-数据管理
 
 | ExecMode | String | 否 | COMMITOR | 工单执行方式，取值如下： COMMITOR : 审批通过后，提交者执行。 AUTO : 审批通过后，自动执行。 LAST AUDITOR : 审批通过后，最后 _ 一个审批人执行。 |
 |---|---|---|---|---|
@@ -7159,27 +7431,35 @@ http(s)://[Endpoint]/?Action=GetDataCorrectOrderDetail &OrderId=12345
 http(s)://dms-enterprise.aliyuncs.com/?Comment=test &RelatedUserList=[51****] &Param={"Classify":"test","ExecSQL":"delete from base_user where 1 = 1;","SqlType":"TEXT","DbItemList": [{"DbId":1860****,"Logic":false}],"ExecMode":"COMMITOR"} &AttachmentKey=order_attachment.txt
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateFreeLockCorrectOrderResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <Success>true</Success>
     <ErrorMessage>UnknownError</ErrorMessage>
     <ErrorCode>UnknownError</ErrorCode>
     <CreateOrderResult>1340000</CreateOrderResult>
+</CreateFreeLockCorrectOrderResponse>
 ```
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
-  "Success" : true,
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-##### CreateDataCorrectOrder
+`{`
+
+```json
+  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
+  "Success" : true,
+  "CreateOrderResult" : [ "134****" ]
+```
+
+`}`
+
+##### 6.7.2.5 CreateDataCorrectOrder
 
 调用CreateDataCorrectOrder接口，在DMS中创建普通数据变更工单。
 
@@ -7190,11 +7470,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Action | String | 是 | CreateDataCorr ectOrder | 系统规定参数。取值：CreateDataCorrectOrder。 |
 | Comment | String | 是 | test | 业务背景，以减少沟通成本。 |
 | RelatedUserList | Array of Long | 否 | 51**** | 变更相关人的用户ID，设置的相关人员可查看工单，并协同工作，非相关人员则不能查看工单（管理员、DBA除外）。 |
-| Param | Object | 是 |  | 工单参数。 |
+| Param | Object | 是 |   | 工单参数。 |
 | Classify | String | 否 | test | 数据变更原因。 |
 | EstimateAffectR ows | Long | 是 | 1 | 预估本次变更会影响的数据行数。 |
-
-数据管理
 
 | ExecSQL | String | 否 | update base user set id _ = 1 where id = 1; | 变更SQL语句。 说明如果SqlType为TEXT，该参数必填。 |
 |---|---|---|---|---|
@@ -7203,10 +7481,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RollbackSQL | String | 否 | update base user set id _ = 1 where id = 1; | 回滚SQL语句。 说明如果RollbackSqlType为TE XT，该参数必填。 |
 | RollbackAttachm entName | String | 否 | test rollback.sql _ | 回滚SQL附件Key（AttachmentKey）， 可通过调用GetUserUploadFileJob接口获取该参数的值。 说明如果RollbackSqlType为ATTACH MENT，该参数必填。 |
 | RollbackSqlType | String | 否 | TEXT | 回滚SQL的提交方式，取值如下： TEXT：文本 ATTACHMENT：附件 |
-| DbItemList | Array | 是 |  | 变更的数据库列表。 |
+| DbItemList | Array | 是 |   | 变更的数据库列表。 |
 | DbId | Long | 是 | 1860**** | 数据库ID（DatabaseId），数据库分为物理库和逻辑库两种： 物理库ID：可通过调用接口ListDatabases或SearchDatabase 获取该参数的值。 逻辑库ID：可通过调用接口ListLogicDatabases或SearchData base获取该参数的值。 |
-
-数据管理
 
 | Logic | Boolean | 是 | false | 是否为逻辑库，取值如下： true：逻辑库 false：物理库 |
 |---|---|---|---|---|
@@ -7227,31 +7503,39 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
 http(s)://dms-enterprise.aliyuncs.com/?Action=CreateDataCorrectOrder &Comment=test &Param={"Classify":"test","EstimateAffectRows":1,"ExecSQL":"update base_user set id = 1 where id = 1;","SqlType":"TEXT","DbItemList": [{"DbId":1860****,"Logic":false}],"ExecMode":"COMMITOR"}
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateDataCorrectOrderResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <Success>true</Success>
     <CreateOrderResult>142****</CreateOrderResult>
+</CreateDataCorrectOrderResponse>
 ```
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
-  "Success" : true,
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-##### GetDataCronClearTaskDetailList
+`{`
+
+```json
+  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
+  "Success" : true,
+  "CreateOrderResult" : [ "142****" ]
+```
+
+`}`
+
+##### 6.7.2.6 GetDataCronClearTaskDetailList
 
 调用GetDataCronClearTaskDetailList接口，获取历史数据清理任务执行列表。
 
@@ -7264,8 +7548,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | PageSize | Long | 否 | 20 | 每页数据量。 |
 | Tid | Long | 否 | 12345 | 租户ID。 |
 
-数据管理
-
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
 
@@ -7277,7 +7559,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| DataCronClear TaskDetailList | Array of DataCronClear TaskDetail |  | 历史数据清理任务执行列表。 |
+| DataCronClear TaskDetailList | Array of DataCronClear TaskDetail |   | 历史数据清理任务执行列表。 |
 | DBTaskGroupI d | Long | 432523 | SQL任务分组ID。 |
 | jobStatus | String | SUCCESS | SQL详情状态，取值： INIT：初始化状态 PENDING：等待任务抓取 BE SCHEDULED：待调度 _ FAIL：执行失败 SUCCESS：执行成功 PAUSE：暂停 DELETE：删除 RUNNING：正在执行 |
 | ActualAffectRo ws | Long | 1 | 影响行数。 |
@@ -7286,16 +7568,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetDataCronClearTaskDetailList &PageNumber=1 &PageSize=20 &Tid=12345
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetDataCronClearTaskDetailListResponse>
     <RequestId>C1D39814-9808-47F8-AFE0-AF167239AC9B</RequestId>
     <Success>true</Success>
     <DataCronClearTaskDetailList>
@@ -7305,12 +7587,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <CreateTime>2021-01-14 10:00:00</CreateTime>
     </DataCronClearTaskDetailList>
     <TotalCount>1</TotalCount>
+</GetDataCronClearTaskDetailListResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "C1D39814-9808-47F8-AFE0-AF167239AC9B",
   "Success" : true,
   "DataCronClearTaskDetailList" : [ {
@@ -7320,10 +7608,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "CreateTime" : "2021-01-14 10:00:00"
   } ],
   "TotalCount" : 1
-}
 ```
 
-##### GetDataCorrectTaskDetail
+`}`
+
+##### 6.7.2.7 GetDataCorrectTaskDetail
 
 调用GetDataCorrectTaskDetail接口，获取普通数据变更、无锁变更、数据导入工单任务执行详情。
 
@@ -7331,8 +7620,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | OrderId | Long | 是 | 12435523 | 工单号，您可以调用CreateDataCorrectOrder、CreateD ataImportOrder、CreateFreeLockCorr ectOrder接口获取该参数。 |
 |---|---|---|---|---|
@@ -7347,21 +7634,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| DataCorrectTa skDetail | object |  | 变更任务执行详情。 |
+| DataCorrectTa skDetail | object |   | 变更任务执行详情。 |
 | DBTaskGroupI d | Long | 1234235 | SQL任务分组ID。 |
 | jobStatus | String | SUCCESS | SQL详情状态，取值： INIT：初始化状态 PENDING：等待任务抓取 BE SCHEDULED：待调度 _ FAIL：执行失败 SUCCESS：执行成功 PAUSE：暂停 DELETE：删除 RUNNING：正在执行 |
 | ActualAffectRo ws | Long | 1 | 影响行数。 |
 | CreateTime | String | 2021-03-05 15:08:55 | 任务创建时间。 |
 
-**示例**
-
-数据管理请求示例
+请求示例
 
 ```
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetDataCorrectTaskDetail &Tid=14325432
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <RequestId>B5FD0BC8-2D90-4478-B8EC-A0E92E0B1773</RequestId> <Success>true</Success> <DataCorrectTaskDetail>
@@ -7374,8 +7659,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <RequestId>B5FD0BC8-2D90-4478-B8EC-
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "B5FD0BC8-2D90-4478-B8EC-A0E92E0B1773",
   "Success" : true,
   "DataCorrectTaskDetail" : {
@@ -7383,11 +7673,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "jobStatus" : "SUCCESS",
     "ActualAffectRows" : 1,
     "CreateTime" : "2021-03-05 15:08:55"
-  }
-}
 ```
 
-##### GetDataCorrectSQLFile
+`}` `}`
+
+##### 6.7.2.8 GetDataCorrectSQLFile
 
 调用GetDataCorrectSQLFile接口，获取数据变更工单的SQL脚本附件。 本接口适用于数据变更和数据导入。
 
@@ -7397,8 +7687,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | OrderId | Long | 是 | 730000 | 工单号。 |
 | Tid | Long | 否 | -1 | 租户ID。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
@@ -7421,29 +7709,36 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetDataCorrectSQLFile &Tid=-1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetDataCorrectSQLFileResponse>
     <FileUrl>https://dms-idb-hangzhou.oss-cn-
 hangzhou.aliyuncs.com/uplJMIpQ%3D</FileUrl>
     <RequestId>386EAA20-67FB-4D06-B7BF-2ABA11241185</RequestId>
     <Success>true</Success>
+</GetDataCorrectSQLFileResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "FileUrl" : "https://dms-idb-hangzhou.oss-cn-hangzhou.aliyuncs.com/uplJMIpQ%3D",
   "RequestId" : "386EAA20-67FB-4D06-B7BF-2ABA11241185",
   "Success" : true
-}
 ```
 
-##### CreateDataCronClearOrder
+`}`
 
-目前仅支持MySQL实例调用此接口。
+##### 6.7.2.9 CreateDataCronClearOrder
+
+调用CreateDataCronClearOrder接口，创建历史数据清理工单。 目前仅支持MySQL实例调用此接口。
 
 **请求参数**
 
@@ -7452,15 +7747,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Action | String | 是 | CreateDataCron ClearOrder | 系统规定参数。取值：CreateDataCronClearOrder。 |
 | Comment | String | 是 | test | 业务背景，以减少沟通成本。 |
 | RelatedUserList | Array of Long | 否 | 243253 | 相关人ID，设置的相关人员可查看工单， 并协同工作，非相关人员则不能查看工单 （管理员、DBA除外）。 |
-| Param | Object | 是 |  | 工单参数。 |
+| Param | Object | 是 |   | 工单参数。 |
 | Classify | String | 否 | test | 数据变更原因。 |
-| DbItemList | Array | 是 |  | 变更的数据库列表。 |
+| DbItemList | Array | 是 |   | 变更的数据库列表。 |
 | DbId | Long | 是 | 10**** | 数据库ID，可调用SearchDatabase接口获取。 |
 | Logic | Boolean | 是 | false | 是否为逻辑库，取值： true：是 false：否 |
 | CronFormat | String | 是 | 0 0 2 * * ? | Crontab表达式。 |
-| CronClearItemLi st | Array | 是 |  | 待清理的数据表列表。 |
-
-数据管理
+| CronClearItemLi st | Array | 是 |   | 待清理的数据表列表。 |
 
 | TableName | String | 是 | t1 | 表名，您可以调用ListTables接口获取该参数。 |
 |---|---|---|---|---|
@@ -7479,8 +7772,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-数据管理
-
 | RequestId | String | 0C1CB646-1DE4- 4AD0-B4A4- 7D47DD52E931 | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。 |
@@ -7496,29 +7787,33 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=CreateDataCronClearOrder &Comment=test &RelatedUserList=[243253] &Param={"Classify":"test","DbItemList":[{"DbId":10****,"Logic":false}],"CronFormat":"0 0 2 * * ?","CronClearItemList": [{"TableName":"t1","ColumnName":"gmt_create","RemainDays":7,"TimeUnit":"MILLISECONDS","Fi erSQL":"where 1 = 1"}],"specifyDuration":true,"DurationHour":4} &AttachmentKey=order_attachement.txt &Tid=123454324
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateDataCronClearOrderResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <Success>true</Success>
     <CreateOrderResult>1341532</CreateOrderResult>
+</CreateDataCronClearOrderResponse>
 ```
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
-  "Success" : true,
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-数据管理
+`{`
 
-##### CreateDataImportOrder
+```json
+  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
+  "Success" : true,
+  "CreateOrderResult" : [ 1341532 ]
+```
 
-关于该功能的更多说明，请参见数据导入。
+##### 6.7.2.10 CreateDataImportOrder
+
+调用CreateDataImportOrder接口，在DMS中创建数据导入工单。 关于该功能的更多说明，请参见数据导入。
 
 **请求参数**
 
@@ -7527,14 +7822,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Action | String | 是 | CreateDataImpo rtOrder | 系统规定参数。取值：CreateDataImportOrder。 |
 | Comment | String | 是 | test | 数据导入的业务背景，以减少沟通成本。 |
 | RelatedUserList | Array of Long | 否 | 51**** | 变更相关人的用户ID，设置的相关人员可查看工单，并协同工作，非相关人员则不能查看工单（管理员、DBA除外）。 |
-| Param | Object | 是 |  | 工单参数。 |
+| Param | Object | 是 |   | 工单参数。 |
 | Classify | String | 否 | test | 数据导入原因。 |
 | AttachmentNam e | String | 是 | order text _ | 导入数据的附件 Key（AttachmentKey），可通过调用接口GetUserUploadFileJob获取该参数的值。 |
-| DbItemList | Array | 是 |  | 待导入的数据库列表，当前仅支持导入一个库。 |
+| DbItemList | Array | 是 |   | 待导入的数据库列表，当前仅支持导入一个库。 |
 | DbId | Long | 是 | 1860**** | 数据库ID（DatabaseId），数据库分为物理库和逻辑库两种： 物理库ID：可通过调用接口ListDatabases或SearchDatabase 获取该参数的值。 逻辑库ID：可通过调用接口ListLogicDatabases或SearchData base获取该参数的值。 |
 | Logic | Boolean | 是 | false | 是否为逻辑库，取值如下： true：逻辑库 false：物理库说明如果取值为true，目标数据库必须为逻辑库。 |
-
-数据管理
 
 | FileType | String | 是 | CSV | 文件类型，取值如下： SQL：SQL文件 CSV：CSV文件 |
 |---|---|---|---|---|
@@ -7543,8 +7836,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | InsertType | String | 否 | INSERT | 插入类型，取值： INSERT：插入数据时数据库会检查主键（PrimaryKey），如果出现重复会报错。 INSERT IGNORE：如果表中已经存 _ 在相同的记录，则忽略当前新数据。 REPLACE INTO：如果表中已经有某 _ 行数据（根据主键或者唯一索引判断），则先删除此行数据，然后插入新的数据。 说明如果FileType为CSV，该参数必填。 |
 | CsvFirstRowIsCol umnDef | Boolean | 否 | true | CSV格式的类型，取值如下： true：CSV表格首行是字段名。 false：CSV表格首行是数据。 说明如果FileType为CSV，该参数必填。 |
 | IgnoreError | Boolean | 否 | false | 是否忽略报错，取值如下： true：忽略，遇到错误会跳过当前失败 SQL脚本，继续执行。 false：不忽略，遇到出错则中断后面的SQL脚本，不再执行。 |
-
-数据管理
 
 | ImportMode | String | 否 | FAST MODE _ | 导入模式，取值如下： FAST MODE：极速模式，在执行阶 _ 段读取文件，将SQL语句直接执行到指定的目标库。该模式安全性相比安全模式要低，但是执行时效较高。 SAFE MODE：安全模式，在预检查 _ 阶段会解析文件并将SQL或CSV数据缓存入库，执行时再从缓存库中读出来执行到指定的目标库。该模式安全性较好，但是执行时效相比极速模式要低。 |
 |---|---|---|---|---|
@@ -7561,8 +7852,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | RequestId | String | 0C1CB646-1DE4- 4AD0-B4A4- 7D47DD52E931 | 请求ID。 |
 
-数据管理
-
 | Success | Boolean | true | 请求是否成功，返回值： true：请求成功 false：请求失败 |
 |---|---|---|---|
 | ErrorMessage | String | UnknownError | 错误信息。 |
@@ -7577,29 +7866,37 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=CreateDataImportOrder &Comment=test &RelatedUserList=[51****] &Param={"Classify":"test","AttachmentName":"order_text","DbItemList": [{"DbId":1860****,"Logic":false}],"FileType":"CSV","FileEncoding":"AUTO","TableName":"Tab _text","InsertType":"INSERT","CsvFirstRowIsColumnDef":true,"IgnoreError":false,"ImportMod :"FAST_MODE"} &AttachmentKey=order_attachment.txt
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateDataImportOrderResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <Success>true</Success>
     <CreateOrderResult>1****</CreateOrderResult>
+</CreateDataImportOrderResponse>
 ```
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
-  "Success" : true,
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-数据管理
+`{`
 
-#### 结构设计
+```json
+  "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
+  "Success" : true,
+  "CreateOrderResult" : [ "1****" ]
+```
 
-##### CreatePublishGroupTask
+`}`
+
+#### 6.7.3 结构设计
+
+##### 6.7.3.1 CreatePublishGroupTask
+
+调用CreatePublishGroupTask接口执行结构设计变更。
 
 **请求参数**
 
@@ -7623,8 +7920,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RequestId | String | 427688B8-ADFB- 4C4E-9D45- EF5C1FD6E23D | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 
-数据管理
-
 | TaskId | Long | 413452 | 任务ID。 |
 |---|---|---|---|
 
@@ -7636,23 +7931,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=CreatePublishGroupTask &DbId=12345 &Logic=false &OrderId=142435 &PublishStrategy=IMMEDIATELY &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>78C93646-D9B1-4E6E-B5FD-C69F94A7905A</RequestId> <Success>true</Success> <TaskId>13424</TaskId>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "78C93646-D9B1-4E6E-B5FD-C69F94A7905A",
   "Success": true,
   "TaskId": 13424
-}
 ```
 
-##### ListDDLPublishRecords
+`}`
+
+##### 6.7.3.2 ListDDLPublishRecords
+
+调用ListDDLPublishRecords接口，获取结构设计工单的发布详情。
 
 **请求参数**
 
@@ -7660,8 +7957,6 @@ http(s)://[Endpoint]/?Action=CreatePublishGroupTask &DbId=12345 &Logic=false &Or
 |---|---|---|---|---|
 | OrderId | Long | 是 | 3214325 | 工单ID。 说明您可以通过调用CreateOrder接口创建结构设计工单，并获取工单ID。 |
 | Tid | Long | 否 | 1 | 租户ID。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
@@ -7674,31 +7969,27 @@ http(s)://[Endpoint]/?Action=CreatePublishGroupTask &DbId=12345 &Logic=false &Or
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| DDLPublishRec ordList | Array of DDLPublishRec ord |  | 发布记录列表。 |
+| DDLPublishRec ordList | Array of DDLPublishRec ord |   | 发布记录列表。 |
 | AuditStatus | String | CANCEL | 审批状态，取值如下： EXEMPT PASS：免批通过 _ TO AUDIT：等待审批 _ CANCEL：撤销审批 SUCCESS：审批通过 FAIL：未通过 |
 | AuditExpireTi me | String | 2020-12-14 20:52:38 | 审批过期时间。 |
 | CreatorId | Long | 1423 | 工单创建人的用户ID，非阿里云UID。可通过调用GetUser接口获取的UserId参数获取。 |
 | Finality | Boolean | true | 是否终止，取值： true：是 false：否说明导致终止的原因有审批撤回或在指定执行时间前未完成审批等。 |
 | FinalityReason | String | CANCEL | 终止原因。 |
 
-数据管理
-
 | PublishStatus | String | AUDIT | 发布状态，取值如下： START：创建 ANALYZE：分析 AUDIT：审批 DISPATCH：调度 SUCCESS：成功 |
 |---|---|---|---|
 | RiskLevel | String | LOW RISK _ | 风险等级，取值： NONE RISK：无风险 _ LOW RISK：低风险 _ MIDDLE RISK：中风险 _ HIGH RISK：高风险 _ |
 | StatusDesc | String | CANCEL | 发布状态描述。 |
 | WorkflowInsta nceId | Long | 432153 | 审批流ID。 |
-| PublishTaskInf oList | Array of PublishTaskInf o |  | 发布任务信息列表。 |
+| PublishTaskInf oList | Array of PublishTaskInf o |   | 发布任务信息列表。 |
 | DbId | Long | 4325 | 数据库ID。 |
 | Logic | Boolean | false | 是否为逻辑库，取值： true：是 false：否 |
 | PlanTime | String | 2020-12-14 20:52:38 | 计划发布时间。 |
 | PublishStrateg y | String | IMMEDIATELY | 发布策略，取值： IMMEDIATELY：立即执行 REGULARLY：定时执行 |
 | StatusDesc | String | NONE | 状态描述。 |
 | TaskJobStatus | String | NONE | 任务状态。 |
-| PublishJobList | Array of PublishJob |  | 发布任务列表。 |
+| PublishJobList | Array of PublishJob |   | 发布任务列表。 |
 | ExecuteCount | Long | 0 | 已经执行的SQL数量。 |
-
-数据管理
 
 | Scripts | String | ALTER TABLE test toolkit renam _ _ e table after rena _ _ _ me MODIFY COLUMN gmt modified _ datetime NOT NULL | 变更脚本。 |
 |---|---|---|---|
@@ -7715,10 +8006,10 @@ http(s)://[Endpoint]/?Action=CreatePublishGroupTask &DbId=12345 &Logic=false &Or
 http(s)://dms-enterprise.aliyuncs.com/?Action=ListDDLPublishRecords
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListDDLPublishRecordsResponse>
     <RequestId>AEF89401-5456-431A-9709-2C6C45657B51</RequestId>
     <Success>true</Success>
     <DDLPublishRecordList>
@@ -7749,8 +8040,6 @@ HTTP/1.1 200 OK Content-Type:application/xml
                     `long_text_a` varchar(1024) NULL COMMENT 'A文本',
 `longtextb`varchar(1024)NULLCOMMENT'B文本',
 ```
-
-数据管理
 
 ```xml
                     long_text_b varchar(1024) NULL COMMENT B文本,
@@ -7796,12 +8085,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
 ```xml
         <PublishStatus>SUCCESS</PublishStatus>
     </DDLPublishRecordList>
+</ListDDLPublishRecordsResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "AEF89401-5456-431A-9709-2C6C45657B51",
   "Success" : true,
   "DDLPublishRecordList" : [ {
@@ -7860,14 +8155,15 @@ _INCREMENT COMMENT '主键',\n\t`name` varchar(256) NOT NULL COMMENT '姓名',\n
 ```json
     "PublishStatus" : "SUCCESS"
   } ]
-}
 ```
 
-#### 数据导出
+`}`
 
-数据管理
+#### 6.7.4 数据导出
 
-##### ExecuteDataExport
+##### 6.7.4.1 ExecuteDataExport
+
+调用ExecuteDataExport接口执行数据导出工单。
 
 **请求参数**
 
@@ -7890,28 +8186,28 @@ _INCREMENT COMMENT '主键',\n\t`name` varchar(256) NOT NULL COMMENT '姓名',\n
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
 http(s)://[Endpoint]/?ActionDetail={ "fileType": "CSV", "encoding": "" } &OrderId=1234 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>FE8EE2F1-4880-46BC-A704-5CF63EAF9A04</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "FE8EE2F1-4880-46BC-A704-5CF63EAF9A04",
   "Success": true
-}
 ```
 
-##### GetDataExportDownloadURL
+`}`
+
+##### 6.7.4.2 GetDataExportDownloadURL
 
 调用GetDataExportDownloadURL接口获取数据导出结果附件下载地址。
 
@@ -7928,10 +8224,8 @@ http(s)://[Endpoint]/?ActionDetail={ "fileType": "CSV", "encoding": "" } &OrderI
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DownloadURL Result | Struct |  | 导出文件下载地址。 |
+| DownloadURL Result | Struct |   | 导出文件下载地址。 |
 | HasResult | Boolean | true | 是否有下载结果。 |
-
-数据管理
 
 | TipMessage | String | tip message | 异常提示信息。 |
 |---|---|---|---|
@@ -7949,7 +8243,7 @@ http(s)://[Endpoint]/?ActionDetail={ "fileType": "CSV", "encoding": "" } &OrderI
 http(s)://[Endpoint]/?Action=GetDataExportDownloadURL &OrderId=12345 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DownloadURLResult>
@@ -7959,28 +8253,30 @@ Expires=1574384313&amp;OSSAccessKeyId=wSa97B52GzF****&amp;Signature=HQQWBRSKiVV6
 </DownloadURLResult> <RequestId>4BF24EA5-9013-4C85-AE68-6C23AF5E0097</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "DownloadURLResult": {
     "URL": "https://dms-idb-hangzhou.oss-cn-hangzhou.aliyuncs.com/xxx.zip?
 Expires=1574384313&OSSAccessKeyId=wSa97B52GzF****&Signature=HQQWBRSKiVV6cupugh1/eAVSqXg%3
 ```
 
-,
+`,`
 
 ```json
     "HasResult": true
-  },
-  "RequestId": "4BF24EA5-9013-4C85-AE68-6C23AF5E0097",
-  "Success": true
-}
 ```
 
-数据管理
+`},`
 
-##### GetDataExportOrderDetail
+```json
+  "RequestId": "4BF24EA5-9013-4C85-AE68-6C23AF5E0097",
+  "Success": true
+```
+
+##### 6.7.4.3 GetDataExportOrderDetail
+
+调用GetDataExportOrderDetail接口获取数据导出工单详情。
 
 **请求参数**
 
@@ -7995,14 +8291,12 @@ Expires=1574384313&OSSAccessKeyId=wSa97B52GzF****&Signature=HQQWBRSKiVV6cupugh1/
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| DataExportOrd erDetail | Struct |  | 数据导出工单详情信息。 |
-| KeyInfo | Struct |  | 状态信息。 |
+| DataExportOrd erDetail | Struct |   | 数据导出工单详情信息。 |
+| KeyInfo | Struct |   | 状态信息。 |
 | JobStatus | String | EXPORT SUCCESS _ | 导出工单状态，取值和说明如下： PRE CHECKING: 执行预校验 _ PRE CHECK SUCCESS: 预校验成功 _ _ PRE CHECK FAIL: 预校验失败 _ _ WAITING APPLY AUDIT: 等待提交审批 _ _ APPLY AUDIT SUCESS: 提交审批成功 _ _ ENABLE EXPORT: 审批通过,允许导出 _ WAITING EXPORT: 等待调度进行导出 _ DOING EXPORT: 执行导出 _ EXPORT FAIL: 导出失败 _ EXPORT SUCCESS: 导出成功 _ |
 | PreCheckId | Long | 123 | 预校验ID。 |
-| OrderDetail | Struct |  | 工单详情信息。 |
+| OrderDetail | Struct |   | 工单详情信息。 |
 | ActualAffectRo ws | Long | 1 | 系统校验影响行数。 |
-
-数据管理
 
 | Classify | String | text | 导出原因分类。 |
 |---|---|---|---|
@@ -8026,7 +8320,7 @@ Expires=1574384313&OSSAccessKeyId=wSa97B52GzF****&Signature=HQQWBRSKiVV6cupugh1/
 http(s)://[Endpoint]/?Action=GetDataExportOrderDetail &OrderId=123456 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <DataExportOrderDetail>
@@ -8047,15 +8341,18 @@ http(s)://[Endpoint]/?Action=GetDataExportOrderDetail &OrderId=123456 &Tid=-1
 </DataExportOrderDetail> <RequestId>78C93646-D9B1-4E6E-B5FD-C69F94A7905A</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "DataExportOrderDetail": {
     "KeyInfo": {
       "PreCheckId": 15544,
       "JobStatus": "EXPORT_SUCCESS"
-    },
+```
+
+`},`
+
+```json
     "OrderDetail": {
       "Logic": false,
       "ActualAffectRows": 1,
@@ -8065,22 +8362,22 @@ http(s)://[Endpoint]/?Action=GetDataExportOrderDetail &OrderId=123456 &Tid=-1
       "DbId": 116367,
       "Classify": "测试",
       "EnvType": "product"
-    }
-  },
-  "RequestId": "78C93646-D9B1-4E6E-B5FD-C69F94A7905A",
-  "Success": true
-}
 ```
 
-#### 库表同步
+`}` `},`
 
-##### GetStructSyncOrderDetail
+```json
+  "RequestId": "78C93646-D9B1-4E6E-B5FD-C69F94A7905A",
+  "Success": true
+```
+
+`}`
+
+#### 6.7.5 库表同步
+
+##### 6.7.5.1 GetStructSyncOrderDetail
 
 调用GetStructSyncOrderDetail接口，获取结构同步的工单详情信息。
-
-**请求参数**
-
-数据管理
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -8096,17 +8393,15 @@ http(s)://[Endpoint]/?Action=GetDataExportOrderDetail &OrderId=123456 &Tid=-1
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| StructSyncOrd erDetail | object |  | 结构同步工单详情。 |
-| SourceDataba seInfo | object |  | 源库信息。 |
+| StructSyncOrd erDetail | object |   | 结构同步工单详情。 |
+| SourceDataba seInfo | object |   | 源库信息。 |
 | DbId | Long | 432532 | 库ID。 |
 | SearchName | String | test | 库搜索名。 |
 | DbType | String | MySQL | 数据库类型。 |
 | EnvType | String | dev | 实例的环境类型。 |
 | Logic | Boolean | false | 是否为逻辑库，取值： true：是 false：否 |
 
-数据管理
-
-| TargetDatabas eInfo | object |  | 目标库信息。 |
+| TargetDatabas eInfo | object |   | 目标库信息。 |
 |---|---|---|---|
 | DbId | Long | 432543 | 库ID。 |
 | SearchName | String | test | 库搜索名。 |
@@ -8114,15 +8409,13 @@ http(s)://[Endpoint]/?Action=GetDataExportOrderDetail &OrderId=123456 &Tid=-1
 | EnvType | String | dev | 实例的环境类型。 |
 | Logic | Boolean | false | 是否为逻辑库，取值： true：是 false：否 |
 | SourceType | String | VERSION | 表结构类型，取值和说明如下： DATASOURCE：系统默认的最新版。 VERSION：手动输入的历史版本。 |
-| SourceVersionI nfo | object |  | 源版本信息。 说明仅当SourceType为VERSION时显示。 |
+| SourceVersionI nfo | object |   | 源版本信息。 说明仅当SourceType为VERSION时显示。 |
 | VersionId | String | e179bbb8163dcdcf acda24858bedb4d 8006ae2b8 | 版本号。 |
 | TargetType | String | DATASOURCE | 表结构类型，取值和说明如下： DATASOURCE：系统默认的最新版。 VERSION：手动输入的历史版本。 |
-| TargetVersionI nfo | object |  | 目标版本信息。 说明仅当SourceType为VERSION时显示。 |
+| TargetVersionI nfo | object |   | 目标版本信息。 说明仅当SourceType为VERSION时显示。 |
 | VersionId | String | e179bbb8163dcdcf acda24858bedb4d 8006ae2b8 | 版本号。 |
-| TableInfoList | Array of TableInfo |  | 同步的表信息。 |
+| TableInfoList | Array of TableInfo |   | 同步的表信息。 |
 | SourceTableN ame | String | test tbl _ | 源表表名。 |
-
-数据管理
 
 | TargetTableNa me | String | test tbl _ | 目标表表名。 |
 |---|---|---|---|
@@ -8136,10 +8429,10 @@ http(s)://[Endpoint]/?Action=GetDataExportOrderDetail &OrderId=123456 &Tid=-1
 http(s)://dms-enterprise.aliyuncs.com/?OrderId=432553 &Tid=3***
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetStructSyncOrderDetailResponse>
     <RequestId>CA4E966B-1A57-4230-B0BB-CBB9CAF2CEDC</RequestId>
     <StructSyncOrderDetail>
         <SourceDatabaseInfo>
@@ -8152,25 +8445,26 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <SourceType>DATASOURCE</SourceType>
         <TargetType>DATASOURCE</TargetType>
         <IgnoreError>false</IgnoreError>
+        <TargetDatabaseInfo>
             <SearchName>film@rm-uf64xxxxe.mysql.rds.aliyuncs.com:3306</SearchName>
             <DbId>700000</DbId>
             <Logic>false</Logic>
             <EnvType>dev</EnvType>
             <DbType>mysql</DbType>
+        </TargetDatabaseInfo>
         <TableInfoList>
             <SourceTableName>*</SourceTableName>
             <TargetTableName>*</TargetTableName>
         </TableInfoList>
     </StructSyncOrderDetail>
     <Success>true</Success>
+</GetStructSyncOrderDetailResponse>
 ```
 
-`JSON` 格式数据管理
-
-|  | HTTP/1.1 200 OK Content-Type:application/json { "RequestId" : "CA4E966B-1A57-4230-B0BB-CBB9CAF2CEDC", "StructSyncOrderDetail" : { "SourceDatabaseInfo" : { "SearchName" : "poc dev@rm-uxxxxx.mysql.rds.aliyuncs.com:3306", _ "DbId" : 800000, "Logic" : false, "EnvType" : "dev", "DbType" : "mysql" }, "SourceType" : "DATASOURCE", "TargetType" : "DATASOURCE", "IgnoreError" : false, "TargetDatabaseInfo" : { "SearchName" : "film@rm-uf64xxxxe.mysql.rds.aliyuncs.com:3306", "DbId" : 700000, "Logic" : false, "EnvType" : "dev", "DbType" : "mysql" }, "TableInfoList" : [ { "SourceTableName" : "*", "TargetTableName" : "*" } ] }, "Success" : true } |  |
+|   | HTTP/1.1 200 OK Content-Type:application/json { "RequestId" : "CA4E966B-1A57-4230-B0BB-CBB9CAF2CEDC", "StructSyncOrderDetail" : { "SourceDatabaseInfo" : { "SearchName" : "poc dev@rm-uxxxxx.mysql.rds.aliyuncs.com:3306", _ "DbId" : 800000, "Logic" : false, "EnvType" : "dev", "DbType" : "mysql" }, "SourceType" : "DATASOURCE", "TargetType" : "DATASOURCE", "IgnoreError" : false, "TargetDatabaseInfo" : { "SearchName" : "film@rm-uf64xxxxe.mysql.rds.aliyuncs.com:3306", "DbId" : 700000, "Logic" : false, "EnvType" : "dev", "DbType" : "mysql" }, "TableInfoList" : [ { "SourceTableName" : "*", "TargetTableName" : "*" } ] }, "Success" : true } |   |
 |---|---|---|
 
-##### GetStructSyncExecSqlDetail
+##### 6.7.5.2 GetStructSyncExecSqlDetail
 
 调用GetStructSyncExecSqlDetail接口，获取结构同步的执行SQL脚本。
 
@@ -8183,8 +8477,6 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | PageSize | Long | 否 | 20 | 每页数据量。 |
 | Tid | Long | 否 | 1 | 租户ID。 说明鼠标移动到界面右上角的头像处，查看租户ID。 |
 
-数据管理
-
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
 
@@ -8196,10 +8488,8 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| StructSyncExe cSqlDetail | object |  | 执行SQL脚本的详情信息。 |
+| StructSyncExe cSqlDetail | object |   | 执行SQL脚本的详情信息。 |
 | TotalSqlCount | Long | 1 | SQL总数。 |
-
-数据管理
 
 | ExecSql | String | /* origin table[helloz bak] _ exist, target table[helloz bak] _ not exist */\n/* generate [helloz bak] create _ table sql */\ncreate table `helloz bak`(\n\t`id _ ` bigint(20) UNSIGNED NOT NULL AUTO INCREMENT _ COMMENT '主键',\n\t`gmt create _ ` datetime NOT NULL COMMENT '创建时间',\n\t`gmt modifi _ ed` datetime NOT NULL COMMENT '修改时间',\n\t`num` int(11) NOT NULL COMMENT '编号',\n\t`addr` varchar(50) CHARACTER SET utf8 COLLATE utf8 general ci _ _ NOT NULL COMMENT '地址',\n\tPRIMARY KEY (`id`)\n)\nDEFAULT CHARACTER SET=utf8 COLLATE=utf8 gen _ eral ci\nCOMMENT _ ='test'\n\n; | 执行的SQL脚本。 |
 |---|---|---|---|
@@ -8212,10 +8502,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
 http(s)://dms-enterprise.aliyuncs.com/?OrderId=342153 &PageNumber=1 &PageSize=20 &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetStructSyncExecSqlDetailResponse>
     <StructSyncExecSqlDetail>
         <ExecSql>/****** 目标库：film@rm-uxxxxxxxx.mysql.rds.aliyuncs.com:3306 ******/
             /* origin table[data_modify] exist, target table[data_modify] not exist */
@@ -8251,28 +8541,39 @@ HTTP/1.1 200 OK Content-Type:application/xml
     </StructSyncExecSqlDetail>
     <RequestId>1E4E71DA-9346-4254-B19D-BC5FF6BF34EC</RequestId>
     <Success>true</Success>
+</GetStructSyncExecSqlDetailResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "StructSyncExecSqlDetail" : {
     "ExecSql" : "/****** 目标库：film@rm-uxxxxxxxx.mysql.rds.aliyuncs.com:3306
 ******/\n\n/* origin table[data_modify] exist, target table[data_modify] not exist */\n
 /* generate [data_modify] create table sql */\ncreate table `data_modify` (\n `id` big int(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',\n `name` varchar(256) NOT NULL COMMENT '姓名',\n `phone` varchar(32) DEFAULT NULL COMMENT '电话',\n `sex` varchar(32) DEFAULT NULL COMMENT '性别',\n `email` varchar(256) DEFAULT NULL COMMENT ' 邮箱',\n `user_desc` varchar(1024) DEFAULT NULL COMMENT '备注',\n PRIMARY KEY (`id`)\n) DEFAULT CHARSET=utf8 COMMENT='数据修改测试表';\n\n/* origin table[task_data] ex ist, target table[task_data] not exist */\n/* generate [task_data] create table sql */\ ncreate table `task_data` (\n `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',\n `gmt_create` datetime NOT NULL COMMENT '创建时间',\n `gmt_modified` datetime NOT NULL COMMENT '修改时间',\n `content` text COMMENT '测试数据',\n PRIMARY KEY (`id`)\n) DEFAULT CHARSET=utf8mb4 COMMENT='任务编排测试表';\n\n\n\n",
     "TotalSqlCount" : 2
-  },
-  "RequestId" : "1E4E71DA-9346-4254-B19D-BC5FF6BF34EC",
-  "Success" : true
-}
 ```
 
-##### ExecuteStructSync
+`},`
 
-若实例的安全规则需要通过审批才能进行同步，请先调用SubmitStructSyncOrderApproval接口发起审批流程，并完成审批。 您可以调用GetStructSyncJobDetail接口查询目标实例是否需要审批。
+```json
+  "RequestId" : "1E4E71DA-9346-4254-B19D-BC5FF6BF34EC",
+  "Success" : true
+```
 
-**说明**
+`}`
+
+##### 6.7.5.3 ExecuteStructSync
+
+调用ExecuteStructSync接口执行结构同步工单。 若实例的安全规则需要通过审批才能进行同步，请先调用SubmitStructSyncOrderApproval接口发起审批流程，并完成审批。
+
+> **说明：** 您可以调用GetStructSyncJobDetail接口查询目标实例是否需要审批。
 
 **请求参数**
 
@@ -8286,8 +8587,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-
-数据管理
 
 | RequestId | String | 4E1D2B4D-3E53- 4ABC-999D- 1D2520B3471A | 请求ID。 |
 |---|---|---|---|
@@ -8303,24 +8602,31 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=ExecuteStructSync &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ExecuteStructSyncResponse>
     <RequestId>4E1D2B4D-3E53-4ABC-999D-1D2520B3471A</RequestId>
     <Success>true</Success>
+</ExecuteStructSyncResponse>
 ```
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  "RequestId" : "4E1D2B4D-3E53-4ABC-999D-1D2520B3471A",
-  "Success" : true
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-##### GetStructSyncJobAnalyzeResult
+`{`
+
+```json
+  "RequestId" : "4E1D2B4D-3E53-4ABC-999D-1D2520B3471A",
+  "Success" : true
+```
+
+`}`
+
+##### 6.7.5.4 GetStructSyncJobAnalyzeResult
 
 调用GetStructSyncJobAnalyzeResult接口，获取结构同步的任务分析结果。
 
@@ -8329,8 +8635,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | OrderId | Long | 是 | 1342355 | 工单号 |
-
-数据管理
 
 | CompareType | String | 否 | CREATE TABLE _ | 比较类型，取值： CREATE TABLE：创建表 _ ALTER TABLE：修改表 _ EQUAL TABLE：相同的表 _ PASS TABLE：跳过的表 _ NOT COMPARE：待分析的表 _ |
 |---|---|---|---|---|
@@ -8347,31 +8651,29 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| StructSyncJob AnalyzeResult | object |  | 结构同步任务分析结果。 |
-| SummaryList | Array of Summary |  | 统计结果列表。 |
+| StructSyncJob AnalyzeResult | object |   | 结构同步任务分析结果。 |
+| SummaryList | Array of Summary |   | 统计结果列表。 |
 | CompareType | String | CREATE TABLE _ | 比较类型，取值： CREATE TABLE：创建表 _ ALTER TABLE：修改表 _ EQUAL TABLE：相同的表 _ PASS TABLE：跳过的表 _ NOT COMPARE：待分析的表 _ |
-
-数据管理
 
 | Count | Long | 1 | 表的数量。 |
 |---|---|---|---|
-| ResultList | Array of Result |  | 分析结果详情列表。 |
+| ResultList | Array of Result |   | 分析结果详情列表。 |
 | SourceTableN ame | String | helloz bak _ | 源表表名。 |
 | TargetTableNa me | String | helloz bak _ | 目标表表名。 |
 | Script | String | /* origin table[helloz bak] _ exist, target table[helloz bak] _ not exist */\n/* generate [helloz bak] create _ table sql */\ncreate table `helloz bak`(\n\t`id _ ` bigint(20) UNSIGNED NOT NULL AUTO INCREMENT _ COMMENT '主键',\n\t`gmt create _ ` datetime NOT NULL COMMENT '创建时间',\n\t`gmt modifi _ ed` datetime NOT NULL COMMENT '修改时间',\n\t`num` int(11) NOT NULL COMMENT '编号',\n\t`addr` varchar(50) CHARACTER SET utf8 COLLATE utf8 general ci _ _ NOT NULL COMMENT '地址',\n\tPRIMARY KEY (`id`)\n)\nDEFAULT CHARACTER SET=utf8 COLLATE=utf8 gen _ eral ci\nCOMMENT _ ='test'\n\n; | SQL脚本。 |
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetStructSyncJobAnalyzeResult &CompareType=CREATE_TABLE &PageNumber=1 &PageSize=20 &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetStructSyncJobAnalyzeResultResponse>
     <StructSyncJobAnalyzeResult>
         <ResultList>
             <SourceTableName>data_modify</SourceTableName>
@@ -8418,12 +8720,18 @@ exist */
     </StructSyncJobAnalyzeResult>
     <RequestId>472C5F33-198B-4A41-BF83-B2322636B583</RequestId>
     <Success>true</Success>
+</GetStructSyncJobAnalyzeResultResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "StructSyncJobAnalyzeResult" : {
     "ResultList" : [ {
       "SourceTableName" : "data_modify",
@@ -8453,13 +8761,18 @@ st */\n/* generate [data_modify] create table sql */\ncreate table `data_modify`
       "CompareType" : "EQUAL_TABLE",
       "Count" : 1
     } ]
-  },
-  "RequestId" : "472C5F33-198B-4A41-BF83-B2322636B583",
-  "Success" : true
-}
 ```
 
-##### SubmitStructSyncOrderApproval
+`},`
+
+```json
+  "RequestId" : "472C5F33-198B-4A41-BF83-B2322636B583",
+  "Success" : true
+```
+
+`}`
+
+##### 6.7.5.5 SubmitStructSyncOrderApproval
 
 调用SubmitStructSyncOrderApproval接口，提交结构同步工单至审批流程。
 
@@ -8469,8 +8782,6 @@ st */\n/* generate [data_modify] create table sql */\ncreate table `data_modify`
 |---|---|---|---|---|
 | OrderId | Long | 是 | 4324535 | 工单号。 |
 | Tid | Long | 否 | 1 | 租户ID。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
@@ -8493,26 +8804,35 @@ st */\n/* generate [data_modify] create table sql */\ncreate table `data_modify`
 http(s)://dms-enterprise.aliyuncs.com/?Action=SubmitStructSyncOrderApproval &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <SubmitStructSyncOrderApprovalResponse>
     <RequestId>72768811-B970-4733-85BE-A8659613BF23</RequestId>
     <WorkflowInstanceId>1000000</WorkflowInstanceId>
     <Success>true</Success>
+</SubmitStructSyncOrderApprovalResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "72768811-B970-4733-85BE-A8659613BF23",
   "WorkflowInstanceId" : 1000000,
   "Success" : true
-}
 ```
 
-##### CreateStructSyncOrder
+`}`
+
+##### 6.7.5.6 CreateStructSyncOrder
+
+调用CreateStructSyncOrder接口，创建结构同步工单。
 
 **请求参数**
 
@@ -8520,23 +8840,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | Comment | String | 是 | test | 工单备注。 |
 | RelatedUserList | Array of Long | 否 | 432435 | 相关人ID。 |
-| Param | Object | 是 |  | 工单参数。 |
-| Source | Object | 是 |  | 基准库信息。 |
+| Param | Object | 是 |   | 工单参数。 |
+| Source | Object | 是 |   | 基准库信息。 |
 | DbId | Long | 是 | 4324532 | 库ID，可调用SearchDatabase接口获取。 |
 | DbSearchName | String | 是 | test | 库搜索名，可调用SearchDatabase接口获取。 |
 | Logic | Boolean | 否 | false | 是否为逻辑库，取值： true：是 false：否 |
 | VersionId | String | 否 | e179bbb8163dc dcfacda24858be db4d8006ae2b8 | 版本号，默认为最新的表结构版本。 |
-| Target | Object | 是 |  | 目标库信息。 |
+| Target | Object | 是 |   | 目标库信息。 |
 | DbId | Long | 是 | 432432 | 库ID，可调用SearchDatabase接口获取。 |
-
-数据管理
 
 | DbSearchName | String | 是 | test | 库搜索名，可调用SearchDatabase接口获取。 |
 |---|---|---|---|---|
 | Logic | Boolean | 否 | false | 是否为逻辑库，取值： true：是 false：否 |
 | VersionId | String | 否 | e179bbb8163dc dcfacda24858be db4d8006ae2b8 | 版本号（默认不填）。 说明当您输入目标库的表结构版本号时，该工单仅会对比两个库之间的表结构。 |
 | IgnoreError | Boolean | 否 | false | 是否忽略报错，取值： true：忽略，遇到错误会跳过当前失败 SQL脚本，继续执行。 false：不忽略，遇到出错则中断后面的SQL脚本，不再执行。 |
-| TableInfoList | Array | 否 |  | 同步的表信息列表。 |
+| TableInfoList | Array | 否 |   | 同步的表信息列表。 |
 | SourceTableNa me | String | 否 | test tbl _ | 源表表名。 |
 | TargetTableNam e | String | 否 | test tbl _ | 目标表表名。 |
 | AttachmentKey | String | 否 | upload 3c7edea _ 3-e4c3-4403- 857d- 737043036f69 t _ est.sql | 上传附件成功后返回的附件Key，您可以调用GetUserUploadFileJob接口获取。 |
@@ -8549,8 +8867,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | RequestId | String | 4E1D2B4D-3E53- 4ABC-999D- 1D2520B3471A | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-
-数据管理
 
 | ErrorMessage | String | UnknownError | 错误信息。 |
 |---|---|---|---|
@@ -8565,30 +8881,35 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=CreateStructSyncOrder &RelatedUserList=[432435] &Param={"Source": {"DbId":4324532,"DbSearchName":"test","Logic":false,"VersionId":"e179bbb8163dcdcfacda2485 edb4d8006ae2b8"},"Target": {"DbId":432432,"DbSearchName":"test","Logic":false,"VersionId":"e179bbb8163dcdcfacda24858 db4d8006ae2b8"},"SyncType":"STRUCT_TABLES","IgnoreError":false,"TableInfoList":[{"Sourc eTableName":"test_tbl","TargetTableName":"test_tbl"}]} &AttachmentKey=-1 &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateStructSyncOrderResponse>
     <CreateOrderResult>2000000</CreateOrderResult>
     <RequestId>0DF19315-DCAF-4376-8006-1CEB0BBC6B13</RequestId>
     <Success>true</Success>
+</CreateStructSyncOrderResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "CreateOrderResult" : [ 2000000 ],
   "RequestId" : "0DF19315-DCAF-4376-8006-1CEB0BBC6B13",
   "Success" : true
-}
 ```
 
-##### GetStructSyncJobDetail
+`}`
 
-数据管理
+##### 6.7.5.7 GetStructSyncJobDetail
 
-**请求参数**
+调用GetStructSyncJobDetail接口，获取结构同步的任务详情。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -8604,10 +8925,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| StructSyncJob Detail | object |  | 结构同步任务详情。 |
+| StructSyncJob Detail | object |   | 结构同步任务详情。 |
 | JobStatus | String | DBTASK SUCCESS _ | 任务状态，取值和说明如下： NEW：新创建。 COMPARING：正在对比结构。 COMPARE BREAK：对比手动中断。 _ COMPARE FINISH：对比完成。 _ NOT SCRIPTS：对比完成, 没有可执行脚 _ 本。 SUBMITED DBTASK：已提交DBTask。 _ DBTASK SUCCESS：DBTask执行成功。 _ SUBMITED WORKFLOW：提交审批。 _ WORKFLOW SUCCESS：审批结束。 _ |
-
-数据管理
 
 | Message | String | test | 任务描述信息。 |
 |---|---|---|---|
@@ -8626,16 +8945,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetStructSyncJobDetail &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetStructSyncJobDetailResponse>
     <RequestId>C29D0A5F-BB9B-4CB9-A6B7-19B5433983CA</RequestId>
     <StructSyncJobDetail>
         <JobStatus>COMPARE_FINISH</JobStatus>
 ```
 
-`<Message>`结构对比完成, 预览`SQL`已经生成`</Message>`
+`<Message>`结构对比完成`,` 预览`SQL`已经生成`</Message>`
 
 ```xml
         <TableAnalyzed>6</TableAnalyzed>
@@ -8644,32 +8963,43 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <DBTaskGroupId>3000000</DBTaskGroupId>
     </StructSyncJobDetail>
     <Success>true</Success>
+</GetStructSyncJobDetailResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "C29D0A5F-BB9B-4CB9-A6B7-19B5433983CA",
   "StructSyncJobDetail" : {
     "JobStatus" : "COMPARE_FINISH",
 ```
 
-`"Message" : "`结构对比完成, 预览`SQL`已经生成`",`
+`"Message" : "`结构对比完成`,` 预览`SQL`已经生成`",`
 
 ```json
     "TableAnalyzed" : 6,
     "TableCount" : 6,
     "SecurityRule" : "WITH_APPROVE",
     "DBTaskGroupId" : 3000000
-  },
-  "Success" : true
-}
 ```
 
-#### SQL审核
+`},`
 
-##### GetSQLReviewCheckResultStatus
+```json
+  "Success" : true
+```
+
+`}`
+
+#### 6.7.6 SQL审核
+
+##### 6.7.6.1 GetSQLReviewCheckResultStatus
 
 调用GetSQLReviewCheckResultStatus接口，获取SQL审核工单的审核结果。
 
@@ -8678,8 +9008,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | GetSQLReviewC heckResultStatu s | 系统规定参数。取值：GetSQLReviewCheckResultSt atus。 |
-
-数据管理
 
 | OrderId | Long | 是 | 123321 | 工单号，您可以调用CreateSQLReviewOrder接口获取该参数。 |
 |---|---|---|---|---|
@@ -8694,21 +9022,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | Success | Boolean | true | 请求是否成功。 |
-| CheckResultSt atus | Object |  | SQL审核结果。 |
+| CheckResultSt atus | Object |   | SQL审核结果。 |
 | TotalSQLCount | Long | 10 | 总SQL数量，单位：条。 |
 | CheckedCount | Long | 10 | 已审核SQL数量，单位：条。 |
-| CheckStatusR esult | Object |  | 检测状态。 |
+| CheckStatusR esult | Object |   | 检测状态。 |
 | New | Long | 0 | 等待审核的SQL数量，单位：条。 |
 | Unknown | Long | 0 | 解析异常的SQL数量，单位：条。 |
 | CheckNotPass | Long | 1 | 检测不通过的SQL数量，单位：条。 |
 | CheckPass | Long | 8 | 检测通过的SQL数量，单位：条。 |
 
-数据管理
-
 | ForcePass | Long | 1 | 人工通过的SQL数量，单位：条。 |
 |---|---|---|---|
 | ForceNotPass | Long | 0 | 人工不通过的SQL数量，单位：条。 |
-| SQLReviewRes ult | Object |  | SQL审核优化建议。 |
+| SQLReviewRes ult | Object |   | SQL审核优化建议。 |
 | MustImprove | Long | 1 | 必须改进的SQL数量，单位：条。 |
 | PotentialIssue | Long | 0 | 潜在问题的SQL数量，单位：条。 |
 | SuggestImpro ve | Long | 3 | 建议改进的SQL数量，单位：条。 |
@@ -8724,10 +9050,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=GetSQLReviewCheckResultStatus &OrderId=123321 &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetSQLReviewCheckResultStatusResponse>
     <RequestId>E1ABE358-14A0-4DFA-9776-1A3CB59192DF</RequestId>
     <CheckResultStatus>
         <SQLReviewResult>
@@ -8744,12 +9070,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         </CheckStatusResult>
     </CheckResultStatus>
     <Success>true</Success>
+</GetSQLReviewCheckResultStatusResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "E1ABE358-14A0-4DFA-9776-1A3CB59192DF",
   "CheckResultStatus" : {
     "SQLReviewResult" : {
@@ -8757,30 +9089,36 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "MustImprove" : 1,
       "SuggestImprove" : 1,
       "PotentialIssue" : 2
-    },
+```
+
+`},`
+
+```json
     "TotalSQLCount" : 4,
     "CheckedCount" : 4,
     "CheckStatusResult" : {
       "CheckNotPass" : 1,
       "CheckPass" : 3
-    }
-  },
-  "Success" : true
-}
 ```
 
-##### CreateSQLReviewOrder
+`}` `},`
 
-**请求参数**
+```json
+  "Success" : true
+```
 
-数据管理
+`}`
+
+##### 6.7.6.2 CreateSQLReviewOrder
+
+调用CreateSQLReviewOrder接口创建SQL审核工单。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | CreateSQLRevie wOrder | 系统规定的参数。取值：CreateSQLReviewOrder。 |
 | Comment | String | 是 | test | 业务背景，描述任务的原因或目标，以减少沟通成本。 |
 | RelatedUserList | Array of Long | 否 | 123443 | 相关人ID。 |
-| Param | Object | 是 |  | 工单参数。 |
+| Param | Object | 是 |   | 工单参数。 |
 | ProjectName | String | 是 | xxx业务SQL审核 | 项目名称。 |
 | DbId | Long | 是 | 123321 | 数据库ID，可调用SearchDatabase接口获取。 说明当前仅支持物理库，暂不支持逻辑库。 |
 | AttachmentKeyL ist | Array of String | 是 | upload xxxx.sql _ | 附件Key，支持添加多个附件，您可以调用GetUserUploadFileJob接口获取该参数。 说明仅支持iBatis框架或 MyBatis框架的.xml文件与.sql格式的SQL文件。 |
@@ -8793,8 +9131,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | RequestId | String | 0C1CB646-1DE4- 4AD0-B4A4- 7D47DD52E931 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
-
-数据管理
 
 | ErrorMessage | String | UnknownError | 错误信息。 |
 |---|---|---|---|
@@ -8809,48 +9145,52 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=CreateSQLReviewOrder &Comment=test &RelatedUserList=[123443] &Param={"ProjectName":"xxx业务SQL审核","DbId":123321,"AttachmentKeyList": ["upload_xxxx.sql"]} &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateSQLReviewOrderResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <Success>true</Success>
     <ErrorMessage>UnknownError</ErrorMessage>
     <ErrorCode>UnknownError</ErrorCode>
     <CreateOrderResult>1423532</CreateOrderResult>
+</CreateSQLReviewOrderResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "Success" : true,
   "ErrorMessage" : "UnknownError",
   "ErrorCode" : "UnknownError",
-}
+  "CreateOrderResult" : [ 1423532 ]
 ```
 
-##### ListSQLReviewOriginSQL
+`}`
 
-调用ListSQLReviewOriginSQL接口，获取SQL审核工单的SQL详情结果。 数据管理
+##### 6.7.6.3 ListSQLReviewOriginSQL
 
-**请求参数**
+调用ListSQLReviewOriginSQL接口，获取SQL审核工单的SQL详情结果。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
 | Action | String | 是 | ListSQLReviewO riginSQL | 系统规定参数。取值：ListSQLReviewOriginSQL。 |
 | OrderId | Long | 是 | 123321 | 工单号。您可以调用CreateSQLReviewOrder接口获取该参数。 |
-| OrderActionDeta il | Object | 否 |  | 工单参数（过滤条件）。 |
+| OrderActionDeta il | Object | 否 |   | 工单参数（过滤条件）。 |
 | FileId | Long | 否 | 123345 | 审核文件ID。 |
 | SQLReviewResul t | String | 否 | MUST IMPROVE _ | SQL审核优化建议。取值如下： MUST IMPROVE：必须改进。 _ POTENTIAL ISSUE：潜在问题。 _ SUGGEST IMPROVE：建议改进。 _ USE DMS TOOLKIT：使用无锁结构 _ _ 变更。 USE DMS DML UNLOCK：使用无 _ _ _ 锁数据变更。 TABLE INDEX SUGGEST：索引推 _ _ 荐。 |
 | CheckStatusRes ult | String | 否 | check not pass _ _ | 检测结果。取值如下： new：等待分析 unknown：解析异常 check not pass：检测不通过 _ _ check pass：检测通过 _ force pass：人工通过 _ force not pass：人工不通过 _ _ |
-| Page | Object | 否 |  | 分页参数。 |
+| Page | Object | 否 |   | 分页参数。 |
 | PageNumber | Integer | 否 | 1 | 第几页。 |
 | PageSize | Integer | 否 | 20 | 每页数据量。 |
 | Tid | Long | 否 | 1 | 租户ID。您可以调用GetUserActiveTenant或ListUserTen ants接口获取该参数。 |
-
-数据管理
 
 | RegionId | String | 否 | cn-hangzhou | 选择DMS的服务地域。 说明请根据应用所在地就近选择。 |
 |---|---|---|---|---|
@@ -8864,7 +9204,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | Success | Boolean | true | 请求是否成功。 |
 | TotalCount | Integer | 10 | 总SQL条数。 |
-| OriginSQLList | Array of OriginSQLList |  | 解析的SQL列表。 |
+| OriginSQLList | Array of OriginSQLList |   | 解析的SQL列表。 |
 | SQLId | Long | 1111 | SQL语句ID。 |
 | FileId | Long | 123321 | 文件ID。 |
 | FileName | String | test.sql | 文件名。 |
@@ -8872,8 +9212,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | CheckStatus | String | check pass _ | 检测结果。返回值如下： new：等待分析。 unknown：解析异常。 check not pass：检测不通过。 _ _ check pass：检测通过。 _ force pass：人工通过。 _ force not pass：人工不通过。 _ _ |
 | StatusDesc | String | 检测通过 | 检测结果描述。 |
 | CheckedTime | String | 2021-06-09 21:07:00 | 检测时间。 |
-
-数据管理
 
 | SqlHash | String | 95adb6e77a0884d 9e50232cb8c5c96 9d | SQL内容的MD5值。 |
 |---|---|---|---|
@@ -8888,10 +9226,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=ListSQLReviewOriginSQL &OrderId=123321 &OrderActionDetail= {"FileId":123345,"SQLReviewResult":"MUST_IMPROVE","CheckStatusResult":"check_not_pass","P e":{"PageNumber":1,"PageSize":20}} &Tid=1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListSQLReviewOriginSQLResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <ErrorCode>UnknownError</ErrorCode>
     <ErrorMessage>UnknownError</ErrorMessage>
@@ -8909,12 +9247,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <ReviewSummary>{"POTENTIAL_ISSUE":1,"SUGGEST_IMPROVE":1}</ReviewSummary>
         <SQLReviewQueryKey>a57e54ec5433475ea3082d882fdb89c5</SQLReviewQueryKey>
     </OriginSQLList>
+</ListSQLReviewOriginSQLResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "ErrorCode" : "UnknownError",
   "ErrorMessage" : "UnknownError",
@@ -8936,14 +9280,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "ReviewSummary" : "{\"POTENTIAL_ISSUE\":1,\"SUGGEST_IMPROVE\":1}",
     "SQLReviewQueryKey" : "a57e54ec5433475ea3082d882fdb89c5"
   } ]
-}
 ```
 
-#### 附件上传
+`}`
 
-数据管理
+#### 6.7.7 附件上传
 
-##### CreateUploadOSSFileJob
+##### 6.7.7.1 CreateUploadOSSFileJob
+
+调用CreateUploadOSSFileJob接口，创建上传OSS附件任务。
 
 **请求参数**
 
@@ -8951,7 +9296,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|
 | FileSource | String | 是 | datacorrect | 上传附件的使用目的，取值和说明如下： datacorrect：数据变更工单 order info attachment：工单附 _ _ 件 big-file：批量数据导入 sqlreview：SQL审核 |
 | FileName | String | 是 | test.sql | 文件名。 说明需要以TXT、SQL格式结尾，例如test.txt文件。 |
-| UploadTarget | Object | 是 |  | OSS信息。 |
+| UploadTarget | Object | 是 |   | OSS信息。 |
 | Endpoint | String | 是 | http://oss-cn- hangzhou.aliyun cs.com | OSS的连接地址。 |
 | BucketName | String | 是 | test bucket _ | OSS Bucket唯一标识。 |
 | ObjectName | String | 是 | test.sql | OSS对象名称。 |
@@ -8963,8 +9308,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 | RequestId | String | 4E1D2B4D-3E53- 4ABC-999D- 1D2520B3471A | 请求ID。 |
-
-数据管理
 
 | Success | Boolean | true | 请求是否成功。 |
 |---|---|---|---|
@@ -8980,30 +9323,35 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?FileSource=datacorrect &FileName=test.sql &UploadType=OSS &UploadTarget={"Endpoint":"http://oss-cnhangzhou.aliyuncs.com","BucketName":"test_bucket","ObjectName":"test.sql"} &Tid=-1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateUploadOSSFileJobResponse>
     <JobKey>7000005000007000009000000</JobKey>
     <RequestId>44355324-9534-4AF4-B7AA-8EDE3C767889</RequestId>
     <Success>true</Success>
+</CreateUploadOSSFileJobResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "JobKey" : "7000005000007000009000000",
   "RequestId" : "44355324-9534-4AF4-B7AA-8EDE3C767889",
   "Success" : true
-}
 ```
 
-##### GetUserUploadFileJob
+`}`
 
-数据管理
+##### 6.7.7.2 GetUserUploadFileJob
 
-**请求参数**
+调用GetUserUploadFileJob接口，获取上传附件的任务信息。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9019,18 +9367,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| UploadFileJob Detail | object |  | 上传附件任务详情。 |
+| UploadFileJob Detail | object |   | 上传附件任务详情。 |
 | JobKey | String | 65254a4c1614235 217749100e | 上传附件任务JobKey。 |
 | FileName | String | test.sql | 文件名。 |
 | FileSize | Long | 2968269 | 文件大小，单位：字节。 |
 | FileSource | String | datacorrect | 文件上传的使用目的，取值： datacorrect：数据变更工单 order info attachment：工单附件 _ _ big-file：批量数据导入 sqlreview：SQL审核 |
 
-数据管理
-
 | UploadType | String | URL | 上传附件任务类型，取值： URL OSS |
 |---|---|---|---|
 | UploadURL | String | http://xxxx/test.sql | 上传附件URL链接。 说明当UploadType参数为URL时显示。 |
-| UploadOSSPar am | object |  | 上传附件OSS信息。 说明当UploadType参数为OSS时显示。 |
+| UploadOSSPar am | object |   | 上传附件OSS信息。 说明当UploadType参数为OSS时显示。 |
 | Endpoint | String | http://oss-cn- hangzhou.aliyuncs. com | OSS的连接地址。 |
 | BucketName | String | test bucket _ | OSS Bucket唯一标识。 |
 | ObjectName | String | test.sql | OSS对象名称。 |
@@ -9047,10 +9393,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetUserUploadFileJob &Tid=-1
 ```
 
-&公共请求参数数据管理正常返回示例 `XML` 格式
+`&`公共请求参数 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetUserUploadFileJobResponse>
     <RequestId>22FFF57C-6E85-4C3D-90AF-C1BFE79E1FAF</RequestId>
     <UploadFileJobDetail>
         <JobStatus>INIT</JobStatus>
@@ -9064,12 +9410,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <FileSize>-1</FileSize>
     </UploadFileJobDetail>
     <Success>true</Success>
+</GetUserUploadFileJobResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "22FFF57C-6E85-4C3D-90AF-C1BFE79E1FAF",
   "UploadFileJobDetail" : {
     "JobStatus" : "INIT",
@@ -9081,19 +9433,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "FileName" : "1.txt",
     "UploadType" : "URL",
     "FileSize" : -1
-  },
-  "Success" : true
-}
 ```
 
-##### CreateUploadFileJob
+`},`
+
+```json
+  "Success" : true
+```
+
+`}`
+
+##### 6.7.7.3 CreateUploadFileJob
+
+调用CreateUploadFileJob接口，创建上传附件任务。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | Action | String | 是 | CreateUploadFil eJob | 系统规定参数。取值：CreateUploadFileJob。 |
 |---|---|---|---|---|
@@ -9110,8 +9467,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RequestId | String | E103C5F9-DE47- 53F2-BF34- D71DF38F**** | 请求ID。 |
 | Success | Boolean | true | 请求是否成功，返回值说明如下： true：请求成功。 false：请求失败。 |
 
-数据管理
-
 | ErrorMessage | String | Unsupported url scheme : null, scheme must be https or http | 错误信息。 |
 |---|---|---|---|
 | ErrorCode | String | InvalidParameterV alid | 错误码。 |
@@ -9125,30 +9480,35 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=CreateUploadFileJob &FileName=test.txt &UploadType=URL &UploadURL=https://XXX.oss-cn-hangzhou.aliyuncs.com/test.txt &Tid=3***
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <CreateUploadFileJobResponse>
     <JobKey>761f18031635736380812****</JobKey>
     <RequestId>E103C5F9-DE47-53F2-BF34-D71DF38F****</RequestId>
     <Success>true</Success>
+</CreateUploadFileJobResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "JobKey" : "761f18031635736380812****",
   "RequestId" : "E103C5F9-DE47-53F2-BF34-D71DF38F****",
   "Success" : true
-}
 ```
 
-#### 权限申请
+`}`
 
-数据管理
+#### 6.7.8 权限申请
 
-##### GetOwnerApplyOrderDetail
+##### 6.7.8.1 GetOwnerApplyOrderDetail
 
 调用GetOwnerApplyOrderDetail接口获取申请库Owner、表Owner、实例Owner的工单详情。
 
@@ -9168,16 +9528,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| OwnerApplyOr derDetail | object |  | 工单详情。 |
+| OwnerApplyOr derDetail | object |   | 工单详情。 |
 | ApplyType | String | DB | 申请类型，取值： INSTANCE：实例Owner DB：库Owner TABLE：表Owner |
-| Resources | Array of Resource |  | 申请资源详情。 |
-
-数据管理
+| Resources | Array of Resource |   | 申请资源详情。 |
 
 | Logic | Boolean | true | 是否为逻辑库，取值： true：是 false：否 |
 |---|---|---|---|
 | TargetId | String | 12345 | 资源ID。 |
-| ResourceDetai l | object |  | 资源详情。 |
+| ResourceDetai l | object |   | 资源详情。 |
 | SearchName | String | yuyang【test】 | 资源搜索名。 |
 | DbType | String | MYSQL | 数据库类型。 |
 | EnvType | String | PRODUCT | 实例的环境类型。 |
@@ -9193,10 +9551,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?OrderId=730000 &Tid=3***
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetOwnerApplyOrderDetailResponse>
     <OwnerApplyOrderDetail>
     <ApplyType>DB</ApplyType>
     <Resources>
@@ -9214,12 +9572,18 @@ bp18anxxxxxxxt48z.gpdb.rds.aliyuncs.com:3432</SearchName>
     </OwnerApplyOrderDetail>
     <RequestId>6976762B-AEA4-4EF0-9C42-46EC5477D780</RequestId>
     <Success>true</Success>
+</GetOwnerApplyOrderDetailResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "OwnerApplyOrderDetail" : {
     "ApplyType" : "DB",
     "Resources" : [ {
@@ -9229,21 +9593,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "EnvType" : "PRODUCT",
         "DbType" : "ADB_POSTGRESQL",
         "OwnerIds" : [ 128000 ]
-      },
+```
+
+`},`
+
+```json
       "Logic" : false,
       "TargetId" : 116000
     } ]
-  },
-  "RequestId" : "6976762B-AEA4-4EF0-9C42-46EC5477D780",
-  "Success" : true
-}
 ```
 
-##### GetPermApplyOrderDetail
+`},`
 
-本接口可以获取：**库权限**、**表权限**、**敏感列权限**。 数据管理
+```json
+  "RequestId" : "6976762B-AEA4-4EF0-9C42-46EC5477D780",
+  "Success" : true
+```
 
-**请求参数**
+`}`
+
+##### 6.7.8.2 GetPermApplyOrderDetail
+
+调用GetPermApplyOrderDetail接口，获取权限申请的工单详情。 本接口可以获取：**库权限**、**表权限**、**敏感列权限**。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9259,26 +9630,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| PermApplyOrd erDetail | object |  | 权限申请详情。 |
-| Resources | Array of Resource |  | 资源详情列表。 |
-| DatabaseInfo | object |  | 库信息。 |
+| PermApplyOrd erDetail | object |   | 权限申请详情。 |
+| Resources | Array of Resource |   | 资源详情列表。 |
+| DatabaseInfo | object |   | 库信息。 |
 | DbId | Long | 12345 | 库ID。 |
 | Logic | Boolean | false | 是否逻辑库，取值： true：是 false：否 |
 | DbType | String | MySQL | 数据库类型。 |
 | SearchName | String | test@xxxx:3306【t est】 | 库搜索名。 |
 
-数据管理
-
 | OwnerIds | Array of Long | 123** | Owner ID。 |
 |---|---|---|---|
 | OwnerNickNa mes | Array of String | test user _ | Owner昵称。 |
 | EnvType | String | product | 实例的环境类型。 |
-| TableInfo | object |  | 表信息。 |
+| TableInfo | object |   | 表信息。 |
 | TableName | String | test tb _ | 表名。 |
-| ColumnInfo | object |  | 字段信息。 |
+| ColumnInfo | object |   | 字段信息。 |
 | TableName | String | test tb _ | 表名。 |
 | ColumnName | String | test col _ | 字段名。 |
-| InstanceInfo | object |  | 实例信息。 |
+| InstanceInfo | object |   | 实例信息。 |
 | InstanceId | String | 123** | 实例ID。 |
 | SearchName | String | xxxx:3306 | 搜索名。 |
 | DbType | String | MySQL | 数据库类型。 |
@@ -9289,8 +9658,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | OwnerNickNa me | Array of String | test owner _ | Owner昵称。 |
 | DbaId | Long | 12345 | 实例DBA的ID。 |
 | DbaNickName | String | test dba _ | 实例DBA昵称。 |
-
-数据管理
 
 | PermType | Long | 7 | 权限类型，取值： 1：查询 2：导出 3：查询+导出 4：变更 5：查询+变更 6：导出+变更 7：查询+导出+变更 |
 |---|---|---|---|
@@ -9305,10 +9672,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetPermApplyOrderDetail &Tid=-1
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetPermApplyOrderDetailResponse>
     <PermApplyOrderDetail>
         <ApplyType>DB</ApplyType>
         <PermType>1</PermType>
@@ -9331,12 +9698,18 @@ bpxxxxxxxxffxxxxxxi.mysql.rds.aliyuncs.com:3306</SearchName>
     </PermApplyOrderDetail>
     <RequestId>806FBC5B-2AED-401C-9E00-0B91C1DB2F1A</RequestId>
     <Success>true</Success>
+</GetPermApplyOrderDetailResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "PermApplyOrderDetail" : {
     "ApplyType" : "DB",
     "PermType" : 1,
@@ -9350,20 +9723,31 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "EnvType" : "dev",
         "DbType" : "mysql",
         "OwnerIds" : [ 120000 ]
-      },
+```
+
+`},`
+
+```json
       "ColumnInfo" : { },
       "TableInfo" : { },
       "InstanceInfo" : { }
     } ]
-  },
-  "RequestId" : "806FBC5B-2AED-401C-9E00-0B91C1DB2F1A",
-  "Success" : true
-}
 ```
 
-### SQL任务
+`},`
 
-#### ListDBTaskSQLJob
+```json
+  "RequestId" : "806FBC5B-2AED-401C-9E00-0B91C1DB2F1A",
+  "Success" : true
+```
+
+`}`
+
+### 6.8 SQL任务
+
+#### 6.8.1 ListDBTaskSQLJob
+
+调用ListDBTaskSQLJob接口获取SQL任务列表。
 
 **请求参数**
 
@@ -9373,8 +9757,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DBTaskGroupId | Long | 是 | 132**** | SQL任务分组ID，您可以调用GetStructSyncJobDetail接口获取该参数。 |
 | PageNumber | Long | 否 | 1 | 开始页码。 |
 | PageSize | Long | 否 | 20 | 每页数据量。 |
-
-数据管理
 
 | Tid | Long | 否 | 1*** | 租户ID。 |
 |---|---|---|---|---|
@@ -9388,7 +9770,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| DBTaskSQLJob List | Array of DBTaskSQLJob |  | SQL任务列表。 |
+| DBTaskSQLJob List | Array of DBTaskSQLJob |   | SQL任务列表。 |
 | JobId | Long | 12**** | SQL任务ID。 |
 | JobType | String | STRUCT SYNC _ | SQL任务类型。 |
 | Comment | String | test | SQL任务备注信息。 |
@@ -9398,8 +9780,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | CreateTime | String | 2021-02-18 17:49:20 | 创建时间。 |
 | LastExecTime | String | 2021-02-18 17:49:31 | 最后执行时间。 |
 | DbTaskGroupI d | Long | 432**** | SQL任务分组ID。 |
-
-数据管理
 
 | Status | String | SUCCESS | SQL详情状态，取值： INIT：初始化状态 PENDING：等待任务抓取 BE SCHEDULED：待调度 _ FAIL：执行失败 SUCCESS：执行成功 PAUSE：暂停 DELETE：删除 RUNNING：正在执行 |
 |---|---|---|---|
@@ -9414,10 +9794,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=ListDBTaskSQLJob &PageNumber=1 &PageSize=20
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListDBTaskSQLJobResponse>
     <RequestId>F6C47680-8D2D-43A4-8902-F2740D71A398</RequestId>
     <Success>true</Success>
     <ErrorMessage>UnknownError</ErrorMessage>
@@ -9434,12 +9814,16 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <Transactional>false</Transactional>
     </DBTaskSQLJobList>
     <TotalCount>1</TotalCount>
+</ListDBTaskSQLJobResponse>
 ```
 
-数据管理 `JSON` 格式
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "F6C47680-8D2D-43A4-8902-F2740D71A398",
   "Success" : true,
   "ErrorMessage" : "UnknownError",
@@ -9456,10 +9840,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Transactional" : false
   } ],
   "TotalCount" : 1
-}
 ```
 
-#### ListDBTaskSQLJobDetail
+`}`
+
+#### 6.8.2 ListDBTaskSQLJobDetail
+
+调用ListDBTaskSQLJobDetail接口，获取SQL任务详情列表。
 
 **请求参数**
 
@@ -9472,8 +9859,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Tid | Long | 否 | 3*** | 租户ID，可通过调用接口GetUserActiveTenant获取该参数的值。 |
 | RegionId | String | 否 | cn-hangzhou | DMS服务地域。 |
 
-数据管理
-
 **返回数据**
 
 | 名称 | 类型 | 示例值 | 描述 |
@@ -9482,7 +9867,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Success | Boolean | true | 请求是否成功，返回值： true：请求成功 false：请求失败 |
 | ErrorMessage | String | JobId is mandatory for this action. | 错误信息。 |
 | ErrorCode | String | MissingJobId | 错误码。 |
-| DBTaskSQLJob DetailList | Array of DBTaskSQLJob Detail |  | SQL任务详情列表。 |
+| DBTaskSQLJob DetailList | Array of DBTaskSQLJob Detail |   | SQL任务详情列表。 |
 | JobDetailId | Long | 24723**** | SQL任务详情ID。 |
 | CurrentSql | String | update a set id = 1 where id = 1; | 当前执行的SQL。 |
 | ExecuteCount | Long | 1 | 执行次数。 |
@@ -9491,8 +9876,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Logic | Boolean | false | 是否为逻辑库，返回值如下： true：逻辑库 false：物理库 |
 | Skip | Boolean | false | 是否存在跳过执行SQL脚本的情况，返回值如下： true：存在 false：不存在 |
 | SqlType | String | CREATE TABLE _ | SQL类型，例如，DELETE、UPDATE、 ALTER TABLE等。 _ |
-
-数据管理
 
 | Status | String | SUCCESS | SQL详情状态，返回值如下： INIT：初始化状态 PENDING：等待任务抓取 BE SCHEDULED：待调度 _ FAIL：执行失败 SUCCESS：执行成功 PAUSE：暂停 DELETE：删除 RUNNING：正在执行 |
 |---|---|---|---|
@@ -9511,10 +9894,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=ListDBTaskSQLJobDetail &JobId=1276**** &PageNumber=1 &PageSize=20 &Tid=3***
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListDBTaskSQLJobDetailResponse>
     <RequestId>3F044E33-FE09-58F1-8C61-A0F612EC****</RequestId>
     <Success>true</Success>
     <ErrorMessage>JobId is mandatory for this action.</ErrorMessage>
@@ -9533,12 +9916,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <AffectRows>0</AffectRows>
     </DBTaskSQLJobDetailList>
     <TotalCount>1</TotalCount>
+</ListDBTaskSQLJobDetailResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "3F044E33-FE09-58F1-8C61-A0F612EC****",
   "Success" : true,
   "ErrorMessage" : "JobId is mandatory for this action.",
@@ -9557,14 +9946,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "AffectRows" : 0
   } ],
   "TotalCount" : 1
-}
 ```
 
-### 权限管理
+`}`
 
-数据管理
+### 6.9 权限管理
 
-#### RevokeUserPermission
+#### 6.9.1 RevokeUserPermission
+
+调用RevokeUserPermission接口回收用户权限。
 
 **请求参数**
 
@@ -9588,8 +9978,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | ErrorCode | String | UnknownError | 错误码。 |
 
-数据管理
-
 | ErrorMessage | String | UnknownError | 错误消息。 |
 |---|---|---|---|
 | RequestId | String | A99CD576-1E18- 4E86-931E- C3CCE56DC030 | 请求ID。 |
@@ -9603,22 +9991,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=RevokeUserPermission
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
-}
 ```
 
-#### ListDatabaseUserPermssions
+`}`
+
+#### 6.9.2 ListDatabaseUserPermssions
 
 调用ListDatabaseUserPermssions接口获取具备指定数据库的用户权限详情。
 
@@ -9629,8 +10017,6 @@ http(s)://[Endpoint]/?Action=RevokeUserPermission
 | Action | String | 是 | ListDatabaseUse rPermssions | 要执行的操作，取值：ListDatabaseUserPermssions 。 |
 | DbId | String | 是 | 123 | 数据库ID。 |
 | PermType | String | 是 | DATABASE | 权限类型，取值和说明如下： DATABASE： 库权限 TABLE：表权限 COLUMN：列权限 |
-
-数据管理
 
 | Tid | Long | 是 | -1 | 租户ID。 |
 |---|---|---|---|---|
@@ -9649,22 +10035,20 @@ http(s)://[Endpoint]/?Action=RevokeUserPermission
 | RequestId | String | 68075D06-7406- 4887-83A7- F558A4D28C13 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 | TotalCount | Long | 1 | 满足条件的记录总数。 |
-| UserPermissio ns | Array of UserPermissio n |  | 用户权限详情。 |
-| UserPermissio n |  |  |  |
+| UserPermissio ns | Array of UserPermissio n |   | 用户权限详情。 |
+| UserPermissio n |   |   |   |
 | Alias | String | instance alias _ | 实例别名。 |
 | ColumnName | String | column name _ | 字段名。 |
 | DbId | String | 1234 | 数据库ID。 |
 | DbType | String | mysql | 数据库类型。 |
-
-数据管理
 
 | DsType | String | DATABASE | 资源权限类型。 |
 |---|---|---|---|
 | EnvType | String | product | 数据库所属环境。 |
 | InstanceId | String | 1443 | 实例ID。 |
 | Logic | Boolean | false | 是否逻辑库。 |
-| PermDetails | Array of PermDetail |  | 用户权限详情。 |
-| PermDetail |  |  |  |
+| PermDetails | Array of PermDetail |   | 用户权限详情。 |
+| PermDetail |   |   |   |
 | CreateDate | String | 2019-12-12 00:00:00 | 权限创建时间。 |
 | ExpireDate | String | 2020-12-12 00:00:00 | 权限过期时间。 |
 | ExtraData | String | DEFAULT | 附加信息，预留属性。 |
@@ -9678,15 +10062,13 @@ http(s)://[Endpoint]/?Action=RevokeUserPermission
 | UserId | String | 14324 | 用户ID。 |
 | UserNickName | String | user nick name _ _ | 用户名称。 |
 
-**示例**
-
-数据管理请求示例
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATABASE &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <UserPermissions>
@@ -9729,46 +10111,55 @@ http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATA
 </UserPermissions> <TotalCount>1</TotalCount> <RequestId>68075D06-7406-4887-83A7-F558A4D28C13</RequestId> <Success>true</Success>
 ```
 
-数据管理 `JSON` 格式
-
 ```json
-{
   "UserPermissions": {
     "UserPermission": [
-      {
+```
+
+`{`
+
+```json
         "Logic": false,
         "UserNickName": "xxx",
         "DsType": "DATABASE",
         "Alias": "beihe_ent_prod",
         "PermDetails": {
           "PermDetail": [
-            {
+```
+
+`{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390915",
               "PermType": "QUERY",
               "OriginFrom": "xxx",
               "CreateDate": "2019-11-21 15:07:45"
-            },
-            {
+```
+
+`},` `{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390916",
               "PermType": "EXPORT",
               "OriginFrom": "xxx",
               "CreateDate": "2019-11-21 15:07:45"
-            },
-            {
+```
+
+`},` `{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390917",
               "PermType": "CORRECT",
               "OriginFrom": "xxx",
               "CreateDate": "2019-11-21 15:07:45"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-        },
         "InstanceId": 1434,
         "SearchName": "xxx@xxxx:3306",
         "DbId": 123434,
@@ -9776,24 +10167,21 @@ http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATA
         "DbType": "drds",
         "EnvType": "product",
         "SchemaName": "xxx"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 1,
   "RequestId": "68075D06-7406-4887-83A7-F558A4D28C13",
   "Success": true
-}
 ```
 
-#### SetOwners
+`}`
 
-数据管理
+#### 6.9.3 SetOwners
 
-**请求参数**
+调用SetOwners接口设置库表Owner。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -9813,30 +10201,30 @@ http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATA
 | RequestId | String | A99CD576-1E18- 4E86-931E- C3CCE56DC030 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 
-**示例**
-
-请求示例数据管理
+请求示例
 
 ```
-&OwnerIds=123, 456 &OwnerType=DATABASE &ResourceId=123 &Tid=-1
+http(s)://[Endpoint]/?Action=SetOwners &OwnerIds=123, 456 &OwnerType=DATABASE &ResourceId=123 &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
-}
 ```
 
-#### ListUserPermissions
+`}`
+
+#### 6.9.4 ListUserPermissions
+
+调用ListUserPermissions接口获取指定用户的库表权限。
 
 **请求参数**
 
@@ -9848,8 +10236,6 @@ http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATA
 | UserId | String | 是 | 13435 | 用户ID，对应GetUser里面的用户ID，注意不是用户的阿里云UID。 |
 | DatabaseName | String | 否 | db name _ | 数据库名。 |
 | Logic | Boolean | 否 | false | 是否逻辑库，取值： true false |
-
-数据管理
 
 | EnvType | String | 否 | dev | 数据库所属环境类型。 |
 |---|---|---|---|---|
@@ -9867,22 +10253,20 @@ http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATA
 | RequestId | String | C51420E3-144A- 4A94-B473- 8662FCF4AD10 | 请求ID。 |
 | Success | Boolean | true | 请求是否成功。 |
 | TotalCount | Long | 6 | 满足条件记录总数。 |
-| UserPermissio ns | Array of UserPermissio n |  | 用户权限信息列表。 |
-| UserPermissio n |  |  |  |
+| UserPermissio ns | Array of UserPermissio n |   | 用户权限信息列表。 |
+| UserPermissio n |   |   |   |
 | Alias | String | instance alias _ | 实例别名。 |
 | ColumnName | String | column name _ | 字段名。 |
 | DbId | String | 1324 | 数据库ID。 |
 | DbType | String | mysql | 数据库类型。 |
 | DsType | String | DATABASE | 权限资源类型。 |
 
-数据管理
-
 | EnvType | String | dev | 数据库所属环境类型。 |
 |---|---|---|---|
 | InstanceId | String | 134 | 实例ID。 |
 | Logic | Boolean | false | 是否逻辑库，取值： true false |
-| PermDetails | Array of PermDetail |  | 权限详情。 |
-| PermDetail |  |  |  |
+| PermDetails | Array of PermDetail |   | 权限详情。 |
+| PermDetail |   |   |   |
 | CreateDate | String | 2019-12-12 00:00:00 | 权限授予时间 |
 | ExpireDate | String | 2020-12-12 00:00:00 | 授权到期时间 |
 | ExtraData | String | xxx | 额外数据，预留参数 |
@@ -9898,13 +10282,13 @@ http(s)://[Endpoint]/?Action=ListDatabaseUserPermssions &DbId=123 &PermType=DATA
 
 **示例**
 
-请求示例数据管理
+请求示例
 
 ```
 http(s)://[Endpoint]/?Action=ListUserPermissions &PermType=DATABASE &Tid=-1 &UserId=13435
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <UserPermissions>
@@ -9940,39 +10324,47 @@ http(s)://[Endpoint]/?Action=ListUserPermissions &PermType=DATABASE &Tid=-1 &Use
 </UserPermissions> <TotalCount>6</TotalCount> <RequestId>C51420E3-144A-4A94-B473-8662FCF4AD10</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "UserPermissions": {
     "UserPermission": [
-      {
+```
+
+`{`
+
+```json
         "Logic": false,
         "UserNickName": "xxx",
         "DsType": "DATABASE",
         "Alias": "xxx_ent_dev",
         "PermDetails": {
           "PermDetail": [
-            {
+```
+
+`{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390913",
               "PermType": "EXPORT",
               "OriginFrom": "xxx",
               "CreateDate": "2019-11-21 15:07:45"
-            },
-            {
+```
+
+`},` `{`
+
+```json
               "ExpireDate": "2020-10-31 00:00:00",
               "UserAccessId": "390914",
               "PermType": "CORRECT",
               "OriginFrom": "xxx",
               "CreateDate": "2019-11-21 15:07:45"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-        },
         "InstanceId": 24671,
         "SearchName": "xxx@xxx:3306",
         "DbId": 111369,
@@ -9980,27 +10372,26 @@ http(s)://[Endpoint]/?Action=ListUserPermissions &PermType=DATABASE &Tid=-1 &Use
         "DbType": "drds",
         "EnvType": "dev",
         "SchemaName": "xxx_ent_dev"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 6,
   "RequestId": "C51420E3-144A-4A94-B473-8662FCF4AD10",
   "Success": true
-}
 ```
 
-#### GrantUserPermission
+`}`
+
+#### 6.9.5 GrantUserPermission
+
+调用GrantUserPermission接口进行用户库表权限授予。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | Action | String | 是 | GrantUserPermi ssion | 系统规定参数。取值：GrantUserPermission。 |
 |---|---|---|---|---|
@@ -10022,8 +10413,6 @@ http(s)://[Endpoint]/?Action=ListUserPermissions &PermType=DATABASE &Tid=-1 &Use
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 
-数据管理
-
 | RequestId | String | A99CD576-1E18- 4E86-931E- C3CCE56DC030 | 请求ID。 |
 |---|---|---|---|
 | Success | Boolean | true | 请求是否成功。 |
@@ -10036,24 +10425,26 @@ http(s)://[Endpoint]/?Action=ListUserPermissions &PermType=DATABASE &Tid=-1 &Use
 http(s)://[Endpoint]/?Action=GrantUserPermission &DbId=1234 &DsType=DATABASE &ExpireDate=2019-12-12 00:00:00 &PermTypes=QUERY, EXPORT, CORRECT &Tid=-1 &UserId=12345
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>A99CD576-1E18-4E86-931E-C3CCE56DC030</RequestId> <Success>true</Success>
 ```
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "A99CD576-1E18-4E86-931E-C3CCE56DC030",
   "Success": true
-}
 ```
 
-### 安全管理
+`}`
 
-#### ListSensitiveColumns
+### 6.10 安全管理
+
+#### 6.10.1 ListSensitiveColumns
+
+调用ListSensitiveColumns接口搜索敏感字段列表。
 
 **请求参数**
 
@@ -10061,8 +10452,6 @@ http(s)://[Endpoint]/?Action=GrantUserPermission &DbId=1234 &DsType=DATABASE &Ex
 |---|---|---|---|---|
 | Action | String | 是 | ListSensitiveCol umns | 系统规定参数。取值：ListSensitiveColumns。 |
 | Tid | Long | 是 | -1 | 租户ID。 |
-
-数据管理
 
 | SchemaName | String | 否 | test | 数据库名。 |
 |---|---|---|---|---|
@@ -10080,13 +10469,11 @@ http(s)://[Endpoint]/?Action=GrantUserPermission &DbId=1234 &DsType=DATABASE &Ex
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | 0E714EF1-E617- 4BBC-A3D2- 9552063BA942 | 请求ID。 |
-| SensitiveColu mnList | Array of SensitiveColu mn |  | 敏感字段列表。 |
-| SensitiveColu mn |  |  |  |
+| SensitiveColu mnList | Array of SensitiveColu mn |   | 敏感字段列表。 |
+| SensitiveColu mn |   |   |   |
 | ColumnCount | Long | 1 | 字段个数。 |
 | ColumnName | String | test | 字段名。 |
 | FunctionType | String | DEFAULT | 脱敏算法类型，取值和说明参考： DEFAULT：全遮掩（默认） FIX POS：固定位置 _ FIX CHAR：固定字符 _ |
-
-数据管理
 
 | SchemaName | String | test | 数据库名。 |
 |---|---|---|---|
@@ -10103,7 +10490,7 @@ http(s)://[Endpoint]/?Action=GrantUserPermission &DbId=1234 &DsType=DATABASE &Ex
 http(s)://[Endpoint]/?Action=ListSensitiveColumns &Tid=-1
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式数据管理
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <TotalCount>5</TotalCount> <RequestId>0E714EF1-E617-4BBC-A3D2-9552063BA942</RequestId> <SensitiveColumnList>
@@ -10145,69 +10532,79 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumns &Tid=-1
 </SensitiveColumnList> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "TotalCount": 5,
   "RequestId": "0E714EF1-E617-4BBC-A3D2-9552063BA942",
   "SensitiveColumnList": {
     "SensitiveColumn": [
-      {
+```
+
+`{`
+
+```json
         "TableName": "yuyang_test",
         "ColumnName": "c1",
         "ColumnCount": 0,
         "SecurityLevel": "SENSITIVE",
         "SchemaName": "testdb"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "TableName": "yuyang_test_luanma",
         "ColumnName": "c1",
         "ColumnCount": 0,
         "SecurityLevel": "SENSITIVE",
         "SchemaName": "testdb"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "TableName": "yuyang_test",
         "ColumnName": "id",
         "ColumnCount": 0,
         "SecurityLevel": "SENSITIVE",
         "SchemaName": "testdb"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "TableName": "yuyang_test_luanma",
         "ColumnName": "id",
         "ColumnCount": 0,
         "SecurityLevel": "SENSITIVE",
         "SchemaName": "testdb"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "TableName": "yuyang_test_json",
         "ColumnName": "id",
         "ColumnCount": 0,
         "SecurityLevel": "CONFIDENTIAL",
         "SchemaName": "test_demo"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### ListSensitiveColumnsDetail
+`}`
+
+#### 6.10.2 ListSensitiveColumnsDetail
 
 调用ListSensitiveColumnsDetail接口获取敏感字段详情信息。
 
-**请求参数**
-
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | Action | String | 是 | ListSensitiveCol umnsDetail | 系统规定参数。取值：ListSensitiveColumnsDetail。 |
 |---|---|---|---|---|
@@ -10224,16 +10621,14 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumns &Tid=-1
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | 7629888F-C9FB- 4D16-A7D3- B443FE06FBD4 | 请求ID。 |
-| SensitiveColu mnsDetailList | Array of SensitiveColu mnsDetail |  | 敏感字段详情列表。 |
-| SensitiveColu mnsDetail |  |  |  |
+| SensitiveColu mnsDetailList | Array of SensitiveColu mnsDetail |   | 敏感字段详情列表。 |
+| SensitiveColu mnsDetail |   |   |   |
 | ColumnDescri ption | String | test | 字段描述。 |
 | ColumnName | String | test | 字段名。 |
 | ColumnType | String | varchar(32) | 字段类型。 |
 | DbId | Long | 124 | 数据库ID。 |
 | DbType | String | mysql | 数据库类型。 |
 | EnvType | String | product | 数据库所属环境。 |
-
-数据管理
 
 | Logic | Boolean | false | 是否逻辑库。 |
 |---|---|---|---|
@@ -10250,7 +10645,7 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumns &Tid=-1
 http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>7629888F-C9FB-4D16-A7D3-B443FE06FBD4</RequestId> <SensitiveColumnsDetailList>
@@ -10269,14 +10664,17 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
 </SensitiveColumnsDetailList> <Success>true</Success>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
 
 ```json
-{
   "RequestId": "7629888F-C9FB-4D16-A7D3-B443FE06FBD4",
   "SensitiveColumnsDetailList": {
     "SensitiveColumnsDetail": [
-      {
+```
+
+`{`
+
+```json
         "TableName": "king_info",
         "ColumnName": "mobile",
         "ColumnType": "varchar(64)",
@@ -10287,18 +10685,19 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
         "SchemaName": "poc_prod",
         "EnvType": "product",
         "DbType": "mysql"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Success": true
-}
 ```
 
-#### ChangeColumnSecLevel
+`}`
+
+#### 6.10.3 ChangeColumnSecLevel
+
+调用ChangeColumnSecLevel接口调整字段敏感等级。
 
 **请求参数**
 
@@ -10308,8 +10707,6 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
 | Tid | Long | 是 | 43253 | 租户ID。 说明鼠标移动到界面右上角的头像处，查看租户ID。 |
 | DbId | Long | 是 | 325 | 数据库ID（DatabaseId），可通过调用接口SearchDatabase获取该参数的值。 说明您也可以通过调用接口ListDatabases获取物理库的 DatabaseId值，调用接口ListLogicDatabases获取逻辑库的DatabaseId值。 |
 | RegionId | String | 否 | cn-hangzhou | DMS服务地域。 说明请根据应用所在地就近选择。 |
-
-数据管理
 
 | IsLogic | Boolean | 是 | false | 数据库是逻辑库，取值： true：物理库 false：逻辑库 |
 |---|---|---|---|---|
@@ -10326,8 +10723,6 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 
-数据管理
-
 | Success | Boolean | false | 请求是否成功，返回值如下： true：请求成功 false：请求失败 |
 |---|---|---|---|
 
@@ -10339,31 +10734,38 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
 http(s)://dms-enterprise.aliyuncs.com/?Action=ChangeColumnSecLevel &Tid=3*** &DbId=1860**** &IsLogic=true &SchemaName=test_schema &TableName=test_table &ColumnName=test_column &NewLevel=SENSITIVE
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ChangeColumnSecLevelResponse>
     <RequestId>C51420E3-144A-4A94-B473-8662FCF4AD10</RequestId>
     <Success>false</Success>
+</ChangeColumnSecLevelResponse>
 ```
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  "RequestId" : "C51420E3-144A-4A94-B473-8662FCF4AD10",
-  "Success" : false
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### AddDesensitizationRule
+`{`
+
+```json
+  "RequestId" : "C51420E3-144A-4A94-B473-8662FCF4AD10",
+  "Success" : false
+```
+
+`}`
+
+#### 6.10.4 AddDesensitizationRule
+
+调用AddDesensitizationRule接口，添加脱敏规则。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | Action | String | 是 | AddDesensitizati onRule | 系统规定参数。取值：AddDesensitizationRule。 |
 |---|---|---|---|---|
@@ -10403,28 +10805,37 @@ http(s)://dms-enterprise.aliyuncs.com/?Action=AddDesensitizationRule
 &FunctionType=MD5 &FunctionParams=[{"key":"{paramName: salt, paramValue: 1}"}]
 ```
 
-&公共请求参数数据管理正常返回示例 `XML` 格式
+`&`公共请求参数 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <AddDesensitizationRuleResponse>
     <RequestId>0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931</RequestId>
     <ErrorCode>UnknownError</ErrorCode>
     <ErrorMessage>UnknownError</ErrorMessage>
     <Success>true</Success>
+</AddDesensitizationRuleResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931",
   "ErrorCode" : "UnknownError",
   "ErrorMessage" : "UnknownError",
   "Success" : true
-}
 ```
 
-#### ListDesensitizationRule
+`}`
+
+#### 6.10.5 ListDesensitizationRule
+
+调用ListDesensitizationRule接口获取脱敏规则列表。
 
 **请求参数**
 
@@ -10436,8 +10847,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RuleType | String | 否 | HASH | 脱敏算法。 |
 | FuncType | String | 否 | MD5 | 脱敏算法类型。 |
 | RuleName | String | 否 | 脱敏规则测试 | 脱敏规则名称。 |
-
-数据管理
 
 | RuleId | Integer | 否 | 1 | 脱敏规则ID。 |
 |---|---|---|---|---|
@@ -10452,7 +10861,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | Success | Boolean | true | 请求是否成功，取值： true：请求成功。 false：请求失败。 |
-| Desensitizatio nRuleList | Array of Desensitizatio nRule |  | 脱敏规则列表。 |
+| Desensitizatio nRuleList | Array of Desensitizatio nRule |   | 脱敏规则列表。 |
 | RuleName | String | 脱敏规则测试 | 脱敏规则名称。 |
 | RuleType | String | HASH | 脱敏算法。 |
 | RuleDesc | String | 哈希脱敏算法 | 规则描述。 |
@@ -10461,8 +10870,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | FuncSample | String | [{paramName: testStr, paramValue: 1}] | 示例。 |
 | LastModifierId | String | 2 | 近期修改脱敏规则用户ID。 |
 | LastModifierNa me | String | 测试用户 | 最后修改脱敏规则的用户名称。 |
-
-数据管理
 
 | ReferenceCou nt | Integer | 1 | 使用脱敏规则次数。 |
 |---|---|---|---|
@@ -10476,10 +10883,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=ListDesensitizationRule &PageNumber=1 &PageSize=20
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListDesensitizationRuleResponse>
     <TotalCount>1</TotalCount>
     <RequestId>E76DD2E7-EBAC-5724-B163-19AAC233F8F2</RequestId>
     <ErrorCode>UnknownError</ErrorCode>
@@ -10505,12 +10912,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <ReferenceCount>1</ReferenceCount>
         <RuleId>23</RuleId>
     </DesensitizationRuleList>
+</ListDesensitizationRuleResponse>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "TotalCount" : 1,
   "RequestId" : "E76DD2E7-EBAC-5724-B163-19AAC233F8F2",
   "ErrorCode" : "UnknownError",
@@ -10536,10 +10949,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "ReferenceCount" : 1,
     "RuleId" : 23
   } ]
-}
 ```
 
-#### ModifyDesensitizationStrategy
+`}`
+
+#### 6.10.6 ModifyDesensitizationStrategy
 
 调用ModifyDesensitizationStrategy接口，修改字段绑定的脱敏规则。
 
@@ -10550,8 +10964,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Action | String | 是 | ModifyDesensiti zationStrategy | 系统规定参数。取值：ModifyDesensitizationStrateg y。 |
 | DbId | Integer | 是 | 123 | 数据库ID，可以调用ListDatabases接口获取。 |
 | IsLogic | Boolean | 是 | false | 数据库是逻辑库，取值： true：物理库。 false：逻辑库。 |
-
-数据管理
 
 | SchemaName | String | 是 | test schema _ | 数据库名，可以调用ListSensitiveColumns接口获取该参数的值。 说明物理库名：您还可以调用ListDatabases或Search Database接口获取该参数的值。 逻辑库名：您还可以调用ListLogicDatabases或S earchDatabase接口获取该参数的值。 |
 |---|---|---|---|---|
@@ -10569,8 +10981,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误消息。 |
 
-数据管理
-
 | Success | Boolean | false | 请求是否成功，取值： true：请求成功。 false：请求失败。 |
 |---|---|---|---|
 | Result | Boolean | True | 结果值。 |
@@ -10583,36 +10993,41 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://dms-enterprise.aliyuncs.com/?Action=ModifyDesensitizationStrategy &DbId=123 &IsLogic=false
 ```
 
-&公共请求参数正常返回示例 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyDesensitizationStrategyResponse>
     <RequestId>283C461F-11D8-48AA-B695-DF092DA32AF3</RequestId>
     <ErrorCode>UnknownError</ErrorCode>
     <ErrorMessage>UnknownError</ErrorMessage>
     <Success>false</Success>
     <Result>true</Result>
+</ModifyDesensitizationStrategyResponse>
 ```
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "283C461F-11D8-48AA-B695-DF092DA32AF3",
   "ErrorCode" : "UnknownError",
   "ErrorMessage" : "UnknownError",
   "Success" : false,
   "Result" : true
-}
 ```
 
-### 数据查询
+`}`
 
-#### ExecuteScript
+### 6.11 数据查询
 
-目前仅支持管控模式为安全协同的实例调用该API。 数据管理
+#### 6.11.1 ExecuteScript
 
-**请求参数**
+调用ExecuteScript接口执行SQL脚本。 目前仅支持管控模式为安全协同的实例调用该API。
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
@@ -10630,13 +11045,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorCode | String | UnknownError | 错误码。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | RequestId | String | FE8EE2F1-4880- 46BC-A704- 5CF63EAF9A04 | 请求ID。 |
-| Results | Array of Result |  | 脚本执行返回结果列表，列表中每一项对应一个脚本执行结果。 |
+| Results | Array of Result |   | 脚本执行返回结果列表，列表中每一项对应一个脚本执行结果。 |
 | ColumnNames | List | ["col1", "col2"] | 执行查询脚本时，返回的结果集字段列表。 |
 | Message | String | UnknownError | 执行失败时，返回的错误信息。 |
 | RowCount | Long | 1 | 返回的结果记录数。 |
 | Rows | List | [{"col1": "value1", "col2":"value2"}] | 执行查询脚本时，返回的结果数据。 |
-
-数据管理
 
 | Success | Boolean | true | 单个脚本执行是否成功。 |
 |---|---|---|---|
@@ -10647,10 +11060,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&DbId=123 &Logic=false &Script=select dt from report_daily
+http(s)://[Endpoint]/?Action=ExecuteScript &DbId=123 &Logic=false &Script=select dt from report_daily
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <RequestId>FE8EE2F1-4880-46BC-A704-5CF63EAF9A04</RequestId> <Results>
@@ -10669,23 +11082,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
 {"RequestId":"FE8EE2F1-4880-46BC-A704-5CF63EAF9A04","Results": [{"Message":"UnknownError","RowCount":"1","Success":"true"},{"ColumnNames":"[\"col1\", \"col2\"]","Rows":"[{\"col1\": \"value1\", \"col2\":\"value2\"}]"}],"ErrorCode":"UnknownError","ErrorMessage":"UnknownError","Succes :"true"}
 ```
 
-### 任务编排
+### 6.12 任务编排
 
-#### UpdateTaskFlowConstants
+#### 6.12.1 UpdateTaskFlowConstants
+
+调用UpdateTaskFlowConstants接口，更新任务流常量列表。
 
 **请求参数**
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
 
-| 开发指南·API参考 |  |  |  | 数据管理 |
+| 开发指南·API参考 |   |   |   | 数据管理 |
 |---|---|---|---|---|
 
 | Tid | long | 否 | 租户ID。 | 3*** |
 |---|---|---|---|---|
 | DagId | long | 是 | 任务流ID。 | 3**** |
-| DagConstants | array | 是 | 任务流常量列表。 |  |
-|  | object | 否 |  |  |
+| DagConstants | array | 是 | 任务流常量列表。 |   |
+|   | object | 否 |   |   |
 | Key | string | 否 | 任务流常量键名。 | poc test _ |
 | Value | string | 否 | 任务流常量键值。 | poc test _ |
 
@@ -10693,7 +11108,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。可用于定位日志，排查问题。 | C4CCC000-C193- 5A32-B701- 573F497BF729 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -10701,18 +11116,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "C4CCC000-C193-5A32-B701-573F497BF729",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### DeleteTaskFlow
+`}`
+
+#### 6.12.2 DeleteTaskFlow
+
+调用DeleteTaskFlow接口，删除任务流。
 
 **请求参数**
 
@@ -10725,7 +11142,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 9AFE13F6-A4FD-581B- BFDE-B63B1CDC2336 |
 | ErrorCode | string | 错误码。 | 403 |
 | ErrorMessage | string | 错误信息。 | UnknownError |
@@ -10733,18 +11150,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "9AFE13F6-A4FD-581B-BFDE-B63B1CDC2336",
   "ErrorCode": "403",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### OfflineTaskFlow
+`}`
+
+#### 6.12.3 OfflineTaskFlow
+
+调用OfflineTaskFlow接口，在DMS中下线已发布的任务流。
 
 **请求参数**
 
@@ -10757,7 +11176,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | A8FE12AA-300D-5FDF- 806F-C2CB99161F32 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 错误信息。 | UnknownError |
@@ -10765,18 +11184,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "A8FE12AA-300D-5FDF-806F-C2CB99161F32",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ListTaskFlow
+`}`
+
+#### 6.12.4 ListTaskFlow
+
+调用ListTaskFlow接口，获取任务流信息列表。
 
 **请求参数**
 
@@ -10788,17 +11209,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 4116147E-C628-5816- 8779-8EEAF8E973F4 |
 | ErrorCode | string | 错误码。 | 403 |
 | ErrorMessage | string | 错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| TaskFlowList | array | 任务流信息列表。 |  |
-|  | object | 任务流程列表。 |  |
+| TaskFlowList | array | 任务流信息列表。 |   |
+|   | object | 任务流程列表。 |   |
 | Id | long | 任务流ID。 | 134137**** |
 | CreatorId | string | 创建人的用户ID。 | 51**** |
-
-数据管理
 
 | CreatorNickName | string | 创建人的昵称。 | Creator NickName _ |
 |---|---|---|---|
@@ -10810,17 +11229,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "4116147E-C628-5816-8779-8EEAF8E973F4",
   "ErrorCode": "403",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "TaskFlowList": {
     "TaskFlow": [
-      {
+```
+
+`{`
+
+```json
         "Id": 0,
         "CreatorId": "51****",
         "CreatorNickName": "Creator_NickName",
@@ -10829,19 +11251,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "Status": 2,
         "LatestInstanceStatus": 0,
         "LatestInstanceTime": "2022-04-13"
-      }
 ```
 
-]
+`}` `]`
 
-```
-  }
-}
-```
-
-数据管理
-
-#### GetTaskInstanceRelation
+#### 6.12.5 GetTaskInstanceRelation
 
 调用GetTaskInstanceRelation接口，获取任务流运行记录的节点信息。
 
@@ -10857,16 +11271,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 028BF827-3801-5869- 8548-F4A039256304 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| NodeList | array | 任务流运行记录的节点信息列表。 |  |
-|  | object | 运行记录的节点信息列表。 |  |
+| NodeList | array | 任务流运行记录的节点信息列表。 |   |
+|   | object | 运行记录的节点信息列表。 |   |
 | Id | long | 任务节点运行记录ID。 | 14059 |
-
-数据管理
 
 | NodeId | long | 任务节点ID。 | 14059 |
 |---|---|---|---|
@@ -10880,17 +11292,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "028BF827-3801-5869-8548-F4A039256304",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "NodeList": {
     "Node": [
-      {
+```
+
+`{`
+
+```json
         "Id": 14059,
         "NodeId": 14059,
         "NodeName": "Spark SQL-1",
@@ -10900,17 +11315,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "Message": "test",
         "ExecuteTime": 170655,
         "EndTime": "2021-11-11 14:38:57"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.12.6 ListTaskFlowInstance
 
-#### ListTaskFlowInstance
+调用ListTaskFlowInstance接口，获取任务流运行记录。
 
 **请求参数**
 
@@ -10922,8 +11333,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | StartTimeEnd | string | 否 | 筛选出指定时间之前开始的任务流运行记录。时间格式为yyyy-MM-DD。 | 2022-04-08 |
 | PageIndex | integer | 是 | 第几页。 | 1 |
 
-数据管理
-
 | PageSize | integer | 是 | 每页数据量。 | 20 |
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
@@ -10932,19 +11341,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 8CFF2295-8249-5287- B888-DBD4F0D76CB0 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| DAGInstanceList | array | 任务流运行记录列表。 |  |
-|  | object | 任务流运行记录列表。 |  |
+| DAGInstanceList | array | 任务流运行记录列表。 |   |
+|   | object | 任务流运行记录列表。 |   |
 | Id | long | 运行记录ID。 | 9234 |
 | BusinessTime | string | 任务流业务时间，时间格式为yyyy-MM-DD HH:mm:ss。 | 2021-11-10 14:37:26 |
 | EndTime | string | 任务流运行结束时间，时间格式为yyyy-MM-DD HH:mm:ss。 | 2021-11-11 14:38:57 |
 | DagId | string | 任务流ID。 | 7*** |
-
-数据管理
 
 | TriggerType | integer | 触发类型。返回值如下： 0：周期调度 1：手动运行 | 1 |
 |---|---|---|---|
@@ -10958,17 +11365,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "8CFF2295-8249-5287-B888-DBD4F0D76CB0",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "DAGInstanceList": {
     "DAGInstance": [
-      {
+```
+
+`{`
+
+```json
         "Id": 9234,
         "BusinessTime": "2021-11-10 14:37:26",
         "EndTime": "2021-11-11 14:38:57",
@@ -10980,18 +11390,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "DagName": "Spark_SQL_test",
         "OwnerName": "test_name",
         "DagVersion": "[]"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 1
-}
 ```
 
-#### ListDAGVersions
+`}`
+
+#### 6.12.7 ListDAGVersions
+
+调用ListDAGVersions接口，获取任务流历史发布版本信息列表。
 
 **请求参数**
 
@@ -11007,17 +11418,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object |  |  |
+|   | object |   |   |
 |---|---|---|---|
 | RequestId | string | 请求ID。 | C7775630-7901-51B9- 8782-9B585EC0799A |
 | ErrorCode | string | 错误码。 | 403 |
 | ErrorMessage | string | 错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
 | TotalCount | integer | 查询结果总数。 | 1 |
-| DagVersionList | array | 发布版本列表。 |  |
-|  | object | 发布版本列表。 |  |
+| DagVersionList | array | 发布版本列表。 |   |
+|   | object | 发布版本列表。 |   |
 | DagName | string | 任务流名称。 | Spark SQL |
 | DagOwnerId | string | 任务流Owner的用户ID。 | 51**** |
 | DagOwnerNickName | string | 任务流Owner的昵称。 | name |
@@ -11027,10 +11436,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "C7775630-7901-51B9-8782-9B585EC0799A",
   "ErrorCode": "403",
   "ErrorMessage": "UnknownError",
@@ -11038,24 +11446,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "TotalCount": 1,
   "DagVersionList": {
     "DagVersion": [
-      {
+```
+
+`{`
+
+```json
         "DagName": "Spark SQL",
         "DagOwnerId": "51****",
         "DagOwnerNickName": "name",
         "VersionComments": "test_OSS",
         "VersionId": 0,
         "LastVersionId": 0
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.12.8 ReDeployLhDagVersion
 
-#### ReDeployLhDagVersion
+调用ReDeployLhDagVersion接口，重新部署任务流历史版本。
 
 **请求参数**
 
@@ -11069,10 +11477,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 035C92E0-2EAD-50E5- A6DD-550F5F73D7CE |
-
-数据管理
 
 | ErrorCode | string | 错误码。 | 403 |
 |---|---|---|---|
@@ -11082,19 +11488,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "035C92E0-2EAD-50E5-A6DD-550F5F73D7CE",
   "ErrorCode": "403",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "DeployId": 15990
-}
 ```
 
-#### UpdateScenario
+`}`
+
+#### 6.12.9 UpdateScenario
+
+调用UpdateScenario接口，更新任务流业务场景名称和描述。
 
 **请求参数**
 
@@ -11110,9 +11518,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object |  |  |
+|   | object |   |   |
 |---|---|---|---|
 | RequestId | string | 请求ID。 | 7FAD400F-7A5C-4193- 8F9A-39D86C4F0231 |
 | ErrorCode | string | 错误码。 | UnknownError |
@@ -11121,18 +11527,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7FAD400F-7A5C-4193-8F9A-39D86C4F0231",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ResumeTaskFlowInstance
+`}`
+
+#### 6.12.10 ResumeTaskFlowInstance
+
+调用ResumeTaskFlowInstance接口，恢复已暂停运行的任务流。
 
 **请求参数**
 
@@ -11142,8 +11550,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DagId | long | 是 | 任务流ID。 | 11**** |
 | DagInstanceId | long | 是 | 任务流运行记录 ID（Id）。您可调用ListTaskFlowIns tance接口获取该参数的值。 | 3**** |
 
-数据管理
-
 | DagVersion | string | 是 | 任务流版本号。您可调用ListDAGVersion s接口获取该参数的值。 | [] |
 |---|---|---|---|---|
 
@@ -11151,7 +11557,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 7FF2E325-763F-5E27- 9157-C3CFA02F4CBF |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -11159,26 +11565,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7FF2E325-763F-5E27-9157-C3CFA02F4CBF",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateTaskContent
+`}`
+
+#### 6.12.11 UpdateTaskContent
+
+调用UpdateTaskContent接口，更新任务流中的任务。
 
 **接口说明**
 
 该接口可用于修改节点配置内容。
-
-**请求参数**
-
-数据管理
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -11190,7 +11594,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 39557312-28D5-528F- 9554-80C0700EB489 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -11198,20 +11602,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "39557312-28D5-528F-9554-80C0700EB489",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-数据管理
+`}`
 
-#### ListTaskFlowsByPage
+#### 6.12.12 ListTaskFlowsByPage
+
+调用ListTaskFlowsByPage接口，获取任务流运行记录列表。
 
 **请求参数**
 
@@ -11226,16 +11630,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 6CB28697-BFE2-5739- 9228-3971990E982C |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功。 false：请求失败。 | true |
-| TaskFlowList | array | 任务流信息列表。 |  |
-|  | object |  |  |
+| TaskFlowList | array | 任务流信息列表。 |   |
+|   | object |   |   |
 | Id | long | 任务流ID。 | 7*** |
-
-数据管理
 
 | DagName | string | 任务流名称。 | poc task test _ _ |
 |---|---|---|---|
@@ -11251,17 +11653,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "6CB28697-BFE2-5739-9228-3971990E982C",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "TaskFlowList": {
     "TaskFlow": [
-      {
+```
+
+`{`
+
+```json
         "Id": 0,
         "DagName": "poc_task_test",
         "Description": "test",
@@ -11272,18 +11677,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "Status": 1,
         "LatestInstanceStatus": 0,
         "LatestInstanceTime": "2022-04-13"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "TotalCount": 24
-}
 ```
 
-#### ListScenarios
+`}`
+
+#### 6.12.13 ListScenarios
+
+调用ListScenarios接口，获取业务场景列表。
 
 **请求参数**
 
@@ -11295,17 +11701,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 7FAD400F-7A5C-4193- 8F9A-39D86C4F0231 |
 | ErrorCode | string | 错误码。 | UnknownError |
-
-数据管理
 
 | ErrorMessage | string | 调用失败时，返回的出错信息。 | UnknownError |
 |---|---|---|---|
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功。 false：请求失败。 | true |
-| ScenarioList | array | 业务场景列表。 |  |
-|  | object |  |  |
+| ScenarioList | array | 业务场景列表。 |   |
+|   | object |   |   |
 | Id | long | 业务场景ID。 | 41*** |
 | ScenarioName | string | 业务场景名称。 | test |
 | CreatorId | string | 创建人的用户ID。 | 23*** |
@@ -11313,34 +11717,30 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7FAD400F-7A5C-4193-8F9A-39D86C4F0231",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "ScenarioList": [
-    {
+```
+
+`{`
+
+```json
       "Id": 0,
       "ScenarioName": "test",
       "CreatorId": "23***",
       "Description": "test"
-    }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+#### 6.12.14 UpdateTaskConfig
 
-#### UpdateTaskConfig
-
-数据管理
-
-**请求参数**
+调用UpdateTaskConfig接口，更新任务高级配置。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -11348,43 +11748,32 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | NodeId | string | 是 | 任务节点ID。 | 43**** |
 | NodeConfig | string | 是 | 节点高级配置。取值为JSON字符串格式。 | { "rerun":{ "rerunEnable":tru e, "rerunCount":1, "rerunInterval":1 0 } } |
 
-NodeConfig为JSON字符串格式，如下：
-
-```
-{
-```
-
-`"rerun":{ //` 必填固定值 `"rerunEnable":true, //` 是否开启重跑 `"rerunCount":1, //` 重跑次数 `"rerunInterval":10 //` 重跑间隔
-
-```
-    }
-}
-```
+NodeConfig为JSON字符串格式，如下： `{` `"rerun":{ //` 必填固定值 `"rerunEnable":true, //` 是否开启重跑 `"rerunCount":1, //` 重跑次数 `"rerunInterval":10 //` 重跑间隔 `}` `}`
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | F4E2A94B-604F-43FF- 93E7-F4EE3DCF412E |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功。 false：请求失败。 | true |
 
-**示例**
-
-数据管理正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
   "RequestId": "F4E2A94B-604F-43FF-93E7-F4EE3DCF412E",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ListTaskFlowConstants
+`}`
+
+#### 6.12.15 ListTaskFlowConstants
+
+调用ListTaskFlowConstants接口获取任务流常量列表。
 
 **请求参数**
 
@@ -11397,15 +11786,13 @@ NodeConfig为JSON字符串格式，如下：
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 028BF827-3801-5869- 8548-F4A039256304 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，取值： true：请求成功。 false：请求失败。 | true |
-| DagConstants | array | 任务流常量键值对列表。 |  |
-|  | object |  |  |
-
-数据管理
+| DagConstants | array | 任务流常量键值对列表。 |   |
+|   | object |   |   |
 
 | Key | string | 常量键。 | example |
 |---|---|---|---|
@@ -11413,30 +11800,29 @@ NodeConfig为JSON字符串格式，如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "028BF827-3801-5869-8548-F4A039256304",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "DagConstants": {
     "DagConstant": [
-      {
+```
+
+`{`
+
+```json
         "Key": "example",
         "Value": "0"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.12.16 BackFill
 
-#### BackFill
+调用BackFill接口，给任务编排补数据。
 
 **接口说明**
 
@@ -11448,10 +11834,8 @@ NodeConfig为JSON字符串格式，如下：
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
 | DagId | long | 是 | 任务流ID。 | 15*** |
-| StartNodeIds | array | 否 | 补数据开始节点ID 列表。 |  |
-|  | long | 否 | 待补数据的任务节点数。 | 2 |
-
-数据管理
+| StartNodeIds | array | 否 | 补数据开始节点ID 列表。 |   |
+|   | long | 否 | 待补数据的任务节点数。 | 2 |
 
 | IsTriggerSubTree | boolean | 否 | 是否运行下游节点。缺省时默认为 false。 | false |
 |---|---|---|---|---|
@@ -11462,17 +11846,15 @@ NodeConfig为JSON字符串格式，如下：
 | Asc | boolean | 否 | 补数据任务流运行顺序。取值： false：降序。 从大日期到小日期。 true：默认值， 升序。从小日期到大日期。 | true |
 | HistoryDagId | long | 否 | 历史任务流ID。 | 16*** |
 
-指定日期补数据，需提供BackFillDate参数。指定时间范围补数据，需提供BackFillDateBegin和
+指定日期补数据，需提供BackFillDate参数。指定时间范围补数据，需提供BackFillDateBegin和 BackFillDateEnd参数。
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 7FAD400F-7A5C-4193- 8F9A-39D86C4F0231 |
 | ErrorCode | string | 错误码。 | UnknownError |
-
-数据管理
 
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 |---|---|---|---|
@@ -11481,19 +11863,19 @@ NodeConfig为JSON字符串格式，如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7FAD400F-7A5C-4193-8F9A-39D86C4F0231",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "NodeId": 0
-}
 ```
 
-#### UpdateTaskTimeVariables
+`}`
+
+#### 6.12.17 UpdateTaskTimeVariables
 
 更新任务时间变量。
 
@@ -11507,11 +11889,9 @@ NodeConfig为JSON字符串格式，如下：
 
 **返回参数**
 
-数据管理
-
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 39557312-28D5-528F- 9554-80C0700EB489 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -11519,18 +11899,18 @@ NodeConfig为JSON字符串格式，如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "39557312-28D5-528F-9554-80C0700EB489",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ListTaskFlowTimeVariables
+`}`
+
+#### 6.12.18 ListTaskFlowTimeVariables
 
 调用ListTaskFlowTimeVariables接口，获取任务流时间变量列表。
 
@@ -11543,48 +11923,41 @@ NodeConfig为JSON字符串格式，如下：
 
 **返回参数**
 
-数据管理
-
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | EC12A3BE-149F-5365- AF33-12CC8C963923 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功。 false：请求失败。 | true |
-| TimeVariables | array | 任务流时间变量。 |  |
-|  | object |  |  |
+| TimeVariables | array | 任务流时间变量。 |   |
+|   | object |   |   |
 | Name | string | 时间变量名称。 | time test _ |
 | Pattern | string | 时间变量格式。 | 2018-09-26\|+7h |
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "EC12A3BE-149F-5365-AF33-12CC8C963923",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "TimeVariables": {
     "timeVariable": [
-      {
+```
+
+`{`
+
+```json
         "Name": "time_test",
         "Pattern": "2018-09-26|+7h"
-      }
 ```
 
-]
+`}` `]`
 
-```
-  }
-}
-```
-
-数据管理
-
-#### UpdateTaskFlowTimeVariables
+#### 6.12.19 UpdateTaskFlowTimeVariables
 
 调用UpdateTaskFlowTimeVariables接口，更新任务流时间变量。
 
@@ -11596,39 +11969,33 @@ NodeConfig为JSON字符串格式，如下：
 | DagId | long | 是 | 任务流ID。 | 43**** |
 | TimeVariables | string | 是 | 任务流时间变量。 | {"variables":[ {"name":"var", "pattern":"yyyy- MM-dd\|+0m+0h- 2d+0w+0M+1y" } ]} |
 
-TimeVariables为JSON字符串格式，示例说明如下：
+TimeVariables为JSON字符串格式，示例说明如下： `{`
 
 ```json
-{
     "variables":[
-        {
 ```
 
-`"name":"var",//` 变量命名 `/*` 变量格式语法示例如示例值所示——在运行时日期的基础上，偏移“分”、“时”、“日”、“周”、“月”、“年”(可缺省，可不按照此顺序)。 `*/`
+`{` `"name":"var",//` 变量命名 `/*` 变量格式语法示例如示例值所示——在运行时日期的基础上，偏移“分”、“时”、“日”、“周”、“月”、“年”(可缺省，可不按照此顺序`)`。 `*/`
 
 ```json
             "pattern":"yyyy-MM-dd|+0d"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "name":"test",
             "pattern":"yyyy-MM-dd|+0d"
-        }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 39557312-28D5-528F- 9554-80C0700EB489 |
-
-数据管理
 
 | ErrorCode | string | 错误码。 | UnknownError |
 |---|---|---|---|
@@ -11637,18 +12004,18 @@ TimeVariables为JSON字符串格式，示例说明如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "39557312-28D5-528F-9554-80C0700EB489",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateTaskFlowCooperators
+`}`
+
+#### 6.12.20 UpdateTaskFlowCooperators
 
 调用UpdateTaskFlowCooperators接口，更新任务流相关人员列表。
 
@@ -11658,17 +12025,15 @@ TimeVariables为JSON字符串格式，示例说明如下：
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
 | DagId | long | 是 | 任务流ID。 | 11**** |
-| CooperatorIds | array | 否 | 待更新的相关人员用户Id列表。 |  |
-|  | string | 否 | 相关人员的用户 ID。 | 12**** |
+| CooperatorIds | array | 否 | 待更新的相关人员用户Id列表。 |   |
+|   | string | 否 | 相关人员的用户 ID。 | 12**** |
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 |---|---|---|---|
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | D05B3EE1-B6D3- 5B17-8CA6- A8054828E5B2 |
 | ErrorCode | string | 错误码。 | UnknownError |
@@ -11677,18 +12042,18 @@ TimeVariables为JSON字符串格式，示例说明如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "D05B3EE1-B6D3-5B17-8CA6-A8054828E5B2",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### CreateScenario
+`}`
+
+#### 6.12.21 CreateScenario
 
 调用CreateScenario接口，创建业务场景，也可以将任务流按业务场景进行分组。
 
@@ -11702,11 +12067,9 @@ TimeVariables为JSON字符串格式，示例说明如下：
 
 **返回参数**
 
-数据管理
-
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 4E1D2B4D-3E53- 4ABC-999D- 1D2520B3471A |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -11715,19 +12078,21 @@ TimeVariables为JSON字符串格式，示例说明如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "4E1D2B4D-3E53-4ABC-999D-1D2520B3471A",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "ScenarioId": 0
-}
 ```
 
-#### DeleteScenario
+`}`
+
+#### 6.12.22 DeleteScenario
+
+调用DeleteScenario接口，删除业务场景。
 
 **接口说明**
 
@@ -11738,8 +12103,6 @@ TimeVariables为JSON字符串格式，示例说明如下：
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
 
-数据管理
-
 | Tid | long | 否 | 租户ID。 | 3*** |
 |---|---|---|---|---|
 | ScenarioId | long | 是 | 业务场景ID。您可调用ListScenarios或 CreateScenario获取该参数的值。 | 12*** |
@@ -11748,7 +12111,7 @@ TimeVariables为JSON字符串格式，示例说明如下：
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | 12*** |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -11756,31 +12119,31 @@ TimeVariables为JSON字符串格式，示例说明如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "12***",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateSLARules
+`}`
+
+#### 6.12.23 UpdateSLARules
+
+调用UpdateSLARules，更新任务流SLA超时提醒。
 
 **接口说明**
 
-SLA规则随着任务流的部署、发布而生效。 数据管理
-
-**请求参数**
+SLA规则随着任务流的部署、发布而生效。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
 | DagId | long | 是 | 任务流ID。 | 11**** |
 | Tid | long | 否 | 租户ID。 | 3*** |
-| SlaRuleList | array | 否 | SLA规则列表。 |  |
-|  | object | 否 |  |  |
+| SlaRuleList | array | 否 | SLA规则列表。 |   |
+|   | object | 否 |   |   |
 | DagId | long | 是 | 任务流ID。 | 15*** |
 | NodeId | long | 否 | 任务节点ID。 | 0 |
 | Type | integer | 是 | 规则类型： 0：任务流SLA规则。 1：任务节点SLA 规则。 | 0 |
@@ -11790,30 +12153,28 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 88E053F7-347B-52DD- A186-1F340EEC0C27 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
-
-数据管理
 
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
 |---|---|---|---|
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "88E053F7-347B-52DD-A186-1F340EEC0C27",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### GetRuleNumLimitOfSLA
+`}`
+
+#### 6.12.24 GetRuleNumLimitOfSLA
 
 调用GetRuleNumLimitOfSLA接口，获取任务编排自定义SLA规则的限制数量，自定义的SLA规则数量不可超过该限制数。
 
@@ -11828,11 +12189,9 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | D05B3EE1-B6D3- 5B17-8CA6- A8054828E5B2 |
 | ErrorCode | string | 错误码。 | UnknownError |
-
-数据管理
 
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 |---|---|---|---|
@@ -11841,19 +12200,19 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "D05B3EE1-B6D3-5B17-8CA6-A8054828E5B2",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "RuleNumLimit": 12
-}
 ```
 
-#### GetIntervalLimitOfSLA
+`}`
+
+#### 6.12.25 GetIntervalLimitOfSLA
 
 调用GetIntervalLimitOfSLA接口，获取任务流允许配置SLA超时规则时，其最小调度周期限制。
 
@@ -11873,9 +12232,7 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 |---|---|---|---|
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 5B96E35F-A58E-5399- 9041-09CF9A1E46EA |
 | ErrorCode | string | 错误码。 | UnknownError |
@@ -11885,19 +12242,21 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "5B96E35F-A58E-5399-9041-09CF9A1E46EA",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "IntervalLimit": 59
-}
 ```
 
-#### ListDefaultSLARules
+`}`
+
+#### 6.12.26 ListDefaultSLARules
+
+调用ListDefaultSLARules，获取默认SLA超时提醒规则。
 
 **请求参数**
 
@@ -11906,19 +12265,17 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 11**** |
 | Tid | long | 否 | 租户ID。 | 3*** |
 
-数据管理
-
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 3E8AF4C3-A822-53A8- 970C-059EE83BBD5A |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| SLARuleList | array | SLA规则列表。 |  |
-|  | object |  |  |
+| SLARuleList | array | SLA规则列表。 |   |
+|   | object |   |   |
 | Id | long | SLA规则ID。 | 1 |
 | DagId | long | 任务流ID。 | 0 |
 | NodeId | long | 任务流节点ID。 | 0 |
@@ -11927,33 +12284,30 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例
 
 ```json
-{
   "RequestId": "3E8AF4C3-A822-53A8-970C-059EE83BBD5A",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "SLARuleList": {
     "SLARule": [
-      {
+```
+
+`{`
+
+```json
         "Id": 1,
         "DagId": 0,
         "NodeId": 0,
         "RuleType": 0,
         "IntervalMinutes": 1080
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-#### ListTaskFlowCooperators
+#### 6.12.27 ListTaskFlowCooperators
 
 获取任务流相关人列表。
 
@@ -11968,17 +12322,15 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 54C99C70-2DFF-5A8C- A252-EBAA1EB668EC |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 
-数据管理
-
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
 |---|---|---|---|
-| CooperatorList | array | 相关人员列表。 |  |
-|  | object | 相关人员信息。 |  |
+| CooperatorList | array | 相关人员列表。 |   |
+|   | object | 相关人员信息。 |   |
 | NickName | string | 用户昵称。 | name |
 | Email | string | 用户邮箱。 | t***@XX.com |
 | LoginName | string | 用户名。 | name |
@@ -11986,36 +12338,31 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "54C99C70-2DFF-5A8C-A252-EBAA1EB668EC",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "CooperatorList": {
     "Cooperator": [
-      {
+```
+
+`{`
+
+```json
         "NickName": "name",
         "Email": "t***@XX.com",
         "LoginName": "name",
         "UserId": "123"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.12.28 ListSLARules
 
-#### ListSLARules
-
-**请求参数**
-
-数据管理
+调用ListSLARules接口，获取自定义SLA规则列表。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -12026,18 +12373,16 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 3D1A59F4-EB2B- 5D24-80A5- 90C446A00DE2 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| SLARuleList | array | SLA规则列表。 |  |
-|  | object |  |  |
+| SLARuleList | array | SLA规则列表。 |   |
+|   | object |   |   |
 | Id | long | SLA规则ID。 | 2 |
 | DagId | long | 任务流ID。 | 11**** |
 | NodeId | long | 任务流节点ID。 | 1 |
-
-数据管理
 
 | RuleType | integer | 规则类型： 0：任务流SLA规则。 1：任务节点SLA规则。 | 0 |
 |---|---|---|---|
@@ -12045,33 +12390,30 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "3D1A59F4-EB2B-5D24-80A5-90C446A00DE2",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "SLARuleList": {
     "SLARule": [
-      {
+```
+
+`{`
+
+```json
         "Id": 2,
         "DagId": 0,
         "NodeId": 1,
         "RuleType": 0,
         "IntervalMinutes": 1080
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-#### GetTask
+#### 6.12.29 GetTask
 
 调用GetTask接口，按照任务流节点ID获取指定节点的配置，包括任务的时间变量。
 
@@ -12084,60 +12426,51 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 
 **返回参数**
 
-数据管理
-
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 7838266C-E17B-58F4- B072-4DC356B58258 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| Task | object | 任务流任务。 |  |
+| Task | object | 任务流任务。 |   |
 | DagId | long | 节点所在的任务流ID。 | 7321 |
 | NodeName | string | 任务节点名称。 | 跨库Spark SQL-1 |
 | NodeType | string | 任务节点类型，返回值请参见NodeType参数说明。 | 单实例SQL |
 | NodeContent | string | 节点配置内容。 | {\"dbList\": [{\"instanceId\":177*** *}" } |
 | TimeVariables | string | 节点变量（时间变量配置）。 | {\"variables\": [{\"name\":\"Today\",\" pattern\":\"yyyy-MM- dd\|+1d\"}]} |
 
-数据管理
-
 | NodeConfig | string | 节点高级配置。 | {\"dbId\":39****,\"dbT ype\":\"mysql\",\"local e\":\"zh\",\"sql\":\"/* 请确认以下SQL符合您的变更需求，务必确认无误后再提交执行 */\\n\\nCREATE TABLE IF NOT EXISTS `momo weekGather` _ (\\n\\t`id` bigint AUTO INCREMENT _ DEFAULT '0',\\n\\t`age` bit NULL,\\n\\t`action` varchar(150) NULL,\\n\\t`elapse tim _ e` datetime NULL,\\n\\tPRIMARY KEY (`id`)\\n) ENGINE=InnoDB\\nDEF AULT CHARACTER SET=utf8;\"} |
 |---|---|---|---|
 | NodeOutput | string | 节点输出变量，仅部分类型节点存在此参数。 | { "outputs":[ "extractMethod":"json" , "variableName":"var", "description":"demo desc" } ] } |
 | GraphParam | string | 节点在图上的显示位置。 | {" {\"x\":0,\"y\":0,\"layout Type\":\"Horizontal\"}" , "id": 51***} |
 
-TimeVariables为JSON字符串格式，示例及说明如下： 数据管理
+TimeVariables为JSON字符串格式，示例及说明如下：
 
 ```json
-{
     "variables":[
-        {
 ```
 
-`"name":"var",//` 变量命名 `/*` 变量格式语法示例如示例值所示-在运行时日期的基础上，偏移“分”、“时”、“日”、“周”、“月”、“年”(可缺省 ，可不按照此顺序)。 `*/`
+`"name":"var",//` 变量命名 `/*` 变量格式语法示例如示例值所示`-`在运行时日期的基础上，偏移“分”、“时”、“日”、“周”、“月”、“年”(可缺省 ，可不按照此顺序`)`。 `*/`
 
 ```json
             "pattern":"yyyy-MM-dd|+0d"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "name":"test",
             "pattern":"yyyy-MM-dd|+0d"
-        }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "7838266C-E17B-58F4-B072-4DC356B58258",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
@@ -12161,15 +12494,13 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 \"variableName\":\"var\", \"description\":\"demo desc\" } ] }",
     "GraphParam": "{\"
 {\\\"x\\\":0,\\\"y\\\":0,\\\"layoutType\\\":\\\"Horizontal\\\"}\", \"id\": 51***}"
-  }
-}
 ```
 
-#### MoveTaskFlowToScenario
+`}` `}`
 
-数据管理
+#### 6.12.30 MoveTaskFlowToScenario
 
-**请求参数**
+调用MoveTaskFlowToScenario接口，移动任务流至指定业务场景。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -12181,7 +12512,7 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID，用于定位日志， 排查问题。 | D85FD18C-4322- 5D49-8C14- 5A10E668F86C |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -12189,18 +12520,20 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "D85FD18C-4322-5D49-8C14-5A10E668F86C",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### GetTaskFlowNotification
+`}`
+
+#### 6.12.31 GetTaskFlowNotification
+
+调用GetTaskFlowNotification接口，获取任务流通知设置。
 
 **请求参数**
 
@@ -12213,14 +12546,12 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | F19D575F-EBEA-5683- AFA3-A8F6D9A7DE03 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值说明如下： true：请求成功。 false：请求失败。 | true |
-| Notification | object | 用户指定消息通知配置。 |  |
-
-数据管理
+| Notification | object | 用户指定消息通知配置。 |   |
 
 | DagNotificationFail | boolean | 任务流运行失败通知开关。返回值说明如下： true：开启。 false：关闭。 | true |
 |---|---|---|---|
@@ -12229,10 +12560,9 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "F19D575F-EBEA-5683-AFA3-A8F6D9A7DE03",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
@@ -12241,11 +12571,13 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
     "DagNotificationFail": true,
     "DagNotificationSuccess": true,
     "DagNotificationSla": true
-  }
-}
 ```
 
-#### UpdateTaskName
+`}` `}`
+
+#### 6.12.32 UpdateTaskName
+
+调用UpdateTaskName接口，更新任务名称。
 
 **请求参数**
 
@@ -12254,8 +12586,6 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 | Tid | long | 否 | 租户ID。 | 3*** |
 | NodeId | string | 是 | 任务节点ID。可调用GetTaskInstanc eRelation接口获取该参数的值。 | 449*** |
 
-数据管理
-
 | NodeName | string | 是 | 任务节点名称。可调用GetTaskInstanc eRelation接口获取该参数的值。 | Spark-test |
 |---|---|---|---|---|
 
@@ -12263,7 +12593,7 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | C4604178-3BE1-5973- ACF0-7D561AEEF3A8 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -12271,26 +12601,24 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "C4604178-3BE1-5973-ACF0-7D561AEEF3A8",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateTaskOutput
+`}`
+
+#### 6.12.33 UpdateTaskOutput
+
+调用UpdateTaskOutput接口，更新任务节点的输出变量。
 
 **接口说明**
 
 仅单实例SQL赋值、脚本代码、ECS远程命令任务节点具有输出变量。
-
-**请求参数**
-
-数据管理
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -12300,90 +12628,72 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **单实例SQL赋值**
 
-NodeOutput样例如下： 数据管理
+NodeOutput样例如下：
 
 ```json
-{
     "outputs":[
-        {
 ```
 
-`/*` 变量提取设置
-
-```
-            {
-```
-
-`"row":0, //` 行，`-1`为所有行 `"column":-1, //` 列，`-1`为所有列 `/*` 分隔符当选中所有行或所有列时，需要指定连接符。变量返回值为字符串 `*/`
+`/*` 变量提取设置 `{` `"row":0, //` 行，`-1`为所有行 `"column":-1, //` 列，`-1`为所有列 `/*` 分隔符当选中所有行或所有列时，需要指定连接符。变量返回值为字符串 `*/`
 
 ```json
                 "combiner":","
-            }
 ```
 
-`*/`
+`}` `*/`
 
 ```json
             "extractMethod":"{\"row\":0,\"column\":-1,\"combiner\":\",\"}",
             "variableName":"var", // 变量名
             "description":"For demo" // 变量介绍
-        }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **脚本代码/ECS远程命令**
 
-NodeOutput样例如下：
+NodeOutput样例如下： `{`
 
 ```json
-{
     "outputs":[
-        {
+```
+
+`{`
+
+```json
             "extractMethod":"json", // 固定为JSON
             "variableName":"var",  // 变量名
             "description":"demo desc" // 变量描述
-        }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | AB524768-8A5F-523A- 91BD-1147187FCD62 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
-
-数据管理
 
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
 |---|---|---|---|
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "AB524768-8A5F-523A-91BD-1147187FCD62",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### DeleteTaskFlowEdgesByCondition
+`}`
+
+#### 6.12.34 DeleteTaskFlowEdgesByCondition
 
 调用DeleteTaskFlowEdgesByCondition接口，按照多条件删除任务流边。
 
@@ -12403,11 +12713,9 @@ NodeOutput样例如下：
 
 **返回参数**
 
-数据管理
-
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 21234B66-6859-5558- 9E5B-006EFE915CD0 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的出错信息。 | UnknownError |
@@ -12415,18 +12723,18 @@ NodeOutput样例如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "21234B66-6859-5558-9E5B-006EFE915CD0",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ListTaskFlowEdgesByCondition
+`}`
+
+#### 6.12.35 ListTaskFlowEdgesByCondition
 
 调用ListTaskFlowEdgesByMultiCondition接口，多条件获取指定任务流DAG图的边。
 
@@ -12440,8 +12748,6 @@ NodeOutput样例如下：
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
 
-数据管理
-
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 15*** |
 |---|---|---|---|---|
 | Id | long | 否 | 任务流边ID。 | 24*** |
@@ -12452,44 +12758,39 @@ NodeOutput样例如下：
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | D86249CD-422F-5ACF- 85BA-9187C986AE0B |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| Edges | array | 任务流边列表。 |  |
-|  | object |  |  |
+| Edges | array | 任务流边列表。 |   |
+|   | object |   |   |
 | Id | long | 任务流边ID。 | 24*** |
 | NodeEnd | long | 边的终点节点ID。 | 44*** |
 | NodeFrom | long | 边的起点节点ID。 | 44*** |
 
-**示例**
-
-数据管理正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
   "RequestId": "D86249CD-422F-5ACF-85BA-9187C986AE0B",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true,
   "Edges": {
     "Edge": [
-      {
+```
+
+`{`
+
+```json
         "Id": 0,
         "NodeEnd": 0,
         "NodeFrom": 0
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-#### AddTaskFlowEdges
+#### 6.12.36 AddTaskFlowEdges
 
 为已存在的任务流节点建立有向边。
 
@@ -12505,31 +12806,28 @@ NodeOutput样例如下：
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 15*** |
-| Edges | array | 是 | 任务流边列表。 |  |
-|  | object | 否 | 任务流边信息。 |  |
+| Edges | array | 是 | 任务流边列表。 |   |
+|   | object | 否 | 任务流边信息。 |   |
 | NodeEnd | long | 是 | 边的终点节点ID。 | 44*** |
 | NodeFrom | long | 是 | 边的起点节点ID。 | 44*** |
-
-数据管理
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求ID。请求的唯一标识，用于定位日志，排查问题。 | E5EE2B9E-2F95-57FA- B284-CB441CEE49D6 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的出错信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| EdgeIds | array | 任务流边ID列表。 |  |
-|  | long | 任务流边ID。 | 24*** |
+| EdgeIds | array | 任务流边ID列表。 |   |
+|   | long | 任务流边ID。 | 24*** |
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "E5EE2B9E-2F95-57FA-B284-CB441CEE49D6",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
@@ -12538,20 +12836,11 @@ NodeOutput样例如下：
     "EdgeId": [
 ```
 
-]
+`]` `}` `}`
 
-```
-  }
-}
-```
-
-#### UpdateTaskFlowNameAndDesc
+#### 6.12.37 UpdateTaskFlowNameAndDesc
 
 调用UpdateTaskFlowNameAndDesc接口，更新任务流名称和描述。
-
-**请求参数**
-
-数据管理
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -12564,7 +12853,7 @@ NodeOutput样例如下：
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | F73CCB9D-0CF3- 5D3D-97B0- D852A8022663 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -12572,18 +12861,20 @@ NodeOutput样例如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "F73CCB9D-0CF3-5D3D-97B0-D852A8022663",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### GetTaskFlowGraph
+`}`
+
+#### 6.12.38 GetTaskFlowGraph
+
+调用GetTaskFlowGraph接口获取任务流的DAG图。
 
 **请求参数**
 
@@ -12596,19 +12887,17 @@ NodeOutput样例如下：
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。 | D9D91166-A626-5F4E- 9CA6-7AB10C59DBD8 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| TaskFlowGraph | object | 任务流的DAG图变量列表。 |  |
-
-数据管理
+| TaskFlowGraph | object | 任务流的DAG图变量列表。 |   |
 
 | DagName | string | 任务流名称。 | test |
 |---|---|---|---|
-| Nodes | array | 任务流节点列表。 |  |
-|  | object |  |  |
+| Nodes | array | 任务流节点列表。 |   |
+|   | object |   |   |
 | DagId | long | 任务流ID。 | 15*** |
 | NodeId | long | 任务节点ID。 | 44*** |
 | NodeName | string | 任务节点名称。 | test |
@@ -12618,11 +12907,9 @@ NodeOutput样例如下：
 | NodeConfig | string | 节点高级配置。 | {\"dbId\":39****,\"dbT ype\":\"mysql\",\"local e\":\"zh\",\"sql\":\"/* 请确认以下SQL符合您的变更需求，务必确认无误后再提交执行 */\\n\\nCREATE TABLE IF NOT EXISTS `momo weekGather` _ (\\n\\t`id` bigint AUTO INCREMENT _ DEFAULT '0',\\n\\t`age` bit NULL,\\n\\t`action` varchar(150) NULL,\\n\\t`elapse tim _ e` datetime NULL,\\n\\tPRIMARY KEY (`id`)\\n) ENGINE=InnoDB\\nDEF AULT CHARACTER SET=utf8;\"} |
 | GraphParam | string | 节点在图上的显示位置。 | {\"x\":541,\"y\":322,\"l ayoutType\":\"Horizont al\"} |
 
-数据管理
-
-| Edges | array | 任务流边列表。 |  |
+| Edges | array | 任务流边列表。 |   |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | DagId | long | 任务流ID。 | 15*** |
 | Id | long | 任务流边ID。 | 24*** |
 | NodeEnd | long | 边的终点节点ID。 | 44*** |
@@ -12632,10 +12919,9 @@ NodeOutput样例如下：
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "D9D91166-A626-5F4E-9CA6-7AB10C59DBD8",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
@@ -12644,7 +12930,11 @@ NodeOutput样例如下：
     "DagName": "test",
     "Nodes": {
       "Node": [
-        {
+```
+
+`{`
+
+```json
           "DagId": 0,
           "NodeId": 0,
           "NodeName": "test",
@@ -12662,34 +12952,34 @@ NodeOutput样例如下：
 TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\t`age` bit NULL,\\\\n\\\\t`action` varchar(150) NULL,\\\\n\\\\t`elapse_time` datetime NULL,\\\ \n\\\\tPRIMARY KEY (`id`)\\\\n) ENGINE=InnoDB\\\\nDEFAULT CHARACTER SET=utf8;\\\"}",
           "GraphParam": "
 {\\\"x\\\":541,\\\"y\\\":322,\\\"layoutType\\\":\\\"Horizontal\\\"}"
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "Edges": {
       "Edge": [
-        {
+```
+
+`{`
+
+```json
           "DagId": 0,
           "Id": 0,
           "NodeEnd": 0,
           "NodeFrom": 0
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "Status": 2,
     "CanEdit": true
-  }
-}
 ```
 
-#### UpdateTaskFlowEdges
+`}` `}`
+
+#### 6.12.39 UpdateTaskFlowEdges
 
 批量更新指定任务流的指定边的起点节点和终点节点。
 
@@ -12698,17 +12988,14 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 更新的边需要满足以下限制，否则将无法成功更新：
 1. 指定的边存在于DagId指定的任务流DAG图中。
 2. 指定的边端点存在于DagId指定的任务流DAG图中。
-数据管理
 3. 更新后，DAG图不出现环。
-
-**请求参数**
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 15*** |
-| Edges | array | 是 | 更新后的任务流边列表。 |  |
-|  | object | 否 |  |  |
+| Edges | array | 是 | 更新后的任务流边列表。 |   |
+|   | object | 否 |   |   |
 | Id | long | 是 | 任务流边ID。 | 24*** |
 | NodeEnd | long | 是 | 边的终点节点ID。 | 44*** |
 | NodeFrom | long | 是 | 边的起点节点ID。 | 44*** |
@@ -12717,28 +13004,26 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求的ID，可用于定位日志，排查问题。 | 93FC1AE1-EC54-52B1- B146-650180FB82E8 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
 
-数据管理
-
-**示例**
-
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
   "RequestId": "93FC1AE1-EC54-52B1-B146-650180FB82E8",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateTaskFlowOwner
+`}`
+
+#### 6.12.40 UpdateTaskFlowOwner
+
+调用UpdateTaskFlowOwner接口，更新任务流Owner。
 
 **接口说明**
 
@@ -12756,10 +13041,8 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 482C61C1-2537-5BFB- 8E58-34D9F17AD3C3 |
-
-数据管理
 
 | ErrorCode | string | 错误码。 | UnknownError |
 |---|---|---|---|
@@ -12768,18 +13051,20 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "482C61C1-2537-5BFB-8E58-34D9F17AD3C3",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateTaskFlowSchedule
+`}`
+
+#### 6.12.41 UpdateTaskFlowSchedule
+
+调用UpdateTaskFlowSchedule接口，更新任务流调度配置。
 
 **接口说明**
 
@@ -12793,8 +13078,6 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 | DagId | long | 是 | 任务流ID，任务流的唯一标识。 | 7*** |
 | ScheduleSwitch | boolean | 是 | 是否开启调度。 true false | false |
 
-数据管理
-
 | CronBeginDate | string | 否 | 此时间点之前任务流不进行调度。 | CronBeginDate t _ est |
 |---|---|---|---|---|
 | CronEndDate | string | 否 | 定时调度结束时间，此时间点之后任务流不进行调度。 | CronEndDate tes _ t |
@@ -12806,21 +13089,22 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **调度配置相关参数说明**
 
-配置定时调度：可配置周期调度或调度一次。 必填参数如下： ScheduleSwitch：True TriggerType：Cron CronBeginDate CronEndDate CronStr CronType ScheduleParam：分为按天、周、月、调度一次。 数据管理示例如下：
+配置定时调度：可配置周期调度或调度一次。 必填参数如下： ScheduleSwitch：True TriggerType：Cron CronBeginDate CronEndDate CronStr CronType ScheduleParam：分为按天、周、月、调度一次。 示例如下：
 
 **按“天”调度：**
 
+`{`
+
 ```json
-{
     "triggerType":"0",
     "dateTime":"00:00"
-}
 ```
 
-按“周”**调度**：周日为1，周一为2，…，周六为7。
+`}`
+**按****“****周****”****调度**：周日为1，周一为2，…，周六为7。
+`{`
 
 ```json
-{
     "triggerType":"0",
     "dateWeek":[
         "1",
@@ -12831,27 +13115,32 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 ```json
     "weekTime":"00:00"
-}
 ```
+
+`}`
 
 **按“月”调度：**
 
+`{`
+
 ```json
-{
     "triggerType":"0",
     "dateMonth":"1",
     "MonthTime":"00:00"
-}
 ```
+
+`}`
 
 **调度一次：**
 
+`{`
+
 ```json
-{
     "triggerType":"1",
     "specificTime":"2022-09-02 00:00"
-}
 ```
+
+`}`
 
 **参数说明**
 
@@ -12861,47 +13150,26 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 3. CronType：验证使用，按照CronStr定义的周期填写。
 4. ScheduleParam：需按照CronStr指定的调度填写。
 **配置事件调度**（跨任务流自动触发）
-必填参数如下： ScheduleSwitch：True TriggerType： Event ScheduleParam 示例如下： 数据管理
-
-```
-{
-```
-
-`"triggerType":"2" //` 事件调度时置为2 `"deps":[ //` 任务流、节点订阅配置
-
-```
-        {
-```
-
-`"eventType":1, //` 订阅类型`: 0`为任务流; 1为任务节点 `"lisDagId":12345, //` 订阅节点所在的任务流 `"lisNodeId":2134 //` 订阅节点的`Id`
+必填参数如下： ScheduleSwitch：True TriggerType： Event ScheduleParam 示例如下： `"triggerType":"2" //` 事件调度时置为`2` `"deps":[ //` 任务流、节点订阅配置 `{` `"eventType":1, //` 订阅类型`: 0`为任务流; 1为任务节点 `"lisDagId":12345, //` 订阅节点所在的任务流 `"lisNodeId":2134 //` 订阅节点的`Id` `},` `{`
 
 ```json
-        },
-        {
             "eventType":0,
 ```
 
-`"lisDagId":12343 //` 订阅任务流的`Id`
+`"lisDagId":12343 //` 订阅任务流的`Id` `},` `{`
 
 ```json
-        },
-        {
             "eventType":0,
             "lisDagId":23456
-        }
 ```
 
-`],` `"maxWait":21600 //` 在所有以上订阅运行成功前，最大等待时间
-
-```
-}
-```
+`}` `],` `"maxWait":21600 //` 在所有以上订阅运行成功前，最大等待时间 `}`
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | 返回参数详情如下。 |  |
+|   | object | 返回参数详情如下。 |   |
 | RequestId | string | 请求ID，用于定位日志， 排查问题。 | 7BF38A13-C181-5B5E- 97F1-8643F8A10093 |
 | ErrorCode | string | 错误码。 | InvalidParameterValid |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | InvalidParameterValid |
@@ -12909,18 +13177,20 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "7BF38A13-C181-5B5E-97F1-8643F8A10093",
   "ErrorCode": "InvalidParameterValid",
   "ErrorMessage": "InvalidParameterValid",
   "Success": true
-}
 ```
 
-#### UpdateTaskFlowRelations
+`}`
+
+#### 6.12.42 UpdateTaskFlowRelations
+
+调用UpdateTaskFlowRelations接口，全量更新任务流边。
 
 **接口说明**
 
@@ -12932,8 +13202,8 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 15*** |
-| Edges | array | 否 | 待更新的任务流边列表。 |  |
-|  | object | 否 |  |  |
+| Edges | array | 否 | 待更新的任务流边列表。 |   |
+|   | object | 否 |   |   |
 | Id | long | 否 | 任务流边ID。 | 24*** |
 | NodeEnd | long | 否 | 边的终点节点ID。 | 44*** |
 | NodeFrom | long | 否 | 边的起点节点ID。 | 44*** |
@@ -12942,9 +13212,7 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
-
-数据管理
+|   | object |   |   |
 
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 15D9E71C-405B- 57D7-BE6E- 707C2C7A8E0B |
 |---|---|---|---|
@@ -12954,18 +13222,18 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "15D9E71C-405B-57D7-BE6E-707C2C7A8E0B",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### UpdateTaskFlowNotification
+`}`
+
+#### 6.12.43 UpdateTaskFlowNotification
 
 调用UpdateTaskFlowNotification接口，更新任务流通知设置。
 
@@ -12977,8 +13245,6 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 | DagId | long | 是 | 任务流ID，任务流的唯一标识。可通过调用ListTaskFlow接口获取该参数的值。 | 15*** |
 | DagNotificationFa il | boolean | 是 | 任务流运行失败通知开关。默认关闭，请手动开启。 | true |
 
-数据管理
-
 | DagNotificationS uccess | boolean | 是 | 任务流运行成功通知开关。默认关闭，请手动开启。 | true |
 |---|---|---|---|---|
 | DagNotificationSl a | boolean | 是 | 任务流SLA通知全局开关。默认关闭， 请手动开启。 | true |
@@ -12987,7 +13253,7 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object |  |  |
+|   | object |   |   |
 | RequestId | string | 请求ID。用于定位日志， 排查问题。 | 3BDC762F-2525-5E47- 8748-D6C58BDB3B38 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -12995,22 +13261,20 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "3BDC762F-2525-5E47-8748-D6C58BDB3B38",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ListTasksInTaskFlow
+`}`
 
-**请求参数**
+#### 6.12.44 ListTasksInTaskFlow
 
-数据管理
+调用ListTasksInTaskFlow接口，获取指定任务流的任务节点列表。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -13021,17 +13285,15 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | 返回参数详情如下。 |  |
+|   | object | 返回参数详情如下。 |   |
 | RequestId | string | 请求ID，用于定位日志， 排查问题。 | 8B36B063-6B7D-5595- 9FCF-3844B7B7ACD4 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | 任务流不存在或没有权限 |
 | Success | boolean | 请求是否成功，返回值如下： true：请求成功 false：请求失败 | true |
-| Tasks | array | 任务列表。 |  |
-|  | object | 任务列表详情如下。 |  |
+| Tasks | array | 任务列表。 |   |
+|   | object | 任务列表详情如下。 |   |
 | NodeName | string | 节点名称。 | Cross-Database Spark SQL-1 |
 | NodeType | string | 任务节点类型，返回值请参见NodeType参数说明。 | 单实例SQL |
-
-数据管理
 
 | NodeContent | string | 节点配置内容。 | { "dbId":123456, // 数据库Id "sql":"/* 请使用当前节点所选择的数据库语法编写SQL */", // sql语句 "dbType":"polardb" // 数据库类型 } |
 |---|---|---|---|
@@ -13043,10 +13305,9 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "8B36B063-6B7D-5595-9FCF-3844B7B7ACD4",
   "ErrorCode": "UnknownError",
 ```
@@ -13057,7 +13318,11 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
   "Success": true,
   "Tasks": {
     "Task": [
-      {
+```
+
+`{`
+
+```json
         "NodeName": "Cross-Database Spark SQL-1",
         "NodeType": "SPARK_SQL",
         "NodeContent": "{     \"dbId\":123456, // 数据库Id     \"sql\":\"/* 请使用当前节点
@@ -13070,7 +13335,7 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 \"name\":\"var\", // name指定变量名 \"pattern\":\"yyyy-MM-dd|+0m+0h-2d+0w+0M+1y\" /
 ```
 
-/ 见后面解释 `} ] }",`
+`/` 见后面解释 `} ] }",`
 
 ```json
         "NodeConfig": "{     \"rerun\":{ // 必填固定值         \"rerunEnable\":true, // 是
@@ -13091,17 +13356,13 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
         "GraphParam": "
 {\\\"x\\\":435,\\\"y\\\":192,\\\"layoutType\\\":\\\"Horizontal\\\"}",
         "NodeId": "92***"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+#### 6.12.45 CreateTaskFlow
 
-#### CreateTaskFlow
+调用CreateTaskFlow接口，创建任务流。
 
 **请求参数**
 
@@ -13109,8 +13370,6 @@ TS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT '0',\\\\n\\\\
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID，可通过调用接口ListUserTenant s获取该参数的值。 | 3*** |
 | DagName | string | 是 | 任务流名称。 | Dag Name _ |
-
-数据管理
 
 | Description | string | 否 | 任务流描述。 | zht test _ |
 |---|---|---|---|---|
@@ -13122,7 +13381,7 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | 返回参数详情如下。 |  |
+|   | object | 返回参数详情如下。 |   |
 | RequestId | string | 请求ID。此次请求的唯一标识，用于定位日志，排查问题。 | 19DA51A9-AC3E- 5C36-8351- 07EBCD2B89A1 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | User can not access to Tenant [1] |
@@ -13131,23 +13390,21 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "19DA51A9-AC3E-5C36-8351-07EBCD2B89A1",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "User can not access to Tenant [1]",
   "Success": true,
   "DagId": 0
-}
 ```
 
-#### SuspendTaskFlowInstance
+`}`
 
-数据管理
+#### 6.12.46 SuspendTaskFlowInstance
 
-**请求参数**
+调用SuspendTaskFlowInstance接口，暂停运行中的任务流实例。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -13159,7 +13416,7 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | Schema of Response |  |
+|   | object | Schema of Response |   |
 | RequestId | string | 请求ID，用于定位日志， 排查问题。 | 028BF827-3801-5869- 8548-F4A039256305 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -13167,18 +13424,20 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式数据管理
+正常返回示例 `JSON` 格式
 
 ```json
-{
   "RequestId": "028BF827-3801-5869-8548-F4A039256305",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### ReRunTaskFlowInstance
+`}`
+
+#### 6.12.47 ReRunTaskFlowInstance
+
+调用ReRunTaskFlowInstance接口，重跑任务流实例。
 
 **请求参数**
 
@@ -13193,11 +13452,9 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | 返回参数值如下。 |  |
+|   | object | 返回参数值如下。 |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 8CFF2295-8249-5287- B888-DBD4F0D76CB0 |
 | ErrorCode | string | 错误码。 | UnknownError |
-
-数据管理
 
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
 |---|---|---|---|
@@ -13205,18 +13462,18 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "8CFF2295-8249-5287-B888-DBD4F0D76CB0",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### MakeTaskFlowInstanceSuccess
+`}`
+
+#### 6.12.48 MakeTaskFlowInstanceSuccess
 
 调用MakeTaskFlowInstanceSuccess接口，将指定任务流的状态设置为成功。
 
@@ -13233,9 +13490,7 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object | 返回参数如下。 |  |
+|   | object | 返回参数如下。 |   |
 |---|---|---|---|
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | 028BF827-3801-5869- 8548-F4A039256304 |
 | ErrorCode | string | 错误码。 | UnknownError |
@@ -13244,18 +13499,20 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "028BF827-3801-5869-8548-F4A039256304",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### DeleteTask
+`}`
+
+#### 6.12.49 DeleteTask
+
+调用DeleteTask接口，删除任务流任务。
 
 **请求参数**
 
@@ -13269,9 +13526,7 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object | 返回参数详情如下。 |  |
+|   | object | 返回参数详情如下。 |   |
 |---|---|---|---|
 | RequestId | string | 请求ID。 | 3B460770-40D9-5F07- B68A-173D1D708B72 |
 | ErrorCode | string | 错误码。 | UnknownError |
@@ -13280,18 +13535,20 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "3B460770-40D9-5F07-B68A-173D1D708B72",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "Unknown server error",
   "Success": true
-}
 ```
 
-#### PublishAndDeployTaskFlow
+`}`
+
+#### 6.12.50 PublishAndDeployTaskFlow
+
+调用PublishAndDeployTaskFlow接口，发布并部署指定任务流。
 
 **请求参数**
 
@@ -13301,13 +13558,11 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 36*** |
 | VersionComment s | string | 否 | 任务流版本描述。 | vc test _ |
 
-数据管理
-
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | 返回参数详情如下。 |  |
+|   | object | 返回参数详情如下。 |   |
 | RequestId | string | 请求的ID。用于定位日志，排查问题。 | A7160423-2A83-592B- 97E2-D8AE7B11C520 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | Unknown server error |
@@ -13316,27 +13571,27 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "A7160423-2A83-592B-97E2-D8AE7B11C520",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "Unknown server error",
   "Success": true,
   "DeployId": 0
-}
 ```
 
-#### StopTaskFlowInstance
+`}`
+
+#### 6.12.51 StopTaskFlowInstance
+
+调用StopTaskFlowInstance接口，停止运行中的任务流实例。
 
 **请求参数**
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
 | Tid | long | 否 | 租户ID。 | 3*** |
-
-数据管理
 
 | DagId | long | 是 | 任务流ID，可通过调用接口ListTaskFlow获取该参数的值。 | 7*** |
 |---|---|---|---|---|
@@ -13346,7 +13601,7 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
-|  | object | 返回参数详情如下。 |  |
+|   | object | 返回参数详情如下。 |   |
 | RequestId | string | 请求ID，用于定位日志， 排查问题。 | 028BF827-3801-5869- 8548-F4A039256308 |
 | ErrorCode | string | 错误码。 | UnknownError |
 | ErrorMessage | string | 调用失败时，返回的错误信息。 | UnknownError |
@@ -13354,22 +13609,20 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "028BF827-3801-5869-8548-F4A039256308",
   "ErrorCode": "UnknownError",
   "ErrorMessage": "UnknownError",
   "Success": true
-}
 ```
 
-#### CreateTask
+`}`
 
-数据管理
+#### 6.12.52 CreateTask
 
-**请求参数**
+调用CreateTask接口，创建任务流任务。
 
 | 名称 | 类型 | 必填 | 描述 | 示例值 |
 |---|---|---|---|---|
@@ -13382,47 +13635,37 @@ DagName具有唯一性，指定已存在的DagName会导致调用失败。
 | NodeOutput | string | 否 | 任务输出变量。 | test |
 | GraphParam | string | 否 | 节点在图上的显示位置。您可通过调用GetTaskFlowGr aph接口获取该参数的值。 | test |
 
-节点配置相关参数说明根据节点类型的不同，节点的配置有所区别。此文档为任务流任务相关接口，如CreateTask、 UpdateTaskOutput等接口的补充说明，其中NodeParam、NodeContent、GraphParam的配置具有通用性。当前仅“单实例SQL赋值”、“脚本代码”、“Ecs远程命令”任务节点具有输出变量，配置方式有所区
+节点配置相关参数说明根据节点类型的不同，节点的配置有所区别。此文档为任务流任务相关接口，如CreateTask、 UpdateTaskOutput等接口的补充说明，其中NodeParam、NodeContent、GraphParam的配置具有通用性。当前仅“单实例SQL赋值”、“脚本代码”、“Ecs远程命令”任务节点具有输出变量，配置方式有所区别，详情可参考UpdateTaskOutput接口文档说明。
 
 **单实例SQL**
 
-DagId NodeName NodeType: 1 NodeParam GraphParam NodeContent: 样例如下数据管理
+DagId NodeName NodeType: 1 NodeParam GraphParam NodeContent: 样例如下
 
 ```json
-{
     "dbId":123456, // 数据库Id
 ```
 
-`"sql":"/*` 请使用当前节点所选择的数据库语法编写`SQL */", // sql`语句 `"dbType":"lindorm_sql" //` 数据库类型
-
-```
-}
-```
+`"sql":"/*` 请使用当前节点所选择的数据库语法编写`SQL */", // sql`语句 `"dbType":"lindorm_sql" //` 数据库类型 `}`
 
 **脚本代码**
 
-DagId NodeName NodeType: 28 NodeParam GraphParam NodeOutput
+DagId NodeName NodeType: 28 NodeParam GraphParam NodeOutput `{`
 
 ```json
-{
     "outputs":[
-        {
+```
+
+`{`
+
+```json
             "extractMethod":"json", // 固定为json
             "variableName":"var",  // 变量名
             "description":"demo desc" // 变量描述
-        }
 ```
 
-]
-
-```
-}
-```
-
-NodeContent：样例如下
+`}` `]` `}` NodeContent：样例如下 `{`
 
 ```json
-{
     "regionId":"cn-hangzhou", // 地域
     "gatewayId":"dg-xxxxxxxxxxxxxx", // 网关ID
     "gatewayInstanceId":"dg-node-xxxxxxxxxxxxxx", // 网关实例ID
@@ -13436,125 +13679,69 @@ NodeContent：样例如下
         "-n1 value1"
 ```
 
-]
-
-```
-}
-```
+`]` `}`
 
 **无锁数据变更**
 
-DagId NodeName NodeType: 24 NodeParam GraphParam NodeContent: 样例如下数据管理
+DagId NodeName NodeType: 24 NodeParam GraphParam NodeContent: 样例如下
 
 ```json
-{
     "dbId":123456, // 数据库Id
 ```
 
-`"sql":"/*` 请使用当前节点所选择的数据库语法编写`SQL */", // sql`语句 `"dbType":"polardb" //` 数据库类型
-
-```
-}
-```
+`"sql":"/*` 请使用当前节点所选择的数据库语法编写`SQL */", // sql`语句 `"dbType":"polardb" //` 数据库类型 `}`
 
 **单实例SQL赋值**
 
-DagId NodeName NodeType: 32 NodeParam GraphParam NodeOutput: 样例如下
+DagId NodeName NodeType: 32 NodeParam GraphParam NodeOutput: 样例如下 `{`
 
 ```json
-{
     "outputs":[
-        {
 ```
 
-`/*` `//` 变量提取设置
-
-```
-            {
-```
-
-`"row":0, //` 行，`-1`为所有行 `"column":-1, //` 列，`-1`为所有列 `"combiner":"," //` 分隔符,当选中所有行或所有列时，需要指定连接符。变量返回值为字符串
-
-```
-            }
-```
-
-`*/`
+`{` `/*` `//` 变量提取设置 `{` `"row":0, //` 行，`-1`为所有行 `"column":-1, //` 列，`-1`为所有列 `"combiner":"," //` 分隔符`,`当选中所有行或所有列时，需要指定连接符。变量返回值为字符串 `}` `*/`
 
 ```json
             "extractMethod":"{\"row\":0,\"column\":-1,\"combiner\":\",\"}",
             "variableName":"var", // 变量名
             "description":"For demo" // 变量介绍
-        }
 ```
 
-]
-
-```
-}
-```
-
-NodeContent: 样例如下
+`}` `]` `}` NodeContent: 样例如下 `{`
 
 ```json
-{
     "dbId":123456, // 数据库Id
 ```
 
-`"sql":"/*` 请使用当前节点所选择的数据库语法编写`SQL`，仅支持`SELECT`语句，且默认返回最大行数为`30 *",` `// sql`语句 `"dbType":"lindorm_cql" //` 数据库类型
-
-```
-}
-```
+`"sql":"/*` 请使用当前节点所选择的数据库语法编写`SQL`，仅支持`SELECT`语句，且默认返回最大行数为`30 *",` `// sql`语句 `"dbType":"lindorm_cql" //` 数据库类型 `}`
 
 **依赖检查**
 
-DagId NodeName NodeType: 2 NodeParam 数据管理 GraphParam NodeContent: 样例如下
-
-```
-{
-```
-
-`"dependentDAGId":132, //` 依赖项：任务流 `"dependentNodeId":"", //` 依赖项：单个节点，缺省时依赖项为指定的任务流
+DagId NodeName NodeType: 2 NodeParam GraphParam NodeContent: 样例如下 `{` `"dependentDAGId":132, //` 依赖项：任务流 `"dependentNodeId":"", //` 依赖项：单个节点，缺省时依赖项为指定的任务流
 
 ```json
     "dependentStartTimePattern":"yyyy-MM-dd HH:mm|-2d+0h+0m", // 开始时间偏移点
     "dependentEndTimePattern":"yyyy-MM-dd HH:mm|+1d+0h+0m", // 结束时间偏移点
 ```
 
-`"multiSuccessStrategy":2, //` 实例检查策略： `0.`最后一次成功； `1.`全部成功； `2.`指定单次成功 `"multiSuccessStrategyIndex":1 //` 实例检查策略：第 `x+1` 次
-
-```
-}
-```
+`"multiSuccessStrategy":2, //` 实例检查策略： `0.`最后一次成功； `1.`全部成功； `2.`指定单次成功 `"multiSuccessStrategyIndex":1 //` 实例检查策略：第 `x+1` 次 `}`
 
 **表时间列状态检查**
 
-DagId NodeName NodeType: 2 NodeParam GraphParam NodeContent: 样例如下
-
-```
-{
-```
-
-`"dependentDAGId":132, //` 依赖项：任务流 `"dependentNodeId":"", //` 依赖项：单个节点，缺省时依赖项为指定的任务流
+DagId NodeName NodeType: 2 NodeParam GraphParam NodeContent: 样例如下 `{` `"dependentDAGId":132, //` 依赖项：任务流 `"dependentNodeId":"", //` 依赖项：单个节点，缺省时依赖项为指定的任务流
 
 ```json
     "dependentStartTimePattern":"yyyy-MM-dd HH:mm|-2d+0h+0m", // 开始时间偏移点
     "dependentEndTimePattern":"yyyy-MM-dd HH:mm|+1d+0h+0m", // 结束时间偏移点
 ```
 
-`"multiSuccessStrategy":2, //` 实例检查策略： `0.`最后一次成功； `1.`全部成功； `2.`指定单次成功 `"multiSuccessStrategyIndex":1 //` 实例检查策略：第 `x+1` 次
-
-```
-}
-```
+`"multiSuccessStrategy":2, //` 实例检查策略： `0.`最后一次成功； `1.`全部成功； `2.`指定单次成功 `"multiSuccessStrategyIndex":1 //` 实例检查策略：第 `x+1` 次 `}`
 
 **SQL状态检查**
 
-DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下
+DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下 `{`
 
 ```json
-{
     "dbId":123456,
 ```
 
@@ -13562,17 +13749,16 @@ DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下
 
 ```json
     "dbType":"lindorm_cql"
-}
 ```
+
+`}`
 
 **返回参数**
 
 | 名称 | 类型 | 描述 | 示例值 |
 |---|---|---|---|
 
-数据管理
-
-|  | object | 返回参数值如下。 |  |
+|   | object | 返回参数值如下。 |   |
 |---|---|---|---|
 | RequestId | string | 请求ID，用于定位日志， 排查问题。 | CFD8FE00-36D9-4C1B- 940D-65A7B73D9066 |
 | ErrorCode | string | 错误码。 | InvalidParameterValid |
@@ -13582,28 +13768,28 @@ DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下
 
 **示例**
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "RequestId": "CFD8FE00-36D9-4C1B-940D-65A7B73D9066",
   "ErrorCode": "InvalidParameterValid",
   "ErrorMessage": "InvalidParameterValid",
   "Success": true,
   "NodeId": 0
-}
 ```
 
-### 逻辑库表
+`}`
 
-#### GetDBTopology
+### 6.13 逻辑库表
+
+#### 6.13.1 GetDBTopology
+
+调用GetDBTopology接口，获取逻辑库与其对应物理分库的拓扑信息。
 
 **请求参数**
 
 | 名称 | 类型 | 是否必选 | 示例值 | 描述 |
 |---|---|---|---|---|
-
-数据管理
 
 | LogicDbId | Long | 是 | 134325 | 逻辑库ID。 说明您可以通过调用ListLogicDatabases接口获取该参数。 |
 |---|---|---|---|---|
@@ -13618,18 +13804,16 @@ DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下
 | Success | Boolean | true | 请求是否成功。 |
 | ErrorMessage | String | UnknownError | 错误信息。 |
 | ErrorCode | String | UnknownError | 错误码。 |
-| DBTopology | object |  | 拓扑信息 |
+| DBTopology | object |   | 拓扑信息 |
 | LogicDbId | Long | 1234 | 逻辑库ID。 |
 | LogicDbName | String | logic db test _ _ | 逻辑库名。 |
 | SearchName | String | logic db test _ _ | 逻辑库搜索名。 |
 | Alias | String | logic db test _ _ | 逻辑库别名。 |
 | DbType | String | polardb | 数据库类型。 |
 
-数据管理
-
 | EnvType | String | dev | 逻辑库的环境类型，取值： product：生产环境 dev：开发环境 pre：预发环境 test：测试环境 sit：SIT环境 uat：UAT环境 pet：压测环境 stag：STAG环境 |
 |---|---|---|---|
-| DBTopologyInf oList | Array of DBTopologyInf o |  | 分库拓扑信息列表。 |
+| DBTopologyInf oList | Array of DBTopologyInf o |   | 分库拓扑信息列表。 |
 | DbId | Long | 423532 | 库ID。 |
 | SchemaName | String | db test@rm- _ xxx:3306 | 库名。 说明若数据库类型是PG系列，此处为PG模式名。 |
 | CatalogName | String | def | 数据库目录名。 说明若数据库类型为PG系列，此处表示PG数据库名。 |
@@ -13638,8 +13822,6 @@ DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下
 | EnvType | String | dev | 逻辑库的环境类型，取值： product：生产环境 dev：开发环境 pre：预发环境 test：测试环境 sit：SIT环境 uat：UAT环境 pet：压测环境 stag：STAG环境 |
 | InstanceId | Long | 4325325 | 实例ID。 |
 | RegionId | String | cn-hangzhou | 实例所在地域。 |
-
-数据管理
 
 | InstanceResou rceId | String | rm-xxx | 实例资源ID，取值： RDS：阿里云数据库实例ID ECS OWN：阿里云ECS实例ID _ PUBLIC OWN：空 _ VPC ID：VPC ID _ GATEWAY：数据库网关实例ID |
 |---|---|---|---|
@@ -13653,7 +13835,7 @@ DagId NodeName NodeType: 25 NodeParam GraphParam NodeContent: 样例如下
 http(s)://dms-enterprise.aliyuncs.com/?Action=GetDBTopology &Tid=43215
 ```
 
-&公共请求参数正常返回示例 `XML` 格式数据管理
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <RequestId>C5B8E84B-42B6-4374-AD5A-6264E1753378</RequestId> <Success>true</Success> <ErrorMessage>UnknownError</ErrorMessage> <ErrorCode>UnknownError</ErrorCode> <DBTopology>
@@ -13678,10 +13860,15 @@ HTTP/1.1 200 OK Content-Type:application/xml <RequestId>C5B8E84B-42B6-4374-AD5A-
 </DBTopology>
 ```
 
-`JSON` 格式数据管理
+`JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
   "RequestId" : "C5B8E84B-42B6-4374-AD5A-6264E1753378",
   "Success" : true,
   "ErrorMessage" : "UnknownError",
@@ -13705,15 +13892,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "InstanceResourceId" : "rm-xxx",
       "InstanceSource" : "RDS"
     } ]
-  }
-}
 ```
 
-数据管理
+`}` `}`
 
-## 附录
+## 7 附录
 
-### NodeType参数说明
+### 7.1 NodeType参数说明
 
 | 任务节点类型 | NodeType |
 |---|---|
@@ -13727,9 +13912,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | SSH远程命令 | 45 |
 | Impala | 46 |
 
-### STS概要
+### 7.2 STS概要
 
-#### 什么是STS
+#### 7.2.1 什么是STS
 
 阿里云STS（Security Token Service）是阿里云提供的一种临时访问权限管理服务。RAM提供RAM用户和RAM角色两种身份。其中，RAM角色不具备永久身份凭证，而只能通过STS获取可以自定义时效和访问权限的临时身份凭证，即安全令牌（STS Token）。
 
@@ -13739,9 +13924,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **产品优势**
 
-使用STS Token，减少长期访问密钥（Accesskey）泄露的风险。 STS Token具有时效性，可以自定义有效期，到期后将自动失效，无需定期轮换。 可以为STS Token绑定自定义权限策略，提供更加灵活和精细的云资源授权。 数据管理
+使用STS Token，减少长期访问密钥（Accesskey）泄露的风险。 STS Token具有时效性，可以自定义有效期，到期后将自动失效，无需定期轮换。 可以为STS Token绑定自定义权限策略，提供更加灵活和精细的云资源授权。
 
-#### AssumeRole
+#### 7.2.2 AssumeRole
 
 RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证STS Token。该接口中RAM用户扮演的是可信实体为阿里云账号类型的RAM角色。
 
@@ -13760,8 +13945,6 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 |---|---|---|---|
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
-
-数据管理
 
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | 访问密钥ID。 |
 |---|---|---|---|
@@ -13786,13 +13969,13 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
     </dependency>
 ```
 
+**调用API获取STS AccessKey三元组**
+
 以下代码示例为通过调用 `Sts::AssumeRole::2015-04-01` 获取STS AccessKey三元组信息。
 
 ```java
 package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType;
 ```
-
-数据管理
 
 ```java
 import com.aliyuncs.profile.DefaultProfile; import org.apache.commons.lang3.StringUtils; public class STSAccessKeyDemo {
@@ -13856,14 +14039,13 @@ vpc.${global:region}.${global:internet-domain}
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **调用示例**
 
-下列代码以调用ECS的 `DescribeZones` 接口为示例。 数据管理
+下列代码以调用ECS的 `DescribeZones` 接口为示例。
 
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -13902,13 +14084,13 @@ stsAk、stsSk
         request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,资源集`id`
+`//` 非必填`,`资源集`id`
 
 ```
         // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,组织`id`
+`//` 必填`,`组织`id`
 
 ```java
         request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -13921,12 +14103,7 @@ stsAk、stsSk
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
-
-数据管理
 
 **错误码**
 

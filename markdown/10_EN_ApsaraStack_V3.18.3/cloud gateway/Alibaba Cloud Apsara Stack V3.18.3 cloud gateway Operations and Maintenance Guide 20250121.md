@@ -5,7 +5,7 @@ doc_version: "20250121"
 pdf_pages: 77
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 cloud gateway Operations and Maintenance Guide 20250121.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20cloud%20gateway%20Operations%20and%20Maintenance%20Guide%2020250121.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 cloud gateway Operations and Maintenance Guide 20250121
@@ -79,6 +79,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The URL, username, and password that are required to log on to the Apsara Uni-manager Operations Console are obtained from the deployment personnel or administrators. The URL of the Apsara Uni-manager Operations Console is in the format of regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the URL. Then, press the Enter key.
 
@@ -104,9 +107,12 @@ You can connect bare metal instances to a virtual private cloud (VPC) by using C
 
 On the Instance Management tab, you can add cloud access gateway devices to the cloud platform for centralized management. You can also view information about cloud access gateways, such as the cloud access gateway name, internal Border Gateway Protocol (iBGP) role, and creation time.
 
+**Procedure**
+
 ## 1 Log on to the Apsara Uni-manager Operations Console.
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the **Instance Management** tab, click the **Scan for New Devices** tab.
 5. Find the device that you want to manage and click **Manage** in the **Actions** column.
@@ -135,6 +141,7 @@ e to a VPC
 **View cloud access gateways**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. On the **Instance Management** tab, click the **Display Devices** tab to view the cloud
 access gateway details.
@@ -155,7 +162,11 @@ e to a VPC
 ### 2.2 View the operation logs
 
 To meet O&M requirements, you can view the API records and results that are managed by bare metal instances and called by the Apsara Uni-manager Operations Console. The API records and results are provided by the cloud access gateway.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Operation Logs** tab.
 5. Optional. In the Start/End Time section, configure the **Start Date** and **End Date**
@@ -218,7 +229,11 @@ e to a VPC
 **the instance to a VPC**
 
 You can create a bare metal instance and connect the instance to a virtual private cloud (VPC) based on O&M requirements. After the bare metal instance is connected to the VPC, you can access the bare metal instance over the VPC.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Bare Metal Network Management** tab.
 5. Click **Create Bare Metal Instance**. In the dialog box that appears, set **Bare Metal**
@@ -251,7 +266,11 @@ After you close the connection between a bare metal instance and a virtual priva
 **Prerequisites**
 
 A bare metal instance is added to a VPC.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Bare Metal Network Management** tab.
 5. Find the bare metal instance and click **Close the Connection to VPC** or **Delete Instance**.
@@ -272,7 +291,11 @@ Cloud access gateways work together with bare metal instance management. Bare me
 **Prerequisites**
 
 A bare metal instance is added to a VPC.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Bare Metal Network Management** tab.
 5. Find the bare metal instance whose **IP address** you want to manage and click **Manage** in
@@ -299,7 +322,10 @@ In O&M emergency scenarios, you can use the feature to add the physical port of 
 > The feature can only be used to connect the bare metal instance to the access gateway port. You cannot use the feature to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the product team.
 > In most cases, you cannot use the feature to apply for a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to enable the network of the bare metal instance.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **O&M Settings** tab.
 5. In the left-side drop-down list, select **Apply for Bare Metal in VPC** .
@@ -334,6 +360,7 @@ In O&M emergency scenarios, you can use the feature to disconnect the physical p
 
 e to a VPC
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **O&M Settings** tab.
 5. In the left-side drop-down list, select **Release Bare Metal in VPC** .
@@ -357,6 +384,7 @@ After the configurations are delivered, the **Success** message appears. In this
 
 You can view the bandwidth of the Express Connect circuit when the access gateway is connected to a VPC in the system based on your O&M requirements. e to a VPC
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **O&M Settings** tab.
 5. In the left-side drop-down list, select **View Express Connect Circuit Bandwidth**.
@@ -400,7 +428,11 @@ In O&M emergency scenarios, you can use the feature to modify the bandwidth of t
 **Warning**
 
 The modification may affect your workloads. Unauthorized operations are prohibited. In addition, the modification must be performed under the guidance of technical support.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **O&M Settings** tab.
 5. In the left-side drop-down list, select **Change Express Connect Circuit Bandwidth**.
@@ -425,7 +457,11 @@ If the parameters are valid, click **Confirm**. After the configurations are del
 ### 3.1 CPN diagnosis
 
 The Computing Platform Network (CPN) diagnosis feature checks the nodes in CPN and displays the diagnostic items, diagnostic details, and diagnostic results to help administrators better understand and manage network performance and troubleshoot issues.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Diagnosis**.
 4. Click **Create a diagnosis**, select a **cluster** and a **test node**, and then click **OK**.
@@ -526,7 +562,11 @@ The following table describes the operations that you can perform on the **CPN p
 #### 3.3.1 Manage RDMA devices
 
 This topic describes how to manage Remote Direct Memory Access (RDMA) devices, including how to scan for and delete RDMA devices.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Select the **RDMA Device Management** tab.
@@ -538,7 +578,11 @@ down list. b. In the search box, enter the device name or manufacturer, or selec
 #### 3.3.2 Manage RDMA device policies
 
 This topic describes how to configure policies for Remote Direct Memory Access (RDMA) devices to manage RDMA devices in a centralized manner.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Click the **RDMA device policy management** tab.
@@ -575,6 +619,7 @@ On the **RDMA device policy management** tab, you can perform the following oper
 
 This topic describes how to manage interface policies, such as policy configuration, query, and retry.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Access Gateway**.
 4. Click the **RDMA device interface policy management** tab.
@@ -611,7 +656,11 @@ To perform O&M on Remote Direct Memory Access (RDMA) network interface cards (NI
 
 **RDMA**: RDMA is a high-speed network technology developed to reduce the delay of server-
 side data processing in network transmission. RDMA transfers data directly into the memory of a computer over the RDMA network and enables direct memory access between hosts without affecting the operating system. This increases the data transfer speed and reduces the CPU load.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > RDMA**
 **Card O&M**.
 4. In the upper-right corner of the page, select **Data Source** and **Cluster**. You can set Data
@@ -648,7 +697,11 @@ Source only to CPN.
 #### 3.5.1 CPN topology
 
 This topic describes how to query the topology information about clusters and nodes.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Topology**.
 4. In the upper-left corner of the page, select **Cluster** and **Nodes**.
@@ -670,7 +723,10 @@ After the topology is displayed, you can perform the following operations:
 
 > This topic describes how to view network devices and monitoring and O&M information in the cloud platform.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Management > CPN Network Element**.
 4. Select a data center from the drop-down list and enter a network element name in the
@@ -701,7 +757,11 @@ On the **CPN network element** page, you can also perform the following operatio
 #### 3.6.1 CPN host monitoring dashboard
 
 You can use this feature to monitor the key metrics of remote direct memory access (RDMA) networks on the server side of the intelligent computing network. The metrics include bandwidth, packet loss rate, and traffic control.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Host Monitoring**.
 4. In the upper-right corner of the CPN host monitoring dashboard page, click **Variable**
@@ -717,7 +777,11 @@ icon to the left of each metric to view details.
 #### 3.6.2 CPN switch dashboard
 
 You can use this feature to monitor the running status metrics of vSwitches. The metrics include bandwidth, packet loss, and traffic control.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > CPN Switcher**.
 4. In the upper-right corner of the CPN switch dashboard page, click **Variable Filtering**. In
@@ -730,7 +794,11 @@ icon to the left of each metric to view details.
 #### 3.6.3 NAK packet analysis tool
 
 You can use this tool to collect NAK packets in real time. After the packets are aggregated and analyzed, a matrix diagram is generated to help you quickly identify abnormal nodes.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > CPN Management > CPN**
 **Network Monitoring > NAK Message Analysis Tool**.
 4. In the upper-right corner of the NAK message Analysis Tool page, click **Variable Filtering**.
@@ -749,7 +817,11 @@ You can use access gateways such as dedicated computing host switches (CHSWs) on
 ### 4.1 Manage access gateways
 
 On the Instance Management tab, you can view information about access gateways on the computing power platform, such as the access gateway name, internal Border Gateway Protocol (IBGP) role, and creation time.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network > Cloud Gateways**.
 4. Click the **Instance Management** tab. Then, click the **Scan for New Devices** tab.
 i. Find the device that you want to manage and click **Manage** in the **Actions** column. Select the devices that you want to manage and click **Batch Manage** below the device list. puting servers to VPCs ii. Configure the **IBGP Role** parameter for the device. The IBGP role specifies the role of the access gateway on the computing power platform in the environment. Valid values: Client, Deploy Client and RR on A Device, and Deploy RR on a Device.
@@ -788,7 +860,11 @@ puting servers to VPCs
 ### 4.2 Manage operation logs
 
 To meet O&M requirements, you can view the records and results of API operations that are managed by bare metal instances and called by the Apsara Uni-manager Operations Console. The API records and results are provided by the access gateway of the computing power platform.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Operation Logs** tab.
 5. Optional. In the Start/End Time section, configure the **Start Date** and **End Date**
@@ -816,7 +892,11 @@ puting servers to VPCs
 **metal instances**
 
 On the Bare Metal Network Management tab, view information about the bare metal instance that is connected to a virtual private cloud (VPC) by using the access gateway on the computing power platform.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Cloud Gateways**.
 4. Click the **Bare Metal Network Management** tab.
 5. Create a bare metal instance and add it to a VPC.
@@ -866,7 +946,11 @@ In O&M emergency scenarios, you can use the feature to add the physical port of 
 > The feature can only be used to connect the bare metal instance to the access gateway port. You cannot use the feature to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the product team.
 > In most cases, you cannot use the feature to apply for a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to enable the network of the bare metal instance.
 
-i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation** > **Networking** > **Network** iii. In the left-side navigation pane, choose **Basic Network** > **Computing Access**
+**Procedure**
+
+i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
+iii. In the left-side navigation pane, choose **Basic Network** > **Computing Access**
 **Gateway**.
 iv. Click the **O & M configuration** tab. puting servers to VPCs v. Select **Apply for Bare Metal in VPC** from the drop-down list in the upper-left corner of the tab. vi. Configure the parameters described in the following table.
 
@@ -891,7 +975,10 @@ In O&M emergency scenarios, you can use the feature to disconnect the physical p
 > The feature can only be used to disconnect the bare metal instance from the access gateway port. You cannot use the feature to perform operations on the bare metal instance. To configure the network port, IP address, and routing information of the bare metal instance, contact the product team.
 > In most cases, you cannot use the feature to release a bare metal instance in a VPC. You can use the bare metal controller to call an API operation to delete the network of the bare metal instance.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Release Bare Metal in VPC** from the drop-down list in the upper-left corner of the
@@ -921,7 +1008,11 @@ In O&M emergency scenarios, you can use the feature to delete route table entrie
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support personnel. Otherwise, normal business operations will be affected.
 
 In most scenarios, you cannot use this feature to delete a VPC route table entry. This operation is only used for emergency scenarios. You can perform this operation to delete only one route table entry at a time. To delete multiple route table entries, you must perform this operation multiple times.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 puting servers to VPCs
@@ -946,7 +1037,10 @@ In emergency O&M scenarios, you can use this feature to delete the router interf
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support personnel. Otherwise, normal business operations will be affected.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete Router Interface** from the drop-down list in the upper-left corner of the tab.
@@ -967,6 +1061,8 @@ are delivered, the **Success** message appears.
 In O&M emergency scenarios, you can use this feature to delete a virtual border router (VBR).
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support. Otherwise, normal business operations will be affected.
+
+**Procedure**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
 puting servers to VPCs
@@ -990,7 +1086,10 @@ In O&M emergency scenarios, you can use this feature to delete an Express Connec
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support. Otherwise, normal business operations will be affected.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete Express Connect Circuit** from the drop-down list in the upper-left corner of
@@ -1016,7 +1115,10 @@ In O&M emergency scenarios, you can use this feature to delete all resources. Th
 
 > **Warning:** This operation is only for emergency scenarios and must be performed under the guidance of technical support. Otherwise, normal business operations will be affected.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. Select **Delete ALL Resources** from the drop-down list in the upper-left corner of the tab.
@@ -1053,7 +1155,11 @@ puting servers to VPCs
 **Connect circuit**
 
 You can view the bandwidth of the Express Connect circuit when the access gateway is connected to a virtual private cloud (VPC) based on your O&M requirements.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View Express Connect Circuit Bandwidth**.
@@ -1089,7 +1195,11 @@ puting servers to VPCs
 #### 4.4.9 View trunk usage
 
 You can view trunk usage to obtain the latest information about the usage of hardware ports at the earliest opportunity.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View Trunk Usage**.
@@ -1103,7 +1213,11 @@ click **Search**. The trunk state can be Idle, Used, Creating, or Deleting. puti
 #### 4.4.10 View BM VPN usage
 
 You can view information about the BM VPN that is assigned to a computing access gateway.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** **>** **Networking** **>** **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View BM VPN Usage**.
@@ -1114,7 +1228,11 @@ a trunk state, and then click **Search**. The trunk state can be Succeeded or Cr
 #### 4.4.11 View BD usage
 
 You can view the BD usage to learn about the BD configuration distribution at the earliest opportunity.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **View BD Usage**.
@@ -1128,7 +1246,10 @@ You can use this feature to check whether the initialization configuration of vS
 
 > **Note:** The feature only checks the initialization status and whether the initialization configuration is successful. The feature does not perform operations on bare metal instances.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **Check the Initialization Configuration**.
@@ -1149,7 +1270,10 @@ You can use this feature to identify abnormal operations and scan the vSwitches 
 
 > **Note:** The feature only checks whether the route configuration of a bare metal instance is valid. The feature does not perform operations on the instance.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **Check the Route Configuration**.
@@ -1174,7 +1298,11 @@ You can use this feature to check the gateways of vSwitches in scenarios where b
 **Note**
 
 The feature only checks the gateway information of vSwitches. The feature does not perform operations on bare metal instances.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Basic Network** > **Computing Access Gateway**.
 4. Click the **O & M configuration** tab.
 5. In the left-side drop-down list, select **Display the Information of Bare Metal Network**
@@ -1201,7 +1329,11 @@ Traffic visualization can monitor physical and virtual networks on the cloud pla
 
 ### 5.1 Configure traffic visualization
 
-Before you use traffic visualization, you must configure items such as analyzers, collection rules, and scenarios to collect, process, and analyze traffic based on your business requirements. The following procedure shows how to initialize traffic visualization.
+Before you use traffic visualization, you must configure items such as analyzers, collection rules, and scenarios to collect, process, and analyze traffic based on your business requirements.
+
+**Procedure**
+
+The following procedure shows how to initialize traffic visualization.
 1. For more information about how to add an analyzer and an analysis port, see Manage
 analyzers.
 2. For more information about how to add a collection rule, see Manage collection rules.
@@ -1218,6 +1350,7 @@ on the port for collection and analysis.
 **Manage analyzers**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. Click the **Analyze Device Management** tab.
 
@@ -1235,6 +1368,7 @@ on the port for collection and analysis.
 **Manage analysis ports**
 
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. Click the **Analyze Device Management** tab.
 
@@ -1254,7 +1388,11 @@ A collection rule defines a data source and a traffic analysis mode. Analysis de
 **Prerequisites**
 
 Before you create a collection rule, make sure that an analyzer and an analysis port are created. For more information, see Manage analysis devices.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visual Settings**.
 4. Click the **Collection rule management** tab.
 
@@ -1317,7 +1455,11 @@ You can associate different collection rules with different scenarios based on y
 **Prerequisites**
 
 Before you create an analysis scenario, make sure that collection rules are added. For more information about how to add a collection rule, see Manage collection rules.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Visualization Settings**.
 4. Click the **Scenario Management** tab.
 
@@ -1336,7 +1478,11 @@ The visualized overview displays the traffic of virtual networks and boundary ph
 **Prerequisites**
 
 The initial configuration of traffic visualization is completed. For more information, see Configure traffic visualization.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
+**Operations Console**.
 3. In the left-side navigation pane, choose **Traffic Visualization** > **Overview**.
 4. In the upper-right corner of the page, select the start time and end time to view the traffic
 within the specified time range.

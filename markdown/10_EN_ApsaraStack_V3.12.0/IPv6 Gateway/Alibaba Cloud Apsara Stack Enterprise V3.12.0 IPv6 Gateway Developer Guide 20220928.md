@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 53
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 IPv6 Gateway Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20IPv6%20Gateway%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 IPv6 Gateway Developer Guide 20220928
@@ -227,6 +227,8 @@ JSON format `{`
       /*Return Result Data*/
 ```
 
+`}`
+
 ## 5 IPv6 Gateway
 
 ### 5.1 CreateIpv6Gateway
@@ -274,6 +276,8 @@ Sample responses `XML` format
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
  "Ipv6GatewayId":"ipv6gw-hp3y0l3ln89j8qsw****"
 ```
+
+`}`
 
 ### 5.2 DescribeIpv6Gateways
 
@@ -397,7 +401,7 @@ Sample responses `XML` format
     "Ipv6GatewayId":"ipv6gw-hp33p10bdbt77xscd****"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageNumber":1,
@@ -405,6 +409,8 @@ Sample responses `XML` format
  "PageSize":10,
  "RequestId":"E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
 ```
+
+`}`
 
 ### 5.3 DescribeIpv6GatewayAttribute
 
@@ -475,6 +481,8 @@ Sample responses `XML` format
  "VpcId":"vpc-hp3kzilwd9yflvfbg****",
  "Ipv6GatewayId":"ipv6gw-hp33p10bdbt77vfbg****"
 ```
+
+`}`
 
 ### 5.4 ModifyIpv6GatewayAttribute
 
@@ -555,6 +563,8 @@ Sample responses `XML` format
  "RequestId":"9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
 
+`}`
+
 ### 5.6 DeleteIpv6Gateway
 
 You can call this operation to delete an IPv6 gateway. API description Before you can delete an IPv6 gateway of the enterprise or enhanced enterprise type, you must delete the egress-only rules of the IPv6 gateway. Request parameters
@@ -590,6 +600,8 @@ Sample responses `XML` format
 ```json
  "RequestId":"E9A8AABE-A84B-4AF2-A68A-8E2EA190E7AE"
 ```
+
+`}`
 
 ### 5.7 CreateIpv6EgressOnlyRule
 
@@ -640,6 +652,8 @@ Sample responses `XML` format
  "RequestId":"9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75",
  "Ipv6EgressRuleId":"ipv6py-hp3w98rmlbqp01245****"
 ```
+
+`}`
 
 ### 5.8 DescribeIpv6EgressOnlyRules
 
@@ -724,7 +738,7 @@ Sample responses `XML` format
     "InstanceType":"Ipv6Address"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageNumber":1,
@@ -732,6 +746,8 @@ Sample responses `XML` format
  "PageSize":10,
  "RequestId":"D1FFB517-D1A7-49BA-9169-C7E7194A9B55"
 ```
+
+`}`
 
 ### 5.9 DeleteIpv6EgressOnlyRule
 
@@ -775,6 +791,8 @@ Sample responses `XML` format
 ```json
  "RequestId":"4E40EAF1-783D-4C05-948D-DA0426C398C1"
 ```
+
+`}`
 
 ### 5.10 AllocateIpv6InternetBandwidth
 
@@ -821,6 +839,8 @@ Sample responses `XML` format
  "InternetBandwidthId":2
 ```
 
+`}`
+
 ### 5.11 ModifyIpv6InternetBandwidth
 
 You can call this operation to modifiy the public network bandwidth of an IPv6 address. Request parameters
@@ -861,6 +881,8 @@ Sample responses `XML` format
 ```json
  "RequestId":"D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
+
+`}`
 
 ### 5.12 DeleteIpv6InternetBandwidth
 
@@ -1074,12 +1096,14 @@ Sample success responses `XML` format
     "RealBandwidth":0
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageSize":10,
  "RequestId":"AA4486A8-B6AE-469E-AB09-820EF8ECFA2B"
 ```
+
+`}`
 
 ### 5.14 ModifyIpv6AddressAttribute
 
@@ -1119,7 +1143,7 @@ Sample responses `XML` format
  "RequestId":"D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
 
-using Asapi
+`}` using Asapi
 
 ## 6 Make SDK calls by using Asapi
 
@@ -1252,6 +1276,8 @@ to log on to the ASCM console.
     String result = client.doPost(endpoint, parameters);
 ```
 
+`}` `}`
+
 ### 6.9 SDK for Node.js
 
 This topic describes how to obtain and use the Apsara Stack SDK for Node.js. Prerequisites You must have an authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) to use the Apsara Stack SDK for Node.js. For more information, see Obtain an AccessKey pair. You have obtained the endpoint of Asapi. For more information about how to obtain the endpoint of Asapi, see Obtain the endpoint of Asapi. You have obtained the region ID. For more information, see Query the region ID. Add dependencies
@@ -1324,3 +1350,5 @@ sponse(request);
 } catch (Exception e) {
     e.printStackTrace();
 ```
+
+`}`

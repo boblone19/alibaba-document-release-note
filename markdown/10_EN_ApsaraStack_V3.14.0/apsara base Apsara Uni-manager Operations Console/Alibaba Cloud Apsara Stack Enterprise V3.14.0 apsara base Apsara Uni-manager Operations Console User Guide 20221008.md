@@ -5,7 +5,7 @@ doc_version: "20221008"
 pdf_pages: 355
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 apsara base Apsara Uni-manager Operations Console User Guide 20221008.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E4%BA%91%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20apsara%20base%20Apsara%20Uni-manager%20Operations%20Console%20User%20Guide%2020221008.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 apsara base Apsara Uni-manager Operations Console User Guide 20221008
@@ -398,7 +398,7 @@ see User management.
 
 ### 2.2 Log on to the Apsara Uni-manager Operations Console
 
-manager Operations Console This topic describes how to log on to the Apsara Uni-manager Operations Console. Prerequisites The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
+manager Operations Console This topic describes how to log on to the Apsara Uni-manager Operations Console. Prerequisites The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the
 Enter key.
@@ -433,7 +433,7 @@ Console homepage This topic describes the basic operations on and features of th
 
 ### 2.4 Instructions for the homepage
 
-The homepage allows you to view the statistics and summary data of Apsara Stack alerts, physical devices, and cloud service inventory.
+The homepage allows you to view the statistics and summary data of Apsara Stack alerts, physical devices, and cloud service inventory. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Homepage.
 3. View the homepage. The homepage consists of the opsadmin, Alert Overview, Resource
@@ -479,7 +479,7 @@ This topic describes the default roles for the Apsara Uni-manager Operations Con
 
 #### 3.2.1 Logon policies
 
-As an administrator, you can configure logon policies to control what times and IP addresses are valid for logon. Context The system provides a default policy. You can configure logon policies based on your needs to better control the read and write permissions of users and improve the system security.
+As an administrator, you can configure logon policies to control what times and IP addresses are valid for logon. Context The system provides a default policy. You can configure logon policies based on your needs to better control the read and write permissions of users and improve the system security. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Securit y Policies > Logon Policy.
@@ -497,7 +497,7 @@ Modify a policy Find the policy that you want to modify and click Modif y in the
 
 #### 3.2.2 Physical server passwords
 
-The Server Password module allows you to configure and manage passwords, as well as query the historical passwords of all physical servers in the Apsara Stack environment. Context Server password management covers passwords of all the servers in the Apsara Stack environment. The system automatically collects information of all the servers in the Apsara Stack environment. The server password is periodically updated. You can configure the expiration period and length of passwords. You can manually update the passwords of one or more servers at a time. The system records the history of server password updates. You can search for server passwords by product, hostname, or IP address.
+The Server Password module allows you to configure and manage passwords, as well as query the historical passwords of all physical servers in the Apsara Stack environment. Context Server password management covers passwords of all the servers in the Apsara Stack environment. The system automatically collects information of all the servers in the Apsara Stack environment. The server password is periodically updated. You can configure the expiration period and length of passwords. You can manually update the passwords of one or more servers at a time. The system records the history of server password updates. You can search for server passwords by product, hostname, or IP address. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Securit y > Server Password.
@@ -511,7 +511,7 @@ Offline Backup is used to back up the key metadata of Apsara Stack. Only the met
 
 #### 3.3.1 Add a backup product
 
-The Product Management module allows you to add product backup information. Only the metadata of Apsara Distributed File System can be backed up.
+The Product Management module allows you to add product backup information. Only the metadata of Apsara Distributed File System can be backed up. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Product Management .
@@ -534,7 +534,7 @@ Result You can view the added product on the Backup Conf igurat ions page.
 
 #### 3.3.2 Configure backup
 
-After you add a product backup item, you must configure the backup in the Apsara Uni-manager Operations Console. Prerequisites A product backup item is added. For more information about how to add a product backup item, see Add a backup product. Context The backup item is the minimum unit for backup. You can back up the metadata of Apsara Distributed File System for different services, such as ecs pangu, ots pangu, oss pangu, and ads pangu.
+After you add a product backup item, you must configure the backup in the Apsara Uni-manager Operations Console. Prerequisites A product backup item is added. For more information about how to add a product backup item, see Add a backup product. Context The backup item is the minimum unit for backup. You can back up the metadata of Apsara Distributed File System for different services, such as ecs pangu, ots pangu, oss pangu, and ads pangu. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Backup Conf igurat ions.
@@ -561,7 +561,7 @@ In the left side of the Backup Configurations page, the current backup configura
 
 #### 3.3.3 View the backup details
 
-During the backup, you can view the backup details of each backup item on the Apsara Uni-manager Operations Console.
+During the backup, you can view the backup details of each backup item on the Apsara Uni-manager Operations Console. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Of f line Backup > Backup Det ails.
@@ -573,7 +573,7 @@ to be backed up, start time, and status. The backup status includes Not st art e
 
 #### 3.3.4 Configure a backup server
 
-You can configure a backup server for the subsequent storage of backup files.
+You can configure a backup server for the subsequent storage of backup files. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Backup Server Conf igurat ions.
@@ -608,7 +608,7 @@ A transfer server is required to store one-time backup data and backup scripts o
 
 ##### 3.3.5.2 Collect the Apsara Distributed File System information of each product
 
-information of each product The Products module allows you to collect the Apsara Distributed File System information of products to be backed up, which helps add the backup product information to the Apsara Uni-manager Operations Console. Context In this topic, product names are customized as oss, ecs, ads, and ots, and the information of these products are collected. The products for which you are about to collect Apsara Distributed File System information are subject to the on-site environment.
+information of each product The Products module allows you to collect the Apsara Distributed File System information of products to be backed up, which helps add the backup product information to the Apsara Uni-manager Operations Console. Context In this topic, product names are customized as oss, ecs, ads, and ots, and the information of these products are collected. The products for which you are about to collect Apsara Distributed File System information are subject to the on-site environment. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, click O&M. iii. In the left-side navigation pane, choose Product Management > Product s. iv. In the Apsara St ack O&M section, choose Basic O&M > Apsara Inf rast ruct ure Management Framework.
 
@@ -636,7 +636,7 @@ product. The recorded results are similar to those in the following table.
 
 ##### 3.3.5.3 Configure a backup server
 
-The Backup Server Configurations module allows you to configure parameters related to a backup server.
+The Backup Server Configurations module allows you to configure parameters related to a backup server. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Backup Server Conf igurat ions.
@@ -657,7 +657,7 @@ The following table describes the parameters.
 
 ##### 3.3.5.4 Add a backup product
 
-The Product Management module allows you to add backup product information.
+The Product Management module allows you to add backup product information. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Product Management .
@@ -683,7 +683,7 @@ Result You can view the added product on the Backup Conf igurat ions page.
 
 ##### 3.3.5.5 Configure backup parameters
 
-After you add backup items, you must configure the backup in the Apsara Uni-manager Operations Console.
+After you add backup items, you must configure the backup in the Apsara Uni-manager Operations Console. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Backup Conf igurat ions.
@@ -707,7 +707,7 @@ After you add backup items, you must configure the backup in the Apsara Uni-mana
 
 ##### 3.3.5.6 View the backup details
 
-After you configure backup items, you can check whether the backup items function normally in the Apsara Uni-manager Operations Console.
+After you configure backup items, you can check whether the backup items function normally in the Apsara Uni-manager Operations Console. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Of f line Backup > Backup Det ails.
@@ -722,7 +722,7 @@ The Log Cleanup module allows you to clean up logs from specified log files in t
 
 #### 3.4.1 Import container or physical server log cleanup rules
 
-cleanup rules If you have configured log cleanup rules on your computer, you can batch import multiple cleanup rules for containers or physical servers. Context Before you import a cleanup rule, take note of the following items: Imported rules are incrementally added. You must check the values of Product, Service, ServerRole, SrcPath, MatchFile, Threshold, and Method to determine whether a cleanup rule already exists. If all values in the environment are the same as the values specified in the rule to be imported, the rule already exists. If a rule already exists, it is not imported. Before you import a rule, you must contact technical support to obtain the encryption sequence. After you have imported a rule, special characters such as spaces, carriage returns, line feeds, and tabs in the rule are automatically deleted. The maximum disk usage range specified by a rule is [0%,100%], and the value before the percent sign (%) must be an integer. Otherwise, the rule is automatically filtered out when you import it. We recommend that you set the maximum disk usage to 75%. Make sure that the cleanup methods specified by rules are tested and can be normally executed. Otherwise, exceptions may occur when you use these methods to clean up logs.
+cleanup rules If you have configured log cleanup rules on your computer, you can batch import multiple cleanup rules for containers or physical servers. Context Before you import a cleanup rule, take note of the following items: Imported rules are incrementally added. You must check the values of Product, Service, ServerRole, SrcPath, MatchFile, Threshold, and Method to determine whether a cleanup rule already exists. If all values in the environment are the same as the values specified in the rule to be imported, the rule already exists. If a rule already exists, it is not imported. Before you import a rule, you must contact technical support to obtain the encryption sequence. After you have imported a rule, special characters such as spaces, carriage returns, line feeds, and tabs in the rule are automatically deleted. The maximum disk usage range specified by a rule is [0%,100%], and the value before the percent sign (%) must be an integer. Otherwise, the rule is automatically filtered out when you import it. We recommend that you set the maximum disk usage to 75%. Make sure that the cleanup methods specified by rules are tested and can be normally executed. Otherwise, exceptions may occur when you use these methods to clean up logs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Log Cleanup > Rules.
@@ -733,7 +733,7 @@ cleanup rules. After you import the rules, corresponding execution plans are asy
 
 #### 3.4.2 Export container or physical server log cleanup rules
 
-cleanup rules You can batch export multiple container or physical server log cleanup rules.
+cleanup rules You can batch export multiple container or physical server log cleanup rules. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Log Cleanup > Rules.
@@ -745,7 +745,7 @@ Click Export to export all cleanup rules. In the upper part of the page, select 
 
 #### 3.4.3 Modify a log cleanup rule
 
-You can modify log cleanup rules to suit your business needs.
+You can modify log cleanup rules to suit your business needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Log Cleanup > Rules.
@@ -765,7 +765,7 @@ clean up logs that match the cleanup rule.
 
 #### 3.4.4 Delete a log cleanup rule
 
-You can delete log cleanup rules that are no longer needed.
+You can delete log cleanup rules that are no longer needed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Log Cleanup > Rules.
@@ -846,7 +846,7 @@ Find the container or physical server for which you want to clean up logs and cl
 
 #### 3.4.7 Configure automatic cleanups for container or physical server logs
 
-container or physical server logs You can configure automatic cleanups for container or physical server logs that meet the specified cleanup rules. Context Existing execution plans are cleaned up at 02:00 every day and new execution plans are generated based on the current cleanup rules. If you turn on Aut omat ic Delet ion or enable automatic cleanup, the system cleans up the container or physical server logs that meet the cleanup rules based on execution plans at 02:30 every day.
+container or physical server logs You can configure automatic cleanups for container or physical server logs that meet the specified cleanup rules. Context Existing execution plans are cleaned up at 02:00 every day and new execution plans are generated based on the current cleanup rules. If you turn on Aut omat ic Delet ion or enable automatic cleanup, the system cleans up the container or physical server logs that meet the cleanup rules based on execution plans at 02:30 every day. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Log Cleanup > Rules.
@@ -974,7 +974,7 @@ the Act ions column.
 
 #### 3.5.3 Manage roles
 
-You can customize roles in the Apsara Uni-manager Operations Console to implement more flexible and efficient permission control. Context A role is a collection of access permissions. You can assign different roles to different users to meet requirements for system access control. Roles are classified into basic roles and custom roles. Basic roles, also known as atomic roles, are preset by the Open Application Model (OAM) system. You cannot modify or delete these roles. Custom roles can be modified and deleted.
+You can customize roles in the Apsara Uni-manager Operations Console to implement more flexible and efficient permission control. Context A role is a collection of access permissions. You can assign different roles to different users to meet requirements for system access control. Roles are classified into basic roles and custom roles. Basic roles, also known as atomic roles, are preset by the Open Application Model (OAM) system. You cannot modify or delete these roles. Custom roles can be modified and deleted. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Role Management .
@@ -1003,7 +1003,7 @@ The Menu Settings module allows you to add, hide, modify, or delete a menu based
 
 ##### 3.5.4.1 Add a level-1 menu
 
-This topic describes how to add a level-1 menu.
+This topic describes how to add a level-1 menu. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Menu Set t ings.
@@ -1036,7 +1036,7 @@ Result After you have added a level-1 menu, you can view the menu in the menu li
 
 ##### 3.5.4.2 Add a submenu
 
-This topic describes how to add a submenu.
+This topic describes how to add a submenu. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Menu Set t ings.
@@ -1071,6 +1071,7 @@ This topic describes how to hide a menu. Prerequisites
 
 > Not ice Only custom menus and submenus can be hidden. After a menu or submenu is hidden, submenus beneath it are also hidden.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Menu Set t ings.
@@ -1084,6 +1085,7 @@ After you add a menu or submenu, you can modify its configurations and sorting. 
 
 > Not ice Only custom menus and submenus can be modified. Built-in menus and submenus can only be sorted.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Menu Set t ings.
@@ -1098,6 +1100,7 @@ This topic describes how to delete menus or submenus that are no longer needed. 
 
 > Not ice Only custom menus and submenus can be deleted.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Menu Set t ings.
@@ -1107,7 +1110,7 @@ Act ions column.
 
 #### 3.5.5 Two-factor authentication
 
-To make user logons more secure, you can configure two-factor authentication for users. Context The Apsara Uni-manager Operations Console supports only Google two-factor authentication. This authentication method is 2-step verification and uses a password and mobile app to provide a two-layer protection for accounts. You can obtain the logon key after you configure users in the Apsara Uni-manager Operations Console, and then enter the key in the Google Authenticator app on your mobile phone. The app generates a verification code for your logon based on the time and key.
+To make user logons more secure, you can configure two-factor authentication for users. Context The Apsara Uni-manager Operations Console supports only Google two-factor authentication. This authentication method is 2-step verification and uses a password and mobile app to provide a two-layer protection for accounts. You can obtain the logon key after you configure users in the Apsara Uni-manager Operations Console, and then enter the key in the Google Authenticator app on your mobile phone. The app generates a verification code for your logon based on the time and key. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > T wo-f act or Aut hent icat ion.
@@ -1120,7 +1123,7 @@ e. To disable two-factor authentication, click Delet e Key in the Act ions colum
 
 #### 3.5.6 Department management
 
-The Department Management module allows administrators to create, modify, delete, and search for departments, as well as create users or user groups for departments. Context After the Apsara Uni-manager Operations Console is deployed, a root department is automatically generated. You can create other departments under the root department. Departments are displayed in a hierarchy, and you can create sub-departments under each level of departments. Up to five levels of departments can be created.
+The Department Management module allows administrators to create, modify, delete, and search for departments, as well as create users or user groups for departments. Context After the Apsara Uni-manager Operations Console is deployed, a root department is automatically generated. You can create other departments under the root department. Departments are displayed in a hierarchy, and you can create sub-departments under each level of departments. Up to five levels of departments can be created. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Depart ment Management .
@@ -1136,7 +1139,7 @@ In the left catalog tree, select the department that you want to delete and clic
 
 #### 3.5.7 Region management
 
-In multi-region scenarios, the system administrator can bind a department to a region. After you bind a department to a region, users in the department can manage and view resources in the region. Context In multi-region scenarios, a region is managed by its own administrator. After administrators log on to the Apsara Uni-manager Operations Console, each administrator can manage only resources in the region that they are authorized to manage. Relationship between departments and regions: A department can be bound to multiple regions. A region can be bound to multiple departments.
+In multi-region scenarios, the system administrator can bind a department to a region. After you bind a department to a region, users in the department can manage and view resources in the region. Context In multi-region scenarios, a region is managed by its own administrator. After administrators log on to the Apsara Uni-manager Operations Console, each administrator can manage only resources in the region that they are authorized to manage. Relationship between departments and regions: A department can be bound to multiple regions. A region can be bound to multiple departments. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Region Management .
@@ -1148,7 +1151,7 @@ the right.
 
 #### 3.5.8 Operating system logs
 
-The Operating System Logs module allows you to collect statistics on the number of logs and identify events related to the operating system.
+The Operating System Logs module allows you to collect statistics on the number of logs and identify events related to the operating system. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Operat ing Syst em Logs.
@@ -1172,7 +1175,7 @@ icon and select an event. Click the icon before the event to show the detailed l
 
 #### 3.5.9 Operation logs
 
-You can view logs to view the resource usage and running status of all modules on the platform. Context The Operation Logs page allows you to view all the records of backend API calls, including audit operations. The auditor can filter logs by username and time, view call details, and export selected logs.
+You can view logs to view the resource usage and running status of all modules on the platform. Context The Operation Logs page allows you to view all the records of backend API calls, including audit operations. The auditor can filter logs by username and time, view call details, and export selected logs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Operat ion Logs.
@@ -1183,7 +1186,7 @@ Manage logs In the upper part of the page, enter User Name and select a period o
 
 #### 3.5.10 View authorization information
 
-The Authorization module allows customers, field engineers, and operations engineers to query services that are experiencing authorization problems and troubleshoot the problems. Prerequisites The logon user has the administrator permissions. You can view the trial authorization information or enter the authorization code to view the formal authorization information on the Aut horizat ion Det ails tab only when you have the administrator permissions. If you are not granted the administrator permissions, a message appears indicating that you have insufficient permissions when you access this tab.
+The Authorization module allows customers, field engineers, and operations engineers to query services that are experiencing authorization problems and troubleshoot the problems. Prerequisites The logon user has the administrator permissions. You can view the trial authorization information or enter the authorization code to view the formal authorization information on the Aut horizat ion Det ails tab only when you have the administrator permissions. If you are not granted the administrator permissions, a message appears indicating that you have insufficient permissions when you access this tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Aut horizat ion.
@@ -1228,7 +1231,7 @@ The Multi-cloud Management module provides the function of multi-cloud configura
 
 ##### 3.5.11.1 Add multi-cloud configurations
 
-When a multi-cloud environment is used, you can add multi-cloud configurations as a multi-cloud configuration administrator or super administrator. After you add multi-cloud configurations, you can switch to different data centers in the same console and view or perform related operations. Prerequisites Before you add multi-cloud configurations, make sure that the following requirements are met: Data centers are connected and share accounts that have the same usernames and passwords with each other. You are granted the permissions of a multi-cloud configuration administrator or super administrator.
+When a multi-cloud environment is used, you can add multi-cloud configurations as a multi-cloud configuration administrator or super administrator. After you add multi-cloud configurations, you can switch to different data centers in the same console and view or perform related operations. Prerequisites Before you add multi-cloud configurations, make sure that the following requirements are met: Data centers are connected and share accounts that have the same usernames and passwords with each other. You are granted the permissions of a multi-cloud configuration administrator or super administrator. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Syst em Set t ings > Mult i-cloud Management .
@@ -1259,7 +1262,7 @@ The Personal Settings module allows you to modify the logon password and logon s
 
 #### 3.6.1 Change the logon password
 
-The Logon Settings module allows you to change the password that you use to log on to the Apsara Uni-manager Operations Console. Context For security reasons, we recommend that you change your logon password on a regular basis.
+The Logon Settings module allows you to change the password that you use to log on to the Apsara Uni-manager Operations Console. Context For security reasons, we recommend that you change your logon password on a regular basis. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Personal Set t ings > Personal Inf ormat ion.
@@ -1271,7 +1274,7 @@ Password, and then click OK.
 
 #### 3.6.2 Modify logon settings
 
-The Logon Settings module allows you to configure whether to allow multi-terminal logon and modify the logon timeout period, maximum allowed password retries, logon policy, and validity period of the account you are using. Context To make your system more secure, you can modify the logon settings based on your scenario.
+The Logon Settings module allows you to configure whether to allow multi-terminal logon and modify the logon timeout period, maximum allowed password retries, logon policy, and validity period of the account you are using. Context To make your system more secure, you can modify the logon settings based on your scenario. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Set t ings.
 3. In the left-side navigation pane, choose Personal Set t ings > Logon Set t ings.
@@ -1290,7 +1293,7 @@ T imeout Period (Minut es): Set the logon timeout period of the current account.
 
 #### 4.1.1 Product overview
 
-On the Product Overview page, you can view information about each product and its clusters, server roles, machines, alerts, and final-state status.
+On the Product Overview page, you can view information about each product and its clusters, server roles, machines, alerts, and final-state status. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Product s.
 3. On the Product Overview page, view the information about clusters, server roles, machines, alerts,
@@ -1338,7 +1341,7 @@ The cloud service interconnection feature provides network access to cloud servi
 
 ##### 4.2.1.1 Dynamic VIP
 
-The dynamic VIP feature expands the network capabilities of cloud service interconnection. It allows you to create dynamic VIPs by using VIP resources applied for by the cloud services in Apsara Infrastructure Management Framework as templates. You can modify the type, tunnel_type, and ipprotocol properties when you create a dynamic VIP. Other properties are the same as those in the template VIP resources defined by the cloud products. During scaling, upgrades, and downgrades of products, dynamic VIP resources and template VIP resources can be simultaneously updated by linking with Apsara Infrastructure Management Framework. Context In scenarios that require large storage capacities, the dynamic VIP feature can be used to scale out multiple OSS Intranet VIP resources to bypass the single-VIP network speed of 5 Gbit/s. In hybrid cloud scenarios, you must access the Apsara Uni-manager Operations Console over the Internet and use the dynamic VIP feature to create Internet VIP resources for the Apsara Uni-manager Operations Console. The dynamic VIP tunnel type can be set only to classic_to_any_tunnel.
+The dynamic VIP feature expands the network capabilities of cloud service interconnection. It allows you to create dynamic VIPs by using VIP resources applied for by the cloud services in Apsara Infrastructure Management Framework as templates. You can modify the type, tunnel_type, and ipprotocol properties when you create a dynamic VIP. Other properties are the same as those in the template VIP resources defined by the cloud products. During scaling, upgrades, and downgrades of products, dynamic VIP resources and template VIP resources can be simultaneously updated by linking with Apsara Infrastructure Management Framework. Context In scenarios that require large storage capacities, the dynamic VIP feature can be used to scale out multiple OSS Intranet VIP resources to bypass the single-VIP network speed of 5 Gbit/s. In hybrid cloud scenarios, you must access the Apsara Uni-manager Operations Console over the Internet and use the dynamic VIP feature to create Internet VIP resources for the Apsara Uni-manager Operations Console. The dynamic VIP tunnel type can be set only to classic_to_any_tunnel. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. On the Dynamic VIP page, view the dynamic VIPs.
@@ -1354,6 +1357,7 @@ Dynamic DNS works with the dynamic VIP feature. It allows you to implement horiz
 
 > **Warning:** Before you resolve DNS domain names in the Apsara Infrastructure Management Framework console, make sure that the parameters of the dynamic VIPs and the static VIP are exactly the same, and VIP listening on access is normal. Otherwise, network exceptions may occur.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Dynamic DNS. On the Dynamic DNS page, view the
@@ -1384,7 +1388,7 @@ You can manage hybrid cloud network resources such as physical network devices, 
 
 ##### 4.2.2.1 Physical topology
 
-You can view the physical network topologies of hybrid clouds from multiple perspectives on the Physical Topology page. Context You can view the following types of physical network topologies: Standard topology: the physical network topology of the Apsara Stack data center. The initial data comes from Deployment Planner. IDC topology: the physical network topology of a self-managed IDC. The data comes from userdefined network devices or links. Global topology: the physical network topology of multiple data centers, including the standard topology and all IDC topologies. Data of interconnection links across data centers comes from userdefined links.
+You can view the physical network topologies of hybrid clouds from multiple perspectives on the Physical Topology page. Context You can view the following types of physical network topologies: Standard topology: the physical network topology of the Apsara Stack data center. The initial data comes from Deployment Planner. IDC topology: the physical network topology of a self-managed IDC. The data comes from userdefined network devices or links. Global topology: the physical network topology of multiple data centers, including the standard topology and all IDC topologies. Data of interconnection links across data centers comes from userdefined links. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, choose Hybrid Cloud Resources > Physical T opology. On the
@@ -1412,7 +1416,7 @@ Monitoring metrics: in_discard: the inbound packet loss rate out_discard: the ou
 
 ##### 4.2.2.2 Network element management
 
-You can manage Apsara Stack data centers and user-managed data centers as well as their network element devices on the Network Element Management page.
+You can manage Apsara Stack data centers and user-managed data centers as well as their network element devices on the Network Element Management page. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, choose Hybrid Cloud Resources > Net work Element
@@ -1462,7 +1466,7 @@ computer.
 
 ##### 4.2.2.3 IP address pools
 
-Multiple cloud services may be deployed on a single cloud instance and you may need to view the IP addresses of the cloud services in scenarios such as network changes and security audits. You can view the IP address pool of each cloud service on a cloud instance on the IP Address Pools page.
+Multiple cloud services may be deployed on a single cloud instance and you may need to view the IP addresses of the cloud services in scenarios such as network changes and security audits. You can view the IP address pool of each cloud service on a cloud instance on the IP Address Pools page. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, choose Hybrid Cloud Resources > IP Address Pools to view
@@ -1474,7 +1478,7 @@ the IP address pools. Select the required options from the IP Address Pool ID, C
 
 ##### 4.2.3.1 View access gateway instances
 
-You can view information of access gateway instances, such as the access gateway name, IBGP role, and creation time, on the Instance Management tab.
+You can view information of access gateway instances, such as the access gateway name, IBGP role, and creation time, on the Instance Management tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1497,7 +1501,7 @@ You can view information of access gateway instances, such as the access gateway
 
 ##### 4.2.3.2 View operation logs
 
-You can view the API operation logs of bare metal instances based on your O&M needs.
+You can view the API operation logs of bare metal instances based on your O&M needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1535,7 +1539,7 @@ details of the API operation.
 
 ##### 4.2.3.3 View network information of bare metal instances in a VPC
 
-instances in a VPC You can view the information of bare metal instances that are added to a VPC on the Bare-Metal Networks tab.
+instances in a VPC You can view the information of bare metal instances that are added to a VPC on the Bare-Metal Networks tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1596,6 +1600,7 @@ In O&M emergency scenarios, you can use this feature to disconnect the physical 
 
 > **Warning:** This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1626,6 +1631,7 @@ In O&M emergency scenarios, you can use the VPC route table entry deletion featu
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1655,6 +1661,7 @@ In O&M emergency scenarios, you can use this feature to delete the default route
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1685,6 +1692,7 @@ In O&M emergency scenarios, you can use this feature to delete a VPC router inte
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1710,6 +1718,7 @@ In O&M emergency scenarios, you can use this feature to delete a VBR router inte
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1735,6 +1744,7 @@ In O&M emergency scenarios, you can use this feature to delete a VBR. Context
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1760,6 +1770,7 @@ In O&M emergency scenarios, you can use this feature to delete a physical connec
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1792,6 +1803,7 @@ In O&M emergency scenarios, you can use this feature to delete all resources, in
 
 > **Warning:** This operation is only for emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1825,7 +1837,7 @@ The system starts to push the configurations. After the configurations are pushe
 
 ###### 4.2.3.4.10 View the physical connection bandwidth
 
-You can view the physical connection bandwidth when the access gateway is connected to a VPC in the system based on your O&M needs.
+You can view the physical connection bandwidth when the access gateway is connected to a VPC in the system based on your O&M needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1847,6 +1859,7 @@ In O&M emergency scenarios, you can use this feature to modify the physical conn
 
 > **Warning:** This operation is used only in emergency situations and must be performed under the guidance of technical personnel. Otherwise, normal business operations may be affected.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1869,7 +1882,7 @@ The system starts to push the configurations. After the configurations have been
 
 ###### 4.2.3.4.12 View BD usage
 
-You can view BD usage to learn about the BD configuration distribution in a timely manner.
+You can view BD usage to learn about the BD configuration distribution in a timely manner. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1879,7 +1892,7 @@ You can view BD usage to learn about the BD configuration distribution in a time
 
 ###### 4.2.3.4.13 View BM VPN usage
 
-You can view the information of the BM VPN that is assigned to the access gateway instance.
+You can view the information of the BM VPN that is assigned to the access gateway instance. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1889,7 +1902,7 @@ drop-down list, and then click Search to view the BM VPNs assigned to all the HS
 
 ###### 4.2.3.4.14 View trunk usage
 
-You can view trunk usage to learn about the usage of hardware ports in a timely manner.
+You can view trunk usage to learn about the usage of hardware ports in a timely manner. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Net work.
 3. In the left-side navigation pane, click Net work Service Provider.
@@ -1937,7 +1950,7 @@ icon to export all the information of physical servers to your computer.
 
 #### 4.3.3 Security operations
 
-You can log on to a virtual machine and perform remote operations.
+You can log on to a virtual machine and perform remote operations. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Dat a Cent ers.
 The Product tab appears.
@@ -1958,7 +1971,7 @@ The SLA module allows you to view the current state, historical data, instance a
 
 ##### 4.4.1.1 View the current status of a cloud service
 
-You can view the current status of a cloud service and the details of exception events on the Current State tab.
+You can view the current status of a cloud service and the details of exception events on the Current State tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Full St ack.
 3. The Current St at e tab appears.
@@ -1978,7 +1991,7 @@ The Overall Availabilit y section shows the historical availability of the servi
 
 ##### 4.4.1.3 View the availability of an instance
 
-You can view the instance availability ratio of a cloud service to know the instance damages.
+You can view the instance availability ratio of a cloud service to know the instance damages. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Full St ack.
 3. Click the Availabilit y of Inst ance tab.
@@ -1988,7 +2001,7 @@ Basic Inf ormat ion: the instance ID and the user to whom the instance belongs. 
 
 ##### 4.4.1.4 View the availability of a service
 
-You can view the availability ratio of a cloud service to understand its monthly availability.
+You can view the availability ratio of a cloud service to understand its monthly availability. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose Resources > Full St ack.
 3. Click the Availabilit y of Product tab.
@@ -2017,7 +2030,7 @@ computer.
 
 ### 5.1 Dashboard
 
-This topic describes how to view alerts within each region of a multi-region scenario.
+This topic describes how to view alerts within each region of a multi-region scenario. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the Alert s f or Regions section, view the distribution of alerts in different regions.
@@ -2035,7 +2048,7 @@ Click Last 7 Days, Last 30 Days, or specify St art Dat e and End Dat e to view t
 
 ### 5.2 View alerts
 
-This topic describes how to view the alerts for each cloud service, basic service, and hardware in the system.
+This topic describes how to view the alerts for each cloud service, basic service, and hardware in the system. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the left-side navigation pane, click Alert s to view the distribution of alerts in the services.
@@ -2068,7 +2081,7 @@ The Policy Management module allows you to manage contacts and contact groups, a
 
 ##### 5.3.1.1 Alert contacts
 
-You can query, add, modify, or delete alert contacts based on your business needs.
+You can query, add, modify, or delete alert contacts based on your business needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the left-side navigation pane, choose Alert Set t ings > Policy Management .
@@ -2077,7 +2090,7 @@ Query alert contacts In the upper-left corner of the tab, specify the product na
 
 ##### 5.3.1.2 Alert contact groups
 
-You can query, add, modify, or delete alert contact groups based on your business needs.
+You can query, add, modify, or delete alert contact groups based on your business needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the left-side navigation pane, choose Alert Set t ings > Policy Management .
@@ -2087,7 +2100,7 @@ Query an alert contact group In the upper-left corner of the tab, enter a group 
 
 ##### 5.3.1.3 Configure static parameters
 
-You can configure alert-related static parameters to suit your business needs. Only parameters related to timeout alerts can be configured. Context You cannot add new alert configurations in the current version. You can modify the default parameter configurations for timeout alerts.
+You can configure alert-related static parameters to suit your business needs. Only parameters related to timeout alerts can be configured. Context You cannot add new alert configurations in the current version. You can modify the default parameter configurations for timeout alerts. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the left-side navigation pane, choose Alert Set t ings > Policy Management .
@@ -2107,7 +2120,7 @@ Search to query static parameter configurations.
 
 #### 5.3.2 Alert templates
 
-For Ant Financial Service products deployed on the PaaS platform, you can upload alert templates to configure or modify the rules that trigger alerts.
+For Ant Financial Service products deployed on the PaaS platform, you can upload alert templates to configure or modify the rules that trigger alerts. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the left-side navigation pane, choose Alert Set t ings > Alert T emplat e.
@@ -2195,7 +2208,7 @@ Result The added masking rule is displayed in the alert masking list. After a ma
 
 ##### 5.3.4.2 Disable masking
 
-You can disable masking for masked alerts.
+You can disable masking for masked alerts. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Alert s.
 3. In the left-side navigation pane, choose Alert Set t ings > Alert Masking.
@@ -2212,7 +2225,7 @@ The automated O&M feature automates O&M for data centers. A web-based method is 
 
 #### 6.1.1 View host resources
 
-You can view the information about hosts such as physical machines or Docker virtual machines. Context Before you execute a script or an O&M job on a host, you can view the specific information about the host to ensure that the script or job can be effectively executed.
+You can view the information about hosts such as physical machines or Docker virtual machines. Context Before you execute a script or an O&M job on a host, you can view the specific information about the host to ensure that the script or job can be effectively executed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Host Resources.
@@ -2222,7 +2235,7 @@ search box and click search. Fuzzy match is supported. You can view the informat
 
 #### 6.1.2 View Docker resources
 
-You can view the information about Docker containers. Context Before you execute a script or an O&M job on a Docker container, you can view the specific information about the Docker container to ensure that the script or job can be effectively executed.
+You can view the information about Docker containers. Context Before you execute a script or an O&M job on a Docker container, you can view the specific information about the Docker container to ensure that the script or job can be effectively executed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Docker
@@ -2237,7 +2250,7 @@ The script library is used to store scripts for implementing various features an
 
 ##### 6.1.3.1 Create a script
 
-You can create a script and test whether it can be properly executed.
+You can create a script and test whether it can be properly executed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Script Library.
@@ -2276,7 +2289,7 @@ computer to the script library.
 
 ##### 6.1.3.3 View scripts
 
-You can view scripts in the script library.
+You can view scripts in the script library. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Script Library.
@@ -2286,7 +2299,7 @@ search. Fuzzy match is supported. You can view the information about the scripts
 
 ##### 6.1.3.4 Modify a script
 
-After a script is created or imported, you can modify the script to suit your requirements.
+After a script is created or imported, you can modify the script to suit your requirements. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Script Library.
@@ -2300,7 +2313,7 @@ iii. In the T est Result s dialog box, view the test result of the script. Click
 
 ##### 6.1.3.5 Export a script
 
-You can export a script to your computer.
+You can export a script to your computer. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Script Library.
@@ -2311,7 +2324,7 @@ your computer.
 
 ##### 6.1.3.6 Delete a script
 
-You can delete scripts that are no longer needed.
+You can delete scripts that are no longer needed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Script Library.
@@ -2329,6 +2342,7 @@ You can upload software to the software repository. Context When an O&M job is e
 
 > Not e Delete software that is no longer needed to free up storage space.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Sof t ware
@@ -2341,7 +2355,7 @@ Click Here t o Upload to upload an on-premises file. If you do not enter a softw
 
 ##### 6.1.4.2 View software
 
-You can view software in the software repository.
+You can view software in the software repository. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Sof t ware
@@ -2361,7 +2375,7 @@ Reposit ory.
 
 ##### 6.1.4.4 Delete software
 
-To save storage space, you can delete software that is no longer needed after O&M jobs are executed.
+To save storage space, you can delete software that is no longer needed after O&M jobs are executed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Sof t ware
@@ -2376,7 +2390,7 @@ Process orchestration is one of the core features of automated O&M. It is used t
 
 ##### 6.1.5.1 Create a process
 
-You can create a process to visually orchestrate the O&M process and automate O&M.
+You can create a process to visually orchestrate the O&M process and automate O&M. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2426,7 +2440,7 @@ be added to a process include the Start, Task, Judgement, Manual, Wait, and Noti
 
 ##### 6.1.5.2 Import a process
 
-You can import existing processes.
+You can import existing processes. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2438,7 +2452,7 @@ Orchest rat ion.
 
 ##### 6.1.5.3 View processes
 
-You can view existing processes.
+You can view existing processes. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2451,7 +2465,7 @@ On the Process Det ails page, you can perform the following operations: Click th
 
 ##### 6.1.5.4 Export a process
 
-You can export processes to your computer.
+You can export processes to your computer. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2463,7 +2477,7 @@ processes to your computer.
 
 ##### 6.1.5.5 Modify a process
 
-After you have created or imported a process, you can modify the process to suit your requirements.
+After you have created or imported a process, you can modify the process to suit your requirements. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2473,7 +2487,7 @@ Orchest rat ion.
 
 ##### 6.1.5.6 Run a process
 
-You can manually trigger processes.
+You can manually trigger processes. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2483,7 +2497,7 @@ Orchest rat ion.
 
 ##### 6.1.5.7 Delete a process
 
-You can delete processes that are no longer needed.
+You can delete processes that are no longer needed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > Process
@@ -2497,7 +2511,7 @@ O&M jobs is one of the core features of automated O&M and can be used to indepen
 
 ##### 6.1.6.1 Create an O&M job
 
-You can create an O&M job to independently complete an O&M task to implement automated O&M.
+You can create an O&M job to independently complete an O&M task to implement automated O&M. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2537,7 +2551,7 @@ You can create an O&M job to independently complete an O&M task to implement aut
 
 ##### 6.1.6.2 Import an O&M job
 
-You can import existing O&M jobs.
+You can import existing O&M jobs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2550,7 +2564,7 @@ You can import existing O&M jobs.
 
 ##### 6.1.6.3 View O&M jobs
 
-You can view existing O&M jobs.
+You can view existing O&M jobs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2568,7 +2582,7 @@ Select one or more execution history entries and click Delet e Execut ion Hist o
 
 ##### 6.1.6.4 Export an O&M job
 
-You can export existing O&M jobs to your computer.
+You can export existing O&M jobs to your computer. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2579,7 +2593,7 @@ O&M jobs to your computer.
 
 ##### 6.1.6.5 Modify an O&M job
 
-After an O&M job is created or imported, you can modify the O&M job to suit your needs.
+After an O&M job is created or imported, you can modify the O&M job to suit your needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2588,7 +2602,7 @@ After an O&M job is created or imported, you can modify the O&M job to suit your
 
 ##### 6.1.6.6 Execute an O&M job
 
-You can manually execute O&M jobs.
+You can manually execute O&M jobs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2597,7 +2611,7 @@ You can manually execute O&M jobs.
 
 ##### 6.1.6.7 Delete an O&M job
 
-You can delete O&M jobs that are no longer needed.
+You can delete O&M jobs that are no longer needed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > O&M Resources > O&M Jobs.
@@ -2607,7 +2621,7 @@ page, or click Delet e in the Act ions column.
 
 #### 6.1.7 Review jobs
 
-If an O&M job is executed based on the phased execution rules, the system enables job review. After a batch is executed, the next batch does not start to be executed until the previous batch passes the review. You can pass or stop an O&M job. Context During the execution of an O&M job, the system can only judge whether the O&M job is executed, but cannot know the execution result. If the O&M personnel want to confirm the execution results of one batch before they execute the next batch, the O&M personnel can set Phased Execut ion Rules to St op Wait ing (You do not need t o specif y bat ches. T he syst em execut es jobs in t wo bat ches. Af t er t he execut ion of t he f irst bat ch is complet e, t he process suspends. T he second bat ch is execut ed af t er conf irmat ion.) to review the O&M jobs.
+If an O&M job is executed based on the phased execution rules, the system enables job review. After a batch is executed, the next batch does not start to be executed until the previous batch passes the review. You can pass or stop an O&M job. Context During the execution of an O&M job, the system can only judge whether the O&M job is executed, but cannot know the execution result. If the O&M personnel want to confirm the execution results of one batch before they execute the next batch, the O&M personnel can set Phased Execut ion Rules to St op Wait ing (You do not need t o specif y bat ches. T he syst em execut es jobs in t wo bat ches. Af t er t he execut ion of t he f irst bat ch is complet e, t he process suspends. T he second bat ch is execut ed af t er conf irmat ion.) to review the O&M jobs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > Audit Management > Job Review.
@@ -2617,7 +2631,7 @@ the next batch, or click St op to stop the execution of the next batch.
 
 #### 6.1.8 Review processes
 
-If a Manual node or a Task node for which Phased Execut ion Set t ings is set to St op Wait ing is available when a process is running, the system initiates process review. You can pass or stop the process. Context When a process is running, the system can judge whether the task is complete but cannot determine whether the task is correctly executed. If a Manual node or a Task node for which Phased Execut ion Set t ings is set to St op Wait ing is available in a process, the O&M personnel can view the task execution result to determine whether to pass or stop the process.
+If a Manual node or a Task node for which Phased Execut ion Set t ings is set to St op Wait ing is available when a process is running, the system initiates process review. You can pass or stop the process. Context When a process is running, the system can judge whether the task is complete but cannot determine whether the task is correctly executed. If a Manual node or a Task node for which Phased Execut ion Set t ings is set to St op Wait ing is available in a process, the O&M personnel can view the task execution result to determine whether to pass or stop the process. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > Audit Management > Process
@@ -2628,7 +2642,7 @@ column: Click Passed to pass the process or run the next batch. Click St op to s
 
 #### 6.1.9 View O&M logs
 
-You can view the logs of various automated O&M operations. Context You can view the type, time, user, and details of automated O&M operations to help you perform subsequent audits.
+You can view the logs of various automated O&M operations. Context You can view the type, time, user, and details of automated O&M operations to help you perform subsequent audits. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Aut omat ed O&M > Audit Management > Operat ions
@@ -2645,7 +2659,7 @@ The Network Operation Center (NOC) is a comprehensive operations tool platform t
 
 ##### 6.2.1.1 View the dashboard
 
-You can view the status of the current devices, network, and traffic on the Dashboard tab.
+You can view the status of the current devices, network, and traffic on the Dashboard tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Dashboard.
@@ -2664,7 +2678,7 @@ You can view the status of the current devices, network, and traffic on the Dash
 
 ##### 6.2.1.2 View the network topology
 
-You can view the physical network topology on the Net work T opology tab.
+You can view the physical network topology on the Net work T opology tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Dashboard.
@@ -2730,7 +2744,7 @@ The Device Management module shows the basic information, running status, traffi
 
 ###### 6.2.2.1.1 View network monitoring information
 
-The Network Monitoring tab allows you to view the basic information, running status, and traffic monitoring information of Apsara Stack physical network devices and check the health status of network devices in a timely manner.
+The Network Monitoring tab allows you to view the basic information, running status, and traffic monitoring information of Apsara Stack physical network devices and check the health status of network devices in a timely manner. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Net work Element
@@ -2776,7 +2790,7 @@ Then, the system collects the device information based on your configurations.
 
 ###### 6.2.2.1.3.2 Modify the collection interval
 
-This topic describes how to modify the interval at which network device information is collected.
+This topic describes how to modify the interval at which network device information is collected. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Net work Element
@@ -2805,7 +2819,7 @@ The initial data entry is complete. To modify or delete an OOB network segment, 
 
 ###### 6.2.2.1.3.4 View the OOB network segment information
 
-You can search for and view the network segment information of your managed devices.
+You can search for and view the network segment information of your managed devices. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Net work Element
@@ -2818,7 +2832,7 @@ Management .
 
 ##### 6.2.2.2 Modify the device password
 
-You can modify the passwords of physical network devices.
+You can modify the passwords of physical network devices. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Net work Element
@@ -2855,7 +2869,7 @@ The SLB Management module contains the Cluster Monitoring and Instance Monitorin
 
 ##### 6.2.3.1 View cluster monitoring information
 
-The Cluster Monitoring tab allows you to view the basic information, inbound limit (bit/s), outbound limit (bit/s), inbound limit (PPS), outbound limit (PPS), active connection limit, inactive connection limit, and usage of a single device node in a cluster.
+The Cluster Monitoring tab allows you to view the basic information, inbound limit (bit/s), outbound limit (bit/s), inbound limit (PPS), outbound limit (PPS), active connection limit, inactive connection limit, and usage of a single device node in a cluster. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > SLB Management .
@@ -2893,7 +2907,7 @@ In the upper-right corner, you can set the start and end time and click Search t
 
 ##### 6.2.3.2 View the instance monitoring information
 
-The Instance Monitoring tab allows you to view the basic information and usage of an instance, including the BPS and PPS.
+The Instance Monitoring tab allows you to view the basic information and usage of an instance, including the BPS and PPS. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > SLB Management .
@@ -2905,7 +2919,7 @@ The first section shows the basic information of the SLB instance, which allows 
 
 #### 6.2.4 Collect IP addresses
 
-The system routinely collects the IP addresses of all physical networks within the current Apsara Stack environment at a specified collection interval. You can use a CIDR block or IP address, and subnet mask to search for the information of corresponding devices and ports.
+The system routinely collects the IP addresses of all physical networks within the current Apsara Stack environment at a specified collection interval. You can use a CIDR block or IP address, and subnet mask to search for the information of corresponding devices and ports. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IP Address Collect ion.
@@ -2920,7 +2934,7 @@ The IP Address Ranges module allows you to manage planning information in the Ap
 
 ##### 6.2.5.1 Import the planning file
 
-No data is imported at the time the system is initialized. You must import the planning file to obtain the IP address allocation information of the current Apsara Stack environment. You can also import a new planning file for a change in the environment. Prerequisites The IP address allocation table is obtained from the Apsara Stack deployment planner. If you have not obtained the allocation table, contact your account manager or submit a Apsara Stack ticket.
+No data is imported at the time the system is initialized. You must import the planning file to obtain the IP address allocation information of the current Apsara Stack environment. You can also import a new planning file for a change in the environment. Prerequisites The IP address allocation table is obtained from the Apsara Stack deployment planner. If you have not obtained the allocation table, contact your account manager or submit a Apsara Stack ticket. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IP Address Ranges.
@@ -2931,7 +2945,7 @@ allocation list.
 
 ##### 6.2.5.2 Manually add the IP address pool information
 
-You can also manually add new IP address pool information to the Apsara Uni-manager Operations Console for centralized management.
+You can also manually add new IP address pool information to the Apsara Uni-manager Operations Console for centralized management. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Console > IP Address Ranges.
@@ -2941,7 +2955,7 @@ You can also manually add new IP address pool information to the Apsara Uni-mana
 
 ##### 6.2.5.3 Modify the IP address pool information
 
-If an IP address range is changed, you can modify the IP address pool information.
+If an IP address range is changed, you can modify the IP address pool information. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IP Address Ranges.
@@ -2956,7 +2970,7 @@ Modif y in the Act ions column.
 
 ##### 6.2.5.4 Export the IP address pool information
 
-You can export the IP address pool information to your computer and then view the information offline.
+You can export the IP address pool information to your computer and then view the information offline. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IP Address Ranges.
@@ -2964,7 +2978,7 @@ You can export the IP address pool information to your computer and then view th
 
 ##### 6.2.5.5 Delete an IP address pool
 
-You can delete IP address pools that are no longer needed.
+You can delete IP address pools that are no longer needed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IP Address Ranges.
@@ -2973,7 +2987,7 @@ column.
 
 #### 6.2.6 View Anytunnel information
 
-You can view the Anytunnel information to see the Anytunnel resources registered by projects within the current environment or whether a project has Anytunnel registered. The system allows you to query the registration information of Anytunnel resources based on the project, cluster, service instance, and server role. You can use the global query feature to query the usage of all the Anytunnel resources in the current environment.
+You can view the Anytunnel information to see the Anytunnel resources registered by projects within the current environment or whether a project has Anytunnel registered. The system allows you to query the registration information of Anytunnel resources based on the project, cluster, service instance, and server role. You can use the global query feature to query the usage of all the Anytunnel resources in the current environment. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Anyt unnel
@@ -2989,7 +3003,7 @@ The XGW Management module allows you to manage VPC gateways and view the usage i
 
 ##### 6.2.7.1 View node information
 
-The XGW Management module allows you to view the basic information, running status, aggregated traffic, and usage of each device node of XGW network products.
+The XGW Management module allows you to view the basic information, running status, aggregated traffic, and usage of each device node of XGW network products. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > XGW Management .
@@ -3000,7 +3014,7 @@ The system shows the basic information and usage information of aggregated traff
 
 ##### 6.2.7.2 View the instance monitoring information
 
-The Instance Monitoring tab allows you to view information such as bps, pps, drop_speed, fin_speed, ratelimit_drop_speed, rst_speed, and syn_ack_speed.
+The Instance Monitoring tab allows you to view information such as bps, pps, drop_speed, fin_speed, ratelimit_drop_speed, rst_speed, and syn_ack_speed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > XGW Management .
@@ -3035,6 +3049,7 @@ If the cloud firewall is deployed in your environment, you can use the firewall 
 
 > Not ice Confirm with the administrator that the cloud firewall is deployed in your environment. Otherwise, you cannot use the firewall feature to isolate or restore the firewall.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Cloud Firewall
@@ -3054,7 +3069,7 @@ the corresponding result.
 
 ##### 6.2.9.1 View and process current alerts
 
-You can view and process current alerts on the Current Alerts tab.
+You can view and process current alerts on the Current Alerts tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Alert Dashboard.
@@ -3069,7 +3084,7 @@ If the alert does not affect the operation of the system, you can click Ignore i
 
 ##### 6.2.9.2 View historical alerts
 
-You can view historical alerts on the History Alerts tab.
+You can view historical alerts on the History Alerts tab. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Alert Dashboard.
@@ -3084,7 +3099,7 @@ the alert.
 
 ##### 6.2.10.1 Add a trap
 
-If the initially configured trap subscription does not meet the monitoring requirements, you can add a trap for monitoring match. Context Simple Network Management Protocol (SNMP) traps are used in this topic. SNMP trap is a part of SNMP and a mechanism that enables devices being managed (here refers to network devices such as switches and routers) to send SNMP messages to NOC monitoring servers. If an exception occurs on the device being monitored or the switch monitoring metrics have an exception, the SNMP agent running in the switch sends an alert event to the NOC monitoring server.
+If the initially configured trap subscription does not meet the monitoring requirements, you can add a trap for monitoring match. Context Simple Network Management Protocol (SNMP) traps are used in this topic. SNMP trap is a part of SNMP and a mechanism that enables devices being managed (here refers to network devices such as switches and routers) to send SNMP messages to NOC monitoring servers. If an exception occurs on the device being monitored or the switch monitoring metrics have an exception, the SNMP agent running in the switch sends an alert event to the NOC monitoring server. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Alert Set t ings.
@@ -3110,7 +3125,7 @@ After the configuration is submitted, the system checks whether the values of Tr
 
 ##### 6.2.10.2 View traps
 
-You can view traps configured in the current system.
+You can view traps configured in the current system. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Alert Set t ings.
@@ -3126,7 +3141,7 @@ information about the trap.
 
 #### 6.2.11 Physical network integration
 
-The Physical Network Integration module allows network operations engineers to automate the integration of physical networks in the Apsara Uni-manager Operations Console by specifying the integration parameters. Network Operations Center (NOC) automatically generates and issues the configurations to specified devices and then performs the network integration test.
+The Physical Network Integration module allows network operations engineers to automate the integration of physical networks in the Apsara Uni-manager Operations Console by specifying the integration parameters. Network Operations Center (NOC) automatically generates and issues the configurations to specified devices and then performs the network integration test. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Physical Net work
@@ -3147,7 +3162,7 @@ The system generates the integration configuration commands and rollback command
 
 #### 6.2.12 ASW scale-up
 
-This topic describes how to use NOC to automatically scale up ASW devices. After network operations engineers configure the scale-up parameters, NOC automatically generates the configuration and pushes the configuration to a specific device for automatic scale-up. Prerequisites Before you scale up ASW devices in the ASO console, you must plan the IP addresses and configure the ASW.
+This topic describes how to use NOC to automatically scale up ASW devices. After network operations engineers configure the scale-up parameters, NOC automatically generates the configuration and pushes the configuration to a specific device for automatic scale-up. Prerequisites Before you scale up ASW devices in the ASO console, you must plan the IP addresses and configure the ASW. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > ASW Scale-up.
@@ -3173,7 +3188,7 @@ i. In the T est Scale-up step, find the device for which you want to perform the
 
 #### 6.2.13 Push IPv6 configurations
 
-The system can automatically push IPv6 configurations. After network operations engineers configure the IPv6 parameters in the IPV6 Configuration module, the system generates the IPv6 configurations and pushes the configurations to specified devices.
+The system can automatically push IPv6 configurations. After network operations engineers configure the IPv6 parameters in the IPV6 Configuration module, the system generates the IPv6 configurations and pushes the configurations to specified devices. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IPV6 Conf igurat ion.
@@ -3203,7 +3218,7 @@ If the system indicates that it is pushing the configurations, click Ref resh to
 
 #### 6.2.14 Check IP address conflicts
 
-The IP Address Conflicts module allows you to check whether the current Apsara Stack environment contains conflicting IP addresses.
+The IP Address Conflicts module allows you to check whether the current Apsara Stack environment contains conflicting IP addresses. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > IP Address Conf lict s.
@@ -3211,7 +3226,7 @@ After the IP Address Conf lict Check page appears, the system checks whether the
 
 #### 6.2.15 Leased line discovery
 
-You can automate the leased line discovery for devices in the ASO console. After network operations engineers configure the discovery parameters, Network Operations Center (NOC) automatically generates the discovery configuration, pushes the configuration to a specific device, and then automatically performs the discovery test.
+You can automate the leased line discovery for devices in the ASO console. After network operations engineers configure the discovery parameters, Network Operations Center (NOC) automatically generates the discovery configuration, pushes the configuration to a specific device, and then automatically performs the discovery test. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Leased Line Discovery.
@@ -3230,7 +3245,7 @@ on which you have performed the leased line test to roll back the corresponding 
 
 #### 6.2.16 Baseline configuration audit
 
-The Baseline Configuration Audit module allows you to compare the baseline and the current running configurations of devices.
+The Baseline Configuration Audit module allows you to compare the baseline and the current running configurations of devices. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Baseline Conf igurat ion
@@ -3262,7 +3277,7 @@ View the inspection statistics of the current day and the last 10 inspection rec
 
 #### 6.2.18 Inspection history
 
-You can query the inspection history and view detailed inspection records by task type and time range. Context Inspection tasks can be divided into one-time tasks and scheduled tasks. A one-time task can be executed only once. You can set an execution interval for a scheduled task.
+You can query the inspection history and view detailed inspection records by task type and time range. Context Inspection tasks can be divided into one-time tasks and scheduled tasks. A one-time task can be executed only once. You can set an execution interval for a scheduled task. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Inspect ion Hist ory.
@@ -3281,7 +3296,7 @@ The Inspection Management module allows you to create, view, modify, start, susp
 
 ##### 6.2.19.1 Create a one-time task
 
-This topic describes how to create a one-time task. Context By default, a one-time task can be executed only once after it is created. After a one-time task is executed once, the task automatically enters the Suspended state. The task can be manually started and then executed again.
+This topic describes how to create a one-time task. Context By default, a one-time task can be executed only once after it is created. After a one-time task is executed once, the task automatically enters the Suspended state. The task can be manually started and then executed again. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Inspect ion
@@ -3303,7 +3318,7 @@ The message Creat ed is displayed. You can choose Net work Operat ions Cent er >
 
 ##### 6.2.19.2 Create a scheduled task
 
-This topic describes how to create a scheduled task based on routine inspection requirements. You can set an execution interval for the scheduled task.
+This topic describes how to create a scheduled task based on routine inspection requirements. You can set an execution interval for the scheduled task. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Inspect ion
@@ -3352,7 +3367,7 @@ The Inspection Templates module allows you to manage, create, view, modify, and 
 
 ##### 6.2.20.1 Create a template
 
-You can create a common inspection template to facilitate routine inspection task creation.
+You can create a common inspection template to facilitate routine inspection task creation. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Inspect ion T emplat es.
@@ -3386,7 +3401,7 @@ column to go to the inspection item management page. For other management operat
 
 ##### 6.2.20.3 Modify a template
 
-After you create a template, you can modify its information based on your needs.
+After you create a template, you can modify its information based on your needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Inspect ion T emplat es.
@@ -3398,7 +3413,7 @@ tag, and template inspection item collection.
 
 ##### 6.2.20.4 Delete a template
 
-You can delete inspection templates that are no longer needed for routine O&M.
+You can delete inspection templates that are no longer needed for routine O&M. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Inspect ion T emplat es.
@@ -3411,7 +3426,7 @@ column.
 
 ##### 6.2.20.5 View inspection items
 
-You can view the details of all inspection items in the system, including the item ID, category, name, tag, and description.
+You can view the details of all inspection items in the system, including the item ID, category, name, tag, and description. Procedure
 1. Log on to the Apsara Uni-manager Operations Console. For more information, see Log on to the
 Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
@@ -3427,7 +3442,7 @@ Link column to go to the inspection item management page. For other management o
 
 ##### 6.2.21.1 Troubleshoot network failures
 
-This topic uses a typical case to describe how to use the Network Operations Network module to troubleshoot network failures. Scenario If the visit latency and retransmission time of a cloud service increase, you must determine whether this is caused by network failures.
+This topic uses a typical case to describe how to use the Network Operations Network module to troubleshoot network failures. Scenario If the visit latency and retransmission time of a cloud service increase, you must determine whether this is caused by network failures. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Net work Operat ions Cent er > Dashboard.
@@ -3457,7 +3472,7 @@ The Products module allows you to click operations and maintenance services of o
 
 #### 6.3.1 Product list
 
-On the Product List page, you can go to the O&M page or ISV page corresponding to a product by using single sign-on (SSO) and redirection. Prerequisites To access the ISV page, make sure that the ISV access information is configured on the ISV Access Conf igurat ions page. For more information about how to configure the ISV access information, see Configure the ISV access information. Context When you use accounts that have different permissions to log on to the Apsara Uni-manager Operations Console, the product O&M icons and ISV icons on the Product List page are displayed in different ways. An operations system administrator can view all the O&M components of the cloud platform. The read and write permissions for product O&M are separate for each product to allow the system to dynamically assign different permissions based on different roles.
+On the Product List page, you can go to the O&M page or ISV page corresponding to a product by using single sign-on (SSO) and redirection. Prerequisites To access the ISV page, make sure that the ISV access information is configured on the ISV Access Conf igurat ions page. For more information about how to configure the ISV access information, see Configure the ISV access information. Context When you use accounts that have different permissions to log on to the Apsara Uni-manager Operations Console, the product O&M icons and ISV icons on the Product List page are displayed in different ways. An operations system administrator can view all the O&M components of the cloud platform. The read and write permissions for product O&M are separate for each product to allow the system to dynamically assign different permissions based on different roles. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > Product s.
@@ -3470,7 +3485,7 @@ Security Reinforce Service (SRS) is a security hardening component for internal 
 
 ##### 6.3.2.1 SRS management
 
-You can configure SRS security isolation status, SRS IP whitelists, and SRS isolation-free products. You can also view SRS IP address whitelists and SRS VIPS information. Prerequisites SRS has reached the desired state. Context To perform operations involving IP address changes, you must first manage the SRS switch.
+You can configure SRS security isolation status, SRS IP whitelists, and SRS isolation-free products. You can also view SRS IP address whitelists and SRS VIPS information. Prerequisites SRS has reached the desired state. Context To perform operations involving IP address changes, you must first manage the SRS switch. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > SRS > SRS Management .
@@ -3505,7 +3520,7 @@ information.
 
 ##### 6.3.2.2 Isolation configuration management
 
-You can view the security isolation information of cloud services registered with SRS. You can also add security isolation configurations for cloud services if they have special security isolation requirements. Prerequisites SRS has reached the desired state.
+You can view the security isolation information of cloud services registered with SRS. You can also add security isolation configurations for cloud services if they have special security isolation requirements. Prerequisites SRS has reached the desired state. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > SRS > Isolat ion
@@ -3524,7 +3539,7 @@ message that appears, click OK.
 
 ##### 6.3.2.3 Client status
 
-You can view the host information, last heartbeat time, drop logs (including the packet information intercepted by SRS), and status of the SRS client node. You can also view information about the services deployed on a host. Prerequisites SRS has reached the desired state.
+You can view the host information, last heartbeat time, drop logs (including the packet information intercepted by SRS), and status of the SRS client node. You can also view information about the services deployed on a host. Prerequisites SRS has reached the desired state. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > SRS > Client St at us.
@@ -3540,7 +3555,7 @@ The ISV Access Settings module allows you to configure, modify, and delete the I
 
 ##### 6.3.3.1 Configure the ISV access information
 
-This topic describes how to configure the ISV access information in the system to suit your business needs. Then, you can click an icon on the Product List page to access the corresponding ISV page.
+This topic describes how to configure the ISV access information in the system to suit your business needs. Then, you can click an icon on the Product List page to access the corresponding ISV page. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > ISV Access Set t ings.
@@ -3563,7 +3578,7 @@ Result You can view the added ISV icon on the Product List page by choosing Prod
 
 ##### 6.3.3.2 Modify the access information of an ISV
 
-If the information of a third-party independent software vendor (ISV) is changed, you can modify the access information of the ISV.
+If the information of a third-party independent software vendor (ISV) is changed, you can modify the access information of the ISV. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > ISV Access Set t ings.
@@ -3576,7 +3591,7 @@ access link, or description of the ISV.
 
 ##### 6.3.3.3 Delete the access information of an ISV
 
-You can delete the access information of a third-party independent software vendor (ISV) from the system based on your business needs.
+You can delete the access information of a third-party independent software vendor (ISV) from the system based on your business needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Product Management > ISV Access Set t ings.
@@ -3592,7 +3607,7 @@ Management
 
 #### 6.4.1 View ECS disk size rankings
 
-The ECS Disk Size Ranking module allows you to view the amount of space occupied by all disks within the elastic block storage attached to an ECS cluster in Apsara Distributed File System. Context When an ECS cluster occupies a large amount of space in Apsara Distributed File System, the on-site O&M personnel must check the space occupied by each disk in the elastic block storage attached to the ECS clusters. Then, they must contact the business side to migrate data and release disks. The ECS disk size ranking feature helps O&M personnel easily identify which disks occupy a large space in Apsara Distributed File System so that they can perform targeted cleaning and quickly lower the space usage.
+The ECS Disk Size Ranking module allows you to view the amount of space occupied by all disks within the elastic block storage attached to an ECS cluster in Apsara Distributed File System. Context When an ECS cluster occupies a large amount of space in Apsara Distributed File System, the on-site O&M personnel must check the space occupied by each disk in the elastic block storage attached to the ECS clusters. Then, they must contact the business side to migrate data and release disks. The ECS disk size ranking feature helps O&M personnel easily identify which disks occupy a large space in Apsara Distributed File System so that they can perform targeted cleaning and quickly lower the space usage. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > ECS
@@ -3603,7 +3618,7 @@ All disks attached to the elastic block storage of the selected ECS cluster are 
 
 #### 6.4.2 Dashboard
 
-The Dashboard module allows you to view the overview information, health heatmap, and data of the top five clusters of a service.
+The Dashboard module allows you to view the overview information, health heatmap, and data of the top five clusters of a service. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3613,7 +3628,7 @@ The Apsara Distributed File System module shows the overview information, health
 
 #### 6.4.3 Clusters
 
-The Clusters module allows you to view the overview information, alert monitoring information, replica information, trend charts, and rack information of a cluster.
+The Clusters module allows you to view the overview information, alert monitoring information, replica information, trend charts, and rack information of a cluster. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3631,7 +3646,7 @@ Rack Inf ormat ion This section contains Storage and Servers in Rack. Servers in
 
 #### 6.4.4 Nodes
 
-The Nodes module allows you to view the information about master and chunk servers within a cluster.
+The Nodes module allows you to view the information about master and chunk servers within a cluster. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3645,7 +3660,7 @@ Mast er Inf o This section shows the master node information of the specified cl
 
 #### 6.4.5 Operations and maintenance
 
-The Operations and Maintenance module allows you to view the status of each cluster.
+The Operations and Maintenance module allows you to view the status of each cluster. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3657,7 +3672,7 @@ cluster.
 
 #### 6.4.6 Modify cluster thresholds
 
-By default, the thresholds for all clusters are configured by the system. You can modify these thresholds for storage usage, chunk server, and disk of each cluster based on your needs.
+By default, the thresholds for all clusters are configured by the system. You can modify these thresholds for storage usage, chunk server, and disk of each cluster based on your needs. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3693,7 +3708,7 @@ The Load Information module allows you to view the NC information, VM informatio
 
 ##### 6.4.7.1 View NC information
 
-The Load Information module allows you to view the data overview information for each NC and realtime data such as the load, CPU utilization, memory information, sda usage, traffic, TCP information, network exception metrics, read and write rate, BPS, kernel status, IOPS, and latency.
+The Load Information module allows you to view the data overview information for each NC and realtime data such as the load, CPU utilization, memory information, sda usage, traffic, TCP information, network exception metrics, read and write rate, BPS, kernel status, IOPS, and latency. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > Load
@@ -3703,7 +3718,7 @@ One Hour, T hree Hours, Six Hours, or One Day, or you can customize a time range
 
 ##### 6.4.7.2 View virtual machine information
 
-The Load Information module allows you to view the data overview information and trend charts of read and write rate, real-time BPS, real-time IOPS, and real-time latency of all virtual machines (VMs).
+The Load Information module allows you to view the data overview information and trend charts of read and write rate, real-time BPS, real-time IOPS, and real-time latency of all virtual machines (VMs). Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > Load
@@ -3714,7 +3729,7 @@ drop-down list, and then set T ime Frame to One Hour, T hree Hours, Six Hours, O
 
 ##### 6.4.7.3 View block device information
 
-The Load Information module allows you to view the overview information and the trend charts of the data read/write rate, real-time BPS, real-time IOPS, and real-time latency for each device.
+The Load Information module allows you to view the overview information and the trend charts of the data read/write rate, real-time BPS, real-time IOPS, and real-time latency for each device. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > Load
@@ -3725,7 +3740,7 @@ list, select an instance name from the vmName drop-down list, and then specify T
 
 #### 6.4.8 EBS dashboard
 
-The EBS Dashboard module allows you to view the overview information and cluster usage trend charts of EBS clusters.
+The EBS Dashboard module allows you to view the overview information and cluster usage trend charts of EBS clusters. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > EBS
@@ -3736,7 +3751,7 @@ The Overview section shows data overview information of the selected cluster, in
 
 #### 6.4.9 Block master operations
 
-The Block Master Operations module shows the block master node information of Elastic Block Storage (EBS) clusters, including the IP addresses and roles. The module also allows you to switch the role of a node to leader as well as query and configure flags.
+The Block Master Operations module shows the block master node information of Elastic Block Storage (EBS) clusters, including the IP addresses and roles. The module also allows you to switch the role of a node to leader as well as query and configure flags. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > Block
@@ -3792,7 +3807,7 @@ Add a block server node to the blacklist In the upper-right corner of the Block 
 
 #### 6.4.11 Snapshot server operations
 
-The SnapShotServer module shows the snapshot server node information of Elastic Block Storage (EBS) clusters, including the IP address, status, and performance parameters. The module also allows you to query and modify flags and configure snapshot server node status.
+The SnapShotServer module shows the snapshot server node information of Elastic Block Storage (EBS) clusters, including the IP address, status, and performance parameters. The module also allows you to query and modify flags and configure snapshot server node status. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3848,7 +3863,7 @@ Query the version information In the gcworker node list, find a node and choose 
 
 #### 6.4.13 Device operations
 
-The Device Operations module allows you to view disk information in Elastic Block Storage (EBS) clusters such as the disk ID, status, capacity, and type. You can also perform flush operations, modify disk configurations, query segment information, and open, close, delete, and restore devices.
+The Device Operations module allows you to view disk information in Elastic Block Storage (EBS) clusters such as the disk ID, status, capacity, and type. You can also perform flush operations, modify disk configurations, query segment information, and open, close, delete, and restore devices. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3915,7 +3930,7 @@ Query segment information In the device list, find a device and choose More > Se
 
 #### 6.4.14 Enable or disable Rebalance
 
-When segments are unevenly distributed in a block server, you can enable the Rebalance feature to redistribute the segments. After you redistribute the segments, you can disable Rebalance.
+When segments are unevenly distributed in a block server, you can enable the Rebalance feature to redistribute the segments. After you redistribute the segments, you can disable Rebalance. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3925,7 +3940,7 @@ After you click Enable Rebalance, the status of Rebalance changes to running. Af
 
 #### 6.4.15 I/O hang fault analysis
 
-The IO HANG module allows you to view the affected virtual machine (VM) list, VM cluster statistics, and device cluster statistics.
+The IO HANG module allows you to view the affected virtual machine (VM) list, VM cluster statistics, and device cluster statistics. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > IO
@@ -3935,7 +3950,7 @@ and click Search. View the following information: Af f ect ed VM List The Af f e
 
 #### 6.4.16 Slow IO analysis
 
-The Slow IO Analysis page allows you to view the slow IO list, top ten NCs, cluster statistics, top five cluster statistics, and reasons.
+The Slow IO Analysis page allows you to view the slow IO list, top ten NCs, cluster statistics, top five cluster statistics, and reasons. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management > SLOW
@@ -3945,7 +3960,7 @@ and click Search. View the following information: Slow IO List The Slow IO List 
 
 #### 6.4.17 Product settings
 
-The Product Settings module allows you to view the sales status of a cluster, configure the overcommit ratio of a cluster, and specify whether a cluster is available for sale.
+The Product Settings module allows you to view the sales status of a cluster, configure the overcommit ratio of a cluster, and specify whether a cluster is available for sale. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Apsara Dist ribut ed File Syst em Management >
@@ -3966,7 +3981,7 @@ This topic describes the features of the Task Management module. The Task Manage
 
 #### 6.5.2 View task overview
 
-The Task Overview page shows the overall running conditions of tasks in the system. You can also create tasks on this page.
+The Task Overview page shows the overall running conditions of tasks in the system. You can also create tasks on this page. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose T ask Management > Overview.
@@ -3976,7 +3991,7 @@ In the Dashboard section, view the number of tasks that are in the Pending f or 
 
 #### 6.5.3 Create a task
 
-You can make regular modifications as tasks and run tasks in the Apsara Uni-manger Operations Console.
+You can make regular modifications as tasks and run tasks in the Apsara Uni-manger Operations Console. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose T ask Management > T asks.
@@ -4006,7 +4021,7 @@ Result The created task is displayed in the task list.
 
 #### 6.5.4 View the execution status of a task
 
-After a task starts, you can view its execution status.
+After a task starts, you can view its execution status. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose T ask Management > T asks.
@@ -4022,7 +4037,7 @@ machine name to view the task execution results on it.
 
 #### 6.5.5 Start a task
 
-If you select Manual Execut ion when you create a task, you must manually start the task after it is created.
+If you select Manual Execut ion when you create a task, you must manually start the task after it is created. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose T ask Management > T asks.
@@ -4034,7 +4049,7 @@ For a new task, after you click St art for the first time, the system prompts yo
 
 #### 6.5.6 Delete a task
 
-You can delete tasks that are no longer needed.
+You can delete tasks that are no longer needed. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose T ask Management > T asks.
@@ -4045,7 +4060,7 @@ search for tasks.
 
 #### 6.5.7 Process tasks to be intervened
 
-If a task reaches a breakpoint, the task stops and waits for manual confirmation. The task proceeds only after you provide confirmation.
+If a task reaches a breakpoint, the task stops and waits for manual confirmation. The task proceeds only after you provide confirmation. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose T ask Management > Overview.
@@ -4063,7 +4078,7 @@ You can log on to machines in the Apsara Stack environment such as virtual machi
 
 ##### 6.6.1.1 Log on to the host where a server role is deployed
 
-deployed You can log on to the virtual machine, host, or container where a server role is deployed and upload or download files.
+deployed You can log on to the virtual machine, host, or container where a server role is deployed and upload or download files. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Fast Arrival.
@@ -4086,7 +4101,7 @@ logs and inspection reports of the container.
 
 ##### 6.6.1.2 Log on to the virtual machine where a server role group is deployed
 
-role group is deployed You can log on to the virtual machine where a server role group is deployed and upload or download files.
+role group is deployed You can log on to the virtual machine where a server role group is deployed and upload or download files. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Fast Arrival.
@@ -4103,7 +4118,7 @@ the server role is deployed. i. After you log on to the virtual machine where a 
 
 ##### 6.6.1.3 Query environment metadata
 
-You can view the metadata of the service registered in Apsara Infrastructure Management Framework.
+You can view the metadata of the service registered in Apsara Infrastructure Management Framework. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Fast Arrival.
@@ -4127,7 +4142,7 @@ information.
 
 ##### 6.6.1.5 Query cluster configurations
 
-You can view the configuration files of all services deployed in a cluster.
+You can view the configuration files of all services deployed in a cluster. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Fast Arrival.
@@ -4141,7 +4156,7 @@ services deployed in the cluster are displayed in the lower part of the page.
 
 ##### 6.6.1.6 Log on to a metadatabase
 
-You can log on to a metadatabase used by the server role included in the service and upload or download files.
+You can log on to a metadatabase used by the server role included in the service and upload or download files. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Fast Arrival.
@@ -4161,7 +4176,7 @@ You can view command records and videos, file upload and download records, and a
 
 ##### 6.6.2.1 View command records
 
-You can view the command records of the security O&M feature.
+You can view the command records of the security O&M feature. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Audit .
@@ -4185,7 +4200,7 @@ Operat ed By fields appear. Enter values in the fields and click Search to furth
 
 ##### 6.6.2.2 View file upload and download records
 
-You can view file upload and download records of the security operations feature.
+You can view file upload and download records of the security operations feature. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Audit .
@@ -4193,7 +4208,7 @@ You can view file upload and download records of the security operations feature
 
 ##### 6.6.2.3 View authorization information
 
-You can view command authorization information.
+You can view command authorization information. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Audit .
@@ -4225,7 +4240,7 @@ To control the risks of Linux commands, you can configure blocking rules for Lin
 
 ##### 6.6.3.1 View rules
 
-You can view the information of the command blocking rules that you create or import, such as their details, confirmation and status.
+You can view the information of the command blocking rules that you create or import, such as their details, confirmation and status. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Rules.
@@ -4274,7 +4289,7 @@ Open to import the file.
 
 ##### 6.6.3.4 Batch export rules
 
-You can batch export command blocking rules that you create.
+You can batch export command blocking rules that you create. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Rules.
@@ -4283,7 +4298,7 @@ directory (the Download directory by default), and click Download to download th
 
 ##### 6.6.3.5 Modify a rule
 
-You can modify a command blocking rule that you create.
+You can modify a command blocking rule that you create. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Rules.
@@ -4292,7 +4307,7 @@ parameters and click OK.
 
 ##### 6.6.3.6 Delete a rule
 
-You can delete a command blocking rule that you create.
+You can delete a command blocking rule that you create. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Rules.
@@ -4300,7 +4315,7 @@ You can delete a command blocking rule that you create.
 
 #### 6.6.4 Settings
 
-When a project is connected to Apsara Stack Online, you can configure the IP address and port number of the worker that the Apsara Uni-manager Console can access, and the IP address of Apsara Stack Online that the Apsara Uni-manager Console can access.
+When a project is connected to Apsara Stack Online, you can configure the IP address and port number of the worker that the Apsara Uni-manager Console can access, and the IP address of Apsara Stack Online that the Apsara Uni-manager Console can access. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click O&M.
 3. In the left-side navigation pane, choose Securit y Operat ions > Set t ings.
@@ -4335,7 +4350,7 @@ Before using Apsara Infrastructure Management Framework, you must know the follo
 
 ###### 6.7.1.1.2 Log on to the Apsara Infrastructure Management Framework console
 
-Management Framework console This topic describes how to log on to the Apsara Infrastructure Management Framework console. Prerequisites The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
+Management Framework console This topic describes how to log on to the Apsara Infrastructure Management Framework console. Prerequisites The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Open your Chrome browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the
 Enter key.
@@ -4382,7 +4397,7 @@ This topic describes the actions about cluster operations.
 
 ###### 6.7.1.1.4.1 View configuration information of a cluster
 
-This topic describes how to view the basic information, deployment plan, and configuration information of a cluster.
+This topic describes how to view the basic information, deployment plan, and configuration information of a cluster. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose Operat ions > Clust er Operat ions.
 The Clust er Operat ions page contains the following information: Cluster The name of a cluster. Click a cluster name to go to the Cluster Dashboard page. For more information, see View dashboard information of a cluster. Scale-Out/Scale-In The numbers of machines and server roles that are scaled in and out. Click a number to go to the Cluster Operation and Maintenance Center page. For more information, see View information of the cluster O&M center. Abnormal Machine Count The number of machines that are not in the Good state within a cluster. Click the number to go to the Cluster Operation and Maintenance Center page. For more information, see View information of the cluster O&M center. Final Status of Normal Machines Specifies whether a cluster has reached the desired state. Select Clust ers not Final above the cluster list to view all clusters that have not reached the desired state. Click a link in the column to view desired state information. For more information, see View the desired state of a service. Rolling Specifies whether rolling tasks are running within a cluster. Select Rolling T asks above the cluster list to view all clusters that have rolling tasks. Click rolling in the column to view rolling tasks. For more information see View rolling tasks.
@@ -4420,7 +4435,7 @@ about operation logs, see View operation logs.
 
 ###### 6.7.1.1.4.2 View dashboard information of a cluster
 
-This topic describes how to view the basic information and related statistics of a cluster.
+This topic describes how to view the basic information and related statistics of a cluster. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. Use one of the following methods to go to the Clust er Dashboard page:
 In the left-side navigation pane, click the C tab. Move the pointer over the icon next to the target cluster and select Dashboard. In the top navigation bar, choose Operat ions > Clust er Operat ions. On the Clust er Operat ions page, click the name of the target cluster.
@@ -4489,7 +4504,7 @@ page: In the left-side navigation pane, click the C tab. Move the pointer over t
 
 ###### 6.7.1.1.4.4 View the desired state of a service
 
-This topic describes how to check whether a service within a cluster has reached the desired state and how to view desired state details.
+This topic describes how to check whether a service within a cluster has reached the desired state and how to view desired state details. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. Use one of the following methods to go to the Service Final St at us Query page:
 In the left-side navigation pane, click the C tab. Move the pointer over the icon next to the target cluster and choose Monit oring > Service Final St at us Query. In the top navigation bar, choose Operat ions > Clust er Operat ions. On the Clust er Operat ions page, find the target cluster and choose Monit oring > Service Final St at us Query in the Actions column.
@@ -4529,7 +4544,7 @@ This topic describes the actions about service operations.
 
 ###### 6.7.1.1.5.1 View the service list
 
-The service list allows you to view the list of all services and the related information.
+The service list allows you to view the list of all services and the related information. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose Operat ions > Service Operat ions.
 3. View the information on the Service Operat ions page.
@@ -4548,7 +4563,7 @@ The service list allows you to view the list of all services and the related inf
 
 ###### 6.7.1.1.5.2 View dashboard information of a service instance
 
-instance This topic describes how to view the basic information and related statistics of a service instance.
+instance This topic describes how to view the basic information and related statistics of a service instance. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the left-side navigation pane, click the S tab.
 3. (Optional)Enter a service name in the search box to search for the service.
@@ -4576,7 +4591,7 @@ icon next to the target service instance and select Dashboard.
 
 ###### 6.7.1.1.5.3 View the server role dashboard
 
-The server role dashboard allows you to view the statistics of a server role.
+The server role dashboard allows you to view the statistics of a server role. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the left-side navigation pane, click the S tab.
 3. (Optional)Enter the service name in the search box. Services that meet the search condition are
@@ -4610,7 +4625,7 @@ This topic describes the actions about machine operations.
 
 ###### 6.7.1.1.6.1 View the machine dashboard
 
-The machine dashboard allows you to view the statistics of a machine.
+The machine dashboard allows you to view the statistics of a machine. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the left-side navigation pane, click the C tab.
 3. (Optional)On the Machine tab in the lower-left corner, enter the machine name in the search box.
@@ -4651,7 +4666,7 @@ You can view the alert status, alert rules, and alert history in the monitoring 
 
 ###### 6.7.1.1.7.1 Modify an alert rule
 
-You can modify an alert rule based on the actual business requirements.
+You can modify an alert rule based on the actual business requirements. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose Operat ions > Service Operat ions.
 3. (Optional)Enter the service name in the search box.
@@ -4664,7 +4679,7 @@ Wait about 10 minutes. The monitoring instance is automatically deployed. If the
 
 ###### 6.7.1.1.7.2 View the status of a monitoring instance
 
-After a monitoring instance is deployed, you can view the status of the monitoring instance.
+After a monitoring instance is deployed, you can view the status of the monitoring instance. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose Operat ions > Service Operat ions.
 3. (Optional)Enter the service name in the search box.
@@ -4674,7 +4689,7 @@ In the St at us column, view the current status of the monitoring instance.
 
 ###### 6.7.1.1.7.3 View the alert status
 
-This topic describes how to view the alerts related to different services and the alert details.
+This topic describes how to view the alerts related to different services and the alert details. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose Monit oring > Alert St at us.
 3. (Optional)Search for an alert by service name, cluster name, alert name, or alert time range.
@@ -4700,7 +4715,7 @@ parameters.
 
 ###### 6.7.1.1.7.4 View alert rules
 
-This topic describes how to view alert rules.
+This topic describes how to view alert rules. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose Monit oring > Alert Rules.
 3. (Optional)Search for alert rules by service name, cluster name, or alert name.
@@ -4776,7 +4791,7 @@ Change details parameters
 
 ###### 6.7.1.1.8.2 View running tasks
 
-This topic describes how to view running tasks.
+This topic describes how to view running tasks. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose T asks > Running T asks.
 3. (Optional)Search for running tasks by cluster name, server role name, task status, task submitter, Git
@@ -4795,7 +4810,7 @@ more information about rolling task details, see View rolling tasks.
 
 ###### 6.7.1.1.8.4 View the deployment summary
 
-On the Deployment Summary page, you can view the deployment conditions of clusters, services, and server roles in all projects on Apsara Infrastructure Management Framework.
+On the Deployment Summary page, you can view the deployment conditions of clusters, services, and server roles in all projects on Apsara Infrastructure Management Framework. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. In the top navigation bar, choose T asks > Deployment Summary.
 View the deployment status and the duration of a certain status for each project. Gray: wait to be deployed. It indicates that some services of the project depend on server roles or service instances that are being deployed, and other service instances or server roles in the project have already been deployed. Blue: being deployed. It indicates that the project has not reached the final status for one time yet. Green: has reached the final status. It indicates that all clusters in the project have reached the final status. Orange: not reaches the final status. It indicates that a server role does not reach the final status for some reason after the project reaches the final status for the first time. Configure the global clone switch. normal: Clone is allowed. block: Clone is forbidden. Configure the global dependency switch. normal: All configured dependencies are checked. ignore: The dependency is not checked. ignore_service: None of the service-level dependencies, including the server role dependencies across services, are checked, and only the server role-level dependencies are checked.
@@ -4827,7 +4842,7 @@ The system allows you to search for and view reports based on your business need
 
 ###### 6.7.1.1.9.1 View reports
 
-The Report s menu allows you to view the statistical data. Context You can view the following reports on Apsara Infrastructure Management Framework. System reports: default and common reports in the system. All reports: includes the system reports and custom reports.
+The Report s menu allows you to view the statistical data. Context You can view the following reports on Apsara Infrastructure Management Framework. System reports: default and common reports in the system. All reports: includes the system reports and custom reports. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. You can go to the report list in the following three ways:
 In the top navigation bar, choose Report s > Syst em Report s. In the top navigation bar, choose Report s > All Report s. In the left-side navigation pane, click the R tab. Move the pointer over at the right of All Report s and then select View. See the following table for the report descriptions.
@@ -4854,7 +4869,7 @@ For more information about the reports, see Appendix.
 
 ###### 6.7.1.1.9.2 Add a report to favorites
 
-You can add common reports to favorites. Then, find them quickly on the Favorit es page.
+You can add common reports to favorites. Then, find them quickly on the Favorit es page. Procedure
 1. Log on to Apsara Infrastructure Management Framework.
 2. You can go to the report list in the following three ways:
 In the top navigation bar, choose Report s > Syst em Report s. In the top navigation bar, choose Report s > All Report s. In the left-side navigation pane, click the R tab. Move the pointer over at the right of All Report s and then select View.
@@ -5368,7 +5383,7 @@ This topic describes the basic terms related to Apsara Infrastructure Management
 
 ###### 6.7.2.1.2 Log on to the Apsara Infrastructure Management Framework console
 
-Management Framework console This topic describes how to log on to the Apsara Infrastructure Management Framework console. Prerequisites The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: region-id.op s.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
+Management Framework console This topic describes how to log on to the Apsara Infrastructure Management Framework console. Prerequisites The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment personnel or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: region-id.op s.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the
 Enter key.
@@ -5411,7 +5426,7 @@ After you log on to the Apsara Infrastructure Management Framework console, the 
 
 ###### 6.7.2.1.4.1 Project operations
 
-This topic describes how to query a project and view its details.
+This topic describes how to query a project and view its details. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose Operat ions > Project Operat ions.
 3. On the Project Operations page, perform the following operations:
@@ -5437,7 +5452,7 @@ On the Home page, move the pointer over the Clust er section and click Details i
 | T ask St at us | The status of the task related to the cluster. Click the icon to filter clusters. Click the task status to view the task details. |
 | Act ions | The available operations. Click Operat ions to go to the Clust er Det ails page. |
 
-View details of a cluster This topic describes how to view details of a cluster.
+View details of a cluster This topic describes how to view details of a cluster. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose Operat ions > Clust er Operat ions.
 3. (Optional)Select a project from the drop-down list or enter a cluster name to search for the cluster.
@@ -5473,7 +5488,7 @@ page.
 |   | Clust er Resource | The details of resources that can be filtered. |
 |   | Service Inspect ion | The inspection information of each service within the cluster. |
 
-This topic describes how to view configuration files and folders of a cluster.
+This topic describes how to view configuration files and folders of a cluster. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. Use one of the following methods to go to the Clust er Conf igurat ion tab to view configuration
 files and folders: Enter a cluster name in the search box in the upper-right corner of the page. Click Operat ions next to the found cluster. On the Cluster Details page, click the Clust er Conf igurat ion tab. In the left-side navigation pane, choose Operat ions > Clust er Operat ions. On the Clust er Operat ions page, find a cluster and click Operat ions in the Act ions column. On the Cluster Details page, click the Clust er Conf igurat ion tab. The following table describes configuration files and folders of a cluster.
@@ -5497,7 +5512,7 @@ i. In the Add File dialog box, enter a file or folder name and click OK.
 
 > Not e After you enter a folder name and click OK, the folder is added.
 
-ii. Enter configuration file information into the Specialized File text editor. Click Preview and Submit . iii. In the Conf irm and Submit dialog box, enter Descript ion and click Submit . The configuration file is added. You can click the Operat ion Logs tab to view related records. This topic describes how to view differences between Git versions from operation logs.
+ii. Enter configuration file information into the Specialized File text editor. Click Preview and Submit . iii. In the Conf irm and Submit dialog box, enter Descript ion and click Submit . The configuration file is added. You can click the Operat ion Logs tab to view related records. This topic describes how to view differences between Git versions from operation logs. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. Use one of the following methods to go to the operation logs of a cluster:
 Enter a cluster name in the search box in the upper-right corner of the page. Click Operat ions next to the found cluster. On the Cluster Details page, click the Operat ion Logs tab. In the left-side navigation pane, choose Operat ions > Clust er Operat ions. On the Clust er Operat ions page, find a cluster and click Operat ions in the Act ions column. On the Cluster Details page, click the Operat ion Logs tab.
@@ -5506,7 +5521,7 @@ i. Find the operation log that you want to view and click Version Dif f erence i
 
 ###### 6.7.2.1.4.3 Service operations
 
-This topic describes how to view all services and their information.
+This topic describes how to view all services and their information. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. Use one of the following methods to go to the service list:
 On the Home page, move the pointer over the Service Inst ances section and click Details in the upper-right corner. In the left-side navigation pane, choose Operat ions > Service Operat ions. The following table describes the information displayed in the service list.
@@ -5519,7 +5534,7 @@ On the Home page, move the pointer over the Service Inst ances section and click
 | Act ions | Click Operat ions to go to the Service Details page. Click Delet e to delete the service. Not e A service can be deleted only when the number of clusters in which the service is deployed is 0. |
 
 3. (Optional)Enter a service name in the search box to search for the service.
-View details of a server role This topic describes how to view details of a server role.
+View details of a server role This topic describes how to view details of a server role. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose Operat ions > Service Operat ions.
 3. (Optional)Enter a service name in the search box to search for the service.
@@ -5534,7 +5549,7 @@ Click the Machines tab to view details of the server role.
 | Machine | The machine where the server role is deployed. Click the machine name to view the machine details. |
 | Act ions | Click Met ric to view the server role, machine, and system service metrics. Click Applicat ions to view application versions. Click T erminal to log on to the machine and perform operations. Click Rest art to restart the server role. |
 
-Click the Upgrade Hist ory tab. Click Det ails in the Act ions column to view details of a historical task. Block hardware alerts This topic describes how to shield hardware monitoring alerts. Background information You must block hardware alerts in the following scenarios: Alerts are improperly triggered by hardware. In this case, you must block the alerts, and then cancel the block operation after no alerts are reported. Upgrades fail to reach the desired state due to hardware faults, and the hardware faults cannot be rectified at this time. In this case, you must block the alerts, and then cancel the block operation after the desired state is reached.
+Click the Upgrade Hist ory tab. Click Det ails in the Act ions column to view details of a historical task. Block hardware alerts This topic describes how to shield hardware monitoring alerts. Background information You must block hardware alerts in the following scenarios: Alerts are improperly triggered by hardware. In this case, you must block the alerts, and then cancel the block operation after no alerts are reported. Upgrades fail to reach the desired state due to hardware faults, and the hardware faults cannot be rectified at this time. In this case, you must block the alerts, and then cancel the block operation after the desired state is reached. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose Operat ions > Service Operat ions.
 3. In the search box, enter cruiser to search for the cruiser service.
@@ -5566,7 +5581,7 @@ In the preceding example, the alerts caused by hard disk faults are blocked on t
 
 ###### 6.7.2.1.4.4 Machine operations
 
-This topic describes how to view the statistics of all machines.
+This topic describes how to view the statistics of all machines. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. Use one of the following methods to go to the machine list:
 On the Home page, move the pointer over the Machine section and click Details in the upperright corner. In the left-side navigation pane, choose Operat ions > Machine Operat ions.
@@ -5583,7 +5598,7 @@ the machine.
 
 ###### 6.7.2.1.5 View tasks
 
-This topic describes how to view the submitted tasks and their statuses.
+This topic describes how to view the submitted tasks and their statuses. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. Use one of the following methods to go to the task list:
 In the left-side navigation pane, choose T asks > My T asks. In the left-side navigation pane, choose T asks > Relat ed T asks.
@@ -5596,7 +5611,7 @@ icon in the St at us column to filter tasks.
 
 ###### 6.7.2.1.6.1 View reports
 
-This topic describes how to view report data. Context The following reports are available in the Apsara Infrastructure Management Framework console: System reports: include default and common reports in the system. All reports: include system reports and custom reports.
+This topic describes how to view report data. Context The following reports are available in the Apsara Infrastructure Management Framework console: System reports: include default and common reports in the system. All reports: include system reports and custom reports. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, click Report s. On the Reports page, click Go to go to the All
 Reports page. The following table describes information about reports.
@@ -5617,7 +5632,7 @@ For more information about reports, see Appendix.
 
 ###### 6.7.2.1.6.2 Add a report to favorites
 
-This topic describes how to add frequently used reports to favorites. Then, you can find them on the Home or Favorites page.
+This topic describes how to add frequently used reports to favorites. Then, you can find them on the Home or Favorites page. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, click Report s. On the Reports page, click Go to go to the All
 Reports page.
@@ -5632,7 +5647,7 @@ You can view the alert status, alert rules, and alert history in the monitoring 
 
 ###### 6.7.2.1.7.1 View the status of a metric
 
-This topic describes how to view the status of a metric.
+This topic describes how to view the status of a metric. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose Operat ions > Service Operat ions.
 3. (Optional)Enter a service name in the search box to search for the service.
@@ -5644,7 +5659,7 @@ a machine to view the server role, machine, and system service metrics.
 
 ###### 6.7.2.1.7.2 View the alert status
 
-This topic describes how to view the alerts related to different services and the alert details.
+This topic describes how to view the alerts related to different services and the alert details. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, click Monit oring. On the Monitoring page, click Go to go to the
 Alert Status page.
@@ -5686,7 +5701,7 @@ Alert Status page.
 
 ###### 6.7.2.1.7.4 View the alert history
 
-This topic describes how to view the historical alerts related to different services and the alert details.
+This topic describes how to view the historical alerts related to different services and the alert details. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, click Monit oring. On the Monitoring page, click Go to go to the
 Alert Status page.
@@ -5711,7 +5726,7 @@ parameters.
 
 ###### 6.7.2.1.8.1 Use machine operations tools
 
-This topic describes how to use machine operations tools in typical scenarios.
+This topic describes how to use machine operations tools in typical scenarios. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose T ools > Operat ion T ools > Machine T ools. On the
 Machine Tools page, click Go to go to the Operation Tools page.
@@ -5731,7 +5746,7 @@ Machine Tools page, click Go to go to the Operation Tools page.
 
 ###### 6.7.2.1.8.2 Shut down a data center
 
-This topic describes how to shut down up to 25 machines within all clusters of a data center in scenarios such as vehicle-mounted devices. Prerequisites The total number of machines within all clusters of a data center cannot exceed 25. Your browser is connected with the machines on which Apsara Infrastructure Management Framework is deployed over a smooth network. If a proxy is required to log on to the Apsara Infrastructure Management Framework console, the proxy is not configured on a machine that you want to shut down. Your browser remains active while the machines are being shut down. Data related to operations such as scaling is not retained within the default cluster before the machines are shut down. Context When you shut down a data center, business clusters are shut down first, and then the base cluster is shut down.
+This topic describes how to shut down up to 25 machines within all clusters of a data center in scenarios such as vehicle-mounted devices. Prerequisites The total number of machines within all clusters of a data center cannot exceed 25. Your browser is connected with the machines on which Apsara Infrastructure Management Framework is deployed over a smooth network. If a proxy is required to log on to the Apsara Infrastructure Management Framework console, the proxy is not configured on a machine that you want to shut down. Your browser remains active while the machines are being shut down. Data related to operations such as scaling is not retained within the default cluster before the machines are shut down. Context When you shut down a data center, business clusters are shut down first, and then the base cluster is shut down. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose T ools > IDC Shut down. In the right-side workspace, click
 Go.
@@ -5753,7 +5768,7 @@ machines are powered off. What's next If you want to use the machines in the fut
 
 ###### 6.7.2.1.8.3 View the clone progress
 
-This topic describes how to go to the OS Provision console (Corner Stone) and check the progress, status, and errors about machine installation. Prerequisites The username and password used to log on to the OP Provision console are obtained from delivery personnel. Context Apsara Infrastructure Management Framework provides a quick entry to the OS Provision console, which allows you to view details about machine installation. You can then obtain the progress and status about machine installation and then locate the installation faults.
+This topic describes how to go to the OS Provision console (Corner Stone) and check the progress, status, and errors about machine installation. Prerequisites The username and password used to log on to the OP Provision console are obtained from delivery personnel. Context Apsara Infrastructure Management Framework provides a quick entry to the OS Provision console, which allows you to view details about machine installation. You can then obtain the progress and status about machine installation and then locate the installation faults. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console.
 2. In the left-side navigation pane, choose T ools > Clone Progress.
 3. On the logon page of the OS Provision console, enter Username and Password, and then click
@@ -6230,7 +6245,7 @@ Machine Statuses Displays the running statuses of machines in the selected clust
 
 ### 7.1 Inventory analysis
 
-The Inventory Analysis module allows you to predict capacity trends and perform operations based on the available product inventory and usage habits.
+The Inventory Analysis module allows you to predict capacity trends and perform operations based on the available product inventory and usage habits. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. On the Invent ory Analysis page, view the cloud product inventory.
@@ -6238,7 +6253,7 @@ In the Invent ory Analysis section, view the average available inventory, changi
 
 ### 7.2 View the ECS inventory
 
-By viewing the Elastic Computing Service (ECS) inventory, you can query the usage and availability of ECS resources to perform O&M operations more efficiently.
+By viewing the Elastic Computing Service (ECS) inventory, you can query the usage and availability of ECS resources to perform O&M operations more efficiently. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click ECS.
@@ -6254,7 +6269,7 @@ Invent ory Det ails section, and then click Export to export the ECS inventory d
 
 ### 7.3 View the SLB inventory
 
-By viewing the Server Load Balancer (SLB) inventory, you can query the usage and availability of SLB resources to efficiently perform O&M operations.
+By viewing the Server Load Balancer (SLB) inventory, you can query the usage and availability of SLB resources to efficiently perform O&M operations. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click SLB.
@@ -6267,7 +6282,7 @@ The Internal VIP Used Inventory and Public VIP Used Inventory sections show the 
 
 ### 7.4 View the RDS inventory
 
-You can view the Relational Database Service (RDS) inventory to query the usage and availability of RDS resources. This way, you can perform O&M operations in an efficient manner.
+You can view the Relational Database Service (RDS) inventory to query the usage and availability of RDS resources. This way, you can perform O&M operations in an efficient manner. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click RDS.
@@ -6281,7 +6296,7 @@ The RDS Invent ory section shows the inventories of different types of RDS insta
 
 ### 7.5 View the OSS inventory
 
-You can view the Object Storage Service (OSS) inventory to learn more about the usage and availability of OSS resources and perform O&M operations more efficiently.
+You can view the Object Storage Service (OSS) inventory to learn more about the usage and availability of OSS resources and perform O&M operations more efficiently. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click OSS.
@@ -6295,7 +6310,7 @@ The Invent ory Availabilit y Hist ory (T B) section shows the availability of OS
 
 ### 7.6 View the Tablestore inventory
 
-By viewing the Tablestore inventory, you can query the usage and availability of Tablestore resources to perform O&M operations efficiently.
+By viewing the Tablestore inventory, you can query the usage and availability of Tablestore resources to perform O&M operations efficiently. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click OT S.
@@ -6308,7 +6323,7 @@ The Invent ory Availabilit y Hist ory (T B) section shows the available Tablesto
 
 ### 7.7 View the Log Service inventory
 
-By viewing the Log Service inventory, you can query the usage and availability of Log Service resources to perform O&M operations efficiently.
+By viewing the Log Service inventory, you can query the usage and availability of Log Service resources to perform O&M operations efficiently. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Diagnose.
 3. In the left-side navigation pane, click SLS.
@@ -6328,6 +6343,7 @@ By viewing the Elastic Block Storage (EBS) inventory, you can query the usage an
 
 > Not e EBS is the Apsara Distributed File System storage provided for ECS by the base, and ECS IO clusters are used for Apsara Distributed File System storage. Therefore, you can view the EBS inventory in ECS IO clusters.
 
+Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click EBS.
@@ -6336,7 +6352,7 @@ EBS inventory. The Invent ory Availabilit y Hist ory (T B) section shows the ava
 
 ### 7.9 View the NAS inventory
 
-By viewing the Apsara File Storage NAS inventory, you can query the usage and availability of NAS resources to perform O&M operations efficiently.
+By viewing the Apsara File Storage NAS inventory, you can query the usage and availability of NAS resources to perform O&M operations efficiently. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click NAS.
@@ -6345,7 +6361,7 @@ The Invent ory Availabilit y Hist ory (T B) section shows the available NAS inve
 
 ### 7.10 View the DFS inventory
 
-By viewing the DFS inventory, you can query the usage and availability of HDFS resources to perform O&M operations efficiently.
+By viewing the DFS inventory, you can query the usage and availability of HDFS resources to perform O&M operations efficiently. Procedure
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, click Analysis.
 3. In the left-side navigation pane, click DFS.

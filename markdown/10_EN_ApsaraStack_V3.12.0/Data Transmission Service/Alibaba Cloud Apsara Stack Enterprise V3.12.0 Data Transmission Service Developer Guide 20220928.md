@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 92
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Data Transmission Service Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Data%20Transmission%20Service%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Data Transmission Service Developer Guide 20220928
@@ -361,7 +361,7 @@ e migrated
 atabase'
 ```
 
-`}]` SchemaName and NewSchemaName are applicable only to SQLServer. DBName and NewDBName are used to specify the names of other databases. If you only specify DBName but do not specify lower levels of objects, all objects in the database are migrated. If you specify DBName and some lower levels of objects, the objects that are not specified are not migrated by default. You can use the following regular expressions to define different object names: A period (.) matches any single character except '\r\n'. An asterisk (*) matches zero or more occurrences of a subexpression which occurs before. h.*llo matches strings such as hllo and heeeello. A question mark (?) matches zero or one occurrence of a subexpression which occurs before. h.? llo matches hllo and hello, but not haello. The [characters] character set matches any character included in the braces. For example, h[aello] matches hallo and hello. The [^characters] negative character set does not match any character included in the braces. For example, h[^ae]llo matches hcllo and hdllo, but not hallo or hello. The [character1-character2] character range matches any character included in the range from character1 to character2, such as [0-9] and [a-z].
+`}]` `}` SchemaName and NewSchemaName are applicable only to SQLServer. DBName and NewDBName are used to specify the names of other databases. If you only specify DBName but do not specify lower levels of objects, all objects in the database are migrated. If you specify DBName and some lower levels of objects, the objects that are not specified are not migrated by default. You can use the following regular expressions to define different object names: A period (.) matches any single character except '\r\n'. An asterisk (*) matches zero or more occurrences of a subexpression which occurs before. h.*llo matches strings such as hllo and heeeello. A question mark (?) matches zero or one occurrence of a subexpression which occurs before. h.? llo matches hllo and hello, but not haello. The [characters] character set matches any character included in the braces. For example, h[aello] matches hallo and hello. The [^characters] negative character set does not match any character included in the braces. For example, h[^ae]llo matches hcllo and hdllo, but not hallo or hello. The [character1-character2] character range matches any character included in the range from character1 to character2, such as [0-9] and [a-z].
 
 ###### 1.1.2.1.4 Response parameters
 
@@ -414,6 +414,7 @@ private static void configureMigrationJob(String MigrationJobId){
         request.setMigrationModeDataIntialization(MigrationMode_DataIntialization);
         request.setMigrationModeDataSynchronization(MigrationMode_DataSynchronization);
         request.setMigrationObject(MigrationObject);
+        try {
             ConfigureMigrationJobResponse response = client.getAcsResponse(request);
             System.out.println("Configure "+ MigrationJobId+ " Succeed");
         } catch (Exception e) {
@@ -421,6 +422,8 @@ private static void configureMigrationJob(String MigrationJobId){
             System.out.println("Configure "+MigrationJobId + " Failed!") ;
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.2.2 CreateMigrationJob
 
@@ -453,6 +456,7 @@ private static String createMigrationJob(String region,String migrationJobClass)
             CreateMigrationJobRequest request=new CreateMigrationJobRequest();
             request.setRegion("cn-hangzhou");
             request.setMigrationJobClass("small");
+            try {
                 CreateMigrationJobResponse response = client.getAcsResponse(request);
                 String MigrationJobId = response.getMigrationJobId();
                 System.out.println("Create Migration Job succeed. The Migration Job Id is "
@@ -463,6 +467,8 @@ private static String createMigrationJob(String region,String migrationJobClass)
                 System.out.println("Create Migration Job failed!" +e.toString());
                 return null;
 ```
+
+`}` `}`
 
 ##### 1.1.2.3 DeletetMigrationJob
 
@@ -492,6 +498,7 @@ private static void deleteMigrationJob(String MigrationJobId) {
         DeleteMigrationJobRequest request = new DeleteMigrationJobRequest();
         DeleteMigrationJobResponse response = new DeleteMigrationJobResponse();
         request.setMigrationJobId(MigrationJobId);
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Delete Migration Job "+MigrationJobId+" Succeed!") ;
         } catch (Exception e) {
@@ -499,6 +506,8 @@ private static void deleteMigrationJob(String MigrationJobId) {
             System.out.println("Delete Migration Job "+MigrationJobId+" Failed!") ;
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.2.4 DescribeMigrationJobDetail
 
@@ -591,6 +600,7 @@ private static void describeMigrationJobDetail(String MigrationJobId) {
         request.setMigrationModeStructureInitialization(true);
         request.setMigrationModeDataInitialization(true);
         request.setMigrationModeDataSynchronization(true);
+        try {
             DescribeMigrationJobDetailResponse response = client.getAcsResponse(request);
             System.out.println("Get Migration Detail of Migration Job " +MigrationJobId+" S
 ucceed!") ;
@@ -606,6 +616,11 @@ alizationDetailList();
                 System.out.println("ObjectName:"+objectName+"; SRCDBName:"+SrcDBName+"; DES
 TDBName:"
                         +DestDBName+"; Status:"+Status+"errorMsg:"+errorMsg);
+```
+
+`}`
+
+```java
             List<DataInitializationDetail> dataInitDetails = response.getDataInitialization
 DetailList();
             System.out.println("Data Initialization Detail:");
@@ -622,6 +637,11 @@ DetailList();
                         +"; DESTDBName:"+tbl_destDBName+"; SumRows:"+dataInitSumRows+"; Fin
 ishRows"
                         +"; UsedTime:"+dataUsedTime+"; ErrorMSG:"+dataInitErrMSG);
+```
+
+`}`
+
+```java
             List<DataSynchronizationDetail> dataSyncDetails = response.getDataSynchronizati
 onDetailList();
             System.out.println("Data Synchronization Detail");
@@ -639,12 +659,19 @@ e(); StringdataSyncStatus=dataSyncDetailsget(i)getStatus();
 BName
                         +"; DESTDBName:"+dataSyncDESTDBName+"; Status:"+dataSyncStatus+"; E
 rrorMSG:"+dataSyncErrMsg);
+```
+
+`}`
+
+```java
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println("Get Migration Detail of Migration Job " +MigrationJobId+" F
 ailed!") ;
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.2.5 DescribeMigrationJobStatus
 
@@ -824,6 +851,7 @@ etDatabaseName()
                     +"DestinationEndpoint.OracleSID:"+response.getDestinationEndpoint().get
 OracleSID());
             /*Get Status of Precheck*/
+            try {
                 com.aliyuncs.dts.model.v20160801. DescribeMigrationJobStatusResponse.Preche
 ckStatus precheckStatus = response.getPrecheckStatus();
                 System.out.println("Get  Precheck Status of Migration Job "+MigrationJobId
@@ -841,12 +869,23 @@ k Percent:"+precheckStatus.getPercent());
                     String errorMessage =checkItems.get(i).getErrorMessage();
                     System.out.println("CheckItem:"+checkItem+"; CheckStatus:"+checkStatus
                             +"errorMessage:"+errorMessage+"; repairMethod:"+repairMethod);
+```
+
+`}`
+
+```java
             } catch (Exception e) {
                 // TODO: handle exception
                 System.out.println("Get  Precheck Status of Migration Job "+MigrationJobId
 +" Failed!") ;
                 System.out.println(e.toString());
+```
+
+`}`
+
+```java
             /*Get Status of Structure Migration*/
+            try {
                 StructureInitializationStatus strucInitStatus = new StructureInitialization
 Status();
                 strucInitStatus = response.getStructureInitializationStatus();
@@ -863,7 +902,13 @@ ess+"; errorMsg:"+errorMsg);
                 System.out.println("Get Structure Initialization Status of Migration Job "
 +MigrationJobId+" Failed!") ;
                 System.out.println(e.toString());
+```
+
+`}`
+
+```java
             /*Get Status of Data Migration*/
+            try {
                 DataInitializationStatus dataInitStatus = new DataInitializationStatus();
                 dataInitStatus = response.getDataInitializationStatus();
                 String datainitstatus=dataInitStatus.getStatus();
@@ -879,6 +924,11 @@ progress:"+datainitprogress+"; errorMsg:"+datainiterrormsg);
                  System.out.println("Get Data Initialization Status of Migration Job " +Mig
 rationJobId+" Failed!") ;
                  System.out.println(e.toString());
+```
+
+`}`
+
+```
             /*Get Status of Data Synchronization*/
                 DataSynchronizationStatus dataSyncStatus = new DataSynchronizationStatus();
                 dataSyncStatus = response.getDataSynchronizationStatus();
@@ -898,11 +948,18 @@ elay:"+datasyncdelay+"; errorMsg:"+datasyncerrormsg);
                 System.out.println("Get Data Synchronization Status of Migration Job " +Mig
 rationJobId+" Failed!") ;
                 System.out.println(e.toString());
+```
+
+`}`
+
+```java
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println("Get Status of Migration Job "+MigrationJobId+" Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.2.6 StartMigrationJob
 
@@ -931,6 +988,7 @@ The following code provides an example of how to use the Java SDK to start a mig
 private static void startMigrationJob(String MigrationJobId){
         StartMigrationJobRequest request = new StartMigrationJobRequest();
         request.setMigrationJobId(MigrationJobId);
+        try {
             StartMigrationJobResponse response = client.getAcsResponse(request);
             System.out.println("Start "+MigrationJobId+" Succeed");
         } catch (Exception e) {
@@ -938,6 +996,8 @@ private static void startMigrationJob(String MigrationJobId){
             System.out.println("Start "+MigrationJobId + " Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.2.7 StopMigrationJob
 
@@ -974,6 +1034,8 @@ private static void stopMigrationJob(String MigrationJobId) {
             System.out.println(e.toString());
 ```
 
+`}` `}`
+
 ##### 1.1.2.8 SuspendMigrationJob
 
 ###### 1.1.2.8.1 Overview
@@ -1001,6 +1063,7 @@ The following code provides an example of how to use the Java SDK to suspend a m
 private static void suspendMigrationJob(String MigrationJobId){
         SuspendMigrationJobRequest request = new SuspendMigrationJobRequest();
         request.setMigrationJobId(MigrationJobId);
+        try {
             SuspendMigrationJobResponse response = client.getAcsResponse(request);
             System.out.println("Suspend "+ MigrationJobId + " Succeed");
         } catch (Exception e) {
@@ -1008,6 +1071,8 @@ private static void suspendMigrationJob(String MigrationJobId){
             System.out.println("Suspend "+MigrationJobId +"Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 #### 1.1.3 Data subscription APIs
 
@@ -1047,7 +1112,7 @@ SubscriptionObject:{
                    TableName: "The name of the table to be migrated"
 ```
 
-`}]` SubscriptionObject indicates the whitelist of objects to be subscribed. You can use the following regular expressions to define different object names: A period (.) matches any single character except '\r\n'. An asterisk (*) matches zero or more occurrences of a subexpression which occurs before. h.*llo matches strings such as hllo and heeeello. A question mark (?) matches zero or one occurrence of a subexpression which occurs before. h.? llo matches hllo and hello, but not haello. The [characters] character set matches any character included in the braces. For example, h[aello] matches hallo and hello. The [^characters] negative character set does not match any character included in the braces. For example, h[^ae]llo matches hcllo and hdllo, but not hallo or hello. The [character1-character2] character range matches any character included in the range from character1 to character2, such as [0-9] and [a-z].
+`}]` `}` SubscriptionObject indicates the whitelist of objects to be subscribed. You can use the following regular expressions to define different object names: A period (.) matches any single character except '\r\n'. An asterisk (*) matches zero or more occurrences of a subexpression which occurs before. h.*llo matches strings such as hllo and heeeello. A question mark (?) matches zero or one occurrence of a subexpression which occurs before. h.? llo matches hllo and hello, but not haello. The [characters] character set matches any character included in the braces. For example, h[aello] matches hallo and hello. The [^characters] negative character set does not match any character included in the braces. For example, h[^ae]llo matches hcllo and hdllo, but not hallo or hello. The [character1-character2] character range matches any character included in the range from character1 to character2, such as [0-9] and [a-z].
 
 ###### 1.1.3.1.4 Response parameters
 
@@ -1082,6 +1147,7 @@ uest();
         request.setSourceEndpointInstanceType(SourceEndpoint_InstanceType);
         request.setSourceEndpointInstanceID(SourceEndpoint_InstanceId);
         request.setMigrationObject(MigrationObjects);
+        try {
             ConfigureSubscriptionInstanceResponse response = client.getAcsResponse(request)
 ```
 
@@ -1094,6 +1160,8 @@ uest();
             System.out.println("Configure "+MigrationJobId + " Failed!") ;
             System.out.println(e.toString());
 ```
+
+`}`
 
 ##### 1.1.3.2 CreateSubscriptionInstance
 
@@ -1127,16 +1195,23 @@ private String create() throws Exception {
 
 ;
 
-```java
+```
         request.setRegion("cn-hangzhou");
         request.setPayType("postpaid");
         CreateSubscriptionInstanceResponse response = client.getAcsResponse(request);
         if(response == null){
             throw new Exception("create fail");
+```
+
+`}`
+
+```java
         System.out.println("CreateSubscriptionInstanceRequest, result :"+response.getSubscr
 iptionInstanceId());
         return response.getSubscriptionInstanceId();
 ```
+
+`}`
 
 ##### 1.1.3.3 DeleteSubscriptionInstance
 
@@ -1169,6 +1244,7 @@ private static void deleteMigrationJob(String MigrationJobId) {
         DeleteMigrationJobRequest request = new DeleteMigrationJobRequest();
         DeleteMigrationJobResponse response = new DeleteMigrationJobResponse();
         request.setMigrationJobId(MigrationJobId);
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Delete Migration Job "+MigrationJobId+" Succeed!") ;
         } catch (Exception e) {
@@ -1176,6 +1252,8 @@ private static void deleteMigrationJob(String MigrationJobId) {
             System.out.println("Delete Migration Job "+MigrationJobId+" Failed!") ;
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.3.4 DescribeSubscriptionInstances
 
@@ -1207,7 +1285,7 @@ You can call this operation to query the list of subscription channels that your
 
 The following code provides an example of how to use the Java SDK to query the list of subscription instances.
 
-```java
+```
  public List<SubscriptionInstance> list(String jobName) throws ClientException {
         DescribeSubscriptionInstancesRequest request = new DescribeSubscriptionInstancesReq
 uest();
@@ -1215,12 +1293,19 @@ uest();
         request.setPageSize(20);
         if(jobName! =null) {
             request.setSubscriptionInstanceName(jobName);
+```
+
+`}`
+
+```java
         DescribeSubscriptionInstancesResponse response = client.getAcsResponse(request);
         System.out.println("page no: "+response.getPageNumber());
         System.out.println("page size: "+response.getPageRecordCount());
         System.out.println("size: "+ response.getSubscriptionInstances().size());
         return response.getSubscriptionInstances();
 ```
+
+`}`
 
 ##### 1.1.3.5 DescribeSubscriptionInstanceStatus
 
@@ -1301,6 +1386,8 @@ eStatusRequest();
         System.out.println(response.getConsumptionCheckpoint());
 ```
 
+`}`
+
 ##### 1.1.3.6 ModifyComsumptionTimestamp
 
 ###### 1.1.3.6.1 Overview
@@ -1368,7 +1455,7 @@ SubscriptionObject:{
                    TableName: "The name of the table to be migrated"
 ```
 
-`}]` SubscriptionObject indicates the whitelist of objects to be subscribed. You can use the following regular expressions to define different object names: A period (.) matches any single character except '\r\n'. An asterisk (*) matches zero or more occurrences of a subexpression which occurs before. h.*llo matches strings such as hllo and heeeello. A question mark (?) matches zero or one occurrence of a subexpression which occurs before. h.? llo matches hllo and hello, but not haello. The [characters] character set matches any character included in the braces. For example, h[aello] matches hallo and hello. The [^characters] negative character set does not match any character included in the braces. For example, h[^ae]llo matches hcllo and hdllo, but not hallo or hello. The [character1-character2] character range matches any character included in the range from character1 to character2, such as [0-9] and [a-z].
+`}]` `}` SubscriptionObject indicates the whitelist of objects to be subscribed. You can use the following regular expressions to define different object names: A period (.) matches any single character except '\r\n'. An asterisk (*) matches zero or more occurrences of a subexpression which occurs before. h.*llo matches strings such as hllo and heeeello. A question mark (?) matches zero or one occurrence of a subexpression which occurs before. h.? llo matches hllo and hello, but not haello. The [characters] character set matches any character included in the braces. For example, h[aello] matches hallo and hello. The [^characters] negative character set does not match any character included in the braces. For example, h[^ae]llo matches hcllo and hdllo, but not hallo or hello. The [character1-character2] character range matches any character included in the range from character1 to character2, such as [0-9] and [a-z].
 
 ###### 1.1.3.7.4 Response parameters
 
@@ -1400,6 +1487,8 @@ private void modifyObject(String jobId) throws ClientException {
         System.out.println(response.getSuccess());
 ```
 
+`}`
+
 ##### 1.1.3.8 StartSubscriptionInstance
 
 ###### 1.1.3.8.1 Overview
@@ -1430,6 +1519,7 @@ The following code provides an example of how to use the Java SDK to start a sub
 private static void startSbeJob(String MigrationJobId){
         StartSubscriptionInstanceRequest request = new StartSubscriptionInstanceRequest();
         request.setSubscriptionInstanceId(jobId);
+        try {
             StartSubscriptionInstanceResponse response = client.getAcsResponse(request);
             System.out.println("Start "+MigrationJobId+" Succeed");
         } catch (Exception e) {
@@ -1498,6 +1588,7 @@ public void configureSyncJobRDS2RDS(String SyncJobId,DefaultAcsClient client) {
         request.setSynchronizationObjects(SyncObject);
         ConfigureSynchronizationJobResponse response = new ConfigureSynchronizationJobRespo
 nse();
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Configure Sync Job Succeed!") ;
         } catch (Exception e) {
@@ -1505,6 +1596,8 @@ nse();
             System.out.println("Configure Sync Job Failed");
             System.out.println(e.toString());
 ```
+
+`}`
 
 ##### 1.1.4.2 CreateSynchronizationJob
 
@@ -1551,6 +1644,7 @@ public class DataSyncTest {
         request.setPayType("Postpaid");
         request.setClientToken("createsyncjob_1");
         CreateSynchronizationJobResponse response = new CreateSynchronizationJobResponse();
+        try {
             response = client.getAcsResponse(request);
             String DataSyncId  = response.getSynchronizationJobId();
             System.out.println("Create Synchronization Job Succeed! Synchronization Job Id
@@ -1561,6 +1655,8 @@ is "+DataSyncId);
             System.out.println("Create Synchronization Job Failed!") ;
             return null;
 ```
+
+`}` `}`
 
 ##### 1.1.4.3 DeleteSynchronizationJob
 
@@ -1596,12 +1692,15 @@ public void deleteSyncJob(String SyncJobId,DefaultAcsClient client) {
         DeleteSynchronizationJobRequest request = new DeleteSynchronizationJobRequest();
         request.setSynchronizationJobId(SyncJobId);
         DeleteSynchronizationJobResponse response = new DeleteSynchronizationJobResponse();
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Delete Sync Job "+SyncJobId+ " Succeed!") ;
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println("Delete Sync Job "+SyncJobId+ " Failed!") ;
 ```
+
+`}` `}`
 
 ##### 1.1.4.4 DescribeDataLoadStatus
 
@@ -1644,6 +1743,7 @@ st();
         request.setSynchronizationJobId(SyncJobId);
         DescribeInitializationStatusResponse response = new DescribeInitializationStatusRes
 ponse();
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Describe Initialization Detail of Synchronization Job "+Syn
 cJobId+" Succeed!") ;
@@ -1663,9 +1763,14 @@ aSynchronizationDetail> dataSynchronizationDetails = response.getDataSynchroniza
 
 `)`
 
-```java
+```
                         +"; Status:"+strucInitDetails.get(i).getStatus()
                         +"; ErrMSG:"+strucInitDetails.get(i).getErrorMessage());
+```
+
+`}`
+
+```java
             System.out.println("Data Initialization Detail:");
             for (int i = 0; i < dataInitDetails.size(); i++) {
                 System.out.println("TableName:"+dataInitDetails.get(i).getTableName()
@@ -1676,6 +1781,11 @@ aSynchronizationDetail> dataSynchronizationDetails = response.getDataSynchroniza
                         +"; FinishedRows:"+dataInitDetails.get(i).getFinishRowNum()
                         +"; UsedTime:"+dataInitDetails.get(i).getUsedTime()
                         +"; ErroMSG:"+dataInitDetails.get(i).getErrorMessage());
+```
+
+`}`
+
+```java
             System.out.println("Data Synchronization Detail:");
             for (int i = 0; i < dataSynchronizationDetails.size(); i++) {
                 System.out.println("TableName:"+dataSynchronizationDetails.get(i).getTableN
@@ -1686,6 +1796,11 @@ ame()
 nerDBName()
                         +"; Status:"+dataSynchronizationDetails.get(i).getStatus()
                         +"; ErrMSG:"+dataSynchronizationDetails.get(i).getErrorMessage());
+```
+
+`}`
+
+```java
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println("Describe Initialization Status of Synchronization Job "+Syn
@@ -1805,6 +1920,7 @@ tusRequest();
         request.setSynchronizationJobId(SyncJobId);
         DescribeSynchronizationJobStatusResponse response = new DescribeSynchronizationJobS
 tatusResponse();
+        try {
             response = client.getAcsResponse(request);
             /*Get Sync Configure of the Sync Job*/
             System.out.println("SyncJobId:"+response.getSynchronizationJobId()
@@ -1836,6 +1952,7 @@ tStatus()
 
 ```java
             // Get Precheck Status of the synchronization job
+            try {
                 com.aliyuncs.dts.model.v20160801. DescribeSynchronizationJobStatusResponse.
 PrecheckStatus precheckStatus = response.getPrecheckStatus();
                 System.out.println("Get Precheck Status for Sync Job Succeed");
@@ -1863,7 +1980,13 @@ RepairMethod"+responsegetPrecheckStats()getDetail()get
             } catch (Exception e) {
                 // TODO: handle exception
                 System.out.println("Get Precheck Status for Sync Job Failed");
+```
+
+`}`
+
+```java
             // Get Structure Initialization Status of the synchronization job
+            try {
                 System.out.println("Get Structure Initialization Status Succeed!") ;
                 System.out.println("Structure Init Status:"+response.getStructureInitializa
 tionStatus().getStatus()
@@ -1876,7 +1999,13 @@ ssage());
             } catch (Exception e) {
                 // TODO: handle exception
                 System.out.println("Get Structure Init Status Failed!") ;
+```
+
+`}`
+
+```java
             // Get Data Initialization Status of the synchronization job
+            try {
                 System.out.println("Get Data Initialization Status Succeed!") ;
                 System.out.println("Data Init Status:"+response.getDataInitializationStatus
 ().getStatus()
@@ -1888,7 +2017,13 @@ ssage());
                 // TODO: handle exception
                 System.out.println("Get Data Init Status Failed!") ;
                 System.out.println(e.toString());
+```
+
+`}`
+
+```java
             //Get Data Sync Status
+            try {
                 com.aliyuncs.dts.model.v20160801. DescribeSynchronizationJobStatusResponse.
 DataSynchronizationStatus dataSyncStatus = response.getDataSynchronizationStatus();
                 System.out.println("Get Data Synchronization Status Succeed!") ;
@@ -1914,6 +2049,8 @@ e());
             System.out.println("Describe Status of Data Sync Job "+ SyncJobId + "Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.4.6 DescribeSynchronizationJobs
 
@@ -2035,6 +2172,7 @@ public void descSyncJobs(DefaultAcsClient client) {
 ();
         DescribeSynchronizationJobsResponse response = new DescribeSynchronizationJobsRespo
 nse();
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Describe all Synchronization Jobs Succeed!") ;
             List<SynchronizationInstance> syncInstances=response.getSynchronizationInstance
@@ -2059,6 +2197,7 @@ ndpoint().getInstanceType()
                         +"DestEndpointInstanceId:"+syncInstance.getDestinationEndpoint().ge
 tInstanceId());
                 // Get Precheck Status
+                try {
                     com.aliyuncs.dts.model.v20160801. DescribeSynchronizationJobsResponse.S
 ynchronizationInstance.PrecheckStatus precheckStatus = syncInstance.getPrecheckStatus();
                     System.out.println("Get Precheck Status for Sync Job Succeed");
@@ -2074,15 +2213,26 @@ tDetail().get(j).getCheckStatus()
 
 `g` `j` `g`
 
-```java
+```
                                 +"; ErrorMSG:"+syncInstance.getPrecheckStatus().getDetail()
 .get(j).getErrorMessage()
                                 +"; RepairMethod:"+syncInstance.getPrecheckStatus().getDeta
 il().get(j).getRepairMethod());
+```
+
+`}`
+
+```java
                 } catch (Exception e) {
                     // TODO: handle exception
                     System.out.println("Get Precheck Status for Sync Job Failed");
+```
+
+`}`
+
+```java
                 // Get Structure Initialization Status
+                try {
                     System.out.println("Get Structure Initialization Status Succeed!") ;
                     System.out.println("Structure Init Status:"+syncInstance.getStructureIn
 itializationStatus().getStatus()
@@ -2095,7 +2245,13 @@ tErrorMessage());
                 } catch (Exception e) {
                     // TODO: handle exception
                     System.out.println("Get Structure Initialization Status Failed!") ;
+```
+
+`}`
+
+```java
                 // Get Data Initialization Status
+                try {
                     System.out.println("Get Data Init Status Succeed!") ;
                     System.out.println("Data Init Status:"+syncInstance.getDataInitializati
 onStatus().getStatus()
@@ -2109,7 +2265,13 @@ rMessage());
                     // TODO: handle exception
                     System.out.println("Get Data Init Status Failed!") ;
                     System.out.println(e.toString());
+```
+
+`}`
+
+```java
                 //Get Data Synchronization Status
+                try {
                     System.out.println("Get Data Synchronization Status Succeed!") ;
                     System.out.println("Data Sync Status:"+syncInstance.getDataSynchronizat
 ionStatus().getStatus()
@@ -2131,6 +2293,8 @@ orMessage());
             System.out.println("Desc all Sync Jobs Failed!") ;
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.4.7 DescribeObjectModifyStatus
 
@@ -2235,6 +2399,7 @@ ionObjectModifyStatusRequest();
         request.setTaskId(TaskId);
         DescribeSynchronizationObjectModifyStatusResponse response = new DescribeSynchroniz
 ationObjectModifyStatusResponse();
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Describe Sync Object Modify Status Succeed!") ;
             String status=response.getStatus();
@@ -2266,6 +2431,11 @@ s();
                 System.out.println("CheckItme:"+ItemName+"; Status:"+CheckStatus+"; ErrorMS
 G:"+CheckErrorMsg
                         +"; RepairMethod:"+RepairMethod);
+```
+
+`}`
+
+```java
             // Get the status of the structure Initialization
             String strucInit_Status=strucInitStatus.getStatus();
             String strucInit_percent=strucInitStatus.getPercent();
@@ -2295,6 +2465,8 @@ G:"+CheckErrorMsg
             System.out.println("Describe Synchronization Objects Modify Status Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.4.8 ModifySynchronizationObject
 
@@ -2330,6 +2502,7 @@ public String modifySyncObjects(String SyncJobId,DefaultAcsClient client) {
         request.setSynchronizationObjects(SyncObject);
         ModifySynchronizationObjectResponse response = new ModifySynchronizationObjectRespo
 nse();
+        try {
             response = client.getAcsResponse(request);
             String TaskId=response.getTaskId();
             System.out.println("Modify Sync Job "+SyncJobId+" Succeed! Modify task Id:"+Tas
@@ -2341,6 +2514,8 @@ kId);
             System.out.println(e.toString());
             return null;
 ```
+
+`}` `}`
 
 ##### 1.1.4.9 StartSynchronizationJob
 
@@ -2370,6 +2545,7 @@ public void startSyncJob(String SyncJobId,DefaultAcsClient client) {
         StartSynchronizationJobRequest request  = new StartSynchronizationJobRequest();
         request.setSynchronizationJobId(SyncJobId);
         StartSynchronizationJobResponse response = new StartSynchronizationJobResponse();
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Start Sync Job "+SyncJobId+" Succeed!") ;
         } catch (Exception e) {
@@ -2377,6 +2553,8 @@ public void startSyncJob(String SyncJobId,DefaultAcsClient client) {
             System.out.println("Start Sync Job "+SyncJobId+ " Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.4.10 SuspendSynchronizationJob
 
@@ -2411,6 +2589,7 @@ public void suspendSyncJob(String SyncJobId,DefaultAcsClient client) {
 );
 
 ```java
+        try {
             response = client.getAcsResponse(request);
             System.out.println("Suspend Sync Job "+SyncJobId+ " Succeed!") ;
         } catch (Exception e) {
@@ -2418,6 +2597,8 @@ public void suspendSyncJob(String SyncJobId,DefaultAcsClient client) {
             System.out.println("Suspend Sync Job "+SyncJobId+" Failed");
             System.out.println(e.toString());
 ```
+
+`}` `}`
 
 ##### 1.1.4.11 DescribeSynchronizationJobStatusList
 
@@ -2463,6 +2644,7 @@ ccessSecret>");
 bStatusListRequest();
         request.setRegionId("<region>");
         request.setSynchronizationJobIdListJsonStr("[\"dts********\"]");
+        try {
             DescribeSynchronizationJobStatusListResponse response = client.getAcsResponse(r
 equest);
             System.out.println(new Gson().toJson(response));
@@ -2473,6 +2655,8 @@ equest);
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 ##### 1.1.4.12 ConfigureSynchronizationJobReplicatorCompare
 
@@ -2510,6 +2694,7 @@ izationJobReplicatorCompareRequest();
         request.setRegionId("<region>");
         request.setSynchronizationJobId("dts********");
         request.putQueryParameter("SynchronizationReplicatorCompareEnable", "true");
+        try {
             ConfigureSynchronizationJobReplicatorCompareResponse response = client.getAcsRe
 sponse(request);
             System.out.println(new Gson().toJson(response));
@@ -2520,6 +2705,8 @@ sponse(request);
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 ##### 1.1.4.13 DescribeSynchronizationJobReplicatorCompare
 
@@ -2558,6 +2745,7 @@ ccessSecret>");
 ationJobReplicatorCompareRequest();
         request.setRegionId("<region>");
         request.setSynchronizationJobId("dts********");
+        try {
             DescribeSynchronizationJobReplicatorCompareResponse response = client.getAcsRes
 ponse(request);
             System.out.println(new Gson().toJson(response));
@@ -2568,6 +2756,8 @@ ponse(request);
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
 ```
+
+`}` `}` `}`
 
 ### 1.2 Call the Java SDK
 
@@ -2666,6 +2856,7 @@ CreateMigrationJobRequest request=new CreateMigrationJobRequest();
 3. Initiate a call and handle the response.
 
 ```java
+try {
                         ConfigureMigrationJobResponse response = client.getAcsResponse(
 request);
                         System.out.println("Configure "+ MigrationJobId+ " Succeed");
@@ -2675,7 +2866,7 @@ request);
                         System.out.println(e.toString());
 ```
 
-In normal cases, all response fields are deserialized into the response. You can directly call `respons` `e.getXXX()` to obtain the response fields. However, if an exception occurs or you want to obtain the original HTTP response, you can use the `doAction()` method to obtain the original response.
+`}` In normal cases, all response fields are deserialized into the response. You can directly call `respons` `e.getXXX()` to obtain the response fields. However, if an exception occurs or you want to obtain the original HTTP response, you can use the `doAction()` method to obtain the original response.
 
 ```
 HttpResponse response = client.doAction(request);
@@ -2692,6 +2883,7 @@ com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified
 If you want to handle the errors returned by the Java SDK, refer to the following example to write your code:
 
 ```java
+try {
     FooResponse response = client.getAcsResponse(request);
     // The following code is used to solve returned errors:
     // ...
@@ -2709,6 +2901,8 @@ technical support personnel.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 ##### 1.2.2.5 Errors and troubleshooting
 

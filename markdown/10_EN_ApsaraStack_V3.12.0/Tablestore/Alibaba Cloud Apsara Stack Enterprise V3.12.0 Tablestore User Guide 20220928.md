@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 15
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Tablestore User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Tablestore%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Tablestore User Guide 20220928
@@ -59,7 +59,7 @@ This topic describes how to log on to the Tablestore console. Prerequisites Befo
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
-Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click Log On.
 4. In the top navigation bar, choose Product s > T ableSt ore.
 
@@ -89,8 +89,9 @@ On the Overview tab, you can view the created instance. After the instance is cr
 This topic describes how to create a table in the Tablestore console. Procedure
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. On the Inst ance Det ails tab, click Creat e T able.
-You can create a maximum of 1,024 tables in each instance.
+Not e You can create a maximum of 1,024 tables in each instance.
 4. In the Creat e T able dialog box, set T able Name and Primary Key.
 The following table describes the parameters you can configure.
 
@@ -120,6 +121,7 @@ After a table is created, you can view the table in the T able List section. If 
 console After a table is created, you can read data from and write data to the table in the console. Add data
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. In the T able List section of the Inst ance Det ails tab, click the name of the target table and click
 the Dat a Edit or tab. You can also click Dat a Edit or in the Actions column.
 4. On the Dat a Edit or tab, click Insert .
@@ -129,6 +131,7 @@ T ype, Value, and Version. By default, Syst em T ime is selected, indicating tha
 Rows that contain the written data are displayed on the Dat a Edit or tab. Update data You can update data in the attribute columns of a row.
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. In the T able List section of the Inst ance Det ails tab, click the name of the target table and click
 the Dat a Edit or tab. You can also click Dat a Edit or in the Actions column.
 4. On the Dat a Edit or tab, select the row of data to update. Click Updat e.
@@ -138,6 +141,7 @@ remove attribute columns, and update or delete data in attribute columns. You ca
 Query data In the Tablestore console, you can query data in a single row (GetRow) or query data within a specified range (RangeQuery). To query data in a single row, perform the following operations:
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. In the T able List section of the Inst ance Det ails tab, click the name of the target table and click
 the Dat a Edit or tab. You can also click Dat a Edit or in the Actions column.
 4. On the Dat a Edit or tab, click Search.
@@ -147,15 +151,17 @@ i. In the Search dialog box, Set Modes to Get Row. ii. By default, the system re
 Data that meets the filter conditions is displayed on the Dat a Edit or tab. To perform range query, perform the following steps:
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. In the T able List section of the Inst ance Det ails tab, click the name of the target table and click
 the Dat a Edit or tab. You can also click Dat a Edit or in the Actions column.
 4. On the Dat a Edit or tab, click Search.
 5. Set filter conditions.
-i. In the Search dialog box, Set Modes to Range Search. ii. By default, the system returns all columns. To return specified attribute columns, turn off All Columns. Enter the names of the attribute columns to return. Separate the names of the attribute columns with commas (,). iii. Set Start Primary Key Column and End Primary Key Column. You can set Start Primary Key Column to Min Value or Cust om and End Primary Key Column to Max Value or Cust om. If you select Cust om, enter a custom value. The value in the first primary key column takes priority when the range query mode is used. When the minimum and maximum values for the first primary key column are the same, the system uses the value in the second primary key column to perform the query. The query rules for the subsequent primary keys are the same as those for the first two primary keys. The Custom range is a left-open and right-closed interval. iv. Set Count of Versions to specify the maximum number of versions to return. v. Set Sequence to Forward Search or Backward Search.
+i. In the Search dialog box, Set Modes to Range Search. ii. By default, the system returns all columns. To return specified attribute columns, turn off All Columns. Enter the names of the attribute columns to return. Separate the names of the attribute columns with commas (,). iii. Set Start Primary Key Column and End Primary Key Column. You can set Start Primary Key Column to Min Value or Cust om and End Primary Key Column to Max Value or Cust om. If you select Cust om, enter a custom value. Not e The value in the first primary key column takes priority when the range query mode is used. When the minimum and maximum values for the first primary key column are the same, the system uses the value in the second primary key column to perform the query. The query rules for the subsequent primary keys are the same as those for the first two primary keys. The Custom range is a left-open and right-closed interval. iv. Set Count of Versions to specify the maximum number of versions to return. v. Set Sequence to Forward Search or Backward Search.
 6. Click OK.
 Data that meets the filter conditions is displayed based on the specified order on the Dat a Edit or tab. Delete data You can delete data you no longer need.
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. In the T able List section of the Inst ance Det ails tab, click the name of the target table and click
 the Dat a Edit or tab. You can also click Dat a Edit or in the Actions column.
 4. On the Dat a Edit or tab, select the row of data you want to delete. Click Delet e.
@@ -166,6 +172,7 @@ the Dat a Edit or tab. You can also click Dat a Edit or in the Actions column.
 instance After you bind a VPC to a Tablestore instance, you can access the Tablestore instance from the ECS instances in the VPC in the same region. Prerequisites A VPC that is within the same region as the Tablestore instance is created. After the VPC is created, create an ECS instance in the VPC. Procedure
 1. Log on to the Tablestore console.
 2. On the Overview page, click the name of the required instance or click Manage Inst ance in the
+Actions column corresponding to the instance.
 3. Click the Net work Management tab.
 4. On the Net work Management tab, click Bind VPC.
 5. In the Bind VPC dialog box, select a VPC and switch, enter Inst ance VPC Name.

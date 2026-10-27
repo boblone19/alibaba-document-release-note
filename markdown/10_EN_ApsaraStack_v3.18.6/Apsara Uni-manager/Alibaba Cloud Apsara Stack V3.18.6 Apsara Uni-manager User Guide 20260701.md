@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 1380
 source_pdf: "fbee670ea2f94446_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Uni-manager User Guide 20260701
@@ -1049,7 +1049,11 @@ The Apsara Uni-manager Management Console is provided by Apsara Stack to help or
 
 **Overview**
 
-The Apsara Uni-manager Management Console simplifies the management and deployment of physical and virtual resources, facilitating application development, improving resource utilization, and reducing O&M costs. The console is an integral part of the ecosystem built around cloud computing. Operations in the Apsara Uni-manager Management Console are classified into the following parts: Basic configurations for system initialization, such as creating organizations, resource sets, and users, creating basic resources such as virtual private clouds (VPCs), and creating contacts and contact groups in CloudMonitor. Creation of cloud resources (performed by administrators). Resource management, such as starting, using, and releasing resources, and changing resource configurations and resource quotas.
+The Apsara Uni-manager Management Console simplifies the management and deployment of physical and virtual resources, facilitating application development, improving resource utilization, and reducing O&M costs. The console is an integral part of the ecosystem built around cloud computing.
+
+**Procedure**
+
+Operations in the Apsara Uni-manager Management Console are classified into the following parts: Basic configurations for system initialization, such as creating organizations, resource sets, and users, creating basic resources such as virtual private clouds (VPCs), and creating contacts and contact groups in CloudMonitor. Creation of cloud resources (performed by administrators). Resource management, such as starting, using, and releasing resources, and changing resource configurations and resource quotas.
 
 **Emergency mode**
 
@@ -1102,6 +1106,9 @@ This topic describes how to log in to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 
@@ -1494,6 +1501,8 @@ The Home page displays the usage and monitoring status of system resources in di
 
 > **Note:** The Home page displays data that you have permissions to access.
 
+**Procedure**
+
 By default, the card-based layout of the Home page varies based on roles. You can add or remove cards to change the layout based on your business requirements.
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Home**.
@@ -1711,6 +1720,9 @@ The resource retrieval feature provides a unified search capability for multi-re
 **Prerequisites**
 
 Your role is a preset role other than the platform administrator. The Resource Retrieval menu permissions are granted to your role on the Role Permissions page if you use a custom role.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Retrieval**.
@@ -1748,6 +1760,9 @@ icon above the resource list and click the , , or icon to adjust the display ite
 > Some resources support other quick operations. You can directly select an option in the Operation column to perform the related operation.
 
 8. Optional. Add tags to or remove tags from one or more resources.
+
+**Note**
+
 In multi-cloud environments, you can add tags to and remove tags from resources on the central cloud platform or managed cloud platforms. The tags of managed Apsara Stack platforms can be added to and removed from the resources of all supported cloud services. To manage tags, you must have the tag management permissions of the roles of managed Apsara Stack platforms. For more information about cloud services that support the tag management of managed Alibaba Cloud platforms and the required user permissions, see the Cloud services that support the tag management of managed Alibaba Cloud platforms section of this topic.
 
 | Operation | Procedure |
@@ -1859,6 +1874,9 @@ View resources centrally on the Resource Search page.
 **Prerequisites**
 
 By default, the operating user is any preset role other than the platform administrator. Custom roles can be granted the Resource Search menu permission as needed in role authorization.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resource Management**> **Resource Search**.
@@ -1874,7 +1892,11 @@ In the organization tree on the left side of the page, select the target organiz
 
 **View resources by query conditions**
 
-Set filter conditions above the list on the right side of the page to view the resource list that matches the specified conditions. You can filter by resource pool, resource type, region, tags, expiration time, and general search (keywords, resource ID, resource name, resource IP). Resource pool: Displays the list of resource pools visible to the current user. This option appears only in multi-cloud scenarios and is hidden in single-cloud scenarios. Resource type: Displays the list of deployed resource types. Region: Displays the list of regions visible to the current user. Tags: In multi-cloud scenarios, you can view tags bound to resources in the central cloud and subordinate clouds (including multiple private clouds and public clouds).. Expiration time: Set a start time and end time for expiration to query resources by expiration time. General search: Switch as needed to keywords, resource ID, resource name, or resource IP, then enter keywords for fuzzy search. After setting filter conditions, you can save them. Next time, you can quickly select from **My Filters** to view the target resource list. You can also hover over a saved filter condition in **My Filters** and click to delete it. Click **Reset** to clear all set filter conditions.
+Set filter conditions above the list on the right side of the page to view the resource list that matches the specified conditions.
+
+**Note**
+
+You can filter by resource pool, resource type, region, tags, expiration time, and general search (keywords, resource ID, resource name, resource IP). Resource pool: Displays the list of resource pools visible to the current user. This option appears only in multi-cloud scenarios and is hidden in single-cloud scenarios. Resource type: Displays the list of deployed resource types. Region: Displays the list of regions visible to the current user. Tags: In multi-cloud scenarios, you can view tags bound to resources in the central cloud and subordinate clouds (including multiple private clouds and public clouds).. Expiration time: Set a start time and end time for expiration to query resources by expiration time. General search: Switch as needed to keywords, resource ID, resource name, or resource IP, then enter keywords for fuzzy search. After setting filter conditions, you can save them. Next time, you can quickly select from **My Filters** to view the target resource list. You can also hover over a saved filter condition in **My Filters** and click to delete it. Click **Reset** to clear all set filter conditions.
 5. (Optional) Above the list, select
 , , or to adjust displayed items and their order according to your needs.
 
@@ -1888,7 +1910,14 @@ Set filter conditions above the list on the right side of the page to view the r
 
 ##### 5.1.1.2 Bind or unbind tags for resources
 
-The resource retrieval page allows you to bind or unbind tags for resources. In multi-cloud scenarios, you can bind and unbind tags for central cloud and subordinate cloud resources. The product scope for tag operations in the multi-enterprise edition covers all products that support tags. The operating user must have tag operation permissions assigned through a mapped role in the subordinate cloud. For the product scope and user permission details of public cloud tag operations, see Cloud services in the public cloud that support tag operations.
+The resource retrieval page allows you to bind or unbind tags for resources.
+
+**Note**
+
+In multi-cloud scenarios, you can bind and unbind tags for central cloud and subordinate cloud resources. The product scope for tag operations in the multi-enterprise edition covers all products that support tags. The operating user must have tag operation permissions assigned through a mapped role in the subordinate cloud. For the product scope and user permission details of public cloud tag operations, see Cloud services in the public cloud that support tag operations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resource Management**> **Resource Search**.
@@ -2006,6 +2035,9 @@ The resource retrieval page allows you to bind or unbind tags for resources. In 
 ##### 5.1.1.3 Create and manage resources
 
 On the Resource Retrieval page, you can create and manage resources in a centralized manner to improve resource management efficiency.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Retrieval**.
@@ -2027,6 +2059,9 @@ You can manage the expiration time of resources on the Resource Retrieval page. 
 **Limits**
 
 You cannot set a validity period for pay-as-you-go Alibaba Cloud resources and managed Apsara Stack resources.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Retrieval**.
@@ -2051,6 +2086,9 @@ You cannot set a validity period for pay-as-you-go Alibaba Cloud resources and m
 **rule**
 
 You can view and configure expiration reminder rules on the Resource Retrieval page. After you configure an expiration reminder rule, the system notifies the specified notification objects of resource expiration once a day before the resource expires. Only the system operations administrator and custom operations administrator have the permissions to view and configure expiration reminder rules. Therefore, the Expiration Reminder Rule button is visible only to the two roles. Other roles cannot view or use this feature.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Retrieval**.
@@ -2070,6 +2108,9 @@ rule.
 ##### 5.1.1.6 View resource instance insights
 
 Use resource analysis to view insights for resource instances.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **Resource Management** > **Resource Search**.
@@ -2101,6 +2142,8 @@ Before you create an organization, you need to plan an organizational structure 
 
 **Create organizations**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2126,6 +2169,8 @@ following table.
 > **Note:** For more information about how to configure the parameters when you create a resource set in an organization, see Create a resource set.
 
 **Create multiple organizations at a time**
+
+**Procedure**
 
 1. In the left-side Organization Structure pane of the **Organizations** page, click **Batch**
 **Create**.
@@ -2162,6 +2207,9 @@ click **View** in the upper part of the Organization Structure pane.
 **organization**
 
 This topic describes how to view the basic information about an organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2176,6 +2224,9 @@ including the following parameters: **Organization Name**, **Organization ID**, 
 ##### 5.1.2.4 Modify organization information
 
 This topic describes how to modify the display name and description of an organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2226,6 +2277,9 @@ IdP settings are configured by the platform administrator. To configure IdP sett
 **Limits**
 
 You can associate IdPs only with level-1 organizations. Each level-1 organization can be associated with only one IdP, including a global IdP. If a global IdP is configured in the Apsara Uni-manager Management Console, the global IdP is displayed and cannot be changed. If a level-1 organization is associated with a local IdP, other level-1 organizations can still be associated with the same local IdP or other local IdPs. When an organization is associated with a local IdP, the button for authorization-based logon is unavailable on the logon page of the system. In this case, users can be navigated to the system only after they log on to the local IdP.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2258,6 +2312,9 @@ The proxy administrator feature on the Organizations page allows you to authoriz
 **Limits**
 
 Only users of other level-1 organizations can be specified as proxy administrators. You can select only one role whose permission scope is Specified Organization and Subordinate Organizations as the proxy role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2288,6 +2345,9 @@ in the following table.
 **Prerequisites**
 
 A proxy administrator is specified for an organization. For more information, see the Specify a proxy administrator section of this topic.
+
+**Procedure**
+
 1. In the left-side Organization Structure pane of the **Organizations** page, find the
 organization that you want to manage and click its name.
 2. On the right side of the page, click the **Proxy Administrator** tab.
@@ -2309,6 +2369,9 @@ Owner: the user who is specified as the proxy administrator. After the user logs
 **Prerequisites**
 
 A proxy administrator is specified for an organization. For more information, see the Specify a proxy administrator section of this topic.
+
+**Procedure**
+
 1. In the left-side Organization Structure pane of the **Organizations** page, find the
 organization that you want to manage and click its name.
 2. On the right side of the page, click the **Proxy Administrator** tab.
@@ -2324,6 +2387,9 @@ and then enter a description.
 **Prerequisites**
 
 A proxy administrator is specified for an organization. For more information, see the Specify a proxy administrator section of this topic. The proxy administrator is in the Activating or Expired state.
+
+**Procedure**
+
 1. In the left-side Organization Structure pane of the **Organizations** page, find the
 organization that you want to manage and click its name.
 2. On the right side of the page, click the **Proxy Administrator** tab.
@@ -2337,6 +2403,9 @@ column.
 **Prerequisites**
 
 A proxy administrator is specified for an organization. For more information, see the Specify a proxy administrator section of this topic. The proxy administrator is in the Disabled state.
+
+**Procedure**
+
 1. In the left-side Organization Structure pane of the **Organizations** page, find the
 organization that you want to manage and click its name.
 2. On the right side of the page, click the **Proxy Administrator** tab.
@@ -2350,6 +2419,9 @@ column.
 **Prerequisites**
 
 A proxy administrator is specified for an organization. For more information, see the Specify a proxy administrator section of this topic.
+
+**Procedure**
+
 1. In the left-side Organization Structure pane of the **Organizations** page, find the
 organization that you want to manage and click its name.
 2. On the right side of the page, click the **Proxy Administrator** tab.
@@ -2365,6 +2437,8 @@ column.
 On the Resource Sets tab of the Organizations page, you can create a resource set for an organization and view the details of the resource set. For more information, see Manage resource sets.
 
 **Create a resource set**
+
+**Procedure**
 
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
@@ -2387,6 +2461,8 @@ the following table.
 
 **View resource sets and details**
 
+**Procedure**
+
 1. On the **Resource Sets** tab, view the resource sets in the current organization. You can
 search for a resource set by resource set name or tag above the resource set list.
 
@@ -2405,6 +2481,8 @@ On the Users tab of the Organizations page, you can manage the users of an organ
 
 **Create a user**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2417,6 +2495,8 @@ users.
 8. Click **OK**.
 
 **View users and user details**
+
+**Procedure**
 
 1. On the **Users** tab, view the users in the current organization. You can search for a user by
 username above the user list.
@@ -2441,6 +2521,9 @@ A user is in the **Enabled** state.
 **Limits**
 
 You cannot disable proxy administrators on the Users tab. To disable a proxy administrator, go to the Organizations or Resource Sets page, find the organization or resource set that you want to manage, go to its Proxy Administrator tab, and then disable the proxy administrator. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
+
+**Procedure**
+
 1. On the **Users** tab, find the user that you want to disable and click **Disable** in the Actions
 column.
 2. In the dialog box that appears, view the information about the associated AccessKey pairs
@@ -2464,6 +2547,9 @@ A user is in the **Disabled** state.
 **Limits**
 
 You cannot enable proxy administrators on the Users tab. To enable a proxy administrator, go to the Organizations or Resource Sets page, find the organization or resource set that you want to manage, go to its Proxy Administrator tab, and then enable the proxy administrator. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
+
+**Procedure**
+
 1. On the **Users** tab, find the user that you want to enable and click **Enable** in the **Actions**
 column.
 2. In the message that appears, view the information about AccessKey pairs and click **OK**.
@@ -2476,6 +2562,9 @@ After the user is enabled, the user enters the **Enabled** state.
 **Limits**
 
 You cannot delete proxy administrators on the Users tab. To delete a proxy administrator, go to the Organizations or Resource Sets page, find the organization or resource set that you want to manage, go to its Proxy Administrator tab, and then delete the proxy administrator. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
+
+**Procedure**
+
 1. On the **Users** tab, find the user that you want to delete and click **Delete** in the Actions
 column.
 2. In the dialog box that appears, view the information about the associated AccessKey pairs
@@ -2495,6 +2584,9 @@ When you move the pointer over the information in the AccessKey Pair Reference I
 **organization**
 
 On the User Groups tab of the Organizations page, you can create a user group for an organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2528,6 +2620,9 @@ Level-1 Organizations for resource pools of the independent primary account type
 The platform administrator user has completed multi-cloud access in **Configuration** >
 **Native Hybrid Cloud** > **Multi-Cloud Management**.
 You are an operations administrator user. You have either bound the operations administrator role of a secondary Apsara Stack or bound a RAM role with the AdministratorAccess policy at the public cloud account level.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, click **Resources** > **Tenant Management**.
@@ -2574,6 +2669,9 @@ Click **Bind Resource Set**: Go to the **Resource Sets** page. Bind multi-cloud 
 **Prerequisites**
 
 The level-1 organization has been bound to a multi-cloud organization or primary account. You are an operations administrator. You have either bound the operations administrator role of a secondary Apsara Stack, or bound a RAM role with the AdministratorAccess policy at the public cloud account level.
+
+**Procedure**
+
 1. On the **Tenant Management** page, click the name of the level-1 organization in the left-
 side organizational hierarchy.
 2. On the **Multi-Cloud Organizations** tab, click **Unbind** in the **Actions** column of the
@@ -2655,6 +2753,9 @@ A resource set is a group of resources and is similar to a project. After a user
 **Background information**
 
 A resource set is a logical container of multiple resources. Each resource must belong to a resource set. When you create a resource, you must select a resource set for the resource. This way, resources are grouped by resource set. When you create an organization, the system creates a resource set for the organization by default. Resource sets are isolated from each other. An organization can have multiple resource sets, but each resource set can belong to only one organization.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -2676,6 +2777,9 @@ the following table.
 ##### 5.1.3.2 View resource sets and details
 
 This topic describes how to view resource sets and the details of a resource set.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -2702,6 +2806,9 @@ Details page.
 ##### 5.1.3.3 Modify a resource set
 
 This topic describes how to modify a resource set.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -2722,6 +2829,9 @@ Adding tags to a resource set helps you better organize, classify, and manage cl
 **Limits**
 
 You can add up to 20 tags to each resource.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -2748,6 +2858,8 @@ Authorize users or user groups to access a group of resources by granting them m
 **Manage central cloud members of a resource set**
 
 **Authorize a resource set to central cloud members**
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
@@ -2781,6 +2893,8 @@ appear on the Members tab of the resource set details page.
 
 **set**
 
+**Procedure**
+
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** list, switch to the Central Cloud tab to view members authorized for the
@@ -2804,6 +2918,8 @@ the resource set. A hyphen (-) indicates permanent validity.
 
 **authorization**
 
+**Procedure**
+
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** list, switch to the Central Cloud tab.
@@ -2821,6 +2937,8 @@ longer access this resource set or use resources under this resource set.
 **Change permission validity period for central cloud members in**
 
 **a resource set**
+
+**Procedure**
 
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, click the **Members** tab.
@@ -2850,6 +2968,9 @@ The resource set has been bound to a resource set from Apsara Stack. The operati
 **Constraints**
 
 When you authorize a resource set to members from Apsara Stack, you can only authorize users. You cannot authorize user groups.
+
+**Procedure**
+
 1. On the **Resource Set Management** page, click **Member Authorization** in the **Actions**
 column of the resource set.
 
@@ -2872,6 +2993,9 @@ groups.
 **Prerequisites**
 
 The resource set has been bound to a resource set from Apsara Stack. The operating user is an operations administrator (bound to the operations administrator role for Apsara Stack) or a level-1 organization administrator (bound to the organization administrator role for Apsara Stack).
+
+**Procedure**
+
 1. On the **Resource Set Management** page, click the name of the resource set.
 2. On the **Resource Set Details** page, click the **Members** tab.
 3. On the **Members** tab, switch to the Apsara Stack tab and view the authorized members for
@@ -2907,6 +3031,9 @@ The resource set is already bound to a resource group from the public cloud. The
 **Constraints**
 
 When authorizing members from the public cloud for a resource set, you can authorize only users, not user groups.
+
+**Procedure**
+
 1. On the **Resource Set Management** page, click **Member Authorization** in the **Actions**
 column of the target resource set.
 
@@ -2931,6 +3058,9 @@ groups.
 **Prerequisites**
 
 The resource set is already bound to a resource group from the public cloud. The operating user must be an operations administrator (bound to the AdministratorAccess policy at the public cloud account level) or a level-1 organization administrator (bound to the AdministratorAccess policy effective within the scope of the public cloud primary account).
+
+**Procedure**
+
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, go to the **Members** tab.
 3. On the **Members** tab, switch to the public cloud tab and view the authorized members for
@@ -2945,6 +3075,9 @@ the resource set. Enter user information in the text box above the list to perfo
 **Prerequisites**
 
 The resource set is already bound to a resource group from the public cloud. The operating user must be an operations administrator (bound to the AdministratorAccess policy at the public cloud account level) or a level-1 organization administrator (bound to the AdministratorAccess policy effective within the scope of the public cloud primary account).
+
+**Procedure**
+
 1. On the **Resource Set Management** page, click the resource set name.
 2. On the **Resource Set Details** page, go to the **Members** tab.
 3. On the **Members** tab, switch to the public cloud tab.
@@ -2968,6 +3101,9 @@ The default resource set of a level-1 organization cannot be bound to resource g
 **Prerequisites**
 
 A multi-cloud organization is bound to the level-1 organization to which the resource set belongs. For more information, see Manage multi-cloud organizations. If you want to bind a resource set of a managed Apsara Stack platform, you are an operations administrator to which the operations administrator role of the managed Apsara Stack platform is assigned or a level-1 organization administrator to which the organization administrator role of the managed Apsara Stack platform is assigned. If you want to bind a resource group of a managed Alibaba Cloud platform, you are an operations administrator or a level-1 organization administrator and are assigned a Resource Access Management (RAM) role to which the AdministratorAccess policy of the Alibaba Cloud account is attached.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -3000,6 +3136,9 @@ name.
 9. Click **OK**.
 to be created.
 0. After the multi-cloud resource set is bound, it is displayed on the Multi-Cloud Resource Set
+
+**Note**
+
 tab. You can search for a multi-cloud resource set by cloud platform name in the search box above the multi-cloud resource set list. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). It must start with a letter. After a resource group is created, the identifier of the resource group cannot be changed.
 
 **Unbind a multi-cloud resource set**
@@ -3007,6 +3146,9 @@ tab. You can search for a multi-cloud resource set by cloud platform name in the
 **Prerequisites**
 
 A resource set is bound to a multi-cloud resource set. If you want to unbind a resource set of a managed Apsara Stack platform, you are an operations administrator to which the operations administrator role of the managed Apsara Stack platform is assigned or a level-1 organization administrator to which the organization administrator role of the managed Apsara Stack platform is assigned. If you want to unbind a resource group of a managed Alibaba Cloud platform, you are an operations administrator or a level-1 organization administrator and are assigned a RAM role to which the AdministratorAccess policy of the Alibaba Cloud account is attached.
+
+**Procedure**
+
 1. On the **Resource Sets** page, find the resource set that you want to manage and click its
 name.
 2. On the **Resource Set Details** page, click the **Multi-Cloud Resource Set** tab.
@@ -3033,6 +3175,9 @@ You can specify a proxy administrator for a resource set on the Resource Sets pa
 **Limits**
 
 Only users of other level-1 organizations can be specified as proxy administrators. You can select only one role whose permission scope is Resource Sets as the proxy role.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -3062,6 +3207,9 @@ dialog box, configure the parameters that are described in the following table.
 **Prerequisites**
 
 A proxy administrator is specified for a resource set. For more information, see the Specify a proxy administrator section of this topic.
+
+**Procedure**
+
 1. On the **Resource Sets** page, click the name of the resource set that you want to manage.
 2. On the **Resource Set Details** page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
@@ -3082,6 +3230,9 @@ Owner: the user who is specified as the proxy administrator. After the user logs
 **Prerequisites**
 
 A proxy administrator is specified for a resource set. For more information, see the Specify a proxy administrator section of this topic.
+
+**Procedure**
+
 1. On the **Resource Sets** page, click the name of the resource set that you want to manage.
 2. On the **Resource Set Details** page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
@@ -3096,6 +3247,9 @@ and then enter a description.
 **Prerequisites**
 
 A proxy administrator is specified for a resource set. For more information, see the Specify a proxy administrator section of this topic. The proxy administrator is in the Activating or Expired state.
+
+**Procedure**
+
 1. On the **Resource Sets** page, click the name of the resource set that you want to manage.
 2. On the **Resource Set Details** page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
@@ -3108,6 +3262,9 @@ column.
 **Prerequisites**
 
 A proxy administrator is specified for a resource set. For more information, see the Specify a proxy administrator section of this topic. The proxy administrator is in the Disabled state.
+
+**Procedure**
+
 1. On the **Resource Sets** page, click the name of the resource set that you want to manage.
 2. On the **Resource Set Details** page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
@@ -3120,6 +3277,9 @@ column.
 **Prerequisites**
 
 A proxy administrator is specified for a resource set. For more information, see the Specify a proxy administrator section of this topic.
+
+**Procedure**
+
 1. On the **Resource Sets** page, click the name of the resource set that you want to manage.
 2. On the **Resource Set Details** page, click the **Proxy Administrator** tab.
 3. Filter proxy administrators by proxy status above the proxy administrator list.
@@ -3138,6 +3298,9 @@ The default resource set of an organization cannot be deleted.
 **Prerequisites**
 
 Before you delete a resource set, make sure that the resource set does not have resources, users, or user groups. Otherwise, the resource set cannot be deleted.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Resource Sets**.
@@ -3159,6 +3322,9 @@ An organization must be associated with at least one region. Users in a general 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Regions**.
@@ -3185,6 +3351,9 @@ You are an operations administrator or organization administrator.
 **Limits**
 
 You cannot change the ownership of a level-1 organization. You cannot move organizations across level-1 organizations. When you change the ownership of an organization, you are not allowed to create instances in the organization and its subordinate organizations or resource sets. When you change the ownership of an organization, you are not allowed to change the ownership of existing instances in the organization and its subordinate organizations and resource sets.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Changes**.
@@ -3207,6 +3376,9 @@ You are an operations administrator or organization administrator.
 **Limits**
 
 You cannot change the ownership of a user across level-1 organizations. You cannot change the organization to which you belong. Only your superior administrator can change the organization to which you belong.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Changes**.
@@ -3262,6 +3434,9 @@ You can view resource relationships to identify dependencies between different r
 **Prerequisites**
 
 You are an operations administrator or organization administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Changes**.
@@ -3295,6 +3470,9 @@ the Actions column.
 **Prerequisites**
 
 A resource set is associated with a resource set of the managed Apsara Stack platform. You are an operations administrator to whom an operations administrator role of the managed Apsara Stack platform is assigned or a level-1 organization administrator to whom an organization administrator role of the managed Apsara Stack platform is assigned.
+
+**Procedure**
+
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Apsara Stack platform.
@@ -3324,6 +3502,9 @@ the Actions column.
 **Prerequisites**
 
 A resource set is associated with a resource group of the managed Alibaba Cloud platform. You have logged in to the console as an operations administrator or a level-1 organization administrator. A Resource Access Management (RAM) role of the AdministratorAccess policy at the account level of the managed Alibaba Cloud platform is assigned to the operations administrator or the level-1 organization administrator.
+
+**Procedure**
+
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Alibaba Cloud platform.
@@ -3352,6 +3533,9 @@ Changing the ownership of resources does not affect the original organization or
 **Prerequisites**
 
 You are an operations administrator or organization administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Changes**.
@@ -3385,6 +3569,9 @@ a. In the resource instance list, select the resource instances that you want to
 **Prerequisites**
 
 A resource set is associated with a resource set of the managed Apsara Stack platform. You have permissions to change resources in the organizations and resource sets of the managed Apsara Stack platform.
+
+**Procedure**
+
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Apsara Stack platform.
@@ -3449,6 +3636,9 @@ This topic describes how to change the sharing scope of resources.
 **Prerequisites**
 
 You are an operations administrator or organization administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Changes**.
@@ -3500,6 +3690,9 @@ parameters.
 **Prerequisites**
 
 A resource set is associated with a resource set of the managed Apsara Stack platform. You have permissions to change resources in the organizations or resource sets in the managed Apsara Stack platform.
+
+**Procedure**
+
 1. In the left-side organization tree, find the organization that you want to manage, click the
 icon to the left of the organization, and then click the name of a resource set under the organization.
 2. Click the tab of the managed Apsara Stack platform.
@@ -3571,6 +3764,8 @@ An organization and a role are created.
 
 **Create users**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users** > **Users.**
@@ -3597,9 +3792,14 @@ parameters.
 
 6. Click **OK**.
 7. In the **Resource Set** dialog box, click **Cancel** or **Resource Set**.
+
+**Note**
+
 If you click Resource Set, the **Add to Resource Set** dialog box appears. For more information about how to add a user to a resource set, see Manage the resource sets to which a use belongs.
 
 **Create multiple users at a time**
+
+**Procedure**
 
 1. On the **System Users** tab, click **Batch Create Users**.
 
@@ -3645,6 +3845,9 @@ the Asynchronous Task page.
 ##### 5.2.1.2 View system users
 
 This topic describes how to view system users on the System Users tab of the Users page.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3671,6 +3874,9 @@ This topic describes how to modify the basic information about a user.
 **Limits**
 
 The information about proxy administrators cannot be modified. When you modify user information, the username and the organization to which the user belongs cannot be modified.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3694,6 +3900,9 @@ This topic describes how to manage the roles of a user.
 **Limits**
 
 You can assign up to 10 Resource Access Management (RAM) roles to a user, including roles directly assigned to the user and roles assigned to the user group to which the user belongs.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3721,6 +3930,9 @@ The level-1 organization to which the user belongs is bound to an organization o
 **Limits**
 
 Only one role of the managed Apsara Stack platform can be assigned to a user. When you assign a role of a managed Apsara Stack platform to a user that is not a level-1 organization administrator, you can select only a role whose management scope is Resource Sets. When you assign a role of a managed Apsara Stack platform to a level-1 organization administrator, you can select a role whose management scope is Resource Sets or the organization administrator role.
+
+**Procedure**
+
 1. On the **System Users** tab of the **Users** page, click Advanced Filter and select a level-1
 organization that is bound to the managed Apsara Stack platform from the **Organization** drop-down list to filter users in the level-1 organization.
 
@@ -3747,6 +3959,9 @@ The level-1 organization to which the user belongs is bound to the Alibaba Cloud
 **Limits**
 
 Only one RAM role of the managed Alibaba Cloud platform can be assigned to a user.
+
+**Procedure**
+
 1. On the **System Users** tab of the **Users** page, click Advanced Filter. In the **Organization**
 drop-down list, select a level-1 organization that is bound to the managed Alibaba Cloud platform to filter users in the level-1 organization.
 
@@ -3794,6 +4009,9 @@ The level-1 organization to which the user belongs is bound to an organization o
 **Limits**
 
 Only one role of the managed Apsara Stack platform can be assigned to a user. When you assign a role of a managed Apsara Stack platform to a user that is not a level-1 organization administrator, you can select only a role whose management scope is Resource Sets. When you assign a role of a managed Apsara Stack platform to a level-1 organization administrator, you can select a role whose management scope is Resource Sets or the organization administrator role.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -3823,6 +4041,9 @@ The level-1 organization to which the user belongs is bound to the Alibaba Cloud
 **Limits**
 
 Only one RAM role of the managed Alibaba Cloud platform can be assigned to a user.
+
+**Procedure**
+
 1. On the **System Users** tab of the **Users** page, click Advanced Filter. In the **Organization**
 drop-down list, select the level-1 organization that is bound to a managed Alibaba Cloud platform to filter users in the level-1 organization.
 
@@ -3871,6 +4092,8 @@ When the resource sets to which a user belongs change, adjust them through resou
 
 **Add users to central cloud resource sets**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **Users****> Users**.
@@ -3894,6 +4117,8 @@ sets appear in the resource set list.
 
 **Remove users from central cloud resource sets**
 
+**Procedure**
+
 1. Under the **Resource Sets** tab, switch to the Central Cloud tab.
 
 > **Note:** The Central Cloud and Connected Cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only Central Cloud exists by default, and no tabs are displayed.
@@ -3909,6 +4134,9 @@ sets appear in the resource set list.
 **Prerequisites**
 
 The user has been granted a connected cloud role. You must be an operations administrator (bound to the connected cloud operations administrator role) or a level-1 organization administrator (bound to the connected cloud organization administrator role).
+
+**Procedure**
+
 1. On the **Resource Set** tab, switch to the connected cloud tab.
 
 > **Note:** In multi-cloud scenarios, tabs for the central cloud and connected clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
@@ -3927,6 +4155,9 @@ the user.
 **Prerequisites**
 
 You must be an operations administrator (bound to the connected cloud operations administrator role) or a level-1 organization administrator (bound to the connected cloud organization administrator role).
+
+**Procedure**
+
 1. On the **Resource Set** tab, switch to the connected cloud tab.
 
 > **Note:** In multi-cloud scenarios, tabs for the central cloud and connected clouds appear. In single-cloud scenarios, only the central cloud is available by default, and no tabs are displayed.
@@ -3945,6 +4176,9 @@ You must be an operations administrator (bound to the connected cloud operations
 **Prerequisites**
 
 The user has been granted a connected cloud Public Cloud role. You are an operations administrator (bound to the AdministratorAccess policy at the connected cloud Public Cloud account level) or a level-1 organization administrator (bound to the AdministratorAccess policy effective within the scope of the connected cloud Public Cloud primary account).
+
+**Procedure**
+
 1. On the **Resource Set** tab, switch to the connected cloud Public Cloud tab.
 
 > **Note:** The central cloud and connected cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
@@ -3965,6 +4199,9 @@ the user.
 **Prerequisites**
 
 You are an operations administrator (bound to the AdministratorAccess policy at the connected cloud Public Cloud account level) or a level-1 organization administrator (bound to the AdministratorAccess policy effective within the scope of the connected cloud Public Cloud primary account).
+
+**Procedure**
+
 1. On the **Resource Sets** tab, switch to the connected cloud Public Cloud tab.
 
 > **Note:** The central cloud and connected cloud tabs appear only in multi-cloud scenarios. In single-cloud scenarios, only the central cloud is available by default, and no tabs appear.
@@ -3997,6 +4234,9 @@ User groups are created.
 **Limits**
 
 You cannot add proxy administrators to or remove proxy administrators from a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4016,6 +4256,9 @@ i. Find the user group that you want to manage and click Remove in the **Actions
 ##### 5.2.1.8 Configure a logon policy for users
 
 This topic describes how to configure a logon policy for users.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4034,6 +4277,9 @@ user list.
 ##### 5.2.1.9 Configure MFA settings
 
 Multi-factor authentication (MFA) is a security measure that significantly enhances account security. It requires users to bind a virtual MFA device such as Alibaba Cloud app to their accounts. This way, users must prove their identity by using multiple verification methods when they log on.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4065,6 +4311,9 @@ After a user is created or the password is reset, you can view the initial passw
 **Prerequisites**
 
 The initial password is not modified.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4082,6 +4331,9 @@ icon in the **Actions** column, and then select **View Initial Password**.
 ##### 5.2.1.11 Reset the password of a user
 
 If a user forgets the password, you can reset the password to a random initial password.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4100,6 +4352,9 @@ An administrator can manually rotate the AccessKey pairs of users.
 **Limits**
 
 Each user can have up to two AccessKey pairs.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4129,6 +4384,8 @@ You can configure validity periods for accounts, including the validity period o
 **Usage notes**
 
 > **Important:** After the validity periods of an account end, issues may occur when the user logs in to the console or uses the AccessKey pair. Exercise caution when you configure validity periods for an account.
+
+**Procedure**
 
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
@@ -4169,6 +4426,8 @@ A user is in the Enabled state.
 
 You cannot disable proxy administrators on the Users page. When you disable a proxy administrator, the corresponding proxy user is also disabled. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
 
+**Procedure**
+
 > **Important:** After you disable a user, the user is forbidden from logging on to the Apsara Uni- manager Management Console, the AccessKey pairs of the user are disabled, and the user logon status becomes invalid.
 > After an AccessKey pair is disabled, the services or applications that reference the AccessKey pair may not run as expected. In this case, enable the user to restore the services or applications.
 
@@ -4182,6 +4441,9 @@ user list.
 icon in the **Actions** column, and then select **Disable**.
 7. In the dialog box that appears, select **I have known the risks and confirm this**
 **operation**.
+
+**Note**
+
 When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > **Permissions** > **AccessKey**
 **Logs**.
 8. Click **Disable**.
@@ -4197,6 +4459,9 @@ A user is in the Disabled state.
 **Limits**
 
 You cannot enable proxy administrators on the Users page. When you enable a proxy administrator, the corresponding proxy user is also enabled. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4206,6 +4471,9 @@ user list.
 6. Find the user that you want to manage, move the pointer over the
 icon in the **Actions** column, and then select **Enable**.
 7. In the message that appears, click **OK**.
+
+**Note**
+
 When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** >
 **Permissions** > **AccessKey Logs**.
 
@@ -4218,6 +4486,8 @@ This topic describes how to delete a user.
 **Limits**
 
 You cannot delete a proxy user on the Users page. To delete a proxy user, go to the details page of the corresponding organization or resource set and delete the proxy user on the Proxy Administrator tab. For more information, see Specify and manage a proxy administrator for an organization and Specify and manage a proxy administrator for a resource set.
+
+**Procedure**
 
 > **Important:** After you delete a user, the user is forbidden from logging on to the Apsara Uni- manager Management Console, the AccessKey pairs of the user are deleted, and the user logon status becomes invalid.
 > After you delete a user, the user data cannot be recovered. After an AccessKey pair is deleted, the services or applications that use the AccessKey pair may not work as expected. Before you delete a user, we recommend that you disable the user first and troubleshoot issues.
@@ -4232,6 +4502,9 @@ user list.
 icon in the **Actions** column, and then select **Delete**.
 7. In the dialog box that appears, select **I have known the risks and confirmed this**
 **delete operation**.
+
+**Note**
+
 When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > Permissions > **AccessKey**
 **Logs**.
 8. Click **Delete**.
@@ -4240,6 +4513,9 @@ The deleted system user is displayed on the **Historical Users** tab. You can re
 ##### 5.2.1.17 Restore a user
 
 On the Historical Users tab, you can restore deleted system users. After a user is restored, the user is displayed on the System Users tab.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4252,6 +4528,9 @@ On the Historical Users tab, you can restore deleted system users. After a user 
 ##### 5.2.1.18 Permanently delete a user
 
 On the Historical Users tab, you can permanently delete deleted system users. After a user is permanently deleted, the user is no longer displayed on the Historical Users tab and cannot be restored.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Users**.
@@ -4263,6 +4542,9 @@ On the Historical Users tab, you can permanently delete deleted system users. Af
 ##### 5.2.1.19 Unlock a temporarily locked user
 
 When a user account is locked due to multiple incorrect password entries, an administrator can unlock it. After unlocking, the user can log in normally.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **User Management > Users**.
@@ -4291,6 +4573,9 @@ User groups help you classify users to simplify permission management. After you
 **Prerequisites**
 
 An organization and roles are created.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users** > **User Groups**.
@@ -4313,6 +4598,9 @@ After a user group is created, you can view the created user group in the user g
 **Prerequisites**
 
 User groups are created.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -4330,6 +4618,9 @@ This topic describes how to modify the name of a user group.
 **Prerequisites**
 
 User groups are created.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -4342,6 +4633,9 @@ above the user group list.
 ##### 5.2.2.4 Assign roles to a user group
 
 You can change the roles that are assigned to a user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -4361,6 +4655,9 @@ After you create a user group, you can add users to the user group. The users ca
 **Prerequisites**
 
 A user group and users are created.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -4381,6 +4678,9 @@ users at a time.
 ##### 5.2.2.6 Removes users from a user group
 
 You can remove specific users from a user group. After a user is removed from a user group, the user no longer has the same permissions or assumes the same roles as the user group.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > User Groups**.
@@ -4400,6 +4700,8 @@ the left-side section and click the icon to add the selected users to the right-
 ##### 5.2.2.7 Delete a user group
 
 You can delete a user group that you no longer need.
+
+**Procedure**
 
 > **Important:** When you delete a user group, the associated resources such as roles, users, and resource sets are automatically disassociated.
 
@@ -4422,6 +4724,9 @@ You can view a list of current online user sessions.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Online User Management**.
@@ -4439,6 +4744,9 @@ As an administrator, you can force current online users to log off.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Users > Online User Management**.
@@ -4703,6 +5011,8 @@ Preset roles support viewing, authorization, disabling, activation, and replicat
 
 **View preset roles**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Enterprise**.
 3. In the left-side navigation pane, select **Permissions****> Role Permission**.
@@ -4731,6 +5041,8 @@ application permissions, and authorized personnel information for the role.
 
 **Authorize users and user groups with preset roles**
 
+**Procedure**
+
 Method 1: i. Click **Authorize** in the **Actions** column for the preset role. ii. In the **Authorize** dialog box, on the **Users** and **User Groups** tabs, select the users and user groups to authorize.
 
 > **Note:** Above the lists on the Users and User Groups tabs, you can quickly find target users and user groups by selecting an organization and role, then entering a user or user group name.
@@ -4745,6 +5057,8 @@ iii. Click **OK**. Method 2: i. Click the role name of the preset role or click 
 | Authorize user groups | a. In the Authorize User Group section, click Authorize. b. In the Authorize User Group dialog box, select the user groups to authorize. c. Click Confirm authorization. |
 
 **Remove authorized users and user groups from preset roles**
+
+**Procedure**
 
 1. Click the role name of the preset role or click **Actions** column’s **View**.
 2. Switch to the **Authorized Personnel** tab.
@@ -4762,6 +5076,9 @@ iii. Click **OK**. Method 2: i. Click the role name of the preset role or click 
 **Prerequisites**
 
 The status of the preset role is **Effective**.
+
+**Procedure**
+
 1. Click
 in the **Actions** column of the preset role, then select **Disable**.
 2. Click **Confirm**. After you disable this role, all users bound to it cannot log in. Proceed with
@@ -4772,12 +5089,17 @@ caution.
 **Prerequisites**
 
 The status of the preset role is **Disabled**.
+
+**Procedure**
+
 1. Click
 in the **Actions** column of the preset role, then select **Activate**.
 2. Click **Confirm**. After you activate this role, users previously bound to it regain the
 permissions included in the role.
 
 **Copy a preset role**
+
+**Procedure**
 
 1. Click **Copy** in the **Actions** column of the preset role.
 2. On the Create Custom Role page, follow the instructions to complete the configuration for
@@ -4856,6 +5178,8 @@ Alternatively, click **Authorize Now** in the dialog to immediately go to the **
 
 **View custom roles**
 
+**Procedure**
+
 1. In the role list, view **Role Name/ID**, **Role Type**, **Security Level**, **Role Description**,
 **Authorization Object**, **Applicable Organizations**, **Sharing Scope**, and **Status**.
 
@@ -4879,6 +5203,8 @@ application permissions, menu permissions, authorized personnel, and custom poli
 
 **Edit basic information of a custom role**
 
+**Procedure**
+
 1. Click the role name or **Actions** column’s **View**.
 2. On the custom role details page, click **Modify Basic Information** in the upper-right
 corner.
@@ -4887,6 +5213,8 @@ corner.
 4. Click **Confirm** to update the basic information of the role.
 
 **Update permissions for a custom role**
+
+**Procedure**
 
 1. Click the role name of the custom role or **Actions** column’s **View**.
 2. Update management permissions, application permissions, menu permissions, and custom
@@ -4911,7 +5239,11 @@ policies for this role as needed.
 
 **Authorize users and user groups for a custom role**
 
+**Procedure**
+
 Method 1: i. Click **Authorize** in the **Actions** column of the custom role. ii. In the **Authorize** dialog box, on the **Users** and **User Groups** tabs, select the users and user groups to authorize. d. After closing the preview, in the **Add Action** dialog box, click **Confirm**.
+
+**Note**
 
 **Delete policy**
 
@@ -4927,6 +5259,8 @@ a. In the custom policy list, click **Actions** column’s **Delete**. b. Click 
 |---|---|
 
 **Remove authorized users and user groups from a custom role**
+
+**Procedure**
 
 1. Click the role name of the custom role or **Actions** column’s **View**.
 2. Switch to the **Authorized Personnel** tab.
@@ -4947,6 +5281,8 @@ In some upgrade scenarios, due to product evolution, certain products require ne
 > If the original role does not have the selected new permission points, the system adds them.
 > If the original role already has them, they remain unaffected.
 
+**Procedure**
+
 1. On the **Role Permissions** page, from the **Role type** drop-down list, select **Custom Role**.
 2. Select multiple custom roles that require batch authorization.
 3. Click **Add Permissions** below the list, then click **Confirm**.
@@ -4960,6 +5296,9 @@ authorization task.
 **Prerequisites**
 
 The status of the custom role is **Effective**.
+
+**Procedure**
+
 1. Click **Disable** in the **Actions** column for the custom role.
 2. Click **Confirm**. After you disable this role, all users bound to this role cannot log in. Proceed
 with caution.
@@ -4969,11 +5308,16 @@ with caution.
 **Prerequisites**
 
 The status of the custom role is **Invalid**.
+
+**Procedure**
+
 1. Click **Activate** in the **Actions** column for the custom role.
 2. Click **Confirm**. After you activate this role, users previously bound to this role regain the
 permissions included in the role.
 
 **Copy a custom role**
+
+**Procedure**
 
 1. Click **Copy** in the **Actions** column for the custom role.
 2. On the Create Custom Role page, follow the on-screen instructions to complete the
@@ -4996,6 +5340,8 @@ Before you delete a custom role, you must unbind it from users and user groups.
 RAM role authorization supports creating, viewing, editing, managing permission policies, updating trust policies, managing RAM roles, and deleting.
 
 **Create RAM role authorization**
+
+**Procedure**
 
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
@@ -5035,7 +5381,11 @@ that can assume this RAM role.
 **Trust Cloud Service**: Specifies one or more cloud services that can assume this RAM
 role.
 **Trust Policy**: Generates JSON-formatted policy content based on the selected trust
-organizations and trust cloud services. As shown in the preceding figure, the policy grants the asr.aliyuncs.com service and a specific root user permission to assume this role. According to this policy, the asr.aliyuncs.com service or the specified root user is allowed to assume the role. "Version": The policy version. The value is "1". "Statement": A list of permission statements that defines one permission statement. "Action": The allowed operation. The value is "sts:AssumeRole", indicating that assuming the role is allowed. "Effect": Whether the operation is allowed or denied. The value is "Allow", indicating that the operation is allowed. "Principal": The entity allowed to assume the role. It can be a service or a RAM resource. "Service": The service allowed to assume the role. The value is "asr.aliyuncs.com", indicating that the asr.aliyuncs.com service is allowed to assume the role. "RAM": The RAM resource allowed to assume the role. The value is "acs:ram::125279671240****:root", indicating that all RAM users and RAM roles under the cloud account can assume the role. Syntax of a cloud account ARN: `acs:ram::<account-id>:root` , indicating RAM users and RAM roles under the cloud account.
+organizations and trust cloud services. As shown in the preceding figure, the policy grants the asr.aliyuncs.com service and a specific root user permission to assume this role. According to this policy, the asr.aliyuncs.com service or the specified root user is allowed to assume the role. "Version": The policy version. The value is "1". "Statement": A list of permission statements that defines one permission statement. "Action": The allowed operation. The value is "sts:AssumeRole", indicating that assuming the role is allowed. "Effect": Whether the operation is allowed or denied. The value is "Allow", indicating that the operation is allowed. "Principal": The entity allowed to assume the role. It can be a service or a RAM resource. "Service": The service allowed to assume the role. The value is "asr.aliyuncs.com", indicating that the asr.aliyuncs.com service is allowed to assume the role. "RAM": The RAM resource allowed to assume the role. The value is "acs:ram::125279671240****:root", indicating that all RAM users and RAM roles under the cloud account can assume the role.
+
+**Note**
+
+Syntax of a cloud account ARN: `acs:ram::<account-id>:root` , indicating RAM users and RAM roles under the cloud account.
 
 > Syntax of a RAM user ARN: `acs:ram::<account-id>:user/<user-name>` , indicating a RAM user under the cloud account.
 > Syntax of a RAM role ARN: `acs:ram::<account-id>:role/<role-name>` , indicating a RAM role under the cloud account.
@@ -5045,6 +5395,8 @@ organizations and trust cloud services. As shown in the preceding figure, the po
 content. After confirmation, click **Create** to complete the creation of the RAM role authorization.
 
 **View RAM role authorization**
+
+**Procedure**
 
 1. In the role list, view the **Role Name/ID**, **Role Type**, **Role Description**, **Authorization**
 **Object**, **Authorization Object**, **Sharing Scope**, and **Status** of the RAM role
@@ -5068,6 +5420,8 @@ policy, and RAM roles for this RAM role authorization.
 
 **Edit basic information of RAM role authorization**
 
+**Procedure**
+
 1. Click the role name of the RAM role authorization or click **View** in the **Actions** column.
 2. On the RAM role authorization details page, click **Modify Basic Information** in the upper-
 right corner.
@@ -5075,6 +5429,8 @@ right corner.
 4. Click **Confirm**.
 
 **Manage RAM policies**
+
+**Procedure**
 
 1. Click the role name in RAM Role Authorization or click **Actions** column’s **View**.
 2. On the RAM Role Authorization details page, click the **Custom Policy** tab.
@@ -5098,6 +5454,8 @@ right corner.
 | Delete a policy | Important Before you delete a policy, unbind it from any roles that reference it. i. In the Policies panel, click Delete in the Action column for the target policy. ii. Click Delete. |
 
 **Update the trust policy for RAM role authorization**
+
+**Procedure**
 
 1. Click the role name of the RAM role authorization or click **View** in the **Actions** column.
 2. On the RAM Role Authorization Details page, click the **Trust Policy** tab.
@@ -5133,6 +5491,8 @@ RAM authorization is similar to RAM roles. When a product does not support RAM r
 
 **Create RAM authorization**
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **Permission Management****> Role Authorization**.
@@ -5164,6 +5524,8 @@ configure role authorization.
 
 **View RAM authorization**
 
+**Procedure**
+
 1. In the role list, view the **Role Name/ID**, **Role Type**, **Role Description**, **Authorization**
 **Object**, **Applicable Organizations**, **Sharing Scope**, and **Status** of the RAM
 authorization.
@@ -5184,6 +5546,8 @@ management, and permission policies for this RAM authorization.
 
 **Edit basic information of RAM Authorization**
 
+**Procedure**
+
 1. In the role list, click the role name of the RAM authorization or click **View** in the **Actions**
 column.
 2. On the RAM Authorization Details page, click **Modify Basic Information** in the upper-right
@@ -5192,6 +5556,8 @@ corner.
 4. Click **Confirm**.
 
 **Authorize users and user groups**
+
+**Procedure**
 
 Method 1: i. In the role list, click **Authorize** in the **Actions** column for RAM Authorization. ii. In the **Users** and **User Groups** tabs of the **Authorization** dialog box, select the users and user groups to authorize.
 
@@ -5206,6 +5572,8 @@ iii. Click **Confirm**. Method 2: i. In the role list, click the role name of th
 
 **Remove authorized users and user groups**
 
+**Procedure**
+
 1. In the role list, click the role name of the RAM authorization or click **Actions** in the **View**
 column.
 2. Switch to the **Permissions** tab.
@@ -5219,6 +5587,8 @@ column.
 |---|---|
 
 **Manage permission policies**
+
+**Procedure**
 
 1. In the role list, click the role name of the RAM authorization or click **Actions** in the **View**
 column.
@@ -5236,6 +5606,9 @@ policy list, see "Manage permission policies" in Manage RAM role authorization.
 **Prerequisites**
 
 Before you delete a RAM authorization, remove all authorized users and user groups on the Authorization Management tab.
+
+**Procedure**
+
 1. Click **Delete** in the **Actions** column of the RAM authorization.
 2. Click **Confirm**.
 
@@ -5252,6 +5625,9 @@ In multi-cloud scenarios, the role authorization page displays multi-cloud roles
 The platform administrator has connected the managed Apsara Stack under
 **Configurations** > **Native Hybrid Cloud** > **Multi-Cloud Management**.
 You have used the operations administrator to bind the organization of the managed Apsara Stack. You are an operations administrator (bound to the operations administrator role of the managed Apsara Stack) or a level-1 organization administrator (bound to the organization administrator role of the managed Apsara Stack).
+
+**Procedure**
+
 1. On the **Role Authorization** page, switch to the managed Apsara Stack role tab.
 
 > **Note:** The center cloud and connected managed multi-cloud role tabs appear only in multi- cloud scenarios. In single-cloud scenarios, only the center cloud is available by default, and no tabs are displayed.
@@ -5291,6 +5667,9 @@ under the corresponding resource pool, or select it when authorizing a user with
 **Prerequisites**
 
 You are an operations administrator (bound to the operations administrator role of the managed Apsara Stack) or a level-1 organization administrator (bound to the organization administrator role of the managed Apsara Stack).
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions****> Role Permission**.
@@ -5347,6 +5726,9 @@ The operations administrator has already bound the managedpublic cloud. The oper
 **Prerequisites**
 
 The operating user is either an operations administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level) or a level-1 organization administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level).
+
+**Procedure**
+
 1. On the managed public cloud role tab, view the list of RAM roles. The list includes **Role**
 **Name**, **Authorization Object**, **Description**, and **Creation Time**.
 
@@ -5375,6 +5757,9 @@ RAM role.
 **Prerequisites**
 
 The authorization object of the RAM role is a user who does not have the operations administrator role. The operating user is either an operations administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level) or a level-1 organization administrator (bound to a RAM role with the AdministratorAccess permission policy at the managed public cloud account level).
+
+**Procedure**
+
 1. On the managed public cloud role tab, click **Delete** in the **Actions** column of the RAM role.
 2. Click **OK**. After you delete the RAM role, the system unbinds all users from this role.
 
@@ -5412,7 +5797,11 @@ CompanyA (Level-1 Organization) needs to assign dedicated O&M responsibilities. 
 
 **Planning approach**
 
-Xiao Zhuan, as an O&M personnel for ECS resources, needs to view all ECS resources under this company. Therefore, you can create a custom role. Set the role’s management scope to the current organization and its subordinate organizations. Grant only view permissions for ECS resources in application permissions. Then, enable the ECS resource entry in menu permissions. By default, orgA is the Level-1 Organization Administrator of CompanyA. The following steps use orgA as the example operator.
+Xiao Zhuan, as an O&M personnel for ECS resources, needs to view all ECS resources under this company. Therefore, you can create a custom role. Set the role’s management scope to the current organization and its subordinate organizations. Grant only view permissions for ECS resources in application permissions. Then, enable the ECS resource entry in menu permissions.
+
+**Procedure**
+
+By default, orgA is the Level-1 Organization Administrator of CompanyA. The following steps use orgA as the example operator.
 1. orgA logs in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **Permissions****> Role** Permission.
@@ -5471,7 +5860,11 @@ Grant Xiao Zhuan, a dedicated operations engineer under CompanyA (Level-1 Organi
 
 **Planning approach**
 
-Configure a permission policy in RAM Role Authorization to allow rebooting all ECS instances. Define Xiao Zhuan as the authorized user in the trust policy. Assume that OrgA is the Level-1 Organization Administrator for CompanyA. The following steps demonstrate actions performed by OrgA.
+Configure a permission policy in RAM Role Authorization to allow rebooting all ECS instances. Define Xiao Zhuan as the authorized user in the trust policy.
+
+**Procedure**
+
+Assume that OrgA is the Level-1 Organization Administrator for CompanyA. The following steps demonstrate actions performed by OrgA.
 1. Log on to the Apsara Uni-manager Management Console as OrgA.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **Permissions****> Role Permission**.
@@ -5507,7 +5900,11 @@ permission to restart all ECS instances.
 `}` `]` `}`
 8. In the policy list, select the policy you created, and then click **Next Step**.
 9. In **Configure Trust Policy**, specify Xiao Zhuan (username: xiaozhuan) as the authorized
-user who can assume this role. i. First, select the trusted organization CompanyA. This authorizes all RAM users and RAM roles under this Alibaba Cloud account. The system automatically populates the ARN of the cloud account, such as `acs:ram::139900176770****:root` . Alibaba Cloud Account ARN syntax: `acs:ram::<account-id>:root` . This represents RAM users and RAM roles under the Alibaba Cloud account.
+user who can assume this role. i. First, select the trusted organization CompanyA. This authorizes all RAM users and RAM roles under this Alibaba Cloud account. The system automatically populates the ARN of the cloud account, such as `acs:ram::139900176770****:root` .
+
+**Note**
+
+Alibaba Cloud Account ARN syntax: `acs:ram::<account-id>:root` . This represents RAM users and RAM roles under the Alibaba Cloud account.
 
 > RAM User ARN syntax: `acs:ram::<account-id>:user/<user-name>` . This represents a RAM user under the Alibaba Cloud account.
 > RAM Role ARN syntax: `acs:ram::<account-id>:role/<role-name>` . This represents a RAM role under the Alibaba Cloud account.
@@ -5538,7 +5935,11 @@ Use RAM authorization to grant users in the VPC-Group user group under CompanyA 
 
 **Planning ideas**
 
-Define permissions for viewing and deleting all VPC-connected instances in RAM authorization. Then bind the user group to the permission policy and grant the policy to users in the user group. By default, orgA is the Level-1 Organization administrator of CompanyA. The following procedure uses operations performed by orgA as an example.
+Define permissions for viewing and deleting all VPC-connected instances in RAM authorization. Then bind the user group to the permission policy and grant the policy to users in the user group.
+
+**Procedure**
+
+By default, orgA is the Level-1 Organization administrator of CompanyA. The following procedure uses operations performed by orgA as an example.
 1. Log on to the Apsara Uni-Manager Management Console as orgA.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions****> Role Permission**.
@@ -5830,6 +6231,9 @@ After you create an access policy, you can view, modify, disable, enable, or del
 **Limits**
 
 The default policy of the system is globally shared and is in the Enabled state. You cannot modify, disable, or delete the default policy. If you are the platform administrator, you can view the default policy of the system and the access policies that you created. You can also modify, disable, enable, or delete the access policies that you created. If you use a role whose permissions are shared by all organizations, you can view globally shared access policies, access policies that are shared within the current organization, and access policies that are shared within the current organization and its subordinate organizations. You can also modify, disable, enable, or delete all available access policies except the default policy. If you use a role whose permissions are shared within the current organization and its subordinate organizations, you can view globally shared access policies, access policies that are shared within the current organization, and access policies that are shared within the current organization and its subordinate organizations. You can also modify, disable, enable, or delete the access policies that are available within the management scope. If you use a custom role whose permissions are shared by resource sets, you can view globally shared access policies, access policies that are shared within the current organization, and access policies that are shared within the current organization and its subordinate organizations. You cannot modify, disable, enable, or delete the access policies even if you are granted the required permissions.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Permissions** > **Access Control**.
@@ -5861,6 +6265,8 @@ The Apsara Uni-manager Management Console allows you to control operations by or
 
 > **Important:** API operations performed across cloud services (such as when Resource Orchestration Service calls an Elastic Compute Service operation to manage the resources) are also controlled by service boundaries. Therefore, inappropriate configurations may interrupt the normal usage of cloud services. You need to add the ARNs of relevant resources to the whitelist of the service boundaries and make sure that you are aware of the impact of the service boundaries before you enable them.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**. In the left-side navigation pane, choose
 **Permissions** > **Permission Boundary** > **Service Boundary**.
@@ -5888,6 +6294,9 @@ page that appears, configure the parameters.
 ###### 5.3.4.1.2 Manage service boundaries
 
 You can view, modify, enable, disable, and delete service boundaries and manage their whitelists in the Apsara Uni-manager Management Console.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**. In the left-side navigation pane, choose
 **Permissions** > **Permission Boundary** > **Service Boundary**.
@@ -5995,6 +6404,9 @@ The following table lists the logical expressions that can be specified in API c
 ###### 5.3.4.2.1 Create an API control policy
 
 In the Apsara Uni-manager Management Console, you can create API control policies to control API operations on cloud resources based on values of the request parameters.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**. In the left-side navigation pane, choose
 **Permissions** > **Permission Boundary** > **Control Policies**.
@@ -6124,6 +6536,9 @@ The Overview page consists of the Basic Data, Event Count Trend, Getting Started
 **Prerequisites**
 
 You are assigned one of the following roles: operations administrator, resource auditor, organization resource auditor, security auditor, global organization security auditor, platform security auditor, organization security administrator, global organization security administrator, security system configuration administrator, platform security administrator, or platform security configuration administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Overview**.
@@ -6163,6 +6578,9 @@ This topic describes how to view operation logs.
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, or a resource user. Custom roles have the permissions to view operation logs and choose Operation Audit > Operation Log in the left-side navigation pane.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Operation Log**.
@@ -6281,6 +6699,9 @@ Advanced query supports combinations of multiple conditions. You can flexibly se
 **Prerequisites**
 
 By default, the operating user is one of the following: Operations Administrator, Resource Auditor, Organization Resource Auditor, Security Auditor, Global Organization Security Auditor, Platform Security Auditor, Organization Security Administrator, Global Organization Security Administrator, Security System Configuration Administrator, Platform Security Administrator, or Platform Security Configuration Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Enterprise**.
 3. In the left-side navigation pane, select **Operation Audit** > **Advanced Query**.
@@ -6353,6 +6774,9 @@ After an event export task is created, you can view the status of the task on th
 **q**
 
 An event export task is created on the Advanced Query page. You are assigned one of the following roles: operations administrator, resource auditor, organization resource auditor, security auditor, global organization security auditor, platform security auditor, organization security administrator, global organization security administrator, security system configuration administrator, platform security administrator, or platform security configuration administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Export History**.
@@ -6374,6 +6798,9 @@ By configuring audit notifications, you can detect in real time and quickly resp
 **Prerequisites**
 
 You are assigned one of the following roles: operations administrator, resource auditor, organization resource auditor, security auditor, global organization security auditor, platform security auditor, organization security administrator, global organization security administrator, security system configuration administrator, platform security administrator, or platform security configuration administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Audit Notifications**.
@@ -6506,6 +6933,9 @@ An AccessKey pair consists of an AccessKey ID and an AccessKey secret, which are
 **Prerequisites**
 
 You are assigned one of the following roles: Operations Administrator, Resource Auditor, Organization Resource Auditor, Security Auditor, Global Organization Security Auditor, Platform Security Auditor, Organizational Security Administrator, Global Organization Security Administrator, Security System Configuration Administrator, Platform Security Administrator, and Platform Security Configuration Administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Operation Audit** > **Audit Notifications**.
@@ -6557,6 +6987,9 @@ You have connected an Alibaba Cloud platform to the central cloud platform as a 
 **Configurations**. In the left-side navigation pane, choose **Native Hybrid Cloud** > **Multi-**
 **cloud Management**.
 You are the operations administrator of the managed Alibaba Cloud platform. The operations administrator is assigned a Resource Access Management (RAM) role to which the AdministratorAccess policy of the Alibaba Cloud account is attached.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, click **Public Cloud Management Configurations**.
@@ -6585,6 +7018,9 @@ You have connected an Alibaba Cloud platform to the central cloud platform as a 
 **Configurations**. In the left-side navigation pane, choose **Native Hybrid Cloud** > **Multi-**
 **cloud Management**.
 You are the operations administrator of the managed Alibaba Cloud platform. The operations administrator is assigned a Resource Access Management (RAM) role to which the AdministratorAccess policy is attached.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, click **Public Cloud Management Configurations**.
@@ -6652,6 +7088,9 @@ You are a platform administrator.
 **Limits**
 
 You can add a subitem of a group quota item without adding the group quota item. When you select a group quota item, all of its subitems are selected. For more information, see Cloud services that support group quota configuration. When you add a subitem of a category quota item, the category quota item is also added. For more information, see Cloud services that support category quota configuration.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
@@ -6707,6 +7146,8 @@ The first time that you configure the logical inventory of a group quota item, t
 
 > **Note:** The subitems of a group quota item may share the same resource pool. Therefore, the physical inventory of a group quota item may be less than the sum of the child physical inventories.
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
@@ -6746,6 +7187,8 @@ Inventories are configured. You are a platform administrator.
 > **Note:** If the sum of resources to be created and created resources of a service is greater than the physical inventory, you can cancel quotas to clear the quota data of the service. Then, when you create resources, the console no longer verifies the resources of the service and allows resources to be oversold.
 > If you cancel the quotas of a service, the logical inventory data of the service in all organizations is cleared and quota verification is disabled. Proceed with caution.
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
@@ -6783,6 +7226,9 @@ You are a platform administrator.
 **Limits**
 
 You cannot configure inventory change notification settings for public cloud platforms connected to the central cloud platform.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Resource Pool Configuration**.
@@ -6842,6 +7288,8 @@ configuration. i. Enter the basic configuration and account authorization inform
 | Account Authorizati on | AccessKey ID | Enter the AccessKey ID of the platform administrator role account (default is super account) for the target Apsara Stack. |
 |   | Accesskey Secret | Enter the AccessKey Secret of the platform administrator role account (default is super account) for the target Apsara Stack. |
 |   | Description | Enter a description for the resource pool. |
+
+**Note**
 
 The platform administrator user of the target Apsara Stack exports the cloud configuration file under **Configuration** > **Native Hybrid Cloud** > **Local**
 **Cloud Data** in the local cloud. For detailed operations, see Export local cloud
@@ -7063,6 +7511,9 @@ You have turned on the multi-cloud switch and deployed the COMS service. The ope
 **Limits**
 
 You cannot operate the preset cloud platform types.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Operations Console.
 2. In the top navigation bar, select **Configuration**.
 3. In the left-side navigation pane, select **Native Hybrid Cloud** > **Cloud Platform Type**
@@ -7107,6 +7558,9 @@ The configurations of the current cloud platform can be exported and used for mu
 Native Hybrid Cloud and Local Cloud Data are selected by a platform administrator. To do so, click **Configurations** in the top navigation bar. In the left-side navigation pane, choose
 **Menu Settings** > **Main Menu Configuration**. On the Main Menu Configuration page,
 click the **Single-cloud Menu** tab. On this tab, click **Configurations** and select Native Hybrid Cloud and Local Cloud Data. You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Native Hybrid Cloud** > **Local Cloud Data**.
@@ -7124,6 +7578,9 @@ This topic describes how to set a password policy.
 **Prerequisites**
 
 The operator is the platform administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configurations**.
 3. In the left-side navigation pane, select **Security Policy**.
@@ -7170,6 +7627,8 @@ The operating user is the platform administrator by default.
 
 > **Important:** For Internet-accessible sites, the system sets session control to single-session mode by default and forces logout after 23 hours and 55 minutes.
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Configuration**.
 3. On the **Security Policy** page, click the **Login Control** tab.
@@ -7202,6 +7661,9 @@ This topic describes how to configure security level-based authorization for a r
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Security Policies**. On the Security Policies page,
@@ -7245,6 +7707,9 @@ You can configure an authentication mode based on the scenario.
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as a platform administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Configurations**.
 3. In the left-side navigation pane, click **Authentication Mode**.
@@ -7453,6 +7918,9 @@ You can create or synchronize specifications of cloud resources.
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as a platform administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Configurations**.
 3. In the left-side navigation pane, click **Specifications**.
@@ -7479,6 +7947,9 @@ a. Click **Synchronize Specifications**. b. In the message that appears, click *
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as a platform administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Configurations**.
 3. In the left-side navigation pane, click **Specifications**.
@@ -7525,6 +7996,9 @@ Company A analyzes the specific requirements of departments and applications and
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as a platform administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Specifications**.
@@ -7554,6 +8028,9 @@ After the specification rds.mysql.A is disabled, it is unavailable when users cr
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as a platform administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as the super administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Specifications**.
@@ -7601,6 +8078,8 @@ You are a platform administrator.
 
 **Create a menu item**
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Menu Settings** > **Main Menu Configuration**.
@@ -7617,6 +8096,9 @@ You can modify a menu item as needed.
 **Limits**
 
 The default menu items cannot be modified.
+
+**Procedure**
+
 1. On the **Single-cloud Menu** tab, find the menu item that you want to modify and click **Edit**
 in the **Actions** column.
 2. In the **Edit** dialog box, modify the menu item information and click **OK**.
@@ -7628,11 +8110,16 @@ You can delete a menu item if you no longer need it.
 **Limits**
 
 The default menu items cannot be deleted.
+
+**Procedure**
+
 1. On the **Single-cloud Menu** tab, find the menu item that you want to delete and click
 **Delete** in the **Actions** column.
 2. In the **Delete** message, click **OK**.
 
 **Show or hide a menu item**
+
+**Procedure**
 
 1. On the **Single-cloud Menu** tab, find the required menu item and select or clear the check
 box in the **Display** column. : The menu item is displayed in the console. : The menu item is not displayed in the console.
@@ -7703,6 +8190,9 @@ You can turn on or off the switch to remove the product redirection page based o
 **Prerequisites**
 
 The operator must be a platform administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Configuration**.
 3. In the left-side navigation pane, choose **Menu Management** > **Redirection Page**
@@ -7727,6 +8217,9 @@ Billing switches control whether billing is enabled to generate resource usage b
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Billing Switch**.
@@ -7860,6 +8353,9 @@ This topic describes how to create a privacy document that contains the platform
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Privacy Document**.
@@ -7878,6 +8374,9 @@ After a privacy document is created, you can view the created privacy document o
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Privacy Document**.
@@ -7897,6 +8396,9 @@ You are a platform administrator.
 **Limits**
 
 To modify a published privacy document, you must unpublish it first.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Privacy Document**.
@@ -7915,6 +8417,9 @@ After you publish a privacy document, users must select the privacy document and
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Privacy Document**.
@@ -7933,6 +8438,9 @@ After you unpublish a published privacy document, the privacy document no longer
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Privacy Document**.
@@ -7949,6 +8457,9 @@ This topic describes how to view the historical versions of a privacy document.
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Privacy Document**.
@@ -7970,6 +8481,9 @@ Multiple languages are supported, including Simplified Chinese, Traditional Chin
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Custom Configurations**.
@@ -8014,6 +8528,9 @@ This topic describes how to configure a global identity provider (IdP).
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Authentication by Third Party**. The User-based
@@ -8132,6 +8649,9 @@ This topic describes how to configure a local identity provider (IdP).
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Authentication by Third Party**. The User-based
@@ -8241,6 +8761,9 @@ If a cloud platform is managed by another cloud platform, the other cloud platfo
 **Prerequisites**
 
 You are a platform administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Authentication by Third Party**. The User-based
@@ -8275,6 +8798,8 @@ You are a platform administrator.
 
 **View OIDC IdPs**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, click **Authentication by Third Party**.
@@ -8290,6 +8815,8 @@ source of the ID token.
 **Created At**: the time when the OIDC IdP was created.
 
 **Delete an OIDC IdP**
+
+**Procedure**
 
 1. In the OIDC IdP list, find the OIDC IdP that you want to delete and click **Delete** in the
 Actions column.
@@ -8310,6 +8837,8 @@ The system supports configuration of the email gateway, SMS gateway, DingTalk se
 By default, the operating user is the platform administrator.
 
 **Configure the email gateway**
+
+**Procedure**
 
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Configurations**.
@@ -8354,6 +8883,8 @@ Click **Reset** to clear the SMS configuration and reconfigure it. Click **Test 
 
 **Configure DingTalk settings**
 
+**Procedure**
+
 1. On the **Message Gateway** page, click the **DingTalk settings** tab.
 2. Fill in the DingTalk configuration items.
 
@@ -8368,6 +8899,8 @@ Click **Reset** to clear the DingTalk settings and reconfigure them. Click **Tes
 
 **Configure Webhook**
 
+**Procedure**
+
 1. On the **Message Gateway** page, click the **Webhook** tab.
 2. Fill in the Webhook configuration items.
 
@@ -8381,6 +8914,8 @@ Click **Reset** to clear the DingTalk settings and reconfigure them. Click **Tes
 Click **Reset** to clear the settings and reconfigure them. Click **Test Webhook** to test whether messages can be sent successfully.
 
 **Configure message templates**
+
+**Procedure**
 
 1. On the **Message Gateway** page, click the **Message template** tab.
 2. Set the **Business Name** and **Business type** filter conditions.
@@ -8453,6 +8988,8 @@ authentication and notification methods.
 7. Click **Save**.
 
 **Supported cloud services**
+
+**Apsara Uni-manager**
 
 | Cloud service | Operation |
 |---|---|
@@ -8550,6 +9087,9 @@ The log storage settings apply to the storage of operation logs and AccessKey lo
 **Prerequisites**
 
 You have logged on to the Apsara Uni-manager Management Console as an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 
 > **Note:** We recommend that you log on to the Apsara Uni-manager Management Console as the preset operations administrator. This ensures the security of created Simple Log Service projects and Logstores and prevents accidental deletion.
@@ -8583,6 +9123,9 @@ The default operator is the Operations Administrator.
 **Constraints**
 
 You cannot modify the dump mode after you set the archive mode for historical billing and order data.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, select **Log Storage Settings**.
@@ -8610,6 +9153,9 @@ The Events page displays the change events that can be associated with resources
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Event Notification** > **Events**.
@@ -8627,6 +9173,9 @@ The event push feature allows you to push the events in the event list to event 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane, choose **Event Notification** > **Event Push**.
@@ -8942,6 +9491,9 @@ The application page displays a list of applications categorized as My Applicati
 **Background information**
 
 My application forms: All application forms that you created. To be approved: Application forms that require your approval. Participated: Application forms in which you participated. This includes all approval forms that were copied to you or automatically approved by parallel signing. Handled: Application forms that you processed. This includes all approval forms that you approved, transferred, or added signers to. All application forms: All application forms within your visible scope. This includes those you created, processed, participated in, and other application forms within your visibility range.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Application Forms**.
@@ -9041,6 +9593,9 @@ When users have application forms pending approval, the system supports three no
 **Prerequisites**
 
 The application form status is **Under approval**.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Application Forms**.
@@ -9076,6 +9631,9 @@ You can transfer an application form to another approver for handling.
 **Prerequisites**
 
 An application form is in the **Pending Approval** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, click **Application Forms**.
@@ -9109,6 +9667,9 @@ You can add a signatory for an application form, which means inserting a new app
 An application form is in the **Pending Approval** state.
 **Allow Approver to Specify Additional Signatories** is selected for the current approval
 node of the application form.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, click **Application Forms**.
@@ -9140,6 +9701,9 @@ For application forms requiring manual operations subsequently and application f
 **Prerequisites**
 
 An application form is in the **Action Pending Execution** or **Action Failed** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, click **Application Forms**.
@@ -9161,6 +9725,9 @@ and **Application Form Status** conditions, and then click **Search**.
 ##### 7.1.1.8 Export application forms
 
 This topic describes how to export the data of application forms to your local computer for storage.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, click **Application Forms**.
@@ -9188,6 +9755,9 @@ You can manage approval processes at the operation control layer of the Apsara U
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Process Management** > **Process Management**.
@@ -10188,7 +10758,11 @@ This topic describes the quota that you can configure for Tair (Redis OSS-compat
 
 **Standard Edition (Master-replica)**
 
-Memory usage = instanceClass.mem × Number of replicas The preceding formula is used to calculate the memory usage of a standard instance.
+Memory usage = instanceClass.mem × Number of replicas
+
+**Note**
+
+The preceding formula is used to calculate the memory usage of a standard instance.
 
 > instanceClass.mem indicates the memory size that is defined in the instance type.
 > The number of replicas is fixed to 2.
@@ -10859,6 +11433,9 @@ A resource pool is configured by a platform administrator or the super user. For
 **Limits**
 
 You must configure quotas for a parent organization before you can configure quotas for its subordinate organizations. You cannot configure quotas for a subordinate organization before you configure quotas for its parent organization. Quotas can be limited or unlimited. If you do not configure quotas for an organization, no quota limits apply, and the organization can use the quotas configured for its parent organization. Resource sets that belong to an organization share the quotas configured for the organization with its subordinate organizations. Group quotas are configured top-down. A parent organization must have a quota configured before you can configure quotas for its subordinate organizations. For more information, see Cloud services that support group quota configuration. A group quota must be configured before individual quotas can be configured within that group. You can configure a group quota for a subordinate organization only after the parent organization has its group quota configured. You can configure individual quotas within a group for a subordinate organization only after the parent organization has its corresponding group quota and individual quotas configured. A group quota must be greater than or equal to the sum of its configured individual quotas. Category quotas are configured top-down. A parent organization must have a quota configured before you can configure quotas for its subordinate organizations. You can configure individual quotas within a category for a subordinate organization only after the parent organization has its corresponding category quota and individual quotas configured. For more information, see Cloud services that support category quota configuration. An operations administrator can configure quotas for all organizations and resource sets. An organization administrator can configure quotas for the subordinate organizations of the organization that is managed by the organization administrator, including quotas for resource sets. When you configure quotas for the current organization, you apply for quotas from the parent organization. After the application is approved, the quotas are allocated.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -10925,6 +11502,9 @@ A resource pool is configured by a platform administrator or the super user. For
 **Limits**
 
 You must configure quotas for a parent organization before you can configure quotas for its subordinate organizations. You cannot configure quotas for a subordinate organization before you configure quotas for its parent organization. Quotas can be limited or unlimited. If you do not configure quotas for an organization, no quota limits apply, and the organization can use the quotas configured for its parent organization. Resource sets that belong to an organization share the quotas configured for the organization with its subordinate organizations. Group quotas are configured top-down. A parent organization must have a quota configured before you can configure quotas for its subordinate organizations. For more information, see Cloud services that support group quota configuration. A group quota must be configured before individual quotas can be configured within that group. You can configure a group quota for a subordinate organization only after the parent organization has its group quota configured. You can configure individual quotas within a group for a subordinate organization only after the parent organization has its corresponding group quota and individual quotas configured. A group quota must be greater than or equal to the sum of its configured individual quotas. Category quotas are configured top-down. A parent organization must have a quota configured before you can configure quotas for its subordinate organizations. You can configure individual quotas within a category for a subordinate organization only after the parent organization has its corresponding category quota and individual quotas configured. For more information, see Cloud services that support category quota configuration. An operations administrator can configure quotas for all organizations and resource sets. An organization administrator can configure quotas for the subordinate organizations of the organization that is managed by the organization administrator, including quotas for resource sets. When you configure quotas for the current organization, you apply for quotas from the parent organization. After the application is approved, the quotas are allocated.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -10995,6 +11575,9 @@ You are assigned the operations administrator, resource auditor, organization ad
 **Limits**
 
 An operations administrator or a resource auditor can view the quotas of all organizations and resource sets. An organization administrator or an organization resource auditor can view the quotas of the organization that is managed by the role and its subordinate organizations, including quotas for resource sets. A resource set administrator can view only the quotas of the resource set that is managed by the resource set administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -11025,6 +11608,9 @@ All subordinate organizations and resource sets of the organization do not have 
 **Limits**
 
 An operations administrator can clear quotas for all organizations and resource sets. An organization administrator can clear quotas only for the subordinate organizations of the organization that is managed by the organization administrator, including quotas for resource sets.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -11060,6 +11646,9 @@ Quotas are configured for an organization or a resource set. You are an operatio
 **Limits**
 
 An operations administrator can create alert rules for quotas of all organizations and resource sets. An organization administrator can create alert rules only for the organization that is managed by the organization administrator and its subordinate organizations, including alert rules for quotas of resource sets. If an alert rule is enabled for an organization or a resource set, no more alert rules can be created for the quotas of the organization or resource set. An alert rule automatically takes effect after it is created. Existing alert rules applied to the organizations or resource sets to which the new alert rule applies are disabled.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -11109,6 +11698,9 @@ You are assigned the operations administrator or level-1 organization administra
 **Limits**
 
 An operations administrator can configure quota templates in the root organization and all level-1 organizations. A level-1 organization administrator can configure quota templates only in the current level-1 organization.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -11160,6 +11752,9 @@ You are an operations administrator or an organization administrator.
 **Limits**
 
 If a quota alert rule other than the preset one is enabled for a cloud service in an organization or a resource set, no more quota alert rules can be created for the cloud service in the organization or resource set. A quota alert rule automatically takes effect after it is created. Then, the preset quota alert rule applied to the organizations or resource sets to which the new quota alert rule applies is disabled.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alerts**.
@@ -11190,6 +11785,9 @@ If the quotas of cloud services are changed in an organization or a resource set
 **Limits**
 
 Preset quota alert rules cannot be modified or deleted. Only one quota alert rule can be enabled for a cloud service. If a quota alert rule is enabled for a cloud service, you must disable this rule before you can enable another quota alert rule for this cloud service. The quota alert rules that you can view in an organization or a resource set include all quota alert rules in the current organization or resource set and all quota alert rules with Include Child Organization enabled in the parent organization.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alerts**.
@@ -11220,6 +11818,9 @@ If a quota reaches the specified alert threshold, alerts are generated. You can 
 **Prerequisites**
 
 A quota alert rule is created. For more information, see Quota alert management.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alert History**.
@@ -11247,6 +11848,8 @@ You can configure the specification quotas for an instance to restrict the speci
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
 
 > **Important:** You can configure network specification quotas only for level-1 organizations.
 
@@ -11280,6 +11883,8 @@ You can create at most 20 tags at a time and add the tags to resources. You can 
 
 **Create or select tags and add the tags to resources**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Tag**.
@@ -11295,6 +11900,8 @@ parameters in the following steps as prompted. i. **Create or Select Tags** Sele
 ii. **Select a Resource** Select the organization and resource set to which the resources belong, region, and cloud services, and click **Next**. iii. **Confirmation Information** Confirm the information about the tags and resources and click **Confirm**.
 
 **View resources to which tags are added**
+
+**Procedure**
 
 1. In the left-side **Tag Key** pane of the **Tag** page, find the tag key that you want to view.
 You can click the icon next to Tag Key to specify filter conditions in the **Filter**
@@ -11330,6 +11937,9 @@ When you create a tag policy, you can limit the effective scope of the policy by
 **Prerequisites**
 
 You are an operations administrator or an organization administrator. If you are assigned a custom role that is authorized to manage organizations, the custom role must be granted the permissions to create tag policies and access the Policy Library page in the Tags module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Policy Library**.
@@ -11357,6 +11967,9 @@ On the Policy Library page, you can view tag policies and the details of each ta
 **Prerequisites**
 
 You are an operations administrator, a resource auditor, an organization administrator, or an organization resource auditor. If you are assigned a custom role that is authorized to manage organizations, the custom role must be granted permissions to view tag policies and access the Policy Library page in the Tags module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Policy Library**.
@@ -11374,6 +11987,9 @@ You can modify a tag policy if the tag policy changes.
 **Prerequisites**
 
 The tag policy is in the **Paused** state. You are an operations administrator or an organization administrator. If you are assigned a custom role that is authorized to manage organizations, the custom role must be granted permissions to modify and delete tag policies and access the Policy Library page in the Tags module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Policy Library**.
@@ -11390,6 +12006,9 @@ After a disabled tag policy is enabled, the system checks the compliance of reso
 **Prerequisites**
 
 The tag policy is in the **Paused** state. You are an operations administrator or an organization administrator. If you are assigned a custom role that is authorized to manage organizations, the custom role must be granted permissions to modify and delete tag policies and access the Policy Library page in the Tags module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Policy Library**.
@@ -11422,6 +12041,9 @@ You can delete tag policies that you no longer require.
 **Prerequisites**
 
 The tag policy is in the **Paused** state. You are an operations administrator or an organization administrator. If you are assigned a custom role that is authorized to manage organizations, the custom role must be granted permissions to modify and delete tag policies and access the Policy Library page in the Tags module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Policy Library**.
@@ -11440,6 +12062,9 @@ After tag policies are enabled, they are aggregated by tag key and policy type a
 **Prerequisites**
 
 You are an operations administrator, a resource auditor, an organization administrator, or an organization resource auditor. If you are assigned a custom role that is authorized to manage organizations, the custom role must be granted permissions to view effective policies and access the Effective Policy page in the Tags module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Tags** > **Effective Policy**.
@@ -11737,6 +12362,9 @@ This topic describes how to create a metering table for a cloud service. You can
 **Prerequisites**
 
 The switch controlling metering table creation is turned on. Contact O&M personnel if you need to turn on this switch. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering** > **Metering Configuration**
@@ -11790,6 +12418,9 @@ You have logged in to the console as an operations administrator. The status of 
 **Limits**
 
 You can modify only custom metering tables.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering** > **Metering Configuration**
@@ -11810,6 +12441,9 @@ View preset or custom metering tables for product metering resources. Metering t
 **Prerequisites**
 
 The operating user defaults to the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the menu, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Metering** > **Metering Configuration**
@@ -11835,6 +12469,9 @@ You are an operations administrator. The custom-type metering table is in the **
 **Limits**
 
 Only custom-type metering tables can be enabled. Under the same product metering resource, only one custom-type metering table can be enabled.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering Management** > **Metering**
@@ -11862,6 +12499,8 @@ Only custom-type metering tables can be disabled.
 
 > **Important:** After a metering table is disabled, if it is later enabled again, some metering data may be missing and cannot be replenished.
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering Management** > **Metering**
@@ -11884,6 +12523,9 @@ You are an operations administrator. The custom-type metering table is in the **
 **Limits**
 
 Only custom-type metering tables can be cloned.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering Management** > **Metering**
@@ -11908,6 +12550,9 @@ You have logged in to the console as an operations administrator. The status of 
 **Limits**
 
 You can delete only custom metering tables.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering** > **Metering Configuration**
@@ -11932,6 +12577,9 @@ You are an operations administrator. The custom-type metering table is in the **
 **Limits**
 
 Only custom-type metering tables support creating drafts.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering Management** > **Metering**
@@ -11958,6 +12606,9 @@ You are an operations administrator. The custom-type metering table is in the **
 **Limits**
 
 You can view version records only for custom-type metering tables.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering Management** > **Metering**
@@ -11985,6 +12636,9 @@ This topic describes how to view the metering data push in each metering cycle o
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering** > **Metering Configuration**
@@ -12016,6 +12670,9 @@ The Alert Records tab displays the alert rules and alert records of cloud servic
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering** > **Metering Configuration**
@@ -12211,6 +12868,9 @@ This topic describes the cloud services that support metering in Enterprise Edit
 ###### 7.1.5.2.2 View and export usage statistics details
 
 On the Metering Details page, you can view resource usage statistics. The information and metering changes of resource instances are recorded at a granularity of one hour or one second. This topic describes how to view and export the details of resource usage statistics.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Metering** > **Metering Details**.
@@ -12250,6 +12910,9 @@ The top-level product category represents the cloud platform type. It includes s
 **Prerequisites**
 
 By default, the operating user is an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager management console.
 2. In the top navigation bar, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Product Management** > **Product Management**.
@@ -12274,6 +12937,9 @@ The operating user is an operations administrator by default.
 **Limits**
 
 You can edit only the names of custom level 1 and level 2 categories. You cannot edit preset product categories. Top-level categories represent cloud platform types. You cannot edit them on the Product Management page. For more information, see Cloud platform type management.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Operations Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12299,6 +12965,9 @@ No products exist under the custom product category. The current user must be an
 **Limits**
 
 You cannot delete preset product categories. Top-level categories represent cloud platform types. You cannot edit them on the product management page. For more information, see Cloud platform type management.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12347,6 +13016,9 @@ The service is in the **Not put on shelves** state. The operating user defaults 
 **Constraints**
 
 You cannot edit preset services.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Service Management** > **Service Management**.
@@ -12372,6 +13044,9 @@ You are an operations administrator.
 **Limits**
 
 The resource type for a service must be published before you publish the service. After the resource type is published, the service is automatically published. For more information about how to publish a resource type, see Publish a resource type.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12406,6 +13081,9 @@ This topic describes how to delete a service. You can delete a service if you no
 **Prerequisites**
 
 The service is in the **Removed** or **Not put on shelves** state and has no resource types under it. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12425,6 +13103,9 @@ Add a resource type under a service.
 **Prerequisites**
 
 The default user for this operation is the operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Product Management** > **Product Management**.
@@ -12633,6 +13314,9 @@ This topic describes how to modify a resource type when the resource type change
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12656,6 +13340,9 @@ The resource type is in the **Removed** or **Not put on shelves** state. You are
 **Usage notes**
 
 If the service to which the resource type belongs is in the **Not put on shelves** or **Removed** state, the service is published after the resource type is published.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12673,6 +13360,9 @@ Unpublish the resource type.
 **Prerequisites**
 
 The resource type is in **Published** status. The default user for this operation is the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, select **Product Management** > **Product Management**.
@@ -12696,6 +13386,9 @@ This topic describes how to delete a resource type. You can delete a resource ty
 **Prerequisites**
 
 The resource type is in the **Removed** or **Not put on shelves** state. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12715,6 +13408,9 @@ You can export configuration files in the YAML format by category or by service 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -12739,6 +13435,9 @@ You can import an exported service configuration file to quickly migrate and reu
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Product Management**.
@@ -13387,6 +14086,9 @@ Before you add a custom service, you must add the service provider to which the 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Service Provider**
@@ -13449,6 +14151,9 @@ The service provider has no services. You are an operations administrator.
 **Limits**
 
 The built-in system service providers cannot be removed.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Product Management** > **Service Provider**
@@ -13471,6 +14176,9 @@ This topic describes how to manage the memory quota of Elastic Compute Service (
 **Prerequisites**
 
 You are an operations administrator or organization administrator. Quotas are configured for the parent organization.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the main menu, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quotas**.
@@ -13499,6 +14207,9 @@ This topic describes how to create an alert rule for the memory quota of Elastic
 **Prerequisites**
 
 You are an operations administrator or organization administrator. The memory quota of ECS is configured.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the main menu, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Quotas** > **Quota Alerts**.
@@ -13562,6 +14273,9 @@ This topic provides an example on how to associate a process with management ope
 **Prerequisites**
 
 A process is created and published. For more information, see Example: Create and publish a process. You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Process Management** > **Process Binding**.
@@ -13588,6 +14302,9 @@ This topic provides an example on how to associate a process with the operation 
 **Prerequisites**
 
 A process is created and published. For more information, see Example: Create and publish a process. You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Process Management** > **Process Binding**.
@@ -13617,6 +14334,9 @@ This topic provides an example on how to associate a process with service catalo
 **Prerequisites**
 
 A process is created and published. For more information, see Example: Create and publish a process. You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Resource Operations**.
 3. In the left-side navigation pane, choose **Process Management** > **Process Binding**.
@@ -13700,6 +14420,9 @@ guide of the cloud service.
 ##### 7.2.1.1 Create a list
 
 The Configure, Price, Quote (CPQ) page displays the configuration information about services in a list by group. You can create multiple lists to manage resources in CPQ by group. You can also select and submit resources across groups. This topic describes how to create a list in CPQ.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13720,6 +14443,9 @@ If you use the Save List feature, you save the default list as a custom list. Th
 **Limits**
 
 Only the default list can be saved.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13737,6 +14463,9 @@ icon to show the floating menu, and then click the icon to go to the CPQ page.
 ##### 7.2.1.3 Export a list
 
 If you use the Export List feature, you download the service information in the list to your computer for storage. This topic describes how to export a list from Configure, Price, Quote (CPQ).
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13753,6 +14482,9 @@ You can delete lists that are no longer needed from Configure, Price, Quote (CPQ
 **Limits**
 
 You cannot delete the default list. You can delete only custom lists.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13765,6 +14497,9 @@ icon to show the floating menu, and then click the icon to go to the CPQ page.
 ##### 7.2.1.5 Add a service to CPQ
 
 You can add services to a list in Configure, Price, Quote (CPQ) by group. This topic describes how to add a service to CPQ.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13790,6 +14525,9 @@ click **Add configuration quotation**.
 ##### 7.2.1.6 Remove a service from CPQ
 
 You can remove services from Configure, Price, Quote (CPQ). This topic describes how to remove a service from CPQ.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13805,6 +14543,9 @@ Remove a single service a. Click **Remove** in the **Actions** column of the ser
 **CPQ**
 
 When any parameter of a service in Configure, Price, Quote (CPQ) needs to be updated, you can change the configurations of the service. This topic describes how to change the configurations of a service in CPQ.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13820,6 +14561,9 @@ the specific service.
 ##### 7.2.1.8 Submit a service application
 
 The services that are to be submitted to Configure, Price, Quote (CPQ) can be submitted in groups either within a list or across lists. This topic describes how to submit a service application in CPQ.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the CPQ page.
@@ -13835,6 +14579,9 @@ icon to show the floating menu, and then click the icon to go to the CPQ page.
 ##### 7.2.2.1 Services
 
 The Services page displays all available services and allows you to quickly create resources by activating services.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose Service Catalog > **Services**.
@@ -13954,6 +14701,9 @@ Create a new service. Configure the associated product, authorization scope, for
 **Prerequisites**
 
 By default, the operating user is an operations administrator or an organization administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the menu, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Service Catalog** > **Service Management**.
@@ -14021,6 +14771,9 @@ This topic describes how to view system preset services and custom services.
 **Prerequisites**
 
 You are an operations administrator, resource auditor, organization administrator, or organization resource auditor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Service Management**.
@@ -14062,6 +14815,9 @@ The service source is custom, and its status is **Pending** or **Removed**. By d
 You cannot edit system-preset services.
 **Custom Service** of the historical custom configuration type does not support editing. If
 needed, go to product management to create a new custom product, then create a new service based on that custom product.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the menu, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Service Catalog** > **Service Management**.
@@ -14080,6 +14836,9 @@ The service is in the **To be put on shelves** or **Removed** state. You are an 
 **Limits**
 
 You cannot publish services that are created based on the **Custom Service** type. You can create a service based on a custom product in the Product Management module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Service Management**.
@@ -14102,6 +14861,9 @@ Unpublish a service that is currently published.
 **Prerequisites**
 
 The service status is **Published**. By default, the user performing this operation must be an Operations Administrator or an Organization Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Services**.
@@ -14128,6 +14890,9 @@ You are an operations administrator or an organization administrator.
 **Limits**
 
 You cannot replicate system preset services. You can no longer manage services that are created based on the **Custom Service** type. You can create a service based on a custom product in the Product Management module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Service Management**.
@@ -14147,6 +14912,9 @@ The service is a custom service. You are an operations administrator or an organ
 **Limits**
 
 By default, the authorization scope of system preset services is all users in the global scope. You cannot change the authorization scope. You can no longer perform authorization operations on the services that are created based on the **Custom Service** type. You can create a service based on a custom product in the Product Management module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Service Management**.
@@ -14176,6 +14944,9 @@ The service is a custom service and is in the **To be put on shelves** or **Remo
 **Limits**
 
 You cannot delete preset services.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Service Management**.
@@ -14192,6 +14963,9 @@ This topic describes how to create an Elastic Compute Service (ECS) instance ser
 **Prerequisites**
 
 You are an operations administrator or an organization administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Service Catalog** > **Service Management**.
@@ -14258,6 +15032,9 @@ The order list page displays order information categorized as My Orders, Pending
 **Background information**
 
 Orders include orders for activation, configuration change, release, renewal, and billing method conversion. The following scenarios generate orders. Activation: Activate an instance for the first time or create an instance in the cloud service console. Configuration change: Change configurations of cloud product resources, such as scaling up, scaling down, upgrading, or downgrading. Release: Release the corresponding cloud service or cloud product resource. Renewal: Renew a resource order that uses the subscription billing method. Subscription-to-pay-as-you-go: Change the billing method of a resource from subscription to pay-as-you-go. Pay-as-you-go-to-subscription: Change the billing method of a resource from pay-as-yougo to subscription. A cloud service generates one main order. Each cloud product resource generates one suborder. If no corresponding cloud product exists, one service generates one main order. By default, sub-order information does not appear on the order details page. Instead, the system displays instance information. My Orders: Orders that you created. Pending My Action: Orders that require your action. All Orders: All orders within your permission scope.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Orders** > **Order List**.
@@ -14310,6 +15087,9 @@ This topic describes how to generate an identical or a similar order based on an
 **Prerequisites**
 
 The order to be re-placed is of the **Purchase** type.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Orders** > **Orders**.
@@ -14351,6 +15131,9 @@ The order to be cancelled is in the **Rejected** or **Approving** state.
 **Limits**
 
 You can only cancel orders created by yourself.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Orders** > **Orders**.
@@ -14386,6 +15169,9 @@ On the Pending Tasks tab, set a delivery time for custom service orders in pendi
 **Prerequisites**
 
 The order status is **Pending**.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Order Management** > **Order List**.
@@ -14407,12 +15193,18 @@ services support only pay-as-you-go billing. Therefore, delivered services are a
 6. In the order list, find the order that you want to process.
 7. Click **Deliver** in the **Actions** column.
 8. In the **Service Delivery Confirmation** dialog box, enter **Delivered At** and **Description**.
+
+**Note**
+
 You can select a historical time as the delivery time. The earliest selectable time is 15 days before the current time.
 9. Click **OK**.
 
 ###### 7.2.3.1.5 Export orders
 
 You can export orders for subsequent data processing and analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Orders** > **Orders**.
@@ -14448,6 +15240,9 @@ By default, authorized users include Operations Administrator, Resource Auditor,
 **Constraints**
 
 Operations Administrator, Resource Auditor, Global Organization Security Administrator, Platform Security Administrator, and Platform Security Configuration Administrator have permissions across all organizations. Organization Administrator, Organization Resource Auditor, and Organization Security Administrator have permissions for their own organization and subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Order Management** > **Renewal**.
@@ -14483,6 +15278,8 @@ The permission scope for Operations Administrators, Resource Auditors, Global Or
 
 **Change manual renewal resources to automatic renewal**
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Order Management** > **Renewal**.
@@ -14510,6 +15307,8 @@ the renewal method of the resource changes from **Automatic Renewal** to **Manua
 
 **Set the subscription duration for automatic renewal**
 
+**Procedure**
+
 1. On the **Renewal** page, click **Modify Automatic Renewal** in the **Actions** column of a
 resource configured with automatic renewal.
 2. In the **Automatic Renewal Management** dialog box, select a value for **Subscription**
@@ -14531,6 +15330,9 @@ By default, users with the following roles can perform this operation: Operation
 **Constraints**
 
 Users with the roles of Operations Administrator, Resource Auditor, Global Organization Security Administrator, Platform Security Administrator, and Platform Security Configuration Administrator have permissions across all organizations. Users with the roles of Organization Administrator, Organization Resource Auditor, and Organization Security Administrator have permissions for their own organization and subordinate organizations. Users with the roles of Resource Set Administrator and Resource User have permissions limited to their assigned resource sets. You cannot renew resources that are currently undergoing modification.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Orders**> **Renewal**.
@@ -14559,6 +15361,9 @@ By default, users with the following roles can perform this operation: Operation
 **Constraints**
 
 Operations Administrator, Resource Auditor, Global Organization Security Administrator, Platform Security Administrator, and Platform Security Configuration Administrator manage resources across all organizations. Organization Administrator, Organization Resource Auditor, and Organization Security Administrator manage resources within their own organization and subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager management console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Order Management** > **Switch Billing Method**.
@@ -14613,6 +15418,9 @@ The current billing method of the instance is Pay-As-You-Go. By default, only us
 **Limits**
 
 You can switch the billing method for the same instance only once per calendar day. Only Pay-As-You-Go instances of cloud services that support Subscription Billing can be switched to Subscription Billing. Operations Administrators, Resource Auditors, Global Organization Security Administrators, Platform Security Administrators, and Platform Security Configuration Administrators manage all organizations. Organization Administrators, Organization Resource Auditors, and Organization Security Administrators manage their own organization and subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Orders** > **Switch Billing Method**.
@@ -14643,6 +15451,9 @@ You are an operations administrator, a resource auditor, an organization adminis
 **Limits**
 
 The operations administrator and resource auditor have permissions on all organizations. The organization administrator and organization resource auditor have permissions only on the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Product Bill Overview**.
@@ -14679,6 +15490,9 @@ You are an operations administrator, a resource auditor, an organization adminis
 **Limits**
 
 The operations administrator and resource auditor have permissions on all organizations. The organization administrator and organization resource auditor have permissions only on the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Product Bill Overview**.
@@ -14708,6 +15522,9 @@ By default, the operating user is an Operations Administrator, Resource Auditor,
 **Constraints**
 
 The permission scope for Operations Administrators and Resource Auditors covers all organizations. The permission scope for Organization Administrators and Organization Resource Auditors covers their own organization and subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Bill Management** > **Product Bill Overview** to go
@@ -14761,6 +15578,9 @@ You are an operations administrator, a resource auditor, an organization adminis
 **Limits**
 
 The operations administrator and resource auditor roles have the permissions to manage all organizations. The organization administrator and organization resource auditor roles have the permissions to manage the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Product Bill Overview** to go to the
@@ -14790,6 +15610,9 @@ You are assigned the operations administrator, resource auditor, organization ad
 **Limits**
 
 The operations administrator and resource auditor roles have the permissions to manage all organizations. The organization administrator and organization resource auditor roles have the permissions to manage the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Organization Bill Overview** to go to the
@@ -14870,6 +15693,9 @@ You are assigned the operations administrator, resource auditor, organization ad
 **Limits**
 
 The operations administrator and resource auditor roles have the permissions to manage all organizations. The organization administrator and organization resource auditor roles have the permissions to manage the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Organization Bill Overview** to go to the
@@ -14877,7 +15703,11 @@ The operations administrator and resource auditor roles have the permissions to 
 4. On the Organization Bill Overview page, click the **Resource Collection monthly bill**
 **overview** tab.
 5. Click **Advanced Filter**, select an accounting period from the **Accounting Period** drop-
-down list, an organization from the **Organization** drop-down list, and a resource set from the **Resource Set** drop-down list, and then click **Search**. If you do not select an organization, the monthly bills of resource sets in all organizations that you can manage are displayed by default. If you select an organization, only the monthly bills of resource sets in the selected organization are displayed. The monthly bills of resource sets of the subordinate organizations are not included. You can select a resource set only after you select an organization.
+down list, an organization from the **Organization** drop-down list, and a resource set from the **Resource Set** drop-down list, and then click **Search**.
+
+**Note**
+
+If you do not select an organization, the monthly bills of resource sets in all organizations that you can manage are displayed by default. If you select an organization, only the monthly bills of resource sets in the selected organization are displayed. The monthly bills of resource sets of the subordinate organizations are not included. You can select a resource set only after you select an organization.
 6. View the monthly bill information of the resource set in columns such as **Accounting**
 **Period**, **Organization Name**, **Resource Set Name**, **Amount**, and **Billing Cycle**.
 
@@ -14904,6 +15734,9 @@ You are an operations administrator.
 **Limits**
 
 You can settle monthly bills only if all check items are in the **Successful** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Organization Bill Overview**.
@@ -14931,13 +15764,19 @@ By default, users with the Operations Administrator, Resource Auditor, Organizat
 
 **Constraints**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Bill Management** > **Organization Bill Overview**
 to go to the **Organization Bill Overview** page.
 4. Click the **Organization Monthly Bill Overview** tab.
 5. Expand Advanced Filter, set the **accounting period** and **organization** filter conditions,
-then click **Search**. If you do not select an organization, the system displays all monthly bills within your permission scope by default.
+then click **Search**.
+
+**Note**
+
+If you do not select an organization, the system displays all monthly bills within your permission scope by default.
 
 > before the
 
@@ -14983,6 +15822,9 @@ By default, users performing this operation are Operations Administrators, Resou
 **Constraints**
 
 Operations Administrators and Resource Auditors have permission scopes covering resource sets across all organizations. Organization Administrators and Organization Resource Auditors have permission scopes covering resource sets within their own organization and subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Billing Management** > **Organization Bill**
@@ -14990,6 +15832,9 @@ Operations Administrators and Resource Auditors have permission scopes covering 
 4. Click the **Resource Collection Monthly Bill Overview** tab.
 5. Expand Advanced Filter, set filtering conditions for **Accounting Period**, **Organization**,
 and **Resource Set**, then click **Search**.
+
+**Note**
+
 **Organization**: If you do not select an organization, the system displays monthly
 bills for resource sets across all organizations within your permission scope. If you select an organization, the system displays only monthly bills for resource sets in the selected organization, excluding those in subordinate organizations.
 **Resource Set**: You can select a resource set only after selecting an
@@ -15040,6 +15885,9 @@ You are an operations administrator, a resource auditor, an organization adminis
 **Limits**
 
 The operations administrator and resource auditor roles have the permissions to manage all organizations. The organization administrator and organization resource auditor roles have the permissions to manage the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Organization Bill Overview** to go to the
@@ -15069,6 +15917,9 @@ You are assigned the operations administrator, resource auditor, organization ad
 **Limits**
 
 By default, the operations administrator and resource auditor roles can view the bills of all cost centers. The organization administrator and organization resource auditor roles can view only the bills of the cost center that they have the permissions to manage and the subordinate cost centers.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Center Bill Overview** to go to the
@@ -15105,6 +15956,9 @@ You are an operations administrator, a resource auditor, an organization adminis
 **Limits**
 
 The operations administrator and resource auditor have permissions on all cost centers. The organization administrator and organization resource auditor can perform operations on the cost center on which they have the required permissions and the subordinate cost centers.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Center Bill Overview**.
@@ -15138,6 +15992,9 @@ You are an operations administrator.
 **Limits**
 
 You can settle monthly bills only if all check items are in the **Successful** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Center Bill Overview**.
@@ -15221,6 +16078,8 @@ The multi-cloud management feature is enabled, and the Alibaba Cloud public clou
 > Newly purchased, configurations upgraded, renewed, and billing method changed from pay-as-you-go to subscription: Total list price × Price multiplier × Discount
 > Unsubscribed, configurations downgraded, and billing method changed from subscription to pay-as-you-go: Total list price × Price multiplier × Discount × Refund ratio
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Overview of Public Cloud Billing** to go to
@@ -15287,6 +16146,9 @@ You can export all or selected bills on the Monthly Product Bill Overview tab. T
 **Prerequisites**
 
 The multi-cloud management feature is enabled, and the public cloud platform is configured. This allows you to view bill data. You are an operations administrator or resource auditor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Overview of Public Cloud Billing** to go to
@@ -15335,6 +16197,9 @@ By default, the user roles that can perform this operation are Operations Admini
 **Limits**
 
 The permission scope for Operations Administrators and Resource Auditors covers all organizations and all cost centers. When the data scope is set by organization, the permission scope for Organization Administrators and Organization Resource Auditors includes their own organization and subordinate organizations. When the data scope is set by cost center, the permission scope for Organization Administrators and Organization Resource Auditors includes authorized cost centers at their level and child cost centers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Details** to go to the **Bill Details** page.
@@ -15376,6 +16241,9 @@ By default, the operating user is an Operations Administrator, Resource Auditor,
 **Constraints**
 
 The permission scope for Operations Administrators and Resource Auditors covers all organizations and all cost centers. When the data scope is set by organization, the permission scope for Organization Administrators and Organization Resource Auditors includes their own organization and subordinate organizations. When the data scope is set by cost center, the permission scope for Organization Administrators and Organization Resource Auditors includes authorized cost centers at their level and child cost centers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Bills** > **Bill Details** to go to the **Bill Details** page.
@@ -15427,6 +16295,9 @@ By default, users performing this operation are Operations Administrator, Resour
 **Constraints**
 
 The permission scope for Operations Administrator and Resource Auditor covers all organizations. The permission scope for Organization Administrator and Organization Resource Auditor covers their own organization and subordinate organizations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Bills** > **Bill Details** to go to the **Bill Details** page.
@@ -15470,6 +16341,9 @@ By default, the operating user is an Operations Administrator, Resource Auditor,
 **Limits**
 
 The permission scope for Operations Administrators and Resource Auditors covers all organizations and all cost centers. When the timestamp range is set by organization, the permission scope for Organization Administrators and Organization Resource Auditors covers their own organization and subordinate organizations. When the timestamp range is set by cost center, the permission scope for Organization Administrators and Organization Resource Auditors covers authorized cost centers at their level and child cost centers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Billing Management** > **Billing Details** to go to
@@ -15536,6 +16410,9 @@ By default, the operating user is an Operations Administrator, Resource Auditor,
 **Limits**
 
 The permission scope for Operations Administrators and Resource Auditors covers all organizations and all cost centers. When the data scope is set by organization, the permission scope for Organization Administrators and Organization Resource Auditors includes their own organization and subordinate organizations. When the data scope is set by cost center, the permission scope for Organization Administrators and Organization Resource Auditors includes authorized cost centers at their level and child cost centers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Bill Management** > **Bill Details** to go to the **Bill**
@@ -15586,6 +16463,9 @@ You are an operations administrator, a resource auditor, an organization adminis
 **Limits**
 
 The operations administrator and resource auditor have permissions on all organizations. The organization administrator and organization resource auditor have permissions only on the organization to which they belong and the subordinate organizations.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Details**.
@@ -15628,6 +16508,9 @@ You are an operations administrator.
 **Limits**
 
 For accounting periods whose bills are settled, bill regeneration is not supported.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Details** to go to the **Bill Details** page.
@@ -15659,6 +16542,9 @@ Provides a detailed breakdown of instance billing, including usage and unit pric
 The operations administrator must enable the display of Apsara Copilot in **Configuration** >
 **Apsara Copilot** > **Custom Configurations**.
 By default, authorized users include the operations administrator, resource auditor, organization administrator, and organization resource auditor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Billing Management** > **Bill Details**.
@@ -15678,6 +16564,9 @@ You are an operations administrator.
 **Limits**
 
 You cannot add reconciliation records to settled accounting periods.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Reconciliation**.
@@ -15706,6 +16595,9 @@ This topic describes how to view reconciliation records on the Bill Reconciliati
 **Prerequisites**
 
 You are an operations administrator or a resource auditor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Reconciliation**.
@@ -15713,6 +16605,9 @@ You are an operations administrator or a resource auditor.
 **Name**, **Product**, **Resources**, **Organization**, **Resource Set**, and **Status**, and then click
 **Search**.
 5. View the information about reconciliation records.
+
+**Note**
+
 Description of the Adjustment Amount column: A negative amount is generated if a reconciliation record is added to decrease the amount of an existing bill. A positive amount is generated if a reconciliation record is added to increase the amount of an existing bill.
 6. Click a record ID. The **Bill Adjustment Record Details** panel appears.
 
@@ -15723,6 +16618,9 @@ After a reconciliation record changes from the To take effect state to the In ef
 **Prerequisites**
 
 You are an operations administrator or resource auditor. The reconciliation record is in the To take effect state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Reconciliation**.
@@ -15741,6 +16639,9 @@ You can disable a reconciliation record. After you disable a reconciliation reco
 **Prerequisites**
 
 You are an operations administrator. The reconciliation record is in the To take effect or In effect state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Reconciliation**.
@@ -15761,6 +16662,9 @@ This topic describes how to create a split rule to allocate unowned resource set
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
@@ -15803,6 +16707,9 @@ This topic describes how to modify a spit rule when the rule changes.
 **Prerequisites**
 
 The split rule is not deprecated. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
@@ -15839,6 +16746,9 @@ This topic describes how to discard a split rule. After a split rule is discarde
 **Prerequisites**
 
 A split rule is enabled. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
@@ -15856,6 +16766,9 @@ This topic describes how to delete a discarded split rule. After the split rule 
 **Prerequisites**
 
 A split rule is discarded. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Split Management**.
@@ -15877,6 +16790,9 @@ This topic describes how to view the overview of bill audit issues and details o
 **Prerequisites**
 
 You are an operations administrator or resource auditor.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Audit**.
@@ -15910,6 +16826,9 @@ This topic describes how to close a bill audit issue that does not need to be pr
 **Prerequisites**
 
 The issue is in the Pending Review state. You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Bill Audit**.
@@ -15936,6 +16855,9 @@ Cost centers are used for settlement. You can create cost centers based on your 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -15958,6 +16880,9 @@ You can view cost centers on the Cost Centers page.
 **Prerequisites**
 
 A cost center is created. You are an operations administrator or resource auditor.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -15970,7 +16895,11 @@ A cost center is created. You are an operations administrator or resource audito
 > icon to hide its subordinate cost centers.
 
 5. In the cost center tree, select the cost center that you want to manage and view the basic
-information about the cost center on the right side of the page. The basic information includes the cost center name, cost center ID, cost center level, description, creator, and creation time. For more information about the rules, see View allocation rules. For more information about the users, see View the authorized users of a cost center.
+information about the cost center on the right side of the page. The basic information includes the cost center name, cost center ID, cost center level, description, creator, and creation time.
+
+**Note**
+
+For more information about the rules, see View allocation rules. For more information about the users, see View the authorized users of a cost center.
 
 ###### 7.2.4.9.3 Modify a cost center
 
@@ -15979,6 +16908,9 @@ This topic describes how to modify a cost center when the cost center informatio
 **Prerequisites**
 
 A cost center is created. You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -15996,6 +16928,9 @@ After you create a cost center, you can configure rules based on the actual fina
 **Prerequisites**
 
 A cost center is created. You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16050,6 +16985,9 @@ You can view the allocation rule overview and the allocation rules of a cost cen
 **Prerequisites**
 
 You are an operations administrator or resource auditor.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16081,6 +17019,9 @@ You can modify an allocation rule as needed.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16099,6 +17040,9 @@ You can delete an allocation rule that is no longer needed.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16116,6 +17060,9 @@ You can authorize users to access a cost center based on your business requireme
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16147,6 +17094,9 @@ You can view the users that are authorized to access a cost center on the Cost C
 **Prerequisites**
 
 You are an operations administrator or resource auditor.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16169,6 +17119,9 @@ A user is authorized to access a cost center. You are an operations administrato
 **Limits**
 
 If a user is authorized multiple times to access the same cost center within different time periods, the time periods cannot overlap.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16191,6 +17144,9 @@ After you remove an authorized user from a cost center, the user is not deleted.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16214,6 +17170,9 @@ You are an operations administrator.
 **Limits**
 
 If a cost center has allocation rules or subordinate cost centers, the cost center cannot be deleted.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Centers**.
@@ -16231,6 +17190,9 @@ Cost tags can be displayed in bills, cost centers, and cost data analysis. You c
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Tag**.
@@ -16255,6 +17217,9 @@ After you delete a cost tag, the cost tag no longer takes effect in bills, cost 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Bills** > **Cost Tag**.
@@ -16272,6 +17237,9 @@ Displays billing import records. View the progress and results of tasks.
 **Prerequisites**
 
 Billing import relies on API-based import. For details, see the interface documentation for “CreateBillingPushTask”, “BatchPushBilling”, “UpdateStatusPushFinished”, and “QueryBillingPushTaskStatus” in the Apsara Uni-manager Management Console Developer Guide. The default operating user is the operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operation** > **Service Operations**.
 3. In the left-side navigation pane, select **Bills** > **Import Task Management**.
@@ -16291,6 +17259,9 @@ Budget management can be used to limit the available quotas for organizations or
 **Prerequisites**
 
 You are an operations administrator. If you are assigned a custom role, the custom role is granted the permissions to access the Budgets module and the permissions to configure global settings and budget alert settings.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16325,6 +17296,9 @@ You can view the list of independent accounts on the Budgets page.
 **Prerequisites**
 
 You are an operations administrator or resource auditor. If you are assigned a custom role, the custom role is granted the permissions to access the Budgets module and the permissions to view independent accounts.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16346,6 +17320,9 @@ This topic describes how to view the income and expenditure details of all accou
 **Prerequisites**
 
 You are an operations administrator or a resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to view the income and expenditure details of all accounts and access the Budgets module.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16380,6 +17357,9 @@ You are an operations administrator or an organization administrator. If you are
 **Limits**
 
 An operations administrator can view all nodes. If budget accounts are configured based on the organization architecture, you can view only the organization to which you belong and its subordinate organizations. If budget accounts are configured based on the cost center architecture, you can view only the cost center for which you are authorized and its subordinate cost centers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16431,6 +17411,9 @@ You are an operations administrator, organization administrator, or organization
 **Limits**
 
 An operations administrator can view all nodes. If budget accounts are configured based on the organization architecture, you can view only the organization to which you belong and its subordinate organizations. If budget accounts are configured based on the cost center architecture, you can view only the cost center for which you are authorized and its subordinate cost centers.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16474,6 +17457,9 @@ You are an operations administrator or an organization administrator. If you are
 > If you want to manage the budget quota of a subordinate node in a more fine- grained manner, you can enable quota allocation for the node and allocate the available quota to the node.
 
 You can enable quota allocation only for allocation accounts. An operations administrator can enable quota allocation for all allocation accounts. Users can enable quota allocation for the subordinate nodes within their organization or their authorized cost center, and then allocate quotas to the subordinate nodes. Before you enable quota allocation for the allocation account of a node, you must enable quota allocation for the parent node of the node.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16502,6 +17488,9 @@ You are an operations administrator or an organization administrator. If you are
 **Limits**
 
 An operations administrator can disable quota allocation for all allocation accounts. Users can disable quota allocation for the subordinate nodes within their organization or their authorized cost center. Before you disable quota allocation for a node, you must disable quota allocation for all its subordinate nodes and withdraw the quota allocated to the node. In this case, the total quota of the node is 0.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16530,6 +17519,9 @@ You are an operations administrator. If you are assigned a custom role, the cust
 **Limits**
 
 You can adjust quotas only for independent accounts.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16563,6 +17555,9 @@ The quota allocation feature is enabled for the allocation account of a node. Yo
 **Limits**
 
 When you configure budgets by organization, you can allocate budget quotas only to the subordinate organizations of the organization to which you belong, but not to the organization itself. When you configure budgets by cost center, you can allocate budget quotas only to the subordinate cost centers of the cost center that you are authorized to access, but not to the cost center itself.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Budgets**.
@@ -16605,6 +17600,9 @@ This topic describes how to view the accounts of Alibaba Cloud platforms added t
 **Prerequisites**
 
 You are an operations administrator or a resource auditor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Public Cloud Account**.
@@ -16626,6 +17624,9 @@ After you configure an alert rule for quotas of Alibaba Cloud platform accounts,
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Public Cloud Account**.
@@ -16703,6 +17704,9 @@ This topic describes how to modify a contract.
 **Prerequisites**
 
 A contract is in the **Disable** state. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Contract Management**.
@@ -16739,6 +17743,9 @@ This topic describes how to disable a contract that is in the Enable state but r
 **Prerequisites**
 
 A contract is in the **Enable** state and the current date is earlier than the start date of the validity period of the contract. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Contract Management**.
@@ -16760,6 +17767,9 @@ A contract is in the **Enable** state and the current date is later than the sta
 **Limits**
 
 You can terminate a contract only once.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Contract Management**.
@@ -16780,6 +17790,9 @@ This topic describes how to delete a contract that is no longer required.
 **Prerequisites**
 
 A contract is in the **Disable** state. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, click **Contract Management**.
@@ -16802,6 +17815,9 @@ The price calculator calculates the estimated costs based on cloud service confi
 **Prerequisites**
 
 You can enable price inquiry as a platform administrator. To do so, you can perform the following operations: Log on to the Apsara Uni-manager Management Console as a platform administrator. In the top navigation bar, click **Configurations**. In the left-side navigation pane, click **Billing Switch**.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu and click the icon to open the price calculator.
@@ -16824,6 +17840,9 @@ The configuration list displays the list that you create and the service configu
 **Prerequisites**
 
 You have enabled price inquiry as a platform administrator. To do so, you can perform the following operations: Log in to the Apsara Uni-manager Management Console as a platform administrator. In the top navigation bar, click **Configurations**. In the left-side navigation pane, click **Billing Switch**. On the Billing Switch page, turn on the Price Inquiry Switch.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the Pricing page.
@@ -16858,6 +17877,9 @@ The Service Pricing tab displays the pricing details of services and the pricing
 **Prerequisites**
 
 You enable price inquiry as a platform administrator. To do so, you can perform the following operations: Log on to the Apsara Uni-manager Management Console as a platform administrator. In the top navigation bar, click **Configurations**. In the left-side navigation pane, click **Billing Switch**. On the Billing Switch page, turn on the Price Inquiry Switch.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the lower-right corner of the console, click the
 icon to show the floating menu, and then click the icon to go to the Pricing page.
@@ -16879,6 +17901,9 @@ On the Rule Overview page, each billing configuration is displayed in a timeline
 **Prerequisites**
 
 Billing configurations are created.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rules**.
@@ -17415,6 +18440,9 @@ You are an operations administrator.
 **Limits**
 
 When you create a billing configuration, the service list displays the services and specifications that support and use the billing configuration. If additional services and specifications are added later, **Pending Configuration** is displayed in the billing configuration list and on the details pages of billing configurations, which prompts you to complete the billing configuration.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17434,7 +18462,11 @@ step, and then click **Next: Billing Configuration**. The following table descri
 | Remarks | The description of the billing configuration. The description must be 1 to 256 characters in length. |
 
 6. In the **Billing Configurations** step, configure pricing configurations for services, and then
-click **Next: Billing Configuration Verification** . For more information, see Manage pricing configurations.
+click **Next: Billing Configuration Verification** .
+
+**Note**
+
+For more information, see Manage pricing configurations.
 7. In the **Billing Configuration Verification** step, preview the pricing configurations, and
 then click **Save**. The following table describes the parameters.
 
@@ -17452,6 +18484,9 @@ View the system-preset and user-created billing configurations on the rule confi
 **Prerequisites**
 
 The operating user defaults to the operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager management console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Pricing** > **Billing Rules**.
@@ -17515,6 +18550,9 @@ You can manage pricing configurations when you create billing configurations or 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17689,6 +18727,9 @@ A billing configuration is disabled. You are an operations administrator.
 **Limits**
 
 If a billing configuration contains services to be configured, you must configure the services before you enable the billing configuration.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17706,6 +18747,9 @@ This topic describes how to disable a billing configuration that has been enable
 **Prerequisites**
 
 A billing configuration is enabled. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17722,6 +18766,9 @@ You can export the price list of a billing configuration if you want to save the
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17744,6 +18791,9 @@ You are an operations administrator.
 **Limits**
 
 The billing method of the cloned billing configuration is the same as that of the original billing configuration and cannot be modified.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17764,6 +18814,9 @@ You are an operations administrator.
 **Limits**
 
 You cannot delete preset billing configurations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Billing Rules**.
@@ -17904,6 +18957,9 @@ This topic describes how to create a discount rule on the Discounts page.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Discounts**.
@@ -17952,6 +19008,9 @@ This topic describes how to modify a discount rule.
 You are an operations administrator. The discount rule is in the **Disabled**, **Enable (disable-deny approval)**, **Enable**
 **(deactivation failed)**, **Disable (enable-approve rejection)**, or **Disable (failed to**
 **enable)** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Discounts**.
@@ -17968,6 +19027,9 @@ This topic describes how to enable a discount rule.
 
 You are an operations administrator. The deduction rule is in the **Disable**, **Disable (enable-approve rejection)**, or **Disable**
 **(failed to enable)** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Discounts**.
@@ -18001,6 +19063,9 @@ You can view the approval details of the discount rules whose application is in 
 You are an operations administrator. The discount rule is in the **Enabled (disabled-approved)**, **Enable (disable-deny**
 **approval)**, **Disabled (enabled-approved)**, or **Disable (enable-approve rejection)**
 state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Discounts**.
@@ -18020,6 +19085,9 @@ This topic describes how to withdraw the approval request of a discount rule who
 
 You are an operations administrator. The discount rule is in the **Enabled (disabled-approved)** or **Disabled (enabled-**
 **approved)** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Discounts**.
@@ -18035,6 +19103,9 @@ This topic describes how to delete a discount rule.
 
 You are an operations administrator. The discount rule is in the **Disable**, **Disable (enable-approve rejection)**, or **Disable**
 **(failed to enable)** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Discounts**.
@@ -18053,6 +19124,9 @@ This topic describes how to create a deduction rule on the Deductions page.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18141,6 +19215,9 @@ This topic describes how to disable a deduction rule.
 The deduction rule is in the **Enabled**, **Enable (Disable-Rejected)**, or **Enable (Disable**
 **Failed)** state.
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18157,6 +19234,9 @@ This topic describes how to enable a deduction rule.
 The deduction rule is in the **Disable**, **Disabled (Enable-Rejected)**, or **Disable (Enable**
 **Failed)** state.
 You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18171,6 +19251,9 @@ You can clone an existing deduction rule to create a similar deduction rule by u
 **Prerequisites**
 
 You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18194,6 +19277,9 @@ This topic describes how to view the approval details of a deduction rule.
 The deduction rule is in the **Disabled (Enable-Reviewing)**, **Enable (Disable-**
 **Reviewing)**, **Disable (Enable-Rejected)**, or **Enable (Disable-Rejected)** state.
 You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18211,6 +19297,9 @@ This topic describes how to cancel the approval of a deduction rule that is bein
 The deduction rule is in the **Disabled (Enable-Reviewing)** or **Enable (Disable-**
 **Reviewing)** state.
 You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18227,6 +19316,9 @@ This topic describes how to delete a deduction rule.
 The deduction rule is in the **Disable**, **Disable (Enable-Rejected)**, or **Disable (Enable**
 **Failed)** state.
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Deductions**.
@@ -18245,6 +19337,9 @@ You can create billing rule templates based on your business requirements. This 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -18437,6 +19532,9 @@ This topic describes how to view the details of a billing rule template.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -18462,6 +19560,9 @@ Billing rule templates are in the **Disable** state. You are an operations admin
 **Limits**
 
 Preset billing rule templates cannot be modified.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -18488,6 +19589,9 @@ Billing rule templates are in the **Disable** state. Metering tables associated 
 **Limits**
 
 You can enable only one custom billing rule template for the billing rule configuration of a single resource type. If both an enabled custom billing rule template and a preset billing rule template are used for the billing rule configuration of a single resource type, the custom billing rule template takes precedence over the preset billing rule template.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -18513,6 +19617,9 @@ Billing rule templates are in the **Enable** state. You are an operations admini
 **Limits**
 
 Preset billing rule templates cannot be disabled.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -19499,6 +20606,9 @@ Only non-Alibaba public cloud products that are integrated through product manag
 **Operator**
 
 By default, the operator is the operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Service Pricing** > **Rule Template Management**.
@@ -19556,6 +20666,9 @@ A third-party custom cloud service is hosted on Alibaba Cloud. You are an operat
 **Limits**
 
 If a cloud service has preset Alibaba Cloud mapping configurations, you cannot modify those mappings.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -19599,6 +20712,9 @@ You are an operations administrator.
 **Limits**
 
 For third-party custom cloud services not hosted on Alibaba Cloud, the Public Cloud Mapping Configuration tab is not displayed.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Service Operations**.
 3. In the left-side navigation pane, choose **Pricing** > **Rule Template Configuration**.
@@ -19625,6 +20741,9 @@ Create a coupon, including its basic information and rule configuration.
 **Prerequisites**
 
 The operating user defaults to the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19659,6 +20778,9 @@ View the coupon list.
 **Prerequisites**
 
 By default, the operating user is the Operations Administrator or Resource Auditor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19688,6 +20810,9 @@ Enable a coupon that is in inactive status. After enabling, the coupon status ch
 **Prerequisites**
 
 The default user role for this operation is Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19701,6 +20826,9 @@ Issue coupons to organizations.
 **Prerequisites**
 
 The coupon status is **In progress**. The default user for this operation is the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19719,6 +20847,9 @@ Set the coupon to invalid. Issued but unused coupons become unredeemable.
 **Prerequisites**
 
 The coupon status is **In progress** or **Not Effective**. By default, the operating user is the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19732,6 +20863,9 @@ Copy a coupon to quickly create a new coupon based on the information of an exis
 **Prerequisites**
 
 The operator is, by default, an Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19745,6 +20879,9 @@ settings of the current coupon. For detailed parameter descriptions, see Create 
 **Prerequisites**
 
 The user performing this operation is, by default, an Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Coupon Management**.
@@ -19789,6 +20926,9 @@ The coupon details page displays all coupons and allows you to view detailed usa
 **Constraints**
 
 When issuing coupons, you can select only level-1 organizations. Therefore, the coupon details page displays coupons that belong to level-1 organizations. Users of a level-1 organization who have the permission to view coupons can view coupons that belong to their level-1 organization on the coupon details page. Users of subordinate organizations cannot view available coupons.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, choose **Operation** > **Service Operations**.
 3. In the left-side navigation pane, choose **Coupon** > **Coupon Details**.
@@ -19802,6 +20942,9 @@ Manage tenant blacklists. The system supports blacklist control by level-1 organ
 **Prerequisites**
 
 The operating user defaults to the operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Service Operations**.
 3. In the left-side navigation pane, select **Coupon** > **Blacklist Management**.
@@ -19833,6 +20976,9 @@ The Data Analysis page provides platform and organization administrators with pl
 ###### 7.3.1.1.1 View data table
 
 View detailed information of data tables by product data, organization statistics, and my data table types.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operation** > **Data Analysis**.
 3. In the left-side navigation pane, select **Custom Analysis** > **Self-service Data Analysis**.
@@ -19859,6 +21005,9 @@ Sort: Click **Sort** above the list, add entries, and set sorting conditions to 
 ###### 7.3.1.1.2 Save data as a custom table
 
 You can save the current query results, filter conditions, or display fields as a custom table for quick access and review in the future.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **Data Analysis**.
@@ -19879,6 +21028,9 @@ displayed on the My tab.
 ###### 7.3.1.1.3 Export the data of a single table
 
 If you want to download the data in a data report to your local machine, you can export the data.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **Data Analysis**.
@@ -19935,6 +21087,9 @@ On the My Dashboard page, you can create a dashboard to configure the layout of 
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -19950,6 +21105,9 @@ This topic describes how to rename a dashboard.
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -19983,6 +21141,9 @@ This topic describes how to generate an identical or a similar dashboard based o
 **Prerequisites**
 
 A dashboard is exported as a **.json** file. You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -19997,6 +21158,9 @@ This topic describes how to delete a dashboard that you no longer need.
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20013,6 +21177,9 @@ You can create a custom card to display data based on your business requirements
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20114,6 +21281,8 @@ or Save to Dashboard. For more information about card configurations, see Create
 
 **Modify a custom card**
 
+**Procedure**
+
 1. On the **My Dashboard** page, click **My Cards** in the upper-right corner.
 2. In the **My Cards** panel, move the pointer over the card that you want to modify in the card
 list and click the icon.
@@ -20127,6 +21296,9 @@ You can create an identical or a similar card based on an existing card to reduc
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20145,6 +21317,9 @@ This topic describes how to move and resize a card on a dashboard based on your 
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20164,6 +21339,9 @@ This topic describes how to export a card as an image in the **PNG** format.
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20182,6 +21360,9 @@ After you save a card on a dashboard as a custom card, you can add the card to t
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor. If you are assigned a custom role, the custom role must be granted the permissions to access the My Dashboard page of the Custom Analysis module in Data Analysis.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20212,6 +21393,8 @@ If you delete a custom card that has been added to the Home page of the console,
 
 **Delete a card from a dashboard**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Custom Analysis** > **My Dashboard**.
@@ -20223,6 +21406,8 @@ list.
 icon in the upper-right corner of the card and select **Delete**.
 
 **Delete a custom card**
+
+**Procedure**
 
 1. On the **My Dashboard** page, click **My Cards** in the upper-right corner.
 2. In the **My Cards** panel, move the pointer over the card that you want to delete in the card
@@ -20238,6 +21423,9 @@ Provides intelligent question answering and data insight capabilities under AI-p
 When deploying Apsara Copilot, the Operations Administrator must enable the display of the intelligent assistant in **Configuration** > **Apsara Copilot** > **Personalized**
 **Configuration**.
 By default, authorized users include Operations Administrators, Organization Administrators, Resource Set Administrators, Resource Users, Resource Auditors, and Organization Resource Auditors. Custom role users require authorization for the menu permission “Data Analysis > Custom Analysis > Intelligent Analysis”.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, select **Custom Analysis** > **Intelligent Analysis**.
@@ -20294,6 +21482,9 @@ The health analysis feature allows you to analyze the health status of cloud res
 **Background information**
 
 The Apsara Uni-manager Management Console displays health analysis data by organization, resource set, and resource. Health analysis on organizations: collects the health status of all resource sets of each organization. By default, the health status of subordinate organizations is not included. You can select Aggregate Sub-organizations to calculate the average health score of an organization and its subordinate organizations. Health analysis on resource sets: collects the health status of all resources of each resource set and displays the scoring details of all resources in each resource set. Health analysis on resources: collects the data metrics that are related to the utilization and security of each resource and displays the scoring details of each resource. Different health scores indicate different health status. If a health score is greater than or equal to 90, the health status is excellent. If a health score is greater than or equal to 70 but less than 90, the health status is good. If a health score is greater than or equal to 50 but less than 70, the health status is fair. If a health score is less than 50, the health status is poor. You can view the health details based on metrics such as the usage rate score and security score. You can also view the algorithm rules, scoring reasons, and optimization suggestions.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Cloud Resource Optimization** > **Overall Health**
@@ -20385,6 +21576,9 @@ You can use the idle resource analysis feature to analyze the resource usage eff
 **Limits**
 
 The idle resource analysis feature is supported only by Elastic Compute Service (ECS), ApsaraDB RDS, Tair (Redis OSS-compatible), and ApsaraDB for MongoDB.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Cloud Resource Optimization** > **Idle Resource**
@@ -20475,6 +21669,9 @@ The bottleneck analysis feature allows you to analyze the usage of cloud resourc
 **Limits**
 
 The bottleneck analysis feature is supported only by Elastic Compute Service (ECS), ApsaraDB RDS, Tair (Redis OSS-compatible), and ApsaraDB for MongoDB.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Cloud Resource Optimization** > **Bottleneck**
@@ -20564,6 +21761,9 @@ The security compliance analysis feature allows you to analyze the overall resou
 **Background information**
 
 The Apsara Uni-manager Management Console displays security compliance data by organization, resource set, and resource. Security compliance analysis on organizations: collects the security compliance data of all resource sets of each organization. By default, the security compliance data of suborganizations is not included. You can select Aggregate Sub-organizations to calculate the average security scores of an organization and its sub-organizations. Security compliance analysis on resource sets: collects the security compliance data of all resources of each resource set and displays the scoring details of all resources in each resource set. Security compliance analysis on resources: collects the data metrics that are related to the security of each resource and displays the scoring details of each resource. Different security scores indicate different security status. If a security score is greater than or equal to 90, the security status is excellent. If a security score is greater than or equal to 70 but less than 90, the security status is good. If a security score is greater than or equal to 50 but less than 70, the security status is fair. If a security score is less than 50, the security status is poor.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Cloud Resource Optimization** > **Security**
@@ -20817,6 +22017,9 @@ If the default rule built in the system fails to meet your business requirements
 **Prerequisites**
 
 You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, choose **Cloud Resource Optimization** > **Resource**
@@ -21155,6 +22358,9 @@ The following report types are currently supported: **Metering Report**, **Secon
 ###### 7.3.3.1.2 Scheduled job
 
 On the Scheduled Job tab, create a scheduled job. After you create the job successfully, the system pushes the report periodically according to the configured time period.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Data Analysis**.
 3. In the left-side navigation pane, select **Download and Deliver** > **Report Download**.
@@ -21399,6 +22605,9 @@ You can manage all sites on the Sites page, including creating sites, configurin
 **Background information**
 
 A site is an independent web portal. An operations administrator can build an independent service portal by using the portal management feature to provide users with an all-in-one web portal to manage cloud services. A site displays multi-aspect information including column navigation and page content. This way, the internal and external organization service information can be managed and published in a centralized manner, the users of a cloud platform can experience the service capabilities and view the operations information about the cloud platform, and the efficiency of information communication is improved.
+
+**Procedure**
+
 1. Create a site: Configure the domain name and navigation settings of a site when you create
 the site. This ensures that a page can be directly associated with a site navigation when you create the page.
 2. Build pages: Create pages, associate the pages with site navigations, configure the
@@ -21492,6 +22701,9 @@ On the Sites page, you can view the site list and the details of a site.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21516,6 +22728,9 @@ After a site is created, you can modify the site information based on your busin
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21535,6 +22750,9 @@ After a site is created, you can configure navigations for the site.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21569,6 +22787,9 @@ After you create a site, configure its pages.
 **Prerequisites**
 
 By default, the operating user is an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Sites**.
@@ -21601,6 +22822,9 @@ If the preset site styles do not meet your business requirements, you can config
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21623,6 +22847,9 @@ After you configure the homepage, navigations, and pages of a site, you can prev
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21637,6 +22864,9 @@ Before you publish a site, make sure that all navigations are associated with pa
 **Prerequisites**
 
 Sites are in the **Offline** state. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21651,6 +22881,9 @@ You can unpublish a site based on your business requirements. After a site is un
 **Prerequisites**
 
 Sites are in the **Online** state. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Sites**.
@@ -21721,6 +22954,9 @@ Create a new page and configure its basic information.
 **Prerequisites**
 
 The operating user is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Page Management** > **Page List**.
@@ -21747,6 +22983,9 @@ The Page List page displays all created pages.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Page Management** > **Pages**.
@@ -21772,6 +23011,9 @@ The page is in one of the following states: **Draft**, **Draft (Publishing appro
 **Published (Modification publishing approval rejected)**, or **Published (Modification**
 **publishing failed)**.
 The operator must be an Operations Administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Page Management** > **Page List**.
@@ -21811,6 +23053,9 @@ The page is in one of the following states: **Draft**, **Draft (publishing appro
 **(modified, publishing approval rejected)**, or **Published (modified, publishing**
 **failed)**.
 By default, the operating user is an Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Page Management** > **Page list**.
@@ -21836,6 +23081,9 @@ Pages are in the **To be published as scheduled**, **Draft (being reviewed for**
 **publishing)**, **Published (modifications to be published as scheduled)** , or **Published**
 **(being reviewed for publishing modifications)** state.
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Page Management** > **Pages**.
@@ -21853,6 +23101,9 @@ Pages are in the **Draft (being reviewed for publishing)** , **Draft (review rej
 **Published (being reviewed for publishing modifications)** , or **Published (review for**
 **publishing modifications rejected)** state.
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Page Management** > **Pages**.
@@ -21867,6 +23118,9 @@ You can view a page only after the page is published.
 **Prerequisites**
 
 Pages are in the **Published** state. You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Page Management** > **Pages**.
@@ -21896,6 +23150,9 @@ You can copy a page of a site to quickly add a page of the same content to the s
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Page Management** > **Pages**.
@@ -21913,6 +23170,9 @@ Pages are disassociated from sites. Pages are in the **Draft**, **Draft (review 
 **Published (modifications to be published)** , **Published (review for publishing**
 **modifications rejected)**, or **Published (failed to publish modifications)** state.
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Page Management** > **Pages**.
@@ -21993,6 +23253,9 @@ Components are classified into preset components and custom components. Preset c
 **Prerequisites**
 
 You are assigned the operations administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Component Management**.
@@ -22012,7 +23275,11 @@ You are assigned the operations administrator role.
 6. Click **Submit**.
 7. In the **Component added successfully** dialog box, click **Download component**
 **development kit** to download the component development kit to your computer.
-You can also click **Upload later**. After a component is created, you can customize the component. For more information, see Customize a component and Understand tools and configurations for building custom components. After you customize a component, you can use the component when you build a page. For more information, see Configure a component and Publish a component.
+You can also click **Upload later**.
+
+**Note**
+
+After a component is created, you can customize the component. For more information, see Customize a component and Understand tools and configurations for building custom components. After you customize a component, you can use the component when you build a page. For more information, see Configure a component and Publish a component.
 
 ##### 7.4.4.2 Configure a component
 
@@ -22026,6 +23293,9 @@ You are an operations administrator. A custom component is developed. For more i
 
 You cannot configure preset components. You cannot configure custom components in the **Verifying** or **Put on shelves** state. You can configure custom components in the **To be configured**, **Verification failed**,
 **Configured**, or **Removed** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Component Management**
@@ -22093,6 +23363,9 @@ You are assigned the operations administrator role.
 **Limits**
 
 Preset components cannot be modified. Component keys cannot be modified.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Component Management**.
@@ -22120,6 +23393,9 @@ You are assigned the operations administrator role.
 **Limits**
 
 You can publish only components in the **Configured** or **Removed** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Component Management**.
@@ -22145,6 +23421,9 @@ You are assigned the operations administrator role.
 **Limits**
 
 You can unpublish only components in the **Put on shelves** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, click **Component Management**.
@@ -22170,6 +23449,9 @@ The user performing this operation must be an operations administrator by defaul
 **Constraints**
 
 Only components in the **Published** state support being added to a page.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Component Management**.
@@ -22182,6 +23464,9 @@ Only components in the **Published** state support being added to a page.
 
 5. Click **Add to Page** in the upper-right corner of the component card.
 6. In the **Add Page** dialog box, select the page where you want to insert the component.
+
+**Note**
+
 You can select up to 50 pages in batch. Pages in the following four states cannot be selected: Published (modification pending scheduled release), Pending scheduled release, Draft (approval pending for publication), and Published (modification approval pending).
 
 > After you add the component, it will be inserted at the end of the page. You must publish the page before the component becomes visible externally.
@@ -22194,7 +23479,11 @@ This topic describes how to customize a component.
 
 **Prerequisites**
 
-You have the corresponding development knowledge and experience. After you download the development kit of a component, perform the following steps to customize the component:
+You have the corresponding development knowledge and experience.
+
+**Procedure**
+
+After you download the development kit of a component, perform the following steps to customize the component:
 1. Create a **DemoComponent** directory under the **src/component** directory. Under the
 DemoComponent directory, create **index.jsx** and **index.module.css** files. To simplify operations, the **index.module.css** file is not modified in this example.
 
@@ -23243,6 +24532,9 @@ include a field whose key matches the value of the labelKey parameter.
 ##### 7.4.5.1 Site template
 
 The site template provides preset site templates. You can quickly create a site based on a site template.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operation** > **Portal Management**.
 3. In the left-side navigation pane, select **Template Management** > **Site Template**.
@@ -23256,6 +24548,9 @@ The page template displays preset templates. You can quickly create pages and si
 ###### 7.4.5.2.1 View page templates and page content
 
 View preset and custom page templates, and the page content of each template.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Template Management** > **Page Template**.
@@ -23266,6 +24561,9 @@ filter at the top of the page to quickly locate a template.
 ###### 7.4.5.2.2 Create a page template
 
 Customize a page template based on your business requirements.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Template Management** > **Page Template**.
@@ -23291,6 +24589,9 @@ You can modify the configuration when changes are needed for the page template.
 **Constraints**
 
 You cannot edit preset page templates.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager management console.
 2. In the top navigation bar, select **Operations** > **Portal Management**.
 3. In the left-side navigation pane, select **Template Management** > **Page Template**.
@@ -23306,6 +24607,9 @@ You can delete a page template when you no longer need it.
 **Limits**
 
 The system does not allow you to delete preset page templates.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Portal Management**.
 3. In the left-side navigation pane, choose **Template Management** > **Page Template**.
@@ -23323,6 +24627,9 @@ The ticket list displays the tickets that are available for viewing and processi
 ###### 7.5.1.1.1 View tickets
 
 You can view the ticket lists on which you have permissions.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23378,6 +24685,9 @@ You can add comments to a ticket at any time during ticket processing.
 **Prerequisites**
 
 You are the ticket submitter or have the permissions to process tickets.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23397,6 +24707,9 @@ This topic describes how to modify a ticket.
 **Prerequisites**
 
 You are the ticket submitter. The ticket is in the **Withdrawn** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23415,6 +24728,9 @@ Users who have the permissions to process tickets can view all tickets that are 
 **Prerequisites**
 
 You have the permissions to process tickets. Tickets are in the **Unclaimed** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23437,6 +24753,9 @@ If a ticket remains open for a time after it is submitted, the ticket submitter 
 **Prerequisites**
 
 You are the ticket submitter. Tickets are in the **Handling** or **Suspending** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23458,6 +24777,9 @@ A ticket submitter can resubmit withdrawn or pending feedback tickets.
 **Prerequisites**
 
 You are the ticket submitter. Tickets are in the **Withdrawn** or **Pending Feedback** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23479,6 +24801,9 @@ If a ticket lacks valid descriptions, the ticket processer can return the ticket
 **Prerequisites**
 
 You have the permissions to process tickets. Tickets are in the **Handling** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23500,6 +24825,9 @@ If the processer of a ticket cannot process the ticket, the ticket processer can
 **Prerequisites**
 
 You have the permissions to process tickets. Tickets are in the **Handling** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23562,6 +24890,9 @@ Administrators can assign unclaimed tickets to appropriate engineers for process
 **Prerequisites**
 
 You are an operations administrator or a service group administrator. Tickets are in the **Unclaimed** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23593,6 +24924,9 @@ If a ticket that is in progress cannot be processed at the moment, you can suspe
 **Prerequisites**
 
 You are an operations administrator, a service group administrator, or a ticket processer. Tickets are in the **Handling** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23611,6 +24945,9 @@ You can activate a ticket that is suspended.
 **Prerequisites**
 
 You are an operations administrator, a service group administrator, or a ticket processer. Tickets are in the **Suspending** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23628,6 +24965,9 @@ After a ticket is processed by an engineer, the engineer can close the ticket an
 **Prerequisites**
 
 You have the permissions to process tickets. Tickets are in the **Handling** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23678,6 +25018,9 @@ After the submitter of a ticket confirms that the issue is resolved, the submitt
 **Prerequisites**
 
 You are the ticket submitter. Tickets are in the **Completed** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23698,6 +25041,9 @@ After a ticket is withdrawn by the submitter, the submitter can delete the ticke
 **Prerequisites**
 
 You are the ticket submitter. Tickets are in the **Withdrawn** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23720,6 +25066,9 @@ Operations administrators can export ticket details to local machines for storag
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issues**.
@@ -23788,6 +25137,9 @@ View the created service groups and the personnel within them.
 **Prerequisites**
 
 The operator is, by default, an Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operation** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Service Group**.
@@ -23808,6 +25160,9 @@ Update the basic information or service personnel information of a service group
 **Prerequisites**
 
 The operator is an operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, choose **Operation** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Service Group**.
@@ -23823,6 +25178,9 @@ This topic describes how to delete service groups.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Tickets** > **Service Group**.
@@ -23839,6 +25197,9 @@ If the preset issue types cannot meet your business requirements, you can create
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
@@ -23887,6 +25248,9 @@ This topic describes how to view the preset and custom issue types.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
@@ -23907,6 +25271,9 @@ This topic describes how to modify an issue type.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
@@ -23922,6 +25289,9 @@ After you enable an issue type, the issue type is displayed in the Issue Type dr
 **Prerequisites**
 
 You are an operations administrator. Issue types are in the **Deactivate** state.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
@@ -23950,6 +25320,9 @@ You can copy the configurations of an existing issue type to create another issu
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
@@ -23965,6 +25338,9 @@ This topic describes how to delete an issue type.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Issue Type**.
@@ -23981,6 +25357,9 @@ Tickets can be automatically assigned to engineers based on ticket dispatch rule
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Allocation Rule**.
@@ -24005,6 +25384,9 @@ This topic describes how to view the created ticket dispatch rules and the servi
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Tickets** > **Allocation Rule**.
@@ -24051,6 +25433,9 @@ After you disable a ticket dispatch rule, the system no longer automatically dis
 **Prerequisites**
 
 You are an operations administrator. The ticket dispatch rule is in the **Enable** state.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Tickets** > **Allocation Rule**.
@@ -24065,6 +25450,9 @@ This topic describes how to delete ticket dispatch rules that you no longer use.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Tickets** > **Allocation Rule**.
@@ -24083,6 +25471,9 @@ This topic describes how to view an overview of tickets on the Data Insight page
 **Prerequisites**
 
 You are an operations administrator or a service group administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Data Insight**.
@@ -24105,6 +25496,9 @@ This topic describes how to view the ticket type analysis on the Data Insight pa
 **Prerequisites**
 
 You are an operations administrator or a service group administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Data Insight**.
@@ -24126,6 +25520,9 @@ This topic describes how to view the processing efficiency analysis of tickets o
 **Prerequisites**
 
 You are an operations administrator or a service group administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Data Insight**.
@@ -24152,6 +25549,9 @@ Set up shift schedules in batch.
 **Prerequisites**
 
 The default user for this operation is the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Schedule**
@@ -24179,6 +25579,9 @@ View the schedule table by week, month, or custom dimension.
 **Prerequisites**
 
 The default user role is Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operation** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Schedule**
@@ -24198,6 +25601,9 @@ Configure shifts within date cells on the shift schedule.
 **Prerequisites**
 
 The default user role is Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operation** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Schedule**.
@@ -24238,6 +25644,9 @@ Quickly set up a new shift schedule based on an existing one.
 **Prerequisites**
 
 The operating user defaults to the Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operation** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Schedule**
@@ -24265,6 +25674,9 @@ Delete an existing shift schedule assigned to employees.
 **Prerequisites**
 
 By default, the operator must be an Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Schedule**.
@@ -24282,6 +25694,9 @@ You cannot assign a shift to an employee who has a leave record within the selec
 **Prerequisites**
 
 The default user role for this operation is Operations Administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select Issues **Issues** > **Scheduling Management** >
@@ -24304,6 +25719,9 @@ Create a shift and set its start time, end time, and display color.
 **Prerequisites**
 
 The operating user is the operations administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Shift**
@@ -24332,6 +25750,9 @@ You can update the shift configuration when changes occur.
 **Prerequisites**
 
 By default, you must be an operations administrator to perform this operation.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Issues** > **Scheduling Management** > **Shift**
@@ -24347,6 +25768,9 @@ Delete shifts that you no longer need.
 **Prerequisites**
 
 By default, the user performing this operation is an Operations Administrator. You cannot delete a shift if it is enabled. Only disabled shifts can be deleted.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Shift**
@@ -24361,6 +25785,9 @@ Create a new shift quickly based on an existing shift configuration.
 **Prerequisites**
 
 The operating user is the Operations Administrator by default.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Shift**
@@ -24382,6 +25809,9 @@ Enable or disable a shift.
 **Prerequisites**
 
 The Operations Administrator is the default user for this operation.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Operations** > **Support**.
 3. In the left-side navigation pane, select **Issues** > **Scheduling Management** > **Shift**
@@ -24465,6 +25895,9 @@ This topic describes how to create a document category.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24485,6 +25918,9 @@ This topic describes how to create a document group.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24504,6 +25940,9 @@ This topic describes how to create a document collection.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24524,6 +25963,9 @@ This topic describes how to rename a document category, document group, or docum
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24545,6 +25987,9 @@ In a custom document collection, a level-2 or level-3 document category cannot b
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24570,6 +26015,9 @@ This topic describes how to copy a document group.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24594,6 +26042,9 @@ This topic describes how to delete a document category, document group, or docum
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24608,6 +26059,9 @@ Documents and directories belong to different document categories. Before you cr
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24633,6 +26087,9 @@ This topic describes how to upload an existing file as a document.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24653,6 +26110,9 @@ This topic describes how to rename a document or directory.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24676,6 +26136,9 @@ A document that has been launched cannot be moved. A document or child document 
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24694,6 +26157,9 @@ This topic describes how to modify the content of a document.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24711,6 +26177,9 @@ This topic describes how to publish a document.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24750,6 +26219,9 @@ When you withdraw a document, all child nodes are withdrawn by default. This top
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24766,6 +26238,9 @@ The document describes how to copy a document.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24787,6 +26262,9 @@ You can view the approval details of the documents in the Being Approved or Appr
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24807,6 +26285,9 @@ If a document or directory is associated with an approval process during a publi
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24824,6 +26305,9 @@ This topic describes how to manage the versions of a document.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24844,6 +26328,9 @@ You can export a document to your on-premises machine in .docx or .pdf format.
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24865,6 +26352,9 @@ Documents or directories that have been launched or are being approved cannot be
 **Prerequisites**
 
 You are an operations administrator.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Operations** > **Support**.
 3. In the left-side navigation pane, choose **Document Management** > **Documents**.
@@ -24900,6 +26390,9 @@ The Apsara Uni-manger Management Console uses AccessKey pairs and multi-factor a
 **account**
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to authenticate the identity of request senders, which can ensure cloud resource security.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, click the profile picture and click **User**
 **Information** in the menu that appears.
@@ -24969,6 +26462,9 @@ icon in the **Actions** column, and then click **MFA Settings**.
 ## 9 To-do Center
 
 The Pending Tasks center displays all pending items. You can handle each item based on its category.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click
 .
@@ -24982,6 +26478,9 @@ The Pending Tasks center displays all pending items. You can handle each item ba
 ### 10.1 Manage all messages
 
 The All Messages page in the Message Center module displays all read and unread messages related to services, operations, process approvals, application O&M, announcements, and alerts that you have received.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click the
 icon.
@@ -25004,6 +26503,9 @@ right side of the page. If the message is unread, the message is marked as read.
 ### 10.2 Manage unread messages
 
 The Unread Messages page in the Message Center module displays all unread messages related to services, operations, process approvals, application O&M, announcements, and alerts that you have received.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click the
 icon.
@@ -25026,6 +26528,9 @@ right side of the page. The message is then marked as read. The icon indicates t
 ### 10.3 Manage read messages
 
 The Read Messages page in the Message Center module displays all read messages related to services, operations, process approvals, application O&M, announcements, and alerts that you have received.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click the
 icon.
@@ -25049,6 +26554,9 @@ This topic describes how to query the historical records of message senders and 
 **Limits**
 
 Only the users within your permission scope are displayed.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click the
 icon.
@@ -25071,6 +26579,9 @@ icon.
 **management**
 
 On the User Information page, you can manage the information about your account, such as the basic information, password, multi-factor authentication (MFA) devices, methods to receive system messages, and AccessKey pairs.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the page, click the profile picture of the current user.
 3. Select **User Information** in the menu that appears.
@@ -25101,6 +26612,9 @@ This topic describes how to enable the proxy mode as a proxy administrator for a
 **Prerequisites**
 
 You are assigned the proxy administrator role.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of a page, click the profile picture to expand the User Center
 menu.
@@ -25138,6 +26652,8 @@ Different roles have different permissions in OpenAPI Explorer. The following ta
 
 **Overview of OpenAPI Explorer**
 
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25159,6 +26675,9 @@ requirements. The following table describes the services and features.
 #### 12.2.1 API documentation
 
 This topic describes how to view the API documentation of a cloud service.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25172,6 +26691,9 @@ On the Change History page, view the change history of API operations. Click the
 #### 12.2.2 API debugging
 
 This topic describes how to debug an API operation.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25195,6 +26717,9 @@ tabs, and then click **Initiate Call**.
 #### 12.2.3 API change history
 
 This topic describes how to view the change history of API operations.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25210,6 +26735,9 @@ top navigation bar.
 #### 12.2.4 Sample center
 
 This topic describes how to view and download SDK examples of cloud services in the Sample Center.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25226,6 +26754,9 @@ Click the path of a code file in the programming language to view the code file.
 #### 12.2.5 Diagnostics center
 
 The Diagnostic Center module allows you to perform intelligent diagnostics on API error messages.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25244,6 +26775,8 @@ or ErrorCode parameter in the field.
 This topic describes how to create and manage Model Context Protocol (MCP) services.
 
 **Custom services**
+
+**Procedure**
 
 On the Custom Services tab, create and manage custom MCP services.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -25302,6 +26835,9 @@ In the **APIs** section, find the API operation that you want to view and click 
 **Shared services**
 
 On the Shared Services tab, view the shared MCP services.
+
+**Procedure**
+
 1. On the **MCP Service** page, click the **Shared Services** tab.
 2. On the **Shared Services** tab, view the shared MCP services.
 3. Find the MCP service that you want to view and click **Details** in the **Actions** column to go
@@ -25313,6 +26849,9 @@ to the **MCP Service Details** page.
 ### 12.3 Call Statistics
 
 This topic describes how to use the Call Statistics module in OpenAPI Explorer.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
 **OpenAPI Explorer**.
@@ -25326,6 +26865,9 @@ parameters to view the distribution of API errors based on the specified filter 
 **Call Statistics**: In the left-side navigation pane, click **Call Statistics**.
 Configure the **Service**, **API Version**, **API Name**, and **Called At** parameters to search for the call details of an API operation of a cloud service. The information is displayed in the following columns: **API Name**, **Service**, **Namespace**, **API Version**, **Calls/Times**,
 **Average Latency (ms)**, and **Success Rate**.
+
+**Note**
+
 The value of the **Called At** parameter must be within seven days.
 
 > Click **Call Source Distribution** in the **Actions** column of an API operation to view the **AccessKey** ID and the source service of the API operation.
@@ -25363,6 +26905,8 @@ Delete a statistical report task: Find the statistical report task that you want
 This topic describes how to use the Automation Service Desk module.
 
 **Manage templates**
+
+**Procedure**
 
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Development Tools** > **API & SDK** >
@@ -25407,6 +26951,8 @@ operations.
 
 **Manage parameter sets**
 
+**Procedure**
+
 1. In the left-side navigation pane of the **Automation Service Desk** page, choose **Template**
 > **Template Management**.
 
@@ -25433,6 +26979,8 @@ operations.
 | Delete a parameter set | Find the parameter set that you want to delete and clickD elete in the Actions column. In the message that appears, click Delete. Important You cannot delete the parameter sets that are associated with tasks or templates. |
 
 **Use the Template Center module**
+
+**Procedure**
 
 1. In the left-side navigation pane of the **Automation Service Desk** page, choose **Template**
 > **Template Center**.
@@ -25487,6 +27035,8 @@ configure the parameters that are described in the following table.
 
 **Use the Terraform Explorer module**
 
+**Procedure**
+
 1. In the left-side navigation pane of the **Automation Service Desk** page, click **Terraform**
 **Explorer**.
 2. On the **Resource** tab on the left side of the **Terraform Explorer** page, configure the
@@ -25518,6 +27068,9 @@ The Apsara Uni-Manager Management Console provides configuration capabilities fo
 **Prerequisites**
 
 Before integrating the Apsara Uni-Manager Management Console pages into a customerowned or third-party ISV management console, you must complete SSO authentication through the Cloud Management Platform. You must configure unified identity authentication between the management console application (which will integrate Apsara Uni-Manager Management Console pages) and the private cloud Cloud Management Platform. This means configuring the Cloud Management Platform as the Service Provider (SP) and the customerowned or third-party ISV management console as the Identity Provider (IdP), ensuring single sign-on (SSO) support when users navigate between platforms. For specific configuration methods of third-party authentication in the Apsara Uni-Manager Management Console, see Third-party authentication.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. Click **Product** in the top navigation bar, then select **Development tools** > **APIs and**
 **tools** > **Developer Portal**.
@@ -25568,6 +27121,9 @@ cloud service.
 
 2. In the product page list on the right, click **Edit** in the **Actions** column.
 3. In the **Edit** dialog box, modify the link URL based on your business requirements.
+
+**Note**
+
 You can change the link URL to a third-party operation link address. The domain name of the modified link address must match the root domain name of the embedded page, and the address must be an absolute URL.
 4. Click **OK**.
 ment
@@ -25581,6 +27137,9 @@ The EDGE list page displays the connected edge entities. You can view the connec
 **Prerequisites**
 
 Edge entities are connected. For more information, see Configure edge entities.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Computing** > **Edge Computing** > **Edge**
 **Entity**.
@@ -25865,6 +27424,9 @@ tab. The AI stack all-in-one machine must support the SAML 2.0-based SSO protoco
 **Prerequisites**
 
 You are an operations administrator or an organization administrator.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **AI and Machine Learning** > **AI Stack**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
@@ -25897,6 +27459,9 @@ t ii. **Federated Logon Settings**: Complete federated logon settings for third-
 **Prerequisites**
 
 You are an operations administrator, an organization administrator, a resource set administrator, a resource user, a resource auditor, or an organization resource auditor.
+
+**Procedure**
+
 1. On the **AI Stack Management** page, click **Advanced Filter**, configure the **AI Stack**
 **Name** and **AI Stack ID** filter conditions, and then click **Search** to search for the AI stack.
 2. View the information about the AI stack in the **AI Stack Name/ID**,
@@ -25916,6 +27481,9 @@ t
 **Prerequisites**
 
 You are an operations administrator or an organization administrator.
+
+**Procedure**
+
 1. On the **AI Stack Management** page,. find the AI stack that you want to configure and click
 **Continue editing** in the **Operation** column.
 2. On the **Access To The AI Stack** page, continue with the configuration. For more
@@ -25926,6 +27494,9 @@ information, see the Add an AI stack section of this topic.
 **Prerequisites**
 
 An AI stack is added. You are an operations administrator or an organization administrator.
+
+**Procedure**
+
 1. On the **AI Stack Management** page, click **Authorized Jump** in the **Operation** column.
 2. In the AI Stack console, perform operations as needed.
 t
@@ -25935,6 +27506,9 @@ t
 **Prerequisites**
 
 You are an operations administrator or an organization administrator.
+
+**Procedure**
+
 1. On the **AI Stack Management** page, find the AI stack that you want to delete and click
 **Delete** in the **Operation** column.
 2. In the **Delete** message, click **OK**.
@@ -25955,6 +27529,9 @@ Management. PanguStor must support the SAML 2.0-based SSO protocol and act as a 
 **Prerequisites**
 
 By default, the authorized users are Operations Administrators and Organization Administrators.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-Manager Management Console.
 2. In the top navigation bar, click **Product**, then select **Basic storage service** > **Cloud-**
 **Defined Storage PanguStor**.
@@ -25988,6 +27565,9 @@ ent ii. **Federated Login Settings**: Configure unified login with third-party c
 **Prerequisites**
 
 By default, authorized users are Operations Administrators, Organization Administrators, Resource Set Administrators, Resource Users, Resource Auditors, and Organization Resource Auditors.
+
+**Procedure**
+
 1. On the **PanguStor Management** page, expand **Advanced Filter**, set the **PanguStor**
 **name** and **PanguStor ID** criteria, click **Search** to quickly locate your target PanguStor.
 2. In the list, view integrated PanguStor instances, including **PanguStor name/ID**,
@@ -26006,6 +27586,9 @@ ent
 **Prerequisites**
 
 By default, authorized users are Operations Administrators and Organization Administrators.
+
+**Procedure**
+
 1. On the **PanguStor Management** page, click **Continue Editing** in the **Actions** column.
 2. In the configuration wizard on the **Integrate PanguStor** page, continue your previous
 unfinished operation. For detailed configuration instructions, see Integrate PanguStor.
@@ -26015,6 +27598,9 @@ unfinished operation. For detailed configuration instructions, see Integrate Pan
 **Prerequisites**
 
 PanguStor integration succeeded. By default, authorized users are Operations Administrators and Organization Administrators.
+
+**Procedure**
+
 1. On the **PanguStor Management** page, click **Authorize Redirect** in the **Actions** column.
 2. Jump directly to the PanguStor console to perform PanguStor-related operations.
 
@@ -26023,6 +27609,9 @@ PanguStor integration succeeded. By default, authorized users are Operations Adm
 **Prerequisites**
 
 By default, authorized users are Operations Administrators and Organization Administrators.
+
+**Procedure**
+
 1. On the **PanguStor Management** page, click **Delete** in the **Actions** column.
 ent
 2. In the **Delete** dialog box, click **OK**.
@@ -26395,6 +27984,9 @@ This topic describes how to attach disks to an Elastic Compute Service (ECS) ins
 **Solution**
 
 Add the ECS instance to the resource set of the organization to which the disks to be attached belong and then attach the disks to the instance.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console as an operations administrator or
 organization administrator.
 2. In the top navigation bar, click **Enterprise**.
@@ -26479,6 +28071,9 @@ The following authorization rules apply in hybrid cloud scenarios: The operation
 **Prerequisites**
 
 You are the operations administrator who creates the ACK cluster or is authorized to manage the ACK cluster.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Computing** > **Container Service** >
 **Container Service for Kubernetes**.
@@ -26501,6 +28096,9 @@ role.
 **Prerequisites**
 
 You use an Alibaba Cloud account or assume a RAM role that has the administrator permissions on the ACK cluster.
+
+**Procedure**
+
 1. Log on to the **ACK console** in the Alibaba Cloud public cloud.
 2. In the left-side navigation pane, click **Authorizations**.
 3. On the **Authorizations** page, click the **RAM Roles** tab.
@@ -26534,6 +28132,9 @@ Isolation between resource sets in the Apsara Uni-manager Management Console. Fo
 **Resource sharing**
 
 For resources such as virtual private clouds (VPCs) and ECS security groups that have strong cross-resource interaction requirements, the Apsara Uni-manager Management Console provides resource sharing capabilities to support resource sharing within the current organization and between the current organization and subordinate organizations, which meets the requirements of resource interactions among different resource sets. For example, if an ECS security group is configured to be shared within the current-level organization, the ECS security group can be associated with ECS instances that have different resource sets in the current-level organization.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Operations Console by using the opsadmin account.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
 **service operation and maintenance** > **UniConsole**. The Products page is displayed by

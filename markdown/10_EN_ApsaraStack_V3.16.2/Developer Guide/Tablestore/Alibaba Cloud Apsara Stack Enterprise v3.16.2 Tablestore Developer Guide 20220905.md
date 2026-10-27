@@ -5,7 +5,7 @@ doc_version: "20220905"
 pdf_pages: 189
 source_pdf: "f452860a8b25a2b9_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore Developer Guide 20220905.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Tablestore%20Developer%20Guide%2020220905.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore Developer Guide
@@ -160,6 +160,8 @@ s are read.
     optional bytes token = 10;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table from which you want to read data. |
@@ -186,7 +188,7 @@ message GetRowResponse {
     required bytes row = 2;  // The row is encoded as binary data in the PlainBuffer format
 ```
 
-`.`
+`.` `}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -212,6 +214,8 @@ message PutRowRequest {
     optional ReturnContent return_content = 4;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table to which you want to write data. |
@@ -226,6 +230,8 @@ message PutRowResponse {
  required ConsumedCapacity consumed = 1;
  optional bytes row = 2;
 ```
+
+`}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -249,6 +255,8 @@ message UpdateRowRequest {
  optional ReturnContent return_content = 4;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table whose data you want to update. |
@@ -269,6 +277,8 @@ message UpdateRowResponse {
  required ConsumedCapacity consumed = 1;
  optional bytes row = 2;
 ```
+
+`}`
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -293,6 +303,8 @@ message DeleteRowRequest {
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
 ```
+
+`}`
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -338,6 +350,8 @@ nBuffer format.
     optional string end_column = 12;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table name _ | string | Yes | The name of the table whose data you want to read. |
@@ -367,6 +381,8 @@ message GetRangeResponse {
     optional bytes next_start_primary_key = 3;
 ```
 
+`}`
+
 | Parameter | Type | Description |
 |---|---|---|
 | consumed | ConsumedCapacit y | The number of capacity units (CUs) that are consumed by the operation. |
@@ -394,7 +410,7 @@ message BatchGetRowResponse {
     repeated TableInBatchGetRowResponse tables = 1;
 ```
 
-t ables: Type: repeated TableInBatchGetRowResponse The value of this parameter corresponds to the data to be read in each table. The TableInBatchGetRowResponse object order in the response is the same as the TableInBatchGetRowRequest object order in BatchGetRowRequest. The object order of each RowInBatchGetRowResponse under TableInBatchGetRowResponse is the same as that of RowInBatchGetRowRequest under TableInBatchGetRowRequest. If a row does not exist or contains no data in the specified columns_to_get, a corresponding RowInBatchGetRowResponse still appears in TableInBatchGetRowResponse. However, the primary_key_columns and attribute_columns of the row are null. If a row fails to be read, the is_ok value in RowInBatchGetRowResponse for the row is false and the row is null. Not e The BatchGetRow operation may partially fail at the row level. However, it still returns an HTTP status code of 200. The application must check for errors in RowInBatchGetRowResponse to confirm the execution results for each row and then proceed accordingly. CU consumpt ion: If the entire operation fails, it does not consume any CU. If the request times out and the results are undefined, a CU may or may not be consumed. In other situations, each RowInBatchGetRowRequest operation is considered as one GetRow operation when write CUs are calculated.
+`}` t ables: Type: repeated TableInBatchGetRowResponse The value of this parameter corresponds to the data to be read in each table. The TableInBatchGetRowResponse object order in the response is the same as the TableInBatchGetRowRequest object order in BatchGetRowRequest. The object order of each RowInBatchGetRowResponse under TableInBatchGetRowResponse is the same as that of RowInBatchGetRowRequest under TableInBatchGetRowRequest. If a row does not exist or contains no data in the specified columns_to_get, a corresponding RowInBatchGetRowResponse still appears in TableInBatchGetRowResponse. However, the primary_key_columns and attribute_columns of the row are null. If a row fails to be read, the is_ok value in RowInBatchGetRowResponse for the row is false and the row is null. Not e The BatchGetRow operation may partially fail at the row level. However, it still returns an HTTP status code of 200. The application must check for errors in RowInBatchGetRowResponse to confirm the execution results for each row and then proceed accordingly. CU consumpt ion: If the entire operation fails, it does not consume any CU. If the request times out and the results are undefined, a CU may or may not be consumed. In other situations, each RowInBatchGetRowRequest operation is considered as one GetRow operation when write CUs are calculated.
 
 #### 1.1.7 BatchWriteRow
 
@@ -405,7 +421,7 @@ message BatchWriteRowRequest {
     repeated TableInBatchWriteRowRequest tables = 1;
 ```
 
-t ables: Type: repeated TableInBatchWriteRowRequest Required: yes This parameter specifies the information of rows that require write operations. An error is returned if any of the following conditions occurs: Any table listed in the tables parameter does not exist. Tables with the same name exist. The name of any table does not comply with the table naming conventions. The primary key is not specified for any row in a table, the primary key column name does not comply with the conventions, or the primary key column type is incorrect. For any attribute column in a table, the column name does not comply with the column naming conventions. Any row in a table contains an attribute column with the same name as the primary key column. The value of any primary key or attribute column in a table exceeds the upper limit. Any table in the tables contains rows with identical primary keys. The total number of rows for all tables listed in the tables parameter exceeds 200 or the total size of the data exceeds 4 MB. If any table contains no rows, the OTSParameterInvalidException error is returned. The number of columns included in any PutRowInBatchWriteRowRequest of a table exceeds 1,024. The number of ColumnUpdate objects included in any UpdateRowInBatchWriteRowRequest in a table exceeds 1,024. Response structure
+`}` t ables: Type: repeated TableInBatchWriteRowRequest Required: yes This parameter specifies the information of rows that require write operations. An error is returned if any of the following conditions occurs: Any table listed in the tables parameter does not exist. Tables with the same name exist. The name of any table does not comply with the table naming conventions. The primary key is not specified for any row in a table, the primary key column name does not comply with the conventions, or the primary key column type is incorrect. For any attribute column in a table, the column name does not comply with the column naming conventions. Any row in a table contains an attribute column with the same name as the primary key column. The value of any primary key or attribute column in a table exceeds the upper limit. Any table in the tables contains rows with identical primary keys. The total number of rows for all tables listed in the tables parameter exceeds 200 or the total size of the data exceeds 4 MB. If any table contains no rows, the OTSParameterInvalidException error is returned. The number of columns included in any PutRowInBatchWriteRowRequest of a table exceeds 1,024. The number of ColumnUpdate objects included in any UpdateRowInBatchWriteRowRequest in a table exceeds 1,024. Response structure
 
 ```
 message BatchWriteRowResponse {
@@ -426,6 +442,8 @@ message CreateTableRequest {
     optional StreamSpecification stream_spec = 5;
 ```
 
+`}`
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | table meta _ | TableMeta | Yes | The schema of the data table. The table name must be unique within the instance. A primary key can contain one to four primary key columns. You must specify the name and data type of each primary key column. The name of each primary key column must comply with the naming conventions and the data type of each primary key column must be STRING, INTEGER, or BINARY. After you create a table, you cannot modify the schema of the table. |
@@ -438,6 +456,8 @@ Response syntax
 ```
 message CreateTableResponse {
 ```
+
+`}`
 
 #### 1.1.9 ListTable
 
@@ -454,7 +474,7 @@ message ListTableResponse {
     repeated string table_names = 1;
 ```
 
-t able_names: Type: repeated string This parameter specifies the names of all tables in the current instance. Note If a table is created, its table name can be returned by ListTableResponse, but this does not necessarily mean that this table can be read or written at the time.
+`}` t able_names: Type: repeated string This parameter specifies the names of all tables in the current instance. Note If a table is created, its table name can be returned by ListTableResponse, but this does not necessarily mean that this table can be read or written at the time.
 
 #### 1.1.10 DeleteTable
 
@@ -465,13 +485,13 @@ message DeleteTableRequest {
     required string table_name = 1;
 ```
 
-t able_name: Type: string Required: yes This parameter specifies the name of the table you want to delete. Response structure
+`}` t able_name: Type: string Required: yes This parameter specifies the name of the table you want to delete. Response structure
 
 ```
 message DeleteTableResponse {
 ```
 
-If the response of DeleteTable does not contain an error, the table has been deleted.
+`}` If the response of DeleteTable does not contain an error, the table has been deleted.
 
 #### 1.1.11 UpdateTable
 
@@ -485,7 +505,7 @@ message UpdateTableRequest {
     optional StreamSpecification stream_spec = 4;
 ```
 
-t able_name: Type: string Required: yes This parameter specifies the name of the table for which you want to modify the reserved read/write throughput settings. reserved_t hroughput : Type: ReservedThroughput Required: yes This parameter specifies the reserved read/write throughput settings you want to modify for the table. New settings take effect within one minute of a successful update. You may modify the reserved read/write throughput settings of the table as required. You must specify a non-null value for either the read or write parameter of capacity_unit. Otherwise, the request fails and an error is returned. t able_opt ions: Type: TableOptions Required: yes This parameter specifies TimeToLive and MaxVersions. Response structure
+`}` t able_name: Type: string Required: yes This parameter specifies the name of the table for which you want to modify the reserved read/write throughput settings. reserved_t hroughput : Type: ReservedThroughput Required: yes This parameter specifies the reserved read/write throughput settings you want to modify for the table. New settings take effect within one minute of a successful update. You may modify the reserved read/write throughput settings of the table as required. You must specify a non-null value for either the read or write parameter of capacity_unit. Otherwise, the request fails and an error is returned. t able_opt ions: Type: TableOptions Required: yes This parameter specifies TimeToLive and MaxVersions. Response structure
 
 ```
 message UpdateTableResponse {
@@ -493,7 +513,7 @@ message UpdateTableResponse {
     required TableOptions table_options = 2;
 ```
 
-reserved_t hroughput _det ails: Type: ReservedThroughputDetails After the update, the reserved read/write throughput settings information of the table contains the current reserved throughput settings, the time these settings were last updated, and the number of times they have been lowered on the current date. t able_opt ions: Type: TableOptions The latest value of the table_options parameter after the modification. Note The minimum interval between updates to the reserved read/write throughput of a table is two minutes. If the current UpdateTable operation is requested within two minutes of the previous operation, it will be rejected. The reserved read/write throughput of a table can be raised or lowered an unlimited number of times within a single day (from 00:00:00 to 00:00:00 the next day in UTC time).
+`}` reserved_t hroughput _det ails: Type: ReservedThroughputDetails After the update, the reserved read/write throughput settings information of the table contains the current reserved throughput settings, the time these settings were last updated, and the number of times they have been lowered on the current date. t able_opt ions: Type: TableOptions The latest value of the table_options parameter after the modification. Note The minimum interval between updates to the reserved read/write throughput of a table is two minutes. If the current UpdateTable operation is requested within two minutes of the previous operation, it will be rejected. The reserved read/write throughput of a table can be raised or lowered an unlimited number of times within a single day (from 00:00:00 to 00:00:00 the next day in UTC time).
 
 #### 1.1.12 DescribeTable
 
@@ -504,7 +524,7 @@ message DescribeTableRequest {
  required string table_name = 1;
 ```
 
-t able_name: Type: string Required: yes This parameter specifies the name of the table you want to query. Response structure
+`}` t able_name: Type: string Required: yes This parameter specifies the name of the table you want to query. Response structure
 
 ```
 message DescribeTableResponse {
@@ -515,7 +535,7 @@ message DescribeTableResponse {
     repeated bytes shard_splits = 6;
 ```
 
-t able_met a: Type: TableMeta This parameter specifies the schema of the table. The schema is the same as the schema provided when the table is created. reserved_t hroughput _det ails: Type: ReservedThroughputDetails This parameter specifies the reserved read/write throughput settings information of the table. The information contains the current reserved read/write throughput settings, the time these settings were last updated, and the number of times they have been lowered on the current date. t able_opt ions: Type: TableOptions This parameter specifies the latest value of the table_options parameter. St reamSpecif icat ion: Type: StreamSpecification Required: no This parameter specifies whether to enable Stream-related attributes. shard_split s: Type: bytes This parameter specifies the split points of all partitions in the current table.
+`}` t able_met a: Type: TableMeta This parameter specifies the schema of the table. The schema is the same as the schema provided when the table is created. reserved_t hroughput _det ails: Type: ReservedThroughputDetails This parameter specifies the reserved read/write throughput settings information of the table. The information contains the current reserved read/write throughput settings, the time these settings were last updated, and the number of times they have been lowered on the current date. t able_opt ions: Type: TableOptions This parameter specifies the latest value of the table_options parameter. St reamSpecif icat ion: Type: StreamSpecification Required: no This parameter specifies whether to enable Stream-related attributes. shard_split s: Type: bytes This parameter specifies the split points of all partitions in the current table.
 
 #### 1.1.13 ComputeSplitPointsBySize
 
@@ -527,7 +547,7 @@ message ComputeSplitPointsBySizeRequest {
     required int64 split_size = 2; // in 100MB
 ```
 
-t able_name: Type: string Required: yes This parameter specifies the name of the table that contains the data you want to split. split _size: Type: int64 Required: yes This parameter specifies the approximate size of each partition, rounded to the nearest 100 MB. Response structure
+`}` t able_name: Type: string Required: yes This parameter specifies the name of the table that contains the data you want to split. split _size: Type: int64 Required: yes This parameter specifies the approximate size of each partition, rounded to the nearest 100 MB. Response structure
 
 ```
 message ComputeSplitPointsBySizeResponse {
@@ -574,10 +594,15 @@ message ComputeSplitPointsBySizeResponse {
      message SplitLocation {
          required string location = 1;
          required sint64 repeat = 2;
+```
+
+`}`
+
+```
      repeated SplitLocation locations = 4;
 ```
 
-consumed: Type: ConsumedCapacity This parameter specifies the number of CUs consumed by this request. schema: Type: PrimaryKeySchema This parameter specifies the schema of the table. The schema is the same as the schema provided when the table is created. split _point s: Type: repeated bytes The split points between partitions. The split points must increase monotonically between the partitions. Each split point is a PlainBuffer-encoded line and contains only primary keys. The last -inf of each split point is not transmitted to reduce the volume of data transmitted. locat ions: Type: repeated SplitLocation This parameter specifies the prompt about the hosts where the split points reside. It can be null. For example, a table contains three columns of primary keys, where the first column is of the string type. After this API is called, five partitions are obtained, which are (-inf,-inf,-inf) to ("a",-inf,-inf), ("a",inf,-inf) to ("b",-inf,-inf), ("b",-inf,-inf) to ("c",-inf,-inf), ("c",-inf,-inf) to ("d",-inf,-inf), and ("d",-inf,-inf) to (+inf,+inf,+inf). The first three partitions reside in machine-A, while the last two in machine-B. In this
+`}` consumed: Type: ConsumedCapacity This parameter specifies the number of CUs consumed by this request. schema: Type: PrimaryKeySchema This parameter specifies the schema of the table. The schema is the same as the schema provided when the table is created. split _point s: Type: repeated bytes The split points between partitions. The split points must increase monotonically between the partitions. Each split point is a PlainBuffer-encoded line and contains only primary keys. The last -inf of each split point is not transmitted to reduce the volume of data transmitted. locat ions: Type: repeated SplitLocation This parameter specifies the prompt about the hosts where the split points reside. It can be null. For example, a table contains three columns of primary keys, where the first column is of the string type. After this API is called, five partitions are obtained, which are (-inf,-inf,-inf) to ("a",-inf,-inf), ("a",inf,-inf) to ("b",-inf,-inf), ("b",-inf,-inf) to ("c",-inf,-inf), ("c",-inf,-inf) to ("d",-inf,-inf), and ("d",-inf,-inf) to (+inf,+inf,+inf). The first three partitions reside in machine-A, while the last two in machine-B. In this
 
 | case, split points is (example) _ | [("a"),("b"),("c"),("d")] |   |
 |---|---|---|
@@ -594,18 +619,23 @@ message ListStreamRequest {
     optional string table_name = 1;
 ```
 
-t able_name: Type: optional string This parameter specifies the name of the table for which the current stream is enabled. Response structure
+`}` t able_name: Type: optional string This parameter specifies the name of the table for which the current stream is enabled. Response structure
 
 ```
 message ListStreamResponse {
     repeated Stream streams = 1;
+```
+
+`}`
+
+```
 message Stream {
     required string stream_id = 1;
     required string table_name = 2;
     required int64 creation_time = 3;
 ```
 
-st ream_id: Type: repeated string This parameter specifies the ID of the current stream. t able_name: Type: required string This parameter specifies the name of the table for which the current stream is enabled. creat ion_t ime: Type: required int64 This parameter specifies the time the current stream is enabled.
+`}` st ream_id: Type: repeated string This parameter specifies the ID of the current stream. t able_name: Type: required string This parameter specifies the name of the table for which the current stream is enabled. creat ion_t ime: Type: required int64 This parameter specifies the time the current stream is enabled.
 
 #### 1.1.15 DescribeStream
 
@@ -618,7 +648,7 @@ message DescribeStreamRequest {
     optional int32 shard_limit = 3;
 ```
 
-st ream_id: Type: required string This parameter specifies the ID of the current stream. inclusive_st art _shard_id: Type: required string This parameter specifies the ID of the starting partition in a query. shard_limit : Type: required string This parameter specifies the upper limit of the returned partition quantity in a single query. Response structure
+`}` st ream_id: Type: required string This parameter specifies the ID of the current stream. inclusive_st art _shard_id: Type: required string This parameter specifies the ID of the starting partition in a query. shard_limit : Type: required string This parameter specifies the upper limit of the returned partition quantity in a single query. Response structure
 
 ```
 message DescribeStreamResponse {
@@ -629,13 +659,18 @@ message DescribeStreamResponse {
     required StreamStatus stream_status = 5;
     repeated StreamShard shards = 6;
     optional string next_shard_id = 7;
+```
+
+`}`
+
+```
 message StreamShard {
     required string shard_id = 1;
     optional string parent_id = 2;
     optional string parent_sibling_id = 3;
 ```
 
-st ream_id: Type: required string This parameter specifies the ID of the current stream. expirat ion_t ime: Type: required int32 This parameter specifies the expiration time of the stream. t able_name: Type: required string This parameter specifies the name of the table for which the current stream is enabled. creat ion_t ime: Type: required int32 This parameter specifies the time the current stream is enabled. st ream_st at us: Type: required StreamStatus This parameter specifies the status of the current stream, which can be enabling or active. shards: Type: required StreamShard This parameter specifies the information about the streamShard, including the partition ID, parent partition ID, and information about the neighbor partition of the parent partition (applicable when the parent partition is merged). next _shard_id: Type: optional string This parameter specifies the start ID of the next partition in a paging query. Note Data reading for the parent partition must be completed before data of the current partition is read.
+`}` st ream_id: Type: required string This parameter specifies the ID of the current stream. expirat ion_t ime: Type: required int32 This parameter specifies the expiration time of the stream. t able_name: Type: required string This parameter specifies the name of the table for which the current stream is enabled. creat ion_t ime: Type: required int32 This parameter specifies the time the current stream is enabled. st ream_st at us: Type: required StreamStatus This parameter specifies the status of the current stream, which can be enabling or active. shards: Type: required StreamShard This parameter specifies the information about the streamShard, including the partition ID, parent partition ID, and information about the neighbor partition of the parent partition (applicable when the parent partition is merged). next _shard_id: Type: optional string This parameter specifies the start ID of the next partition in a paging query. Note Data reading for the parent partition must be completed before data of the current partition is read.
 
 #### 1.1.16 GetShardIterator
 
@@ -647,7 +682,7 @@ message GetShardIteratorRequest {
     required string shard_id = 2;
 ```
 
-st ream_id: Type: required string This parameter specifies the ID of the current stream. shard_id: Type: required string This parameter specifies the ID of the current partition. Response structure
+`}` st ream_id: Type: required string This parameter specifies the ID of the current stream. shard_id: Type: required string This parameter specifies the ID of the current partition. Response structure
 
 ```
 message GetShardIteratorResponse {
@@ -666,19 +701,24 @@ message GetStreamRecordRequest {
     optional int32 limit = 2;
 ```
 
-shard_it erat or: Type: required string This parameter specifies the iterator for reading the current partition next time. Response structure
+`}` shard_it erat or: Type: required string This parameter specifies the iterator for reading the current partition next time. Response structure
 
 ```
 message GetStreamRecordResponse {
     message StreamRecord {
         required ActionType action_type = 1;
         required bytes record = 2;
+```
+
+`}`
+
+```
     repeated StreamRecord stream_records = 1;
     optional raw_string next_shard_iterator = 2;
     optional ConsumedCapacity consumed = 3;
 ```
 
-St reamRecord: Type: repeated StreamRecord This parameter specifies the record entry for reading the current partition. shard_it erat or: Type: required string This parameter specifies the iterator for reading the current partition next time. consumed: Type: ConsumedCapacity This parameter specifies the number of CUs consumed by this operation. The sum of data in all rows of a table for stream read is calculated based on the following formula: Number of consumed read CUs = (Size of actually read columns/4 KB) rounded up.
+`}` St reamRecord: Type: repeated StreamRecord This parameter specifies the record entry for reading the current partition. shard_it erat or: Type: required string This parameter specifies the iterator for reading the current partition next time. consumed: Type: ConsumedCapacity This parameter specifies the number of CUs consumed by this operation. The sum of data in all rows of a table for stream read is calculated based on the following formula: Number of consumed read CUs = (Size of actually read columns/4 KB) rounded up.
 
 #### 1.1.18 Tablestore ProtocolBuffer message definitions
 
@@ -688,30 +728,71 @@ definitions This topic describes the detailed definitions of table_store.proto a
 package com.alicloud.openservices.tablestore.core.protocol; message Error {
     required string code = 1;
     optional string message = 2;
+```
+
+`}`
+
+```
 enum PrimaryKeyType {
     INTEGER = 1;
     STRING = 2;
     BINARY = 3;
+```
+
+`}`
+
+```
 enum PrimaryKeyOption {
     AUTO_INCREMENT = 1;
+```
+
+`}`
+
+```
 message PrimaryKeySchema {
     required string name = 1;
     required PrimaryKeyType type = 2;
     optional PrimaryKeyOption option = 3;
+```
+
+`}`
+
+```
 message TableOptions {
     optional int32 time_to_live = 1; // This parameter value can be dynamically modified.
     optional int32 max_versions = 2; // This parameter value can be dynamically modified.
     optional int64 deviation_cell_version_in_sec = 5; // This parameter value can be dynami
-cally modified. message TableMeta {
+cally modified.
+```
+
+`}`
+
+```
+message TableMeta {
     required string table_name = 1;
     repeated PrimaryKeySchema primary_key = 2;
+```
+
+`}`
+
+```
 enum RowExistenceExpectation {
     IGNORE = 0;
     EXPECT_EXIST = 1;
     EXPECT_NOT_EXIST = 2;
+```
+
+`}`
+
+```
 message Condition {
     required RowExistenceExpectation row_existence = 1;
     optional bytes column_condition      = 2;
+```
+
+`}`
+
+```
 message CapacityUnit {
     optional int32 read = 1;
     optional int32 write = 2;
@@ -724,10 +805,26 @@ ed throughput of the table.
     required int64 last_increase_time = 2; // This parameter indicates the last time the re
 served throughput was raised.
     optional int64 last_decrease_time = 3; // This parameter indicates the last time the re
-served throughput was lowered. message ReservedThroughput {
+served throughput was lowered.
+```
+
+`}`
+
+```
+message ReservedThroughput {
     required CapacityUnit capacity_unit = 1;
+```
+
+`}`
+
+```
 message ConsumedCapacity {
     required CapacityUnit capacity_unit = 1;
+```
+
+`}`
+
+```
 /* ############################################# CreateTable ############################
 ################# */
 /**
@@ -747,7 +844,18 @@ message CreateTableRequest {
     required TableMeta table_meta = 1;
     required ReservedThroughput reserved_throughput = 2;
     optional TableOptions table_options = 3;
-message CreateTableResponse { /* ########################################################################################
+```
+
+`}`
+
+```
+message CreateTableResponse {
+```
+
+`}`
+
+```
+/* ########################################################################################
 ################# */
 /* ############################################# UpdateTable ############################
 ################# */
@@ -755,15 +863,30 @@ message UpdateTableRequest {
     required string table_name = 1;
     optional ReservedThroughput reserved_throughput = 2;
     optional TableOptions table_options = 3;
+```
+
+`}`
+
+```
 message UpdateTableResponse {
     required ReservedThroughputDetails reserved_throughput_details = 1;
     required TableOptions table_options = 2;
+```
+
+`}`
+
+```
 /* ########################################################################################
 ################# */
 /* ############################################# DescribeTable ##########################
 ################### */
 message DescribeTableRequest {
     required string table_name = 1;
+```
+
+`}`
+
+```
 message DescribeTableResponse {
     required TableMeta table_meta = 1;
     required ReservedThroughputDetails reserved_throughput_details = 2;
@@ -776,7 +899,13 @@ message DescribeTableResponse {
 ################### */
 /* ############################################# ListTable ##############################
 ############### */
-message ListTableRequest { /**
+message ListTableRequest {
+```
+
+`}`
+
+```
+/**
  * Only a simple name list is returned.
 ```
 
@@ -785,17 +914,44 @@ message ListTableRequest { /**
 ```
 message ListTableResponse {
     repeated string table_names = 1;
+```
+
+`}`
+
+```
 /* ########################################################################################
 ############### */
 /* ############################################# DeleteTable ############################
 ################# */
 message DeleteTableRequest {
     required string table_name = 1;
-message DeleteTableResponse { /* ############################################# UnloadTable ############################
+```
+
+`}`
+
+```
+message DeleteTableResponse {
+```
+
+`}`
+
+```
+/* ############################################# UnloadTable ############################
 ################# */
 message UnloadTableRequest {
     required string table_name = 1;
-message UnloadTableResponse { /* ########################################################################################
+```
+
+`}`
+
+```
+message UnloadTableResponse {
+```
+
+`}`
+
+```
+/* ########################################################################################
 ################## */
 /**
  * Valid values: [0, INT64.MAX).
@@ -810,11 +966,21 @@ message TimeRange {
     optional int64 start_time = 1;
     optional int64 end_time = 2;
     optional int64 specific_time = 3;
+```
+
+`}`
+
+```
 /* ############################################# GetRow #################################
 ############ */
 enum ReturnType {
     RT_NONE = 0;
     RT_PK = 1;
+```
+
+`}`
+
+```
 message ReturnContent {
     optional ReturnType return_type = 1;
 /**
@@ -842,10 +1008,20 @@ are read.
     optional string start_column = 8;
     optional string end_column = 9;
     optional bytes token = 10;
+```
+
+`}`
+
+```
 message GetRowResponse {
     required ConsumedCapacity consumed = 1;
     required bytes row = 2; // encoded as InplaceRowChangeSet
     optional bytes next_token = 3;
+```
+
+`}`
+
+```
 /* ########################################################################################
 ############ */
 /* ############################################# UpdateRow ##############################
@@ -855,9 +1031,19 @@ message UpdateRowRequest {
     required bytes row_change = 2;
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message UpdateRowResponse {
     required ConsumedCapacity consumed = 1;
     optional bytes row = 2;
+```
+
+`}`
+
+```
 /* ########################################################################################
 ############### */
 /* ############################################# PutRow #################################
@@ -875,6 +1061,11 @@ message PutRowRequest {
     required bytes row = 2; // encoded as InplaceRowChangeSet
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message PutRowResponse {
     required ConsumedCapacity consumed = 1;
     optional bytes row = 2;
@@ -901,9 +1092,19 @@ message DeleteRowRequest {
 key
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message DeleteRowResponse {
     required ConsumedCapacity consumed = 1;
     optional bytes row = 2;
+```
+
+`}`
+
+```
 /* ########################################################################################
 ############### */
 /* ############################################# BatchGetRow ############################
@@ -920,17 +1121,37 @@ lumns are read.
     optional bytes filter = 8;
     optional string start_column = 9;
     optional string end_column = 10;
+```
+
+`}`
+
+```
 message BatchGetRowRequest {
     repeated TableInBatchGetRowRequest tables = 1;
+```
+
+`}`
+
+```
 message RowInBatchGetRowResponse {
     required bool is_ok = 1;
     optional Error error = 2;
     optional ConsumedCapacity consumed = 3;
     optional bytes row = 4; // encoded as InplaceRowChangeSet
     optional bytes next_token = 5;
+```
+
+`}`
+
+```
 message TableInBatchGetRowResponse {
     required string table_name = 1;
     repeated RowInBatchGetRowResponse rows = 2;
+```
+
+`}`
+
+```
 message BatchGetRowResponse {
     repeated TableInBatchGetRowResponse tables = 1;
 /* ########################################################################################
@@ -945,26 +1166,61 @@ enum OperationType {
     PUT = 1;
     UPDATE = 2;
     DELETE = 3;
+```
+
+`}`
+
+```
 message RowInBatchWriteRowRequest {
     required OperationType type = 1;
     required bytes row_change = 2; // encoded as InplaceRowChangeSet
     required Condition condition = 3;
     optional ReturnContent return_content = 4;
+```
+
+`}`
+
+```
 message TableInBatchWriteRowRequest {
     required string table_name = 1;
     repeated RowInBatchWriteRowRequest rows = 2;
+```
+
+`}`
+
+```
 message BatchWriteRowRequest {
     repeated TableInBatchWriteRowRequest tables = 1;
+```
+
+`}`
+
+```
 message RowInBatchWriteRowResponse {
     required bool is_ok = 1;
     optional Error error = 2;
     optional ConsumedCapacity consumed = 3;
     optional bytes row = 4;
+```
+
+`}`
+
+```
 message TableInBatchWriteRowResponse {
     required string table_name = 1;
     repeated RowInBatchWriteRowResponse rows = 2;
+```
+
+`}`
+
+```
 message BatchWriteRowResponse {
     repeated TableInBatchWriteRowResponse tables = 1;
+```
+
+`}`
+
+```
 /* ########################################################################################
 ################### */
 /* ############################################# GetRange ###############################
@@ -972,6 +1228,11 @@ message BatchWriteRowResponse {
 enum Direction {
     FORWARD = 0;
     BACKWARD = 1;
+```
+
+`}`
+
+```
 message GetRangeRequest {
     required string table_name = 1;
     required Direction direction = 2;
@@ -991,15 +1252,30 @@ ly has primary key
     optional string start_column = 11;
     optional string end_column = 12;
     optional bytes token = 13;
+```
+
+`}`
+
+```
 message GetRangeResponse {
     required ConsumedCapacity consumed = 1;
     required bytes rows = 2; // encoded as InplaceRowChangeSet
     optional bytes next_start_primary_key = 3; // If this parameter is not specified, all d
 ata is read. next_start_primary_key is encoded as InplaceRowChangeSet, but only contains pr imary key.
     optional bytes next_token = 4;
+```
+
+`}`
+
+```
 /* #################### ComputeSplitPointsBySize #################### */ message ComputeSplitPointsBySizeRequest {
     required string table_name = 1;
     required int64 split_size = 2; // in 100MB
+```
+
+`}`
+
+```
 message ComputeSplitPointsBySizeResponse {
     required ConsumedCapacity consumed = 1;
     repeated PrimaryKeySchema schema = 2;
@@ -1044,16 +1320,26 @@ message ComputeSplitPointsBySizeResponse {
      message SplitLocation {
          required string location = 1;
          required sint64 repeat = 2;
+```
+
+`}`
+
+```
      repeated SplitLocation locations = 4;
 ```
 
-table_store_filter.proto
+`}` table_store_filter.proto
 
 ```java
 package com.alicloud.openservices.tablestore.core.protocol; enum FilterType {
     FT_SINGLE_COLUMN_VALUE = 1;
     FT_COMPOSITE_COLUMN_VALUE = 2;
     FT_COLUMN_PAGINATION = 3;
+```
+
+`}`
+
+```
 enum ComparatorType {
     CT_EQUAL = 1;
     CT_NOT_EQUAL = 2;
@@ -1061,26 +1347,53 @@ enum ComparatorType {
     CT_GREATER_EQUAL = 4;
     CT_LESS_THAN = 5;
     CT_LESS_EQUAL = 6;
+```
+
+`}`
+
+```
 message SingleColumnValueFilter {
     required ComparatorType comparator = 1;
     required string column_name = 2;
     required bytes column_value = 3;
     required bool filter_if_missing = 4;
     required bool latest_version_only = 5;
+```
+
+`}`
+
+```
 enum LogicalOperator {
     LO_NOT = 1;
     LO_AND = 2;
     LO_OR = 3;
+```
+
+`}`
+
+```
 message CompositeColumnValueFilter {
     required LogicalOperator combinator = 1;
     repeated Filter sub_filters = 2;
+```
+
+`}`
+
+```
 message ColumnPaginationFilter {
     required int32 offset = 1;
     required int32 limit = 2;
+```
+
+`}`
+
+```
 message Filter {
     required FilterType type = 1;
     required bytes filter = 2;  // Serialized string of filter of the type
 ```
+
+`}`
 
 #### 1.1.19 CreateIndex
 
@@ -1099,6 +1412,8 @@ main_table_name Type: string. Required: yes. This parameter specifies the name o
 message CreateIndexResponse {
 ```
 
+`}`
+
 #### 1.1.20 DeleteIndex
 
 You can call this operation to delete an index table from the specified base table. Request syntax
@@ -1109,7 +1424,7 @@ message DropIndexRequest {
     required string index_name = 2;
 ```
 
-main_table_name Type: string. Required: yes. This parameter specifies the name of the base table from which to delete an index table. index_name Type: string. Required: yes. This parameter specifies the name of the index table to be deleted. Response syntax
+`}` main_table_name Type: string. Required: yes. This parameter specifies the name of the base table from which to delete an index table. index_name Type: string. Required: yes. This parameter specifies the name of the index table to be deleted. Response syntax
 
 ```
 message DropIndexResponse {
@@ -1128,6 +1443,8 @@ enum ActionType {
     DELETE_ROW = 3;
 ```
 
+`}`
+
 #### 1.2.2 CapacityUnit
 
 CapacityUnit specifies the number of CUs consumed in an operation, or reserved read/write throughput of a table. Data structure
@@ -1138,7 +1455,7 @@ message CapacityUnit {
     optional int32 write = 2;
 ```
 
-read: Type: int32 Description: the number of read CUs consumed by this operation or the reserved read throughput for this table. writ e: Type: int32 Description: the number of write CUs consumed by this operation or the reserved write throughput for this table.
+`}` read: Type: int32 Description: the number of read CUs consumed by this operation or the reserved read throughput for this table. writ e: Type: int32 Description: the number of write CUs consumed by this operation or the reserved write throughput for this table.
 
 #### 1.2.3 ColumnPaginationFilter
 
@@ -1150,7 +1467,7 @@ message ColumnPaginationFilter {
  required int32 limit = 2;
 ```
 
-of f set : Type: int32 Description: the position of the column to start reading from. limit : Type: int32 Description: the number of columns to be read.
+`}` of f set : Type: int32 Description: the position of the column to start reading from. limit : Type: int32 Description: the number of columns to be read.
 
 #### 1.2.4 ComparatorType
 
@@ -1166,6 +1483,8 @@ enum ComparatorType {
  CT_LESS_EQUAL = 6;
 ```
 
+`}`
+
 #### 1.2.5 CompositeColumnValueFilter
 
 CompositeColumnValueFilter specifies a group of conditions, for example, column_a > 5 AND column_b = 10. This API is applicable to the ConditionUpdate and Filter functions. Data structure
@@ -1176,7 +1495,7 @@ message CompositeColumnValueFilter {
  repeated Filter sub_filters = 2;
 ```
 
-combinat or: Type: LogicalOperator Description: the logical operator. sub_f ilt er: Type: Filter Description: the sub-condition expression.
+`}` combinat or: Type: LogicalOperator Description: the logical operator. sub_f ilt er: Type: Filter Description: the sub-condition expression.
 
 #### 1.2.6 Condition
 
@@ -1188,7 +1507,7 @@ message Condition {
     optional bytes column_condition      = 2;
 ```
 
-row_exist ence: Type: RowExistenceExpectation Description: the row existence check settings for this row. column_condit ion: Type: bytes Description: the column condition settings. This parameter indicates the binary data (in bytes) after the filter is serialized in the Protobuf format.
+`}` row_exist ence: Type: RowExistenceExpectation Description: the row existence check settings for this row. column_condit ion: Type: bytes Description: the column condition settings. This parameter indicates the binary data (in bytes) after the filter is serialized in the Protobuf format.
 
 #### 1.2.7 ConsumedCapacity
 
@@ -1199,7 +1518,7 @@ message ConsumedCapacity {
     required CapacityUnit capacity_unit = 1;
 ```
 
-capacit y_unit : Type: CapacityUnit Description: the number of CUs consumed by this operation.
+`}` capacit y_unit : Type: CapacityUnit Description: the number of CUs consumed by this operation.
 
 #### 1.2.8 Direction
 
@@ -1211,6 +1530,8 @@ enum Direction {
  BACKWARD = 1;
 ```
 
+`}`
+
 #### 1.2.9 Error
 
 Error indicates an error message returned when an operation fails. This parameter is also used to indicate errors for single-row requests in the BatchGetRow and BatchWriteRow operations. Data structure
@@ -1221,7 +1542,7 @@ Error {
  optional string message = 2;
 ```
 
-code: Type: string Description: the error code for the specified single-row operation. message: Type: string Description: the error message for the specified single-row operation.
+`}` code: Type: string Description: the error code for the specified single-row operation. message: Type: string Description: the error message for the specified single-row operation.
 
 #### 1.2.10 Filter
 
@@ -1233,7 +1554,7 @@ message Filter {
  required bytes filter = 2;
 ```
 
-t ype: Type: FilterType Description: the column condition type. f ilt er: Type: bytes Description: the binary data generated after the condition statements of CompositeColumnValueFilter, ColumnPaginationFilter, or SingleColumnValueFilter are serialized in the Protobuf format.
+`}` t ype: Type: FilterType Description: the column condition type. f ilt er: Type: bytes Description: the binary data generated after the condition statements of CompositeColumnValueFilter, ColumnPaginationFilter, or SingleColumnValueFilter are serialized in the Protobuf format.
 
 #### 1.2.11 PrimaryKeyOption
 
@@ -1243,6 +1564,8 @@ PrimaryKeyOption specifies the attribute value of a primary key. Currently, it o
 enum PrimaryKeyOption {
  AUTO_INCREMENT = 1;
 ```
+
+`}`
 
 #### 1.2.12 FilterType
 
@@ -1255,6 +1578,8 @@ enum FilterType {
  FT_COLUMN_PAGINATION = 3;
 ```
 
+`}`
+
 #### 1.2.13 LogicalOperator
 
 LogicalOperator specifies the enumeration type. The enumeration types include: LO_NOT indicates NOT. LO_AND indicates AND. LO_OR indicates OR. Enumeration values
@@ -1265,6 +1590,8 @@ enum LogicalOperator {
  LO_AND = 2;
  LO_OR = 3;
 ```
+
+`}`
 
 #### 1.2.14 OperationType
 
@@ -1277,6 +1604,8 @@ enum OperationType {
  DELETE = 3;
 ```
 
+`}`
+
 #### 1.2.15 PartitionRange
 
 PartitionRange specifies the partition range. Data structure
@@ -1287,7 +1616,7 @@ message PartitionRange {
     required bytes end = 2; // encoded as SQLVariant
 ```
 
-begin: Type: bytes Description: the starting key of the partition. The partition range is a left-closed right-open interval, which includes the starting key. end: Type: bytes Description: the ending key of the partition. The partition range is a left-closed right-open interval, which excludes the ending key.
+`}` begin: Type: bytes Description: the starting key of the partition. The partition range is a left-closed right-open interval, which includes the starting key. end: Type: bytes Description: the ending key of the partition. The partition range is a left-closed right-open interval, which excludes the ending key.
 
 #### 1.2.16 PlainBuffer
 
@@ -1322,6 +1651,11 @@ void GetChecksum(uint8_t* crc, const InplaceCell& cell)
     Crc8(crc, cell.GetValue().GetInternalSlice());
     Crc8(crc, cell.GetTimestamp());
     Crc8(crc, cell.GetOpType());
+```
+
+`}`
+
+```
 void GetChecksum(uint8_t* crc, const InplaceRow& row)
 ```
 
@@ -1334,18 +1668,33 @@ void GetChecksum(uint8_t* crc, const InplaceRow& row)
         *cellcrc = 0;
         GetChecksum(cellcrc, pk[i]);
         Crc8(crc, *cellcrc);
+```
+
+`}`
+
+```
     for (int i = 0; i < row.GetCellCount(); i++) {
         uint8_t* cellcrc;
         *cellcrc = 0;
         GetChecksum(cellcrc, row.GetCell(i));
         Crc8(crc, *cellcrc);
+```
+
+`}`
+
+```
     uint8_t del = 0;
     if (row.HasDeleteMarker()) {
         del = 1;
+```
+
+`}`
+
+```
     Crc8(crc, del);
 ```
 
-Example A row contains two primary key columns and four attribute columns. The data types of the primary key columns are string and integer, while the data types in the attribute columns are string, integer, and double. The versions are 1001, 1002, and 1003. The fourth attribute column indicates whether to delete all versions. Primary key columns: [pk1:string:iampk] [pk2:integer:100] Attribute columns: [column1:string:bad:1001] [column2:integer:128:1002] [column3:double:34.2:1003] [column4:del_all_versions] Encoding:
+`}` Example A row contains two primary key columns and four attribute columns. The data types of the primary key columns are string and integer, while the data types in the attribute columns are string, integer, and double. The versions are 1001, 1002, and 1003. The fourth attribute column indicates whether to delete all versions. Primary key columns: [pk1:string:iampk] [pk2:integer:100] Attribute columns: [column1:string:bad:1001] [column2:integer:128:1002] [column3:double:34.2:1003] [column4:del_all_versions] Encoding:
 
 ```xml
  <The start position for headers>[0x75]
@@ -1370,7 +1719,7 @@ message PrimaryKeySchema {
  optional PrimaryKeyOption option = 3;
 ```
 
-name: Type: string Description: the name of the column. t ype: Type: PrimaryKeyType Description: the type of the column. opt ion: Type: PrimaryKeyOption Description: the additional attribute value of the column.
+`}` name: Type: string Description: the name of the column. t ype: Type: PrimaryKeyType Description: the type of the column. opt ion: Type: PrimaryKeyOption Description: the additional attribute value of the column.
 
 #### 1.2.18 PrimaryKeyType
 
@@ -1392,7 +1741,7 @@ message ReservedThroughput {
  required CapacityUnit capacity_unit = 1;
 ```
 
-capacit y_unit : Type: CapacityUnit Description: the current reserved read/write throughput value for the table.
+`}` capacit y_unit : Type: CapacityUnit Description: the current reserved read/write throughput value for the table.
 
 #### 1.2.20 ReservedThroughputDetails
 
@@ -1406,7 +1755,7 @@ message ReservedThroughputDetails {
     required int32 number_of_decreases_today = 4;
 ```
 
-capacit y_unit : Type: CapacityUnit Description: the reserved read/write throughput value for this table. last _increase_t ime: Type: int64 Description: the last time the reserved read/write throughput capacity was raised for this table. The value uses UTC time, in seconds. last _decrease_t ime: Type: int64 Description: the last time the reserved read/write throughput capacity was lowered for this table. The value uses UTC time, in seconds. number_of _decreases_t oday: Type: int32 Description: the number of times the reserved read/write throughput capacity was lowered for this table on the current calendar day.
+`}` capacit y_unit : Type: CapacityUnit Description: the reserved read/write throughput value for this table. last _increase_t ime: Type: int64 Description: the last time the reserved read/write throughput capacity was raised for this table. The value uses UTC time, in seconds. last _decrease_t ime: Type: int64 Description: the last time the reserved read/write throughput capacity was lowered for this table. The value uses UTC time, in seconds. number_of _decreases_t oday: Type: int32 Description: the number of times the reserved read/write throughput capacity was lowered for this table on the current calendar day.
 
 #### 1.2.21 ReturnContent
 
@@ -1417,7 +1766,7 @@ message ReturnContent {
     optional ReturnType return_type = 1;
 ```
 
-ret urn_t ype: Type: ReturnType Description: the type of the returned data.
+`}` ret urn_t ype: Type: ReturnType Description: the type of the returned data.
 
 #### 1.2.22 ReturnType
 
@@ -1429,7 +1778,7 @@ enum ReturnType {
     RT_PK = 1;
 ```
 
-RT_NONE: the default value. This parameter indicates that no value is returned. RT_PK: This parameter indicates that the primary key is returned.
+`}` RT_NONE: the default value. This parameter indicates that no value is returned. RT_PK: This parameter indicates that the primary key is returned.
 
 #### 1.2.23 RowExistenceExpectation
 
@@ -1441,6 +1790,8 @@ enum RowExistenceExpectation {
     EXPECT_EXIST = 1;
     EXPECT_NOT_EXIST = 2;
 ```
+
+`}`
 
 #### 1.2.24 RowInBatchGetRowResponse
 
@@ -1455,7 +1806,7 @@ message RowInBatchGetRowResponse {
  optional bytes next_token = 5;
 ```
 
-is_ok: Type: bool Description: determines whether the operation for this row succeeds. If true is returned, the row is read and error is invalid. If false is returned, the row fails to be read and the row is invalid. error: Type: Error Description: the error message for this row operation. consumed: Type: ConsumedCapacity Description: the number of capacity units consumed by this row operation. row: Type: bytes The read data is encoded in the PlainBuffer format. If this row does not exist, null is returned. next _t oken: Type: bytes This parameter specifies the starting position of a wide row in the next read operation. This function is currently unavailable.
+`}` is_ok: Type: bool Description: determines whether the operation for this row succeeds. If true is returned, the row is read and error is invalid. If false is returned, the row fails to be read and the row is invalid. error: Type: Error Description: the error message for this row operation. consumed: Type: ConsumedCapacity Description: the number of capacity units consumed by this row operation. row: Type: bytes The read data is encoded in the PlainBuffer format. If this row does not exist, null is returned. next _t oken: Type: bytes This parameter specifies the starting position of a wide row in the next read operation. This function is currently unavailable.
 
 #### 1.2.25 RowInBatchWriteRowRequest
 
@@ -1469,7 +1820,7 @@ message RowInBatchWriteRowRequest {
     optional ReturnContent return_content = 4;
 ```
 
-t ype: Type: OperationType Description: the operation type. row_change: Type: bytes Description: the data in a row that contains the primary key and attribute columns. The columns are encoded in the PlainBuffer format. condit ion: Type: Condition Description: the value of conditional update, including the row existence condition and columnbased condition. ret urn_cont ent : Type: ReturnContent Required: no This parameter specifies the data type after the row is written. Currently, only the primary key is returned, which is used for the auto-increment function of the primary key column.
+`}` t ype: Type: OperationType Description: the operation type. row_change: Type: bytes Description: the data in a row that contains the primary key and attribute columns. The columns are encoded in the PlainBuffer format. condit ion: Type: Condition Description: the value of conditional update, including the row existence condition and columnbased condition. ret urn_cont ent : Type: ReturnContent Required: no This parameter specifies the data type after the row is written. Currently, only the primary key is returned, which is used for the auto-increment function of the primary key column.
 
 #### 1.2.26 RowInBatchWriteRowResponse
 
@@ -1482,7 +1833,7 @@ message RowInBatchWriteRowResponse {
  optional ConsumedCapacity consumed = 3;
 ```
 
-is_ok: Type: bool Description: determines whether the operation for this row succeeds. If the value is true, the row is written and error is invalid. If the value is false, this row fails to be written. error: Type: Error Description: the error message for this row operation. consumed: Type: ConsumedCapacity Description: the number of capacity units consumed by this row operation.
+`}` is_ok: Type: bool Description: determines whether the operation for this row succeeds. If the value is true, the row is written and error is invalid. If the value is false, this row fails to be written. error: Type: Error Description: the error message for this row operation. consumed: Type: ConsumedCapacity Description: the number of capacity units consumed by this row operation.
 
 #### 1.2.27 SingleColumnValueFilter
 
@@ -1497,7 +1848,7 @@ message SingleColumnValueFilter {
  required bool latest_version_only = 5;
 ```
 
-comparat or: Type: ComparatorType Description: the comparison type. column_name: Type: string Description: the column name. column_value: Type: bytes Description: the value of ColumnValue serialized by protobuf. f ilt er_if _missing: Type: bool Description: determines whether a filtering condition is applicable if the column of a row does not exist. Assume that the condition is column_a > 0, and the value of filter_if_missing is true. If column_a does not exist for a row, the condition column_a > 0 is true. lat est _version_only: Type: bool Description: determines whether a condition is applicable only for the latest version. If the value is true, the value of the latest version is checked to determine whether it meets the condition. If the value is false, the values of all versions are checked to determine whether they meet the conditions.
+`}` comparat or: Type: ComparatorType Description: the comparison type. column_name: Type: string Description: the column name. column_value: Type: bytes Description: the value of ColumnValue serialized by protobuf. f ilt er_if _missing: Type: bool Description: determines whether a filtering condition is applicable if the column of a row does not exist. Assume that the condition is column_a > 0, and the value of filter_if_missing is true. If column_a does not exist for a row, the condition column_a > 0 is true. lat est _version_only: Type: bool Description: determines whether a condition is applicable only for the latest version. If the value is true, the value of the latest version is checked to determine whether it meets the condition. If the value is false, the values of all versions are checked to determine whether they meet the conditions.
 
 #### 1.2.28 StreamDetails
 
@@ -1511,7 +1862,7 @@ message StreamDetails {
     optional int64 last_enable_time = 4;
 ```
 
-enable_st ream: Type: required bool Description: determines whether stream is enabled for the table. st ream_id: Type: optional string Description: the ID of the table stream. expirat ion_t ime: Type: optional int32 Description: the expiration time of the table stream. last _enable_t ime: Type: optional int64 Description: the time to enable the table stream.
+`}` enable_st ream: Type: required bool Description: determines whether stream is enabled for the table. st ream_id: Type: optional string Description: the ID of the table stream. expirat ion_t ime: Type: optional int32 Description: the expiration time of the table stream. last _enable_t ime: Type: optional int64 Description: the time to enable the table stream.
 
 #### 1.2.29 StreamRecord
 
@@ -1523,7 +1874,7 @@ StreamRecord indicates a row of data in the response of the GetStreamRecord oper
         required bytes record = 2;
 ```
 
-act ion_t ype: Type: required ActionType Description: the operation type of the row. record: Type: required bytes Description: the data content of the row.
+`}` act ion_t ype: Type: required ActionType Description: the operation type of the row. record: Type: required bytes Description: the data content of the row.
 
 #### 1.2.30 StreamSpecification
 
@@ -1535,7 +1886,7 @@ message StreamSpecification {
     optional int32 expiration_time = 2;
 ```
 
-enable_st ream: Type: bool Description: determines whether stream is enabled for the table. expirat ion_t ime: Type: int32 Description: the expiration time of the table stream.
+`}` enable_st ream: Type: bool Description: determines whether stream is enabled for the table. expirat ion_t ime: Type: int32 Description: the expiration time of the table stream.
 
 #### 1.2.31 TableInBatchGetRowRequest
 
@@ -1558,7 +1909,7 @@ e read data is written to BlockCache.
     optional string end_column = 10;
 ```
 
-t able_name: Type: string Description: the name of the table. primary_key: Type: repeated bytes Required: yes This parameter specifies all primary key columns in the row, including the primary key names and values. The primary key columns are encoded in the PlainBuffer format. t oken: Type: repeated bytes Required: no This parameter specifies the starting position of a wide row in the next read operation. This function is currently unavailable. columns_t o_get : Type: repeated string Description: the names of all columns to be returned from this table. t ime_range: Type: TimeRange Required: At least one of the time_range and max_versions parameters must be specified. This parameter specifies the range of timestamps to read versions of data. Unit: millisecond. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. To query data of a time range, specify start_time and end_time. To query data of a specific timestamp, specify specific_time. Example: If the value of time_range is (100, 200), the timestamp of the returned column data must be within the range of [100, 200). max_versions: Type: int32 Required: At least one of the max_versions and time_range parameters must be specified. This parameter specifies the maximum number of versions of data to be returned. Example: If the value of max_versions is 2, data of a maximum of two versions is returned for each column. cache_blocks: Type: bool Required: no This parameter specifies whether the read data is written to BlockCache. The default value is true. This parameter cannot be set to false. f ilt er: Type: bytes Required: no This parameter specifies the expression of the filtering condition. It indicates the binary data after the filter is serialized in the Protobuf format. st art _column: Type: string Required: no This parameter specifies the first column to be read. It is useful for reading wide rows. The response contains the specified starting column. The column names are sorted lexicographically. Example: If a table contains columns A, B, and C, and the value of start_column is B, the data is read starting from column B. Columns B and C are returned. end_column: Type: string Required: no This parameter specifies the last column to be read. It is useful for reading wide rows. The response does not contain the specified ending column. The column names are sorted lexicographically. Example: If a table contains columns A, B, and C, and the value of end_column is B, the reading stops at column B. Only column A is returned.
+`}` t able_name: Type: string Description: the name of the table. primary_key: Type: repeated bytes Required: yes This parameter specifies all primary key columns in the row, including the primary key names and values. The primary key columns are encoded in the PlainBuffer format. t oken: Type: repeated bytes Required: no This parameter specifies the starting position of a wide row in the next read operation. This function is currently unavailable. columns_t o_get : Type: repeated string Description: the names of all columns to be returned from this table. t ime_range: Type: TimeRange Required: At least one of the time_range and max_versions parameters must be specified. This parameter specifies the range of timestamps to read versions of data. Unit: millisecond. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. To query data of a time range, specify start_time and end_time. To query data of a specific timestamp, specify specific_time. Example: If the value of time_range is (100, 200), the timestamp of the returned column data must be within the range of [100, 200). max_versions: Type: int32 Required: At least one of the max_versions and time_range parameters must be specified. This parameter specifies the maximum number of versions of data to be returned. Example: If the value of max_versions is 2, data of a maximum of two versions is returned for each column. cache_blocks: Type: bool Required: no This parameter specifies whether the read data is written to BlockCache. The default value is true. This parameter cannot be set to false. f ilt er: Type: bytes Required: no This parameter specifies the expression of the filtering condition. It indicates the binary data after the filter is serialized in the Protobuf format. st art _column: Type: string Required: no This parameter specifies the first column to be read. It is useful for reading wide rows. The response contains the specified starting column. The column names are sorted lexicographically. Example: If a table contains columns A, B, and C, and the value of start_column is B, the data is read starting from column B. Columns B and C are returned. end_column: Type: string Required: no This parameter specifies the last column to be read. It is useful for reading wide rows. The response does not contain the specified ending column. The column names are sorted lexicographically. Example: If a table contains columns A, B, and C, and the value of end_column is B, the reading stops at column B. Only column A is returned.
 
 #### 1.2.32 TableInBatchGetRowResponse
 
@@ -1570,7 +1921,7 @@ message TableInBatchGetRowResponse {
  repeated RowInBatchGetRowResponse rows = 2;
 ```
 
-t able_name: Type: string Description: the name of the table. rows: Type: repeated RowInBatchGetRowResponse Description: data of all rows read from the table.
+`}` t able_name: Type: string Description: the name of the table. rows: Type: repeated RowInBatchGetRowResponse Description: data of all rows read from the table.
 
 #### 1.2.33 TableInBatchWriteRowRequest
 
@@ -1582,7 +1933,7 @@ message TableInBatchWriteRowRequest {
  repeated RowInBatchWriteRowRequest rows = 2;
 ```
 
-t able_name: Type: string Description: the name of the table. rows: Type: repeated RowInBatchWriteRowRequest Description: the information of the row to be inserted, updated, or deleted in the table.
+`}` t able_name: Type: string Description: the name of the table. rows: Type: repeated RowInBatchWriteRowRequest Description: the information of the row to be inserted, updated, or deleted in the table.
 
 #### 1.2.34 TableInBatchWriteRowResponse
 
@@ -1596,7 +1947,7 @@ message TableInBatchWriteRowResponse {
  repeated RowInBatchWriteRowResponse delete_rows = 4;
 ```
 
-t able_name: Type: string Description: the name of the table. put _rows: Type: RowInBatchWriteRowResponse Description: the result of the PutRow operation for the table. updat e_rows: Type: RowInBatchWriteRowResponse Description: the result of the UpdateRow operation for the table. delet e_rows: Type: RowInBatchWriteRowResponse Description: the result of the DeleteRow operation for the table.
+`}` t able_name: Type: string Description: the name of the table. put _rows: Type: RowInBatchWriteRowResponse Description: the result of the PutRow operation for the table. updat e_rows: Type: RowInBatchWriteRowResponse Description: the result of the UpdateRow operation for the table. delet e_rows: Type: RowInBatchWriteRowResponse Description: the result of the DeleteRow operation for the table.
 
 #### 1.2.35 TableMeta
 
@@ -1608,7 +1959,7 @@ message TableMeta {
  repeated PrimaryKeySchema primary_key = 2;
 ```
 
-t able_name: Type: string. Description: the name of the table. primary_key: Type: PrimaryKeySchema Description: all primary key columns of the table.
+`}` t able_name: Type: string. Description: the name of the table. primary_key: Type: PrimaryKeySchema Description: all primary key columns of the table.
 
 #### 1.2.36 TableOptions
 
@@ -1622,7 +1973,7 @@ message TableOptions {
 cally modified.
 ```
 
-t ime_t o_live: Type: int32 Description: the retention time of data stored in this table, in seconds. max_versions: Type: int32 Description: the maximum number of versions stored in this table. deviat ion_cell_version_in_sec: Type: int64 Description: the maximum version deviation. This parameter is used to forbid writing data that deviates from the expected output. For example, if the value of deviation_cell_version_in_sec is 1,000 and the current timestamp is 10,000, the allowed timestamp range to be written is [10,000 - 1,000, 10,000 + 1,000].
+`}` t ime_t o_live: Type: int32 Description: the retention time of data stored in this table, in seconds. max_versions: Type: int32 Description: the maximum number of versions stored in this table. deviat ion_cell_version_in_sec: Type: int64 Description: the maximum version deviation. This parameter is used to forbid writing data that deviates from the expected output. For example, if the value of deviation_cell_version_in_sec is 1,000 and the current timestamp is 10,000, the allowed timestamp range to be written is [10,000 - 1,000, 10,000 + 1,000].
 
 #### 1.2.37 TimeRange
 
@@ -1635,7 +1986,7 @@ message TimeRange {
     optional int64 specific_time = 3;
 ```
 
-st art _t ime: Type: int64 Description: the starting timestamp, in milliseconds. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. end_t ime: Type: int64 Description: the ending timestamp, in milliseconds. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. specif ic_t ime: Type: int64 Description: the specific timestamp, in milliseconds. You can set either specific_time to query a specific timestamp, or a combination of start_time and end_time to query a range of timestamps. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX.
+`}` st art _t ime: Type: int64 Description: the starting timestamp, in milliseconds. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. end_t ime: Type: int64 Description: the ending timestamp, in milliseconds. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. specif ic_t ime: Type: int64 Description: the specific timestamp, in milliseconds. You can set either specific_time to query a specific timestamp, or a combination of start_time and end_time to query a range of timestamps. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX.
 
 ## 2 SDK reference
 
@@ -1726,7 +2077,7 @@ et the reserved read/write throughout. You can set the value only to 0 for capac
         client.createTable(request);
 ```
 
-ListTable You can call this operation to query the names of all tables created in the current instance. Examples The following code provides an example on how to query the names of all tables in an instance:
+`}` ListTable You can call this operation to query the names of all tables created in the current instance. Examples The following code provides an example on how to query the names of all tables in an instance:
 
 ```java
 private static void listTable(SyncClient client) {
@@ -1736,7 +2087,7 @@ private static void listTable(SyncClient client) {
         System.out.println(tableName);
 ```
 
-UpdateTable You can call this operation to update the reserved read/write throughput and table options of a table. For more information about the ReservedThroughput and TableOptions parameters, see the CreateTable section. The minimum interval between attempts to modify the value of ReservedThroughput is one minute. Examples The following code provides an example on how to update the timeToLive and MaxVersions values of a table:
+`}` `}` UpdateTable You can call this operation to update the reserved read/write throughput and table options of a table. For more information about the ReservedThroughput and TableOptions parameters, see the CreateTable section. The minimum interval between attempts to modify the value of ReservedThroughput is one minute. Examples The following code provides an example on how to update the timeToLive and MaxVersions values of a table:
 
 ```java
 private static void updateTable(SyncClient client) {
@@ -1759,6 +2110,11 @@ private static void describeTable(SyncClient client) {
     System.out.println("The primary key of the table:");
     for (PrimaryKeySchema primaryKeySchema : tableMeta.getPrimaryKeyList()) {
         System.out.println(primaryKeySchema);
+```
+
+`}`
+
+```java
     TableOptions tableOptions = response.getTableOptions();
     System.out.println("TTL of the table:" + tableOptions.getTimeToLive());
     System.out.println("MaxVersions the table:" + tableOptions.getMaxVersions());
@@ -1770,13 +2126,15 @@ ails();
             + reservedThroughputDetails.getCapacityUnit().getWriteCapacityUnit());
 ```
 
-DeleteTable You can call this operation to delete a specified table from the current instance. Examples The following code provides an example on how to delete a specified table from the current instance:
+`}` DeleteTable You can call this operation to delete a specified table from the current instance. Examples The following code provides an example on how to delete a specified table from the current instance:
 
 ```java
 private static void deleteTable(SyncClient client) {
     DeleteTableRequest request = new DeleteTableRequest(TABLE_NAME);
     client.deleteTable(request);
 ```
+
+`}`
 
 ##### 2.1.4.2 Single-row operations
 
@@ -1793,10 +2151,15 @@ Value));
     // Add attribute columns.
     for (int i = 0; i < 10; i++) {
         rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-Example 2 The following code provides an example on how to write a row that contains 10 attribute columns and write three versions of data for each column. The version number (timestamp) is specified by the client.
+`}` Example 2 The following code provides an example on how to write a row that contains 10 attribute columns and write three versions of data for each column. The version number (timestamp) is specified by the client.
 
 ```java
 private static void putRow(SyncClient client, String pkValue) {
@@ -1813,13 +2176,13 @@ Value));
             rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(j), ts + j)
 ```
 
-);
+); `}` `}`
 
 ```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-Example 3 The following code provides an example on how to write data when the target row does not exist:
+`}` Example 3 The following code provides an example on how to write data when the target row does not exist:
 
 ```java
 private static void putRow(SyncClient client, String pkValue) {
@@ -1838,13 +2201,13 @@ Value));
             rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(j), ts + j)
 ```
 
-);
+); `}` `}`
 
 ```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-Example 4 The following code provides an example on how to write data when the target row exists and the value of Col0 is greater than 100:
+`}` Example 4 The following code provides an example on how to write data when the target row exists and the value of Col0 is greater than 100:
 
 ```java
 private static void putRow(SyncClient client, String pkValue) {
@@ -1868,13 +2231,13 @@ target row is greater than 100.
             rowPutChange.addColumn(new Column("Col" + i, ColumnValue.fromLong(j), ts + j)
 ```
 
-);
+); `}` `}`
 
 ```
     client.putRow(new PutRowRequest(rowPutChange));
 ```
 
-GetRow You can call this operation to read a single row of data. The following table describes the parameter you can use for this operation.
+`}` GetRow You can call this operation to read a single row of data. The following table describes the parameter you can use for this operation.
 
 | Parameter | Description |
 |---|---|
@@ -1911,7 +2274,7 @@ aryKey);
             System.out.println(row);
 ```
 
-Example 2 The following code provides an example on how to set a filter:
+`}` Example 2 The following code provides an example on how to set a filter:
 
 ```java
         private static void getRow(SyncClient client, String pkValue) {
@@ -1940,7 +2303,7 @@ aryKey);
             System.out.println(row);
 ```
 
-UpdateRow You can call this operation to update a single row of data. If the target row does not exist, a new row is added. The update operations include writing a column, deleting a column, and deleting a version of data in a column. When you perform UpdateRow, you can use conditional update to configure conditions for the existence of the row to update or values in certain columns of the existing row. For more information, see Conditional update. Example 1 The following code provides an example on how to update several columns, delete the specified version of data in a column, and delete the specified column:
+`}` UpdateRow You can call this operation to update a single row of data. If the target row does not exist, a new row is added. The update operations include writing a column, deleting a column, and deleting a version of data in a column. When you perform UpdateRow, you can use conditional update to configure conditions for the existence of the row to update or values in certain columns of the existing row. For more information, see Conditional update. Example 1 The following code provides an example on how to update several columns, delete the specified version of data in a column, and delete the specified column:
 
 ```java
         private static void updateRow(SyncClient client, String pkValue) {
@@ -1959,6 +2322,11 @@ tring(pkValue));
             // Update columns.
             for (int i = 0; i < 10; i++) {
                 rowUpdateChange.put(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
             // Delete a specified version of data in the specified column.
             rowUpdateChange.deleteColumn("Col10", 1465373223000L);
             // Delete the specified column.
@@ -1966,7 +2334,7 @@ tring(pkValue));
             client.updateRow(new UpdateRowRequest(rowUpdateChange));
 ```
 
-Example 2 The following code provides an example on how to configure update conditions:
+`}` Example 2 The following code provides an example on how to configure update conditions:
 
 ```java
         private static void updateRow(SyncClient client, String pkValue) {
@@ -1992,6 +2360,11 @@ fromLong(100)));
             // Update columns.
             for (int i = 0; i < 10; i++) {
                 rowUpdateChange.put(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
             // Delete a specified version of data in the specified column.
             rowUpdateChange.deleteColumn("Col10", 1465373223000L);
             // Delete the specified column.
@@ -1999,7 +2372,7 @@ fromLong(100)));
             client.updateRow(new UpdateRowRequest(rowUpdateChange));
 ```
 
-DeleteRow You can call this operation to delete a row. When you perform DeleteRow, you can use conditional update to configure conditions for the existence of the row to delete or values in certain columns of the existing row. For more information, see Conditional update. Example 1 The following code provides an example on how to delete a row:
+`}` DeleteRow You can call this operation to delete a row. When you perform DeleteRow, you can use conditional update to configure conditions for the existence of the row to delete or values in certain columns of the existing row. For more information, see Conditional update. Example 1 The following code provides an example on how to delete a row:
 
 ```java
         private static void deleteRow(SyncClient client, String pkValue) {
@@ -2018,7 +2391,7 @@ tring(pkValue));
             client.deleteRow(new DeleteRowRequest(rowDeleteChange));
 ```
 
-Example 2 The following code provides an example on how to set deletion conditions:
+`}` Example 2 The following code provides an example on how to set deletion conditions:
 
 ```java
         private static void deleteRow(SyncClient client, String pkValue) {
@@ -2048,6 +2421,8 @@ fromLong(100)));
             client.deleteRow(new DeleteRowRequest(rowDeleteChange));
 ```
 
+`}`
+
 ##### 2.1.4.3 Multi-row operations
 
 Tablestore SDK for Java provides multi-row operations such as BatchGetRow, BatchWriteRow, GetRange, and createRangeIterator. BatchGetRow You can call this operation to read data from multiple rows by sending a single request. The parameters are the same as those of the GetRow operation. Note that BatchGetRow uses the same parameter configurations for all rows. For example, if ColumnsToGet is set to colA, only the value of colA is read for all the rows. Similar to the use of the BatchWriteRow operation, you must check the response when you use the BatchGetRow operation. If the operation fails for some rows, an exception may not occur, but information about the failed rows is stored in BatchGetRowResponse. You can use the BatchGetRowResponse#getFailedRows method to query information about the failed rows. Use the BatchGetRowResponse#isAllSucceed method to determine whether all rows is obtained. Examples The following code provides an example on how to read 10 rows of data, and configure the version conditions, columns to read, and filters:
@@ -2064,6 +2439,11 @@ lder();
 mString("pk" + i));
                 PrimaryKey primaryKey = primaryKeyBuilder.build();
                 multiRowQueryCriteria.addRow(primaryKey);
+```
+
+`}`
+
+```
             // Add conditions.
             multiRowQueryCriteria.setMaxVersions(1);
             multiRowQueryCriteria.addColumnsToGet("Col0");
@@ -2100,6 +2480,11 @@ dRows()) {
                     System.out.println("Failed rows:" + batchGetRowRequest.getPrimaryKey(ro
 wResult.getTableName(), rowResult.getIndex()));
                     System.out.println("Cause of failure:" + rowResult.getError());
+```
+
+`}`
+
+```
                 /**
                  * You can use the createRequestForRetry method to construct another reques
 t to retry failed rows. Only the retry request is constructed here.
@@ -2114,7 +2499,7 @@ Java as the retry method. This feature allows you to retry failed rows after bat
 batchGetRowResponse.getFailedRows());
 ```
 
-BatchWriteRow You can call this operation to write data to multiple rows by sending a single request. The write operations include PutRow, UpdateRow, and DeleteRow. This operation also allows you to write data to multiple tables at a time. The process to create a BatchWriteRow operation is the same as that to create a PutRow, UpdateRow, or DeleteRow operation. You can also set update conditions. When you call the BatchWriteRow operation, you must check the response. When multiple rows are written, some rows may fail to be written. If the operation fails for some rows, an exception may not occur, but information about the index and error messages of the failed rows is stored in BatchWriteRowResponse. You can use the isAllSucceed method in BatchWriteRowResponse to determine whether all rows are written. We recommend that you check the response in case of failed operations. In some situations, exceptions may occur when you call the BatchWriteRow operation. For example, if the server detects incorrect parameters during some operations, a parameter exception may occur when none of the operations are completed for the request. Examples The following code provides an example of how to send a single BatchWriteRow request, which includes two PutRow operations, one UpdateRow operation, and one DeleteRow operation.
+`}` `}` BatchWriteRow You can call this operation to write data to multiple rows by sending a single request. The write operations include PutRow, UpdateRow, and DeleteRow. This operation also allows you to write data to multiple tables at a time. The process to create a BatchWriteRow operation is the same as that to create a PutRow, UpdateRow, or DeleteRow operation. You can also set update conditions. When you call the BatchWriteRow operation, you must check the response. When multiple rows are written, some rows may fail to be written. If the operation fails for some rows, an exception may not occur, but information about the index and error messages of the failed rows is stored in BatchWriteRowResponse. You can use the isAllSucceed method in BatchWriteRowResponse to determine whether all rows are written. We recommend that you check the response in case of failed operations. In some situations, exceptions may occur when you call the BatchWriteRow operation. For example, if the server detects incorrect parameters during some operations, a parameter exception may occur when none of the operations are completed for the request. Examples The following code provides an example of how to send a single BatchWriteRow request, which includes two PutRow operations, one UpdateRow operation, and one DeleteRow operation.
 
 ```java
         private static void batchWriteRow(SyncClient client) {
@@ -2127,6 +2512,11 @@ BatchWriteRow You can call this operation to write data to multiple rows by send
             // Add columns.
             for (int i = 0; i < 10; i++) {
                 rowPutChange1.addColumn(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
             // Add rowPutChange1 to the batch operation.
             batchWriteRowRequest.addRowChange(rowPutChange1);
             // Construct rowPutChange2.
@@ -2137,6 +2527,11 @@ BatchWriteRow You can call this operation to write data to multiple rows by send
             // Add columns.
             for (int i = 0; i < 10; i++) {
                 rowPutChange2.addColumn(new Column("Col" + i, ColumnValue.fromLong(i)));
+```
+
+`}`
+
+```
             // Add rowPutChange2 to the batch operation.
             batchWriteRowRequest.addRowChange(rowPutChange2);
             // Construct rowUpdateChange.
@@ -2175,6 +2570,11 @@ ild());
                     System.out.println("Failed rows:" + batchWriteRowRequest.getRowChange(r
 owResult.getTableName(), rowResult.getIndex()).getPrimaryKey());
                     System.out.println("Cause of failure:" + rowResult.getError());
+```
+
+`}`
+
+```
                 /**
                  * You can use the createRequestForRetry method to construct another reques
 t to retry failed rows. Only the retry request is constructed here.
@@ -2189,7 +2589,7 @@ Java as the retry method. This feature allows you to retry failed rows after bat
 try(response.getFailedRows());
 ```
 
-GetRange You can call this operation to read data within a range. In Tablestore tables, all rows are sorted by primary key. The primary key of a table sequentially consists of all primary key columns. Therefore, do not assume that the rows are sorted based on a certain primary key column. The GetRange operation allows you to read data in a forward or backward direction within a specified range. You can also specify the number of rows to read. If the range is large and the number of scanned rows or the volume of data exceeds the limit, the scan stops and the read rows and the next primary key are returned. If the rows are not all read, you can initiate a request to start from where the last operation left off and read the remaining rows based on the next primary key returned by the previous operation. The following table describes the parameters of GetRange requests.
+`}` `}` GetRange You can call this operation to read data within a range. In Tablestore tables, all rows are sorted by primary key. The primary key of a table sequentially consists of all primary key columns. Therefore, do not assume that the rows are sorted based on a certain primary key column. The GetRange operation allows you to read data in a forward or backward direction within a specified range. You can also specify the number of rows to read. If the range is large and the number of scanned rows or the volume of data exceeds the limit, the scan stops and the read rows and the next primary key are returned. If the rows are not all read, you can initiate a request to start from where the last operation left off and read the remaining rows based on the next primary key returned by the previous operation. The following table describes the parameters of GetRange requests.
 
 | Parameter | Description |
 |---|---|
@@ -2227,6 +2627,11 @@ ing(endPkValue));
 geRowQueryCriteria));
                 for (Row row : getRangeResponse.getRows()) {
                     System.out.println(row);
+```
+
+`}`
+
+```
                 // If the NextStartPrimaryKey value is not null, continue the read operatio
 ```
 
@@ -2240,7 +2645,7 @@ extStartPrimaryKey());
                     break;
 ```
 
-createRangeIterator You can call this operation to read data by iteration. Examples
+`}` `}` `}` createRangeIterator You can call this operation to read data by iteration. Examples
 
 ```java
         private static void getRangeByIterator(SyncClient client, String startPkValue, Stri
@@ -2266,6 +2671,8 @@ e:");
                 Row row = iterator.next();
                 System.out.println(row);
 ```
+
+`}` `}`
 
 ##### 2.1.4.4 Auto-increment function of the primary key column
 
@@ -2302,6 +2709,7 @@ ER, PrimaryKeyOption.AUTO_INCREMENT));
         client.createTable(request);
 ```
 
+`}`
 2. Write data
 When you write data to a table, you do not need to specify a value for the auto-increment primary key column. Instead, you can set the value in the auto-increment primary key column to AUTO_INCREMENT.
 
@@ -2330,6 +2738,11 @@ ult. If ReturnType is not set, no result is returned by default.
         Row returnRow = response.getRow();
         if (returnRow != null) {
             System.out.println("PrimaryKey:" + returnRow.getPrimaryKey().toString());
+```
+
+`}`
+
+```java
         // Display the consumed capacity units (CUs).
         CapacityUnit  cu = response.getConsumedCapacity().getCapacityUnit();
         System.out.println("Read CapacityUnit:" + cu.getReadCapacityUnit());
@@ -2436,6 +2849,8 @@ nValueCondition.CompareOperator.EQUAL, ColumnValue.fromLong(col0Value));
          System.out.println(ex.toString());
 ```
 
+`}` `}`
+
 ##### 2.1.4.6 Filters
 
 Tablestore filters are used to filter the query results on the server side. The server returns only the rows or columns that match the filter conditions. Filters can be used for GetRow, BatchGetRow, and GetRange operations. Tablestore supports only SingleColumnValueFilter and CompositeColumnValueFilter, which are used to determine whether to filter out a row based on reference column values. SingleColumnValueFilter can be used to determine whether to filter out of a row based on a single reference column value. CompositeColumnValueFilter can be used to determine whether to filter out of a row based on the combination of multiple reference column values. Note that filters are used to filter the read data. Therefore, the reference columns used by SingleColumnValueFilter or CompositeColumnValueFilter must be included in the read data. If the data to read does not contain the reference columns, filters cannot obtain the values in the reference columns. Examples The following code provides an example on how to construct a SingleColumnValueFilter:
@@ -2506,7 +2921,7 @@ xMetas); // Create an index table when you create a table.
         client.createTable(request);
 ```
 
-Create a global secondary index for an existing table Not e You can set the IncludeBaseData parameter in CreateInexRequest to specify whether the index table includes the existing data in the table. When the IncludeBaseData parameter in CreateInexRequest is set to true, the index table includes the existing data. When the value is false, the index table does not include the existing data.
+`}` Create a global secondary index for an existing table Not e You can set the IncludeBaseData parameter in CreateInexRequest to specify whether the index table includes the existing data in the table. When the IncludeBaseData parameter in CreateInexRequest is set to true, the index table includes the existing data. When the value is false, the index table does not include the existing data.
 
 ```java
 private static void createIndex(SyncClient client) {
@@ -2530,7 +2945,7 @@ nized to the index table. Then you can query all data from the index table. The 
     client.createIndex(request); // Create the index table.
 ```
 
-Query data from a global secondary index If the index table includes the attribute columns to return, you can query data from the index table. If the index table does not include the attribute columns to return, the base table is queried. Query data from the index table when the index table includes the attribute columns to return.
+`}` Query data from a global secondary index If the index table includes the attribute columns to return, you can query data from the index table. If the index table does not include the attribute columns to return, the base table is queried. Query data from the index table when the index table includes the attribute columns to return.
 
 ```java
 private static void scanFromIndex(SyncClient client) {
@@ -2566,6 +2981,11 @@ N); // Specify the minimum value for a primary key column.
 ueryCriteria));
         for (Row row : getRangeResponse.getRows()) {
             System.out.println(row);
+```
+
+`}`
+
+```
         // If the nextStartPrimaryKey value is not null, continue to read data.
         if (getRangeResponse.getNextStartPrimaryKey() != null) {
             rangeRowQueryCriteria.setInclusiveStartPrimaryKey(getRangeResponse.getNextSta
@@ -2574,7 +2994,7 @@ rtPrimaryKey());
             break;
 ```
 
-Query data from the base table when the index table does not include the attribute columns to return.
+`}` `}` `}` Query data from the base table when the index table does not include the attribute columns to return.
 
 ```java
 private static void scanFromIndex(SyncClient client) {
@@ -2632,6 +3052,11 @@ tribute column from the base table.
             GetRowResponse getRowResponse = client.getRow(new GetRowRequest(criteria));
             Row mainTableRow = getRowResponse.getRow();
             System.out.println(row);
+```
+
+`}`
+
+```
         // If the nextStartPrimaryKey value is not null, continue to read data.
         if (getRangeResponse.getNextStartPrimaryKey() != null) {
             rangeRowQueryCriteria.setInclusiveStartPrimaryKey(getRangeResponse.getNextSta
@@ -2640,7 +3065,7 @@ rtPrimaryKey());
             break;
 ```
 
-Delete a global secondary index Delete an index table.
+`}` `}` `}` Delete a global secondary index Delete an index table.
 
 ```java
 private static void deleteIndex(SyncClient client) {
@@ -2648,6 +3073,8 @@ private static void deleteIndex(SyncClient client) {
 the name of the index table that you want to delete and the name of the corresponding base table.
     client.deleteIndex(request); // Delete the index table.
 ```
+
+`}`
 
 ##### 2.1.4.8 Tunnel Service
 
@@ -2684,9 +3111,19 @@ Create a data table for testing or prepare an existing data table before you cre
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+```
+
+`}` `}`
+
+```java
     @Override
     public void shutdown() {
         System.out.println("Mock shutdown");
+```
+
+`}` `}`
+
+```
 // By default, the system starts a thread pool to read and process data based on Tunnel WorkerConfig. A single server starts multiple TunnelWorkers. // We recommend that TunnelWorkers share the same TunnelWorkerConfig. A custom TunnelWo rkerConfig provides more advanced parameters than the default one. TunnelWorkerConfig config = new TunnelWorkerConfig(new SimpleProcessor()); // Configure TunnelWorkers to start automatic data processing. TunnelWorker worker = new TunnelWorker(tunnelId, tunnelClient, config); try {
     worker.connectAndWorking();
 } catch (Exception e) {
@@ -2695,7 +3132,7 @@ Create a data table for testing or prepare an existing data table before you cre
     tunnelClient.shutdown();
 ```
 
-Usage notes By default, the system starts a thread pool to read and process data based on TunnelWorkerConfig. A single server starts multiple TunnelWorkers. We recommend that TunnelWorkers share the same TunnelWorkerConfig. If you create a differential tunnel to consume full and incremental data, the incremental data logs of the tunnel are retained for up to seven days. The specific expiration time of incremental data logs is consistent with that of Stream logs of the data table. If the tunnel does not consume all full data within seven days, an OTSTunnelExpired error occurs when the tunnel starts to consume incremental data. As a result, the tunnel cannot consume incremental data. A TunnelWorker requires time to warm up for initialization. The heartbeatIntervalInSec parameter in TunnelWorkerConfig specifies the time that is required for the TunnelWorker to warm up. You can use the setHeartbeatIntervalInSec method in TunnelWorkerConfig to set this parameter. The default value is 30s. The minimum value is 5s. For more information, see Configure tunnel clients. When a tunnel switches from a full channel to an incremental channel, the full channel is closed and the incremental channel is started. This process requires a period of time for initialization. The heartbeatIntervalInSec parameter in TunnelWorkerConfig specifies the time required for initialization. When the TunnelWorker client is shut down due to an unexpected exit or manual termination, the TunnelWorker uses one of the following methods to automatically reclaim resources: 1. Release the thread pool. 2. Automatically call the shutdown method that you have registered for channels. 3. Shut down the tunnel. Sample code
+`}` Usage notes By default, the system starts a thread pool to read and process data based on TunnelWorkerConfig. A single server starts multiple TunnelWorkers. We recommend that TunnelWorkers share the same TunnelWorkerConfig. If you create a differential tunnel to consume full and incremental data, the incremental data logs of the tunnel are retained for up to seven days. The specific expiration time of incremental data logs is consistent with that of Stream logs of the data table. If the tunnel does not consume all full data within seven days, an OTSTunnelExpired error occurs when the tunnel starts to consume incremental data. As a result, the tunnel cannot consume incremental data. A TunnelWorker requires time to warm up for initialization. The heartbeatIntervalInSec parameter in TunnelWorkerConfig specifies the time that is required for the TunnelWorker to warm up. You can use the setHeartbeatIntervalInSec method in TunnelWorkerConfig to set this parameter. The default value is 30s. The minimum value is 5s. For more information, see Configure tunnel clients. When a tunnel switches from a full channel to an incremental channel, the full channel is closed and the incremental channel is started. This process requires a period of time for initialization. The heartbeatIntervalInSec parameter in TunnelWorkerConfig specifies the time required for initialization. When the TunnelWorker client is shut down due to an unexpected exit or manual termination, the TunnelWorker uses one of the following methods to automatically reclaim resources: 1. Release the thread pool. 2. Automatically call the shutdown method that you have registered for channels. 3. Shut down the tunnel. Sample code
 
 ```java
 import com.alicloud.openservices.tablestore.TunnelClient; import com.alicloud.openservices.tablestore.model.tunnel.CreateTunnelRequest; import com.alicloud.openservices.tablestore.model.tunnel.CreateTunnelResponse; import com.alicloud.openservices.tablestore.model.tunnel.TunnelType; import com.alicloud.openservices.tablestore.tunnel.worker.IChannelProcessor; import com.alicloud.openservices.tablestore.tunnel.worker.ProcessRecordsInput; import com.alicloud.openservices.tablestore.tunnel.worker.TunnelWorker; import com.alicloud.openservices.tablestore.tunnel.worker.TunnelWorkerConfig; public class TunnelQuickStart {
@@ -2712,9 +3149,19 @@ import com.alicloud.openservices.tablestore.TunnelClient; import com.alicloud.op
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         @Override
         public void shutdown() {
             System.out.println("Mock shutdown");
+```
+
+`}` `}`
+
+```
     public static void main(String[] args) throws Exception {
         //1.Initialize a tunnel client.
         final String endPoint = "";
@@ -2751,6 +3198,8 @@ ne.
             worker.shutdown();
             tunnelClient.shutdown();
 ```
+
+`}` `}` `}`
 
 ###### 2.1.4.8.2 Configure tunnel clients
 
@@ -2808,6 +3257,8 @@ Example
     System.out.println("TunnelId: " + resp.getTunnelId());
 ```
 
+`}`
+
 ###### 2.1.4.8.4 Query the tunnel information about a data table
 
 table You can call this operation to query the tunnel information about a specified data table. Request parameters
@@ -2849,6 +3300,8 @@ rocessBaseData, and ProcessStream.
 ical support through DingTalk.
         System.out.println("\tExpired: " + info.isExpired());
 ```
+
+`}` `}`
 
 ###### 2.1.4.8.5 Query the information about a tunnel
 
@@ -2897,6 +3350,8 @@ of the client and a random string.
         System.out.println("\tChannelCount: " + ci.getChannelCount());
 ```
 
+`}` `}`
+
 ###### 2.1.4.8.6 Delete tunnels
 
 You can call the DeleteTunnel operation to delete a tunnel from a data table by specifying the names of the data table and tunnel. Request parameters
@@ -2926,6 +3381,8 @@ private static void deleteTunnel(TunnelClient client, String tableName, String t
     DeleteTunnelResponse resp = client.deleteTunnel(request);
     System.out.println("RequestId: " + resp.getRequestId());
 ```
+
+`}`
 
 #### 2.1.5 Error handling
 
@@ -3352,6 +3809,11 @@ ile and age columns are deleted.
         'PUT' : [('name','David'), ('address','Hongkong')],
         'DELETE' : [('address', None, 1488436949003)],
         'DELETE_ALL' : [('mobile'), ('age')],
+```
+
+`}`
+
+```bash
     row = Row(primary_key, update_of_attribute_columns)
     # The condition for row check is that the row existence is ignored. No matter whether
 the row exists, the row is updated.
@@ -3811,7 +4273,7 @@ mary key column is also the partition key.
     fmt.Println("Create table finished")
 ```
 
-For the detailed sample code, visit CreateTable@GitHub. ListTable You can call this operation to obtain the names of all tables created in the current instance. API operation
+`}` For the detailed sample code, visit CreateTable@GitHub. ListTable You can call this operation to obtain the names of all tables created in the current instance. API operation
 
 ```
 // List all tables. If the operation succeeds, names of all tables are returned. ListTable() (*ListTableResponse, error)
@@ -3828,7 +4290,7 @@ tables, err := client.ListTable() if err != nil {
         fmt.Println("TableName: ", table)
 ```
 
-For the detailed sample code, visit ListTable@GitHub. UpdateTable You can use the UpdateTable API to update the reserved read/write throughput settings of the specified table. API operation
+`}` `}` For the detailed sample code, visit ListTable@GitHub. UpdateTable You can use the UpdateTable API to update the reserved read/write throughput settings of the specified table. API operation
 
 ```
 // Update the configurations of tableoptions and reservedthroughput for a table. UpdateTable(request *UpdateTableRequest) (*UpdateTableResponse, error)
@@ -3843,7 +4305,7 @@ updateTableReq := new(tablestore.UpdateTableRequest) updateTableReq.TableName = 
     fmt.Println("update finished")
 ```
 
-For the detailed sample code, visit UpdateTable@GitHub. DescribeTable You can call this operation to query the structure information and the reserved read/write throughput settings of a table. API operation
+`}` For the detailed sample code, visit UpdateTable@GitHub. DescribeTable You can call this operation to query the structure information and the reserved read/write throughput settings of a table. API operation
 
 ```
 // Query the description of a table by using the table name. DescribeTable(request *DescribeTableRequest) (*DescribeTableResponse, error)
@@ -3874,7 +4336,7 @@ deleteReq := new(tablestore.DeleteTableRequest) deleteReq.TableName = tableName 
     fmt.Println("Delete table finished")
 ```
 
-For the detailed sample code, visit DeleteTable@GitHub.
+`}` For the detailed sample code, visit DeleteTable@GitHub.
 
 ##### 2.3.4.2 Single-row operations
 
@@ -3910,7 +4372,7 @@ Examples The following code provides an example on how to insert a row of data: 
         fmt.Println("putrow finished")
 ```
 
-For the detailed sample code, visit PutRow@GitHub. GetRow You can call this operation to read a single row of data based on a specified primary key.
+`}` For the detailed sample code, visit PutRow@GitHub. GetRow You can call this operation to read a single row of data based on a specified primary key.
 
 ```
     //Return a row of data from a table.
@@ -3947,7 +4409,7 @@ getRowRequest := new(tablestore.GetRowRequest)
 umns[0].Value)
 ```
 
-For the detailed sample code, visit GetRow@GitHub. UpdateRow You can call this operation to update the data of a specified row. If the row does not exist, a new row is added. If the row exists, the values of the specified columns are added, modified, or deleted based on the request content. API operation
+`}` For the detailed sample code, visit GetRow@GitHub. UpdateRow You can call this operation to update the data of a specified row. If the row does not exist, a new row is added. If the row exists, the values of the specified columns are added, modified, or deleted based on the request content. API operation
 
 ```
     // Update a row of data in a table.
@@ -3985,7 +4447,7 @@ Examples The following code provides an example on how to update the data of a s
         fmt.Println("update row finished")
 ```
 
-For the detailed sample code, visit UpdateRow@GitHub. DeleteRow You can call this operation to delete data you no longer need. API operation
+`}` For the detailed sample code, visit UpdateRow@GitHub. DeleteRow You can call this operation to delete data you no longer need. API operation
 
 ```
     // Delete a row of data from a table.
@@ -4019,7 +4481,7 @@ XIST)
         fmt.Println("delete row finished")
 ```
 
-For the detailed sample code, visit DeleteRow@GitHub.
+`}` For the detailed sample code, visit DeleteRow@GitHub.
 
 ##### 2.3.4.3 Multi-row operations
 
@@ -4049,13 +4511,18 @@ batchGetReq := &tablestore.BatchGetRowRequest{} mqCriteria := &tablestore.MultiR
     pkToGet.AddPrimaryKeyColumn("pk3", []byte("pk3"))
     mqCriteria.AddRow(pkToGet)
     mqCriteria.MaxVersion = 1
+```
+
+`}`
+
+```
 mqCriteria.TableName = tableName batchGetReq.MultiRowQueryCriteria = append(batchGetReq.MultiRowQueryCriteria, mqCriteria) batchGetResponse, err := client.BatchGetRow(batchGetReq) if err != nil {
     fmt.Println("batachget failed with error:", err)
 } else {
     fmt.Println("batchget finished")
 ```
 
-For the detailed sample code, visit BatchGetRow@GitHub. BatchWriteRow You can call this operation to simultaneously insert, modify, or delete multiple rows of data in one or more tables. The BatchWriteRow operation is a set of multiple PutRow, UpdateRow, and DeleteRow operations. The execution, returning of results, and CU consumption of each individual operation are carried out independently. API operation
+`}` For the detailed sample code, visit BatchGetRow@GitHub. BatchWriteRow You can call this operation to simultaneously insert, modify, or delete multiple rows of data in one or more tables. The BatchWriteRow operation is a set of multiple PutRow, UpdateRow, and DeleteRow operations. The execution, returning of results, and CU consumption of each individual operation are carried out independently. API operation
 
 ```
     // Add, delete, or modify multiple rows of data in multiple tables.
@@ -4086,6 +4553,11 @@ Examples The following code provides an example on how to write 100 rows of data
         putRowChange.AddColumn("col1", "fixvalue")
         putRowChange.SetCondition(tablestore.RowExistenceExpectation_IGNORE)
         batchWriteReq.AddRowChange(putRowChange)
+```
+
+`}`
+
+```
     response, err := client.BatchWriteRow(batchWriteReq)
     if err != nil {
         fmt.Println("batch request failed with:", response)
@@ -4093,7 +4565,7 @@ Examples The following code provides an example on how to write 100 rows of data
         fmt.Println("batch write row finished")
 ```
 
-For the detailed sample code, visit BatchWriteRow@GitHub. GetRange You can call this operation to read data within a specified primary key range. API operation
+`}` For the detailed sample code, visit BatchWriteRow@GitHub. GetRange You can call this operation to read data within a specified primary key range. API operation
 
 ```
     // Query multiple rows of data within a specified range in a table.
@@ -4134,9 +4606,19 @@ getRangeRequest := &tablestore.GetRangeRequest{}
     for {
         if err != nil {
             fmt.Println("get range failed with error:", err)
+```
+
+`}`
+
+```
         for _, row := range getRangeResp.Rows {
             fmt.Println("range get row with key", row.PrimaryKey.PrimaryKeys[0].Value, ro
 w.PrimaryKey.PrimaryKeys[1].Value, row.PrimaryKey.PrimaryKeys[2].Value)
+```
+
+`}`
+
+```
         if getRangeResp.NextStartPrimaryKey == nil {
             break
         } else {
@@ -4145,7 +4627,17 @@ alue, getRangeResp.NextStartPrimaryKey.PrimaryKeys[1].Value, getRangeResp.NextSt
             getRangeRequest.RangeRowQueryCriteria.StartPrimaryKey = getRangeResp.NextStar
 tPrimaryKey
             getRangeResp, err = client.GetRange(getRangeRequest)
+```
+
+`}`
+
+```
         fmt.Println("continue to query rows")
+```
+
+`}`
+
+```
     fmt.Println("putrow finished")
 ```
 
@@ -4186,8 +4678,18 @@ req := &tunnel.CreateTunnelRequest{
    TableName:  "testTable",
    TunnelName: "testTunnel",
    Type:       tunnel.TunnelTypeBaseStream, // Create a differential tunnel.
+```
+
+`}`
+
+```
 resp, err := tunnelClient.CreateTunnel(req) if err != nil {
    log.Fatal("create test tunnel failed", err)
+```
+
+`}`
+
+```
 log.Println("tunnel id is", resp.TunnelId)
 ```
 
@@ -4203,15 +4705,25 @@ log.Println("tunnel id is", resp.TunnelId)
     fmt.Println("user-defined information", ctx.CustomValue)
     for _, rec := range records {
         fmt.Println("tunnel record detail:", rec.String())
+```
+
+`}`
+
+```
     fmt.Println("a round of records consumption finished")
     return nil
+```
+
+`}`
+
+```
 // Configure the callback function in the SimpleProcessFactory operation and configure the TunnelWorkerConfig operation. workConfig := &tunnel.TunnelWorkerConfig{
    ProcessorFactory: &tunnel.SimpleProcessFactory{
       CustomValue: "user custom interface{} value",
       ProcessFunc: exampleConsumeFunction,
 ```
 
-`},`
+`},` `}`
 
 ```
 // Use TunnelDaemon to continuously consume data by using the specified tunnel. daemon := tunnel.NewTunnelDaemon(tunnelClient, tunnelId, workConfig) log.Fatal(daemon.Run())
@@ -4224,8 +4736,18 @@ req := &tunnel.CreateTunnelRequest{
    TableName:  "testTable",
    TunnelName: "testTunnel",
    Type:       tunnel.TunnelTypeBaseStream, // Create a differential tunnel.
+```
+
+`}`
+
+```
 resp, err := tunnelClient.CreateTunnel(req) if err != nil {
    log.Fatal("create test tunnel failed", err)
+```
+
+`}`
+
+```
 log.Println("tunnel id is", resp.TunnelId)
 ```
 
@@ -4235,8 +4757,18 @@ Query the information about a tunnel
 req := &tunnel.DescribeTunnelRequest{
    TableName:  "testTable",
    TunnelName: "testTunnel",
+```
+
+`}`
+
+```
 resp, err := tunnelClient.DescribeTunnel(req) if err != nil {
    log.Fatal("describe test tunnel failed", err)
+```
+
+`}`
+
+```
 log.Println("tunnel id is", resp.Tunnel.TunnelId)
 ```
 
@@ -4246,9 +4778,16 @@ Delete a tunnel
 req := &tunnel.DeleteTunnelRequest {
    TableName: "testTable",
    TunnelName: "testTunnel",
+```
+
+`}`
+
+```
 _, err := tunnelClient.DeleteTunnel(req) if err != nil {
    log.Fatal("delete test tunnel failed", err)
 ```
+
+`}`
 
 ###### 2.3.4.4.3 Configuration items
 
@@ -4264,7 +4803,7 @@ var DefaultTunnelConfig = &TunnelConfig{
       Transport:           http.DefaultTransport,
 ```
 
-Worker The TunnelWorkerConfig operation contains the configurations that are required for a worker. The ProcessorFactory field is required. If other parameters are not specified, the default values are retained.
+`}` Worker The TunnelWorkerConfig operation contains the configurations that are required for a worker. The ProcessorFactory field is required. If other parameters are not specified, the default values are retained.
 
 ```
 type TunnelWorkerConfig struct {
@@ -4306,7 +4845,7 @@ lize the logger.
    Logger *zap.Logger
 ```
 
-Log management The following examples show the default configurations of logs and log rotation: Default configurations of logs
+`}` Log management The following examples show the default configurations of logs and log rotation: Default configurations of logs
 
 ```
 // By default, DefaultLogConfig is used in the TunnelWorkerConfig and SimpleProcessFactor y operations to configure logs. var DefaultLogConfig = zap.Config{
@@ -4364,7 +4903,7 @@ message Error {
     optional string tunnel_id = 3;
 ```
 
-Error codes When you use Tablestore SDK for Go, you need to handle only error codes that return error messages. The SDK automatically processes other error codes or retries the requests. We recommend that you handle errors based on the processing logic of the error code.
+`}` Error codes When you use Tablestore SDK for Go, you need to handle only error codes that return error messages. The SDK automatically processes other error codes or retries the requests. We recommend that you handle errors based on the processing logic of the error code.
 
 | HTTP status code | Error code | Description | Processing logic |
 |---|---|---|---|
@@ -4467,7 +5006,7 @@ var client = require('./client'); var params = {
         type: 'INTEGER'
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```
   reservedThroughput: {
@@ -4476,7 +5015,7 @@ var client = require('./client'); var params = {
       write: 0
 ```
 
-`},`
+`}` `},`
 
 ```
   tableOptions: {
@@ -4486,13 +5025,18 @@ ates that the data never expires. If you set the validity period to a year, the 
 umn. A value of 1 indicates that only the latest version is saved in each column.
 ```
 
-};
+`}` };
 
 ```
 client.createTable(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -4517,6 +5061,11 @@ var client = require('./client'); client.listTable({}, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -4543,13 +5092,18 @@ var client = require('./client'); var params = {
         maxVersions: 5,
 ```
 
-};
+`}` };
 
 ```
 client.updateTable(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -4582,6 +5136,11 @@ client.describeTable(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -4613,6 +5172,11 @@ client.deleteTable(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -4663,6 +5227,11 @@ client.putRow(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -4697,6 +5266,11 @@ var condition = new TableStore.CompositeCondition(TableStore.LogicalOperator.AND
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -4737,6 +5311,11 @@ client.updateRow(params,
         if (err) {
             console.log('error:', err);
             return;
+```
+
+`}`
+
+```
         console.log('success:', data);
     });
 ```
@@ -4770,6 +5349,11 @@ client.deleteRow(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -4820,7 +5404,7 @@ var client = require('./client'); var TableStore = require('../index.js'); var L
             [{ 'gid': Long.fromNumber(10001) }, { 'uid': Long.fromNumber(10001) }]
 ```
 
-`]` `],` };
+`]` `}` `],` };
 
 ```
 var maxRetryTimes = 3; var retryCount = 0; function batchGetRow(params) {
@@ -4828,6 +5412,11 @@ var maxRetryTimes = 3; var retryCount = 0; function batchGetRow(params) {
         if (err) {
             console.log('error:', err);
             return;
+```
+
+`}`
+
+```
         var isAllSuccess = true;
         var retryRequest = { tables: [] };
         for (var i = 0; i < data.tables.length; i++) {
@@ -4847,11 +5436,26 @@ var maxRetryTimes = 3; var retryCount = 0; function batchGetRow(params) {
                         var kp = {};
                         kp[name] = value;
                         pks.push(kp);
+```
+
+`}`
+
+```
                     faildRequest.primaryKey.push(pks);
                 } else {
                     // get success data
+```
+
+`}` `}`
+
+```
             if (faildRequest.primaryKey.length > 0) {
                 retryRequest.tables.push(faildRequest);
+```
+
+`}` `}`
+
+```
         if (!isAllSuccess && retryCount++ < maxRetryTimes) {
             batchGetRow(retryRequest);
         console.log('success:', data);
@@ -4899,6 +5503,11 @@ client.batchWriteRow(params, function (err, data) {
     if (err) {
         console.log('error:', err);
         return;
+```
+
+`}`
+
+```
     console.log('success:', data);
 });
 ```
@@ -4939,9 +5548,19 @@ client.getRange(params, function (err, data) {
   if (err) {
     console.log('error:', err);
     return;
+```
+
+`}`
+
+```
   //If the value of data.next_start_primary_key is not null, the read operation is contin
 ued.
   if (data.next_start_primary_key) {
+```
+
+`}`
+
+```
   console.log('success:', data);
 });
 ```
@@ -5071,6 +5690,11 @@ ypes of primary key columns.
 on is returned. Otherwise, an exception is returned.
      otsClient.CreateTable(request);
      Console.WriteLine("Create table succeeded.") ;
+```
+
+`}`
+
+```
  // If the task fails, an exception is returned and handled.
  catch (Exception ex)
 ```
@@ -5081,7 +5705,7 @@ on is returned. Otherwise, an exception is returned.
      Console.WriteLine("Create table failed, exception:{0}", ex.Message);
 ```
 
-For the detailed sample code, visit CreateTable@GitHub. ListTable You can call this operation to query the names of all tables created in the current instance. API operation
+`}` For the detailed sample code, visit CreateTable@GitHub. ListTable You can call this operation to query the names of all tables created in the current instance. API operation
 
 ```
  /// <summary>
@@ -5115,7 +5739,17 @@ Examples The following code provides an example on how to obtain the names of al
 
 ```
          Console.WriteLine("Table name:{0}", tableName);
+```
+
+`}`
+
+```
      Console.Writeline("List table succeeded.");
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -5125,7 +5759,7 @@ Examples The following code provides an example on how to obtain the names of al
      Console.WriteLine("List table failed, exception:{0}", ex.Message);
 ```
 
-UpdateTable You can call this operation to update the settings of reserved read/write throughput of a table. API operation
+`}` UpdateTable You can call this operation to update the settings of reserved read/write throughput of a table. API operation
 
 ```
  /// <summary>
@@ -5160,6 +5794,11 @@ Examples The following code provides an example on how to update the numbers of 
      otsClient.UpdateTable(request);
      // If the task succeeds, no exception is returned.
      Console.Writeline("Update table succeeded.");
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -5170,7 +5809,7 @@ Examples The following code provides an example on how to update the numbers of 
      Console.WriteLine("Update table failed, exception:{0}", ex.Message);
 ```
 
-For the detailed sample code, visit UpdateTable@GitHub. DescribeTable You can call this operation to query the structure information and reserved read/write throughput value of the specified table. API operation
+`}` For the detailed sample code, visit UpdateTable@GitHub. DescribeTable You can call this operation to query the structure information and reserved read/write throughput value of the specified table. API operation
 
 ```
  /// <summary>
@@ -5210,6 +5849,11 @@ astIncreaseTime);
 it.Read);
      Console.WriteLine("WriteCapacity: {0}", response.ReservedThroughputDetails.CapacityU
 nit.Write);
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -5220,7 +5864,7 @@ nit.Write);
      Console.WriteLine("Describe table failed, exception:{0}", ex.Message);
 ```
 
-For the detailed sample code, visit DescribeTable@GitHub. DeleteTable You can call this operation to delete a specified table from an instance. API operation
+`}` For the detailed sample code, visit DescribeTable@GitHub. DeleteTable You can call this operation to delete a specified table from an instance. API operation
 
 ```
  /// <summary>
@@ -5248,6 +5892,11 @@ Examples The following code provides an example on how to delete a table:
 ```
      otsClient.DeleteTable(request);
      Console.Writeline("Delete table succeeded.");
+```
+
+`}`
+
+```
  catch (Exception ex)
 ```
 
@@ -5257,7 +5906,7 @@ Examples The following code provides an example on how to delete a table:
      Console.WriteLine("Delete table failed, exception:{0}", ex.Message);
 ```
 
-For the detailed sample code, visit DeleteTable@GitHub.
+`}` For the detailed sample code, visit DeleteTable@GitHub.
 
 ##### 2.5.4.2 Single-row operations
 
@@ -5305,6 +5954,11 @@ ation.IGNORE),
             otsClient.PutRow(request);
             // If task execution succeeds, no exception is thrown.
             Console.WriteLine("Put row succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5316,7 +5970,7 @@ layed.
             Console.WriteLine("Put row failed, exception:{0}", ex.Message);
 ```
 
-Not e Condition.IGNORE, Condition.EXPECT_EXIST, and Condition.EXPECT_NOT_EXIST are deprecated in V3.0.0 and later. Use new Condition (RowExistenceExpectation. IGNORE), new Condition (RowExistenceExpectation.EXPECT_EXIST), and new Condition (RowExistenceExpectation. EXPECT_NOT_EXIST) instead. RowExistenceExpectation.IGNORE indicates that new data is inserted regardless of whether the specified row exists. If the row exists, the existing data is overwritten. RowExistenceExpectation.EXPECT_EXIST indicates that new data is inserted only when the specified row exists. The existing data is overwritten. RowExistenceExpectation.EXPECT_NOT_EXIST indicates that data is inserted only when the specified row does not exist. In addition to row conditions, the Condition parameter also supports column conditions in V2.2.0 and later. To view the detailed code, see PutRow@GitHub. Example 2 The following code provides an example of how to insert a row of data based on specified conditions. Assume that data is inserted only when a specified row exists and the value of col1 is greater than 24.
+`}` Not e Condition.IGNORE, Condition.EXPECT_EXIST, and Condition.EXPECT_NOT_EXIST are deprecated in V3.0.0 and later. Use new Condition (RowExistenceExpectation. IGNORE), new Condition (RowExistenceExpectation.EXPECT_EXIST), and new Condition (RowExistenceExpectation. EXPECT_NOT_EXIST) instead. RowExistenceExpectation.IGNORE indicates that new data is inserted regardless of whether the specified row exists. If the row exists, the existing data is overwritten. RowExistenceExpectation.EXPECT_EXIST indicates that new data is inserted only when the specified row exists. The existing data is overwritten. RowExistenceExpectation.EXPECT_NOT_EXIST indicates that data is inserted only when the specified row does not exist. In addition to row conditions, the Condition parameter also supports column conditions in V2.2.0 and later. To view the detailed code, see PutRow@GitHub. Example 2 The following code provides an example of how to insert a row of data based on specified conditions. Assume that data is inserted only when a specified row exists and the value of col1 is greater than 24.
 
 ```
         // Define the primary keys of the row. These primary keys must be consistent with t
@@ -5346,6 +6000,11 @@ _THAN,
                                                 new ColumnValue(24));
             otsClient.PutRow(request);
             Console.WriteLine("Put row succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5355,7 +6014,7 @@ _THAN,
             Console.WriteLine("Put row failed. error:{0}", ex.Message);
 ```
 
-Not e You can set a single condition or a combination of conditions. For example, you can set two conditions for data insertion such as col1 > 5 and pk2 < 'xyz'. Attribute columns and primary key columns can be used to set conditions. When the column specified in a condition does not exist in a row, PassIfMissing in RelationCondition determines the next action. The default value is true. To view the detailed code, see ConditionPutRow@GitHub. Example 3 The following code provides an example of how to asynchronously insert a row of data:
+`}` Not e You can set a single condition or a combination of conditions. For example, you can set two conditions for data insertion such as col1 > 5 and pk2 < 'xyz'. Attribute columns and primary key columns can be used to set conditions. When the column specified in a condition does not exist in a row, PassIfMissing in RelationCondition determines the next action. The default value is true. To view the detailed code, see ConditionPutRow@GitHub. Example 3 The following code provides an example of how to asynchronously insert a row of data:
 
 ```
         try
@@ -5385,6 +6044,11 @@ t with the primary keys defined in TableMeta during table creation.
 ation.IGNORE),
                                                 primaryKey, attribute);
                 putRowTaskList.Add(TabeStoreClient.PutRowAsync(request));
+```
+
+`}`
+
+```
             // Wait until each asynchronous invocation returns results and displays the con
 sumed CUs.
             foreach (var task in putRowTaskList)
@@ -5397,8 +6061,18 @@ sumed CUs.
                 Console.WriteLine("consumed read:{0}, write:{1}", task.Result.ConsumedCapac
 ityUnit.Read,
                                     task.Result.ConsumedCapacityUnit.Write);
+```
+
+`}`
+
+```
             // Data is inserted if no exception is thrown.
             Console.WriteLine("Put row async succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5410,7 +6084,7 @@ layed.
             Console.WriteLine("Put row async failed. exception:{0}", ex.Message);
 ```
 
-Not e Each asynchronous invocation starts a thread. A timeout error may occur if too many asynchronous invocations are started consecutively and each invocation consumes an extended period of time. To view the detailed code, see PutRowAsync@GitHub. GetRow You can use the GetRow API to read a single row of data based on a specified primary key. API
+`}` Not e Each asynchronous invocation starts a thread. A timeout error may occur if too many asynchronous invocations are started consecutively and each invocation consumes an extended period of time. To view the detailed code, see PutRowAsync@GitHub. GetRow You can use the GetRow API to read a single row of data based on a specified primary key. API
 
 ```
         /// <summary>
@@ -5448,6 +6122,11 @@ cified.
 information, see the GitHub link.
             // If task execution succeeds, no exception is thrown.
             Console.WriteLine("Get row succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5459,7 +6138,7 @@ layed.
             Console.WriteLine("Update table failed, exception:{0}", ex.Message);
 ```
 
-Not e If you query a row of data, the system returns the data in all columns of the row. You can use the columnsToGet parameter to read data from specified columns. For example, the system returns only the data in col0 and col1 if col0 and col1 are inserted into columnsToGet. Conditional filtering is supported. For example, you can configure the system to return results only when the value of col0 is greater than 24. When the columnsToGet and Condition parameters are both used, the system returns results based on columnsToGet, and then filters the returned columns by the Condition parameter. When the specified column does not exist, PassIfMissing determines the next action. To view the detailed code, see GetRow@GitHub. Example 2 The following code provides an example of how to use the filter feature to read a row of data. In the example, data is queried. Only data in col0 and col1 is returned. The data in col0 is filtered based on the condition of col0=24.
+`}` Not e If you query a row of data, the system returns the data in all columns of the row. You can use the columnsToGet parameter to read data from specified columns. For example, the system returns only the data in col0 and col1 if col0 and col1 are inserted into columnsToGet. Conditional filtering is supported. For example, you can configure the system to return results only when the value of col0 is greater than 24. When the columnsToGet and Condition parameters are both used, the system returns results based on columnsToGet, and then filters the returned columns by the Condition parameter. When the specified column does not exist, PassIfMissing determines the next action. To view the detailed code, see GetRow@GitHub. Example 2 The following code provides an example of how to use the filter feature to read a row of data. In the example, data is queried. Only data in col0 and col1 is returned. The data in col0 is filtered based on the condition of col0=24.
 
 ```
         // Define the primary keys of the row. These primary keys must be consistent with t
@@ -5498,6 +6177,11 @@ ilter the queried data based on the previously specified conditions.
             // Generate data or perform the related logical operation (omitted).
             // If task execution succeeds, no exception is thrown.
             Console.WriteLine("Get row with filter succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5509,7 +6193,7 @@ layed.
             Console.WriteLine("Get row with filter failed, exception:{0}", ex.Message);
 ```
 
-Not e To view the detailed code, see GetRowWithFilter@GitHub. UpdateRow You can use the UpdateRow API to update the data of a specified row. If the row does not exist, a new row is added. If the row exists, the values of the specified columns are added, modified, or deleted based on the request content. API
+`}` Not e To view the detailed code, see GetRowWithFilter@GitHub. UpdateRow You can use the UpdateRow API to update the data of a specified row. If the row does not exist, a new row is added. If the row exists, the values of the specified columns are added, modified, or deleted based on the request content. API
 
 ```
         /// <summary>
@@ -5555,6 +6239,11 @@ tion.IGNORE),
             otsClient.UpdateRow(request);
             // If task execution succeeds, no exception is thrown.
             Console.Writeline("Update row succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5566,7 +6255,7 @@ layed.
             Console.WriteLine("Update row failed, exception:{0}", ex.Message);
 ```
 
-Not e You can use conditional statements to update rows. To view the detailed code, see UpdateRow@GitHub. DeleteRow API
+`}` Not e You can use conditional statements to update rows. To view the detailed code, see UpdateRow@GitHub. DeleteRow API
 
 ```
         /// <summary>
@@ -5602,6 +6291,11 @@ ST, primaryKey);
             otsClient.DeleteRow(deleteRowRequest);
             // If task execution succeeds, no exception is thrown.
             Console.Writeline("Delete table succeeded.");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5613,7 +6307,7 @@ layed.
             Console.WriteLine("Delete table failed, exception:{0}", ex.Message);
 ```
 
-Not e You can use conditional statements to delete rows. To view the detailed code, see DeleteRow@GitHub.
+`}` Not e You can use conditional statements to delete rows. To view the detailed code, see DeleteRow@GitHub.
 
 ##### 2.5.4.3 Multiple-row operations
 
@@ -5652,6 +6346,11 @@ Examples The following code provides an example of how to simultaneously read 10
             primaryKey.Add("pk0", new ColumnValue(i));
             primaryKey.Add("pk1", new ColumnValue("abc"));
             primaryKeys.Add(primaryKey);
+```
+
+`}`
+
+```
         try
 ```
 
@@ -5668,6 +6367,11 @@ Examples The following code provides an example of how to simultaneously read 10
 e information, see the GitHub link.
             // BatchGetRow may partially fail. Therefore, you must check the status of each
 row. For more information, see the GitHub link.
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5679,7 +6383,7 @@ layed.
             Console.WriteLine("Batch get row failed, exception:{0}", ex.Message);
 ```
 
-Not e You can use conditional statements to filter the results returned by a BatchGetRow operation. To view the detailed code, see BatchGetRow@GitHub. BatchWriteRow You can use the BatchWriteRow API to insert, modify, or delete several rows of data in one or more tables. The BatchWriteRow operation is a set of multiple PutRow, UpdateRow, and DeleteRow operations. The execution, returning of results, and CU consumption of each individual operation are carried out independently. API
+`}` Not e You can use conditional statements to filter the results returned by a BatchGetRow operation. To view the detailed code, see BatchGetRow@GitHub. BatchWriteRow You can use the BatchWriteRow API to insert, modify, or delete several rows of data in one or more tables. The BatchWriteRow operation is a set of multiple PutRow, UpdateRow, and DeleteRow operations. The execution, returning of results, and CU consumption of each individual operation are carried out independently. API
 
 ```
         /// <summary>
@@ -5724,6 +6428,11 @@ e of BatchWriteRow can reduce the request response time and increase the data wr
             attribute.AddAttributeColumnToPut("col2", new ColumnValue(true));
             rowChanges.AddUpdate(new Condition(RowExistenceExpectation.IGNORE), primaryKey,
 attribute);
+```
+
+`}`
+
+```
         request.Add(TableName, rowChanges);
         try
 ```
@@ -5737,6 +6446,11 @@ attribute);
             var rows = tableRows[TableName];
             // BatchWriteRow may partially fail. Therefore, you must check the status of ea
 ch row. For more information, see the GitHub link.
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5748,7 +6462,7 @@ layed.
             Console.WriteLine("Batch put row failed, exception:{0}", ex.Message);
 ```
 
-Not e You can use conditional statements to filter the results returned by a BatchWriteRow operation. To view the detailed code, see BatchWriteRow@GitHub. GetRange You can use the GetRange API to read data within the specified primary key range. API
+`}` Not e You can use conditional statements to filter the results returned by a BatchWriteRow operation. To view the detailed code, see BatchWriteRow@GitHub. GetRange You can use the GetRange API to read data within the specified primary key range. API
 
 ```
         /// <summary>
@@ -5805,10 +6519,20 @@ Examples The following code provides an example of how to read data within the s
 
 ```
                     rows.Add(row);
+```
+
+`}` `}`
+
+```
             // Generate the data of the rows. The generated data is not shown here. For mor
 e information, see the GitHub link.
             // If task execution succeeds, no exception is thrown.
             Console.WriteLine("Get range succeeded");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5820,7 +6544,7 @@ layed.
             Console.WriteLine("Get range failed, exception:{0}", ex.Message);
 ```
 
-Not e You can use conditional statements to filter the read data returned from the specified range. To view the detailed code, see GetRange@GitHub. GetRangeIterator You can use the GetRangeIterator API to obtain an iterator within the specified range. API
+`}` Not e You can use conditional statements to filter the read data returned from the specified range. To view the detailed code, see GetRange@GitHub. GetRangeIterator You can use the GetRangeIterator API to obtain an iterator within the specified range. API
 
 ```
         /// <summary>
@@ -5863,7 +6587,17 @@ usiveStartPrimaryKey,
 
 ```
                 // Processing logic.
+```
+
+`}`
+
+```
             Console.WriteLine("Iterate row succeeded");
+```
+
+`}`
+
+```
         catch (Exception ex)
 ```
 
@@ -5873,7 +6607,7 @@ usiveStartPrimaryKey,
             Console.WriteLine("Iterate row failed, exception:{0}", ex.Message);
 ```
 
-Not e You can use conditional statements to filter the data read through an iterator. To view the detailed code, see GetRangeIterator@GitHub.
+`}` Not e You can use conditional statements to filter the data read through an iterator. To view the detailed code, see GetRangeIterator@GitHub.
 
 #### 2.5.5 Error handling
 

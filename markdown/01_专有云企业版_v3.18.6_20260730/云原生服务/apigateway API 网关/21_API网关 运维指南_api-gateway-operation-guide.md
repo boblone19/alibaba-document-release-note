@@ -5,16 +5,22 @@ doc_version: "20260729"
 pdf_pages: 11
 source_pdf: "21_API网关 运维指南_api-gateway-operation-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apigateway/zh/api-gateway-operation-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 网关 API网关 运维指南
 
-API 网关
+## 目录
 
-## 运维概述
+- 1 运维概述
+  - 1.1 运维简介
+  - 1.2 运维架构
+- 2 运维流程
+- 3 常见问题
 
-### 运维简介
+## 1 运维概述
+
+### 1.1 运维简介
 
 本文介绍API网关运维的目的、要求、注意事项、以及寻求帮助的方式。
 
@@ -26,9 +32,7 @@ API 网关
 
 维护人员必须拥有IT行业技能，包括计算机网络知识、分布式存储操作知识、问题分析排查能力。 维护人员必须经过阿里云系统岗前培训，学习必要的阿里云API网关知识，包括但不限于系统原理、组网、特性使用和维护工具的使用。
 
-**重要**
-
-在维护操作过程中，维护人员务必遵守操作规章，确保人身安全和系统安全。对用户数据严格保密，未经用户书面许可，禁止复制、传播用户数据。
+> **重要：** 在维护操作过程中，维护人员务必遵守操作规章，确保人身安全和系统安全。对用户数据严格保密，未经用户书面许可，禁止复制、传播用户数据。
 
 **注意事项**
 
@@ -38,11 +42,11 @@ API 网关
 
 维护人员在系统维护过程中，如果需要相关帮助，可以联系阿里云API网关技术支持获取帮助。
 
-### 运维架构
+### 1.2 运维架构
 
-本文介绍API网关的运维架构。 API 网关如上图所示，运维主要围绕底座控制台和租户侧控制面、数据面进行。 API 网关
+本文介绍API网关的运维架构。 如上图所示，运维主要围绕底座控制台和租户侧控制面、数据面进行。
 
-## 运维流程
+## 2 运维流程
 
 本文介绍API网关的运维流程。
 
@@ -80,11 +84,11 @@ kubectl get pod -n apigateway-system
 1. 登录 cop-console 容器。
 2. 执行 `cd /home/admin/cop-console/logs` 命令，进入日志所在目录。
 3. 执行 `ls` ，查看日志文件。
-API 网关
 
-**说明**
-
-debug.log：业务日志。 import.log：数据迁移日志。 remoting.log：网络连接日志。 scheduler_task.log：定时任务日志。
+> **说明：** debug.log：业务日志。
+> import.log：数据迁移日志。
+> remoting.log：网络连接日志。
+> scheduler_task.log：定时任务日志。
 
 **网关数据面日志**
 
@@ -110,9 +114,7 @@ kubectl get ingress -n higress-system
 kubectl get wasmplugin -n higress-system
 ```
 
-API 网关
-
-## 常见问题
+## 3 常见问题
 
 本文介绍API网关的常见问题以及处理方法。
 
@@ -147,7 +149,7 @@ API 网关
 
 **问题表现**
 
-请求网关返回401状态码通常表明存在认证问题。在此类情况下，需要明确识别是网关认证未通过，还是后端服务认证未通过。 API 网关
+请求网关返回401状态码通常表明存在认证问题。在此类情况下，需要明确识别是网关认证未通过，还是后端服务认证未通过。
 
 **解决方案**
 
@@ -198,7 +200,7 @@ name} -nhigress-system -- curl -v "127.0.0.1:15000/config_dump" > config_dump.js
 1. 确认关联的上游服务是否可以正常访问？
 建议在 Higress-gateway pod中通过 `curl` 命令直接测试连通性，避免不同环境的 DNS 差异导致联通性存在问题。
 2. 确认关联的上游服务配置是否正确？
-确认对应的路由成功发到数据参考如命 API 网关
+确认对应的路由成功发到数据参考如命
 3. 确认对应的路由配置是否成功下发到数据面，参考如下命令： kubectl exec ${higress-gateway-
 
 ```

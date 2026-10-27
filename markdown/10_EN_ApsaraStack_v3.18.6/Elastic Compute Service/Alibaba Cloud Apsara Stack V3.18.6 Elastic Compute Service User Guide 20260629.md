@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 511
 source_pdf: "bfeea000e5fa7815_Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20Compute%20Service%20User%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Elastic Compute Service User Guide 20260629
@@ -319,7 +319,7 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 
 ### 1.1 Overview
 
-Elastic Compute Service (ECS) is a computing service that provides scalable processing capacity. It is simpler and more efficient to manage than physical servers. You can create instances, scale out disks, or delete multiple ECS instances in batches at any time as needed. An ECS instance, the core concept of Elastic Compute Service, is a virtual computing environment that includes basic computing components, such as CPUs and memory. You can use the ECS console to perform various operations on your instances. Other resources, such as Elastic Block Storage, images, and snapshots, can be used only when they are attached to an ECS instance. Elastic Block Storage instance image snap security gro bandwidth ECS console
+Elastic Compute Service (ECS) is a computing service that provides scalable processing capacity. It is simpler and more efficient to manage than physical servers. You can create instances, scale out disks, or delete multiple ECS instances in batches at any time as needed. An ECS instance, the core concept of Elastic Compute Service, is a virtual computing environment that includes basic computing components, such as CPUs and memory. You can use the ECS console to perform various operations on your instances. Other resources, such as Elastic Block Storage, images, and snapshots, can be used only when they are attached to an ECS instance. Elastic Block Storage instance Elastic Compute Service image snap security gro bandwidth ECS console
 
 ### 1.2 Instance lifecycle
 
@@ -2434,7 +2434,11 @@ You can add a created Elastic Compute Service (ECS) instance to multiple securit
 
 **Background information**
 
-Security groups are used as virtual firewalls to provide security isolation and control network access for ECS instances. Security groups determine whether the ECS instances in the same account that are deployed in the same virtual private cloud (VPC) and region can communicate with each other over the internal network. By default, ECS instances in the same security group can communicate with each other over the internal network, and ECS instances from different security groups are isolated from each other. If you want ECS instances from different security groups to communicate with each other over the internal network, authorize mutual access between the security groups. For more information about security groups, see Overview of security groups. For information about how to add multiple ECS instances to a security group, see Add ECS instances to a security group.
+Security groups are used as virtual firewalls to provide security isolation and control network access for ECS instances. Security groups determine whether the ECS instances in the same account that are deployed in the same virtual private cloud (VPC) and region can communicate with each other over the internal network. By default, ECS instances in the same security group can communicate with each other over the internal network, and ECS instances from different security groups are isolated from each other. If you want ECS instances from different security groups to communicate with each other over the internal network, authorize mutual access between the security groups. For more information about security groups, see Overview of security groups.
+
+**Note**
+
+For information about how to add multiple ECS instances to a security group, see Add ECS instances to a security group.
 
 **Procedure**
 
@@ -3894,6 +3898,8 @@ The following table compares the performance of different disk categories.
 | Type name in API operations | cloud pperf _ | cloud sperf _ | cloud ssd _ | cloud efficiency _ |
 | Scenarios | OLTP databases: relational databases, such as MySQL, PostgreSQL, Oracle, and SQL Server databases NoSQL databases: non-relational databases, such as MongoDB, HBase, and Cassandra databases Elasticsearch distributed logs: Elasticsearch, Logstash, and Kibana (ELK) log analysis |   | Small and medium-sized development and test applications that require high data reliability | Development and test applications System disks |
 
+**Note**
+
 **Purpose-based classification**
 
 Disks can be classified into system disks and data disks based on their purpose. System disks are created and released along with the ECS instances to which they are attached and have the same lifecycle as the instances. Shared access is not allowed for system disks. Data disks can be separately created or created along with ECS instances. Shared access is not allowed for data disks. A data disk created together with an ECS instance has the same lifecycle as the instance and is released along with the instance. A data disk that is separately created can be separately released or released along with the ECS instance to which it is attached. The capacity of a data disk is determined by the disk type.
@@ -4311,6 +4317,8 @@ The **Disk Details** tab is displayed by default. The following table describes 
 7. View the snapshots and operation logs of the disk.
 Snapshots of the disk: Click the **Disk Snapshots** tab to view information about snapshots that are created for the disk. The information about a snapshot includes the snapshot ID, snapshot encryption status, tags that are added to the disk, snapshot type, snapshot creation progress, and snapshot creation time. Operation logs Click the **Operation Log** tab to view the operation logs of the disk. The operation logs include the operation name, operator, execution status, operation source (console call and API call), operation type, source IP address of the operation, and operation time. Search for operation logs that you require by specifying filter conditions. Select a filter condition from the drop-down list and enter the corresponding information in the search box to search operation logs. The operation logs that meet the specified filter condition are displayed. Click **Advanced Filter**, specify multiple filter conditions, and then click **Search** to search operation logs. Click **Operation Details** in the Actions column of an operation to view the operation details.
 
+**Note**
+
 ### 5.6 Roll back a disk by using a snapshot
 
 **snapshot**
@@ -4689,6 +4697,8 @@ The following methods are supported to encrypt a system disk: Method 1: Enable s
 **Method 1: Enable system disk encryption when you create an**
 
 **ECS instance**
+
+**Note**
 
 This method is supported only for premium performance disks and standard performance disks.
 1. Log on to the ECS console.
@@ -5347,6 +5357,8 @@ search box. The custom images that meet the specified filter condition are autom
 
 6. Click the image ID in the **Image ID/Name** column to view the basic information and
 operation logs of the image. On the **Basic Information** tab, view the information, such as image name, image ID, operating system, platform, and snapshot details. Click the **Operation Log** tab to view the information about the operation logs of the custom image, including the operation name, operator, execution status, operation source (console call or API call), operation type, source IP address of the operation, and operation time. Search for operation logs that you require by specifying filter conditions. Select a filter condition from the drop-down list and enter the corresponding information in the search box to search operation logs. The operation logs that meet the specified filter condition are displayed. Click **Advanced Filter**, specify multiple filter conditions, and then click **Search** to search operation logs. Click **Operation Details** in the Actions column of an operation to view the operation details.
+
+**Note**
 
 **What to do next**
 
@@ -6778,7 +6790,11 @@ b. Press the `I` key to enter the Insert mode and add the following content to t
 add_drivers+="virtio_blk virtio_net"
 ```
 
-`:wq`, and then press the Enter key to save and close the file. Press the `Esc` key, enter c. Run the following command to regenerate initrd:
+`:wq`, and then press the Enter key to save and close the file. Press the `Esc` key, enter
+
+**Note**
+
+c. Run the following command to regenerate initrd:
 
 ```
 dracut -f
@@ -7191,6 +7207,8 @@ images that match the specified conditions.
 
 6. In the **Image ID/Name** column, click the image ID to view the Basic Information and
 Operation Log. On the **Basic Information** page, you can view the image name, image ID, operating system, platform, snapshot details, and other information. Click the **Operation Log** to view the operation logs of public images, including operation name, operator, execution status, operation source (console call or API call), operation type, operation source IP, operation time, and other information. Search for operation logs that you require by specifying filter conditions. Select a filter condition from the drop-down list and enter the corresponding information in the search box to search operation logs. The operation logs that meet the specified filter condition are displayed. Click **Advanced Filter**, specify multiple filter conditions, and then click **Search** to search operation logs. Click **Operation Details** in the Actions column of an operation to view the operation details.
+
+**Note**
 
 ### 6.5 Shared custom images
 
@@ -7736,7 +7754,11 @@ Snapshots can be shared only among level-1 organizations. A single snapshot can 
 4. On the **Disk Snapshots** tab, find the snapshot that you want to share and click **Share**
 **Snapshot** in the **Actions** column.
 5. In the **Share Snapshot** dialog box, select the level-1 organizations with which you want to
-share the snapshot from the **Organization** drop-down list. If you cannot obtain the organization list due to insufficient permissions, you can enter the UIDs of level-1 organizations with which you want to share the snapshot in the Organization field to search for the level-1 organizations.
+share the snapshot from the **Organization** drop-down list.
+
+**Note**
+
+If you cannot obtain the organization list due to insufficient permissions, you can enter the UIDs of level-1 organizations with which you want to share the snapshot in the Organization field to search for the level-1 organizations.
 6. Click **OK**.
 
 **View a shared snapshot**
@@ -7771,7 +7793,11 @@ the snapshot and click the icon in the **Actions** column.
 
 To share an encrypted snapshot, you must use a RAM role to authorize the organization with which the encrypted snapshot is shared to use KMS.
 1. Create a RAM role. Configure a custom policy of the key to be used by the organization that
-shares the snapshot with other organizations and a trust policy for the organization with which the snapshot is shared. RAM role: AliyunECSShareEncryptSnapshotDefaultRole. The RAM role must be named AliyunECSShareEncryptSnapshotDefaultRole. Otherwise, the encrypted snapshot fails to be shared. Custom policy: `{`
+shares the snapshot with other organizations and a trust policy for the organization with which the snapshot is shared. RAM role: AliyunECSShareEncryptSnapshotDefaultRole.
+
+**Note**
+
+The RAM role must be named AliyunECSShareEncryptSnapshotDefaultRole. Otherwise, the encrypted snapshot fails to be shared. Custom policy: `{`
 
 ```json
   "Version": "1",
@@ -8052,6 +8078,8 @@ column. View the details of the snapshot-consistent group in the sections that a
 | Disk Snapshots | Displays the information about snapshots created in the snapshot- consistent group in the columns, including Disk Snapshot ID/Name, Status, Disk Type/Capacity, Encrypted/Unencrypted, Disk ID/Name, and Instance ID/Name. |
 
 View operation logs of the snapshot-consistent group. Click the **Operation Log** tab to view the operation logs of the snapshot consistent group, including the operation name, operator, execution status, operation source (console call or API call), operation type, source IP address of the operation, and operation time. Search for operation logs that you require by specifying filter conditions. Select a filter condition from the drop-down list and enter the corresponding information in the search box to search operation logs. The operation logs that meet the specified filter condition are displayed. Click **Advanced Filter**, specify multiple filter conditions, and then click **Search** to search operation logs. Click **Operation Details** in the Actions column of an operation to view the operation details.
+
+**Note**
 
 #### 7.5.3 Roll back disks by using a snapshot-consistent group
 

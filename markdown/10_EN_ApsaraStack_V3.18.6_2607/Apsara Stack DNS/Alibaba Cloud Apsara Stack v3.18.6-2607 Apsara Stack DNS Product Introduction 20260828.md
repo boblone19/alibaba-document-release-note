@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 16
 source_pdf: "f9d920da9734d196_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Product Introduction 20260828
@@ -87,7 +87,11 @@ Apsara Stack DNS supports recursive resolution for Internet domain names, which 
 
 **Tenant isolation**
 
-Apsara Stack DNS allows you to manage private zones in VPCs, resolve internal domain names, and isolate DNS records and resolution based on tenants. You can use Apsara Stack DNS to isolate data by VPC without the need to build your own DNS system. This helps reduce server and O&M costs. This feature is available only in Apsara Stack DNS Standard Edition.
+Apsara Stack DNS allows you to manage private zones in VPCs, resolve internal domain names, and isolate DNS records and resolution based on tenants. You can use Apsara Stack DNS to isolate data by VPC without the need to build your own DNS system. This helps reduce server and O&M costs.
+
+**Note**
+
+This feature is available only in Apsara Stack DNS Standard Edition.
 
 **GTM-based management**
 

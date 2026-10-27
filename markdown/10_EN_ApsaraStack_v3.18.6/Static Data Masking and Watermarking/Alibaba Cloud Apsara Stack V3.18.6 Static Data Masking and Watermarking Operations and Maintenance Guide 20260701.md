@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 22
 source_pdf: "dfe2babde18a78f3_Alibaba Cloud Apsara Stack V3.18.6 Static Data Masking and Watermarking Operations and Maintenance G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E6%95%B0%E6%8D%AE%E9%9D%99%E6%80%81%E8%84%B1%E6%95%8F%E4%B8%8E%E6%B0%B4%E5%8D%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Static%20Data%20Masking%20and%20Watermarking%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Static Data Masking and Watermarking Operations and Maintenance Guide

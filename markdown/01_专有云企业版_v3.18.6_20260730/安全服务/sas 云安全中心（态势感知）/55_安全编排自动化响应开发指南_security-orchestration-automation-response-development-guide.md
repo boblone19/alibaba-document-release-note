@@ -5,16 +5,58 @@ doc_version: "20260729"
 pdf_pages: 76
 source_pdf: "55_安全编排自动化响应开发指南_security-orchestration-automation-response-development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/sas/zh/security-orchestration-automation-response-development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云安全中心（态势感知） 安全编排自动化响应开发指南
 
+## 目录
+
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录开发者门户控制台
+  - 2.2 查看API信息
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+  - 2.5 获取Endpoint
+- 3 调用示例
+  - 3.1 Java SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Java SDK
+      - 3.1.2.2 使用CommonRequest进行调用
+  - 3.2 Python SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Python SDK
+      - 3.2.2.2 使用CommonRequest进行调用
+  - 3.3 Go SDK调用示例
+    - 3.3.1 快速开始
+    - 3.3.2 使用手册
+      - 3.3.2.1 安装Go SDK核心包
+      - 3.3.2.2 使用CommonRequest进行调用
+- 4 API公共参数
+  - 5.1 TriggerPlaybook
+  - 5.2 TriggerPlaybookAndWait
+  - 5.3 GetPlaybookTriggerResult
+  - 5.4 DescribeSoarTriggerResult
+  - 5.5 DescribeSoarRecordActionOutputList
+  - 5.6 ExportPlaybookActionData
+- 6 剧本执行日志
+  - 6.1 DescribeSoarRecords
+  - 6.2 DescribeSoarRecordInfo
+- 7 任务列表
+  - 7.1 DescribeManualTaskInfo
+  - 7.2 DescribeManualTaskRecords
+- 8 错误代码表
+
 门
 
-## 快速入门
+## 1 快速入门
 
-### 开发文档使用说明
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -36,7 +78,7 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API，为了使您拥有与公有云一致的体验，自企业版V3.16.0开始，专有云API默认使用POP网关方式调用。本文介绍如何通过POP网关调用专有云API。
 
@@ -45,30 +87,28 @@ converter: line-classifier (PyMuPDF)
 **调用步骤**
 
 1. 获取AccessKey。
-门获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
-
-**说明**
-
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
+门获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrganiza tionList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListResour ceGroup章节。
 
 **说明**
 
-| <x-acs- |  |
+| <x-acs- |   |
 |---|---|
 
-`resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织 ID。
+调用API时，请在Header参数中增加组织ID `<x-acs-organizationid>` 和资源集ID `<x-acs-` `resourcegroupid>`，指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID `<x-acs-organizationid>` ，则默认获取当前用户所属的组织。 不指定资源集ID `<x-acs-resourcegroupid>` ，则默认为空，如果指定资源集需要同时指定组织 ID。
 4. 获取对应的API参考文档。
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
 作
 
-## 准备工作
+## 2 准备工作
 
-### 登录开发者门户控制台
+### 2.1 登录开发者门户控制台
+
+您可以通过Apsara Uni-manager运营控制台登录开发者门户控制台。
 
 **前提条件**
 
@@ -89,10 +129,11 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开启虚** 拟**MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开启虚**
+**拟****MFA****设备》**章节。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 查看API信息
+### 2.2 查看API信息
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本，在通过 SDK调用API接口时需要填写上述信息。
 
@@ -109,7 +150,7 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 4. 在左侧导航栏中选择目标云产品。在下方API列表中可浏览当前API版本中的所有API接口名称。若当前云产品
 存在多个API版本，可在**版本**下拉列表中，选择目标API版本。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
@@ -146,12 +187,12 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -164,11 +205,7 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 获取STS Accesskey三元组。
-作
-
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <yourRoleSessionName>：请替换为您当前实际的会话名称。 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。 <yourRoleArn>：请替换为您实际的RAM Role。 "sts.aliyuns.com" ：请替换为实际的STS Endpoint。 作
+作以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <yourRoleSessionName>：请替换为您当前实际的会话名称。 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。 <yourRoleArn>：请替换为您实际的RAM Role。 "sts.aliyuns.com" ：请替换为实际的STS Endpoint。 作
 
 ```
 public static void main(String[] args) {
@@ -192,11 +229,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -231,17 +273,17 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
-作
-
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
+作以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -298,24 +340,24 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取Endpoint
+`}` `}`
+
+### 2.5 获取Endpoint
 
 本文介绍如何获取云盾各产品的Endpoint。 作
 
 **背景信息**
 
-通过POP网关调用API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。您也可以
+通过POP网关调用API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。您也可以通过如下方法自行获取Endpoint。
 
 **操作步骤**
 
 1. 登录飞天基础运维平台。
-2. 在顶部菜单栏，选择**平台运维** > **飞天基础运维平台** > **资源管理**。
+2. 在顶部菜单栏，选择**平台运维** **>** **飞天基础运维平台** **>** **资源管理**。
 3. 在左侧导航栏，单击**产品集群运维**。
-4. 在**产品** | **集群**搜索框输入sas-securityorchautoresponsecluster，点击**集群详情**。
+4. 在**产品** **|** **集群**搜索框输入sas-securityorchautoresponsecluster，点击**集群详情**。
 5. 在集群详情切换到资源详情页，搜索soar-pop-biz-endpoint，对应的Json值中domain对应的内容即为业务
 域的Endpoint。
 6. 云产品的业务域的Endpoint构成格式为：
@@ -326,17 +368,17 @@ soar-biz.${global:region}.${global:internet-domain}
 
 例
 
-## 调用示例
+## 3 调用示例
 
-### Java SDK调用示例
+### 3.1 Java SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取产品名Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 阿里云专有云Java SDK需要1.8及以上的JDK。
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取Endpoint，具体操作，请参见获取Endpoint。 阿里云专有云Java SDK需要1.8及以上的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -390,14 +432,13 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### 使用手册
+`}` `}` `}`
 
-##### 安装Java SDK
+#### 3.1.2 使用手册
+
+##### 3.1.2.1 安装Java SDK
 
 本文介绍如何安装及调用云盾Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
@@ -411,7 +452,7 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 
 例
 
-##### 使用CommonRequest进行调用
+##### 3.1.2.2 使用CommonRequest进行调用
 
 **说明**
 
@@ -423,6 +464,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他 API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern` `= "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：调用RPC风格的API**
@@ -462,20 +506,23 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Python SDK调用示例
+`}` `}` `}`
 
-#### 快速开始
+### 3.2 Python SDK调用示例
+
+#### 3.2.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -500,7 +547,7 @@ pip3 install aliyun-python-sdk-core-v3
 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
 ```
 
 `request.set_domain('<your-endpoint>')//` 当前产品的服务地址
@@ -512,13 +559,13 @@ request.set_version('<API-version>')// 接口的版本 request.set_action_name('
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.2.2 使用手册
 
-##### 安装Python SDK
+##### 3.2.2.1 安装Python SDK
 
-本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 例使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
+本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 例
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
 
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -532,7 +579,7 @@ pip install aliyun-python-sdk-core
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.2 使用CommonRequest进行调用
 
 **说明**
 
@@ -544,6 +591,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他 API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern` `= "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：调用RPC风格的API**
@@ -557,15 +607,15 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### Go SDK调用示例
+### 3.3 Go SDK调用示例
 
-#### 快速开始
+#### 3.3.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取到Endpoint。具体操作，请参见获取Endpoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -590,27 +640,38 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 使用手册
+
+##### 3.3.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.3.2.2 使用CommonRequest进行调用
 
 **说明**
 
@@ -622,6 +683,9 @@ CommonRequest的特点如下：
 1. 轻量：只需Core包即可发起调用，无需下载安装各产品的SDK。
 2. 简便：无需更新SDK即可调用最新发布的API。
 3. 快速迭代。
+
+**使用CommonRequest**
+
 阿里云产品的API有RPC和RESTful两种风格，不同风格的API的CommonRequest的调用方法也不同。 例通常API参数中包含Action参数的是RPC风格，包含PathPattern参数的是RESTful风格。一般情况下，每个产品内，所有API的调用风格是统一的。每个API仅支持特定的一种风格调用，传入错误的标识，可能会调用到其他 API，或收到 `ApiNotFound` 的错误信息。 发起一次CommonRequest请求，您需要获取以下几个参数的值。关于以下参数的更多说明，请参见API公共参数。 接入点（endpoint）：该产品的服务地址。 API版本（version）：该API的版本号，格式为YYYY-MM-DD。 接口信息：要调用的接口名称。 当调用的API为RPC风格（大部分阿里云产品API为RPC风格，如Sas）时，需要获取Action参数，使用 `request.ApiName = "<Action>"` 的方式来指定API名称。 当调用的API为RESTful风格（如容器服务）时，需要获取PathPattern参数，使用 `request.PathPattern` `= "<PathPattern>"` 的方式来指定RESTful路径。
 
 **示例：使用RPC风格的API**
@@ -635,7 +699,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -643,7 +707,11 @@ func main() {
 _access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<YOUR-ENDPOINT>"// 当前产品实际的Endpoint
     request.Version = "<API-version>"// 接口的版本
@@ -653,14 +721,17 @@ _access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-共参数
+`}`
 
-## API公共参数
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` 共参数
+
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -684,9 +755,9 @@ _access_key_secret}")
 
 API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码RequestId。
 
-## 剧本
+## 5 剧本
 
-### TriggerPlaybook
+### 5.1 TriggerPlaybook
 
 调用剧本接口。
 
@@ -715,20 +786,24 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"0E402C78-34DC-4B2B-BB15-73BB914172C1",
- "RequestUuid":"a5a60946-3ad4-4e0d-92db-500da9619793"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+ "RequestId":"0E402C78-34DC-4B2B-BB15-73BB914172C1",
+ "RequestUuid":"a5a60946-3ad4-4e0d-92db-500da9619793"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>0E402C78-34DC-4B2B-BB15-73BB914172C1 </RequestId> <RequestUuid>a5a60946-3ad4-4e0d-92db-500da9619793 </RequestUuid>
 ```
 
-### TriggerPlaybookAndWait
+### 5.2 TriggerPlaybookAndWait
 
 调用TriggerPlaybookAndWait接口触发剧本并设置时间等待执行结果。
 
@@ -755,7 +830,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | PlaybookN ame | String | Query | 否 | 测试剧本名称。 | 剧本名称。 |
 | InputPara m | String | Query | 是 | {"ip":"11.**.**.12"} | 剧本输入信息。 |
 | TaskTenan tId | String | Query | 否 | -1 | 任务租户ID。 |
-| MaxWaitSe conds | Integ er | Query | 是 |  | 最大等待时间，单位秒。 |
+| MaxWaitSe conds | Integ er | Query | 是 |   | 最大等待时间，单位秒。 |
 | PageNumb er | Integ er | Query | 是 | 1 | 设置从返回结果的第几页开始显示查询结果。默认值为1， 表示从第1页开始显示。 |
 | PageSize | Integ er | Query | 是 | 100 | 设置分页查询时，每页显示的资产的数量。默认值为20， 表示每页显示20条资产信息。 |
 
@@ -763,7 +838,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| SaoExecuteDet ailInfoList | Array |  |  |
+| SaoExecuteDet ailInfoList | Array |   |   |
 | -Content | String | {"tenantId":"2**2"," eventUuid":"cb8fe2 ee-****-****-****- b51a16f42677","ali Uid":"1504*****314" ,"taskId":"6"} | 内容。 |
 | -NodeName | String | returnAll | 节点名称。 |
 | -ActionUuid | String | 1706237708172 | 节点的唯一标识。 |
@@ -771,7 +846,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RequestUuid | String | 53240ac2-****-****- ****-7348c400c0ca | 请求的唯一标识。 |
 | PlaybookUuid | String | 195afca5-****-****- a126a173e271 | 剧本的唯一标识。 |
 | ResultStatus | String | success | 剧本执行状态： inprogress：处理中。 success：成功。 failed：失败。 |
-| ErrorMsg | String |  | 错误信息，状态为错误的时候返回。 |
+| ErrorMsg | String |   | 错误信息，状态为错误的时候返回。 |
 | PageSize | Integer | 100 | 设置分页查询时，每页显示的资产的数量。默认值为20，表示每页显示20条资产信息。 |
 | PageNumber | Integer | 1 | 设置从返回结果的第几页开始显示查询结果。默认值为1，表示从第1页开始显示。 |
 | TotalCount | Integer | 50 | 查询到的数据的总数量。 |
@@ -786,8 +861,13 @@ https://[Endpoint]/?Action=TriggerPlaybookAndWait&RegionId=cnhangzhou&SourceIp=2
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "RequestUuid":"53240ac2-****-****-****-7348c400c0ca",
     "PlaybookUuid":"195afca5-****-****-a126a173e271",
@@ -797,24 +877,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "PageNumber":1,
     "TotalCount":50,
     "SaoExecuteDetailInfoList":[
-        {
+```
+
+`{`
+
+```json
             "ActionUuid":"1706237708172",
             "NodeName":"returnAll",
             "Content":"{\"tenantId\":\"2**2\",\"eventUuid\":\"cb8fe2ee-****-****-****-
 b51a16f42677\",\"aliUid\":\"1504*****314\",\"taskId\":\"6\"}"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <TriggerPlaybookAndWaitResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RequestUuid>53240ac2-****-****-****-7348c400c0ca</RequestUuid>
     <PlaybookUuid>195afca5-****-****-a126a173e271</PlaybookUuid>
@@ -829,9 +906,12 @@ b51a16f42677","aliUid":"1504*****314","taskId":"6"}</Content>
         <NodeName>returnAll</NodeName>
         <ActionUuid>1706237708172</ActionUuid>
     </SaoExecuteDetailInfoList>
+</TriggerPlaybookAndWaitResponse>
 ```
 
-### GetPlaybookTriggerResult
+### 5.3 GetPlaybookTriggerResult
+
+调用GetPlaybookTriggerResult接口查询剧本返回结果。
 
 **授权信息**
 
@@ -861,21 +941,21 @@ b51a16f42677","aliUid":"1504*****314","taskId":"6"}</Content>
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| SaoExecuteDet ailInfoList | Array |  |  |
+| SaoExecuteDet ailInfoList | Array |   |   |
 | -Content | String | {"tenantId":"2**2"," eventUuid":"cb8fe2 ee-****-****-****- b51a16f42677","ali Uid":"1504*****314" ,"taskId":"6"} | 内容。 |
 | -NodeName | String | returnAll | 节点名称。 |
 | -ActionUuid | String | 1706237708172 | 节点的唯一标识。 |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 
-|  |  |  | 安全编排自动化响应开发指南·剧本 |
+|   |   |   | 安全编排自动化响应开发指南·剧本 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestUuid | String | 99a947a5-***-****- ****-02288dd9b920 | 请求的唯一标识。 |
-| PlaybookUuid | String |  | 剧本的唯一编码。 |
+| PlaybookUuid | String |   | 剧本的唯一编码。 |
 | ResultStatus | String | success | 剧本执行状态： inprogress：处理中。 success：成功。 failed：失败。 |
-| ErrorMsg | String |  | 错误信息，状态为错误的时候返回。 |
+| ErrorMsg | String |   | 错误信息，状态为错误的时候返回。 |
 | PageSize | Integer | 100 | 设置分页查询时，每页显示的资产的数量。默认值为20，表示每页显示20条资产信息。 |
 | PageNumber | Integer | 1 | 设置从返回结果的第几页开始显示查询结果。默认值为1，表示从第1页开始显示。 |
 | TotalCount | Integer | 50 | 查询到的数据的总数量。 |
@@ -890,8 +970,13 @@ https://[Endpoint]/?Action=GetPlaybookTriggerResult&RegionId=cnhangzhou&SourceIp
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "RequestUuid":"99a947a5-***-****-****-02288dd9b920",
     "PlaybookUuid":"",
@@ -901,24 +986,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "PageNumber":1,
     "TotalCount":50,
     "SaoExecuteDetailInfoList":[
-        {
+```
+
+`{`
+
+```json
             "ActionUuid":"1706237708172",
             "NodeName":"returnAll",
             "Content":"{\"tenantId\":\"2**2\",\"eventUuid\":\"cb8fe2ee-****-****-****-
 b51a16f42677\",\"aliUid\":\"1504*****314\",\"taskId\":\"6\"}"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetPlaybookTriggerResultResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RequestUuid>99a947a5-***-****-****-02288dd9b920</RequestUuid>
     <PlaybookUuid></PlaybookUuid>
@@ -933,9 +1015,12 @@ b51a16f42677","aliUid":"1504*****314","taskId":"6"}</Content>
         <NodeName>returnAll</NodeName>
         <ActionUuid>1706237708172</ActionUuid>
     </SaoExecuteDetailInfoList>
+</GetPlaybookTriggerResultResponse>
 ```
 
-### DescribeSoarTriggerResult
+### 5.4 DescribeSoarTriggerResult
+
+调用DescribeSoarTriggerResult接口查询动作执行的结果。
 
 **授权信息**
 
@@ -965,7 +1050,7 @@ b51a16f42677","aliUid":"1504*****314","taskId":"6"}</Content>
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Contents | Array |  |  |
+| Contents | Array |   |   |
 | -Content | String | {"tenantId":"2**2"," eventUuid":"cb8fe2 ee-****-****-****- b51a16f42677","ali Uid":"1504*****314" ,"taskId":"6"} | 内容。 |
 | -NodeName | String | returnAll | 节点名称。 |
 | -ActionUuid | String | 1706237708172 | 节点的唯一标识。 |
@@ -987,31 +1072,33 @@ https://[Endpoint]/?Action=DescribeSoarTriggerResult&RegionId=cnhangzhou&SourceI
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageSize":100,
     "PageNumber":1,
     "TotalCount":50,
     "Contents":[
-        {
+```
+
+`{`
+
+```json
             "ActionUuid":"1706237708172",
             "NodeName":"returnAll",
             "Content":"{\"tenantId\":\"2**2\",\"eventUuid\":\"cb8fe2ee-****-****-****-
 b51a16f42677\",\"aliUid\":\"1504*****314\",\"taskId\":\"6\"}"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式
+`}` `]` `}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeSoarTriggerResultResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PageSize>100</PageSize>
     <PageNumber>1</PageNumber>
@@ -1022,11 +1109,10 @@ b51a16f42677","aliUid":"1504*****314","taskId":"6"}</Content>
         <NodeName>returnAll</NodeName>
         <ActionUuid>1706237708172</ActionUuid>
     </Contents>
+</DescribeSoarTriggerResultResponse>
 ```
 
-**5.5.**
-
-### DescribeSoarRecordActionOutputList
+### 5.5 DescribeSoarRecordActionOutputList
 
 调用DescribeSoarRecordActionOutputList接口查询剧本动作的完整输出信息。
 
@@ -1061,7 +1147,7 @@ b51a16f42677","aliUid":"1504*****314","taskId":"6"}</Content>
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。 |
 | PageSize | Integer | 100 | 设置分页查询时，每页显示的资产的数量。默认值为20，表示每页显示20条资产信息。 |
 
-| 安全编排自动化响应 | 开发指南·剧本 |  |  |
+| 安全编排自动化响应 | 开发指南·剧本 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1080,17 +1166,22 @@ https://[Endpoint]/?Action=DescribeSoarRecordActionOutputList&RegionId=cnhangzho
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageSize":100,
     "PageNumber":1,
     "TotalCount":50,
     "ActionOutputs":"[{\"address\":{\"country\":\"巴西
-\",\"city\":\"\"},\"ip\":\"177.**.***.4\"},{\"address\":{\"country\":\"中国\",\"city\":\"\"} ,\"ip\":\"110.**.***.66\"}]" }
+\",\"city\":\"\"},\"ip\":\"177.**.***.4\"},{\"address\":{\"country\":\"中国\",\"city\":\"\"} ,\"ip\":\"110.**.***.66\"}]"
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```json
 HTTP/1.1 200 OK Content-Type:application/xml <DescribeSoarRecordActionOutputListResponse>
@@ -1102,7 +1193,9 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeSoarRecordActionOutputList
 {"country":"中国","city":""},"ip":"110.**.***.66"}]</ActionOutputs> </DescribeSoarRecordActionOutputListResponse>
 ```
 
-### ExportPlaybookActionData
+### 5.6 ExportPlaybookActionData
+
+调用ExportPlaybookActionData接口导出剧本节点的执行记录。
 
 **授权信息**
 
@@ -1147,28 +1240,33 @@ https://[Endpoint]/?Action=ExportPlaybookActionData&RegionId=cnhangzhou&SourceIp
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskId":"export_4752259f-***-***-*****-223bad071807",
     "ExportUrl":"https**//***.com"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ExportPlaybookActionDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskId>export_4752259f-***-***-*****-223bad071807</TaskId>
     <ExportUrl>https**//***.com</ExportUrl>
+</ExportPlaybookActionDataResponse>
 ```
 
 行日志
 
-## 剧本执行日志
+## 6 剧本执行日志
 
-### DescribeSoarRecords
+### 6.1 DescribeSoarRecords
 
 查询剧本历史执行记录。
 
@@ -1211,7 +1309,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -PlaybookName | String | 测试 | 剧本名称。 |
 | -TriggerType | String | manual | 触发的类型。 |
 
-|  |  |  |  | 安全编排自动化响应开发指南·剧本执行日志 |  |
+|   |   |   |   | 安全编排自动化响应开发指南·剧本执行日志 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1235,8 +1333,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 `JSON` 格式行日志
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":50,
  "RequestId":"1C982EAB-D314-4583-B108-62F20DE02CD5",
  "PageSize":1,
@@ -1256,11 +1359,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "RequestUuid":"a5a60946-3ad4-4e0d-92db-500da9619793\t",
   "TaskflowMd5":"58638e2be58a4185f5106298fb3e5157",
   "FlowTag":1
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <TotalCount>50</TotalCount> <RequestId>1C982EAB-D314-4583-B108-62F20DE02CD5</RequestId> <PageSize>1</PageSize> <PageNumber>10</PageNumber> <SoarExecuteRecords>
@@ -1283,7 +1384,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
  </SoarExecuteRecords>
 ```
 
-### DescribeSoarRecordInfo
+### 6.2 DescribeSoarRecordInfo
 
 调用DescribeSoarRecordInfo接口查询剧本的执行日志的详情信息。 行日志
 
@@ -1321,7 +1422,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | StartTime | Long | 1706077659685 | 流程运行开始时间。 |
 | EventId | String | 5076e93f-****-****- ****-d1b4fd3e4336 | 事件ID。 |
 
-| 安全编排自动化响应行日志 | 开发指南·剧本执 |  |  |
+| 安全编排自动化响应行日志 | 开发指南·剧本执 |   |   |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | Status | String | success | 剧本的运行状态： success：成功。 failed：失败。 inprogress：正在运行。 |
@@ -1339,7 +1440,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | PlaybookUuid | String | bbb82d1f-****-****- 8927-28c13c8fc3bc | 剧本的唯一标识ID。 |
 | TaskFlowMd5 | String | 4e2847a0*********2 73e9952cef | 流程的MD5值。 |
 
-|  |  |  | 安全编排自动化响应开发指南·剧本执 |
+|   |   |   | 安全编排自动化响应开发指南·剧本执 |
 |---|---|---|---|
 
 行日志
@@ -1359,8 +1460,13 @@ https://[Endpoint]/?Action=DescribeSoarRecordInfo&RegionId=cnhangzhou&SourceIp=2
 
 正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TriggerType":"debug",
     "TriggerDataId":"5076e93f-****-****-****-d1b4fd3e4336",
@@ -1395,13 +1501,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "EventStr":"{                            \"banTime\":\"48h\",
 "organization\":\"all\", \"banType\":\"all\", \"IsVpcWebsite\":\"false\" }",
     "TenantId":"-1"
-}
 ```
 
-行日志 `XML` 格式
+`}` 行日志 `XML` 格式
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeSoarRecordInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TriggerType>debug</TriggerType>
     <TriggerDataId>5076e93f-****-****-****-d1b4fd3e4336</TriggerDataId>
@@ -1436,13 +1541,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <EventStr>{ "banTime":"48h", "organization":"all", "banType":"all",
 "IsVpcWebsite":"false" }</EventStr>
     <TenantId>-1</TenantId>
+</DescribeSoarRecordInfoResponse>
 ```
 
 表
 
-## 任务列表
+## 7 任务列表
 
-### DescribeManualTaskInfo
+### 7.1 DescribeManualTaskInfo
 
 查询执行结果信息。
 
@@ -1465,13 +1571,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| ManualTaskRec ords | Array |  | 任务详情。 |
+| ManualTaskRec ords | Array |   | 任务详情。 |
 | - AssignedUserId | String | test | 用户ID。 |
 | - AssignedUserG roup | String | test | 用户组。 |
 | -GmtCreate | Long | 1641803299000 | 创建时间。 |
 | -GmtModified | Long | 1641803299000 | 更新时间。 |
 
-| 安全编排自动化响应 | 开发指南·任务列 |  |  |
+| 安全编排自动化响应 | 开发指南·任务列 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1491,10 +1597,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -DeadlineTime | Long | 1641803299000 | 延迟时间。 |
 | -TenantId | String | -1 | 租户ID。 |
 | -Content | String | 数据信息 | 内容信息。 |
-| -Url | String |  | URL地址。 |
-| -TaskType | Integer |  | 任务类型。 |
+| -Url | String |   | URL地址。 |
+| -TaskType | Integer |   | 任务类型。 |
 
-|  |  |  | 安全编排自动化响应开发指南·任务列表 |
+|   |   |   | 安全编排自动化响应开发指南·任务列表 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1503,7 +1609,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | -DataInfo | String | {"k":"value"} | 数据信息。 |
 | -DownloadUrl | String | http://xxxxxx | 数据下载地址。 |
 | -NeedDataInfo | Boolean | true | 是否需要展示节点信息。 |
-| -PlaybookType | String |  | 剧本类型。 |
+| -PlaybookType | String |   | 剧本类型。 |
 | -TaskTenantId | String | -2 | 执行任务的租户ID。 |
 | RequestId | String | AF2B656D-C2C1- 4E47-85FD- 1596C83C6B86 | 本次调用请求的ID。 |
 | PageNumber | Long | 1 | 分页查询时，设置当前页面的页码。 |
@@ -1514,8 +1620,13 @@ HTTP/1.1 200 OK Content-Type:application/xml
 
 `JSON` 格式表
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":100,
  "RequestId":"AF2B656D-C2C1-4E47-85FD-1596C83C6B86",
  "PageSize":10,
@@ -1555,12 +1666,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "Id":1231,
   "DisplayActionUuid":"AF2B656D-C2C1-4E47-85FD-1596C83C6B86\t",
   "PlaybookType":""
- },
- "PageNumber":1
-}
 ```
 
-`XML` 格式表
+`},`
+
+```json
+ "PageNumber":1
+```
+
+`}` `XML` 格式表
 
 ```xml
 <TotalCount>100</TotalCount> <RequestId>AF2B656D-C2C1-4E47-85FD-1596C83C6B86</RequestId> <PageSize>10</PageSize> <ManualTaskRecords>
@@ -1605,7 +1719,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </ManualTaskRecords> <PageNumber>1</PageNumber>
 ```
 
-### DescribeManualTaskRecords
+### 7.2 DescribeManualTaskRecords
+
+调用DescribeManualTaskRecords接口查询任务列表信息。
 
 **授权信息**
 
@@ -1644,7 +1760,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| ManualTaskRec ords | Array |  |  |
+| ManualTaskRec ords | Array |   |   |
 | - AssignedUserId | String | 1 | 当前任务处理人的用户ID。 |
 | - AssignedUserG roup | String | user | 当前任务处理人组的信息。 |
 | -GmtCreate | Long | 1705572167000 | 创建时间。 |
@@ -1662,7 +1778,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | - DisplayActionU uid | String | displayUuid | 展示节点请求的唯一标识。 |
 | -AkkaActorInfo | String | selfActorInfo | 人工节点所在的AKKA集群中的actor信息。 |
 
-| 安全编排自动化响应表 | 开发指南·任务列 |  |  |
+| 安全编排自动化响应表 | 开发指南·任务列 |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1673,7 +1789,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -Url | String | http*://**.com | 任务关联的URL。 |
 | -TaskType | Integer | 0 | 任务类型： 0：需人工处理 （默认值）。 1：钉钉消息。 3：任务通知。 |
 | -DataUrl | String | http*://**.com | 数据URL。 |
-| -ErrorMsg | String |  | 错误信息。 |
+| -ErrorMsg | String |   | 错误信息。 |
 | -PlaybookType | String | general | 剧本类型，固定填写为general。 |
 | -TaskTenantId | String | -2 | 执行任务的租户ID。 |
 | -PlaybookUuid | String | a7535142-****-****- ****-97b3eae7d34b | 剧本的唯一标识。 |
@@ -1692,14 +1808,23 @@ https://[Endpoint]/?Action=DescribeManualTaskRecords&RegionId=cnhangzhou&SourceI
 
 表正常返回示例 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageNumber":1,
     "PageSize":100,
     "TotalCount":50,
     "ManualTaskRecords":[
-        {
+```
+
+`{`
+
+```json
             "ActualDealedTime":1706078939000,
             "ActionUuid":"3896adf2-****-****-****-63546a067a78",
             "AssignedUserId":"1",
@@ -1730,19 +1855,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Id":1,
             "DisplayActionUuid":"displayUuid",
             "PlaybookType":"general"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` 格式表
+`}` `]` `}` `XML` 格式表
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeManualTaskRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PageNumber>1</PageNumber>
     <PageSize>100</PageSize>
@@ -1779,11 +1897,12 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TaskTenantId>-2</TaskTenantId>
         <PlaybookUuid>a7535142-****-****-****-97b3eae7d34b</PlaybookUuid>
     </ManualTaskRecords>
+</DescribeManualTaskRecordsResponse>
 ```
 
 码表
 
-## 错误代码表
+## 8 错误代码表
 
 本文介绍云盾API返回的错误代码信息。 表 1. 云盾通用错误代码
 

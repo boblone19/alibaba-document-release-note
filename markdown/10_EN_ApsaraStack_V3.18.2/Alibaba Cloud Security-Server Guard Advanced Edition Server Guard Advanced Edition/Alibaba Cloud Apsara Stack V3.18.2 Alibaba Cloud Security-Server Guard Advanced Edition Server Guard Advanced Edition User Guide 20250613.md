@@ -5,7 +5,7 @@ doc_version: "20250613"
 pdf_pages: 102
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20250613.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%89%E9%AA%91%E5%A3%AB/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20User%20Guide%2020250613.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20250613
@@ -150,7 +150,11 @@ This topic describes how to view the details of server security on the Security 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -266,7 +270,11 @@ After you add servers to Server Guard, you can manually synchronize the informat
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -327,7 +335,11 @@ This topic describes how to view the information about the listening port on a s
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -400,6 +412,9 @@ Apsara Stack Security automatically scans software that is installed on your ser
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Linux Software** tab, view the detected Linux software vulnerabilities.
@@ -441,6 +456,9 @@ Apsara Stack Security automatically checks whether the latest Microsoft updates 
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Windows System** tab, view the detected Windows system vulnerabilities.
@@ -479,6 +497,9 @@ The Web-CMS vulnerability detection feature obtains information about the latest
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Security** > **Server Security** > **Server Guard**.
+
+**Note**
+
 You can select an organization, a resource set, and a region in the top navigation bar. You can select a resource set that belongs to a level-2 organization or a specific user.
 3. In the left-side navigation pane, choose **Prevention** > **Vulnerabilities**.
 4. On the **Web CMS** tab, view all vulnerabilities.
@@ -547,7 +568,11 @@ A vulnerability whitelist allows you to exclude vulnerabilities from the detecti
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -628,7 +653,11 @@ By default, the baseline check feature uses **default baseline check policies** 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -692,7 +721,11 @@ Apsara Stack Security Center provides details of baseline check results and sugg
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -716,7 +749,11 @@ The **Baseline Check** page displays the details of all baselines, such as **Bas
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -783,7 +820,11 @@ The risk exposure detection feature automatically analyzes the exposure of your 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -796,7 +837,11 @@ about exposed assets. Filter assets: Filter assets by vulnerability, asset group
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -817,7 +862,11 @@ Before you can use the application protection feature, you must add an applicati
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -890,7 +939,11 @@ If you no longer want the application protection feature to protect the containe
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -904,7 +957,11 @@ You can configure a whitelist rule to allow requests from specific IP addresses.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -989,7 +1046,11 @@ The antivirus feature can automatically quarantine common network viruses, such 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1179,7 +1240,11 @@ The application whitelist feature prevents unauthorized programs from running on
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1209,7 +1274,11 @@ Delete a policy: Select the policy that you want to delete and click **Delete** 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1224,7 +1293,11 @@ Enable or disable the policy for a server: Select the server for which you want 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1321,7 +1394,11 @@ After Apsara Stack Security generates an alert, the information about the alert 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1374,7 +1451,11 @@ Security Center automatically associates alerts with exceptions in real time to 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1393,7 +1474,11 @@ Sever Guard can quarantine malicious files. Quarantined files are listed in the 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1414,7 +1499,11 @@ Server Guard supports advanced logon settings. You can configure fine-grained lo
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1485,7 +1574,11 @@ The following table describes the types of viruses that can be detected.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1741,7 +1834,11 @@ If you want to monitor the security of assets in Server Guard, you must install 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1821,7 +1918,11 @@ Malicious behavior defense supports system defense rules and custom defense rule
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -1838,7 +1939,11 @@ a. Find the required system defense rule and click **Management host** in the **
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Server Guard**. On the **Server Guard** page, select a
-region from the **Region** drop-down list and click **Access with Authorized Role**. In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
+region from the **Region** drop-down list and click **Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -2098,7 +2203,11 @@ a. In the **Traffic Forwarding Configuration - Service CIDR Block** section, cli
 | Type | The type of the CIDR block for traffic redirection. Value values: Test and Business. |
 | Service Description | The service-related description. |
 
-After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections. In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
+After the configuration is complete, you can view the automatic check frequency for the CIDR block and the self-check result of each cluster in the **Service Check Status** and **Interface Status** sections.
+
+**Note**
+
+In each section, you can select a check frequency from the**automatic check** drop-down list to specify an automatic check frequency for the CIDR block. You can
 
 > icon to manually refresh the check frequency for the CIDR block.
 

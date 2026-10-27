@@ -5,7 +5,7 @@ doc_version: "20240703"
 pdf_pages: 691
 source_pdf: "9bcad0cf564935c0_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Cloud Defined Storage User Guide 20240703.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8CDS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Cloud%20Defined%20Storage%20User%20Guide%2020240703.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Cloud Defined Storage User Guide
@@ -3310,7 +3310,11 @@ This topic describes how to configure Portable Operating System Interface (POSIX
 
 **Prerequisites**
 
-An NFSv3 file system is mounted. For more information, see Mount an NFS file system. Before you configure POSIX ACLs, we recommend that you get familiar with specific commands. The following table describes the commands.
+An NFSv3 file system is mounted. For more information, see Mount an NFS file system.
+
+**Description**
+
+Before you configure POSIX ACLs, we recommend that you get familiar with specific commands. The following table describes the commands.
 
 | Command | Description |
 |---|---|
@@ -3429,7 +3433,11 @@ An NFSv4 file system is mounted. For more information, see Mount an NFS file sys
 
 **Background information**
 
-You can mount an NFSv4 file system on a Linux Elastic Compute Service (ECS) instance and install the Linuxspecific nfs4-acl-tools tool on the instance. After the tool is installed, you can use the standard nfs4_getfacl and nfs4_setfacl tools to configure NFSv4 ACLs. Before you configure NFSv4 ACLs, we recommend that you get familiar with specific commands. The following table describes the commands.
+You can mount an NFSv4 file system on a Linux Elastic Compute Service (ECS) instance and install the Linuxspecific nfs4-acl-tools tool on the instance. After the tool is installed, you can use the standard nfs4_getfacl and nfs4_setfacl tools to configure NFSv4 ACLs.
+
+**Description**
+
+Before you configure NFSv4 ACLs, we recommend that you get familiar with specific commands. The following table describes the commands.
 
 | Command |   | Description |   |
 |---|---|---|---|

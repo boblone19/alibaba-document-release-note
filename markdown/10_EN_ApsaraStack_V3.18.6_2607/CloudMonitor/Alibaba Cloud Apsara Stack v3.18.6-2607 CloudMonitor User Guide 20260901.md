@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 435
 source_pdf: "d6165cf78a4d6b3e_Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%91%E6%8E%A7/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20CloudMonitor%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901
@@ -323,7 +323,7 @@ Provides a centralized interface to display the alert data of cloud services. Pr
 
 **Alert sources**
 
-Alert data is obtained from the following alert sources: Application Real-Time Monitoring Service (ARMS) Simple Log Service (SLS) DataWorks Managed Service for Prometheus
+Alert data is obtained from the following alert sources: Application Real-Time Monitoring Service (ARMS) Simple Log Service (SLS) CloudMonitor DataWorks Managed Service for Prometheus
 
 ### 5.1 Alert overview
 
@@ -6673,6 +6673,8 @@ The Event Center module provides a unified portal for you to query and manage sy
 #### 12.1.1 Cloud service system events
 
 These tables list the Alibaba Cloud services supported by CloudMonitor and their system events. For more information on event metrics, see Cloud Product Event Monitoring Metrics Description in the metrics repository.
+
+**CloudMonitor**
 
 | Service | System events |
 |---|---|

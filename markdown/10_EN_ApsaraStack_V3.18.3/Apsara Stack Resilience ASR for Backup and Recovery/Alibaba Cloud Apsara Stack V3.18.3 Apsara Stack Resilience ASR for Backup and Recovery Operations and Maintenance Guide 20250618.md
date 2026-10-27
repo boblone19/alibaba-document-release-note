@@ -5,7 +5,7 @@ doc_version: "20250618"
 pdf_pages: 138
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Apsara Stack Resilience ASR for Backup and Recovery Operations and Maintenance Guide 20250618.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Backup%C2%A0and%C2%A0Recovery%20Operations%20and%20Maintenance%20Guide%2020250618.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Apsara Stack Resilience ASR for Backup and Recovery Operations and Maintenance Guide 20250618
@@ -161,7 +161,11 @@ The following table describes the logon methods of different roles.
 
 **Permissions**
 
-The following table describes the permissions of different roles on the ASR-BR console. The operations administrator and resource auditor can perform operations on all organizations.
+The following table describes the permissions of different roles on the ASR-BR console.
+
+**Note**
+
+The operations administrator and resource auditor can perform operations on all organizations.
 
 > The organization administrator and organization resource auditor can perform operations only on the organization to which they belong and the subordinate organizations.
 
@@ -1078,7 +1082,11 @@ Log on to the ASR for Backup and Recovery (ASR-BR) console as a backup operation
 
 Log on to the ASR-BR console as a backup operations administrator in standard deployment mode. In the left-side navigation pane, choose
 **O&M Management > Engine Monitoring**. On the Traffic Monitoring tab of the Engine Monitoring page, view the transmission traffic of the
-backup engine. If ASR-BR is deployed in lightweight mode, you cannot perform routine inspections on bandwidth usage.
+backup engine.
+
+**Note**
+
+If ASR-BR is deployed in lightweight mode, you cannot perform routine inspections on bandwidth usage.
 
 > To view the total traffic usage of the backup and restore engines, you can choose **O&M Management > Throttling** **Configuration** in the left-side navigation pane of the ASR-BR console. If the total traffic usage reaches 90% of the specified backup throttling threshold, you can perform the following operations:
 > Modify the backup throttling threshold on the premise that backup bandwidth is sufficient.
@@ -1138,11 +1146,25 @@ disabled, you must manually enable self-backup management and configure related 
 
 This alert is used to monitor the disk usage of the host on which the asrbr-backup service is deployed. This alert is triggered when the disk usage of the host on which the asrbr-backup service is deployed is excessively high. In this case, you must identify and resolve the issue at the earliest opportunity.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | checkbackupdisk _ _ | tjmoncheckba _ _ ckupdisk _ | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==1 _ |
 
-The disk usage of log files is excessively high. When the disk usage reaches 100%, the asrbr-backup service is abnormal and becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The disk usage of log files is excessively high.
+
+**Impacts**
+
+When the disk usage reaches 100%, the asrbr-backup service is abnormal and becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform the steps of the solution.
 
@@ -1177,11 +1199,25 @@ Execute the `rm -rf bak/` command to clear historical logs in the bak directory.
 
 This alert is used to monitor the ctk_session usage of the srs-client service. This alert is triggered when the ctk_session usage ratio is excessively high. In this case, the srs-client service may fail to run as expected.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
 | tjmonalertssrs- _ _ clientcheckctkq _ _ _ uota | tjmontablesrs- _ _ clientcheckctkq _ _ _ uota | tianjimon | P1 | asrbr | p1expressin\|$coll _ ectionflag!=0 _ | Every 60 seconds |
 
-Apsara Stack Enterprise V3.12 and later The ctk_session usage ratio is excessively high. The srs-client service may fail to run as expected.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.12 and later
+
+**Causes**
+
+The ctk_session usage ratio is excessively high.
+
+**Impacts**
+
+The srs-client service may fail to run as expected.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1229,11 +1265,25 @@ If the value does not exceed 60%, submit a ticket to contact the network-side R&
 
 This alert is used to check whether packet loss records are generated in the srs_iptables.drop logs of the srs-client service. This alert is triggered when packet loss records are generated. In this case, the service is not immediately affected. However, you must take note of the packet loss information to prevent potential issues from occurring.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
 | tjmonalertssrs- _ _ clientcheckcatip _ _ _ tablessyslog _ | tjmontablesrs- _ _ clientcheckcatip _ _ _ tablessyslog _ | tianjimon | P1 | asrbr | p1expressin\|$coll _ ectionflag!=0 _ | Every 60 seconds |
 
-Apsara Stack Enterprise V3.12 and later Packet loss records are generated. The service is not immediately affected. However, you must take note of the packet loss information to prevent potential issues from occurring.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.12 and later
+
+**Causes**
+
+Packet loss records are generated.
+
+**Impacts**
+
+The service is not immediately affected. However, you must take note of the packet loss information to prevent potential issues from occurring.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1288,7 +1338,19 @@ This alert is used to monitor the availability of the srs_client service. This a
 |---|---|---|---|---|---|---|
 | tjmonalertssrscl _ _ _ ientcheckservice _ _ status _ | tjmontablesrscli _ _ _ entcheckservice _ _ _ status | tianjimon | P1 | asrbr | p1expressin\|$coll _ ectionflag!=0 _ | Every 60 seconds |
 
-Apsara Stack Enterprise V3.12 and later The srs-client service becomes unavailable. The srs-client service may fail to run as expected.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.12 and later
+
+**Causes**
+
+The srs-client service becomes unavailable.
+
+**Impacts**
+
+The srs-client service may fail to run as expected.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform the steps of the solution.
 
@@ -1329,11 +1391,25 @@ Log path: /cloud/app/srs-client/srs-client#/srsclient_post_check_app/current/log
 
 This alert is used to monitor the nf_conntrack session usage of the srs-client service. This alert is triggered when the nf_conntrack session usage ratio is excessively high. In this case, the srs-client service may fail to run as expected.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
 | tjmonalertssrscl _ _ _ ientchecknfcon _ _ _ ntrack | tjmontablesrscli _ _ _ entchecknfconn _ _ _ track | tianjimon | P1 | asrbr | p1expressin\|$coll _ ectionflag!=0 _ | Every 60 seconds |
 
-The nf_conntrack session usage ratio exceeds 60%. The srs-client service may fail to run as expected.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The nf_conntrack session usage ratio exceeds 60%.
+
+**Impacts**
+
+The srs-client service may fail to run as expected.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform the steps of the solution.
 
@@ -1383,11 +1459,19 @@ If the value does not exceed 60%, contact the R&D team for technical support.
 
 This alert is used to check whether the Java process of the asrbr-backup service is frequently restarted. This alert is triggered when the Java process of the asrbr-backup service is frequently restarted. In this case, the asrbr service may be interrupted.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonasrbr- _ backup- applicationprocre _ _ startalarm _ | tjmonasrbr-backup- _ checkapplicationpr _ _ ocstateclusterserv _ _ _ errole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==1 _ _ |
 
-The Java process of the asrbr-backup service is frequently restarted. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+The Java process of the asrbr-backup service is frequently restarted.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1435,11 +1519,25 @@ persists, resolve the issue based on the logs. Java process log path: `alidata/l
 
 This alert is used to check whether the Java process of the asrbr-backup service is running. This alert is triggered when the Java process of the asrbr-backup service does not exist. In this case, the asrbr service may be interrupted.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonasrbr-backup- _ applicationprocnotexi _ _ _ stalarm _ | tjmonasrbr- _ backup- checkapplication _ procstateclust _ _ _ erserverrole _ | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==2 _ _ |
 
-The Java process of the asrbr-backup service does not exist. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the asrbr-backup service does not exist.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1487,11 +1585,25 @@ persists, resolve the issue based on the logs. Java process log path: `alidata/l
 
 This alert is used to monitor the status of the asrbr-backup service. This alert is triggered when the status of the asrbr-backup service becomes abnormal. In this case, the asrbr-backup service may become inaccessible.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonasrbr-backup- _ serviceavailablealarm _ _ | tjmonasrbr- _ backup- checkserviceavai _ _ lableclusterserve _ _ rrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$errorflag _ _ _ ==1 |
 
-The Java process status of the asrbr-backup service becomes abnormal. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process status of the asrbr-backup service becomes abnormal.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1539,13 +1651,27 @@ persists, resolve the issue based on the logs. Java process log path: `alidata/l
 
 This alert is used to check whether the Java process of the hbr-console service is frequently restarted. This alert is triggered when the Java process of the hbr-console service is frequently restarted. In this case, the asrbr service may be interrupted.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 
 | tjmonhbr-console- _ applicationprocrestart _ _ alarm _ | tjmonhbr-console- _ checkapplication _ _ procstatecluster _ _ _ serverrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==1 _ _ |
 |---|---|---|---|---|---|---|
 
-The Java process of the hbr-console service is frequently restarted. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the hbr-console service is frequently restarted.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1593,11 +1719,23 @@ persists, resolve the issue based on the error information in the log. Java proc
 
 This alert is used to monitor whether the Java process of the hbr-console service is running. This alert is triggered when the Java process of the hbr-console service does not exist. In this case, the asrbr service may be interrupted.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonhbr-console- _ applicationprocnotexi _ _ _ stalarm _ | tjmonhbr- _ console- checkapplication _ procstateclust _ _ _ erserverrole _ | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==2 _ _ |
 
-The Java process of the hbr-console service does not exist. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the hbr-console service does not exist.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1644,11 +1782,25 @@ persists, resolve the issue based on the error information in the log. Java proc
 
 This alert is used to monitor the status of the hbr-console service. This alert is triggered when the hbr-console service becomes abnormal. In this case, the hbr-console service may be unavailable.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonhbr-console- _ serviceavailablealarm _ _ | tjmonhbr-console- _ checkserviceavai _ _ lableclusterserve _ _ rrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$errorflag= _ _ _ =1 |
 
-The Java process of the hbr-console service becomes abnormal. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the hbr-console service becomes abnormal.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1695,11 +1847,25 @@ persists, resolve the issue based on the error information in the log. Java proc
 
 This alert is used to check whether the Java process of the PopAliyunCom component is frequently restarted. This alert is triggered when the Java process of the PopAliyunCom component is frequently restarted. If the component is frequently restarted, the asrbr service may be interrupted.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonpop-aliyun-com- _ applicationprocrestart _ _ alarm _ | tjmonpop-aliyun- _ com- checkapplication _ _ procstatecluster _ _ _ serverrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==1 _ _ |
 
-The Java process of the PopAliyunCom component is frequently restarted. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the PopAliyunCom component is frequently restarted.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform the steps of the solution.
 
@@ -1725,11 +1891,25 @@ If a result similar to the one shown in the preceding figure is displayed, the s
 
 This alert is used to check whether the Java process of the PopAliyunCom component is running. This alert is triggered when the Java process of the PopAliyunCom component does not exist. In this case, the asrbr service may be interrupted.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonpop-aliyun-com- _ applicationprocnotexi _ _ _ stalarm _ | tjmonpop-aliyun- _ com- checkapplication _ procstateclust _ _ _ erserverrole _ | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==2 _ _ |
 
-The Java process of the PopAliyunCom component does not exist. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the PopAliyunCom component does not exist.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform the steps of the solution.
 
@@ -1755,11 +1935,25 @@ If a result as shown in the preceding figure is displayed, the Java process exis
 
 This alert is used to monitor the status of the PopAliyunCom component. This alert is triggered when the status of the PopAliyunCom component becomes abnormal. In this case, the asrbrservice is unavailable.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonpop-aliyun-com- _ serviceavailablealarm _ _ | tjmonpop-aliyun- _ com- checkserviceavai _ _ lableclusterserve _ _ rrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$errorflag _ _ _ ==1 |
 
-The Java process of the PopAliyunCom component becomes abnormal. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the PopAliyunCom component becomes abnormal.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform the steps of the solution.
 
@@ -1785,11 +1979,25 @@ If a result as shown in the preceding figure is displayed, the Java process exis
 
 This alert is used to check whether the Java process of the PopApiAliyunCom component is frequently restarted. This alert is triggered when the Java process of thePopApiAliyunCom component is frequently restarted. In this case, the PopApiAliyunCom component is unavailable.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonpop-api-aliyun- _ com- applicationprocrestart _ _ alarm _ | tjmonpop-api- _ aliyun-com- checkapplication _ _ procstatecluster _ _ _ serverrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==1 _ _ |
 
-The Java process of the PopApiAliyunCom component is frequently restarted. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the PopApiAliyunCom component is frequently restarted.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1842,11 +2050,25 @@ Java process log path:alidata/logs/ Container log query command:docker logs`<Con
 
 This alert is used to monitor whether the Java process of the PopApiAliyunCom component is running. This alert is triggered when the Java process of the PopApiAliyunCom component does not exist. In this case, the PopApiAliyunCom Component is unavailable.
 
+**Alert attributes**
+
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
 | tjmonpop-api-aliyun- _ com- applicationprocnotexi _ _ _ stalarm _ | tjmonpop-api- _ aliyun-com- checkapplication _ procstateclust _ _ _ erserverrole _ | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$status==2 _ _ |
 
-The Java process of the PopApiAliyunCom component does not exist. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the PopApiAliyunCom component does not exist.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1903,7 +2125,19 @@ This alert is used to monitor the status of the PopApiAliyunCom component. This 
 |---|---|---|---|---|---|---|
 | tjmonpop-api-aliyun- _ com- serviceavailablealarm _ _ | tjmonpop-api- _ aliyun-com- checkserviceavai _ _ lableclusterserve _ _ rrole | tianjimon | P1 | asrbr | Every 60 seconds | p1expressin\|$errorflag _ _ _ ==1 |
 
-The Java process of the PopApiAliyunCom component becomes abnormal. If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Java process of the PopApiAliyunCom component becomes abnormal.
+
+**Impacts**
+
+If this error occurs on one of the two nodes, service load balancing is affected, but the service remains available. If this error occurs on both nodes, the service becomes unavailable.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -1983,11 +2217,25 @@ Java process log path:alidata/logs/ Container log query command:docker logs`<Con
 
 This alert is used to check whether a backup policy for an instance is successfully started. This alert is triggered when a backup policy for an instance fails to be started. In this case, the instance cannot be backed up by using the backup policy.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPSTARTINSTAN _ _ CEPOLICYFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | A backup policy for an instance fails to be started due to the failure to call the related databases and HBR APIs. |
 
-Apsara Stack Enterprise V3.12 and later A backup policy for an instance fails to be started due to the failure to call the related databases and HBR APIs. The instance cannot be backed up by using the backup policy.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.12 and later
+
+**Causes**
+
+A backup policy for an instance fails to be started due to the failure to call the related databases and HBR APIs.
+
+**Impacts**
+
+The instance cannot be backed up by using the backup policy.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2011,9 +2259,13 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup plan for an instance is successfully stopped. This alert is triggered when a backup plan for an instance fails to be stopped. The instance may still be undergoing the backup process. You must take immediate actions to identify and resolve the issue.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPSTOPFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | A backup plan fails to be stopped. |
+
+**Applicable versions**
 
 Apsara Stack Enterprise V3.12 and later An API of a related business failed to be called during the process. The instance may still be undergoing the backup process. You must take immediate actions to identify and resolve the issue.
 
@@ -2043,7 +2295,19 @@ This alert is used to check whether a backup plan for an instance is successfull
 |---|---|---|---|---|---|
 | BACKUPENABLEFAILE _ _ D | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an instance fails to be enabled, possibly due to a failure to call related databases and HBR interfaces. |
 
-Apsara Stack Enterprise V3.12 and later Related databases and HBR interfaces failed to be called during the process. The instance cannot be backed up by using the backup plan.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.12 and later
+
+**Causes**
+
+Related databases and HBR interfaces failed to be called during the process.
+
+**Impacts**
+
+The instance cannot be backed up by using the backup plan.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2067,11 +2331,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup plan is successfully created for an instance. This alert is triggered when a backup plan fails to be created for an instance. In this case, the instance is not backed up by using the backup plan.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPCREATEINSTA _ _ NCEBACKUPPLANFAIL _ _ _ ED | asrbr-backup | P2 | asrbr | One-time check | A backup plan fails to be created. |
 
-Apsara Stack Enterprise V3.12 and later An API of a related business failed to be called during the process. The instance is not backed up by using the backup plan.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.12 and later
+
+**Causes**
+
+An API of a related business failed to be called during the process.
+
+**Impacts**
+
+The instance is not backed up by using the backup plan.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2093,11 +2371,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup plan for an instance is successfully stopped. This alert is triggered when a backup plan for an instance fails to be stopped. In this case, the instance may still be undergoing the backup process. You must take actions at the earliest opportunity.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPSTOPINSTANC _ _ EPOLICYFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an instance fails to be stopped. |
 
-A backup plan for an instance fails to be stopped, possibly due to a failure to call an API of a related business. The instance may still be undergoing the backup process.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A backup plan for an instance fails to be stopped, possibly due to a failure to call an API of a related business.
+
+**Impacts**
+
+The instance may still be undergoing the backup process.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2121,9 +2413,17 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether an immediate backup for an instance is successful. This alert is triggered when an immediate backup for an instance fails. In this case, the instance is not backed up. You must identify the cause or perform another immediate backup.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPEXCUTEINSTA _ _ NCEBACKUPFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | An immediate backup for an instance fails. |
+
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
 
 An API of a related business failed to be called during the process. The instance is not backed up. You must identify the cause or perform another immediate backup.
 
@@ -2149,13 +2449,27 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup record is successfully generated for a backup. This alert is triggered when a backup record fails to be generated for a backup. You must identify the cause.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 
 | BACKUPSYNCINSTANC _ _ EBACKUPRECORDFAI _ _ _ LED | asrbr-backup | P2 | asrbr | One-time check | No backup record is generated for a periodical backup or an immediate backup. |
 |---|---|---|---|---|---|
 
-The backup failed, or the backup job ID is not generated within in the specified period of time. The backup record fails to be generated. You must identify the cause of the failure.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The backup failed, or the backup job ID is not generated within in the specified period of time.
+
+**Impacts**
+
+The backup record fails to be generated. You must identify the cause of the failure.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2179,11 +2493,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether the generation of a backup record is blocked. This alert is triggered when the generation of a backup record is blocked.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPSYNCINSTANC _ _ EBACKUPRECORDBO _ _ _ LCKED | asrbr-backup | P2 | asrbr | One-time check | No backup record is generated for a periodical backup or an immediate backup. |
 
-The instance is a storage instance or a big data instance. Other backup plans of the instance are being executed. No backup record is generated for the backup event.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The instance is a storage instance or a big data instance. Other backup plans of the instance are being executed.
+
+**Impacts**
+
+No backup record is generated for the backup event.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2203,11 +2531,19 @@ To prevent the backup record from being blocked, perform the following steps to 
 
 This alert is used to check whether a backup policy is successfully modified. This alert is triggered when the modification of a backup policy fails. The original backup policy continues to be used for the backup.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | BACKUPMODIFYINSTA _ _ NCEPOLICYFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | A backup policy fails to be modified. |
 
-A backup policy fails to be modified. The original backup policy continues to be used for the backup.
+A backup policy fails to be modified.
+
+**Impacts**
+
+The original backup policy continues to be used for the backup.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2233,7 +2569,19 @@ This alert is used to check whether a backup plan for an Elastic Compute Service
 |---|---|---|---|---|---|
 | ECSDISKBKSTARTIN _ _ _ _ STANCEPOLICYFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an ECS instance fails to be started. |
 
-A backup plan for an ECS instance fails to be started. The ECS instance cannot be backed up by using the backup plan.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A backup plan for an ECS instance fails to be started.
+
+**Impacts**
+
+The ECS instance cannot be backed up by using the backup plan.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2255,11 +2603,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully stopped. This alert is triggered when a backup plan for an ECS instance fails to be stopped. The backup is still in progress.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ECSDISKBKSTOPFAIL _ _ _ _ ED | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an ECS instance fails to be stopped. |
 
-A third-party API may fail to be called during the process. The ECS instance continues to be backed up by using the backup plan.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A third-party API may fail to be called during the process.
+
+**Impacts**
+
+The ECS instance continues to be backed up by using the backup plan.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2283,9 +2645,17 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully started. This alert is triggered when a backup plan for an ECS instance fails to be started.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ECSDISKBKENABLEF _ _ _ _ AILED | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an ECS instance fails to be started. |
+
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
 
 A third-party API may fail to be called during the process. The ECS instance is not backed up by using the backup plan.
 
@@ -2315,7 +2685,19 @@ This alert is used to check whether a backup plan for an Elastic Compute Service
 |---|---|---|---|---|---|
 | ECSDISKBKSTOPINS _ _ _ _ TANCEPOLICYFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an ECS instance fails to be stopped. |
 
-A backup plan for an ECS instance fails to be stopped, possibly due to a failure to call a third-party API. The ECS instance continues to undergo the backup process based on the backup plan.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A backup plan for an ECS instance fails to be stopped, possibly due to a failure to call a third-party API.
+
+**Impacts**
+
+The ECS instance continues to undergo the backup process based on the backup plan.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2339,11 +2721,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully created. This alert is triggered when a backup plan for an ECS instance fails to be created.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ECSDISKBKCREATEI _ _ _ _ NSTANCEBACKUPPLAN _ _ FAILED _ | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an ECS instance fails to be created. |
 
-A third-party API may fail to be called during the process. The ECS instance is not backed up by using the backup plan.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A third-party API may fail to be called during the process.
+
+**Impacts**
+
+The ECS instance is not backed up by using the backup plan.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2365,11 +2761,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether an immediate backup for an Elastic Compute Service (ECS) instance is successful. This alert is triggered when an immediate backup for an ECS instance fails.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ECSDISKBKEXCUTEI _ _ _ _ NSTANCEBACKUPFAIL _ _ ED | asrbr-backup | P2 | asrbr | One-time check | An immediate backup for an ECS instance fails. |
 
-A third-party API may fail to be called during the process. The ECS instance is not backed up.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A third-party API may fail to be called during the process.
+
+**Impacts**
+
+The ECS instance is not backed up.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2393,9 +2803,17 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a backup record is successfully generated for a backup of an Elastic Compute Service (ECS) instance. This alert is triggered when a backup record fails to be generated for a backup of an ECS instance.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ECSDISKBKSYNCINS _ _ _ _ TANCEBACKUPRECOR _ _ DFAILED _ | asrbr-backup | P2 | asrbr | One-time check | A backup record fails to be generated for a backup of an ECS instance. |
+
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
 
 The backup of the ECS instance fails, or the job ID of the ECS instance backup is not generated within in the specified period of time. The back up of the ECS instance fails. No backup record is generated for the backup.
 
@@ -2427,7 +2845,19 @@ This alert is used to check whether a backup plan for an Elastic Compute Service
 | ECSDISKBKSYNCINS _ _ _ _ TANCEBACKUPRECOR _ _ DBLOCKED _ | asrbr-backup | P2 | asrbr | One-time check | A backup plan for an ECS instance is blocked. |
 |---|---|---|---|---|---|
 
-The previous backup plan is still running. After the previous backup plan is complete, the backup plan continues to back up the ECS instance.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The previous backup plan is still running.
+
+**Impacts**
+
+After the previous backup plan is complete, the backup plan continues to back up the ECS instance.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2447,11 +2877,23 @@ To prevent a backup plan for an ECS instance from being blocked, perform the fol
 
 This alert is used to check whether a backup policy for an Elastic Compute Service (ECS) instance is successfully modified. This alert is triggered when a backup policy for an ECS instance fails to be modified. The original backup policy continues to be used to back up the ECS instance.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ECSDISKBKMODIFYI _ _ _ _ NSTANCEPOLICYFAILE _ _ D | asrbr-backup | P2 | asrbr | One-time check | A backup policy for an ECS instance fails to be modified. |
 
-A backup policy for an ECS instance fails to be modified. The backup policy fails to be modified. The original backup policy continues to be used to back up the ECS instance.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A backup policy for an ECS instance fails to be modified.
+
+**Impacts**
+
+The backup policy fails to be modified. The original backup policy continues to be used to back up the ECS instance.
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2490,11 +2932,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a recovery job for an instance is successfully created. This alert is triggered when a recovery job for an instance fails to be created.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | RECOVERYCREATETAS _ _ KFAILED _ | asrbr-backup | P2 | asrbr | One-time check | A recovery job for an instance fails to be asynchronously created. |
 
-A recovery job for an instance fails to be created. The instance cannot be recovered.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A recovery job for an instance fails to be created.
+
+**Impacts**
+
+The instance cannot be recovered.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2516,11 +2972,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether a recovery job for an instance is successfully started. This alert is triggered when a recovery job for an instance fails to be started.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | RECOVERYSTARTTASK _ _ FAILED _ | asrbr-backup | P2 | asrbr | One-time check | A recovery job for an instance fails to be asynchronously started. |
 
-A recovery job for an instance fails to be started. The instance cannot be recovered.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+A recovery job for an instance fails to be started.
+
+**Impacts**
+
+The instance cannot be recovered.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2544,11 +3014,15 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether subsequent recovery efforts for an instance that previously failed to be recovered are successful. This alert is triggered when subsequent recovery efforts for an instance that previously failed to be recovered fail.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | RECOVERYREDOINSTA _ _ NCEFAILED _ | asrbr-backup | P2 | asrbr | One-time check | Subsequent recovery efforts for an instance that previously failed to be recovered fail. |
 
-Subsequent recovery efforts for an instance that previously failed to be recovered fail. The instance cannot be recovered.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later Subsequent recovery efforts for an instance that previously failed to be recovered fail. The instance cannot be recovered.
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2578,7 +3052,19 @@ This alert is used to check whether the subsequent running of a recovery job tha
 | RECOVERYREDOTASK _ _ FAILED _ | asrbr-backup | P2 | asrbr | One-time check | The subsequent running of a recovery job that previously failed fails. |
 |---|---|---|---|---|---|
 
-The subsequent running of a recovery job that previously failed fails. The instance cannot be recovered.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The subsequent running of a recovery job that previously failed fails.
+
+**Impacts**
+
+The instance cannot be recovered.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2602,11 +3088,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether the result of a recovery job is successfully updated. This alert is triggered when the result of a recovery job fails to be updated.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | RECOVERYUPDATERE _ _ COVERYTASKFAILED _ _ | asrbr-backup | P2 | asrbr | One-time check | The result of a recovery job fails to be updated. |
 
-The result of a recovery job fails to be updated. The recovery job fails.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The result of a recovery job fails to be updated.
+
+**Impacts**
+
+The recovery job fails.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2628,11 +3128,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether the result of a recovery job for an instance is successfully updated. This alert is triggered when the result of a recovery job for an instance fails to be updated.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | RECOVERYUPDATERE _ _ COVERYINSTANCETAS _ _ KFAILED _ | asrbr-backup | P2 | asrbr | One-time check | The result of a recovery job for an instance fails to be updated. |
 
-The result of a recovery job for an instance fails to be updated. The instance fails to be restored by the recovery job.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The result of a recovery job for an instance fails to be updated.
+
+**Impacts**
+
+The instance fails to be restored by the recovery job.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2671,11 +3185,25 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 This alert is used to check whether the backup data size exceeds 70% of the authorized amount. This alert is triggered when the backup data size exceeds 70% of the authorized amount. After the backup data size exceeds 100% of the authorized amount, the system continues to back up existing instances but does not back up new instances.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSEREACHTHRES _ _ HODREMINDMSG _ _ | asrbr-backup | P2 | asrbr | Once a day | The backup data size exceeds 70% of the authorized amount. |
 
-The backup data size exceeds 70% of the authorized amount. This alert is triggered for notifications. After the backup data size exceeds 100% of the authorized amount, the system continues to back up existing instances but does not back up new instances.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The backup data size exceeds 70% of the authorized amount. This alert is triggered for notifications.
+
+**Impacts**
+
+After the backup data size exceeds 100% of the authorized amount, the system continues to back up existing instances but does not back up new instances.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2687,9 +3215,17 @@ When the backup data size exceeds 70% of the authorized amount, the existing bac
 
 This alert is used to check whether the backup data size exceeds the authorized amount. This alert is triggered when the backup data size exceeds the authorized amount. In this case, you cannot back up new instances, but you can continue to back up instances that already have backup plans.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSENOTENOUGH _ _ _ REMINDMSG _ | asrbr-backup | P2 | asrbr | Once a day | The backup data size exceeds the authorized amount. |
+
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
 
 The backup data size exceeds the authorized amount. You cannot back up new instances, but you can continue to back up instances that already have backup plans.
 
@@ -2703,11 +3239,25 @@ You cannot create backup plans or perform immediate backups for new instances. T
 
 This alert is used to monitor whether the backup data size exceeds the authorized amount for a consecutive period of 30 days. This alert is triggered when the backup data size exceeds the authorized amount for a consecutive period of 30 days. In this case, you cannot back up new instances. All backup plans of the authorized instances are stopped.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSESTOPALLPLA _ _ _ NREMINDMSG _ _ | asrbr-backup | P2 | asrbr | Once a day | The backup data size exceeds the authorized amount for a consecutive period of 30 days. |
 
-The backup data size exceeds the authorized amount for a consecutive period of 30 days. You cannot back up new instances. All backup plans of the authorized instances are stopped.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The backup data size exceeds the authorized amount for a consecutive period of 30 days.
+
+**Impacts**
+
+You cannot back up new instances. All backup plans of the authorized instances are stopped.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2719,21 +3269,45 @@ To resolve the issue, use one of the following methods: Method 1: Do not purchas
 
 This alert is used to notify that the purchased licenses are synchronized with the system. This alert is triggered when the purchased licenses are synchronized with the system.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSESYNCREMIND _ _ _ MSG | asrbr-backup | P2 | asrbr | Once a day | The purchased licenses are synchronized with the system. |
 
-The purchased licenses are synchronized with the system. None. No action is required.
+The purchased licenses are synchronized with the system.
+
+**Impacts**
+
+None.
+
+**Solutions**
+
+No action is required.
 
 #### 6.4.6 HBR_LITE_LICENSE_NOT_ENOUGH_REMIND_MSG
 
 This alert is used to check whether the size of the instances to back up exceeds the authorized capacity. This alert is triggered when the size of the instances to back up exceeds the authorized capacity. In this case, you cannot back up new instances. Instances that have existing backup plans can still be backed up.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | HBRLITELICENSENOT _ _ _ ENOUGHREMINDMSG _ _ _ | asrbr-backup | P2 | asrbr | Once a day | The size of the instances to back up exceeds the authorized capacity. |
 
-The Hybrid Backup Recovery (HBR) lightweight authorization package is exhausted. This alert is triggered for notifications. You cannot back up new instances. Instances that have existing backup plans can still be backed up.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The Hybrid Backup Recovery (HBR) lightweight authorization package is exhausted. This alert is triggered for notifications.
+
+**Impacts**
+
+You cannot back up new instances. Instances that have existing backup plans can still be backed up.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2745,9 +3319,17 @@ To prevent exhaustion of the authorized capacity, perform one of the following o
 
 This alert is used to check whether the size of the instances to back up exceeds 70% of the authorized capacity. This alert is triggered when the size of the instances to back up exceeds 70% of the authorized capacity. In this case, the backup features are not affected.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | HBRLITELICENSENOT _ _ _ ENOUGHREMINDMSG _ _ _ | asrbr-backup | P2 | asrbr | Once a day | The size of the instances to back up exceeds 70% of the authorized capacity. |
+
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
 
 The size of the instances to back up exceeds 70% of the authorized capacity. This alert is triggered to notify that the remaining capacity of the HBR lightweight authorization package is running low. None.
 
@@ -2774,9 +3356,17 @@ When the size of the instances to back up exceeds 70% of the authorized capacity
 
 This alert is used to check whether the data stored in a backup storage pool reaches the user-defined maximum capacity. This alert is triggered when the data stored in a backup storage pool reaches the user-defined maximum capacity. As a result, new backup data cannot be written into the storage pool and all backup tasks that use the storage pool fail.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | STORAGEPOOLCHECK _ _ STORAGEPOOLSIZE _ _ _ _ CAPACITYUSEDUP _ _ | asrbr-backup | P2 | asrbr | Once a day | The data stored in a backup storage pool reaches the user-defined maximum capacity. |
+
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
 
 The data stored in a backup storage pool reaches the user-defined maximum capacity. If the actual storage space of the storage pool is exhausted, new backup data cannot be written into the storage pool and all backup tasks that use the storage pool fail. If the storage space of the storage pool is not a real, fixed logical space, backup operations can continue even if the user-defined upper limit is exceeded.
 
@@ -2794,11 +3384,23 @@ If the storage pool has sufficient storage space, change the storage capacity of
 
 This alert is used to check whether the amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity. This alert is triggered when the amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity. This situation does not immediately affect the backup functionality. However, you must expand the storage capacity or modify the backup configuration at the earliest opportunity.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | STORAGEPOOLCHECK _ _ STORAGEPOOLSIZE _ _ _ _ CINSUFFICIENTMARGIN _ | asrbr-backup | P2 | asrbr | Once a day | The amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity. |
 
-The amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity. None.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity.
+
+**Impacts**
+
+None.
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2814,11 +3416,25 @@ If the storage pool has sufficient storage space, change the storage capacity of
 
 This alert is used to check whether the amount of data stored in a backup vault exceeds 70% of its maximum capacity. This alert is triggered when the amount of data stored in a backup vault exceeds 70% of its maximum capacity. This does not immediately affect the backup functionality. However, you must increase the storage capacity of the backup vault or change the backup policy at the earliest opportunity.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | USEMORETHAN70 _ _ _ | asrbr-backup | P2 | asrbr | Every hour | The amount of data stored in a backup vault exceeds 70% of its maximum capacity. |
 
-The amount of data stored in a backup vault exceeds 70% of its maximum capacity. None.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The amount of data stored in a backup vault exceeds 70% of its maximum capacity.
+
+**Impacts**
+
+None.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2832,11 +3448,23 @@ Method 1: Increase the maximum storage capacity of the backup vault. i. Log on t
 
 This alert is used to check whether the amount of data stored in a backup vault exceeds 90% of its maximum capacity. This alert is triggered when the amount of data stored in a backup vault exceeds 90% of its maximum capacity. This situation does not immediately affect the backup functionality. However, you must increase the storage capacity of the backup vault or change the backup policy at the earliest opportunity.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | USEMORETHAN90 _ _ _ | asrbr-backup | P1 | asrbr | Once per hour | The amount of data stored in a backup vault exceeds 90% of its maximum capacity. |
 
-The amount of data stored in a backup vault exceeds 90% of its maximum capacity. None.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The amount of data stored in a backup vault exceeds 90% of its maximum capacity.
+
+**Impacts**
+
+None.
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2850,11 +3478,15 @@ Method 1: Increase the maximum storage capacity of the backup vault. i. Log on t
 
 This alert is used to check whether the amount of data stored in a backup vault reaches the maximum capacity. This alert is triggered when the amount of data stored in a backup vault reaches the maximum capacity. In this case, the backup plans that use the backup vault fails to backup data.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | CAPACITYUSEDUP _ _ | asrbr-backup | P1 | asrbr | Every hour | The amount of data stored in a backup vault reaches the maximum capacity. |
 
 The amount of data stored in a backup vault reaches the maximum capacity. The backup plans that use the backup vault fails to backup data.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2868,11 +3500,19 @@ Method 1: Increase the maximum storage capacity of the backup vault. i. Log on t
 
 This alert is used to check whether a backup vault is available. This alert is triggered when a backup vault becomes unavailable. In this case, the backup plans that use the backup vault cannot back up data.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | ABNORMALSTATUS _ | asrbr-backup | P1 | asrbr | Every hour | Data cannot be written to the bucket in which the backup vault is deployed. |
 
-Data cannot be written to the backup vault. The backup plans that use the backup vault cannot back up data.
+Data cannot be written to the backup vault.
+
+**Impacts**
+
+The backup plans that use the backup vault cannot back up data.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2900,11 +3540,15 @@ the issue. If the bucket does not exist, the bucket has been deleted and contact
 
 This alert is used to check whether metadata backup is successful. This alert is triggered when metadata backup in the current cycle fails. If metadata backup continues to fail for an extended period of time, the system fails to obtain the latest backup set in disaster recovery scenarios.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | METADBMETADATAB _ _ _ ACKUPFAILED _ | asrbr-backup | P2 | asrbr | Check at the time when metadata is backed up. | Metadata backup fails. |
 
 The auto-backup of the service fails. If metadata backup continues to fail for an extended period of time, the system fails to obtain the latest backup set in disaster recovery scenarios.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2929,11 +3573,25 @@ docker restart <Container ID>
 
 This alert is used to check whether the metadata backup cycle is too short. This alert is triggered when the metadata backup cycle is too short. This situation does not affect the backup functionalities.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | METADBMETADATAB _ _ _ ACKUPOUTOFPERIOD _ _ _ | asrbr-backup | P2 | asrbr | Check at the time when metadata is backed up. | Metadata backup ends later than the next backup time. |
 
-The metadata backup duration exceeds the backup cycle. None.However, we recommend that you increase the backup cycle.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The metadata backup duration exceeds the backup cycle.
+
+**Impacts**
+
+None.However, we recommend that you increase the backup cycle.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2951,7 +3609,19 @@ This alert is used to check whether the metadata database is successfully update
 |---|---|---|---|---|---|
 | METADBMETADATAD _ _ _ ATABASEUPDATEFAILE _ _ D | asrbr-backup | P2 | asrbr | Check at the time when metadata is backed up. | The local database fails to be updated when metadata backup is complete. |
 
-Auto-backup fails to be updated. None.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+Auto-backup fails to be updated.
+
+**Impacts**
+
+None.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -2976,11 +3646,25 @@ docker restart <Container ID>
 
 This alert is used to check the execution status of metadata backup management during an automatic backup process. This alert is triggered when metadata backup management during an automatic backup process fails.Unknown exceptions or interruptions occur during backup task scheduling. As a result, subsequent backup task scheduling may fail to be performed as expected.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | METADBMETADATABA _ _ _ CKUPMANAGEFAILED _ _ | asrbr-backup | P2 | asrbr | Check at the time when metadata is backed up. | Unknown exceptions or interruptions occur during the metadata backup task scheduling. |
 
-Metadata policies and records fail to be updated during the automatic backup process. Subsequent backup task scheduling may fail to be performed as expected.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+Metadata policies and records fail to be updated during the automatic backup process.
+
+**Impacts**
+
+Subsequent backup task scheduling may fail to be performed as expected.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -3005,11 +3689,19 @@ docker restart <Container ID>
 
 This alert is used to check whether the backup data size of an organization exceeds 80% of the authorized backup capacity. This alert is triggered when the backup data size of an organization exceeds 80% of the authorized backup capacity. This does not affect the backup functionalities. However, you must increase the backup capacity at the earliest opportunity.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSECHECKLICENS _ _ ESIZECAPACITYUSED _ _ _ _ UP | asrbr-backup | P2 | asrbr | Once a day | The size of instances to back up by an organization exceeds 80% of the authorized backup capacity. |
 
-The size of instances to back up by an organization exceeds 80% of the authorized backup capacity. None.
+The size of instances to back up by an organization exceeds 80% of the authorized backup capacity.
+
+**Impacts**
+
+None.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -3021,11 +3713,25 @@ To prevent impact on subsequent backups when instance data backed up by an organ
 
 This alert is used to check whether the backup data size of an organization exceeds the authorized backup data amount. This alert is triggered when the backup data size of an organization exceeds the authorized backup data amount. As a result, the organization cannot create backup plans for new instances or perform immediate backup operations.
 
+**Alert attributes**
+
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSECHECKLICENS _ _ ESIZECAPACITYINSUF _ _ _ FICIENTMARGIN _ | asrbr-backup | P2 | asrbr | Once a day | The backup data size of an organization exceeds the authorized backup data amount. |
 
-The backup data size of an organization exceeds the authorized backup data amount. The current organization cannot create backup plans for new instances or perform immediate backup operations.
+**Applicable versions**
+
+Apsara Stack Enterprise V3.16 and later
+
+**Causes**
+
+The backup data size of an organization exceeds the authorized backup data amount.
+
+**Impacts**
+
+The current organization cannot create backup plans for new instances or perform immediate backup operations.
+
+**Solutions**
 
 > **Warning:** If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution.
 
@@ -3330,9 +4036,15 @@ This topic describes how to resolve an error that occurs when you create a stora
 
 **Cause**
 
-The **************** or ******************** entered when you create the storage pool is incorrect. You must enter the **************** and ******************** of the destination storage medium and have the permissions to read data from and write data to the storage medium. Therefore, you must first obtain the correct AccessKey ID and AccessKey secret of the destination storage medium. The storage media include Object Storage Service (OSS), OSS deployed on Cloud Defined Storage (CDS), miniOSS, PanguStor, and software-defined storage (SDS).
+The **************** or ******************** entered when you create the storage pool is incorrect.
+
+**Note**
+
+You must enter the **************** and ******************** of the destination storage medium and have the permissions to read data from and write data to the storage medium. Therefore, you must first obtain the correct AccessKey ID and AccessKey secret of the destination storage medium. The storage media include Object Storage Service (OSS), OSS deployed on Cloud Defined Storage (CDS), miniOSS, PanguStor, and software-defined storage (SDS).
 
 **Solution**
+
+**Note**
 
 ASR-BR supports backup storage by using the OSS protocol. Therefore, you can use ossutil to verify whether the AccessKey ID and AccessKey secret have the permissions to read data from and write data to OSS.
 1. Download and install ossutil. For more information, see Install ossutil.

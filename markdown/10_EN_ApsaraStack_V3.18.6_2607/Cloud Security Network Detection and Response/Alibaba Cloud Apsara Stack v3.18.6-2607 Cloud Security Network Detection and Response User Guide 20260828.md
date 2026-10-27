@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 33
 source_pdf: "95aec4d006082c28_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Network%20Detection%20and%20Response%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 20260828
@@ -120,7 +120,7 @@ Organization security administrators and global organization security administra
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Traffic Trends**.
 5. On the **Traffic Trends** page, select **Last 1 Hour**, **Last 24 Hours**, or **Last 7 Days** to query
 traffic trends within the specified time range.
@@ -145,7 +145,7 @@ and outbound traffic at the Internet border.
 **Detection and Response**. On the **Network Detection and Response** page, select a
 region from the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Traffic Analytics**.
 5. On the **Internet Boundary Traffic Analysis** tab of the Traffic Analysis page, view the
 information about the traffic at the Internet border. i. Specify conditions to filter traffic.
@@ -191,7 +191,7 @@ and outbound traffic routed over leased lines between data centers and virtual p
 **Detection and Response**. On the **Network Detection and Response** page, select a
 region from the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Traffic Analytics**.
 5. On the **Intranet Boundary Traffic Analysis** tab of the Traffic Analysis page, view traffic
 at the internal network border. i. Specify conditions to filter traffic.
@@ -262,7 +262,7 @@ The attacker profile feature analyzes and displays the basic information, threat
 **Detection and Response**. On the **Network Detection and Response** page, select a
 region from the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Attacker Profile**.
 5. On the **Attacker Profile** page, specify search conditions. The following table describes the
 search conditions.
@@ -372,7 +372,7 @@ Logs of blocked traffic record the traffic that matches a blocking policy. This 
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Threat Detection**.
 5. On the **Blocking Logs** tab of the Threat Detection page, specify query conditions. The
 following table describes the query conditions.
@@ -437,7 +437,7 @@ DNS behavior analysis can analyze the characteristics of suspicious domain names
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Behavior Analysis**.
 5. On the **DNS Behavior Analysis** tab of the Behavior Analysis page, specify query
 conditions. The following table describes the query conditions.
@@ -465,7 +465,7 @@ Encrypted traffic analysis can detect suspicious encrypted traffic by analyzing 
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Behavior Analysis**.
 5. On the **Encrypted Traffic Analysis** tab, specify query conditions. The following table
 describes the query conditions.
@@ -541,7 +541,7 @@ This topic describes how to create an application-layer policy, view application
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Policy Configurations**.
 5. On the **Application Layer Policy** tab of the Policy Configurations page, click the **HTTP**
 **Custom Policy** tab.
@@ -570,7 +570,7 @@ results.
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Policy Configurations**.
 5. On the **Application Layer Policy** tab, click the **Web Application Detection**
 **Configuration** tab.
@@ -594,7 +594,7 @@ A spoofing policy for port scanning lures attackers to launch attacks against po
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Policy Configurations**.
 5. On the **Port Scan Spoofing Policy** tab of the Policy Configurations page, click **Create**
 **Policy**. In the Create Policy panel, configure parameters and click **OK**. The following table
@@ -625,7 +625,7 @@ An address book is a collection of IP addresses. You can create an address book 
 **and Response**. On the **Network Detection and Response** page, select a region from
 the **Region** drop-down list and click **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization that is of the security administrator level to view the full menu.
+icon and change the organization to the root organization that is of the security administrator level to view the full menu.
 4. In the left-side navigation pane, click **Policy Configurations**.
 5. On the **Address Book Management** tab of the Policy Configurations page, click **Create IP**
 **Address Book**. In the Create Address Book panel, configure parameters and click **OK**. The
@@ -655,7 +655,7 @@ Network Detection and Response (NDR) provides built-in intrusion detection syste
 **Detection Response** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization to view the full menu.
+icon and change the organization to the root organization to view the full menu.
 4. In the left-side navigation pane, click **Policy Configurations**.
 5. On the **Intrusion Detection Rule** tab of the Policy Configurations page, click **Create**
 **Rule**. In the Create Rule panel, configure parameters and click **OK**. The following table
@@ -696,7 +696,7 @@ Network Detection and Response (NDR) allows you to configure CIDR blocks for the
 **Detection Response** page, select a region from the **Region** drop-down list and click
 **Access with Authorized Role**.
 3. In the top navigation bar, click the
-organization to view the full menu.
+icon and change the organization to the root organization to view the full menu.
 4. In the left-side navigation pane, click **Policy Configurations**.
 5. On the **IP Address Pool of Internal Assets** tab of the Policy Configurations page, click
 **Add**.

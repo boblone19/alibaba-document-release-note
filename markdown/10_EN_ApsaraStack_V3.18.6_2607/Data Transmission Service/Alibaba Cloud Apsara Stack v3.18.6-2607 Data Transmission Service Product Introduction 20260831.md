@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 20
 source_pdf: "a8e3391c51657c7f_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831
@@ -35,6 +35,8 @@ You can use DTS to synchronize data between data sources in real time. The follo
 | Add or remove the objects to be synchronized | You can add or remove the objects to be synchronized at any time when a data synchronization task is running. |
 | View and analyze the synchronization performance | DTS provides trend charts that allow you to view and analyze the performance of your data synchronization tasks. The synchronization performance is measured based on bandwidth, records per second (RPS), and synchronization latency. |
 | Monitor data synchronization tasks | DTS allows you to monitor the status of data synchronization tasks. If the threshold for synchronization latency is reached, the system sends an alert notification to you. You can set the alert threshold based on the sensitivity of your business to synchronization latency. |
+
+**Data migration**
 
 You can use DTS to migrate data between homogeneous or heterogeneous data sources. DTS provides the following extract, transform, and load (ETL) capabilities: object name mapping for columns, tables, and databases, and data filtering. These capabilities allow you to migrate data between various types of data sources with ease. DTS uses online migration. You need to only configure the source instance, the destination instance, and the objects to be migrated. DTS automatically completes the entire data migration process. You can select all of the supported migration types to minimize the impact of online data migration on your services. However, you must ensure that DTS servers can connect to both the source and destination instances. The following table describes the ETL capabilities supported by the data migration feature.
 

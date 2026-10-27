@@ -5,7 +5,7 @@ doc_version: "20250318"
 pdf_pages: 124
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Elastic Compute Service Operations and Maintenance Guide 20250318.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Elastic%20Compute%20Service%20Operations%20and%20Maintenance%20Guide%2020250318.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Elastic Compute Service Operations and Maintenance Guide 20250318
@@ -147,6 +147,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password used to log on to the console are obtained from the deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the Enter key. ager Operations Console
@@ -168,9 +171,12 @@ If you log on to the Apsara Uni-manager Operations Console for the first time, y
 
 This topic describes the Computing Overview page of the Compute Operations Console. On the Computing Overview page, you can obtain a high-level overview of services in IaaS O&M, stay updated with service status, and view service information, such as diagnostic results, alerts, inventory usage, key metrics, and health status.
 
+**Procedure**
+
 ## 1 Log on to the Apsara Uni-manager Operations Console.
 
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the **Service Check** section, view the diagnostic score that is displayed on the dashboard
 and the numbers of check items that are in the Normal, Risk, Abnormal, and Suggestions states.
 
@@ -214,7 +220,11 @@ Click the name of a service that you want to view. In the **Deploy Servers** dia
 #### 2.2.1 View computing clusters
 
 This topic describes how to query and view information about all computing clusters, including the total number of clusters, the number of clusters that are not in the final state, the number of clusters that are in the final state, the cluster names, cluster types, and cluster instance types.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 By default, the details of all clusters are displayed.
 4. In the upper-right corner of the page, view the total number of clusters, the number of
@@ -249,7 +259,11 @@ computing server in a cluster, or manage the business status of a computing serv
 #### 2.2.2 Log on to the AG of a cluster
 
 You can log on to the Admin Gateway (AG) of a cluster to go to the Terminal Service page. Then, you can perform O&M operations on virtual machines (VMs) in the cluster by using the CLI. This topic describes how to log on to the AG of a cluster from the Computing Clusters page.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 By default, the details of all clusters are displayed.
 4. On the page that appears, find the cluster that you want to manage and click **Connect to**
@@ -265,6 +279,9 @@ want to perform in the CLI on the right side.
 ##### 2.2.3.1 Get an overview of a computing cluster
 
 In the Compute Operations Console, you can view the details of a computing cluster on the Overview tab of the Computing Cluster Details page. The details include the basic information of the cluster, statistics about computing server resources, numbers of Elastic Compute Service (ECS) instances, distribution of physical servers by state, distribution of ECS instances by state, inventory utilization, and inventory of instances by instance type.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 4. Find the cluster that you want to view and click the cluster name in the **Cluster Name**
@@ -305,7 +322,11 @@ In the **Inventory Utilization** section, view the total amount of resources, th
 ###### 2.2.3.2.1 View cluster configurations
 
 This topic describes how to view the configurations of a cluster, including the values of configuration items and the time when configuration items were last modified.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 4. Find the cluster that you want to view and click the cluster name in the **Cluster Name**
 column. The **Overview** tab of the **Computing Cluster Details** page is displayed.
@@ -317,7 +338,11 @@ modified.
 ###### 2.2.3.2.2 View change records
 
 This topic describes how to view the configuration change records of a cluster.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 4. Find the cluster that you want to view and click the cluster name in the **Cluster Name**
 column. The **Overview** tab of the **Computing Cluster Details** page is displayed.
@@ -333,7 +358,11 @@ icon. View the values of configuration items and the time when the configuration
 ###### 2.2.3.3.1 View computing servers
 
 You can view a list of computing servers in a computing cluster and the details of each computing server. The details include server basic information, O&M details, and information about Elastic Compute Service (ECS) instances that are deployed on the computing server.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 4. Find the cluster that you want to view and click the cluster name in the **Cluster Name**
 column. The **Overview** tab of the **Computing Cluster Details** page is displayed.
@@ -349,6 +378,7 @@ b. View O&M details about the computing server on the **Computing Server Details
 
 This topic describes how to manage the status of computing servers (NCs) in a cluster. You can manually lock, unlock, and activate computing servers.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing Cluster O&M**.
 4. Find the cluster that you want to manage and click the cluster name in the **Cluster Name**
 column. The **Overview** tab of the **Computing Cluster Details** page appears.
@@ -370,6 +400,7 @@ you can perform on computing servers.
 
 You can view a list of computing servers and the details of each computing server. The details include the hostname, IP address, model, number of vCPUs, memory size, architecture, status, and computing cluster to which the computing server belongs.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. In the upper-right corner of the Computing Servers page, view the total number of
@@ -388,7 +419,11 @@ i. Find the computing server you want to view and click the hostname in the **Ho
 **server**
 
 This topic describes how to view O&M details about a computing server. The O&M details include business information, hardware information, resource information, Elastic Compute Service (ECS) instances that are deployed on the computing server, performance monitoring information, alert information, control service status, server-level migration tasks, and audited operations. You can perform operations on different tabs.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. Find the computing server that you want to view and click the name in the **Hostname**
@@ -417,6 +452,9 @@ You can lock servers based on your business requirements. You cannot create inst
 **Background information**
 
 Common scenarios in which servers are locked: O&M lock: If an Elastic Compute Service (ECS) instance on a server that enters the mlock state is restarted, the instance is scheduled to another server, except that failover is disabled for the ECS instance. Resource reservation lock: If normal servers cannot be used for failover, the servers in the rlock state are used to restore instances that go down.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
@@ -432,7 +470,11 @@ You can unlock a server to allow the server to be scheduled. After you unlock a 
 **Background information**
 
 Only servers in the No Heartbeat, mlock, or rlock state can be unlocked.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. Find the server that you want to unlock, move the pointer over the
@@ -453,7 +495,11 @@ The computing server that you want to activate is in the **mlock** state.
 **Background information**
 
 You can activate computing servers that are in the mlock, rlock, no heartbeat, nc_down, and initializing states.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. Find the computing server that you want to activate, move the pointer over the
@@ -475,7 +521,11 @@ The computing server is in the free (normal) or mlock (O&M lock) state.
 **Background information**
 
 When you scale down or maintain a computing server, you must migrate all ECS instances on the server before you can perform operations on the server. In this case, you can migrate all ECS instances on the server to other computing servers. When you migrate all instances from a computing server, take note of the following items: After you submit a migration task, the server enters the mlock state. If the migration task is completed, fails, or is canceled, you must submit an application to unlock the server. The ECS instances on the server are migrated to other computing servers based on the ECS scheduling rules. The migration task may not be successful in a single attempt due to various reasons. If an ECS instance in the **Stopped** or **Pending** state is migrated, the system attempts to start the ECS instance and bring the ECS instance to the **Running** state. You cannot specify the computing server to which you want to migrate the ECS instances. After the migration task is completed, you must check for any remaining ECS instances on the original server to ensure that all ECS instances are migrated.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. Find the computing server that you want to manage, move the pointer over the
@@ -518,7 +568,11 @@ If the destination physical machines to which the ECS instances are migrated hav
 migrate the ECS instances away from the physical machine. After you manually migrate the ECS instances, go back to the maintenance details page of the physical machine and click
 **Retry** below **Step3: ncMaintenanceMigrateEcsInstance** to continue deactivating the
 physical machine. For information about how to migrate ECS instances, see Migrate all instances from a computing server or Migrate an instance.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the top navigation bar, select an organization, a resource set, and a region.
 4. Create a Deactivate for Maintenance task.
 (Recommend) Deactivate a physical machine for maintenance on the **Physical Machine**
@@ -563,6 +617,7 @@ The procedure of deactivating the physical machine for maintenance is automatica
 
 Server O&M operations that may introduce risks are audited. You can view the historical operations in the Apsara Uni-manager Operations Console, historical POP API calls, and historical server controller API calls for a computing server.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. Find the computing server for which you want to view audit logs and click **Audit**
@@ -575,7 +630,11 @@ For more information, see View O&M audit Logs.
 **tasks**
 
 After you run a task to migrate all instance from a computing server, also known as a physical machine, you can check the progress and results of the migration task. You can also view the details of all instances and O&M details about the computing servers that are associated with the migration task.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M**.
 The **Machines** tab of the Computing Servers page is displayed. View the details of all computing servers on the tab.
 4. Click the **Machine Migration Task** tab to view the details of a computing server-level
@@ -614,7 +673,11 @@ IP Address, RDMA IP, and Bandwidth columns corresponding to an ECS instance. Vie
 ##### 2.4.1.2 View the details of an instance
 
 This topic describes how to view the details of an Elastic Compute Service (ECS) instance and perform operations on the instance.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. On the ECS Instances page, click the ID of the instance whose details you want to view in
 the **Instance ID/Name** column.
@@ -658,6 +721,7 @@ If an Elastic Compute Service (ECS) instance is in a state in which the instance
 
 The instance is in the **pending**, **stopped**, or **failed to start** state.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. Find the instance that you want to manage, move the pointer over the
 icon in the
@@ -676,7 +740,10 @@ The instance that you want to stop is in the **Running** state.
 
 > **Important:** The stop operation may interrupt the applications that are running on instances. Perform this operation during off-peak hours to minimize the impact on services.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. Find the instance that you want to stop, move the pointer over the
 icon in the
@@ -696,6 +763,7 @@ The instance that you want to restart is in the **Running** state.
 > **Warning:** The restart operation stops the instance for a short period of time and interrupts services that are running on the instance. Proceed with caution.
 
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. Find the instance that you want to restart, move the pointer over the
 icon in the
@@ -707,8 +775,15 @@ operation.
 
 ##### 2.4.1.4 Migrate an instance
 
-If an Elastic Compute Service (ECS) instance or a physical server that hosts an ECS instance fails, you can migrate the instance from one server to another server to ensure system stability. You can hot migrate or cold migrate an instance based on the status of the instance. This topic describes how to migrate a single ECS instance. For more information about how to migrate multiple ECS instances at a time or migrate all instances on a physical server, see Create a batch migration task or Create a computing server-level migration task.
+If an Elastic Compute Service (ECS) instance or a physical server that hosts an ECS instance fails, you can migrate the instance from one server to another server to ensure system stability. You can hot migrate or cold migrate an instance based on the status of the instance. This topic describes how to migrate a single ECS instance.
+
+**Procedure**
+
+**Note**
+
+For more information about how to migrate multiple ECS instances at a time or migrate all instances on a physical server, see Create a batch migration task or Create a computing server-level migration task.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. On the ECS Instances page, find the instance that you want to migrate and choose **Migrate**
 **> Migrate Instance** in the **Operation** column.
@@ -758,7 +833,11 @@ You can view the status and progress of the migration task in the task list. For
 ##### 2.4.1.5 View the migration history of an instance
 
 In the Compute Operations Console, you can view the migration tasks, including hot migration and cold migration tasks, that are performed on an Elastic Compute Service (ECS) instance.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. Find the instance that you want to view and choose **Migrate > View Migration History**
 in the **Operation** column.
@@ -773,6 +852,7 @@ You can mount an ISO to or unmount an ISO from an instance. After you mount an I
 
 The instance on which you want to mount or unmount an ISO is in the **Stopped** state.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ECS Instances**.
 4. On the page that appears, find the instance that you want to manage and move the pointer
 over the icon in the **Operation** column and select **Manage ISO**.
@@ -796,6 +876,9 @@ The ID of the source instance (instance that cannot be started) and the ID of a 
 **Background information**
 
 ECS supports the rescue mode. When an instance cannot be started because of incorrect operating system configurations, you can recover the instance by using another instance that runs as expected. To do this, move the system disk of the impaired instance to the rescue instance, modify the operating system configurations on the rescue instance, and then move the system disk back to the impaired instance. Then, the impaired instance can run as expected.
+
+**Procedure**
+
 1. Detach the system disk from the source instance.
 i. Log on to the AG and run the `go2which` command to query the disk IDs ( `disk_id` ) of the source instance.
 
@@ -865,7 +948,11 @@ For more information, see the **Start instances** topic in **ECS User Guide**.
 ##### 2.4.2.1 View disks
 
 You can view a list of disks and the details of each disk. The details include the basic information of the disk, and Elastic Compute Service (ECS) instances and computing clusters that are associated with the disk.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Disk**.
 4. In the upper part of the page, specify one or more filter conditions and click **Search** to
 search for disks. In the upper-right corner of the page, select a **All in ECS Project** option to narrow down the search results
@@ -878,7 +965,11 @@ ECS instances, and mount points. To view the details of a disk, find the disk an
 ##### 2.4.2.2 View disk details
 
 You can view the details of disks, such as the basic information and the snapshot information.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Disk**.
 4. Find the disk that you want to view and click the ID of the disk in the **Disk ID/Name**
 column.
@@ -892,7 +983,11 @@ You can detach disks that are no longer needed. You can detach a disk from one E
 **Prerequisites**
 
 Before you detach a disk, make sure that the following conditions are met: The disk is attached to an instance and is in the **In_use** state. To prevent data loss and ensure data integrity, we recommend that you stop read and write operations on the disk before you detach it.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Disk**.
 4. Find the disk that you want to detach and click **Detach** in the **Operation** column.
 
@@ -913,7 +1008,11 @@ that are not started at least once. If you create a snapshot for a new system di
 **Background information**
 
 You can use snapshots to back up data, restore ECS instances that are released, and create custom images. Before you roll back disks, modify critical system files, or change the operating system of an instance, you can create snapshots for disks to improve fault tolerance.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Disk**.
 4. Find the disk for which you want to create snapshots and click **Create Snapshot** in the
 **Operation** column.
@@ -927,7 +1026,11 @@ the reason for creating the snapshot. The snapshot name must be 2 to 128 charact
 ##### 2.4.2.5 View snapshots
 
 You can view the snapshots of disks, manage snapshots, and view automatic snapshot policies.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Disk**.
 4. Find the disk that you want to view and click **View Snapshots** in the **Operation** column.
 For more information, see View snapshots.
@@ -942,6 +1045,7 @@ An ECS image is a template that contains software configurations such as the ECS
 
 In the Compute Operations Console, you can view a list of images and the information about each image.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Image**.
 By default, the **Images** tab appears. On the Images tab, you can view the information about each image, including the ID, name, operating system, capacity, status, region, and type of the image.
 4. **(Optional)** To view the information about a specific image, enter the ID of the image in the
@@ -952,7 +1056,11 @@ search box and specify the image type. Then, the image is displayed in the image
 ##### 2.4.3.3 View ISO details
 
 This topic describes how to check the operating system type of an ISO file and whether the file can be mounted.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Image**.
 By default, the **Images** tab appears. On the Images tab, you can view the information about each image, including the ID, name, operating system, capacity, status, region, and type of the image.
 4. Click the **ISO Management** tab.
@@ -968,7 +1076,11 @@ Snapshots are point-in-time copies of disks. You can use snapshots to back up da
 ##### 2.4.4.2 View snapshots
 
 In the Compute Operations Console, you can view the list of snapshots and the details of each snapshot.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Snapshots**.
 By default, the **Snapshots** tab is displayed.
 4. In the upper part of the snapshot list, configure the **Apsara Stack Tenant Account ID**,
@@ -986,7 +1098,11 @@ You can delete snapshots that you no longer require in the Compute Operations Co
 **Prerequisites**
 
 Before you delete snapshots that were used to create custom images, you must delete the custom images.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Snapshots**.
 By default, the **Snapshots** tab is displayed.
 4. In the upper part of the snapshot list, configure the **Apsara Stack Tenant Account ID**,
@@ -1004,7 +1120,11 @@ In the Compute Operations Console, you can create a custom image from a snapshot
 **Prerequisites**
 
 The progress of the snapshot is 100%. The disk of the snapshot is a system disk.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Snapshots**.
 By default, the **Snapshots** tab is displayed.
 4. In the upper part of the snapshot list, configure the **Apsara Stack Tenant Account ID**,
@@ -1029,6 +1149,7 @@ The following table describes the parameters.
 
 This topic describes how to view the audit logs of a snapshot.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Snapshots**.
 By default, the **Snapshots** tab is displayed.
 4. In the upper part of the snapshot list, configure the **Apsara Stack Tenant Account ID**,
@@ -1048,7 +1169,11 @@ You can apply automatic snapshot policies to system disks and data disks to auto
 **Background information**
 
 You can use automatic snapshot policies to mitigate the risks that are associated with the manual creation of snapshots. Examples: When applications, such as personal websites or databases, that are deployed on an Elastic Compute Service (ECS) instance encounter attacks or system vulnerabilities, you may be unable to manually create snapshots. In this case, you can use the most recent automatic snapshots to roll back the affected disks to restore your data and reduce the impacts of data loss. Before regular system maintenance tasks are performed, you can specify an automatic snapshot policy to create snapshots. This eliminates the need to manually create snapshots and ensures that snapshots are always created before maintenance.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Snapshots**.
 By default, the **Snapshots** tab is displayed.
 4. In the upper-left corner of the page, click the **Automatic Snapshot Policies** tab.
@@ -1060,7 +1185,11 @@ policy, including the policy ID, policy name, and number of associated disks.
 ##### 2.4.5.1 View the details of an ENI
 
 In the Compute Operations Console, you can view the list of elastic network interfaces (ENIs) and the details of each ENI.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the ENI list, configure the **Apsara Stack Tenant Account ID**, **ENI ID**,
 **VPC**, **Instance ID**, and **Private IP Address** parameters and click **Search**.
@@ -1079,7 +1208,11 @@ You can unbind secondary elastic network interfaces (ENIs) from Elastic Compute 
 **Prerequisites**
 
 Before you unbind a secondary ENI, make sure that the following requirements are met: The secondary ENI is in the **InUse** state. The instance to which the secondary ENI is bound is in the **Running** or **Stopped** state.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the ENI list, configure the **Apsara Stack Tenant Account ID**, **ENI ID**,
 **VPC**, **Instance ID**, and **Private IP Address** parameters and click **Search**.
@@ -1096,7 +1229,11 @@ You can release elastic network interfaces (ENIs) that are no longer needed. Sec
 **Prerequisites**
 
 The secondary ENI that you want to release is in the **Available** state.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the ENI list, configure the **Apsara Stack Tenant Account ID**, **ENI ID**,
 **VPC**, **Instance ID**, and **Private IP Address** parameters and click **Search**.
@@ -1109,7 +1246,11 @@ The secondary ENI that you want to release is in the **Available** state.
 ##### 2.4.5.4 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical API calls in Server Controller for elastic network interfaces (ENIs).
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > ENIs**.
 4. In the upper part of the ENI list, configure the **Apsara Stack Tenant Account ID**, **ENI ID**,
 **VPC**, **Instance ID**, and **Private IP Address** parameters and click **Search**.
@@ -1129,7 +1270,11 @@ A security group is a virtual firewall that provides Stateful Packet Inspection 
 ##### 2.4.6.2 View the details of a security group
 
 In the Compute Operations Console, you can view the information about each security group in the security group list, including the region, network type, virtual private cloud (VPC) ID, associated Elastic Compute Service (ECS) instances, and creation time. You can also view the details of a security group on the details page. The details include the basic information, inbound and outbound rules of the security group, and the details of ECS instances that are associated with the security group.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Security Groups**.
 You can view the basic information of each security group in the security group list, including the security group ID and name, region, network type, VPC ID, and creation time. You can also configure the **Security Group ID**, **ECS Instance ID**, or **Apsara Stack**
 **Tenant Account ID** parameter and click **Search** to search for specific security groups.
@@ -1156,7 +1301,11 @@ View the associated ECS instances Click the **Instances** tab to view the ECS in
 ##### 2.4.6.3 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical Server Controller API calls for security groups.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Security Groups**.
 You can view the basic information of each security group in the security group list, including the security group ID and name, region, network type, VPC ID, and creation time. You can also configure the **Security Group ID**, **ECS Instance ID**, or **Apsara Stack**
 **Tenant Account ID** parameter and click **Search** to search for specific security groups.
@@ -1183,7 +1332,10 @@ The instance families to which you can add custom instance types are displayed i
 
 > **Important:** You can continue to use the custom instance types that are already added to the ecs.anyshare instance family.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Specifications**.
 4. Click the **Custom Instance Type** tab and then click **Create Instance Type**.
 5. Configure parameters and click **Create**.
@@ -1225,7 +1377,11 @@ The new custom instance type is displayed on the Custom Instance Type tab. After
 ##### 2.4.7.2 View a custom instance type
 
 In the Compute Operations Console, you can view the details of a custom instance type that you added.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Specifications**.
 4. On the **All Specifications** or **Custom Instance Type** tab, enter the name of a custom
 instance type in the search box to search for the instance type.
@@ -1235,7 +1391,11 @@ instance type name, number of vCPUs, memory size in GB, network baseline bandwid
 ##### 2.4.7.3 Disable custom instance types
 
 In the Compute Operations Console, you can disable the custom instance types that you no longer require. After you disable a custom instance type, you can no longer select the custom instance type when you create instances.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Specifications**.
 4. On the **All Specifications** or **Custom Instance Type** tab, find the custom instance type
 that you want to disable and click **Disable** in the **Operation** column.
@@ -1249,7 +1409,11 @@ that you want to disable and click **Disable** in the **Operation** column.
 ##### 2.4.7.4 View audit logs
 
 You can view the historical operations that are performed in the Apsara Uni-manager Operations Console and the historical POP API calls that are made for a custom instance type.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS O&M > Specifications**.
 4. On the **All Specifications** or **Custom Instance Type** tab, find the custom instance type
 that you want to manage and click **Operation Records** in the **Operation** column.
@@ -1274,7 +1438,11 @@ that you can view on each tab.
 ### 2.5 Control and monitoring
 
 You can view control and monitoring information of servers in the Compute Operations Console, including the details of RDS instances, execution status of scheduled tasks, abnormal workflows, and workflows.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Control and Monitoring**.
 4. View control and monitoring information.
 In the **RDS Instances** section, view the list of RDS instances. The list includes the following columns: Database Instance, CPU Utilization, Connections, and Disk Usage. The Connections column indicates the percentage of existing connections in the maximum number of connections for each RDS instance. Click an instance name in the **Database**
@@ -1295,7 +1463,11 @@ On the **Workflows** tab, view the details of each workflow, including the workf
 **capacity**
 
 This topic describes how to check the inventory usage of Elastic Compute Service (ECS) instance types in the Compute Operations Console. This helps you learn about the usage trends of ECS instance types.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Compute Capacity Analytics**.
 4. View the analysis of computing capacity.
 In the **Allocated Capacity Ratio** section, view the total number of resources, number of used resources, and inventory usage by resource type. The resources include vCPU cores, memory, GPUs, and local disks. In the **vCPU/Memory Usage Trend** section, specify a time range to view the usage trends of vCPU cores and memory.
@@ -1311,6 +1483,8 @@ In the **Inventory** section, select a zone from the drop-down list and enter an
 ##### 2.7.1.1 Migrate an ECS instance
 
 If an Elastic Compute Service (ECS) instance or node controller (NC) that hosts an ECS instance fails, you can migrate the instance from one NC to another NC to ensure system stability. This topic describes how to create a migration task for a single ECS instance.
+
+**Procedure**
 
 > **Note:** Find the ECS instance that you want to migrate on the **ECS Instances** page and create a migration task for the instance. For more information, see Migrate an instance.
 
@@ -1379,6 +1553,7 @@ When you migrate all instances from a computing server, take note of the followi
 > **Note:** You can also find the server whose instances you want to migrate on the **Computing** **Server O&M** page and create a computing server-level migration task for the server. For more information, see Migrate all instances from a computing server.
 
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Migration Tasks**.
 By default, the **ECS Migration Tasks** tab under the **Tasks** tab appears.
 4. On the **Machine Migration Tasks** tab, click **Create Machine Migration Task**.
@@ -1415,7 +1590,11 @@ If an Elastic Compute Service (ECS) instance or a physical server that hosts an 
 **Usage notes**
 
 A batch migration task migrates multiple ECS instances to the destination server based on the configurations of the migration destination. However, the migration is affected by multiple factors and may fail. Only ECS instances of the same instance family can be migrated at a time. Only ECS instances in the **Running**, **Stopped**, or **Pending** state can be migrated at a time. If an ECS instance in the **Stopped** or **Pending** state is migrated, the status of the ECS instance remains unchanged.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Migration Tasks**.
 By default, the **ECS Migration Tasks** tab under the **Tasks** tab appears.
 4. On the **Batch Migration Tasks** tab, click **Create Batch Migration Task**.
@@ -1451,7 +1630,11 @@ After you create a migration task, you can view information about the migration 
 **Background information**
 
 You can view information about Elastic Compute Service (ECS) migration tasks, machine migration tasks (also known as computing server-level migration tasks), and batch migration tasks. A machine or batch migration task consists of multiple subtasks. Each subtask is an ECS migration task that migrates an ECS instance. The subtasks are displayed together with the ECS migration tasks that you separately created in the ECS migration task list. You can create migration tasks of different types based on your business requirements. To migrate an ECS instance, create an ECS migration task. For more information, see Create an ECS migration task. To migrate all ECS instances that reside on one physical machine, create a machine migration task. For more information, see Create a machine migration task. To migrate multiple ECS instances at a time, create a batch migration task. For more information, see Create a batch migration task.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Migration Tasks**.
 The **ECS Migration Tasks** tab under the **Tasks** tab appears.
 4. View ECS migration tasks.
@@ -1545,6 +1728,8 @@ Before you stop a migration task, take note of the following items: You can stop
 
 > **Important:** Subtasks in the **pending** or **migrating** state are not affected.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
 3. Stop the migration task based on its type.
 **Computing server-level migration task**:
@@ -1563,6 +1748,8 @@ To view the details of a subtask, search for the subtask by using the ID of the 
 #### 2.7.2 Configure migration constraints
 
 If the default migration task constraints, including the default migration rate and the default timeout period, do not meet your business requirements, you can configure custom constraints for migration tasks.
+
+**Procedure**
 
 > **Note:** The new default migration rate and timeout period take effect on the migration tasks that are created after you modify the default migration rate and timeout period.
 
@@ -1605,11 +1792,14 @@ If **Enhanced Hot Migration Compatibility** is enabled when you create a hot mig
 **Compatibility** feature, we recommend that you follow the procedure in this topic to view the
 CPU models that support migration across physical servers and the CPU compatibility information.
 
+**Procedure**
+
 > **Important:** Take note of the following items:
 > If you cannot find the CPU compatibility information on the **CPU Compatibility** **Configurations** tab, you cannot migrate ECS instances that are in the Running state in the Apsara Uni-manager Operations Console. As a result, the hot migration task fails.
 > You cannot add hot migration CPU compatibility information in the Apsara Uni- manager Operations Console.
 
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Migration Tasks**.
 The **ECS Migration Tasks** tab under the **Tasks** tab appears.
 4. On the page that appears, click the **CPU Compatibility Configurations** tab.
@@ -1708,7 +1898,11 @@ You can configure throttling limits for proactive O&M actions, such as the maxim
 **Background information**
 
 You can adjust throttling limits for proactive O&M actions based on actual conditions and onsite O&M requirements. For example, a proactive O&M action is configured to be executed when a physical machine freezes. If the proactive O&M action is executed but does not resolve the issue and the physical machine remains frozen, the action is executed repeatedly to deactivate and reactivate the physical machine until the physical machine is recovered. In this case, you can configure throttling limits for the proactive O&M action. For example, you can configure throttling limits to allow the proactive O&M action to be executed only one time within a 168-hour execution window. This way, after the proactive action is executed, the Apsara Uni-manager Operations Console does not execute the action again within the next 168 hours, and you can perform other O&M operations to resolve the physical machine freeze issue at the earliest opportunity.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M Settings**.
 
 > **Note:** By default, the **Monitoring** tab appears.
@@ -1716,6 +1910,9 @@ You can adjust throttling limits for proactive O&M actions based on actual condi
 4. Click the **O&M Actions** tab.
 A list of proactive O&M actions is displayed, which includes the **OpsCode** (O&M type),
 **Throttling Status**, and **Throttling Effective Time** columns.
+
+**Note**
+
 The **Support for Manual Reporting** and **Approval for Manually Reported O&M**
 **Workflow** parameters of a proactive O&M action vary based on the approval
 configuration of the action. For more information, see Configure the approval process for a proactive O&M action.
@@ -1757,7 +1954,11 @@ By default, the **Support for Manual Reporting** feature is enabled for proactiv
 > **Important:** You can submit proactive O&M events related to only the proactive O&M actions for which the Support for Manual Reporting feature is enabled. For information about how to submit a proactive O&M event, see Submit a proactive O&M event for a server.
 
 The O&M types for which you can configure the Support for Manual Reporting feature and the Approval for Manually Reported O&M Workflow feature are displayed in the Apsara Unimanager Operations Console. You can use only the default setting of the Approval for Manually Reported O&M Workflow feature for specific O&M types, but cannot change the default setting. For example, the Support for Manual Reporting feature is automatically enabled and the Approval for Manually Reported O&M Workflow feature is automatically disabled for the **0x4000A000000007-Unlock Nc** O&M type. In this case, the proactive O&M action can be performed without the need for approval of an Apsara Uni-manager Operations Console administrator after you submit a proactive O&M event related to the O&M type.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **ECS O&M Settings**.
 
 > **Note:** The **Monitoring** tab appears.
@@ -1793,7 +1994,10 @@ When you submit a proactive O&M event, you can select only a proactive O&M actio
 
 > **Important:** Before you submit a proactive O&M event, make sure that the selected proactive O&M action can resolve the exception in the actual environment. Otherwise, the proactive O&M action fails to be performed.
 
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **ECS Intelligent O&M > ECS O&M Event**.
 4. On the **Proactive O&M** page, click **Submit Proactive O&M Event**.
 5. In the **Submit Proactive O&M Event** dialog box, configure parameters and click **OK**. The
@@ -1813,7 +2017,11 @@ following table describes the parameters.
 ### 2.9 View the computing O&M data
 
 In the Compute Operations Console, you can view the computing O&M data in the current environment, including the data of migration, custom instance types, O&M, and monitoring. This allows you to monitor abnormal fluctuations, changes in the number of proactive O&M actions, number of migrations, and status changes in the current environment. This topic describes how to view the computing O&M data.
+
+**Procedure**
+
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, click **Computing O&M Data**.
 4. On the Computing O&M Data page, view the computing O&M data.
 By default, the computing O&M data of the previous seven days is displayed. You can also select a time range from the Time Range drop-down list in the upper-right corner of the page. The supported time ranges include the previous seven days, one month, three months, and half a year. If you want to analyze the detailed O&M data, click **Export O&M Data** in the upper-right corner to export the data to your computer.
@@ -1853,6 +2061,7 @@ Documentation Center. This topic describes how to upload data from an SCC ECS in
 
 If your SCC ECS instance has a large amount of data or contains cold data, you can create a data replication task to upload the data to an OSS bucket for storage. You can also download data from the OSS bucket to the ECS instance to transmit data between the CPFS file system and OSS bucket. After you create a data replication task, the task is automatically executed. Perform the following steps:
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **AI/HPC O&M > Client Cluster Management >**
 **Client Cluster Data Replication** .
 4. On the **CPFS/OSS Data Replication Tasks** page, click **Create Task**.
@@ -1879,6 +2088,7 @@ You can view the created task in the task list on the **CPFS/OSS Data Replicatio
 
 You can view files and file paths for data uploaded from an SCC ECS instance to an OSS bucket or downloaded from an OSS bucket to an SCC ECS instance.
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **AI/HPC O&M > Client Cluster Management >**
 **Client Cluster Data Replication** .
 4. In the task list, find the task whose execution result you want to view and click **View**
@@ -2003,6 +2213,7 @@ You can perform the following operations to add an ACL whitelist for the PAI clu
 > You need to only add one ACL whitelist to allow communication between the PAI cluster and the SCC E-HPC cluster.
 
 2. In the top navigation bar, choose **Product Operation > Computing > Compute**
+**Operations Console**.
 3. In the left-side navigation pane, choose **AI/HPC O&M > RDMA Network Configurations**
 **> RDMA Whitelist Configurations**.
 4. On the **RDMA ACL Whitelists** page, click **Create ACL Whitelist**.

@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 16
 source_pdf: "b02c58be144e61bb_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Cloud%20Parallel%20File%20Storage%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide 20260827
@@ -37,7 +37,12 @@ CPFS is a high-performance parallel file system of Apsara Stack, which meets the
 
 ### 2.1 Log in to the CPFS console
 
+**Prerequisites**
+
 You have obtained the service domain name for the Apsara Uni-manager Management Console from the deployment personnel. Use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
 manager Management Console and press Enter.
 
@@ -50,6 +55,9 @@ manager Management Console and press Enter.
 
 3. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
+
+**Note**
+
 The link text on the logon page is the title of the agreement document. You can click the link to view the details of the agreement.
 
 > The **Product Service Agreement**, **Privacy Agreement**, and **User** **Agreement** are displayed only if they have been published. If none of these agreements are published, you can skip this step.
@@ -76,6 +84,9 @@ File Storage (CPFS) console.
 ### 2.2 Create a CPFS file system
 
 This topic describes how to create a Cloud Parallel File Storage (CPFS) file system.
+
+**Procedure**
+
 1. Log in to the CPFS console.
 2. On the CPFS File Systems page, click **Create a file system** in the upper-left corner.
 3. On the **Create a file system** page, configure the parameters.
@@ -105,7 +116,11 @@ This topic describes the usage limits of Cloud Parallel File Storage (CPFS). Onl
 
 ### 3.1 Manage CPFS file systems
 
-This topic describes how to view and delete a Cloud Parallel File Storage (CPFS) file system and modify the description of a CPFS file system. A CPFS file system is created. For more information, see Create a CPFS file system.
+This topic describes how to view and delete a Cloud Parallel File Storage (CPFS) file system and modify the description of a CPFS file system.
+
+**Prerequisites**
+
+A CPFS file system is created. For more information, see Create a CPFS file system.
 
 **View a file system**
 
@@ -116,13 +131,21 @@ icon in the search box or click **Advanced**
 file system ID or click **Details** in the Operations column.
 3. On the File System Details page, you can view the basic information and **mount**
 **information** of the file system.
+
+**Note**
+
 By default, mount targets are automatically created. You cannot create additional mount targets.
 5. On the CPFS File Systems page, find the file system that you want to view, and click the
 icon in the **Monitor** column to view metric data such as capacity, bandwidth, and read/write IOPS of the file system.
 
 **Delete a file system**
 
+**Prerequisites**
+
 Before you delete a CPFS file system, the file system is unmounted from the mount target. Deleted CPFS file systems cannot be restored. Make sure that you back up the data stored in a CPFS file system before you delete it. After you delete a CPFS file system, resources of the file system are not immediately released. The disk space occupied by the file system is released seven days later.
+
+**Procedure**
+
 1. On the CPFS File Systems page, find the file system that you want to delete and click
 **Delete** in the Operations column.
 2. In the message that appears, click **OK**.
@@ -147,7 +170,14 @@ the pointer over the **Tag** column, and then click the icon.
 
 ### 3.2 Scale up a CPFS file system
 
-This topic describes how to scale up a Cloud Parallel File Storage (CPFS) file system. Data is not read from or written to the CPFS file system.
+This topic describes how to scale up a Cloud Parallel File Storage (CPFS) file system.
+
+**Prerequisites**
+
+Data is not read from or written to the CPFS file system.
+
+**Procedure**
+
 1. Log in to the CPFS console.
 2. On the CPFS File Systems page, find the file system that you want to scale up and click
 **Expand** in the Operations column.
@@ -160,7 +190,11 @@ parameter.
 
 ### 3.3 Resource monitoring
 
-This topic describes how to view metrics and create alert rules for Cloud Parallel File Storage (CPFS) resources. A CPFS file system is created. For more information, see Create a CPFS file system.
+This topic describes how to view metrics and create alert rules for Cloud Parallel File Storage (CPFS) resources.
+
+**Prerequisites**
+
+A CPFS file system is created. For more information, see Create a CPFS file system.
 1. Log in to the CPFS console.
 2. In the left-side navigation pane, click **CPFS File Systems**. On the CPFS File Systems page,
 click the ID or name of a file system or click **Details** in the Operations column to go to the File System Details page.
@@ -180,6 +214,9 @@ This topic describes how to configure data replication between Cloud Parallel Fi
 
 Replicate the data in a CPFS file system to an OSS bucket: The data stored in a CPFS file system is replicated to an OSS bucket for data backup. Data that is infrequently accessed can be transferred to and stored in an OSS bucket to reduce storage costs. Replicate the data in an OSS bucket to a CPFS file system: OSS supports multiple data importing methods. You can use this feature to import data from on-premises databases or other systems into an OSS bucket, and then replicate the data from the OSS bucket to a CPFS file system. This data replication method improves data transmission efficiency. You can replicate large amounts of data that was accumulated and stored in an OSS bucket to a CPFS file system for AI training and other purposes. The Resource Access Management (RAM) role AliyunOSSPrivateCloudDrsSyncRole is granted to your organization. For more information, see the **Service-linked role** topic of
 **Configurations** in **Apsara Uni-manager Management Console User Guide** .
+
+**Procedure**
+
 1. Log in to the CPFS console.
 2. On the CPFS File Systems page, click the ID or name of the file system for data replication
 or click **Details** in the **Operations** column to go to the File System Details page. On the page that appears, click the **Data flow** tab to go to the data flow task page.

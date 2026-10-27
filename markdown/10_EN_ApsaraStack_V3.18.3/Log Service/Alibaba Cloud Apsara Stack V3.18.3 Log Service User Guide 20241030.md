@@ -5,7 +5,7 @@ doc_version: "20241030"
 pdf_pages: 696
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Log Service User Guide 20241030.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Log%20Service%20User%20Guide%2020241030.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Log Service User Guide 20241030
@@ -5721,6 +5721,8 @@ We recommend that you enable the global transaction identifier (GTID) feature of
 4. to `(binlog.1005, 4)` on the slave. Logtail has obtained the data from the master server and updated the checkpoint to `(binlog.105, 4)` . In
 this case, if a master/slave switchover occurs without exception, Logtail continues to obtain binary logs from the new master server based on the local checkpoint `(binlog.105, 4)` . The new master server returns the data entries that range from `(binlog.1000, 4)` to `(binlog.1005, 4)` to Logtail. This is because the ordinal numbers of these data entries on the new master server are greater than the ordinal numbers of data entries requested by Logtail. As a result, log data is repeatedly collected.
 
+**Parameter**
+
 | The type of input sources is service_canal . |   |   |   |
 |---|---|---|---|
 | Parameter | Type | Required | Description |
@@ -7275,6 +7277,8 @@ logging.config.dictConfig(conf)
 # Use the logger
 logger = logging.getLogger('sls') logger.info("Hello world")
 ```
+
+**Note**
 
 If you want to instantiate an object of the `aliyun.log.QueuedLogHandler` class, pass named parameters to the constructor. For more information, see aliyun.log.QueuedLogHandler.
 
@@ -12286,6 +12290,9 @@ Log Service allows you to render query and analysis results into visualized char
 
 Indexes are configured and the analysis feature is enabled. To enable the analysis feature, turn on **Enable Analytics** for the fields in the **Search &**
 **Analysis** panel. For more information, see Configure indexes.
+
+**Note**
+
 Before you configure charts, we recommend that you are familiar with the log analysis feature. For more information, see Log analysis overview.
 
 > You must specify an analytic statement in a query statement. Log Service cannot display charts based on query results.
@@ -23649,7 +23656,11 @@ str: iZbp1a65x3r1vhpe94fi2qZ regex_split: ["iZbp", "a", "x", "r", "vhpe", "fi", 
 
 ##### 5.8.7.9 Grok function
 
-This topic describes the syntax and parameters of the Grok function. This topic also provides examples on how to use the function. Regular expression functions are complicated. We recommend that you use the Grok function instead of regular expression functions. For more information, see Regular expression functions. You can use the Grok function together with regular expression functions. Examples:
+This topic describes the syntax and parameters of the Grok function. This topic also provides examples on how to use the function.
+
+**Description**
+
+Regular expression functions are complicated. We recommend that you use the Grok function instead of regular expression functions. For more information, see Regular expression functions. You can use the Grok function together with regular expression functions. Examples:
 
 ```
 e_match("content", grok(r"\w+: (%{IP})")) # The Grok pattern matches the abc: 192.0.2.0 or xyz: 192.0.2.2 pattern of a log. e_match("content", grok(r"\w+: (%{IP})", escape=True)) # The Grok pattern does not match the abc: 192.0.2.0 pattern of log data but matches th e \w+: 192.0.2.0 pattern of log data.
@@ -32308,7 +32319,7 @@ This topic describes how to import trace data from Apache SkyWalking to Log Serv
 
 **Prerequisites**
 
-Apache SkyWalking A SkyWalking agent of version 8.0.0 or later is installed in the application on which data is collected. For more information, see Setup. A Logstore that stores trace data and a Metricstore that stores time series data are created. For more information, see Create a Logstore and Create a Metricstore. A machine group is created, and the group uses a custom identifier. For more information, see Create a custom identifier-based machine group.
+Apache SkyWalking A SkyWalking agent of version 8.0.0 or later is installed in the application on which data is collected. For more information, see Setup. Log Service A Logstore that stores trace data and a Metricstore that stores time series data are created. For more information, see Create a Logstore and Create a Metricstore. A machine group is created, and the group uses a custom identifier. For more information, see Create a custom identifier-based machine group.
 
 > **Important:** Make sure that the custom identifier is unique in the region of the Log Service project to which the Logstore belongs.
 

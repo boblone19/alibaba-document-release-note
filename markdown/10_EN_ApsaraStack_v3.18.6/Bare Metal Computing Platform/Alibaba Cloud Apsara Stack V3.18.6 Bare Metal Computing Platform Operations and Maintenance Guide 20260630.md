@@ -5,7 +5,7 @@ doc_version: "20260630"
 pdf_pages: 60
 source_pdf: "af4ed3ce02e41f0d_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Operations and Maintenance Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Bare Metal Computing Platform Operations and Maintenance Guide
@@ -141,6 +141,9 @@ This topic describes how to log on to the Apsara Uni-manager Operations Console 
 **Prerequisites**
 
 To log on to the BMCP Operations Console, you must first log on to the Apsara Uni-manager Operations Console. Make sure that the endpoint of the Apsara Uni-manager Operations Console is obtained. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. Enter the endpoint of the Apsara Uni-manager Operations Console into the address bar of
 the browser.
 2. Enter your username and password.
@@ -221,6 +224,8 @@ The cluster in which the job is deployed has the ai-task-inspector component ins
 
 > **Note:** You can use different services to submit jobs, such as Platform for AI (PAI) or AI Studio. You can use the job path analysis feature if only the job uses the GPU resources of BMCP nodes.
 
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, click **Job Path Analysis** below Visualized Monitoring.
 3. On the **Job Path Analysis** page, specify **Job ID** and click **Search**.
@@ -252,6 +257,8 @@ This topic introduces the resource event alert module and how to create an event
 CloudMonitor is deployed and reaches the final state.
 
 > **Note:** The resource event alert module strongly relies on CloudMonitor. Make sure that CloudMonitor is deployed and reaches the final state before you start.
+
+**Procedure**
 
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Alerts**.
@@ -298,6 +305,9 @@ This topic describes how to query the details of a Bare Metal Computing Platform
 **Prerequisites**
 
 A BMCP cluster is created in the Apsara Uni-manager Operations console.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, click **Clusters**.
 3. Click the **Calculation > Cluster** tab.
@@ -326,6 +336,9 @@ b. Click **Operation Time** and specify **Start Date** and **End Date** (accurat
 ##### 6.1.2.1 View the details of a computing node
 
 This topic describes how to query Bare Metal Computing Platform (BMCP) computing nodes and node details, including basic information and operation logs. You can query nodes in bare metal-intelligent computing clusters, ACK-intelligent computing clusters, bare metalsupercomputing clusters, and idle nodes in the resource pool.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, click the **Calculation > Node** tab. This tab displays
@@ -382,6 +395,9 @@ The **Cluster Details** tab displays detailed cluster information, including the
 #### 6.3.1 Query subnets
 
 This topic describes how to query and update the information about all switches connected to the cloud.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Clusters**.
 3. Click the **Network** tab.
@@ -400,6 +416,9 @@ synchronize the information to the current page.
 ##### 7.1.1.1 View server details
 
 This topic describes how to query all physical servers and view their detailed information.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Calculation > Server** tab is displayed. You can view all physical servers on this tab.
@@ -419,6 +438,9 @@ ii. Monitoring On the **Monitoring** tab, you can view the CPU utilization, memo
 ##### 7.1.1.2 Register server resources
 
 This topic describes how to register server resources.
+
+**Procedure**
+
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Calculation > Server** tab is displayed. You can view all physical servers on this tab.
@@ -522,6 +544,9 @@ This topic describes how to remotely log on to a server.
 **Prerequisites**
 
 The server to which you want to log on is running.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 By default, the **Calculation > Server** tab is displayed. You can view all physical servers on this tab.
@@ -532,6 +557,9 @@ By default, the **Calculation > Server** tab is displayed. You can view all phys
 ##### 7.1.1.5 Re-register a server
 
 This topic describes how to re-register servers.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource Management**.
 3. On the **Resource Management** page, click the **Calculation** tab.
@@ -596,6 +624,9 @@ This topic describes how to query GPUs on an installed bare metal instance and v
 **Prerequisites**
 
 You can query the GPUs of a bare metal instance only after the bare metal instance is installed.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource Management**.
 3. On the **Resource Management** page, click the **Calculation > GPU card** tab. This page
@@ -615,6 +646,9 @@ The following table lists the information displayed on the Basic Information pag
 #### 7.2.1 View the file system details
 
 This topic describes how to view the file system details.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 3. On the **Resource Management** page, click the **Storage** tab.
@@ -631,6 +665,9 @@ You can then view the details of the file system, including the file system name
 #### 7.2.2 View server resource details
 
 This topic describes how to view server resource details.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 3. On the **Resource Management** page, click the **Storage** tab.
@@ -645,6 +682,9 @@ You can then view the storage cluster information of the server, including the n
 **node**
 
 This topic describes how to view the cache resources of a computing node.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Resource management**.
 3. On the **Resource Management** page, click the **Storage** tab.
@@ -698,6 +738,8 @@ This topic describes how to diagnose a cluster or node.
 
 > **Important:** If this operation includes time-consuming diagnostic items or stress tests, GPU resources are occupied. Make sure that this operation does not affect your business.
 
+**Procedure**
+
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Inspection and Diagnostics > Inspection.**
 3. On the **Cluster/node diagnosis** tab of the **Diagnosis** page, create a diagnostic task for a
@@ -717,6 +759,8 @@ After the diagnostic task enters the Completed state, click **Details** in the O
 This topic describes how to diagnose a cluster in which a job runs.
 
 **Note**
+
+**Procedure**
 
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Inspection and Diagnostics > Inspection.**
@@ -913,6 +957,9 @@ This topic describes how to add a device model.
 **Background information**
 
 You can add **managed intelligent computing**, **In-Band**, and **HPC** device models by clicking **Add model**. The system automatically imports device models of all other types during the Zhuque planning phase.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. Click **Basic Configurations > Models**.
 3. Click **Add model** in the upper-left corner of the device model list.
@@ -956,6 +1003,9 @@ icon to search in fuzzy match mode.
 #### 9.1.3 Modify a model
 
 This topic describes how to modify a model.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Models**.
 3. Click **Modify** in the **Operation** column of a model.
@@ -964,6 +1014,9 @@ This topic describes how to modify a model.
 #### 9.1.4 Remove a model
 
 This topic describes how to remove a model.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Models**.
 3. Click **Delete** in the **Operation** column of the desired model.
@@ -1001,6 +1054,9 @@ By default, the **Custom image** tab is displayed.
 **Manage custom images**
 
 You can **delete**, **enable**, **disable**, and **export** custom images.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Images**.
 By default, the **Custom image** tab is displayed.
@@ -1019,6 +1075,9 @@ You can enable, disable, and export public images and export signature files.
 **Manage public images**
 
 You can enable, disable, and export public images.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Images**.
 By default, the **Custom image** tab is displayed.
@@ -1030,6 +1089,9 @@ i. **Enable the image** Choose **Enable status > Enable images** in the **Operat
 **Verify image integrity**
 
 BMCP allows users to verify the integrity of public images to ensure that they are not tampered with.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > Images**.
 By default, the **Custom image** tab is displayed.
@@ -1053,6 +1115,9 @@ By default, the **Custom image** tab is displayed.
 #### 9.3.1 Add a GPU
 
 This topic describes how to add a GPU.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. Click **Add GPU** above the list.
@@ -1072,6 +1137,9 @@ This topic describes how to add a GPU.
 #### 9.3.2 Query GPUs
 
 This topic describes how to query GPUs.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. On the **GPU Configuration** page, enter a **GPU model** into the search box.
@@ -1081,6 +1149,9 @@ icon to search GPUs in fuzzy match mode.
 #### 9.3.3 Modify a GPU
 
 This topic describes how to modify the information of a GPU.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. Click **Edit** in the **Operation** column of the desired GPU.
@@ -1094,6 +1165,9 @@ This topic describes how to modify the information of a GPU.
 #### 9.3.4 Remove a GPU
 
 This topic describes how to remove a GPU.
+
+**Procedure**
+
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, choose **Basic Configurations > GPU Settings**.
 3. Click **Delete** in the Operation column of the desired GPU.
@@ -1123,6 +1197,9 @@ This topic describes how to collect job logs.
 
 Job logs support only **ACK - intelligent computing clusters** that contain **bare metal**
 **nodes**.
+
+**Procedure**
+
 1. Log on to the BMCP Operations Console.
 2. In the left-side navigation pane, click **Logs**.
 The system directs you to the **Cluster/node logs** tab by default.
@@ -1136,6 +1213,9 @@ click **OK**.
 ## 11 Event center
 
 You can manage event tickets in the event center. For example, you can view the basic information about an event ticket, such as the number and status of the event ticket, and review an event ticket.
+
+**Procedure**
+
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
 2. In the left-side navigation pane, click **Event Center**.
 3. On the upper part of the Event Center page, query event tickets by configuring the

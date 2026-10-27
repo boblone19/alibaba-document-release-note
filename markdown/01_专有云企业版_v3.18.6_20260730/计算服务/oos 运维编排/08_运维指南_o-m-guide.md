@@ -5,24 +5,28 @@ doc_version: "20260729"
 pdf_pages: 29
 source_pdf: "08_运维指南_o-m-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/oos/zh/o-m-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 运维编排 运维指南
 
-运维编排
+## 目录
 
-## 入门概述
+- 1 入门概述
+- 2 新建模板
+- 3 创建执行
+- 4 批量释放ECS实例
+- 5 自动定时重启ECS云服务器
+- 6 带审批的自动运维
+- 7 常见问题
+
+## 1 入门概述
 
 本快速入门指引您快速创建一个运维编排模板，并执行模板。 本快速入门包含以下操作：
 1. 新建模版
-以一个简单的示例模版为例，介绍如何新建模板，详情请参见新建模板。
+以一个简单的示例模版为例，介绍如何新建模板，详情请参见新建模板。 选择新建的模版创建执行任务并启动执行，详情请参见创建执行。
 
-## 2. 创建执行
-
-选择新建的模版创建执行任务并启动执行，详情请参见创建执行。 运维编排
-
-## 新建模板
+## 2 新建模板
 
 本示例中，创建一个简单的示例模板，输入为ECS实例的某个特定状态（比如Running或者Stopped），输出为此账号下处于该特定状态的ECS实例的ID列表。该模板会执行DescribeInstances的OpenAPI，并自动翻页进行查询。如果此账号下符合该特定状态的ECS实例数量小于1000，则将全部列出，否则，列出前 1000个。
 
@@ -32,7 +36,6 @@ converter: line-classifier (PyMuPDF)
 2. 选择自定义任务模板，单击**创建模板**。
 3. 在基本信息区域，配置模板参数。
 4. 输入**模板名称**，本示例中为DescribeInstances。
-运维编排
 5. 在**模板详情**区域，选择**YAML**格式，并输入以下示例模板。您可以修改此模板，增加多个Task，调用
 任意的OpenAPI。
 
@@ -63,9 +66,8 @@ converter: line-classifier (PyMuPDF)
 ```
 
 6. 单击**创建模板**。
-运维编排
 
-## 创建执行
+## 3 创建执行
 
 创建模板后，您需要为该模板创建执行并启动执行。
 
@@ -87,13 +89,11 @@ converter: line-classifier (PyMuPDF)
 **Stopped**。
 5. 单击**下一步：确认创建**。
 6. 单击**创建执行**。
-运维编排
 7. 返回**执行管理**页面，查看提交的执行。
 如果选择了**自动执行**，则自动开始执行。执行完毕后，**执行状态**显示**成功**。 如果选择了**单步执行**或**高风险操作需要二次确认**，则需要手动开始执行。
 8. 单击**执行****ID**或**详情**页面，查看执行状态。
-运维编排
 
-## 批量释放ECS实例
+## 4 批量释放ECS实例
 
 运维编排服务OOS为批量释放实例的场景提供了公共模板。只需输入需要被释放的实例ID，就可以达到释放所有实例的操作，避免手动操作单独释放实例。本文介绍批量删除按量付费实例的操作及批量删除实例的背后逻辑。
 
@@ -108,7 +108,7 @@ converter: line-classifier (PyMuPDF)
 3. 在搜索框内搜索ACS-ECS-BulkyDeleteInstances（批量删除按量付费实例）模板。
 4. 单击**创建执行**。
 5. 配置基本信息。
-根据实际情况填写**执行描述**，并选择**组织**和**资源集**，其余参数将由系统自动带入。 运维编排
+根据实际情况填写**执行描述**，并选择**组织**和**资源集**，其余参数将由系统自动带入。
 6. 单击**下一步：设置参数**。
 7. 设置参数。
 输入公共模板参数：ACS-ECS-BulkyDeleteInstances。
@@ -120,13 +120,12 @@ converter: line-classifier (PyMuPDF)
 | 任务执行的并发比率 | 支持设置以下参数： 执行模式：可选并发控制、批次控制。 并发速率：指定一个数值或者百分比来控制并发速率。 最大错误次数：指定任务在停止前的最大错误次数，可以是数值或者百分比，默认值是0，表示有1个错误时整个任务就会失败结束。若设置为100%则表示无论遇到多少错误整个执行都会成功。 |
 | OOS扮演的RAM角色 | （默认设置）当前账号的已有权限：执行您使用的账号的权限动作。请确保您拥有创建自定义镜像涉及的所有ECS API调用权限。 指定RAM角色，使用该角色的权限：如果指定了RAM角色名称，OOS扮演该RAM角色执行运维任务。 |
 
-运维编排
 8. 单击**下一步：确定**。
 9. 单击**创建**。
 0. 在**任务执行管理**中可查看刚刚创建的执行，若创建执行成功，且执行状态处于运行中，则表示实例处于删
 除中。
-1. 在目标任务执行详情页，单击**高级视图** > **可视化预览**。
-状态为成功时，表示实例被删除。 运维编排
+1. 在目标任务执行详情页，单击**高级视图** **>** **可视化预览**。
+状态为成功时，表示实例被删除。
 2. 查询实例是否被删除。
 
 **公共模板和背后逻辑**
@@ -164,7 +163,7 @@ Parameters:
       en: Whether to force the release of a running instance.
 ```
 
-运维编排 e:
+`e``:`
 
 ```
 ete
@@ -176,7 +175,7 @@ ete
 ocete eeaseo
 ```
 
-a u g
+`a` `u` `g`
 
 ```
 stace.
@@ -253,7 +252,6 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
 
 该模板顺序执行以下任务：
 1. 获取目标实例或实例上的Tags。
-运维编排
 2. 将预付费实例修改为按量付费实例。
 3. 批量删除实例。
 
@@ -329,7 +327,7 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
       en: Modify the charge type for prepaid instances to postpaid.
 ```
 
-运维编排 `zh-cn:` 修改预付费实例付费方式为按量付费。
+`zh-cn:` 修改预付费实例付费方式为按量付费。
 
 ```
     Properties:
@@ -354,9 +352,7 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
       Items: '{{ getInstance.instanceIds }}'
 ```
 
-运维编排
-
-## 自动定时重启ECS云服务器
+## 5 自动定时重启ECS云服务器
 
 本文介绍如何通过设置定时任务自动重启ECS来维护不同场景下的系统稳定性和安全性，帮助系统管理员简化维护流程、提升系统稳定性、优化用户体验，并增强系统的安全性与合规性。
 
@@ -369,11 +365,9 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
 1. 登录OOS控制台。
 2. 在左侧导航栏找到**定时运维**，单击**创建**。
 3. 定时设置选择周期性重复执行。
-运维编排
 4. 模板选择 ACS-ECS-BulkyRebootInstances ，然后配置参数创建执行。
-运维编排
 
-## 带审批的自动运维
+## 6 带审批的自动运维
 
 本文介绍OOS的审批运维功能。
 
@@ -399,8 +393,7 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
 | 资源集 | 模板所属的资源集。 |
 | 版本描述 | 模板的版本描述。 |
 
-运维编排
-5. 单击**YAML**，将**附录**1**：模板（审批****ECS****实例重启）**粘贴到空白编辑栏。
+5. 单击**YAML**，将**附录****1****：模板（审批****ECS****实例重启）**粘贴到空白编辑栏。
 6. 单击**创建模板**。
 7. 在**自定义模板**中，单击目标模板**操作**列的**创建执行**。
 8. 配置基本信息。
@@ -417,7 +410,6 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
 | atAll | 否 | 发送审批通知时，是否@钉钉群中的所有成员。 |
 | OOSAssumeRole | 否 | OOS默认使用当前登录用户的权限执行动作；如果指定了RAM角色名称，OOS扮演该RAM角色执行动作。 |
 
-运维编排
 1. 单击**下一步：确定**。
 2. 单击**创建**。
 3. 在**任务执行管理**中可查看刚刚创建的执行，若创建执行成功，被指定的手机号的用户，在钉钉群中会被
@@ -464,8 +456,6 @@ Parameters:
 webHookUrl:
 ```
 
-运维编排
-
 ```
   webHookUrl:
     Description:
@@ -487,7 +477,7 @@ access_token=1234zxcvaksdq31414。
         notify comes.
 ```
 
-`zh-cn:` 当群助手向钉钉群中发送审批通知时，要被@的群成员注册钉钉所用手机号。
+`zh-cn:` 当群助手向钉钉群中发送审批通知时，要被`@`的群成员注册钉钉所用手机号。
 
 ```
     Type: List
@@ -498,7 +488,7 @@ access_token=1234zxcvaksdq31414。
       en: 'assistant @ all members in dingtalk group or not, when notify comes.'
 ```
 
-`zh-cn:` 当群助手向钉钉群中发送审批通知时是否@所有人。
+`zh-cn:` 当群助手向钉钉群中发送审批通知时是否`@`所有人。
 
 ```
     Type: String
@@ -543,8 +533,6 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
         Headers:
 ```
 
-运维编排
-
 ```
           Content-Type: application/json
         Content:
@@ -580,19 +568,16 @@ Outputs:
 **附录2：钉钉WebHook获取**
 
 1. 选择要添加群助手通知的群，单击
-。 运维编排
+。
 2. 单击**智能群助手**。
 3. 单击**添加机器人**。
-运维编排
 4. 单击**自定义**。
 5. 单击**添加**。
-运维编排
 6. 填写**机器人名字**，本示例**安全设置**选择**自定义关键字**，并输入WebHook通知内容中所包含的词汇作为关
 键字，比如本示例模板通知内容中含"Notify"，于是在该处可填写"Notify"。单击**完成**。
 7. 单击**复制**，获取到WebHook地址。
-运维编排
 
-## 常见问题
+## 7 常见问题
 
 本文汇总了使用OOS时的常见问题。 子账户进行操作，报错：User has no permission to do the action: (ListTemplates) 子账户进行操作，报错：User has no permission to do the action: (PassRole) 执行模板时遇到报错：Assumes role failed. Code: EntityNotExist.Role, msg: The role not exists: acs:111111:role/OOSServiceRole. 执行模板时报错：Assumes role failed. Code: NoPermission, msg: You are not authorized to do this action. You should be authorized by RAM.
 
@@ -600,47 +585,57 @@ Outputs:
 
 **(ListTemplates)**
 
-原因：子账户权限不够，不能执行OOS的指定API。 解决办法：以管理员或者主账户身份，登录**RAM****控制台**，对报错的子账户进行适当授权，授权范围可以是相关API，也可是所有API，下面样例 `"Action": "oos:*"` 则是对所有API授权，详情请参见**账户访问控** 制。
+原因：子账户权限不够，不能执行OOS的指定API。 解决办法：以管理员或者主账户身份，登录**RAM****控制台**，对报错的子账户进行适当授权，授权范围可以是相关API，也可是所有API，下面样例 `"Action": "oos:*"` 则是对所有API授权，详情请参见**账户访问控**
+**制**。
+`{`
 
 ```json
-{
   "Statement": [
-      {
+```
+
+`{`
+
+```json
           "Effect": "Allow",
           "Action": "oos:*",
           "Resource": "*"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Version": "1"
-}
 ```
+
+`}`
 
 **子账户进行操作，报错：User has no permission to do the action:**
 
 **(PassRole)**
 
-原因：子账户没有PassRole权限，不能以指定的Role执行运维编排。 解决办法：以管理员或者主账户身份，在**RAM****控制台**，对子账户做适当的PassRole授权，参见**账户访问控** 制。
+原因：子账户没有PassRole权限，不能以指定的Role执行运维编排。 解决办法：以管理员或者主账户身份，在**RAM****控制台**，对子账户做适当的PassRole授权，参见**账户访问控**
+**制**。
+`{`
 
 ```json
-{
   "Statement": [
-      {
+```
+
+`{`
+
+```json
           "Effect": "Allow",
           "Action": "oos:*",
           "Resource": "*"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Version": "1"
-}
 ```
+
+`}`
 
 **执行模板时遇到报错：Assumes role failed. Code:**
 
@@ -648,7 +643,7 @@ Outputs:
 
 **acs:111111:role/OOSServiceRole.**
 
-运维编排原因：没有为OOS服务创建默认的RAM角色。 解决办法：主账户或者管理员登录**RAM****控制台**>的RAM访问控制，增加对应的RAM角色 OOSServiceRole。请参见为**OOS****服务设置****RAM****权限**。
+原因：没有为OOS服务创建默认的RAM角色。 解决办法：主账户或者管理员登录**RAM****控制台**>的RAM访问控制，增加对应的RAM角色 OOSServiceRole。请参见**为****OOS****服务设置****RAM****权限**。
 
 **执行模板时报错：Assumes role failed. Code: NoPermission, msg:**
 
@@ -656,12 +651,15 @@ Outputs:
 
 **authorized by RAM.**
 
-原因：对应的RAM角色没有给OOS服务配置信任策略。 解决办法：主账户或者管理员登录**RAM****控制台**的RAM访问控制，增加对应的RAM角色OOSServiceRole。 请参见为**OOS****服务设置****RAM****权限** 1.登录**RAM****控制台**，在角色中输入"OOSServiceName"进行搜索： 2.点击信任策略： 3.修改信任策略： 将信任策略修改为如下内容： 运维编排
+原因：对应的RAM角色没有给OOS服务配置信任策略。 解决办法：主账户或者管理员登录**RAM****控制台**的RAM访问控制，增加对应的RAM角色OOSServiceRole。 请参见**为****OOS****服务设置****RAM****权限** 1.登录**RAM****控制台**，在角色中输入"OOSServiceName"进行搜索： 2.点击信任策略： 3.修改信任策略： 将信任策略修改为如下内容： `{`
 
 ```json
-{
   "Statement": [
-      {
+```
+
+`{`
+
+```json
           "Action": "sts:AssumeRole",
           "Effect": "Allow",
           "Principal": {
@@ -669,16 +667,10 @@ Outputs:
                   "oos.aliyuncs.com"
 ```
 
-]
-
-```
-          }
-      }
-```
-
-`],`
+`]` `}` `}` `],`
 
 ```json
   "Version": "1"
-}
 ```
+
+`}`

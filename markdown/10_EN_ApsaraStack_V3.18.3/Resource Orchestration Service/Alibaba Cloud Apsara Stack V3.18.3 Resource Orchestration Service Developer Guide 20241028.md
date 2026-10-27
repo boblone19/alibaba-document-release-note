@@ -5,7 +5,7 @@ doc_version: "20241028"
 pdf_pages: 172
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Resource Orchestration Service Developer Guide 20241028.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E8%B5%84%E6%BA%90%E7%BC%96%E6%8E%92/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Resource%20Orchestration%20Service%20Developer%20Guide%2020241028.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Resource Orchestration Service Developer Guide 20241028

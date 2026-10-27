@@ -5,30 +5,45 @@ doc_version: "20260729"
 pdf_pages: 49
 source_pdf: "07_运维指南_operation-and-maintenance-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apds/zh/operation-and-maintenance-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 云迁移中心 运维指南
 
-云迁移中心
+## 目录
 
-## 概述
+  - 1.2 维护人员要求
+  - 1.3 注意事项
+  - 1.4 寻求帮助
+- 2 产品架构
+  - 2.1 系统架构
+  - 2.2 组件及作用
+- 3 服务支持
+  - 3.1 FAQ
+  - 3.2 问题排查
+    - 3.2.1 常见问题
+    - 3.2.2 服务器迁移中问题
+    - 3.2.3 服务器迁移后问题
+    - 3.2.4 VMWare迁移中问题
+    - 3.2.5 操作系统替换问题
+    - 3.2.6 迁移演练项说明
+- 4 故障处理
+
+## 1 概述
 
 为确保用户在使用本产品时避免误操作等情况，需要仔细阅读运维相关文档，对各种常见的问题或故障可以自行按照文档提供的方案解决，或者咨询相关技术人员。
 
-### 目的
+### 1.1 目的
 
 本手册主要指导维护人员对产品进行预防性的维护，确保产品能够稳定运行。维护人员可以根据本手册的指导，处理维护过程中发现的问题。如果根据本手册无法解决系统问题，请寻求阿里云工程师的技术支持。
 
-### 维护人员要求
+### 1.2 维护人员要求
 
 维护人员必须拥有IT行业技能，包括计算机网络知识、计算机操作知识、问题分析排查能力。 维护人员必须经过相应培训，学习必要的产品操作知识，包括但不限于各模块工具的使用和维护。
 
-**警告**
+> **警告：** 在维护操作过程中，维护人员务必遵守操作规章，确保人身安全和系统安全。对于客户数据，严格保密，未经客户书面许可，禁止复制、传播客户数据。
 
-在维护操作过程中，维护人员务必遵守操作规章，确保人身安全和系统安全。对于客户数据，严格保密，未经客户书面许可，禁止复制、传播客户数据。
-
-### 注意事项
+### 1.3 注意事项
 
 为了系统运行的稳定，避免意外事故的发生，维护人员需遵循以下事项。
 
@@ -44,27 +59,31 @@ converter: line-classifier (PyMuPDF)
 
 未经授权，严禁对数据进行复制和传播。
 
-### 寻求帮助
+### 1.4 寻求帮助
 
-维护人员在系统维护过程中，如果需要相关帮助，可以联系阿里云技术支持获取帮助。 云迁移中心
+维护人员在系统维护过程中，如果需要相关帮助，可以联系阿里云技术支持获取帮助。
 
-## 产品架构
+## 2 产品架构
 
 一站迁云服务中心通过一站迁云portal、一站迁云服务和云产品共同为用户提供迁云的一站式解决方案，针对不同的细分场景可以借助不同的应用模块。
 
-### 系统架构
+### 2.1 系统架构
 
 本文当描述了云迁移中心相关组件的架构。 云迁移中心面向客户不同上云策略需求，基于大量云迁移实践，向用户提供系统上云或跨云迁移过程支持。 云迁移中心提供一整套帮助客户将业务系统迁移到阿里云专有云平台的工具。尤其是对建云过程中的网络规划和应用跨CPU芯片平台的迁云场景，客户使用云迁移中心可以大幅降低迁云的成本、提升迁云的效率。云迁移中心全面评估应用上云的可行性、成本和效率，内置资源调研、服务器迁移、操作系统替换、跨平台应用扫描等工具，为企业上云提供迁移保障。
 
 **整体架构**
 
-### 组件及作用
+### 2.2 组件及作用
 
 本文档介绍了云迁移中心的相关组件及其作用。
 
 **迁移向导**
 
-迁移向导为广泛用户的迁移上云项目提供自动与智能的系统调研、云上规划、迁移管理，简化和加速用户上云过程，辅助用户业务化可视化管理迁移全生命周期。 服务器迁移支持将单台或多台迁移源迁移至阿里云，迁移源包括服务器、虚拟机、其他云平台的云主机或其他类型的服务器。
+迁移向导为广泛用户的迁移上云项目提供自动与智能的系统调研、云上规划、迁移管理，简化和加速用户上云过程，辅助用户业务化可视化管理迁移全生命周期。
+
+**服务器迁移**
+
+服务器迁移支持将单台或多台迁移源迁移至阿里云，迁移源包括服务器、虚拟机、其他云平台的云主机或其他类型的服务器。
 
 **跨平台应用扫描**
 
@@ -72,13 +91,13 @@ converter: line-classifier (PyMuPDF)
 
 **JVM参数调优**
 
-JVM参数调优工具根据Java版本、供应商、平台和CPU架构等相关信息，实现JVM参数生成、参数优化、参数迁移和参数查询四个方面的功能。 云迁移中心
+JVM参数调优工具根据Java版本、供应商、平台和CPU架构等相关信息，实现JVM参数生成、参数优化、参数迁移和参数查询四个方面的功能。
 
-## 服务支持
+## 3 服务支持
 
-### FAQ
+### 3.1 FAQ
 
-本文介绍服务器迁移中心SMC相关的常见问题及解决方案。 通用问题服务器迁移相关域名有哪些？ 如何配置服务器迁移相关域名解析？ 迁移源问题如何选择导入迁移源方式？ 如何查找迁移源？ 我想要重新导入迁移源，怎么办？ 为什么无法删除迁移源？ 为什么客户端导入的迁移源显示在阿里云ECS标签下？ 如何安装Rsync？ 如何关闭SELinux？ 为什么新建迁移任务页面没有出现数据盘配置项？怎么办？ 迁移任务问题我在什么场景下使用服务器迁移？ SMC迁移所需时间如何评估？如何测试传输速度？ 如何过滤、排除不需要迁移的文件或目录？ SMC是否支持断点续传？ SMC是否支持增量迁移数据？ 迁移Windows服务器后怎么检查系统？ 迁移Linux服务器后怎么检查系统？ 迁移完成后，再次迁移该如何操作呢？ 迁移完成得到自定义镜像后该如何操作？ 迁移完成后的结果是什么？ 迁移中断或提示失败时，如何处理？ 我的待迁移服务器需要在出方向访问哪些域名地址和端口？ 误释放了中转实例怎么办？ 关于中转实例，我需要注意什么？ 中转实例的规格有哪些？ 开启块复制需要注意哪些？ 迁移源为非在线状态时，无法创建迁移任务怎么办？ 为什么新建迁移任务页面没有出现数据盘配置项？怎么办？ 迁移进行中或迁移报错时，是否可以为迁移源新建迁移任务？ 迁移任务多久过期？过期后会怎样？ 迁移任务状态有哪些？分别表示什么？ 创建迁移任务时，无法选择目标实例，怎么办？ Windows服务器如何安装OpenSSH服务？ 在一台物理主机数据库服务器上有单实例Oracle数据库，在向阿里云做迁移时，应该选择整台服务器（包含操作系统、数据库）迁移，还是选择数据库迁移（仅迁移数据库）？两种方式都有哪些利弊？ 增量迁移生成的镜像是启动迁移任务开始时还是结束时的数据？ 修改增量同步频率会立即生效吗？ Windows服务器迁移完成，使用镜像创建ECS实例后，为什么多出几个磁盘？ 服务器迁移失败或者中断后，为什么源服务器的磁盘空间使用率不断增长？ 操作系统替换支持迁移哪些操作系统？ VMware无代理迁移什么是VMware无代理迁移？ VMware无代理迁移具有哪些优势？ VMware无代理迁移中，如何直接配置指定宿主机下的虚拟机或者指定的虚拟机？
+本文介绍服务器迁移中心SMC相关的常见问题及解决方案。 通用问题服务器迁移相关域名有哪些？ 如何配置服务器迁移相关域名解析？ 迁移源问题如何选择导入迁移源方式？ 如何查找迁移源？ 我想要重新导入迁移源，怎么办？ 为什么无法删除迁移源？ 为什么客户端导入的迁移源显示在阿里云ECS标签下？ 如何安装Rsync？ 如何关闭SELinux？ 为什么新建迁移任务页面没有出现数据盘配置项？怎么办？ 迁移任务问题服务器迁移我在什么场景下使用服务器迁移？ SMC迁移所需时间如何评估？如何测试传输速度？ 如何过滤、排除不需要迁移的文件或目录？ SMC是否支持断点续传？ SMC是否支持增量迁移数据？ 迁移Windows服务器后怎么检查系统？ 迁移Linux服务器后怎么检查系统？ 迁移完成后，再次迁移该如何操作呢？ 迁移完成得到自定义镜像后该如何操作？ 迁移完成后的结果是什么？ 迁移中断或提示失败时，如何处理？ 我的待迁移服务器需要在出方向访问哪些域名地址和端口？ 误释放了中转实例怎么办？ 关于中转实例，我需要注意什么？ 中转实例的规格有哪些？ 开启块复制需要注意哪些？ 迁移源为非在线状态时，无法创建迁移任务怎么办？ 为什么新建迁移任务页面没有出现数据盘配置项？怎么办？ 迁移进行中或迁移报错时，是否可以为迁移源新建迁移任务？ 迁移任务多久过期？过期后会怎样？ 迁移任务状态有哪些？分别表示什么？ 创建迁移任务时，无法选择目标实例，怎么办？ Windows服务器如何安装OpenSSH服务？ 在一台物理主机数据库服务器上有单实例Oracle数据库，在向阿里云做迁移时，应该选择整台服务器（包含操作系统、数据库）迁移，还是选择数据库迁移（仅迁移数据库）？两种方式都有哪些利弊？ 增量迁移生成的镜像是启动迁移任务开始时还是结束时的数据？ 修改增量同步频率会立即生效吗？ Windows服务器迁移完成，使用镜像创建ECS实例后，为什么多出几个磁盘？ 服务器迁移失败或者中断后，为什么源服务器的磁盘空间使用率不断增长？ 操作系统替换操作系统替换支持迁移哪些操作系统？ VMware无代理迁移什么是VMware无代理迁移？ VMware无代理迁移具有哪些优势？ VMware无代理迁移中，如何直接配置指定宿主机下的虚拟机或者指定的虚拟机？
 
 **服务器迁移相关域名有哪些？**
 
@@ -90,11 +109,11 @@ SMC相关域名包括：
 
 **SMC Endpoint获取说明**
 
-云迁移中心物理机/虚拟机/云服务器（通过手动下载客户端的方式）： i. 登录统一云管平台界面，选择**产品** > **云迁移中心**。 ii. 在左侧菜单栏中选择**迁移工具** > **服务器迁移** > **迁移源。** iii. 在**迁移源**页面，选择**物理机**/**虚拟机**/**云服务器。** iv. 单击**导入迁移源**，导入方式选择**客户端导入。** v. 根据导入说明获取SMC Endpoint。 VMware虚拟机（通过获取激活码方式）： i. 登录统一云管平台界面，选择**产品** > **云迁移中心**。 ii. 在左侧菜单栏中选择**迁移工具** > **服务器迁移** > **迁移源。** iii. 在**迁移源**页面，选择**VMware****虚拟机。** iv. 单击**导入迁移源**，导入方式选择**VMware****无代理连接器导入。** v. 根据导入说明获取SMC Endpoint。
+物理机/虚拟机/云服务器（通过手动下载客户端的方式）： i. 登录统一云管平台界面，选择**产品** **>** **云迁移中心**。 ii. 在左侧菜单栏中选择**迁移工具** **>** **服务器迁移** **>** **迁移源。** iii. 在**迁移源**页面，选择**物理机****/****虚拟机****/****云服务器。** iv. 单击**导入迁移源**，导入方式选择**客户端导入。** v. 根据导入说明获取SMC Endpoint。 VMware虚拟机（通过获取激活码方式）： i. 登录统一云管平台界面，选择**产品** **>** **云迁移中心**。 ii. 在左侧菜单栏中选择**迁移工具** **>** **服务器迁移** **>** **迁移源。** iii. 在**迁移源**页面，选择**VMware****虚拟机。** iv. 单击**导入迁移源**，导入方式选择**VMware****无代理连接器导入。** v. 根据导入说明获取SMC Endpoint。
 
 **说明**
 
-默认情况下SMC域名都是HTTPS协议443端口，HTTP协议80端口不一定支持。 云迁移中心物理机/虚拟机/云服务器（通过命令行导入的方式）： i. 登录统一云管平台界面，选择**产品** > **云迁移中心**。 ii. 在左侧菜单栏中选择**迁移工具** > **服务器迁移** > **迁移源。** iii. 在**迁移源**页面，选择**物理机**/**虚拟机**/**云服务器。** iv. 单击**导入迁移源**，导入方式选择**命令行导入。** v. 点击**生成激活码**，在**Linux Shell**页签中获取OSS Bucket域名。
+默认情况下SMC域名都是HTTPS协议443端口，HTTP协议80端口不一定支持。 物理机/虚拟机/云服务器（通过命令行导入的方式）： i. 登录统一云管平台界面，选择**产品** **>** **云迁移中心**。 ii. 在左侧菜单栏中选择**迁移工具** **>** **服务器迁移** **>** **迁移源。** iii. 在**迁移源**页面，选择**物理机****/****虚拟机****/****云服务器。** iv. 单击**导入迁移源**，导入方式选择**命令行导入。** v. 点击**生成激活码**，在**Linux Shell**页签中获取OSS Bucket域名。
 
 **如何配置服务器迁移相关域名解析？**
 
@@ -103,7 +122,7 @@ SMC相关域名包括：
 2. 获取域名对应服务器IP。
 在能连通域名的服务器（可以在云上创建一台ECS）上ping该域名，获取解析到的ip
 3. 在源服务器上配置域名解析。
-Linux服务器配置域名解析。 编辑 `/etc/hosts` 文件，在文件底部添加域名解析记录后保存。 Windows服务器配置域名解析编辑 C:\Windows\System32\drivers\etc\hosts 文件，在文件底部添加域名解析记录后保存。 域名解析记录格式： `<IP`地址`> <`域名> 。
+Linux服务器配置域名解析。 编辑 `/etc/hosts` 文件，在文件底部添加域名解析记录后保存。 Windows服务器配置域名解析编辑 C:\Windows\System32\drivers\etc\hosts 文件，在文件底部添加域名解析记录后保存。 域名解析记录格式： `<IP`地址`> <`域名`>` 。
 
 **如何选择导入迁移源方式？**
 
@@ -112,9 +131,7 @@ SMC提供多种导入迁移源方式，您可以根据您的业务场景选择�
 | 导入迁移源方式 | 说明 | 限制条件 | 优势 | 支持迁移场景 |
 |---|---|---|---|---|
 | 通过命令行一键导入迁移源（推荐） | 在SMC控制台按需生成激活码命令，然后在待迁移的服务器中一键执行激活码命令导入迁移源。 | 源服务器需具备访问云上OSS的能力（能够连通对应OSS Bucket的域名）。 | 半自动化且较通用。 | 服务器迁移。 |
-| 通过SMC客户端导入迁移源 | 通过手动下载SMC客户端，并在待迁移的服务器中运行SMC 客户端导入迁移源。 | 无。 | 操作灵活且通用。 |  |
-
-云迁移中心
+| 通过SMC客户端导入迁移源 | 通过手动下载SMC客户端，并在待迁移的服务器中运行SMC 客户端导入迁移源。 | 无。 | 操作灵活且通用。 |   |
 
 | 通过配置VMware无代理连接器导入迁移源 | 通过OVF模板部署VMware无代理连接器，并在VMware无代理连接器中通过命令运行 SMC客户端导入迁移源。 | 支持vCenter版本：6.5/6.7/7.0 支持ESXi版本：6.0/6.5/6.7/7.0 更多信息，请参见导入VMware虚拟机。 说明如果不满足VMware虚拟机无代理迁移条件，建议您使用通过命令行一键导入迁移源的方式。 | 资源无占用迁移效率高安全性高兼容性高 | VMware虚拟机无代理迁移。 |
 |---|---|---|---|---|
@@ -124,7 +141,7 @@ SMC提供多种导入迁移源方式，您可以根据您的业务场景选择�
 
 查找迁移源的步骤如下：
 1. 登录SMC控制台。
-2. 在左侧导航栏，单击**迁移工具** > **服务器迁移** > **迁移源**。
+2. 在左侧导航栏，单击**迁移工具** **>** **服务器迁移** **>** **迁移源**。
 3. 在**迁移源**页面，单击搜索框，并选择搜索项。
 搜索项包括**迁移源名称**、**迁移源****ID**和**最近一次迁移任务****ID**。
 4. 输入搜索项对应的查询值后，单击即可。
@@ -139,17 +156,17 @@ SMC提供多种导入迁移源方式，您可以根据您的业务场景选择�
 
 **为什么客户端导入的迁移源显示在阿里云ECS标签下？**
 
-如果您的ECS实例不能访问meta-server，迁移源默认会显示在**物理机**/**虚拟机**/**云服务器**页签下。 如果您的ECS实例能够访问meta-server，迁移源默认会显示在**阿里云****ECS****云服务器**页签下。
+如果您的ECS实例不能访问meta-server，迁移源默认会显示在**物理机****/****虚拟机****/****云服务器**页签下。 如果您的ECS实例能够访问meta-server，迁移源默认会显示在**阿里云****ECS****云服务器**页签下。
 
 **如何安装Rsync？**
 
 请您根据源服务器的操作系统选择相应的命令安装Rsync。
 
-| 行 yum -y install rsync 。 行 apt-get -y install rsync 行 apt-get -y install rsync | yum -y install rsync |  | 。 |
+| 行 yum -y install rsync 。 行 apt-get -y install rsync 行 apt-get -y install rsync | yum -y install rsync |   | 。 |
 |---|---|---|---|
-|  | apt-get -y install rsync |  |  |
-|  | apt-get -y install rsync |  |  |
-| zypper install rsync |  | 。 |  |
+|   | apt-get -y install rsync |   |   |
+|   | apt-get -y install rsync |   |   |
+| zypper install rsync |   | 。 |   |
 
 其他发行平台系统：参见发行版官网的安装文档。
 
@@ -181,7 +198,7 @@ SMC可将待迁移物理服务器、虚拟机以及其他云平台云主机一�
 
 **重要**
 
-如果开启块复制功能迁移，则不支持排除不迁移的文件或目录。 若配置文件缺失或被误删，您可自行创建相应文件。 系统盘配置文件： 云迁移中心 Windows系统：rsync_excludes_win.txt。 Linux系统：rsync_excludes_linux.txt。 数据盘配置文件： Windows系统：在系统盘的基础上以disk[磁盘索引编号]后缀命名，如rsync_excludes_win_disk1.txt。 Linux系统：在系统盘的基础上以disk[磁盘索引编号]后缀命名，如rsync_excludes_linux_disk1.txt。 不同操作系统的配置示例如下所示： 配置示例一：为Windows服务器排除不迁移的文件或目录系统盘待排除的文件或目录：
+如果开启块复制功能迁移，则不支持排除不迁移的文件或目录。 若配置文件缺失或被误删，您可自行创建相应文件。 系统盘配置文件： Windows系统：rsync_excludes_win.txt。 Linux系统：rsync_excludes_linux.txt。 数据盘配置文件： Windows系统：在系统盘的基础上以disk[磁盘索引编号]后缀命名，如rsync_excludes_win_disk1.txt。 Linux系统：在系统盘的基础上以disk[磁盘索引编号]后缀命名，如rsync_excludes_linux_disk1.txt。 不同操作系统的配置示例如下所示： 配置示例一：为Windows服务器排除不迁移的文件或目录系统盘待排除的文件或目录：
 
 ```
 C:\MyDirs\Docs\Words C:\MyDirs\Docs\Excels\Report1.txt
@@ -207,7 +224,7 @@ D:\MyDirs2\Docs2\Words2 D:\MyDirs2\Docs2\Excels\Report2.txt
 
 **说明**
 
-排除Windows路径时，您需要： 去掉路径前缀（ `scr_path` ），例如去掉上述示例中的 `D:` 。 将原路径中的 \ 替换为 / 。 配置示例二：为Linux服务器排除不迁移的文件或目录系统盘（根目录/） 待排除的文件或目录为：
+排除Windows路径时，您需要： 去掉路径前缀（ `scr_path` ），例如去掉上述示例中的 `D:` 。 将原路径中的 \ 替换为 `/` 。 配置示例二：为Linux服务器排除不迁移的文件或目录系统盘（根目录/） 待排除的文件或目录为：
 
 ```
 /var/mydirs/docs/words /var/mydirs/docs/excels/report1.txt
@@ -250,7 +267,6 @@ D:\MyDirs2\Docs2\Words2 D:\MyDirs2\Docs2\Excels\Report2.txt
 2. 如果有数据盘缺失，进入磁盘管理检查盘符是否丢失。
 3. 检查主机名配置、网络服务是否正常。
 4. 检查其他系统应用服务是否正常。
-云迁移中心
 
 **迁移Linux服务器后怎么检查系统？**
 
@@ -298,7 +314,7 @@ SMC会按下列顺序，根据库存情况，依次选择符合条件的实例�
 
 **重要**
 
-如果以上实例规格均库存不足时，系统会随机选择其他实例规格。 SMC默认会过滤如下不支持作为中转实例的规格族列表： 本地盘 GPU计算型异构计算型弹性裸金属云迁移中心异构裸金属超级计算机型
+如果以上实例规格均库存不足时，系统会随机选择其他实例规格。 SMC默认会过滤如下不支持作为中转实例的规格族列表： 本地盘 GPU计算型异构计算型弹性裸金属异构裸金属超级计算机型
 
 **开启块复制需要注意哪些？**
 
@@ -331,8 +347,6 @@ SMC客户端导入迁移源时，只会检测已挂载的磁盘分区。若您�
 |---|---|---|
 | 未开始（Ready） | 迁移任务已创建，未启动。 | 启动迁移任务。 |
 | 运行中（Running） | 迁移任务正在运行中。运行中（Running）状态不会直接显示在SMC控制台，而是以业务状态的形式展示在迁移任务的状态列。业务状态表的更多信息，请参见业务状态。 | 等待迁移任务运行结束，或在迁移任务状态为同步中 （Syncing）时暂停迁移任务。 说明您无法删除正在运行中的迁移任务。 |
-
-云迁移中心
 
 | 已暂停（Stopped） | 迁移任务已暂停。 | 重启或删除迁移任务。 |
 |---|---|---|
@@ -374,7 +388,6 @@ SMC客户端导入迁移源时，只会检测已挂载的磁盘分区。若您�
 cd \OpenSSH-Win64
 ```
 
-云迁移中心
 3. 执行以下命令，安装OpenSSH。
 
 ```
@@ -419,7 +432,7 @@ cd /smc/go2aliyun_client2.6.6_linux_x86_64
 
 iii. 执行以下命令，清理快照。
 
-```bash
+```python
 sudo ./Check/client_check--ssclearsmcss
 ```
 
@@ -435,7 +448,7 @@ Windows服务器 i. 在Windows源服务器中打开CMD。 ii. 依次执行以下
 cd \WINDOWS\System32 vssadmin list shadows
 ```
 
-回显信息中卷影副本 `ID` 即shadow_id，例如：{ad39055a-3aa0-494c-b787-f8589ab8****}。 云迁移中心 iii. 执行以下命令，删除VSS快照。
+回显信息中卷影副本 `ID` 即shadow_id，例如：{ad39055a-3aa0-494c-b787-f8589ab8****}。 iii. 执行以下命令，删除VSS快照。
 
 **重要**
 
@@ -460,15 +473,15 @@ vssadmin delete shadows/shadow={ad39055a-3aa0-494c-b787-f8589ab8****}
 | 操作系统架构 | 源操作系统 | 目标操作系统 |
 |---|---|---|
 | X86 | CentOS 7 | AnolisOS 7 AnolisOS 8 RedHat 7 重要仅支持CentOS 7.9迁移至RedHat 7。 Alibaba Cloud Linux 2 Alibaba Cloud Linux 3 |
-|  | CentOS 8 | AnolisOS 8 RedHat 8 重要仅支持CentOS 8.5迁移至RedHat 8。 Alibaba Cloud Linux 3 |
-|  | RedHat 7 重要目前仅支持RedHat 7.9。 RedHat 8 | Alibaba Cloud Linux 3 |
-|  | Alibaba Cloud Linux 2 | Alibaba Cloud Linux 3 |
+|   | CentOS 8 | AnolisOS 8 RedHat 8 重要仅支持CentOS 8.5迁移至RedHat 8。 Alibaba Cloud Linux 3 |
+|   | RedHat 7 重要目前仅支持RedHat 7.9。 RedHat 8 | Alibaba Cloud Linux 3 |
+|   | Alibaba Cloud Linux 2 | Alibaba Cloud Linux 3 |
 | ARM64 | CentOS 7 | AnolisOS 7 AnolisOS 8 Alibaba Cloud Linux 3 |
-|  | CentOS 8 | AnolisOS 8 Alibaba Cloud Linux 3 |
+|   | CentOS 8 | AnolisOS 8 Alibaba Cloud Linux 3 |
 
-**重要**
+> **重要：** 待迁移的操作系统必须为当前阿里云账号下云服务器ECS中的操作系统。
 
-待迁移的操作系统必须为当前阿里云账号下云服务器ECS中的操作系统。 更多信息，请参见操作系统替换。
+更多信息，请参见操作系统替换。
 
 **什么是VMware无代理迁移？**
 
@@ -476,13 +489,13 @@ VMware无代理迁移提供不侵入客户端操作系统、不占用客户端�
 
 **VMware无代理迁移具有哪些优势？**
 
-VMware无代理迁移具有以下优势： 云迁移中心资源无占用 SMC客户端不在虚拟机内部运行，不占用虚拟机的各类资源。 迁移效率高无需为每台虚拟机单独安装代理，节省人力与时间成本。 安全性高不在虚拟机操作系统内部进行任何操作，消除用户对安全的顾虑。 兼容性高不依赖虚拟机操作系统内部环境，迁移成功率更高。
+VMware无代理迁移具有以下优势： 资源无占用 SMC客户端不在虚拟机内部运行，不占用虚拟机的各类资源。 迁移效率高无需为每台虚拟机单独安装代理，节省人力与时间成本。 安全性高不在虚拟机操作系统内部进行任何操作，消除用户对安全的顾虑。 兼容性高不依赖虚拟机操作系统内部环境，迁移成功率更高。
 
 **VMware无代理迁移中，如何直接配置指定宿主机下的虚拟机或者指定的虚拟机？**
 
 登录VMware无代理连接器。 以SSH远程连接方式为例，操作步骤如下：
 1. 在某个与VMware无代理连接器网络连通的终端中，运行以下命令，远程连接VMware无代理连接器。默认用户名为 `root` ，密码默认为空。
-`ssh root@<VMware`无代理连接器`IP`地址>
+`ssh root@<VMware`无代理连接器`IP`地址`>`
 
 **重要**
 
@@ -504,21 +517,19 @@ cd /root/smc ./dist/connect_configure
 | 添加指定宿主机上的虚拟机 | 添加指定虚拟机 |
 |---|---|
 
-云迁移中心
-
 | i. 执行以下命令，添加指定宿主机上的虚拟机。 ./dist/migrate_configure -h <宿主机名称> 如果是vCenter部署VMware无代理连接器，<宿主机名称>需要替换为实际宿主机名称。 如果您在ESXI环境部署VMware无代理连接器，默认的宿主机名称是 localhost.localdomain 。 以在ESXI环境部署VMware无代理连接器为例，示例命令如下： [root@smc-connector smc]# ./dist/migrate_configure -h localhost.localdomain ========Aliyun SMC VMware Configure Tool 1.2======== Connect success! Host List: ------------------------------------------------------------- ---------- ID Name Version Connected 1 localhost.localdomain 7.0.3 * ------------------------------------------------------------- ---------- Please input the ID of Host(input 0 to exit):1 ii. 输入宿主机ID后，生成虚拟机列表，并要求输入需要待迁移虚拟机的ID（需选择状态为“已连接”的虚拟机，即Connected一栏为*）。 Test to connect localhost.localdomain Connect success! Getting vm list progress: [>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>100.00%]time ：2.3s VM List of 192.168.XX.XX: --------------------------------------------------------------- -------- ID Name Connected CBT Add 1080 test1 * 1084 win16bios * 1011 centos7-bios-2 * 3008 centos7-uefi * 2001 centos-hw10 * --------------------------------------------------------------- -------- Please input the ID of VM to be migrated (input 0 to exit):1084 | 重要 vCenter中若存在相同的虚拟机名称，不建议直接添加指定虚拟机名称。 执行以下命令，添加指定虚拟机，并根据回显信息输入待迁移虚拟机的ID。 ./dist/migrate_configure -v <虚拟机机名称> 示例命令如下： [root@smc-connector smc]# ./dist/migrate_configure -v centos7- sta ========Aliyun SMC VMware Configure Tool 1.2======== Connect success! VM List of 192.168.XX.XX: ----------------------------------------------------------------- ------ ID Name Connected CBT Add 3005 centos7-sta * ----------------------------------------------------------------- ------ Please input the ID of VM to be migrated (input 0 to exit):3005 |
 |---|---|
 
 | 输入需要迁移的虚拟机的架构对应的序号，例如： | 0 | 。 |
 |---|---|---|
-| -------------------------------------------------------------- 0 x86_64 1 i386 2 arm64 -------------------------------------------------------------- Please choose the architecture:0 |  |  |
+| -------------------------------------------------------------- 0 x86_64 1 i386 2 arm64 -------------------------------------------------------------- Please choose the architecture:0 |   |   |
 
 6. 确认系统给出的操作系统类型是否是当前虚拟机的操作系统。
-输入 y ：如果系统给出的操作系统类型是当前虚拟机的操作系统。 输入 n ：如果系统给出的操作系统类型不是当前虚拟机的操作系统，输入 n 后，在给出的操作系统列表中输入操作系统对应的序号，例如： `10` 。
+输入 `y` ：如果系统给出的操作系统类型是当前虚拟机的操作系统。 输入 `n` ：如果系统给出的操作系统类型不是当前虚拟机的操作系统，输入 `n` 后，在给出的操作系统列表中输入操作系统对应的序号，例如： `10` 。
 
 **说明**
 
-VMware vCenter中创建虚拟机时预设的操作系统类型可能并不真实，您需要确认系统给出的操作系统类型是否是当前虚拟机的操作系统。 云迁移中心
+VMware vCenter中创建虚拟机时预设的操作系统类型可能并不真实，您需要确认系统给出的操作系统类型是否是当前虚拟机的操作系统。
 
 ```
 Is [CentOS 7 (64-bit)]' truly the OS of VM (y or n)?n ------------------------------------------------------------------------ 0 CentOS 1 Ubuntu 2 SUSE 3 OpenSUSE 4 Debian 5 RedHat 6 Others Linux 7 Windows Server 2003 8 Windows Server 2008 9 Windows Server 2012 10 Windows Server 2016 11 Windows Server 2019 12 Windows Server 2022 ------------------------------------------------------------------------ Please choose the OS of VM:
@@ -526,17 +537,17 @@ Is [CentOS 7 (64-bit)]' truly the OS of VM (y or n)?n --------------------------
 
 | 选择系统盘，默认为序号 | 0 | 的虚拟磁盘。 |
 |---|---|---|
-| -------------------------------------------------------------- 0 [datastore1] win16bios/wins16bios-000001.vmdk 1 [datastore1] wins16bios/wins16bios_1-000001.vmdk -------------------------------------------------------------- Please choose the system disk (default 0):0 |  |  |
+| -------------------------------------------------------------- 0 [datastore1] win16bios/wins16bios-000001.vmdk 1 [datastore1] wins16bios/wins16bios_1-000001.vmdk -------------------------------------------------------------- Please choose the system disk (default 0):0 |   |   |
 
 | 对于虚拟机名称后的 | Add | 行显示 | * | ，表示添加成功。 |
 |---|---|---|---|---|
-| VM List of 192.168.XX.XX: -------------------------------------------------------------- ID Name Connected CBT Add 481 TEST_CLONE_1 * 389 win16bios * * 338 hanjun_test_001 * 386 Aliyun_SMC_Agent_6.5 * 393 win16uefi -------------------------------------------------------------- Please input the ID of VM to be migrated (input 0 to exit):0 |  |  |  |  |
+| VM List of 192.168.XX.XX: -------------------------------------------------------------- ID Name Connected CBT Add 481 TEST_CLONE_1 * 389 win16bios * * 338 hanjun_test_001 * 386 Aliyun_SMC_Agent_6.5 * 393 win16uefi -------------------------------------------------------------- Please input the ID of VM to be migrated (input 0 to exit):0 |   |   |   |   |
 
 vCenter部署VMware无代理连接器： 如果您需要迁移多台虚拟机，可继续输入待迁移的虚拟机的ID。 如果您只迁移一台虚拟机，输入0，返回宿主机选择项，如果您需要继续选择迁移其他宿主机中的虚拟机，重复上述操作。反之，输入0，退出配置。 单ESXI环境部署VMware无代理连接器： 如果您只迁移一台虚拟机，输入0，返回宿主机选择项，再次输入0，退出配置。 如果需要重新配置，可继续输入待迁移的虚拟机的ID。
 
-### 问题排查
+### 3.2 问题排查
 
-#### 3.2.1. 常见问题
+#### 3.2.1 常见问题
 
 本文描述了服务器迁移过程中的常见问题及解决方案。 查看和运行SMC客户端退出与卸载SMC客户端出错提示S0客户端调用SMC服务出错错误提示SyncData.NotReport迁移源长时间未上报进度出错提示SourceServer.Offline迁移源已离线出错提示SourceServer.ImportError导入超时出错提示SourceServer.Error导入异常
 
@@ -552,7 +563,7 @@ SMC客户端为阿里云自主研发的服务器迁移工具，本文主要介�
 
 1. 进入SMC客户端的安装目录。SMC客户端的安装目录，请参见查看SMC客户端。
 2. 执行以下命令，运行SMC客户端。
-Linux系统云迁移中心
+Linux系统
 
 ```
 chmod +x ./go2aliyun_client ./go2aliyun_client
@@ -594,7 +605,7 @@ go2aliyun_client.exe --abort
 
 **卸载SMC客户端**
 
-在退出客户端迁移后，可参考以下操作步骤卸载SMC客户端。 Linux i. 执行以下命令，尝试清理残留缓存数据。 云迁移中心
+在退出客户端迁移后，可参考以下操作步骤卸载SMC客户端。 Linux i. 执行以下命令，尝试清理残留缓存数据。
 
 ```
 ./Check/client_check --ssclear smcss
@@ -644,9 +655,9 @@ i. 检查源系统本地网络服务是否正常，检查hosts、DNS等配置是
 1. 远程登录源服务器，进入到SMC客户端安装目录。
 如果是通过SMC控制台或ECS控制台自动导入的迁移源，则SMC默认安装目录如下：
 
-| /smc/go2aliyun_client*/ |  | 目录， |
+| /smc/go2aliyun_client*/ |   | 目录， |
 |---|---|---|
-| 统： | C:\smc\go2aliyun_client*\ |  |
+| 统： | C:\smc\go2aliyun_client*\ |   |
 
 如果是通过手动下载客户端方式导入的迁移源，SMC安装目录则是手动下载安装的目录。
 2. 运行SMC客户端程序。
@@ -669,16 +680,16 @@ Linux系统：执行 `./go2aliyun_client` 命令。 Windows系统：双击运行
 1. 远程登录源服务器，进入到SMC客户端安装目录。
 如果是通过SMC控制台或ECS控制台自动导入的迁移源，则SMC默认安装目录如下：
 
-| /smc/go2aliyun_client*/ |  | 目录， |
+| /smc/go2aliyun_client*/ |   | 目录， |
 |---|---|---|
-| 统： | C:\smc\go2aliyun_client*\ |  |
+| 统： | C:\smc\go2aliyun_client*\ |   |
 
-云迁移中心如果是通过手动下载客户端方式导入的迁移源，SMC安装目录则是手动下载安装的目录。
+如果是通过手动下载客户端方式导入的迁移源，SMC安装目录则是手动下载安装的目录。
 2. 运行SMC客户端程序。
 
-| ./go2aliyun_client |  | 命令。 |
+| ./go2aliyun_client |   | 命令。 |
 |---|---|---|
-| 双击运行 | go2aliyun_gui.exe |  |
+| 双击运行 | go2aliyun_gui.exe |   |
 
 3. 查看SMC客户端运行结果。
 如果运行无报错，迁移源状态会恢复正常，迁移任务也会恢复继续进行。 如果运行后报错，则需排查问题后再试。
@@ -732,9 +743,9 @@ zypper install openssh
 
 其他发行平台系统：参见发行版官网的安装文档。 S1_105：在源系统安装grub工具，请参见如何为Linux服务器安装GRUB。 问题排查解决后，请再次导入迁移源。如果源服务器无法满足控制台导入条件，建议您通过SMC客户端导入迁移源或通过命令行一键导入迁移源，请参见导入物理机/虚拟机/云服务器。
 
-#### 3.2.2. 服务器迁移中问题
+#### 3.2.2 服务器迁移中问题
 
-本文档描述了服务器迁移中的问题及相关解决方案。 出错提示S2磁盘分区文件数据同步出错云迁移中心出错提示S3磁盘分区数据同步出错出错提示S4目标磁盘分区初始化出错出错提示S5目标磁盘系统配置出错出错提示S6磁盘分区创建快照出错出错提示S7磁盘分区头数据同步准备出错出错提示S8磁盘分区数据同步准备出错出错提示S9磁盘分区头数据同步出错出错提示S10磁盘分区文件数据同步测试出错出错提示S11目标实例中转服务网络连接出错出错提示S12数据同步密钥获取出错
+本文档描述了服务器迁移中的问题及相关解决方案。 出错提示S2磁盘分区文件数据同步出错出错提示S3磁盘分区数据同步出错出错提示S4目标磁盘分区初始化出错出错提示S5目标磁盘系统配置出错出错提示S6磁盘分区创建快照出错出错提示S7磁盘分区头数据同步准备出错出错提示S8磁盘分区数据同步准备出错出错提示S9磁盘分区头数据同步出错出错提示S10磁盘分区文件数据同步测试出错出错提示S11目标实例中转服务网络连接出错出错提示S12数据同步密钥获取出错
 
 **出错提示S2磁盘分区文件数据同步出错**
 
@@ -752,7 +763,7 @@ zypper install openssh
 
 **说明**
 
-默认情况下SMC任务会自动给目标实例关联一个临时安全组，来放开目标实例的入方向8703端口。 ii. 使用 `telnet` 命令测试到目标实例8703端口是否连通，如果不通，需要排查本地网络配置或中间网络设备，如防火墙或代理出方向是否有IP端口访问限制。 S2_R11 检查迁移任务目标磁盘分区大小是否小于源系统磁盘分区实际数据量，如果小于，则需要重建迁移任务并设置合适的磁盘分区大小后再试。 S2_R1 使用 `rsync --version` 检查源系统rsync版本。建议rsync为3.0.6及以上版本，最新版本是3.1.3，同时检查是否支持ACLs能力，如果没有ACLs则表示不支持， 此时需要重装rsync后再试。 S2_R12 检查源系统到目标实例的IP:8703端口网络是否正常稳定，迁移过程中不要中断网络，待网络正常后再试。 S2_R70 检查源系统到目标实例的IP:8703端口网络是否正常稳定，源系统带宽速度是否足够，防止因网络带宽过小导致的传输进度过慢而超时。 云迁移中心检查源系统磁盘分区是否存在以下情况并处理： 动态变化的大文件，如数据库数据文件或日志文件。 可以考虑在合适的时间点暂停相关数据业务服务，确保迁移的过程中大文件不再动态变化后再试。 使用过滤配置排除相关目录后再试，具体操作，请参见如何过滤、排除不需要迁移的文件或目录？对于未迁移的文件或目录，后续可考虑用其他方案迁移。 大量小文件，如分布式文件系统海量数据、文件服务器等。 使用过滤配置排除相关目录后再试，具体操作，请参见如何过滤、排除不需要迁移的文件或目录？对于未迁移的文件或目录，后续可考虑用其他方案迁移。 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
+默认情况下SMC任务会自动给目标实例关联一个临时安全组，来放开目标实例的入方向8703端口。 ii. 使用 `telnet` 命令测试到目标实例8703端口是否连通，如果不通，需要排查本地网络配置或中间网络设备，如防火墙或代理出方向是否有IP端口访问限制。 S2_R11 检查迁移任务目标磁盘分区大小是否小于源系统磁盘分区实际数据量，如果小于，则需要重建迁移任务并设置合适的磁盘分区大小后再试。 S2_R1 使用 `rsync --version` 检查源系统rsync版本。建议rsync为3.0.6及以上版本，最新版本是3.1.3，同时检查是否支持ACLs能力，如果没有ACLs则表示不支持， 此时需要重装rsync后再试。 S2_R12 检查源系统到目标实例的IP:8703端口网络是否正常稳定，迁移过程中不要中断网络，待网络正常后再试。 S2_R70 检查源系统到目标实例的IP:8703端口网络是否正常稳定，源系统带宽速度是否足够，防止因网络带宽过小导致的传输进度过慢而超时。 检查源系统磁盘分区是否存在以下情况并处理： 动态变化的大文件，如数据库数据文件或日志文件。 可以考虑在合适的时间点暂停相关数据业务服务，确保迁移的过程中大文件不再动态变化后再试。 使用过滤配置排除相关目录后再试，具体操作，请参见如何过滤、排除不需要迁移的文件或目录？对于未迁移的文件或目录，后续可考虑用其他方案迁移。 大量小文件，如分布式文件系统海量数据、文件服务器等。 使用过滤配置排除相关目录后再试，具体操作，请参见如何过滤、排除不需要迁移的文件或目录？对于未迁移的文件或目录，后续可考虑用其他方案迁移。 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
 
 **出错提示S3磁盘分区数据同步出错**
 
@@ -784,11 +795,9 @@ zypper install openssh
 
 **解决方案**
 
-不同的错误码对应的解决方案如下： S4_105 如果迁移任务中的目标磁盘分区大小+1MB（磁盘头默认大小）之和小于目标磁盘大小： 方案一：将目标实例的对应目标磁盘扩容1 GB后再试。 方案二：重建迁移任务，将目标磁盘大小增大1 GB后再试。 S4_U28、S4_U7、S4_U56、S4_U6 解决方案，请参见出错提示S11目标实例中转服务网络连接出错。 云迁移中心问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
+不同的错误码对应的解决方案如下： S4_105 如果迁移任务中的目标磁盘分区大小+1MB（磁盘头默认大小）之和小于目标磁盘大小： 方案一：将目标实例的对应目标磁盘扩容1 GB后再试。 方案二：重建迁移任务，将目标磁盘大小增大1 GB后再试。 S4_U28、S4_U7、S4_U56、S4_U6 解决方案，请参见出错提示S11目标实例中转服务网络连接出错。 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
 
 **出错提示S5目标磁盘系统配置出错**
-
-**问题描述**
 
 在SMC迁移时，迁移任务出错提示“S5* 目标磁盘系统配置出错”。其中S5*可能的错误码如下： S5_204 S5_205 S5_206 S5_207 S5_U28 S5_U7 S5_U56 S5_U6
 
@@ -816,7 +825,7 @@ zypper install openssh
 
 **Windows：**
 
-打开事件查看器检查是否有vss、volsnap、disk相关来源异常，并根据报错进行处理。 如果报错提示磁盘空间不足，或VSS卷影副本快照无法增长。 云迁移中心检查磁盘分区剩余空间是否不足，建议预留10%15%空间。 磁盘卷影副本配置的存储使用限制大小是否不足，建议适当调大使用限制或选择没有限制后再试。 如果报错拒绝访问，错误码 `0x80070005` ，需检查系统内是否安装有第三方安全杀毒软件，建议放开磁盘备份权限或者禁用该类软件后再试。 检查系统卷影副本快照服务Volume Shadow Copy服务是否正常。
+打开事件查看器检查是否有vss、volsnap、disk相关来源异常，并根据报错进行处理。 如果报错提示磁盘空间不足，或VSS卷影副本快照无法增长。 检查磁盘分区剩余空间是否不足，建议预留10%15%空间。 磁盘卷影副本配置的存储使用限制大小是否不足，建议适当调大使用限制或选择没有限制后再试。 如果报错拒绝访问，错误码 `0x80070005` ，需检查系统内是否安装有第三方安全杀毒软件，建议放开磁盘备份权限或者禁用该类软件后再试。 检查系统卷影副本快照服务Volume Shadow Copy服务是否正常。
 
 **Linux**
 
@@ -846,16 +855,10 @@ zypper install openssh
 **问题原因**
 
 源系统SMC客户端进行磁盘分区数据同步准备时出错，可能原因有： 目标实例的中转服务（8080端口）异常。 源系统到目标实例的IP:8080端口网络访问不通。
-
-**解决方案**
-
-云迁移中心
 1. 解决方案具体操作，请参见出错提示S11目标实例中转服务网络连接出错。
 2. 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
 
 **出错提示S9磁盘分区头数据同步出错**
-
-**问题描述**
 
 在SMC迁移时，迁移任务出错提示“S9* 磁盘分区头数据同步出错”。其中S9*可能的错误码如下： S9_F4 S9_F40
 
@@ -887,11 +890,9 @@ zypper install openssh
 
 **说明**
 
-默认情况下SMC任务会自动给目标实例关联一个临时安全组，来放开目标实例的入方向8703端口。 ii. 使用 `telnet` 命令测试到目标实例8703端口是否连通，如果不通，需要排查本地网络配置或中间网络设备，如防火墙或代理出方向是否有IP端口访问限制。 S10_R1 使用 `rsync --version` 检查源系统rsync版本。建议rsync为3.0.6及以上版本，最新版本是3.1.3，同时检查是否支持ACLs能力，如果没有ACLs则表示不支持， 此时需要重装rsync后再试。问题排查解决后，运行SMC客户端再试。 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。 云迁移中心
+默认情况下SMC任务会自动给目标实例关联一个临时安全组，来放开目标实例的入方向8703端口。 ii. 使用 `telnet` 命令测试到目标实例8703端口是否连通，如果不通，需要排查本地网络配置或中间网络设备，如防火墙或代理出方向是否有IP端口访问限制。 S10_R1 使用 `rsync --version` 检查源系统rsync版本。建议rsync为3.0.6及以上版本，最新版本是3.1.3，同时检查是否支持ACLs能力，如果没有ACLs则表示不支持， 此时需要重装rsync后再试。问题排查解决后，运行SMC客户端再试。 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
 
 **出错提示S11目标实例中转服务网络连接出错**
-
-**问题描述**
 
 在SMC迁移时，迁移任务出错提示“S11* 目标实例中转服务网络连接出错”，其中S11*可能的错误码如下： S11_U28 S11_U7 S11_U56 S11_U6
 
@@ -906,17 +907,17 @@ zypper install openssh
 **解决方案**
 
 1. 检查目标实例的中转服务是否正常。
-i. 登录ECS管理控制台。 ii. 在左侧导航栏，选择**实例与镜像** > **实例**。 iii. 在顶部菜单栏处，选择目标ECS实例所在地域。 iv. 确认目标实例是否为正常运行的状态。 如果实例为运行中，则直接执行步骤e。 如果实例已停机，则需要启动实例后继续执行步骤e。 如果实例已释放，则需重建迁移任务。 v. 单击目标实例的实例ID，单击**定时与自动化任务**页签，单击**发送命令**。
+i. 登录ECS管理控制台。 ii. 在左侧导航栏，选择**实例与镜像** **>** **实例**。 iii. 在顶部菜单栏处，选择目标ECS实例所在地域。 iv. 确认目标实例是否为正常运行的状态。 如果实例为运行中，则直接执行步骤e。 如果实例已停机，则需要启动实例后继续执行步骤e。 如果实例已释放，则需重建迁移任务。 v. 单击目标实例的实例ID，单击**定时与自动化任务**页签，单击**发送命令**。
 
-| 输入 | netstat -ano \| findstr 8080 |  |
+| 输入 | netstat -ano \| findstr 8080 |   |
 |---|---|---|
-| netstat -ano \| grep 8080 |  | ，单击 |
+| netstat -ano \| grep 8080 |   | ，单击 |
 
-vi. 检查目标实例的安全组的入方向是否已放开8080端口，或者是否有其他安全组规则冲突限制。
+Linux系统：在命令内容中输入 netstat -ano | grep 8080 ，单击**执行**。如果执行成功并有8080相关内容输出，则表示目标实例内中转服务正常。 vi. 检查目标实例的安全组的入方向是否已放开8080端口，或者是否有其他安全组规则冲突限制。
 
-**说明**
+> **说明：** 默认情况下SMC迁移任务会自动给目标实例关联一个临时安全组，在目标实例的入方向放开8080端口。
 
-默认情况下SMC迁移任务会自动给目标实例关联一个临时安全组，在目标实例的入方向放开8080端口。 vii. 使用除了源服务器之外的其他服务器，访问 `http://<`目标实例`IP>:8080` 测试是否正常。 Linux系统： `curl http://<`目标实例`IP>:8080` 。 Windows系统：使用浏览器访问 `http://<`目标实例`IP>:8080` 。 如果返回正常的JSON格式内容如 `{"code":-101,"message":"smc p2vs get ok."}` ，则表示正常。
+vii. 使用除了源服务器之外的其他服务器，访问 `http://<`目标实例`IP>:8080` 测试是否正常。 Linux系统： `curl http://<`目标实例`IP>:8080` 。 Windows系统：使用浏览器访问 `http://<`目标实例`IP>:8080` 。 如果返回正常的JSON格式内容如 `{"code":-101,"message":"smc p2vs get ok."}` ，则表示正常。
 
 **说明**
 
@@ -930,18 +931,11 @@ i. 放开目标实例的安全组的入方向ICMP协议，使用ping命令测试
 
 **问题描述**
 
-在SMC迁移时，迁移任务出错提示“S12* 数据同步密钥获取出错”。其中S12*可能的错误码如下： S12_U28 S12_U7 S12_U56 S12_U6
-
-**问题原因**
-
-云迁移中心源系统SMC客户端进行数据同步密钥获取时出错，可能原因有： 目标实例的中转服务（8080端口）异常。 源系统到目标实例的IP:8080端口网络访问不通
-
-**解决方案**
-
+在SMC迁移时，迁移任务出错提示“S12* 数据同步密钥获取出错”。其中S12*可能的错误码如下： S12_U28 S12_U7 S12_U56 S12_U6 源系统SMC客户端进行数据同步密钥获取时出错，可能原因有： 目标实例的中转服务（8080端口）异常。 源系统到目标实例的IP:8080端口网络访问不通
 1. 具体操作，请参见出错提示S11目标实例中转服务网络连接出错。
 2. 问题排查解决后，运行SMC客户端再试。具体操作，请参见运行SMC客户端。
 
-#### 3.2.3. 服务器迁移后问题
+#### 3.2.3 服务器迁移后问题
 
 本文档描述了服务器迁移后的问题及相关解决方案。 迁移Windows服务器后，启动实例后发现数据盘缺失或者盘符错乱如何解决？ 迁移Windows服务器后，启动实例发现文件权限异常或部分系统菜单目录显示语言不统一如何解决？ 迁移Linux服务器后，启动实例后发现原数据盘目录下没有数据如何解决？ 迁移Linux服务器后生成的镜像创建的实例为何不能启动？ 启动Others Linux实例后，网络服务不正常是什么原因？ 迁移后创建的ECS实例hostname依旧保留了其他云平台的名称如何解决？
 
@@ -957,7 +951,7 @@ i. 放开目标实例的安全组的入方向ICMP协议，使用ping命令测试
 
 **解决方案**
 
-如果数据盘盘符缺失，您可以打开磁盘管理器，重新添加即可。 i. 打开**控制面板** > **系统与安全** > **管理工具** > **计算机管理**。 ii. 找到并右击盘符缺失的数据盘，单击**更改驱动器号和路径**。 iii. 单击**添加**并添加数据盘盘符。 如果数据盘盘符错乱，您可以打开磁盘管理器，重新更改即可。 i. 打开**控制面板** > **系统与安全** > **管理工具** > **计算机管理**。 ii. 找到并右击盘符错乱的数据盘，单击**更改驱动器和路径**。 iii. 单击**更改**并更改数据盘盘符。
+如果数据盘盘符缺失，您可以打开磁盘管理器，重新添加即可。 i. 打开**控制面板** **>** **系统与安全** **>** **管理工具** **>** **计算机管理**。 ii. 找到并右击盘符缺失的数据盘，单击**更改驱动器号和路径**。 iii. 单击**添加**并添加数据盘盘符。 如果数据盘盘符错乱，您可以打开磁盘管理器，重新更改即可。 i. 打开**控制面板** **>** **系统与安全** **>** **管理工具** **>** **计算机管理**。 ii. 找到并右击盘符错乱的数据盘，单击**更改驱动器和路径**。 iii. 单击**更改**并更改数据盘盘符。
 
 **迁移Windows服务器后，启动实例发现文件权限异常或部分系统菜单目录显示语言不统一如何解决？**
 
@@ -999,17 +993,11 @@ i. 放开目标实例的安全组的入方向ICMP协议，使用ping命令测试
 
 **解决方案**
 
-您需要进行下列检查： 检查驱动。创建I/O优化的实例时，请确保源服务器已经安装virtio驱动。更多信息，请参考《用户指南》中的《安装virtio驱动》章节。 检查源系统引导配置是否正确。 如果您的源服务器系统是内核版本较低的CentOS 5或者Debian 7，而且自带的GRUB程序版本低于1.99，同时在ECS控制台远程连接实例发现开机界面如下图所示。您需要升级GRUB系统引导程序至1.9版本以上后，重新迁移。升级GRUB的具体操作，请参考《用户指南》中年的《如何为Linux服务器安装GRUB》章节。 云迁移中心
+您需要进行下列检查： 检查驱动。创建I/O优化的实例时，请确保源服务器已经安装virtio驱动。更多信息，请参考《用户指南》中的《安装virtio驱动》章节。 检查源系统引导配置是否正确。 如果您的源服务器系统是内核版本较低的CentOS 5或者Debian 7，而且自带的GRUB程序版本低于1.99，同时在ECS控制台远程连接实例发现开机界面如下图所示。您需要升级GRUB系统引导程序至1.9版本以上后，重新迁移。升级GRUB的具体操作，请参考《用户指南》中年的《如何为Linux服务器安装GRUB》章节。
 
 **启动Others Linux实例后，网络服务不正常是什么原因？**
 
-**问题描述**
-
-使用SMC迁移后，启动Others Linux实例后，网络服务不正常。
-
-**问题原因**
-
-如果是非主流的Linux系统，可能会被识别为Others Linux类型。迁移后生成的自定义镜像所创建的实例，阿里云不会对该自定义镜像所创建的实例做任何配置工作， 包括相关网络配置和SSH配置等。
+使用SMC迁移后，启动Others Linux实例后，网络服务不正常。 如果是非主流的Linux系统，可能会被识别为Others Linux类型。迁移后生成的自定义镜像所创建的实例，阿里云不会对该自定义镜像所创建的实例做任何配置工作， 包括相关网络配置和SSH配置等。
 
 **解决方案**
 
@@ -1029,7 +1017,7 @@ i. 放开目标实例的安全组的入方向ICMP协议，使用ping命令测试
 
 安装cloud-init后重启实例，hostname即可更新。
 
-#### 3.2.4. VMWare迁移中问题
+#### 3.2.4 VMWare迁移中问题
 
 本文档描述了VMWare迁移中的问题及相关解决方案。 出错提示Code=30 出错提示Code=9 出错提示Code=80
 
@@ -1061,11 +1049,11 @@ i. 放开目标实例的安全组的入方向ICMP协议，使用ping命令测试
 
 执行 ps -ef | grep vmware 命令。
 
-| 图中显示有两个客户端在运行，执行 ./dist/finish X 杀死指定编号的客户端。 说明每次运行 ./goaliyun_client 都会重新启动新的进程，如果退出了客户端，需要查看请执行 ./go2aliyun_client --jobtype=3 --agentno=1 或者 tail - f go2aliyun_client.out 。 |  |  |  |
+| 图中显示有两个客户端在运行，执行 ./dist/finish X 杀死指定编号的客户端。 说明每次运行 ./goaliyun_client 都会重新启动新的进程，如果退出了客户端，需要查看请执行 ./go2aliyun_client --jobtype=3 --agentno=1 或者 tail - f go2aliyun_client.out 。 |   |   |   |
 |---|---|---|---|
-|  | 说明每次运行 ./goaliyun_client 都会重新启动新的进程，如果退出了客户端，需要查看请执行 ./go2aliyun_client --jobtype=3 --agentno=1 或者 tail - f go2aliyun_client.out 。 |  |  |
-|  |  | tail - |  |
-|  | f go2aliyun_client.out |  |  |
+|   | 说明每次运行 ./goaliyun_client 都会重新启动新的进程，如果退出了客户端，需要查看请执行 ./go2aliyun_client --jobtype=3 --agentno=1 或者 tail - f go2aliyun_client.out 。 |   |   |
+|   |   | tail - |   |
+|   | f go2aliyun_client.out |   |   |
 
 **出错提示Code=80**
 
@@ -1075,13 +1063,9 @@ i. 放开目标实例的安全组的入方向ICMP协议，使用ping命令测试
 
 **问题原因**
 
-读取的磁盘为空，或者读取不到磁盘。
+读取的磁盘为空，或者读取不到磁盘。 查看待迁移的虚拟机是否存在没有进行挂载的磁盘，并对该磁盘进行挂载。
 
-**解决方案**
-
-查看待迁移的虚拟机是否存在没有进行挂载的磁盘，并对该磁盘进行挂载。 云迁移中心
-
-#### 3.2.5. 操作系统替换问题
+#### 3.2.5 操作系统替换问题
 
 本文档描述了操作系统替换的问题及相关解决方案。
 
@@ -1163,9 +1147,9 @@ rmmod btrfs
 
 | . 执行以下命令，打开 | etc/fstab | 文件。 |
 |---|---|---|
-| vim /etc/fstab |  |  |
+| vim /etc/fstab |   |   |
 
-3. 按 i 键，进入编辑模式，找到配置XFS文件系统所在的行，将第四列中已经弃用的XFS挂载选项删除或者改为 `defaults` 。
+3. 按 `i` 键，进入编辑模式，找到配置XFS文件系统所在的行，将第四列中已经弃用的XFS挂载选项删除或者改为 `defaults` 。
 弃用的XFS选项如下所示：
 
 ```bash
@@ -1180,12 +1164,9 @@ rmmod btrfs
 mount -a
 ```
 
-云迁移中心
 6. 问题排查解决后，运行SMC客户端再试。
 
 **出错提示“Not enough space on /boot”**
-
-**问题描述**
 
 在操作系统替换时，出错提示“Not enough space on /boot”。
 
@@ -1216,7 +1197,7 @@ uname -r
 ```
 
 4. 清理不再需要的内核版本，例如，清理 `kernel-3.10.0-514.26.2.el7.x86_64` 。
-如果内核通过**rpm**包的方式安装，执行以下命令，清理内核。
+如果内核通过**rpm****包**的方式安装，执行以下命令，清理内核。
 
 ```bash
 yum remove kernel-3.10.0-514.26.2.el7.x86_64
@@ -1248,7 +1229,7 @@ grubby --default-kernel
 
 | 执行以下命令，设置剩余内核中最新版本的内核作为默认启动内核。例如，设置剩余内核中最新版本的内核为 | 3.10.0-1160.76.1.el7.x86_64 | 。 |
 |---|---|---|
-| grubby --set-default /boot/vmlinuz-3.10.0-1160.76.1.el7.x86_64 |  |  |
+| grubby --set-default /boot/vmlinuz-3.10.0-1160.76.1.el7.x86_64 |   |   |
 
 6. 问题排查解决后，运行SMC客户端再试。
 
@@ -1284,18 +1265,12 @@ kernel-debuginfo-5.11.0-36.1.1.x86_64kernel-debuginfo-5.11.0-40.1.1.x86_64
 yum remove kernel-debuginfo-5.11.0-36.1.1.x86_64
 ```
 
-输入 y ，并按 `Enter` 键，确认删除操作。
+输入 `y` ，并按 `Enter` 键，确认删除操作。
 3. 问题排查解决后，运行SMC客户端再试。
 
 **出错提示“Multiple devel kernels installed”**
 
-**问题描述**
-
-云迁移中心在操作系统替换时，出错提示“Multiple devel kernels installed”。
-
-**问题原因**
-
-kernel-devel是用做内核一般开发的，比如编写内核模块，原则上可以不需要内核的源代码。这个包提供了足以根据内核包构建模块的内核头文件和makefile，开发编写内核模块时，只需引用其中相应的内核头文件。只有在需要开发编译对应版本内核功能程序的开发环境才需要安装kernel-devel，卸载之后不会对当前环境产生影响。dnf在内核升级过程中不支持安装了多个版本kernel-devel包的就地升级，如果系统中安装了多个kernel-devel包，可能会导致操作系统替换失败。
+在操作系统替换时，出错提示“Multiple devel kernels installed”。 kernel-devel是用做内核一般开发的，比如编写内核模块，原则上可以不需要内核的源代码。这个包提供了足以根据内核包构建模块的内核头文件和makefile，开发编写内核模块时，只需引用其中相应的内核头文件。只有在需要开发编译对应版本内核功能程序的开发环境才需要安装kernel-devel，卸载之后不会对当前环境产生影响。dnf在内核升级过程中不支持安装了多个版本kernel-devel包的就地升级，如果系统中安装了多个kernel-devel包，可能会导致操作系统替换失败。
 
 **解决方案**
 
@@ -1319,7 +1294,7 @@ kernel-devel-3.10.0-1160.90.1.el7.x86_64kernel-devel-3.10.0-1160.80.1.el7.x86_64
 yum remove kernel-devel-3.10.0-1160.80.1.el7.x86_64
 ```
 
-输入 y ，并按 `Enter` 键，确认删除操作。
+输入 `y` ，并按 `Enter` 键，确认删除操作。
 3. 问题排查解决后，运行SMC客户端再试。
 
 **出错提示“Newest installed kernel not in use”**
@@ -1400,10 +1375,6 @@ yum -y install efibootmgr
 
 **出错提示磁盘空间不足或者内存不足**
 
-云迁移中心
-
-**问题描述**
-
 在操作系统替换时，出错提示以下信息： Available system memory is less than 300M, memory requirement is not satisfied. Total system memory is less than 512M, memory requirement is not satisfied. Available system storage is less than 2G, storge requirement is not satisfied. To ensure the migration, this machine must have 2G free space on disk and 300MB RAM available. To ensure the migration, this machine must have 512MB RAM at least totally. To ensure the migration, this machine must have 4G free space on disk and 600M RAM available. Memory detected: *MiB, required: *MiB.
 
 **问题原因**
@@ -1413,10 +1384,10 @@ yum -y install efibootmgr
 | 迁移场景 | 报错信息 | 问题原因 |
 |---|---|---|
 | CentOS 8 -> Alibaba Cloud Linux 3 | Available system memory is less than 300M, memory requirement is not satisfied. | 需要确保服务器可用内存大于300 MiB。 |
-|  | Total system memory is less than 512M, memory requirement is not satisfied. | 需要确保服务器总内存大于512 MiB。 |
-|  | Available system storage is less than 2G, storge requirement is not satisfied. | 需要确保服务器系统盘有2 GiB的可用空间。 |
+|   | Total system memory is less than 512M, memory requirement is not satisfied. | 需要确保服务器总内存大于512 MiB。 |
+|   | Available system storage is less than 2G, storge requirement is not satisfied. | 需要确保服务器系统盘有2 GiB的可用空间。 |
 | CentOS 7 -> Alibaba Cloud Linux 3 Alibaba Cloud Linux 2 -> Alibaba Cloud Linux 3 | To ensure the migration, this machine must have 4G free space on disk and 600M RAM available. | 需要确保服务器有4 GiB的系统盘可用空间和600 MiB的可用内存。 |
-|  | Memory detected: *MiB, required: *MiB. | x8664架构服务器需要总内存满足1.5 GiB。 _ aarch64架构服务器需要总内存满足2 GiB。 |
+|   | Memory detected: *MiB, required: *MiB. | x8664架构服务器需要总内存满足1.5 GiB。 _ aarch64架构服务器需要总内存满足2 GiB。 |
 
 **解决方案**
 
@@ -1426,7 +1397,7 @@ yum -y install efibootmgr
 
 | 可以通过尝试清理 | /tmp | 和 | /var/log | 来释放磁盘空间。 |
 |---|---|---|---|---|
-| 警告删除文件时，请确保文件不再需要，避免对您的业务造成影响。 |  |  |  |  |
+| 警告删除文件时，请确保文件不再需要，避免对您的业务造成影响。 |   |   |   |   |
 
 ```
 rm -rf /tmp/*rm -rf /var/log/syslog.* #例如删除旧的syslog文件
@@ -1469,7 +1440,7 @@ rpm -qa | grep i686
 
 **警告**
 
-建议您评估后再卸载，避免卸载后对您的业务造成影响。 云迁移中心
+建议您评估后再卸载，避免卸载后对您的业务造成影响。
 
 ```bash
 yum remove -y <package-name>
@@ -1501,12 +1472,13 @@ grep "\[base\]" /etc/yum.repos.d/*.repogrep "\[extras\]" /etc/yum.repos.d/*.repo
 
 | 回显信息类似如下所示，表示 | /etc/yum.repos.d/CentOS-7.repo | 文件和 | /etc/yum.repos.d/CentOS-Base.repo | 文件中同时配置了base仓库。 |
 |---|---|---|---|---|
-| [root@test ~]# grep "\[base\]" /etc/yum.repos.d/*.repo /etc/yum.repos.d/CentOS-7.repo:[base]/etc/yum.repos.d/CentOS-Base.repo:[base][ro ot@test ~]# grep "\[extras\]" /etc/yum.repos.d/*.repo /etc/yum.repos.d/CentOS-Base.repo:[extras][root@test ~]# grep "\[updates\]" /etc/ yum.repos.d/*.repo /etc/yum.repos.d/CentOS-Base.repo:[updates] |  |  |  |  |
+| [root@test ~]# grep "\[base\]" /etc/yum.repos.d/*.repo /etc/yum.repos.d/CentOS-7.repo:[base]/etc/yum.repos.d/CentOS-Base.repo:[base][ro ot@test ~]# grep "\[extras\]" /etc/yum.repos.d/*.repo /etc/yum.repos.d/CentOS-Base.repo:[extras][root@test ~]# grep "\[updates\]" /etc/ yum.repos.d/*.repo /etc/yum.repos.d/CentOS-Base.repo:[updates] |   |   |   |   |
 
-| /etc/yum.repo.d/ |  | 目录下的repo配置文件中，修 |
+| /etc/yum.repo.d/ |   | 目录下的repo配置文件中，修 |
 |---|---|---|
-| 示例您可以将 | /etc/yum.repos.d/CentOS-7.repo |  |
+| 示例您可以将 | /etc/yum.repos.d/CentOS-7.repo |   |
 
+本示例您可以将 `/etc/yum.repos.d/CentOS-7.repo` 或 `/etc/yum.repos.d/CentOS-Base.repo` 中的[base]修改成其他名称，实际环境中如果[extras]、 [updates]或其他仓库标识也存在重复，需要依次修改所有重复的软件包仓库标识。
 4. 问题排查解决后，运行SMC客户端再试。
 
 **出错提示“OpenSSH configured to use removed ciphers”**
@@ -1528,14 +1500,15 @@ OpenSSH服务的配置文件 `/etc/ssh/sshd_config` 中使用了一些不安全�
 
 | 执行以下命令，修改配置文件 | /etc/ssh/sshd_config | 。 |
 |---|---|---|
-| vim /etc/ssh/sshd_config |  |  |
+| vim /etc/ssh/sshd_config |   |   |
 
-2. 按 i 进入编辑模式。
+2. 按 `i` 进入编辑模式。
 
 | blowfish-cbc | 、 | cast128-cbc |
 |---|---|---|
-| hmac-ripemd160 |  | 或注释MACs配置 |
+| hmac-ripemd160 |   | 或注释MACs配置 |
 
+4. 在MACs配置的行中去除已经不再支持的消息认证码 `hmac-ripemd160` 或注释MACs配置行。
 5. 按 `Esc` 退出编辑模式，然后输入 `:wq` 并回车，保存并退出文件。
 6. 问题排查解决后，运行SMC客户端再试。
 
@@ -1568,7 +1541,6 @@ ethtool -i eth0 | grep driverdriver: virtio_net
 ```
 
 3. 查看内核启动参数是否已包含 `net.ifnames=0` 。
-云迁移中心
 
 ```
 cat /proc/cmdline | grep "net.ifnames=0"
@@ -1579,18 +1551,18 @@ cat /proc/cmdline | grep "net.ifnames=0"
 
 | 执行以下命令，编辑 | /etc/default/grub | 文件。 |
 |---|---|---|
-| vim /etc/default/grub |  |  |
+| vim /etc/default/grub |   |   |
 
-| i | 进入编辑模式。 |  |
+| i | 进入编辑模式。 |   |
 |---|---|---|
-| GRUB_CMDLINE_LINUX |  |  |
-| Esc |  | 退出编辑模式，然 |
+| GRUB_CMDLINE_LINUX |   |   |
+| Esc |   | 退出编辑模式，然 |
 
-| 添加 | net.ifnames=0 |  |
+| 添加 | net.ifnames=0 |   |
 |---|---|---|
-| :wq |  | 并回车，保存并 |
+| :wq |   | 并回车，保存并 |
 
-v. 执行以下命令生成grub.cfg，刷新配置。 legacy模式：
+iii. 在 `GRUB_CMDLINE_LINUX` 所在行添加 `net.ifnames=0` 。 iv. 按 `Esc` 退出编辑模式，然后输入 `:wq` 并回车，保存并退出件。 v. 执行以下命令生成grub.cfg，刷新配置。 legacy模式：
 
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -1607,7 +1579,7 @@ vi. 执行reboot命令，重启操作系统。
 
 | 执行以下命令，查看内核启动参数是否已包含 | net.ifnames=0 | 。 |
 |---|---|---|
-| cat /proc/cmdline |  |  |
+| cat /proc/cmdline |   |   |
 
 如果已包含 `net.ifnames=0` ，表示内核参数修改成功。
 7. 执行以下命令，禁用eth网卡名称的检测。
@@ -1668,7 +1640,7 @@ yum remove lynx-2.8.8-0.3.dev15.1.al7.x86_64
 cat /smc/go2aliyun_client2.7.7_linux_x86_64/Logs/osm_prepare.log
 ```
 
-云迁移中心其中：2.7.7是SMC客户端的版本号，您需要根据实际情况进行替换。执行以下命令，日志存在以下报错信息。
+其中：2.7.7是SMC客户端的版本号，您需要根据实际情况进行替换。执行以下命令，日志存在以下报错信息。
 
 ```
 cat /var/log/leapp/leapp-preupgrade.log
@@ -1753,7 +1725,6 @@ yum update
 ```
 
 4. 重启源服务器后，执行以下命令，检查已加载overlay驱动。
-云迁移中心
 
 ```
 lsmod |grep overlay
@@ -1846,7 +1817,7 @@ ln -snf root/migration /test_migration
 cat /smc/go2aliyun_client2.7.7_linux_x86_64/Logs/osm_prepare.log
 ```
 
-云迁移中心其中：2.7.7是SMC客户端的版本号，您需要根据实际替换。上述报错信息表明，更新软件包时，dnf_transaction_check阶段检查依赖关系失败。可能是仓库中缺少依赖的软件包，也可能是依赖的软件包之间存在冲突。如上述lynx包更新时仓库中找不到依赖包 `anolis-indexhtml` 。
+其中：2.7.7是SMC客户端的版本号，您需要根据实际替换。上述报错信息表明，更新软件包时，dnf_transaction_check阶段检查依赖关系失败。可能是仓库中缺少依赖的软件包，也可能是依赖的软件包之间存在冲突。如上述lynx包更新时仓库中找不到依赖包 `anolis-indexhtml` 。
 3. 分析报错信息中的依赖关系，卸载导致问题的软件包。例如出现上述报错后，执行以下命令，卸载lynx。
 
 ```bash
@@ -1888,11 +1859,11 @@ TCP Wrappers是一种在应用程序级别阻止传入连接的简单工具。�
 
 | 假设 | /etc/hosts.deny | 的配置为： |
 |---|---|---|
-| ## hosts.deny This file contains access rules which are used to# deny connections to network services that either use# the tcp_wrappers library or that have been# started through a tcp_wrappers-enabled xinetd.## The rules in this file can also be set up in # /etc/hosts.allow with a 'deny' option instead.## See 'man 5 hosts_options' and 'man 5 hosts_access'# for information on rule synta x.# See 'man tcpd' for information on tcp_wrappers#sshd: ALL |  |  |
+| ## hosts.deny This file contains access rules which are used to# deny connections to network services that either use# the tcp_wrappers library or that have been# started through a tcp_wrappers-enabled xinetd.## The rules in this file can also be set up in # /etc/hosts.allow with a 'deny' option instead.## See 'man 5 hosts_options' and 'man 5 hosts_access'# for information on rule synta x.# See 'man tcpd' for information on tcp_wrappers#sshd: ALL |   |   |
 
 | 假设 | /etc/hosts.allow | 的配置为： |
 |---|---|---|
-| ## hosts.allow This file contains access rules which are used to# allow or deny connections to network services that# either use the tc p_wrappers library or that have been# started through a tcp_wrappers-enabled xinetd.## See ‘man 5 hosts_options’ and ‘man 5 hosts_access’# for information on rule syntax.# See ‘man tcpd’ for information on tcp_wrappers#sshd: 192.168.20.100 192.168.20.101 sshd : 192.168.15.16/29 |  |  |
+| ## hosts.allow This file contains access rules which are used to# allow or deny connections to network services that# either use the tc p_wrappers library or that have been# started through a tcp_wrappers-enabled xinetd.## See ‘man 5 hosts_options’ and ‘man 5 hosts_access’# for information on rule syntax.# See ‘man tcpd’ for information on tcp_wrappers#sshd: 192.168.20.100 192.168.20.101 sshd : 192.168.15.16/29 |   |   |
 
 1. 远程连接源服务器。
 2. 执行以下命令，安装firewalld并启动服务。
@@ -1931,18 +1902,7 @@ firewall-cmd --reload
 
 **出错提示“Use of OSSFS detected”**
 
-本文主要介绍在Linux操作系统替换时，迁移任务出错提示“Use of OSSFS detected”信息时的问题描述、问题原因及其解决方案。
-
-**问题描述**
-
-在SMC操作系统替换时，迁移任务出错提示“Use of OSSFS detected”信息。 云迁移中心
-
-**问题原因**
-
-待迁移的源服务器系统 `/etc/fstab` 配置了OSS远程挂载目录。
-
-**解决方案**
-
+本文主要介绍在Linux操作系统替换时，迁移任务出错提示“Use of OSSFS detected”信息时的问题描述、问题原因及其解决方案。 在SMC操作系统替换时，迁移任务出错提示“Use of OSSFS detected”信息。 待迁移的源服务器系统 `/etc/fstab` 配置了OSS远程挂载目录。
 1. 在待迁移的源服务器系统 `/etc/fstab` 移除OSS远程挂载目录相关配置。
 2. 问题排查解决后，运行SMC客户端再试。
 
@@ -1964,15 +1924,15 @@ firewall-cmd --reload
 
 | 执行以下命令，把 | /etc/ssh/sshd_config | 中的 | PermitRootLogin | 值设置为 | yes | 。 |
 |---|---|---|---|---|---|---|
-| sudo sed -i 's/^PermitRootLogin no$/PermitRootLogin yes/' /etc/ssh/sshd_config |  |  |  |  |  |  |
+| sudo sed -i 's/^PermitRootLogin no$/PermitRootLogin yes/' /etc/ssh/sshd_config |   |   |   |   |   |   |
 
 | 执行以下命令，检查 | PermitRootLogin | 的值是否设置为 | yes | 。 |
 |---|---|---|---|---|
-| grep ^PermitRootLogin /etc/ssh/sshd_config |  |  |  |  |
+| grep ^PermitRootLogin /etc/ssh/sshd_config |   |   |   |   |
 
 4. 执行以下命令，重启SSH服务以使更改生效。
 
-```bash
+```python
 sudo systemctl restart sshd
 ```
 
@@ -2033,20 +1993,15 @@ sudo systemctl restart sshd
 1. 远程连接源服务器。
 2. 执行以下命令，升级python-devel软件版本。
 
-```bash
+```python
 sudo yum update python-devel
 ```
 
-云迁移中心
 3. 问题排查解决后，运行SMC客户端再试。
 
 **出错提示“It seems that your system install a GUI module”**
 
-本文主要介绍在Linux操作系统替换时，迁移任务出错提示“It seems that your system install a GUI module”信息时的问题描述、问题原因及其解决方案。
-
-**问题描述**
-
-在使用SMC操作系统替换时，迁移任务出错提示“It seems that your system install a GUI module”信息。
+本文主要介绍在Linux操作系统替换时，迁移任务出错提示“It seems that your system install a GUI module”信息时的问题描述、问题原因及其解决方案。 在使用SMC操作系统替换时，迁移任务出错提示“It seems that your system install a GUI module”信息。
 
 **问题原因**
 
@@ -2112,15 +2067,10 @@ python3 /usr/sbin/centos2alinux.py -c
 
 如果还是报错，则需要继续解决报错问题。
 2. 问题排查解决后，可参运行SMC客户端命令 `./go2aliyun_client --rerun --skipgrub` 来重试。
-云迁移中心
 
 **出错提示“failed to install centos2alinux/leapp”**
 
-本文主要介绍在Linux操作系统替换时，迁移任务出错提示“failed to install centos2alinux/leapp”信息时的问题描述、问题原因及其解决方案。
-
-**问题描述**
-
-在使用SMC操作系统替换时，迁移任务出错提示“failed to install centos2alinux/leapp”信息。
+本文主要介绍在Linux操作系统替换时，迁移任务出错提示“failed to install centos2alinux/leapp”信息时的问题描述、问题原因及其解决方案。 在使用SMC操作系统替换时，迁移任务出错提示“failed to install centos2alinux/leapp”信息。
 
 **问题原因**
 
@@ -2195,15 +2145,14 @@ yum remove python36-six
 
 示例二
 
-| 上图日志中可以看到在安装 cmake-3.20.2-5.al8.x86_64 时与源系统上 cmake3-3.17.5-1.el7.x86_64 冲突，此时我们需要卸载源系统 cmake3-3.17.5- 1.el7.x86_64 ，迁移会新安装 cmake-3.20.2-5.al8.x86_64 ，以此类推需要处理所有冲突。 yum remove cmake3-3.17.5-1.el7.x86_64 |  | cmake3-3.17.5- |
+| 上图日志中可以看到在安装 cmake-3.20.2-5.al8.x86_64 时与源系统上 cmake3-3.17.5-1.el7.x86_64 冲突，此时我们需要卸载源系统 cmake3-3.17.5- 1.el7.x86_64 ，迁移会新安装 cmake-3.20.2-5.al8.x86_64 ，以此类推需要处理所有冲突。 yum remove cmake3-3.17.5-1.el7.x86_64 |   | cmake3-3.17.5- |
 |---|---|---|
-| 1.el7.x86_64 |  |  |
-|  | yum remove cmake3-3.17.5-1.el7.x86_64 |  |
+| 1.el7.x86_64 |   |   |
+|   | yum remove cmake3-3.17.5-1.el7.x86_64 |   |
 
-云迁移中心
 4. 问题排查解决后，运行SMC客户端再试。
 
-#### 3.2.6. 迁移演练项说明
+#### 3.2.6 迁移演练项说明
 
 您可以根据实际需求，在服务器迁移演练项和操作系统演练项页签下查看对应的迁移演练项，并根据修复建议修复问题。
 
@@ -2244,8 +2193,6 @@ yum remove python36-six
 | VSS最小存储空间 | 警告 | 卷可用空间不足300MB，无法创建VSS快照。 | 根据需要释放卷空间或配置VSS快照的存储位置为可用空间充足的卷。 |
 | VSS可用空间限制 | 警告 | VSS快照设置了存储空间上限，若迁移时存在较多数据落盘，VSS快照的存储空间可能不足。 | 根据需要取消或增大卷影副本使用空间限制。 |
 
-云迁移中心
-
 | VSS可用存储空间 | 警告 | 卷可用空间低于5%，若迁移时存在较多数据落盘，VSS快照的存储空间可能不足。 | 根据需要释放卷空间或配置VSS快照的存储位置为可用空间充足的卷。 |
 |---|---|---|---|
 | 杀毒软件 | 警告 | 杀毒软件正在运行中，可能导致迁移异常。 | 根据需要关闭或卸载杀毒软件。 |
@@ -2282,8 +2229,6 @@ yum remove python36-six
 | 网络连通性检查（数据同步） | 严重 | 连接中转实例数据同步端口（8703）失败。 | 请检查迁移源网络状态，确保迁移源出方向能够访问中转实例公网IP的8703端口（使用VPC内网迁移方案时，需访问私有IP地址）。 |
 | 初始化磁盘分区 | 严重 | 初始化磁盘分区失败。 | 请检查目标磁盘是否小于源磁盘。 |
 | 获取块复制传输密钥 | 警告 | 获取块复制传输密钥失败。 | 提交工单 |
-
-云迁移中心
 
 | 创建分区快照 | 严重 | 创建分区快照失败。 | Windows：检查VSS快照状态，具体操作，请参见服务器迁移中问题。 Linux：提交工单。 |
 |---|---|---|---|
@@ -2324,8 +2269,6 @@ yum remove python36-six
 |---|---|---|---|
 | 未知错误 | 严重 | 迁移演练中发生未知错误。 | 提交工单。 |
 
-云迁移中心
-
 | 安装脚本下载 | 严重 | 下载升级工具安装脚本失败。 | 1. 检查当前系统wget工具是否正常使用。 2. 执行以下命令，检查ECS能否访问VPC网络访问地址。 目标操作系统为Alibaba cloud Linux： curl http://mirrors.cloud.aliyuncs.com/ alinux/migration/ 目标操作系统为Anolis： curl http://mirrors.cloud.aliyuncs.com/ anolis/migration/ 3. 请检查是否配置了DNS或代理导致无法访问 yum源。 4. 若以上步骤均无异常，请提交工单。 |
 |---|---|---|---|
 | 升级工具安装 | 严重 | 安装升级工具失败。 | 1. 检查yum源能否正常访问：yum repolist 2. 检查是否配置了DNS或代理导致无法访问 yum源 3. 若以上步骤均无异常，请提交工单。 |
@@ -2342,8 +2285,6 @@ yum remove python36-six
 | XFS文件系统 | 严重 | /etc/fstab中存在已经弃用的XFS挂载选项。 | 如果/etc/fstab中XFS挂载存在如下已经弃用的挂载选项，那么升级后不手动更改/etc/fstab文件的情况下系统无法正常挂载XFS文件系统。打开/etc/fstab文件，找到配置XFS文件系统所在的行，将第四列中已经弃用的XFS挂载选项删除或者改为defaults。具体操作，请参见出错提示“Deprecated XFS mount options present in FSTAB”。 |
 | NFS文件系统 | 严重 | 系统中挂载了NFS文件系统。 | 取消挂载NFS，在操作系统迁移前暂时禁用 NFS。操作系统迁移完成后，重新挂载NFS 参考文档：出错提示“Use of NFS/CIFS detected. Upgrade can't proceed”。 |
 | OSSFS文件系统 | 严重 | 系统中挂载了OSSFS文件系统。 | 取消挂载OSSFS，在操作系统迁移前暂时禁用 OSSFS。操作系统迁移完成后，重新挂载 OSSFS。具体操作，请参见出错提示“Use of OSSFS detected”。 |
-
-云迁移中心
 
 | OpenSSH配置 | 严重 | PermitRootLogin配置缺失。 | OpenSSH配置文件中没有配置是否允许root用户通过ssh登录，请打开/etc/ssh/sshdconfig _ 文件，配置PermitRootLogin为yes或no。具体操作，请参见出错提示“Possible problems with remote login using root account”。 |
 |---|---|---|---|
@@ -2363,15 +2304,11 @@ yum remove python36-six
 | 系统总内存 | 严重 | 系统总内存不满足最低要求。 | 请根据需要修改实例规格，服务器总内存需要满足512 MiB。 |
 | 系统内存或系统盘空间 | 严重 | 系统可用内存不足或系统盘可用空间不足 | 请根据需要释放空间，确保当前系统可用内存大于300 MiB，系统盘可用空间大于2 GiB。 |
 
-云迁移中心
-
 | 软件包升级 | 严重 | 存在不支持迁移的i686软件包 | 目标系统不提供i686的软件包，当前机器安装了i686的软件包，请检查并手动卸载这些i686 的rpm包。具体操作，请参见出错提示“Anolis OS does not provide i686 packages, please remove them before migration”。 |
 |---|---|---|---|
 | 软件包升级 | 严重 | 存在不支持迁移的GUI软件包 | 目标系统不支持图形化界面，当前机器安装了图形界面相关的软件包，请检查并手动卸载这些图形界面相关的rpm包。具体操作，请参见出错提示“Use of NFS/CIFS detected. Upgrade can't proceed”。 |
 
-云迁移中心
-
-## 故障处理
+## 4 故障处理
 
 1. 在产品的使用过程中应严格遵守用户指南的各项说明，按要求进行操作，避免因使用不当造成的数据损坏或其他损失。
 2. 如果因操作有误或其他因素导致功能异常，可以考虑重新登录系统，按照用户指南的说明逐步进行重试。

@@ -5,7 +5,7 @@ doc_version: "20251105"
 pdf_pages: 57
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 ApsaraDB RDS for SQL Server User Guide 20251105.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/RDS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20ApsaraDB%20RDS%20for%20SQL%20Server%20User%20Guide%2020251105.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 ApsaraDB RDS for SQL Server User Guide 20251105
@@ -196,6 +196,9 @@ This topic describes how to log on to the ApsaraDB RDS console.
 **Prerequisites**
 
 Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
@@ -265,9 +268,12 @@ After you create an ApsaraDB RDS instance, you must add the IP addresses or CIDR
 
 **Background information**
 
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Data Security**.
 5. On the **Whitelist Settings** tab, click **Edit** corresponding to the **default** whitelist.
 
@@ -290,9 +296,13 @@ This topic describes how to use Data Management (DMS) to connect to an ApsaraDB 
 **Prerequisites**
 
 A database is created. For more information, see Create a database A database account is created. For more information, see Create an account.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. Click **Log On to Database** in the upper-right corner of the page.
 5. In the **Log on to Database Instance** dialog box of the **DMS** console, check the values of
 **Database Type**, **Instance Region**, and **Connection string address**. If the values are
@@ -319,6 +329,9 @@ This topic describes how to create an account on an ApsaraDB RDS for SQL Server 
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
@@ -342,9 +355,13 @@ The instance is in the **Running** state.
 ### 5.6 Create a database
 
 This topic describes how to create a database on an ApsaraDB RDS for SQL Server instance in the ApsaraDB RDS console.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Databases**.
 5. In the upper-right corner of the page, click **Create Database**.
 6. Configure the parameters for the database that you want to create.
@@ -366,6 +383,9 @@ This topic describes how to create an ApsaraDB RDS for SQL Server instance in th
 **Prerequisites**
 
 An Apsara Stack tenant account is created.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, click **Create Instance** in the upper-right corner.
 3. Configure the parameters described in the following table.
@@ -404,6 +424,9 @@ An Apsara Stack tenant account is created.
 **instance**
 
 This topic describes how to view the details of an ApsaraDB RDS instance, such as its basic information, internal network connection information, status, and configurations.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. Use one of the following methods to go to the **Basic Information** page of an instance:
 On the **Instances** page, click the ID of an instance to go to the **Basic Information** page. On the **Instances** page, click **Manage** in the **Actions** column corresponding to an instance to go to the **Basic Information** page.
@@ -415,6 +438,9 @@ This topic describes how to manually restart an RDS instance. This applies if th
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. Click **Restart Instance** in the upper-right corner.
@@ -431,9 +457,12 @@ This topic describes how to change the specifications of your instance, such as 
 
 > **p** p g interruption may occur. Business operations that involve databases, accounts, and networks are interrupted. We recommend that you change the specifications during off- peak hours or make sure that your applications are configured with automatic reconnection policies.
 
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the **Configuration Information** section, click **Change Specifications**.
 5. On the Change Specifications page, set the **Edition**, **Instance Type**, and **Storage**
 **Capacity** parameters.
@@ -446,9 +475,13 @@ This topic describes how to set the maintenance window of an ApsaraDB RDS for SQ
 **Background information**
 
 An instance enters the **Maintaining Instance** state before the maintenance window to ensure stability during the maintenance process. When the instance is in this state, access to data in the database and query operations such as performance monitoring are not affected. However, except for account and database management and IP address whitelist configuration, modification operations such as upgrade, downgrade, and restart are temporarily unavailable. During the maintenance window, one or two network interruptions may occur. Make sure that your applications are configured with automatic reconnection policies.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the **Configuration Information** section, click **Configure** to the right of **Maintenance**
 **Window**.
 5. Select a maintenance window and click **Save**.
@@ -473,9 +506,12 @@ An ApsaraDB RDS for SQL Server instance has a secondary instance. Data is synchr
 > During a switchover, a 1-minute data quality protection mechanism is enabled for data synchronization. If the primary and secondary database states are incorrect or if the latency for data synchronization exceeds 1 minute due to SQL Server errors, the HA system does not automatically perform the primary/secondary switchover. You must determine whether to perform the switchover.
 > If an instance is intermittently unavailable due to excessive mirroring event waits, the switchover is not performed. The instance automatically becomes available again.
 
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Service Availability**.
 5. In the **Availability Information** section, click **Switch Primary/Secondary Instance**.
 6. In the dialog box that appears, specify the time when the switching is performed and click
@@ -577,6 +613,7 @@ Figure 1. View a read-only instance
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. On the **Basic Information** page, move the pointer over the number below **Read-only**
 **Instance** in the **Distributed by Instance Role** section. The ID of the read-only instance is
 displayed.
@@ -591,9 +628,13 @@ This topic describes how to create an account on an ApsaraDB RDS for SQL Server 
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Accounts**.
 5. On the right side of the page, click **Create Account**.
 6. Enter the information of the account that you want to create.
@@ -620,6 +661,9 @@ You can reset the password of your database account in the ApsaraDB RDS console.
 **Prerequisites**
 
 The RDS instance is in the **Running** state. A database account is created. For information about how to create a database account, see Create an account.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the left-side navigation pane, click **Accounts**.
@@ -644,7 +688,11 @@ Instance: a virtualized database server on which you can create and manage more 
 
 **Prerequisites**
 
-An ApsaraDB RDS for SQL Server instance is created. For more information, see Create an instance. For more information, see Create a database.
+An ApsaraDB RDS for SQL Server instance is created. For more information, see Create an instance.
+
+**Procedure**
+
+For more information, see Create a database.
 
 ### 8.2 Delete a database
 
@@ -655,6 +703,7 @@ This topic describes how to delete a database from an ApsaraDB RDS for SQL Serve
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Databases**.
 5. Find the database that you want to delete and click **Delete** in the **Actions** column.
 6. In the message that appears, click **Confirm**.
@@ -664,6 +713,7 @@ This topic describes how to delete a database from an ApsaraDB RDS for SQL Serve
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. Click **Log On to DB** in the upper-right corner of the page.
 5. In the **Login instance** dialog box of the **DMS** console, check values of **Database type**,
 **Instance Area**, and **Connection string address**. If the information is correct, enter
@@ -714,9 +764,13 @@ The instance runs SQL Server 2012, 2016, or 2017. No database other than system 
 **Precautions**
 
 The default character set collation is Chinese_PRC_CI_AS. The default time zone is China Standard Time. You can view the available character set collations and time zones in the console. The instance is in the unavailable state during the change process. It takes about 1 minute to change the time zone, and 2 to 10 minutes to change the character set collation.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Databases**.
 5. On the Databases page, click **Change Character Set Collation and Time Zone** .
 
@@ -804,6 +858,9 @@ The source and destination instances must meet the following requirements: The s
 **Background information**
 
 During the replication process, ApsaraDB RDS first performs a full backup of the source instance and then replicates the full data to the destination instance. If data is written to the source instance during the replication, incremental data of the source instance is not replicated to the destination instance. You can choose to replicate a single database or all databases in the source instance. If the replication task fails, no data is transferred to the destination instance. This ensures data consistency.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the left-side navigation pane, click **Databases**.
@@ -882,9 +939,13 @@ This topic describes how to use Data Management (DMS) to connect to an ApsaraDB 
 **Prerequisites**
 
 A database is created. For more information, see Create a database A database account is created. For more information, see Create an account.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. Click **Log On to Database** in the upper-right corner of the page.
 5. In the **Log on to Database Instance** dialog box of the **DMS** console, check the values of
 **Database Type**, **Instance Region**, and **Connection string address**. If the values are
@@ -911,9 +972,13 @@ If you cannot connect to the instance, check the IP address whitelist settings. 
 **monitoring data**
 
 The ApsaraDB RDS console provides a variety of performance metrics to monitor the status of your instances.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Monitoring and Alerts**.
 5. On the **Monitoring and Alerts** page, select **Resource Monitoring** or **Engine**
 **Monitoring**, and select a time range to view the corresponding monitoring data. The
@@ -953,9 +1018,12 @@ After you create an ApsaraDB RDS instance, you must add the IP addresses or CIDR
 
 **Background information**
 
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Data Security**.
 5. On the **Whitelist Settings** tab, click **Edit** corresponding to the **default** whitelist.
 
@@ -984,6 +1052,7 @@ An SSL CA certificate is valid for one year. You must update the validity period
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Data Security**.
 5. Click the **SSL Encryption** tab.
 6. In the SSL Settings section, turn on **SSL Encryption**.
@@ -1035,6 +1104,7 @@ following figure.
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Data Security**.
 5. Click the **SSL Encryption** tab.
 6. Click **Update Validity**.
@@ -1051,9 +1121,13 @@ TDE cannot be disabled after it is enabled for an RDS instance. TDE can be enabl
 **Prerequisites**
 
 Your RDS instance runs SQL Server EE. KMS is activated. If KMS is not activated, you can activate it as prompted when you enable TDE.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, choose **Data Security > TDE**.
 5. If TDE is disabled, click the slider to the left of **Disabled**. In the dialogue box that appears,
 click **OK** to enable TDE.
@@ -1115,9 +1189,13 @@ Q: Can I access the secondary RDS instance of my database system? A: No, you can
 **backup policy**
 
 When automatic backup is enabled, ApsaraDB RDS automatically performs full physical backup based on pre-configured policies. This topic describes how to configure a policy for automatic backup.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, choose **Backup and Restoration**. On the **Backup**
 **Settings** tab, click **Edit**.
 5. In the **Backup Settings** dialog box, configure the automatic backup policy.
@@ -1139,9 +1217,13 @@ estoration
 ### 13.2 Manually back up an instance
 
 This topic describes how to manually back up an ApsaraDB RDS instance.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. On the **Basic Information** page, click **Back Up Instance** in the upper-right corner.
 5. In the **Back Up Instance** dialog box, select **Automatic Backup** or **Full Backup** from the
 **Select Backup Mode** drop-down list.
@@ -1164,9 +1246,13 @@ ApsaraDB RDS for SQL Server allows you to shrink transaction logs to reduce the 
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
+to go to the **Basic Information** page.
 4. In the left-side navigation pane, click **Backup and Restoration**.
 5. In the upper-right corner of the page, click **Shrink Transaction Log**. In the message that
 appears, click **OK**.

@@ -5,14 +5,319 @@ doc_version: "20260729"
 pdf_pages: 603
 source_pdf: "25_统一云管平台 开发指南_enterprise-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apsara_stack_platform/zh/enterprise-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 统一云管平台 统一云管平台 开发指南
 
-## 快速入门
+## 目录
 
-### 开发文档使用说明
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 获取API信息及其Endpoint
+  - 2.2 获取AccessKey或STS AccessKey
+  - 2.3 获取公共Header参数
+- 3 通过POP网关调用专有云API
+  - 3.1 获取统一云管平台的Endpoint
+  - 3.2 获取统一云管平台的SDK包
+  - 3.3 Java SDK调用
+  - 3.4 Python SDK调用
+  - 3.5 Go SDK调用
+- 4 ASCM API参考
+  - 4.1 API列表
+    - 4.1.1 企业中心
+      - 4.1.1.1 组织管理
+        - 4.1.1.1.1 CreateOrganization
+        - 4.1.1.1.2 GetOrganization
+        - 4.1.1.1.3 GetOrganizationList
+        - 4.1.1.1.4 GetPrivateCloudAccountByOrganizationId
+        - 4.1.1.1.5 RemoveOrganization
+        - 4.1.1.1.6 UpdateOrganization
+        - 4.1.1.1.7 UpdateSupportRegionsForOrg
+        - 4.1.1.1.8 CreateAndBindResourceGroup
+        - 4.1.1.1.9 GetOrganizationByPrimaryKey
+      - 4.1.1.2 资源集管理
+        - 4.1.1.2.1 CreateResourceGroup
+        - 4.1.1.2.2 GetResourceGroups
+        - 4.1.1.2.3 BindAscmUserAndResourceGroup
+        - 4.1.1.2.4 ListAscmUsersInsideResourceGroup
+        - 4.1.1.2.5 ListMembersInsideResourceSet
+        - 4.1.1.2.6 ListResourceGroup
+        - 4.1.1.2.7 ListResourceGroupByAscmUserId
+        - 4.1.1.2.8 ListResourceGroupByOrgId
+        - 4.1.1.2.9 RemoveResourceGroup
+        - 4.1.1.2.10 UnbindAscmUserAndResourceGroup
+        - 4.1.1.2.11 UpdateResourceGroup
+      - 4.1.1.3 角色管理
+        - 4.1.1.3.1 AddRoleToUser
+        - 4.1.1.3.2 ListActiveRoles
+        - 4.1.1.3.3 ListRoles
+        - 4.1.1.3.4 LockRole
+        - 4.1.1.3.5 RelateSystemWithRole
+        - 4.1.1.3.6 SetDefaultRole
+        - 4.1.1.3.7 UnLockRole
+        - 4.1.1.3.8 UpdateRoleInfo
+        - 4.1.1.3.9 UpdateRAMPolicy
+        - 4.1.1.3.10 RemoveRole
+        - 4.1.1.3.11 RemoveRAMPolicyFromRole
+        - 4.1.1.3.12 RemoveRAMPolicy
+        - 4.1.1.3.13 GetRAMPolicy
+        - 4.1.1.3.14 CreateRole
+        - 4.1.1.3.15 CreateRAMPolicy
+        - 4.1.1.3.16 AddRAMPolicyToRole
+        - 4.1.1.3.17 ListRolesByUserAndResourceSetId
+        - 4.1.1.3.18 AuthorizeRAMRoleToOrganization
+        - 4.1.1.3.19 GetRole
+      - 4.1.1.4 用户管理
+        - 4.1.1.4.1 UpdateProxyAdmin
+        - 4.1.1.4.2 UpdateProxyAdminStatus
+        - 4.1.1.4.3 ListProxyAdmins
+        - 4.1.1.4.4 DeleteProxyAdmin
+        - 4.1.1.4.5 AssignProxyAdmin
+        - 4.1.1.4.6 GetUserInfo
+        - 4.1.1.4.7 ActivateUser
+        - 4.1.1.4.8 AddUser
+        - 4.1.1.4.9 DeactivateUser
+        - 4.1.1.4.10 ListAccessKeysForManagedUsers
+        - 4.1.1.4.11 DeleteUserAccessKey
+        - 4.1.1.4.12 UpdateUserAccessKeyStatus
+        - 4.1.1.4.13 CreateUserAccessKey
+        - 4.1.1.4.14 GetRecentAkTrailForUser
+        - 4.1.1.4.15 ListUserAccessKey
+        - 4.1.1.4.16 ListAvailableUsersByRoleId
+        - 4.1.1.4.17 ListDeletedUsers
+        - 4.1.1.4.18 ListUsers
+        - 4.1.1.4.19 ListUsersInsideRole
+        - 4.1.1.4.20 LockUser
+        - 4.1.1.4.21 TransferUser
+        - 4.1.1.4.22 ModifyUserInformation
+        - 4.1.1.4.23 RecoverUserByLoginName
+        - 4.1.1.4.24 RelateSystemWithUser
+        - 4.1.1.4.25 RemoveRoleFromUser
+        - 4.1.1.4.26 RemoveUserByLoginName
+        - 4.1.1.4.27 RemoveCompletelyUserByLoginName
+        - 4.1.1.4.28 ResetPasswordByLoginName
+        - 4.1.1.4.29 ResetUserPasswordByLoginName
+        - 4.1.1.4.30 UnLockUser
+        - 4.1.1.4.31 UpdatePassword
+      - 4.1.1.5 用户组管理
+        - 4.1.1.5.1 AddResourceSetToUserGroup
+        - 4.1.1.5.2 AddRoleToUserGroup
+        - 4.1.1.5.3 AddUsersToUserGroup
+        - 4.1.1.5.4 CreateUserGroup
+        - 4.1.1.5.5 DeleteUserGroup
+        - 4.1.1.5.6 ListUserGroups
+        - 4.1.1.5.7 UpdateUserGroup
+        - 4.1.1.5.8 ListUsersInUserGroup
+        - 4.1.1.5.9 GetUserGroup
+        - 4.1.1.5.10 RemoveResourceSetFromUserGroup
+        - 4.1.1.5.11 RemoveRoleFromUserGroup
+        - 4.1.1.5.12 RemoveUsersFromUserGroup
+      - 4.1.1.6 登录策略管理
+        - 4.1.1.6.1 AddLoginPolicy
+        - 4.1.1.6.2 CheckLoginPolicy
+        - 4.1.1.6.3 GetLoginPolicyById
+        - 4.1.1.6.4 GetLoginPolicyByLoginName
+        - 4.1.1.6.5 ListLoginPolicies
+        - 4.1.1.6.6 ModifyLoginPolicy
+      - 4.1.1.7 变更管理
+        - 4.1.1.7.1 UpdateInstanceBelong
+        - 4.1.1.7.2 UpdateInstancesBelong
+        - 4.1.1.7.3 UpdateOrganizationBelong
+        - 4.1.1.7.4 UpdateResourceSetBelong
+    - 4.1.2 运营中心
+      - 4.1.2.1 QueryOrderOpenApi
+      - 4.1.2.2 AddCommonSpec
+      - 4.1.2.3 CreateQuota
+      - 4.1.2.4 DeleteQuota
+      - 4.1.2.5 DescribeGpdbModifiableInstanceType
+      - 4.1.2.6 ListEnterpriseCenterQuotas
+      - 4.1.2.7 GetEnterpriseCenterQuotaDetail
+      - 4.1.2.8 GetQuota
+      - 4.1.2.9 MeteringQuery
+      - 4.1.2.10 SelectCommonSpec
+      - 4.1.2.11 UpdateCommonSpecStatus
+      - 4.1.2.12 UpdateQuota
+      - 4.1.2.13 AscmExternalFlowCallBack
+      - 4.1.2.14 BillQuery
+      - 4.1.2.15 TagResources
+      - 4.1.2.16 UnTagResources
+      - 4.1.2.17 QueryServiceCategoryTreeOpenApi
+      - 4.1.2.18 QueryServiceCatalogPageOpenApi
+      - 4.1.2.19 QueryBudgetAccountDetail
+      - 4.1.2.20 BillSummaryQuery
+      - 4.1.2.21 UpdateIndependentAmountByBizId
+      - 4.1.2.22 PageCashFlow
+      - 4.1.2.23 QueryIssueOpenApi
+      - 4.1.2.24 CreateDiscount
+      - 4.1.2.25 UpdateDiscount
+      - 4.1.2.26 EnableDiscount
+      - 4.1.2.27 DisableDiscount
+      - 4.1.2.28 QueryDiscount
+      - 4.1.2.29 DeleteDiscount
+      - 4.1.2.30 DescribeDiscount
+      - 4.1.2.31 ListDiscountPriority
+      - 4.1.2.32 BillingProductList
+      - 4.1.2.33 CountProductInstancesByResourceSet
+      - 4.1.2.34 ListCouponTemplate
+      - 4.1.2.35 CreateCouponTemplate
+      - 4.1.2.36 UpdateCouponTemplate
+      - 4.1.2.37 DeleteCouponTemplate
+      - 4.1.2.38 QueryCouponTemplateDetail
+      - 4.1.2.39 PublishCouponTemplate
+      - 4.1.2.40 PutMeteringData
+      - 4.1.2.41 QueryBillingCycleSettleStatus
+      - 4.1.2.42 CreateBillingPushTask
+      - 4.1.2.43 BatchPushBilling
+      - 4.1.2.44 UpdateStatusPushFinished
+      - 4.1.2.45 QueryBillingPushTaskStatus
+      - 4.1.2.46 DataCenterSearch
+      - 4.1.2.47 DataCenterStatistics
+    - 4.1.3 云产品管理
+      - 4.1.3.1 DescribeInstanceTypeFamilies
+      - 4.1.3.2 DescribeModifiableInstanceType
+      - 4.1.3.3 DescribeSeriesIdFamilies
+      - 4.1.3.4 GetRegionsByProduct
+      - 4.1.3.5 GroupCommonSpec
+      - 4.1.3.6 InitFromOnline
+      - 4.1.3.7 GetAllRegionsInfo
+      - 4.1.3.8 CloudSearchResources
+      - 4.1.3.9 CloudUpdateResource
+    - 4.1.4 配置中心
+      - 4.1.4.1 EditResourceAccountPlatform
+      - 4.1.4.2 BatchCreateRAMServiceRole
+      - 4.1.4.3 GetPasswordPolicy
+      - 4.1.4.4 ListRAMPolicies
+      - 4.1.4.5 ListRAMPoliciesForUser
+      - 4.1.4.6 ListRAMServiceRoles
+      - 4.1.4.7 RemoveLoginPolicyById
+      - 4.1.4.8 RemoveLoginPolicyByName
+      - 4.1.4.9 ResetPasswordPolicy
+      - 4.1.4.10 SetPasswordPolicy
+      - 4.1.4.11 GetSAMLSpMetadata
+      - 4.1.4.12 ResetIdPConfig
+      - 4.1.4.13 SetIdPConfig
+      - 4.1.4.14 GetIdPConfig
+      - 4.1.4.15 ListAvailablePlatforms
+      - 4.1.4.16 ListResourceAccounts
+      - 4.1.4.17 ListSubPlatforms
+      - 4.1.4.18 ListCloudServices
+    - 4.1.5 计量接口相关参数
+      - 4.1.5.1 弹性计算
+        - 4.1.5.1.1 弹性高性能计算E-HPC
+        - 4.1.5.1.2 裸机管理BMS
+        - 4.1.5.1.3 智能计算灵骏EFLOPS
+        - 4.1.5.1.4 容器镜像服务
+        - 4.1.5.1.5 容器服务Kubernetes版
+        - 4.1.5.1.6 专有云宿主机DDH
+        - 4.1.5.1.7 弹性伸缩ESS
+        - 4.1.5.1.8 块存储EBS
+        - 4.1.5.1.9 快照Snapshot
+        - 4.1.5.1.10 云服务器ECS
+        - 4.1.5.1.11 裸金属算力平台BMCP
+        - 4.1.5.1.12 容器-智算算力集群
+        - 4.1.5.1.13 裸金属-智算算力集群
+        - 4.1.5.1.14 裸金属-超算算力集群
+        - 4.1.5.1.15 EVPC
+        - 4.1.5.2.1 表格存储Tablestore
+        - 4.1.5.2.2 文件存储NAS
+        - 4.1.5.2.3 对象存储OSS
+        - 4.1.5.2.4 日志服务SLS
+        - 4.1.5.3.1 高可用虚拟IP
+        - 4.1.5.3.2 高速通道
+        - 4.1.5.3.3 NAT网关
+        - 4.1.5.3.4 IPv6网关
+        - 4.1.5.3.5 VPN网关
+        - 4.1.5.3.6 专有网络VPC
+        - 4.1.5.3.7 弹性网关EIP
+        - 4.1.5.3.8 负载均衡SLB
+        - 4.1.5.3.9 租户内网域名AUTH_ZONE
+      - 4.1.5.4 大数据
+        - 4.1.5.4.1 数据可视化DataV
+        - 4.1.5.4.2 云原生深度学习训练PAI_DLC
+        - 4.1.5.4.3 模型在线服务PAI_EAS
+        - 4.1.5.4.4 交互式建模PAI_DSW
+        - 4.1.5.4.5 交互式分析Hologres
+        - 4.1.5.4.6 大数据计算MaxCompute
+        - 4.1.5.4.7 数据总线DataHub
+        - 4.1.5.4.8 实时计算Blink
+        - 4.1.5.4.9 实时计算Realtime Compute Flink
+      - 4.1.5.5 中间件
+        - 4.1.5.5.1 云服务总线CSB
+        - 4.1.5.5.2 消息队列RocketMQ版
+        - 4.1.5.5.3 企业级分布式应用服务EDAS
+      - 4.1.5.6 数据库
+        - 4.1.5.6.1 云原生关系型数据库PolarDB
+        - 4.1.5.6.2 数据传输服务DTS
+        - 4.1.5.6.3 数据管理DMS
+        - 4.1.5.6.4 图数据库GDB
+        - 4.1.5.6.5 云数据库OceanBase
+        - 4.1.5.6.6 时间序列数据库TSDB
+        - 4.1.5.6.7 云原生数据仓库AnalyticDB MySQL版2.0
+        - 4.1.5.6.8 云数据库HBase版
+        - 4.1.5.6.9 云数据库SQLServer版
+        - 4.1.5.6.10 云数据库PostgreSQL版
+        - 4.1.5.6.11 云数据库MongoDB版本
+        - 4.1.5.6.12 云原生数据仓库AnalyticDB PostgreSQL版
+        - 4.1.5.6.13 云原生数据仓库AnalyticDB MySQL版3.0
+        - 4.1.5.6.14 云数据库KVStore for Redis
+        - 4.1.5.6.15 云原生分布式数据库PolarDB-X
+        - 4.1.5.6.16 云数据库 RDS MySQL版
+      - 4.1.5.7 应用服务
+        - 4.1.5.7.1 API网关
+      - 4.1.5.8 人工智能与机器学习
+        - 4.1.5.8.1 在线服务
+        - 4.1.5.8.2 AI资源配额（共享型）
+        - 4.1.5.8.3 AI资源配额（独占型）
+        - 4.1.5.8.4 AI资源池
+        - 4.1.5.8.5 可视化建模
+        - 4.1.5.9.1 云安全管理中心SOC
+        - 4.1.5.9.2 流量检测与响应
+        - 4.1.5.9.3 密码服务
+        - 4.1.5.9.4 加密服务
+        - 4.1.5.9.5 流量安全监控
+        - 4.1.5.9.6 DDos流量清洗
+        - 4.1.5.9.7 安骑士
+        - 4.1.5.9.8 云防火墙CCFW
+        - 4.1.5.9.9 WEB应用防火墙
+        - 4.1.5.9.10 数据库审计
+        - 4.1.5.9.11 态势感知
+        - 4.1.5.9.12 云防火墙ICFW
+        - 4.1.5.9.13 云原生堡垒机
+        - 4.1.5.9.14 堡垒机
+        - 4.1.5.9.15 密钥管理服务KMS
+        - 4.1.5.10.1 无影云桌面Gws
+    - 4.1.6 操作审计
+      - 4.1.6.1 LookupInnerEvents
+      - 4.1.6.2 RetryAuditTask
+      - 4.1.6.3 ListAuditFile
+      - 4.1.6.4 ListTrailStorage
+      - 4.1.6.5 ListAccessKeyEvents
+      - 4.1.6.6 CreateTrailStorage
+      - 4.1.6.7 DownloadAuditFile
+      - 4.1.6.8 GetDownloadUrl
+- 5 STS API参考
+  - 5.1 获取STS的Endpoint
+  - 5.2 AssumeRole - 获取扮演角色的临时身份凭证
+  - 5.3 GetCallerIdentity - 获取当前调用者的身份信息
+- 6 开发者门户 API参考
+  - 6.1 GetApiInfo
+  - 6.2 GetProductList
+  - 6.3 GetApiDocs
+  - 6.4 GetApiOverview
+- 7 统一云管平台被集成
+  - 7.1 操作流程
+    - 7.1.1 账号认证打通
+    - 7.1.2 页面集成配置
+    - 7.1.3 页面URL嵌入
+  - 7.2 API集成
+  - 7.3 前端样式规范
+
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -33,7 +338,7 @@ converter: line-classifier (PyMuPDF)
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云API。为了使您拥有与公有云一致的体验，自飞天企业版v3.16起，专有云API默认使用POP网关方式调用。
 
@@ -45,22 +350,20 @@ converter: line-classifier (PyMuPDF)
 获取实际调用时所需的产品名称、API名称和API版本信息，具体方式参见获取API信息及其Endpoint。
 2. 获取AccessKey或STS AccessKey，具体方式参见获取AccessKey或STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台接口。
 3. 获取Header参数，具体方式参见获取公共Header参数。
 
-**说明**
+> **说明：** 调用Apsara Uni-manager运营控制台的API时可以不使用Header参数 `x-acs-organizationid` 、 `x-acs-resourcegroupid` 、 `x-acs-instanceid` 。
 
-调用Apsara Uni-manager运营控制台的API时可以不使用Header参数 `x-acs-organizationid` 、 `x-acs-resourcegroupid` 、 `x-acs-instanceid` 。
 4. 获取Apsara Uni-manager运营控制台的Endpoint，具体方式参见获取统一云管平台的Endpoint。
 5. 获取Apsara Uni-manager运营控制台的SDK包。
 Apsara Uni-manager运营控制台的SDK包可在阿里云开发工具包中获取，其中的SDK核心库即为所需的SDK包。
 6. 调用Apsara Uni-manager运营控制台的API。
 
-## 准备工作
+## 2 准备工作
 
-### 获取API信息及其Endpoint
+### 2.1 获取API信息及其Endpoint
 
 在通过SDK调用API接口时需要填写API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -78,17 +381,19 @@ Apsara Uni-manager运营控制台开发者门户中的API信息仅供调用参�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey或STS AccessKey
+### 2.2 获取AccessKey或STS AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。
 
-**说明**
+**获取AccessKey**
 
-只有运营管理员和一级组织管理员可以获取组织AccessKey。
+Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。
+
+> **说明：** 只有运营管理员和一级组织管理员可以获取组织AccessKey。
 
 **获取个人账号AccessKey**
 
@@ -105,18 +410,15 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
-
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
-**警告**
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
@@ -127,30 +429,23 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的RAM Role。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击个人信息。 iii. 单击查看当前角色策略。 iv. 在当前选择角色策略对话框中查看RAM Role。
 2. 获取STS的Endpoint。
-i. 登录飞天基础运维控制台。 ii. 在飞天基础运维平台左侧导航栏中，单击**产品集群运维**。 iii. 在**产品** | **集群**搜索框中搜索**ascm-A**。 iv. 单击集群**操作**列的**集群详情** v. 在集群详情页面，单击**终态配置**页签。
+i. 登录飞天基础运维控制台。 ii. 在飞天基础运维平台左侧导航栏中，单击**产品集群运维**。 iii. 在**产品** **|** **集群**搜索框中搜索**ascm-A**。 iv. 单击集群**操作**列的**集群详情** v. 在集群详情页面，单击**终态配置**页签。
 
-|  | internet-domain |
+|   | internet-domain |
 |---|---|
-| region |  |
+| region |   |
+
+vi. 在终态配置页面左侧文件列表中，单击**kv.conf**，单击右侧区域的**显示内容**。按Ctrl+F键分别搜索 `region` 和 `internet-domain` 的对应值。 vii. 获取后按照 sts-vpc.${global:region}.${global:internet-domain} 格式进行替换拼接。其中 `region` 的值替换 ${global:region} ， `internet-domain` 的
 
 ```
 值替换 ${global:internet-domain} 。
 ```
 
-**说明**
+> **说明：** 最终STS Endpoint中，${global:}不保留。
 
-最终STS Endpoint中，${global:}不保留。
 3. 通过调用STS的AssumeRole接口来获取三元组信息，以下为Java的STS SDK调用示例。
 
-**说明**
-
-以下代码示例
-
-```
-中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 、 <yourRoleSessionName> 、 <yourRoleArn> 、 <sts.aliyuns.com> 均为可
-```
-
-变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。
+> **说明：** 以下代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourRoleSessionName>` 、 `<yourRoleArn>` 、 `<sts.aliyuns.com>` 均为可变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。
 
 ```
 public static void main(String[] args) {
@@ -173,11 +468,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // "sts.aliyuns.com" 请替换为实际的STS Endpoint，一般格式为sts-vpc.${global:region}.${global:internet-domain}。
     request.setSysDomain("<sts.aliyuns.com>");
@@ -207,17 +507,21 @@ public static void main(String[] args) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 4. 获取STS AccessKey三元组后，您就可以使用三元组信息调用云产品API接口。以下Java SDK示例以DescribeZones接口为例，使用STS AccessKey调用ECS产品接
 口。
 
-| 说明以下代码示例中 <yourRegionID> 、 <yourStsAccesskeyID> 、 <yourStsAccessKeySecret> 、 <yourStsToken> 、 <yourResourceGroupID> 、 <yourOrganizationID> 为可变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。 |  |  |
+| 说明以下代码示例中 <yourRegionID> 、 <yourStsAccesskeyID> 、 <yourStsAccessKeySecret> 、 <yourStsToken> 、 <yourResourceGroupID> 、 <yourOrganizationID> 为可变参数，需要替换为其实际值。尖括号（<>）在最终代码中不保留。 |   |   |
 |---|---|---|
-|  | <yourOrganizationID> |  |
+|   | <yourOrganizationID> |   |
 
 ```
 public static void main(String[] args) {
@@ -253,13 +557,13 @@ public static void main(String[] args) {
     request.putQueryParameter("SecurityToken", "<yourStsToken>");
 ```
 
-`//` 非必填,请替换为实际操作的实例资源所属的资源集`ID`。
+`//` 非必填`,`请替换为实际操作的实例资源所属的资源集`ID`。
 
 ```
     // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");
 ```
 
-`//` 必填,请替换为实际操作的实例资源所属的组织`ID`。
+`//` 必填`,`请替换为实际操作的实例资源所属的组织`ID`。
 
 ```java
     request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");
@@ -272,11 +576,11 @@ public static void main(String[] args) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### 获取公共Header参数
+`}` `}`
+
+### 2.3 获取公共Header参数
 
 调用专有云API时需要填写多个公共请求Header参数，在返回结果中也会包含公共返回参数。
 
@@ -295,13 +599,13 @@ public static void main(String[] args) {
 | x-acs-role-uuid | 实际操作的角色UUID，获取方式请参见获取角色UUID。 |
 | x-acs-instanceid | 实际操作的实例资源的实例ID，获取方式请参见获取实例ID。 |
 
-**说明**
+> **说明：** 公共请求参数中组织、资源集、角色可以传id(1、2、3...)或uuid（org-xxx、rs-xxx、ar-xxx）。id和uuid同时传入时，uuid的优先级高于id，如果uuid不存在，会直接报错。
 
-公共请求参数中组织、资源集、角色可以传id(1、2、3...)或uuid（org-xxx、rs-xxx、ar-xxx）。id和uuid同时传入时，uuid的优先级高于id，如果uuid不存在，会直接报错。
-
-|  | x-acs-organization-uuid |  |
+|   | x-acs-organization-uuid |   |
 |---|---|---|
 | x-acs-resourcegroupid | 或 | x-acs-resourcegroup-uuid |
+
+> 实现实例资源的隔离查询。若不指定资源集ID `x-acs-resourcegroupid` 和 `x-acs-resourcegroup-uuid` ，则获取当前用户所属组织的默认资源集。
 
 **获取Region ID**
 
@@ -321,6 +625,7 @@ public static void main(String[] args) {
 4. 单击
 按钮，选择**云平台** > **统一云管平台**，**版本**选择**2019-05-10**。
 5. 在文本框内输入 `GetOrganizationList` 进行在线调试，在name参数填写目标组织名称后发起调用，调用成功后查看**调用结果**中**id**的信息，即为组织ID。接口信息详
+见GetOrganizationList。
 
 **获取组织UUID**
 
@@ -387,9 +692,9 @@ public static void main(String[] args) {
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-## 通过POP网关调用专有云API
+## 3 通过POP网关调用专有云API
 
-### 获取统一云管平台的Endpoint
+### 3.1 获取统一云管平台的Endpoint
 
 统一云管平台的Endpoint可依照配置格式在飞天基础运维平台中获得对应变量值来自行拼装，也可以在飞天基础运维平台中搜索获取。
 
@@ -401,15 +706,13 @@ public static void main(String[] args) {
 
 您可以根据统一云管平台Endpoint的配置格式，获取对应变量值来自行拼装Endpoint。 统一云管平台中心Region Endpoint的配置格式： ascm.${global:internet-domain} 统一云管平台单元Region Endpoint的配置格式： ascm.${global:region}.${global:internet-domain}
 
-**说明**
-
-${global:internet-domain} 和 ${global:region} 为变量，需要替换为您获取到的实际值。最终Endpoint中， ${global:} 不保留。
+> **说明：** ${global:internet-domain} 和 ${global:region} 为变量，需要替换为您获取到的实际值。最终Endpoint中， ${global:} 不保留。
 
 **获取变量值的操作步骤**
 
 1. 登录Apsara-Uni manager运维控制台。
 2. 在顶部菜单栏，选择**平台运维** > **飞天基础运维平台** > **资源管理**，默认进入**产品集群运维**页面。
-3. 在**产品集群运维**页面的**产品** | **集群**文本框中输入 `ascm-A` ，找到ascm-A-xxx集群，单击操作列的**集群详情**。
+3. 在**产品集群运维**页面的**产品** **|** **集群**文本框中输入 `ascm-A` ，找到ascm-A-xxx集群，单击操作列的**集群详情**。
 4. 在**集群详情**页面，选择**终态配置**页签。
 5. 在左侧文件列表中，单击**kv.conf**，单击右侧文件内容，按Ctrl+F键分别搜索 `region` 和 `internet-domain` 。
 获取到的 `region` 值将替换 ${global:region} ， `internet-domain` 值将替换 ${global:internet-domain} 。
@@ -418,7 +721,7 @@ ${global:internet-domain} 和 ${global:region} 为变量，需要替换为您获
 
 **操作步骤**
 
-1. 在飞天基础运维平台**产品集群运维**页面的**产品** | **集群**文本框中输入 `ascm-A` ，找到ascm-A-xxx集群，单击操作列的**集群详情**。
+1. 在飞天基础运维平台**产品集群运维**页面的**产品** **|** **集群**文本框中输入 `ascm-A` ，找到ascm-A-xxx集群，单击操作列的**集群详情**。
 2. 在服务列表页面搜索 `ascm-brm` 服务，单击下方列表中操作列的**详情**。
 3. 在服务详情页面单击**Manage#**组件，在组件信息中选择**资源列表**页签。
 4. 搜索名为 `ascm-aliyun-com-dns` 的资源，单击下方**资源申请参数**列中的信息，查看**domain**值，即ASCM的Endpoint。
@@ -433,7 +736,9 @@ ${global:internet-domain} 和 ${global:region} 为变量，需要替换为您获
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取POP Endpoint信息。
 
-### 获取统一云管平台的SDK包
+### 3.2 获取统一云管平台的SDK包
+
+本文介绍如何获取统一云管平台的SDK包。
 
 **操作步骤**
 
@@ -446,11 +751,12 @@ ${global:internet-domain} 和 ${global:region} 为变量，需要替换为您获
 6. 选择目标接口。
 7. 在接口的**SDK****示例**页签，查看SDK信息。切换Java、Python、Go语言，可获取对应语言的SDK信息。
 
-**说明**
+> **说明：** Common版指泛化调用，支持调试。Common版的依赖通过**查看依赖文件**进行查看，此依赖可以在公开的中央仓库进行下载。
+> 选择高级版后，支持查看发布报告，在发布报告中您可以查看SDK版本、SDK API列表、可用性说明等信息，高级版暂不支持调试。高级版则不会透出到公开的仓库，需要下载完整工程。
+> 如果SDK类型置灰，不支持选择，则表示产品不支持高级版或没有数据。
+> 在对应语言下，你还可以执行**下载完整工程**、**查看依赖文件**、**复制**操作。
 
-Common版指泛化调用，支持调试。Common版的依赖通过**查看依赖文件**进行查看，此依赖可以在公开的中央仓库进行下载。 选择高级版后，支持查看发布报告，在发布报告中您可以查看SDK版本、SDK API列表、可用性说明等信息，高级版暂不支持调试。高级版则不会透出到公开的仓库，需要下载完整工程。 如果SDK类型置灰，不支持选择，则表示产品不支持高级版或没有数据。 在对应语言下，你还可以执行**下载完整工程**、**查看依赖文件**、**复制**操作。
-
-### Java SDK调用
+### 3.3 Java SDK调用
 
 安装阿里云Java SDK后，您可以编写代码使用阿里云Java SDK访问阿里云POP网关，调用统一云管平台的API接口。
 
@@ -470,17 +776,13 @@ Common版指泛化调用，支持调试。Common版的依赖通过**查看依赖
 </dependency>
 ```
 
-**说明**
-
-建议您前往**开发者门户** > **API****集成** > **API****调试**页面获取SDK包最新版本依赖，详细操作请参见获取统一云管平台的SDK包。
+> **说明：** 建议您前往**开发者门户** > **API****集成** > **API****调试**页面获取SDK包最新版本依赖，详细操作请参见获取统一云管平台的SDK包。
 
 **设置身份验证**
 
 使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。Java SDK支持通过AccessKey或STS AccessKey进行身份验证。
 
-**重要**
-
-确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -492,15 +794,9 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourSecurityToken>"
 ```
 
-`//`在使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。 `//`在使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`null`。
+`//`在使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。 `//`在使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`null`。 );
 
-```
-);
-```
-
-**说明**
-
-以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号 （<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号 （<>）在最终代码中不保留。
 
 **创建并配置请求连接**
 
@@ -540,9 +836,7 @@ clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>"); clientConfig.setHttpsP
 profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile);
 ```
 
-**说明**
-
-以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
 
 **创建请求CommonRequest**
 
@@ -588,9 +882,7 @@ request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>");
 request.setHttpContentType(FormatType.JSON);
 ```
 
-**说明**
-
-以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **设置阿里云核心库SDK参数**
 
@@ -622,8 +914,9 @@ try {
     System.out.println("ErrCode:" + e.getErrCode());
     System.out.println("ErrMsg:" + e.getErrMsg());
     System.out.println("RequestId:" + e.getRequestId());
-}
 ```
+
+`}`
 
 **错误处理**
 
@@ -666,8 +959,9 @@ try {
 ```java
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
+
+`}`
 
 **完整调用示例**
 
@@ -678,8 +972,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     /**
 ```
 
-* 本文提供的`API`调用样例仅供参考，更多详细`API`调用方法可参照开发文档中的“快速入门”。
-`*/`
+`*` 本文提供的`API`调用样例仅供参考，更多详细`API`调用方法可参照开发文档中的“快速入门”。 `*/`
 
 ```
     public static void main(String[] args) {
@@ -752,7 +1045,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-caller-sdk-source","<yourCallerSdkSource>");
 ```
 
-`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参 `//` 接口业务参数设置。
+`//` 调用专有云`API`时，一般需要提供多个公共`Header`参数，包括：`x-acs-regionid`、`x-acs-organizationid`、`x-acs-resourcegroupid`、`x-acs-instanceid`。详情可参照开发指南中的“获取公共`Header`参数`"`。 `//` 接口业务参数设置。
 
 ```
         request.putBodyParameter("id","1");
@@ -771,22 +1064,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-**说明**
+`}` `}` `}`
 
-以上代码示例
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<http://192.168.XX.XX:33XX>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
-```
-中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 、 <http://192.168.XX.XX:33XX> 、 <ascmEndpoint> 、 <yourCallerSdkSource> 均
-```
-
-为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
-
-### Python SDK调用
+### 3.4 Python SDK调用
 
 安装阿里云Python SDK，您就可以编写代码使用阿里云Python SDK访问专有云POP网关，调用Apsara Uni-manager运营控制台的API接口。
 
@@ -800,17 +1084,15 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 阿里云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装阿里云Python SDK。
 
-**说明**
+> **说明：** 推荐使用python3.x。
 
-推荐使用python3.x。 Python 3.x执行：
-#安装阿里云`SDK`核心库。
+Python 3.x执行： `#`安装阿里云`SDK`核心库。
 
 ```
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-Python 2.x执行：
-#安装阿里云`SDK`核心库。
+Python 2.x执行： `#`安装阿里云`SDK`核心库。
 
 ```
 pip install aliyun-python-sdk-core
@@ -828,9 +1110,7 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 
 Python SDK支持通过AccessKey或STS AccessKey进行身份验证。
 
-**重要**
-
-确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 credentials = StsTokenCredential(
@@ -842,13 +1122,9 @@ credentials = StsTokenCredential(
     '<yourSecurityToken>'
 ```
 
-#使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。
-#使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`None`。
-)
+`#`使用`STS AccessKey`进行身份验证时，`<yourSecurityToken>`请替换为您实际的`SecurityToken`。 `#`使用`AccessKey`进行身份验证时，`<yourSecurityToken>`为`None`。 `)`
 
-**说明**
-
-以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **创建并配置请求连接**
 
@@ -859,19 +1135,19 @@ client = AcsClient(region_id='<your-region-id>',
                    credential=credentials,
 ```
 
-# （可选）设置创建连接超时时间，单位毫秒（`ms`）。
+`#` （可选）设置创建连接超时时间，单位毫秒（`ms`）。
 
 ```
                    connect_timeout=<connectionTimeout>,
 ```
 
-# （可选）设置读取超时时间，单位毫秒（`ms`）。
+`#` （可选）设置读取超时时间，单位毫秒（`ms`）。
 
 ```
                    read_timeout=<readTimeout>,
 ```
 
-# （可选）请根据实际情况判断是否设置代理，设置方法如下：
+`#` （可选）请根据实际情况判断是否设置代理，设置方法如下：
 
 ```bash
                    # proxy={
@@ -880,67 +1156,61 @@ client = AcsClient(region_id='<your-region-id>',
                    # }
 ```
 
-)
+`)`
 
-**说明**
-
-以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **创建请求CommonRequest**
 
-使用CommonRequest调用方式可实现任意Open API接口的调用。
-# 创建`API`请求并设置参数。
+使用CommonRequest调用方式可实现任意Open API接口的调用。 `#` 创建`API`请求并设置参数。
 
 ```
 request = CommonRequest()
 ```
 
-# 产品接口信息参数。
+`#` 产品接口信息参数。
 
 ```
 request.set_product("ascm") request.set_version('2019-05-10') request.set_uri_pattern("<yourCallUriPattern>")
 ```
 
-# Apsara Uni-manager运营控制台的`Endpoint`地址。
+`# Apsara Uni-manager`运营控制台的`Endpoint`地址。
 
 ```
 request.set_domain('<ascmEndpoint>')
 ```
 
-# 设置请求方式。
+`#` 设置请求方式。
 
 ```
 request.set_method('POST')
 ```
 
-# 设置请求协议类型：`HTTP/HTTPS`。
+`#` 设置请求协议类型：`HTTP/HTTPS`。
 
 ```
 request.set_protocol_type('https')
 ```
 
-# 设置`Headers`。
-# 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。
+`#` 设置`Headers`。 `#` 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。
 
 ```
 request.add_header("x-acs-caller-sdk-source", "<yourCallerSdkSource>")
 ```
 
-# 接口业务参数设置。
+`#` 接口业务参数设置。
 
 ```
 ...
 ```
 
-# 设置`Content-Type`。
+`#` 设置`Content-Type`。
 
 ```
 request.set_content_type('application/json')
 ```
 
-**说明**
-
-以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **设置阿里云核心库SDK参数**
 
@@ -955,7 +1225,7 @@ request.set_content_type('application/json')
 
 **发起调用并处理返回**
 
-# 发起请求，并获取返回。
+`#` 发起请求，并获取返回。
 
 ```python
 response = client.do_action_with_exception(request)
@@ -979,8 +1249,7 @@ try:
 except ServerException as e:
 ```
 
-# 这里可以添加您自己的错误处理逻辑。
-# 例如，打印具体的错误信息。
+`#` 这里可以添加您自己的错误处理逻辑。 `#` 例如，打印具体的错误信息。
 
 ```
     print e.get_http_status()
@@ -992,13 +1261,11 @@ except ServerException as e:
 
 | 以下代码为通过ASCM的 | GetOrganizationList | 接口获取组织列表的调用示例。 |
 |---|---|---|
-| # coding=utf-8 # 导入依赖包。 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential # 本文提供的API调用样例仅供参考，更多详细API调用方法可参照开发文档中的“快速入门”。 credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) # 创建API请求并设置参数。 request = CommonRequest() # Apsara Uni-manager运营控制台的接口信息参数。 request.set_product("ascm") request.set_version('2019-05-10') request.set_uri_pattern("/ascm/auth/organization/queryList") # Apsara Uni-manager运营控制台的Endpoint地址。 request.set_domain('<ascmEndpoint>') # 设置请求方式。 request.set_method('POST') # 设置请求协议类型。 request.set_protocol_type('http') # 设置Headers # 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。 request.add_header("x-acs-caller-sdk-source", "<yourCallerSdkSource>") # 调用专有云API时，一般需要提供多个公共Header参数，包括：x-acs-regionid、x-acs-organizationid、x-acs-resourcegroupid、x-acs-instanceid。详情可参照开发指南中的“获取公共Header参数"。 # 接口业务参数设置。 request.add_body_params("id", "1") request.set_content_type('application/json') # 发起请求，并获取返回。 response = client.do_action_with_exception(request) # python2: print(response) print(str(response, encoding='utf-8')) |  |  |
+| # coding=utf-8 # 导入依赖包。 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential # 本文提供的API调用样例仅供参考，更多详细API调用方法可参照开发文档中的“快速入门”。 credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) # 创建API请求并设置参数。 request = CommonRequest() # Apsara Uni-manager运营控制台的接口信息参数。 request.set_product("ascm") request.set_version('2019-05-10') request.set_uri_pattern("/ascm/auth/organization/queryList") # Apsara Uni-manager运营控制台的Endpoint地址。 request.set_domain('<ascmEndpoint>') # 设置请求方式。 request.set_method('POST') # 设置请求协议类型。 request.set_protocol_type('http') # 设置Headers # 设置身份标识，标识调用来源，无实际作用，可随意设置，必填项。 request.add_header("x-acs-caller-sdk-source", "<yourCallerSdkSource>") # 调用专有云API时，一般需要提供多个公共Header参数，包括：x-acs-regionid、x-acs-organizationid、x-acs-resourcegroupid、x-acs-instanceid。详情可参照开发指南中的“获取公共Header参数"。 # 接口业务参数设置。 request.add_body_params("id", "1") request.set_content_type('application/json') # 发起请求，并获取返回。 response = client.do_action_with_exception(request) # python2: print(response) print(str(response, encoding='utf-8')) |   |   |
 
-**说明**
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
-以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
-
-### Go SDK调用
+### 3.5 Go SDK调用
 
 安装阿里云Go SDK后，您可以编写代码使用阿里云Go SDK访问阿里云POP网关，调用Apsara Uni-manager运营控制台的API接口。
 
@@ -1030,9 +1297,7 @@ go env -W GOPROXY='https://goproxy.cn,direct'
 
 Go SDK支持通过AccessKey或STS AccessKey进行身份验证。
 
-**重要**
-
-确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
+> **重要：** 确保包含AccessKey或STS AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。
 
 ```
 credential := credentials.NewStsTokenCredential(
@@ -1044,11 +1309,9 @@ credential := credentials.NewStsTokenCredential(
     "<yourStsToken>",
 ```
 
-`//` 在使用`STS AccessKey`进行身份验证时，`<yourStsToken>`需替换为您实际的`Security Token`。 `//` 在使用`AccessKey`进行身份验证时，`<yourStsToken>`为`""`。 )
+`//` 在使用`STS AccessKey`进行身份验证时，`<yourStsToken>`需替换为您实际的`Security Token`。 `//` 在使用`AccessKey`进行身份验证时，`<yourStsToken>`为`""`。 `)`
 
-**说明**
-
-以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<yourSecurityToken>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **创建并配置请求连接**
 
@@ -1057,22 +1320,21 @@ credential := credentials.NewStsTokenCredential(
 ```
 client, err := sdk.NewClientWithOptions("<your-region-id>", sdk.NewConfig(), credential) if err != nil {
     panic(err)
-}
 ```
 
-`//` 设置是否忽略证书。`true`：忽略；`false`：不忽略。
+`}` `//` 设置是否忽略证书。`true`：忽略；`false`：不忽略。
 
 ```
 client.SetHTTPSInsecure(true)
 ```
 
-`//`（可选）设置创建连接超时时间，单位纳秒。计算公式为：X秒`*time.Second=X*1000000000`纳秒
+`//`（可选）设置创建连接超时时间，单位纳秒。计算公式为：`X`秒`*time.Second=X*1000000000`纳秒
 
 ```
 client.SetConnectTimeout(1 * time.Second)
 ```
 
-`//` （可选）设置读取超时时间，单位纳秒。计算公式为：X秒`*time.Second=X*1000000000`纳秒
+`//` （可选）设置读取超时时间，单位纳秒。计算公式为：`X`秒`*time.Second=X*1000000000`纳秒
 
 ```
 client.SetReadTimeout(10 * time.Second)
@@ -1086,9 +1348,7 @@ client.SetHttpProxy("<http://192.168.XX.XX:33XX>") client.SetHttpsProxy("<https:
 
 `*/`
 
-**说明**
-
-以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<connectionTimeout>` 、 `<readTimeout>` 、 `<http://192.168.XX.XX:33XX>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号 （<>）在最终代码中不保留。
 
 **创建请求CommonRequest**
 
@@ -1146,9 +1406,7 @@ request.Headers["x-acs-caller-sdk-source"] = "<yourCallerSdkSource>"
 request.SetContentType("application/json")
 ```
 
-**说明**
-
-以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
+> **说明：** 以上代码示例中 `<yourCallUriPattern>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要您结合自身服务替换为其实际值，尖括号（<>）在最终代码中不保留。
 
 **设置阿里云核心库SDK参数**
 
@@ -1168,7 +1426,12 @@ request.SetContentType("application/json")
 ```
 response, err := client.ProcessCommonRequest(request) if err != nil {
    panic(err)
-} fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
 ```
 
 **错误处理**
@@ -1187,16 +1450,15 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
 
 ```
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
-当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个ClientError，您可以通过以下代码来判断并获取ClientError中的错误信息。
+当SDK内部的任意调用出现error，并无法自动化处理时，SDK会返回一个ClientError**，**您可以通过以下代码来判断并获取ClientError中的错误信息。
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
 
 ```java
 package main import (
@@ -1210,7 +1472,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1232,16 +1494,15 @@ response, err := client.ProcessCommonRequest(request) if clientError, ok := err.
 
 ```
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
 当服务端返回错误的应答时，SDK会将该应答封装成ServerError返回。在这种情况下，您依然可以从Response中获得原始的HTTP应答，，您可以通过以下代码来判断并获取ServerError以及Response中的错误信息。
 
-**重要**
-
-使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
+> **重要：** 使用具体异常结构时需要引入异常结构包 `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` ，引入方法可参考以下代码。
 
 ```java
 package main import (
@@ -1255,7 +1516,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.ProcessCommonRequest(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1277,8 +1538,9 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
 
 ```
     response.GetOriginHttpResponse()
-}
 ```
+
+`}`
 
 **完整调用示例**
 
@@ -1294,23 +1556,22 @@ package main import (
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
  credential := credentials.NewStsTokenCredential(
 ```
 
-`"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID`。 `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKey Secret`。 `"<yourStsToken>", //` 请替换为您实际的`Security Token`（非`STS`调用时为`""`）。 )
+`"<yourAccessKeyID>", //` 请替换为您实际的`AccessKey ID`。 `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKey Secret`。 `"<yourStsToken>", //` 请替换为您实际的`Security Token`（非`STS`调用时为`""`）。 `)`
 
 ```
  client, err := sdk.NewClientWithOptions("<yourRegionID>", sdk.NewConfig(), credential)
  if err != nil {
   panic(err)
- }
 ```
 
-`//` 设置是否忽略证书。
+`}` `//` 设置是否忽略证书。
 
 ```
  client.SetHTTPSInsecure(true)
@@ -1400,31 +1661,29 @@ func main() {
   } else {
    fmt.Println(err.Error())
    return
-  }
- }
+```
+
+`}` `}`
+
+```
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
-**说明**
+`}`
 
-以上代码示例
+> **说明：** 以上代码示例中 `<yourRegionID>` 、 `<yourAccessKeyID>` 、 `<yourAccessKeySecret>` 、 `<http://192.168.XX.XX:33XX>` 、 `<ascmEndpoint>` 、 `<yourCallerSdkSource>` 均为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
 
-```
-中 <yourRegionID> 、 <yourAccessKeyID> 、 <yourAccessKeySecret> 、 <http://192.168.XX.XX:33XX> 、 <ascmEndpoint> 、 <yourCallerSdkSource> 均
-```
+## 4 ASCM API参考
 
-为可变参数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。
+### 4.1 API列表
 
-## ASCM API参考
+#### 4.1.1 企业中心
 
-### API列表
+##### 4.1.1.1 组织管理
 
-#### 4.1.1. 企业中心
+###### 4.1.1.1.1 CreateOrganization
 
-##### 4.1.1.1. 组织管理
-
-###### 4.1.1.1.1. CreateOrganization
+调用CreateOrganization创建一个组织。
 
 **请求头**
 
@@ -1455,7 +1714,7 @@ POST /ascm/auth/organization/add HTTP/1.1
 | code | String | 200 | 状态码。 200：调用正常。 400: 组织名不可为空 。 父组织ID不可为空。 所选父组织不存在。 AccessKey不合法。 参数错误。 403: 没有权限。 500: 远程调用错误。 内部错误。 |
 |---|---|---|---|
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应数据。 |
+| data | Struct |   | 响应数据。 |
 | alias | String | test | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1606791494471 | 组织的创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 |
@@ -1487,25 +1746,22 @@ POST /ascm/auth/organization/add HTTP/1.1
 POST /ascm/auth/organization/add HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "name": "ascm-test",
     "parentId":1
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <muserId>admin</muserId> <internal>true</internal> <level>0.1</level> <supportRegions>cn-qingdao-****-d01</supportRegions> <mtime>1606791494471</mtime> <uuid>1231</uuid> <parentId>1</parentId> <multiCloudStatus>master</multiCloudStatus> <supportRegionList>["cn-qingdao-****-d01"]</supportRegionList> <name>test</name> <ctime>1606791494471</ctime> <alias>test</alias> <id>1</id> <cuserId>admin</cuserId> </data> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <pureListData>true</pureListData> <message>success</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <muserId>admin</muserId> <internal>true</internal> <level>0.1</level> <supportRegions>cn-qingdao-****-d01</supportRegions> <mtime>1606791494471</mtime> <uuid>1231</uuid> <parentId>1</parentId> <multiCloudStatus>master</multiCloudStatus> <supportRegionList>["cn-qingdao-****-d01"]</supportRegionList> <name>test</name> <ctime>1606791494471</ctime> <alias>test</alias> <id>1</id> <cuserId>admin</cuserId> </data> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <pureListData>true</pureListData> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "redirect": "true",
     "cost": "10000",
     "code": "200",
@@ -1524,15 +1780,22 @@ POST /ascm/auth/organization/add HTTP/1.1
         "alias": "test",
         "id": "1",
         "cuserId": "admin"
-    },
+```
+
+`},`
+
+```json
     "success": "true",
     "requestId": "16d09b14-8a59-****-****-7536fe897b66",
     "pureListData": "true",
     "message": "success"
-}
 ```
 
-###### 4.1.1.1.2. GetOrganization
+`}`
+
+###### 4.1.1.1.2 GetOrganization
+
+调用GetOrganization获取一个组织的信息。
 
 **请求头**
 
@@ -1558,7 +1821,7 @@ POST /ascm/auth/organization/query HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用正常。 400：参数错误/查询组织缺少入参。 403：没有权限。 404：用户不存在。 500：内部错误。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应数据。 |
+| data | Struct |   | 响应数据。 |
 
 | alias | String | test | 组织别名。系统自动生成，一般与组织名称一致。 |
 |---|---|---|---|
@@ -1592,25 +1855,25 @@ POST /ascm/auth/organization/query HTTP/1.1
 POST /ascm/auth/organization/query HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 32
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <muserId>admin</muserId> <internal>true</internal> <level>0.1</level> <supportRegions>cn-qingdao-****-d01</supportRegions> <mtime>1607512443989</mtime> <uuid>1231</uuid> <parentId>1</parentId> <multiCloudStatus>master</multiCloudStatus> <supportRegionList>["cn-qingdao-****-d01"]</supportRegionList> <name>test</name> <ctime>1606791494471</ctime> <alias>test</alias> <id>1</id> <cuserId>admin</cuserId> </data> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <pureListData>true</pureListData> <message>success</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <muserId>admin</muserId> <internal>true</internal> <level>0.1</level> <supportRegions>cn-qingdao-****-d01</supportRegions> <mtime>1607512443989</mtime> <uuid>1231</uuid> <parentId>1</parentId> <multiCloudStatus>master</multiCloudStatus> <supportRegionList>["cn-qingdao-****-d01"]</supportRegionList> <name>test</name> <ctime>1606791494471</ctime> <alias>test</alias> <id>1</id> <cuserId>admin</cuserId> </data> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <pureListData>true</pureListData> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "cost": "10000", "code": "200", "data": { "muserId": "admin", "internal": "true", "level": "0.1", "supportRegions": "cn-qingdao-****-d01", "mtime": "1607512443989", "uuid": "1231", "parentId": "1", "multiCloudStatus": "master", "supportRegionList": "[\"cn-qingdao-****-d01\"]", "name": "test", "ctime": "1606791494471", "alias": "test", "id": "1", "cuserId": "admin" }, "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "pureListData": "true", "message": "success" } |  |
+| { "redirect": "true", "cost": "10000", "code": "200", "data": { "muserId": "admin", "internal": "true", "level": "0.1", "supportRegions": "cn-qingdao-****-d01", "mtime": "1607512443989", "uuid": "1231", "parentId": "1", "multiCloudStatus": "master", "supportRegionList": "[\"cn-qingdao-****-d01\"]", "name": "test", "ctime": "1606791494471", "alias": "test", "id": "1", "cuserId": "admin" }, "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "pureListData": "true", "message": "success" } |   |
 
-###### 4.1.1.1.3. GetOrganizationList
+###### 4.1.1.1.3 GetOrganizationList
+
+调用GetOrganizationList获取指定组织的下级组织列表。
 
 **请求头**
 
@@ -1635,7 +1898,7 @@ POST /ascm/auth/organization/queryList HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 403：没有权限。 |
 | cost | Integer | 10000 | 接口耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 响应结果。 |
+| data | Array of dataItem |   | 响应结果。 |
 | alias | String | test | 组织别名。 |
 | ctime | Long | 1606791494471 | 组织的创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 |
@@ -1667,16 +1930,14 @@ POST /ascm/auth/organization/queryList HTTP/1.1
 POST /ascm/auth/organization/queryList HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 1,
     "name": "test"
-}
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data>
@@ -1700,9 +1961,9 @@ POST /ascm/auth/organization/queryList HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": true, "cost": 10000, "code": 200, "data": [ { "muserId": "admin", "internal": true, "level": 0.1, "supportRegions": "cn-qingdao-****-d01", "mtime": 1607512443989, "uuid": 1231, "parentId": 0, "multiCloudStatus": "master", "name": "test", "ctime": 1606791494471, "alias": "test", "id": 1, "cuserId": "admin" }, { "supportRegionList": "[\"cn-qingdao-****-d01\"]" } ], "success": true, "requestId": 1, "message": 200 } |  |
+| { "redirect": true, "cost": 10000, "code": 200, "data": [ { "muserId": "admin", "internal": true, "level": 0.1, "supportRegions": "cn-qingdao-****-d01", "mtime": 1607512443989, "uuid": 1231, "parentId": 0, "multiCloudStatus": "master", "name": "test", "ctime": 1606791494471, "alias": "test", "id": 1, "cuserId": "admin" }, { "supportRegionList": "[\"cn-qingdao-****-d01\"]" } ], "success": true, "requestId": 1, "message": 200 } |   |
 
-###### 4.1.1.1.4. GetPrivateCloudAccountByOrganizationId
+###### 4.1.1.1.4 GetPrivateCloudAccountByOrganizationId
 
 调用GetPrivateCloudAccountByOrganizationId获取一级组织对应的主账号信息。
 
@@ -1729,7 +1990,7 @@ POST /ascm/auth/user/getPrivateCloudAccountByOrganizationId HTTP/1.1
 | code | String | 200 | 状态码。 |
 | cost | Integer | 1000 | 耗时时间。 |
 
-| data | Struct |  | 响应结果。 |
+| data | Struct |   | 响应结果。 |
 |---|---|---|---|
 | aliyunid | String | 1 | 主账号ID。 |
 | primaryKey | String | 212530506704030466 | 子账号PK。 |
@@ -1746,23 +2007,25 @@ POST /ascm/auth/user/getPrivateCloudAccountByOrganizationId HTTP/1.1
 POST /ascm/auth/user/getPrivateCloudAccountByOrganizationId HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{ "OrganizationId": "1" }
+"OrganizationId": "1"
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data> <aliyunid>1</aliyunid> <primaryKey>212530506704030466</primaryKey> </data> <success>true</success> <pureListData>true</pureListData> <message>success</message> |  |
+| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data> <aliyunid>1</aliyunid> <primaryKey>212530506704030466</primaryKey> </data> <success>true</success> <pureListData>true</pureListData> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| {"redirect":"false","cost":"1000","code":"200","data": {"aliyunid":"1","primaryKey":"212530506704030466"},"success":"true","pureListData":"true","message":"success"} |  |
+| {"redirect":"false","cost":"1000","code":"200","data": {"aliyunid":"1","primaryKey":"212530506704030466"},"success":"true","pureListData":"true","message":"success"} |   |
 
-###### 4.1.1.1.5. RemoveOrganization
+###### 4.1.1.1.5 RemoveOrganization
+
+调用RemoveOrganization删除一个组织。
 
 **请求头**
 
@@ -1801,25 +2064,25 @@ POST /ascm/auth/organization/delete HTTP/1.1
 POST /ascm/auth/organization/delete HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 39
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <pureListData>true</pureListData> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <pureListData>true</pureListData> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "10000", "code": "200", "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "pureListData": "true", "message": "success" } |  |
+| { "redirect": "false", "cost": "10000", "code": "200", "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "pureListData": "true", "message": "success" } |   |
 
-###### 4.1.1.1.6. UpdateOrganization
+###### 4.1.1.1.6 UpdateOrganization
+
+调用UpdateOrganization更新组织信息。
 
 **请求头**
 
@@ -1853,7 +2116,7 @@ POST /ascm/auth/organization/update HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用正常。 400： 组织ID不可为空。 组织名称重复。 参数错误。 创建组织缺少入参。 403：没有权限。 404：用户不存在。 500：内部错误。 |
 | cost | Integer | 10000 | 接口耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应结果。 |
+| data | Struct |   | 响应结果。 |
 | alias | String | org-test | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1607512443989 | 组织创建时间。 |
 | cuserId | String | 5003 | 组织创建者的用户名。 |
@@ -1882,25 +2145,22 @@ POST /ascm/auth/organization/update HTTP/1.1
 POST /ascm/auth/organization/update HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 23,
     "name": "org-test"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <cost>10000</cost> <code>200</code> <data> <muserId>admin</muserId> <internal>true</internal> <level>0.1</level> <supportRegions>cn-qingdao-****-d01</supportRegions> <mtime>1606791494471</mtime> <uuid>1231</uuid> <parentId>0</parentId> <multiCloudStatus>master</multiCloudStatus> <supportRegionList>["cn-qingdao-****-d01"]</supportRegionList> <name>org-test</name> <ctime>1607512443989</ctime> <alias>org-test</alias> <id>1</id> <cuserId>admin</cuserId> </data> <success>true</success> <requestId>1</requestId> <message>200</message> |  |
+| <cost>10000</cost> <code>200</code> <data> <muserId>admin</muserId> <internal>true</internal> <level>0.1</level> <supportRegions>cn-qingdao-****-d01</supportRegions> <mtime>1606791494471</mtime> <uuid>1231</uuid> <parentId>0</parentId> <multiCloudStatus>master</multiCloudStatus> <supportRegionList>["cn-qingdao-****-d01"]</supportRegionList> <name>org-test</name> <ctime>1607512443989</ctime> <alias>org-test</alias> <id>1</id> <cuserId>admin</cuserId> </data> <success>true</success> <requestId>1</requestId> <message>200</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "cost": 10000,
     "code": 200,
     "data": {
@@ -1918,14 +2178,19 @@ POST /ascm/auth/organization/update HTTP/1.1
         "alias": "org-test",
         "id": 1,
         "cuserId": "admin"
-    },
+```
+
+`},`
+
+```json
     "success": true,
     "requestId": 1,
     "message": 200
-}
 ```
 
-###### 4.1.1.1.7. UpdateSupportRegionsForOrg
+`}`
+
+###### 4.1.1.1.7 UpdateSupportRegionsForOrg
 
 根据组织更新可用区列表。
 
@@ -1957,34 +2222,30 @@ POST /ascm/auth/organization/updateSupportRegionsForOrg HTTP/1.1
 | redirect | Boolean | false | 是否重定向。 |
 | success | Boolean | true | 本次请求是否成功。 |
 
-**示例**
-
 请求示例
 
 ```
 POST null HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "organizationId": 5,
     "supportRegions": "RegionId1,RegionId2"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>32</cost> <code>200</code> <success>true</success> <pureListData>false</pureListData> <message>success</message> |  |
+| <redirect>false</redirect> <cost>32</cost> <code>200</code> <success>true</success> <pureListData>false</pureListData> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "32", "code": "200", "success": "true", "pureListData": "false", "message": "success" } |  |
+| { "redirect": "false", "cost": "32", "code": "200", "success": "true", "pureListData": "false", "message": "success" } |   |
 
-###### 4.1.1.1.8. CreateAndBindResourceGroup
+###### 4.1.1.1.8 CreateAndBindResourceGroup
 
 创建并绑定多云资源集。
 
@@ -2031,27 +2292,32 @@ POST /resource/group/create/bind HTTP/1.1
 
 请求示例
 
+```
+POST /resource/group/create/bind HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /resource/group/create/bind HTTP/1.1 {
   "resourceGroupName": "rsg123",
   "name": "rsg123",
   "sourceOrganizationId": "10",
   "sourceResourceGroupId": "79",
   "platformCode": "pl-xxx",
-}
+  "targetOrganizationId": "1234"
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "data":{ "redirect":false, "code":"200", "success":true } } |  |
+| { "data":{ "redirect":false, "code":"200", "success":true } } |   |
 
 | XML | 格式 |
 |---|---|
-| <data> <redirect>false</redirect> <code>200</code> <success>true</success> </data> |  |
+| <data> <redirect>false</redirect> <code>200</code> <success>true</success> </data> |   |
 
-###### 4.1.1.1.9. GetOrganizationByPrimaryKey
+###### 4.1.1.1.9 GetOrganizationByPrimaryKey
 
 根据组织云账号的UID获取组织信息。
 
@@ -2060,6 +2326,10 @@ POST /resource/group/create/bind HTTP/1.1 {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /organizations/action/queryByPK HTTP/1.1
+```
 
 **请求参数**
 
@@ -2091,19 +2361,27 @@ POST /resource/group/create/bind HTTP/1.1 {
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
+
+```
+GET /organizations/action/queryByPK HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"exampleErrKey", "code":"ROLE_RESOURCE_USER", "cost":121, "data":{ "aliyunid":"192895059480****", "internal":false, "defaultResourceSetId":123, "defaultResourceSetUuid":"defaultUuid123", "name":"mytest", "supportRegions":"cn-qingdao-****-d01", "defaultResourceSetName":"defaultResources", "id":33, "uuid":"1231", "primaryKey":"25925866254468****" }, "success":true, "message":"success" } |  |
+| { "errorKey":"exampleErrKey", "code":"ROLE_RESOURCE_USER", "cost":121, "data":{ "aliyunid":"192895059480****", "internal":false, "defaultResourceSetId":123, "defaultResourceSetUuid":"defaultUuid123", "name":"mytest", "supportRegions":"cn-qingdao-****-d01", "defaultResourceSetName":"defaultResources", "id":33, "uuid":"1231", "primaryKey":"25925866254468****" }, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <data> <aliyunid>192895059480****</aliyunid> <internal>false</internal> <defaultResourceSetId>123</defaultResourceSetId> <defaultResourceSetUuid>defaultUuid123</defaultResourceSetUuid> <name>mytest</name> <supportRegions>cn-qingdao-****-d01</supportRegions> <defaultResourceSetName>defaultResources</defaultResourceSetName> <id>33</id> <uuid>1231</uuid> <primaryKey>25925866254468****</primaryKey> </data> <success>true</success> <message>success</message> |  |
+| <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <data> <aliyunid>192895059480****</aliyunid> <internal>false</internal> <defaultResourceSetId>123</defaultResourceSetId> <defaultResourceSetUuid>defaultUuid123</defaultResourceSetUuid> <name>mytest</name> <supportRegions>cn-qingdao-****-d01</supportRegions> <defaultResourceSetName>defaultResources</defaultResourceSetName> <id>33</id> <uuid>1231</uuid> <primaryKey>25925866254468****</primaryKey> </data> <success>true</success> <message>success</message> |   |
 
-##### 4.1.1.2. 资源集管理
+##### 4.1.1.2 资源集管理
 
-###### 4.1.1.2.1. CreateResourceGroup
+###### 4.1.1.2.1 CreateResourceGroup
+
+调用CreateResourceGroup接口创建资源集。
 
 **请求头**
 
@@ -2130,7 +2408,7 @@ POST /ascm/auth/resource_group/create_resource_group HTTP/1.1
 | code | String | 200 | 状态码。 200：调用正常。 400: 资源集名不可为空。 组织ID不可为空。 不能在ROOT组织下创建资源集。 所选组织不存在。 AccessKey不合法。 参数错误。 403: 没有权限。 404: AccessKey不存在。 组织不存在。 用户不存在。 组织AccessKey不存在。 500: 远程调用错误 。 内部错误。 |
 |---|---|---|---|
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应数据。 |
+| data | Struct |   | 响应数据。 |
 | creator | String | admin | 资源集创建人的用户名。 |
 | gmtCreated | Long | 1607512443989 | 资源集创建时间。 |
 | id | Integer | 1 | 资源集ID。 |
@@ -2154,23 +2432,21 @@ POST /ascm/auth/resource_group/create_resource_group HTTP/1.1
 公共请求头
 
 ```json
-{
     "organization_id": 3,
     "resource_group_name": "testrs"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <organizationID>1</organizationID> <resourceGroupName>test</resourceGroupName> <gmtCreated>1607512443989</gmtCreated> <rsId>rs-1010e71e5e520aab********</rsId> <id>1</id> </data> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <message>200</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <organizationID>1</organizationID> <resourceGroupName>test</resourceGroupName> <gmtCreated>1607512443989</gmtCreated> <rsId>rs-1010e71e5e520aab********</rsId> <id>1</id> </data> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <message>200</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "cost": "10000", "code": "200", "data": { "organizationID": "1", "resourceGroupName": "test", "gmtCreated": "1607512443989", "rsId": "rs-1010e71e5e520aab********", "id": "1" }, "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "message": "200" } |  |
+| { "redirect": "true", "cost": "10000", "code": "200", "data": { "organizationID": "1", "resourceGroupName": "test", "gmtCreated": "1607512443989", "rsId": "rs-1010e71e5e520aab********", "id": "1" }, "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "message": "200" } |   |
 
-###### 4.1.1.2.2. GetResourceGroups
+###### 4.1.1.2.2 GetResourceGroups
 
 批量获取资源集的详细信息。
 
@@ -2201,7 +2477,7 @@ POST /resourceGroups/action/batchGet HTTP/1.1
 | -resourceGroupName | String | restest _ | 资源集名称。 |
 | -organizationId | Integer | 3 | 资源集所属组织ID。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2219,14 +2495,14 @@ POST /resourceGroups/action/batchGet HTTP/1.1
 请求示例
 
 ```
-POST /resourceGroups/action/batchGet HTTP/1.1 { }
+POST /resourceGroups/action/batchGet HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "data": [ { "creator": "admin", "gmtCreated": 1754876798335, "gmtModified": 1754876798335, "id": 2, "modifier": "admin", "organizationId": 3, "organizationName": "ascmTest", "resourceGroupName": "ResourceSet(ascmTest)", "resourceGroupType": 1, "rsId": "rs-10336602e6ff0adf04a5000d", "status": "ACTIVE" }, { "creator": "admin", "gmtCreated": 1754893414576, "gmtModified": 1754893433804, "id": 5, "modifier": "admin", "organizationId": 3, "organizationName": "ascmTest", "resourceGroupName": "orgtest", "rsId": "rs-1033670072300adf04a5000e", "status": "ACTIVE" } ], "success": true } |  |
+| { "data": [ { "creator": "admin", "gmtCreated": 1754876798335, "gmtModified": 1754876798335, "id": 2, "modifier": "admin", "organizationId": 3, "organizationName": "ascmTest", "resourceGroupName": "ResourceSet(ascmTest)", "resourceGroupType": 1, "rsId": "rs-10336602e6ff0adf04a5000d", "status": "ACTIVE" }, { "creator": "admin", "gmtCreated": 1754893414576, "gmtModified": 1754893433804, "id": 5, "modifier": "admin", "organizationId": 3, "organizationName": "ascmTest", "resourceGroupName": "orgtest", "rsId": "rs-1033670072300adf04a5000e", "status": "ACTIVE" } ], "success": true } |   |
 
 `XML` 格式
 
@@ -2257,7 +2533,7 @@ POST /resourceGroups/action/batchGet HTTP/1.1 { }
 </data> <success>true</success>
 ```
 
-###### 4.1.1.2.3. BindAscmUserAndResourceGroup
+###### 4.1.1.2.3 BindAscmUserAndResourceGroup
 
 调用BindAscmUserAndResourceGroup将用户和资源集进行绑定。
 
@@ -2300,34 +2576,32 @@ POST /ascm/auth/resource_group/add_ascm_users HTTP/1.1
 POST /ascm/auth/resource_group/add_ascm_users HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "ascm_user_ids": "[5017,5023]",
     "resource_group_id": 7
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "redirect": "true",
     "cost": "10000",
     "code": "200",
     "success": "true",
     "message": "success"
-}
 ```
 
-###### 4.1.1.2.4. ListAscmUsersInsideResourceGroup
+`}`
+
+###### 4.1.1.2.4 ListAscmUsersInsideResourceGroup
 
 调用ListAscmUsersInsideResourceGroup获取资源集下的用户列表。
 
@@ -2356,8 +2630,8 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 400：参数错误。 403：没有权限。 404： AccessKey不存在. 用户不存在。 500：内部错误。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 响应数据。 |
-| accessKeys | Array of accessKey |  | AccessKey。 |
+| data | Array of dataItem |   | 响应数据。 |
+| accessKeys | Array of accessKey |   | AccessKey。 |
 | accesskeyId | String | JGdgSN2p******** | 当前用户的AccessKey ID。 |
 | ctime | Long | 1606675230000 | 当前AccessKey的创建时间。 |
 | cuserId | String | 1 | 当前AccessKey的创建者ID。 |
@@ -2368,7 +2642,7 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 
 | default | Boolean | false | 是否为预置用户。 ture：预置用户。 false：非预置用户。 说明预置用户为系统自动创建的用户。 |
 |---|---|---|---|
-| defaultRole | Struct |  | 角色列表。 |
+| defaultRole | Struct |   | 角色列表。 |
 | active | Boolean | true | 当前角色是否有效。 说明该参数已废弃。 |
 | arId | String | 111 | 当前角色的唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色Code。 |
@@ -2394,12 +2668,12 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 |---|---|---|---|
 | id | Integer | 1 | 用户ID。 |
 | loginName | String | test | 用户名。 |
-| loginPolicy | Struct |  | 登录策略。 |
+| loginPolicy | Struct |   | 登录策略。 |
 | cuserId | String | admin | 登录策略创建者的用户名。 |
 | default | Boolean | true | 是否为默认登录策略。 |
 | enable | Boolean | true | 登录策略是否有效。 |
 | id | Integer | 1 | 登录策略ID。 |
-| ipRanges | Array of ipRange |  | 登录策略的IP段。 |
+| ipRanges | Array of ipRange |   | 登录策略的IP段。 |
 | ipRange | String | 0.0.0.0/0 | IP范围。 |
 | loginPolicyId | Integer | 1 | 所属登录策略ID。 |
 | protocol | String | IPv4 | 登录策略所使用的协议。 说明目前仅支持IPv4协议。 |
@@ -2409,12 +2683,12 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 | organizationVisibility | String | organizationVisibility.global | 共享范围。 organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 所属组织ID。 |
 | rule | String | ALLOW | 策略属性。 Allow：白名单 Deny：黑名单。 |
-| timeRanges | Array of timeRange |  | 登录策略中登录时间的时间段。 |
+| timeRanges | Array of timeRange |   | 登录策略中登录时间的时间段。 |
 | endTime | String | 24:00 | 结束时间。 |
 | loginPolicyId | Integer | 1 | 所属登录策略ID。 |
 | startTime | String | 00:00 | 开始时间 |
 | mobileNationCode | String | 86 | 国际区号。 |
-| organization | Struct |  | 组织信息。 |
+| organization | Struct |   | 组织信息。 |
 | alias | String | test | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1606791494471 | 组织的创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 |
@@ -2433,7 +2707,7 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 | uuid | String | 1231 | 组织UUID。 |
 | parentPk | String | 1689406703****** | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |
 | primaryKey | String | 212530506704****** | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |
-| roles | Array of role |  | 角色列表。 |
+| roles | Array of role |   | 角色列表。 |
 | active | Boolean | true | 角色是否有效。 说明该参数已废弃。 |
 | arId | String | 111 | 角色的唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色Code。 |
@@ -2454,7 +2728,7 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 | status | String | active | AccessKey的状态。 active：激活。 deactive：禁用。 |
 | userGroupRoles | List | admin | 用户组角色列表。 |
 | userGroups | List | admin | 用户组列表。 |
-| userRoles | Array of userRole |  | 用户角色列表。 |
+| userRoles | Array of userRole |   | 用户角色列表。 |
 | active | Boolean | true | 角色是否有效。 说明该参数已废弃。 |
 | arId | String | 1121 | 角色的唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色Code。 |
@@ -2474,7 +2748,7 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 | roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限。 roleRange.orgAndSubOrgs：本组织及其下级组织。 roleRange.allOrganizations：所有组织。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：预置角色、自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：Ram角色授权。 |
 | message | String | success | 提示信息。 success：调用成功。 User has no permission to access the resource set：用户无权限访问该资源集。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页。 |
 | pageSize | Integer | 10 | 每页数据条数。 |
 | total | Integer | 10 | 总数据量。 |
@@ -2492,19 +2766,17 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "ResourceGroupId": 7
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</r1381380****de>200</code> <cost>49</cost> <data> <cellphoneNum>13813800138</cellphoneNum> d f l l |  |
+| <redirect>false</r1381380****de>200</code> <cost>49</cost> <data> <cellphoneNum>13813800138</cellphoneNum> d f l l |   |
 
 ```xml
     <defaultRole>
@@ -2858,14 +3130,13 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { |  |
+| { |   |
 
 ```json
     "redirect": false,
     "code": "200",
     "cost": 49,
     "data": [
-      {
         "cellphoneNum": "1381381381380****    "defaultRole": {
           "roleRange": "roleRange.resourceSet",
           "muserId": "",
@@ -2882,11 +3153,19 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "roleLevel": 2147483647,
           "cuserId": "",
           "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "displayName": "baixue1",
         "enableDingTalk": true,
         "roles": [
-          {
+```
+
+`{`
+
+```json
             "roleRange": "roleRange.resourceSet",
             "rAMRole": false,
             "code": "ROLE_RESOURCE_SET_ADMIN",
@@ -2900,8 +3179,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "id": 5,
             "roleLevel": 2147483647,
             "organizationVisibility": "organizationVisibility.global"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
             "code": "ROLE_ORGANIZATION_ADMIN",
@@ -2915,8 +3197,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "id": 4,
             "roleLevel": 2147483647,
             "organizationVisibility": "organizationVisibility.global"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "roleRange": "roleRange.resourceSet",
             "rAMRole": false,
             "code": "ROLE_RESOURCE_USER",
@@ -2930,29 +3215,30 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "id": 2,
             "roleLevel": 2147483647,
             "organizationVisibility": "organizationVisibility.global"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "loginPolicy": {
           "ipRanges": [
-            {
+```
+
+`{`
+
+```json
               "protocol": "IPv4",
               "ipRange": "0.0.0.0/0",
               "loginPolicyId": 1
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
           "muserId": "",
           "default": true,
           "ownerOrganizationId": 1,
           "timeRanges": [
-            {
               "loginPolicyId": 1,
               "startTime": "00:00",
 "endTime":"24:00"
@@ -2960,7 +3246,6 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 
 ```
               endTime: 24:00
-            }
 ```
 
 `],`
@@ -2972,12 +3257,20 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "id": 1,
           "cuserId": "",
           "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "parentPk": "1824191931******",
         "lastLoginTime": 1592232390657,
         "userGroups": [],
         "userRoles": [
-          {
+```
+
+`{`
+
+```json
             "roleRange": "roleRange.resourceSet",
             "muserId": "",
             "rAMRole": false,
@@ -2993,8 +3286,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "roleLevel": 2147483647,
             "cuserId": "",
             "organizationVisibility": "organizationVisibility.global"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "roleRange": "roleRange.orgAndSubOrgs",
             "muserId": "",
             "rAMRole": false,
@@ -3010,8 +3306,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "roleLevel": 2147483647,
             "cuserId": "",
             "organizationVisibility": "organizationVisibility.global"
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "roleRange": "roleRange.resourceSet",
             "muserId": "",
             "rAMRole": false,
@@ -3027,23 +3326,25 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "roleLevel": 2147483647,
             "cuserId": "",
             "organizationVisibility": "organizationVisibility.global"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "accessKeys": [
-          {
+```
+
+`{`
+
+```json
             "ctime": 1591931519000,
             "id": 609,
             "region": "cn-qingdao-****-d01",
             "accesskeyId": "1KAjDIqCGM******",
             "status": "ACTIVE"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": false,
@@ -3072,7 +3373,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "cuserId": "",
           "uuid": "null",
           "parentId": 1
-        },
+```
+
+`},`
+
+```json
         "userGroupRoles": [],
         "id": 5617,
         "mobileNationCode": "86",
@@ -3081,8 +3386,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
         "enableShortMessage": true,
         "primaryKey": "261424091942******",
         "status": "ACTIVE"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "cellphoneNum": "18999999999",
         "defaultRole": {
           "roleRange": "roleRange.orgAndSubOrgs",
@@ -3100,11 +3408,19 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "roleLevel": 2147483647,
           "cuserId": "",
           "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "displayName": "test",
         "enableDingTalk": true,
         "roles": [
-          {
+```
+
+`{`
+
+```json
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
             "code": "ROLE_YUNDUN_ORG_SEC_ADMIN",
@@ -3118,36 +3434,41 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "id": 8,
             "roleLevel": 2147483647,
             "organizationVisibility": "organizationVisibility.global"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "loginPolicy": {
           "ipRanges": [
-            {
+```
+
+`{`
+
+```json
               "protocol": "IPV4",
               "ipRange": "0.0.0.0/0",
               "loginPolicyId": 1
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
           "muserId": "",
           "default": true,
           "ownerOrganizationId": 1,
           "timeRanges": [
-            {
+```
+
+`{`
+
+```json
               "loginPolicyId": 1,
               "startTime": "00:00",
               "endTime": "24:00"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
           "enable": true,
@@ -3156,11 +3477,14 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "id": 1,
           "cuserId": "",
           "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "parentPk": "1824191931******",
         "userGroups": [],
         "userRoles": [
-          {
             "roleRange": "roleRange.orgAndSubOrgs",
             "muserId": "",
             "rAMRole": false,
@@ -3179,24 +3503,26 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "roleLevel": 2147483647,
             "cuserId": "",
             "organizationVisibility": "organizationVisibility.global"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "accessKeys": [
-          {
+```
+
+`{`
+
+```json
             "ctime": 1591930977000,
             "id": 607,
             "region": "cn-qingdao-****-d01",
             "cuserId": "admin",
             "accesskeyId": "o4LEJ8SoW******",
             "status": "ACTIVE"
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": false,
@@ -3221,7 +3547,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "cuserId": "",
           "uuid": "null",
           "parentId": 1
-        },
+```
+
+`},`
+
+```json
         "userGroupRoles": [],
         "id": 5615,
         "mobileNationCode": "86",
@@ -3230,35 +3560,44 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
         "enableShortMessage": true,
         "primaryKey": "250944791941*****",
         "status": "ACTIVE"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "cellphoneNum": "13813813800",
         "displayName": "baixue",
         "enableDingTalk": false,
         "loginPolicy": {
           "ipRanges": [
-            {
+```
+
+`{`
+
+```json
               "protocol": "IPV4",
               "ipRange": "0.0.0.0/0",
               "loginPolicyId": 1
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
           "muserId": "",
           "default": true,
 1381381****ownerOrganizationId": 1,
           "timeRanges": [
-            {
+```
+
+`{`
+
+```json
               "loginPolicyId": 1,
               "startTime": "00:00",
               "endTime": "24:00"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
           "enable": true,
@@ -3267,12 +3606,15 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "id": 1,
           "cuserId": "",
           "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "parentPk": "1824191931******",
         "userGroups": [],
         "userRoles": [],
         "accessKeys": [
-          {
             "ctime": 1591931388000,
             "id": 608,
 ```
@@ -3281,7 +3623,6 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
             "region": "cn-qingdao-****-d01",
             "accesskeyId": "cNaeitV1RB******",
             "status": "ACTIVE"
-          }
 ```
 
 `],`
@@ -3309,7 +3650,11 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
           "cuserId": "",
           "uuid": "null",
           "parentId": 1
-        },
+```
+
+`},`
+
+```json
         "userGroupRoles": [],
         "id": 5616,
         "mobileNationCode": "86",
@@ -3318,10 +3663,9 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
         "enableShortMessage": false,
         "primaryKey": "221543391942******",
         "status": "ACTIVE"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": true,
@@ -3330,13 +3674,18 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
       "totalPage": 1,
       "pageSize": 10,
       "currentPage": 1
-    },
-    "pureListData": false,
-    "message": "success"
-  }
 ```
 
-###### 4.1.1.2.5. ListMembersInsideResourceSet
+`},`
+
+```json
+    "pureListData": false,
+    "message": "success"
+```
+
+`}`
+
+###### 4.1.1.2.5 ListMembersInsideResourceSet
 
 获取某资源集下的用户或用户组。
 
@@ -3366,7 +3715,7 @@ POST /ascm/auth/user/listMembersInsideResourceGroup HTTP/1.1
 | action | String | ListMembersInsideResourceSet | 当前接口名称。 |
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Long | 22 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of resourceSetMember |  | 当前资源集下的用户或用户组。 |
+| data | Array of resourceSetMember |   | 当前资源集下的用户或用户组。 |
 | authorizedAlias | String | multi-role-user-3 | 被授权的用户或用户组别名。 说明被授权指的是将用户或者用户组添加为这个资源集的成员。若被授权对象的类型是用户，则返回值为用户显示名；若被授权对象的类型是用户组，则返回值为用户组名。 |
 | authorizedId | Integer | 5039 | 被授权的主体用户组ID。 说明若被授权的类型是用户，则返回值为用户ID；若被授权的类型是用户组，则返回值为用户组ID。 |
 | authorizedName | String | lsq-3 | 被授权的主体名。 说明若被授权对象的类型是用户，则返回值为用户名；若被授权对象的类型是用户组，则返回值为用户组名。 |
@@ -3380,7 +3729,7 @@ POST /ascm/auth/user/listMembersInsideResourceGroup HTTP/1.1
 |---|---|---|---|
 | extraMessage | String | success | 额外的提示信息，对错误提示信息的补充说明。 说明仅在接口调用失败异常时返回。 |
 | message | String | success | 错误提示信息。 说明无论是否调用成功都会返回。一般调用成功返回success，调用失败返回自定义的错误信息或者返回异常栈中的错误信息。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页码。 |
 | pageSize | Integer | 10 | 每页数据条数。 |
 | total | Integer | 10 | 数据总条数。 |
@@ -3397,13 +3746,13 @@ POST /ascm/auth/user/listMembersInsideResourceGroup HTTP/1.1
 POST /ascm/auth/user/listMembersInsideResourceGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{ "ResourceSetId": "4" }
+"ResourceSetId": "4"
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <serverRole>unimanager-base.IdentityService#</serverRole> <successResponse>true</successResponse> <errorKey>ascm.auth.InvalidParamete</errorKey> <cost>22</cost> <code>200</code> <data>
@@ -3424,9 +3773,11 @@ POST /ascm/auth/user/listMembersInsideResourceGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| {"serverRole":"unimanager- base.IdentityService#","successResponse":"true","errorKey":"ascm.auth.InvalidParamete","cost":"22","code":"200","data": [{"authorizedId":"5039","authorizedName":"lsq- 3","authorizedTime":"1657763863217","authorizedRoleName":"defaultRole.resourceUser.name","authorizedAlias":"multi-role-user- 3","authorizedRoleId":"2","authorizedType":"User"}],"requestId":"5FE0023D-73C3-481E-926D- 17A2******","domain":"ascm.aliyun.com","extraMessage":"success","pageInfo": {"total":"10","totalPage":"1","pageSize":"10","currentPage":"1"},"action":"ListMembersInsideResourceSet","message":"success"} |  |
+| {"serverRole":"unimanager- base.IdentityService#","successResponse":"true","errorKey":"ascm.auth.InvalidParamete","cost":"22","code":"200","data": [{"authorizedId":"5039","authorizedName":"lsq- 3","authorizedTime":"1657763863217","authorizedRoleName":"defaultRole.resourceUser.name","authorizedAlias":"multi-role-user- 3","authorizedRoleId":"2","authorizedType":"User"}],"requestId":"5FE0023D-73C3-481E-926D- 17A2******","domain":"ascm.aliyun.com","extraMessage":"success","pageInfo": {"total":"10","totalPage":"1","pageSize":"10","currentPage":"1"},"action":"ListMembersInsideResourceSet","message":"success"} |   |
 
-###### 4.1.1.2.6. ListResourceGroup
+###### 4.1.1.2.6 ListResourceGroup
+
+调用ListResourceGroup获取用户可见的资源集列表。
 
 **请求头**
 
@@ -3451,7 +3802,7 @@ POST /ascm/auth/resource_group/list_resource_group HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| PageInfo | Struct |  | 分页信息。 |
+| PageInfo | Struct |   | 分页信息。 |
 | CurrentPage | Integer | 1 | 当前页码。 |
 
 | PageSize | Integer | 10 | 每页数据条数。 |
@@ -3460,7 +3811,7 @@ POST /ascm/auth/resource_group/list_resource_group HTTP/1.1
 | TotalPage | Integer | 1 | 总页数。 |
 | code | String | 200 | 状态码。 200：调用正常。 403：没有权限。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 响应数据。 |
+| data | Array of dataItem |   | 响应数据。 |
 | creator | String | admin | 资源集创建者的用户名。 |
 | gmtCreated | Float | 1606719003858 | 资源集创建时间。 |
 | id | Integer | 1 | 资源集ID。 |
@@ -3481,15 +3832,13 @@ POST /ascm/auth/resource_group/list_resource_group HTTP/1.1
 POST /ascm/auth/resource_group/list_resource_group HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resourceGroupName": "test"
-}
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <redirect>true</redirect> <PageInfo>
@@ -3510,9 +3859,9 @@ POST /ascm/auth/resource_group/list_resource_group HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "PageInfo": { "TotalPage": "1", "PageSize": "10", "CurrentPage": "1", "Total": "10" }, "cost": "10000", "code": "200", "data": [ { "organizationID": "1", "creator": "admin", "resourceGroupName": "test", "organizationName": "test", "gmtCreated": "1606719003858", "rsId": "rs-1010e71e5e520aab********", "id": "1" } ], "success": "true", "message": "success" } |  |
+| { "redirect": "true", "PageInfo": { "TotalPage": "1", "PageSize": "10", "CurrentPage": "1", "Total": "10" }, "cost": "10000", "code": "200", "data": [ { "organizationID": "1", "creator": "admin", "resourceGroupName": "test", "organizationName": "test", "gmtCreated": "1606719003858", "rsId": "rs-1010e71e5e520aab********", "id": "1" } ], "success": "true", "message": "success" } |   |
 
-###### 4.1.1.2.7. ListResourceGroupByAscmUserId
+###### 4.1.1.2.7 ListResourceGroupByAscmUserId
 
 调用ListResourceGroupByAscmUserId获取用户所在的资源集列表。
 
@@ -3541,7 +3890,7 @@ POST /ascm/auth/resource_group/list_resource_group_by_ascmuser_id HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 400：参数错误。 403：没有权限。 404：用户不存在。 500：内部错误。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 响应结果。 |
+| data | Array of dataItem |   | 响应结果。 |
 | creator | String | admin | 资源集创建者的用户名。 |
 | gmtCreated | Long | 1606791494471 | 资源集创建时间。 |
 | gmtModified | Long | 1606791494472 | 资源集最近一次修改的时间。 |
@@ -3563,18 +3912,16 @@ POST /ascm/auth/resource_group/list_resource_group_by_ascmuser_id HTTP/1.1
 POST /ascm/auth/resource_group/list_resource_group_by_ascmuser_id HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "ascmuser_id": 5,
     "ascmRoleId": 2,
     "pageNumber": 1,
     "pageSize": 10
-}
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data>
@@ -3591,9 +3938,11 @@ POST /ascm/auth/resource_group/list_resource_group_by_ascmuser_id HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "data": { "organizationID": 1, "gmtModified": 1606791494472, "creator": "admin", "resourceGroupName": "test", "gmtCreated": 1606791494471, "rsId": "rs-123144", "resourceGroupType": 1, "id": 1 }, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "data": { "organizationID": 1, "gmtModified": 1606791494472, "creator": "admin", "resourceGroupName": "test", "gmtCreated": 1606791494471, "rsId": "rs-123144", "resourceGroupType": 1, "id": 1 }, "success": true, "message": "success" } |   |
 
-###### 4.1.1.2.8. ListResourceGroupByOrgId
+###### 4.1.1.2.8 ListResourceGroupByOrgId
+
+调用ListResourceGroupByOrgId获取组织下的资源集列表。
 
 **请求头**
 
@@ -3621,7 +3970,7 @@ POST /ascm/auth/organization/resourceGroupList HTTP/1.1
 | code | String | 200 | 状态码。 200：调用正常。 400： 组织ID不可为空。 所选组织不存在。 AccessKey不合法。 参数错误。 阿里云账号不支持此操作。 403： 没有权限。 用户当前的角色已被禁用，无法执行此操作，请管理员解禁后重试。 404： AccessKey不存在。 角色不存在。 用户不存在。 用户没有该角色。 500： 远程调用错误。 内部错误。 |
 |---|---|---|---|
 | cost | Integer | 10000 | 接口耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 响应数据。 |
+| data | Array of dataItem |   | 响应数据。 |
 | creator | String | admin | 组织创建人的用户名。 |
 | gmtCreated | Float | 1607512443989 | 资源集的创建时间。 |
 | gmtModified | Float | 1607512443999 | 资源集最近一次的修改时间。 |
@@ -3631,7 +3980,7 @@ POST /ascm/auth/organization/resourceGroupList HTTP/1.1
 | resourceGroupName | String | resg-test | 资源集名称。 |
 | resourceGroupType | Integer | 1 | 资源集类型。 1：默认资源集。 0：非默认资源集。 |
 | message | String | 200 | 提示信息。例如： The caller is not organization account：当前用户无权限查看被调用的组织。 User and access-key not matched：当前用户与AccessKey不匹配。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页。 |
 | pageSize | Integer | 10 | 每页数据条数。 |
 | total | Integer | 100 | 总数据条数。 |
@@ -3650,25 +3999,25 @@ POST /ascm/auth/organization/resourceGroupList HTTP/1.1
 POST /ascm/auth/organization/resourceGroupList HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 34
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <organizationID>1</organizationID> <gmtModified>1607512443999</gmtModified> <creator>admin</creator> <resourceGroupName>test</resourceGroupName> <organizationName>admin</organizationName> <gmtCreated>1607512443989</gmtCreated> <resourceGroupType>1</resourceGroupType> <id>1</id> </data> <success>true</success> <pageInfo> <total>100</total> <totalPage>10</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <pureListData>true</pureListData> <message> 200</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <data> <organizationID>1</organizationID> <gmtModified>1607512443999</gmtModified> <creator>admin</creator> <resourceGroupName>test</resourceGroupName> <organizationName>admin</organizationName> <gmtCreated>1607512443989</gmtCreated> <resourceGroupType>1</resourceGroupType> <id>1</id> </data> <success>true</success> <pageInfo> <total>100</total> <totalPage>10</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <pureListData>true</pureListData> <message> 200</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "cost": "10000", "code": "200", "data": [ { "organizationID": "1", "gmtModified": "1607512443999", "creator": "admin", "resourceGroupName": "test", "organizationName": "admin", "gmtCreated": "1607512443989", "resourceGroupType": "1", "id": "1" } ], "success": "true", "pageInfo": { "total": "100", "totalPage": "10", "pageSize": "10", "currentPage": "1" }, "pureListData": "true", "message": " 200" } |  |
+| { "redirect": "true", "cost": "10000", "code": "200", "data": [ { "organizationID": "1", "gmtModified": "1607512443999", "creator": "admin", "resourceGroupName": "test", "organizationName": "admin", "gmtCreated": "1607512443989", "resourceGroupType": "1", "id": "1" } ], "success": "true", "pageInfo": { "total": "100", "totalPage": "10", "pageSize": "10", "currentPage": "1" }, "pureListData": "true", "message": " 200" } |   |
 
-###### 4.1.1.2.9. RemoveResourceGroup
+###### 4.1.1.2.9 RemoveResourceGroup
+
+调用RemoveResourceGroup删除资源集。
 
 **请求头**
 
@@ -3706,25 +4055,23 @@ POST /ascm/auth/resource_group/delete_resource_group HTTP/1.1
 POST /ascm/auth/resource_group/delete_resource_group HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resource_group_id": 5
-}
 ```
 
 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <message>success</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <requestId>16d09b14-8a59-****-****-7536fe897b66</requestId> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "cost": "10000", "code": "200", "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "message": "success" } |  |
+| { "redirect": "true", "cost": "10000", "code": "200", "success": "true", "requestId": "16d09b14-8a59-****-****-7536fe897b66", "message": "success" } |   |
 
-###### 4.1.1.2.10. UnbindAscmUserAndResourceGroup
+###### 4.1.1.2.10 UnbindAscmUserAndResourceGroup
 
 调用UnbindAscmUserAndResourceGroup为资源集移除用户。
 
@@ -3766,26 +4113,26 @@ POST /ascm/auth/resource_group/remove_ascm_users HTTP/1.1
 POST /ascm/auth/resource_group/remove_ascm_users HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resource_group_id": 7,
     "ascm_user_ids": "[5017,5023]"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>200</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>200</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "cost": "10000", "code": "200", "success": "true", "message": "200" } |  |
+| { "redirect": "true", "cost": "10000", "code": "200", "success": "true", "message": "200" } |   |
 
-###### 4.1.1.2.11. UpdateResourceGroup
+###### 4.1.1.2.11 UpdateResourceGroup
+
+调用UpdateResourceGroup修改资源集信息。
 
 **请求头**
 
@@ -3812,7 +4159,7 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用正常。 400： AccessKey不合法。 不支持对默认资源集执行此操作。 删除资源集前，必须和用户组解除绑定。 删除资源集前，必须删除资源集下的所有云资源。 删除资源集前，必须和用户解除绑定。 参数错误。 403：没有权限。 404： AccessKey不存在。 组织不存在。 用户不存在。 组织AccessKey不存在。 500： 远程调用错误。 内部错误。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | creator | String | admin | 资源集创建者的用户名。 |
 | gmtCreated | Float | 1653485365361 | 资源集的创建时间。 |
 | gmtModified | Float | 1653485365362 | 资源集最近一次的修改时间。 |
@@ -3836,34 +4183,38 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 16,
     "resourceGroupName": "new_res"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <pageInfo> <gmtModified>1606791494471</gmtModified> <resourceGroupName>new_res</resourceGroupName> <id>1</id> </pageInfo> <message>success</message> |  |
+| <redirect>true</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <pageInfo> <gmtModified>1606791494471</gmtModified> <resourceGroupName>new_res</resourceGroupName> <id>1</id> </pageInfo> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "true", "cost": "10000", "code": "200", "success": "true", "pageInfo": { "gmtModified": "1606791494471", "resourceGroupName": "new_res", "id": "1" }, "message": "success" } |  |
+| { "redirect": "true", "cost": "10000", "code": "200", "success": "true", "pageInfo": { "gmtModified": "1606791494471", "resourceGroupName": "new_res", "id": "1" }, "message": "success" } |   |
 
-##### 4.1.1.3. 角色管理
+##### 4.1.1.3 角色管理
 
-###### 4.1.1.3.1. AddRoleToUser
+###### 4.1.1.3.1 AddRoleToUser
+
+调用AddRoleToUser接口，为单个或多个用户添加指定角色。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/addRoleToUser HTTP/1.1
+```
 
 **请求参数**
 
@@ -3889,34 +4240,44 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
+
+```
+POST /ascm/auth/role/addRoleToUser HTTP/1.1
+```
+
+公共请求头 `{`
 
 ```json
-{
   "loginName": "testu" ,
   "loginNameList":["testu1","testu2"] ,
   "roleName":"testr",
   "roleId": 2
-}
 ```
 
 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.3.2. ListActiveRoles
+###### 4.1.1.3.2 ListActiveRoles
+
+调用ListActiveRoles获取可用于绑定的角色列表。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/listActiveRoles HTTP/1.1
+```
 
 **请求参数**
 
@@ -3930,7 +4291,7 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 403：没有权限。 |
 | cost | Integer | 10000 | 接口耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 响应结果。 |
+| data | Array of dataItem |   | 响应结果。 |
 | active | Boolean | true | 角色是否有效。 说明该参数已废弃。角色状态请参考enable参数。 |
 | arId | String | ar-9999****** | 角色唯一编码。 |
 | code | String | 200 ROLERESOURCEUSER _ _ | 角色Code。 说明 Code由系统自动生成，每个角色都有Code且唯一，预置角色的Code为固定值。 |
@@ -3949,7 +4310,7 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。RAM授权是一组RAM权限的模板，可给RAM用户（子账号）授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。预置角色和自定义角色都是将Apsara Uni-manager运营控制台定义的权限点进行组装而成的角色，其权限级别都是资源，无法实现指定实例级别的权限控制。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权。RAM角色授权是一个RAM角色模板，需要指定授信策略（AssumeRolePolicyDocument）和一组RAM权限。在指定一个一级组织（阿里云账号）实例化后，会生成一个 RAM角色。 |
 | userCount | Integer | 12 | 拥有该角色的用户数。 |
 | message | String | success | 错误提示信息。 success：调用成功。 Forbidden：没有权限。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 20 | 每页返回数据的条数。 |
 | total | Integer | 780 | 返回数据总条数。 |
@@ -3964,23 +4325,29 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/auth/role/listActiveRoles HTTP/1.1 公共请求头 {
-    "includeRAMRole": true
-}
+```
+POST /ascm/auth/role/listActiveRoles HTTP/1.1 公共请求头
 ```
 
-正常返回示例
+`{`
+
+```json
+    "includeRAMRole": true
+```
+
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <roleRange>roleRange.orgAndSubOrgs</roleRange> <rAMRole>false</rAMRole> <arId>ar-9999******</arId> <code>200 ROLE_RESOURCE_USER</code> <description>defaultRole.resourceUser.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <userCount>12</userCount> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <roleLevel>2147483647</roleLevel> <id>1</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <pageInfo> <total>780</total> <totalPage>39</totalPage> <pageSize>20</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <roleRange>roleRange.orgAndSubOrgs</roleRange> <rAMRole>false</rAMRole> <arId>ar-9999******</arId> <code>200 ROLE_RESOURCE_USER</code> <description>defaultRole.resourceUser.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <userCount>12</userCount> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <roleLevel>2147483647</roleLevel> <id>1</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <pageInfo> <total>780</total> <totalPage>39</totalPage> <pageSize>20</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "data": { "roleRange": "roleRange.orgAndSubOrgs", "rAMRole": false, "arId": "ar-9999******", "code": "200 ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "userCount": 12, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 1, "organizationVisibility": "organizationVisibility.global" }, "success": true, "pageInfo": { "total": 780, "totalPage": 39, "pageSize": 20, "currentPage": 1 }, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "data": { "roleRange": "roleRange.orgAndSubOrgs", "rAMRole": false, "arId": "ar-9999******", "code": "200 ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "userCount": 12, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 1, "organizationVisibility": "organizationVisibility.global" }, "success": true, "pageInfo": { "total": 780, "totalPage": 39, "pageSize": 20, "currentPage": 1 }, "message": "success" } |   |
 
-###### 4.1.1.3.3. ListRoles
+###### 4.1.1.3.3 ListRoles
+
+调用ListRoles查看用户可见角色列表。
 
 **请求头**
 
@@ -4034,26 +4401,28 @@ POST /ascm/auth/role/listActiveRoles HTTP/1.1 公共请求头 {
 
 **示例**
 
-请求示例公共请求头
+请求示例
+
+```
+POST /ascm/auth/role/listRoles HTTP/1.1
+```
+
+公共请求头 `{`
 
 ```json
-{
     "currentPage": 1,
     "pageSize": 10,
     "isDefault": false,
     "roleType" :"ROLETYPE_ASCM",
     "roleName":"testr"
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "code":"ROLE_RESOURCE_USER",
  "cost":10000,
  "data":[
-  {
    "roleRange":"roleRange.orgAndSubOrgs",
    "arId":"ar-9999999902",
    "muserId":"admin",
@@ -4070,10 +4439,9 @@ POST /ascm/auth/role/listActiveRoles HTTP/1.1 公共请求头 {
    "id":1,
    "roleLevel":2147483647,
    "organizationVisibility":"organizationVisibility.global"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -4082,24 +4450,35 @@ POST /ascm/auth/role/listActiveRoles HTTP/1.1 公共请求头 {
   "totalPage":39,
   "pageSize":20,
   "currentPage":1
- },
- "message":"success"
-}
 ```
+
+`},`
+
+```json
+ "message":"success"
+```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>ROLE_RESOURCE_USER</code> <cost>10000</cost> <data> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999999902</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>defaultRole.resourceUser.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <userCount>12</userCount> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>1</id> <roleLevel>2147483647</roleLevel> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <pageInfo> <total>790</total> <totalPage>39</totalPage> <pageSize>20</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <code>ROLE_RESOURCE_USER</code> <cost>10000</cost> <data> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999999902</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>defaultRole.resourceUser.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <userCount>12</userCount> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>1</id> <roleLevel>2147483647</roleLevel> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <pageInfo> <total>790</total> <totalPage>39</totalPage> <pageSize>20</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.3.4. LockRole
+###### 4.1.1.3.4 LockRole
+
+调用LockRole接口锁定指定角色，锁定后将无法变更该角色相关属性。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/lockRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -4120,23 +4499,29 @@ ascm 2019-05-10
 
 请求示例
 
-```json
-{
-    "roleId": 3
-}
+```
+POST /ascm/auth/role/lockRole HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "roleId": 3
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":1000, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":1000, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.5. RelateSystemWithRole
+###### 4.1.1.3.5 RelateSystemWithRole
+
+调用RelateSystemWithRole接口为指定角色关联外部系统。
 
 **请求头**
 
@@ -4171,24 +4556,28 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
-    "roleId": 3,
-    "relativeSystem":"cmp"
-}
+```
+POST /ascm/auth/role/relateSystemWithRole HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "roleId": 3,
+    "relativeSystem":"cmp"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":1000, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":1000, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.6. SetDefaultRole
+###### 4.1.1.3.6 SetDefaultRole
 
 设置用户的默认角色。 一个用户可拥有多个角色，调用SetDefaultRole接口设置指定用户的默认角色后，该用户下一次登录Apsara Uni-manager运营控制台，则会以默认角色登入。登录后，您可以在个人中心或首页中切换角色。
 
@@ -4197,6 +4586,10 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/setDefaultRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -4222,30 +4615,40 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 请求示例
 
-```json
-{
-    "loginName": "testu",
-    "roleId": 2
-}
+```
+POST /ascm/auth/role/setDefaultRole HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "loginName": "testu",
+    "roleId": 2
+```
+
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.3.7. UnLockRole
+###### 4.1.1.3.7 UnLockRole
+
+调用UnLockRole接口解锁指定角色。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/unLockRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -4269,23 +4672,27 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 请求示例
 
-```json
-{
-    "roleId": 3
-}
+```
+POST /ascm/auth/role/unLockRole HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "roleId": 3
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":1000, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":1000, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.8. UpdateRoleInfo
+###### 4.1.1.3.8 UpdateRoleInfo
 
 编辑角色基本信息。 此接口用于修改ASCM系统内角色的基本信息。角色类型包括自定义角色、RAM角色授权、RAM授权。权限策略概念请查看《Apsara Uni-manager运营控制台用户指南》 中RAM权限策略相关内容。
 
@@ -4294,6 +4701,10 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/updateRoleInfo HTTP/1.1
+```
 
 **请求参数**
 
@@ -4319,8 +4730,13 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 请求示例
 
+```
+POST /ascm/auth/role/updateRoleInfo HTTP/1.1
+```
+
+`{`
+
 ```json
-{
     "newRoleName": "newtestrole",
     "newNotActions": ["rds:*"],
     "roleId": "1003",
@@ -4330,20 +4746,19 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 ```json
     "newActions": ["ecs:*"]
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":31, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":31, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>31</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>31</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.9. UpdateRAMPolicy
+###### 4.1.1.3.9 UpdateRAMPolicy
 
 更新RAM权限策略。 RAM权限策略概念请查看《Apsara Uni-manager运营控制台用户指南》中RAM权限策略相关内容。
 
@@ -4384,8 +4799,13 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 请求示例
 
+```
+POST /ascm/auth/role/updateRAMPolicy HTTP/1.1
+```
+
+`{`
+
 ```json
-{
     "newPolicyName": "ram-test-data-new",
     "newPolicyDocument": "{  \"Statement\": [    {      \"Action\": \"ecs:RebootInstance\",      \"Effect\": \"Allow\",      \"Resource\":
 \"*\", \"Condition\": { \"Bool\": { \"acs:MFAPresent\": \"true\" } } } ], \"Version\": \"1\"}",
@@ -4396,14 +4816,13 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 ```json
     "organizationVisibility": "organizationVisibility.global"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":19, "data":{ "policyDocument":"{\\\"Version\\\":\\\"1\\\",\\\"Statement\\\": [{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"ecs:*\\\",\\\"Resource\\\":\\\"*\\\",\\\"Condition\\\":{\\\"IpAddress\\\": {\\\"acs:SourceIp\\\":[\\\"1**.0.113.2\\\"]},\\\"Bool\\\":{\\\"acs:MFAPresent\\\":[\\\"true\\\"]}}}]}", "muserId":"admin", "policyName":"test-ram-policy", "ctime":1715152881889, "description":"创建权限策略。", "id":182, "mtime":1715152881889, "region":"cn-w***********-d01" }, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":19, "data":{ "policyDocument":"{\\\"Version\\\":\\\"1\\\",\\\"Statement\\\": [{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"ecs:*\\\",\\\"Resource\\\":\\\"*\\\",\\\"Condition\\\":{\\\"IpAddress\\\": {\\\"acs:SourceIp\\\":[\\\"1**.0.113.2\\\"]},\\\"Bool\\\":{\\\"acs:MFAPresent\\\":[\\\"true\\\"]}}}]}", "muserId":"admin", "policyName":"test-ram-policy", "ctime":1715152881889, "description":"创建权限策略。", "id":182, "mtime":1715152881889, "region":"cn-w***********-d01" }, "success":true, "message":"success" } |   |
 
 `XML` 格式
 
@@ -4427,7 +4846,7 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1 {
 
 ascm 2019-05-10
 
-###### 4.1.1.3.10. RemoveRole
+###### 4.1.1.3.10 RemoveRole
 
 删除角色。 删除角色时，操作用户的当前角色范围必须大于被删除角色的角色范围。角色范围从大到小依次是所有组织、本组织及级联下级组织、资源集。删除RAM角色授权前，必须删除RAM角色授权下的所有RAM角色；删除角色前，必须解除角色与用户、用户组的绑定关系。
 
@@ -4436,6 +4855,10 @@ ascm 2019-05-10
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/removeRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -4457,14 +4880,14 @@ ascm 2019-05-10
 请求示例
 
 ```json
-{"roleName":"mytestrolenew"}
+POST /ascm/auth/role/removeRole HTTP/1.1 {"roleName":"mytestrolenew"}
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":45, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":45, "success":true, "message":"success" } |   |
 
 `XML` 格式
 
@@ -4472,7 +4895,7 @@ ascm 2019-05-10
 <code>200</code> <cost>45</cost> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.3.11. RemoveRAMPolicyFromRole
+###### 4.1.1.3.11 RemoveRAMPolicyFromRole
 
 从RAM授权、RAM角色授权类型角色的策略列表中移除指定的RAM权限策略。
 
@@ -4514,13 +4937,13 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":75, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":75, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>75</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>75</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.12. RemoveRAMPolicy
+###### 4.1.1.3.12 RemoveRAMPolicy
 
 删除RAM权限策略。 被删除的策略对当前用户可见才可以删除，并且删除RAM策略前，必须和角色解除绑定。
 
@@ -4529,6 +4952,10 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/removeRAMPolicy HTTP/1.1
+```
 
 **请求参数**
 
@@ -4550,20 +4977,20 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 请求示例
 
 ```json
-{"ramPolicyId":2}
+POST /ascm/auth/role/removeRAMPolicy HTTP/1.1 {"ramPolicyId":2}
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":30, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":30, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>30</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>30</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.13. GetRAMPolicy
+###### 4.1.1.3.13 GetRAMPolicy
 
 获取权限策略信息。 根据权限策略ID获取权限策略信息。权限策略概念请查看《Apsara Uni-manager运营控制台用户指南》中RAM权限策略相关内容。
 
@@ -4572,6 +4999,10 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/getRAMPolicy HTTP/1.1
+```
 
 **请求参数**
 
@@ -4588,7 +5019,7 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 | message | String | success | 提示信息。 |
 | success | Boolean | true | 操作是否成功的标识。 true : 成功 false：失败 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4608,16 +5039,16 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 请求示例
 
 ```json
-{"ramPolicyId":1}
+POST /ascm/auth/role/getRAMPolicy HTTP/1.1 {"ramPolicyId":1}
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 33, "data": { "policyDocument": "{ \"Statement\": [ { \"Action\": \"ecs:RebootInstance\", \"Effect\": \"Allow\", \"Resource\": \"*\ ", \"Condition\": { \"Bool\": { \"acs:MFAPresent\": \"true\" } } } ], \"Version\": \"1\"}", "policyName": "ramtestdata", "ctime": 1715651685633, "description": "测试数据", "id": 1, "region": "cn-w********-d01" }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 33, "data": { "policyDocument": "{ \"Statement\": [ { \"Action\": \"ecs:RebootInstance\", \"Effect\": \"Allow\", \"Resource\": \"*\ ", \"Condition\": { \"Bool\": { \"acs:MFAPresent\": \"true\" } } } ], \"Version\": \"1\"}", "policyName": "ramtestdata", "ctime": 1715651685633, "description": "测试数据", "id": 1, "region": "cn-w********-d01" }, "success": true, "message": "success" } |   |
 
-###### 4.1.1.3.14. CreateRole
+###### 4.1.1.3.14 CreateRole
 
 创建ASCM角色。 此接口用于创建ASCM自定义角色、RAM角色授权、RAM授权（不再推荐）。权限策略概念请查看《Apsara Uni-manager运营控制台用户指南》中RAM权限策略相关内容。
 
@@ -4626,6 +5057,10 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/createRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -4637,7 +5072,7 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 |---|---|---|---|---|---|
 | description | String | Body | 否 | 测试 | 角色描述信息，选填，长度限制在500以内。 |
 | privileges | Json | Body | 否 | ["PRIGSYSMETERINGREAD", _ _ _ "PRIGSYSBILLINGCLOUDPRODUCTBILLR _ _ _ _ EAD", "PRIGSYSBILLINGORGRSBILLREAD", _ _ _ _ "PRIGSYSBILLINGBILLEXPORT", _ _ _ _ "PRIGSYSBILLINGBILLMODIFY", _ _ _ _ "PRIGSYSORGREAD", _ _ _ "PRIGSYSORGCREATEDELETE", _ _ _ _ "PRIGSYSORGOPERATE", _ _ _ "PRIGSYSROLEREAD", _ _ _ "PRIGSYSROLECREATEDELETE", _ _ _ _ "PRIGSYSROLEOPERATE", _ _ _ "PRIGSYSROLELOCKUNLOCK", _ _ _ _ "PRIGSYSROLESERVICEAUTHORIZE"] _ _ _ _ | 系统权限点集合，此参数非必填并且仅在创建 ASCM自定义角色时生效。 |
-| organizationVisibilit y | String | Body | 否 |  | 共享范围，非必填，缺省值为全局共享。 organizationVisibility.global：全局共享 organizationVisibility.organization：本组织内共享 organizationVisibility.orgAndSubOrgs：下级组织共享 |
+| organizationVisibilit y | String | Body | 否 |   | 共享范围，非必填，缺省值为全局共享。 organizationVisibility.global：全局共享 organizationVisibility.organization：本组织内共享 organizationVisibility.orgAndSubOrgs：下级组织共享 |
 | assumeRolePolicyD ocument | String | Body | 否 | { "Version": "1", "Statement": [{ "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "Service": ["dms.aliyuncs.com"], "RAM": ["acs:ram::137**********972:root"] } } ] } | 授信策略，创建RAM角色授权类型的角色时此参数必填。 |
 | ramPolicyIdList | Json | Body | 否 | [1] | 通过CreateRAMPolicy接口创建RAM策略ID列表，非必填。创建RAM角色授权类型和RAM授权类型的角色时填写此参数。 |
 
@@ -4674,8 +5109,13 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 
 请求示例
 
+```
+POST /ascm/auth/role/createRole HTTP/1.1
+```
+
+`{`
+
 ```json
-{
     "roleRange": "roleRange.allOrganizations",
     "privileges": ["PRIG_SYS_METERING_READ", "PRIG_SYS_BILLING_CLOUDPRODUCTBILL_READ", "PRIG_SYS_BILLING_ORGRSBILL_READ",
 "PRIG_SYS_BILLING_BILL_EXPORT", "PRIG_SYS_BILLING_BILL_MODIFY", "PRIG_SYS_ORG_READ", "PRIG_SYS_ORG_CREATE_DELETE", "PRIG_SYS_ORG_OPERATE", "PRIG_SYS_ROLE_READ", "PRIG_SYS_ROLE_CREATE_DELETE", "PRIG_SYS_ROLE_OPERATE", "PRIG_SYS_ROLE_LOCK_UNLOCK", "PRIG_SYS_ROLE_SERVICE_AUTHORIZE"],
@@ -4686,22 +5126,21 @@ POST /ascm/auth/role/removeRAMPolicyFromRole HTTP/1.1 {"roleId":1004,"ramPolicyI
 
 ```json
     "organizationVisibility": "organizationVisibility.global"
-}
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 51, "data": { "roleRange": "roleRange.allOrganizations", "arId": "ar-102a44ce4dc00a3119ab000m", "rAMRole": false, "code": "ROLE_TESTROLE_e90480", "active": true, "description": "测试数据", "roleType": "ROLETYPE_ASCM", "default": false, "ownerOrganizationId": 1, "enable": true, "roleName": "testrole", "ctime": 1715664997440, "id": 1006, "roleLevel": 2147483647, "cuserId": "admin", "organizationVisibility": "organizationVisibility.global" }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 51, "data": { "roleRange": "roleRange.allOrganizations", "arId": "ar-102a44ce4dc00a3119ab000m", "rAMRole": false, "code": "ROLE_TESTROLE_e90480", "active": true, "description": "测试数据", "roleType": "ROLETYPE_ASCM", "default": false, "ownerOrganizationId": 1, "enable": true, "roleName": "testrole", "ctime": 1715664997440, "id": 1006, "roleLevel": 2147483647, "cuserId": "admin", "organizationVisibility": "organizationVisibility.global" }, "success": true, "message": "success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <successResponse>true</successResponse> <eagleEyeTraceId>0ad40da717150777378645429d0066</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <code>200</code> <cost>13</cost> <data> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-102a21cd6f200ad41430000s</arId> <rAMRole>false</rAMRole> <code>ROLE_TESTROLE_b1dafc</code> <active>true</active> <isActive>true</isActive> <roleType>ROLETYPE_ASCM</roleType> <default>false</default> <isDefault>false</isDefault> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>testrole</roleName> <ctime>1715077737888</ctime> <id>1591</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <dynamicMessages /> <message>success</message> |  |
+| <successResponse>true</successResponse> <eagleEyeTraceId>0ad40da717150777378645429d0066</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <code>200</code> <cost>13</cost> <data> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-102a21cd6f200ad41430000s</arId> <rAMRole>false</rAMRole> <code>ROLE_TESTROLE_b1dafc</code> <active>true</active> <isActive>true</isActive> <roleType>ROLETYPE_ASCM</roleType> <default>false</default> <isDefault>false</isDefault> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>testrole</roleName> <ctime>1715077737888</ctime> <id>1591</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <dynamicMessages /> <message>success</message> |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.3.15. CreateRAMPolicy
+###### 4.1.1.3.15 CreateRAMPolicy
 
 创建RAM权限策略。 权限策略是用语法结构描述的一组权限的集合，可以精确地描述被授权的资源集、操作集以及授权条件。权限策略概念请查看《Apsara Uni-manager运营控制台用户指南》中RAM权限策略相关内容。
 
@@ -4710,6 +5149,10 @@ ascm 2019-05-10
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/createRAMPolicy HTTP/1.1
+```
 
 **请求参数**
 
@@ -4737,8 +5180,6 @@ ascm 2019-05-10
 | policyName | String | test-ram-policy | 权限策略名称。 |
 | region | String | cn-w***********-d01 | 区域。 |
 
-**示例**
-
 请求示例
 
 ```json
@@ -4749,11 +5190,11 @@ ascm 2019-05-10
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 13, "data": { "policyDocument": "{ \"Statement\": [ { \"Action\": \"ecs:RebootInstance\", \"Effect\": \"Allow\", \"Resource\": \"*\ ", \"Condition\": { \"Bool\": { \"acs:MFAPresent\": \"true\" } } } ], \"Version\": \"1\"}", "policyName": "ramtestdata", "ctime": 1715652917774, "id": 2, "region": "cn-w***********-d01" }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 13, "data": { "policyDocument": "{ \"Statement\": [ { \"Action\": \"ecs:RebootInstance\", \"Effect\": \"Allow\", \"Resource\": \"*\ ", \"Condition\": { \"Bool\": { \"acs:MFAPresent\": \"true\" } } } ], \"Version\": \"1\"}", "policyName": "ramtestdata", "ctime": 1715652917774, "id": 2, "region": "cn-w***********-d01" }, "success": true, "message": "success" } |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.3.16. AddRAMPolicyToRole
+###### 4.1.1.3.16 AddRAMPolicyToRole
 
 给RAM授权和RAM角色授权添加权限策略。 给RAM授权和RAM角色授权添加权限策略。权限策略概念请查看《Apsara Uni-manager运营控制台用户指南》中RAM权限策略相关内容。
 
@@ -4762,6 +5203,10 @@ ascm 2019-05-10
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/addRAMPolicyToRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -4784,21 +5229,21 @@ ascm 2019-05-10
 请求示例
 
 ```json
-{"roleId":1588,"ramPolicyId":182}
+POST /ascm/auth/role/addRAMPolicyToRole HTTP/1.1 {"roleId":1588,"ramPolicyId":182}
 ```
 
 正常返回示例 `JSON` 格式
 
 ```json
-{
     "code": "200",
     "cost": 61,
     "success": true,
     "message": "success"
-}
 ```
 
-###### 4.1.1.3.17. ListRolesByUserAndResourceSetId
+`}`
+
+###### 4.1.1.3.17 ListRolesByUserAndResourceSetId
 
 根据当前用户和资源集ID，获取用户拥有此资源集权限的角色列表，包含全局类角色，不支持显示指定user.
 
@@ -4866,10 +5311,9 @@ GET /resourceSets/[resourceSetId]/roles HTTP/1.1
 GET /resourceSets/[resourceSetId]/roles HTTP/1.1 &resourceSetId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "successResponse":"",
  "serverRole":"",
  "errorKey":"",
@@ -4894,21 +5338,26 @@ GET /resourceSets/[resourceSetId]/roles HTTP/1.1 &resourceSetId=
   "locked":"",
   "cuserId":"",
   "organizationVisibility":""
- },
+```
+
+`},`
+
+```json
  "requestId":"",
  "dynamicMessages":"",
  "extraMessage":"",
  "domain":"",
  "action":"",
  "message":""
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <successResponse /> <serverRole /> <errorKey /> <code /> <cost /> <data> <roleRange /> <arId /> <muserId /> <rAMRole /> <code /> <active /> <description /> <roleType /> <default /> <relativeSystem /> <ownerOrganizationId /> <enable /> <roleName /> <id /> <roleLevel /> <locked /> <cuserId /> <organizationVisibility /> </data> <requestId /> <dynamicMessages /> <extraMessage /> <domain /> <action /> <message /> |  |
+| <successResponse /> <serverRole /> <errorKey /> <code /> <cost /> <data> <roleRange /> <arId /> <muserId /> <rAMRole /> <code /> <active /> <description /> <roleType /> <default /> <relativeSystem /> <ownerOrganizationId /> <enable /> <roleName /> <id /> <roleLevel /> <locked /> <cuserId /> <organizationVisibility /> </data> <requestId /> <dynamicMessages /> <extraMessage /> <domain /> <action /> <message /> |   |
 
-###### 4.1.1.3.18. AuthorizeRAMRoleToOrganization
+###### 4.1.1.3.18 AuthorizeRAMRoleToOrganization
 
 将RAM角色授权给组织。 该接口用于将指定的RAM角色授权给某个组织，适用于需要进行权限管理的场景。
 
@@ -4949,20 +5398,20 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1
 请求示例
 
 ```
-POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
+POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| {"code":"200","cost":12,"success":true,"message":"success"} |  |
+| {"code":"200","cost":12,"success":true,"message":"success"} |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>12</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>12</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.3.19. GetRole
+###### 4.1.1.3.19 GetRole
 
 获取角色详细信息。
 
@@ -4971,6 +5420,10 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/getRole HTTP/1.1
+```
 
 **请求参数**
 
@@ -5000,7 +5453,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 | --code | String | PRODUCTADB _ | 权限点所属产品编码。 |
 | --name | String | 云原生数据仓库AnalyticDB MySQL 版3.0 | 权限点所属产品名称。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5029,14 +5482,14 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 请求示例
 
 ```
-{ }
+POST /ascm/auth/role/getRole HTTP/1.1
 ```
 
-正常返回示例
+`{` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "eagleEyeTraceId":"0ad40c441**********7e0024", "errorKey":"ascm.auth.InternalError", "code":"200", "cost":121, "data":{ "roleRange":"roleRange.allOrganizations", "arId":"ar-******000z", "rAMRole":false, "code":"ROLE_GLOBAL_RESOURCE_AUDITOR", "assumeRolePolicyDocument":"{ \"Statement\": [ { \"Action\": \"sts:AssumeRole\", \"Effect\": \"Allow\", \"Principal\": { \"RAM\": [ \"acs:ram::1930274856231860:root\" ], \"Service\": [ \"rds.aliyuncs.com\" ] } } ], \"Version\": \"1\"}", "ownerOrganizationName":"测试组织", "active":true, "description":"测试数据。", "roleType":"ROLETYPE_ASCM", "default":false, "ownerOrganizationId":3, "enable":true, "isLocked":false, "privileges":[ { "code":"PRODUCT_ADB", "name":"云原生数据仓库AnalyticDB MySQL版3.0", "privilegeStructures":[ { "code":"PRIS_PRODUCT_ADB_GENERAL", "privilegeGroups":[ { "code":"PRIG_ACOS_ALERT_READ", "name":"查看", "type":"TYPE_READ" } ], "name":"通用" } ] } ], "roleName":"autotestdcyd0a", "id":1016, "roleLevel":1, "locked":false, "organizationVisibility":"organizationVisibility.global" }, "success":true, "message":"success" } |  |
+| { "eagleEyeTraceId":"0ad40c441**********7e0024", "errorKey":"ascm.auth.InternalError", "code":"200", "cost":121, "data":{ "roleRange":"roleRange.allOrganizations", "arId":"ar-******000z", "rAMRole":false, "code":"ROLE_GLOBAL_RESOURCE_AUDITOR", "assumeRolePolicyDocument":"{ \"Statement\": [ { \"Action\": \"sts:AssumeRole\", \"Effect\": \"Allow\", \"Principal\": { \"RAM\": [ \"acs:ram::1930274856231860:root\" ], \"Service\": [ \"rds.aliyuncs.com\" ] } } ], \"Version\": \"1\"}", "ownerOrganizationName":"测试组织", "active":true, "description":"测试数据。", "roleType":"ROLETYPE_ASCM", "default":false, "ownerOrganizationId":3, "enable":true, "isLocked":false, "privileges":[ { "code":"PRODUCT_ADB", "name":"云原生数据仓库AnalyticDB MySQL版3.0", "privilegeStructures":[ { "code":"PRIS_PRODUCT_ADB_GENERAL", "privilegeGroups":[ { "code":"PRIG_ACOS_ALERT_READ", "name":"查看", "type":"TYPE_READ" } ], "name":"通用" } ] } ], "roleName":"autotestdcyd0a", "id":1016, "roleLevel":1, "locked":false, "organizationVisibility":"organizationVisibility.global" }, "success":true, "message":"success" } |   |
 
 `XML` 格式
 
@@ -5048,7 +5501,11 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
  <code>ROLE_GLOBAL_RESOURCE_AUDITOR</code>
  <assumeRolePolicyDocument>{
     &quot;Statement&quot;: [
-        {
+```
+
+`{`
+
+```
             &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
             &quot;Effect&quot;: &quot;Allow&quot;,
             &quot;Principal&quot;: {
@@ -5063,14 +5520,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
                     &quot;rds.aliyuncs.com&quot;
 ```
 
-]
-
-```
-            }
-        }
-```
-
-`],`
+`]` `}` `}` `],`
 
 ```xml
     &quot;Version&quot;: &quot;1&quot;
@@ -5089,6 +5539,11 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
   <isLocked>false</isLocked>
   <privileges>
    <code>PRODUCT_ADB</code>
+```
+
+`<name>`云原生数据仓库`AnalyticDB MySQL`版`3.0</name>`
+
+```xml
    <privilegeStructures>
     <code>PRIS_PRODUCT_ADB_GENERAL</code>
     <privilegeGroups>
@@ -5109,9 +5564,9 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
  <message>success</message>
 ```
 
-##### 4.1.1.4. 用户管理
+##### 4.1.1.4 用户管理
 
-###### 4.1.1.4.1. UpdateProxyAdmin
+###### 4.1.1.4.1 UpdateProxyAdmin
 
 跨租户代维变更接口。
 
@@ -5128,14 +5583,14 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 | description | String | Body | 否 | 测试数据 | 描述信息。 |
 | proxyTime | Json | Body | 否 | { "endTime": 1770112331114, "startTime": 1770025931114, "type": "TIMERANGE" } _ | 代理生效时间。 startTime为起始时间时间戳；endTime 为截至时间时间戳；type为时间类型，目前仅支持TIME _RANGE。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| -startTime | Long |  | 否 | 1770112331114 | 起始时间时间戳。 |
-| -endTime | Long |  | 否 | 1770025931114 | 截至时间时间戳。 |
-| -type | String |  | 否 | TIMERANGE _ | 时间类型。 枚举值: TIME _RANGE(时间范围) |
+| -startTime | Long |   | 否 | 1770112331114 | 起始时间时间戳。 |
+| -endTime | Long |   | 否 | 1770025931114 | 截至时间时间戳。 |
+| -type | String |   | 否 | TIMERANGE _ | 时间类型。 枚举值: TIME _RANGE(时间范围) |
 
 **返回数据**
 
@@ -5156,7 +5611,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 | -proxyMethod | String | ASSIGN | 代理方式，枚举值为以下类型，业务含义分别为指定和邀请。 ASSIGN INVITE |
 | -proxyStatus | String | AVAILABLE | 代理状态 AVAILABLE 生效中 DISABLED 已禁用 EXPIRED 已失效 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5191,7 +5646,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 | --roleName | String | defaultRole.organizationAdmin.na me | 用户角色名称。 |
 | -proxyOrganization | Struct | {} | 代理的组织信息。 代理实体类型为组织时返回。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
@@ -5224,7 +5679,6 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 `JSON` 格式
 
 ```json
-{
  "errorKey":"ascm.auth.EntityNotExist",
  "eagleEyeTraceId":"0ad40c441762******2308977e0024",
  "code":"200",
@@ -5244,12 +5698,20 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
    "orgId":35,
    "orgAlias":"shuguang",
    "orgUuid":"org-1035b25******abc186f0004"
-  },
+```
+
+`},`
+
+```json
   "proxyTime":{
    "startTime":1770082732740,
    "endTime":1770169132740,
    "type":"TIME_RANGE"
-  },
+```
+
+`},`
+
+```json
   "proxyEntityLevelAlias":" [\"root\", \"jumptestOrg\", \"test\" ]",
   "proxyAdminID":"pa-1036f05******abc186f000l",
 ```
@@ -5271,7 +5733,11 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 
 ```json
    "parentId":1
-  },
+```
+
+`},`
+
+```json
   "proxyMethod":"ASSIGN",
   "ctime":1770084132909,
   "proxyRoleArId":"ar-******9904",
@@ -5286,7 +5752,11 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
    "orgId":35,
    "orgAlias":"jumptestOrg",
    "orgUuid":"org-1035dc4******abc2036000h"
-  },
+```
+
+`},`
+
+```json
   "cuserId":"admin",
   "proxyResourceSet":{
    "organizationId":35,
@@ -5304,14 +5774,16 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 
 ```json
    "rsId":"rs-1036ed1******abc186f000h"
-  }
- },
- "success":true,
- "message":"success"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+ "success":true,
+ "message":"success"
+```
+
+`}` `XML` 格式
 
 ```xml
 <errorKey>ascm.auth.EntityNotExist</errorKey> <eagleEyeTraceId>0ad40c441762******2308977e0024</eagleEyeTraceId> <code>200</code> <cost>121</cost> <data>
@@ -5386,7 +5858,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 </data> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.4.2. UpdateProxyAdminStatus
+###### 4.1.1.4.2 UpdateProxyAdminStatus
 
 启用/禁用代理管理员。
 
@@ -5420,7 +5892,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 | -proxyMethod | String | ASSIGN | 代理方式，枚举值为以下类型，业务含义分别为指定和邀请。 ASSIGN INVITE |
 | -proxyStatus | String | AVAILABLE | 代理状态 AVAILABLE 生效中 DISABLED 已禁用 EXPIRED 已失效 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5485,7 +5957,6 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 `JSON` 格式
 
 ```json
-{
  "errorKey":"ascm.auth.EntityNotExist",
  "eagleEyeTraceId":"0ad40c441762******2308977e0024",
  "code":"200",
@@ -5505,12 +5976,20 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
    "orgId":4,
    "orgAlias":"shuguang",
    "orgUuid":"org-1035b25******abc186f0004"
-  },
+```
+
+`},`
+
+```json
   "proxyTime":{
    "startTime":1770082732740,
    "endTime":1770169132740,
    "type":"TIME_RANGE"
-  },
+```
+
+`},`
+
+```json
   "proxyEntityLevelAlias":"[\"root\", \"shuguang\"]",
   "proxyAdminID":"pa-1036f07******abc186f000h",
   "description":"测试",
@@ -5524,7 +6003,11 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
    "supportRegions":"cn-ece-******188-d01",
    "description":"测试",
    "parentId":1
-  },
+```
+
+`},`
+
+```json
   "proxyMethod":"ASSIGN",
   "ctime":1770084132909,
   "proxyRoleArId":"ar-******9904",
@@ -5539,7 +6022,11 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
    "orgId":35,
    "orgAlias":"jumptestOrg",
    "orgUuid":"org-10366fb******abc2036000d"
-  },
+```
+
+`},`
+
+```json
   "cuserId":"admin",
   "proxyResourceSet":{
    "organizationId":35,
@@ -5553,14 +6040,16 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
    "resourceGroupType":0,
    "description":"测试",
    "rsId":"rs-1036ed1******abc186f000h"
-  }
- },
- "success":true,
- "message":"success"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+ "success":true,
+ "message":"success"
+```
+
+`}` `XML` 格式
 
 ```xml
 <errorKey>ascm.auth.EntityNotExist</errorKey> <eagleEyeTraceId>0ad40c4417628307082308977e0024</eagleEyeTraceId> <code>200</code> <cost>121</cost> <data>
@@ -5630,7 +6119,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1 { }
 </data> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.4.3. ListProxyAdmins
+###### 4.1.1.4.3 ListProxyAdmins
 
 查看代理管理员列表。
 
@@ -5679,7 +6168,7 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1
 | --defaultRoleId | Integer | 4 | 代理用户默认角色ID。 |
 | --orgId | Integer | 3 | 代理用户所属组织ID。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5713,7 +6202,7 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1
 | --resourceGroupName | String | test | 资源集合名称。 |
 | --resourceGroupType | Integer | 0 | 资源集合类型，0是普通资源集合，1是组织默认资源集合。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5740,7 +6229,7 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1
 | -pageSize | Integer | 10 | 分页查询时，每页数据显示的最大条数。 |
 | -total | Integer | 10 | 数据总条数。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5752,14 +6241,14 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1
 请求示例
 
 ```
-POST /ascm/auth/proxyAdmin/list HTTP/1.1 { }
+POST /ascm/auth/proxyAdmin/list HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"ascm.auth.EntityNotExist", "eagleEyeTraceId":"0ad40c441762******2308977e0024", "code":"200", "cost":121, "data":[ { "proxyEntityID":"org-1035b25******abc186f0004", "proxyStatus":"AVAILABLE", "muserId":"admin", "proxyUser":[ { "arId":"ar-******9904", "displayName":"ProxyUser-jumporgmanager-mam9", "roleId":4, "loginName":"ProxyUser-jumporgmanager-mam9", "roleName":"defaultRole.organizationAdmin.name", "userId":5190, "defaultRoleId":4, "orgId":3, "orgAlias":"shuguang", "orgUuid":"org-1035b25******abc186f0004" } ], "proxyTime":[ { "startTime":1770082732740, "endTime":1770169132740, "type":"TIME_RANGE" } ], "proxyEntityLevelAlias":"[ \"root\", \"shuguang\" ]", "proxyAdminID":"pa-1036f07******abc186f000h", "description":"测试数据。", "mtime":1770084132909, "proxyEntityType":"ORGANIZATION", "enable":true, "proxyOrganization":[ { "supportRegionList":" [\"cn-ece-******188-d01\"]", "level":"0.1", "alias":"shuguang", "supportRegions":"cn-ece-******188-d01", "description":"测试", "parentId":1 } ], "proxyMethod":"ASSIGN", "ctime":1770084132909, "proxyRoleArId":"ar-******9904", "originUser":[ { "arId":"ar-******9904", "displayName":"ProxyUser-jumporgmanager-mam9", "roleId":4, "loginName":"ProxyUser-jumporgmanager-mam9", "roleName":"defaultRole.organizationAdmin.name", "userId":5190, "defaultRoleId":4, "orgId":3, "orgAlias":"shuguang", "orgUuid":"org-1035b25******abc186f0004" } ], "cuserId":"admin", "proxyResourceSet":[ { "organizationId":35, "isUserDefaultResourceSet":false, |  |
+| { "errorKey":"ascm.auth.EntityNotExist", "eagleEyeTraceId":"0ad40c441762******2308977e0024", "code":"200", "cost":121, "data":[ { "proxyEntityID":"org-1035b25******abc186f0004", "proxyStatus":"AVAILABLE", "muserId":"admin", "proxyUser":[ { "arId":"ar-******9904", "displayName":"ProxyUser-jumporgmanager-mam9", "roleId":4, "loginName":"ProxyUser-jumporgmanager-mam9", "roleName":"defaultRole.organizationAdmin.name", "userId":5190, "defaultRoleId":4, "orgId":3, "orgAlias":"shuguang", "orgUuid":"org-1035b25******abc186f0004" } ], "proxyTime":[ { "startTime":1770082732740, "endTime":1770169132740, "type":"TIME_RANGE" } ], "proxyEntityLevelAlias":"[ \"root\", \"shuguang\" ]", "proxyAdminID":"pa-1036f07******abc186f000h", "description":"测试数据。", "mtime":1770084132909, "proxyEntityType":"ORGANIZATION", "enable":true, "proxyOrganization":[ { "supportRegionList":" [\"cn-ece-******188-d01\"]", "level":"0.1", "alias":"shuguang", "supportRegions":"cn-ece-******188-d01", "description":"测试", "parentId":1 } ], "proxyMethod":"ASSIGN", "ctime":1770084132909, "proxyRoleArId":"ar-******9904", "originUser":[ { "arId":"ar-******9904", "displayName":"ProxyUser-jumporgmanager-mam9", "roleId":4, "loginName":"ProxyUser-jumporgmanager-mam9", "roleName":"defaultRole.organizationAdmin.name", "userId":5190, "defaultRoleId":4, "orgId":3, "orgAlias":"shuguang", "orgUuid":"org-1035b25******abc186f0004" } ], "cuserId":"admin", "proxyResourceSet":[ { "organizationId":35, "isUserDefaultResourceSet":false, |   |
 
 ```json
      "gmtModified":1770028091941,
@@ -5775,16 +6264,9 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1 { }
 
 ```json
      "rsId":"rs-1036ed1******abc186f000h"
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
  "success":true,
@@ -5793,12 +6275,15 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1 { }
   "totalPage":1,
   "pageSize":10,
   "currentPage":1
- },
- "message":"success"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "message":"success"
+```
+
+`}` `XML` 格式
 
 ```xml
 <errorKey>ascm.auth.EntityNotExist</errorKey> <eagleEyeTraceId>0ad40c441762******2308977e0024</eagleEyeTraceId> <code>200</code> <cost>121</cost> <data>
@@ -5883,7 +6368,7 @@ POST /ascm/auth/proxyAdmin/list HTTP/1.1 { }
  <message>success</message>
 ```
 
-###### 4.1.1.4.4. DeleteProxyAdmin
+###### 4.1.1.4.4 DeleteProxyAdmin
 
 删除代理管理员。
 
@@ -5919,14 +6404,14 @@ POST /ascm/auth/proxyAdmin/delete HTTP/1.1
 请求示例
 
 ```
-POST /ascm/auth/proxyAdmin/delete HTTP/1.1 { }
+POST /ascm/auth/proxyAdmin/delete HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"ascm.auth.EntityNotExist", "eagleEyeTraceId":"0ad40c441762******2308977e0024", "code":"200", "cost":150, "success":true, "message":"success" } |  |
+| { "errorKey":"ascm.auth.EntityNotExist", "eagleEyeTraceId":"0ad40c441762******2308977e0024", "code":"200", "cost":150, "success":true, "message":"success" } |   |
 
 `XML` 格式
 
@@ -5934,7 +6419,7 @@ POST /ascm/auth/proxyAdmin/delete HTTP/1.1 { }
 <errorKey>ascm.auth.EntityNotExist</errorKey> <eagleEyeTraceId>0ad40c441762******2308977e0024</eagleEyeTraceId> <code>200</code> <cost>150</cost> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.4.5. AssignProxyAdmin
+###### 4.1.1.4.5 AssignProxyAdmin
 
 运营管理员等全局管理员指派用户为代理管理员。 接口说明
 
@@ -5991,7 +6476,7 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 | --muserId | String | admin | 修改者的用户名称。 |
 | --ctime | Long | 1769750315780 | 创建时间的时间戳。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6025,7 +6510,7 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 | ---level | String | 0.1 | 组织等级。 说明 root组织（根组织）的level=0，其他所有一级组织的 level=0.1。其中0.1中的1表示本组织的父组织（root组织）的ID为1。以此类推，例如：某ID为3的一级组织的直接下级组织level=0.1.3。 |
 | ---parentId | Integer | 1 | 父组织ID。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -6060,7 +6545,6 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 正常返回示例 `JSON` 格式
 
 ```json
-{
  "errorKey":"ascm.auth.EntityNotExist",
  "eagleEyeTraceId":"0ad40c441762******2308977e0024",
  "code":"200",
@@ -6081,12 +6565,20 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
     "orgId":356,
     "orgAlias":"test",
     "orgUuid":"org-1036052******adf04a5000i"
-   },
+```
+
+`},`
+
+```json
    "proxyTime":{
     "startTime":1769750313647,
     "endTime":1769836713647,
     "type":"TIME_RANGE"
-   },
+```
+
+`},`
+
+```json
    "proxyEntityLevelAlias":"[ \"root\",\"test\"]",
    "proxyAdminID":"pa-1036dc8******adf0874000b",
    "description":"测试",
@@ -6102,7 +6594,11 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
     "orgId":356,
     "orgAlias":"test",
     "orgUuid":"org-1036052******adf04a5000i"
-   },
+```
+
+`},`
+
+```json
    "proxyOrganization":{
     "supportRegionList":"[\"cn-wul******223-d01\" ]",
     "level":"0.1",
@@ -6114,7 +6610,11 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 
 ```json
     "parentId":1
-   },
+```
+
+`},`
+
+```json
    "proxyResourceSet":{
     "organizationId":35,
     "isUserDefaultResourceSet":false,
@@ -6131,21 +6631,27 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 
 ```json
     "rsId":"rs-1036ed1******abc186f000h"
-   },
+```
+
+`},`
+
+```json
    "proxyEntityType":"ORGANIZATION",
    "enable":true,
    "proxyMethod":"ASSIGN",
    "ctime":1769750315780,
    "proxyRoleArId":"ar-******9904",
    "cuserId":"admin"
-  }
- },
- "success":true,
- "message":"success"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+ "success":true,
+ "message":"success"
+```
+
+`}` `XML` 格式
 
 ```xml
 <errorKey>ascm.auth.EntityNotExist</errorKey> <eagleEyeTraceId>0ad40c441762******2308977e0024</eagleEyeTraceId> <code>200</code> <cost>121</cost> <data>
@@ -6221,7 +6727,9 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 </data> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.4.6. GetUserInfo
+###### 4.1.1.4.6 GetUserInfo
+
+调用GetUserInfo获取用户详情。
 
 **请求头**
 
@@ -6236,9 +6744,7 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 | pk | String | Body | 否 | 259258662544****** | 用户账号的主键。 |
 | ascmUserId | Integer | Body | 否 | 123 | 用户的ID。 |
 
-**说明**
-
-入参支持填写loginName、userAccessKeyId、pk和ascmUserId参数。如果所有参数都不填写，则查询调用者自身信息，如果传入多个参数，则按照 loginName/userAccessKeyId/pk/ascmUserId顺序取一个作为实际查询参数。
+> **说明：** 入参支持填写loginName、userAccessKeyId、pk和ascmUserId参数。如果所有参数都不填写，则查询调用者自身信息，如果传入多个参数，则按照 loginName/userAccessKeyId/pk/ascmUserId顺序取一个作为实际查询参数。
 
 **返回数据**
 
@@ -6451,19 +6957,17 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
 | --supportRegions | String | cn-qingdao-****-d01 | 可用区列表。 |
 | --uuid | String | 1231 | 组织UUID。 |
 
-**示例**
-
 请求示例
 
 ```
-{ }
+POST /ascm/auth/user/getUserInfo HTTP/1.1
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "redirect":"", "code":"200", "cost":121, "data":{ "cellphoneNum":"188****8888", "displayName":"testuser20220906****", "enableDingTalk":false, "defaultRole":{ "roleRange":"roleRange.resourceSet", "arId":"ar-9999999902", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":1123, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" }, "userRoles":[ { "roleRange":"roleRange.resourceSet", "arId":"ar-9999999902", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":1123, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" } ], "userGroups":[ { "roles":[ { "roleRange":"roleRange.resourceSet", "arId":"ar-9999999902", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":1123, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" } ], "organizationId":1, "users":[ { "cellphoneNum":"188****8888", "muserId":"admin", "aliyunUser":false, "backendAccountType":"RamUser" |  |
+| { "redirect":"", "code":"200", "cost":121, "data":{ "cellphoneNum":"188****8888", "displayName":"testuser20220906****", "enableDingTalk":false, "defaultRole":{ "roleRange":"roleRange.resourceSet", "arId":"ar-9999999902", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":1123, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" }, "userRoles":[ { "roleRange":"roleRange.resourceSet", "arId":"ar-9999999902", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":1123, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" } ], "userGroups":[ { "roles":[ { "roleRange":"roleRange.resourceSet", "arId":"ar-9999999902", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":1123, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" } ], "organizationId":1, "users":[ { "cellphoneNum":"188****8888", "muserId":"admin", "aliyunUser":false, "backendAccountType":"RamUser" |   |
 
 ```json
       backendAccountType:RamUser,
@@ -6486,31 +6990,37 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
       "email":"te**@163.com",
       "enableShortMessage":false,
       "username":"test"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "groupName":"testUserGroup01",
     "augId":"aug-101de696afc90a420d******",
     "resourceSets":[
-     {
+```
+
+`{`
+
+```json
       "organizationID":1,
       "creator":"admin",
       "resourceGroupName":"res_test",
       "gmtCreated":1606791494471,
       "rsId":"123121a",
       "id":2
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "createTimeStamp":1606791494471,
     "organization":[
-     {
+```
+
+`{`
+
+```json
       "muserId":"admin",
       "internal":false,
       "level":"0.1",
@@ -6525,17 +7035,15 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
       "ctime":1606791494471,
       "id":2,
       "cuserId":"admin"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "id":2
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "organization":{
@@ -6553,13 +7061,21 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
    "ctime":1606791494471,
    "id":2,
    "cuserId":"admin"
-  },
+```
+
+`},`
+
+```json
   "parentPk":"112715760893****",
   "lastLoginTime":1730960807168,
   "default":true,
   "deleted":false,
   "roles":[
-   {
+```
+
+`{`
+
+```json
     "roleRange":"roleRange.resourceSet",
     "arId":"ar-9999999902",
     "muserId":"admin",
@@ -6578,14 +7094,17 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
     "id":2,
     "roleLevel":1123,
     "organizationVisibility":"defaultRole.resourceUser.description"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "userGroupRoles":[
-   {
+```
+
+`{`
+
+```json
     "roleRange":"roleRange.resourceSet",
     "arId":"ar-9999999902",
     "muserId":"admin",
@@ -6602,10 +7121,9 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
     "roleLevel":1123,
     "cuserId":"admin",
     "organizationVisibility":"defaultRole.resourceUser.description"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "loginName":"test",
@@ -6618,25 +7136,31 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
   "status":"ACTIVE",
   "loginPolicy":{
    "ipRanges":[
-    {
+```
+
+`{`
+
+```json
      "protocol":"IPV4",
      "ipRange":"0.0.0.0/0",
      "loginPolicyId":1
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "timeRanges":[
-    {
+```
+
+`{`
+
+```json
      "loginPolicyId":1,
      "startTime":"00:00",
      "endTime":"24:00"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "muserId":"admin",
@@ -6649,17 +7173,21 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
    "cuserId":"admin",
    "lpId":"lp-9999999999",
    "organizationVisibility":"defaultRole.resourceUser.description"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "pureListData":"",
  "message":"success"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <redirect /> <code>200</code> <cost>121</cost> <data> <cellphoneNum>188****8888</cellphoneNum> <displayName>testuser20220906****</displayName> <enableDingTalk>false</enableDingTalk> <defaultRole> <roleRange>roleRange.resourceSet</roleRange> <arId>ar-9999999902</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>defaultRole.resourceUser.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> |  |
+| <redirect /> <code>200</code> <cost>121</cost> <data> <cellphoneNum>188****8888</cellphoneNum> <displayName>testuser20220906****</displayName> <enableDingTalk>false</enableDingTalk> <defaultRole> <roleRange>roleRange.resourceSet</roleRange> <arId>ar-9999999902</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>defaultRole.resourceUser.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> |   |
 
 ```xml
   <default>true</default>
@@ -6751,13 +7279,13 @@ POST /ascm/auth/proxyAdmin/assign HTTP/1.1
    <level>0.1</level>
 ```
 
-i i d
+`i` `i` `d`
 
 ```
 ****d01/
 ```
 
-i
+`i`
 
 ```xml
    <supportRegions>cn-qingdao-****-d01</supportRegions>
@@ -6867,15 +7395,19 @@ i
 
 ascm 2019-05-10
 
-###### 4.1.1.4.7. ActivateUser
+###### 4.1.1.4.7 ActivateUser
 
-激活用户时，系统将自动激活用户所有的AccessKey。企业版v3.12.0版本自SP016后开始支持此接口。企业版v3.14.0版本自SP013后开始支持此接口。
+调用ActivateUser激活指定用户。 激活用户时，系统将自动激活用户所有的AccessKey。企业版v3.12.0版本自SP016后开始支持此接口。企业版v3.14.0版本自SP013后开始支持此接口。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/activateUser HTTP/1.1
+```
 
 **请求参数**
 
@@ -6889,11 +7421,11 @@ ascm 2019-05-10
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Integer | 114 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 用户信息。 |
+| data | Struct |   | 用户信息。 |
 
-| accessKeys | Array of accessKey |  | Accesskey列表。 |
+| accessKeys | Array of accessKey |   | Accesskey列表。 |
 |---|---|---|---|
-| accessKey |  |  |  |
+| accessKey |   |   |   |
 | accesskeyId | String | tCr5mJhpjo****** | AccesskeyID。 |
 | ctime | Long | 1606675230000 | Accesskey的创建时间。 |
 | cuserId | String | admin | Accesskey创建者的用户名。 |
@@ -6902,7 +7434,7 @@ ascm 2019-05-10
 | status | String | ACTIVE | AccessKey是否启用。 ACTIVE：启用。 INACTIVE：禁用。 |
 | cellphoneNum | String | 188****8888 | 用户手机号码。 |
 | default | Boolean | false | 是否为预置用户。 说明初始化自动创建的用户是预置用户，创建场景下此字段默认为false。 |
-| defaultRole | Struct |  | 默认角色。 说明用户登录后的当前角色。 |
+| defaultRole | Struct |   | 默认角色。 说明用户登录后的当前角色。 |
 | active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色状态以enable参数为准。 |
 | arId | String | ar-999999*** | 角色唯一编码。 |
 | code | String | ROLEORGANIZATIONADMIN _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明 -内置角色code是固定的。 -自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |
@@ -6912,7 +7444,7 @@ ascm 2019-05-10
 | id | Integer | 4 | 角色ID。 |
 | muserId | String | 3 | 角色最近一次修改的修改者ID。 |
 
-|  | 串 |
+|   | 串 |
 |---|---|
 
 | organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
@@ -6932,15 +7464,15 @@ ascm 2019-05-10
 | id | Integer | 5817 | 用户ID。 |
 | lastLoginTime | Long | 1657608949009 | 用户最近一次登录的时间。 说明此参数已经废弃。 |
 | loginName | String | testuser202209071758 | 用户登录名。 |
-| loginPolicy | Struct |  | 用户绑定的登录策略。 |
+| loginPolicy | Struct |   | 用户绑定的登录策略。 |
 | cuserId | String | test | 创建登录策略的用户名称说明此参数已经废弃。 |
 | default | Boolean | false | 是否为默认登录策略。 |
 | enable | Boolean | true | 登录策略是否有效。 |
 
 | id | Integer | 1084 | 登录策略ID。 |
 |---|---|---|---|
-| ipRanges | Array of ipRange |  | 登录策略IP段。 |
-| ipRange |  |  |  |
+| ipRanges | Array of ipRange |   | 登录策略IP段。 |
+| ipRange |   |   |   |
 | ipRange | String | 10.48.16.1/24 | 登录策略的IP范围。 |
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | protocol | String | IPV4 | 登录策略使用的协议，仅支持IPv4。 |
@@ -6950,13 +7482,13 @@ ascm 2019-05-10
 | organizationVisibility | String | organizationVisibility.global | 登录策略共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 登录策略所属组织ID。 |
 | rule | String | DENY | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRange |  | 登录策略的时间段。 |
-| timeRange |  |  |  |
+| timeRanges | Array of timeRange |   | 登录策略的时间段。 |
+| timeRange |   |   |   |
 | endTime | String | 18:00 | 结束时间。 |
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | startTime | String | 08:00 | 开始时间。 |
 | mobileNationCode | String | 86 | 国际区号。 |
-| organization | Struct |  | 用户所属的组织。 |
+| organization | Struct |   | 用户所属的组织。 |
 | alias | String | sub-org-1 | 组织别名。 |
 | ctime | Long | 1657608949009 | 组织的创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 |
@@ -6975,8 +7507,8 @@ ascm 2019-05-10
 | uuid | String | org- 101cc0654e910a420927000w | 组织UUID。 |
 | parentPk | String | 1127157608****** | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |
 | primaryKey | String | 259258662544****** | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |
-| roles | Array of role |  | 用户拥有的角色列表。 |
-| role |  |  |  |
+| roles | Array of role |   | 用户拥有的角色列表。 |
+| role |   |   |   |
 | active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |
 | arId | String | ar-9999****** | 角色唯一编码。 |
 | code | String | ROLEORGANIZATIONADMIN _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明 -内置角色code是固定的。 -自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |
@@ -6984,7 +7516,7 @@ ascm 2019-05-10
 | default | Boolean | false | 角色创建者的用户名。 |
 | description | String | defaultRole.organizationAdmin.de scription | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |
 
-|  | 串 |
+|   | 串 |
 |---|---|
 
 | enable | Boolean | false | 角色是否有效。 |
@@ -6999,13 +7531,13 @@ ascm 2019-05-10
 | roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 | status | String | ACTIVE | 用户状态。 active:激活。 inactive:禁用。 说明用户创建后状态默认为active。 |
-| userGroupRoles | Array of userGroupRole |  | 用户所属用户组所拥有的角色列表。 说明可通过调用AddUsersToUserGroup接口将用户添加到用户组。 |
-| userGroupRole |  |  |  |
+| userGroupRoles | Array of userGroupRole |   | 用户所属用户组所拥有的角色列表。 说明可通过调用AddUsersToUserGroup接口将用户添加到用户组。 |
+| userGroupRole |   |   |   |
 | active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |
 | arId | String | ar-9999****** | 角色唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明 -内置角色code是固定的。 -自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |
 
-|  | 串 |
+|   | 串 |
 |---|---|
 
 | cuserId | String | admin | 角色创建者的用户名。 |
@@ -7022,14 +7554,14 @@ ascm 2019-05-10
 | roleName | String | defaultRole.resourceUser.name | 角色名称。 |
 | roleRange | String | roleRange.resourceSet | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 是否为多云同步组织。 master：主云。 slave：从云。 说明该参数仅在多云场景下返回。 |
-| userGroups | Array of userGroup |  | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
-| userGroup |  |  |  |
+| userGroups | Array of userGroup |   | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
+| userGroup |   |   |   |
 | augId | String | aug-101de696afc90a420d****** | 用户组唯一编码。 |
 | createTimeStamp | Long | 1657608949009 | 用户组创建时间。 说明此参数已经废弃。 |
 | groupName | String | testUserGroup01 | 用户组名称。 |
 | id | Integer | 145 | 用户组ID。 |
 
-| organization | Struct |  | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，可通过调用 GetOrganization接口查询。 |
+| organization | Struct |   | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，可通过调用 GetOrganization接口查询。 |
 |---|---|---|---|
 | alias | String | sub-org-1 | 组织别名。 |
 | ctime | Long | 1657608949009 | 创建时间。 |
@@ -7046,8 +7578,8 @@ ascm 2019-05-10
 | supportRegions | String | cn-***-d01 | 可用区列表。 说明此参数已经废弃。 |
 | uuid | String | org- 101cc0654e910a420927000w | 组织UUID。 |
 | organizationId | Integer | 24 | 用户组所属组织的ID。 |
-| resourceSets | Array of resourceSet |  | 资源集列表。 说明此参数已经废弃。 |
-| resourceSet |  |  |  |
+| resourceSets | Array of resourceSet |   | 资源集列表。 说明此参数已经废弃。 |
+| resourceSet |   |   |   |
 | creator | String | admin | 资源集创建者的用户名。 |
 | gmtCreated | Long | 1606791494471 | 资源集创建时间。 |
 | id | Integer | 2 | 资源集ID。 |
@@ -7056,8 +7588,8 @@ ascm 2019-05-10
 |---|---|---|---|
 | resourceGroupName | String | resourcetest _ | 资源集名称。 |
 | rsId | String | 123456 | 资源集唯一编码。 |
-| roles | Array of role |  | 用户组角色列表。 说明此参数已经废弃。 |
-| role |  |  |  |
+| roles | Array of role |   | 用户组角色列表。 说明此参数已经废弃。 |
+| role |   |   |   |
 | active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色状态以enable字段为准。 |
 | arId | String | ar-9999****** | 角色唯一编码。 |
 | code | String | ROLERESOURCESETADMIN _ _ _ | 角色Code。 |
@@ -7076,8 +7608,8 @@ ascm 2019-05-10
 
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 |---|---|---|---|
-| users | Array of user |  | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表。 |
-| user |  |  |  |
+| users | Array of user |   | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表。 |
+| user |   |   |   |
 | accountType | Integer | 1 | 账号类型。 说明该参数已废弃。 |
 | active | Boolean | true | 用户是否有效。 |
 | aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |
@@ -7104,8 +7636,8 @@ ascm 2019-05-10
 |---|---|---|---|
 | userLoginCtrlId | Integer | 1 | 登录策略ID。 |
 | username | String | testuser202209071758 | 用户显示名。 |
-| userRoles | Array of userRole |  | 用户角色列表，用户关联的角色列表。 |
-| userRole |  |  |  |
+| userRoles | Array of userRole |   | 用户角色列表，用户关联的角色列表。 |
+| userRole |   |   |   |
 | active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |
 | arId | String | ar-9999999902 | 角色唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明 -内置角色code是固定的。 -自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |
@@ -7122,7 +7654,7 @@ ascm 2019-05-10
 | roleName | String | defaultRole.resourceUser.name | 角色名称。 |
 | roleRange | String | roleRange.resourceSet | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 
-|  | 串 |
+|   | 串 |
 |---|---|
 
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
@@ -7134,19 +7666,23 @@ ascm 2019-05-10
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
-```json
-{
-    "loginName":"testuser"
-}
+```
+POST /ascm/auth/user/activateUser HTTP/1.1
 ```
 
-正常返回示例
+公共请求头 `{`
+
+```json
+    "loginName":"testuser"
+```
+
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>114</cost> <code>200</code> <data> <cellphoneNum>188****8888</cellphoneNum> <enableDingTalk>true</enableDingTalk> <displayName>testuser202209071758</displayName> <parentPk>1127157608******</parentPk> <lastLoginTime>1657608949009</lastLoginTime> <default>false</default> <deleted>false</deleted> <loginName>testuser202209071758</loginName> <mobileNationCode>86</mobileNationCode> <id>5817</id> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>t***@test.com</email> <status>ACTIVE</status> <primaryKey>259258662544******</primaryKey> <userGroupRoles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_USER</code> <description>defaultRole.resourceUser.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <roleLevel>2147483647</roleLevel> <id>2</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> |  |
+| <redirect>true</redirect> <cost>114</cost> <code>200</code> <data> <cellphoneNum>188****8888</cellphoneNum> <enableDingTalk>true</enableDingTalk> <displayName>testuser202209071758</displayName> <parentPk>1127157608******</parentPk> <lastLoginTime>1657608949009</lastLoginTime> <default>false</default> <deleted>false</deleted> <loginName>testuser202209071758</loginName> <mobileNationCode>86</mobileNationCode> <id>5817</id> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>t***@test.com</email> <status>ACTIVE</status> <primaryKey>259258662544******</primaryKey> <userGroupRoles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_USER</code> <description>defaultRole.resourceUser.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <roleLevel>2147483647</roleLevel> <id>2</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> |   |
 
 ```xml
         <cuserId>admin</cuserId>
@@ -7238,7 +7774,7 @@ ascm 2019-05-10
         <default>true</default>
 ```
 
-/
+`/`
 
 ```xml
         <ownerOrganizationId>1</ownerOrganizationId>
@@ -7339,9 +7875,9 @@ ascm 2019-05-10
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": true, "cost": 114, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser202209071758", "parentPk": "1127157608******", "lastLoginTime": 1657608949009, "default": false, "deleted": false, "loginName": "testuser202209071758", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "t***@test.com", "status": "ACTIVE", "primaryKey": "259258662544******", "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 2, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101de696afc90a420d******", "createTimeStamp": 1657608949009, "id": 145, "resourceSets": { "organizationID": 1, "creator": "admin", "resourceGroupName": "resource_test", "gmtCreated": 1606791494471, "rsId": 123456, "id": 2 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1657608949009, "organizationId": 25, "password": "1A*******zZ", "default": false, "loginTime": 1657608949009, "deleted": false, "userLoginCtrlId": 1, "loginName": "testuser202209071758", "ctime": 1606791494471, "mobileNationCode": 86, "id": 5817, "ramUser": false, "enableEmail": true, "enableShortMessage": true, "email": "t***@test.com", "defaultRoleId": 2, "username": "testuser202209071758" }, |  |
+| { "redirect": true, "cost": 114, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser202209071758", "parentPk": "1127157608******", "lastLoginTime": 1657608949009, "default": false, "deleted": false, "loginName": "testuser202209071758", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "t***@test.com", "status": "ACTIVE", "primaryKey": "259258662544******", "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 2, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101de696afc90a420d******", "createTimeStamp": 1657608949009, "id": 145, "resourceSets": { "organizationID": 1, "creator": "admin", "resourceGroupName": "resource_test", "gmtCreated": 1606791494471, "rsId": 123456, "id": 2 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1657608949009, "organizationId": 25, "password": "1A*******zZ", "default": false, "loginTime": 1657608949009, "deleted": false, "userLoginCtrlId": 1, "loginName": "testuser202209071758", "ctime": 1606791494471, "mobileNationCode": 86, "id": 5817, "ramUser": false, "enableEmail": true, "enableShortMessage": true, "email": "t***@test.com", "defaultRoleId": 2, "username": "testuser202209071758" }, |   |
 
-,
+`,`
 
 ```json
             "roles": {
@@ -7361,7 +7897,11 @@ ascm 2019-05-10
                 "id": 5,
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            },
+```
+
+`},`
+
+```json
             "organization": {
                 "muserId": "admin",
                 "internal": false,
@@ -7377,8 +7917,11 @@ ascm 2019-05-10
                 "cuserId": "admin",
                 "parentId": 24,
                 "supportRegionList": "[\"cn-***-d01\"]"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "userRoles": {
             "roleRange": "roleRange.resourceSet",
             "rAMRole": false,
@@ -7396,7 +7939,11 @@ ascm 2019-05-10
             "id": 2,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "accessKeys": {
             "ctime": 1606675230000,
             "id": 1,
@@ -7404,7 +7951,11 @@ ascm 2019-05-10
             "cuserId": "admin",
             "status": "ACTIVE",
             "accesskeyId": "tCr5mJhpjo******"
-        },
+```
+
+`},`
+
+```json
         "roles": {
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
@@ -7422,7 +7973,11 @@ ascm 2019-05-10
             "id": 4,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "defaultRole": {
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
@@ -7443,7 +7998,11 @@ ascm 2019-05-10
             "roleLevel": 2147483647,
             "id": 4,
             "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "loginPolicy": {
             "muserId": "admin",
             "default": false,
@@ -7459,13 +8018,20 @@ ascm 2019-05-10
                 "protocol": "IPV4",
                 "ipRange": "10.48.16.1/24",
                 "loginPolicyId": 1084
-            },
+```
+
+`},`
+
+```json
             "timeRanges": {
                 "startTime": "08:00",
                 "loginPolicyId": 1084,
                 "endTime": "18:00"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "organization": {
             "muserId": "admin",
             "internal": false,
@@ -7481,14 +8047,20 @@ ascm 2019-05-10
             "cuserId": "admin",
             "parentId": 24,
             "supportRegionList": "[\"cn-***-d01\"]"
-        }
-    },
-    "success": true,
-    "message": "success"
-}
 ```
 
-###### 4.1.1.4.8. AddUser
+`}` `},`
+
+```json
+    "success": true,
+    "message": "success"
+```
+
+`}`
+
+###### 4.1.1.4.8 AddUser
+
+调用AddUser接口创建用户。
 
 **请求头**
 
@@ -7504,7 +8076,7 @@ ascm 2019-05-10
 | passwordResetReq uired | Boolean | Body | 否 | true | 用户在下次登录时是否必须重置密码，默认 true。必须传入password字段，才会使用此配置。 |
 | roleIdList | RepeatList | Body | 否 | [2,4] | 角色ID列表。可通过调用ListActiveRoles接口获取，如果创建用户时不指定角色，则用户角色默认为资源使用人。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -7538,7 +8110,7 @@ ascm 2019-05-10
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败。 |
 | data | Struct | - | 用户信息。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7567,58 +8139,58 @@ ascm 2019-05-10
 | --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |
 | --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |  |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |   |
 |---|---|---|---|---|
-| 参数名称 | 类型 | 示例 | 说明 |  |
-| -userGroupRoles | Array | - | 用户所属用户组所拥有的角色列表。 |  |
-| --active | Boolean | true | 角色是否有效。此参数已经废弃，角色禁用状态以enable字段为准。 |  |
-| --arId | String | ar-9999****** | 角色唯一编码。 |  |
-| --code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。内置角色code是固定的。 自定义角色的code由系统生成。格式为：ROLE _英文大写的角色名称_随机串。 |  |
-| --cuserId | String | admin | 角色创建者。此参数已经废弃。 |  |
-| --default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |
-| --description | String | roletest _ | 角色描述。 |  |
-| --enable | Boolean | true | 角色是否有效。 |  |
-| --id | Integer | 2 | 角色ID。 |  |
-| --muserId | String | admin | 角色最近一次修改的修改者用户名。此参数已经废弃。 |  |
-| --organizationVisibility | String | defaultRole.resourceUser.descript ion | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |
-| --ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |  |
-| --rAMRole | Boolean | false | 是否为RAM角色。 |  |
-| --roleLevel | Integer | 2147483647 | 角色等级。该字段无实际作用。 |  |
-| --roleName | String | defaultRole.resourceUser.name | 角色名称。 |  |
-| --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |  |
-| --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |
-| -userGroups | Array | - | 用户所属用户组列表。可通过调用AddUsersToUserGroup接口将用户添加到用户组。 |  |
-| --resourceSets | Array | - | 资源集列表。此参数已经废弃。 |  |
-| ---creator | String | admin | 资源集创建者的用户名。 |  |
-| ---gmtCreated | Long | 1606791494471 | 资源集创建时间。 |  |
-| ---id | Integer | 2 | 角色ID。 |  |
-| ---organizationID | Integer | 1 | 资源集所属组织的ID。 |  |
-| ---resourceGroupName | String | restest _ | 资源集名称。 |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |
+| -userGroupRoles | Array | - | 用户所属用户组所拥有的角色列表。 |   |
+| --active | Boolean | true | 角色是否有效。此参数已经废弃，角色禁用状态以enable字段为准。 |   |
+| --arId | String | ar-9999****** | 角色唯一编码。 |   |
+| --code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。内置角色code是固定的。 自定义角色的code由系统生成。格式为：ROLE _英文大写的角色名称_随机串。 |   |
+| --cuserId | String | admin | 角色创建者。此参数已经废弃。 |   |
+| --default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |
+| --description | String | roletest _ | 角色描述。 |   |
+| --enable | Boolean | true | 角色是否有效。 |   |
+| --id | Integer | 2 | 角色ID。 |   |
+| --muserId | String | admin | 角色最近一次修改的修改者用户名。此参数已经废弃。 |   |
+| --organizationVisibility | String | defaultRole.resourceUser.descript ion | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |
+| --ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |   |
+| --rAMRole | Boolean | false | 是否为RAM角色。 |   |
+| --roleLevel | Integer | 2147483647 | 角色等级。该字段无实际作用。 |   |
+| --roleName | String | defaultRole.resourceUser.name | 角色名称。 |   |
+| --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |   |
+| --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |
+| -userGroups | Array | - | 用户所属用户组列表。可通过调用AddUsersToUserGroup接口将用户添加到用户组。 |   |
+| --resourceSets | Array | - | 资源集列表。此参数已经废弃。 |   |
+| ---creator | String | admin | 资源集创建者的用户名。 |   |
+| ---gmtCreated | Long | 1606791494471 | 资源集创建时间。 |   |
+| ---id | Integer | 2 | 角色ID。 |   |
+| ---organizationID | Integer | 1 | 资源集所属组织的ID。 |   |
+| ---resourceGroupName | String | restest _ | 资源集名称。 |   |
 
-| 参数名称 | 类型 | 示例 | 说明 |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |
 |---|---|---|---|---|
-| ---rsId | String | 12312a | 资源集唯一编码。 |  |
-| --roles | Array | - | 角色列表。此参数已经废弃。 |  |
-| ---active | Boolean | true | 角色是否有效。此参数已经废弃，角色禁用状态以enable字段为准。 |  |
-| ---arId | String | ar-9999****** | 角色唯一编码。 |  |
-| ---code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。内置角色code是固定的。 自定义角色的code由系统生成。格式为：ROLE _英文大写的角色名称_随机串。 |  |
-| ---cuserId | String | admin | 角色创建者。 说明此参数已经废弃。 |  |
-| ---default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |
-| ---description | String | roletest _ | 角色描述。 |  |
-| ---enable | Boolean | true | 角色是否有效。 |  |
-| ---id | Integer | 2 | 角色ID。 |  |
-| ---muserId | String | admin | 角色最近一次修改的修改者用户名。此参数已经废弃。 |  |
-| ---organizationVisibility | String | defaultRole.resourceUser.descript ion | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |
-| ---ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |  |
-| ---rAMRole | Boolean | false | 是否为RAM角色。 |  |
-| ---roleLevel | Integer | 2147483647 | 角色等级。该字段无实际作用。 |  |
-| ---roleName | String | defaultRole.resourceUser.name | 角色名称。 |  |
-| ---roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |  |
-| ---roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |
-| --users | Array | - | 用户列表。此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表。 |  |
-| ---accountType | Integer | 1 | 账号类型。该参数已废弃。 |  |
-| ---active | Boolean | true | 角色是否有效。此参数已经废弃，角色禁用状态以enable字段为准。 |  |
-| ---aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |  |
+| ---rsId | String | 12312a | 资源集唯一编码。 |   |
+| --roles | Array | - | 角色列表。此参数已经废弃。 |   |
+| ---active | Boolean | true | 角色是否有效。此参数已经废弃，角色禁用状态以enable字段为准。 |   |
+| ---arId | String | ar-9999****** | 角色唯一编码。 |   |
+| ---code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。内置角色code是固定的。 自定义角色的code由系统生成。格式为：ROLE _英文大写的角色名称_随机串。 |   |
+| ---cuserId | String | admin | 角色创建者。 说明此参数已经废弃。 |   |
+| ---default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |
+| ---description | String | roletest _ | 角色描述。 |   |
+| ---enable | Boolean | true | 角色是否有效。 |   |
+| ---id | Integer | 2 | 角色ID。 |   |
+| ---muserId | String | admin | 角色最近一次修改的修改者用户名。此参数已经废弃。 |   |
+| ---organizationVisibility | String | defaultRole.resourceUser.descript ion | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |
+| ---ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |   |
+| ---rAMRole | Boolean | false | 是否为RAM角色。 |   |
+| ---roleLevel | Integer | 2147483647 | 角色等级。该字段无实际作用。 |   |
+| ---roleName | String | defaultRole.resourceUser.name | 角色名称。 |   |
+| ---roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |   |
+| ---roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |
+| --users | Array | - | 用户列表。此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表。 |   |
+| ---accountType | Integer | 1 | 账号类型。该参数已废弃。 |   |
+| ---active | Boolean | true | 角色是否有效。此参数已经废弃，角色禁用状态以enable字段为准。 |   |
+| ---aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |   |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -7651,7 +8223,7 @@ ascm 2019-05-10
 | --organization | Struct | - | 创建的用户所属的组织信息。此参数已经废弃，若要查询用户组所属组织详细信息，请根据organizationId字段通过调用GetOrganization接口查询。 |
 | ---supportRegionList | List | ["cn-qingdao-****-d01"] | 可用区列表。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7684,35 +8256,35 @@ ascm 2019-05-10
 | --rAMRole | Boolean | false | 是否为RAM角色。 |
 | --roleLevel | Integer | 2147483647 | 角色等级。该字段无实际作用。 |
 
-| 参数名称 | 类型 | 示例 | 说明 |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |
 |---|---|---|---|---|
-| --roleName | String | defaultRole.resourceUser.name | 角色名称。 |  |
-| --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |  |
-| --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |
-| -cellphoneNum | String | 1888888**** | 用户手机号码。 |  |
-| -default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |
-| -deleted | Boolean | false | 用户是否已删除。 |  |
-| -displayName | String | testuser2022 | 用户显示名。 |  |
-| -email | String | te**@163.com | 用户邮箱地址。 |  |
-| -enableDingTalk | Boolean | false | 是否启用钉钉通知。 |  |
-| -enableEmail | Boolean | false | 是否启用邮件通知。 |  |
-| -enableShortMessage | Boolean | false | 是否启用短信通知。 |  |
-| -id | Integer | 2 | 角色ID。 |  |
-| -loginName | String | test | 用户登录名。 |  |
-| -enableConsoleLogin | Boolean | false | 是否启用控制台访问。 |  |
-| -parentPk | String | 149595785389**** | 阿里云账号（主账号）的主键，作为账号的唯一标识。 与在ApsaraUni- manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |  |
-| -primaryKey | String | 27365016246143**** | RAM用户（子账号）的主键，作为账号的唯一标识。与在ApsaraUni-manager 运营控制台的用户管理中的RAM用户（子账号）一致。 |  |
-| -status | String | active | 用户状态。 active：激活。 inactive：禁用。 说明用户创建后默认为active。 |  |
-| -loginPolicy | Struct | - | 登录策略。 |  |
-| --ipRanges | Array | - | 登录策略的IP段。 |  |
-| ---ipRange | String | 0.0.0.0/0 | 登录策略的IP范围。 |  |
-| ---loginPolicyId | Integer | 1 | 所属登录策略ID。 |  |
-| ---protocol | String | IPV4 | 登录策略所使用的IP协议，目前仅支持IPv4。 |  |
-| --timeRanges | Array | - | 登录策略的时间段。 |  |
-| ---endTime | String | 24:00 | 结束时间。 |  |
-| ---loginPolicyId | Integer | 1 | 所属登录策略ID。 |  |
+| --roleName | String | defaultRole.resourceUser.name | 角色名称。 |   |
+| --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 roleRange.rawRamRole：RAM角色授权创建的RAM Role。 |   |
+| --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |
+| -cellphoneNum | String | 1888888**** | 用户手机号码。 |   |
+| -default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |
+| -deleted | Boolean | false | 用户是否已删除。 |   |
+| -displayName | String | testuser2022 | 用户显示名。 |   |
+| -email | String | te**@163.com | 用户邮箱地址。 |   |
+| -enableDingTalk | Boolean | false | 是否启用钉钉通知。 |   |
+| -enableEmail | Boolean | false | 是否启用邮件通知。 |   |
+| -enableShortMessage | Boolean | false | 是否启用短信通知。 |   |
+| -id | Integer | 2 | 角色ID。 |   |
+| -loginName | String | test | 用户登录名。 |   |
+| -enableConsoleLogin | Boolean | false | 是否启用控制台访问。 |   |
+| -parentPk | String | 149595785389**** | 阿里云账号（主账号）的主键，作为账号的唯一标识。 与在ApsaraUni- manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |   |
+| -primaryKey | String | 27365016246143**** | RAM用户（子账号）的主键，作为账号的唯一标识。与在ApsaraUni-manager 运营控制台的用户管理中的RAM用户（子账号）一致。 |   |
+| -status | String | active | 用户状态。 active：激活。 inactive：禁用。 说明用户创建后默认为active。 |   |
+| -loginPolicy | Struct | - | 登录策略。 |   |
+| --ipRanges | Array | - | 登录策略的IP段。 |   |
+| ---ipRange | String | 0.0.0.0/0 | 登录策略的IP范围。 |   |
+| ---loginPolicyId | Integer | 1 | 所属登录策略ID。 |   |
+| ---protocol | String | IPV4 | 登录策略所使用的IP协议，目前仅支持IPv4。 |   |
+| --timeRanges | Array | - | 登录策略的时间段。 |   |
+| ---endTime | String | 24:00 | 结束时间。 |   |
+| ---loginPolicyId | Integer | 1 | 所属登录策略ID。 |   |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -7733,20 +8305,24 @@ ascm 2019-05-10
 
 请求示例
 
-```json
-{ "loginName":"testuser2022", "displayName":"testuser2022", "email":"test@example.com", "organizationId":"60", "mobileNationCode":"86", "cellphoneNum":"188****8888" }
+```
+POST /ascm/auth/user/addUser HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"loginName":"testuser2022", "displayName":"testuser2022", "email":"test@example.com", "organizationId":"60", "mobileNationCode":"86", "cellphoneNum":"188****8888"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"ROLE_RESOURCE_USER", "cost":594, "data":{ "cellphoneNum":"1888888****", "displayName":"testuser2022", "enableDingTalk":false, "userRoles":[ { "roleRange":"roleRange.orgAndSubOrgs", "arId":"ar-9999******", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"role_test", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":2147483647, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" } ], "userGroups":[ { |  |
+| { "code":"ROLE_RESOURCE_USER", "cost":594, "data":{ "cellphoneNum":"1888888****", "displayName":"testuser2022", "enableDingTalk":false, "userRoles":[ { "roleRange":"roleRange.orgAndSubOrgs", "arId":"ar-9999******", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"role_test", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":2147483647, "cuserId":"admin", "organizationVisibility":"defaultRole.resourceUser.description" } ], "userGroups":[ { |   |
 
 ```json
-   {
     "roles":[
-     {
       "roleRange":"roleRange.orgAndSubOrgs",
       "arId":"ar-9999******",
       "muserId":"admin",
@@ -7763,15 +8339,18 @@ ascm 2019-05-10
       "roleLevel":2147483647,
       "cuserId":"admin",
       "organizationVisibility":"defaultRole.resourceUser.description"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "organizationId":1,
     "users":[
-     {
+```
+
+`{`
+
+```json
       "cellphoneNum":"1888888****",
       "muserId":"admin",
       "aliyunUser":false,
@@ -7796,31 +8375,37 @@ ascm 2019-05-10
       "email":"te**@163.com",
       "enableShortMessage":false,
       "username":"test"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "groupName":"testUserGroup",
     "augId":"aug-101de5c6c0e20a420******",
     "resourceSets":[
-     {
+```
+
+`{`
+
+```json
       "organizationID":1,
       "creator":"admin",
       "resourceGroupName":"res_test",
       "gmtCreated":1606791494471,
       "rsId":"12312a",
       "id":2
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "createTimeStamp":1606791494471,
     "organization":[
-     {
+```
+
+`{`
+
+```json
       "muserId":"admin",
       "internal":false,
       "level":"0.1.24",
@@ -7835,14 +8420,12 @@ ascm 2019-05-10
       "ctime":1606791494471,
       "id":2,
       "cuserId":"admin"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "id":2
-   }
 ```
 
 `],`
@@ -7855,7 +8438,6 @@ ascm 2019-05-10
 
 ```json
   "roles":[
-   {
     "roleRange":"roleRange.orgAndSubOrgs",
     "arId":"ar-9999******",
     "muserId":"admin",
@@ -7871,14 +8453,17 @@ ascm 2019-05-10
     "id":2,
     "roleLevel":2147483647,
     "organizationVisibility":"defaultRole.resourceUser.description"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "userGroupRoles":[
-   {
+```
+
+`{`
+
+```json
     "roleRange":"roleRange.orgAndSubOrgs",
     "arId":"ar-9999******",
     "muserId":"admin",
@@ -7895,25 +8480,27 @@ ascm 2019-05-10
     "roleLevel":2147483647,
     "cuserId":"admin",
     "organizationVisibility":"defaultRole.resourceUser.description"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "loginName":"test",
   "accessKeys":[
-   {
+```
+
+`{`
+
+```json
     "ctime":1606791494471,
     "id":2,
     "accesskeySecret":"CqHL**********",
     "region":"cn-qingdao-****-d01",
     "accesskeyId":"tCr5mJhpjo******",
     "status":"active"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "id":2,
@@ -7924,25 +8511,31 @@ ascm 2019-05-10
   "status":"active",
   "loginPolicy":{
    "ipRanges":[
-    {
+```
+
+`{`
+
+```json
      "protocol":"IPV4",
      "ipRange":"0.0.0.0/0",
      "loginPolicyId":1
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "timeRanges":[
-    {
+```
+
+`{`
+
+```json
      "loginPolicyId":1,
      "startTime":"00:00",
      "endTime":"24:00"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "muserId":"admin",
@@ -7955,16 +8548,18 @@ ascm 2019-05-10
    "cuserId":"admin",
    "lpId":"lp-9999******",
    "organizationVisibility":"defaultRole.resourceUser.description"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "message":"success"
-}
 ```
 
 | XML | 格式 |
 |---|---|
-| <code>ROLE_RESOURCE_USER</code> <cost>594</cost> <data> <cellphoneNum>1888888****</cellphoneNum> <displayName>testuser2022</displayName> <enableDingTalk>false</enableDingTalk> <userRoles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999******</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>role_test</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>2</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>defaultRole.resourceUser.description</organizationVisibility> </userRoles> <userGroups> <roles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999******</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>role_test</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>2</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>defaultRole.resourceUser.description</organizationVisibility> </roles> <organizationId>1</organizationId> <users> <cellphoneNum>1888888****</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>RamUser</backendAccountType> <enableDingTalk>false</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>1</organizationId> <default>true</default> <password>H2xWNY8oitAhxMWLhtyjs********</password> <deleted>false</deleted> <loginTime>1606791494471</loginTime> <userLoginCtrlId>34</userLoginCtrlId> <loginName>test</loginName> <ctime>1606791494471</ctime> <id>2</id> <mobileNationCode>86</mobileNationCode> <enableEmail>false</enableEmail> <ramUser>true</ramUser> <defaultRoleId>1</defaultRoleId> <email>te**@163.com</email> <enableShortMessage>false</enableShortMessage> <username>test</username> </users> <groupName>testUserGroup</groupName> <augId>aug-101de5c6c0e20a420******</augId> <resourceSets> <organizationID>1</organizationID> <creator>admin</creator> <resourceGroupName>res_test</resourceGroupName> <gmtCreated>1606791494471</gmtCreated> <rsId>12312a</rsId> <id>2</id> </resourceSets> <createTimeStamp>1606791494471</createTimeStamp> <organization> <muserId>admin</muserId> <internal>false</internal> <level>0.1.24</level> |  |
+| <code>ROLE_RESOURCE_USER</code> <cost>594</cost> <data> <cellphoneNum>1888888****</cellphoneNum> <displayName>testuser2022</displayName> <enableDingTalk>false</enableDingTalk> <userRoles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999******</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>role_test</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>2</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>defaultRole.resourceUser.description</organizationVisibility> </userRoles> <userGroups> <roles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999******</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>role_test</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>2</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>defaultRole.resourceUser.description</organizationVisibility> </roles> <organizationId>1</organizationId> <users> <cellphoneNum>1888888****</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>RamUser</backendAccountType> <enableDingTalk>false</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>1</organizationId> <default>true</default> <password>H2xWNY8oitAhxMWLhtyjs********</password> <deleted>false</deleted> <loginTime>1606791494471</loginTime> <userLoginCtrlId>34</userLoginCtrlId> <loginName>test</loginName> <ctime>1606791494471</ctime> <id>2</id> <mobileNationCode>86</mobileNationCode> <enableEmail>false</enableEmail> <ramUser>true</ramUser> <defaultRoleId>1</defaultRoleId> <email>te**@163.com</email> <enableShortMessage>false</enableShortMessage> <username>test</username> </users> <groupName>testUserGroup</groupName> <augId>aug-101de5c6c0e20a420******</augId> <resourceSets> <organizationID>1</organizationID> <creator>admin</creator> <resourceGroupName>res_test</resourceGroupName> <gmtCreated>1606791494471</gmtCreated> <rsId>12312a</rsId> <id>2</id> </resourceSets> <createTimeStamp>1606791494471</createTimeStamp> <organization> <muserId>admin</muserId> <internal>false</internal> <level>0.1.24</level> |   |
 
 ```xml
    <supportRegions>cn-qingdao-****-d01</supportRegions>
@@ -8064,15 +8659,19 @@ ascm 2019-05-10
 </data> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.4.9. DeactivateUser
+###### 4.1.1.4.9 DeactivateUser
 
-禁用用户时，系统将自动禁用用户所有的AccessKey。v3.12.0版本自SP016后开始支持此接口，v3.14.0版本自SP013后开始支持此接口。
+调用DeactivateUser禁用指定用户。 禁用用户时，系统将自动禁用用户所有的AccessKey。v3.12.0版本自SP016后开始支持此接口，v3.14.0版本自SP013后开始支持此接口。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/deactivateUser HTTP/1.1
+```
 
 **请求参数**
 
@@ -8086,9 +8685,9 @@ ascm 2019-05-10
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Integer | 118 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 用户信息。 |
-| accessKeys | Array of accessKey |  | AccessKey信息列表。 说明只有平台管理员才能获取预置用户的AccessKey和AccessKey Secret。 |
-| accessKey |  |  |  |
+| data | Struct |   | 用户信息。 |
+| accessKeys | Array of accessKey |   | AccessKey信息列表。 说明只有平台管理员才能获取预置用户的AccessKey和AccessKey Secret。 |
+| accessKey |   |   |   |
 | accesskeyId | String | tCr5mJhpjo****** | 用户的AccessKey ID。 |
 
 | ctime | Long | 1606675230000 | AccessKey创建时间。 说明该参数已废弃。 |
@@ -8099,7 +8698,7 @@ ascm 2019-05-10
 | status | String | ACTIVE | AccessKey是否启用。 ACTIVE：启用。 INACTIVE：禁用。 |
 | cellphoneNum | String | 188****8888 | 用户手机号码。 |
 | default | Boolean | false | 是否为预置用户。 说明预置用户为系统自动创建，创建场景下该参数默认为false。 |
-| defaultRole | Struct |  | 默认角色。 说明用户登录后的当前角色。 |
+| defaultRole | Struct |   | 默认角色。 说明用户登录后的当前角色。 |
 | active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |
 | arId | String | ar-9999999904 | 角色唯一编码。 |
 | code | String | ROLEORGANIZATIONADMIN _ _ | 角色code。 说明内置角色code 是固定的，自定义角色的code由系统生成，格式为：ROLE _ 角色名称(大写) _随机串。权限校验时code 用来确定角色类型，判断角色是否有对应的权限。 |
@@ -8126,15 +8725,15 @@ ascm 2019-05-10
 | id | Integer | 5817 | 用户ID。 |
 | lastLoginTime | Long | 1657608949009 | 用户最后登录时间。 说明此参数已经废弃。 |
 | loginName | String | testuser202209071758 | 用户登录名。 |
-| loginPolicy | Struct |  | 用户绑定的登录策略。 |
+| loginPolicy | Struct |   | 用户绑定的登录策略。 |
 | cuserId | String | admin | 创建登录策略的用户名称说明此参数已经废弃。 |
 | default | Boolean | false | 是否为默认登录策略。 |
 | enable | Boolean | true | 登录策略是否有效。 |
 
 | id | Integer | 1084 | 登录策略ID。 |
 |---|---|---|---|
-| ipRanges | Array of ipRange |  | 登录策略IP段。 |
-| ipRange |  |  |  |
+| ipRanges | Array of ipRange |   | 登录策略IP段。 |
+| ipRange |   |   |   |
 | ipRange | String | 10.48.16.1/24 | 访问策略的IP范围。 |
 | loginPolicyId | Integer | 1084 | 所属访问策略ID。 |
 | protocol | String | IPV4 | 访问策略使用的协议，仅支持ipv4。 |
@@ -8144,39 +8743,39 @@ ascm 2019-05-10
 | organizationVisibility | String | organizationVisibility.global | 访问策略共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 策略所属组织ID。 |
 | rule | String | DENY | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRange |  | 登录策略的时间段。 |
-| timeRange |  |  |  |
+| timeRanges | Array of timeRange |   | 登录策略的时间段。 |
+| timeRange |   |   |   |
 | endTime | String | 18:00 | 结束时间。 |
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | startTime | String | 08:00 | 开始时间。 |
 | mobileNationCode | String | 86 | 国际区号。 |
-| organization | Struct |  | 用户所属的组织。 |
+| organization | Struct |   | 用户所属的组织。 |
 | alias | String | sub-org-1 | 组织别名。 |
 | ctime | Long | 1657608949009 | 组织创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 说明参数已经废弃。 |
 | id | Integer | 25 | 组织ID。 |
 | internal | Boolean | false | 是否为预置组织。 说明置组织即系统自动生成的组织，也称为默认组织。 |
 
-| level | String | 0.1.24 | 组织等级。 说明 root组织（根组织）的level=0，其他所有一级组织的level=0.1。其中0.1 中的1表示本组织的父组织（root组织）的ID为1。以此类推，例如：某ID为 3的一级组织的直接下级组织leve |  |  |  |
+| level | String | 0.1.24 | 组织等级。 说明 root组织（根组织）的level=0，其他所有一级组织的level=0.1。其中0.1 中的1表示本组织的父组织（root组织）的ID为1。以此类推，例如：某ID为 3的一级组织的直接下级组织leve |   |   |   |
 |---|---|---|---|---|---|---|
-| mtime | Long | 1657608949009 | 组织最近一次修改的时间。 |  |  |  |
-| multiCloudStatus | String | master | 是否为多云同步组织。 master：主云。 slave：从云。 说明该参数仅在多云场景下返回。 |  |  |  |
-| muserId | String | admin | 组织最近一次修改的修改者用户名。 |  |  |  |
-| name | String | sub-org-1 | 组织名称。 |  |  |  |
-| parentId | Integer | 24 | 组织名称。 |  |  |  |
-| supportRegionList | List | cn-***-d01 | 可用区列表。 |  |  |  |
-| supportRegions | String | ["cn-***-d01"] | 可用区列表。 说明此参数已经废弃。 |  |  |  |
-| uuid | String | org-101cc0654e910a4209****** | 组织UUID。 |  |  |  |
-| parentPk | String | 1127157608934563 | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |  |  |  |
-| primaryKey | String | 259258662544685329 | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |  |  |  |
-| roles | Array of role |  | 用户拥有的角色列表。 |  |  |  |
-| role |  |  |  |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-9999****** | 角色唯一编码。 |  |  |  |
-| code | String | ROLEORGANIZATIONADMIN _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
+| mtime | Long | 1657608949009 | 组织最近一次修改的时间。 |   |   |   |
+| multiCloudStatus | String | master | 是否为多云同步组织。 master：主云。 slave：从云。 说明该参数仅在多云场景下返回。 |   |   |   |
+| muserId | String | admin | 组织最近一次修改的修改者用户名。 |   |   |   |
+| name | String | sub-org-1 | 组织名称。 |   |   |   |
+| parentId | Integer | 24 | 组织名称。 |   |   |   |
+| supportRegionList | List | cn-***-d01 | 可用区列表。 |   |   |   |
+| supportRegions | String | ["cn-***-d01"] | 可用区列表。 说明此参数已经废弃。 |   |   |   |
+| uuid | String | org-101cc0654e910a4209****** | 组织UUID。 |   |   |   |
+| parentPk | String | 1127157608934563 | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |   |   |   |
+| primaryKey | String | 259258662544685329 | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |   |   |   |
+| roles | Array of role |   | 用户拥有的角色列表。 |   |   |   |
+| role |   |   |   |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-9999****** | 角色唯一编码。 |   |   |   |
+| code | String | ROLEORGANIZATIONADMIN _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | cuserId | String | adimin | 创建角色的用户。 说明参数已经废弃。 |
@@ -8194,39 +8793,39 @@ ascm 2019-05-10
 | roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 | status | String | INACTIVE | 用户状态。 说明用户创建后否默认为active。 active:激活。 inactive:禁用。 |
-| userGroupRoles | Array of userGroupRole |  | 用户所属用户组所拥有的角色列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
-| userGroupRole |  |  |  |
+| userGroupRoles | Array of userGroupRole |   | 用户所属用户组所拥有的角色列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
+| userGroupRole |   |   |   |
 
-| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
+| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
 |---|---|---|---|---|---|---|
-| arId | String | ar-9999****** | 角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 创建角色的用户名称。 |  |  |  |
-| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.resourceUser.descript ion | 角色描述。 |  |  |  |
-| enable | Boolean | true | 角色是否有效。 |  |  |  |
-| id | Integer | 2 | 角色ID。 |  |  |  |
-| muserId | String | admin | 角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | organizationVisibility 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 角色所属组织id。 |  |  |  |
-| rAMRole | Boolean | false | 是否是ram角色。 |  |  |  |
-| roleLevel | Integer | 2147483647 | 角色等级。 说明保留字段，无实际作用。 |  |  |  |
-| roleName | String | defaultRole.resourceUser.name | 角色名称。 |  |  |  |
-| roleRange | String | roleRange.resourceSet | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |  |  |
-| roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |  |  |
+| arId | String | ar-9999****** | 角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 创建角色的用户名称。 |   |   |   |
+| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.resourceUser.descript ion | 角色描述。 |   |   |   |
+| enable | Boolean | true | 角色是否有效。 |   |   |   |
+| id | Integer | 2 | 角色ID。 |   |   |   |
+| muserId | String | admin | 角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | organizationVisibility 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 角色所属组织id。 |   |   |   |
+| rAMRole | Boolean | false | 是否是ram角色。 |   |   |   |
+| roleLevel | Integer | 2147483647 | 角色等级。 说明保留字段，无实际作用。 |   |   |   |
+| roleName | String | defaultRole.resourceUser.name | 角色名称。 |   |   |   |
+| roleRange | String | roleRange.resourceSet | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |   |   |
+| roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
-| userGroups | Array of userGroup |  | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
+| userGroups | Array of userGroup |   | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
 |---|---|---|---|
-| userGroup |  |  |  |
+| userGroup |   |   |   |
 | augId | String | aug-101de696afc90a420d****** | 用户组唯一编码。 |
 | createTimeStamp | Long | 1606791494471 | 用户组创建时间。 |
 | groupName | String | testUserGroup01 | 用户组名称。 |
 | id | Integer | 24 | 用户组ID。 |
-| organization | Struct |  | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，请根据 organizationId参数通过GetOrganization接口查询。 |
+| organization | Struct |   | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，请根据 organizationId参数通过GetOrganization接口查询。 |
 | alias | String | test | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1606791494471 | 组织创建时间。 |
 | cuserId | String | admin | 创建者用户名。 |
@@ -8241,31 +8840,31 @@ ascm 2019-05-10
 | supportRegionList | List | ["cn-qingdao-****-d01"] | 可用区列表。 |
 | supportRegions | String | cn-qingdao-****-d01 | 可用区列表。 说明此参数已经废弃。 |
 
-| uuid | String | 123456 | 组织UUID。 |  |  |  |
+| uuid | String | 123456 | 组织UUID。 |   |   |   |
 |---|---|---|---|---|---|---|
-| organizationId | Integer | 1 | 用户组所属组织的ID。 |  |  |  |
-| resourceSets | Array of resourceSet |  | 资源集列表。 说明此参数已经废弃。 |  |  |  |
-| resourceSet |  |  |  |  |  |  |
-| creator | String | admin | 资源集创建者的用户名。 |  |  |  |
-| gmtCreated | Long | 1606791494471 | 资源集创建时间。 |  |  |  |
-| id | Integer | 2 | 资源集ID。 |  |  |  |
-| organizationID | Integer | 1 | 资源集所属组织的ID。 |  |  |  |
-| resourceGroupName | String | resourcetest _ | 资源集名称。 |  |  |  |
-| rsId | String | 123456 | 资源集唯一编码。 |  |  |  |
-| roles | Array of role |  | 资源集列表。 说明此参数已经废弃。 |  |  |  |
-| role |  |  |  |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | 123456 | 角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者用户名称。 |  |  |  |
-| default | Boolean | false | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | test | 角色描述。 |  |  |  |
-| enable | Boolean | true | 角色是否被禁用。 |  |  |  |
-| id | Integer | 4 | 角色id。 |  |  |  |
-| muserId | String | admin | 角色最近一次修改的修改者用户名。 |  |  |  |
+| organizationId | Integer | 1 | 用户组所属组织的ID。 |   |   |   |
+| resourceSets | Array of resourceSet |   | 资源集列表。 说明此参数已经废弃。 |   |   |   |
+| resourceSet |   |   |   |   |   |   |
+| creator | String | admin | 资源集创建者的用户名。 |   |   |   |
+| gmtCreated | Long | 1606791494471 | 资源集创建时间。 |   |   |   |
+| id | Integer | 2 | 资源集ID。 |   |   |   |
+| organizationID | Integer | 1 | 资源集所属组织的ID。 |   |   |   |
+| resourceGroupName | String | resourcetest _ | 资源集名称。 |   |   |   |
+| rsId | String | 123456 | 资源集唯一编码。 |   |   |   |
+| roles | Array of role |   | 资源集列表。 说明此参数已经废弃。 |   |   |   |
+| role |   |   |   |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | 123456 | 角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者用户名称。 |   |   |   |
+| default | Boolean | false | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | test | 角色描述。 |   |   |   |
+| enable | Boolean | true | 角色是否被禁用。 |   |   |   |
+| id | Integer | 4 | 角色id。 |   |   |   |
+| muserId | String | admin | 角色最近一次修改的修改者用户名。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
@@ -8276,8 +8875,8 @@ ascm 2019-05-10
 | roleName | String | test | 角色名称。 |
 | roleRange | String | roleRange.allOrganizations | 角色管理权限。 roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
-| users | Array of user |  | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表 |
-| user |  |  |  |
+| users | Array of user |   | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表 |
+| user |   |   |   |
 | accountType | Integer | 1 | 账号类型。 说明该参数已废弃。 |
 | active | Boolean | true | 用户是否有效。 说明该参数已废弃。 |
 | aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |
@@ -8288,34 +8887,34 @@ ascm 2019-05-10
 | defaultRoleId | Integer | 1 | 用户默认角色ID。 |
 | deleted | Boolean | false | 用户是否被删除。 |
 
-| email | String | test@example.com | 用户邮箱地址。 |  |  |  |
+| email | String | test@example.com | 用户邮箱地址。 |   |   |   |
 |---|---|---|---|---|---|---|
-| enableDingTalk | Boolean | false | 是否发送钉钉消息。 |  |  |  |
-| enableEmail | Boolean | false | 是否发送邮件。 |  |  |  |
-| enableShortMessage | Boolean | false | 是否发动短信。 |  |  |  |
-| id | Integer | 5930 | 用户ID。 |  |  |  |
-| loginName | String | test | 用户登录名。 |  |  |  |
-| loginTime | Long | 1606791494471 | 用户登录时间。 |  |  |  |
-| mobileNationCode | String | 86 | 国际区号。 |  |  |  |
-| mtime | Long | 1606791494471 | 用户信息被修改时间。 |  |  |  |
-| muserId | String | admin | 最后一次更新用户数据时间。 |  |  |  |
-| organizationId | Integer | 6 | 用户所属组织ID。 |  |  |  |
-| password | String | ****************** | 用户密码说明此参数已经废弃。 |  |  |  |
-| ramUser | Boolean | false | 是否是RAM用户。 |  |  |  |
-| userLoginCtrlId | Integer | 1 | 登录策略ID。 |  |  |  |
-| username | String | test | 用户显示名。 |  |  |  |
-| userRoles | Array of userRole |  | 用户角色列表，用户关联的角色列表，由请求参数roleIdList指定。 |  |  |  |
-| userRole |  |  |  |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-9999****** | 角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者的用户名。 |  |  |  |
-| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.resourceUser.descript ion | 角色描述。 |  |  |  |
-| enable | Boolean | true | 角色是否有效。 |  |  |  |
+| enableDingTalk | Boolean | false | 是否发送钉钉消息。 |   |   |   |
+| enableEmail | Boolean | false | 是否发送邮件。 |   |   |   |
+| enableShortMessage | Boolean | false | 是否发动短信。 |   |   |   |
+| id | Integer | 5930 | 用户ID。 |   |   |   |
+| loginName | String | test | 用户登录名。 |   |   |   |
+| loginTime | Long | 1606791494471 | 用户登录时间。 |   |   |   |
+| mobileNationCode | String | 86 | 国际区号。 |   |   |   |
+| mtime | Long | 1606791494471 | 用户信息被修改时间。 |   |   |   |
+| muserId | String | admin | 最后一次更新用户数据时间。 |   |   |   |
+| organizationId | Integer | 6 | 用户所属组织ID。 |   |   |   |
+| password | String | ****************** | 用户密码说明此参数已经废弃。 |   |   |   |
+| ramUser | Boolean | false | 是否是RAM用户。 |   |   |   |
+| userLoginCtrlId | Integer | 1 | 登录策略ID。 |   |   |   |
+| username | String | test | 用户显示名。 |   |   |   |
+| userRoles | Array of userRole |   | 用户角色列表，用户关联的角色列表，由请求参数roleIdList指定。 |   |   |   |
+| userRole |   |   |   |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-9999****** | 角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成，格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者的用户名。 |   |   |   |
+| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.resourceUser.descript ion | 角色描述。 |   |   |   |
+| enable | Boolean | true | 角色是否有效。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | id | Integer | 2 | 角色ID。 |
@@ -8335,11 +8934,17 @@ ascm 2019-05-10
 
 **示例**
 
-请求示例公共请求头正常返回示例
+请求示例
+
+```
+POST /ascm/auth/user/deactivateUser HTTP/1.1
+```
+
+公共请求头正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>118</cost> <code>200</code> |  |
+| <redirect>false</redirect> <cost>118</cost> <code>200</code> |   |
 
 ```xml
 <data>
@@ -8563,13 +9168,13 @@ ascm 2019-05-10
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 118, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser2022", "parentPk": 1127157608934563, "lastLoginTime": 1657608949009, "default": false, "deleted": false, "loginName": "testuser202209071758", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "test@example.com", "status": "INACTIVE", "primaryKey": 259258662544685340, "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 2, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": { "organizationId": 1, "groupName": "testUserGroup01", "augId": "aug-101de696afc90a420d******", "createTimeStamp": 1606791494471, "id": 24, "resourceSets": { "organizationID": 1, |  |
+| { "redirect": false, "cost": 118, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser2022", "parentPk": 1127157608934563, "lastLoginTime": 1657608949009, "default": false, "deleted": false, "loginName": "testuser202209071758", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "test@example.com", "status": "INACTIVE", "primaryKey": 259258662544685340, "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 2, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": { "organizationId": 1, "groupName": "testUserGroup01", "augId": "aug-101de696afc90a420d******", "createTimeStamp": 1606791494471, "id": 24, "resourceSets": { "organizationID": 1, |   |
 
 ```
 oga ato
 ```
 
-: ,
+`:` `,`
 
 ```json
                 "creator": "admin",
@@ -8577,7 +9182,11 @@ oga ato
                 "gmtCreated": 1606791494471,
                 "rsId": 123456,
                 "id": 2
-            },
+```
+
+`},`
+
+```json
             "users": {
                 "cellphoneNum": "188****8888",
                 "muserId": "admin",
@@ -8603,7 +9212,11 @@ oga ato
                 "email": "test@example.com",
                 "defaultRoleId": 1,
                 "username": "test"
-            },
+```
+
+`},`
+
+```json
             "roles": {
                 "roleRange": "roleRange.allOrganizations",
                 "rAMRole": false,
@@ -8621,7 +9234,11 @@ oga ato
                 "id": 4,
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            },
+```
+
+`},`
+
+```json
             "organization": {
                 "muserId": "admin",
                 "internal": false,
@@ -8637,8 +9254,11 @@ oga ato
                 "cuserId": "admin",
                 "parentId": 1,
                 "supportRegionList": "[\"cn-qingdao-****-d01\"]"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "userRoles": {
             "roleRange": "roleRange.resourceSet",
             "rAMRole": false,
@@ -8656,7 +9276,11 @@ oga ato
             "id": 2,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "accessKeys": {
 "ctime":1606675230000
 ```
@@ -8668,7 +9292,11 @@ oga ato
             "cuserId": "admin",
             "status": "ACTIVE",
             "accesskeyId": "tCr5mJhpjo******"
-        },
+```
+
+`},`
+
+```json
         "roles": {
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
@@ -8686,7 +9314,11 @@ oga ato
             "id": 4,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "adimin"
-        },
+```
+
+`},`
+
+```json
         "defaultRole": {
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
@@ -8703,7 +9335,11 @@ oga ato
             "roleLevel": 2147483647,
             "id": 4,
             "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "loginPolicy": {
             "muserId": "admin",
             "default": false,
@@ -8719,13 +9355,20 @@ oga ato
                 "protocol": "IPV4",
                 "ipRange": "10.48.16.1/24",
                 "loginPolicyId": 1084
-            },
+```
+
+`},`
+
+```json
             "timeRanges": {
                 "startTime": "08:00",
                 "loginPolicyId": 1084,
                 "endTime": "18:00"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "organization": {
             "muserId": "admin",
             "internal": false,
@@ -8741,14 +9384,16 @@ oga ato
             "cuserId": "admin",
             "parentId": 24,
             "supportRegionList": "cn-***-d01"
-        }
-    },
-    "success": true,
-    "message": "success"
-}
 ```
 
-###### 4.1.1.4.10. ListAccessKeysForManagedUsers
+`}` `},`
+
+```json
+    "success": true,
+    "message": "success"
+```
+
+###### 4.1.1.4.10 ListAccessKeysForManagedUsers
 
 调用ListAccessKeysForManagedUsers接口查询当前用户管理范围内用户的Accesskey信息。 支持通过填写用户ID（ascmUserId）、组织ID（organizationId）、用户登录名（loginName）指定接口查询的组织、用户范围，如不指定则返回当前调用接口的用户管理范围内所有用户的Accesskey信息。 平台管理员（super）、资源监查员可以查询全部用户AK。 其他全局角色（如admin）可以查看除内部组织外用户AK。 组织管理员（或其他管理范围为本组织及级联下级组织的角色）可以查询本组织及下级组织用户AK。
 
@@ -8800,22 +9445,22 @@ POST /user/accesskey/listAccessKeysForManagedUsers HTTP/1.1
 请求示例
 
 ```
-POST /user/accesskey/listAccessKeysForManagedUsers HTTP/1.1 { }
+POST /user/accesskey/listAccessKeysForManagedUsers HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 714, "data": [ { "accessKeys": [ { "createTime": "2023-11-27T12:05:31Z", "accesskeyId": "Su0********", "status": "Inactive" } ], "loginName": "base******t", "primaryKey": "28846********" } ], "success": true, "pageInfo": { "total": 36214, "totalPage": 3622, "pageSize": 10, "currentPage": 1 }, "message": "success" } |  |
+| { "code": "200", "cost": 714, "data": [ { "accessKeys": [ { "createTime": "2023-11-27T12:05:31Z", "accesskeyId": "Su0********", "status": "Inactive" } ], "loginName": "base******t", "primaryKey": "28846********" } ], "success": true, "pageInfo": { "total": 36214, "totalPage": 3622, "pageSize": 10, "currentPage": 1 }, "message": "success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>714</cost> <data> <accessKeys> <createTime>2023-11-27T12:05:31Z</createTime> <accesskeyId>Su0********</accesskeyId> <status>Inactive</status> </accessKeys> <loginName>base******t</loginName> <primaryKey>28846********</primaryKey> </data> <success>true</success> <pageInfo> <total>36214</total> <totalPage>3622</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <code>200</code> <cost>714</cost> <data> <accessKeys> <createTime>2023-11-27T12:05:31Z</createTime> <accesskeyId>Su0********</accesskeyId> <status>Inactive</status> </accessKeys> <loginName>base******t</loginName> <primaryKey>28846********</primaryKey> </data> <success>true</success> <pageInfo> <total>36214</total> <totalPage>3622</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.4.11. DeleteUserAccessKey
+###### 4.1.1.4.11 DeleteUserAccessKey
 
 删除用户AK。必须保证删除后用户至少有一个状态为ACTIVE的AK。 用户可以操作自己的AK。 平台管理员（super）可以操作全部用户AK。 其他全局角色（如admin）可以操作除内部组织外用户AK。 组织管理员（或其他管理范围为本组织及级联下级组织的角色）可以操作本组织及下级组织用户AK。
 
@@ -8824,6 +9469,10 @@ ascm 2019-05-10
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+DELETE /user/accessKey HTTP/1.1
+```
 
 **请求参数**
 
@@ -8842,19 +9491,25 @@ ascm 2019-05-10
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例
+请求示例
+
+```
+DELETE /user/accessKey HTTP/1.1
+```
+
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":107, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":107, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>107</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>107</cost> <success>true</success> <message>success</message> |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.4.12. UpdateUserAccessKeyStatus
+###### 4.1.1.4.12 UpdateUserAccessKeyStatus
 
 更新单个AK状态，启用或禁用AK。更新后必须存在至少一个启用状态的AK，否则此接口会报错。 用户可以操作自己的AK。 平台管理员（super）可以操作全部用户AK。 其他全局角色（如admin）可以操作除内部组织外用户AK。 组织管理员（或其他管理范围为本组织及级联下级组织的角色）可以操作本组织及下级组织用户AK。
 
@@ -8891,22 +9546,22 @@ PUT /user/accessKey/status HTTP/1.1
 请求示例
 
 ```
-PUT /user/accessKey/status HTTP/1.1 { }
+PUT /user/accessKey/status HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":103, "success":true, "message":"200" } |  |
+| { "code":"200", "cost":103, "success":true, "message":"200" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>103</cost> <success>true</success> <message>200</message> |  |
+| <code>200</code> <cost>103</cost> <success>true</success> <message>200</message> |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.4.13. CreateUserAccessKey
+###### 4.1.1.4.13 CreateUserAccessKey
 
 创建用户AK，每个用户最多可持有两对AK。 用户可以为自己创建，会返回AK和SK。 平台管理员（super）可以为全部用户创建，仅返回AK。 其他全局角色（如admin）可以操作除内部组织外用户，仅返回AK。 组织管理员（或其他管理范围为本组织及级联下级组织的角色）可以操作本组织及下级组织用户，仅返回AK。
 
@@ -8948,20 +9603,20 @@ POST /user/accessKey HTTP/1.1
 请求示例
 
 ```
-POST /user/accessKey HTTP/1.1 { }
+POST /user/accessKey HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":100, "data":{ "ctime":1715835495000, "accesskeySecret":"eb2hf******", "accesskeyId":"qwe******", "status":"ACTIVE" }, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":100, "data":{ "ctime":1715835495000, "accesskeySecret":"eb2hf******", "accesskeyId":"qwe******", "status":"ACTIVE" }, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>100</cost> <data> <ctime>1715835495000</ctime> <accesskeySecret>eb2hf******</accesskeySecret> <accesskeyId>qwe******</accesskeyId> <status>ACTIVE</status> </data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>100</cost> <data> <ctime>1715835495000</ctime> <accesskeySecret>eb2hf******</accesskeySecret> <accesskeyId>qwe******</accesskeyId> <status>ACTIVE</status> </data> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.14. GetRecentAkTrailForUser
+###### 4.1.1.4.14 GetRecentAkTrailForUser
 
 查看AK审计日志。支持查询被禁用的AK的日志，无法获取被删除AK的日志。 AccessKey日志后端数据存在一定延迟(一般 1 小时)，且默认仅保存7天日志，请务必谨慎对AccessKey做变更处理。如需保存更长时间日志，需在配置中进行操作日志转存 （依赖SLS日志服务）。
 
@@ -8996,8 +9651,8 @@ GET /user/accessKey/trail HTTP/1.1
 | code | String | 200 | 状态响应码。 |
 | message | String | success | 返回提示信息。 |
 | cost | Long | 100 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | AK审计日志信息。 |
-| -events | Array |  | 调用事件。 |
+| data | Struct |   | AK审计日志信息。 |
+| -events | Array |   | 调用事件。 |
 | --eventId | String | dwe****** | 事件ID。 |
 | --sourceIpAddress | String | 10.**.**.204 | 事件发生的IP。 |
 | --eventRW | String | Write | 事件的读写类型。 Write：写。 Read：读。 |
@@ -9015,10 +9670,9 @@ GET /user/accessKey/trail HTTP/1.1
 GET /user/accessKey/trail HTTP/1.1 &queryTrailAccessKey=qwertg******
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "code":"200",
  "cost":100,
  "data":{
@@ -9031,18 +9685,22 @@ GET /user/accessKey/trail HTTP/1.1 &queryTrailAccessKey=qwertg******
    "eventRW":"Write",
    "serviceName":"ECS",
    "resourceType":"ascm.resourceType.ecs_instance"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "message":"success"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>100</cost> <data> <accessKey>qewq******</accessKey> <events> <eventId>dwe******</eventId> <eventTime>1687261342987</eventTime> <sourceIpAddress>10.**.**.204</sourceIpAddress> <eventName>RunInstances</eventName> <eventRW>Write</eventRW> <serviceName>ECS</serviceName> <resourceType>ascm.resourceType.ecs_instance</resourceType> </events> </data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>100</cost> <data> <accessKey>qewq******</accessKey> <events> <eventId>dwe******</eventId> <eventTime>1687261342987</eventTime> <sourceIpAddress>10.**.**.204</sourceIpAddress> <eventName>RunInstances</eventName> <eventRW>Write</eventRW> <serviceName>ECS</serviceName> <resourceType>ascm.resourceType.ecs_instance</resourceType> </events> </data> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.15. ListUserAccessKey
+###### 4.1.1.4.15 ListUserAccessKey
 
 获取用户自己的AK列表。
 
@@ -9071,8 +9729,6 @@ GET /user/accessKeys HTTP/1.1
 | message | String | success | 返回提示信息。 |
 | cost | Long | 44 | 接口响应耗时，单位毫秒（ms）。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -9083,15 +9739,15 @@ GET /user/accessKeys HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 23, "data": [ { "createTime": "2024-08-13T03:37:49Z", "ctime": 1723520269000, "accesskeySecret": "hZK********", "accesskeyId": "GmN********", "status": "ACTIVE" }, { "createTime": "2024-01-31T05:37:35Z", "ctime": 1706679455000, "accesskeySecret": "c4lu********", "accesskeyId": "hPC********", "status": "ACTIVE" } ], "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 23, "data": [ { "createTime": "2024-08-13T03:37:49Z", "ctime": 1723520269000, "accesskeySecret": "hZK********", "accesskeyId": "GmN********", "status": "ACTIVE" }, { "createTime": "2024-01-31T05:37:35Z", "ctime": 1706679455000, "accesskeySecret": "c4lu********", "accesskeyId": "hPC********", "status": "ACTIVE" } ], "success": true, "message": "success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>23</cost> <data> <createTime>2024-08-13T03:37:49Z</createTime> <ctime>1723520269000</ctime> <accesskeySecret>hZK********</accesskeySecret> <accesskeyId>GmN********</accesskeyId> <status>ACTIVE</status> </data> <data> <createTime>2024-01-31T05:37:35Z</createTime> <ctime>1706679455000</ctime> <accesskeySecret>c4lu********</accesskeySecret> <accesskeyId>hPC********</accesskeyId> <status>ACTIVE</status> </data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>23</cost> <data> <createTime>2024-08-13T03:37:49Z</createTime> <ctime>1723520269000</ctime> <accesskeySecret>hZK********</accesskeySecret> <accesskeyId>GmN********</accesskeyId> <status>ACTIVE</status> </data> <data> <createTime>2024-01-31T05:37:35Z</createTime> <ctime>1706679455000</ctime> <accesskeySecret>c4lu********</accesskeySecret> <accesskeyId>hPC********</accesskeyId> <status>ACTIVE</status> </data> <success>true</success> <message>success</message> |   |
 
 ascm 2019-05-10
 
-###### 4.1.1.4.16. ListAvailableUsersByRoleId
+###### 4.1.1.4.16 ListAvailableUsersByRoleId
 
 获取加入某个角色的用户列表。
 
@@ -9124,7 +9780,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | action | String | ListAvailableUsersByRoleId | 当前接口的名称。 |
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Long | 22 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of userKeyInfo |  | 用户集。 |
+| data | Array of userKeyInfo |   | 用户集。 |
 | displayName | String | admin | 用户显示名。 |
 | id | Integer | 5003 | 用户ID。 |
 | loginName | String | admin | 用户登录名称。 |
@@ -9137,7 +9793,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 |---|---|---|---|
 | extraMessage | String | success | 额外的提示信息，是对错误提示信息的补充说明。 说明仅在接口调用失败异常时返回。 |
 | message | String | success | 错误提示信息。 说明无论是否调用成功都会返回。一般调用成功返回success，调用失败返回自定义的错误信息或者返回异常栈中的错误信息。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页码。 |
 | pageSize | Integer | 10 | 每页数据条数。 |
 | total | Integer | 10 | 数据总条数。 |
@@ -9154,13 +9810,13 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{ "RoleId": "1" }
+"RoleId": "1"
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <ServerRole>unimanager-base.IdentityService#</ServerRole> <Action>ListAvailableUsersByRoleId</Action> <SuccessResponse>true</SuccessResponse> <PageInfo>
@@ -9180,9 +9836,11 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "ServerRole": "unimanager-base.IdentityService#", "Action": "ListAvailableUsersByRoleId", "SuccessResponse": true, "PageInfo": { "TotalPage": 1, "PageSize": 10, "CurrentPage": 1, "Total": 10 }, "RequestId": "5FE0023D-73C3-481E-926D-17A2CF******", "Message": "success", "ErrorKey": "ascm.auth.InvalidParamete", "Data": { "OrganizationName": "Test", "Status": "ACTIVE", "LoginName": "admin", "DisplayName": "admin", "OrganizationId": 3, "Id": 5002 }, "Domain": "ascm.aliyun.com", "ExtraMessage": "success", "Cost": 22, "Code": 200 } |  |
+| { "ServerRole": "unimanager-base.IdentityService#", "Action": "ListAvailableUsersByRoleId", "SuccessResponse": true, "PageInfo": { "TotalPage": 1, "PageSize": 10, "CurrentPage": 1, "Total": 10 }, "RequestId": "5FE0023D-73C3-481E-926D-17A2CF******", "Message": "success", "ErrorKey": "ascm.auth.InvalidParamete", "Data": { "OrganizationName": "Test", "Status": "ACTIVE", "LoginName": "admin", "DisplayName": "admin", "OrganizationId": 3, "Id": 5002 }, "Domain": "ascm.aliyun.com", "ExtraMessage": "success", "Cost": 22, "Code": 200 } |   |
 
-###### 4.1.1.4.17. ListDeletedUsers
+###### 4.1.1.4.17 ListDeletedUsers
+
+调用ListDeletedUsers获取已删除用户列表。
 
 **请求参数**
 
@@ -9200,9 +9858,9 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | code | String | 200 | 状态码。 |
 | cost | Integer | 1000 | 耗时时间。 |
 
-| data | Array of dataItem |  | 响应结果。 |
+| data | Array of dataItem |   | 响应结果。 |
 |---|---|---|---|
-| dataItem |  |  |  |
+| dataItem |   |   |   |
 | cellphoneNum | String | 00000000000 | 用户手机号码。 |
 | default | Boolean | false | 是否为预置用户。 |
 | deleted | Boolean | true | 用户是否删除。 |
@@ -9217,7 +9875,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | mobileNationCode | String | 86 | 区号。 |
 | status | String | ACTIVE | 用户状态：active为激活，inactive为禁用。 |
 | message | String | success | 错误提示信息。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 20 | 每页大小。 |
 | total | Integer | 2 | 总条数。 |
@@ -9228,7 +9886,13 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例 `XML` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListDeletedUsers
+```
+
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data>
@@ -9255,9 +9919,11 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "1000", "code": "200", "data": [ { "cellphoneNum": "00000000000", "enableDingTalk": "false", "displayName": "test", "lastLoginTime": "1231212", "default": "false", "deleted": "true", "loginName": "test", "mobileNationCode": "86", "id": "1", "enableEmail": "false", "enableShortMessage": "false", "email": "t***@163.com", "status": "ACTIVE" } ], "success": "true", "pageInfo": { "total": "2", "totalPage": "39", "pageSize": "20", "currentPage": "1" }, "pureListData": "false", "message": "success" } |  |
+| { "redirect": "false", "cost": "1000", "code": "200", "data": [ { "cellphoneNum": "00000000000", "enableDingTalk": "false", "displayName": "test", "lastLoginTime": "1231212", "default": "false", "deleted": "true", "loginName": "test", "mobileNationCode": "86", "id": "1", "enableEmail": "false", "enableShortMessage": "false", "email": "t***@163.com", "status": "ACTIVE" } ], "success": "true", "pageInfo": { "total": "2", "totalPage": "39", "pageSize": "20", "currentPage": "1" }, "pureListData": "false", "message": "success" } |   |
 
-###### 4.1.1.4.18. ListUsers
+###### 4.1.1.4.18 ListUsers
+
+调用ListUsers获取当前用户可见的用户列表。
 
 **请求头**
 
@@ -9283,34 +9949,34 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 |---|---|---|---|
 | cost | Integer | 24 | 接口响应耗时，单位毫秒（ms）。 |
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
-| data | Array of dataItem |  | 响应结果。 |
+| data | Array of dataItem |   | 响应结果。 |
 | cellphoneNum | String | 188****8888 | 用户手机号码。 |
 | default | Boolean | false | 是否为预置用户。 说明预置用户在系统初始化时生成，创建的用户此字段默认为fasle。 |
-| defaultRole | Struct |  | 用户的默认角色。 |
+| defaultRole | Struct |   | 用户的默认角色。 |
 
-| active | Boolean | true | 用户的默认角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |  |  |  |
+| active | Boolean | true | 用户的默认角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |   |   |   |
 |---|---|---|---|---|---|---|
-| arId | String | ar-99999****** | 用户的默认角色唯一编码。 |  |  |  |
-| code | String | ROLEORGANIZATIONADMIN _ _ | 用户的默认角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| default | Boolean | true | 用户的默认是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.organizationAdmin.de scription | 用户的默认角色描述。 |  |  |  |
-| enable | Boolean | true | 用户的默认角色是否有效。 |  |  |  |
-| id | Integer | 4 | 用户的默认角色ID。 |  |  |  |
-| muserId | String | admin | 用户的默认角色最近一次修改的修改者用户名。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 用户的默认角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 用户的默认角色所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 用户的默认是否为RAM角色。 |  |  |  |
-| roleLevel | Integer | 2147483647 | 用户的默认角色等级。 说明该参数无实际作用。 |  |  |  |
-| roleName | String | defaultRole.organizationAdmin.na me | 用户的默认角色名称。 |  |  |  |
-| roleRange | String | roleRange.orgAndSubOrgs | 用户的默认角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |  |  |
-| roleType | String | ROLETYPEASCM _ | 用户的默认角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |  |  |
-| deleted | Boolean | false | 用户的默认用户是否已删除。 |  |  |  |
-| displayName | String | testuser2022 | 用户显示名称。 |  |  |  |
-| email | String | test@example.com | 用户邮箱。 |  |  |  |
-| enableDingTalk | Boolean | true | 是否启用钉钉通知。 |  |  |  |
+| arId | String | ar-99999****** | 用户的默认角色唯一编码。 |   |   |   |
+| code | String | ROLEORGANIZATIONADMIN _ _ | 用户的默认角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| default | Boolean | true | 用户的默认是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.organizationAdmin.de scription | 用户的默认角色描述。 |   |   |   |
+| enable | Boolean | true | 用户的默认角色是否有效。 |   |   |   |
+| id | Integer | 4 | 用户的默认角色ID。 |   |   |   |
+| muserId | String | admin | 用户的默认角色最近一次修改的修改者用户名。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 用户的默认角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 用户的默认角色所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 用户的默认是否为RAM角色。 |   |   |   |
+| roleLevel | Integer | 2147483647 | 用户的默认角色等级。 说明该参数无实际作用。 |   |   |   |
+| roleName | String | defaultRole.organizationAdmin.na me | 用户的默认角色名称。 |   |   |   |
+| roleRange | String | roleRange.orgAndSubOrgs | 用户的默认角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |   |   |
+| roleType | String | ROLETYPEASCM _ | 用户的默认角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |   |   |
+| deleted | Boolean | false | 用户的默认用户是否已删除。 |   |   |   |
+| displayName | String | testuser2022 | 用户显示名称。 |   |   |   |
+| email | String | test@example.com | 用户邮箱。 |   |   |   |
+| enableDingTalk | Boolean | true | 是否启用钉钉通知。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | enableEmail | Boolean | true | 是否启用邮件通知。 |
@@ -9319,12 +9985,12 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | id | Integer | 5817 | 用户ID。 |
 | lastLoginTime | Long | 1606675230000 | 用户最近一次登录的时间。 说明此参数已经废弃。 |
 | loginName | String | testuser2022 | 用户登录名。 |
-| loginPolicy | Struct |  | 用户所使用的登录策略。 |
+| loginPolicy | Struct |   | 用户所使用的登录策略。 |
 | cuserId | String | admin | 登录策略创建者的用户名。 |
 | default | Boolean | false | 是否为默认登录策略。 |
 | enable | Boolean | true | 登录策略是否有效。 |
 | id | Integer | 1084 | 登录策略ID。 |
-| ipRanges | Array of ipRange |  | 登录策略IP段。 |
+| ipRanges | Array of ipRange |   | 登录策略IP段。 |
 | ipRange | String | 10.48.16.1/24 | 登录策略的IP范围。 |
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | protocol | String | IPV4 | 登录策略使用的协议，仅支持IPv4。 |
@@ -9334,12 +10000,12 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | organizationVisibility | String | organizationVisibility.global | 登录策略共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 策略所属组织ID。 |
 | rule | String | DENY | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRange |  | 登录策略的时间段。 |
+| timeRanges | Array of timeRange |   | 登录策略的时间段。 |
 | endTime | String | 18:00 | 登录策略生效时间段的结束时间。 |
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | startTime | String | 08:00 | 登录策略生效时间段的开始时间。 |
 | mobileNationCode | String | 86 | 用户手机号码的国际区号。 |
-| organization | Struct |  | 用户所属组织的信息。 |
+| organization | Struct |   | 用户所属组织的信息。 |
 | alias | String | sub-org-1 | 组织别名。系统自动生成，一般与组织名称一致。 |
 
 | ctime | Long | 1657608949009 | 用户所属组织创建的时间。 |
@@ -9358,60 +10024,60 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | uuid | String | org- 101cc0654e910a420927000w | 用户所属组织UUID。 |
 | parentPk | String | 1127157608934563 | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |
 | primaryKey | String | 259258662544685329 | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |
-| roles | Array of role |  | 角色列表。 |
+| roles | Array of role |   | 角色列表。 |
 | active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |
 | arId | String | ar-99999****** | 角色唯一编码。 |
 
-| code | String | ROLEGLOBALRESOURCEAUDIT _ _ _ OR | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
+| code | String | ROLEGLOBALRESOURCEAUDIT _ _ _ OR | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者的用户名。 |  |  |  |
-| default | Boolean | true | 角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、 平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.globalResourceAudito r.description | 角色描述。 |  |  |  |
-| enable | Boolean | true | 用户角色是否有效。 |  |  |  |
-| id | Integer | 6 | 角色ID。 |  |  |  |
-| muserId | String | admin | 角色最近一次修改的修改者用户名。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 角色是否为RAM角色。 |  |  |  |
-| roleLevel | Integer | 2147483647 | 角色的等级。 说明该参数无实际作用。 |  |  |  |
-| roleName | String | defaultRole.globalResourceAudito r.name | 角色的名称。 |  |  |  |
-| roleRange | String | roleRange.allOrganizations | 角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |  |  |
-| roleType | String | ROLETYPEASCM _ | 角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |  |  |
-| status | String | active | 用户状态。 active：激活。 inactive：禁用。 |  |  |  |
-| userGroupRoles | Array of userGroupRole |  | 用户所属用户组所绑定的角色列表。 |  |  |  |
-| active | Boolean | true | 用户组所绑定的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-99999****** | 用户组所绑定的角色唯一编码。 |  |  |  |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者的用户名。 |   |   |   |
+| default | Boolean | true | 角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、 平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.globalResourceAudito r.description | 角色描述。 |   |   |   |
+| enable | Boolean | true | 用户角色是否有效。 |   |   |   |
+| id | Integer | 6 | 角色ID。 |   |   |   |
+| muserId | String | admin | 角色最近一次修改的修改者用户名。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 角色是否为RAM角色。 |   |   |   |
+| roleLevel | Integer | 2147483647 | 角色的等级。 说明该参数无实际作用。 |   |   |   |
+| roleName | String | defaultRole.globalResourceAudito r.name | 角色的名称。 |   |   |   |
+| roleRange | String | roleRange.allOrganizations | 角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |   |   |
+| roleType | String | ROLETYPEASCM _ | 角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |   |   |
+| status | String | active | 用户状态。 active：激活。 inactive：禁用。 |   |   |   |
+| userGroupRoles | Array of userGroupRole |   | 用户所属用户组所绑定的角色列表。 |   |   |   |
+| active | Boolean | true | 用户组所绑定的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-99999****** | 用户组所绑定的角色唯一编码。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
-| code | String | ROLERESOURCESETADMIN _ _ _ | 用户组所绑定的角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
+| code | String | ROLERESOURCESETADMIN _ _ _ | 用户组所绑定的角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 用户组所绑定的角色创建者的用户名。 |  |  |  |
-| default | Boolean | true | 用户组所绑定的是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.resourceSetAdmin.de scription | 用户组所绑定的角色描述。 |  |  |  |
-| enable | Boolean | true | 用户组所绑定的角色是否有效。 |  |  |  |
-| id | Integer | 5 | 用户组所绑定的角色ID。 |  |  |  |
-| muserId | String | admin | 用户组所绑定的角色最近一次修改的修改者用户名。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 用户组所绑定的角色的共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 用户组所绑定角色的所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 用户组所绑定的角色是否为RAM角色。 |  |  |  |
-| roleLevel | Integer | 2147483647 | 用户组所绑定角色的等级。 说明保留字段，无实际作用。 |  |  |  |
-| roleName | String | defaultRole.resourceSetAdmin.na me | 用户组所绑定角色的名称。 |  |  |  |
-| roleRange | String | roleRange.resourceSet | 用户组所绑定角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |  |  |
-| roleType | String | ROLETYPEASCM _ | 用户组所绑定角色的类型。 ROLETYPE _RAM：RAM角色 ROLETYPE _ASCM：自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role |  |  |  |
-| userGroups | Array of userGroup |  | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |  |  |  |
-| augId | String | aug-101de696afc90a420d****** | 用户组唯一编码。 |  |  |  |
-| createTimeStamp | Long | 1606791494471 | 用户组创建时间。 |  |  |  |
-| groupName | String | testUserGroup01 | 用户组名称。 |  |  |  |
-| id | Integer | 24 | 用户组ID。 |  |  |  |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 用户组所绑定的角色创建者的用户名。 |   |   |   |
+| default | Boolean | true | 用户组所绑定的是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.resourceSetAdmin.de scription | 用户组所绑定的角色描述。 |   |   |   |
+| enable | Boolean | true | 用户组所绑定的角色是否有效。 |   |   |   |
+| id | Integer | 5 | 用户组所绑定的角色ID。 |   |   |   |
+| muserId | String | admin | 用户组所绑定的角色最近一次修改的修改者用户名。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 用户组所绑定的角色的共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 用户组所绑定角色的所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 用户组所绑定的角色是否为RAM角色。 |   |   |   |
+| roleLevel | Integer | 2147483647 | 用户组所绑定角色的等级。 说明保留字段，无实际作用。 |   |   |   |
+| roleName | String | defaultRole.resourceSetAdmin.na me | 用户组所绑定角色的名称。 |   |   |   |
+| roleRange | String | roleRange.resourceSet | 用户组所绑定角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |   |   |
+| roleType | String | ROLETYPEASCM _ | 用户组所绑定角色的类型。 ROLETYPE _RAM：RAM角色 ROLETYPE _ASCM：自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role |   |   |   |
+| userGroups | Array of userGroup |   | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |   |   |   |
+| augId | String | aug-101de696afc90a420d****** | 用户组唯一编码。 |   |   |   |
+| createTimeStamp | Long | 1606791494471 | 用户组创建时间。 |   |   |   |
+| groupName | String | testUserGroup01 | 用户组名称。 |   |   |   |
+| id | Integer | 24 | 用户组ID。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
-| organization | Struct |  | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，请根据 organizationId参数通过GetOrganization接口查询。 |
+| organization | Struct |   | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，请根据 organizationId参数通过GetOrganization接口查询。 |
 |---|---|---|---|
 | alias | String | test | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1606791494471 | 组织创建时间。 |
@@ -9428,39 +10094,39 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | supportRegions | String | cn-qingdao-****-d01 | 可用区列表。 |
 | uuid | String | 123456 | 组织UUID。 |
 | organizationId | Integer | 1 | 用户组所属组织的ID。 |
-| resourceSets | Array of resourceSet |  | 资源集列表。 说明此参数已经废弃。 |
+| resourceSets | Array of resourceSet |   | 资源集列表。 说明此参数已经废弃。 |
 | creator | String | admin | 资源集创建者的用户名。 |
 | gmtCreated | Long | 1606791494471 | 资源集创建时间。 |
 | id | Integer | 1 | 资源集ID。 |
 | organizationID | Integer | 2 | 资源集所属组织的ID。 |
 
-| resourceGroupName | String | resourcetest _ | 资源集名称。 |  |  |  |
+| resourceGroupName | String | resourcetest _ | 资源集名称。 |   |   |   |
 |---|---|---|---|---|---|---|
-| rsId | String | 123456 | 资源集唯一编码。 |  |  |  |
-| roles | Array of role |  | 用户组角色列表。 说明此参数已经废弃。 |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |  |  |  |
-| arId | String | 123456 | 角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者。 |  |  |  |
-| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | test | 角色描述。 |  |  |  |
-| enable | Boolean | true | 角色是否有效。 |  |  |  |
-| id | Integer | 1 | 角色ID。 |  |  |  |
-| muserId | String | admin | 角色最近一次修改的修改者用户名。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 是否为RAM角色。 |  |  |  |
-| roleLevel | Integer | 1231 | 角色等级。 说明该参数无实际意义。 |  |  |  |
-| roleName | String | defaultRole.resourceUser.name | 角色名称。 |  |  |  |
-| roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |  |  |
+| rsId | String | 123456 | 资源集唯一编码。 |   |   |   |
+| roles | Array of role |   | 用户组角色列表。 说明此参数已经废弃。 |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |   |   |   |
+| arId | String | 123456 | 角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者。 |   |   |   |
+| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | test | 角色描述。 |   |   |   |
+| enable | Boolean | true | 角色是否有效。 |   |   |   |
+| id | Integer | 1 | 角色ID。 |   |   |   |
+| muserId | String | admin | 角色最近一次修改的修改者用户名。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 是否为RAM角色。 |   |   |   |
+| roleLevel | Integer | 1231 | 角色等级。 说明该参数无实际意义。 |   |   |   |
+| roleName | String | defaultRole.resourceUser.name | 角色名称。 |   |   |   |
+| roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 |---|---|---|---|
-| users | Array of user |  | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表。 |
+| users | Array of user |   | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表。 |
 | accountType | Integer | 1 | 账号类型。 说明该参数已废弃。 |
 | active | Boolean | true | 用户是否有效。 |
 | aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |
@@ -9484,34 +10150,34 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | password | String | H2xWN****** | 用户密码。 |
 | ramUser | Boolean | true | 是否为RAM用户（子账号）。 |
 
-| userLoginCtrlId | Integer | 34 | 登录策略ID。 |  |  |  |
+| userLoginCtrlId | Integer | 34 | 登录策略ID。 |   |   |   |
 |---|---|---|---|---|---|---|
-| username | String | test | 用户显示名。 |  |  |  |
-| userRoles | Array of userRole |  | 用户所绑定的角色的列表。 |  |  |  |
-| active | Boolean | true | 用户所绑定的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-9999****** | 用户所绑定角色的唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 用户所绑定角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 用户所绑定角色创建者的用户名。 |  |  |  |
-| default | Boolean | true | 用户所绑定角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.resourceUser.descript ion | 用户所绑定角色的描述。 |  |  |  |
-| enable | Boolean | true | 用户所绑定角色是否有效。 |  |  |  |
-| id | Integer | 2 | 用户所绑定角色ID。 |  |  |  |
-| muserId | String | admin | 用户所绑定角色最近一次修改的修改者用户名。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 用户所绑定角色的共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 用户所绑定角色的所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 用户所绑定角色是否为RAM角色。 |  |  |  |
-| roleLevel | Integer | 2147483647 | 用户所绑定角色的等级。 说明保留字段，无实际作用。 |  |  |  |
-| roleName | String | defaultRole.resourceUser.name | 用户所绑定角色的名称。 |  |  |  |
-| roleRange | String | roleRange.resourceSet | 用户所绑定角色的管理权限： roleRange.allOrganizations为所有组织。 roleRange.orgAndSubOrgs为本组织及级联下级组织。 roleRange.resourceSet为资源集。 roleRange.userGroup为RAM角色所在用户组。 |  |  |  |
-| roleType | String | ROLETYPEASCM _ | 用户所绑定角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |  |  |
+| username | String | test | 用户显示名。 |   |   |   |
+| userRoles | Array of userRole |   | 用户所绑定的角色的列表。 |   |   |   |
+| active | Boolean | true | 用户所绑定的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-9999****** | 用户所绑定角色的唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 用户所绑定角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 用户所绑定角色创建者的用户名。 |   |   |   |
+| default | Boolean | true | 用户所绑定角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.resourceUser.descript ion | 用户所绑定角色的描述。 |   |   |   |
+| enable | Boolean | true | 用户所绑定角色是否有效。 |   |   |   |
+| id | Integer | 2 | 用户所绑定角色ID。 |   |   |   |
+| muserId | String | admin | 用户所绑定角色最近一次修改的修改者用户名。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 用户所绑定角色的共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 用户所绑定角色的所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 用户所绑定角色是否为RAM角色。 |   |   |   |
+| roleLevel | Integer | 2147483647 | 用户所绑定角色的等级。 说明保留字段，无实际作用。 |   |   |   |
+| roleName | String | defaultRole.resourceUser.name | 用户所绑定角色的名称。 |   |   |   |
+| roleRange | String | roleRange.resourceSet | 用户所绑定角色的管理权限： roleRange.allOrganizations为所有组织。 roleRange.orgAndSubOrgs为本组织及级联下级组织。 roleRange.resourceSet为资源集。 roleRange.userGroup为RAM角色所在用户组。 |   |   |   |
+| roleType | String | ROLETYPEASCM _ | 用户所绑定角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | message | String | success | 错误提示信息。 说明无论是否调用成功都会返回。一般调用成功返回success，调用失败返回自定义的错误信息或者返回异常栈中的错误信息。 |
 |---|---|---|---|
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 10 | 每页数据条数。 |
 | total | Integer | 1 | 数据总条数。 |
@@ -9522,20 +10188,24 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
-```json
-{
-    "loginName": "testuser",
-    "roleId": 6
-}
+```
+POST /ascm/auth/user/listUsers HTTP/1.1
 ```
 
-正常返回示例
+公共请求头 `{`
+
+```json
+    "loginName": "testuser",
+    "roleId": 6
+```
+
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>188</cost> <code>200</code> <data> <cellphoneNum>188*****188</cellphoneNum> <enableDingTalk>false</enableDingTalk> <displayName>user_test</displayName> <parentPk>1689406703302188</parentPk> <lastLoginTime>1606675230000</lastLoginTime> <default>false</default> <deleted>false</deleted> <loginName>user_test</loginName> <mobileNationCode>86</mobileNationCode> <id>1</id> <enableEmail>false</enableEmail> <enableShortMessage>false</enableShortMessage> <email>xxx@alibaba-inc.com</email> <status>ACTIVE</status> <primaryKey>212530506704030466</primaryKey> </data> <data> <userGroupRoles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>111</arId> <code>ROLE_RESOURCE_USER</code> <description>test</description> |  |
+| <redirect>false</redirect> <cost>188</cost> <code>200</code> <data> <cellphoneNum>188*****188</cellphoneNum> <enableDingTalk>false</enableDingTalk> <displayName>user_test</displayName> <parentPk>1689406703302188</parentPk> <lastLoginTime>1606675230000</lastLoginTime> <default>false</default> <deleted>false</deleted> <loginName>user_test</loginName> <mobileNationCode>86</mobileNationCode> <id>1</id> <enableEmail>false</enableEmail> <enableShortMessage>false</enableShortMessage> <email>xxx@alibaba-inc.com</email> <status>ACTIVE</status> <primaryKey>212530506704030466</primaryKey> </data> <data> <userGroupRoles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>111</arId> <code>ROLE_RESOURCE_USER</code> <description>test</description> |   |
 
 ```xml
 desc pto test/desc pto
@@ -9746,11 +10416,15 @@ desc pto test/desc pto
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 188, "code": 200, "data": [ { "cellphoneNum": "188*****188", "enableDingTalk": false, "displayName": "user_test", "parentPk": 1689406703302188, "lastLoginTime": 1606675230000, "default": false, "deleted": false, "loginName": "user_test", "mobileNationCode": 86, "id": 1, "enableEmail": false, "enableShortMessage": false, "email": "xxx@alibaba-inc.com", "status": "ACTIVE", "primaryKey": 212530506704030460 }, { "userGroupRoles": { "roleRange": "roleRange.orgAndSubOrgs", "rAMRole": false, "muserId": "admin", "arId": 111, "code": "ROLE_RESOURCE_USER", "description": "test", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "role_test", "roleLevel": 111, "id": 1, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": [ { "organizationId": 1, "createTimeStamp": 1606791494471, "groupName": "ack-user-old", "augId": 1111, "id": 1 }, { "resourceSets": { "organizationID": 1, "creator": "admin", "resourceGroupName": "resource_test", "gmtCreated": 1606791494471, "rsId": 123456, "id": 1 |  |
+| { "redirect": false, "cost": 188, "code": 200, "data": [ { "cellphoneNum": "188*****188", "enableDingTalk": false, "displayName": "user_test", "parentPk": 1689406703302188, "lastLoginTime": 1606675230000, "default": false, "deleted": false, "loginName": "user_test", "mobileNationCode": 86, "id": 1, "enableEmail": false, "enableShortMessage": false, "email": "xxx@alibaba-inc.com", "status": "ACTIVE", "primaryKey": 212530506704030460 }, { "userGroupRoles": { "roleRange": "roleRange.orgAndSubOrgs", "rAMRole": false, "muserId": "admin", "arId": 111, "code": "ROLE_RESOURCE_USER", "description": "test", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "role_test", "roleLevel": 111, "id": 1, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": [ { "organizationId": 1, "createTimeStamp": 1606791494471, "groupName": "ack-user-old", "augId": 1111, "id": 1 }, { "resourceSets": { "organizationID": 1, "creator": "admin", "resourceGroupName": "resource_test", "gmtCreated": 1606791494471, "rsId": 123456, "id": 1 |   |
+
+```
+                        id: 1
+```
+
+`},`
 
 ```json
-                        id: 1
-                    },
                     "users": {
                         "muserId": "admin",
                         "backendAccountType": "RamUser",
@@ -9776,7 +10450,11 @@ desc pto test/desc pto
                         "ramUser": true,
                         "enableEmail": false,
                         "username": "test"
-                    },
+```
+
+`},`
+
+```json
                     "roles": {
                         "roleRange": "roleRange.orgAndSubOrgs",
                         "rAMRole": false,
@@ -9794,9 +10472,11 @@ desc pto test/desc pto
                         "id": 1,
                         "organizationVisibility": "organizationVisibility.global",
                         "cuserId": "admin"
-                    }
-                },
-                {
+```
+
+`}` `},` `{`
+
+```json
                     "organization": {
                         "muserId": "admin",
                         "internal": true,
@@ -9812,11 +10492,9 @@ desc pto test/desc pto
                         "alias": "test",
                         "id": 1,
                         "cuserId": "admin"
-                    }
-                }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
             "userRoles": {
@@ -9836,7 +10514,11 @@ desc pto test/desc pto
                 "id": 1,
                 "organizationVisibility": "defaultRole.resourceUser.description",
                 "cuserId": "admin"
-            },
+```
+
+`},`
+
+```json
             "accessKeys": {
                 "ctime": 1606675230000,
                 "id": 1,
@@ -9847,7 +10529,11 @@ desc pto test/desc pto
                 "cuserId": 5013,
                 "status": "ACTIVE",
                 "accesskeyId": "JGdgSN2p******"
-            },
+```
+
+`},`
+
+```json
             "roles": {
                 "roleRange": "roleRange.orgAndSubOrgs",
                 "rAMRole": false,
@@ -9865,9 +10551,11 @@ desc pto test/desc pto
                 "id": 1,
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            }
-        },
-        {
+```
+
+`}` `},` `{`
+
+```json
             "defaultRole": {
                 "roleRange": "roleRange.orgAndSubOrgs",
                 "rAMRole": false,
@@ -9884,13 +10572,21 @@ desc pto test/desc pto
                 "roleLevel": 1,
                 "id": 1,
                 "organizationVisibility": "organizationVisibility.global"
-            },
+```
+
+`},`
+
+```json
             "loginPolicy": {
                 "ipRanges": {
                     "ipRange": "0.0.0.0",
                     "protocol": "IPV4",
                     "loginPolicyId": 1
-                },
+```
+
+`},`
+
+```json
                 "muserId": "admin",
                 "default": false,
                 "ownerOrganizationId": 1,
@@ -9898,7 +10594,11 @@ desc pto test/desc pto
                     "startTime": 0,
                     "loginPolicyId": 1,
                     "endTime": "24:00"
-                },
+```
+
+`},`
+
+```json
                 "enable": true,
                 "name": "policy_test",
                 "rule": "ALLOW",
@@ -9906,7 +10606,11 @@ desc pto test/desc pto
                 "organizationVisibility": "organizationVisibility.global",
                 "lpId": 111,
                 "cuserId": "admin"
-            },
+```
+
+`},`
+
+```json
             "organization": {
                 "muserId": "admin",
                 "internal": true,
@@ -9922,11 +10626,9 @@ desc pto test/desc pto
                 "alias": "test",
                 "id": 1,
                 "cuserId": "admin"
-            }
-        }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "success": true,
@@ -9938,12 +10640,15 @@ desc pto test/desc pto
 
 ```json
         "currentPage": 1
-    },
-    "message": "success"
-}
 ```
 
-###### 4.1.1.4.19. ListUsersInsideRole
+`},`
+
+```json
+    "message": "success"
+```
+
+###### 4.1.1.4.19 ListUsersInsideRole
 
 查询某角色下用户集。
 
@@ -9971,12 +10676,12 @@ POST /ascm/auth/user/listUsersInsideRole HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| action | String | ListUsersInsideRole |  |
+| action | String | ListUsersInsideRole |   |
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 
 | cost | Long | 22 | 接口响应耗时，单位毫秒（ms）。 |
 |---|---|---|---|
-| data | Array of userKeyInfo |  | 用户集。 |
+| data | Array of userKeyInfo |   | 用户集。 |
 | Id | Integer | 5003 | 用户ID。 |
 | displayName | String | admin | 用户显示名。 |
 | loginName | String | admin | 用户名称。 |
@@ -9987,7 +10692,7 @@ POST /ascm/auth/user/listUsersInsideRole HTTP/1.1
 | errorKey | String | ascm.auth.InvalidParameter | 错误码。 ascm.auth.ServerUnknownException：服务内部发生未知异常。 ascm.auth.InternalError：内部错误。 ascm.auth.InvalidParameter：参数错误。 ascm.auth.SystemEncodeException：系统编码异常。 ascm.auth.NetIOException：后端网络存在异常。 ascm.auth.CallBackendServiceReturnEmptyException：调用后端服务，返回了空的Response。 ascm.auth.ForbidCallTheInterface：该功能已经下线，禁止调用。 ascm.auth.NoPermission：没有权限。 ascm.auth.CallTairException：调用Tair服务异常。 ascm.auth.EntityNotExist.Organization：组织不存在。 ascm.auth.EntityNotExist.UserGroup：用户组不存在。 ascm.auth.account.notLoggedIn：用户未登录或登录状态失效。 ascm.auth.EntityNotExist.User：用户不存在。 ascm.auth.exceeded.userUserGroup：用户加入的用户组数量超过限制。 ascm.auth.UnknownException：内部未知异常。 ascm.auth.CallDataBaseException：访问数据库异常。 ascm.auth.PageSizeBeyondQuota：PageSize不能超过限定数值。 ascm.auth.internalServerError：服务出现内部错误，请检查服务。 ascm.auth.EntityNotExist：实体不存在。 |
 | extraMessage | String | success | 额外的提示信息，对错误提示信息的补充说明。 说明仅在接口调用失败异常时返回。 |
 | message | String | success | 错误提示信息。 说明无论是否调用成功都会返回。一般调用成功返回success，调用失败返回自定义的错误信息或者返回异常栈中的错误信息。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页码。 |
 | pageSize | Integer | 10 | 每页数据条数。 |
 | total | Integer | 10 | 数据总条数。 |
@@ -10006,29 +10711,35 @@ POST /ascm/auth/user/listUsersInsideRole HTTP/1.1
 POST /ascm/auth/user/listUsersInsideRole HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{ "RoleId": "1" }
+"RoleId": "1"
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <ServerRole>unimanager-base.IdentityService#</ServerRole> <Action> ListUsersInsideRole</Action> <SuccessResponse>true</SuccessResponse> <PageInfo> <TotalPage>1</TotalPage> <PageSize>10</PageSize> <CurrentPage>1</CurrentPage> <Total>10</Total> </PageInfo> <RequestId>5FE0023D-73C3-481E-926D-17A2CF******</RequestId> <Message>success</Message> <ErrorKey>ascm.auth.InvalidParamete</ErrorKey> <Data> <OrganizationName>test</OrganizationName> <Status>ACTIVE</Status> <LoginName>admin</LoginName> <DisplayName>admin</DisplayName> <OrganizationId>3</OrganizationId> <Id>5003</Id> </Data> <Domain>ascm.aliyun.com</Domain> <ExtraMessage>success</ExtraMessage> <Cost>22</Cost> <Code>200</Code> |  |
+| <ServerRole>unimanager-base.IdentityService#</ServerRole> <Action> ListUsersInsideRole</Action> <SuccessResponse>true</SuccessResponse> <PageInfo> <TotalPage>1</TotalPage> <PageSize>10</PageSize> <CurrentPage>1</CurrentPage> <Total>10</Total> </PageInfo> <RequestId>5FE0023D-73C3-481E-926D-17A2CF******</RequestId> <Message>success</Message> <ErrorKey>ascm.auth.InvalidParamete</ErrorKey> <Data> <OrganizationName>test</OrganizationName> <Status>ACTIVE</Status> <LoginName>admin</LoginName> <DisplayName>admin</DisplayName> <OrganizationId>3</OrganizationId> <Id>5003</Id> </Data> <Domain>ascm.aliyun.com</Domain> <ExtraMessage>success</ExtraMessage> <Cost>22</Cost> <Code>200</Code> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "ServerRole": "unimanager-base.IdentityService#", "Action": "ListUsersInsideRole", "SuccessResponse": true, "PageInfo": { "TotalPage": 1, "PageSize": 10, "CurrentPage": 1, "Total": 10 }, "RequestId": "5FE0023D-73C3-481E-926D-17A2CF******", "Message": "success", "ErrorKey": "ascm.auth.InvalidParamete", "Data": { "OrganizationName": "test", "Status": "ACTIVE", "LoginName": "admin", "DisplayName": "admin", "OrganizationId": 3, "Id": 5003 }, "Domain": "ascm.aliyun.com", "ExtraMessage": "success", "Cost": 22, "Code": 200 } |  |
+| { "ServerRole": "unimanager-base.IdentityService#", "Action": "ListUsersInsideRole", "SuccessResponse": true, "PageInfo": { "TotalPage": 1, "PageSize": 10, "CurrentPage": 1, "Total": 10 }, "RequestId": "5FE0023D-73C3-481E-926D-17A2CF******", "Message": "success", "ErrorKey": "ascm.auth.InvalidParamete", "Data": { "OrganizationName": "test", "Status": "ACTIVE", "LoginName": "admin", "DisplayName": "admin", "OrganizationId": 3, "Id": 5003 }, "Domain": "ascm.aliyun.com", "ExtraMessage": "success", "Cost": 22, "Code": 200 } |   |
 
-###### 4.1.1.4.20. LockUser
+###### 4.1.1.4.20 LockUser
+
+调用LockUser接口锁定指定用户，用户锁定后将无法变更该用户相关属性。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/lockUser HTTP/1.1
+```
 
 **请求参数**
 
@@ -10050,23 +10761,27 @@ POST /ascm/auth/user/listUsersInsideRole HTTP/1.1
 
 请求示例
 
-```json
-{
-    "loginName": "testuser"
-}
+```
+POST /ascm/auth/user/lockUser HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "loginName": "testuser"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":1000, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":1000, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.21. TransferUser
+###### 4.1.1.4.21 TransferUser
 
 TransferUser API允许管理员在统一云管平台中进行用户转移及角色重新分配。
 
@@ -10086,7 +10801,7 @@ PUT /user/action/transfer HTTP/1.1
 |---|---|---|---|---|---|
 | loginName | String | Body | 否 | testuser | 用户登录名。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10109,20 +10824,22 @@ PUT /user/action/transfer HTTP/1.1
 请求示例
 
 ```
-PUT /user/action/transfer HTTP/1.1 { }
+PUT /user/action/transfer HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"exampleErrKey", "code":"ROLE_RESOURCE_USER", "cost":121, "success":true, "message":"success" } |  |
+| { "errorKey":"exampleErrKey", "code":"ROLE_RESOURCE_USER", "cost":121, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <success>true</success> <message>success</message> |  |
+| <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.22. ModifyUserInformation
+###### 4.1.1.4.22 ModifyUserInformation
+
+调用ModifyUserInformation修改指定的系统用户或历史用户信息。
 
 **请求头**
 
@@ -10202,7 +10919,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 | --default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、 全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |
 | --description | String | defaultRole.resourceSetAdmin.de scription | 角色描述。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10230,7 +10947,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 | ---arId | String | 11231 | 角色唯一编码。 |
 | ---code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。内置角色code是固定的。自定义角色的code由系统生成，格式为：ROLE _英文大写的角色名称_随机串。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10256,7 +10973,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 | ---cellphoneNum | String | 188****8888 | 用户手机号码。 |
 | ---ctime | Long | 1607071602000 | 用户创建时间。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10292,7 +11009,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 | ---id | Integer | 25 | 组织ID。 |
 | ---internal | Boolean | false | 是否为预置组织。预置组织即系统自动生成的组织，也称为默认组织。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10318,31 +11035,31 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 | --organizationVisibility | String | organizationVisibility.global | 共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | --ownerOrganizationId | Integer | 1 | 所属组织ID。 |
 
-| 参数名称 | 类型 | 示例 | 说明 |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |
 |---|---|---|---|---|
-| --rAMRole | Boolean | false | 是否为RAM角色。 |  |
-| --roleLevel | Integer | 2147483647 | 角色等级。 说明该参数无实际作用。 |  |
-| --roleName | String | defaultRole.resourceUser.name | 角色名称。 |  |
-| --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限范围： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |
-| --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |
-| -cellphoneNum | String | 188****8888 | 修改后的用户手机号码。 |  |
-| -telephoneNum | String | 029******* | 修改后的用户座机号码。 |  |
-| -default | Boolean | false | 是否为预置用户。 |  |
-| -deleted | Boolean | false | 用户是否已被删除，已删除的用户为历史用户，历史用户可被修改。 true：已经被删除。 false：未被删除。 |  |
-| -displayName | String | testuser2022 | 用户显示名。 |  |
-| -email | String | test@example.com | 用户邮箱地址。 |  |
-| -enableDingTalk | Boolean | true | 是否启用钉钉通知。 |  |
-| -enableEmail | Boolean | true | 是否启用邮件通知。 |  |
-| -enableShortMessage | Boolean | true | 是否启用短信通知。 |  |
-| -id | Integer | 5817 | 用户ID。 |  |
-| -lastLoginTime | Long | 1606675230000 | 用户最近一次登录的时间。 |  |
-| -loginName | String | testuser2022 | 用户登录名。 |  |
-| -mobileNationCode | String | 86 | 国际电话区号。 |  |
-| -parentPk | String | 112715760893**** | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |  |
-| -primaryKey | String | 25925866254468**** | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号）一致。 |  |
-| -status | String | active | 用户状态。 active：激活。 inactive：禁用。 |  |
+| --rAMRole | Boolean | false | 是否为RAM角色。 |   |
+| --roleLevel | Integer | 2147483647 | 角色等级。 说明该参数无实际作用。 |   |
+| --roleName | String | defaultRole.resourceUser.name | 角色名称。 |   |
+| --roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限范围： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |
+| --roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |
+| -cellphoneNum | String | 188****8888 | 修改后的用户手机号码。 |   |
+| -telephoneNum | String | 029******* | 修改后的用户座机号码。 |   |
+| -default | Boolean | false | 是否为预置用户。 |   |
+| -deleted | Boolean | false | 用户是否已被删除，已删除的用户为历史用户，历史用户可被修改。 true：已经被删除。 false：未被删除。 |   |
+| -displayName | String | testuser2022 | 用户显示名。 |   |
+| -email | String | test@example.com | 用户邮箱地址。 |   |
+| -enableDingTalk | Boolean | true | 是否启用钉钉通知。 |   |
+| -enableEmail | Boolean | true | 是否启用邮件通知。 |   |
+| -enableShortMessage | Boolean | true | 是否启用短信通知。 |   |
+| -id | Integer | 5817 | 用户ID。 |   |
+| -lastLoginTime | Long | 1606675230000 | 用户最近一次登录的时间。 |   |
+| -loginName | String | testuser2022 | 用户登录名。 |   |
+| -mobileNationCode | String | 86 | 国际电话区号。 |   |
+| -parentPk | String | 112715760893**** | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |   |
+| -primaryKey | String | 25925866254468**** | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号）一致。 |   |
+| -status | String | active | 用户状态。 active：激活。 inactive：禁用。 |   |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10370,7 +11087,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 | ---protocol | String | IPV4 | 登录策略所使用的协议，目前仅支持IPv4。 |
 | --timeRanges | Array | - | 时间段。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -10411,20 +11128,24 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
-    "id":5817,
-    "loginName":"testuser2022"
-}
+```
+POST /ascm/auth/user/modifyUserInformation HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "id":5817,
+    "loginName":"testuser2022"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":89, "data":{ "cellphoneNum":"188****8888", "telephoneNum":"029*******", "displayName":"testuser2022", "enableDingTalk":true, "defaultRole":{ "roleRange":"roleRange.orgAndSubOrgs", "arId":"ar-9999****", "muserId":"admin", "rAMRole":false, "code":"ROLE_ORGANIZATION_ADMIN", "active":true, "description":"defaultRole.organizationAdmin.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.organizationAdmin.name", "id":4, "roleLevel":2147483647, "organizationVisibility":"organizationVisibility.global" }, "userRoles":[ { "roleRange":"roleRange.orgAndSubOrgs", "arId":"ar-9999******", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":2147483647, "cuserId":"admin", "organizationVisibility":"organizationVisibility.global" } ], "userGroups":[ { "roles":[ { "roleRange":"roleRange.orgAndSubOrgs", "arId":"11231", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"role_test", "roleType":"ROLETYPE_ASCM", "default":false, "ownerOrganizationId":1, "enable":true, |  |
+| { "code":"200", "cost":89, "data":{ "cellphoneNum":"188****8888", "telephoneNum":"029*******", "displayName":"testuser2022", "enableDingTalk":true, "defaultRole":{ "roleRange":"roleRange.orgAndSubOrgs", "arId":"ar-9999****", "muserId":"admin", "rAMRole":false, "code":"ROLE_ORGANIZATION_ADMIN", "active":true, "description":"defaultRole.organizationAdmin.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.organizationAdmin.name", "id":4, "roleLevel":2147483647, "organizationVisibility":"organizationVisibility.global" }, "userRoles":[ { "roleRange":"roleRange.orgAndSubOrgs", "arId":"ar-9999******", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"defaultRole.resourceUser.description", "roleType":"ROLETYPE_ASCM", "default":true, "ownerOrganizationId":1, "enable":true, "roleName":"defaultRole.resourceUser.name", "id":2, "roleLevel":2147483647, "cuserId":"admin", "organizationVisibility":"organizationVisibility.global" } ], "userGroups":[ { "roles":[ { "roleRange":"roleRange.orgAndSubOrgs", "arId":"11231", "muserId":"admin", "rAMRole":false, "code":"ROLE_RESOURCE_USER", "active":true, "description":"role_test", "roleType":"ROLETYPE_ASCM", "default":false, "ownerOrganizationId":1, "enable":true, |   |
 
-,
+`,`
 
 ```json
       "roleName":"role_test",
@@ -10432,15 +11153,18 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
       "roleLevel":11231,
       "cuserId":"admin",
       "organizationVisibility":"organizationVisibility.global"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "organizationId":3,
     "users":[
-     {
+```
+
+`{`
+
+```json
       "cellphoneNum":"188****8888",
       "muserId":"admin",
       "aliyunUser":false,
@@ -10465,31 +11189,37 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
       "email":"test@example.com",
       "enableShortMessage":false,
       "username":"test"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "groupName":"test",
     "augId":"11231",
     "resourceSets":[
-     {
+```
+
+`{`
+
+```json
       "organizationID":1,
       "creator":"admin",
       "resourceGroupName":"res_test",
       "gmtCreated":1606675230000,
       "rsId":"11231a",
       "id":1
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "createTimeStamp":1527690629357,
     "organization":[
-     {
+```
+
+`{`
+
+```json
       "muserId":"admin",
       "internal":false,
       "level":"0.1.24",
@@ -10504,17 +11234,15 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
       "ctime":1606791494471,
       "id":25,
       "cuserId":"admin"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "id":145
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "organization":{
@@ -10532,7 +11260,11 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
    "ctime":1606675230000,
    "id":1,
    "cuserId":"admin"
-  },
+```
+
+`},`
+
+```json
 "parentPk":"112715760893****"
 ```
 
@@ -10542,7 +11274,6 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
   "default":false,
   "deleted":false,
   "roles":[
-   {
     "roleRange":"roleRange.allOrganizations",
     "arId":"ar-9999******",
     "muserId":"admin",
@@ -10558,14 +11289,17 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
     "id":6,
     "roleLevel":11231,
     "organizationVisibility":"organizationVisibility.global"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "userGroupRoles":[
-   {
+```
+
+`{`
+
+```json
     "roleRange":"roleRange.resourceSet",
     "arId":"ar-9999******",
     "muserId":"admin",
@@ -10582,25 +11316,27 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
     "roleLevel":2147483647,
     "cuserId":"admin",
     "organizationVisibility":"organizationVisibility.global"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "loginName":"testuser2022",
   "accessKeys":[
-   {
+```
+
+`{`
+
+```json
     "ctime":1606675230000,
     "id":1,
     "region":"cn-qingdao-****-d01",
     "cuserId":"admin",
     "accesskeyId":"JGdgSN2pVY******",
     "status":"active"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "id":5817,
@@ -10612,25 +11348,31 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
   "status":"active",
   "loginPolicy":{
    "ipRanges":[
-    {
+```
+
+`{`
+
+```json
      "protocol":"IPV4",
      "ipRange":"10.***.***.1/24",
      "loginPolicyId":1084
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "timeRanges":[
-    {
+```
+
+`{`
+
+```json
      "loginPolicyId":1084,
      "startTime":"08:00",
      "endTime":"18:00"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "muserId":"admin",
@@ -10643,19 +11385,18 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
    "cuserId":"admin",
    "lpId":"lp-101de13d33320a420d2*****",
    "organizationVisibility":"organizationVisibility.global"
-  }
 ```
 
+`},`
+
 ```json
- },
  "success":true,
  "message":"success"
-}
 ```
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>89</cost> <data> <cellphoneNum>188****8888</cellphoneNum> <telephoneNum>029*******</telephoneNum> <displayName>testuser2022</displayName> <enableDingTalk>true</enableDingTalk> <defaultRole> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999****</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_ORGANIZATION_ADMIN</code> <active>true</active> <description>defaultRole.organizationAdmin.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.organizationAdmin.name</roleName> <id>4</id> <roleLevel>2147483647</roleLevel> <organizationVisibility>organizationVisibility.global</organizationVisibility> </defaultRole> <userRoles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999******</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>defaultRole.resourceUser.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>2</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>organizationVisibility.global</organizationVisibility> </userRoles> <userGroups> <roles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>11231</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>role_test</description> <roleType>ROLETYPE_ASCM</roleType> <default>false</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>role_test</roleName> <id>1</id> <roleLevel>11231</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>organizationVisibility.global</organizationVisibility> </roles> <organizationId>3</organizationId> <users> <cellphoneNum>188****8888</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>AscmUser</backendAccountType> <enableDingTalk>false</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1712261405521</mtime> <organizationId>1</organizationId> <default>false</default> <password>Harbor******</password> <deleted>false</deleted> <loginTime>1606675230000</loginTime> <userLoginCtrlId>34</userLoginCtrlId> <loginName>test</loginName> <ctime>1607071602000</ctime> <id>1</id> |  |
+| <code>200</code> <cost>89</cost> <data> <cellphoneNum>188****8888</cellphoneNum> <telephoneNum>029*******</telephoneNum> <displayName>testuser2022</displayName> <enableDingTalk>true</enableDingTalk> <defaultRole> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999****</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_ORGANIZATION_ADMIN</code> <active>true</active> <description>defaultRole.organizationAdmin.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.organizationAdmin.name</roleName> <id>4</id> <roleLevel>2147483647</roleLevel> <organizationVisibility>organizationVisibility.global</organizationVisibility> </defaultRole> <userRoles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>ar-9999******</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>defaultRole.resourceUser.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <id>2</id> <roleLevel>2147483647</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>organizationVisibility.global</organizationVisibility> </userRoles> <userGroups> <roles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <arId>11231</arId> <muserId>admin</muserId> <rAMRole>false</rAMRole> <code>ROLE_RESOURCE_USER</code> <active>true</active> <description>role_test</description> <roleType>ROLETYPE_ASCM</roleType> <default>false</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>role_test</roleName> <id>1</id> <roleLevel>11231</roleLevel> <cuserId>admin</cuserId> <organizationVisibility>organizationVisibility.global</organizationVisibility> </roles> <organizationId>3</organizationId> <users> <cellphoneNum>188****8888</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>AscmUser</backendAccountType> <enableDingTalk>false</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1712261405521</mtime> <organizationId>1</organizationId> <default>false</default> <password>Harbor******</password> <deleted>false</deleted> <loginTime>1606675230000</loginTime> <userLoginCtrlId>34</userLoginCtrlId> <loginName>test</loginName> <ctime>1607071602000</ctime> <id>1</id> |   |
 
 ```xml
    <id>1</id>
@@ -10747,7 +11488,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 {
   <enable>true</enable>
 ```
 
-l df l l S di / l
+`l` `d``f` `l` `l` `S` `d``i` `/` `l`
 
 ```xml
   <roleName>defaultRole.resourceSetAdmin.name</roleName>
@@ -10797,7 +11538,9 @@ l df l l S di / l
 </data> <success>true</success> <message>success</message>
 ```
 
-###### 4.1.1.4.23. RecoverUserByLoginName
+###### 4.1.1.4.23 RecoverUserByLoginName
+
+调用RecoverUserByLoginName恢复已删除用户。
 
 **请求参数**
 
@@ -10814,8 +11557,8 @@ l df l l S di / l
 |---|---|---|---|
 | code | String | 200 | 状态码。 |
 | cost | Integer | 1000 | 耗时时间。 |
-| data | Struct |  | 响应结果。 |
-| accessKeys | Array of accessKey |  | AccessKey信息列表。 |
+| data | Struct |   | 响应结果。 |
+| accessKeys | Array of accessKey |   | AccessKey信息列表。 |
 | accesskeyId | String | JGdgSN2p****** | AccessKey ID。 |
 
 | ctime | Long | 1606675230000 | AccessKey创建时间。 |
@@ -10826,7 +11569,7 @@ l df l l S di / l
 | status | String | ACTIVE | AccessKey是否有效：active为有效，inactive为无效。 |
 | cellphoneNum | String | 00000000000 | 用户手机号码。 |
 | default | Boolean | false | 是否为预置用户。 |
-| defaultRole | Struct |  | 默认角色。 |
+| defaultRole | Struct |   | 默认角色。 |
 | active | Boolean | true | 角色是否有效。 |
 | arId | String | 111 | 角色唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色Code。 |
@@ -10853,12 +11596,12 @@ l df l l S di / l
 |---|---|---|---|
 | lastLoginTime | Long | 1606675230000 | 用户最后登录时间。 |
 | loginName | String | test | 用户登录名。 |
-| loginPolicy | Struct |  | 登录策略。 |
+| loginPolicy | Struct |   | 登录策略。 |
 | cuserId | String | admin | 登录策略创建者。 |
 | default | Boolean | true | 是否为默认登录策略。 |
 | enable | Boolean | true | 登录策略是否有效。 |
 | id | Integer | 1 | 登录策略ID。 |
-| ipRanges | Array of ipRang |  | IP段。 |
+| ipRanges | Array of ipRang |   | IP段。 |
 | ipRange | String | 0.0.0.0/0 | IP范围。 |
 | loginPolicyId | Integer | 1 | 所属登录策略ID。 |
 | protocol | String | IPV4 | 使用协议。 |
@@ -10868,12 +11611,12 @@ l df l l S di / l
 | organizationVisibility | String | organizationVisibility.global | 登录策略共享范围：organizationVisibility.global为全局共享，organizationVisibility.organization为本组织内共享，organizationVisibility.orgAndSubOrgs为下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 所属组织ID。 |
 | rule | String | ALLOW | 规则：Allow为白名单，Deny为黑名单。 |
-| timeRanges | Array of timeRang |  | 时间段。 |
+| timeRanges | Array of timeRang |   | 时间段。 |
 | endTime | String | 24:00 | 结束时间。 |
 | loginPolicyId | Integer | 1 | 所属登录策略ID。 |
 | startTime | String | 00:00 | 开始时间。 |
 | mobileNationCode | String | 86 | 区号。 |
-| organization | Struct |  | 组织信息。 |
+| organization | Struct |   | 组织信息。 |
 | alias | String | test | 组织别名。 |
 | ctime | Long | 1606791494471 | 组织创建时间。 |
 | cuserId | String | admin | 组织创建者。 |
@@ -10892,7 +11635,7 @@ l df l l S di / l
 | uuid | String | 11231 | 组织UUID。 |
 | parentPk | String | 1689406703302188 | 主账号PK。 |
 | primaryKey | String | 212530506704030466 | 子账号PK。 |
-| roles | Array of role |  | 角色列表。 |
+| roles | Array of role |   | 角色列表。 |
 | active | Boolean | true | 角色是否有效。 |
 | arId | String | 112311 | 角色唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色Code。 |
@@ -10910,7 +11653,7 @@ l df l l S di / l
 | roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限：roleRange.allOrganizations为所有组织，roleRange.orgAndSubOrgs为本组织及级联下级组织，roleRange.resourceSet为资源集，roleRange.userGroup为RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型：ROLETYPE _RAM为RAM角色，ROLETYPE _ASCM为自定义角色。 |
 | status | String | ACTIVE | 用户状态：active为激活，inactive为禁用。 |
-| userGroupRoles | Array of userGroupRole |  | 用户组角色列表。 |
+| userGroupRoles | Array of userGroupRole |   | 用户组角色列表。 |
 
 | active | Boolean | true | 角色是否有效。 |
 |---|---|---|---|
@@ -10929,12 +11672,12 @@ l df l l S di / l
 | roleName | String | roletest _ | 角色名称。 |
 | roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限：roleRange.allOrganizations为所有组织，roleRange.orgAndSubOrgs为本组织及级联下级组织，roleRange.resourceSet为资源集，roleRange.userGroup为RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型：ROLETYPE _RAM为RAM角色，ROLETYPE _ASCM为自定义角色。 |
-| userGroups | Array of userGroups |  | 用户组列表。 |
+| userGroups | Array of userGroups |   | 用户组列表。 |
 | augId | String | 11231 | 用户组唯一编码。 |
 | createTimeStamp | Long | 1606675230000 | 用户组创建时间。 |
 | groupName | String | grouptest _ | 用户组名称。 |
 | id | Integer | 1 | 用户组ID。 |
-| organization | Struct |  | 组织信息。 |
+| organization | Struct |   | 组织信息。 |
 | alias | String | test | 组织别名。 |
 | ctime | Long | 1606675230000 | 组织创建时间。 |
 | cuserId | String | admin | 组织创建者。 |
@@ -10952,14 +11695,14 @@ l df l l S di / l
 | supportRegions | String | cn-qingdao-env17-d01 | 可选区列表。 |
 | uuid | String | 11231 | 组织UUID。 |
 | organizationId | Integer | 1 | 所属组织ID。 |
-| resourceSets | Array of resourceSet |  | 资源集列表。 |
+| resourceSets | Array of resourceSet |   | 资源集列表。 |
 | creator | String | admin | 资源集创建者。 |
 | gmtCreated | Long | 1606675230000 | 资源集创建时间。 |
 | id | Integer | 1 | 资源集ID。 |
 | organizationID | Integer | 1 | 所属组织ID。 |
 | resourceGroupName | String | restest _ | 资源集名称。 |
 | rsId | String | 11231 | 资源集唯一编码。 |
-| roles | Array of role |  | 角色列表。 |
+| roles | Array of role |   | 角色列表。 |
 | active | Boolean | true | 角色是否有效。 |
 | arId | String | 11231 | 角色唯一编码。 |
 | code | String | ROLERESOURCEUSER _ _ | 角色Code。 |
@@ -10978,7 +11721,7 @@ l df l l S di / l
 | roleRange | String | roleRange.orgAndSubOrgs | 角色管理权限：roleRange.allOrganizations为所有组织，roleRange.orgAndSubOrgs为本组织及级联下级组织，roleRange.resourceSet为资源集，roleRange.userGroup为RAM角色所在用户组。 |
 |---|---|---|---|
 | roleType | String | ROLETYPEASCM _ | 角色类型：ROLETYPE _RAM为RAM角色，ROLETYPE _ASCM为自定义角色。 |
-| users | Array of user |  | 用户列表。 |
+| users | Array of user |   | 用户列表。 |
 | accountType | Integer | 1 | 账号类型，此字段废弃，代码中不做处理，按默认值处理即可。 |
 | active | Boolean | true | 用户是否有效。 |
 | aliyunUser | Boolean | false | 是否为主账号。 |
@@ -11003,7 +11746,7 @@ l df l l S di / l
 | ramUser | Boolean | true | 是否为子账号。 |
 | userLoginCtrlId | Integer | 34 | 登录控制ID。 |
 | username | String | test | 用户显示名。 |
-| userRoles | Array of userRole |  | 用户角色列表。 |
+| userRoles | Array of userRole |   | 用户角色列表。 |
 | active | Boolean | true | 角色是否有效。 |
 | arId | String | 11321 | 角色唯一编码。 |
 
@@ -11035,11 +11778,11 @@ l df l l S di / l
 http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &OrganizationId=5
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <code>200</code> <cost>746</cost> <data> <cellphoneNum>13311111111</cellphoneNum> <displayName>fengyueSubOrgAdmin2</displayName> <enableDingTalk>true</enableDingTalk> <roles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <rAMRole>false</rAMRole> <code>ROLE_ORGANIZATION_ADMIN</code> <active>true</active> <description>defaultRole.organizationAdmin.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.organizationAdmin.name</roleName> / |  |
+| <redirect>false</redirect> <code>200</code> <cost>746</cost> <data> <cellphoneNum>13311111111</cellphoneNum> <displayName>fengyueSubOrgAdmin2</displayName> <enableDingTalk>true</enableDingTalk> <roles> <roleRange>roleRange.orgAndSubOrgs</roleRange> <rAMRole>false</rAMRole> <code>ROLE_ORGANIZATION_ADMIN</code> <active>true</active> <description>defaultRole.organizationAdmin.description</description> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.organizationAdmin.name</roleName> / |   |
 
 ```xml
         <id>4</id>
@@ -11121,7 +11864,7 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "1000", "code": "200", "data": { "cellphoneNum": "00000000000" |  |
+| { "redirect": "false", "cost": "1000", "code": "200", "data": { "cellphoneNum": "00000000000" |   |
 
 ```json
         cellphoneNum: 00000000000,
@@ -11141,11 +11884,19 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
             "roleLevel": "11321",
             "id": "1",
             "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "enableDingTalk": "false",
         "displayName": "test",
         "roles": [
-            {
+```
+
+`{`
+
+```json
                 "roleRange": "roleRange.orgAndSubOrgs",
                 "rAMRole": "false",
                 "muserId": "admin",
@@ -11162,36 +11913,41 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                 "id": "1",
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "loginPolicy": {
             "ipRanges": [
-                {
+```
+
+`{`
+
+```json
                     "ipRange": "0.0.0.0/0",
                     "protocol": "IPV4",
                     "loginPolicyId": "1"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "muserId": "admin",
             "default": "true",
             "ownerOrganizationId": "1",
             "timeRanges": [
-                {
+```
+
+`{`
+
+```json
                     "startTime": "00:00",
                     "loginPolicyId": "1",
                     "endTime": "24:00"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "enable": "true",
@@ -11201,34 +11957,47 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
             "organizationVisibility": "organizationVisibility.global",
             "lpId": "11231",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "parentPk": "1689406703302188",
         "lastLoginTime": "1606675230000",
         "userGroups": [
-            {
+```
+
+`{`
+
+```json
                 "organizationId": "1",
                 "createTimeStamp": "1606675230000",
                 "groupName": "group_test",
                 "augId": "11231",
                 "id": "1"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "resourceSets": [
-                    {
+```
+
+`{`
+
+```json
                         "organizationID": "1",
                         "creator": "admin",
                         "resourceGroupName": "res_test",
                         "gmtCreated": "1606675230000",
                         "rsId": "11231",
                         "id": "1"
-                    }
 ```
 
-`],` " " [
+`],` `"` `"` `[`
 
 ```json
                 "users": [
-                    {
                         "muserId": "admin",
                         "backendAccountType": "1",
                         "enableDingTalk": "false",
@@ -11253,14 +12022,17 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                         "ramUser": "true",
                         "enableEmail": "false",
                         "username": "test"
-                    }
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "roles": [
-                    {
+```
+
+`{`
+
+```json
                         "roleRange": "roleRange.orgAndSubOrgs",
                         "rAMRole": "false",
                         "muserId": "admin",
@@ -11277,14 +12049,11 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                         "id": "1",
                         "organizationVisibility": "organizationVisibility.global",
                         "cuserId": "admin"
-                    }
 ```
 
-]
+`}` `]` `},` `{`
 
 ```json
-            },
-            {
                 "organization": {
                     "muserId": "admin",
                     "internal": "false",
@@ -11300,15 +12069,17 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                     "alias": "test",
                     "id": "1",
                     "cuserId": "admin"
-                }
-            }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
         "userRoles": [
-            {
+```
+
+`{`
+
+```json
                 "roleRange": "roleRange.orgAndSubOrgs",
                 "rAMRole": "false",
                 "muserId": "admin",
@@ -11325,7 +12096,6 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                 "id": "1",
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            }
 ```
 
 `],`
@@ -11333,17 +12103,15 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
 ```json
         "default": "false",
         "accessKeys": [
-            {
                 "ctime": "1606675230000",
                 "id": "1",
                 "region": "cn-qingdao-env17-d01",
                 "cuserId": "admin",
                 "status": "ACTIVE",
                 "accesskeyId": "JGdgSN2p******"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "deleted": "false",
@@ -11363,9 +12131,17 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
             "alias": "test",
             "id": "1",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "userGroupRoles": [
-            {
+```
+
+`{`
+
+```json
                 "roleRange": "roleRange.orgAndSubOrgs",
                 "rAMRole": "false",
                 "muserId": "admin",
@@ -11382,10 +12158,9 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                 "id": "1",
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "mobileNationCode": "86",
@@ -11395,14 +12170,21 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
         "email": "t***@163.com",
         "status": "ACTIVE",
         "primaryKey": "212530506704030466"
-    },
+```
+
+`},`
+
+```json
     "success": "true",
     "pureListData": "false",
     "message": "success"
-}
 ```
 
-###### 4.1.1.4.24. RelateSystemWithUser
+`}`
+
+###### 4.1.1.4.24 RelateSystemWithUser
+
+调用RelateSystemWithUser接口为指定用户关联外部系统。
 
 **请求头**
 
@@ -11420,7 +12202,7 @@ POST /ascm/auth/user/relateSystemWithUser HTTP/1.1
 |---|---|---|---|---|---|
 | id | Integer | Body | 否 | 3 | 用户ID。 说明：用户登录名（loginName）与用户 ID（id）两个参数填写其中之一即可，指定需要关联外部系统的用户。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -11441,30 +12223,40 @@ POST /ascm/auth/user/relateSystemWithUser HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/auth/user/relateSystemWithUser HTTP/1.1 {
-    "id":3,
-    "relativeSystem": "cmp"
-}
+```
+POST /ascm/auth/user/relateSystemWithUser HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "id":3,
+    "relativeSystem": "cmp"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":1000, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":1000, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.25. RemoveRoleFromUser
+###### 4.1.1.4.25 RemoveRoleFromUser
+
+调用RemoveRoleFromUser接口移除用户已授权的角色。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/removeRoleFromUser HTTP/1.1
+```
 
 **请求参数**
 
@@ -11491,26 +12283,30 @@ POST /ascm/auth/user/relateSystemWithUser HTTP/1.1 {
 
 请求示例
 
-```json
-{
-    "roleId":6,
-    "loginName":"testuser"
-}
+```
+POST /ascm/auth/role/removeRoleFromUser HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+    "roleId":6,
+    "loginName":"testuser"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "redirect":false, "code":"200", "cost":1022, "success":true, "message":"success" } |  |
+| { "redirect":false, "code":"200", "cost":1022, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <code>200</code> <cost>1022</cost> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <code>200</code> <cost>1022</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.26. RemoveUserByLoginName
+###### 4.1.1.4.26 RemoveUserByLoginName
 
-删除后的用户为历史用户，可通过调用RecoverUserByLoginName接口恢复历史用户。
+调用RemoveUserByLoginName删除用户。 删除后的用户为历史用户，可通过调用RecoverUserByLoginName接口恢复历史用户。
 
 **请求头**
 
@@ -11540,33 +12336,29 @@ POST /ascm/auth/user/removeUserByLoginName HTTP/1.1
 | redirect | Boolean | false | 是否重定向。 true：重定向。 false：不重定向。 |
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败是否成功。 |
 
-**示例**
-
 请求示例
 
 ```
 POST /ascm/auth/user/removeUserByLoginName HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginName":"testuser2022"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>371</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>371</cost> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 371, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 371, "success": true, "message": "success" } |   |
 
-###### 4.1.1.4.27. RemoveCompletelyUserByLoginName
+###### 4.1.1.4.27 RemoveCompletelyUserByLoginName
 
 调用RemoveCompletelyUserByLoginName接口彻底删除用户，彻底删除用户后无法再恢复。
 
@@ -11600,30 +12392,34 @@ POST /ascm/auth/user/removeCompletelyUserByLoginName HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/auth/user/removeCompletelyUserByLoginName HTTP/1.1 {
-  "loginName":"testuser2022"
-}
+```
+POST /ascm/auth/user/removeCompletelyUserByLoginName HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+  "loginName":"testuser2022"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "code":"200",
  "cost":1000,
  "success":true,
  "message":"success"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.28. ResetPasswordByLoginName
+###### 4.1.1.4.28 ResetPasswordByLoginName
 
-只有组织管理员才可以重置该组织下的用户密码。 调用ResetPasswordByLoginName重置指定用户密码后，该用户的登录密码将被重置为系统自动生成的随机密码。重置后的密码可在Apsara Uni-manager运营控制台 >用户管理>查看用户信息中获取。用户重置密码后首次登录需要修改密码。 企业版v3.17.0及以上版本不推荐使用此接口，建议使用新接口ResetUserPasswordByLoginName。
+调用ResetPasswordByLoginName重置用户密码。 只有组织管理员才可以重置该组织下的用户密码。 调用ResetPasswordByLoginName重置指定用户密码后，该用户的登录密码将被重置为系统自动生成的随机密码。重置后的密码可在Apsara Uni-manager运营控制台 >用户管理>查看用户信息中获取。用户重置密码后首次登录需要修改密码。 企业版v3.17.0及以上版本不推荐使用此接口，建议使用新接口ResetUserPasswordByLoginName。
 
 **请求头**
 
@@ -11652,33 +12448,29 @@ POST /ascm/auth/user/resetPasswordByLoginName HTTP/1.1
 | redirect | Boolean | false | 是否重定向。 true：重定向。 false：不重定向。 |
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败是否成功。 |
 
-**示例**
-
 请求示例
 
 ```
 POST /ascm/auth/user/resetPasswordByLoginName HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginName": "testu"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.4.29. ResetUserPasswordByLoginName
+###### 4.1.1.4.29 ResetUserPasswordByLoginName
 
 重置用户密码。
 
@@ -11706,7 +12498,7 @@ POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | errorKey | String | ascm.auth.InternalError | 错误码。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -11718,27 +12510,39 @@ POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1 { "loginName":"autotest" }
+```
+POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"loginName":"autotest"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 165, "message": "success", "success": true } |  |
+| { "code": "200", "cost": 165, "message": "success", "success": true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>165</cost> <message>success</message> <success>true</success> |  |
+| <code>200</code> <cost>165</cost> <message>success</message> <success>true</success> |   |
 
-###### 4.1.1.4.30. UnLockUser
+###### 4.1.1.4.30 UnLockUser
+
+调用UnLockUser接口解锁指定用户。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/unLockUser HTTP/1.1
+```
 
 **请求参数**
 
@@ -11761,28 +12565,33 @@ POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1 { "loginName":"autote
 请求示例
 
 ```json
-{
+POST /ascm/auth/user/unLockUser HTTP/1.1
     "id":3
-}
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":1000, "success":true, "message":"success" } |  |
+| { "code":"200", "cost":1000, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.4.31. UpdatePassword
+###### 4.1.1.4.31 UpdatePassword
+
+调用UpdatePassword修改当前调用接口用户的密码。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/updatePassword HTTP/1.1
+```
 
 **请求参数**
 
@@ -11806,28 +12615,34 @@ POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1 { "loginName":"autote
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
-```json
-{
-    "oldPassword": "123456" ,
-    "newPassword":"999999"
-}
+```
+POST /ascm/auth/user/updatePassword HTTP/1.1
 ```
 
-正常返回示例
+公共请求头 `{`
+
+```json
+    "oldPassword": "123456" ,
+    "newPassword":"999999"
+```
+
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-##### 4.1.1.5. 用户组管理
+##### 4.1.1.5 用户组管理
 
-###### 4.1.1.5.1. AddResourceSetToUserGroup
+###### 4.1.1.5.1 AddResourceSetToUserGroup
+
+调用AddResourceSetToUserGroup为用户组绑定资源集。
 
 **请求头**
 
@@ -11867,32 +12682,36 @@ POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1
 POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resourceSetId": 1,
     "userGroupId": 1,
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.5.2. AddRoleToUserGroup
+###### 4.1.1.5.2 AddRoleToUserGroup
+
+调用AddRoleToUserGroup接口，将用户组与角色绑定。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/addRoleToUserGroup HTTP/1.1
+```
 
 **请求参数**
 
@@ -11915,16 +12734,20 @@ POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
-```json
-{
-    "roleId":2
-    "userGroupId": 1,
-}
+```
+POST /ascm/auth/user/addRoleToUserGroup HTTP/1.1
 ```
 
-正常返回示例 `XML` 格式
+公共请求头
+
+```json
+    "roleId":2
+    "userGroupId": 1,
+```
+
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message>
@@ -11932,9 +12755,11 @@ POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.5.3. AddUsersToUserGroup
+###### 4.1.1.5.3 AddUsersToUserGroup
+
+调用AddUsersToUserGroup接口，将指定用户与用户组绑定。
 
 **请求头**
 
@@ -11974,33 +12799,33 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginNameList": "["test"]",
     "userGroupId": "186"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>264</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>264</cost> <success>true</success> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "code": "200",
     "cost": 264,
     "success": true,
     "message": "success"
-}
 ```
 
-###### 4.1.1.5.4. CreateUserGroup
+`}`
+
+###### 4.1.1.5.4 CreateUserGroup
+
+调用CreateUserGroup接口创建用户组。
 
 **请求头**
 
@@ -12008,16 +12833,20 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 **请求语法**
 
+```
+POST /ascm/auth/user/createUserGroup HTTP/1.1
+```
+
 **请求参数**
 
-| 名称 | 类型 | 位置 | 是否必选 | 示例值 |  | 描述 |  |  |  |  |
+| 名称 | 类型 | 位置 | 是否必选 | 示例值 |   | 描述 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| groupName | String | Body | 否 | testUserGroup01 |  | 用户组名称。 说明该参数为必填。 |  |  |  |  |
-| description | String | Body | 否 | test |  | 用户组描述。若不传则返回null。 |  |  |  |  |
-| organizationId | Integer | Body | 否 | 24 |  | 所属组织ID。可通过调用GetOrganizationList接口获取。 说明该参数为必填。 不支持在root（根）组织下创建用户组，该参数不能传入root（根）组织的ID，root（根）组织的ID 为1。 |  |  |  |  |
-| roleIdList.N | RepeatList | Body | 否 | ["5","6"] |  | 角色列表。用户组可关联多个角色，若不传用户组则无关联角色。角色ID可通过调用ListActiveRoles接口获取。 说明该参数需要按照格式传入，格式为 ["<角色1ID>",''<角色2ID>",..."<角色N ID>"] |  |  |  |  |
-|  |  |  |  |  |  |  |  | ["<角色1ID>",''<角 |  |  |
-|  |  |  |  |  |  |  | 色2ID>",..."<角色N ID>"] |  |  |  |
+| groupName | String | Body | 否 | testUserGroup01 |   | 用户组名称。 说明该参数为必填。 |   |   |   |   |
+| description | String | Body | 否 | test |   | 用户组描述。若不传则返回null。 |   |   |   |   |
+| organizationId | Integer | Body | 否 | 24 |   | 所属组织ID。可通过调用GetOrganizationList接口获取。 说明该参数为必填。 不支持在root（根）组织下创建用户组，该参数不能传入root（根）组织的ID，root（根）组织的ID 为1。 |   |   |   |   |
+| roleIdList.N | RepeatList | Body | 否 | ["5","6"] |   | 角色列表。用户组可关联多个角色，若不传用户组则无关联角色。角色ID可通过调用ListActiveRoles接口获取。 说明该参数需要按照格式传入，格式为 ["<角色1ID>",''<角色2ID>",..."<角色N ID>"] |   |   |   |   |
+|   |   |   |   |   |   |   |   | ["<角色1ID>",''<角 |   |   |
+|   |   |   |   |   |   |   | 色2ID>",..."<角色N ID>"] |   |   |   |
 
 **返回数据**
 
@@ -12027,7 +12856,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 |---|---|---|---|
-| data | Struct |  | 响应数据。 |
+| data | Struct |   | 响应数据。 |
 | augId | String | aug-101e08e2202d0a4209****** | 用户组唯一编码。 |
 | groupName | String | testUserGroup01 | 用户组名称。 |
 | id | String | 186 | 用户组ID。 |
@@ -12039,13 +12868,17 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
+
+```
+POST /ascm/auth/user/createUserGroup HTTP/1.1
+```
+
+公共请求头 `{`
 
 ```json
-{
     "groupName": "testUserGroup01",
     "organizationId": 24
-}
 ```
 
 正常返回示例 `XML` 格式
@@ -12061,19 +12894,23 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 121, "code": 200, "data": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101e08e2202d0a4209******", "id": 186 }, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 121, "code": 200, "data": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101e08e2202d0a4209******", "id": 186 }, "success": true, "message": "success" } |   |
 
-###### 4.1.1.5.5. DeleteUserGroup
+###### 4.1.1.5.5 DeleteUserGroup
 
-**说明**
+调用DeleteUserGroup接口删除指定用户组。
 
-删除用户组前，系统将自动解绑角色、用户、资源集等关联资源。
+> **说明：** 删除用户组前，系统将自动解绑角色、用户、资源集等关联资源。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/deleteUserGroup HTTP/1.1
+```
 
 **请求参数**
 
@@ -12096,38 +12933,48 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
-```json
-{
-    "userGroupId": "190"
-}
+```
+POST /ascm/auth/user/deleteUserGroup HTTP/1.1
 ```
 
-正常返回示例
+公共请求头 `{`
+
+```json
+    "userGroupId": "190"
+```
+
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>104</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>104</cost> <success>true</success> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "code": "200",
     "cost": 104,
     "success": true,
     "message": "success"
-}
 ```
 
-###### 4.1.1.5.6. ListUserGroups
+`}`
+
+###### 4.1.1.5.6 ListUserGroups
+
+通过ListUserGroups接口获取用户组。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/listUserGroups HTTP/1.1
+```
 
 **请求参数**
 
@@ -12149,12 +12996,12 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 |---|---|---|---|
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of itemData |  | 响应结果。 |
+| data | Array of itemData |   | 响应结果。 |
 | augId | String | aug-101e09e801fe0a420****** | 用户组唯一编码。 |
 | createTimeStamp | Long | 1606791494471 | 用户组创建时间。 |
 | groupName | String | testUserGroup01 | 用户组名称。 |
 | id | Integer | 190 | 用户组ID。 |
-| organization | Struct |  | 用户组所属组织的信息。 |
+| organization | Struct |   | 用户组所属组织的信息。 |
 | alias | String | ascm-tester | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1657608934419 | 组织创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 说明此参数已经废弃。 |
@@ -12163,34 +13010,34 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 | level | String | 0.1 | 组织等级。 说明 root组织（根组织）的level=0，其他所有一级组织的level=0.1。其中0.1 中的1表示本组织的父组织（root组织）的ID为1。以此类推，例如：某ID为 3的一级组织的直接下级组织level=0.1.3。 |
 | mtime | Long | 1662542569753 | 组织最近一次修改的时间。 |
 
-| multiCloudStatus | String | master | 是否为多云同步组织。 master：主云。 slave：从云。 说明该参数仅在多云场景下返回。 |  |  |  |
+| multiCloudStatus | String | master | 是否为多云同步组织。 master：主云。 slave：从云。 说明该参数仅在多云场景下返回。 |   |   |   |
 |---|---|---|---|---|---|---|
-| muserId | String | admin | 组织最近一次修改的修改者用户名。 |  |  |  |
-| name | String | ascm-tester | 组织名称。 |  |  |  |
-| parentId | Integer | 1 | 父组织ID。 |  |  |  |
-| supportRegionList | List | [ "cn-qingdao-****-d01" ] | 可用区列表。 |  |  |  |
-| supportRegions | String | cn-qingdao-****-d01 | 可用区列表。 |  |  |  |
-| uuid | String | org-101cc06515930a4209****** | 组织UUID。 |  |  |  |
-| organizationId | Integer | 24 | 所属组织ID。 |  |  |  |
-| resourceSets | Array of resourceSet |  | 资源集列表。 |  |  |  |
-| creator | String | admin | 资源集创建者。 |  |  |  |
-| gmtCreated | Long | 1662531985752 | 资源集创建时间。 |  |  |  |
-| id | Integer | 447 | 资源集ID。 |  |  |  |
-| organizationID | Integer | 24 | 资源集所属组织的ID。 |  |  |  |
-| resourceGroupName | String | ascmtestresourceset _ _ | 资源集名称。 |  |  |  |
-| rsId | String | rs-101de5d4e2d80a4209******* | 资源集唯一编码。 |  |  |  |
-| roles | Array of role |  | 角色列表。 |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |  |  |  |
-| arId | String | ar-9999****** | 角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCESETADMIN _ _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者的用户名。 |  |  |  |
-| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.resourceSetAdmin.de scription | 角色描述。 |  |  |  |
-| enable | Boolean | true | 角色是否有效。 |  |  |  |
-| id | Integer | 5 | 角色ID。 |  |  |  |
+| muserId | String | admin | 组织最近一次修改的修改者用户名。 |   |   |   |
+| name | String | ascm-tester | 组织名称。 |   |   |   |
+| parentId | Integer | 1 | 父组织ID。 |   |   |   |
+| supportRegionList | List | [ "cn-qingdao-****-d01" ] | 可用区列表。 |   |   |   |
+| supportRegions | String | cn-qingdao-****-d01 | 可用区列表。 |   |   |   |
+| uuid | String | org-101cc06515930a4209****** | 组织UUID。 |   |   |   |
+| organizationId | Integer | 24 | 所属组织ID。 |   |   |   |
+| resourceSets | Array of resourceSet |   | 资源集列表。 |   |   |   |
+| creator | String | admin | 资源集创建者。 |   |   |   |
+| gmtCreated | Long | 1662531985752 | 资源集创建时间。 |   |   |   |
+| id | Integer | 447 | 资源集ID。 |   |   |   |
+| organizationID | Integer | 24 | 资源集所属组织的ID。 |   |   |   |
+| resourceGroupName | String | ascmtestresourceset _ _ | 资源集名称。 |   |   |   |
+| rsId | String | rs-101de5d4e2d80a4209******* | 资源集唯一编码。 |   |   |   |
+| roles | Array of role |   | 角色列表。 |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |   |   |   |
+| arId | String | ar-9999****** | 角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCESETADMIN _ _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者的用户名。 |   |   |   |
+| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.resourceSetAdmin.de scription | 角色描述。 |   |   |   |
+| enable | Boolean | true | 角色是否有效。 |   |   |   |
+| id | Integer | 5 | 角色ID。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | muserId | String | admin | 角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |
@@ -12202,7 +13049,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 | roleName | String | defaultRole.resourceSetAdmin.na me | 角色名称。 |
 | roleRange | String | roleRange.resourceSet | 角色管理权限。 roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
-| users | Array of user |  | 用户列表。 |
+| users | Array of user |   | 用户列表。 |
 | accountType | Integer | 1 | 账号类型。 说明该参数已废弃。 |
 | active | Boolean | true | 用户是否有效。 |
 | aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |
@@ -12230,7 +13077,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 | userLoginCtrlId | Integer | 647 | 登录控制ID。 |
 | username | String | testuser2022 | 用户显示名。 |
 | message | String | success | 错误提示信息。 说明无论是否调用成功都会返回。一般调用成功返回success，调用失败返回自定义的错误信息或者返回异常栈中的错误信息。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 10 | 每页返回数据的条数。 |
 | total | Integer | 1 | 返回记录总数。 |
@@ -12239,23 +13086,25 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 | redirect | Boolean | false | 是否重定向。 说明该参数已废弃。 true：重定向。 false：不重定向。 |
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败是否成功。 |
 
-**示例**
+请求示例
 
-请求示例公共请求头
+```
+POST /ascm/auth/user/listUserGroups HTTP/1.1
+```
+
+公共请求头 `{`
 
 ```json
-{
     "loginName":"testuser2022",
     "userGroupName":"testUserGroup01",
     "roleId":2
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <organizationId>24</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101e09e801fe0a420******</augId> <createTimeStamp>1606791494471</createTimeStamp> <id>190</id> <resourceSets> <organizationID>24</organizationID> <creator>admin</creator> <resourceGroupName>ascm_test_resourceset</resourceGroupName> <gmtCreated>1662531985752</gmtCreated> <rsId>rs-101de5d4e2d80a4209*******</rsId> <id>447</id> </resourceSets> <users> <cellph1776236*******8888</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>RamUser</backendAccountType> <enableDingTalk>true</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>25</organizationId> <password>H2xWNY8oitAhxMW******</password> <default>false</default> <loginTime>1606791494471</loginTime> <deleted>false</deleted> <userLoginCtrlId>647</userLoginCtrlId> <loginName>testuser2022</loginName> <ctime>1663137217142</ctime> <mobileNationCode>86</mobileNationCode> <id>6002</id> <ramUser>true</ramUser> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>1***@alibaba-inc.com</email> <defaultRoleId>4</defaultRoleId> <username>testuser2022</username> </users> <roles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_SET_ADMIN</code> <description>defaultRole.resourceSetAdmin.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceSetAdmin.name</roleName> <roleLevel>2147483647</roleLevel> <id>5</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <cuserId>admin</cuserId> </roles> <organization> <muserId>admin</muserId> <internal>false</internal> <multiCloudStatus>master</multiCloudStatus> <level>0.1</level> <name>ascm-tester</name> <supportRegions>cn-qingdao-****-d01</supportRegions> <ctime>1657608934419</ctime> <alias>ascm-tester</alias> <id>24</id> <mtime>1662542569753</mtime> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <organizationId>24</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101e09e801fe0a420******</augId> <createTimeStamp>1606791494471</createTimeStamp> <id>190</id> <resourceSets> <organizationID>24</organizationID> <creator>admin</creator> <resourceGroupName>ascm_test_resourceset</resourceGroupName> <gmtCreated>1662531985752</gmtCreated> <rsId>rs-101de5d4e2d80a4209*******</rsId> <id>447</id> </resourceSets> <users> <cellph1776236*******8888</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>RamUser</backendAccountType> <enableDingTalk>true</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>25</organizationId> <password>H2xWNY8oitAhxMW******</password> <default>false</default> <loginTime>1606791494471</loginTime> <deleted>false</deleted> <userLoginCtrlId>647</userLoginCtrlId> <loginName>testuser2022</loginName> <ctime>1663137217142</ctime> <mobileNationCode>86</mobileNationCode> <id>6002</id> <ramUser>true</ramUser> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>1***@alibaba-inc.com</email> <defaultRoleId>4</defaultRoleId> <username>testuser2022</username> </users> <roles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_SET_ADMIN</code> <description>defaultRole.resourceSetAdmin.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceSetAdmin.name</roleName> <roleLevel>2147483647</roleLevel> <id>5</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <cuserId>admin</cuserId> </roles> <organization> <muserId>admin</muserId> <internal>false</internal> <multiCloudStatus>master</multiCloudStatus> <level>0.1</level> <name>ascm-tester</name> <supportRegions>cn-qingdao-****-d01</supportRegions> <ctime>1657608934419</ctime> <alias>ascm-tester</alias> <id>24</id> <mtime>1662542569753</mtime> |   |
 
 ```xml
         <mtime>1662542569753</mtime>
@@ -12274,9 +13123,9 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "data": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101e09e801fe0a420******", "createTimeStamp": 1606791494471, "id": 190, "resourceSets": { "organizationID": 24, "creator": "admin", "resourceGroupName": "ascm_test_resourceset", "gmtCreated": 1662531985752, "rsId": "rs-101de5d4e2d80a4209*******", "id": 447 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1606791494471, "organizationId": 25, "password": "H2xWNY8oitAhxMW******", "default": false, "loginTime": 1606791494471, "deleted": false, "userLoginCtrlId": 647, "loginName": "testuser2022", "ctime": 1663137217142, "mobileNationCode": 86, "id": 6002, "ramUser": true, "enableEmail": true, "enableShortMessage": true, "email": "1***@alibaba-inc.com", "defaultRoleId": 4, "username": "testuser2022" }, "roles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_SET_ADMIN", "description": "defaultRole.resourceSetAdmin.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceSetAdmin.name", "roleLevel": 2147483647, "id": 5, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "organization": { "muserId": "admin", "internal": false, "multiCloudStatus": "master", "level": 0.1, "name": "ascm-tester", |  |
+| { "redirect": false, "cost": 10000, "code": 200, "data": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101e09e801fe0a420******", "createTimeStamp": 1606791494471, "id": 190, "resourceSets": { "organizationID": 24, "creator": "admin", "resourceGroupName": "ascm_test_resourceset", "gmtCreated": 1662531985752, "rsId": "rs-101de5d4e2d80a4209*******", "id": 447 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1606791494471, "organizationId": 25, "password": "H2xWNY8oitAhxMW******", "default": false, "loginTime": 1606791494471, "deleted": false, "userLoginCtrlId": 647, "loginName": "testuser2022", "ctime": 1663137217142, "mobileNationCode": 86, "id": 6002, "ramUser": true, "enableEmail": true, "enableShortMessage": true, "email": "1***@alibaba-inc.com", "defaultRoleId": 4, "username": "testuser2022" }, "roles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_SET_ADMIN", "description": "defaultRole.resourceSetAdmin.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceSetAdmin.name", "roleLevel": 2147483647, "id": 5, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "organization": { "muserId": "admin", "internal": false, "multiCloudStatus": "master", "level": 0.1, "name": "ascm-tester", |   |
 
-,
+`,`
 
 ```json
             "supportRegions": "cn-qingdao-****-d01",
@@ -12288,21 +13137,29 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
             "cuserId": "admin",
             "parentId": 1,
             "supportRegionList": "[ \"cn-qingdao-****-d01\" ]"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "success": true,
     "pageInfo": {
         "total": 1,
         "totalPage": 1,
         "pageSize": 10,
         "currentPage": 1
-    },
-    "pureListData": false,
-    "message": "success"
-}
 ```
 
-###### 4.1.1.5.7. UpdateUserGroup
+`},`
+
+```json
+    "pureListData": false,
+    "message": "success"
+```
+
+`}`
+
+###### 4.1.1.5.7 UpdateUserGroup
 
 更新指定用户组的名称和描述信息。
 
@@ -12339,25 +13196,23 @@ PUT /userGroups/[userGroupId] HTTP/1.1
 | -organizationId | Integer | 3 | 所属组织ID。 |
 | -augId | String | aug-101de696afc90a420d****** | 用户组唯一编码。 |
 
-**示例**
-
 请求示例
 
 ```json
-PUT /userGroups/[userGroupId] HTTP/1.1 { "userGroupId":"123" }
+PUT /userGroups/[userGroupId] HTTP/1.1 "userGroupId":"123"
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"exampleErrKey", "code":"ROLE_RESOURCE_USER", "cost":121, "data":{ "organizationId":3, "groupName":"testUserGroup01", "augId":"aug-101de696afc90a420d******", "id":33 }, "success":true, "message":"success" } |  |
+| { "errorKey":"exampleErrKey", "code":"ROLE_RESOURCE_USER", "cost":121, "data":{ "organizationId":3, "groupName":"testUserGroup01", "augId":"aug-101de696afc90a420d******", "id":33 }, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <data> <organizationId>3</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101de696afc90a420d******</augId> <id>33</id> </data> <success>true</success> <message>success</message> |  |
+| <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <data> <organizationId>3</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101de696afc90a420d******</augId> <id>33</id> </data> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.5.8. ListUsersInUserGroup
+###### 4.1.1.5.8 ListUsersInUserGroup
 
 通过ListUsersInUserGroup接口获取指定用户组中的各个用户的信息。
 
@@ -12385,8 +13240,8 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 |---|---|---|---|
 | cost | Integer | 24 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of itemData |  | 响应结果。 |
-| accessKeys | Array of accessKey |  | AccessKey信息列表。 说明只有超级管理员才可获取预置用户的AccessKey和AccessKey Secret。 |
+| data | Array of itemData |   | 响应结果。 |
+| accessKeys | Array of accessKey |   | AccessKey信息列表。 说明只有超级管理员才可获取预置用户的AccessKey和AccessKey Secret。 |
 | accesskeyId | String | tCr5mJh****** | 用户的AccessKey ID。 |
 | ctime | Long | 1606675230000 | AccessKey创建时间。 说明此参数已经废弃。 |
 | cuserId | String | admin | 创建AccessKey的用户名。 说明此参数已经废弃。 |
@@ -12396,26 +13251,26 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | cellphoneNum | String | 188****8888 | 用户手机号码。 |
 | default | Boolean | false | 是否为预置用户。 说明初始化自动创建的用户是预置用户，创建场景下此字段默认为false。 |
 
-| defaultRole | Struct |  | 默认角色。 说明用户登录后的当前角色。 |  |  |  |
+| defaultRole | Struct |   | 默认角色。 说明用户登录后的当前角色。 |   |   |   |
 |---|---|---|---|---|---|---|
-| active | Boolean | true | 默认角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-99999****** | 默认角色的唯一编码。 |  |  |  |
-| code | String | ROLEORGANIZATIONADMIN _ _ | 默认角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| default | Boolean | true | 默认角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.organizationAdmin.de scription | 默认角色描述。 |  |  |  |
-| enable | Boolean | true | 默认角色是否有效。 |  |  |  |
-| id | Integer | 4 | 默认角色ID。 |  |  |  |
-| muserId | String | admin | 默认角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 默认角色的共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 默认角色所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 默认角色是否为RAM角色。 |  |  |  |
-| roleLevel | Integer | 2147483647 | 默认角色的等级。 说明该参数无实际作用。 |  |  |  |
-| roleName | String | defaultRole.organizationAdmin.na me | 默认角色的名称。 |  |  |  |
-| roleRange | String | roleRange.orgAndSubOrgs | 默认角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |  |  |  |
-| roleType | String | ROLETYPEASCM _ | 默认角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |  |  |  |
+| active | Boolean | true | 默认角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-99999****** | 默认角色的唯一编码。 |   |   |   |
+| code | String | ROLEORGANIZATIONADMIN _ _ | 默认角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| default | Boolean | true | 默认角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.organizationAdmin.de scription | 默认角色描述。 |   |   |   |
+| enable | Boolean | true | 默认角色是否有效。 |   |   |   |
+| id | Integer | 4 | 默认角色ID。 |   |   |   |
+| muserId | String | admin | 默认角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 默认角色的共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 默认角色所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 默认角色是否为RAM角色。 |   |   |   |
+| roleLevel | Integer | 2147483647 | 默认角色的等级。 说明该参数无实际作用。 |   |   |   |
+| roleName | String | defaultRole.organizationAdmin.na me | 默认角色的名称。 |   |   |   |
+| roleRange | String | roleRange.orgAndSubOrgs | 默认角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |   |   |   |
+| roleType | String | ROLETYPEASCM _ | 默认角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | deleted | Boolean | true | 用户是否已被删除，已删除的用户为历史用户。 true：已经被删除。 false：未被删除。 |
@@ -12428,12 +13283,12 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | id | Integer | 5817 | 用户ID。 |
 | lastLoginTime | Long | 1657608949009 | 用户最后登录时间。 说明此参数已经废弃。 |
 | loginName | String | testuser2022 | 用户登录名。 |
-| loginPolicy | Struct |  | 用户绑定的登录策略。 |
+| loginPolicy | Struct |   | 用户绑定的登录策略。 |
 | cuserId | String | admin | 登录策略创建者。 说明此参数已经废弃 |
 | default | Boolean | false | 是否为默认登录策略。 |
 | enable | Boolean | true | 登录策略是否有效。 |
 | id | Integer | 1084 | 登录策略ID。 |
-| ipRanges | Array of itemIpRange |  | 登录策略的IP段。 |
+| ipRanges | Array of itemIpRange |   | 登录策略的IP段。 |
 | ipRange | String | 10.48.16.1/24 | 登录策略的IP范围。 |
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | protocol | String | IPV4 | 使用IP协议，目前仅支持IPv4。 |
@@ -12443,14 +13298,14 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | organizationVisibility | String | organizationVisibility.global | 登录策略共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 所属组织ID。 |
 | rule | String | DENY | 策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of itemTimeRange |  | 登录策略的时间段。 |
+| timeRanges | Array of itemTimeRange |   | 登录策略的时间段。 |
 
 | endTime | String | 18:00 | 结束时间。 |
 |---|---|---|---|
 | loginPolicyId | Integer | 1084 | 所属登录策略ID。 |
 | startTime | String | 08:00 | 开始时间。 |
 | mobileNationCode | String | 86 | 用户手机号码的国际区号。 |
-| organization | Struct |  | 用户所属的组织。 |
+| organization | Struct |   | 用户所属的组织。 |
 | alias | String | sub-org-1 | 组织别名。系统自动生成，一般与组织名称一致。 |
 | ctime | Long | 1657608949009 | 用户所属组织创建的时间。 说明此参数已经废弃。 |
 | cuserId | String | admin | 用户所属组织创建者的用户名。 说明此参数已经废弃。 |
@@ -12466,25 +13321,25 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | supportRegions | String | ["cn-***-d01"] | 可用区列表。 说明此参数已经废弃。 |
 | uuid | String | org- 101cc0654e910a420927000w | 用户所属组织UUID。 |
 
-| parentPk | String | 1127157608934563 | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |  |  |  |
+| parentPk | String | 1127157608934563 | 阿里云账号（主账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的阿里云账号（主账号）UID一致。 |   |   |   |
 |---|---|---|---|---|---|---|
-| primaryKey | String | 259258662544685329 | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |  |  |  |
-| roles | Array of itemRole |  | 用户拥有的角色列表。 |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-9999****** | 角色唯一编码。 |  |  |  |
-| code | String | ROLEGLOBALRESOURCEAUDIT _ _ _ OR | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者的用户名。 说明参数已经废弃。 |  |  |  |
-| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |  |  |  |
-| description | String | defaultRole.globalResourceAudito r.description | 角色描述。 |  |  |  |
-| enable | Boolean | true | 角色是否有效。 |  |  |  |
-| id | Integer | 6 | 角色ID。 |  |  |  |
-| muserId | String | admin | 角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |  |  |  |
-| organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
-| ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |  |  |  |
-| rAMRole | Boolean | false | 是否为RAM角色。 |  |  |  |
+| primaryKey | String | 259258662544685329 | RAM用户（子账号）的主键，作为账号的唯一标识。 说明与在ApsaraUni-manager运营控制台的用户管理中的RAM用户（子账号） 一致。 |   |   |   |
+| roles | Array of itemRole |   | 用户拥有的角色列表。 |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-9999****** | 角色唯一编码。 |   |   |   |
+| code | String | ROLEGLOBALRESOURCEAUDIT _ _ _ OR | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者的用户名。 说明参数已经废弃。 |   |   |   |
+| default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |   |   |   |
+| description | String | defaultRole.globalResourceAudito r.description | 角色描述。 |   |   |   |
+| enable | Boolean | true | 角色是否有效。 |   |   |   |
+| id | Integer | 6 | 角色ID。 |   |   |   |
+| muserId | String | admin | 角色最近一次修改的修改者用户名。 说明此参数已经废弃。 |   |   |   |
+| organizationVisibility | String | organizationVisibility.global | 角色共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
+| ownerOrganizationId | Integer | 1 | 角色所属组织ID。 |   |   |   |
+| rAMRole | Boolean | false | 是否为RAM角色。 |   |   |   |
 
-| AUDIT _ |  | 名称_随机串 |
+| AUDIT _ |   | 名称_随机串 |
 |---|---|---|
 
 | roleLevel | Integer | 2147483647 | 角色等级。 说明该参数无实际作用。 |
@@ -12493,7 +13348,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | roleRange | String | roleRange.allOrganizations | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 | status | String | ACTIVE | 用户状态。 说明用户创建后否默认为active。 active:激活。 inactive:禁用。 |
-| userGroupRoles | Array of itemUserGroupRole |  | 用户所属用户组所拥有的角色列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
+| userGroupRoles | Array of itemUserGroupRole |   | 用户所属用户组所拥有的角色列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
 | active | Boolean | true | 用户所属用户组所拥有的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |
 | arId | String | ar-9999****** | 用户所属用户组所拥有的角色唯一编码。 |
 | code | String | ROLERESOURCESETADMIN _ _ _ | 用户所属用户组所拥有的角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |
@@ -12512,44 +13367,44 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | roleName | String | defaultRole.resourceSetAdmin.na me | 用户所属用户组所拥有角色的名称。 |
 | roleRange | String | roleRange.resourceSet | 用户所属用户组所拥有角色的管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 用户所属用户组所拥有角色的类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
-| userGroups | Array of itemUserGroup |  | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
+| userGroups | Array of itemUserGroup |   | 用户所属用户组列表。 说明可通过AddUsersToUserGroup接口将用户添加到用户组。 |
 | augId | String | aug- 101de696afc90a420d270003 | 用户组唯一编码。 |
 | createTimeStamp | Long | 1657608949009 | 用户组创建时间。 |
 | groupName | String | testUserGroup01 | 用户组名称。 |
 | id | Integer | 145 | 用户组ID。 |
-| organization | Struct |  | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，请根据 organizationId参数通过GetOrganization接口查询。 |
+| organization | Struct |   | 创建的用户所属的组织信息。 说明此参数已经废弃，若要查询用户组所属组织详细信息，请根据 organizationId参数通过GetOrganization接口查询。 |
 | alias | String | sub-org-1 | 组织别名。 |
 | ctime | Long | 1657608949009 | 组织创建时间。 |
 | cuserId | String | admin | 组织创建者的用户名。 |
 | id | Integer | 25 | 组织ID。 |
 | internal | Boolean | false | 是否为预置组织。 |
 
-| level | String | 0.1.24 | 组织等级。 |  |  |  |
+| level | String | 0.1.24 | 组织等级。 |   |   |   |
 |---|---|---|---|---|---|---|
-| mtime | Long | 1657608949009 | 组织最后修改时间。 |  |  |  |
-| multiCloudStatus | String | master | 多云状态参数。 |  |  |  |
-| muserId | String | admin | 组织最后一次修改者的用户名。 |  |  |  |
-| name | String | sub-org-1 | 组织名称。 |  |  |  |
-| parentId | Integer | 24 | 父组织ID。 |  |  |  |
-| supportRegionList | List | [ "cn-qingdao-****-d01"] | 可用区列表。 |  |  |  |
-| supportRegions | String | [ "cn-qingdao-****-d01"] | 可用区列表。 |  |  |  |
-| uuid | String | org- 101cc0654e910a420927000w | 组织的UUID。 |  |  |  |
-| organizationId | Integer | 24 | 用户组所属组织的ID。 |  |  |  |
-| resourceSets | Array of itemResourceSet |  | 资源集列表。 说明此参数已经废弃。 |  |  |  |
-| creator | String | admin | 资源集创建者的用户名。 |  |  |  |
-| gmtCreated | Long | 1657608949009 | 资源集创建时间。 |  |  |  |
-| id | Integer | 6 | 资源集ID。 |  |  |  |
-| organizationID | Integer | 3 | 资源集所属组织的ID。 |  |  |  |
-| resourceGroupName | String | test | 资源集名称。 |  |  |  |
-| rsId | String | rs-9999****** | 资源集唯一编码。 |  |  |  |
-| roles | Array of itemRole |  | 资源集列表。 说明此参数已经废弃。 |  |  |  |
-| active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |  |  |  |
-| arId | String | lp-101de13d33320a420d27000p | 角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 角色创建者。 |  |  |  |
+| mtime | Long | 1657608949009 | 组织最后修改时间。 |   |   |   |
+| multiCloudStatus | String | master | 多云状态参数。 |   |   |   |
+| muserId | String | admin | 组织最后一次修改者的用户名。 |   |   |   |
+| name | String | sub-org-1 | 组织名称。 |   |   |   |
+| parentId | Integer | 24 | 父组织ID。 |   |   |   |
+| supportRegionList | List | [ "cn-qingdao-****-d01"] | 可用区列表。 |   |   |   |
+| supportRegions | String | [ "cn-qingdao-****-d01"] | 可用区列表。 |   |   |   |
+| uuid | String | org- 101cc0654e910a420927000w | 组织的UUID。 |   |   |   |
+| organizationId | Integer | 24 | 用户组所属组织的ID。 |   |   |   |
+| resourceSets | Array of itemResourceSet |   | 资源集列表。 说明此参数已经废弃。 |   |   |   |
+| creator | String | admin | 资源集创建者的用户名。 |   |   |   |
+| gmtCreated | Long | 1657608949009 | 资源集创建时间。 |   |   |   |
+| id | Integer | 6 | 资源集ID。 |   |   |   |
+| organizationID | Integer | 3 | 资源集所属组织的ID。 |   |   |   |
+| resourceGroupName | String | test | 资源集名称。 |   |   |   |
+| rsId | String | rs-9999****** | 资源集唯一编码。 |   |   |   |
+| roles | Array of itemRole |   | 资源集列表。 说明此参数已经废弃。 |   |   |   |
+| active | Boolean | true | 角色是否有效。 说明此参数已废弃，角色状态以enable参数为准。 |   |   |   |
+| arId | String | lp-101de13d33320a420d27000p | 角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 角色创建者。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | default | Boolean | true | 是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |
@@ -12565,41 +13420,41 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | roleName | String | defaultRole.resourceUser.name | 角色名称。 |
 | roleRange | String | roleRange.resourceSet | 角色管理权限： roleRange.allOrganizations：所有组织。 roleRange.orgAndSubOrgs：本组织及级联下级组织。 roleRange.resourceSet：资源集。 roleRange.userGroup：RAM角色所在用户组。 |
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
-| users | Array of itemUser |  | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表 |
+| users | Array of itemUser |   | 用户列表。 说明此参数已经废弃，可通过ListUsersInUserGroup接口查询用户组内用户列表 |
 | accountType | Integer | 1 | 账号类型。 说明该参数已废弃。 |
 | active | Boolean | true | 用户是否有效。 |
 | aliyunUser | Boolean | false | 是否为阿里云账号（主账号）。 |
 | backendAccountType | String | 用户是否有效。 | 后端映射账号类型： AscmUser：Apsara Uni-manager运营控制台对客户可见的用户。 AliyunUser：阿里云账号。 RamUser：RAM子账号。 |
 | cellphoneNum | String | 1606791494471 | 用户手机号码。 |
 
-| ctime | Long | 1606791494471 | 用户创建时间。 |  |  |  |
+| ctime | Long | 1606791494471 | 用户创建时间。 |   |   |   |
 |---|---|---|---|---|---|---|
-| default | Boolean | false | 是否为预置用户。 |  |  |  |
-| defaultRoleId | Integer | 3 | 用户默认角色ID。 |  |  |  |
-| deleted | Boolean | false | 用户是否已删除。 |  |  |  |
-| email | String | tets@example.com | 用户邮箱地址。 |  |  |  |
-| enableDingTalk | Boolean | false | 是否启用钉钉通知。 |  |  |  |
-| enableEmail | Boolean | false | 是否启用邮件通知。 |  |  |  |
-| enableShortMessage | Boolean | false | 是否启用短信通知。 |  |  |  |
-| id | Integer | 5673 | 用户ID。 |  |  |  |
-| loginName | String | test | 用户登录名。 |  |  |  |
-| loginTime | Long | 1606791494471 | 用户登录时间。 |  |  |  |
-| mobileNationCode | String | 86 | 区号。 |  |  |  |
-| mtime | Long | 1606791494471 | 用户最近一次修改的时间。 |  |  |  |
-| muserId | String | 5002 | 用户最近一次修改的修改者用户名。 |  |  |  |
-| organizationId | Integer | 24 | 用户所属组织的ID。 |  |  |  |
-| password | String | 123456789 | 用户密码。 |  |  |  |
-| ramUser | Boolean | true | 是否为RAM用户（子账号）。 |  |  |  |
-| userLoginCtrlId | Integer | 1 | 登录策略ID。 |  |  |  |
-| username | String | test | 用户显示名。 |  |  |  |
-| userRoles | Array of itemUserRole |  | 用户角色列表，用户关联的角色列表，由请求参数roleIdList指定。 |  |  |  |
-| active | Boolean | true | 用户关联的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |  |  |  |
-| arId | String | ar-9999****** | 用户关联角色唯一编码。 |  |  |  |
-| code | String | ROLERESOURCEUSER _ _ | 用户关联角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |  |  |  |
-|  |  |  |  | ROLE_英文大写的角色 |  |  |
-| cuserId | String | admin | 用户关联角色创建者的用户名。 说明此参数已经废弃。 |  |  |  |
+| default | Boolean | false | 是否为预置用户。 |   |   |   |
+| defaultRoleId | Integer | 3 | 用户默认角色ID。 |   |   |   |
+| deleted | Boolean | false | 用户是否已删除。 |   |   |   |
+| email | String | tets@example.com | 用户邮箱地址。 |   |   |   |
+| enableDingTalk | Boolean | false | 是否启用钉钉通知。 |   |   |   |
+| enableEmail | Boolean | false | 是否启用邮件通知。 |   |   |   |
+| enableShortMessage | Boolean | false | 是否启用短信通知。 |   |   |   |
+| id | Integer | 5673 | 用户ID。 |   |   |   |
+| loginName | String | test | 用户登录名。 |   |   |   |
+| loginTime | Long | 1606791494471 | 用户登录时间。 |   |   |   |
+| mobileNationCode | String | 86 | 区号。 |   |   |   |
+| mtime | Long | 1606791494471 | 用户最近一次修改的时间。 |   |   |   |
+| muserId | String | 5002 | 用户最近一次修改的修改者用户名。 |   |   |   |
+| organizationId | Integer | 24 | 用户所属组织的ID。 |   |   |   |
+| password | String | 123456789 | 用户密码。 |   |   |   |
+| ramUser | Boolean | true | 是否为RAM用户（子账号）。 |   |   |   |
+| userLoginCtrlId | Integer | 1 | 登录策略ID。 |   |   |   |
+| username | String | test | 用户显示名。 |   |   |   |
+| userRoles | Array of itemUserRole |   | 用户角色列表，用户关联的角色列表，由请求参数roleIdList指定。 |   |   |   |
+| active | Boolean | true | 用户关联的角色是否有效。 说明此字段已废弃，角色禁用状态以enable字段为准。 |   |   |   |
+| arId | String | ar-9999****** | 用户关联角色唯一编码。 |   |   |   |
+| code | String | ROLERESOURCEUSER _ _ | 用户关联角色code。权限校验时code用来确定角色类型，判断角色是否有对应的权限。 说明内置角色code是固定的。 自定义角色的code由系统生成。格式为： ROLE_英文大写的角色名称_随机串 。 |   |   |   |
+|   |   |   |   | ROLE_英文大写的角色 |   |   |
+| cuserId | String | admin | 用户关联角色创建者的用户名。 说明此参数已经废弃。 |   |   |   |
 
-|  |  | 名称_随机串 |
+|   |   | 名称_随机串 |
 |---|---|---|
 
 | default | Boolean | true | 用户关联角色是否为预置角色。预置角色由系统自动成，包括资源使用人、组织管理员、资源集管理员、资源监察员、组织安全管理员、安全审计员、安全系统配置管理员、全局组织安全管理员、平台安全管理员、全局组织安全监察员、平台安全监察员、平台安全配置管理员和组织资源监察员。 |
@@ -12630,19 +13485,17 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "userGroupId": 145
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>24</cost> <code>200</code> <data> <cellphoneNum>188****8888</cellphoneNum> <enableDingTalk>true</enableDingTalk> <displayName>testuser2022</displayName> <parentPk>1127157608934563</parentPk> <lastLoginTime>1657608949009</lastLoginTime> <default>false</default> <deleted>true</deleted> <loginName>testuser2022</loginName> <mobileNationCode>86</mobileNationCode> <id>5817</id> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>tets@example.com</email> <status>ACTIVE</status> <primaryKey>259258662544685340</primaryKey> <userGroupRoles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_SET_ADMIN</code> <description>defaultRole.resourceSetAdmin.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceSetAdmin.name</roleName> <roleLevel>2147483647</roleLevel> <id>5</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <cuserId>admin</cuserId> </userGroupRoles> <userGroups> <organizationId>24</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101de696afc90a420d270003</augId> <createTimeStamp>1657608949009</createTimeStamp> <id>145</id> <resourceSets> <organizationID>3</organizationID> <creator>admin</creator> <resourceGroupName>test</resourceGroupName> <gmtCreated>1657608949009</gmtCreated> <rsId>rs-9999******</rsId> <id>6</id> </resourceSets> <users> <cellphoneNum>1606791494471</cellphoneNum> <muserId>5002</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>用户是否有效。</backendAccountType> <enableDingTalk>false</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>24</organizationId> <password>123456789</password> <default>false</default> <loginTime>1606791494471</loginTime> <deleted>false</deleted> <userLoginCtrlId>1</userLoginCtrlId> <loginName>test</loginName> < ti >1606791494471</ ti > |  |
+| <redirect>false</redirect> <cost>24</cost> <code>200</code> <data> <cellphoneNum>188****8888</cellphoneNum> <enableDingTalk>true</enableDingTalk> <displayName>testuser2022</displayName> <parentPk>1127157608934563</parentPk> <lastLoginTime>1657608949009</lastLoginTime> <default>false</default> <deleted>true</deleted> <loginName>testuser2022</loginName> <mobileNationCode>86</mobileNationCode> <id>5817</id> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>tets@example.com</email> <status>ACTIVE</status> <primaryKey>259258662544685340</primaryKey> <userGroupRoles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_SET_ADMIN</code> <description>defaultRole.resourceSetAdmin.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceSetAdmin.name</roleName> <roleLevel>2147483647</roleLevel> <id>5</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <cuserId>admin</cuserId> </userGroupRoles> <userGroups> <organizationId>24</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101de696afc90a420d270003</augId> <createTimeStamp>1657608949009</createTimeStamp> <id>145</id> <resourceSets> <organizationID>3</organizationID> <creator>admin</creator> <resourceGroupName>test</resourceGroupName> <gmtCreated>1657608949009</gmtCreated> <rsId>rs-9999******</rsId> <id>6</id> </resourceSets> <users> <cellphoneNum>1606791494471</cellphoneNum> <muserId>5002</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>用户是否有效。</backendAccountType> <enableDingTalk>false</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>24</organizationId> <password>123456789</password> <default>false</default> <loginTime>1606791494471</loginTime> <deleted>false</deleted> <userLoginCtrlId>1</userLoginCtrlId> <loginName>test</loginName> < ti >1606791494471</ ti > |   |
 
 ```xml
             <ctime>1606791494471</ctime>
@@ -12797,7 +13650,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 24, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser2022", "parentPk": 1127157608934563, "lastLoginTime": 1657608949009, "default": false, "deleted": true, "loginName": "testuser2022", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "tets@example.com", "status": "ACTIVE", "primaryKey": 259258662544685340, "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "m serId" "admin" |  |
+| { "redirect": false, "cost": 24, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser2022", "parentPk": 1127157608934563, "lastLoginTime": 1657608949009, "default": false, "deleted": true, "loginName": "testuser2022", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "tets@example.com", "status": "ACTIVE", "primaryKey": 259258662544685340, "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "m serId" "admin" |   |
 
 ```json
             "muserId": "admin",
@@ -12814,7 +13667,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
             "id": 5,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "userGroups": {
             "organizationId": 24,
             "groupName": "testUserGroup01",
@@ -12828,7 +13685,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
                 "gmtCreated": 1657608949009,
                 "rsId": "rs-9999******",
                 "id": 6
-            },
+```
+
+`},`
+
+```json
             "users": {
                 "cellphoneNum": 1606791494471,
                 "muserId": 5002,
@@ -12858,7 +13719,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
                 "email": "tets@example.com",
                 "defaultRoleId": 3,
                 "username": "test"
-            },
+```
+
+`},`
+
+```json
             "roles": {
                 "roleRange": "roleRange.resourceSet",
                 "rAMRole": false,
@@ -12876,7 +13741,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
                 "id": 2,
                 "organizationVisibility": "organizationVisibility.global",
                 "cuserId": "admin"
-            },
+```
+
+`},`
+
+```json
             "organization": {
                 "muserId": "admin",
                 "internal": false,
@@ -12895,8 +13764,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 
 ```json
                 "supportRegionList": "[ \"cn-qingdao-****-d01\"]"
-            }
-        },
+```
+
+`},`
+
+```json
         "userRoles": {
             "roleRange": "roleRange.resourceSet",
             "rAMRole": false,
@@ -12914,7 +13786,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
             "id": 2,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "accessKeys": {
             "ctime": 1606675230000,
             "id": 1,
@@ -12922,7 +13798,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
             "cuserId": "admin",
             "status": "ACTIVE",
             "accesskeyId": "tCr5mJ******"
-        },
+```
+
+`},`
+
+```json
         "roles": {
             "roleRange": "roleRange.allOrganizations",
             "rAMRole": false,
@@ -12940,7 +13820,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
             "id": 6,
             "organizationVisibility": "organizationVisibility.global",
             "cuserId": "admin"
-        },
+```
+
+`},`
+
+```json
         "defaultRole": {
             "roleRange": "roleRange.orgAndSubOrgs",
             "rAMRole": false,
@@ -12957,7 +13841,11 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
             "roleLevel": 2147483647,
             "id": 4,
             "organizationVisibility": "organizationVisibility.global"
-        },
+```
+
+`},`
+
+```json
         "loginPolicy": {
             "muserId": "admin",
             "default": false,
@@ -12973,13 +13861,20 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
                 "protocol": "IPV4",
                 "ipRange": "10.48.16.1/24",
                 "loginPolicyId": 1084
-            },
+```
+
+`},`
+
+```json
             "timeRanges": {
                 "startTime": "08:00",
                 "loginPolicyId": 1084,
                 "endTime": "18:00"
-            }
-        },
+```
+
+`},`
+
+```json
         "organization": {
 ```
 
@@ -12998,20 +13893,30 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
             "cuserId": "admin",
             "parentId": 24,
             "supportRegionList": "[\"cn-***-d01\"]"
-        }
-    },
-    "success": true,
-    "message": "success"
-}
 ```
 
-###### 4.1.1.5.9. GetUserGroup
+`}` `},`
+
+```json
+    "success": true,
+    "message": "success"
+```
+
+`}`
+
+###### 4.1.1.5.9 GetUserGroup
+
+调用GetUserGroup获取用户组信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+GET /userGroup/get HTTP/1.1
+```
 
 **请求参数**
 
@@ -13038,28 +13943,30 @@ userGroupId和augId两个入参至少填写其中一个。如果都填写，则�
 | -createTimeStamp | Long | 1606791494471 | 用户组创建时间。 |
 | -augId | String | aug-101de696afc90a420d****** | 用户组唯一编码。 |
 
-**示例**
+请求示例
 
-请求示例 &公共请求参数
-
-```json
-{
-    "userGroupId":"123",
-    "augId":"aug-101de696afc90a420d******"
-}
+```
+GET /userGroup/get HTTP/1.1
 ```
 
-正常返回示例
+`&`公共请求参数
+
+```json
+    "userGroupId":"123",
+    "augId":"aug-101de696afc90a420d******"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"ascm.auth.InvalidParameter", "code":"121", "cost":36, "data":{ "organizationId":3, "groupName":"TestGroup", "augId":"aug-101de696afc90a420d******", "createTimeStamp":1606791494471, "id":123 }, "success":true, "message":"success" } |  |
+| { "errorKey":"ascm.auth.InvalidParameter", "code":"121", "cost":36, "data":{ "organizationId":3, "groupName":"TestGroup", "augId":"aug-101de696afc90a420d******", "createTimeStamp":1606791494471, "id":123 }, "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <errorKey>ascm.auth.InvalidParameter</errorKey> <code>121</code> <cost>36</cost> <data> <organizationId>3</organizationId> <groupName>TestGroup</groupName> <augId>aug-101de696afc90a420d******</augId> <createTimeStamp>1606791494471</createTimeStamp> <id>123</id> </data> <success>true</success> <message>success</message> |  |
+| <errorKey>ascm.auth.InvalidParameter</errorKey> <code>121</code> <cost>36</cost> <data> <organizationId>3</organizationId> <groupName>TestGroup</groupName> <augId>aug-101de696afc90a420d******</augId> <createTimeStamp>1606791494471</createTimeStamp> <id>123</id> </data> <success>true</success> <message>success</message> |   |
 
-###### 4.1.1.5.10. RemoveResourceSetFromUserGroup
+###### 4.1.1.5.10 RemoveResourceSetFromUserGroup
 
 调用RemoveResourceSetFromUserGroup从用户组删除资源集。
 
@@ -13101,26 +14008,26 @@ POST /ascm/auth/user/removeResourceSetFromUserGroup HTTP/1.1
 POST /ascm/auth/user/removeResourceSetFromUserGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resourceSetId": 1,
     "userGroupId": 1
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.5.11. RemoveRoleFromUserGroup
+###### 4.1.1.5.11 RemoveRoleFromUserGroup
+
+调用RemoveRoleFromUserGroup从用户组移除角色。
 
 **请求头**
 
@@ -13158,13 +14065,11 @@ POST /ascm/auth/user/removeRoleFromUserGroup HTTP/1.1
 POST /ascm/auth/user/removeRoleFromUserGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "roleId": "1",
     "userGroupId": "2"
-}
 ```
 
 正常返回示例 `XML` 格式
@@ -13175,9 +14080,11 @@ POST /ascm/auth/user/removeRoleFromUserGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "success": true, "message": "success" } |   |
 
-###### 4.1.1.5.12. RemoveUsersFromUserGroup
+###### 4.1.1.5.12 RemoveUsersFromUserGroup
+
+调用RemoveUsersFromUserGroup接口，将用户移除用户组。
 
 **请求头**
 
@@ -13217,28 +14124,28 @@ POST /ascm/auth/user/removeUsersFromUserGroup HTTP/1.1
 POST /ascm/auth/user/removeUsersFromUserGroup HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginNameList": "["testuser2022"]",
     "userGroupId": 190
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>453</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>453</cost> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 453, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 453, "success": true, "message": "success" } |   |
 
-##### 4.1.1.6. 登录策略管理
+##### 4.1.1.6 登录策略管理
 
-###### 4.1.1.6.1. AddLoginPolicy
+###### 4.1.1.6.1 AddLoginPolicy
+
+调用AddLoginPolicy创建登录策略。
 
 **请求头**
 
@@ -13256,20 +14163,20 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
 |---|---|---|---|---|---|
 | name | String | Body | 否 | mytest | 登录策略名。长度为2~50个字符。 说明该参数为必填。 |
 
-| description | String | Body | 否 | test |  | 登录策略描述。 |  |  |  |
+| description | String | Body | 否 | test |   | 登录策略描述。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| rule | String | Body | 否 | DENY |  | 登录策略的策略属性，默认为ALLOW。 ALLOW：白名单。 DENY：黑名单。 |  |  |  |
-| ipRanges | Json |  |  |  |  | 登录策略的IP段，不传则为空。 说明该参数需要按照格式传入，格式为 [{"protocol":"<登 |  |  |  |
-|  |  |  |  |  |  |  | 说明该参数需要按照格式传入，格式为 [{"protocol":"<登 |  |  |
-|  |  |  |  |  |  |  |  | [{"protocol":"<登 |  |
-|  |  |  |  |  |  |  | 录策略所使用协议>","ipRange":"<登录策略IP段 |  |  |
-|  |  | Body | 否 | [{"protocol":"IPV4","ipRan ge":"192.168.1.0/24"}] |  |  | >"}] |  |  |
-| timeRanges | Json | Body | 否 | [{"startTime":"00:00","en dTime":"24:00"}] |  | 登录策略的时间段，不传则为空。 说明该参数需要按照格式传入，格式为 [{"startTime":"< |  |  |  |
-|  |  |  |  |  |  |  | 说明该参数需要按照格式传入，格式为 [{"startTime":"< |  |  |
-|  |  |  |  |  |  |  |  | [{"startTime":"< |  |
-|  |  |  |  |  | :00"}] |  | 开始时间>","endTime":"<结束时间>}] |  |  |
-| enable | Boolean | Body | 否 | true |  | 登录策略是否有效，不传默认为true。 |  |  |  |
-| organizationVisibility | String | Body | 否 | organizationVisibility.glob al |  | 登录策略共享范围,不传默认全局共享： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |  |  |  |
+| rule | String | Body | 否 | DENY |   | 登录策略的策略属性，默认为ALLOW。 ALLOW：白名单。 DENY：黑名单。 |   |   |   |
+| ipRanges | Json |   |   |   |   | 登录策略的IP段，不传则为空。 说明该参数需要按照格式传入，格式为 [{"protocol":"<登 |   |   |   |
+|   |   |   |   |   |   |   | 说明该参数需要按照格式传入，格式为 [{"protocol":"<登 |   |   |
+|   |   |   |   |   |   |   |   | [{"protocol":"<登 |   |
+|   |   |   |   |   |   |   | 录策略所使用协议>","ipRange":"<登录策略IP段 |   |   |
+|   |   | Body | 否 | [{"protocol":"IPV4","ipRan ge":"192.168.1.0/24"}] |   |   | >"}] |   |   |
+| timeRanges | Json | Body | 否 | [{"startTime":"00:00","en dTime":"24:00"}] |   | 登录策略的时间段，不传则为空。 说明该参数需要按照格式传入，格式为 [{"startTime":"< |   |   |   |
+|   |   |   |   |   |   |   | 说明该参数需要按照格式传入，格式为 [{"startTime":"< |   |   |
+|   |   |   |   |   |   |   |   | [{"startTime":"< |   |
+|   |   |   |   |   | :00"}] |   | 开始时间>","endTime":"<结束时间>}] |   |   |
+| enable | Boolean | Body | 否 | true |   | 登录策略是否有效，不传默认为true。 |   |   |   |
+| organizationVisibility | String | Body | 否 | organizationVisibility.glob al |   | 登录策略共享范围,不传默认全局共享： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |   |   |   |
 
 **返回数据**
 
@@ -13277,7 +14184,7 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Integer | 19 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 登录策略数据。 |
+| data | Struct |   | 登录策略数据。 |
 
 | cuserId | String | admin | 登录策略创建者的用户名。 说明参数已经废弃 |
 |---|---|---|---|
@@ -13285,7 +14192,7 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
 | description | String | test | 登录策略描述。 |
 | enable | Boolean | true | 登录策略是否有效。 ture：有效。 false：无效。 |
 | id | Integer | 1081 | 登录策略ID。 |
-| ipRanges | Array of ipRang |  | 登录策略IP段。 |
+| ipRanges | Array of ipRang |   | 登录策略IP段。 |
 | ipRange | String | 192.168.1.0/24 | 登录策略的IP范围。 |
 | loginPolicyId | Integer | 1081 | 所属登录策略的ID。 |
 | protocol | String | IPV4 | 登录策略使用协议，目前仅支持IPv4。 |
@@ -13295,7 +14202,7 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
 | organizationVisibility | String | organizationVisibility.global | 登录策略共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 登录策略所属组织的ID。 |
 | rule | String | DENY | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRang |  | 登录策略的时间段。 |
+| timeRanges | Array of timeRang |   | 登录策略的时间段。 |
 | endTime | String | 24:00 | 结束时间。 |
 | loginPolicyId | Integer | 1081 | 所属登录策略的ID。 |
 | startTime | String | 00:00 | 开始时间。 |
@@ -13314,52 +14221,55 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
 POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "name": "mytest",
     "rule": "DENY"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>19</cost> <data> <muserId/> <timeRanges> <loginPolicyId>1081</loginPolicyId> <startTime>00:00</startTime> <endTime>24:00</endTime> </timeRanges> <description>test</description> <rule>DENY</rule> <lpId>lp-101de08b72030a420d27000a</lpId> <ipRanges> <protocol>IPV4</protocol> <ipRange>192.168.1.0/24</ipRange> <loginPolicyId>1081</loginPolicyId> </ipRanges> <default>false</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <name>mytest</name> <id>1081</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>19</cost> <data> <muserId/> <timeRanges> <loginPolicyId>1081</loginPolicyId> <startTime>00:00</startTime> <endTime>24:00</endTime> </timeRanges> <description>test</description> <rule>DENY</rule> <lpId>lp-101de08b72030a420d27000a</lpId> <ipRanges> <protocol>IPV4</protocol> <ipRange>192.168.1.0/24</ipRange> <loginPolicyId>1081</loginPolicyId> </ipRanges> <default>false</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <name>mytest</name> <id>1081</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> </data> <success>true</success> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "code": "200",
     "cost": 19,
     "data": {
         "muserId": "",
         "timeRanges": [
-            {
+```
+
+`{`
+
+```json
                 "loginPolicyId": 1081,
                 "startTime": "00:00",
                 "endTime": "24:00"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "description": "test",
         "rule": "DENY",
         "lpId": "lp-101de08b72030a420d27000a",
         "ipRanges": [
-            {
+```
+
+`{`
+
+```json
                 "protocol": "IPV4",
                 "ipRange": "192.168.1.0/24",
                 "loginPolicyId": 1081
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": false,
@@ -13368,15 +14278,20 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1
         "name": "mytest",
         "id": 1081,
         "organizationVisibility": "organizationVisibility.global"
-    },
-    "success": true,
-    "message": "success"
-}
 ```
 
-###### 4.1.1.6.2. CheckLoginPolicy
+`},`
 
-该接口实际效果是在指定条件下模拟登录Apsara Uni-manager运营控制台，用于检测指定用户所使用的登录策略是否生效。被检测的登录策略为请求参数中用户名对应的用户所绑定的登录策略。
+```json
+    "success": true,
+    "message": "success"
+```
+
+`}`
+
+###### 4.1.1.6.2 CheckLoginPolicy
+
+调用CheckLoginPolicy接口，检测指定用户使用的登录策略是否生效。 该接口实际效果是在指定条件下模拟登录Apsara Uni-manager运营控制台，用于检测指定用户所使用的登录策略是否生效。被检测的登录策略为请求参数中用户名对应的用户所绑定的登录策略。
 
 **请求头**
 
@@ -13418,16 +14333,14 @@ POST /ascm/auth/loginPolicy/checkLoginPolicy HTTP/1.1
 POST /ascm/auth/loginPolicy/checkLoginPolicy HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginName": "WFAdmin",
     "ip": "192.168.1.0"
-}
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <code>200</code> <cost>7</cost> <data>true</data> <success>true</success> <message>success</message>
@@ -13435,9 +14348,11 @@ POST /ascm/auth/loginPolicy/checkLoginPolicy HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 7, "data": true, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 7, "data": true, "success": true, "message": "success" } |   |
 
-###### 4.1.1.6.3. GetLoginPolicyById
+###### 4.1.1.6.3 GetLoginPolicyById
+
+调用GetLoginPolicyById获取登录策略详情。
 
 **请求头**
 
@@ -13461,7 +14376,7 @@ POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Integer | 14 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应结果。 |
+| data | Struct |   | 响应结果。 |
 
 | cuserId | String | admin | 登录策略创建者的用户名。 说明该参数已经废弃。 |
 |---|---|---|---|
@@ -13469,7 +14384,7 @@ POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1
 | description | String | test | 登录策略的描述。 |
 | enable | Boolean | true | 登录策略是否有效。 true：有效。 false：无效。 |
 | id | Integer | 1083 | 登录策略ID。 |
-| ipRanges | Array of ipRange |  | 登录策略的IP段。 |
+| ipRanges | Array of ipRange |   | 登录策略的IP段。 |
 | ipRange | String | 192.168.1.0/24 | IP范围。 |
 | loginPolicyId | Integer | 1083 | 所属登录策略ID。 |
 | protocol | String | IPV4 | 登录策略使用的协议，仅支持IPv4。 |
@@ -13479,7 +14394,7 @@ POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1
 | organizationVisibility | String | organizationVisibility.global | 登录策略共享范围： organizationVisibility.global：全局共享。 organizationVisibility.organization：本组织内共享。 organizationVisibility.orgAndSubOrgs：下级组织共享。 |
 | ownerOrganizationId | Integer | 1 | 所属组织ID。 |
 | rule | String | ALLOW | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRange |  | 登录策略时间段。 |
+| timeRanges | Array of timeRange |   | 登录策略时间段。 |
 | endTime | String | 24:00 | 结束时间。 |
 | loginPolicyId | Integer | 1 | 所属登录策略的ID. |
 | startTime | String | 00:00 | 开始时间。 |
@@ -13498,24 +14413,21 @@ POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1
 POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id":"1083"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>14</cost> <code>200</code> <data> <muserId>admin</muserId> <default>false</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <name>mytest</name> <rule>ALLOW</rule> <description>test</description> <id>1083</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <lpId>lp-101de0c1fa870a4209******</lpId> <cuserId>admin</cuserId> <ipRanges> <protocol>IPV4</protocol> <ipRange>192.168.1.0/24</ipRange> <loginPolicyId>1083</loginPolicyId> </ipRanges> <timeRanges> <startTime>00:00</startTime> <loginPolicyId>1</loginPolicyId> <endTime>24:00</endTime> </timeRanges> </data> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>14</cost> <code>200</code> <data> <muserId>admin</muserId> <default>false</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <name>mytest</name> <rule>ALLOW</rule> <description>test</description> <id>1083</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <lpId>lp-101de0c1fa870a4209******</lpId> <cuserId>admin</cuserId> <ipRanges> <protocol>IPV4</protocol> <ipRange>192.168.1.0/24</ipRange> <loginPolicyId>1083</loginPolicyId> </ipRanges> <timeRanges> <startTime>00:00</startTime> <loginPolicyId>1</loginPolicyId> <endTime>24:00</endTime> </timeRanges> </data> <success>true</success> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "redirect": false,
     "cost": 14,
     "code": 200,
@@ -13535,19 +14447,29 @@ POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1
             "protocol": "IPV4",
             "ipRange": "192.168.1.0/24",
             "loginPolicyId": 1083
-        },
+```
+
+`},`
+
+```json
         "timeRanges": {
             "startTime": "00:00",
             "loginPolicyId": 1,
             "endTime": "24:00"
-        }
-    },
-    "success": true,
-    "message": "success"
-}
 ```
 
-###### 4.1.1.6.4. GetLoginPolicyByLoginName
+`}` `},`
+
+```json
+    "success": true,
+    "message": "success"
+```
+
+`}`
+
+###### 4.1.1.6.4 GetLoginPolicyByLoginName
+
+调用GetLoginPolicyByLoginName获取用户绑定的访问策略。
 
 **请求头**
 
@@ -13573,13 +14495,13 @@ POST /ascm/auth/loginPolicy/getLoginPolicyByLoginName HTTP/1.1
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 |---|---|---|---|
 | cost | Integer | 25 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应结果。 |
+| data | Struct |   | 响应结果。 |
 | cuserId | String | admin | 登录策略创建者的用户名。 说明该参数已废弃。 |
 | default | Boolean | true | 是否为默认登录策略。 说明默认策略由系统自动生成，不可修改。 |
 | description | String | test | 登录策略的描述。 |
 | enable | Boolean | true | 登录策略的状态。 true：有效。 false：无效。 |
 | id | Integer | 1 | 登录策略ID。 |
-| ipRanges | Array of ipRange |  | 登录策略的IP段。 |
+| ipRanges | Array of ipRange |   | 登录策略的IP段。 |
 | ipRange | String | 0.0.0.0/0 | 登录策略的IP范围。 |
 | loginPolicyId | Integer | 1 | 所属登录策略的ID。 |
 | protocol | String | IPV4 | 登录策略使用的协议，目前仅支持IPv4。 |
@@ -13591,7 +14513,7 @@ POST /ascm/auth/loginPolicy/getLoginPolicyByLoginName HTTP/1.1
 | ownerOrganizationId | Integer | 1 | 登录策略拥有者所属组织的ID。 |
 |---|---|---|---|
 | rule | String | ALLOW | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRange |  | 登录策略的时间段。 |
+| timeRanges | Array of timeRange |   | 登录策略的时间段。 |
 | endTime | String | 24:00 | 结束时间。 |
 | loginPolicyId | Integer | 1081 | 所属登录策略的ID。 |
 | startTime | String | 00:00 | 开始时间。 |
@@ -13608,15 +14530,13 @@ POST /ascm/auth/loginPolicy/getLoginPolicyByLoginName HTTP/1.1
 POST /ascm/auth/loginPolicy/getLoginPolicyByLoginName HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginName": "WFAdmin"
-}
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data>
@@ -13645,9 +14565,11 @@ POST /ascm/auth/loginPolicy/getLoginPolicyByLoginName HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 25, "data": { "muserId": "", "timeRanges": [ { "loginPolicyId": 1, "startTime": "00:00", "endTime": "24:00" } ], "rule": "ALLOW", "lpId": "lp-9999999999", "ipRanges": [ { "protocol": "IPV4", "ipRange": "0.0.0.0/0", "loginPolicyId": 1 } ], "default": true, "ownerOrganizationId": 1, "enable": true, "name": "defaultLoginPolicy.name", "id": 1, "cuserId": "", "organizationVisibility": "organizationVisibility.global" }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 25, "data": { "muserId": "", "timeRanges": [ { "loginPolicyId": 1, "startTime": "00:00", "endTime": "24:00" } ], "rule": "ALLOW", "lpId": "lp-9999999999", "ipRanges": [ { "protocol": "IPV4", "ipRange": "0.0.0.0/0", "loginPolicyId": 1 } ], "default": true, "ownerOrganizationId": 1, "enable": true, "name": "defaultLoginPolicy.name", "id": 1, "cuserId": "", "organizationVisibility": "organizationVisibility.global" }, "success": true, "message": "success" } |   |
 
-###### 4.1.1.6.5. ListLoginPolicies
+###### 4.1.1.6.5 ListLoginPolicies
+
+调用ListLoginPolicies查看登录策略列表。
 
 **请求头**
 
@@ -13675,13 +14597,13 @@ POST /ascm/auth/loginPolicy/listLoginPolicies HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 | cost | Integer | 16 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of dataItem |  | 登录策略列表。 |
+| data | Array of dataItem |   | 登录策略列表。 |
 | cuserId | String | admin | 登录策略创建者的用户名。 |
 | default | Boolean | false | 是否为默认登录策略。 |
 | description | String | test | 登录策略的描述。 |
 | enable | Boolean | true | 登录策略是否有效。 true：有效。 false：无效。 |
 | id | Integer | 1081 | 登录策略ID。 |
-| ipRanges | Array of ipRang |  | 登录策略的IP段。 |
+| ipRanges | Array of ipRang |   | 登录策略的IP段。 |
 | ipRange | String | 0.0.0.0/0 | 登录策略的IP范围。 |
 | loginPolicyId | Integer | 1081 | 所属登录策略的ID。 |
 | protocol | String | IPv4 | 登录策略所使用的协议，仅支持IPv4。 |
@@ -13693,13 +14615,13 @@ POST /ascm/auth/loginPolicy/listLoginPolicies HTTP/1.1
 |---|---|---|---|
 | ownerOrganizationId | Integer | 1 | 所属组织ID。 |
 | rule | String | ALLOW | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRang |  | 登录策略的时间段。 |
+| timeRanges | Array of timeRang |   | 登录策略的时间段。 |
 | endTime | String | 24:00 | 结束时间。 |
 | loginPolicyId | Integer | 1081 | 所属登录策略的ID。 |
 | startTime | String | 00:00 | 开始时间。 |
 | userCount | Integer | 12 | 使用该登录策略的人数。 |
 | message | String | success | 错误提示信息。 说明无论是否调用成功都会返回。一般调用成功返回success，调用失败返回自定义的错误信息或者返回异常栈中的错误信息。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 10 | 每页大小。 |
 | total | Integer | 1 | 返回记录总数。 |
@@ -13716,27 +14638,27 @@ POST /ascm/auth/loginPolicy/listLoginPolicies HTTP/1.1
 POST /ascm/auth/loginPolicy/listLoginPolicies HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "name": "mytest",
     "currentPage: 1,
     "pageSize": 10
-}
 ```
 
 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>16</cost> <code>200</code> <data> <muserId>admin</muserId> <default>false</default> <userCount>12</userCount> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <name>mytest</name> <rule>ALLOW</rule> <description>test</description> <id>1081</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <lpId>lp-101de08b72030a420******</lpId> <cuserId>admin</cuserId> <ipRanges> <protocol>IPv4</protocol> <ipRange>0.0.0.0/0</ipRange> <loginPolicyId>1081</loginPolicyId> </ipRanges> <timeRanges> <startTime>00:00</startTime> <loginPolicyId>1081</loginPolicyId> <endTime>24:00</endTime> </timeRanges> </data> <success>true</success> <pageInfo> <total>1</total> <totalPage>1</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <redirect>false</redirect> <cost>16</cost> <code>200</code> <data> <muserId>admin</muserId> <default>false</default> <userCount>12</userCount> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <name>mytest</name> <rule>ALLOW</rule> <description>test</description> <id>1081</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <lpId>lp-101de08b72030a420******</lpId> <cuserId>admin</cuserId> <ipRanges> <protocol>IPv4</protocol> <ipRange>0.0.0.0/0</ipRange> <loginPolicyId>1081</loginPolicyId> </ipRanges> <timeRanges> <startTime>00:00</startTime> <loginPolicyId>1081</loginPolicyId> <endTime>24:00</endTime> </timeRanges> </data> <success>true</success> <pageInfo> <total>1</total> <totalPage>1</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 16, "code": 200, "data": { "muserId": "admin", "default": false, "userCount": 12, "ownerOrganizationId": 1, "enable": true, "name": "mytest", "rule": "ALLOW", "description": "test", "id": 1081, "organizationVisibility": "organizationVisibility.global", "lpId": "lp-101de08b72030a420******", "cuserId": "admin", "ipRanges": { "protocol": "IPv4", "ipRange": "0.0.0.0/0", "loginPolicyId": 1081 }, "timeRanges": { "startTime": "00:00", "loginPolicyId": 1081, "endTime": "24:00" } }, "success": true, "pageInfo": { "total": 1, "totalPage": 1, "pageSize": 10, "currentPage": 1 }, "message": "success" } |  |
+| { "redirect": false, "cost": 16, "code": 200, "data": { "muserId": "admin", "default": false, "userCount": 12, "ownerOrganizationId": 1, "enable": true, "name": "mytest", "rule": "ALLOW", "description": "test", "id": 1081, "organizationVisibility": "organizationVisibility.global", "lpId": "lp-101de08b72030a420******", "cuserId": "admin", "ipRanges": { "protocol": "IPv4", "ipRange": "0.0.0.0/0", "loginPolicyId": 1081 }, "timeRanges": { "startTime": "00:00", "loginPolicyId": 1081, "endTime": "24:00" } }, "success": true, "pageInfo": { "total": 1, "totalPage": 1, "pageSize": 10, "currentPage": 1 }, "message": "success" } |   |
 
-###### 4.1.1.6.6. ModifyLoginPolicy
+###### 4.1.1.6.6 ModifyLoginPolicy
+
+调用ModifyLoginPolicy修改登录策略。
 
 **请求头**
 
@@ -13750,25 +14672,25 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 
 **请求参数**
 
-| 名称 | 类型 | 位置 |  |  | 是否必选 | 示例值 |  | 描述 |  |  |  |  |
+| 名称 | 类型 | 位置 |   |   | 是否必选 | 示例值 |   | 描述 |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| id | Integer | Body |  |  | 否 | 1083 |  | 登录策略ID。可通过调用ListLoginPolicies接口获取。 说明该参数为必填。 |  |  |  |  |
-| name | String | Body |  |  | 否 | mytest |  | 修改后的登录策略名，若不传则不修改登录策略名称。 |  |  |  |  |
-| description | String | Body |  |  | 否 | test |  | 修改后的登录策略描述，若不传则不修改描述。 |  |  |  |  |
-| rule | String | Body |  |  | 否 | DENY |  | 修改后的登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |  |  |  |  |
-| ipRanges | Json | Body |  |  |  |  |  | 修改后的IP段，若不传则不修改IP网段校验规则。 说明该参数需要按照格式传入，格式为 [{"ipRange":"<登录 |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 说明该参数需要按照格式传入，格式为 [{"ipRange":"<登录 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{"ipRange":"<登录 |  |  |
-|  |  |  |  |  |  |  |  |  | 策略IP段>","loginPolicyId":<登录策略 |  |  |  |
-|  |  |  |  |  |  | [{"ipRange":"10.48.16.1/2 |  |  | ID>,"protocol":"<登录策略协议>"}] |  |  |  |
-|  |  |  |  |  | 否 | 4","loginPolicyId":1083,"pr otocol":"IPV4"}] |  |  |  |  |  |  |
-| timeRanges | Json | Body |  |  |  |  |  | 修改后的登录时间段，若不传则不修改登录时间段校验规则。 说明该参数需要按照格式传入，格式为 [{"endTime":"<结束 |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 说明该参数需要按照格式传入，格式为 [{"endTime":"<结束 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{"endTime":"<结束 |  |  |
-|  |  |  |  |  |  |  |  |  | 时间>","loginPolicyId":<登录策略 |  |  |  |
-|  |  |  |  |  |  | [{"endTime":"18:00","logi |  |  | ID>,"startTime":"<开始时间>"}] |  |  |  |
-|  |  |  |  |  | 否 | nPolicyId":1083,"startTime ":"08:00"}] |  |  |  |  |  |  |
-| enable | Boolean | Body |  |  | 否 | true |  | 登录策略的状态。 true：有效。 false：无效。 说明若传入false，则该登录策略将被禁用，登录策略状态将变为无效。禁用策略后绑定该策略的用户将无法登录 Apsara Uni-manager运营控制台。若不传则不修改登录策略的状态。 |  |  |  |  |
+| id | Integer | Body |   |   | 否 | 1083 |   | 登录策略ID。可通过调用ListLoginPolicies接口获取。 说明该参数为必填。 |   |   |   |   |
+| name | String | Body |   |   | 否 | mytest |   | 修改后的登录策略名，若不传则不修改登录策略名称。 |   |   |   |   |
+| description | String | Body |   |   | 否 | test |   | 修改后的登录策略描述，若不传则不修改描述。 |   |   |   |   |
+| rule | String | Body |   |   | 否 | DENY |   | 修改后的登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |   |   |   |   |
+| ipRanges | Json | Body |   |   |   |   |   | 修改后的IP段，若不传则不修改IP网段校验规则。 说明该参数需要按照格式传入，格式为 [{"ipRange":"<登录 |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 说明该参数需要按照格式传入，格式为 [{"ipRange":"<登录 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{"ipRange":"<登录 |   |   |
+|   |   |   |   |   |   |   |   |   | 策略IP段>","loginPolicyId":<登录策略 |   |   |   |
+|   |   |   |   |   |   | [{"ipRange":"10.48.16.1/2 |   |   | ID>,"protocol":"<登录策略协议>"}] |   |   |   |
+|   |   |   |   |   | 否 | 4","loginPolicyId":1083,"pr otocol":"IPV4"}] |   |   |   |   |   |   |
+| timeRanges | Json | Body |   |   |   |   |   | 修改后的登录时间段，若不传则不修改登录时间段校验规则。 说明该参数需要按照格式传入，格式为 [{"endTime":"<结束 |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 说明该参数需要按照格式传入，格式为 [{"endTime":"<结束 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{"endTime":"<结束 |   |   |
+|   |   |   |   |   |   |   |   |   | 时间>","loginPolicyId":<登录策略 |   |   |   |
+|   |   |   |   |   |   | [{"endTime":"18:00","logi |   |   | ID>,"startTime":"<开始时间>"}] |   |   |   |
+|   |   |   |   |   | 否 | nPolicyId":1083,"startTime ":"08:00"}] |   |   |   |   |   |   |
+| enable | Boolean | Body |   |   | 否 | true |   | 登录策略的状态。 true：有效。 false：无效。 说明若传入false，则该登录策略将被禁用，登录策略状态将变为无效。禁用策略后绑定该策略的用户将无法登录 Apsara Uni-manager运营控制台。若不传则不修改登录策略的状态。 |   |   |   |   |
 
 **返回数据**
 
@@ -13778,13 +14700,13 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 | code | String | 200 | 状态码。 200：调用成功。 401：用户未认证。 400：参数错误。 402：Cookie无效。 403：禁止操作，禁止访问某个资源。 404：要访问的资源不存在。 406：账户未被激活。 409：需要保存、添加的数据已经存在。 418：验证码校验失败。 419：第三方服务认证失败。 420：签名校验失败。 421：证书校验失败。 425：服务不存在。 426：证书不存在。 427：AccessKey是有效的，AccessKey所属的用户不能执行此项操作。 428：AccessKey是无效的，AccessKey不存在或者状态异常。 500：服务内部错误，发生未识别的异常时会返回此错误码。 511：参数超过限定的阈值。 512：STS服务颁发的安全令牌失效。 513：依赖的服务异常。 |
 |---|---|---|---|
 | cost | Integer | 50 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 响应结果。 |
+| data | Struct |   | 响应结果。 |
 | cuserId | String | admin | 登录策略创建者的用户名。 说明此参数已经废弃。 |
 | default | Boolean | false | 是否为默认登录策略。 说明默认策略由系统自动生成，不可修改。 |
 | description | String | test | 登录策略的描述。 |
 | enable | Boolean | true | 登录策略的状态。 true：有效。 false：无效。 说明若传入false，则该登录策略将被禁用，登录策略状态将变为无效。禁用策略后绑定该策略的用户将无法登录Apsara Uni-manager运营控制台。若不传则不修改登录策略的状态。 |
 | id | Integer | 1083 | 登录策略ID。 |
-| ipRanges | Array of ipRang |  | 登录策略的IP段。 |
+| ipRanges | Array of ipRang |   | 登录策略的IP段。 |
 | ipRange | String | 10.48.16.1/24 | IP范围。 |
 | loginPolicyId | Integer | 1083 | 所属登录策略ID。 |
 | protocol | String | IPV4 | 登录策略使用的协议，仅支持ipv4。 |
@@ -13797,7 +14719,7 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 |---|---|---|---|
 | ownerOrganizationId | Integer | 1 | 登录策略所属组织的ID。 |
 | rule | String | ALLOW | 登录策略的策略属性。 ALLOW：白名单。 DENY：黑名单。 |
-| timeRanges | Array of timeRang |  | 登录策略时间段。 |
+| timeRanges | Array of timeRang |   | 登录策略时间段。 |
 | endTime | String | 18:00 | 结束时间。 |
 | loginPolicyId | Integer | 1083 | 所属登录策略ID。 |
 | startTime | String | 08:00 | 开始时间。 |
@@ -13814,15 +14736,13 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id": 2
-}
 ```
 
-正常返回示例 `XML` 格式
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <code>200</code> <cost>50</cost> <data>
@@ -13852,13 +14772,13 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 50, "data": { "muserId": "", "timeRanges": [ { "loginPolicyId": 1083, "startTime": "08:00", "endTime": "18:00" } ], "description": "test", "rule": "DENY", "mtime": 1662446862771, "lpId": "lp-101de0c1fa870a420927000x", "ipRanges": [ { "protocol": "IPV4", "ipRange": "10.48.16.1/24", "loginPolicyId": 1083 } ], "default": false, "ownerOrganizationId": 1, "enable": true, "name": "mytest", "id": 1083, "organizationVisibility": "organizationVisibility.global" }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 50, "data": { "muserId": "", "timeRanges": [ { "loginPolicyId": 1083, "startTime": "08:00", "endTime": "18:00" } ], "description": "test", "rule": "DENY", "mtime": 1662446862771, "lpId": "lp-101de0c1fa870a420927000x", "ipRanges": [ { "protocol": "IPV4", "ipRange": "10.48.16.1/24", "loginPolicyId": 1083 } ], "default": false, "ownerOrganizationId": 1, "enable": true, "name": "mytest", "id": 1083, "organizationVisibility": "organizationVisibility.global" }, "success": true, "message": "success" } |   |
 
-##### 4.1.1.7. 变更管理
+##### 4.1.1.7 变更管理
 
-###### 4.1.1.7.1. UpdateInstanceBelong
+###### 4.1.1.7.1 UpdateInstanceBelong
 
-不能跨一级组织变更实例归属。 调用时会检查是否超出目标组织该产品的配额，若超出配额则会返回报错信息，错误码为510。 ECS安全组和VPC交换机仅支持在所属VPC共享范围内变更。 变更ECS实例会同步变更ECS实例下的磁盘、快照和弹性网卡。 变更VPC实例会同步变更VPC下的路由表。
+调用UpdateInstanceBelong接口变更单个实例的归属。 不能跨一级组织变更实例归属。 调用时会检查是否超出目标组织该产品的配额，若超出配额则会返回报错信息，错误码为510。 ECS安全组和VPC交换机仅支持在所属VPC共享范围内变更。 变更ECS实例会同步变更ECS实例下的磁盘、快照和弹性网卡。 变更VPC实例会同步变更VPC下的路由表。
 
 **请求头**
 
@@ -13893,7 +14813,6 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
 `JSON` 格式
 
 ```json
-{
  "Path":"examplepath",
  "PureListDataString":"false",
  "Message":"exampleerrmessage",
@@ -13904,14 +14823,15 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1
  "Code":"200",
  "Cost":934,
  "Success":true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <Path>examplepath</Path> <PureListDataString>false</PureListDataString> <Message>exampleerrmessage</Message> <RequestId>530dxxx-dxx******-x6b61axxxxx</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>exampleErrKey</ErrorKey> <Redirect>false</Redirect> <Code>200</Code> <Cost>934</Cost> <Success>true</Success> |  |
+| <Path>examplepath</Path> <PureListDataString>false</PureListDataString> <Message>exampleerrmessage</Message> <RequestId>530dxxx-dxx******-x6b61axxxxx</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>exampleErrKey</ErrorKey> <Redirect>false</Redirect> <Code>200</Code> <Cost>934</Cost> <Success>true</Success> |   |
 
-###### 4.1.1.7.2. UpdateInstancesBelong
+###### 4.1.1.7.2 UpdateInstancesBelong
 
 调用UpdateInstanceBelong接口变更同一资源类型的多个实例的归属。不能跨一级组织变更实例归属。调用时会检查是否超出目标组织该产品的配额，若超出配额则会返回报错信息，错误码为510。 ECS安全组和VPC交换机仅支持在所属VPC共享范围内变更。变更ECS实例会同步变更ECS实例下的磁盘、快照和弹性网卡。变更VPC实例会同步变更VPC下的路由表。
 
@@ -13957,16 +14877,16 @@ POST /belong/updateInstances HTTP/1.1
 请求示例
 
 ```
-POST /belong/updateInstances HTTP/1.1 { }
+POST /belong/updateInstances HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "Path":"", "PureListDataString":"", "Message":"success", "RequestId":"E43F52CE-42B8-581B-B818-3C50B276566C", "IsPureListData":false, "ErrorKey":"", "Redirect":false, "Code":"200", "Cost":100, "Success":true } |  |
+| { "Path":"", "PureListDataString":"", "Message":"success", "RequestId":"E43F52CE-42B8-581B-B818-3C50B276566C", "IsPureListData":false, "ErrorKey":"", "Redirect":false, "Code":"200", "Cost":100, "Success":true } |   |
 
-###### 4.1.1.7.3. UpdateOrganizationBelong
+###### 4.1.1.7.3 UpdateOrganizationBelong
 
 更新组织归属关系不能跨一级组织变更组织归属。 调用时会检查是否超出目标组织所有产品的配额，若超出配额则会返回报错信息，错误码为510。
 
@@ -13975,6 +14895,10 @@ POST /belong/updateInstances HTTP/1.1 { }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /belong/updateOrganization HTTP/1.1
+```
 
 **请求参数**
 
@@ -13992,7 +14916,7 @@ POST /belong/updateInstances HTTP/1.1 { }
 | Message | String | "success" | 提示信息。 成功则返回为空。 失败则返回具体失败信息。 |
 | RequestId | String | 0a1128a916917198245846573e 0*** | 变更某资源集的请求ID。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -14008,21 +14932,27 @@ POST /belong/updateInstances HTTP/1.1 { }
 
 请求示例
 
-```json
-{ "orgId":"4", "targetOrgId":"3" }
+```
+POST /belong/updateOrganization HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"orgId":"4", "targetOrgId":"3"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "Path":"/xxx/", "PureListDataString":"xxx", "Message":"\"success\"", "RequestId":"0a1128a916917198245846573e0***", "IsPureListData":false, "ErrorKey":"ascm.manage.InternalError", "Redirect":false, "Code":"400", "Cost":100, "Success":true } |  |
+| { "Path":"/xxx/", "PureListDataString":"xxx", "Message":"\"success\"", "RequestId":"0a1128a916917198245846573e0***", "IsPureListData":false, "ErrorKey":"ascm.manage.InternalError", "Redirect":false, "Code":"400", "Cost":100, "Success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <Path>/xxx/</Path> <PureListDataString>xxx</PureListDataString> <Message>&quot;success&quot;</Message> <RequestId>0a1128a916917198245846573e0***</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>ascm.manage.InternalError</ErrorKey> <Redirect>false</Redirect> <Code>400</Code> <Cost>100</Cost> <Success>true</Success> |  |
+| <Path>/xxx/</Path> <PureListDataString>xxx</PureListDataString> <Message>&quot;success&quot;</Message> <RequestId>0a1128a916917198245846573e0***</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>ascm.manage.InternalError</ErrorKey> <Redirect>false</Redirect> <Code>400</Code> <Cost>100</Cost> <Success>true</Success> |   |
 
-###### 4.1.1.7.4. UpdateResourceSetBelong
+###### 4.1.1.7.4 UpdateResourceSetBelong
 
 更新资源集归属关系，仅允许一级组织范围内变更归属，不允许跨一级组织变更资源集归属。 不能跨一级组织变更资源集归属。 调用时会检查是否超出目标组织所有产品的配额，若超出配额则会返回报错信息，错误码为510。 变更资源集归属会同步变更资源集下所有实例的归属。
 
@@ -14062,14 +14992,19 @@ POST /belong/updateResourceSet HTTP/1.1
 
 请求示例
 
-```json
-POST /belong/updateResourceSet HTTP/1.1 { "resourceSetId":"3", "targetOrgId":"3" }
+```
+POST /belong/updateResourceSet HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"resourceSetId":"3", "targetOrgId":"3"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "Path":"/xxx/",
  "PureListDataString":"xxx",
  "Message":"success",
@@ -14080,16 +15015,17 @@ POST /belong/updateResourceSet HTTP/1.1 { "resourceSetId":"3", "targetOrgId":"3"
  "Code":"400",
  "Cost":100,
  "Success":true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <Path>/xxx/</Path> <PureListDataString>xxx</PureListDataString> <Message>success</Message> <RequestId>0a1128a916917198245846573e0***</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>ascm.manage.InternalError</ErrorKey> <Redirect>false</Redirect> <Code>400</Code> <Cost>100</Cost> <Success>true</Success> |  |
+| <Path>/xxx/</Path> <PureListDataString>xxx</PureListDataString> <Message>success</Message> <RequestId>0a1128a916917198245846573e0***</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>ascm.manage.InternalError</ErrorKey> <Redirect>false</Redirect> <Code>400</Code> <Cost>100</Cost> <Success>true</Success> |   |
 
-#### 4.1.2. 运营中心
+#### 4.1.2 运营中心
 
-##### 4.1.2.1. QueryOrderOpenApi
+##### 4.1.2.1 QueryOrderOpenApi
 
 查询订单的开放API接口，用于外部系统调用以获取订单相关信息。 调用QueryOrderOpenApi查询订单，支持按照云平台、产品、订单id等条件筛选。
 
@@ -14178,23 +15114,21 @@ POST /order/queryOrder HTTP/1.1
 | errorCode | String | UnknownError | 返回错误码。 |
 | errorMessage | String | UnknownError | 返回错误信息。 |
 
-**示例**
-
 请求示例
 
 ```json
-POST /order/queryOrder HTTP/1.1 {
+POST /order/queryOrder HTTP/1.1
   "platformCode":"default","serviceId":"CS000003",
-"chargeType":"postPay","statusList":["auditing","waiting","success","deliver_fail"], "pageNumber":1,"pageSize":10 }
+"chargeType":"postPay","statusList":["auditing","waiting","success","deliver_fail"], "pageNumber":1,"pageSize":10
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "total":100, "pageNumber":1, "code":"200", "data":[ { "orderType":"new", "orgName":"部门1", "resourceGroupName":"资源集test", "deliverInfo":[ { "successInstanceCount":3, "failedInstanceCount":1, "canceledInstanceCount":1, "totalInstanceCount":5 } ], "orderId":"202508291348290000010001", "userInfo":[ { "loginName":"admin", "userName":"用户名", "userId":"5003" } ], "num":1, "chargeType":"postPay", "orderStatus":"new", "instanceList":[ { "instanceId":"i-pb400oibibyasklqotqv", "expireTimeUtc":"2025-10-29T11:15:00Z", "instanceName":"test111", "regionId":"cn-shanghai-d01", "createTimeUtc":"2025-10-25T11:15:00Z" } ], "orgId":"112267", "duration":"P4D", "previewInfo":"{\\\"chargeType\\\":{\\\"preview\\\":\\\"按量计费\\\",\\\"label\\\":\\\"计费方式\\\"},\\\"SupportHotUpgrade\\\": {\\\"preview\\\":\\\"是\\\",\\\"label\\\":\\\"开启热变配\\\"}}", "serviceInfo":[ { "serviceId":"CS000001", "serviceName":"ECS实例", "productName":"云服务器 ECS" } ], "price":"10.00", "currency":"CNY", "resourceGroupId":"resourceGroupTest", "platformName":"中心云", "platformCode":"default", "refund":"10.00" } ], "success":true, "errorMessage":"UnknownError", "pageSize":10, "errorCode":"UnknownError" } |  |
+| { "total":100, "pageNumber":1, "code":"200", "data":[ { "orderType":"new", "orgName":"部门1", "resourceGroupName":"资源集test", "deliverInfo":[ { "successInstanceCount":3, "failedInstanceCount":1, "canceledInstanceCount":1, "totalInstanceCount":5 } ], "orderId":"202508291348290000010001", "userInfo":[ { "loginName":"admin", "userName":"用户名", "userId":"5003" } ], "num":1, "chargeType":"postPay", "orderStatus":"new", "instanceList":[ { "instanceId":"i-pb400oibibyasklqotqv", "expireTimeUtc":"2025-10-29T11:15:00Z", "instanceName":"test111", "regionId":"cn-shanghai-d01", "createTimeUtc":"2025-10-25T11:15:00Z" } ], "orgId":"112267", "duration":"P4D", "previewInfo":"{\\\"chargeType\\\":{\\\"preview\\\":\\\"按量计费\\\",\\\"label\\\":\\\"计费方式\\\"},\\\"SupportHotUpgrade\\\": {\\\"preview\\\":\\\"是\\\",\\\"label\\\":\\\"开启热变配\\\"}}", "serviceInfo":[ { "serviceId":"CS000001", "serviceName":"ECS实例", "productName":"云服务器 ECS" } ], "price":"10.00", "currency":"CNY", "resourceGroupId":"resourceGroupTest", "platformName":"中心云", "platformCode":"default", "refund":"10.00" } ], "success":true, "errorMessage":"UnknownError", "pageSize":10, "errorCode":"UnknownError" } |   |
 
-##### 4.1.2.2. AddCommonSpec
+##### 4.1.2.2 AddCommonSpec
 
 添加自定义规格。
 
@@ -14219,7 +15153,7 @@ POST /ascm/manage/saleconf/commonSpec/add HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| data | Struct |  | 返回数据集。 |
+| data | Struct |   | 返回数据集。 |
 | validationInfo | String | “” | 校验标示。 |
 | code | String | 200 | 状态码。 |
 | httpOk | Boolean | true | 返回状态。 |
@@ -14227,14 +15161,14 @@ POST /ascm/manage/saleconf/commonSpec/add HTTP/1.1
 | message | String | success | 报错信息。 |
 | requestId | String | 0a1ec3c216087759426241251d0 2bd | 请求ID。 |
 | success | Boolean | true | 成功标示。 |
-| eagleEyeTraceId | String | “” |  |
+| eagleEyeTraceId | String | “” |   |
 
 **示例**
 
 请求示例
 
 ```
-&resourceType=RDS
+http(s)://[Endpoint]/?Action=AddCommonSpec &resourceType=RDS
 ```
 
 `&specName=`企业增强版
@@ -14243,17 +15177,19 @@ POST /ascm/manage/saleconf/commonSpec/add HTTP/1.1
 &status=Available
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <success>true</success> <validationInfo>“”</validationInfo> </data> <httpOk>true</httpOk> <requestId>0a1ec3c216087759426241251d02bd</requestId> <success>true</success> <ip>“”</ip> <message>success</message> |  |
+| <code>200</code> <data> <success>true</success> <validationInfo>“”</validationInfo> </data> <httpOk>true</httpOk> <requestId>0a1ec3c216087759426241251d02bd</requestId> <success>true</success> <ip>“”</ip> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "data": { "success": "true", "validationInfo": "“”" }, "httpOk": "true", "requestId": "0a1ec3c216087759426241251d02bd", "success": "true", "ip": "“”", "message": "success" } |  |
+| { "code": "200", "data": { "success": "true", "validationInfo": "“”" }, "httpOk": "true", "requestId": "0a1ec3c216087759426241251d02bd", "success": "true", "ip": "“”", "message": "success" } |   |
 
-##### 4.1.2.3. CreateQuota
+##### 4.1.2.3 CreateQuota
+
+调用CreateQuota创建配额。
 
 **请求头**
 
@@ -14272,43 +15208,54 @@ POST /ascm/manage/saleconf/commonSpec/add HTTP/1.1
 | clusterName | String | Body | 否 | "" | 预留字段。表示集群名称，可不填写或者传空字符串。 |
 | targetType | String | Body | 否 | "" | 如果为RDS产品则输入对应引擎的名称，支持 MySQL和SQLServer。 其他产品则可不填或者传空字符串。 |
 
-云产品的productName及quotaBody参数示例如下：
+云产品的productName及quotaBody参数示例如下： 云服务器ECS：
 
 ```json
 {"productName":"ecs",
     "quotaBody":{"totalCpu":100,"totalMem":100,"totalGpu":100,
     "totalDisk_cloud_ssd":100,"totalDisk_cloud_efficiency":100}
-} {"productName":"oss",
-    "quotaBody":{"totalAmount":100}
-} {"productName":"vpc",
-    "quotaBody":{"totalVPC":100}
-}
 ```
 
-云数据库RDS：
+`}` 对象存储OSS：
+
+```json
+{"productName":"oss",
+    "quotaBody":{"totalAmount":100}
+```
+
+`}` 专有网络VPC ：
+
+```json
+{"productName":"vpc",
+    "quotaBody":{"totalVPC":100}
+```
+
+`}` 云数据库RDS：
 
 ```json
 {"productName":"rds",
     "quotaBody":{"totalCpu":100,"totalMem":100,"totalDisk":100}
-} {"productName":"slb",
-    "quotaBody":{"totalVipInternal":100,"totalVipPublic":100}
-}
 ```
 
-MaxCompute（ODPS）：
+`}` 负载均衡SLB：
+
+```json
+{"productName":"slb",
+    "quotaBody":{"totalVipInternal":100,"totalVipPublic":100}
+```
+
+`}` MaxCompute（ODPS）：
 
 ```json
 {"productName":"odps",
     "quotaBody":{"totalCu":100,"totalDisk":100}
-}
 ```
 
-弹性公网EIP：
+`}` 弹性公网EIP：
 
 ```json
 {"productName":"eip",
     "quotaBody":{"totalEIP":100}
-}
 ```
 
 分析型数据库MySQL版（ADB） :
@@ -14316,7 +15263,6 @@ MaxCompute（ODPS）：
 ```json
 {"productName": "adb",
     "quotaBody":{"totalCpu": 100, "totalMem": 100, "totalDisk":100}
-}
 ```
 
 分析型数据库PostgreSQL版（GPDB）:
@@ -14324,32 +15270,44 @@ MaxCompute（ODPS）：
 ```json
 {"productName": "gpdb",
     "quotaBody":{"totalCpu": 100, "totalMem": 100, "totalDisk":100}
-}
 ```
 
-云数据库Redis（R-KVStore） :
+`}` 云数据库Redis（R-KVStore） :
 
 ```json
 {"productName": "r-kvstore",
     "quotaBody":{"totalMem": 100}
-} {"productName": "drds",
-    "quotaBody":{"totalCpu": 100}
-}
- {"productName": "ots",
-     "quotaBody":{"totalDisk": 100}
-}
- {"productName": "nas",
-     "quotaBody":{"totalDisk": 100}
-}
 ```
 
-云数据库MongoDB：
+`}` 云原生分布式数据库 PolarDB-X 1.0（DRDS）：
+
+```json
+{"productName": "drds",
+    "quotaBody":{"totalCpu": 100}
+```
+
+`}` 表格存储Tablestore：
+
+```json
+ {"productName": "ots",
+     "quotaBody":{"totalDisk": 100}
+```
+
+`}` 文件存储NAS：
+
+```json
+ {"productName": "nas",
+     "quotaBody":{"totalDisk": 100}
+```
+
+`}` 云数据库MongoDB：
 
 ```json
  {"productName": "dds",
      "quotaBody":{"totalCpu": 100, "totalMem": 100, "totalDisk":100}
-}
 ```
+
+`}`
 
 **返回数据**
 
@@ -14422,13 +15380,12 @@ MaxCompute（ODPS）：
 请求示例
 
 ```
-&ProductName=ECS &QuotaBody={"totalCpu":100,"totalMem":100,"totalGpu":100, "totalDisk_cloud_ssd":100,"totalDisk_cloud_efficiency":100} &QuotaType=organization &QuotaTypeId=1
+http(s)://[Endpoint]/?Action=CreateQuota &ProductName=ECS &QuotaBody={"totalCpu":100,"totalMem":100,"totalGpu":100, "totalDisk_cloud_ssd":100,"totalDisk_cloud_efficiency":100} &QuotaType=organization &QuotaTypeId=1
 ```
 
-`&<`公共请求参数> 正常返回示例 `JSON` 格式
+`&<`公共请求参数`>` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "code":"200",
  "cost":1000,
  "data":{
@@ -14482,15 +15439,18 @@ MaxCompute（ODPS）：
   "usedMem":1,
   "allocateCpu":1,
   "usedDisk_cloud_efficiency":1
- },
+```
+
+`},`
+
+```json
  "requestId":"111",
  "success":true,
  "pureListData":false,
  "message":"200"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <code>200</code> <cost>1000</cost> <data>
@@ -14549,7 +15509,9 @@ MaxCompute（ODPS）：
 
 ascm 2019-05-10
 
-##### 4.1.2.4. DeleteQuota
+##### 4.1.2.4 DeleteQuota
+
+调用DeleteQuota删除配额。
 
 **请求头**
 
@@ -14587,17 +15549,23 @@ POST /ascm/manage/quota/delete HTTP/1.1
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DeleteQuota
+```
+
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <success>true</success> <requestId>111</requestId> <pureListData>false</pureListData> <message>200</message> |  |
+| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <success>true</success> <requestId>111</requestId> <pureListData>false</pureListData> <message>200</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "1000", "code": "200", "success": "true", "requestId": "111", "pureListData": "false", "message": "200" } |  |
+| { "redirect": "false", "cost": "1000", "code": "200", "success": "true", "requestId": "111", "pureListData": "false", "message": "200" } |   |
 
-##### 4.1.2.5. DescribeGpdbModifiableInstanceType
+##### 4.1.2.5 DescribeGpdbModifiableInstanceType
 
 获取Gpdb可变配规格接口。
 
@@ -14612,9 +15580,9 @@ POST /ascm/manage/quota/delete HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| data | Struct |  | 结果集。 |
+| data | Struct |   | 结果集。 |
 
-| result | Array of dataItem |  | 结果集。 |
+| result | Array of dataItem |   | 结果集。 |
 |---|---|---|---|
 | baseVersion | String | 3.13 | 规格版本。 |
 | cpu | String | 1 | 处理器数量。 |
@@ -14643,7 +15611,7 @@ POST /ascm/manage/quota/delete HTTP/1.1
 http(s)://[Endpoint]/?Action=DescribeGpdbModifiableInstanceType &instanceId=sdfsdfsdfsfdsdf
 ```
 
-`&<`公共请求参数> 正常返回示例 `XML` 格式
+`&<`公共请求参数`>` 正常返回示例 `XML` 格式
 
 ```xml
 <data>
@@ -14670,11 +15638,11 @@ http(s)://[Endpoint]/?Action=DescribeGpdbModifiableInstanceType &instanceId=sdfs
 
 | JSON | 格式 |
 |---|---|
-| { "data": { "result": [ { "engineVersion": "5.6", "gmtModified": "2020-12-23 19:08:15", "memory": "4", "baseVersion": "3.13", "cpu": "1", "specification": "gdb.r.13xlarge", "specFrom": "system", "storage": "20", "label": "“”", "gmtCreate": "2020-12-23 19:08:15", "node": "“”", "regionId": "cn-qingdao-env66-d01", "status": "Available", "resourceType": "GDB" } ], "success": "true", "status": "200" }, "host": "“”", "status": "200" } |  |
+| { "data": { "result": [ { "engineVersion": "5.6", "gmtModified": "2020-12-23 19:08:15", "memory": "4", "baseVersion": "3.13", "cpu": "1", "specification": "gdb.r.13xlarge", "specFrom": "system", "storage": "20", "label": "“”", "gmtCreate": "2020-12-23 19:08:15", "node": "“”", "regionId": "cn-qingdao-env66-d01", "status": "Available", "resourceType": "GDB" } ], "success": "true", "status": "200" }, "host": "“”", "status": "200" } |   |
 
-##### 4.1.2.6. ListEnterpriseCenterQuotas
+##### 4.1.2.6 ListEnterpriseCenterQuotas
 
-调用ListEnterpriseCenterQuotas接口获得企业中心使用限制概览信息。 企业中心使用限制包含12项配额数据，调用成功后返回企业中心限制配额和当前云平台各项数据的最大值信息。 MaxResourceSetBindAscmUserLimit：资源集绑定的最大用户个数信息。 MaxResourceSetBindAscmUserGroupLimit：资源集绑定的最大用户组个数信息。 MaxUserGroupCanJoinUserLimit：用户组加入的最大用户个数信息。 MaxUserAddResourceSetLimit：用户指定角色加入的最大资源集个数信息。 MaxUserGroupAddResourceLimit：用户组加入的最大资源集个数信息。 MaxRoleBindAscmUserLimit：用户绑定的最大角色个数信息。 MaxRoleAuthorizationBindAscmUserLimit：用户绑定的最大RAM授权类型角色个数信息。 MaxRoleBindAscmUserGroupLimit：用户组绑定的最大角色个数信息。 MaxPolicyLimit：云账号中创建的最大自定义策略个数信息。 MaxRamGroupLimit：云账号中创建的最大RAM Group个数信息。 MaxRamRoleLimit：账号中可创建的最大RAM Role个数信息。
+调用ListEnterpriseCenterQuotas接口获得企业中心使用限制概览信息。 企业中心使用限制包含12项配额数据，调用成功后返回企业中心限制配额和当前云平台各项数据的最大值信息。 MaxResourceSetBindAscmUserLimit：资源集绑定的最大用户个数信息。 MaxResourceSetBindAscmUserGroupLimit：资源集绑定的最大用户组个数信息。 MaxUserGroupCanJoinUserLimit：用户组加入的最大用户个数信息。 MaxUserAddUserGroupLimit：用户加入的最大用户组个数信息。 MaxUserAddResourceSetLimit：用户指定角色加入的最大资源集个数信息。 MaxUserGroupAddResourceLimit：用户组加入的最大资源集个数信息。 MaxRoleBindAscmUserLimit：用户绑定的最大角色个数信息。 MaxRoleAuthorizationBindAscmUserLimit：用户绑定的最大RAM授权类型角色个数信息。 MaxRoleBindAscmUserGroupLimit：用户组绑定的最大角色个数信息。 MaxPolicyLimit：云账号中创建的最大自定义策略个数信息。 MaxRamGroupLimit：云账号中创建的最大RAM Group个数信息。 MaxRamRoleLimit：账号中可创建的最大RAM Role个数信息。
 
 **请求头**
 
@@ -14716,12 +15684,15 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 131, "data": [ { "hasDetail": true, "current": 16, "item": "MaxResourceSetBindAscmUserLimit", "displayName": "资源集绑定的最大用户个数", "quota": 10000, "updateTime": 1701932609000 }, { "hasDetail": true, "current": 1, "item": "MaxResourceSetBindAscmUserGroupLimit", "displayName": "资源集绑定的最大用户组个数", "quota": 500, "updateTime": 1701932609000 }, { "hasDetail": false, "current": 55, "item": "MaxLevelOneOrganizationLimit", "displayName": "创建的一级组织个数", "quota": 1000, "updateTime": 1701932609000 }, { "hasDetail": true, "current": 2, "item": "MaxUserGroupCanJoinUserLimit", "displayName": "用户组加入的最大用户个数", "quota": 300, |  |
+| { "code": "200", "cost": 131, "data": [ { "hasDetail": true, "current": 16, "item": "MaxResourceSetBindAscmUserLimit", "displayName": "资源集绑定的最大用户个数", "quota": 10000, "updateTime": 1701932609000 }, { "hasDetail": true, "current": 1, "item": "MaxResourceSetBindAscmUserGroupLimit", "displayName": "资源集绑定的最大用户组个数", "quota": 500, "updateTime": 1701932609000 }, { "hasDetail": false, "current": 55, "item": "MaxLevelOneOrganizationLimit", "displayName": "创建的一级组织个数", "quota": 1000, "updateTime": 1701932609000 }, { "hasDetail": true, "current": 2, "item": "MaxUserGroupCanJoinUserLimit", "displayName": "用户组加入的最大用户个数", "quota": 300, |   |
 
 ```json
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},`
+
+```json
             "hasDetail": true,
             "current": 1,
             "item": "MaxUserAddUserGroupLimit",
@@ -14732,8 +15703,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 30,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 3,
             "item": "MaxUserAddResourceSetLimit",
@@ -14744,8 +15718,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 100,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 1,
             "item": "MaxUserGroupAddResourceLimit",
@@ -14756,8 +15733,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 30,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 8,
             "item": "MaxRoleBindAscmUserLimit",
@@ -14768,8 +15748,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 50,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 2,
             "item": "MaxRoleAuthorizationBindAscmUserLimit",
@@ -14780,8 +15763,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 30,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 4,
             "item": "MaxRoleBindAscmUserGroupLimit",
@@ -14792,8 +15778,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 15,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 126,
             "item": "MaxPolicyLimit",
@@ -14804,8 +15793,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 50000,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 7,
             "item": "MaxRamGroupLimit",
@@ -14816,8 +15808,11 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 500,
             "updateTime": 1701932609000
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hasDetail": true,
             "current": 214,
             "item": "MaxRamRoleLimit",
@@ -14828,20 +15823,20 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 ```json
             "quota": 10000,
             "updateTime": 1701932609000
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": true,
     "message": "success",
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>131</cost> <data> <hasDetail>true</hasDetail> <current>16</current> <item>MaxResourceSetBindAscmUserLimit</item> |  |
+| <code>200</code> <cost>131</cost> <data> <hasDetail>true</hasDetail> <current>16</current> <item>MaxResourceSetBindAscmUserLimit</item> |   |
 
 ```xml
  <item>MaxResourceSetBindAscmUserLimit</item>
@@ -14888,6 +15883,7 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 </data> <data>
  <hasDetail>true</hasDetail>
  <current>1</current>
+ <item>MaxUserAddUserGroupLimit</item>
 ```
 
 `<displayName>`用户加入的最大用户组个数`</displayName>`
@@ -14965,7 +15961,7 @@ GET /enterpriseCenter/Quotas HTTP/1.1
  <hasDetail>true</hasDetail>
 ```
 
-/
+`/`
 
 ```xml
  <current>7</current>
@@ -14993,7 +15989,7 @@ GET /enterpriseCenter/Quotas HTTP/1.1
 
 ascm 2019-05-10
 
-##### 4.1.2.7. GetEnterpriseCenterQuotaDetail
+##### 4.1.2.7 GetEnterpriseCenterQuotaDetail
 
 调用GetEnterpriseCenterQuotaDetail接口获取当前云平台中已超出指定企业中心使用限制配额或超出指定数量的用户、用户组、资源集或云账号详细信息。 通过调用该接口，可以查询当前云平台中已超出指定企业中心使用限制配额的用户、用户组、资源集或云账号详细信息；也可以在请求时通过指定具体数量，查询当前云平台中已超出该数量的用户、用户组、资源集或云账号详细信息，用于提前告警。
 
@@ -15056,14 +16052,12 @@ GET /enterpriseCenter/Quota/[type] HTTP/1.1
 GET /enterpriseCenter/Quota/[type] HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "code":"200",
  "cost":17,
  "data":[
-  {
    "roleId":1,
    "count":100,
    "updateTime":1652085686179,
@@ -15072,10 +16066,9 @@ GET /enterpriseCenter/Quota/[type] HTTP/1.1
    "roleName":"defaultRole.globalResourceAuditor.name",
    "id":40617,
    "username":"test"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "success":true,
@@ -15084,14 +16077,19 @@ GET /enterpriseCenter/Quota/[type] HTTP/1.1
   "totalPage":936,
   "pageSize":10,
   "currentPage":1
- },
- "message":"success"
-}
 ```
+
+`},`
+
+```json
+ "message":"success"
+```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>17</cost> <data> <resourceGroupName>res_test</resourceGroupName> <augId>11**</augId> <organizationName>orgTest</organizationName> <roleId>1</roleId> <count>100</count> <rsId>112***</rsId> <updateTime>1652085686179</updateTime> <accountKp>123456</accountKp> <isActive>true</isActive> <aliyunId>192895059480****</aliyunId> <groupName>nameTest</groupName> <loginName>test</loginName> <roleName>defaultRole.globalResourceAuditor.name</roleName> <id>40617</id> <username>test</username> </data> <success>true</success> <pageInfo> <total>9629</total> <totalPage>936</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <code>200</code> <cost>17</cost> <data> <resourceGroupName>res_test</resourceGroupName> <augId>11**</augId> <organizationName>orgTest</organizationName> <roleId>1</roleId> <count>100</count> <rsId>112***</rsId> <updateTime>1652085686179</updateTime> <accountKp>123456</accountKp> <isActive>true</isActive> <aliyunId>192895059480****</aliyunId> <groupName>nameTest</groupName> <loginName>test</loginName> <roleName>defaultRole.globalResourceAuditor.name</roleName> <id>40617</id> <username>test</username> </data> <success>true</success> <pageInfo> <total>9629</total> <totalPage>936</totalPage> <pageSize>10</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 **文档补充说明**
 
@@ -15099,7 +16097,9 @@ GET /enterpriseCenter/Quota/[type] HTTP/1.1
 
 当type参数值为MaxUserAddUserGroupLimit、MaxUserAddResourceSetLimit、MaxRoleBindAscmUserLimit或MaxRoleAuthorizationBindAscmUserLimit 时，返回用户（UserEntry）类型详细信息，具体包含字段：id（用户ID）、username（用户显示名）、loginName（用户登录名）、isActive（是否启用）、 roleId（默认角色ID）、roleName（默认角色名称）、count（当前实际数量，即type参数值对应的企业中心使用限制配额项）、updateTime（最近一次更新时间戳）。 当type参数值为MaxUserGroupCanJoinUserLimit、MaxUserGroupAddResourceLimit或MaxRoleBindAscmUserGroupLimit时，返回用户组 （UserGroupEntry）类型详细信息，具体包含字段：id（用户组ID）、augId（用户组唯一编码）、groupName（用户组名称）、organizationName（所属组织名称）、count（当前实际数量，即type参数值对应的企业中心使用限制配额项）、updateTime（最近一次更新时间戳）。 当type参数值为MaxResourceSetBindAscmUserLimit或MaxResourceSetBindAscmUserGroupLimit时，返回资源集（ResourceSetEntry）类型详细信息，具体包含字段：id（资源集ID）、rsId（资源集唯一编码）、resourceGroupName（资源集名称）、organizationName（所属组织名称）、count（当前实际数量，即 type参数值对应的企业中心使用限制配额项）、updateTime（最近一次更新时间戳）。 当type参数值为MaxPolicyLimit、MaxRamGroupLimit或MaxRamRoleLimit时，返回云账号（RamEntry）类型详细信息，具体包含字段：aliyunId（云账号ID）、 accountKp（云账号主键）、organizationName（所属组织名称）、count（当前实际数量，即type参数值对应的企业中心使用限制配额项）、updateTime（最近一次更新时间戳）。 ascm 2019-05-10
 
-##### 4.1.2.8. GetQuota
+##### 4.1.2.8 GetQuota
+
+调用GetQuota获取一个配额。
 
 **请求头**
 
@@ -15128,7 +16128,7 @@ POST /ascm/manage/quota/query HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 |
 | cost | Integer | 1000 | 耗时时间。 |
-| data | Struct |  | 响应数据。 |
+| data | Struct |   | 响应数据。 |
 | allocateAmount | Integer | 1 | 已分配。 |
 | allocateCpu | Integer | 1 | 分配CPU。 |
 | allocateCu | Integer | 1 | 分配CU。 |
@@ -15193,14 +16193,14 @@ POST /ascm/manage/quota/query HTTP/1.1
 请求示例
 
 ```
-&ProductName=ECS &QuotaType=organization &QuotaTypeId=1
+http(s)://[Endpoint]/?Action=GetQuota &ProductName=ECS &QuotaType=organization &QuotaTypeId=1
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data> <usedVipInternal>1</usedVipInternal> <allocateDisk_cloud_ssd>100</allocateDisk_cloud_ssd> <muserId>admin</muserId> <cluster>cn-qingdao-env17-d01</cluster> <allocateVipPublic>1</allocateVipPublic> <totalVipInternal>1</totalVipInternal> <usedAmount>1</usedAmount> <allocateAmount>1</allocateAmount> <totalDisk_cloud_efficiency>100</totalDisk_cloud_efficiency> <usedMQ>1</usedMQ> <allocateCu>1</allocateCu> <totalDisk>100</totalDisk> <totalVPC>1</totalVPC> <usedDisk_cloud_ssd>100</usedDisk_cloud_ssd> <totalDisk_cloud_ssd>100</totalDisk_cloud_ssd> <totalCpu>1</totalCpu> <usedVPC>1</usedVPC> <ctime>1608519825999</ctime> <totalCu>1</totalCu> <usedGpu>1</usedGpu> <id>1</id> <allocateMem>100</allocateMem> <cuserId>admin</cuserId> <allocateDisk_cloud_efficiency>100</allocateDisk_cloud_efficiency> <allocateDisk>100</allocateDisk> <usedCpu>1</usedCpu> <totalGpu>100</totalGpu> <allocateMQ>5</allocateMQ> <totalVipPublic>1</totalVipPublic> <quotaTypeId>1</quotaTypeId> <totalMQ>1</totalMQ> <usedCu>1</usedCu> <usedVipPublic>1</usedVipPublic> <totalMem>100</totalMem> <allocateVipInternal>1</allocateVipInternal> <allocateVPC>1</allocateVPC> <allocateGpu>100</allocateGpu> <targetType>mysql</targetType> <usedDisk>100</usedDisk> <usedMem>100</usedMem> <allocateCpu>1</allocateCpu> <usedDisk_cloud_efficiency>100</usedDisk_cloud_efficiency> <totalAmount>10</totalAmount> <quotaType>organization</quotaType> <allocateHAVIP>5</allocateHAVIP> <dtFlag>false</dtFlag> <totalHAVIP>1</totalHAVIP> <usedHAVIP>1</usedHAVIP> <region>cn-qingdao-env17-d01</region> </data> <success>true</success> <requestId>111</requestId> <pureListData>false</pureListData> <message>200</message> |  |
+| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data> <usedVipInternal>1</usedVipInternal> <allocateDisk_cloud_ssd>100</allocateDisk_cloud_ssd> <muserId>admin</muserId> <cluster>cn-qingdao-env17-d01</cluster> <allocateVipPublic>1</allocateVipPublic> <totalVipInternal>1</totalVipInternal> <usedAmount>1</usedAmount> <allocateAmount>1</allocateAmount> <totalDisk_cloud_efficiency>100</totalDisk_cloud_efficiency> <usedMQ>1</usedMQ> <allocateCu>1</allocateCu> <totalDisk>100</totalDisk> <totalVPC>1</totalVPC> <usedDisk_cloud_ssd>100</usedDisk_cloud_ssd> <totalDisk_cloud_ssd>100</totalDisk_cloud_ssd> <totalCpu>1</totalCpu> <usedVPC>1</usedVPC> <ctime>1608519825999</ctime> <totalCu>1</totalCu> <usedGpu>1</usedGpu> <id>1</id> <allocateMem>100</allocateMem> <cuserId>admin</cuserId> <allocateDisk_cloud_efficiency>100</allocateDisk_cloud_efficiency> <allocateDisk>100</allocateDisk> <usedCpu>1</usedCpu> <totalGpu>100</totalGpu> <allocateMQ>5</allocateMQ> <totalVipPublic>1</totalVipPublic> <quotaTypeId>1</quotaTypeId> <totalMQ>1</totalMQ> <usedCu>1</usedCu> <usedVipPublic>1</usedVipPublic> <totalMem>100</totalMem> <allocateVipInternal>1</allocateVipInternal> <allocateVPC>1</allocateVPC> <allocateGpu>100</allocateGpu> <targetType>mysql</targetType> <usedDisk>100</usedDisk> <usedMem>100</usedMem> <allocateCpu>1</allocateCpu> <usedDisk_cloud_efficiency>100</usedDisk_cloud_efficiency> <totalAmount>10</totalAmount> <quotaType>organization</quotaType> <allocateHAVIP>5</allocateHAVIP> <dtFlag>false</dtFlag> <totalHAVIP>1</totalHAVIP> <usedHAVIP>1</usedHAVIP> <region>cn-qingdao-env17-d01</region> </data> <success>true</success> <requestId>111</requestId> <pureListData>false</pureListData> <message>200</message> |   |
 
 `JSON` 格式
 
@@ -15208,7 +16208,7 @@ POST /ascm/manage/quota/query HTTP/1.1
 {"redirect":"false","cost":"1000","code":"200","data":{"usedVipInternal":"1","allocateDisk_cloud_ssd":"100","muserId":"admin","cluster":"cn-qi ngdao-env17d01","allocateVipPublic":"1","totalVipInternal":"1","usedAmount":"1","allocateAmount":"1","totalDisk_cloud_efficiency":"100","usedMQ":"1","alloca ":"1","totalDisk":"100","totalVPC":"1","usedDisk_cloud_ssd":"100","totalDisk_cloud_ssd":"100","totalCpu":"1","usedVPC":"1","ctime":"160851982599 otalCu":"1","usedGpu":"1","id":"1","allocateMem":"100","cuserId":"admin","allocateDisk_cloud_efficiency":"100","allocateDisk":"100","usedCpu":"1 talGpu":"100","allocateMQ":"5","totalVipPublic":"1","quotaTypeId":"1","totalMQ":"1","usedCu":"1","usedVipPublic":"1","totalMem":"100","allocateVi ernal":"1","allocateVPC":"1","allocateGpu":"100","targetType":"mysql","usedDisk":"100","usedMem":"100","allocateCpu":"1","usedDisk_cloud_efficien "100","totalAmount":"10","quotaType":"organization","allocateHAVIP":"5","dtFlag":"false","totalHAVIP":"1","usedHAVIP":"1","region":"cnqingdao-env17-d01"},"success":"true","requestId":"111","pureListData":"false","message":"200"}
 ```
 
-##### 4.1.2.9. MeteringQuery
+##### 4.1.2.9 MeteringQuery
 
 分页查询某个产品在一段时间内的计量数据。 请使用个人（管理平台右上角个人中心页面）的AccessKey ID和AccessKey Secret进行调用，不支持用组织的AccessKey ID和AccessKey Secret，另外需要在请求 Header中增加x-acs-roleId，value为要使用的角色Id，如果不传，则会使用用户的默认角色进行查询。
 
@@ -15233,7 +16233,7 @@ POST /ascm/metering/ots/query HTTP/1.1
 | startTime | String | Body | 否 | 2022-01-01T16:00:00Z | 开始时间，UTC时间格式，该参数必选。 |
 | endTime | String | Body | 否 | 2022-01-01T16:00:00Z | 结束时间，UTC时间格式，该参数必选。 说明计量时间段最小间隔为1小时，间隔设置少于1小时则无返回结果。 |
 
-| 统一云管平台 |  |  |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -15251,7 +16251,7 @@ POST /ascm/metering/ots/query HTTP/1.1
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| data | Array |  | 计量数据。 |
+| data | Array |   | 计量数据。 |
 | -Pos | String | ECS00000000032022-11- _ _ 01T00:00:00Z | 数据的OTS主键，由产品、组织ID和开始时间组成。 |
 | -OrgName | String | astbbigdata | 组织名称。 |
 | -ResourceGId | Integer | 2 | 资源集ID。 |
@@ -15266,7 +16266,7 @@ POST /ascm/metering/ots/query HTTP/1.1
 | message | String | success | 返回信息。 |
 | requestId | String | 0ab4142316690259582686866d 004a | 该返回字段已废弃。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15287,9 +16287,9 @@ POST /ascm/metering/ots/query HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "total":15, "code":"200", "cost":29, "data":{ "InsId":"i-nn901gtz4gd1mfrpfvvt", "EndTime":"2022-11-01T01:00:00Z", "Pos":"ECS_0000000003_2022-11-01T00:00:00Z", "CreateTime":"2022-09-21T05:38:00Z", "StartTime":"2022-11-01T00:00:00Z", "OrgName":"astbbigdata", "ResourceGId":2, "ResourceGName":"ResourceSet(astbbigdata)", "RegionId":"cn-wulan-env136-d01" }, "requestId":"0ab4142316690259582686866d004a", "success":true, "message":"success", "token":"{\"InsId\":\"i-nn901lg2uex9kk3gt9o3\",\"Pos\":\"ECS_0000000003_2022-11-01T01:00:00Z\",\"ResourceGId\":\"2415\",\"RegionId\":\"cn-wul an-env180-d01\"}" } |  |
+| { "total":15, "code":"200", "cost":29, "data":{ "InsId":"i-nn901gtz4gd1mfrpfvvt", "EndTime":"2022-11-01T01:00:00Z", "Pos":"ECS_0000000003_2022-11-01T00:00:00Z", "CreateTime":"2022-09-21T05:38:00Z", "StartTime":"2022-11-01T00:00:00Z", "OrgName":"astbbigdata", "ResourceGId":2, "ResourceGName":"ResourceSet(astbbigdata)", "RegionId":"cn-wulan-env136-d01" }, "requestId":"0ab4142316690259582686866d004a", "success":true, "message":"success", "token":"{\"InsId\":\"i-nn901lg2uex9kk3gt9o3\",\"Pos\":\"ECS_0000000003_2022-11-01T01:00:00Z\",\"ResourceGId\":\"2415\",\"RegionId\":\"cn-wul an-env180-d01\"}" } |   |
 
-##### 4.1.2.10. SelectCommonSpec
+##### 4.1.2.10 SelectCommonSpec
 
 按条件查询产品规格信息。
 
@@ -15313,9 +16313,9 @@ POST /ascm/manage/saleconf/commonSpec/select HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| data | Struct |  | 数据集。 |
-| result | Array of dataItem |  | 结果集合。 |
-| dataItem |  |  |  |
+| data | Struct |   | 数据集。 |
+| result | Array of dataItem |   | 结果集合。 |
+| dataItem |   |   |   |
 | baseVersion | String | 3.13 | 规格版本。 |
 | gmtCreate | String | 2019-10-27 17:47:27 | 规格创建时间。 |
 | gmtModified | String | 2019-10-27 17:47:27 | 规格修改时间。 |
@@ -15336,19 +16336,23 @@ POST /ascm/manage/saleconf/commonSpec/select HTTP/1.1
 
 **示例**
 
-请求示例 `&<`公共请求参数> 正常返回示例
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=SelectCommonSpec
+```
+
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <data> <result> <gmtModified>2019-10-27 17:47:27</gmtModified> <pageOrder>1</pageOrder> <pageSort>null</pageSort> <regionId>cn-qingdao-env66-d01</regionId> <baseVersion>3.13</baseVersion> <pageStart>1</pageStart> <pageSize>5</pageSize> <specFrom>system</specFrom> <gmtCreate>2019-10-27 17:47:27</gmtCreate> <status>Available</status> <resourceType>RDS</resourceType> </result> <success>true</success> <status>200</status> </data> <host>""</host> <status>200</status> |  |
+| <data> <result> <gmtModified>2019-10-27 17:47:27</gmtModified> <pageOrder>1</pageOrder> <pageSort>null</pageSort> <regionId>cn-qingdao-env66-d01</regionId> <baseVersion>3.13</baseVersion> <pageStart>1</pageStart> <pageSize>5</pageSize> <specFrom>system</specFrom> <gmtCreate>2019-10-27 17:47:27</gmtCreate> <status>Available</status> <resourceType>RDS</resourceType> </result> <success>true</success> <status>200</status> </data> <host>""</host> <status>200</status> |   |
 
 `JSON` 格式
 
 ```json
-{
     "data": {
         "result": [
-            {
                 "gmtModified": "2019-10-27 17:47:27",
                 "pageOrder": "1",
                 "pageSort": "null",
@@ -15360,21 +16364,27 @@ POST /ascm/manage/saleconf/commonSpec/select HTTP/1.1
                 "gmtCreate": "2019-10-27 17:47:27",
                 "status": "Available",
                 "resourceType": "RDS"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "success": "true",
         "status": "200"
-    },
-    "host": "\"\"",
-    "status": "200"
-}
 ```
 
-##### 4.1.2.11. UpdateCommonSpecStatus
+`},`
+
+```json
+    "host": "\"\"",
+    "status": "200"
+```
+
+`}`
+
+##### 4.1.2.11 UpdateCommonSpecStatus
+
+调用UpdateCommonSpecStatus禁用或者启用规格。
 
 **请求参数**
 
@@ -15401,17 +16411,19 @@ POST /ascm/manage/saleconf/commonSpec/select HTTP/1.1
 http(s)://[Endpoint]/?Action=UpdateCommonSpecStatus &ids=1 &status=Unavailable
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>200</data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <data>200</data> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "data": "200", "success": "true", "message": "success" } |  |
+| { "code": "200", "data": "200", "success": "true", "message": "success" } |   |
 
-##### 4.1.2.12. UpdateQuota
+##### 4.1.2.12 UpdateQuota
+
+调用UpdateQuota更新一个配额。
 
 **请求参数**
 
@@ -15433,7 +16445,7 @@ http(s)://[Endpoint]/?Action=UpdateCommonSpecStatus &ids=1 &status=Unavailable
 |---|---|---|---|
 | code | String | 200 | 状态码。 |
 | cost | Integer | 1000 | 耗时时间。 |
-| data | Struct |  | 响应数据。 |
+| data | Struct |   | 响应数据。 |
 | allocateVPC | Integer | 1 | 已分配（VPC）。 |
 | cluster | String | cn-qingdao-env17-d01 | 集群。 |
 | ctime | Float | 1608519825999 | 创建时间。 |
@@ -15458,20 +16470,20 @@ http(s)://[Endpoint]/?Action=UpdateCommonSpecStatus &ids=1 &status=Unavailable
 请求示例
 
 ```
-&ProductName=ECS &QuotaBody={"totalCpu":100,"totalMem":100,"totalGpu":100, "totalDisk_cloud_ssd":100,"totalDisk_cloud_efficiency":100} &QuotaType=organization &QuotaTypeId=1
+http(s)://[Endpoint]/?Action=UpdateQuota &ProductName=ECS &QuotaBody={"totalCpu":100,"totalMem":100,"totalGpu":100, "totalDisk_cloud_ssd":100,"totalDisk_cloud_efficiency":100} &QuotaType=organization &QuotaTypeId=1
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data> <quotaType>organization</quotaType> <cluster>cn-qingdao-env17-d01</cluster> <totalVPC>10</totalVPC> <dtFlag>false</dtFlag> <quotaTypeId>1</quotaTypeId> <usedVPC>1</usedVPC> <ctime>1608519825999</ctime> <allocateVPC>1</allocateVPC> <targetType>mysql</targetType> <id>1</id> <region>cn-qingdao-env17-d01</region> </data> <success>true</success> <requestId>111</requestId> <pureListData>false</pureListData> <message>200</message> |  |
+| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data> <quotaType>organization</quotaType> <cluster>cn-qingdao-env17-d01</cluster> <totalVPC>10</totalVPC> <dtFlag>false</dtFlag> <quotaTypeId>1</quotaTypeId> <usedVPC>1</usedVPC> <ctime>1608519825999</ctime> <allocateVPC>1</allocateVPC> <targetType>mysql</targetType> <id>1</id> <region>cn-qingdao-env17-d01</region> </data> <success>true</success> <requestId>111</requestId> <pureListData>false</pureListData> <message>200</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "1000", "code": "200", "data": { "quotaType": "organization", "cluster": "cn-qingdao-env17-d01", "totalVPC": "10", "dtFlag": "false", "quotaTypeId": "1", "usedVPC": "1", "ctime": "1608519825999", "allocateVPC": "1", "targetType": "mysql", "id": "1", "region": "cn-qingdao-env17-d01" }, "success": "true", "requestId": "111", "pureListData": "false", "message": "200" } |  |
+| { "redirect": "false", "cost": "1000", "code": "200", "data": { "quotaType": "organization", "cluster": "cn-qingdao-env17-d01", "totalVPC": "10", "dtFlag": "false", "quotaTypeId": "1", "usedVPC": "1", "ctime": "1608519825999", "allocateVPC": "1", "targetType": "mysql", "id": "1", "region": "cn-qingdao-env17-d01" }, "success": "true", "requestId": "111", "pureListData": "false", "message": "200" } |   |
 
-##### 4.1.2.13. AscmExternalFlowCallBack
+##### 4.1.2.13 AscmExternalFlowCallBack
 
 三方流程审批结束后，调用AscmExternalFlowCallBack接口将审批结果、审批意见通知给ASCM流程。
 
@@ -15493,33 +16505,38 @@ http(s)://[Endpoint]/?Action=UpdateCommonSpecStatus &ids=1 &status=Unavailable
 
 请求示例
 
+```
+POST /ascm/process/instance/externalFlow/trigger HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /ascm/process/instance/externalFlow/trigger HTTP/1.1 {
   "callbackParams" : {
     "executionId" : "9647a5eafc9111ef84a502420a881454",
     "processInstanceId" : "91fb8f88fc8f11efaa2902420a881454",
     "verification" : "Item_404eaa38-710a-408e-aaa4-6b4c7da4b407"
-  },
+```
+
+`},`
+
+```json
   "approveResult" : true,
 ```
 
-`"approveComment" : "`审批意见"
-
-```
-}
-```
-
-正常返回示例
+`"approveComment" : "`审批意见`"` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":true, "requestId":"0a1128a916917198245846573e002a", "success":true, "message":"\"success\"" } |  |
+| { "code":"200", "data":true, "requestId":"0a1128a916917198245846573e002a", "success":true, "message":"\"success\"" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e002a</requestId> <success>true</success> <message>&quot;success&quot;</message> |  |
+| <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e002a</requestId> <success>true</success> <message>&quot;success&quot;</message> |   |
 
-##### 4.1.2.14. BillQuery
+##### 4.1.2.14 BillQuery
+
+调用BillQuery接口查询云资源计费账单信息。
 
 **请求头**
 
@@ -15538,7 +16555,7 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1
 | cycleType | String | Body | 是 | Daily | 账单周期类型，支持按天维度（Daily）。该参数为必填参数。 |
 | groupByType | String | Body | 是 | instance | 账单聚合类型，支持按实例(instance：)聚合。 该参数为必填参数。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -15574,7 +16591,7 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1
 | -resourceGroupName | String | ResourceSet(dtstest) _ | 账单所属资源集的名称。 |
 | -product | String | ECS | 账单所属产品。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -15621,23 +16638,32 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "groupByType":"instance", "billingCycle":"2023-07" }
+```
+POST /ascm/billing/billing/web/query/public HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"cycleType":"Daily", "groupByType":"instance", "billingCycle":"2023-07"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":112, "pageNumber":10, "data":[ { "resourceGid":"2", "roundingAmount":0.0, "modifiedTime":"2023-07-21T21:00:03Z", "relievedPrice":0.0, "originalPrice":0.4, "paySubType":"NEW", "financialName":"TEST01", "orderId":"2023111716053700****", "discountPrice":0.1, "orgId":"3", "insId":"i-f9m05j7zfc7b3mhu****", "payType":"postPay", "financialUnitId":"10001", "billingChan":"66-36-1-1", "identifierGroup":"GRP001", "cloudType":"cloud-15190b1df8c742e1bd16c1ee695fd26f", "price":0.3, "instanceSpecDetail":{ "ecs.n4.xlarge":[ { "featureValue":"0", "featureName":"GPU数量", "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.gpuAmount", "needTrans":false }, { |  |
+| { "code":"200", "cost":112, "pageNumber":10, "data":[ { "resourceGid":"2", "roundingAmount":0.0, "modifiedTime":"2023-07-21T21:00:03Z", "relievedPrice":0.0, "originalPrice":0.4, "paySubType":"NEW", "financialName":"TEST01", "orderId":"2023111716053700****", "discountPrice":0.1, "orgId":"3", "insId":"i-f9m05j7zfc7b3mhu****", "payType":"postPay", "financialUnitId":"10001", "billingChan":"66-36-1-1", "identifierGroup":"GRP001", "cloudType":"cloud-15190b1df8c742e1bd16c1ee695fd26f", "price":0.3, "instanceSpecDetail":{ "ecs.n4.xlarge":[ { "featureValue":"0", "featureName":"GPU数量", "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.gpuAmount", "needTrans":false }, { |   |
 
 ```json
       "featureValue":"8.0",
       "featureName":"内存(GB)",
       "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.memorySize",
       "needTrans":false
-     },
-     {
+```
+
+`},` `{`
+
+```json
       "featureValue":"cloud_sperf",
 ```
 
@@ -15646,8 +16672,11 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "gro
 ```json
       "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.systemDisk",
       "needTrans":false
-     },
-     {
+```
+
+`},` `{`
+
+```json
       "featureValue":"4",
 ```
 
@@ -15656,19 +16685,20 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "gro
 ```json
       "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.cpuCoreCount",
       "needTrans":false
-     },
-     {
+```
+
+`},` `{`
+
+```json
       "featureValue":"",
       "featureName":"GPU类型",
       "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.gpuSpec",
       "needTrans":false
-     }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-   },
    "currency":"CNY",
    "startTime":"2023-07-21T03:00:00Z",
    "modifiedBy":"4",
@@ -15685,10 +16715,9 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "gro
      "true"
 ```
 
-]
+`]` `},`
 
 ```json
-   },
    "reliefPrice":0.0,
    "regionId":"cn-qingdao-***-d01",
    "instanceSpec":"ecs.xn4.small",
@@ -15697,11 +16726,9 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "gro
    "platformCode":"default",
    "extraInfo":{
     "allocatedQuantity":"50GB"
-   }
-  }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
  "requestId":"0a1128a916917198245846573e****",
@@ -15710,10 +16737,10 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "gro
  "errorCode":"403",
  "pageSize":20,
  "token":"{\"InsId\":\"i-f9m05tzk3wtss0y8****\",\"Pos\":\"Hourly-instance_ECS_0000000003_2023-07-
-21T09:00:00Z\",\"ResourceGId\":\"2\",\"RegionId\":\"cn-qingdao-***-d01\"}" }
+21T09:00:00Z\",\"ResourceGId\":\"2\",\"RegionId\":\"cn-qingdao-***-d01\"}"
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <code>200</code> <cost>112</cost> <pageNumber>10</pageNumber> <data>
@@ -15792,7 +16819,9 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 { "cycleType":"Daily", "gro
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>no permission</errorMessage> <errorCode>403</errorCode> <pageSize>20</pageSize> <token>{&quot;InsId&quot;:&quot;i-f9m05tzk3wtss0y8****&quot;,&quot;Pos&quot;:&quot;Hourly-instance_ECS_0000000003_2023-07- 21T09:00:00Z&quot;,&quot;ResourceGId&quot;:&quot;2&quot;,&quot;RegionId&quot;:&quot;cn-qingdao-***-d01&quot;}</token>
 ```
 
-##### 4.1.2.15. TagResources
+##### 4.1.2.15 TagResources
+
+调用TagResources接口绑定资源标签。
 
 **请求头**
 
@@ -15811,8 +16840,8 @@ POST /ascm/manage/tag_manage/tagResources HTTP/1.1
 | ResourceType | String | Body | 是 | ecsinstance _ | 资源类型。 |
 | ResourceId | RepeatList | Body | 是 | i-nn901koe5tx5ei45**** | 待绑定标签的资源ID。 |
 | Tag | RepeatList | Body | 是 | - | 标签列表。 |
-| -Key | String |  | 否 | testtagk1 | 标签键。不支持以aliyun和acs:开头，不能包含 http://或者https:// 。不允许为空字符串，最多支持128个字符。 |
-| -Value | String |  | 否 | testtagv1 | 标签值。不能包含http://或者https://。允许为空字符串。最多支持128个字符。 |
+| -Key | String |   | 否 | testtagk1 | 标签键。不支持以aliyun和acs:开头，不能包含 http://或者https:// 。不允许为空字符串，最多支持128个字符。 |
+| -Value | String |   | 否 | testtagv1 | 标签值。不能包含http://或者https://。允许为空字符串。最多支持128个字符。 |
 
 **返回数据**
 
@@ -15829,23 +16858,31 @@ POST /ascm/manage/tag_manage/tagResources HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/manage/tag_manage/tagResources HTTP/1.1 { "ResourceType":"ecs_instance", "ResourceId.1":"i-nn901koe5tx5ei45****", "Tag.1.Key":"testtagk1", "Tag.1.Value":"testtagv1", }
+```
+POST /ascm/manage/tag_manage/tagResources HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"ResourceType":"ecs_instance", "ResourceId.1":"i-nn901koe5tx5ei45****", "Tag.1.Key":"testtagk1", "Tag.1.Value":"testtagv1",
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"ascm.auth.InternalError", "code":"200", "success":true, "requestId":"530dxxx-dxx******-x6b61axxxxx", "pureListData":false, "message":"TagResources success." } |  |
+| { "errorKey":"ascm.auth.InternalError", "code":"200", "success":true, "requestId":"530dxxx-dxx******-x6b61axxxxx", "pureListData":false, "message":"TagResources success." } |   |
 
 `XML` 格式
 
 ```xml
-<errorKey>ascm.auth.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <pureListData>false</pureListData>
+<errorKey>ascm.auth.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <pureListData>false</pureListData> <message>TagResources success.</message>
 ```
 
-##### 4.1.2.16. UnTagResources
+##### 4.1.2.16 UnTagResources
+
+调用UnTagResources接口解绑资源标签。
 
 **请求头**
 
@@ -15874,21 +16911,27 @@ POST /ascm/manage/tag_manage/tagResources HTTP/1.1 { "ResourceType":"ecs_instanc
 
 请求示例
 
-```json
-POST /ascm/manage/tag_manage/unTagResources HTTP/1.1 { "ResourceType":"ecs_instance", "ResourceId.1":"i-nn901koe5tx5ei45****", "TagKey.1":"testtagk1" }
+```
+POST /ascm/manage/tag_manage/unTagResources HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"ResourceType":"ecs_instance", "ResourceId.1":"i-nn901koe5tx5ei45****", "TagKey.1":"testtagk1"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"ascm.auth.InternalError", "code":"200", "success":true, "requestId":"530dxxx-dxx******-x6b61axxxxx", "pureListData":false, "message":"UnTagResources success." } |  |
+| { "errorKey":"ascm.auth.InternalError", "code":"200", "success":true, "requestId":"530dxxx-dxx******-x6b61axxxxx", "pureListData":false, "message":"UnTagResources success." } |   |
 
 | XML | 格式 |
 |---|---|
-| <errorKey>ascm.auth.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <pureListData>false</pureListData> <message>UnTagResources success.</message> |  |
+| <errorKey>ascm.auth.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <pureListData>false</pureListData> <message>UnTagResources success.</message> |   |
 
-##### 4.1.2.17. QueryServiceCategoryTreeOpenApi
+##### 4.1.2.17 QueryServiceCategoryTreeOpenApi
 
 查询用户有权限的服务分类树OpenAPI
 
@@ -15931,7 +16974,7 @@ POST /serviceCatalog/queryServiceCategoryTree HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":[ { "isPreset":true, "label":"计算", "children":[ { "isPreset":true, "label":"云服务器", "value":"CloudServer" } ], "value":"ElasticComputing" } ], "success":true, "errorMessage":"", "errorCode":"" } |  |
+| { "code":"200", "data":[ { "isPreset":true, "label":"计算", "children":[ { "isPreset":true, "label":"云服务器", "value":"CloudServer" } ], "value":"ElasticComputing" } ], "success":true, "errorMessage":"", "errorCode":"" } |   |
 
 `XML` 格式
 
@@ -15952,7 +16995,7 @@ POST /serviceCatalog/queryServiceCategoryTree HTTP/1.1
 </data> <success>true</success> <errorMessage /> <errorCode />
 ```
 
-##### 4.1.2.18. QueryServiceCatalogPageOpenApi
+##### 4.1.2.18 QueryServiceCatalogPageOpenApi
 
 查询服务目录列表OpenAPI
 
@@ -15990,7 +17033,7 @@ POST /serviceCatalog/queryServiceCatalogPage HTTP/1.1
 | total | Integer | 11 | 服务总数。 |
 | pageSize | Integer | 10 | 每页大小。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16005,26 +17048,30 @@ POST /serviceCatalog/queryServiceCatalogPage HTTP/1.1
 
 请求示例
 
+```
+POST /serviceCatalog/queryServiceCatalogPage HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /serviceCatalog/queryServiceCatalogPage HTTP/1.1 {
     "name": "ecs",
     "categoryCode": "ElasticComputing",
     "pageNumber": 1,
     "pageSize": 10
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "total":11, "pageNumber":1, "pageSize":10, "code":"200", "data":[ { "identifierName":"云服务器 ECS", "catalogId":"CS000711", "name":"ECS实例", "description":"ECS实例的预置基础服务，无任何限制规则", "createUrl":"/ascm/buy?product=server-public&fromServiceCatalog=true&catalogId=CS000711&AscmPlatformCode=pl- txvnpuvsqxrm2ced&aliyun_mcm_cloud_type=ALIYUN", "resourceTypeName":"ECS实例", "createUrlType":"CATALOG_LINK" } ], "success":true, "errorMessage":"", "errorCode":"" } |  |
+| { "total":11, "pageNumber":1, "pageSize":10, "code":"200", "data":[ { "identifierName":"云服务器 ECS", "catalogId":"CS000711", "name":"ECS实例", "description":"ECS实例的预置基础服务，无任何限制规则", "createUrl":"/ascm/buy?product=server-public&fromServiceCatalog=true&catalogId=CS000711&AscmPlatformCode=pl- txvnpuvsqxrm2ced&aliyun_mcm_cloud_type=ALIYUN", "resourceTypeName":"ECS实例", "createUrlType":"CATALOG_LINK" } ], "success":true, "errorMessage":"", "errorCode":"" } |   |
 
 | XML | 格式 |
 |---|---|
-| <total>11</total> <pageNumber>1</pageNumber> <pageSize>10</pageSize> <code>200</code> <data> <identifierName>云服务器 ECS</identifierName> <catalogId>CS000711</catalogId> <name>ECS实例</name> <description>ECS实例的预置基础服务，无任何限制规则</description> <createUrl>/ascm/buy?product=server-public&amp;fromServiceCatalog=true&amp;catalogId=CS000711&amp;AscmPlatformCode=pl- txvnpuvsqxrm2ced&amp;aliyun_mcm_cloud_type=ALIYUN</createUrl> <resourceTypeName>ECS实例</resourceTypeName> <createUrlType>CATALOG_LINK</createUrlType> </data> <success>true</success> <errorMessage /> <errorCode /> |  |
+| <total>11</total> <pageNumber>1</pageNumber> <pageSize>10</pageSize> <code>200</code> <data> <identifierName>云服务器 ECS</identifierName> <catalogId>CS000711</catalogId> <name>ECS实例</name> <description>ECS实例的预置基础服务，无任何限制规则</description> <createUrl>/ascm/buy?product=server-public&amp;fromServiceCatalog=true&amp;catalogId=CS000711&amp;AscmPlatformCode=pl- txvnpuvsqxrm2ced&amp;aliyun_mcm_cloud_type=ALIYUN</createUrl> <resourceTypeName>ECS实例</resourceTypeName> <createUrlType>CATALOG_LINK</createUrlType> </data> <success>true</success> <errorMessage /> <errorCode /> |   |
 
-##### 4.1.2.19. QueryBudgetAccountDetail
+##### 4.1.2.19 QueryBudgetAccountDetail
 
 查询预算账户信息。
 
@@ -16070,14 +17117,19 @@ POST /ascm/budget/budgetAccount/queryBudgetAccountDetail HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/budget/budgetAccount/queryBudgetAccountDetail HTTP/1.1 { "bizId":"77", "includeDeleted":"true" }
+```
+POST /ascm/budget/budgetAccount/queryBudgetAccountDetail HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"bizId":"77", "includeDeleted":"true"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "code":"200",
  "cost":121,
  "data":{
@@ -16089,21 +17141,25 @@ POST /ascm/budget/budgetAccount/queryBudgetAccountDetail HTTP/1.1 { "bizId":"77"
    "accountType":"INDEPENDENT",
    "available":"900",
    "used":"0"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "requestId":"FEB7A954-F07F-45EA-B6A3-980DD0F9****",
  "success":true,
  "errorMessage":"Specified access key is not found.",
  "errorCode":"InvalidAccessKeyId.NotFound",
  "token":"affe0c6042f09722fec95a21b8b******"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <data> <independentDetail> <total>900</total> <mod>ORG</mod> <freeze>0</freeze> <accountName>组织cmm</accountName> <accountType>INDEPENDENT</accountType> <available>900</available> <used>0</used> </independentDetail> </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>affe0c6042f09722fec95a21b8b******</token> |  |
+| <code>200</code> <cost>121</cost> <data> <independentDetail> <total>900</total> <mod>ORG</mod> <freeze>0</freeze> <accountName>组织cmm</accountName> <accountType>INDEPENDENT</accountType> <available>900</available> <used>0</used> </independentDetail> </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>affe0c6042f09722fec95a21b8b******</token> |   |
 
-##### 4.1.2.20. BillSummaryQuery
+##### 4.1.2.20 BillSummaryQuery
 
 账单汇总查询。
 
@@ -16128,7 +17184,7 @@ POST /ascm/billing/billing/web/query/range HTTP/1.1
 | resourceGidList | String | Body | 否 | [2,3] | 资源集ID列表。 |
 | pageSize | Integer | Body | 否 | 10 | 每页数量。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -16181,15 +17237,21 @@ POST /ascm/billing/billing/web/query/range HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/billing/billing/web/query/range HTTP/1.1 { "cycleType": "Monthly", "groupByType":"instance", "startTime": "2025-11", }
+```
+POST /ascm/billing/billing/web/query/range HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"cycleType": "Monthly", "groupByType":"instance", "startTime": "2025-11",
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "pageNumber":1, "data":[ { "resourceGid":"2", "roundingAmount":0.0, "modifiedTime":"2025-11-28 05:00:39", "identifier":"专有网络 VPC", "product":"专有网络 VPC", "relievedPrice":0.0, "orgName":"astbbigdata", "resourceGroupName":"ResourceSet(astbbigdata)", "originalPrice":1615.5, "groupByType":"instance", "discountPrice":0.0, "orgId":"3", "cycleType":"Monthly", "reliefPrice":0.0, "payType":"all", "identifierGroup":"网络", "price":1615.5, "currency":"CNY", "startTime":"2025-10-31T17:00:00Z", "endTime":"2025-11-30T17:00:00Z", "billCycle":"2025-11" } ], "requestId":"FEB7A954-F07F-45EA-B6A3-980DD0F9****", "success":true, "errorMessage":"InternalServerError", "errorCode":"InternalServerError", "pageSize":10, "token":"affe0c6042f09722fec95a21b8b******" } |  |
+| { "code":"200", "cost":121, "pageNumber":1, "data":[ { "resourceGid":"2", "roundingAmount":0.0, "modifiedTime":"2025-11-28 05:00:39", "identifier":"专有网络 VPC", "product":"专有网络 VPC", "relievedPrice":0.0, "orgName":"astbbigdata", "resourceGroupName":"ResourceSet(astbbigdata)", "originalPrice":1615.5, "groupByType":"instance", "discountPrice":0.0, "orgId":"3", "cycleType":"Monthly", "reliefPrice":0.0, "payType":"all", "identifierGroup":"网络", "price":1615.5, "currency":"CNY", "startTime":"2025-10-31T17:00:00Z", "endTime":"2025-11-30T17:00:00Z", "billCycle":"2025-11" } ], "requestId":"FEB7A954-F07F-45EA-B6A3-980DD0F9****", "success":true, "errorMessage":"InternalServerError", "errorCode":"InternalServerError", "pageSize":10, "token":"affe0c6042f09722fec95a21b8b******" } |   |
 
 `XML` 格式
 
@@ -16198,6 +17260,12 @@ POST /ascm/billing/billing/web/query/range HTTP/1.1 { "cycleType": "Monthly", "g
  <resourceGid>2</resourceGid>
  <roundingAmount>0</roundingAmount>
  <modifiedTime>2025-11-28 05:00:39</modifiedTime>
+ <identifier>专有网络 VPC</identifier>
+```
+
+`<product>`专有网络 `VPC</product>`
+
+```xml
  <relievedPrice>0</relievedPrice>
  <orgName>astbbigdata</orgName>
  <resourceGroupName>ResourceSet(astbbigdata)</resourceGroupName>
@@ -16217,7 +17285,7 @@ POST /ascm/billing/billing/web/query/range HTTP/1.1 { "cycleType": "Monthly", "g
 </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>InternalServerError</errorMessage> <errorCode>InternalServerError</errorCode> <pageSize>10</pageSize> <token>affe0c6042f09722fec95a21b8b******</token>
 ```
 
-##### 4.1.2.21. UpdateIndependentAmountByBizId
+##### 4.1.2.21 UpdateIndependentAmountByBizId
 
 调整账户的额度。
 
@@ -16251,7 +17319,7 @@ POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1
 | errorCode | String | InvalidAccessKeyId.NotFound | 错误码。 |
 | errorMessage | String | Specified access key is not found. | 错误信息。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16263,27 +17331,27 @@ POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1
 
 请求示例
 
+```
+POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1 { "bizId":"77", "updateType":"ADD", "amount":"299",
+"bizId":"77", "updateType":"ADD", "amount":"299",
 ```
 
-`"memo":"`增加"
-
-```
-}
-```
-
-正常返回示例
+`"memo":"`增加`"` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "data":true, "requestId":"64C8D24A-2266-44AA-8CF7-1783F4C7****", "success":true, "errorMessage":"Specified access key is not found.", "errorCode":"InvalidAccessKeyId.NotFound", "token":"affe0c6042f09722fec95a21b8b******" } |  |
+| { "code":"200", "cost":121, "data":true, "requestId":"64C8D24A-2266-44AA-8CF7-1783F4C7****", "success":true, "errorMessage":"Specified access key is not found.", "errorCode":"InvalidAccessKeyId.NotFound", "token":"affe0c6042f09722fec95a21b8b******" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <data>true</data> <requestId>64C8D24A-2266-44AA-8CF7-1783F4C7****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>affe0c6042f09722fec95a21b8b******</token> |  |
+| <code>200</code> <cost>121</cost> <data>true</data> <requestId>64C8D24A-2266-44AA-8CF7-1783F4C7****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>affe0c6042f09722fec95a21b8b******</token> |   |
 
-##### 4.1.2.22. PageCashFlow
+##### 4.1.2.22 PageCashFlow
 
 查询用户所属组织的收支明细列表数据。
 
@@ -16309,7 +17377,7 @@ POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1 { "b
 | -consumerTime | Long | 1764299800000 | 流水发生的时间。 |
 | -assignAccountName | String | 组织cmm | 分配账户名称。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16337,21 +17405,29 @@ POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1 { "b
 
 请求示例
 
-```json
-POST /ascm/budget/budgetAccountOpen/PageCashFlow HTTP/1.1 { "pageNumber": 1, "pageSize": 10, "query": {
-    "bizId": "77"
-} }
+```
+POST /ascm/budget/budgetAccountOpen/PageCashFlow HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"pageNumber": 1, "pageSize": 10, "query": {
+    "bizId": "77"
+```
+
+`}` `}` 正常返回示例 `JSON` 格式
+
+```json
  "code":"200",
  "cost":150,
  "pageNumber":1,
  "data":[
-  {
+```
+
+`{`
+
+```json
    "cashFlowId":"12495928662072****",
    "amount":"1000",
    "consumerTime":1764299800000,
@@ -16365,10 +17441,9 @@ POST /ascm/budget/budgetAccountOpen/PageCashFlow HTTP/1.1 { "pageNumber": 1, "pa
    "consumerTimeUtc":"2025-11-28T03:16:40Z",
    "currency":"CNY",
    "id":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "requestId":"F6D1E15E-5AC9-4D74-A111-B47FC1FA****",
@@ -16377,14 +17452,15 @@ POST /ascm/budget/budgetAccountOpen/PageCashFlow HTTP/1.1 { "pageNumber": 1, "pa
  "errorCode":"InvalidAccessKeyId.NotFound",
  "pageSize":10,
  "token":"affe0c6042f09722fec95a21b8b******"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>150</cost> <pageNumber>1</pageNumber> <data> <cashFlowId>12495928662072****</cashFlowId> <amount>1000</amount> <consumerTime>1764299800000</consumerTime> <assignAccountName>组织cmm</assignAccountName> <cashFlowType>DEPOSIT</cashFlowType> <operator>admin</operator> <independentAccountName>组织cmm</independentAccountName> <billingDate>2025-11-28</billingDate> <incomeExpenseType>INCOME</incomeExpenseType> <billingCycle>2025-11</billingCycle> <consumerTimeUtc>2025-11-28T03:16:40Z</consumerTimeUtc> <currency>CNY</currency> <id>1</id> </data> <requestId>F6D1E15E-5AC9-4D74-A111-B47FC1FA****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <pageSize>10</pageSize> <token>affe0c6042f09722fec95a21b8b******</token> |  |
+| <code>200</code> <cost>150</cost> <pageNumber>1</pageNumber> <data> <cashFlowId>12495928662072****</cashFlowId> <amount>1000</amount> <consumerTime>1764299800000</consumerTime> <assignAccountName>组织cmm</assignAccountName> <cashFlowType>DEPOSIT</cashFlowType> <operator>admin</operator> <independentAccountName>组织cmm</independentAccountName> <billingDate>2025-11-28</billingDate> <incomeExpenseType>INCOME</incomeExpenseType> <billingCycle>2025-11</billingCycle> <consumerTimeUtc>2025-11-28T03:16:40Z</consumerTimeUtc> <currency>CNY</currency> <id>1</id> </data> <requestId>F6D1E15E-5AC9-4D74-A111-B47FC1FA****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <pageSize>10</pageSize> <token>affe0c6042f09722fec95a21b8b******</token> |   |
 
-##### 4.1.2.23. QueryIssueOpenApi
+##### 4.1.2.23 QueryIssueOpenApi
 
 查询工单列表。
 
@@ -16407,7 +17483,7 @@ POST /issue/queryIssue HTTP/1.1
 | issueId | Integer | Body | 否 | ti-20251110125412674*** | 筛选项入参，工单业务编号，用于模糊查找。 |
 | issueCategoryId | Integer | Body | 否 | 1 | 筛选项入参，工单分类ID。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -16442,7 +17518,7 @@ POST /issue/queryIssue HTTP/1.1
 | pageSize | Integer | 10 | 单页大小。默认为10，最大为50。 |
 | pageNumber | Integer | 1 | 页码，从1开始，不能小于1。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16456,8 +17532,13 @@ POST /issue/queryIssue HTTP/1.1
 
 请求示例
 
+```
+POST /issue/queryIssue HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /issue/queryIssue HTTP/1.1 {
     "issueId": "ti-202511",
     "issueCategoryId": 5,
     "modifier": 5003,
@@ -16469,20 +17550,19 @@ POST /issue/queryIssue HTTP/1.1 {
     "modifiedEndTime": "2025-11-22T07:42:16Z",
     "finishStartTime": "2025-11-01T07:41:52Z",
     "finishEndTime": "2025-11-23T07:41:52Z"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "total":100, "pageNumber":1, "code":"200", "data":[ { "issueCategoryName":"产品使用问题", "modifiedTime":"2025-11-10T09:49:17Z", "issueId":"ti-20251110125412674***", "creator":600, "finishTime":"2025-11-10T09:49:17Z", "creatorName":"test-person", "processor":800, "version":5, "issueCategoryId":2, "createTime":"2025-11-10T09:49:17Z", "processorName":"test123", "id":6, "status":"COMPLETED" } ], "success":true, "pageSize":10, } |  |
+| { "total":100, "pageNumber":1, "code":"200", "data":[ { "issueCategoryName":"产品使用问题", "modifiedTime":"2025-11-10T09:49:17Z", "issueId":"ti-20251110125412674***", "creator":600, "finishTime":"2025-11-10T09:49:17Z", "creatorName":"test-person", "processor":800, "version":5, "issueCategoryId":2, "createTime":"2025-11-10T09:49:17Z", "processorName":"test123", "id":6, "status":"COMPLETED" } ], "success":true, "pageSize":10, } |   |
 
 | XML | 格式 |
 |---|---|
-| <total>100</total> <pageNumber>1</pageNumber> <code>200</code> <data> <issueCategoryName>产品使用问题</issueCategoryName> <modifiedTime>2025-11-10T09:49:17Z</modifiedTime> <issueId>ti-20251110125412674***</issueId> <creator>600</creator> <finishTime>2025-11-10T09:49:17Z</finishTime> <creatorName>test-person</creatorName> <processor>800</processor> <version>5</version> <issueCategoryId>2</issueCategoryId> <createTime>2025-11-10T09:49:17Z</createTime> <processorName>test123</processorName> <id>6</id> <status>COMPLETED</status> </data> <success>true</success> <pageSize>10</pageSize> |  |
+| <total>100</total> <pageNumber>1</pageNumber> <code>200</code> <data> <issueCategoryName>产品使用问题</issueCategoryName> <modifiedTime>2025-11-10T09:49:17Z</modifiedTime> <issueId>ti-20251110125412674***</issueId> <creator>600</creator> <finishTime>2025-11-10T09:49:17Z</finishTime> <creatorName>test-person</creatorName> <processor>800</processor> <version>5</version> <issueCategoryId>2</issueCategoryId> <createTime>2025-11-10T09:49:17Z</createTime> <processorName>test123</processorName> <id>6</id> <status>COMPLETED</status> </data> <success>true</success> <pageSize>10</pageSize> |   |
 
-##### 4.1.2.24. CreateDiscount
+##### 4.1.2.24 CreateDiscount
 
 创建折扣。
 
@@ -16522,20 +17602,20 @@ POST /ascm/trade/discount/create HTTP/1.1
 请求示例
 
 ```
-POST /ascm/trade/discount/create HTTP/1.1 {
+POST /ascm/trade/discount/create HTTP/1.1
 ```
 
-`"name":"`测试折扣`001",`
+`{` `"name":"`测试折扣`001",`
 
 ```json
-"priority":"1", "discountType":"uni", "periodValidStartTime":"2026-01-17", "periodValidEndTime":"2026-01-19", "productDiscountDetail":"{"discountValueUni":1,"productDiscounts":[{"productCode":"Gws","discountValue":1}, {"productCode":"EBS","discountValue":1}],"platformList":[]}" }
+"priority":"1", "discountType":"uni", "periodValidStartTime":"2026-01-17", "periodValidEndTime":"2026-01-19", "productDiscountDetail":"{"discountValueUni":1,"productDiscounts":[{"productCode":"Gws","discountValue":1}, {"productCode":"EBS","discountValue":1}],"platformList":[]}"
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":{ "id":29 }, "requestId":"0a1128a916917198245846573e****", "success":true } |  |
+| { "code":"200", "data":{ "id":29 }, "requestId":"0a1128a916917198245846573e****", "success":true } |   |
 
 `XML` 格式
 
@@ -16545,7 +17625,7 @@ POST /ascm/trade/discount/create HTTP/1.1 {
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### 4.1.2.25. UpdateDiscount
+##### 4.1.2.25 UpdateDiscount
 
 更新折扣。
 
@@ -16584,32 +17664,38 @@ POST /ascm/trade/discount/update HTTP/1.1
 
 请求示例
 
+```
+POST /ascm/trade/discount/update HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /ascm/trade/discount/update HTTP/1.1 { "id":"29",
+"id":"29",
 ```
 
 `"name":"`测试折扣`001",`
 
 ```json
-"priority":"1", "discountType":"uni", "periodValidStartTime":"2026-01-17", "periodValidEndTime":"2026-01-19", "productDiscountDetail":"{"discountValueUni":1,"productDiscounts":[{"productCode":"Gws","discountValue":1}, {"productCode":"EBS","discountValue":1}],"platformList":[]}" }
+"priority":"1", "discountType":"uni", "periodValidStartTime":"2026-01-17", "periodValidEndTime":"2026-01-19", "productDiscountDetail":"{"discountValueUni":1,"productDiscounts":[{"productCode":"Gws","discountValue":1}, {"productCode":"EBS","discountValue":1}],"platformList":[]}"
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "code":"200",
  "data":true,
  "requestId":"0a1128a916917198245846573e****",
  "success":true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |  |
+| <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |   |
 
-##### 4.1.2.26. EnableDiscount
+##### 4.1.2.26 EnableDiscount
 
 启用折扣。
 
@@ -16645,30 +17731,40 @@ POST /ascm/trade/discount/enable HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/trade/discount/enable HTTP/1.1 { "id":"29" }
+```
+POST /ascm/trade/discount/enable HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"id":"29"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "code":"200",
  "data":{
   "result":true,
   "id":29,
   "status":0
- },
+```
+
+`},`
+
+```json
  "requestId":"0a1128a916917198245846573e****",
  "success":true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <result>true</result> <id>29</id> <status>0</status> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |  |
+| <code>200</code> <data> <result>true</result> <id>29</id> <status>0</status> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |   |
 
-##### 4.1.2.27. DisableDiscount
+##### 4.1.2.27 DisableDiscount
 
 禁用折扣。
 
@@ -16704,30 +17800,40 @@ POST /ascm/trade/discount/disable HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/trade/discount/disable HTTP/1.1 { "id":"29" }
+```
+POST /ascm/trade/discount/disable HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"id":"29"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "code":"200",
  "data":{
   "result":true,
   "id":29,
   "status":0
- },
+```
+
+`},`
+
+```json
  "requestId":"0a1128a916917198245846573e****",
  "success":true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <result>true</result> <id>29</id> <status>0</status> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |  |
+| <code>200</code> <data> <result>true</result> <id>29</id> <status>0</status> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |   |
 
-##### 4.1.2.28. QueryDiscount
+##### 4.1.2.28 QueryDiscount
 
 查询折扣详情。
 
@@ -16766,7 +17872,7 @@ POST /ascm/trade/discount/query HTTP/1.1
 | -id | Long | 29 | 折扣ID。 |
 | -uuid | String | Dis202512045*** | 折扣UUID。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -16813,18 +17919,21 @@ POST /ascm/trade/discount/query HTTP/1.1
 请求示例
 
 ```
-POST /ascm/trade/discount/query HTTP/1.1 { }
+POST /ascm/trade/discount/query HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "total":3,
  "code":"200",
  "pageNumber":1,
  "data":[
-  {
+```
+
+`{`
+
+```json
    "auditId":"pi-2508111640110***",
    "gmtModified":"2025-12-04T17:20:19",
    "periodValidStartTimeUtc":"2025-11-30T16:00:00Z",
@@ -16838,57 +17947,62 @@ POST /ascm/trade/discount/query HTTP/1.1 { }
    "uuid":"Dis202512045***",
    "gmtModifiedUtc":"2025-12-04T09:20:19Z",
    "productDiscountDetail":[
-    {
+```
+
+`{`
+
+```json
      "discountValueUni":0.7,
      "productDiscounts":[
-      {
+```
+
+`{`
+
+```json
        "productCode":"EBS",
        "displayName":"ECS磁盘",
        "discountValue":0.7
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
      "platformList":[
-      {
-       "regionList":[
-        {
-         "regionId":"cn-test",
-         "regionName":"region01"
-        }
 ```
 
-`],` `"displayName":"`公共云账户`001",`
+`{`
+
+```json
+       "regionList":[
+```
+
+`{`
+
+```json
+         "regionId":"cn-test",
+         "regionName":"region01"
+```
+
+`}` `],` `"displayName":"`公共云账户`001",`
 
 ```json
        "platformCode":"pl-xjtshhyjnyvt4***"
-      }
 ```
 
-]
-
-```
-    }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
    "periodValidStartTime":"2025-12-01 00:00:00",
    "orgs":[
-    {
 ```
 
-`"orgName":"`测试组织`001",`
+`{` `"orgName":"`测试组织`001",`
 
 ```json
      "orgId":"3"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "periodValidEndTimeUtc":"2025-12-07T16:00:00Z",
@@ -16902,34 +18016,30 @@ POST /ascm/trade/discount/query HTTP/1.1 { }
    "discountType":"uni",
    "modifiedBy":"admin",
    "resourceGroups":[
-    {
 ```
 
-`"resourceGroupName":"`测试资源集`001",`
+`{` `"resourceGroupName":"`测试资源集`001",`
 
 ```json
      "resourceGroupId":"2"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "id":29,
    "status":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "requestId":"0a1128a916917198245846573e****",
  "success":true,
  "pageSize":20
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <total>3</total> <code>200</code> <pageNumber>1</pageNumber> <data>
@@ -16989,7 +18099,7 @@ POST /ascm/trade/discount/query HTTP/1.1 { }
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <pageSize>20</pageSize>
 ```
 
-##### 4.1.2.29. DeleteDiscount
+##### 4.1.2.29 DeleteDiscount
 
 删除折扣。
 
@@ -17018,25 +18128,23 @@ POST /ascm/trade/discount/delete HTTP/1.1
 | requestId | String | 0a1128a916917198245846573e* *** | 请求ID。 |
 | success | Boolean | true | 接口请求成功标识。 |
 
-**示例**
-
 请求示例
 
 ```json
-POST /ascm/trade/discount/delete HTTP/1.1 { "id":"29" }
+POST /ascm/trade/discount/delete HTTP/1.1 "id":"29"
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":true, "requestId":"0a1128a916917198245846573e****", "success":true } |  |
+| { "code":"200", "data":true, "requestId":"0a1128a916917198245846573e****", "success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |  |
+| <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |   |
 
-##### 4.1.2.30. DescribeDiscount
+##### 4.1.2.30 DescribeDiscount
 
 查询折扣详情。
 
@@ -17108,14 +18216,14 @@ POST /ascm/trade/discount/detail HTTP/1.1
 请求示例
 
 ```json
-POST /ascm/trade/discount/detail HTTP/1.1 { "id":"29" }
+POST /ascm/trade/discount/detail HTTP/1.1 "id":"29"
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":{ "auditId":"pi-2508111640110***", "gmtModified":"2025-12-04T17:20:19", "periodValidStartTimeUtc":"2025-11-30T16:00:00Z", "description":"这是一段描述文字", "periodValidEndTime":"2025-12-08 00:00:00", "priority":1, "uuid":"Dis202512045***", "gmtModifiedUtc":"2025-12-04T09:20:19Z", "productDiscountDetail":{ "discountValueUni":0.7, "productDiscounts":[ { "productCode":"EBS", "displayName":"公共云账户001", "discountValue":0.7 } ], "platformList":[ { "regionList":[ { "regionId":"cn-test", "regionName":"region01" } ], "displayName":"公共云账户001", "platformCode":"pl-xjtshhyjnyvt4***" } ] }, "periodValidStartTime":"2025-12-01 00:00:00", "orgs":[ { "orgName":"测试组织001", "orgId":"3" } ], "periodValidEndTimeUtc":"2025-12-07T16:00:00Z", "deleted":0, "createdBy":"admin", "name":"测试折扣001", "discountType":"uni", "modifiedBy":"admin", "resourceGroups":[ { "resourceGroupName":"测试资源集001", "resourceGroupId":"2" } ], "id":29, "status":1 }, "requestId":"0a1128a916917198245846573e0***", "success":true } |  |
+| { "code":"200", "data":{ "auditId":"pi-2508111640110***", "gmtModified":"2025-12-04T17:20:19", "periodValidStartTimeUtc":"2025-11-30T16:00:00Z", "description":"这是一段描述文字", "periodValidEndTime":"2025-12-08 00:00:00", "priority":1, "uuid":"Dis202512045***", "gmtModifiedUtc":"2025-12-04T09:20:19Z", "productDiscountDetail":{ "discountValueUni":0.7, "productDiscounts":[ { "productCode":"EBS", "displayName":"公共云账户001", "discountValue":0.7 } ], "platformList":[ { "regionList":[ { "regionId":"cn-test", "regionName":"region01" } ], "displayName":"公共云账户001", "platformCode":"pl-xjtshhyjnyvt4***" } ] }, "periodValidStartTime":"2025-12-01 00:00:00", "orgs":[ { "orgName":"测试组织001", "orgId":"3" } ], "periodValidEndTimeUtc":"2025-12-07T16:00:00Z", "deleted":0, "createdBy":"admin", "name":"测试折扣001", "discountType":"uni", "modifiedBy":"admin", "resourceGroups":[ { "resourceGroupName":"测试资源集001", "resourceGroupId":"2" } ], "id":29, "status":1 }, "requestId":"0a1128a916917198245846573e0***", "success":true } |   |
 
 `XML` 格式
 
@@ -17177,7 +18285,7 @@ POST /ascm/trade/discount/detail HTTP/1.1 { "id":"29" }
 </data> <requestId>0a1128a916917198245846573e0***</requestId> <success>true</success>
 ```
 
-##### 4.1.2.31. ListDiscountPriority
+##### 4.1.2.31 ListDiscountPriority
 
 折扣优先级列表。
 
@@ -17203,8 +18311,6 @@ POST /ascm/trade/discount/listPriority HTTP/1.1
 | requestId | String | 0a1128a916917198245846573e 0*** | 请求ID。 |
 | success | Boolean | true | 接口请求成功标识： true：成功。 false：失败。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -17215,13 +18321,13 @@ POST /ascm/trade/discount/listPriority HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":[ { "name":"测试折扣001", "id":29, "priority":1 } ], "requestId":"0a1128a916917198245846573e0***", "success":true } |  |
+| { "code":"200", "data":[ { "name":"测试折扣001", "id":29, "priority":1 } ], "requestId":"0a1128a916917198245846573e0***", "success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <name>测试折扣001</name> <id>29</id> <priority>1</priority> </data> <requestId>0a1128a916917198245846573e0***</requestId> <success>true</success> |  |
+| <code>200</code> <data> <name>测试折扣001</name> <id>29</id> <priority>1</priority> </data> <requestId>0a1128a916917198245846573e0***</requestId> <success>true</success> |   |
 
-##### 4.1.2.32. BillingProductList
+##### 4.1.2.32 BillingProductList
 
 获取计费产品三级列表。
 
@@ -17251,8 +18357,6 @@ POST /ascm/billing/productMgr/products/web HTTP/1.1
 | requestId | String | 0a1128a916917198245846573e* *** | 请求ID。 |
 | success | Boolean | true | 接口请求成功标识。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -17263,13 +18367,13 @@ POST /ascm/billing/productMgr/products/web HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":[ { "navigationName":"计算", "identifierDetails":[ { "identifier":"ecs", "displayName":"云服务器 ECS", "productDetails":[ { "displayName":"ECS磁盘", "productName":"EBS" } ] } ] } ], "requestId":"0a1128a916917198245846573e****", "success":true } |  |
+| { "code":"200", "data":[ { "navigationName":"计算", "identifierDetails":[ { "identifier":"ecs", "displayName":"云服务器 ECS", "productDetails":[ { "displayName":"ECS磁盘", "productName":"EBS" } ] } ] } ], "requestId":"0a1128a916917198245846573e****", "success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <navigationName>计算</navigationName> <identifierDetails> <identifier>ecs</identifier> <displayName>云服务器 ECS</displayName> <productDetails> <displayName>ECS磁盘</displayName> <productName>EBS</productName> </productDetails> </identifierDetails> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |  |
+| <code>200</code> <data> <navigationName>计算</navigationName> <identifierDetails> <identifier>ecs</identifier> <displayName>云服务器 ECS</displayName> <productDetails> <displayName>ECS磁盘</displayName> <productName>EBS</productName> </productDetails> </identifierDetails> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> |   |
 
-##### 4.1.2.33. CountProductInstancesByResourceSet
+##### 4.1.2.33 CountProductInstancesByResourceSet
 
 按资源集统计产品实例数量。
 
@@ -17301,7 +18405,7 @@ GET /resourceSets/[resourceSetId]/instances HTTP/1.1
 | ---productName | String | 专有网络 VPC | 产品名称。 |
 | ---resourceType | String | vpcinstance _ | 资源类型。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17327,11 +18431,11 @@ GET /resourceSets/[resourceSetId]/instances HTTP/1.1
 GET /resourceSets/[resourceSetId]/instances HTTP/1.1 &resourceSetId=2
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":[ { "num":3, "identifierType":"Networking", "productList":[ { "num":3, "resourceTypeList":[ { "organizationId":3, "num":3, "link":"/vpc/console/sslServicePage?organizationId=3&regionId=cn-wulan-***-d01&resourceGroupId=2", "identifierType":"Networking", "resourceSetId":2, "productName":"专有网络 VPC", "resourceType":"vpc_instance", "consoleType":"oneconsole" } ], "productName":"专有网络 VPC" } ] } ], "success":true, "message":"success" } |  |
+| { "code":"200", "data":[ { "num":3, "identifierType":"Networking", "productList":[ { "num":3, "resourceTypeList":[ { "organizationId":3, "num":3, "link":"/vpc/console/sslServicePage?organizationId=3&regionId=cn-wulan-***-d01&resourceGroupId=2", "identifierType":"Networking", "resourceSetId":2, "productName":"专有网络 VPC", "resourceType":"vpc_instance", "consoleType":"oneconsole" } ], "productName":"专有网络 VPC" } ] } ], "success":true, "message":"success" } |   |
 
 `XML` 格式
 
@@ -17347,14 +18451,16 @@ GET /resourceSets/[resourceSetId]/instances HTTP/1.1 &resourceSetId=2
    <link>/vpc/console/sslServicePage?organizationId=3&amp;regionId=cn-wulan-***-d01&amp;resourceGroupId=2</link>
    <identifierType>Networking</identifierType>
    <resourceSetId>2</resourceSetId>
+   <productName>专有网络 VPC</productName>
    <resourceType>vpc_instance</resourceType>
    <consoleType>oneconsole</consoleType>
   </resourceTypeList>
+  <productName>专有网络 VPC</productName>
  </productList>
 </data> <success>true</success> <message>success</message>
 ```
 
-##### 4.1.2.34. ListCouponTemplate
+##### 4.1.2.34 ListCouponTemplate
 
 优惠券模板信息列表查询。
 
@@ -17393,7 +18499,7 @@ POST /ascm/trade/coupon/admin/listCouponTemplate HTTP/1.1
 | -totalPublishAmount | Float | 1000.00 | 已经发放的总额。 |
 | -remainUnPublishAmount | Float | 0.00 | 未发放的总额。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17424,18 +18530,21 @@ POST /ascm/trade/coupon/admin/listCouponTemplate HTTP/1.1
 请求示例
 
 ```
-POST /ascm/trade/coupon/admin/listCouponTemplate HTTP/1.1 { }
+POST /ascm/trade/coupon/admin/listCouponTemplate HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "total":10,
  "code":"200",
  "pageNumber":1,
  "data":[
-  {
+```
+
+`{`
+
+```json
    "totalUsedCount":10,
 ```
 
@@ -17465,24 +18574,24 @@ POST /ascm/trade/coupon/admin/listCouponTemplate HTTP/1.1 { }
    "remainUnPublishCount":0,
    "status":"EFFECTIVE",
    "validTo":"2023-12-31T16:00:00Z"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "requestId":"748326947932***",
  "success":true,
  "pageSize":10,
  "message":"success"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <total>10</total> <code>200</code> <pageNumber>1</pageNumber> <data> <totalUsedCount>10</totalUsedCount> <couponName>春节红包券</couponName> <resourceMode>PART_AVAILABLE</resourceMode> <gmtModified>2023-12-31T16:00:00Z</gmtModified> <orgRange>[&quot;iaas_test&quot;]</orgRange> <modifier>admin</modifier> <description>仅节日期间可用</description> <orgMode>ALL</orgMode> <validFrom>2023-12-31T16:00:00Z</validFrom> <resourceRange>[&quot;ecs&quot;]</resourceRange> <couponId>200001</couponId> <totalCount>10</totalCount> <denomination>100</denomination> <totalAmount>1000</totalAmount> <remainUnPublishAmount>0</remainUnPublishAmount> <totalPublishAmount>1000</totalPublishAmount> <publishedCount>10</publishedCount> <totalUsedAmount>0</totalUsedAmount> <remainUnPublishCount>0</remainUnPublishCount> <status>EFFECTIVE</status> <validTo>2023-12-31T16:00:00Z</validTo> </data> <requestId>748326947932***</requestId> <success>true</success> <pageSize>10</pageSize> <message>success</message> |  |
+| <total>10</total> <code>200</code> <pageNumber>1</pageNumber> <data> <totalUsedCount>10</totalUsedCount> <couponName>春节红包券</couponName> <resourceMode>PART_AVAILABLE</resourceMode> <gmtModified>2023-12-31T16:00:00Z</gmtModified> <orgRange>[&quot;iaas_test&quot;]</orgRange> <modifier>admin</modifier> <description>仅节日期间可用</description> <orgMode>ALL</orgMode> <validFrom>2023-12-31T16:00:00Z</validFrom> <resourceRange>[&quot;ecs&quot;]</resourceRange> <couponId>200001</couponId> <totalCount>10</totalCount> <denomination>100</denomination> <totalAmount>1000</totalAmount> <remainUnPublishAmount>0</remainUnPublishAmount> <totalPublishAmount>1000</totalPublishAmount> <publishedCount>10</publishedCount> <totalUsedAmount>0</totalUsedAmount> <remainUnPublishCount>0</remainUnPublishCount> <status>EFFECTIVE</status> <validTo>2023-12-31T16:00:00Z</validTo> </data> <requestId>748326947932***</requestId> <success>true</success> <pageSize>10</pageSize> <message>success</message> |   |
 
-##### 4.1.2.35. CreateCouponTemplate
+##### 4.1.2.35 CreateCouponTemplate
 
 创建优惠券模板。
 
@@ -17540,8 +18649,13 @@ POST /ascm/trade/coupon/admin/createCouponTemplate HTTP/1.1
 
 请求示例
 
+```
+POST /ascm/trade/coupon/admin/createCouponTemplate HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /ascm/trade/coupon/admin/createCouponTemplate HTTP/1.1 {
     "couponName": "新人券",
     "couponType": "CASH_VOUCHER",
     "validFromDate": "2026-01-01",
@@ -17564,20 +18678,19 @@ POST /ascm/trade/coupon/admin/createCouponTemplate HTTP/1.1 {
     "activeFrom": "2026-01-01",
     "activeTo": "2026-01-31",
     "periodAvailable": 9999999
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":true, "requestId":"3794632643781366273723", "success":true, "message":"success" } |  |
+| { "code":"200", "data":true, "requestId":"3794632643781366273723", "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>3794632643781366273723</requestId> <success>true</success> <message>success</message> |  |
+| <code>200</code> <data>true</data> <requestId>3794632643781366273723</requestId> <success>true</success> <message>success</message> |   |
 
-##### 4.1.2.36. UpdateCouponTemplate
+##### 4.1.2.36 UpdateCouponTemplate
 
 更新优惠券模板信息
 
@@ -17605,7 +18718,7 @@ POST /ascm/trade/coupon/admin/updateCouponTemplate HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 响应码。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17619,25 +18732,29 @@ POST /ascm/trade/coupon/admin/updateCouponTemplate HTTP/1.1
 
 请求示例
 
+```
+POST /ascm/trade/coupon/admin/updateCouponTemplate HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /ascm/trade/coupon/admin/updateCouponTemplate HTTP/1.1 {
     "id": 200001,
     "couponName": "VIP优惠券",
     "description": "仅VIP可用"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":true, "requestId":"74387643027937479326***", "success":true, "message":"success" } |  |
+| { "code":"200", "data":true, "requestId":"74387643027937479326***", "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>74387643027937479326***</requestId> <success>true</success> <message>success</message> |  |
+| <code>200</code> <data>true</data> <requestId>74387643027937479326***</requestId> <success>true</success> <message>success</message> |   |
 
-##### 4.1.2.37. DeleteCouponTemplate
+##### 4.1.2.37 DeleteCouponTemplate
 
 删除优惠券模板。
 
@@ -17667,27 +18784,24 @@ POST /ascm/trade/coupon/admin/deleteCouponTemplate HTTP/1.1
 | requestId | String | 43797493629473924*** | 请求ID。 |
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败。 |
 
-**示例**
-
 请求示例
 
 ```json
-POST /ascm/trade/coupon/admin/deleteCouponTemplate HTTP/1.1 {
+POST /ascm/trade/coupon/admin/deleteCouponTemplate HTTP/1.1
     "id": 20001
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":true, "requestId":"43797493629473924***", "success":true, "message":"success" } |  |
+| { "code":"200", "data":true, "requestId":"43797493629473924***", "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>43797493629473924***</requestId> <success>true</success> <message>success</message> |  |
+| <code>200</code> <data>true</data> <requestId>43797493629473924***</requestId> <success>true</success> <message>success</message> |   |
 
-##### 4.1.2.38. QueryCouponTemplateDetail
+##### 4.1.2.38 QueryCouponTemplateDetail
 
 查询优惠券模板详情。
 
@@ -17723,7 +18837,7 @@ POST /ascm/trade/coupon/admin/queryCouponTemplateDetail HTTP/1.1
 | -couponType | String | CASHVOUCHER _ | 优惠券类型。CASH _VOUCHER表示代金券。 |
 | -validFrom | String | 2019-04-01T15:10:20Z | 模板有效期开始时间。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -17748,16 +18862,19 @@ POST /ascm/trade/coupon/admin/queryCouponTemplateDetail HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/trade/coupon/admin/queryCouponTemplateDetail HTTP/1.1 {
-    "id": 20001
-}
+```
+POST /ascm/trade/coupon/admin/queryCouponTemplateDetail HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+    "id": 20001
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "code":"200",
  "data":{
   "amountLimit":1000.0,
@@ -17793,18 +18910,23 @@ POST /ascm/trade/coupon/admin/queryCouponTemplateDetail HTTP/1.1 {
   "activeFrom":"2019-04-01T15:10:20Z",
   "status":"EFFECTIVE",
   "validTo":"2019-04-02T15:10:20Z"
- },
+```
+
+`},`
+
+```json
  "requestId":"6438647392648732***",
  "success":true,
  "message":"success"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <amountLimit>1000</amountLimit> <couponName>新人优惠券</couponName> <resourceMode>ALL</resourceMode> <orgRange>1,2,3,4</orgRange> <description>新人无门槛券</description> <activeTo>2019-05-01T15:10:20Z</activeTo> <periodAvailable>10</periodAvailable> <validFrom>2019-04-01T15:10:20Z</validFrom> <orgMode>ALL</orgMode> <couponId>200001</couponId> <totalCount>10</totalCount> <resourceRange>ECS,SLB</resourceRange> <denomination>100</denomination> <activeDelay>3</activeDelay> <amountMode>NO_LIMIT</amountMode> <couponType>CASH_VOUCHER</couponType> <ruleDesc>仅新用户可用</ruleDesc> <activeMode>IMMEDIATELY</activeMode> <activeFrom>2019-04-01T15:10:20Z</activeFrom> <status>EFFECTIVE</status> <validTo>2019-04-02T15:10:20Z</validTo> </data> <requestId>6438647392648732***</requestId> <success>true</success> <message>success</message> |  |
+| <code>200</code> <data> <amountLimit>1000</amountLimit> <couponName>新人优惠券</couponName> <resourceMode>ALL</resourceMode> <orgRange>1,2,3,4</orgRange> <description>新人无门槛券</description> <activeTo>2019-05-01T15:10:20Z</activeTo> <periodAvailable>10</periodAvailable> <validFrom>2019-04-01T15:10:20Z</validFrom> <orgMode>ALL</orgMode> <couponId>200001</couponId> <totalCount>10</totalCount> <resourceRange>ECS,SLB</resourceRange> <denomination>100</denomination> <activeDelay>3</activeDelay> <amountMode>NO_LIMIT</amountMode> <couponType>CASH_VOUCHER</couponType> <ruleDesc>仅新用户可用</ruleDesc> <activeMode>IMMEDIATELY</activeMode> <activeFrom>2019-04-01T15:10:20Z</activeFrom> <status>EFFECTIVE</status> <validTo>2019-04-02T15:10:20Z</validTo> </data> <requestId>6438647392648732***</requestId> <success>true</success> <message>success</message> |   |
 
-##### 4.1.2.39. PublishCouponTemplate
+##### 4.1.2.39 PublishCouponTemplate
 
 发放优惠券。
 
@@ -17840,25 +18962,29 @@ POST /ascm/trade/coupon/admin/publishCouponTemplate HTTP/1.1
 
 请求示例
 
+```
+POST /ascm/trade/coupon/admin/publishCouponTemplate HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /ascm/trade/coupon/admin/publishCouponTemplate HTTP/1.1 {
     "id": 20001,
     "publishCount": 10,
     "orgIdList": ["3", "4"]
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":true, "requestId":"3829369916873943***", "success":true, "message":"success" } |  |
+| { "code":"200", "data":true, "requestId":"3829369916873943***", "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <requestId>3829369916873943***</requestId> <success>true</success> <message>success</message> |  |
+| <code>200</code> <data>true</data> <requestId>3829369916873943***</requestId> <success>true</success> <message>success</message> |   |
 
-##### 4.1.2.40. PutMeteringData
+##### 4.1.2.40 PutMeteringData
 
 产商品管理中三方产品向ASCM主动推送计量数据的接口。
 
@@ -17894,20 +19020,20 @@ POST /ascm/metering/custom/product/put/metering/data HTTP/1.1
 请求示例
 
 ```
-POST /ascm/metering/custom/product/put/metering/data HTTP/1.1 { }
+POST /ascm/metering/custom/product/put/metering/data HTTP/1.1
 ```
 
-正常返回示例
+`{` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "requestId":"0a1128a91691****", "success":true, "message":"success" } |  |
+| { "code":"200", "cost":121, "requestId":"0a1128a91691****", "success":true, "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <requestId>0a1128a91691****</requestId> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>121</cost> <requestId>0a1128a91691****</requestId> <success>true</success> <message>success</message> |   |
 
-##### 4.1.2.41. QueryBillingCycleSettleStatus
+##### 4.1.2.41 QueryBillingCycleSettleStatus
 
 查询计费周期结算状态
 
@@ -17934,25 +19060,23 @@ POST /ascm/budget/billSettle/queryBillingCycleSettleStatus HTTP/1.1
 | data | Integer | 0 | 0：未结算 1：结算中 2：结算成功 -1：结算失败 |
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败。 |
 
-**示例**
-
 请求示例
 
 ```json
-POST /ascm/budget/billSettle/queryBillingCycleSettleStatus HTTP/1.1 { "billingCycle":"2023-07" }
+POST /ascm/budget/billSettle/queryBillingCycleSettleStatus HTTP/1.1 "billingCycle":"2023-07"
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "data": 0, "success":"true" } |  |
+| { "data": 0, "success":"true" } |   |
 
 | XML | 格式 |
 |---|---|
-| <data>0</data> <success>true</success> |  |
+| <data>0</data> <success>true</success> |   |
 
-##### 4.1.2.42. CreateBillingPushTask
+##### 4.1.2.42 CreateBillingPushTask
 
 创建账单导入任务。
 
@@ -17994,20 +19118,20 @@ billCycle：推送的账单的所属账期。 taskName：导入任务的名字�
 请求示例
 
 ```
-POST /ascm/billing/import/billingPush/tasks/create HTTP/1.1 { }
+POST /ascm/billing/import/billingPush/tasks/create HTTP/1.1
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "data":2, "requestId":"0a1128a916917198245846573e****", "success":true, "errorMessage":"调用API错误。", "errorCode":"InvalidAccessKeyId.NotFound", "token":"e59f61b2482b4d0562ab542d***" } |  |
+| { "code":"200", "cost":121, "data":2, "requestId":"0a1128a916917198245846573e****", "success":true, "errorMessage":"调用API错误。", "errorCode":"InvalidAccessKeyId.NotFound", "token":"e59f61b2482b4d0562ab542d***" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <data>2</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>调用API错误。</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>e59f61b2482b4d0562ab542d***</token> |  |
+| <code>200</code> <cost>121</cost> <data>2</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>调用API错误。</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>e59f61b2482b4d0562ab542d***</token> |   |
 
-##### 4.1.2.43. BatchPushBilling
+##### 4.1.2.43 BatchPushBilling
 
 批量导入推送。
 
@@ -18041,33 +19165,33 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1
 | ---resourceGid | String | 2 | 资源集ID。 |
 | ---resourceGroupName | String | ResourceSet(Test) | 资源集名称。 |
 
-| 参数名称 | 类型 | 示例 | 说明 |  |
+| 参数名称 | 类型 | 示例 | 说明 |   |
 |---|---|---|---|---|
-| ---product | String | custom | 产品。 |  |
-| ---startTime | String | 2024-12-31T16:00:00Z | 开始时间。 |  |
-| ---endTime | String | 2025-01-01T16:00:00Z | 结束时间。 |  |
-| ---price | Float | 100.5 | 价格。 |  |
-| ---discountPrice | Float | 10 | 折扣金额。 |  |
-| ---originalPrice | Float | 110 | 原价。 |  |
-| ---reliefPrice | Float | 5 | 减免金额。 |  |
-| ---relievedPrice | Float | 90.5 | 已减免金额。 |  |
-| ---roundingAmount | Float | 0.5 | 抹零金额。 |  |
-| ---billingChan | String | billingitem1-billingitem2- _ _ _ _ ruleid-planid _ _ | 计费模型ID链信息，包括：计费项1-计费项2-计费项规则ID-计费策略ID-计费计划 ID。 |  |
-| ---billingTime | String | 2025-01-01T10:00:00Z | 记账时间。 |  |
-| ---modifiedBy | String | user333 _ | 修改人。 |  |
-| ---modifiedTime | String | 2025-02-01T10:00:00Z | 修改时间。 |  |
-| ---mergeCount | Integer | 1 | 聚合次数。如果账单信息经过聚合，返回聚合的次数。 |  |
-| ---billCycle | String | 2025-01-01 | 账期。 |  |
-| ---payType | String | postPay | 付费类型。 |  |
-| ---instanceSpecDetail | Map | { "ecs.n4.xlarge": [ { "featureValue": "0", "featureName": "GPU数量", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. gpuAmount", "needTrans": false }, { "featureValue": "8.0", "featureName": "内存(GB)", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. memorySize", "needTrans": false }, { "featureValue": "cloud _sperf", "featureName": "磁盘类型", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. systemDisk", "needTrans": false }, { "featureValue": "4", "featureName": "vCPU内核数目", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. cpuCoreCount", "needTrans": false }, { "featureValue": "", "featureName": "GPU类型", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. gpuSpec", "needTrans": false } ] } | 实例规格属性详情。 |  |
-| ---instanceTag | Map | { "EnableHotUpgrade": [ "true" ] } | 实例标签。 |  |
-| ---platformCode | String | default | 云平台。 |  |
-| ---identifier | String | custom-resource | 云产品。 |  |
-| ---identifierGroup | String | compute | 云产品分组。 |  |
-| ---financialUnitId | String | financialunit111 _ _ | 实例所属财务单元ID。 |  |
-| ---financialName | String | 测试财务单元 | 实例所属财务单元名称。 |  |
+| ---product | String | custom | 产品。 |   |
+| ---startTime | String | 2024-12-31T16:00:00Z | 开始时间。 |   |
+| ---endTime | String | 2025-01-01T16:00:00Z | 结束时间。 |   |
+| ---price | Float | 100.5 | 价格。 |   |
+| ---discountPrice | Float | 10 | 折扣金额。 |   |
+| ---originalPrice | Float | 110 | 原价。 |   |
+| ---reliefPrice | Float | 5 | 减免金额。 |   |
+| ---relievedPrice | Float | 90.5 | 已减免金额。 |   |
+| ---roundingAmount | Float | 0.5 | 抹零金额。 |   |
+| ---billingChan | String | billingitem1-billingitem2- _ _ _ _ ruleid-planid _ _ | 计费模型ID链信息，包括：计费项1-计费项2-计费项规则ID-计费策略ID-计费计划 ID。 |   |
+| ---billingTime | String | 2025-01-01T10:00:00Z | 记账时间。 |   |
+| ---modifiedBy | String | user333 _ | 修改人。 |   |
+| ---modifiedTime | String | 2025-02-01T10:00:00Z | 修改时间。 |   |
+| ---mergeCount | Integer | 1 | 聚合次数。如果账单信息经过聚合，返回聚合的次数。 |   |
+| ---billCycle | String | 2025-01-01 | 账期。 |   |
+| ---payType | String | postPay | 付费类型。 |   |
+| ---instanceSpecDetail | Map | { "ecs.n4.xlarge": [ { "featureValue": "0", "featureName": "GPU数量", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. gpuAmount", "needTrans": false }, { "featureValue": "8.0", "featureName": "内存(GB)", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. memorySize", "needTrans": false }, { "featureValue": "cloud _sperf", "featureName": "磁盘类型", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. systemDisk", "needTrans": false }, { "featureValue": "4", "featureName": "vCPU内核数目", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. cpuCoreCount", "needTrans": false }, { "featureValue": "", "featureName": "GPU类型", "nameTransKey": "csp- cubes.SpecInfo.ecs.InstanceType. gpuSpec", "needTrans": false } ] } | 实例规格属性详情。 |   |
+| ---instanceTag | Map | { "EnableHotUpgrade": [ "true" ] } | 实例标签。 |   |
+| ---platformCode | String | default | 云平台。 |   |
+| ---identifier | String | custom-resource | 云产品。 |   |
+| ---identifierGroup | String | compute | 云产品分组。 |   |
+| ---financialUnitId | String | financialunit111 _ _ | 实例所属财务单元ID。 |   |
+| ---financialName | String | 测试财务单元 | 实例所属财务单元名称。 |   |
 
-| 开发指南 | 参考 |  | 统一云管平台 |
+| 开发指南 | 参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -18092,10 +19216,9 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1
 请求示例
 
 ```json
-POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
+POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1
     "taskId": 7,
     "pushingBills": [
-        {
             "platformCode": "default",
             "currency": "CNY",
             "cycleType": "Daily",
@@ -18149,36 +19272,34 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
             "publicCloudCost": 90,
             "publicProfit": 10,
             "roundingAmount": 0.5
-        }
 ```
 
-]
-
-```
-}
-```
-
-正常返回示例
+`}` `]` `}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "data":[ { "failedBillsAndReason":[ { "reason":"test", "bill":[ { "resourceGid":"2", "roundingAmount":0.5, "modifiedTime":"2025-02-01T10:00:00Z", "relievedPrice":90.5, "originalPrice":110.0, "paySubType":"POST", "financialName":"测试财务单元", "orderId":"order_444", "discountPrice":10.0, "orgId":"3", "insId":"i-f9m05j7zfc7b3mhu****", "payType":"postPay", "financialUnitId":"financial_unit_111", "billingChan":"billing_item_1-billing_item_2-rule_id-plan_id", "identifierGroup":"compute", "cloudType":"default", "price":100.5, "instanceSpecDetail":{ "ecs n4 xlarge":[ |  |
+| { "code":"200", "cost":121, "data":[ { "failedBillsAndReason":[ { "reason":"test", "bill":[ { "resourceGid":"2", "roundingAmount":0.5, "modifiedTime":"2025-02-01T10:00:00Z", "relievedPrice":90.5, "originalPrice":110.0, "paySubType":"POST", "financialName":"测试财务单元", "orderId":"order_444", "discountPrice":10.0, "orgId":"3", "insId":"i-f9m05j7zfc7b3mhu****", "payType":"postPay", "financialUnitId":"financial_unit_111", "billingChan":"billing_item_1-billing_item_2-rule_id-plan_id", "identifierGroup":"compute", "cloudType":"default", "price":100.5, "instanceSpecDetail":{ "ecs n4 xlarge":[ |   |
 
 ```json
         ecs.n4.xlarge:[
-         {
           "featureValue":"0",
           "featureName":"GPU数量",
           "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.gpuAmount",
           "needTrans":false
-         },
-         {
+```
+
+`},` `{`
+
+```json
           "featureValue":"8.0",
           "featureName":"内存(GB)",
           "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.memorySize",
           "needTrans":false
-         },
-         {
+```
+
+`},` `{`
+
+```json
           "featureValue":"cloud_sperf",
 ```
 
@@ -18187,8 +19308,11 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
 ```json
           "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.systemDisk",
           "needTrans":false
-         },
-         {
+```
+
+`},` `{`
+
+```json
           "featureValue":"4",
 ```
 
@@ -18197,19 +19321,20 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
 ```json
           "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.cpuCoreCount",
           "needTrans":false
-         },
-         {
+```
+
+`},` `{`
+
+```json
           "featureValue":"",
           "featureName":"GPU类型",
           "nameTransKey":"csp-cubes.SpecInfo.ecs.InstanceType.gpuSpec",
           "needTrans":false
-         }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-       },
        "currency":"CNY",
        "startTime":"2024-12-31T16:00:00Z",
        "modifiedBy":"user_333",
@@ -18226,26 +19351,18 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
          "true"
 ```
 
-]
+`]` `},`
 
 ```json
-       },
        "reliefPrice":5.0,
        "regionId":"cn-test",
        "instanceSpec":"ecs.xn4.small",
        "endTime":"2025-01-01T16:00:00Z",
        "billCycle":"2025-01-01",
        "platformCode":"default"
-      }
 ```
 
-]
-
-```
-    }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
    "successCount":2,
@@ -18253,10 +19370,9 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
    "batchId":1,
    "taskId":2,
    "failureCount":0
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "requestId":"FEB7A954-F07F-45EA-B6A3-980DD0F9****",
@@ -18264,12 +19380,13 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
  "errorMessage":"InternalServerError。",
  "errorCode":"InvalidAccessKeyId.NotFound",
  "token":"eyJhY2NvdW*****VnZpgXQC5A=="
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <data> <failedBillsAndReason> <reason>test</reason> <bill> <resourceGid>2</resourceGid> <roundingAmount>0.5</roundingAmount> <modifiedTime>2025-02-01T10:00:00Z</modifiedTime> <relievedPrice>90.5</relievedPrice> <originalPrice>110</originalPrice> <paySubType>POST</paySubType> |  |
+| <code>200</code> <cost>121</cost> <data> <failedBillsAndReason> <reason>test</reason> <bill> <resourceGid>2</resourceGid> <roundingAmount>0.5</roundingAmount> <modifiedTime>2025-02-01T10:00:00Z</modifiedTime> <relievedPrice>90.5</relievedPrice> <originalPrice>110</originalPrice> <paySubType>POST</paySubType> |   |
 
 `<financialName>`测试财务单元`</financialName>`
 
@@ -18346,7 +19463,7 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1 {
 </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>InternalServerError。</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token>
 ```
 
-##### 4.1.2.44. UpdateStatusPushFinished
+##### 4.1.2.44 UpdateStatusPushFinished
 
 更新状态为推送完成。
 
@@ -18387,13 +19504,13 @@ POST /ascm/billing/import/billingPush/tasks/updateStatusPushFinished HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "data":true, "requestId":"0a1128a916917198245846573e****", "success":true, "errorMessage":"调用API错误。", "errorCode":"InvalidAccessKeyId.NotFound", "token":"eyJhY2NvdW*****VnZpgXQC5A==" } |  |
+| { "code":"200", "cost":121, "data":true, "requestId":"0a1128a916917198245846573e****", "success":true, "errorMessage":"调用API错误。", "errorCode":"InvalidAccessKeyId.NotFound", "token":"eyJhY2NvdW*****VnZpgXQC5A==" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>调用API错误。</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token> |  |
+| <code>200</code> <cost>121</cost> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>调用API错误。</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token> |   |
 
-##### 4.1.2.45. QueryBillingPushTaskStatus
+##### 4.1.2.45 QueryBillingPushTaskStatus
 
 查询任务状态。
 
@@ -18429,23 +19546,27 @@ POST /ascm/billing/import/billingPush/tasks/queryStatus HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/billing/import/billingPush/tasks/queryStatus HTTP/1.1 {
-  "taskId" : 5,
-}
+```
+POST /ascm/billing/import/billingPush/tasks/queryStatus HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+  "taskId" : 5,
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "cost":121, "data":[ { "taskId":5, "taskStatus":"CREATED" } ], "requestId":"0a1128a916917198245846573e****", "success":true, "errorMessage":"InternalServerError", "errorCode":"InvalidAccessKeyId.NotFound", "token":"eyJhY2NvdW*****VnZpgXQC5A==" } |  |
+| { "code":"200", "cost":121, "data":[ { "taskId":5, "taskStatus":"CREATED" } ], "requestId":"0a1128a916917198245846573e****", "success":true, "errorMessage":"InternalServerError", "errorCode":"InvalidAccessKeyId.NotFound", "token":"eyJhY2NvdW*****VnZpgXQC5A==" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>121</cost> <data> <taskId>5</taskId> <taskStatus>CREATED</taskStatus> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>InternalServerError</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token> |  |
+| <code>200</code> <cost>121</cost> <data> <taskId>5</taskId> <taskStatus>CREATED</taskStatus> </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>InternalServerError</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token> |   |
 
-##### 4.1.2.46. DataCenterSearch
+##### 4.1.2.46 DataCenterSearch
 
 在数据中台环境中检索资源。
 
@@ -18499,8 +19620,13 @@ POST /datacenter/action/search HTTP/1.1
 
 请求示例
 
+```
+POST /datacenter/action/search HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /datacenter/action/search HTTP/1.1 {
     "type":"Instance",
     "resourceTypes": ["disk"],
     "sortField": "__CreateTime__",
@@ -18508,18 +19634,20 @@ POST /datacenter/action/search HTTP/1.1 {
     "returnInstanceDetail": true,
     "page": 2,
     "pageSize": 5
-}
 ```
 
 正常返回示例 `JSON` 格式
 
 ```json
-{
     "code": "200",
     "cost": 13,
     "data": {
         "details": [
-            {
+```
+
+`{`
+
+```json
                 "__InstanceName__": "dt_flowtest_SystemDisk",
                 "__CreateTime__": "1667975973000",
                 "__Detail__": "
@@ -18529,26 +19657,30 @@ POST /datacenter/action/search HTTP/1.1 {
                 "__InstanceId__": "d-st601kc2exadb4zkfrmc",
                 "RegionId": "cn-qingdao-***-d01",
                 "ResourceSetId": "17"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "page": 2,
         "pageSize": 5,
         "total": 98
-    },
+```
+
+`},`
+
+```json
     "message": "success",
     "success": true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>13</cost> <data> <details> <ResourceType>disk</ResourceType> <OrganizationId>17</OrganizationId> <RegionId>cn-qingdao-***-d01</RegionId> <ResourceSetId>17</ResourceSetId> </details> <page>2</page> <pageSize>5</pageSize> <total>98</total> </data> <message>success</message> <success>true</success> |  |
+| <code>200</code> <cost>13</cost> <data> <details> <ResourceType>disk</ResourceType> <OrganizationId>17</OrganizationId> <RegionId>cn-qingdao-***-d01</RegionId> <ResourceSetId>17</ResourceSetId> </details> <page>2</page> <pageSize>5</pageSize> <total>98</total> </data> <message>success</message> <success>true</success> |   |
 
-##### 4.1.2.47. DataCenterStatistics
+##### 4.1.2.47 DataCenterStatistics
 
 数据中心统计信息。
 
@@ -18581,62 +19713,85 @@ POST /datacenter/action/statistics HTTP/1.1
 
 请求示例
 
+```
+POST /datacenter/action/statistics HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /datacenter/action/statistics HTTP/1.1 {
    "type":"Instance",
    "statisticsField": "ResourceType",
    "resourceSetIds": [3]
-}
 ```
 
-正常返回示例 `JSON` 格式
+`}` 正常返回示例 `JSON` 格式
 
 ```json
-{
     "code": "200",
     "cost": 2,
     "data": {
         "statistics": [
-            {
-                "label": "Starting",
-                "value": 2
-            },
-            {
-                "label": "Stopping",
-                "value": 1
-            },
-            {
-                "label": "Stopped",
-                "value": 9
-            },
-            {
-                "label": "Pending",
-                "value": 1
-            },
-            {
-                "label": "Running",
-                "value": 136
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "label": "Starting",
+                "value": 2
+```
+
+`},` `{`
+
+```json
+                "label": "Stopping",
+                "value": 1
+```
+
+`},` `{`
+
+```json
+                "label": "Stopped",
+                "value": 9
+```
+
+`},` `{`
+
+```json
+                "label": "Pending",
+                "value": 1
+```
+
+`},` `{`
+
+```json
+                "label": "Running",
+                "value": 136
+```
+
+`}` `],`
 
 ```json
         "statisticsCount": 5,
         "total": 149
-    },
+```
+
+`},`
+
+```json
     "message": "success",
     "success": true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>2</cost> <data> <statistics> <label>Starting</label> <value>2</value> </statistics> <statistics> <label>Stopping</label> <value>1</value> </statistics> <statistics> <label>Stopped</label> <value>9</value> </statistics> <statistics> <label>Pending</label> <value>1</value> </statistics> <statistics> <label>Running</label> <value>136</value> </statistics> <statisticsCount>5</statisticsCount> <total>149</total> </data> <message>success</message> <success>true</success> |  |
+| <code>200</code> <cost>2</cost> <data> <statistics> <label>Starting</label> <value>2</value> </statistics> <statistics> <label>Stopping</label> <value>1</value> </statistics> <statistics> <label>Stopped</label> <value>9</value> </statistics> <statistics> <label>Pending</label> <value>1</value> </statistics> <statistics> <label>Running</label> <value>136</value> </statistics> <statisticsCount>5</statisticsCount> <total>149</total> </data> <message>success</message> <success>true</success> |   |
 
-#### 4.1.3. 云产品管理
+#### 4.1.3 云产品管理
 
-##### 4.1.3.1. DescribeInstanceTypeFamilies
+##### 4.1.3.1 DescribeInstanceTypeFamilies
 
 调用DescribeInstanceTypeFamilies查询云服务器ECS的实例规格族。
 
@@ -18669,8 +19824,8 @@ POST /ascm/manage/saleconf/ecsSpec/describeInstanceTypeFamilies HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| data | Struct |  | 响应结果。 |
-| instanceTypeFamilies | Array of instanceTypeFamilies |  | 云服务器ECS实例规格族信息。 |
+| data | Struct |   | 响应结果。 |
+| instanceTypeFamilies | Array of instanceTypeFamilies |   | 云服务器ECS实例规格族信息。 |
 | generation | String | "" | Apsara Uni-manager运营控制台请求调用云服务器ECS DescribeInstanceTypeFamilies接口的过程。 说明该参数无实际意义，默认为空。 |
 | instanceTypeFamilyId | String | ecs.d1 | 云服务器ECS实例规格族ID。 |
 | status | Integer | 200 | 返回状态。 说明该参数已废弃。 |
@@ -18684,27 +19839,25 @@ POST /ascm/manage/saleconf/ecsSpec/describeInstanceTypeFamilies HTTP/1.1
 POST /ascm/manage/saleconf/ecsSpec/describeInstanceTypeFamilies HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resourceType":"ECS",
     "status":"Available ",
     "zoneId":"cn-qingdao-****d01"
-}
 ```
 
 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <data> <instanceTypeFamilies> <generation>""</generation> <instanceTypeFamilyId>ecs.d1</instanceTypeFamilyId> </instanceTypeFamilies> </data> <success>true</success> <status>200</status> |  |
+| <data> <instanceTypeFamilies> <generation>""</generation> <instanceTypeFamilyId>ecs.d1</instanceTypeFamilyId> </instanceTypeFamilies> </data> <success>true</success> <status>200</status> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "data": { "instanceTypeFamilies": { "generation": "\"\"", "instanceTypeFamilyId": "ecs.d1" } }, "success": true, "status": 200 } |  |
+| { "data": { "instanceTypeFamilies": { "generation": "\"\"", "instanceTypeFamilyId": "ecs.d1" } }, "success": true, "status": 200 } |   |
 
-##### 4.1.3.2. DescribeModifiableInstanceType
+##### 4.1.3.2 DescribeModifiableInstanceType
 
 ECS实例可变配规格查询。
 
@@ -18720,8 +19873,8 @@ ECS实例可变配规格查询。
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| data | Struct |  | 结果集合。 |
-| result | Array of dataItem |  | 数据集合。 |
+| data | Struct |   | 结果集合。 |
+| result | Array of dataItem |   | 数据集合。 |
 | baselineCredit | Integer | 1 | 突发性能实例t5、t6的基准vCPU计算性能（所有vCPU之和）。 |
 | cpuCoreCount | Integer | 1 | vCPU内核数目 |
 | eniPrivateIpAddressQuanti ty | Integer | 2 | 单块弹性网卡的私有IP地址上限 |
@@ -18755,19 +19908,17 @@ ECS实例可变配规格查询。
 http(s)://[Endpoint]/?Action=DescribeModifiableInstanceType &destinationResource=sfdsf &instanceId=sfdsfsfdsfsfdsf
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <data> <result> <instancePpsTx>1</instancePpsTx> <instanceTypeFamily>ecs.sn2.large</instanceTypeFamily> <localStorageCapacity>2000</localStorageCapacity> <instanceTypeId>ecs.sn2.large</instanceTypeId> <instancePpsRx>1</instancePpsRx> <cpuCoreCount>1</cpuCoreCount> <initialCredit>1</initialCredit> <localStorageAmount>1</localStorageAmount> <gPUAmount>0</gPUAmount> <memorySize>4</memorySize> <instanceFamilyLevel>EnterpriseLevel</instanceFamilyLevel> <eniQuantity>2</eniQuantity> <instanceBandwidthRx>1</instanceBandwidthRx> <eniPrivateIpAddressQuantity>2</eniPrivateIpAddressQuantity> <localStorageCategory>2000</localStorageCategory> <instanceBandwidthTx>1</instanceBandwidthTx> <baselineCredit>1</baselineCredit> <gPUSpec>“”</gPUSpec> </result> <success>true</success> <status>200</status> </data> <host>""</host> <status>200</status> |  |
+| <data> <result> <instancePpsTx>1</instancePpsTx> <instanceTypeFamily>ecs.sn2.large</instanceTypeFamily> <localStorageCapacity>2000</localStorageCapacity> <instanceTypeId>ecs.sn2.large</instanceTypeId> <instancePpsRx>1</instancePpsRx> <cpuCoreCount>1</cpuCoreCount> <initialCredit>1</initialCredit> <localStorageAmount>1</localStorageAmount> <gPUAmount>0</gPUAmount> <memorySize>4</memorySize> <instanceFamilyLevel>EnterpriseLevel</instanceFamilyLevel> <eniQuantity>2</eniQuantity> <instanceBandwidthRx>1</instanceBandwidthRx> <eniPrivateIpAddressQuantity>2</eniPrivateIpAddressQuantity> <localStorageCategory>2000</localStorageCategory> <instanceBandwidthTx>1</instanceBandwidthTx> <baselineCredit>1</baselineCredit> <gPUSpec>“”</gPUSpec> </result> <success>true</success> <status>200</status> </data> <host>""</host> <status>200</status> |   |
 
 `JSON` 格式
 
 ```json
-{
     "data": {
         "result": [
-            {
                 "instancePpsTx": "1",
                 "instanceTypeFamily": "ecs.sn2.large",
                 "localStorageCapacity": "2000",
@@ -18786,21 +19937,25 @@ http(s)://[Endpoint]/?Action=DescribeModifiableInstanceType &destinationResource
                 "instanceBandwidthTx": "1",
                 "baselineCredit": "1",
                 "gPUSpec": "“”"
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "success": "true",
         "status": "200"
-    },
-    "host": "\"\"",
-    "status": "200"
-}
 ```
 
-##### 4.1.3.3. DescribeSeriesIdFamilies
+`},`
+
+```json
+    "host": "\"\"",
+    "status": "200"
+```
+
+`}`
+
+##### 4.1.3.3 DescribeSeriesIdFamilies
 
 调用DescribeSeriesIdFamilies查询云原生分布式数据库PolarDB-X 1.0的实例系列。
 
@@ -18822,9 +19977,7 @@ POST /ascm/manage/saleconf/drdsSpec/describeSeriesIdFamilies HTTP/1.1
 | status | String | Body | 否 | Available | 规格状态。 Available：启用。 Unavailable：禁用。规格禁用则无法创建对应规格的DRDS 实例。 |
 | label | String | Body | 否 | true | 是否返回实例系列的英文名称。默认为false。 true：返回。 false：不返回。 |
 
-**说明**
-
-若三个请求参数都不填，则返回云原生分布式数据库PolarDB-X 1.0产品所有的实例系列信息。
+> **说明：** 若三个请求参数都不填，则返回云原生分布式数据库PolarDB-X 1.0产品所有的实例系列信息。
 
 **返回参数**
 
@@ -18860,35 +20013,35 @@ true：成功。 false失败。
 POST /ascm/manage/saleconf/drdsSpec/describeSeriesIdFamilies HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "resourceType":"DRDS",
     "status":"Available"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <creator>deploy</creator> <gmtModified>1663266761567</gmtModified> <seriesName>drds.sn2.8c32g</seriesName> <modifier>deploy</modifier> <orderBy> <id>ASC</id> </orderBy> <pageSize>8</pageSize> <gmtCreate>1663266761567</gmtCreate> <seriesId>drds.sn2.8c32g</seriesId> <deleted>false</deleted> <pageOrder>ASC</pageOrder> <isDeleted>N</isDeleted> <pageSort>id</pageSort> <pageStart>0</pageStart> <seriesNameLabel>标准版</seriesNameLabel> <resourceType>DRDS</resourceType> </data> <data> <creator>deploy</creator> <gmtModified>1663266761567</gmtModified> <seriesName>drds.sn2.16c64g</seriesName> <modifier>deploy</modifier> <orderBy> <id>ASC</id> </orderBy> <pageSize>8</pageSize> <gmtCreate>1663266761567</gmtCreate> <seriesId>drds.sn2.16c64g</seriesId> <deleted>false</deleted> <pageOrder>ASC</pageOrder> <isDeleted>N</isDeleted> <pageSort>id</pageSort> <pageStart>0</pageStart> <seriesNameLabel>企业版</seriesNameLabel> <resourceType>DRDS</resourceType> </data> <httpOk>false</httpOk> <success>true</success> <message>describeSeriesIdFamilies success</message> |  |
+| <code>200</code> <data> <creator>deploy</creator> <gmtModified>1663266761567</gmtModified> <seriesName>drds.sn2.8c32g</seriesName> <modifier>deploy</modifier> <orderBy> <id>ASC</id> </orderBy> <pageSize>8</pageSize> <gmtCreate>1663266761567</gmtCreate> <seriesId>drds.sn2.8c32g</seriesId> <deleted>false</deleted> <pageOrder>ASC</pageOrder> <isDeleted>N</isDeleted> <pageSort>id</pageSort> <pageStart>0</pageStart> <seriesNameLabel>标准版</seriesNameLabel> <resourceType>DRDS</resourceType> </data> <data> <creator>deploy</creator> <gmtModified>1663266761567</gmtModified> <seriesName>drds.sn2.16c64g</seriesName> <modifier>deploy</modifier> <orderBy> <id>ASC</id> </orderBy> <pageSize>8</pageSize> <gmtCreate>1663266761567</gmtCreate> <seriesId>drds.sn2.16c64g</seriesId> <deleted>false</deleted> <pageOrder>ASC</pageOrder> <isDeleted>N</isDeleted> <pageSort>id</pageSort> <pageStart>0</pageStart> <seriesNameLabel>企业版</seriesNameLabel> <resourceType>DRDS</resourceType> </data> <httpOk>false</httpOk> <success>true</success> <message>describeSeriesIdFamilies success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "code": 200,
     "data": [
-        {
             "creator": "deploy",
             "gmtModified": 1663266761567,
             "seriesName": "drds.sn2.8c32g",
             "modifier": "deploy",
             "orderBy": {
                 "id": "ASC"
-            },
+```
+
+`},`
+
+```json
             "pageSize": 8,
             "gmtCreate": 1663266761567,
             "seriesId": "drds.sn2.8c32g",
@@ -18899,15 +20052,22 @@ POST /ascm/manage/saleconf/drdsSpec/describeSeriesIdFamilies HTTP/1.1
             "pageStart": 0,
             "seriesNameLabel": "标准版",
             "resourceType": "DRDS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "deploy",
             "gmtModified": 1663266761567,
             "seriesName": "drds.sn2.16c64g",
             "modifier": "deploy",
             "orderBy": {
                 "id": "ASC"
-            },
+```
+
+`},`
+
+```json
             "pageSize": 8,
             "gmtCreate": 1663266761567,
             "seriesId": "drds.sn2.16c64g",
@@ -18918,19 +20078,21 @@ POST /ascm/manage/saleconf/drdsSpec/describeSeriesIdFamilies HTTP/1.1
             "pageStart": 0,
             "seriesNameLabel": "企业版",
             "resourceType": "DRDS"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "httpOk": false,
     "success": true,
     "message": "describeSeriesIdFamilies success"
-}
 ```
 
-##### 4.1.3.4. GetRegionsByProduct
+`}`
+
+##### 4.1.3.4 GetRegionsByProduct
+
+调用GetRegionsByProduct获取产品的Region列表。
 
 **请求头**
 
@@ -18954,9 +20116,9 @@ POST /ascm/basic/cmdb/region/product HTTP/1.1
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
 
-| body | Struct |  | 返回体。 |
+| body | Struct |   | 返回体。 |
 |---|---|---|---|
-| RegionList | Array of Region |  | 返回的Region列表。 |
+| RegionList | Array of Region |   | 返回的Region列表。 |
 | RegionId | String | cn-qingdao-****-d01 | RegionID信息。 |
 | RegionType | String | center | Region类型。 center：中心Region。 cell：单元Region。 |
 | code | Integer | 200 | 返回码。 200：调用正常。 500：内部错误。 |
@@ -18971,26 +20133,26 @@ POST /ascm/basic/cmdb/region/product HTTP/1.1
 POST /ascm/basic/cmdb/region/product HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "identifier": ecs,
     "organization": "23"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <successResponse>true</successResponse> <code>200</code> <body> <RegionList> <RegionType>center</RegionType> <RegionId>cn-qingdao-**** -d01</RegionId> </RegionList> </body> |  |
+| <successResponse>true</successResponse> <code>200</code> <body> <RegionList> <RegionType>center</RegionType> <RegionId>cn-qingdao-**** -d01</RegionId> </RegionList> </body> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "successResponse": "true", "code": "200", "body": { "RegionList": [ { "RegionType": "center", "RegionId": "cn-qingdao-**** -d01" } ] } } |  |
+| { "successResponse": "true", "code": "200", "body": { "RegionList": [ { "RegionType": "center", "RegionId": "cn-qingdao-**** -d01" } ] } } |   |
 
-##### 4.1.3.5. GroupCommonSpec
+##### 4.1.3.5 GroupCommonSpec
+
+调用GroupCommonSpec查询规格特定字段枚举类型。
 
 **请求参数**
 
@@ -19005,7 +20167,7 @@ POST /ascm/basic/cmdb/region/product HTTP/1.1
 
 | 名称 | 类型 | 示例值 | 描述 |
 |---|---|---|---|
-| data | Struct |  | 数据集。 |
+| data | Struct |   | 数据集。 |
 | data | List | [ { "storageType":"AutoTestWn4MR _ xEkKK" }, { "storageType":"AutoTestUZOBA _ EDvil" }, { "storageType":"AutoTest8WqAc _ 6rtpp" }, { "storageType":"AutoTestaCPiv2n _ Ih3" }, { "storageType":"Standard" }, { "storageType":"1" } ] | 结果集合。 |
 | status | Integer | 200 | 返回状态。 |
 | success | String | true | 成功标示。 |
@@ -19017,20 +20179,20 @@ POST /ascm/basic/cmdb/region/product HTTP/1.1
 请求示例
 
 ```
-&groupFiled=storageType &resourceType=RDS
+http(s)://[Endpoint]/?Action=GroupCommonSpec &groupFiled=storageType &resourceType=RDS
 ```
 
-`&<`公共请求参数> 正常返回示例
+`&<`公共请求参数`>` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <data> <data>[ { "storageType":"AutoTest_Wn4MRxEkKK" }, { "storageType":"AutoTest_UZOBAEDvil" }, { "storageType":"AutoTest_8WqAc6rtpp" }, { "storageType":"AutoTest_aCPiv2nIh3" }, { "storageType":"Standard" }, { "storageType":"1" } ]</data> <success>true</success> <status>200</status> </data> <host>""</host> <status>200</status> |  |
+| <data> <data>[ { "storageType":"AutoTest_Wn4MRxEkKK" }, { "storageType":"AutoTest_UZOBAEDvil" }, { "storageType":"AutoTest_8WqAc6rtpp" }, { "storageType":"AutoTest_aCPiv2nIh3" }, { "storageType":"Standard" }, { "storageType":"1" } ]</data> <success>true</success> <status>200</status> </data> <host>""</host> <status>200</status> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "data": { "data": "[ { \"storageType\":\"AutoTest_Wn4MRxEkKK\" }, { \"storageType\":\"AutoTest_UZOBAEDvil\" }, { \"storageType\":\"AutoTest_8WqAc6rtpp\" }, { \"storageType\":\"AutoTest_aCPiv2nIh3\" }, { \"storageType\":\"Standard\" }, { \"storageType\":\"1\" } ]", "success": "true", "status": "200" }, "host": "\"\"", "status": "200" } |  |
+| { "data": { "data": "[ { \"storageType\":\"AutoTest_Wn4MRxEkKK\" }, { \"storageType\":\"AutoTest_UZOBAEDvil\" }, { \"storageType\":\"AutoTest_8WqAc6rtpp\" }, { \"storageType\":\"AutoTest_aCPiv2nIh3\" }, { \"storageType\":\"Standard\" }, { \"storageType\":\"1\" } ]", "success": "true", "status": "200" }, "host": "\"\"", "status": "200" } |   |
 
-##### 4.1.3.6. InitFromOnline
+##### 4.1.3.6 InitFromOnline
 
 调用InitFromOnline接口，根据资源类型resourceType在线初始化资源规格。 调用该接口会根据传入的资源类型刷新规格数据。
 
@@ -19066,21 +20228,27 @@ POST /ascm/manage/saleconf/commonSpec/initFromOnline HTTP/1.1
 
 请求示例
 
-```json
-POST /ascm/manage/belong/updateInstance HTTP/1.1 { "resourceType":"ECS" }
+```
+POST /ascm/manage/belong/updateInstance HTTP/1.1
 ```
 
-正常返回示例
+`{`
+
+```json
+"resourceType":"ECS"
+```
+
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code":"200", "data":"exampledata", "success":"true", "message":"init ECS success" } |  |
+| { "code":"200", "data":"exampledata", "success":"true", "message":"init ECS success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>exampledata</data> <success>true</success> <message>init ECS success</message> |  |
+| <code>200</code> <data>exampledata</data> <success>true</success> <message>init ECS success</message> |   |
 
-##### 4.1.3.7. GetAllRegionsInfo
+##### 4.1.3.7 GetAllRegionsInfo
 
 获取本云的全量region相关信息。
 
@@ -19100,7 +20268,7 @@ GET /cmdb/regions/info HTTP/1.1
 |---|---|---|---|
 | data | Array | - | 返回数据。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19131,13 +20299,13 @@ GET /cmdb/regions/info HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code":200, "data":{ "isCenter":"y", "regionId":"cn-*****-******-d01", "cloudType":"private", "regionName":"cn-*****-******-d01", "cloudId":"cloud-*********", "zones":{ "regionId":"cn-*****-******-d01", "zoneId":"cn-*******-******-a", "zoneName":"cn-*******-******-a" } }, "success":true } |  |
+| { "code":200, "data":{ "isCenter":"y", "regionId":"cn-*****-******-d01", "cloudType":"private", "regionName":"cn-*****-******-d01", "cloudId":"cloud-*********", "zones":{ "regionId":"cn-*****-******-d01", "zoneId":"cn-*******-******-a", "zoneName":"cn-*******-******-a" } }, "success":true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <isCenter>y</isCenter> <regionId>cn-*****-******-d01</regionId> <cloudType>private</cloudType> <regionName>cn-*****-******-d01</regionName> <cloudId>cloud-*********</cloudId> <zones> <regionId>cn-*****-******-d01</regionId> <zoneId>cn-*******-******-a</zoneId> <zoneName>cn-*******-******-a</zoneName> </zones> </data> <success>true</success> |  |
+| <code>200</code> <data> <isCenter>y</isCenter> <regionId>cn-*****-******-d01</regionId> <cloudType>private</cloudType> <regionName>cn-*****-******-d01</regionName> <cloudId>cloud-*********</cloudId> <zones> <regionId>cn-*****-******-d01</regionId> <zoneId>cn-*******-******-a</zoneId> <zoneName>cn-*******-******-a</zoneName> </zones> </data> <success>true</success> |   |
 
-##### 4.1.3.8. CloudSearchResources
+##### 4.1.3.8 CloudSearchResources
 
 通用混合云资源搜索接口。支持对多级组织、多云产品、多地域的资源进行统一搜索。只支持租户侧账号调用，不支持服务账号或者主账号进行调用。
 
@@ -19222,13 +20390,12 @@ POST /search/resources HTTP/1.1
 请求示例
 
 ```
-POST /search/resources HTTP/1.1 { }
+POST /search/resources HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "errorKey":"ascm.manage.InternalError",
  "code":"200",
  "data":{
@@ -19236,7 +20403,11 @@ POST /search/resources HTTP/1.1 { }
   "pageSize":50,
   "page":1,
   "resources":[
-   {
+```
+
+`{`
+
+```json
     "product":"ecs",
     "organizationName":"orgTest",
     "instanceName":"test",
@@ -19259,20 +20430,17 @@ POST /search/resources HTTP/1.1 { }
     "platformCode":"default",
     "resourceType":"vpc_instance",
     "instanceIp":"192.*.*.*"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "success":true,
  "requestId":"a******",
  "message":"success"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <errorKey>ascm.manage.InternalError</errorKey> <code>200</code> <data>
@@ -19306,7 +20474,7 @@ POST /search/resources HTTP/1.1 { }
 </data> <success>true</success> <requestId>a******</requestId> <message>success</message>
 ```
 
-##### 4.1.3.9. CloudUpdateResource
+##### 4.1.3.9 CloudUpdateResource
 
 通用混合云资源更新接口。只支持租户侧账号调用，不支持服务账号或者主账号进行调用。
 
@@ -19343,28 +20511,32 @@ POST /update/resource HTTP/1.1
 
 请求示例
 
+```
+POST /update/resource HTTP/1.1
+```
+
+`{`
+
 ```json
-POST /update/resource HTTP/1.1 {
     "resourceType":"ecs_instance",
     "resourceId":"i-a8u00nuf7a3dlx9r****",
     "resourceRegionId":"cn-****",
     "deletedFlag":"false"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "errorKey":"ascm.manage.InternalError", "code":"200", "success":true, "requestId":"530dxxx-dxx******-x6b61axxxxx", "message":"success" } |  |
+| { "errorKey":"ascm.manage.InternalError", "code":"200", "success":true, "requestId":"530dxxx-dxx******-x6b61axxxxx", "message":"success" } |   |
 
 | XML | 格式 |
 |---|---|
-| <errorKey>ascm.manage.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <message>&quot;success&quot;</message> |  |
+| <errorKey>ascm.manage.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <message>&quot;success&quot;</message> |   |
 
-#### 4.1.4. 配置中心
+#### 4.1.4 配置中心
 
-##### 4.1.4.1. EditResourceAccountPlatform
+##### 4.1.4.1 EditResourceAccountPlatform
 
 接入资源账号。 只允许平台管理员和绑定了公共云的运营管理员调用该接口。
 
@@ -19420,7 +20592,7 @@ POST /platforms/edit/resource/account HTTP/1.1
 | --consoleEndpoint | String | a.com | 专有云OneConsole的Endpoint。公共云为空。 |
 | --authentication | Struct | {} | 认证配置。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -19451,10 +20623,10 @@ POST /platforms/edit/resource/account HTTP/1.1
 请求示例
 
 ```
-POST /platforms/edit/resource/account HTTP/1.1 {
+POST /platforms/edit/resource/account HTTP/1.1
 ```
 
-`"parentPlatformCode":"`所属管理账号的平台`code",`
+`{` `"parentPlatformCode":"`所属管理账号的平台`code",`
 
 ```json
   "platformType":"ALIYUN",
@@ -19464,13 +20636,11 @@ POST /platforms/edit/resource/account HTTP/1.1 {
 
 ```json
   "accountType": "RESOURCE_ACCOUNT"
-}
 ```
 
 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "gmtModified":1770028091941,
   "code":"ALIYUN",
@@ -19491,7 +20661,11 @@ POST /platforms/edit/resource/account HTTP/1.1 {
    "displayName":"公共云",
    "enterprise":true,
    "platformType":"ALIYUN"
-  },
+```
+
+`},`
+
+```json
   "connectStatus":{
    "endpointStatus":1,
    "updateTime":"2026-03-27T07:16:15.000+00:00",
@@ -19499,7 +20673,11 @@ POST /platforms/edit/resource/account HTTP/1.1 {
    "platformId":123,
    "message":"error",
    "credentialStatus":1
-  },
+```
+
+`},`
+
+```json
   "parentPlatform":{
    "displayName":"公共云",
    "accountType":"managerAccount",
@@ -19508,31 +20686,45 @@ POST /platforms/edit/resource/account HTTP/1.1 {
     "displayName":"公共云",
     "enterprise":false,
     "platformType":"ALIYUN"
-   },
+```
+
+`},`
+
+```json
    "enableStatus":1,
    "account":"16**********",
    "platformCode":"pl-xxx"
-  },
+```
+
+`},`
+
+```json
   "config":{
    "cloudUniqueId":"123",
    "cloudVersion":"Enterprise_v3*****",
    "authentication":{
     "metadataUrl":"http://******.xml",
     "type":"saml"
-   },
+```
+
+`},`
+
+```json
    "defaultRegion":"cn-*****",
    "consoleEndpoint":"a.com"
-  },
+```
+
+`},`
+
+```json
   "logo":"a.png",
   "disabled":false,
   "enableStatus":1,
   "account":"16**********",
   "status":100
- }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <data>
@@ -19595,7 +20787,7 @@ POST /platforms/edit/resource/account HTTP/1.1 {
 </data>
 ```
 
-##### 4.1.4.2. BatchCreateRAMServiceRole
+##### 4.1.4.2 BatchCreateRAMServiceRole
 
 调用BatchCreateRAMServiceRole接口批量创建RAM服务角色。创建成功可通过ListRAMServiceRoles接口查询。 RAM服务角色主要在受信的云服务访问或操作其他云资源时使用。 用户创建云产品时，若该云产品需要访问其它云产品服务，系统则会默认为该云产品创建对应的RAM服务角色，该RAM服务角色隶属于创建云产品时所选组织的一级组织下。 例如，云服务器ECS需要创建对象存储OSS Bucket来提供存储镜像的能力，其原理是ECS通过扮演OSS提供的RAM服务角色，将OSS的操作权限策略默认授权给该RAM角色，从而得到操作OSS资源的权限点。
 
@@ -19639,26 +20831,24 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "organizationIdList.N":"["14","18","19","21","23","24"]",
     "productName":"NAS"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>11</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>11</cost> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 11, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 11, "success": true, "message": "success" } |   |
 
-##### 4.1.4.3. GetPasswordPolicy
+##### 4.1.4.3 GetPasswordPolicy
 
 调用GetPasswordPolicy获取Apsara Uni-manager运营控制台当前的密码策略。
 
@@ -19667,6 +20857,10 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/getPasswordPolicy HTTP/1.1
+```
 
 **请求参数**
 
@@ -19678,7 +20872,7 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 500：服务内部错误，发生未识别的异常时会返回此错误码。 |
 | cost | Integer | 5 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 密码策略数据。 |
+| data | Struct |   | 密码策略数据。 |
 | hardExpiry | Boolean | true | 密码是否过期。 true：过期，过期后用户不能登录Apsara Uni-manager运营控制台。 false：不过期。 说明可通过maxPasswordAge参数了解密码有效期，用户需要在有效期结束前及时更新密码。若密码已过期，需要联系运营管理员或平台管理员重置密码。 |
 | maxLoginAttemps | Integer | 5 | 密码错误容忍周期内使用错误密码尝试登录的最大次数。 说明取值范围0~32。 |
 
@@ -19700,23 +20894,23 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
 ```
-{ }
+POST /ascm/auth/user/getPasswordPolicy HTTP/1.1
 ```
 
-正常返回示例
+公共请求头正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>5</cost> <data> <passwordErrorTolerancePeriod>60</passwordErrorTolerancePeriod> <passwordErrorCaptchaTime>3</passwordErrorCaptchaTime> <minimumPasswordLength>10</minimumPasswordLength> <requireSymbols>true</requireSymbols> <passwordErrorLockPeriod>30</passwordErrorLockPeriod> <passwordReusePrevention>5</passwordReusePrevention> <maxLoginAttemps>5</maxLoginAttemps> <requireLowercaseCharacters>true</requireLowercaseCharacters> <hardExpiry>true</hardExpiry> <requireNumbers>true</requireNumbers> <maxPasswordAge>90</maxPasswordAge> <requireUppercaseCharacters>true</requireUppercaseCharacters> </data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>5</cost> <data> <passwordErrorTolerancePeriod>60</passwordErrorTolerancePeriod> <passwordErrorCaptchaTime>3</passwordErrorCaptchaTime> <minimumPasswordLength>10</minimumPasswordLength> <requireSymbols>true</requireSymbols> <passwordErrorLockPeriod>30</passwordErrorLockPeriod> <passwordReusePrevention>5</passwordReusePrevention> <maxLoginAttemps>5</maxLoginAttemps> <requireLowercaseCharacters>true</requireLowercaseCharacters> <hardExpiry>true</hardExpiry> <requireNumbers>true</requireNumbers> <maxPasswordAge>90</maxPasswordAge> <requireUppercaseCharacters>true</requireUppercaseCharacters> </data> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 5, "data": { "passwordErrorTolerancePeriod": 60, "passwordErrorCaptchaTime": 3, "minimumPasswordLength": 10, "requireSymbols": true, "passwordErrorLockPeriod": 30, "passwordReusePrevention": 5, "maxLoginAttemps": 5, "requireLowercaseCharacters": true, "hardExpiry": true, "requireNumbers": true, "maxPasswordAge": 90, "requireUppercaseCharacters": true }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 5, "data": { "passwordErrorTolerancePeriod": 60, "passwordErrorCaptchaTime": 3, "minimumPasswordLength": 10, "requireSymbols": true, "passwordErrorLockPeriod": 30, "passwordReusePrevention": 5, "maxLoginAttemps": 5, "requireLowercaseCharacters": true, "hardExpiry": true, "requireNumbers": true, "maxPasswordAge": 90, "requireUppercaseCharacters": true }, "success": true, "message": "success" } |   |
 
-##### 4.1.4.4. ListRAMPolicies
+##### 4.1.4.4 ListRAMPolicies
 
 获取RAM权限策略列表。
 
@@ -19725,6 +20919,10 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/role/listRAMPolicies HTTP/1.1
+```
 
 **请求参数**
 
@@ -19744,7 +20942,7 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 403：没有权限。 404：角色不存在。 500：内部错误。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of itemData |  | 响应结果。 |
+| data | Array of itemData |   | 响应结果。 |
 | ctime | Long | 1607512443989 | RAM权限策略的创建时间。 |
 | id | Integer | 1 | RAM权限策略ID。 |
 | mtime | Long | 1607512443999 | RAM权限策略最近一次修改的时间。 |
@@ -19753,7 +20951,7 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 | policyName | String | testpolicy _ | RAM权限策略名称。 |
 | region | String | cn-qingdao-****-d01 | RAM权限策略的可用区。 |
 | message | String | success | 错误提示信息。 success：调用成功。 Forbidden：没有权限。 NotExist：角色不存在。 InternalServerError：内部错误。 |
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 5 | 每页大小。 |
 | total | Integer | 10 | 返回记录总数。 |
@@ -19762,31 +20960,35 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1
 | redirect | Boolean | false | 是否重定向。 true：重定向。 false：不重定向。 |
 | success | Boolean | true | 本次接口调用是否成功。 true: 成功。 false: 失败是否成功。 |
 
-**示例**
+请求示例
 
-请求示例公共请求头
+```
+POST /ascm/auth/role/listRAMPolicies HTTP/1.1
+```
+
+公共请求头
 
 ```json
-{
     "policyName":"testPolicy",
     "description":"test",
     "roleId":2,
     "currentPage":1,
     "pageSize":10
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <policyDocument>a</policyDocument> <muserId>admin</muserId> <policyName>test_policy</policyName> <ctime>1607512443989</ctime> <id>1</id> <region>cn-qingdao-****-d01</region> <mtime>1607512443999</mtime> </data> <success>true</success> <pageInfo> <total>10</total> <totalPage>2</totalPage> <pageSize>5</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <policyDocument>a</policyDocument> <muserId>admin</muserId> <policyName>test_policy</policyName> <ctime>1607512443989</ctime> <id>1</id> <region>cn-qingdao-****-d01</region> <mtime>1607512443999</mtime> </data> <success>true</success> <pageInfo> <total>10</total> <totalPage>2</totalPage> <pageSize>5</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "data": { "policyDocument": "a", "muserId": "admin", "policyName": "test_policy", "ctime": 1607512443989, "id": 1, "region": "cn-qingdao-****-d01", "mtime": 1607512443999 }, "success": true, "pageInfo": { "total": 10, "totalPage": 2, "pageSize": 5, "currentPage": 1 }, "message": "success" } |  |
+| { "redirect": false, "cost": 10000, "code": 200, "data": { "policyDocument": "a", "muserId": "admin", "policyName": "test_policy", "ctime": 1607512443989, "id": 1, "region": "cn-qingdao-****-d01", "mtime": 1607512443999 }, "success": true, "pageInfo": { "total": 10, "totalPage": 2, "pageSize": 5, "currentPage": 1 }, "message": "success" } |   |
 
-##### 4.1.4.5. ListRAMPoliciesForUser
+##### 4.1.4.5 ListRAMPoliciesForUser
+
+调用ListRAMPoliciesForUser获取用户绑定的RAM策略列表。
 
 **请求头**
 
@@ -19831,25 +21033,25 @@ success：调用成功。 Forbidden：没有权限。 NotExist：角色不存在
 POST /ascm/auth/dataPrivilege/listRAMPoliciesForUser HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "loginName": "testu"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>200</cost> <code>200</code> <data> <policyDocument>{ "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"} </policyDocument> <policyName>testp</policyName> <attachDate>1663312000943</attachDate> <policyType>Custom</policyType> <description>policy for oss</description> <defaultVersion>v1</defaultVersion> </data> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>200</cost> <code>200</code> <data> <policyDocument>{ "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"} </policyDocument> <policyName>testp</policyName> <attachDate>1663312000943</attachDate> <policyType>Custom</policyType> <description>policy for oss</description> <defaultVersion>v1</defaultVersion> </data> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 200, "code": 200, "data": { "policyDocument": "{ \"Statement\": [{ \"Action\": [\"oss:*\"], \"Effect\": \"Allow\", \"Resource\": [\"acs:oss:*:*:*\"]}], \"Version\" : \"1\"}", "policyName": "testp", "attachDate": 1663312000943, "policyType": "Custom", "description": "policy for oss", "defaultVersion": "v1" }, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 200, "code": 200, "data": { "policyDocument": "{ \"Statement\": [{ \"Action\": [\"oss:*\"], \"Effect\": \"Allow\", \"Resource\": [\"acs:oss:*:*:*\"]}], \"Version\" : \"1\"}", "policyName": "testp", "attachDate": 1663312000943, "policyType": "Custom", "description": "policy for oss", "defaultVersion": "v1" }, "success": true, "message": "success" } |   |
 
-##### 4.1.4.6. ListRAMServiceRoles
+##### 4.1.4.6 ListRAMServiceRoles
+
+调用ListRAMServiceRoles接口查询RAM服务角色列表。
 
 **请求头**
 
@@ -19878,7 +21080,7 @@ POST /ascm/auth/role/listRAMServiceRoles HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 403：没有权限。 404：用户/组织不存在。 500：内部错误。 |
 | cost | Integer | 10000 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Array of itemData |  | 响应结果。 |
+| data | Array of itemData |   | 响应结果。 |
 | aliyunUserId | Integer | 12 | 阿里云账号（主账号）ID。 |
 | arn | String | acs:ram::123456789012****:role/ ECSAdmin | 角色的资源描述符。 |
 | assumeRolePolicyDocume nt | String | {"Statement": [{"Action": "sts:testAction", "Effect": "Allow", "Principal": {"Service": ["***.aliyuncs.com"]}}], "Version": "1"} | RAM服务角色信任策略的内容。 说明策略内容为JSON格式。 |
@@ -19888,7 +21090,7 @@ POST /ascm/auth/role/listRAMServiceRoles HTTP/1.1
 | id | Integer | 1 | RAM服务角色ID。 |
 | organizationId | Integer | 1 | RAM服务角色所属组织的ID。 |
 | organizationName | String | organizationtest _ | RAM服务角色所属组织的名称。 |
-| policies | Array of itemPolicy |  | RAN服务角色的角色策略。 说明该参数及其子节点参数已全部废弃。 |
+| policies | Array of itemPolicy |   | RAN服务角色的角色策略。 说明该参数及其子节点参数已全部废弃。 |
 | aliyunUserId | Integer | 1 | 阿里云账号（主账号）ID。 |
 | ascmRamPolicyId | Integer | 1 | RAM策略ID。 |
 | attachDate | Long | 1607512443989 | 策略绑定日期。 |
@@ -19910,7 +21112,7 @@ POST /ascm/auth/role/listRAMServiceRoles HTTP/1.1
 | roleType | String | System | RAM服务角色的类型。 System：系统定义类型。 Custom：自定义类型。 |
 | message | String | success | 错误提示信息。 success：调用成功。 Forbidden：没有权限。 NotExist：用户/组织不存在。 InternalServerError：内部错误。 |
 
-| pageInfo | Struct |  | 分页信息。 |
+| pageInfo | Struct |   | 分页信息。 |
 |---|---|---|---|
 | currentPage | Integer | 1 | 当前页数。 |
 | pageSize | Integer | 5 | 每页返回数据条数。 |
@@ -19928,29 +21130,26 @@ POST /ascm/auth/role/listRAMServiceRoles HTTP/1.1
 POST /ascm/auth/role/listRAMServiceRoles HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "regionName","test-region",
     "productName":"ecs",
     "roleName","testr",
     "organizationId":3,
     "currentPage":1,
     "pageSize": 10
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <organizationId>1</organizationId> <aliyunUserId>12</aliyunUserId> <product>ecs</product> <organizationName>organization_test</organizationName> <assumeRolePolicyDocument>{"Statement": [{"Action": "sts:testAction", "Effect": "Allow", "Principal": {"Service": ["***.aliyuncs.com"]}}], "Version": "1"}</assumeRolePolicyDocument> <roleId>39405704233030****</roleId> <roleName>AliyunECS****DefaultRole</roleName> <description>ECS管理角色</description> <id>1</id> <roleType>System</roleType> <region>cn-qingdao-****-d01</region> <arn>acs:ram::123456789012****:role/ECSAdmin</arn> </data> <success>true</success> <pageInfo> <total>10</total> <totalPage>2</totalPage> <pageSize>5</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <organizationId>1</organizationId> <aliyunUserId>12</aliyunUserId> <product>ecs</product> <organizationName>organization_test</organizationName> <assumeRolePolicyDocument>{"Statement": [{"Action": "sts:testAction", "Effect": "Allow", "Principal": {"Service": ["***.aliyuncs.com"]}}], "Version": "1"}</assumeRolePolicyDocument> <roleId>39405704233030****</roleId> <roleName>AliyunECS****DefaultRole</roleName> <description>ECS管理角色</description> <id>1</id> <roleType>System</roleType> <region>cn-qingdao-****-d01</region> <arn>acs:ram::123456789012****:role/ECSAdmin</arn> </data> <success>true</success> <pageInfo> <total>10</total> <totalPage>2</totalPage> <pageSize>5</pageSize> <currentPage>1</currentPage> </pageInfo> <message>success</message> |   |
 
 `JSON` 格式
 
 ```json
-{
     "redirect": false,
     "cost": 10000,
     "code": 200,
@@ -19972,21 +21171,30 @@ POST /ascm/auth/role/listRAMServiceRoles HTTP/1.1
         "roleType": "System",
         "region": "cn-qingdao-****-d01",
         "arn": "acs:ram::123456789012****:role/ECSAdmin"
-    },
+```
+
+`},`
+
+```json
     "success": true,
     "pageInfo": {
         "total": 10,
         "totalPage": 2,
         "pageSize": 5,
         "currentPage": 1
-    },
-    "message": "success"
-}
 ```
 
-##### 4.1.4.7. RemoveLoginPolicyById
+`},`
 
-删除登录策略前，需要将所有绑定该登录策略的用户解绑。可通过调用ModifyUserInformation接口修改用户所使用的登录策略完成解绑。
+```json
+    "message": "success"
+```
+
+`}`
+
+##### 4.1.4.7 RemoveLoginPolicyById
+
+调用RemoveLoginPolicyById删除登录策略。 删除登录策略前，需要将所有绑定该登录策略的用户解绑。可通过调用ModifyUserInformation接口修改用户所使用的登录策略完成解绑。
 
 **请求头**
 
@@ -20025,27 +21233,25 @@ POST /ascm/auth/loginPolicy/removeLoginPolicyById HTTP/1.1
 POST /ascm/auth/loginPolicy/removeLoginPolicyById HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "id":1083
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>19</cost> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>19</cost> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 19, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 19, "success": true, "message": "success" } |   |
 
-##### 4.1.4.8. RemoveLoginPolicyByName
+##### 4.1.4.8 RemoveLoginPolicyByName
 
-删除登录策略前，需要将所有绑定该登录策略的用户解绑。可通过调用ModifyUserInformation接口修改用户所使用的登录策略完成解绑。
+通过RemoveLoginPolicyByName删除指定名称的登录策略。 删除登录策略前，需要将所有绑定该登录策略的用户解绑。可通过调用ModifyUserInformation接口修改用户所使用的登录策略完成解绑。
 
 **请求头**
 
@@ -20084,25 +21290,23 @@ POST /ascm/auth/loginPolicy/removeLoginPolicyByName HTTP/1.1
 POST /ascm/auth/loginPolicy/removeLoginPolicyByName HTTP/1.1
 ```
 
-公共请求头
+公共请求头 `{`
 
 ```json
-{
     "name": "test"
-}
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <success>true</success> <message>success</message> |  |
+| <redirect>false</redirect> <cost>1000</cost> <code>200</code> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 1000, "code": 200, "success": true, "message": "success" } |  |
+| { "redirect": false, "cost": 1000, "code": 200, "success": true, "message": "success" } |   |
 
-##### 4.1.4.9. ResetPasswordPolicy
+##### 4.1.4.9 ResetPasswordPolicy
 
 调用ResetPasswordPolicy重置Apsara Uni-manager运营控制台当前的密码策略。 调用ResetPasswordPolicy接口后，原密码策略将重置为Apsara Uni-manager运营控制台的默认密码策略，如果需要修改，可调用SetPasswordPolicy接口。 Apsara Uni-manager运营控制台的默认密码策略详见返回数据。
 
@@ -20126,7 +21330,7 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 500：服务内部错误，发生未识别的异常时会返回此错误码。 |
 | cost | Integer | 14 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 密码策略数据。 |
+| data | Struct |   | 密码策略数据。 |
 | hardExpiry | Boolean | true | 密码是否过期。 true：过期，过期后用户不能登录Apsara Uni-manager运营控制台。 false：不过期。、 说明可通过maxPasswordAge参数了解密码有效期，用户需要在有效期结束前及时更新密码。若密码已过期，需要联系运营管理员或平台管理员重置密码。 |
 
 | maxLoginAttemps | Integer | 5 | 密码错误容忍周期内使用错误密码尝试登录的最大次数。 说明取值范围0~32。 |
@@ -20146,31 +21350,23 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 | redirect | Boolean | false | 是否重定向。 true：重定向。 false：不重定向。 说明该参数已废弃。 |
 | success | Boolean | true | 是否成功。 true: 成功。 false: 失败。 |
 
-**示例**
-
 请求示例
 
 ```
 POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 ```
 
-公共请求头
-
-```
-{ }
-```
-
-正常返回示例
+公共请求头正常返回示例
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>14</cost> <data> <passwordErrorTolerancePeriod>60</passwordErrorTolerancePeriod> <passwordErrorCaptchaTime>3</passwordErrorCaptchaTime> <minimumPasswordLength>10</minimumPasswordLength> <requireSymbols>true</requireSymbols> <passwordErrorLockPeriod>30</passwordErrorLockPeriod> <passwordReusePrevention>5</passwordReusePrevention> <maxLoginAttemps>5</maxLoginAttemps> <requireLowercaseCharacters>true</requireLowercaseCharacters> <hardExpiry>true</hardExpiry> <requireNumbers>true</requireNumbers> <maxPasswordAge>90</maxPasswordAge> <requireUppercaseCharacters>true</requireUppercaseCharacters> </data> <success>true</success> <message>success</message> |  |
+| <code>200</code> <cost>14</cost> <data> <passwordErrorTolerancePeriod>60</passwordErrorTolerancePeriod> <passwordErrorCaptchaTime>3</passwordErrorCaptchaTime> <minimumPasswordLength>10</minimumPasswordLength> <requireSymbols>true</requireSymbols> <passwordErrorLockPeriod>30</passwordErrorLockPeriod> <passwordReusePrevention>5</passwordReusePrevention> <maxLoginAttemps>5</maxLoginAttemps> <requireLowercaseCharacters>true</requireLowercaseCharacters> <hardExpiry>true</hardExpiry> <requireNumbers>true</requireNumbers> <maxPasswordAge>90</maxPasswordAge> <requireUppercaseCharacters>true</requireUppercaseCharacters> </data> <success>true</success> <message>success</message> |   |
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 14, "data": { "passwordErrorTolerancePeriod": 60, "passwordErrorCaptchaTime": 3, "minimumPasswordLength": 10, "requireSymbols": true, "passwordErrorLockPeriod": 30, "passwordReusePrevention": 5, "maxLoginAttemps": 5, "requireLowercaseCharacters": true, "hardExpiry": true, "requireNumbers": true, "maxPasswordAge": 90, "requireUppercaseCharacters": true }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 14, "data": { "passwordErrorTolerancePeriod": 60, "passwordErrorCaptchaTime": 3, "minimumPasswordLength": 10, "requireSymbols": true, "passwordErrorLockPeriod": 30, "passwordReusePrevention": 5, "maxLoginAttemps": 5, "requireLowercaseCharacters": true, "hardExpiry": true, "requireNumbers": true, "maxPasswordAge": 90, "requireUppercaseCharacters": true }, "success": true, "message": "success" } |   |
 
-##### 4.1.4.10. SetPasswordPolicy
+##### 4.1.4.10 SetPasswordPolicy
 
 调用SetPasswordPolicy修改Apsara Uni-manager运营控制台当前的密码策略。
 
@@ -20179,6 +21375,10 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/user/setPasswordPolicy HTTP/1.1
+```
 
 **请求参数**
 
@@ -20202,13 +21402,13 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 |---|---|---|---|
 | code | String | 200 | 状态码。 200：调用成功。 400：参数错误。 500：服务内部错误，发生未识别的异常时会返回此错误码。 |
 | cost | Integer | 20 | 接口响应耗时，单位毫秒（ms）。 |
-| data | Struct |  | 密码策略数据。 |
+| data | Struct |   | 密码策略数据。 |
 | hardExpiry | Boolean | true | 密码是否过期。 true：过期，过期后用户不能登录Apsara Uni-manager运营控制台。 false：不过期。 说明可通过maxPasswordAge参数了解密码有效期，用户需要在有效期结束前及时更新密码。若密码已过期，需要联系运营管理员或平台管理员重置密码。 |
 | maxLoginAttemps | Integer | 5 | 密码错误容忍周期内使用错误密码尝试登录的最大次数。 说明取值范围0~32。 |
 | maxPasswordAge | Integer | 90 | 密码有效期，单位：天。0表示不启用密码过期策略。 说明取值范围0~1095。 |
 | minimumPasswordLength | Integer | 10 | 最小密码长度。 说明取值范围8~32。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | passwordErrorCaptchaTim e | Integer | 3 | 触发人机验证（验证码）校验的密码错误次数。 |
@@ -20227,16 +21427,20 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 
 **示例**
 
-请求示例公共请求头
+请求示例
 
-```json
-{
-    "hardExpiry": true,
-    "requireSymbols": true
-}
+```
+POST /ascm/auth/user/setPasswordPolicy HTTP/1.1
 ```
 
-正常返回示例 `XML` 格式
+公共请求头 `{`
+
+```json
+    "hardExpiry": true,
+    "requireSymbols": true
+```
+
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <code>200</code> <cost>20</cost> <data>
@@ -20257,9 +21461,9 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 20, "data": { "passwordErrorTolerancePeriod": 60, "passwordErrorCaptchaTime": 3, "minimumPasswordLength": 10, "requireSymbols": true, "passwordErrorLockPeriod": 0, "passwordReusePrevention": 5, "maxLoginAttemps": 5, "requireLowercaseCharacters": true, "hardExpiry": true, "requireNumbers": true, "maxPasswordAge": 90, "requireUppercaseCharacters": true }, "success": true, "message": "success" } |  |
+| { "code": "200", "cost": 20, "data": { "passwordErrorTolerancePeriod": 60, "passwordErrorCaptchaTime": 3, "minimumPasswordLength": 10, "requireSymbols": true, "passwordErrorLockPeriod": 0, "passwordReusePrevention": 5, "maxLoginAttemps": 5, "requireLowercaseCharacters": true, "hardExpiry": true, "requireNumbers": true, "maxPasswordAge": 90, "requireUppercaseCharacters": true }, "success": true, "message": "success" } |   |
 
-##### 4.1.4.11. GetSAMLSpMetadata
+##### 4.1.4.11 GetSAMLSpMetadata
 
 使用SAML2协议单点登录，ASCM作为SP时，用于获取ASCM提供给IdP的元数据。
 
@@ -20298,13 +21502,12 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1
 请求示例
 
 ```
-POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
+POST /ascm/auth/saml2/spMetadata/get HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "successResponse":true,
  "errorKey":"ascm.auth.InternalError",
  "eagleEyeTraceId":"0ad40c4417628307082308977e0024",
@@ -20313,19 +21516,24 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
  "cost":121,
  "data":{
   "encodeSAMLSpMetadataDocument":"******"
- },
+```
+
+`},`
+
+```json
  "requestId":"FEB7A954-F07F-45EA-B6A3-980DD0F9EF60",
  "extraMessage":"success",
  "message":"success",
  "Domain":"example.com"
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <successResponse>true</successResponse> <errorKey>ascm.auth.InternalError</errorKey> <eagleEyeTraceId>0ad40c4417628307082308977e0024</eagleEyeTraceId> <ServerRole>unimanager-base.IdentityService</ServerRole> <code>200</code> <cost>121</cost> <data> <encodeSAMLSpMetadataDocument>******</encodeSAMLSpMetadataDocument> </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9EF60</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>example.com</Domain> |  |
+| <successResponse>true</successResponse> <errorKey>ascm.auth.InternalError</errorKey> <eagleEyeTraceId>0ad40c4417628307082308977e0024</eagleEyeTraceId> <ServerRole>unimanager-base.IdentityService</ServerRole> <code>200</code> <cost>121</cost> <data> <encodeSAMLSpMetadataDocument>******</encodeSAMLSpMetadataDocument> </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9EF60</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>example.com</Domain> |   |
 
-##### 4.1.4.12. ResetIdPConfig
+##### 4.1.4.12 ResetIdPConfig
 
 重置ASCM全局身份提供商配置。
 
@@ -20334,6 +21542,10 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/signon/resetIdPConfig HTTP/1.1
+```
 
 **返回数据**
 
@@ -20344,7 +21556,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 | cost | Long | 121 | 接口响应耗时，单位毫秒（ms）。 |
 | errorKey | String | ascm.manage.InternalError | 异常状态码。 该参数已废弃。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20358,17 +21570,23 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 
 **示例**
 
-请求示例正常返回示例
+请求示例
+
+```
+POST /ascm/auth/signon/resetIdPConfig HTTP/1.1
+```
+
+正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "successResponse":true, "errorKey":"ascm.manage.InternalError", "eagleEyeTraceId":"0a880c8717059272470618228d002d", "ServerRole":"ascm.auth", "code":"200", "cost":121, "requestId":"2AAF774D-53A7-442E-ADE9-A1E795377748", "extraMessage":"success", "message":"success", "Domain":"example.com" } |  |
+| { "successResponse":true, "errorKey":"ascm.manage.InternalError", "eagleEyeTraceId":"0a880c8717059272470618228d002d", "ServerRole":"ascm.auth", "code":"200", "cost":121, "requestId":"2AAF774D-53A7-442E-ADE9-A1E795377748", "extraMessage":"success", "message":"success", "Domain":"example.com" } |   |
 
 | XML | 格式 |
 |---|---|
-| <successResponse>true</successResponse> <errorKey>ascm.manage.InternalError</errorKey> <eagleEyeTraceId>0a880c8717059272470618228d002d</eagleEyeTraceId> <ServerRole>ascm.auth</ServerRole> <code>200</code> <cost>121</cost> <requestId>2AAF774D-53A7-442E-ADE9-A1E795377748</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>example.com</Domain> |  |
+| <successResponse>true</successResponse> <errorKey>ascm.manage.InternalError</errorKey> <eagleEyeTraceId>0a880c8717059272470618228d002d</eagleEyeTraceId> <ServerRole>ascm.auth</ServerRole> <code>200</code> <cost>121</cost> <requestId>2AAF774D-53A7-442E-ADE9-A1E795377748</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>example.com</Domain> |   |
 
-##### 4.1.4.13. SetIdPConfig
+##### 4.1.4.13 SetIdPConfig
 
 用于配置ASCM全局身份提供商配置。
 
@@ -20377,6 +21595,10 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /ascm/auth/signon/setIdPConfig HTTP/1.1
+```
 
 **请求参数**
 
@@ -20399,24 +21621,24 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 | UserServiceReques tMethod | String | Body | 否 | POST | 通过AccessToken获取认证用户信息的请求方式。 必填，OAuth 2.0协议对接时必须配置。 GET POST |
 | UserServiceConten tType | String | Body | 否 | application/x-www-form-urlencoded | 通过AccessToken获取认证用户信息的消息头中设置的Content-Type。 必填，OAuth 2.0协议对接时必须配置。 application/json; charset=utf-8 application/x-www-formurlencoded |
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  | 说明 |  |  |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   | 说明 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-| UserServiceHeader Template | String | Body | 否 | [{"key":"accesstoken","value":" _ {{accesstoken}}"}] _ |  | 获取认证用户信息请求头模板。 配置要求： 必填项：OAuth 2.0协议对接时必须配置。 默认值：无默认值，需显式配置。 模板格式：请求头模板需要配置为JSON数组格式，数组中的每个元素包含两个固定字段。 [key]：HTTP请求头的名称。 [value]：请求头的值，可以是固定值或使用占位符 {{access_token}} 。 占位符处理机制： 系统会自动将 {{access_token}} 占位符替换为实际获取到的 accessToken 值。 发送请求时，会将模板中[key]字段的值作为Header名称，[value]字段的值作为 Header值。 配置示例： [ { "key": "access _token", "value": "{{access _token}}" } ]。 示例说明：当 accessToken 值为 KqXk3nm****** 时，发送给用户信息接口的HTTP Header为 access _token: KqXk3nm******。 |  |  |  |
-| UserServiceParame terTemplate | String | Body | 否 | [{"key":"accesstoken","value":" _ {{accesstoken}}"}] _ |  | ASCM调用IdP获取认证用户接口的参数模板配置。 配置要求： 必填项: OAuth 2.0协议对接时必须配置参数模板。 配置格式: JSON数组，每个元素包含固定字段 [key]和 [value]。 不同请求类型的模板配置： GET请求或POST + application/x-www- form-urlencoded： 默认值：[ {"key": "参数名称","value": "固定值或 {{access _token}}}]。 示例:[{ "key": "accesstoken","value": " _ {{access _token}}"}]，当 accessToken 为 NIUUzhBOJLNcqR****** 时，实际发送参数为: access_token=NIUUzhBOJLNcqR |  |  |  |
-|  |  |  |  |  |  |  | access_token=NIUUzhBOJLNcqR |  |  |
-|  |  |  |  |  |  | ****** |  |  |  |
-|  |  |  |  |  |  |  |  | {"access_token": |  |
+| UserServiceHeader Template | String | Body | 否 | [{"key":"accesstoken","value":" _ {{accesstoken}}"}] _ |   | 获取认证用户信息请求头模板。 配置要求： 必填项：OAuth 2.0协议对接时必须配置。 默认值：无默认值，需显式配置。 模板格式：请求头模板需要配置为JSON数组格式，数组中的每个元素包含两个固定字段。 [key]：HTTP请求头的名称。 [value]：请求头的值，可以是固定值或使用占位符 {{access_token}} 。 占位符处理机制： 系统会自动将 {{access_token}} 占位符替换为实际获取到的 accessToken 值。 发送请求时，会将模板中[key]字段的值作为Header名称，[value]字段的值作为 Header值。 配置示例： [ { "key": "access _token", "value": "{{access _token}}" } ]。 示例说明：当 accessToken 值为 KqXk3nm****** 时，发送给用户信息接口的HTTP Header为 access _token: KqXk3nm******。 |   |   |   |
+| UserServiceParame terTemplate | String | Body | 否 | [{"key":"accesstoken","value":" _ {{accesstoken}}"}] _ |   | ASCM调用IdP获取认证用户接口的参数模板配置。 配置要求： 必填项: OAuth 2.0协议对接时必须配置参数模板。 配置格式: JSON数组，每个元素包含固定字段 [key]和 [value]。 不同请求类型的模板配置： GET请求或POST + application/x-www- form-urlencoded： 默认值：[ {"key": "参数名称","value": "固定值或 {{access _token}}}]。 示例:[{ "key": "accesstoken","value": " _ {{access _token}}"}]，当 accessToken 为 NIUUzhBOJLNcqR****** 时，实际发送参数为: access_token=NIUUzhBOJLNcqR |   |   |   |
+|   |   |   |   |   |   |   | access_token=NIUUzhBOJLNcqR |   |   |
+|   |   |   |   |   |   | ****** |   |   |   |
+|   |   |   |   |   |   |   |   | {"access_token": |   |
 
-|  | "NIUUzhBOJLNcqR******"} |
+|   | "NIUUzhBOJLNcqR******"} |
 |---|---|
 
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  | 说明 |  |
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   | 说明 |   |
 |---|---|---|---|---|---|---|---|
-| UserServiceLoginN amePath | String | Body | 否 | user.name |  | 获取认证用户名的解析路径配置。 配置要求： 必填项：OAuth 2.0协议对接时必须配置返回格式：获取认证用户的服务必须返回 JSON对象格式路径解析规则： 使用半角句号（[.]表示用户名在JSON对象中的层级结构。 支持多层嵌套的对象结构解析。 配置示例： [user]：表示用户名位于JSON对象的第一层。 data.user ：表示用户名位于JSON对象的第二层，即在 data 对象下的 [user]字段。 data.profile.username ：表示用户名位于三层嵌套结构中。 示例说明：假设用户信息服务返回 {"data": { "user": |  |
-|  |  |  |  |  |  |  | {"data": { "user": |
-|  |  |  |  |  |  | "john_doe"}} |  |
-|  |  |  |  |  |  |  | john_doe ， |
-|  |  |  |  |  |  |  | data.user |
+| UserServiceLoginN amePath | String | Body | 否 | user.name |   | 获取认证用户名的解析路径配置。 配置要求： 必填项：OAuth 2.0协议对接时必须配置返回格式：获取认证用户的服务必须返回 JSON对象格式路径解析规则： 使用半角句号（[.]表示用户名在JSON对象中的层级结构。 支持多层嵌套的对象结构解析。 配置示例： [user]：表示用户名位于JSON对象的第一层。 data.user ：表示用户名位于JSON对象的第二层，即在 data 对象下的 [user]字段。 data.profile.username ：表示用户名位于三层嵌套结构中。 示例说明：假设用户信息服务返回 {"data": { "user": |   |
+|   |   |   |   |   |   |   | {"data": { "user": |
+|   |   |   |   |   |   | "john_doe"}} |   |
+|   |   |   |   |   |   |   | john_doe ， |
+|   |   |   |   |   |   |   | data.user |
 
 **返回数据**
 
@@ -20433,25 +21655,23 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 | Domain | String | ascm- auth.inter.env66.shuguang.com | 报错的domain。 |
 | ServerRole | String | unimanager-base.IdentityService | SR的名称。 |
 
-**示例**
-
 请求示例
 
 ```
-{ }
+POST /ascm/auth/signon/setIdPConfig HTTP/1.1
 ```
 
-正常返回示例
+`}` 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "successResponse":true, "errorKey":"ascm.auth.InternalError", "eagleEyeTraceId":"0a880c8717059272470618228d002d", "ServerRole":"unimanager-base.IdentityService", "code":"200", "cost":121, "requestId":"F0A8A039-930D-5EC1-97C8-************", "extraMessage":"success", "message":"success", "Domain":"ascm-auth.inter.env66.shuguang.com" } |  |
+| { "successResponse":true, "errorKey":"ascm.auth.InternalError", "eagleEyeTraceId":"0a880c8717059272470618228d002d", "ServerRole":"unimanager-base.IdentityService", "code":"200", "cost":121, "requestId":"F0A8A039-930D-5EC1-97C8-************", "extraMessage":"success", "message":"success", "Domain":"ascm-auth.inter.env66.shuguang.com" } |   |
 
 | XML | 格式 |
 |---|---|
-| <successResponse>true</successResponse> <errorKey>ascm.auth.InternalError</errorKey> <eagleEyeTraceId>0a880c8717059272470618228d002d</eagleEyeTraceId> <ServerRole>unimanager-base.IdentityService</ServerRole> <code>200</code> <cost>121</cost> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>ascm-auth.inter.env66.shuguang.com</Domain> |  |
+| <successResponse>true</successResponse> <errorKey>ascm.auth.InternalError</errorKey> <eagleEyeTraceId>0a880c8717059272470618228d002d</eagleEyeTraceId> <ServerRole>unimanager-base.IdentityService</ServerRole> <code>200</code> <cost>121</cost> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>ascm-auth.inter.env66.shuguang.com</Domain> |   |
 
-##### 4.1.4.14. GetIdPConfig
+##### 4.1.4.14 GetIdPConfig
 
 获取ASCM侧配置的全局身份提供商配置信息。
 
@@ -20468,7 +21688,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 | cost | Long | 121 | 接口耗时，单位毫秒（ms）。 |
 | errorKey | String | ascm.auth.InternalError | 异常状态码。 该参数已废弃。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20504,7 +21724,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 
 | JSON | 格式 |
 |---|---|
-| { "successResponse":"", "errorKey":"", "eagleEyeTraceId":"", "ServerRole":"unimanager-base.IdentityService#", "code":"", "cost":"", "data":{ "UserServiceHeaderTemplate":"[{\"key\":\"access_token\",\"value\":\"{{access_token}}\"}]", "UserServiceRequestMethod":"POST", "UserService":"http://example.com/auth/user/info", "SingleSignLogoutServiceUrl":"http://example.com/auth/saml/spLogout", "TokenServiceContentType":"application/x-www-form-urlencoded", "X509Certificate":"UeV8iwRo1ki6JcX7vywhHSmW5kIyEY3********************************************************************************************** **********RtrhdNniU0J9s1FFDLA7ZE0h0wdt6LZu+AZRd2AphBRnQuEzX6", "UserServiceParameterTemplate":"[{\"key\":\"access_token\",\"value\":\"{{access_token}}\"}]", "SingleSignOnServiceUrl":"http://example.com/auth/oauth/authorize", "UserServiceReqTemplate":"[{\"key\":\"access_token\",\"value\":\"{{access_token}}\"}]", "SingleLogoutServiceBinding":"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect", "ClientSecret":"eyJh******", "UniqueUserIdKey":"id", "ClientId":"vhzuCPeRTq", "UserServiceContentType":"application/x-www-form-urlencoded", "IdpName":"test", "UserServiceLoginNamePath":"user.name", "Protocol":"OAUTH2", "TokenService":"http://example.com/auth/oauth/token" }, "requestId":"", "extraMessage":"", "message":"", "Domain":"ascm.aliyun.com" } |  |
+| { "successResponse":"", "errorKey":"", "eagleEyeTraceId":"", "ServerRole":"unimanager-base.IdentityService#", "code":"", "cost":"", "data":{ "UserServiceHeaderTemplate":"[{\"key\":\"access_token\",\"value\":\"{{access_token}}\"}]", "UserServiceRequestMethod":"POST", "UserService":"http://example.com/auth/user/info", "SingleSignLogoutServiceUrl":"http://example.com/auth/saml/spLogout", "TokenServiceContentType":"application/x-www-form-urlencoded", "X509Certificate":"UeV8iwRo1ki6JcX7vywhHSmW5kIyEY3********************************************************************************************** **********RtrhdNniU0J9s1FFDLA7ZE0h0wdt6LZu+AZRd2AphBRnQuEzX6", "UserServiceParameterTemplate":"[{\"key\":\"access_token\",\"value\":\"{{access_token}}\"}]", "SingleSignOnServiceUrl":"http://example.com/auth/oauth/authorize", "UserServiceReqTemplate":"[{\"key\":\"access_token\",\"value\":\"{{access_token}}\"}]", "SingleLogoutServiceBinding":"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect", "ClientSecret":"eyJh******", "UniqueUserIdKey":"id", "ClientId":"vhzuCPeRTq", "UserServiceContentType":"application/x-www-form-urlencoded", "IdpName":"test", "UserServiceLoginNamePath":"user.name", "Protocol":"OAUTH2", "TokenService":"http://example.com/auth/oauth/token" }, "requestId":"", "extraMessage":"", "message":"", "Domain":"ascm.aliyun.com" } |   |
 
 `XML` 格式
 
@@ -20534,7 +21754,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 </data> <requestId /> <extraMessage /> <message /> <Domain>ascm.aliyun.com</Domain>
 ```
 
-##### 4.1.4.15. ListAvailablePlatforms
+##### 4.1.4.15 ListAvailablePlatforms
 
 获取当前用户有权限查看的资源池列表。
 
@@ -20557,7 +21777,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 | applyCurrentUser | Boolean | Query | 否 | false | 是否根据当前用户查询，不区分启用禁用。 true：表示不区分启用禁用的资源池。 false：表示仅返回启用的资源池。 |
 | parentPlatformCod e | String | Query | 否 | pl-a | 管理账号code。 |
 
-| 统一云管平台 |  |  |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -20588,7 +21808,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 | --allowMulTopOrgMapping | Boolean | false | 是否允许多一级组织映射同一个资源池。 true：表示允许。 false：表示不允许。 |
 | --accountType | String | managerAccount | 公共云账号类型。 singleAccount：独立主账号。 managerAccount：资源目录管理账号。 resourceAccount：资源账号。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20638,73 +21858,83 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1 { }
 请求示例
 
 ```
-POST /platforms/list/available HTTP/1.1 { }
+POST /platforms/list/available HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "data":{
   "pageNumber":1,
   "totalSize":3,
   "pageSize":10,
   "platformData":[
-   {
+```
+
+`{`
+
+```json
     "gmtModified":1703575553000,
     "code":"pl-***********",
     "allowMulTopOrgMapping":false,
     "displayName":"资源池1",
     "bound":false,
     "platformType":[
-     {
+```
+
+`{`
+
+```json
       "code":"Apsara",
       "displayName":"专有云",
       "enterprise":true,
       "platformType":"Apsara"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "platformId":"1",
     "gmtCreate":1703575552000,
     "config":[
-     {
+```
+
+`{`
+
+```json
       "cloudUniqueId":"cloud_*****",
       "cloudVersion":"Enterprise_v3*****",
       "defaultRegion":"cn-*****",
       "consoleEndpoint":"one.console.******.com",
       "authentication":[
-       {
+```
+
+`{`
+
+```json
         "metadataUrl":"http://******.xml",
         "type":"saml"
-       }
 ```
 
-]
-
-```
-     }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
     "deleteDisabled":false,
     "connectStatus":[
-     {
+```
+
+`{`
+
+```json
       "endpointStatus":1,
       "updateTime":"2025-12-18T01:48:18.000+00:00",
       "id":1,
       "platformId":1,
       "message":"\"\"",
       "credentialStatus":1
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "logo":"******.png",
@@ -20712,17 +21942,9 @@ POST /platforms/list/available HTTP/1.1 { }
     "enableStatus":1,
     "account":"16**********",
     "status":100
-   }
 ```
 
-]
-
-```
- }
-}
-```
-
-`XML` 格式
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
 <data>
@@ -20771,7 +21993,7 @@ POST /platforms/list/available HTTP/1.1 { }
 </data>
 ```
 
-##### 4.1.4.16. ListResourceAccounts
+##### 4.1.4.16 ListResourceAccounts
 
 多云管理场景，获取管理账号下的资源账号列表。
 
@@ -20780,6 +22002,10 @@ POST /platforms/list/available HTTP/1.1 { }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /platforms/list/resource/accounts HTTP/1.1
+```
 
 **请求参数**
 
@@ -20798,7 +22024,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | --modifyTime | String | 1970-01-01T00:00:00.000+00:00 | 修改时间。 |
 | --type | String | ResourceAccount | 账号类型。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20824,16 +22050,19 @@ POST /platforms/list/available HTTP/1.1 { }
 
 请求示例
 
-```json
-{
-  "platformCode":"pl-abc"
-}
+```
+POST /platforms/list/resource/accounts HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+  "platformCode":"pl-abc"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "data":{
   "redirect":false,
   "errorKey":"abc",
@@ -20842,7 +22071,11 @@ POST /platforms/list/available HTTP/1.1 { }
   "success":true,
   "requestId":"111",
   "accountData":[
-   {
+```
+
+`{`
+
+```json
     "joinMethod":"created",
     "joinTime":"1970-01-01T00:00:00.000+00:00",
     "accountName":"abc",
@@ -20856,22 +22089,21 @@ POST /platforms/list/available HTTP/1.1 { }
     "resourceDirectoryPath":"rd-k3****/123",
     "resourceDirectoryId":"123",
     "status":"CreateSuccess"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "message":"success"
- }
-}
 ```
+
+`}` `}`
 
 **文档补充说明**
 
 只允许平台管理员和绑定了公共云的运营管理员调用该接口。
 
-##### 4.1.4.17. ListSubPlatforms
+##### 4.1.4.17 ListSubPlatforms
 
 根据管理账号列出所有接入资源账号的资源池。
 
@@ -20880,6 +22112,10 @@ POST /platforms/list/available HTTP/1.1 { }
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /platforms/list/sub/platforms HTTP/1.1
+```
 
 **请求参数**
 
@@ -20902,7 +22138,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | --gmtCreate | Long | 1703575552000 | 创建时间。 |
 | --gmtModified | Long | 1770028091941 | 修改时间。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20928,7 +22164,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ---authentication | Struct | {} | 认证配置。 |
 | ----metadataUrl | String | http://******.xml | SSO元数据的URL链接。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -20962,16 +22198,15 @@ POST /platforms/list/available HTTP/1.1 { }
 请求示例
 
 ```json
-{
+POST /platforms/list/sub/platforms HTTP/1.1
     "parentPlatformCode":"pl-123456"
-}
 ```
 
 正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "data":{ "pageNumber":1, "totalSize":100, "pageSize":10, "platformData":[ { "gmtModified":1770028091941, "code":"pl-***********", "allowMulTopOrgMapping":false, "displayName":"云平台1", "bound":false, "accountType":"resourceAccount", "platformType":[ { "code":"ALIYUN", "displayName":"公共云", "enterprise":false, "platformType":"ALIYUN" } ], "description":"测试数据。", "platformId":"1", "gmtCreate":1703575552000, "config":[ { "cloudUniqueId":"123", "cloudVersion":"Enterprise_v3*****", "defaultRegion":"cn-*****", "consoleEndpoint":"one.console.******.com", "authentication":[ { "metadataUrl":"http://******.xml", "type":"saml" } ] } ], "deleteDisabled":false, "connectStatus":[ { "endpointStatus":1, "updateTime":"2025-12-18T01:48:18.000+00:00", "id":1, "platformId":1, "message":"error", "credentialStatus":1 } ], "logo":"******.png", "disabled":false, "enableStatus":1, "account":"16**********", "status":100, "parentPlatform":[ { "displayName":"管理账号", "platformType":[ { "code":"ALIYUN", "displayName":"公共云", "enterprise":false, "platformType":"ALIYUN" } ], "accountType":"managerAccount", "gmtCreate":1703575552000, "enableStatus":1, "account":"16**********", "platformCode":"pl-xxx" } ] } ] } } |  |
+| { "data":{ "pageNumber":1, "totalSize":100, "pageSize":10, "platformData":[ { "gmtModified":1770028091941, "code":"pl-***********", "allowMulTopOrgMapping":false, "displayName":"云平台1", "bound":false, "accountType":"resourceAccount", "platformType":[ { "code":"ALIYUN", "displayName":"公共云", "enterprise":false, "platformType":"ALIYUN" } ], "description":"测试数据。", "platformId":"1", "gmtCreate":1703575552000, "config":[ { "cloudUniqueId":"123", "cloudVersion":"Enterprise_v3*****", "defaultRegion":"cn-*****", "consoleEndpoint":"one.console.******.com", "authentication":[ { "metadataUrl":"http://******.xml", "type":"saml" } ] } ], "deleteDisabled":false, "connectStatus":[ { "endpointStatus":1, "updateTime":"2025-12-18T01:48:18.000+00:00", "id":1, "platformId":1, "message":"error", "credentialStatus":1 } ], "logo":"******.png", "disabled":false, "enableStatus":1, "account":"16**********", "status":100, "parentPlatform":[ { "displayName":"管理账号", "platformType":[ { "code":"ALIYUN", "displayName":"公共云", "enterprise":false, "platformType":"ALIYUN" } ], "accountType":"managerAccount", "gmtCreate":1703575552000, "enableStatus":1, "account":"16**********", "platformCode":"pl-xxx" } ] } ] } } |   |
 
 `XML` 格式
 
@@ -21042,7 +22277,7 @@ POST /platforms/list/available HTTP/1.1 { }
 </data>
 ```
 
-##### 4.1.4.18. ListCloudServices
+##### 4.1.4.18 ListCloudServices
 
 获取专有云RAM支持的云服务列表。
 
@@ -21052,6 +22287,10 @@ POST /platforms/list/available HTTP/1.1 { }
 
 **请求语法**
 
+```
+POST /ascm/auth/role/listCloudServices HTTP/1.1
+```
+
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21060,7 +22299,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | -serviceAlias | String | asr.aliyuncs.com | 云服务别名。 |
 | -code | String | asr | 云服务编码。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -21074,245 +22313,399 @@ POST /platforms/list/available HTTP/1.1 { }
 
 **示例**
 
-请求示例正常返回示例
+请求示例
+
+```
+POST /ascm/auth/role/listCloudServices HTTP/1.1
+```
+
+正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "code": "200", "cost": 0, "data": [ { "code": "rds", "serviceAlias": "rds.aliyuncs.com" }, { "code": "asr", "serviceAlias": "asr.aliyuncs.com" }, { "code": "faas", "serviceAlias": "faas.aliyuncs.com" }, { "code": "ess", "serviceAlias": "ess.aliyuncs.com" }, { "code": "nasbackup", "serviceAlias": "nasbackup.hbr.aliyuncs.com" }, { "code": "dcaasbms", "serviceAlias": "dcaasbms.aliyuncs.com" }, { "code": "aipaas", "serviceAlias": "aipaas.aliyuncs.com" }, { "code": "dms", "serviceAlias": "dms.aliyuncs.com" }, { "code": "apsaraxdm", "serviceAlias": "apsaraxdm.aliyuncs.com" }, { "code": "datahub", "serviceAlias": "datahub.aliyuncs.com" }, { "code": "oss", "serviceAlias": "oss.aliyuncs.com" }, { "code": "ossbackup", "serviceAlias": "ossbackup.hbr.aliyuncs.com" }, { "code": "cgw", |  |
+| { "code": "200", "cost": 0, "data": [ { "code": "rds", "serviceAlias": "rds.aliyuncs.com" }, { "code": "asr", "serviceAlias": "asr.aliyuncs.com" }, { "code": "faas", "serviceAlias": "faas.aliyuncs.com" }, { "code": "ess", "serviceAlias": "ess.aliyuncs.com" }, { "code": "nasbackup", "serviceAlias": "nasbackup.hbr.aliyuncs.com" }, { "code": "dcaasbms", "serviceAlias": "dcaasbms.aliyuncs.com" }, { "code": "aipaas", "serviceAlias": "aipaas.aliyuncs.com" }, { "code": "dms", "serviceAlias": "dms.aliyuncs.com" }, { "code": "apsaraxdm", "serviceAlias": "apsaraxdm.aliyuncs.com" }, { "code": "datahub", "serviceAlias": "datahub.aliyuncs.com" }, { "code": "oss", "serviceAlias": "oss.aliyuncs.com" }, { "code": "ossbackup", "serviceAlias": "ossbackup.hbr.aliyuncs.com" }, { "code": "cgw", |   |
 
 ```json
             "serviceAlias": "cgw.aliyuncs.com"
-        },
-        {
+```
+
+`},`
+
+```json
             "code": "oos",
             "serviceAlias": "oos.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "ecs",
             "serviceAlias": "ecs.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "oceanbase",
             "serviceAlias": "oceanbase.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "pai",
             "serviceAlias": "pai.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "nat",
             "serviceAlias": "nat.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "nas",
             "serviceAlias": "nas.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "workflow",
             "serviceAlias": "workflow.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "usermgmt",
             "serviceAlias": "usermgmt.hologres.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "slb",
             "serviceAlias": "slb.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "dbaudit",
             "serviceAlias": "dbaudit.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "odps",
             "serviceAlias": "odps.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "mts",
             "serviceAlias": "mts.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "yundun-dashboard",
             "serviceAlias": "yundun-dashboard.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "drds",
             "serviceAlias": "drds.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "dbs",
             "serviceAlias": "dbs.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "soar",
             "serviceAlias": "soar.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "arms",
             "serviceAlias": "arms.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "edas",
             "serviceAlias": "edas.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "cdscm",
             "serviceAlias": "cdscm.aliyuncs.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "code": "dataworks",
             "serviceAlias": "dataworks.aliyuncs.com"
-        },
-        {
+```
+
+`},`
+
+```json
             "code": "log",
             "serviceAlias": "log.aliyuncs.com"
-        },
-{
 ```
 
+`},`
+
 ```json
-        {
             "code": "hologres",
             "serviceAlias": "hologres.aliyuncs.com"
-        },
-        {
-            "code": "smc",
-            "serviceAlias": "smc.aliyuncs.com"
-        },
-        {
-            "code": "imm",
-            "serviceAlias": "imm.aliyuncs.com"
-        },
-        {
-            "code": "emr",
-            "serviceAlias": "emr.aliyuncs.com"
-        },
-        {
-            "code": "hcs-sgw",
-            "serviceAlias": "hcs-sgw.aliyuncs.com"
-        },
-        {
-            "code": "vaultencryption",
-            "serviceAlias": "vaultencryption.hbr.aliyuncs.com"
-        },
-        {
-            "code": "cen",
-            "serviceAlias": "cen.aliyuncs.com"
-        },
-        {
-            "code": "kms",
-            "serviceAlias": "kms.aliyuncs.com"
-        },
-        {
-            "code": "apds",
-            "serviceAlias": "apds.aliyuncs.com"
-        },
-        {
-            "code": "stream",
-            "serviceAlias": "stream.aliyuncs.com"
-        },
-        {
-            "code": "ecsbackup",
-            "serviceAlias": "ecsbackup.hbr.aliyuncs.com"
-        },
-        {
-            "code": "ros",
-            "serviceAlias": "ros.aliyuncs.com"
-        },
-        {
-            "code": "prometheus",
-            "serviceAlias": "prometheus.aliyuncs.com"
-        },
-        {
-            "code": "waf",
-            "serviceAlias": "waf.aliyuncs.com"
-        },
-        {
-            "code": "cloudfw",
-            "serviceAlias": "cloudfw.aliyuncs.com"
-        },
-        {
-            "code": "dts",
-            "serviceAlias": "dts.aliyuncs.com"
-        },
-        {
-            "code": "sas",
-            "serviceAlias": "sas.aliyuncs.com"
-        },
-        {
-            "code": "edgepaas",
-            "serviceAlias": "edgepaas.aliyuncs.com"
-        },
-        {
-            "code": "bastionhost",
-            "serviceAlias": "bastionhost.aliyuncs.com"
-        },
-        {
-            "code": "cr",
-            "serviceAlias": "cr.aliyuncs.com"
-        },
-        {
-            "code": "cs",
-            "serviceAlias": "cs.aliyuncs.com"
-        },
-        {
-            "code": "hdm",
-            "serviceAlias": "hdm.aliyuncs.com"
-}
 ```
+
+`},`
 
 ```json
-        },
-        {
-            "code": "csb",
-            "serviceAlias": "csb.aliyuncs.com"
-        },
-        {
-            "code": "ons",
-            "serviceAlias": "ons.aliyuncs.com"
-        },
-        {
-            "code": "cloudmonitor",
-            "serviceAlias": "cloudmonitor.aliyuncs.com"
-        },
-        {
-            "code": "hdr",
-            "serviceAlias": "hdr.aliyuncs.com"
-        },
-        {
-            "code": "ebs",
-            "serviceAlias": "ebs.aliyuncs.com"
-        },
-        {
-            "code": "ehpc",
-            "serviceAlias": "ehpc.aliyuncs.com"
-        },
-        {
-            "code": "asm",
-            "serviceAlias": "asm.aliyuncs.com"
-        },
-        {
-            "code": "config",
-            "serviceAlias": "config.aliyuncs.com"
-        },
-        {
-            "code": "pds",
-            "serviceAlias": "pds.aliyuncs.com"
-        }
+            "code": "smc",
+            "serviceAlias": "smc.aliyuncs.com"
 ```
 
-`],`
+`},` `{`
+
+```json
+            "code": "imm",
+            "serviceAlias": "imm.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "emr",
+            "serviceAlias": "emr.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "hcs-sgw",
+            "serviceAlias": "hcs-sgw.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "vaultencryption",
+            "serviceAlias": "vaultencryption.hbr.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "cen",
+            "serviceAlias": "cen.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "kms",
+            "serviceAlias": "kms.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "apds",
+            "serviceAlias": "apds.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "stream",
+            "serviceAlias": "stream.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "ecsbackup",
+            "serviceAlias": "ecsbackup.hbr.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "ros",
+            "serviceAlias": "ros.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "prometheus",
+            "serviceAlias": "prometheus.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "waf",
+            "serviceAlias": "waf.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "cloudfw",
+            "serviceAlias": "cloudfw.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "dts",
+            "serviceAlias": "dts.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "sas",
+            "serviceAlias": "sas.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "edgepaas",
+            "serviceAlias": "edgepaas.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "bastionhost",
+            "serviceAlias": "bastionhost.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "cr",
+            "serviceAlias": "cr.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "cs",
+            "serviceAlias": "cs.aliyuncs.com"
+```
+
+`},`
+
+```json
+            "code": "hdm",
+            "serviceAlias": "hdm.aliyuncs.com"
+```
+
+`},`
+
+```json
+            "code": "csb",
+            "serviceAlias": "csb.aliyuncs.com"
+```
+
+`},`
+
+```json
+            "code": "ons",
+            "serviceAlias": "ons.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "cloudmonitor",
+            "serviceAlias": "cloudmonitor.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "hdr",
+            "serviceAlias": "hdr.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "ebs",
+            "serviceAlias": "ebs.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "ehpc",
+            "serviceAlias": "ehpc.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "asm",
+            "serviceAlias": "asm.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "config",
+            "serviceAlias": "config.aliyuncs.com"
+```
+
+`},` `{`
+
+```json
+            "code": "pds",
+            "serviceAlias": "pds.aliyuncs.com"
+```
+
+`}` `],`
 
 ```json
     "message": "success",
     "success": true,
     "successResponse": true
-}
 ```
+
+`}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <cost>0</cost> <data> <code>rds</code> <serviceAlias>rds.aliyuncs.com</serviceAlias> </data> <data> <code>asr</code> <serviceAlias>asr.aliyuncs.com</serviceAlias> </data> <data> <code>faas</code> <serviceAlias>faas.aliyuncs.com</serviceAlias> </data> <data> <code>ess</code> <serviceAlias>ess.aliyuncs.com</serviceAlias> </data> <data> <code>nasbackup</code> <serviceAlias>nasbackup.hbr.aliyuncs.com</serviceAlias> </data> <data> <code>dcaasbms</code> <serviceAlias>dcaasbms.aliyuncs.com</serviceAlias> </data> <data> <code>aipaas</code> <serviceAlias>aipaas.aliyuncs.com</serviceAlias> </data> <data> <code>dms</code> <serviceAlias>dms.aliyuncs.com</serviceAlias> </data> <data> <code>apsaraxdm</code> <serviceAlias>apsaraxdm.aliyuncs.com</serviceAlias> </data> <data> <code>datahub</code> <serviceAlias>datahub.aliyuncs.com</serviceAlias> </data> |  |
+| <code>200</code> <cost>0</cost> <data> <code>rds</code> <serviceAlias>rds.aliyuncs.com</serviceAlias> </data> <data> <code>asr</code> <serviceAlias>asr.aliyuncs.com</serviceAlias> </data> <data> <code>faas</code> <serviceAlias>faas.aliyuncs.com</serviceAlias> </data> <data> <code>ess</code> <serviceAlias>ess.aliyuncs.com</serviceAlias> </data> <data> <code>nasbackup</code> <serviceAlias>nasbackup.hbr.aliyuncs.com</serviceAlias> </data> <data> <code>dcaasbms</code> <serviceAlias>dcaasbms.aliyuncs.com</serviceAlias> </data> <data> <code>aipaas</code> <serviceAlias>aipaas.aliyuncs.com</serviceAlias> </data> <data> <code>dms</code> <serviceAlias>dms.aliyuncs.com</serviceAlias> </data> <data> <code>apsaraxdm</code> <serviceAlias>apsaraxdm.aliyuncs.com</serviceAlias> </data> <data> <code>datahub</code> <serviceAlias>datahub.aliyuncs.com</serviceAlias> </data> |   |
 
 ```xml
 </data> <data>
@@ -21490,11 +22883,11 @@ POST /platforms/list/available HTTP/1.1 { }
 </data> <message>success</message> <success>true</success> <successResponse>true</successResponse>
 ```
 
-#### 4.1.5. 计量接口相关参数
+#### 4.1.5 计量接口相关参数
 
-##### 4.1.5.1. 弹性计算
+##### 4.1.5.1 弹性计算
 
-###### 4.1.5.1.1. 弹性高性能计算E-HPC
+###### 4.1.5.1.1 弹性高性能计算E-HPC
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍弹性高性能计算返回的参数字段。
 
@@ -21520,7 +22913,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | SchedulerType | 调度器类型 | 调度服务器类型。 说明目前仅支持PBS。 |
 | OsTag | 操作系统类型 | 操作系统镜像标签。 |
 
-###### 4.1.5.1.2. 裸机管理BMS
+###### 4.1.5.1.2 裸机管理BMS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍裸机管理返回的参数字段。
 
@@ -21543,7 +22936,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | BMCIP | 带外IP | BMS实例的带外IP。 |
 | IP | 专有网络ID | BMS实例的VPC ID。 |
 
-###### 4.1.5.1.3. 智能计算灵骏EFLOPS
+###### 4.1.5.1.3 智能计算灵骏EFLOPS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍智能计算灵骏监控返回的参数字段。
 
@@ -21564,7 +22957,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ip | 网络地址 | EFLOPS实例的IP地址。 |
 | nodeDesc | 节点规格 | EFLOPS实例的节点规格。例如： CPU：Intel * 1 \| 内存：1024GB \| 存储：SSD1024GB \| GPU：NVIDIA Tesla PCIe A10 24GB*8 |
 
-###### 4.1.5.1.4. 容器镜像服务
+###### 4.1.5.1.4 容器镜像服务
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍容器镜像服务返回的参数字段。
 
@@ -21588,7 +22981,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | repoAuthorizeType | 仓库权限 | 仓库权限。 |
 | repoBuildType | 构建类型 | 仓库构建类型，取值： AUTO ：自动触发构建。 MANUAL ：手动触发构建。 |
 
-###### 4.1.5.1.5. 容器服务Kubernetes版
+###### 4.1.5.1.5 容器服务Kubernetes版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍容器服务Kubernetes版返回的参数字段。
 
@@ -21620,7 +23013,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | privatezone _ | Private Zone配置 | 集群Private Zone配置，取值： true：启用Private Zone。 false：不启用Private Zone。 |
 | deletionprotection _ | 集群删除保护 | 防止通过控制台或API误删除集群。取值： true：启用集群删除保护，将不能通过控制台或API删除集群。 false：不启用集群删除保护，则能通过控制台或API删除集群。 |
 
-###### 4.1.5.1.6. 专有云宿主机DDH
+###### 4.1.5.1.6 专有云宿主机DDH
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍专有云宿主机DDH返回的参数字段。
 
@@ -21660,7 +23053,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | TotalVgpus | 总虚拟GPU数量 | 总虚拟GPU数量。 |
 | ZoneId | 可用区ID | 可用区ID。 |
 
-###### 4.1.5.1.7. 弹性伸缩ESS
+###### 4.1.5.1.7 弹性伸缩ESS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍ESS返回的参数字段。
 
@@ -21691,7 +23084,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ActiveCapacity | 服务中的数量 | 已成功加入伸缩组，并正常运行的ECS实例数量。 |
 | StoppedCapacity | 停用中的数量 | 伸缩组中处于停机不收费状态的实例数量。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -21700,7 +23093,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | MinSize | 最小实例数 | 伸缩组内ECS实例台数的最小值。 |
 | DefaultCooldown | 默认冷却时间 | 伸缩组默认的冷却时间。冷却时间内，该伸缩组不执行其它的伸缩活动，仅针对云监控报警任务触发的伸缩活动有效。 |
 
-###### 4.1.5.1.8. 块存储EBS
+###### 4.1.5.1.8 块存储EBS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍EBS返回的参数字段。
 
@@ -21731,7 +23124,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | KMSKeyId | KMS密钥ID | 云盘使用的KMS密钥ID。 |
 | DiskSize | 云盘或本地盘大小 | 云盘或本地盘大小，单位GiB。 |
 
-###### 4.1.5.1.9. 快照Snapshot
+###### 4.1.5.1.9 快照Snapshot
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍Snapshot返回的参数字段。
 
@@ -21764,7 +23157,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | SourceDiskSize | 源磁盘大小 | 源磁盘大小，单位：GiB。 |
 | RetentionDays | 自动快照保留天数 | 自动快照保留天数。 |
 
-###### 4.1.5.1.10. 云服务器ECS
+###### 4.1.5.1.10 云服务器ECS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍ECS返回的参数字段。
 
@@ -21807,7 +23200,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | SysDiskSize | 系统盘大小 | 系统盘大小。 单位：GB。 |
 | DataDiskSize | 数据盘大小 | 数据盘大小。 单位：GB。 |
 
-###### 4.1.5.1.11. 裸金属算力平台BMCP
+###### 4.1.5.1.11 裸金属算力平台BMCP
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍裸金属算力平台BMCP返回的参数字段。
 
@@ -21828,7 +23221,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Memory | 内存(GB) | 内存容量，单位GB。 |
 | VideoMemory | 显存（GB） | 显存容量，单位GB。 |
 
-###### 4.1.5.1.12. 容器-智算算力集群
+###### 4.1.5.1.12 容器-智算算力集群
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍容器-智算算力集群返回的参数字段。
 
@@ -21848,7 +23241,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | VideoMemory | 显存（GB） | 显存容量，单位：GB。 |
 | FlopsCount | 算力（TFLOPS） | 算力，单位：TFLOPS。 |
 
-###### 4.1.5.1.13. 裸金属-智算算力集群
+###### 4.1.5.1.13 裸金属-智算算力集群
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍裸金属-智算算力集群返回的参数字段。
 
@@ -21870,7 +23263,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | VideoMemory | 显存（GB） | 显存容量，单位：GB。 |
 | FlopsCount | 算力（TFLOPS） | 算力，单位：TFLOPS。 |
 
-###### 4.1.5.1.14. 裸金属-超算算力集群
+###### 4.1.5.1.14 裸金属-超算算力集群
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍裸金属-超算算力集群返回的参数字段。
 
@@ -21890,7 +23283,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | VideoMemory | 显存（GB） | 显存容量，单位：GB。 |
 | FlopsCount | 算力（TFLOPS） | 算力，单位：TFLOPS。 |
 
-###### 4.1.5.1.15. EVPC
+###### 4.1.5.1.15 EVPC
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍EVPC返回的参数字段。
 
@@ -21907,9 +23300,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | StartTime | 开始时间 | 数据所属时间片的开始时间，使用UTC时间。 |
 | EndTime | 结束时间 | 数据所属时间片的结束时间，使用UTC时间。 |
 
-**4.1.5.2. 存储**
+##### 4.1.5.2 存储
 
-###### 4.1.5.2.1. 表格存储Tablestore
+###### 4.1.5.2.1 表格存储Tablestore
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍Tablestore返回的参数字段。
 
@@ -21931,7 +23324,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Status | 实例状态 | 实例状态。 |
 | Version | 数据库版本 | 数据库版本。 |
 
-###### 4.1.5.2.2. 文件存储NAS
+###### 4.1.5.2.2 文件存储NAS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍NAS返回的参数字段。
 
@@ -21939,7 +23332,7 @@ POST /platforms/list/available HTTP/1.1 { }
 |---|---|---|
 | Pos | 数据主键 | 由产品、组织ID和开始时间组成。 |
 
-| 开发指南·ASCM API参考 |  | 统一云管平台 |
+| 开发指南·ASCM API参考 |   | 统一云管平台 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -21963,7 +23356,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | MountTargets | 挂载点数量 | 挂载点数量。 |
 | MeteredSize | 文件系统的使用量 | 文件系统的使用量。非实时使用量，为上一小时最大使用量，单位：Bytes。 |
 
-###### 4.1.5.2.3. 对象存储OSS
+###### 4.1.5.2.3 对象存储OSS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍OSS返回的参数字段。
 
@@ -21975,7 +23368,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ResourceGName | 资源集名称 | 实例所属资源集的名称。 |
 | InsId | 实例ID | 实例的ID。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -22009,7 +23402,7 @@ POST /platforms/list/available HTTP/1.1 { }
 |---|---|---|
 | MeteringStorageUtilizationMinimum _ | 容量最小值 | EndTime时间点查询CMS获取的容量最小值。 单位：字节。 |
 
-###### 4.1.5.2.4. 日志服务SLS
+###### 4.1.5.2.4 日志服务SLS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍SLS返回的参数字段。
 
@@ -22035,9 +23428,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | RawSum | 数据总大小 | 日志服务目前占用的总数据量大小，单位：Bytes。 |
 | IndexSize | 索引的数据量 | 从StartTime至EndTime时间段内（包含StartTime），日志服务索引的数据量大小，单位： Bytes。 |
 
-**4.1.5.3. 网络**
+##### 4.1.5.3 网络
 
-###### 4.1.5.3.1. 高可用虚拟IP
+###### 4.1.5.3.1 高可用虚拟IP
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍高可用虚拟IP（HaVip）返回的参数字段。
 
@@ -22063,7 +23456,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | VpcId | 专有网络ID | HaVip实例所属的VPC ID。 |
 | VSwitchId | 虚拟交换机ID | HaVip实例所属的虚拟交换机ID。 |
 
-###### 4.1.5.3.2. 高速通道
+###### 4.1.5.3.2 高速通道
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍高速通道返回的参数字段。
 
@@ -22100,7 +23493,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Bandwidth | 带宽 | 对等连接和物理专线的带宽。单位：Mbps。 说明该字段为对等连接和物理专线的专属字段。 |
 | VbrType | 边界路由器类型 | 边界路由器类型。 说明该字段为边界路由器专属字段。 |
 
-###### 4.1.5.3.3. NAT网关
+###### 4.1.5.3.3 NAT网关
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍NAT网关返回的参数字段。
 
@@ -22127,7 +23520,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Description | 描述 | NAT网关的描述。 |
 | IpListSize | 网关绑定的弹性公网IP数量 | NAT网关绑定的弹性公网IP的数量。 |
 
-###### 4.1.5.3.4. IPv6网关
+###### 4.1.5.3.4 IPv6网关
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍IPv6网关返回的参数字段。
 
@@ -22152,7 +23545,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Description | 描述 | IPv6网关的描述信息。 |
 | InstanceChargeType | 计费方式 | IPv6网关的计费方式。 |
 
-###### 4.1.5.3.5. VPN网关
+###### 4.1.5.3.5 VPN网关
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍VPN网关返回的参数字段。
 
@@ -22181,7 +23574,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ChargeType | 付费类型 | 付费类型。取值：PostpayByFlow。 |
 | Spec | 带宽峰值 | VPN网关的带宽峰值，单位：Mbps。 |
 
-###### 4.1.5.3.6. 专有网络VPC
+###### 4.1.5.3.6 专有网络VPC
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍VPC返回的参数字段。
 
@@ -22204,7 +23597,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Description | 描述信息 | VPC的描述信息。 |
 | IsDefault | 默认专有网络 | 是否是该地域的默认VPC。 true：是该地域的默认VPC。 false：不是该地域的默认VPC。 |
 
-###### 4.1.5.3.7. 弹性网关EIP
+###### 4.1.5.3.7 弹性网关EIP
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍EIP返回的参数字段。
 
@@ -22215,7 +23608,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ResourceGId | 资源集ID | 实例所属资源集的ID。 |
 | ResourceGName | 资源集名称 | 实例所属资源集的名称。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -22239,7 +23632,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | BindInstanceName | 绑定实例名称 | 当前绑定的实例名称，当前值返回EcsInstance的实例名称。 |
 | Bandwidth | 带宽峰值 | EIP的带宽峰值，单位：Mbps。 |
 
-###### 4.1.5.3.8. 负载均衡SLB
+###### 4.1.5.3.8 负载均衡SLB
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍SLB返回的参数字段。
 
@@ -22280,7 +23673,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | MeteringStorageUtilizationMaximum _ | 容量最大值 | EndTime时间点查询CMS获取的容量最大值。 单位：字节。 |
 | MeteringStorageUtilizationMinimum _ | 容量最小值 | EndTime时间点查询CMS获取的容量最小值。 单位：字节。 |
 
-###### 4.1.5.3.9. 租户内网域名AUTH_ZONE
+###### 4.1.5.3.9 租户内网域名AUTH_ZONE
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍租户内网域名返回的参数字段。
 
@@ -22298,9 +23691,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | RecordCount | 解析记录集总数 | AUTH _ZONE实例记录集的总数。 |
 | QueryPerDay | 查询量 | 请求量。 说明统计的是从运营商localdns向AUTH _ZONE发起的 AUTH _ZONE的请求次数，此统计不等同于网站访问量。 |
 
-##### 4.1.5.4. 大数据
+##### 4.1.5.4 大数据
 
-###### 4.1.5.4.1. 数据可视化DataV
+###### 4.1.5.4.1 数据可视化DataV
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍数据可视化监控返回的参数字段。
 
@@ -22319,7 +23712,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | UserCount | 用户数量 | 已经登录过DataV的用户数量。 |
 | ScreenCount | 大屏数量 | 已创建大屏的数量。 |
 
-###### 4.1.5.4.2. 云原生深度学习训练PAI_DLC
+###### 4.1.5.4.2 云原生深度学习训练PAI_DLC
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云原生深度学习训练返回的参数字段。
 
@@ -22343,7 +23736,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | RequestGpu | GPU数量 | 机器资源GPU的数量。 |
 | RunTime | 服务时长 | 任务或实例运行的时长。单位：秒。 |
 
-###### 4.1.5.4.3. 模型在线服务PAI_EAS
+###### 4.1.5.4.3 模型在线服务PAI_EAS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍模型在线服务返回的参数字段。
 
@@ -22366,7 +23759,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | CPU | CPU核数 | 机器资源的CPU核数。 |
 | Memory | 内存 | 机器资源的内存。单位：MB。 |
 
-###### 4.1.5.4.4. 交互式建模PAI_DSW
+###### 4.1.5.4.4 交互式建模PAI_DSW
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍交互式建模返回的参数字段。
 
@@ -22392,7 +23785,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | RequestGpu | GPU数量 | 机器资源GPU的数量。 |
 | RunTime | 服务时长 | 任务或实例运行的时长。单位：秒。 |
 
-###### 4.1.5.4.5. 交互式分析Hologres
+###### 4.1.5.4.5 交互式分析Hologres
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍交互式分析Hologres返回的参数字段。
 
@@ -22415,7 +23808,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | StorageUsage | 目前存储量 | 目前存储量，单位：Byte。 |
 | MemQuota | 创建一个实例申请的内存大小 | 创建一个实例申请的内存大小，单位：MB。 |
 
-###### 4.1.5.4.6. 大数据计算MaxCompute
+###### 4.1.5.4.6 大数据计算MaxCompute
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍大数据计算MaxCompute返回的参数字段。
 
@@ -22459,7 +23852,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | odps.sql.type.system.odps2.0 | MaxCompute 2.0数据类型版本 | MaxCompute 2.0数据类型版本配置项，取值： 0：表示关闭或者没有该配置。 1：表示开启。 |
 | isODPSSecurity | 安全增强包 | 安全增强包规格配置项，取值： 0：表示关闭或者没有该配置。 1：表示开启。 |
 
-###### 4.1.5.4.7. 数据总线DataHub
+###### 4.1.5.4.7 数据总线DataHub
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍数据总线DataHub返回的参数字段。
 
@@ -22484,7 +23877,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ReadDataSize | 读流量 | DataHub项目下各个topic读流量的汇总，单位GB。 |
 | ConnectorDataSize | Connector同步数据流量 | DataHub项目下各个topicConnector同步数据流量的汇总，单位GB。 |
 
-###### 4.1.5.4.8. 实时计算Blink
+###### 4.1.5.4.8 实时计算Blink
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍实时计算Blink返回的参数字段。
 
@@ -22506,7 +23899,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | DeployType | 集群类型 | 集群类型。 CELL：独享集群 PUBLIC：共享集群 |
 | Description | 描述 | 集群描述。 |
 
-###### 4.1.5.4.9. 实时计算Realtime Compute Flink
+###### 4.1.5.4.9 实时计算Realtime Compute Flink
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍实时计算Realtime Compute Flink返回的参数字段。
 
@@ -22526,9 +23919,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | GuaranteeQuota | 申请的CU数 | 用户申请的CU数。 |
 |---|---|---|
 
-##### 4.1.5.5. 中间件
+##### 4.1.5.5 中间件
 
-###### 4.1.5.5.1. 云服务总线CSB
+###### 4.1.5.5.1 云服务总线CSB
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云服务总线CSB返回的参数字段。
 
@@ -22549,7 +23942,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | VCpuCount | CPU核数 | CPU核数。 |
 | BrokerAddress | 节点地址 | CSB节点地址。 |
 
-###### 4.1.5.5.2. 消息队列RocketMQ版
+###### 4.1.5.5.2 消息队列RocketMQ版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍消息队列RocketMQ版返回的参数字段。
 
@@ -22565,7 +23958,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | EndTime | 结束时间 | 数据所属时间片的结束时间，使用UTC时间。 |
 | CreateTime | 实例创建时间 | 实例的创建时间。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -22578,7 +23971,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | instanceStatus | 实例状态 | 实例状态。 |
 | topicCapacity | topic容量 | Topic容量。单位：个。 |
 
-###### 4.1.5.5.3. 企业级分布式应用服务EDAS
+###### 4.1.5.5.3 企业级分布式应用服务EDAS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍EDAS返回的参数字段。
 
@@ -22598,9 +23991,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | UserId | 用户ID | 用户ID。 |
 | LastModify | 最后修改时间 | 最后修改时间。 |
 
-##### 4.1.5.6. 数据库
+##### 4.1.5.6 数据库
 
-###### 4.1.5.6.1. 云原生关系型数据库PolarDB
+###### 4.1.5.6.1 云原生关系型数据库PolarDB
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云原生关系型数据库PolarDB返回的参数字段。
 
@@ -22626,7 +24019,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | DBInstanceSpec | 实例规格 | PolarDB实例的规格。 |
 | HotStandbyCluster | 集群是否具备Standby节点 | ON：具备Standby节点。 OFF：不具备Standby节点。 |
 
-###### 4.1.5.6.2. 数据传输服务DTS
+###### 4.1.5.6.2 数据传输服务DTS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍数据传输服务返回的参数字段。
 
@@ -22653,7 +24046,7 @@ POST /platforms/list/available HTTP/1.1 { }
 |---|---|---|
 | DestinationEngineName | 目标数据库类型 | 目标数据库类型，取值为： MySQL：MySQL数据库（包括RDSMySQL和自建 MySQL）。 PolarDB：PolarDB MySQL。 polardb _o：PolarDB O引擎。 polardb _pg：PolarDB PostgreSQL。 Redis：Redis数据库（包括云数据库Redis和自建 Redis）。 DRDS：云原生分布式数据库PolarDB-X1.0和2.0。 PostgreSQL：自建PostgreSQL。 odps：MaxCompute。 oracle：自建Oracle。 mongodb：MongoDB数据库（包括云数据库MongoDB 和自建MongoDB）。 tidb：TiDB数据库。 ADS：云原生数仓AnalyticDB MySQL2.0。 ADB30：云原生数仓 AnalyticDB MySQL 3.0。 Greenplum：云原生数仓 AnalyticDB PostgreSQL。 MSSQL：SQL Server数据库（包括RDS SQL Server和自建SQL Server）。 kafka：Kafka数据库（包括消息队列Kafka版和自建 Kafka）。 DataHub：阿里云流式数据服务DataHub。 clickhouse：云数据库ClickHouse。 DB2：自建DB2 LUW。 as400：AS/400。 Tablestore：表格存储Tablestore。 说明仅支持同步任务。 |
 
-###### 4.1.5.6.3. 数据管理DMS
+###### 4.1.5.6.3 数据管理DMS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍数据管理DMS返回的参数字段。
 
@@ -22671,7 +24064,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | FreeNum | 自由操作实例数 | DMS自由操作管控模式实例数。 |
 | SafeNum | 安全协同实例数 | DMS安全操作管控模式实例数。 |
 
-###### 4.1.5.6.4. 图数据库GDB
+###### 4.1.5.6.4 图数据库GDB
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍数据图数据库GDB返回的参数字段。
 
@@ -22698,7 +24091,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | VSwitchId | 虚拟交换机ID | 图数据库实例所属交换机Vswitch的ID。 |
 | DBNodeStorage | 存储空间 | 图数据库实例存储空间的大小。 |
 
-###### 4.1.5.6.5. 云数据库OceanBase
+###### 4.1.5.6.5 云数据库OceanBase
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云数据库OceanBase返回的参数字段。
 
@@ -22725,7 +24118,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | LastModify | 最后修改时间 | 最后修改时间。 |
 | UserId | 用户ID | 用户ID |
 
-###### 4.1.5.6.6. 时间序列数据库TSDB
+###### 4.1.5.6.6 时间序列数据库TSDB
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍TSDB返回的参数字段。
 
@@ -22739,7 +24132,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | RegionId | 地域 | 实例所属的地域ID。 |
 | StartTime | 开始时间 | 数据所属时间片的开始时间，使用UTC时间。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -22758,7 +24151,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ReverseVpcIp | 实例反向专有网络IP | 实例反向专有网络IP。 |
 | ReverseVpcPort | 实例反向专有网络端口 | 实例反向专有网络端口。 |
 
-###### 4.1.5.6.7. 云原生数据仓库AnalyticDB MySQL版2.0
+###### 4.1.5.6.7 云原生数据仓库AnalyticDB MySQL版2.0
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍ADS返回的参数字段。
 
@@ -22775,7 +24168,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | CreateTime | 实例创建时间 | 实例的创建时间。 |
 | ClusterName | 集群名称 | 集群名称。 |
 
-| 开发指南·ASCM API参考 |  | 统一云管平台 |
+| 开发指南·ASCM API参考 |   | 统一云管平台 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -22785,7 +24178,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | EcuType | ECU类型 | ECU类型。 |
 | EcuCount | ECU数量 | ECU数量。 |
 
-###### 4.1.5.6.8. 云数据库HBase版
+###### 4.1.5.6.8 云数据库HBase版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍HBase返回的参数字段。
 
@@ -22811,7 +24204,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | PayType | 付费类型 | 付费类型： Prepaid：预付费。 Postpaid：后付费。 |
 | VswitchId | 虚拟交换机ID | 虚拟交换机ID。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -22824,7 +24217,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | CoreNodeCount | Core节点数 | Core节点数。 |
 | CoreDiskSize | Core节点单磁盘大小 | Core节点单磁盘大小。 单位：GB。 |
 
-###### 4.1.5.6.9. 云数据库SQLServer版
+###### 4.1.5.6.9 云数据库SQLServer版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍RDS for SQLServer返回的参数字段。
 
@@ -22871,14 +24264,14 @@ POST /platforms/list/available HTTP/1.1 { }
 | MaxIOPS | 最大IOPS | 最大每秒IO请求次数。 |
 | DBMaxQuantity | 可创建最大数据库数量 | 一个实例下可创建最大数据库数量。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
 |---|---|---|
 | DBInstanceStorage | 存储 | 实例存储空间，单位：GB。 |
 
-###### 4.1.5.6.10. 云数据库PostgreSQL版
+###### 4.1.5.6.10 云数据库PostgreSQL版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍RDS for PostgreSQL返回的参数字段。
 
@@ -22922,7 +24315,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | DBMaxQuantity | 可创建最大数据库数量 | 一个实例下可创建最大数据库数量。 |
 | DBInstanceStorage | 存储 | 实例存储空间，单位：GB。 |
 
-###### 4.1.5.6.11. 云数据库MongoDB版本
+###### 4.1.5.6.11 云数据库MongoDB版本
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍MongoDB返回的参数字段。
 
@@ -22953,7 +24346,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | MemoryNum | 内存大小 | 内存大小，单位：GB。 |
 | NetworkType | 网络类型 | 实例的网络类型，取值： classic：经典网络。 vpc：专有网络。 默认网络类型为经典网络。 说明当本参数值为vpc时，还需要传入 VpcId 参数和 VSwit chId 参数。 |
 
-###### 4.1.5.6.12. 云原生数据仓库AnalyticDB PostgreSQL版
+###### 4.1.5.6.12 云原生数据仓库AnalyticDB PostgreSQL版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍GPDB返回的参数字段。
 
@@ -22962,31 +24355,31 @@ POST /platforms/list/available HTTP/1.1 { }
 | Pos | 数据主键 | 由产品、组织ID和开始时间组成。 |
 | OrgName | 组织名称 | 实例所属组织的名称。 |
 
-| 字段 | 名称 | 描述 |  |
+| 字段 | 名称 | 描述 |   |
 |---|---|---|---|
-| ResourceGId | 资源集ID | 实例所属资源集的ID。 |  |
-| ResourceGName | 资源集名称 | 实例所属资源集的名称。 |  |
-| InsId | 实例ID | 实例的ID。 |  |
-| RegionId | 地域 | 实例所属的地域ID。 |  |
-| StartTime | 开始时间 | 数据所属时间片的开始时间，使用UTC时间。 |  |
-| EndTime | 结束时间 | 数据所属时间片的结束时间，使用UTC时间。 |  |
-| CreateTime | 实例创建时间 | 实例的创建时间。 |  |
-| EngineVersion | 引擎版本 | 数据库版本。 |  |
-| ZoneId | 可用区ID | 可用区ID。 |  |
-| DBInstanceNetType | 网卡类型 | 实例网卡类型。 |  |
-| InstanceNetworkType | 实例网络类型 | 实例网络类型： Classic：经典网络。 VPC：专有网络。 |  |
-| DBInstanceDescription | 实例描述 | 实例描述。 |  |
-| Engine | 引擎 | 数据库引擎。 |  |
-| DBInstanceStatus | 实例状态 | 实例状态。 |  |
-| LockMode | 锁定方式 | 锁定方： Unlock：正常。 ManualLock：手动触发锁定。 LockByExpiration：实例过期自动锁定。 LockByRestoration：实例回滚前的自动锁定。 LockByDiskQuota：实例空间满自动锁定。 |  |
-| LockReason | 锁定原因 | 锁定原因。 |  |
-| ConnectionMode | 访问模式 | 访问模式。 Performance：标准访问模式。 Safty：高安全访问模式。 |  |
-| HostType | 计算组机器类型 | 计算组机器类型取值： 0：SSD。 1：HDD。 |  |
-| DBInstanceClass | 实例规格 | 实例规格。 |  |
-| DBInstanceClassType | 实例规格族 | 实例规格族： s：共享型。 x：通用型。 d：独享套餐。 h：独占物理机。 |  |
-| AvailabilityValue | 可用性状态 | 查询当前实例可用性状态，单位：百分比。 |  |
-| VpcId | VPC ID | VPC ID。 |  |
-| Port | 端口 | 端口。 |  |
+| ResourceGId | 资源集ID | 实例所属资源集的ID。 |   |
+| ResourceGName | 资源集名称 | 实例所属资源集的名称。 |   |
+| InsId | 实例ID | 实例的ID。 |   |
+| RegionId | 地域 | 实例所属的地域ID。 |   |
+| StartTime | 开始时间 | 数据所属时间片的开始时间，使用UTC时间。 |   |
+| EndTime | 结束时间 | 数据所属时间片的结束时间，使用UTC时间。 |   |
+| CreateTime | 实例创建时间 | 实例的创建时间。 |   |
+| EngineVersion | 引擎版本 | 数据库版本。 |   |
+| ZoneId | 可用区ID | 可用区ID。 |   |
+| DBInstanceNetType | 网卡类型 | 实例网卡类型。 |   |
+| InstanceNetworkType | 实例网络类型 | 实例网络类型： Classic：经典网络。 VPC：专有网络。 |   |
+| DBInstanceDescription | 实例描述 | 实例描述。 |   |
+| Engine | 引擎 | 数据库引擎。 |   |
+| DBInstanceStatus | 实例状态 | 实例状态。 |   |
+| LockMode | 锁定方式 | 锁定方： Unlock：正常。 ManualLock：手动触发锁定。 LockByExpiration：实例过期自动锁定。 LockByRestoration：实例回滚前的自动锁定。 LockByDiskQuota：实例空间满自动锁定。 |   |
+| LockReason | 锁定原因 | 锁定原因。 |   |
+| ConnectionMode | 访问模式 | 访问模式。 Performance：标准访问模式。 Safty：高安全访问模式。 |   |
+| HostType | 计算组机器类型 | 计算组机器类型取值： 0：SSD。 1：HDD。 |   |
+| DBInstanceClass | 实例规格 | 实例规格。 |   |
+| DBInstanceClassType | 实例规格族 | 实例规格族： s：共享型。 x：通用型。 d：独享套餐。 h：独占物理机。 |   |
+| AvailabilityValue | 可用性状态 | 查询当前实例可用性状态，单位：百分比。 |   |
+| VpcId | VPC ID | VPC ID。 |   |
+| Port | 端口 | 端口。 |   |
 
 | 字段 | 名称 | 描述 |
 |---|---|---|
@@ -22997,7 +24390,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | DBInstanceStorage | 存储 | 实例存储空间，单位：GB。 |
 | DBInstanceCpuCores | CPU | CPU核数。 |
 
-###### 4.1.5.6.13. 云原生数据仓库AnalyticDB MySQL版3.0
+###### 4.1.5.6.13 云原生数据仓库AnalyticDB MySQL版3.0
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍ADB返回的参数字段。
 
@@ -23022,7 +24415,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | NetworkType | 网络类型 | 网络类型。 |
 | Port | 端口 | 实例的端口。 |
 
-| 开发指南·ASCM API参考 |  | 统一云管平台 |
+| 开发指南·ASCM API参考 |   | 统一云管平台 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23048,7 +24441,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | MemoryUsageMaximum _ | 内存使用率最大值 | EndTime时间点查询CMS获取的内存使用率最大值。 |
 | MemoryUsageMinimum _ | 内存使用率最小值 | EndTime时间点查询CMS获取的内存使用率最小值。 |
 
-###### 4.1.5.6.14. 云数据库KVStore for Redis
+###### 4.1.5.6.14 云数据库KVStore for Redis
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍Redis返回的参数字段。
 
@@ -23062,7 +24455,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | RegionId | 地域 | 实例所属的地域ID。 |
 | StartTime | 开始时间 | 数据所属时间片的开始时间，使用UTC时间。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23092,7 +24485,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ConnectionUsageMinimum _ | 连接数使用率最小值 | EndTime时间点查询CMS获取的连接数使用率最小值。 |
 | FailedCountAverage _ | 失败数平均值 | EndTime时间点查询CMS获取的失败数平均值。 |
 
-| 开发指南·ASCM API参考 |  | 统一云管平台 |
+| 开发指南·ASCM API参考 |   | 统一云管平台 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23115,7 +24508,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | MemoryUsageMaximum _ | 内存使用率最大值 | EndTime时间点查询CMS获取的内存使用率最大值。 |
 | MemoryUsageMinimum _ | 内存使用率最小值 | EndTime时间点查询CMS获取的内存使用率最小值。 |
 
-###### 4.1.5.6.15. 云原生分布式数据库PolarDB-X
+###### 4.1.5.6.15 云原生分布式数据库PolarDB-X
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍PolarDB-X返回的参数字段。
 
@@ -23132,7 +24525,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | CreateTime | 实例创建时间 | 实例的创建时间。 |
 | Status | 实例状态 | 实例状态。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23152,7 +24545,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | CommodityCode | 商品代码 | 商品代码。 |
 | IpAddress | 网络地址 | IP地址。 |
 
-###### 4.1.5.6.16. 云数据库 RDS MySQL版
+###### 4.1.5.6.16 云数据库 RDS MySQL版
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍RDS返回的参数字段。
 
@@ -23167,7 +24560,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | StartTime | 开始时间 | 数据所属时间片的开始时间，使用UTC时间。 |
 | EndTime | 结束时间 | 数据所属时间片的结束时间，使用UTC时间。 |
 
-| 开发指南·ASCM API参考 |  | 统一云管平台 |
+| 开发指南·ASCM API参考 |   | 统一云管平台 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23194,7 +24587,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | Storage | 存储量 | 总存储量。单位：Bytes。 |
 | UsedStorage | 已使用存储量 | 已使用的存储量。单位：Bytes。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23217,9 +24610,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | MemoryUsageMaximum _ | 内存使用率最大值 | EndTime时间点查询CMS获取的内存使用率最大值。 |
 | MemoryUsageMinimum _ | 内存使用率最小值 | EndTime时间点查询CMS获取的内存使用率最小值。 |
 
-##### 4.1.5.7. 应用服务
+##### 4.1.5.7 应用服务
 
-###### 4.1.5.7.1. API网关
+###### 4.1.5.7.1 API网关
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍API网关返回的参数字段。
 
@@ -23235,7 +24628,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | EndTime | 结束时间 | 数据所属时间片的结束时间，使用UTC时间。 |
 | CreateTime | 实例创建时间 | 实例的创建时间。 |
 
-| 开发指南·ASCM API参考 |  | 统一云管平台 |
+| 开发指南·ASCM API参考 |   | 统一云管平台 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23245,9 +24638,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | GroupName | 分组名称 | 指定的分组名称。 |
 | Visibility | 类型 | API类型。 |
 
-##### 4.1.5.8. 人工智能与机器学习
+##### 4.1.5.8 人工智能与机器学习
 
-###### 4.1.5.8.1. 在线服务
+###### 4.1.5.8.1 在线服务
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍在线服务返回的参数字段。
 
@@ -23281,7 +24674,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | FailedRequestRatio | 调用失败率 | 调用的失败率。 |
 | TotalFailedRequestCount | 总失败调用次数 | 总的失败调用次数。 |
 
-###### 4.1.5.8.2. AI资源配额（共享型）
+###### 4.1.5.8.2 AI资源配额（共享型）
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍AI资源配额（共享型）返回的参数字段。
 
@@ -23311,7 +24704,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ResourceType | 算力类型 | 算力类型。 |
 | ResourceQuotaStatus | 实例状态 | 实例的状态。 |
 
-###### 4.1.5.8.3. AI资源配额（独占型）
+###### 4.1.5.8.3 AI资源配额（独占型）
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍AI资源配额（独占型）返回的参数字段。
 
@@ -23338,7 +24731,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | ResourceType | 算力类型 | 算力类型。 |
 | ResourceQuotaStatus | 实例状态 | 实例的状态。 |
 
-###### 4.1.5.8.4. AI资源池
+###### 4.1.5.8.4 AI资源池
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍AI资源池返回的参数字段。
 
@@ -23362,7 +24755,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | TotalNodeCount | 总节点数 | 总节点数。 |
 | ResourcePoolStatus | 实例状态 | 实例的状态。 |
 
-###### 4.1.5.8.5. 可视化建模
+###### 4.1.5.8.5 可视化建模
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍可视化建模返回的参数字段。
 
@@ -23381,9 +24774,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | Gpu | GPU(卡时) | GPU的使用量，单位：卡时。 |
 | GpuMemory | 显存(GB时) | 显存的使用量，单位：GB时。 |
 
-**4.1.5.9. 安全**
+##### 4.1.5.9 安全
 
-###### 4.1.5.9.1. 云安全管理中心SOC
+###### 4.1.5.9.1 云安全管理中心SOC
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云安全管理中心返回的参数字段。
 
@@ -23401,7 +24794,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | EndTime | 结束时间 | 计量数据所属时间片段的结束时间（UTC时间）。 |
 | DataStorageSize | 数据存储量 | SOC统一日志分析存储量，单位：Byte。 |
 
-###### 4.1.5.9.2. 流量检测与响应
+###### 4.1.5.9.2 流量检测与响应
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍流量检测与响应返回的参数字段。
 
@@ -23419,7 +24812,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | OutBytes | 出向流量 | 出向流量，单位：Byte。 |
 | Qps | QPS | 每秒请求次数，单位：次。 |
 
-###### 4.1.5.9.3. 密码服务
+###### 4.1.5.9.3 密码服务
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍密码服务返回的参数字段。
 
@@ -23439,7 +24832,7 @@ POST /platforms/list/available HTTP/1.1 { }
 |---|---|---|
 | InstanceCount | 密码服务数量 | 密码服务实例的数量。 |
 
-###### 4.1.5.9.4. 加密服务
+###### 4.1.5.9.4 加密服务
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍加密服务监控返回的参数字段。
 
@@ -23455,7 +24848,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | EndTime | 结束时间 | 计量数据所属时间片段的结束时间（UTC时间）。 |
 | InstanceNumber | 实例数量 | 用户在指定地域内使用加密服务实例的数量。 |
 
-###### 4.1.5.9.5. 流量安全监控
+###### 4.1.5.9.5 流量安全监控
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍流量安全监控返回的参数字段。
 
@@ -23476,7 +24869,7 @@ POST /platforms/list/available HTTP/1.1 { }
 |---|---|---|
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.6. DDos流量清洗
+###### 4.1.5.9.6 DDos流量清洗
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍DDos流量清洗返回的参数字段。
 
@@ -23495,7 +24888,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | LastModify | 最后修改时间 | 最后修改时间。 |
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.7. 安骑士
+###### 4.1.5.9.7 安骑士
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍安骑士返回的参数字段。
 
@@ -23516,7 +24909,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | UserId | 用户ID | 用户ID。 |
 |---|---|---|
 
-###### 4.1.5.9.8. 云防火墙CCFW
+###### 4.1.5.9.8 云防火墙CCFW
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云防火墙CCFW返回的参数字段。
 
@@ -23536,7 +24929,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | LastModify | 最后修改时间 | 最后修改时间。 |
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.9. WEB应用防火墙
+###### 4.1.5.9.9 WEB应用防火墙
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍WEB应用防火墙返回的参数字段。
 
@@ -23557,7 +24950,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | UserId | 用户ID | 用户ID。 |
 |---|---|---|
 
-###### 4.1.5.9.10. 数据库审计
+###### 4.1.5.9.10 数据库审计
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍数据库审计返回的参数字段。
 
@@ -23577,7 +24970,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | LastModify | 最后修改时间 | 最后修改时间。 |
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.11. 态势感知
+###### 4.1.5.9.11 态势感知
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍态势感知返回的参数字段。
 
@@ -23598,7 +24991,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | UserId | 用户ID | 用户ID。 |
 |---|---|---|
 
-###### 4.1.5.9.12. 云防火墙ICFW
+###### 4.1.5.9.12 云防火墙ICFW
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云防火墙ICFW返回的参数字段。
 
@@ -23618,7 +25011,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | LastModify | 最后修改时间 | 最后修改时间。 |
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.13. 云原生堡垒机
+###### 4.1.5.9.13 云原生堡垒机
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍云原生堡垒机返回的参数字段。
 
@@ -23640,7 +25033,7 @@ POST /platforms/list/available HTTP/1.1 { }
 |---|---|---|
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.14. 堡垒机
+###### 4.1.5.9.14 堡垒机
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍堡垒机返回的参数字段。
 
@@ -23660,7 +25053,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | LastModify | 最后修改时间 | 最后修改时间。 |
 | UserId | 用户ID | 用户ID。 |
 
-###### 4.1.5.9.15. 密钥管理服务KMS
+###### 4.1.5.9.15 密钥管理服务KMS
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍KMS返回的参数字段。
 
@@ -23677,7 +25070,7 @@ POST /platforms/list/available HTTP/1.1 { }
 | CreateTime | 实例创建时间 | 实例的创建时间。 |
 | Description | 描述 | 密钥描述。 |
 
-| 统一云管平台 |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   | 开发指南·ASCM API参考 |
 |---|---|---|
 
 | 字段 | 名称 | 描述 |
@@ -23695,9 +25088,9 @@ POST /platforms/list/available HTTP/1.1 { }
 | AutomaticRotation | 自动轮转状态 | 是否开启自动密钥轮转，取值如下： Enabled：自动轮转处于开启状态。 Disabled：自动轮转处于未开启状态。 Suspended：自动轮转被暂停执行。 仅适用于对称类型的CMK。非对称类型的CMK不支持自动轮转。 |
 | LastRotationDate | 上次轮转时间 | 最近一次轮转的时间（UTC）。如果是新创建密钥，则为初始密钥版本生成时间。 |
 
-**4.1.5.10. 其他**
+##### 4.1.5.10 其他
 
-###### 4.1.5.10.1. 无影云桌面Gws
+###### 4.1.5.10.1 无影云桌面Gws
 
 调用MeteringQuery获取计量内容后，除了公共返回参数外还会根据不同的产品，返回不同的参数。本文将为您介绍无影云桌面监控返回的参数字段。
 
@@ -23725,9 +25118,11 @@ POST /platforms/list/available HTTP/1.1 { }
 | GpuCount | GPU数量 | Gws实例GPU的数量。 |
 | ZoneID | 可用区ID | Gws实例归属的可用区ID。 |
 
-#### 4.1.6. 操作审计
+#### 4.1.6 操作审计
 
-##### 4.1.6.1. LookupInnerEvents
+##### 4.1.6.1 LookupInnerEvents
+
+调用LookupInnerEvents查询操作日志。
 
 **请求头**
 
@@ -23751,7 +25146,7 @@ GET /trails/innerOplog HTTP/1.1
 | sourceIp | String | Query | 否 | 10.XXX.XX.XX | 源Ip。 |
 | resourceId | String | Query | 否 | 1 | 资源Id。 |
 
-| 统一云管平台 |  |  |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -23790,7 +25185,7 @@ GET /trails/innerOplog HTTP/1.1
 | -eventTime | String | 1722495439000 | 事件时间。 |
 | -isGlobal | Boolean | false | isGlobal。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23826,7 +25221,7 @@ GET /trails/innerOplog HTTP/1.1
 | --roleId | String | - | 角色Id。 |
 | --roleName | String | - | 角色名称。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -23862,10 +25257,8 @@ GET /trails/innerOplog HTTP/1.1
 正常返回示例 `JSON` 格式
 
 ```json
-{
     "code": 200,
     "data": [
-        {
             "apiName": "DescribeLoadBalancerAttribute",
             "docVO": {
 ```
@@ -23880,7 +25273,11 @@ GET /trails/innerOplog HTTP/1.1
 
 ```json
                 "guideCode": "enterprise-developer-guide"
-            },
+```
+
+`},`
+
+```json
             "eventVersion": 1,
             "responseElements": "",
             "eventSource": "normal",
@@ -23899,12 +25296,20 @@ GET /trails/innerOplog HTTP/1.1
                 "userName": "ascm-org-1701142131832",
                 "resourceSetId": "5",
                 "orgId": "6"
-            },
+```
+
+`},`
+
+```json
             "additionalEventData": {
                 "originProductName": "slb",
                 "uploadId": "lb-dw***********",
                 "originalResourceType": "-"
-            },
+```
+
+`},`
+
+```json
             "apiVersion": "2014-05-15",
             "instanceId": "7f0000011*******",
             "eventTime": 1722243689706,
@@ -23917,15 +25322,18 @@ GET /trails/innerOplog HTTP/1.1
             "eventRW": "Read",
             "eventType": "ApiCall",
             "referencedResources": [
-                {
+```
+
+`{`
+
+```json
                     "instanceId": "lb-dw**********",
                     "rsName": "SLB实例",
                     "resourceType": "ACS::SLB::LoadBalancer",
                     "multi": false
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "serviceName": "ascm.productName.slb",
@@ -23935,10 +25343,9 @@ GET /trails/innerOplog HTTP/1.1
             "acsRegion": "cn-*****-******-d01",
             "resourceType": "-",
             "status": "ascm-monitor.src.util.operation-log-utils.Success"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageInfo": {
@@ -23946,16 +25353,15 @@ GET /trails/innerOplog HTTP/1.1
         "totalPage": 1,
         "pageSize": 10,
         "currentPage": 1
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <code>200</code> <data>
  <apiName>DescribeLoadBalancerAttribute</apiName>
  <docVO>
+  <productTitle>负载均衡 SLB</productTitle>
   <productCode>slb</productCode>
   <guideTitle>开发指南</guideTitle>
   <guideCode>enterprise-developer-guide</guideCode>
@@ -24016,7 +25422,9 @@ GET /trails/innerOplog HTTP/1.1
 </pageInfo>
 ```
 
-##### 4.1.6.2. RetryAuditTask
+##### 4.1.6.2 RetryAuditTask
+
+调用RetryAuditTask重试转存任务。
 
 **请求头**
 
@@ -24034,7 +25442,7 @@ POST /trails/auditFile/action/retry HTTP/1.1
 |---|---|---|---|---|---|
 | taskId | Long | Body | 否 | 3 | 转存任务Id（必填）。 |
 
-| 开发指南·ASCM | API参考 |  |  |  | 统一云管平台 |
+| 开发指南·ASCM | API参考 |   |   |   | 统一云管平台 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -24062,13 +25470,15 @@ POST /trails/auditFile/action/retry HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": 200, "data": true, "success": true } |  |
+| { "code": 200, "data": true, "success": true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>true</data> <success>true</success> |  |
+| <code>200</code> <data>true</data> <success>true</success> |   |
 
-##### 4.1.6.3. ListAuditFile
+##### 4.1.6.3 ListAuditFile
+
+调用ListAuditFile获取转存下载任务列表。
 
 **请求头**
 
@@ -24128,10 +25538,9 @@ GET /trails/auditFile HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": 200, "data": [ { "creator": "auditor", "taskType": 0, "taskName": "test1", "startTime": 1721893052000, "id": 20, "endTime": 1721893080000, "status": 3 }, { "creator": "auditor", "taskType": 0, "taskName": "test", "startTime": 1721891258000, "id": 18, "endTime": 1721891282000, "status": 3 }, { |  |
+| { "code": 200, "data": [ { "creator": "auditor", "taskType": 0, "taskName": "test1", "startTime": 1721893052000, "id": 20, "endTime": 1721893080000, "status": 3 }, { "creator": "auditor", "taskType": 0, "taskName": "test", "startTime": 1721891258000, "id": 18, "endTime": 1721891282000, "status": 3 }, { |   |
 
 ```json
-        {
             "creator": "auditor",
             "taskType": 0,
             "taskName": "指定IP10.XXX.XX.XX",
@@ -24139,8 +25548,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 17,
             "endTime": 1718621701000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
 ```
@@ -24152,8 +25564,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 16,
             "endTime": 1718621583000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "testecs",
@@ -24161,8 +25576,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 15,
             "endTime": 1717736071000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "test",
@@ -24170,8 +25588,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 14,
             "endTime": 1717686147000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "test111",
@@ -24179,8 +25600,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 13,
             "endTime": 1713509774000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
 ```
@@ -24192,8 +25616,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 12,
             "endTime": 1709519955000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "test001",
@@ -24201,8 +25628,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 11,
             "endTime": 1709186278000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "auditor_baserservicetest_",
@@ -24210,8 +25640,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 9,
             "endTime": 1704804651000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "basesevice_all",
@@ -24219,8 +25652,11 @@ GET /trails/auditFile HTTP/1.1
             "id": 8,
             "endTime": 1704802080000,
             "status": 3
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "creator": "auditor",
             "taskType": 0,
 ```
@@ -24235,8 +25671,11 @@ GET /trails/auditFile HTTP/1.1
 ```json
             "endTime": 1704801301000,
             "status": 3
-        },
-        {
+```
+
+`},`
+
+```json
             "creator": "auditor",
             "taskType": 0,
             "taskName": "test",
@@ -24244,23 +25683,22 @@ GET /trails/auditFile HTTP/1.1
             "id": 5,
             "endTime": 1702283618000,
             "status": 3
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageInfo": {
         "total": 13,
         "pageSize": 20,
         "currentPage": 1
-    }
-}
 ```
+
+`}` `}`
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test1</taskName> <startTime>1721893052000</startTime> <id>20</id> <endTime>1721893080000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test</taskName> <startTime>1721891258000</startTime> <id>18</id> <endTime>1721891282000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>指定IP10.XXX.XX.XX</taskName> <startTime>1718621642000</startTime> <id>17</id> <endTime>1718621701000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>日志转存测试</taskName> <startTime>1718621547000</startTime> <id>16</id> <endTime>1718621583000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>testecs</taskName> <startTime>1717661204000</startTime> <id>15</id> <endTime>1717736071000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test</taskName> <startTime>1717660875000</startTime> <id>14</id> <endTime>1717686147000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test111</taskName> <startTime>1713509757000</startTime> <id>13</id> <endTime>1713509774000</endTime> <status>3</status> </data> <data> |  |
+| <code>200</code> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test1</taskName> <startTime>1721893052000</startTime> <id>20</id> <endTime>1721893080000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test</taskName> <startTime>1721891258000</startTime> <id>18</id> <endTime>1721891282000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>指定IP10.XXX.XX.XX</taskName> <startTime>1718621642000</startTime> <id>17</id> <endTime>1718621701000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>日志转存测试</taskName> <startTime>1718621547000</startTime> <id>16</id> <endTime>1718621583000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>testecs</taskName> <startTime>1717661204000</startTime> <id>15</id> <endTime>1717736071000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test</taskName> <startTime>1717660875000</startTime> <id>14</id> <endTime>1717686147000</endTime> <status>3</status> </data> <data> <creator>auditor</creator> <taskType>0</taskType> <taskName>test111</taskName> <startTime>1713509757000</startTime> <id>13</id> <endTime>1713509774000</endTime> <status>3</status> </data> <data> |   |
 
 ```xml
 <data>
@@ -24326,7 +25764,9 @@ GET /trails/auditFile HTTP/1.1
 </pageInfo>
 ```
 
-##### 4.1.6.4. ListTrailStorage
+##### 4.1.6.4 ListTrailStorage
+
+调用ListTrailStorage查询当前转存列表。
 
 **请求头**
 
@@ -24372,13 +25812,15 @@ GET /trails/storage HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": 200, "data": { "storeMode": 2, "storageTime": 30, "recordType": 0, "metaInfos": [ { "logStore": "test", "regionId": "cn-*****-******-d01", "project": "test", "orgId": "1" } ] }, "success": true } |  |
+| { "code": 200, "data": { "storeMode": 2, "storageTime": 30, "recordType": 0, "metaInfos": [ { "logStore": "test", "regionId": "cn-*****-******-d01", "project": "test", "orgId": "1" } ] }, "success": true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <storeMode>2</storeMode> <storageTime>30</storageTime> <recordType>0</recordType> <metaInfos> <logStore>test</logStore> <regionId>cn-*****-******-d01</regionId> <project>test</project> <orgId>1</orgId> </metaInfos> </data> <success>true</success> |  |
+| <code>200</code> <data> <storeMode>2</storeMode> <storageTime>30</storageTime> <recordType>0</recordType> <metaInfos> <logStore>test</logStore> <regionId>cn-*****-******-d01</regionId> <project>test</project> <orgId>1</orgId> </metaInfos> </data> <success>true</success> |   |
 
-##### 4.1.6.5. ListAccessKeyEvents
+##### 4.1.6.5 ListAccessKeyEvents
+
+调用ListAccessKeyEvents来获取AK事件列表。
 
 **请求头**
 
@@ -24425,7 +25867,7 @@ GET /trails/accessKeyEvents HTTP/1.1
 | -eventType | String | ApiCall | 事件类型。 |
 | -serviceName | String | ascm.productName.slb | 服务名称。 |
 
-| 统一云管平台 |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24454,14 +25896,14 @@ GET /trails/accessKeyEvents HTTP/1.1
 | -sourceIp | String | 10.XXX.XX.XX | 来源Ip。 |
 | -url | String | - | 请求地址。 |
 | -apiDesc | String | - | api信息。 |
-| -userIdentity | Struct |  | 用户信息。 |
+| -userIdentity | Struct |   | 用户信息。 |
 | --accessKeyId | String | *** | ak信息。 |
 | --accessKeyType | Integer | 0 | ak类型。 |
 | --accountId | String | - | 用户Id。 |
 | --principalId | String | null | principalId。 |
 | --principalName | String | - | principalName。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -24502,10 +25944,8 @@ GET /trails/accessKeyEvents HTTP/1.1
 正常返回示例 `JSON` 格式
 
 ```json
-{
     "code": 200,
     "data": [
-        {
             "apiName": "DescribeLoadBalancerAttribute",
             "docVO": {
 ```
@@ -24520,7 +25960,11 @@ GET /trails/accessKeyEvents HTTP/1.1
 
 ```json
                 "guideCode": "enterprise-developer-guide"
-            },
+```
+
+`},`
+
+```json
             "eventVersion": 1,
             "responseElements": "",
             "eventSource": "normal",
@@ -24539,12 +25983,20 @@ GET /trails/accessKeyEvents HTTP/1.1
                 "userName": "ascm-org-1701142131832",
                 "resourceSetId": "5",
                 "orgId": "6"
-            },
+```
+
+`},`
+
+```json
             "additionalEventData": {
                 "originProductName": "slb",
                 "uploadId": "lb-dw***********",
                 "originalResourceType": "-"
-            },
+```
+
+`},`
+
+```json
             "apiVersion": "2014-05-15",
             "instanceId": "7f0000011*******",
             "eventTime": 1722243689706,
@@ -24557,15 +26009,18 @@ GET /trails/accessKeyEvents HTTP/1.1
             "eventRW": "Read",
             "eventType": "ApiCall",
             "referencedResources": [
-                {
+```
+
+`{`
+
+```json
                     "instanceId": "lb-dw**********",
                     "rsName": "SLB实例",
                     "resourceType": "ACS::SLB::LoadBalancer",
                     "multi": false
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "serviceName": "ascm.productName.slb",
@@ -24575,10 +26030,9 @@ GET /trails/accessKeyEvents HTTP/1.1
             "acsRegion": "cn-*****-******-d01",
             "resourceType": "-",
             "status": "ascm-monitor.src.util.operation-log-utils.Success"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageInfo": {
@@ -24586,16 +26040,15 @@ GET /trails/accessKeyEvents HTTP/1.1
         "totalPage": 1,
         "pageSize": 10,
         "currentPage": 1
-    }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <code>200</code> <data>
  <apiName>DescribeLoadBalancerAttribute</apiName>
  <docVO>
+  <productTitle>负载均衡 SLB</productTitle>
   <productCode>slb</productCode>
   <guideTitle>开发指南</guideTitle>
   <guideCode>enterprise-developer-guide</guideCode>
@@ -24656,7 +26109,9 @@ GET /trails/accessKeyEvents HTTP/1.1
 </pageInfo>
 ```
 
-##### 4.1.6.6. CreateTrailStorage
+##### 4.1.6.6 CreateTrailStorage
+
+调用CreateTrailStorage创建日志转存。
 
 **请求头**
 
@@ -24705,7 +26160,7 @@ POST /trails/storage HTTP/1.1
 | -storageTime | Integer | 30 | 全局，保存时间。 |
 | -recordType | Integer | 0 | 操作事件记录类型。其中： 0 代表all类型。 1 代表write类型。 2 代表read类型。 |
 
-| 开发指南·ASCM AP | I参考 |  | 统一云管平台 |
+| 开发指南·ASCM AP | I参考 |   | 统一云管平台 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -userId | String | 1 | 用户Id。 |
@@ -24722,13 +26177,15 @@ POST /trails/storage HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code":200, "data":{ "storeMode":0, "storageTime":30, "recordType":0, "metaInfos":{ "logStore":"api-audit", "endpoint":"-", "regionId":"cn-*****-******-d01", "project":"ascm-asapi", "orgId":"1" }, "userId":"1" }, "success":false, "message":"true" } |  |
+| { "code":200, "data":{ "storeMode":0, "storageTime":30, "recordType":0, "metaInfos":{ "logStore":"api-audit", "endpoint":"-", "regionId":"cn-*****-******-d01", "project":"ascm-asapi", "orgId":"1" }, "userId":"1" }, "success":false, "message":"true" } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data> <storeMode>0</storeMode> <storageTime>30</storageTime> <recordType>0</recordType> <metaInfos> <logStore>api-audit</logStore> <endpoint>-</endpoint> <regionId>cn-*****-*****-d01</regionId> <project>ascm-asapi</project> <orgId>1</orgId> </metaInfos> <userId>1</userId> </data> <success>false</success> <message>true</message> |  |
+| <code>200</code> <data> <storeMode>0</storeMode> <storageTime>30</storageTime> <recordType>0</recordType> <metaInfos> <logStore>api-audit</logStore> <endpoint>-</endpoint> <regionId>cn-*****-*****-d01</regionId> <project>ascm-asapi</project> <orgId>1</orgId> </metaInfos> <userId>1</userId> </data> <success>false</success> <message>true</message> |   |
 
-##### 4.1.6.7. DownloadAuditFile
+##### 4.1.6.7 DownloadAuditFile
+
+调用DownloadAuditFile完成OSS转存下载。
 
 **请求头**
 
@@ -24746,7 +26203,7 @@ POST /trails/storage HTTP/1.1
 | orgId | Long | Body | 否 | 3 | 组织id。 |
 | username | String | Body | 否 | test | 用户名称。 |
 
-| 统一云管平台 |  |  |  |  | 开发指南·ASCM API参考 |
+| 统一云管平台 |   |   |   |   | 开发指南·ASCM API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -24777,13 +26234,15 @@ POST /trails/auditFile/action/download HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "code": 200, "data": 19, "success": true } |  |
+| { "code": 200, "data": 19, "success": true } |   |
 
 | XML | 格式 |
 |---|---|
-| <code>200</code> <data>19</data> <success>true</success> |  |
+| <code>200</code> <data>19</data> <success>true</success> |   |
 
-##### 4.1.6.8. GetDownloadUrl
+##### 4.1.6.8 GetDownloadUrl
+
+调用GetDownloadUrl获取转存下载链接。
 
 **请求头**
 
@@ -24804,8 +26263,6 @@ POST /trails/auditFile/action/download HTTP/1.1
 | message | String | true | 返回信息。 |
 | success | Boolean | true | 请求是否成功。 |
 
-**示例**
-
 请求示例
 
 ```
@@ -24815,23 +26272,21 @@ GET /trails/auditFileUrl HTTP/1.1
 正常返回示例 `JSON` 格式
 
 ```json
-{
     "code": 200,
     "data": "https://ascm-default-backend-oss-2021-01.oss-cn-*****-******-d01-a.intra.env***.shuguang.com/audit_export/test_3_22.xlsx?
 Expires=*******",
     "success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <code>200</code> <data>https://ascm-default-backend-oss-2021-01.oss-cn-*****-******-d01-a.intra.env***.shuguang.com/audit_export/test_3_22.xlsx?Expires=******* </data> <success>true</success>
 ```
 
-## STS API参考
+## 5 STS API参考
 
-### 获取STS的Endpoint
+### 5.1 获取STS的Endpoint
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint，您可以通过如下方法自行获取Endpoint。
 
@@ -24842,7 +26297,7 @@ Expires=*******",
 3. 在**首页**中的**API****集成**页签下，单击**查看云产品调用****Endpoint****访问地址**。
 4. 在**云产品****Endpoint**页面的**归属产品**选择**统一云管平台**后，获取STS的Endpoint访问地址。
 
-### AssumeRole - 获取扮演角色的临时身份凭证
+### 5.2 AssumeRole - 获取扮演角色的临时身份凭证
 
 通过调用AssumeRole接口，获取一个扮演RAM角色的临时身份凭证（STS Token）。
 
@@ -24866,12 +26321,12 @@ Expires=*******",
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestId | String | 6894B13B-6D71-4EF5-88FA- F32781734A7F | 请求ID。 |
-| Credentials | Struct |  | 访问凭证。 |
+| Credentials | Struct |   | 访问凭证。 |
 | -SecurityToken | String | ******** | 安全令牌。 说明安全令牌的长度不固定，我们强烈建议您不要对安全令牌的最大长度做任何限制。 |
 | -AccessKeySecret | String | ***************************************** | 访问密钥。 |
 | -AccessKeyId | String | STS.L4aBSCSJVMuKg5U1**** | 访问密钥ID。 |
 | -Expiration | String | 2015-04-09T11:52:19Z | Token到期失效时间（UTC时间）。 |
-| AssumedRoleUser | Struct |  | 角色扮演时的临时身份。 |
+| AssumedRoleUser | Struct |   | 角色扮演时的临时身份。 |
 | -Arn | String | acs:ram::123456789012****:role/ adminrole/alice | 临时身份的ARN。 |
 | -AssumedRoleId | String | 34458433936495****:alice | 临时身份的ID。 |
 
@@ -24883,13 +26338,15 @@ Expires=*******",
 http(s)://[Endpoint]/?Action=AssumeRole &RoleArn=acs:ram::123456789012****:role/adminrole &RoleSessionName=alice
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"6894B13B-6D71-4EF5-88FA-F32781734A7F", "AssumedRoleUser":{ "Arn":"acs:ram::****************:role/adminrole/alice ", "AssumedRoleId":"******************:alice" }, "Credentials":{ "SecurityToken":"********", "AccessKeyId":"STS.********************", "AccessKeySecret":"****************************************", "Expiration":"2015-04-09T11:52:19Z" } } |  |
+| { "RequestId":"6894B13B-6D71-4EF5-88FA-F32781734A7F", "AssumedRoleUser":{ "Arn":"acs:ram::****************:role/adminrole/alice ", "AssumedRoleId":"******************:alice" }, "Credentials":{ "SecurityToken":"********", "AccessKeyId":"STS.********************", "AccessKeySecret":"****************************************", "Expiration":"2015-04-09T11:52:19Z" } } |   |
 
-### GetCallerIdentity - 获取当前调用者的身份信息
+### 5.3 GetCallerIdentity - 获取当前调用者的身份信息
+
+调用GetCallerIdentity获取当前调用者的身份信息。
 
 **请求头**
 
@@ -24919,11 +26376,11 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 
 | JSON | 格式 |
 |---|---|
-| { "IdentityType":"RAMUser", "AccountId":"196813200012****", "RequestId":"3C87BF47-3724-5443-ADC1-5AEAD9A03EB1", "PrincipalId":"28877424437521****", "UserId":"216959339000****", "Arn":"acs:ram::196813200012****:user/admin", "RoleId":"33537620082992****" } |  |
+| { "IdentityType":"RAMUser", "AccountId":"196813200012****", "RequestId":"3C87BF47-3724-5443-ADC1-5AEAD9A03EB1", "PrincipalId":"28877424437521****", "UserId":"216959339000****", "Arn":"acs:ram::196813200012****:user/admin", "RoleId":"33537620082992****" } |   |
 
-## 开发者门户 API参考
+## 6 开发者门户 API参考
 
-### GetApiInfo
+### 6.1 GetApiInfo
 
 获取开发者门户的指定OpenApi信息。
 
@@ -24951,16 +26408,16 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 请求示例
 
 ```
-&Product=ecs &ExtVersion=2014-05-26 &Api=DeleteInstance
+http(s)://[Endpoint]/?Action=GetApiInfo &Product=ecs &ExtVersion=2014-05-26 &Api=DeleteInstance
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "data":"{ \"httpMethod\": [ \"POST\" ], \"httpProtocol\": [ \"HTTP\", \"HTTPS\" ], \"id\": 5098, \"invokeGatewayType\": [ \"POP\" ], \"metaType\ \"POP_XML\", \"name\": \"ActivateUser\", \"product\": \"ascm\", \"status\": \"ENABLED\", \"version\": \"2019-05-10\", \"zhName\": \"激活用户账号\" }", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "data":"{ \"httpMethod\": [ \"POST\" ], \"httpProtocol\": [ \"HTTP\", \"HTTPS\" ], \"id\": 5098, \"invokeGatewayType\": [ \"POP\" ], \"metaType\ \"POP_XML\", \"name\": \"ActivateUser\", \"product\": \"ascm\", \"status\": \"ENABLED\", \"version\": \"2019-05-10\", \"zhName\": \"激活用户账号\" }", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-### GetProductList
+### 6.2 GetProductList
 
 获取开发者门户的产品列表。
 
@@ -24982,9 +26439,9 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 
 | JSON | 格式 |
 |---|---|
-| { "data":"{ \"code\": \"cms\", \"category\": \"监控与运维服务\", \"categoryEn\": \"Alarm\", \"productName\": \"云监控\", \"productNameEn\": \"CloudMonitor\", \"categorySort\": \"10\", \"productSort\": \"120\", \"deployment\": true, \"api List\": [ { \"extVersion\": \"2017-03-01\", \"content\": [ { content\": \"其他\", \"zhContent\": \"\", \"isTerminalNode\": false, \"apiCode\": \"\", \"namespace\": \"\", \"extVersion\": \"\", \"subNode\": { \"content\": \"AccessKeyGenerate\", \"zhContent\": \"生成专有云API访问密钥\", \"isTerminalNode\": true, \"apiCode\": \"AccessKeyGenerate\", \"namespace\": \"Cms\", \"extVersion\": \"2017-03-01\", \"subNode\": null } ] } ] } ] }", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "data":"{ \"code\": \"cms\", \"category\": \"监控与运维服务\", \"categoryEn\": \"Alarm\", \"productName\": \"云监控\", \"productNameEn\": \"CloudMonitor\", \"categorySort\": \"10\", \"productSort\": \"120\", \"deployment\": true, \"api List\": [ { \"extVersion\": \"2017-03-01\", \"content\": [ { content\": \"其他\", \"zhContent\": \"\", \"isTerminalNode\": false, \"apiCode\": \"\", \"namespace\": \"\", \"extVersion\": \"\", \"subNode\": { \"content\": \"AccessKeyGenerate\", \"zhContent\": \"生成专有云API访问密钥\", \"isTerminalNode\": true, \"apiCode\": \"AccessKeyGenerate\", \"namespace\": \"Cms\", \"extVersion\": \"2017-03-01\", \"subNode\": null } ] } ] } ] }", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-### GetApiDocs
+### 6.3 GetApiDocs
 
 获取开发者门户对应产品和版本下的OpenApi详情。
 
@@ -25010,9 +26467,9 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 
 | JSON | 格式 |
 |---|---|
-| { "data":"{ \"apis\": [ { \"httpMethod\": [ \"POST\" ], \"httpProtocol\": [ \"HTTP\", \"HTTPS\" ], \"id\": 5098, \"invokeGatewayType\": [ \"POP\" \"metaType\": \"POP_XML\", \"name\": \"ActivateUser\", \"product\": \"ascm\", \"status\": \"ENABLED\", \"version\": \"2019-05-10\", \"zhName\": \"激活用户账号\" } ]}", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "data":"{ \"apis\": [ { \"httpMethod\": [ \"POST\" ], \"httpProtocol\": [ \"HTTP\", \"HTTPS\" ], \"id\": 5098, \"invokeGatewayType\": [ \"POP\" \"metaType\": \"POP_XML\", \"name\": \"ActivateUser\", \"product\": \"ascm\", \"status\": \"ENABLED\", \"version\": \"2019-05-10\", \"zhName\": \"激活用户账号\" } ]}", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-### GetApiOverview
+### 6.4 GetApiOverview
 
 获取开发者门户对应产品和版本下的OpenApi简介。
 
@@ -25039,16 +26496,18 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 请求示例
 
 ```
-&Product=ecs &ExtVersion=2014-05-16
+http(s)://[Endpoint]/?Action=GetApiOverview &Product=ecs &ExtVersion=2014-05-16
 ```
 
-&公共请求参数正常返回示例
+`&`公共请求参数正常返回示例
 
 | JSON | 格式 |
 |---|---|
-| { "data":"{ \"content\": [ { \"extVersion\": \"\", \"apiCode\": \"\", \"namespace\": \"\", \"zhContent\": \"\", \"content\": \"组织管理\", \"isTerminalNode\": false, \"subNode\": [ { \"extVersion\": \"2019-05-10\", \"apiCode\": \"GetPrivateCloudAccountByOrganizationId\", \"namespace\": \"ascm\", \"zhContent\": \"根据组织ID获取专有云账号信息\", \"content\": \"GetPrivateCloudAccountByOrganizationId\", \"isTerminalNode\": true } ] } ], \"product\": \"apsara_stack_platform\", \"version\": \"2019-05-10\" }", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |  |
+| { "data":"{ \"content\": [ { \"extVersion\": \"\", \"apiCode\": \"\", \"namespace\": \"\", \"zhContent\": \"\", \"content\": \"组织管理\", \"isTerminalNode\": false, \"subNode\": [ { \"extVersion\": \"2019-05-10\", \"apiCode\": \"GetPrivateCloudAccountByOrganizationId\", \"namespace\": \"ascm\", \"zhContent\": \"根据组织ID获取专有云账号信息\", \"content\": \"GetPrivateCloudAccountByOrganizationId\", \"isTerminalNode\": true } ] } ], \"product\": \"apsara_stack_platform\", \"version\": \"2019-05-10\" }", "requestId":"F0A8A039-930D-5EC1-97C8-************" } |   |
 
-## 统一云管平台被集成
+## 7 统一云管平台被集成
+
+本文介绍统一云管平台被集成的背景和价值信息。
 
 **背景**
 
@@ -25058,19 +26517,26 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 
 基于统一云管平台控制台功能，提供快速被集成能力，方便用户进行三方控制台研发。
 
-### 操作流程
+### 7.1 操作流程
+
+本文介绍统一云管平台被集成的总体流程。
 
 **总体流程**
 
-| 账号认证打通 |  | 页面集成配置 【统一云管平台】 |  | 页面URL嵌入 【第三方】 |
+| 账号认证打通 |   | 页面集成配置 【统一云管平台】 |   | 页面URL嵌入 【第三方】 |
 |---|---|---|---|---|
 
 与统一云管平台登开启集成开关页面被嵌入URL地录集成址应用信息配置完成集成外观配置产品渠道链接配置
 1. 账号认证打通：通过统一云管平台提供的SSO认证能力，将需要嵌入的应用与被嵌入的专有云统一云管平台进行认证打通，从而确保用户在平台间跳转时做到免多次登录的
+目的。详细请参见账号认证打通。
 2. 页面集成配置：通过统一云管平台提供的页面开放配置，来修改统一云管平台页面的外观与主题色、语言等内容，来适配需要嵌入的三方管理控制台，从而做到页面体验一
+致的效果。详细请参考页面集成配置。
 3. 页面URL嵌入：完成页面开放配置后，您可以从开放页面列表，获取到各个页面URL地址，您只需要将对应的URL地址通过Iframe方式嵌入到需要嵌入的管理平台中，即可
+完成页面嵌入工作。详细请参考页面URL嵌入。
 
-#### 7.1.1. 账号认证打通
+#### 7.1.1 账号认证打通
+
+本文对账号认证打通进行相关说明。
 
 **所需功能**
 
@@ -25107,15 +26573,17 @@ http(s)://[Endpoint]/?Action=GetCallerIdentity
 
 RelayState是你免密登录成功后回跳的统一云管平台地址，即你嵌入的统一云管平台地址。
 
-#### 7.1.2. 页面集成配置
+#### 7.1.2 页面集成配置
+
+本文对页面集成配置进行相关说明。
 
 **配置页面入口**
 
 设置统一云管平台页面可被集成，菜单入口在**产品** > **开发工具** > **开发者门户** > **页面集成**下的**页面开放配置**。
 
-**重要**
+> **重要：** 当前只有运营管理员和平台管理员有权限。
 
-当前只有运营管理员和平台管理员有权限。 页面集成页面开放设置
+开发者门户页面集成页面开放设置
 
 **页面集成总开关**
 
@@ -25141,7 +26609,9 @@ RelayState是你免密登录成功后回跳的统一云管平台地址，即你�
 
 **配置入口**
 
-#### 7.1.3. 页面URL嵌入
+#### 7.1.3 页面URL嵌入
+
+本文对页面URL嵌入进行相关说明。
 
 **页面组成**
 
@@ -25151,7 +26621,7 @@ RelayState是你免密登录成功后回跳的统一云管平台地址，即你�
 
 ISV嵌入统一云管平台代码如下：
 
-```xml
+```
 <iframe src="https://one.console.inter.***.com/ecs/console/instance?organizationId=1&regionId=cn-***-d01" scrolling="no" frameborder="0" style="width: 100%; height:500px;">
   </iframe>
 ```
@@ -25200,7 +26670,11 @@ https://one.console.***.com/ess/console/dashboard?organizationId=3&regionId=cn-*
 window.addEventListener('message', function (event) {
   if (event.data.type === 'biz-nav-console:pathname-change') {
     console.log('收到的消息:', event.data);
-  }
+```
+
+`}`
+
+```
 });
 ```
 
@@ -25211,8 +26685,9 @@ interface IEventData {
   type: string;
   pathname: string; // location.pathname
   search: string;   // location.search
-}
 ```
+
+`}`
 
 **业务页面集成**
 
@@ -25228,13 +26703,13 @@ interface IEventData {
 
 **在ISV系统中嵌入Iframe**
 
-```xml
+```
 <div class="cloud-console-wrapper">
 ```
 
 `<h2>`我的云服务器`</h2>`
 
-```xml
+```
   <iframe
     src="https://one.console.***.com/ecs/console/instance?outerAscmEmbed=true"
     width="100%"
@@ -25321,7 +26796,6 @@ ISV会使用我们的产商品能力纳管第三方云平台的资源。通过�
 请求方式：GET请求 URL域名：统一云管平台的域名 URL path ：/user/checkLogin.json 正确返回格式：
 
 ```json
-{
     "code": "200",
     "data": true,
     "cost": 18,
@@ -25329,23 +26803,34 @@ ISV会使用我们的产商品能力纳管第三方云平台的资源。通过�
     "eagleEyeTraceId": "0adf085317689999387036897e0***",
     "ascmCode": false,
     "successResponse": true
-}
 ```
 
-判断登录有效的条件："successResponse"返回true ，并且"data"返回true。 参考代码
+`}` 判断登录有效的条件："successResponse"返回true ，并且"data"返回true。 参考代码
 
 ```
 function checkLoginStatus() {
   fetch('https://one.console.***.com/user/checkLogin.json', {
     method: 'GET',
     credentials: 'include'  // 确保携带 cookie
-  })
+```
+
+`})`
+
+```
     .then(response => {
       if (!response.ok) {
         throw new Error('HTTP ' + response.status);
-      }
+```
+
+`}`
+
+```
       return response.json();
-    })
+```
+
+`})`
+
+```
       if (data.data === true) {
 ```
 
@@ -25359,8 +26844,11 @@ function checkLoginStatus() {
 
 ```
         // window.location.href = 'https://isv.com/login';
-      }
-    })
+```
+
+`}` `})`
+
+```
     .catch(err => {
 ```
 
@@ -25368,8 +26856,9 @@ function checkLoginStatus() {
 
 ```
     });
-}
 ```
+
+`}`
 
 **登录页面监听**
 
@@ -25379,22 +26868,26 @@ function checkLoginStatus() {
 window.addEventListener('message', function (event) {
   if (event.data.type === 'one-console-login:embedded') {
     console.log('收到的消息:', event.data);
-  }
+```
+
+`}`
+
+```
 });
 ```
 
-返回消息如下:
+返回消息如下: `{`
 
 ```json
-{
     "pathname": "/ascm/login",
     "search": "?oauth_callback=https%3A%2F%2Fone.console.***.com%2Fecs%2Fconsole%2Fimage%2Fecs%2Fself%3ForganizationId%3D3%26regionId%3Dcn-
 ***-
 d01%26ascmState%3DeyJvcmdhbml6YXRpb25JZCI6IjMiLCJyZWdpb25JZCI6ImNuLXd1bGFuLWVudjIyMy1kMDE***%26AscmPlatformCode%3Ddefault%26aliyun_mcm_cloud_type psara",
     "hash": "",
     "type": "one-console-login:embedded"
-}
 ```
+
+`}`
 
 **角色切换**
 
@@ -25418,7 +26911,7 @@ https://one.console.***.com/data/redirect.json?product=identityService&action=sw
 {"arId":"ar-9999999***","targetUrl":"https://one.console.***.com"}
 ```
 
-### API集成
+### 7.2 API集成
 
 API集成目前是通过POP SDK集成，通过POP SDK调用OpenAPI开放接口。调用OpenAPI接口时，需使用代表用户身份的AK和SK进行调用。
 
@@ -25443,6 +26936,6 @@ ISV初始化并维护用户角色、组织资源集生命周期，并存储全�
 
 API接口的使用可参考对应版本的《统一云管平台开发指南》，手册路径“帮助” > "统一云管平台" > "API文档"。 帮助 API文档
 
-### 前端样式规范
+### 7.3 前端样式规范
 
 本文对统一云管平台前端设计规范进行相关介绍。 统一云管平台前端设计遵循统一规范，以确保用户体验的一致性、开发协作的高效性、代码的可维护性以及多端适配的可靠性。具体规范可参见云管设计规范.zip。

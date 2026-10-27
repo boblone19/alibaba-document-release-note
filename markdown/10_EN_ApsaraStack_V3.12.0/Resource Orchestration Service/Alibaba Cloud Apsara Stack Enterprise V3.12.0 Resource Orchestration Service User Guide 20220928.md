@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 336
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Resource Orchestration Service User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%BC%B9%E6%80%A7%E8%AE%A1%E7%AE%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Resource%20Orchestration%20Service%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Resource Orchestration Service User Guide 20220928
@@ -126,7 +126,7 @@ What's next On the St acks page in the ROS console: To delete a stack, click Del
 
 ### 4.1 Template structure
 
-A template is a UTF-8 encoded JSON file that is used to create stacks. Templates serve as the blueprint for underlying infrastructure and architecture. Templates define the configurations and dependencies of Alibaba Cloud resources. ROS template structure
+A template is a UTF-8 encoded JSON file that is used to create stacks. Templates serve as the blueprint for underlying infrastructure and architecture. Templates define the configurations and dependencies of Alibaba Cloud resources. ROS template structure `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
@@ -173,7 +173,7 @@ to create associated resources.
 onsole or API to obtain the information.
 ```
 
-ROSTemplateFormatVersion Required. The template versions supported by Resource Orchestration Service (ROS). Current version: 2015-09- 01. Optional. The description of the template, which is used to provide information such as the application scenarios and architecture of the template. A detailed description can help users better understand the content of the template. Metadata Optional. The metadata of the template, in the JSON format. Optional. The parameters that you can specify when you create a stack. An ECS instance type is often defined as a parameter. Parameters have default values. Parameters can improve the flexibility and reusability of the template. When you create a stack, select appropriate specifications. Optional. Mappings are defined as nested mapping tables. You can use Fn::FindInMap to retrieve values corresponding to keys. You can also use parameter values as keys. For example, you can search the regionimage mapping table for desired images by region. Optional. The conditions defined using Fn::And, Fn::Or, Fn::Not, and Fn::Equals. Separate multiple conditions with commas (,). The system will evaluate all conditions in the template before creating or updating a stack. All resources associated with true conditions are created, and all resources associated with false conditions are ignored. Optional. The detailed information of resources in the stack created based on the template. The information includes resource dependencies and configurations. Optional. The outputs that are used to provide information such as resource properties. You can use the ROS console or API to obtain the information.
+`}` `}` ROSTemplateFormatVersion Required. The template versions supported by Resource Orchestration Service (ROS). Current version: 2015-09- 01. Description Optional. The description of the template, which is used to provide information such as the application scenarios and architecture of the template. A detailed description can help users better understand the content of the template. Metadata Optional. The metadata of the template, in the JSON format. Optional. The parameters that you can specify when you create a stack. An ECS instance type is often defined as a parameter. Parameters have default values. Parameters can improve the flexibility and reusability of the template. When you create a stack, select appropriate specifications. Optional. Mappings are defined as nested mapping tables. You can use Fn::FindInMap to retrieve values corresponding to keys. You can also use parameter values as keys. For example, you can search the regionimage mapping table for desired images by region. Optional. The conditions defined using Fn::And, Fn::Or, Fn::Not, and Fn::Equals. Separate multiple conditions with commas (,). The system will evaluate all conditions in the template before creating or updating a stack. All resources associated with true conditions are created, and all resources associated with false conditions are ignored. Optional. The detailed information of resources in the stack created based on the template. The information includes resource dependencies and configurations. Optional. The outputs that are used to provide information such as resource properties. You can use the ROS console or API to obtain the information.
 
 ### 4.2 Parameters
 
@@ -190,7 +190,7 @@ The Parameters section improves the flexibility and reusability of a template. W
 . Valid values: ecs.t1.small, ecs.s1.medium, ecs.m1.medium, and ecs.c1.large."
 ```
 
-You can assign a value to the InstanceType parameter when you create stacks based on templates. If this parameter is not specified, the default value `ecs.t1.small` is used. The following example shows how to reference the InstanceType parameter when you define a resource:
+`}` `}` You can assign a value to the InstanceType parameter when you create stacks based on templates. If this parameter is not specified, the default value `ecs.t1.small` is used. The following example shows how to reference the InstanceType parameter when you define a resource:
 
 ```json
 "Webserver" : {
@@ -199,7 +199,7 @@ You can assign a value to the InstanceType parameter when you create stacks base
     "Ref": "InstanceType"
 ```
 
-Syntax Each parameter consists of a name and properties. The parameter name can only contain letters and digits and must be unique within the template. You can use the Label field to define the alias of the parameter. The following table describes the parameters:
+`}` `}` Syntax Each parameter consists of a name and properties. The parameter name can only contain letters and digits and must be unique within the template. You can use the Label field to define the alias of the parameter. The following table describes the parameters:
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -248,7 +248,7 @@ Type: String Length: 1 to 41 The password can contain uppercase letters, lowerca
 "password" : { "Label": "Password", "NoEcho" : "True", "Description": "Enter the password", "Type" : "String", "MinLength" : "1", "MaxLength" : "41", "AllowedPattern" : "[a-zA-Z0-9]*"
 ```
 
-Pseudo parameters Pseudo parameters are internal parameters provided by the ROS engine. They can be referenced in the same manner as user-defined parameters, and their values are determined while ROS is running. The following pseudo parameters are supported: ALIYUN::StackName: the name of the stack. ALIYUN::StackId: the ID of the stack. ALIYUN::Region: the region where the stack resides. ALIYUN::AccountId: the user ID of the stack. ALIYUN::NoValue: specifies whether the specific resource property is deleted when the resource is created or updated.
+`}` `}` Pseudo parameters Pseudo parameters are internal parameters provided by the ROS engine. They can be referenced in the same manner as user-defined parameters, and their values are determined while ROS is running. The following pseudo parameters are supported: ALIYUN::StackName: the name of the stack. ALIYUN::StackId: the ID of the stack. ALIYUN::Region: the region where the stack resides. ALIYUN::AccountId: the user ID of the stack. ALIYUN::NoValue: specifies whether the specific resource property is deleted when the resource is created or updated.
 
 ### 4.3 Resources
 
@@ -263,7 +263,7 @@ This topic describes the properties of each resource and dependencies of resourc
             The description of the resource properties
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Resource2 ID" : {
@@ -273,7 +273,7 @@ This topic describes the properties of each resource and dependencies of resourc
             The description of the resource properties
 ```
 
-Parameter description: The resource ID must be unique within the template. You can use the resource ID to reference the resource in other parts of the template. The Type parameter specifies the type of resource that is being declared. For example, ALIYUN::ECS::Instance indicates that the resource is an Elastic Cloud Service (ECS) instance. The Properties section provides additional options that you can specify for a resource. For example, you must specify an image ID for each Alibaba Cloud ECS instance. The image ID is one of the resource properties. Examples
+`}` `}` `}` Parameter description: The resource ID must be unique within the template. You can use the resource ID to reference the resource in other parts of the template. The Type parameter specifies the type of resource that is being declared. For example, ALIYUN::ECS::Instance indicates that the resource is an Elastic Cloud Service (ECS) instance. The Properties section provides additional options that you can specify for a resource. For example, you must specify an image ID for each Alibaba Cloud ECS instance. The image ID is one of the resource properties. Examples
 
 ```json
 "Resources" : {
@@ -283,7 +283,7 @@ Parameter description: The resource ID must be unique within the template. You c
       "ImageId" : "m-25l0r****"
 ```
 
-If a resource does not need properties to be declared, omit the Properties section of that resource. Property values can be text strings, string lists, Boolean values, referenced parameters, or return values of functions. The following example shows how to declare different types of property values:
+`}` `}` `}` If a resource does not need properties to be declared, omit the Properties section of that resource. Property values can be text strings, string lists, Boolean values, referenced parameters, or return values of functions. The following example shows how to declare different types of property values:
 
 ```json
 "Properties" : {
@@ -295,7 +295,7 @@ If a resource does not need properties to be declared, omit the Properties secti
         "Fn::Join" : [ "%", [ "Key=", { "Ref" : "SomeParameter" } ] ] }
 ```
 
-DeletionPolicy The DeletionPolicy parameter specifies whether to retain a resource when its stack is deleted. The following sample code shows how to use the DeletionPolicy parameter to retain an ECS instance when its stack is deleted:
+`}` DeletionPolicy The DeletionPolicy parameter specifies whether to retain a resource when its stack is deleted. The following sample code shows how to use the DeletionPolicy parameter to retain an ECS instance when its stack is deleted:
 
 ```json
 "Resources" : {
@@ -311,7 +311,7 @@ DeletionPolicy The DeletionPolicy parameter specifies whether to retain a resour
     "DeletionPolicy" : "Retain"
 ```
 
-DependsOn The DependsOn parameter allows you to create a specific resource after you create its dependent resource. If you specify the DependsOn parameter for a resource, the resource is created only after its dependent resource specified by the DependsOn parameter is created. In the following example, WebServer is created only after DatabaseServer is created:
+`}` `}` DependsOn The DependsOn parameter allows you to create a specific resource after you create its dependent resource. If you specify the DependsOn parameter for a resource, the resource is created only after its dependent resource specified by the DependsOn parameter is created. In the following example, WebServer is created only after DatabaseServer is created: `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
@@ -326,11 +326,12 @@ DependsOn The DependsOn parameter allows you to create a specific resource after
 ```json
     "DatabseServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
 ```
 
-Condition The Condition parameter specifies whether to create the resource. The resource can be created only when the Condition parameter is set to true. In the following example, WebServer is created only if the condition determined by the MaxAmount parameter is true:
+`}` `}` `}` `}` Condition The Condition parameter specifies whether to create the resource. The resource can be created only when the Condition parameter is set to true. In the following example, WebServer is created only if the condition determined by the MaxAmount parameter is true:
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
@@ -340,35 +341,43 @@ Condition The Condition parameter specifies whether to create the resource. The 
       "Default": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Conditions": {
     "CreateWebServer": {"Fn::Not": {"Fn::Equals": [0, {"Ref": "MaxAmount"}]}}
+```
+
+`}`
+
+```json
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroup",
       "Condition": "CreateWebServer",
+      "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
         "MaxAmount": {"Ref": "MaxAmount"}
 ```
 
-`},`
+`}` `},`
 
 ```json
     "DatabseServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
 ```
 
-Resource declaration example The following example shows how to declare a resource:
+`}` `}` `}` `}` Resource declaration example The following example shows how to declare a resource:
 
 ```json
 "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
@@ -381,11 +390,12 @@ Resource declaration example The following example shows how to declare a resour
             "Value": "Finance"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "ScalingConfiguration": {
       "Type": "ALIYUN::ESS::ScalingConfiguration",
+      "Properties": {
         "ImageId": "ubuntu1404_64_20G_aliaegis_2015****.vhd",
         "InstanceType": "ecs.t1.small",
         "InstanceId": "i-25xhh****",
@@ -396,17 +406,22 @@ Resource declaration example The following example shows how to declare a resour
         "ScalingGroupId": "bwhtvpcBcKYac9fe3vd0****",
         "SecurityGroupId": "sg-25zwc****",
         "DiskMappings": [
+```
+
+`{`
+
+```json
                 "Size": 10
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Category": "cloud",
                 "Size": 10
 ```
 
-`]`
+`}` `]` `}` `}` `}`
 
 ### 4.4 Outputs
 
@@ -432,7 +447,7 @@ The Outputs section is used to define the values returned when the GetStack oper
       ...
 ```
 
-`]` Output ID: the ID of the output item. Duplicate IDs are not allowed within a template. Description: optional. The description of the output item. Value: required. The value returned when the GetStack operation is called. Condition: optional. The condition that specifies whether to create a resource and provide its information. The resource is created and its information is provided only when the specified condition is true. In the following example, WebServer is created only if the condition determined by the MaxAmount parameter is true:
+`]` `}` `}` Output ID: the ID of the output item. Duplicate IDs are not allowed within a template. Description: optional. The description of the output item. Value: required. The value returned when the GetStack operation is called. Condition: optional. The condition that specifies whether to create a resource and provide its information. The resource is created and its information is provided only when the specified condition is true. In the following example, WebServer is created only if the condition determined by the MaxAmount parameter is true:
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
@@ -442,18 +457,29 @@ The Outputs section is used to define the values returned when the GetStack oper
       "Default": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Conditions": {
     "CreateWebServer": {"Fn::Not": {"Fn::Equals": [0, {"Ref": "MaxAmount"}]}}
+```
+
+`}`
+
+```json
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroup",
       "Condition": "CreateWebServer",
+      "Properties": {
         "ImageId" : "m-25l0r****",
         "InstanceType": "ecs.t1.small"
         "MaxAmount": {"Ref": "MaxAmount"}
+```
+
+`}` `}` `}`
+
+```json
   "Outputs": {
     "WebServerIP": {
       "Condition": "CreateWebServer",
@@ -461,7 +487,7 @@ The Outputs section is used to define the values returned when the GetStack oper
         "Fn::GetAtt": ["WebServer", "PublicIps"]
 ```
 
-Examples The following example contains two output items. The value of the InstanceId parameter of WebServer. The values of the PublicIp and PrivateIp parameters of WebServer.
+`}` `}` `}` `}` Examples The following example contains two output items. The value of the InstanceId parameter of WebServer. The values of the PublicIp and PrivateIp parameters of WebServer.
 
 ```json
 "Outputs": {
@@ -478,7 +504,7 @@ Examples The following example contains two output items. The value of the Insta
       {"Fn::GetAtt": ["WebServer", "PrivateIp"]}
 ```
 
-`]`
+`]` `}` `}`
 
 ### 4.5 Functions
 
@@ -537,7 +563,7 @@ Fn::FindInMap The Fn::FindInMap function is used to return the values based on k
         "beijing"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
   "Mappings": {
@@ -555,12 +581,13 @@ Fn::FindInMap The Fn::FindInMap function is used to return the values based on k
         "64": "m-25l0rcfj3"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId": {
           "Fn::FindInMap": [
             "RegionMap",
@@ -575,18 +602,23 @@ Fn::FindInMap The Fn::FindInMap function is used to return the values based on k
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
         "Tags": [
+```
+
+`{`
+
+```json
             "Key": "key1",
             "Value": "value1"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Key": "key2",
             "Value": "value2"
 ```
 
-`]` Supported functions Fn::FindInMap Ref Fn::GetAtt The Fn::GetAtt function is used to return the value of a property from a resource in a template. Declaration
+`}` `]` `}` `}` `}` `}` Supported functions Fn::FindInMap Ref Fn::GetAtt The Fn::GetAtt function is used to return the value of a property from a resource in a template. Declaration
 
 ```
 "Fn::GetAtt": ["resourceID", "attributeName"]
@@ -641,12 +673,18 @@ The following example assumes that the list of data elements is a mapping table:
   "userParam": {
     "Type": "CommaDelimitedList",
       "Default": "10.0.100.0/24, 10.0.101.0/24, 10.0.102.0/24"
+```
+
+`}` `}`
+
+```json
 "Resources": {
   "resourceID": {
+      "Properties": {
           "CidrBlock": {"Fn::Select": ["0", {"Ref": "userParam"}]}
 ```
 
-Supported functions For the Fn::Select index value, you can use the Ref function. For the Fn::Select list of data elements, you can use the following functions: Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref Ref The Ref function is used to return the value of a specified parameter or resource. If the specified parameter is a resource ID, the value of the resource is returned. Otherwise, the system will return the value of the specified parameter. Declaration
+`}` `}` `}` Supported functions For the Fn::Select index value, you can use the Ref function. For the Fn::Select list of data elements, you can use the following functions: Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref Ref The Ref function is used to return the value of a specified parameter or resource. If the specified parameter is a resource ID, the value of the resource is returned. Otherwise, the system will return the value of the specified parameter. Declaration
 
 ```json
 "Ref": "logicalName"
@@ -665,7 +703,7 @@ Supported functions For the Fn::Select index value, you can use the Ref function
         "beijing"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
   "Mappings": {
@@ -683,12 +721,13 @@ Supported functions For the Fn::Select index value, you can use the Ref function
         "64": "m-25l0rcfj3"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId": {
           "Fn::FindInMap": [
             "RegionMap",
@@ -703,30 +742,36 @@ Supported functions For the Fn::Select index value, you can use the Ref function
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
         "Tags": [
+```
+
+`{`
+
+```json
             "Key": "tiantt",
             "Value": "ros"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Key": "tiantt1",
             "Value": "ros1"
 ```
 
-`]` Supported function When you use Ref function, you cannot use other functions in it at the same time. You must specify a string value for the resource logical ID. Fn::GetAZs The Fn::GetAZs function is used to return a list of zones for a specified region. Declaration
+`}` `]` `}` `}` `}` `}` Supported function When you use Ref function, you cannot use other functions in it at the same time. You must specify a string value for the resource logical ID. Fn::GetAZs The Fn::GetAZs function is used to return a list of zones for a specified region. Declaration
 
 ```
 "Fn::GetAZs": "region"
 ```
 
-`region` : the ID of the region. Return value The list of zones for the specified region. Examples The following example demonstrates how to create an ECS instance in the first zone of a specified region:
+`region` : the ID of the region. Return value The list of zones for the specified region. Examples The following example demonstrates how to create an ECS instance in the first zone of a specified region: `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId": "centos7u2_64_40G_cloudinit_2016****.raw",
         "InstanceType": "ecs.n1.tiny",
         "SecurityGroupId": "sg-2zedcm7ep5quses0****",
@@ -740,7 +785,7 @@ Supported functions For the Fn::Select index value, you can use the Ref function
         "ZoneId": {"Fn::Select": ["0", {"Fn::GetAZs": {"Ref": "ALIYUN::Region"}}]}
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -755,19 +800,20 @@ Supported functions For the Fn::Select index value, you can use the Ref function
          "Value": {"Fn::GetAtt": ["WebServer","PublicIp"]}
 ```
 
-Supported functions Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref Fn::Replace The Fn::Replace function is used to replace a specified substring contained in a string with a new substring. Declaration
+`}` `}` `}` Supported functions Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Ref Fn::Replace The Fn::Replace function is used to replace a specified substring contained in a string with a new substring. Declaration
 
 ```json
 {"Fn::Replace": [{"object_key": "object_value"}, "object_string"]}
 ```
 
-`object_key` : the substring to be replaced. `object_value` : the new substring to replace the previous substring. `object_string` : the string whose `object_key` is replaced. Return value The string after replacement. Examples The following example demonstrates how to replace "print" with "echo" in the specified script:
+`object_key` : the substring to be replaced. `object_value` : the new substring to replace the previous substring. `object_string` : the string whose `object_key` is replaced. Return value The string after replacement. Examples The following example demonstrates how to replace "print" with "echo" in the specified script: `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId" : "centos_7_2_64_40G_base_2017****.vhd",
         "InstanceType": "ecs.n1.medium",
         "SecurityGroupId": "sg-94q49****",
@@ -784,7 +830,7 @@ Supported functions Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Selec
          ]]}]}
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -815,7 +861,7 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Spli
 {"Fn::Split": [";", "foo; bar; achoo"]}
 ```
 
-`["foo", " bar", "achoo "]` is returned in this example. The following example uses Fn::Split to split InstanceIds:
+`["foo", " bar", "achoo "]` is returned in this example. The following example uses Fn::Split to split InstanceIds: `{`
 
 ```json
   "Parameters": {
@@ -824,25 +870,31 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Spli
       "Default": "instane1_id,instance2_id,instance2_id"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "resourceID": {
       "Type": "ALIYUN::SLB::BackendServerAttachment",
+      "Properties": {
         "BackendServerList": {
           "Fn::Split": [
             ",",
+```
+
+`{`
+
+```json
               "Ref": "InstanceIds"
 ```
 
-`]` Supported functions Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Fn::Replace Fn::GetAZs Fn::If Ref Fn::Equals The Fn::Equals function is used to compare whether two values are equal. If the two values are equal, true is returned. If the two values are not equal, false is returned. Declaration
+`}` `]` `}` `}` Supported functions Fn::Base64Encode Fn::FindInMap Fn::GetAtt Fn::Join Fn::Select Fn::Replace Fn::GetAZs Fn::If Ref Fn::Equals The Fn::Equals function is used to compare whether two values are equal. If the two values are equal, true is returned. If the two values are not equal, false is returned. Declaration
 
 ```json
 {"Fn::Equals": ["value_1", "value_2"]}
 ```
 
-`value` : the values to be compared. Return value true or false. Examples The following example uses Fn::Equals to define a condition in the Conditions section:
+`value` : the values to be compared. Return value true or false. Examples The following example uses Fn::Equals to define a condition in the Conditions section: `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -852,7 +904,7 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Spli
       "Type": "String"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Conditions": {
@@ -862,13 +914,13 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Spli
         {"Ref": "EnvType"}
 ```
 
-`]` Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::And The Fn::And function is used to represent the AND operator, and must contain at least two conditions. If all the specified conditions are evaluated as true, true is returned. If any condition is evaluated as false, false is returned. Declaration
+`]` `}` `}` `}` Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::And The Fn::And function is used to represent the AND operator, and must contain at least two conditions. If all the specified conditions are evaluated as true, true is returned. If any condition is evaluated as false, false is returned. Declaration
 
 ```json
 {"Fn::And": ["condition", {...}]}
 ```
 
-`condition` : the condition to be evaluated. Return value true or false. Examples The following example uses Fn::And to define a condition in the Conditions section:
+`condition` : the condition to be evaluated. Return value true or false. Examples The following example uses Fn::And to define a condition in the Conditions section: `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
@@ -878,7 +930,7 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Spli
       "Type":"String"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Conditions": {
@@ -886,13 +938,13 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Spli
     "TestAndCond": {"Fn::And": ["TestEqualsCond", {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}]}
 ```
 
-Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Or The Fn::Or function is used to represent the OR operator, and must contain at least two conditions. If any specified condition is evaluated as true, true is returned. If all the conditions are evaluated as false, false is returned. Declaration
+`}` `}` Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Or The Fn::Or function is used to represent the OR operator, and must contain at least two conditions. If any specified condition is evaluated as true, true is returned. If all the conditions are evaluated as false, false is returned. Declaration
 
 ```json
 {"Fn::Or": ["condition", {...}]}
 ```
 
-`condition` : the condition to be evaluated. Return value true or false. Examples The following example uses Fn::Or to define a condition in the Conditions section:
+`condition` : the condition to be evaluated. Return value true or false. Examples The following example uses Fn::Or to define a condition in the Conditions section: `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
@@ -902,7 +954,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Or T
       "Type":"String"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Conditions": {
@@ -910,7 +962,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Or T
     "TestOrCond": {"Fn::And": ["TestEqualsCond", {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}]}
 ```
 
-Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Not The Fn::Not function is used to represent the NOT operator. If a condition is evaluated as false, true is returned. If a condition is evaluated as true, false is returned. Declaration
+`}` `}` Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Not The Fn::Not function is used to represent the NOT operator. If a condition is evaluated as false, true is returned. If a condition is evaluated as true, false is returned. Declaration
 
 ```json
 {"Fn::Not": "condition"}
@@ -926,14 +978,14 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::Not 
       "Type":"String"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Conditions": {
     "TestNotCond": {"Fn::Not": {"Fn::Equals": ["pre", {"Ref": "EnvType"}]}}
 ```
 
-Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If This function returns one of two possible values. If a specified condition is evaluated as true, one value is returned. If the specified condition is evaluated as false, the other value is returned. The property values of Resources and Outputs in templates support the Fn::If function. You can use the `ALIYUN::NoValue` pseudo parameter as the return value to delete the corresponding property. Declaration
+`}` `}` Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If This function returns one of two possible values. If a specified condition is evaluated as true, one value is returned. If the specified condition is evaluated as false, the other value is returned. The property values of Resources and Outputs in templates support the Fn::If function. You can use the `ALIYUN::NoValue` pseudo parameter as the return value to delete the corresponding property. Declaration
 
 ```json
 {"Fn::If": ["condition_name", "value_if_true", "value_if_false"]}
@@ -945,7 +997,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
 |---|---|
 | value if false _ _ |   |
 
-`value_if_true` : If the specified condition is evaluated as true, this value is returned. `value_if_false` : If the specified condition is evaluated as false, this value is returned. Examples The following example demonstrates how to determine whether to create a data disk based on input parameters:
+`value_if_true` : If the specified condition is evaluated as true, this value is returned. `value_if_false` : If the specified condition is evaluated as false, this value is returned. Examples The following example demonstrates how to determine whether to create a data disk based on input parameters: `{`
 
 ```json
     "ROSTemplateFormatVersion":"2015-09-01",
@@ -955,7 +1007,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
             "Type":"String"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Conditions":{
@@ -970,7 +1022,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
                     "Ref":"EnvType"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "Resources":{
@@ -982,7 +1034,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
                         "CreateDisk",
 ```
 
-`[`
+`[` `{`
 
 ```json
                                 "Category":"cloud_efficiency",
@@ -990,7 +1042,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
                                 "Size":40
 ```
 
-`},`
+`},` `{`
 
 ```json
                                 "Category":"cloud_ssd",
@@ -998,13 +1050,13 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
                                 "Size":40
 ```
 
-`],`
+`}` `],` `{`
 
 ```json
                             "Ref":"ALIYUN::NoValue"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "VpcId":"vpc-2zew9pxh2yirtzqxd****",
@@ -1017,7 +1069,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
                 "InstanceType":"ecs.n1.medium"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "Outputs":{
@@ -1028,7 +1080,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
                     "InstanceId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
         "ZoneId":{
@@ -1051,16 +1103,18 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
   "Resources" : {
     "LoadBalancer": {
       "Type": "ALIYUN::SLB::LoadBalancer",
+      "Properties": {
         "LoadBalancerName": "ros",
         "AddressType": "internet",
         "InternetChargeType": "paybybandwidth",
 ```
 
-`},`
+`}` `},`
 
 ```json
     "BackendServer1": {
       "Type": "ALIYUN::ECS::InstanceGroup",
+      "Properties": {
         "ImageId" : "m-2ze9uqi7wo61hwep****",
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-2ze8yxgempcdsq3****",
@@ -1068,11 +1122,12 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
         "MinAmount": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "BackendServer2": {
       "Type": "ALIYUN::ECS::InstanceGroup",
+      "Properties": {
         "ImageId" : "m-2ze9uqi7wo61hwep****",
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-2ze8yxgempcdsq3iu****",
@@ -1080,18 +1135,19 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
         "MinAmount": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Attachment": {
       "Type": "ALIYUN::SLB::BackendServerAttachment",
+      "Properties": {
         "LoadBalancerId": {"Ref": "LoadBalancer"},
         "BackendServerList": { "Fn::ListMerge": [
             {"Fn::GetAtt": ["BackendServer1", "InstanceIds"]},
             {"Fn::GetAtt": ["BackendServer2", "InstanceIds"]}
 ```
 
-`]` Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join Fn::If Fn::GetJsonValue The Fn::GetJsonValue function is used to resolve a JSON string and obtain its key value from the first layer. Declaration
+`]` `}` `}` `}` `}` `}` Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join Fn::If Fn::GetJsonValue The Fn::GetJsonValue function is used to resolve a JSON string and obtain its key value from the first layer. Declaration
 
 ```json
 {"Fn::GetJsonValue": ["key", "json_string"]}
@@ -1101,13 +1157,14 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
 |---|---|
 | json string _ |   |
 
-`json_string` : the specified JSON string to be resolved. Examples In the following example, the WebServer instance executes UserData and returns a JSON string, and the WebServer2 instance then obtains the corresponding key value from the string.
+`json_string` : the specified JSON string to be resolved. Examples In the following example, the WebServer instance executes UserData and returns a JSON string, and the WebServer2 instance then obtains the corresponding key value from the string. `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId" : "m-2ze45uwova5fedlu****",
         "InstanceType": "ecs.n1.medium",
         "SecurityGroupId": "sg-2ze7pxymaix640qr****",
@@ -1129,7 +1186,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
          "HostName": "userdata-1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "WaitConHandle": {
@@ -1141,11 +1198,12 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
 ```json
     "WaitCondition": {
         "Type": "ALIYUN::ROS::WaitCondition",
+        "Properties": {
           "Handle": {"Ref": "WaitConHandle"},
           "Timeout": 900
 ```
 
-`},`
+`}` `},`
 
 ```json
     "WebServer2": {
@@ -1175,7 +1233,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
          "HostName": "userdata-2"
 ```
 
-`},` `},`
+`}` `},` `},`
 
 ```json
   "Outputs": {
@@ -1190,7 +1248,7 @@ Supported functions Fn::Or Fn::Not Fn::Equals Fn::FindInMap Fn::And Ref Fn::If T
          "Value" : {"Fn::GetAtt": ["WebServer","PublicIp"]}
 ```
 
-Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join Fn::If Fn::MergeMapToList The Fn::MergeMapToList function is used to merge multiple mappings into a list of mapping elements. Declaration
+`}` `}` `}` Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join Fn::If Fn::MergeMapToList The Fn::MergeMapToList function is used to merge multiple mappings into a list of mapping elements. Declaration
 
 ```json
 {"Fn::MergeMapToList": [{"key_1": ["key_1_item_1", "key_1_item_2", ...]}, {"key_2":["key_2_item_1 ", "key_2_item_2", ...]}, ... ]}
@@ -1200,7 +1258,7 @@ Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join
 |---|---|---|
 | value must be a list. | " key 1" _ | is the key for each map |
 
-value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for the second merged mapping. All values follow the same format. The length of the final list of merged mappings is the length of the longest list `"key_x"` from all mappings being merged. If a `"key_y"` list is shorter, the last element of the list is repeated until the list is the longest. `{"key_2": ["key_2_item_1", "key_2_item_2", ...]}` : the second mapping to merge into the first mapping. The `" key_2"` value must be a list. `" key_2"` is the key for each mapping in the merged list. The "key_2" value is `"key_2_item_1"` for the first merged mapping and `"key_2_item_2"` for the second merged mapping. Examples The following example demonstrates how to merge three mappings. The length of the list based on the key values for each mapping is the same.
+value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for the second merged mapping. All values follow the same format. The length of the final list of merged mappings is the length of the longest list `"key_x"` from all mappings being merged. If a `"key_y"` list is shorter, the last element of the list is repeated until the list is the longest. `{"key_2": ["key_2_item_1", "key_2_item_2", ...]}` : the second mapping to merge into the first mapping. The `" key_2"` value must be a list. `" key_2"` is the key for each mapping in the merged list. The "key_2" value is `"key_2_item_1"` for the first merged mapping and `"key_2_item_2"` for the second merged mapping. Examples The following example demonstrates how to merge three mappings. The length of the list based on the key values for each mapping is the same. `{`
 
 ```json
    "Fn::MergeMapToList": [
@@ -1209,7 +1267,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       {"key_3": ["kye_3_item_1", "kye_3_item_2"]}
 ```
 
-`]` The following code shows the merged result: `[`
+`]` `}` The following code shows the merged result: `[` `{`
 
 ```json
       "key_1": "kye_1_item_1",
@@ -1217,7 +1275,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       "key_3": "kye_3_item_1"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key_1": "kye_1_item_2",
@@ -1225,7 +1283,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       "key_3": "kye_3_item_2"
 ```
 
-`]` The length of the list based on the key values for each mapping varies in the following example:
+`}` `]` The length of the list based on the key values for each mapping varies in the following example: `{`
 
 ```json
    "Fn::MergeMapToList": [
@@ -1234,7 +1292,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       {"key_3": ["kye_3_item_1", "kye_3_item_2"]}
 ```
 
-`]` The following code shows the merged result: `[`
+`]` `}` The following code shows the merged result: `[`
 
 ```json
       "key_1": "kye_1_item_1",
@@ -1242,7 +1300,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       "key_3": "kye_3_item_1"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key_1": "kye_1_item_2",
@@ -1250,7 +1308,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       "key_3": "kye_3_item_2"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key_1": "kye_1_item_2",
@@ -1258,24 +1316,26 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
       "key_3": "kye_3_item_2"
 ```
 
-`]` In the following template example, all instances created in WebServer are added to the VServer group of an SLB instance:
+`}` `]` In the following template example, all instances created in WebServer are added to the VServer group of an SLB instance: `{`
 
 ```json
     "ROSTemplateFormatVersion": "2015-09-01",
     "Resources": {
         "WebServer": {
           "Type": "ALIYUN::ECS::InstanceGroupClone",
+          "Properties": {
               "SourceInstanceId": "i-xxxxx",
                "Password": "Hello****",
                "MinAmount": 1,
                "MaxAmount": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
         "CreateVServerGroup": {
             "Type": "ALIYUN::SLB::VServerGroup",
+            "Properties": {
                 "LoadBalancerId": "lb-****",
                 "VServerGroupName": "VServerGroup-****",
                 "BackendServers": {
@@ -1285,7 +1345,7 @@ value is `"key_1_item_1"` for the first merged mapping and `"key_1_item_2"` for 
                        {"Weight": [20, 100]}
 ```
 
-`]` Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join Fn::If Fn::ListMerge Fn::GetJsonValue Fn::Avg The Fn::Avg function is used to return the average value of a set of numbers. Declaration
+`]` `}` `}` `}` `}` `}` Supported functions Fn::Base64Encode Fn::GetAtt Fn::Join Fn::Select Ref Fn::Join Fn::If Fn::ListMerge Fn::GetJsonValue Fn::Avg The Fn::Avg function is used to return the average value of a set of numbers. Declaration
 
 ```json
 {"Fn::Avg": [ndigits, [number1, number2, ... ]]}
@@ -1326,13 +1386,13 @@ Return value A list of key values for all maps in the map list. Examples
       {"key1": "value3-1", "key2": "value3-2"}
 ```
 
-`]` `]` `["value2-2","value3-2"]` is returned in this example. Fn::Add The Fn::Add function is used to sum the values of parameters. Declaration
+`]` `]` `}` `["value2-2","value3-2"]` is returned in this example. Fn::Add The Fn::Add function is used to sum the values of parameters. Declaration
 
 ```json
 {"Fn::Add": [{"Product": "ROS"}, {"Fn": "Add"}]}
 ```
 
-The parameters must be arranged as a list. The parameters in the list can be of the Number, List, or Dictionary type. All the parameters must be of the same type. The list must contain at least two parameters. Return value If the parameter values are numbers, sum the parameter values. If the parameter values are lists, concatenate the values. If the parameter values are dictionaries, merge the values. If the two parameters have the same key, overwrite the former parameter value with the latter. Examples
+The parameters must be arranged as a list. The parameters in the list can be of the Number, List, or Dictionary type. All the parameters must be of the same type. The list must contain at least two parameters. Return value If the parameter values are numbers, sum the parameter values. If the parameter values are lists, concatenate the values. If the parameter values are dictionaries, merge the values. If the two parameters have the same key, overwrite the former parameter value with the latter. Examples `{`
 
 ```json
  "Fn::Add": [
@@ -1340,7 +1400,7 @@ The parameters must be arranged as a list. The parameters in the list can be of 
    {"Fn": "Add"}
 ```
 
-`]` `{"Fn":"Add","Product":"ROS"}` is returned in this example.
+`]` `}` `{"Fn":"Add","Product":"ROS"}` is returned in this example.
 
 ### 4.6 Mappings
 
@@ -1355,7 +1415,7 @@ The Mappings section is a key-value mapping table. When mappings are used in Res
         "TestKey4": {"TestValu4": 1234}
 ```
 
-The following example shows an incorrect mapping definition:
+`}` `}` The following example shows an incorrect mapping definition:
 
 ```json
 "Mappings": {
@@ -1371,7 +1431,7 @@ The following example shows an incorrect mapping definition:
     "InvalidMapping3": "foobar"
 ```
 
-The following example shows how to use Fn::FindInMap to find the return value:
+`}` The following example shows how to use Fn::FindInMap to find the return value:
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -1384,7 +1444,7 @@ The following example shows how to use Fn::FindInMap to find the return value:
         "beijing"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
   "Mappings": {
@@ -1402,15 +1462,21 @@ The following example shows how to use Fn::FindInMap to find the return value:
         "64": "m-25l0rcfj3"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId": {
           "Fn::FindInMap": [
             "RegionMap",
+```
+
+`{`
+
+```json
               "Ref": "regionParam"
 ```
 
@@ -1427,18 +1493,23 @@ The following example shows how to use Fn::FindInMap to find the return value:
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
         "Tags": [
+```
+
+`{`
+
+```json
             "Key": "Department1",
             "Value": "HumanResource"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Key": "Department2",
             "Value": "Finance"
 ```
 
-`]`
+`}` `]` `}` `}` `}`
 
 ### 4.7 Conditions
 
@@ -1452,7 +1523,7 @@ There are four conditional operators: Fn::And, Fn::Or, Fn::Not, and Fn::Equals. 
        "ProdEnv": {"Fn::And": [{"Fn::Equals": ["Prod", {"Ref": "EnvType"}]}, "PREEnv"]}
 ```
 
-The following example shows how to use conditions in a resource definition: In this example, a condition is used to determine whether to create a data disk and an OSS bucket for an ECS instance based on the EnvType value.
+`}` The following example shows how to use conditions in a resource definition: In this example, a condition is used to determine whether to create a data disk and an OSS bucket for an ECS instance based on the EnvType value. `{`
 
 ```json
     "ROSTemplateFormatVersion":"2015-09-01",
@@ -1462,17 +1533,22 @@ The following example shows how to use conditions in a resource definition: In t
             "Type":"String"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Conditions":{
         "CreateProdRes":{
             "Fn::Equals":[
                 "prod",
+```
+
+`{`
+
+```json
                     "Ref":"EnvType"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "Resources":{
@@ -1487,7 +1563,7 @@ The following example shows how to use conditions in a resource definition: In t
                         "CreateProdRes",
 ```
 
-`[`
+`[` `{`
 
 ```json
                                 "Category":"cloud_efficiency",
@@ -1495,7 +1571,7 @@ The following example shows how to use conditions in a resource definition: In t
                                 "Size":40
 ```
 
-`},`
+`},` `{`
 
 ```json
                                 "Category":"cloud_ssd",
@@ -1503,13 +1579,13 @@ The following example shows how to use conditions in a resource definition: In t
                                 "Size":40
 ```
 
-`],`
+`}` `],` `{`
 
 ```json
                             "Ref":"ALIYUN::NoValue"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
                 "VpcId":"vpc-2zew9pxh2yirtzqxd****",
@@ -1522,17 +1598,18 @@ The following example shows how to use conditions in a resource definition: In t
                 "InstanceType":"ecs.n1.medium"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "OssBucket": {
             "Type": "ALIYUN::OSS::Bucket",
             "Condition": "CreateProdRes",
+            "Properties": {
                 "AccessControl": "private",
                 "BucketName": "myprodbucket"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "Outputs":{
@@ -1543,7 +1620,7 @@ The following example shows how to use conditions in a resource definition: In t
                     "InstanceId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
         "OssDomain":{
@@ -1562,7 +1639,7 @@ The following example shows how to use conditions in a resource definition: In t
 
 #### 5.1.1 ALIYUN::ECS::AutoSnapshotPolicy
 
-ALIYUN::ECS::AutoSnapshotPolicy is used to create an automatic snapshot policy. Statement
+ALIYUN::ECS::AutoSnapshotPolicy is used to create an automatic snapshot policy. Statement `{`
 
 ```json
   "Type" : "ALIYUN::ECS::AutoSnapshotPolicy",
@@ -1574,7 +1651,7 @@ ALIYUN::ECS::AutoSnapshotPolicy is used to create an automatic snapshot policy. 
     "AutoSnapshotPolicyName" : String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -1600,6 +1677,7 @@ Response parameters Fn::GetAtt AutoSnapshotPolicyId: the ID of the automatic sna
   "Resources": {
     "AutoSnapshotPolicy": {
       "Type": "ALIYUN::ECS::AutoSnapshotPolicy",
+      "Properties": {
         "TimePoints": ["0"],
         "RepeatWeekdays": ["1"],
         "RetentionDays": 10,
@@ -1607,12 +1685,15 @@ Response parameters Fn::GetAtt AutoSnapshotPolicyId: the ID of the automatic sna
         "AutoSnapshotPolicyName": "MyAutoSnapshotPolicy"
 ```
 
+`}` `}` `}` `}`
+
 #### 5.1.2 ALIYUN::ECS::BandwidthPackage
 
-ALIYUN::ECS::BandwidthPackage is used to create a service plan for a NAT gateway. Syntax
+ALIYUN::ECS::BandwidthPackage is used to create a service plan for a NAT gateway. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ECS::BandwidthPackage",
+  "Properties": {
     "Description": String,
     "NatGatewayId": String,
     "ZoneId": String,
@@ -1621,7 +1702,7 @@ ALIYUN::ECS::BandwidthPackage is used to create a service plan for a NAT gateway
     "IpCount": Integer
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -1642,6 +1723,7 @@ Response parameters Fn::GetAtt BandwidthPackageId: the ID of the service plan. B
   "Resources": {
     "BandwidthPackage": {
       "Type": "ALIYUN::ECS::BandwidthPackage",
+      "Properties": {
         "BandwidthPackageName": "pkg_2",
         "Description": "my_bandwidth",
         "NatGatewayId": "ngw-h1xox****",
@@ -1650,7 +1732,7 @@ Response parameters Fn::GetAtt BandwidthPackageId: the ID of the service plan. B
         "ZoneId": "cn-beijing-c"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -1665,12 +1747,15 @@ Response parameters Fn::GetAtt BandwidthPackageId: the ID of the service plan. B
          "Value": {"Fn::GetAttr": ["BandwidthPackage","BandwidthPackageIps"]}
 ```
 
+`}` `}` `}`
+
 #### 5.1.3 ALIYUN::ECS::Command
 
-ALIYUN::ECS::Command is used to create a Cloud Assistant command. Statement
+ALIYUN::ECS::Command is used to create a Cloud Assistant command. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::Command",
+  "Properties": {
     "Name": String,
     "WorkingDir": String,
     "CommandContent": String,
@@ -1679,7 +1764,7 @@ ALIYUN::ECS::Command is used to create a Cloud Assistant command. Statement
     "Description": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -1745,12 +1830,13 @@ unit as second. Default is 3600s."
       "Description": "The name of command."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "Command": {
       "Type": "ALIYUN::ECS::Command",
+      "Properties": {
         "WorkingDir": {
           "Ref": "WorkingDir"
 ```
@@ -1802,14 +1888,15 @@ unit as second. Default is 3600s."
           "CommandId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.4 ALIYUN::ECS::CustomImage
 
-ALIYUN::ECS::CustomImage is used to create a custom image. Statement
+ALIYUN::ECS::CustomImage is used to create a custom image. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::CustomImage",
+  "Properties": {
     "Description": String,
     "InstanceId": String,
     "ImageName": String,
@@ -1822,7 +1909,7 @@ ALIYUN::ECS::CustomImage is used to create a custom image. Statement
     "Architecture": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required or Not | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -1850,11 +1937,16 @@ Tag syntax
 
 ```json
 "Tag": [
+```
+
+`{`
+
+```json
     "Key": String,
     "Value": String
 ```
 
-`]` Tag properties
+`}` `]` Tag properties
 
 | Parameter | Type | Required or Not | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -1871,7 +1963,7 @@ DiskDeviceMapping
     "DiskType": String
 ```
 
-`]` DiskDeviceMapping properties
+`}` `]` DiskDeviceMapping properties
 
 | Parameter | Type | Required or Not | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -1890,6 +1982,7 @@ Response parameters Fn::GetAtt ImageId: the ID of the custom image. Sample reque
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroup",
+      "Properties": {
         "VpcId": "vpc-2zevx9ios1rszqv0a****",
         "MinAmount": 1,
         "SecurityGroupId": "sg-2ze7pxymaix640qr****",
@@ -1910,18 +2003,19 @@ Response parameters Fn::GetAtt ImageId: the ID of the custom image. Sample reque
         "MaxAmount": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "CustomImage": {
       "Type": "ALIYUN::ECS::CustomImage",
+      "Properties": {
         "InstanceId": "i-2zefq1f3ynnrr89q****",
         "SnapshotId": "s-2ze0ibk1pvak4mw6****",
         "ImageName": "image-test-****",
         "ImageVersion": "verison-6-1"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -1932,7 +2026,7 @@ Response parameters Fn::GetAtt ImageId: the ID of the custom image. Sample reque
           "ImageId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "InstanceIds": {
@@ -1942,7 +2036,7 @@ Response parameters Fn::GetAtt ImageId: the ID of the custom image. Sample reque
           "InstanceIds"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.5 ALIYUN::ECS::DedicatedHost
 
@@ -1950,6 +2044,7 @@ ALIYUN::ECS::DedicatedHost is used to create a dedicated host. Statement
 
 ```json
   "Type": "ALIYUN::ECS::DedicatedHost",
+  "Properties": {
     "DedicatedHostType": String,
     "DedicatedHostName": String,
     "AutoReleaseTime": String,
@@ -1965,7 +2060,7 @@ ALIYUN::ECS::DedicatedHost is used to create a dedicated host. Statement
     "Quantity": Integer
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2058,12 +2153,13 @@ Response parameters Fn::GetAtt OrderId: the ID of the order. DedicatedHostIds: t
 format is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "Host": {
       "Type": "ALIYUN::ECS::DedicatedHost",
+      "Properties": {
           "Description": {
           "Ref": "Description"
 ```
@@ -2110,7 +2206,7 @@ format is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
           "Ref": "AutoReleaseTime"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -2122,7 +2218,7 @@ format is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
           "OrderId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "DedicatedHostIds": {
@@ -2133,14 +2229,15 @@ format is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
           "DedicatedHostIds"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.6 ALIYUN::ECS::Disk
 
-ALIYUN::ECS::Disk is used to create an ECS Disk. Statement
+ALIYUN::ECS::Disk is used to create an ECS Disk. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::Disk",
+  "Properties": {
     "DiskName": String,
     "Description": String,
     "Tags": List,
@@ -2155,7 +2252,7 @@ ALIYUN::ECS::Disk is used to create an ECS Disk. Statement
     "Size": Integer
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type |   |   | Required |   |   | Editable |   |   | Description |   | Constraint |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2196,11 +2293,16 @@ Tags syntax
 
 ```json
 "Tags" : [
+```
+
+`{`
+
+```json
     "Value" : String,
     "Key" : String
 ```
 
-`]` Tags properties
+`}` `]` Tags properties
 
 | Parameter | Type | Required | Editable |
 |---|---|---|---|
@@ -2214,13 +2316,14 @@ Response parameters Fn::GetAtt DiskId: the ID of the disk. Status: The Status of
   "Resources" : {
     "DataDisk": {
       "Type": "ALIYUN::ECS::Disk",
+      "Properties": {
         "Size": 10,
         "ZoneId": "cn-beijing-a",
         "DiskName": "DataDisk",
         "Description": "ECSDataDisk"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -2235,9 +2338,11 @@ Response parameters Fn::GetAtt DiskId: the ID of the disk. Status: The Status of
          "Value" : {"Fn::GetAtt": ["DataDisk","Status"]}
 ```
 
+`}` `}` `}`
+
 #### 5.1.7 ALIYUN::ECS::DiskAttachment
 
-ALIYUN::ECS::DiskAttachment is used to attach an ECS disk. Statement
+ALIYUN::ECS::DiskAttachment is used to attach an ECS disk. Statement `{`
 
 ```json
    "Type" : "ALIYUN::ECS::DiskAttachment",
@@ -2248,7 +2353,7 @@ ALIYUN::ECS::DiskAttachment is used to attach an ECS disk. Statement
       "DeleteWithInstance" : String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2260,13 +2365,14 @@ Properties
 | Device | String | Yes | Released | The name of the disk. | If you do not set this parameter, the system will automatically allocate a device name in alphabetical order from /dev/xvdb to /dev/xvdz. |
 | DeleteWithInsta nce | Boolean | Erased | Released | Specifies whether the disk is to be released together with the instance. | Valid values: true: The disk will be released when the instance is released. false: The disk will be retained when the instance is released. |
 
-Response parameters Fn::GetAtt DiskId: the ID of the disk. Status: The Status of the disk. The name of the Device: disk. Sample request
+Response parameters Fn::GetAtt DiskId: the ID of the disk. Status: The Status of the disk. The name of the Device: disk. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "DiskAttachment": {
       "Type": "ALIYUN::ECS::DiskAttachment",
+      "Properties": {
         "InstanceId": {
           "Ref": "InstanceId"
 ```
@@ -2332,7 +2438,7 @@ ce is deleted. If this parameter is set to false, the disk will be retained afte
       "Description": "The ID of the disk to be attached."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -2344,7 +2450,7 @@ ce is deleted. If this parameter is set to false, the disk will be retained afte
           "Status"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "Device": {
@@ -2355,7 +2461,7 @@ ce is deleted. If this parameter is set to false, the disk will be retained afte
           "Device"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "DiskId": {
@@ -2370,10 +2476,11 @@ ce is deleted. If this parameter is set to false, the disk will be retained afte
 
 #### 5.1.8 ALIYUN::ECS::ForwardEntry
 
-ALIYUN::ECS::ForwardEntry is used to configure the DNAT table of a NAT Gateway. Statement
+ALIYUN::ECS::ForwardEntry is used to configure the DNAT table of a NAT Gateway. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::ForwardEntry",
+  "Properties": {
     "ExternalIp": String,
     "ExternalPort": String,
     "ForwardTableId": String,
@@ -2382,7 +2489,7 @@ ALIYUN::ECS::ForwardEntry is used to configure the DNAT table of a NAT Gateway. 
     "InternalPort": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2393,13 +2500,14 @@ Properties
 | IpProtocol | String | No | No | The type of the protocol. | Valid values: TCP, UDP, and Any. |
 | InternalPort | String | No | No | The destination private port. | Valid values: 1 to 65535. |
 
-Response parameters Fn::GetAtt ForwardEntryId: the ID of each entry in the DNAT table. Sample request
+Response parameters Fn::GetAtt ForwardEntryId: the ID of each entry in the DNAT table. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ForwardEntry": {
       "Type": "ALIYUN::ECS::ForwardEntry",
+      "Properties": {
         "ForwardTableId": "my_forwardtable",
         "ExternalIp": "101.201.XX.XX",
         "ExternalPort": "8080",
@@ -2408,13 +2516,15 @@ Response parameters Fn::GetAtt ForwardEntryId: the ID of each entry in the DNAT 
         "InternalPort": "80"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
     "ForwardEntryId": {
       "Value" : {"Fn::GetAttr": ["ForwardEntry","ForwardEntryId"]}
 ```
+
+`}` `}` `}`
 
 #### 5.1.9 ALIYUN::ECS::Instance
 
@@ -2450,7 +2560,7 @@ ALIYUN::ECS::Instance is used to create an ECS instance. Statement
     "DiskMappings": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2504,6 +2614,11 @@ DiskMappings syntax
 
 ```json
 "DiskMappings": [
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
@@ -2512,7 +2627,7 @@ DiskMappings syntax
     "Size": String
 ```
 
-`]` DiskMappings properties
+`}` `]` DiskMappings properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2527,11 +2642,16 @@ Tags syntax
 
 ```json
 "Tags": [
+```
+
+`{`
+
+```json
     "Value": String,
     "Key": String
 ```
 
-`]` Tags properties
+`}` `]` Tags properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2545,6 +2665,7 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId": "m-25l0rc****",
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
@@ -2557,7 +2678,7 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
             "Value": "ros1"
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -2571,6 +2692,8 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
     "PublicIp": {
          "Value": {"get_attr": ["WebServer","PublicIp"]}
 ```
+
+`}` `}` `}`
 
 #### 5.1.10 ALIYUN::ECS::InstanceClone
 
@@ -2600,7 +2723,7 @@ ALIYUN::ECS::InstanceClone is used to clone an ECS instance. Statement
     "KeyPairName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2641,6 +2764,11 @@ DiskMappings syntax
 
 ```json
 "DiskMappings": [
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
@@ -2649,7 +2777,7 @@ DiskMappings syntax
     "Size": String
 ```
 
-`]` DiskMappings properties
+`}` `]` DiskMappings properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2668,7 +2796,7 @@ Tags syntax
     "Key": String
 ```
 
-`]` Tags properties
+`}` `]` Tags properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2682,6 +2810,7 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceClone",
+      "Properties": {
         "SourceInstanceId": "i-25zsk****",
         "SecurityGroupId": "sg-25zwc****",
         "ZoneId": "cn-beijing-b",
@@ -2690,7 +2819,7 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
             {"Size": 10, "Category": "cloud", "SnapshotId": "s-25wsw****"}
 ```
 
-`]` `},`
+`]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -2704,6 +2833,8 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
     "PublicIp": {
          "Value": {"get_attr": ["WebServer","PublicIp"]}
 ```
+
+`}` `}` `}`
 
 #### 5.1.11 ALIYUN::ECS::InstanceGroup
 
@@ -2750,7 +2881,7 @@ ALIYUN::ECS::InstanceGroup is used to create an ECS instance group. Syntax
     "SystemDiskPerformanceLevel": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Attribute | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2834,7 +2965,7 @@ DiskMappings syntax
     "AutoSnapshotPolicyId": String
 ```
 
-`]` DiskMappings properties
+`}` `]` DiskMappings properties
 
 | Attribute | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2856,11 +2987,16 @@ Tags syntax
 
 ```json
 "Tags": [
+```
+
+`{`
+
+```json
     "Value": String,
     "Key": String
 ```
 
-`]` Tags properties
+`}` `]` Tags properties
 
 | Attribute | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2871,6 +3007,11 @@ EniMappings syntax
 
 ```json
 "EniMappings": [
+```
+
+`{`
+
+```json
     "SecurityGroupId": String,
     "VSwitchId": String,
     "Description": String,
@@ -2878,7 +3019,7 @@ EniMappings syntax
     "PrimaryIpAddress": String
 ```
 
-`]` EniMappings properties
+`}` `]` EniMappings properties
 
 | Attribute | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -2898,6 +3039,7 @@ Return value Fn::GetAtt InstanceIds: the IDs of created instances in the ECS ins
   "Resources":{
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroup",
+      "Properties": {
         "ImageId":"m-25l0r****",
         "InstanceType": "ecs.t1.small",
         "SecurityGroupId": "sg-25zwc****",
@@ -2912,7 +3054,7 @@ Return value Fn::GetAtt InstanceIds: the IDs of created instances in the ECS ins
             "Value": "ros1"
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -2926,6 +3068,8 @@ Return value Fn::GetAtt InstanceIds: the IDs of created instances in the ECS ins
     "PublicIps": {
          "Value":{"get_attr": ["WebServer","PublicIps"]}
 ```
+
+`}` `}` `}`
 
 #### 5.1.12 ALIYUN::ECS::InstanceGroupClone
 
@@ -2965,7 +3109,7 @@ ALIYUN::ECS::InstanceGroupClone is used to clone an ECS instance group. Statemen
     "SystemDiskDescription": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Req uire d | Edit abl e | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3037,7 +3181,7 @@ DiskMappings syntax
     "Size": String
 ```
 
-`]` DiskMappings properties
+`}` `]` DiskMappings properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3058,6 +3202,11 @@ EniMappings syntax
 
 ```json
 "EniMappings": [
+```
+
+`{`
+
+```json
     "SecurityGroupId": String,
     "VSwitchId": String,
     "Description": String,
@@ -3065,7 +3214,7 @@ EniMappings syntax
     "PrimaryIpAddress": String
 ```
 
-`]` EniMappings properties
+`}` `]` EniMappings properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3079,11 +3228,16 @@ Tags syntax
 
 ```json
 "Tags": [
+```
+
+`{`
+
+```json
     "Value": String,
     "Key": String
 ```
 
-`]` Tags properties
+`}` `]` Tags properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3097,6 +3251,7 @@ Response parameters Fn::GetAtt InstanceIds: the IDs of instances in the ECS inst
   "Resources": {
     "WebServer": {
       "Type": "ALIYUN::ECS::InstanceGroupClone",
+      "Properties": {
         "SourceInstanceId": "i-25zsk****",
         "ImageId": "m-25l0r****",
         "SecurityGroupId": "sg-25zwc****",
@@ -3105,7 +3260,7 @@ Response parameters Fn::GetAtt InstanceIds: the IDs of instances in the ECS inst
         "MinAmount": 1
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -3120,19 +3275,22 @@ Response parameters Fn::GetAtt InstanceIds: the IDs of instances in the ECS inst
       "Value": {"get_attr": ["WebServer","PublicIps"]}
 ```
 
+`}` `}` `}`
+
 #### 5.1.13 ALIYUN::ECS::Invocation
 
-ALIYUN::ECS::Invocation is used to invoke a Cloud Assistant command for one or more ECS instances. Statement
+ALIYUN::ECS::Invocation is used to invoke a Cloud Assistant command for one or more ECS instances. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::Invocation",
+  "Properties": {
     "Timed": Boolean,
     "Frequency": String,
     "CommandId": String,
     "InstanceIds": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3144,7 +3302,7 @@ Properties
 | CommandId | String | No | No | The ID of the script. | None |
 | InstanceIds | List | Yes | No | The IDs of the instances for which you want to invoke the command. A maximum of 20 instance IDs can be specified. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt The execution ID of the InvokeId: command. Sample request
+Response parameters Fn::GetAtt The execution ID of the InvokeId: command. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -3215,16 +3373,21 @@ d network type must be VPC network, status must be running"
         "InstanceIds": {
           "Fn::Split": [
             ",",
-              "Ref": "InstanceIds"
 ```
 
-`},`
+`{`
 
 ```json
               "Ref": "InstanceIds"
 ```
 
-`]` `},`
+`},` `{`
+
+```json
+              "Ref": "InstanceIds"
+```
+
+`}` `]` `}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -3236,14 +3399,15 @@ d network type must be VPC network, status must be running"
           "InvokeId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.14 ALIYUN::ECS::JoinSecurityGroup
 
-ALIYUN::ECS::JoinSecurityGroup is used to add one or more ECS instances to a specified security group. Syntax
+ALIYUN::ECS::JoinSecurityGroup is used to add one or more ECS instances to a specified security group. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ECS::JoinSecurityGroup",
+  "Properties": {
     "InstanceId": String,
     "InstanceIdList": List,
     "SecurityGroupId": String,
@@ -3259,20 +3423,21 @@ Properties
 | InstanceIdList | List | No | Yes | The IDs of the ECS instances to be added to the security group. | None |
 | NetworkInterfa ceList | List | No | Yes | The IDs of the elastic network interfaces (ENIs). | None |
 
-Response parameters Fn::GetAtt Examples `JSON` format
+Response parameters Fn::GetAtt None Examples `JSON` format `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SG": {
       "Type": "ALIYUN::ECS::JoinSecurityGroup",
+      "Properties": {
         "SecurityGroupId": "sg-m5eagh7rzys2z8sa****",
         "InstanceIdList": [
           "i-m5e505h9bgsio0wy****",
           "i-m5e505hio0wyjc6r****"
 ```
 
-`]` `YAML` format
+`]` `}` `}` `}` `}` `YAML` format
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Resources:
@@ -3287,10 +3452,11 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
 
 #### 5.1.15 ALIYUN::ECS::LaunchTemplate
 
-ALIYUN::ECS::LaunchTemplate is used to create an ECS instance launch template. Syntax
+ALIYUN::ECS::LaunchTemplate is used to create an ECS instance launch template. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ECS::LaunchTemplate",
+  "Properties": {
     "LaunchTemplateName": String,
     "VersionDescription": String,
     "ImageId": String,
@@ -3323,7 +3489,7 @@ ALIYUN::ECS::LaunchTemplate is used to create an ECS instance launch template. S
     "TemplateTags": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3376,6 +3542,11 @@ DiskMappings syntax
 
 ```json
 "DiskMappings": [
+```
+
+`{`
+
+```json
     "Category": String,
     "DiskName": String,
     "Description": String,
@@ -3385,7 +3556,7 @@ DiskMappings syntax
     "DeleteWithInstance": String
 ```
 
-`]` DiskMappings properties
+`}` `]` DiskMappings properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3411,7 +3582,7 @@ NetworkInterfaces syntax
     "Description": String
 ```
 
-`]` NetworkInterfaces properties
+`}` `]` NetworkInterfaces properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3425,11 +3596,16 @@ Tags syntax
 
 ```json
 "Tags": [
+```
+
+`{`
+
+```json
     "Value": String,
     "Key": String
 ```
 
-`]` Tags properties
+`}` `]` Tags properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3444,20 +3620,21 @@ TemplateTags syntax
     "Key": String
 ```
 
-`]` TemplateTags properties
+`}` `]` TemplateTags properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
 | key | String | Yes | No | None | None |
 | value | String | No | No | None | None |
 
-Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch template. LaunchTemplateName: the name of the instance launch template. DefaultVersionNumber: the default version number of the instance launch template. LatestVersionNumber: the latest version number of the instance launch template. Examples
+Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch template. LaunchTemplateName: the name of the instance launch template. DefaultVersionNumber: the default version number of the instance launch template. LatestVersionNumber: the latest version number of the instance launch template. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Template1": {
       "Type": "ALIYUN::ECS::LaunchTemplate",
+      "Properties": {
         "LaunchTemplateName": "MyTemplate",
         "VersionDescription": "Launch template with all properties set",
         "ImageId": "m-2ze9uqi7wo61hwep****",
@@ -3489,6 +3666,11 @@ Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch t
         "SpotPriceLimit": "100.001",
         "SecurityEnhancementStrategy": "Active",
         "DiskMappings": [
+```
+
+`{`
+
+```json
             "Category": "cloud_ssd",
             "Size": 40,
             "SnapshotId": "s-2ze1fr2bipove27b****",
@@ -3498,7 +3680,7 @@ Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch t
             "DeleteWithInstance": true
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Category": "cloud_efficiency",
@@ -3510,10 +3692,15 @@ Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch t
             "DeleteWithInstance": true
 ```
 
-`],`
+`}` `],`
 
 ```json
      "NetworkInterfaces": [
+```
+
+`{`
+
+```json
             "PrimaryIpAddress": "10.10.1.1",
             "VSwitchId": "vsw-2zetgeiqlemyok9z5****",
             "SecurityGroupId": "sg-2ze8yxgempcdsq3i****",
@@ -3525,33 +3712,43 @@ Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch t
 
 ```json
      "Tags": [
+```
+
+`{`
+
+```json
             "Key": "key1",
             "Value": "value1"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Key": "key2",
             "Value": "value2"
 ```
 
-`],`
+`}` `],`
 
 ```json
      "TemplateTags": [
+```
+
+`{`
+
+```json
             "Key": "templateKey1",
             "Value": "templateValue1"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Key": "templateKey2",
             "Value": "templateValue2"
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -3580,12 +3777,15 @@ Response parameters Fn::GetAtt LaunchTemplateId: the ID of the instance launch t
           "Value": {"Fn::GetAtt": ["Template1","LatestVersionNumber"]}
 ```
 
+`}` `}` `}`
+
 #### 5.1.16 ALIYUN::ECS::NatGateway
 
-ALIYUN::ECS::NatGateway is used to create a NAT Gateway for a VPC. Statement
+ALIYUN::ECS::NatGateway is used to create a NAT Gateway for a VPC. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::NatGateway",
+  "Properties": {
     "DeletionProtection": Boolean,
     "VpcId": String,
     "Description": String,
@@ -3595,7 +3795,7 @@ ALIYUN::ECS::NatGateway is used to create a NAT Gateway for a VPC. Statement
     "Spec": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3617,6 +3817,7 @@ Response parameters Fn::GetAtt ForwardTableId: the ID of the port forwarding tab
   "Resources": {
     "NatGateway": {
       "Type": "ALIYUN::ECS::NatGateway",
+      "Properties": {
         "NatGatewayName": "nat_gateway_1",
         "Description": "my nat gateway",
         "VpcId": "vpc-25o8s****",
@@ -3624,7 +3825,7 @@ Response parameters Fn::GetAtt ForwardTableId: the ID of the port forwarding tab
         "Spec": "Small"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -3646,12 +3847,15 @@ Response parameters Fn::GetAtt ForwardTableId: the ID of the port forwarding tab
          "Value": {"Fn::GetAttr": ["NatGateway", "SNatTableId"]}
 ```
 
+`}` `}` `}`
+
 #### 5.1.17 ALIYUN::ECS::NetworkInterface
 
-ALIYUN::ECS::NetworkInterface is used to create an elastic network interface (ENI). Statement
+ALIYUN::ECS::NetworkInterface is used to create an elastic network interface (ENI). Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::NetworkInterface",
+  "Properties": {
     "Description": String,
     "SecurityGroupId": String,
     "PrimaryIpAddress": String,
@@ -3660,7 +3864,7 @@ ALIYUN::ECS::NetworkInterface is used to create an elastic network interface (EN
     "NetworkInterfaceName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3680,7 +3884,7 @@ Properties
 | NetworkInterfa ceName | String | Yes | True | The name of the ENI. The name must be 2 to 128 characters in length Must start with an uppercase or lowercase letter, and cannot start with http:// and https:// the beginning. It can contain letters, digits, colons (:), underscores ( ), _ and hyphens (- ). Default value: null. | None |
 | PrimaryIpAddre ss | String | Yes | Released | The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address in the VSwitch CIDR block is assigned at random. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt NetworkInterfaceId: the ID of the ENI. The MAC address of the MacAddress: Elastic Network Interface. The private IP address of the PrivateIpAddress: Elastic Network Interface. Sample request
+Response parameters Fn::GetAtt NetworkInterfaceId: the ID of the ENI. The MAC address of the MacAddress: Elastic Network Interface. The private IP address of the PrivateIpAddress: Elastic Network Interface. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -3726,12 +3930,13 @@ ENI must be in a same VPC."
 ave the same Host ID as the VSwitch. If no IP addresses are specified, a random network ID is ass igned for the ENI."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "EniInstance": {
       "Type": "ALIYUN::ECS::NetworkInterface",
+      "Properties": {
         "Description": {
           "Ref": "Description"
 ```
@@ -3776,19 +3981,20 @@ ave the same Host ID as the VSwitch. If no IP addresses are specified, a random 
           "NetworkInterfaceId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.18 ALIYUN::ECS::NetworkInterfaceAttachment
 
-ALIYUN::ECS::NetworkInterfaceAttachment is used to attach an elastic network interface (ENI) to an instance in a VPC. Statement
+ALIYUN::ECS::NetworkInterfaceAttachment is used to attach an elastic network interface (ENI) to an instance in a VPC. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::NetworkInterfaceAttachment",
+  "Properties": {
     "InstanceId": String,
     "NetworkInterfaceId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3813,12 +4019,13 @@ Response parameters Fn::GetAtt NetworkInterfaceId: the ID of the ENI. Sample req
       "Description": "Network interface id"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "EniAttachment": {
       "Type": "ALIYUN::ECS::NetworkInterfaceAttachment",
+      "Properties": {
         "InstanceId": {
           "Ref": "InstanceId"
 ```
@@ -3830,7 +4037,7 @@ Response parameters Fn::GetAtt NetworkInterfaceId: the ID of the ENI. Sample req
           "Ref": "NetworkInterfaceId"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -3842,14 +4049,15 @@ Response parameters Fn::GetAtt NetworkInterfaceId: the ID of the ENI. Sample req
           "NetworkInterfaceId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.19 ALIYUN::ECS::NetworkInterfacePermission
 
-ALIYUN::ECS::NetworkInterfacePermission is used to grant an account the permission to attach an elastic network interface (ENI) to an instance. Syntax
+ALIYUN::ECS::NetworkInterfacePermission is used to grant an account the permission to attach an elastic network interface (ENI) to an instance. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ECS::NetworkInterfacePermission",
+  "Properties": {
     "NetworkInterfaceId": String,
     "AccountId": String,
     "Permission": String
@@ -3890,12 +4098,13 @@ Response parameters Fn::Get At t NetworkInterfacePermissionId: the ID of the ENI
       "Description": "Network interface id"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "EniPermission": {
       "Type": "ALIYUN::ECS::NetworkInterfacePermission",
+      "Properties": {
         "AccountId": {
           "Ref": "AccountId"
 ```
@@ -3914,7 +4123,7 @@ Response parameters Fn::Get At t NetworkInterfacePermissionId: the ID of the ENI
           "Ref": "NetworkInterfaceId"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -3926,7 +4135,7 @@ Response parameters Fn::Get At t NetworkInterfacePermissionId: the ID of the ENI
           "NetworkInterfacePermissionId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.20 ALIYUN::ECS::Route
 
@@ -3942,7 +4151,7 @@ ALIYUN::ECS::Route is used to create a custom route. Syntax
     "NextHopList": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3960,11 +4169,16 @@ NextHopList syntax
 
 ```json
 "NextHopList": [
+```
+
+`{`
+
+```json
     "NextHopId": String,
     "NextHopType": String
 ```
 
-`]` NextHopList properties
+`}` `]` NextHopList properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -3974,31 +4188,35 @@ NextHopList syntax
 |---|---|---|---|---|---|
 | NextHopType | String | No | No | The type of the next hop. | Default value: RouterInterface. Valid values: Instance Tunnel HaVip RouterInterface |
 
-Response parameters Fn::GetAtt Examples
+Response parameters Fn::GetAtt None Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ECSRoute": {
       "Type": "ALIYUN::ECS::Route",
+      "Properties": {
  "RouteId": "vrt-25mz0****",
         "RouteTableId": "vtb-25oud****",
         "DestinationCidrBlock": "172.16.XX.XX/24",
         "NextHopId": "i-25xzy****"
 ```
 
+`}` `}` `}` `}`
+
 #### 5.1.21 ALIYUN::ECS::SNatEntry
 
-ALIYUN::ECS::SNatEntry is used to configure a NAT Gateway table in a source network address translation. Statement
+ALIYUN::ECS::SNatEntry is used to configure a NAT Gateway table in a source network address translation. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::SNatEntry",
+  "Properties": {
     "SNatTableId": String,
     "SNatIp": String,
     "SourceVSwitchId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4009,25 +4227,28 @@ Properties
 | SNatIp | String | Retained | Yes | The public IP address used to source network address translation. | The public IP address must be NAT Gateway in the bandwidth plan. It cannot exist in both the forwarding table and the SNAT table. |
 | SourceVSwitchId | String | Retained | Yes | The ID of the VSwitch that accesses the Internet through the SNAT function of NAT Gateway. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt SNatEntryId: the table entry ID in the source network address translation table. Sample request
+Response parameters Fn::GetAtt SNatEntryId: the table entry ID in the source network address translation table. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SNatEntry": {
       "Type": "ALIYUN::ECS::SNatEntry",
+      "Properties": {
         "SNatTableId": "stb-3er41****",
         "SourceVSwitchId": "vsw-25rc1****",
         "SNatIp": "101.201.XX.XX"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
     "SNatEntryId": {
          "Value": {"Fn::GetAttr": ["SNatEntry","SNatEntryId"]}
 ```
+
+`}` `}`
 
 #### 5.1.22 ALIYUN::ECS::SecurityGroup
 
@@ -4045,7 +4266,7 @@ ALIYUN::ECS::SecurityGroup is used to create a security group. Statement
     "SecurityGroupType": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4068,6 +4289,11 @@ Tags syntax
 
 ```json
 "Tags": [
+```
+
+`{`
+
+```json
     "Value" : String,
     "Key" : String
 ```
@@ -4083,6 +4309,11 @@ SecurityGroupEgress syntax
 
 ```json
 "SecurityGroupEgress": [
+```
+
+`{`
+
+```json
     "Description": String,
     "PortRange": String,
     "SecurityGroupId": String,
@@ -4097,7 +4328,7 @@ SecurityGroupEgress syntax
     "Ipv6DestCidrIp": String
 ```
 
-`]` SecurityGroupEgress properties
+`}` `]` SecurityGroupEgress properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4146,7 +4377,7 @@ SecurityGroupIngress syntax
     "SourceCidrIp": String
 ```
 
-`]` SecurityGroupIngress properties
+`}` `]` SecurityGroupIngress properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4185,6 +4416,7 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
   "Resources" : {
     "SG": {
       "Type": "ALIYUN::ECS::SecurityGroup",
+      "Properties": {
         "SecurityGroupName": {
           "Ref": "SecurityGroupName"
 ```
@@ -4193,6 +4425,11 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
 
 ```json
         "SecurityGroupIngress": [
+```
+
+`{`
+
+```json
             "SourceCidrIp": "0.0.0.0/0",
             "IpProtocol": "all",
             "NicType": "internet",
@@ -4200,7 +4437,7 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
             "Priority": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
             "SourceCidrIp": "0.0.0.0/0",
@@ -4210,10 +4447,15 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
             "Priority": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
         "SecurityGroupEgress": [
+```
+
+`{`
+
+```json
             "IpProtocol": "all",
             "DestCidrIp": "0.0.0.0/0",
             "NicType": "internet",
@@ -4221,7 +4463,7 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
             "Priority": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
             "IpProtocol": "all",
@@ -4231,14 +4473,14 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
             "Priority": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
         "VpcId": {
           "Ref": "Vpc"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -4246,12 +4488,15 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
       "Value" : {"Fn::GetAtt": ["SG","SecurityGroupId"]}
 ```
 
+`}` `}` `}`
+
 #### 5.1.23 ALIYUN::ECS::SecurityGroupClone
 
-ALIYUN::ECS::SecurityGroupClone is used to clone a security group. Syntax
+ALIYUN::ECS::SecurityGroupClone is used to clone a security group. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ECS::SecurityGroupClone",
+  "Properties": {
     "DestinationRegionId": String,
     "VpcId": String,
     "Description": String,
@@ -4262,7 +4507,7 @@ ALIYUN::ECS::SecurityGroupClone is used to clone a security group. Syntax
     "SecurityGroupType": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4278,7 +4523,7 @@ Properties
 | DestinationRegi onId | String | No | No | The ID of the destination region where the new security group resides. | Default value: CURRENT. |
 | SecurityGroupT ype | String | No | No | The type of the new security group. | Valid values: normal and enterprise. A value of normal specifies a basic security group. A value of enterprise specifies an advanced security group. |
 
-Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group. Examples
+Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -4327,7 +4572,7 @@ Response parameters Fn::GetAtt SecurityGroupId: the ID of the new security group
           "Ref": "NetworkType"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Parameters": {
@@ -4395,14 +4640,15 @@ must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-
           "SecurityGroupId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.24 ALIYUN::ECS::SecurityGroupEgress
 
-ALIYUN::ECS::SecurityGroupEgress is used to create an outbound access rule for a security group. Statement
+ALIYUN::ECS::SecurityGroupEgress is used to create an outbound access rule for a security group. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::SecurityGroupEgress",
+  "Properties": {
     "SecurityGroupId": String,
     "IpProtocol": String,
     "PortRange": String,
@@ -4415,7 +4661,7 @@ ALIYUN::ECS::SecurityGroupEgress is used to create an outbound access rule for a
     "Ipv6DestCidrIp": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4446,25 +4692,29 @@ Properties
 | DestGroupOwn erId | String | Yes | Released | The ID of the Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts. | If neither the DestGroupOwn erId parameter nor the DestGroupOwn erAccount parameter is specified, the access permission is configured on another security group managed by your account. If the DestCidrIp parameter is specified, the DestGroupOwn erId parameter is ignored. |
 | Ipv6DestCidrIp | String | Yes | Released | The destination IPv6 CIDR block. | IPv6 CIDR blocks are supported. You can only specify the IP addresses of ECS instances in VPCs. |
 
-Response parameters Fn::GetAtt Sample request
+Response parameters Fn::GetAtt None Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SG": {
       "Type": "ALIYUN::ECS::SecurityGroupEgress",
+      "Properties": {
         "SecurityGroupId": "sg-25bow****",
         "IpProtocol": "tcp",
         "PortRange": "65535/65535",
         "DestCidrIp": "0.0.0.0/0"
 ```
 
+`}` `}` `}` `}`
+
 #### 5.1.25 ALIYUN::ECS::SecurityGroupIngress
 
-ALIYUN::ECS::SecurityGroupIngress is used to create an inbound access rule for a security group. Syntax
+ALIYUN::ECS::SecurityGroupIngress is used to create an inbound access rule for a security group. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ECS::SecurityGroupIngress",
+  "Properties": {
     "SourceGroupOwnerId": String,
     "Description": String,
     "PortRange": String,
@@ -4479,7 +4729,7 @@ ALIYUN::ECS::SecurityGroupIngress is used to create an inbound access rule for a
     "SourceCidrIp": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4512,32 +4762,36 @@ Properties
 | SourcePortRang e | String | No | No | The range of source ports relevant to transport layer protocols. | When the IpProtocol parameter is set to tcp or udp, the port number range is 1 to 65535. Separate the starting port and the ending port with a forward slash (/). Correct example: 1/200. Incorrect example: 200/1. When the IpProtocol parameter is set to icmp, the port number range is -1/- 1. When the IpProtocol parameter is set to gre, the port number range is -1/- 1. When the IpProtocol parameter is set to all, the port number range is -1/- 1. |
 | Ipv6SourceCidrI p | String | No | No | The range of source IPv6 addresses. | CIDR blocks and IPv6 addresses are supported. You can only specify the IP addresses of ECS instances in VPCs. |
 
-Response parameters Fn::GetAtt Examples
+Response parameters Fn::GetAtt None Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SG": {
       "Type": "ALIYUN::ECS::SecurityGroupIngress",
+      "Properties": {
         "SecurityGroupId": "sg-25bow****",
         "IpProtocol": "tcp",
         "PortRange": "65535/65535",
         "SourceCidrIp": "0.0.0.0/0"
 ```
 
+`}` `}` `}` `}`
+
 #### 5.1.26 ALIYUN::ECS::Snapshot
 
-ALIYUN::ECS::Snapshot is used to create a disk Snapshot. Statement
+ALIYUN::ECS::Snapshot is used to create a disk Snapshot. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::Snapshot",
+  "Properties": {
     "SnapshotName": String,
     "Timeout": Integer,
     "Description": String,
     "DiskId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4552,17 +4806,18 @@ Properties
 |---|---|---|---|---|---|
 | Description | String | Yes | Released | The description of the snapshot. | The length must be 2 to 256 characters in length. This parameter is empty by default. It cannot start with http:// or https:// . |
 
-Response parameters Fn::GetAtt SnapshotId: the ID of the snapshot. Sample request
+Response parameters Fn::GetAtt SnapshotId: the ID of the snapshot. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Snapshot": {
       "Type": "ALIYUN::ECS::Snapshot",
+      "Properties": {
         "DiskId": "d-2zedgvuvu8cylvrd****"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -4573,7 +4828,7 @@ Response parameters Fn::GetAtt SnapshotId: the ID of the snapshot. Sample reques
           "SnapshotId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.27 ALIYUN::ECS::SSHKeyPair
 
@@ -4586,7 +4841,7 @@ ALIYUN::ECS::SSHKeyPair is used to create or import an SSH key pair to an ECS in
     "PublicKeyBody": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4601,10 +4856,11 @@ Response parameters Fn::GetAtt KeyPairFingerPrint: the fingerprint of the key pa
   "Resources": {
     "SSHKeyPair": {
       "Type": "ALIYUN::ECS::SSHKeyPair",
+      "Properties": {
         "KeyPairName": "ssh_key_pair_v1"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -4615,7 +4871,7 @@ Response parameters Fn::GetAtt KeyPairFingerPrint: the fingerprint of the key pa
           "KeyPairName"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "PrivateKeyBody": {
@@ -4625,7 +4881,7 @@ Response parameters Fn::GetAtt KeyPairFingerPrint: the fingerprint of the key pa
           "PrivateKeyBody"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "KeyPairFingerPrint": {
@@ -4635,39 +4891,41 @@ Response parameters Fn::GetAtt KeyPairFingerPrint: the fingerprint of the key pa
           "KeyPairFingerPrint"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.28 ALIYUN::ECS::SSHKeyPairAttachment
 
-ALIYUN::ECS::SSHKeyPairAttachment is used to bind an SSH key pair to an ECS instance. Statement
+ALIYUN::ECS::SSHKeyPairAttachment is used to bind an SSH key pair to an ECS instance. Statement `{`
 
 ```json
   "Type": "ALIYUN::ECS::SSHKeyPairAttachment",
+  "Properties": {
     "InstanceIds": List,
     "KeyPairName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required or Not | Editable | Description | Constraint |
 |---|---|---|---|---|---|
 | InstanceIds | List | Retained | Yes | The IDs of the ECS instances with which you want to associate the EIP. | Separate the IDs with a comma (,). Only Linux instances are supported. |
 | KeyPairName | String | No | No | The name of the SSH key pair. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt Sample request
+Response parameters Fn::GetAtt None Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "SSHKeyPairAttachment": {
       "Type": "ALIYUN::ECS::SSHKeyPairAttachment",
+      "Properties": {
         "KeyPairName": "ssh_key_pair_v1",
         "InstanceIds": [
           'I-2zeiofnh20hj**** has been added * ',
           'I-2zebt3kfvxm2**** has two records *'
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.29 ALIYUN::ECS::VPC
 
@@ -4683,7 +4941,7 @@ ALIYUN::ECS::VPC is used to create a VPC. Statement
     "CidrBlock": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |   |   |   |
 |---|---|---|---|---|---|---|---|---|
@@ -4706,11 +4964,12 @@ Response parameters Fn::GetAtt VpcId: The VPC ID allocated by the system. VRoute
   "Resources": {
     "EcsVpc": {
       "Type": "ALIYUN::ECS::VPC",
+      "Properties": {
         "CidrBlock": "172.16.0.0/12",
         "VpcName": "vpc-test-del"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -4721,7 +4980,7 @@ Response parameters Fn::GetAtt VpcId: The VPC ID allocated by the system. VRoute
           "VpcId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "VRouterId": {
@@ -4731,7 +4990,7 @@ Response parameters Fn::GetAtt VpcId: The VPC ID allocated by the system. VRoute
           "VRouterId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "RouteTableId": {
@@ -4741,7 +5000,7 @@ Response parameters Fn::GetAtt VpcId: The VPC ID allocated by the system. VRoute
           "RouteTableId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.1.30 ALIYUN::ECS::VSwitch
 
@@ -4757,7 +5016,7 @@ ALIYUN::ECS::VSwitch is used to create a VSwitch. Statement
     "CidrBlock": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description |   | Constraint |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -4774,7 +5033,7 @@ Properties
 | Description | String | Yes | True | The description of the vSwitch. | The description must be 2 to 256 characters in length. It cannot start with http:// or https:// . |
 | Ipv6CidrBlock | String | Optional | Released | The IPv6 CIDR block of the VSwitch. You can customize the last eight bits of the IPv6 CIDR block. | Valid values: 0 to 255. The value is a decimal integer. By default, the prefix of the IPv6 CIDR block of the VSwitch is set to /64. |
 
-Response parameters Fn::GetAtt VSwitchId: indicates the vSwitch ID allocated by the system. CidrBlock: the IPv4 CIDR block of the vSwitch. Ipv6CidrBlock: the IPv6 CIDR block of the vSwitch. Sample request
+Response parameters Fn::GetAtt VSwitchId: indicates the vSwitch ID allocated by the system. CidrBlock: the IPv4 CIDR block of the vSwitch. Ipv6CidrBlock: the IPv6 CIDR block of the vSwitch. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -4799,12 +5058,13 @@ Response parameters Fn::GetAtt VSwitchId: indicates the vSwitch ID allocated by 
         "Default": "172.16.80.0/24"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "EcsVpc": {
       "Type": "ALIYUN::ECS::VPC",
+      "Properties": {
         "CidrBlock": "172.16.0.0/12",
         "VpcName": {"Ref": "VpcName"},
 ```
@@ -4823,22 +5083,24 @@ Response parameters Fn::GetAtt VSwitchId: indicates the vSwitch ID allocated by 
         "VSwitchName": "create_vpc_vswitch_sg1"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "VSwitch2": {
       "Type": "ALIYUN::ECS::VSwitch",
+      "Properties": {
         "ZoneId": "cn-beijing-a",
         "CidrBlock": {"Ref": "VSwitch2CidrBlock"},
         "VpcId": { "Fn::GetAtt": [ "EcsVpc", "VpcId" ] },
         "VSwitchName": "create_vpc_vswitch_sg2"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "SG_VSwitch1": {
       "Type": "ALIYUN::ECS::SecurityGroup",
+      "Properties": {
         "SecurityGroupName": "app_mall",
         "Description": "this is created by heat",
         "VpcId": { "Fn::GetAtt": [ "EcsVpc", "VpcId" ] }
@@ -4852,33 +5114,36 @@ Response parameters Fn::GetAtt VSwitchId: indicates the vSwitch ID allocated by 
              "Value": {"get_attr": ["SG_VSwitch1","SecurityGroupId"]}
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "SG_VSwitch1_InRule": {
       "Type": "ALIYUN::ECS::SecurityGroupIngress",
+      "Properties": {
         "SecurityGroupId": { "Fn::GetAtt": [ "SG_VSwitch1", "SecurityGroupId" ] },
         "IpProtocol": "tcp",
         "PortRange": "1/65535",
         "SourceCidrIp": {"Ref": "VSwitch2CidrBlock"}
 ```
 
-`},`
+`}` `},`
 
 ```json
     "SG_VSwitch1_OutRule": {
       "Type": "ALIYUN::ECS::SecurityGroupEgress",
+      "Properties": {
         "SecurityGroupId": { "Fn::GetAtt": [ "SG_VSwitch1", "SecurityGroupId" ] },
         "IpProtocol": "tcp",
         "PortRange": "1/65535",
         "DestCidrIp": {"Ref": "VSwitch2CidrBlock"}
 ```
 
-`},`
+`}` `},`
 
 ```json
     "SG_VSwitch2": {
       "Type": "ALIYUN::ECS::SecurityGroup",
+      "Properties": {
         "SecurityGroupName": "app_mall",
         "Description": "this is created by heat",
         "VpcId": { "Fn::GetAtt": [ "EcsVpc", "VpcId" ] }
@@ -4899,25 +5164,29 @@ Response parameters Fn::GetAtt VSwitchId: indicates the vSwitch ID allocated by 
         "SourceCidrIp": {"Ref": "VSwitch1CidrBlock"}
 ```
 
-`},`
+`}` `},`
 
 ```json
     "SG_VSwitch2_OutRule": {
       "Type": "ALIYUN::ECS::SecurityGroupEgress",
+      "Properties": {
         "SecurityGroupId": { "Fn::GetAtt": [ "SG_VSwitch2", "SecurityGroupId" ] },
         "IpProtocol": "tcp",
         "PortRange": "1/65535",
         "DestCidrIp": {"Ref": "VSwitch1CidrBlock"}
 ```
 
+`}` `}` `}` `}`
+
 ### 5.2 ESS
 
 #### 5.2.1 ALIYUN::ESS::AlarmTask
 
-ALIYUN::ESS::AlarmTask is used to create a metric-based alarm task. Syntax
+ALIYUN::ESS::AlarmTask is used to create a metric-based alarm task. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ESS::AlarmTask",
+  "Properties": {
     "Statistics": String,
     "Name": String,
     "EvaluationCount": Integer,
@@ -4933,7 +5202,7 @@ ALIYUN::ESS::AlarmTask is used to create a metric-based alarm task. Syntax
     "Description": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -4962,14 +5231,14 @@ Dimensions syntax
     "DimensionValue": String
 ```
 
-`]` Dimensions properties
+`}` `]` Dimensions properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
 | DimensionValue | String | Yes | No | None | None |
 | DimensionKey | String | Yes | No | None | None |
 
-Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples
+Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -5095,12 +5364,13 @@ Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples
       "Description": "Threshold"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "AlarmTask": {
       "Type": "ALIYUN::ESS::AlarmTask",
+      "Properties": {
         "ComparisonOperator": {
           "Ref": "ComparisonOperator"
 ```
@@ -5146,16 +5416,21 @@ Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples
         "Dimensions": {
           "Fn::Split": [
             ",",
-              "Ref": "Dimensions"
 ```
 
-`},`
+`{`
 
 ```json
               "Ref": "Dimensions"
 ```
 
-`]` `},`
+`},` `{`
+
+```json
+              "Ref": "Dimensions"
+```
+
+`}` `]` `},`
 
 ```json
         "Statistics": {
@@ -5189,23 +5464,28 @@ Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples
         "AlarmAction": {
           "Fn::Split": [
             ",",
-              "Ref": "AlarmAction"
 ```
 
-`},`
+`{`
 
 ```json
               "Ref": "AlarmAction"
 ```
 
-`]` `},`
+`},` `{`
+
+```json
+              "Ref": "AlarmAction"
+```
+
+`}` `]` `},`
 
 ```json
         "Threshold": {
           "Ref": "Threshold"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -5220,26 +5500,27 @@ Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples
           "AlarmTaskId"
 ```
 
-`]`
+`]` `}` `}` `}`
 
 #### 5.2.2 ALIYUN::ESS::AlarmTaskEnable
 
-ALIYUN::ESS::AlarmTaskEnable is used to start an alarm task. You can call this operation to enable alarm tasks when the task is stopped. Statement
+ALIYUN::ESS::AlarmTaskEnable is used to start an alarm task. You can call this operation to enable alarm tasks when the task is stopped. Statement `{`
 
 ```json
   "Type": "ALIYUN::ESS::AlarmTaskEnable",
+  "Properties": {
     "AlarmTaskId": String,
     "Enable": Boolean
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
 | AlarmTaskId | String | No | No | The ID of the monitoring task. | None |
 | Enable | String | Retained | Yes | Specifies whether to enable the alarm task. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt Sample request
+Response parameters Fn::GetAtt None Sample request
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -5262,12 +5543,13 @@ Response parameters Fn::GetAtt Sample request
       "Description": "The id of alarm task."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "AlarmTaskEnable": {
       "Type": "ALIYUN::ESS::AlarmTaskEnable",
+      "Properties": {
         "Enable": {
           "Ref": "Enable"
 ```
@@ -5279,18 +5561,21 @@ Response parameters Fn::GetAtt Sample request
           "Ref": "AlarmTaskId"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {}
 ```
 
+`}`
+
 #### 5.2.3 ALIYUN::ESS::LifecycleHook
 
-ALIYUN::ESS::LifecycleHook is used to create a lifecycle hook for a scaling group. Syntax
+ALIYUN::ESS::LifecycleHook is used to create a lifecycle hook for a scaling group. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ESS::LifecycleHook",
+  "Properties": {
     "LifecycleHookName": String,
     "NotificationArn": String,
     "HeartbeatTimeout": Integer,
@@ -5300,7 +5585,7 @@ ALIYUN::ESS::LifecycleHook is used to create a lifecycle hook for a scaling grou
     "LifecycleTransition": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -5324,7 +5609,7 @@ Properties
 |---|---|---|---|---|---|
 | LifecycleTransitio n | String | Yes | Yes | The type of scaling activity to which the lifecycle hook applies. | Valid values: SCALE OUT: scale- _ out events of the scaling group. SCALE IN: scale-in _ events of the scaling group. |
 
-Response parameters Fn::GetAtt LifecycleHookId: the ID of the lifecycle hook. Examples
+Response parameters Fn::GetAtt LifecycleHookId: the ID of the lifecycle hook. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -5405,12 +5690,13 @@ Value range:\n CONTINUE: the scaling group continues with the scale-in or scale-
         "ABANDON"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
   "Resources": {
     "LifecycleHook": {
       "Type": "ALIYUN::ESS::LifecycleHook",
+      "Properties": {
         "LifecycleHookName": {
           "Ref": "LifecycleHookName"
 ```
@@ -5469,14 +5755,15 @@ Value range:\n CONTINUE: the scaling group continues with the scale-in or scale-
           "LifecycleHookId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.2.4 ALIYUN::ESS::ScalingConfiguration
 
-ALIYUN::ESS::ScalingConfiguration is used to create a scaling configuration. Syntax
+ALIYUN::ESS::ScalingConfiguration is used to create a scaling configuration. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ESS::ScalingConfiguration",
+  "Properties": {
     "PasswordInherit": Boolean,
     "DiskMappings": List,
     "RamRoleName": String,
@@ -5553,6 +5840,11 @@ DiskMappings syntax
 
 ```json
 "DiskMappings": [
+```
+
+`{`
+
+```json
     "Category": String,
     "Device": String,
     "SnapshotId": String,
@@ -5563,7 +5855,7 @@ DiskMappings syntax
     "DiskName": String
 ```
 
-`]` DiskMappings properties
+`}` `]` DiskMappings properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -5580,24 +5872,30 @@ TagList syntax
 
 ```json
 "TagList": [
+```
+
+`{`
+
+```json
     "Value": String,
     "Key": String
 ```
 
-`]` TagList properties
+`}` `]` TagList properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
 | Key | String | Yes | No | None | None |
 | Value | String | Yes | No | None | None |
 
-Response parameters Fn::GetAtt ScalingConfigurationId: the ID of the scaling configuration. This ID is a globally unique identifier (GUID) generated by the system. Examples
+Response parameters Fn::GetAtt ScalingConfigurationId: the ID of the scaling configuration. This ID is a globally unique identifier (GUID) generated by the system. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScalingConfiguration": {
       "Type": "ALIYUN::ESS::ScalingConfiguration",
+      "Properties": {
         "ImageId": "ubuntu1404_64_20G_aliaegis_20150325.vhd",
         "InstanceType": "ecs.t1.small",
         "InstanceId": "i-25xhh****",
@@ -5608,17 +5906,22 @@ Response parameters Fn::GetAtt ScalingConfigurationId: the ID of the scaling con
         "ScalingGroupId": "bwhtvpcBcKYac9fe3vd0****",
         "SecurityGroupId": "sg-25zwc****",
         "DiskMappings": [
+```
+
+`{`
+
+```json
             "Size": 10
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Category": "cloud",
             "Size": 10
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -5626,12 +5929,15 @@ Response parameters Fn::GetAtt ScalingConfigurationId: the ID of the scaling con
       "Value": {"get_attr": ["ScalingConfigurationId"]}
 ```
 
+`}` `}` `}`
+
 #### 5.2.5 ALIYUN::ESS::ScalingGroup
 
 ALIYUN::ESS::ScalingGroup is used to create a scaling group. A scaling group is a group of ECS instances that are dynamically scaled based on the configured scenario. A scaling group does not take effect immediately after being created. You must use ALIYUN::ESS::ScalingGroupEnable to enable the scaling group to trigger scaling rules and execute scaling activities. Syntax
 
 ```json
   "Type": "ALIYUN::ESS::ScalingGroup",
+  "Properties": {
     "MultiAZPolicy": String,
     "DesiredCapacity": Integer,
     "NotificationConfigurations": List,
@@ -5653,7 +5959,7 @@ ALIYUN::ESS::ScalingGroup is used to create a scaling group. A scaling group is 
     "DBInstanceIds": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -5700,13 +6006,14 @@ Properties
 | DesiredCapacity | Integer | No | Yes | The expected number of ECS instances in the scaling group. The scaling group automatically keeps the number of ECS instances at the expected value. | The number of ECS instances must be greater than the value of MinSize and be less than the value of MaxSize. |
 | InstanceId | String | No | No | The ID of the ECS instance from which the scaling group obtains configuration information of the specified instance. | None |
 
-Response parameters Fn::GetAtt ScalingGroupId: the ID of the scaling group. This ID is a globally unique identifier (GUID) generated by the system. Examples
+Response parameters Fn::GetAtt ScalingGroupId: the ID of the scaling group. This ID is a globally unique identifier (GUID) generated by the system. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScalingGroup": {
       "Type": "ALIYUN::ESS::ScalingGroup",
+      "Properties": {
         "MaxSize": 1,
         "MinSize": 1,
         # "ScalingGroupName": "HeatCreatedR****",
@@ -5715,7 +6022,7 @@ Response parameters Fn::GetAtt ScalingGroupId: the ID of the scaling group. This
         # "RemovalPolicy_2": "",
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -5723,12 +6030,15 @@ Response parameters Fn::GetAtt ScalingGroupId: the ID of the scaling group. This
          "Value": {"Fn::GetAtt": ["ScalingGroup", "ScalingGroupId"]}
 ```
 
+`}` `}` `}`
+
 #### 5.2.6 ALIYUN::ESS::ScalingGroupEnable
 
-ALIYUN::ESS::ScalingGroupEnable is used to enable a scaling group. Syntax
+ALIYUN::ESS::ScalingGroupEnable is used to enable a scaling group. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ESS::ScalingGroupEnable",
+  "Properties": {
     "ScalingConfigurationId": String,
     "ScalingRuleArisExecuteVersion": Integer,
     "ScalingRuleAris": List,
@@ -5737,7 +6047,7 @@ ALIYUN::ESS::ScalingGroupEnable is used to enable a scaling group. Syntax
     "InstanceIds": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -5752,19 +6062,20 @@ Properties
 | ScalingRuleAris | List | No | Yes | The unique identifiers of scaling rules in the scaling group. Invalid unique identifiers are not displayed in the query results and no errors are reported. | A maximum of 10 scaling rule identifiers can be specified. |
 | RemoveInstanc eIds | List | No | Yes | The IDs of ECS instances to be deleted. | A maximum of 1,000 instance IDs can be specified. |
 
-Response parameters Fn::GetAtt LifecycleState: the status of the scaling group. ScalingInstances: the instances that are automatically created in the scaling group. ScalingGroupId: the ID of the scaling group. ScalingRuleArisExecuteResultInstancesRemoved: the instances that are removed from the scaling group by executing the scaling rules specified by ScalingRuleAris. ScalingRuleArisExecuteResultNumberOfAddedInstances: the number of instances that are added to the scaling group by executing the scaling rules specified by ScalingRuleAris. ScalingInstanceDetails: the instance scaling details. ScalingRuleArisExecuteErrorInfo: the error information about the execution of the scaling rules specified by ScalingRuleAris. ScalingRuleArisExecuteResultInstancesAdded: the instances that are added to the scaling group by executing the scaling rules specified by ScalingRuleAris. Examples
+Response parameters Fn::GetAtt LifecycleState: the status of the scaling group. ScalingInstances: the instances that are automatically created in the scaling group. ScalingGroupId: the ID of the scaling group. ScalingRuleArisExecuteResultInstancesRemoved: the instances that are removed from the scaling group by executing the scaling rules specified by ScalingRuleAris. ScalingRuleArisExecuteResultNumberOfAddedInstances: the number of instances that are added to the scaling group by executing the scaling rules specified by ScalingRuleAris. ScalingInstanceDetails: the instance scaling details. ScalingRuleArisExecuteErrorInfo: the error information about the execution of the scaling rules specified by ScalingRuleAris. ScalingRuleArisExecuteResultInstancesAdded: the instances that are added to the scaling group by executing the scaling rules specified by ScalingRuleAris. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScalingGroupEnable": {
       "Type": "ALIYUN::ESS::ScalingGroupEnable",
+      "Properties": {
         "ScalingGroupId": "r0HUqbJ411cc2eQw8bU****",
         "ScalingConfigurationId": "bJlLfdexm77Ldsyptmel****",
         "InstanceIds": "",
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -5772,12 +6083,15 @@ Response parameters Fn::GetAtt LifecycleState: the status of the scaling group. 
       "Value": {"Fn::GetAtt": ["ScalingGroupEnable", "LifecycleState"]}
 ```
 
+`}` `}` `}`
+
 #### 5.2.7 ALIYUN::ESS::ScalingRule
 
-ALIYUN::ESS::ScalingRule is used to create a scaling rule. Syntax
+ALIYUN::ESS::ScalingRule is used to create a scaling rule. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ESS::ScalingRule",
+  "Properties": {
     "AdjustmentValue": Integer,
     "Cooldown": Integer,
     "ScalingGroupId": String,
@@ -5785,7 +6099,7 @@ ALIYUN::ESS::ScalingRule is used to create a scaling rule. Syntax
     "ScalingRuleName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -5801,13 +6115,14 @@ Properties
 |---|---|---|---|---|---|
 | ScalingRuleName | String | No | Yes | The display name of the scaling rule. | The name must be 2 to 40 characters in length and can contain letters, digits, underscores ( ), _ hyphens (-), and periods (.). It must start with a letter or digit. The name of a scaling rule must be unique within the scaling group that it belongs to. The default value is the ID of the scaling rule. |
 
-Response parameters Fn::GetAtt ScalingRuleAri: the unique identifier of the scaling rule. ScalingRuleId: the ID of the scaling rule. It is a globally unique identifier (GUID) generated by the system. Examples
+Response parameters Fn::GetAtt ScalingRuleAri: the unique identifier of the scaling rule. ScalingRuleId: the ID of the scaling rule. It is a globally unique identifier (GUID) generated by the system. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScalingRule": {
       "Type": "ALIYUN::ESS::ScalingRule",
+      "Properties": {
         "ScalingRuleName": {
           "Ref": "ScalingRuleName"
 ```
@@ -5840,7 +6155,7 @@ Response parameters Fn::GetAtt ScalingRuleAri: the unique identifier of the scal
           "Ref": "AdjustmentValue"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Parameters": {
@@ -5906,7 +6221,7 @@ city: It is used to increase or decrease a specified number of ECS instances.\n-
       "MinValue": -500
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -5918,7 +6233,7 @@ city: It is used to increase or decrease a specified number of ECS instances.\n-
           "ScalingRuleAri"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "ScalingRuleId": {
@@ -5929,14 +6244,15 @@ city: It is used to increase or decrease a specified number of ECS instances.\n-
           "ScalingRuleId"
 ```
 
-`]`
+`]` `}` `}`
 
 #### 5.2.8 ALIYUN::ESS::ScheduledTask
 
-ALIYUN::ESS::ScheduledTask is used to create a scheduled task based on input parameters. Syntax
+ALIYUN::ESS::ScheduledTask is used to create a scheduled task based on input parameters. Syntax `{`
 
 ```json
   "Type": "ALIYUN::ESS::ScheduledTask",
+  "Properties": {
     "TaskEnabled": Boolean,
     "Description": String,
     "ScheduledTaskName": String,
@@ -5948,7 +6264,7 @@ ALIYUN::ESS::ScheduledTask is used to create a scheduled task based on input par
     "ScheduledAction": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -5977,13 +6293,14 @@ Properties
 |---|---|---|---|---|---|
 | ScheduledActio n | String | Yes | Yes | The operations to be performed when the scheduled task is triggered. When you set this parameter, you must also enter the unique identifier of the scaling rule. | The parameter value can be up to 200 characters in length. |
 
-Response parameters Fn::GetAtt ScheduledTaskId: the ID of the scheduled task. This ID is a globally unique identifier (GUID) generated by the system. Examples
+Response parameters Fn::GetAtt ScheduledTaskId: the ID of the scheduled task. This ID is a globally unique identifier (GUID) generated by the system. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "ScheduledTask": {
       "Type": "ALIYUN::ESS::ScheduledTask",
+      "Properties": {
         "TaskEnabled": "true",
         "Description": "scheduledtask",
         "ScheduledTaskName": "task1",
@@ -5994,7 +6311,7 @@ Response parameters Fn::GetAtt ScheduledTaskId: the ID of the scheduled task. Th
         "ScheduledAction": "ari:acs:ess:cn-qingdao:1344371:scalingRule/cCBpdYdQuBe2cUxOdu6piOk"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -6005,16 +6322,17 @@ Response parameters Fn::GetAtt ScheduledTaskId: the ID of the scheduled task. Th
           "ScheduledTaskId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 ### 5.3 OSS
 
 #### 5.3.1 ALIYUN::OSS::Bucket
 
-ALIYUN::OSS::Bucket is used to create an OSS bucket. Syntax
+ALIYUN::OSS::Bucket is used to create an OSS bucket. Syntax `{`
 
 ```json
   "Type": "ALIYUN::OSS::Bucket",
+  "Properties": {
     "AccessControl": String,
     "RefererConfiguration": Map,
     "ServerSideEncryptionConfiguration": Map,
@@ -6029,7 +6347,7 @@ ALIYUN::OSS::Bucket is used to create an OSS bucket. Syntax
     "BucketName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6059,6 +6377,11 @@ CORSConfiguration syntax
 ```json
 "CORSConfiguration": {
   "CORSRule": [
+```
+
+`{`
+
+```json
       "AllowedHeader": String,
       "AllowedMethod": List,
       "AllowedOrigin": List,
@@ -6066,7 +6389,7 @@ CORSConfiguration syntax
       "MaxAgeSeconds": Integer
 ```
 
-`]` CORSConfiguration properties
+`}` `]` `}` CORSConfiguration properties
 
 | Property | Type | Required | Editable | Descriptio n | Constraint |
 |---|---|---|---|---|---|
@@ -6085,6 +6408,11 @@ LifecycleConfiguration syntax
 ```json
 "LifecycleConfiguration": {
   "Rule": [
+```
+
+`{`
+
+```json
       "ID": String,
       "Prefix": String,
       "Status": String,
@@ -6092,7 +6420,7 @@ LifecycleConfiguration syntax
       "AbortMultipartUpload": Map
 ```
 
-`]` LifecycleConfiguration properties
+`}` `]` `}` LifecycleConfiguration properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6114,7 +6442,7 @@ Expiration syntax
   "CreatedBeforeDate": String
 ```
 
-Expiration properties
+`}` Expiration properties
 
 | Property | Type | Required | Editable | Descriptio n | Constraint |
 |---|---|---|---|---|---|
@@ -6132,7 +6460,7 @@ AbortMultipartUpload syntax
   "Days": Number
 ```
 
-AbortMultipartUpload properties
+`}` AbortMultipartUpload properties
 
 | Property | Type | Required | Editable | Descriptio n | Constraint |
 |---|---|---|---|---|---|
@@ -6147,7 +6475,7 @@ LoggingConfiguration syntax
   "TargetPrefix": String
 ```
 
-LoggingConfiguration properties
+`}` LoggingConfiguration properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6168,7 +6496,7 @@ WebsiteConfiguration syntax
   "ErrorDocument": String
 ```
 
-WebsiteConfiguration properties
+`}` WebsiteConfiguration properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6183,7 +6511,7 @@ RefererConfiguration syntax
   "RefererList": List
 ```
 
-RefererConfiguration properties
+`}` RefererConfiguration properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6212,6 +6540,7 @@ Response parameters Fn::GetAtt Name: the bucket name, which must be globally uni
   "Resources": {
     "Bucket": {
       "Type": "ALIYUN::OSS::Bucket",
+      "Properties": {
         "AccessControl": "private",
         "BucketName": "rostest",
         "WebsiteConfiguration":{
@@ -6258,7 +6587,7 @@ Response parameters Fn::GetAtt Name: the bucket name, which must be globally uni
                     "CreatedBeforeDate": "2014-10-11T00:00:00.000Z"
 ```
 
-`}]` `},`
+`}` `}]` `},`
 
 ```json
         "RefererConfiguration": {
@@ -6266,7 +6595,7 @@ Response parameters Fn::GetAtt Name: the bucket name, which must be globally uni
             "RefererList": ["http://www.aliyun.com", "https://www.?.aliyuncs.com"]
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -6281,14 +6610,17 @@ Response parameters Fn::GetAtt Name: the bucket name, which must be globally uni
          "Value": {"Fn::GetAtt": ["Bucket","DomainName"]}
 ```
 
+`}` `}`
+
 ### 5.4 RDS
 
 #### 5.4.1 ALIYUN::RDS::Account
 
-ALIYUN::RDS::Account is used to create a database management Account. Statement
+ALIYUN::RDS::Account is used to create a database management Account. Statement `{`
 
 ```json
   "Type": "ALIYUN::RDS::Account",
+  "Properties": {
     "AccountDescription": String,
     "DBInstanceId": String,
     "AccountPassword": String,
@@ -6296,7 +6628,7 @@ ALIYUN::RDS::Account is used to create a database management Account. Statement
     "AccountName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6309,13 +6641,14 @@ Properties
 | AccountType | String | Yes | Released | The type of the database account. | Valid values: Normal: indicates a standard account. Super: indicates a privileged account. Default value: Normal. |
 | AccountName | String | No | No | The name of the database account. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt AccountName: the name of the database account. Sample request
+Response parameters Fn::GetAtt AccountName: the name of the database account. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Account": {
       "Type": "ALIYUN::RDS::Account",
+      "Properties": {
         "AccountDescription": {
           "Ref": "AccountDescription"
 ```
@@ -6397,7 +6730,7 @@ e. And the default value is Normal.\nThis parameter is valid for MySQL 5.5/5.6 o
 art with a letter;\nConsist of lower-case letters, digits, and underscores (_);\nContain no more than 16 characters.\nFor other invalid characters, see Forbidden keywords table."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -6406,6 +6739,8 @@ art with a letter;\nConsist of lower-case letters, digits, and underscores (_);\
       "Value": {
         "Fn::GetAtt": ["Account", "AccountName"]
 ```
+
+`}` `}` `}` `}`
 
 #### 5.4.2 ALIYUN::RDS::AccountPrivilege
 
@@ -6419,7 +6754,7 @@ ALIYUN::RDS::AccountPrivilege is used to grant database access permissions to ac
     "AccountName": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6437,13 +6772,14 @@ Properties
 | DBName | String | No | No | The name of the database. | None |
 | AccountName | String | No | No | The name of the account. | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::GetAtt Sample request
+Response parameters Fn::GetAtt None Sample request
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "AccountPrivilege": {
       "Type": "ALIYUN::RDS::AccountPrivilege",
+      "Properties": {
         "AccountPrivilege": {
           "Ref": "AccountPrivilege"
 ```
@@ -6469,7 +6805,7 @@ Response parameters Fn::GetAtt Sample request
           "Ref": "AccountName"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Parameters": {
@@ -6503,11 +6839,13 @@ Response parameters Fn::GetAtt Sample request
       "Description": "RDS account name."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {}
 ```
+
+`}`
 
 #### 5.4.3 ALIYUN::RDS::DBInstance
 
@@ -6541,7 +6879,7 @@ ALIYUN::RDS::DBInstance is used to create an ApsaraDB for RDS instance. Syntax
     "ResourceGroupId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6597,12 +6935,17 @@ DBMappings syntax
 
 ```json
 "DBMappings": [
+```
+
+`{`
+
+```json
     "DBDescription": String,
     "CharacterSetName": String,
     "DBName": String
 ```
 
-`]` DBMappings properties
+`}` `]` DBMappings properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6614,13 +6957,14 @@ DBMappings syntax
 | DBDescription | String | No | No | The description of the database. | The description must be 2 to 256 characters in length and can contain letters, digits, underscores ( ), and _ hyphens (-). It must start with a letter but cannot start with h ttp:// or https:// . |   |   |
 |   |   |   |   |   |   | h |   |
 
-Response parameters Fn::GetAtt DBInstanceId: the ID of the RDS instance. InnerPort: the internal port of the RDS instance. InnerIPAddress: the internal IP address of the RDS instance. InnerConnectionString: the internal endpoint of the RDS instance. PublicPort: the public port of the RDS instance. PublicConnectionString: the public endpoint of the RDS instance. PublicIPAddress: the public IP address of the RDS instance. Examples The following example demonstrates how to create an ApsaraDB for RDS instance in the classic network:
+Response parameters Fn::GetAtt DBInstanceId: the ID of the RDS instance. InnerPort: the internal port of the RDS instance. InnerIPAddress: the internal IP address of the RDS instance. InnerConnectionString: the internal endpoint of the RDS instance. PublicPort: the public port of the RDS instance. PublicConnectionString: the public endpoint of the RDS instance. PublicIPAddress: the public IP address of the RDS instance. Examples The following example demonstrates how to create an ApsaraDB for RDS instance in the classic network: `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Database": {
       "Type": "ALIYUN::RDS::DBInstance",
+      "Properties": {
         "Engine": "MySQL",
         "EngineVersion": "5.6",
         "DBInstanceClass":"rds.mysql.t1.small",
@@ -6633,7 +6977,7 @@ Response parameters Fn::GetAtt DBInstanceId: the ID of the RDS instance. InnerPo
             "CharacterSetName": "utf8"
 ```
 
-`}]` `},`
+`}]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -6655,13 +6999,14 @@ Response parameters Fn::GetAtt DBInstanceId: the ID of the RDS instance. InnerPo
       "Value": {"get_attr": ["Port"]}
 ```
 
-The following example demonstrates how to create an ApsaraDB for RDS instance in a VPC:
+`}` `}` `}` The following example demonstrates how to create an ApsaraDB for RDS instance in a VPC:
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Database": {
       "Type": "ALIYUN::RDS::DBInstance",
+      "Properties": {
         "Engine":"MySQL",
         "EngineVersion":"5.6",
         "DBInstanceClass":"rds.mys2.small",
@@ -6672,7 +7017,7 @@ The following example demonstrates how to create an ApsaraDB for RDS instance in
         "VpcId": "myvp****"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -6694,18 +7039,21 @@ The following example demonstrates how to create an ApsaraDB for RDS instance in
       "Value": {"get_attr": ["Port"]}
 ```
 
+`}` `}` `}`
+
 #### 5.4.4 ALIYUN::RDS::DBInstanceParameterGroup
 
-ALIYUN::RDS::DBInstanceParameterGroup is used to modify the parameter list of an apsaradb for RDS instance. Statement
+ALIYUN::RDS::DBInstanceParameterGroup is used to modify the parameter list of an apsaradb for RDS instance. Statement `{`
 
 ```json
   "Type": "ALIYUN::RDS::DBInstanceParameterGroup",
+  "Properties": {
     "Forcerestart": String,
     "DBInstanceId": String,
     "Parameters": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6717,13 +7065,14 @@ Properties
 | Parameters | List | Yes | No | parameter. | Parameters in JSON format and their values. Example: {"auto increme _ nt increment":" _ 1","character s _ et client":"utf8 _ "}. |
 | Forcerestart | String | Yes | Released | Specifies whether to force a restart of the ApsaraDB for RDS instance. | Valid values: true: specifies to forcibly restart the database. false: Do not force restart Default value: false. |
 
-Response parameters Fn::GetAtt Sample request
+Response parameters Fn::GetAtt None Sample request
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Database": {
       "Type": "ALIYUN::RDS::DBInstance",
+      "Properties": {
         "Engine": "MySQL",
         "EngineVersion": "5.6",
         "DBInstanceClass": "rds.mys2.small",
@@ -6732,11 +7081,12 @@ Response parameters Fn::GetAtt Sample request
         "SecurityIPList": "0.0.0.0/0"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "DatabaseConfig": {
       "Type": "ALIYUN::RDS::DBInstanceParameterGroup",
+      "Properties": {
         "DBInstanceId": {
           "Ref": "Database"
 ```
@@ -6745,11 +7095,16 @@ Response parameters Fn::GetAtt Sample request
 
 ```json
         "Parameters": [
+```
+
+`{`
+
+```json
             "Key": "auto_increment_increment",
             "Value": "xxx"
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -6760,14 +7115,15 @@ Response parameters Fn::GetAtt Sample request
           "DBInstanceId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.4.5 ALIYUN::RDS::DBInstanceSecurityIps
 
-ALIYUN::RDS::DBInstanceSecurityIps is used to modify the instance whitelist. Statement
+ALIYUN::RDS::DBInstanceSecurityIps is used to modify the instance whitelist. Statement `{`
 
 ```json
   "Type": "ALIYUN::RDS::DBInstanceSecurityIps",
+  "Properties": {
     "DBInstanceId": String,
     "DBInstanceIPArrayName": String,
     "DBInstanceIPArrayAttribute": String
@@ -6788,6 +7144,7 @@ Response parameters Fn::GetAtt SecurityIps: the IP address whitelist after the m
   "Resources": {
     "DBInstanceSecurityIps": {
       "Type": "ALIYUN::RDS::DBInstanceSecurityIps",
+      "Properties": {
         "DBInstanceIPArrayName": {
           "Ref": "DBInstanceIPArrayName"
 ```
@@ -6806,7 +7163,7 @@ Response parameters Fn::GetAtt SecurityIps: the IP address whitelist after the m
           "Ref": "DBInstanceIPArrayAttribute"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Parameters": {
@@ -6832,7 +7189,7 @@ ce use a new group name avoid effect your database system. If the properties is 
       "Description": "Security ips to add or remove."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -6844,7 +7201,7 @@ ce use a new group name avoid effect your database system. If the properties is 
           "SecurityIps"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.4.6 ALIYUN::RDS::PrepayDBInstance
 
@@ -6884,7 +7241,7 @@ ALIYUN::RDS::PrepayDBInstance is used to create a subscription ApsaraDB for RDS 
     "AllocatePublicConnection": Boolean
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6935,12 +7292,17 @@ DBMappings syntax
 
 ```json
 "DBMappings": [
+```
+
+`{`
+
+```json
     "DBDescription": String,
     "CharacterSetName": String,
     "DBName": String
 ```
 
-`]` DBMappings properties
+`}` `]` DBMappings properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -6948,7 +7310,7 @@ DBMappings syntax
 | CharacterSetName | String | No | No | The character set of the database. | Valid values: Valid values for MySQL: utf8 \| gbk \| latin1 \| utf8mb4 (applicable to version 5.5 and 5.6). Valid values for an SQL Server database: Chinese PRC CI AS, _ _ _ Chinese PRC CS AS, _ _ _ SQL Latin1 General CP1 _ _ _ _ CI AS, _ SQL Latin1 General CP1 _ _ _ _ CS AS, and _ Chinese PRC BIN. _ _ |
 | DBName | String | No | No | The name of the database. | The name must be unique. It can be up to 64 characters in length and can contain lowercase letters, digits, and underscores ( ). It must _ start with a lowercase letter. |
 
-Response parameters Fn::GetAtt InnerPort: the internal port of the RDS instance. OrderId: the ID of the order. PublicConnectionString: public network connection string. InnerIPAddress: the internal IP address of the instance. DBInstanceId: the ID of the RDS instance. PublicIPAddress: the public IP address of the instance. PublicPort: The public port of the RDS instance. InnerConnectionString: intranet connection string. Sample request
+Response parameters Fn::GetAtt InnerPort: the internal port of the RDS instance. OrderId: the ID of the order. PublicConnectionString: public network connection string. InnerIPAddress: the internal IP address of the instance. DBInstanceId: the ID of the RDS instance. PublicIPAddress: the public IP address of the instance. PublicPort: The public port of the RDS instance. InnerConnectionString: intranet connection string. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -7330,12 +7692,13 @@ e. Default is RDS system assigns. ", "AllowedValues":[
       "Default": 7
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "PrepayDBInstance": {
       "Type": "ALIYUN::RDS::PrepayDBInstance",
+      "Properties": {
         "PeriodType": {
           "Ref": "PeriodType"
 ```
@@ -7367,16 +7730,21 @@ e. Default is RDS system assigns. ", "AllowedValues":[
         "PreferredBackupPeriod": {
           "Fn::Split": [
             ",",
-              "Ref": "PreferredBackupPeriod"
 ```
 
-`},`
+`{`
 
 ```json
               "Ref": "PreferredBackupPeriod"
 ```
 
-`]` `},`
+`},` `{`
+
+```json
+              "Ref": "PreferredBackupPeriod"
+```
+
+`}` `]` `},`
 
 ```json
         "DBInstanceStorage": {
@@ -7396,10 +7764,15 @@ e. Default is RDS system assigns. ", "AllowedValues":[
         "DBMappings": {
           "Fn::Split": [
             ",",
+```
+
+`{`
+
+```json
               "Ref": "DBMappings"
 ```
 
-`},`
+`},` `{`
 
 ```json
               "Ref": "DBMappings"
@@ -7553,7 +7926,7 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "InnerConnectionString"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "DBInstanceId": [
@@ -7564,7 +7937,7 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "DBInstanceId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "InnerIPAddress": {
@@ -7575,7 +7948,7 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "InnerIPAddress"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "PublicConnectionString": {
@@ -7586,7 +7959,7 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "PublicConnectionString"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "PublicIPAddress": {
@@ -7597,7 +7970,7 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "PublicIPAddress"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "OrderId": {
@@ -7623,7 +7996,7 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "PublicPort"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "InnerPort": {
@@ -7634,22 +8007,23 @@ e. Default is RDS system assigns. ", "AllowedValues":[
           "InnerPort"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 ### 5.5 ROS
 
 #### 5.5.1 ALIYUN::ROS::WaitCondition
 
-ALIYUN::ROS::WaitCondition is used to create an instance to process UserData messages. Statement
+ALIYUN::ROS::WaitCondition is used to create an instance to process UserData messages. Statement `{`
 
 ```json
   "Type": "ALIYUN::ROS::WaitCondition",
+  "Properties": {
     "Count": Number,
     "Handle": String,
     "Timeout": Number
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -7667,6 +8041,7 @@ Response parameters Fn::GetAtt Data: A JSON-serialized dictionary that contains 
   "Resources": {
     "WaitCondition": {
       "Type": "ALIYUN::ROS::WaitCondition",
+      "Properties": {
         "Handle": {
           "Ref": "WaitConHandle"
 ```
@@ -7678,14 +8053,14 @@ Response parameters Fn::GetAtt Data: A JSON-serialized dictionary that contains 
         "Count": 2
 ```
 
-`},`
+`}` `},`
 
 ```json
     "WaitConHandle": {
       "Type": "ALIYUN::ROS::WaitConditionHandle"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -7696,7 +8071,7 @@ Response parameters Fn::GetAtt Data: A JSON-serialized dictionary that contains 
           "CurlCli"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "Data": {
@@ -7706,19 +8081,20 @@ Response parameters Fn::GetAtt Data: A JSON-serialized dictionary that contains 
           "Data"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.5.2 ALIYUN::ROS::WaitConditionHandle
 
-ALIYUN::ROS::WaitConditionHandle is used to create an instance that sends and receives messages during UserData execution. Statement
+ALIYUN::ROS::WaitConditionHandle is used to create an instance that sends and receives messages during UserData execution. Statement `{`
 
 ```json
   "Type": "ALIYUN::ROS::WaitConditionHandle",
+  "Properties": {
     "Count": Integer,
     "Mode": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -7737,7 +8113,7 @@ PowerShellCurlCli: provides PowerShell with cURL CLI command prefixes and sends 
 |---|---|---|
 | ndicate success, or by adding | -Body '{"status": "fa |   |
 
-that the PowerShell version meets this constraint. By $PSVersionTable.PSVersion displays the version. `ilure "}` to indicate failure. Sample request
+that the PowerShell version meets this constraint. By $PSVersionTable.PSVersion displays the version. `ilure "}` to indicate failure. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -7767,12 +8143,13 @@ Full.\n2.Count >= 0.\n3.The id of signal is not specified. If so, it will be a s
       "Default": -1
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "WaitConditionHandle": {
       "Type": "ALIYUN::ROS::WaitConditionHandle",
+      "Properties": {
         "Mode": {
           "Ref": "Mode"
 ```
@@ -7784,7 +8161,7 @@ Full.\n2.Count >= 0.\n3.The id of signal is not specified. If so, it will be a s
           "Ref": "Count"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -7797,7 +8174,7 @@ for signalling handle completion or failure. You can signal success by adding --
           "CurlCli"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "WindowsCurlCli": {
@@ -7809,7 +8186,7 @@ can be used for signalling handle completion or failure. As Windows does not sup
           "WindowsCurlCli"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "PowerShellCurlCli": {
@@ -7824,20 +8201,21 @@ ch can be used for signalling handle completion or failure. As this cmdlet was i
           "PowerShellCurlCli"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.5.3 ALIYUN::ROS::Stack
 
-ALIYUN::ROS::Stack is used to create a nested stack. You can have a maximum of five nested levels. ALIYUN::ROS::Stack is used in a top-level template to nest stacks as resources. You can add output values from a nested stack contained within the template. You can use Fn::GetAtt together with the logical name of the nested stack and the output name in the Outputs.NestedStackOutputName format. Not e We recommend that you run an update to the Nested stack from the parent stack. When you apply a template change to update a top-level stack, ROS updates the top-level stack and initiates an update to its nested stacks. Resource orchestration service (ROS) updates resources that have been modified in the nested stack, but does not update resources that have not been modified in the nested stack. Statement
+ALIYUN::ROS::Stack is used to create a nested stack. You can have a maximum of five nested levels. ALIYUN::ROS::Stack is used in a top-level template to nest stacks as resources. You can add output values from a nested stack contained within the template. You can use Fn::GetAtt together with the logical name of the nested stack and the output name in the Outputs.NestedStackOutputName format. Not e We recommend that you run an update to the Nested stack from the parent stack. When you apply a template change to update a top-level stack, ROS updates the top-level stack and initiates an update to its nested stacks. Resource orchestration service (ROS) updates resources that have been modified in the nested stack, but does not update resources that have not been modified in the nested stack. Statement `{`
 
 ```json
   "Type": "ALIYUN::ROS::Stack",
+  "Properties": {
     "TemplateURL": String,
     "TimeoutMins": Number,
     "Parameters": Map
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -7856,7 +8234,7 @@ Properties
 |---|---|---|---|---|---|
 | Parameters | Map | No. | True | A set of value pairs that represent the parameters passed to ROS when this Nested stack is created. Each parameter has a name corresponding to a parameter defined in the embedded template and the value to which you want to set the parameter. This parameter is required if the nested stack needs input parameters. | None |
 
-Response parameters Fn::GetAtt You can use the following code to obtain the output of the nested stack:
+Response parameters Fn::GetAtt You can use the following code to obtain the output of the nested stack: `{`
 
 ```
   "Fn::GetAtt": [
@@ -7864,13 +8242,13 @@ Response parameters Fn::GetAtt You can use the following code to obtain the outp
     "Outputs.<nested_stack_output_name>"
 ```
 
-`]` When you use `Ref` to reference resources in a nested stack, the Alibaba Cloud Resource Name (ARN) of the nested stack is returned. Example: `arn:acs:ros::cn-hangzhou:12345****:stacks/test-nested-stack-Demo-`
+`]` `}` When you use `Ref` to reference resources in a nested stack, the Alibaba Cloud Resource Name (ARN) of the nested stack is returned. Example: `arn:acs:ros::cn-hangzhou:12345****:stacks/test-nested-stack-Demo-`
 
 ```
 jzkyq7mn2ykj/e71c1e04-1a57-46fc-b9a4-cf7ce0d3****
 ```
 
-Examples The following code provides an example of how to create a VPC, a VSwitch, and a security group in a nested stack and save the output results to the oss://ros/template/vpc.txt directory:
+Examples The following code provides an example of how to create a VPC, a VSwitch, and a security group in a nested stack and save the output results to the oss://ros/template/vpc.txt directory: `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -7939,12 +8317,13 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
       "Default": 0
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "Vpc": {
       "Type": "ALIYUN::ECS::VPC",
+      "Properties": {
         "CidrBlock": {
           "Ref": "VpcCidrBlock"
 ```
@@ -7956,11 +8335,12 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
           "Ref": "VpcName"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "VSwitch": {
       "Type": "ALIYUN::ECS::VSwitch",
+      "Properties": {
         "CidrBlock": {
           "Ref": "VSwitchCidrBlock"
 ```
@@ -7986,6 +8366,7 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
 ```json
     "SecurityGroup": {
       "Type": "ALIYUN::ECS::SecurityGroup",
+      "Properties": {
         "SecurityGroupName": {
           "Ref": "SecurityGroupName"
 ```
@@ -7997,16 +8378,17 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
           "Ref": "Vpc"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "WaitConditionHandle": {
       "Type": "ALIYUN::ROS::WaitConditionHandle",
+      "Properties": {
         "UpdateVersion": {
           "Ref": "UpdateVersion"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -8017,7 +8399,7 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
           "SecurityGroupId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "VpcId": {
@@ -8027,7 +8409,7 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
           "VpcId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "VSwitchId": {
@@ -8037,7 +8419,7 @@ Examples The following code provides an example of how to create a VPC, a VSwitc
           "VSwitchId"
 ```
 
-`]` The following code provides an example of a top-level stack:
+`]` `}` `}` `}` `}` The following code provides an example of a top-level stack: `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -8189,12 +8571,13 @@ ud_efficiency) or SSD cloud disk(cloud_ssd)", "Tpe" "String"
       "Default": 0
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "NetworkStack": {
       "Type": "ALIYUN::ROS::Stack",
+      "Properties": {
         "TemplateURL": "oss://ros/template/vpc.txt",
         "TimeoutMins": 5,
         "Parameters": {
@@ -8237,11 +8620,12 @@ ud_efficiency) or SSD cloud disk(cloud_ssd)", "Tpe" "String"
             "Ref": "UpdateVersion"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
     "WebServer": {
       "Type": "ALIYUN::ECS::Instance",
+      "Properties": {
         "ImageId": {
           "Ref": "ImageId"
 ```
@@ -8318,11 +8702,16 @@ staceype
 
 ```json
         "DiskMappings": [
+```
+
+`{`
+
+```json
             "Category": "cloud_ssd",
             "Size": 20
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -8333,7 +8722,7 @@ staceype
           "InstanceId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "PublicIp": {
@@ -8353,7 +8742,7 @@ staceype
           "Outputs.SecurityGroupId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "VpcId": {
@@ -8363,7 +8752,7 @@ staceype
           "Outputs.VpcId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "VSwitchId": {
@@ -8373,7 +8762,7 @@ staceype
           "Outputs.VSwitchId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "NetworkStackArn": {
@@ -8381,20 +8770,23 @@ staceype
         "Ref": "NetworkStack"
 ```
 
+`}` `}` `}` `}`
+
 ### 5.6 SLB
 
 #### 5.6.1 ALIYUN::SLB::AccessControl
 
-ALIYUN::SLB::AccessControl is used to create an access control list (ACL). Syntax
+ALIYUN::SLB::AccessControl is used to create an access control list (ACL). Syntax `{`
 
 ```json
   "Type": "ALIYUN::SLB::AccessControl",
+  "Properties": {
     "AddressIPVersion": String,
     "AclName": String,
     "AclEntrys": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8406,11 +8798,16 @@ AclEntrys syntax
 
 ```json
 "AclEntrys": [
+```
+
+`{`
+
+```json
     "comment": String,
     "entry": String
 ```
 
-`]` AclEntrys properties
+`}` `]` AclEntrys properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8424,6 +8821,7 @@ Response parameters Fn::GetAtt AclId: the ID of the ACL. Examples Resource usage
   "Resources": {
     "AccessControl": {
       "Type": "ALIYUN::SLB::AccessControl",
+      "Properties": {
         "AddressIPVersion": {
           "Ref": "AddressIPVersion"
 ```
@@ -8445,7 +8843,7 @@ Response parameters Fn::GetAtt AclId: the ID of the ACL. Examples Resource usage
             "Ref": "AclEntrys"
 ```
 
-`}]` `},`
+`}]` `}` `}` `}` `},`
 
 ```json
   "Parameters": {
@@ -8473,7 +8871,7 @@ ngth: 50.",
       "MaxLength": 50
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -8483,7 +8881,7 @@ ngth: 50.",
         "Fn::GetAtt": ["AccessControl", "AclId"]
 ```
 
-Example of combined use of SLB-related resources
+`}` `}` `}` `}` Example of combined use of SLB-related resources `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -8502,29 +8900,36 @@ Example of combined use of SLB-related resources
         "VSwitchId": "vsw-xxxxxxxxxxxxxxxxxxxx"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "ACL": {
       "Type": "ALIYUN::SLB::AccessControl",
+      "Properties": {
         "AclName": "acl-for-listener",
         "AddressIPVersion": "ipv4",
         "AclEntrys": [
+```
+
+`{`
+
+```json
             "entry": "192.168.x.x"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "entry": "10.0.x.x/24",
             "comment": "just comment"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
     "CreateListener": {
       "Type": "ALIYUN::SLB::Listener",
+      "Properties": {
         "LoadBalancerId": {
           "Ref": "LoadBalancer"
 ```
@@ -8560,7 +8965,7 @@ Example of combined use of SLB-related resources
         "AclType": "white"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -8571,21 +8976,22 @@ Example of combined use of SLB-related resources
           "Listeners"
 ```
 
-`]`
+`]` `}` `}`
 
 #### 5.6.2 ALIYUN::SLB::BackendServerAttachment
 
-ALIYUN::SLB::BackendServerAttachment is used to add backend servers. Statement
+ALIYUN::SLB::BackendServerAttachment is used to add backend servers. Statement `{`
 
 ```json
   "Type": "ALIYUN::SLB::BackendServerAttachment",
+  "Properties": {
     "LoadBalancerId": String,
     "BackendServers": List,
     "BackendServerList": List,
     "BackendServerWeightList": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8601,11 +9007,16 @@ BackendServers syntax
 
 ```json
 "BackendServers": [
+```
+
+`{`
+
+```json
     "ServerId" : String,
     "Weight" : Integer
 ```
 
-`]` BackendServers properties
+`}` `]` BackendServers properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8615,13 +9026,14 @@ BackendServers syntax
 |---|---|---|---|---|---|
 | Weight | Integer | Retained | Yes | The weight of the ECS instance in the SLB instance. | Valid values: 0 to 100. Default value: 100. |
 
-Response parameters Fn::GetAtt BackendServers: the backend servers added to the SLB instance. LoadBalancerId: the ID of the SLB instance. Sample request
+Response parameters Fn::GetAtt BackendServers: the backend servers added to the SLB instance. LoadBalancerId: the ID of the SLB instance. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "Attachment2": {
       "Type": "ALIYUN::SLB::BackendServerAttachment",
+      "Properties": {
         "LoadBalancerId": "15187200816-cn-beijing-btc-****",
         "BackendServerList": [
           "i-25o0m****",
@@ -8636,19 +9048,20 @@ Response parameters Fn::GetAtt BackendServers: the backend servers added to the 
           "100"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.6.3 ALIYUN::SLB::BackendServerToVServerGroupAddition
 
-ALIYUN::SLB::BackendServerToVServerGroupAddition is used to add backend servers to an existing VServer group. Statement
+ALIYUN::SLB::BackendServerToVServerGroupAddition is used to add backend servers to an existing VServer group. Statement `{`
 
 ```json
   "Type": "ALIYUN::SLB::BackendServerToVServerGroupAddition",
+  "Properties": {
     "BackendServers": List,
     "VServerGroupId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8659,12 +9072,17 @@ BackendServers syntax
 
 ```json
 "BackendServers": [
+```
+
+`{`
+
+```json
     "ServerId": String,
     "Port": Integer,
     "Weight": Integer
 ```
 
-`]` BackendServers properties
+`}` `]` BackendServers properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8679,14 +9097,20 @@ Response parameters Fn::GetAtt VServerGroupId: the ID of the VServer group. Samp
   "Resources": {
     "AttachVServerGroup": {
       "Type": "ALIYUN::SLB::BackendServerToVServerGroupAddition",
+      "Properties": {
         "VServerGroupId": "sg-2zenh4ndwrqg14yt0****",
         "BackendServers": [
+```
+
+`{`
+
+```json
             "ServerId": "i-25zsk****",
             "Weight": 20,
             "Port": 8080
 ```
 
-`},`
+`},` `{`
 
 ```json
             "ServerId": "i-25zsk****",
@@ -8694,14 +9118,15 @@ Response parameters Fn::GetAtt VServerGroupId: the ID of the VServer group. Samp
             "Port": 8081
 ```
 
-`]`
+`}` `]` `}` `}` `}` `}`
 
 #### 5.6.4 ALIYUN::SLB::Certificate
 
-ALIYUN::SLB::Certificate is used to upload a certificate to an SLB instance. Server certificates and CA certificates are supported. Not ice You can upload only one CA certificate at a time ("CertificateType": "CA "). You can upload only one server certificate and the corresponding private key at a time ("CertificateType": "Server "). Syntax
+ALIYUN::SLB::Certificate is used to upload a certificate to an SLB instance. Server certificates and CA certificates are supported. Not ice You can upload only one CA certificate at a time ("CertificateType": "CA "). You can upload only one server certificate and the corresponding private key at a time ("CertificateType": "Server "). Syntax `{`
 
 ```json
   "Type": "ALIYUN::SLB::Certificate",
+  "Properties": {
     "CertificateName": String,
     "Certificate": String,
     "AliCloudCertificateName": String,
@@ -8711,7 +9136,7 @@ ALIYUN::SLB::Certificate is used to upload a certificate to an SLB instance. Ser
     "AliCloudCertificateId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8723,7 +9148,7 @@ Properties
 | AliCloudCertific ateId | String | No | No | The ID of the Alibaba Cloud certificate. | This parameter is required if you use a certificate from Alibaba Cloud SSL Certificates Service. |
 | CertificateType | String | No | No | The type of the certificate. | Valid values: Server and CA. |
 
-Response parameters Fn::GetAtt CertificateId: the ID of the certificate. Fingerprint: the fingerprint of the certificate. Examples
+Response parameters Fn::GetAtt CertificateId: the ID of the certificate. Fingerprint: the fingerprint of the certificate. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
@@ -8782,12 +9207,13 @@ Response parameters Fn::GetAtt CertificateId: the ID of the certificate. Fingerp
       "Description": "The ID of the Alibaba Cloud certificate."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Resources": {
     "Certificate": {
       "Type": "ALIYUN::SLB::Certificate",
+      "Properties": {
         "CertificateType": {
           "Ref": "CertificateType"
 ```
@@ -8827,7 +9253,7 @@ Response parameters Fn::GetAtt CertificateId: the ID of the certificate. Fingerp
           "Ref": "AliCloudCertificateId"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -8839,7 +9265,7 @@ Response parameters Fn::GetAtt CertificateId: the ID of the certificate. Fingerp
           "Fingerprint"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "CertificateId": {
@@ -8853,21 +9279,22 @@ Response parameters Fn::GetAtt CertificateId: the ID of the certificate. Fingerp
           "CertificateId"
 ```
 
-`]`
+`]` `}` `}`
 
 #### 5.6.5 ALIYUN::SLB::DomainExtension
 
-ALIYUN::SLB::DomainExtension is used to create a domain extension for an SLB instance. Statement
+ALIYUN::SLB::DomainExtension is used to create a domain extension for an SLB instance. Statement `{`
 
 ```json
   "Type": "ALIYUN::SLB::DomainExtension",
+  "Properties": {
     "Domain": String,
     "ListenerPort": Integer,
     "ServerCertificateId": String,
     "LoadBalancerId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8883,13 +9310,14 @@ Response parameters Fn::GetAtt DomainExtensionId: the ID of the created domain e
   "Resources": {
     "DomainExtension": {
       "Type": "ALIYUN::SLB::DomainExtension",
+      "Properties": {
         "Domain": "*.example.com",
         "ListenerPort": "443",
         "ServerCertificateId": "123157908552****_166f8204689_1714763408_70998****",
         "LoadBalancerId": "lb-bp1o94dp5i6earr9g****"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -8900,7 +9328,7 @@ Response parameters Fn::GetAtt DomainExtensionId: the ID of the created domain e
           "DomainExtensionId"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
     "ListenerPort": {
@@ -8910,7 +9338,7 @@ Response parameters Fn::GetAtt DomainExtensionId: the ID of the created domain e
           "ListenerPort"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.6.6 ALIYUN::SLB::Listener
 
@@ -8938,7 +9366,7 @@ ALIYUN::SLB::Listener is used to create a listener for an SLB instance. Statemen
     "VServerGroupId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -8993,7 +9421,7 @@ HealthCheck syntax
   "Port": Integer
 ```
 
-HealthCheck properties
+`}` HealthCheck properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9030,7 +9458,7 @@ Persistence syntax
   "StickySessionType": String
 ```
 
-Persistence properties
+`}` Persistence properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9060,7 +9488,7 @@ HttpConfig syntax
   "ListenerForward": String
 ```
 
-HttpConfig properties
+`}` HttpConfig properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9077,16 +9505,18 @@ Response parameters Fn::GetAtt LoadBalancerId: the unique ID of the SLB instance
   "Resources": {
     "LoadBalancer": {
       "Type": "ALIYUN::SLB::LoadBalancer",
+      "Properties": {
         "LoadBalancerName": "createdByHeat",
         "AddressType": "internet",
         "InternetChargeType": "paybybandwidth"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "CreateListener": {
       "Type": "ALIYUN::SLB::Listener",
+      "Properties": {
         "LoadBalancerId": {"Ref": "LoadBalancer"},
         "ListenerPort": "8094",
         "BackendServerPort": 8080,
@@ -9113,13 +9543,15 @@ Response parameters Fn::GetAtt LoadBalancerId: the unique ID of the SLB instance
           "Cookie": "1"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
   "LoadBalanceDetails": {
      "Value": {"Fn::GetAtt": ["LoadBalancer", "LoadBalancerId"]}
 ```
+
+`}` `}` `}`
 
 #### 5.6.7 ALIYUN::SLB::LoadBalancer
 
@@ -9145,7 +9577,7 @@ ALIYUN::SLB::LoadBalancer is used to create an SLB instance. Statement
     "PayType": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9182,6 +9614,11 @@ Tags syntax
 
 ```json
 "Tags": [
+```
+
+`{`
+
+```json
     "Value": String ,
     "Key": String
 ```
@@ -9193,19 +9630,20 @@ Tags syntax
 | Key | String | No | No | None | None |
 | Value | String | Yes | Released | None | Valid values: 1025 to 10000. You cannot use the following commonly used port numbers: 2222, 4500, 4510, 4560, 7505, 9000, 9001, and 9002. |
 
-Response parameters Fn::Get At t LoadBalancerId: the unique ID of the SLB instance. NetworkType: the network type of the SLB instance, which can be vpc or classic. AddressType: the address type of the SLB instance, which can be intranet or internet. IpAddress: the IP address of the SLB instance. OrderId: the ID of the order. Sample request
+Response parameters Fn::Get At t LoadBalancerId: the unique ID of the SLB instance. NetworkType: the network type of the SLB instance, which can be vpc or classic. AddressType: the address type of the SLB instance, which can be intranet or internet. IpAddress: the IP address of the SLB instance. OrderId: the ID of the order. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "CreateLoadBalance": {
       "Type": "ALIYUN::SLB::LoadBalancer",
+      "Properties": {
         "LoadBalancerName": "createdByHeat",
         "AddressType": "internet",
         "InternetChargeType": "paybybandwidth",
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -9213,6 +9651,8 @@ Response parameters Fn::Get At t LoadBalancerId: the unique ID of the SLB instan
       "Value": {
         "Fn::GetAtt": ["CreateLoadBalance", "LoadBalancerId"]}
 ```
+
+`}` `}` `}`
 
 #### 5.6.8 ALIYUN::SLB::LoadBalancerClone
 
@@ -9230,7 +9670,7 @@ ALIYUN::SLB::LoadBalancerClone is used to clone an SLB instance. Syntax
     "BackendServers": List
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9259,29 +9699,35 @@ BackendServers syntax
     "Weight": Integer
 ```
 
-`]` BackendServers properties
+`}` `]` BackendServers properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
 | ServerId | String | Yes | Yes | The ID of the ECS instance. | The ECS instances must be in the running state. |
 | Weight | Integer | Yes | Yes | The weight of the ECS instance to be attached to the SLB instance. | Valid values: 0 to 100. Default value: 100. |
 
-Response parameters Fn::GetAtt LoadBalancerId: the ID of the new SLB instance. Examples
+Response parameters Fn::GetAtt LoadBalancerId: the ID of the new SLB instance. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion" : "2015-09-01",
   "Resources" : {
     "CloneLoadBalance": {
       "Type": "ALIYUN::SLB::LoadBalancerClone",
+      "Properties": {
         "SourceLoadBalancerId": "150ebed5f06-cn-beijing-btc-***",
         "LoadBalancerName": "rosnew",
         "BackendServersPolicy": "replace",
         "BackendServers": [
+```
+
+`{`
+
+```json
                 "ServerId": "i-25zsk****",
                 "Weight": 20
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -9289,18 +9735,21 @@ Response parameters Fn::GetAtt LoadBalancerId: the ID of the new SLB instance. E
          "Value" : {"Fn::GetAtt": ["CloneLoadBalance", "LoadBalancerId"]}
 ```
 
+`}` `}`
+
 #### 5.6.9 ALIYUN::SLB::MasterSlaveServerGroup
 
-ALIYUN::SLB::MasterSlaveServerGroup is used to create a primary/secondary server group. Not ice A primary/secondary server group contains only two ECS instances: a primary server and a secondary server. Syntax
+ALIYUN::SLB::MasterSlaveServerGroup is used to create a primary/secondary server group. Not ice A primary/secondary server group contains only two ECS instances: a primary server and a secondary server. Syntax `{`
 
 ```json
   "Type": "ALIYUN::SLB::MasterSlaveServerGroup",
+  "Properties": {
     "MasterSlaveServerGroupName": String,
     "MasterSlaveBackendServers": List,
     "LoadBalancerId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9318,7 +9767,7 @@ MasterSlaveBackendServers syntax
     "ServerType": String
 ```
 
-`]` MasterSlaveBackendServers properties
+`}` `]` MasterSlaveBackendServers properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9334,15 +9783,21 @@ Response parameters Fn::GetAtt MasterSlaveServerGroupId: the ID of the primary/s
   "Resources": {
     "MasterSlaveServerGroup": {
       "Type": "ALIYUN::SLB::MasterSlaveServerGroup",
+      "Properties": {
         "MasterSlaveServerGroupName": "Group1",
         "MasterSlaveBackendServers": [
+```
+
+`{`
+
+```json
             "ServerId": "vm****",
             "Port": "80",
             "Weight": "100",
             "ServerType": "Master"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "ServerId": "vm****",
@@ -9351,13 +9806,13 @@ Response parameters Fn::GetAtt MasterSlaveServerGroupId: the ID of the primary/s
             "ServerType": "Slave"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "LoadBalancerId": "lb-bp1hv944r69al4j9j****"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -9368,20 +9823,21 @@ Response parameters Fn::GetAtt MasterSlaveServerGroupId: the ID of the primary/s
           "MasterSlaveServerGroupId"
 ```
 
-`]`
+`]` `}` `}` `}` `}`
 
 #### 5.6.10 ALIYUN::SLB::Rule
 
-ALIYUN::SLB::Rule is used to add forwarding rules for a specified HTTP or HTTPS listener. Statement
+ALIYUN::SLB::Rule is used to add forwarding rules for a specified HTTP or HTTPS listener. Statement `{`
 
 ```json
   "Type": "ALIYUN::SLB::Rule",
+  "Properties": {
     "ListenerPort": Integer,
     "RuleList": List,
     "LoadBalancerId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9393,13 +9849,18 @@ RuleList syntax
 
 ```json
 "RuleList": [
+```
+
+`{`
+
+```json
     "Url": String,
     "Domain": String,
     "VServerGroupId": String,
     "RuleName": String
 ```
 
-`]` RuleList properties
+`}` `]` RuleList properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9429,6 +9890,7 @@ Response parameters Fn::GetAtt Rules: the list of forwarding rules. Sample reque
   "Resources": {
     "Rule": {
       "Type": "ALIYUN::SLB::Rule",
+      "Properties": {
         "ListenerPort": {
           "Ref": "ListenerPort"
 ```
@@ -9450,7 +9912,7 @@ Response parameters Fn::GetAtt Rules: the list of forwarding rules. Sample reque
           "Ref": "LoadBalancerId"
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Parameters": {
@@ -9480,7 +9942,7 @@ id value:\n1-65535",
       "Description": "The ID of Server Load Balancer instance."
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Outputs": {
@@ -9489,6 +9951,8 @@ id value:\n1-65535",
       "Value": {
         "Fn::GetAtt": ["Rule", "Rules"]
 ```
+
+`}` `}` `}` `}`
 
 #### 5.6.11 ALIYUN::SLB::VServerGroup
 
@@ -9502,7 +9966,7 @@ ALIYUN::SLB::VServerGroup is used to create a VServer group and adds backend ser
          "LoadBalancerId" : String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9514,12 +9978,17 @@ BackendServers syntax
 
 ```json
 "BackendServers" : [
+```
+
+`{`
+
+```json
         "ServerId" : String,
         "Port" : Integer,
         "Weight" : Integer
 ```
 
-`]` BackendServers properties
+`}` `]` BackendServers properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9527,22 +9996,28 @@ BackendServers syntax
 | Port | Integer | Yes | Yes | The backend port used by the SLB instance. | Valid values: 1 to 65535. |
 | Weight | Integer | Yes | Yes | The weight of the ECS instance to be attached to the SLB instance. | Valid values: 0 to 100. |
 
-Response parameters Fn::GetAtt VServerGroupId: the ID of the VServer group. BackendServers: the list of backend servers added to the SLB instance Examples
+Response parameters Fn::GetAtt VServerGroupId: the ID of the VServer group. BackendServers: the list of backend servers added to the SLB instance Examples `{`
 
 ```json
     "ROSTemplateFormatVersion": "2015-09-01",
     "Resources": {
         "CreateVServerGroup": {
             "Type": "ALIYUN::SLB::VServerGroup",
+            "Properties": {
                 "LoadBalancerId": "lb-2zenh4ndwrqg14yt0****",
                 "VServerGroupName": "VServerGroup-****",
                 "BackendServers": [
+```
+
+`{`
+
+```json
                         "ServerId": "i-25zsk****",
                         "Weight": 20,
                         "Port": 8080
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "ServerId": "i-25zsk****",
@@ -9550,13 +10025,15 @@ Response parameters Fn::GetAtt VServerGroupId: the ID of the VServer group. Back
                         "Port": 8081
 ```
 
-`]` `},`
+`}` `]` `}` `}` `},`
 
 ```json
     "Outputs": {
         "VServerGroupId": {
             "Value" : {"Fn::GetAttr": ["CreateVServerGroup",  "VServerGroupId"]
 ```
+
+`}` `}` `}` `}`
 
 ### 5.7 VPC
 
@@ -9576,7 +10053,7 @@ ALIYUN::VPC::EIP is used to apply for an Elastic IP address. Statement
     "Bandwidth": Number
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9599,11 +10076,12 @@ Response parameters Fn::GetAtt EipAddress: the allocated Elastic IP address. All
   "Resources": {
     "Eip": {
       "Type": "ALIYUN::VPC::EIP",
+      "Properties": {
         "InternetChargeType": "PayByTraffic",
           "Bandwidth": 200
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
@@ -9625,19 +10103,22 @@ Response parameters Fn::GetAtt EipAddress: the allocated Elastic IP address. All
       "Value" : {"Fn::GetAtt": ["Eip", "OrderId"]}
 ```
 
+`}` `}` `}`
+
 #### 5.7.2 ALIYUN::VPC::EIPAssociation
 
-ALIYUN::VPC::EIPAssociation is used to associate an Elastic IP address with a cloud service instance. Statement
+ALIYUN::VPC::EIPAssociation is used to associate an Elastic IP address with a cloud service instance. Statement `{`
 
 ```json
   "Type": "ALIYUN::VPC::EIPAssociation",
+  "Properties": {
     "AllocationId": String,
     "InstanceId": String,
     "PrivateIpAddress": String,
     "Mode": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9656,22 +10137,24 @@ Response parameters Fn::GetAtt EipAddress: The allocated Elastic IP address. All
   "Resources": {
     "Eip": {
       "Type": "ALIYUN::VPC::EIP",
+      "Properties": {
         "InternetChargeType": "PayByTraffic",
           "Bandwidth": 200
 ```
 
-`},`
+`}` `},`
 
 ```json
     "EipAssociation": {
       "Type": "ALIYUN::VPC::EIPAssociation",
+      "Properties": {
         "InstanceId": "<LoadBalancerId>",
         "InstanceType": "EcsInstance",
         "AllocationId": {
           "Fn::GetAtt": ["Eip", "AllocationId"]
 ```
 
-`},`
+`}` `}` `}` `},`
 
 ```json
   "Outputs": {
@@ -9686,7 +10169,7 @@ Response parameters Fn::GetAtt EipAddress: The allocated Elastic IP address. All
       "Value" : {"Fn::GetAtt": ["EipAssociation", "AllocationId"]}
 ```
 
-`YAML` format
+`}` `}` `}` `YAML` format
 
 ```
 ROSTemplateFormatVersion: '2015-09-01' Resources:
@@ -9719,17 +10202,18 @@ Outputs:
 
 #### 5.7.3 ALIYUN::VPC::PeeringRouterInterfaceBinding
 
-ALIYUN::VPC::PeeringRouterInterfaceBinding is used to associate two router interfaces to be interconnected. Statement
+ALIYUN::VPC::PeeringRouterInterfaceBinding is used to associate two router interfaces to be interconnected. Statement `{`
 
 ```json
   "Type": "ALIYUN::VPC::PeeringRouterInterfaceBinding",
+  "Properties": {
     "OppositeRouterId": String,
     "OppositeInterfaceId": String,
     "OppositeInterfaceOwnerId": String,
     "RouterInterfaceId": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Parameter | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9741,24 +10225,28 @@ Properties
 | OppositeRouter Id | String | Yes | Released | The ID of the router to which the peer router interface belongs. | None |
 | OppositeInterfa ceOwnerId | String | Yes | Released | The ID of the owner of the peer router interface. | None |
 
-Response parameters Fn::GetAtt RouterInterfaceId: the ID of the vRouter. Sample request
+Response parameters Fn::GetAtt RouterInterfaceId: the ID of the vRouter. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "InitiatorRouterInterfaceBinding": {
       "Type": "ALIYUN::VPC::PeeringRouterInterfaceBinding",
+      "Properties": {
         "RouterInterfaceId": "ri-2zedgo0ih64g1me29****",
         "OppositeInterfaceId": "ri-2zex1tkyym98pjaor****",
         "OppositeRouterId": "vrt-2zexb35tzoriu0286****"
 ```
 
+`}` `}` `}` `}`
+
 #### 5.7.4 ALIYUN::VPC::PeeringRouterInterfaceConnection
 
-ALIYUN::VPC::PeeringRouterInterfaceConnection is used to initiate a router interface connection. Statement
+ALIYUN::VPC::PeeringRouterInterfaceConnection is used to initiate a router interface connection. Statement `{`
 
 ```json
   "Type": "ALIYUN::VPC::PeeringRouterInterfaceConnection",
+  "Properties": {
     "OppositeInterfaceId": String,
     "RouterInterfaceId": String
 ```
@@ -9770,16 +10258,19 @@ Properties
 | OppositeInterfa ceId | String | No | No | The ID of the acceptor router interface. | None |
 | RouterInterfaceI d | String | No | No | The ID of the router interface to initiate the connection. | None |
 
-Response parameters Fn::GetAtt OppositeInterfaceId: the ID of the acceptor router interface. RouterInterfaceId: the ID of the router interface that initiates the connection. Sample request
+Response parameters Fn::GetAtt OppositeInterfaceId: the ID of the acceptor router interface. RouterInterfaceId: the ID of the router interface that initiates the connection. Sample request `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "InitiatorRouterInterfaceBinding": {
       "Type": "ALIYUN::VPC::PeeringRouterInterfaceConnection",
+      "Properties": {
         "RouterInterfaceId": "ri-2zedgo0ih64g1me29****",
         "OppositeInterfaceId": "ri-2ze4k5n2aeardu8cy****"
 ```
+
+`}` `}` `}` `}`
 
 #### 5.7.5 ALIYUN::VPC::RouterInterface
 
@@ -9807,7 +10298,7 @@ ALIYUN::VPC::RouterInterface is used to create a router interface. Syntax
     "InstanceChargeType": String
 ```
 
-Properties
+`}` `}` Properties
 
 | Property | Type | Required | Editable | Description | Constraint |
 |---|---|---|---|---|---|
@@ -9857,13 +10348,14 @@ Properties
 |---|---|---|---|---|---|
 | InstanceChar geType | String | No | No | The billing method of the instance. | Valid values: Postpaid: pay-as- you-go Prepaid: subscription |
 
-Response parameters Fn::GetAtt RouterInterfaceId: the ID of the router interface. Examples
+Response parameters Fn::GetAtt RouterInterfaceId: the ID of the router interface. Examples `{`
 
 ```json
   "ROSTemplateFormatVersion": "2015-09-01",
   "Resources": {
     "RouterInterface": {
       "Type": "ALIYUN::VPC::RouterInterface",
+      "Properties": {
         "Name": "RouterInterface_1",
         "Description": "VPC initiator RouterInterface",
         "RouterId": "vrt-2ze2i147e5n0bicoe****",
@@ -9873,10 +10365,12 @@ Response parameters Fn::GetAtt RouterInterfaceId: the ID of the router interface
         "HealthCheckTargetIp": "192.168.XX.XX"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
   "Outputs": {
     "RouterInterfaceId": {
       "Value": {"Fn::GetAtt": ["RouterInterface", "RouterInterfaceId"]}
 ```
+
+`}` `}` `}`

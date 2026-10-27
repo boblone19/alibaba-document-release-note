@@ -5,7 +5,7 @@ doc_version: "20251105"
 pdf_pages: 321
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 Apsara Uni-manager Management Console Developer Guide 20251105.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.14.0/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20Apsara%20Uni-manager%20Management%20Console%20Developer%20Guide%2020251105.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 Apsara Uni-manager Management Console Developer Guide 20251105
@@ -428,11 +428,18 @@ To use an Apsara Stack SDK for Java, perform the following steps:
             response = client.getAcsResponse(request);
             for (DescribeInstancesResponse.Instance instance:response.getInstances()) {
                 System.out.println(instance.getPublicIpAddress());
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 ##### 2.1.3.2 Use SDK
 
@@ -554,6 +561,8 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
+`}`
+
 ###### 2.1.3.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or the requests and responses of API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations.
@@ -629,7 +638,7 @@ This parameter is required when you want to delete, modify, or query an instance
             e.printStackTrace();
 ```
 
-DKs
+`}` `}` `}` DKs
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -678,6 +687,8 @@ This parameter is required when you want to delete, modify, or query an instance
             // TODO Auto-generated catch block
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 **Example: Call a RESTful API operation**
 
@@ -749,6 +760,8 @@ following method to pass parameters:
             // TODO Auto-generated catch block
             e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 #### 2.1.4 Call examples for SDK for Python
 
@@ -1106,6 +1119,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create an API request and configure the required parameters.
     request := ecs.CreateDescribeInstancesRequest()
     // Specify the endpoint of the service.
@@ -1117,9 +1135,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. (Optional) Switch to HTTP or HTTPS.
 
 ```
@@ -1195,6 +1219,8 @@ response,err := ecsClient.DescribeInstances(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` .
@@ -1212,6 +1238,8 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
 ```
+
+`}`
 
 **ServerError**
 
@@ -1270,6 +1298,11 @@ func main() {
         "<yourAccessKeySecret>") // Replace the variable parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<ecs.aliyuncs.com>" // Replace the variable parameter with the endpoint of your service.
@@ -1304,8 +1337,15 @@ an instance, you must configure this parameter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Call a RESTful API operation**
 
@@ -1346,6 +1386,11 @@ func main() {
         "<yourAccessKeySecret>")  // Replace the variable parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "GET"
     request.Domain = "cs.aliyuncs.com" // The endpoint of the service. Replace the sample value with the actual service endpoint.
@@ -1376,8 +1421,15 @@ hod to pass parameters:
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ### 2.2 Use ASAPI to call API operations
 
@@ -1639,6 +1691,11 @@ The following sample code shows how to use Apsara Stack SDK for Node.js to make 
     // When you use the STS AccessKey ID to call RPC API operations, you must add the SecurityToken parameter to the header.
     // "SecurityToken": "<your-securitytoken>",
       "<The name of the operation-specific parameter required by the API operation>": "<The value of the operation-specific parameter>"
+```
+
+`}`
+
+```
 // 5. Configure request headers. // When you use the STS AccessKey ID to call ROA API operations, you must add the x-acs-security-token parameter to the header. // AsapiClient.addHeader("x-acs-security-token", "<your-securitytoken>") AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
   const res = await AsapiClient.doRequest(cnofig.API_GATEWAY, params, {
     method: 'POST', // The request method.
@@ -1657,6 +1714,8 @@ https://nodejs.org/api/https.html#https_https_request_options_callback.
 } catch (e) {
   console.log(e)
 ```
+
+`}`
 
 **Disable certificate validation**
 
@@ -1806,6 +1865,11 @@ final String HTTP_METHOD = "GET"; Map parameters = new HashMap(); // Specify req
     canonicalizedQueryString.append("&")
     .append(percentEncode(key)).append("=")
     .append(percentEncode(parameters.get(key)));
+```
+
+`}`
+
+```
 //Encode the canonicalized query string. stringToSign.append(percentEncode( canonicalizedQueryString.toString().substring(1)));
 ```
 
@@ -1868,13 +1932,15 @@ If a request is successful, the request ID and operation-specific parameter valu
       "cuserId":"aliyuntest"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "requestId":"xxxxxxxxxxxxxx",
   "success":true,
   "message":"success"
 ```
+
+`}`
 
 **Sample error responses**
 
@@ -1889,6 +1955,8 @@ If a request fails, the following information is returned. For more information,
     "asapiErrorMessage": "Failed to ....", // The error message provided by ASAPI.
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by ASAPI.
 ```
+
+`}`
 
 ## 4 API reference
 
@@ -2304,7 +2372,7 @@ Sample success responses
             "id": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": "true",
@@ -2321,6 +2389,8 @@ Sample success responses
     "pureListData": "true",
     "message": " 200"
 ```
+
+`}`
 
 ###### 4.3.1.1.7 CreateOrganization
 
@@ -2411,6 +2481,8 @@ Sample success responses
     "pureListData": "true",
     "message": "200"
 ```
+
+`}`
 
 ###### 4.3.1.1.8 GetPrivateCloudAccountByOrganizationId
 
@@ -2740,13 +2812,15 @@ Sample success response
             "id": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": "true",
     "pureListData": "true",
     "message": "200"
 ```
+
+`}`
 
 ###### 4.3.1.2.6 BindAscmUserAndResourceGroup
 
@@ -3323,7 +3397,7 @@ Sample success responses
             "organizationVisibility": "organizationVisibility.global"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "loginPolicy": {
@@ -3338,7 +3412,7 @@ Sample success responses
               "loginPolicyId": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
           "muserId": "",
@@ -3355,7 +3429,7 @@ Sample success responses
               "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "enable": true,
@@ -3438,7 +3512,7 @@ Sample success responses
             "organizationVisibility": "organizationVisibility.global"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "accessKeys": [
@@ -3454,7 +3528,7 @@ Sample success responses
             "status": "ACTIVE"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": false,
@@ -3546,7 +3620,7 @@ Sample success responses
             "organizationVisibility": "organizationVisibility.global"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "loginPolicy": {
@@ -3561,7 +3635,7 @@ Sample success responses
               "loginPolicyId": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
           "muserId": "",
@@ -3578,7 +3652,7 @@ Sample success responses
               "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "enable": true,
@@ -3617,7 +3691,7 @@ Sample success responses
             "organizationVisibility": "organizationVisibility.global"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "accessKeys": [
@@ -3634,7 +3708,7 @@ Sample success responses
             "status": "ACTIVE"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": false,
@@ -3696,7 +3770,7 @@ Sample success responses
               "loginPolicyId": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
           "muserId": "",
@@ -3713,7 +3787,7 @@ Sample success responses
               "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
           "enable": true,
@@ -3743,7 +3817,7 @@ Sample success responses
             "status": "ACTIVE"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": false,
@@ -3800,6 +3874,8 @@ Sample success responses
     "pureListData": false,
     "message": "success"
 ```
+
+`}`
 
 ##### 4.3.1.3 Roles
 
@@ -4922,7 +4998,7 @@ Sample success responses
         "organizationVisibility": "organizationVisibility.global"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "loginPolicy": {
@@ -4954,7 +5030,7 @@ Sample success responses
           "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "enable": true,
@@ -5242,7 +5318,7 @@ Sample success responses
         "organizationVisibility": "organizationVisibility.global"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "accessKeys": [
@@ -5259,7 +5335,7 @@ Sample success responses
         "status": "ACTIVE"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "default": false,
@@ -5309,6 +5385,8 @@ Sample success responses
   "message": "success"
 ```
 
+`}`
+
 ###### 4.3.1.4.2 AddRoleToUser
 
 Binds a role to a user.
@@ -5356,6 +5434,8 @@ Sample success responses
     "pureListData": "false",
     "message": "success"
 ```
+
+`}`
 
 ###### 4.3.1.4.3 ResetPasswordByLoginName
 
@@ -6036,7 +6116,7 @@ Sample success responses
                         "id": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "users": [
@@ -6071,7 +6151,7 @@ Sample success responses
                         "username": "test"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "roles": [
@@ -6098,7 +6178,7 @@ Sample success responses
                         "cuserId": "admin"
 ```
 
-`]` `},` `{`
+`}` `]` `},` `{`
 
 ```json
                 "organization": {
@@ -6151,7 +6231,7 @@ Sample success responses
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": "false",
@@ -6170,7 +6250,7 @@ Sample success responses
                 "accesskeyId": "JGdgSN2p******"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "deleted": "false",
@@ -6219,7 +6299,7 @@ Sample success responses
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "mobileNationCode": "86",
@@ -6714,7 +6794,7 @@ Sample success response
                     "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "userGroups": [
@@ -6747,7 +6827,7 @@ Sample success response
                             "id": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "users": [
@@ -6782,7 +6862,7 @@ Sample success response
                             "username": "test"
 ```
 
-`],`
+`}` `],`
 
 ```json
                     "roles": [
@@ -6813,7 +6893,7 @@ Sample success response
                             "cuserId": "admin"
 ```
 
-`]` `},` `{`
+`}` `]` `},` `{`
 
 ```json
                     "organization": {
@@ -6833,7 +6913,7 @@ Sample success response
                         "cuserId": "admin"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
             "userRoles": [
@@ -6860,7 +6940,7 @@ Sample success response
                     "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "accessKeys": [
@@ -6877,7 +6957,7 @@ Sample success response
                     "accesskeyId": "JGdgSN2p******"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "roles": [
@@ -6940,7 +7020,7 @@ Sample success response
                         "loginPolicyId": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "muserId": "admin",
@@ -6957,7 +7037,7 @@ Sample success response
                         "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "enable": "true",
@@ -6989,7 +7069,7 @@ Sample success response
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "success": "true",
@@ -7006,6 +7086,8 @@ Sample success response
     "pureListData": "false",
     "message": "success"
 ```
+
+`}`
 
 ###### 4.3.1.4.9 ActivateUser
 
@@ -7261,7 +7343,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1 Common request headers
 "LoginName": "test"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -8037,7 +8119,7 @@ Sample success responses
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "loginPolicy": {
@@ -8052,7 +8134,7 @@ Sample success responses
                     "loginPolicyId": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "muserId": "admin",
@@ -8069,7 +8151,7 @@ Sample success responses
                     "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "enable": "true",
@@ -8116,7 +8198,7 @@ Sample success responses
                         "id": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "users": [
@@ -8151,7 +8233,7 @@ Sample success responses
                         "username": "test"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "roles": [
@@ -8182,7 +8264,7 @@ Sample success responses
                         "cuserId": "admin"
 ```
 
-`]` `},` `{`
+`}` `]` `},` `{`
 
 ```json
                 "organization": {
@@ -8202,7 +8284,7 @@ Sample success responses
                     "cuserId": "admin"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
         "userRoles": [
@@ -8229,7 +8311,7 @@ Sample success responses
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": "false",
@@ -8247,7 +8329,7 @@ Sample success responses
                 "accesskeyId": "JGdgSN2p******"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "deleted": "false",
@@ -8302,7 +8384,7 @@ dSbO
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "mobileNationCode": "86",
@@ -8321,6 +8403,8 @@ dSbO
     "pureListData": "false",
     "message": "success"
 ```
+
+`}`
 
 ###### 4.3.1.4.13 RecoverUserByLoginName
 
@@ -8615,7 +8699,7 @@ Sample success response
                     "endTime": "24:00"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "enable": "true",
@@ -8662,7 +8746,7 @@ Sample success response
                         "id": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "users": [
@@ -8697,7 +8781,7 @@ Sample success response
                         "username": "test"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "roles": [
@@ -8744,7 +8828,7 @@ Sample success response
                     "cuserId": "admin"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
         "userRoles": [
@@ -8771,7 +8855,7 @@ Sample success response
                 "cuserId": "admin"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "default": "false",
@@ -8789,7 +8873,7 @@ Sample success response
                 "accesskeyId": "JGdgSN2p******"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "deleted": "false",
@@ -8857,6 +8941,8 @@ Sample success response
     "pureListData": "false",
     "message": "success"
 ```
+
+`}`
 
 ###### 4.3.1.4.14 DeactivateUser
 
@@ -9112,7 +9198,7 @@ POST /ascm/auth/user/deactivateUser HTTP/1.1 Common request headers
 "loginName": "test"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -9574,7 +9660,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1 Common request headers
 "GroupName": "", "OrganizationId": ""
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data>
@@ -9951,7 +10037,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1 Common request headers
 "UserGroupId": "123"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10205,7 +10291,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1 Common request headers
 "LoginNameList": "["test"]", "UserGroupId": "1"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10264,7 +10350,7 @@ POST /ascm/auth/user/addRoleToUserGroup HTTP/1.1 Common request headers
 "UserGroupId": "1", "UserGroupIdList": "["1","2"]"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10322,7 +10408,7 @@ POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1 Common request headers
 "AscmRoleId": "1", "ResourceSetId": "1"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10378,7 +10464,7 @@ POST /ascm/auth/user/removeUsersFromUserGroup HTTP/1.1 Common request headers
 "LoginNameList": "", "UserGroupId": ""
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <redirect>false</redirect> <cost>1000</cost> <code>200</code> <success>true</success> <pureListData>false</pureListData> <message>success</message>
@@ -10434,7 +10520,7 @@ POST /ascm/auth/user/removeRoleFromUserGroup HTTP/1.1 Common request headers
 "RoleId": "1", "UserGroupId": "2"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10490,7 +10576,7 @@ POST /ascm/auth/user/removeResourceSetFromUserGroup HTTP/1.1 Common request head
 "ResourceSetId": "1", "UserGroupId": "1"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10547,7 +10633,7 @@ POST /ascm/auth/user/deleteUserGroup HTTP/1.1 Common request headers
 "UserGroupId": "123"
 ```
 
-Sample success responses
+`}` Sample success responses
 
 | XML | format |
 |---|---|
@@ -10776,7 +10862,7 @@ Sample success responses
                     "loginPolicyId": "1"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "timeRanges": [
@@ -10790,7 +10876,7 @@ Sample success responses
                     "endTime": "24:00"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
     "success": "true",
@@ -10807,6 +10893,8 @@ Sample success responses
     "pureListData": "false",
     "message": "success"
 ```
+
+`}`
 
 ###### 4.3.1.6.4 ModifyLoginPolicy
 
@@ -11432,7 +11520,7 @@ Sample success responses in JSON format `{`
      "InstanceType": "ecs.se1.2xlarge"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "message": "success",
@@ -11445,6 +11533,8 @@ Sample success responses in JSON format `{`
  "total": 1000,
  "asapiRequestId": "47b3e68f-a87d-4222-8263-e8f6a7801e09"
 ```
+
+`}`
 
 ##### 4.3.2.7 SelectCommonSpec
 
@@ -11517,7 +11607,7 @@ Sample success responses
                 "resourceType": "RDS"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "success": "true",
@@ -11530,6 +11620,8 @@ Sample success responses
     "host": "\"\"",
     "status": "200"
 ```
+
+`}`
 
 ##### 4.3.2.8 AddCommonSpec
 
@@ -12441,7 +12533,7 @@ POST /ascm/auth/dataPrivilege/listRAMPoliciesForUser HTTP/1.1 Common request hea
 "loginName": ""
 ```
 
-Sample success responses `XML` format
+`}` Sample success responses `XML` format
 
 ```xml
 <redirect>false</redirect> <cost>1000</cost> <code>200</code> <data>
@@ -13822,13 +13914,15 @@ oring `},` `{`
    "Average":99.35
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"6A5F022D-AC7C-460E-94AE-B9E75083D027",
  "Success":true,
  "Code":"200"
 ```
+
+`}`
 
 ##### 5.3.1.3 DescribeMetricList
 
@@ -14821,13 +14915,15 @@ Sample success responses `XML` format oring
     "Resources":"[{\"instanceId\":\"host-fTcUci7****\"}"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "Success":true,
  "Code":"200",
  "Total":102
 ```
+
+`}`
 
 ##### 5.3.2.2 PutResourceMetricRule
 
@@ -14953,6 +15049,8 @@ Sample success responses
   "Total":45,
   "Alarm":5
 ```
+
+`}` `}`
 
 ##### 5.3.2.4 DeleteMetricRules
 
@@ -15162,7 +15260,7 @@ Sample success responses
     "GroupId":"123456"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ##### 5.3.2.8 DeleteMetricRuleResources
 
@@ -15207,3 +15305,5 @@ Sample success responses
     "Success":true,
     "Code":"200"
 ```
+
+`}`

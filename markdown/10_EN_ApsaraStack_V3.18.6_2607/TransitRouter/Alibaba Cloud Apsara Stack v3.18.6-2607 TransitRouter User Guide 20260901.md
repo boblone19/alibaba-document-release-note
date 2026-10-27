@@ -5,7 +5,7 @@ doc_version: "20260901"
 pdf_pages: 59
 source_pdf: "667f647052e3edcd_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter User Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter User Guide 20260901
@@ -174,6 +174,7 @@ following table describes the parameters.
 
 You can delete transit routers that you no longer use. Before you delete a transit router, make sure that the following requirements are met: No network instance connections are created on the transit router. For more information, see Delete a network instance connection. The transit router does not contain custom route tables. For more information, see Delete a custom route table. The default route table of the transit router does not contain custom route entries. For more information, see Delete a custom route from a route table of a transit router. The transit router is not associated with a multicast domain. For more information, see Delete a multicast domain.
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab, find the transit
 router that you want to delete, and then click **Delete** in the **Actions** column.
@@ -183,6 +184,7 @@ router that you want to delete, and then click **Delete** in the **Actions** col
 
 If you no longer use a transit router, you can delete the CEN instance along with the transit router. Before you delete a CEN instance, make sure that the following requirements are met: No network instance connections are created on the transit router. For more information, see Delete a network instance connection. The transit router does not contain custom route tables. For more information, see Delete a custom route table. The default route table of the transit router does not contain custom route entries. For more information, see Delete a custom route from a route table of a transit router. The transit router is not associated with a multicast domain. For more information, see Delete a multicast domain.
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, find the CEN instance that you want to delete and click **Delete**
 in the **Actions** column.
 4. In the **Delete a CEN instance** message, check the CEN instance ID and click **OK**.
@@ -219,6 +221,7 @@ You can connect a transit router to a VPC that belongs to the same or a differen
 **Create a VPC connection**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab, find the transit
 router that you want to manage, and then click **Create a network instance connection** in the **Actions** column.
@@ -254,6 +257,7 @@ After you create a VPC connection, you can change the vSwitches of the VPC conne
 > **Warning:** If you change the vSwitch of a VPC connection, the connection may be interrupted for up to 15 seconds. Proceed with caution.
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -271,6 +275,7 @@ This topic describes how to establish communication between virtual border route
 **Procedure**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab, find the transit
 router that you want to manage, and then click **Create a network instance connection** in the **Actions** column.
@@ -339,6 +344,7 @@ A transit router is deployed in the region where you want to create a Connect at
 **Step 1: Create a Connect attachment**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab, find the transit
 router that you want to manage, and then click **Create a network instance connection** in the **Actions** column.
@@ -388,6 +394,7 @@ you can create multicast networks between the on-premises network and virtual pr
 **Delete a Connect peer**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -406,6 +413,7 @@ This topic describes how to view information about network instance connections.
 **Procedure**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -438,6 +446,7 @@ A transit router supports one default route table created by the system and cust
 **Create a custom route table**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -457,6 +466,7 @@ configure the parameters and click **Submit**.
 **View the route table of a transit router**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -469,6 +479,7 @@ The route entries in the route table. For more information, see View route entri
 
 You can delete a custom route table that you no longer use. You cannot delete the default route table. Before you delete a custom route table, make sure that the following requirements are met: The custom route table does not contain associated forwarding correlations. For more information about how to delete associated forwarding correlations, see Delete an associated forwarding correlation. The custom route table does not contain route learning correlations. For more information about how to delete route learning correlations, see Delete a route learning policy. The custom route table does not contain custom routes. For more information about how to delete custom routes, see Delete a custom route from a route table of a transit router.
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -484,6 +495,7 @@ Route tables of transit routers support custom route entries. This topic describ
 **Add a custom route entry**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -524,6 +536,7 @@ information about routes in the current route table.
 **Delete a custom transit router route**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -559,6 +572,7 @@ Each network instance connection can have an associated forwarding correlation w
 **Create an associated forwarding correlation**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -579,6 +593,7 @@ configure the parameters and click **OK**. The following table describes the par
 > **Warning:** After the associated forwarding correlation between a network instance connection and a transit router route table is deleted, the network instance can no longer use the transit router to communicate with other networks. Proceed with caution.
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -596,6 +611,7 @@ This topic describes how to create a route learning policy for a network instanc
 **Creates a route learning policy**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -614,6 +630,7 @@ following table describes the parameters.
 **Delete a route learning policy**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -725,6 +742,7 @@ You can create routing policies to filter and modify routes. This allows you to 
 **Create a routing policy**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -752,6 +770,7 @@ table describes the parameters.
 
 Before you modify a routing policy, take note of the following limits: You cannot modify the route table that is associated with the routing policy or the direction in which the routing policy applies. The routing policy created by the system cannot be modified. The priority of a routing policy created by the system is higher than 1000. If you do not want the default routing policy to take effect, you must add a custom routing policy that has a higher priority than the default routing policy.
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -765,6 +784,7 @@ and action and click **Submit**.
 **Delete a routing policy**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, click the ID of the CEN instance that you want to manage.
 4. On the details page of the CEN instance, click the **Basic information** tab and click the ID of
 the transit router that you want to manage.
@@ -982,6 +1002,7 @@ As the number of CEN instances increases, management of CEN instances becomes mo
 **Add tags to a CEN instance**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. The following steps show how to add tags to CEN instances on the **CEN Instance** page:
 Add tags to a single CEN instance. a. On the **CEN Instance** page, find the CEN instance that you want to manage and click the icon in the **Tag** column. b. In the **Edit Tags** dialog box, specify the tag keys and values and click **OK**.
 
@@ -996,6 +1017,7 @@ c. In the **Edited** message, check the tag information and click **Close**. Add
 
 After you add tags to CEN instances, you can search CEN instances by tag.
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, choose **Advanced Filter > Filter by Tag**.
 4. In the dialog box that appears, select tag keys and tag values and click **Search**. The CEN
 instances that have the specified tag keys and tag values are displayed.
@@ -1004,6 +1026,7 @@ instances that have the specified tag keys and tag values are displayed.
 
 After you add a tag to a CEN instance, you can add more tags to the CEN instance, modify the tags, or remove the tags from the CEN instance.
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. On the **CEN Instance** page, perform the following steps to manage CEN instance tags:
 Modify the tags of a single CEN instance a. On the **CEN Instance** page, find the CEN instance that you want to manage and click the icon in the **Tag** column. b. In the **Edit Tags** dialog box, perform the following operations and click **OK**: Add tags: You can add more tags to the CEN instance. Modify a tag: You can select a tag and modify the tag key or tag value. Remove a tag: You can click the icon on the right side of a tag to remove the tag from the CEN instance. c. In the **Edited** message, check the tag information and click **Close**. Remove tags from multiple CEN instances a. On the **CEN Instance** page, select the IDs of the CEN instances that you want to manage and click **Batch Remove Tags** below the instance list. b. In the **Batch Remove Tags** dialog box, select the tags that you want to remove from the CEN instances. c. In the **Edited** message, check the tag information and click **Close**. cks
 
@@ -1034,6 +1057,7 @@ The VBR that is associated with an Express Connect circuit is connected to a tra
 **Step 1: Configure health checks in the Transit Router console**
 
 2. In the top navigation bar, select the organization and resource set to which the CEN
+instance belongs.
 3. In the left-side navigation pane, click **Health Check**.
 4. On the **Health Check** page, click **Set health check**.
 5. In the **Set health check** dialog box, configure the parameters and click **OK**. The following

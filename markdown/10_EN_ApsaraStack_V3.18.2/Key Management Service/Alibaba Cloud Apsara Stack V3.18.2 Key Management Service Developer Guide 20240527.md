@@ -5,7 +5,7 @@ doc_version: "20240527"
 pdf_pages: 133
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Key Management Service Developer Guide 20240527.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1KMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Key%20Management%20Service%20Developer%20Guide%2020240527.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Key Management Service Developer Guide 20240527
@@ -201,7 +201,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace this variable with the ARN of your RAM role.
 > "sts.aliyuns.com": Replace this variable with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize the instance.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -221,6 +221,11 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. Format: sts-
@@ -245,9 +250,15 @@ tep for the RAM role.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credential assigned by STS to call an API operation of a cloud service. The
 following sample code provides an example on how to use the access credential assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS). Replace the sample code based on your cloud service.
 
@@ -466,7 +477,7 @@ EncryptResponse response; try {
     e.printStackTrace();
 ```
 
-In most cases, all response fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
+`}` In most cases, all response fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
 
 ```
 ciphertextBlob = response.getCiphertextBlob();
@@ -499,6 +510,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 #### 2.1.6 Use CommonRequest to call API operations
 
@@ -592,7 +605,7 @@ u must add the SecurityToken field in request parameters.
             e.printStackTrace();
 ```
 
-KMS SDK for Python
+`}` `}` `}` KMS SDK for Python
 
 ## 3 Call example of KMS SDK for Python
 
@@ -876,6 +889,8 @@ response,err := kmsClient.Encrypt(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 When you send a request, if an error occurs on the client instance and cannot be automatically handled, the SDK returns a ClientError error response. The following sample code provides an example on how to obtain and determine the error message in the `ClientError` error response: KMS SDK for Go
@@ -889,6 +904,8 @@ response, err := kmsClient.Encrypt(request) if clientError, ok := err.(*errors.C
     // Obtain the original error.
     clientError.OriginError()
 ```
+
+`}`
 
 > **Important:** When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
@@ -966,6 +983,11 @@ KMS SDK for Go
         "<yourAccessKeySecret>") // Replace this variable with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     client.SetHTTPSInsecure(true) // Disable certificate verification.
     client.SetHttpsProxy("<http://192.168.XX.XX:33XX>") // Replace this variable with t
 he actual proxy IP address and port number.
@@ -1014,8 +1036,15 @@ cify the organization ID.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 5 API reference
 
@@ -1093,6 +1122,8 @@ JSON format `{`
     "RequestId":"4C467B38-3910-447D-87BC-AC049166F216"
     /*Return result data*/
 ```
+
+`}`
 
 ##### 5.1.1.3 Signature method
 
@@ -1204,6 +1235,8 @@ API responses use the HTTP response format where a 2xx status code indicates a s
     /* Return result data */
 ```
 
+`}`
+
 **Sample error responses**
 
 If an error occurs when you call an API operation, no result data is returned. You can troubleshoot the error based on the error code returned and common error codes. If an error occurs when you call an API operation, the HTTP status code, error code, error message, and ID of the request are returned in the response. If you cannot troubleshoot the error based on the error code and error message, you can provide Alibaba Cloud technical support with the ID of the request to locate the request log. The following sample responses indicate the error that occurs when the required timestamp is not provided. `XML` format
@@ -1227,6 +1260,8 @@ uest is not supplied.</Message>
 s request is not supplied.",
      "RequestId": "e85db688-a2d3-44ca-9790-4259f59e90d8"
 ```
+
+`}`
 
 **Common error codes**
 
@@ -1373,7 +1408,7 @@ Sample success responses `XML` format
                     "TagValue": "Test"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 **Error codes**
 
@@ -1493,6 +1528,8 @@ Sample success responses `XML` format
     "RequestId": "7021b6ec-4be7-4d3c-8a68-1e85d4d515a0"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -1551,6 +1588,8 @@ Sample success responses `XML` format
 "BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mq O0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKh tQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1Wbjwg==",
         "RequestId": "7021b6ec-4be7-4d3c-8a68-1e85d4d515a0"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1685,6 +1724,8 @@ Sample success responses `XML` format
         "RequestId": "3455b9b4-95c1-419d-b310-db6a53b09a39"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -1760,6 +1801,8 @@ Sample success responses `XML` format
         "RequestId":"8cdf51fd-bcd6-d79a-0ef4-e52c9b5466dc"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -1818,6 +1861,8 @@ Sample success responses `XML` format
         "RequestId":"ec1017cf-ead4-f3ca-babc-c3b34f3dbecb"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -1862,6 +1907,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "efb1cbbd-a093-4278-bc03-639dd4fcc207"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1908,6 +1955,8 @@ Sample success responses `XML` format
     "RequestId": "2fe70ce2-3303-4fd6-b3ac-472fb2705c62"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -1951,6 +2000,8 @@ Sample success responses `XML` format
 ```json
    "RequestId": "3da5b8cc-8107-40ac-a170-793cd181d7b7"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1999,6 +2050,8 @@ Sample success responses `XML` format
 ```json
        "RequestId": "4162a6af-bc99-40b3-a552-89dcc8aaf7c8"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2106,6 +2159,8 @@ Sample success responses `XML` format
 ```json
         "RequestId": "3455b9b4-95c1-419d-b310-db6a53b09a39"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2244,6 +2299,8 @@ aa5b627****</KeyArn>
         "RequestId": "bc29ec35-3373-48d1-8202-520fd78d****"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -2364,6 +2421,8 @@ Sample success responses `XML` format
     "RequestId": "4bd560a1-729e-45f1-a3d9-b2a33d61046b"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -2423,6 +2482,8 @@ Sample success responses `XML` format
     "KeyId":"1234abcd-12ab-34cd-56ef-12345678****",
     "KeyVersionId":"86a9efd9-3d16-4894-bd4f-1fc43f3f****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2550,6 +2611,8 @@ Sample success responses `XML` format
     "KeyVersionId":"2ab1a983-7072-4bbc-a582-584b5bd8****"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -2603,6 +2666,8 @@ Sample success responses `XML` format
     "RequestId": "207596a2-36d3-4840-b1bd-f87044699bd7"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -2651,6 +2716,8 @@ Sample success responses `XML` format
 ```json
        "RequestId": "1d2baaf3-d357-46c2-832e-13560c2bd9cd"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2701,6 +2768,8 @@ Sample success responses `XML` format
 ```json
         "RequestId": "1d2baaf3-d357-46c2-832e-13560c2bd9cd"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2826,7 +2895,7 @@ hangzhou:123456:alias/ExampleAlias1</AliasArn>
 hangzhou:123456:alias/ExampleAlias1"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "TotalCount": 1,
@@ -2834,6 +2903,8 @@ hangzhou:123456:alias/ExampleAlias1"
         "PageSize": 10,
         "RequestId": "1b57992c-834b-4811-a889-f8bac1ba0353"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2914,7 +2985,7 @@ hangzhou:123456:alias/ExampleAlias1</AliasArn>
 hangzhou:123456:alias/ExampleAlias1"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "TotalCount": 1,
@@ -2922,6 +2993,8 @@ hangzhou:123456:alias/ExampleAlias1"
         "PageSize": 10,
         "RequestId": "1b57992c-834b-4811-a889-f8bac1ba0353"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2993,11 +3066,13 @@ Sample success responses `XML` format
                                 "RegionId": "cn-hangzhou"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "RequestId": "815240e2-aa37-4c26-9cca-05d4df3e8fe6"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3125,6 +3200,8 @@ Sample success responses `XML` format
         "KeyVersionId":"2ab1a983-7072-4bbc-a582-584b5bd8****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -3230,13 +3307,15 @@ Sample success responses `XML` format
                     "CreationDate": "2019-08-06T10:17:04Z"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "TotalCount": 3,
         "PageNumber": 1,
         "PageSize": 10
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -3284,6 +3363,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "efb1cbbd-a093-4278-bc03-639dd4fcc207"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3352,6 +3433,8 @@ Sample success responses `XML` format
   "RequestId": "475f1620-b9d3-4d35-b5c6-3fbdd941423d"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -3415,6 +3498,8 @@ Sample success responses `XML` format
 "RKF5WeXJtusIrvuPOjpkA/55EKzi8Wmc/eJ2fQUKphvL750jtInSX1wijw/7jGxUaTHTW6tgIJl2ReN1aI1/wxqG zScwsMHxCBncnzQsZF+Fi4UFpI9pr4A1wc2u5Ngwyx9uA4K/kJ5bkS4NvmanxssAPZfSfbJSrAWlCP11tS0Cd54tQ j4XK9tP9bJDKzKis1NClsOXZtNPX88kUqr3LkgFCsD07IwiePAfI2tn2fzeisje1Q7/d6VkF48c3ZE0DAmnLRujt3 RGDaKUkI6SUDjuKD4yqBUX15/DKfJtya+JIPQGiO2IEPlhL7+NMT17U0tKtK5ZPNEwxfZw==",
   "RequestId": "475f1620-b9d3-4d35-b5c6-3fbdd941423d"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3486,6 +3571,8 @@ Sample success responses `XML` format
   "RequestId": "475f1620-b9d3-4d35-b5c6-3fbdd941423d"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -3556,6 +3643,8 @@ Sample success responses `XML` format
   "RequestId": "475f1620-b9d3-4d35-b5c6-3fbdd941423d"
 ```
 
+`}`
+
 **Error codes**
 
 For a list of error codes, visit the Common error codes.
@@ -3614,6 +3703,8 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl8FS40RYCB2IWt6VZdDS MLoUu/UYLr3l62I
 \nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs5Yu9AEgATN2/e3nUz1K\nEy6ng8MSPutcse2/VECG/ F9C6D4IsJ64ShzY3dcn34WYzTOe916eMJFxyrNrSw\nHtc4UOR5AvaoRrfpgu2uq+i70/ZXrWL+pGb1hgZV8cWheI xwrR3IiQlM5qN7EF\n9BdyWtyBfUGsp0Bn1VqlPc5G0x0a9xU2z9YtP994yDenNVIoIQ6Cov1lIEuwXAb2\n7boC4 PXwD0JWt41sP+rgCmpjBx00puIG+IlnoReEgI1ZGYmK98GgA/XzmNjZiD\nyvXJZAcM33Ue85+PkR5iHTtSEbi4QA pJabprUzz3Fin2j1dRrcacxGb7p31A9c\nJQIDAQAB\n-----END PUBLIC KEY-----\n",
   "RequestId": "475f1620-b9d3-4d35-b5c6-3fbdd941423d"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3736,6 +3827,8 @@ You can concatenate strings to generate the endpoint in the following format:
 ```
 https://public.asapi.<region>.<internet-domain>/asapi/v3
 ```
+
+**Note**
 
 1. Replace <region> with the actual region ID.
 2. Replace <internet-domain> with the root domain name of your Apsara Stack service.
@@ -3955,6 +4048,8 @@ le in the preceding step.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -4002,6 +4097,8 @@ in the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 66
 source_pdf: "fc65f6bc642b42ad_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%A7%A3%E6%9E%90DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020260310.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260310
@@ -188,6 +188,8 @@ add remarks and click **Add Remark** in the **Actions** column.
 **Remark** field and click **OK**.
 
 **Delete a domain name**
+
+**Note**
 
 When a domain name is deleted, all its DNS records are also deleted. Proceed with caution.
 1. (Method 1) On the **Global Internal Domain Name** page, find the domain name that you

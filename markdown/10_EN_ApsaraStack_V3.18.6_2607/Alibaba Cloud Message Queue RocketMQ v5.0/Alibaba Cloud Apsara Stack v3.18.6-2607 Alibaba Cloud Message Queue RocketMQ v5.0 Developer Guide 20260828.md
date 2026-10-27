@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 186
 source_pdf: "c75b61a745b2e510_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20RocketMQ%20v5.0%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20260828
@@ -351,6 +351,9 @@ You can obtain an instance ID from the instance list of a cloud product in the A
 dialog box to switch the environment to **v5.0**.
 4. In the navigation pane on the left, click **Instance List**.
 5. Find the ID in the **Instance ID** column.
+
+**Response parameters**
+
 When you call an API operation to query a list of resource instances for a cloud service, the following parameters are returned by default.
 
 | Name | Description |
@@ -944,7 +947,13 @@ If an API operation of is successfully called, HTTP status code 200 is returned 
 
 ###### 3.1.5.1.1 ConsoleInstanceList
 
-Queries the list of instances. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the list of instances.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -955,6 +964,8 @@ Queries the list of instances. This operation does not have operation-specific r
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
 | NeedResour ceInfo | Boole an | Query | No | true | Specifies whether to return resource statistics, including the number of topics and the number of groups under the instance. Default value: false. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -986,7 +997,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.1.2 ConsoleClusterCreate
 
-Creates an ApsaraMQ for RocketMQ instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Creates an ApsaraMQ for RocketMQ instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1003,6 +1020,8 @@ Creates an ApsaraMQ for RocketMQ instance. This operation does not have operatio
 | Independen tNaming | Boole an | Query | No | true | Specifies whether the instance has a namespace. Valid values: true: The instance has an independent namespace. Resource names must be unique within the instance, but can be reused across instances. false: The instance does not have an independent namespace. Resource names must be globally unique within and across instances. Default value: true. |
 | OnsRegionI d | Strin g | Query | Yes | region123 | The region identifier for Open Notification Service (ONS), used to specify the region where resources are located. |
 | PreventCac he | Long | Query | No | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1041,7 +1060,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.1.3 ConsoleClusterSpecList
 
-Queries cluster specification information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries cluster specification information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1050,6 +1075,8 @@ Queries cluster specification information. This operation does not have operatio
 | OnsRegionI d | String | Query | Yes | region123 | The region identifier for Open Notification Service (ONS), used to specify the region where resources are located. |
 |---|---|---|---|---|---|
 | PreventCac he | Long | Query | No | 100000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1083,7 +1110,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.1.4 ConsoleClusterStatus
 
-Queries the pod status of an ApsaraMQ for RocketMQ V5.0 instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the pod status of an ApsaraMQ for RocketMQ V5.0 instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1091,6 +1124,8 @@ Queries the pod status of an ApsaraMQ for RocketMQ V5.0 instance. This operation
 | OnsRegionId | String | Query | Yes | region123 | The region identifier for Open Notification Service (ONS), used to specify the region where the service is located. |
 | PreventCach e | Long | Query | No | 10000 | The cache prevention feature. When the feature is enabled, each request retrieves the latest data from the server. |
 | InstanceId | String | Query | Yes | MQ INST 1* _ _ ***mioMmJ0 | The ID of the instance to query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1126,7 +1161,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.1.5 ConsoleInstanceStatistics
 
-Queries instance statistics. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries instance statistics.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1136,6 +1177,8 @@ Queries instance statistics. This operation does not have operation-specific req
 | InstanceId | Strin g | Quer y | Yes | MQ INST 136744485915* _ _ ** B*** _ | The instance ID. |
 | EndTime | Long | Quer y | No | 1706668721 | The end of the time range to query. |
 | OnsSessio nId | Strin g | Quer y | No | abc123*** | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1167,7 +1210,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.1.6 ConsoleInstanceUpdate
 
-Updates instance information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Updates instance information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1182,6 +1231,8 @@ Updates instance information. This operation does not have operation-specific re
 | TopicCapaci ty | Integ er | Query | No | 50 | The maximum number of topics that can be created for this instance. |
 | MaxSendTps | Long | Query | No | 1000 | The maximum number of requests for sending messages that the system can process per second. |
 | MaxReceive Tps | Long | Query | No | 1000 | The maximum number of transaction requests that the system can receive per second. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1213,7 +1264,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.1.7 ConsoleInstanceBaseInfo
 
-Queries instance details. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries instance details.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1255,7 +1312,11 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.1 ConsoleTopicDelete
 
-Deletes a topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Deletes a topic.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1264,6 +1325,8 @@ Deletes a topic. This operation does not have operation-specific request headers
 | PreventCa che | Long | Quer y | Yes | xxx | The cache prevention feature. When the feature is enabled, each request retrieves the latest data from the server and does not consume cached data. |
 | InstanceId | Strin g | Quer y | No | MQ INST 136744485915* _ _ ** B*** _ | The instance ID. |
 | Topic | Strin g | Quer y | Yes | test | The topic name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1295,7 +1358,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.2 ConsoleTopicListInPage
 
-Queries the information about topics by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the information about topics by page.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1309,6 +1378,8 @@ Queries the information about topics by page. This operation does not have opera
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. Valid values: 10 to 200. If you set this parameter to a value less than 10, the system uses 10 as the effective value by default. If you set this parameter to a value greater than 200, the system uses 200 as the effective value by default. |
 | Search | Strin g | Query | No | test | The search keyword. |
 | OnsSession Id | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1344,7 +1415,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.3 ConsoleTopicStatus
 
-Queries queue-level statistics for a specified topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries queue-level statistics for a specified topic.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1355,6 +1432,8 @@ Queries queue-level statistics for a specified topic. This operation does not ha
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Quer y | No | MQ INST 136744485915* _ _ ** B*** _ | The instance ID. |
 | Topic | Strin g | Quer y | Yes | test-mq topic _ | The topic name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1388,7 +1467,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.4 ConsoleTopicUpdateInfo
 
-Updates topic information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Updates topic information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1398,6 +1483,8 @@ Updates topic information. This operation does not have operation-specific reque
 | InstanceId | String | Query | Yes | MQ INST 13** _ _ ***3 BmioMmJ _ 0 | The instance ID. |
 | Topic | String | Query | Yes | test-mq topic _ | The topic name. |
 | Remark | String | Query | Yes | xxxx | The remarks. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1433,7 +1520,11 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.5 ConsoleTopicUpdate
 
-Updates topic information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Updates topic information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1444,6 +1535,8 @@ Updates topic information. This operation does not have operation-specific reque
 | Topic | Strin g | Query | Yes | test-topic | The topic name. |
 | Perm | Integ er | Query | No | 6 | The read/write mode of the topic. Valid values: 6: Both read and write operations are supported. 4: Write operations are forbidden. 2: Read operations are forbidden. |
 | UnitFlag | Boole an | Query | No | unitA | The unit isolation switch. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1479,7 +1572,11 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.6 ConsoleTopicSubDetail
 
-Queries subscriber information under a topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries subscriber information under a topic.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1489,6 +1586,8 @@ Queries subscriber information under a topic. This operation does not have opera
 | InstanceId | String | Query | Yes | MQ INST 136* _ _ ****33 BmioM _ mJ0 | The instance ID. |
 | Topic | String | Query | Yes | test-topic | The topic name. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1522,7 +1621,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.7 ConsoleTopicListNames
 
-Retrieves a collection of topic names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Retrieves a collection of topic names.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1533,6 +1638,8 @@ Retrieves a collection of topic names. This operation does not have operation-sp
 |---|---|---|---|---|---|
 | InstanceId | String | Query | No | MQ INST 1*** _ _ * BmioMmJ0 _ | The instance ID. |
 | OnsSessionId | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1564,7 +1671,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.8 ConsoleTopicList
 
-Queries the topic list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the topic list.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1573,6 +1686,8 @@ Queries the topic list. This operation does not have operation-specific request 
 | PreventCac he | Long | Query | Yes | xxxx | The cache prevention feature. When the feature is enabled, each request retrieves the latest data from the server and does not consume cached data. |
 | InstanceId | Strin g | Query | No | MQ INST 13674 _ _ 4485915*** B** _ * | The instance ID. |
 | Topic | Strin g | Query | No | test-topic | The topic name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1608,7 +1723,11 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.9 ConsoleTopicGet
 
-Queries the topic list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the topic list.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1617,6 +1736,8 @@ Queries the topic list. This operation does not have operation-specific request 
 | PreventCac he | Long | Query | Yes | xxxxx | The cache prevention feature. When the feature is enabled, each request retrieves the latest data from the server and does not consume cached data. |
 | InstanceId | Strin g | Query | No | MQ INST 136744 _ _ 485915*** B*** _ | The instance ID. |
 | Topic | Strin g | Query | No | test-topic | The topic name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1650,7 +1771,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.10 ConsoleTopicCreate
 
-Creates a topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Creates a topic.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1663,6 +1790,8 @@ Creates a topic. This operation does not have operation-specific request headers
 |---|---|---|---|---|---|
 | OrderType | Intege r | Query | No | 0 | The message type. 0: normal message 1: partitionally ordered message 4: transactional message 5: scheduled and delayed message |
 | Remark | String | Query | No | xxxxx | The remarks. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1694,7 +1823,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.2.11 ConsoleGroupListTopicsByGroupId
 
-Queries the list of topics to which a consumer group subscribes. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the list of topics to which a consumer group subscribes.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1741,6 +1876,8 @@ Sample success responses `JSON` format `{`
 
 Queries subscription group information by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
@@ -1754,6 +1891,8 @@ Queries subscription group information by page. This operation does not have ope
 |---|---|---|---|---|---|
 | Search | Strin g | Quer y | No | test | The search keyword. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1787,7 +1926,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.3.2 ConsoleGroupUpdateInfo
 
-Updates the consumer group information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Updates the consumer group information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1840,6 +1985,8 @@ Queries group IDs. This operation does not have operation-specific request heade
 | InstanceId | String | Query | Yes | MQ INST 1367 _ _ 44485915*** _ B*** | The instance ID. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -1874,7 +2021,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.3.4 ConsoleGroupList
 
-Queries the consumer group list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the consumer group list.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1886,6 +2039,8 @@ Queries the consumer group list. This operation does not have operation-specific
 | InstanceId | String | Query | No | MQ INST 136 _ _ 744485915*** B*** _ | The instance ID. |
 | GroupId | String | Query | No | GID test _ | The message group ID. |
 | GroupType | String | Query | No | 0 | The group type. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1919,7 +2074,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.3.5 ConsoleGroupDelete
 
-Deletes a consumer group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Deletes a consumer group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1928,6 +2089,8 @@ Deletes a consumer group. This operation does not have operation-specific reques
 | PreventCa che | Long | Quer y | Yes | xxxxx | The cache prevention feature. When the feature is enabled, each request retrieves the latest data from the server and does not consume cached data. |
 | InstanceId | Strin g | Quer y | Yes | MQ INST 136744485915* _ _ ** B*** _ | The instance ID. |
 | GroupId | Strin g | Quer y | Yes | GID test _ | The consumer group ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1963,7 +2126,11 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.3.6 ConsoleGroupCreate
 
-Creates a consumer group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Creates a consumer group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1974,6 +2141,8 @@ Creates a consumer group. This operation does not have operation-specific reques
 | GroupId | String | Query | Yes | GID test _ | The consumer group ID. |
 | GroupType | String | Query | No | 0 | The type of the consumer group. |
 | Remark | String | Query | No | This is the remark for test. | The remarks. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2011,7 +2180,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.1 ConsoleMessageGetByPagedDLQ
 
-Queries dead-letter messages by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries dead-letter messages by page.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2031,6 +2206,8 @@ Queries dead-letter messages by page. This operation does not have operation-spe
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -2042,7 +2219,13 @@ Queries dead-letter messages by page. This operation does not have operation-spe
 
 ###### 3.1.5.4.2 ConsoleMessageResendByIdInDLQ
 
-Resends dead-letter messages. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Resends dead-letter messages.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2054,6 +2237,8 @@ Resends dead-letter messages. This operation does not have operation-specific re
 | InstanceId | Strin g | Quer y | Yes | MQ INST 136744485915* _ _ ** B*** _ | The instance ID. |
 | GroupId | Strin g | Quer y | Yes | GID test _ | The consumer group ID. |
 | MsgId | Strin g | Quer y | Yes | 0BC16699165C03B925D B8A404E2D**** | The message ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2068,6 +2253,8 @@ Resends dead-letter messages. This operation does not have operation-specific re
 
 Downloads a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | No | cn-hangzhou | The region ID. |
@@ -2077,6 +2264,8 @@ Downloads a message. This operation does not have operation-specific request hea
 | Topic | String | Query | Yes | test-topic | The topic name. |
 | MsgId | String | Query | Yes | 0BC16699165C 03B925DB8A40 4E2D**** | The message ID. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2104,7 +2293,13 @@ Downloads a message. This operation does not have operation-specific request hea
 
 ###### 3.1.5.4.4 ConsoleMessageDownloadAllInDLQ
 
-Downloads messages from the dead-letter queue. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Downloads messages from the dead-letter queue.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2117,6 +2312,8 @@ Downloads messages from the dead-letter queue. This operation does not have oper
 | GroupId | Strin g | Query | Yes | GID test _ | The message group ID. |
 | MsgId | Strin g | Query | Yes | 1E0578FE110F 18B4AAC235C 05F2***** | The message ID. |
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2150,7 +2347,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.5 ConsoleMessageSend
 
-Sends a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Sends a message.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2164,6 +2367,8 @@ Sends a message. This operation does not have operation-specific request headers
 | Tag | String | Query | No | Tag 1 | The tag. |
 | Key | String | Query | No | TestKey | The message key. |
 | Message | String | Query | Yes | xxxx | The message content. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2195,7 +2400,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.6 ConsoleMessageTrace
 
-Queries message traces. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries message traces.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2209,6 +2420,8 @@ Queries message traces. This operation does not have operation-specific request 
 | OnsSession Id | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
 | NeedDelive ryResult | Bool ean | Query | No | false | Specifies whether to deliver results. This parameter typically marks a workflow or task that must return its final execution result to the caller or the system. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2242,7 +2455,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.7 ConsoleMessagePush
 
-Pushes a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Pushes a message.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2256,6 +2475,8 @@ Pushes a message. This operation does not have operation-specific request header
 | ClientId | Strin g | Query | Yes | c- **************** ***** | The client ID. |
 |---|---|---|---|---|---|
 | MsgId | Strin g | Query | Yes | 0BC16699165C0 3B925DB8A404 E2D**** | The message ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2289,7 +2510,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.8 ConsoleMessageGetByPagedTopic
 
-Queries messages by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries messages by page.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2305,6 +2532,8 @@ Queries messages by page. This operation does not have operation-specific reques
 | PageSize | Integ er | Query | Yes | 10 | The number of entries per page. Valid values: 10 to 200. If you set this parameter to a value less than 10, the system uses 10 as the effective value by default. If you set this parameter to a value greater than 200, the system uses 200 as the effective value by default. |
 |---|---|---|---|---|---|
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2338,7 +2567,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.9 ConsoleMessageGetByKey
 
-Queries messages by message key. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries messages by message key.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2351,6 +2586,8 @@ Queries messages by message key. This operation does not have operation-specific
 | Topic | Strin g | Query | Yes | test | The topic name. |
 | Key | Strin g | Query | Yes | key1 | The key value of the message. |
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2384,7 +2621,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.10 ConsoleMessageGetByIdInDLQ
 
-Queries messages from the dead-letter queue by message ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries messages from the dead-letter queue by message ID.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2397,6 +2640,8 @@ Queries messages from the dead-letter queue by message ID. This operation does n
 
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2430,7 +2675,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.11 ConsoleMessageGetById
 
-Queries a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries a message.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2443,6 +2694,8 @@ Queries a message. This operation does not have operation-specific request heade
 
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2474,7 +2727,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.4.12 ConsoleMessageDownloadBodyInDLQ
 
-Downloads messages from the dead-letter queue. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Downloads messages from the dead-letter queue.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2485,6 +2744,8 @@ Downloads messages from the dead-letter queue. This operation does not have oper
 | GroupId | String | Query | Yes | GID test _ | The message group ID. |
 | MsgId | String | Query | Yes | 0BC16699165C 03B925DB8A4 04E2D**** | The message ID. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2532,6 +2793,8 @@ Deletes a trace query task. This operation does not have operation-specific requ
 | InstanceId | String | Query | Yes | MQ INST 1367 _ _ 44485915*** B _ *** | The instance ID. |
 | QueryId | String | Query | Yes | 272967562652 883649157096 685**** | The query ID, which serves as the unique ID of the query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -2542,7 +2805,13 @@ Deletes a trace query task. This operation does not have operation-specific requ
 
 ###### 3.1.5.5.2 ConsoleTraceGetPubTraceByQueryId
 
-Queries the trace of a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the trace of a message.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2564,7 +2833,13 @@ Queries the trace of a message. This operation does not have operation-specific 
 
 ###### 3.1.5.5.3 ConsoleTraceQueryByMsgId
 
-Queries message traces. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries message traces.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2577,6 +2852,8 @@ Queries message traces. This operation does not have operation-specific request 
 |---|---|---|---|---|---|
 | MsgId | String | Query | Yes | 0BC1669916 5C03B925DB 8A404E2D*** * | The message ID. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2608,7 +2885,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.5.4 ConsoleTraceQueryByMsgTopic
 
-Queries message traces by topic name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries message traces by topic name.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2622,6 +2905,8 @@ Queries message traces by topic name. This operation does not have operation-spe
 
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2655,7 +2940,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.5.5 ConsoleTraceQueryByMsgKey
 
-Queries message traces by message key. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries message traces by message key.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2670,6 +2961,8 @@ Queries message traces by message key. This operation does not have operation-sp
 | EndTime | Long | Query | Yes | 17035755520 00 | The end of the time range to query. |
 |---|---|---|---|---|---|
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2703,7 +2996,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.5.6 ConsoleTraceListByUserIdInPage
 
-Queries trace information within the user permissions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries trace information within the user permissions.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2716,6 +3015,8 @@ Queries trace information within the user permissions. This operation does not h
 | CurrentPage | Intege r | Query | No | 1 | The page number of the current page. |
 |---|---|---|---|---|---|
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2749,7 +3050,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.5.7 ConsoleTraceGetTraceMapByQueryId
 
-Queries the complete trace link based on a single query ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the complete trace link based on a single query ID.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2802,6 +3109,8 @@ Queries online consumer information. This operation does not have operation-spec
 | GroupId | String | Query | Yes | GID test _ | The consumer group ID. |
 | InstanceId | String | Query | No | MQ INST 1367 _ _ 44485915*** _ B*** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -2836,7 +3145,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.6.2 ConsoleConsumerProgress
 
-Views the consumption progress of consumers. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Views the consumption progress of consumers.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2849,6 +3164,8 @@ Views the consumption progress of consumers. This operation does not have operat
 | InstanceId | String | Query | No | MQ INST 1367 _ _ 44485915*** B _ *** | The instance ID. |
 | ConsumerId | String | Query | No | consumer-123 | The consumer ID. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2882,7 +3199,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.6.3 ConsoleGroupConsumerUpdate
 
-Updates the consumer information in a subscription group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Updates the consumer information in a subscription group.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2894,6 +3217,8 @@ Updates the consumer information in a subscription group. This operation does no
 
 | UnitFlag | Boole an | Query | No | unitA | The unit isolation switch. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2929,6 +3254,8 @@ Sample success responses `JSON` format `{`
 
 Queries the consumption progress. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | No | cn-hangzhou | The region ID. |
@@ -2937,6 +3264,8 @@ Queries the consumption progress. This operation does not have operation-specifi
 | InstanceId | String | Query | No | MQ INST 136 _ _ 744485915*** B*** _ | The instance ID. |
 | GroupId | String | Query | Yes | GID test _ | The consumer group ID. |
 | Detail | Boole an | Query | No | true | Specifies whether to return detailed information. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2951,7 +3280,13 @@ Queries the consumption progress. This operation does not have operation-specifi
 
 ###### 3.1.5.6.5 ConsoleConsumerTimespan
 
-Views the consumption progress. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Views the consumption progress.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2964,6 +3299,8 @@ Views the consumption progress. This operation does not have operation-specific 
 
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2997,7 +3334,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.6.6 ConsoleGroupSubDetail
 
-Queries consumer subscription details. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries consumer subscription details.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3009,6 +3352,8 @@ Queries consumer subscription details. This operation does not have operation-sp
 
 | OnsSessionI d | String | Query | No | abc123*** | The unique ID that identifies a client session in the Open Notification Service (ONS) service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3042,7 +3387,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.6.7 ConsoleConsumerStatus
 
-Queries the consumption status of consumers. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the consumption status of consumers.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3056,6 +3407,8 @@ Queries the consumption status of consumers. This operation does not have operat
 
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3089,7 +3442,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.6.8 ConsoleConsumerResetOffset
 
-Resets consumer offsets. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Resets consumer offsets.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3147,6 +3506,8 @@ Queries the stack information about a consumer. This operation does not have ope
 | InstanceId | String | Query | No | MQ INST 13 _ _ 674448591 5*** B*** _ | The instance ID. |
 | OnsSessionI d | String | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -3183,7 +3544,11 @@ Successful response example `JSON` format `{`
 
 ###### 3.1.5.7.1 ConsoleClusterGetCapacity
 
-Queries the cluster capacity. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the cluster capacity.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3192,6 +3557,8 @@ Queries the cluster capacity. This operation does not have operation-specific re
 | PreventCach e | Long | Query | No | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
 | ResourceTy pe | String | Query | No | rmq.1xunit | The resource type. |
 | Replicas | String | Query | No | 4 | The number of replicas. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3204,13 +3571,21 @@ Queries the cluster capacity. This operation does not have operation-specific re
 
 ###### 3.1.5.7.2 ConsoleClusterList
 
-Queries a list of clusters. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries a list of clusters.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 | OnsRegionI d | Strin g | Query | Yes | region123 | The region identifier for Open Notification Service (ONS), used to specify the region where resources are located. |
 | PreventCac he | Long | Query | No | xxx | The cache prevention feature. When the feature is enabled, each request retrieves the latest data from the server and does not consume cached data. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3246,7 +3621,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.8.1 ConsoleRegionList
 
-Queries regions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries regions.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3283,7 +3664,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.8.2 ConsoleMetaData
 
-Queries metadata information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries metadata information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3292,6 +3679,8 @@ Queries metadata information. This operation does not have operation-specific re
 |---|---|---|---|---|---|
 | OnsSessionI d | String | Query | No | abc123*** | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 | RegionId | String | Host | No | cn-hangzhou | The region ID of the instance, used to specify the region where the service is located. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3323,12 +3712,20 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.8.3 ConsoleCommonRegionData
 
-Queries the region parameter. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the region parameter.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | PreventCach e | Long | Query | Yes | 10000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
 | OnsSessionI d | String | Query | No | abc123*** | The unique ID that identifies a client session in the Open Notification Service (ONS) service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3364,7 +3761,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.9.1 ConsoleConnectCreate
 
-Creates a connect instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Creates a connect instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3375,6 +3778,8 @@ Creates a connect instance. This operation does not have operation-specific requ
 |---|---|---|---|---|---|
 | ClusterNam e | String | Query | Yes | testCluster*** * | The name of the RocketMQ v5.0 cluster. |
 | InstanceId | String | Query | Yes | MQ INST 136 _ _ 74****** Bmi _ oMmJ0 | The ID of the RocketMQ v5.0 instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3406,13 +3811,21 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.9.2 ConsoleConnectList
 
-Queries the connect instance list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries the connect instance list.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | No | cn-hangzhou | The region ID of the instance. |
 | OnsRegionI d | String | Query | Yes | region123 | The region identifier for Open Notification Service (ONS), used to specify the region where the service is located. |
 | PreventCac he | Long | Query | No | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3448,7 +3861,13 @@ Sample success responses `JSON` format `{`
 
 ###### 3.1.5.10.1 ConsoleStopCloudRouterTask
 
-Stops a cloud router task in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Stops a cloud router task in the console.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3458,6 +3877,8 @@ Stops a cloud router task in the console. This operation does not have operation
 |---|---|---|---|---|---|
 | PreventCac he | Long | Query | Yes | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
 | CloudRoute rTaskId | Strin g | Query | No | ONS xxx 23424 _ _ we | The task ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3470,7 +3891,11 @@ Stops a cloud router task in the console. This operation does not have operation
 
 ###### 3.1.5.10.2 ConsoleStartCloudRouterTask
 
-Starts a cloud router task. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Starts a cloud router task.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3492,7 +3917,13 @@ Starts a cloud router task. This operation does not have operation-specific requ
 
 ###### 3.1.5.10.3 ConsoleQueryCloudRouterTask
 
-Queries cloud router tasks in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries cloud router tasks in the console.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3501,6 +3932,8 @@ Queries cloud router tasks in the console. This operation does not have operatio
 | PreventCac he | Long | Query | Yes | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
 | CloudRoute rTaskId | Strin g | Query | No | task ID | The route task ID. |
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3515,7 +3948,13 @@ Queries cloud router tasks in the console. This operation does not have operatio
 
 ###### 3.1.5.10.4 ConsoleQueryStatsCloudRouterTask
 
-Queries cloud router statistics. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries cloud router statistics.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3529,6 +3968,8 @@ Queries cloud router statistics. This operation does not have operation-specific
 | OnsSession Id | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. |
@@ -3540,7 +3981,13 @@ Queries cloud router statistics. This operation does not have operation-specific
 
 ###### 3.1.5.10.5 ConsoleQueryItemsCloudRouterTask
 
-Queries configuration items related to the cloud router. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries configuration items related to the cloud router.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3553,6 +4000,8 @@ Queries configuration items related to the cloud router. This operation does not
 | QueryRegi onId | Strin g | Quer y | No | cn-hangzhou-01 | The region ID of the route to query. |
 | InstanceId | Strin g | Quer y | No | MQ INST 136744485915 _ _ 2433 **** _ | The instance ID. |
 | OnsSessio nId | Strin g | Quer y | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3567,7 +4016,13 @@ Queries configuration items related to the cloud router. This operation does not
 
 ###### 3.1.5.10.6 ConsoleListInPageCloudRouterTask
 
-Queries cloud routers by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries cloud routers by page.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3581,6 +4036,8 @@ Queries cloud routers by page. This operation does not have operation-specific r
 |---|---|---|---|---|---|
 | OnsSession Id | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -3592,7 +4049,13 @@ Queries cloud routers by page. This operation does not have operation-specific r
 
 ###### 3.1.5.10.7 ConsoleDeleteCloudRouterTask
 
-Deletes a cloud router. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Deletes a cloud router.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3602,6 +4065,8 @@ Deletes a cloud router. This operation does not have operation-specific request 
 |---|---|---|---|---|---|
 | PreventCac he | Long | Query | Yes | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
 | CloudRoute rTaskId | Strin g | Query | No | 111 | The message route ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3614,7 +4079,11 @@ Deletes a cloud router. This operation does not have operation-specific request 
 
 ###### 3.1.5.10.8 ConsoleCreateCloudRouterTask
 
-Creates an asynchronous task for cloud router operations in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Creates an asynchronous task for cloud router operations in the console.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3644,6 +4113,8 @@ Creates an asynchronous task for cloud router operations in the console. This op
 | OffsetFromT imestamp | Long |   | Query | No |   | 163042560 0000 | The offset at which the timestamp starts. This parameter is typically used to mark the start position of a specific point in time. |   |   |
 | ConnectClus terId | String |   | Query | Yes |   | cluster-xxx | The connect cluster ID. |   |   |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -3659,7 +4130,13 @@ Creates an asynchronous task for cloud router operations in the console. This op
 
 ###### 3.1.5.11.1 ConsoleUpdateCloudInfo
 
-Updates the cloud service configuration or status information in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Updates the cloud service configuration or status information in the console.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3677,6 +4154,8 @@ Updates the cloud service configuration or status information in the console. Th
 | ConsoleEnd Point | Strin g | Query | No | http://consoleAddr /pop | The endpoint for accessing the console service. |
 | Remark | Strin g | Query | No | xxxx | The updated remarks of the consumer group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -3689,7 +4168,13 @@ Updates the cloud service configuration or status information in the console. Th
 
 ###### 3.1.5.11.2 ConsoleQueryCloudInfo
 
-Queries information related to the cloud platform for console operations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Queries information related to the cloud platform for console operations.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3703,6 +4188,8 @@ Queries information related to the cloud platform for console operations. This o
 |---|---|---|---|---|---|
 | OnsSessionI d | Strin g | Query | No | abc123xyz | The unique ID that identifies a client session in the ONS service, which maintains the connection status of producers or consumers. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | AF9A8B10-C426- 530F-A0DD- 96320B39**** | The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues. |
@@ -3714,7 +4201,13 @@ Queries information related to the cloud platform for console operations. This o
 
 ###### 3.1.5.11.3 ConsoleDeleteCloudInfo
 
-Deletes cloud platform-related information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Deletes cloud platform-related information.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3724,6 +4217,8 @@ Deletes cloud platform-related information. This operation does not have operati
 |---|---|---|---|---|---|
 | PreventCa che | Long | Quer y | Yes | 1000 | The cache prevention feature. When the feature is enabled, clients and proxy servers are instructed not to cache responses. Each request retrieves the latest data from the server. |
 | CloudId | Strin g | Quer y | Yes | 1 | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3735,7 +4230,13 @@ Deletes cloud platform-related information. This operation does not have operati
 
 ###### 3.1.5.11.4 ConsoleCreateCloudInfo
 
-Generates cloud service configuration information entered in the console for cloud resource creation. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+Generates cloud service configuration information entered in the console for cloud resource creation.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | > Document Ve | rsion: 20 | 260828 |   |   | 15 |
 |---|---|---|---|---|---|
@@ -3752,6 +4253,8 @@ Generates cloud service configuration information entered in the console for clo
 | MqEndPoint | String | Query | Yes | http://nameserv | The endpoint of the message queue service on the local host. This endpoint is typically used for message communication in development environments. |
 | ConsoleEnd Point | String | Query | Yes | http://consoleAddr /pop | The endpoint for accessing the console service. |
 | Remark | String | Query | Yes | xxxx | The remarks. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4143,7 +4646,7 @@ Syntax: public ONSClientException() Description: Uses the default exception cons
 
 **using parameters (1)**
 
-Syntax: public ONSClientException(String message) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+Syntax: public ONSClientException(String message) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4153,7 +4656,7 @@ Syntax: public ONSClientException(String message) Description: Uses the exceptio
 
 **using parameters (2)**
 
-Syntax: public ONSClientException(Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+Syntax: public ONSClientException(Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4163,7 +4666,7 @@ Syntax: public ONSClientException(Throwable cause) Description: Uses the excepti
 
 **using parameters (3)**
 
-Syntax: public ONSClientException(String message, Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters.
+Syntax: public ONSClientException(String message, Throwable cause) Description: Uses the exception constructor to construct ONSClientException by using parameters. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4184,7 +4687,7 @@ Syntax: public SendResult() Description: Uses the default constructor to create 
 
 ###### 4.1.4.5.2.2 getMessageId
 
-Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none
+Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4192,7 +4695,7 @@ Syntax: public long getMessageId() Description: Queries the ID of a message that
 
 ###### 4.1.4.5.2.3 getTopic
 
-Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none
+Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4214,11 +4717,13 @@ You can use a producer instance to send regular messages, scheduled messages, or
 
 ###### 4.1.4.5.3.2 send
 
-Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown.
+Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to send. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4226,7 +4731,7 @@ Syntax: public SendResult send(Message message) Description: Sends a regular mes
 
 ###### 4.1.4.5.3.3 sendOneway
 
-Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker.
+Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4238,7 +4743,7 @@ Response parameters: none
 
 ###### 4.1.4.5.3.4 sendAsync
 
-Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode.
+Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4249,7 +4754,7 @@ Response parameters: none
 
 ###### 4.1.4.5.3.5 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4257,7 +4762,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.4.5.3.6 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4275,7 +4780,7 @@ Syntax: public void shutdown() Description: Disables a producer instance from se
 
 ###### 4.1.4.5.4.1 send
 
-Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2.
+Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4283,13 +4788,15 @@ Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Obje
 | executer | LocalTransactionExecuter | The local transaction executor. For more information, see the LocalTransactionExecuter class. |
 | arg | Object | A custom parameter. This parameter can be used for the local transaction executor. |
 
+Response parameters
+
 | Parameter | Description |
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
 ###### 4.1.4.5.4.2 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4299,7 +4806,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.4.5.4.3 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4315,12 +4822,14 @@ Syntax: public void shutdown() Description: Disables a producer instance from se
 
 ###### 4.1.4.5.4.6 LocalTransactionExecuter
 
-execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications.
+execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The transactional message that you want to send. |
 | arg | Object | The custom parameter that is specified by the send method. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4358,7 +4867,7 @@ Response parameter:
 
 ###### 4.1.4.5.5.2 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4366,7 +4875,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.4.5.5.3 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4394,7 +4903,7 @@ You can use a consumer instance to subscribe to regular messages, transactional 
 
 ###### 4.1.4.6.2.2 subscribe
 
-Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages.
+Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4416,7 +4925,7 @@ Response parameters: none
 
 ###### 4.1.4.6.2.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4424,7 +4933,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.4.6.2.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4446,12 +4955,14 @@ A consumer registers a message listener to subscribe to messages. Thread securit
 
 ###### 4.1.4.6.3.2 consume
 
-Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to consume. |
 | context | ConsumeContext | The context of the consumption. For more information, see ConsumeContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4476,6 +4987,8 @@ Syntax: public static Action valueOf(String name) Description: Returns an enumer
 |---|---|---|
 | name | String | The name of the enumerated constant to return. |
 
+Response parameters
+
 | Parameter | Description |
 |---|---|
 | Action | The enumerated constant with the specified name that is returned. |
@@ -4489,7 +5002,7 @@ Exceptions
 
 ###### 4.1.4.6.4.3 values
 
-Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4524,7 +5037,7 @@ Response parameters: none
 
 ###### 4.1.4.6.6.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4534,7 +5047,7 @@ Response parameters: none
 
 ###### 4.1.4.6.6.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4564,12 +5077,14 @@ A consumer registers an ordered message listener to subscribe to ordered message
 
 ###### 4.1.4.6.7.2 consume
 
-Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The message that you want to consume. |
 | context | ConsumeOrderContext | The context of the consumption. For more information, see ConsumeOrderContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4590,11 +5105,13 @@ The result of the consumption that is returned for an ordered message. Enumerati
 
 ###### 4.1.4.6.8.2 valueOf
 
-Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
+Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | name | String | The name of the enumerated constant to return. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4609,7 +5126,7 @@ Exceptions
 
 ###### 4.1.4.6.8.3 values
 
-Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none Response parameters
 
 | Parameter | Description |
 |---|---|
@@ -4635,7 +5152,7 @@ Response parameters: none
 
 ###### 4.1.4.6.9.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4645,7 +5162,7 @@ Response parameters: none
 
 ###### 4.1.4.6.9.4 isStarted
 
-Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
+Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4653,7 +5170,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 
 ###### 4.1.4.6.9.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none Response parameters
 
 | Type | Description |
 |---|---|
@@ -4675,12 +5192,14 @@ A consumer registers a batch message listener to consume multiple messages at a 
 
 ###### 4.1.4.6.10.2 consume
 
-Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages. Request parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | Message | The messages that you want to consume. |
 | context | ConsumeContext | The context of the consumption. For more information, see ConsumeContext in the code. |
+
+Response parameters
 
 | Parameter | Description |
 |---|---|

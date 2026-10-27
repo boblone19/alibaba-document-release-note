@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 41
 source_pdf: "14b39c2b809c096e_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Operations and Mainten"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86%20BMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Data%20Center%20as%20a%20service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Operations and Maintenance Guide 20260828
@@ -117,7 +117,14 @@ This topic describes how to use the Bare Metal Service (BMS) Operations Console.
 
 **Console**
 
-This topic describes how to log in to the Apsara Uni-manager Operations Console and then access the Bare Metal Service (BMS) Operations Console. The endpoint of the Apsara Uni-manager Operations Console is obtained. To log in to the BMS Operations Console, you must first log in to the Apsara Uni-manager Operations Console. A web browser is available. We recommend that you use Google Chrome.
+This topic describes how to log in to the Apsara Uni-manager Operations Console and then access the Bare Metal Service (BMS) Operations Console.
+
+**Prerequisites**
+
+The endpoint of the Apsara Uni-manager Operations Console is obtained. To log in to the BMS Operations Console, you must first log in to the Apsara Uni-manager Operations Console. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the endpoint of the Apsara Uni-manager Operations Console into the address bar of
 the browser.
 
@@ -145,6 +152,9 @@ Instance management allows you to register a single instance, batch register ins
 ### 3.1 Register an instance
 
 This section describes how to register a bare metal instance in the Bare Metal Management O&M service based on your specific O&M requirements.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, click **Register Instance** in the upper-left corner.
@@ -216,6 +226,9 @@ instance.
 ### 3.2 Batch register instances
 
 This topic describes how to register multiple instance at a time in the Bare Metal Service (BMS) Operations Console by uploading a file of the required format, such as an XLS file. A local file in the CSV, XLS, or XLSX format for batch instance registration is prepared based on the template. For more information about the template, see the Download a template, Template format, and Template parameters sections of this topic.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, click **Batch Register**.
@@ -278,7 +291,14 @@ The following figure describes the template format. You can also download the te
 
 ### 3.3 Re-register an instance
 
-This topic describes how to re-register a bare metal instance in the Bare Metal Service (BMS) Operations Console to re-install the instance. A bare metal instance is registered. For more information, see Register an instance. The bare metal instance to be re-registered belongs to the resource pool. The bare metal instance is in a stable state, such as running, stopped, registration failed, or no heartbreak.
+This topic describes how to re-register a bare metal instance in the Bare Metal Service (BMS) Operations Console to re-install the instance.
+
+**Prerequisites**
+
+A bare metal instance is registered. For more information, see Register an instance. The bare metal instance to be re-registered belongs to the resource pool. The bare metal instance is in a stable state, such as running, stopped, registration failed, or no heartbreak.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, find the instance that you want to re-register and click **Re-**
@@ -289,7 +309,14 @@ Register an instance.
 
 ### 3.4 View instance details
 
-This topic describes how to search for an instance and view its details. A bare metal instance is registered. For more information, see Register an instance.
+This topic describes how to search for an instance and view its details.
+
+**Prerequisites**
+
+A bare metal instance is registered. For more information, see Register an instance.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, select a filter condition and enter a keyword in the search box to
@@ -308,7 +335,11 @@ ii. The information displayed in the Configuration Information section includes 
 
 ### 3.5 Release an instance
 
-Elastic Compute Service (ECS) bare metal instances on the tenant side must be released on the same side. If you fail to release ECS bare metal instances on the tenant side, you can use the Bare Metal Management Service (BMS) Operations Console to forcefully release them. This topic describes how to release an ECS bare metal instance. An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be released belongs to a tenant. The ECS bare metal instance to be released is in the Release failed state.
+Elastic Compute Service (ECS) bare metal instances on the tenant side must be released on the same side. If you fail to release ECS bare metal instances on the tenant side, you can use the Bare Metal Management Service (BMS) Operations Console to forcefully release them. This topic describes how to release an ECS bare metal instance.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be released belongs to a tenant. The ECS bare metal instance to be released is in the Release failed state.
 
 **Background information**
 
@@ -317,6 +348,9 @@ Administrators can release ECS bare metal instances that belong to tenants and a
 **Warning**
 
 Instance releasing is a high-risk operation. Proceed with caution.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, find the ECS bare metal instance that you want to release and
@@ -326,7 +360,11 @@ move the pointer over **Instance Status** in the Actions column.
 
 ### 3.6 Restart an instance
 
-This topic describes how to restart an instance. An Elastic Compute Service (ECS) bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be restarted belongs to a resource pool. The ECS bare metal instance is in a stable state. For example, the instance is running or stopped, failed creation, or does not have heartbeats.
+This topic describes how to restart an instance.
+
+**Prerequisites**
+
+An Elastic Compute Service (ECS) bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be restarted belongs to a resource pool. The ECS bare metal instance is in a stable state. For example, the instance is running or stopped, failed creation, or does not have heartbeats.
 
 **Background information**
 
@@ -335,6 +373,8 @@ Administrators can restart specific ECS bare metal instances. After an instance 
 **Warning**
 
 Instance restart is a high-risk operation. Proceed with caution.
+
+**Procedure**
 
 **Method A:**
 
@@ -358,7 +398,13 @@ move the pointer over **Instance Status** in the Actions column.
 
 ### 3.7 Stop an instance
 
-Administrators can stop Elastic Compute Service (ECS) bare metal instances. After an ECS bare metal instance is stopped, its status changes to No Heartbeat. This topic describes how to stop an ECS bare metal instance. An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be stopped belongs to a resource pool. The ECS bare metal instance is in a stable state. For example, the instance is running, stopped, or failed or the instance does not have heartbeats.
+Administrators can stop Elastic Compute Service (ECS) bare metal instances. After an ECS bare metal instance is stopped, its status changes to No Heartbeat. This topic describes how to stop an ECS bare metal instance.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be stopped belongs to a resource pool. The ECS bare metal instance is in a stable state. For example, the instance is running, stopped, or failed or the instance does not have heartbeats.
+
+**Procedure**
 
 **Warning**
 
@@ -386,7 +432,13 @@ the pointer over **Instance Status** in the Actions column.
 
 ### 3.8 Start an instance
 
-Administrators can start Elastic Compute Service (ECS) bare metal instances. After an ECS bare metal instance is started, its status changes to Normal. This topic describes how to start an ECS bare metal instance. An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be started belongs to a resource pool. The ECS bare metal instance is stopped.
+Administrators can start Elastic Compute Service (ECS) bare metal instances. After an ECS bare metal instance is started, its status changes to Normal. This topic describes how to start an ECS bare metal instance.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be started belongs to a resource pool. The ECS bare metal instance is stopped.
+
+**Procedure**
 
 **Method A:**
 
@@ -408,7 +460,11 @@ the pointer over **Instance Status** in the Actions column.
 
 ### 3.9 Delete an instance
 
-This topic describes how to delete an Elastic Compute Service (ECS) bare metal instance. An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be deleted belongs to a resource pool. The ECS bare metal instance is in a stable state. For example, the instance is running or stopped, failed creation, or does not have heartbeats.
+This topic describes how to delete an Elastic Compute Service (ECS) bare metal instance.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be deleted belongs to a resource pool. The ECS bare metal instance is in a stable state. For example, the instance is running or stopped, failed creation, or does not have heartbeats.
 
 **Background information**
 
@@ -417,6 +473,9 @@ Administrators can delete ECS bare metal instances that belong to a resource poo
 **Warning**
 
 This operation is a high-risk operation. Proceed with caution.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, find the ECS bare metal instance that you want to delete and
@@ -427,7 +486,14 @@ move the pointer over **Instance Status** in the Actions column.
 
 ### 3.10 Query operation logs
 
-Administrators can view operation logs of specific bare metal instances based on O&M requirements. This section describes how to view the operation logs of a bare metal instance. You have registered the bare metal instance. For more information, see Register an instance.
+Administrators can view operation logs of specific bare metal instances based on O&M requirements. This section describes how to view the operation logs of a bare metal instance.
+
+**Prerequisites**
+
+You have registered the bare metal instance. For more information, see Register an instance.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Bare Metal Instances** page, select a filter condition and enter the corresponding
@@ -459,7 +525,14 @@ operation, including the **Task Type**, **Subitem**, **Start Time**, **Execution
 
 **ECS bare metal instance**
 
-Administrators can modify the names and descriptions of Elastic Compute Service (ECS) bare metal instances. This topic describes how to modify the name and description of an ECS bare metal instance. An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be modified belongs to a resource pool.
+Administrators can modify the names and descriptions of Elastic Compute Service (ECS) bare metal instances. This topic describes how to modify the name and description of an ECS bare metal instance.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance to be modified belongs to a resource pool.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, click **Manage** in the Actions column of the desired instance.
@@ -473,6 +546,9 @@ and description of the instance.
 **instance**
 
 This topic describes how to modify the hostname of a bare metal instance. A bare metal instance is registered. For more information, see Register an instance. The bare metal instance to be modified belongs to the resource pool. The online status of the bare metal instance to be modified is Running. The power status of the bare metal instance to be modified is Boot.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, find the instance that you want to modify and click **Manage** in the
@@ -485,7 +561,14 @@ Actions column.
 
 **instance**
 
-This topic describes how to reset the password of a bare metal instance. A bare metal instance is registered. For more information, see Register an instance. The bare metal instance whose password you want to reset belongs to the resource pool. The online status of the bare metal instance whose password you want to reset is Running. The power status of the bare metal instance whose password you want to reset is Boot.
+This topic describes how to reset the password of a bare metal instance.
+
+**Prerequisites**
+
+A bare metal instance is registered. For more information, see Register an instance. The bare metal instance whose password you want to reset belongs to the resource pool. The online status of the bare metal instance whose password you want to reset is Running. The power status of the bare metal instance whose password you want to reset is Boot.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, find the instance whose password you want to reset and click
@@ -513,7 +596,14 @@ port of the instance.
 
 **console**
 
-To fix machine faults in O&M scenarios, administrators are allowed to log in to the out-ofband consoles of Elastic Compute Service (ECS) bare metal instances to diagnose issues and locate the cause. This topic describes how to log in to the out-of-band console of an ECS bare metal instance. An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance already has an out-of-band IP address.
+To fix machine faults in O&M scenarios, administrators are allowed to log in to the out-ofband consoles of Elastic Compute Service (ECS) bare metal instances to diagnose issues and locate the cause. This topic describes how to log in to the out-of-band console of an ECS bare metal instance.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance. The ECS bare metal instance already has an out-of-band IP address.
+
+**Procedure**
+
 1. Log in to the BMS Operations Console.
 2. In the left-side navigation pane, click **Instance Management > Instances**.
 3. On the **Instances** page, click **Manage** in the Actions column of the desired instance.
@@ -534,7 +624,14 @@ The instance monitoring feature provides operation information about registered 
 
 **bare metal instances**
 
-Administrators can centrally monitor the resource usage of registered bare metal instances, including CPU utilization, memory usage, disk load, network load, and number of online servers. This topic describes how to view the resource monitoring information about bare metal instances. A bare metal instance is registered. For more information, see Register an instance.
+Administrators can centrally monitor the resource usage of registered bare metal instances, including CPU utilization, memory usage, disk load, network load, and number of online servers. This topic describes how to view the resource monitoring information about bare metal instances.
+
+**Prerequisites**
+
+A bare metal instance is registered. For more information, see Register an instance.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Instance Monitoring**.
 3. On the **Bare Metal Instance Monitoring** page, view the basic metrics of bare metal
@@ -561,11 +658,18 @@ Administrators can view and handle alerts generated by Elastic Compute Service (
 
 **instances**
 
-This section describes how to query the alerts of registered Elastic Compute Service (ECS) bare metal instances. An ECS bare metal instance is registered. For more information, see Register an instance.
+This section describes how to query the alerts of registered Elastic Compute Service (ECS) bare metal instances.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance.
 
 **Background information**
 
 You can query and view the alerts of registered ECS bare metal instances. The platform generates the following types of alerts: MemoryMonitor, OobMonitor, CPUMonitor, BoardMonitor, and PowerMonitor. The levels of MemoryMonitor, CPUMonitor, BoardMonitor, and PowerMonitor alerts are P2 (Major). The level of OobMonitor alerts is P3 (Minor).
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Bare Metal Instance**
 **Alerts**.
@@ -575,7 +679,14 @@ search for alerts that meet the conditions. You can specify the following filter
 
 #### 4.2.2 View pending alerts
 
-This topic describes how to view the pending alerts of Elastic Compute Service (ECS) bare metal instances. An ECS bare metal instance is registered. For more information, see Register an instance.
+This topic describes how to view the pending alerts of Elastic Compute Service (ECS) bare metal instances.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance.
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Bare Metal Instance**
 **Alerts**.
@@ -593,11 +704,18 @@ This topic describes how to view the handled alerts of Elastic Compute Service (
 
 #### 4.2.4 Handle alerts
 
-This section describes how to handle the alerts of registered Elastic Compute Service (ECS) bare metal instances. An ECS bare metal instance is registered. For more information, see Register an instance.
+This section describes how to handle the alerts of registered Elastic Compute Service (ECS) bare metal instances.
+
+**Prerequisites**
+
+An ECS bare metal instance is registered. For more information, see Register an instance.
 
 **Background information**
 
 You can handle the alerts generated by registered ECS bare metal instances. You can ignore alerts or mark them as fixed based on the actual situation. The detection cycle of alerts is 30 minutes.
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Bare Metal Instance**
 **Alerts**.
@@ -615,11 +733,18 @@ Administrators can view and handle alerts generated by managed instances on the 
 
 #### 4.3.1 Query the alerts of managed instances
 
-This topic describes how to query the alerts of managed instances. A managed instance is created.
+This topic describes how to query the alerts of managed instances.
+
+**Prerequisites**
+
+A managed instance is created.
 
 **Background information**
 
 You can query and view the alerts of managed instances. The platform generates the following types of alerts: MemoryMonitor, OobMonitor, CPUMonitor, BoardMonitor, and PowerMonitor. The levels of MemoryMonitor, CPUMonitor, BoardMonitor, and PowerMonitor alerts are P2 (Major). The level of OobMonitor alerts is P3 (Minor).
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Managed Instance**
 **Alerts**.
@@ -629,7 +754,14 @@ search for alerts that meet the conditions. You can specify the following filter
 
 #### 4.3.2 View pending alerts
 
-This topic describes how to view the pending alerts of managed instances. A managed instance is created.
+This topic describes how to view the pending alerts of managed instances.
+
+**Prerequisites**
+
+A managed instance is created.
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Managed Instance**
 **Alerts**.
@@ -638,7 +770,14 @@ This topic describes how to view the pending alerts of managed instances. A mana
 
 #### 4.3.3 View handled alerts
 
-This topic describes how to view the handled alerts of managed instances. A managed instance is created.
+This topic describes how to view the handled alerts of managed instances.
+
+**Prerequisites**
+
+A managed instance is created.
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Managed Instance**
 **Alerts**.
@@ -652,6 +791,9 @@ This section describes how to handle the alerts of managed instances. A managed 
 **Background information**
 
 You can handle the alerts generated by managed instances. You can ignore alerts or mark them as fixed based on the actual situation by following the same procedure for handling the alerts of Elastic Compute Service (ECS) bare metal instances. The detection cycle of alerts is 30 minutes.
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Monitoring & Alerting > Managed Instance**
 **Alerts**.
@@ -672,11 +814,18 @@ The image management feature is used to maintain image metadata required for ins
 
 #### 5.1.1 Upload a custom image
 
-This topic describes how to upload a custom image. A local custom image file that meets the specifications is prepared.
+This topic describes how to upload a custom image.
+
+**Prerequisites**
+
+A local custom image file that meets the specifications is prepared.
 
 **Background information**
 
 You can upload custom image files in the tgz or qcow2 format based on your business requirements.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Images**.
 By default, the **Custom Image** tab is displayed.
@@ -702,7 +851,14 @@ the parameters.
 
 #### 5.1.2 View custom image details
 
-This topic describes how to query images and view image details. A custom image has been created. For more information, see Upload a custom image.
+This topic describes how to query images and view image details.
+
+**Prerequisites**
+
+A custom image has been created. For more information, see Upload a custom image.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Images**.
 By default, the **Custom Image** tab is displayed.
@@ -715,9 +871,15 @@ information in the search box. Supported filter conditions include **Image Name*
 
 #### 5.1.3 Delete a custom image
 
-This topic describes how to delete a custom image. A custom image is uploaded. For more information, see Upload a custom image.
+This topic describes how to delete a custom image.
+
+**Prerequisites**
+
+A custom image is uploaded. For more information, see Upload a custom image.
 
 > **Important:** When you delete an image, the source image file is also deleted. Proceed with caution.
+
+**Procedure**
 
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Images**.
@@ -728,7 +890,11 @@ in the **Actions** column.
 
 #### 5.1.4 View the details of a public image
 
-This topic describes how to view the details of a public image. Public images are available in the environment to which you are logged in.
+This topic describes how to view the details of a public image.
+
+**Prerequisites**
+
+Public images are available in the environment to which you are logged in.
 
 **Background information**
 
@@ -752,11 +918,17 @@ Manage image status: Change the status of an image. Export an image: Export an i
 
 #### 5.1.5 Image status management
 
-This section describes how to change the status of an image. You have public image resources or have created custom images. For more information, see Upload a custom image. The image whose status you want to change is not in use.
+This section describes how to change the status of an image.
+
+**Prerequisites**
+
+You have public image resources or have created custom images. For more information, see Upload a custom image. The image whose status you want to change is not in use.
 
 **Background information**
 
 You can change the status of a specified image. After you disable an image, the system cannot reference the image during machine deployment. If the system already references the image, you cannot disable the image.
+
+**Procedure**
 
 **Disable an image**
 
@@ -778,7 +950,14 @@ i. Enable a custom image. a. In the **Enabled Status** column of the destination
 
 #### 5.1.6 Export an image
 
-This topic describes how to export a public image or custom image to an on-premises machine. A public image is available or a custom image is uploaded. For more information, see Upload a custom image.
+This topic describes how to export a public image or custom image to an on-premises machine.
+
+**Prerequisites**
+
+A public image is available or a custom image is uploaded. For more information, see Upload a custom image.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Images**.
 By default, the **Custom Image** tab is displayed.
@@ -791,6 +970,9 @@ i. Click the Public Image tab. ii. Find the public image that you want to export
 ### 5.2 Network management
 
 Administrators can query and view information about existing subnets and new subnets. This topic describes how to query the information about existing subnets and update subnet information.
+
+**Procedure**
+
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Network**.
 3. On the **Network** page, select a filter condition, enter the keyword into the search box, and
@@ -805,6 +987,9 @@ The model management feature allows administrators to add, query, delete, and mo
 #### 5.3.1 Add a model
 
 After you add a model, you can search for the model and view its information. This topic describes how to add a model.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Models**.
 3. On the **Models** page, click **Add Model** in the upper-left corner.
@@ -837,11 +1022,18 @@ After you add a model, you can search for the model and view its information. Th
 
 #### 5.3.2 Modify a model
 
-This topic describes how to modify the configurations of a model. A model is added. For more information, see Add a model. The model to be modified is not used to register bare metal instances.
+This topic describes how to modify the configurations of a model.
+
+**Prerequisites**
+
+A model is added. For more information, see Add a model. The model to be modified is not used to register bare metal instances.
 
 **Background information**
 
 You can modify all properties of a model except the model name. After a model is modified, you can search for the modified model and view the information about the model.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Models**.
 3. On the **Models** page, find the model that you want to modify and click **Modify** in the
@@ -852,7 +1044,14 @@ about the parameters, see Add a model.
 
 #### 5.3.3 View the details of a model
 
-This topic describes how to search for a model and view the details of the model. A model is added. For more information, see Add a model.
+This topic describes how to search for a model and view the details of the model.
+
+**Prerequisites**
+
+A model is added. For more information, see Add a model.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > Models**.
 3. On the **Models** page, select a filter condition, enter a keyword in the search box, and then
@@ -862,11 +1061,17 @@ click the search icon to search for models that meet the filter condition. Suppo
 
 #### 5.3.4 Delete a model
 
-This topic describes how to delete a model. A model is added. For more information, see Add a model. The model to be deleted is not referenced by any Elastic Compute Service (ECS) bare metal instances.
+This topic describes how to delete a model.
+
+**Prerequisites**
+
+A model is added. For more information, see Add a model. The model to be deleted is not referenced by any Elastic Compute Service (ECS) bare metal instances.
 
 **Warning**
 
 This operation is a high-risk operation and is irreversible. Proceed with caution.
+
+**Procedure**
 
 **Note**
 
@@ -888,6 +1093,9 @@ This topic describes how to add a GPU.
 **Background information**
 
 After you add a GPU, you can search for the GPU and view its information.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > GPU Settings**.
 3. On the **GPU Settings** page, click **Add GPU** in the upper-left corner.
@@ -907,7 +1115,14 @@ parameters.
 
 #### 5.4.2 Modify a GPU
 
-This topic describes how to modify the configurations of a GPU. A GPU is added. For more information, see Add a GPU.
+This topic describes how to modify the configurations of a GPU.
+
+**Prerequisites**
+
+A GPU is added. For more information, see Add a GPU.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > GPU Settings**.
 3. On the **GPU Settings** page, find the GPU that you want to modify and click **Edit** in the
@@ -928,7 +1143,14 @@ parameters.
 
 #### 5.4.3 Query GPUs
 
-Administrators can query and view information about GPUs. This topic describes how to query GPUs. A GPU is added. For more information, see Add a GPU.
+Administrators can query and view information about GPUs. This topic describes how to query GPUs.
+
+**Prerequisites**
+
+A GPU is added. For more information, see Add a GPU.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > GPU Settings**.
 3. On the **GPU Settings** page, enter a GPU model into the search box to find the GPU that
@@ -936,11 +1158,18 @@ meets the condition.
 
 #### 5.4.4 Delete a GPU
 
-Administrators can delete the specified GPUs. This topic describes how to delete a GPU. A GPU is created. For more information, see Add a GPU.
+Administrators can delete the specified GPUs. This topic describes how to delete a GPU.
+
+**Prerequisites**
+
+A GPU is created. For more information, see Add a GPU.
 
 **Warning**
 
 This operation is irreversible. Proceed with caution.
+
+**Procedure**
+
 1. Log in to the Bare Metal Service (BMS) Operations Console.
 2. In the left-side navigation pane, choose **Basic Settings > GPU Settings**.
 3. On the **GPU Settings** page, find the GPU that you want to delete and click **Delete** in the

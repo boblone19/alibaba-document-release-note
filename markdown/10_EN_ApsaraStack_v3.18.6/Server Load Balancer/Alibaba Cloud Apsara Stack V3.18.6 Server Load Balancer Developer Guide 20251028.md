@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 326
 source_pdf: "95386ef1756e8abb_Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Developer Guide 20251028.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Load%20Balancer%20Developer%20Guide%2020251028.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Server Load Balancer Developer Guide 20251028
@@ -2035,6 +2035,8 @@ Common request parameters are request parameters that you must use when you call
 
 | SignatureNonce | String | Yes | A unique random number that is used to prevent network replay attacks. You must use different random numbers for different requests. |
 |---|---|---|---|
+
+**Example**
 
 ```
 http://slb.example.com/?Action=DescribeLoadBalancers &TimeStamp=2014-05-19T10%3A33%3A56Z &Format=xml &AccessKeyId=testid &Action=DescribeLoadBalancerAttribute &SignatureMethod=Hmac-SHA1 &LoadBalancerId=loadBalancerID &SignatureNonce=NwDAxvLU6tFE0DVb &Version=2014-05-15 &SignatureVersion=1.0 &Signature=Signature
@@ -9203,6 +9205,8 @@ Obtains a Security Token Service (STS) token to assume a Resource Access Managem
 | AssumedRoleUser | N/A | N/A | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495** **:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Example**
 
 **Add Project Object Model (POM) dependencies**
 

@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 14
 source_pdf: "764a576cc1c9ddd3_Alibaba Cloud Apsara Stack V3.18.6 File Storage NAS Operations and Maintenance Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8NAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20File%20Storage%20NAS%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # File Storage NAS Operations and Maintenance Guide
@@ -31,22 +31,27 @@ File Storage NAS (NAS) is a cloud service that provides file storage for compute
 **service**
 
 This topic describes how to check whether the KV service of a File Storage NAS (NAS) cluster is normal.
+
+**Procedure**
+
 1. Find the RecycleJob role in the nas-recycle service of the cluster and log on to the target
 machine.
 2. Use the kuadmin tool to view the NAS app service added to the KV service.
+Command
 
 ```
 /apsara/deploy/kuadmin listapp
 ```
 
-If an error occurs in the output of the listapp command, the kvmaster service is abnormal.
+Sample response If an error occurs in the output of the listapp command, the kvmaster service is abnormal.
 3. Use the ku tool to check whether the KV service is normal.
+Command
 
 ```
 /apsara/deploy/ku checkready nas checkready ocm
 ```
 
-If no output is returned for the checkready command or the status is NO, the KV service is abnormal.
+Sample response If no output is returned for the checkready command or the status is NO, the KV service is abnormal.
 4. Use the mcu tool to view the status and information of the kvmaster service.
 i. Query the kvmaster service, which is typically 3master.
 
@@ -54,69 +59,83 @@ i. Query the kvmaster service, which is typically 3master.
 /apsara/deploy/mcu gas
 ```
 
-ii. Query kvmaster config.
+Sample response ii. Query kvmaster config. Command
 
 ```
 /apsara/deploy/mcu gac
 ```
 
+Sample response
+
 ### 2.2 Query the information about file systems and users
 
 **file systems and users**
 
+**Procedure**
+
 1. Find the RecycleJob role in the nas-recycle service of your cluster and log on to the target
 machine.
 2. Use the ocm_cmd and ku tools to query the file system ID (fsid) and the corresponding
-partition. i. Query the volume and fsid by specifying the username.
+partition. i. Query the volume and fsid by specifying the username. Command
 
 ```
 /apsara/deploy/ocm_cmd list_volume -u <user>
 ```
 
-ii. Query the partition corresponding to the file system by specifying the fsid parameter.
+Sample response ii. Query the partition corresponding to the file system by specifying the fsid parameter.
 
 ```
 /apsara/deploy/ku querypart nas <fsid>
 ```
 
+Sample response
 3. In the RecycleJob role, use the ocm_cmd tool to query the information about the NAS cluster
-and permission group. Query the volume and fsid by specifying the username.
+and permission group. Query the volume and fsid by specifying the username. Command
 
 ```
 /apsara/deploy/ocm_cmd list_volume -u <user>
 ```
 
+Sample response
 4. Query the information about deleted volumes.
+Command
 
 ```
 /apsara/deploy/ocm_cmd list_deleted_volume
 ```
 
+Sample response
 5. Query the mount information by user and volume.
+Command
 
 ```
 /apsara/deploy/ocm_cmd get_volume_mount_info -u <user> -v <volume>
 ```
 
+Sample response
 6. Query the protocol type of the file system by user and volume.
+Command
 
 ```
 /apsara/deploy/ocm_cmd get_volume_protocoltype -u <user> -v <volume>
 ```
 
-1 indicates the Network File System (NFS) protocol. 2 indicates the Server Message Block (SMB) protocol. 3 indicates the combination of NFS and SMB.
+Sample response 1 indicates the Network File System (NFS) protocol. 2 indicates the Server Message Block (SMB) protocol. 3 indicates the combination of NFS and SMB.
 7. Query the permission group by user.
+Command
 
 ```
 /apsara/deploy/ocm_cmd list_access_group -u <user>
 ```
 
 8. Query the permission policy by user and permission group.
+Command
 
 ```
 /apsara/deploy/ocm_cmd list_access_rule -u <user> -g <group>
 ```
 
+Sample response
 9. Modify the protocol type of the file system by user and volume.
 
 ```
@@ -124,37 +143,39 @@ and permission group. Query the volume and fsid by specifying the username.
 ```
 
 0. Query the partition and distance information.
-i. Query the kvserver information of the cluster.
+i. Query the kvserver information of the cluster. Command
 
 ```
 /apsara/deploy/ku --interactive=false --command=getallserver --appname=nas |grep 10280|grep tcp|awk '{print $2}'
 ```
 
-ii. Query the partition and distance information based on the kvserver information.
+Sample response ii. Query the partition and distance information based on the kvserver information.
 
 ```
 /apsara/deploy/ofsu --interactive=false --command=getpartdist --param1=<kvserver> --param2=nas | grep -v PID
 ```
 
+Sample response
 1. Query the detailed information of the file system.
-i. Query all partitions.
+i. Query all partitions. Command
 
 ```
 /apsara/deploy/ku --interactive=false --command=getallpart --param1=nas | grep tc p | awk '{print $3}'
 ```
 
-ii. Query the file system by specifying the partition.
+Sample response ii. Query the file system by specifying the partition.
 
 ```
 /apsara/deploy/ofsu --interactive=false --command=getfilesystem --appname=nas --p aram1=<partition>
 ```
 
-iii. Query file system details by user and volume.
+Sample response iii. Query file system details by user and volume. Command
 
 ```
 /apsara/deploy/ofsu --interactive=false --command=getfsinfo --appname=nas --param 1=<user> --param2=<volume>
 ```
 
+Sample response
 2. Query the azone and location information of the NAS cluster.
 i. Obtain the ocm tool. The access_id and access_key is required.
 
@@ -162,11 +183,13 @@ i. Obtain the ocm tool. The access_id and access_key is required.
 vim /cloud/app/nasnfs/NFSSupervisor#/nfs_supervisor/current/conf.merge/ocm_cmd.json
 ```
 
-ii. Record the ocm_host, access_id, and access_key information and use the ocm tool to query the location information.
+ii. Record the ocm_host, access_id, and access_key information and use the ocm tool to query the location information. Command
 
 ```
 /apsara/deploy/ocm_tool lli --ocm_host=<ocm_host> --access_id=<access_id> --acces s_key=<access_key>
 ```
+
+Sample response
 
 ### 2.3 Query the information about a cluster recycle job
 
@@ -179,7 +202,9 @@ query the current recycle job of the cluster.
 /apsara/deploy/nas_ju list
 ```
 
+Sample response
 2. Query the details of the recycle job by specifying the job name.
+Command
 
 ```
 /apsara/deploy/nas_ju info <job_name>
@@ -191,9 +216,13 @@ Example
 /apsara/deploy/nas_ju info volume_recycle_20171024105007
 ```
 
+Sample response
+
 ### 2.4 View the module service logs of a NAS cluster
 
 **of a NAS cluster**
+
+**Procedure**
 
 1. Find the RecycleJob role in the nas-recycle service of the cluster and view the logs of the KV
 service. After you use the ku and kuadmin tools to determine whether the KV service is abnormal, you can view the corresponding ku.LOG and kuadmin.LOG in the /apsara/deploy/log directory to obtain the error message.
@@ -223,7 +252,11 @@ vim /cloud/log/nas-kvengine/KVServer#/kv_server/ganesha.LOG
 
 ### 2.5 Set the disk usage limit
 
-By setting the disk usage limit, you can control the total amount of data written to disks. When the data write volume reaches the limit, the system denies data writing. When the data write volume drops below the limit, the system resumes data writing. To set the disk usage limit, perform the following steps:
+By setting the disk usage limit, you can control the total amount of data written to disks. When the data write volume reaches the limit, the system denies data writing. When the data write volume drops below the limit, the system resumes data writing.
+
+**Procedure**
+
+To set the disk usage limit, perform the following steps:
 1. Log in to the Apsara Uni-manager Operations Console
 2. In the top navigation bar, choose **Platform Operation > Apsara Infrastructure**
 **Management > Resources**.

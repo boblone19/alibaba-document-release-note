@@ -5,7 +5,7 @@ doc_version: "20250107"
 pdf_pages: 35
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Message Queue for Apache Kafka Operations and Maintenance Guide 20250107.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97kafka/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Message%20Queue%20for%20Apache%20Kafka%20Operations%20and%20Maintenance%20Guide%2020250107.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Message Queue for Apache Kafka Operations and Maintenance Guide 20250107
@@ -47,9 +47,17 @@ You must perform various maintenance operations on ApsaraMQ for Kafka to ensure 
 
 #### 2.1.1 Query a list of pods
 
-This topic describes how to query a list of pods in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query a list of pods in ApsaraMQ for Kafka.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the kubectl get pod -o wide| grep alibaba-kafka command to query a list of pods.
+Sample command output:
 
 ```
 alibaba-kafka-autotest-mp524 0/1 Completed 0 5h14m 10.XX.X.XX a36b10008.cloud.b10.amtest11 <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-0 2/2 Running 0 35m 10.XX.XX.XX a36b10204.cloud.b12.amtest11 <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-1 2/2 Running 0 35m 10.XX.XX.XX a36b10208.cloud.b12.amtest11 <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-2 2/2 Running 0 36m 10.XX.XX.XX a36b10008.cloud.b10.amtest11 <none> <none> alibaba-kafka-cluster-private-paas-default-0 2/2 Running 1 23h 10.XX.XX.XXX a36b10005.cloud.b10.amtest11 <none> <none> alibaba-kafka-cluster-private-paas-default-1 2/2 Running 0 23h 10.XX.XX.XXX a36b10203.cloud.b12.amtest11 <none> <none> alibaba-kafka-cluster-private-paas-default-2 2/2 Running 1 23h 10.XX.XX.XXX a36b10016.cloud.b10.amtest11 <none> <none> alibaba-kafka-console-6dcf5f9b59-bqvn6 1/1 Running 0 172m 10.XX.XX.XX a36b10203.cloud.b12.amtest11 <none> <none> alibaba-kafka-operator-6b9dbb49cc-s8s49 1/1 Running 0 23h 10.XX.XX.XXX a36b10203.cloud.b12.amtest11 <none> <none>
@@ -69,6 +77,8 @@ If an exception occurs during the deployment of a pod, you can query the informa
 |---|---|---|
 | kubectl describe pod alibaba-kafka-cluster-private-paas-default-0 |   |   |
 |   |   | command |
+
+Sample command output:
 
 ```json
 Name: alibaba-kafka-cluster-private-paas-default-0 Namespace: default Priority: 0 PriorityClassName: <none> Node: a36b10005.cloud.b10.amtest11/10.XX.XX.XXX Start Time: Sun, 30 Aug 2020 11:58:35 +0300 Labels: app=alibaba-kafka-broker
@@ -277,7 +287,11 @@ Events: <none>
 
 #### 2.1.3 Query the logs of a pod
 
-This topic describes how to query the logs of a pod in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the logs of a pod in ApsaraMQ for Kafka.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl logs <pod>` command to query the logs of a pod.
 
@@ -285,17 +299,26 @@ This topic describes how to query the logs of a pod in ApsaraMQ for Kafka. The i
 |---|---|
 | kubectl logs alibaba-kafka-operator-6b9dbb49cc-s8s49 |   |
 
+Sample command output:
+
 ```json
 {"level":"info","ts":1598777607.4786668,"logger":"controller_kafka","msg":"Reconcile Kafka......","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-priv ate-release-alibaba-kafka","RequestID":1598777607478639249} {"level":"info","ts":1598777607.4789321,"logger":"controller_kafka","msg":"reconcileClu erStatus expire size:3, current size:3","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-private-r elease-alibaba-kafka","RequestID":1598777607478639249} {"level":"info","ts":1598777608.3835506,"logger":"controller_kafka","msg":"Reconcile Kafka......","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-priv ate-release-alibaba-kafka","RequestID":1598777608383517127} {"level":"info","ts":1598777608.3838317,"logger":"controller_kafka","msg":"reconcileClu erStatus expire size:3, current size:3","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-private-r elease-alibaba-kafka","RequestID":1598777608383517127}
 ```
 
 #### 2.1.4 Restart a pod
 
-This topic describes how to restart a pod in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to restart a pod in ApsaraMQ for Kafka.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
 Pods cannot be directly restarted. If the state of a pod is abnormal, we recommend that you restart the process to resolve the issue. If the state of the pod is still abnormal and cannot be recovered after the process is restarted, you can delete the pod to resolve the issue.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl delete pod <pod>` command to delete a pod.
 
@@ -308,7 +331,11 @@ Pods cannot be directly restarted. If the state of a pod is abnormal, we recomme
 
 **PVCs**
 
-This topic describes how to query the information about persistent volumes (PVs) and persistent volume claims (PVCs) in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the information about persistent volumes (PVs) and persistent volume claims (PVCs) in ApsaraMQ for Kafka.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
@@ -324,6 +351,7 @@ PVCs are storage requests from users. PVCs consume PVs. You can specify the size
 
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the kubectl get pv | grep kafka command to query the information about all PVs.
+Sample command output:
 
 ```
 local-pv-441b2d75 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-private-release-alibaba-kaf ka-0 fast-disks 30d local-pv-4ead5521 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-private-release-alibaba-kaf ka-0 fast-disks 26d local-pv-75c677f4 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-private-release-alibaba-kaf ka-2 fast-disks 24d local-pv-8edeaa79 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-1 fast-disks 17d local-pv-8f2d4b7c 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-0 fast-disks 17d local-pv-bcf4f008 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-private-release-alibaba-kaf ka-1 fast-disks 17d local-pv-bf995f4d 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-private-release-alibaba-kaf ka-1 fast-disks 24d local-pv-ca97969f 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-2 fast-disks 34d local-pv-cd53c348 7393Gi RWO Delete Released default/kafka-datadir-alibaba-kafka-cluster-private-release-alibaba-kaf ka-2 fast-disks 34d pvc-3066e824-eb37-11ea-bf33-6805caa954d0 1Mi RWX Delete Bound kafka-autotest-default-cell/lxcfs-pvc lxcfs-sc 6h29m yoda-0409d39d-eb52-11ea-bf33-6805caa954d0 90Gi RWO Delete Bound default/kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-2 yoda-lvm 3h17m yoda-0c861b0b-e777-11ea-bf33-6805caa954d0 90Gi RWO Delete Bound default/kafka-datadir-alibaba-kafka-cluster-private-paas-default-0 yoda-lvm 5d1h yoda-5a840f48-e777-11ea-bf33-6805caa954d0 90Gi RWO Delete Bound default/kafka-datadir-alibaba-kafka-cluster-private-paas-default-1 yoda-lvm 5d1h yoda-b584d7ee-e777-11ea-bf33-6805caa954d0 90Gi RWO Delete Bound default/kafka-datadir-alibaba-kafka-cluster-private-paas-default-2 yoda-lvm 5d yoda-d3b992bb-eb51-11ea-bf33-6805caa954d0 90Gi RWO Delete Bound default/kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-0 yoda-lvm 3h18m yoda-edf9999c-eb51-11ea-bf33-6805caa954d0 90Gi RWO Delete Bound default/kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-1 yoda-lvm 3h18m
@@ -351,6 +379,7 @@ Events: <none>
 
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the kubectl get pvc | grep kafka command to query the information about all PVCs.
+Sample command output:
 
 ```
 kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-0 Bound yoda-d3b992bb-e b51-11ea-bf33-6805caa954d0 90Gi RWO yoda-lvm 3h29m kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-1 Bound yoda-edf9999c-e b51-11ea-bf33-6805caa954d0 90Gi RWO yoda-lvm 3h28m kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-2 Bound yoda-0409d39d-e b52-11ea-bf33-6805caa954d0 90Gi RWO yoda-lvm 3h28m kafka-datadir-alibaba-kafka-cluster-private-paas-default-0 Bound yoda-0c861b0be777-11ea-bf33-6805caa954d0 90Gi RWO yoda-lvm 5d1h kafka-datadir-alibaba-kafka-cluster-private-paas-default-1 Bound yoda-5a840f48e777-11ea-bf33-6805caa954d0 90Gi RWO yoda-lvm 5d1h kafka-datadir-alibaba-kafka-cluster-private-paas-default-2 Bound yoda-b584d7eee777-11ea-bf33-6805caa954d0 90Gi RWO yoda-lvm 5d1h
@@ -365,6 +394,8 @@ For example, you can run the `kubectl describe pvc kafka-datadir-alibaba-kafka-c
 ```
  kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-0 .
 ```
+
+Sample command output:
 
 ```
 Name: kafka-datadir-alibaba-kafka-cluster-multi-alibaba-kafka-0 Namespace: default StorageClass: yoda-lvm Status: Bound Volume: yoda-d3b992bb-eb51-11ea-bf33-6805caa954d0 Labels: app=alibaba-kafka-broker
@@ -453,7 +484,14 @@ v. Run the `rmr /kafka-private-clusters` command to delete data from the ZooKeep
 
 **brokers**
 
-This topic describes how to query the metric information of brokers in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the metric information of brokers in ApsaraMQ for Kafka.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -464,7 +502,7 @@ This topic describes how to query the metric information of brokers in ApsaraMQ 
 
 3. Run the `sudo su admin` command to switch to the administrator account.
 4. Run the `java -jar kafka-pkgs/KafkaMetricChecker.jar broker` command to query the
-metric information of brokers.
+metric information of brokers. Sample command output:
 
 ```
 --------------------------------------------------------------------------------------- ---------------------------------------------------------------
@@ -600,7 +638,14 @@ emoryUsage_Used_Mb 80.63 null null| --------------------------------------------
 
 #### 2.2.2 Query logs
 
-This topic describes how to query the logs of ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the logs of ApsaraMQ for Kafka.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -613,6 +658,7 @@ This topic describes how to query the logs of ApsaraMQ for Kafka. The informatio
 4. Run the `cd /home/admin/logs/alikafka` command to switch to the directory in which logs
 are stored.
 5. Run the **ls** command to query a list of log files.
+Sample command output:
 
 ```
 commercial.log controller.log kafka-authorizer.log kafka-request.log kafka-reques t.log.1 log-cleaner.log metrics.log network.log server.log state-change.log unk nown.log
@@ -622,7 +668,14 @@ commercial.log controller.log kafka-authorizer.log kafka-request.log kafka-reque
 
 #### 2.2.3 Query the status of a topic
 
-This topic describes how to query the status of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the status of a topic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -648,7 +701,7 @@ For example, if the name of a topic is `test` , run the `sh`
 /home/admin/KafkaProxy/bin/kafka-topics.sh --describe --bootstrap-server `hostname -
 ```
 
-i`:9092 --topic test command.
+i`:9092 --topic test command. Sample command output:
 
 ```
 Topic:test PartitionCount:12 ReplicationFactor:3 Configs:min.insync.replicas=1,flush.ms=1000,segment.bytes=268435456,retention.ms=864000 ,flush.messages=10000,max.message.bytes=10000000,unclean.leader.election.enable=false
@@ -680,7 +733,14 @@ Isr: 1003,1002,1001
 
 #### 2.2.4 Query the status of a consumer group
 
-This topic describes how to query the status of a consumer group. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the status of a consumer group.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -737,11 +797,18 @@ test 2 14161 16509 2348 -
 
 #### 2.2.5 Query the data of ZooKeeper
 
-This topic describes how to query the data of ZooKeeper. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to query the data of ZooKeeper.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Background information**
 
 By default, the ZooKeeper root directory of ApsaraMQ for Kafka is <zkHost:zkPort>/kafkaprivate-clusters/cluster-private-paas-default.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -759,7 +826,7 @@ zookeeper.connect=10.XX.XX.XXX:2188,10.XX.XX.XXX:2188,10.XX.XX.XXX:2188/kafka-pr
 ```
 
 5. Run the `sh /home/admin/zookeeper-3.4.8/bin/zkCli.sh -server <ZKConnect>` command to
-connect to ZooKeeper.
+connect to ZooKeeper. Sample command output:
 
 ```
 Connecting to 10.XX.XX.XXX:2188 2020-09-01 11:31:49,580 [myid:] - INFO [main:Environment@100] - Client environment:zookeeper.version=3.4.8--1, built on 02/06/2016 03:18 GMT 2020-09-01 11:31:49,585 [myid:] - INFO [main:Environment@100] - Client environment:host.name=alibaba-kafka-cluster-private-paas-default-2.kafka-alibaba-kafk a-cluster-private-paas-default-hs.default.svc.cluster.local 2020-09-01 11:31:49,585 [myid:] - INFO [main:Environment@100] - Client environment:java.version=1.8.0_102 2020-09-01 11:31:49,588 [myid:] - INFO [main:Environment@100] - Client environment:java.vendor=Alibaba 2020-09-01 11:31:49,588 [myid:] - INFO [main:Environment@100] - Client environment:java.home=/opt/taobao/java/jre 2020-09-01 11:31:49,588 [myid:] - INFO [main:Environment@100] - Client environment:java.class.path=/home/admin/zookeeper- 3.4.8/bin/../build/classes:/home/admin/zookeeper- 3.4.8/bin/../build/lib/*.jar:/home/admin/zookeeper-3.4.8/bin/../lib/slf4j-log4j12-1.6 .1.jar:/home/admin/zookeeper-3.4.8/bin/../lib/slf4j-api- 1.6.1.jar:/home/admin/zookeeper-3.4.8/bin/../lib/netty- 3.7.0.Final.jar:/home/admin/zookeeper-3.4.8/bin/../lib/log4j- 1.2.16.jar:/home/admin/zookeeper-3.4.8/bin/../lib/jline- 0.9.94.jar:/home/admin/zookeeper-3.4.8/bin/../zookeeper- 3.4.8.jar:/home/admin/zookeeper- 3.4.8/bin/../src/java/lib/*.jar:/home/admin/zookeeper-3.4.8/bin/../conf: 2020-09-01 11:31:49,588 [myid:] - INFO [main:Environment@100] - Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/
@@ -778,13 +845,14 @@ SendThread(10.XX.XX.XXX:2188):ClientCnxn$SendThread@1032] - Opening socket conne
 ```
 
 6. Run the `ls /` command to query the nodes of ZooKeeper.
+Sample command output:
 
 ```
 [kafka-private-clusters, zookeeper]
 ```
 
 7. Run the `ls /<zk node>` command to query the data of a ZooKeeper node.
-For example, if the name of a ZooKeeper node is zookeeper, run the `ls /zookeeper` command.
+For example, if the name of a ZooKeeper node is zookeeper, run the `ls /zookeeper` command. Sample command output:
 
 ```
 cZxid = 0x0 ctime = Thu Jan 01 08:00:00 CST 1970 mZxid = 0x0 mtime = Thu Jan 01 08:00:00 CST 1970 pZxid = 0x0 cversion = -1 dataVersion = 0 aclVersion = 0 ephemeralOwner = 0x0 dataLength = 0 numChildren = 1
@@ -792,7 +860,7 @@ cZxid = 0x0 ctime = Thu Jan 01 08:00:00 CST 1970 mZxid = 0x0 mtime = Thu Jan 01 
 
 **What to do next**
 
-After you query the data of ZooKeeper, run the **quit** command to exit ZooKeeper.
+After you query the data of ZooKeeper, run the **quit** command to exit ZooKeeper. Sample command output:
 
 ```
 Quitting... 2020-09-01 11:45:05,123 [myid:] - INFO [main:ZooKeeper@684] - Session: 0x300axxxx0ba c losed 2020-09-01 11:45:05,125 [myid:] - INFO [main-EventThread:ClientCnxn$EventThread@519] - EventThread shut down for session: 0x300axxxx0ba
@@ -801,6 +869,9 @@ Quitting... 2020-09-01 11:45:05,123 [myid:] - INFO [main:ZooKeeper@684] - Sessio
 #### 2.2.6 Update the configurations of a topic
 
 This topic describes how to update the configurations of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the `kubectl exec -it <pod> bash` to connect to the pod in ApsaraMQ for Kafka.
 
@@ -811,7 +882,7 @@ This topic describes how to update the configurations of a topic. The informatio
 
 3. Run the `sudo su admin` command to switch to the administrator account.
 4. Run the `sh /home/admin/kafka-tools/metadata.sh endPoint` command to query the
-endpoint of ZooKeeper.
+endpoint of ZooKeeper. Sample command output:
 
 ```
 zookeeper.connect=10.XX.XX.XXX:2188,10.XX.XX.XXX:2188,10.XX.XX.XXX:2188/kafka-private -clusters/cluster-private-paas-default
@@ -871,7 +942,11 @@ directory.
 
 #### 2.3.1 Evaluate the capacity of a cluster
 
-This topic describes how to evaluate the capacity of an ApsaraMQ for Kafka cluster, including disk usage and peak traffic. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to evaluate the capacity of an ApsaraMQ for Kafka cluster, including disk usage and peak traffic.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Query the information about a cluster**
 
@@ -915,10 +990,17 @@ peak traffic.
 
 ### 3.1 Inspect the status of pods
 
-This topic describes how to inspect the status of pods. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to inspect the status of pods.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Connect to the master node in ApsaraMQ for Kafka.
 2. Run the kubectl get pods -o wide | grep kafka command to query a list of pods in
-ApsaraMQ for Kafka.
+ApsaraMQ for Kafka. Sample command output:
 
 ```
 alibaba-kafka-cluster-multi-alibaba-kafka-0 2/2 Running 1 24h 10.XX.XX.XX a36b10204.cloud.b12.amtest11 <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-1 2/2 Running 4 24h 10.XX.XX.XX a36b10208.cloud.b12.amtest11 <none> <none> alibaba-kafka-cluster-multi-alibaba-kafka-2 2/2 Running 0 24h 10.XX.XX.XX a36b10008.cloud.b10.amtest11 <none> <none> alibaba-kafka-cluster-private-paas-default-0 2/2 Running 3 47h 10.XX.XX.XX a36b10005.cloud.b10.amtest11 <none> <none> alibaba-kafka-cluster-private-paas-default-1 2/2 Running 2 47h 10.XX.XX.XX a36b10203.cloud.b12.amtest11 <none> <none> alibaba-kafka-cluster-private-paas-default-2 2/2 Running 3 47h 10.XX.XX.XX a36b10016.cloud.b10.amtest11 <none> <none> alibaba-kafka-console-6dcf5f9b59-bqvn6 1/1 Running 0 26h 10.XX.XX.XX a36b10203.cloud.b12.amtest11 <none> <none> alibaba-kafka-operator-6b9dbb49cc-s8s49 1/1 Running 0 47h 10.XX.XX.XX a36b10203.cloud.b12.amtest11 <none> <none>
@@ -932,6 +1014,8 @@ alibaba-kafka-cluster-multi-alibaba-kafka-0 2/2 Running 1 24h 10.XX.XX.XX a36b10
 |---|---|---|
 | kubectl describe pod alibaba-kafka-cluster-private-paas-default-0 |   |   |
 |   |   | command |
+
+Sample command output:
 
 ```
 Name: alibaba-kafka-cluster-private-paas-default-0 Namespace: default Priority: 0 PriorityClassName: <none> Node: a36b10005.cloud.b10.amtest11/10.XX.XX.XXX Start Time: Sun, 30 Aug 2020 11:58:35 +0300 Labels: app=alibaba-kafka-broker
@@ -1129,7 +1213,11 @@ Events: <none>
 
 **availability**
 
-This topic describes how to inspect the disk usage, abnormal metrics, and error logs. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to inspect the disk usage, abnormal metrics, and error logs.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
 
 **Inspect the disk usage**
 
@@ -1143,6 +1231,7 @@ This topic describes how to inspect the disk usage, abnormal metrics, and error 
 
 3. Run the `sudo su admin` command to switch to the administrator account.
 4. Run the `df -h /alidata1/` command to query the disk usage.
+Sample command output:
 
 ```
 Filesystem Size Used Avail Use% Mounted on /dev/mapper/vg_apsara_paas-yoda--0c861b0b--e777--11ea--bf33--6805caa954d0
@@ -1165,6 +1254,8 @@ Filesystem Size Used Avail Use% Mounted on /dev/mapper/vg_apsara_paas-yoda--0c86
 | java -jar /home/admin/kafka-pkgs/KafkaMetricChecker.jar broker -f |   |
 |---|---|
 |   | command to query the information about metrics. |
+
+Sample command output:
 
 ```
 --------------------------------------------------------------------------------------- ---------------------------------------------------------------
@@ -1237,7 +1328,14 @@ message.
 
 **a restart**
 
-This topic describes how to inspect a physical server after a restart. The information about the master node in ApsaraMQ for Kafka is obtained.
+This topic describes how to inspect a physical server after a restart.
+
+**Prerequisites**
+
+The information about the master node in ApsaraMQ for Kafka is obtained.
+
+**Procedure**
+
 1. Inspect the status of pods.
 For more information, see Inspect the status of pods.
 2. Inspect the service availability.

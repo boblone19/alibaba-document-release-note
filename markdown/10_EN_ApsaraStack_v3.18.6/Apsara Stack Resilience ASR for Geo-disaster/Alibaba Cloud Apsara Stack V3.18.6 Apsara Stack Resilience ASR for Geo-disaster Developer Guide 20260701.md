@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 360
 source_pdf: "c1fd408bef599171_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Geo-disaster Developer Guide 2026"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%82%E5%9C%B0%E5%AE%B9%E7%81%BEASRDR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Resilience ASR for Geo-disaster Developer Guide 20260701

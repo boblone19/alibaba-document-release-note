@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 58
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for Redis User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20ApsaraDB%20for%20Redis%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for Redis User Guide 20220928
@@ -76,7 +76,7 @@ This topic describes all operations that you can perform on an instance from ins
 
 ### 2.2 Log on to the KVStore for Redis console
 
-console This topic describes how to log on to the KVStore for Redis console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+console This topic describes how to log on to the KVStore for Redis console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
 key.
 2. Enter your username and password.
@@ -92,7 +92,7 @@ Obtain the username and password that you can use to log on to the console from 
 
 ### 2.3 Create a KVStore for Redis instance
 
-instance This topic describes how to create a KVStore for Redis instance in the KVStore for Redis console.
+instance This topic describes how to create a KVStore for Redis instance in the KVStore for Redis console. Procedure
 1. Log on to the KVStore for Redis console.
 2. Click Creat e Inst ance in the upper-right corner of the page.
 3. Set the following parameters.
@@ -125,6 +125,7 @@ Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks tha
 
 > Not e A properly configured whitelist can ensure a higher level of security protection for your KVStore for Redis instance. We recommend that you maintain the whitelist on a regular basis.
 
+Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Whit elist Set t ings.
@@ -750,7 +751,7 @@ Console.WriteLine();
 
 #### 2.5.2 Use redis-cli
 
-The redis-cli tool is a command-line interface (CLI) of Redis. You can use redis-cli to connect to a KVStore for Redis instance from an Elastic Compute Service (ECS) instance or on-premises machine and manage data. Prerequisites The ECS instance and KVStore for Redis instance are deployed in the same classic network or virtual private cloud (VPC). The private IP address of the ECS instance is added to the whitelist of the KVStore for Redis instance. For more information, see Configure a whitelist. The ECS instance runs a Linux operating system and open source Redis is installed. For more information, see Redis official website.
+The redis-cli tool is a command-line interface (CLI) of Redis. You can use redis-cli to connect to a KVStore for Redis instance from an Elastic Compute Service (ECS) instance or on-premises machine and manage data. Prerequisites The ECS instance and KVStore for Redis instance are deployed in the same classic network or virtual private cloud (VPC). The private IP address of the ECS instance is added to the whitelist of the KVStore for Redis instance. For more information, see Configure a whitelist. The ECS instance runs a Linux operating system and open source Redis is installed. For more information, see Redis official website. Procedure
 1. Log on to the CLI of the ECS instance and run the following command to connect to the Redis
 instance:
 
@@ -789,7 +790,7 @@ If the password verification is successful, the following result is returned: `O
 
 ### 3.1 Change a password
 
-If you forget your password, need to change your password, or have not set a password for an instance, you can set a new password for the instance.
+If you forget your password, need to change your password, or have not set a password for an instance, you can set a new password for the instance. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ance List page, click the ID of the instance.
@@ -813,6 +814,7 @@ Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks tha
 
 > Not e A properly configured whitelist can ensure a higher level of security protection for your KVStore for Redis instance. We recommend that you maintain the whitelist on a regular basis.
 
+Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Whit elist Set t ings.
@@ -835,7 +837,7 @@ Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks tha
 
 ### 3.3 Change specifications
 
-This topic describes how to change the configuration of a KVStore for Redis instance. Precautions After configuration changes, the system migrates data and switches the instance. The instance is disconnected for a few seconds during this process. We recommend that you upgrade or downgrade the instance during off-peak hours.
+This topic describes how to change the configuration of a KVStore for Redis instance. Precautions After configuration changes, the system migrates data and switches the instance. The instance is disconnected for a few seconds during this process. We recommend that you upgrade or downgrade the instance during off-peak hours. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ance List page, click the ID of the instance.
@@ -854,6 +856,7 @@ You can modify the default maintenance window to perform maintenance on KVStore 
 
 > Not e During the maintenance process, instances may be disconnected in the process of maintenance. We recommend that you set the maintenance window to a period during off-peak hours.
 
+Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ance List page, click the ID of the instance.
@@ -870,6 +873,7 @@ Alibaba Cloud has continuously optimized the kernel of KVStore for Redis to fix 
 > We recommend that you upgrade instance versions during off-peak hours and ensure that your application supports automatic reconnection.
 > The system automatically checks the kernel version of an instance. If the current version is the latest, the Minor Version Upgrade button in the upper-right corner of the Basic Inf ormat ion section for this instance will appear dimmed.
 
+Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ance List page, click the ID of the instance.
@@ -884,6 +888,7 @@ The standard and cluster Instances of Redis 2.8 and the cluster instances of Red
 
 > Not e SSL encryption may increase the network response time of instances. We recommend that you enable this feature only when necessary.
 
+Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ance List page, click the ID of the instance.
@@ -905,6 +910,7 @@ You can clear the data of a KVStore for Redis instance in the console. Context
 
 > **Warning:** This operation will delete all data contained on an instance. Deleted data cannot be restored. Proceed with caution.
 
+Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ance List page, click the ID of the instance.
@@ -913,7 +919,7 @@ console.
 
 ### 3.8 Release an instance
 
-You can release a KVStore for Redis instance at any time based on your business needs. This topic describes how to release a KVStore for Redis instance.
+You can release a KVStore for Redis instance at any time based on your business needs. This topic describes how to release a KVStore for Redis instance. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
 console.
 2. On the Inst ances page, click the instance ID or choose
@@ -951,7 +957,7 @@ describes the parameters.
 
 ### 3.10 Restart an instance
 
-You can restart an instance from the Instance List page of the console.
+You can restart an instance from the Instance List page of the console. Procedure
 1. Log on to the KVStore for Redis console.
 2. In the Act ions column, choose
 > Rest art .
@@ -963,7 +969,7 @@ Restart Immediately: restarts the instance immediately. Restart Within Maintenan
 
 ### 3.11 Export the list of instances
 
-You can export the list of KVStore for Redis instances from the KVStore for Redis console for offline management.
+You can export the list of KVStore for Redis instances from the KVStore for Redis console for offline management. Procedure
 1. Log on to the KVStore for Redis console.
 2. In the upper-right corner of the Inst ance List page, click the Export Inst ances icon.
 3. In the upper-right corner of the Inst ance List page, click the Export Inst ances icon.
@@ -1012,7 +1018,7 @@ You can view the internal and public endpoints of instances in the KVStore for R
 > Not e
 > The virtual IP address of a KVStore for Redis instance may change when you maintain or modify the instance. To ensure that the connection is available, we recommend that you use an endpoint to access the KVStore for Redis instance.
 
-For more information about how to apply for a public endpoint, see Applies for a public connection string.
+For more information about how to apply for a public endpoint, see Applies for a public connection string. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the Connect ion Inf ormat ion section, you can view the private and public endpoints of the
@@ -1022,7 +1028,7 @@ instance.
 
 ### 4.2 Apply for a public endpoint
 
-This topic describes how to apply for a public endpoint for a KVStore for Redis instance.
+This topic describes how to apply for a public endpoint for a KVStore for Redis instance. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the Connect ion Inf ormat ion section, click Apply f or Public Endpoint .
@@ -1041,7 +1047,7 @@ section.
 
 ### 4.3 Modify the endpoint of an KVStore for Redis instance
 
-KVStore for Redis instance KVStore for Redis allows you to modify internal and public endpoints for instances. When changing the KVStore for Redis instance, you can change the endpoint of the new instance to the endpoint of the original instance without modifying the application. Prerequisites The instance is in the Running state.
+KVStore for Redis instance KVStore for Redis allows you to modify internal and public endpoints for instances. When changing the KVStore for Redis instance, you can change the endpoint of the new instance to the endpoint of the original instance without modifying the application. Prerequisites The instance is in the Running state. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. On the Inst ance Inf ormat ion page, click Modif y Public Endpoint in the Connect ion
@@ -1065,7 +1071,7 @@ then click OK. t
 
 ### 5.1 Query monitoring data
 
-You can query the monitoring data of a KVStore for Redis instance for a specified period within the last month.
+You can query the monitoring data of a KVStore for Redis instance for a specified period within the last month. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Perf ormance Monit or.
@@ -1097,7 +1103,7 @@ You can select the metrics to be displayed on the Historical Monitoring Data pag
 | Transaction monitoring group | The monitoring information about the use of transaction commands, such as the number of times that the WATCH, MULTI, and EXEC commands are executed. |
 | Lua script monitoring group | The monitoring information about the use of Lua script commands, such as the number of times that the EVAL and SCRIPT commands are executed. |
 
-For more information about the definitions of the metrics in each monitoring group, see Understand metrics.
+For more information about the definitions of the metrics in each monitoring group, see Understand metrics. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Perf ormance Monit or.
@@ -1107,7 +1113,7 @@ On the Historical Monitoring Data page, the metrics in the selected monitoring g
 
 ### 5.3 Modify the data collection interval
 
-interval KVStore for Redis console allows you to set the frequency at which monitoring data is collected. Context You can set the monitoring frequency to either 5 or 60 seconds to specify how often monitoring data to be collected by KVStore for Redis. The default monitoring time of 60 seconds is sufficient to meet common monitoring requirements. If you need to observe certain metrics at a higher frequency and lower latency, you can change the monitoring frequency to 5 seconds as described in the following section. Monitoring data does not occupy instance storage space, and collection of monitoring data does not affect normal running of the instance.
+interval KVStore for Redis console allows you to set the frequency at which monitoring data is collected. Context You can set the monitoring frequency to either 5 or 60 seconds to specify how often monitoring data to be collected by KVStore for Redis. The default monitoring time of 60 seconds is sufficient to meet common monitoring requirements. If you need to observe certain metrics at a higher frequency and lower latency, you can change the monitoring frequency to 5 seconds as described in the following section. Monitoring data does not occupy instance storage space, and collection of monitoring data does not affect normal running of the instance. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Perf ormance Monit or.
@@ -1225,7 +1231,7 @@ Configure parameters in the KVStore for Redis console
 
 ### 7.1 Automatically back up data
 
-An increasing number of applications use Redis for persistent storage. In this case, an automatic backup mechanism is required to back up data on a regular basis so that you can restore data if user errors occur. KVStore for Redis uses Redis database backup (RDB) snapshots to back up data on replica nodes. The backup process does not have negative impacts on the performance of your instance. You can configure a custom backup policy in the console.
+An increasing number of applications use Redis for persistent storage. In this case, an automatic backup mechanism is required to back up data on a regular basis so that you can restore data if user errors occur. KVStore for Redis uses Redis database backup (RDB) snapshots to back up data on replica nodes. The backup process does not have negative impacts on the performance of your instance. You can configure a custom backup policy in the console. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Backup and Recovery.
@@ -1236,7 +1242,7 @@ Ret ent ion Days: The number of days for which backups are retained. This parame
 
 ### 7.2 Back up an instance
 
-You can initiate a manual backup task in the console at any time.
+You can initiate a manual backup task in the console at any time. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Backup and Recovery.
@@ -1262,7 +1268,7 @@ table.
 
 ### 7.4 Restore data
 
-KVStore for Redis allows you to restore data from a specified backup set to the current KVStore for Redis instance.
+KVStore for Redis allows you to restore data from a specified backup set to the current KVStore for Redis instance. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Backup and Recovery.
@@ -1276,20 +1282,20 @@ You can also restore backup data by cloning an instance. For more information, s
 
 ### 7.5 Clone an instance
 
-KVStore for Redis allows you to create an instance from a specified backup set. The data in the new instance is the same as the data in the backup set. This feature can be applied in scenarios such as data recovery, quick workload deployment, and data verification. Prerequisites The KVStore for Redis instance is of the master-replica type.
+KVStore for Redis allows you to create an instance from a specified backup set. The data in the new instance is the same as the data in the backup set. This feature can be applied in scenarios such as data recovery, quick workload deployment, and data verification. Prerequisites The KVStore for Redis instance is of the master-replica type. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, click Backup and Recovery.
 4. Find the backup set that you want to restore and click Clone Inst ance in the Act ions column.
 5. In the message that appears, click OK.
 6. On the Restore Instance page, configure the parameters and click Submit .
-For more information about the configurations of the new instance, see Create an instance.
+Not e For more information about the configurations of the new instance, see Create an instance.
 
 ## 8 CloudDBA
 
 ### 8.1 Performance trends
 
-CloudDBA provides the performance trends feature that allows you to monitor the basic performance of a KVStore for Redis instance and the operational trends within a specified period of time. The performance trends include the CPU utilization, memory usage, queries per second (QPS), total connections, response time, data transfer, and key hit ratio.
+CloudDBA provides the performance trends feature that allows you to monitor the basic performance of a KVStore for Redis instance and the operational trends within a specified period of time. The performance trends include the CPU utilization, memory usage, queries per second (QPS), total connections, response time, data transfer, and key hit ratio. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, choose CloudDBA > Perf ormance T rends.
@@ -1307,7 +1313,7 @@ Perf ormance t rend comparison To compare the performance trends within two peri
 
 ### 8.2 Add a performance trend chart
 
-The default performance trends tab displays the basic performance metrics of a KVStore for Redis instance. You can add a chart that contains only specified performance metrics to analyze the performance trends of your instances. This topic describes how to add a performance trend chart to a dashboard for KVStore for Redis instances.
+The default performance trends tab displays the basic performance metrics of a KVStore for Redis instance. You can add a chart that contains only specified performance metrics to analyze the performance trends of your instances. This topic describes how to add a performance trend chart to a dashboard for KVStore for Redis instances. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, choose CloudDBA > Perf ormance T rends.
@@ -1321,7 +1327,7 @@ View a monitoring dashboard Select the monitoring dashboard, specify a time rang
 
 ### 8.3 View performance metrics in real time
 
-time CloudDBA allows you to view the performance metrics of KVStore for Redis instances in real time. The performance metrics include information about CPU utilization, memory usage, queries per second (QPS), network traffic, servers, keys, clients, and connections.
+time CloudDBA allows you to view the performance metrics of KVStore for Redis instances in real time. The performance metrics include information about CPU utilization, memory usage, queries per second (QPS), network traffic, servers, keys, clients, and connections. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, choose CloudDBA > Real-t ime Perf ormance.
@@ -1340,7 +1346,7 @@ In the upper part of the page, performance metrics are displayed in real time. T
 
 ### 8.4 Instance sessions
 
-Instance sessions allow you to view the information about sessions between a KVStore for Redis instance and a client in real time, which includes the client information, commands that are run, and connection duration. You can also terminate abnormal sessions based on your business requirements.
+Instance sessions allow you to view the information about sessions between a KVStore for Redis instance and a client in real time, which includes the client information, commands that are run, and connection duration. You can also terminate abnormal sessions based on your business requirements. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, choose CloudDBA > Inst ance Sessions.
@@ -1361,7 +1367,7 @@ View session statistics: Session statistics record the total number of clients, 
 
 ### 8.5 Slow queries
 
-Slow queries reduce the stability of KVStore for Redis instances. To monitor and analyze slow queries, you can view the details about slow query logs in CloudDBA.
+Slow queries reduce the stability of KVStore for Redis instances. To monitor and analyze slow queries, you can view the details about slow query logs in CloudDBA. Procedure
 1. Log on to the KVStore for Redis console.
 2. On the Inst ance List page, click the ID of the instance.
 3. In the left-side navigation pane, choose CloudDBA > Slow Queries.

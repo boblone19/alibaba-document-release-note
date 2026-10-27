@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 150
 source_pdf: "f4f5c6a248397f56_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking User Gui"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Static%20Data%20Masking%20and%20Watermarking%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking User Guide 20260831
@@ -188,6 +188,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 Before you log on to the Apsara Uni-manager Management Console, you must obtain the endpoint of the console from the deployment personnel. To configure the Cloud Security system, you must log on with a global organization security administrator account. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar of your browser, enter the endpoint of the Apsara Uni-manager
 Management Console and press Enter.
 2. Enter the correct username and password.
@@ -259,6 +262,9 @@ Your account is granted the permissions on the cloud resources of your departmen
 **Background information**
 
 The Static Data Masking and Watermarking system allows you to perform data processing operations on the databases in your department, such as data extraction, data masking, and data hiding.
+
+**Procedure**
+
 1. Log on to Apsara Stack Security Center.
 2. In the top navigation bar, choose Security > **Data Security > Static Data Masking and**
 **Watermarking**. On the Static Data Masking and Watermarking page, select a region from
@@ -272,6 +278,9 @@ Watermarking instance that you want to manage and click **Details** in the Actio
 **specifications**
 
 d If the current instance cannot meet your business requirements, you can upgrade your instance on the Static Data Masking and Watermarking page. This topic describes how to upgrade the specifications of a Static Data Masking and Watermarking instance.
+
+**Procedure**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the console, choose **Security** > **Data Security > Static Data**
 **Masking and Watermarking**. On the **Static Data Masking and Watermarking** page,
@@ -531,7 +540,11 @@ For scenarios where a single column contains multiple sensitive data types acros
 
 **Masking effect**
 
-For example, if one column contains both Chinese personal names and company names, you can use different masking algorithms by defining a custom hybrid masking algorithm. Apply the Chinese name replacement algorithm (preserving given name) to Chinese personal names, and apply the 3–6 character masking algorithm to company names. d
+For example, if one column contains both Chinese personal names and company names, you can use different masking algorithms by defining a custom hybrid masking algorithm. Apply the Chinese name replacement algorithm (preserving given name) to Chinese personal names, and apply the 3–6 character masking algorithm to company names.
+
+**Procedure**
+
+d
 1. Select **Configuration > Masking Algorithm**, and add a hybrid masking algorithm.
 2. Add a database source or Add a file source.
 3. Add Discovery tasks**.**
@@ -583,6 +596,9 @@ DMS provides the group dictionary data masking feature. This feature replaces va
 **Masking effect**
 
 For example, if your data has two columns — city and district — and you mask the district column but not the city column, the masked district value must still correspond correctly to the preceding city value.
+
+**Procedure**
+
 1. Select **Configuration > Data Dictionary**.
 2. Create a group dictionary, enter its data, and archive it.
 3. Add discovery rules. Set **Recommended masking algorithm** to **Dictionary**
@@ -650,6 +666,8 @@ The Data Discovery and Desensitization system supports various database types as
 
 Database names must be unique. Each database source must have unique connection information. For Oracle databases, the combination of the host IP address, port, and database instance name must be unique. Batch creation of cloud database instances is supported only for MySQL and PostgreSQL databases.
 
+**Procedure**
+
 **Individual creation**
 
 1. Log in to the Static Data Masking and Watermarking system.
@@ -677,6 +695,9 @@ This topic describes how to modify the information about a database specified as
 **Background information**
 
 If the information about a database specified as a data source changes, such as the IP address, port number, and username, you can modify the database information by clicking Edit in the Oper column on the Database Sources tab.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Sources**. Then, click the **Database Sources** tab.
 3. In the **Database Sources List** section, find the database source that you want to modify
@@ -694,6 +715,9 @@ This topic describes how to delete one or more database sources.
 **Background information**
 
 If a database is no longer used as a data source, you can delete the information about the database. If the information about a database used as a data source is associated with other data in Static Data Masking and Watermarking (DMS), the information about the database cannot be deleted. In this case, you must disassociate the data from the database, and then delete the information about the database.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Sources**. The **Database Sources** tab is displayed.
 3. On the **Database Sources** tab, select one or more database sources that you want to
@@ -707,6 +731,9 @@ This topic describes how to query a database source.
 **Background information**
 
 You can quickly search for a database source and view its details.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Sources**. The **Database Sources** tab is displayed.
 3. On the **Database Sources** tab, configure the **Database Source Name** and **Database IP**
@@ -726,6 +753,9 @@ This topic describes how to add a file source.
 **Background information**
 
 The Static Data Masking and Watermarking system allows you to mask data files that are exported from databases as data sources. Flat files in the CSV and TXT formats are supported. A flat file exported from a database is equivalent to a database table, and a collection of flat files is equivalent to a database. In Apsara Stack data security, a file source is defined as a collection of logically related flat files that share a common storage location and management method.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Sources**. Then, click the **File Sources** tab.
 3. Click **Create File Source** at the top right of **File Source List**.
@@ -745,6 +775,9 @@ This topic describes how to modify the information about a file source.
 **Background information**
 
 You can modify the template information or description of a file source.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Sources > File Sources**.
 3. In the **File Sources List** section, find the file source that you want to modify and click **Edit**.
@@ -759,6 +792,9 @@ This topic describes how to delete one or more file sources.
 **Prerequisites**
 
 The file sources to be deleted are not associated with other data in Static Data Masking and Watermarking (DMS).
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Sources > Sources**.
 3. In the **File Source List**, select the file sources that you want to delete and click **Delete**.
@@ -771,6 +807,9 @@ This topic describes how to query a file source.
 **Background information**
 
 You can use the query feature to quickly find and view the details of a file source.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Navigate to **Data Source > File Source**.
 3. In the **search conditions**, enter a **file source name**, select a **file type**, and then click
@@ -791,6 +830,9 @@ Learn how to add a data discovery task for a database.
 **Background**
 
 Data discovery automatically identifies sensitive data. When a discovery task runs, it scans your data based on predefined or custom rules to find and classify sensitive data.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **Data Discovery > Discovery Task** tab.
 3. Click **Add discovery task** to open the **Add discovery task** dialog box.
@@ -820,6 +862,9 @@ and then click **Save**.
 ##### 3.3.1.2 View the details of a data discovery task
 
 This topic describes how to view the details of a database discovery task.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Discovery Tasks** tab.
 3. On the Discovery Tasks tab, find the database discovery task that you want to view, click
@@ -845,6 +890,9 @@ This topic describes how to stop a database discovery task.
 **Background information**
 
 You can stop a database discovery task that is running.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Discovery Tasks** tab.
 3. On the Discovery Tasks tab, find the database discovery task that you want to stop and
@@ -857,6 +905,9 @@ This topic describes how to modify a database discovery task.
 **Background information**
 
 You can modify the data source, discovery rules, and sampling data configurations of a database discovery task.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Discovery Tasks** tab.
 3. On the Discovery Tasks tab, find the database discovery task that you want to modify, click
@@ -885,6 +936,9 @@ delete and click **Delete** above the discovery task list.
 **discovery task**
 
 This topic describes how to view the execution records of a database discovery task.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Discovery Tasks** tab.
 3. On the Discovery Tasks tab, find the database discovery task that you want to view, click
@@ -901,6 +955,9 @@ manage and click the icon in the Oper column to download the execution log of th
 ##### 3.3.2.1 Add sensitive data sources
 
 After a database discovery task is executed, the Apsara Stack data security system displays all fields in database tables and matched sensitive data discovery rules on the Sensitive Field Analysis tab.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Discovery > Sensitive Field Analysis**. On the page that appears, click the
 expand icon on the left. In the Data Source List section, click the icon.
@@ -915,6 +972,9 @@ The added sensitive fields are displayed in the sensitive data list on the Sensi
 ##### 3.3.2.2 Verify sensitive data fields
 
 This topic describes how to verify sensitive data fields.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive Field Analysis** tab.
 3. In the Sensitive Data List section of the Sensitive Field Analysis tab, verify the discovered
@@ -925,6 +985,9 @@ sensitive data fields. To verify a single sensitive data field, find the sensiti
 **sensitive data fields**
 
 This topic describes how to specify sensitive data fields as non-sensitive data fields.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive Field Analysis** tab.
 3. In the Sensitive Data List section of the Sensitive Field Analysis tab, select the discovered
@@ -943,6 +1006,9 @@ Figure 2: Prompt for setting non-sensitive data fields
 **types of data fields**
 
 If a sensitive data discovery task is not executed for the first time and the sensitive data type of a data field changes, you must confirm the change of the sensitive data type of the data field. Otherwise, a data masking task that involves the data field cannot be executed. For example, the value of a data field is identified as a mobile phone number for the first time, and a data masking task that involves the data field is created. When a sensitive data discovery task is executed again, the value of the data field is identified as a telephone number. In this case, you must confirm the change of the data type of the data field before the data masking task is executed again.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive Field Analysis** tab.
 You can also click **Data Discovery**. Then, click the **Discovery Tasks** tab. On the Discovery Tasks tab, find the database source discovery task that you want to manage and click
@@ -959,6 +1025,8 @@ confirm the change of the sensitive data type of the data field, or click Unchan
 
 ##### 3.3.2.5 View field sample data
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive Field Analysis** tab.
 You can also click **Data Discovery**. Then, click the **Discovery Tasks** tab. On the Discovery Tasks tab, find the database source discovery task that you want to manage and click
@@ -971,6 +1039,8 @@ types, and the proportion of each sensitive data type in the sample.
 #### 3.3.3 Sensitive file sorting
 
 ##### 3.3.3.1 Verify file columns of sensitive file types
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive File Analysis** tab.
@@ -988,6 +1058,8 @@ If you directly go to the **Sensitive File Analysis** tab, no **Complete carding
 
 **columns at a time**
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive File Analysis** tab.
 You can also click **Data Discovery**. Then, click the **Discovery Tasks** tab. On the Discovery Tasks tab, find the file source discovery task that you want to manage and click **Verify**
@@ -1002,6 +1074,9 @@ target sensitive data type from the **Modify type** drop-down list, and then cli
 **types of file columns**
 
 If a sensitive data discovery task is not executed for the first time and the sensitive data type of a file column changes, you must confirm the change of the sensitive data type of the file column. Otherwise, a data masking task that involves the file column cannot be executed. For example, the value of a file column is identified as a mobile phone number for the first time, and a data masking task that involves the file column is created. When a sensitive data discovery task is executed again, the value of the file column is identified as a telephone number. In this case, you must confirm the change of the data type of the file column before the data masking task is executed again.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive File Analysis** tab.
 You can also click **Data Discovery**. Then, click the **Discovery Tasks** tab. On the Discovery Tasks tab, find the file source discovery task that you want to manage and click **Verify**
@@ -1017,6 +1092,8 @@ sensitive data types of the file columns unchanged. You can also select the file
 confirm the change of the sensitive data type of the file column, or click Unchange in the Oper column to leave the sensitive data type of the file column unchanged.
 
 ##### 3.3.3.4 View file sample data
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Discovery**. Then, click the **Sensitive File Analysis** tab.
@@ -1103,6 +1180,9 @@ icon to the right of the sensitive field template that you want to delete.
 ##### 3.4.1.1 Add a data subset
 
 You can configure a collection of the tables to be masked. File source masking does not support this operation. You can also skip this step to directly create a data masking task.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Data Subsets** tab.
 3. In the left-side Data Subset List section, click the
@@ -1118,6 +1198,8 @@ tables in the DMP file source are selected and cannot be cleared.
 
 ##### 3.4.1.2 Modify a data subset
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Data Subsets** tab.
 3. In the left-side Data Subset List section of the Data Subsets tab, find the data subset that
@@ -1129,6 +1211,8 @@ You can modify only the name and description of the data subset. For more inform
 **subset.**
 
 ##### 3.4.1.3 Delete a data subset
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Data Subsets** tab.
@@ -1153,6 +1237,8 @@ delete and click **Delete** on the **Data Table** tab. In the message that appea
 
 ##### 3.4.1.5 Manage constraints of a data subset
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Data Subsets** tab.
 3. On the **Constraint** tab, find the constraint that you want to manage and click **Enable** or
@@ -1170,6 +1256,8 @@ the constraint.
 #### 3.4.2 Solution management
 
 ##### 3.4.2.1 Add a masking policy
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **data masking > policy management** tab.
@@ -1190,6 +1278,8 @@ click **Save**. By default, only recommended masking algorithms are displayed fo
 
 **solution**
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
 3. In the left-side **Project List** section of the Solution Management tab, find the data masking
@@ -1197,6 +1287,8 @@ solution that you want to view and click the View Project icon.
 4. On the **Details of Mask Project** page, view the details of the data masking solution.
 
 ##### 3.4.2.3 Modify a data masking solution
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
@@ -1208,6 +1300,8 @@ solution and click **Save**.
 the **Masking Tasks** tab. For more information, see **Data masking tasks**.
 
 ##### 3.4.2.4 Delete a data masking solution
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
@@ -1222,6 +1316,8 @@ that you want to delete and click the **Delete Project** icon.
 **solution**
 
 > **Note:** Data masking solutions whose data source type is file source do not support data subset operations.
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
@@ -1257,6 +1353,8 @@ dialog box is specific to Apache Hive. Partitioned tables of Apache Hive can be 
 
 **masking solution**
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
 3. In the left-side Project List section of the Solution Management tab, find the data masking
@@ -1277,6 +1375,9 @@ i. Select the field columns that you want to delete and click **Delete**. ii. In
 **configuration of a data masking solution**
 
 To use the grouping dictionary-based data masking of a data dictionary, you must configure the grouping dictionary column on a table. For example, the grouping dictionary A has two columns (Hebei/Tangshan, Henan/Zhengzhou, and Henan/Luoyang). A table named T has two columns (Henan/Zhengzhou). The first column of the T table is specified as a grouping dictionary column and is not masked. The dictionary replacement algorithm is used for the second column of the T table. The values in the second column are replaced with the cities of the Henan province in the dictionary and will not be replaced with Tangshan (a city of the Hebei province). The grouping dictionary column of the table is configured in the data masking solution.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
 3. In the left-side Project List section of the Solution Management tab, select the data masking
@@ -1290,6 +1391,8 @@ i. Find the table whose grouping dictionary column configuration is to be delete
 ##### 3.4.2.8 Manage expressions of a data masking solution
 
 **solution**
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Solution Management** tab.
@@ -1308,6 +1411,8 @@ i. Select the expression that you want to delete and click **Delete**. ii. In th
 
 **solution**
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Masking > Solution Management**.
 3. In the left-side Project List section of the Solution Management tab, select the data masking
@@ -1324,6 +1429,8 @@ the + icon to add one or more fields that are not masked. This configuration ind
 
 **solution**
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Masking > Solution Management**.
 3. In the left-side Project List section, select the data masking solution that you want to
@@ -1339,6 +1446,8 @@ expression in the input box. For example, if the password field matches a column
 A data masking task is used to mask data. To mask data, you must configure the parameters and exception handling method in a data masking task, and then run the task. When you create a data masking task, you can use an existing data masking solution. Alternatively, you can customize a masking algorithm for sensitive fields or sensitive file columns and skip the step of creating a data masking solution.
 
 ##### 3.4.3.1 Create a data masking task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab. On the Masking Tasks tab, click
@@ -1386,6 +1495,8 @@ Mask Project parameter to Use an Existing Projects in the Select desensitization
 
 ##### 3.4.3.2 Modify a data masking task
 
+**Procedure**
+
 > **Important:** Only data masking tasks that are not being executed can be modified.
 
 1. Log in to the Static Data Masking and Watermarking system.
@@ -1395,6 +1506,8 @@ in the Oper column, and then select **Edit Task**. On the page that appears, mod
 
 ##### 3.4.3.3 Delete a data masking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab.
 3. On the Masking Tasks tab, select the data masking task that you want to delete and click
@@ -1402,6 +1515,8 @@ in the Oper column, and then select **Edit Task**. On the page that appears, mod
 4. In the message that appears, click **OK**.
 
 ##### 3.4.3.4 Execute or stop a data masking task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab.
@@ -1413,6 +1528,8 @@ stop and click **Stop Task** in the Oper column to stop the data masking task.
 ##### 3.4.3.5 View the execution records of a data masking task
 
 **masking task**
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab.
@@ -1429,6 +1546,8 @@ feature is available only when the data masking mode of the database is cross-mo
 
 ##### 3.4.3.6 View the details of a data masking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab.
 3. On the Masking Tasks tab, find the data masking task that you want to view, click **More** in
@@ -1437,6 +1556,8 @@ the Oper column, and then select **Task Details**.
 including the information about the source and destination databases, data masking algorithms and parameters of sensitive fields, table processing, and exception handling.
 
 ##### 3.4.3.7 View the progress of a data masking task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Masking Tasks** tab.
@@ -1451,6 +1572,8 @@ An automatic data masking task refers to a task that automatically downloads the
 
 ##### 3.4.4.1 Create an automatic data masking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Masking > Auto Masking Tasks**. Then, click the
 icon to create an automatic data masking task.
@@ -1464,6 +1587,8 @@ data may remain unmasked.
 
 ##### 3.4.4.2 Modify an automatic data masking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Auto Masking Tasks** tab.
 3. On the Auto Masking Tasks tab, find the automatic data masking task that you want to
@@ -1471,6 +1596,8 @@ modify, click the Operation List icon in the Oper column, and then select **Edit
 **sking task**.
 
 ##### 3.4.4.3 Execute an automatic data masking task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Auto Masking Tasks** tab.
@@ -1481,6 +1608,8 @@ execute, click the Operation List icon in the Oper column, and then select **Run
 
 ##### 3.4.4.4 Delete an automatic data masking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Auto Masking Tasks** tab.
 3. On the Auto Masking Tasks tab, find the automatic data masking task that you want to
@@ -1490,6 +1619,8 @@ delete, click the Operation List icon in the Oper column, and then select **Dele
 ##### 3.4.4.5 View the execution records of an automatic data masking task
 
 **automatic data masking task**
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Masking**. Then, click the **Auto Masking Tasks** tab.
@@ -1518,6 +1649,8 @@ iii. On the Task Configuration tab, select an object processing method and click
 
 ##### 3.5.1.2 Modify a watermarking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Tasks** tab.
 3. On the Watermarking Tasks tab, find the watermarking task that you want to modify and
@@ -1530,6 +1663,8 @@ and Output Destination Information sections and click **Next**.
 
 ##### 3.5.1.3 Execute a watermarking task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Tasks** tab.
 3. On the Watermarking Tasks tab, find the watermarking task that you want to execute and
@@ -1537,6 +1672,8 @@ click **Run** in the Operation column. In the Run Watermark Task dialog box, fil
 **Username** and **Password** fields and click **Run Task**.
 
 ##### 3.5.1.4 View the details of a watermarking task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Tasks** tab.
@@ -1550,6 +1687,8 @@ Output Destination Information sections and click **Next**.
 Selection sections and click **Cancel**.
 
 ##### 3.5.1.5 Stop a watermarking task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Tasks** tab.
@@ -1565,6 +1704,8 @@ To use this feature, refer to **Data masking > Data subsets**.
 
 ##### 3.5.3.1 Create a watermarking solution
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Schemes** tab.
 3. On the Watermarking Schemes tab, click **Add Watermark Scheme**.
@@ -1575,6 +1716,8 @@ tab and click **Next**: Scheme Name, Data Source Type, Data Source, Watermark Al
 Configure field rules of the watermarking algorithm. Select at least two fields for generating watermarks for a pseudo-row and a field for generating watermarks for a pseudo-column. Only one pseudo-column field can be generated for each data table. For more information about how to manage pseudo-column fields, see **Pseudo-column field management**. In the message that appears, click **OK**.
 
 ##### 3.5.3.2 Modify a watermarking solution
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Schemes** tab.
@@ -1589,6 +1732,8 @@ click **Save**. In the message that appears, click **OK**.
 ##### 3.5.3.3 Delete one or more watermarking solutions
 
 **solutions**
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Watermarking Schemes** tab.
@@ -1611,6 +1756,8 @@ including the basic information, data subsets, watermarking algorithm, and field
 
 ##### 3.5.4.1 Add a pseudo-column field
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Pseudo Column Management** tab.
 3. On the Pseudo Column Management tab, click **Add** to add a pseudo-column field.
@@ -1618,6 +1765,8 @@ including the basic information, data subsets, watermarking algorithm, and field
 Type, and Description parameters and click **Save**. The pseudo-column field types include ID card numbers, bank card numbers, mobile numbers, names, addresses, Email addresses, and license plate numbers.
 
 ##### 3.5.4.2 Modify a pseudo-column field
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Pseudo Column Management** tab.
@@ -1628,6 +1777,8 @@ Type, and Description parameters and click **Save**. The pseudo-column field typ
 
 ##### 3.5.4.3 Delete one or more pseudo-column fields
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Pseudo Column Management** tab.
 3. To delete a single pseudo-column field, find the pseudo-column field that you want to
@@ -1635,6 +1786,8 @@ delete on the Pseudo Column Management tab and click **Delete** in the Operation
 4. In the message that appears, click **OK**.
 
 ##### 3.5.4.4 View the details of a pseudo-column field
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Choose **Data Watermarking > Pseudo Column Management**.
@@ -1645,6 +1798,8 @@ column.
 
 ##### 3.5.5.1 Add a distribution object
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Distribution Object Management** tab.
 3. On the **Distribution Object Management** tab, click **Add** above the distribution object list.
@@ -1653,6 +1808,8 @@ column.
 In the message that appears, click **OK**.
 
 ##### 3.5.5.2 Modify a distribution object
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Distribution Object Management** tab.
@@ -1663,6 +1820,8 @@ In the message that appears, click **OK**.
 
 ##### 3.5.5.3 Delete one or more distribution objects
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Distribution Object Management** tab.
 3. To delete a single distribution object, find the distribution object that you want to delete on
@@ -1671,6 +1830,8 @@ the Distribution Object Management tab and click **Delete** in the Operation col
 
 ##### 3.5.5.4 View the details of a distribution object
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click **Data Watermarking**. Then, click the **Distribution Object Management** tab.
 3. On the Distribution Object Management tab, find the distribution object that you want to
@@ -1678,6 +1839,8 @@ view and click **View** in the Operation column.
 4. In the **View Distribution Target** dialog box, view the details of the distribution object.
 
 #### 3.5.6 Data distribution management
+
+**Procedure**
 
 > **Important:** After distribution objects are distributed, related watermarking tasks cannot be executed, modified, or deleted.
 
@@ -1690,6 +1853,8 @@ distribute in the Data Distribution List section and click **Distribute** in the
 
 #### 3.6.1 Add a provenance task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **Data Provenance > Provenance Tasks** tab.
 3. Click **Add Task**.
@@ -1700,12 +1865,16 @@ A save success message is displayed. Click **OK**.
 
 #### 3.6.2 Execute a provenance task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **Data Provenance > Provenance Tasks** tab.
 3. Find the provenance task that you want to manage, and click **Run** in the Operation column.
 4. Enter the username and password and click **Run Task**.
 
 #### 3.6.3 Stop a provenance task
+
+**Procedure**
 
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **Data Provenance > Provenance Tasks** tab.
@@ -1733,6 +1902,8 @@ column. Alternatively, select multiple provenance tasks and click **Delete** abo
 
 #### 3.6.5 View a provenance task
 
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **Data Provenance > Provenance Tasks** tab.
 3. Find the provenance task that you want to manage, and click **View** in the Operation
@@ -1747,6 +1918,9 @@ task information and results. The provenance results include the distribution so
 #### 3.7.1 K-anonymity overview
 
 This topic explains how to view the k-anonymity overview.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **k-anonymity privacy protection > k-anonymity overview** tab, enter search
 criteria, and click **Search**. You can search by **data source**, **database name**, and **table name**.
@@ -1942,6 +2116,9 @@ the page to obtain the database account list.
 #### 3.8.3 Column encryption overview
 
 This page provides an overview of column encryption across all connected databases.
+
+**Procedure**
+
 1. Log in to the Static Data Masking and Watermarking system.
 2. Click the **Column Encryption > Encryption Configuration** tab to view the column
 encryption overview.

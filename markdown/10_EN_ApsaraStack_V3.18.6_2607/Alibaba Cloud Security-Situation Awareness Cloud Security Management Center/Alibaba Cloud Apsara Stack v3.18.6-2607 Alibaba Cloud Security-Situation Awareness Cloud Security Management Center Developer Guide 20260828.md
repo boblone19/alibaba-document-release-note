@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 262
 source_pdf: "41f2c8e4e4177bf2_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Ma"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Developer Guide 20260828
@@ -766,6 +766,8 @@ API responses use the HTTP response format: A 2xx status code indicates a succes
 ### 4.1 Request method
 
 #### 4.1.1 Request syntax
+
+**Description**
 
 where: `endpoint` : the endpoint of the Security Operations Center (SOC) API is `yundunnewsoc-pop.`
 
@@ -1582,6 +1584,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageSize | Integer | 20 | The number of entries per page. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
+**Example**
+
 Sample requests
 
 ```
@@ -1638,6 +1642,8 @@ This operation does not have operation-specific request headers and uses only co
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92**** | The request ID. |
+
+**Example**
 
 Sample requests
 
@@ -1708,6 +1714,8 @@ This operation does not have operation-specific request headers and uses only co
 | -Type | Integer | 1 | The type of the filter condition. Valid values: 1 and 2. The value 1 indicates a filter condition for logs, and the value 2 indicates a filter condition for audit events. |
 | -UserId | String | 1000 | The ID of the creator. |
 | -EventType | Integer | 1 | The type of the audit event. |
+
+**Example**
 
 Sample requests
 

@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 755
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Apsara Stack Security Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%85%B6%E4%BB%96/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Apsara%20Stack%20Security%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Apsara Stack Security Developer Guide 20220928
@@ -421,7 +421,7 @@ This topic introduces all of the Apsara Stack Security console operations that y
 
 #### 2.2.1 Request structure
 
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. Description You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -509,23 +509,27 @@ rity Console Apsara Stack Security API responses can be returned in either the X
 </Operation name+Response>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
+`}`
+
 ### 2.3 APIs
 
 #### 2.3.1 DescribeAliyunAccounts
 
-You can call this operation to query Alibaba Cloud accounts.
+Description You can call this operation to query Alibaba Cloud accounts. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeAliyunAccounts. |
 | CurrentPage | Integer | Yes | The number of the page to return. |
 | PageSize | Integer | Yes | The number of records to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -550,10 +554,10 @@ You can call this operation to query Alibaba Cloud accounts.
 | LicenseAegisNum | Integer | The number of Server Guard licenses. |
 | LicenseTime | Long | The time when the licenses expire, in timestamp format. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://yundunprivate.[ RegionId].example.com/?Action=DescribeAliyunAccounts &CurrentPage=1 &PageSize=10
+https://yundunprivate.[ RegionId].example.com/?Action=DescribeAliyunAccounts &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
 Sample response (JSON format) rity Console
@@ -564,6 +568,11 @@ Sample response (JSON format) rity Console
  "RequestId":"7E33A454-20AA-49B1-8A9B-8979EFBDEDFC",
  "CurrentPage":1,
  "AliyunAccounts":[
+```
+
+`{`
+
+```json
    "Account":"1113454564",
    "AccessSecret":"*****",
    "AccessKey":"<yourAccessKeyId>",
@@ -574,15 +583,17 @@ Sample response (JSON format) rity Console
    "DataSecret":"*****"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "HttpStatusCode":200
 ```
 
+`}`
+
 #### 2.3.2 ModifyAliyunAccount
 
-You can call this operation to modify the information of an Alibaba Cloud account with a specified account record ID.
+Description You can call this operation to modify the information of an Alibaba Cloud account with a specified account record ID. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -593,31 +604,35 @@ You can call this operation to modify the information of an Alibaba Cloud accoun
 | AccessKey | String | No | The AccessKey ID of the Alibaba Cloud account. |
 | AccessSecret | String | No | The AccessKey secret of the Alibaba Cloud account. |
 
-rity Console
+Response parameters rity Console
 
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://yundunprivate.[ RegionId].example.com/?Action=ModifyAliyunAccount &Id=2 &Account=1113454564 &Aliuid=1441871509587522 &AccessKey=<yourAccessKeyId> &AccessSecret=xxxxxxxxx
+https://yundunprivate.[ RegionId].example.com/?Action=ModifyAliyunAccount &Id=2 &Account=1113454564 &Aliuid=1441871509587522 &AccessKey=<yourAccessKeyId> &AccessSecret=xxxxxxxxx &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
  "RequestId":"C92B6187-603B-4E01-B0D7-74817F43852D"
 ```
 
+`}`
+
 #### 2.3.3 DescribeFeatures
 
-You can call this operation to obtain a list of the deployed Apsara Stack Security features.
+Description You can call this operation to obtain a list of the deployed Apsara Stack Security features. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeFeatures. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -627,10 +642,10 @@ You can call this operation to obtain a list of the deployed Apsara Stack Securi
 For more information about the error codes that this operation can return, see Error codes. rity Console Sample requests
 
 ```
-https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures
+https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BAEF6CE3-9990-4BDA-A056-4D269A724817",
@@ -641,7 +656,7 @@ Sample responses (JSON format)
   "Waf"
 ```
 
-`]`
+`]` `}`
 
 ## 3 Threat Detection Service (TDS)
 
@@ -739,13 +754,13 @@ Asset fingerprints
 
 #### 3.2.1 Request structure
 
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. Description You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
 ```
 
-where: `endpoint` : the endpoint of the Threat Detection Service API is `tds.[RegionId].example.com` . `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters include information such as the API version and identity authentication. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed.
+where: `endpoint` : the endpoint of the Threat Detection Service API is `tds.[RegionId].example.com` . `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters include information such as the API version and identity authentication. For more information about operation-specific parameters, see the corresponding operation description. Example The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed.
 
 ```
 https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-test& Format=JSON&SecureTransport=true&SignatureMethod=HMAC-SHA1&SignatureNonce=15215528852396&Si gnatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018-03-02Txxxxxxx&Version=2018-01-16&Signatur e=xxxx%xxxx%3D
@@ -826,11 +841,13 @@ Apsara Stack Security API responses support both the XML and JSON formats. The s
 </Operation name+Response>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
+
+`}`
 
 ### 3.3 Asset management
 
@@ -841,6 +858,8 @@ Queries information about all assets, such as asset group IDs and asset names.
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAllEntity | The operation that you want to perform. Set the value to DescribeAllEntity. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -853,10 +872,10 @@ Queries information about all assets, such as asset group IDs and asset names.
 | InternetIp | String | 101.202.20.20 | The public IP address of the server. |
 | IntranetIp | String | 10.10.10.10 | The private IP address of the server. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAllEntity
+http(s)://[Endpoint]/?Action=DescribeAllEntity &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -874,7 +893,7 @@ Sample success responses `XML` format
 </data> <requestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "code": 200,
@@ -894,11 +913,11 @@ Sample success responses `XML` format
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.2 DescribeFieldStatistics
 
-Queries statistics of the assets.
+Queries statistics of the assets. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -907,6 +926,8 @@ Queries statistics of the assets.
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | MachineTypes | String | No | ecs | The types of the assets. If the asset type is not specified, the statistics of all types of assets are queried. ecs: an ECS instance cloud product : a cloud service _ |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -922,7 +943,7 @@ Queries statistics of the assets.
 | VpcCount | Integer | 5 | The number of VPCs. |
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeFieldStatistics
@@ -947,7 +968,7 @@ Sample success responses `XML` format
 </DescribeFieldStatistics>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"20CB6B41-0ED9-4679-BF5D-B84B8F7E70FC",
@@ -963,16 +984,18 @@ Sample success responses `XML` format
   "NotRunningStatusCount":9
 ```
 
-For a list of error codes, see Error codes.
+`}` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.3 DescribeGroupedTags
 
-Queries the statistics of asset tags.
+Queries the statistics of asset tags. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeGrouped Tags | The operation that you want to perform. Set the value to DescribeGroupedTags. |
 | MachineTypes | String | No | ecs | The types of the assets. If the asset type is not specified, the statistics of all asset tags are queried. ecs: an ECS instance cloud product : a cloud service _ |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1007,7 +1030,7 @@ Sample success responses `XML` format
 </DescribeGroupedTags>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "HttpStatusCode":200,
@@ -1015,16 +1038,21 @@ Sample success responses `XML` format
  "RequestId":"DD5AFF52-0827-4FC9-B6EA-B233FF3AFF91",
  "Success":true,
  "GroupedFileds":[
+```
+
+`{`
+
+```json
    "Name":"test",
    "Count":"167",
    "TagId":8704
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.4 DescribeAllGroups
 
-Queries the grouping information about servers.
+Queries the grouping information about servers. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1037,6 +1065,8 @@ Queries the grouping information about servers.
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Count | Integer | 2 | The number of entries returned on the current page. |
@@ -1046,10 +1076,10 @@ Queries the grouping information about servers.
 | GroupName | String | test | The name of the server group. |
 | RequestId | String | "requestId": "7E0618A9-D5EF- 4220-9471- C42B5E92719F", | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAllGroups
+http(s)://[Endpoint]/?Action=DescribeAllGroups &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1076,16 +1106,21 @@ Sample success responses `XML` format
 </DescribeAllGroups>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "Groups":[
+```
+
+`{`
+
+```json
    "GroupFlag":0,
    "GroupName":"Ungrouped",
    "GroupId":4120080
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":1,
@@ -1093,7 +1128,7 @@ Sample success responses `XML` format
    "GroupId":8831497
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":1,
@@ -1101,14 +1136,14 @@ Sample success responses `XML` format
    "GroupId":8834224
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":3,
  "RequestId":"9DD4B19B-CA32-41DA-AED7-77B4F84A91D5"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.5 DeleteGroup
 
@@ -1120,14 +1155,16 @@ Deletes a server group.
 | GroupId | Long | Yes | 11111 | The ID of the server group. Not e To delete a server group, you must provide the ID of the server group. You can call the DescribeAllGroups operation to obtain the ID. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteGroup &GroupId=1111
+http(s)://[Endpoint]/?Action=DeleteGroup &GroupId=1111 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1148,11 +1185,11 @@ Sample success responses `XML` format
   "success": true
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.6 CreateOrUpdateAssetGroup
 
-Modifies the relationship between an asset and an asset group. For example, you can modify the group to which the asset belongs or the list of assets.
+Modifies the relationship between an asset and an asset group. For example, you can modify the group to which the asset belongs or the list of assets. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1164,14 +1201,16 @@ Modifies the relationship between an asset and an asset group. For example, you 
 | GroupName | String | No | test | The name of the asset group. Not e To modify the relationship between an asset and an asset group, you must provide the name of the asset group. You can call the DescribeAllGroups operation to obtain the name. If GroupId is not specified, you must specify GroupName. |
 | GroupId | Long | No | 111111 | The ID of the asset group. Not e To modify the relationship between an asset and an asset group, you must provide the ID of the asset group. You can call the DescribeAllGroups operation to obtain the ID. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=CreateOrUpdateAssetGroup &GroupName=test
+http(s)://[Endpoint]/?Action=CreateOrUpdateAssetGroup &GroupName=test &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1182,17 +1221,17 @@ Sample success responses `XML` format
 </CreateOrUpdateAssetGroupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.7 ModifyTagWithUuid
 
-Modifies the relationship between tags and servers or cloud services.
+Modifies the relationship between tags and servers or cloud services. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1205,14 +1244,16 @@ Modifies the relationship between tags and servers or cloud services.
 | TagId | String | No | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the tag. Not e To modify the relationship between a tag and an asset, you must provide the ID of the tag. You can call the DescribeGroupedTags operation to obtain the ID. |
 | MachineTypes | String | No | ecs | The types of the assets. Valid values: ecs: an ECS instance cloud product : a cloud service _ |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyTagWithUuid &TagList=ac,ad
+http(s)://[Endpoint]/?Action=ModifyTagWithUuid &TagList=ac,ad &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1223,17 +1264,17 @@ Sample success responses `XML` format
 </ModifyTagWithUuidResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "70C4B40D-D55E-4B7B-9992-8535E396B2F4"
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 #### 3.3.8 DescribeInstanceStatistics
 
-Queries risk information about an asset.
+Queries risk information about an asset. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1241,6 +1282,8 @@ Queries risk information about an asset.
 | Uuid | String | Yes | a51cec37-ed73- 4c53-b467-*** | The IDs of the assets. Separate multiple IDs with commas (,). Not e To query the risk information about an asset, you must provide the ID of the asset. You can call the DescribeCloudCenterInstances operation to obtain the ID. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1261,10 +1304,10 @@ Queries risk information about an asset.
 | CmsNum | Integer | 2 | The number of Web CMS vulnerabilities. |
 | AppNum | Integer | 0 | The number of application vulnerabilities. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37-ed73-4c53-b467-***
+http(s)://[Endpoint]/?Action=DescribeInstanceStatistics &From=sas &Uuid=a51cec37-ed73-4c53-b467-*** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1318,7 +1361,7 @@ Sample success responses `XML` format
             "Vul": 5
 ```
 
-`},`
+`},` `{`
 
 ```json
             "SysNum": 2,
@@ -1334,17 +1377,17 @@ Sample success responses `XML` format
             "Vul": 7
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId": "44AE72D4-2DDF-4CEC-9957-64C470CC90FC"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.9 DescribeCloudProductFieldStatistics
 
-Queries the statistics of cloud services that are protected by Threat Detection Service.
+Queries the statistics of cloud services that are protected by Threat Detection Service. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1358,10 +1401,10 @@ Queries the statistics of cloud services that are protected by Threat Detection 
 | InstanceCount | Integer | 100 | The total number of assets. |
 | CategoryCount | String | [{"MachineType":1," Count":11}] | The statistics of different types of assets. MachineT ype represents the type of the asset. Count represents the number of assets of a specific type. Valid values of MachineT ype: 1: Server Load Balancer 2: NAT Gateway 3: ApsaraDB for RDS 4: ApsaraDB for MongoDB |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics
+http(s)://[Endpoint]/?Action=DescribeCloudProductFieldStatistics &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1384,7 +1427,7 @@ Sample success responses `XML` format
 </DescribeCloudProductFieldStatistics>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "code": 200,
@@ -1395,18 +1438,18 @@ Sample success responses `XML` format
       "categoryCount":[{"MachineType":1,"Count":11}]
 ```
 
-`},`
+`}` `},`
 
 ```json
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
   "success": true
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.10 DescribeDomainCount
 
-Queries the number of domain assets.
+Queries the number of domain assets. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1419,10 +1462,10 @@ Queries the number of domain assets.
 | RootDomainsC ount | Integer | 27 | The number of returned root domains. |
 | TotalDomainsC ount | Integer | 1 | The number of subdomains. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeDomainCount
+http(s)://[Endpoint]/?Action=DescribeDomainCount &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1439,7 +1482,7 @@ Sample success responses `XML` format
     </DescribeDomainCount>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "requestId":"6FAFB857-FE24-4226-A09F-52EA5023C987",
@@ -1455,7 +1498,7 @@ Sample success responses `XML` format
  "success":true
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.11 DescribeDomainList
 
@@ -1468,6 +1511,8 @@ Queries information about domain assets.
 | DomainType | String | No | root | The type of the domain. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1487,10 +1532,10 @@ Queries information about domain assets.
 |---|---|---|---|
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/? Action=DescribeDomainList
+http(s)://[Endpoint]/? Action=DescribeDomainList &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1532,62 +1577,62 @@ Sample success responses `XML` format
             "Domain":"tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"p.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "IpList":"1.2.3.4,1.2.3.5",
             "Domain":"b.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"r.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"t.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"k.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"{a.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"w.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"l.tst.com"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Domain":"v.tst.com"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -1603,7 +1648,7 @@ Sample success responses `XML` format
     "requestId":"0B48AB3C-84FC-424D-A01D-B9270EF46038"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.12 DescribeDomainDetail
 
@@ -1614,6 +1659,8 @@ Queries details about a domain asset.
 | Action | String | Yes | DescribeDomainD etail | The operation that you want to perform. Set the value to DescribeDomainDet ail. |
 | DomainName | String | Yes | *.test.com | The name of the domain or website. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1631,10 +1678,10 @@ Queries details about a domain asset.
 | InstanceName | String | iZm5e6w7dzsktt6m z4yimeZ-60288 | The name of the asset. |
 | IntranetIp | String | 1.2.3.2 | The private IP address of the asset. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/? Action=DescribeDomainDetail &DomainName=*.test.com
+http(s)://[Endpoint]/? Action=DescribeDomainDetail &DomainName=*.test.com &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1681,6 +1728,11 @@ Sample success responses `XML` format
 ```json
     "Domain":"b.***tst.com",
     "DomainDetailItems":[
+```
+
+`{`
+
+```json
                 "InstanceName":"iZm5e6***",
                 "AssetType":"0",
                 "Uuid":"d664e15e-488b-4f3c-a80f-***",
@@ -1689,7 +1741,7 @@ Sample success responses `XML` format
                 "IntranetIp":"1.2.3.2"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "InstanceName":"iZ***",
@@ -1700,7 +1752,7 @@ Sample success responses `XML` format
                 "IntranetIp":"1.2.3.5"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "AssetType":"2",
@@ -1709,7 +1761,7 @@ Sample success responses `XML` format
                 "InstanceId":"eip-wz9***"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "InstanceName":"***test",
@@ -1719,18 +1771,18 @@ Sample success responses `XML` format
                 "InstanceId":"lb-bp***"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RootDomain":"***tst.com",
     "requestId":"3A85CFCF-05C8-451A-9E41-C0D5E96BA407"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.13 DescribeCloudCenterInstances
 
-Queries the asset information on the Assets page, such as the name and region of an asset instance.
+Queries the asset information on the Assets page, such as the name and region of an asset instance. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1744,6 +1796,8 @@ Queries the asset information on the Assets page, such as the name and region of
 | MachineTypes | String | No | ecs | The type of the asset. ecs: an Elastic Compute Service (ECS) instance cloud product : a cloud service _ |
 | NoPage | Boolean | No | true | Specifies whether to enable paged query. Valid values: t rue: enables paged query. f alse: disables paged query. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1793,10 +1847,10 @@ Queries the asset information on the Assets page, such as the name and region of
 | RequestId | String | 32A73759-4C0F- 4801-BE98- 901223ACEE9A | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request is successful. t rue: successful f alse: failed |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeCloudCenterInstances
+http(s)://[Endpoint]/?Action=DescribeCloudCenterInstances &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1875,11 +1929,16 @@ Sample success responses `XML` format
 </DescribeCloudCenterInstances>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"32A73759-4C0F-4801-BE98-901223ACEE9A",
  "Instances":[
+```
+
+`{`
+
+```json
    "RiskStatus":"NO",
    "Uuid":"88f7ce77-595e-4580-b655-3***",
    "Ip":"1.2.3.4",
@@ -1906,7 +1965,7 @@ Sample success responses `XML` format
    "SafeEventCount":0
 ```
 
-`},`
+`},` `{`
 
 ```json
    "RiskStatus":"NO",
@@ -1938,7 +1997,7 @@ Sample success responses `XML` format
    "SafeEventCount":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageInfo":{
@@ -1954,17 +2013,19 @@ Sample success responses `XML` format
  "Success":true
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.14 DescribeSummaryInfo
 
-Queries the security information about an asset, such as the security score and the numbers of protected and unprotected assets.
+Queries the security information about an asset, such as the security score and the numbers of protected and unprotected assets. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSummary Info | The operation that you want to perform. Set the value to DescribeSummaryInfo. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1980,10 +2041,10 @@ Queries the security information about an asset, such as the security score and 
 | SecurityScore | Integer | 44 | The security score of assets. Valid values: 95 to 100: The assets are secure. 85 to 94: The assets are exposed to a few security risks. We recommend that you reinforce your security system as soon as possible. 70 to 84: The assets are exposed to many security risks. We recommend that you reinforce your security system as soon as possible. 69 or lower: The current security system is unable to protect the assets against attacker intrusions. We recommend that you reinforce your security system as soon as possible. |
 | Success | Boolean | true | Indicates whether the request is successful. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSummaryInfo
+http(s)://[Endpoint]/?Action=DescribeSummaryInfo &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2008,11 +2069,11 @@ Sample success responses `XML` format
  "AegisClientOfflineCount":12
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.15 DescribeSearchCondition
 
-Queries the filter conditions of specified assets.
+Queries the filter conditions of specified assets. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2020,6 +2081,8 @@ Queries the filter conditions of specified assets.
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | Type | String | No | ecs | The type of the asset that you want to query. Valid values: ecs: ECS instances cloud product : cloud services _ |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2036,10 +2099,10 @@ Queries the filter conditions of specified assets.
 | NameKey | String | stop machine _ | The key of the condition name. |
 | ConditionType | String | system | The type of the filter condition. Valid values: syst em: default filter conditions user: custom filter conditions |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSearchCondition
+http(s)://[Endpoint]/?Action=DescribeSearchCondition &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2073,13 +2136,18 @@ ame\":\"aaaaaa\",\"value\":\"YES\"}"}],"LogicalExp":"OR"}</FilterConditions>
   "code": 200,
   "data": {
     "ConditionList": [
+```
+
+`{`
+
+```json
         "FilterConditions": "{\"filterParams\":[{\"labelKey\":\"aaaaaaaa|bbbbbbb\",\"value\
 ":\"{\\\"name\\\":\\\"sadsasd\\\",\\\"value\\\":\\\"dasdsdas\\\"}\"}],\"LogicalExp\":\"OR\" }",
         "ConditionType": "system",
         "NameKey": "stop_machine"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "FilterConditions": "{\"filterParams\":[{\"labelKey\":\"aaaaaaaa|bbbbbbb\",\"value\
@@ -2088,7 +2156,7 @@ ame\":\"aaaaaa\",\"value\":\"YES\"}"}],"LogicalExp":"OR"}</FilterConditions>
         "NameKey": "new_machine_has_risk"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "FilterConditions": "{\"filterParams\":[{\"label\":\"At risk or not: At risk\",\"va
@@ -2102,17 +2170,17 @@ lue\":\"{\\\"name\\\":\\\"aaaaaa\\\",\\\"value\\\":\\\"YES\\\"}\"}],\"LogicalExp
         "Name": "Running"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "requestId": "3AEC47AF-8CFA-485E-AC9A-3A8ABC06EA7F"
 ```
 
-For a list of error codes, see Error codes
+`}` Error codes For a list of error codes, see Error codes
 
 #### 3.3.16 DescribeAssetDetailByUuid
 
-Queries details and extended information about a server based on its UUID.
+Queries details and extended information about a server based on its UUID. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2126,6 +2194,8 @@ Queries details and extended information about a server based on its UUID.
 |---|---|---|---|---|
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2164,7 +2234,7 @@ Queries details and extended information about a server based on its UUID.
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid
+http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2229,12 +2299,17 @@ Sample success responses `XML` format
       "OsDetail": "Linux 64bit",
       "IntranetIp": "10.0.0.211",
       "DiskInfoList": [
+```
+
+`{`
+
+```json
           "diskName": "/dev/vda1",
           "totalSize": 20,
           "useSize": 2
 ```
 
-`],`
+`}` `],`
 
 ```json
       "MacList": [
@@ -2256,32 +2331,34 @@ Sample success responses `XML` format
       "HostName": "qewrqwerqsadas"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "requestId": "F7BA0B6C-4D33-49A7-AB7B-A221B2E40817"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.17 DescribeSasAssetStatisticsColumn
 
-Queries asset details based on the displayed columns on the Server tab. The detailed information includes the server information, tag, VPC, operating system, and region. The Server tab displays columns based on the column filter. Displayed columns include the default and custom columns.
+Queries asset details based on the displayed columns on the Server tab. The detailed information includes the server information, tag, VPC, operating system, and region. The Server tab displays columns based on the column filter. Displayed columns include the default and custom columns. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSasAsset StatisticsColumn | The operation that you want to perform. Set the value to DescribeSasAsset St at ist icsColumn. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FA04081D-25A1- 486C-822A- 61108E85B3BD | The ID of the request. |
 | StatisticsColum n | String | ServerInfo,tag,vpc,o s,region | The information in the displayed columns on the Server tab. The Server tab displays columns based on the column filter. Displayed columns include the default and custom columns. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSasAssetStatisticsColumn
+http(s)://[Endpoint]/?Action=DescribeSasAssetStatisticsColumn &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2301,16 +2378,18 @@ l</StatisticsColumn> </DescribeSasAssetStatisticsColumnResponse>
 ul"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.18 DescribePropertyUsageNewest
 
-Queries information about five most recently created accounts.
+Queries information about five most recently created accounts. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeProperty UsageNewest | The operation that you want to perform. Set the value to DescribePropertyUsageNewest. |
 | Type | String | No | user | The type of the account. Valid values: user system |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2327,10 +2406,10 @@ Queries information about five most recently created accounts.
 |---|---|---|---|
 | Create | Long | 1566178646000 | The timestamp when the account was created. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyUsageNewest
+http(s)://[Endpoint]/?Action=DescribePropertyUsageNewest &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2368,39 +2447,44 @@ Sample success responses `XML` format
     "code":200,
     "data":{
         "NewestStatisticItems":[
+```
+
+`{`
+
+```json
                 "Create":1566178646000,
                 "Name":"dbus"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Create":1566178646000,
                 "Name":"halt"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Create":1566178646000,
                 "Name":"root"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Create":1566178646000,
                 "Name":"postfix"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Create":1566178646000,
                 "Name":"operator"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Type":"user",
@@ -2414,11 +2498,11 @@ Sample success responses `XML` format
     "success":true
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.19 DeleteTagWithUuid
 
-Removes tags from the assets on the Assets page.
+Removes tags from the assets on the Assets page. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2432,14 +2516,16 @@ Removes tags from the assets on the Assets page.
 |---|---|---|---|---|
 | UuidList | String | No | 111-xx,aa-bb | The list of server UUIDs. Not e If UuidList is specified, Threat Detection Service removes the tag from the servers whose UUIDs are specified in the list. If UuidList is not specified, Threat Detection Service removes the tag from all servers. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteTagWithUuid &TagName=aaaa
+http(s)://[Endpoint]/?Action=DeleteTagWithUuid &TagName=aaaa &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2450,13 +2536,13 @@ Sample success responses `XML` format
 </DeleteTagWithUuidResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.20 ModifyPushAllTask
 
@@ -2468,6 +2554,8 @@ Dispatches all security check tasks.
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Uuids | String | No | uuid1,uuid2,uuid3 | The list of server UUIDs. |
 | Tasks | String | No | HEALTH CHECK,O _ VAL ENTITY _ | The list of tasks. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2491,10 +2579,10 @@ Dispatches all security check tasks.
 | Region | String | cn-beijing-ss-10 | The region where the server is deployed. |
 | Uuid | String | inet-xxxxx-xxxx- xxxx-xxx-xxx | The UUID of the server. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyPushAllTask
+http(s)://[Endpoint]/?Action=ModifyPushAllTask &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2541,11 +2629,11 @@ success\":false}",
   "RequestId":"91EB4AC7-7FEF-4C72-BE49-4414E459AEC2"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.21 DescribeCriteria
 
-Queries fuzzy match conditions that return the properties of a queried asset.
+Queries fuzzy match conditions that return the properties of a queried asset. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2561,10 +2649,10 @@ Queries fuzzy match conditions that return the properties of a queried asset.
 | Name | String | riskStatus | The names of all properties queried by the search conditions. |
 | Type | String | input | The type of the search condition. Valid values: input : an input. The search condition is manually set. select : an option. The search condition is selected from a drop-down list. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeCriteria
+http(s)://[Endpoint]/?Action=DescribeCriteria &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2590,12 +2678,17 @@ Sample success responses `XML` format
   "code": 200,
   "data": {
     "CriteriaList": [
+```
+
+`{`
+
+```json
         "Type": "input",
         "Values": "",
         "Name": "internetIp"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Type": "select",
@@ -2603,22 +2696,24 @@ Sample success responses `XML` format
         "Name": "vulStatus"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "requestId": "3F6E4741-6CE6-47CA-80E8-CF5CB145DBE2"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.22 DescribeExportInfo
 
-Queries the progress of the task to export baseline check results.
+Queries the progress of the task to export baseline check results. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeExportInf o | The operation that you want to perform. Set the value to DescribeExportInfo. |
 | ExportId | Long | Yes | 111 | The ID of the export task. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2638,10 +2733,10 @@ Queries the progress of the task to export baseline check results.
 | Message | String | success | The message that shows the task result. Set the value to success, which indicates the export task is completed. |
 | Link | String | http://www.aliyun. com | The URL at which you can download the exported Excel file. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeExportInfo
+http(s)://[Endpoint]/?Action=DescribeExportInfo &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2660,7 +2755,7 @@ Sample success responses `XML` format
 </data> <requestId>4C1AE3F3-18FA-4108-BBB9-AFA1A032756C</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "code": "200",
@@ -2682,11 +2777,11 @@ Sample success responses `XML` format
   "requestId": "4C1AE3F3-18FA-4108-BBB9-AFA1A032756C"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.23 ModifyLoginSwitchConfig
 
-Enables or disables the logon security settings for a specific asset.
+Enables or disables the logon security settings for a specific asset. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2697,14 +2792,16 @@ Enables or disables the logon security settings for a specific asset.
 | Item | String | Yes | login common a _ _ ccount | The type of the alert that you want to enable or disable. Valid values: login common ip: uncommon _ _ logon IP address alerts login common t ime: uncommon _ _ logon time alerts login common account : _ _ uncommon logon account alerts |
 | Status | Integer | Yes | 0 | The status of the logon security settings. Valid values: 0: disabled 1: enabled |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B256A525-7E42- 4BB9-A27C- 9017FDDFF1A2 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyLoginSwitchConfig &Item=login_common_account &Status=0
+http(s)://[Endpoint]/?Action=ModifyLoginSwitchConfig &Item=login_common_account &Status=0 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2715,17 +2812,17 @@ Sample success responses `XML` format
 </ModifyLoginSwitchConfigResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "requestId": "B256A525-7E42-4BB9-A27C-9017FDDFF1A2"
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 #### 3.3.24 ModifyLoginBaseConfig
 
-Modifies the logon security settings for a specific asset.
+Modifies the logon security settings for a specific asset. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2734,11 +2831,13 @@ Modifies the logon security settings for a specific asset.
 | Target | String | Yes | i-ecs-ssssasss- xxxx | The UUID of the server whose settings you want to modify. |
 | Type | String | Yes | login common ti _ _ me | The type of the common logon that you want to modify. Valid values: login common ip: common logon _ _ IP addresses login common t ime: common _ _ logon time login common account : _ _ common logon accounts |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6BD40006-2A29- 4769-8AB5- BC0F0E25C273 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ModifyLoginBaseConfig &Config={"startTime":"00:00","endTime":"02:00"} &Target=i-ecs-ssssasss-xxxx &Type=login_common_time
@@ -2752,17 +2851,17 @@ Sample success responses `XML` format
 </ModifyLoginBaseConfigResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "requestId":"6BD40006-2A29-4769-8AB5-BC0F0E25C273"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.25 DeleteLoginBaseConfig
 
-Deletes basic configurations in the logon security settings for a specific asset.
+Deletes basic configurations in the logon security settings for a specific asset. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2774,6 +2873,8 @@ Deletes basic configurations in the logon security settings for a specific asset
 | Type | String | Yes | login common ti _ _ me | The type of the common logon that you want to delete. Valid values: login common ip: common logon _ _ IP addresses login common t ime: common _ _ logon time login common account : _ _ common logon accounts login common locat ion: _ _ common logon locations |
 | Target | String | No | 123-abc | The UUID of the server whose settings you want to delete. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E0618A9-D5EF- 4220-9471- C42B5E92719F | The ID of the request. |
@@ -2781,7 +2882,7 @@ Deletes basic configurations in the logon security settings for a specific asset
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteLoginBaseConfig &Config={"startTime":"06:00:00","endTime":"16:00:00"} &Type=login_common_time
+http(s)://[Endpoint]/?Action=DeleteLoginBaseConfig &Config={"startTime":"06:00:00","endTime":"16:00:00"} &Type=login_common_time &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2792,22 +2893,24 @@ Sample success responses `XML` format
 </DeleteLoginBaseConfigResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.3.26 DescribeAssetDetailByUuids
 
-Queries the details of specific ECS instances.
+Queries the details of specific ECS instances. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAssetDet ailByUuids | The operation that you want to perform. Set the value to: DescribeAsset Det ailByUuids. |
 | Uuids | String | Yes | 0687b17f-2a36- 4e5c-b3d9 | The list of ECS instances. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2833,10 +2936,10 @@ Queries the details of specific ECS instances.
 |---|---|---|---|
 | RequestId | String | 92016EC8-D52D- 49D8-9FF7- 9EA340A950B9 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuids &Uuids=0687b17f-2a36-4e5c-b3d9
+http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuids &Uuids=0687b17f-2a36-4e5c-b3d9 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2887,13 +2990,13 @@ Sample success responses `XML` format
     "requestId": "92016EC8-D52D-49D8-9FF7-9EA340A950B9"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.4 Secure score
 
 #### 3.4.1 DescribeSecureSuggestion
 
-Queries detailed suggestions about how to manage the security risks related to the security score.
+Queries detailed suggestions about how to manage the security risks related to the security score. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2913,7 +3016,7 @@ Queries detailed suggestions about how to manage the security risks related to t
 | SuggestType | String | SS ALARM _ | The type of the unhandled security risk. Valid values: SS REINFORCE: Key features, such as the _ anti-virus feature, are not configured. SS ALARM: unhandled alerts. _ SS VUL: unhandled vulnerabilities. _ SS HC: baseline check risks. _ SS AK: AccessKey pair leaks. _ SS CLOUD HC: configuration risks in _ _ Alibaba Cloud services. OT HER: other risks. |
 | TotalCount | Integer | 15 | The total number of unhandled security risks. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSecureSuggestion
@@ -3065,13 +3168,13 @@ services",
     "requestId": "F35F45B0-5D6B-4238-BE02-A62D0760E840"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.5 Security alerts
 
 #### 3.5.1 HandleSecurityEvents
 
-Handles alerts.
+Handles alerts. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3082,6 +3185,8 @@ Handles alerts.
 |---|---|---|---|---|
 | OperationCode | String | No | ignore | The operation that is performed to handle alerts of the same type at a time. Valid values: deal: quarantines the source file of the malicious process. kill and quara: kills the malicious _ _ process and quarantines the source file. kill virus: deletes the source file of _ the malicious process. block ip: blocks the source IP _ addresses. ignore: ignores the alerts. mark mis inf o: marks the alerts as _ _ false positives by adding them to the whitelist. rm mark mis inf o: cancels false _ _ _ positives by removing the alerts from the whitelist. of f line handled: marks the alerts _ as handled. |
 | OperationParams | String | No | {"expireTime":15 78475919533} | The parameter values of the operation that is performed to handle alerts of the same type at a time. This parameter must be specified if the OperationCode parameter is set to the following values: kill and quara _ _ block ip _ |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3095,10 +3200,10 @@ Handles alerts.
 |---|---|---|---|
 | TaskId | Long | 3187 | The ID of the task to handle the alerts. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=HandleSecurityEvents
+http(s)://[Endpoint]/?Action=HandleSecurityEvents &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -3109,7 +3214,7 @@ Sample success responses `XML` format
 </HandleSecurityEventsResponse> <requestId>D929B6F9-EE5E-4F26-A22F-65D4088B6F24</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "HandleSecurityEventsResponse": {
@@ -3122,11 +3227,11 @@ Sample success responses `XML` format
     "requestId": "D929B6F9-EE5E-4F26-A22F-65D4088B6F24"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.2 DescribeSecurityStatInfo
 
-Queries the statistics on each security check item and the daily statistics in the trend chart based on each security check item.
+Queries the statistics on each security check item and the daily statistics in the trend chart based on each security check item. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3139,6 +3244,8 @@ Queries the statistics on each security check item and the daily statistics in t
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3191,10 +3298,10 @@ Queries the statistics on each security check item and the daily statistics in t
 | TotalCount | Integer | 384 | The number of pending vulnerabilities on the current day. |
 | ValueArray | List | [60, 65, 63, 97, 103, 384, 384] | The number of pending vulnerabilities at each time point. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSecurityStatInfo
+http(s)://[Endpoint]/?Action=DescribeSecurityStatInfo &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -3364,7 +3471,7 @@ Sample success responses `XML` format
 </DescribeSecurityStatInfoResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
         "SecurityEvent": {
@@ -3608,11 +3715,11 @@ Sample success responses `XML` format
         "success": true
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.3 DescribeAlarmEventList
 
-Queries alert events on the Alerts page. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions.
+Queries alert events on the Alerts page. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3638,6 +3745,8 @@ Queries alert events on the Alerts page. An alert event consists of alerts and e
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | OperateErrorCode List.N | RepeatLi st | No | ignore. Success | Alert handling result code N. The value is in the format of Operation type.Operation result code. Operation types include: Common: performs common operations. deal: handles the alert. ignore: ignores the alert. offline handled: marks the alert as _ handled. mark mis info: marks the alerts as _ _ false positives by adding them to the whitelist. rm mark mis info: cancels false _ _ _ positives by removing the alerts from the whitelist. quara: quarantines the source file of the malicious process. kill and quara: kills the malicious _ _ process and quarantines the source file. kill virus: deletes the source file of _ the malicious process. block ip: blocks the source IP _ addresses. manual handled: manually handles _ the alert. Operation result codes: Success: The operation is successful. Failure: The operation fails. AgentOffline: The agent is offline. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3682,7 +3791,7 @@ Queries alert events on the Alerts page. An alert event consists of alerts and e
 | TotalCount | Integer | 1 | The total number of the alert events. |
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeAlarmEventList &CurrentPage=1 &From=sas &PageSize=20
@@ -3742,6 +3851,11 @@ nal>
 
 ```json
     "SuspEvents": [
+```
+
+`{`
+
+```json
             "Uuid": "c4678332-ef35-4ad4-8358-681ebbc0ccab",
             "Dealed": true,
             "SecurityEventIds": "261401",
@@ -3766,11 +3880,11 @@ nal>
             "InstanceName": "cit***"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.4 DescribeAlarmEventDetail
 
-Queries details of an alert event. An alert event consists of alerts and exceptions. Each alert event contains multiple exceptions.
+Queries details of an alert event. An alert event consists of alerts and exceptions. Each alert event contains multiple exceptions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3782,6 +3896,8 @@ Queries details of an alert event. An alert event consists of alerts and excepti
 | From | String | Yes | sas | The ID of the request source. Set the value to sas. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3818,10 +3934,10 @@ Queries details of an alert event. An alert event consists of alerts and excepti
 | Uuid | String | 47900178-885d- 4fa4-9d77- XXXXXXXXXXXX | The ID of the related instance. |
 | RequestId | String | 5A1DDB3C-798C- 4A84-BF6E- 3DC700000000 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=8df914418f4211fbf756efe7a6f40cbc &From=sas
+http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=8df914418f4211fbf756efe7a6f40cbc &From=sas &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -3890,14 +4006,24 @@ s in scheduled Linux tasks",
 s programs running, the attacker may have imported malicious shell scripts into scheduled t asks such as crontab and systemd.",
         "IntranetIp": "1.2.3.5",
         "CauseDetails": [
+```
+
+`{`
+
+```json
                 "Value": [
+```
+
+`{`
+
+```json
                         "Type": "text",
                         "Value": "An attacker has logged on to your ECS instance and has wr
 itten webshells by editing files.",
                         "Name": "Intrusion cause"
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "Type": "text",
@@ -3905,7 +4031,7 @@ itten webshells by editing files.",
                         "Name": "Time of attack"
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "Type": "text",
@@ -3913,7 +4039,7 @@ itten webshells by editing files.",
                         "Name": "Source IP of attack"
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "Type": "text",
@@ -3921,7 +4047,7 @@ itten webshells by editing files.",
                         "Name": "Payload of attack"
 ```
 
-`},`
+`},` `{`
 
 ```json
                         "Type": "text",
@@ -3930,13 +4056,13 @@ lnerabilities in parameter configuration, and resolve these issues.",
                         "Name": "Solutions"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "Key": "item"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "Level": "serious",
@@ -3956,7 +4082,7 @@ For a list of error codes, see Error codes.
 
 #### 3.5.5 DescribeSuspEvents
 
-Queries information about exceptions. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions.
+Queries information about exceptions. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3978,6 +4104,8 @@ Queries information about exceptions. An alert event consists of alerts and exce
 | CurrentPage | String | No | 1 | The page number of the current page. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | AlarmUniqueInfo | String | No | 8df914418f4211f bf*** | The alert event to which the exception is related. Not e To query details about exceptions of an alert event, you must provide the ID of the alert event. You can call the DescribeAlarmEventList operation to obtain the ID. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4020,10 +4148,10 @@ Queries information about exceptions. An alert event consists of alerts and exce
 | AlarmEventNa me | String | Suspicious command running in scheduled Linux tasks | The name of the alert event. |
 | AlarmUniqueInf o | String | 8df914418f*** | The ID of the alert event. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSuspEvents &From=saas
+http(s)://[Endpoint]/?Action=DescribeSuspEvents &From=saas &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4083,6 +4211,11 @@ into Linux scheduled tasks. </Desc>
     "RequestId": "0C7FAD74-83FA-4671-9250-A5F2A64F437A",
     "CurrentPage": 1,
     "SuspEvents": [
+```
+
+`{`
+
+```json
             "EventStatus": 1,
             "SaleVersion": "1",
             "IntranetIp": "1.2.3.4",
@@ -4101,7 +4234,7 @@ s code into Linux scheduled tasks.",
             "LastTime": "2018-10-24 21:06:01"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "EventStatus": 1,
@@ -4122,7 +4255,7 @@ s code into Linux scheduled tasks.",
             "LastTime": "2018-10-24 21:01:01"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.6 DescribeSuspEventDetail
 
@@ -4135,6 +4268,8 @@ Queries details of a specific exception. An alert event consists of alerts and e
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SuspiciousEventId | Integer | No | 1 | The ID of the exception to query. Not e To query the details of an exception, you must provide the ID of the exception. You can call the DescribeSuspEvents operation to obtain the ID. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4173,10 +4308,10 @@ Queries details of a specific exception. An alert event consists of alerts and e
 | InfoType | String | download url _ | The type of the icon. |
 | Value | String | 2018-12-12 12:00:00 | The content in the exception details. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas
+http(s)://[Endpoint]/?Action=DescribeSuspEventDetail &From=sas &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4243,7 +4378,7 @@ bsite. Check the validity of this file. </EventDesc>
 </DescribeSuspEventDetailResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
@@ -4263,13 +4398,18 @@ ur website. Check the validity of this file.",
     "OperateMsg": "",
     "Uuid": "bffb12c3-590a-4db2-b538-***",
     "Details": [
+```
+
+`{`
+
+```json
             "Type": "text",
             "Value": "/data/ftpUser/pub/***",
             "InfoType": "trojan_path",
             "Name": "Trojan path",
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Type": "text",
@@ -4277,7 +4417,7 @@ ur website. Check the validity of this file.",
             "Name": "Affected domain",
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Type": "text",
@@ -4286,7 +4426,7 @@ ur website. Check the validity of this file.",
             "Name": "First detected time",
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Type": "text",
@@ -4295,7 +4435,7 @@ ur website. Check the validity of this file.",
             "Name": "Update time",
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Type": "text",
@@ -4304,7 +4444,7 @@ ur website. Check the validity of this file.",
             "Name": "Trojan type",
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Type": "html",
@@ -4313,7 +4453,7 @@ ur website. Check the validity of this file.",
             "Name":"Source file download",
 ```
 
-`],`
+`}` `],`
 
 ```json
     "InternetIp": "1.2.3.5",
@@ -4327,7 +4467,7 @@ For a list of error codes, see Error codes.
 
 #### 3.5.7 HandleSimilarSecurityEvents
 
-Handles alerts triggered by the same rule or rules of the same type at a time.
+Handles alerts triggered by the same rule or rules of the same type at a time. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4340,14 +4480,16 @@ Handles alerts triggered by the same rule or rules of the same type at a time.
 |---|---|---|---|---|
 | OperationParams | String | No | {"expireTime":15 78475919533} | The parameter values of the operation that is performed to handle alerts of the same type at a time. This parameter must be specified if the OperationCode parameter is set to one of the following values: kill and quara _ _ block ip _ |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1B080663-F4E6- 4736-89B9- 48FC43E160A7 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=HandleSimilarSecurityEvents
+http(s)://[Endpoint]/?Action=HandleSimilarSecurityEvents &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4356,13 +4498,13 @@ Sample success responses `XML` format
 <requestId>1B080663-F4E6-4736-89B9-48FC43E160A7</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "requestId": "1B080663-F4E6-4736-89B9-48FC43E160A7"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.8 DescribeSecurityEventOperations
 
@@ -4374,6 +4516,8 @@ Queries operations that can be performed to handle alerts.
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | SecurityEventId | Long | No | 89621 | The ID of the alert. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F661324F-F381- 4218-A0F4- 7A901FB39EED | The ID of the request. |
@@ -4382,10 +4526,10 @@ Queries operations that can be performed to handle alerts.
 | OperationPara ms | String | qqqqq | The operation parameters. |
 | UserCanOperat e | Boolean | true | Indicates whether you can handle the alert. Valid values: true: You can handle the alert. false: You cannot handle the alert. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSecurityEventOperations
+http(s)://[Endpoint]/?Action=DescribeSecurityEventOperations &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4403,34 +4547,39 @@ Sample success responses `XML` format
 </data> <requestId>F661324F-F381-4218-A0F4-7A901FB39EED</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "code": 200,
   "data": {
     "SecurityEventOperationsResponse": [
+```
+
+`{`
+
+```json
         "OperationCode": "mark_mis_info",
         "UserCanOperate": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "OperationCode": "ignore",
         "UserCanOperate": true
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "requestId": "F661324F-F381-4218-A0F4-7A901FB39EED"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.9 DescribeSecurityEventOperationStatus
 
-Queries the processing status of alerts that are triggered by the same rule or rules of the same type.
+Queries the processing status of alerts that are triggered by the same rule or rules of the same type. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4441,6 +4590,8 @@ Queries the processing status of alerts that are triggered by the same rule or r
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | TaskId | Long | No | 12121 | The ID of the task that handles the alerts. |
 | SecurityEventIds. N | RepeatLi st | No | ["909361"] | The list of alert IDs. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4481,7 +4632,7 @@ Sample success responses `XML` format
 </SecurityEventOperationStatusResponse> <requestId>1683940A-E4AE-4473-8C40-F4075434B76B</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "SecurityEventOperationStatusResponse": {
@@ -4507,11 +4658,11 @@ Sample success responses `XML` format
     "requestId": "1683940A-E4AE-4473-8C40-F4075434B76B"
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 #### 3.5.10 CreateSimilarSecurityEventsQueryTask
 
-Creates a task to query alerts triggered by the same rule or rules of the same type.
+Creates a task to query alerts triggered by the same rule or rules of the same type. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4519,6 +4670,8 @@ Creates a task to query alerts triggered by the same rule or rules of the same t
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | SecurityEventId | Long | No | 14323 | The ID of the alert. |
 | SimilarEventScena rioCode | String | No | default | The codes of alerts that are triggered by the same rule or rules of the same type. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4530,10 +4683,10 @@ Creates a task to query alerts triggered by the same rule or rules of the same t
 |---|---|---|---|
 | Status | String | DataRetrieved | The status of the task. New: The task is new. Ret rievingDat a: Data is being retrieved. Dat aRet rieved: Data is retrieved. Processing: The task is running. Success: The task is successful. Failed: The task failed. Part ialFailed: The task is partially failed. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=CreateSimilarSecurityEventsQueryTask
+http(s)://[Endpoint]/?Action=CreateSimilarSecurityEventsQueryTask &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4547,7 +4700,7 @@ Sample success responses `XML` format
 </data> <requestId>5861EE3E-F0B3-48B8-A5DC-A5080BFBE052</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "code": 200,
@@ -4557,13 +4710,13 @@ Sample success responses `XML` format
       "TaskId": 2915
 ```
 
-`},`
+`}` `},`
 
 ```json
   "requestId": "5861EE3E-F0B3-48B8-A5DC-A5080BFBE052"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.11 DescribeSimilarSecurityEvents
 
@@ -4577,6 +4730,8 @@ Queries alerts triggered by the same rule or rules of the same type.
 | TaskId | Long | No | 111 | The ID of the task. |
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
 | PageSize | Integer | No | 5 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4600,10 +4755,10 @@ Queries alerts triggered by the same rule or rules of the same type.
 | TotalCount | Integer | 23 | The number of alerts that are of the same type. |
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSimilarSecurityEvents
+http(s)://[Endpoint]/?Action=DescribeSimilarSecurityEvents &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4651,6 +4806,11 @@ Sample success responses `XML` format
 
 ```json
     "SecurityEventsResponse": [
+```
+
+`{`
+
+```json
         "OccurrenceTime": 1576686364000,
         "SecurityEventId": 124,
         "Uuid": "123-aasd-dsa-dadsa",
@@ -4659,7 +4819,7 @@ Sample success responses `XML` format
         "LastTime": 1577063771000
 ```
 
-`},`
+`},` `{`
 
 ```json
         "OccurrenceTime": 1577379820000,
@@ -4670,17 +4830,17 @@ Sample success responses `XML` format
         "LastTime": 1577441301000
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
   "requestId": "97B9CBC6-F869-4860-9CBC-A7310F85AE8E"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.12 DescribeSimilarEventScenarios
 
-Queries the scenarios where alerts triggered by the same rule or rules of the same type are managed.
+Queries the scenarios where alerts triggered by the same rule or rules of the same type are managed. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4694,16 +4854,18 @@ Queries the scenarios where alerts triggered by the same rule or rules of the sa
 |---|---|---|---|---|
 | SecurityEventId | Long | No | 12321 | The ID of the alert. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF7B8D9-8493- 4B90-8D13- E0C1FFCE5F97 | The ID of the request. |
 | Scenarios | Array |   | The list of scenarios where alerts triggered by the same rule or rules of the same type are managed. |
 | Code | String | same url _ | The code of the scenario. Valid values: def ault : the same alert type same f ile cont ent : the same file _ _ content rule same ip: the same IP address rule _ same url: the same URL rule _ |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSimilarEventScenarios
+http(s)://[Endpoint]/?Action=DescribeSimilarEventScenarios &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4727,17 +4889,19 @@ Sample success responses `XML` format
     "requestId": "FDF7B8D9-8493-4B90-8D13-E0C1FFCE5F97"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.13 DescribeUserLayoutAuthorization
 
-Queries whether the brute-force attacks protection feature has been authorized. The brute-force attacks protection feature cannot be used without authorization.
+Queries whether the brute-force attacks protection feature has been authorized. The brute-force attacks protection feature cannot be used without authorization. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeUserLayo utAuthorization | The operation that you want to perform. Set the value to DescribeUserLayout Aut horizat ion. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4759,18 +4923,18 @@ Sample success responses `XML` format
 </DescribeUserLayoutAuthorizationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "Authorized": false,
     "requestId": "4A80EE8F-2175-49DA-B8BF-FAE1B3D52E4C"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.14 RollbackSuspEventQuaraFile
 
-Removes a quarantined file from the quarantine box.
+Removes a quarantined file from the quarantine box. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4782,14 +4946,16 @@ Removes a quarantined file from the quarantine box.
 | QuaraFileId | Integer | No | 3921797 | The ID of the quarantined file. Not e If this parameter is not set, the operation does not remove a quarantined file from the quarantine box. You can call the DescribeSuspEventQuaraFiles operation to obtain the ID of the target quarantined file. |
 | From | String | No | sas | The ID of the request source. Set the value to sas. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 52A3AEE6-114A- 499D-8990- 4BA9B27FE0AA | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=RollbackSuspEventQuaraFile
+http(s)://[Endpoint]/?Action=RollbackSuspEventQuaraFile &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4800,17 +4966,17 @@ Sample success responses `XML` format
 </RollbackSuspEventQuaraFileResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "52A3AEE6-114A-499D-8990-4BA9B27FE0AA"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.5.15 DescribeSuspEventQuaraFiles
 
-Queries the quarantined files by page.
+Queries the quarantined files by page. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4820,6 +4986,8 @@ Queries the quarantined files by page.
 | Status | String | No | quaraDone | The status of the quarantined files to be queried. Valid values: quaraFailed: The system failed to quarantine the file. quaraDone: The system has quarantined the file. quaraing: The file is being quarantined. rollbackFailed: The system failed to cancel the quarantine. rollbackDone: The system has canceled the quarantine. rollbacking: The quarantine is being canceled. |
 | CurrentPage | String | No | 1 | The number of pages to be returned. |
 | From | String | No | sas | The service of the request. Set the value to sas. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4851,10 +5019,10 @@ Queries the quarantined files by page.
 | RequestId | String | 6AD0BA1B-0129- 498F-B82A- 17C7B8368A08 | The ID of the request. |
 | TotalCount | Integer | 20 | The total number of quarantined files. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSuspEventQuaraFiles
+http(s)://[Endpoint]/?Action=DescribeSuspEventQuaraFiles &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -4884,7 +5052,7 @@ Sample success responses `XML` format
 </DescribeSuspEventQuaraFilesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "TotalCount": "20",
@@ -4909,19 +5077,21 @@ Sample success responses `XML` format
     "Count": "1"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.6 Configuration assessment
 
 #### 3.6.1 DescribeRiskItemType
 
-Queries types of check items for cloud service configurations. Each check item is categorized into a type. Types of check items include identity authentication and permissions, network access control, log auditing, data security, monitoring and alerting, and basic security protection.
+Queries types of check items for cloud service configurations. Each check item is categorized into a type. Types of check items include identity authentication and permissions, network access control, log auditing, data security, monitoring and alerting, and basic security protection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeRiskItem Type | The operation that you want to perform. Set the value to DescribeRiskItemType. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4930,7 +5100,7 @@ Queries types of check items for cloud service configurations. Each check item i
 | Title | String | Identity authentication and permissions | The type of the check item. Example: Identity authentication and permissions. |
 | RequestId | String | 3B3F3A90-46A5- 4023-A2D8- D68B14262F96 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeRiskItemType
@@ -4969,43 +5139,48 @@ Sample success responses `XML` format
 ```json
  "RequestId":"3B3F3A90-46A5-4023-A2D8-D68B14262F96",
  "List":[
+```
+
+`{`
+
+```json
    "Id":1,
    "Title":"Identity authentication and permissions"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Id":2,
    "Title":"Network access control"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Id":3,
    "Title":"Log auditing"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Id":4,
    "Title":"Data security"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Id":6,
    "Title":"Basic security protection"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.6.2 StartBaselineSecurityCheck
 
-Checks cloud service configurations. You can check all items or a specific item, and you can verify whether an item is already checked.
+Checks cloud service configurations. You can check all items or a specific item, and you can verify whether an item is already checked. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5018,14 +5193,16 @@ Checks cloud service configurations. You can check all items or a specific item,
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | ItemIds.N | RepeatLi st | No | 1 | The ID of the check item. Not e To perform the check task on cloud service configurations, you must provide the ID of the check item. You can call the DescribeRiskItemType operation to obtain the ID. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 48D2E9A9-A1B0- 4295-B727- 0995757C47E9 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=StartBaselineSecurityCheck &Type=check
+http(s)://[Endpoint]/?Action=StartBaselineSecurityCheck &Type=check &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5036,7 +5213,7 @@ Sample success responses `XML` format
 </StartBaselineSecurityCheckResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"48D2E9A9-A1B0-4295-B727-0995757C47E9"
@@ -5046,13 +5223,15 @@ For a list of error codes, see Error codes.
 
 #### 3.6.3 DescribeRiskCheckSummary
 
-Queries the summary of check items for cloud service configurations. The operation returns the following information: the number of risk items, the risk rate, the number of affected assets, the last check time, and the statistics of each type of check items.
+Queries the summary of check items for cloud service configurations. The operation returns the following information: the number of risk items, the risk rate, the number of affected assets, the last check time, and the statistics of each type of check items. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeRiskChec kSummary | The operation that you want to perform. Set the value to DescribeRiskCheckSummary. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5088,10 +5267,10 @@ Queries the summary of check items for cloud service configurations. The operati
 | Status | String | pass | The status of the check item after the check is finished. Valid values: pass: The check item is normal. f ailed: The check item is at risk. |
 | Count | Integer | 2 | The number of risk items. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary
+http(s)://[Endpoint]/?Action=DescribeRiskCheckSummary &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5173,7 +5352,7 @@ Sample success responses `XML` format
     </DescribeRiskCheckSummary>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "RequestId": "291B49F9-1685-4005-9D34-606B6F78740F",
@@ -5187,21 +5366,36 @@ Sample success responses `XML` format
     "ItemCount": 4,
     "AffectedAssetCount": 0,
     "RiskLevelCount": [
+```
+
+`{`
+
+```json
         "Count": 1,
         "Key": "medium"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Groups": [
+```
+
+`{`
+
+```json
         "Status": "finish",
         "CountByStatus": [
+```
+
+`{`
+
+```json
             "Status": "exception",
             "Count": 2
 ```
 
-`],`
+`}` `],`
 
 ```json
         "RemainingTime": 0,
@@ -5210,16 +5404,21 @@ Sample success responses `XML` format
         "Id": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Status": "finish",
         "CountByStatus": [
+```
+
+`{`
+
+```json
             "Status": "exception",
             "Count": 5
 ```
 
-`],`
+`}` `],`
 
 ```json
         "RemainingTime": 0,
@@ -5228,16 +5427,21 @@ Sample success responses `XML` format
         "Id": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Status": "finish",
         "CountByStatus": [
+```
+
+`{`
+
+```json
             "Status": "pass",
             "Count": 1
 ```
 
-`],`
+`}` `],`
 
 ```json
         "RemainingTime": 0,
@@ -5246,7 +5450,7 @@ Sample success responses `XML` format
         "Id": 3
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Status": "finish",
@@ -5268,16 +5472,21 @@ Sample success responses `XML` format
         "Id": 4
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Status": "finish",
         "CountByStatus": [
+```
+
+`{`
+
+```json
             "Status": "exception",
             "Count": 2
 ```
 
-`],`
+`}` `],`
 
 ```json
         "RemainingTime": 0,
@@ -5286,17 +5495,17 @@ Sample success responses `XML` format
         "Id": 6
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PreviousCount": 0
 ```
 
-For a list of error codes, see Error codes.
+`}` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.6.4 ModifyRiskCheckStatus
 
-Modifies the status of a check result. You can ignore a result or mark a result as a false positive.
+Modifies the status of a check result. You can ignore a result or mark a result as a false positive. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5310,14 +5519,16 @@ Modifies the status of a check result. You can ignore a result or mark a result 
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 48D2E9A9-A1B0- 4295-B727- 0995757C47E9 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyRiskCheckStatus &ItemId=1 &TaskId=57 &Status=ignored
+http(s)://[Endpoint]/?Action=ModifyRiskCheckStatus &ItemId=1 &TaskId=57 &Status=ignored &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5334,11 +5545,11 @@ Sample success responses `XML` format
     "RequestId":"48D2E9A9-A1B0-4295-B727-0995757C47E9"
 ```
 
-For a list of error codes, see Error codes.
+Error codes For a list of error codes, see Error codes.
 
 #### 3.6.5 DescribeRiskCheckResult
 
-Queries the results of check items by type or name.
+Queries the results of check items by type or name. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5356,6 +5567,8 @@ Queries the results of check items by type or name.
 | AssetType | String | No | RDS | The type of the cloud service. For more information about the description of the cloud services specified by this parameter, see the check item table in the "Response parameters" section of this topic. |
 | Name | String | No | Cloud platform - Multi-factor authentication configuration of Apsara Stack tenant accounts | The name of the check item. For more information about the description of the check item name, see the check item table in the "Response parameters" section of this topic. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5481,10 +5694,10 @@ The following table describes the check items supported by the cloud platform, i
 |---|---|---|---|---|---|
 | 51 | KVStore for Redis - SSL certificate | 4: data security | medium | Redis | Checks whether KVStore for Redis uses SSL certificates. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeRiskCheckResult &GroupId=1 &RiskLevel=high
+http(s)://[Endpoint]/?Action=DescribeRiskCheckResult &GroupId=1 &RiskLevel=high &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5553,17 +5766,17 @@ or authentication is disabled\\n\", \"url\": \"https://***.aliyun.com/#/secure\\
                 "ResourceName": "bestPractice"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "Count": "10"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.6.6 DescribeSecurityCheckScheduleConfig
 
-Queries the custom check cycle and time period.
+Queries the custom check cycle and time period. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5573,6 +5786,8 @@ Queries the custom check cycle and time period.
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5585,10 +5800,10 @@ Queries the custom check cycle and time period.
 |---|---|---|---|
 | StartTime | Integer | 6 | The time period during which the configuration check starts. Valid values: 0: 00:00 to 06:00 6: 06:00 to 12:00 12: 12:00 to 18:00 18: 18:00 to 24:00 |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig
+http(s)://[Endpoint]/?Action=DescribeSecurityCheckScheduleConfig &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5604,7 +5819,7 @@ Sample success responses `XML` format
 </DescribeSecurityCheckScheduleConfig>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"C17F3C01-0AFD-4898-A950-AA0129025B41",
@@ -5614,7 +5829,7 @@ Sample success responses `XML` format
   "StartTime":6
 ```
 
-For a list of error codes, see Error codes.
+`}` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.6.7 ModifyRiskSingleResultStatus
 
@@ -5629,14 +5844,16 @@ Changes the status of an asset affected by a check item. You can ignore an asset
 | Ids.N | RepeatLi st | No | 1 | The ID of the affected asset. |
 | Status | String | No | ignored | The status of the affected asset. Valid values: ignored: ignores the asset. f ailed: marks the asset as a false positive. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 3B3F3A90-46A5- 4023-A2D8- D68B14262F96 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyRiskSingleResultStatus &Ids.1=4 &Status=ignored &TaskId=57
+http(s)://[Endpoint]/?Action=ModifyRiskSingleResultStatus &Ids.1=4 &Status=ignored &TaskId=57 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5647,17 +5864,17 @@ Sample success responses `XML` format
 </ModifyRiskSingleResultStatusResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"3B3F3A90-46A5-4023-A2D8-D68B14262F96"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.6.8 ModifySecurityCheckScheduleConfig
 
-Configures the time to automatically run a configuration check. For example, you can specify the time period during a day of the week.
+Configures the time to automatically run a configuration check. For example, you can specify the time period during a day of the week. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5671,11 +5888,13 @@ Configures the time to automatically run a configuration check. For example, you
 | StartTime | Integer | No | 6 | The time period during which the configuration check starts. Valid values: 0: 00:00 to 06:00 6: 06:00 to 12:00 12: 12:00 to 18:00 18: 18:00 to 24:00 |
 | EndTime | Integer | No | 12 | The time period during which the configuration check ends. 0: 00:00 to 06:00 6: 06:00 to 12:00 12: 12:00 to 18:00 18: 18:00 to 24:00 |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 48D2E9A9-A1B0- 4295-B727- 0995757C47E9 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ModifySecurityCheckScheduleConfig &DaysOfWeek=1,2,3 &StartTime=6 &EndTime=12
@@ -5689,17 +5908,17 @@ Sample success responses `XML` format
 </ModifySecurityCheckScheduleConfig>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"48D2E9A9-A1B0-4295-B727-0995757C47E9"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.6.9 DescribeRiskCheckItemResult
 
-Queries the assets that have configuration risks based on a specific check item. Results are returned on different pages.
+Queries the assets that have configuration risks based on a specific check item. Results are returned on different pages. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5727,10 +5946,10 @@ Queries the assets that have configuration risks based on a specific check item.
 | TotalCount | Integer | 1 | The total number of entries. |
 | RequestId | String | 3BFB4989-A108- 46A4-954E- FF7EF02D1078 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeRiskCheckItemResult
+http(s)://[Endpoint]/?Action=DescribeRiskCheckItemResult &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5800,7 +6019,7 @@ For a list of error codes, see Error codes.
 
 #### 3.7.1 CreateAntiBruteForceRule
 
-Creates a defense rule against brute-force attacks protection.
+Creates a defense rule against brute-force attacks protection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5819,10 +6038,10 @@ Creates a defense rule against brute-force attacks protection.
 | RuleId | Long | 6363 | The ID of the defense rule. |
 | RequestId | String | FB3E435F-4116- 46F9-A5DE- C338DDA04F47 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=CreateAntiBruteForceRule
+http(s)://[Endpoint]/?Action=CreateAntiBruteForceRule &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5836,7 +6055,7 @@ Sample success responses `XML` format
 </CreateAntiBruteForceRuleResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "CreateAntiBruteForceRule": {
@@ -5849,11 +6068,11 @@ Sample success responses `XML` format
     "requestId": "FB3E435F-4116-46F9-A5DE-C338DDA04F47"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.7.2 ModifyAntiBruteForceRule
 
-Modifies the defense rule against brute-force attacks protection.
+Modifies the defense rule against brute-force attacks protection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5869,6 +6088,8 @@ Modifies the defense rule against brute-force attacks protection.
 | ForbiddenTime | Integer | No | 12 | The time period during which logons from the blocked IP address are blocked. |
 | UuidList.N | RepeatLi st | No | uuid-13213- dasda | The list of servers to which the defense rule is applied. |
 | DefaultRule | Boolean | No | true | Specifies whether to set the defense rule as the default rule. t rue: The defense rule is set as the default rule. f alse: The defense rule is not set as the default rule. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5888,17 +6109,19 @@ Sample success responses `XML` format
 </ModifyAntiBruteForceRuleResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "requestId": "F35F45B0-5D6B-4238-BE02-A62D0760E840"
 ```
 
+`}`
+
 ### 3.8 Vulnerability management
 
 #### 3.8.1 ModifyVulTargetConfig
 
-Configures vulnerability detection on a server.
+Configures vulnerability detection on a server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5912,10 +6135,10 @@ Configures vulnerability detection on a server.
 |---|---|---|---|
 | RequestId | String | 3A85CFCF-05C8- 451A-9E41- C0D5E96BA407 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyVulTargetConfig
+http(s)://[Endpoint]/?Action=ModifyVulTargetConfig &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5924,17 +6147,17 @@ Sample success responses `XML` format
 <requestId>7E0618A9-D5EF-4220-9471-C42B5E92719F</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.2 ModifyStartVulScan
 
-Scans vulnerabilities on the Vulnerabilities page.
+Scans vulnerabilities on the Vulnerabilities page. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5945,14 +6168,16 @@ Scans vulnerabilities on the Vulnerabilities page.
 | Types | String | No | "cve,sys,cms,app, emg" | The types of vulnerabilities that can be detected by Threat Detection Service. Valid values: cve: Linux software vulnerabilities sys: Windows vulnerabilities cms: Web CMS vulnerabilities app: application vulnerabilities emg: emergency vulnerabilities image: container image vulnerabilities Not e If this parameter is not specified, all types of vulnerabilities are detected. |
 | Uuids | String | No | {"i-sdada- xxxxx","i- ifaedada- sfsasdxxx"} | The list of servers. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4066CAC3-F83A- 4729-9995- A5558A61B546 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyStartVulScan
+http(s)://[Endpoint]/?Action=ModifyStartVulScan &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -5969,11 +6194,11 @@ Sample success responses `XML` format
     "requestId": "4066CAC3-F83A-4729-9995-A5558A61B546"
 ```
 
-For a list of error codes, see Error codes.
+Error codes For a list of error codes, see Error codes.
 
 #### 3.8.3 DescribeVulList
 
-Queries vulnerabilities by type.
+Queries vulnerabilities by type. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5990,6 +6215,8 @@ Queries vulnerabilities by type.
 | Dealed | String | No | n | Specifies whether the vulnerability is handled. Valid values: y: handled n: unhandled |
 | CurrentPage | Integer | No | 1 | The page number of the current page. Pages start from page 1. Default value: 1. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. Default value: 20. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6070,10 +6297,10 @@ Queries vulnerabilities by type.
 | Type | String | cve | The type of the vulnerability. Valid values: cve: Linux vulnerabilities sys: Windows vulnerabilities cms: Web CMS vulnerabilities emg: emergency vulnerabilities app: application vulnerabilities |
 | Uuid | String | 04c56617-23fc- 43a5-ab9b- ************ | The ID of the asset. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeVulList &Type=cve
+http(s)://[Endpoint]/?Action=DescribeVulList &Type=cve &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6098,7 +6325,7 @@ Sample success responses `XML` format
 </DescribeVulListResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
         "TotalCount": "2",
@@ -6171,20 +6398,27 @@ ate",
                 "OsRelease": "7",
                 "AbsolutePath": "/roo/www/web",
                 "PrimaryId": "111"
+```
+
+`}`
+
+```json
         }],
         "CurrentPage": "1"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.4 DescribeEmgVulGroup
 
-Queries emergency vulnerabilities by group.
+Queries emergency vulnerabilities by group. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeEmgVulG roup | The operation that you want to perform. Set the value to DescribeEmgVulGroup. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6204,10 +6438,10 @@ Queries emergency vulnerabilities by group.
 |---|---|---|---|
 | TotalCount | Integer | 2 | The total number of vulnerabilities. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeEmgVulGroup
+http(s)://[Endpoint]/?Action=DescribeEmgVulGroup &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6245,6 +6479,11 @@ nerabilities, such as arbitrary file read, XML External Entity (XXE), and sensit
 ```json
  "TotalCount":2,
  "EmgVulGroupList":[
+```
+
+`{`
+
+```json
    "Name":"scan:ACSV-2018-072601",
    "Status":30,
    "Description":"Jenkins is an open-source program written in Java. It can be used to moni
@@ -6256,7 +6495,7 @@ VE - 2018 - 1999002)",
    "GmtPublish":1532592480000
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Name":"scan:acsv-2018-082001",
@@ -6269,17 +6508,17 @@ abilities, such as arbitrary file read, XML External Entity (XXE), and sensitive
    "GmtPublish":1534767031000
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"E836EDA2-DBFB-489E-8FD3-5B141EB81A9C"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.5 DescribeVulWhitelist
 
-Queries the whitelist of vulnerabilities by page.
+Queries the whitelist of vulnerabilities by page. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6289,6 +6528,8 @@ Queries the whitelist of vulnerabilities by page.
 |---|---|---|---|---|
 | CurrentPage | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Default value: 20. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6302,10 +6543,10 @@ Queries the whitelist of vulnerabilities by page.
 | Reason | String | Not urgent | The reason for adding the vulnerability to the whitelist. |
 | Type | String | cve | The type of the vulnerability. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeVulWhitelist
+http(s)://[Endpoint]/?Action=DescribeVulWhitelist &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6325,30 +6566,35 @@ Sample success responses `XML` format
 </DescribeVulWhitelist>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "TotalCount":1,
  "PageSize":3,
  "VulWhitelists":[
+```
+
+`{`
+
+```json
    "Name":"oval:com.redhat.rhsa:def:20173263",
    "AliasName":"RHSA-2017:3263: curl security update",
    "Type":"cve",
    "Reason":"Not urgent"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"74F97EF7-B543-43FD-A4E9-18456731F9C5",
  "CurrentPage":1
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.6 DescribeConcernNecessity
 
-Queries the priority to fix the vulnerability.
+Queries the priority to fix the vulnerability. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6358,15 +6604,17 @@ Queries the priority to fix the vulnerability.
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ConcernNecessi ty | List | [ "asap", "later", "nntf"] | The priority to fix the vulnerability. Valid values: asap: high later: medium nntf: low |
 | RequestId | String | 9139DAF6-5CE0- 49A0-926E- 07243A290F70 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeConcernNecessity &Lang=zh
+http(s)://[Endpoint]/?Action=DescribeConcernNecessity &Lang=zh &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6395,11 +6643,11 @@ Sample success responses `XML` format
  "RequestId":"9139DAF6-5CE0-49A0-926E-07243A290F70"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.7 DescribeGroupedVul
 
-Queries information about vulnerabilities by group.
+Queries information about vulnerabilities by group. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6416,6 +6664,8 @@ Queries information about vulnerabilities by group.
 | CurrentPage | Integer | No | 1 | The page number of the current page. Pages start from page 1. Default value: 1. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. Default value: 20. |
 | GroupId | String | No | weds**** | The ID of the asset group. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6437,10 +6687,10 @@ Queries information about vulnerabilities by group.
 | HandledCount | Integer | 0 | The total number of handled vulnerabilities. |
 | Tags | String | Force restart | The tag of the vulnerability. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeGroupedVul &Lang=zh &Type=cve &AliasName=RHSA-2019:0230-Important: polkit security update &Necessity=asap,later,nntf &Dealed=n &CurrentPage=1 &PageSize=20
+http(s)://[Endpoint]/?Action=DescribeGroupedVul &Lang=zh &Type=cve &AliasName=RHSA-2019:0230-Important: polkit security update &Necessity=asap,later,nntf &Dealed=n &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6488,7 +6738,7 @@ Sample success responses `XML` format
             "HandledCount": 0
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Tags": "",
@@ -6501,7 +6751,7 @@ Sample success responses `XML` format
             "HandledCount": 0
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount": 432,
@@ -6510,11 +6760,11 @@ Sample success responses `XML` format
     "CurrentPage": 1
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.8 ModifyCreateVulWhitelist
 
-Creates a vulnerability whitelist. Vulnerabilities added to the whitelist no longer trigger alerts.
+Creates a vulnerability whitelist. Vulnerabilities added to the whitelist no longer trigger alerts. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6528,14 +6778,16 @@ Creates a vulnerability whitelist. Vulnerabilities added to the whitelist no lon
 |---|---|---|---|---|
 | Whitelist | String | No | [{"name":"oval:c om.redhat.rhsa:d ef:20173263","ty pe":"cve","aliasN ame":"RHSA- 2017:3263: curl security update"}] | The information about the vulnerability added to the whitelist, in the JSON format. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DFE4F166-1AC9- 4FAC-A4E4- F0608AD705A6 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-/?Action=ModifyCreateVulWhitelist &Reason=The vulnerability does not pose any threat. &Whitelist=[{"name":"oval:com.redhat.rhsa:def:20173263","type":"cve","aliasName":"RHSA-2017 :3263: curl security update"}]
+/?Action=ModifyCreateVulWhitelist &Reason=The vulnerability does not pose any threat. &Whitelist=[{"name":"oval:com.redhat.rhsa:def:20173263","type":"cve","aliasName":"RHSA-2017 :3263: curl security update"}] &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6546,13 +6798,13 @@ Sample success responses `XML` format
 </ModifyCreateVulWhitelist>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"DFE4F166-1AC9-4FAC-A4E4-F0608AD705A6"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.8.9 ModifyEmgVulSubmit
 
@@ -6565,14 +6817,16 @@ Performs a scan task for emergency vulnerabilities.
 | Name | String | No | scan:ASCV-2019- 032401 | The name of the vulnerability. |
 | UserAgreement | String | No | yes | Specifies whether you want to perform a scan task. Valid values: yes no |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 52A3AEE6-114A- 499D-8990- 4BA9B27FE0AA | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyEmgVulSubmit
+http(s)://[Endpoint]/?Action=ModifyEmgVulSubmit &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6593,21 +6847,23 @@ For a list of error codes, see Error codes.
 
 #### 3.8.10 DescribeAutoDelConfig
 
-Queries the configurations for automatic vulnerability deletion.
+Queries the configurations for automatic vulnerability deletion. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAutoDelC onfig | The operation that you want to perform. Set the value to DescribeAut oDelConf ig. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 43186B14-5A39- 44E0-860E- 8B24D1EF82CC | The ID of the request. |
 | Days | Integer | 7 | The number of days that a detected vulnerability is retained. |
 
-Sample requests
+Examples Sample requests
 
 ```
-/?Action=DescribeAutoDelConfig
+/?Action=DescribeAutoDelConfig &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6619,7 +6875,7 @@ Sample success responses `XML` format
 </DescribeAutoDelConfig>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "43186B14-5A39-44E0-860E-8B24D1EF82CC",
@@ -6630,7 +6886,7 @@ For a list of error codes, see Error codes.
 
 #### 3.8.11 ModifyOperateVul
 
-Performs operations on detected vulnerabilities, including verifying, ignoring, fixing.
+Performs operations on detected vulnerabilities, including verifying, ignoring, fixing. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6644,10 +6900,10 @@ Performs operations on detected vulnerabilities, including verifying, ignoring, 
 |---|---|---|---|
 | RequestId | String | DFE4F166-1AC9- 4FAC-A4E4- F0608AD705A6 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyOperateVul &Info=[{"name":"oval:com.redhat.rhsa:def:20171100","uuid":"e49fb179-bbe7-4b6c-ab65-e106fb58 d235","tag":"oval"}] &OperateType=vul_ignore &Type=cve &Reason=Postpone the fix
+http(s)://[Endpoint]/?Action=ModifyOperateVul &Info=[{"name":"oval:com.redhat.rhsa:def:20171100","uuid":"e49fb179-bbe7-4b6c-ab65-e106fb58 d235","tag":"oval"}] &OperateType=vul_ignore &Type=cve &Reason=Postpone the fix &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6658,19 +6914,19 @@ Sample success responses `XML` format
 </ModifyOperateVul>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"DFE4F166-1AC9-4FAC-A4E4-F0608AD705A6"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.9 Baseline check
 
 #### 3.9.1 DescribeCheckWarningSummary
 
-Queries the statistical information about baseline check results. The information includes the number of servers on which a baseline check is performed, the number of baseline check items, and the last check pass rate.
+Queries the statistical information about baseline check results. The information includes the number of servers on which a baseline check is performed, the number of baseline check items, and the last check pass rate. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6715,10 +6971,10 @@ Queries the statistical information about baseline check results. The informatio
 | TypeAlias | String | Database | The type of the check item. Valid values: database, system, weak password, and middleware. |
 | WarningMachin eCount | Integer | 11 | The number of assets on which risk items are detected. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeCheckWarningSummary &Lang=zh &TypeName=database &Status=1 &RiskStatus=1 &RiskName=Redis security baseline check &StrategyId=1 &Uuids=f03259d8-1e81-4fae-bcbb-275fb55efb34 &CurrentPage=1 &PageSize=20
+http(s)://[Endpoint]/?Action=DescribeCheckWarningSummary &Lang=zh &TypeName=database &Status=1 &RiskStatus=1 &RiskName=Redis security baseline check &StrategyId=1 &Uuids=f03259d8-1e81-4fae-bcbb-275fb55efb34 &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -7034,12 +7290,17 @@ Sample success responses `XML` format
 </DescribeCheckWarningSummary>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "Count":20,
  "TotalCount":25,
  "WarningSummarys":[
+```
+
+`{`
+
+```json
    "SubTypeAlias":"CentOS Linux 7 security baseline check\n
 \n ",
    "HighWarningCount":8,
@@ -7063,7 +7324,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 00:33:00"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"CentOS Linux 7 security standard compliance - MLPS level-3",
@@ -7079,7 +7340,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 00:58:11"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"CentOS Linux 7 security standard compliance - MLPS level-2",
@@ -7095,7 +7356,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 00:58:11"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Redis security baseline check",
@@ -7111,7 +7372,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 08:31:32"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Linux weak password",
@@ -7131,7 +7392,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 08:31:32"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Anonymous FTP logon",
@@ -7147,7 +7408,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 08:31:32"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Windows weak password",
@@ -7163,7 +7424,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 06:58:58"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Apache Tomcat security baseline check",
@@ -7179,7 +7440,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 14:00:17"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"PostgreSQL weak password",
@@ -7216,7 +7477,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 08:31:32"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"FTP weak password",
@@ -7232,7 +7493,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 08:31:32"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Microsoft SQL Server weak password",
@@ -7248,7 +7509,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-04-10 06:58:58"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Memcached security baseline check",
@@ -7280,7 +7541,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-02-19 14:59:17"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"CentOS Linux 6 security standard compliance - MLPS level-2",
@@ -7296,7 +7557,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-02-19 14:59:17"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"CentOS Linux 6 security standard compliance - MLPS level-3",
@@ -7312,7 +7573,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-02-19 14:59:17"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Linux Ubuntu security standard compliance - MLPS level-2",
@@ -7347,7 +7608,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-02-19 12:57:23"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Linux Ubuntu security baseline check",
@@ -7363,7 +7624,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-02-19 12:57:23"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "SubTypeAlias":"Windows 2012 R2 security baseline check",
@@ -7379,7 +7640,7 @@ Sample success responses `XML` format
    "LastFoundTime":"2019-02-19 12:44:58"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -7387,7 +7648,7 @@ Sample success responses `XML` format
  "CurrentPage":1
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.2 DescribeStratety
 
@@ -7399,6 +7660,8 @@ Queries the configurations of baseline check policies.
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | StrategyIds | String | No | test1,test2,test3 | The IDs of the baseline check policies. Separate multiple IDs with commas (,). |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7422,10 +7685,10 @@ Queries the configurations of baseline check policies.
 | RiskCount | Integer | 5 | The number of selected check items. |
 | Type | Integer | 1 | The type of the baseline check policy. Valid values: 1: default policy 2: custom policy |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeStratety ? Lang=zh &SourceIp=127.0.0.1 &StrategyIds=1,2,3
+http(s)://[Endpoint]/?Action=DescribeStratety ? Lang=zh &SourceIp=127.0.0.1 &StrategyIds=1,2,3 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -7479,18 +7742,28 @@ Sample success responses `XML` format
 ```json
  "RequestId":"ACAFE09B-3346-433B-BDA8-369AB3D9B4F9",
  "Strategies":[
+```
+
+`{`
+
+```json
    "Name":"test",
    "RiskCount":1,
    "CycleDays":3,
    "Type":2,
    "CycleStartTime":6,
    "ConfigTargets":[
+```
+
+`{`
+
+```json
      "Flag":"add",
      "Target":"4361221",
      "TargetType":"groupId"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ProcessRate":0,
@@ -7499,7 +7772,7 @@ Sample success responses `XML` format
    "EcsCount":0
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Name":"Default policy",
@@ -7509,12 +7782,17 @@ Sample success responses `XML` format
    "Type":1,
    "CycleStartTime":0,
    "ConfigTargets":[
+```
+
+`{`
+
+```json
      "Flag":"del",
      "Target":"281801",
      "TargetType":"groupId"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "Flag":"del",
@@ -7522,7 +7800,7 @@ Sample success responses `XML` format
      "TargetType":"groupId"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "ProcessRate":0,
@@ -7531,17 +7809,19 @@ Sample success responses `XML` format
    "EcsCount":17
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.3 DescribeStrategyExecDetail
 
-Queries the details of the latest baseline check by using a baseline check policy. The details include the time when the check is performed, the number of risk items, and the baseline risk details.
+Queries the details of the latest baseline check by using a baseline check policy. The details include the time when the check is performed, the number of risk items, and the baseline risk details. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeStrategy ExecDetail | The operation that you want to perform. Set the value to DescribeStrategyExecDetail. |
 | StrategyId | Integer | Yes | 1 | The ID of the baseline check policy. Not e To query the results of a baseline check that uses only one policy, you must specify the ID of the policy. You can call the DescribeStratety operation to obtain the ID. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7565,10 +7845,10 @@ Queries the details of the latest baseline check by using a baseline check polic
 | StartTime | String | 2019-01-08 19:41:12 | The time when the baseline check starts. |
 | SuccessCount | Integer | 81 | The number of check items that passed the baseline check. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1
+http(s)://[Endpoint]/?Action=DescribeStrategyExecDetail &StrategyId=1 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -7592,7 +7872,7 @@ Sample success responses `XML` format
 </DescribeStrategyExecDetail>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "Source":"Schedule",
@@ -7601,13 +7881,18 @@ Sample success responses `XML` format
  "RequestId":"6489FA6A-D241-4380-9D8C-A8804484CA40",
  "Percent":"100%",
  "FailedEcsList":[
+```
+
+`{`
+
+```json
    "IntranetIp":"1.2.3.5",
    "IP":"1.2.3.4",
    "InstanceName":"health-check002",
    "Reason":"Agent offline"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "EndTime":"2019-04-10 00:58:30",
@@ -7615,11 +7900,11 @@ Sample success responses `XML` format
  "FailCount":1
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.4 DescribeCheckWarnings
 
-Queries specified risk items and check items of a specified server.
+Queries specified risk items and check items of a specified server. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -7636,6 +7921,8 @@ Queries specified risk items and check items of a specified server.
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7659,10 +7946,10 @@ Queries specified risk items and check items of a specified server.
 |---|---|---|---|
 | TotalCount | Integer | 100 | The total number of entries. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeCheckWarnings &RiskId=1 &Uuid=d42f938c-d962-48a0-90f9-05e4eaf92e34 &Lang=zh &SourceIp=127.0.0.1 &CurrentPage=1 &PageSize=20
+http(s)://[Endpoint]/?Action=DescribeCheckWarnings &RiskId=1 &Uuid=d42f938c-d962-48a0-90f9-05e4eaf92e34 &Lang=zh &SourceIp=127.0.0.1 &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -7833,7 +8120,7 @@ re</Item>
 </DescribeCheckWarnings>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "Count":16,
@@ -7842,6 +8129,11 @@ re</Item>
  "RequestId":"C1E6C4FE-DE00-4B75-A01E-FCAB55A36449",
  "CurrentPage":1,
  "CheckWarnings":[
+```
+
+`{`
+
+```json
    "Uuid":"974af549-3248-44dd-9180-***",
    "Status":6,
    "CheckWarningId":1393768,
@@ -7852,7 +8144,7 @@ re</Item>
    "CheckId":1
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7879,7 +8171,7 @@ re</Item>
    "CheckId":15
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7891,7 +8183,7 @@ re</Item>
    "CheckId":14
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7903,7 +8195,7 @@ re</Item>
    "CheckId":13
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7915,7 +8207,7 @@ re</Item>
    "CheckId":12
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7927,7 +8219,7 @@ re</Item>
    "CheckId":11
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7954,7 +8246,7 @@ re</Item>
    "CheckId":8
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7966,7 +8258,7 @@ re</Item>
    "CheckId":7
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7978,7 +8270,7 @@ re</Item>
    "CheckId":6
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -7995,7 +8287,7 @@ re</Item>
    "CheckId":5
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -8007,7 +8299,7 @@ re</Item>
    "CheckId":4
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -8043,7 +8335,7 @@ re</Item>
    "CheckId":2
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Uuid":"974af549-3248-44dd-9180-***",
@@ -8055,11 +8347,11 @@ re</Item>
    "CheckId":58
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.5 DescribeCheckWarningDetail
 
-Queries the details of a specific check item.
+Queries the details of a specific check item. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8070,6 +8362,8 @@ Queries the details of a specific check item.
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8082,10 +8376,10 @@ Queries the details of a specific check item.
 | RequestId | String | 09969D2C-4FAD- 429E-BFBF- 9A60DEF8BF6F | The ID of the request. |
 | Type | String | Identity authentication | The type of the check item. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1 &SourceIp=127.0.0.1 &Lang=zh
+http(s)://[Endpoint]/?Action=DescribeCheckWarningDetail &CheckWarningId=1 &SourceIp=127.0.0.1 &Lang=zh &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8108,7 +8402,7 @@ Sample success responses `XML` format
 </DescribeCheckWarningDetail>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "Prompt":"",
@@ -8122,7 +8416,7 @@ group /etc/gshadow\r\nchmod 0644 /etc/group \r\nchmod 0644 /etc/passwd \r\nchmod
  "CheckId":13
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.6 DescribeWarningMachines
 
@@ -8139,6 +8433,8 @@ Queries information about servers on which a baseline check is performed. The in
 | StrategyId | Long | No | 1 | The ID of the baseline check policy. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
 | CurrentPage | Integer | No | 1 | The number of the current page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8163,10 +8459,10 @@ Queries information about servers on which a baseline check is performed. The in
 | Status | Integer | 1 | The verification status of the risk items that are fixed. Valid values: 1: completed 2: verifying |
 | Uuid | String | xxx-aaa-bbb-ccc | The ID of the server on which a baseline check is performed. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeWarningMachines &RiskId=1
+http(s)://[Endpoint]/?Action=DescribeWarningMachines &RiskId=1 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8217,11 +8513,11 @@ Sample success responses `XML` format
     "Count": "10"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.7 DescribeUserBaselineAuthorization
 
-Queries whether Threat Detection Service has the permissions to access a cloud resource.
+Queries whether Threat Detection Service has the permissions to access a cloud resource. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8235,10 +8531,10 @@ Queries whether Threat Detection Service has the permissions to access a cloud r
 | UserBaselineAu thorization | Struct |   | The information about whether Threat Detection Service has the permissions to run configuration checks on a cloud resource. |
 | Status | Integer | 1 | Indicates whether Threat Detection Service is authorized to run configuration checks on a cloud resource. 0: permission denied. Threat Detection Service does not have the permissions to run configuration checks on the cloud platform. 1: permission granted. Threat Detection Service has the permissions to run configuration checks on the cloud platform. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeUserBaselineAuthorization
+http(s)://[Endpoint]/?Action=DescribeUserBaselineAuthorization &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8251,7 +8547,7 @@ Sample success responses `XML` format
 </data> <requestId>0AF20EB0-EBBC-4B94-9B84-F3BAFAC53EDE</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "data": {
@@ -8259,7 +8555,7 @@ Sample success responses `XML` format
       "Status": 1
 ```
 
-`},`
+`}` `},`
 
 ```json
   "requestId": "0AF20EB0-EBBC-4B94-9B84-F3BAFAC53EDE"
@@ -8269,7 +8565,7 @@ For a list of error codes, see Error codes.
 
 #### 3.9.8 ValidateHcWarnings
 
-Verifies multiple risk items of the baseline check at a time. The verification operation verifies whether risk items of the baseline check have been fixed. If a risk item is verified, the risk item status is updated to Passed.
+Verifies multiple risk items of the baseline check at a time. The verification operation verifies whether risk items of the baseline check have been fixed. If a risk item is verified, the risk item status is updated to Passed. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8278,14 +8574,16 @@ Verifies multiple risk items of the baseline check at a time. The verification o
 | Uuids | String | Yes | 78645c8e-2e89- 441b- 8eb,a9622a6b- adb5-4dd3- 929e,0136460a- 1cb5-44e8-**** | The UUID list of servers that contain risk items to be verified. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 722C4F88-7867- 4E7B-8ADE-7451053 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ValidateHcWarnings &RiskIds=43 &Uuids=78645c8e-2e89-441b-8eb,a9622a6b-adb5-4dd3-929e,0136460a-1cb5-44e8-****
+http(s)://[Endpoint]/?Action=ValidateHcWarnings &RiskIds=43 &Uuids=78645c8e-2e89-441b-8eb,a9622a6b-adb5-4dd3-929e,0136460a-1cb5-44e8-**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8296,17 +8594,17 @@ Sample success responses `XML` format
 </ValidateHcWarningsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
    "RequestId":"722C4F88-7867-4E7B-8ADE-7451053"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.9.9 FixCheckWarnings
 
-Fixes risk items detected in the baseline check.
+Fixes risk items detected in the baseline check. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8320,15 +8618,17 @@ Fixes risk items detected in the baseline check.
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BatchId | Long | 52370 | The IDs of the returned risk items that have been fixed. |
 | RequestId | String | 76C1D7FD-DB1E- 45EA-B804- 3FBD9A1DD9C0 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=FixCheckWarnings &CheckParams=[{"checkId":8,"rules":[{"ruleId":"rule.ssh_Idle.interval","value":1,"paramList ":[{"paramName":"range_val","value":"600"},{"paramName":"range_val","value":"600"}]},{"rule Id":"rule.ssh_Idle.count","value":1,"paramList":[{"paramName":"range_val","value":"3"}]}]}] &RiskId=12 &Uuids=uuid-abcd-1234,uuid-abcd-2345
+http(s)://[Endpoint]/?Action=FixCheckWarnings &CheckParams=[{"checkId":8,"rules":[{"ruleId":"rule.ssh_Idle.interval","value":1,"paramList ":[{"paramName":"range_val","value":"600"},{"paramName":"range_val","value":"600"}]},{"rule Id":"rule.ssh_Idle.count","value":1,"paramList":[{"paramName":"range_val","value":"3"}]}]}] &RiskId=12 &Uuids=uuid-abcd-1234,uuid-abcd-2345 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8347,19 +8647,21 @@ Sample success responses `XML` format
     "requestId": "76C1D7FD-DB1E-45EA-B804-3FBD9A1DD9C0"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.10 Asset fingerprints
 
 #### 3.10.1 DescribePropertyCount
 
-Queries the statistics of asset fingerprints, including the numbers of processes, ports, software, users, and scheduled tasks.
+Queries the statistics of asset fingerprints, including the numbers of processes, ports, software, users, and scheduled tasks. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeProperty Count | The operation that you want to perform. Set the value to DescribePropertyCount. |
 | Type | String | No | port | The type of the asset fingerprint. Valid values: user sof t ware process port cron: scheduled tasks Not e If you do not specify a type, all types of asset fingerprints are queried. |
 | UuidList | String | No | [c4678332- ef3**,c46***] | The IDs of the assets, which are unique. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8376,10 +8678,10 @@ Queries the statistics of asset fingerprints, including the numbers of processes
 | Software | Integer | 5073 | The number of software assets. |
 | User | Integer | 114 | The number of users. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyCount
+http(s)://[Endpoint]/?Action=DescribePropertyCount &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8395,7 +8697,7 @@ Sample success responses `XML` format
 </DescribePropertyCount>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "User":340,
@@ -8406,11 +8708,11 @@ Sample success responses `XML` format
  "Cron":261
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 #### 3.10.2 DescribePropertyPortDetail
 
-Queries the details of a port.
+Queries the details of a port. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8421,6 +8723,8 @@ Queries the details of a port.
 | Uuid | String | No | 50d213b4-3a35- 427a-b8a5-*** | The ID of the asset, which is unique. |
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
 | PageSize | Integer | No | 6 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8448,7 +8752,7 @@ Queries the details of a port.
 | TotalCount | Integer | 762 | The total number of returned entries. |
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribePropertyPortDetail
@@ -8544,10 +8848,15 @@ Sample success responses `XML` format
 </DescribePropertyPortDetailResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "Propertys": [
+```
+
+`{`
+
+```json
        "InstanceName": "centos-xx",
               "Uuid": "00274759-73ef-485a-ae40-c2b5972f50cd",
              "Proto": "tcp",
@@ -8562,7 +8871,7 @@ Sample success responses `XML` format
            "BindIp": "0.0.0.0"
 ```
 
-`},`
+`},` `{`
 
 ```json
        "InstanceName": "paas-xxx-test1122",
@@ -8588,7 +8897,7 @@ Sample success responses `XML` format
              "BindIp": "::"
 ```
 
-`},`
+`},` `{`
 
 ```json
        "InstanceName": "paas-xx-2",
@@ -8605,7 +8914,7 @@ Sample success responses `XML` format
              "BindIp": "::"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "InstanceName": "paas-xx-2",
@@ -8622,7 +8931,7 @@ Sample success responses `XML` format
             "BindIp": "::"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "InstanceName": "paas-xx-2",
@@ -8639,7 +8948,7 @@ Sample success responses `XML` format
             "BindIp": "::"
 ```
 
-`],`
+`}` `],`
 
 ```json
 "PageInfo": {
@@ -8659,11 +8968,11 @@ Sample success responses `XML` format
   "requestId": "FAA793EF-5B14-4CDD-B3E0-B14D4342C422"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.3 DescribePropertyProcDetail
 
-Queries the details of a process.
+Queries the details of a process. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8675,6 +8984,8 @@ Queries the details of a process.
 | Remark | String | No | 1.2.3.4 | The name or IP address of the server. |
 | User | String | No | root | The user who runs the process. |
 | Uuid | String | No | c4678332-ef35- 4ad4-*** | The ID of the asset related to the process. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8714,10 +9025,10 @@ Queries the details of a process.
 | Uuid | String | c4678332-ef35- 4ad4-8358-6*** | The ID of the asset related to the process. |
 | RequestId | String | 64388374-A309- 4191-8606- 3346CCA364B0 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyProcDetail
+http(s)://[Endpoint]/?Action=DescribePropertyProcDetail &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8785,6 +9096,11 @@ Sample success responses `XML` format
 
 ```json
  "Propertys":[
+```
+
+`{`
+
+```json
    "User":"N/A",
    "Uuid":"90d4cc6a-806f-***",
    "Md5":"N/A",
@@ -8803,7 +9119,7 @@ Sample success responses `XML` format
    "InstanceName":"test_***"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "User":"N/A",
@@ -8824,11 +9140,11 @@ Sample success responses `XML` format
    "InstanceName":"tsy_***"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.4 DescribePropertyPortItem
 
-Queries information about ports.
+Queries information about ports. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8837,6 +9153,8 @@ Queries information about ports.
 | Port | String | No | 22 | The port number. |
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
 | PageSize | Integer | No | 5 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8854,10 +9172,10 @@ Queries information about ports.
 | TotalCount | Integer | 163 | The total number of entries. |
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyPortItem
+http(s)://[Endpoint]/?Action=DescribePropertyPortItem &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -8904,12 +9222,17 @@ Sample success responses `XML` format
 ```json
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
   "PropertyItems": [
+```
+
+`{`
+
+```json
         "Port": "22",
         "Proto": "tcp",
         "Count": 495
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Port": "111",
@@ -8917,7 +9240,7 @@ Sample success responses `XML` format
         "Count": 43
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Port": "6000",
@@ -8925,7 +9248,7 @@ Sample success responses `XML` format
         "Count": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Port": "53",
@@ -8933,7 +9256,7 @@ Sample success responses `XML` format
         "Count": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Port": "80",
@@ -8941,7 +9264,7 @@ Sample success responses `XML` format
         "Count": 38
 ```
 
-`],`
+`}` `],`
 
 ```json
   "PageInfo": {
@@ -8951,11 +9274,11 @@ Sample success responses `XML` format
       "CurrentPage": 1
 ```
 
-For a list of error codes, see Error codes.
+`}` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.5 DescribePropertyProcItem
 
-Queries information about all processes.
+Queries information about all processes. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -8967,6 +9290,8 @@ Queries information about all processes.
 | ForceFlush | Boolean | No | true | Specifies whether to force refresh the data that you want to query. |
 | Name | String | No | test | The name of the process. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8983,7 +9308,7 @@ Queries information about all processes.
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyProcItem
+http(s)://[Endpoint]/?Action=DescribePropertyProcItem &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9008,23 +9333,28 @@ Sample success responses `XML` format
 </DescribePropertyProcItem>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"BD8AD4C6-A169-4FA3-BA1F-ED40ED52973B",
  "PropertyItems":[
+```
+
+`{`
+
+```json
    "Name":"(sd-**)",
    "Count":7
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Name":"6Cm***",
    "Count":1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageInfo":{
@@ -9034,11 +9364,11 @@ Sample success responses `XML` format
   "CurrentPage":1
 ```
 
-For a list of error codes, see Error codes.
+`}` `}` For a list of error codes, see Error codes.
 
 #### 3.10.6 DescribePropertySoftwareDetail
 
-Queries details of a software asset.
+Queries details of a software asset. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9050,6 +9380,8 @@ Queries details of a software asset.
 | Remark | String | No | 1.2.3.4 | The name or IP address of the server. |
 | SoftwareVersion | String | No | 11 | The version of the software. |
 | Uuid | String | No | 50d213b4-3a35- 427a-b8a5-*** | The ID of the software asset. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9142,6 +9474,11 @@ Sample success responses `XML` format
 
 ```json
  "Propertys":[
+```
+
+`{`
+
+```json
    "Name":"abrt",
    "Uuid":"04c56617-23fc-***",
    "Ip":"1.2.3.1",
@@ -9156,7 +9493,7 @@ Sample success responses `XML` format
    "Path":"/etc/abrt"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Name":"abrt",
@@ -9173,11 +9510,11 @@ Sample success responses `XML` format
    "Path":"/etc/abrt"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.7 DescribePropertySoftwareItem
 
-Queries information about all software assets.
+Queries information about all software assets. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9186,6 +9523,8 @@ Queries information about all software assets.
 | Name | String | No | test | The name of the software. |
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9205,10 +9544,10 @@ Queries information about all software assets.
 |---|---|---|---|
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertySoftwareItem
+http(s)://[Endpoint]/?Action=DescribePropertySoftwareItem &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9247,28 +9586,33 @@ Sample success responses `XML` format
 
 ```json
     "PropertyItems": [
+```
+
+`{`
+
+```json
         "Name": "a11y-profile-manager-indicator",
         "Count": 1
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Name": "aaa_base",
         "Count": 23
 ```
 
-`],`
+`}` `],`
 
 ```json
      "requestId": "3A85CFCF-05C8-451A-9E41-C0D5E96BA407"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.8 DescribePropertyUserDetail
 
-Queries the details of an account in the account list.
+Queries the details of an account in the account list. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9282,6 +9626,8 @@ Queries the details of an account in the account list.
 | Uuid | String | No | 50d213b4-3a35- 427a-b8a5- 04b0c7e1f4d2 | The UUID of the asset. |
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 | PageSize | Integer | No | 2 | The number of entries to return on each page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9375,6 +9721,11 @@ Sample success responses `XML` format
 
 ```json
     "Propertys": [
+```
+
+`{`
+
+```json
         "LastLoginTime": "N/A",
         "GroupName": [
           "adm"
@@ -9395,7 +9746,7 @@ Sample success responses `XML` format
         "LastLoginIp": "N/A"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "LastLoginTime": "N/A",
@@ -9418,7 +9769,7 @@ Sample success responses `XML` format
         "LastLoginIp": "N/A"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.9 DescribePropertyUserItem
 
@@ -9431,6 +9782,8 @@ Queries the account information about an asset. q p
 | ForceFlush | Boolean | No | true | Specifies whether to force refresh the data that you want to query. |
 | PageSize | Integer | No | 2 | The number of entries to return on each page. |
 | User | String | No | adm | The account information about the asset fingerprint. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9447,10 +9800,10 @@ Queries the account information about an asset. q p
 |---|---|---|---|
 | RequestId | String | 76068BE2-F9C4- 4EDD-967B- F503B8CCDD3D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyUserItem
+http(s)://[Endpoint]/?Action=DescribePropertyUserItem &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9484,25 +9837,30 @@ Sample success responses `XML` format
 ```json
  "RequestId":"76068BE2-F9C4-4EDD-967B-F503B8CCDD3D",
  "PropertyItems":[
+```
+
+`{`
+
+```json
    "User":"a123456",
    "Count":1
 ```
 
-`},`
+`},` `{`
 
 ```json
    "User":"aaaa",
    "Count":1
 ```
 
-`},`
+`},` `{`
 
 ```json
    "User":"aaaa1",
    "Count":1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageInfo":{
@@ -9512,15 +9870,17 @@ Sample success responses `XML` format
   "CurrentPage":1
 ```
 
-For a list of error codes, see Error codes.
+`}` `}` Error codes For a list of error codes, see Error codes.
 
 #### 3.10.10 DescribeModuleConfig
 
-Queries the configurations of asset fingerprint modules.
+Queries the configurations of asset fingerprint modules. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeModuleC onfig | The operation that you want to perform. Set the value to DescribeModuleConfig. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9545,10 +9905,10 @@ Queries the configurations of asset fingerprint modules.
 | Region | String | outside-of-aliyun | The region where the instance is deployed. |
 | Uuid | String | lb-xxxx-xxxx-xxxx- xxxx | The UUID of the server. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeModuleConfig
+http(s)://[Endpoint]/?Action=DescribeModuleConfig &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9615,7 +9975,7 @@ Sample success responses `XML` format
             "GroupId": 173
 ```
 
-`},`
+`},` `{`
 
 ```json
             "InstanceName": "3a04702ca5a0",
@@ -9625,7 +9985,7 @@ Sample success responses `XML` format
             "GroupId": 343
 ```
 
-`]` `},`
+`}` `]` `},` `{`
 
 ```json
         "ConfigName": "sysvulfix",
@@ -9639,7 +9999,7 @@ Sample success responses `XML` format
             "GroupId": 173
 ```
 
-`},`
+`},` `{`
 
 ```json
             "InstanceName": "3a04702ca5a0",
@@ -9649,20 +10009,20 @@ Sample success responses `XML` format
             "GroupId": 343
 ```
 
-`]` `]` `},`
+`}` `]` `}` `]` `},`
 
 ```json
   "requestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
   "success": true
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 ### 3.11 Notifications
 
 #### 3.11.1 DescribeDingTalk
 
-Queries DingTalk notifications.
+Queries DingTalk notifications. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9670,6 +10030,8 @@ Queries DingTalk notifications.
 | RuleActionName | String | No | Vulnerability notification | The name of the notification. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
 | CurrentPage | Integer | No | 1 | The page number of the current page. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9695,10 +10057,10 @@ Queries DingTalk notifications.
 | TotalCount | Integer | 1 | The number of notifications. |
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeDingTalk
+http(s)://[Endpoint]/?Action=DescribeDingTalk &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9725,7 +10087,7 @@ onfigList>
 </data > <requestId>B256A525-7E42-4BB9-A27C-9017FDDFF1A2</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "data ": {
@@ -9757,7 +10119,7 @@ onfigList>
   "requestId": "B256A525-7E42-4BB9-A27C-9017FDDFF1A2"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 3.11.2 DescribeNoticeConfig
 
@@ -9767,6 +10129,8 @@ Queries the notification settings.
 |---|---|---|---|---|
 | Action | String | Yes | DescribeNoticeCo nfig | The operation that you want to perform. Set the value to DescribeNoticeConfig. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9778,10 +10142,10 @@ Queries the notification settings.
 | AliUid | Long | 121234141424 | The UID of the user. |
 | CurrentPage | Integer | 1 | The page number of the current page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeNoticeConfig
+http(s)://[Endpoint]/?Action=DescribeNoticeConfig &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9806,13 +10170,18 @@ Sample success responses `XML` format
 </data>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "code": 200,
   "data": {
   "RequestId":"D185B7FF-E24C-422D-83D3-C2A25C7A2727",
   "NoticeConfigList":[
+```
+
+`{`
+
+```json
       "Project":"sas_suspicious",
       "CurrentPage":1,
       "TimeLimit":1,
@@ -9820,7 +10189,7 @@ Sample success responses `XML` format
       "AliUid":10497611111111
 ```
 
-`},`
+`},` `{`
 
 ```json
       "Project":"sas_healthcheck",
@@ -9830,7 +10199,7 @@ Sample success responses `XML` format
       "AliUid":10422222222
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` `}` Error codes For a list of error codes, see Error codes.
 
 ### 3.12 Agent client
 
@@ -9843,15 +10212,17 @@ Queries the verification key used to run the agent installation command.
 | Action | String | Yes | SasInstallCode | The operation that you want to perform. Set the value to SasInstallCode. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B256A525-7E42- 4BB9-A27C- 9017FDDFF1A2 | The ID of the request. |
 | data | String | eDkhGP | The verification key used to run the installation command when you manually install the Threat Detection Service agent. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=SasInstallCode
+http(s)://[Endpoint]/?Action=SasInstallCode &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9863,18 +10234,18 @@ Sample success responses `XML` format
 </SasInstallCodeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
   "requestId": "B256A525-7E42-4BB9-A27C-9017FDDFF1A2",
   "data":"eDkhGP"
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 #### 3.12.2 PauseClient
 
-Enables or disables the Threat Detection Service agent.
+Enables or disables the Threat Detection Service agent. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9882,14 +10253,16 @@ Enables or disables the Threat Detection Service agent.
 | Uuids | String | Yes | uuid-1211-sadsd- 2131 | The UUIDs of servers for which the Threat Detection Service agent needs to be enabled or disabled. |
 | Value | String | Yes | 1 | The status of the Threat Detection Service agent. Valid values: 0: disabled 1: enabled |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6673D49C-A9AB- 40DD-B4A2- B92306701AE7 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=PauseClient &Uuids=uuid-1211-sadsd-2131 &Value=1
+http(s)://[Endpoint]/?Action=PauseClient &Uuids=uuid-1211-sadsd-2131 &Value=1 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9906,13 +10279,13 @@ Sample success responses `XML` format
  "requestId": "6673D49C-A9AB-40DD-B4A2-B92306701AE7"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.13 Export check results
 
 #### 3.13.1 ExportRecord
 
-Exports baseline check, asset fingerprint check, and AccessKey leak check results to Excel files.
+Exports baseline check, asset fingerprint check, and AccessKey leak check results to Excel files. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9924,16 +10297,18 @@ Exports baseline check, asset fingerprint check, and AccessKey leak check result
 |---|---|---|---|---|
 | Params | String | No | {"level":"high"} | The conditions to filter check results in the files to which the check results are exported. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | FileName | String | cms 20171101.xlsx _ | The name of the exported file. |
 | Id | Long | 131231 | The ID of the exported file. |
 | RequestId | String | 6673D49C-A9AB- 40DD-B4A2- B92306701AE7 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ExportRecord &ExportType=accessKey
+http(s)://[Endpoint]/?Action=ExportRecord &ExportType=accessKey &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9946,7 +10321,7 @@ Sample success responses `XML` format
 </ExportRecordResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "Id": 131231,
@@ -9954,13 +10329,13 @@ Sample success responses `XML` format
     "requestId": "6673D49C-A9AB-40DD-B4A2-B92306701AE7"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 3.14 Virus detection
 
 #### 3.14.1 OperateSuspiciousTargetConfig
 
-Configures virus detection.
+Configures virus detection. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -9974,14 +10349,16 @@ Configures virus detection.
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | ABCD-PSD2-5256- 1DSA-4222-JHBN | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=OperateSuspiciousTargetConfig &TargetOperations="[{\"targetType\":\"uuid\",\"target\":\"0585f81a-dd84-4ddf-9971-f59d12345 678\",\"flag\":\"add\"},{\"targetType\":\"uuid\",\"target\":\"01acfd9d-e6a4-4e61-b9eb-aae01 2345678\",\"flag\":\"add\"},{\"targetType\":\"uuid\",\"target\":\"04a0e735-ad32-4835-b635-0 45812345678\",\"flag\":\"add\"}]" &TargetType=uuid &Type=auto_breaking
+http(s)://[Endpoint]/?Action=OperateSuspiciousTargetConfig &TargetOperations="[{\"targetType\":\"uuid\",\"target\":\"0585f81a-dd84-4ddf-9971-f59d12345 678\",\"flag\":\"add\"},{\"targetType\":\"uuid\",\"target\":\"01acfd9d-e6a4-4e61-b9eb-aae01 2345678\",\"flag\":\"add\"},{\"targetType\":\"uuid\",\"target\":\"04a0e735-ad32-4835-b635-0 45812345678\",\"flag\":\"add\"}]" &TargetType=uuid &Type=auto_breaking &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9992,13 +10369,13 @@ Sample success responses `XML` format
 </OperateSuspiciousTargetConfigResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"ABCD-PSD2-5256-1DSA-4222-JHBN"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ## 4 Server Guard
 
@@ -10165,7 +10542,7 @@ Server log retrieval operations
 
 #### 4.2.1 Request structure
 
-Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
+Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. Description You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -10178,7 +10555,7 @@ Where:
 | aegis.[ RegionId].example.com |   |   |   |
 |   | Action | : the operation that yo |   |
 
-`endpoint` : the endpoint used to call a cloud service. The endpoint for the Server Guard service is For example, you can set this parameter to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : the request parameters. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters include information such as the API version and authentication information. For more information about the custom request parameters, see the corresponding operation description. Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
+`endpoint` : the endpoint used to call a cloud service. The endpoint for the Server Guard service is For example, you can set this parameter to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : the request parameters. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters include information such as the API version and authentication information. For more information about the custom request parameters, see the corresponding operation description. Example Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
 
 ```
 https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-test &Format=JSON&SecureTransport=true&SignatureMethod=HMAC-SHA1&SignatureNonce=15215528852396&S ignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018-03-02Txxxxxxx&Version=2018-01-16&Signatu re=xxxx%xxxx%3D
@@ -10257,17 +10634,19 @@ Apsara Stack Security API responses support both the XML and JSON formats. The s
 </Operation name+Response>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
+`}`
+
 ### 4.3 Asset management
 
 #### 4.3.1 CreateGroup
 
-You can call this operation to create an asset group.
+Description You can call this operation to create an asset group.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -10277,21 +10656,25 @@ You can call this operation to create an asset group.
 | GroupIndex | Integer | Yes | The sequence number of the asset group. |
 | GroupName | String | Yes | The name of the asset group. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateGroup &GroupFather=0 &GroupFlag=1 &GroupIndex=1 &GroupName=Web group
+https://aegis.[ RegionId].example.com/?Action=CreateGroup &GroupFather=0 &GroupFlag=1 &GroupIndex=1 &GroupName=Web group &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
+
+`}`
 
 #### 4.3.2 DescribeGroupSummary
 
@@ -10300,6 +10683,8 @@ You can call this operation to obtain a list of asset groups.
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeGroupSummary. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -10314,10 +10699,10 @@ You can call this operation to obtain a list of asset groups.
 | GroupFlag | Integer | The type of the asset group. Valid values: 1: indicates a non-leaf node group that contains child asset groups. 0: indicates a leaf node group. |
 | MachineNum | Integer | The number of ECS instances contained in the group. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupSummary
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupSummary &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -10331,7 +10716,7 @@ Sample responses (JSON format)
    "GroupId":346
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":1,
@@ -10341,7 +10726,7 @@ Sample responses (JSON format)
    "GroupId":343
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":1,
@@ -10351,7 +10736,7 @@ Sample responses (JSON format)
    "GroupId":345
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GroupFlag":0,
@@ -10361,16 +10746,18 @@ Sample responses (JSON format)
    "GroupId":336
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":4,
  "RequestId":"B9FB5483-3CA6-4520-9F89-068ED6AAC6EE"
 ```
 
+`}`
+
 #### 4.3.3 DescribeGroupStruct
 
-You can call this operation to query the asset group structure.
+Description You can call this operation to query the asset group structure. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -10383,6 +10770,8 @@ You can call this operation to query the asset group structure.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | TagIdList | String | No | The server tag ID. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -10398,10 +10787,10 @@ You can call this operation to query the asset group structure.
 | GroupFlag | Integer | The type of the asset group. Valid values: 1: indicates a non-leaf node group that contains child asset groups. 0: indicates a leaf node group. |
 | ChildGroups | List | The child asset groups. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupStruct &remark=x.x.x.x &tagIdList=123
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupStruct &remark=x.x.x.x &tagIdList=123 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -10417,7 +10806,7 @@ Sample response (JSON format)
             "childGroups":[]
 ```
 
-`},`
+`},` `{`
 
 ```json
             "groupIndex":3,
@@ -10427,6 +10816,11 @@ Sample response (JSON format)
             "groupLevel":1,
             "groupFlag":1,
             "childGroups":[
+```
+
+`{`
+
+```json
                     "groupIndex":1,
                     "groupFather":345,
                     "groupId":346,
@@ -10436,7 +10830,7 @@ Sample response (JSON format)
                     "childGroups":[]
 ```
 
-`]` `},`
+`}` `]` `},` `{`
 
 ```json
             "groupIndex":100,
@@ -10447,7 +10841,7 @@ Sample response (JSON format)
             "childGroups":[]
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"C4490A16-DDE4-4351-A366-57F9FCDC188F",
@@ -10455,9 +10849,11 @@ Sample response (JSON format)
     "GroupId":0
 ```
 
+`}`
+
 #### 4.3.4 DeleteGroup
 
-You can call this operation to delete a specified asset group.
+Description You can call this operation to delete a specified asset group.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -10465,25 +10861,29 @@ You can call this operation to delete a specified asset group.
 | GroupFlag | Integer | Yes | The type of the asset group. Valid values: 0: indicates a default group. 1: indicates a custom group. |
 | GroupId | Long | Yes | The ID of the asset group. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteGroup &GroupFlag=1 &GroupId=123
+https://aegis.[ RegionId].example.com/?Action=DeleteGroup &GroupFlag=1 &GroupId=123 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
+`}`
+
 #### 4.3.5 DescribeAllTag
 
-You can call this operation to query the tag information of all servers.
+Description You can call this operation to query the tag information of all servers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -10499,17 +10899,22 @@ You can call this operation to query the tag information of all servers.
 | Id | Long | The ID of the asset tag. |
 | TagName | String | The name of the asset tag. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeAllTag
+https://aegis.[ RegionId].example.com/?Action=DescribeAllTag &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"09D7C349-5306-4335-849A-10916F89E769",
  "EntityList":[
+```
+
+`{`
+
+```json
    "AliUid":"123",
    "GmtCreate":"1508897933000",
    "GmtModified":"1508897933000",
@@ -10517,7 +10922,7 @@ Sample responses (JSON format)
    "TagName":"test"
 ```
 
-`},` `]`
+`},` `]` `}`
 
 #### 4.3.6 DescribeBetachTag
 
@@ -10527,6 +10932,8 @@ You can call this operation to query the tag information of a specified server.
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeBetachTag. |
 | UuidList | String | No | The UUID of the server. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -10538,10 +10945,10 @@ You can call this operation to query the tag information of a specified server.
 | Id | Long | The ID of the asset tag. |
 | TagName | String | The name of the asset tag. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeBetachTag &UuidList=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribeBetachTag &UuidList=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -10549,6 +10956,11 @@ Sample responses (JSON format)
 ```json
  "RequestId":"09D7C349-5306-4335-849A-10916F89E769",
  "EntityList":[
+```
+
+`{`
+
+```json
    "AliUid":"123",
    "GmtCreate":"1508897933000",
    "GmtModified":"1508897933000",
@@ -10556,11 +10968,11 @@ Sample responses (JSON format)
    "TagName":"test"
 ```
 
-`},` `]`
+`},` `]` `}`
 
 #### 4.3.7 ModifyBetachTag
 
-You can call this operation to modify the tags of multiple specified servers.
+Description You can call this operation to modify the tags of multiple specified servers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -10568,11 +10980,13 @@ You can call this operation to modify the tags of multiple specified servers.
 | TagList | String | Yes | The server tag. Separate multiple tags with commas (,). |
 | UuidList | String | Yes | The UUID of the server. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=ModifyBetachTag &UuidList=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &TagList=test,test2
@@ -10586,38 +11000,44 @@ Sample responses (JSON format)
 
 #### 4.3.8 DeleteTag
 
-You can call this operation to delete a server tag.
+Description You can call this operation to delete a server tag. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteTag. |
 | Id | Long | No | The ID of the server tag. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteTag &Id=123
+https://aegis.[ RegionId].example.com/?Action=DeleteTag &Id=123 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
+`}`
+
 #### 4.3.9 DescribeAllEntity
 
-You can call this operation to query information about all servers.
+Description You can call this operation to query information about all servers.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeAllEntity. |
 | GroupId | Long | No | The ID of the asset group. |
 | Os | String | No | The operating system of the server. Valid values: win: indicates the Windows operating system. linux: indicates the Linux operating system. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -10629,18 +11049,23 @@ You can call this operation to query information about all servers.
 | InstanceName | String | The instance name of the server. |
 | Ip | String | The IP address of the server. Not e The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeAllEntity &GroupId=123 &Os=win
+https://aegis.[ RegionId].example.com/?Action=DescribeAllEntity &GroupId=123 &Os=win &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "Count":2,
     "RequestId":"09D7C349-5306-4335-849A-10916F89E769",
     "EntityList":[
+```
+
+`{`
+
+```json
             "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
             "Ip":"x.x.x.x",
             "GroupId":336,
@@ -10653,11 +11078,11 @@ Sample response (JSON format)
         ......
 ```
 
-`]`
+`]` `}`
 
 #### 4.3.10 DescribeEntityList
 
-You can call this operation to query servers of a specified type. For example, you can query servers by security event type.
+Description You can call this operation to query servers of a specified type. For example, you can query servers by security event type. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -10677,6 +11102,8 @@ You can call this operation to query servers of a specified type. For example, y
 | Trojan | String | No | Queries servers with webshells detected. Valid values: webshell: indicates trojan files. process: indicates trojan processes. |
 | Status | String | No | The status of the Server Guard Agent. Valid values: offline: indicates that the Server Guard Agent is offline. pause: indicates that the Server Guard Agent is disabled. |
 | TagIdList | String | No | The server tag ID. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -10703,13 +11130,13 @@ You can call this operation to query servers of a specified type. For example, y
 | Region | String | The ID of the region. |
 | Ip | String | The IP address of the server. Not e The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeEntityList &Account=remoteLogin &CurrentPage=1 &GroupId=1 &Health=exception &Os=windows &PageSize=20 &Patch=vul &RegionNo=**** &Remark=x.x.x.x &Status=offline &Suspicious=exception &TagIdList=1,2,3 &Trojan=webshell
+https://aegis.[ RegionId].example.com/?Action=DescribeEntityList &Account=remoteLogin &CurrentPage=1 &GroupId=1 &Health=exception &Os=windows &PageSize=20 &Patch=vul &RegionNo=**** &Remark=x.x.x.x &Status=offline &Suspicious=exception &TagIdList=1,2,3 &Trojan=webshell &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TotalCount":1,
@@ -10717,6 +11144,11 @@ Sample response (JSON format)
     "RequestId":"8BFB5273-6582-446A-9E0B-BAC0A1A468EA",
     "CurrentPage":1,
     "EntityList":[
+```
+
+`{`
+
+```json
             "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
             "Os":"linux",
             "ClientStatus":false,
@@ -10728,11 +11160,11 @@ Sample response (JSON format)
             "InstanceName":"****"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.11 ModifyEntityGroup
 
-You can call this operation to modify the asset group information for a specified server.
+Description You can call this operation to modify the asset group information for a specified server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -10746,25 +11178,29 @@ You can call this operation to modify the asset group information for a specifie
 |---|---|---|---|
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyEntityGroup &GroupId=11 &Uuids=inet-db626549-870c-4d3e-b0b5-4d8a5c7268a6,inet-db626549-870c-4d3e-b0b5-4d8a5c7268a
+https://aegis.[ RegionId].example.com/?Action=ModifyEntityGroup &GroupId=11 &Uuids=inet-db626549-870c-4d3e-b0b5-4d8a5c7268a6,inet-db626549-870c-4d3e-b0b5-4d8a5c7268a &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"C4490A16-DDE4-4351-A366-57F9FCDC188F",
 ```
 
+`}`
+
 #### 4.3.12 DescribeMachines
 
-You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group.
+Description You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -10779,6 +11215,8 @@ You can call this operation to query servers that match the specified criteria. 
 | TagIdList | String | No | The server tag ID. |
 | Mark | String | No | The IP address or instance name of the server. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -10790,10 +11228,10 @@ You can call this operation to query servers that match the specified criteria. 
 | Ip | String | The IP address of the server. Not e The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 | Uuid | String | The universally unique identifier (UUID) of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeMachines &GroupId=123
+https://aegis.[ RegionId].example.com/?Action=DescribeMachines &GroupId=123 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -10801,6 +11239,11 @@ Sample response (JSON format)
 ```json
     "Count":1,
     "Machines":[
+```
+
+`{`
+
+```json
             "groupId":336,
             "os":"linux",
             "instanceName":"****",
@@ -10808,20 +11251,24 @@ Sample response (JSON format)
             "ip":"192.168.x.x"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"C984123D-C8E0-4974-9CEE-ADD0596C46DB"
 ```
 
+`}`
+
 #### 4.3.13 DescribeMachineDetail
 
-You can call this operation to query the detailed information about a specified server.
+Description You can call this operation to query the detailed information about a specified server. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeMachineDetail. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -10847,10 +11294,10 @@ You can call this operation to query the detailed information about a specified 
 | Uuid | String | The UUID of the server. |
 | Tag | String | The server tag ID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeMachineDetail &Uuid=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac
+https://aegis.[ RegionId].example.com/?Action=DescribeMachineDetail &Uuid=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -10869,36 +11316,42 @@ Sample response (JSON format)
         "InstanceName":"****"
 ```
 
+`}` `}`
+
 #### 4.3.14 DescribePropertyScheduleConfig
 
-You can call this operation to query the update cycle of server information.
+Description You can call this operation to query the update cycle of server information. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertyScheduleConfig. |
 | Type | String | No | The type of the server information. Valid values: scheduleraccount period: indicates _ _ the user information. schedulerport period: indicates the _ _ port information. schedulerprocess period: indicates _ _ the process information. schedulersoftwareperiod: indicates _ _ the application software information. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Config | String | The update cycle in hours. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyScheduleConfig &Type=scheduler_account_period
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyScheduleConfig &Type=scheduler_account_period &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"C528C153-33E6-4CF5-8C90-A2E6FFD6191C",
  "Config": "2"
 ```
 
+`}`
+
 #### 4.3.15 ModifyPropertyScheduleConfig
 
-You can call this operation to modify the synchronization cycle of server information.
+Description You can call this operation to modify the synchronization cycle of server information. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -10911,27 +11364,31 @@ You can call this operation to modify the synchronization cycle of server inform
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | ModifyResult | Boolean | Indicates whether the modification is successful. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyPropertyScheduleConfig &Type=scheduler_software_period &ScheduleTime=24
+https://aegis.[ RegionId].example.com/?Action=ModifyPropertyScheduleConfig &Type=scheduler_software_period &ScheduleTime=24 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "ModifyResult":true,
  "RequestId":"2932CB78-51FB-459C-A3E8-76BE2968069A"
 ```
 
+`}`
+
 #### 4.3.16 DescribePropertyStatistic
 
-You can call this operation to query the server statistics.
+Description You can call this operation to query the server statistics. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertyStatistic. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -10952,16 +11409,21 @@ You can call this operation to query the server statistics.
 | UserGetDate | String | The user account information update time. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyStatistic &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyStatistic &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "PropertyStatistics":[
+```
+
+`{`
+
+```json
    "UserGetDate":1514373155000,
    "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
    "RootUserCount":1,
@@ -10972,11 +11434,13 @@ Sample responses (JSON format)
    "ProcGetDate":1514373133000
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"C1CACE7E-E868-4E44-A52E-4CB1463B62BB"
 ```
+
+`}`
 
 #### 4.3.17 DescribePropertyPortItem
 
@@ -10989,6 +11453,8 @@ p You can call this operation to obtain a list of listener ports on hosts.
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 | Port | String | No | The port number. |
 | ProcName | String | No | The process name. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -11005,10 +11471,10 @@ p You can call this operation to obtain a list of listener ports on hosts.
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortItem &Port=22
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortItem &Port=22 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
@@ -11016,20 +11482,27 @@ Sample responses (JSON format)
  "RequestId":"9D38986A-F145-4FA8-AE1C-1DB1C2BDF4C0",
  "CurrentPage":1,
  "PropertyPortItems":[
+```
+
+`{`
+
+```json
    "Proto":"tcp",
    "Port":"22",
    "Count":2
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":1
 ```
 
+`}`
+
 #### 4.3.18 DescribePropertyPortDetail
 
-You can call this operation to query detailed information about a listening port.
+Description You can call this operation to query detailed information about a listening port. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11050,6 +11523,8 @@ You can call this operation to query detailed information about a listening port
 | Mark | String | No | The IP address or instance name of the server. Not e Fuzzy match is supported. |
 | TagIdListString | String | No | The server tag ID. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -11074,13 +11549,13 @@ You can call this operation to query detailed information about a listening port
 | Proto | String | The network protocol, such as TCP and UDP. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDetail &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDetail &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TotalCount":1,
@@ -11088,6 +11563,11 @@ Sample response (JSON format)
     "RequestId":"D85484BB-4DC2-44EC-AD67-0B3765EC9213",
     "CurrentPage":1,
     "PropertyPorts":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Uuid":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
             "Proto":"tcp",
@@ -11098,15 +11578,17 @@ Sample response (JSON format)
             "BindIp":"0.0.0.0"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Count":1
 ```
 
+`}`
+
 #### 4.3.19 DescribePropertyPortDiff
 
-You can call this operation to query listening port changes.
+Description You can call this operation to query listening port changes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11140,10 +11622,10 @@ You can call this operation to query listening port changes.
 | Proto | String | The network protocol, such as TCP and UDP. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDiff &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDiff &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -11154,6 +11636,11 @@ Sample response (JSON format)
     "RequestId":"AFC431E3-F8E3-4652-91CB-9FF4053F282A",
     "CurrentPage":1,
     "PropertyPortDiffs":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Uuid":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
             "Proto":"tcp",
@@ -11166,11 +11653,11 @@ Sample response (JSON format)
             "BindIp":"0.0.0.0"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.20 DescribePropertyProcItem
 
-You can call this operation to obtain a list of server processes.
+Description You can call this operation to obtain a list of server processes. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -11191,22 +11678,27 @@ You can call this operation to obtain a list of server processes.
 | Count | Integer | The number of servers on which the process is running. |
 | Name | String | The process name. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcItem &Name=init
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcItem &Name=init &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "PropertyProcItems":[
+```
+
+`{`
+
+```json
    "Count":2,
    "Name":"init"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -11214,6 +11706,8 @@ Sample responses (JSON format)
  "CurrentPage":1,
  "Count":1
 ```
+
+`}`
 
 #### 4.3.21 DescribePropertyProcDetail
 
@@ -11256,16 +11750,21 @@ You can call this operation to query server process details.
 | User | String | The user who started the process. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "PropertyProcs":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Path":"/sbin/init",
             "Pname":"N/A",
@@ -11280,7 +11779,7 @@ Sample response (JSON format)
             "Md5":"70023aaf3f480d198d3b078d8c39****"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":1,
@@ -11290,9 +11789,11 @@ Sample response (JSON format)
     "Count":1
 ```
 
+`}`
+
 #### 4.3.22 DescribePropertyProcDiff
 
-You can call this operation to query process changes of a server.
+Description You can call this operation to query process changes of a server. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11308,6 +11809,8 @@ You can call this operation to query process changes of a server.
 | User | String | No | The user who started the process. |
 | Mark | String | No | The IP address or instance name of the server. Not e Fuzzy match is supported. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -11337,10 +11840,10 @@ You can call this operation to query process changes of a server.
 | StartTime | String | The time when the process was started. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDiff &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDiff &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -11351,6 +11854,11 @@ Sample response (JSON format)
     "RequestId":"D0951162-E933-4E2B-BDE2-B8FD806CEF9F",
     "CurrentPage":1,
     "PropertyProcDiffs":[
+```
+
+`{`
+
+```json
             "Pname":"N/A",
             "Ip":"x.x.x.x",
             "StartTime":"2017-12-26 22:34:45",
@@ -11366,11 +11874,11 @@ Sample response (JSON format)
             "Md5":"70023aaf3f480d198d3b078d8c39****"
 ```
 
-`},` `]`
+`},` `]` `}`
 
 #### 4.3.23 DescribePropertySoftwareItem
 
-You can call this operation to query servers that have been installed with the specified application.
+Description You can call this operation to query servers that have been installed with the specified application. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -11387,6 +11895,8 @@ You can call this operation to query servers that have been installed with the s
 |---|---|---|---|
 | SoftwareVersion | String | No | The version of the application. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -11398,10 +11908,10 @@ You can call this operation to query servers that have been installed with the s
 | Count | Integer | The number of servers that have been installed with the application. |
 | Name | String | The name of the application. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareItem &Name=spice-vdagent
+https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareItem &Name=spice-vdagent &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -11409,11 +11919,16 @@ Sample responses (JSON format)
 ```json
  "TotalCount":1,
  "PropertySoftwareItems":[
+```
+
+`{`
+
+```json
    "count":2,
    "Name":"spice-vdagent"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -11422,9 +11937,11 @@ Sample responses (JSON format)
  "count": 1,
 ```
 
+`}`
+
 #### 4.3.24 DescribePropertySoftwareDetail
 
-You can call this operation to query the details of software installed on a server.
+Description You can call this operation to query the details of software installed on a server. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11445,6 +11962,8 @@ You can call this operation to query the details of software installed on a serv
 | SoftwareVersion | String | No | The version of the software. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -11461,17 +11980,22 @@ You can call this operation to query the details of software installed on a serv
 | Version | String | The version of the software. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TotalCount":1,
     "PropertySoftwares":[
+```
+
+`{`
+
+```json
             "InstanceName":"****",
             "Path":"/usr/libexec/gvfs-gphoto2-volume-monitor",
             "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
@@ -11481,7 +12005,7 @@ Sample response (JSON format)
             "Ip":"x.x.x.x"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageSize":20,
@@ -11490,9 +12014,11 @@ Sample response (JSON format)
     "Count":1
 ```
 
+`}`
+
 #### 4.3.25 DescribePropertySoftwareDiff
 
-You can call this operation to query changes of applications that have been installed on servers.
+Description You can call this operation to query changes of applications that have been installed on servers. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -11509,6 +12035,8 @@ You can call this operation to query changes of applications that have been inst
 | SoftwareVersion | String | No | The version of the application. |
 | Mark | String | No | The IP address or instance name of the server. Not e Fuzzy match is supported. |
 | Uuid | String | No | The UUID of the server. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -11533,13 +12061,13 @@ You can call this operation to query changes of applications that have been inst
 | Version | String | The version of the application. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDiff &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b
+https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDiff &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1398,
@@ -11547,6 +12075,11 @@ Sample responses (JSON format)
  "RequestId":"3A0814BA-1A5D-43DC-A6E9-3B52EDD3700E",
  "CurrentPage":1,
  "PropertySoftwareDiffs":[
+```
+
+`{`
+
+```json
    "Path":"/etc/ghostscript",
    "Uuid":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
    "Version":"8.70",
@@ -11556,7 +12089,7 @@ Sample responses (JSON format)
    "Name":"ghostscript"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Path":"/usr/sbin/brctl",
@@ -11568,11 +12101,11 @@ Sample responses (JSON format)
    "Name":"bridge-utils"
 ```
 
-`]`
+`}` `]`
 
 #### 4.3.26 DescribePropertyUserItem
 
-You can call this operation to query user account information.
+Description You can call this operation to query user account information. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -11580,6 +12113,8 @@ You can call this operation to query user account information.
 | PageSize | Integer | No | The maximum number of records displayed on a page. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 | User | String | No | The username of the account. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -11595,26 +12130,31 @@ You can call this operation to query user account information.
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserItem
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserItem &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":2,
  "PropertyUserItems":[
+```
+
+`{`
+
+```json
    "User":"abrt",
    "Count": 2
 ```
 
-`},`
+`},` `{`
 
 ```json
    "User":"adm",
    "Count": 2
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":20,
@@ -11623,9 +12163,11 @@ Sample responses (JSON format)
  "Count": 2
 ```
 
+`}`
+
 #### 4.3.27 DescribePropertyUserDetail
 
-You can call this operation to query user account details.
+Description You can call this operation to query user account details. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11644,6 +12186,8 @@ You can call this operation to query user account details.
 | Mark | String | No | The IP address or instance name of the server. Not e Fuzzy match is supported. |
 | TagIdListString | String | No | The server tag ID. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -11671,10 +12215,10 @@ You can call this operation to query user account details.
 | User | String | The name of the user account. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -11686,6 +12230,11 @@ Sample response (JSON format)
     "CurrentPage":1,
     "Count":1,
     "PropertyUsers":[
+```
+
+`{`
+
+```json
             "GroupName":[
                 "root"
 ```
@@ -11705,11 +12254,11 @@ Sample response (JSON format)
             "PasswordExpirationDate":"never"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.28 DescribePropertyUserDiff
 
-You can call this operation to query user account changes.
+Description You can call this operation to query user account changes. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11724,6 +12273,8 @@ You can call this operation to query user account changes.
 | User | String | No | The name of the user account. |
 | Mark | String | No | The IP address or instance name of the server. Not e Fuzzy match is supported. |
 | Uuid | String | No | The universally unique identifier (UUID) of the server. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -11750,10 +12301,10 @@ You can call this operation to query user account changes.
 | User | String | The name of the user account. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDiff &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDiff &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -11764,6 +12315,11 @@ Sample response (JSON format)
     "RequestId":"20903EB6-E695-44A4-85C2-B9DFE4376F1F",
     "CurrentPage":1,
     "PropertyUserDiffs":[
+```
+
+`{`
+
+```json
             "GroupName":[
                 "root"
 ```
@@ -11788,11 +12344,11 @@ Sample response (JSON format)
             "PasswordExpirationDate":"never"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.29 PushAllTask
 
-You can call this operation to perform a quick security check on specified servers.
+Description You can call this operation to perform a quick security check on specified servers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -11802,6 +12358,8 @@ You can call this operation to perform a quick security check on specified serve
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Tasks | String | No | The type of the security check task. Valid values: OVALENTITY: indicates all security _ check tasks. CMS: indicates a check for CMS vulnerabilities. SYSVUL: indicates a check for system software vulnerabilities. HEALTHCHECK: indicates a baseline _ check. WEBSHELL: indicates a check for webshells. PROCSNAPSHOT: indicates a check on _ process data. PORT SNAPSHOT: indicates a check on _ port data. ACCOUNT SNAPSHOT: indicates a _ check on account data. SOFTWARESNAPSHOT: indicates a _ check on application data. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -11825,18 +12383,23 @@ You can call this operation to perform a quick security check on specified serve
 | Success | String | The task delivery result. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=PushAllTask &Tasks=OVAL_ENTITY &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5****
+https://aegis.[ RegionId].example.com/?Action=PushAllTask &Tasks=OVAL_ENTITY &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5**** &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"8A773295-DB9C-423D-979E-C0E8B9F88FEA",
     "PushTaskRsp":{
         "PushTaskResultList":[
+```
+
+`{`
+
+```json
                 "InstanceName":"****",
                 "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5****",
                 "Message":"{\"code\":\"clinent_offline\",\"message\":\"The client is offl
@@ -11850,16 +12413,18 @@ ine\",\"success\":false}",
                 "GroupId":336
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 4.3.30 DescribeTopRiskyAssets
 
-You can call this operation to query top N vulnerable servers.
+Description You can call this operation to query top N vulnerable servers.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeTopRiskyAssets. |
 | PageSize | Integer | No | The number of records to return, that is, the top N vulnerable servers. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -11872,10 +12437,10 @@ You can call this operation to query top N vulnerable servers.
 | VulCount | String | The number of detected vulnerabilities. |
 | WarningCount | String | The number of detected security events. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTopRiskyAssets &PageSize=1
+https://aegis.[ RegionId].example.com/?Action=DescribeTopRiskyAssets &PageSize=1 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -11884,6 +12449,11 @@ Sample response (JSON format)
     "TotalCount": 1,
     "RequestId": "5D8D4058-2EE3-4599-9951-BDAA3340AD4D",
     "TopRiskyAssets": [
+```
+
+`{`
+
+```json
             "Ip": "192.168.x.x",
             "Uuid": "inet-dsljaoe-jjdsklaj****",
             "VulCount": 2,
@@ -11891,36 +12461,40 @@ Sample response (JSON format)
             "WarningCount": 2
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.3.31 UnbindAegis
 
-You can call this operation to disable Server Guard for a specified server. Not e After this operation, Server Guard is not able to detect any security events on this server.
+Description You can call this operation to disable Server Guard for a specified server. Not e After this operation, Server Guard is not able to detect any security events on this server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to UnbindAegis. |
 | Uuids | String | Yes | The UUID of the server. Separate multiple UUIDs with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=UnbindAegis &Uuids=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac,6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"8BFB5273-6582-446A-9E0B-BAC0A1A468EA"
 ```
 
+`}`
+
 #### 4.3.32 UninstallAegis
 
-You can call this operation to uninstall the Server Guard client from a specified server. Not e After the client is uninstalled, Server Guard is not able to detect the security events on this server.
+Description You can call this operation to uninstall the Server Guard client from a specified server. Not e After the client is uninstalled, Server Guard is not able to detect the security events on this server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -11928,11 +12502,13 @@ You can call this operation to uninstall the Server Guard client from a specifie
 | Uuids | String | Yes | The UUID of the server. Separate multiple UUIDs with commas (,). |
 | Reason | String | No | The reason for uninstalling the client. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=UninstallAegis &Reason=Suspend the feature &Uuids=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac,6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac
@@ -11944,17 +12520,21 @@ Sample responses (JSON format)
  "RequestId":"8BFB5273-6582-446A-9E0B-BAC0A1A468EA"
 ```
 
+`}`
+
 ### 4.4 Vulnerability management
 
 #### 4.4.1 DescribeTarget
 
-You can call this operation to query the servers that are checked for the specified type of risks in vulnerability management.
+Description You can call this operation to query the servers that are checked for the specified type of risks in vulnerability management. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeTarget. |
 | Type | String | No | The type of the risks. For example, vul represents vulnerabilities. |
 | Config | String | No | The type of the vulnerabilities in JSON format. For example, {"vulType":"cve"} represents Linux software vulnerabilities. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -11967,31 +12547,36 @@ You can call this operation to query the servers that are checked for the specif
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTarget &Config={"vulType":"cve"} &Type=vul
+https://aegis.[ RegionId].example.com/?Action=DescribeTarget &Config={"vulType":"cve"} &Type=vul &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "TotalCount":2,
     "RequestId":"1FF54D56-47ED-47FB-B4DB-2BDF3857D526",
     "Targets":[
+```
+
+`{`
+
+```json
             "Target":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
             "TargetType":"uuid"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Target":"336",
             "TargetType":"groupId"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.4.2 ModifyVulTarget
 
-You can call this operation to modify the servers for detecting a specified type of vulnerability in the vulnerability management settings.
+Description You can call this operation to modify the servers for detecting a specified type of vulnerability in the vulnerability management settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12003,26 +12588,30 @@ You can call this operation to modify the servers for detecting a specified type
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyVulTarget &Config={"vulType":"cve"} &Target={"target":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818","targetType":"uuid","flag": "add"}
+https://aegis.[ RegionId].example.com/?Action=ModifyVulTarget &Config={"vulType":"cve"} &Target={"target":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818","targetType":"uuid","flag": "add"} &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"1FF54D56-47ED-47FB-B4DB-2BDF3857D526"
 ```
 
+`}`
+
 #### 4.4.3 DescribeVulTargetStatistics
 
-You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration.
+Description You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulTargetStatistics. |
 | Type | String | No | The vulnerability type. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12041,17 +12630,22 @@ You can call this operation to query the information about target hosts for whic
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a host asset UUID. |
 | Target | String | The asset group ID or host asset UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulTargetStatistics &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulTargetStatistics &Type=cve &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "TargetStats":[
+```
+
+`{`
+
+```json
    "VulType":"cve","Targets":[]
 ```
 
@@ -12063,15 +12657,19 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
+`}`
+
 #### 4.4.4 DescribeTargetConfig
 
-You can call this operation to query the vulnerability scanning configuration information of a specified server.
+You can call this operation to query the vulnerability scanning configuration information of a specified server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeTargetConfig. |
 | Type | String | No | The type of the vulnerability. |
 | Uuid | String | No | The UUID of the server. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12082,28 +12680,33 @@ You can call this operation to query the vulnerability scanning configuration in
 | Config | String | Whether vulnerability scanning is enabled. Valid values: on and off. |
 | OverAllConfig | String | Whether global vulnerability scanning is enabled. Valid values: on and off. Not e The global vulnerability scanning configuration overrides the vulnerability scanning configuration for a single server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTargetConfig &Type=cve &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribeTargetConfig &Type=cve &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"092094BF-910F-4CE6-BE93-C3989B607977",
  "TargetConfigs":[
+```
+
+`{`
+
+```json
    "Config":"off",
    "Type":"cve",
    "OverAllConfig":"off"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.4.5 ModifyTargetConfig
 
-You can call this operation to modify the vulnerability scanning configuration for a specified server.
+Description You can call this operation to modify the vulnerability scanning configuration for a specified server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12112,6 +12715,8 @@ You can call this operation to modify the vulnerability scanning configuration f
 | Uuid | String | No | The UUID of the server. |
 | Config | String | No | The vulnerability scanning configuration. Valid values: on: indicates enabled. off: indicates disabled. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -12119,23 +12724,27 @@ You can call this operation to modify the vulnerability scanning configuration f
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyTargetConfig &Config=on &Type=cms &Uuid=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=ModifyTargetConfig &Config=on &Type=cms &Uuid=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"092094BF-910F-4CE6-BE93-C3989B607977"
 ```
 
+`}`
+
 #### 4.4.6 DescribeVulConfig
 
-You can call this operation to query the global scanning configuration for each vulnerability type.
+Description You can call this operation to query the global scanning configuration for each vulnerability type. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulConfig. |
 | Type | String | No | The type of the vulnerability. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12148,22 +12757,29 @@ You can call this operation to query the global scanning configuration for each 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulConfig &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulConfig &Type=cve &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"A8E09216-31DF-45B6-A76B-E3F053752C07",
  "TargetConfigs":[
+```
+
+`{`
+
+```json
    "Config":"off",
    "Type":"cve"
 ```
 
+`}` `}`
+
 #### 4.4.7 ModifyVulConfig
 
-You can call this operation to modify the global vulnerability scanning configuration. Not e The global vulnerability scanning configuration overrides the vulnerability scanning configuration for a single server.
+Description You can call this operation to modify the global vulnerability scanning configuration. Not e The global vulnerability scanning configuration overrides the vulnerability scanning configuration for a single server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12171,36 +12787,42 @@ You can call this operation to modify the global vulnerability scanning configur
 | Type | String | No | The type of the vulnerability. |
 | Config | String | No | The vulnerability scanning configuration. Valid values: on: indicates enabled. off: indicates disabled. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyVulConfig &Config=on &Type=cms
+https://aegis.[ RegionId].example.com/?Action=ModifyVulConfig &Config=on &Type=cms &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"A8E09216-31DF-45B6-A76B-E3F053752C07"
 ```
 
+`}`
+
 #### 4.4.8 DescribeAutoDelConfig
 
-You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings.
+Description You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeAutoDelConfig. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Days | Integer | The number of days that an invalid vulnerability is kept for. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeAutoDelConfig
@@ -12213,30 +12835,36 @@ Sample responses (JSON format)
  "Days":7
 ```
 
+`}`
+
 #### 4.4.9 ModifyAutoDelConfig
 
-You can call this operation to modify the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings.
+Description You can call this operation to modify the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyAutoDelConfig. |
 | Days | Integer | No | The number of days that an invalid vulnerability is kept for. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyAutoDelConfig &Days=7
+https://aegis.[ RegionId].example.com/?Action=ModifyAutoDelConfig &Days=7 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
+
+`}`
 
 #### 4.4.10 DescribeVulLevel
 
@@ -12246,27 +12874,31 @@ escpto You can call this operation to query the vulnerability severities that re
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulLevel. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | ConcernLevels | List | The list of vulnerability severities that require attention. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulLevel
+https://aegis.[ RegionId].example.com/?Action=DescribeVulLevel &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"7935CB7A-D1B7-4EE6-93D0-FF3D040CF19B",
  "ConcernLevels":["high","medium"]
 ```
 
+`}`
+
 #### 4.4.11 ModifyVulLevel
 
-You can call this operation to change the vulnerability severities that require attention.
+Description You can call this operation to change the vulnerability severities that require attention. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12279,25 +12911,29 @@ You can call this operation to change the vulnerability severities that require 
 |---|---|---|---|
 | ConcernLevels | String | No | The vulnerability severities that require attention. Separate multiple severities with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyVulLevel &ConcernLevel=high,medium
+https://aegis.[ RegionId].example.com/?Action=ModifyVulLevel &ConcernLevel=high,medium &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"7935CB7A-D1B7-4EE6-93D0-FF3D040CF19B"
 ```
 
+`}`
+
 #### 4.4.12 CreateVulWhitelist
 
-You can call this operation to add a specified vulnerability to the whitelist. Server Guard does not report the vulnerabilities on the whitelist.
+Description You can call this operation to add a specified vulnerability to the whitelist. Server Guard does not report the vulnerabilities on the whitelist. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12309,21 +12945,23 @@ You can call this operation to add a specified vulnerability to the whitelist. S
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateVulWhitelist &Reason=The vulnerability is not harmful. &Whitelist=[{"name":"oval:com.redhat.rhsa:def:20173263","type":"cve","aliasName":"RHSA-20 17:3263: curl security update"}]
+https://aegis.[ RegionId].example.com/?Action=CreateVulWhitelist &Reason=The vulnerability is not harmful. &Whitelist=[{"name":"oval:com.redhat.rhsa:def:20173263","type":"cve","aliasName":"RHSA-20 17:3263: curl security update"}] &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
+`}`
+
 #### 4.4.13 DescribeVulWhitelist
 
-You can call this operation to obtain the whitelist of vulnerabilities.
+Description You can call this operation to obtain the whitelist of vulnerabilities. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12343,24 +12981,29 @@ You can call this operation to obtain the whitelist of vulnerabilities.
 | Reason | String | The reason for adding the vulnerability to the whitelist. |
 | Type | String | The vulnerability type. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulWhitelist &CurrentPage=1 &PageSize=20
+https://aegis.[ RegionId].example.com/?Action=DescribeVulWhitelist &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "VulWhitelists":[
+```
+
+`{`
+
+```json
    "Name":"oval:com.redhat.rhsa:def:20173263",
    "AliasName":"RHSA-2017:3263: curl security update",
    "Type":"cve",
    "Reason":"Not fixed at present"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSize":3,
@@ -12370,32 +13013,36 @@ Sample responses (JSON format)
 
 #### 4.4.14 DeleteVulWhitelist
 
-You can call this operation to delete a specified vulnerability from the vulnerability whitelist. After this operation, Server Guard re-detects and reports the vulnerability.
+Description You can call this operation to delete a specified vulnerability from the vulnerability whitelist. After this operation, Server Guard re-detects and reports the vulnerability. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DeleteVulWhitelist. |
 | Whitelist | String | No | The vulnerability to be deleted from the whitelist, in JSON format. For more information, see the sample request. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteVulWhitelist &Whitelist=[{"name":"oval:com.redhat.rhsa:def:20173263","type":"cve","aliasName":"RHSA-20 17:3263: curl security update"}]
+https://aegis.[ RegionId].example.com/?Action=DeleteVulWhitelist &Whitelist=[{"name":"oval:com.redhat.rhsa:def:20173263","type":"cve","aliasName":"RHSA-20 17:3263: curl security update"}] &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
+`}`
+
 #### 4.4.15 DescribeGroupedVul
 
-You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard.
+Description You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12442,16 +13089,21 @@ You can call this operation to query information about the specified vulnerabili
 | TotalCount | Integer | The total number of vulnerabilities. |
 | Type | String | The type of the vulnerability. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupedVul &CurrentPage=1 &Dealed=y &Direction=asc &LastTsEnd=1517414400000 &LastTsStart=1517414500000 &Level=high &Name=oval:com.redhat.rhsa:def:20170817 &Necessity=asap &OrderBy=name &PageSize=20 &PatchId=27001 &Product=redhat &SourceIp= &StatusList=1,2 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupedVul &CurrentPage=1 &Dealed=y &Direction=asc &LastTsEnd=1517414400000 &LastTsStart=1517414500000 &Level=high &Name=oval:com.redhat.rhsa:def:20170817 &Necessity=asap &OrderBy=name &PageSize=20 &PatchId=27001 &Product=redhat &SourceIp= &StatusList=1,2 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "GroupedVulItems":[
+```
+
+`{`
+
+```json
    "Name":"oval:com.redhat.rhsa:def:20170817",
    "Status":7,
    "Count":0,
@@ -12474,9 +13126,11 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
+`}`
+
 #### 4.4.16 DescribeVulList
 
-You can call this operation to obtain the vulnerability list of the specified host asset.
+Description You can call this operation to obtain the vulnerability list of the specified host asset. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12493,6 +13147,8 @@ You can call this operation to obtain the vulnerability list of the specified ho
 |---|---|---|---|
 | StatusList | String | No | The status of the vulnerability. Valid values: 1: indicates that the vulnerability has not been fixed. 2: indicates that the vulnerability fix failed. 3: indicates that the host has failed to be rolled back to the version before the vulnerability fix. 4: indicates that the vulnerability is being fixed. 5: indicates that the host is being rolled back to the version before the vulnerability fix. 6: indicates that the vulnerability fix is being verified. 7: indicates that the vulnerability has been fixed successfully. 8: indicates that the vulnerability has been fixed successfully, and that the host is waiting for restart. 9: indicates that the host has been rolled back to the version before the vulnerability fix. 10: indicates that the vulnerability has been ignored. 11: indicates that the host has been rolled back to the version before the vulnerability fix, and that the host is waiting for restart. 12: indicates that the vulnerability does not exist. 20: indicates that the vulnerability is invalid. Not e Note: The statuses are specified in a single parameter, separated with commas (,). |
 | Uuids | String | No | The UUID of the host asset. Separate multiple host asset UUIDs with commas (,). |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12528,10 +13184,10 @@ You can call this operation to obtain the vulnerability list of the specified ho
 | Type | String | The type of the vulnerability. |
 | Uuid | String | The UUID of the host asset. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulList &CurrentPage=1 &Dealed=n &Level=serious &Name=RHSA-2017:1100: nss and nss-util security update &Necessity=asap &PageSize=20 &StatusList=1 &Type=cve &Uuids=f293ade2-e5b1-4cc0-99a6-cc993a4158cc
+https://aegis.[ RegionId].example.com/?Action=DescribeVulList &CurrentPage=1 &Dealed=n &Level=serious &Name=RHSA-2017:1100: nss and nss-util security update &Necessity=asap &PageSize=20 &StatusList=1 &Type=cve &Uuids=f293ade2-e5b1-4cc0-99a6-cc993a4158cc &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -12542,6 +13198,11 @@ Sample responses (JSON format)
  "RequestId":"2E35F7F7-DA6D-46A5-BA9D-8751BDAE7710",
  "CurrentPage":1,
  "VulRecords":[
+```
+
+`{`
+
+```json
    "Uuid":"b688bf9f-1fd9-42c8-bb34-28697f562dc5",
    "Necessity":"nntf",
    "ModifyTs":1512949391000,
@@ -12559,17 +13220,19 @@ Sample responses (JSON format)
    "Level":"high"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.4.17 DescribeVulDetails
 
-You can call this operation to query detailed information about a vulnerability.
+Description You can call this operation to query detailed information about a vulnerability. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulDetails. |
 | Type | Integer | Yes | The type of the vulnerability. |
 | Name | String | Yes | The name of the vulnerability. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12606,13 +13269,13 @@ You can call this operation to query detailed information about a vulnerability.
 | Vendor | String | The vendors that are affected by the vulnerability. |
 | VulLevel | String | The severity level of the vulnerability. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulDetails &Name=oval:com.redhat.rhsa:def:20170036 &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulDetails &Name=oval:com.redhat.rhsa:def:20170036 &Type=cve &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "Cves": [{
@@ -12636,9 +13299,11 @@ or Linux operating systems. The use-after-free vulnerability is found in the net
  "RequestId": "70DEE6B7-A167-4B5D-ADAA-3631443D5190"
 ```
 
+`}`
+
 #### 4.4.18 DescribeVulNumStatistics
 
-You can call this operation to query vulnerability statistics.
+Description You can call this operation to query vulnerability statistics.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12646,6 +13311,8 @@ You can call this operation to query vulnerability statistics.
 | StartTs | Long | No | The start time for statistics collection. |
 | EndTs | Long | No | The end time for statistics collection. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12667,10 +13334,10 @@ You can call this operation to query vulnerability statistics.
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulNumStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=DescribeVulNumStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "VulHighTotal":0,
@@ -12689,9 +13356,11 @@ Sample responses (JSON format)
     "VulLaterSum":0
 ```
 
+`}`
+
 #### 4.4.19 DescribeVulLevelStatistics
 
-You can call this operation to obtain the statistics on vulnerabilities by vulnerability severity.
+Description You can call this operation to obtain the statistics on vulnerabilities by vulnerability severity. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12720,7 +13389,7 @@ You can call this operation to obtain the statistics on vulnerabilities by vulne
 | VulLaterSum | Integer | The number of medium-priority vulnerabilities. |
 | VulNntfSum | Integer | The number of low-priority vulnerabilities. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeVulLevelStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5
@@ -12731,6 +13400,11 @@ Sample responses (JSON format)
 ```json
  "TotalCount":0,
  "LevelStatistics":[
+```
+
+`{`
+
+```json
    "VulHighTotal":0,
    "CveNum":0,
    "VulMediumTotal":0,
@@ -12747,7 +13421,7 @@ Sample responses (JSON format)
    "VulLaterSum":0
 ```
 
-`},`
+`},` `{`
 
 ```json
    "VulHighTotal":0,
@@ -12766,15 +13440,17 @@ Sample responses (JSON format)
    "VulLaterSum":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"9B062D3F-AD5A-4D3E-9A7A-45CAC2713FC0"
 ```
 
+`}`
+
 #### 4.4.20 DescribeVulMachineList
 
-You can call this operation to query the vulnerability statistics of a specified server.
+Description You can call this operation to query the vulnerability statistics of a specified server. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12788,6 +13464,8 @@ You can call this operation to query the vulnerability statistics of a specified
 | StartTs | Long | No | The start time of the time frame during which the statistics were collected. |
 | EndTs | Long | No | The end time of the time frame during which the statistics were collected. |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -12809,17 +13487,22 @@ You can call this operation to query the vulnerability statistics of a specified
 | VulNntfSum | Integer | The number of low-priority vulnerabilities. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulMachineList &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=DescribeVulMachineList &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":0,
  "MachineStatistics":[
+```
+
+`{`
+
+```json
    "Uuid":"577f9886-bf66-4c3c-88ac-28c938cb527b",
    "VulHighTotal":0,
    "CveNum":1,
@@ -12836,15 +13519,17 @@ Sample responses (JSON format)
    "VulLaterSum":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"A3F8BE63-9BA1-450D-BB5D-CE9205E6645D"
 ```
 
+`}`
+
 #### 4.4.21 OperateVul
 
-You can call this operation to handle detected vulnerabilities.
+Description You can call this operation to handle detected vulnerabilities. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12857,11 +13542,13 @@ You can call this operation to handle detected vulnerabilities.
 | Reason | String | No | The reason why the vulnerability is ignored if the OperateType parameter is set to vul ignore. _ |
 | Type | String | No | The type of the vulnerability. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=OperateVul &Info=[{"name":"oval:com.redhat.rhsa:def:20171100","uuid":"e49fb179-bbe7-4b6c-ab65-e106fb 58d235","tag":"oval"}] &OperateType=vul_ignore &Reason=Postpone the fix &Type=cve
@@ -12873,9 +13560,11 @@ Sample responses (JSON format)
  "RequestId":"A3F8BE63-9BA1-450D-BB5D-CE9205E6645D"
 ```
 
+`}`
+
 #### 4.4.22 ModifyBatchIgnoreVul
 
-You can call this operation to ignore multiple vulnerabilities.
+Description You can call this operation to ignore multiple vulnerabilities. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12883,17 +13572,19 @@ You can call this operation to ignore multiple vulnerabilities.
 | Info | String | No | The vulnerabilities to be ignored, in JSON format. For more information, see the sample request. |
 | Reason | String | No | The reason for ignoring the vulnerabilities. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyBatchIgnoreVul &Info=[{"name":"oval:com.redhat.rhsa:def:20162972","type":"cve","aliasName":"RHSA-2016:29 72: vim security update (Moderate)"}] &Reason=Postpone handling
+https://aegis.[ RegionId].example.com/?Action=ModifyBatchIgnoreVul &Info=[{"name":"oval:com.redhat.rhsa:def:20162972","type":"cve","aliasName":"RHSA-2016:29 72: vim security update (Moderate)"}] &Reason=Postpone handling &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
@@ -12901,7 +13592,7 @@ Sample responses (JSON format)
 
 #### 4.4.23 DeleteVulBatch
 
-You can call this operation to delete a specified batch of vulnerabilities.
+Description You can call this operation to delete a specified batch of vulnerabilities. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12909,25 +13600,29 @@ You can call this operation to delete a specified batch of vulnerabilities.
 | BatchName | String | No | The name of the vulnerability batch. |
 | Resource | String | No | The scenario of the vulnerability batch. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteVulBatch &BatchName=Vulnerabilities managed by network security team &Resource=vulnerability
+https://aegis.[ RegionId].example.com/?Action=DeleteVulBatch &BatchName=Vulnerabilities managed by network security team &Resource=vulnerability &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
+`}`
+
 #### 4.4.24 ExportVul
 
-You can call this operation to export vulnerability records that match the specified criteria.
+Description You can call this operation to export vulnerability records that match the specified criteria.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -12947,6 +13642,8 @@ You can call this operation to export vulnerability records that match the speci
 | Name | Type | Required | Description |
 | Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -12959,13 +13656,13 @@ You can call this operation to export vulnerability records that match the speci
 | Progress | Integer | The export progress. |
 | TotalCount | Integer | The total number of records that have been exported. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ExportVul for example, RHSA-2016:2972: vim security update (Moderate), and trigger another vulnerab ility scan. &BatchName=Security group test &Dealed=y &Level=low &Name=oval:com.redhat.rhsa:def:20162972 &Necessity=later &Resource=vulnerability &StatusList=1 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=ExportVul for example, RHSA-2016:2972: vim security update (Moderate), and trigger another vulnerab ility scan. &BatchName=Security group test &Dealed=y &Level=low &Name=oval:com.redhat.rhsa:def:20162972 &Necessity=later &Resource=vulnerability &StatusList=1 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "FileName":"cve_20180303",
@@ -12973,14 +13670,18 @@ Sample responses (JSON format)
  "Id":36
 ```
 
+`}`
+
 #### 4.4.25 DescribeVulExportInfo
 
-You can call this operation to query a vulnerability record export task.
+Description You can call this operation to query a vulnerability record export task. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeVulExportInfo. |
 | ExportId | Long | No | The ID of the vulnerability record export task. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -12997,13 +13698,13 @@ You can call this operation to query a vulnerability record export task.
 | Progress | Integer | The export progress. |
 | TotalCount | Integer | The total number of records that have been exported. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulExportInfo &ExportId=10
+https://aegis.[ RegionId].example.com/?Action=DescribeVulExportInfo &ExportId=10 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
  "Status":"success",
@@ -13022,11 +13723,13 @@ p?Expires=1511514309&OSSAccessKeyId=<yourAccessKeyId>&Signature=xxxx%xxxx%3D",
 
 #### 4.5.1 DescribeStrategy
 
-You can call this operation to obtain a list of baseline check policies.
+Description You can call this operation to obtain a list of baseline check policies. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeStrategy. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13048,10 +13751,10 @@ You can call this operation to obtain a list of baseline check policies.
 | TargetType | String | The return value is fixed to groupId, which indicates that the value of the Target parameter is an asset group ID. |
 | Target | String | The ID of the asset group. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategy
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategy &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -13060,25 +13763,35 @@ Sample responses (JSON format)
     "Count": 2,
     "RequestId": "4F914046-4358-4BA9-BE42-83AA1FD1FF52",
     "Strategies": [
+```
+
+`{`
+
+```json
             "Name": "test",
             "RiskCount": 2,
             "CycleDays": 3,
             "Type": 2,
             "CycleStartTime": 6,
             "ConfigTargets": [
+```
+
+`{`
+
+```json
                     "Target": "4361221",
                     "Flag": "add",
                     "TargetType": "groupId"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Id": 15161,
             "EcsCount": 0
 ```
 
-`},`
+`},` `{`
 
 ```json
             "Name": "Default policy",
@@ -13087,23 +13800,28 @@ Sample responses (JSON format)
             "Type": 1,
             "CycleStartTime": 0,
             "ConfigTargets": [
+```
+
+`{`
+
+```json
                     "Target": "none",
                     "Flag": "del",
                     "TargetType": "flag_item"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Id": 20,
             "EcsCount": 48
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.5.2 DescribeStratetyDetail
 
-You can call this operation to query the details of a specified baseline check policy.
+Description You can call this operation to query the details of a specified baseline check policy. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13115,6 +13833,8 @@ You can call this operation to query the details of a specified baseline check p
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Id | String | No | The ID of the baseline check policy. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13134,13 +13854,13 @@ You can call this operation to query the details of a specified baseline check p
 | TypeName | String | The code of the risk subcategory. |
 | On | Boolean | Indicates whether to check for risks of the specified subcategory. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStratetyDetail &Id=1
+https://aegis.[ RegionId].example.com/?Action=DescribeStratetyDetail &Id=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
      "RequestId": "99F17C4B-2E23-4B41-BBEB-C03963B06EB4",
@@ -13151,16 +13871,26 @@ Sample responses (JSON format)
              "Type": 2,
              "Id": 12,
              "RiskTypeWhiteListQueryResultList": [
+```
+
+`{`
+
+```json
                      "On": false,
                      "Alias": "Compliance with Security Standards",
                      "TypeName": "cis",
                      "SubTypes": [
+```
+
+`{`
+
+```json
                               "On": true,
                               "Alias": "Memcached",
                               "TypeName": "memcached-check"
 ```
 
-`},`
+`},` `{`
 
 ```json
                               "On": true,
@@ -13168,7 +13898,7 @@ Sample responses (JSON format)
                               "TypeName": "centos7"
 ```
 
-`},`
+`},` `{`
 
 ```json
                               "On": false,
@@ -13176,7 +13906,7 @@ Sample responses (JSON format)
                               "TypeName": "tomcat7"
 ```
 
-`},`
+`},` `{`
 
 ```json
                               "On": false,
@@ -13184,11 +13914,11 @@ Sample responses (JSON format)
                               "TypeName": "mongodb-check"
 ```
 
-`]` `]`
+`}` `]` `}` `]` `}`
 
 #### 4.5.3 ModifyStrategy
 
-You can call this operation to modify the basic information of a baseline check policy.
+Description You can call this operation to modify the basic information of a baseline check policy. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13199,19 +13929,21 @@ You can call this operation to modify the basic information of a baseline check 
 | Name | String | No | The name of the baseline check policy. |
 | RiskSubTypeName | String | No | The sub-risk types in the baseline check policy. Separate multiple sub-risk types with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Result | Struct | The returned information. For more information, see the following parameter descriptions. |
 | StrategyId | Integer | The ID of the baseline check policy. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyStrategy &CycleDays=1 &CycleStartTime=8 &Id=52 &Name=Web server &RiskSubTypeName=redis_check,linux_password
+https://aegis.[ RegionId].example.com/?Action=ModifyStrategy &CycleDays=1 &CycleStartTime=8 &Id=52 &Name=Web server &RiskSubTypeName=redis_check,linux_password &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"161F1BEE-5268-4935-9763-C39A2F7F65DD",
@@ -13219,34 +13951,40 @@ Sample responses (JSON format)
   "StrategyId":52
 ```
 
+`}` `}`
+
 #### 4.5.4 DeleteStrategy
 
-You can call this operation to delete a specified baseline check policy.
+Description You can call this operation to delete a specified baseline check policy. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteStrategy. |
 | Id | String | No | The ID of the baseline check policy. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteStrategy &Id=123456
+https://aegis.[ RegionId].example.com/?Action=DeleteStrategy &Id=123456 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67"
 ```
 
+`}`
+
 #### 4.5.5 DescribeStrategyTarget
 
-You can call this operation to query the information about asset groups to which a specified baseline check policy applies.
+Description You can call this operation to query the information about asset groups to which a specified baseline check policy applies. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13254,6 +13992,8 @@ You can call this operation to query the information about asset groups to which
 | Config | String | No | The policy configuration information. The baseline check policy ID is specified in JSON format, for example, {"strategyId":15161} . |
 | Type | String | No | The configuration type. Set the value to hcstrategy. _ |
 | Target | String | No | The ID of the asset group to which the baseline check policy applies. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13267,27 +14007,34 @@ You can call this operation to query the information about asset groups to which
 | TargetType | String | The return value is fixed to groupId, indicating that the value of the Target parameter is the ID of the asset group. |
 | Target | String | The asset group ID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategyTarget &Config={"strategyId":15161} &Type=hc_strategy
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategyTarget &Config={"strategyId":15161} &Type=hc_strategy &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
         "Count": 1,
         "StrategyTargets":[
+```
+
+`{`
+
+```json
                 "Flag": "del",
                 "Target": "281801",
                 "TargetType": "groupId"
 ```
 
-`]`
+`}` `]`
 
 ```json
  "requestId": "B44F545D-15CF-4A57-B8BF-4340D15D0507"
 ```
+
+`}`
 
 #### 4.5.6 ModifyStrategyTarget
 
@@ -13300,21 +14047,25 @@ You can call this operation to modify the information about the asset groups tha
 | Type | String | No | The configuration type. Set the value to hcstrategy. _ |
 | Target | String | No | The information about asset groups that the baseline check policy applies to. For more information, see the sample request. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyStrategyTarget &Type=hc_strategy &Config={"strategyId":36071} &Target=[{"targetType":"groupId","target":"1111","flag":"add"}]
+https://aegis.[ RegionId].example.com/?Action=ModifyStrategyTarget &Type=hc_strategy &Config={"strategyId":36071} &Target=[{"targetType":"groupId","target":"1111","flag":"add"}] &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId": "B44F545D-15CF-4A57-B8BF-4340D15D0507"
 ```
+
+`}`
 
 #### 4.5.7 DescribeUuidConfig
 
@@ -13325,19 +14076,21 @@ You can call this operation to check whether baseline check is enabled for a spe
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeUuidConfig. |
 | Uuid | String | No | The UUID of the server. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Data | Struct | The baseline check configuration. For more information, see the following parameter descriptions. |
 | Flag | String | Indicates whether baseline check is enabled. Valid values: add: indicates enabled. del: indicates disabled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeUuidConfig &uuid=4bc19998-e100-4b04-ab11-1e677418d311
+https://aegis.[ RegionId].example.com/?Action=DescribeUuidConfig &uuid=4bc19998-e100-4b04-ab11-1e677418d311 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "Data": {
@@ -13350,6 +14103,8 @@ Sample responses (JSON format)
     "RequestId": "A89978FE-BC35-427E-A4B1-7AEEAE741CC2",
 ```
 
+`}`
+
 #### 4.5.8 ModifyMachineConfig
 
 You can call this operation to configure whether to apply a specified baseline check policy to a specified server.
@@ -13361,76 +14116,88 @@ You can call this operation to configure whether to apply a specified baseline c
 | Target | String | No | The specified server, in JSON format. For more information, see the sample request. |
 | Config | String | No | The policy configuration information. The baseline check policy ID is specified in JSON format, for example, {"strategyId":15161} . |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyMachineConfig &target={"targetType":"uuid","target":"2738e842-7d46-42f7-acb4-e6796b051ddc","ip":"x.x.x. x","flag":"del"} &type=hc_switch &config={"strategyId":15161}
+https://aegis.[ RegionId].example.com/?Action=ModifyMachineConfig &target={"targetType":"uuid","target":"2738e842-7d46-42f7-acb4-e6796b051ddc","ip":"x.x.x. x","flag":"del"} &type=hc_switch &config={"strategyId":15161} &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "A89978FE-BC35-427E-A4B1-7AEEAE741CC2",
 ```
 
+`}`
+
 #### 4.5.9 DescribeUserSetting
 
-You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
+Description You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeUserSetting. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | InvalidWarningKeepDays | Integer | The number of days that an invalid risk is kept for. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeUserSetting
+https://aegis.[ RegionId].example.com/?Action=DescribeUserSetting &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "InvalidWarningKeepDays":90,
  "RequestId":"0A079FE2-0D1B-4A4D-A4EF-D02B5DDE12A7"
 ```
 
+`}`
+
 #### 4.5.10 CreateUserSetting
 
-You can call this operation to specify the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
+Description You can call this operation to specify the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to CreateUserSetting. |
 | InvalidWarningKee pDays | Integer | No | The number of days an invalid risk is kept for. Valid values: 7: indicates that the invalid risk item is to be deleted in seven days. 30: indicates that the invalid risk item is to be deleted in 30 days. 90: indicates that the invalid risk item is to be deleted in 90 days. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateUserSetting &InvalidWarningKeepDays=90
+https://aegis.[ RegionId].example.com/?Action=CreateUserSetting &InvalidWarningKeepDays=90 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
 ```
 
+`}`
+
 #### 4.5.11 DescribeRiskWhiteList
 
-You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check.
+Description You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13441,6 +14208,8 @@ You can call this operation to obtain the whitelist of risk items that are exemp
 | PageSize | Integer | No | The maximum number of records to be displayed on each page of the query output. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 | RiskName | String | No | The name of the risk item. This parameter supports fuzzy match. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13454,13 +14223,13 @@ You can call this operation to obtain the whitelist of risk items that are exemp
 | RiskId | Long | The ID of the risk item. |
 | RiskName | String | The name of the risk item. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeRiskWhiteList &RiskName=SSH logon baseline check
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
@@ -13468,58 +14237,71 @@ Sample responses (JSON format)
  "RequestId":"B452E97A-7DFA-44FC-915D-5D590A702846",
  "CurrentPage":1,
  "WhiteLists":[
+```
+
+`{`
+
+```json
    "RiskName":"SSH logon baseline check",
    "RiskId":1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Count":1
 ```
 
+`}`
+
 #### 4.5.12 BatchDeleteWhiteList
 
-You can call this operation to delete multiple risks from the whitelist for baseline check.
+Description You can call this operation to delete multiple risks from the whitelist for baseline check. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to BatchDeleteWhiteList. |
 | RiskIdList | String | No | The ID of the risk to be deleted from the whitelist. Separate multiple IDs with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=BatchDeleteWhiteList &RiskIdList=1,2,3
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
+`}`
+
 #### 4.5.13 CreateUserWhiteList
 
-You can call this operation to add a specified risk to the baseline check whitelist. After this operation, the risk is not reported during baseline check.
+Description You can call this operation to add a specified risk to the baseline check whitelist. After this operation, the risk is not reported during baseline check. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to CreateUserWhiteList. |
 | RiskIdList | String | No | The ID of the risk to be added to the whitelist. Separate multiple IDs with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateUserWhiteList &RiskIdList=1,2,3
+https://aegis.[ RegionId].example.com/?Action=CreateUserWhiteList &RiskIdList=1,2,3 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -13530,11 +14312,13 @@ Sample responses (JSON format)
 
 #### 4.5.14 DescribeStratety
 
-You can call this operation to query the execution details of a specified baseline check policy.
+Description You can call this operation to query the execution details of a specified baseline check policy. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeStratety. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13556,10 +14340,10 @@ You can call this operation to query the execution details of a specified baseli
 | TargetType | String | The return value is fixed to groupId, indicating that the value of the Target parameter is the ID of the asset group. |
 | Target | String | The asset group ID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStratety
+https://aegis.[ RegionId].example.com/?Action=DescribeStratety &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -13567,6 +14351,11 @@ Sample responses (JSON format)
 ```json
         "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
     "Strategies": [
+```
+
+`{`
+
+```json
                 "Name": "Threat Detection Service No. 12345",
                 "RiskCount": 4,
                 "CycleDays": 1,
@@ -13574,12 +14363,17 @@ Sample responses (JSON format)
                 "Type": 2,
                 "ProcessRate": 0,
                 "ConfigTargets": [
+```
+
+`{`
+
+```json
                         "Flag": "add",
                         "Target": "5078483",
                         "TargetType": "groupId"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "Id": 36071,
@@ -13587,16 +14381,18 @@ Sample responses (JSON format)
                 "EcsCount": 2
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.5.15 DescribeStrategyExecDetail
 
-You can call this operation to query the execution details of a baseline check policy.
+Description You can call this operation to query the execution details of a baseline check policy. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeStrategyExecDetail. |
 | StrategyId | Integer | No | The ID of the baseline check policy. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13620,13 +14416,13 @@ You can call this operation to query the execution details of a baseline check p
 | StartTime | String | The time when the baseline check started. |
 | SuccessCount | Integer | The number of servers that have passed the check. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategyExecDetail &StrategyId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategyExecDetail &StrategyId=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
      "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
@@ -13640,15 +14436,19 @@ Sample responses (JSON format)
        "FailCount": 0,
 ```
 
+`}`
+
 #### 4.5.16 DescribeRiskType
 
-You can call this operation to query all types of risks detected in baseline check and view the number of risks that have been detected by a baseline check policy or on the specified servers for a specific risk type.
+You can call this operation to query all types of risks detected in baseline check and view the number of risks that have been detected by a baseline check policy or on the specified servers for a specific risk type. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeRiskType. |
 | StrategyId | Long | No | The ID of the baseline check policy. |
 | Uuids | String | No | The UUID of the server. Multiple UUIDs are separated with commas (,). |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13663,25 +14463,35 @@ You can call this operation to query all types of risks detected in baseline che
 | TypeName | String | The code of the sub-risk type. |
 | WarnCount | String | The number of risks that have been detected. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeRiskType &StrategyId=10
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"11D3993A-02B8-4FD9-9116-922BCDE53A80",
  "RiskTypes":[
+```
+
+`{`
+
+```json
    "TypeName":"system",
    "SubTypes":[
+```
+
+`{`
+
+```json
      "TypeName":"group_policy",
      "Alias":"Group policy",
      "WarnCount":0
 ```
 
-`},`
+`},` `{`
 
 ```json
      "TypeName":"baseline",
@@ -13689,7 +14499,7 @@ Sample responses (JSON format)
      "WarnCount":0
 ```
 
-`},`
+`},` `{`
 
 ```json
      "TypeName":"register",
@@ -13697,22 +14507,24 @@ Sample responses (JSON format)
      "WarnCount":0
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Alias":"System",
    "WarnCount":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "count": 1,
 ```
 
+`}`
+
 #### 4.5.17 Describesummary
 
-You can call this operation to query the risks detected in baseline check by risk type.
+Description You can call this operation to query the risks detected in baseline check by risk type. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13749,10 +14561,10 @@ You can call this operation to query the risks detected in baseline check by ris
 | SubTypeAlias | String | The type of the sub-risk. |
 | TotalCount | Integer | The total number of risks. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=Describesummary &CurrentPage=20 &Dealed=Y &PageSize=10 &StrategyId=1 &Uuid=2738e842-7d46-42f7-acb4-e6796b051ddc
+https://aegis.[ RegionId].example.com/?Action=Describesummary &CurrentPage=20 &Dealed=Y &PageSize=10 &StrategyId=1 &Uuid=2738e842-7d46-42f7-acb4-e6796b051ddc &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -13764,6 +14576,11 @@ Sample responses (JSON format)
  "CurrentPage":1,
  "count": 1,
  "WarningSummarys":[
+```
+
+`{`
+
+```json
    "RiskId":1,
    "LastFoundTime":"2018-04-08 16:51:26",
    "RiskDetail":"The SSH logon security policy checks the following configurations: \n1.
@@ -13774,11 +14591,11 @@ Checks whether the logon port is the default port 22\n2 and whether the root acc
    "RiskName":"SSH logon baseline check"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.5.18 OperateWarning
 
-You can call this operation to handle the risk alert records detected during the baseline check.
+Description You can call this operation to handle the risk alert records detected during the baseline check. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13790,25 +14607,29 @@ You can call this operation to handle the risk alert records detected during the
 | OperateType | String | No | The type of the operation. Valid values: verify: indicates an operation to verify the risk alert. ignore: indicates an operation to ignore the risk alert. cancelIgnore: indicates an operation to cancel the ignore operation on the risk alert. delete: indicates an operation to delete the risk alert record. |
 | Reason | String | No | The reason why the risk alert record is ignored if the OperateType parameter is set to ignore. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateWarning &OperateType=verify &RiskWarningIds=22,45
+https://aegis.[ RegionId].example.com/?Action=OperateWarning &OperateType=verify &RiskWarningIds=22,45 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"38AAFEEE-F52F-4B2E-9F28-FC4A35F8D432"
 ```
 
+`}`
+
 #### 4.5.19 ExportWarning
 
-You can call this operation to export risks that match the specified criteria from baseline check.
+Description You can call this operation to export risks that match the specified criteria from baseline check.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13822,6 +14643,8 @@ You can call this operation to export risks that match the specified criteria fr
 | SubTypeNames | String | No | The sub-risk type. |
 | Uuids | String | No | The UUID of the server. Multiple UUIDs are separated with commas (,). |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -13831,10 +14654,10 @@ You can call this operation to export risks that match the specified criteria fr
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ExportWarning &Dealed=n &RiskLevels=serious,high,medium,low &RiskName=Weak FTP password &StrategyId=15161 &SubTypeNames=centos7 &TypeNames=cis &Uuids=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac
+https://aegis.[ RegionId].example.com/?Action=ExportWarning &Dealed=n &RiskLevels=serious,high,medium,low &RiskName=Weak FTP password &StrategyId=15161 &SubTypeNames=centos7 &TypeNames=cis &Uuids=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
      "FileName": "health_check_export_20180306",
@@ -13842,14 +14665,18 @@ Sample responses (JSON format)
      "Id": 16719
 ```
 
+`}`
+
 #### 4.5.20 DescribeExportInfo
 
-You can call this operation to query the export task information, including the export progress and the download link of the exported file.
+Description You can call this operation to query the export task information, including the export progress and the download link of the exported file. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeExportInfo. |
 | ExportId | Long | No | The ID of the export task. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -13868,13 +14695,13 @@ You can call this operation to query the export task information, including the 
 | Progress | Integer | The export progress. |
 | TotalCount | Integer | The total number of records that have been exported. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeExportInfo &ExportId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeExportInfo &ExportId=1 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "Link": "http://hc-export.oss-cn-shanghai.example.com/export_hc/health_check_export_2
@@ -13888,11 +14715,13 @@ Sample response (JSON format)
     "Progress": 100
 ```
 
+`}`
+
 ### 4.6 Unusual logon detection
 
 #### 4.6.1 DescribeBaseConfigs
 
-You can call this operation to query the logon security settings.
+Description You can call this operation to query the logon security settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13907,6 +14736,8 @@ You can call this operation to query the logon security settings.
 | Target | String | No | The specified server. Not e You must specify this parameter to query the logon security settings of a specified server. For more information about the format, see the sample request. |
 | PageSize | Integer | No | The maximum number of records to be displayed on each page. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -13932,10 +14763,10 @@ You can call this operation to query the logon security settings.
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a server UUID. |
 | Target | String | The asset group ID or server UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeBaseConfigs &CurrentPage=1 &PageSize=20 &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DescribeBaseConfigs &CurrentPage=1 &PageSize=20 &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -13960,9 +14791,11 @@ Sample responses (JSON format)
  "CurrentPage": 1
 ```
 
+`}`
+
 #### 4.6.2 ModifyBaseConfig
 
-You can call this operation to modify logon security settings.
+Description You can call this operation to modify logon security settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -13992,25 +14825,29 @@ You can call this operation to modify logon security settings.
 |   | nt":"dbaadmin"} |
 |---|---|
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyBaseConfig &Config={"startTime":"16:18","endTime":"16:18"} &Target=[{"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917-a7e6cbbb4b2e","flag":"add "},{"targetType":"uuid","target":"1759b0ea-6dd7-438b-b60d-c90179bd9ebc","flag":"del"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=ModifyBaseConfig &Config={"startTime":"16:18","endTime":"16:18"} &Target=[{"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917-a7e6cbbb4b2e","flag":"add "},{"targetType":"uuid","target":"1759b0ea-6dd7-438b-b60d-c90179bd9ebc","flag":"del"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BB8F5902-BD50-49AB-B124-18E9CA92BB99"
 ```
 
+`}`
+
 #### 4.6.3 DeleteBaseConfig
 
-You can call this operation to delete a logon security setting, such as an approved logon location or IP address.
+Description You can call this operation to delete a logon security setting, such as an approved logon location or IP address.
 
 | Parameter | Type |   | Required |   | Description |   |
 |---|---|---|---|---|---|---|
@@ -14036,6 +14873,8 @@ You can call this operation to delete a logon security setting, such as an appro
 |   | t":"dbaa****"} |
 |---|---|
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -14043,22 +14882,26 @@ You can call this operation to delete a logon security setting, such as an appro
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteBaseConfig &Config={"location":"Ganzhou City"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DeleteBaseConfig &Config={"location":"Ganzhou City"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
+`}`
+
 #### 4.6.4 DescribeSwitchConfigs
 
-You can call this operation to query the logon security configuration records in the logon security settings.
+Description You can call this operation to query the logon security configuration records in the logon security settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSwitchConfigs. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14071,36 +14914,41 @@ You can call this operation to query the logon security configuration records in
 | Item | String | The logon security configuration items. Valid values: logincommonlocation: indicates an approved _ _ logon location. logincommonip: indicates an approved logon IP _ _ address. logincommontime: indicates an approved _ _ logon time range. logincommonaccount: indicates an approved _ _ logon account. |
 | Status | Integer | The status of the configuration item. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSwitchConfigs
+https://aegis.[ RegionId].example.com/?Action=DescribeSwitchConfigs &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "Count":3,
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4",
  "ConfigList":[
+```
+
+`{`
+
+```json
    "Status":1,
    "Item":"login_common_ip"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Status":0,
    "Item":"login_common_account"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Status":0,"Item":"login_common_time"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.6.5 ModifySwitchConfig
 
@@ -14111,6 +14959,8 @@ You can call this operation to modify the setting about whether to enable a logo
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifySwitchConfig. |
 | Item | String | Yes | The logon security configuration items. Valid values: logincommonlocation: indicates an _ _ approved logon location. logincommonip: indicates an _ _ approved logon IP address. logincommontime: indicates an _ _ approved logon time range. logincommonaccount: indicates an _ _ approved logon account. |
 | Status | Integer | Yes | The status of the logon security configuration switch. Valid values: 1: indicates enabled. 0: indicates disabled. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14123,21 +14973,23 @@ You can call this operation to modify the setting about whether to enable a logo
 |---|---|---|
 | Status | Integer | The status of the logon security configuration switch. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifySwitchConfig &Item=login_common_location &Status=1
+https://aegis.[ RegionId].example.com/?Action=ModifySwitchConfig &Item=login_common_location &Status=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4"
 ```
 
+`}`
+
 #### 4.6.6 DescribeConfigTarget
 
-You can call this operation to query the information about servers to which a specified logon security configuration record applies.
+Description You can call this operation to query the information about servers to which a specified logon security configuration record applies. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14148,6 +15000,8 @@ You can call this operation to query the information about servers to which a sp
 | Type | String | Yes | The logon security configuration record used to identify a valid logon to a server. Valid values: logincommonlocation: indicates an _ _ approved logon location. logincommonip: indicates an _ _ approved logon IP address. logincommontime: indicates an _ _ approved logon time range. logincommonaccount: indicates an _ _ approved logon account. |
 | Target | String | No | The specified server. Not e You need to specify this parameter to query the logon security configuration records of a specified server. For more information about the format, see the sample request. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -14156,13 +15010,13 @@ You can call this operation to query the information about servers to which a sp
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a server UUID. |
 | Target | String | The asset group ID or server UUID. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeConfigTarget &Config={"uuidCount":1,"location":"Ganzhou"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DescribeConfigTarget &Config={"uuidCount":1,"location":"Ganzhou"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
   "TargetList": [{
@@ -14171,15 +15025,22 @@ Sample responses (JSON format)
   }, {
    "Target": "inet-25f4ef74-29c7-49fd-85cc-b4543a2489a8",
    "TargetType": "uuid"
+```
+
+`}`
+
+```json
  "Count": 2,
  "RequestId": "B8064EA4-9472-4D03-B7D1-6684DB5CD0BE",
 ```
+
+`}`
 
 ### 4.7 Webshell detection
 
 #### 4.7.1 DescribeWebPath
 
-You can call this operation to query the Web directories defined in webshell settings.
+Description You can call this operation to query the Web directories defined in webshell settings. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -14201,10 +15062,10 @@ You can call this operation to query the Web directories defined in webshell set
 | TargetType | String | This parameter always returns a value of uuid, which means that the Target parameter returns the universally unique identifier (UUID) of the server. |
 | Target | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeWebPath
+https://aegis.[ RegionId].example.com/?Action=DescribeWebPath &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -14216,22 +15077,32 @@ Sample response (JSON format)
  "CurrentPage":1,
  "Count":1,
  "ConfigList":[
+```
+
+`{`
+
+```json
    "TargetList":[
+```
+
+`{`
+
+```json
      "Target":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
      "TargetType":"uuid"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "WebPath":"/usr/local/tomcat/webroot18"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.7.2 ModifyWebPath
 
-You can call this operation to modify the Web directory in webshell settings.
+Description You can call this operation to modify the Web directory in webshell settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14240,6 +15111,8 @@ You can call this operation to modify the Web directory in webshell settings.
 | Config | String | No | The Web directory configuration, in JSON format. For more information, see the sample request. |
 | Target | String | No | The list of target servers to which the Web directory configuration applies, in JSON format. For more information, see the sample request. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 
@@ -14247,25 +15120,35 @@ You can call this operation to modify the Web directory in webshell settings.
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=ModifyWebPath &Type=web_path &Config={"webPath":"/test"} &Target={"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917-a7e6cbbb4b2e","flag":"add"
 ```
 
-Sample responses (JSON format)
+`}`
+
+```
+&<Common request parameters>
+```
+
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534"
 ```
 
+`}`
+
 #### 4.7.3 DescribeCategoryCount
 
-You can call this operation to query the number of webshells detected by Server Guard.
+Description You can call this operation to query the number of webshells detected by Server Guard. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeCategoryCount. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14275,19 +15158,21 @@ You can call this operation to query the number of webshells detected by Server 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeCategoryCount
+https://aegis.[ RegionId].example.com/?Action=DescribeCategoryCount &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
     "Webshell": 2
 ```
 
+`}`
+
 #### 4.7.4 DescribeWebshell
 
-You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path.
+Description You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -14296,6 +15181,8 @@ You can call this operation to query records of webshell files that have been de
 | Mark | String | No | The IP address or instance name of the server. |
 | Tag | Integer | No | The server tag ID. |
 | Dealed | String | No | The status of the webshell event. Valid values: n: indicates that the event is pending. y: indicates that the event has been handled. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -14320,13 +15207,13 @@ You can call this operation to query records of webshell files that have been de
 | Region | String | The region where the server resides. |
 | Status | Integer | The status of the webshell event. Valid values: 1: indicates that the event is pending. 2: indicates that the event has been ignored. 3: indicates that the event has been confirmed. 8: indicates that the event has been labeled as a false positive. 16: indicates that the event is being handled. 32: indicates that the event has been handled. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeWebshell &Dealed=n &GroupId=1 &Remark=xx.xx.xx.xx &Tag=11
+https://aegis.[ RegionId].example.com/?Action=DescribeWebshell &Dealed=n &GroupId=1 &Remark=xx.xx.xx.xx &Tag=11 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "WebshellList": [{
@@ -14363,9 +15250,11 @@ Sample response (JSON format)
     "RequestId": "E4B254AE-5CB1-4810-8B51-A08DF5697F25"
 ```
 
+`}`
+
 #### 4.7.5 OperateTrojan
 
-You can call this operation to handle detected webshells.
+Description You can call this operation to handle detected webshells.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14374,16 +15263,18 @@ You can call this operation to handle detected webshells.
 | OperateType | String | No | The type of the operation. Valid values: isolate: indicates an operation to quarantine the file. trust: indicates an operation to trust the file. untrust: indicates an operation to cancel trusting the file. restore: indicates an operation to restore the file. |
 | Type | Integer | No | The type of the trojan. Set the value to 1. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | FailedCount | Integer | The number of failed operations. |
 | SuccessCount | Integer | The number of successful operations. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateTrojan &Info=[{"uuid":"97988c2b-de9d-4159-90ab-7cc73561c64c","filePath":"/home/test/Z02.php","we bshellId":""}] &OperateType=trust &Type=1
+https://aegis.[ RegionId].example.com/?Action=OperateTrojan &Info=[{"uuid":"97988c2b-de9d-4159-90ab-7cc73561c64c","filePath":"/home/test/Z02.php","we bshellId":""}] &OperateType=trust &Type=1 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -14394,15 +15285,19 @@ Sample responses (JSON format)
     "SuccessCount": 1
 ```
 
+`}`
+
 #### 4.7.6 DescribeQuaraFile
 
-You can call this operation to obtain the list of quarantined files.
+Description You can call this operation to obtain the list of quarantined files. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeQuaraFile. |
 | PageSize | Integer | No | The maximum number of records to be displayed on each page of the query result. Default value: 20. |
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14423,10 +15318,10 @@ You can call this operation to obtain the list of quarantined files.
 | Tag | String | The unique identifier of the unusual event. |
 | Uuid | String | The UUID of the server. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeQuaraFile
+https://aegis.[ RegionId].example.com/?Action=DescribeQuaraFile &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -14437,6 +15332,11 @@ Sample responses (JSON format)
     "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
     "CurrentPage":1,
     "QuaraFiles":[
+```
+
+`{`
+
+```json
             "Path":"/bin/ping",
             "Uuid":"9b0c4d55-2f1f-4766-a90a-2c9d8a0b7642",
             "FileStatus":"quaraDone",
@@ -14447,11 +15347,11 @@ Sample responses (JSON format)
             "Md5":"1421d9ad2b0031483f396154d48161f1"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.7.7 RollbackQuaraFile
 
-You can call this operation to restore a specified quarantined file.
+Description You can call this operation to restore a specified quarantined file. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14461,6 +15361,8 @@ You can call this operation to restore a specified quarantined file.
 | Tag | String | No | The GUID of the unusual event. |
 | Uuid | String | No | The UUID of the server. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -14468,24 +15370,28 @@ You can call this operation to restore a specified quarantined file.
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=RollbackQuaraFile &EventName=DDoS trojan &EventType=Malicious process &Tag=a50f96f958fbd59f68e4bca4d90679d6 &Uuid=00f11fcb-1a9a-4fd5-a48a-e0e5bd12a6a4
+https://aegis.[ RegionId].example.com/?Action=RollbackQuaraFile &EventName=DDoS trojan &EventType=Malicious process &Tag=a50f96f958fbd59f68e4bca4d90679d6 &Uuid=00f11fcb-1a9a-4fd5-a48a-e0e5bd12a6a4 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
 ```
 
+`}`
+
 ### 4.8 Exception detection on hosts
 
 #### 4.8.1 DescribeSuspEventTypes
 
-You can call this operation to query the unusual event types.
+Description You can call this operation to query the unusual event types. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSuspEventTypes. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14498,28 +15404,35 @@ You can call this operation to query the unusual event types.
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspEventTypes
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspEventTypes &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
  "EventTypes":[
+```
+
+`{`
+
+```json
    "EventType":"Suspicious process",
    "AliseEventType":"Suspicious process"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.8.2 DescribeSuspTrendStatistics
 
-You can call this operation to query the chart data on different types of unusual server events on each day.
+Description You can call this operation to query the chart data on different types of unusual server events on each day. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeSuspTrendStatistics. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14528,13 +15441,13 @@ You can call this operation to query the chart data on different types of unusua
 | StartTime | Integer | The start time of the time frame specified for query. |
 | SuspiciousItems | List | The statistics on numbers of different types of suspicious events. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspTrendStatistics
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspTrendStatistics &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
@@ -14543,9 +15456,11 @@ Sample responses (JSON format)
  "SuspiciousItems":[ ]
 ```
 
+`}`
+
 #### 4.8.3 OperateSuspiciousEvent
 
-You can call this operation to handle detected unusual events.
+Description You can call this operation to handle detected unusual events. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14557,21 +15472,23 @@ You can call this operation to handle detected unusual events.
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateSuspiciousEvent &OperateType=ignore &Data={"uuid":"97988c2b-de9d-4159-90ab-7cc73561c64c","tag":"f87eb0ee5934f6f65343ec601ce71 c2f","eventType":"Malicious processes (malware checking)","eventName":"DDoS Trojan},{"uui d":"97988c2b-de9d-4159-90ab-7cc73561c64c","tag":"95347a77b8c0d6dae99a23ab69aa90f4","event Type":"Malicious processes (malware checking)","eventName":"GateDDoS Trojan"}
+https://aegis.[ RegionId].example.com/?Action=OperateSuspiciousEvent &OperateType=ignore &Data={"uuid":"97988c2b-de9d-4159-90ab-7cc73561c64c","tag":"f87eb0ee5934f6f65343ec601ce71 c2f","eventType":"Malicious processes (malware checking)","eventName":"DDoS Trojan},{"uui d":"97988c2b-de9d-4159-90ab-7cc73561c64c","tag":"95347a77b8c0d6dae99a23ab69aa90f4","event Type":"Malicious processes (malware checking)","eventName":"GateDDoS Trojan"} &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"654A6FD8-B55D-4D6B-AAFF-4122503D108B"
 ```
 
+`}`
+
 #### 4.8.4 OperateLoginLog
 
-You can call this operation to label a detected unusual logon event as handled.
+Description You can call this operation to label a detected unusual logon event as handled. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14583,21 +15500,23 @@ You can call this operation to label a detected unusual logon event as handled.
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateLoginLog &Ids=2006434 &OperateType=confirm
+https://aegis.[ RegionId].example.com/?Action=OperateLoginLog &Ids=2006434 &OperateType=confirm &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905"
 ```
 
+`}`
+
 #### 4.8.5 CreateSuspiciousExport
 
-You can call this operation to export the information about unusual events on servers based on search conditions.
+Description You can call this operation to export the information about unusual events on servers based on search conditions. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14621,13 +15540,13 @@ You can call this operation to export the information about unusual events on se
 | FileName | String | The name of the exported file. |
 | Id | Long | The ID of the export task. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateSuspiciousExport &Remark=23 &EventType=Suspicious process &Level=serious,high,medium,low &Dealed=n
+https://aegis.[ RegionId].example.com/?Action=CreateSuspiciousExport &Remark=23 &EventType=Suspicious process &Level=serious,high,medium,low &Dealed=n &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
     "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
@@ -14635,9 +15554,11 @@ Sample responses (JSON format)
     "Id": 387
 ```
 
+`}`
+
 #### 4.8.6 DescribeSuspiciousExportInfo
 
-You can call this operation to query an unusual event export task.
+Description You can call this operation to query an unusual event export task. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -14657,10 +15578,10 @@ You can call this operation to query an unusual event export task.
 | Progress | Integer | The export progress. |
 | TotalCount | Integer | The total number of records that have been exported. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspiciousExportInfo &ExportId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspiciousExportInfo &ExportId=1 &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -14679,9 +15600,11 @@ Sample response (JSON format)
 1518071576098.zip?Expires=1518075176&OSSAccessKeyId=<yourAccessKeyId>&Signature=xxxx%xxxx %3D"
 ```
 
+`}`
+
 #### 4.8.7 DescribeVirusInfo
 
-You can call this operation to upload the MD5 values of files and use Alibaba Cloud Antivirus to determine whether the files are malicious programs.
+Description You can call this operation to upload the MD5 values of files and use Alibaba Cloud Antivirus to determine whether the files are malicious programs. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14689,29 +15612,33 @@ You can call this operation to upload the MD5 values of files and use Alibaba Cl
 | Md5 | String | Yes | The MD5 value of the file. |
 | Lang | String | No | The language attribute of the file, such as zh. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Data | Boolean | Indicates whether the file is malicious. Valid values: True: Indicates that the file is malicious. False: Indicates that the file is not malicious. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].aliyuncs.com/?Action= DescribeVirusInfo &Md5=6f6628d923f9018b28acc5f905e03244
+https://aegis.[ RegionId].aliyuncs.com/?Action= DescribeVirusInfo &Md5=6f6628d923f9018b28acc5f905e03244 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId": "A2423F39-3272-4491-804E-D0EBDE3E894D",
  "Data": true
 ```
 
+`}`
+
 ### 4.9 Retrieval of host logs
 
 #### 4.9.1 CreateLogQuery
 
-You can call this operation to create or save server log search conditions.
+Description You can call this operation to create or save server log search conditions. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14720,29 +15647,35 @@ You can call this operation to create or save server log search conditions.
 | QueryDetail | String | No | The log search sub-conditions. |
 | QueryName | String | No | The saved search name. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=CreateLogQuery &Conditions=aegis-log-login@warn_port:22 &QueryDetail=[[{"itemForm":{},"d":{"name":"Logons","id":"aegis-log-login","fields":[{"nam e":"ip","type":"string","desc":"IP address","text":"IP(IP address)"}]] &QueryName=test
+https://aegis.[ RegionId].example.com/?Action=CreateLogQuery &Conditions=aegis-log-login@warn_port:22 &QueryDetail=[[{"itemForm":{},"d":{"name":"Logons","id":"aegis-log-login","fields":[{"nam e":"ip","type":"string","desc":"IP address","text":"IP(IP address)"}]] &QueryName=test &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
+`}`
+
 #### 4.9.2 DescribeLogQuery
 
-You can call this operation to query the saved server log search conditions.
+Description You can call this operation to query the saved server log search conditions. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeLogQuery. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -14753,25 +15686,30 @@ You can call this operation to query the saved server log search conditions.
 | QueryDetail | String | The log search sub-conditions. |
 | QueryName | String | The name of the log search task. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
 https://aegis.[ RegionId].example.com/?Action=DescribeLogQuery
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"65802B9B-4D30-40F0-8691-F126652DBEBE",
  "ListTotal":1,
  "QueryItems":[
+```
+
+`{`
+
+```json
    "QueryDetail":"[[{\"itemForm\":{},\"d\":{\"name\":\"Account snapshot\",\"id\":\"aegis-
 snapshot-host\",\"fields\":[{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\"} ,{\"name\":\"uuid\",\"type\":\"string\",\"desc\":\"Client ID\"},{\"name\":\"perm\",\"type \":\"string\",\"desc\":\"Root permission availability\"},{\"name\":\"home_dir\",\"type\": \"string\",\"desc\":\"Home directory\"},{\"name\":\"warn_time\",\"type\":\"string\",\"des c\":\"Password expiration reminder time\"},{\"name\":\"groups\",\"type\":\"array\",\"desc \":\"User group\"},{\"name\":\"login_ip\",\"type\":\"string\",\"desc\":\"Last logon IP\"} ,{\"name\":\"last_chg\",\"type\":\"string\",\"desc\":\"Last password change time\"},{\"na me\":\"shell\",\"type\":\"string\",\"desc\":\"Linux shell command\"},{\"name\":\"domain\" ,\"type\":\"string\",\"desc\":\"Windows domain\"},{\"name\":\"tty\",\"type\":\"string\",\ "desc\":\"Logon terminal\"},{\"name\":\"account_expire\",\"type\":\"string\",\"desc\":\"A ccount expiration time\"},{\"name\":\"passwd_expire\",\"type\":\"string\",\"desc\":\"Pass word expiration time\"},{\"name\":\"last_logon\",\"type\":\"string\",\"desc\":\"Last logo n time\"},{\"name\":\"user\",\"type\":\"string\",\"desc\":\"User\"},{\"name\":\"status\", \"type\":\"string\",\"desc\":\"User status: 0-disabled, 1-enabled\"}]},\"searchFields\":[ {\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\"},{\"name\":\"uuid\",\"type\" :\"string\",\"desc\":\"Client ID\"},{\"name\":\"perm\",\"type\":\"string\",\"desc\":\"Roo t permission availability\"},{\"name\":\"home_dir\",\"type\":\"string\",\"desc\":\"Home d irectory\"},{\"name\":\"warn_time\",\"type\":\"string\",\"desc\":\"Password expiration re minder time\"},{\"name\":\"groups\",\"type\":\"array\",\"desc\":\"User group\"},{\"name\" :\"login_ip\",\"type\":\"string\",\"desc\":\"Last logon IP\"},{\"name\":\"last_chg\",\"ty pe\":\"string\",\"desc\":\"Last password change time\"},{\"name\":\"shell\",\"type\":\"st ring\",\"desc\":\"Linux shell command\"},{\"name\":\"domain\",\"type\":\"string\",\"desc\ ":\"Windows domain\"},{\"name\":\"tty\",\"type\":\"string\",\"desc\":\"Logon terminal\"}, {\"name\":\"account_expire\",\"type\":\"string\",\"desc\":\"Account expiration time\"},{\ "name\":\"passwd_expire\",\"type\":\"string\",\"desc\":\"Password expiration time\"},{\"n ame\":\"last_logon\",\"type\":\"string\",\"desc\":\"Last logon time\"},{\"name\":\"user\" ,\"type\":\"string\",\"desc\":\"User\"},{\"name\":\"status\",\"type\":\"string\",\"desc\" :\"User status: 0-disabled, 1-enabled\"}],\"f\":{\"name\":\"ip\",\"type\":\"string\",\"de sc\":\"IP address\"},\"searchLimit\":[{\"name\":\"Including\",\"value\":\":\"}],\"l\":\": \",\"kw\":\"string\"}]]",
    "Conditions":"aegis-snapshot-host@ip:string",
    "QueryName":"aa"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 4.9.3 DeleteLogQuery
 
@@ -14782,25 +15720,29 @@ You can call this operation to delete the saved server log search conditions.
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteLogQuery. |
 | QueryName | String | No | The name of the saved search. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteLogQuery &QueryName=test
+https://aegis.[ RegionId].example.com/?Action=DeleteLogQuery &QueryName=test &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
+`}`
+
 #### 4.9.4 DescribeFilterFields
 
-You can call this operation to query the filter fields of a specified server log search condition.
+Description You can call this operation to query the filter fields of a specified server log search condition. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14814,29 +15756,36 @@ You can call this operation to query the filter fields of a specified server log
 | LogFilterList | Array | The filter field information. For more information, see the following parameter descriptions. |
 | Fields | String | The filter fields. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeFilterFields &Query=aegis-log-login@warn_port:22
+https://aegis.[ RegionId].example.com/?Action=DescribeFilterFields &Query=aegis-log-login@warn_port:22 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "LogFilterList":[
+```
+
+`{`
+
+```json
    "Fields":"IP;IP address,UUID;Client ID","fieldsName":"default"
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Total":"20",
  "RequestID":"883e1e3d-4443-4206-871c-6c0625c01332"
 ```
 
+`}`
+
 #### 4.9.5 DescribeHistogram
 
-You can call this operation to obtain the statistics on server logs generated within a specified time frame.
+Description You can call this operation to obtain the statistics on server logs generated within a specified time frame. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14851,6 +15800,8 @@ You can call this operation to obtain the statistics on server logs generated wi
 | EndTime | String | Yes | The end time of the time frame specified for query. |
 | StartTime | String | Yes | The start time of the time frame specified for query. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -14858,10 +15809,10 @@ You can call this operation to obtain the statistics on server logs generated wi
 | Items | Array | The log quantity statistics. For more information, see the following parameter descriptions. |
 | Data | List | The number of logs. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeHistogram &EndTime=2018-03-03 17:41:03 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeHistogram &EndTime=2018-03-03 17:41:03 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -14882,14 +15833,19 @@ Sample responses (JSON format)
 
 ```json
  "Items":[
+```
+
+`{`
+
+```json
    "Data":[
 ```
 
-`0,` `0,` `0,` `0,` `0,` `0,` `]` `]`
+`0,` `0,` `0,` `0,` `0,` `0,` `]` `}` `]` `}`
 
 #### 4.9.6 DescribeLogInfo
 
-You can call this operation to query the server log fields based on specified query conditions.
+Description You can call this operation to query the server log fields based on specified query conditions. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -14906,6 +15862,8 @@ You can call this operation to query the server log fields based on specified qu
 | EndTime | String | Yes | The end time of the query. |
 | StartTime | String | Yes | The start time of the query. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
@@ -14918,10 +15876,10 @@ You can call this operation to query the server log fields based on specified qu
 | Desc | String | The name of the log field. |
 | Type | String | The type of the log field. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogInfo &CurrentPage=1 &EndTime=2018-03-03 17:41:03 &PageSize=20 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeLogInfo &CurrentPage=1 &EndTime=2018-03-03 17:41:03 &PageSize=20 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -14930,13 +15888,23 @@ Sample responses (JSON format)
     "TotalCount":1,
     "RequestId":"3A7CFB73-C24C-4711-B7D9-2BE74EBFFE78",
     "LogInfoItems":[
+```
+
+`{`
+
+```json
             "Fields":[
+```
+
+`{`
+
+```json
                     "Desc":"IP address",
                     "Type":"string",
                     "Name":"ip"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Client number",
@@ -14944,7 +15912,7 @@ Sample responses (JSON format)
                     "Name":"uuid"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon source IP address",
@@ -14952,7 +15920,7 @@ Sample responses (JSON format)
                     "Name":"warn_ip"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon port",
@@ -14960,7 +15928,7 @@ Sample responses (JSON format)
                     "Name":"warn_port"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon username",
@@ -14968,7 +15936,7 @@ Sample responses (JSON format)
                     "Name":"warn_user"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon type",
@@ -14976,7 +15944,7 @@ Sample responses (JSON format)
                     "Name":"warn_type"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Desc":"Logon count",
@@ -14984,14 +15952,14 @@ Sample responses (JSON format)
                     "Name":"warn_count"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Id":"aegis-log-login",
             "Name":"Logon serial number"
 ```
 
-`},` `]`
+`},` `]` `}`
 
 #### 4.9.7 DescribeLogItems
 
@@ -15012,6 +15980,8 @@ You can call this operation to query the server log details that are returned by
 | ProcessSnapshotO ffset | Integer | No | The offset of the process snapshot log. |
 | EndTime | String | Yes | The end time of the time frame specified for query. |
 | StartTime | String | Yes | The start time of the time frame specified for query. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -15046,13 +16016,13 @@ You can call this operation to query the server log details that are returned by
 | MKey | String | The log entry. |
 | MValue | String | The value of the log entry. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogItems &CurrentPage=1 &PageSize=100 &AccountSnapshotOffset=1000 &CrackOffset=1000 &EndTime=2018-03-05 11:46:07 &LoginOffset=1000 &NetworkOffset=1000 &PortSnapshotOffset=1000 &ProcessOffset=1000 &ProcessSnapshotOffset=1000 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeLogItems &CurrentPage=1 &PageSize=100 &AccountSnapshotOffset=1000 &CrackOffset=1000 &EndTime=2018-03-05 11:46:07 &LoginOffset=1000 &NetworkOffset=1000 &PortSnapshotOffset=1000 &ProcessOffset=1000 &ProcessSnapshotOffset=1000 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905",
@@ -15073,6 +16043,8 @@ Sample responses (JSON format)
  "ProcessSnapshotTotalCount":0,
  "ProcessTotalCount":0
 ```
+
+`}`
 
 ## 5 Anti-DDoS
 
@@ -15113,7 +16085,7 @@ This topic introduces all the Apsara Stack Security Anti-DDoS operations that yo
 
 #### 5.2.1 Request structure
 
-Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
+Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. Description You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -15126,7 +16098,7 @@ Where:
 | osprivate.[ RegionId].example.com |   |   |   |
 |   | Action | : the operation that you wa |   |
 
-`endpoint` : the endpoint used to call a cloud service. The endpoint for the Anti-DDoS service is `dd` For example, you can set this parameter to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : the request parameters. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters include information such as the API version and authentication information. For more information about the custom request parameters, see the corresponding operation description. Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
+`endpoint` : the endpoint used to call a cloud service. The endpoint for the Anti-DDoS service is `dd` For example, you can set this parameter to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : the request parameters. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters include information such as the API version and authentication information. For more information about the custom request parameters, see the corresponding operation description. Example Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
 
 ```
 https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-test &Format=JSON&SecureTransport=true&SignatureMethod=HMAC-SHA1&SignatureNonce=15215528852396&S ignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018-03-02Txxxxxxx&Version=2018-01-16&Signatu re=xxxx%xxxx%3D
@@ -15204,17 +16176,19 @@ Apsara Stack Security API responses support both the XML and JSON formats. The s
 </Operation name+Response>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
+`}`
+
 ### 5.3 APIs
 
 #### 5.3.1 CheckIpSegment
 
-You can call this operation to check whether a CIDR block to be added for monitoring is valid. If a success result is returned through this API, the CIDR block specified in the request can be added.
+Description You can call this operation to check whether a CIDR block to be added for monitoring is valid. If a success result is returned through this API, the CIDR block specified in the request can be added. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -15227,25 +16201,29 @@ You can call this operation to check whether a CIDR block to be added for monito
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=CheckIpSegment &IpSegmentName=192.1.1.1/24 &InfoType=distribution &InfoName=DXJF
+https://ddosprivate.[ RegionId].example.com/?Action=CheckIpSegment &IpSegmentName=192.1.1.1/24 &InfoType=distribution &InfoName=DXJF &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"71064826-726F-4ADA-B879-05D8055476FB"
 ```
 
+`}`
+
 #### 5.3.2 DescribeRegionName
 
-You can call this operation to query the regions of the CIDR blocks where traffic data collection and analysis is performed.
+Description You can call this operation to query the regions of the CIDR blocks where traffic data collection and analysis is performed. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeRegionName. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -15266,16 +16244,21 @@ You can call this operation to query the regions of the CIDR blocks where traffi
 | GmtModified | String | The latest time when the CIDR block was modified. |
 | Seq | Integer | The sequence number of the region record. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeRegionName
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeRegionName &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RegionNameList":[
+```
+
+`{`
+
+```json
    "GmtCreate":1463367238000,
    "Description":"Hybrid cloud data center list",
    "CodeName":"Daxing data center",
@@ -15286,7 +16269,7 @@ Sample responses (JSON format)
    "Seq":1
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GmtCreate":1463367238000,
@@ -15303,7 +16286,7 @@ Sample responses (JSON format)
    "Seq":4
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GmtCreate":1485069049000,
@@ -15316,7 +16299,7 @@ Sample responses (JSON format)
    "Seq":2
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GmtCreate":1485069106000,
@@ -15329,7 +16312,7 @@ Sample responses (JSON format)
    "Seq":3
 ```
 
-`},`
+`},` `{`
 
 ```json
    "GmtCreate":1463367238000,
@@ -15342,15 +16325,17 @@ Sample responses (JSON format)
    "Seq":1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "RequestId":"26738B34-6680-4BD7-BBF8-EF8DE53D52F6"
 ```
 
+`}`
+
 #### 5.3.3 CreateIpSegment
 
-You can call this operation to add a specified CIDR block to be monitored.
+Description You can call this operation to add a specified CIDR block to be monitored. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -15365,25 +16350,29 @@ You can call this operation to add a specified CIDR block to be monitored.
 | InfoType | String | No | The CIDR block information type. For example, a value of distribution indicates the region information. |
 | InfoName | String | No | The information describing the CIDR block based on the value of the InfoType parameter. For example, if the InfoType parameter is set to distribution, you can set the InfoName parameter to DXJF, indicating that the CIDR block belongs to the region where the Daxing data center is located. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=CreateIpSegment &IpSegmentName=172.21.13.222/24 &InfoType=distribution &InfoName=DXJF
+https://ddosprivate.[ RegionId].example.com/?Action=CreateIpSegment &IpSegmentName=172.21.13.222/24 &InfoType=distribution &InfoName=DXJF &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"6C91B447-DAA5-40DB-B818-E10820D99DEC"
 ```
 
+`}`
+
 #### 5.3.4 DescribeIpSegment
 
-You can call this operation to query Classless Inter-Domain Routing (CIDR) blocks under traffic monitoring.
+Description You can call this operation to query Classless Inter-Domain Routing (CIDR) blocks under traffic monitoring.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15393,6 +16382,8 @@ You can call this operation to query Classless Inter-Domain Routing (CIDR) block
 | InfoType | String | No | The type of the CIDR block information. For example, a value of distribution indicates the region information. |
 | Distribution | String | No | The ID of the region. For example, a value of DXJF indicates the region where the Daxing IDC is located. |
 | IpSegment | String | No | The CIDR block, in x.x.x.x/x format. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -15412,19 +16403,24 @@ You can call this operation to query Classless Inter-Domain Routing (CIDR) block
 | InfoName | String | The information describing the CIDR block based on the value of the InfoType parameter. For example, if the value of the InfoType parameter is distribution, the value of the InfoName parameter can be DXJF, indicating that the CIDR block belongs to the region where the Daxing IDC is located. |
 | IpExpressions | String | The CIDR block for traffic collection, in x.x.x.x/x format. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeIpSegment &CurrentPage=1 &Distribution=DXJF &InfoType=distribution &IpSegment=x.x.x.x/x &PageSize=20
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeIpSegment &CurrentPage=1 &Distribution=DXJF &InfoType=distribution &IpSegment=x.x.x.x/x &PageSize=20 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TotalCount":1,
     "PageSize":20,
     "RequestId":"AC51224B-3730-4C6B-B444-2307C7F73E84",
     "IpSegmentList":[
+```
+
+`{`
+
+```json
             "IpExpressions":"192.168.x.x/24",
             "GmtCreate":1520565939000,
             "RegionName":"Daxing IDC",
@@ -15434,40 +16430,46 @@ Sample response (JSON format)
             "InfoType":"distribution1"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "CurrentPage":1
 ```
 
+`}`
+
 #### 5.3.5 DeleteIpSegment
 
-You can call this operation to delete a CIDR block whose traffic is collected and monitored based on the CIDR block record ID. Not e You must obtain the record ID of the monitored CIDR block to be deleted before calling this operation.
+You can call this operation to delete a CIDR block whose traffic is collected and monitored based on the CIDR block record ID. Not e You must obtain the record ID of the monitored CIDR block to be deleted before calling this operation. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteIpSegment. |
 | IpId | String | Yes | The record ID of the monitored CIDR block to be deleted. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DeleteIpSegment &IpId=1
+https://ddosprivate.[ RegionId].example.com/?Action=DeleteIpSegment &IpId=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"9C40FE9D-EE39-4162-8E94-7C0A32F276D8"
 ```
 
+`}`
+
 #### 5.3.6 ModifyIpSegment
 
-You can call this operation to modify a monitored Classless Inter-Domain Routing (CIDR) block with a specified record ID. Not e You must know the record ID of the monitored CIDR block to be modified before calling this operation.
+Description You can call this operation to modify a monitored Classless Inter-Domain Routing (CIDR) block with a specified record ID. Not e You must know the record ID of the monitored CIDR block to be modified before calling this operation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15476,21 +16478,25 @@ You can call this operation to modify a monitored Classless Inter-Domain Routing
 | InfoName | String | Yes | The region to which the CIDR block belongs. For example, a value of DXJF indicates that the CIDR block belongs to the region where the Daxing IDC is located. |
 | IpSegmentName | String | Yes | The CIDR block, in x.x.x.x/x format. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=ModifyIpSegment &InfoName=**** &InfoType=distribution &IpId=11 &IpSegmentName=192.168.x.x/24
+https://ddosprivate.[ RegionId].example.com/?Action=ModifyIpSegment &InfoName=**** &InfoType=distribution &IpId=11 &IpSegmentName=192.168.x.x/24 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"5FFE58AA-355B-4E0E-A742-0BB5554BA959"
 ```
+
+`}`
 
 #### 5.3.7 CreateDdosPolicy
 
@@ -15506,6 +16512,8 @@ You can call this operation to add an anti-DDoS policy for a specified IP addres
 | UserId | Long | No | The user ID of the request sender. The parameter is automatically set by the system. |
 | UserName | String | Yes | The username of the request sender. The parameter is automatically set by the system. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -15513,24 +16521,28 @@ You can call this operation to add an anti-DDoS policy for a specified IP addres
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=CreateDdosPolicy &ExternalServiceIP=192.168.x.x/32 &FlowRate=1 &HttpRate=60 &PackageRate=1
+https://ddosprivate.[ RegionId].example.com/?Action=CreateDdosPolicy &ExternalServiceIP=192.168.x.x/32 &FlowRate=1 &HttpRate=60 &PackageRate=1 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"CA179B61-DD6D-4FE3-A410-CC16AC705DF4"
 ```
 
+`}`
+
 #### 5.3.8 DescribeDdosPolicies
 
-You can call this operation to query the configured DDoS protection policies.
+Description You can call this operation to query the configured DDoS protection policies. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDdosPolicies. |
 | CurrentPage | Integer | No | The current page number. |
 | PageSize | Integer | No | The maximum number of records displayed on a page. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -15550,10 +16562,10 @@ You can call this operation to query the configured DDoS protection policies.
 | HttpRate | Integer | The HTTP request threshold. Unit: QPS. |
 | PackageRate | Integer | The packet threshold. Unit: PPS. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeDdosPolicies &CurrentPage=1 &PageSize=10
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeDdosPolicies &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -15564,6 +16576,11 @@ Sample responses (JSON format)
     "RequestId": "179E1AA9-1BC2-4A66-9E4B-1640EDDE7D1C",
     "CurrentPage": 1,
     "DdosPolicies": [
+```
+
+`{`
+
+```json
             "PackageRate": 200,
             "HttpRate": 0,
             "CodeName":"Daxing data center",
@@ -15574,11 +16591,11 @@ Sample responses (JSON format)
             "AliUid": 0
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.3.9 DeleteDdosPolicy
 
-You can call this operation to delete an anti-DDoS policy for a specified Classless Inter-Domain Routing (CIDR) block.
+Description You can call this operation to delete an anti-DDoS policy for a specified Classless Inter-Domain Routing (CIDR) block. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15592,21 +16609,25 @@ You can call this operation to delete an anti-DDoS policy for a specified Classl
 | HttpRate | Integer | No | The HTTP request rate threshold. Unit: queries per second (QPS). Not e The value of this parameter must be greater than 50. |
 | PackageRate | Integer | No | The packet rate threshold. Unit: packets per second (PPS). Not e The value of this parameter must be greater than 0. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DeleteDdosPolicy &ExternalServiceIP=192.168.x.x/24 &RegionCode=cn-****-env6-d01 &FlowRate=55 &HttpRate=55 &PackageRate=55
+https://ddosprivate.[ RegionId].example.com/?Action=DeleteDdosPolicy &ExternalServiceIP=192.168.x.x/24 &RegionCode=cn-****-env6-d01 &FlowRate=55 &HttpRate=55 &PackageRate=55 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"8C9B8735-18BA-451B-AE9D-1428554CA360"
 ```
+
+`}`
 
 #### 5.3.10 ModifyDdosPolicy
 
@@ -15621,31 +16642,37 @@ You can call this operation to modify a specified anti-DDoS policy.
 | HttpRate | Integer | Yes | The HTTP request rate threshold. Unit: queries per second (QPS). Not e The value of this parameter must be greater than 50. |
 | PackageRate | Integer | Yes | The packet rate threshold. Unit: packets per second (PPS). Not e The value of this parameter must be greater than 0. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=ModifyDdosPolicy &Distribution=**** &ExternalServiceIP=192.168.x.x/32 &FlowRate=1 &HttpRate=60 &PackageRate=1
+https://ddosprivate.[ RegionId].example.com/?Action=ModifyDdosPolicy &Distribution=**** &ExternalServiceIP=192.168.x.x/32 &FlowRate=1 &HttpRate=60 &PackageRate=1 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"CA179B61-DD6D-4FE3-A410-CC16AC705DF4"
 ```
 
+`}`
+
 #### 5.3.11 DescribeBlockSwitchs
 
-You can call this operation to query the status of the traffic block switch in anti-DDoS.
+Description You can call this operation to query the status of the traffic block switch in anti-DDoS. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeBlockSwitchs. |
 | CurrentPage | Integer | No | The current page number. |
 | PageSize | Integer | No | The maximum number of records displayed on a page. |
+
+Response parameters
 
 | Name | Type | Description |
 |---|---|---|
@@ -15667,10 +16694,10 @@ You can call this operation to query the status of the traffic block switch in a
 | ModeName | String | The status name of the block switch. Valid values: Disabled Enabled |
 | Name | String | The name of the block switch. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeBlockSwitchs &CurrentPage=1 &PageSize=20
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeBlockSwitchs &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
@@ -15680,6 +16707,11 @@ Sample responses (JSON format)
  "RequestId":"95F2F4C8-7623-48B7-A976-30B48F3A25EB",
  "CurrentPage":1,
  "BlockSwitchs":[
+```
+
+`{`
+
+```json
    "Description": "test",
    "Mode":0,
    "ModeName":"Disabled",
@@ -15688,7 +16720,7 @@ Sample responses (JSON format)
    "Name":"Upgrade channel switch"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Description":"Automatic upgrade switch",
@@ -15699,11 +16731,11 @@ Sample responses (JSON format)
    "Name":"Automatic upgrade switch"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 5.3.12 ModifyBlockSwitchs
 
-You can call this operation to change the status of the block switch in DDoS settings.
+Description You can call this operation to change the status of the block switch in DDoS settings. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -15711,25 +16743,29 @@ You can call this operation to change the status of the block switch in DDoS set
 | Id | Integer | Yes | The ID of the block switch. |
 | Mode | Integer | Yes | The status of the block switch. Valid values: 0: indicates disabled. 1: indicates enabled. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Examples Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=ModifyBlockSwitch &Id=1 &Mode=1
+https://ddosprivate.[ RegionId].example.com/?Action=ModifyBlockSwitch &Id=1 &Mode=1 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"B7FA97F0-082D-4611-A3C4-867011E2A106"
 ```
 
+`}`
+
 #### 5.3.13 DescribeDdosEvents
 
-You can call this operation to query distributed denial of service (DDoS) events that meet the specified search criteria.
+Description You can call this operation to query distributed denial of service (DDoS) events that meet the specified search criteria. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15749,6 +16785,8 @@ You can call this operation to query distributed denial of service (DDoS) events
 |---|---|---|---|
 | SearchReason | String | No | The reason why the DDoS event is triggered. Valid values: bps, pps, and qps. You can query events triggered by multiple reasons. For example, you can enter "bps,pps" to query the DDoS events that are triggered when the traffic rate threshold or the packet transmission rate threshold is exceeded. |
 | SelectStatus | String | No | The status of the DDoS event. Valid values: Scrubbing Scrubbing completed |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -15790,18 +16828,23 @@ You can call this operation to query distributed denial of service (DDoS) events
 | Successful | Integer | Indicates whether the attack succeeds. Valid values: 0: indicates that the attack has failed. 1: indicates that the attack succeeded. |
 | NeedIgnore | Integer | Indicates whether you need to ignore the event. Valid values: 0: indicates that you do not need to ignore the event. 1: indicates that the event has been reported repeatedly and you need to ignore the event. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeDdosEvents &CurrentPage=1 &Distribution=DXJF $StartDay=1381079107176 $EndDay=1481079107176 &PageSize=10
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeDdosEvents &CurrentPage=1 &Distribution=DXJF $StartDay=1381079107176 $EndDay=1481079107176 &PageSize=10 &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
  "TotalCount":1,
  "RequestId":"AD525B06-F5F7-4319-94F4-45154D5B0750",
  "DdosEvents":[
+```
+
+`{`
+
+```json
    "NewConn":0,
    "Status":0,
    "LocationDel":"nulllocal",
@@ -15828,15 +16871,17 @@ Sample response (JSON format)
    "NeedIgnore":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "CurrentPage":1
 ```
 
+`}`
+
 #### 5.3.14 DescribeFlowAnalysisResult
 
-You can call this operation to query the analysis result of the traffic sent to an IP address.
+Description You can call this operation to query the analysis result of the traffic sent to an IP address.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15846,6 +16891,8 @@ You can call this operation to query the analysis result of the traffic sent to 
 | StartDate | Long | Yes | The beginning of the time range where traffic is analyzed. |
 | SearchReason | String | No | The reason why the distributed denial of service (DDoS) event is triggered. Valid values: bps, pps, and qps. You can query events triggered by multiple reasons. For example, you can enter "bps,pps" to query the DDoS events that are triggered when the traffic rate threshold or the packet transmission rate threshold is exceeded. |
 | SelectStatus | String | No | The status of the DDoS event. Valid values: Scrubbing Scrubbing completed |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -15860,13 +16907,13 @@ You can call this operation to query the analysis result of the traffic sent to 
 | Protocol | String | The protocol. |
 | Count | Float | The percentage of the traffic of the specified protocol compared to the total amount of traffic. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeFlowAnalysisResult &Distribution=DD_DXJF &startDate=123123312000 &VmIp=x.x.x.x
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeFlowAnalysisResult &Distribution=DD_DXJF &startDate=123123312000 &VmIp=x.x.x.x &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "TopAttackers":["Ip":"x.x.x.x","Count":"1.00"],
@@ -15874,9 +16921,11 @@ Sample response (JSON format)
     "TopProtocols":["Protocol":"tcp","Count":"1.00"]
 ```
 
+`}`
+
 #### 5.3.15 DescribeFlowDetails
 
-You can call this operation to query the detailed traffic information for a specified IP address.
+Description You can call this operation to query the detailed traffic information for a specified IP address. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15886,6 +16935,8 @@ You can call this operation to query the detailed traffic information for a spec
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeFlowDetails. |
 | Distribution | String | Yes | The ID of the region. For example, a value of DXJF indicates the region where the Daxing IDC is located. |
 | VmIP | String | Yes | The IP address of the victim server. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -15900,7 +16951,7 @@ You can call this operation to query the detailed traffic information for a spec
 | HttpRate | Integer | The HTTP request rate. Unit: queries per second (QPS). |
 | PackageRate | Integer | The packet rate. Unit: packets per second (PPS). |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
 https://ddosprivate.[ RegionId].example.com/?Action=DescribeFlowDetails &Distribution=**** &VmIp=10.0.x.x
@@ -15926,9 +16977,11 @@ Sample response (JSON format)
     "HttpStatusCode":200
 ```
 
+`}`
+
 #### 5.3.16 CancelCleanStatus
 
-You can call this operation to disable DDoS traffic scrubbing for a specified IP address.
+Description You can call this operation to disable DDoS traffic scrubbing for a specified IP address. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15936,25 +16989,29 @@ You can call this operation to disable DDoS traffic scrubbing for a specified IP
 | Distribution | String | Yes | The ID of the region. For example, a value of DXJF indicates the region where the Daxing IDC is located. |
 | VmIp | String | Yes | The IP address of the instance, in x.x.x.x format. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=CancelCleanStatus &Distribution=DXJF &SourceIp=10.0.x.x &VmIp=172.16.x.x
+https://ddosprivate.[ RegionId].example.com/?Action=CancelCleanStatus &Distribution=DXJF &SourceIp=10.0.x.x &VmIp=172.16.x.x &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 5.3.17 CreateWhiteList
 
-You can call this operation to add a whitelist of trusted IP addresses that are exempt from traffic security monitoring.
+Description You can call this operation to add a whitelist of trusted IP addresses that are exempt from traffic security monitoring. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15968,21 +17025,23 @@ You can call this operation to add a whitelist of trusted IP addresses that are 
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=CreateWhiteList &Type=15 &DestinationIp=192.168.xx.xx &SourceIpStr=192.168.xx.xx &Username=test
+https://ddosprivate.[ RegionId].example.com/?Action=CreateWhiteList &Type=15 &DestinationIp=192.168.xx.xx &SourceIpStr=192.168.xx.xx &Username=test &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 5.3.18 DescribeWhiteList
 
-You can call this operation to query the IP addresses that have been added to a whitelist.
+Description You can call this operation to query the IP addresses that have been added to a whitelist. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -15994,6 +17053,8 @@ You can call this operation to query the IP addresses that have been added to a 
 |---|---|---|---|
 | Type | Integer | No | The type of the whitelist. Valid values: 6: indicates a server brute-force attack whitelist. 12: indicates a BWAF source IP address whitelist. 15: indicates an application attack whitelist. |
 | Username | String | No | The username. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -16008,13 +17069,13 @@ You can call this operation to query the IP addresses that have been added to a 
 | Username | String | The username. |
 | DestinationIp | String | The destination IP address. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeWhiteList &Type=15 &DestinationIp=172.16.xx.xx &SourceIpStr=172.17.xx.xx &Username=test
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeWhiteList &Type=15 &DestinationIp=172.16.xx.xx &SourceIpStr=172.17.xx.xx &Username=test &<Common request parameters>
 ```
 
-Sample response (JSON format)
+Sample response (JSON format) `{`
 
 ```json
     "CurrentPage":1,
@@ -16030,36 +17091,40 @@ Sample response (JSON format)
         "Username":"****"
 ```
 
-`}]`
+`}]` `}`
 
 #### 5.3.19 DeleteWhiteList
 
-You can call this operation to delete a specified whitelist entry.
+Description You can call this operation to delete a specified whitelist entry. Request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteWhiteList. |
 | Id | Integer | Yes | The ID of the whitelist entry. |
 
+Response parameters
+
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+Error codes For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DeleteWhiteList &Id=15
+https://ddosprivate.[ RegionId].example.com/?Action=DeleteWhiteList &Id=15 &<Common request parameters>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
  "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 5.3.20 DescribeConsoleDdosPolicies
 
-You can call this operation to obtain the records of anti-DDoS policies, including the system default policies.
+Description You can call this operation to obtain the records of anti-DDoS policies, including the system default policies. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -16068,6 +17133,8 @@ You can call this operation to obtain the records of anti-DDoS policies, includi
 | CurrentPage | Integer | No | The number of the page to return. |
 | PageSize | Integer | No | The number of records to return on each page. |
 | StartRow | Integer | No | The start row to return. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -16091,10 +17158,10 @@ You can call this operation to obtain the records of anti-DDoS policies, includi
 | PackageRate | Integer | The threshold for the packet rate. Unit: packets per second (PPS). |
 | AliUid | Long | The Alibaba Cloud account ID corresponding to the policy. |
 
-For more information about the error codes that this operation can return, see Error codes. Sample request
+Error codes For more information about the error codes that this operation can return, see Error codes. Examples Sample request
 
 ```
-https://ddosprivate.[ RegionId].example.com/?Action=DescribeConsoleDdosPolicies &AliUid=**** &CurrentPage=1 &PageSize=10 &SourceIp=xx.xx.xx.xx
+https://ddosprivate.[ RegionId].example.com/?Action=DescribeConsoleDdosPolicies &AliUid=**** &CurrentPage=1 &PageSize=10 &SourceIp=xx.xx.xx.xx &<Common request parameters>
 ```
 
 Sample response (JSON format)
@@ -16105,6 +17172,11 @@ Sample response (JSON format)
     "PageSize":20,
     "RequestId":"7C3AC882-E5A8-4855-BE77-B6837B695EF1",
     "ThresholdList":[
+```
+
+`{`
+
+```json
             "AliUid":151971404963****,
             "Code":"DD_DXJF",
             "CodeName":"DD_DXJF",
@@ -16115,7 +17187,7 @@ Sample response (JSON format)
             "PackageRate":1
 ```
 
-`},`
+`},` `{`
 
 ```json
             "AliUid":151971404963****,
@@ -16128,7 +17200,7 @@ Sample response (JSON format)
             "PackageRate":1
 ```
 
-`},`
+`},` `{`
 
 ```json
             "AliUid":-1,
@@ -16140,11 +17212,13 @@ Sample response (JSON format)
             "PackageRate":200
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":3
 ```
+
+`}`
 
 ## 6 Cloud Firewall
 
@@ -16180,7 +17254,7 @@ Apsara Stack Security APIs are based on RPC. This chapter describes the structur
 http://endpoint/?Action=xx&parameters
 ```
 
-Where: `endpoint` : An endpoint is used to call a cloud service. The endpoint for the Web Application Firewall (WAF) service is `wafprivate.[ RegionId].example.com` . `Action` : The operation that you want to perform. For example, you can set the value to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : The request parameters that are contained in the request. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters are used to indicate information such as the API version and authentication information. For more information, see Common request parameters. For more information about the custom request parameters, see the corresponding operation description. Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
+Where: `endpoint` : An endpoint is used to call a cloud service. The endpoint for the Web Application Firewall (WAF) service is `wafprivate.[ RegionId].example.com` . `Action` : The operation that you want to perform. For example, you can set the value to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : The request parameters that are contained in the request. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters are used to indicate information such as the API version and authentication information. For more information, see Common request parameters. For more information about the custom request parameters, see the corresponding operation description. Example Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
 
 ```
 https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-test &Format=JSON&SecureTransport=true&SignatureMethod=HMAC-SHA1&SignatureNonce=15215528852396&S ignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018-03-02Txxxxxxx&Version=2018-01-16&Signatu re=xxxx%xxxx%3D
@@ -16259,11 +17333,13 @@ Apsara Stack Security API responses support both the XML and JSON formats. The s
 </Operation name+Response>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
+
+`}`
 
 ### 6.3 Access control
 
@@ -16278,16 +17354,18 @@ Queries the priority range of access control policies that match specific query 
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | End | Integer | 150 | The lowest priority of the access control policy. |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | Start | Integer | 1 | The highest priority of the access control policy. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribePolicyPriorUsed &Direction=in
+http(s)://[Endpoint]/?Action=DescribePolicyPriorUsed &Direction=in &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16300,7 +17378,7 @@ Sample success responses `XML` format
 </DescribePolicyPriorUsedResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D",
@@ -16308,11 +17386,11 @@ Sample success responses `XML` format
     "End": 150
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.3.2 ModifyControlPolicyPosition
 
-Modifies the priority of an access control policy.
+Modifies the priority of an access control policy. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16326,14 +17404,16 @@ Modifies the priority of an access control policy.
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 850A84D6-0DE4- 4797-A1E8- 00090125EEB1 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyControlPolicyPosition &Direction=in &NewOrder=1 &OldOrder=5
+http(s)://[Endpoint]/?Action=ModifyControlPolicyPosition &Direction=in &NewOrder=1 &OldOrder=5 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16344,13 +17424,13 @@ Sample success responses `XML` format
 </ModifyControlPolicyPosition>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"850A84D6-0DE4-4797-A1E8-00090125EEB1"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.3.3 DescribeControlPolicy
 
@@ -16379,6 +17459,8 @@ Queries information about all the access control policies.
 | Proto | String | No | TCP | The type of protocol in the access control policy. Valid values: TCP UDP ICMP ANY, which indicates all types of protocols |
 | AclAction | String | No | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept : allows the traffic. drop: denies the traffic. log: monitors the traffic. If this parameter is not specif ied, access control policies that specify the preceding actions are queried. |
 | Release | String | No | true | Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: t rue: The access control policy is enabled. f alse: The access control policy is disabled. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -16437,10 +17519,10 @@ Queries information about all the access control policies.
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | TotalCount | String | 100 | The total number of the returned access control policies. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeControlPolicy &CurrentPage=1 &Direction=in &PageSize=10
+http(s)://[Endpoint]/?Action=DescribeControlPolicy &CurrentPage=1 &Direction=in &PageSize=10 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16481,6 +17563,11 @@ Sample success responses `XML` format
     "PageSize":10,
     "RequestId":"A08BC58F-A83D-43EB-BC31-2F0D723929CC",
     "Policys":[
+```
+
+`{`
+
+```json
             "DestinationGroupCidrs":[
 ```
 
@@ -16518,11 +17605,11 @@ Sample success responses `XML` format
             "DnsResultTime": 1579261141
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 #### 6.3.4 AddControlPolicy
 
-Creates an access control policy.
+Creates an access control policy. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16555,17 +17642,17 @@ Creates an access control policy.
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.5 | The source IP address of the request. |
 
-The following section lists the location codes. China: ZD Beijing: BJ11 Tianjin: TJ12 Hebei: HB13 Shanxi: SX14 Liaoning: LN21 Jilin Province: JL22 Shanghai: SH31 Jiangsu: JS32 Zhejiang: ZJ33 Anhui: AH34 Fujian: FJ35 Jiangxi: JX36 Shandong: SD37 Henan: HN41 Hubei: HB42 Hunan: HN43 Guangdong: GD44 Hainan: HN46 Chongqing: CQ50 Sichuan: SC51 Guizhou: GZ52 Yunnan: YN53 Shaanxi: SX61 Gansu: GS62 Qinghai: QH63 Heilongjiang: HLJ23 Xizang: XZ54 Guangxi: GX45 Nei Mongol: NMG15 Ningxia: NX64 Xinjiang: XJ65 Taiwan: TW Hong Kong S.A.R: HK Macao S.A.R: MO Areas outside China: ZB Asia (excluding China): ZC Europe: EU Africa: AF North America: NA South America: LA Oceania: OA Antarctica: AQ
+The following section lists the location codes. China: ZD Beijing: BJ11 Tianjin: TJ12 Hebei: HB13 Shanxi: SX14 Liaoning: LN21 Jilin Province: JL22 Shanghai: SH31 Jiangsu: JS32 Zhejiang: ZJ33 Anhui: AH34 Fujian: FJ35 Jiangxi: JX36 Shandong: SD37 Henan: HN41 Hubei: HB42 Hunan: HN43 Guangdong: GD44 Hainan: HN46 Chongqing: CQ50 Sichuan: SC51 Guizhou: GZ52 Yunnan: YN53 Shaanxi: SX61 Gansu: GS62 Qinghai: QH63 Heilongjiang: HLJ23 Xizang: XZ54 Guangxi: GX45 Nei Mongol: NMG15 Ningxia: NX64 Xinjiang: XJ65 Taiwan: TW Hong Kong S.A.R: HK Macao S.A.R: MO Areas outside China: ZB Asia (excluding China): ZC Europe: EU Africa: AF North America: NA South America: LA Oceania: OA Antarctica: AQ Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclUuid | String | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=AddControlPolicy &AclAction=accept &ApplicationName=ANY &Description=demo_rule_1 &Destination=1.2.3.4/24 &DestinationType=net &Direction=in &NewOrder=-1 &Proto=TCP &Source=1.2.3.0/24 &SourceType=net
+http(s)://[Endpoint]/?Action=AddControlPolicy &AclAction=accept &ApplicationName=ANY &Description=demo_rule_1 &Destination=1.2.3.4/24 &DestinationType=net &Direction=in &NewOrder=-1 &Proto=TCP &Source=1.2.3.0/24 &SourceType=net &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16577,18 +17664,18 @@ Sample success responses `XML` format
 </AddControlPolicy>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D",
  "AclUuid":"00281255-d220-4db1-8f4f-c4df221ad84c"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.3.5 DeleteControlPolicy
 
-Deletes an access control policy.
+Deletes an access control policy. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16601,14 +17688,16 @@ Deletes an access control policy.
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the traffic. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteControlPolicy &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &Direction=in
+http(s)://[Endpoint]/?Action=DeleteControlPolicy &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &Direction=in &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16625,11 +17714,11 @@ Sample success responses `XML` format
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.3.6 ModifyControlPolicy
 
-Modifies the configuration of an access control policy.
+Modifies the configuration of an access control policy. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16663,10 +17752,10 @@ Modifies the configuration of an access control policy.
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyControlPolicy &AclAction=accept &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &ApplicationName=ANY &Description=demo_rule_1 &Destination=1.2.3.4/24 &DestinationType=net &Direction=in &Proto=TCP &Source=1.2.3.0/24 &SourceType=net
+http(s)://[Endpoint]/?Action=ModifyControlPolicy &AclAction=accept &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &ApplicationName=ANY &Description=demo_rule_1 &Destination=1.2.3.4/24 &DestinationType=net &Direction=in &Proto=TCP &Source=1.2.3.0/24 &SourceType=net &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16677,13 +17766,13 @@ Sample success responses `XML` format
 </ModifyControlPolicy>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.3.7 VPC firewalls
 
@@ -16718,15 +17807,17 @@ Creates an access control policy to a specific policy group for a VPC firewall. 
 | DestPortType | String | No | net | The type of the destination port in the access control policy. port group: port address book |
 | DestPortGroup | String | No | my port group _ _ | The name of the destination port address book in the access control policy. Not e If the DestPortType parameter is set to group , you must specify this parameter. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclUuid | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | RequestId | String | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=CreateVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &AclAction=accept &ApplicationName=ANY &Description=demo_rule_1 &Destination=10.2.3.0/24 &DestinationType=net &NewOrder=-1 &Proto=TCP &Source=10.2.3.0/24 &SourceType=net
+http(s)://[Endpoint]/?Action=CreateVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &AclAction=accept &ApplicationName=ANY &Description=demo_rule_1 &Destination=10.2.3.0/24 &DestinationType=net &NewOrder=-1 &Proto=TCP &Source=10.2.3.0/24 &SourceType=net &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16738,18 +17829,18 @@ Sample success responses `XML` format
 </CreateVpcFirewallControlPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D",
     "AclUuid": "00281255-d220-4db1-8f4f-c4d*********"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.2 DescribeVpcFirewallControlPolicy
 
-Queries the information of the access control policies for a specific VPC firewall. Not e The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+Queries the information of the access control policies for a specific VPC firewall. Not e The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16776,6 +17867,8 @@ Queries the information of the access control policies for a specific VPC firewa
 |---|---|---|---|---|
 | Proto | String | No | TCP | The type of the protocol in the access control policy. Valid values: TCP UDP ICMP ANY, which indicates all types of protocols |
 | AclAction | String | No | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept : allows the traffic. drop: denies the traffic. log: monitors the traffic. If this parameter is not specif ied, access control policies that specify all the preceding actions are queried. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -16821,10 +17914,10 @@ Queries the information of the access control policies for a specific VPC firewa
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | TotalCount | String | 20 | The total number of the access control policies. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &CurrentPage=1 &PageSize=10
+http(s)://[Endpoint]/?Action=DescribeVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16862,6 +17955,11 @@ Sample success responses `XML` format
     "PageSize":10,
     "RequestId":"A08BC58F-A83D-43EB-BC31-2F0D723929CC",
     "Policys":[
+```
+
+`{`
+
+```json
             "DestinationGroupCidrs":[
 ```
 
@@ -16896,11 +17994,11 @@ Sample success responses `XML` format
             "Destination":"10.2.1.1/32"
 ```
 
-`]` For a list of error codes, see Error codes.
+`}` `]` `}` Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.3 ModifyVpcFirewallControlPolicy
 
-Modifies the configuration of an access control policy in a specific policy group for a VPC firewall. Not e The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+Modifies the configuration of an access control policy in a specific policy group for a VPC firewall. Not e The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16932,14 +18030,16 @@ Modifies the configuration of an access control policy in a specific policy grou
 | DestPortType | String | No | port | The type of the destination port in the access control policy. port group: port address book |
 | DestPortGroup | String | No | my port group _ _ | The name of the destination port address book in the access control policy. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &AclAction=accept &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &ApplicationName=ANY &Description=demo_rule_1 &Destination=10.2.3.0/24 &DestinationType=net &Proto=TCP &Source=10.2.4.0/24 &SourceType=net
+http(s)://[Endpoint]/?Action=ModifyVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &AclAction=accept &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &ApplicationName=ANY &Description=demo_rule_1 &Destination=10.2.3.0/24 &DestinationType=net &Proto=TCP &Source=10.2.4.0/24 &SourceType=net &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16956,11 +18056,11 @@ Sample success responses `XML` format
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
 ```
 
-For a list of error codes, see Error codes.
+Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.4 ModifyVpcFirewallControlPolicyPosition
 
-Modifies the priority of an access control policy in a specific policy group for a VPC firewall.
+Modifies the priority of an access control policy in a specific policy group for a VPC firewall. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -16973,14 +18073,16 @@ Modifies the priority of an access control policy in a specific policy group for
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 850A84D6-0DE4- 4797-A1E8- 00090125EEB1 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ModifyVpcFirewallControlPolicyPosition &VpcFirewallId=vfw-a42bbb7b887148c9**** &NewOrder=1 &OldOrder=5
+http(s)://[Endpoint]/?Action=ModifyVpcFirewallControlPolicyPosition &VpcFirewallId=vfw-a42bbb7b887148c9**** &NewOrder=1 &OldOrder=5 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -16991,17 +18093,17 @@ Sample success responses `XML` format
 </ModifyVpcFirewallControlPolicyPositionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "850A84D6-0DE4-4797-A1E8-00090125EEB1"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.5 DeleteVpcFirewallControlPolicy
 
-Deletes an access control policy from a specific policy group for a VPC firewall. Not e The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies.
+Deletes an access control policy from a specific policy group for a VPC firewall. Not e The VPC firewall instances that are used to protect each Cloud Enterprise Network (CEN) instance and each Express Connect use different access control policies. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17010,6 +18112,8 @@ Deletes an access control policy from a specific policy group for a VPC firewall
 | VpcFirewallId | String | Yes | vfw- a42bbb7b887148 c91**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a CEN instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb7b887148c9****. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
@@ -17017,10 +18121,10 @@ Deletes an access control policy from a specific policy group for a VPC firewall
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c
+http(s)://[Endpoint]/?Action=DeleteVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &AclUuid=00281255-d220-4db1-8f4f-c4df221ad84c &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17031,17 +18135,17 @@ Sample success responses `XML` format
 </DeleteVpcFirewallControlPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.6 DescribeVpcFirewallPolicyPriorUsed
 
-Queries the priority range of the access control policies in a specific policy group for a VPC firewall.
+Queries the priority range of the access control policies in a specific policy group for a VPC firewall. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17052,13 +18156,15 @@ Queries the priority range of the access control policies in a specific policy g
 | VpcFirewallId | String | Yes | vfw- a42bbb7b887148 c9**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb7b887148c9****. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | End | Integer | 150 | The lowest priority for the access control policy. |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | Start | Integer | 1 | The highest priority for the access control policy. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVpcFirewallPolicyPriorUsed &VpcFirewallId=vfw-a42bbb7b887148c9****
@@ -17074,7 +18180,7 @@ Sample success responses `XML` format
 </DescribeVpcFirewallPolicyPriorUsedResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D",
@@ -17082,11 +18188,11 @@ Sample success responses `XML` format
     "End": 150
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.7 DescribeVpcFirewallAclGroupList
 
-Queries information about all access control policy groups for a VPC firewall.
+Queries information about all access control policy groups for a VPC firewall. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17099,6 +18205,8 @@ Queries information about all access control policy groups for a VPC firewall.
 | CurrentPage | String | No | 1 | The page number of the current page. Default value: 1 |
 | PageSize | String | No | 10 | The number of entries to return on each page. Maximum value: 50. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclGroupList | Array |   | The information about the access control policy group. |
@@ -17110,10 +18218,10 @@ Queries information about all access control policy groups for a VPC firewall.
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of access control policy groups. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeVpcFirewallAclGroupList &FirewallConfigureStatus=configured
+http(s)://[Endpoint]/?Action=DescribeVpcFirewallAclGroupList &FirewallConfigureStatus=configured &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17134,7 +18242,7 @@ Sample success responses `XML` format
 {"TotalCount":1,"AclGroupList":[{"AclGroupId":"vfw-a42bbb7b887148c9****","AclGroupName":"gr oup_test"}]}
 ```
 
-For a list of error codes, see Error codes.
+Error codes For a list of error codes, see Error codes.
 
 ##### 6.3.7.8 ResetVpcFirewallRuleHitCount
 
@@ -17146,14 +18254,16 @@ Resets the count on hits of an access control policy in a specific policy group 
 | AclUuid | String | Yes | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. To delete an access control policy, you must specify the ID of the policy. You can call the DescribeVpcFirewallControlPolicy operation to obtain the ID. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ResetVpcFirewallRuleHitCount &AclUuid=00281255-d220-4db1-8f4f-c4df221a1234
+http(s)://[Endpoint]/?Action=ResetVpcFirewallRuleHitCount &AclUuid=00281255-d220-4db1-8f4f-c4df221a1234 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17170,13 +18280,13 @@ Sample success responses `XML` format
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
 ```
 
-For a list of error codes, see Error codes.
+Error codes For a list of error codes, see Error codes.
 
 ### 6.4 Firewall switch
 
 #### 6.4.1 PutEnableFwSwitch
 
-Turns on a firewall switch.
+Turns on a firewall switch. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17190,14 +18300,16 @@ Turns on a firewall switch.
 |---|---|---|---|---|
 | ResourceTypeList .N | RepeatLi st | No | ["EcsPublicIp","Na tEip"] | The list of asset types. Valid values: BastionHostIP: the IP address of a bastion host EcsEIP: the EIP of an ECS instance EcsPublicIP: the public IP address of an ECS instance EIP EniEIP: the EIP of an ENI NatEIP: the EIP of a NAT gateway SlbEIP: the EIP of an SLB instance SlbPublicIP: the public IP address of an SLB instance NatPublicIP: the public IP address of a NAT gateway HAVIP: the HA VIP |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF7334F8 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=PutEnableFwSwitch&IpaddrList=["1.2.3.4","5.6.7.8"]
+http(s)://[Endpoint]/?Action=PutEnableFwSwitch&IpaddrList=["1.2.3.4","5.6.7.8"] &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17206,17 +18318,17 @@ Sample success responses `XML` format
 <RequestId>B2841452-CB8D-4F7D-B247-38E1CF7334F8</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"B2841452-CB8D-4F7D-B247-38E1CF7334F8"
 ```
 
-For a list of error codes, see Error codes.
+`}` For a list of error codes, see Error codes.
 
 #### 6.4.2 PutDisableFwSwitch
 
-Turns off a firewall switch.
+Turns off a firewall switch. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17231,10 +18343,10 @@ Turns off a firewall switch.
 |---|---|---|---|
 | RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF7334F8 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=PutDisableFwSwitch&IpaddrList=["1.2.3.4","5.6.7.8"]
+http(s)://[Endpoint]/?Action=PutDisableFwSwitch&IpaddrList=["1.2.3.4","5.6.7.8"] &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17243,17 +18355,17 @@ Sample success responses `XML` format
 <RequestId>B2841452-CB8D-4F7D-B247-38E1CF7334F8</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"B2841452-CB8D-4F7D-B247-38E1CF7334F8"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.4.3 PutEnableAllFwSwitch
 
-Turns on all firewall switches.
+Turns on all firewall switches. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17265,10 +18377,10 @@ Turns on all firewall switches.
 |---|---|---|---|
 | RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF7334F8 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=PutEnableAllFwSwitch
+http(s)://[Endpoint]/?Action=PutEnableAllFwSwitch &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17277,17 +18389,17 @@ Sample success responses `XML` format
 <RequestId>B2841452-CB8D-4F7D-B247-38E1CF7334F8</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"B2841452-CB8D-4F7D-B247-38E1CF7334F8"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.4.4 PutDisableAllFwSwitch
 
-Turns off all firewall switches.
+Turns off all firewall switches. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17298,14 +18410,16 @@ Turns off all firewall switches.
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF7334F8 | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=PutDisableAllFwSwitch
+http(s)://[Endpoint]/?Action=PutDisableAllFwSwitch &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17314,19 +18428,19 @@ Sample success responses `XML` format
 <RequestId>B2841452-CB8D-4F7D-B247-38E1CF7334F8</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"B2841452-CB8D-4F7D-B247-38E1CF7334F8"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 ### 6.5 Address books
 
 #### 6.5.1 AddAddressBook
 
-Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag address books, port address books, and domain address books.
+Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag address books, port address books, and domain address books. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17345,15 +18459,17 @@ Creates an address book for access control. Supported address book types are IP 
 | TagList.N.TagVal ue | String | No | value1 | The value of ECS tag N you want to match. |
 | TagRelation | String | No | and | The logical relation among ECS tags you want to mach. Valid values: and: Only the public IP addresses of ECS instances that match all the specific tags can be added to the address book. or: The public IP addresses of ECS instances that match any of the specific tags can be added to the address book. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | GroupUuid | String | f04ac7ce-628b- 4cb7-be61- 310222b718e8 | The ID of the returned address book |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=AddAddressBook &Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.2.3.4/32,1.2.3.0/24
+http(s)://[Endpoint]/?Action=AddAddressBook &Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.2.3.4/32,1.2.3.0/24 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17365,18 +18481,18 @@ Sample success responses `XML` format
     </AddAddressBook>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"B2841452-CB8D-4F7D-B247-38E1CF7334F8",
     "GroupUuid":"0580bbd0-24cd-47ae-9e5a-f5a099251e32"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.5.2 DeleteAddressBook
 
-Deletes an address book for access control.
+Deletes an address book for access control. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17388,14 +18504,16 @@ Deletes an address book for access control.
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteAddressBook &GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad
+http(s)://[Endpoint]/?Action=DeleteAddressBook &GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17406,13 +18524,13 @@ Sample success responses `XML` format
 </DeleteAddressBook>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
  "RequestId":"850A84D6-0DE4-4797-A1E8-00090125EEB1"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.5.3 ModifyAddressBook
 
@@ -17435,11 +18553,13 @@ Modifies an address book for the access control.
 | TagList.N.TagVal ue | String | No | value1 | The value of ECS tag N you want to match. |
 | TagRelation | String | No | and | The logical relation among ECS tags. Valid values: and: Only the public IP addresses of ECS instances that match all the specific tags can be added to the address book. or: The public IP addresses of ECS instances that match any of the specific tags can be added to the address book. |
 
+Response parameters
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ModifyAddressBook &GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad &Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.1.1.1/32,2.2.2.0/24
@@ -17453,17 +18573,17 @@ Sample success responses `XML` format
 </ModifyAddressBook>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
 ```
 
-For a list of error codes, see Error codes.
+`}` Error codes For a list of error codes, see Error codes.
 
 #### 6.5.4 DescribeAddressBook
 
-Queries the details of an address book for the access control.
+Queries the details of an address book for the access control. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17478,6 +18598,8 @@ Queries the details of an address book for the access control.
 | PageSize | String | No | 50 | The number of entries to return on each page. Maximum value: 50. |
 | Query | String | No | 1.2.3.0 | The query condition that specifies the address book. |
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+
+Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -17545,6 +18667,11 @@ Sample success responses `XML` format
  "PageSize":1,
  "RequestId":"B36F150A-1E27-43AA-B72C-D2AC712F09DA",
  "Acls":[
+```
+
+`{`
+
+```json
    "Description":"9-3 IP address book",
    "GroupType":"ip",
    "AddressList":[
@@ -17567,13 +18694,13 @@ Sample success responses `XML` format
    "Global":0
 ```
 
-`],`
+`}` `],`
 
 ```json
  "PageSiNo":1
 ```
 
-For a list of error codes, see Error codes. covery and Protection
+`}` Error codes For a list of error codes, see Error codes. covery and Protection
 
 ## 7 Sensitive Data Discovery and Protection
 
@@ -17621,7 +18748,7 @@ The following tables lists API operations available for use in Sensitive Data Di
 
 #### 7.2.1 Request structure
 
-Apsara Stack Security API operations use the Remote Procedure Call (RPC) protocol. This topic describes the API request syntax. You can call API operations by sending HTTP requests. The request syntax is as follows:
+Apsara Stack Security API operations use the Remote Procedure Call (RPC) protocol. This topic describes the API request syntax. Description You can call API operations by sending HTTP requests. The request syntax is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
@@ -17640,7 +18767,7 @@ Where:
 |---|---|---|
 | ampersands ( | & |   |
 
-`parameters` : the request parameters for the operation. Separate multiple parameters with ampersands ( `&` ). Request parameters include both common parameters and operation-specific parameters. Common parameters include information such as the API version and authentication information. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeDataAssets operation to query data assets:
+`parameters` : the request parameters for the operation. Separate multiple parameters with ampersands ( `&` ). Request parameters include both common parameters and operation-specific parameters. Common parameters include information such as the API version and authentication information. For more information about operation-specific parameters, see the corresponding operation description. Example The following example demonstrates how to call the DescribeDataAssets operation to query data assets:
 
 ```
 https://sddp-api.[ RegionId].example.com/?Action=DescribeDataAssets&CurrentPage=1&PageSize= 10&AccessKeyId=key-test&Format=JSON&SecureTransport=true&SignatureMethod=HMAC-SHA1&Signatur eNonce=15215528852396&SignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2019-04-19Txxxxxxx&Ver sion=2019-01-03&Signature=xxxx%xxxx%3D
@@ -17716,17 +18843,19 @@ Apsara Stack Security APIs can return responses in XML or JSON format. The syste
 </Operation name+Response>
 ```
 
-Sample response in JSON format
+Sample response in JSON format `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned results */
 ```
 
+`}`
+
 ### 7.3 APIs
 
 #### 7.3.1 DescribeDataAssets
 
-You can call this operation to query data assets globally based on the specified conditions.
+Description You can call this operation to query data assets globally based on the specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -17743,6 +18872,8 @@ You can call this operation to query data assets globally based on the specified
 | Name | String | No | The search keyword. Fuzzy match is supported. |
 | RuleId | Long | No | The ID of the rule. |
 | RiskLevels | String | No | The ID of the risk level. Separate multiple IDs with commas (,). |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -17773,13 +18904,13 @@ covery and Protection
 |---|---|---|
 | ObjectKey | String | The key of the OSS object. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeDataAssets &RangeId=1 &CurrentPage=1 &PageSize=10
+https://sddp-api.[ RegionId].example.com/?Action=DescribeDataAssets &RangeId=1 &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"71064826-726F-4ADA-B879-05D8055476FB"
@@ -17787,6 +18918,11 @@ Sample success response in JSON format
     "PageSize":10,
     "CurrentPage":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Owner":"dtdep-239-153536994****",
             "ProductCode":"ODPS",
             "ProductId":1,
@@ -17804,11 +18940,11 @@ Sample success response in JSON format
             "ObjectKey":"Internal"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.2 DescribeInstances
 
-You can call this operation to query instances, databases, projects, or buckets based on the specified conditions. covery and Protection
+Description You can call this operation to query instances, databases, projects, or buckets based on the specified conditions. covery and Protection
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -17819,6 +18955,8 @@ You can call this operation to query instances, databases, projects, or buckets 
 | Name | String | No | The search keyword. Fuzzy match is supported. |
 | RuleId | Long | No | The ID of the rule. |
 | RiskLevelId | Long | No | The ID of the risk level. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -17845,13 +18983,13 @@ You can call this operation to query instances, databases, projects, or buckets 
 | Id | Long | The ID of the primary key. |
 | Protection | Boolean | The protection flag of the MaxCompute asset. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeInstances &CurrentPage=1 &PageSize=10 &ProductCode=ODPS
+https://sddp-api.[ RegionId].example.com/?Action=DescribeInstances &CurrentPage=1 &PageSize=10 &ProductCode=ODPS &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"71064826-726F-4ADA-B879-05D8055476FB"
@@ -17859,6 +18997,11 @@ Sample success response in JSON format
     "PageSize":10,
     "CurrentPage":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Owner":"dtdep-239-153536994****",
             "ProductCode":"ODPS",
             "ProductId":1,
@@ -17874,7 +19017,7 @@ Sample success response in JSON format
             "Protection":false
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.3 DescribeTables
 
@@ -17889,6 +19032,8 @@ covery and Protection Queries data asset tables of MaxCompute, ApsaraDB for RDS,
 | Name | String | No | The keyword. Fuzzy match is supported. |
 | RuleId | Long | No | The ID of the rule. |
 | RiskLevelId | Long | No | The ID of the risk level. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -17915,13 +19060,13 @@ covery and Protection Queries data asset tables of MaxCompute, ApsaraDB for RDS,
 | Id | Long | The ID of the primary key. |
 | Protection | Boolean | The protection tag of the MaxCompute asset. |
 
-For a list of error codes, see Error codes. Sample requests
+Error codes For a list of error codes, see Error codes. Examples Sample requests
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeInstances &CurrentPage=1 &PageSize=10 &ProductCode=ODPS
+https://sddp-api.[ RegionId].example.com/?Action=DescribeInstances &CurrentPage=1 &PageSize=10 &ProductCode=ODPS &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"71064826-726F-4ADA-B879-05D8055476FB"
@@ -17929,6 +19074,11 @@ Sample success responses in JSON format
     "PageSize":10,
     "CurrentPage":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Owner":"dtdep-239-153536994****",
             "ProductCode":"ODPS",
             "ProductId":1,
@@ -17944,7 +19094,7 @@ Sample success responses in JSON format
             "Protection":false
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.4 DescribePackages
 
@@ -17959,6 +19109,8 @@ covery and Protection You can call this operation to query MaxCompute packages b
 | Name | String | No | The search keyword. Fuzzy match is supported. |
 | RuleId | Long | No | The ID of the rule. |
 | RiskLevelId | Long | No | The ID of the risk level. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -17976,13 +19128,13 @@ covery and Protection You can call this operation to query MaxCompute packages b
 | Id | Long | The ID of the primary key. |
 | InstanceId | Long | The ID of the instance. |
 
-covery and Protection For a list of error codes, see Error codes. Sample request
+covery and Protection For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribePackages &CurrentPage=1 &PageSize=20 &InstanceId=1
+https://sddp-api.[ RegionId].example.com/?Action=DescribePackages &CurrentPage=1 &PageSize=20 &InstanceId=1 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -17990,6 +19142,11 @@ Sample success response in JSON format
     "PageSize":10,
     "CurrentPage":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Owner":"dtdep-239-153536994****",
             "ProductCode":"ODPS",
             "ProductId":1,
@@ -18004,11 +19161,11 @@ Sample success response in JSON format
             "InstanceId":1
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.5 DescribeColumns
 
-Queries columns in tables of MaxCompute, ApsaraDB for RDS, and Table Store that SDDP is authorized to scan.
+Description Queries columns in tables of MaxCompute, ApsaraDB for RDS, and Table Store that SDDP is authorized to scan. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18026,6 +19183,8 @@ Queries columns in tables of MaxCompute, ApsaraDB for RDS, and Table Store that 
 | Name | String | No | The keyword. Fuzzy match is supported. |
 | RuleId | Long | No | The ID of the rule. |
 | RiskLevelId | Long | No | The ID of the risk level. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18046,13 +19205,13 @@ Queries columns in tables of MaxCompute, ApsaraDB for RDS, and Table Store that 
 | TableId | Long | The ID of the table. |
 | InstanceId | Long | The ID of the instance. |
 
-covery and Protection For a list of error codes, see Error codes. Sample requests
+covery and Protection For a list of error codes, see Error codes. Examples Sample requests
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeColumns &CurrentPage=1 &PageSize=20 &InstanceId=1 &TableId=1
+https://sddp-api.[ RegionId].example.com/?Action=DescribeColumns &CurrentPage=1 &PageSize=20 &InstanceId=1 &TableId=1 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -18060,6 +19219,11 @@ Sample success responses in JSON format
     "PageSize":10,
     "CurrentPage":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Owner":"dtdep-239-153536994****",
             "ProductCode":"ODPS",
             "ProductId":1,
@@ -18077,11 +19241,11 @@ Sample success responses in JSON format
             "TableId":1
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.6 DescribeOssObjects
 
-You can call this operation to query Object Storage Service (OSS) objects based on the specified conditions. covery and Protection
+Description You can call this operation to query Object Storage Service (OSS) objects based on the specified conditions. Request parameters covery and Protection
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18092,6 +19256,8 @@ You can call this operation to query Object Storage Service (OSS) objects based 
 | Name | String | No | The search keyword. Fuzzy match is supported. |
 | RuleId | Long | No | The ID of the rule. |
 | RiskLevelId | Long | No | The ID of the risk level. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18107,13 +19273,13 @@ You can call this operation to query Object Storage Service (OSS) objects based 
 | Id | Long | The ID of the primary key. |
 | RegionId | String | The ID of the region. |
 
-For a list of error codes, see Error codes. Sample request covery and Protection
+Error codes For a list of error codes, see Error codes. Sample request covery and Protection
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeOssObjects &CurrentPage=1 &PageSize=20 &InstanceId=1
+https://sddp-api.[ RegionId].example.com/?Action=DescribeOssObjects &CurrentPage=1 &PageSize=20 &InstanceId=1 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -18121,6 +19287,11 @@ Sample success response in JSON format
     "PageSize":10,
     "CurrentPage":1,
     "Items":[
+```
+
+`{`
+
+```json
             "RiskLevelName":"Internal",
             "Id":17383,
             "RiskLevelId":2,
@@ -18128,16 +19299,18 @@ Sample success response in JSON format
             "Name":"obj****"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.7 DescribeOssObjectDetail
 
-You can call this operation to query the details of an Object Storage Service (OSS) object that SDDP is authorized to access.
+Description You can call this operation to query the details of an Object Storage Service (OSS) object that SDDP is authorized to access. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeOssObjectDetail. |
 | Id | Long | Yes | The ID of the OSS object. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18159,13 +19332,13 @@ You can call this operation to query the details of an Object Storage Service (O
 | RuleName | String | The name of the matched rule. |
 | Count | Integer | The number of matches. |
 
-For a list of error codes, visit the Error codes. Sample requests
+Error codes For a list of error codes, visit the Error codes. Examples Sample requests
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeOssObjectDetail &Id=12
+https://sddp-api.[ RegionId].example.com/?Action=DescribeOssObjectDetail &Id=12 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -18178,11 +19351,16 @@ Sample success responses in JSON format
         "CategoryName":"MAC address",
         "Name":"obj_id",
         "RuleList":[
+```
+
+`{`
+
+```json
                 "RuleName":"ID card number",
                 "Count":10
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 7.3.8 DescribeDeparts
 
@@ -18196,6 +19374,8 @@ You can call this operation to query departments based on the specified conditio
 | Key | String | No | The search keyword. Fuzzy match is supported. |
 | AccountType | Integer | No | The type of the query. Valid values: 1: department query. 2: account query. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -18207,7 +19387,7 @@ You can call this operation to query departments based on the specified conditio
 | DepartName | String | The name of the department. |
 | DepartId | Long | The ID of the department. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
 https://sddp-api.[ RegionId].example.com/?Action=DescribeDeparts &CurrentPage=1 &PageSize=10
@@ -18221,16 +19401,21 @@ covery and Protection Sample success response in JSON format
     "CurrentPage":1
     "TotalCount":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Id":283,
             "DepartId":2,
             "DepartName":"Development"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.9 DescribeAccounts
 
-You can call this operation to query accounts based on the specified conditions.
+Description You can call this operation to query accounts based on the specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18251,6 +19436,8 @@ You can call this operation to query accounts based on the specified conditions.
 | PackageId | Long | No | The ID of the package. |
 | ColumnId | Long | No | The ID of the column. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -18269,13 +19456,13 @@ You can call this operation to query accounts based on the specified conditions.
 | TelephoneNum | String | The landline phone number. |
 | AccountTypeId | Integer | The type of the account. Valid values: 2: Apsara Stack Console account. 3: Resource Access Management (RAM) account. |
 
-covery and Protection For a list of error codes, see Error codes. Sample request
+covery and Protection For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeAccounts &CurrentPage=1 &PageSize=10
+https://sddp-api.[ RegionId].example.com/?Action=DescribeAccounts &CurrentPage=1 &PageSize=10 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -18283,6 +19470,11 @@ Sample success response in JSON format
     "CurrentPage":1
     "TotalCount":1,
     "Items":[
+```
+
+`{`
+
+```json
             "LoginName":"sddp_****",
             "Email":"test@example.com",
             "CreateTime":1543300900000,
@@ -18295,11 +19487,11 @@ Sample success response in JSON format
             "AccountTypeId":1
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.10 DescribeAccountDetail
 
-You can call this operation to query the details of an account based on the account ID and account type.
+Description You can call this operation to query the details of an account based on the account ID and account type. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18314,6 +19506,8 @@ covery and Protection
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | AccountTypeId | Integer | Yes | The type of the account. Valid values: 2: Apsara Stack Console account. 3: Resource Access Management (RAM) account. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18338,10 +19532,10 @@ covery and Protection
 For a list of error codes, see Error codes. covery and Protection Sample request
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DescribeAccountDetail &UserId=1 &AccountTypeId=2
+https://sddp-api.[ RegionId].example.com/?Action=DescribeAccountDetail &UserId=1 &AccountTypeId=2 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -18356,6 +19550,11 @@ Sample success response in JSON format
         "CellphoneNum":"1300000****",
         "TelephoneNum":"0571-6000****",
         "PrivilegeList":[
+```
+
+`{`
+
+```json
                 "UseAccountType":2,
                 "ProductName":"OSS/ODPS",
                 "UseAccountCreateTime":1546413235000,
@@ -18363,11 +19562,11 @@ Sample success response in JSON format
                 "UseAccountId":259
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 7.3.11 DescribePrivileges
 
-You can call this operation to query permissions of an account based on the account ID and other specified conditions.
+Description You can call this operation to query permissions of an account based on the account ID and other specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18383,6 +19582,8 @@ covery and Protection
 | UseAccountId | Long | No | The ID of the used account. |
 | Key | String | No | The search keyword. Fuzzy match is supported. |
 | DataTypeIds | String | No | The type of the resource. For more information, see Resource type definition. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18414,10 +19615,10 @@ covery and Protection
 | PolicyCondition | String | The usage conditions. |
 | Sensitive | Boolean | Indicates whether the permission is sensitive. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=DescribePrivileges &CurrentPage=1 &PageSize=20 &AccountId=1
+https://sddp-api.[RegionId].example.com/?Action=DescribePrivileges &CurrentPage=1 &PageSize=20 &AccountId=1 &<Common request parameters>
 ```
 
 Sample success response in JSON format covery and Protection
@@ -18428,6 +19629,11 @@ Sample success response in JSON format covery and Protection
     "CurrentPage":1
     "TotalCount":1,
     "Items":[
+```
+
+`{`
+
+```json
             "UseAccountType":2,
             "DataInstance":"341",
             "AccountId":259,
@@ -18442,16 +19648,18 @@ Sample success response in JSON format covery and Protection
             "UseAccountId":259
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.12 DescribeEventTypes
 
-You can call this operation to query types of anomalous activities based on the specified conditions.
+Description You can call this operation to query types of anomalous activities based on the specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeEventTypes. |
 | ParentTypeId | Long | No | The ID of the type. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18471,10 +19679,10 @@ covery and Protection
 | Name | String | The name of the subtype. |
 | Status | String | The status of the subtype. Valid values: 1: enabled. 2: disabled. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=DescribeEventTypes &ParentTypeId=1
+https://sddp-api.[RegionId].example.com/?Action=DescribeEventTypes &ParentTypeId=1 &<Common request parameters>
 ```
 
 Sample success response in JSON format covery and Protection
@@ -18482,7 +19690,17 @@ Sample success response in JSON format covery and Protection
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
     "EventTypeList":[
+```
+
+`{`
+
+```json
             "SubTypeList":[
+```
+
+`{`
+
+```json
                     "Id":1,
                     "Code":"010001",
                     "Name":"Incorrect configuration - Sensitive MaxCompute projects are n
@@ -18490,7 +19708,7 @@ ot protected",
                     "Status":1
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Id":1,
@@ -18498,11 +19716,11 @@ ot protected",
             "Name":"Anomalous permission access"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.13 DescribeEvents
 
-You can call this operation to query anomalous activities based on the specified conditions.
+Description You can call this operation to query anomalous activities based on the specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18521,6 +19739,8 @@ covery and Protection
 | SubTypeCode | String | No | The ID of the subtype of the anomalous activity. |
 | StartTime | Long | No | The beginning of the time range to query. Unit: milliseconds. |
 | EndTime | Long | No | The end of the time range to query. Unit: milliseconds. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18555,10 +19775,10 @@ covery and Protection
 | DealTime | Long | The time when the anomalous activity was processed. Unit: milliseconds. |
 | Backed | Boolean | Indicates whether the processing result of the anomalous activity was returned as a feedback to the detection algorithm. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=DescribeEvents &CurrentPage=1 &TypeCode=01 &PageSize=10
+https://sddp-api.[RegionId].example.com/?Action=DescribeEvents &CurrentPage=1 &TypeCode=01 &PageSize=10 &<Common request parameters>
 ```
 
 Sample success response in JSON format covery and Protection
@@ -18569,6 +19789,11 @@ Sample success response in JSON format covery and Protection
     "CurrentPage":1
     "TotalCount":1,
     "Items":[
+```
+
+`{`
+
+```json
             "Status":0,
             "TypeName":"Anomalous data flow",
             "Backed":false,
@@ -18589,16 +19814,18 @@ Sample success response in JSON format covery and Protection
             "DepartName":"kf"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 7.3.14 DescribeEventDetail
 
-You can call this operation to query the details of an anomalous activity based on the specified ID.
+Description You can call this operation to query the details of an anomalous activity based on the specified ID. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeEventDetail. |
 | Id | Long | Yes | The ID of the anomalous activity. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18642,13 +19869,13 @@ You can call this operation to query the details of an anomalous activity based 
 | X | Array | The array of data along the X-axis. |
 | Y | Array | The array of data along the Y-axis. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=DescribeEventDetail &Id=1
+https://sddp-api.[RegionId].example.com/?Action=DescribeEventDetail &Id=1 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId": "769FB3C1-F4C9-42DF-9B72-7077A8989C13",
@@ -18673,6 +19900,11 @@ Sample success response in JSON format
         "DepartName": "kf",
         "Detail": {
             "Content": [
+```
+
+`{`
+
+```json
                     "Value": "This anomalous activity may cause exposure of sensitive dat
 a to risks and damage to the security baseline.",
                     "Label": "Risk exposure"
@@ -18700,15 +19932,17 @@ a to risks and damage to the security baseline.",
                     "XLabel": "Days"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
         "DealReason": "Confirmed violation"
 ```
 
+`}` `}`
+
 #### 7.3.15 ModifyEventStatus
 
-You can call this operation to process an anomalous activity.
+Description You can call this operation to process an anomalous activity. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18722,25 +19956,29 @@ You can call this operation to process an anomalous activity.
 | Parameter | Type | Required | Description |
 | Backed | Boolean | No | Specifies whether to return the processing result of the anomalous activity as a feedback to the detection algorithm. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=ModifyEventStatus &Id=1 &Status=1 &DealReason=Confirmed violation
+https://sddp-api.[RegionId].example.com/?Action=ModifyEventStatus &Id=1 &Status=1 &DealReason=Confirmed violation &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"8491DBFD-48C0-4E11-B6FC-6F38921244A9"
 ```
 
+`}`
+
 #### 7.3.16 ModifyEventTypeStatus
 
-Enables detection of exceptions of subtypes.
+Description Enables detection of exceptions of subtypes. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18753,21 +19991,23 @@ covery and Protection
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample requests
+Error codes For a list of error codes, see Error codes. Examples Sample requests
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=ModifyEventTypeStatus &SubTypeIds=1,2,3,4
+https://sddp-api.[ RegionId].example.com/?Action=ModifyEventTypeStatus &SubTypeIds=1,2,3,4 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 7.3.17 ModifyDefaultLevel
 
-You can call this operation to set the default risk level or modify the risk levels of sensitive data.
+Description You can call this operation to set the default risk level or modify the risk levels of sensitive data. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18775,25 +20015,29 @@ You can call this operation to set the default risk level or modify the risk lev
 | DefaultId | Long | No | The ID of the default risk level. |
 | SensitiveIds | String | No | The ID of the risk level of sensitive data. Separate multiple IDs with commas (,). |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. covery and Protection Sample request
+Error codes For a list of error codes, see Error codes. covery and Protection Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=ModifyDefaultLevel &Type=15 &DefaultId=2 &SensitiveIds=3,4
+https://sddp-api.[RegionId].example.com/?Action=ModifyDefaultLevel &Type=15 &DefaultId=2 &SensitiveIds=3,4 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 7.3.18 DescribeRules
 
-You can call this operation to query rules based on the specified conditions.
+Description You can call this operation to query rules based on the specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18801,6 +20045,8 @@ You can call this operation to query rules based on the specified conditions.
 | Name | String | No | The search keyword. Fuzzy match is supported. |
 | RiskLevelId | Long | No | The ID of the risk level. |
 | Category | Integer | No | The type of the rule. Valid values: 0: keyword. 2: regular expression. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -18827,10 +20073,10 @@ You can call this operation to query rules based on the specified conditions.
 | LoginName | String | The account name of the rule creator. |
 | DisplayName | String | The account display name of the rule creator. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=DescribeRules
+https://sddp-api.[RegionId].example.com/?Action=DescribeRules &<Common request parameters>
 ```
 
 Sample success response in JSON format covery and Protection
@@ -18838,6 +20084,11 @@ Sample success response in JSON format covery and Protection
 ```json
     "RequestId":"769FB3C1-F4C9-42DF-9B72-7077A8989C13",
     "Items":[
+```
+
+`{`
+
+```json
             "Description":"IP address",
             "Category":2,
             "GmtModified":1545277010000,
@@ -18855,7 +20106,7 @@ Sample success response in JSON format covery and Protection
             "Id":2000
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":18,
@@ -18863,9 +20114,11 @@ Sample success response in JSON format covery and Protection
     "CurrentPage":1
 ```
 
+`}`
+
 #### 7.3.19 CreateRule
 
-You can call this operation to create a custom rule.
+Description You can call this operation to create a custom rule. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18881,21 +20134,23 @@ covery and Protection
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].aliyuncs.com/?Action=CreateRule &Name=Mobile phone number &Category=0 &Content=1300000**** &RiskLevelId=4
+https://sddp-api.[RegionId].aliyuncs.com/?Action=CreateRule &Name=Mobile phone number &Category=0 &Content=1300000**** &RiskLevelId=4 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 7.3.20 ModifyRule
 
-You can call this operation to modify a custom rule.
+Description You can call this operation to modify a custom rule. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18912,21 +20167,23 @@ covery and Protection
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=ModifyRule &Id=1 &Name=Mobile phone number &Category=0 &Content=1300000**** &RiskLevelId=4
+https://sddp-api.[RegionId].example.com/?Action=ModifyRule &Id=1 &Name=Mobile phone number &Category=0 &Content=1300000**** &RiskLevelId=4 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 7.3.21 ModifyRuleStatus
 
-You can call this operation to enable or disable a rule.
+Description You can call this operation to enable or disable a rule. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -18934,57 +20191,65 @@ You can call this operation to enable or disable a rule.
 | Id | Long | Yes | The ID of the rule. |
 | Status | Integer | Yes | The status of the rule. Valid values: 0: disabled. 1: enabled. |
 
-covery and Protection
+Response parameters covery and Protection
 
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=ModifyRuleStatus &Id=1 &Status=1
+https://sddp-api.[RegionId].example.com/?Action=ModifyRuleStatus &Id=1 &Status=1 &<Common request parameters>
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 7.3.22 DeleteRule
 
-You can call this operation to delete a custom rule.
+Description You can call this operation to delete a custom rule. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteRule. |
 | Id | Long | Yes | The ID of the rule. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample request covery and Protection
+Error codes For a list of error codes, see Error codes. Sample request covery and Protection
 
 ```
 https://sddp-api.[RegionId].example.com/?Action=DeleteRule &Id=1
 ```
 
-Sample success response in JSON format
+Sample success response in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
 
+`}`
+
 #### 7.3.23 DescribeDataLimitSet
 
-You can call this operation to query the instances, databases, or buckets of a specified service that Sensitive Data Discovery and Protection (SDDP) is authorized to scan.
+Description You can call this operation to query the instances, databases, or buckets of a specified service that Sensitive Data Discovery and Protection (SDDP) is authorized to scan. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDataLimitSet. |
 | ResourceType | Integer | Yes | The ID of the service. Valid values: 1: MaxCompute. 2: Object Storage Service (OSS). 5: Relational Database Service (RDS). |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19010,10 +20275,10 @@ You can call this operation to query the instances, databases, or buckets of a s
 | RegionId | String | The ID of the region. |
 | LocalName | String | The name of the region. |
 
-For a list of error codes, see Error codes. Sample request
+Error codes For a list of error codes, see Error codes. Examples Sample request
 
 ```
-https://sddp-api.[RegionId].example.com/?Action=DescribeDataLimitSet &ResourceType=1
+https://sddp-api.[RegionId].example.com/?Action=DescribeDataLimitSet &ResourceType=1 &<Common request parameters>
 ```
 
 Sample success response in JSON format covery and Protection
@@ -19023,6 +20288,11 @@ Sample success response in JSON format covery and Protection
     "DataLimitSet":{
         "ResourceType":1,
         "DataLimitList":[
+```
+
+`{`
+
+```json
                 "Id":1,
                 "RegionId":"cn-hangzhou",
                 "LocalName":"China (Hangzhou)",
@@ -19032,27 +20302,37 @@ Sample success response in JSON format covery and Protection
                 "Connector":"Connection string"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "OssBucketList":[
+```
+
+`{`
+
+```json
                 "RegionId":"cn-hangzhou",
                 "BucketName":"oss-bucket"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "RegionList":[
+```
+
+`{`
+
+```json
                 "RegionId":"cn-hangzhou",
                 "LocalName":"Hangzhou"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 7.3.24 CreateDataLimit
 
-Authorizes SDDP to scan instances, databases, or buckets of a specified service.
+Description Authorizes SDDP to scan instances, databases, or buckets of a specified service. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19072,25 +20352,29 @@ covery and Protection
 | Password | String | Yes | The password. |
 | Connector | String | Yes | The connection string of the database. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample requests
+Error codes For a list of error codes, see Error codes. Examples Sample requests
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=CreateDataLimit &ResourceType=1 &ServiceRegionId=cn-hangzhou &ParentId=test &UserName=<userName> &Password=<passWord> @Connector=jdbc:mysql://localhost:3306/test
+https://sddp-api.[ RegionId].example.com/?Action=CreateDataLimit &ResourceType=1 &ServiceRegionId=cn-hangzhou &ParentId=test &UserName=<userName> &Password=<passWord> @Connector=jdbc:mysql://localhost:3306/test &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"7C3AC882-E5A8-4855-BE77-B6837B695EF1"
 ```
 
+`}`
+
 #### 7.3.25 DeleteDataLimit
 
-Revokes permissions granted to SDDP for scanning instances, databases, or buckets of a specified service.
+Description Revokes permissions granted to SDDP for scanning instances, databases, or buckets of a specified service. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19102,21 +20386,25 @@ covery and Protection
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteDataLimit. |
 | Id | Long | Yes | The authorization ID. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-For a list of error codes, see Error codes. Sample requests
+Error codes For a list of error codes, see Error codes. Examples Sample requests
 
 ```
-https://sddp-api.[ RegionId].example.com/?Action=DeleteDataLimit &Id=1
+https://sddp-api.[ RegionId].example.com/?Action=DeleteDataLimit &Id=1 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"208B016D-4CB9-4A85-96A5-0B8ED1EBF271"
 ```
+
+`}`
 
 ### 7.4 Data dictionaries
 
@@ -19262,7 +20550,7 @@ The following tables list API operations available for use in Security Operation
 
 #### 8.2.1 Request syntax
 
-where:
+Description where:
 
 | endpoint | : the e |
 |---|---|
@@ -19341,17 +20629,19 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 </Operation name+Response>
 ```
 
-Sample responses (JSON format)
+Sample responses (JSON format) `{`
 
 ```json
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
+`}`
+
 ### 8.3 Operations
 
 #### 8.3.1 QueryDataCount
 
-You can call this operation to query data on attacks, alerts, security risks, and protected departments.
+You can call this operation to query data on attacks, alerts, security risks, and protected departments. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19364,14 +20654,16 @@ s Center
 | ApiName | String | Yes | The object to query. Valid values: describeNewAttackCount: the number of new attacks describeAttackCount: the total number of attacks describeNewAlarmCount: the number of new alerts describeAlarmCount: the total number of alerts describeUnProcessedAlarmCount: the number of unhandled alerts describeNewFrangCount: the number of new security risks describeFrangCount: the total number of security risks describeUnprocessedFrangCount: the number of unhandled security risks describeUserCount: the number of protected departments |
 | TimeSpan | String | No | The time range to query. 0: past 24 hours 1: last seven days 2: last 30 days |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | Count | Long | The result of the query. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataCount &TimeSpan=0 &ApiName=describeAttackCount
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataCount &TimeSpan=0 &ApiName=describeAttackCount &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19389,11 +20681,11 @@ Sample success responses in JSON format s Center
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.2 GetAssetCount
 
-You can call this operation to query the information of assets added within a specified time range and the information of all assets.
+You can call this operation to query the information of assets added within a specified time range and the information of all assets. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19402,6 +20694,8 @@ You can call this operation to query the information of assets added within a sp
 | StartDate | Long | No | The beginning of the time range where the assets to query were created. |
 | EndDate | Long | No | The end of the time range where the assets to query were added. |
 | TimeSpan | Integer | No | The unit of the time range. Valid values: 0: day 1: week 2: month |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19416,10 +20710,10 @@ You can call this operation to query the information of assets added within a sp
 | Parameter | Type | Description |
 | └Key | String | The type of the new asset. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetAssetCount &TimeSpan=0
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetAssetCount &TimeSpan=0 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19428,83 +20722,95 @@ Sample success responses in JSON format s Center
    "RequestId":"DBA8A3BC-5C61-494D-9B11-6DDC6E14D92C",
   "Data":{
     "NewAsset":[//A list of assets added within the period from StartDate to EndDate
+```
+
+`{`
+
+```json
         "Value":"49",
         "Key":"ecsCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"54",
         "Key":"rdsCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"68",
         "Key":"ossCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"20",
         "Key":"eipCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"20",
         "Key":"slbCount"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "AllAsset":[//A list of all assets
+```
+
+`{`
+
+```json
         "Value":"49",
         "Key":"ecsCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"54",
         "Key":"rdsCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"68",
         "Key":"ossCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"20",
         "Key":"eipCount"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Value":"20",
         "Key":"slbCount"
 ```
 
-`]` For a list of error codes, visit the Error codes. s Center
+`}` `]` `}` `}` For a list of error codes, visit the Error codes. s Center
 
 #### 8.3.3 GetEcsProtectCount
 
-You can call this operation to query the number of ECS instances with an online Server Guard agent and the number of ECS instances with an offline agent.
+You can call this operation to query the number of ECS instances with an online Server Guard agent and the number of ECS instances with an offline agent. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetEcsProtectCount. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19513,10 +20819,10 @@ You can call this operation to query the number of ECS instances with an online 
 | └Key | String | The protection status of the ECS instance. Valid values: ecsCount: The ECS instance is protected. offlineCount: The ECS instance is not protected. Not e If the value is offlineCount, the ECS instance is online, but the Server Guard agent is offline. |
 | └Value | Integer | The number of ECS instances. If Key is ecsCount, this parameter indicates the number of protected ECS instances. If Key is offlineCount, this parameter indicates the number of unprotected ECS instances. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEcsProtectCount
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEcsProtectCount &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19526,24 +20832,29 @@ Sample success responses in JSON format s Center
     "Data":{
         "Total":1,
         "Items":[
+```
+
+`{`
+
+```json
                 "Value":"0",//The number of ECS instances on which the Server Guard agent i
 s offline.
                 "Key":"offlineCount"//The number of ECS instances on which the Server Guard
 agent is offline.
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"0",//The number of ECS instances.
                 "Key":"ecsCount"//The number of ECS instances.
 ```
 
-`]` For a list of error codes, visit the Error codes.
+`}` `]` `}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.4 DescribeAttacks
 
-You can call this operation to query attacks on users or on the platform based on specified conditions.
+You can call this operation to query attacks on users or on the platform based on specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19566,6 +20877,8 @@ s Center
 | StartTime | Long | No | The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. |
 | EndTime | Long | No | The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. |
 | KeyWord | String | No | The keyword of the attack name or asset name. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19594,10 +20907,10 @@ s Center
 | AssetPublicIps | String | The public IP address of the affected asset. |
 | AssetPrivateIps | String | The internal IP address of the affected asset. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeAttacks &DataScope=1 &PageSize=20 &PageNo=1
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeAttacks &DataScope=1 &PageSize=20 &PageNo=1 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19609,6 +20922,11 @@ Sample success responses in JSON format s Center
             "PageSize":20,
             "Total":222,
             "Items":[
+```
+
+`{`
+
+```json
                     "UserName":"yundun****",
                     "SourceFrom":46,
                     "AttackType":"Brute-force",
@@ -19623,24 +20941,24 @@ Sample success responses in JSON format s Center
             "RaisedTime":1572921381000
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"69C66589-F448-4A47-BFEA-EC12F55DCB53",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.5 DescribeAlarms
 
-You can call this operation to query security alerts on users or on the platform based on specified conditions.
+You can call this operation to query security alerts on users or on the platform based on specified conditions. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19660,6 +20978,8 @@ You can call this operation to query security alerts on users or on the platform
 | ProcessState | Integer | No | The processing status of the alerts to query. |
 | KeyWord | String | No | The keywords of the alerts or keywords in the ID or names of assets related to the alerts. |
 | RiskLevels | List<Integer> | No | The risk levels of the alerts to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19689,10 +21009,10 @@ You can call this operation to query security alerts on users or on the platform
 | LastTime | String | The last time when the alert was generated. |
 | Total | Integer | The total number of entries returned. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeAlarms &RiskLevels=[0,1,2] &DataScope=1 &PageSize=20 &PageNo=1
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeAlarms &RiskLevels=[0,1,2] &DataScope=1 &PageSize=20 &PageNo=1 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19704,6 +21024,11 @@ Sample success responses in JSON format s Center
             "PageSize":20,
             "Total":177,
             "Items":[
+```
+
+`{`
+
+```json
                     "AlarmId":30307,
                     "UserName":"yundun****",
                     "AlarmType":"Malicious Process",
@@ -19722,24 +21047,24 @@ Sample success responses in JSON format s Center
                     "LastTime":1573021501000
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"B2C5D1EB-202F-4132-A763-2D16538B****",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.6 DescribeVulFrangs
 
-You can call this operation to query vulnerabilities.
+You can call this operation to query vulnerabilities. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19759,6 +21084,8 @@ You can call this operation to query vulnerabilities.
 | KeyWord | String | No | The name of the vulnerability or asset to query. |
 | DataScope | Integer | Yes | Specifies whether the data of users or the platform is queried. Valid values: 0: platform 1: users |
 | NeedFix | String | No | Specifies whether the vulnerabilities to query require fixes. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19789,10 +21116,10 @@ You can call this operation to query vulnerabilities.
 | └AssetPrivateIps | String | The internal IP address of the affected asset. |
 | └AssetName | String | The name of the affected asset. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeVulFrangs &DataScope=1 &PageSize=20 &Page=1
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeVulFrangs &DataScope=1 &PageSize=20 &Page=1 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19804,6 +21131,11 @@ Sample success responses in JSON format s Center
             "PageSize":20,
             "Total":445,
             "Items":[
+```
+
+`{`
+
+```json
                     "ProcessState":1,
                     "AssetType":"ECS",
                     "NeedFix":"later",
@@ -19818,24 +21150,24 @@ Sample success responses in JSON format s Center
                     "VulType":"cve"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"32B57B56-958C-49C5-BB49-0BABE2060305",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.7 DescribeHcFrangs
 
-You can call this operation to query the risks in the server configurations set by the user.
+You can call this operation to query the risks in the server configurations set by the user. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19855,6 +21187,8 @@ s Center
 | KeyWord | String | No | The server baseline name or asset name. |
 | DataScope | Integer | Yes | Specifies whether the data of users or the platform is queried. Valid values: 0: platform 1: users |
 | UserId | Long | No | The ID of the department to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -19884,10 +21218,10 @@ s Center
 | └AssetPublicIps | String | The public IP address of the affected asset. |
 | └AssetPrivateIps | String | The internal IP address of the affected asset. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeHcFrangs &DataScope=1 &PageSize=20 &Page=1
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeHcFrangs &DataScope=1 &PageSize=20 &Page=1 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19899,6 +21233,11 @@ Sample success responses in JSON format s Center
             "PageSize":20,
             "Total":47,
             "Items":[
+```
+
+`{`
+
+```json
                     "UserName":"yun****",
                     "SourceFrom":2,
                     "HcType":"Alibaba Cloud",
@@ -19915,24 +21254,24 @@ Sample success responses in JSON format s Center
                     "RiskLevel":2
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"FE7137B7-84D8-4AF7-969B-C0DF5118****",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.8 DescribePBLineFrangs
 
-You can call this operation to query the baseline risks on the platform.
+You can call this operation to query the baseline risks on the platform. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -19951,6 +21290,8 @@ You can call this operation to query the baseline risks on the platform.
 | PageSize | Integer | Yes | The number of entries to return on each page. |
 | DataScope | Integer | Yes | Specifies whether the data of users or the platform is queried. Valid values: 0: platform 1: users |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -19962,10 +21303,10 @@ You can call this operation to query the baseline risks on the platform.
 | SourceFrom | Integer | The data source. |
 | Id | Long | The ID of the entry. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribePBLineFrangs &BLType=Network Security &DataScope=0 &PageSize=20 &Page=1
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribePBLineFrangs &BLType=Network Security &DataScope=0 &PageSize=20 &Page=1 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -19977,6 +21318,11 @@ Sample success responses in JSON format s Center
             "PageSize":20,
             "Total":1,
             "Items":[
+```
+
+`{`
+
+```json
                     "BLLevel":1,
                     "ProcessState":1,
                     "BLType":"Network Security",
@@ -19987,24 +21333,24 @@ Sample success responses in JSON format s Center
                     "Id":6572
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"FDAB3658-E2CD-4C95-BFF5-D0CF204C57D8",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.9 QueryDataEnum
 
-You can call this operation to query the types of attacks, alerts, and security risks.
+You can call this operation to query the types of attacks, alerts, and security risks. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20017,15 +21363,17 @@ s Center
 |---|---|---|---|
 | DataScope | Integer | Yes | Specifies whether the data of users or the platform is queried. Valid values: 0: platform 1: users |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Value | String | The query result. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataEnum &ApiName=frangPBlineRisk &DataScope=0
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataEnum &ApiName=frangPBlineRisk &DataScope=0 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -20034,57 +21382,62 @@ Sample success responses in JSON format s Center
     "code":200,
     "data":{
         "Data":[
+```
+
+`{`
+
+```json
                 "Value":"Suspicious Process"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"System Backdoor"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"Suspicious User Operation"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"Suspicious Process"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"Malicious Process"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"Webshell"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"Unusual Network Connection"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId":"47738BF3-5F11-437C-88EC-27E91D0E3158",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.10 QueryDataCodeValue
 
-You can call this operation to query the code of a specified server configuration type.
+You can call this operation to query the code of a specified server configuration type. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20097,19 +21450,21 @@ s Center
 |---|---|---|---|
 | DataScope | Integer | Yes | Specifies whether the data of users or the platform is queried. Valid values: 0: platform 1: users |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Value | String | The type of server configuration. |
 | Code | String | The code of the server configuration type. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataCodeValue &ApiName=frangHcInnerType &DataScope=0
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataCodeValue &ApiName=frangHcInnerType &DataScope=0 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "code": 200,
@@ -20129,7 +21484,7 @@ Sample success responses in JSON format
     "success": true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.11 QueryDataDistribution
 
@@ -20141,16 +21496,18 @@ You can call this operation to query the number of a specified type of security 
 | ApiName | String | Yes | The type of the security issue to query. Valid values: frangVulRisk: vulnerabilities frangHcRisk: server configuration risks alarmRisk: alerts frangPBlineRisk: platform baseline risks |
 | DataScope | Integer | Yes | Specifies whether the issues on users or on the platform are queried. Valid values: 0: platform 1: users |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Type | Integer | The risk level of the issue. |
 | Count | Integer | The number of the queried issue. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataDistribution &ApiName=frangPBlineRisk &DataScope=0
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryDataDistribution &ApiName=frangPBlineRisk &DataScope=0 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -20159,22 +21516,27 @@ Sample success responses in JSON format s Center
     "code":200,
     "data":{
         "Data":[
+```
+
+`{`
+
+```json
                 "Type":1,
                 "Count":1
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "requestId":"6A50A942-15FC-45ED-8242-E88710749B2F",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.12 SaveOrUpdateSocReportTask
 
-You can call this operation to create or modify report tasks.
+You can call this operation to create or modify report tasks. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20199,13 +21561,13 @@ s Center
 | Code | Integer | The HTTP status code. |
 | Message | String | Indicates whether the operation is successful. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=SaveOrUpdateSocReportTask &Name=AAA**** &Type=day &Emails=1999****@qq.com,1888****@163.com &DeptIds=1231231,123123,1231231 &Aliuid=12312****
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=SaveOrUpdateSocReportTask &Name=AAA**** &Type=day &Emails=1999****@qq.com,1888****@163.com &DeptIds=1231231,123123,1231231 &Aliuid=12312**** &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "code":200,
@@ -20214,11 +21576,11 @@ Sample success responses in JSON format
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.13 QuerySocReportTasks
 
-You can call this operation to query report tasks.
+You can call this operation to query report tasks. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20248,10 +21610,10 @@ s Center
 | LastFinishExcuteTimeSta mp | Long | The last timestamp when the report task finished generating a report. |
 | NextBeginExcuteTimeSt amp | Long | The next timestamp when the report task begins to generate a report. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QuerySocReportTasks &PageNo=1 &PageSize=10
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QuerySocReportTasks &PageNo=1 &PageSize=10 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -20263,6 +21625,11 @@ Sample success responses in JSON format s Center
             "PageSize":10,
             "Total":8,
             "Items":[
+```
+
+`{`
+
+```json
                     "PageSize":10,
                     "CreatorId":114247173828****,
                     "GmtModified":"2019-11-06T10:04Z",
@@ -20279,24 +21646,24 @@ Sample success responses in JSON format s Center
                     "CreatorName":"dtdep-5-157173828****"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"3051F0D5-4F6D-4239-BE25-8150784BECCB",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.14 DelSocReportTask
 
-You can call this operation to delete a report task.
+You can call this operation to delete a report task. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20309,13 +21676,13 @@ s Center
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DelSocReportTask &Id=12
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DelSocReportTask &<Common request parameters> &Id=12
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "code":200,
@@ -20324,11 +21691,11 @@ Sample success responses in JSON format
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.15 QuerySocReportRecords
 
-You can call this operation to query the report records of a specified report task.
+You can call this operation to query the report records of a specified report task. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20351,10 +21718,10 @@ s Center
 | FinishTimeStamp | Long | The end timestamp of the record. |
 | Id | Integer | The ID of the record. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QuerySocReportRecords &PageNo=1 &PageSize=10 &Id=5
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QuerySocReportRecords &PageNo=1 &PageSize=10 &Id=5 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -20366,6 +21733,11 @@ Sample success responses in JSON format s Center
             "PageSize":10,
             "Total":1
             "Items":[
+```
+
+`{`
+
+```json
                     "BeginTimeStamp":1572833105000,
                     "ReportLink":"5_week_2019-11-04",
                     "TaskId":5,
@@ -20378,28 +21750,30 @@ Sample success responses in JSON format s Center
                     "Id":131
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"58294830-FD53-415B-AADE-F189CA9B2E72",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.16 GetDeptMap
 
-You can call this operation to obtain a list of departments.
+You can call this operation to obtain a list of departments. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetDeptMap. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -20414,13 +21788,13 @@ You can call this operation to obtain a list of departments.
 |---|---|---|
 | └Value | String | The name of the department. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetDeptMap
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetDeptMap &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "code":200,
@@ -20429,35 +21803,40 @@ Sample success responses in JSON format
             "PageSize":0,
             "Total":8,
             "Items":[
+```
+
+`{`
+
+```json
                     "Value":"admin",
                     "Key":"176597162720****"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "Value":"yundun",
                     "Key":"163957166417****"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":0
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"CA964E09-D0B5-4B34-93C8-35E882E8DD04",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.17 GetRegionMap
 
-You can call this operation to obtain a list of regions to which your assets belong.
+You can call this operation to obtain a list of regions to which your assets belong. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20468,6 +21847,8 @@ You can call this operation to obtain a list of regions to which your assets bel
 |---|---|---|---|
 | Parameter | Type | Required | Description |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -20475,36 +21856,41 @@ You can call this operation to obtain a list of regions to which your assets bel
 | └Key | String | The ID of the region. |
 | └Value | String | The name of the region. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRegionMap
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRegionMap &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data":{
         "items":[
+```
+
+`{`
+
+```json
                 "key":"cn-qingdao",
                 "value":"China (Qingdao)"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "key":"cn-beijing",
                 "value":"China (Beijing)"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "total":2
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.18 DownloadFile
 
@@ -20523,16 +21909,18 @@ You can call this operation to export a report on the assets. s Center
 | Kyword | Integer | No | The keywords for query. |
 | AsetType | String | Yes | The type of the assets to query. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Key | String | The identifier of the link from which you can download the report. |
 | Value | String | The link from which you can download the report. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DownloadFile &Asettype=ecs
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DownloadFile &Asettype=ecs &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -20545,11 +21933,11 @@ Sample success responses in JSON format s Center
         "Key":"downloadUrl"
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.19 GetEcsList
 
-You can call this operation to obtain a list of ECS instances.
+You can call this operation to obtain a list of ECS instances. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20573,6 +21961,8 @@ s Center
 | VulFlag | Boolean | No | Specifies whether the instances to query have vulnerabilities. |
 | FrangFlag | Boolean | No | Specifies whether the instances to query have security risks. |
 | ScurityGroupFlag | Boolean | No | Specifies whether the instances to query belong to suspicious security groups. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -20612,7 +22002,7 @@ s Center
 | └Memery | Integer | The size of memory. |
 | └instanceNetworkType | String | The network type of the ECS instance. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEcsList &PageNo=1 &PageSize=20
@@ -20627,6 +22017,11 @@ s Center Sample success responses in JSON format
             "PageSize":1,
             "Total":41,
             "Items":[
+```
+
+`{`
+
+```json
                     "LoginName":"dtdep-4-157166417****",
                     "EventCount":6,
                     "InstanceCreateTime":1572228180000,
@@ -20655,20 +22050,20 @@ s Center Sample success responses in JSON format
                     "RegionId":"cn-qingdao-env8d****"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "PageNo":1
 ```
 
-`},`
+`}` `},`
 
 ```json
     "requestId":"BBF5CA91-4D69-4A57-8F0C-42989CA4E60F",
     "success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.20 GetDiskList
 
@@ -20684,6 +22079,8 @@ You can call this operation to query disk information of ECS instances. s Center
 | ProcessState | Integer | No | The state of the disk. |
 | Keyword | Integer | No | The keywords for query. |
 | InstanceId | String | No | The ID of the ECS instance to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -20711,18 +22108,23 @@ s Center
 | └snapshotsTime | String | The time when the latest snapshot was created. |
 | └Type | String | The type of the disk. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetDiskList
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetDiskList &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data":{
         "items":[
+```
+
+`{`
+
+```json
                 "deptName":"cbctestdept****",
                 "device":"/dev/xvdc",
                 "diskId":"d-m5ef1im6qv2airbkocd2",
@@ -20737,13 +22139,13 @@ Sample success responses in JSON format
                 "type":"data"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "total":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.21 GetSecurityGroupList
 
@@ -20759,6 +22161,8 @@ You can call this operation to obtain a list of security groups. s Center
 | ProcessState | Integer | No | The processing state of the security groups to query. |
 | Keyword | Integer | No | The keywords for query. |
 | ScurityGroupIds | List | No | The list of security group IDs. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -20784,18 +22188,23 @@ You can call this operation to obtain a list of security groups. s Center
 | └securityGroupName | String | The name of the security group. |
 | └suspectRule | String | Indicates whether the security group is related to suspicious rules. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetSecurityGroupList
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetSecurityGroupList &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data":{
         "items":[
+```
+
+`{`
+
+```json
                 "create":1533110868000,
                 "createTime":"2017-02-06T07:28:00Z",
                 "instanceCreateTime":1537177380000,
@@ -20810,17 +22219,17 @@ Sample success responses in JSON format
                 "suspectRule":true
 ```
 
-`],`
+`}` `],`
 
 ```json
         "total":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.22 GetEcsInfo
 
-You can call this operation to query the details of a specified ECS instance.
+You can call this operation to query the details of a specified ECS instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20831,6 +22240,8 @@ You can call this operation to query the details of a specified ECS instance.
 | Parameter | Type | Required | Description |
 | Uuid | String | Yes | The UUID of the ECS instance to query. |
 | IstanceId | String | No | The ID of the ECS instance to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -20869,13 +22280,13 @@ s Center
 | SecurityGroupIdList | Array | The information of the security group to which the ECS instance belongs. |
 | Disks | Array | The disk information. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEcsInfo &Uuid=7e77b1db-c29a-4548-8b32-533e3ae859da
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEcsInfo &Uuid=7e77b1db-c29a-4548-8b32-533e3ae859da &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"52734A7E-8E8B-46B1-822D-512A2A3085D3",
@@ -20890,6 +22301,11 @@ Sample success responses in JSON format
         "memery":1024//The memory size.
         "instanceNetworkType":"vpc",//The network type.
         "SecurityGroupIdList":[
+```
+
+`{`
+
+```json
                 "InstanceCount":0,
                 "Description":"System created security group.",
                 "SecurityGroupName":"cbcgroup1",
@@ -20905,7 +22321,7 @@ s Center
                 "RegionId":"cn-qingdao"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "SecurityGroupIds":"sg-m5e0hm705p9bhnd4xrsl,sg-m5e8f3oy2h9b0hc8u6as",
@@ -20938,11 +22354,11 @@ s Center
         "Aliuid":31234****
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.23 GetRdsList
 
-You can call this operation to query ApsaraDB RDS instances.
+You can call this operation to query ApsaraDB RDS instances. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -20977,6 +22393,8 @@ s Center
 |---|---|---|---|
 | tdeFlag | Integer | No | Specifies whether Transparent Data Encryption (TDE) is enabled for the instances to query. By default, all options are selected. 0: disabled 1: enabled |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -20999,10 +22417,10 @@ s Center
 s Center Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRdsList
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRdsList &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "code": 200,
@@ -21051,16 +22469,18 @@ IP address whitelist.
     "success": true
 ```
 
-s Center For a list of error codes, visit the Error codes.
+`}` s Center For a list of error codes, visit the Error codes.
 
 #### 8.3.24 GetRdsInstanceIPArrayList
 
-You can call this operation to query the whitelists configured for an ApsaraDB RDS instance.
+You can call this operation to query the whitelists configured for an ApsaraDB RDS instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetRdsInstanceIPArrayList. |
 | instanceId | Long | Yes | The ID of the ApsaraDB RDS instance to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21068,13 +22488,13 @@ You can call this operation to query the whitelists configured for an ApsaraDB R
 | dbInstanceIPArrayName | String | The name of the IP address whitelist. |
 | securityIPList | String | The IP addresses in the whitelist. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRdsInstanceIPArrayList &InstanceId=12
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRdsInstanceIPArrayList &InstanceId=12 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
@@ -21093,16 +22513,18 @@ Sample success responses in JSON format
         "total": 2
 ```
 
-s Center For a list of error codes, visit the Error codes.
+`}` s Center For a list of error codes, visit the Error codes.
 
 #### 8.3.25 GetRdsInfo
 
-You can call this operation to query the details of an ApsaraDB RDS instance.
+You can call this operation to query the details of an ApsaraDB RDS instance. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetRdsInfo. |
 | DbInstanceId | String | Yes | The ID of the ApsaraDB RDS instance to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21130,10 +22552,10 @@ s Center
 | └DbInstanceIPArrayNa me | String | The name of the IP address whitelist. |
 | └SecurityIPList | String | The IP addresses in the whitelist. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRdsInfo &DbInstanceId=123
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetRdsInfo &DbInstanceId=123 &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -21156,22 +22578,27 @@ Sample success responses in JSON format s Center
         "DbInstanceId":"rm-m5es6x22suia0****",
         "Engine":"MySQL",
         "RdsWhiteipList":[
+```
+
+`{`
+
+```json
                 "DbInstanceIPArrayName":"cbctestwhitelistgroup",
                 "SecurityIPList":"172. *. *.117,192. *. *.1"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "DbInstanceIPArrayName":"default",
                 "SecurityIPList":"127.0.0.1"
 ```
 
-`]` For a list of error codes, visit the Error codes.
+`}` `]` `}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.26 GetOssList
 
-You can call this operation to obtain a list of OSS buckets.
+You can call this operation to obtain a list of OSS buckets. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21190,6 +22617,8 @@ You can call this operation to obtain a list of OSS buckets.
 | StartDate | String | No | The beginning of the time range during which the buckets to query were created. |
 | EndDate | String | No | The end of the time range during which the buckets to query were created. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -21203,7 +22632,7 @@ You can call this operation to obtain a list of OSS buckets.
 | instanceCreateTime | Long | The time when the bucket was created. |
 | deptName | String | The name of the department. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetOssList
@@ -21243,11 +22672,11 @@ ured.
         "total": 2
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.27 GetSlbList
 
-You can call this operation to obtain a list of SLB instances.
+You can call this operation to obtain a list of SLB instances. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21267,6 +22696,8 @@ You can call this operation to obtain a list of SLB instances.
 | EndDate | String | No | The end of the time range during which the instances to query were created. |
 | instanceStatus | String | No | The status of the instances to query. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -21283,7 +22714,7 @@ You can call this operation to obtain a list of SLB instances.
 | networkType | String | The network type of the SLB instance. |
 | regionId | String | The region where the SLB instance is located. |
 
-Sample requests
+Examples Sample requests
 
 ```
 http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetSlbList
@@ -21326,11 +22757,11 @@ ening port.
         "total": 2
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.28 GetEipList
 
-You can call this operation to obtain a list of Elastic IP addresses.
+You can call this operation to obtain a list of Elastic IP addresses. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21349,6 +22780,8 @@ You can call this operation to obtain a list of Elastic IP addresses.
 | StartDate | String | No | The beginning of the time range during which the instances to query were created. |
 | EndDate | String | No | The end of the time range during which the instances to query were created. |
 | instanceStatus | String | No | The status of the instances to query. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21374,18 +22807,23 @@ s Center
 | └eipStatus | String | The status of the Elastic IP address. Valid values: Associating: The Elastic IP address is being bound to an ECS instance. Unassociating: The Elastic IP address is being unbound from an ECS instance. InUse: The Elastic IP address is bound to an instance. Available: The Elastic IP address is available. |
 | └status | Integer | Indicates whether the Elastic IP address is valid. Valid values: 1: valid 0: invalid |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEipList
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetEipList &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data":{
         "items":[
+```
+
+`{`
+
+```json
                 "allocationId":"eip-m5eg8x8npvmarymgg****",
                 "allocationTime":"2018-09-17T09:22:10Z",
                 "create":1537147330000,
@@ -21399,7 +22837,7 @@ Sample success responses in JSON format
                 "status":"Available"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "total":1
@@ -21409,11 +22847,13 @@ s Center For a list of error codes, visit the Error codes.
 
 #### 8.3.29 GetAlarmConfig
 
-You can call this operation to query the alert configuration.
+You can call this operation to query the alert configuration. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetAlarmConfig. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21438,13 +22878,13 @@ You can call this operation to query the alert configuration.
 | └Id | Integer | The ID of the configuration. |
 | └category | Integer | Indicates whether the alert source is a user or the platform. Valid values: 1: user 2: platform |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetAlarmConfig
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetAlarmConfig &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"385333D5-1796-41EC-A62F-239881EC75E6",
@@ -21452,6 +22892,11 @@ Sample success responses in JSON format
         "PageSize":10,
         "Total":1,
         "Items":[
+```
+
+`{`
+
+```json
                 "Dingding":0,
                 "Description":"Attackers have intruded into the tenant system by webshells,
 malicious code, and suspicious processes.",
@@ -21464,13 +22909,13 @@ malicious code, and suspicious processes.",
                 "category":1
 ```
 
-`],`
+`}` `],`
 
 ```json
         "PageNo":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.30 UpdateAlarmConfig
 
@@ -21481,29 +22926,31 @@ You can call this operation to update the alert configuration. s Center
 | Action | String | Yes | The operation that you want to perform. Set the value to UpdateAlarmConfig. |
 | Configs | String | Yes | The updated alert configuration. The value is a JSON array. Each object in this array specifies a parameter, such as id, mail, sms, and dingding. //Example [{\"id\":7,\"mail\":1,\"sms\":1 ,\"dingding\":1,\"alarmIdentify \":\"USER ALARM\"}] _ |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Data | String | The result of the operation. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=UpdateAlarmConfig
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=UpdateAlarmConfig &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"15BFC394-3316-4948-BF54-E6B8875DA023",
     "Data":"succes"
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.31 GetAlarmContacts
 
-You can call this operation to obtain a list of alert recipients.
+You can call this operation to obtain a list of alert recipients. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21515,6 +22962,8 @@ s Center
 | Action | String | Yes | The operation that you want to perform. Set the value to GetAlarmContacts. |
 | PageSize | Integer | No | The number of entries to return on each page. Default value: 10 |
 | PageNo | Integer | No | The number of the page to return. Default value: 1 |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21529,10 +22978,10 @@ s Center
 | └Mobile | String | The mobile phone number of the alert recipient. |
 | └Name | String | The name of the alert recipient. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetAlarmContacts
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetAlarmContacts &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -21543,6 +22992,11 @@ Sample success responses in JSON format s Center
         "PageSize":10,
         "Total":1,
         "Items":[
+```
+
+`{`
+
+```json
                 "Dingding":"dingding",//The Dingtalk username of the alert recipient.
                 "Mail":"test@****.com",//The email address of the alert recipient.
                 "Id":1,//The ID of the alert recipient.
@@ -21550,17 +23004,17 @@ Sample success responses in JSON format s Center
                 "Name":"test"//The name of the alert recipient.
 ```
 
-`],`
+`}` `],`
 
 ```json
         "PageNo":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.32 AddAlarmContacts
 
-You can call this operation to add an alert recipient or modify alert recipient information.
+You can call this operation to add an alert recipient or modify alert recipient information. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21570,66 +23024,70 @@ You can call this operation to add an alert recipient or modify alert recipient 
 | Id | Long | No | The ID of the alert recipient. This parameter is optional when you add an alert recipient. This parameter is required when you modify an alert recipient. |
 | Dingding | String | Yes | The DingTalk username of the alert recipient. |
 
-s Center
+Response parameters s Center
 
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Data | String | The result of the operation. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=AddAlarmContacts &Name=aaa &Dingding=123123
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=AddAlarmContacts &Name=aaa &Dingding=123123 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data": “sucess”
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.33 DeleteAlarmContacts
 
-You can call this operation to delete alert recipients.
+You can call this operation to delete alert recipients. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteAlarmContacts. |
 | Id | Long | Yes | The ID of the alert recipient to delete. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Data | String | Indicates whether the alert recipient is deleted. |
 
-Sample requests s Center
+Examples Sample requests s Center
 
 ```
 http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DeleteAlarmContacts &Id=123
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data":”sucess”
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.34 SendAlarm
 
-You can call this operation to send an alert.
+You can call this operation to send an alert. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to SendAlarm. |
 | AlarmIdentify | String | Yes | The identifier of the alert configuration. USERATTACK indicates an attack on a _ user. USERALARM indicates a security alert _ on a user. USERFRANG indicates a security risk _ on a user. PLATFORMATTACK indicates an attack _ on the platform. PLATFORMALARM indicates a security _ alert on the platform. PLATFORMFRANG indicates a security _ risk on the platform. |
 | Message | String | Yes | The alert message. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21639,25 +23097,27 @@ You can call this operation to send an alert.
 s Center Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=SendAlarm &AlarmIdentify=USER_ATTACK &Message=aaaaaaaaaa
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=SendAlarm &AlarmIdentify=USER_ATTACK &Message=aaaaaaaaaa &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"DF618C9E-6B58-43A0-8E8A-B91162F198F4",
     "data":”sucess”
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.35 QuerySource
 
-You can call this operation to query log sources.
+You can call this operation to query log sources. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to QuerySource. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21675,7 +23135,7 @@ Sample requests s Center
 http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QuerySource
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"E2E67B85-0CCA-4C5F-90FE-382F4580C2D9",
@@ -21683,26 +23143,33 @@ Sample success responses in JSON format
         "PageSize":1,
         "Total":1,
         "Items":[
+```
+
+`{`
+
+```json
                 "SourceName":"Server Guard",
                 "Source":"aegis"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "PageNo":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.36 QueryType
 
-You can call this operation to query the types of logs from a specified log source.
+You can call this operation to query the types of logs from a specified log source. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to QueryType. |
 | Source | String | Yes | The log source. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21723,13 +23190,13 @@ s Center
 | └Topic | String | The name of the log type. |
 | └TopicName | String | The Chinese name of the log type. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryType &Source=beaver
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryType &Source=beaver &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"2D884100-06C5-42BE-B534-FD26A5454FE2",
@@ -21737,22 +23204,27 @@ Sample success responses in JSON format
         "PageSize":1,
         "Total":1,
         "Items":[
+```
+
+`{`
+
+```json
                 "Id":1,
                 "Topic":"T_MSG_SOFTWARE_INSTALL",
                 "TopicName":"Installation software information"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "PageNo":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.37 QueryLog
 
-You can call this operation to query log records from a specified log source.
+You can call this operation to query log records from a specified log source. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21768,6 +23240,8 @@ You can call this operation to query log records from a specified log source.
 | pageSize | Integer | Yes | The number of entries to return on each page. |
 | PageNo | Integer | Yes | The number of the page to return. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -21775,16 +23249,21 @@ You can call this operation to query log records from a specified log source.
 | HistogramList | List | The data in the graph displayed in the console. |
 | KeyList | List | A list of the keys of all log records. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryLog &Id=9 &From=1574149923989 &To=1574236323989 &PageSize=10 &PageNo=1
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=QueryLog &Id=9 &From=1574149923989 &To=1574236323989 &PageSize=10 &PageNo=1 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "LogList":[
+```
+
+`{`
+
+```json
             "LogTime":1566273660000,
             "ColumnList":[
                     "Value":"rpm",
@@ -21810,17 +23289,22 @@ Sample success responses in JSON format
                     "Key":"uuid"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Source":"T_MSG_SOFTWARE_INSTALL"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "LogTime":1566273660000,
             "ColumnList":[
+```
+
+`{`
+
+```json
                     "Value":"success",
                     "TokenList":[
 ```
@@ -21831,24 +23315,29 @@ Sample success responses in JSON format
                     "Key":"status"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Source":"T_MSG_SOFTWARE_INSTALL"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":891,
     "HistogramList":[
+```
+
+`{`
+
+```json
             "EndTime":1566292920000,
             "Completed":true,
             "StartTime":1566288000000,
             "Count":0
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageSize":2,
@@ -21893,15 +23382,17 @@ s Center
         "status"
 ```
 
-`]` For a list of error codes, visit the Error codes.
+`]` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.38 GetVpcList
 
-You can call this operation to obtain a list of VPCs.
+You can call this operation to obtain a list of VPCs. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetVpcList. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -21910,10 +23401,10 @@ You can call this operation to obtain a list of VPCs.
 | Items | List | The information of VPCs. |
 | Total | Integer | The total number of entries. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetVpcList
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetVpcList &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -21923,22 +23414,27 @@ Sample success responses in JSON format s Center
     "Data":{
         "Total":3,
         "Items":[
+```
+
+`{`
+
+```json
                 "Value":"1",//vpcid
                 "Key":"1"//vpcid
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "Value":"vpc-*********************",
                 "Key":"vpc-*********************"
 ```
 
-`]` For a list of error codes, visit the Error codes.
+`}` `]` `}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.39 GetMachineList
 
-You can call this operation to obtain a list of assets.
+You can call this operation to obtain a list of assets. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -21960,6 +23456,8 @@ You can call this operation to obtain a list of assets.
 | VulFlag | Boolean | No | Specifies whether the assets to query have vulnerabilities. |
 | FrangFlag | Boolean | No | Specifies whether the assets to query have security risks. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
@@ -21969,10 +23467,10 @@ You can call this operation to obtain a list of assets.
 | pageNo | Integer | The page number of the returned page. |
 | PageSize | Integer | The number of entries returned per page. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetMachineList &PageSize=10 &PageNo=1 &keyword=aaa
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetMachineList &PageSize=10 &PageNo=1 &keyword=aaa &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -21983,6 +23481,11 @@ Sample success responses in JSON format s Center
         "PageSize":10,
         "Total":1,
         "Items":[
+```
+
+`{`
+
+```json
                         "ClientStatus":"offline",//Indicates whether the Server Guard clien
 t is online.
                         "Uuid":"inet-8a0569b3-15f8-482d-9a9e-cf85760c3b3a",//The UUID of th
@@ -21998,22 +23501,24 @@ e asset.
                         "VulCount":0//The number of alert events.
 ```
 
-`],`
+`}` `],`
 
 ```json
         "PageNo":1
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.40 GetMachineInfo
 
-You can call this operation to query asset information.
+You can call this operation to query asset information. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to GetMachineInfo. |
 | uuid | Long | Yes | The UUID of the asset. |
+
+Response parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -22040,10 +23545,10 @@ You can call this operation to query asset information.
 | MachineIp | String | The IP address of the server. |
 | VulCount | Integer | The number of alert events. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetMachineInfo &Uuid=inet-8a0569b3-15f8-482d-9a9e-cf85760c3b3a
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=GetMachineInfo &Uuid=inet-8a0569b3-15f8-482d-9a9e-cf85760c3b3a &<Common request parameters>
 ```
 
 Sample success responses in JSON format s Center
@@ -22074,11 +23579,11 @@ ine.
                 "VulCount":0//The number of alert events.
 ```
 
-For a list of error codes, visit the Error codes.
+`}` `}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.41 DescribeSocUsers
 
-You can call this operation to query users.
+You can call this operation to query users. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -22096,17 +23601,22 @@ s Center
 | RequestId | String | The ID of the request. |
 | Items | Array | A list of the users. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeSocUsers
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DescribeSocUsers &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"EDDB2FAF-2FFD-4D08-BB25-93BFC96BF7BB",
     "Data":[
+```
+
+`{`
+
+```json
                     "AccountSystemName":"***",
                     "LoginName":"***bc",
                     "Modified":1548661368000,
@@ -22121,7 +23631,7 @@ Sample success responses in JSON format
                     "Source":"DT"
 ```
 
-`},`
+`},` `{`
 
 ```json
                     "AccountSystemName":"a***te",
@@ -22138,7 +23648,7 @@ Sample success responses in JSON format
                     "Source":"DT"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true
@@ -22148,25 +23658,27 @@ s Center For a list of error codes, visit the Error codes.
 
 #### 8.3.42 DeleteSocUser
 
-You can call this operation to delete a user.
+You can call this operation to delete a user. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DeleteSocUser. |
 | Aliuid | Long | Yes | The AliUid of the department. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Success | Boolean | The value of True indicates a success. The value of False indicates a failure. |
 
-Sample requests
+Examples Sample requests
 
 ```
-http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DeleteSocUser &Aliuid=12312312312
+http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=DeleteSocUser &Aliuid=12312312312 &<Common request parameters>
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"A3B53D56-C6CA-48F1-AF91-B5E28557DCAD",
@@ -22179,7 +23691,7 @@ Sample success responses in JSON format
     "Success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 #### 8.3.43 SaveOrUpdateSocUser
 
@@ -22199,18 +23711,20 @@ You can call this operation to add a user or modify user information. s Center
 | AccessKey | String | No | The AccessKey ID. Not e This parameter is required when you add a new user but optional when you modify user information. |
 | AccessSecret | String | No | The AccessKey secret. Not e This parameter is required when you add a new user but optional when you modify user information. |
 
+Response parameters
+
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 | Success | Boolean | The value of True indicates a success. The value of False indicates a failure. |
 
-Sample requests s Center
+Examples Sample requests s Center
 
 ```
 http(s)://yundunnewsoc-pop.[ RegionId].example.com/? Action=SaveorupdateSocUser
 ```
 
-Sample success responses in JSON format
+Sample success responses in JSON format `{`
 
 ```json
     "RequestId":"A3B53D56-C6CA-48F1-AF91-B5E28557DCAD",
@@ -22223,7 +23737,7 @@ Sample success responses in JSON format
     "Success":true
 ```
 
-For a list of error codes, visit the Error codes.
+`}` Error codes For a list of error codes, visit the Error codes.
 
 ## 9 Error codes
 

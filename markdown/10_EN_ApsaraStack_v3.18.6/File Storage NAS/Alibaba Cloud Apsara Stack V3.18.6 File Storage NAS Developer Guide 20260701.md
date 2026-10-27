@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 129
 source_pdf: "781cb75b95d5d2d6_Alibaba Cloud Apsara Stack V3.18.6 File Storage NAS Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8NAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20File%20Storage%20NAS%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # File Storage NAS Developer Guide 20260701
@@ -207,7 +207,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 
 > **Note:** In the following sample code, replace the variables with the actual values. Delete the angle brackets <> from the final code.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -226,6 +226,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the endpoint of STS. The endpoint of STS is in th
@@ -250,9 +255,15 @@ in the preceding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credential assigned by STS to call an API operation of a cloud service. The
 following sample code shows how to call the `DescribeRegions` operation of File Storage NAS (NAS).
 
@@ -300,6 +311,8 @@ ey ID and AccessKey secret obtained in the preceding step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 1.5 Obtain common header parameters
 
@@ -451,11 +464,18 @@ ues with your organization ID and resource set ID.
            for (DescribeFileSystemsResponse.FileSystem
 fileSystem:rsp.getFileSystems()) {
                System.out.println(fileSystem.getFileSystemId());
+```
+
+`}`
+
+```
        } catch (ServerException e) {
            e.printStackTrace();
        } catch (ClientException e) {
            e.printStackTrace();
 ```
+
+`}` `}` `}`
 
 ### 2.2 Use SDK
 
@@ -564,7 +584,7 @@ try {
   System.out.println("RequestId:" + e.getRequestId());
 ```
 
-In normal cases, all returned fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
+`}` In normal cases, all returned fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
 
 ```
 instanceStatus = response.getStatus();
@@ -604,6 +624,8 @@ to request technical support.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+`}`
 
 #### 2.2.6 Use CommonRequest to call API operations
 
@@ -714,7 +736,7 @@ peration, you must add the SecurityToken field in the request parameters.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-or SDK for Python
+`}` `}` `}` or SDK for Python
 
 ## 3 Call examples for SDK for Python
 
@@ -1070,6 +1092,8 @@ Common request parameters are required in all API requests. Table 1. Common requ
 |---|---|---|---|
 | SignatureNonce | String | No | A unique random number that is used to prevent replay attacks. You must use different numbers for different requests. |
 
+**Sample requests**
+
 ```
 GET https://nas.regionid.example.com/?Action=<Action> &Format=xml &Version=2017-06-26 &AccessKeyId=key-test &Signature=Pc5***%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &Timestamp=2012-06-01T12:00:00Z ...
 ```
@@ -1082,6 +1106,10 @@ Every response returns a unique request ID (indicated by **RequestId**) regardle
 |---|---|---|
 | RequestId | Integer | The unique ID of the request. |
 
+**Sample success responses**
+
+XML format
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <Operation Name + Response>
   <!--Return Request Tag-->
@@ -1090,10 +1118,14 @@ Every response returns a unique request ID (indicated by **RequestId**) regardle
 </Operation Name + Response>
 ```
 
+JSON format
+
 ```json
   "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
   /* The returned data */
 ```
+
+`}`
 
 #### 4.2.2 Request syntax
 
@@ -1107,7 +1139,11 @@ You can use HTTP or HTTPS to send requests. We recommend that you use HTTPS to i
 
 **Request methods**
 
-You can call an API operation by sending an HTTP GET request. If you use this method, the request parameters must be included in the request URL. In each request, you must set the Action parameter to specify the operation that you want to perform, for example, `DescribeRegions` . You must also specify the common request parameters and the operation-specific parameters.
+You can call an API operation by sending an HTTP GET request. If you use this method, the request parameters must be included in the request URL.
+
+**Request parameters**
+
+In each request, you must set the Action parameter to specify the operation that you want to perform, for example, `DescribeRegions` . You must also specify the common request parameters and the operation-specific parameters.
 
 **Character encoding**
 
@@ -1119,6 +1155,8 @@ All requests and responses are encoded in `UTF-8` .
 
 Queries available regions.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
@@ -1127,6 +1165,8 @@ Queries available regions.
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
 |---|---|---|---|---|
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1140,16 +1180,27 @@ Queries available regions.
 | RequestId | String | A70BEE5D-76D3- 49FB-B58F- 1F398211**** | The ID of the request. |
 | TotalCount | Integer | 4 | The total number of regions. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeRegions
+http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters>
 ```
 
-```json
+Sample success responses `XML` format
+
+```xml
 <TotalCount>4</TotalCount> <PageSize>2</PageSize> <RequestId>A70BEE5D-76D3-49FB-B58F-1F398211****</RequestId> <PageNumber>1</PageNumber> <Regions>
     <RegionId>cn-hangzhou</RegionId>
     <RegionEndpoint>nas.cn-hangzhou.aliyuncs.com</RegionEndpoint>
     <LocalName>East China 1</LocalName>
 </Regions>
+```
+
+`JSON` format `{`
+
+```json
     "TotalCount": 4,
     "PageSize": 2,
     "RequestId": "A70BEE5D-76D3-49FB-B58F-1F398211****",
@@ -1160,9 +1211,13 @@ http(s)://[Endpoint]/?Action=DescribeRegions
         "LocalName": "East China 1"
 ```
 
+`}` `}`
+
 #### 4.3.2 DescribeZones
 
 Queries all zones in a region and the file system types that are supported in each zone.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1191,8 +1246,18 @@ Queries all zones in a region and the file system types that are supported in ea
 | Performance | List | 0 | The Performance NAS file system. |
 | ZoneId | String | cn-hangzhou-b | The zone ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou <RequestId>A70BEE5D-76D3-49FB-B58F-1F398211A5C3</RequestId> <Zones>
+<RequestId>A70BEE5D-76D3-49FB-B58F-1F398211A5C3</RequestId> <Zones>
     <ZoneId>cn-hangzhou-b</ZoneId>
     <Clusters>
         <ClusterVersion>3.16.0</ClusterVersion>
@@ -1210,6 +1275,8 @@ http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou <RequestId>A70B
 </Zones>
 ```
 
+`JSON` format
+
 ```json
     "RequestId": "A70BEE5D-76D3-49FB-B58F-1F398211A5C3",
     "Zones": {
@@ -1224,12 +1291,14 @@ http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou <RequestId>A70B
                 "SupportedFeatures": "[\"ACL\",\"Quota\",\"Lifecycle\",\"Namespace\"]"
 ```
 
-`},`
+`}` `},`
 
 ```json
         "Capacity": 1,
         "Performance": 0
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -1243,6 +1312,8 @@ http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou <RequestId>A70B
 #### 4.4.1 CreateFileSystem
 
 Creates a file system.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1258,38 +1329,82 @@ Creates a file system.
 | VolumeSize | Long | No | 100 | The capacity of the General-purpose NAS file system. Unit: bytes. Valid values: Valid values for Capacity NAS file systems: 0 to 10 PB. Valid values for Performance NAS file systems: 0 to 1 PB. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | FileSystemId | String | 1ca404**** | The ID of the file system that is created. |
 | RequestId | String | 98696EF0-1607- 4E9D-B01D- F20930B6**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateFileSystem &ProtocolType=NFS &StorageType=Performance &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>98696EF0-1607-4E9D-B01D-F20930B6****</RequestId> <FileSystemId>1ca404****</FileSystemId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateFileSystem &ProtocolType=NFS &StorageType=Performance <RequestId>98696EF0-1607-4E9D-B01D-F20930B6****</RequestId> <FileSystemId>1ca404****</FileSystemId>
     "RequestId": "98696EF0-1607-4E9D-B01D-F20930B6****",
     "FileSystemId": "1ca404****"
 ```
 
+`}`
+
 #### 4.4.2 DeleteFileSystem
 
-Deletes a file system. Before you delete a file system, you must remove all the mount targets from the file system. After the file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+Deletes a file system.
+
+**Description**
+
+Before you delete a file system, you must remove all the mount targets from the file system. After the file system is deleted, the data on the file system cannot be restored. Proceed with caution.
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteFileSyste m | The operation that you want to perform. Set the value to DeleteFileSystem. |
 | FileSystemId | String | Yes | 1ca404**** | The ID of the file system. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9E15E394-38A6- 457A-A62A- D9797C9A**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DeleteFileSystem &FileSystemId=1ca404**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=DeleteFileSystem &FileSystemId=1ca404**** <RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId>
     "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****"
 ```
+
+`}`
 
 #### 4.4.3 ModifyFileSystem
 
 Modifies the details of a file system.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1300,13 +1415,27 @@ Modifies the details of a file system.
 | Description | String | No | N/A | The description of the file system. Limits: The description must be 2 to 128 characters in length. The description must start with a letter but cannot start with http:// or https://. The description can contain digits, colons (:), underscores ( ), and _ hyphens (-). |
 | VolumeSize | Long | No | 1000 | The capacity of the file system. Valid values: Valid values for NAS Capacity file systems: 0 to 10 PB. Valid values for NAS Performance file systems: 0 to 1 PB. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF42**** | The ID of the request. |
 
-```xml
-http(s)://[Endpoint]/? Action=ModifyFileSystem &FileSystemId=1ca404**** <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/? Action=ModifyFileSystem &FileSystemId=1ca404**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId>
+```
+
+`JSON` format
 
 ```json
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****"
@@ -1315,6 +1444,8 @@ http(s)://[Endpoint]/? Action=ModifyFileSystem &FileSystemId=1ca404**** <Request
 #### 4.4.4 DescribeFileSystems
 
 Queries file systems.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1374,9 +1505,15 @@ Queries file systems.
 | VolumeSize | Long | 1000 | The capacity of the General-purpose NAS file system. Valid values: Valid values for Capacity NAS file systems: 0 to 10 PB. Valid values for Performance NAS file systems: 0 to 1 PB. |
 | ZoneId | String | cn-hangzhou-b | The ID of the zone where the file system resides. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeFileSystems
+http(s)://[Endpoint]/?Action=DescribeFileSystems &<Common request parameters>
 ```
+
+Sample success responses
 
 ```xml
 <FileSystems>
@@ -1434,6 +1571,8 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 
 Creates a mount target.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateMountTar get | The operation that you want to perform. Set the value to CreateMountTarget. |
@@ -1449,15 +1588,38 @@ Creates a mount target.
 | MountTargetD omain | String | 174494b666- x****.cn- hangzhou.nas.aliyu ncs.com | The domain name of the mount target. |
 | RequestId | String | 70EACC9C-D07A- 4A34-ADA4- 77506C42**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CreateMountTarget &AccessGroupName=classic-test &FileSystemId=174494**** &NetworkType=VPC &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>70EACC9C-D07A-4A34-ADA4-77506C42****</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=CreateMountTarget &AccessGroupName=classic-test &FileSystemId=174494**** &NetworkType=VPC <RequestId>70EACC9C-D07A-4A34-ADA4-77506C42****</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
     "RequestId": "70EACC9C-D07A-4A34-ADA4-77506C42****",
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
 ```
 
+`}`
+
 #### 4.5.2 DeleteMountTarget
 
-Deletes a mount target. After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+Deletes a mount target.
+
+**Description**
+
+After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1467,18 +1629,39 @@ Deletes a mount target. After you delete a mount target, the mount target cannot
 |---|---|---|---|---|
 | MountTargetDo main | String | Yes | 174494b666- x****.cn- hangzhou.nas.al iyuncs.com | The domain name of the mount target. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF42**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DeleteMountTarget &FileSystemId=174494**** &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=DeleteMountTarget &FileSystemId=174494**** &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId>
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****"
 ```
+
+`}`
 
 #### 4.5.3 DescribeMountTargets
 
 Queries the information of mount targets.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1489,6 +1672,8 @@ Queries the information of mount targets.
 | MountTargetDo main | String | No | 1ca404a666- x****.cn- hangzhou.nas.al iyuncs.com | The domain name of the mount target. |
 | PageSize | Integer | No | 1 | The number of entries to return on each page. Valid values: 1 to 100. Default value: 10. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1507,8 +1692,18 @@ Queries the information of mount targets.
 | RequestId | String | 3BAB90FD-B4A0- 48DA-9F09- 2B963510A0EF | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of mount targets. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeMountTargets &FileSystemId=1ca404**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeMountTargets &FileSystemId=1ca404**** <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>3BAB90FD-B4A0-48DA-9F09-2B963510A0EF</RequestId> <PageNumber>1</PageNumber> <MountTargets>
+<TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>3BAB90FD-B4A0-48DA-9F09-2B963510A0EF</RequestId> <PageNumber>1</PageNumber> <MountTargets>
     <Status>Active</Status>
     <VswId>vsw-2zevmwkwyztjuoffg****</VswId>
     <VpcId>vpc-2zesj9afh3y518k9o****</VpcId>
@@ -1518,6 +1713,8 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
     <NetworkType>Vpc</NetworkType>
 </MountTargets>
 ```
+
+`JSON` format
 
 ```json
     "TotalCount": 1,
@@ -1533,9 +1730,13 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
         "NetworkType": "Vpc"
 ```
 
+`}` `}`
+
 #### 4.5.4 ModifyMountTarget
 
 Modifies a mount target.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1545,16 +1746,35 @@ Modifies a mount target.
 | AccessGroupNa me | String | No | classic-test | The name of the permission group that is attached to the mount target. |
 | Status | String | No | Inactive | The status of the mount target. Valid values: Active: The mount target is available. Inactive: The mount target is unavailable. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
 | RequestId | String | FF387D95-34C4- 4879-B65A- 99D1FA1**** | The ID of the request. |
 |---|---|---|---|
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ModifyMountTarget &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>FF387D95-34C4-4879-B65A-99D1FA1****</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=ModifyMountTarget &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com <RequestId>FF387D95-34C4-4879-B65A-99D1FA1****</RequestId>
     "RequestId": "FF387D95-34C4-4879-B65A-99D1FA1****"
 ```
+
+`}`
 
 #### 4.5.5 DescribeMountedClients
 
@@ -1563,6 +1783,8 @@ Queries the clients on which a file system is mounted.
 **Request headers**
 
 The DescribeMountedClients operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1579,6 +1801,8 @@ The DescribeMountedClients operation does not have operation-specific request he
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 | PageNum ber | Integ er | Query | No | 1 | The page number. Pages start from page 1. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Clients | Array | 192.***.6.17 | The IP addresses of the mounted clients. |
@@ -1588,9 +1812,15 @@ The DescribeMountedClients operation does not have operation-specific request he
 | PageSize | Integer | 1 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 | PageNumber | Integer | 1 | The page number. Pages start from page 1. Default value: 1. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbala &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-x****.cn-hangzhou.nas.aliyuncs.com
+http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbala &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-x****.cn-hangzhou.nas.aliyuncs.com &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
   "TotalCount": 10,
@@ -1599,16 +1829,23 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
   "PageNumber": 1,
   "Clients": {
     "Client": [
+```
+
+`{`
+
+```json
         "ClientIP": "10.10.10.1"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ### 4.6 Permission group
 
 #### 4.6.1 CreateAccessGroup
 
 Creates a permission group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1620,13 +1857,25 @@ Creates a permission group.
 | Description | String | No | classictestacces sgroup | The description of the permission group. Limits: By default, the description of a permission group is the same as the name of the permission group. The description must be 2 to 128 characters in length. The description must start with a letter and cannot start with http:// or https://. The description can contain digits, colons (:), underscores ( ), and _ hyphens (-). |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AccessGroupN ame | String | classic-test | The name of the permission group. |
 | RequestId | String | 55C5FFD6-BF99- 41BD-9C66- FFF39189**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=CreateAccessGroup &AccessGroupName=classic-test &AccessGroupType=Classic &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/? Action=CreateAccessGroup &AccessGroupName=classic-test &AccessGroupType=Classic <RequestId>55C5FFD6-BF99-41BD-9C66-FFF39189****</RequestId> <AccessGroupName>classic-test</AccessGroupName>
+<RequestId>55C5FFD6-BF99-41BD-9C66-FFF39189****</RequestId> <AccessGroupName>classic-test</AccessGroupName>
 ```
 
 ```json
@@ -1634,9 +1883,17 @@ http(s)://[Endpoint]/? Action=CreateAccessGroup &AccessGroupName=classic-test &A
     "AccessGroupName": "classic-test"
 ```
 
+`}`
+
 #### 4.6.2 DeleteAccessGroup
 
-Deletes a permission group. Default permission groups include DEFAULT_VPC_GROUP_NAME and DEFAULT_CLASSIC_GROUP_NAME. You cannot delete the default permission groups.
+Deletes a permission group.
+
+**Description**
+
+Default permission groups include DEFAULT_VPC_GROUP_NAME and DEFAULT_CLASSIC_GROUP_NAME. You cannot delete the default permission groups.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1644,22 +1901,39 @@ Deletes a permission group. Default permission groups include DEFAULT_VPC_GROUP_
 | AccessGroupNa me | String | Yes | classic-test | The name of the permission group. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9E15E394-38A6- 457A-A62A- D9797C9A**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/? Action=DeleteAccessGroup &AccessGroupName=classic-test
+http(s)://[Endpoint]/? Action=DeleteAccessGroup &AccessGroupName=classic-test &<Common request parameters>
 ```
 
-```json
+Sample success responses
+
+```xml
 <RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId>
+```
+
+`{`
+
+```json
     "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****"
 ```
+
+`}`
 
 #### 4.6.3 ModifyAccessGroup
 
 Modifies a permission group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1670,18 +1944,39 @@ Modifies a permission group.
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | ED2AE737-9D50- 4CA4-B0DA- 31BD610C**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ModifyAccessGroup &AccessGroupName=classic-test &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>ED2AE737-9D50-4CA4-B0DA-31BD610C****</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=ModifyAccessGroup &AccessGroupName=classic-test <RequestId>ED2AE737-9D50-4CA4-B0DA-31BD610C****</RequestId>
     "RequestId": "ED2AE737-9D50-4CA4-B0DA-31BD610C****"
 ```
+
+`}`
 
 #### 4.6.4 DescribeAccessGroups
 
 Queries the information of permission groups.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1693,6 +1988,8 @@ Queries the information of permission groups.
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
 | UseUTCDateTim e | Boolean | No | true | Specifies whether the time to return is in UTC. Valid values: true: the default value. The time is returned in the UTC format. false: The time is not returned in the UTC format. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1711,8 +2008,18 @@ Queries the information of permission groups.
 | ResourceOwne rId | String | 258456 | The ID of the resource. |
 | TotalCount | Integer | 2 | The total number of permission groups. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeAccessGroups &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/? Action=DescribeAccessGroups <AccessGroups>
+<AccessGroups>
     <RuleCount>0</RuleCount>
     <AccessGroupType>Classic</AccessGroupType>
     <Description>This is a classic test access group~</Description>
@@ -1720,6 +2027,8 @@ http(s)://[Endpoint]/? Action=DescribeAccessGroups <AccessGroups>
     <AccessGroupName>classic-test</AccessGroupName>
 </AccessGroups> <TotalCount>2</TotalCount> <PageSize>2</PageSize> <RequestId>2514F97E-FFF0-4A1F-BF04-729CEAC64B6F</RequestId> <PageNumber>1</PageNumber> <ResourceOwnerId>258456</ResourceOwnerId>
 ```
+
+`JSON` format
 
 ```json
     "AccessGroups": {
@@ -1740,9 +2049,13 @@ http(s)://[Endpoint]/? Action=DescribeAccessGroups <AccessGroups>
     "ResourceOwnerId": 258456
 ```
 
+`}`
+
 #### 4.6.5 CreateAccessRule
 
 Creates a rule for a permission group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1756,24 +2069,39 @@ Creates a rule for a permission group.
 | Priority | Integer | No | 1 | The priority of the rule. The rule with the highest priority takes effect if multiple rules are attached to the authorized object. Valid values: 1 to 100. The value 1 indicates the highest priority. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AccessRuleId | String | 1 | The ID of the rule. |
 | RequestId | String | A323836B-5BC6- 45A6-8048- 60675C23**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/? Action=CreateAccessRule &AccessGroupName=classic-test &SourceCidrIp=10.0. *. */**
 ```
 
-```json
+```xml
 <RequestId>A323836B-5BC6-45A6-8048-60675C23****</RequestId> <AccessRuleId>1</AccessRuleId>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "A323836B-5BC6-45A6-8048-60675C23****",
     "AccessRuleId": 1
 ```
 
+`}`
+
 #### 4.6.6 DeleteAccessRule
 
 Deletes a rule from a permission group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1782,18 +2110,39 @@ Deletes a rule from a permission group.
 | AccessRuleId | String | Yes | 1 | The ID of the rule. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5B4511A7-C99E- 4071-AA8C- 32E2529D**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DeleteAccessRule &AccessGroupName=classic-test &AccessRuleId=1 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5B4511A7-C99E-4071-AA8C-32E2529D****</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=DeleteAccessRule &AccessGroupName=classic-test &AccessRuleId=1 <RequestId>5B4511A7-C99E-4071-AA8C-32E2529D****</RequestId>
     "RequestId": "5B4511A7-C99E-4071-AA8C-32E2529D****"
 ```
+
+`}`
 
 #### 4.6.7 ModifyAccessRule
 
 Modifies a rule in a permission group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1808,18 +2157,39 @@ Modifies a rule in a permission group.
 | Priority | Integer | No | 1 | The priority of the rule in the permission group. Valid values: 1 to 100. Default value: 1, which indicates the highest priority. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6299428C-3861- 435D-AE54- 9B330A00**** | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=ModifyAccessRule &AccessGroupName=classic-test &AccessRuleId=1 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>6299428C-3861-435D-AE54-9B330A00****</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/? Action=ModifyAccessRule &AccessGroupName=classic-test &AccessRuleId=1 <RequestId>6299428C-3861-435D-AE54-9B330A00****</RequestId>
     "RequestId": "6299428C-3861-435D-AE54-9B330A00****"
 ```
+
+`}`
 
 #### 4.6.8 DescribeAccessRules
 
 Queries the information about rules.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1831,6 +2201,8 @@ Queries the information about rules.
 
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose NAS file systems. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1849,14 +2221,29 @@ Queries the information about rules.
 | Developer Guide·A | PI Reference |   | File Storage NAS |
 |---|---|---|---|
 
-```json
-http(s)://[Endpoint]/? Action=DescribeAccessRules &AccessGroupName=classic-test <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>86D89E82-4297-4343-8E1E-A2495B35CC70</RequestId> <PageNumber>1</PageNumber> <AccessRules>
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/? Action=DescribeAccessRules &AccessGroupName=classic-test &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>86D89E82-4297-4343-8E1E-A2495B35CC70</RequestId> <PageNumber>1</PageNumber> <AccessRules>
     <RWAccess>RDWR</RWAccess>
     <AccessRuleId>1</AccessRuleId>
     <UserAccess>no_squash</UserAccess>
     <Priority>1</Priority>
     <SourceCidrIp>10.0. *. */**</SourceCidrIp>
 </AccessRules>
+```
+
+`JSON` format `{`
+
+```json
     "TotalCount": 1,
     "PageSize": 1,
     "RequestId": "86D89E82-4297-4343-8E1E-A2495B35CC70",
@@ -1868,6 +2255,8 @@ http(s)://[Endpoint]/? Action=DescribeAccessRules &AccessGroupName=classic-test 
         "Priority": 1,
         "SourceCidrIp": "10.0. *. */**"
 ```
+
+`}` `}`
 
 ### 4.7 Quotas
 
@@ -1888,13 +2277,25 @@ Creates a directory quota for a file system.
 |---|---|---|---|---|
 | FileCountLimit | Long | No | 10000 | The maximum number of files that can be created in the directory. The value includes the number of files, subdirectories, and special files. If you set the QuotaType parameter to Enforcement, you must specify at least one of the SizeLimit and FileCountLimit parameters. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=SetDirQuota &FileSystemId=1ca404**** &Path=/data/sub1 &QuotaType=Accounting &UserType=Uid &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=SetDirQuota &FileSystemId=1ca404**** &Path=/data/sub1 &QuotaType=Accounting &UserType=Uid <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
 ```
 
 ```json
@@ -1902,9 +2303,13 @@ http(s)://[Endpoint]/?Action=SetDirQuota &FileSystemId=1ca404**** &Path=/data/su
     "Success": true
 ```
 
+`}`
+
 #### 4.7.2 CancelDirQuota
 
 Cancels the directory quotas of a file system.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1919,15 +2324,34 @@ Cancels the directory quotas of a file system.
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CancelDirQuota &FileSystemId=1ca404**** &Path=/data/sub1 &UserType=Uid &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CancelDirQuota &FileSystemId=1ca404**** &Path=/data/sub1 &UserType=Uid <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "Success": true
 ```
 
+`}`
+
 #### 4.7.3 DescribeDirQuotas
 
 Queries the directory quotas of a file system.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1938,6 +2362,8 @@ Queries the directory quotas of a file system.
 |---|---|---|---|---|
 | PageSize | Integer | No | 1 | The number of entries per page. |
 | PageNumber | Integer | No | 1 | The page number. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1960,11 +2386,17 @@ Queries the directory quotas of a file system.
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | The request ID. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeDirQuotas &FileSystemId=1ca404****
+http(s)://[Endpoint]/?Action=DescribeDirQuotas &FileSystemId=1ca404**** &<Common request parameters>
 ```
 
-```json
+Sample success responses `XML` format
+
+```xml
 <TotalCount>1</TotalCount> <DirQuotaInfos>
     <Status>Normal</Status>
     <Path>/data/sub1</Path>
@@ -1979,6 +2411,11 @@ http(s)://[Endpoint]/?Action=DescribeDirQuotas &FileSystemId=1ca404****
         <UserType>Uid</UserType>
     </UserQuotaInfos>
 </DirQuotaInfos> <PageSize>1</PageSize> <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <PageNumber>1</PageNumber>
+```
+
+`JSON` format `{`
+
+```json
     "TotalCount": 1,
     "DirQuotaInfos": {
         "Status": "Normal",
@@ -1994,13 +2431,15 @@ http(s)://[Endpoint]/?Action=DescribeDirQuotas &FileSystemId=1ca404****
             "UserType": "Uid"
 ```
 
-`},`
+`}` `},`
 
 ```json
     "PageSize": 1,
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "PageNumber": 1
 ```
+
+`}`
 
 ### 4.8 Unified namespaces
 
@@ -2021,24 +2460,41 @@ Creates a namespace.
 |---|---|---|---|---|
 | Description | String | No | balabala | The description of the file system. Limits: The description must be 2 to 128 characters in length. The decription must start with a letter and cannot start with http:// or https:// . The description can contain letters, digits, colons (:), underscores ( ), periods (.), and _ hyphens (-). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NasNamespac eId | String | 1NS244**** | The namespace ID. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CreateNamespace &ProtocolType=NFS &StorageType=Performance
+http(s)://[Endpoint]/?Action=CreateNamespace &ProtocolType=NFS &StorageType=Performance &<Common request parameters>
 ```
 
-```json
+Sample success responses
+
+```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
 ```
 
+`}`
+
 #### 4.8.2 DeleteNamespace
 
 Deletes a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2046,20 +2502,39 @@ Deletes a namespace.
 | NasNamespaceI d | String | Yes | 1NS244**** | The namespace ID. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose File Storage NAS (NAS) file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NasNamespac eId | String | 1NS244**** | The namespace ID. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
+**Examples**
+
+```
+http(s)://[Endpoint]/?Action=DeleteNamespace &NasNamespaceId=1NS244****
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteNamespace &NasNamespaceId=1NS244**** <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
 ```
 
+`}`
+
 #### 4.8.3 ModifyNamespace
 
 Modifies a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2067,6 +2542,8 @@ Modifies a namespace.
 | Description | String | Yes | test | The namespace description. |
 | NasNamespaceI d | String | Yes | 1NS244**** | The namespace ID. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose File Storage NAS (NAS) file systems. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2078,15 +2555,34 @@ Modifies a namespace.
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 |---|---|---|---|
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifyNamespace &Description=test &NasNamespaceId=1NS244**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ModifyNamespace &Description=test &NasNamespaceId=1NS244**** <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
 ```
 
+`}`
+
 #### 4.8.4 DescribeNamespaces
 
 Queries namespaces.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2101,6 +2597,8 @@ Queries namespaces.
 | StorageType | String | No | Performance | The storage class. Valid values: Performance: Performance NAS file systems Capacity: Capacity NAS file systems |
 | OrderByField | String | No | CreateTime | The field based on which the returned results are sorted. Default value: CreateTime, which specifies that the returned results are sorted based on creation time. |
 | SortOrder | String | No | ASC | The sorting order. Valid values: ASC (default): ascending order DESC: descending order |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2134,8 +2632,18 @@ Queries namespaces.
 |---|---|---|---|
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeNamespaces &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DescribeNamespaces <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <NasNamespaceCreateLimit>2</NasNamespaceCreateLimit> <NasNamespaces>
+<TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <NasNamespaceCreateLimit>2</NasNamespaceCreateLimit> <NasNamespaces>
     <Status>Normal</Status>
     <StorageType>Performance</StorageType>
     <Description>balabala</Description>
@@ -2156,6 +2664,8 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces <TotalCount>1</TotalCount> <Page
     </MountTargets>
 </NasNamespaces>
 ```
+
+`JSON` format
 
 ```json
     "TotalCount": 1,
@@ -2183,9 +2693,13 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces <TotalCount>1</TotalCount> <Page
             "AccessGroupName": ""
 ```
 
+`}` `}` `}`
+
 #### 4.8.5 AddFileSystemToNamespace
 
 Adds a file system to a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2197,20 +2711,41 @@ Adds a file system to a namespace.
 | FileSystemType | String | No | standard | The type of the file system. Valid values: standard (default): General-purpose File Storage NAS (NAS) file system |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | FileSystemId | String | 1ca404**** | The ID of the file system. |
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AddFileSystemToNamespace &FileSystemId=1ca404**** &MappedPath=tmp_path &NasNamespaceId=1NS244**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <FileSystemId>1ca404****</FileSystemId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=AddFileSystemToNamespace &FileSystemId=1ca404**** &MappedPath=tmp_path &NasNamespaceId=1NS244**** <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <FileSystemId>1ca404****</FileSystemId>
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "FileSystemId": "1ca404****"
 ```
 
+`}`
+
 #### 4.8.6 RemoveFileSystemFromNamespace
 
 Deletes a file system from a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2221,13 +2756,30 @@ Deletes a file system from a namespace.
 | NasNamespaceI d | String | Yes | 1NS244**** | The namespace ID. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose File Storage NAS (NAS) file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | FileSystemId | String | 1ca404**** | The ID of the file system. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404**** &NasNamespaceId=1NS244**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <FileSystemId>1ca404****</FileSystemId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404**** &NasNamespaceId=1NS244**** <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <FileSystemId>1ca404****</FileSystemId>
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "FileSystemId": "1ca404****"
 ```
@@ -2235,6 +2787,8 @@ http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404*
 #### 4.8.7 RenameMappedPathInNamespace
 
 Modifies the mapping name of a file system in a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2244,24 +2798,39 @@ Modifies the mapping name of a file system in a namespace.
 | NasNamespaceI d | String | Yes | 1NS244**** | The namespace ID. |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose File Storage NAS (NAS) file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NasNamespac eId | String | 1NS244**** | The namespace ID. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=RenameMappedPathInNamespace &FileSystemId=1ca404**** &MappedPath=tmp_path &NasNamespaceId=1NS244****
 ```
 
-```json
+```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <NasNamespaceId>1NS244****</NasNamespaceId>
+```
+
+`JSON` format `{`
+
+```json
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "NasNamespaceId": "1NS244****"
 ```
 
+`}`
+
 #### 4.8.8 ListFileSystemsInNamespace
 
 Queries the mapped file systems in a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2290,8 +2859,18 @@ Queries the mapped file systems in a namespace.
 |---|---|---|---|
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
-```json
-http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <NSMembers>
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <NSMembers>
     <Status>Running</Status>
     <StorageType>Performance</StorageType>
     <FileSystemType>standard</FileSystemType>
@@ -2299,6 +2878,11 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace <TotalCount>1</TotalCoun
     <FileSystemId>1ca404****</FileSystemId>
     <MappedPath>tmp_path</MappedPath>
 </NSMembers>
+```
+
+`JSON` format `{`
+
+```json
     "TotalCount": 1,
     "PageSize": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
@@ -2311,6 +2895,8 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace <TotalCount>1</TotalCoun
         "FileSystemId": "1ca404****",
         "MappedPath": "tmp_path"
 ```
+
+`}` `}`
 
 #### 4.8.9 CreateNamespaceMountTarget
 
@@ -2329,16 +2915,35 @@ Creates a mount target for a namespace.
 |---|---|---|---|---|
 | SecurityGroupId | String | No | sg- bp1fg655nh68x yz9**** | The ID of the security group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | MountTargetD omain | String | 174494b666- x****.cn- hangzhou.nas.aliyu ncs.com | The domain name of the mount target. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateNamespaceMountTarget &AccessGroupName=classic-test &NasNamespaceId=1NS244**** &NetworkType=Vpc &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateNamespaceMountTarget &AccessGroupName=classic-test &NasNamespaceId=1NS244**** &NetworkType=Vpc <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
 ```
+
+`}`
 
 #### 4.8.10 DeleteNamespaceMountTarget
 
@@ -2350,23 +2955,41 @@ Deletes a mount target for a namespace.
 | MountTargetDo main | String | Yes | 174494b666- x****.cn- hangzhou.nas.al iyuncs.com | The domain name of the mount target. |
 | NasNamespaceI d | String | Yes | 1NS244**** | The namespace ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | MountTargetD omain | String | 174494b666- x****.cn- hangzhou.nas.aliyu ncs.com | The domain name of the mount target. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
-```xml
-http(s)://[Endpoint]/?Action=DeleteNamespaceMountTarget &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NS244**** <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=DeleteNamespaceMountTarget &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NS244**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain>
+```
+
+`JSON` format
 
 ```json
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
 ```
 
+`}`
+
 #### 4.8.11 ModifyNamespaceMountTarget
 
 Modifies the status of the mount target for a namespace.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2378,14 +3001,33 @@ Modifies the status of the mount target for a namespace.
 | Status | String | No | Active | The status of the mount target. Valid values: Active: The mount target is available. Inactive: The mount target is unavailable. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifyNamespaceMountTarget &MountTargetDomain=1ca404****-kvr2.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NSc24**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId>
+```
+
+`JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ModifyNamespaceMountTarget &MountTargetDomain=1ca404****-kvr2.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NSc24**** <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId>
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8"
 ```
+
+`}`
 
 #### 4.8.12 DescribeNamespaceMountTargets
 
@@ -2394,6 +3036,8 @@ Queries the mount targets of a namespace.
 **Request headers**
 
 The DescribeNamespaceMountTargets operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2404,6 +3048,8 @@ The DescribeNamespaceMountTargets operation does not have operation-specific req
 | MountTar getDomai n | Strin g | Query | No | ns-1NS724****-0****.cn- wulan-en****- d01.nas.inter.en****.sh* ***ng.com | The domain name of the mount target. |
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 | PageNum ber | Integ er | Query | No | 1 | The page number. Pages start from page 1. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2422,9 +3068,15 @@ The DescribeNamespaceMountTargets operation does not have operation-specific req
 | PageSize | Integer | 1 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 | PageNumber | Integer | 1 | The page number. Pages start from page 1. Default value: 1. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeNamespaceMountTargets &NasNamespaceId=ns1ca404****
+http(s)://[Endpoint]/?Action=DescribeNamespaceMountTargets &NasNamespaceId=ns1ca404**** &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
 HTTP/1.1 200 OK Content-Type:application/json
@@ -2433,6 +3085,11 @@ HTTP/1.1 200 OK Content-Type:application/json
  "PageSize":1,
  "PageNumber":1,
  "MountTargets":[
+```
+
+`{`
+
+```json
    "Status":"Active",
    "VpcId":"vpc-gxxxxxlzw21fj9k",
    "VswId":"vsw-g4xxxxxxpf4mb6om6j",
@@ -2442,7 +3099,7 @@ d01.nas.inter.en****.sh****ng.com",
    "AccessGroup":"pri"
 ```
 
-`]`
+`}` `]` `}` `XML` format
 
 ```xml
 <TotalCount>3</TotalCount> <RequestId>3BAB90FD-B4A0-48DA-9F09-2B963510A0EF</RequestId> <PageSize>1</PageSize> <PageNumber>1</PageNumber> <MountTargets>
@@ -2460,6 +3117,8 @@ d01.nas.inter.en****.sh****ng.com</MountTargetDomain>
 
 Creates a cross-domain mount orchestration.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AddNamespaceT oGroup | The operation that you want to perform. Set the value to AddNamespaceToGroup. |
@@ -2472,22 +3131,37 @@ Creates a cross-domain mount orchestration.
 | NetworkType | String | Yes | Vpc | The network type. Valid values: Vpc: virtual private cloud (VPC) Classic: classic network |
 | FileSystemType | String | No | standard | The type of the file system. Default value: standard, which indicates General-purpose File Storage NAS (NAS) file systems. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E |   |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddNamespaceToGroup &MappedPath=data &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NS244**** &NasNamespaceRegion=cn-hangzhou &NetworkType=Vpc
+http(s)://[Endpoint]/?Action=AddNamespaceToGroup &MappedPath=data &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &NasNamespaceId=1NS244**** &NasNamespaceRegion=cn-hangzhou &NetworkType=Vpc &<Common request parameters>
 ```
 
-```json
+```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+```
+
+`{`
+
+```json
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
+
+`}`
 
 #### 4.8.14 RemoveNamespaceFromGroup
 
 Deletes a cross-domain mount orchestration.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2495,20 +3169,35 @@ Deletes a cross-domain mount orchestration.
 | MemberId | String | Yes | 1 | The ID of the cross-domain mount orchestration. |
 | FileSystemType | String | No | 1ca404**** | The ID of the file system. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | MemberId | String | 1 | The ID of the cross-domain mount orchestration. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=RemoveNamespaceFromGroup &MemberId=1
+http(s)://[Endpoint]/?Action=RemoveNamespaceFromGroup &MemberId=1 &<Common request parameters>
 ```
 
-```json
+Sample success responses
+
+```xml
 <MemberId>1</MemberId> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+```
+
+`JSON` format `{`
+
+```json
     "MemberId": 1,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
+
+`}`
 
 #### 4.8.15 DescribeNamespaceGroup
 
@@ -2517,6 +3206,8 @@ Queries the Cross-domain Mount Orchestration page.
 **Request headers**
 
 The DescribeNamespaceGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2529,6 +3220,8 @@ The DescribeNamespaceGroup operation does not have operation-specific request he
 |---|---|---|---|---|---|
 | Status | Strin g | Quer y | No | Enabled | The status of the namespace. Valid values: All Enabled Disable |
 | MappedPat h | Strin g | Quer y | No | nas | The mapped path for cross-domain mount orchestration. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2549,9 +3242,15 @@ The DescribeNamespaceGroup operation does not have operation-specific request he
 | PageSize | Integer | 1 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 | PageNumber | Integer | 1 | The page number. Pages start from page 1. Default value: 1. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DescribeNamespaceGroup
+http(s)://[Endpoint]/?Action=DescribeNamespaceGroup &<Common request parameters>
 ```
+
+Sample success responses `JSON` format
 
 ```json
 HTTP/1.1 200 OK Content-Type:application/json
@@ -2560,6 +3259,11 @@ HTTP/1.1 200 OK Content-Type:application/json
  "PageSize":1,
  "PageNumber":1,
  "NasNamespaces":[
+```
+
+`{`
+
+```json
    "Status":"Enabled",
    "MemberId":"6",
    "NasNamespaceRegion":"cn-xxxn-envxxx-d01",
@@ -2572,7 +3276,7 @@ d01.nas.intra.envxx.shxxxang.com.",
    "ResourceOwnerId":"12xxxxx8974995"
 ```
 
-`]`
+`}` `]` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageSize>1</PageSize> <PageNumber>1</PageNumber> <NasNamespaces>
@@ -2610,23 +3314,41 @@ Creates a lifecycle policy.
 |---|---|---|---|---|
 | Recursive | Boolean | No | true | Specifies whether to traverse directories. If the value is true, all subdirectories in the directory are traversed. Valid values: true false (default) |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5BC5CB97-9F28- 42FE-84A4- 0CD0DF4211C8 | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
-```xml
-http(s)://[Endpoint]/?Action=CreateLifecyclePolicy &FileSystemId=1ca404**** &LifecyclePolicyName=lifecyclepolicy_01 &LifecycleRuleName=DEFAULT_ATIME_14 &OssBucket=rick-test-005 &Path=/pathway/to/folder &StorageType=InfrequentAccess <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=CreateLifecyclePolicy &FileSystemId=1ca404**** &LifecyclePolicyName=lifecyclepolicy_01 &LifecycleRuleName=DEFAULT_ATIME_14 &OssBucket=rick-test-005 &Path=/pathway/to/folder &StorageType=InfrequentAccess &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8</RequestId> <Success>true</Success>
+```
+
+`JSON` format
 
 ```json
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8",
     "Success": true
 ```
 
+`}`
+
 #### 4.9.2 DeleteLifecyclePolicy
 
 Deletes a lifecycle policy.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2634,13 +3356,25 @@ Deletes a lifecycle policy.
 | FileSystemId | String | Yes | 106174**** | The ID of the file system. |
 | LifecyclePolicyN ame | String | Yes | lifecycle | The name of the lifecycle policy. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &LifecyclePolicyName=lifecycle &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
 ```xml
-http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &LifecyclePolicyName=lifecycle <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <Success>true</Success>
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <Success>true</Success>
 ```
 
 ```json
@@ -2650,6 +3384,8 @@ http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &Lif
 #### 4.9.3 ModifyLifecyclePolicy
 
 Modifies a lifecycle policy.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2663,23 +3399,41 @@ Modifies a lifecycle policy.
 |---|---|---|---|---|
 | StorageType | String | No | InfrequentAcces s | The storage class of the data that is dumped. Default value: InfrequentAccess |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
-```xml
-http(s)://[Endpoint]/?Action=ModifyLifecyclePolicy &FileSystemId=1ca404**** &LifecyclePolicyName=ifecyclepolicy_01 &LifecycleRuleName=DEFAULT_ATIME_14 &Path=/pathway/to/folder &Recursive=true <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <Success>true</Success>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ModifyLifecyclePolicy &FileSystemId=1ca404**** &LifecyclePolicyName=ifecyclepolicy_01 &LifecycleRuleName=DEFAULT_ATIME_14 &Path=/pathway/to/folder &Recursive=true &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <Success>true</Success>
+```
+
+`JSON` format
 
 ```json
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "Success": true
 ```
 
+`}`
+
 #### 4.9.4 DescribeLifecyclePolicies
 
 Queries lifecycle policies.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2687,6 +3441,8 @@ Queries lifecycle policies.
 | FileSystemId | String | No | 1ca404**** | The ID of the file system. |
 | PageSize | Integer | No | 10 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 | PageNumber | Integer | No | 1 | The page number. Pages start from page 1. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2706,8 +3462,16 @@ Queries lifecycle policies.
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 | TotalCount | Integer | 10 | The total number of lifecycle policies. |
 
-```json
-http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies <TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <LifecyclePolicies>
+**Examples**
+
+```
+http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies
+```
+
+Sample success responses `XML` format
+
+```xml
+<TotalCount>10</TotalCount> <PageSize>10</PageSize> <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId> <PageNumber>1</PageNumber> <LifecyclePolicies>
     <Path>/pathway/to/folder</Path>
     <LifecyclePolicyName>lifecyclepolicy_01</LifecyclePolicyName>
     <StorageType>InfrequentAccess</StorageType>
@@ -2717,6 +3481,11 @@ http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies <TotalCount>10</TotalCoun
     <FileSystemId>1ca404****</FileSystemId>
     <Recursive>true</Recursive>
 </LifecyclePolicies>
+```
+
+`JSON` format `{`
+
+```json
     "TotalCount": 10,
     "PageSize": 10,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
@@ -2732,6 +3501,8 @@ http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies <TotalCount>10</TotalCoun
         "Recursive": true
 ```
 
+`}` `}`
+
 ### 4.10 NFS NAS ACL
 
 #### 4.10.1 EnableNfsAcl
@@ -2746,13 +3517,35 @@ The EnableNfsAcl operation does not have operation-specific request headers and 
 |---|---|---|---|---|---|
 | FileSyste mId | Strin g | Query | Yes | 43f264xxxx | The ID of the file system. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 29F4F360-A6A8- 561A-A45B- A0F6882969BA | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=EnableNfsAcl &FileSystemId=43f264xxxx &<Common request parameters>
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-http(s)://[Endpoint]/?Action=EnableNfsAcl &FileSystemId=43f264xxxx HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"29F4F360-A6A8-561A-A45B-A0F6882969BA"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>29F4F360-A6A8-561A-A45B-A0F6882969BA</RequestId>
 ```
 
@@ -2764,17 +3557,41 @@ Disables the Network File System (NFS) access control list (ACL) feature for a f
 
 The DisableNfsAcl operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | FileSyste mId | Strin g | Query | Yes | 91fcdxxxx | The ID of the file system. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 24487C24-AE54- 57EC-B4E4- 4EDEEEB83B01 | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DisableNfsAcl &FileSystemId=91fcdxxxx &<Common request parameters>
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-http(s)://[Endpoint]/?Action=DisableNfsAcl &FileSystemId=91fcdxxxx HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"24487C24-AE54-57EC-B4E4-4EDEEEB83B01"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>24487C24-AE54-57EC-B4E4-4EDEEEB83B01</RequestId>
 ```
 
@@ -2786,9 +3603,13 @@ Queries whether the Network File System (NFS) access control list (ACL) feature 
 
 The DescribeNfsAcl operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | FileSyste mId | Strin g | Query | Yes | 206614xxxx | The ID of the file system. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2796,11 +3617,31 @@ The DescribeNfsAcl operation does not have operation-specific request headers an
 | Acl | Struct | - | The ACL information. |
 | -Enabled | Boolean | True | Indicates whether the NFS ACL feature is enabled. true: The NFS ACL feature is enabled. false: The NFS ACL feature is disabled. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DescribeNfsAcl &FileSystemId=206614xxxx &<Common request parameters>
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-http(s)://[Endpoint]/?Action=DescribeNfsAcl &FileSystemId=206614xxxx HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"A1098673-1746-505E-A5F1-08527B7EDBDF",
  "Acl":{
   "Enabled":true
+```
+
+`}` `}` `XML` format
+
+```xml
 <RequestId>A1098673-1746-505E-A5F1-08527B7EDBDF</RequestId> <Acl>
  <Enabled>true</Enabled>
 </Acl>
@@ -2869,15 +3710,24 @@ An error code consists of four components, as listed in Error codes. Table 1. Er
 
 **Error response examples**
 
-```json
+XML format
+
+```xml
 <? xml version="1.0" encoding="UTF-8"? > <Error>
   <RequestId>B71B4C68-6C6B-4D4B-AD70-8951BD7D188E</RequestId>
   <HostId>nas.regionid.example.com</HostId>
   <Code>InvalidFileSystem.NotFound</Code>
   <Message>The specified NAS instance does not exist.</Message>
 </Error>
+```
+
+JSON format `{`
+
+```json
   "RequestId": "B71B4C68-6C6B-4D4B-AD70-8951BD7D188E",
   "HostId": " nas.regionid.example.com ",
   "Code": "InvalidFileSystem.NotFound",
   "Message": "The specified NAS instance does not exist."
 ```
+
+`}`

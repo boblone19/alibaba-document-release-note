@@ -5,7 +5,7 @@ doc_version: "20240516"
 pdf_pages: 61
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 IPv6 Gateway Developer Guide 20240516.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/IPv6%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20IPv6%20Gateway%20Developer%20Guide%2020240516.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 IPv6 Gateway Developer Guide 20240516
@@ -262,7 +262,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace this variable with the ARN of your RAM role.
 > "sts.aliyuns.com": Replace this variable with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize the instance.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -282,6 +282,11 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. Format: sts-
@@ -306,9 +311,15 @@ tep for the RAM role.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credential assigned by STS to call an API operation of a cloud service. The
 following sample code provides an example on how to use the access credential assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS).
 
@@ -464,7 +475,7 @@ earlier versions.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -540,10 +551,15 @@ ier versions.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code: e API calls
+`}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code: e API calls
 
 ```java
 package main import (
@@ -583,8 +599,15 @@ ier versions.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 **Configure proxies**
 
@@ -605,7 +628,7 @@ variable.
 ent variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -672,6 +695,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. For the modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2014-05-26")
     request.set_action_name("DescribeInstances")
@@ -879,6 +907,8 @@ Common request parameters must be included in all API requests. Table 1: Common 
 |---|---|---|---|
 | SignatureNo nce | Strin g | Yes | A unique, random number that is used to prevent replay attacks. You must use a unique random number for each request. |
 
+**Example**
+
 ```
 http://vpc.example.com/?Action=DescribeIpv6Gateways &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
 ```
@@ -903,6 +933,8 @@ JSON format `{`
       "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
       /*Returned data*/
 ```
+
+`}`
 
 ### 4.5 IPv6 gateways
 
@@ -952,6 +984,8 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0",
     "Ipv6GatewayId": "ipv6gw-hp3y0l3ln89j8cdvf****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1087,13 +1121,15 @@ Sample success responses `XML` format
                 "Ipv6GatewayId": "ipv6gw-hp33p10bdbt77xxxxxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "TotalCount": 2,
     "PageSize": 10,
     "RequestId": "E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
 ```
+
+`}`
 
 #### 4.5.3 DescribeIpv6GatewayAttribute
 
@@ -1172,6 +1208,8 @@ Sample success responses `XML` format
     "Spec": "Small"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1222,6 +1260,8 @@ Sample success responses `XML` format
  "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1271,6 +1311,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1404,6 +1446,8 @@ Sample success responses `XML` format
         "Name": "rulename"
 ```
 
+`}` `}`
+
 #### 4.5.8 CreateIpv6EgressOnlyRule
 
 Creates an egress-only rule for an IPv6 address.
@@ -1455,6 +1499,8 @@ Sample success responses `XML` format
     "Ipv6EgressRuleId": "ipv6py-hp3w98rmlbqp01245****",
     "RequestId": "9DFEDBEE-E5AB-49E8-A2DC-CC114C67AF75"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1557,6 +1603,8 @@ Sample success responses `XML` format
     "Ipv6AddressId": "ipv6-123456****"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1607,6 +1655,8 @@ Sample success responses `XML` format
  "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1653,6 +1703,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "E07E0FE6-5C21-405F-AF82-7613AA81EF92"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1786,6 +1838,8 @@ Sample success responses `XML` format
             "InternetChargeType": "PayByTraffic"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCod e | Error code | Error message | Description |
@@ -1836,6 +1890,8 @@ Sample success response `XML` format
 ```json
  "RequestId": "D560AF68-4CE8-4A5C-B3FE-469F558094D0"
 ```
+
+`}`
 
 **Error code**
 

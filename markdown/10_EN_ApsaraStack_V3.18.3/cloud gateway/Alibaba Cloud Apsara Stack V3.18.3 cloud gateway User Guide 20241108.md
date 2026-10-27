@@ -5,7 +5,7 @@ doc_version: "20241108"
 pdf_pages: 26
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 cloud gateway User Guide 20241108.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20cloud%20gateway%20User%20Guide%2020241108.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 cloud gateway User Guide 20241108
@@ -50,10 +50,15 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. In the address bar of the browser, enter the URL of the Apsara Uni-manager Management
 Console and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
+
+**Note**
 
 **First-time logon**
 
@@ -107,6 +112,9 @@ Service metadata: Service metadata includes the original image file, configurati
 #### 3.2.2 Create a custom ECS image
 
 After you obtain the original image file of the open network service from Apsara Stack technical support, you can call the CreateImage API operation to create a custom image. The image can be used to create service clusters.
+
+**Procedure**
+
 1. Obtain the image from Apsara Stack Image Center.
 
 > **Note:** Apsara Stack Image Center is reserved for internal use. You need to contact technical support to apply for images.
@@ -125,6 +133,8 @@ This topic describes how to import the configuration file of a network service t
 Log on to Hybrid Cloud Application Center and import the configurations of the open network service.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. In the left-side navigation pane, click **App Store**.
 5. On the **App Store** page, click **Import Application**.
@@ -204,6 +214,9 @@ Contact technical support of the service provider and provide information about 
 #### 3.2.4 Application Overview
 
 After you deploy and activate a service cluster, you can view the resource status and cluster monitoring data on the Overview page. If an Elastic Compute Service (ECS) instance encounters an error, and the health check result is not Running, the status of the cluster changes to error. Unhealthy clusters are displayed on the monitoring overview list to notify you of anomalies and help you locate errors.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Applications** > **Hybrid Cloud Application Center**.
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
@@ -236,8 +249,13 @@ If you use Open Network Service Platform (ONSP) within a cloud account for the f
 **Prerequisites**
 
 The cloud account is imported as a resource account, and you use ONSP within the account for the first time.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. In the left-side navigation pane, click **My Applications**.
 5. In the **Letter of Application** message, click **Authorize**.
@@ -266,6 +284,8 @@ Service (ECS) instances. For more information, see the "vSwitch management" topi
 Network traffic is routed to the service cluster by using an elastic network interface (ENI). Therefore, you need to create an ENI in advance. After the ENI is created, it is automatically associated with the service cluster.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. In the left-side navigation pane, click **My Applications**. On the My Applications page, click
 the application for which you want to create an endpoint.
@@ -360,8 +380,13 @@ choose **Plugin Center** > **Quick Access** > **ONSP**. In the left-side navigat
 #### 3.3.4 View service monitoring data
 
 This topic describes how to view service monitoring data.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. On the **My Applications** page, select the application that you want to view.
 5. Click the **Service monitoring** tab and view the information and status of resources.
@@ -373,6 +398,8 @@ the elastic network interfaces (ENIs) associated with the service port.
 This topic describes how to configure resource sharing so that you can share an application with another user to allow the user to create endpoints and manage traffic routing.
 
 > **Important:** Recipient accounts do not have permissions on cluster network management. Therefore, the recipient accounts need to contact the creator of the open network service after they create endpoints. The creator needs to log on to the ECS instances in the cluster to configure networks for the cluster. Then, the cluster can receive network traffic.
+
+**Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Applications** > **Hybrid Cloud Application Center**.
@@ -402,8 +429,13 @@ CIDR allows you to segment an IP address into multiple subnets. Each subnet can 
 **Limits**
 
 You cannot delete a CIDR block that is in use.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. In the left-side navigation pane, click **CIDR Blocks**.
 
@@ -432,6 +464,8 @@ You cannot delete a host group that is in use. Before you delete a host group, r
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. In the left-side navigation pane, click **Dedicated Host Groups**.
 5. On the **Dedicated Host Groups** page, click **Create Group**.
@@ -478,6 +512,8 @@ If the personnel of your enterprise or your business requirements change, you ca
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application** > **Application Management**
+> **Hybrid Cloud Application Center**.
+
 3. In the left-side navigation pane, choose **Plugin Center** > **Quick Access** > **ONSP**.
 4. In the left-side navigation pane, click **System Management**.
 5. On the **System Management** page, click **Migrate Resource**.

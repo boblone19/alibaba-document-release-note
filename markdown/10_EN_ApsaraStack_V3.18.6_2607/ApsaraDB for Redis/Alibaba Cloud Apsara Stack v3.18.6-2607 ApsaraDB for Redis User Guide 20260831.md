@@ -5,7 +5,7 @@ doc_version: "20260831"
 pdf_pages: 185
 source_pdf: "4296c6f44c118770_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20Redis%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis User Guide 20260831
@@ -197,6 +197,8 @@ This topic describes the commands introduced in Tair (Enterprise Edition) perfor
 The following conditions must be met for TairHash commands to take effect: The instance is a performance-enhanced instance of Tair (Enterprise Edition). The Redis strings that you want to manage are stored on the performance-enhanced instance.
 
 > **Note:** You can manage Redis strings and TairStrings on a performance-enhanced instance. However, CAS and CAD commands are applicable only to Redis strings.
+
+**Supported commands**
 
 Table 1. Commands that enhance string functionality
 
@@ -586,7 +588,7 @@ Return values 1: A new field is created and a value is set. 0: The field has a v
 
 **EXHGET**
 
-Syntax EXHGET <key> <field> Time complexity O(1) This command is used to retrieve a value associated with the specified field in a TairHash that matches a specified key. Parameters and options
+Syntax EXHGET <key> <field> Time complexity O(1) Description This command is used to retrieve a value associated with the specified field in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -609,7 +611,7 @@ Return values If the operation is successful, OK is returned. Otherwise, an exce
 
 **EXHPEXPIREAT**
 
-Syntax EXHPEXPIREAT <key> <field> <milliseconds-timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
+Syntax EXHPEXPIREAT <key> <field> <milliseconds-timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -626,7 +628,7 @@ Return values 1: The field exists and a value is set. 0: The field does not exis
 
 **EXHPEXPIRE**
 
-Syntax EXHPEXPIRE <key> <field> <milliseconds> [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
+Syntax EXHPEXPIRE <key> <field> <milliseconds> [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -643,7 +645,7 @@ Return values 1: The field exists and a value is set. 0: The field does not exis
 
 **EXHEXPIREAT**
 
-Syntax EXHEXPIREAT <key> <field> <timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
+Syntax EXHEXPIREAT <key> <field> <timestamp> [VER/ABS version] [NOACTIVE] Time complexity O(1) Description This command is used to specify the absolute expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -660,7 +662,7 @@ Return values 1: the field exists and a value is set. 0: the field does not exis
 
 **EXHEXPIRE**
 
-Syntax EXHEXPIRE <key> <field> <seconds> Time complexity O(1) This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
+Syntax EXHEXPIRE <key> <field> <seconds> Time complexity O(1) Description This command is used to specify the relative expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -677,7 +679,7 @@ Return values 1: The field exists and a value is set. 0: The field does not exis
 
 **EXHPTTL**
 
-Syntax EXHPTTL <key> <field> Time complexity O(1) This command is used to retrieve the remaining expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
+Syntax EXHPTTL <key> <field> Time complexity O(1) Description This command is used to retrieve the remaining expiration time of a field in a TairHash that matches a specified key. Unit: milliseconds. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -688,7 +690,7 @@ Return values -2: The specified key or field does not exist. -1: The specified f
 
 **EXHTTL**
 
-Syntax EXHTTL <key> <field> Time complexity O(1) This command is used to retrieve the remaining expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
+Syntax EXHTTL <key> <field> Time complexity O(1) Description This command is used to retrieve the remaining expiration time of a field in a TairHash that matches a specified key. Unit: seconds. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -699,7 +701,7 @@ Return values -2: The specified key or field does not exist. -1: The specified f
 
 **EXHVER**
 
-Syntax EXHVER <key> <field> Time complexity O(1) This command is used to retrieve the current version number of a field in a TairHash that matches a specified key. Parameters and options
+Syntax EXHVER <key> <field> Time complexity O(1) Description This command is used to retrieve the current version number of a field in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -712,7 +714,7 @@ Return values -1: The specified key does not exist. -2: The specified field does
 
 **EXHSETVER**
 
-Syntax EXHSETVER <key> <field> <version> Time complexity O(1) This command is used to set the current version number of a field in a TairHash that matches a specified key. Parameters and options
+Syntax EXHSETVER <key> <field> <version> Time complexity O(1) Description This command is used to set the current version number of a field in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -723,7 +725,7 @@ Return values 0: The specified TairHash or field does not exist. 1: The version 
 
 **EXHINCRBY**
 
-Syntax EXHINCRBY <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) This command is used to increase the value of a field by num in a TairHash that matches a specified key. The value of the num parameter must be an integer. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
+Syntax EXHINCRBY <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) Description This command is used to increase the value of a field by num in a TairHash that matches a specified key. The value of the num parameter must be an integer. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -746,7 +748,7 @@ Return values The value increased by num is returned if the operation is success
 
 **EXHINCRBYFLOAT**
 
-Syntax EXHINCRBYFLOAT <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) This command is used to increase a specified field value by num in a TairHash that matches a specified key. The value of the num parameter must be a floating-point number. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
+Syntax EXHINCRBYFLOAT <key> <field> <num> [EX time] [EXAT time] [PX time] [PXAT time] [VER/ABS version] [MIN minval] [MAX maxval] Time complexity O(1) Description This command is used to increase a specified field value by num in a TairHash that matches a specified key. The value of the num parameter must be a floating-point number. If the specified TairHash does not exist, a TairHash is created. If the specified field does not exist, this command adds the field and sets the value of the field to 0 before creating a TairHash. When you run this command, the system uses the passive expiration algorithm to delete expired fields. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -771,7 +773,7 @@ Return values The value increased by num is returned if the operation is success
 
 **EXHGETWITHVER**
 
-Syntax EXHGETWITHVER <key> <field> Time complexity O(1) This command is used to retrieve the value and version number of a field in a TairHash that matches a specified key. Parameters and options
+Syntax EXHGETWITHVER <key> <field> Time complexity O(1) Description This command is used to retrieve the value and version number of a field in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -784,7 +786,7 @@ Return values The value and version number of the field are returned if the fiel
 
 **EXHMGET**
 
-Syntax EXHMGET <key> <field> [field ...] Time complexity O(1) This command is used to retrieve multiple field values in a TairHash that matches a specified key. Parameters and options
+Syntax EXHMGET <key> <field> [field ...] Time complexity O(1) Description This command is used to retrieve multiple field values in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -806,7 +808,7 @@ Return values nil: The key does not exist. An array is returned if the specified
 
 **EXHDEL**
 
-Syntax EXHDEL <key> <field> <field> <field> ... Time complexity O(1) This command is used to delete a field from a TairHash that matches a specified key. Parameters and options
+Syntax EXHDEL <key> <field> <field> <field> ... Time complexity O(1) Description This command is used to delete a field from a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -817,7 +819,7 @@ Return values 0: The specified key or field does not exist. 1: The operation is 
 
 **EXHLEN**
 
-Syntax EXHLEN <key> [noexp] Time complexity O(1) This command is used to retrieve the number of fields in a TairHash that matches a specified key. The returned value may include the number of expired fields that are not deleted. Parameters and options
+Syntax EXHLEN <key> [noexp] Time complexity O(1) Description This command is used to retrieve the number of fields in a TairHash that matches a specified key. The returned value may include the number of expired fields that are not deleted. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -828,7 +830,7 @@ Return values 0: The specified key or field does not exist. The number of fields
 
 **EXHEXISTS**
 
-Syntax EXHEXISTS <key> <field> Time complexity O(1) This command is used to check whether a field exists in a TairHash that matches a specified key. Parameters and options
+Syntax EXHEXISTS <key> <field> Time complexity O(1) Description This command is used to check whether a field exists in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -839,7 +841,7 @@ Return values 0: The specified key or field does not exist. 1: The specified fie
 
 **EXHSTRLEN**
 
-Syntax EXHSTRLEN <key> <field> Time complexity O(1) This command is used to retrieve the length of a field value in a TairHash that matches a specified key. Parameters and options
+Syntax EXHSTRLEN <key> <field> Time complexity O(1) Description This command is used to retrieve the length of a field value in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -850,7 +852,7 @@ Return values 0: The specified key or field does not exist. The length of the sp
 
 **EXHKEYS**
 
-Syntax EXHKEYS <key> Time complexity O(1) This command is used to retrieve all fields in a TairHash that matches a specified key. Parameters and options
+Syntax EXHKEYS <key> Time complexity O(1) Description This command is used to retrieve all fields in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -860,7 +862,7 @@ Return values If the specified key does not exist, an empty array is returned. I
 
 **EXHVALS**
 
-Syntax EXHVALS <key> Time complexity O(1) This command is used to retrieve all field values in a TairHash that matches a specified key. Parameters and options
+Syntax EXHVALS <key> Time complexity O(1) Description This command is used to retrieve all field values in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -870,7 +872,7 @@ Return values If the specified key does not exist, an empty array is returned. I
 
 **EXHGETALL**
 
-Syntax EXHGETALL <key> Time complexity O(1) This command is used to retrieve all fields and their values in a TairHash that matches a specified key. Parameters and options
+Syntax EXHGETALL <key> Time complexity O(1) Description This command is used to retrieve all fields and their values in a TairHash that matches a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -880,7 +882,7 @@ Return values If the specified key does not exist, an empty array is returned. I
 
 **EXHSCAN**
 
-Syntax EXHSCAN <key> <op> <subkey> [MATCH pattern] [COUNT count] Time complexity O(1), O(N) This command is used to scan TairHashes that match a specified key. Parameters and options
+Syntax EXHSCAN <key> <op> <subkey> [MATCH pattern] [COUNT count] Time complexity O(1), O(N) Description This command is used to scan TairHashes that match a specified key. Parameters and options
 
 | Parameter or option | Description |
 |---|---|
@@ -901,7 +903,11 @@ Performance-enhanced instances of Tair (Enterprise Edition) are used. The TairGI
 
 **Main features**
 
-R-tree indexes for query and storage. Line and polygon queries, including queries for the intersection of sets. Supports Redis-native GEO commands. Table 1. TairGIS commands
+R-tree indexes for query and storage. Line and polygon queries, including queries for the intersection of sets. Supports Redis-native GEO commands.
+
+**Supported commands**
+
+Table 1. TairGIS commands
 
 |   |   | Command | Syntax |   | Description |   |   |
 |---|---|---|---|---|---|---|---|
@@ -2491,7 +2497,11 @@ You can create accounts, delete accounts, reset the password, and change the per
 1. Log in to the Tair (Redis OSS-compatible) console.
 2. On the **Instances** page, click the ID of the desired instance.
 3. On the **Instance Information** page, click **Account Management** in the left-side
-navigation pane. If Account Management is unavailable for an instance of Redis 4.0 or later, update the minor version of the instance.
+navigation pane.
+
+**Note**
+
+If Account Management is unavailable for an instance of Redis 4.0 or later, update the minor version of the instance.
 4. In the upper-right corner of the **Account Management** page, click **Create**.
 5. In the dialog box that appears, configure the required parameters and click **OK**. The
 following table describes the parameters.
@@ -3300,7 +3310,11 @@ b. Enter the following code in the project to add the related applications:
 import org.apache.commons.pool2.PooledObject; import org.apache.commons.pool2.PooledObjectFactory; import org.apache.commons.pool2.impl.DefaultPooledObject; import org.apache.commons.pool2.impl.GenericObjectPoolConfig; import redis.clients.jedis.HostAndPort; import redis.clients.jedis.Jedis; import redis.clients.jedis.JedisPool; import redis.clients.jedis.JedisPoolConfig;
 ```
 
-c. Enter the following code in the project based on the Jedis client version and modify the code based on the comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information. Jedis 2.7.2
+c. Enter the following code in the project based on the Jedis client version and modify the code based on the comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information. Jedis 2.7.2
 
 ```
 JedisPoolConfig config = new JedisPoolConfig(); // The maximum number of idle connections. You can set this parameter based on your requirements. Make sure that the specified maximum number of idle connecti ons does not exceed the maximum number of connections that the instance support
@@ -3353,7 +3367,11 @@ catch(Exception e)
      pool.returnResource(jedis);
 ```
 
-`}` `}` Single Jedis connection (not recommended because a client cannot automatically reconnect to the instance after a connection times out) Launch the Eclipse client, create a project, enter the following code, and then modify the code based on the comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+`}` `}` Single Jedis connection (not recommended because a client cannot automatically reconnect to the instance after a connection times out) Launch the Eclipse client, create a project, enter the following code, and then modify the code based on the comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```java
 import redis.clients.jedis.Jedis; public class jedistest { public static void main(String[] args) { try {
@@ -3396,6 +3414,9 @@ Set Key redis Value aliyun-redis Get Key redis ReturnValue aliyun-redis
 
 1. Download and install the PhpRedis client. For more information, see PhpRedis.
 2. Enter the following code in the PHP editor and modify the code based on the comments.
+
+**Note**
+
 For information about how to obtain the endpoint, account, and password of an instance, see Obtain connection information.
 
 ```
@@ -3452,6 +3473,9 @@ For more information, see PhpRedis.
 
 1. Download and install the redis-py client. For more information, see redis-py.
 2. Enter the following code in the Python editor and modify the code based on the comments.
+
+**Note**
+
 For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```java
@@ -3477,7 +3501,11 @@ git clone https://github.com/redis/hiredis.git cd hiredis make sudo make install
 ```
 
 2. Enter the following code in the C or C++ editor and modify the code based on the
-comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```
 #include <stdio.h>
@@ -3566,7 +3594,11 @@ Parameter configuration.
 3. Add a reference. The referenced file is stored in the library file directory
 ServiceStack.Redis/lib/tests.
 4. Enter the following code in the .NET project and modify the code based on the comments.
-For more information, see ServiceStack.Redis. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+For more information, see ServiceStack.Redis.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```
 using System;
@@ -3688,7 +3720,11 @@ npm install hiredis redis
 ```
 
 2. Enter the following code in the node-redis client and modify the code based on the
-comments. For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
+comments.
+
+**Note**
+
+For information about how to obtain the endpoint and password of an instance, see Obtain connection information.
 
 ```
  var redis = require("redis"),
@@ -3972,7 +4008,11 @@ You can create alert rules for cloud services that are connected to Cloud Monito
 
 **Background information**
 
-During the validity period of an alert rule, Cloud Monitor checks whether the metric values of cloud services exceed the specified thresholds at the default monitoring frequency. If a metric value exceeds the threshold, Cloud Monitor sends alert notifications to the specified contacts or alert processing platforms. The minimum monitoring frequency is once per minute.
+During the validity period of an alert rule, Cloud Monitor checks whether the metric values of cloud services exceed the specified thresholds at the default monitoring frequency. If a metric value exceeds the threshold, Cloud Monitor sends alert notifications to the specified contacts or alert processing platforms.
+
+**Note**
+
+The minimum monitoring frequency is once per minute.
 
 **Procedure**
 
@@ -4295,6 +4335,9 @@ column.
 
 5. In the message that appears, click **OK**.
 6. On the Restore Instance page, configure the parameters and click Submit.
+
+**Note**
+
 For more information about the configurations of the new instance, see Create an instance.
 
 ## 13 CloudDBA

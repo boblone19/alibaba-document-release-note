@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 100
 source_pdf: "b19d7081feafb952_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Operations"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%90%8C%E5%9F%8E%E5%AE%B9%E7%81%BEASR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Zone-disaster%C2%A0Recovery%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Resilience ASR for Zone-disaster Recovery Operations and Maintenance Guide
@@ -147,7 +147,11 @@ Apsara Stack Resilience (ASR) for Zone-disaster Recovery provides three logon me
 
 **Prerequisites**
 
-For routine O&M scenarios, the URL of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: <region-i d>.ops.console.<intranet-domain-id>. For escape logon scenarios, the URL of the ASR console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator. If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>.com/user/login. The URL of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>.com/user/login. For tenant operation scenarios, the URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers.
+For routine O&M scenarios, the URL of the Apsara Uni-manager Operations Console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator. The URL of the Apsara Uni-manager Operations Console is in the following format: <region-i d>.ops.console.<intranet-domain-id>. For escape logon scenarios, the URL of the ASR console and the username and password that are used to log on to the console are obtained from the deployment engineers or an administrator.
+
+**Note**
+
+If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>.com/user/login. The URL of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>.com/user/login. For tenant operation scenarios, the URL of the Apsara Uni-manager Management Console is obtained from the deployment engineers.
 
 **Routine O&M scenarios**
 
@@ -181,7 +185,11 @@ If you enter an invalid password for three consecutive times, the system enables
 
 To use disaster recovery (DR) features such as fault simulation and DR, follow these steps to log on to the ASR console:
 1. In the address bar of your browser, enter the URL of the ASR console, and then press the
-Enter key. If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>.com/user/login. The URL of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>.com/user/login.
+Enter key.
+
+**Note**
+
+If the primary data center fails, you must log on to the ASR console of the secondary data center. If the secondary data center fails, you must log on to the ASR console of the primary data center. The domain names of the two data centers are different. The URL of the ASR console for the secondary data center is in the following format: asr-xs-<region-id>.console.<intranet-domain-id>.com/user/login. The URL of the ASR console for the primary data center is in the following format: asr-xm-<region-id>.console.<intranet-domain-id>.com/user/login.
 
 > **Note:** You can select a language from the drop-down list in the upper-right corner of the page. Simplified Chinese, English, and Traditional Chinese are supported.
 
@@ -1355,6 +1363,8 @@ Rolling on On Tianji services a. Log on to OPS 1 of the primary data center. b. 
 cd /apsarapangu/disk3/u_disk/upgrade_tools/tianji_zhuque_sdk ./upgrade_A_to_Aplus.py -z [$ZONE] -p [$PROJECT] -c [$CLUSTER] --tianjiCltConfig [$TIANJICLTCONFIG]
 ```
 
+**Note**
+
 Parameter description: $ZONE: the zone of the cluster in the primary data center. $PROJECT: the name of the project of the cluster in the primary data center. $CLUSTER: the name of the cluster in the primary data center. $TIANJICLTCONFIG: the fixed directory of the tianji_clt configuration file. Sample commands:
 
 ```
@@ -1720,6 +1730,9 @@ primary database, which indicates that the backup is complete. (This can be comp
 
 6. Click **Submit**.
 7. Click **Task Management** and monitor the task progress until the task is complete.
+
+**Note**
+
 If tasks fail, contact the product and R&D team for assistance.
 8. Log on to the abnormal instance.
 9. Run the following SQL statement and check the returned result.

@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 160
 source_pdf: "0da8b934b461ff0b_Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Operations and Maintenance Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%20MaxCompute/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20MaxCompute%20Operations%20and%20Maintenance%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Operations and Maintenance Guide 20260827
@@ -3323,6 +3323,9 @@ navigation pane, click **Job Services**. The **Job Execution** page appears.
 6. In the dialog box that appears, configure the parameters in the **Configure target group**
 **and parameters** step, and then click **Next Step**.
 7. Follow the on-screen instructions in the **Confirm Risk** step, and then click **Confirm**.
+
+**Note**
+
 A record is automatically generated on the **Execution History** tab. For more information, see View job execution history.
 8. On the job execution page, click **Start** in the upper part to run the job.
 If you leave the job execution page without performing any operations, you can find the execution record on the **Execution History** tab. You can choose **Actions > Details** to go to the job execution page again.

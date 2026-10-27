@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 21
 source_pdf: "7bbf6c81c8539ce0_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Operation%20Apsara%20AIOps%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps User Guide 20260828
@@ -129,7 +129,17 @@ to switch to O&M Agent. You can also click and then switch to the O&M Agent from
 
 ### 3.1 Information query assistant
 
-This topic describes the use case of the information query assistant. Supports natural language-based CMDB queries on the cloud platform, which can understand user intentions and accurately return results such as server information, network configurations, application topologies, and association relationships. Supports fuzzy query, multi-condition combination query, and context understanding. The following types of information can be queried:
+This topic describes the use case of the information query assistant.
+
+**Introduction**
+
+Supports natural language-based CMDB queries on the cloud platform, which can understand user intentions and accurately return results such as server information, network configurations, application topologies, and association relationships. Supports fuzzy query, multi-condition combination query, and context understanding.
+
+**Usage Guide**
+
+**Input Specifications**
+
+The following types of information can be queried:
 1. **Pangu storage** (such as bad disks and disk details)
 : disk-xxx disk information, bad disk status of xxx host, and overall bad disk status
 2. **ECS instance** (query by IP address, ID, or hostname)
@@ -145,10 +155,14 @@ products, clusters, services, and service roles) Example: What services are avai
 
 > **Note:** When you ask a question, if you can, include the resource identifier (such as the IP address, ID, and name), the target type (such as ECS, cluster, and service role), or your query intent (such as feature query and dependency query). This significantly improves the query accuracy.
 
+**Results interpretation**
+
 | Scenarios | Result Description |
 |---|---|
 | General query | Key Information: displays the key results of the information query. More related information: displays information to query more related information. |
 | Menu query | Menu query results Menu Path: displays the specific path of the menu query. Link: You can click Menu Links to go to the corresponding menu page. |
+
+**Sample question list**
 
 | Scenarios | Problem example |
 |---|---|
@@ -232,7 +246,17 @@ platform. It only displays the visible configuration information within your per
 
 ### 3.2 Report Assistant
 
-This topic describes how to use Report Assistant. Supports multi-source data integration, unified aggregation of platform-side assets, capacity, performance and other scattered data, to build a global data view; provides multidimensional statistics and trend analysis capabilities, covering asset statistics, capacity /water level distribution, alarm /event statistics and change trends and other core report types, support by asset, product, alarm source and other dimensions, flexible selection of time range, it also displays key indicators such as the total amount, average value, and utilization rate of data. It supports real-time display of CPU, memory, disk usage and capacity data of physical machines and product clusters, and combines historical trend analysis to realize comprehensive visualization of running status. The following report generation ranges are supported:
+This topic describes how to use Report Assistant.
+
+**Introduction**
+
+Supports multi-source data integration, unified aggregation of platform-side assets, capacity, performance and other scattered data, to build a global data view; provides multidimensional statistics and trend analysis capabilities, covering asset statistics, capacity /water level distribution, alarm /event statistics and change trends and other core report types, support by asset, product, alarm source and other dimensions, flexible selection of time range, it also displays key indicators such as the total amount, average value, and utilization rate of data. It supports real-time display of CPU, memory, disk usage and capacity data of physical machines and product clusters, and combines historical trend analysis to realize comprehensive visualization of running status.
+
+**Usage Guide**
+
+**Input Specifications**
+
+The following report generation ranges are supported:
 1. Assets, including the total number and category statistics of assets, product-dimension
 server statistics, and server list.
 2. Capacity, including multi-product capacity statistics, single-product capacity statistics,
@@ -242,6 +266,8 @@ multi-server water level statistics, and single-server water level trend.
 4. Alerts, including alert statistics and alert trends.
 5. Events, including event statistics and event trends.
 According to the range of questions, generate relevant statistical charts or tables. After you confirm the content, click **Confirm Intent to Create Now** to create a report.
+
+**Sample question list**
 
 | Scenarios | Problem example |
 |---|---|
@@ -302,19 +328,28 @@ feedback.
 
 ### 3.3 Alert Assistant
 
-This topic describes the use cases of Alert Assistant. Supports word interaction and natural language dialogue to implement intelligent interpretation of cloud platform alerts, automatically identify alert phenomena, affect the business scope and related resources, and combine knowledge base and diagnostic engines to recommend handling plans to improve the alarm handling efficiency from hour-level to minute-level and reduce the impact on customer business. The following alert /event questions are supported:
+This topic describes the use cases of Alert Assistant.
+
+**Introduction**
+
+Supports word interaction and natural language dialogue to implement intelligent interpretation of cloud platform alerts, automatically identify alert phenomena, affect the business scope and related resources, and combine knowledge base and diagnostic engines to recommend handling plans to improve the alarm handling efficiency from hour-level to minute-level and reduce the impact on customer business. The following alert /event questions are supported:
 1. Query information based on dimensions such as alert name, list, distribution, level, and
 status.
 2. Query information based on dimensions such as event name, list, distribution, level, and
 status.
 3. Analysis, handling, and suggestions for a single alert.
 4. Analysis, handling, and suggestions for a single event.
+
+**Results interpretation**
+
 **Alerts /event list**: displays the list of alerts and events. You can click **Batch Disable**
 **Alerts** to disable alerts in multiple sessions.
 **Alert /Event Analysis Report**: displays the analysis reports of alerts and events,
 including anomaly detection, impact analysis, and handling suggestions based on real data.
 **Recommended Actions**: You can select alert or event-related actions.
 Click **Blueprint Diagnosis**. The **Product Diagnosis** page appears. Click **Monitoring Query**. The **Cloud Service Monitoring** page appears. Recommended Alert Item Handling Guide: displays the handling scheme of a specific alert item, including the alert description, alert attributes, associated rules, applicable version, alert cause, alert impact, and troubleshooting scheme.
+
+**Sample question list**
 
 | Scenarios | Problem example |
 |---|---|
@@ -323,7 +358,21 @@ Click **Blueprint Diagnosis**. The **Product Diagnosis** page appears. Click **M
 
 ### 3.4 Inspection Assistant
 
-This topic describes how to use the inspection assistant. Obtains inspection results of the cloud platform based on natural language conversations, generates inspection reports, and recommends solutions for inspection exceptions. You can obtain multi-dimensional inspection results such as infrastructure, cloud platforms, cloud products, and production security. The following example shows a conversation: In the Cloud Platform Inspection section, click **Cloud Platform Inspection** in the upper part of the Q&A dialog box. You can select an inspection task to obtain the risk list. In the Cloud Service Inspection section, click **Cloud Service Inspection** in the upper part of the Q&A dialog box. You can select a cloud service to obtain the risk list. resource usage inspection Infrastructure Inspection According to the inspection questions raised, the reply content: Cloud platform inspection results: displays the inspection results and distribution of cloud platforms, the execution status of inspection tasks, and the risk trends of historical inspections (in the last 14 days). Result of a single inspection task: displays the critical or warning risks identified by the inspection task and the recommended solutions.
+This topic describes how to use the inspection assistant.
+
+**Introduction**
+
+Obtains inspection results of the cloud platform based on natural language conversations, generates inspection reports, and recommends solutions for inspection exceptions.
+
+**Usage Guide**
+
+**Input Specifications**
+
+You can obtain multi-dimensional inspection results such as infrastructure, cloud platforms, cloud products, and production security. The following example shows a conversation: In the Cloud Platform Inspection section, click **Cloud Platform Inspection** in the upper part of the Q&A dialog box. You can select an inspection task to obtain the risk list. In the Cloud Service Inspection section, click **Cloud Service Inspection** in the upper part of the Q&A dialog box. You can select a cloud service to obtain the risk list. resource usage inspection Infrastructure Inspection
+
+**Results interpretation**
+
+According to the inspection questions raised, the reply content: Cloud platform inspection results: displays the inspection results and distribution of cloud platforms, the execution status of inspection tasks, and the risk trends of historical inspections (in the last 14 days). Result of a single inspection task: displays the critical or warning risks identified by the inspection task and the recommended solutions.
 
 **More details**
 
@@ -331,11 +380,25 @@ If the current inspection result does not meet expectations, you can view all in
 **Tongque > Inspection Center > Routine Inspection** page to view the full inspection
 results of the cloud platform. Click Export Report. On the page that appears, you can view and export the full inspection report. **Tongque > Report Center > Service Report** Click Re-inspect. You are redirected to the **Inspection Tasks** tab of the **Inspection**
 **Center > Inspection Center > Routine Inspection** page. You can trigger each
-inspection task as needed. What are the risks of current cloud platform inspection? What are the risks of infrastructure inspection? What are the risks of resource usage inspection? What are the risks of kernel inspection? What are the serious inspection risks? What are the risks of ECS inspection
+inspection task as needed.
+
+**Sample question list**
+
+What are the risks of current cloud platform inspection? What are the risks of infrastructure inspection? What are the risks of resource usage inspection? What are the risks of kernel inspection? What are the serious inspection risks? What are the risks of ECS inspection
 
 ### 3.5 Script Assistant
 
-This topic describes the use cases of Script Assistant. In addition to general O&M commands, such as Linux, Python, and Bat commands, the built-in cloud platform O&M scenario-specific script knowledge base allows you to automatically generate executable scripts based on natural language input. This improves O&M script writing efficiency and accuracy. Supports common O&M commands, inspection scripts, blackscreen commands, Ark commands, and Apsara Infrastructure Management Framework operations. You can generate efficient scripts with one click to improve O&M automation. The following range of script questions are supported: Provide scripts for related operations Query of black-screen commands Script: displays the feature description and details of the related script. Command: displays related commands, optional parameter description, and command usage examples.
+This topic describes the use cases of Script Assistant.
+
+**Introduction**
+
+In addition to general O&M commands, such as Linux, Python, and Bat commands, the built-in cloud platform O&M scenario-specific script knowledge base allows you to automatically generate executable scripts based on natural language input. This improves O&M script writing efficiency and accuracy. Supports common O&M commands, inspection scripts, blackscreen commands, Ark commands, and Apsara Infrastructure Management Framework operations. You can generate efficient scripts with one click to improve O&M automation. The following range of script questions are supported: Provide scripts for related operations Query of black-screen commands
+
+**Results interpretation**
+
+Script: displays the feature description and details of the related script. Command: displays related commands, optional parameter description, and command usage examples.
+
+**Sample question list**
 
 | Scenarios | Problem example |
 |---|---|
@@ -344,10 +407,22 @@ This topic describes the use cases of Script Assistant. In addition to general O
 
 ### 3.6 Diagnostic Assistant
 
-This topic describes the use cases of the diagnostic assistant. You can use multi-dimensional data such as cloud service logs, monitoring metrics, and blueprint topologies to troubleshoot issues and perform intelligent root cause analysis (RCA). Supports two modes: General Diagnosis and Deep Diagnosis. A structured diagnosis report is generated, including problem summary, impact troubleshooting, root cause analysis, and handling suggestions. The following questions are supported: Cloud product basics consulting Log /Command Parsing abnormal influence surface analysis Exception troubleshooting guidelines In the Final State Diagnostics section, click **Final State Diagnostics** in the upper part of the Q&A dialog box. You can select a product to diagnose and analyze whether the product does not reach the final state. Cloud product diagnosis list: displays a list of all abnormal products on the current cloud platform. Find the product that you want to diagnose and click **Diagnose**in the Actions column. Product Diagnosis: displays detailed product diagnosis results, including problem summary, diagnosis details, root cause analysis, and handling suggestions. Click **Comprehensive**
+This topic describes the use cases of the diagnostic assistant.
+
+**Introduction**
+
+You can use multi-dimensional data such as cloud service logs, monitoring metrics, and blueprint topologies to troubleshoot issues and perform intelligent root cause analysis (RCA). Supports two modes: General Diagnosis and Deep Diagnosis. A structured diagnosis report is generated, including problem summary, impact troubleshooting, root cause analysis, and handling suggestions.
+
+**Usage Guide**
+
+**Input Specifications**
+
+The following questions are supported: Cloud product basics consulting Log /Command Parsing abnormal influence surface analysis Exception troubleshooting guidelines In the Final State Diagnostics section, click **Final State Diagnostics** in the upper part of the Q&A dialog box. You can select a product to diagnose and analyze whether the product does not reach the final state. Cloud product diagnosis list: displays a list of all abnormal products on the current cloud platform. Find the product that you want to diagnose and click **Diagnose**in the Actions column. Product Diagnosis: displays detailed product diagnosis results, including problem summary, diagnosis details, root cause analysis, and handling suggestions. Click **Comprehensive**
 **Diagnosis**. You are redirected to the**Tongque > Diagnosis Center > Product**
 **Diagnosis** page to view the multi-dimensional diagnostic details of the product.
 Alert Diagnosis: displays detailed alert diagnosis results, including alert description, diagnosis details, root cause analysis, and handling suggestions. Log diagnosis: quickly analyzes the log entry for exceptions.
+
+**Sample question list**
 
 | Scenarios | Problem example |
 |---|---|

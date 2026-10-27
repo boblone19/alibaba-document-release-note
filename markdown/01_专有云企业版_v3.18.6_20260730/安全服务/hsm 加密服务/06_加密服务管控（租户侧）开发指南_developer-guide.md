@@ -5,16 +5,69 @@ doc_version: "20260729"
 pdf_pages: 112
 source_pdf: "06_加密服务管控（租户侧）开发指南_developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/hsm/zh/developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 加密服务 加密服务管控（租户侧）开发指南
 
-加密服务
+## 目录
 
-## 快速入门
+- 1 快速入门
+  - 1.1 开发文档使用说明
+  - 1.2 API调用流程说明
+- 2 准备工作
+  - 2.1 登录API与工具控制台
+  - 2.2 获取API信息及其EndPoint
+  - 2.3 获取AccessKey
+  - 2.4 获取STS AccessKey
+- 3 调用示例
+  - 3.1 Java SDK调用示例
+    - 3.1.1 快速开始
+    - 3.1.2 使用手册
+      - 3.1.2.1 安装Java SDK
+      - 3.1.2.2 使用CommonRequest进行调用
+  - 3.2 Python SDK调用示例
+    - 3.2.1 快速开始
+    - 3.2.2 使用手册
+      - 3.2.2.1 安装Python SDK
+      - 3.2.2.2 使用CommonRequest进行调用
+  - 3.3 Go SDK调用示例
+    - 3.3.1 快速开始
+    - 3.3.2 使用手册
+      - 3.3.2.1 安装Go SDK核心包
+      - 3.3.2.2 使用CommonRequest进行调用
+- 4 API公共参数
+- 5 API参考
+  - 5.1 ModifyReleaseProtectionStatus
+  - 5.2 GetHsmIds
+  - 5.3 GetChannelStatus
+  - 5.4 DescribeInstances
+  - 5.5 DescribeInstanceStock
+  - 5.6 DescribeZones
+  - 5.7 DescribeVsmTypes
+  - 5.8 CreateCluster
+  - 5.9 DeleteCluster
+  - 5.10 DescribeClusterInstances
+  - 5.11 DescribeClusters
+  - 5.12 ModifyCluster
+  - 5.13 QuickInit
+  - 5.14 CreateInstance
+  - 5.15 DescribeProducts
+  - 5.16 ReleaseInstance
+  - 5.17 DescribeRegions
+  - 5.18 DescribeVendors
+  - 5.19 DescribeVpc
+  - 5.20 ModifyInstance
+  - 5.21 AddHsmToCluster
+  - 5.22 DescribeQuickInitInfo
+  - 5.23 RemoveHsmFromCluster
+  - 5.24 ConfigNetwork
+  - 5.25 ConfigWhiteList
+- 6 错误代码表
 
-### 开发文档使用说明
+## 1 快速入门
+
+### 1.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -31,44 +84,41 @@ converter: line-classifier (PyMuPDF)
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本单击**企业版**、**敏捷版**或**一体机**标签。
-加密服务
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 1.2 API调用流程说明
 
 阿里云专有云支持通过POP网关调用专有云AP。本文介绍如何通过POP网关调用专有云API。
 
 **流程图**
-
-加密服务
 
 **调用步骤**
 
 1. 获取AccessKey。
 获取调用时所需要的AccessKey参数，请参见获取AccessKey或获取STS AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey或STS AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
 3. 获取组织ID与资源集ID。
 组织ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的GetOrga nizationList章节。 资源集ID需要通过API进行获取，获取方式请参见Apsara Uni-manager运营控制台开发指南中的ListRe sourceGroup章节。
 
-|  | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |  |  |
+|   | 说明调用API时，请在Header参数中增加组织ID <x-acs-organizationid> 和资源集ID <x-acs- resourcegroupid>， 指定资源所属的组织和资源集，实现实例资源的隔离查询。 不指定组织ID <x-acs-organizationid> ，则默认获取当前用户所属的组织。 不指定资源集ID <x-acs-resourcegroupid> ，则默认为空，如果指定资源集需要同时指定组织ID。 |   |   |
 |---|---|---|---|
-|  |  | <x-acs- |  |
+|   |   | <x-acs- |   |
 
 4. 获取对应的API参考文档。
-您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参
+您需要查看目标云产品的开发指南，了解API的功能与使用方式，开发指南的使用流程及获取方法请参见**开发文档使用说明**。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-加密服务
 
-## 准备工作
+## 2 准备工作
 
-### 登录API与工具控制台
+### 2.1 登录API与工具控制台
+
+您可以通过Apsara Uni-manager运营控制台登录API与工具控制台。
 
 **前提条件**
 
@@ -80,30 +130,28 @@ converter: line-classifier (PyMuPDF)
 2. 输入正确的用户名及密码。
 请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-首次登录Apsara Uni-manager运营控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为10~32位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（!）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**。
 4. 如果账号已激活MFA多因素认证，请根据以下两种情况进行操作：
 管理员强制开启MFA后的首次登录： a. 在绑定虚拟MFA设备页面中，按页面提示步骤绑定MFA设备。 b. 按照步骤2重新输入账号和密码，单击**登录**。 c. 输入6位MFA码后单击**认证**。 您已开启并绑定MFA： 输入6位MFA码后单击**认证**。
 
-**说明**
+> **说明：** 绑定并开启MFA的操作请参见**《****Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开** **启虚拟****MFA****设备》**章节。
 
-绑定并开启MFA的操作请参见《**Apsara Uni-manager****运营控制台用户指南》**中的**《绑定并开**
-**启虚拟****MFA****设备》**章节。
-5. 在页面顶部的菜单栏中，选择**产品** > **应用服务** > **开发者门户**。
+5. 在页面顶部的菜单栏中，选择**产品** **>** **应用服务** **>** **开发者门户**。
 
-### 获取API信息及其EndPoint
+### 2.2 获取API信息及其EndPoint
 
 通过POP网关调用API需要您了解产品开放API接口的相关信息，本文为您介绍获取云产品的Endpoint的两种方式。
 
 **背景信息**
 
-加密服务为了使专有云保持与公共云相同的使用方式，使您拥有更方便，更一致的体验，建议通过POP网关调用专有云API。
+为了使专有云保持与公共云相同的使用方式，使您拥有更方便，更一致的体验，建议通过POP网关调用专有云API。
 
-**说明**
-
-Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
+> **说明：** Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，具体API的使用方式需要参见云产品的开发指南。如果发生不一致情况，以开发指南为准。
 
 **操作步骤**
 
@@ -124,32 +172,27 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在服务注册变量大盘页面，单击**高级筛选**。
-加密服务
 5. 在Service Registration文本框中输入 `apigateway` ，单击**搜索**。
 6. 在 `apigateway` 服务的**Service Registration**列中，单击
 图标。
 7. 单击 `apigateway` 服务**Service Registration**列的文本信息，在弹出的**注册变量**对话框中，查看
 apigateway.openapi.endpoint值，即 `Endpoint` 。
 
-### 获取AccessKey
+### 2.3 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见**获取****STS ***********。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
 | x-acs-regionid | 地域，如：cn-hangzhou-*。 |
 | x-acs-organizationid | Apsara Uni-manager运营控制台中对应的组织ID。获取方法可参见《Apsara Uni-manager运营控制台开发指南》中的《GetOrganizationList》文档。 |
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见《Apsara Uni-manager运营控制台开发指南》中的《ListResourceGroup》文档。 |
-
-加密服务
 
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 |---|---|
@@ -161,21 +204,19 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
 
-**说明**
-
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取STS AccessKey
+### 2.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -186,12 +227,18 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 **操作步骤**
 
 1. 获取用户角色的 `RAM Role` 。
-i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击**个人信息**。 加密服务 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
+i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，单击**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 获取STS Accesskey三元组。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourAccessKeyID>：请替换为您实际的AccessKey ID。 <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。 <yourRoleSessionName>：请替换为您当前实际的会话名称。 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。 <yourRoleArn>：请替换为您实际的RAM Role。 "sts.aliyuns.com" ：请替换为实际的STS Endpoint。 加密服务
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourAccessKeyID>：请替换为您实际的AccessKey ID。
+> <yourAccessKeySecret>：请替换为您实际的AccessKey Secret。
+> <yourRoleSessionName>：请替换为您当前实际的会话名称。
+> 该名称为用户自定义，通常设置为调用该API的用户身份，例如：用户名。在同一个RAM角色执行的操作中，可以根据不同的 `RoleSessionName` 来区分实际操作者，以实现用户级别的访问审计。长度为2~64个字符，可包含英文字母、数字、半角句号（.）、at（@）、短划线（-）和下划线（_）。
+> <yourRoleArn>：请替换为您实际的RAM Role。
+> "sts.aliyuns.com" ：请替换为实际的STS Endpoint。
 
 ```
 public static void main(String[] args) {
@@ -215,11 +262,16 @@ public static void main(String[] args) {
 
 `//` 获取到`STS`三元组。
 
-```java
+```
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
 ```
 
@@ -254,17 +306,25 @@ vpc.${global:region}.${global:internet-domain}。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. 通过STS AccessKey三元组调用云产品的接口，下列代码以ECS的 `DescribeZones` 接口为示例。
-加密服务
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <yourRegionID>：请替换为您实际的地域ID。 <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。 <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。 <yourStsToken>：请替换为实际STS三元组中的SecurityToken。 <yourResourceGroupID>：请替换为您实际的资源集ID。 <yourOrganizationID>：请替换为您实际的组织ID。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <yourRegionID>：请替换为您实际的地域ID。
+> <yourStsAccesskeyID>：请替换为您实际的STS Accesskey ID。
+> <yourStsAccessKeySecret>：请替换为您实际的STS Accesskey Secret。
+> <yourStsToken>：请替换为实际STS三元组中的SecurityToken。
+> <yourResourceGroupID>：请替换为您实际的资源集ID。
+> <yourOrganizationID>：请替换为您实际的组织ID。
 
 ```
 public static void main(String[] args) {
@@ -321,23 +381,21 @@ AccessKeyID、AccessKeySecret。
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-加密服务
+`}` `}`
 
-## 调用示例
+## 3 调用示例
 
-### Java SDK调用示例
+### 3.1 Java SDK调用示例
 
-#### 快速开始
+#### 3.1.1 快速开始
 
 本节介绍如何获取产品名Java SDK并开始调用。
 
 **环境准备**
 
-使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 阿里云专有云Java SDK需要1.8及以上的JDK。
+使用阿里云专有云Java SDK，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息，请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取Endpoint，具体操作，请参见获取API信息及其EndPoint。 阿里云专有云Java SDK需要1.8及以上的JDK。
 
 **安装阿里云专有云Java SDK**
 
@@ -350,9 +408,14 @@ AccessKeyID、AccessKeySecret。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your-region-id>，请替换为您实际的地域ID。 <your-access-key-id>，请替换为您实际的AccessKey ID。 <your-access-key-secret>>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您当前产品实际的Endpoint。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。 加密服务
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your-region-id>，请替换为您实际的地域ID。
+> <your-access-key-id>，请替换为您实际的AccessKey ID。
+> <your-access-key-secret>>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您当前产品实际的Endpoint。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -391,16 +454,15 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### 使用手册
+`}` `}` `}`
 
-##### 安装Java SDK
+#### 3.1.2 使用手册
 
-本文介绍如何安装及调用云盾Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。 加密服务
+##### 3.1.2.1 安装Java SDK
+
+本文介绍如何安装及调用云盾Java SDK。 阿里云专有云Java SDK支持1.8及以上版本的JDK，可以通过添加Maven依赖或下载阿里云开发工具包 （SDK）的方式安装专有云Java SDK。 要使用云盾的开发工具包，必须安装阿里云Java SDK核心库。SDK核心库推荐使用4.5.17及以上版本。 您在安装阿里云Java SDK核心库时，需要在pom.xml文件中添加以下依赖。关于准确的SDK版本号，请参见阿里云开发工具包（SDK）。
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -410,7 +472,7 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 </dependency>
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.1.2.2 使用CommonRequest进行调用
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式。
 
@@ -429,7 +491,7 @@ request.setDomain("<your-endpooint>");// 当前产品的服务地址
 
 **CommonRequest调用示例**
 
-RPC调用，示例接口信息：接口（DescribeVpc）、版本（2018-06-30）。 加密服务
+RPC调用，示例接口信息：接口（DescribeVpc）、版本（2018-06-30）。
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -452,6 +514,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         CommonRequest request = new CommonRequest();
         request.setDomain("<hsmprivateEndpoint>");// 当前产品实际的Endpoint
         request.setVersion("2018-06-30");// 接口的版本
+        request.setAction("DescribeVpc");// 接口的名称
         request.putQueryParameter("PageNumber", "1");
         request.putQueryParameter("PageSize", "30");
         try {
@@ -463,36 +526,38 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-**重要**
+`}` `}` `}`
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置： Java
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置：
+
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-`//` 设置不校验服务端证书
+> `//` 设置不校验服务端证书
 
 ```
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Python SDK调用示例
+### 3.2 Python SDK调用示例
 
-加密服务
-
-#### 快速开始
+#### 3.2.1 快速开始
 
 本节介绍如何获取Python SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey。 获取到Endpoint。具体操作，请参见获取API信息及其EndPoint。
+
+**安装Python SDK核心库**
+
+如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
 ```
 pip install aliyun-python-sdk-core
@@ -512,12 +577,17 @@ pip3 install aliyun-python-sdk-core-v3
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。 加密服务
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your_region_id>，请替换为您实际的地域ID。
+> <your_access_key_id>，请替换为您实际的AccessKey ID。
+> <your_access_key_secret>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您实际的产品访问地址。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest()
 ```
 
 `request.set_domain('<your-endpoint>')//` 当前产品的服务地址
@@ -529,13 +599,13 @@ request.set_version('<API-version>')// 接口的版本 request.set_action_name('
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### 使用手册
+#### 3.2.2 使用手册
 
-##### 安装Python SDK
+##### 3.2.2.1 安装Python SDK
 
-本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
+本文档介绍如何安装及调用Python SDK。 阿里云专有云Python SDK支持Python 2.6.x、2.7.x和3.x及以上环境，您可以通过pip安装专有云Python SDK。
 
-**说明**
+> **说明：** 使用产品的开发工具包，都必须安装阿里云Python SDK核心库。
 
 如果您使用的是Python 2.x，执行以下命令，安装阿里云SDK核心库：
 
@@ -549,7 +619,7 @@ pip install aliyun-python-sdk-core
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.2.2.2 使用CommonRequest进行调用
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -560,7 +630,7 @@ pip3 install aliyun-python-sdk-core-v3
 
 **重要**
 
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！ 加密服务
+不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -568,8 +638,10 @@ pip3 install aliyun-python-sdk-core-v3
 
 **CommonRequest调用示例**
 
+调用示例接口信息：接口（DescribeVpc）、版本（2018-06-30）。
+
 ```bash
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<hsmprivateEndpoint>') //当前产品实际的Endpoint request.set_version('2018-06-30') //接口的版本
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<hsmprivateEndpoint>') //当前产品实际的Endpoint request.set_version('2018-06-30') //接口的版本 request.set_action_name('DescribeVpc')//接口的名称
 # or:
 # request = CommonRequest(domain='<your-endpoint>', version='<API-version>',
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
@@ -577,14 +649,13 @@ action_name='your-action') request.add_query_param('PageNumber', '1') request.ad
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -599,30 +670,27 @@ os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 SDK默认使用HTTPS协议。
 
 ```
-from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import from aliyunsdkcore.client import AcsClient client = AcsClient(
+from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
-request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
+request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
 **忽略证书**
 
-加密服务
-
-**重要**
-
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -632,17 +700,17 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-)
+`)`
 
-### Go SDK调用示例
+### 3.3 Go SDK调用示例
 
-#### 快速开始
+#### 3.3.1 快速开始
 
 阿里云Go SDK让您不用复杂编程即可访问。本文介绍如何获取阿里云Go SDK并开始调用。
 
 **环境准备**
 
-使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。
+使用Python SDK前，您需要一个授权账号以及一对AccessKey ID和AccessKey Secret。具体信息， 请参见获取AccessKey，并在Apsara Uni-manager运营控制台上获取和查看您的AccessKey。 获取到Endpoint。具体操作，请参见获取API信息及其EndPoint。
 
 **安装阿里云Go SDK核心包**
 
@@ -658,39 +726,54 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 1. 初始化Client实例。
 2. 创建API请求并设置参数。
 3. 发起请求并处理应答或异常。
-加密服务
 
-**说明**
-
-以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。 涉及替换的可变参数如下： <your_region_id>，请替换为您实际的地域ID。 <your_access_key_id>，请替换为您实际的AccessKey ID。 <your_access_key_secret>，请替换为您实际的AccessKey Secret。 <your-endpoint>，请替换为您实际的产品访问地址。 <API-version>，请替换成接口的版本。 <your-action>，请替换成接口的名称。
+> **说明：** 以下代码示例中可变参数均需替换为您实际的相关信息，尖括号（<>）在最终代码中不保留。
+> 涉及替换的可变参数如下：
+> <your_region_id>，请替换为您实际的地域ID。
+> <your_access_key_id>，请替换为您实际的AccessKey ID。
+> <your_access_key_secret>，请替换为您实际的AccessKey Secret。
+> <your-endpoint>，请替换为您实际的产品访问地址。
+> <API-version>，请替换成接口的版本。
+> <your-action>，请替换成接口的名称。
 
 ```java
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-#### 使用手册
+`}`
 
-##### 安装Go SDK核心包
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// 当前产品实际的Endpoint request.Version = "<API-version>"// 接口的版本 request.ApiName = "<your-action>" // 接口的名称 request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 使用手册
+
+##### 3.3.2.1 安装Go SDK核心包
+
+本文档介绍如何安装 Go SDK核心包。 阿里云Go SDK支持Go 1.10.x及以上版本，您可以通过执行以下命令安装Go SDK核心包。
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### 使用CommonRequest进行调用
+##### 3.3.2.2 使用CommonRequest进行调用
 
-加密服务本文为您介绍POP Go SDK调用的方式。
+本文为您介绍POP Go SDK调用的方式。
 
 **前提条件**
 
@@ -716,7 +799,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -724,39 +807,48 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<hsmprivateEndpoint>"// 当前产品实际的Endpoint
     request.Version = "2018-06-30"// 接口的版本
+    request.ApiName = "DescribeVpc"// 接口的名称
     request.QueryParams["PageNumber"] = "1"
     request.QueryParams["PageSize"] = "30"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 加密服务
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下：
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -774,9 +866,9 @@ client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpPro
 
 **设置**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。 `//` 设置请求 `HTTPSInsecure`（只影响当前）
+`//` 设置请求 `HTTPSInsecure`（只影响当前）
 
 ```
 request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure := request.GetHTTPSInsecure() // 获取请求 HTTPSInsecure
@@ -788,9 +880,7 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-加密服务
-
-## API公共参数
+## 4 API公共参数
 
 **公共请求参数**
 
@@ -805,20 +895,18 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 | RegionId | Strin g | 是 | 服务所使用的地域ID。 |
 | Product | Strin g | 是 | 接口对应的产品名称。取值： Auditprivate：云盾基础组件。 yundunnextsoc：云安全管理中心（SOC）。 Sas：态势感知。 aegis：安骑士。 yundun-css：容器防护。 secspy：网络流量检测与响应。 Ddosprivate：DDos 清洗。 hsm-private：加密服务。 Cloudfw：云防火墙。 Sddp：敏感数据保护。 semawaf：Web应用防火墙。 soar：云安全管理中心（SOC）-编排响应。 |
 
-加密服务
-
 | EndpointPre | Strin g | 是 | 接口对应的域名前缀。取值： auditprivate：云盾基础组件。 yundunnextsoc-pop：云安全管理中心（SOC）。 tds：态势感知。 aegis：安骑士。 yundun-css：容器防护。 secspy-share：网络流量检测与响应。 ddosprivate：DDos 清洗。 hsmprivate：加密服务。 cloudfw：云防火墙。 sddp-api：敏感数据保护。 semawaf：Web应用防火墙。 soar：云安全管理中心（SOC）-编排响应。 |
 |---|---|---|---|
 
 **公共返回参数**
 
-API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。 加密服务
+API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 返回2xx HTTP状态码代表调用成功。 返回4xx或5xx HTTP状态码代表调用失败。 调用成功返回的数据格式为JSON，每次接口调用，无论成功与否，系统都会返回一个唯一识别码 RequestId。
 
-## API参考
+## 5 API参考
 
-**5.1.**
+这是 API 参考内容
 
-### ModifyReleaseProtectionStatus
+### 5.1 ModifyReleaseProtectionStatus
 
 修改云密码机实例的保护状态。
 
@@ -849,15 +937,19 @@ API返回结果采用统一格式，通过返回HTTP状态码来表示状态： 
 http(s)://[Endpoint]/?Action=ModifyReleaseProtectionStatus &InstanceId=hsm-0k121E5c3**** &OpenStatus=
 ```
 
-&公共请求参数正常返回示例加密服务 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+ "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId>
@@ -873,7 +965,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -4020 | InstanceExistInCluster | The instance %s is already exist in cluster, operation not allowed |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### GetHsmIds
+### 5.2 GetHsmIds
 
 查询由密码机SN组成的唯一标识集
 
@@ -887,8 +979,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -909,19 +999,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&RegionId=cn-hangzhou &ZoneId=cn-hangzhou-b &VendorCode=jnta &ProductCode=jnta.SJJ****
+http(s)://[Endpoint]/?Action=GetHsmIds &RegionId=cn-hangzhou &ZoneId=cn-hangzhou-b &VendorCode=jnta &ProductCode=jnta.SJJ****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式加密服务
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "HsmIds":["hsm-20132564xxxxx","hsm-21531532xxx"],
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <HsmIds>["hsm-20132564xxxxx","hsm-21531532xxx"]</HsmIds> <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId>
@@ -936,7 +1030,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -1003 | ResourceNotExist | Resource %s is not exist, please check it again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### GetChannelStatus
+### 5.3 GetChannelStatus
 
 查询密码机实例的状态集。
 
@@ -953,8 +1047,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **返回数据**
 
-加密服务
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ChannelStatus List | Array | [{"Code":"1","Nam e":"未初始化"}, {"Code":"5","Name ":"运行中"}] | 密码机实例状态集。 |
@@ -964,27 +1056,32 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=GetChannelStatus
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "ChannelStatusList":[
-  {
+```
+
+`{`
+
+```json
    "Code":"1",
 ```
 
-`"Name":"`未初始化"
-
-```
-  }
-```
-
-]
-
-```
-}
-```
+`"Name":"`未初始化`"` `}` `]` `}`
 
 **错误码**
 
@@ -992,13 +1089,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeInstances
+### 5.4 DescribeInstances
 
 获取密码机实例的数据集
 
 **请求头**
 
-加密服务该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -1013,8 +1110,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | InstanceId | Strin g | Query | 否 | hsm-0k121E5c3**** | 密码机实例ID。 说明 ：您可以调用本接口获取该参数。 |
 | VpcIp | Strin g | Query | 否 | 192.168.XX.XX | 密码机实例所注册的经典网络IP地址。 |
 
-加密服务
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | VsmType | Strin g | Query | 否 | evsm | 密码机实例的设备类型。取值： evsm：金融数据密码机。 gvsm：通用服务器密码机。 svsm：签名验签服务器密码机。 |
@@ -1026,11 +1121,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Instances | Array |  | 密码机实例数据集。 |
+| Instances | Array |   | 密码机实例数据集。 |
 | -WhiteList | Normal | ["192.168.XX.XX"," 172.16.XX.XX"] | 密码机实例的白名单IP数组。 **说明：**如果当前实例有所属集群，则白名单与集群白名单保持一致。 |
 | -InstanceId | String | hsm- 0k121E5c3**** | 密码机实例ID。 |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1049,8 +1144,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -ClusterId | String | cluster-***** | 密码机实例所在集群的ID。 |
 | -ClusterName | String | testCluster | 密码机实例所在集群的名称。 |
 
-加密服务
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -IsMaster | Integer | 1 | 当前密码机在集群中是否是主密码机。取值： 0：不是。 1：是。 |
@@ -1066,13 +1159,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&RegionId=cn-neimeng-*****-d01
+http(s)://[Endpoint]/?Action=DescribeInstances &RegionId=cn-neimeng-*****-d01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式加密服务
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "Instances":[{
 ```
 
@@ -1100,10 +1192,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "PageSize":15,
  "CurrentPage":1
-}
 ```
 
-`XML` 格式加密服务
+`}` `XML` 格式
 
 ```xml
 <Instances>
@@ -1138,7 +1229,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeInstanceStock
+### 5.5 DescribeInstanceStock
 
 查询密码机实例的是否有可用库存。
 
@@ -1151,8 +1242,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1174,31 +1263,31 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeInstanceStock &RegionId=cn-neimeng-*****-d01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
- "HasStock":true
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+ "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
+ "HasStock":true
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <HasStock>true</HasStock>
 ```
-
-加密服务
-
-**错误码**
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 
-### DescribeZones
+### 5.6 DescribeZones
 
 获取可用区数据集。
 
@@ -1218,11 +1307,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Zones | Array |  | 可用区数据集。 |
+| Zones | Array |   | 可用区数据集。 |
 | -ZoneNo | String | cn-qingdao-env***- amtest***-a | 可用区编号。 |
 | -IsMaster | Integer | 1 | 是否是主可用区。取值： 1 ：是。 0 ：否。 |
-
-加密服务
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1232,17 +1319,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 `JSON` 格式
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "Zones":[{
   "IsMaster":1,
   "ZoneNo":"cn-qingdao-env***-amtest***-a"
- }]
-}
 ```
 
-`XML` 格式
+`}]` `}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <Zones>
@@ -1259,7 +1349,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 
-### DescribeVsmTypes
+### 5.7 DescribeVsmTypes
 
 获取密码机设备的设备类型数据集。 只查询有密码机库存的设备类型。
 
@@ -1268,8 +1358,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1283,26 +1371,38 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| VsmTypes | Array |  | 密码机设备的设备类型数据集。 |
+| VsmTypes | Array |   | 密码机设备的设备类型数据集。 |
 | -Code | String | evsm | 设备类型编码。取值： evsm ：金融数据密码机。 gvsm ：通用服务器密码机。 svsm ：签名验签服务器密码机。 |
 | -Stock | Integer | 3 | 当前设备类型下的密码机可用的库存数量。 |
 | RequestId | String | 04F0F334-1335- 436C-A1D7- 6C044FE7**** | 本次接口调用的请求ID。 |
 
-**示例**
+请求示例
 
-请求示例加密服务 &公共请求参数正常返回示例 `JSON` 格式
+```
+http(s)://[Endpoint]/?Action=DescribeVsmTypes
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "VsmTypes":{
   "Code":"evsm",
   "Stock":3
- },
- "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+ "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
+```
+
+`}` `XML` 格式
 
 ```xml
 <VsmTypes>
@@ -1318,7 +1418,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -1003 | ResourceNotExist | Resource %s is not exist, please check it again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### CreateCluster
+### 5.8 CreateCluster
 
 创建密码机实例集群。 创建集群时所使用的密码机将被定义为该集群的主密码机。
 
@@ -1332,7 +1432,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 
-| 开发指南·API参 | 考 |  |  |  | 加密服务 |
+| 开发指南·API参 | 考 |   |   |   | 加密服务 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1351,7 +1451,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | RequestId | String | 04F0F334-1335- 436C-A1D7- 6C044FE7**** | 本次接口调用的请求ID。 |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1363,19 +1463,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&ClusterName=testCluster***** &MasterInstanceId=hsm-0k121E5c3**** &VpcId=vpc-ke7kj03hq3es7luti**** &VSwitchIds=vsw-ke7j6p4za4lwtjrju****,vsw-hy5t6e9q9456qtypow**** &ZoneNos=cn-hangzhou-env212-a*****,cn-hangzhou-env212-b*****
+http(s)://[Endpoint]/?Action=CreateCluster &ClusterName=testCluster***** &MasterInstanceId=hsm-0k121E5c3**** &VpcId=vpc-ke7kj03hq3es7luti**** &VSwitchIds=vsw-ke7j6p4za4lwtjrju****,vsw-hy5t6e9q9456qtypow**** &ZoneNos=cn-hangzhou-env212-a*****,cn-hangzhou-env212-b*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "ClusterId":"cluster-*****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId> <ClusterId>cluster-*****</ClusterId>
@@ -1391,7 +1495,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -2001 | StatusInvalid | Device channel status is invalid, place check the device channel status |
 | 500 | -2002 | ConfigIpError | Failed to configure VPC IP for instance, please contact the administrator to check vpc tunnel |
 
-| 开发指南·API参 | 考 |  | 加密服务 |
+| 开发指南·API参 | 考 |   | 加密服务 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -1411,8 +1515,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4029 | ZoneNotExist | The zoneNo %s of instance does not exist in the cluster |
 | 500 | -4030 | ZoneDuplicate | The entered parameter value of zoneNo %s is duplicate |
 
-加密服务
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | -4031 | VSwitchDuplicate | The entered parameter value of vSwitch %s is duplicate |
@@ -1421,7 +1523,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -5001 | InstanceInOperation | The current instance %S is being operated on, please try again later |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DeleteCluster
+### 5.9 DeleteCluster
 
 删除密码机实例集群。
 
@@ -1443,25 +1545,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | RequestId | String | 04F0F334-1335- 436C-A1D7- 6C044FE7**** | 本次接口调用的请求ID。 |
 
-加密服务
-
-**示例**
-
 请求示例
 
 ```
-&ClusterId=cluster-*****
+http(s)://[Endpoint]/?Action=DeleteCluster &ClusterId=cluster-*****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId>
@@ -1476,7 +1572,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4025 | ClusterLocked | The cluster is locked and cannot be operated. please wait for unlocking and try again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeClusterInstances
+### 5.10 DescribeClusterInstances
 
 获取密码机集群相关的密码机实例数据集。 该接口有两个用法： 获取用于创建集群的主密码机实例数据集。 获取用于集群扩缩容的子密码机实例数据集。
 
@@ -1485,8 +1581,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1497,8 +1591,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ZoneNo | Strin g | Query | 否 | cn-qingdao-env***- amtest***-a | 子密码机实例所在可用区编号。 如果查询主密码机实例数据集，此参数无效。 如果查询子密码机实例数据集，此参数非必传。不传值时默认查询当前集群中可用区下的子密码机实例数据集。 说明 ：您可以调用DescribeZones 接口获取该参数。 |
 | IsMasterIn stance | Boole an | Query | 是 | false | 是否查询主密码机实例数据集。取值： true ：是。 false ：否。 |
 
-加密服务
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | 否 | hsm-0k121E5c3**** | 密码机实例ID。 如果查询主密码机实例数据集，此时查询指定的主密码机实例。 如果查询子密码机实例数据集，此时查询指定的子密码机实例。 说明 ：您可以调用DescribeInstances 接口获取该参数。 |
@@ -1508,7 +1600,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Instances | Array |  | 主密码机实例/子密码机实例数据集。 |
+| Instances | Array |   | 主密码机实例/子密码机实例数据集。 |
 | -WhiteList | Normal | ["192.168.XX.XX"," 192.168.XX.XX"] | 密码机实例的白名单IP数组。 说明 ：如果当前实例有所属集群，则白名单与集群白名单保持一致。 |
 | -InstanceId | String | hsm- 0k121E5c3**** | 密码机实例ID。 |
 | -RegionId | String | cn-neimeng-*****- d01 | 密码机实例所在地域编号。 |
@@ -1516,7 +1608,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -VpcId | String | vpc- ke7kj03hq3es7luti* *** | 密码机实例的VPC实例ID。 |
 | -VswitchId | String | vsw- ke7j6p4za4lwtjrju* *** | 密码机实例的交换机ID。 |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1543,10 +1635,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeClusterInstances &IsMasterInstance=false
 ```
 
-&公共请求参数正常返回示例加密服务 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Instances":[{
   "VpcIp":"192.168.XX.XX",
 ```
@@ -1571,10 +1668,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "RegionId":"cn-neimeng-*****-d01"
  }],
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式加密服务
+`}` `XML` 格式
 
 ```xml
 <Instances>
@@ -1614,13 +1710,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4038 | CLusterWhiteListError | Unable to obtain data for built- in cluster whiteList, please contact the administrator for troubleshooting |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeClusters
+### 5.11 DescribeClusters
 
 获取密码机集群。 该接口有两个用法： 获取单个密码机集群的详情。 获取所有密码机集群的数据集。
 
 **请求头**
 
-加密服务该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -1634,8 +1730,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | VendorCo de | Strin g | Query | 否 | jnta | 密码机实例所用设备的设备厂商编码。 说明 ：如果查询单个密码机集群的详情，此参数无效。您可以调用DescribeVendors 接口获取该参数。 |
 | ProductCo de | Strin g | Query | 否 | jnta.SJJ**** | 密码机实例所用设备的设备型号编码。 说明 ：如果查询单个密码机集群的详情，此参数无效。您可以调用DescribeProducts 接口获取该参数。 |
 
-加密服务
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | ClusterNa me | Strin g | Query | 否 | testCluster | 集群名称。 说明 ：如果查询单个密码机集群的详情，此参数无效。您可以调用DescribeClusters 接口获取该参数。 |
@@ -1647,14 +1741,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| HsmClusters | Array |  | 集群数据集。 |
+| HsmClusters | Array |   | 集群数据集。 |
 
-|  | 开发指南·API参考 |  |  | 加密服务 |  |
+|   | 开发指南·API参考 |   |   | 加密服务 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| - HsmClusterIte ms | Array |  | 集群中子项数据集，每个子项即为密码机实例。 |
+| - HsmClusterIte ms | Array |   | 集群中子项数据集，每个子项即为密码机实例。 |
 | --Id | Long | 1 | 集群中子项的主键ID。 |
 | --ClusterId | String | cluster-***** | 密码机实例所在集群的ID。 |
 | --InstanceId | String | hsm- 0k121E5c3**** | 密码机实例ID。 |
@@ -1663,13 +1757,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | --ZoneNo | String | cn-qingdao-env***- amtest***-a | 密码机实例所在的可用区编号。 |
 | --Ip | String | 192.168.XX.XX | 密码机实例所注册的经典网络IP地址。 |
 | --VsmType | String | evsm | 密码机实例的设备类型。取值： **evsm：**金融数据密码机。 **gvsm：**通用服务器密码机。 **svsm：**签名验签服务器密码机。 |
-| -ClusterZones | Array |  | 集群下属的可用区与交换机的数据集。每个交换机只属于一个可用区。 |
+| -ClusterZones | Array |   | 集群下属的可用区与交换机的数据集。每个交换机只属于一个可用区。 |
 | --VSwitchId | String | vsw- ke7j6p4za4lwtjrju* *** | 交换机ID。 |
 | --ZoneNo | String | cn-qingdao-env***- amtest***-a | 可用区编号。 |
 | -ClusterId | String | cluster-***** | 集群ID，集群唯一标识。 |
 | -AliUid | Long | 123456789 | 用户标识。 |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1687,7 +1781,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RequestId | String | 04F0F334-1335- 436C-A1D7- 6C044FE7**** | 本次接口调用的请求ID。 |
 | TotalCount | Long | 3 | 集群数据集的总记录数。 |
 
-| 开发指南·API参考 |  |  | 加密服务 |
+| 开发指南·API参考 |   |   | 加密服务 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1697,10 +1791,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式加密服务
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeClusters
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":3,
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "PageSize":15,
@@ -1732,11 +1837,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "ClusterName":"testCluster",
   "ClusterStatus":"2",
   "AliUid":123456789
- }]
-}
 ```
 
-`XML` 格式加密服务
+`}]` `}` `XML` 格式
 
 ```xml
 <TotalCount>3</TotalCount> <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <PageSize>15</PageSize> <CurrentPage>1</CurrentPage> <HsmClusters>
@@ -1783,9 +1886,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -1003 | ResourceNotExist | Resource %s is not exist, please check it again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-加密服务
-
-### ModifyCluster
+### 5.12 ModifyCluster
 
 编辑集群信息。 只支持对集群下的以下内容进行变更： 集群名称。 非主可用区的可用区编号和交换机实例。 集群白名单。
 
@@ -1804,8 +1905,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ClusterNa me | Strin g | Query | 是 | testCluster | 用户自定义的集群名称。 |
 | Zones | Strin g | Query | 否 | cn-qingdao-env***- amtest***-a,cn-qingdao- env***-amtest***-b | 待变更的可用区编号集合 （不包含主可用区的）。 说明 ：您可以调用DescribeZones 接口获取该参数。创建多可用区的集群时，集合的第一个下标位置需设置为主密码机所在的可用区，其余可用区信息顺位设置即可。 |
 
-加密服务
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | VSwitchId s | Strin g | Query | 否 | vsw- ke7j6p4za4lwtjrju****,vs w- hy5t6e9q9456qtypow*** * | 待变更的交换机ID集合（不包含主可用区的）。 说明 ：您可以调用DescribeVpc 接口获取该参数。创建多可用区的集群时，集合的第一个下标位置需设置为主密码机所在的可用区下的交换机ID，其余交换机信息须与参数Zones 中设置的可用区一一对应。 |
@@ -1821,18 +1920,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&ClusterId=cluster-***** &ClusterName=testCluster
+http(s)://[Endpoint]/?Action=ModifyCluster &ClusterId=cluster-***** &ClusterName=testCluster
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId>
@@ -1844,7 +1947,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 | 400 | -1002 | ParamsInvalid | The param %s is invalid, please check it again |
@@ -1858,7 +1961,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4037 | ClusterInOperation | The current cluster %s is being operated on, please try again later |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### QuickInit
+### 5.13 QuickInit
 
 快速初始化密码机实例。
 
@@ -1872,8 +1975,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1892,26 +1993,26 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&ClusterId=cluster-***** &Name=tass &Password=df5et42/dd5
+http(s)://[Endpoint]/?Action=QuickInit &ClusterId=cluster-***** &Name=tass &Password=df5et42/dd5
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId>
 ```
-
-**错误码**
-
-加密服务
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -1925,7 +2026,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4025 | ClusterLocked | The cluster is locked and cannot be operated. please wait for unlocking and try again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### CreateInstance
+### 5.14 CreateInstance
 
 开通密码机实例。
 
@@ -1939,8 +2040,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 
-加密服务
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
@@ -1951,8 +2050,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | VsmNum | Integ er | Query | 否 | 2 | 开通密码机实例的数量。 |
 | CreateDiff | Boole an | Query | 否 | false | 是否在不同物理加密机开通实例，默认值为true。取值： true ：是。 false ：否。 |
 | ZoneNo | Strin g | Query | 否 | cn-qingdao-env***- amtest***-a | 密码机所在的可用区编号。 说明 ：您可以调用DescribeZones 接口获取该参数。 |
-
-加密服务
 
 **返回数据**
 
@@ -1967,20 +2064,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&ProductCode=jnta.SJJ**** &RegionId=cn-neimeng-*****-d01 &VendorCode=jnta
+http(s)://[Endpoint]/?Action=CreateInstance &ProductCode=jnta.SJJ**** &RegionId=cn-neimeng-*****-d01 &VendorCode=jnta
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "InstanceId":"hsm-0k121E5c3****",
  "InstanceIds":["hsm-0k121E5c3****,hsm-8h6546R2f3****"]
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId> <InstanceId>hsm-0k121E5c3****</InstanceId> <InstanceIds>hsm-0k121E5c3****,hsm-8h6546R2f3****</InstanceIds>
@@ -1992,7 +2093,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 
-| 开发指南·API参 | 考 |  | 加密服务 |
+| 开发指南·API参 | 考 |   | 加密服务 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2009,7 +2110,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -3009 | SlbResultError | Slb result is error, operation data failed, please contact the administrator to check slb client |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeProducts
+### 5.15 DescribeProducts
 
 获取密码机的设备型号数据集。
 
@@ -2018,8 +2119,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2042,26 +2141,30 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&VendorCode=jnta
+http(s)://[Endpoint]/?Action=DescribeProducts &VendorCode=jnta
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式加密服务
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Products":[{
   "Code":"jnta.SJJ****",
 ```
 
-`"Name":"`江南天安云密码机"
+`"Name":"`江南天安云密码机`"`
 
 ```json
  }],
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <Products>
@@ -2082,7 +2185,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 | 500 | -1003 | ResourceNotExist | Resource %s is not exist, please check it again |
 
-### ReleaseInstance
+### 5.16 ReleaseInstance
 
 释放密码机实例。
 
@@ -2097,7 +2200,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
 
-| 加密服务 |  |  |  |  | 开发指南·API参考 |
+| 加密服务 |   |   |   |   | 开发指南·API参考 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | InstanceId | Strin g | Query | 是 | hsm-0k121E5c3**** | 密码机实例ID。 说明 ：您可以调用DescribeInstances 接口获取该参数。 |
@@ -2113,18 +2216,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=hsm-0k121E5c3****
+http(s)://[Endpoint]/?Action=ReleaseInstance &InstanceId=hsm-0k121E5c3****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId>
@@ -2138,7 +2245,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -1002 | ParamsInvalid | The param %s is invalid, please check it again |
 | 500 | -1003 | ResourceNotExist | Resource %s is not exist, please check it again |
 
-| 开发指南·API参 | 考 |  | 加密服务 |
+| 开发指南·API参 | 考 |   | 加密服务 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2151,7 +2258,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -5003 | InstanceInReleaseProtection | Hsm instance has already open release protection, please contact the administrator to close and try again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeRegions
+### 5.17 DescribeRegions
 
 获取地域数据集。
 
@@ -2168,30 +2275,37 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **返回数据**
 
-加密服务
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| Regions | Array |  | 地域数据集。 |
+| Regions | Array |   | 地域数据集。 |
 | -RegionName | String | cn-neimeng-*****- d01 | 地域名称。 |
 | -RegionId | String | cn-neimeng-*****- d01 | 地域编号。 |
 | RequestId | String | 04F0F334-1335- 436C-A1D7- 6C044FE7**** | 本次接口调用的请求ID。 |
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=DescribeRegions
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "Regions":[{
   "RegionName":"cn-neimeng-*****-d01",
   "RegionId":"cn-neimeng-*****-d01"
- }]
-}
 ```
 
-`XML` 格式
+`}]` `}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <Regions>
@@ -2207,13 +2321,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 
-加密服务
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeVendors
+### 5.18 DescribeVendors
 
 获取设备厂商数据集。
 
@@ -2239,25 +2351,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | -Name | String | 江南天安 | 设备厂商名称。 |
 | RequestId | String | 04F0F334-1335- 436C-A1D7- 6C044FE7**** | 本次接口调用的请求ID。 |
 
-**示例**
+请求示例
 
-请求示例加密服务 &公共请求参数正常返回示例 `JSON` 格式
+```
+http(s)://[Endpoint]/?Action=DescribeVendors
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "Vendors":[{
   "Code":"jnta",
 ```
 
-`"Name":"`江南天安"
-
-```
- }]
-}
-```
-
-`XML` 格式
+`"Name":"`江南天安`"` `}]` `}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <Vendors>
@@ -2277,7 +2391,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 | 500 | -1005 | GetVendorsError | System error, get init vendor data failed. please contact the administrator for troubleshooting |
 
-### DescribeVpc
+### 5.19 DescribeVpc
 
 获取VPC实例数据集。
 
@@ -2291,7 +2405,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 
-| 开发指南·API参 | 考 |  |  |  | 加密服务 |
+| 开发指南·API参 | 考 |   |   |   | 加密服务 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
@@ -2302,8 +2416,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| VpcInstances | Array |  | VPC实例数据集。 |
-| -VSwitches | Array |  | VPC实例下的交换机数据集。 |
+| VpcInstances | Array |   | VPC实例数据集。 |
+| -VSwitches | Array |   | VPC实例下的交换机数据集。 |
 | --InstanceId | String | vsw- ke7j6p4za4lwtjrju* *** | 交换机实例ID。 |
 | --ZoneNo | String | cn-qingdao-env***- amtest***-a | 交换机所在可用区编号。 |
 | --CidrBlock | String | 172.18.XX.XX0/26 | 交换机实例的网段。 |
@@ -2315,13 +2429,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&RegionId=cn-neimeng-*****-d01
+http(s)://[Endpoint]/?Action=DescribeVpc &RegionId=cn-neimeng-*****-d01
 ```
 
-&公共请求参数加密服务正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "VpcInstances":[{
   "-VSwitches":[{
@@ -2330,11 +2449,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ZoneNo":"cn-qingdao-env***-amtest***-a"
   }],
   "InstanceId":"vpc-ke7kj03hq3es7luti****"
- }]
-}
 ```
 
-`XML` 格式
+`}]` `}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <VpcInstances>
@@ -2359,9 +2476,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -3003 | VpcEndpointError | Vpc endpoint is error, please contact the administrator for troubleshooting |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-加密服务
-
-### ModifyInstance
+### 5.20 ModifyInstance
 
 编辑密码机实例。 可变更内容仅包含密码机实例的别名。
 
@@ -2389,18 +2504,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=hsm-0k121E5c3**** &Remark=testInstance
+http(s)://[Endpoint]/?Action=ModifyInstance &InstanceId=hsm-0k121E5c3**** &Remark=testInstance
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式加密服务
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId>
@@ -2415,7 +2534,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -5001 | InstanceInOperation | The current instance %S is being operated on, please try again later |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### AddHsmToCluster
+### 5.21 AddHsmToCluster
 
 向集群中扩容密码机实例。
 
@@ -2429,8 +2548,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2448,18 +2565,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&ClusterId=cluster-***** &HsmInstanceIds=hsm-0k121E5c3****,hsm-sr132G5b9****
+http(s)://[Endpoint]/?Action=AddHsmToCluster &ClusterId=cluster-***** &HsmInstanceIds=hsm-0k121E5c3****,hsm-sr132G5b9****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId>
@@ -2471,7 +2592,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2491,7 +2612,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4012 | InstanceZoneExceed | The cluster already uses an instance with two zones. you cannot add another %s |
 | 500 | -4013 | ClusterZoneExceed | The cluster supports up to two zones |
 
-| 开发指南·API参 | 考 |  | 加密服务 |
+| 开发指南·API参 | 考 |   | 加密服务 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2508,7 +2629,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4029 | ZoneNotExist | The zoneNo %s of instance does not exist in the cluster |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### DescribeQuickInitInfo
+### 5.22 DescribeQuickInitInfo
 
 获取密码机的初始化信息。 初始化信息包括：集群信息和密码机的默认用户名称。
 
@@ -2517,8 +2638,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2544,18 +2663,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=DescribeQuickInitInfo &ClusterId=cluster-***** &InstanceId=hsm-0k121E5c3****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式加密服务
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****",
  "ClusterId":"cluster-*****",
  "AdminName":"tass",
  "ClusterName":"testCluster"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId> <ClusterId>cluster-*****</ClusterId> <AdminName>tass</AdminName> <ClusterName>testCluster</ClusterName>
@@ -2568,7 +2691,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4026 | ClusterNotFound | The current cluster does not exist or has been deleted |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### RemoveHsmFromCluster
+### 5.23 RemoveHsmFromCluster
 
 集群缩容。 从集群中移除密码机实例，减少集群容量。
 
@@ -2582,8 +2705,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
-
-加密服务
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2604,15 +2725,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 http(s)://[Endpoint]/?Action=RemoveHsmFromCluster &ClusterId=cluster-***** &HsmInstanceIds=hsm-0k121E5c3****,hsm-5g256r6v8****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` 格式
+`{`
+
+```json
+ "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
+```
+
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7**** </RequestId>
@@ -2622,8 +2747,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
-
-加密服务
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
@@ -2639,7 +2762,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -4025 | ClusterLocked | The cluster is locked and cannot be operated. please wait for unlocking and try again |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### ConfigNetwork
+### 5.24 ConfigNetwork
 
 对VSM实例进行网络配置。
 
@@ -2649,12 +2772,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **请求参数**
 
-加密服务
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Query | 否 | 192.168.XX.XX | 来源IP。 |
-| Resource OwnerId | Long | Query | 否 |  |  |
+| Resource OwnerId | Long | Query | 否 |   |   |
 | InstanceId | Strin g | Query | 是 | hsm-0k121E5c3**** | 密码机实例ID。 说明 ：您可以调用DescribeInstances 接口获取该参数。 |
 | VSwitchId | Strin g | Query | 是 | vsw- ke7j6p4za4lwtjrju**** | 交换机ID。 说明 ：您可以调用DescribeVpc 接口获取该参数。 |
 | Ip | Strin g | Query | 否 | 192.168.XX.XX | 密码机实例对应的经典网络的IP。不传该参数时，系统将根据VPC和VSWITCH自动分配一个可用IP。 |
@@ -2672,18 +2793,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=hsm-0k121E5c3**** &VSwitchId=vsw-ke7j6p4za4lwtjrju**** &VpcId=vpc-ke7kj03hq3es7luti****
+http(s)://[Endpoint]/?Action=ConfigNetwork &InstanceId=hsm-0k121E5c3**** &VSwitchId=vsw-ke7j6p4za4lwtjrju**** &VpcId=vpc-ke7kj03hq3es7luti****
 ```
 
-&公共请求参数正常返回示例加密服务 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestId": "04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId>
@@ -2704,8 +2823,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -3003 | VpcEndpointError | Vpc endpoint is error, please contact the administrator for troubleshooting |
 | 500 | -3005 | HsmCallError | Unable to connect to the HSM device, please contact the administrator to check the device status and network information |
 
-加密服务
-
 | HttpCo de | 错误码 | 错误信息 | 描述 |
 |---|---|---|---|
 | 500 | -3006 | SlbCallError | Slb call is error, operation data failed, please contact the administrator to check slb client |
@@ -2715,7 +2832,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -5001 | InstanceInOperation | The current instance %S is being operated on, please try again later |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-### ConfigWhiteList
+### 5.25 ConfigWhiteList
 
 配置密码机实例的白名单IP。 通过此接口仅配置密码机实例的白名单信息。v3.18.0版本开始，配置白名单的功能已合并至密码机网络配置的功能中（ConfigVpc接口）。
 
@@ -2731,7 +2848,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Lang | Strin g | Query | 否 | zh | 指定请求和接受消息的语言类型。取值： zh ：中文。 en ：英文。 |
 | InstanceId | Strin g | Query | 是 | hsm-0k121E5c3**** | 密码机实例ID。 说明 ：您可以调用DescribeInstances 接口获取该参数。 |
 
-| 开发指南·API参 | 考 |  |  |  | 加密服务 |
+| 开发指南·API参 | 考 |   |   |   | 加密服务 |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 
@@ -2749,18 +2866,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
 请求示例
 
 ```
-&InstanceId=hsm-0k121E5c3**** &WhiteList=192.168.XX.XX,192.168.XX.XX
+http(s)://[Endpoint]/?Action=ConfigWhiteList &InstanceId=hsm-0k121E5c3**** &WhiteList=192.168.XX.XX,192.168.XX.XX
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"04F0F334-1335-436C-A1D7-6C044FE7****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestId>04F0F334-1335-436C-A1D7-6C044FE7****</RequestId>
@@ -2773,7 +2894,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | -1001 | ParamsEmpty | The param %s is empty, please check it again |
 | 400 | -1002 | ParamsInvalid | The param %s is invalid, please check it again |
 
-| 加密服务 |  |  | 开发指南·API参考 |
+| 加密服务 |   |   | 开发指南·API参考 |
 |---|---|---|---|
 
 | HttpCo de | 错误码 | 错误信息 | 描述 |
@@ -2786,9 +2907,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 500 | -5001 | InstanceInOperation | The current instance %S is being operated on, please try again later |
 | 500 | -1 | SystemError | System is error, please contact the administrator for troubleshooting |
 
-加密服务
-
-## 错误代码表
+## 6 错误代码表
 
 本文介绍云盾API返回的错误代码信息。 表 1. 云盾通用错误代码
 
@@ -2814,8 +2933,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.all.PropertyConvertFail ed | 转换异常 | 请稍后重试。 |
 | yd.error.all.NoPermission | 无权限 | 请检查账户权限。 |
 | yd.error.all.ServerError | 服务器异常 | 请稍后重试或联系阿里云技术支持人员。 |
-
-加密服务
 
 | yd.error.all.UnkownError | 未知异常 | 请稍后重试或联系阿里云技术支持人员。 |
 |---|---|---|
@@ -2851,8 +2968,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.ddos.SERVER FAILED _ | 操作失败 | 请联系阿里云技术支持人员。 |
 | yd.error.ddos.NOT AUTHORIZE _ D | 没有权限 | 请检查账户权限。 |
 
-加密服务
-
 | yd.error.ddos.PARAMETER INVA _ LID | 参数无效或缺少 | 请求参数有误，请检查后重试。 |
 |---|---|---|
 | yd.error.ddos.IP SEGMENT INV _ _ ALID | IP段不合法，请检查后重新输入 | 请检查请求参数中的IP网段。 |
@@ -2875,7 +2990,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.ddos.IS OPENED _ | 已开启 | 指定开关已处于开启状态，无法再次开启。 |
 | yd.error.ddos.IS CLOSED _ | 已关闭 | 指定开关已处于关闭状态，无法再次关闭。 |
 
-表 4. 安骑士错误代码加密服务
+表 4. 安骑士错误代码
 
 | 错误代码 | 错误信息 | 说明 |
 |---|---|---|
@@ -2906,8 +3021,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.audit.Dict.NotString | 字典值非String类型 | 请检查请求参数后重试。 |
 | yd.error.audit.EventType.IdEmp ty | 【id】不能为空 | 请检查请求参数后重试。 |
 
-加密服务
-
 | yd.error.audit.EventType.IdNot Exist | 事件类型不存在 | 请检查请求参数后重试。 |
 |---|---|---|
 | yd.error.audit.EventType.LogTy peEmpty | 【日志类型】不能为空 | 请检查请求参数后重试。 |
@@ -2931,8 +3044,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.audit.Rule.EventTypeN otExist | 【事件类型】不存在 | 请检查请求参数后重试。 |
 | yd.error.audit.Rule.RiskLevelEm pty | 【风险级别】不能为空 | 请检查请求参数后重试。 |
 
-加密服务
-
 | yd.error.audit.Rule.ReserverEm pty | 【是否预留】不能为空 | 请检查请求参数后重试。 |
 |---|---|---|
 | yd.error.audit.Rule.EnableEmpt y | 【是否启用】不能为空 | 请检查请求参数后重试。 |
@@ -2954,8 +3065,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.audit.LogConfig.EventS torePeriodLengthWrong | 【事件存储周期】不能超过1095天 | 请检查请求参数后重试。 |
 | yd.error.audit.LogConfig.EventA rchivePeriodEmpty | 【事件归档周期】不能为空 | 请检查请求参数后重试。 |
 | yd.error.audit.LogConfig.EventA rchivePeriodLengthWrong | 【事件归档周期】不能超过1095天 | 请检查请求参数后重试。 |
-
-加密服务
 
 | yd.error.audit.LogConfig.EventA rchiveIntervalEmpty | 【事件归档间隔】不能为空 | 请检查请求参数后重试。 |
 |---|---|---|
@@ -2980,7 +3089,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.audit.LogSource.Name LengthWrong | 【名称】长度不能超过200字符 | 请检查请求参数后重试。 |
 | yd.error.audit.LogSource.Enabl eEmpty | 【是否启用】不能为空 | 请检查请求参数后重试。 |
 
-| 加密服务 |  | 开发指南·错误代码表 |
+| 加密服务 |   | 开发指南·错误代码表 |
 |---|---|---|
 
 | yd.error.audit.LogSource.Alertt AbleEmpty | 【是否告警】不能为空 | 请检查请求参数后重试。 |
@@ -3014,8 +3123,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.200 | 请求成功 |
 | yd.error.code.-360100 | 请求方式错误 |
 
-加密服务
-
 | yd.error.code.-360101 | 认证失败 |
 |---|---|
 | yd.error.code.-360102 | 本地调用错误 |
@@ -3046,8 +3153,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-360127 | 创建网络接口错误 |
 | yd.error.code.-360128 | 删除网络接口错误 |
 | yd.error.code.-360129 | 未授权，请重试 |
-
-加密服务
 
 | yd.error.code.-360130 | ECS不可用 |
 |---|---|
@@ -3080,8 +3185,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-360157 | 路由表不存在 |
 | yd.error.code.-360158 | 路由条目错误 |
 
-加密服务
-
 | yd.error.code.-360159 | 路由创建失败 |
 |---|---|
 | yd.error.code.-360160 | 路由删除失败 |
@@ -3112,8 +3215,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-360185 | 更新防火墙路由失败 |
 | yd.error.code.-360186 | 当前防火墙状态，不允许配置 |
 | yd.error.code.-360187 | 此地域VPC数量不足，无法开启VPC防火墙 |
-
-加密服务
 
 | yd.error.code.-360188 | 配额不足，无法配置VPC防火墙，请先增加配额 |
 |---|---|
@@ -3146,8 +3247,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-360215 | 参数错误，请重试 |
 | yd.error.code.-360216 | IDC专线错误 |
 
-加密服务
-
 | yd.error.code.-360217 | 防火墙模式错误 |
 |---|---|
 | yd.error.code.-360218 | 调用xnet接口失败 |
@@ -3178,8 +3277,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-360400 | 未知错误 |
 | yd.error.code.-360401 | 没有可用的Vlan |
 | yd.error.code.-360402 | 调用VPC接口失败 |
-
-加密服务
 
 | yd.error.code.-360403 | 创建虚墙失败 |
 |---|---|
@@ -3212,8 +3309,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-193104 | 解析BOOL失败 |
 | yd.error.code.-193105 | 解析HTTP BODY失败 |
 
-加密服务
-
 | yd.error.code.-193201 | 参数不足 |
 |---|---|
 | yd.error.code.-193202 | 参数超范围 |
@@ -3244,8 +3339,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-200104 | uid错误，请重试 |
 | yd.error.code.-200105 | 分页错误 |
 | yd.error.code.-200106 | 地址簿IP地址错误，请检查输入 |
-
-加密服务
 
 | yd.error.code.-200107 | 地址簿已存在 |
 |---|---|
@@ -3278,8 +3371,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-200203 | 后台错误 |
 | yd.error.code.-200300 | 后台错误 |
 
-加密服务
-
 | yd.error.code.-200301 | 后台错误 |
 |---|---|
 | yd.error.code.-200302 | 后台错误 |
@@ -3310,8 +3401,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-230100 | 请求方法错误 |
 | yd.error.code.-230101 | 认证失败 |
 | yd.error.code.-230102 | 本地请求失败 |
-
-加密服务
 
 | yd.error.code.-230103 | 接口认证失败 |
 |---|---|
@@ -3344,8 +3433,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | yd.error.code.-230130 | 规则操作错误 |
 | yd.error.code.-230131 | 策略不支持提交 |
 
-加密服务
-
 | yd.error.code.-230150 | 策略组不存在，请重选 |
 |---|---|
 | yd.error.code.-230151 | 策略组超出限制 |
@@ -3374,8 +3461,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | ErrorInnerUuid.-210606 | internal error: uuid list is 0（内部错误：UUID列表为空） | 内部错误：UUID列表为空。 |
 | ErrorDBSelect.-210124 | internal error: sql select（内部错误:sql select发生错误） | 内部错误:sql select发生错误。 |
 | ErrorParasAddressCidrFeild.- 210915 | paras addressCidrList filed （重置addressCidrList规则失败） | 重置addressCidrList规则失败。 |
-
-加密服务
 
 | ErrorPortAddressGroup.-210303 | get port in address group failed（在群组中获取prot失败） | 在群组中获取prot失败。 |
 |---|---|---|

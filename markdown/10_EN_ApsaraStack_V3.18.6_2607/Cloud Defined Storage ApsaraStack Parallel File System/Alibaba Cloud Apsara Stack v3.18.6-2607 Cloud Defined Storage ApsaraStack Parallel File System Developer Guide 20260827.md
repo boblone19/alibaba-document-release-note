@@ -5,7 +5,7 @@ doc_version: "20260827"
 pdf_pages: 58
 source_pdf: "76d8da31bd2d60ac_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Devel"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20Developer%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Developer Guide 20260827

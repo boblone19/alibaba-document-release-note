@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 211
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for MongoDB Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for MongoDB Developer Guide 20220928
@@ -126,7 +126,7 @@ SDKs
 
 #### 1.1.1 ASAPI overview
 
-This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Stack SDKs Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
+This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Stack SDKs Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
 
 #### 1.1.2 Preparations
 
@@ -185,6 +185,7 @@ Method 3: Concatenate strings to generate an endpoint You can also concatenate s
 https://public.asapi.<region>.<internet-domain>/asapi/v3
 ```
 
+Not e
 1. Replace <region> with your actual region ID. For information about how to query a region ID,
 see Query a region ID.
 2. Replace <internet-domain> with the root domain of your Apsara Stack service. To obtain the
@@ -218,14 +219,14 @@ Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of 
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and click User
 Inf ormat ion.
 3. In the Apsara St ack AccessKey Pair section, obtain the AccessKey pair.
-The AccessKey pair that consists of an AccessKey ID and an AccessKey secret is the credential for you to have full permissions on Apsara Stack resources. Keep your AccessKey pair confidential. Obtain the AccessKey pair of an account that has permissions on an organization To obtain the AccessKey pair of an account that has permissions on an organization, perform the following operations:
+Not e The AccessKey pair that consists of an AccessKey ID and an AccessKey secret is the credential for you to have full permissions on Apsara Stack resources. Keep your AccessKey pair confidential. Obtain the AccessKey pair of an account that has permissions on an organization To obtain the AccessKey pair of an account that has permissions on an organization, perform the following operations:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click Organizat ions.
 4. In the Organizations navigation tree, click the name of the organization that you want to manage.
 5. On the right side of the page, click Obt ain AccessKey Pair.
 6. In the message that appears, obtain the AccessKey pair of the account that has permissions on the
-organization. The system automatically allocates an AccessKey pair to the account that has permissions on the level-1 organization. The same AccessKey pair is used by the accounts that have permissions on the subordinate organizations.
+organization. Not e The system automatically allocates an AccessKey pair to the account that has permissions on the level-1 organization. The same AccessKey pair is used by the accounts that have permissions on the subordinate organizations.
 
 ##### 1.1.2.6 Query a region ID
 
@@ -305,7 +306,7 @@ Stack SDK for Java to the libs folder, as shown in the following figure. Apsara 
 </dependencies>
 ```
 
-Replace `1.0.6-RELEASE` with the actual version of Apsara Stack SDK for Java.
+Not e Replace `1.0.6-RELEASE` with the actual version of Apsara Stack SDK for Java.
 6. On the right side of IntelliJ IDEA, view information in the Maven section.
 Apsara Stack SDKs If the information in the following figure appears, the dependencies are added. Use Apsara Stack SDK for Java You can use the GET or POST method to call API operations provided by the ASAPI. The following sample code shows how to call API operations: Apsara Stack SDKs
 
@@ -343,7 +344,7 @@ pip install aliyun-python2-sdk-asapi-2.4.7.tar.gz
 pip3 install aliyun-python3-sdk-asapi-2.4.7.tar.gz
 ```
 
-Replace `2.4.7` with the actual version of Apsara Stack SDK for Python. Sample requests You can use the GET or POST method to call API operations provided by the ASAPI. Apsara Stack SDKs
+Not e Replace `2.4.7` with the actual version of Apsara Stack SDK for Python. Sample requests You can use the GET or POST method to call API operations provided by the ASAPI. Apsara Stack SDKs
 
 ```python
    # 1. Import dependencies.
@@ -424,7 +425,13 @@ Use Apsara Stack SDK for Node.js The following sample code shows how to use Apsa
     "Version": "<The version of the API operation>",
     "regionId": '<The ID of the region in which the Apsara Stack service is deployed>',
       "<The name of the operation-specific parameter required by the API operation>": "<The
-value of the operation-specific parameter>" // 5. Configure request headers. AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
+value of the operation-specific parameter>"
+```
+
+`}`
+
+```
+// 5. Configure request headers. AsapiClient.addHeader('x-acs-caller-sdk-source', '<The identifier of the requester>') AsapiClient.addHeader('x-acs-roleid', '<The ID of the role>') AsapiClient.addHeader('x-acs-userid', '<The ID of the user>') AsapiClient.addHeader('x-acs-organizationid', '<your-organizationid>') AsapiClient.addHeadert("x-acs-regionid", "<your-regionid>"); AsapiClient.addHeader("x-acs-resourcegroupid", "<your-resourcegroupid>"); AsapiClient.addHeader("x-acs-instanceid", "<your-instanceid>"); // 6. Make an API call and obtain the response. try {
   const res = await AsapiClient.doRequest(cnofig.API_GATEWAY, params, {
     method: 'POST', // The request method.
     formatParams: false, // Specifies whether to format parameters and capitalize the first
@@ -444,7 +451,7 @@ visit https://nodejs.org/api/https.html#https_https_request_options_callback.
   console.log(e)
 ```
 
-Disable certificate validation The following sample code shows how to disable certificate validation:
+`}` Disable certificate validation The following sample code shows how to disable certificate validation:
 
 ```
 Configure the environment variable. NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -525,7 +532,7 @@ Apsara Stack SDKs
             e.printStackTrace();
 ```
 
-The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to use the ROA style to make an API call. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016- 06-07. Sample code:
 
 ```java
 package com.aliyuns.client.pop.cr; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceListTest {
@@ -584,7 +591,7 @@ service resides.
             e.printStackTrace();
 ```
 
-Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
+`}` `}` `}` Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
 ###### 1.1.4.4.2 SDK for Go
 
@@ -611,6 +618,11 @@ func getSdkConfig() *sdk.Config {
   WithMaxTaskQueueSize(10000).
   WithDebug(false).
   WithScheme("HTTP")
+```
+
+`}`
+
+```
 func main(){
  ak := "<The AccessKey ID of your Apsara Stack tenant account.>"
  sk := "<The AccessKey secret of your Apsara Stack tenant account.>"
@@ -661,7 +673,7 @@ Apsara Stack SDKs
  fmt.Print(endpoint)
 ```
 
-Configure proxies You can configure proxies in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY and HTTPS_PROXY environment variables, or set the NO_PROXY environment variable. Sample code:
+`}` Configure proxies You can configure proxies in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY and HTTPS_PROXY environment variables, or set the NO_PROXY environment variable. Sample code:
 
 ```java
 import (
@@ -682,7 +694,7 @@ func main(){
 able.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are conf igured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -754,13 +766,13 @@ The Apsara Stack API (ASAPI) allows you to call API operations by sending HTTP G
 https://public.asapi.aliyuns.com/asapi/v3?Action=GetOrganizationList&Product=ascm&Version=2 019-05-10&Id=<Organization ID>&<Common parameters>
 ```
 
-`https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of the ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation to call. `Id` : the ID of the organization. `<Common parameters>` : the common parameters specified in the system. Apsara Stack SDKs Protocol The ASAPI supports only HTTPS. Endpoint For more information about how to obtain an endpoint, see Generate an endpoint for the ASAPI. To specify an API operation, use the `Action, Product, and Version` parameters. For example, set `Action` to GetOrganizationList, Product to ascm, and Version to 2019-05-10. You must also specify other operation-specific parameters and common parameters. For more information, see Common parameters.
+`https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of the ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation to call. `Id` : the ID of the organization. `<Common parameters>` : the common parameters specified in the system. Apsara Stack SDKs Protocol The ASAPI supports only HTTPS. Endpoint For more information about how to obtain an endpoint, see Generate an endpoint for the ASAPI. Parameter To specify an API operation, use the `Action, Product, and Version` parameters. For example, set `Action` to GetOrganizationList, Product to ascm, and Version to 2019-05-10. You must also specify other operation-specific parameters and common parameters. For more information, see Common parameters.
 
 ##### 1.1.5.3 Request signatures
 
-This topic describes how to sign HTTP API requests. ASAPI uses the request signature to verify the identity of the request sender. ASAPI implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret, which are issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must keep your AccessKey secret confidential. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain the core package for ASAPI. Step 1: Create a canonicalized query string
+This topic describes how to sign HTTP API requests. ASAPI uses the request signature to verify the identity of the request sender. ASAPI implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret, which are issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must keep your AccessKey secret confidential. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain the core package for ASAPI. Step 1: Create a canonicalized query string
 1. Arrange the request parameters in alphabetical order, including all common and operation-specific
-parameters except the `Signature` parameter. If you use the GET method to send a request,these parameters are connected by ampersands (&) and included in the request URL. The first request parameter follows a question mark (?).
+parameters except the `Signature` parameter. Not e If you use the GET method to send a request,these parameters are connected by ampersands (&) and included in the request URL. The first request parameter follows a question mark (?).
 2. Encode the request parameters and their values in UTF-8 based on RFC 3986. The following rules
 apply in the encoding process: Letters, digits, and special characters such as hyphens ( `-` ), underscores ( `_` ), and periods ( `.` ) do not need to be encoded. Apsara Stack SDKs Other characters must be percent encoded in the %XY format. `XY` represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks ( `"` ) are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20 . Do not encode spaces as plus signs ( `+` ). This encoding method is similar to but different from the `application/x-www-form-urlencoded` MIME encoding algorithm. If you use `java.net.URLEncoder` from the Java standard library, use `percentEncode` to encode request parameters and their values. In the encoded query string, replace the plus signs ( `+` ) with %20 , asterisks ( `*` ) with %2A , and %7E with tildes ( ~ ). This way, you can obtain an encoded string that matches the preceding encoding rules.
 
@@ -775,6 +787,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 lace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 3. Use equal signs ( `=` ) to connect the encoded request parameters and their values.
 4. Use ampersands ( `&` ) to connect the encoded request parameters. These parameters must be
 arranged in the same order as those in Step 1. Then, a canonicalized query string that follows the request structure is obtained. For more information, see Request structure. Step 2: Create a string-to-sign
@@ -835,6 +848,7 @@ private static final String ENCODING = "UTF-8"; private static String percentEnc
 eplace("*", "%2A").replace("%7E", "~") : null;
 ```
 
+`}`
 2. Predefine the time format for the `Timestamp` parameter. Specify the `Timestamp` parameter in
 the ISO 8601 format. The time must be in UTC+0.
 
@@ -845,6 +859,7 @@ private static final String ISO8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"; pr
     return df.format(date);
 ```
 
+`}`
 3. Create a request string.
 Apsara Stack SDKs
 
@@ -854,6 +869,11 @@ final String HTTP_METHOD = "GET"; Map parameters = new HashMap(); // Specify req
     canonicalizedQueryString.append("&")
     .append(percentEncode(key)).append("=")
     .append(percentEncode(parameters.get(key)));
+```
+
+`}`
+
+```
 //Encode the canonicalized query string. stringToSign.append(percentEncode( canonicalizedQueryString.toString().substring(1)));
 ```
 
@@ -893,7 +913,7 @@ Responses are returned only in the JSON format. If a return code is greater than
                 "LocalName": ""
 ```
 
-`]` Sample error response If a request fails, the following information is returned. For more information, see the developer guide of the corresponding Apsara Stack service. `{`
+`}` `]` `}` `}` Sample error response If a request fails, the following information is returned. For more information, see the developer guide of the corresponding Apsara Stack service. `{`
 
 ```json
     "code": "asapi.server.api.notfound",// The error code.
@@ -905,7 +925,7 @@ Responses are returned only in the JSON format. If a return code is greater than
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by the ASAPI.
 ```
 
-by function
+`}` by function
 
 ## 2 List of operations by function
 
@@ -1146,7 +1166,7 @@ Sample success responses `XML` format
  "RequestId": "D8F1D721-6439-4257-A89C-F1E8E9C9624D"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1215,9 +1235,11 @@ Sample success responses `XML` format
     "RequestId": "C5662998-62BE-4C7F-961D-7DFE775DD813"
 ```
 
+`}`
+
 #### 3.1.3 DeleteDBInstance
 
-You can call this operation to release an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. After an instance is released, all the data in the instance is lost and cannot be retrieved. Proceed with caution. Request parameters
+You can call this operation to release an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e After an instance is released, all the data in the instance is lost and cannot be retrieved. Proceed with caution. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1250,6 +1272,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "72651AF9-7897-41A7-8B67-6C15C7F26A0A"
 ```
+
+`}`
 
 #### 3.1.4 CreateShardingDBInstance
 
@@ -1332,6 +1356,8 @@ Sample success responses `XML` format
     "RequestId": "D8F1D721-6439-4257-A89C-F1E8E9C9623D"
 ```
 
+`}`
+
 #### 3.1.5 CreateNode
 
 You can call this operation to create the shard or mongos node for an ApsaraDB for MongoDB sharded cluster instances. This operation is applicable only to sharded cluster instances. Request parameters
@@ -1386,6 +1412,8 @@ Sample success responses `XML` format
  "RequestId": "7D48FB19-20CA-4725-A870-3D8F5CE69F14"
 ```
 
+`}`
+
 #### 3.1.6 DeleteNode
 
 You can call this operation to delete a shard or mongos in an ApsaraDB for MongoDB sharded cluster instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A sharded cluster instance is used. The number of shard or mongos nodes in the instance must be greater than two. Request parameters
@@ -1429,6 +1457,8 @@ Sample success responses `XML` format
     "RequestId": "9F9BDE64-BF30-41F3-BD29-C19CE4AB3404",
     "TaskId": 111111111
 ```
+
+`}`
 
 #### 3.1.7 ModifyNodeSpec
 
@@ -1485,11 +1515,13 @@ Sample success responses `XML` format
     "RequestId": "EFFC5788-8BB5-41B5-9F15-9CFC5A0E8FCC"
 ```
 
+`}`
+
 ### 3.2 Region management
 
 #### 3.2.1 MigrateToOtherZone
 
-You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call the ReleasePublicNet workAddress operation to release the public endpoint. Request parameters
+You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances. Not e If you have applied for a public endpoint of the instance, you must first call the ReleasePublicNet workAddress operation to release the public endpoint. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1522,6 +1554,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
 ```
+
+`}`
 
 #### 3.2.2 DescribeRegions
 
@@ -1647,11 +1681,11 @@ Sample success responses `XML` format
        "ZoneId": "cn-hangzhou-g"
 ```
 
-`]` `]`
+`}` `]` `}` `}` `]` `}` `}`
 
 #### 3.2.3 MigrateAvailableZone
 
-You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call ReleasePublicNet workAddress to release the public endpoint. Request parameters
+You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. Not e If you have applied for a public endpoint of the instance, you must first call ReleasePublicNet workAddress to release the public endpoint. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1686,6 +1720,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
 ```
+
+`}`
 
 ### 3.3 Resource management
 
@@ -1858,7 +1894,7 @@ S: 14000)</InstanceClassRemark>
                                                     "InstanceClass":"dds.mongo.2xlarge"
 ```
 
-`]` `]` `]` `]` `]` `]`
+`}` `]` `}` `]` `}` `]` `}` `]` `}` `]` `}` `]` `}`
 
 ### 3.4 Connection management
 
@@ -1897,6 +1933,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "B6D17591-B48B-4D31-9CD6-9B9796B2270A"
 ```
+
+`}`
 
 #### 3.4.2 ReleasePublicNetworkAddress
 
@@ -1974,6 +2012,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "BA51E9D9-B14A-4542-B6E6-7DE00BECCB8C"
 ```
+
+`}`
 
 #### 3.4.4 DescribeShardingNetworkAddress
 
@@ -2070,7 +2110,7 @@ Sample success responses `XML` format
             "VswitchId":"vsw-bpxxxxxxxx"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "RequestId":"18D8AAFD-6BEB-420F-8164-810CB0C0AA39",
@@ -2092,7 +2132,7 @@ Sample success responses `XML` format
             "VswitchId":"vsw-bpxxxxxxxx"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 3.4.5 ModifyDBInstanceConnectionString
 
@@ -2135,9 +2175,11 @@ Sample success responses `XML` format
  "RequestId": "FF36A84C-0694-42D0-861D-C383E8E4FAAF"
 ```
 
+`}`
+
 #### 3.4.6 ReleaseNodePrivateNetworkAddress
 
-You can call this operation to release the internal endpoint of the shard or Configserver node of a sharded cluster instance. This operation is only applicable to sharded cluster instances. For more information, see Release endpoints of shard or Configserver nodes. This operation releases the internal endpoint of the node. If you have also applied for a public endpoint of the node and want to release it, you can call the ReleasePublicNetworkAddress operation to release the public endpoint. Request parameters
+You can call this operation to release the internal endpoint of the shard or Configserver node of a sharded cluster instance. This operation is only applicable to sharded cluster instances. For more information, see Release endpoints of shard or Configserver nodes. Not e This operation releases the internal endpoint of the node. If you have also applied for a public endpoint of the node and want to release it, you can call the ReleasePublicNetworkAddress operation to release the public endpoint. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2174,6 +2216,8 @@ Sample success responses `XML` format
 ```json
  "RequestId":"0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
 ```
+
+`}`
 
 ### 3.5 Instance information query
 
@@ -2302,7 +2346,7 @@ Sample success responses `XML` format
     "RoleId": "55xxxxx"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 3.5.2 DescribeKernelReleaseNotes
 
@@ -2363,7 +2407,7 @@ Sample success responses `XML` format
                 "ReleaseNote":"Released the balancer limit for a sharded set"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 #### 3.5.3 DescribeAvailableEngineVersion
 
@@ -2414,6 +2458,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "52507B6B-003B-47A3-A0A3-9FE992C7A243"
 ```
+
+`}`
 
 #### 3.5.4 DescribeDBInstances
 
@@ -2610,7 +2656,7 @@ Sample success responses `XML` format
    "Key": "test"
 ```
 
-`}]` `}]`
+`}]` `}]` `}`
 
 #### 3.5.5 DescribeDBInstanceAttribute
 
@@ -2917,7 +2963,7 @@ ple.com:3717</ConnectString>
                     "MaxIOPS":"8000"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "ConfigserverList":[
@@ -2937,7 +2983,7 @@ ngodb.rds.example.com:3717",
                     "MaxIOPS":"1000"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "MongosList":[
@@ -2958,7 +3004,7 @@ ngodb.rds.example.com:3717",
                     "MaxIOPS":"0"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "Tags":[
@@ -2971,7 +3017,7 @@ ngodb.rds.example.com:3717",
                     "Key":"test"
 ```
 
-`],`
+`}` `],`
 
 ```json
             "ReplicaSets":[
@@ -2993,7 +3039,7 @@ ngodb.rds.example.com:3717",
                     "VSwitchId":"vsw-bpxxxxxxxx"
 ```
 
-`]` `]`
+`}` `]` `}` `]` `}`
 
 #### 3.5.6 DescribeRoleZoneInfo
 
@@ -3094,11 +3140,13 @@ Sample success responses `XML` format
     "RoleId": "83xxxxx"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "728B9A96-E262-4AE5-915E-3A51CCE2FDA9"
 ```
+
+`}`
 
 ### 3.6 Instance management
 
@@ -3141,6 +3189,8 @@ Sample success responses `XML` format
  "RequestId": "149C517D-B586-47BE-A107-8673E0ED77C6"
 ```
 
+`}`
+
 #### 3.6.2 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an ApsaraDB for MongoDB instance. Request parameters
@@ -3180,6 +3230,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "A9310426-C763-42A2-A3AD-70A8DA204531"
 ```
+
+`}`
 
 #### 3.6.3 ModifyDBInstanceDescription
 
@@ -3223,7 +3275,7 @@ Sample success responses `XML` format
 
 #### 3.6.4 SwitchDBInstanceHA
 
-You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes. Request parameters
+You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3262,9 +3314,11 @@ Sample success responses `XML` format
  "RequestId": "26BD4E5F-BDB4-47BA-B232-413AA78CFA8F"
 ```
 
+`}`
+
 #### 3.6.5 UpgradeDBInstanceEngineVersion
 
-You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The available database versions are subject to the storage engine used by the instance. You can call the DescribeAvailableEngineVersion operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours. Request parameters
+You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e The available database versions are subject to the storage engine used by the instance. You can call the DescribeAvailableEngineVersion operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3301,6 +3355,8 @@ Sample success responses `XML` format
  "RequestId": "C4907B00-A208-4E0C-A636-AA85140E406C"
 ```
 
+`}`
+
 #### 3.6.6 UpgradeDBInstanceKernelVersion
 
 You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The instance will be restarted once during the upgrade. Perform this operation during off-peak hours. Request parameters
@@ -3335,6 +3391,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "27B9A130-7C4B-40D9-84E8-2FC081097AAC"
 ```
+
+`}`
 
 #### 3.6.7 ModifyDBInstanceNetExpireTime
 
@@ -3373,11 +3431,13 @@ Sample success responses `XML` format
  "RequestId": "459E7D5C-38DA-4E14-9C82-5B5AF693DBAB"
 ```
 
+`}`
+
 ### 3.7 Account management
 
 #### 3.7.1 DescribeAccounts
 
-You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance. This operation can display only the information of the root account. Request parameters
+You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance. Not e This operation can display only the information of the root account. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3439,15 +3499,17 @@ Sample success responses `XML` format
                 "AccountName": "root"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "A806B0FC-CFCC-48D8-8AEC-34C892806B40"
 ```
 
+`}`
+
 #### 3.7.2 ResetAccountPassword
 
-You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. This operation can reset only the password of the root account of an instance. Request parameters
+You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. Not e This operation can reset only the password of the root account of an instance. Request parameters
 
 | Parameter | Type | Required |   | Example | Description |   |
 |---|---|---|---|---|---|---|
@@ -3483,6 +3545,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "06CBD06E-ABC9-4121-AB93-3C3820B3E7E6"
 ```
+
+`}`
 
 #### 3.7.3 ModifyAccountDescription
 
@@ -3579,15 +3643,17 @@ Sample success responses `XML` format
     "NetType": "classic"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "D18F5B88-ACA6-470E-9493-384412EDD902"
 ```
 
+`}`
+
 #### 3.8.2 ModifySecurityGroupConfiguration
 
-You can call this operation to modify the ECS Security group that is bound to an ApsaraDB for MongoDB instance. For a sharded cluster instance, the bound ECS security group takes effect only for the mongos node. Request parameters
+You can call this operation to modify the ECS Security group that is bound to an ApsaraDB for MongoDB instance. Not e For a sharded cluster instance, the bound ECS security group takes effect only for the mongos node. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3693,12 +3759,14 @@ Sample success responses `XML` format
     "SecurityIpGroupName": "default"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "SecurityIps": "47.xxx.xxx.xx,100.xxx.xxx.0/24",
  "RequestId": "FC724D23-2962-479E-ABB1-606C935AE7FD"
 ```
+
+`}`
 
 #### 3.8.4 ModifySecurityIps
 
@@ -3742,6 +3810,8 @@ Sample success responses `XML` format
  "RequestId": "61B05CCF-EBAB-4BF3-BA67-D77256A721E2"
 ```
 
+`}`
+
 ### 3.9 Key management
 
 #### 3.9.1 DescribeDBInstanceTDEInfo
@@ -3782,9 +3852,11 @@ Sample success responses `XML` format
     "RequestId":"F4DD0E29-361B-42F2-9301-B0048CCCE5D6"
 ```
 
+`}`
+
 #### 3.9.2 ModifyDBInstanceTDE
 
-You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. Request parameters
+You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. Not e After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3827,7 +3899,7 @@ Sample success responses `XML` format
  "RequestId": "434D7127-6229-4355-BA50-7A3685A725DF"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3838,7 +3910,7 @@ Error codes
 
 #### 3.10.1 ModifyDBInstanceSSL
 
-You can call this operation to modify the SSL settings of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A replica set instance is used. The database engine version of the instance is 3.4, 4.0, or 4.2. Whenever you enable or disable SSL encryption, or update the SSL certificate, the instance will restart. We recommend that you call this operation during off-peak hours. Request parameters
+You can call this operation to modify the SSL settings of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A replica set instance is used. The database engine version of the instance is 3.4, 4.0, or 4.2. Not e Whenever you enable or disable SSL encryption, or update the SSL certificate, the instance will restart. We recommend that you call this operation during off-peak hours. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3875,7 +3947,7 @@ Sample success responses `XML` format
  "RequestId": "6D806B11-078F-4154-BF9F-844F56D08964"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3931,6 +4003,8 @@ Sample success responses `XML` format
     "RequestId":"36BB1BC2-789C-4BBA-A519-C5B388E4B0D4",
     "CertCommonName":"dds-bpxxxxxxxx.mongodb.rds.example.com"
 ```
+
+`}`
 
 ### 3.11 Audit logs
 
@@ -4033,7 +4107,7 @@ esult\": \"OK\" }</Syntax>
             "AccountName":"root"
 ```
 
-`]` Error codes
+`}` `]` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4122,7 +4196,7 @@ xxxx_xxxxxx.csv",
     "LogSize": 98
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "PageNumber": 1,
@@ -4131,7 +4205,7 @@ xxxx_xxxxxx.csv",
  "PageRecordCount": 1
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4176,6 +4250,8 @@ Sample success responses `XML` format
  "RequestId": "111E7B16-0A87-4CBA-B271-F34AD61E099F"
 ```
 
+`}`
+
 #### 3.11.4 ModifyAuditLogFilter
 
 You can call this operation to modify the type of audit logs to be collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
@@ -4213,9 +4289,11 @@ Sample success responses `XML` format
  "RequestId": "E209BE2B-F264-4B9D-81F6-A5A5FB1FBF28"
 ```
 
+`}`
+
 #### 3.11.5 DescribeAuditLogFilter
 
-You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
+You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. Not e This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4257,6 +4335,8 @@ Sample success responses `XML` format
  "RoleType": "",
  "RequestId": "D7C8BA0C-9350-487D-9B70-D69AF27FB1EB"
 ```
+
+`}`
 
 #### 3.11.6 ModifyAuditPolicy
 
@@ -4396,6 +4476,8 @@ stomer\",\"filter\":{\"name\":\"jack\"}}}</SQLText>
  "Engine": "MongoDB"
 ```
 
+`}`
+
 #### 3.12.2 DescribeErrorLogRecords
 
 You can call this operation to view the error logs of an ApsaraDB for MongoDB instance. Request parameters
@@ -4481,11 +4563,13 @@ Sample success responses `XML` format
                 "CreateTime":"2019-02-26T12:09:34Z"
 ```
 
-`]`
+`}` `]`
 
 ```
     },"Engine":"MongoDB"
 ```
+
+`}`
 
 #### 3.12.3 DescribeRunningLogRecords
 
@@ -4593,13 +4677,15 @@ open)</Content>
 ctions now open)"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "PageNumber": 1,
     "TotalRecordCount": 2,
     "RequestId": "45D2B592-DEBA-4347-BBF3-47FF6C97DBBC"
 ```
+
+`}`
 
 ### 3.13 Performance monitoring management
 
@@ -4702,7 +4788,7 @@ Sample success responses `XML` format
                     "Date":"2019-03-11T12:21:51Z"
 ```
 
-`]` `],`
+`}` `]` `}` `],`
 
 ```json
     "EndTime":"2019-03-11T12:30Z",
@@ -4711,6 +4797,8 @@ Sample success responses `XML` format
     "StartTime":"2019-03-11T12:20Z",
     "Engine":"MongoDB"
 ```
+
+`}`
 
 #### 3.13.2 DescribeDBInstanceMonitor
 
@@ -4746,6 +4834,8 @@ Sample success responses `XML` format
  "Granularity": 300,
  "RequestId": "EFD65226-08CC-4C4D-B6A4-CB3C382F67B0"
 ```
+
+`}`
 
 ### 3.14 Parameter management
 
@@ -4820,11 +4910,13 @@ Sample success responses `XML` format
     "ParameterName": "operationProfiling.slowOpThresholdMs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "B1BB6E0E-B4EF-4145-81FA-A07719860248"
 ```
+
+`}`
 
 #### 3.14.2 DescribeParameters
 
@@ -4965,7 +5057,7 @@ e profiler considers a query slow, default is 100.",
                 "ParameterName": "operationProfiling.slowOpThresholdMs"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "RequestId": "3ADD0C7D-2D2A-4F15-88FF-E7AC9B9FDCC8",
@@ -5037,14 +5129,14 @@ default is 33554432(i.e. 32MB)",
                 "ParameterName": "setParameter.internalQueryExecMaxBlockingSortBytes"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
     "EngineVersion": "4.0",
     "Engine": "mongodb"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5053,7 +5145,7 @@ Error codes
 
 #### 3.14.3 ModifyParameters
 
-You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the DescribeParamet erT emplat es operation to query the parameters that take effect only after the instance is restarted. Request parameters
+You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. Not e If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the DescribeParamet erT emplat es operation to query the parameters that take effect only after the instance is restarted. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5091,6 +5183,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "36923CC2-DDAB-4B48-A144-DA92C1E19537"
 ```
+
+`}`
 
 ### 3.15 Backup and recovery
 
@@ -5135,6 +5229,8 @@ Sample success responses `XML` format
     "BackupRetentionPeriod":"7"
 ```
 
+`}`
+
 #### 3.15.2 ModifyBackupPolicy
 
 You can call this operation to modify the backup policy of an ApsaraDB for MongoDB instance. Request parameters
@@ -5174,6 +5270,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "644A359C-B871-4DD3-97B5-ED91EF5809C2"
 ```
+
+`}`
 
 #### 3.15.3 CreateBackup
 
@@ -5311,11 +5409,11 @@ xxxxx/xxxxx.tar.gz",
             "BackupStatus":"Success"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 3.15.5 RestoreDBInstance
 
-You can call this operation to restore data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances. You also can use the following methods to clone an instance: Create an instance from a backup to clone a standalone instance. Call the CreateShardingDBInstance operation to clone a sharded cluster instance. This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution. Request parameters
+You can call this operation to restore data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances. You also can use the following methods to clone an instance: Create an instance from a backup to clone a standalone instance. Call the CreateShardingDBInstance operation to clone a sharded cluster instance. Not e This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5351,6 +5449,8 @@ Sample success responses `XML` format
 ```json
  "RequestId": "973DCB8F-56B3-4102-8777-3A90495927F7"
 ```
+
+`}`
 
 #### 3.15.6 DescribeBackupDBs
 
@@ -5408,7 +5508,7 @@ Sample success responses `XML` format
             "DBName":"mongodbtest"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageSize":"30",
@@ -5416,7 +5516,7 @@ Sample success responses `XML` format
     "PageNumber":"1"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|

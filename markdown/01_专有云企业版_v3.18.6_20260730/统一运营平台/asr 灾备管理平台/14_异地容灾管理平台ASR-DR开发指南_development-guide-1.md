@@ -5,14 +5,98 @@ doc_version: "20260729"
 pdf_pages: 183
 source_pdf: "14_异地容灾管理平台ASR-DR开发指南_development-guide-1.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/asr/zh/development-guide-1.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 灾备管理平台 异地容灾管理平台ASR-DR开发指南
 
-灾备管理中心流程说明
+## 目录
 
-## API调用流程说明
+- 1 API调用流程说明
+- 2 准备工作
+  - 2.1 获取AccessKey
+  - 2.2 获取API信息及其Endpoint
+  - 2.3 通过POP网关调用专有云API
+- 3 Java SDK调用示例
+  - 3.1 安装Java SDK
+  - 3.2 设置身份验证凭证
+  - 3.3 发起调用请求
+  - 3.4 错误处理
+- 4 API参考
+  - 4.1 旧版API（已停止维护）
+    - 4.1.1 API概览
+    - 4.1.2 初始化操作
+      - 4.1.2.1 InitUser
+    - 4.1.3 云实例
+      - 4.1.3.1 CreateBackupCloud
+      - 4.1.3.2 CreateMainCloud
+      - 4.1.3.3 DescribeBackupCloud
+      - 4.1.3.4 DescribeCloud
+      - 4.1.3.5 ListMainCloud
+      - 4.1.3.6 ListSupportRegion
+      - 4.1.3.7 UpdateBackupCloud
+      - 4.1.3.8 UpdateMainCloud
+      - 4.1.3.9 UpdateProductConfig
+      - 4.1.3.10 UpdateProductConfig
+    - 4.1.4 保护组
+      - 4.1.4.1 CreateProtectGroup
+      - 4.1.4.2 DescribeProtectGroup
+      - 4.1.4.3 ListProtectGroup
+      - 4.1.4.4 RemoveProtectGroup
+      - 4.1.4.5 UpdateProtectGroup
+      - 4.1.5.1 CreatePlan
+      - 4.1.5.2 DescribePlan
+      - 4.1.5.3 DescribePlanInstance
+      - 4.1.5.4 ListPlan
+      - 4.1.5.5 ListPlanInstance
+      - 4.1.5.6 RemovePlan
+      - 4.1.5.7 StartPlan
+      - 4.1.5.8 StartUserTask
+      - 4.1.5.9 UpdatePlan
+  - 4.2 新版API
+    - 4.2.1 API概览
+    - 4.2.2 云实例
+      - 4.2.2.1 UpdateCloudInstance
+      - 4.2.2.2 ListCloudInstances
+      - 4.2.2.3 GetCloudInstance
+      - 4.2.2.4 DeleteCloudInstance
+      - 4.2.2.5 ListCloudCenter
+      - 4.2.2.6 CreateCloudInstanceFromCloudCenter
+    - 4.2.3 容灾关系
+      - 4.2.3.1 UpdateDrGroup
+      - 4.2.3.2 ListDrGroups
+      - 4.2.3.3 GetDrGroup
+      - 4.2.3.4 DeleteDrGroup
+      - 4.2.3.5 CreateDrGroup
+    - 4.2.4 保护组
+      - 4.2.4.1 UpdateProtectGroup
+      - 4.2.4.2 ProtectGroupCtl
+      - 4.2.4.3 ListProtectGroups
+      - 4.2.4.4 GetProtectGroup
+      - 4.2.4.5 DeleteProtectGroup
+      - 4.2.4.6 CreateProtectGroup
+    - 4.2.5 同步实体
+      - 4.2.5.1 UpdateSyncGroup
+      - 4.2.5.2 SyncGroupCtl
+      - 4.2.5.3 ListSyncGroups
+      - 4.2.5.4 GetSyncGroup
+      - 4.2.5.5 DeleteSyncGroup
+      - 4.2.5.6 CreateSyncGroup
+    - 4.2.6 容灾计划
+      - 4.2.6.1 UpdateRecoveryPlan
+      - 4.2.6.2 RecoveryTaskCtl
+      - 4.2.6.3 ListRecoveryTasks
+      - 4.2.6.4 ListRecoveryPlans
+      - 4.2.6.5 GetRecoveryTask
+      - 4.2.6.6 GetRecoveryPlan
+      - 4.2.6.7 DeleteRecoveryTask
+      - 4.2.6.8 DeleteRecoveryPlan
+      - 4.2.6.9 CreateRecoveryTask
+      - 4.2.6.10 CreateRecoveryPlan
+
+流程说明
+
+## 1 API调用流程说明
 
 阿里云专有云支持通过POP网关调用异地容灾管理平台ASR-DR的API。
 
@@ -23,34 +107,32 @@ converter: line-classifier (PyMuPDF)
 **调用步骤**
 
 1. 获取API信息。
+API信息请参见API参考。
 2. 获取AccessKey ID和AccessKey Secret，获取方式请参见获取AccessKey。
 3. 获取异地容灾管理平台ASR-DR的Endpoint和Region ID，获取方式请参见获取API信息及其Endpoint。
 4. 获取异地容灾管理平台ASR-DR的SDK包和SDK核心库，获取方法请参见通过POP网关调用专有云API。
 5. 调用异地容灾管理平台ASR-DR的API。
 
-**说明**
+> **说明：** 只支持用户账号调用，调用API的用户必须具有运营管理员、组织管理员、全局容灾管理员、 组织容灾管理员任一角色。
 
-只支持用户账号调用，调用API的用户必须具有运营管理员、组织管理员、全局容灾管理员、 组织容灾管理员任一角色。 灾备管理中心
+## 2 准备工作
 
-## 准备工作
+### 2.1 获取AccessKey
 
-### 获取AccessKey
+> 本文介绍获取AccessKey ID和AccessKey Secret的具体操作。
+> **背景信息**
+> AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。
 
-**背景信息**
+**获取AccessKey**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。其中AccessKey ID用于标识用户，AccessKey Secret是用户用于加密签名的字符串。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号 AccessKey调用接口。
+> Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey。推荐使用个人账号 AccessKey调用接口。
 
 **说明**
 
 只有运营管理员和一级组织管理员可以获取组织AccessKey。
 
-**获取个人账号AccessKey时，请确保登录的用户具备运营管理员、组织**
-
-**管理员、全局容灾管理员、组织容灾管理员任一角色，否则可能导致接口**
-
-**调用失败。**
-
-**获取个人账号AccessKey**
+> **获取个人账号****AccessKey****时，请确保登录的用户具备****运营管理员、组织** **管理员、全局容灾管理员、组织容灾管理员****任一角色，否则可能导致接口** **调用失败。**
+> **获取个人账号****AccessKey**
 
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
@@ -60,20 +142,19 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 
 AccessKey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
-**获取组织AccessKey**
+> **获取组织****AccessKey**
 
 **警告**
 
 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，组织 AccessKey相对权限较大，需要管理员确认操作的安全性。
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-灾备管理中心
 3. 在左侧导航栏中，选择**资源管理**>**组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取API信息及其Endpoint
+### 2.2 获取API信息及其Endpoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -90,9 +171,8 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 5. 在**版本**下拉列表中，选择目标API版本。
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取ASR-DR的POP Endpoint和其他接口信息。
-灾备管理中心
 
-### 通过POP网关调用专有云API
+### 2.3 通过POP网关调用专有云API
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式（RPC或ROA）。
 
@@ -101,13 +181,11 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
-RPC调用，示例接口信息：产品（ASR-DR）、接口（InitSelfDrConfig）、版本（2023-10-01）。 调用示例如下： 灾备管理中心
+RPC调用，示例接口信息：产品（ASR-DR）、接口（InitSelfDrConfig）、版本（2023-10-01）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class InitSelfDrConfig {
@@ -157,12 +235,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（ASR-DR）接口（InitSelfDrConfig）版本（2023-10-01）。 调用示例如下： 灾备管理中心
+`}` `}` `}` ROA调用，示例接口信息：产品（ASR-DR）接口（InitSelfDrConfig）版本（2023-10-01）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class InitSelfDrConfig {
@@ -210,10 +285,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **重要**
 
@@ -229,11 +303,11 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-灾备管理中心
+K调用示例
 
-## Java SDK调用示例
+## 3 Java SDK调用示例
 
-### 安装Java SDK
+### 3.1 安装Java SDK
 
 本文介绍如何安装异地容灾管理平台ASR-DR的Java SDK。
 
@@ -265,35 +339,25 @@ clientConfig.setIgnoreSSLCerts(true)
 </dependencies>
 ```
 
-### 设置身份验证凭证
+### 3.2 设置身份验证凭证
 
 使用阿里云专有云SDK访问阿里云专有云服务时，您需要提供授权的账号进行身份验证。 Java SDK支持通过AccessKey进行身份验证，获取AccessKey ID和AccessKey Secret的方法请参见获取AccessKey，获取Endpoint的方法请参见获取Endpoint，获取Region ID的方法请参见获取Region ID。 使用AccessKey作为访问凭据时，需要在初始化Client时设置凭证。
 
 **重要**
 
-请确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。 灾备管理中心 `//`配置请求`Endpoint`
+请确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的信息安全。 K调用示例 `//`配置请求`Endpoint`
 
 ```
 DefaultProfile.addEndpoint(
 ```
 
-`"<EndpointName>", //`请替换为您实际的`Endpoint`名称：`Asrdr` `"<RegionId>", //`请替换为您实际的地域`ID` `"<ProductCode>", //`请替换为您实际的产品`CODE`：`Asrdr` `"<Endpoint>" //`请替换为您实际的产品请求域名
-
-```
-);
-```
-
-`//`配置身份验证凭证
+`"<EndpointName>", //`请替换为您实际的`Endpoint`名称：`Asrdr` `"<RegionId>", //`请替换为您实际的地域`ID` `"<ProductCode>", //`请替换为您实际的产品`CODE`：`Asrdr` `"<Endpoint>" //`请替换为您实际的产品请求域名 ); `//`配置身份验证凭证
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
 ```
 
-`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKeySecret`
-
-```
-);
-```
+`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKeySecret` );
 
 **说明**
 
@@ -305,11 +369,10 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 数，需要替换为其实际值，尖括号（<>）在最终代码中不保留。 请使用具备运营管理员、组织管理员、全局容灾管理员、组织容灾管理员任一角色的用户调用异地容灾管理平台ASR-DR的API。
 
-### 发起调用请求
+### 3.3 发起调用请求
 
-本文介绍如何使用Java SDK发起请求。
-
-**操作步骤**
+> 本文介绍如何使用Java SDK发起请求。
+> **操作步骤**
 
 1. 新建一个AcsClient。
 
@@ -318,7 +381,7 @@ DefaultAcsClient client = new DefaultAcsClient(profile);
 ```
 
 2. 创建请求。
-请求类的命名规范为${apiName}Request，其中**${apiName}**为API名称，例
+请求类的命名规范为${apiName}Request，其中**${apiName}**为API名称，例如DescribeBackupCloud。
 
 ```
 DescribeBackupCloudRequest request = new DescribeBackupCloudRequest();
@@ -333,7 +396,7 @@ DescribeBackupCloudResponse response = client.getAcsResponse(request); System.ou
 
 **完整调用示例**
 
-以下代码为异地容灾管理平台ASR-DR的 `DescribeBackupCloud` 接口调用示例。 灾备管理中心
+以下代码为异地容灾管理平台ASR-DR的 `DescribeBackupCloud` 接口调用示例。 K调用示例
 
 ```java
 import com.aliyuncs.asrdr.model.v20220209.*; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.http.MethodType; import com.chenxue.product.api.base.ApiBaseInfo; import com.chenxue.product.api.base.ProductBaseApi; import com.google.gson.Gson; import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class AsrdrApi extends ProductBaseApi {
@@ -348,25 +411,13 @@ xception {
         DefaultProfile.addEndpoint(
 ```
 
-`"<EndpointName>", //`请替换为您实际的`Endpoint`名称：`Asrdr` `"<RegionId>", //`请替换为您实际的地域`ID` `"<ProductCode>", //`请替换为您实际的产品`CODE`：`Asrdr` `"<Endpoint>" //`请替换为您实际的产品请求域名
-
-```
-        );
-```
-
-`//`配置身份验证凭证
+`"<EndpointName>", //`请替换为您实际的`Endpoint`名称：`Asrdr` `"<RegionId>", //`请替换为您实际的地域`ID` `"<ProductCode>", //`请替换为您实际的产品`CODE`：`Asrdr` `"<Endpoint>" //`请替换为您实际的产品请求域名 ); `//`配置身份验证凭证
 
 ```
         DefaultProfile profile = DefaultProfile.getProfile(
 ```
 
-`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKeySecret`
-
-```
-        );
-```
-
-`//` 构造客户端
+`"<yourRegionID>", //` 请替换为您实际的地域`ID` `"<yourAccessKeyID>", //` 请替换为您实际的`AccessKeyID` `"<yourAccessKeySecret>", //` 请替换为您实际的`AccessKeySecret` ); `//` 构造客户端
 
 ```
         DefaultAcsClient client = new DefaultAcsClient(profile);
@@ -386,20 +437,26 @@ xception {
 ```java
         DescribeBackupCloudResponse response = client.getAcsResponse(request);
         System.out.println(response.getData());
-      }
-    }
-}
 ```
 
-### 错误处理
+`}` `}` `}`
 
-在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。 一般情况下，您不需要根据Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。 ServerException是服务端错误信息。 ClientException是SDK端错误信息。 灾备管理中心例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
+### 3.4 错误处理
+
+> 在使用Java SDK时，当服务端或者SDK端出错时，SDK会返回相应的异常信息。这些异常信息中会包含具体的错误信息，包括错误码（Error Code）和错误消息（Error Message）。
+> 一般情况下，您不需要根据Java SDK返回的错误进行处理。您只需要根据服务端的错误提示处理服务端错误即可。
+> ServerException是服务端错误信息。
+> ClientException是SDK端错误信息。
+
+K调用示例
+
+> 例如，当出现如下错误时，您可以根据具体的错误信息，修改AccessKey的ID即可。
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
+> 如果您需要对SDK的错误进行处理，可以参考如下示例编写代码：
 
 ```
 try {
@@ -421,16 +478,17 @@ try {
     e.printStackTrace();
 } catch (ServerException e) {
     e.printStackTrace();
-}
 ```
 
-灾备管理中心
+`}`
 
-## API参考
+## 4 API参考
 
-### 旧版API（已停止维护）
+### 4.1 旧版API（已停止维护）
 
-#### API概览
+旧版API已于企业版v3.18.6版本停止维护，如有需要请使用新版API。
+
+#### 4.1.1 API概览
 
 | API | 版本 | 描述 |
 |---|---|---|
@@ -450,7 +508,7 @@ try {
 | RemoteProtectGroup | 2022-02-09 | 删除保护组 |
 | UpdateProtectGroup | 2022-02-09 | 更新保护组 |
 
-| 异地容灾管理平台开发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|
 
 | CreatePlan | 2022-02-09 | 创建计划 |
@@ -464,9 +522,11 @@ try {
 | StartUserTask | 2022-02-09 | 开始执行用户计划 |
 | UpdatePlan | 2022-02-09 | 更新计划 |
 
-#### 初始化操作
+#### 4.1.2 初始化操作
 
-##### InitUser
+##### 4.1.2.1 InitUser
+
+调用InitUser初始化用户信息。
 
 **请求头**
 
@@ -482,8 +542,6 @@ try {
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestID | String | 4558c408********3 7b0c94e | 请求ID。 |
@@ -491,7 +549,7 @@ try {
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | docker0100170490 17 | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 用户信息。 |
+| Data | Struct |   | 用户信息。 |
 | -PrimaryKey | String | 28********71 | 用户UID。 |
 | -Name | String | admin | 用户名。 |
 | -DisplayName | String | admin | 显示名。 |
@@ -501,27 +559,29 @@ try {
 请求示例
 
 ```
-&**************************Uk &******************************Zp
+http(s)://[Endpoint]/?Action=InitUser &**************************Uk &******************************Zp
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestID":"4558c408********37b0c94e",
  "Data":{
   "DisplayName":"admin",
   "PrimaryKey":"28********71",
   "Name":"admin"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"docker010017049017"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>4558c408********37b0c94e</RequestID> <Data>
@@ -531,9 +591,11 @@ try {
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>docker010017049017</NodeHost>
 ```
 
-#### 云实例
+#### 4.1.3 云实例
 
-##### CreateBackupCloud
+##### 4.1.3.1 CreateBackupCloud
+
+调用CreateBackupCloud创建灾备云。
 
 **请求头**
 
@@ -546,8 +608,6 @@ try {
 | Address | Strin g | Quer y | 是 | http://internal.example.xx xxx | 云管API Endpoint。 |
 | CloudNam e | Strin g | Quer y | 是 | backup-212e | 云实例名称。 |
 | CloudType | Strin g | Quer y | 是 | BACKUP | 云实例的主备类型，必填 BACKUP。 |
-
-灾备管理中心
 
 | CloudOSTy pe | Strin g | Quer y | 是 | ENTERPRISE | 云版本类型，必填 ENTERPRISE，只支持专有云企业版。 |
 |---|---|---|---|---|---|
@@ -569,22 +629,24 @@ try {
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "RequestID":"4383c8********ad53c7",
  "Data":{
   "Id":"ffe130bc********24c76d6d"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"docker010017049017"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>4383c8********ad53c7</RequestID> <Data>
@@ -592,7 +654,9 @@ try {
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>docker010017049017</NodeHost>
 ```
 
-##### CreateMainCloud
+##### 4.1.3.2 CreateMainCloud
+
+调用CreateMainCloud创建主云。
 
 **请求头**
 
@@ -606,8 +670,6 @@ try {
 | CloudNam e | Strin g | Quer y | 是 | 212e | 云实例名称。 |
 | CloudScen e | Strin g | Quer y | 是 | MULTIPLE CLOUD _ | 容灾类型，必填 MULTIPLE CLOUD，只支持 _ 跨云容灾。 |
 | CloudOSTy pe | Strin g | Quer y | 是 | ENTERPRISE | 云版本类型，必填 ENTERPRISE，只支持专有云企业版。 |
-
-灾备管理中心
 
 | CloudCons oleType | Strin g | Quer y | 是 | ASCM | 云管类型，必填ASCM，只支持ASCM。 |
 |---|---|---|---|---|---|
@@ -626,7 +688,9 @@ try {
 | Data | Struct | - | 生产云详细信息。 |
 | -Id | String | ffe1********6d6d | 生产云ID。 |
 
-##### DescribeBackupCloud
+##### 4.1.3.3 DescribeBackupCloud
+
+调用DescribeBackupCloud查询灾备云详情。
 
 **请求头**
 
@@ -637,15 +701,13 @@ try {
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-灾备管理中心
-
 | RequestID | String | b87055********9f4 33d | 请求ID。 |
 |---|---|---|---|
 | Result | String | SUCCESS | 请求结果，取值含义如下： SUCCESS：成功 FAILED：失败 |
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 灾备云详细信息。 |
+| Data | Struct |   | 灾备云详细信息。 |
 | -Address | String | http://internal.exa mple.xxxxx | 云管API Endpoint。 |
 | -CloudName | String | backup-212e | 云实例名称。 |
 | -CloudType | String | BACKUP | 云实例的主备类型，只支持BACKUP。 |
@@ -655,20 +717,15 @@ try {
 | - UserAccessKe ySecret | String | ClH**************** *********qf | 灾备云运营管理员的SK。 |
 | -CloudId | String | 0d3aed29********d 6502cd3 | 云实例ID。 |
 
-灾备管理中心
-
-**示例**
-
 请求示例
 
 ```
 http(s)://[Endpoint]/?Action=DescribeBackupCloud
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"b87055********9f433d",
  "Data":{
   "CloudOSType":"ENTERPRISE",
@@ -679,15 +736,18 @@ http(s)://[Endpoint]/?Action=DescribeBackupCloud
   "CloudName":"backup-212e",
   "CloudConsoleType":"ASCM",
   "CloudId":"0d3aed29********d6502cd3"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>b87055********9f433d</RequestID> <Data>
@@ -704,9 +764,9 @@ http(s)://[Endpoint]/?Action=DescribeBackupCloud
 
 Asrdr 2022-02-09
 
-##### DescribeCloud
+##### 4.1.3.4 DescribeCloud
 
-灾备管理中心
+调用DescribeCloud查询云实例信息。
 
 **请求头**
 
@@ -727,13 +787,11 @@ Asrdr 2022-02-09
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 云实例详情。 |
+| Data | Struct |   | 云实例详情。 |
 | -Address | String | http://internal.exa mple.xxxxx | 云管API Endpoint。 |
 | -CloudName | String | 212e | 云实例名称。 |
 | -CloudType | String | MAIN | 云实例的主备类型。参数值含义如下： MAIN：生产云实例 BACKUP：灾备云实例 |
 | -CloudOSType | String | ENTERPRISE | 云实例版本类型，只支持专有云企业版，取值为 ENTERPRISE。 |
-
-灾备管理中心
 
 | - CloudConsoleT ype | String | ASCM | 云管类型，取值为ASCM，只支持ASCM。 |
 |---|---|---|---|
@@ -749,13 +807,12 @@ Asrdr 2022-02-09
 请求示例
 
 ```
-&CloudId=ffe130bc********24c76d6d
+http(s)://[Endpoint]/?Action=DescribeCloud &CloudId=ffe130bc********24c76d6d
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestID":"b914********89dc",
  "Data":{
   "CloudOSType":"ENTERPRISE",
@@ -769,15 +826,18 @@ Asrdr 2022-02-09
   "CloudName":"212e",
   "CloudConsoleType":"ASCM",
   "CloudId":"ffe1********6d6d"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>b914********89dc</RequestID> <Data>
@@ -797,11 +857,13 @@ Asrdr 2022-02-09
 
 Asrdr 2022-02-09
 
-##### ListMainCloud
+##### 4.1.3.5 ListMainCloud
+
+调用ListMainCloud查询生产云列表。
 
 **请求头**
 
-灾备管理中心该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -819,13 +881,11 @@ Asrdr 2022-02-09
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 生产云列表。 |
-| -Pageable | Struct |  | 分页信息。 |
-| --List | Array |  | 单个生产云详情。 |
+| Data | Struct |   | 生产云列表。 |
+| -Pageable | Struct |   | 分页信息。 |
+| --List | Array |   | 单个生产云详情。 |
 | ---CloudId | String | eed5********0501 | 生产云ID。 |
 | ---CloudName | String | 212e | 生产云名称。 |
-
-灾备管理中心
 
 | ---Address | String | http://internal.exa mple.xxxxx | 云管API Endpoint。 |
 |---|---|---|---|
@@ -841,12 +901,15 @@ Asrdr 2022-02-09
 | --PageSize | Integer | 10 | 页面显示个数。 |
 | --PageNum | Integer | 1 | 页数。 |
 
-**示例**
+请求示例
 
-请求示例灾备管理中心 &公共请求参数正常返回示例 `JSON` 格式
+```
+http(s)://[Endpoint]/?Action=ListMainCloud
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"49e5********45e7",
  "Data":{
   "-Pageable":{
@@ -865,17 +928,18 @@ Asrdr 2022-02-09
     "CloudName":"212e",
     "CloudConsoleType":"ASCM",
     "CloudId":"eed5********0501"
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>49e5********45e7</RequestID> <Data>
@@ -902,7 +966,9 @@ Asrdr 2022-02-09
 
 Asrdr 2022-02-09
 
-##### ListSupportRegion
+##### 4.1.3.6 ListSupportRegion
+
+调用ListSupportRegion查询当前用户可见的区域。
 
 **请求头**
 
@@ -917,8 +983,6 @@ Asrdr 2022-02-09
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestID | String | 75ef********dafe8 | 请求ID。 |
@@ -926,27 +990,35 @@ Asrdr 2022-02-09
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 查询结果。 |
+| Data | Struct |   | 查询结果。 |
 | -Regions | String | cn-xxxx-d01 | 支持的Region。 |
 
 **示例**
 
-请求示例 &公共请求参数正常返回示例 `JSON` 格式
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=ListSupportRegion
+```
+
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"75ef********dafe8",
  "Data":{
   "Regions":"cn-xxxx-d01"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>75ef********dafe8</RequestID> <Data>
@@ -954,7 +1026,9 @@ Asrdr 2022-02-09
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateBackupCloud
+##### 4.1.3.7 UpdateBackupCloud
+
+调用UpdateBackupCloud更新灾备云信息。
 
 **请求头**
 
@@ -978,8 +1052,6 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1
 | UserAcces sKeyId | Strin g | Quer y | 是 | CU********Yh | 灾备云运营管理员的AK。 |
 | UserAcces sKeySecret | Strin g | Quer y | 是 | Cl********qf | 灾备云运营管理员的SK。 |
 
-灾备管理中心
-
 | CloudId | Strin g | Quer y | 是 | 0d3a********2cd3 | 灾备云ID。 |
 |---|---|---|---|---|---|
 
@@ -997,29 +1069,35 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1
 
 请求示例
 
-```json
-PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1 { "Address":"http://internal.example.xxxxx", "CloudName":"212e", "CloudType":"BACKUP", "CloudOSType":"ENTERPRISE", "CloudConsoleType":"ASCM", "UserAccessKeyId":"CU********Yh", "UserAccessKeySecret":"Cl********qf", "CloudId":"0d3a********2cd3", "EscapeLoginPassword":"123456" }
+```
+PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{`
 
 ```json
-{
+"Address":"http://internal.example.xxxxx", "CloudName":"212e", "CloudType":"BACKUP", "CloudOSType":"ENTERPRISE", "CloudConsoleType":"ASCM", "UserAccessKeyId":"CU********Yh", "UserAccessKeySecret":"Cl********qf", "CloudId":"0d3a********2cd3", "EscapeLoginPassword":"123456"
+```
+
+`}` 正常返回示例 `JSON` 格式
+
+```json
  "RequestID":"b870********433d",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>b870********433d</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateMainCloud
+##### 4.1.3.8 UpdateMainCloud
+
+调用UpdateMainCloud更新生产云信息。
 
 **请求头**
 
@@ -1040,8 +1118,6 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1 { "Address":
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-灾备管理中心
-
 | RequestID | String | 2927********44d9 | 请求ID。 |
 |---|---|---|---|
 | Result | String | SUCCESS | 请求结果，取值含义如下： SUCCESS：成功 FAILED：失败 |
@@ -1054,30 +1130,30 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1 { "Address":
 请求示例
 
 ```
-&********************6d6d &Address=http://internal.example.xxxxx &CloudName=212e &**************************Yh &*******************************qf
+http(s)://[Endpoint]/?Action=UpdateMainCloud &********************6d6d &Address=http://internal.example.xxxxx &CloudName=212e &**************************Yh &*******************************qf
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"2927********44d9",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>2927********44d9</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-灾备管理中心 Asrdr 2022-02-09
+Asrdr 2022-02-09
 
-##### UpdateProductConfig
+##### 4.1.3.9 UpdateProductConfig
+
+调用UpdateProductConfig更新生产云产品配置。
 
 **请求头**
 
@@ -1098,8 +1174,6 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1
 | Products | Strin g | Query | 是 | DNS | 配置的产品列表。 |
 | ConfigList | Strin g | Query | 是 | [ { "id":"dnsAK", "value":"DKL********uv1 ", "product":"DNS" }, { "id":"dnsProductGlobalH ost", "value":"dns- control.pop.xxxx.shugua ng.com", "product":"DNS" }, { "id":"dnsProductHost", "value":"genesisdns.api. xxxx.shuguang.com", "product":"DNS" }, { "id":"dnsSK", "value":"11bt*********** **************HI", "product":"DNS" } ] | 配置列表。 |
 
-灾备管理中心
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1114,55 +1188,67 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1
 
 请求示例
 
+```
+PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1
+```
+
+`{`
+
 ```json
-PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1 { "CloudId":"834e********0ffe", "ConfigRegionId":"cn-xxxx-d01", "Products":"DNS", "ConfigList":"[
-        {
+"CloudId":"834e********0ffe", "ConfigRegionId":"cn-xxxx-d01", "Products":"DNS", "ConfigList":"[
+```
+
+`{`
+
+```json
             "id":"dnsAK",
             "value":"DKL********uv1",
             "product":"DNS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "id":"dnsProductGlobalHost",
             "value":"dns-control.pop.xxxx.shuguang.com",
             "product":"DNS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "id":"dnsProductHost",
             "value":"genesisdns.api.xxxx.shuguang.com",
             "product":"DNS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "id":"dnsSK",
             "value":"11bt*************************HI",
             "product":"DNS"
-        }
 ```
 
-`]"`
-
-```
-}
-```
-
-灾备管理中心正常返回示例 `JSON` 格式
+`}` `]"` 正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"ae36********e1f7",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>ae36********e1f7</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateProductConfig
+##### 4.1.3.10 UpdateProductConfig
+
+调用UpdateProductConfig更新生产云产品配置。
 
 **请求头**
 
@@ -1175,8 +1261,6 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1 { "CloudI
 | CloudId | Strin g | Query | 是 | 834e********0ffe | 生产云ID。 |
 | ConfigReg ionId | Strin g | Query | 是 | cn-xxxx-d01 | Region ID。 |
 | Products | Strin g | Query | 是 | DNS | 配置的产品列表。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1194,55 +1278,65 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1 { "CloudI
 
 **示例**
 
-请求示例灾备管理中心
+请求示例
+
+```
+http(s)://[Endpoint]/?Action=UpdateProductConfig &CloudId=834e********0ffe &ConfigRegionId=cn-xxxx-d01 &Products=DNS &ConfigList=[
+```
+
+`{`
 
 ```json
-http(s)://[Endpoint]/?Action=UpdateProductConfig &CloudId=834e********0ffe &ConfigRegionId=cn-xxxx-d01 &Products=DNS &ConfigList=[
-        {
             "id":"dnsAK",
             "value":"DKL********uv1",
             "product":"DNS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "id":"dnsProductGlobalHost",
             "value":"dns-control.pop.xxxx.shuguang.com",
             "product":"DNS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "id":"dnsProductHost",
             "value":"genesisdns.api.xxxx.shuguang.com",
             "product":"DNS"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "id":"dnsSK",
             "value":"11bt*************************HI",
             "product":"DNS"
-        }
 ```
 
-] &公共请求参数正常返回示例 `JSON` 格式
+`}` `]` `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"ae36********e1f7",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>ae36********e1f7</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-#### 保护组
+#### 4.1.4 保护组
 
-灾备管理中心
+##### 4.1.4.1 CreateProtectGroup
 
-##### CreateProtectGroup
+调用CreateProtectGroup创建保护组。
 
 **请求头**
 
@@ -1269,7 +1363,7 @@ http(s)://[Endpoint]/?Action=UpdateProductConfig &CloudId=834e********0ffe &Conf
 | RequestID | String | 5daf********f0c7 | 请求ID。 |
 | Result | String | SUCCESS | 请求结果，取值含义如下： SUCCESS：成功 FAILED：失败 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1277,7 +1371,7 @@ http(s)://[Endpoint]/?Action=UpdateProductConfig &CloudId=834e********0ffe &Conf
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 保护组详情。 |
+| Data | Struct |   | 保护组详情。 |
 | - ProtectGroupI d | String | 379e********98c7 | 保护组ID。 |
 
 **示例**
@@ -1288,22 +1382,24 @@ http(s)://[Endpoint]/?Action=UpdateProductConfig &CloudId=834e********0ffe &Conf
 http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &BackupCloudId=0d3a********2cd3 &MainRegionId=cn-xxxx-d01 &BackupRegionId=cn-xxxx-d01 &MainOrganizationId=3 &BackupOrganizationId=3 &ProtectGroupName=openapi-test &Direction=FORWARD
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"5daf********f0c7",
  "Data":{
   "ProtectGroupId":"379e********98c7"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>5daf********f0c7</RequestID> <Data>
@@ -1311,7 +1407,9 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### DescribeProtectGroup
+##### 4.1.4.2 DescribeProtectGroup
+
+调用DescribeProtectGroup查询保护组详情。
 
 **请求头**
 
@@ -1332,11 +1430,11 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 返回数据。 |
-| - ProtectGroupD etailVO | Struct |  | 保护组详情。 |
+| Data | Struct |   | 返回数据。 |
+| - ProtectGroupD etailVO | Struct |   | 保护组详情。 |
 | -- ProtectGroupI d | String | 379e********98c7 | 保护组ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1357,15 +1455,13 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 | -- SourceTenantI d | Long | 1666665 | 当保护组存在DataWorks同步实体时返回，表示 DataWorks的组织ID。 |
 | --DestTenantId | Long | 133434 | 当保护组存在DataWorks同步实体时返回，表示 DataWorks的组织ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --ProtectState | String | PROTECT | 保护组的保护状态值。取值范围： PROTECT：保护中 SUSPEND：暂停 REPROTECT：重保护 REPROTECT FAIL：重保护失败 _ REDO：重试 PROTECT START：保护启动中 _ PROTECT FAIL：保护失败 _ PLAN EXECUTION：计划执行中 _ PLAN FAIL： 计划失败 _ DESTROY：删除中 PROTECT IDLE：未运行 _ STOP：停止 START：启动 |
 | -- RpoAlarmLeve l | String | WARN | 当保护组数据延迟值大于设置的数据延迟阈值， 警示级别为WARN，否则为NORMAL。取值范围： ["WARN", "NORMAL"]。 |
 | --CreateTime | Long | 1673333258000 | 保护组创建时间。 |
-| --Pageable | Struct |  | 分页信息。 |
-| ---List | Array |  | 同步实体信息。 |
+| --Pageable | Struct |   | 分页信息。 |
+| ---List | Array |   | 同步实体信息。 |
 | ----EntityId | String | 1f2e********70aa | 同步实体ID。 |
 | ---- ProtectGroupI d | String | 379e********98c7 | 保护组ID。 |
 | ---- MainCloudId | String | 39e0********0e1d | 生产云ID。 |
@@ -1374,7 +1470,7 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 | ---- BackupRegionI d | String | cn-****-d01 | 灾备区域ID。 |
 | ---- MainOrganizat ionId | Long | 9 | 生产云组织ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1392,8 +1488,6 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 | ----RpoTime | Long | 1673320203000 | 获取同步延迟的时间点。 |
 | ----Progress | String | 100 | 同步进度。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ----Operations | String | DELETE | 同步实体支持的操作。取值范围： REDO：重试 SUSPEND：暂停 SKIP：跳过整个步骤 REPROTECT：重保护 DELETE：删除 STEPOVER：跳过当前步骤 FORCE SWITCH：强制切换 _ START NOW：立即启动 _ |
@@ -1406,7 +1500,7 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 | ---TotalRows | Integer | 12 | 数据总条数。 |
 | ---PageSize | Integer | 10 | 每页显示个数，取值为10。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1421,10 +1515,9 @@ http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &B
 http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98c7
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"ebc6********00e7",
  "Data":{
   "-ProtectGroupDetailVO":{
@@ -1473,14 +1566,11 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
      "SyncType":"HOT",
      "MainOrganizationId":9,
      "MainRegionId":"cn-****-d01"
-}
 ```
 
-灾备管理中心
+`},`
 
 ```json
-    }
-   },
    "CanChange":true,
    "DestTenantId":133434,
    "AveProgress":"100",
@@ -1498,16 +1588,18 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
    "MainOrganizationName":"asrdr",
    "MaxRPO":9000,
    "SourceTenantId":1666665
-  }
- },
+```
+
+`}` `},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>ebc6********00e7</RequestID> <Data>
@@ -1548,8 +1640,6 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
     <Progress>100</Progress>
 ```
 
-灾备管理中心
-
 ```xml
     <SuspendEndTime>113335620323</SuspendEndTime>
     <Priority>3</Priority>
@@ -1585,7 +1675,9 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### ListProtectGroup
+##### 4.1.4.3 ListProtectGroup
+
+调用ListProtectGroup查询保护组列表。
 
 **请求头**
 
@@ -1612,14 +1704,14 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 返回保护组列表。 |
-| - ProtectGroupLi st | Array |  | 保护组信息。 |
+| Data | Struct |   | 返回保护组列表。 |
+| - ProtectGroupLi st | Array |   | 保护组信息。 |
 | -- ProtectGroupI d | String | 379********98c7 | 保护组ID。 |
 | --Name | String | openapi-test | 保护组名称。 |
 | --Direction | String | FORWARD | 保护组方向。取值范围： FORWARD：正向 REVERSE：反向 |
 | --Description | String | 某某业务应用保护组 | 保护组描述。 |
 
-|  | 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |  |
+|   | 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1637,7 +1729,7 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 | -PageSize | Integer | 10 | 每页显示个数，取值为10。 |
 | -PageNum | Integer | 1 | 查询页数，取值为整数。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1649,13 +1741,12 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 请求示例
 
 ```
-&X-alibaba-asrdr-cloudId=ffe130********c76d6d &PageNum=1 &PageSize=10
+http(s)://[Endpoint]/?Action=ListProtectGroup &X-alibaba-asrdr-cloudId=ffe130********c76d6d &PageNum=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"cf48********8982",
  "Data":{
   "-ProtectGroupList":{
@@ -1676,20 +1767,27 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
    "AveRPO":8000,
    "MainOrganizationName":"asrdr",
    "MaxRPO":9000
-  },
+```
+
+`},`
+
+```json
   "PageSize":10,
   "PageNum":1,
   "TotalRows":12,
   "TotalPageNum":1
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>cf48********8982</RequestID> <Data>
@@ -1719,7 +1817,9 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### RemoveProtectGroup
+##### 4.1.4.4 RemoveProtectGroup
+
+调用RemoveProtectGroup删除保护组。
 
 **请求头**
 
@@ -1737,8 +1837,6 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 |---|---|---|---|
 | RequestID | String | 5c4a********1d04 | 请求ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Result | String | SUCCESS | 请求结果，取值含义如下： SUCCESS：成功 FAILED：失败 |
@@ -1754,33 +1852,31 @@ http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98
 http(s)://[Endpoint]/?Action=RemoveProtectGroup &ProtectGroupId=379ea4********d598c7
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"5c4a********1d04",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>5c4a********1d04</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateProtectGroup
+##### 4.1.4.5 UpdateProtectGroup
+
+调用UpdateProtectGroup更新保护组信息。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1806,27 +1902,27 @@ http(s)://[Endpoint]/?Action=RemoveProtectGroup &ProtectGroupId=379ea4********d5
 http(s)://[Endpoint]/?Action=UpdateProtectGroup &ProtectGroupId=379e********98c7 &ProtectGroupName=openapi-test-modify
 ```
 
-`&Description=`更新保护组信息。 &公共请求参数正常返回示例 `JSON` 格式
+`&Description=`更新保护组信息。 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"5c4a********1d04",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-灾备管理中心 `XML` 格式
+`XML` 格式
 
 ```xml
 <RequestID>5c4a********1d04</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-#### 计划
+#### 4.1.5 计划
 
-##### CreatePlan
+##### 4.1.5.1 CreatePlan
+
+调用CreatePlan创建计划。
 
 **请求头**
 
@@ -1846,15 +1942,13 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 | Descriptio n | Strin g | Query | 是 | test | 计划描述。 |
 | ProtectGr oupId | Strin g | Query | 是 | 379e********98c7 | 关联的保护组ID。 |
 | PlanType | Strin g | Query | 是 | SWITCHOVER | 计划类型。取值范围如下： FAILOVER：故障切换 FAILBACK：故障回切 SWITCHOVER：演练切换 SWITCHBACK：演练回切 |
-|  |  |  |  |  | 任务信息。JSON格式的字符串，格式必须符合规则，否则创建失败。 格式如下： |
+|   |   |   |   |   | 任务信息。JSON格式的字符串，格式必须符合规则，否则创建失败。 格式如下： |
 
-| 异地容灾管理平 | 台开发指 | 南·API参考 |  |  | 灾备管理中心 |  |  |
+| 异地容灾管理平 | 台开发指 | 南·API参考 |   |   | 灾备管理中心 |   |   |
 |---|---|---|---|---|---|---|---|
-| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |  | 说[明 { |  |
-| TaskInfos | Strin g | Query | 是 | [ { "taskNum": 1, "taskName": "将RDS切换到灾备站点", "taskDescription": "切换", "taskType": "SWITCH", "priority": "3" } ] | "taskNum": 1, "taskName": "task", "taskType": "MANUALCHECK", "priority": "1", "stage": "", }, { "taskNum": 2, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S1", }, { "taskNum": 3, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S2", }, ] | "taskNum": 1, "taskName": "task", "taskType": "MANUALCHECK", "priority": "1", "stage": "", }, { "taskNum": 2, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S1", }, { "taskNum": 3, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S2", }, ] |  |
-| 1 |  |  |  |  | > 文档版本：2026072 |  |  |
-
-灾备管理中心
+| 参数名称 | 类型 | 位置 | 是否必选 | 示例 |   | 说[明 { |   |
+| TaskInfos | Strin g | Query | 是 | [ { "taskNum": 1, "taskName": "将RDS切换到灾备站点", "taskDescription": "切换", "taskType": "SWITCH", "priority": "3" } ] | "taskNum": 1, "taskName": "task", "taskType": "MANUALCHECK", "priority": "1", "stage": "", }, { "taskNum": 2, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S1", }, { "taskNum": 3, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S2", }, ] | "taskNum": 1, "taskName": "task", "taskType": "MANUALCHECK", "priority": "1", "stage": "", }, { "taskNum": 2, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S1", }, { "taskNum": 3, "taskName": "task", "taskType": "SWITCH", "priority": "2", "stage": "S2", }, ] |   |
+| 1 |   |   |   |   | > 文档版本：2026072 |   |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1873,22 +1967,24 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"a62a********bcd1",
  "Data":{
   "PlanId":"e013********4d4c1"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>a62a********bcd1</RequestID> <Data>
@@ -1896,7 +1992,9 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### DescribePlan
+##### 4.1.5.2 DescribePlan
+
+调用DescribePlan。
 
 **请求头**
 
@@ -1921,7 +2019,7 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 | -PlanDetailDto | Struct | - | 计划详情。 |
 | --PlanTasks | Array | - | 计划任务。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1941,7 +2039,7 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 | -----status | String | Init | 同步实体子步骤状态。取值范围： "Init", "Success", "Failed", "Running", "Skip"。 |
 | -----startTime | Long | 1671006381749 | 同步实体子步骤开始时间。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1960,8 +2058,6 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 | ----Progress | String | 100 | 任务执行进度。 |
 | ----Status | String | PROTECT | 同步实体状态。取值范围："PROTECT", "SUSPEND", "REPROTECT", "REPROTECT FAIL", "REDO", _ "PROTECT START", "PROTECT FAIL", _ _ "PLAN EXECUTION", "PLAN FAIL", _ _ "DESTROY", "PROTECT IDLE", "STOP", _ "START"。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | ---- ActionStatus | String | RUN | 同步实体命令执行状态。取值范围："RUN", "NOT RUN", "PROTECT FAIL", "FINISH", _ _ "S1 FINISH", "S2 FINISH", "SKIP", "FAIL", _ _ "INVALID"。 |
@@ -1979,7 +2075,7 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 | -- BackupOrgani zationId | Integer | 6 | 灾备云组织ID。 |
 | --MainRegionId | String | region-1 | 生产云区域ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -1992,7 +2088,9 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 | -- BackupOrgani zationName | String | asrdr | 灾备云组织名称。 |
 | -- MainOrganizat ionName | String | asrdr | 生产云组织名称。 |
 
-##### DescribePlanInstance
+##### 4.1.5.3 DescribePlanInstance
+
+调用DescribePlanInstance获取计划执行详情。
 
 **请求头**
 
@@ -2016,8 +2114,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1
 |---|---|---|---|
 | RequestID | String | 7884********3854 | 请求ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | Result | String | SUCCESS | 请求结果，取值含义如下： SUCCESS：成功 FAILED：失败 |
@@ -2034,8 +2130,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1
 | ---Priority | Integer | 3 | 计划任务优先级。 |
 | ---Stage | String | S1 | 任务执行阶段，取值范围如下： S1：切换第一阶段。 S2：切换第二阶段。 ALL：切换不区分阶段。 |
 | ---StartTime | String | 2023-11- 20T08:18:49.000+ 0000 | 开始时间。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2055,7 +2149,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1
 | ---- PriorityNumbe r | String | 3 | 同步实体任务优先级。 |
 | ---- SourceInstanc eId | String | rm-sd13****fp1s | 生产实例ID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2073,7 +2167,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1
 | ----Stage | String | S1 | 任务执行阶段，取值范围如下： S1：切换第一阶段。 S2：切换第二阶段。 ALL：切换不区分阶段。 |
 | ----Operations | String | DELETE | 同步实体支持的操作。取值范围： "REDO", "SUSPEND", "SKIP", "REPROTECT", "DELETE", "STEPOVER", "FORCE SWITCH", _ "START NOW"。 _ |
 
-|  | 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |  |
+|   | 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2100,7 +2194,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1
 GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstanceId=fd63********f37d
 ```
 
-&公共请求参数正常返回示例灾备管理中心 `XML` 格式
+`&`公共请求参数正常返回示例 `XML` 格式
 
 ```xml
 <RequestID>7884********3854</RequestID><Data><-PlanInstanceDetail><-- MainOrganizationId>9</--MainOrganizationId><--MainOrganizationName>asrdr</-- MainOrganizationName><--RelevancePlanId>sasc********4d4c</--RelevancePlanId><--MainClou dId>39e0********0e1d</--MainCloudId><--RestTime>233</--RestTime><-- FailoverMode>DEFAULT</--FailoverMode><--PlanInstanceStatus>RUNNING</-- PlanInstanceStatus><--BackupOrganizationId>6</--BackupOrganizationId><-- BackupOrganizationName>asrdr</--BackupOrganizationName><--PlanTasks><--- TaskType>SWITCH</---TaskType><---TaskDescription>人工检查任务</---TaskDescription><---Tas kName>人工检查任务</---TaskName><---Priority>3</---Priority><---Progress>100</--- Progress><---Status>SUCCESS</---Status><---TaskNum>1</---TaskNum><---Stage>S1</--- Stage><---DurationInMillis>3002</---DurationInMillis></--PlanTasks><-- BackupRegionId>region-2</--BackupRegionId><--PriorityInfoModels><---Priority /><---Enti tyInstances><----Progress>100</----Progress><----TaskId>eaad********0da</----TaskId><-- --EntityType>RDS</----EntityType><----Status>PROTECT</----Status><---- DestInstanceName>asrdr-test-backup</----DestInstanceName><----SourceInstanceId>rm-sd13*
@@ -2108,7 +2202,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstan
 ----ActionStatus>RUN</----ActionStatus><----SubStepInfo><-----status>Init</-----status>< -----startTime>1671006381749</-----startTime><-----mainStage>CONFIGURING</-----mainStage ><-----hasErrorLog>false</-----hasErrorLog><-----stepNo>1</-----stepNo><-----stepName>TU NNEL_START</-----stepName><-----endTime>1671006381749</-----endTime></----SubStepInfo><- ---PriorityNumber>3</----PriorityNumber><----Operations>DELETE</----Operations><----DstR egionId>cn-****-d01</----DstRegionId><----EntityId>c596********18e8</----EntityId><---- SourceRegionId>cn-****-d01</----SourceRegionId><----Stage>S1</----Stage><----SourceInsta nceName>asrdr-test-main</----SourceInstanceName></---EntityInstances></-- PriorityInfoModels><--CurrentTaskStep>1</--CurrentTaskStep><-- BackupCloudId>004a********3972</--BackupCloudId><--MainRegionId>region-1</-- MainRegionId></-PlanInstanceDetail></Data><NodeIp>127.0.0.1</NodeIp><Code>200</Code><Re sult>SUCCESS</Result><NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### ListPlan
+##### 4.1.5.4 ListPlan
+
+调用ListPlan获取计划列表。
 
 **请求头**
 
@@ -2119,8 +2215,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstan
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | X-alibaba- asrdr- cloudId | Strin g | Query | 是 | ffe130********c76d6d | 生产云ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2137,14 +2231,14 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstan
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 返回数据。 |
-| -PlanInfos | Array |  | 计划详情。 |
+| Data | Struct |   | 返回数据。 |
+| -PlanInfos | Array |   | 计划详情。 |
 | --PlanId | String | e013********4d4c | 计划ID。 |
 | --PlanName | String | openapi-plan-test | 计划名称。 |
 | --Description | String | API测试计划 | 计划描述。 |
 | -- ProtectGroupI d | String | 379ea********98c7 | 计划关联的保护组。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- ProtectGroupN ame | String | openapi-test | 计划关联的保护组名称。 |
@@ -2171,13 +2265,12 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstan
 请求示例
 
 ```
-&X-alibaba-asrdr-cloudId=ffe130********c76d6d &PlanType=SWITCHOVER &PageNum=1 &PageSize=10
+http(s)://[Endpoint]/?Action=ListPlan &X-alibaba-asrdr-cloudId=ffe130********c76d6d &PlanType=SWITCHOVER &PageNum=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "RequestID":"4558********c94e",
  "Data":{
   "PageSize":10,
@@ -2204,16 +2297,18 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstan
    "ProtectGroupName":"openapi-test",
    "PlanType":"SWITCHOVER",
    "PlanStatus":"RUNNING"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>4558********c94e</RequestID> <Data>
@@ -2241,7 +2336,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/detail HTTP/1.1 &PlanInstan
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### ListPlanInstance
+##### 4.1.5.5 ListPlanInstance
+
+调用ListPlanInstance获取计划执行列表。
 
 **请求头**
 
@@ -2260,8 +2357,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1
 | PlanId | Strin g | Query | 否 | e013********4d4c | 计划ID。 |
 | PageNum | Integ er | Query | 是 | 1 | 页数，取值为整数。 |
 | PageSize | Integ er | Query | 是 | 10 | 每页显示个数，取值为10。 |
-
-灾备管理中心
 
 **返回数据**
 
@@ -2284,8 +2379,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1
 | -- BackupRegionI d | String | region-2 | 灾备云区域ID。 |
 | --Number | Long | 1 | 计划内部任务序号。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -- ContinueTime | Long | 6 | 执行时间，即计划实例执行的结束时间-实例执行的开始时间。 |
@@ -2302,10 +2395,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1
 GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &PageSize=10
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"e257****fb18",
  "Data":{
   "PageSize":10,
@@ -2321,16 +2413,18 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
    "EstimateTime":"5000",
    "MainRegionId":"region-1",
    "RtoTime":122
-  }
- },
+```
+
+`}` `},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-灾备管理中心 `XML` 格式
+`XML` 格式
 
 ```xml
 <RequestID>e257****fb18</RequestID> <Data>
@@ -2351,7 +2445,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### RemovePlan
+##### 4.1.5.6 RemovePlan
+
+调用RemovePlan删除计划。
 
 **请求头**
 
@@ -2371,7 +2467,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | Result | String | SUCCESS | 请求结果，取值含义如下： SUCCESS：成功 FAILED：失败 |
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 
-|  | 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |  |
+|   | 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2384,28 +2480,28 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 请求示例
 
 ```
-&PlanId=e013********4d4c
+http(s)://[Endpoint]/?Action=RemovePlan &PlanId=e013********4d4c
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"cbfe********c7f4",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>cbfe********c7f4</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### StartPlan
+##### 4.1.5.7 StartPlan
+
+调用StartPlan启动计划。
 
 **请求头**
 
@@ -2419,8 +2515,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | RequestID | String | 1e7a********54ad | 请求ID。 |
@@ -2428,7 +2522,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | Code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
-| Data | Struct |  | 执行信息。 |
+| Data | Struct |   | 执行信息。 |
 | - PlanInstanceId | String | fd63********f37d | 计划执行实例ID。 |
 
 **示例**
@@ -2436,25 +2530,27 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 请求示例
 
 ```
-&PlanId=3dcc********9f64
+http(s)://[Endpoint]/?Action=StartPlan &PlanId=3dcc********9f64
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"1e7a********54ad",
  "Data":{
   "PlanInstanceId":"fd63********f37d"
- },
+```
+
+`},`
+
+```json
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式灾备管理中心
+`}` `XML` 格式
 
 ```xml
 <RequestID>1e7a********54ad</RequestID> <Data>
@@ -2462,7 +2558,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### StartUserTask
+##### 4.1.5.8 StartUserTask
+
+调用StartUserTask启动用户任务。
 
 **请求头**
 
@@ -2486,33 +2584,31 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | NodeHost | String | B-W0Y1MD6R- 1914.local | 节点名称。 |
 | NodeIp | String | 127.0.0.1 | 节点IP。 |
 
-**示例**
-
-请求示例灾备管理中心
+请求示例
 
 ```
-&PlanId=3dcc********9f64 &PlanInstanceId=fd6390********c0f37d &TaskNum=1
+http(s)://[Endpoint]/?Action=StartUserTask &PlanId=3dcc********9f64 &PlanInstanceId=fd6390********c0f37d &TaskNum=1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"1e7a********54ad",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <RequestID>1e7a********54ad</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdatePlan
+##### 4.1.5.9 UpdatePlan
+
+调用UpdatePlan更新计划。
 
 **请求头**
 
@@ -2525,8 +2621,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | PlanId | Strin g | Query | 是 | 3dcc********9f64 | 计划ID。 |
 | PlanName | Strin g | Query | 是 | openapi-plan-test- modify | 计划名称。 |
 | Descriptio n | Strin g | Query | 是 | 更新计划 | 计划描述。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2547,30 +2641,28 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 请求示例
 
 ```
-&PlanId=3dcc********9f64 &PlanName=openapi-plan-test-modify
+http(s)://[Endpoint]/?Action=UpdatePlan &PlanId=3dcc********9f64 &PlanName=openapi-plan-test-modify
 ```
 
-`&Description=`更新计划 &公共请求参数正常返回示例 `JSON` 格式
+`&Description=`更新计划 `&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "RequestID":"4067********1415",
  "NodeIp":"127.0.0.1",
  "Code":"200",
  "Result":"SUCCESS",
  "NodeHost":"B-W0Y1MD6R-1914.local"
-}
 ```
 
-灾备管理中心 `XML` 格式
+`XML` 格式
 
 ```xml
 <RequestID>4067********1415</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-### 新版API
+### 4.2 新版API
 
-#### API概览
+#### 4.2.1 API概览
 
 | API | 版本 | 描述 |
 |---|---|---|
@@ -2587,8 +2679,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | ListDrGroups | 2025-01-15 | 查询容灾关系列表 |
 | CreateProtectGroup | 2025-01-15 | 创建保护组 |
 | DeleteProtectGroup | 2025-01-15 | 删除保护组 |
-
-灾备管理中心
 
 | GetProtectGroup | 2025-01-15 | 查询保护组 |
 |---|---|---|
@@ -2611,14 +2701,12 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | ListRecoveryTasks | 2025-01-15 | 查询容灾计划任务列表 |
 | DeleteRecoveryTask | 2025-01-15 | 删除容灾计划任务 |
 
-灾备管理中心
-
 | RecoveryTaskCtl | 2025-01-15 | 容灾计划任务控制接口 |
 |---|---|---|
 
-#### 云实例
+#### 4.2.2 云实例
 
-##### UpdateCloudInstance
+##### 4.2.2.1 UpdateCloudInstance
 
 根据云实例ID更新云实例的基本信息，如实例名称、所属资源组等。
 
@@ -2642,12 +2730,12 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | -creator | String | 24401087478**** | 资源创建者UID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2668,7 +2756,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | - consoleApiEnd point | String | ***-internal.aliyun- inc.com | 云管控API接入点。 |
 | - adminCredenti alsId | String | cred-admin- a7b3****** | 运营管理员凭据ID。 |
 
-|  | 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2684,10 +2772,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -2723,11 +2810,11 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
   "intranetDomain": "***-internal.aliyun-inc.com",
   "localCloud": true,
   "status": "REGULAR"
- }
-}
 ```
 
-##### ListCloudInstances
+`}` `}`
+
+##### 4.2.2.2 ListCloudInstances
 
 分页查询当前账号下的云实例列表，支持按状态、版本等维度过滤，用于运维和容灾管控场景。
 
@@ -2742,7 +2829,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | cloudInsta nceId | Strin g | Query | 否 | ci-2ze8xn8sb3****** | 云实例ID。 |
 | cloudInsta nceName | Strin g | Query | 否 | hangzhou-public-cloud | 云实例名称。 |
 
-| 灾备管理中心 |  |  |  | 异地容 | 灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   |   | 异地容 | 灾管理平台开发指南·API参考 |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -2761,12 +2848,12 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -rows | Array |  | 分页查询结果列表。 |
+| data | Struct |   | 返回数据。 |
+| -rows | Array |   | 分页查询结果列表。 |
 | -- aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | --ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2787,7 +2874,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | --consoleType | String | APSARA | 云管控控制台类型。 |
 | -- consoleApiEnd point | String | ***-internal.aliyun- inc.com | 云管控API接入点。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2807,10 +2894,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -2821,7 +2907,11 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 ```json
  "data": {
   "rows": [
-   {
+```
+
+`{`
+
+```json
     "aliyunAccountUid": "150**********453",
     "ownerUid": "24401087478****",
     "creator": "24401087478****",
@@ -2848,20 +2938,19 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
     "intranetDomain": "***-internal.aliyun-inc.com",
     "localCloud": true,
     "status": "REGULAR"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageNum": 1,
   "pageSize": 10,
   "total": 1
- }
-}
 ```
 
-##### GetCloudInstance
+`}` `}`
+
+##### 4.2.2.3 GetCloudInstance
 
 根据云实例ID查询单个云实例的详细信息。
 
@@ -2870,8 +2959,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2885,7 +2972,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | -creator | String | 24401087478**** | 资源创建者UID。 |
@@ -2897,7 +2984,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | -pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | - cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2924,10 +3011,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -2963,13 +3049,13 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
   "intranetDomain": "***-internal.aliyun-inc.com",
   "localCloud": true,
   "status": "REGULAR"
- }
-}
 ```
 
-##### DeleteCloudInstance
+`}` `}`
 
-灾备管理中心根据云实例ID删除已纳管的云实例。
+##### 4.2.2.4 DeleteCloudInstance
+
+根据云实例ID删除已纳管的云实例。
 
 **请求头**
 
@@ -2992,22 +3078,17 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
 ```
 
-`"message": "`操作成功"
+`"message": "`操作成功`"` `}`
 
-```
-}
-```
-
-##### ListCloudCenter
+##### 4.2.2.5 ListCloudCenter
 
 查询当前 ASRDR 环境可用的云中心列表，用于获取云中心ID以便后续创建云实例。
 
@@ -3019,8 +3100,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3041,7 +3120,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | lastModifiedDa te | Long | 1748945001000 | 资源最后修改时间。 |
 | instanceId | String | eed5********0501 | 资源实例ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3064,7 +3143,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | accessKeySecr et | String | ClH**************** *********qf | admin管理员的SK。 |
 | requestId | String | 49e5********45e7 | 请求ID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3077,10 +3156,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "data": {
   "parsererror": {
    "h3": [
@@ -3094,10 +3172,18 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
    "div": {
     "_style": "font-family:monospace;font-size:12px",
     "__text": "error on line 29 at column 1: Extra content at the end of the document"
-   },
+```
+
+`},`
+
+```json
    "_style": "display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em
 0 1em; margin: 1em; background-color: #fdd; color: black"
-  },
+```
+
+`},`
+
+```json
   "aliyunAccountUid": "150**********453",
   "ownerUid": "24401087478****",
   "creator": "24401087478****",
@@ -3123,12 +3209,11 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
    "type": "AccessKey",
    "accessKeyId": "CU********Yh",
    "accessKeySecret": "ClH*************************qf"
-  }
- }
-}
 ```
 
-##### CreateCloudInstanceFromCloudCenter
+`}` `}` `}`
+
+##### 4.2.2.6 CreateCloudInstanceFromCloudCenter
 
 通过指定云中心ID与运营管理员AK/SK，将云中心已注册的全局云实例纳管为当前账号下的云实例。
 
@@ -3138,8 +3223,6 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 
 **请求参数**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | CloudCent erId | Strin g | Body | 是 | MULTIPLE****asaew398 48 | 云中心ID。 |
@@ -3147,15 +3230,13 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | AccountAc cessKeyId | Strin g | Body | 是 | CU********Yh | 生产云运营管理员的AK。 |
 | AccountAc cessKeySe cret | Strin g | Body | 是 | CU********Yh | 生产云运营管理员的SK。 |
 
-```
-{
-```
-
-`"Department":"3",//ASAPI`参数：主账号（租户） `"ResourceGroup":"1",//ASAPI`参数：资源组
+`{` `"Department":"3",//ASAPI`参数：主账号（租户） `"ResourceGroup":"1",//ASAPI`参数：资源组
 
 ```json
-"RegionId":"cn-hangzhou",//ASAPI参数：地域 }
+"RegionId":"cn-hangzhou",//ASAPI参数：地域
 ```
+
+`}`
 
 **返回数据**
 
@@ -3167,11 +3248,11 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 | code | String | 200 | 请求返回代码，如为200则请求成功。 |
 | nodeHost | String | B-W0Y***- 1914.local | 节点名称。 |
 | nodeIp | String | 127.0.0.1 | 节点IP。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | aliyunAccount Uid | String | 150**********453 | 资源所属租户ID。 |
 | ownerUid | String | 24401087478**** | 资源所有者UID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3207,10 +3288,9 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &**************************asaew39848 &CloudInstanceName=212e &*****************************Yh &*********************************Yh
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "requestId": "4383********53c7",
  "result": "SUCCESS",
  "success": true,
@@ -3239,15 +3319,11 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "internetDomain": "public-cloud.aliyun.com",
   "intranetDomain": "***-internal.aliyun-inc.com",
   "status": "REGULAR"
- }
-}
 ```
 
-灾备管理中心
+#### 4.2.3 容灾关系
 
-#### 容灾关系
-
-##### UpdateDrGroup
+##### 4.2.3.1 UpdateDrGroup
 
 根据容灾关系ID更新容灾关系的名称、描述等基础信息。
 
@@ -3272,18 +3348,18 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -regions | Array |  | 地域列表，每项表示该容灾关系下的一个云端地域。 |
+| data | Struct |   | 返回数据。 |
+| -regions | Array |   | 地域列表，每项表示该容灾关系下的一个云端地域。 |
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | -- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --primary | Boolean | true | 是否为主地域。 |
-| -- cloudInstance | Struct |  | 关联的云实例。 |
+| -- cloudInstance | Struct |   | 关联的云实例。 |
 | --- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
@@ -3299,8 +3375,6 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | -description | String | 用于杭州-上海双活容灾的关系 | 描述信息。 |
 | -scope | String | TENANT | 容灾范围等级。取值范围： TENANT：租户级容灾。 REGION：站点(Region)级容灾。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -haDrEnabled | Boolean | false | 是否启用容灾高可用。 |
@@ -3308,10 +3382,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -3322,17 +3395,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 ```json
  "data": {
   "regions": [
-   {
+```
+
+`{`
+
+```json
     "pk": 10001,
     "cloudInstanceRegionId": "cn-hangzhou",
     "primary": true,
     "cloudInstance": {
      "cloudInstanceId": "ci-2ze8xn8sb3******"
-    }
-   }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "aliyunAccountUid": "150**********453",
@@ -3348,19 +3423,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "drGroupName": "hangzhou-dr-group",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
   "scope": "TENANT",
   "haDrEnabled": false,
   "status": "NORMAL"
- }
-}
 ```
 
-##### ListDrGroups
+`}` `}`
 
-分页查询当前账号下的容灾关系列表，支持按名称、状态、主备地域等维度过滤。 灾备管理中心
+##### 4.2.3.2 ListDrGroups
+
+分页查询当前账号下的容灾关系列表，支持按名称、状态、主备地域等维度过滤。
 
 **请求头**
 
@@ -3387,19 +3462,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| -rows | Array |  | 分页查询结果列表。 |
-| --regions | Array |  | 地域列表，每项表示该容灾关系下的一个云端地域。 |
+| -rows | Array |   | 分页查询结果列表。 |
+| --regions | Array |   | 地域列表，每项表示该容灾关系下的一个云端地域。 |
 | ---pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | --- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | ---primary | Boolean | true | 是否为主地域。 |
-| --- cloudInstance | Struct |  | 关联的云实例。 |
+| --- cloudInstance | Struct |   | 关联的云实例。 |
 | ---- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | -- aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | --ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
@@ -3412,7 +3487,7 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | --drGroupId | String | dg-2a7b3c9d****** | 容灾关系ID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3428,10 +3503,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -3442,19 +3516,25 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 ```json
  "data": {
   "rows": [
-   {
+```
+
+`{`
+
+```json
     "regions": [
-     {
+```
+
+`{`
+
+```json
       "pk": 10001,
       "cloudInstanceRegionId": "cn-hangzhou",
       "primary": true,
       "cloudInstance": {
        "cloudInstanceId": "ci-2ze8xn8sb3******"
-      }
-     }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
     "aliyunAccountUid": "150**********453",
@@ -3470,26 +3550,25 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
     "drGroupName": "hangzhou-dr-group",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
     "scope": "TENANT",
     "haDrEnabled": false,
     "status": "NORMAL"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageNum": 1,
   "pageSize": 10,
   "total": 1
- }
-}
 ```
 
-##### GetDrGroup
+`}` `}`
+
+##### 4.2.3.3 GetDrGroup
 
 根据容灾关系ID查询单个容灾关系的详细信息。
 
@@ -3498,8 +3577,6 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3513,19 +3590,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -regions | Array |  | 地域列表，每项表示该容灾关系下的一个云端地域。 |
+| data | Struct |   | 返回数据。 |
+| -regions | Array |   | 地域列表，每项表示该容灾关系下的一个云端地域。 |
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | -- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | --primary | Boolean | true | 是否为主地域。 |
-| -- cloudInstance | Struct |  | 关联的云实例。 |
+| -- cloudInstance | Struct |   | 关联的云实例。 |
 | --- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | -creator | String | 24401087478**** | 资源创建者UID。 |
 | -lastModifier | String | 24401087478**** | 资源最后修改者UID。 |
 
-|  | 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |  |
+|   | 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3544,10 +3621,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -3558,17 +3634,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 ```json
  "data": {
   "regions": [
-   {
+```
+
+`{`
+
+```json
     "pk": 10001,
     "cloudInstanceRegionId": "cn-hangzhou",
     "primary": true,
     "cloudInstance": {
      "cloudInstanceId": "ci-2ze8xn8sb3******"
-    }
-   }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "aliyunAccountUid": "150**********453",
@@ -3584,17 +3662,17 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "drGroupName": "hangzhou-dr-group",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
   "scope": "TENANT",
   "haDrEnabled": false,
   "status": "NORMAL"
- }
-}
 ```
 
-##### DeleteDrGroup
+`}` `}`
+
+##### 4.2.3.4 DeleteDrGroup
 
 根据容灾关系ID删除指定的容灾关系。
 
@@ -3610,8 +3688,6 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | req-2a7b3c9d | 请求ID，用于问题排查。 |
@@ -3621,22 +3697,17 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
 ```
 
-`"message": "`操作成功"
+`"message": "`操作成功`"` `}`
 
-```
-}
-```
-
-##### CreateDrGroup
+##### 4.2.3.5 CreateDrGroup
 
 创建容灾关系，用于在两个或多个云地域之间建立容灾保护关系。
 
@@ -3652,16 +3723,16 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | descriptio n | Strin g | Body | 否 | 用于杭州-上海双活容灾的关系 | 描述信息。 |
 | haDrEnabl ed | Boole an | Body | 否 | false | 是否启用容灾高可用。 |
 | resourceG roupId | Strin g | Body | 否 | rg-acfmxsn4m4****** | 资源所属资源组ID。 |
-| regions | Array | Body | 否 |  | 地域列表，每项表示该容灾关系下的一个云端地域。 |
+| regions | Array | Body | 否 |   | 地域列表，每项表示该容灾关系下的一个云端地域。 |
 | -pk | Long | Body | 否 | 10001 | 记录在数据库中的主键ID。 |
 
-|  | 灾备管理中心 |  |  |  | 异地容 | 灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   |   | 异地容 | 灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | - cloudInsta nceRegion Id | Strin g | Body | 否 | cn-hangzhou | 云实例地域ID。 |
-| - cloudInsta nce | Struc t | Body | 否 |  | 关联的云实例。 |
+| - cloudInsta nce | Struc t | Body | 否 |   | 关联的云实例。 |
 | -- cloudInsta nceId | Strin g | Body | 否 | ci-2ze8xn8sb3****** | 云实例ID。 |
 | -primary | Boole an | Body | 否 | true | 是否为主地域。 |
 
@@ -3673,15 +3744,15 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -regions | Array |  | 地域列表，每项表示该容灾关系下的一个云端地域。 |
+| data | Struct |   | 返回数据。 |
+| -regions | Array |   | 地域列表，每项表示该容灾关系下的一个云端地域。 |
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | -- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | --primary | Boolean | true | 是否为主地域。 |
-| -- cloudInstance | Struct |  | 关联的云实例。 |
+| -- cloudInstance | Struct |   | 关联的云实例。 |
 | --- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3702,14 +3773,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | -haDrEnabled | Boolean | false | 是否启用容灾高可用。 |
 | -status | String | NORMAL | 容灾关系状态。取值范围： NORMAL：正常。 WARNING：部分异常。 EMERGENCY：应急模式。 |
 
-灾备管理中心
-
-**示例**
-
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -3720,17 +3786,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 ```json
  "data": {
   "regions": [
-   {
+```
+
+`{`
+
+```json
     "pk": 10001,
     "cloudInstanceRegionId": "cn-hangzhou",
     "primary": true,
     "cloudInstance": {
      "cloudInstanceId": "ci-2ze8xn8sb3******"
-    }
-   }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "aliyunAccountUid": "150**********453",
@@ -3746,19 +3814,19 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "drGroupName": "hangzhou-dr-group",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
   "scope": "TENANT",
   "haDrEnabled": false,
   "status": "NORMAL"
- }
-}
 ```
 
-#### 保护组
+`}` `}`
 
-##### UpdateProtectGroup
+#### 4.2.4 保护组
+
+##### 4.2.4.1 UpdateProtectGroup
 
 更新保护组的名称、描述等基本信息。 本接口为公开接口，调用时需使用AccessKey进行签名认证。请求协议支持HTTP与HTTPS，认证方式为 AK（AccessKey）签名。请确保已创建目标保护组且具备修改权限。
 
@@ -3767,8 +3835,6 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3794,7 +3860,7 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | - resourceGroup Id | String | rg-aek2fz5xyz1234 | 资源组ID |
 | -createdDate | Long | 1620000000000 | 创建时间戳（毫秒） |
 
-|  | 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3814,7 +3880,7 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | --status | String | PROTECT | 同步状态。 |
 | --rpoMillis | Long | 1000 | 恢复点目标时间（毫秒）。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -- rpoSampleTim e | Long | 1650000000000 | RPO采样时间戳（毫秒）。 |
@@ -3822,10 +3888,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "code":"200",
  "data":{
   "statusDetail":{
@@ -3835,7 +3900,11 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
    "rpoSampleTime":1650000000000,
    "direction":"FORWARD",
    "status":"PROTECT"
-  },
+```
+
+`},`
+
+```json
   "creator":"298**********127",
   "lastModifiedDate":1650000000000,
   "resourceRegionId":"cn-hangzhou",
@@ -3844,7 +3913,11 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "syncGroups":"[]",
   "drGroup":{
    "drGroupId":"9d03fc62************79bb04a06896"
-  },
+```
+
+`},`
+
+```json
   "mode":"ACTIVE_ACTIVE",
   "protectGroupName":"production-group-v2",
   "createdDate":1620000000000,
@@ -3854,20 +3927,25 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "protectGroupId":"9d03fc62************79bb04a06896",
   "direction":"FORWARD",
   "status":"PROTECT"
- },
+```
+
+`},`
+
+```json
  "requestId":"1A2B3C4D-5E6F-7890-ABCD-EF1234567890",
  "success":true,
  "message":"success"
-}
 ```
 
-##### ProtectGroupCtl
+`}`
+
+##### 4.2.4.2 ProtectGroupCtl
 
 对指定的保护组下发控制命令，如切换、回切、暂停等操作。
 
 **请求头**
 
-灾备管理中心该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求参数**
 
@@ -3889,9 +3967,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3903,10 +3981,9 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -3920,11 +3997,11 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
   "switchTemplateId": "st-2a7b3c9d******",
   "syncGroupSwitchTaskId": "sgt-3e9b6f2a******",
   "switchType": "SWITCH_OVER"
- }
-}
 ```
 
-##### ListProtectGroups
+`}` `}`
+
+##### 4.2.4.3 ListProtectGroups
 
 查询保护组列表信息，支持按多种条件筛选和分页。
 
@@ -3937,8 +4014,6 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | drGroupId | Strin g | Query | 否 | 9d03fc62************79 bb04a06896 | 容灾关系ID。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3959,7 +4034,7 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | requestId | String | 4C467B3D-5D9A- 5E3D-8B9F- 1A2B3C4D5E6F | 请求唯一标识 |
 | success | Boolean | true | 请求是否成功 |
 
-|  | 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |  |
+|   | 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3981,8 +4056,6 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | -- protectGroupN ame | String | MainProtectGroup | 保护组名称 |
 | --direction | String | FORWARD | 保护组方向。取值范围： FORWARD：正向 REVERSE：反向 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --description | String | 核心业务保护组 | 保护组描述 |
@@ -4001,25 +4074,29 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 | -pageSize | Integer | 10 | 每页大小 |
 | -total | Integer | 100 | 总记录数 |
 
-**示例**
-
-灾备管理中心 `JSON` 格式
+`JSON` 格式
 
 ```json
-{
  "code":"200",
  "data":{
   "total":100,
   "rows":[
-   {
-    "creator":"298**********127",
-    "drGroup":[
-     {
-      "drGroupId":"9d03fc62************79bb04a06896"
-     }
 ```
 
-`],`
+`{`
+
+```json
+    "creator":"298**********127",
+    "drGroup":[
+```
+
+`{`
+
+```json
+      "drGroupId":"9d03fc62************79bb04a06896"
+```
+
+`}` `],`
 
 ```json
     "lastModifiedDate":1700000000000,
@@ -4032,17 +4109,20 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
 ```json
     "syncGroups":"[]",
     "statusDetail":
-     {
+```
+
+`{`
+
+```json
       "rpoMillis":1000,
       "progress":"100",
       "protectGroupId":"9d03fc62************79bb04a06896",
       "rpoSampleTime":1700000000000,
       "direction":"FORWARD",
       "status":"PROTECT"
-     }
 ```
 
-,
+`}` `,`
 
 ```json
     "mode":"ACTIVE_ACTIVE",
@@ -4054,28 +4134,32 @@ http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &***************
     "protectGroupId":"9d03fc62************79bb04a06896",
     "direction":"FORWARD",
     "status":"PROTECT"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageSize":10,
   "pageNum":1
- },
+```
+
+`},`
+
+```json
  "requestId":"4C467B3D-5D9A-5E3D-8B9F-1A2B3C4D5E6F",
  "success":true,
  "message":"success"
-}
 ```
 
-##### GetProtectGroup
+`}`
+
+##### 4.2.4.4 GetProtectGroup
 
 获取Asrdr产品中的保护组详细信息，支持按需返回同步组、状态详情及切换任务等扩展数据。 ：需使用AccessKey（AK）进行签名认证（authType="AK"）
 
 **认证方式**
 
-灾备管理中心 ：HTTP/HTTPS
+：HTTP/HTTPS
 
 **协议支持**
 
@@ -4127,7 +4211,7 @@ GET /asr-web/api/protectGroup HTTP/1.1
 | -status | String | PROTECT | 保护组状态。取值范围："PROTECT", "SUSPEND", "REPROTECT", "REPROTECT FAIL", "REDO", _ "PROTECT START", "PROTECT FAIL", _ _ "PLAN EXECUTION", "PLAN FAIL", _ _ "DESTROY", "PROTECT IDLE", "STOP", _ "START"。 |
 | -drGroup | Struct | {...} | 容灾关系。 |
 
-|  | 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4149,10 +4233,9 @@ GET /asr-web/api/protectGroup HTTP/1.1
 GET /asr-web/api/protectGroup HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "code":"200",
  "data":{
   "statusDetail":{
@@ -4162,7 +4245,11 @@ GET /asr-web/api/protectGroup HTTP/1.1
    "rpoSampleTime":1700000000000,
    "direction":"FORWARD",
    "status":"PROTECT"
-  },
+```
+
+`},`
+
+```json
   "creator":"root",
   "lastModifiedDate":1700000000000,
   "resourceRegionId":"cn-hangzhou",
@@ -4175,7 +4262,11 @@ GET /asr-web/api/protectGroup HTTP/1.1
   "syncGroups":"[]",
   "drGroup":{
    "drGroupId":"drg-xxxxx"
-  },
+```
+
+`},`
+
+```json
   "mode":"ACTIVE_ACTIVE",
   "protectGroupName":"prod-db-group",
   "createdDate":1700000000000,
@@ -4185,14 +4276,19 @@ GET /asr-web/api/protectGroup HTTP/1.1
   "protectGroupId":"pg-xxxxx",
   "direction":"FORWARD",
   "status":"PROTECT"
- },
+```
+
+`},`
+
+```json
  "requestId":"0bc5f3f8-1234-5678-90ab-cdef12345678",
  "success":true,
  "message":"success"
-}
 ```
 
-##### DeleteProtectGroup
+`}`
+
+##### 4.2.4.5 DeleteProtectGroup
 
 删除指定的保护组资源。 ：需使用 AccessKey (AK) 进行签名认证（ `authType="AK"` ）
 
@@ -4218,8 +4314,6 @@ DELETE /asr-web/api/protectGroup HTTP/1.1
 
 **请求参数**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | protectGr oupId | Strin g | Query | 否 | 9d03fc62************79 bb04a06896 | 待删除的保护组唯一标识ID |
@@ -4236,10 +4330,12 @@ DELETE /asr-web/api/protectGroup HTTP/1.1
 | code | String | 200 | 业务状态码 |
 | message | String | success | 返回结果的文本描述 |
 
-| requestId |  |  |  |
+| requestId |   |   |   |
 |---|---|---|---|
-| success |  | code |  |
-| 异常时 | message |  | 字段 |
+| success |   | code |   |
+| 异常时 | message |   | 字段 |
+
+`success` 与 `code` 需结合判断： `success=true` 且 `code="200"` 表示操作成功
 
 **示例**
 
@@ -4249,24 +4345,24 @@ DELETE /asr-web/api/protectGroup HTTP/1.1
 DELETE /asr-web/api/protectGroup HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "code":"200",
  "requestId":"4C467B3D-8F0B-4F9A-8F0B-4F9A8F0B4F9A",
  "success":true,
  "message":"success"
-}
 ```
 
-##### CreateProtectGroup
+`}`
+
+##### 4.2.4.6 CreateProtectGroup
 
 创建容灾保护组。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 灾备管理中心
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
 
@@ -4297,7 +4393,7 @@ POST /asr-web/api/protectGroup HTTP/1.1
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | -creator | String | 24401087478**** | 资源创建者UID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | -lastModifier | String | 24401087478**** | 资源最后修改者UID。 |
@@ -4315,7 +4411,7 @@ POST /asr-web/api/protectGroup HTTP/1.1
 | --drGroupId | String | e64d7c3********** ***c8d8ab04c070 | 容灾关系ID。 |
 | requestId | String | ebc6********00e7 | 本次调用请求的ID，是由系统生成的唯一标识符，可用于排查和定位问题。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4330,10 +4426,9 @@ POST /asr-web/api/protectGroup HTTP/1.1
 POST /asr-web/api/protectGroup HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "code":"200",
  "data":{
   "creator":"24401087478****",
@@ -4343,7 +4438,11 @@ POST /asr-web/api/protectGroup HTTP/1.1
   "description":"描述",
   "drGroup":{
    "drGroupId":"e64d7c3*************c8d8ab04c070"
-  },
+```
+
+`},`
+
+```json
   "mode":"ACTIVE_STANDBY",
   "protectGroupName":"PG-NAME",
   "createdDate":1748945001000,
@@ -4353,16 +4452,21 @@ POST /asr-web/api/protectGroup HTTP/1.1
   "protectGroupId":"379ea4********d598c7",
   "direction":"FORWARD",
   "status":"PROTECT"
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "message":"success"
-}
 ```
 
-#### 同步实体
+`}`
 
-##### UpdateSyncGroup
+#### 4.2.5 同步实体
+
+##### 4.2.5.1 UpdateSyncGroup
 
 根据同步组ID更新同步组的产品实例列表、元数据等配置信息。
 
@@ -4372,14 +4476,12 @@ POST /asr-web/api/protectGroup HTTP/1.1
 
 **请求参数**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | syncGrou pId | Strin g | Body | 否 | sg-93ad2c8b****** | 同步组ID。 |
 | protectGr oupId | Strin g | Body | 否 | pg-5f1c4e7a****** | 保护组ID。 |
 | type | Strin g | Body | 否 | RDS | 类型。取值范围： RDS：RDS数据库。 OSS：OSS对象存储。 ECS：ECS云服务器。 |
-| productIns tances | Array | Body | 否 |  | 包含的云产品实例列表。 |
+| productIns tances | Array | Body | 否 |   | 包含的云产品实例列表。 |
 | -pk | Long | Body | 否 | 10001 | 记录在数据库中的主键ID。 |
 | - productTy pe | Strin g | Body | 否 | RDS | 云产品类型。 |
 | -metadata | Strin g | Body | 否 | {"key":"value"} | 元数据，JSON字符串。 |
@@ -4393,11 +4495,11 @@ POST /asr-web/api/protectGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| - productInstanc es | Array |  | 包含的云产品实例列表。 |
+| data | Struct |   | 返回数据。 |
+| - productInstanc es | Array |   | 包含的云产品实例列表。 |
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4408,11 +4510,11 @@ POST /asr-web/api/protectGroup HTTP/1.1
 | -- productCatego ry | String | DATA ENTITY _ | 云产品类别。 |
 | --ownerId | String | 24401087478**** | 实例所有者UID。 |
 | --metadata | String | {"key":"value"} | 元数据，JSON字符串。 |
-| --region | Struct |  | 云实例地域信息。 |
+| --region | Struct |   | 云实例地域信息。 |
 | ---pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | --- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | ---primary | Boolean | true | 是否为主地域。 |
-| --- cloudInstance | Struct |  | 关联的云实例。 |
+| --- cloudInstance | Struct |   | 关联的云实例。 |
 | ---- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
@@ -4420,7 +4522,7 @@ POST /asr-web/api/protectGroup HTTP/1.1
 | -lastModifier | String | 24401087478**** | 资源最后修改者UID。 |
 | - resourceRegio nId | String | cn-hangzhou | 资源所属地域ID。 |
 
-|  | 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |  |
+|   | 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |   |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4438,8 +4540,6 @@ POST /asr-web/api/protectGroup HTTP/1.1
 | -syncType | String | HOT | 同步类型。取值范围： FULL：全量同步。 HOT：增量同步。 NOW：立即增量同步。 |
 | -mode | String | ACTIVE STANDBY _ | 同步组模式。取值范围： ACTIVE ACTIVE：双活模式。 _ ACTIVE STANDBY：主备模式。 _ |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -direction | String | FORWARD | 同步方向。取值范围： FORWARD：正向。 REVERSE：反向。 BIDIRECTIONAL：双向同步。 |
@@ -4448,10 +4548,9 @@ POST /asr-web/api/protectGroup HTTP/1.1
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -4462,7 +4561,11 @@ POST /asr-web/api/protectGroup HTTP/1.1
 ```json
  "data": {
   "productInstances": [
-   {
+```
+
+`{`
+
+```json
     "pk": 10001,
     "productInstanceId": "pi-1f8c4e7a******",
     "productInstanceName": "rds-instance-prod",
@@ -4476,12 +4579,9 @@ POST /asr-web/api/protectGroup HTTP/1.1
      "primary": true,
      "cloudInstance": {
       "cloudInstanceId": "ci-2ze8xn8sb3******"
-     }
-    }
-   }
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "aliyunAccountUid": "150**********453",
@@ -4504,17 +4604,17 @@ POST /asr-web/api/protectGroup HTTP/1.1
   "direction": "FORWARD",
   "status": "PROTECT",
   "metadata": "{\"key\":\"value\"}"
- }
-}
 ```
 
-##### SyncGroupCtl
+`}` `}`
+
+##### 4.2.5.2 SyncGroupCtl
 
 对指定的同步组下发控制命令，如启动、暂停、切换等操作。 ：需使用AccessKey（AK）进行签名认证。
 
 **认证方式**
 
-灾备管理中心 ：请求超时时间为10秒（10000毫秒）。
+：请求超时时间为10秒（10000毫秒）。
 
 **超时设置**
 
@@ -4527,6 +4627,10 @@ POST /asr-web/api/protectGroup HTTP/1.1
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
+
+```
+POST /asr-web/api/syncGroup/ctl HTTP/1.1
+```
 
 **请求参数**
 
@@ -4549,33 +4653,32 @@ POST /asr-web/api/protectGroup HTTP/1.1
 请求示例
 
 ```
-{ }
+POST /asr-web/api/syncGroup/ctl HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+`{` `}` 正常返回示例 `JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
 ```
 
-`"message": "`操作成功"
+`"message": "`操作成功`"` `}`
 
-```
-}
-```
-
-##### ListSyncGroups
+##### 4.2.5.3 ListSyncGroups
 
 分页查询同步组列表，支持按保护组、容灾关系、类型、状态等维度过滤。
 
 | （ | authType="AK" | ）。 |
 |---|---|---|
-| ${asrdr inner domain} _ _ |  |  |
+| ${asrdr inner domain} _ _ |   |   |
+
+：需使用AccessKey（AK）进行签名认证（ `authType="AK"` ）。
 
 **授权要求**
+
+：支持HTTP/HTTPS协议，内部调用域名为 ${asrdr_inner_domain} 。
 
 **协议说明**
 
@@ -4585,6 +4688,12 @@ POST /asr-web/api/protectGroup HTTP/1.1
 
 | 询 ： | states |
 |---|---|
+
+： `states` 参数支持传入多个状态值（具体格式需参考业务约
+
+**状态查询**
+
+定）， `includeStatusDetail` 可控制是否返回详细状态信息。
 
 **请求头**
 
@@ -4606,8 +4715,6 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 | type | Strin g | Query | 否 | RDS | 类型。取值范围： RDS：RDS数据库。 OSS：OSS对象存储。 ECS：ECS云服务器。 |
 | category | Strin g | Query | 否 | DATA ENTITY _ | 实体类别。取值范围： DATA ENTITY：数据实 _ 体。 INGRESS ENTITY：入 _ 口实体。 SERVICE ENTITY：服 _ 务实体。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | states | Strin g | Query | 否 | PROTECT,SUSPEND | 状态筛选条件，多个状态以英文逗号分隔。取值范围： PROTECT：保护中。 SUSPEND：暂停中。 PROTECT FAIL：保护失 _ 败。 |
@@ -4623,9 +4730,9 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -rows | Array |  | 分页查询结果列表。 |
-| -- productInstanc es | Array |  | 包含的云产品实例列表。 |
+| data | Struct |   | 返回数据。 |
+| -rows | Array |   | 分页查询结果列表。 |
+| -- productInstanc es | Array |   | 包含的云产品实例列表。 |
 | ---pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | --- productInstanc eId | String | pi-1f8c4e7a****** | 云产品实例ID。 |
 | --- productInstanc eName | String | rds-instance-prod | 云产品实例名称。 |
@@ -4636,11 +4743,11 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 | --- productCatego ry | String | DATA ENTITY _ | 云产品类别。 |
 | ---ownerId | String | 24401087478**** | 实例所有者UID。 |
 | ---metadata | String | {"key":"value"} | 元数据，JSON字符串。 |
-| ---region | Struct |  | 云实例地域信息。 |
+| ---region | Struct |   | 云实例地域信息。 |
 | ----pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | ---- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | ----primary | Boolean | true | 是否为主地域。 |
-| ---- cloudInstance | Struct |  | 关联的云实例。 |
+| ---- cloudInstance | Struct |   | 关联的云实例。 |
 | ----- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | -- aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | --ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
@@ -4650,7 +4757,7 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 | -- resourceGroup Id | String | rg- acfmxsn4m4****** | 资源所属资源组ID。 |
 | --createdDate | Long | 1748945001000 | 资源创建时间。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4666,8 +4773,6 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 | --syncType | String | HOT | 同步类型。取值范围： FULL：全量同步。 HOT：增量同步。 NOW：立即增量同步。 |
 | --mode | String | ACTIVE STANDBY _ | 同步组模式。取值范围： ACTIVE ACTIVE：双活模式。 _ ACTIVE STANDBY：主备模式。 _ |
 | --direction | String | FORWARD | 同步方向。取值范围： FORWARD：正向。 REVERSE：反向。 BIDIRECTIONAL：双向同步。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -4685,10 +4790,9 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 GET /asr-web/api/syncGroup/list HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -4699,9 +4803,17 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
 ```json
  "data": {
   "rows": [
-   {
+```
+
+`{`
+
+```json
     "productInstances": [
-     {
+```
+
+`{`
+
+```json
       "pk": 10001,
       "productInstanceId": "pi-1f8c4e7a******",
       "productInstanceName": "rds-instance-prod",
@@ -4715,14 +4827,6 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
        "primary": true,
        "cloudInstance": {
         "cloudInstanceId": "ci-2ze8xn8sb3******"
-       }
-```
-
-灾备管理中心
-
-```
-      }
-     }
 ```
 
 `],`
@@ -4748,20 +4852,19 @@ GET /asr-web/api/syncGroup/list HTTP/1.1
     "direction": "FORWARD",
     "status": "PROTECT",
     "metadata": "{\"key\":\"value\"}"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "pageNum": 1,
   "pageSize": 10,
   "total": 1
- }
-}
 ```
 
-##### GetSyncGroup
+`}` `}`
+
+##### 4.2.5.4 GetSyncGroup
 
 根据同步组ID查询单个同步组的详细信息。
 
@@ -4799,18 +4902,16 @@ GET /asr-web/api/syncGroup HTTP/1.1
 
 **请求参数**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | syncGrou pId | Strin g | Query | 否 | sg-93ad2c8b****** | 同步组ID。 |
 | includeSta tusDetail | Boole an | Query | 否 | false | 是否包含状态详情。 |
 
-| Host | 参数中的 | ${asrdr inner domain} _ _ |  |
+| Host | 参数中的 | ${asrdr inner domain} _ _ |   |
 |---|---|---|---|
-| includeStatusDetail |  |  | 默认值依服务端实现 |
+| includeStatusDetail |   |   | 默认值依服务端实现 |
 
-所有Query参数需进行URL编码。
+`Host` 参数中的 ${asrdr_inner_domain} 需替换为实际专有云环境分配的ASRDR服务内网域名。 所有Query参数需进行URL编码。
 
 **返回数据**
 
@@ -4820,8 +4921,8 @@ GET /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| - productInstanc es | Array |  | 包含的云产品实例列表。 |
+| data | Struct |   | 返回数据。 |
+| - productInstanc es | Array |   | 包含的云产品实例列表。 |
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | -- productInstanc eId | String | pi-1f8c4e7a****** | 云产品实例ID。 |
 | -- productInstanc eName | String | rds-instance-prod | 云产品实例名称。 |
@@ -4832,11 +4933,11 @@ GET /asr-web/api/syncGroup HTTP/1.1
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | --metadata | String | {"key":"value"} | 元数据，JSON字符串。 |
-| --region | Struct |  | 云实例地域信息。 |
+| --region | Struct |   | 云实例地域信息。 |
 | ---pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | --- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | ---primary | Boolean | true | 是否为主地域。 |
-| --- cloudInstance | Struct |  | 关联的云实例。 |
+| --- cloudInstance | Struct |   | 关联的云实例。 |
 | ---- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
@@ -4849,7 +4950,7 @@ GET /asr-web/api/syncGroup HTTP/1.1
 | -syncGroupId | String | sg-93ad2c8b****** | 同步组ID。 |
 | -drGroupId | String | dg-2a7b3c9d****** | 容灾关系ID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -4865,20 +4966,15 @@ GET /asr-web/api/syncGroup HTTP/1.1
 | -status | String | PROTECT | 同步组保护状态。取值范围： PROTECT：保护中。 SUSPEND：暂停中。 PROTECT FAIL：保护失败。 _ |
 | -metadata | String | {"key":"value"} | 元数据，JSON字符串。 |
 
-灾备管理中心
-
-**示例**
-
 请求示例
 
 ```
 GET /asr-web/api/syncGroup HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式灾备管理中心
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -4889,7 +4985,11 @@ GET /asr-web/api/syncGroup HTTP/1.1
 ```json
  "data": {
   "productInstances": [
-   {
+```
+
+`{`
+
+```json
     "pk": 10001,
     "productInstanceId": "pi-1f8c4e7a******",
     "productInstanceName": "rds-instance-prod",
@@ -4903,12 +5003,9 @@ GET /asr-web/api/syncGroup HTTP/1.1
      "primary": true,
      "cloudInstance": {
       "cloudInstanceId": "ci-2ze8xn8sb3******"
-     }
-    }
-   }
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "aliyunAccountUid": "150**********453",
@@ -4931,13 +5028,13 @@ GET /asr-web/api/syncGroup HTTP/1.1
   "direction": "FORWARD",
   "status": "PROTECT",
   "metadata": "{\"key\":\"value\"}"
- }
-}
 ```
 
-##### DeleteSyncGroup
+`}` `}`
 
-根据同步组ID删除指定的同步组。 灾备管理中心
+##### 4.2.5.5 DeleteSyncGroup
+
+根据同步组ID删除指定的同步组。
 
 **接口说明**
 
@@ -4982,24 +5079,17 @@ DELETE /asr-web/api/syncGroup HTTP/1.1
 DELETE /asr-web/api/syncGroup HTTP/1.1
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
 ```
 
-`"message": "`操作成功"
+`"message": "`操作成功`"` `}`
 
-```
-}
-```
-
-灾备管理中心
-
-##### CreateSyncGroup
+##### 4.2.5.6 CreateSyncGroup
 
 创建一个同步组，用于在保护组下定义具体的数据同步链路。 ：需使用AccessKey（AK）进行签名认证（ `authType="AK"` ）
 
@@ -5042,19 +5132,17 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | priority | Integ er | Body | 否 | 1 | 同步链路优先级，数值越小优先级越高。 |
 | syncType | Strin g | Body | 否 | HOT | 同步类型。取值范围： FULL：全量同步。 HOT：增量同步。 NOW：立即增量同步。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | mode | Strin g | Body | 否 | ACTIVE STANDBY _ | 同步组模式。取值范围： ACTIVE ACTIVE：双活 _ 模式。 ACTIVE STANDBY：主 _ 备模式。 |
 | direction | Strin g | Body | 否 | FORWARD | 同步方向。取值范围： FORWARD：正向。 REVERSE：反向。 BIDIRECTIONAL：双向同步。 |
-| productIns tances | Array | Body | 否 |  | 包含的云产品实例列表。 |
+| productIns tances | Array | Body | 否 |   | 包含的云产品实例列表。 |
 | - productIns tanceId | Strin g | Body | 否 | pi-1f8c4e7a****** | 云产品实例ID。 |
 | - productIns tanceNam e | Strin g | Body | 否 | rds-instance-prod | 云产品实例名称。 |
 | - productTy pe | Strin g | Body | 否 | RDS | 云产品类型。 |
-| -region | Struc t | Body | 否 |  | 云实例地域信息。 |
+| -region | Struc t | Body | 否 |   | 云实例地域信息。 |
 | -- cloudInsta nceRegion Id | Strin g | Body | 否 | cn-hangzhou | 云实例地域ID。 |
-| -- cloudInsta nce | Struc t | Body | 否 |  | 关联的云实例。 |
+| -- cloudInsta nce | Struc t | Body | 否 |   | 关联的云实例。 |
 | --- cloudInsta nceId | Strin g | Body | 否 | ci-2ze8xn8sb3****** | 云实例ID。 |
 | --primary | Boole an | Body | 否 | true | 是否为主地域。 |
 | -metadata | Strin g | Body | 否 | {"key":"value"} | 元数据，JSON字符串。 |
@@ -5062,16 +5150,14 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | req-2a7b3c9d | 请求ID，用于问题排查。 |
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| - productInstanc es | Array |  | 包含的云产品实例列表。 |
+| data | Struct |   | 返回数据。 |
+| - productInstanc es | Array |   | 包含的云产品实例列表。 |
 | --pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | -- productInstanc eId | String | pi-1f8c4e7a****** | 云产品实例ID。 |
 | -- productInstanc eName | String | rds-instance-prod | 云产品实例名称。 |
@@ -5079,17 +5165,17 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | -- productCatego ry | String | DATA ENTITY _ | 云产品类别。 |
 | --ownerId | String | 24401087478**** | 实例所有者UID。 |
 | --metadata | String | {"key":"value"} | 元数据，JSON字符串。 |
-| --region | Struct |  | 云实例地域信息。 |
+| --region | Struct |   | 云实例地域信息。 |
 | ---pk | Long | 10001 | 记录在数据库中的主键ID。 |
 | --- cloudInstance RegionId | String | cn-hangzhou | 云实例地域ID。 |
 | ---primary | Boolean | true | 是否为主地域。 |
 
-|  | ·API |  |  |
+|   | ·API |   |   |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-| --- cloudInstance | Struct |  | 关联的云实例。 |
+| --- cloudInstance | Struct |   | 关联的云实例。 |
 | ---- cloudInstanceI d | String | ci- 2ze8xn8sb3****** | 云实例ID。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
@@ -5104,8 +5190,6 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | - protectGroupI d | String | pg-5f1c4e7a****** | 保护组ID。 |
 | -type | String | RDS | 类型。取值范围： RDS：RDS数据库。 OSS：OSS对象存储。 ECS：ECS云服务器。 |
 | -subType | String | RDS | 子类型。取值范围： RDS：RDS数据库。 OSS：OSS对象存储。 ECS：ECS云服务器。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5125,10 +5209,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
 POST /asr-web/api/syncGroup HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式灾备管理中心
+正常返回示例 `JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5139,7 +5222,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
 ```json
  "data": {
   "productInstances": [
-   {
+```
+
+`{`
+
+```json
     "pk": 10001,
     "productInstanceId": "pi-1f8c4e7a******",
     "productInstanceName": "rds-instance-prod",
@@ -5153,12 +5240,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
      "primary": true,
      "cloudInstance": {
       "cloudInstanceId": "ci-2ze8xn8sb3******"
-     }
-    }
-   }
 ```
 
-`],`
+`}` `}` `}` `],`
 
 ```json
   "aliyunAccountUid": "150**********453",
@@ -5181,15 +5265,15 @@ POST /asr-web/api/syncGroup HTTP/1.1
   "direction": "FORWARD",
   "status": "PROTECT",
   "metadata": "{\"key\":\"value\"}"
- }
-}
 ```
 
-#### 容灾计划
+`}` `}`
 
-##### UpdateRecoveryPlan
+#### 4.2.6 容灾计划
 
-灾备管理中心根据容灾计划ID更新容灾计划的名称、类型、描述等基础信息。
+##### 4.2.6.1 UpdateRecoveryPlan
+
+根据容灾计划ID更新容灾计划的名称、类型、描述等基础信息。
 
 **请求头**
 
@@ -5213,12 +5297,12 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | -creator | String | 24401087478**** | 资源创建者UID。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5235,15 +5319,14 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | -scope | String | TENANT | 容灾范围等级。取值范围： TENANT：租户级容灾。 REGION：站点(Region)级容灾。 |
 | -stability | String | STABLE | 计划稳定性。 |
 | -description | String | 用于杭州-上海双活容灾的关系 | 描述信息。 |
-| -drGroup | Struct |  | 关联的容灾关系。 |
+| -drGroup | Struct |   | 关联的容灾关系。 |
 | --drGroupId | String | dg-2a7b3c9d****** | 容灾关系ID。 |
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5269,17 +5352,16 @@ POST /asr-web/api/syncGroup HTTP/1.1
   "stability": "STABLE",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
   "drGroup": {
    "drGroupId": "dg-2a7b3c9d******"
-  }
- }
-}
 ```
 
-##### RecoveryTaskCtl
+`}` `}` `}`
+
+##### 4.2.6.2 RecoveryTaskCtl
 
 对指定的容灾任务下发控制命令，如启动、暂停、中止等操作。
 
@@ -5295,8 +5377,6 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | recoveryPl anId | Strin g | Body | 否 | rp-7c2a4e8d****** | 容灾计划ID。 |
 | cmd | Strin g | Body | 否 | START | 容灾任务控制命令。取值范围： START：启动。 ABORT：中止。 COMPLETE：完成。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | options | Strin g | Body | 否 | {"force":false} | 扩展选项，JSON字符串形式。 |
@@ -5309,16 +5389,14 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - recoveryTaskI d | String | rt-3e9b6f2a****** | 容灾任务ID。 |
 | - recoveryPlanId | String | rp-7c2a4e8d****** | 容灾计划ID。 |
 | -runMode | String | DRILL | 运行模式。取值范围： DRILL：容灾演练。 DR：故障切换(灾难恢复)。 |
 | -status | String | RUNNING | 容灾任务状态。取值范围： PENDING：排队中。 RUNNING：执行中。 COMPLETED：执行完成。 |
-| -strategy | Struct |  | 任务执行策略选项。 |
+| -strategy | Struct |   | 任务执行策略选项。 |
 | -- skipCheckpoin tSequence | Boolean | false | 是否跳过Checkpoint执行步骤。 |
 | -- autoComplete HoldSequenceI fSuccess | Boolean | false | 执行成功时是否自动完成Hold步骤。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5326,10 +5404,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5347,12 +5424,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
    "skipCheckpointSequence": false,
    "autoCompleteHoldSequenceIfSuccess": false,
    "forceWaitingRecover": false
-  }
- }
-}
 ```
 
-##### ListRecoveryTasks
+`}` `}` `}`
+
+##### 4.2.6.3 ListRecoveryTasks
 
 分页查询容灾任务列表，支持按计划、状态、运行模式等维度过滤。
 
@@ -5367,8 +5443,6 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | recoveryT askId | Strin g | Query | 否 | rt-3e9b6f2a****** | 容灾任务ID。 |
 | recoveryPl anId | Strin g | Query | 否 | rp-7c2a4e8d****** | 容灾计划ID。 |
 | recoveryPl anName | Strin g | Query | 否 | hangzhou-failover-plan | 容灾计划名称。 |
-
-灾备管理中心
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5388,11 +5462,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -rows | Array |  | 分页查询结果列表。 |
+| data | Struct |   | 返回数据。 |
+| -rows | Array |   | 分页查询结果列表。 |
 | -- recoveryTaskI d | String | rt-3e9b6f2a****** | 容灾任务ID。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5400,7 +5474,7 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | -- recoveryPlanId | String | rp-7c2a4e8d****** | 容灾计划ID。 |
 | --runMode | String | DRILL | 运行模式。取值范围： DRILL：容灾演练。 DR：故障切换。 |
 | --status | String | RUNNING | 容灾任务状态。取值范围： PENDING：排队中。 RUNNING：执行中。 COMPLETED：执行完成。 |
-| --strategy | Struct |  | 任务执行策略选项。 |
+| --strategy | Struct |   | 任务执行策略选项。 |
 | --- skipCheckpoin tSequence | Boolean | false | 是否跳过Checkpoint执行步骤。 |
 | --- autoComplete HoldSequenceI fSuccess | Boolean | false | 执行成功时是否自动完成Hold步骤。 |
 | --- forceWaitingR ecover | Boolean | false | 是否强制进入等待切回状态。 |
@@ -5410,10 +5484,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5424,7 +5497,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
 ```json
  "data": {
   "rows": [
-   {
+```
+
+`{`
+
+```json
     "recoveryTaskId": "rt-3e9b6f2a******",
     "recoveryPlanId": "rp-7c2a4e8d******",
     "runMode": "DRILL",
@@ -5433,21 +5510,19 @@ POST /asr-web/api/syncGroup HTTP/1.1
      "skipCheckpointSequence": false,
      "autoCompleteHoldSequenceIfSuccess": false,
      "forceWaitingRecover": false
-    }
-   }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "pageNum": 1,
   "pageSize": 10,
   "total": 1
- }
-}
 ```
 
-##### ListRecoveryPlans
+`}` `}`
+
+##### 4.2.6.4 ListRecoveryPlans
 
 分页查询当前账号下的容灾计划列表，支持按类型、所属容灾关系、保护组等维度过滤。
 
@@ -5478,8 +5553,8 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-| -rows | Array |  | 分页查询结果列表。 |
+| data | Struct |   | 返回数据。 |
+| -rows | Array |   | 分页查询结果列表。 |
 | -- aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | --ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | --creator | String | 24401087478**** | 资源创建者UID。 |
@@ -5488,7 +5563,7 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | -- resourceGroup Id | String | rg- acfmxsn4m4****** | 资源所属资源组ID。 |
 | --createdDate | Long | 1748945001000 | 资源创建时间。 |
 
-| 异地容灾管理平台开 | 发指南·API参考 |  | 灾备管理中心 |
+| 异地容灾管理平台开 | 发指南·API参考 |   | 灾备管理中心 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5501,7 +5576,7 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | --scope | String | TENANT | 容灾范围等级。取值范围： TENANT：租户级容灾。 REGION：站点(Region)级容灾。 |
 | --stability | String | STABLE | 计划稳定性。 |
 | --description | String | 用于杭州-上海双活容灾的关系 | 描述信息。 |
-| --drGroup | Struct |  | 关联的容灾关系。 |
+| --drGroup | Struct |   | 关联的容灾关系。 |
 | ---drGroupId | String | dg-2a7b3c9d****** | 容灾关系ID。 |
 | -pageNum | Integer | 1 | 当前页码。 |
 | -pageSize | Integer | 10 | 每页返回记录数。 |
@@ -5509,10 +5584,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5523,7 +5597,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
 ```json
  "data": {
   "rows": [
-   {
+```
+
+`{`
+
+```json
     "aliyunAccountUid": "150**********453",
     "ownerUid": "24401087478****",
     "creator": "24401087478****",
@@ -5540,26 +5618,24 @@ POST /asr-web/api/syncGroup HTTP/1.1
     "stability": "STABLE",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
     "drGroup": {
      "drGroupId": "dg-2a7b3c9d******"
-    }
-   }
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "pageNum": 1,
   "pageSize": 10,
   "total": 1
- }
-}
 ```
 
-##### GetRecoveryTask
+`}` `}`
+
+##### 4.2.6.5 GetRecoveryTask
 
 根据容灾任务ID或容灾计划ID查询容灾任务的详细信息。
 
@@ -5576,30 +5652,27 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | req-2a7b3c9d | 请求ID，用于问题排查。 |
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - recoveryTaskI d | String | rt-3e9b6f2a****** | 容灾任务ID。 |
 | - recoveryPlanId | String | rp-7c2a4e8d****** | 容灾计划ID。 |
 | -runMode | String | DRILL | 运行模式。取值范围： DRILL：容灾演练。 DR：故障切换(灾难恢复)。 |
 | -status | String | RUNNING | 容灾任务状态。取值范围： PENDING：排队中。 RUNNING：执行中。 COMPLETED：执行完成。 |
-| -strategy | Struct |  | 任务执行策略选项。 |
+| -strategy | Struct |   | 任务执行策略选项。 |
 | -- skipCheckpoin tSequence | Boolean | false | 是否跳过Checkpoint执行步骤。 |
 | -- autoComplete HoldSequenceI fSuccess | Boolean | false | 执行成功时是否自动完成Hold步骤。 |
 | -- forceWaitingR ecover | Boolean | false | 是否强制进入等待切回状态。 |
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5617,12 +5690,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
    "skipCheckpointSequence": false,
    "autoCompleteHoldSequenceIfSuccess": false,
    "forceWaitingRecover": false
-  }
- }
-}
 ```
 
-##### GetRecoveryPlan
+`}` `}` `}`
+
+##### 4.2.6.6 GetRecoveryPlan
 
 根据容灾计划ID查询单个容灾计划的详细信息。
 
@@ -5644,9 +5716,7 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
-
-灾备管理中心
+| data | Struct |   | 返回数据。 |
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5665,9 +5735,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | -scope | String | TENANT | 容灾范围等级。取值范围： TENANT：租户级容灾。 REGION：站点(Region)级容灾。 |
 | -stability | String | STABLE | 计划稳定性。 |
 | -description | String | 用于杭州-上海双活容灾的关系 | 描述信息。 |
-| -drGroup | Struct |  | 关联的容灾关系。 |
+| -drGroup | Struct |   | 关联的容灾关系。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -5676,10 +5746,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5705,17 +5774,16 @@ POST /asr-web/api/syncGroup HTTP/1.1
   "stability": "STABLE",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
   "drGroup": {
    "drGroupId": "dg-2a7b3c9d******"
-  }
- }
-}
 ```
 
-##### DeleteRecoveryTask
+`}` `}` `}`
+
+##### 4.2.6.7 DeleteRecoveryTask
 
 根据容灾任务ID删除指定的容灾任务记录。
 
@@ -5731,8 +5799,6 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **返回数据**
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | req-2a7b3c9d | 请求ID，用于问题排查。 |
@@ -5742,22 +5808,17 @@ POST /asr-web/api/syncGroup HTTP/1.1
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
 ```
 
-`"message": "`操作成功"
+`"message": "`操作成功`"` `}`
 
-```
-}
-```
-
-##### DeleteRecoveryPlan
+##### 4.2.6.8 DeleteRecoveryPlan
 
 根据容灾计划ID删除指定的容灾计划。
 
@@ -5780,28 +5841,23 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
 
-| 灾备管理中心 |  |  | 异地容灾管理平台开发指南·API参考 |
+| 灾备管理中心 |   |   | 异地容灾管理平台开发指南·API参考 |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
 ```
 
-`"message": "`操作成功"
+`"message": "`操作成功`"` `}`
 
-```
-}
-```
-
-##### CreateRecoveryTask
+##### 4.2.6.9 CreateRecoveryTask
 
 基于已有容灾计划创建并启动一个容灾任务，用于执行演练或灾难恢复。
 
@@ -5815,12 +5871,10 @@ POST /asr-web/api/syncGroup HTTP/1.1
 |---|---|---|---|---|---|
 | recoveryPl anId | Strin g | Body | 否 | rp-7c2a4e8d****** | 容灾计划ID。 |
 | runMode | Strin g | Body | 否 | DRILL | 运行模式。取值范围： DRILL：容灾演练。 DR：故障切换(灾难恢复)。 |
-| strategy | Struc t | Body | 否 |  | 任务执行策略选项。 |
+| strategy | Struc t | Body | 否 |   | 任务执行策略选项。 |
 | - skipCheck pointSequ ence | Boole an | Body | 否 | false | 是否跳过Checkpoint执行步骤。 |
 | - autoComp leteHoldS equenceIf Success | Boole an | Body | 否 | false | 执行成功时是否自动完成 Hold步骤。 |
 | - forceWaiti ngRecove r | Boole an | Body | 否 | false | 是否强制进入等待切回状态。 |
-
-灾备管理中心
 
 **返回数据**
 
@@ -5830,22 +5884,21 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - recoveryTaskI d | String | rt-3e9b6f2a****** | 容灾任务ID。 |
 | - recoveryPlanId | String | rp-7c2a4e8d****** | 容灾计划ID。 |
 | -runMode | String | DRILL | 运行模式。取值范围： DRILL：容灾演练。 DR：故障切换(灾难恢复)。 |
 | -status | String | PENDING | 容灾任务状态。取值范围： PENDING：排队中。 RUNNING：执行中。 COMPLETED：执行完成。 |
-| -strategy | Struct |  | 任务执行策略选项。 |
+| -strategy | Struct |   | 任务执行策略选项。 |
 | -- skipCheckpoin tSequence | Boolean | false | 是否跳过Checkpoint执行步骤。 |
 | -- autoComplete HoldSequenceI fSuccess | Boolean | false | 执行成功时是否自动完成Hold步骤。 |
 | -- forceWaitingR ecover | Boolean | false | 是否强制进入等待切回状态。 |
 
 **示例**
 
-`JSON` 格式灾备管理中心
+`JSON` 格式
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5863,12 +5916,11 @@ POST /asr-web/api/syncGroup HTTP/1.1
    "skipCheckpointSequence": false,
    "autoCompleteHoldSequenceIfSuccess": false,
    "forceWaitingRecover": false
-  }
- }
-}
 ```
 
-##### CreateRecoveryPlan
+`}` `}` `}`
+
+##### 4.2.6.10 CreateRecoveryPlan
 
 在指定容灾关系下创建容灾计划，用于演练或灾难恢复场景。
 
@@ -5884,12 +5936,10 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | type | Strin g | Body | 否 | DRILL ONLY _ | 容灾计划类型。取值范围： DRILL ONLY：演练计 _ 划。 DRILL AND DR：故障 _ _ 计划。 |
 | descriptio n | Strin g | Body | 否 | 用于杭州-上海双活容灾的关系 | 描述信息。 |
 | resourceG roupId | Strin g | Body | 否 | rg-acfmxsn4m4****** | 资源所属资源组ID。 |
-| drGroup | Struc t | Body | 否 |  | 关联的容灾关系。 |
+| drGroup | Struc t | Body | 否 |   | 关联的容灾关系。 |
 | - drGroupId | Strin g | Body | 否 | dg-2a7b3c9d****** | 容灾关系ID。 |
 
 **返回数据**
-
-灾备管理中心
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5897,7 +5947,7 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | success | Boolean | true | 请求是否成功。 |
 | code | String | 200 | 返回状态码，200表示成功。 |
 | message | String | 操作成功 | 返回提示信息。 |
-| data | Struct |  | 返回数据。 |
+| data | Struct |   | 返回数据。 |
 | - aliyunAccount Uid | String | 150**********453 | 资源所属主账号UID。 |
 | -ownerUid | String | 24401087478**** | 资源所有者的用户ID。 |
 | -creator | String | 24401087478**** | 资源创建者UID。 |
@@ -5910,23 +5960,20 @@ POST /asr-web/api/syncGroup HTTP/1.1
 | - recoveryPlanN ame | String | hangzhou-failover- plan | 容灾计划名称。 |
 | -pk | Long | 10001 | 记录在数据库中的主键ID。 |
 
-灾备管理中心
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | -type | String | DRILL ONLY _ | 容灾计划类型。取值范围： DRILL ONLY：演练计划。 _ DRILL AND DR：故障计划。 _ _ |
 | -scope | String | TENANT | 容灾范围等级。取值范围： TENANT：租户级容灾。 REGION：站点(Region)级容灾。 |
 | -stability | String | STABLE | 计划稳定性。 |
 | -description | String | 用于杭州-上海双活容灾的关系 | 描述信息。 |
-| -drGroup | Struct |  | 关联的容灾关系。 |
+| -drGroup | Struct |   | 关联的容灾关系。 |
 | --drGroupId | String | dg-2a7b3c9d****** | 容灾关系ID。 |
 
 **示例**
 
-`JSON` 格式
+`JSON` 格式 `{`
 
 ```json
-{
  "requestId": "req-2a7b3c9d",
  "success": true,
  "code": "200",
@@ -5952,14 +5999,9 @@ POST /asr-web/api/syncGroup HTTP/1.1
   "stability": "STABLE",
 ```
 
-`"description": "`用于杭州-上海双活容灾的关系`",`
+`"description": "`用于杭州`-`上海双活容灾的关系`",`
 
 ```json
   "drGroup": {
    "drGroupId": "dg-2a7b3c9d******"
-  }
- }
-}
 ```
-
-灾备管理中心

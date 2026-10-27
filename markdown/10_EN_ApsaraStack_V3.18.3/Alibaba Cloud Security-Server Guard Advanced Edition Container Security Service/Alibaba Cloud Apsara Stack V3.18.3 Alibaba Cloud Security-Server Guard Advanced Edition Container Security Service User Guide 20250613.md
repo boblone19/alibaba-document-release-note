@@ -5,7 +5,7 @@ doc_version: "20250613"
 pdf_pages: 37
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service User Guide 20250613.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20User%20Guide%2020250613.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service User Guide 20250613
@@ -78,6 +78,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -103,7 +106,11 @@ You can use a network topology to view container assets from the Internet and cl
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -120,7 +127,11 @@ The container management feature allows you to synchronize assets and connect se
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -153,11 +164,17 @@ You can specify query conditions above the asset list to view assets after you c
 #### 3.1.3 Image management
 
 You can use the image management feature to synchronize assets and connect image repositories. You can also view and manage all images and at-risk images. This topic describes how to manage images.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -194,7 +211,11 @@ The container image scan feature can detect and identify high-risk system vulner
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -238,7 +259,7 @@ The scanner integration feature can detect image risks in the project building s
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -259,7 +280,11 @@ The vulnerability management feature of Container Security Service (CSS) is prov
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -294,7 +319,8 @@ The baseline check feature can help you identify baseline risks in an efficient 
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -322,11 +348,18 @@ Container Security allows you to monitor nodes and containers in clusters. You c
 **Background information**
 
 The intrusion alert feature is developed based on the big data alerting model that is provided by Alibaba Cloud. The threat detection module of Server Guard provides comprehensive intrusion detection capabilities that can inform you of risks in Container Security for Kubernetes (ACK) and block external risks in an efficient manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -348,7 +381,10 @@ The container firewall feature helps you protect container assets from attacks. 
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -378,7 +414,11 @@ The container file protection feature can monitor directories and files in conta
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -436,7 +476,11 @@ system rule on the **System Rule** tab. The action that is specified in the syst
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -476,7 +520,11 @@ CSS provides the same types of custom rules and system rules. You can configure 
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -508,11 +556,18 @@ The log retrieval feature allows you to query the logs of process snapshots, net
 **Background information**
 
 The intrusion alert feature is developed based on the big data alerting model that is provided by Alibaba Cloud. The threat detection module of Server Guard provides comprehensive intrusion detection capabilities that can inform you of risks in Container Security for Kubernetes (ACK) and block external risks in an efficient manner.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -532,7 +587,11 @@ This topic describes how to manage protection capabilities and protection modes 
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Server Security > Container Security Service (CSS)**. On the **Container**
 **Security Service (CSS)** page, select a region from the **Region** drop-down list and click
-In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the
+**Access with Authorized Role**.
+
+**Note**
+
+In multi-level organization mode,all data permissions are managed by using resource sets in organizations.You can select an organization or a resource set in the top navigation bar of the console to view or manage the assets of the organization or resource set.
 
 > The parent organization has the highest management permissions. Modifications to the parent organization take effect on all child organizations and resource sets that belong to the parent organization. Proceed with caution when you modify the configurations.
 
@@ -558,6 +617,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the console that is obtained from the deployment personnel. A web browser. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. Enter your username and password.
@@ -579,6 +641,9 @@ igurations
 #### 4.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -611,6 +676,9 @@ After you create a custom IPS rule, you can perform the following operations on 
 #### 4.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -634,6 +702,9 @@ If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbi
 #### 4.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -656,6 +727,8 @@ igurations
 #### 4.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
+
+**Procedure**
 
 > **Important:** WAF rules are global custom rules that take effect on all tenants. Proceed with caution.
 
@@ -689,6 +762,9 @@ After you create a rule, you can perform the following operations on the rule: F
 #### 4.3.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -707,6 +783,8 @@ This topic describes how to view and modify the information about your Apsara St
 
 > **Important:** All assets in Apsara Stack Security are bound to your Apsara Stack tenant account. You can modify the account information. Proceed with caution.
 
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**
@@ -718,7 +796,11 @@ tenant account. i. Find your Apsara Stack tenant account and click **Revised** i
 
 #### 4.4.2 Manage Alibaba Cloud accounts
 
-After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
+After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center.
+
+**Procedure**
+
+To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
 **Security** > **Global Platform Security > System Configurations**. On the **System**

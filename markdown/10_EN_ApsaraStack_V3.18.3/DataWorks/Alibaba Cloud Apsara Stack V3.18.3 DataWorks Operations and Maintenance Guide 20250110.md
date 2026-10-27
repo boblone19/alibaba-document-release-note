@@ -5,7 +5,7 @@ doc_version: "20250110"
 pdf_pages: 108
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 DataWorks Operations and Maintenance Guide 20250110.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20DataWorks%20Operations%20and%20Maintenance%20Guide%2020250110.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 DataWorks Operations and Maintenance Guide 20250110

@@ -5,7 +5,7 @@ doc_version: "20220915"
 pdf_pages: 605
 source_pdf: "2d6f0b9ac4c04c31_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service User Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Log%20Service%20User%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service User Guide
@@ -13419,7 +13419,7 @@ i. Download the input plug-in logstash-input-sls. ii. Install the Logstash input
 logstash-plugin install logstash-input-sls
 ```
 
-For information about the causes of installation failures and solutions, see Plug-in installation and configuration.
+Not e For information about the causes of installation failures and solutions, see Plug-in installation and configuration.
 3. Start Logstash.
 
 ```

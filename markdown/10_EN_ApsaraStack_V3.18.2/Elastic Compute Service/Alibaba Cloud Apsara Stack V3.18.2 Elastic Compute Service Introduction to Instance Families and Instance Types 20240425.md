@@ -5,7 +5,7 @@ doc_version: "20240425"
 pdf_pages: 31
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 Elastic Compute Service Introduction to Instance Families and Instance Types 20240425.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/ECS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20Elastic%20Compute%20Service%20Introduction%20to%20Instance%20Families%20and%20Instance%20Types%2020240425.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 Elastic Compute Service Introduction to Instance Families and Instance Types 20240425

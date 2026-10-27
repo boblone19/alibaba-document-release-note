@@ -5,7 +5,7 @@ doc_version: "20231222"
 pdf_pages: 215
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.18.1 Data Transmission Service Developer Guide 20231222.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3.18.1%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.18.1%20Data%20Transmission%20Service%20Developer%20Guide%2020231222.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.18.1 Data Transmission Service Developer Guide 20231222
@@ -159,29 +159,41 @@ Every response returns a unique request ID regardless of whether the call is suc
 
 **Sample responses**
 
-Data Transmission Service (DTS) API uses standard HTTP status codes to indicate whether the call is successful. A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses can be returned in the JSON or XML format. You can specify the response format in the request. The default response format is XML. For ease of reading, the sample responses are formatted. The actual responses do not include line breaks or indentations.
+Data Transmission Service (DTS) API uses standard HTTP status codes to indicate whether the call is successful. A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses can be returned in the JSON or XML format. You can specify the response format in the request. The default response format is XML. For ease of reading, the sample responses are formatted. The actual responses do not include line breaks or indentations. Sample success responses XML format
 
-```json
+```xml
 <?xml version="1.0" encoding="utf-8"?> <!—Root node of the response--> <API operation name + Response>
     <!—Returned request tag-->
     <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
     <!—Returned result data-->
 </API operation name + Response>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
     /* Returned result data */
 ```
 
-Sample error responses If an error occurs on your request, the system returns an HTTP status code 4xx or 5xx. The returned response body contains the specific error code and error message. The response body also contains the RequestId parameter that indicates the globally unique request ID and the HostId parameter that indicates the ID of the site that you requested to access.
+`}` Sample error responses If an error occurs on your request, the system returns an HTTP status code 4xx or 5xx. The returned response body contains the specific error code and error message. The response body also contains the RequestId parameter that indicates the globally unique request ID and the HostId parameter that indicates the ID of the site that you requested to access.
 
 > **Note:** You can troubleshoot an error based on the error code. For more information, see Error codes. If you cannot identify the cause of the error, you can contact the Alibaba Cloud customer service team and provide the returned HostId and RequestId for technical support.
 
-```json
+XML format
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?> <Error>
    <RequestId>8906582E-6722-409A-A6C4-0E7863B733A5</RequestId>
    <HostId>dts.aliyuncs.com</HostId>
    <Code>UnsupportedOperation</Code>
    <Message>The specified action is not supported.</Message>
 </Error>
+```
+
+JSON format `{`
+
+```json
     "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF",
     "HostId": "dts.aliyuncs.com",
     "Code": "UnsupportedOperation",
@@ -212,7 +224,11 @@ You can send API requests over HTTP or HTTPS. To enhance security, we recommend 
 
 **Request methods**
 
-You can use the HTTP GET method to send requests. If you use this method, you must include request parameters in the request URL. In each request, you must specify the operation to be performed. For example, to create a data migration instance, you must set the Action parameter to CreateMigrationJob. Request parameters include both common parameters and operation-specific parameters.
+You can use the HTTP GET method to send requests. If you use this method, you must include request parameters in the request URL.
+
+**Request parameters**
+
+In each request, you must specify the operation to be performed. For example, to create a data migration instance, you must set the Action parameter to CreateMigrationJob. Request parameters include both common parameters and operation-specific parameters.
 
 **Encoding**
 
@@ -258,6 +274,8 @@ This topic lists the regions that are supported by Data Transmission Service (DT
 
 Purchases a Data Transmission Service (DTS) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateDtsInstance | The operation that you want to perform. Set the value to CreateDtsInstance. |
@@ -290,9 +308,15 @@ Purchases a Data Transmission Service (DTS) instance.
 | RequestId | String | C166D79D-436B-45F0-B5A5- 25E1**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CreateDtsInstance
+http(s)://dts.aliyuncs.com/?Action=CreateDtsInstance &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -305,6 +329,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateDtsInstance
 #### 1.4.2 ConfigureDtsJob
 
 Configures a data migration or data synchronization task. Before you configure a task, you must call the CreateDtsInstance operation to purchase a Data Transmission Service (DTS) instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -369,9 +395,15 @@ Configures a data migration or data synchronization task. Before you configure a
 | RequestId | String | 224DB9F7-3100-4899-AB9C- C938BCCB**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureDtsJob &RegionId=cn-hangzhou &SourceEndpointInstanceType=RDS &DestinationEndpointInstanceType=EXPRESS &StructureInitialization=true &DataInitialization=true &DataSynchronization=true &DbList={"dtstest":{"name":"dtstest","all":true}} &JobType=SYNC &SourceEndpointInstanceID=rm-bp1imrtn6fq7h**** &SourceEndpointEngineName=MYSQL &SourceEndpointRegion=cn-hangzhou &SourceEndpointUserName=dtstest &SourceEndpointPassword=Test123456 &DestinationEndpointInstanceID=vpc-bp1opxu1zkhn00gzv**** &DestinationEndpointEngineName=MYSQL &DestinationEndpointIP=172.16.**.*** &DestinationEndpointRegion=cn-hangzhou &DestinationEndpointPort=3306 &DestinationEndpointUserName=dtstest &DestinationEndpointPassword=Test123456 &DtsJobId=k2gm967v16f**** &DtsInstanceId=dtsk2gm967v16f**** &DtsJobName=ApsaraDB RDS for MySQL to self-managed MySQL database connected over Express Connect
+http(s)://dts.aliyuncs.com/?Action=ConfigureDtsJob &RegionId=cn-hangzhou &SourceEndpointInstanceType=RDS &DestinationEndpointInstanceType=EXPRESS &StructureInitialization=true &DataInitialization=true &DataSynchronization=true &DbList={"dtstest":{"name":"dtstest","all":true}} &JobType=SYNC &SourceEndpointInstanceID=rm-bp1imrtn6fq7h**** &SourceEndpointEngineName=MYSQL &SourceEndpointRegion=cn-hangzhou &SourceEndpointUserName=dtstest &SourceEndpointPassword=Test123456 &DestinationEndpointInstanceID=vpc-bp1opxu1zkhn00gzv**** &DestinationEndpointEngineName=MYSQL &DestinationEndpointIP=172.16.**.*** &DestinationEndpointRegion=cn-hangzhou &DestinationEndpointPort=3306 &DestinationEndpointUserName=dtstest &DestinationEndpointPassword=Test123456 &DtsJobId=k2gm967v16f**** &DtsInstanceId=dtsk2gm967v16f**** &DtsJobName=ApsaraDB RDS for MySQL to self-managed MySQL database connected over Express Connect &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -384,6 +416,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureDtsJob &RegionId=cn-hangzhou &Source
 #### 1.4.3 ConfigureSubscription
 
 Configures a change tracking task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -424,6 +458,8 @@ Configures a change tracking task.
 | ErrorPhone | String | No | 1361234****,1371234**** | The mobile numbers that receive state-related alerts. Separate multiple mobile numbers with commas (,). Note This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified. International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can set alert rules for DTS tasks in the CloudMonitor console. |
 | ErrorNotice | Boolean | No | true | Specifies whether to monitor the task state. Valid values: true: yes false: no |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DtsInstanceId | String | dtsy0zz3t13h7d**** | The ID of the change tracking instance. |
@@ -433,6 +469,10 @@ Configures a change tracking task.
 | HttpStatusCode | String | 200 | The HTTP status code. |
 | RequestId | String | 1D6ECADF-C5E9-4C96-8811- 77602B31**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://dts.aliyuncs.com/?Action=ConfigureSubscription &DbList={"dtstest":{"name":"dtstest","all":true}} &DtsJobName=MySQL Change Tracking &JobType=SUBSCRIBE &SourceEndpointInstanceType=RDS &SubscriptionInstanceNetworkType=classic &SourceEndpointInstanceID=rm-bp1zc3iyqe3qw**** &SourceEndpointUserName=dtstest &SourceEndpointPassword=Test123456
@@ -450,6 +490,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSubscription &DbList={"dtstest":{"na
 
 Starts a data migration, data synchronization, or change tracking task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StartDtsJob | The operation that you want to perform. Set the value to StartDtsJob. |
@@ -457,6 +499,8 @@ Starts a data migration, data synchronization, or change tracking task.
 | DtsInstanceId | String | No | dtsl3m1213ye7l**** | The ID of the data migration, data synchronization, or change tracking instance. Note You can call the DescribeMigrationJobs, DescribeSubscriptionInstances, or DescribeSynchronizationJobs operation to query the instance ID. |
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Default value: Forward. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note You can set this parameter to Reverse to start the reverse synchronization task only if the topology is two-way synchronization. |
 | RegionId | String | No | cn-hangzhou | The region where the Data Transmission Service (DTS) instance resides. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -470,9 +514,13 @@ Starts a data migration, data synchronization, or change tracking task.
 | Success | Boolean | true | Indicates whether the call was successful. |
 |---|---|---|---|
 
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=StartDtsJob &DtsJobId=l3m1213ye7l****
+http(s)://dts.aliyuncs.com/?Action=StartDtsJob &DtsJobId=l3m1213ye7l**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -486,11 +534,15 @@ http(s)://dts.aliyuncs.com/?Action=StartDtsJob &DtsJobId=l3m1213ye7l****
 
 Starts multiple data migration or data synchronization tasks.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StartDtsJobs | The operation that you want to perform. Set the value to StartDtsJobs. |
 | DtsJobIds | String | Yes | l5o11f9029c**** | The ID of the data migration or data synchronization task. Note Separate multiple task IDs with commas (,). You can call the DescribeDtsJobs operation to query task IDs. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -506,6 +558,8 @@ Starts multiple data migration or data synchronization tasks.
 http(s)://dts.aliyuncs.com/?Action=StartDtsJobs &DtsJobIds=l5o11f9029c**** &RegionId=cn-hangzhou
 ```
 
+Sample success responses
+
 | XML | format |
 |---|---|
 | <StartDtsJobsResponse> <RequestId>AD823BD3-1BA6-4117-A536-165CB280****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Success>true</Success> </StartDtsJobsResponse> |   |
@@ -520,6 +574,8 @@ http(s)://dts.aliyuncs.com/?Action=StartDtsJobs &DtsJobIds=l5o11f9029c**** &Regi
 
 Creates a consumer group for a change tracking task. Downstream clients can use the consumer group to consume tracked data.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateConsumerChannel | The operation that you want to perform. Set the value to CreateConsumerChannel. |
@@ -529,6 +585,8 @@ Creates a consumer group for a change tracking task. Downstream clients can use 
 | RegionId | String | Yes | cn-hangzhou | The region ID of the change tracking instance. |
 | DtsInstanceId | String | No | dtsboss6pn1w****** | The ID of the change tracking instance. You can call the DescribeDtsJobs operation to query the instance ID. Note You must specify at least one of the DtsInstanceId and DtsJobId parameters. |
 | DtsJobId | String | No | boss6pn1w****** | The ID of the change tracking task. You can call the DescribeDtsJobs operation to query the task ID. Note You must specify at least one of the DtsInstanceId and DtsJobId parameters. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -541,9 +599,15 @@ Creates a consumer group for a change tracking task. Downstream clients can use 
 | RequestId | String | 5F566C5B-E5B0-4020-A531- FC6F5005**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://dts.aliyuncs.com/?Action=CreateConsumerChannel &ConsumerGroupName=Consumer Group A &ConsumerGroupPassword=Test123456 &ConsumerGroupUserName=dtstest &RegionId=cn-hangzhou &DtsInstanceId=dtsboss6pn1w******
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -557,6 +621,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateConsumerChannel &ConsumerGroupName=Cons
 
 Queries the details of a consumer group, including the consumer group ID, consumer group name, username, and message latency.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeConsumerChannel | The operation that you want to perform. Set the value to DescribeConsumerChannel. |
@@ -566,6 +632,8 @@ Queries the details of a consumer group, including the consumer group ID, consum
 | PageSize | Integer | No | 20 | The number of entries to return on each page. Valid values:1 to 100. Default value: 20. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 | ParentChannelId | String | No | dtsan5114c522qg08c | The parent task ID of the distributed task. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -587,9 +655,15 @@ Queries the details of a consumer group, including the consumer group ID, consum
 | Success | String | true | Indicates whether the call was successful. |
 | TotalRecordCount | Long | 1 | The total number of consumer groups. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://dts.aliyuncs.com/?Action=DescribeConsumerChannel &RegionId=cn-hangzhou &DtsInstanceId=dtsboss6pn1w******
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -602,6 +676,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConsumerChannel &RegionId=cn-hangzhou
  "PageNumber": 1,
  "HttpStatusCode": 200,
  "ConsumerChannels": [
+```
+
+`{`
+
+```json
    "ConsumptionCheckpoint": "",
    "ConsumerGroupId": "dtsor2y66j4219****",
    "ConsumerGroupUserName": "dtstest",
@@ -610,15 +689,19 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConsumerChannel &RegionId=cn-hangzhou
    "UnconsumedData": -1
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Success": true
 ```
 
+`}`
+
 ##### 1.4.6.3 ModifyConsumerChannel
 
 Modifies the information of a consumer group, including the consumer group name, username, and password.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -631,6 +714,8 @@ Modifies the information of a consumer group, including the consumer group name,
 | ConsumerGroupUserName | String | No | dtstest | The new username of the consumer group. The username can contain uppercase letters, lowercase letters, digits, and underscores (). _ The username must be 1 to 16 characters in length. |
 | ConsumerGroupName | String | No | Consumer Group B | The name of the consumer group after modification. The name cannot exceed 128 characters in length. We recommend that you use a descriptive name that makes it easy to identify. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -641,9 +726,13 @@ Modifies the information of a consumer group, including the consumer group name,
 | Success | String | true | Indicates whether the call was successful. |
 |---|---|---|---|
 
+Sample requests
+
 ```
 http(s)://dts.aliyuncs.com/?Action=ModifyConsumerChannel &ConsumerGroupId=dtsor2y66j4219**** &RegionId=cn-hangzhou &DtsInstanceId=dtsboss6pn1w73**** &ConsumerGroupName=Consumer Group B
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -657,6 +746,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyConsumerChannel &ConsumerGroupId=dtsor2
 
 Deletes a consumer group from a change tracking task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteConsumerChannel | The operation that you want to perform. Set the value to DeleteConsumerChannel. |
@@ -664,6 +755,8 @@ Deletes a consumer group from a change tracking task.
 | RegionId | String | Yes | cn-hangzhou | The region ID of the Data Transmission Service (DTS) change tracking instance. |
 | DtsInstanceId | String | No | dtsboss6pn1w73**** | The ID of the change tracking instance. Note You must specify at least one of the DtsInstanceId and DtsJobId parameters. |
 | DtsJobId | String | No | boss6pn1w73**** | The ID of the change tracking task. Note You must specify at least one of the DtsInstanceId and DtsJobId parameters. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -673,9 +766,13 @@ Deletes a consumer group from a change tracking task.
 | RequestId | String | F9E00ABE-2AD9-40A9-8C3C- D817E648**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
 ```
 http(s)://dts.aliyuncs.com/?Action=DeleteConsumerChannel &ConsumerGroupId=dtsktbb6jdn2****** &RegionId=cn-hangzhou &DtsInstanceId=dtsboss6pn1w73****
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -689,6 +786,8 @@ http(s)://dts.aliyuncs.com/?Action=DeleteConsumerChannel &ConsumerGroupId=dtsktb
 
 Skips or stops skipping one or more precheck items.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SkipPreCheck | The operation that you want to perform. Set the value to SkipPreCheck. |
@@ -698,6 +797,8 @@ Skips or stops skipping one or more precheck items.
 | Skip | Boolean | No | true | Specifies whether to skip the precheck item. Valid values: true: skips the precheck item. false: does not skip the precheck item. Note This parameter is required. |
 | DtsJobId | String | No | c7412z57g8k**** | The ID of the data migration, data synchronization, or change tracking task. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -715,9 +816,15 @@ Skips or stops skipping one or more precheck items.
 | SkipNames | String | CHECKSAMEOBJDETAIL _ _ _ | The name of the precheck item. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SkipPreCheck &JobId= b4my3zg929a**** &SkipPreCheckItems=CHECK_SAME_OBJ &SkipPreCheckNames=CHECK_SAME_OBJ_DETAIL
+http(s)://dts.aliyuncs.com/?Action=SkipPreCheck &JobId= b4my3zg929a**** &SkipPreCheckItems=CHECK_SAME_OBJ &SkipPreCheckNames=CHECK_SAME_OBJ_DETAIL &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -733,6 +840,8 @@ http(s)://dts.aliyuncs.com/?Action=SkipPreCheck &JobId= b4my3zg929a**** &SkipPre
 
 Queries the details of a data migration, data synchronization, or change tracking task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDtsJobDetail | The operation that you want to perform. Set the value to DescribeDtsJobDetail. |
@@ -742,6 +851,8 @@ Queries the details of a data migration, data synchronization, or change trackin
 | DtsInstanceID | String | No | dtsta7w132u12h**** | The ID of the data migration, data synchronization, or change tracking instance. |
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note The default value is Forward. The value Reverse takes effect only if the topology of the data synchronization instance is two-way synchronization. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) task. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -827,9 +938,15 @@ Queries the details of a data migration, data synchronization, or change trackin
 |   | <Port number> |
 |---|---|
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobDetail &DtsJobId=ta7w132u12h****
+http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobDetail &DtsJobId=ta7w132u12h**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```json
 <DescribeDtsJobDetailResponse>
@@ -874,6 +991,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobDetail &DtsJobId=ta7w132u12h***
       <Reserved>
 {"srcHostPorts":"","whitelist.dms.online.ddl.enable":false,"filterDDL":false,"sqlparser.dms.original.ddl":true,"srcOracleType":"sid","maxRetryTim 3200,"destSSL":"0","destOracleType":"sid","srcSSL":"0","dbListCaseChangeMode":"default","SourceEngineVersion":"8.0.18","srcNetType":"VPC","destNe e":"VPC","srcVpcNetMappingInst":"172.16.1**.**:1****","destVpcNetMappingInst":"172.16.1**.**:1****","useJobTask":"1"}</Reserved> </DescribeDtsJobDetailResponse>
 ```
+
+`JSON` format
 
 ```json
  "DtsJobName": "API test",
@@ -931,9 +1050,13 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobDetail &DtsJobId=ta7w132u12h***
 {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\ maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\ .18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:1****\",\"destVpcNetMappingInst\":\"172.16.1**.**:1 \",\"useJobTask\":\"1\"}"
 ```
 
+`}`
+
 ##### 1.4.8.2 DescribeDtsJobs
 
 Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -954,6 +1077,8 @@ Queries the list of Data Transmission Service (DTS) tasks and the details of eac
 |---|---|---|---|---|
 | RegionId | String | No | cn-hangzhou | The region where the DTS instance resides. |
 | GroupId | String | No | pk13r731m**** | The ID of the DTS task. Note In most cases, you do not need to specify this parameter. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1145,9 +1270,15 @@ Queries the list of Data Transmission Service (DTS) tasks and the details of eac
 | Success | Boolean | true | Indicates whether the call was successful. |
 | TotalRecordCount | Integer | 15 | The total number of DTS tasks that meet the query conditions. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobs &Region=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobs &Region=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1308,6 +1439,7 @@ eta
       <RequestId>621BB4F8-3016-4FAA-8D5A-5D3163CC****</RequestId>
       <PageNumber>2</PageNumber>
       <HttpStatusCode>200</HttpStatusCode>
+      <Success>true</Success>
 </DescribeDtsJobsResponse>
 ```
 
@@ -1344,12 +1476,17 @@ eta
     "Status": "Finished",
     "Percent": "100",
     "Detail": [
+```
+
+`{`
+
+```json
       "CheckItem": "CHECK_CONN_SRC",
       "CheckResult": "Success",
       "CheckItemDescription": "CHECK_CONN_SRC_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_CONN_DEST",
@@ -1357,7 +1494,7 @@ eta
       "CheckItemDescription": "CHECK_CONN_DEST_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_AUTH_SRC",
@@ -1365,7 +1502,7 @@ eta
       "CheckItemDescription": "CHECK_AUTH_SRC_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_AUTH_DEST",
@@ -1373,7 +1510,7 @@ eta
       "CheckItemDescription": "CHECK_AUTH_DEST_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_BINLOG_ON",
@@ -1381,7 +1518,7 @@ eta
       "CheckItemDescription": "CHECK_BINLOG_ON_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_BINLOG_MODE",
@@ -1389,7 +1526,7 @@ eta
       "CheckItemDescription": "CHECK_BINLOG_MODE_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_BINLOG_ROW_IMAGE",
@@ -1397,7 +1534,7 @@ eta
       "CheckItemDescription": "CHECK_BINLOG_ROW_IMAGE_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_SERVER_ID",
@@ -1405,7 +1542,7 @@ eta
       "CheckItemDescription": "CHECK_SERVER_ID_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_BINLOG_EXIST",
@@ -1413,7 +1550,7 @@ eta
       "CheckItemDescription": "CHECK_BINLOG_EXIST_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_ENGINE",
@@ -1421,7 +1558,7 @@ eta
       "CheckItemDescription": "CHECK_ENGINE_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_MYSQL_PASSOWRD_FORMAT",
@@ -1429,7 +1566,7 @@ eta
       "CheckItemDescription": "CHECK_MYSQL_PASSOWRD_FORMAT_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_SRC",
@@ -1437,7 +1574,7 @@ eta
       "CheckItemDescription": "CHECK_SRC_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_SAME_OBJ",
@@ -1470,7 +1607,7 @@ _Q_
       "CheckItemDescription": "CHECK_SAME_USER_DETAIL"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckItem": "CHECK_TOPOLOGY",
@@ -1478,7 +1615,7 @@ _Q_
       "CheckItemDescription": "CHECK_TOPOLOGY_DETAIL"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
    "DtsJobClass": "large",
@@ -1512,11 +1649,16 @@ _Q_
 
 ```json
    "TagList": [
+```
+
+`{`
+
+```json
      "TagKey": "testkey",
      "TagValue": "testvalue"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "Performance": {},
@@ -1542,7 +1684,7 @@ _Q_
     "Percent": "95"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
  "RequestId": "621BB4F8-3016-4FAA-8D5A-5D3163CC****",
@@ -1551,9 +1693,13 @@ _Q_
  "Success": true
 ```
 
+`}`
+
 ##### 1.4.8.3 CountJobByCondition
 
 Counts the number of Data Transmission Service (DTS) tasks based on the specified conditions.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1572,6 +1718,8 @@ Counts the number of Data Transmission Service (DTS) tasks based on the specifie
 |---|---|---|---|---|
 | DestDbType | String | No | mongodb | The type of the destination database. Valid values: MySQL: ApsaraDB RDS for MySQL instance or self-managed MySQL database. PolarDB: PolarDB for MySQL cluster. polardbo: PolarDB for Oracle cluster. _ polardbpg: PolarDB for PostgreSQL cluster. _ Redis: ApsaraDB for Redis instance or self-managed Redis database. DRDS: PolarDB-X 1.0 instance or PolarDB-X 2.0 instance. PostgreSQL: self-managed PostgreSQL database. odps: MaxCompute project. oracle: self-managed Oracle database. mongodb: ApsaraDB for MongoDB instance or self- managed MongoDB database. tidb: TiDB database. ADS: AnalyticDB for MySQL V2.0 cluster. ADB30: AnalyticDB for MySQL V3.0 cluster. Greenplum: AnalyticDB for PostgreSQL instance. MSSQL: ApsaraDB RDS for SQL Server instance or self- managed SQL Server database. kafka: Message Queue for Apache Kafka instance or self- managed Kafka cluster. DataHub: DataHub project. clickhouse: ApsaraDB for ClickHouse cluster. DB2: self-managed Db2 for LUW database. as400: AS/400. Tablestore: Tablestore instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DynamicCode | String | 403 | The dynamic error code. This parameter will be removed in the future. |
@@ -1585,9 +1733,15 @@ Counts the number of Data Transmission Service (DTS) tasks based on the specifie
 |---|---|---|---|
 | TotalRecordCount | Long | 100 | The total number of DTS tasks that meet the specified conditions within your Alibaba Cloud account. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CountJobByCondition &Region=cn-hangzhou &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=CountJobByCondition &Region=cn-hangzhou &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1601,6 +1755,8 @@ http(s)://dts.aliyuncs.com/?Action=CountJobByCondition &Region=cn-hangzhou &Regi
 
 Queries the state of a Data Transmission Service (DTS) subtask, including precheck, schema migration, initial schema synchronization, full data migration, initial full data synchronization, incremental data migration, or incremental data synchronization.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribePreCheckStatus | The operation that you want to perform. Set the value to DescribePreCheckStatus. |
@@ -1612,6 +1768,8 @@ Queries the state of a Data Transmission Service (DTS) subtask, including preche
 | RegionId | String | No | cn-beijing | The region ID of the DTS instance. |
 | StructPhase | String | No | View | The filter item used to filter tables, views, and functions during schema migration. |
 | Name | String | No | dewuprop | The filter item used to filter tables in fuzzy match. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1701,9 +1859,15 @@ Queries the state of a Data Transmission Service (DTS) subtask, including preche
 | Total | Integer | 11 | The total number of returned entries. |
 | TotalRecordCount | Long | 100 | The total number of returned records. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribePreCheckStatus &DtsJobId=i03e3zty16i**** &JobCode=01 &StructType=before
+http(s)://dts.aliyuncs.com/?Action=DescribePreCheckStatus &DtsJobId=i03e3zty16i**** &JobCode=01 &StructType=before &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -1950,7 +2114,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -1968,7 +2132,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -1986,7 +2150,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2004,7 +2168,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2022,7 +2186,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2040,7 +2204,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2061,7 +2225,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2079,7 +2243,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2097,7 +2261,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2115,7 +2279,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2133,7 +2297,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2172,7 +2336,7 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`},`
+`},` `{`
 
 ```json
    "Sub": [],
@@ -2190,13 +2354,15 @@ Boot
    "JobId": "fj1c33ro168****"
 ```
 
-`]`
+`}` `]` `}`
 
 ##### 1.4.8.5 WhiteIpList
 
 Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **source or destination instance** is a **self-managed database** or a **third-party cloud database**, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the firewall security settings of the source or destination instance. If the **source or destination database** is an **ApsaraDB database instance** (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-**
 **managed database hosted on Elastic Compute Service (ECS)**, you do not need to add the CIDR blocks. When you click **Set Whitelist and**
 **Next** in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2205,6 +2371,8 @@ Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **sou
 | Type | String | Yes | vpc | Specifies how the self-managed database or third-party cloud database is connected to DTS. Valid values: internet: The database is connected to DTS over the Internet. vpc: The database is connected to DTS over Express Connect, VPN Gateway, or Smart Access Gateway. |
 | DestinationRegion | String | No | cn-hangzhou | The region ID of the destination instance. Note If the destination instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to cn- hangzhou or the ID of the closest region. If the DTS task is a data migration or data synchronization task, this parameter is required. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2219,9 +2387,15 @@ Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **sou
 | RequestId | String | AD823BD3-1BA6-4117-A536- 165CB280**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=WhiteIpList &Region=cn-hangzhou &Type=vpc &DestinationRegion=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=WhiteIpList &Region=cn-hangzhou &Type=vpc &DestinationRegion=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2235,6 +2409,8 @@ http(s)://dts.aliyuncs.com/?Action=WhiteIpList &Region=cn-hangzhou &Type=vpc &De
 
 Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance. When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task. You can call the DescribeDtsJobs operation to query the ID of the change tracking instance and the ID of the consumer group.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSubscriptionMeta | The operation that you want to perform. Set the value to DescribeSubscriptionMeta. |
@@ -2245,6 +2421,8 @@ Queries the details of the subtasks in a distributed change tracking task for a 
 |---|---|---|---|---|
 | Topics | Json | No | cnhangzhourmbp1n0x0x5 _ _ _ tz******dtstestdataversion2 _ _ | The topics of all subtasks in the distributed change tracking task. Separate multiple topics with commas (,). Note You must specify at least one of the SubMigrationJobIds and Topics parameters. We recommend that you specify the SubMigrationJobIds parameter. |
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2260,9 +2438,15 @@ Queries the details of the subtasks in a distributed change tracking task for a 
 | Topic | String | cnhangzhourmbp1n0x0x5tz*** _ _ _ ***dtstestdataversion2 _ _ | The topic of the subtask. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionMeta &Sid=z38m91gg2****** &DtsInstanceId=dtsbr4m9luv2****** &SubMigrationJobIds=z38m91gg2****** &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionMeta &Sid=z38m91gg2****** &DtsInstanceId=dtsbr4m9luv2****** &SubMigrationJobIds=z38m91gg2****** &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeSubscriptionMetaResponse>
@@ -2275,6 +2459,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionMeta &Sid=z38m91gg2******
       </SubscriptionMetaList>
       <RequestId>C12E7A51-09A4-5796-94BE-08B6DA******</RequestId>
       <HttpStatusCode>200</HttpStatusCode>
+      <Success>true</Success>
 </DescribeSubscriptionMetaResponse>
 ```
 
@@ -2288,6 +2473,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionMeta &Sid=z38m91gg2******
 
 Modifies the configurations of a data synchronization task.
 
+**Request parameters**
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Query | No | cn-hangzhou | The ID of the region in which the data synchronization instance resides. |
@@ -2300,6 +2487,8 @@ Modifies the configurations of a data synchronization task.
 |---|---|---|---|---|---|
 | EtlOperatorColumn Reference | String | Body | No | { "configKeyMap": [ { "moduleCode": "03", "etlOperatorColumnReference": "etlOperatorColumnReference", "etlOperatorSetting": "etlOperatorSetting" }, { "moduleCode": "07", "etlOperatorColumnReference": "etlOperatorColumnReference", "etlOperatorSetting": "etlOperatorSetting" } ], "amp.increment.replicator.compare.all.colu mns.enable": false, "srcNetType": "VPC", "etlOperatorColumnReference": { "MODIFYTIME": [ _ { "datasynchron.testtiminguser000": _ _ _ "usercreatedate" _ _ }, { "datasynchron.testtiminguser001": _ _ _ "usercreatedate" _ _ }, { "datasynchron.testtiminguser002": _ _ _ "usercreatedate" _ _ }, { "datasynchron.testtiminguser003": _ _ _ "usercreatedate" _ _ } ] }, "destNetType": "VPC", "originalSrcDbInst": "sg-sit-db2- primary.mysql.polardb.rds.aliyuncs.com", "etlOperatorSetting": "adbtimetravel", _ _ "sjobUseJobTask": "1", "srcVpcNetMappingInst": "172.19.XXX.XXX:4261", "destVpcNetMappingInst": "172.19.XXX.XXX:4260", "useJobTask": "1" } | The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | DtsJobId | String | bi6e22a**** | The DTS task ID. |
@@ -2311,9 +2500,15 @@ Modifies the configurations of a data synchronization task.
 | Status | String | 200 | The HTTP status code. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ModifyDtsJob &DtsInstanceId=dtsbi6e22ay243**** &DbList={"dtstest":{"name":"dtstest","all":true}}
+http(s)://dts.aliyuncs.com/?Action=ModifyDtsJob &DtsInstanceId=dtsbi6e22ay243**** &DbList={"dtstest":{"name":"dtstest","all":true}} &<Common request parameters>
 ```
+
+Sample success responses
 
 | JSON | format |
 |---|---|
@@ -2326,6 +2521,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyDtsJob &DtsInstanceId=dtsbi6e22ay243***
 ##### 1.4.9.2 ModifySubscription
 
 Modifies the objects of a change tracking task and the types of data changes to be tracked.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2345,9 +2542,15 @@ Modifies the objects of a change tracking task and the types of data changes to 
 | RequestId | String | 068FA72F-4800-4A54-90BB- 94806068**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://dts.aliyuncs.com/?Action=ModifySubscription &DbList={"dtstest":{"name":"dtstest","all":true}} &DtsInstanceId=dtsboss6pn1w****** &DtsJobId=boss6pn1w****** &SubscriptionDataTypeDDL=true &SubscriptionDataTypeDML=true
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2360,6 +2563,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifySubscription &DbList={"dtstest":{"name"
 ##### 1.4.9.3 ModifyDtsJobPassword
 
 Changes the password of the source or destination database account.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2380,9 +2585,15 @@ Changes the password of the source or destination database account.
 | RequestId | String | 8C498360-7892-433C-847A- BA71A850**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobPassword &DtsJobId=l3m1213ye7l**** &Endpoint=src &UserName=dtstest &Password=Test123456
+http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobPassword &DtsJobId=l3m1213ye7l**** &Endpoint=src &UserName=dtstest &Password=Test123456 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2395,6 +2606,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobPassword &DtsJobId=l3m1213ye7l***
 ##### 1.4.9.4 ModifyDtsJobName
 
 Changes the name of a Data Transmission Service (DTS) task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2413,9 +2626,15 @@ Changes the name of a Data Transmission Service (DTS) task.
 | RequestId | String | 8C498360-7892-433C-847A- BA71A850**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobName &DtsJobId=l3m1213ye7l**** &DtsJobName=RDS_TO_RDS_MIGRATION
+http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobName &DtsJobId=l3m1213ye7l**** &DtsJobName=RDS_TO_RDS_MIGRATION &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2428,6 +2647,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobName &DtsJobId=l3m1213ye7l**** &D
 ##### 1.4.9.5 UpgradeTwoWay
 
 Upgrades the synchronization topology of a data synchronization instance from one-way synchronization to two-way synchronization. This operation is supported only for pay-as-you-go data synchronization instances. When you call this operation, take note of the following items: The source and destination databases of the data synchronization task are both **MySQL** databases. The synchronization topology of the data synchronization task is **one-way synchronization**. The data synchronization task is in the **Synchronizing** state. The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2446,9 +2667,15 @@ Upgrades the synchronization topology of a data synchronization instance from on
 | RequestId | String | 2D3B4615-923F-49AA-AF21- 6D8E3967**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=UpgradeTwoWay &InstanceClass=large &InstanceId=dtsh77p49x4k28****
+http(s)://dts.aliyuncs.com/?Action=UpgradeTwoWay &InstanceClass=large &InstanceId=dtsh77p49x4k28**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2462,6 +2689,8 @@ http(s)://dts.aliyuncs.com/?Action=UpgradeTwoWay &InstanceClass=large &InstanceI
 
 Changes the billing method or instance class of a Data Transmission Service (DTS) task. The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources. Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances. After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | TransferPayType | The operation that you want to perform. Set the value to TransferPayType. |
@@ -2472,6 +2701,8 @@ Changes the billing method or instance class of a Data Transmission Service (DTS
 | Period | String | No | Year | The billing cycle of the subscription instance. Valid values: Year Month Note This parameter is required only if you set the ChargeType parameter to PrePaid. |
 | BuyCount | String | No | 5 | The subscription duration. Valid values when the Period parameter is set to Year: 1 to 5. Valid values when the Period parameter is set to Month: 1 to 60. Note This parameter is required only if you set the ChargeType parameter to PrePaid. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2489,9 +2720,15 @@ Changes the billing method or instance class of a Data Transmission Service (DTS
 | RequestId | String | 601B6F25-21E7-4484-99D5- 3EF2625C**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=TransferPayType &ChargeType=PostPaid &DtsJobId=o4nh3g7jg56**** &Period=Year &BuyCount=5
+http(s)://dts.aliyuncs.com/?Action=TransferPayType &ChargeType=PostPaid &DtsJobId=o4nh3g7jg56**** &Period=Year &BuyCount=5 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2505,6 +2742,8 @@ http(s)://dts.aliyuncs.com/?Action=TransferPayType &ChargeType=PostPaid &DtsJobI
 
 Upgrades or downgrades a Data Transmission Service (DTS) instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | TransferInstanceClass | The operation that you want to perform. Set the value to TransferInstanceClass. |
@@ -2512,6 +2751,8 @@ Upgrades or downgrades a Data Transmission Service (DTS) instance.
 | InstanceClass | String | Yes | large | The new instance class of the DTS instance. You can call the DescribeDtsJobDetail operation to query the original instance class of the DTS instance. DTS supports the following instance classes for a data migration instance: xxlarge, xlarge, large, medium, and small. DTS supports the following instance classes for a data synchronization instance: large, medium, small, and micro. |
 | OrderType | String | Yes | UPGRADE | Specifies whether to upgrade or downgrade the DTS instance. Valid values: UPGRADE DOWNGRADE |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2529,9 +2770,15 @@ Upgrades or downgrades a Data Transmission Service (DTS) instance.
 | RequestId | String | 716DB03E-2D0B-4DC3-BC4C- F7A9EE21**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=TransferInstanceClass &OrderType=UPGRADE &InstanceClass=large &DtsJobId=r4yr723m199****
+http(s)://dts.aliyuncs.com/?Action=TransferInstanceClass &OrderType=UPGRADE &InstanceClass=large &DtsJobId=r4yr723m199**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2556,6 +2803,8 @@ Renews a Data Transmission Service (DTS) instance. This API operation is availab
 | BuyCount | String | No | 1 | The subscription duration. Valid values when the Period parameter is set to Year: 1 to 5. Valid values when the Period parameter is set to Month: 1 to 60. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ChargeType | String | PREPAY | The billing method of the DTS instance. PREPAY is returned, which indicates the subscription billing method. |
@@ -2570,6 +2819,10 @@ Renews a Data Transmission Service (DTS) instance. This API operation is availab
 | RequestId | String | 1112E255-0C38-4970-8159- 1D54AD92**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://dts.aliyuncs.com/?Action=RenewInstance &ChargeType=PREPAY &DtsJobId=qi0r643lc31**** &Period=Month &BuyCount=1
 ```
@@ -2582,6 +2835,7 @@ http(s)://dts.aliyuncs.com/?Action=RenewInstance &ChargeType=PREPAY &DtsJobId=qi
   <InstanceId>dtsqi0r643lc31****</InstanceId>
   <ChargeType>PREPAY</ChargeType>
   <HttpStatusCode>200</HttpStatusCode>
+  <Success>true</Success>
 </RenewInstanceResponse>
 ```
 
@@ -2595,6 +2849,8 @@ Reconfigures a data synchronization or change tracking task.
 
 > **Note:** If you clear the configurations of a data synchronization or change tracking task, Data Transmission Service (DTS) deletes the task. Then, DTS creates another task. You must call the ConfigureDtsJob operation to configure the new task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ResetDtsJob | The operation that you want to perform. Set the value to ResetDtsJob. |
@@ -2602,6 +2858,8 @@ Reconfigures a data synchronization or change tracking task.
 | DtsInstanceId | String | No | dtsl3m1213ye7l**** | The ID of the data synchronization or change tracking instance. |
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note The default value is Forward. You can set this parameter to Reverse to reconfigure the reverse synchronization task only when the topology is two-way synchronization. |
 | RegionId | String | No | cn-hangzhou | The region where the DTS instance resides. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2615,9 +2873,15 @@ Reconfigures a data synchronization or change tracking task.
 |---|---|---|---|
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ResetDtsJob &DtsJobId=l3m1213ye7l****
+http(s)://dts.aliyuncs.com/?Action=ResetDtsJob &DtsJobId=l3m1213ye7l**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2631,6 +2895,8 @@ http(s)://dts.aliyuncs.com/?Action=ResetDtsJob &DtsJobId=l3m1213ye7l****
 
 Pauses a data migration, data synchronization, or change tracking task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SuspendDtsJob | The operation that you want to perform. Set the value to SuspendDtsJob. |
@@ -2638,6 +2904,8 @@ Pauses a data migration, data synchronization, or change tracking task.
 | DtsInstanceId | String | No | dtsl3m1213ye7l**** | The ID of the data migration, data synchronization, or change tracking instance. |
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note The default value is Forward. You can set this parameter to Reverse to pause the reverse synchronization task only if the topology is two-way synchronization. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2651,9 +2919,15 @@ Pauses a data migration, data synchronization, or change tracking task.
 | RequestId | String | 01B6F25-21E7-4484-99D5- 3EF2625C**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SuspendDtsJob &DtsJobId=l3m1213ye7l****
+http(s)://dts.aliyuncs.com/?Action=SuspendDtsJob &DtsJobId=l3m1213ye7l**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2667,11 +2941,15 @@ http(s)://dts.aliyuncs.com/?Action=SuspendDtsJob &DtsJobId=l3m1213ye7l****
 
 Suspends multiple Data Transmission Service (DTS) tasks.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SuspendDtsJobs | The operation that you want to perform. Set the value to SuspendDtsJobs. |
 | DtsJobIds | String | Yes | hfi12iv4z7e**** | The ID of the data migration or data synchronization task. Note Separate multiple task IDs with commas (,). You can call the DescribeDtsJobs operation to query task IDs. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2685,9 +2963,15 @@ Suspends multiple Data Transmission Service (DTS) tasks.
 |---|---|---|---|
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SuspendDtsJobs &DtsJobIds=hfi12iv4z7e**** &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=SuspendDtsJobs &DtsJobIds=hfi12iv4z7e**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2701,6 +2985,8 @@ http(s)://dts.aliyuncs.com/?Action=SuspendDtsJobs &DtsJobIds=hfi12iv4z7e**** &Re
 
 Stops a data migration, data synchronization, or change tracking task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StopDtsJob | The operation that you want to perform. Set the value to StopDtsJob. |
@@ -2708,6 +2994,8 @@ Stops a data migration, data synchronization, or change tracking task.
 | DtsInstanceId | String | No | dtsl3m1213ye7l**** | The ID of the data migration, data synchronization, or change tracking instance. |
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note The default value is Forward. You can set this parameter to Reverse to stop the reverse synchronization task only if the topology is two-way synchronization. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2721,9 +3009,15 @@ Stops a data migration, data synchronization, or change tracking task.
 | RequestId | String | 01B6F25-21E7-4484-99D5- 3EF2625C**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=StopDtsJob &DtsJobId=l3m1213ye7l****
+http(s)://dts.aliyuncs.com/?Action=StopDtsJob &DtsJobId=l3m1213ye7l**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2737,11 +3031,15 @@ http(s)://dts.aliyuncs.com/?Action=StopDtsJob &DtsJobId=l3m1213ye7l****
 
 Stops multiple data migration or data synchronization tasks.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StopDtsJobs | The operation that you want to perform. Set the value to StopDtsJobs. |
 | DtsJobIds | String | Yes | l5o11f9029c**** | The ID of the data migration or data synchronization task. Note Separate multiple task IDs with commas (,). You can call the DescribeDtsJobs operation to query task IDs. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2755,9 +3053,15 @@ Stops multiple data migration or data synchronization tasks.
 | RequestId | String | AD823BD3-1BA6-4117-A536- 165CB280**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=StopDtsJobs &DtsJobIds=l5o11f9029c**** &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=StopDtsJobs &DtsJobIds=l5o11f9029c**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2771,6 +3075,8 @@ http(s)://dts.aliyuncs.com/?Action=StopDtsJobs &DtsJobIds=l5o11f9029c**** &Regio
 
 Deletes a data migration, data synchronization, or change tracking task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteDtsJob | The operation that you want to perform. Set the value to DeleteDtsJob. |
@@ -2778,6 +3084,8 @@ Deletes a data migration, data synchronization, or change tracking task.
 | DtsInstanceId | String | No | dtsl3m1213ye7l**** | The ID of the data migration, data synchronization, or change tracking instance. |
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note Default value: Forward. You can set this parameter to Reverse to delete the reverse synchronization task only when the topology of the data synchronization task is two- way synchronization. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2791,9 +3099,15 @@ Deletes a data migration, data synchronization, or change tracking task.
 | RequestId | String | 01B6F25-21E7-4484-99D5- 3EF2625C**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DeleteDtsJob &DtsJobId=l3m1213ye7l****
+http(s)://dts.aliyuncs.com/?Action=DeleteDtsJob &DtsJobId=l3m1213ye7l**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2807,11 +3121,15 @@ http(s)://dts.aliyuncs.com/?Action=DeleteDtsJob &DtsJobId=l3m1213ye7l****
 
 Deletes multiple data migration, data synchronization, or change tracking tasks.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteDtsJobs | The operation that you want to perform. Set the value to DeleteDtsJobs. |
 | DtsJobIds | String | Yes | l5o11f9029c**** | The ID of the data migration, data synchronization, or change tracking task. Note Separate multiple task IDs with commas (,). You can call the DescribeDtsJobs operation to query task IDs. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2825,9 +3143,15 @@ Deletes multiple data migration, data synchronization, or change tracking tasks.
 | RequestId | String | AD823BD3-1BA6-4117-A536- 165CB280**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DeleteDtsJobs &DtsJobIds=l5o11f9029c**** &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=DeleteDtsJobs &DtsJobIds=l5o11f9029c**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2841,6 +3165,8 @@ http(s)://dts.aliyuncs.com/?Action=DeleteDtsJobs &DtsJobIds=l5o11f9029c**** &Reg
 
 Queries the number of migrated or synchronized objects in a Data Transmission Service (DTS) task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SummaryJobDetail | The operation that you want to perform. Set the value to SummaryJobDetail. |
@@ -2851,6 +3177,8 @@ Queries the number of migrated or synchronized objects in a Data Transmission Se
 |---|---|---|---|---|
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
 | DtsInstanceId | String | No | dtsl3m1213ye7l**** | The ID of the data migration or data synchronization instance. Note You must specify at least one of the DtsJobId and DtsInstanceId parameters. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2864,9 +3192,15 @@ Queries the number of migrated or synchronized objects in a Data Transmission Se
 | RequestId | String | 65EE90A6-9062-51B0-9997- 75F7E574**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SummaryJobDetail &DtsJobId=l3m1213ye7l**** &JobCode=02 &SynchronizationDirection=Forward &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=SummaryJobDetail &DtsJobId=l3m1213ye7l**** &JobCode=02 &SynchronizationDirection=Forward &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <SummaryJobDetailResponse>
@@ -2910,6 +3244,8 @@ specified in units of seconds.
 **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The
 threshold is specified in units of hours.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateJobMonitorRule | The operation that you want to perform. Set the value to CreateJobMonitorRule. |
@@ -2922,6 +3258,8 @@ threshold is specified in units of hours.
 | DelayRuleTime | Long | No | 11 | The threshold for triggering an alert. If Type is set to delay, the threshold must be an integer in units of seconds. You can specify the threshold based on your business requirements. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds. If Type is set to fulltimeout, the threshold must be an _ integer in units of hours. Note You must specify this parameter if Type is set to delay or fulltimeout and State is set to Y. _ |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | 200 | The error code. This parameter will be removed in the future. |
@@ -2933,9 +3271,15 @@ threshold is specified in units of hours.
 | RequestId | String | 8C498360-7892-433C-847A- BA71A850**** | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CreateJobMonitorRule &DtsJobId=i03e3zty16i**** &Type=delay &State=Y &Phone=1361234****,1371234**** &DelayRuleTime=11
+http(s)://dts.aliyuncs.com/?Action=CreateJobMonitorRule &DtsJobId=i03e3zty16i**** &Type=delay &State=Y &Phone=1361234****,1371234**** &DelayRuleTime=11 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2949,11 +3293,15 @@ http(s)://dts.aliyuncs.com/?Action=CreateJobMonitorRule &DtsJobId=i03e3zty16i***
 
 Queries the alert rules of a Data Transmission Service (DTS) task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeJobMonitorRule | The operation that you want to perform. Set the value to DescribeJobMonitorRule. |
 | DtsJobId | String | Yes | ta7w132u12h**** | The ID of the data migration, data synchronization, or change tracking task. You can call the DescribeDtsJobs operation to query the task ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2973,9 +3321,15 @@ Queries the alert rules of a Data Transmission Service (DTS) task.
 | RequestId | String | 0CA14388-DD89-4A7B-8CDD- 884A10CE**** | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeJobMonitorRule &DtsJobId=ta7w132u12h****
+http(s)://dts.aliyuncs.com/?Action=DescribeJobMonitorRule &DtsJobId=ta7w132u12h**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -2991,6 +3345,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeJobMonitorRule &DtsJobId=ta7w132u12h*
 
 Queries the details of extract, transform, and load (ETL) tasks.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDtsEtlJobVersionInfo | The operation that you want to perform. Set the value to DescribeDtsEtlJobVersionInfo. |
@@ -3001,6 +3357,8 @@ Queries the details of extract, transform, and load (ETL) tasks.
 | DtsInstanceId | String | No | dtsggk12iwya1a**** | The ID of the Data Transmission Service (DTS) instance. You can call the DescribeDtsJobs operation to query the instance ID. |
 | DtsJobId | String | No | l5512es7w15**** | The ID of the ETL task. You can call the DescribeDtsJobs operation to query the task ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. You can call the DescribeRegions operation to query the most recent region list. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3027,8 +3385,10 @@ Queries the details of extract, transform, and load (ETL) tasks.
 | TotalRecordCount | Integer | 200 | The total number of records. |
 
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeDtsEtlJobVersionInfo &pageSize=20 &pageNumber=0 &dtsInstanceId=dtsggk12iwya1a**** &DtsJobId=l5512es7w15**** &RegionId=cn-hangzhou &<Required parameters>
+http(s)://dts.aliyuncs.com/?Action=DescribeDtsEtlJobVersionInfo &pageSize=20 &pageNumber=0 &dtsInstanceId=dtsggk12iwya1a**** &DtsJobId=l5512es7w15**** &RegionId=cn-hangzhou &<Required parameters> &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3042,11 +3402,15 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDtsEtlJobVersionInfo &pageSize=20 &pa
 
 Queries the logs of an extract, transform, and load (ETL) task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeEtlJobLogs | The operation that you want to perform. Set the value to DescribeEtlJobLogs. |
 | DtsJobId | String | Yes | l5512es7w15**** | The ID of the ETL task. You can call the DescribeDtsJobs operation to query the task ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the Data Transmission Service (DTS) instance. You can call the DescribeRegions operation to query the most recent region list. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3067,9 +3431,15 @@ Queries the logs of an extract, transform, and load (ETL) task.
 | RequestId | String | 224DB9F7-3100-4899-AB9C- C938BCCB43E7 | The ID of the request. |
 | Success | Boolean | true | Indicates whether the call was successful. If the call fails, false is returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeEtlJobLogs &DtsJobId=l5512es7w15**** &RegionId=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=DescribeEtlJobLogs &DtsJobId=l5512es7w15**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3098,7 +3468,7 @@ The value of an object-related parameter is a JSON string. This section describe
 
 > **Note:** You can configure the italic content in the following sample code based on your business requirements.
 
-If the objects consist of multiple databases, refer to the following parameter description to define these objects:
+If the objects consist of multiple databases, refer to the following parameter description to define these objects: `{`
 
 ```json
     "The name of Source Database 1.": {
@@ -3120,7 +3490,7 @@ If the objects consist of multiple databases, refer to the following parameter d
                 "ddl_op": "The DDL operations that you want to migrate or synchronize during incremental data migration or synchronization."
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
     "The name of Source Database 3.": {
@@ -3130,7 +3500,7 @@ If the objects consist of multiple databases, refer to the following parameter d
         "ddl_op": "The DDL operations that you want to migrate or synchronize during incremental data migration or synchronization."
 ```
 
-If the objects are specific columns or include filter conditions, refer to the following parameter description to define these objects:
+`}` `}` If the objects are specific columns or include filter conditions, refer to the following parameter description to define these objects: `{`
 
 ```json
     "The name of the source database for the data migration, data synchronization, or change tracking task.": {
@@ -3150,13 +3520,13 @@ If the objects are specific columns or include filter conditions, refer to the f
                         "state": "checked"
 ```
 
-`},`
+`}` `},`
 
 ```json
                 "shard": 12
 ```
 
-`},` If you migrate or synchronize objects to an AnalyticDB for MySQL or AnalyticDB for PostgreSQL instance, refer to the following parameter description to define these objects:
+`}` `},` `}` `}` If you migrate or synchronize objects to an AnalyticDB for MySQL or AnalyticDB for PostgreSQL instance, refer to the following parameter description to define these objects:
 
 ```json
     "The name of the source database that you want to migrate or synchronize.": {
@@ -3169,6 +3539,11 @@ must set the value to false regardless of whether the entire database or specifi
                 "name": "The table name that you want to use in the destination instance for Source Table A.",
                 "primary_key": "The primary key. Example: id.",
                 "type": "The type of the table. Example: dimension.",
+```
+
+`}`
+
+```json
             "The name of Source Table B.": {
                 "all": A value of true specifies that the entire table is used as the source object.,
                 "name": "The table name that you want to use in the destination instance for Source Table B.",
@@ -3176,6 +3551,8 @@ must set the value to false regardless of whether the entire database or specifi
                 "primary_key": "The primary key. Example: id.",
                 "type": "The type of the table. Example: partition.",
 ```
+
+`}` `}` `}` `}`
 
 | Parameter | Description |
 |---|---|
@@ -3274,13 +3651,13 @@ Example 3: Replicate data from a table named customer in the dtstestdata databas
            "state": "checked"
 ```
 
-`},`
+`}` `},`
 
 ```json
        "shard": 12
 ```
 
-`},` Example 4: Replicate data from specific columns of the customer and order tables in the dtstestdata database.
+`}` `},` Example 4: Replicate data from specific columns of the customer and order tables in the dtstestdata database.
 
 ```json
 {"dtstestdata": {
@@ -3342,13 +3719,13 @@ Example 3: Replicate data from a table named customer in the dtstestdata databas
            "state": "checked"
 ```
 
-`},`
+`}` `},`
 
 ```json
        "shard": 12
 ```
 
-`},` Example 5: Replicate data from the customer, order, and commodity tables in the dtstestdata database to the destination AnalyticDB for MySQL or AnalyticDB for PostgreSQL instance.
+`}` `},` `}` `}` Example 5: Replicate data from the customer, order, and commodity tables in the dtstestdata database to the destination AnalyticDB for MySQL or AnalyticDB for PostgreSQL instance.
 
 ```json
     "dtstestdata": {
@@ -3387,13 +3764,15 @@ Example 3: Replicate data from a table named customer in the dtstestdata databas
                         "type": "int(11)"
 ```
 
-`},`
+`}` `},`
 
 ```json
                 "part_key": "id",
                 "primary_key": "id",
                 "type": "partition"
 ```
+
+`}` `}` `}` `}`
 
 **Supported regular expressions**
 
@@ -3436,7 +3815,7 @@ If the database type of the destination instance is Kafka, you can use the Reser
 | kafkaRecordFormat | Yes | The storage format in which data is shipped to the destination Kafka instance. Valid values: canaljson: Canal is used to parse the incremental logs of the source _ database and transfer the incremental data to the destination Kafka instance in the Canal JSON format. dtsavro: Avro is a data serialization format into which data structures or _ objects can be converted to facilitate storage and transmission. shareplexjson: The data replication software SharePlex is used to read the _ data in the source database and write the data to the destination Kafka instance in the SharePlex JSON format. debezium: Debezium is a tool used to capture data changes. Debezium supports real-time streaming of data updates from the source PolarDB for Oracle cluster to the destination Kafka instance. |
 | destKafkaPartitionKey | Yes | The policy that is used to synchronize data to Kafka partitions. Valid values: none: DTS synchronizes all data and DDL statements to Partition 0 of the destination topic. databasetable: DTS uses the database and table names as the partition key _ to calculate the hash value. Then, DTS synchronizes the data and DDL statements of each table to the corresponding partition of the destination topic. columns: DTS uses a table column as the partition key to calculate the hash value. By default, the primary key is used as the partition key. If a table does not have a primary key, the unique key is used as the partition key. DTS synchronizes each row to the corresponding partition of the destination topic. You can specify one or more columns as partition keys to calculate the hash value. |
 
-Example:
+Example: `{`
 
 ```json
     "destTopic": "dtstestdata",
@@ -3448,7 +3827,7 @@ Example:
     "destKafkaPartitionKey": "none"
 ```
 
-If the database type of the source or destination instance is MongoDB, you must use the Reserve parameter to specify the architecture type of the MongoDB database.
+`}` If the database type of the source or destination instance is MongoDB, you must use the Reserve parameter to specify the architecture type of the MongoDB database.
 
 | Parameter | Required | Description | Example |
 |---|---|---|---|
@@ -3476,6 +3855,8 @@ Purchases a data migration instance.
 
 After you purchase a data migration instance, you must call the ConfigureMigrationJob operation to configure a data migration task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateMigrationJob | The operation that you want to perform. Set the value to CreateMigrationJob. |
@@ -3485,6 +3866,8 @@ After you purchase a data migration instance, you must call the ConfigureMigrati
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -3493,8 +3876,12 @@ After you purchase a data migration instance, you must call the ConfigureMigrati
 | RequestId | String | C166D79D-436B-45F0-B5A5- 25E1959F**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CreateMigrationJob &MigrationJobClass=2xlarge &Region=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=CreateMigrationJob &MigrationJobClass=2xlarge &Region=cn-hangzhou &<Common request parameters>
 ```
 
 ```xml
@@ -3511,6 +3898,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateMigrationJob &MigrationJobClass=2xlarge
 ##### 1.5.1.2 ConfigureMigrationJob
 
 Configures a data migration task. After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the StartMigrationJob operation to start the task. A data migration task may fail to be started due to precheck failures. You can call the DescribeMigrationJobStatus operation to query the error messages about the precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the StartMigrationJob operation to restart the data migration task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3554,6 +3943,8 @@ Configures a data migration task. After you call this operation to configure a d
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 | DestinationEndpoint.OracleSI D | String | No | testsid | The SID of the Oracle database. Note This parameter is available and required only if the DestinationEndpoint.EngineName parameter is set to Oracle and the Oracle database is deployed in a non-RAC architecture. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -3561,9 +3952,15 @@ Configures a data migration task. After you call this operation to configure a d
 | RequestId | String | 40E35BD9-002E-4D63-9BE5- FBA48833**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJob &DestinationEndpoint.InstanceType=RDS &MigrationJobId=dtsl3m1213ye7l**** &MigrationJobName=MySQL_TO_RDS &MigrationMode.DataIntialization=true &MigrationMode.DataSynchronization=true &MigrationMode.StructureIntialization=true &MigrationObject=[{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}] &SourceEndpoint.InstanceType=RDS
+http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJob &DestinationEndpoint.InstanceType=RDS &MigrationJobId=dtsl3m1213ye7l**** &MigrationJobName=MySQL_TO_RDS &MigrationMode.DataIntialization=true &MigrationMode.DataSynchronization=true &MigrationMode.StructureIntialization=true &MigrationObject=[{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}] &SourceEndpoint.InstanceType=RDS &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3580,12 +3977,16 @@ Starts a data migration task.
 
 > **Note:** To call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StartMigrationJob | The operation that you want to perform. Set the value to StartMigrationJob. |
 | MigrationJobId | String | Yes | dtss0611o8vv90**** | The ID of the data migration instance. You can call the DescribeMigrationJobs operation to query the instance ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the data migration instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3594,9 +3995,15 @@ Starts a data migration task.
 | RequestId | String | FDC111B1-ACBF-457D-9656- 247FDEE9**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=StartMigrationJob &MigrationJobId=dtss0611o8vv90****
+http(s)://dts.aliyuncs.com/?Action=StartMigrationJob &MigrationJobId=dtss0611o8vv90**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3610,6 +4017,8 @@ http(s)://dts.aliyuncs.com/?Action=StartMigrationJob &MigrationJobId=dtss0611o8v
 
 Modifies the objects to be migrated for a data migration instance that is not started.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyMigrationObject | The operation that you want to perform. Set the value to ModifyMigrationObject. |
@@ -3621,6 +4030,8 @@ Modifies the objects to be migrated for a data migration instance that is not st
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of your Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the request failed. |
@@ -3628,9 +4039,15 @@ Modifies the objects to be migrated for a data migration instance that is not st
 | RequestId | String | DFF8D631-18BF-5768-934F- 55A6613*** | The request ID. |
 | Success | String | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ModifyMigrationObject &MigrationJobId=dtskfq1149w254**** &MigrationObject=[{"DBName": "dtstestdata"}]
+http(s)://dts.aliyuncs.com/?Action=ModifyMigrationObject &MigrationJobId=dtskfq1149w254**** &MigrationObject=[{"DBName": "dtstestdata"}] &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3647,6 +4064,8 @@ Pauses a data migration task.
 > **Note:** If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you cannot call the StartMigrationJob operation to restart the task.
 > If you select incremental data migration as the migration type for a pay-as-you-go instance, you are charged even when the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database and continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data migration consumes resources such as the bandwidth of the source database.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SuspendMigrationJob | The operation that you want to perform. Set the value to SuspendMigrationJob. |
@@ -3657,6 +4076,8 @@ Pauses a data migration task.
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -3664,9 +4085,15 @@ Pauses a data migration task.
 | RequestId | String | C306C198-7807-409D-930A- D6CE6C32**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SuspendMigrationJob &SynchronizationJobId=dtsj1x11y51g3b****
+http(s)://dts.aliyuncs.com/?Action=SuspendMigrationJob &SynchronizationJobId=dtsj1x11y51g3b**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -3679,6 +4106,8 @@ http(s)://dts.aliyuncs.com/?Action=SuspendMigrationJob &SynchronizationJobId=dts
 ##### 1.5.1.6 DescribeMigrationJobs
 
 Queries the list of data migration instances and the details of each instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3755,9 +4184,15 @@ Queries the list of data migration instances and the details of each instance.
 | Success | String | true | Indicates whether the call was successful. |
 | TotalRecordCount | Long | 300 | The total number of data migration instances that belong to your Alibaba Cloud account. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs
+http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeMigrationJobsResponse>
@@ -3818,8 +4253,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs
                   </StructureInitialization>
             </MigrationJob>
       </MigrationJobs>
+      <Success>true</Success>
 </DescribeMigrationJobsResponse>
 ```
+
+`JSON` format
 
 ```json
     "TotalRecordCount": 300,
@@ -3828,6 +4266,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs
     "PageNumber": 1,
     "MigrationJobs": {
         "MigrationJob": [
+```
+
+`{`
+
+```json
                 "DataSynchronization": {
                     "Percent": "95",
                     "Delay": "0",
@@ -3855,6 +4298,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs
                 "MigrationJobID": "dtson2z28evm33****",
                 "MigrationObject": {
                     "SynchronousObject": [
+```
+
+`{`
+
+```json
                             "DatabaseName": "dtstest",
                             "WholeDatabase": false,
                             "TableList": {
@@ -3862,7 +4310,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs
                                     "customer"
 ```
 
-`]` `]` `},`
+`]` `}` `}` `]` `},`
 
 ```json
                 "DataInitialization": {
@@ -3901,11 +4349,13 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobs
                     "status": "Finished"
 ```
 
-`]` `},`
+`}` `}` `]` `},`
 
 ```json
     "Success": true
 ```
+
+`}`
 
 **Error codes**
 
@@ -3931,6 +4381,8 @@ Queries the details of a data migration task. When you call this operation, the 
 | MigrationMode.DataSynchron ization | Boolean | No | true | Specifies whether to query the details of incremental data migration. Valid values: true: yes false: no Note The default value is false. |
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3981,9 +4433,15 @@ Queries the details of a data migration task. When you call this operation, the 
 | Success | String | true | Indicates whether the call was successful. |
 | TotalRecordCount | Long | 1 | The total number of returned entries. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobDetail &MigrationJobId=dtsta7w132u12h****
+http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobDetail &MigrationJobId=dtsta7w132u12h**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeMigrationJobDetailResponse>
@@ -4007,6 +4465,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobDetail &MigrationJobId=dt
                   <FinishRowNum>200001</FinishRowNum>
             </DataInitializationDetail>
       </DataInitializationDetailList>
+      <Success>true</Success>
       <StructureInitializationDetailList>
             <StructureInitializationDetail>
                   <Status>Finished</Status>
@@ -4021,6 +4480,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobDetail &MigrationJobId=dt
 </DescribeMigrationJobDetailResponse>
 ```
 
+`JSON` format
+
 ```json
  "DataSynchronizationDetailList": {
   "DataSynchronizationDetail": [
@@ -4030,12 +4491,17 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobDetail &MigrationJobId=dt
     "DestinationOwnerDBName": "dtstestdata"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "RequestId": "0AE3CD0B-4148-426F-A90E-952467CC****",
  "DataInitializationDetailList": {
   "DataInitializationDetail": [
+```
+
+`{`
+
+```json
     "Status": "Finished",
     "TableName": "customer",
     "TotalRowNum": "201477",
@@ -4045,12 +4511,17 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobDetail &MigrationJobId=dt
     "FinishRowNum": "200001"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "Success": true,
  "StructureInitializationDetailList": {
   "StructureInitializationDetail": [
+```
+
+`{`
+
+```json
     "Status": "Finished",
     "ObjectType": "Table",
     "ObjectDefinition": "CREATE TABLE `dtstestdata`.`customer` (\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT ''   NOT NULL   , \n`
@@ -4060,11 +4531,13 @@ runoob_title` varchar(100) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT '' N
     "ObjectName": "customer"
 ```
 
-`]`
+`}` `]` `}` `}`
 
 ##### 1.5.1.8 DescribeMigrationJobStatus
 
 Queries the state of a data migration task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4073,6 +4546,8 @@ Queries the state of a data migration task.
 | RegionId | String | No | cn-hangzhou | The region ID of the data migration instance. |
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4140,9 +4615,15 @@ Queries the state of a data migration task.
 | Status | String | Finished | The state of schema migration. Valid values: NotStarted: The migration is not started. Migrating: The migration is in progress. Failed: The migration failed. Finished: The migration is complete. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobStatus &MigrationJobId=dtsta7w132u12h****
+http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobStatus &MigrationJobId=dtsta7w132u12h**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4260,102 +4741,107 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobStatus &MigrationJobId=dt
   "Percent": "100",
   "Detail": {
    "CheckItem": [
+```
+
+`{`
+
+```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_CONN_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_AUTH_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_CONN_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_AUTH_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_BINLOG_ON"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_BINLOG_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_BINLOG_ROW_IMAGE"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_SERVER_ID"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_BINLOG_EXIST"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_ENGINE"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_MYSQL_PASSOWRD_FORMAT"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_SQL_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
      "CheckStatus": "Success",
      "ItemName": "CHECK_SAME_USER"
 ```
 
-`]` `},`
+`}` `]` `}` `},`
 
 ```json
  "DestinationEndpoint": {
@@ -4398,11 +4884,15 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobStatus &MigrationJobId=dt
   "Percent": "100"
 ```
 
+`}` `}`
+
 ##### 1.5.1.9 StopMigrationJob
 
 Stops a data migration task that is in the Migrating state.
 
 > **Note:** After you call this operation to stop a data migration task, the state of the task changes to Finished and you cannot restart the task by calling the StartMigrationJob operation.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4412,6 +4902,8 @@ Stops a data migration task that is in the Migrating state.
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4419,9 +4911,15 @@ Stops a data migration task that is in the Migrating state.
 | RequestId | String | C306C198-7807-409D-930A- D6CE6C32**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=StopMigrationJob &MigrationJobId=dtsb2c11sxpi3j****
+http(s)://dts.aliyuncs.com/?Action=StopMigrationJob &MigrationJobId=dtsb2c11sxpi3j**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4438,12 +4936,16 @@ Releases a data migration instance.
 
 > **Note:** After a data migration instance is released, it cannot be recovered.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteMigrationJob | The operation that you want to perform. Set the value to DeleteMigrationJob. |
 | MigrationJobId | String | Yes | dtsyiwe9b0gp2p**** | The ID of the data migration instance. You can call the DescribeMigrationJobs operation to query the instance ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the data migration instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4452,9 +4954,15 @@ Releases a data migration instance.
 | RequestId | String | F28A96B1-F897-4246-833B- 310A3345**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DeleteMigrationJob &MigrationJobId=dtsyiwe9b0gp2p****
+http(s)://dts.aliyuncs.com/?Action=DeleteMigrationJob &MigrationJobId=dtsyiwe9b0gp2p**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4492,6 +5000,8 @@ Purchases a data synchronization instance. After you purchase a data synchroniza
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 | DBInstanceCount | Integer | No | 3 | If you set the SourceEndpoint.InstanceType parameter to DRDS, you must specify the DBInstanceCount parameter. This parameter specifies the number of internal ApsaraDB RDS instances attached to the source PolarDB-X instance. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4500,9 +5010,15 @@ Purchases a data synchronization instance. After you purchase a data synchroniza
 | Success | String | true | Indicates whether the call was successful. |
 | SynchronizationJobId | String | dtshvj11k25255**** | The ID of the data synchronization instance. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CreateSynchronizationJob &SourceRegion=cn-hangzhou &DestRegion=cn-hangzhou &SynchronizationJobClass=small &PayType=PostPaid
+http(s)://dts.aliyuncs.com/?Action=CreateSynchronizationJob &SourceRegion=cn-hangzhou &DestRegion=cn-hangzhou &SynchronizationJobClass=small &PayType=PostPaid &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4518,6 +5034,8 @@ Configures a data synchronization task. Before you call this operation, you must
 
 > **Note:** After you call this operation to configure a data synchronization task, the task automatically starts and the precheck is performed. You do not need to call the StartSynchronizationJob operation to start the task.
 > A data synchronization task may fail to be started due to precheck failures. In this case, call the DescribeSynchronizationJobStatus operation to query the state of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the StartSynchronizationJob operation to restart the data synchronization task.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4560,6 +5078,8 @@ Configures a data synchronization task. Before you call this operation, you must
 | SourceEndpoint.DatabaseNa me | String | No | dtstestdata | The name of the database that contains the objects to be synchronized from the source instance. |
 | DestinationEndpoint.DataBas eName | String | No | dtstestdata | The name of the database that contains the synchronized objects in the destination instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4567,9 +5087,15 @@ Configures a data synchronization task. Before you call this operation, you must
 | RequestId | String | 2690E467-7773-43BC-A009- 370EE2E7**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJob &DataInitialization=true &StructureInitialization=true &SynchronizationJobId=dtsz4ao1dor13d**** &SynchronizationObjects=[{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}]
+http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJob &DataInitialization=true &StructureInitialization=true &SynchronizationJobId=dtsz4ao1dor13d**** &SynchronizationObjects=[{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}] &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4583,6 +5109,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJob &DataInitializati
 
 Starts a data synchronization task. When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the precheck is perform on the task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StartSynchronizationJob | The operation that you want to perform. Set the value to StartSynchronizationJob. |
@@ -4593,6 +5121,8 @@ Starts a data synchronization task. When you call this operation, the data synch
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note The default value is Forward. You can set this parameter to Reverse to start the reverse synchronization task only if the topology is two-way synchronization. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4600,9 +5130,15 @@ Starts a data synchronization task. When you call this operation, the data synch
 | RequestId | String | FDC111B1-ACBF-457D-9656- 247FDEE9**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=StartSynchronizationJob &SynchronizationJobId=dtsf19100l2186****
+http(s)://dts.aliyuncs.com/?Action=StartSynchronizationJob &SynchronizationJobId=dtsf19100l2186**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4620,6 +5156,8 @@ Pauses a data synchronization task.
 > We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
 > If the billing method is pay-as-you-go, you are charged even if the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database but continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, the paused data synchronization task still consumes resources such as the bandwidth of the source database.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SuspendSynchronizationJob | The operation that you want to perform. Set the value to SuspendSynchronizationJob. |
@@ -4630,6 +5168,8 @@ Pauses a data synchronization task.
 | SynchronizationDirection | String | No | Forward | The synchronization direction. Valid values: Forward: Data is synchronized from the source database to the destination database. Reverse: Data is synchronized from the destination database to the source database. Note The default value is Forward. You can set this parameter to Reverse to pause the reverse synchronization task only if the topology is two-way synchronization. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4637,9 +5177,15 @@ Pauses a data synchronization task.
 | RequestId | String | C306C198-7807-409D-930A- D6CE6C32**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SuspendSynchronizationJob &SynchronizationJobId=dtsmr1q4mc2152****
+http(s)://dts.aliyuncs.com/?Action=SuspendSynchronizationJob &SynchronizationJobId=dtsmr1q4mc2152**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4655,6 +5201,8 @@ Clears the configurations of a data synchronization task.
 
 > **Note:** If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the **ConfigureSynchronizationJob** operation to reconfigure the task.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ResetSynchronizationJob | The operation that you want to perform. Set the value to ResetSynchronizationJob. |
@@ -4665,6 +5213,8 @@ Clears the configurations of a data synchronization task.
 |---|---|---|---|---|
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4672,9 +5222,15 @@ Clears the configurations of a data synchronization task.
 | RequestId | String | FDC111B1-ACBF-457D-9656- 247FDEE9**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ResetSynchronizationJob &SynchronizationJobId=dtsm761239l27m****
+http(s)://dts.aliyuncs.com/?Action=ResetSynchronizationJob &SynchronizationJobId=dtsm761239l27m**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4690,6 +5246,8 @@ Modifies the objects to be synchronized.
 
 > **Note:** To call this operation, the data synchronization task must be in the NotStarted or Synchronizing state.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifySynchronizationObject | The operation that you want to perform. Set the value to ModifySynchronizationObject. |
@@ -4701,6 +5259,8 @@ Modifies the objects to be synchronized.
 |---|---|---|---|---|
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -4709,9 +5269,15 @@ Modifies the objects to be synchronized.
 | Success | String | true | Indicates whether the call was successful. |
 | TaskId | String | tl911uvi25z**** | The ID of the data synchronization task. If you want to call the DescribeSynchronizationObjectModifyStatus operation to query the state and progress of the task, this parameter is required. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ModifySynchronizationObject &SynchronizationJobId=dtskfq1149w254**** &SynchronizationObjects=[{"DBName": "dtstestdata"}]
+http(s)://dts.aliyuncs.com/?Action=ModifySynchronizationObject &SynchronizationJobId=dtskfq1149w254**** &SynchronizationObjects=[{"DBName": "dtstestdata"}] &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -4725,6 +5291,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifySynchronizationObject &SynchronizationJ
 
 Queries the state of the task that modifies the objects to be synchronized. Before you call this operation, you must call the ModifySynchronizationObject operation to obtain the task ID.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSynchronizationObje ctModifyStatus | The operation that you want to perform. Set the value to DescribeSynchronizationObjectModifyStatus. |
@@ -4734,6 +5302,8 @@ Queries the state of the task that modifies the objects to be synchronized. Befo
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4769,9 +5339,15 @@ Queries the state of the task that modifies the objects to be synchronized. Befo
 | Status | String | Finished | The state of initial schema synchronization. Valid values: NotStarted: The synchronization is not started. Migrating: The synchronization is in progress. Failed: The synchronization failed. Finished: The synchronization is complete. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationObjectModifyStatus &TaskId=k71r16fj13g****
+http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationObjectModifyStatus &TaskId=k71r16fj13g**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <Status>Migrating</Status> <PrecheckStatus>
@@ -4845,7 +5421,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationObjectModifyStatus &Ta
     <Status>Finished</Status>
     <Progress>0</Progress>
     <Percent>100</Percent>
-</DataInitializationStatus> <RequestId>0C3D6348-79D8-43F8-9788-60C30CCC****</RequestId> <StructureInitializationStatus>
+</DataInitializationStatus> <RequestId>0C3D6348-79D8-43F8-9788-60C30CCC****</RequestId> <Success>true</Success> <StructureInitializationStatus>
     <Status>Finished</Status>
     <Progress>0</Progress>
     <Percent>100</Percent>
@@ -4858,116 +5434,121 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationObjectModifyStatus &Ta
   "Status": "Finished",
   "Percent": "100",
   "Detail": [
+```
+
+`{`
+
+```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_CONN_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_CONN_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_AUTH_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_AUTH_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_ON"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_ROW_IMAGE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SERVER_ID"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_EXIST"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_ENGINE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_MYSQL_PASSOWRD_FORMAT"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SAME_OBJ"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SQL_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SAME_USER"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_TOPOLOGY"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "DataInitializationStatus": {
@@ -4994,6 +5575,8 @@ After a primary/secondary switchover is performed on the source or destination d
 > **Note:** For two-way synchronization tasks, if a primary/secondary switchover is performed on the source or destination database, you must call this operation twice to update the connection settings.
 > For example, if a primary/secondary switchover is performed on the destination database in the forward direction, you must call this operation twice. For the first call, set the **SynchronizationDirection** parameter to **Forward** and the **Endpoint.Type** parameter to **Destination** and configure the connection settings. For the second call, set the **SynchronizationDirection** parameter to **Reverse** and the **Endpoint.Type** parameter to **Source** and configure the connection settings.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SwitchSynchronizationEndpoi nt | The operation that you want to perform. Set the value to SwitchSynchronizationEndpoint. |
@@ -5011,6 +5594,8 @@ After a primary/secondary switchover is performed on the source or destination d
 |---|---|---|---|---|
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -5019,9 +5604,15 @@ After a primary/secondary switchover is performed on the source or destination d
 | Success | String | true | Indicates whether the call was successful. |
 | TaskId | String | 11**** | The task ID. When you call the DescribeEndpointSwitchStatus operation to query the state of the task, you must specify the task ID. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=SwitchSynchronizationEndpoint &Endpoint.InstanceId=i-bp11haem1kpkhoup**** &Endpoint.InstanceType=ECS &Endpoint.Port=3306 &Endpoint.Type=Destination &SynchronizationJobId=dtsexjk1alb116****
+http(s)://dts.aliyuncs.com/?Action=SwitchSynchronizationEndpoint &Endpoint.InstanceId=i-bp11haem1kpkhoup**** &Endpoint.InstanceType=ECS &Endpoint.Port=3306 &Endpoint.Type=Destination &SynchronizationJobId=dtsexjk1alb116**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -5035,6 +5626,8 @@ http(s)://dts.aliyuncs.com/?Action=SwitchSynchronizationEndpoint &Endpoint.Insta
 
 Queries the state of the task that changes the database connection settings. This operation is always called after you call the SwitchSynchronizationEndpoint operation to change the database connection settings.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeEndpointSwitchStatu s | The operation that you want to perform. Set the value to DescribeEndpointSwitchStatus. |
@@ -5045,6 +5638,8 @@ Queries the state of the task that changes the database connection settings. Thi
 |---|---|---|---|---|
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -5054,9 +5649,15 @@ Queries the state of the task that changes the database connection settings. Thi
 | Status | String | Finished | The state of the task. Valid values: NotStarted: The task is not started. Initializing: The task is being initialized. Switching: The task is in progress. Failed: The task failed. Finished: The task is complete. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeEndpointSwitchStatus &TaskId=11****
+http(s)://dts.aliyuncs.com/?Action=DescribeEndpointSwitchStatus &TaskId=11**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -5070,6 +5671,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeEndpointSwitchStatus &TaskId=11****
 
 Enables or disables image matching for a data synchronization instance. When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching. After you call this operation, you can call the DescribeSynchronizationJobReplicatorCompare operation to query whether image matching is enabled for the data synchronization instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ConfigureSynchronizationJob ReplicatorCompare | The operation that you want to perform. Set the value to ConfigureSynchronizationJobReplicatorCompare. |
@@ -5082,6 +5685,8 @@ Enables or disables image matching for a data synchronization instance. When you
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -5089,9 +5694,15 @@ Enables or disables image matching for a data synchronization instance. When you
 | RequestId | String | 86A8FF0F-FA92-449D-B559- 05CFF9F9**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobReplicatorCompare &SynchronizationJobId=dtsexjk1alb116****
+http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobReplicatorCompare &SynchronizationJobId=dtsexjk1alb116**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -5105,6 +5716,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobReplicatorCompare 
 
 Queries whether image matching is enabled for a data synchronization instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSynchronizationJobR eplicatorCompare | The operation that you want to perform. Set the value to DescribeSynchronizationJobReplicatorCompare. |
@@ -5116,6 +5729,8 @@ Queries whether image matching is enabled for a data synchronization instance.
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -5124,9 +5739,15 @@ Queries whether image matching is enabled for a data synchronization instance.
 | Success | String | true | Indicates whether the call was successful. |
 | SynchronizationReplicator CompareEnable | Boolean | true | Indicates whether image matching is enabled. Valid values: true: yes false: no |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobReplicatorCompare &SynchronizationJobId=dtsexjk1alb116****
+http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobReplicatorCompare &SynchronizationJobId=dtsexjk1alb116**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -5151,6 +5772,8 @@ Queries the list of data synchronization instances and details of each instance.
 | SynchronizationJobName | String | No | MySQL Synchronization | The name of the data synchronization instance. Note Fuzzy match is supported. |
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5225,9 +5848,15 @@ Queries the list of data synchronization instances and details of each instance.
 | TableName | String | customer | The name of the synchronized table. |
 | TotalRecordCount | Long | 100 | The total number of data synchronization instances that meet the requirements and belong to your Alibaba Cloud account. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobs &Tag.1.Key=testkey1
+http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobs &Tag.1.Key=testkey1 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -5334,7 +5963,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobs &Tag.1.Key=testke
      "NewSchemaName": "newdtstestdatabase"
 ```
 
-`],`
+`}` `],`
 
 ```json
    "DataInitializationStatus": {
@@ -5356,95 +5985,100 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobs &Tag.1.Key=testke
     "Status": "Finished",
     "Percent": "100",
     "Detail": [
+```
+
+`{`
+
+```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_CONN_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_AUTH_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_CONN_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_AUTH_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_BINLOG_ON"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_BINLOG_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_BINLOG_ROW_IMAGE"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_SERVER_ID"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_BINLOG_EXIST"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_ENGINE"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_MYSQL_PASSOWRD_FORMAT"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
       "ItemName": "CHECK_SAME_OBJ"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "CheckStatus": "Success",
@@ -5507,7 +6141,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobs &Tag.1.Key=testke
     "Percent": "100"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
  "PageRecordCount": 30,
@@ -5515,9 +6149,13 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobs &Tag.1.Key=testke
  "PageNumber": 1
 ```
 
+`}`
+
 ##### 1.5.2.13 DescribeInitializationStatus
 
 Queries the details of initial data synchronization, including the synchronization progress of schemas and historical data.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5527,6 +6165,8 @@ Queries the details of initial data synchronization, including the synchronizati
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values:1 to 100. Default value: 30. |
 | PageNum | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5570,9 +6210,15 @@ Queries the details of initial data synchronization, including the synchronizati
 | Status | String | Finished | The state of initial schema synchronization. Valid values: NotStarted: The synchronization is not started. Migrating: The synchronization is in progress. Failed: The synchronization failed. Finished: The synchronization is complete. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeInitializationStatus &SynchronizationJobId=dtsi76118o3w92****
+http(s)://dts.aliyuncs.com/?Action=DescribeInitializationStatus &SynchronizationJobId=dtsi76118o3w92**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeInitializationStatusResponse>
@@ -5595,6 +6241,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeInitializationStatus &Synchronization
             <DestinationOwnerDBName>dtstestdata</DestinationOwnerDBName>
             <FinishRowNum>9993</FinishRowNum>
       </DataInitializationDetails>
+      <Success>true</Success>
 </DescribeInitializationStatusResponse>
 ```
 
@@ -5606,6 +6253,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeInitializationStatus &Synchronization
 
 Queries the state of one or more data synchronization instances.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSynchronizationJobS tatusList | The operation that you want to perform. Set the value to DescribeSynchronizationJobStatusList. |
@@ -5615,6 +6264,8 @@ Queries the state of one or more data synchronization instances.
 
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5632,9 +6283,15 @@ Queries the state of one or more data synchronization instances.
 | SynchronizationJobId | String | dtsexjk1alb116**** | The ID of the data synchronization instance. |
 | TotalRecordCount | Long | 2 | The total number of returned data synchronization instances. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatusList &SynchronizationJobIdListJsonStr=["dtsexjk1alb116****","dtskfq1149w254****"]
+http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatusList &SynchronizationJobIdListJsonStr=["dtsexjk1alb116****","dtskfq1149w254****"] &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeSynchronizationJobStatusListResponse>
@@ -5658,6 +6315,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatusList &Synchro
                   <SynchronizationDirection>Forward</SynchronizationDirection>
             </SynchronizationDirectionInfoList>
       </SynchronizationJobListStatusList>
+      <Success>true</Success>
 </DescribeSynchronizationJobStatusListResponse>
 ```
 
@@ -5669,6 +6327,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatusList &Synchro
 
 Queries the state of a data synchronization instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSynchronizationJobS tatus | The operation that you want to perform. Set the value to DescribeSynchronizationJobStatus. |
@@ -5679,6 +6339,8 @@ Queries the state of a data synchronization instance.
 |---|---|---|---|---|
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5755,9 +6417,15 @@ Queries the state of a data synchronization instance.
 | TableIncludes | Array of TableInclude |   | The tables that are synchronized by the task. |
 | TableName | String | customer | The name of the synchronized table. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatus &SynchronizationJobId=dtsexjk1alb116****
+http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatus &SynchronizationJobId=dtsexjk1alb116**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -5846,116 +6514,121 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatus &Synchroniza
   "Status": "Finished",
   "Percent": "100",
   "Detail": [
+```
+
+`{`
+
+```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_CONN_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_AUTH_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_CONN_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_AUTH_DEST"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_ON"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_ROW_IMAGE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SERVER_ID"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_BINLOG_EXIST"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_ENGINE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_MYSQL_PASSOWRD_FORMAT"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SRC"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SAME_OBJ"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SQL_MODE"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_SAME_USER"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "CheckStatus": "Success",
     "ItemName": "CHECK_TOPOLOGY"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "Checkpoint": "1610616144",
@@ -5993,11 +6666,15 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatus &Synchroniza
   "Percent": "100"
 ```
 
+`}` `}`
+
 ##### 1.5.2.16 DeleteSynchronizationJob
 
 Releases a data synchronization instance.
 
 > **Note:** After a data synchronization instance is released, it cannot be recovered.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6006,6 +6683,8 @@ Releases a data synchronization instance.
 | RegionId | String | No | cn-hangzhou | The region ID of the data synchronization instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -6013,9 +6692,15 @@ Releases a data synchronization instance.
 | RequestId | String | C306C198-7807-409D-930A- D6CE6C32**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DeleteSynchronizationJob &SynchronizationJobId=dtshn6107ve264****
+http(s)://dts.aliyuncs.com/?Action=DeleteSynchronizationJob &SynchronizationJobId=dtshn6107ve264**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6043,6 +6728,8 @@ Purchases a change tracking instance.
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
@@ -6051,8 +6738,12 @@ Purchases a change tracking instance.
 | SubscriptionInstanceId | String | dtsfen11q2g23x**** | The ID of the change tracking instance. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CreateSubscriptionInstance &Region=cn-hangzhou
+http(s)://dts.aliyuncs.com/?Action=CreateSubscriptionInstance &Region=cn-hangzhou &<Common request parameters>
 ```
 
 ```xml
@@ -6069,6 +6760,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateSubscriptionInstance &Region=cn-hangzho
 ##### 1.5.3.2 ConfigureSubscriptionInstance
 
 Configures a change tracking instance. Before you call this operation, you must call the CreateSubscriptionInstance operation to create a change tracking instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6103,9 +6796,15 @@ Configures a change tracking instance. Before you call this operation, you must 
 | RequestId | String | 0CC15092-8957-4532-B559- B4FB80AC**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstance &SubscriptionDataType.DDL=true &SubscriptionDataType.DML=true &SubscriptionInstanceId=dtshp8n2ze4r5x**** &SubscriptionObject=[{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}]
+http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstance &SubscriptionDataType.DDL=true &SubscriptionDataType.DML=true &SubscriptionInstanceId=dtshp8n2ze4r5x**** &SubscriptionObject=[{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}] &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6119,12 +6818,16 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstance &SubscriptionDa
 
 Starts a change tracking instance. To call this operation, the change tracking task must be in the NotStarted or Failed state.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | StartSubscriptionInstance | The operation that you want to perform. Set the value to StartSubscriptionInstance. |
 | SubscriptionInstanceId | String | Yes | dtso6m11cxt26q**** | The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID. |
 | RegionId | String | No | cn-hangzhou | The region ID pf the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6135,8 +6838,10 @@ Starts a change tracking instance. To call this operation, the change tracking t
 | TaskId | String | 11**** | The task ID. This parameter will be removed in the future. |
 
 ```
-http(s)://dts.aliyuncs.com/?Action=StartSubscriptionInstance &SubscriptionInstanceId=dtso6m11cxt26q****
+http(s)://dts.aliyuncs.com/?Action=StartSubscriptionInstance &SubscriptionInstanceId=dtso6m11cxt26q**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6153,6 +6858,8 @@ Modifies the objects for a change tracking task. To call this operation, the cha
 > **Note:** If you call this operation to modify the objects of a change tracking task that is in the Normal state, Data Transmission Service (DTS) automatically calls StartSubscriptionInstance to restart the change tracking instance.
 > If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically restart the change tracking instance. You must call the StartSubscriptionInstance operation.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifySubscriptionObject | The operation that you want to perform. Set the value to ModifySubscriptionObject. |
@@ -6161,12 +6868,18 @@ Modifies the objects for a change tracking task. To call this operation, the cha
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
 | ErrMessage | String | The request processing has failed due to some unknown error. | The error message returned if the call failed. |
 | RequestId | String | ABBACEFC-CBA9-4F80-A337- 42F202F5**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://dts.aliyuncs.com/?Action=ModifySubscriptionObject &SubscriptionInstanceId=dtsl8zl9ek6292**** &SubscriptionObject=[{"DBName":"dtstestdata"}]
@@ -6186,6 +6899,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifySubscriptionObject &SubscriptionInstanc
 
 Creates a consumer group for a change tracking instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateConsumerGroup | The operation that you want to perform. Set the value to CreateConsumerGroup. |
@@ -6196,6 +6911,8 @@ Creates a consumer group for a change tracking instance.
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ConsumerGroupID | String | dtswc411cg617p**** | The ID of the consumer group. |
@@ -6204,9 +6921,15 @@ Creates a consumer group for a change tracking instance.
 | RequestId | String | 6063641E-BAD1-4BA7-B70B- 26FFFD18**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=CreateConsumerGroup &ConsumerGroupName=Test Consumer Group &ConsumerGroupPassword=Test123456 &ConsumerGroupUserName=dtstest &SubscriptionInstanceId=dtsg2m10r1x15a****
+http(s)://dts.aliyuncs.com/?Action=CreateConsumerGroup &ConsumerGroupName=Test Consumer Group &ConsumerGroupPassword=Test123456 &ConsumerGroupUserName=dtstest &SubscriptionInstanceId=dtsg2m10r1x15a**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6220,6 +6943,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateConsumerGroup &ConsumerGroupName=Test C
 
 Queries the details of consumer groups in a change tracking instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeConsumerGroup | The operation that you want to perform. Set this parameter to DescribeConsumerGroup. |
@@ -6228,6 +6953,8 @@ Queries the details of consumer groups in a change tracking instance.
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNum | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6249,13 +6976,21 @@ Queries the details of consumer groups in a change tracking instance.
 | Success | String | true | Indicates whether the call was successful. |
 | TotalRecordCount | Integer | 1 | The total number of consumer groups. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeConsumerGroup &SubscriptionInstanceId=dtso5xx5t9u19e****
+http(s)://dts.aliyuncs.com/?Action=DescribeConsumerGroup &SubscriptionInstanceId=dtso5xx5t9u19e**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
 | <DescribeConsumerGroupResponse> <TotalRecordCount>1</TotalRecordCount> <PageRecordCount>30</PageRecordCount> <RequestId>4204E899-8193-4D7D-A4FB-3A7F9063****</RequestId> <PageNumber>1</PageNumber> <ConsumerChannels> <DescribeConsumerChannel> <ConsumptionCheckpoint></ConsumptionCheckpoint> <ConsumerGroupID>dtspis1110z232gbm4</ConsumerGroupID> <ConsumerGroupUserName>test</ConsumerGroupUserName> <ConsumerGroupName>consumergrouptest</ConsumerGroupName> <MessageDelay>-1</MessageDelay> <UnconsumedData>-1</UnconsumedData> </DescribeConsumerChannel> </ConsumerChannels> <Success>true</Success> </DescribeConsumerGroupResponse> |   |
+
+`JSON` format
 
 ```json
  "TotalRecordCount": 1,
@@ -6264,6 +6999,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConsumerGroup &SubscriptionInstanceId
  "PageNumber": 1,
  "ConsumerChannels": {
   "DescribeConsumerChannel": [
+```
+
+`{`
+
+```json
     "ConsumptionCheckpoint": "2019-10-02T12:00:00Z",
     "ConsumerGroupID": "dtspis1110z232gbm4",
     "ConsumerGroupUserName": "test",
@@ -6272,11 +7012,13 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConsumerGroup &SubscriptionInstanceId
     "UnconsumedData": -1
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "Success": true
 ```
+
+`}`
 
 **Error codes**
 
@@ -6290,6 +7032,8 @@ Modifies the password of a consumer group.
 
 > **Note:** This operation is applicable only to the new version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the new version of the change tracking feature is used if you specify the **SubscriptionInstanceNetworkType** parameter. Otherwise, the old version of the change tracking feature is used.
 > When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6312,9 +7056,15 @@ Modifies the password of a consumer group.
 | RequestId | String | A06B5CFF-9576-4BC1-BE62- A3D43E1F**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ModifyConsumerGroupPassword &ConsumerGroupID=dtswc411cg617p**** &consumerGroupNewPassword=Test654321 &ConsumerGroupPassword=Test123456 &SubscriptionInstanceId=dtsg2m10r1x15a****
+http(s)://dts.aliyuncs.com/?Action=ModifyConsumerGroupPassword &ConsumerGroupID=dtswc411cg617p**** &consumerGroupNewPassword=Test654321 &ConsumerGroupPassword=Test123456 &SubscriptionInstanceId=dtsg2m10r1x15a**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6328,6 +7078,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyConsumerGroupPassword &ConsumerGroupID=
 
 Deletes a consumer group.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteConsumerGroup | The operation that you want to perform. Set the value to DeleteConsumerGroup. |
@@ -6335,6 +7087,8 @@ Deletes a consumer group.
 | SubscriptionInstanceId | String | Yes | dtsg2m10r1x15a**** | The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6346,6 +7100,8 @@ Deletes a consumer group.
 ```
 http(s)://dts.aliyuncs.com/?Action=DeleteConsumerGroup &ConsumerGroupID=dtssb911ydd192**** &SubscriptionInstanceId=dtsg2m10r1x15a****
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6363,6 +7119,8 @@ Modifies the consumption checkpoint of a change tracking instance.
 > If you use the new version, you must set the consumption checkpoint on the change tracking client.
 > When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyConsumptionTimesta mp | The operation that you want to perform. Set the value to ModifyConsumptionTimestamp. |
@@ -6371,12 +7129,18 @@ Modifies the consumption checkpoint of a change tracking instance.
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the call failed. |
 | ErrMessage | String | The request processing has failed due to some unknown error. | The error message returned if the call failed. |
 | RequestId | String | ABBACEFC-CBA9-4F80-A337- 42F202F5**** | The ID of the request. |
 | Success | String | true | Indicates whether the call was successful. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://dts.aliyuncs.com/?Action=ModifyConsumptionTimestamp &ConsumptionTimestamp=2019-10-15T17:20:03Z &SubscriptionInstanceId=dtsg2m10r1x15a****
@@ -6396,6 +7160,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyConsumptionTimestamp &ConsumptionTimest
 
 Queries the list of change tracking instances and details of each instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSubscriptionInstance s | The operation that you want to perform. Set the value to DescribeSubscriptionInstances. |
@@ -6405,6 +7171,8 @@ Queries the list of change tracking instances and details of each instance.
 | SubscriptionInstanceName | String | No | MySQL Change Tracking | The name of the change tracking instance. Note If you specify this parameter, DTS returns all the change tracking instances that match the specified name. |
 | ClientToken | String | No | 0c593ea1-3bea-11e9-b96b- 88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6447,13 +7215,21 @@ Queries the list of change tracking instances and details of each instance.
 | Success | String | true | Indicates whether the call was successful. |
 | TotalRecordCount | Long | 1 | The total number of change tracking instances that meet the requirements and belong to your Alibaba Cloud account. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstances &Tag.1.Key=testkey1
+http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstances &Tag.1.Key=testkey1 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
 | <DescribeSubscriptionInstancesResponse> <TotalRecordCount>1</TotalRecordCount> <PageRecordCount>30</PageRecordCount> <RequestId>FC3BAAF2-74E3-4471-8EB5-96202D6A****</RequestId> <PageNumber>1</PageNumber> <Success>true</Success> <SubscriptionInstances> <SubscriptionInstance> <Status>Normal</Status> <SubscriptionObject> <SynchronousObject> <DatabaseName>dtstestdata</DatabaseName> <WholeDatabase>false</WholeDatabase> <TableList> <Table>test1</Table> </TableList> </SynchronousObject> </SubscriptionObject> <SubscriptionDataType> <DML>true</DML> <DDL>true</DDL> </SubscriptionDataType> <SubscriptionInstanceName>MySQL Change Tracking</SubscriptionInstanceName> <SubscriptionHost> <PublicHost>dts-cn-hangzhou.aliyuncs.com:18001</PublicHost> <PrivateHost>dts-cn-hangzhou-internal.aliyuncs.com:18002</PrivateHost> <VPCHost>dts-cn-hangzhou-vpc.aliyuncs.com:18003</VPCHost> </SubscriptionHost> <SubscribeTopic>cn_hangzhou_rm_bp1162kryiv******_dtstest_version2</SubscribeTopic> <SourceEndpoint> <InstanceID>rm-bp1162kryivb8****</InstanceID> <InstanceType>RDS</InstanceType> </SourceEndpoint> <InstanceCreateTime>2021-06-21T10:17:21Z</InstanceCreateTime> <JobCreateTime>2021-06-21T10:17:21Z</JobCreateTime> <EndTimestamp>2021-06-21T10:17:21Z</EndTimestamp> <PayType>PrePaid</PayType> <SubscriptionInstanceID>dtsy0zz3t13h******</SubscriptionInstanceID> <BeginTimestamp>2021-06-21T08:25:43Z</BeginTimestamp> <Tags></Tags> </SubscriptionInstance> </SubscriptionInstances> </DescribeSubscriptionInstancesResponse> |   |
+
+`JSON` format
 
 ```json
  "TotalRecordCount": 1,
@@ -6463,9 +7239,19 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstances &Tag.1.Key=test
  "Success": true,
  "SubscriptionInstances": {
   "SubscriptionInstance": [
+```
+
+`{`
+
+```json
     "Status": "Normal",
     "SubscriptionObject": {
      "SynchronousObject": [
+```
+
+`{`
+
+```json
        "DatabaseName": "dtstestdata",
        "WholeDatabase": false,
        "TableList": {
@@ -6473,7 +7259,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstances &Tag.1.Key=test
          "test1"
 ```
 
-`]` `]` `},`
+`]` `}` `}` `]` `},`
 
 ```json
     "SubscriptionDataType": {
@@ -6513,11 +7299,13 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstances &Tag.1.Key=test
      "Tag": []
 ```
 
-`]`
+`}` `}` `]` `}` `}`
 
 ##### 1.5.3.7 DescribeSubscriptionInstanceStatus
 
 Queries the state of a change tracking instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6525,6 +7313,8 @@ Queries the state of a change tracking instance.
 | SubscriptionInstanceId | String | Yes | dtsy0zz3t13h7d**** | The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6563,13 +7353,21 @@ Queries the state of a change tracking instance.
 | WholeDatabase | String | false | Indicates whether the data changes of the entire database are tracked. Valid values: true: yes false: no |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceStatus &SubscriptionInstanceId=dtsy0zz3t13h7d****
+http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceStatus &SubscriptionInstanceId=dtsy0zz3t13h7d**** &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
 | <DescribeSubscriptionInstanceStatusResponse> <Status>Normal</Status> <TaskId>y0zz3t13h7d****</TaskId> <RequestId>E0845D0A-6D36-4EEB-BE26-CF191E1A****</RequestId> <SubscriptionHost> <PublicHost>dts-cn-****.aliyuncs.com:18001</PublicHost> <PrivateHost>dts-cn-****-internal.aliyuncs.com:18002</PrivateHost> <VPCHost>dts-cn-****-vpc.aliyuncs.com:18003</VPCHost> </SubscriptionHost> <EndTimestamp>2021-03-26T14:03:21Z</EndTimestamp> <PayType>PrePaid</PayType> <SubscriptionInstanceID>dtsy0zz3t13h7d****</SubscriptionInstanceID> <Success>true</Success> <SubscriptionObject> <SynchronousObject> <DatabaseName>dtstestdata</DatabaseName> <WholeDatabase>false</WholeDatabase> <TableList> <Table>test1</Table> </TableList> </SynchronousObject> </SubscriptionObject> <SubscriptionDataType> <DML>true</DML> <DDL>true</DDL> </SubscriptionDataType> <SubscriptionInstanceName>API test</SubscriptionInstanceName> <SubscribeTopic>cn_hangzhou_rm_bp1162kryivb8****_dtstest_version2</SubscribeTopic> <SourceEndpoint> <InstanceID>rm-bp1162kryivb8****</InstanceID> <InstanceType>RDS</InstanceType> </SourceEndpoint> <BeginTimestamp>2021-03-15T08:25:34Z</BeginTimestamp> </DescribeSubscriptionInstanceStatusResponse> |   |
+
+`JSON` format
 
 ```json
  "Status": "Normal",
@@ -6590,6 +7388,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceStatus &Subscript
  "Success": true,
  "SubscriptionObject": {
   "SynchronousObject": [
+```
+
+`{`
+
+```json
     "DatabaseName": "dtstestdata",
     "WholeDatabase": false,
     "TableList": {
@@ -6597,7 +7400,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceStatus &Subscript
       "test1"
 ```
 
-`]` `]` `},`
+`]` `}` `}` `]` `},`
 
 ```json
  "SubscriptionDataType": {
@@ -6621,11 +7424,15 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceStatus &Subscript
  "BeginTimestamp": "2021-03-15T08:25:34Z"
 ```
 
+`}`
+
 ##### 1.5.3.8 DeleteSubscriptionInstance
 
 Releases a change tracking instance.
 
 > **Note:** After a change tracking instance is released, it cannot be recovered.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6633,6 +7440,8 @@ Releases a change tracking instance.
 | SubscriptionInstanceId | String | Yes | dtsmxg11pfp231**** | The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID. |
 | RegionId | String | No | cn-hangzhou | The region ID of the change tracking instance. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6644,6 +7453,8 @@ Releases a change tracking instance.
 ```
 http(s)://dts.aliyuncs.com/?Action=DeleteSubscriptionInstance &SubscriptionInstanceId=dtsmxg11pfp231****
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6661,12 +7472,16 @@ Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **sou
 
 > **Note:** If the **source or destination database** is an **ApsaraDB instance** (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next** in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDTSIP | The operation that you want to perform. Set the value to DescribeDTSIP. |
 | SourceEndpointRegion | String | Yes | cn-hangzhou | The region ID of the source instance. Note If the source instance is a self-managed database with a public IP address, you can set the parameter to cn-hangzhou or the ID of the closest region. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
 | DestinationEndpointRegion | String | No | cn-hangzhou | The region ID of the destination instance. Note If the destination instance is a self-managed database with a public IP address, you can set the parameter to cn-hangzhou or the ID of the closest region. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6681,6 +7496,8 @@ Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **sou
 http(s)://dts.aliyuncs.com/?Action=DescribeDTSIP &SourceEndpointRegion=cn-hangzhou
 ```
 
+Sample success responses
+
 | XML | format |
 |---|---|
 | <DescribeDTSIPResponse> <RequestId>0C99C0BE-F312-40FA-ADFA-4DC1166B****</RequestId> <DynamicMessage>10.151.12.0/24,47.102.181.0/24,47.101.109.0/24,120.55.129.0/24,11.115.103.0/24,47.102.234.0/24</DynamicMessage> <ErrMessage></ErrMessage> <Success>true</Success> <ErrCode></ErrCode> </DescribeDTSIPResponse> |   |
@@ -6692,6 +7509,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDTSIP &SourceEndpointRegion=cn-hangzh
 ##### 1.5.4.2 DescribeConnectionStatus
 
 Queries the connectivity of Data Transmission Service (DTS) servers to the source and destination databases.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6724,6 +7543,8 @@ Queries the connectivity of Data Transmission Service (DTS) servers to the sourc
 | DestinationEndpointPasswor d | String | No | Test123456 | The password of the destination database account. |
 | RegionId | String | No | cn-hangzhou | The region ID of the DTS instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DestinationConnectionSta tus | Map | { "connectDetail": [ { "testName": "PolarDBo JDBC _ Connect", "testSuccess": true }, { "testName": "Ping ", "testSuccess": true }, { "testName": "Telnet ", "testSuccess": true } ], "connectRes": true, "connectAdvice": "" } | The connectivity results of DTS servers to the destination database. |
@@ -6733,13 +7554,21 @@ Queries the connectivity of Data Transmission Service (DTS) servers to the sourc
 | SourceConnectionStatus | Map | { "connectDetail": [ { "testName": "Oracle JDBC Connect", "testSuccess": true }, { "testName": "Ping ", "testSuccess": false }, { "testName": "Telnet ", "testSuccess": true } ], "connectRes": true, "connectAdvice": "" } | The connectivity results of DTS servers to the source database. |
 | Success | String | true | Indicates whether the call was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeConnectionStatus &DestinationEndpointArchitecture=SID &DestinationEndpointInstanceType=PolarDB_o &DestinationEndpointOracleSID=testsid &SourceEndpointArchitecture=SID &SourceEndpointInstanceType=RDS
+http(s)://dts.aliyuncs.com/?Action=DescribeConnectionStatus &DestinationEndpointArchitecture=SID &DestinationEndpointInstanceType=PolarDB_o &DestinationEndpointOracleSID=testsid &SourceEndpointArchitecture=SID &SourceEndpointInstanceType=RDS &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
 | <DescribeConnectionStatusResponse> <RequestId>0A47C784-70EF-4111-8677-369CAA00****</RequestId> <SourceConnectionStatus> <connectDetail> <testName>Oracle JDBC Connect</testName> <testSuccess>true</testSuccess> </connectDetail> <connectDetail> <testName>Ping </testName> <testSuccess>false</testSuccess> </connectDetail> <connectDetail> <testName>Telnet </testName> <testSuccess>true</testSuccess> </connectDetail> <connectRes>true</connectRes> <connectAdvice></connectAdvice> </SourceConnectionStatus> <DestinationConnectionStatus> <connectDetail> <testName>PolarDB_o JDBC Connect</testName> <testSuccess>true</testSuccess> </connectDetail> <connectDetail> <testName>Ping </testName> <testSuccess>true</testSuccess> </connectDetail> <connectDetail> <testName>Telnet </testName> <testSuccess>true</testSuccess> </connectDetail> <connectRes>true</connectRes> <connectAdvice></connectAdvice> </DestinationConnectionStatus> <Success>true</Success> </DescribeConnectionStatusResponse> |   |
+
+`JSON` format
 
 ```json
   "RequestId": "0A47C784-70EF-4111-8677-369CAA00****",
@@ -6749,21 +7578,21 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConnectionStatus &DestinationEndpoint
         "testSuccess": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "testName": "Ping ",
         "testSuccess": false
 ```
 
-`},`
+`},` `{`
 
 ```json
         "testName": "Telnet ",
         "testSuccess": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "connectRes": true,
@@ -6775,25 +7604,30 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConnectionStatus &DestinationEndpoint
 ```json
   "DestinationConnectionStatus": {
     "connectDetail": [
+```
+
+`{`
+
+```json
         "testName": "PolarDB_o JDBC Connect",
         "testSuccess": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "testName": "Ping ",
         "testSuccess": true
 ```
 
-`},`
+`},` `{`
 
 ```json
         "testName": "Telnet ",
         "testSuccess": true
 ```
 
-`],`
+`}` `],`
 
 ```json
     "connectRes": true,
@@ -6806,11 +7640,15 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConnectionStatus &DestinationEndpoint
   "Success": true
 ```
 
+`}`
+
 #### 1.5.5 Monitoring and alerting
 
 ##### 1.5.5.1 ConfigureMigrationJobAlert
 
 Configures alert settings to monitor a data migration instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6826,6 +7664,8 @@ Configures alert settings to monitor a data migration instance.
 | DelayOverSeconds | String | No | 10 | The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds. Note If the DelayAlertStatus parameter is set to enable, this parameter must be set. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to set this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the request failed. |
@@ -6833,9 +7673,15 @@ Configures alert settings to monitor a data migration instance.
 | RequestId | String | 0a2a047516051973705541561d* *** | The ID of the request. |
 | Success | String | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJobAlert &MigrationJobId=dtslb9113qq11n**** &DelayAlertStatus=enable &DelayOverSeconds=10
+http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJobAlert &MigrationJobId=dtslb9113qq11n**** &DelayAlertStatus=enable &DelayOverSeconds=10 &<Common request parameters>
 ```
+
+Sample success responses
 
 ```xml
 <ConfigureMigrationJobAlertResponse>
@@ -6851,6 +7697,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJobAlert &MigrationJobId=dt
 
 Queries the alert settings of a data migration instance.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeMigrationJobAlert | The operation that you want to perform. Set the value to DescribeMigrationJobAlert. |
@@ -6858,6 +7706,8 @@ Queries the alert settings of a data migration instance.
 | RegionId | String | No | cn-hangzhou | The ID of the region in which the data migration instance resides. |
 | ClientToken | String | No | ETnLKlblzczshOTUbOCz**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to set this parameter because this parameter will be removed in the future. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6877,6 +7727,8 @@ Queries the alert settings of a data migration instance.
 http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobAlert &MigrationJobId=dtslb9113qq11n****
 ```
 
+Sample success responses
+
 | XML | format |
 |---|---|
 | <DescribeMigrationJobAlertresponse> <RequestId>210ec21916055187057342533d****</RequestId> <DelayAlertPhone>1361234****,1371234****</DelayAlertPhone> <ErrorAlertStatus>enable</ErrorAlertStatus> <MigrationJobName>PolarDB MySQL_to_RDS MySQL</MigrationJobName> <DelayAlertStatus>enable</DelayAlertStatus> <DelayOverSeconds>10</DelayOverSeconds> <Success>true</Success> <MigrationJobId>lb9113qq11n****</MigrationJobId> </DescribeMigrationJobAlertresponse> |   |
@@ -6888,6 +7740,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobAlert &MigrationJobId=dts
 ##### 1.5.5.3 ConfigureSubscriptionInstanceAlert
 
 Configures alert settings to monitor a change tracking instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6903,6 +7757,8 @@ Configures alert settings to monitor a change tracking instance.
 | DelayOverSeconds | String | No | 10 | The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds. Note If the DelayAlertStatus parameter is set to enable, this parameter must be set. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to set this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the request failed. |
@@ -6910,9 +7766,15 @@ Configures alert settings to monitor a change tracking instance.
 | RequestId | String | 0a2a047516051973705541561d* *** | The ID of the request. |
 | Success | String | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstanceAlert &SubscriptionInstanceId=dtsl8zl9ek6292**** &DelayAlertStatus=enable &DelayAlertPhone=1361234****,1371234**** &DelayOverSeconds=10
+http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstanceAlert &SubscriptionInstanceId=dtsl8zl9ek6292**** &DelayAlertStatus=enable &DelayAlertPhone=1361234****,1371234**** &DelayOverSeconds=10 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -6934,6 +7796,8 @@ Queries the alert settings of a change tracking instance.
 | ClientToken | String | No | ETnLKlblzczshOTUbOCz**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to set this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DelayAlertPhone | String | 1361234****,1371234**** | The mobile phone numbers that receive latency-related alerts. |
@@ -6948,9 +7812,15 @@ Queries the alert settings of a change tracking instance.
 | SubscriptionInstanceNam e | String | test | The name of the change tracking instance. |
 | Success | String | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceAlert &SubscriptionInstanceId=dtsl8zl9ek6292****
+http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceAlert &SubscriptionInstanceId=dtsl8zl9ek6292**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
 
 ```xml
 <DescribeSubscriptionInstanceAlertResponse>
@@ -6960,6 +7830,7 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceAlert &Subscripti
       <ErrorAlertStatus>enable</ErrorAlertStatus>
       <DelayAlertStatus>enable</DelayAlertStatus>
       <DelayOverSeconds>10</DelayOverSeconds>
+      <Success>true</Success>
 </DescribeSubscriptionInstanceAlertResponse>
 ```
 
@@ -6970,6 +7841,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceAlert &Subscripti
 ##### 1.5.5.5 ConfigureSynchronizationJobAlert
 
 Configures alert settings to monitor a data synchronization instance.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6986,6 +7859,8 @@ Configures alert settings to monitor a data synchronization instance.
 | DelayOverSeconds | String | No | 10 | The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds. Note If the DelayAlertStatus parameter is set to enable, this parameter must be set. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to set this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the request failed. |
@@ -6993,9 +7868,15 @@ Configures alert settings to monitor a data synchronization instance.
 | RequestId | String | 8EEE7858-7D41-4EDF-9435- AEED2A34**** | The ID of the request. |
 | Success | String | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobAlert &SynchronizationJobId=dtskxz1170c10p**** &DelayAlertStatus=enable &DelayAlertPhone=1361234****,1371234**** &DelayOverSeconds=10
+http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobAlert &SynchronizationJobId=dtskxz1170c10p**** &DelayAlertStatus=enable &DelayAlertPhone=1361234****,1371234**** &DelayOverSeconds=10 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -7018,6 +7899,8 @@ Queries the alert settings of a data synchronization instance.
 | ClientToken | String | No | ETnLKlblzczshOTUbOCz**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccountId | String | No | 12323344**** | The ID of the Alibaba Cloud account. You do not need to set this parameter because this parameter will be removed in the future. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DelayAlertPhone | String | 1361234****,1371234**** | The mobile phone numbers that receive latency-related alerts. |
@@ -7037,6 +7920,8 @@ Queries the alert settings of a data synchronization instance.
 http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobAlert &SynchronizationJobId=dtskxz1170c10p****
 ```
 
+Sample success responses
+
 | XML | format |
 |---|---|
 | <DescribeSynchronizationJobAlertresponse> <SynchronizationJobId>kxz1170c10p****</SynchronizationJobId> <RequestId>210ec20e16055205968635339d****</RequestId> <SynchronizationJobName>Polar MySQL_TO_RDS MySQL</SynchronizationJobName> <DelayAlertPhone>1361234****,1371234****</DelayAlertPhone> <ErrorAlertStatus>enable</ErrorAlertStatus> <DelayAlertStatus>enable</DelayAlertStatus> <DelayOverSeconds>10</DelayOverSeconds> <Success>true</Success> </DescribeSynchronizationJobAlertresponse> |   |
@@ -7051,12 +7936,16 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobAlert &Synchronizat
 
 Ignores the precheck items that a data migration or synchronization instance may fail to pass. After you successfully call this operation, you need to call the StartMigrationJob and StartSynchronizationJob operations. Then, Data Transmission Service (DTS) performs a precheck on your data migration or synchronization instance. After the precheck is passed, the instance automatically runs.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ShieldPrecheck | The operation that you want to perform. Set the value to ShieldPrecheck. |
 | DtsInstanceId | String | Yes | dtsi76118o3w92**** | The ID of the data migration or data synchronization instance. You can call the DescribeMigrationJobs or DescribeSynchronizationJobs operation to query the instance ID. |
 | PrecheckItems | String | Yes | CHECKSAMEOBJ _ _ | The precheck items that you want to ignore. Separate multiple items with commas (,). Supported items: CHECKSAMEOBJ: object name conflict _ _ CHECKSAMEUSER: username conflict _ _ CHECKSRC: source database version _ CHECKTOPOLOGY: topology type _ CHECKSERVERID: server ID of the source database _ _ |
 | RegionId | String | No | cn-hangzhou | The ID of the region in which the data migration or synchronization instance resides. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7068,6 +7957,8 @@ Ignores the precheck items that a data migration or synchronization instance may
 ```
 http(s)://dts.aliyuncs.com/?Action=ShieldPrecheck &DtsInstanceId=dtsi76118o3w92**** &PrecheckItems=CHECK_SAME_OBJ
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -7083,6 +7974,8 @@ http(s)://dts.aliyuncs.com/?Action=ShieldPrecheck &DtsInstanceId=dtsi76118o3w92*
 
 Adds tags to one or more data migration, data synchronization, or change tracking instances. If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter these instances by tag. A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value. If the tag that you specify does not exist, this tag is automatically created and added to the specified instance. If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag. You can add up to 20 tags to an instance. You can add tags to up to 50 instances in each request.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | TagResources | The operation that you want to perform. Set this parameter to TagResources. |
@@ -7094,6 +7987,8 @@ Adds tags to one or more data migration, data synchronization, or change trackin
 | Tag.N.Value | String | Yes | testvalue1 | The value of the tag Note N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. The value of this parameter can be an empty string. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the request failed. |
@@ -7101,9 +7996,15 @@ Adds tags to one or more data migration, data synchronization, or change trackin
 | RequestId | String | 755D7B84-6813-42B0-BC9D- 2699CFEA**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceId.1=dtsntk10k6r12v**** &ResourceType=ALIYUN::DTS::INSTANCE &Tag.1.Key=testkey1 &Tag.1.Value=testvalue1
+http(s)://dts.aliyuncs.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceId.1=dtsntk10k6r12v**** &ResourceType=ALIYUN::DTS::INSTANCE &Tag.1.Key=testkey1 &Tag.1.Value=testvalue1 &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -7117,6 +8018,8 @@ http(s)://dts.aliyuncs.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceI
 
 Queries the tags that are added to specific data migration, data synchronization, or change tracking instances, or queries the instances to which specific tags are added.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ListTagResources | The operation that you want to perform. Set the value to ListTagResources. |
@@ -7128,6 +8031,8 @@ Queries the tags that are added to specific data migration, data synchronization
 |---|---|---|---|---|
 | Tag.N.Key | String | No | testkey1 | The key of the tag. Note N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time. You must set at least one of the Tag.N.Key and ResourceId.N parameters and the specified parameter value cannot be an empty string. |
 | Tag.N.Value | String | No | testvalue1 | The value of the tag Note N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time. The value of this parameter can be an empty string. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7143,6 +8048,10 @@ Queries the tags that are added to specific data migration, data synchronization
 | TagKey | String | testkey1 | The key of the tag. |
 | TagValue | String | testvalue1 | The tag value that is associated with the tag key. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://dts.aliyuncs.com/?Action=ListTagResources &RegionId=cn-hangzhou &ResourceType=ALIYUN::DTS::INSTANCE &ResourceId.1=dtsntk10k6r12v**** &Tag.1.Key=testkey1 &Tag.1.Value=testvalue1
 ```
@@ -7156,6 +8065,7 @@ http(s)://dts.aliyuncs.com/?Action=ListTagResources &RegionId=cn-hangzhou &Resou
             <ResourceType>ALIYUN::DTS::INSTANCE</ResourceType>
             <TagValue>testvalue1</TagValue>
       </TagResources>
+      <Success>true</Success>
 </ListTagResourcesResponse>
 ```
 
@@ -7169,6 +8079,8 @@ Removes tags from one or more data migration, data synchronization, or change tr
 
 > **Note:** If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UntagResources | The operation that you want to perform. Set this parameter to UntagResources. |
@@ -7180,6 +8092,8 @@ Removes tags from one or more data migration, data synchronization, or change tr
 |---|---|---|---|---|
 | All | Boolean | No | false | Specifies whether to remove all tags from the specified instances. Valid values: true false: To remove only specific tags, you must set the TagKey.N parameter. Note You must set at least one of the All andT agKey.N parameters. If you specify both the All parameter and the TagKey.N parameter, the All parameter does not take effect. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrCode | String | InternalError | The error code returned if the request failed. |
@@ -7187,9 +8101,15 @@ Removes tags from one or more data migration, data synchronization, or change tr
 | RequestId | String | ED3A8FE0-EEFA-4416-BC42- 34D61A52**** | The ID of the request. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://dts.aliyuncs.com/?Action=UntagResources &RegionId=cn-hangzhou &ResourceId.1=dtsntk10k6r12v**** &ResourceType=ALIYUN::DTS::INSTANCE
+http(s)://dts.aliyuncs.com/?Action=UntagResources &RegionId=cn-hangzhou &ResourceId.1=dtsntk10k6r12v**** &ResourceType=ALIYUN::DTS::INSTANCE &<Common request parameters>
 ```
+
+Sample success responses
 
 | XML | format |
 |---|---|
@@ -7209,7 +8129,7 @@ When you call the ConfigureMigrationJob operation, you must set the MigrationObj
 
 **Definition of the MigrationObject parameter**
 
-The value of the MigrationObject parameter is an array of JSON objects. Regular expressions are supported. The following script shows the parameter definition. `[`
+The value of the MigrationObject parameter is an array of JSON objects. Regular expressions are supported. The following script shows the parameter definition. `[` `{`
 
 ```json
         "DBName":"The name of the database that you want to migrate",
@@ -7218,31 +8138,41 @@ The value of the MigrationObject parameter is an array of JSON objects. Regular 
         "NewSchemaName":"The schema name that you want to use in the destination instance",
         "AllTable": false,
         "TableIncludes":[
+```
+
+`{`
+
+```json
                 "TableName":"The name of the table that you want to migrate",
                 "NewTableName":"The table name that you want to use in the destination instance",
                 "FilterCondition":"where condition",
                 "PrimaryKey":"The primary key columns of the table that you want to migrate. Separate multiple values with commas (,).",
                 "PartKey":"The distribution columns of the table that you want to migrate. Separate multiple values with commas (,).",
                 "ColumnIncludes":[
+```
+
+`{`
+
+```json
                         "ColumnName":"The name of the column that you want to migrate from the source table",
                         "NewColumnName":"The column name that you want to use in the destination instance"
 ```
 
-`],`
+`}` `],`
 
 ```json
                 "ColumnExcludes":[{
                     "ColumnName":"The name of the column that you do not want to migrate from the source table"
 ```
 
-`}]` `],`
+`}]` `}` `],`
 
 ```json
         "TableExcludes":[{
             "TableName":"The name of the table that you do not want to migrate"
 ```
 
-`}]` `]` Table 1. Additional description
+`}]` `}` `]` Table 1. Additional description
 
 | Parameter | Description |   |   |   |
 |---|---|---|---|---|
@@ -7309,13 +8239,13 @@ Example 1: Migrate all tables in the dtstestdata database. `[{`
                 "ColumnName": "id"
 ```
 
-`},`
+`},` `{`
 
 ```json
                 "ColumnName": "address"
 ```
 
-`]` `}]` `}]` Example 8: Migrate the customer table in the dtstestdata database to AnalyticDB for MySQL or AnalyticDB for PostgreSQL, and set the primary key and distribution key to CREATE_TIME in the destination table. `[{`
+`}` `]` `}]` `}]` Example 8: Migrate the customer table in the dtstestdata database to AnalyticDB for MySQL or AnalyticDB for PostgreSQL, and set the primary key and distribution key to CREATE_TIME in the destination table. `[{`
 
 ```json
     "SchemaName": "dtstestdata",
@@ -7525,10 +8455,14 @@ The value of the MigrationReserved parameter is a JSON string. The following tab
 
 **Configuration example**
 
+`{`
+
 ```json
   "autoStartModulesAfterConfig": "none",
   "targetTableMode": 2
 ```
+
+`}`
 
 ## 2 Appendixes
 
@@ -7591,6 +8525,8 @@ PI directory.
     // Display the results.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
+
+`}`
 
 ### 2.2 Use the ASAPI gateway to make API calls
 
@@ -7749,12 +8685,16 @@ STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long
 
 Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
 | RoleArn | String | Yes | acs:ram::123456789012****:r ole/adminrole | The Alibaba Cloud Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Alibaba Cloud account. |
 | RoleSessionName | String | Yes | alice | The custom name of the role session. You can specify the value of this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, such as the username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing. The value must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"} | The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. The value of the parameter must be 1 to 1,024 characters in length. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7767,6 +8707,8 @@ Obtains a Security Token Service (STS) token to assume a RAM role. In this opera
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::123456789012****:role/ adminrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495****:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -7827,6 +8769,8 @@ parameter.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -7868,6 +8812,8 @@ the preceding step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

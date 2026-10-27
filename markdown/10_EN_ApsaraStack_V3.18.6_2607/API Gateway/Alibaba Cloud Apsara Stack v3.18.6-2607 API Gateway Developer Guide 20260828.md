@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 367
 source_pdf: "84d5a4914866c714_Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20API%20Gateway%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828
@@ -1075,6 +1075,8 @@ Query the list of all Kubernetes clusters without pagination.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 This API requires no request parameters.
 
 **Update a cluster**
@@ -1628,6 +1630,8 @@ Query origins by page.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -1652,6 +1656,8 @@ Query detailed information by origin ID.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | sourceId | String | Yes | The ID of the origin. |
@@ -1671,6 +1677,8 @@ Modify an existing origin configuration.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 Same as the parameters for creating an origin. You must also specify `sourceId` .
 
 **Delete origin**
@@ -1688,6 +1696,8 @@ Delete the specified origin.
 
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2309,6 +2319,8 @@ Query the detailed information of a service by its service ID.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | serviceId | String | Yes | The ID of the service. |
@@ -2327,6 +2339,8 @@ Modify an existing service configuration.
 | URL | /microservice/modifyService |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 The parameters are the same as those for creating a service. You must also specify
 
@@ -2389,6 +2403,8 @@ Delete multiple services in batches.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | serviceIds | List | Yes | The list of service IDs. |
@@ -2409,6 +2425,8 @@ List all services under the gateway instance (without pagination).
 | Method | POST |
 |---|---|
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3012,6 +3030,8 @@ List all gateway instances without pagination.
 | URL | /gatewayInstance/listAllInstances |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 No request parameters are required.
 
@@ -3707,6 +3727,8 @@ Delete the specified group.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -3773,6 +3795,8 @@ Query all groups under the gateway instance without pagination.
 | URL | /group/getAllGroups |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4311,6 +4335,8 @@ Query the detailed information of a route by its ID.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | routeId | String | Yes | The ID of the route. |
@@ -4329,6 +4355,8 @@ Modify an existing route configuration.
 | URL | /route/modifyRoute |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 The request parameters are the same as those for creating a route. You must also specify
 
@@ -4352,6 +4380,8 @@ Delete the specified route.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | routeId | String | Yes | The ID of the route. |
@@ -4372,6 +4402,8 @@ Enable or disable a route.
 | URL | /route/changeRouteStatus |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4394,6 +4426,8 @@ Delete multiple routes in batches.
 | URL | /route/batchDeleteRoute |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4869,6 +4903,8 @@ Create a new policy configuration. The structure of the `config` field varies by
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -4897,6 +4933,8 @@ Query the list of policy configurations by page.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -4923,6 +4961,8 @@ Query detailed information by policy configuration ID.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | strategyConfigId | String | Yes | The ID of the policy configuration. |
@@ -4941,6 +4981,8 @@ Modify an existing policy configuration.
 | URL | /strategyConfig/modifyStrategyConfig |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 Use the same parameters as those for creating a policy configuration. Additionally, specify
 
@@ -4963,6 +5005,8 @@ Enable or disable a policy configuration.
 |   | RL |   |   |   |
 | Method |   | POST |   |   |
 | Content-Type |   | application/json |   |   |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -5832,6 +5876,8 @@ Create a new consumer (application).
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -5886,6 +5932,8 @@ Query the detailed information based on the consumer ID.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | appId | String | Yes | The ID of the consumer. |
@@ -5904,6 +5952,8 @@ Modify the configuration of an existing consumer.
 | URL | /application/modifyApp |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -5928,6 +5978,8 @@ Delete the specified consumer.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | appId | String | Yes | The ID of the consumer. |
@@ -5949,6 +6001,8 @@ Delete multiple consumers in batches.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | appIds | List | Yes | The list of consumer IDs. |
@@ -5968,6 +6022,8 @@ Refresh the token (authentication credential) of the consumer.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | appId | String | Yes | The ID of the consumer. |
@@ -5986,6 +6042,8 @@ Query all consumers under the gateway instance without pagination.
 | URL | /application/listAppsByGwInstanceId |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -6470,6 +6528,8 @@ Modify an existing domain name configuration.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 Use the same parameters as those for creating a domain name. Additionally, you must specify `domainId` .
 
 **Delete a domain name**
@@ -6506,6 +6566,8 @@ List all domain names under the gateway instance (without pagination).
 | URL | /domain/listAllDomains |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -6890,6 +6952,8 @@ Create a plugin configuration for a route.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -6917,6 +6981,8 @@ Query the list of plugins under a route.
 | Content-Type | application/json |
 |---|---|
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -6939,6 +7005,8 @@ Modify the plugin configuration of a route.
 | URL | /route/modifyRoutePlugin |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -6965,6 +7033,8 @@ Enable or disable the route plugin.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -6989,6 +7059,8 @@ Delete the plugin configuration of a route.
 | URL | /route/deleteRoutePlugin |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7304,6 +7376,8 @@ Create an SSL/TLS certificate.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
@@ -7325,6 +7399,8 @@ Query certificates by page.
 | URL | /certificate/listCertificates |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7350,6 +7426,8 @@ Query detailed information by certificate ID.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | certificateId | String | Yes | The ID of the certificate. |
@@ -7368,6 +7446,8 @@ Modify an existing certificate configuration.
 | URL | /certificate/modifyCertificate |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 These parameters are the same as those for creating a certificate. You must also specify
 
@@ -7388,6 +7468,8 @@ Delete the specified certificate.
 | URL | /certificate/deleteCertificate |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7726,6 +7808,8 @@ Queries a list of clusters.
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | current | Integ er | Body | No | 1 | The current page number. |
@@ -7771,6 +7855,8 @@ Queries Kubernetes cluster information based on a gateway instance ID.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -7798,6 +7884,8 @@ Queries the name of a Kubernetes cluster.
 **Request headers**
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7842,6 +7930,8 @@ Updates a cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -7865,6 +7955,8 @@ Cancels the import of a cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | k8sCluster Code | Strin g | Body | No | k8s-cluster-001 | The code of the Kubernetes cluster. |
@@ -7887,6 +7979,8 @@ Checks the connection status of a cluster.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7930,6 +8024,8 @@ Lists all namespaces.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -7957,6 +8053,8 @@ Queries a list of instances.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8069,6 +8167,8 @@ This operation queries a list of instances.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 
@@ -8094,6 +8194,8 @@ Queries information about an instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see the Common Request Parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8168,6 +8270,8 @@ Creates an instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eName | Strin g | Body | No | Production Gateway Instance | The name of the gateway instance. |
@@ -8201,6 +8305,8 @@ Creates an instance.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8258,6 +8364,8 @@ Modifies an instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8282,6 +8390,8 @@ Modifies the image URL of an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8302,6 +8412,8 @@ Upgrades an instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common Request Parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8324,6 +8436,8 @@ Deletes an instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8349,6 +8463,8 @@ Restarts an instance.
 
 This operation includes only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8369,6 +8485,8 @@ Stops an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -8388,6 +8506,8 @@ Refreshes an instance.
 **Request headers**
 
 This operation uses only common request headers. For more information about these headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8426,6 +8546,8 @@ Creates an instance deployment configuration.
 **Request headers**
 
 This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8472,6 +8594,8 @@ Queries the deployment configuration of an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8491,6 +8615,8 @@ Queries the deployment message of an instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8548,6 +8674,8 @@ Queries a custom deployment configuration.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8574,6 +8702,8 @@ Retrieves the access mode configuration of an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8593,6 +8723,8 @@ Queries the resources of an instance.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8676,6 +8808,8 @@ This operation modifies a group.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -8703,6 +8837,8 @@ Creates a group.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -8729,6 +8865,8 @@ Retrieves a list of groups.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8776,6 +8914,8 @@ Retrieves a list of all groups.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8812,6 +8952,8 @@ Queries the details of a group.
 **Request headers**
 
 This operation uses common request headers and does not use special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8851,6 +8993,8 @@ Deletes a group.
 **Request headers**
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8916,6 +9060,8 @@ Deletes a domain name from a group.
 **Request headers**
 
 This operation does not have special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9065,6 +9211,8 @@ This operation uses only common request headers. For more information, see Commo
 
 `}` `]` `}` `}`
 
+**Request parameters**
+
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | order | Integ er | Body | No | 100 | The sort number. |
@@ -9117,6 +9265,8 @@ Deletes multiple routes at once.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9250,6 +9400,8 @@ Queries a list of routes.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | size | Integ er | Body | No | 100 | The size. |
@@ -9294,6 +9446,8 @@ Queries a list of routes.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -9323,6 +9477,8 @@ Retrieves all routing paths.
 
 No special request headers are required for this operation. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | body | Strin g | Body | No | {"key":"value"} | The content of the request body. |
@@ -9345,6 +9501,8 @@ Queries the details of a specified route.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9617,6 +9775,8 @@ Modifies a route.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 
@@ -9699,6 +9859,8 @@ Changes the status of a route.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -9724,6 +9886,8 @@ Queries a list of sources.
 **Request headers**
 
 This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9759,6 +9923,8 @@ Queries a list of all sources.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9817,6 +9983,8 @@ Creates a source.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | sourceId | Strin g | Body | No | src-123456 | The ID of the source. |
@@ -9846,6 +10014,8 @@ Modifies a source.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | sourceId | Strin g | Body | No | src-123456 | The source ID. |
@@ -9870,6 +10040,8 @@ Deletes a source.
 **Request headers**
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9916,6 +10088,8 @@ Queries a list of services.
 **Request headers**
 
 This operation uses common request headers and does not require any special request headers. For more information, see the Common Parameters document.
+
+**Request parameters**
 
 | 69 |   |   |   | > D | ocument Version: 2026082 |
 |---|---|---|---|---|---|
@@ -9969,6 +10143,8 @@ Queries the list of all services.
 **Request header**
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10107,6 +10283,8 @@ This operation modifies a service.
 
 This operation requires only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | serviceId | Strin g | Body | No | service-123456 | The service ID. |
@@ -10141,6 +10319,8 @@ Modifies a service node.
 
 This operation uses only common request headers. For more information, see the document about common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -10171,6 +10351,8 @@ This operation uses common request headers. No special request headers are requi
 ```
 POST /microservice/deleteService HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10213,6 +10395,8 @@ Deletes multiple services at a time.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -10237,6 +10421,8 @@ This operation imports services.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10332,6 +10518,8 @@ Queries a list of applications by gateway instance ID.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
@@ -10404,6 +10592,8 @@ Queries a consumer.
 **Request headers**
 
 This operation uses only common request headers. For more information, see the Common parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10594,6 +10784,8 @@ Deletes a consumer.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | appId | Strin g | Body | No | 12345678 | The application ID. |
@@ -10614,6 +10806,8 @@ Enables or disables a consumer application.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10639,6 +10833,8 @@ Modifies the status of a consumer whitelist.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10691,6 +10887,8 @@ Creates a consumer authorization.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | body | Strin g | Body | No | {"key":"value"} | The request body. |
@@ -10710,6 +10908,8 @@ Grants batch authorization to consumers.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10735,6 +10935,8 @@ Modifies the authorization status of a consumer.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10768,6 +10970,8 @@ Deletes a consumer authorization.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | authId | Strin g | Body | No | auth 123456 _ | The authorization ID. |
@@ -10788,6 +10992,8 @@ Refreshes a token.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10835,6 +11041,8 @@ Resets a secret key.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | appId | Strin g | Body | No | 12345678 | The ID of the application. |
@@ -10857,6 +11065,8 @@ Queries the authentication information for a consumer.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10881,6 +11091,8 @@ Create a consumer authorization.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -10903,6 +11115,8 @@ Deletes consumers in a batch.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | > Document V | ersion: 2 | 026082 | 8 |   | 31 |
 |---|---|---|---|---|---|
@@ -10931,6 +11145,8 @@ Queries a list of plugins.
 **Request header**
 
 This operation has no special request headers. For more information about common request headers, see the common request parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10973,6 +11189,8 @@ Lists the open plugins.
 
 This operation uses only the common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | current | Integ er | Body | No | 1 | The current page number. |
@@ -11007,6 +11225,8 @@ Retrieves a list of global plugins.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11048,6 +11268,8 @@ Queries a list of routing plugins.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | current | Integ er | Body | No | 1 | The current page number. |
@@ -11088,6 +11310,8 @@ Retrieves a plugin.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11121,6 +11345,8 @@ Creates a plugin.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11146,6 +11372,8 @@ Creates a global plugin.
 **Request headers**
 
 This operation uses only common request headers. For more information, see the common request parameters document.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11173,6 +11401,8 @@ Creates a routing plugin.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -11199,6 +11429,8 @@ Modifies a plugin.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11228,6 +11460,8 @@ Modifies a global plugin.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11255,6 +11489,8 @@ Modifies a routing plugin.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -11280,6 +11516,8 @@ Deletes a plugin.
 
 This operation requires only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11300,6 +11538,8 @@ Deletes a global plugin.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11324,6 +11564,8 @@ Deletes a route plugin.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -11347,6 +11589,8 @@ Modifies the status of a global plugin.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11375,6 +11619,8 @@ Modifies the status of a route plugin.
 
 This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11399,6 +11645,8 @@ Queries the usage of plugins.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11433,6 +11681,8 @@ Modifies a policy configuration.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11471,6 +11721,8 @@ Creates a strategy configuration.
 
 This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | strategyCo nfigName | Strin g | Body | No | Default Policy | The name of the strategy configuration. |
@@ -11507,6 +11759,8 @@ Queries a list of policies.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11550,6 +11804,8 @@ Queries a list of policy configurations.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11611,6 +11867,8 @@ Queries a policy.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11642,6 +11900,8 @@ Queries a policy configuration.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11704,6 +11964,8 @@ Queries routing policies.
 
 This operation uses common request headers. For more information, see Common parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -11763,6 +12025,8 @@ Modifies a routing policy.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | configType | Strin g | Body | No | yaml | The configuration type. |
@@ -11788,6 +12052,8 @@ Deletes a policy configuration.
 
 This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -11810,6 +12076,8 @@ Modifies the status of a policy configuration.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11834,6 +12102,8 @@ Queries a list of domain names.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11915,6 +12185,8 @@ Queries a list of all domain names.
 
 This operation requires only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11987,6 +12259,8 @@ Creates a domain name.
 
 This operation uses common request headers and does not use special request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
@@ -12016,6 +12290,8 @@ Modifies a domain name.
 **Request headers**
 
 This operation uses common request headers and does not have any special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12070,6 +12346,8 @@ Retrieves a list of certificates.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | size | Integ er | Body | No | 100 | The size |
@@ -12108,6 +12386,8 @@ Queries the list of all server certificates.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12158,6 +12438,8 @@ Queries a certificate.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
@@ -12194,6 +12476,8 @@ Creates a certificate.
 
 This operation uses common request headers and no special request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
@@ -12221,6 +12505,8 @@ Modifies a certificate.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12250,6 +12536,8 @@ Deletes a certificate.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
@@ -12274,6 +12562,8 @@ This operation queries summary information.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12304,6 +12594,8 @@ Queries system settings.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|

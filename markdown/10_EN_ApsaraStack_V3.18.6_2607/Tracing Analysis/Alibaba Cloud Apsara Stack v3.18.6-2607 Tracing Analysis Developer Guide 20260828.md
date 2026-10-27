@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 20
 source_pdf: "cdb27cca9c3e6859_Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E9%93%BE%E8%B7%AF%20OpenTelemetry%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Tracing%20Analysis%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828
@@ -134,6 +134,8 @@ ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the
 
 > **Note:** The signature that you add to the request must also be URL encoded.
 
+**Example**
+
 The following example demonstrates how to sign an API request for calling the DescribeRegions operation. In this example, the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The following request URL needs to be signed:
 
 ```
@@ -194,12 +196,14 @@ API responses use the HTTP response format. Responses can be returned in the JSO
     </Interface Name+Response>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
     "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
     /*Return Result Data*/
 ```
+
+`}`
 
 ### 1.5 Obtain the AccessKey pair of a personal account
 
@@ -337,6 +341,8 @@ Sample success responses `XML` format
                 "Key": "logLevel"
 ```
 
+`}` `}` `}` `}`
+
 ### 2.3 QueryMetric
 
 Queries the information about a metric.
@@ -387,13 +393,15 @@ Sample success responses `XML` format
 <RequestId>1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED</RequestId> <Data>{ "RequestId": "E2373982-D8CD-413D-B991-8EB678C01B4F", "Data": "{\"data\":[{\"dat e\":1583686800000,\"count\":0,\"rt\":0,\"rpc\":\"childSpan3\"}}</Data>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED",
     "Data": "{ \"RequestId\": \"E2373982-D8CD-413D-B991-8EB678C01B4F\", \"Data\": \"{\\
 \"data\\\": [{\\\"date\\\":1583686800000,\\\"count\\\":0,\\\"rt\\\":0,\\\"rpc\\\":\\\"childSpan3\\\"}
 ```
+
+`}`
 
 ### 2.4 SearchTraces
 
@@ -455,7 +463,7 @@ Sample success responses `XML` format
 </TraceInfos>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
     "RequestId": "cn-beijing",
@@ -467,3 +475,5 @@ Sample success responses `XML` format
         "Duration": 100,
         "Timestamp": 1575561600000000
 ```
+
+`}` `}`

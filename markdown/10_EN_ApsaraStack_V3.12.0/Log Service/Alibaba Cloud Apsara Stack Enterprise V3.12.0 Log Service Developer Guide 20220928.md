@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 193
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Log Service Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Log%20Service%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Log Service Developer Guide 20220928
@@ -310,13 +310,13 @@ POST /logstores/test-logstore HTTP/1.1 Date: Mon, 09 Nov 2015 06:03:03 GMT Host:
 
 ### 1.5 Common error codes
 
-When an API request error occurs, Log Service returns an error message, including the HTTP status code and the specific error details in the response body. The error details in the response body are formatted as follows:
+When an API request error occurs, Log Service returns an error message, including the HTTP status code and the specific error details in the response body. The error details in the response body are formatted as follows: `{`
 
 ```json
 "errorCode" : <ErrorCode>, "errorMessage" : <ErrorMessage>
 ```
 
-Some of the error messages that may be returned by Log Service apply to most APIs and are defined as common error codes. The other error messages apply only to some APIs and are defined as special error codes. The unique error codes of an API are described in the relevant API reference. Common error codes
+`}` Some of the error messages that may be returned by Log Service apply to most APIs and are defined as common error codes. The other error messages apply only to some APIs and are defined as special error codes. The unique error codes of an API are described in the relevant API reference. Common error codes
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -363,13 +363,18 @@ The {…} in the error message indicates the specific error information. For exa
 
 Creates a project. Request syntax
 
-```json
+```
 POST / HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: 0 User-Agent: <UserAgent> x-log-apiversion: 0.6.0 Host: <Project Endpoint> x-log-signaturemethod: hmac-sha1 Date: <GMT Date> Content-Type: application/json Content-MD5: <Content-MD5> Content-Length: <ContentLength> Connection: Keep-Alive
+```
+
+`{`
+
+```json
   "projectName": <ProjectName>,
   "description": <Description>
 ```
 
-Request elements Request headers The CreateProject API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
+`}` Request elements Request headers The CreateProject API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -392,13 +397,18 @@ Response elements Response headers The CreateProject API operation does not have
 
 Examples Sample requests
 
-```json
+```
 POST / HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project-test.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Sun, 27 May 2018 07:43:26 GMT Content-Type: application/json Content-MD5: A7967D81EFF5E3CD447FB6D8DF294E20 Content-Length: 80 Connection: Keep-Alive
+```
+
+`{`
+
+```json
   "projectName": "my-project-test",
   "description": "Description of my-project-test"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 07:43:27 GMT x-log-requestid: 5B0A619F205DC3F30EDA9322
@@ -462,12 +472,17 @@ Response elements Response headers The UpdateProject API operation does not have
 
 Examples Sample requests
 
-```json
+```
 PUT / HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project-test.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Sun, 27 May 2018 07:43:26 GMT Content-Type: application/json Content-MD5: A7967D81EFF5E3CD447FB6D8DF294E20 Content-Length: 40 Connection: Keep-Alive
+```
+
+`{`
+
+```json
   "description": "Description of my-project-test"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 07:43:27 GMT x-log-requestid: 5B0A619F205DC3F30EDA9322
@@ -573,11 +588,21 @@ GET /? offset=0&size=2&projectName= HTTP/1.1 Authorization: LOG <yourAccessKeyId
 
 Sample responses
 
-```json
+```
 HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 345 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 09:03:33 GMT x-log-requestid: 5B0A7465AAEA20CA70DE3064
+```
+
+`{`
+
+```json
   "count": 2,
   "total": 11,
   "projects": [
+```
+
+`{`
+
+```json
       "projectName": "project1",
       "status": "Normal",
       "owner": "",
@@ -587,7 +612,7 @@ HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 345 Co
       "lastModifyTime": "1524539357"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "projectName": "project123456",
@@ -599,7 +624,7 @@ HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 345 Co
       "lastModifyTime": "1524539357"
 ```
 
-`]`
+`}` `]` `}`
 
 #### 1.6.6 GetProjectLogs
 
@@ -646,18 +671,28 @@ GET /logs/? query=SELECT * FROM <logStoreName> where __line__ = 'abc' and __date
 
 Sample responses
 
-```json
+```
 HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: application/json Content-Length: 269 Date: Wed, 3 Sept. 2014 08:33:47 GMT x-log-requestid: efag01234-12341-15432f x-log-progress : Complete x-log-count : 10000 x-log-processed-rows: 10000 x-log-elapsed-millisecond:5
+```
+
+`{`
+
+```json
     "progress": "Complete",
     "count": 2,
     "logs": [
+```
+
+`{`
+
+```json
             "__time__": 1409529660,
             "__source__": "10.237.0.17",
             "Key1": "error",
             "Key2": "Value2"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "__time__": 1409529680,
@@ -666,7 +701,7 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
             "Key4": "Value4"
 ```
 
-`]` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. In this query, two logs that meet the query conditions are found. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
+`}` `]` `}` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. In this query, two logs that meet the query conditions are found. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
 
 ### 1.7 Logstore operations
 
@@ -674,8 +709,13 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
 
 Creates a Logstore. Request syntax The request syntax of the CreateLogstore API operation is as follows:
 
-```json
+```
 POST /logstores HTTP/1.1 Authorization: <AuthorizationString> Date: <GMT Date> Host: <Project Endpoint> x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1
+```
+
+`{`
+
+```json
     "logstoreName" : <logStoreName>,
     "ttl": <ttl>,
     "shardCount": <shardCount>,
@@ -683,7 +723,7 @@ POST /logstores HTTP/1.1 Authorization: <AuthorizationString> Date: <GMT Date> H
     "maxSplitShard": <maxSplitShard>
 ```
 
-Request elements Request headers The CreateLogstore API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
+`}` Request elements Request headers The CreateLogstore API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -705,8 +745,25 @@ Response elements Response headers The CreateLogstore API operation does not hav
 
 Examples Sample requests
 
+```
+POST /logstores HTTP/1.1 Header :
+```
+
+`{`
+
+```
+x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=7EF43D0B8F4A807B95E775048C911C72, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+```
+
+`}`
+
+```
+Body :
+```
+
+`{`
+
 ```json
-POST /logstores HTTP/1.1 Header : x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=7EF43D0B8F4A807B95E775048C911C72, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json Body :
     "logstoreName": "test-logstore",
     "ttl": 1,
     "shardCount": 2,
@@ -714,10 +771,16 @@ POST /logstores HTTP/1.1 Header : x-log-apiversion=0.6.0, Authorization=LOG <you
     "maxSplitShard": 64
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
-HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
+HTTP/1.1 200 OK Header:
+```
+
+`{`
+
+```
+Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
 ```
 
 #### 1.7.2 DeleteLogstore
@@ -747,18 +810,31 @@ Examples Sample requests
 DELETE /logstores/test_logstore HTTP/1.1 Header : x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:09:38 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
-HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=0, x-log-requestid=5642F7C399248C817B013A07, Connection=close, Server=nginx/1.6.1
+HTTP/1.1 200 OK Header:
 ```
+
+`{`
+
+```
+Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=0, x-log-requestid=5642F7C399248C817B013A07, Connection=close, Server=nginx/1.6.1
+```
+
+`}`
 
 #### 1.7.3 UpdateLogstore
 
 Updates the attributes of a Logstore. Only the time to live (TTL) and shard attributes can be updated. Request syntax
 
-```json
+```
 PUT /logstores/{logstoreName} HTTP/1.1 Authorization: <AuthorizationString> Date: <GMT Date> Host: <Project Endpoint> x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1
+```
+
+`{`
+
+```json
     "logstoreName": <logstoreName>,
     "ttl": <ttl>,
     "shardCount": <shardCount>,
@@ -766,7 +842,7 @@ PUT /logstores/{logstoreName} HTTP/1.1 Authorization: <AuthorizationString> Date
     "maxSplitShard": <maxSplitShard>
 ```
 
-Request elements Request headers The UpdateLogstore API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
+`}` Request elements Request headers The UpdateLogstore API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -789,8 +865,25 @@ Response elements Response headers The UpdateLogstore API operation does not hav
 
 Additional considerations You can modify the number of shards be only calling the SplitShard or MergeShards API operation. Examples Sample requests
 
+```
+PUT /logstores/test-logstore HTTP/1.1 Header:
+```
+
+`{`
+
+```
+x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+```
+
+`}`
+
+```
+Body :
+```
+
+`{`
+
 ```json
-PUT /logstores/test-logstore HTTP/1.1 Header: x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:28:19 GMT, Content-Length=55, x-log-signaturemethod=hmac-sha1, Content-MD5=757C60FC41CC7D3F60B88E0D916D051E, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json Body :
     "logstoreName": "test-logstore",
     "ttl": 1,
     "shardCount": 2,
@@ -798,11 +891,13 @@ PUT /logstores/test-logstore HTTP/1.1 Header: x-log-apiversion=0.6.0, Authorizat
     "maxSplitShard": 64
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1
 ```
+
+`}`
 
 #### 1.7.4 GetLogstore
 
@@ -828,7 +923,7 @@ Response elements Response headers The GetLogstore API operation does not have s
     "lastModifyTime": <lastModifyTime>
 ```
 
-Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -839,19 +934,38 @@ Error codes In addition to Common error codes, the API operation may also return
 Examples Sample requests
 
 ```
-GET /logstores/test-logstore HTTP/1.1 Header : x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:53:29 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+GET /logstores/test-logstore HTTP/1.1 Header :
 ```
 
-Sample responses
+`{`
+
+```
+x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 07:53:29 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
+```
+
+`}` Sample responses
+
+```
+HTTP/1.1 200 OK Header : Date=Wed, 11 Nov 2015 07:53:30 GMT, Content-Length=107, x-log-requestid=5642F3FA99248C817B01352D, Connection=close, Content-Type=application/json, Server=nginx/1.6.1
+```
+
+`}`
+
+```
+Body :
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Header : Date=Wed, 11 Nov 2015 07:53:30 GMT, Content-Length=107, x-log-requestid=5642F3FA99248C817B01352D, Connection=close, Content-Type=application/json, Server=nginx/1.6.1 Body :
     "logstoreName": test-logstore,
     "ttl": 1,
     "shardCount": 2,
     "createTime": 1447833064,
     "lastModifyTime": 1447833064
 ```
+
+`}`
 
 #### 1.7.5 ListLogstore
 
@@ -895,11 +1009,31 @@ Examples Sample requests
 GET /logstores HTTP/1.1 Header: x-log-apiversion=0.6.0, Authorization=LOG <yourAccessKeyId>:<yourSignature>, Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=0, x-log-signaturemethod=hmac-sha1, User-Agent=sls-java-sdk-v-0.6.0, Content-Type=application/json
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+HTTP/1.1 200 OK Header:
+```
+
+`{`
+
+```
+Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=52, x-log-requestid=5642F7C399248C8D7B01342F, Connection=close, Content-Type=application/json, Server=nginx/1.6.1
+```
+
+`}`
+
+```
+Body:
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=52, x-log-requestid=5642F7C399248C8D7B01342F, Connection=close, Content-Type=application/json, Server=nginx/1.6.1 Body: "count":1, "logstores":["test-logstore"], "total":1
+"count":1, "logstores":["test-logstore"], "total":1
 ```
+
+`}`
 
 #### 1.7.6 ListShards
 
@@ -915,7 +1049,7 @@ Request elements Request headers The ListShards API operation does not have spec
 |---|---|---|---|
 | logstoreName | String | Yes | The name of the Logstore. |
 
-Response elements Response headers The ListShards API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response elements The response is an array that consists of shards. `[`
+Response elements Response headers The ListShards API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response elements The response is an array that consists of shards. `[` `{`
 
 ```json
         "shardID": 0,
@@ -925,19 +1059,19 @@ Response elements Response headers The ListShards API operation does not have sp
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```
         ...
 ```
 
-`},`
+`},` `{`
 
 ```
         ...
 ```
 
-`]` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` `]` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -959,20 +1093,30 @@ GET /logstores/sls-test-logstore/shards Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+Header:
+```
+
+`{`
 
 ```json
-Header:
     "content-length": "57",
     "server": "nginx/1.6.1",
     "connection": "close",
     "date": "Thu, 12 Nov 2015 03:40:31 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440A2F99248C050600C74C"
+```
+
+`}`
+
+```
 Body :
 ```
 
-`[`
+`[` `{`
 
 ```json
         "shardID": 1,
@@ -982,7 +1126,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```json
         "shardID": 2,
@@ -992,7 +1136,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```json
         "shardID": 0,
@@ -1002,7 +1146,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`]`
+`}` `]`
 
 #### 1.7.7 SplitShard
 
@@ -1030,7 +1174,7 @@ Response elements Response headers Content-Type: application/json The SplitShard
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```json
         "shardID": 163,
@@ -1040,7 +1184,7 @@ Response elements Response headers Content-Type: application/json The SplitShard
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```json
         "shardID": 164,
@@ -1050,7 +1194,7 @@ Response elements Response headers Content-Type: application/json The SplitShard
         "createTime": 1453949705
 ```
 
-`]` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` `]` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -1074,20 +1218,30 @@ POST /logstores/logstorename/shards/33? action=split&key=ef000000000000000000000
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+Header:
+```
+
+`{`
 
 ```json
-Header:
     "content-length": "57",
     "server": "nginx/1.6.1",
     "connection": "close",
     "date": "Thu, 12 Nov 2015 03:40:31 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440A2F99248C050600C74C"
+```
+
+`}`
+
+```
 Body :
 ```
 
-`[`
+`[` `{`
 
 ```json
         "shardID": 33,
@@ -1097,7 +1251,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```json
         "shardID": 163,
@@ -1107,7 +1261,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`},`
+`},` `{`
 
 ```json
         "shardID": 164,
@@ -1117,7 +1271,7 @@ Body :
         "createTime": 1453949705
 ```
 
-`]`
+`}` `]`
 
 #### 1.7.8 MergeShards
 
@@ -1144,7 +1298,7 @@ Response elements Response headers Content-Type: application/json The MergeShard
         'exclusiveEndKey': 'ffffffffffffffffffffffffffffffff'
 ```
 
-`},`
+`},` `{`
 
 ```json
         'shardID': 30,
@@ -1155,7 +1309,7 @@ Response elements Response headers Content-Type: application/json The MergeShard
         'e7000000000000000000000000000000'
 ```
 
-`},`
+`},` `{`
 
 ```json
         'shardID': 166,
@@ -1165,7 +1319,7 @@ Response elements Response headers Content-Type: application/json The MergeShard
         'exclusiveEndKey': 'ffffffffffffffffffffffffffffffff'
 ```
 
-`]` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` `]` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -1189,20 +1343,30 @@ POST /logstores/logstorename/shards/30? action=merge Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+Header:
+```
+
+`{`
 
 ```json
-Header:
     "content-length": "57",
     "server": "nginx/1.6.1",
     "connection": "close",
     "date": "Thu, 12 Nov 2015 03:40:31 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440A2F99248C050600C74C"
+```
+
+`}`
+
+```
 Body :
 ```
 
-`[`
+`[` `{`
 
 ```json
         'shardID': 167,
@@ -1212,7 +1376,7 @@ Body :
         'exclusiveEndKey': 'ffffffffffffffffffffffffffffffff'
 ```
 
-`},`
+`},` `{`
 
 ```json
         'shardID': 30,
@@ -1223,7 +1387,7 @@ Body :
         'e7000000000000000000000000000000'
 ```
 
-`},`
+`},` `{`
 
 ```json
         'shardID': 166,
@@ -1233,7 +1397,7 @@ Body :
         'exclusiveEndKey': 'ffffffffffffffffffffffffffffffff'
 ```
 
-`]`
+`}` `]`
 
 #### 1.7.9 GetCursor
 
@@ -1251,13 +1415,13 @@ Request elements Request headers The GetCursor API operation does not have speci
 | type | String | Yes | This parameter must be set to cursor. |
 | from | String | Yes | The time that is used to query a cursor. Set the value to a Unix timestamp or a string such as begin or end . |
 
-You can use the from parameter to locate the logs within the lifecycle of a shard in a Logstore. If the lifecycle of the Logstore is `[begin_time, end_time)` and the from parameter is set to from_time, the response is returned as follows: from_time ≤ begin_time or from_time = "begin" : A cursor is returned. The cursor corresponds to the log whose timestamp is begin_time. from_time ≥ end_time or from_time = "end" : A cursor is returned. The cursor corresponds to the next log to be written at the current time (No data exists in the current cursor location). `from_time > begin_time and from_time < end_time` : A cursor is returned. The cursor corresponds to the first packet that Log Service receives later than or at from_time. Not e The lifecycle of a Logstore is specified by the ttl parameter of the Logstore. For example, the current time is 2018-11-11 09:00:00 and the ttl parameter is set to 5. The time interval of consumable data in each shard is `[2018-11-05 09:00:00, 2018-11-11 09:00:00)` . The server time is used. Response elements Response headers The GetCursor API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters
+You can use the from parameter to locate the logs within the lifecycle of a shard in a Logstore. If the lifecycle of the Logstore is `[begin_time, end_time)` and the from parameter is set to from_time, the response is returned as follows: from_time ≤ begin_time or from_time = "begin" : A cursor is returned. The cursor corresponds to the log whose timestamp is begin_time. from_time ≥ end_time or from_time = "end" : A cursor is returned. The cursor corresponds to the next log to be written at the current time (No data exists in the current cursor location). `from_time > begin_time and from_time < end_time` : A cursor is returned. The cursor corresponds to the first packet that Log Service receives later than or at from_time. Not e The lifecycle of a Logstore is specified by the ttl parameter of the Logstore. For example, the current time is 2018-11-11 09:00:00 and the ttl parameter is set to 5. The time interval of consumable data in each shard is `[2018-11-05 09:00:00, 2018-11-11 09:00:00)` . The server time is used. Response elements Response headers The GetCursor API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters `{`
 
 ```json
     "cursor": "MTQ0NzI5OTYwNjg5NjYzMjM1Ng=="
 ```
 
-Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -1282,19 +1446,36 @@ GET /logstores/sls-test-logstore/shards/0? type=cursor&from=begin Header:
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+Header:
+```
+
+`{`
 
 ```json
-Header:
     "content-length": "41",
     "server": "nginx/1.6.1",
     "connection": "close",
     "date": "Thu, 12 Nov 2015 03:56:57 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56440E0999248C070600C6AA"
+```
+
+`}`
+
+```
 Body:
+```
+
+`{`
+
+```json
     "cursor": "MTQ0NzI5OTYwNjg5NjYzMjM1Ng=="
 ```
+
+`}`
 
 #### 1.7.10 GetCursorTime
 
@@ -1313,13 +1494,13 @@ Request elements Request headers The GetCursorTime API operation does not have s
 | cursor | String | Yes | The cursor that is used to obtain the corresponding timestamp. |
 | type | String | Yes | Set the value to cursor time. _ |
 
-Response elements Response headers The GetCursorTime API does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters
+Response elements Response headers The GetCursorTime API does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters `{`
 
 ```json
    "cursor_time": 1554260243
 ```
 
-Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -1337,10 +1518,17 @@ GET /logstores/internal-operation_log/shards/0? cursor=MTU0NzQ3MDY4MjM3NjUxMzQ0N
 
 Sample responses
 
-```json
+```
 HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 26 Connection: close Access-Control-Allow-Origin: * Date: Wed, 03 Apr 2019 02:57:23 GMT x-log-requestid: 5CA42113D2F00378A74B9051
+```
+
+`{`
+
+```json
   "cursor_time": 1554260243
 ```
+
+`}`
 
 #### 1.7.11 PullLogs
 
@@ -1377,8 +1565,13 @@ Response parameters Response header fields x-log-cursor: The next cursor of the 
 
 Examples Sample requests
 
-```json
+```
 Read data from shard 0. GET /logstores/sls-test-logstore/shards/0? cursor=MTQ0NzMyOTQwMTEwMjEzMDkwNA==&count=1000 &type=log Header:
+```
+
+`{`
+
+```json
     "Authorization"="LOG <yourAccessKeyId>:<yourSignature>",
     "x-log-bodyrawsize"=0,
     "User-Agent" : "sls-java-sdk-v-0.6.0",
@@ -1392,10 +1585,15 @@ Read data from shard 0. GET /logstores/sls-test-logstore/shards/0? cursor=MTQ0Nz
     "accept" : "application/x-protobuf"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+Header:
+```
+
+`{`
 
 ```json
-Header:
     "x-log-count" : "1000",
     "x-log-requestid" : "56447FB20351626D7C000874",
     "Server" : "nginx/1.6.1",
@@ -1406,6 +1604,11 @@ Header:
     "Date" : "Thu, 12 Nov 2015 12:01:54 GMT",
     "x-log-compresstype" : "lz4",
     "Content-Type" : "application/x-protobuf"
+```
+
+`}`
+
+```
 Body: The <log group list in the Protocol Buffer format> after the compression.
 ```
 
@@ -1485,8 +1688,13 @@ Response elements Response headers The PutLogs API operation does not have speci
 
 Not e The {Name} variable in the preceding error message is replaced with a specific Logstore name. Examples Sample requests
 
-```json
+```
 POST /logstores/sls-test-logstore
+```
+
+`{`
+
+```json
     "Content-Length": 118,
     "Content-Type":"application/x-protobuf",
     "x-log-bodyrawsize":1356,
@@ -1497,6 +1705,11 @@ POST /logstores/sls-test-logstore
     "x-log-compresstype":"lz4"
     "x-log-signaturemethod": "hmac-sha1",
     "Authorization":"LOG <yourAccessKeyId>:<yourSignature>"
+```
+
+`}`
+
+```
 <Binary data obtained after logs in the Protocol Buffer format are compressed with the LZ 4 algorithm>
 ```
 
@@ -1510,6 +1723,8 @@ Header
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 #### 1.7.13 GetLogs
 
@@ -1583,18 +1798,28 @@ GET /logstores/app_log？ type=log&topic=groupA&from=1409529600&to=1409608800&qu
 
 Sample responses
 
-```json
+```
 HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: application/json Content-Length: 269 Date: Wed, 3 Sept. 2014 08:33:47 GMT x-log-requestid: efag01234-12341-15432f x-log-progress : Complete x-log-count : 10000 x-log-processed-rows: 10000 x-log-elapsed-millisecond:5
+```
+
+`{`
+
+```json
     "progress": "Complete",
     "count": 2,
     "logs": [
+```
+
+`{`
+
+```json
             "__time__": 1409529660,
             "__source__": "10.237.0.17",
             "Key1": "error",
             "Key2": "Value2"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "__time__": 1409529680,
@@ -1603,7 +1828,7 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
             "Key4": "Value4"
 ```
 
-`]` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. Two logs meet the specified query conditions and are displayed as the value of the logs parameter. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
+`}` `]` `}` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. Two logs meet the specified query conditions and are displayed as the value of the logs parameter. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
 
 #### 1.7.14 GetHistograms
 
@@ -1670,7 +1895,7 @@ Sample responses
 HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84EE3808AAA8C8 Content-Type: application/json Date: Wed, 3 Sept. 2014 08:33:47 GMT Content-Length: 232 x-log-requestid: efag01234-12341-15432f
 ```
 
-`[`
+`[` `{`
 
 ```json
             "from": 1409529600,
@@ -1679,7 +1904,7 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
             "progress": "Complete"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "from": 1409569200,
@@ -1688,13 +1913,13 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
             "progress": "Incomplete"
 ```
 
-`]` In this sample response, the server divides the entire histogram into two equal time ranges: [2014-09-01 00:00:00, 2014-09-01 11:00:00) and [2014-09-01 11:00:00, 2014-09-01 22:00:00). The first query returns incomplete data because the amount of data exceeds the limit. The sample response indicates three hits. The results for the time range [2014-09-01 00:00:00 2014-09-01 11:00:00) are complete, including two hits. The results for the other time range are incomplete, including one hit. To obtain the complete results, you must repeatedly call the preceding sample request until the progress value in the response changes to Complete. The sample response is as follows:
+`}` `]` In this sample response, the server divides the entire histogram into two equal time ranges: [2014-09-01 00:00:00, 2014-09-01 11:00:00) and [2014-09-01 11:00:00, 2014-09-01 22:00:00). The first query returns incomplete data because the amount of data exceeds the limit. The sample response indicates three hits. The results for the time range [2014-09-01 00:00:00 2014-09-01 11:00:00) are complete, including two hits. The results for the other time range are incomplete, including one hit. To obtain the complete results, you must repeatedly call the preceding sample request until the progress value in the response changes to Complete. The sample response is as follows:
 
 ```
 HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84EE3808AAA8C8 Content-Type: application/json Date: Wed, 3 Sept. 2014 08:33:48 GMT Content-Length: 232 x-log-requestid: afag01322-1e241-25432e
 ```
 
-`[`
+`[` `{`
 
 ```json
             "from": 1409529600,
@@ -1703,7 +1928,7 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
             "progress": "Complete"
 ```
 
-`},`
+`},` `{`
 
 ```json
             "from": 1409569200,
@@ -1712,20 +1937,25 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
             "progress": "complete"
 ```
 
-`]`
+`}` `]`
 
 #### 1.7.15 UpdateIndex
 
 Updates the indexes of a Logstore. Request syntax
 
-```json
+```
 PUT /logstores/<logstoreName>/index HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: 0 User-Agent: <UserAgent> x-log-apiversion: 0.6.0 Host: <Project Endpoint> x-log-signaturemethod: hmac-sha1 Date: <GMT Date> Content-Type: application/json Content-MD5: <Content-MD5> Content-Length: <ContentLength>
+```
+
+`{`
+
+```json
   "line": <full text index>,
   "keys": <key-value index>,
   "ttl": <ttl>
 ```
 
-Request elements Request headers The UpdateIndex API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
+`}` Request elements Request headers The UpdateIndex API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1781,8 +2011,13 @@ Response elements Response headers The UpdateIndex API operation does not have s
 
 Examples Sample requests
 
-```json
+```
 PUT /logstores/logstore-4/index HTTP/1.1 Header: Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Mon, 07 May 2018 09:47:20 GMT Content-Type: application/json Content-MD5: 1860B805A6AA5288B97B32CF3B519112 Content-Length: 316 Connection: Keep-Alive Body:
+```
+
+`{`
+
+```json
   "line": {
     "token": [
       ",",
@@ -1843,13 +2078,13 @@ PUT /logstores/logstore-4/index HTTP/1.1 Header: Authorization: LOG <yourAccessK
         "\r"
 ```
 
-`]` `},`
+`]` `}` `},`
 
 ```json
   "ttl": 90
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Mon, 07 May 2018 09:47:21 GMT x-log-requestid: 5AF020A98CBAA2EF52AB66C9
@@ -1859,13 +2094,18 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Con
 
 Creates indexes for a specified Logstore. Request syntax
 
-```json
+```
 POST /logstores/<logstoreName>/index HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: <x-log-bodyrawsize> User-Agent: <User-Agent> x-log-apiversion: <APIVersion> Host: <Project Endpoint> x-log-signaturemethod: hmac-sha1 Date: <GMT Date> Content-Type: application/json Content-MD5: <Content-MD5> Content-Length: <Content-Length>
+```
+
+`{`
+
+```json
   "line": <full text index>,
   "keys": <key-value index>
 ```
 
-Request elements Request headers The CreateIndex API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers.
+`}` Request elements Request headers The CreateIndex API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1909,8 +2149,13 @@ Response elements Response headers The CreateIndex API operation does not have s
 
 Not e The {Project} and {logstoreName} variables in the preceding error messages are replaced with a specific project name and Logstore name. Examples Sample requests
 
-```json
+```
 POST /logstores/my-logstore/index HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Mon, 07 May 2018 09:43:16 GMT Content-Type: application/json Content-MD5: 22876515FC311F857AD6C7902F6A0148 Content-Length: 316 Connection: Keep-Alive
+```
+
+`{`
+
+```json
   "line": {
     "token": [
       ",",
@@ -1976,7 +2221,7 @@ POST /logstores/my-logstore/index HTTP/1.1 Authorization: LOG <yourAccessKeyId>:
         "\r"
 ```
 
-`]`
+`]` `}` `}` `}`
 
 #### 1.7.17 DeleteIndex
 
@@ -2085,8 +2330,13 @@ GET /logstores/logstore-4/index HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<y
 
 Sample responses
 
-```json
+```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length: 712 Connection: close Access-Control-Allow-Origin: * Date: Sun, 06 May 2018 13:08:42 GMT x-log-requestid: 5AEEFE5A8B8AEB5E6C82B395
+```
+
+`{`
+
+```json
   "index_mode": "v2",
   "keys": {
     "agent": {
@@ -2187,7 +2437,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
       "type": "long"
 ```
 
-`},`
+`}` `},`
 
 ```json
   "line": {
@@ -2226,27 +2476,39 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
   "lastModifyTime": 1524155379
 ```
 
+`}`
+
 #### 1.7.19 PutWebtracking
 
 Merges multiple logs into one log during a single collection request. In the WebTracking mode, only one log can be written to each request. This API operation applies to scenarios where you need to collect a large amount of logs. Before you can call the PutWebtracking API operation, you must turn on the WebTracking switch for the corresponding Logstore. We recommend that you call this API operation to collect logs from web pages or clients. Request syntax
 
-```json
+```
 POST {project}.{endpoint}/logstores/{logstoreName}/track HTTP/1.1 x-log-apiversion: 0.6.0 x-log-bodyrawsize: 1234 x-log-compresstype: gzip
+```
+
+`{`
+
+```json
   "__topic__": "topic",
   "__source__": "source",
   "__logs__": [
-      "key1": "value1",
-      "key2": "value2"
 ```
 
-`},`
+`{`
 
 ```json
       "key1": "value1",
       "key2": "value2"
 ```
 
-`],`
+`},` `{`
+
+```json
+      "key1": "value1",
+      "key2": "value2"
+```
+
+`}` `],`
 
 ```json
   "__tags__": {
@@ -2254,7 +2516,7 @@ POST {project}.{endpoint}/logstores/{logstoreName}/track HTTP/1.1 x-log-apiversi
     "tag2": "value2"
 ```
 
-Request elements Request headers Only the following three fields are required in the request header: x-log-apiversion: 0.6.0 x-log-bodyrawsize: 1234 x-log-compresstype: gzip The first two fields are required, and the third one is optional. For more information, see Common request headers. Request parameters URL parameters
+`}` `}` Request elements Request headers Only the following three fields are required in the request header: x-log-apiversion: 0.6.0 x-log-bodyrawsize: 1234 x-log-compresstype: gzip The first two fields are required, and the third one is optional. For more information, see Common request headers. Request parameters URL parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2273,23 +2535,33 @@ Request body parameters
 
 Response elements Response headers The PutWebtracking API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters No response parameter is returned after the request succeeds. Examples Sample requests
 
-```json
+```
 POST my-project.cn-hangzhou.log.aliyuncs.com/logstores/logstore-test/track HTTP/1.1 x-log-apiversion: 0.6.0 x-log-bodyrawsize: 1234 x-log-compresstype: gzip
+```
+
+`{`
+
+```json
   "__topic__": "topic",
   "__source__": "source",
   "__logs__": [
+```
+
+`{`
+
+```json
       "foo": "bar",
       "foo1": "bar1"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "bar": "foo",
       "bar1": "foo1"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "__tags__": {
@@ -2297,11 +2569,19 @@ POST my-project.cn-hangzhou.log.aliyuncs.com/logstores/logstore-test/track HTTP/
     "tag2": "value2"
 ```
 
-Sample responses
+`}` `}` Sample responses
 
 ```
-HTTP/1.1 200 OK Header: Date=Wed, 20 May 2019 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
+HTTP/1.1 200 OK Header:
 ```
+
+`{`
+
+```
+Date=Wed, 20 May 2019 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
+```
+
+`}`
 
 ### 1.8 Logtail machine group operations
 
@@ -2309,8 +2589,13 @@ HTTP/1.1 200 OK Header: Date=Wed, 20 May 2019 07:35:00 GMT, Content-Length=0, x-
 
 Creates a machine group to which the Logtail configuration is distributed and applied. Request syntax
 
-```json
+```
 POST /machinegroups HTTP/1.1 Authorization: <AuthorizationString> Content-Type:application/json Content-Length:<Content Length> Content-MD5<:<Content MD5> Date: <GMT Date> Host: <Project Endpoint> x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1
+```
+
+`{`
+
+```json
     "groupName" : "testgroup",
     "groupType" : "",
     "groupAttribute" : {
@@ -2327,7 +2612,7 @@ POST /machinegroups HTTP/1.1 Authorization: <AuthorizationString> Content-Type:a
         "test-ip2"
 ```
 
-`]` Request elements Request headers The CreateMachineGroup API does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters Request body parameters
+`]` `}` Request elements Request headers The CreateMachineGroup API does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters Request body parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2369,7 +2654,17 @@ POST /machinegroups HTTP/1.1 Header :
     "User-Agent": "sls-java-sdk-v-0.6.0",
     "Content-Type": "application/json",
     "x-log-bodyrawsize": "0"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "groupName": "test-machine-group",
     "groupType": "",
     "machineIdentifyType": "ip",
@@ -2386,16 +2681,23 @@ Body :
         "127.0.0.2"
 ```
 
-`]` Sample responses
+`]` `}` Sample responses
+
+```
+HTTP/1.1 200 OK Header :
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Header :
     "Date": "Tue, 10 Nov 2015 17:57:33 GMT",
     "Content-Length": "0",
     "x-log-requestid": "5642300D99248CB76D005D36",
     "Connection": "close",
     "Server": "nginx/1.6.1"
 ```
+
+`}`
 
 #### 1.8.2 DeleteMachineGroup
 
@@ -2433,10 +2735,15 @@ DELETE /machinegroups/test-machine-group-4 HTTP/1.1 Header :
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+HTTP/1.1 200 OK Header :
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Header :
     "Date": "Tue, 10 Nov 2015 19:13:28 GMT",
     "Content-Length": "0",
     "x-log-requestid": "564241D899248C827B000CFE",
@@ -2444,12 +2751,19 @@ HTTP/1.1 200 OK Header :
     "Server": "nginx/1.6.1"
 ```
 
+`}`
+
 #### 1.8.3 UpdateMachineGroup
 
 Updates the information of a machine group. If the Logtail configurations are applied to a machine group, the configurations are automatically applied to or removed from a machine when the machine is added to or removed from the machine group. Request syntax
 
-```json
+```
 PUT /machinegroups/{groupName} HTTP/1.1 Authorization: <AuthorizationString> Content-Type:application/json Content-Length:<Content Length> Content-MD5<:<Content MD5> Date: <GMT Date> Host: <Project Endpoint> x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1
+```
+
+`{`
+
+```json
     "groupName": "test-machine-group",
     "groupType" : "",
     "groupAttribute" : {
@@ -2466,7 +2780,7 @@ PUT /machinegroups/{groupName} HTTP/1.1 Authorization: <AuthorizationString> Con
         "test-ip2"
 ```
 
-`]` Request elements Request headers The UpdateMachineGroup API does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters URL parameters
+`]` `}` Request elements Request headers The UpdateMachineGroup API does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters URL parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2497,8 +2811,13 @@ Response elements Response headers The UpdateMachineGroup API operation does not
 
 Examples Sample requests
 
-```json
+```
 PUT /machinegroups/test-machine-group HTTP/1.1 Header :
+```
+
+`{`
+
+```json
     "x-log-apiversion": "0.6.0",
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>",
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com",
@@ -2509,7 +2828,17 @@ PUT /machinegroups/test-machine-group HTTP/1.1 Header :
     "User-Agent": "sls-java-sdk-v-0.6.0",
     "Content-Type": "application/json",
     "x-log-bodyrawsize": "0"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "groupName": "test-machine-group",
     "groupType": "",
     "machineIdentifyType": "userdefined",
@@ -2526,7 +2855,7 @@ Body :
         "uu_id_2"
 ```
 
-`]` Sample responses
+`]` `}` Sample responses
 
 ```json
 HTTP/1.1 200 OK Header :
@@ -2536,6 +2865,8 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Server": "nginx/1.6.1"
 ```
+
+`}`
 
 #### 1.8.4 ListMachineGroup
 
@@ -2561,6 +2892,8 @@ Response elements Response headers The ListMachineGroup API operation does not h
 | total | Integer | The total number of returned machine groups. |
 | machinegroups | JSON array | The list of returned machine groups. |
 
+`{`
+
 ```json
     "machinegroups":     [
         "test-machine-group",
@@ -2574,7 +2907,7 @@ Response elements Response headers The ListMachineGroup API operation does not h
     "total": 2
 ```
 
-Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -2582,8 +2915,13 @@ Error codes In addition to Common error codes, the API operation may also return
 
 Examples Sample requests
 
-```json
+```
 GET /machinegroups? groupName=test-machine-group&offset=0&size=3 HTTP/1.1 Header :
+```
+
+`{`
+
+```json
     "x-log-apiversion": "0.6.0",
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>",
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com",
@@ -2605,7 +2943,17 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "machinegroups":     [
         "test-machine-group",
         "test-machine-group-2"
@@ -2617,6 +2965,8 @@ Body :
     "count": 2,
     "total": 2
 ```
+
+`}`
 
 #### 1.8.5 GetMachineGroup
 
@@ -2675,7 +3025,7 @@ The groupAttribute parameter consists of the following parameters.
     "lastModifyTime": 1447178253
 ```
 
-Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -2684,8 +3034,13 @@ Error codes In addition to Common error codes, the API operation may also return
 
 Examples Sample requests
 
-```json
+```
 GET /machinegroups/test-machine-group HTTP/1.1 Header :
+```
+
+`{`
+
+```json
     "x-log-apiversion": "0.6.0",
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>",
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com",
@@ -2697,7 +3052,7 @@ GET /machinegroups/test-machine-group HTTP/1.1 Header :
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
 HTTP/1.1 200 OK Header :
@@ -2707,7 +3062,17 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "groupName": "test-machine-group",
     "groupType": "",
     "groupAttribute":     {
@@ -2730,6 +3095,8 @@ Body :
     "createTime": 1447178253,
     "lastModifyTime": 1447178253
 ```
+
+`}`
 
 #### 1.8.6 ApplyConfigToMachineGroup
 
@@ -2759,8 +3126,13 @@ Response elements Response headers The ApplyConfigToMachineGroup API operation d
 
 Examples Sample requests
 
-```json
+```
 PUT /machinegroups/sample-group/configs/logtail-config-sample Header :
+```
+
+`{`
+
+```json
     "Content-Length": 0,
     "x-log-signaturemethod": "hmac-sha1",
     "x-log-bodyrawsize": 0,
@@ -2771,7 +3143,7 @@ PUT /machinegroups/sample-group/configs/logtail-config-sample Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
     "date": "Mon, 09 Nov 2015 09:44:43 GMT",
@@ -2780,6 +3152,8 @@ Sample responses
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 #### 1.8.7 RemoveConfigFromMachineGroup
 
@@ -2806,8 +3180,13 @@ Response elements Response headers The RemoveConfigFromMachineGroup API operatio
 
 Examples Sample requests
 
-```json
+```
 DELETE /machinegroups/sample-group/configs/logtail-config-sample
+```
+
+`{`
+
+```json
     "Content-Length": 0,
     "x-log-signaturemethod": "hmac-sha1",
     "x-log-bodyrawsize": 0,
@@ -2818,7 +3197,7 @@ DELETE /machinegroups/sample-group/configs/logtail-config-sample
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses `{`
 
 ```json
     "date": "Mon, 09 Nov 2015 09:48:48 GMT",
@@ -2827,6 +3206,8 @@ Sample responses
     "content-length": "0",
     "server": "nginx/1.6.1"
 ```
+
+`}`
 
 #### 1.8.8 ListMachines
 
@@ -2869,8 +3250,13 @@ Error codes In addition to Common error codes, the API operation may also return
 
 Additional considerations The API operation lists only the machines that are normally connected with Log Service. Examples Sample requests
 
-```json
+```
 GET /machinegroups/test-machine-group-5/machines? offset=0&size=3 HTTP/1.1 Header :
+```
+
+`{`
+
+```json
     "x-log-apiversion": "0.6.0",
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>",
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com",
@@ -2882,7 +3268,7 @@ GET /machinegroups/test-machine-group-5/machines? offset=0&size=3 HTTP/1.1 Heade
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
 HTTP/1.1 200 OK Header :
@@ -2892,15 +3278,30 @@ HTTP/1.1 200 OK Header :
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "machines":     [
+```
+
+`{`
+
+```json
             "ip": "10.101.166.116",
             "machine-uniqueid": "",
             "userdefined-id": "",
             "lastHeartbeatTime": 1447182247
 ```
 
-`},`
+`},` `{`
 
 ```json
             "ip": "10.101.165.193",
@@ -2909,7 +3310,7 @@ Body :
             "lastHeartbeatTime": 1447182246
 ```
 
-`},`
+`},` `{`
 
 ```json
             "ip": "10.101.166.91",
@@ -2918,12 +3319,14 @@ Body :
             "lastHeartbeatTime": 1447182248
 ```
 
-`],`
+`}` `],`
 
 ```json
     "count": 3,
     "total": 8
 ```
+
+`}`
 
 #### 1.8.9 GetAppliedConfigs
 
@@ -2968,17 +3371,32 @@ GET /machinegroups/test-machine-group/configs HTTP/1.1 Header :
     "x-log-bodyrawsize": "0"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+HTTP/1.1 200 OK Header :
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Header :
     "Date": "Tue, 10 Nov 2015 19:45:48 GMT",
     "Content-Length": "53",
     "x-log-requestid": "5642496C99248C8C7B00173F",
     "Connection": "close",
     "Content-Type": "application/json",
     "Server": "nginx/1.6.1"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "configs":     [
         "two",
         "three",
@@ -2991,14 +3409,21 @@ Body :
     "count": 3
 ```
 
+`}`
+
 ### 1.9 Logtail configuration operations
 
 #### 1.9.1 CreateConfig
 
 Creates a Logtail configuration. Request syntax
 
-```json
+```
 POST /configs HTTP/1.1 Authorization: <AuthorizationString> Content-Type:application/json Content-Length:<Content Length> Content-MD5<:<Content MD5> Date: <GMT Date> Host: <Project Endpoint> x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1
+```
+
+`{`
+
+```json
     "configName": "testcategory1",
     "inputType": "file",
     "inputDetail": {
@@ -3021,10 +3446,15 @@ POST /configs HTTP/1.1 Authorization: <AuthorizationString> Content-Type:applica
 ```json
     "outputType": "LogService",
     "outputDetail":
+```
+
+`{`
+
+```json
         "logstoreName": "perfcounter"
 ```
 
-Request elements Request headers The CreateConfig API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters For information about the request parameters and Logtail configuration examples, see Logtail configurations. Response elements Response headers The CreateConfig API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response elements The HTTP status code 200 is returned. Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` `}` Request elements Request headers The CreateConfig API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters For information about the request parameters and Logtail configuration examples, see Logtail configurations. Response elements Response headers The CreateConfig API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response elements The HTTP status code 200 is returned. Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -3046,7 +3476,17 @@ POST /configs HTTP/1.1 Header :
     'User-Agent': 'log-python-sdk-v-0.6.0',
     'Content-Type': 'application/json',
     'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
+```
+
+`}`
+
+```
 Body:
+```
+
+`{`
+
+```json
     "configName": "sample-logtail-config",
     "inputType": "file",
     "inputDetail": {
@@ -3071,13 +3511,23 @@ Body:
 ```json
     "outputType": "LogService",
     "outputDetail":
+```
+
+`{`
+
+```json
         "logstoreName": "sls-test-logstore"
 ```
 
-Sample responses
+`}` `}` Sample responses
+
+```
+HTTP/1.1 200 OK Header
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Header
     'date': 'Mon, 09 Nov 2015 07:45:30 GMT',
     'connection': 'close',
     'x-log-requestid': '56404F1A99248CA26C002180',
@@ -3120,8 +3570,13 @@ Error codes In addition to Common error codes, the API operation may also return
 
 Examples Sample requests
 
-```json
+```
 GET /configs? offset=0&size=10 HTTP/1.1 Header :
+```
+
+`{`
+
+```json
     "Content-Length": 0,
     "x-log-signaturemethod": "hmac-sha1",
     "x-log-bodyrawsize": 0,
@@ -3132,7 +3587,7 @@ GET /configs? offset=0&size=10 HTTP/1.1 Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
 Header :
@@ -3142,7 +3597,17 @@ Header :
     "date": "Mon, 09 Nov 2015 09:19:13 GMT",
     "content-type": "application/json",
     "x-log-requestid": "5640651199248CAA2300C2BA"
+```
+
+`}`
+
+```
 Body:
+```
+
+`{`
+
+```json
     "count": 3,
     "configs":
 ```
@@ -3160,6 +3625,8 @@ Body:
 ```json
     "total": 3
 ```
+
+`}`
 
 #### 1.9.3 GetAppliedMachineGroups
 
@@ -3191,8 +3658,13 @@ Error codes In addition to Common error codes, the API operation may also return
 
 Examples Sample requests
 
-```json
+```
 GET /configs/logtail-config-sample/machinegroups Header:
+```
+
+`{`
+
+```json
     "Content-Length": 0,
     "x-log-signaturemethod": "hmac-sha1",
     "x-log-bodyrawsize": 0,
@@ -3203,7 +3675,7 @@ GET /configs/logtail-config-sample/machinegroups Header:
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
 Header :
@@ -3213,7 +3685,17 @@ Header :
     "date": "Mon, 09 Nov 2015 09:51:38 GMT",
     "content-type": "application/json",
     "x-log-requestid": "56406CAA99248CAA230BE828"
+```
+
+`}`
+
+```
 Body:
+```
+
+`{`
+
+```json
     "count": 1,
     "machinegroups":
 ```
@@ -3224,7 +3706,7 @@ Body:
         "sample-group"
 ```
 
-`]`
+`]` `}`
 
 #### 1.9.4 GetConfig
 
@@ -3249,8 +3731,13 @@ Response elements Response headers The GetConfig API operation does not have spe
 
 Examples Sample requests
 
-```json
+```
 GET /configs/logtail-config-sample Header :
+```
+
+`{`
+
+```json
     "Content-Length": 0,
     "x-log-signaturemethod": "hmac-sha1",
     "x-log-bodyrawsize": 0,
@@ -3261,7 +3748,7 @@ GET /configs/logtail-config-sample Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
 Header :
@@ -3271,7 +3758,17 @@ Header :
     "date": "Mon, 09 Nov 2015 08:29:15 GMT",
     "content-type": "application/json",
     "x-log-requestid": "5640595B99248CAA23004A59"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "configName": "logtail-config-sample",
     "outputDetail": {
         "endpoint": "http://cn-hangzhou-devcommon-intranet.sls.aliyuncs.com",
@@ -3320,6 +3817,8 @@ Body :
     "lastModifyTime": 1447050456
 ```
 
+`}`
+
 #### 1.9.5 DeleteConfig
 
 Deletes a Logtail configuration. When you call this API operation, the Logtail configuration is deleted even if it is applied to the Machine Group. Request syntax
@@ -3356,10 +3855,15 @@ DELETE /configs/logtail-config-sample Header :
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 ```
 
-Sample responses
+`}` Sample responses
+
+```
+Header :
+```
+
+`{`
 
 ```json
-Header :
     "date": "Mon, 09 Nov 2015 09:28:21 GMT",
     "connection": "close",
     "x-log-requestid": "5640673599248CAA230836C6",
@@ -3367,12 +3871,19 @@ Header :
     "server": "nginx/1.6.1"
 ```
 
+`}`
+
 #### 1.9.6 UpdateConfig
 
 Updates Logtail configurations. If the Logtail configurations are applied to a machine group, the configurations of the machine group are also updated. Request syntax
 
-```json
+```
 PUT /configs/<configName> HTTP/1.1 Authorization: <AuthorizationString> Content-Type:application/json Content-Length:<Content Length> Content-MD5<:<Content MD5> Date: <GMT Date> Host: <Project Endpoint> x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1
+```
+
+`{`
+
+```json
     "configName": "testcategory1",
     "inputType": "file",
     "inputDetail": {
@@ -3394,10 +3905,15 @@ PUT /configs/<configName> HTTP/1.1 Authorization: <AuthorizationString> Content-
 ```json
     "outputType": "LogService",
     "outputDetail":
+```
+
+`{`
+
+```json
         "logstoreName": "perfcounter"
 ```
 
-Request elements Request headers The UpdateConfig API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters For information about the request parameters and Logtail configuration examples, see Logtail configurations. Response elements Response headers The UpdateConfig API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters After the request succeeds, the HTTP status code 200 is returned. Error codes In addition to Common error codes, the API operation may also return the following special error codes.
+`}` `}` Request elements Request headers The UpdateConfig API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters For information about the request parameters and Logtail configuration examples, see Logtail configurations. Response elements Response headers The UpdateConfig API operation does not have special response headers. For information about common response headers of Log Service API operations, see Common response headers. Response parameters After the request succeeds, the HTTP status code 200 is returned. Error codes In addition to Common error codes, the API operation may also return the following special error codes.
 
 | HTTP status code | Error code | Error message |
 |---|---|---|
@@ -3420,7 +3936,17 @@ PUT /configs/logtail-config-sample Header :
     "User-Agent": "log-python-sdk-v-0.6.0",
     "Content-Type": "application/json",
     "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
+```
+
+`}`
+
+```
 Body :
+```
+
+`{`
+
+```json
     "outputDetail": {
         "logstoreName": "sls-test-logstore"
 ```
@@ -3466,7 +3992,7 @@ Body :
     "configName": "logtail-config-sample"
 ```
 
-Sample responses
+`}` Sample responses
 
 ```json
     "date": "Mon, 09 Nov 2015 09:14:32 GMT",
@@ -3476,20 +4002,27 @@ Sample responses
     "server": "nginx/1.6.1"
 ```
 
+`}`
+
 ### 1.10 Consumer group operations
 
 #### 1.10.1 CreateConsumerGroup
 
 Creates a consumer group in a Logstore. Request syntax
 
-```json
+```
 POST /logstores/<logstoreName>/consumergroups HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: 0 User-Agent: <UserAgent> x-log-apiversion: 0.6.0 Host: <Project Endpoint> x-log-signaturemethod: hmac-sha1 Date: <GMT Date> Content-Type: application/json Content-MD5: F58544E4D022CC28A93D0B7CC208A5AA Content-Length: <ContentLength>
+```
+
+`{`
+
+```json
   "consumerGroup": <consumerGroup>,
   "timeout": <timeout>,
   "order": <order>
 ```
 
-Request elements Request headers The CreateConsumerGroup API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
+`}` Request elements Request headers The CreateConsumerGroup API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3514,14 +4047,19 @@ Response elements Response headers The CreateConsumerGroup API operation does no
 
 Examples Sample requests
 
-```json
+```
 POST /logstores/my-logstore/consumergroups HTTP/1.1 Header: Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Fri, 04 May 2018 08:02:22 GMT Content-Type: application/json Content-MD5: F58544E4D022CC28A93D0B7CC208A5AA Content-Length: 65 Connection: Keep-Alive Body:
+```
+
+`{`
+
+```json
   "consumerGroup": "consumer-group-1",
   "timeout": 300,
   "order": true
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
@@ -3611,7 +4149,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length: 111 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 09:26:53 GMT x-log-requestid: 5AEC275D1FFC036AB254B20C
 ```
 
-`[`
+`[` `{`
 
 ```json
     "shard": 0,
@@ -3620,7 +4158,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
     "consumer": "consumer_1"
 ```
 
-`]`
+`}` `]`
 
 #### 1.10.4 HeartBeat
 
@@ -3703,7 +4241,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:47:31 GMT x-log-requestid: 5AEC1E23048191954B42EAB9
 ```
 
-`[`
+`[` `{`
 
 ```json
     "name": "test-consumer-group",
@@ -3711,14 +4249,19 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Connection: clo
     "order": true
 ```
 
-`]`
+`}` `]`
 
 #### 1.10.6 UpdateCheckPoint
 
 Updates the checkpoint of a shard in a Logstore of a project for a consumer group. Request syntax
 
-```json
+```
 POST /logstores/<logstoreName>/consumergroups/<consumerGroupName>? forceSuccess=<forceSucce ss>&type=checkpoint&consumer=<consumer> HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: 0 User-Agent: <UserAgent> x-log-apiversion: 0.6.0 Host: <Project Endpoint> x-log-signaturemethod: hmac-sha1 Date: <GMT Date> Content-Type: application/json Content-Length: <ContentLength> Connection: Keep-Alive
+```
+
+`{`
+
+```json
   "shard": <shardID>,
   "checkpoint": <checkpoint>
 ```
@@ -3753,13 +4296,18 @@ Response elements Response headers The UpdateCheckPoint API operation does not h
 
 Additional considerations If the consumer is not specified, the checkpoint can be updated only when the forceSuccess parameter is set to true. Examples Sample requests
 
-```json
+```
 POST /logstores/logstore-4/consumergroups/consumer_group_test? forceSuccess=false&type=ch eckpoint&consumer=consumer_1 HTTP/1.1 Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Sun, 06 May 2018 09:14:53 GMT Content-Type: application/json Content-MD5: 59457BAFB3F85A5117BDE243947583B0 Content-Length: 55 Connection: Keep-Alive
+```
+
+`{`
+
+```json
   "shard": 0,
   "checkpoint": "MTUyNDE1NTM3OTM3MzkwODQ5Ng=="
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 06 May 2018 09:14:54 GMT x-log-requestid: 5AEEC78E1FFC0366B24F1C63
@@ -3769,13 +4317,18 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Con
 
 Updates the attributes of a consumer group. Request syntax
 
-```json
+```
 PUT /logstores/<logstoreName>/consumergroups/<consumerGroupName> HTTP/1.1 Authorization: <AuthorizationString> x-log-bodyrawsize: 0 User-Agent: <UserAgent> x-log-apiversion: 0.6.0 Host: <Project Endpoint> x-log-signaturemethod: hmac-sha1 Date: <GMT Date> Content-Type: application/json Content-MD5: F58544E4D022CC28A93D0B7CC208A5AA Content-Length: <ContentLength>
+```
+
+`{`
+
+```json
   "timeout": <timeout>,
   "order": <order>
 ```
 
-Request elements Request headers The UpdateConsumerGroup API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
+`}` Request elements Request headers The UpdateConsumerGroup API operation does not have special request headers. For information about common request headers of Log Service API operations, see Common request headers. Request parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3796,13 +4349,18 @@ Not e You must specify the `timeout` or `order` parameter, or specify both param
 
 Examples Sample requests
 
-```json
+```
 PUT /logstores/logstore-test/consumergroups/consumer-group-1 HTTP/1.1 Header: Authorization: LOG <yourAccessKeyId>:<yourSignature> x-log-bodyrawsize: 0 User-Agent: sls-java-sdk-v-0.6.1 x-log-apiversion: 0.6.0 Host: my-project.cn-shanghai.log.aliyuncs.com x-log-signaturemethod: hmac-sha1 Date: Fri, 04 May 2018 08:02:22 GMT Content-Type: application/json Content-MD5: F58544E4D022CC28A93D0B7CC208A5AA Content-Length: 65 Connection: Keep-Alive Body:
+```
+
+`{`
+
+```json
   "order": false,
   "timeout": 100
 ```
 
-Sample responses
+`}` Sample responses
 
 ```
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
@@ -3812,11 +4370,16 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Con
 
 #### 1.11.1 Overview
 
-Use RAM to authorize a RAM user to access Log Service resources of an Alibaba Cloud account You can create projects, Logstores, Logtail configurations, and machine group in Log Service. You have full permissions on these resources. You can call all relevant API operations to use the resources. However, if you use your Alibaba Cloud account to create a RAM user, the RAM user is unauthorized to use your resources in Log Service. To allow the RAM user to use your resources, you must grant relevant permissions on the resources to the RAM user. You can use RAM policies to grant a RAM user the following permissions on Log Service resources: Upload data to a specified Logstore If you grant this permission to a RAM user, the RAM user can upload data to the specified Logstore by using the relevant API or SDK. The policy is as follows:
+Use RAM to authorize a RAM user to access Log Service resources of an Alibaba Cloud account You can create projects, Logstores, Logtail configurations, and machine group in Log Service. You have full permissions on these resources. You can call all relevant API operations to use the resources. However, if you use your Alibaba Cloud account to create a RAM user, the RAM user is unauthorized to use your resources in Log Service. To allow the RAM user to use your resources, you must grant relevant permissions on the resources to the RAM user. You can use RAM policies to grant a RAM user the following permissions on Log Service resources: Upload data to a specified Logstore If you grant this permission to a RAM user, the RAM user can upload data to the specified Logstore by using the relevant API or SDK. The policy is as follows: `{`
 
 ```json
     "Version": "1",
     "Statement": [
+```
+
+`{`
+
+```json
         "Action": [
           "log:Post*",
           "log:BatchPost*"
@@ -3830,17 +4393,22 @@ he name of the specified Logstore>"],
         "Effect": "Allow"
 ```
 
-`]` Query data of a specified Logstore in the console If you grant this permission to a RAM user, the RAM user can query logs, pull logs, and view the Logstore list after logging on to the Log Service console. The policy is as follows:
+`}` `]` `}` Query data of a specified Logstore in the console If you grant this permission to a RAM user, the RAM user can query logs, pull logs, and view the Logstore list after logging on to the Log Service console. The policy is as follows:
 
 ```json
     "Version": "1",
     "Statement": [
+```
+
+`{`
+
+```json
         "Action": ["log:List*"],
         "Resource": ["acs:log:*:*:project/<The name of the specified proejct>/*"],
         "Effect": "Allow"
 ```
 
-`},`
+`},` `{`
 
 ```json
         "Action": ["log:Get*"],
@@ -3849,7 +4417,7 @@ the Logstore>"],
         "Effect": "Allow"
 ```
 
-`]` You can skip this topic if you do not need to grant access to your Log Service resources across accounts. Skipping this topic does not affect your understanding and use of the other topics in the document. Related topics:
+`}` `]` `}` You can skip this topic if you do not need to grant access to your Log Service resources across accounts. Skipping this topic does not affect your understanding and use of the other topics in the document. Related topics:
 
 #### 1.11.2 Resource list
 
@@ -4156,19 +4724,49 @@ The following sample code shows how to use Protocol Buffer to define the objects
 message Log
     required uint32 Time = 1;// Unix time format
     message Content
+```
+
+`{`
+
+```
         required string Key = 1;
         required string Value = 2;
+```
+
+`}`
+
+```
     repeated Content Contents= 2;
+```
+
+`}`
+
+```
 message LogGroup
+```
+
+`{`
+
+```
     repeated Log Logs= 1;
     optional string Reserved = 2; // Reserved fields
     optional string Topic = 3;
     optional string Source = 4;
+```
+
+`}`
+
+```
 message LogGroupList
+```
+
+`{`
+
+```
     repeated LogGroup logGroupList = 1;
 ```
 
-Not e When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs.
+`}` Not e When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs.
 
 #### 1.12.2 Data encoding
 
@@ -4178,10 +4776,30 @@ Log Service uses Protocol Buffer as the standard log format. You can write logs 
 message Log
     required uint32 time = 1; // UNIX Time Format
     message Content
+```
+
+`{`
+
+```
         required string key = 1;
         required string value = 2;
+```
+
+`}`
+
+```
     repeated Content contents= 2;
+```
+
+`}`
+
+```
 message LogGroup
+```
+
+`{`
+
+```
     repeated Log logs= 1;
     optional string reserved =2; // An internal field. You do not need to specify this fiel
 ```
@@ -4191,15 +4809,25 @@ message LogGroup
 ```
     optional string topic = 3;
     optional string source = 4;
+```
+
+`}`
+
+```
 message LogGroupList
+```
+
+`{`
+
+```
     repeated LogGroup logGroupList = 1;
 ```
 
-Not e When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs. For more information about the Protocol Buffer format, visit GitHub. For more information about the API operations that write logs to Log Service, see PostLog.
+`}` Not e When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs. For more information about the Protocol Buffer format, visit GitHub. For more information about the API operations that write logs to Log Service, see PostLog.
 
 #### 1.12.3 Logstores
 
-A Logstore is a data storage unit. You can create up to 10 Logstores for each project by default. The name of a Logstore must be unique in the project to which the Logstore belongs. A Logstore is the portal for all log data. You can read data from or write data to the Logstore. The naming rules for Logstores are as follows: The name can only contain lowercase letters, digits, hyphens (-), and underscores (_). The name must start and end with a lowercase letter or a digit. The name must be 2 to 63 characters in length. Example
+A Logstore is a data storage unit. You can create up to 10 Logstores for each project by default. The name of a Logstore must be unique in the project to which the Logstore belongs. A Logstore is the portal for all log data. You can read data from or write data to the Logstore. The naming rules for Logstores are as follows: The name can only contain lowercase letters, digits, hyphens (-), and underscores (_). The name must start and end with a lowercase letter or a digit. The name must be 2 to 63 characters in length. Example `{`
 
 ```json
     “logstoreName" : "access_log",
@@ -4229,7 +4857,7 @@ A shard is a basic read/write unit in each Logstore. You can specify the number 
 
 #### 1.12.5 Logtail configurations
 
-You can create up to 100 Logtail configurations for a project. The name of a Logtail configuration must be unique in a project. You can use a Logtail configuration to specify the location, method, and parameters for log collection. The naming rules for Logtail configurations are as follows: The name can only contain lowercase letters, digits, hyphens (-), and underscores (_). The name must start and end with a lowercase letter or a digit. The name must be 2 to 128 characters in length. Example
+You can create up to 100 Logtail configurations for a project. The name of a Logtail configuration must be unique in a project. You can use a Logtail configuration to specify the location, method, and parameters for log collection. The naming rules for Logtail configurations are as follows: The name can only contain lowercase letters, digits, hyphens (-), and underscores (_). The name must start and end with a lowercase letter or a digit. The name must be 2 to 128 characters in length. Example `{`
 
 ```json
     "configName": "testcategory1",
@@ -4253,6 +4881,11 @@ You can create up to 100 Logtail configurations for a project. The name of a Log
 ```json
     "outputType": "sls",
     "outputDetail":
+```
+
+`{`
+
+```json
         "logstoreName": "perfcounter"
 ```
 
@@ -4263,7 +4896,7 @@ You can create up to 100 Logtail configurations for a project. The name of a Log
     "lastModifyTime": 1400123456
 ```
 
-The following table describes the configuration parameters. Configuration parameters
+`}` The following table describes the configuration parameters. Configuration parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4323,7 +4956,7 @@ After a machine with Logtail is started, the machine is automatically associated
     "lastHeartbeatTime”:1397781420
 ```
 
-The following table describes the machine attribute parameters. Parameters
+`}` The following table describes the machine attribute parameters. Parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4359,7 +4992,7 @@ machinegroup The machinegroup parameter indicates the machine group that belongs
     "lastModifyTime" : 1431705075
 ```
 
-The following table lists the parameters of a machine group. Machine group parameters
+`}` The following table lists the parameters of a machine group. Machine group parameters
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4463,27 +5096,87 @@ SDK errors are divided into the following types: Errors returned by Log Service.
 
 `*/`
 
-```java
+```
 Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest lsRequest = new ListLogStoresRequest(project); for (int i = 0; i < max_retries; i++)
+```
+
+`{`
+
+```
     try
+```
+
+`{`
+
+```
         ListLogStoresResponse res = client.ListLogStores(lsRequest)
         // Process the returned data...
         break;
+```
+
+`}`
+
+```
     catch(LogException ex)
+```
+
+`{`
+
+```
         if (e.GetErrorCode() == "RequestError")
+```
+
+`{`
+
+```
             if ( i == max_retries - 1)
+```
+
+`{`
+
+```java
                 System.out.println("request is still failed after all retries.");
                 break;
+```
+
+`}`
+
+```java
             else
                 System.out.println("request error happens, retry it!") ;
+```
+
+`}`
+
+```
         else
+```
+
+`{`
+
+```java
             System.out.println("error code :" + e.GetErrorCode());
             System.out.println("error message :" + e.GetErrorMessage());
             System.out.println("error requestId :" + e.GetRequestId());
             break;
+```
+
+`}` `}`
+
+```
     catch(...)
+```
+
+`{`
+
+```java
         System.out.println("unrecoverable exception when listing logstores.");
         break;
+```
+
+`}` `}`
+
+```
 // Other code...
 ```
 
@@ -4491,25 +5184,90 @@ Client client = new Client(accessId, accessKey, endpoint); ListLogStoresRequest 
 
 ```
 // Other code... String accessId = "<youraccessId>"; // Specify your AccessKey ID. String accessKey = "<youraccessKey>"; // Specify your AccessKey secret. String project = "big-game"; String endpoint = "regionid.example.com"; int max_retries = 3; // Create a client. SLSClient client = new SLSClient(endpoint, accessId, accessKey); ListLogstoresRequest request = new ListLogstoresRequest(); request.Project = project; for (int i = 0; i < max_retries; i++)
+```
+
+`{`
+
+```
     try
+```
+
+`{`
+
+```
         ListLogstoresResponse response = client.ListLogstores(request);
         // Process the returned data...
         break;
+```
+
+`}`
+
+```
     catch(LogException ex)
+```
+
+`{`
+
+```
         if (e.errorCode == "SLSRequestError")
+```
+
+`{`
+
+```
             if ( i == max_retries - 1)
+```
+
+`{`
+
+```
                 Console.Writeline(“request is still failed after all retries.”);
                 break;
+```
+
+`}`
+
+```
             else
+```
+
+`{`
+
+```
                 Console.Writeline("request error happens, retry it!") ;
+```
+
+`}` `}`
+
+```
         else
+```
+
+`{`
+
+```
             Console.Writeline("error code :" + e.errorCode;
             Console.Writeline("error message :" + e.Message;
             Console.Writeline("error requestId :" + e.RequestId;
             break;
+```
+
+`}` `}`
+
+```
     catch(...)
+```
+
+`{`
+
+```
         Console.Writeline("unrecoverable exception when listing logstores.");
         break;
+```
+
+`}` `}`
+
+```
 // Other code...
 ```
 
@@ -4517,26 +5275,86 @@ PHP
 
 ```
 <? php // Other code... $endpoint = 'regionid.example.com'; $accessId = '<youraccessId>'; // Specify your AccessKey ID. $accessKey = '<youraccessKey>'; // Specify your AccessKey secret. $maxRetries = 3; // Create a Log Service client. $client = new Aliyun_Sls_Client($endpoint, $accessId, $accessKey); $project = 'big-game'; $request = new Aliyun_Sls_Models_ListLogstoresRequest($project); for($i = 0; $i < $maxRetries; ++$i)
+```
+
+`{`
+
+```
     try
+```
+
+`{`
+
+```
         $response = $client->ListLogstores($request);
         // Process the returned data...
         break;
+```
+
+`}`
+
+```
     catch (Aliyun_Sls_Exception $e)
+```
+
+`{`
+
+```
         if ($e->getErrorCode()=='RequestError')
+```
+
+`{`
+
+```
             if ($i+1 == $maxRetries)
+```
+
+`{`
+
+```
                 echo "error code :" . $e->getErrorCode() . PHP_EOL;
                 echo "error message :" . $e->getErrorMessage() . PHP_EOL;
                 break;
+```
+
+`}`
+
+```
             echo 'request error happens, retry it!' . PHP_EOL;
+```
+
+`}`
+
+```
         else
+```
+
+`{`
+
+```
             echo "error code :" . $e->getErrorCode() . PHP_EOL;
             echo "error message :" . $e->getErrorMessage() . PHP_EOL;
             echo "error requestId :" . $e->getRequestId() . PHP_EOL;
             break;
+```
+
+`}` `}`
+
+```
     catch (Exception $ex)
+```
+
+`{`
+
+```
         echo 'unrecoverable exception when listing logstores.' . PHP_EOL;
         var_dump($ex);
         break;
+```
+
+`}` `}`
+
+```
 // Other code...
 ```
 
@@ -4671,6 +5489,11 @@ eSubName);
                 LogItem logItem = new LogItem((int) (new Date().getTime() / 1000));
                 logItem.PushBack("index"+String.valueOf(j), String.valueOf(i * 10 + j));
                 logGroup.add(logItem);
+```
+
+`}`
+
+```
             PutLogsRequest req2 = new PutLogsRequest(project, logstore, topic, source, logG
 roup);
             client.PutLogs(req2);
@@ -4688,7 +5511,7 @@ includes the hash key. For more information, see the following API: PutLogsRespo
 d).
 ```
 
-`*/`
+`*/` `}`
 
 ```
         // Read the data that was written to shard 0 in the last one minute.
@@ -4723,6 +5546,11 @@ UID()));
                     FastLogTag logtag = flg.getLogTags(tagIdx);
                     System.out.println(String.format("\t%s\t:\t%s", logtag.getKey(), logtag
 .getValue()));
+```
+
+`}`
+
+```java
                 for (int lIdx = 0; lIdx < flg.getLogsCount(); ++lIdx) {
                     FastLog log = flg.getLogs(lIdx);
                     System.out.println("--------\nLog: " + lIdx + ", time: " + log.getTime(
@@ -4732,12 +5560,17 @@ UID()));
                         System.out.println(content.getKey() + "\t:\t" + content.getValue())
 ```
 
-;
+; `}` `}` `}`
 
 ```java
             String next_cursor = logDataRes.GetNextCursor();
             System.out.println("The Next cursor:" + next_cursor);
             curCursor = next_cursor;
+```
+
+`}`
+
+```
         // Note: You can call the following API operation only after you enable the index f
 eature.
         // Before querying logs, we recommend that you wait for one minute.
@@ -4745,6 +5578,11 @@ eature.
             Thread.sleep(60 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+```
+
+`}`
+
+```
         // Query the distribution of logs.
         String query = "<Specify the query keyword. To query all contents, use an empty str
 ing.>";
@@ -4768,6 +5606,11 @@ Threadsleep(200);
         for (Histogram ht : res3.GetHistograms()) {
             System.out.printf("from %d, to %d, count %d.\n", ht.GetFrom(), ht.GetTo(), ht.G
 etCount());
+```
+
+`}`
+
+```
         // Query log data.
         long total_log_lines = res3.GetTotalCount();
         int log_offset = 0;
@@ -4783,9 +5626,24 @@ ls, it will be retried for a maximum of three times.
                 res4 = client.GetLogs(req4);
                 if (res4 ! = null && res4.IsCompleted()) {
                     break;
+```
+
+`}`
+
+```
                 Thread.sleep(200);
+```
+
+`}`
+
+```java
             System.out.println("Read log count:" + String.valueOf(res4.GetCount()));
             log_offset += log_line;
+```
+
+`}`
+
+```
         // Enable the analytics feature. You can use SQL statements only after you enable t
 he analytics feature. You can log on to the Log Service console or use the SDK to enable th e analysis feature.
         IndexKeys indexKeys = new IndexKeys();
@@ -4820,7 +5678,7 @@ o(ogCotetcotet: te.GetogCotets()){
                 System.out.println();
 ```
 
-Additional considerations To improve the I/O efficiency of your system, we recommend that you do not use SDKs to write data to Log Service. For information about the recommended data writing method, see Producer Library in the User Guide . We recommend that you do not use SDKs to call API operations for data consumption in Log Service. Alibaba Cloud provides an advanced consumer library. The consumer library conceals the implementation details of Log Service and provides advanced features such as load balancing and sequential consumption. For more information, see Consumer Library in the User Guide .
+`}` `}` `}` `}` Additional considerations To improve the I/O efficiency of your system, we recommend that you do not use SDKs to write data to Log Service. For information about the recommended data writing method, see Producer Library in the User Guide . We recommend that you do not use SDKs to call API operations for data consumption in Log Service. Alibaba Cloud provides an advanced consumer library. The consumer library conceals the implementation details of Log Service and provides advanced features such as load balancing and sequential consumption. For more information, see Consumer Library in the User Guide .
 
 ### 2.3 SDK for .NET
 
@@ -4867,15 +5725,30 @@ $req2 = new Aliyun_Log_Models_CreateLogstoreRequest($project,$logstore,3,2); $re
 sleep(60);
 # Write logs.
 $topic = ""; $source = ""; $logitems = array(); for ($i = 0; $i < 5; $i++)
+```
+
+`{`
+
+```
     $contents = array('index1'=> strval($i));
     $logItem = new Aliyun_Log_Models_LogItem();
     $logItem->setTime(time());
     $logItem->setContents($contents);
     array_push($logitems, $logItem);
+```
+
+`}`
+
+```bash
 $req2 = new Aliyun_Log_Models_PutLogsRequest($project, $logstore, $topic, $source, $logitem s); $res2 = $client->putLogs($req2); var_dump($res2);
 # Pull the data immediately.
 # List the shard IDs in the Logstore.
 $listShardRequest = new Aliyun_Log_Models_ListShardsRequest($project,$logstore); $listShardResponse = $client -> listShards($listShardRequest); foreach($listShardResponse-> getShardIds() as $shardId)
+```
+
+`{`
+
+```bash
     # Obtain the cursor corresponding to each shard ID.
     $getCursorRequest = new Aliyun_Log_Models_GetCursorRequest($project,$logstore,$shardId,
 null, time() - 60);
@@ -4883,6 +5756,11 @@ null, time() - 60);
     $cursor = $response-> getCursor();
     $count = 100;
     while(true)
+```
+
+`{`
+
+```bash
         # Start to read data from a cursor.
         $batchGetDataRequest = new Aliyun_Log_Models_BatchGetLogsRequest($project,$logstore
 ,$shardId,$count,$cursor);
@@ -4892,28 +5770,73 @@ null, time() - 60);
             break;
 ```
 
-```python
+```
         $logGroupList = $response -> getLogGroupList();
         foreach($logGroupList as $logGroup)
             print ($logGroup->getCategory());
             foreach($logGroup -> getLogsArray() as $log)
+```
+
+`{`
+
+```
                 foreach($log -> getContentsArray() as $content)
+```
+
+`{`
+
+```python
                     print($content-> getKey().":".$content->getValue()."\t");
+```
+
+`}`
+
+```python
                 print("\n");
+```
+
+`}` `}`
+
+```
         $cursor = $response -> getNextCursor();
+```
+
+`}` `}`
+
+```bash
 # Before querying logs, we recommend that you wait for one minute.
 sleep(60);
 # Query the distribution of logs. Before querying logs, you must ensure that indexes are cr
 eated. The SDK for PHP does not provide the API operation that you can call to create index es. You must create indexes in the Log Service console. $topic = ""; $query=''; $from = time()-3600; $to = time(); $res3 = NULL; while (is_null($res3) || (! $res3->isCompleted()))
+```
+
+`{`
+
+```
     $req3 = new Aliyun_Log_Models_GetHistogramsRequest($project, $logstore, $from, $to, $to
 pic, $query);
     $res3 = $client->getHistograms($req3);
+```
+
+`}`
+
+```bash
 var_dump($res3);
 # Query log data.
 $res4 = NULL; while (is_null($res4) || (! $res4->isCompleted()))
+```
+
+`{`
+
+```
     $req4 = new Aliyun_Log_Models_GetLogsRequest($project, $logstore, $from, $to, $topic, $
 query, 5, 0, False);
     $res4 = $client->getLogs($req4);
+```
+
+`}`
+
+```
 var_dump($res4);
 ```
 
@@ -5101,7 +6024,7 @@ let myClient = try! LOGClient(endPoint: "",
             print("timed out") // The response may be null if the request times out.
 ```
 
-Objective-C-based sample code of the SDK for iOS For information about how to use the SDK for iOS based on Objective-C, visit Objective-C at GitHub.
+`}` `}` Objective-C-based sample code of the SDK for iOS For information about how to use the SDK for iOS based on Objective-C, visit Objective-C at GitHub.
 
 ### 2.11 SDK for C ++
 
@@ -5168,34 +6091,44 @@ Step 2
 ```
   var logGroup = {
     logs: [
+```
+
+`{`
+
+```
         time:  Math.floor(new Date().getTime()/1000), // Unit: seconds
         contents: [ // Key-value pairs
+```
+
+`{`
+
+```
             key: 'method',
             value: log[0]
 ```
 
-`},`
+`},` `{`
 
 ```
             key: 'url',
             value: log[1]
 ```
 
-`},`
+`},` `{`
 
 ```
             key: 'status',
             value: log[2]
 ```
 
-`},`
+`},` `{`
 
 ```
             key: 'time',
             value: log[5]
 ```
 
-`]`
+`}` `]`
 
 ```
     }],
@@ -5210,6 +6143,11 @@ Step 2
     projectName: 'wangdan-test',
     logStoreName: 'test',
     logGroup
+```
+
+`}`
+
+```
   sls.putLogs(opt,function(error, data) {
     console.log(error, data)
 ```

@@ -5,7 +5,7 @@ doc_version: "20260629"
 pdf_pages: 95
 source_pdf: "769198cf64305492_Alibaba Cloud Apsara Stack V3.18.6 DataHub Operations and Maintenance Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataHub%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # DataHub Operations and Maintenance Guide
@@ -99,6 +99,8 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 |   | Coordinator | After a user creates a subscription, the coordinator saves the data read position. This lets the user resume reading from that position later. |
 |   | Frontend | The frontend machine for DataHub and the entry point for all requests. |
 
+**Procedure**
+
 1. Before you run common O&M commands, log on to the command line interface.
 i. Log on to Apsara Infrastructure Management. ii. In the navigation pane on the left, choose **Resource Management > Product Cluster**
 **O&M**.
@@ -128,6 +130,9 @@ As shown in the following figure:
 **Background information**
 
 DataHub is fully deployed on the Apsara Infrastructure Management platform. As a result, all Apsara Distributed Operating System commands are replaced by tj_show. The task scheduling system, PolarFileSystem, Apsara naming service, and distributed lock system are now managed as services within the Apsara Infrastructure Management platform.
+
+**Procedure**
+
 1. Before running common O&M commands, log on to the command line interface. You can
 access the command line interface in one of two ways. Method 1: Log on directly to the OPS1 machine. Method 2: Use the Apsara Infrastructure Management platform. a. Log on to Apsara Infrastructure Management. b. In the navigation pane on the left, choose **Resource Management > Product**
 **Cluster O&M**.
@@ -169,6 +174,9 @@ tj_show -r datahub-webconsole.WebConsole#
 
 The primary O&M commands for Apsara Distributed File System are `pu` and `puadmin` . To view the complete help documentation for either command, enter **the command name**
 **followed by --help and press Enter**.
+
+**Procedure**
+
 1. Before you run the common O&M commands, log on to the command-line interface.
 i. Log on to Apsara Infrastructure Management. ii. In the navigation pane on the left, choose **Resource Management > Product Cluster**
 **O&M**.
@@ -231,6 +239,8 @@ puadmin cs -stat tcp://x.x.x.x:10260 --set=normal
 ### 1.4 Common O&M commands for task scheduling system
 
 **task scheduling system**
+
+**Procedure**
 
 1. Before you run common O&M commands, log on to the command line interface.
 i. Log on to Apsara Infrastructure Management. ii. In the navigation pane on the left, choose **Resource Management > Product Cluster**
@@ -375,6 +385,8 @@ Apsara Big Data Manager (ABM) supports O&M on big data services from the perspec
 
 **Outage Recovery**
 
+**Procedure**
+
 1. You can log on to the command-line interface before you run common O&M commands.
 i. Log on to Apsara Infrastructure Management. ii. In the navigation pane on the left, choose **Resource Management > Product Cluster**
 **O&M**.
@@ -398,6 +410,9 @@ reach the desired state. If the cluster does not reach the desired state, contac
 **Prerequisites**
 
 None.
+
+**Procedure**
+
 1. Configure the action and action status for the anomalous chunkserver hosts.
 i. Log on to the ops1 host and set action to rma and action status to pending for the anomalous chunkserver host. In this example, the name of the anomalous chunkserver host is m1. Command:
 
@@ -491,6 +506,9 @@ at desired state.
 **Prerequisites**
 
 None.
+
+**Procedure**
+
 1. Terminate DataHub services.
 i. Log on to the webconsole host of the target cluster and run the following commands as an administrator. Ensure that no data is returned.
 
@@ -535,6 +553,9 @@ Collect the following information: Hostname or IP address. Drive letter: the dri
 | g the |   |   |
 
 You can retrieve this number by running the `puadmin lscs -m` command.
+
+**Procedure**
+
 1. Before you can execute common O&M commands, you must log on to the command-line
 interface. i. Log on to Apsara Infrastructure Management. ii. In the navigation pane on the left, choose **Resource Management > Product Cluster**
 **O&M**.
@@ -595,6 +616,9 @@ This topic describes how to log on to Apsara Bigdata Manager.
 **Prerequisites**
 
 The endpoint of the Apsara Uni-manager Operations Console and the username and password that are used to log in to the console are obtained from a deployment engineer or an administrator. The endpoint of the Apsara Uni-manager Operations Console is in the following format: regi on-id.ops.console.intranet-domain-id. A supported browser is used. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -625,6 +649,9 @@ Dashboard page of Apsara Bigdata Manager opens automatically.
 #### 3.2.1 Health Score
 
 The Health Score page displays metrics for big data products and alerts at different severity levels. It also provides details and lets you recheck after fixing issues.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. Click the
 icon in the upper-left corner. Then select **DataHub**.
@@ -635,6 +662,9 @@ The Health Score page displays metrics, metric sources, severity levels, and met
 #### 3.2.2 Reports
 
 Reports display inspection results for big data products.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. Click the
 icon in the upper-left corner. Then select **DataHub**.
@@ -788,6 +818,9 @@ icon. Then select the **DataHub** product.
 ###### 3.3.3.2.1 DataHub Fuxi Service O&M Entry
 
 This section describes how to access the DataHub Fuxi service O&M page in Apsara Bigdata Manager.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. In the upper-left corner, click the
 icon, then select the **DataHub** product.
@@ -828,6 +861,9 @@ This section summarizes compute node resource information for the Fuxi Service, 
 ###### 3.3.3.2.3 DataHub Fuxi server roles
 
 The Fuxi server roles page displays information about Fuxi server roles, such as the server role name, host, IP address, server role status, and host status.
+
+**Procedure**
+
 1. In the navigation pane on the left of the **O&M** interface, click **Fuxi Service**.
 2. Select a cluster on the right, and then click **Server Roles** to open the server roles page for
 the Fuxi service. The server roles page displays information about Fuxi server roles, such as the server role name, host, IP address, server role status, and host status.
@@ -862,6 +898,9 @@ You can check whether a compute node is added to the **blacklist** in the **comp
 ###### 3.3.3.3.1 DataHub Pangu Service O&M Entry
 
 This section describes how to access the DataHub Pangu Service O&M page in Apsara Bigdata Manager.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. In the upper-left corner, click the
 icon, then select the **DataHub** product.
@@ -949,6 +988,9 @@ Apsara Big Data Manager (ABM) allows you to clear the recycle bin of Apsara Dist
 **Prerequisites**
 
 You have an Apsara Bigdata Manager account with permissions to manage DataHub.
+
+**Procedure**
+
 1. In the navigation pane on the left of the **Service O&M** page, click **Pangu Service**. Then,
 select a cluster to open the **Overview** page for the Pangu service.
 2. In the upper-right corner, click **Operation** and then select **Clear System Recycle Bin**.
@@ -1047,6 +1089,9 @@ You have an Apsara Bigdata Manager account with DataHub management permissions. 
 **Background information**
 
 In a Pangu distributed file system, a volume functions as a namespace. The default volume is PanguDefaultVolume. A cluster with many machines may contain multiple volumes. Each volume includes a Master group consisting of one primary machine and two secondary machines.
+
+**Procedure**
+
 1. In the navigation pane on the left of the **Service O&M** page, click **Pangu Service**. On the
 right, select a cluster to open the **Overview** page for the Pangu service in that cluster.
 2. Click **Operations** and select **Switch Master**. In the dialog box that appears, set the
@@ -1071,6 +1116,9 @@ Click **Actions**, and then click **History** after **Master Execution Switch** 
 ##### 3.3.4.1 DataHub Cluster O&M Entry
 
 This section describes how to access the DataHub cluster Operations and Maintenance (O&M) page in Apsara Bigdata Manager.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. In the upper-left corner, click the
 icon, then select **DataHub**.
@@ -1232,6 +1280,9 @@ In an Apsara Stack environment, scaling out a cluster is a complex process. New 
 **Prerequisites**
 
 DataHub clusters support scaling in only **cs** and **frontend** nodes. Before you scale in **cs** machines: Use the `df` command to check the disk usage on each machine. Determine whether scaling in n machines will cause disks to become full. If disks will become full, do not scale in. Because scaling in causes shards to migrate to other machines, log on to the webconsole virtual machine to calculate the shard load after scaling in. If the number of shards on a machine exceeds 1,000, performance may be affected. Do not scale in if this is the case. Before you scale in **frontend** machines: Use the `df` command to check the disk usage on each machine. Determine whether scaling in n machines will cause disks to become full. If disks will become full, do not scale in. Because scaling in causes shards to migrate to other machines, log on to the webconsole virtual machine to calculate the shard load after scaling in. If the number of shards on a machine exceeds 1,000, performance may be affected. Do not scale in if this is the case. Check the traffic and Queries Per Second (QPS). If traffic exceeds 400 MB or QPS exceeds 15,000, do not scale in.
+
+**Procedure**
+
 1. On the **Cluster O&M** page, select a cluster in the navigation pane on the left. Then, on the
 **Machine List** page, select one or more hosts with the **cs** or **frontend** role to scale in.
 2. Choose **Operation > Scale In Node**. The **Scale In Node** dialog box appears.
@@ -1263,6 +1314,9 @@ Use information such as **Parameter Settings**, **Machine Details**, and **Runti
 **RequestId**
 
 You can use Apsara Bigdata Manager to perform a reverse DNS lookup for a DataHub RequestId. This process retrieves the time a job occurred and the host IP address, which helps you locate logs and troubleshoot issues.
+
+**Procedure**
+
 1. On the **Cluster O&M** page, select the **Machine List** tab to go to the **Machine List** page.
 2. Click **Reverse Lookup RequestId**. In the **Reverse Lookup RequestId** dialog box, enter
 the **Request ID**.
@@ -1367,6 +1421,9 @@ After you create a standard job, you can manually execute it to perform O&M oper
 **Prerequisites**
 
 You have an administrator account for Apsara Bigdata Manager.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. Click the
 icon in the upper-left corner and select DataHub.
@@ -1391,6 +1448,9 @@ Scheduled jobs are disabled by default. You must enable a job for it to run. If 
 **Prerequisites**
 
 You have an administrator account for Apsara Bigdata Manager.
+
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. Click the
 icon in the upper-left corner and select DataHub.
@@ -1656,6 +1716,8 @@ Operation audit is specific to each product. To view the operation audit for a p
 
 > **Note:** Operation audit displays the O&M history from the product’s **O&M** interface. It does not include O&M operations for job services.
 
+**Procedure**
+
 1. Log on to Apsara Bigdata Manager.
 2. In the upper-left corner, click the
 icon and select DataHub.
@@ -1701,7 +1763,11 @@ Perform routine maintenance to ensure the normal state of DataHub control compon
 
 **Inspection item**
 
-Check whether all DataHub services have reached the desired state without errors. i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
+Check whether all DataHub services have reached the desired state without errors.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
 **Platform Operation** > **Apsara Infrastructure Management**.
 ii. In the left-side navigation pane, choose **Resource Management > Product & Cluster**
 **O&M**. On the page that appears, enter **datahub** in the Product | Cluster search box to
@@ -1717,7 +1783,11 @@ If **Ready** is displayed in the Status column, the DataHub cluster is in the no
 
 **Inspection item**
 
-Check the core system metrics of physical servers in the DataHub cluster, including the CPU utilization, load, memory usage, network traffic, TCP retransmission, and disk I/O. i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
+Check the core system metrics of physical servers in the DataHub cluster, including the CPU utilization, load, memory usage, network traffic, TCP retransmission, and disk I/O.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
 **Monitor&Alert > Monitor Management > Cloud Platform Monitoring Dashboard**.
 ii. In the left-side navigation pane, choose **Cloud Product Business Monitoring > Alert**
 **History**.
@@ -1737,7 +1807,11 @@ Normal: No **Emergency** alerts are displayed. Abnormal: One or more **Emergency
 
 **Inspection item**
 
-Check whether the proportion of frontend servers to chunk servers in the DataHub cluster is proper. If the proportion is improper, a cluster scale-in or scale-out is required. i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
+Check whether the proportion of frontend servers to chunk servers in the DataHub cluster is proper. If the proportion is improper, a cluster scale-in or scale-out is required.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
 **Platform Operation** > **Apsara Infrastructure Management**.
 ii. In the left-side navigation pane, choose **Resource Management > Product & Cluster**
 **O&M**. On the page that appears, enter **datahub** in the Product | Cluster search box to
@@ -1753,7 +1827,11 @@ Normal: The proportion of frontend servers to chunk servers is smaller than 1. A
 
 **Inspection item**
 
-Check the data read and write limits of DataHub. i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
+Check the data read and write limits of DataHub.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
 **Platform Operation > Apsara Infrastructure Management**. In the left-side
 navigation pane, choose **O&M Tools > Resource Dashboard**. ii. On the **Resource Dashboard** page, enter **datahub_db** in the Name search box. View the information in the **Result** column to obtain the information required for logging in to the DataHub metadatabase. iii. Run the following MySQL command to log in to the DataHub metadatabase and query the current data read and write limits:
 
@@ -1777,7 +1855,11 @@ If the configurations in your runtime environment are different from the recomme
 
 **Inspection item**
 
-Apsara Distributed File System provides the underlying storage service for DataHub. In this inspection item, check whether Apsara Distributed File System is normal. i. Log in to the Apsara Big Data Manager (ABM) console, and then go to the **DataHub** page. ii. In the top navigation bar, click **Operation and maintenance > Service operation**
+Apsara Distributed File System provides the underlying storage service for DataHub. In this inspection item, check whether Apsara Distributed File System is normal.
+
+**Procedure**
+
+i. Log in to the Apsara Big Data Manager (ABM) console, and then go to the **DataHub** page. ii. In the top navigation bar, click **Operation and maintenance > Service operation**
 **and maintenance > Pangu Service** On the page that appears, click the **Overview** tab
 to view the relevant information.
 
@@ -1789,9 +1871,15 @@ Normal: All Apsara Distributed File System server roles are in the good state, w
 
 **Distributed Lock Synchronization System (Control Service) for**
 
+**DataHub**
+
 **Inspection item**
 
-Apsara Name Service and Distributed Lock Synchronization System provides service registration and underlying metadata consistency check for DataHub. In this inspection item, check whether Apsara Name Service and Distributed Lock Synchronization System is normal. i. Log in to the ABM console, and then go to the **DataHub** page. ii. In the top navigation bar, click **Operation and maintenance > Service operation**
+Apsara Name Service and Distributed Lock Synchronization System provides service registration and underlying metadata consistency check for DataHub. In this inspection item, check whether Apsara Name Service and Distributed Lock Synchronization System is normal.
+
+**Procedure**
+
+i. Log in to the ABM console, and then go to the **DataHub** page. ii. In the top navigation bar, click **Operation and maintenance > Service operation**
 **and maintenance > Control Services**. On the page that appears, click the **Overview**
 tab to view the relevant information.
 
@@ -1803,7 +1891,11 @@ Normal: Apsara Name Service and Distributed Lock Synchronization System is in th
 
 **Inspection item**
 
-Check the health status of Job Scheduler. i. Log in to the ABM console, and then go to the **DataHub** page. ii. In the top navigation bar, click **Operation and maintenance > Service operation**
+Check the health status of Job Scheduler.
+
+**Procedure**
+
+i. Log in to the ABM console, and then go to the **DataHub** page. ii. In the top navigation bar, click **Operation and maintenance > Service operation**
 **and maintenance > Fuxi service**. On the page that appears, click the **Overview** tab
 to view the relevant information.
 
@@ -1842,7 +1934,11 @@ Normal: The frontend request QPS is smaller than 15,000, and the queue length is
 
 **Inspection item**
 
-A DataHub broker server is the carrier of shards. The number of shards that can store topic tables is limited. If the number of shards exceeds the limit, the service performance and stability are affected. In this inspection item, check whether the number of shards on the broker servers exceeds the limit. i. Log in to the DataHub WebConsole server and switch to the admin user. ii. Run the following command to check the number of shards on DataHub broker servers and whether it exceeds the limit.
+A DataHub broker server is the carrier of shards. The number of shards that can store topic tables is limited. If the number of shards exceeds the limit, the service performance and stability are affected. In this inspection item, check whether the number of shards on the broker servers exceeds the limit.
+
+**Procedure**
+
+i. Log in to the DataHub WebConsole server and switch to the admin user. ii. Run the following command to check the number of shards on DataHub broker servers and whether it exceeds the limit.
 
 ```
 // Note: If the tool directory already exists in the package directory, you do not need to decompress the tool package in the TAR format. Otherwise, decompress the pa ckage to obtain the tool. cd /home/admin/datahub_service/package tar zxvf datahub_tools_release_64.tar.gz cd tool export LD_LIBRARY_PATH=/apsara/lib64/:../lib/ ./xstream_tool -x x mo // Check the maximum number of shards that are allowed on a broker server in the en vironment. r plan Datahub/XStreamServicex |grep -i "WorkerMaxPartitionNumber"
@@ -1856,7 +1952,11 @@ Normal: The number of shards is less than 1,000. Abnormal: The number of shards 
 
 **Inspection item**
 
-The datahub_db instance is the metadatabase of DataHub. The status of this instance affects access to DataHub backend services. In this inspection item, check whether the disk usage and IOPS of the datahub_db instance exceed the warning thresholds. i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
+The datahub_db instance is the metadatabase of DataHub. The status of this instance affects access to DataHub backend services. In this inspection item, check whether the disk usage and IOPS of the datahub_db instance exceed the warning thresholds.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
 
 **Product Operation > Databases > ApsaraDB Operations and Maintenance**
 
@@ -1875,7 +1975,11 @@ Normal: In ApsaraDB Operations and Maintenance System, the instance status or th
 
 **Inspection item**
 
-DataHub services include Xstream, Shipper, and Coordinator services. These services are deployed on the XStream broker and master nodes, Shipper executor and controller nodes, and Coordinator offset and master nodes. In this inspection item, check whether processes on these service nodes are restarted by comparing the process start time with the current time. In addition, check whether core files that indicate program crashes exist on the physical servers of these nodes. i. Log in to the DataHub WebConsole server and switch to the admin user. Run the following command to view the relevant service information:
+DataHub services include Xstream, Shipper, and Coordinator services. These services are deployed on the XStream broker and master nodes, Shipper executor and controller nodes, and Coordinator offset and master nodes. In this inspection item, check whether processes on these service nodes are restarted by comparing the process start time with the current time. In addition, check whether core files that indicate program crashes exist on the physical servers of these nodes.
+
+**Procedure**
+
+i. Log in to the DataHub WebConsole server and switch to the admin user. Run the following command to view the relevant service information:
 
 ```
 r al r wwl Datahub/XStreamServicex r wwl Datahub/CoordinatorServicex r wwl Datahub/ShipperServicex
@@ -1924,7 +2028,11 @@ obtain and click the icon in the **Actions** column to go to the monitoring dash
 
 **Inspection item**
 
-Check the overall read and write latency of the DataHub cluster. i. Log in to the Apsara Uni-manager Operations Console and go to the ABM page. ii. On the **Instrument cluster** page of ABM, find the **Cluster read/write latency** metric in the DataHub section.
+Check the overall read and write latency of the DataHub cluster.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Operations Console and go to the ABM page. ii. On the **Instrument cluster** page of ABM, find the **Cluster read/write latency** metric in the DataHub section.
 
 > **Note:** In the preceding figure, the read/write latency metric is measured in milliseconds.
 
@@ -1939,6 +2047,9 @@ Normal: The curve is smooth, and the latency is less than 5 seconds. Abnormal: T
 **Inspection item**
 
 Check whether the system contains topics that have a large number of requests, have errors, or have no requests.
+
+**Procedure**
+
 1. Log in to the DataHub WebConsole server.
 2. Run the following command to go to the directory in which xstream_tool resides:
 
@@ -1954,7 +2065,11 @@ Normal: The values in the QPS column are close to each other for all the topics.
 
 **Inspection item**
 
-Check whether data pushed from the business side to topic shards meets the business scenario and expectations of the customer. i. Log in to the Apsara Uni-manager Management Console and go to the Shard List tab of a DataHub topic. ii. Check the shard status, earliest data time, latest data time, and data amount on the Shard List tab.
+Check whether data pushed from the business side to topic shards meets the business scenario and expectations of the customer.
+
+**Procedure**
+
+i. Log in to the Apsara Uni-manager Management Console and go to the Shard List tab of a DataHub topic. ii. Check the shard status, earliest data time, latest data time, and data amount on the Shard List tab.
 
 **Inspection results**
 
@@ -1987,7 +2102,11 @@ i. Normal: The synchronization task is in the RUNNING or EXECUTING state, the sy
 
 **Inspection item**
 
-Check whether data consumption from subscribed topics on the business side meets expectations. i. Check the latest data time on the Shard List tab of the topic details page. In the following example, the latest data time of a shard is `14:41:17 on October 28, 2021` . ii. Check the consumption checkpoint on the topic subscription page. In the following example, the consumption checkpoint of the topic is `23:07:16 on October 27, 2021` .
+Check whether data consumption from subscribed topics on the business side meets expectations.
+
+**Procedure**
+
+i. Check the latest data time on the Shard List tab of the topic details page. In the following example, the latest data time of a shard is `14:41:17 on October 28, 2021` . ii. Check the consumption checkpoint on the topic subscription page. In the following example, the consumption checkpoint of the topic is `23:07:16 on October 27, 2021` .
 
 **Inspection results**
 

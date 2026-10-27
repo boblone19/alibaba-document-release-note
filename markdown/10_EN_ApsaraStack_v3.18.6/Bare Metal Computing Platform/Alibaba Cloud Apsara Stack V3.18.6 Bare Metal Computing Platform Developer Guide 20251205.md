@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 158
 source_pdf: "c245a5536e4728eb_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Developer Guide 20251205.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20Developer%20Guide%2020251205.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Bare Metal Computing Platform Developer Guide 20251205
@@ -212,6 +212,8 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             e.printStackTrace();
 ```
 
+`}` `}` `}`
+
 **Important**
 
 > When you use the HTTPS protocol to access OpenAPI, the SDK enables SSL/TLS certificate validation by default. If your code environment does not have a valid certificate, a certificate validation failed error is reported.
@@ -235,6 +237,8 @@ Lists the PAI SSO logon information.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageNumb er | Integ er | Query | No | 1 | The page number for paged queries. The default value is 1. |
@@ -242,6 +246,8 @@ This operation uses only common request headers. For more information, see the C
 | Departme nt | String | Query | No | ** | The name of the organization. Used to filter clusters that belong to a specific organization. |
 | RegionId | String | Query | No | ** | The ID of the region that is used to filter clusters. |
 | All | Boole an | Query | No | false | If this parameter is set to true, the paging parameters are ignored, and the PAI SSO logon information for all clusters is returned. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -260,6 +266,27 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.2 DescribePaiSSOInfo
 
 Retrieves PAI Single Sign-On (SSO) information.
@@ -272,6 +299,8 @@ This operation uses common request headers and does not require any special requ
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the reused container cluster. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -283,6 +312,27 @@ This operation uses common request headers and does not require any special requ
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}`
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.3 CreatePaiSSOInfo
 
 This operation registers a service provider (SP) with the specified parameters and records the information.
@@ -290,6 +340,8 @@ This operation registers a service provider (SP) with the specified parameters a
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -317,6 +369,24 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+```
+
+```xml
+<errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.4 ModifyAckClusterDeletionProtection
 
 Modifies the deletion protection status of an ACK cluster.
@@ -325,10 +395,14 @@ Modifies the deletion protection status of an ACK cluster.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 | DeletionPr otection | Boole an | Query | No | true | The deletion protection status. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -347,6 +421,27 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.5 DescribeAckClusterLogs
 
 Retrieves the logs of an ACK cluster.
@@ -354,6 +449,8 @@ Retrieves the logs of an ACK cluster.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -370,6 +467,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.6 DescribeAckClusterAddon
 
 Retrieves the installation status of components in an ACK cluster.
@@ -378,10 +496,14 @@ Retrieves the installation status of components in an ACK cluster.
 
 This operation requires only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 | AddonTyp e | String | Query | No | AI | The type of the component. Valid value: AI. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -394,6 +516,25 @@ This operation requires only common request headers. For more information, see C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.7 ListAvailableBmsInstance
 
 Lists the instances that can be added to a cluster.
@@ -401,6 +542,8 @@ Lists the instances that can be added to a cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -419,6 +562,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.8 DeleteAiDomain
 
 Deletes a domain name from the AI console.
@@ -426,6 +590,8 @@ Deletes a domain name from the AI console.
 **Request header**
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er Name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -444,6 +610,25 @@ This operation uses common request headers and does not require special request 
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.9 CreateAiDomain
 
 Creates a domain name for the AI console.
@@ -452,10 +637,14 @@ Creates a domain name for the AI console.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 | SlbIp | String | Query | No | ** | The IP address of the Server Load Balancer (SLB) that is associated with the AI console domain name. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -474,7 +663,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.10 InstallAIAddOn
 
@@ -519,6 +727,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}`
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.11 DeleteBmsCluster
 
 Deletes a basic bare machine cluster.
@@ -527,10 +756,14 @@ Deletes a basic bare machine cluster.
 
 This operation uses only common request headers. For more information, see the document about common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster to delete. |
 | InstanceLi st | Json | Query | No | ** | The list of bare machines to delete from the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -549,6 +782,27 @@ This operation uses only common request headers. For more information, see the d
 |---|---|---|---|
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.12 CreateSp
 
 Creates an SP for an ACK cluster.
@@ -557,9 +811,13 @@ Creates an SP for an ACK cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -572,6 +830,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.13 DeleteAckCluster
 
 Deletes an ACK cluster.
@@ -580,10 +859,14 @@ Deletes an ACK cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 | InstanceLi st | Json | Query | No | ** | The list of bare metal instances to remove from the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -596,6 +879,25 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.14 DeleteAIAddOn
 
 Deletes the AI suite installed on an ACK cluster.
@@ -604,9 +906,13 @@ Deletes the AI suite installed on an ACK cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -624,6 +930,27 @@ This operation uses common request headers. No special request headers are requi
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
+
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.15 ListHistoryEvent
 
@@ -648,6 +975,8 @@ This operation uses only common request headers. For more information, see the C
 |---|---|---|---|---|---|
 | Status | String | Query | No | ** | The status. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -659,6 +988,27 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.16 DeleteBmsClusterInstances
 
 This operation scales in a bare machine cluster.
@@ -667,11 +1017,15 @@ This operation scales in a bare machine cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 | InstanceId List | Json | Query | No | ** | The list of instance IDs to remove from the cluster. |
 | InstanceLi st | Json | Query | No | ** | The list of bare machines to delete from the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -687,6 +1041,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.17 ListReStartEvent
 
 Retries a specified task.
@@ -694,6 +1069,8 @@ Retries a specified task.
 **Request headers**
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -708,6 +1085,8 @@ This operation uses only common request headers. For more information, see the C
 | EvpcId | String | Query | No | ** | The EVPC of the cluster. You can change the EVPC when you retry the task. |
 | DeleteApp lyFailedIns tanceNam eList | Json | Query | No | ** | The instance names of the bare metal machines to remove because their requests failed. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -719,7 +1098,24 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.18 CreateBmsCluster
 
@@ -728,6 +1124,8 @@ Creates a basic bare metal cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -765,6 +1163,8 @@ This operation uses only common request headers. For more information, see Commo
 | IsCreateC pfsCluster | Boole an | Query | No | true | Specifies whether to create a CPFS cluster. This parameter is required for general- purpose clusters. To create a CPFS cluster, you must specify an `EvpcId` and have at least three bare metal nodes. |
 | VolumeInf o | Json | Query | No | ** | The mount information for third-party storage. This parameter is used for managed clusters. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -781,6 +1181,27 @@ This operation uses only common request headers. For more information, see Commo
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
+
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.19 AddBmsClusterInstances
 
@@ -819,7 +1240,26 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.20 CreateAckCluster
 
@@ -899,6 +1339,8 @@ This operation uses only common request headers. For more information, see Commo
 | IsCreateCl assicSlb | Boole an | Query | No | true | Specifies whether to create a CLB instance. |
 | VolumeInf o | Json | Query | No | ** | The mount information for third-party storage on a managed cluster. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -910,6 +1352,25 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.21 ListAckClusterInstances
 
 Lists ACK cluster instances.
@@ -917,6 +1378,8 @@ Lists ACK cluster instances.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -941,6 +1404,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.22 ListAckCluster
 
 Lists ACK clusters.
@@ -948,6 +1432,8 @@ Lists ACK clusters.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -980,6 +1466,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.23 DescribeBmsCluster
 
 Describes a bare machine cluster.
@@ -992,6 +1499,8 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique ID of the cluster. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1003,7 +1512,26 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.24 DescribeAckCluster
 
@@ -1012,6 +1540,8 @@ Retrieves the details of an ACK cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1030,6 +1560,23 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.25 DeleteAckClusterInstances
 
 Removes instances from an ACK cluster.
@@ -1037,6 +1584,8 @@ Removes instances from an ACK cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1056,6 +1605,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.26 ListBmsCluster
 
 This operation lists basic bare machine clusters.
@@ -1063,6 +1633,8 @@ This operation lists basic bare machine clusters.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1073,6 +1645,8 @@ This operation uses common request headers. No special request headers are requi
 | Status | String | Query | No | ** | Filters the list of clusters by cluster status. |
 | PageNumb er | Integ er | Query | No | 1 | The page number for a paged query. The default value is 1. |
 | PageSize | Integ er | Query | No | 10 | The number of entries on each page for a paged query. The default value is 10. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1090,6 +1664,27 @@ This operation uses common request headers. No special request headers are requi
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
+
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.27 AddAckClusterInstances
 
@@ -1122,6 +1717,8 @@ This operation uses common request headers. No special request headers are requi
 | WorkerInst anceTypeL ist | Json | Query | No | ** | The list of instance types for the worker nodes to add. You can specify up to 10 instance types. |
 | WorkerDat aDiskList | Json | Query | No | ** | The information about the data disks for the worker nodes to add. You can specify up to 10 data disks. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1133,6 +1730,25 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.28 ListAckInstanceType
 
 Lists the supported instance types for Container Service for Kubernetes (ACK) clusters.
@@ -1140,6 +1756,8 @@ Lists the supported instance types for Container Service for Kubernetes (ACK) cl
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1160,6 +1778,8 @@ This operation uses only common request headers. For more information, see Commo
 | VpcAdvan cedResour ce | Boole an | Query | No | true | Specifies whether to enable advanced features for the VPC. |
 | NodeType | String | Query | No | ** | The type of ACK node. Valid values: `master` and `worker`. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1171,7 +1791,24 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.29 DescribeEasyAIStatus
 
@@ -1180,6 +1817,8 @@ Queries the status of the EasyAI service.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1198,6 +1837,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.30 ListInstanceTypeDiskCategory
 
 Lists the disk types that an instance type supports.
@@ -1205,6 +1865,8 @@ Lists the disk types that an instance type supports.
 **Request header**
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1225,6 +1887,8 @@ This operation uses common request headers and does not require special request 
 | DiskType | String | Query | No | ** | The disk type to query. Valid values: `SystemDisk` and `DataDisk`. |
 | SystemDis kCategory | String | Query | No | ** | This parameter is required if you set `DiskType` to `DataDisk`. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1242,7 +1906,26 @@ This operation uses common request headers and does not require special request 
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.31 ModifySecurityGroupRule
 
@@ -1251,6 +1934,8 @@ Modifies a security group rule.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1272,6 +1957,8 @@ This operation uses common request headers. For more information, see Common req
 | RelatedGr oupId | String | Query | No | ** | The ID of the authorized security group. |
 | Descriptio n | String | Query | No | ** | The description. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1283,6 +1970,25 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+`{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.32 ModifySecurityGroup
 
 Modifies a security group.
@@ -1290,6 +1996,8 @@ Modifies a security group.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1308,7 +2016,26 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Response in `JSON` format Response in `XML` format
+**Examples**
+
+Response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.33 ListSecurityGroupRule
 
@@ -1318,12 +2045,16 @@ Lists security group rules.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | String | Query | No | ** | The ID of the security group. |
 | Direction | String | Query | No | ** | The direction of the rule. |
 | PageNumb er | Integ er | Query | No | 1 | The number of the page to return. |
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1336,7 +2067,24 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.34 GetAISuiteK8SToken
 
@@ -1346,11 +2094,15 @@ Retrieves the token for an AI suite.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | AckCluster Id | String | Query | No | ** | The ID of the ACK cluster. |
 | UserId | String | Query | No | ** | The user ID. |
 | Username | String | Query | No | ** | The username. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1365,6 +2117,27 @@ This operation uses common request headers. For more information, see Common req
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
+
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.35 ProxyAISuiteDev
 
@@ -1384,6 +2157,8 @@ This operation uses only common request headers. For more information, see the C
 | ContentTy pe | String | Query | No | ** | The content type. |
 | JSONBody | String | Query | No | ** | The body parameters. |
 
+**Data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1395,6 +2170,25 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+`{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.36 AIRListAcrImages
 
 Retrieves a list of ACR images.
@@ -1402,6 +2196,8 @@ Retrieves a list of ACR images.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1422,6 +2218,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.37 ListQuota
 
 Lists all quotas.
@@ -1430,6 +2247,8 @@ Lists all quotas.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The ID of the cluster. |
@@ -1437,6 +2256,8 @@ This operation uses common request headers. No special request headers are requi
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. |
 | SortField | String | Query | No | ** | The field to use for sorting. |
 | SortType | String | Query | No | ** | The sort order. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1455,7 +2276,26 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.38 ListWorkspace
 
@@ -1464,6 +2304,8 @@ Retrieves a list of workspaces.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1479,6 +2321,8 @@ This operation uses only common request headers. For more information, see Commo
 | SortField | String | Query | No | ** | The field to use for sorting. |
 | SortType | String | Query | No | ** | The sort type. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1490,6 +2334,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}`
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.39 ListInstance
 
 Retrieves a list of instances.
@@ -1498,11 +2363,15 @@ Retrieves a list of instances.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageNumb er | Integ er | Query | No | 1 | The page number. |
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. |
 | InstanceN ame | String | Query | No | ** | The instance name. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1521,6 +2390,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.40 ListSecurityGroupInstance
 
 Lists the instances that are attached to a security group.
@@ -1528,6 +2418,8 @@ Lists the instances that are attached to a security group.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1543,6 +2435,8 @@ This operation uses common request headers. No special request headers are requi
 | PageNumb er | Integ er | Query | No | 1 | The page number. |
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1554,7 +2448,24 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+```
+
+Sample response in `XML` format
+
+```xml
+<data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.41 ListSecurityGroup
 
@@ -1563,6 +2474,8 @@ Lists security groups.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er Name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1580,6 +2493,8 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|---|---|
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. |
 
+**Response data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1591,6 +2506,27 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.42 ListKeyPair
 
 Lists key pairs.
@@ -1599,12 +2535,16 @@ Lists key pairs.
 
 This operation uses common request headers. No special request headers are used. For more information, see Common Request Parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | KeyPairNa me | String | Query | No | ** | Name |
 | PageNumb er | Integ er | Query | No | 1 | The page number. The default value is 1. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. The default value is 10. |
 | KeyPairFin gerPrint | String | Query | No | ** | The fingerprint of the key pair. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1623,6 +2563,27 @@ This operation uses common request headers. No special request headers are used.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.43 DeleteSecurityGroupRule
 
 Deletes a security group rule.
@@ -1631,10 +2592,14 @@ Deletes a security group rule.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | String | Query | No | ** | The ID of the security group. |
 | SgrId | String | Query | No | ** | The ID of the rule. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1647,7 +2612,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.44 DeleteSecurityGroup
 
@@ -1657,9 +2641,13 @@ Deletes a security group.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SgId | String | Query | No | ** | The ID of the security group. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1672,7 +2660,24 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The returned version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.45 DeleteKeyPair
 
@@ -1682,9 +2687,13 @@ Deletes a key pair.
 
 This operation uses common request headers and does not require any special request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | KeyPairNa me | String | Query | No | ** | The name of the key pair. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1702,6 +2711,27 @@ This operation uses common request headers and does not require any special requ
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
+
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.46 CreateSecurityGroup
 
@@ -1741,6 +2771,27 @@ This operation uses common request headers. Special request headers are not requ
 |---|---|---|---|
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.47 DeleteSecurityGroupInstance
 
 You can configure a security group instance.
@@ -1748,6 +2799,8 @@ You can configure a security group instance.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1767,7 +2820,26 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.48 AddSecurityGroupRule
 
@@ -1776,6 +2848,8 @@ Adds a security group rule.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1789,6 +2863,8 @@ This operation uses only common request headers. For more information, see Commo
 | CidrIp | String | Query | No | ** | The source IPv4 CIDR block. |
 | RelatedGr oupId | String | Query | No | ** | The ID of the authorized security group. |
 | Descriptio n | String | Query | No | ** | The description. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1807,6 +2883,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.49 AddSecurityGroupInstance
 
 Adds an instance to a security group.
@@ -1820,6 +2917,8 @@ This operation uses only common request headers. For more information, see Commo
 | SgId | String | Query | No | ** | The ID of the security group. |
 | InstanceN ameList | Json | Query | No | ** | A list of instance names. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1831,7 +2930,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.50 ListBmcpMachineType
 
@@ -1840,6 +2958,8 @@ Retrieves a list of BMCP machine types.
 **Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1856,6 +2976,8 @@ This operation uses common request headers. No special request headers are requi
 | DeployTyp es | Json | Query | No | "["bmcp"]" | A list of machine type categories to query. Valid values: bmcp and ehpc. |
 | Specificati on | String | Query | No | ** | The specification. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1871,6 +2993,27 @@ This operation uses common request headers. No special request headers are requi
 | Parameter name | Type | Example | Description |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.51 TagResources
 
 Adds tags to a cluster.
@@ -1878,6 +3021,8 @@ Adds tags to a cluster.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1905,6 +3050,25 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.52 GetClusterInstanceInfo
 
 Retrieves a list of cluster instances.
@@ -1912,6 +3076,8 @@ Retrieves a list of cluster instances.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1925,6 +3091,8 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|---|---|
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. The value cannot exceed 50. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -1936,6 +3104,27 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.53 ModifyEvpc
 
 Modifies an Evpc.
@@ -1944,11 +3133,15 @@ Modifies an Evpc.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | EvpcName | String | Query | No | "" | The new display name for the Evpc. |
 | Descriptio n | String | Query | No | "" | The new description for the Evpc. |
 | EvpcId | String | Query | No | ** | The unique identifier of the Evpc. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1964,6 +3157,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.54 ListEvpcConnections
 
 Lists the connections for a specified Evpc.
@@ -1971,6 +3185,8 @@ Lists the connections for a specified Evpc.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1987,7 +3203,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-`JSON` example `XML` example
+**Examples**
+
+`JSON` example `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` example
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode>
+```
 
 ### 2.55 ListEvpc
 
@@ -1996,6 +3231,8 @@ Lists Evpcs.
 **Request header**
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2023,6 +3260,27 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.56 DeleteEvpc
 
 Deletes an Evpc.
@@ -2031,10 +3289,14 @@ Deletes an Evpc.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | EvpcId | String | Query | No | "" | The unique identifier of the Evpc. |
 | Force | Boole an | Query | No | false | Specifies whether to force delete the Evpc and all its linked instances. The default value is false. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -2047,6 +3309,23 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.57 CreateEvpc
 
 Creates an Evpc.
@@ -2054,6 +3333,8 @@ Creates an Evpc.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2066,6 +3347,8 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|---|---|
 | Descriptio n | String | Query | No | "" | A detailed description of the Evpc. |
 
+**Data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -2077,7 +3360,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.58 UpgradeAiApplication
 
@@ -2087,10 +3389,14 @@ Upgrades an AI application in an ACK cluster.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The cluster ID. |
 | AppName | String | Query | No | ** | The name of the application to update. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2109,7 +3415,26 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.59 UnInstallAiInstanceResource
 
@@ -2118,6 +3443,8 @@ Uninstalls an AI instance resource and all its AI applications from an ACK clust
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2137,6 +3464,27 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.60 UnInstallAiApplication
 
 Uninstalls an AI application from an ACK cluster.
@@ -2145,10 +3493,14 @@ Uninstalls an AI application from an ACK cluster.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The cluster ID. |
 | AppName | String | Query | No | ** | The name of the application to uninstall. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -2161,6 +3513,25 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.61 ListAckClusterNodePool
 
 Lists the node pools for a container cluster.
@@ -2169,12 +3540,16 @@ Lists the node pools for a container cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Departme nt | String | Query | No | ** | The organization. |
 | ResourceG roup | String | Query | No | ** | The resource group. |
 | ClusterId | String | Query | Yes | ** | The unique identifier of the cluster. |
 | Type | String | Query | No | ** | The type of the node pool. Valid values: bmcp and ecs. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2187,7 +3562,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.62 ListAckClusterApp
 
@@ -2197,9 +3591,13 @@ Retrieves a list of AI applications in an ACK cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2212,6 +3610,25 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | Returns the current version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+```xml
+<errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.63 GetClusterInfo
 
 Retrieves a list of ACK cluster information.
@@ -2219,6 +3636,8 @@ Retrieves a list of ACK cluster information.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2249,6 +3668,27 @@ This operation uses common request headers. For more information, see Common par
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}`
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.64 InstallAiApplication
 
 Installs an AI application in an ACK cluster.
@@ -2256,6 +3696,8 @@ Installs an AI application in an ACK cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2297,7 +3739,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | Retrieves the version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.65 DeleteCpfsClientCluster
 
@@ -2306,6 +3767,8 @@ Deletes a high-performance storage client cluster from a container cluster.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2322,6 +3785,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.66 CreateCpfsClientCluster
 
 Creates a client cluster for high-performance storage in a container cluster.
@@ -2330,9 +3814,13 @@ Creates a client cluster for high-performance storage in a container cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2345,6 +3833,23 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+```
+
+```xml
+<data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.67 ListAckClusterEcsWorkerInstances
 
 Lists the Elastic Compute Service (ECS) worker instances in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
@@ -2353,11 +3858,15 @@ Lists the Elastic Compute Service (ECS) worker instances in an Alibaba Cloud Con
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Departme nt | String | Query | No | ** | The organization. |
 | ResourceG roup | String | Query | No | * | The resource set. |
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. The example value is for reference only. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2376,6 +3885,27 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.68 UnbindKeyPair
 
 Detaches a key pair.
@@ -2384,10 +3914,14 @@ Detaches a key pair.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | KeyPairNa me | String | Query | No | ** | The name of the key pair. |
 | MachineS NList | Json | Query | No | ** | A list of machine serial numbers (SNs). |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -2400,6 +3934,27 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}`
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.69 CreateKeyPair
 
 Creates a key pair.
@@ -2408,6 +3963,8 @@ Creates a key pair.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | String | Query | No | ** | The name of the key pair. |
@@ -2415,6 +3972,8 @@ This operation uses only common request headers. For more information, see Commo
 | ResourceG roup | String | Query | No | ** | The name of the resource group used for resource classification. |
 | RegionId | String | Query | No | ** | The region ID. This indicates the geographic location of the cluster deployment. |
 | PublicKey | String | Query | No | ** | The public key. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2433,7 +3992,26 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.70 ConfigKeyPair
 
@@ -2448,6 +4026,8 @@ This operation uses common request headers. For more information, see Common par
 | KeyPairNa me | String | Query | No | ** | The name of the key pair. |
 | MachineS NList | Json | Query | No | ** | A list of machine serial numbers (SNs). |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -2459,6 +4039,27 @@ This operation uses common request headers. For more information, see Common par
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}`
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.71 AIRListConvertJobs
 
 Retrieves a list of accelerated image transformation jobs.
@@ -2466,6 +4067,8 @@ Retrieves a list of accelerated image transformation jobs.
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2489,7 +4092,26 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.72 AIRConvertImageToDADIImage
 
@@ -2499,9 +4121,13 @@ Converts a standard image to a DADI image.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ImageRef | String | Query | No | ** | The URL of the source image to accelerate. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -2514,6 +4140,25 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format
+
+```json
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.73 CreateEhpcCluster
 
 Creates an Elastic High Performance Computing (EHPC) cluster.
@@ -2521,6 +4166,8 @@ Creates an Elastic High Performance Computing (EHPC) cluster.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er Name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2554,6 +4201,8 @@ This operation uses only common request headers. For more information, see Commo
 | IsCreateC pfsCluster | String | Query | No | true | Specifies whether to create a CPFS cluster. This parameter is required for general- purpose clusters. To create a CPFS cluster, you must specify an `EvpcId` and have at least three bare machine nodes. |
 | CPFSFileS ystem | String | Query | No | ** | The CPFS file system. |
 
+**Response data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -2569,7 +4218,26 @@ This operation uses only common request headers. For more information, see Commo
 | Parameter Name | Type | Example | Description |
 | responseVersio n | String | v1 | The version of the response. |
 
-Sample response in `JSON` format Sample response in `XML` format
+**Examples**
+
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.74 DeleteEhpcClusterInstances
 
@@ -2578,6 +4246,8 @@ Scales in an Elastic High Performance Computing (E-HPC) cluster.
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2591,6 +4261,8 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|---|---|
 | InstanceLi st | Json | Query | No | ** | A list of bare metal instances to delete from the cluster. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -2602,6 +4274,27 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.75 DeleteEhpcCluster
 
 Deletes an Elastic High Performance Computing (EHPC) cluster.
@@ -2610,10 +4303,14 @@ Deletes an Elastic High Performance Computing (EHPC) cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 | InstanceLi st | Json | Query | No | ** | The list of bare metal servers to remove from the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2632,6 +4329,27 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.76 ListEhpcCluster
 
 Retrieves a list of EHPC clusters.
@@ -2639,6 +4357,8 @@ Retrieves a list of EHPC clusters.
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2668,7 +4388,24 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Sample response in `JSON` format Sample response in `XML` format
+Sample response in `JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` Sample response in `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
 
 ### 2.77 AddEhpcClusterInstances
 
@@ -2677,6 +4414,8 @@ Scales out an ACK cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see the documentation about common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2690,6 +4429,8 @@ This operation uses only common request headers. For more information, see the d
 | ActivationI d | String | Query | No | ** | The ID of Cloud Assistant. This parameter is required for general-purpose clusters. |
 | Activation Code | String | Query | No | ** | The activation code for Cloud Assistant. This parameter is required for general-purpose clusters. |
 | ZoneId | String | Query | No | ** | The zone ID for the general-purpose cluster. This parameter is required if no zone has been set for the cluster. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2708,6 +4449,27 @@ This operation uses only common request headers. For more information, see the d
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.78 DescribeEhpcCluster
 
 Queries the details of a specified EHPC cluster.
@@ -2715,6 +4477,8 @@ Queries the details of a specified EHPC cluster.
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2731,6 +4495,27 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
+**Examples**
+
+`JSON` format `{`
+
+```json
+ "responseVersion":"v1",
+ "data":{},
+ "errorTitle":"Successful",
+ "requestId":"**",
+ "success":true,
+ "errorMessage":"Successful",
+ "errorCode":"Successful",
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
+```
+
 ### 2.79 DescribeSpecification
 
 Queries the specifications of a GPU.
@@ -2738,6 +4523,8 @@ Queries the specifications of a GPU.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Locat ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2758,9 +4545,17 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Returned status. true: The request was successful. Failed: No. |
 | responseVersio n | String | v1 | The version number of the API response. It is used to handle different API versions. |
 
+`{`
+
 ```json
+ "responseVersion":"v1",
  "data":{
   "Specification":[
+```
+
+`{`
+
+```json
     "GpuNumber":5,
     "CpuModel":"xxxx",
     "CpuNumber":1,
@@ -2773,7 +4568,7 @@ This operation uses only common request headers. For more information, see Commo
     "Gpu":"Nvidiaxxxxx1"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "GpuNumber":5,
@@ -2788,14 +4583,18 @@ This operation uses only common request headers. For more information, see Commo
     "Gpu":"Nvidiaxxxxx2"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
+ "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
+ "status":200
 ```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -2823,7 +4622,7 @@ This operation uses only common request headers. For more information, see Commo
   <VideoMemory>0</VideoMemory>
   <Gpu>Nvidiaxxxxx2</Gpu>
  </Specification>
-</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
+</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
 ```
 
 ### 2.80 DescribeInstanceGpuVirt
@@ -2833,6 +4632,8 @@ This operation queries the details of GPU hardware virtualization.
 **Request header**
 
 This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Locat ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2853,17 +4654,24 @@ This operation uses common request headers. Special request headers are not requ
 | success | Boolean | true | The status returned. Success: true. Failed: false. |
 | responseVersio n | String | v1 | The version number of the API response, used to handle different API versions. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=DescribeInstanceGpuVirt &Common request parameters
 ```
 
-Response example
+Response example `JSON` format
 
 ```json
  "data":{
   "GpuVirtualTemplate":[
+```
+
+`{`
+
+```json
     "MachineSN":"1111",
     "AiCore":"",
     "Memory":"",
@@ -2874,10 +4682,15 @@ Response example
     "Name":"1111"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "MachineGpu":[
+```
+
+`{`
+
+```json
     "DeployType":"",
     "MachineId":"0",
     "MachineSN":"1111",
@@ -2903,14 +4716,18 @@ Name\": \"2g.10gb\",\"vdeiceNum\":1}]",
     "MemoryTotal":"22 Mib"
 ```
 
-`]` `},`
+`}` `]` `},`
 
 ```json
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
+ "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
+ "status":200
 ```
+
+`}`
 
 ```xml
 <data>
@@ -2949,7 +4766,7 @@ Name\": \"2g.10gb\",\"vdeiceNum\":1}]",
   <VirtualEnable>true</VirtualEnable>
   <MemoryTotal>22 Mib</MemoryTotal>
  </MachineGpu>
-</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
+</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
 ```
 
 ### 2.81 CreatInstanceCgpu
@@ -2964,6 +4781,8 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|---|---|
 | InstanceNa me | Strin g | Quer y | No | i-xxxxxxxxx | The name of the instance. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | UnknownError | The error code. |
@@ -2974,6 +4793,8 @@ This operation uses common request headers. No special request headers are requi
 | requestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | success | Boolean | true | The status that is returned. true: The request was successful. Failed: false |
 | responseVersio n | String | v1 | The version number of the API response. This is used to handle different API versions. |
+
+**Examples**
 
 Request example
 
@@ -2986,9 +4807,16 @@ Successful response examples
 ```json
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
+ "success":true,
  "errorMessage":"xxxx failed",
  "errorCode":"UnknownError",
-<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>xxxx failed</errorMessage> <errorCode>UnknownError</errorCode>
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>xxxx failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
 ```
 
 ### 2.82 StopInstanceGpuVirt
@@ -2998,6 +4826,8 @@ Stops GPU virtualization.
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3023,23 +4853,31 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the response. Success: true Failed: false. |
 | responseVersio n | String | v1 | The version number of the API response. This is used to handle different API versions. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=StopInstanceGpuVirt &<Common request parameters>
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "responseVersion":"v1",
+ "data":{},
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
+ "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
+ "status":200
 ```
 
+`}` `XML` format
+
 ```xml
-<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
+<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
 ```
 
 ### 2.83 CreatInstanceVxpu
@@ -3050,10 +4888,14 @@ Enables GPU hardware virtualization.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceN ame | String | Query | No | i-xxxxxxxx | The name of the instance. |
 | CreateVxp uParam | String | Query | No | {"cardId": 1, "type": "allTemplate": {"2g.10gb":2,"1g.10gb": 1}} | The hardware virtualization policy. |
+
+**Data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3072,18 +4914,29 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the response. true: The request was successful. The operation did not fail. |
 | responseVersio n | String | v1 | The version number of the API response. This is used to handle different API versions. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CreateInstanceVxpu &Common request parameters
 ```
 
-Sample response
+Sample response `JSON` format `{`
 
 ```json
+ "responseVersion":"v1",
+ "data":{},
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
+ "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
-<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
+ "status":200
+```
+
+`}` `XML` format
+
+```xml
+<responseVersion>v1</responseVersion> <data /> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
 ```

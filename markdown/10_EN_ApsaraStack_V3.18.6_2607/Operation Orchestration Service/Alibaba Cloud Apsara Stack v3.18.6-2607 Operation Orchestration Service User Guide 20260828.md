@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 59
 source_pdf: "ee84c750e3205063_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828
@@ -191,7 +191,11 @@ CloudOps Orchestration Service (OOS) uses templates to define the O&M operations
 
 #### 5.2.1 Template structure
 
-An OOS template is a UTF-8 encoded JSON or YAML document that defines the version, parameters, tasks, sequence, inputs, and outputs for O&M operations. A template is UTF-8 text in JSON or YAML format. It defines the version, parameters, tasks, sequence, inputs, and outputs for O&M operations. YAML format
+An OOS template is a UTF-8 encoded JSON or YAML document that defines the version, parameters, tasks, sequence, inputs, and outputs for O&M operations. A template is UTF-8 text in JSON or YAML format. It defines the version, parameters, tasks, sequence, inputs, and outputs for O&M operations.
+
+**Syntax**
+
+YAML format
 
 ```
 --- FormatVersion: OOS-2019-06-01 # Required. The version of the template. Example: OOS-201 9-06-01. Description: "" # Optional. The description of the template, such as the features or us age of the template. Parameters: # Optional. The parameters to be set for executing the template. For more i nformation, see the relevant documentation. RamRole: # Optional. The role that Operation Orchestration Service (OOS) assumes to cal l the API operations of each cloud product. Default value: OOSServiceRole. Tasks: # Required. The tasks to be executed. As the most important component of a templ ate, the Tasks parameter defines the details of O&M operations. Each task in the templa te corresponds to an action. By default, multiple tasks are executed one by one. If a t ask is a loop task, concurrent child execution may occur within the task. For more info rmation, see the relevant documentation. Outputs: # Optional. The template outputs, such as resource attributes. You can obtain the outputs through the API or the OOS console. For more information, see the relevant documentation.
@@ -208,13 +212,19 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Outputs": {}
 ```
 
+`}`
+
 #### 5.2.2 Overview
 
 When creating and executing a template, you can use parameters to improve the flexibility and reusability of the template.
 
 **Definition**
 
-You can define a parameter in the Parameters field of the template, including the parameter name, description, type, default value, and verification rules. YAML format
+You can define a parameter in the Parameters field of the template, including the parameter name, description, type, default value, and verification rules.
+
+**Syntax**
+
+YAML format
 
 ```
 Parameters:
@@ -257,6 +267,8 @@ JSON format (For more information, see the parameter description for the YAML fo
       "MaxLength": 10
 ```
 
+`}` `}` `}`
+
 **Reference**
 
 You can reference the parameters defined above as attributes in the Tasks field. The following is the syntax for referencing parameters:
@@ -290,7 +302,7 @@ The Tasks parameter is the most important component of a template and defines th
 
 **General attributes**
 
-YAML format
+Syntax YAML format
 
 ```bash
 Tasks:
@@ -343,16 +355,22 @@ JSON format (For more information, see the parameter description for the YAML fo
           "ValueSelector": "jq selector"
 ```
 
-`},`
+`}` `},`
 
 ```json
       "OnError": "ACS::END/ACS::NEXT/other-task-name",
       "OnSuccess": "ACS::NEXT/other-task-name/ACS::END",
 ```
 
+`}` `]` `}`
+
 #### 5.2.4 Output
 
-You can configure the output parameters for a template. The output parameters can define the results you need after the O&M operations are completed. For example, you can set the output parameters to obtain the ID of an Elastic Compute Service (ECS) instance after the O&M operation for creating the ECS instance is completed. YAML format
+You can configure the output parameters for a template. The output parameters can define the results you need after the O&M operations are completed. For example, you can set the output parameters to obtain the ID of an Elastic Compute Service (ECS) instance after the O&M operation for creating the ECS instance is completed.
+
+**Syntax**
+
+YAML format
 
 ```
 Outputs:
@@ -373,21 +391,31 @@ JSON format (For more information, see the parameter description for the YAML fo
       "Value": "{{ taskName.OutputParameter1 }}"
 ```
 
+`}` `}` `}`
+
 #### 5.2.5 Built-in functions
 
 Operation Orchestration Service (OOS) provides multiple built-in functions to help you process the parameters and outputs of templates.
 
 **Built-in functions**
 
-Fn::Base64Encode: returns the Base64-encoded result of the source string. Fn::Base64Decode: returns the Base64-decoded result of the source string. Fn::MergeMapToList: returns a list in which multiple maps are merged. Fn::MergeMap: returns a map in which multiple maps are merged. Fn::Join: returns a string in which the elements in a list are joined by the specified delimiter. Fn::Select: returns a data element from a data element container based on the specified index. Fn::Split: splits a string into an array of substrings based on the specified delimiter and returns a list of the substrings. Fn::Replace: returns a string in which the specified substring is replaced by another substring. Fn::Min: returns the element with the smallest value in the specified list. Fn::Max: returns the element with the largest value in the specified list. Fn::First: returns the first element in the specified list. Fn::Last: returns the last element in the specified list. Fn::ListJoin: returns a list in which multiple elements are joined. Fn::Equals: compares whether two values are equal. Fn::If: returns one value if the specified condition evaluates to true or another value if the specified condition evaluates to false. Fn::Not: returns true for a condition that evaluates to false, or returns false for a condition that evaluates to true. Fn::AddHour: changes the time zone by offsetting N hours from the UTC time. Fn::FormatUTCTime: changes the time granularity of the UTC time as required. Fn::Eval: executes a single-line expression in a string and returns the execution result. Fn::CalculateTimeByOpsWindow: returns a point in time in the specified time period based on the execution time of this function. Fn::And: returns true if all the specified conditions evaluate to true, or returns false if one of the conditions evaluates to false. Fn::Or: returns true if one of the specified conditions evaluates to true, or returns false if all the conditions evaluate to false. Fn::Intersection: returns the intersection of multiple arrays. Fn::Union: returns the union of multiple arrays. Fn::Difference: returns a new array that contains the difference between the union and intersection of multiple arrays. Fn::Jq: filters a JSON object and returns the required property values in the JSON object. Fn::MapJoin: combines two lists into a map in which all values in the first list are used as the keys of key-value pairs and values in the second list are used as the values of key-value pairs. Fn::IsIpInCIDR: evaluates whether the specified IP address falls within the specified CIDR block. Fn::Sub: substitutes variables in an input string with the values that you specify. Fn::DurationBetween: returns the duration between two points in time. Fn::Escape: escapes a string. Fn::ConvertMapToList: converts a JSON object into a table that stores data as key-value pairs. A built-in function consists of the name of the function and the parameters to be processed. When you call the declaration expression of a function, the function processes the parameters and returns a result. You can reference the returned result in the same way as other parameters.
+Fn::Base64Encode: returns the Base64-encoded result of the source string. Fn::Base64Decode: returns the Base64-decoded result of the source string. Fn::MergeMapToList: returns a list in which multiple maps are merged. Fn::MergeMap: returns a map in which multiple maps are merged. Fn::Join: returns a string in which the elements in a list are joined by the specified delimiter. Fn::Select: returns a data element from a data element container based on the specified index. Fn::Split: splits a string into an array of substrings based on the specified delimiter and returns a list of the substrings. Fn::Replace: returns a string in which the specified substring is replaced by another substring. Fn::Min: returns the element with the smallest value in the specified list. Fn::Max: returns the element with the largest value in the specified list. Fn::First: returns the first element in the specified list. Fn::Last: returns the last element in the specified list. Fn::ListJoin: returns a list in which multiple elements are joined. Fn::Equals: compares whether two values are equal. Fn::If: returns one value if the specified condition evaluates to true or another value if the specified condition evaluates to false. Fn::Not: returns true for a condition that evaluates to false, or returns false for a condition that evaluates to true. Fn::AddHour: changes the time zone by offsetting N hours from the UTC time. Fn::FormatUTCTime: changes the time granularity of the UTC time as required. Fn::Eval: executes a single-line expression in a string and returns the execution result. Fn::CalculateTimeByOpsWindow: returns a point in time in the specified time period based on the execution time of this function. Fn::And: returns true if all the specified conditions evaluate to true, or returns false if one of the conditions evaluates to false. Fn::Or: returns true if one of the specified conditions evaluates to true, or returns false if all the conditions evaluate to false. Fn::Intersection: returns the intersection of multiple arrays. Fn::Union: returns the union of multiple arrays. Fn::Difference: returns a new array that contains the difference between the union and intersection of multiple arrays. Fn::Jq: filters a JSON object and returns the required property values in the JSON object. Fn::MapJoin: combines two lists into a map in which all values in the first list are used as the keys of key-value pairs and values in the second list are used as the values of key-value pairs. Fn::IsIpInCIDR: evaluates whether the specified IP address falls within the specified CIDR block. Fn::Sub: substitutes variables in an input string with the values that you specify. Fn::DurationBetween: returns the duration between two points in time. Fn::Escape: escapes a string. Fn::ConvertMapToList: converts a JSON object into a table that stores data as key-value pairs.
+
+**Syntax**
+
+A built-in function consists of the name of the function and the parameters to be processed. When you call the declaration expression of a function, the function processes the parameters and returns a result. You can reference the returned result in the same way as other parameters.
 
 **Fn::Base64Encode**
 
 Returns the Base64-encoded result of the source string.
 
+**Syntax**
+
 ```json
 {"Fn::Base64Encode": "StringToBeBase64"}
 ```
+
+**Parameter**
 
 StringToBeBase64: the string to be encoded in Base64.
 
@@ -410,6 +438,8 @@ The Base64-encoded result of the source string.
 **Fn::Base64Decode**
 
 Returns the Base64-decoded result of the source string.
+
+**Syntax**
 
 ```json
 {"Fn::Base64Decode": "Base64ToBeString"}
@@ -437,9 +467,13 @@ The Base64-decoded result of the source string.
 
 Returns a list in which multiple maps are merged.
 
+**Syntax**
+
 ```json
 {"Fn::MergeMapToList": "aListConatinsDicts"}
 ```
+
+**Parameter**
 
 aListConatinsDicts: a list that contains multiple maps.
 
@@ -449,14 +483,21 @@ A list in which multiple maps are merged.
 
 **Sample request 1**
 
-```json
+`{`
+
+```
   "Fn::MergeMapToList": [
+```
+
+`{`
+
+```json
       "key_1": [
         "kye_1_item_1",
         "kye_1_item_2"
 ```
 
-`},`
+`]` `},` `{`
 
 ```json
       "key_2": [
@@ -464,13 +505,15 @@ A list in which multiple maps are merged.
         "kye_2_item_2"
 ```
 
-`},`
+`]` `},` `{`
 
 ```json
       "key_3": [
         "kye_3_item_1",
         "kye_3_item_2"
 ```
+
+`]` `}` `]` `}`
 
 **Sample return value 1**
 
@@ -482,7 +525,7 @@ A list in which multiple maps are merged.
     "key_3": "kye_3_item_1"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "key_1": "kye_1_item_2",
@@ -490,16 +533,25 @@ A list in which multiple maps are merged.
     "key_3": "kye_3_item_2"
 ```
 
+`}` `]`
+
 **Sample request 2**
 
-```json
+`{`
+
+```
   "Fn::MergeMapToList": [
+```
+
+`{`
+
+```json
       "key_1": [
         "kye_1_item_1",
         "kye_1_item_2"
 ```
 
-`},`
+`]` `},` `{`
 
 ```json
       "key_2": [
@@ -508,13 +560,15 @@ A list in which multiple maps are merged.
         "key_2_item_3"
 ```
 
-`},`
+`]` `},` `{`
 
 ```json
       "key_3": [
         "kye_3_item_1",
         "kye_3_item_2"
 ```
+
+`]` `}` `]` `}`
 
 **Sample return value 2**
 
@@ -526,7 +580,7 @@ A list in which multiple maps are merged.
       "key_3": "kye_3_item_1"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key_1": "kye_1_item_2",
@@ -534,7 +588,7 @@ A list in which multiple maps are merged.
       "key_3": "kye_3_item_2"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key_1": "kye_1_item_2",
@@ -542,13 +596,19 @@ A list in which multiple maps are merged.
       "key_3": "kye_3_item_2"
 ```
 
+`}` `]`
+
 **Fn::MergeMap**
 
 Returns a map in which multiple maps are merged.
 
+**Syntax**
+
 ```json
 { "Fn::MergeMap": "aListConatinsDicts"}
 ```
+
+**Parameter**
 
 aListConatinsDicts: a list that contains multiple maps.
 
@@ -558,16 +618,25 @@ A map in which multiple maps are merged.
 
 **Sample request**
 
-```json
+`{`
+
+```
   "Fn::MergeMap": [
+```
+
+`{`
+
+```json
       "key_1": "value_1"
 ```
 
-`},`
+`},` `{`
 
 ```json
       "key_2": "value_2"
 ```
+
+`}` `]` `}`
 
 **Sample return value**
 
@@ -591,6 +660,8 @@ A string in which the elements in the list are joined.
 
 **Sample request**
 
+`{`
+
 ```
   "Fn::Join": [
     ",",
@@ -604,6 +675,8 @@ A string in which the elements in the list are joined.
       "c"
 ```
 
+`]` `]` `}`
+
 **Sample return value**
 
 ```
@@ -614,9 +687,13 @@ A string in which the elements in the list are joined.
 
 Returns a data element from a data element container based on the specified index.
 
+**Syntax**
+
 ```json
 {"Fn::Select": ["Index","Container"]}
 ```
+
+**Parameter**
 
 Index: the String or Number index that is used to query a data element from the container. Container: the list or map to be queried.
 
@@ -626,13 +703,20 @@ A data element queried from the container based on the specified index.
 
 **Sample request 1**
 
-```json
+```
   "Fn::Select": [
     "IpAddress",
+```
+
+`{`
+
+```json
       "IpAddress": [
         "192.168.1.123",
         "192.168.1.234"
 ```
+
+`]` `}` `]` `}`
 
 **Sample return value 1**
 
@@ -641,6 +725,8 @@ A data element queried from the container based on the specified index.
 ```
 
 **Sample request 2**
+
+`{`
 
 ```
   "Fn::Select": [
@@ -654,6 +740,8 @@ A data element queried from the container based on the specified index.
       "192.168.1.234"
 ```
 
+`]` `]` `}`
+
 **Sample return value 2**
 
 ```
@@ -664,9 +752,13 @@ A data element queried from the container based on the specified index.
 
 Splits a string into an array of substrings based on the specified delimiter and returns a list of the substrings.
 
+**Syntax**
+
 ```json
 {"Fn::Split": ["Separator","StringToSeprate"]}
 ```
+
+**Parameter**
 
 Separator: the string to be used as the delimiter. StringToSeprate: the string to be split by the delimiter.
 
@@ -690,13 +782,19 @@ A list of substrings split by the delimiter.
   "c"
 ```
 
+`]`
+
 **Fn::Replace**
 
 Returns a string in which the specified substring is replaced by another substring.
 
+**Syntax**
+
 ```json
 { "Fn::Replace": [{"$varName": "StringToReplaceWith"}, "StringToReplace"]}
 ```
+
+**Parameter**
 
 $varName: a placeholder that starts with the dollar sign ($) followed by the name of a common parameter. The name requirements for the parameter that follows the dollar sign ($) are the same as those for the template parameters. StringToReplaceWith: the substring that is used to replace the placeholder. StringToReplace: the string that contains the placeholder to be replaced. Example: $varName is foo.
 
@@ -720,9 +818,13 @@ If the StringToReplaceWith parameter is set to baz, the returned string is baz i
 
 Returns the element with the smallest value in the specified list.
 
+**Syntax**
+
 ```json
 {"Fn::Min": "aList"}
 ```
+
+**Parameter**
 
 aList: a list that contains elements. The types of the elements in the list can be String, Int, Datetime, or None. All elements in the same list must be of the same type.
 
@@ -746,9 +848,13 @@ The element with the smallest value in the list, excluding the element whose val
 
 Returns the element with the largest value in the specified list.
 
+**Syntax**
+
 ```json
 {"Fn::Max": "aList"}
 ```
+
+**Parameter**
 
 aList: a list that contains elements. The types of the elements in the list can be String, Int, Datetime, or None. All elements in the same list must be of the same type.
 
@@ -758,9 +864,13 @@ The element with the largest value in the list, excluding the element whose valu
 
 **Sample request**
 
+`{`
+
 ```
   "Fn::Max": ["123","234"]
 ```
+
+`}`
 
 **Sample return value**
 
@@ -772,9 +882,13 @@ The element with the largest value in the list, excluding the element whose valu
 
 Returns the first element in the specified list.
 
+**Syntax**
+
 ```json
 { "Fn::First": "aList"}
 ```
+
+**Parameter**
 
 aList: a list that contains elements. The types of the elements in the list are not limited.
 
@@ -783,6 +897,8 @@ aList: a list that contains elements. The types of the elements in the list are 
 The first element returned for an iteration. For a loop task, the elements are sorted based on the task execution IDs generated for iterations.
 
 **Sample request**
+
+`{`
 
 ```
   "Fn::First": ["123","234"]
@@ -798,9 +914,13 @@ The first element returned for an iteration. For a loop task, the elements are s
 
 Returns the last element in the specified list.
 
+**Syntax**
+
 ```json
 {"Fn::Last": "aList"}
 ```
+
+**Parameter**
 
 aList: a list that contains elements. The types of the elements in the list are not limited.
 
@@ -810,9 +930,13 @@ The last element returned for an iteration. For a loop task, the elements are so
 
 **Sample request**
 
+`{`
+
 ```
   "Fn::Last": ["123","234"]
 ```
+
+`}`
 
 **Sample return value**
 
@@ -824,9 +948,13 @@ The last element returned for an iteration. For a loop task, the elements are so
 
 Returns a list in which multiple elements are joined.
 
+**Syntax**
+
 ```json
 {"Fn::ListJoin": "IterableContainer"}
 ```
+
+**Parameter**
 
 IterableContainer: a set of iterable elements. The types of the elements in the set are not limited.
 
@@ -854,6 +982,8 @@ Compares whether two values are equal. If the two values are equal, true is retu
 { "Fn::Equals": ["parameter1", "parameter2"]}
 ```
 
+**Parameter**
+
 parameter1 and parameter2: the values to be compared. The types of the values are not limited.
 
 **Return value**
@@ -876,12 +1006,20 @@ false
 
 Returns one value if the specified condition evaluates to true or another value if the specified condition evaluates to false.
 
+**Syntax**
+
+`{`
+
 ```
   "Fn::If": [
     "condition",
     "value_if_true",
     "value_if_false"
 ```
+
+`]` `}`
+
+**Parameter**
 
 condition_name: the condition to be evaluated. value_if_true: the value to be returned if the specified condition evaluates to true. value_if_false: the value to be returned if the specified condition evaluates to false.
 
@@ -905,9 +1043,13 @@ If the specified condition evaluates to true, the value specified by the value_i
 
 Returns true if one of the specified conditions evaluates to true, or returns false if all the conditions evaluate to false.
 
+**Syntax**
+
 ```json
 {"Fn::Or": ["condition1","condition2"]}
 ```
+
+**Parameter**
 
 condition1 and condition2: the conditions to be evaluated.
 
@@ -931,9 +1073,13 @@ true
 
 Returns true if one of the specified conditions evaluates to true, or returns false if all the conditions evaluate to false.
 
+**Syntax**
+
 ```json
 {"Fn::And": [ "condition1", "condition2"]}
 ```
+
+**Parameter**
 
 condition1 and condition2: the conditions to be evaluated.
 
@@ -956,6 +1102,8 @@ false
 **Fn::Not**
 
 Returns true for a condition that evaluates to false, or returns false for a condition that evaluates to true.
+
+**Syntax**
 
 ```json
 {"Fn::Not": "condition"}
@@ -983,9 +1131,13 @@ false
 
 Changes the time zone by offsetting N hours from the UTC time.
 
+**Syntax**
+
 ```json
 {"Fn::AddHour": ["utc_time", "hours_count" ]}
 ```
+
+**Parameter**
 
 utc_time: the UTC time from which N hours are to be offset. hours_count: the number of hours that you want to offset from the UTC time. The value must be an integer.
 
@@ -1009,9 +1161,13 @@ The new UTC time that is obtained after N hours are offset from the previous UTC
 
 Changes the time granularity of the UTC time based on your business requirements.
 
+**Syntax**
+
 ```
 Fn::FormatUTCTime: ["utc_time", "to_be_utc_time_format"]
 ```
+
+**Parameter**
 
 utc_time: the UTC time for which you want to change the time granularity. to_be_utc_time_format: the specified time granularity.
 
@@ -1033,12 +1189,16 @@ The UTC time in the specified time granularity.
 
 **Fn::Eval**
 
-Executes a single-line expression in a string and returns the execution result. You cannot use this function to execute expressions that contain line breaks. **Syntax**
+Executes a single-line expression in a string and returns the execution result. You cannot use this function to execute expressions that contain line breaks. **Syntax** `{`
 
 ```
   "Fn::Eval": [
     "expression"
 ```
+
+`]` `}`
+
+**Parameter**
 
 expression: the expression to be executed, such as an operation expression.
 
@@ -1056,9 +1216,13 @@ The execution result of the expression.
 
 Fn::CalculateTimeByOpsWindow Returns a point in time in the specified time period based on the execution time of this function. The time period must be less than 24 hours. The Fn::CalculateTimeByOpsWindow function returns a point in time by following these rules: If the function is executed during the specified time period on the current day, it returns the point in time that is one minute later than the execution time of the specified function. If the function is executed earlier than the start time of the time period on the current day, it returns a random point in time during the time period on the current day. If the function is executed later than the end time of the time period on the current day, it returns a random point in time during the time period on the next day after the function is executed.
 
+**Syntax**
+
 ```
 Fn::CalculateTimeByOpsWindow: [ "startTime", "endTime" ]
 ```
+
+**Parameter**
 
 startTime: the start time of the time period, such as 01:00:00Z. endTime: the end time of the time period, such as 03:00:00Z. The interval between the start time and end time must be less than 24 hours.
 
@@ -1082,9 +1246,13 @@ A string that indicates a point in time in the specified time period, in UTC.
 
 Filters a JSON object and returns the required property values in the JSON object.
 
+**Syntax**
+
 ```json
 { "Fn::Jq": [ "type", "jqSelector", "jsonObject" ]}
 ```
+
+**Parameter**
 
 type: specifies whether to return the first property value or all property values in the specified JSON object. Valid values: First and All. If you set the type parameter to First, only the first property value is returned. If you set the type parameter to All, all property values are returned. jqSelector: the jq expression used for filtering. For more information, visit https://yq.aliyun.com/articles/714479. jsonObject: the JSON object to be filtered.
 
@@ -1094,20 +1262,29 @@ The result returned after the JSON object is filtered by using the jq expression
 
 **Sample request 1**
 
-```json
+`{`
+
+```
   "Fn::Jq": [
     "First",".PrivateIpAddress.IpAddress",
+```
+
+`{`
+
+```json
   "PrivateIpAddress": {
     "IpAddress": [
       "192.168.1.123", "192.168.1.234"
 ```
 
-`},`
+`]` `},`
 
 ```json
   "VpcId": "vpc-xzxbamns",
   "VSwitchId": "vsw-zxcdsa"
 ```
+
+`}` `}`
 
 **Sample return value 1**
 
@@ -1117,20 +1294,27 @@ The result returned after the JSON object is filtered by using the jq expression
 
 **Sample request 2**
 
-```json
+```
   "Fn::Jq": [
     "All",".PrivateIpAddress.IpAddress",
+```
+
+`{`
+
+```json
   "PrivateIpAddress": {
     "IpAddress": [
       "192.168.1.123", "192.168.1.234"
 ```
 
-`},`
+`]` `},`
 
 ```json
   "VpcId": "vpc-xzxbamns",
   "VSwitchId": "vsw-zxcdsa"
 ```
+
+`}` `}`
 
 **Sample return value 2**
 
@@ -1142,9 +1326,13 @@ The result returned after the JSON object is filtered by using the jq expression
 
 Returns the intersection of multiple arrays.
 
+**Syntax**
+
 ```json
 { "Fn::Intersection": [ list1, list2]}
 ```
+
+**Parameter**
 
 list1 and list2: the arrays of which you want to take the intersection.
 
@@ -1168,9 +1356,13 @@ An array whose elements are values shared by multiple arrays.
 
 Returns the union of multiple arrays.
 
+**Syntax**
+
 ```json
 { "Fn::Union": [ list1, list2]}
 ```
+
+**Parameter**
 
 list1 and list2: the arrays to be merged.
 
@@ -1198,6 +1390,8 @@ An array whose elements are the values in the union of multiple arrays.
       "i-3"
 ```
 
+`]` `]` `}`
+
 **Sample return value**
 
 ```json
@@ -1208,9 +1402,13 @@ An array whose elements are the values in the union of multiple arrays.
 
 Returns a new array that contains the difference between the union and intersection of multiple arrays.
 
+**Syntax**
+
 ```json
 { "Fn::Difference": [ list1, list2]}
 ```
+
+**Parameter**
 
 list1 and list2: the arrays that contain different elements.
 
@@ -1220,11 +1418,15 @@ An array whose elements are the difference between the union and intersection of
 
 **Sample request**
 
+`{`
+
 ```json
   "Fn::Difference": [
     ["i-1","i-2"],
     ["i-1"]]
 ```
+
+`}`
 
 **Sample return value**
 
@@ -1235,6 +1437,8 @@ An array whose elements are the difference between the union and intersection of
 **Fn::MapJoin**
 
 Combines two lists into a map in which all values in the first list are used as the keys of keyvalue pairs and values in the second list are used as the values of key-value pairs.
+
+**Syntax**
 
 ```json
 {'Fn::MapJoin': [List1, List2] }
@@ -1262,9 +1466,13 @@ A map in which the keys of key-value pairs are the elements of the List1 list an
 
 Evaluates whether the specified IP address falls within the specified CIDR block.
 
+**Syntax**
+
 ```json
 {'Fn::IsIpInCIDR': [Ip, CIDR] }
 ```
+
+**Parameter**
 
 Ip: the IP address. CIDR: the CIDR block.
 
@@ -1300,6 +1508,8 @@ true
 
 Substitutes variables in an input string with the values that you specify.
 
+**Syntax**
+
 ```json
 {'Fn::Sub': [TargetString, JSON]}
 ```
@@ -1312,12 +1522,21 @@ String
 
 **Sample request**
 
-```json
+`{`
+
+```
     "Fn::Sub": [
         "Var1: ${Var1}, Var2: ${Var2}",
+```
+
+`{`
+
+```json
             "Var1": "Var1Value",
             "Var2": "Var2Value"
 ```
+
+`}` `]` `}`
 
 **Sample return value**
 
@@ -1329,9 +1548,13 @@ String
 
 Returns the duration between two points in time.
 
+**Syntax**
+
 ```json
 {'Fn::DurationBetween': [DateTime_1, DateTime_2]}
 ```
+
+**Parameter**
 
 DateTime_1 and DateTime_2: the two points in time.
 
@@ -1341,11 +1564,15 @@ String
 
 **Sample request**
 
+`{`
+
 ```
     "Fn::DurationBetween": [
         "12:00:00",
         "13:00:00"
 ```
+
+`]` `}`
 
 **Sample return value**
 
@@ -1356,6 +1583,8 @@ PT3600S
 **Fn::Escape**
 
 Escapes a string.
+
+**Syntax**
 
 ```json
 {'Fn::Escape': [String, ShellType] }
@@ -1371,12 +1600,16 @@ String
 
 **Sample request**
 
+`{`
+
 ```
     "Fn::Sub": [
         '{"ACS:File":{"Collection":"Enabled","Filters":"[{\\"Path\\":
 \\"/home/admin/test\\",\\"Pattern\\": [\\"*\\"],\\"Recursive\\":false}]"},"ACS:Application":{"Collection":"Enabled"}, "ACS:Ne twork":{"Collection":"Enabled"}}',
         'PowerShell'
 ```
+
+`]` `}`
 
 **Sample return value**
 
@@ -1388,9 +1621,13 @@ String
 
 Converts a JSON object into a table that stores data as key-value pairs.
 
+**Syntax**
+
 ```json
 {'Fn::ConvertMapToList': [JSON/JSONString] }
 ```
+
+**Parameter**
 
 JSON
 
@@ -1400,11 +1637,20 @@ List
 
 **Sample request 1**
 
-```json
+`{`
+
+```
     "Fn::ConvertMapToList": [
+```
+
+`{`
+
+```json
             "key1": "value1",
             "key2": "value2"
 ```
+
+`}` `]`
 
 **Sample return value 1**
 
@@ -1415,35 +1661,43 @@ List
     "Value": "value1"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "Key": "key2",
     "Value": "value2"
 ```
 
+`}` `]`
+
 **Sample request 2**
+
+`{`
 
 ```
     "Fn::ConvertMapToList": [
         "{\"key1\": \"value1\", \"key2\": \"value2\"}"
 ```
 
+`]` `}`
+
 **Sample return value 2**
 
-`[`
+`[` `{`
 
 ```json
     "Key": "key1",
     "Value": "value1"
 ```
 
-`},`
+`},` `{`
 
 ```json
     "Key": "key2",
     "Value": "value2"
 ```
+
+`}` `]`
 
 #### 5.2.6 Loop
 
@@ -1451,7 +1705,11 @@ Operation Orchestration Service (OOS) provides a special task attribute Loop, wh
 
 **Limit**
 
-The maximum number of loop Items is 1,000. YAML format
+The maximum number of loop Items is 1,000.
+
+**Syntax**
+
+YAML format
 
 ```
 --- Tasks: -Name:TaskName1#Required Thenameofthetask Thenamecancontainlowercasele
@@ -1518,7 +1776,7 @@ JSON format (For more information, see the parameter description for the YAML fo
           "ValueSelector": "jq selector"
 ```
 
-`},`
+`}` `},`
 
 ```json
       "Loop": {
@@ -1560,6 +1818,8 @@ JSON format (For more information, see the parameter description for the YAML fo
             "AggregateField": "OutputParameterName1"
 ```
 
+`}` `}` `}` `}` `]` `}`
+
 **Items**
 
 The Items attribute can be of the List type, such as List: [item1, item2, item3]. It can also be set to a parameter of the List type, such as the output parameter of the previous task, which is of the List type. Items as a list YAML format
@@ -1570,7 +1830,7 @@ Loop:
 id1,i-id2,i-id3,i-id4]. The items returned for each iteration of the loop act as the input for executing the next iteration.
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
   "Items": [
@@ -1580,17 +1840,19 @@ JSON format (For more information, see the parameter description for the YAML fo
     "item4"
 ```
 
-Items as a parameter of the List type YAML format
+`]` `}` Items as a parameter of the List type YAML format
 
 ```
 Items: '{{ParameterName1}} ' # A parameter of the List type, such as describeInstance.InstanceIds. The parameter values returned for each iteration of the loop act as the input for executing the next iteration.
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
   "Items": "{{ParameterName1}}"
 ```
+
+`}`
 
 **Control the loop execution rate**
 
@@ -1611,26 +1873,26 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Mode": "Concurrency"
 ```
 
-Assume that the list contains 10 items and the concurrency is 20%. In this case, 20% of the items, namely, two items are executed concurrently each time until all of the items are executed. YAML format
+`}` Assume that the list contains 10 items and the concurrency is 20%. In this case, 20% of the items, namely, two items are executed concurrently each time until all of the items are executed. YAML format
 
 ```
 Concurrency: 20% # Optional. The percentage of the items to be executed concurrently each time to all items. Example: 20%. Mode: Concurrency
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
   "Concurrency": "20%",
   "Mode": "Concurrency"
 ```
 
-Control the batch size Assume that the list contains 10 items and the batch size is [3]. In this case, all items are divided into four batches with three items as a batch. The number of items in each of the four batches is respectively 3, 3, 3, and 1 if all items are successfully executed. YAML format
+`}` Control the batch size Assume that the list contains 10 items and the batch size is [3]. In this case, all items are divided into four batches with three items as a batch. The number of items in each of the four batches is respectively 3, 3, 3, and 1 if all items are successfully executed. YAML format
 
 ```
 Batch: [1, 2, 3] # Optional. The number of items in each batch. Example: [3]. Mode: Batch
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
   "Batch": [
@@ -1642,7 +1904,7 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Mode": "Batch"
 ```
 
-Assume that the list contains 10 items and the batch size is [30%]. In this case, all items are divided into four batches with 30% of the items, namely, three items as a batch. The number of items in each of the four batches is respectively 3, 3, 3, and 1 if all items are successfully executed. YAML format
+`}` Assume that the list contains 10 items and the batch size is [30%]. In this case, all items are divided into four batches with 30% of the items, namely, three items as a batch. The number of items in each of the four batches is respectively 3, 3, 3, and 1 if all items are successfully executed. YAML format
 
 ```
 Batch: [30%] # Optional. The percentage of the items in each batch to all items. Exam ple: 30%. Mode: Batch
@@ -1661,13 +1923,13 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Mode": "Batch"
 ```
 
-Assume that the list contains 10 items and the batch size is [3, 10%, 30%]. In this case, three items are in the first batch. 10% of the items, namely, one item, is in the second batch. [30%] of the items, namely, three items, are in the third batch and each of the subsequent batches. The number of items in each of the four batches is respectively 3, 1, 3, and 3 if all items are successfully executed. YAML format
+`}` Assume that the list contains 10 items and the batch size is [3, 10%, 30%]. In this case, three items are in the first batch. 10% of the items, namely, one item, is in the second batch. [30%] of the items, namely, three items, are in the third batch and each of the subsequent batches. The number of items in each of the four batches is respectively 3, 1, 3, and 3 if all items are successfully executed. YAML format
 
 ```
 Mode: Batch Batch: [3, 10%, 30%] # Optional. A list of numbers and percentages that indicate the number of items in each batch. Example: [3, 10%, 30%].
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
   "Mode": "Batch",
@@ -1680,6 +1942,8 @@ JSON format (For more information, see the parameter description for the YAML fo
     "10%",
     "30%"
 ```
+
+`]` `}`
 
 **MaxErrors**
 
@@ -1702,17 +1966,19 @@ JSON format (For more information, see the parameter description for the YAML fo
  "MaxErrors": 2
 ```
 
-MaxErrors as a percentage YAML format
+`}` MaxErrors as a percentage YAML format
 
 ```
 MaxErrors: 25% # Optional. The percentage of the maximum number of errors allowed t o the total number of items. Assume that you set this attribute to 25% and the list contains 4 items. In this case, the maximum number of errors allowed is 1.
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
  "MaxErrors": "25%"
 ```
+
+`}`
 
 **Loop outputs**
 
@@ -1722,11 +1988,13 @@ In a template, not only each loop task but also each iteration of a loop task ge
 AggregateType: Fn::Max # A built-in function for aggregating the loop outputs, such as Fn::Max, which selects the largest OutputParameterName1 value of all child tasks as the output value of the loop.
 ```
 
-JSON format (For more information, see the parameter description for the YAML format.)
+JSON format (For more information, see the parameter description for the YAML format.) `{`
 
 ```json
 "AggregateType": "Fn::Max"
 ```
+
+`}`
 
 **Examples**
 
@@ -1826,7 +2094,7 @@ Outputs:
     Value: '{{ runInstances.instanceIds }}'
 ```
 
-JSON f format
+JSON f format `{`
 
 ```json
   "FormatVersion": "OOS-2019-06-01",
@@ -1913,10 +2181,15 @@ instance.",
       "Default": 0
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "runInstances",
       "Action": "ACS::ExecuteAPI",
       "Description": "Creates one or more instances.",
@@ -1934,7 +2207,7 @@ instance.",
           "InternetMaxBandwidthOut": "{{ internetMaxBandwidthOut }}"
 ```
 
-`},`
+`}` `},`
 
 ```json
       "Outputs": {
@@ -1943,7 +2216,7 @@ instance.",
           "ValueSelector": "InstanceIdSets.InstanceIdSet[]"
 ```
 
-`},`
+`}` `}` `},`
 
 ```json
       "Name": "untilInstanceReady",
@@ -1961,7 +2234,7 @@ instance.",
             "{{ ACS::TaskLoopItem }}"
 ```
 
-`},`
+`]` `},`
 
 ```json
         "DesiredValues": [
@@ -1990,7 +2263,7 @@ instance.",
         "Items": "{{ runInstances.instanceIds }}"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "Outputs": {
@@ -1999,7 +2272,7 @@ instance.",
       "Value": "{{ runInstances.instanceIds }}"
 ```
 
-Batch mode YAML format
+`}` `}` `}` Batch mode YAML format
 
 ```
 FormatVersion: OOS-2019-06-01 Description: Creates one or more ECS instances. Parameters:
@@ -2098,7 +2371,7 @@ Outputs:
     Value: '{{ runInstances.instanceIds }}'
 ```
 
-JSON format
+JSON format `{`
 
 ```json
   "FormatVersion": "OOS-2019-06-01",
@@ -2186,10 +2459,15 @@ instance.",
       "Default": 0
 ```
 
-`},`
+`}` `},`
 
 ```json
   "Tasks": [
+```
+
+`{`
+
+```json
       "Name": "runInstances",
       "Action": "ACS::ExecuteAPI",
       "Description": "Creates one or more instances.",
@@ -2207,7 +2485,7 @@ instance.",
           "InternetMaxBandwidthOut": "{{ internetMaxBandwidthOut }}"
 ```
 
-`},`
+`}` `},`
 
 ```json
       "Outputs": {
@@ -2216,7 +2494,7 @@ instance.",
           "ValueSelector": "InstanceIdSets.InstanceIdSet[]"
 ```
 
-`},`
+`}` `}` `},` `{`
 
 ```json
       "Name": "untilInstanceReady",
@@ -2234,7 +2512,7 @@ instance.",
             "{{ ACS::TaskLoopItem }}"
 ```
 
-`},`
+`]` `},`
 
 ```json
         "DesiredValues": [
@@ -2264,13 +2542,13 @@ instance.",
           "ConcurrencyInBatches": [
 ```
 
-`1,` `2,` `},`
+`1,` `2,` `]` `},`
 
 ```json
         "Items": "{{ runInstances.instanceIds }}"
 ```
 
-`],`
+`}` `}` `],`
 
 ```json
   "Outputs": {
@@ -2278,6 +2556,8 @@ instance.",
       "Type": "List",
       "Value": "{{ runInstances.instanceIds }}"
 ```
+
+`}` `}` `}`
 
 ### 5.3 Create a template
 

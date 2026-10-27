@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 121
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 VPN Gateway Developer Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20VPN%20Gateway%20Developer%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 VPN Gateway Developer Guide 20220928
@@ -74,7 +74,7 @@ by function
 
 ## 1 List of operations by function
 
-The following tables list the API operations that are available for use in VPN Gateway.
+The following tables list the API operations that are available for use in VPN Gateway. VPN Gateway
 
 | API | Description |
 |---|---|
@@ -2183,7 +2183,7 @@ Sample responses `XML` format
 
 ### 8.6 DeleteVpnConnection
 
-You can call this operation to delete an IPsec-VPN connection. After the IPsec-VPN connection is deleted, the connection between the VPC and the on-premises data center is closed. Request parameters
+You can call this operation to delete an IPsec-VPN connection. Description After the IPsec-VPN connection is deleted, the connection between the VPC and the on-premises data center is closed. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|

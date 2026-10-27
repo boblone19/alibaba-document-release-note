@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 25
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 IPv6 Gateway User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E7%BD%91%E7%BB%9C/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20IPv6%20Gateway%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 IPv6 Gateway User Guide 20220928
@@ -51,7 +51,7 @@ Benefits IPv6 Gateway provides the following benefits: High availabilit y IPv6 G
 
 ## 2 Log on to the IPv6 Gateway console
 
-console This topic provides an example of how to use Google Chrome to log on to the IPv6 Gateway console in the Apsara Stack Cloud Management (ASCM) console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+console This topic provides an example of how to use Google Chrome to log on to the IPv6 Gateway console in the Apsara Stack Cloud Management (ASCM) console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
@@ -166,7 +166,7 @@ The maximum IPv6 Internet bandwidth for an IPv6 Gateway of the Free, Enterprise,
 
 ### 4.1 Create an IPv4 and IPv6 dual-stack VPC
 
-stack VPC This topic describes how to configure both IPv4 and IPv6 CIDR blocks for a VPC when you create the VPC. By default, all VPCs are associated with IPv4 CIDR blocks which cannot be deleted. However, you can choose whether to allocate an IPv6 CIDR blocks to a VPC. After you choose to allocate an IPv6 CIDR block to a VPC, the system creates an IPv6 gateway of the Free Edition for the VPC for you to provision IPv6 bandwidth and manage IPv6 traffic.
+stack VPC This topic describes how to configure both IPv4 and IPv6 CIDR blocks for a VPC when you create the VPC. By default, all VPCs are associated with IPv4 CIDR blocks which cannot be deleted. However, you can choose whether to allocate an IPv6 CIDR blocks to a VPC. After you choose to allocate an IPv6 CIDR block to a VPC, the system creates an IPv6 gateway of the Free Edition for the VPC for you to provision IPv6 bandwidth and manage IPv6 traffic. Procedure
 1. Log on to the VPC console.
 2. On the top of the page, select a region to deploy your VPC.
 3. On the VPCs page, click Creat e VPC.
@@ -189,7 +189,7 @@ describes the configuration parameters.
 
 ### 4.2 Enable an IPv6 CIDR block for a VPC network
 
-VPC network This topic describes how to enable an IPv6 CIDR block for a Virtual Private Cloud (VPC) network. After the IPv6 CIDR block is enabled, the system automatically creates an IPv6 gateway free of charge for the VPC network. You can use the IPv6 Gateway to manage the IPv6 Internet bandwidth and set egressonly rules.
+VPC network This topic describes how to enable an IPv6 CIDR block for a Virtual Private Cloud (VPC) network. After the IPv6 CIDR block is enabled, the system automatically creates an IPv6 gateway free of charge for the VPC network. You can use the IPv6 Gateway to manage the IPv6 Internet bandwidth and set egressonly rules. Procedure
 1. Log on to the VPC console.
 2. Select the region where your VPC network is deployed.
 3. On the VPCs page, find the target VPC network and click Enable IPv6 CIDR Block in the IPv6 CIDR
@@ -201,7 +201,7 @@ VPC, and then click OK. If you do not select Enable IPv6 CIDR Block of all VSwit
 
 ### 5.1 Create an IPv4 and IPv6 dual-stack VSwitch
 
-stack VSwitch This topic describes how to assign an IPv6 CIDR block to a VSwitch when you create the VSwitch.
+stack VSwitch This topic describes how to assign an IPv6 CIDR block to a VSwitch when you create the VSwitch. Procedure
 1. Log on to the VPC console.
 2. In the left-side navigation pane, click VSwit ches.
 3. Select the region where you want to deploy the VSwitch.
@@ -229,7 +229,7 @@ s
 
 ### 5.2 Enable IPv6 for a vSwitch
 
-This topic describes how to allocate an IPv6 CIDR block to a vSwitch.
+This topic describes how to allocate an IPv6 CIDR block to a vSwitch. Procedure
 1. Log on to the VPC console.
 2. In the left-side navigation pane, click vSwit ches.
 3. Select the region where your vSwitch resides.
@@ -254,7 +254,7 @@ This topic describes the different editions of IPv6 gateways. Different quotas a
 
 ### 6.2 Create an IPv6 gateway
 
-This topic describes how to create an IPv6 gateway for a VPC. After you create an IPv6 gateway, you can purchase IPv6 Internet bandwidth and set egress-only rules for the IPv6 gateway. Prerequisites Make sure that IPv6 is enabled for the VPC before you create an IPv6 gateway for the VPC. For more information, see Allocate an IPv6 CIDR block when you create a VPC and Enable an IPv6 CIDR block for a VPC network.
+This topic describes how to create an IPv6 gateway for a VPC. After you create an IPv6 gateway, you can purchase IPv6 Internet bandwidth and set egress-only rules for the IPv6 gateway. Prerequisites Make sure that IPv6 is enabled for the VPC before you create an IPv6 gateway for the VPC. For more information, see Allocate an IPv6 CIDR block when you create a VPC and Enable an IPv6 CIDR block for a VPC network. Procedure
 1. Log on to the IPv6 Gateway console.
 2. On the IPv6 Gat eway page, click Creat e IPv6 Gat eway.
 3. Configure the IPv6 gateway and click Submit . The following table describes the configuration
@@ -273,7 +273,7 @@ parameters.
 
 ### 6.3 Modify an IPv6 gateway
 
-This topic describes how to modify the name and description of an IPv6 gateway.
+This topic describes how to modify the name and description of an IPv6 gateway. Procedure
 1. Log on to the IPv6 Gateway console.
 2. Select the region where the IPv6 gateway resides.
 3. On the IPv6 Gat eway page, find the target IPv6 gateway, and click Manage in the Act ions
@@ -285,7 +285,7 @@ gateway and click OK. The description must be 2 to 256 characters in length and 
 
 ### 6.4 Delete an IPv6 gateway
 
-This topic describes how to delete an IPv6 gateway. If a VPC no longer needs to access or be accessed by IPv6 clients, you can delete the IPv6 gateway associated with the VPC. Prerequisites Before you delete an IPv6 gateway of the enterprise edition or enhanced enterprise edition, you must delete the egress-only rules of the IPv6 gateway. For more information, see Delete an egress-only rule.
+This topic describes how to delete an IPv6 gateway. If a VPC no longer needs to access or be accessed by IPv6 clients, you can delete the IPv6 gateway associated with the VPC. Prerequisites Before you delete an IPv6 gateway of the enterprise edition or enhanced enterprise edition, you must delete the egress-only rules of the IPv6 gateway. For more information, see Delete an egress-only rule. Procedure
 1. Log on to the IPv6 Gateway console.
 2. Select the region where the IPv6 gateway resides.
 3. On the IPv6 Gat eway page, find the target IPv6 gateway, and click Delet e in the Act ions column.
@@ -298,7 +298,7 @@ bandwidth
 
 ### 7.1 Enable Internet connectivity for an IPv6 address
 
-an IPv6 address This topic describes how to enable Internet bandwidth for an IPv6 address. After Internet bandwidth is enabled for an IPv6 address, the IPv6 address can be used to communicate over the Internet. Prerequisites An ECS instance is created in the VPC associated with the corresponding IPv6 gateway and is configured with an IPv6 address.
+an IPv6 address This topic describes how to enable Internet bandwidth for an IPv6 address. After Internet bandwidth is enabled for an IPv6 address, the IPv6 address can be used to communicate over the Internet. Prerequisites An ECS instance is created in the VPC associated with the corresponding IPv6 gateway and is configured with an IPv6 address. Procedure
 1. Log on to the IPv6 Gateway console.
 2. Select the region where the IPv6 gateway resides.
 3. On the IPv6 Gat eway page, find the target IPv6 gateway, and click Manage in the Act ions
@@ -324,7 +324,7 @@ Int ernet Bandwidt h in the Act ions column.
 
 ### 7.3 Disable Internet connectivity for an IPv6 address
 
-an IPv6 address This topic describes how to delete the Internet bandwidth of an IPv6 address that is no longer needed for Internet communication.
+an IPv6 address This topic describes how to delete the Internet bandwidth of an IPv6 address that is no longer needed for Internet communication. Procedure
 1. Log on to the IPv6 Gateway console.
 2. Select the region where the IPv6 gateway resides.
 3. On the IPv6 Gat eway page, find the target IPv6 gateway, and click Manage in the Act ions
@@ -339,7 +339,7 @@ s
 
 ### 8.1 Create an egress-only rule
 
-This topic describes how to create an egress-only rule. If you want an instance in the VPC associated with an IPv6 gateway to be able to access the Internet with an IPv6 address, while resources on the Internet cannot initiate communication with this instance, you can create an egress-only rule for the instance. Prerequisites IPv6 Internet bandwidth is enabled for the IPv6 address configured for the instance. For more information, see Enable and manage IPv6 Internet bandwidth. Context IPv6 gateways of the Free Edition do not support egress-only rules. IPv6 gateways of the enterprise edition and enterprise enhanced edition support a maximum of 50 and 200 egress-only rules respectively.
+This topic describes how to create an egress-only rule. If you want an instance in the VPC associated with an IPv6 gateway to be able to access the Internet with an IPv6 address, while resources on the Internet cannot initiate communication with this instance, you can create an egress-only rule for the instance. Prerequisites IPv6 Internet bandwidth is enabled for the IPv6 address configured for the instance. For more information, see Enable and manage IPv6 Internet bandwidth. Context IPv6 gateways of the Free Edition do not support egress-only rules. IPv6 gateways of the enterprise edition and enterprise enhanced edition support a maximum of 50 and 200 egress-only rules respectively. Procedure
 1. Log on to the IPv6 Gateway console.
 2. Select the region where the IPv6 gateway resides.
 3. On the IPv6 Gat eway page, find the target IPv6 gateway, and click Manage in the Act ions
@@ -351,7 +351,7 @@ communicate with the Internet, and click OK.
 
 ### 8.2 Delete an egress-only rule
 
-This topic describes how to delete an egress-only rule. After the rule is deleted, the IPv6 address with Internet bandwidth can access the Internet, and the instance associated with the IPv6 address can be accessed over the Internet.
+This topic describes how to delete an egress-only rule. After the rule is deleted, the IPv6 address with Internet bandwidth can access the Internet, and the instance associated with the IPv6 address can be accessed over the Internet. Procedure
 1. Log on to the IPv6 Gateway console.
 2. Select the region where the IPv6 gateway resides.
 3. On the IPv6 Gat eway page, find the target IPv6 gateway, and click Manage in the Act ions

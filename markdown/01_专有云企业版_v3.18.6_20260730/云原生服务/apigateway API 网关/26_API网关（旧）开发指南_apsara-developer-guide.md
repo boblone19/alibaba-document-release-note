@@ -5,14 +5,120 @@ doc_version: "20260729"
 pdf_pages: 174
 source_pdf: "26_API网关（旧）开发指南_apsara-developer-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apigateway/zh/apsara-developer-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 网关 API网关（旧）开发指南
 
-API 网关
+## 目录
 
-## 简介
+- 2 快速入门
+  - 2.1 开发文档使用说明
+  - 2.2 API调用流程说明
+- 3 准备工作
+  - 3.1 登录API与工具控制台
+  - 3.2 获取API信息及其EndPoint
+  - 3.3 获取AccessKey
+  - 3.4 获取公共Header参数
+  - 3.5 获取STS AccessKey
+- 4 通过POP网关调用专有云API
+  - 4.1 调用前置
+  - 4.2 Java版
+  - 4.3 Go版
+  - 4.4 Python版
+- 5 API 概览
+- 6 签名机制
+- 7 API 分组相关接口
+  - 7.1 创建API分组
+  - 7.2 修改API分组
+  - 7.3 删除API分组
+  - 7.4 创建环境变量
+  - 7.5 删除环境的指定变量
+  - 7.6 查询API分组详情
+  - 7.7 查询API分组列表
+  - 7.8 查询环境详情
+  - 7.9 创建模型
+  - 7.10 删除已有模型
+- 8 域名相关接口
+  - 8.1 绑定自定义域名
+  - 8.2 上传SSL证书
+  - 8.3 查询域名详情
+  - 8.4 删除域名
+  - 8.5 删除域名证书
+- 9 API 管理相关接口
+  - 9.1 创建API
+  - 9.2 修改API
+  - 9.3 发布API
+  - 9.4 快速切换API版本
+  - 9.5 下线API
+  - 9.6 删除API定义
+  - 9.7 查询API定义
+  - 9.8 查询API服务文档
+  - 9.9 查询定义中的API列表
+  - 9.10 查询历史版本详情
+  - 9.11 查询API历史版本列表
+  - 9.12 查询已发布API的运行定义
+  - 9.13 查询已发布API列表
+  - 9.14 通过 Swagger 创建 API
+- 10 插件相关接口
+  - 10.1 创建插件
+  - 10.2 修改插件
+  - 10.3 删除插件
+  - 10.4 插件绑定API
+  - 10.5 解除插件与API绑定
+  - 10.6 查询插件下绑定的API
+  - 10.7 查询插件列表及详情
+  - 10.8 查询API上绑定的插件
+- 11 应用管理相关接口
+  - 11.1 创建应用
+  - 11.2 修改应用
+  - 11.3 重置APP密钥
+  - 11.4 查询APP列表
+  - 11.5 查询APP密钥
+  - 11.6 删除应用
+- 12 授权相关接口
+  - 12.1 查询待授权的APP
+  - 12.2 查询已授权APP的API
+  - 12.3 查询API授权记录
+  - 12.4 将多个API授权给APP
+  - 12.5 将API授权给多个APP
+  - 12.6 解除多个API与某APP的授权
+  - 12.7 解除API与多个APP的授权
+- 13 其他接口
+  - 13.1 查询支持的区域
+  - 13.2 查询可配置的系统参数
+- 14 数据类型
+  - 14.1 ApiGroupAttribute
+  - 14.2 ApiHisItem
+  - 14.3 ApiInfo
+  - 14.4 ApiPluginSummary
+  - 14.5 ApiSummary
+  - 14.6 AppAttribute
+  - 14.7 AppItem
+  - 14.8 AuthorizedApi
+  - 14.9 AuthorizedApp
+  - 14.10 ConstantParameter
+  - 14.11 CustomDomain
+  - 14.12 DeployedApiItem
+  - 14.13 DeployedInfo
+  - 14.14 DomainItem
+  - 14.15 ErrorCodeSample
+  - 14.16 MonitorItem
+  - 14.17 PluginAttribute
+  - 14.18 Region
+  - 14.19 RequestConfig
+  - 14.20 RequestParameter
+  - 14.21 ServiceConfig
+  - 14.22 ServiceParameter
+  - 14.23 ServiceParameterMap
+  - 14.24 Special
+  - 14.25 SpecialPolicy
+  - 14.26 StageInfo
+  - 14.27 SystemParameter
+  - 14.28 SystemParamItem
+- 15 错误码参考
+
+## 1 简介
 
 欢迎使用阿里云 API 网关服务。用户可以使用本文档介绍的 API 对 API 网关服务进行相关操作。
 
@@ -20,22 +126,20 @@ API 网关
 
 | 术语 | 全称 | 中文 | 说明 |
 |---|---|---|---|
-| Region |  | 地域 | 用户开放API，需选择API在API网关的部署地域，建议选择与后端服务相同的Region。 |
-| API |  | 应用程序编程接口 | 用户开放API，在API网关录入API，以提供接口的方式对外提供服务或者数据。 |
+| Region |   | 地域 | 用户开放API，需选择API在API网关的部署地域，建议选择与后端服务相同的Region。 |
+| API |   | 应用程序编程接口 | 用户开放API，在API网关录入API，以提供接口的方式对外提供服务或者数据。 |
 | Group | API Group | API分组 | 一组API。 用户开放API，首先需要创建API分组每个API分组拥有一个二级域名，两个Stage 用户需要将已经备案且解析至分组二级域名的独立域名绑定到 API分组上同分组下的API均可通过已绑定的独立域名访问 |
-| SubDomai n |  | 分组二级域名 | 用户开放API，创建的每个API分组都有一个二级域名，独立域名需要解析到该二级域名上，直接访问该域名可以调用测试环境的API。 |
+| SubDomai n |   | 分组二级域名 | 用户开放API，创建的每个API分组都有一个二级域名，独立域名需要解析到该二级域名上，直接访问该域名可以调用测试环境的API。 |
 | CustomDo main | Custom Domain | 域名 | 用户开放API，需要绑定自己的独立域名，该域名需要CNAME解析到分组二级域名上且在阿里云备案或备案接入。且若支持HTTPS协议，还需为域名上传SSL合规证书。 |
-| Stage |  | 环境 | 用户开放API，创建的每个API分组目前有两个环境，测试和线上。 用户操作API发布到某个环境后，API才能被调用。区别在于，直接访问分组二级域名调用API，默认是调用测试环境。 |
+| Stage |   | 环境 | 用户开放API，创建的每个API分组目前有两个环境，测试和线上。 用户操作API发布到某个环境后，API才能被调用。区别在于，直接访问分组二级域名调用API，默认是调用测试环境。 |
 | Signature | Backen d Signatu re | 后端签名密钥 | 用于开放API的用户给API网关颁发身份验证密钥。后端签名密钥绑定到API后对绑定的API即时生效。网关接收到这些API的请求，再去请求后端服务的时候就会带上签名信息，供后端服务对API网关做身份校验。 |
-| TrafficCon trol |  | 流量控制策略 （简称“流控策略”） | 用于开放API的用户对API做访问流控。流控策略与API绑定后对绑定的API即时生效。流控策略可以从Api、App、User三个维度管控 API的调用。流控策略下还可以配置特殊流控，如某App/User在调用绑定的API时，可以按照特殊的值来流控。 |
+| TrafficCon trol |   | 流量控制策略 （简称“流控策略”） | 用于开放API的用户对API做访问流控。流控策略与API绑定后对绑定的API即时生效。流控策略可以从Api、App、User三个维度管控 API的调用。流控策略下还可以配置特殊流控，如某App/User在调用绑定的API时，可以按照特殊的值来流控。 |
 | Special | Special Traffic Control | 特殊流量控制 （简称“特殊流控”） | 是流控策略的一个配置，可以指定某App/User，针对流控策略绑定的API，按照单独的值进行流控。 |
-| APP |  | 应用 | 调用其他用户开放的API时，需要创建一个APP作为调用者的身份。 请求到达网关时，会对AppKey和AppSecret进行签名校验。 |
+| APP |   | 应用 | 调用其他用户开放的API时，需要创建一个APP作为调用者的身份。 请求到达网关时，会对AppKey和AppSecret进行签名校验。 |
 
-API 网关
+## 2 快速入门
 
-## 快速入门
-
-### 开发文档使用说明
+### 2.1 开发文档使用说明
 
 本文为您介绍在使用专有云API进行开发工作时，如何查看所需要的产品文档。
 
@@ -52,41 +156,42 @@ API 网关
 您可以通过阿里云专有云文档中心，获取需要的产品文档。
 1. 通过浏览器打开专有云文档中心。
 2. 根据专有云的版本单击**企业版**、**敏捷版**或**一体机**标签。
-API 网关
 3. 在下拉列表中，选择对应的专有云版本。
 4. 在左侧导航栏中，选择目标产品名称。
 5. 在单击目标文档区域的**查看详情**或**下载****PDF**。
 
-### API调用流程说明
+### 2.2 API调用流程说明
 
 本文为您介绍调用流程及可以参考的文档资料。
 
 **流程图**
 
-API 网关
-
 **调用步骤**
 
 1. 获取AccessKey。
+获取调用时所需要的AccessKey参数，请参见获取AccessKey。
 
-**说明**
+> **说明：** 推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 
-推荐使用个人AccessKey调用Apsara Uni-manager运营控制台及云产品接口。
 2. 获取RegionID。
+获取调用时所需要的RegionID参数，请参见获取公共Header参数。
 3. 获取组织ID与资源集ID。
+获取调用时所需要的组织ID和资源集ID参数，请参见获取公共Header参数。
 
-**说明**
+> **说明：** 调用API时，通过Header参数组织ID（<x-acs-organizationid>）和资源集ID（<x-acs- resourcegroupid>）指定组织和资源集，实现实例资源的隔离查询。
+> 组织ID（<x-acs-organizationid>）不指定则默认获取当前用户所属的组织。
+> 资源集ID（<x-acs-resourcegroupid>）不指定默认为空，如果指定资源集需要同时指定组织ID。
 
-调用API时，通过Header参数组织ID（<x-acs-organizationid>）和资源集ID（<x-acsresourcegroupid>）指定组织和资源集，实现实例资源的隔离查询。 组织ID（<x-acs-organizationid>）不指定则默认获取当前用户所属的组织。 资源集ID（<x-acs-resourcegroupid>）不指定默认为空，如果指定资源集需要同时指定组织ID。
 4. 查找API的开发文档。
 您需要查看目标云产品的开发指南，了解API的功能与使用方式，查找开发指南的方式请参见开发文档使用说明。
 5. 获取云产品Endpoint。
 6. 获取云产品SDK并调用云产品API。
-API 网关
 
-## 准备工作
+## 3 准备工作
 
-### 登录API与工具控制台
+### 3.1 登录API与工具控制台
+
+您可以通过ASCM登录API与工具控制台。
 
 **前提条件**
 
@@ -96,15 +201,17 @@ API 网关
 
 1. 在浏览器地址栏中，输入ASCM控制台的访问地址，按回车键。
 2. 输入正确的用户名及密码。
-请向运营管理员获取登录控制台的用户名和密码。 首次登录ASCM控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为
+请向运营管理员获取登录控制台的用户名和密码。
 
-**说明**
+> **说明：** 首次登录ASCM控制台时，需要修改登录用户名的密码，请按照提示完成密码修改。为提高安全性，密码长度必须为 8~20 位，且至少包含以下两种类型：
+> 英文大写或小写字母（A~Z、a~z）
+> 阿拉伯数字（0~9）
+> 特殊符号（感叹号（！）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 
-提高安全性，密码长度必须为 8~20 位，且至少包含以下两种类型： 英文大写或小写字母（A~Z、a~z） 阿拉伯数字（0~9） 特殊符号（感叹号（！）、at（@）、井号（#）、美元符号（$）、百分号（%）等）
 3. 单击**登录**，进入ASCM控制台页面。
-4. 在页面顶部的菜单栏中，选择**产品** > **其他** **> API****与工具**。
+4. 在页面顶部的菜单栏中，选择**产品** **>** **其他** **> API****与工具**。
 
-### 获取API信息及其EndPoint
+### 3.2 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -121,9 +228,8 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 5. 在**版本**下拉列表中，选择目标API版本。
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
-API 网关
 
-### 获取AccessKey
+### 3.3 获取AccessKey
 
 访问身份验证中通过使用AccessKey ID和AccessKey Secret对称加密的方法来验证某个请求的发送者身份。AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。本文将为您描述如何获取通过RAM授权的AccessKey。
 
@@ -142,11 +248,7 @@ AccessKey支持两种授权模式： 通过RAM授权给第三方请求者的Acce
 | x-acs-resourcegroupid | Apsara Uni-manager运营控制台中对应的资源集ID。 获取方法可参见Apsara Uni-manager运营控制台开发指南中的ListResourceGroup文档。 |
 | x-acs-instanceid | 进行操作的实例ID，例如，ECS的实例ID可以从ECS列表中查询到。 |
 
-API 网关个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限
-
-**警告**
-
-AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限 AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 **获取个人账号AccessKey**
 
@@ -154,25 +256,25 @@ AccessKey，组织AccessKey相对权限较大，需要管理员确认操作的�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，将鼠标悬停在当前登录用户的头像上，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权
 
-**说明**
-
-限，请您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
 
-### 获取公共Header参数
+### 3.4 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
+
+**获取Region ID**
+
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏中，单击**企业**。
 3. 在左侧导航栏中，选择**资源管理**>**地域管理**。
@@ -183,7 +285,6 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 
 组织ID需要通过调用API方式获取，您可以在Apsara Uni-manager运营控制台中通过API在线调试功能快速获取组织ID信息。
 1. 管理员登录Apsara Uni-manager运营控制台。
-API 网关
 2. 单击顶部菜单栏**产品**，选择**应用服务** > **开发者门户**。
 3. 在**开发者门户**页面，选择**API****集成**> **API****调试**。
 4. 单击
@@ -221,9 +322,9 @@ API 网关
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 3.5 获取STS AccessKey
 
-本文为您介绍如何利用STS方式，调用专有云的产品API。 API 网关
+本文为您介绍如何利用STS方式，调用专有云的产品API。
 
 **背景信息**
 
@@ -234,7 +335,6 @@ API 网关
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。 在**当前选择角色策略**对话框中查看 `RAM Role` 。
 2. 使用以下代码，通过角色的 `RAM Role` 获得 `stsAK` 、 `stsSK` 和 `stsToken` 。
-API 网关
 
 ```
 public static void main(String[] args) {
@@ -261,7 +361,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -283,11 +388,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，下列代码以ECS为示例。
-API 网关
 
 ```
 public static void main(String[] args) {
@@ -299,7 +403,12 @@ public static void main(String[] args) {
 
 ```
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -311,14 +420,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-API 网关
+`}` 有云API
 
-## 通过POP网关调用专有云API
+## 4 通过POP网关调用专有云API
 
-### 调用前置
+### 4.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -342,7 +450,7 @@ API 网关
 
 通过POP网关调用专有云API时需要使用云产品业务域的Endpoint。您可以在阿里云驻场运维工程师处获取。 您也可以自行获取Endpoint，本文以API网关为例为您介绍获取云产品业务域Endpoint的方法。
 1. 登录Apsara Uni-manager运维控制台。
-API 网关
+有云API
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
 4. 在服务注册变量大盘页面，单击**高级筛选**。
@@ -354,9 +462,9 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见获取公共Header参数。
 
-### Java版
+### 4.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -378,7 +486,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     public static void main(String[] args) {
 ```
 
-API 网关 `//` 创建`DefaultAcsClient`实例并初始化。
+有云API `//` 创建`DefaultAcsClient`实例并初始化。
 
 ```xml
         DefaultProfile profile = DefaultProfile.getProfile("<your-regionid>", "
@@ -404,6 +512,11 @@ API 网关 `//` 创建`DefaultAcsClient`实例并初始化。
         // clientConfig.setReadTimeoutMillis(10000L);
         // profile.setHttpClientConfig(clientConfig);
         IAcsClient client = new DefaultAcsClient(profile);
+```
+
+`//` 创建`API`请求并设置参数。
+
+```
         CommonRequest request = new CommonRequest();
 ```
 
@@ -464,13 +577,13 @@ API 网关 `//` 创建`DefaultAcsClient`实例并初始化。
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -489,16 +602,13 @@ API 网关 `//` 创建`DefaultAcsClient`实例并初始化。
             System.out.println("ErrMsg:" + e.getErrMsg());
 ```
 
-API 网关
+有云API
 
 ```java
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
+`}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -531,6 +641,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         // clientConfig.setReadTimeoutMillis(10000L);
         // profile.setHttpClientConfig(clientConfig);
         IAcsClient client = new DefaultAcsClient(profile);
+```
+
+`//` 创建`API`请求并设置参数。
+
+```
         CommonRequest request = new CommonRequest();
 ```
 
@@ -572,7 +687,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.setSysAction("GetNamespaceList");
 ```
 
-`//`必填值，调用来源说明 API 网关 `//` 必填值，调用来源说明
+`//`必填值，调用来源说明有云API `//` 必填值，调用来源说明
 
 ```
         request.putHeadParameter("x-acs-caller-sdk-source", "ApiTestDemo");
@@ -584,19 +699,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -620,26 +735,26 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-**重要**
+`}` `}` `}`
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置： Java
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS 证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过以下参数设置：
+
+Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-`//` 设置不校验服务端证书
+> `//` 设置不校验服务端证书
 
 ```
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Go版
+### 4.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -647,7 +762,7 @@ clientConfig.setIgnoreSSLCerts(true)
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用**
 **服务** > **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
-API 网关
+有云API
 
 **重要**
 
@@ -659,7 +774,7 @@ API 网关
 
 **CommonRequest调用示例**
 
-RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下： API 网关
+RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07- 14）。 示例代码如下： 有云API
 
 ```java
 package main import (
@@ -668,7 +783,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -712,19 +827,22 @@ cessKey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： API 网关
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 有云API
 
 ```java
 package main import (
@@ -734,7 +852,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -779,37 +897,41 @@ func main() {
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： API 网关
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 有云API
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -827,9 +949,9 @@ client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpPro
 
 **设置**
 
-**重要**
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。
 
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL证书有效性，若您代码环境没有证书环境， 则会报错证书校验失败。为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可参考如下内容进行设置。 `//` 设置请求 `HTTPSInsecure`（只影响当前）
+`//` 设置请求 `HTTPSInsecure`（只影响当前）
 
 ```
 request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure := request.GetHTTPSInsecure() // 获取请求 HTTPSInsecure
@@ -841,9 +963,9 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-API 网关
+有云API
 
-### Python版
+### 4.4 Python版
 
 本文为您介绍POP Python SDK调用云产品API的方式。
 
@@ -868,7 +990,7 @@ API 网关
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -877,13 +999,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -892,13 +1008,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
@@ -908,36 +1024,39 @@ SecurityToken>"};
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-API 网关
-# 非必填，资源集`ID`
+有云API `#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -946,7 +1065,7 @@ API 网关
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -958,14 +1077,13 @@ if __name__ == '__main__':
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -981,38 +1099,42 @@ SDK默认使用HTTPS协议。
 
 ```
 from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest from aliyunsdkcore.client import AcsClient client = AcsClient(
+    region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-API 网关
+有云API
 
 **忽略证书**
 
-**重要**
-
-使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
+> **重要：** 使用HTTPS协议访问OpenAPI时，SDK会默认开启校验SSL/TLS证书有效性，若您代码环境没有证书环境，则会报错证书校验失败。
+> 为保障生产环境通信安全，建议您保持开启，若在测试环境必须忽略证书校验，可以通过参数 `verify` 设置。
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
+    region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
+    region_id='<region_id>',  # 地域ID
     verify='./cacert.pem'  # 证书路径
 ```
 
-) API 网关
+`)`
 
-## API 概览
+## 5 API 概览
+
+**API分组相关接口**
 
 | API | 描述 |
 |---|---|
@@ -1025,6 +1147,8 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | DescribeApiGroup | 查询指定API分组详情 |
 | DescribeApiGroups | 查询API分组列表 |
 
+**域名相关接口**
+
 | API | 描述 |
 |---|---|
 | SetDomain | 绑定自定义域名 |
@@ -1032,6 +1156,8 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | DescribeDomain | 查询指定自定义域名详情信息 |
 | DeleteDomain | 删除指定自定义域名 |
 | DeleteDomainCertificate | 删除指定域名的证书 |
+
+**API管理相关接口**
 
 | API | 描述 |
 |---|---|
@@ -1044,14 +1170,14 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | DescribeApi | 查询指定API定义中的详情 |
 | DescribeApis | 查询定义中的API列表 |
 
-API 网关
-
 | DescribeApiDoc | 查询指定API在指定环境中的调用说明（运行的定义） |
 |---|---|
 | DescribeDeployedApi | 查询指定API在指定环境中的运行定义 |
 | DescribeDeployedApis | 查询指定环境中正在运行的API列表 |
 | DescribeApiHistory | 查询指定API指定历史版本的定义 |
 | DescribeApiHistories | 查询指定API指定历史版本列表 |
+
+**插件相关接口**
 
 | API | 描述 |
 |---|---|
@@ -1075,13 +1201,13 @@ API 网关
 | DescribeAppSecurity | 查询指定APP密钥信息 |
 | DeleteApp | 删除应用 |
 
+**授权相关接口**
+
 | API | 描述 |
 |---|---|
 | DescribeApps | 查询可授权的APP列表 |
 | DescribeAuthorizedApis | 查询指定APP已授权的API列表 |
 | DescribeAuthorizedApps | 查询API的应用授权列表 |
-
-API 网关
 
 | SetApisAuthorities | 给指定APP添加多个API的访问权限 |
 |---|---|
@@ -1089,28 +1215,26 @@ API 网关
 | RemoveApisAuthorities | 批量撤销指定APP对多个API的访问权限 |
 | RemoveAppsAuthorities | 批量撤销多个APP对指定API的访问权限 |
 
-## 其他接口
+**其他接口**
 
 | API | 描述 |
 |---|---|
 | DescribeRegions | 查询支持的区域列表 |
 | DescribeSystemParameters | 查询系统参数列表 |
 
-API 网关
-
-## 签名机制
+## 6 签名机制
 
 API网关服务会对每个访问的请求进行身份验证，所以无论使用HTTP还是HTTPS协议提交请求，都需要在请求中包含签名（Signature）信息。 API网关通过使用Access Key ID和Access Key Secret进行对称加密的方法来验证请求者身份。Access Key ID和Access Key Secret由阿里云官方颁发给访问者（可以通过阿里云官方网站申请和管理），其中： Access Key ID：用于标识访问者的身份 Access Key Secret：是用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密，只有阿里云和用户知道。 用户在访问时，按照下面的方法对请求进行签名处理：
 1. 使用请求参数构造规范化的请求字符串（Canonicalized Query String）
-按照参数名称的字典顺序对请求中所有的请求参数（包括文档中描述的“公共请求参数”和给定了的请求接口的自定义参数，但不能包括“公共请求参数”中提到Signature参数本身）进行排序。 当使用 `GET` 方法提交请求时，这些参数就是请求URI中的参数部分（即URI中“?”之
+按照参数名称的字典顺序对请求中所有的请求参数（包括文档中描述的“公共请求参数”和给定了的请求接口的自定义参数，但不能包括“公共请求参数”中提到Signature参数本身）进行排序。
 
-**说明**
+> **说明：** 当使用 `GET` 方法提交请求时，这些参数就是请求URI中的参数部分（即URI中“?”之后由“&”连接的部分）。
 
-后由“&”连接的部分）。 对每个请求参数的名称和值进行编码。名称和值要使用UTF-8字符集进行URL编码，URL编码的编码规则是： 对于字符 A-Z、a-z、0-9以及字符“-”、“_”、“.”、“~”不编码； 对于其他字符编码成“%XY”的格式，其中XY是字符对应ASCII码的16进制表示。比如英文的双引号 （”）对应的编码就是%22； 对于扩展的UTF-8字符，编码成“%XY%ZA…”的格式； 需要说明的是英文空格（）要被编码是%20，而不是加号（+）。 一般支持URL编码的库（比如Java中的java.net.URLEncoder）都是按
+对每个请求参数的名称和值进行编码。名称和值要使用UTF-8字符集进行URL编码，URL编码的编码规则是： 对于字符 A-Z、a-z、0-9以及字符“-”、“_”、“.”、“~”不编码； 对于其他字符编码成“%XY”的格式，其中XY是字符对应ASCII码的16进制表示。比如英文的双引号 （”）对应的编码就是%22； 对于扩展的UTF-8字符，编码成“%XY%ZA…”的格式； 需要说明的是英文空格（）要被编码是%20，而不是加号（+）。
 
-**说明**
+> **说明：** 一般支持URL编码的库（比如Java中的java.net.URLEncoder）都是按照“application/x-www-form-urlencoded”的MIME类型的规则进行编码的。实现时可以直接使用这类方式进行编码，把编码后的字符串中加号（+）替换成%20、星号（*）替换成%2A、%7E 替换回波浪号（~），即可得到上述规则描述的编码字符串。
 
-照“application/x-www-form-urlencoded”的MIME类型的规则进行编码的。实现时可以直接使用这类方式进行编码，把编码后的字符串中加号（+）替换成%20、星号（*）替换成%2A、%7E 替换回波浪号（~），即可得到上述规则描述的编码字符串。 对编码后的参数名称和值使用**英文**等号（=）进行连接。 再把英文等号连接得到的字符串按参数名称的字典顺序依次使用&符号连接，即得到规范化请求字符串。
+对编码后的参数名称和值使用**英文**等号（=）进行连接。 再把英文等号连接得到的字符串按参数名称的字典顺序依次使用&符号连接，即得到规范化请求字符串。
 2. 使用上一步构造的规范化字符串按照下面的规则构造用于计算签名的字符串：
 
 ```
@@ -1122,11 +1246,10 @@ StringToSign= HTTPMethod + “&” + percentEncode(“/”) + ”&” + percentE
 就是用户持有的 Access Key Secret 并加上一个“&”字符(ASCII:38)，使用的哈希算法是SHA1。
 4. 按照Base64编码规则把上面的HMAC值编码成字符串，即得到签名值（Signature）。
 5. 将得到的签名值作为Signature参数添加到请求参数中，即完成对请求签名的过程。
-API 网关得到的签名值在作为最后的请求参数值提交给API网关服务器的时候，要和其他参数一
 
-**说明**
+> **说明：** 得到的签名值在作为最后的请求参数值提交给API网关服务器的时候，要和其他参数一样，按照RFC3986的规则进行URL编码）。
 
-样，按照RFC3986的规则进行URL编码）。
+以DescribeRegions为例，签名前的请求URL为：
 
 ```
 http://apigateway.[RegionId].aliyuncs.com? Format=json&AccessKeyId=testid&Action=DescribeRegions&SignatureMethod=Hmac- SHA1&SignatureNonce=d48e931b-90c9-49c7-ac86a70dd3607c88&SignatureVersion=1.0&Version=2016-07-14&Timestamp=2016-09-27T09%3A08%3A30Z
@@ -1144,15 +1267,13 @@ GET&%2F&AccessKeyId%3Dtestid%26Action%3DDescribeRegions%26Format%3Djson%26Signat
 http://apigateway.[RegionId].aliyuncs.com? Signature=DRdMb%2F1m7PeToGRBApTl3wThyOg%3D&Format=json&AccessKeyId=testid&Action=Describe gions&SignatureMethod=Hmac-SHA1&SignatureNonce=d48e931b-90c9-49c7-ac86a70dd3607c88&SignatureVersion=1.0&Version=2016-07-14&Timestamp=2016-09-27T09%3A08%3A30Z
 ```
 
-API 网关
+## 7 API 分组相关接口
 
-## API 分组相关接口
-
-### 创建API分组
+### 7.1 创建API分组
 
 **描述**
 
-此功能面向API提供者。 系统自动给分组分配二级域名，用于测试API。 分组带有区域属性，后续创建API选择分组后就选择了区域，为减少网络延时，建议选择与后端服务相同的区域。 创建分组后，可为分组绑定已备案的自定义域名。 该接口调用的QPS限制为：单用户QPS不超过50。
+创建API分组，创建API需要先创建分组，所属分组是API的一个基本属性信息。 此功能面向API提供者。 系统自动给分组分配二级域名，用于测试API。 分组带有区域属性，后续创建API选择分组后就选择了区域，为减少网络延时，建议选择与后端服务相同的区域。 创建分组后，可为分组绑定已备案的自定义域名。 该接口调用的QPS限制为：单用户QPS不超过50。
 
 **请求参数**
 
@@ -1162,9 +1283,7 @@ API 网关
 | GroupN ame | Strin g | 是 | 分组名称，必须唯一，支持汉字、英文字母、数字、英文格式的下划线，必须以英文字母或汉字开头，4~50个字符。 |
 | Descrip tion | Strin g | 是 | API分组描述，不超过180个字符。 |
 
-**说明**
-
-CreateApiGroup接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** CreateApiGroup接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -1173,8 +1292,6 @@ CreateApiGroup接口调用时，您需要在调用代码的Header参数中设置
 | RequestId | String | 请求唯一标识。 |
 | GroupID | String | API分组 ID，系统生成，全局唯一。 |
 | GroupName | String | API分组名称。 |
-
-API 网关
 
 | SubDomain | String | 系统给分组绑定的二级域名，用于测试API调用。 |
 |---|---|---|
@@ -1203,19 +1320,19 @@ hangzhou.alicloudapi.com</SubDomain>
 </CreateApiGroupResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
   "RequestId": "FF3B7D81-66AE-47E0-BF69-157DCF187514",
   "GroupId": "523e8dc7bbe04613b5b1d726c2a7889d",
   "GroupName": "Weather",
   "SubDomain": "523e8dc7bbe04613b5b1d726c2a7889d-cn-hangzhou.alicloudapi.com",
   "Description": "The weather informations"
- }
 ```
 
-### 修改API分组
+`}`
+
+### 7.2 修改API分组
 
 **描述**
 
@@ -1227,8 +1344,6 @@ JSON格式
 |---|---|---|---|
 | Action | Strin g | 是 | 接口名称，系统规定参数，取值：ModifyApiGroup。 |
 | GroupI d | Strin g | 是 | API分组 ID，系统生成，全局唯一。 |
-
-API 网关
 
 | GroupN ame | Strin g | 否 | 分组名称，必须唯一，支持汉字、英文字母、数字、英文格式的下划线，必须以英文字母或汉字开头，4~50个字符，不传递表示不修改。 |
 |---|---|---|---|
@@ -1252,7 +1367,7 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=ModifyApiGroup &Description=New weath er informations. &GroupId=523e8dc7bbe04613b5b1d726c2a7889d &GroupName=NewWeather &<公共
 ```
 
-请求参数>
+请求参数`>`
 
 **返回示例**
 
@@ -1269,23 +1384,21 @@ hangzhou.alicloudapi.com</SubDomain>
 </ModifyApiGroupResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "4CF287C6-CE5B-477B-BE27-C48F99EADBC8",
     "GroupId": "523e8dc7bbe04613b5b1d726c2a7889d",
     "GroupName": "NewWeather",
     "SubDomain":"523e8dc7bbe04613b5b1d726c2a7889d-cn-hangzhou.alicloudapi.com"
     "Description": "New weather informations."
-}
 ```
 
-### 删除API分组
+`}`
 
-**描述**
+### 7.3 删除API分组
 
-API 网关用于删除指定的API分组。 此功能面向API提供者。 分组下存在API时，分组不可删除，须先删除分组下的API。 删除分组后，系统分配给此分组的二级域名自动生效。 删除不存在的分组时，会返回删除成功。 该接口调用的QPS限制为：单用户QPS不超过50。
+用于删除指定的API分组。 此功能面向API提供者。 分组下存在API时，分组不可删除，须先删除分组下的API。 删除分组后，系统分配给此分组的二级域名自动生效。 删除不存在的分组时，会返回删除成功。 该接口调用的QPS限制为：单用户QPS不超过50。
 
 **请求参数**
 
@@ -1294,9 +1407,7 @@ API 网关用于删除指定的API分组。 此功能面向API提供者。 分�
 | Action | String | 是 | 接口名称，系统规定参数，取值：DeleteApiGroup。 |
 | GroupId | String | 是 | API分组 ID，系统生成，全局唯一。 |
 
-**说明**
-
-DeleteApiGroup接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DeleteApiGroup接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -1312,7 +1423,7 @@ DeleteApiGroup接口调用时，您需要在调用代码的Header参数中设置
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DeleteApiGroup &GroupId=523e8dc7bbe04613b5b1d726c2a7889d
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1324,15 +1435,13 @@ XML格式
 </DeleteApiGroupResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "RequestId": "E8515BA6-81CD-4191-A7CF-C4FCDD3C0D99"
-}
 ```
 
-### 创建环境变量
+### 7.4 创建环境变量
 
 **描述**
 
@@ -1362,7 +1471,7 @@ JSON格式 API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=CreateApiStageVariable &GroupId=523e8dc7bbe04613b5b1d726c2a7889d &StageId=6EF60BEC-0242-43AF-BB20-270359FB54A7 &VariableName=serverName &VariableValue=api.domain.com
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1374,15 +1483,13 @@ XML格式
 </CreateApiStageVariableResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "RequestId": "03442A3D-3B7D-434C-8A95-A5FEB999B529"
-  }
 ```
 
-### 删除环境的指定变量
+### 7.5 删除环境的指定变量
 
 **描述**
 
@@ -1411,7 +1518,7 @@ JSON格式 API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DeleteApiStageVariable &GroupId=523e8dc7bbe04613b5b1d726c2a7889d &StageId=6EF60BEC-0242-43AF-BB20-270359FB54A7 &VariableName=serverName
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1423,19 +1530,13 @@ XML格式
 </DeleteApiStageVariableResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "03442A3D-3B7D-434C-8A95-A5FEB969B529"
-  }
 ```
 
-API 网关
-
-### 查询API分组详情
-
-**描述**
+### 7.6 查询API分组详情
 
 用于查询API分组的详情信息，包含分组系统自动生成的二级域名、自定义域名及SSL证书信息。 此功能面向API提供者用于查询指定分组全部详情信息
 
@@ -1465,8 +1566,6 @@ API 网关
 | CustomDomains | CustomDomain | 自定义域名信息 |
 | StageItems | StageInfo | 运行环境信息 |
 
-API 网关
-
 **示例**
 
 **请求示例**
@@ -1475,7 +1574,7 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DescribeApiGroup &GroupId=523e8dc7bbe04613b5b1d726c2a7889d
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1491,30 +1590,38 @@ hangzhou.alicloudapi.com</SubDomain>
     <Description>New weather informations.</Description>
     <CreatedTime>2016-08-01T06:53:02Z</CreatedTime>
     <ModifiedTime>2016-08-01T06:54:32Z</ModifiedTime>
+    <RegionId>cn-hangzhou</RegionId>
     <Status>NORMAL</Status>
     <BillingStatus>NORMAL</BillingStatus>
     <IllegalStatus>NORMAL</IllegalStatus>
     <TrafficLimit>500</TrafficLimit>
+    <CustomDomains>
+        <CustomDomain>
             <DomainName>api.demo.com</DomainName>
             <CertificateId>6EF60BEC-0242-43AF-BB20-270359FB54A7</CertificateId>
             <CertificateName>myCertificate</CertificateName>
             <DomainNameResolution>RESOLVED</DomainNameResolution>
             <DomainStatus>BINDING</DomainStatus>
+        </CustomDomain>
+    </CustomDomains>
     <StageItems>
+        <StageInfo>
             <StageId>123e8dc7bbe01613b5b1d726c2a7887e</StageId>
             <StageName>RELEASE</StageName>
             <Description>MYRELEASE</Description>
+        </StageInfo>
+        <StageInfo>
             <StageId>123e8dc7bbe01613b5b1d726c2a7888e</StageId>
             <StageName>TEST</StageName>
             <Description>MYTEST</Description>
+        </StageInfo>
     </StageItems>
 </DescribeApiGroupResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "RequestId": "03442A3D-3B7D-434C-8A95-A5FEB989B519",
     "GroupId": "523e8dc7bbe04613b5b1d726c2a7889d",
     "GroupName": "NewWeather",
@@ -1527,34 +1634,41 @@ JSON格式 API 网关
     "BillingStatus": "NORMAL",
     "IllegalStatus": "NORMAL",
     "TrafficLimit": "500",
+    "CustomDomains": {
+      "CustomDomain": {
         "DomainName": "api.demo.com",
         "CertificateId": "6EF60BEC-0242-43AF-BB20-270359FB54A7",
         "CertificateName": "myCertificate",
         "DomainNameResolution": "RESOLVED",
         "DomainStatus": "BINDING"
-      }
-    },
+```
+
+`}` `},`
+
+```json
     "StageItems": {
-        {
+      "StageInfo": [
+```
+
+`{`
+
+```json
           "StageId": "123e8dc7bbe01613b5b1d726c2a7887e",
           "StageName": "RELEASE",
           "Description": "MYRELEASE"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "StageId": "123e8dc7bbe01613b5b1d726c2a7888e",
           "StageName": "TEST",
           "Description": "MYTEST"
-        }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-### 查询API分组列表
+### 7.7 查询API分组列表
 
 **描述**
 
@@ -1566,17 +1680,13 @@ JSON格式 API 网关
 |---|---|---|---|
 | Action | String | 是 | 接口名称，系统规定参数，取值：DescribeApiGroups。 |
 
-API 网关
-
 | GroupId | String | 否 | API分组 ID，系统生成，全局唯一。 |
 |---|---|---|---|
 | GroupName | String | 否 | API组名称中，可指定的关键字。 |
 | PageNumber | Integer | 否 | 指定要查询的页码，默认是1，起始是1。 |
 | PageSize | Integer | 否 | 指定分页查询时每页行数，最大值50，默认值为10。 |
 
-**说明**
-
-DescribeApiGroups接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DescribeApiGroups接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -1596,11 +1706,11 @@ DescribeApiGroups接口调用时，您需要在调用代码的Header参数中设
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DescribeApiGroups
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <DescribeApiGroupsResponse>
@@ -1608,6 +1718,8 @@ XML格式 API 网关
     <TotalCount>2</TotalCount>
     <PageSize>10</PageSize>
     <PageNumber>1</PageNumber>
+        <ApiGroupAttributes>
+            <ApiGroupAttribute>
                 <GroupId>be6d2abcc0dd4f749fc2d2edd6567164</GroupId>
                 <GroupName>Traffic</GroupName>
                 <SubDomain>be6d2abcc0dd4f749fc2d2edd6567164-cn-
@@ -1615,9 +1727,12 @@ hangzhou.alicloudapi.com</SubDomain>
                 <Description>TrafficInformations.</Description>
                   <CreatedTime>2016-08-01T08:45:15Z</CreatedTime>
                   <ModifiedTime>2016-08-01T08:45:15Z</ModifiedTime>
+                  <RegionId>cn-hangzhou</RegionId>
                   <TrafficLimit>500</TrafficLimit>
                   <BillingStatus>NORMAL</BillingStatus>
                   <IllegalStatus>NORMAL</IllegalStatus>
+            </ApiGroupAttribute>
+            <ApiGroupAttribute>
                 <GroupId>927d50c0f2e54b359919923d908bb015</GroupId>
                 <GroupName>NewWeather</GroupName>
                   <SubDomain>927d50c0f2e54b359919923d908bb015-cn-
@@ -1625,21 +1740,29 @@ hangzhou.alicloudapi.com</SubDomain>
                   <Description>NewWeatherInformations.</Description>
                   <CreatedTime>2016-08-01T06:54:32Z</CreatedTime>
                   <ModifiedTime>2016-08-01T06:54:32Z</ModifiedTime>
+                  <RegionId>cn-hangzhou</RegionId>
                   <TrafficLimit>500</TrafficLimit>
                   <BillingStatus>NORMAL</BillingStatus>
                   <IllegalStatus>NORMAL</IllegalStatus>
+            </ApiGroupAttribute>
+        </ApiGroupAttributes>
 </DescribeApiGroupsResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
- {
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
     "TotalCount": "2",
     "PageSize": "10",
     "PageNumber": "1",
-        {
+    "ApiGroupAttributes": {
+      "ApiGroupAttribute": [
+```
+
+`{`
+
+```json
           "GroupId": "be6d2abcc0dd4f749fc2d2edd6567164",
           "GroupName": "Traffic",
           "SubDomain": "be6d2abcc0dd4f749fc2d2edd6567164-cn-
@@ -1651,8 +1774,11 @@ hangzhou.alicloudapi.com",
           "TrafficLimit": "500",
           "BillingStatus": "NORMAL",
           "IllegalStatus": "NORMAL"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "GroupId": "927d50c0f2e54b359919923d908bb015",
           "GroupName": "NewWeather",
           "SubDomain": "927d50c0f2e54b359919923d908bb015-cn-
@@ -1664,17 +1790,11 @@ hangzhou.alicloudapi.com",
           "TrafficLimit": "500",
           "BillingStatus": "NORMAL",
           "IllegalStatus": "NORMAL"
-        }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-### 查询环境详情
+### 7.8 查询环境详情
 
 **描述**
 
@@ -1686,8 +1806,6 @@ hangzhou.alicloudapi.com",
 |---|---|---|---|
 | Action | String | 是 | 接口名称，系统规定参数，取值：DescribeApiStage。 |
 | GroupId | String | 是 | API分组 ID |
-
-API 网关
 
 | StageId | String | 是 | 环境 ID |
 |---|---|---|---|
@@ -1715,11 +1833,11 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DescribeApiStage &GroupId=523e8dc7bbe04613b5b1d726c2a7889d &StageId=6EF60BEC-0242-43AF-BB20-270359FB54A7
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <DescribeApiStageResponse>
@@ -1747,10 +1865,9 @@ XML格式 API 网关
 </DescribeApiStageResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "03442A3D-3B7D-434C-8A95-A5FEB989B529",
     "GroupId": "523e8dc7bbe04613b5b1d726c2a7889d",
     "StageID": "123e8dc7bbe01613b5b1d726c2a7887e",
@@ -1764,26 +1881,25 @@ JSON格式
     "TrafficLimit": "500",
     "Variables": {
       "VariableItem": [
-        {
+```
+
+`{`
+
+```json
           "VariableName": "serverName",
           "VariableValue": "api.domain.com"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "VariableName": "version",
           "VariableValue": "v1.0"
-        }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-  }
-```
-
-API 网关
-
-### 创建模型
+### 7.9 创建模型
 
 在API分组的模型管理中创建模型。
 
@@ -1810,8 +1926,6 @@ API 网关
 | CreatedTime | String | 2019-01- 29T09:33:01Z | 本次创建模型的创建时间。 |
 | ModifiedTime | String | 2019-01- 29T09:33:01Z | 本次创建模型的最后修改时间。 |
 
-API 网关
-
 | RequestId | String | 4173F95B-360C- 460C-9F6C- 4A960B904411 | 请求ID。 |
 |---|---|---|---|
 | Schema | String | {\"type\":\"object\", \"properties\": {\"id\": {\"format\":\"int64\ ",\"maximum\":100 ,\"exclusiveMaximu m\":true,\"type\":\"i nteger\"},\"name\": {\"maxLength\":10, \"type\":\"string\"} }} | 本次创建模型的模型定义。 |
@@ -1828,10 +1942,15 @@ API 网关
 http(s)://[Endpoint]/?Action=CreateModel &ModelName=Test &GroupId=30e792398d6c4569b04c0e53a3494381 &Schema={"type":"object","properties":{"id": {"format":"int64","maximum":100,"exclusiveMaximum":true,"type":"integer"},"name":{"maxL ength":10,"type":"string"}}}
 ```
 
-&公共请求参数正常返回示例 API 网关 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Description":"Model Description",
  "ModelName":"Test",
  "CreatedTime":"2019-01-29T09:33:01Z",
@@ -1843,10 +1962,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "ModelId":"766c0b9538a04bdf974953b5576783ba",
 "ModelRef":"https://apigateway.aliyun.com/models/30e792398d6c4569b04c0e53a3494381/766c0b9 8a04bdf974953b5576783ba",
  "GroupId":"30e792398d6c4569b04c0e53a3494381"
-}
 ```
 
-### 删除已有模型
+`}`
+
+### 7.10 删除已有模型
+
+删除API分组的模型管理中的模型。
 
 **请求头**
 
@@ -1865,8 +1987,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-API 网关
-
 | RequestId | String | 4173F95B-360C- 460C-9F6C- 4A960B904411 | 请求ID。 |
 |---|---|---|---|
 
@@ -1874,21 +1994,25 @@ API 网关
 
 `JSON` 格式
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"4173F95B-360C-460C-9F6C-4A960B904411"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-API 网关
+`{`
 
-## 域名相关接口
+```json
+ "RequestId":"4173F95B-360C-460C-9F6C-4A960B904411"
+```
 
-### 绑定自定义域名
+`}`
+
+## 8 域名相关接口
+
+### 8.1 绑定自定义域名
 
 **描述**
 
-此功能面向API提供者。 独立域名要CNAME解析到该分组的二级域名上，或者添加A记录到二级域名所在的IP上，后操作绑定。 若您需要将其他分组的独立域名变更到当前分组，需要先变更解析，才能成功绑定。 若为https协议，则需要同时绑定SSL证书，要求同时传递 CertificateName、CertificateBody、 PrivateKey三个请求参数。
+给指定分组绑定自定义域名此功能面向API提供者。 独立域名要CNAME解析到该分组的二级域名上，或者添加A记录到二级域名所在的IP上，后操作绑定。 若您需要将其他分组的独立域名变更到当前分组，需要先变更解析，才能成功绑定。 若为https协议，则需要同时绑定SSL证书，要求同时传递 CertificateName、CertificateBody、 PrivateKey三个请求参数。 可后续再上传SSL证书，请参照SetDomainCertificate。
 
 **请求参数**
 
@@ -1919,11 +2043,11 @@ API 网关
 https://apigateway.cn-hangzhou.aliyuncs.com/?Action=SetDomain &GroupId=927d50c0f2e54b359919923d908bb015 &DomainName=api.demo.com
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-API 网关 XML格式
+XML格式
 
 ```xml
 <SetDomainResponse>
@@ -1936,23 +2060,23 @@ hangzhou.alicloudapi.com</SubDomain>
 </SetDomainResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7",
     "GroupId": "927d50c0f2e54b359919923d908bb015",
     "DomainName": "api.abcdef.com",
     "SubDomain": "927d50c0f2e54b359919923d908bb015-cn-hangzhou.alicloudapi.com",
     "DomainBindingStatus": "BINDING"
-}
 ```
 
-### 上传SSL证书
+`}`
+
+### 8.2 上传SSL证书
 
 **描述**
 
-此功能面向API提供者 SSL证书必须与域名匹配绑定SSL证书后，可提供基于HTTPS的API服务
+为指定自定义域名上传SSL证书此功能面向API提供者 SSL证书必须与域名匹配绑定SSL证书后，可提供基于HTTPS的API服务
 
 **请求参数**
 
@@ -1973,15 +2097,13 @@ JSON格式
 
 **示例**
 
-API 网关
-
 **请求示例**
 
 ```
 https://apigateway.cn-hangzhou.aliyuncs.com/?Action=SetDomainCertificate &GroupId=927d50c0f2e54b359919923d908bb015 &DomainName=api.demo.com &CertificateName＝test_cert &CertificateBody＝-----BEGIN CERTIFICATE----- MIICaTCCAdICCQDLDvXtNkCrHjANBgkqhkiG9w0BAQUFADB5MQswCQYDVQQGEwJD TjELMAkGA1UECBMCWkoxCzAJBgNVBAcTAkhaMQ0wCwYDVQQKEwR0ZXN0MQ0wCwYD VQQLEwR0ZXN0MRQwEgYDVQQDEwthcGkuaWxhZC5jbjEcMBoGCSqGSIb3DQEJARYN dGVzdEB0ZXN0LmNvbTAeFw0xNjAzMzEwMzMxMTBaFw0yNjAzMjkwMzMxMTBaMHkx CzAJBgNVBAYTAkNOMQswCQYDVQQIEwJaSjELMAkGA1UEBxMCSFoxDTALBgNVBAoT BHRlc3QxDTALBgNVBAsTBHRlc3QxFDASBgNVBAMTC2FwaS5pbGFkLmNuMRwwGgYJ KoZIhvcNAQkBFg10ZXN0QHRlc3QuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB iQKBgQDFfPttxLedyMF+tk/9VIGIIQ90LEx6JwfuKX38aO8zlN3+KxU7kMXBLYN7 kB7yZDsHBo87wlxXXPg7FO+3HjEcWAy8FgBFNfrnLLjXEK23Lrkn/3AdVulQ+eEi oVfOokQ1PO7GYFZSo8UFvBzol2An/f2Sd/bey713/rIUVgUd7wIDAQABMA0GCSqG SIb3DQEBBQUAA4GBAAqj2TQ8jzbmN5IDM8fMOARKLQQK8qTgkrHMAMEq7PJwNRtK A05enhbgZKJVkYhYk5nccWb3XZuklm6KX/ImWM1zfxi9EjvdD6Xkvxd9RpdZwlod zu6LnGpfi0YFiIBY301sFp0ACPudUvE1tVckrqM/ONPNhHWEnkAT9DF84hEN -----END CERTIFICATE----- &CertificatePrivateKey＝-----BEGIN RSA PRIVATE KEY----- MIICXAIBAAKBgQDFfPttxLedyMF+tk/9VIGIIQ90LEx6JwfuKX38aO8zlN3+KxU7 kMXBLYN7kB7yZDsHBo87wlxXXPg7FO+3HjEcWAy8FgBFNfrnLLjXEK23Lrkn/3Ad VulQ+eEioVfOokQ1PO7GYFZSo8UFvBzol2An/f2Sd/bey713/rIUVgUd7wIDAQAB AoGAeBxKgvlYv5Mg8+MIBUhHO7b3wi1LGiPw882yfTiI+vM4jORBFqg3TgVTaWw/ FicVq3E23h6YsN2vb6eNH+8x6DtGGZFiaWqIubWGEFenct8GPnlNY6JnxDdLMoGT K0P0r4qMZD5gSRs4sGR/wcGdbCGvSaFrzEConLmsaSlgLTkCQQD5KVwvchG/pai0 o13LJ9F4TVSegt8roH6QO0SuEb4GiKqUlY+Q1+PIBMHS1VciBJGyAWreLJkZnfKK g80cDL6VAkEAyuiPBt4u9dc68qet9vgVAYBI95vyCvg2u+MdVJKFYKaqNEDXbeyV qsrlsJ46LCAsQiLpzdEyrOioGiW3yNo9cwJBAKkn0EMR0UToJcIFSy8aaFahQXqf 5P1MZ8BpzHXU68qpzA02AJLYTvdDa4dEeXRJ39QWrEQLySEgH0K0unJ5oIUCQDtp Ln+vTIa091CXYit+5f+jhTni0lL97GDFFhBuOllbU1irZ6iK7iOs9uXo3lWPMgZH XLfjuffAw3+sbYyEwhsCQEtkrLCYEi5PQ4Z2RjonIBWWgXs+hDkd6qe5QM4Asr5t SDX2p8U+SnvvzJ3HuLM2ZB3D8duKJHCrKwOjX7nlXHo= -----END RSA PRIVATE KEY-----
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -1993,19 +2115,15 @@ XML格式
 </SetDomainCertificateResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7",
-}
 ```
 
-### 查询域名详情
+`}`
 
-API 网关
-
-**描述**
+### 8.3 查询域名详情
 
 用于查询您绑定的自定义域名详情信息，包含系统自动分配的二级域名、自定义域名和SSL证书信息。 此功能面向API提供者。
 
@@ -2040,11 +2158,11 @@ API 网关
 https://apigateway.cn-hangzhou.aliyuncs.com/?Action=DescribeDomain &GroupId=927d50c0f2e54b359919923d908bb015 &DomainName=api.demo.com
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <DescribeDomainResponse>
@@ -2062,10 +2180,9 @@ hangzhou.alicloudapi.com</SubDomain>
 </DescribeDomainResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7",
     "GroupId": "927d50c0f2e54b359919923d908bb015",
     "SubDomain": "927d50c0f2e54b359919923d908bb015-cn-hangzhou.alicloudapi.com",
@@ -2076,10 +2193,11 @@ JSON格式
     "CertificatePrivateKey":"..",
     "DDomainBindingStatus": "BINDING",
     "DomainCNAMEStatus": "RESOLVED"
-  }
 ```
 
-### 删除域名
+`}`
+
+### 8.4 删除域名
 
 **描述**
 
@@ -2099,8 +2217,6 @@ JSON格式
 |---|---|---|
 | RequestId | String | 请求唯一标识 |
 
-API 网关
-
 **示例**
 
 **请求示例**
@@ -2109,7 +2225,7 @@ API 网关
 https://apigateway.cn-hangzhou.aliyuncs.com/?Action=DeleteDomain &GroupId=927d50c0f2e54b359919923d908bb015 &DomainName=api.demo.com
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2121,15 +2237,15 @@ XML格式
 </DeleteDomainResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7"
-}
 ```
 
-### 删除域名证书
+`}`
+
+### 8.5 删除域名证书
 
 **描述**
 
@@ -2154,13 +2270,11 @@ JSON格式
 
 **请求示例**
 
-API 网关
-
 ```
 https://apigateway.cn-hangzhou.aliyuncs.com/?Action=DeleteDomainCertificate &GroupId=927d50c0f2e54b359919923d908bb015 &DomainName=api.demo.com &CertificateId=6EF60BEC-0242-43AF-BB20-270359FB54A7
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2172,19 +2286,17 @@ XML格式
 </DeleteDomainCertificateResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "6EF60BEC-0242-43AF-BB20-270359FB54A7"
-}
 ```
 
-API 网关
+`}`
 
-## API 管理相关接口
+## 9 API 管理相关接口
 
-### 创建API
+### 9.1 创建API
 
 **描述**
 
@@ -2200,8 +2312,6 @@ API 网关
 | Visibility | Strin g | 是 | API是否公开，可以取值： PUBLIC：公开，如选择此类型，该API的线上环境定义，会在所有用户的控制台“发现API”页面可见。 PRIVATE：不公开，如选择此类型，当该组API在云市场上架时，私有类型的API不会上架 |
 | Description | Strin g | 是 | API描述信息，最多180个字符 |
 
-API 网关
-
 | AuthType | Strin g | 是 | API安全认证类型，目前可以取值： APP：只允许已授权的APP调用 ANONYMOUS：允许匿名调用，设置为允许匿名调用需要注意： 任何能够获取该API服务信息的人，都将能够调用该API。网关不会对调用者做身份认证，也无法设置按用户的流量控制，若开放该API请设置好按API的流量控制。 “ANONYMOUS”API不建议上架云市场，网关无法对调用者区分计量，也无法限制调用次数，若所在分组要上架云市场，建议将该API转移至其他分组，或将类型设置为“私有”，或选择“阿里云 APP”认证方式。 APPOPENID：支持第三方账号认证OpenID Connect，而且只允许已授权的APP调用；当设置此项时，参数OpenIdConnectConfig为必传。 |
 |---|---|---|---|
 | OpenIdConne ctConfig | Strin g | 是 | 第三方账号认证OpenID Connect相关配置项，详情见OpenIdConnectConfig |
@@ -2215,11 +2325,7 @@ API 网关
 | FailResultSa mple | Strin g | 否 | 后端服务失败返回应答的示例 |
 | ErrorCodeSa mples | Strin g | 否 | 后端服务返回的错误码示例，详情见ErrorCodeSample |
 
-API 网关
-
-**说明**
-
-CreateApi接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** CreateApi接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -2232,17 +2338,15 @@ CreateApi接口调用时，您需要在调用代码的Header参数中设置x-acs
 
 **请求示例**
 
-API 网关
-
 ```json
-https://ecs.aliyuncs.com/?Action=CreateApi &GroupId=08ae4aa0f95e4321849ee57f4e0b3077 &ApiName=ApiName &Visibility=PUBLIC &Description=Api description &AuthType=APP {"RequestProtocol":"HTTP","RequestHttpMethod":"GET","RequestPath":"/v3/getUserTest/[userI ","BodyFormat":"FORM","PostBodyDescription":""} {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customer main.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"} [{"ParameterType":"Number","Required":"OPTIONAL","isHide":false,"ApiParameterName":"age", efaultValue":"20","DemoValue":"20","Description":"年龄","MinValue":18,"MaxValue":100,"Location":"Head"}, {"ParameterType":"String","Required":"OPTIONAL","isHide":false,"ApiParameterName":"sex"," faultValue":"boy","DemoValue":"boy","Description":"性别","EnumValue":"boy,girl","Location":"Query"}, {"ParameterType":"Number","Required":"REQUIRED","isHide":false,"ApiParameterName":"userId "MaxLength":10,"MinValue":10000000,"MaxValue":100000000,"Location":"Path"}, {"ApiParameterName":"CaClientIp","ParameterLocation": {"name":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"RE IRED","Description":"客户端IP"},{"ApiParameterName":"constance","ParameterLocation":{"na me":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"REQUIR ","DefaultValue":"constance","Description":"constance"}] [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"RE EST"}, {"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":" STEM"}, {"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog": ONSTANT"}] &ServiceParametersMap=[{"ServiceParameterName":"age","RequestParameterName":"age"},{"Se rviceParameterName":"sex","RequestParameterName":"sex"}, {"ServiceParameterName":"userId","RequestParameterName":"userId"}, {"ServiceParameterName":"clientIp","RequestParameterName":"CaClientIp"}, {"ServiceParameterName":"constance","RequestParameterName":"constance"}] &ResultType=HTML &ResultSample=200
+https://ecs.aliyuncs.com/?Action=CreateApi &GroupId=08ae4aa0f95e4321849ee57f4e0b3077 &ApiName=ApiName &Visibility=PUBLIC &Description=Api description &AuthType=APP &RequestConfig= {"RequestProtocol":"HTTP","RequestHttpMethod":"GET","RequestPath":"/v3/getUserTest/[userI ","BodyFormat":"FORM","PostBodyDescription":""} &ServiceConfig= {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customer main.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"} &RequestParameters= [{"ParameterType":"Number","Required":"OPTIONAL","isHide":false,"ApiParameterName":"age", efaultValue":"20","DemoValue":"20","Description":"年龄","MinValue":18,"MaxValue":100,"Location":"Head"}, {"ParameterType":"String","Required":"OPTIONAL","isHide":false,"ApiParameterName":"sex"," faultValue":"boy","DemoValue":"boy","Description":"性别","EnumValue":"boy,girl","Location":"Query"}, {"ParameterType":"Number","Required":"REQUIRED","isHide":false,"ApiParameterName":"userId "MaxLength":10,"MinValue":10000000,"MaxValue":100000000,"Location":"Path"}, {"ApiParameterName":"CaClientIp","ParameterLocation": {"name":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"RE IRED","Description":"客户端IP"},{"ApiParameterName":"constance","ParameterLocation":{"na me":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"REQUIR ","DefaultValue":"constance","Description":"constance"}] &ServiceParameters= [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"RE EST"}, {"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":" STEM"}, {"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog": ONSTANT"}] &ServiceParametersMap=[{"ServiceParameterName":"age","RequestParameterName":"age"},{"Se rviceParameterName":"sex","RequestParameterName":"sex"}, {"ServiceParameterName":"userId","RequestParameterName":"userId"}, {"ServiceParameterName":"clientIp","RequestParameterName":"CaClientIp"}, {"ServiceParameterName":"constance","RequestParameterName":"constance"}] &ResultType=HTML &ResultSample=200
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <CreateApiResponse>
@@ -2251,20 +2355,20 @@ XML格式 API 网关
 </CreateApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"6C87A26A-6A18-4B8E-8099-705278381A2C",
     "ApiId":"8afff6c8c4c6447abb035812e4d66b65"
-}
 ```
 
-### 修改API
+`}`
+
+### 9.2 修改API
 
 **描述**
 
-此接口面向开放API的用户修改RequestPath时需要注意，同一个分组内Path不允许重复。 该接口调用的QPS限制为：单用户QPS不超过50。
+修改API定义此接口面向开放API的用户修改ApiName时需要注意，同一个分组内API不允许重名。 修改RequestPath时需要注意，同一个分组内Path不允许重复。 该接口调用的QPS限制为：单用户QPS不超过50。
 
 **请求参数**
 
@@ -2276,8 +2380,6 @@ JSON格式
 | ApiName | String | 是 | API的名称，组内不允许重复。支持汉字、英文、数字和下划线，且只能以英文和汉字开头，4~50个字符 |
 | Visibility | String | 是 | API是否公开，目前可以取值： PUBLIC：公开，如选择此类型，该API的线上环境，会在所有用户的控制台“发现API”页面展示 PRIVATE：不公开，如选择此类型，当该组API在云市场上架时，私有类型的API不会上架 |
 | Description | String | 是 | API描述信息，最多180个字符 |
-
-API 网关
 
 | AuthType | String | 是 | API安全认证类型，目前可以取值： APP：只允许已授权的APP调用 ANONYMOUS：允许匿名调用，设置为允许匿名调用需要注意： 任何能够获取该API服务信息的人，都将能够调用该API。网关不会对调用者做身份认证，也无法设置按用户的流量控制，若开放该API请设置好按API的流量控制。 “ANONYMOUS”API不建议上架云市场，网关无法对调用者区分计量， 也无法限制调用次数，若所在分组要上架云市场，建议将该API转移至其他分组，或将类型设置为“私有”，或选择“阿里云APP”认证方式。 APPOPENID：支持第三方账号认证OpenID Connect，而且只允许已授权的APP调用；当设置此项时，参数OpenIdConnectConfig为必传。 |
 |---|---|---|---|
@@ -2302,17 +2404,15 @@ API 网关
 
 **请求示例**
 
-API 网关
-
 ```json
-https://ecs.aliyuncs.com/?Action=ModifyApi &GroupId=08ae4aa0f95e4321849ee57f4e0b3077 &ApiName=ApiName &ApiId=8afff6c8c4c6447abb035812e4d66b65 &Visibility=PUBLIC &Description=Api description &AuthType=APP {"RequestProtocol":"HTTP","RequestHttpMethod":"GET","RequestPath":"/v3/getUserTest/[userI ","BodyFormat":"FORM","PostBodyDescription":""} {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customer main.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"} &RequestParameters=[{"ParameterLocation": {"name":"Head","orderNumber":1},"ParameterType":"Number","Required":"OPTIONAL","isHide":f se,"ApiParameterName":"age","DefaultValue":"20","DemoValue":"20","Description":“年龄”,"M inValue":18,"MaxValue":100,"Location":"Head"},{"ParameterLocation": {"name":"Query","orderNumber":2},"ParameterType":"String","Required":"OPTIONAL","isHide": lse,"ApiParameterName":"sex","DefaultValue":"boy","DemoValue":"boy","Description":“性别” ,"EnumValue":"boy,girl","Location":"Query"},{"ParameterLocation":{"name":"Parameter Pat h","orderNumber":3},"ParameterType":"Number","Required":"REQUIRED","isHide":false,"ApiPar eterName":"userId","MaxLength":10,"MinValue":10000000,"MaxValue":100000000,"Location":"Pa "},{"ApiParameterName":"CaClientIp","ParameterLocation": {"name":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"RE IRED","Description":“客户端IP”},{"ApiParameterName":"constance","ParameterLocation":{"na me":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"REQUIR ","DefaultValue":"constance","Description":"constance"}] [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"RE EST"}, {"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":" STEM"}, {"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog": ONSTANT"}] &ServiceParametersMap=[{"ServiceParameterName":"age","RequestParameterName":"age"},{"Se rviceParameterName":"sex","RequestParameterName":"sex"}, {"ServiceParameterName":"userId","RequestParameterName":"userId"}, {"ServiceParameterName":"clientIp","RequestParameterName":"CaClientIp"}, {"ServiceParameterName":"constance","RequestParameterName":"constance"}] &ResultType=HTML &ResultSample=200
+https://ecs.aliyuncs.com/?Action=ModifyApi &GroupId=08ae4aa0f95e4321849ee57f4e0b3077 &ApiName=ApiName &ApiId=8afff6c8c4c6447abb035812e4d66b65 &Visibility=PUBLIC &Description=Api description &AuthType=APP &RequestConfig= {"RequestProtocol":"HTTP","RequestHttpMethod":"GET","RequestPath":"/v3/getUserTest/[userI ","BodyFormat":"FORM","PostBodyDescription":""} &ServiceConfig= {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customer main.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"} &RequestParameters=[{"ParameterLocation": {"name":"Head","orderNumber":1},"ParameterType":"Number","Required":"OPTIONAL","isHide":f se,"ApiParameterName":"age","DefaultValue":"20","DemoValue":"20","Description":“年龄”,"M inValue":18,"MaxValue":100,"Location":"Head"},{"ParameterLocation": {"name":"Query","orderNumber":2},"ParameterType":"String","Required":"OPTIONAL","isHide": lse,"ApiParameterName":"sex","DefaultValue":"boy","DemoValue":"boy","Description":“性别” ,"EnumValue":"boy,girl","Location":"Query"},{"ParameterLocation":{"name":"Parameter Pat h","orderNumber":3},"ParameterType":"Number","Required":"REQUIRED","isHide":false,"ApiPar eterName":"userId","MaxLength":10,"MinValue":10000000,"MaxValue":100000000,"Location":"Pa "},{"ApiParameterName":"CaClientIp","ParameterLocation": {"name":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"RE IRED","Description":“客户端IP”},{"ApiParameterName":"constance","ParameterLocation":{"na me":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"REQUIR ","DefaultValue":"constance","Description":"constance"}] &ServiceParameters= [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQU T"}, {"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"RE EST"}, {"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":" STEM"}, {"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog": ONSTANT"}] &ServiceParametersMap=[{"ServiceParameterName":"age","RequestParameterName":"age"},{"Se rviceParameterName":"sex","RequestParameterName":"sex"}, {"ServiceParameterName":"userId","RequestParameterName":"userId"}, {"ServiceParameterName":"clientIp","RequestParameterName":"CaClientIp"}, {"ServiceParameterName":"constance","RequestParameterName":"constance"}] &ResultType=HTML &ResultSample=200
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <ModifyApiResponse>
@@ -2320,19 +2420,19 @@ XML格式 API 网关
 </ModifyApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"6C87A26A-6A18-4B8E-8099-705278381A2C"
-}
 ```
 
-### 发布API
+`}`
+
+### 9.3 发布API
 
 **描述**
 
-此功能面向开放API的用户，定义的API只有发布到运行环境，才能被调用 API发布到集群里需要一定的时间，最长5秒后生效该接口调用的QPS限制为：单用户QPS不超过50
+发布API到指定的运行环境此功能面向开放API的用户，定义的API只有发布到运行环境，才能被调用 API发布到集群里需要一定的时间，最长5秒后生效该接口调用的QPS限制为：单用户QPS不超过50
 
 **请求参数**
 
@@ -2358,11 +2458,11 @@ JSON格式
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DeployApi &GroupId=63be9002440b4778a61122f14c2b2bbb &ApiId=d6f679aeb3be4b91b3688e887ca1fe16 &StageName=release &Description=for_test1
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-格式 API 网关 XML格式
+格式 XML格式
 
 ```xml
 <DeployApiResponse>
@@ -2370,15 +2470,15 @@ https://apigateway.cn-qingdao.aliyuncs.com/?Action=DeployApi &GroupId=63be900244
 </DeployApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
-}
 ```
 
-### 快速切换API版本
+`}`
+
+### 9.4 快速切换API版本
 
 **描述**
 
@@ -2405,13 +2505,11 @@ JSON格式
 
 **请求示例**
 
-API 网关
-
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=SwitchApi &GroupId=63be9002440b4778a61122f14c2b2bbb &ApiId=d6f679aeb3be4b91b3688e887ca1fe16 &StageName=release &HistoryVersion=20160705104552292 &Description=for_demo
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2423,19 +2521,19 @@ XML格式
 </SwitchApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ001"
-}
 ```
 
-### 下线API
+`}`
+
+### 9.5 下线API
 
 **描述**
 
-下线指定运行环境的指定API 将指定环境中运行的指定API从运行环境里摘除，需要一定的时间，最长不超过5s。 API下线后将不能被调用（指定环境）
+下线指定运行环境的指定API 此功能面向开放API的用户，和发布API相对应将指定环境中运行的指定API从运行环境里摘除，需要一定的时间，最长不超过5s。 API下线后将不能被调用（指定环境）
 
 **请求参数**
 
@@ -2456,13 +2554,11 @@ JSON格式
 
 **请求示例**
 
-API 网关
-
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=AbolishApi &GroupId=63be9002440b4778a61122f14c2b2bbb &ApiId=d6f679aeb3be4b91b3688e887ca1fe16 &StageName=RELEASE
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2474,15 +2570,15 @@ XML格式
 </AbolishApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ016"
-}
 ```
 
-### 删除API定义
+`}`
+
+### 9.6 删除API定义
 
 **描述**
 
@@ -2496,15 +2592,11 @@ JSON格式
 | GroupId | String | 是 | 分组编号 |
 | ApiId | String | 是 | API编号 |
 
-**说明**
-
-DeleteApi接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DeleteApi接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
 **返回参数**
-
-API 网关
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -2518,7 +2610,7 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DeleteApi &GroupId=63be9002440b4778a61122f14c2b2bbb &ApiId=d6f679aeb3be4b91b3688e887ca1fe16
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2530,15 +2622,15 @@ XML格式
 </DeleteApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ017"
-}
 ```
 
-### 查询API定义
+`}`
+
+### 9.7 查询API定义
 
 **描述**
 
@@ -2559,8 +2651,6 @@ JSON格式
 | RequestId | String | 本次创建API的请求Id |
 | RegionId | String | API所处的Region的Id |
 
-API 网关
-
 | ApiId | String | API的Id标识 |
 |---|---|---|
 | ApiName | String | API的名称，组内不允许重复 |
@@ -2580,8 +2670,6 @@ API 网关
 | RequestPara metersObject | RequestParame ter | Consumer向网关发送API请求的参数描述，详情见 ApiAttributesType.md#RequestParameters |
 | ServiceParam etersObject | ServiceParamet er | 网关向后端服务发送API请求的参数描述，详情见 ApiAttributesType.md#ServiceParameters |
 
-API 网关
-
 | ParametersMa pObject | ServiceParamet erMap | Consumer向网关发送请求的参数和网关向后端服务发送的请求的参数的映射关系，详情见ApiAttributesType.md#ServiceParametersMap |
 |---|---|---|
 | DeployedInfos | DeployedInfo | API发布状态，详情见ApiAttributesType.md#DeployedInfos |
@@ -2597,7 +2685,7 @@ API 网关
 https://ecs.aliyuncs.com/?Action=DescribeApi &GroupId=08ae4aa0f95e4321849ee57f4e0b3077 &ApiId=8afff6c8c4c6447abb035812e4d66b65
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -2606,11 +2694,13 @@ XML格式
 ```xml
 <DescribeApiResponse>
     <RequestId>D0FF585F-7966-40CF-BC60-75DB070B23D5</RequestId>
+    <RegionId>cn-qingdao</RegionId>
     <Description>Api description</Description>
     <ApiName>ApiName</ApiName>
     <CreatedTime>2016-07-28T09:50:43Z</CreatedTime>
     <GroupName>ApiTest</GroupName>
     <ModifiedTime>2016-07-28T13:13:12Z</ModifiedTime>
+    <ServiceParametersObject>
         <ServiceParam>
             <ServiceParameterName>age</ServiceParameterName>
             <Type>Number</Type>
@@ -2633,24 +2723,32 @@ XML格式
         </ServiceParam>
 ```
 
-API 网关
-
 ```xml
         <ServiceParam>
             <ServiceParameterName>constance</ServiceParameterName>
             <Type>String</Type>
             <Location>head</Location>
         </ServiceParam>
+    </ServiceParametersObject>
+    <ConstantParameters>
+        <ConstantParameter>
             <ServiceParameterName>constance</ServiceParameterName>
             <Description>constance</Description>
             <Location>HEAD</Location>
             <ConstantValue>constance</ConstantValue>
+        </ConstantParameter>
+    </ConstantParameters>
     <GroupId>08ae4aa0f95e4321849ee57f4e0b3077</GroupId>
+    <SystemParameters>
+        <SystemParameter>
             <ServiceParameterName>clientIp</ServiceParameterName>
             <Description>客户端IP</Description>
             <DemoValue>192.168.1.1</DemoValue>
             <Location>HEAD</Location>
             <ParameterName>CaClientIp</ParameterName>
+        </SystemParameter>
+    </SystemParameters>
+    <RequestParametersObject>
         <RequestParam>
             <Required>OPTIONAL</Required>
             <MinValue>18</MinValue>
@@ -2682,8 +2780,6 @@ API 网关
             <ParameterType>NUMBER</ParameterType>
 ```
 
-API 网关
-
 ```xml
             <ApiParameterName>userId</ApiParameterName>
             <DocShow>PUBLIC</DocShow>
@@ -2691,29 +2787,49 @@ API 网关
             <MaxValue>100000000</MaxValue>
             <DocOrder>0</DocOrder>
         </RequestParam>
+    </RequestParametersObject>
+    <DeployedInfos>
+        <DeployedInfo>
             <DeployedStatus>NONDEPLOYED</DeployedStatus>
             <StageName>TEST</StageName>
+        </DeployedInfo>
+        <DeployedInfo>
             <DeployedStatus>NONDEPLOYED</DeployedStatus>
             <StageName>RELEASE</StageName>
+        </DeployedInfo>
+    </DeployedInfos>
+    <ServiceConfig>
         <ServiceProtocol>HTTP</ServiceProtocol>
         <ServiceTimeout>1000</ServiceTimeout>
         <ServiceAddress>http://www.customerdomain.com</ServiceAddress>
         <ServicePath>/v3/getUserTest/[userId]</ServicePath>
         <ServiceHttpMethod>GET</ServiceHttpMethod>
         <Mock>FALSE</Mock>
+    </ServiceConfig>
     <RequestId>D0FF585F-7966-40CF-BC60-75DB070B23D5</RequestId>
+    <RegionId>cn-qingdao</RegionId>
+    <RequestConfig>
         <RequestHttpMethod>GET</RequestHttpMethod>
         <RequestProtocol>HTTP</RequestProtocol>
         <RequestPath>/v3/getUserTest/[userId]</RequestPath>
+    </RequestConfig>
     <Visibility>PUBLIC</Visibility>
     <ParametersMapObject>
+        <ServiceParameterMap>
             <ServiceParameterName>sex</ServiceParameterName>
             <RequestParameterName>sex</RequestParameterName>
+        </ServiceParameterMap>
+        <ServiceParameterMap>
             <ServiceParameterName>age</ServiceParameterName>
             <RequestParameterName>age</RequestParameterName>
+        </ServiceParameterMap>
+        <ServiceParameterMap>
             <ServiceParameterName>userId</ServiceParameterName>
             <RequestParameterName>userId</RequestParameterName>
+        </ServiceParameterMap>
     </ParametersMapObject>
+    <ErrorCodeSamples>
+        <ErrorCodeSample>
             <Code>400</Code>
             <Message>Missing the parameter UserId</Message>
 ```
@@ -2721,10 +2837,10 @@ API 网关
 `<Description>`请求缺少参数 `UserId</Description>`
 
 ```xml
+        </ErrorCodeSample>
+    </ErrorCodeSamples>
 <AiId>8fff6846447bb0358124d66b65</AiId>
 ```
-
-API 网关
 
 ```xml
     <ApiId>8afff6c8c4c6447abb035812e4d66b65</ApiId>
@@ -2740,10 +2856,9 @@ API 网关
 </DescribeApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":D0FF585F-7966-40CF-BC60-75DB070B23D5,
     "RegionId":cn-qingdao,
     "Description": "billingTest001",
@@ -2751,71 +2866,102 @@ JSON格式
     "CreatedTime": "2016-07-01T09:18:20Z",
     "GroupName": "billingTest",
     "ModifiedTime": "2016-07-21T03:52:12Z",
+    "ServiceParametersObject": {
         "ServiceParam": [
-            {
+```
+
+`{`
+
+```json
                 "ServiceParameterName": "headerParam",
                 "Type": "String",
                 "Location": "head"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ServiceParameterName": "queryparam",
                 "Type": "String",
                 "Location": "query"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ServiceParameterName": "NumberParam",
                 "Type": "Number",
                 "Location": "query"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ServiceParameterName": "type",
                 "Type": "String",
                 "Location": "path"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ServiceParameterName": "clientIp",
                 "Type": "String",
                 "Location": "head"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ServiceParameterName": "constantParam",
                 "Type": "String",
                 "Location": "query"
-            }
 ```
 
-] API 网关
+`]` `},`
 
 ```json
-    },
-            {
+    "ConstantParameters": {
+        "ConstantParameter": [
+```
+
+`{`
+
+```json
                 "ServiceParameterName": "constantParam",
                 "Description": "constant",
                 "Location": "QUERY",
                 "ConstantValue": "constant"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "GroupId": "4a3f3050b9c5469bb685bdd29e571be1",
-            {
+    "SystemParameters": {
+        "SystemParameter": [
+```
+
+`{`
+
+```json
                 "ServiceParameterName": "clientIp",
                 "Description": "客户端IP",
                 "DemoValue": "192.168.1.1",
                 "Location": "HEAD",
                 "ParameterName": "CaClientIp"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
+    "RequestParametersObject": {
         "RequestParam": [
-            {
+```
+
+`{`
+
+```json
                 "Required": "OPTIONAL",
                 "Description": "head param",
                 "DemoValue": "headparm",
@@ -2826,8 +2972,11 @@ JSON格式
                 "Location": "HEAD",
                 "EnumValue": "head",
                 "DocOrder": 0
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Required": "REQUIRED",
                 "ParameterType": "STRING",
                 "ApiParameterName": "queryparam",
@@ -2835,8 +2984,11 @@ JSON格式
                 "DefaultValue": "",
                 "Location": "QUERY",
                 "DocOrder": 0
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Required": "OPTIONAL",
                 "MinValue": 1,
                 "Description": "number param",
@@ -2846,98 +2998,129 @@ JSON格式
                 "DocShow": "PUBLIC",
 ```
 
-API 网关
-
 ```json
                 "DefaultValue": "10",
                 "Location": "QUERY",
                 "MaxValue": 100,
                 "DocOrder": 0
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Required": "REQUIRED",
                 "ParameterType": "STRING",
                 "ApiParameterName": "type",
                 "DocShow": "PUBLIC",
                 "Location": "PATH",
                 "DocOrder": 0
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
-            {
+    "DeployedInfos": {
+        "DeployedInfo": [
+```
+
+`{`
+
+```json
                 "DeployedStatus": "NONDEPLOYED",
                 "StageName": "TEST"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "DeployedStatus": "DEPLOYED",
                 "StageName": "RELEASE",
                 "EffectiveVersion": "20160721115223375"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
+    "ServiceConfig": {
         "ServiceProtocol": "HTTP",
         "ServiceTimeout": 10000,
         "ServiceAddress": "http://120.55.69.157:8080",
         "ServicePath": "/web/cloudapi/[type]",
         "ServiceHttpMethod": "POST",
         "Mock": "CLOSED"
-    },
+```
+
+`},`
+
+```json
     "RequestId": "415F037A-94C2-4100-B17A-F3C514CA1391",
     "RegionId": "cn-qingdao",
+    "RequestConfig": {
         "RequestHttpMethod": "POST",
         "RequestProtocol": "HTTP",
         "PostBodyDescription": "fwefwef",
         "BodyFormat": "STREAM",
         "RequestPath": "/api/billing/test/[type]"
-    },
+```
+
+`},`
+
+```json
     "Visibility": "PUBLIC",
     "ParametersMapObject": {
-            {
+        "ServiceParameterMap": [
+```
+
+`{`
+
+```json
                 "ServiceParameterName": "headerParam",
-            },
-            {
+                "RequestParameterName": "headerParam"
+```
+
+`},`
+
+```json
                 "ServiceParameterName": "queryparam",
 ```
 
-`"R` `tP` t N " " " API 网关
+`"R` `tP` `t` `N` `"` `"` `"`
 
 ```json
-            },
-            {
-                "ServiceParameterName": "NumberParam",
-            },
-            {
-                "ServiceParameterName": "type",
-            }
+                "RequestParameterName": "queryparam"
 ```
 
-]
+`},`
 
 ```json
-    },
-            {
+                "ServiceParameterName": "NumberParam",
+                "RequestParameterName": "NumberParam"
+```
+
+`},` `{`
+
+```json
+                "ServiceParameterName": "type",
+                "RequestParameterName": "type"
+```
+
+`}` `]` `},`
+
+```json
+    "ErrorCodeSamples": {
+        "ErrorCodeSample": [
+```
+
+`{`
+
+```json
                 "Code": "400",
                 "Message": "Missing the parameter UserId",
 ```
 
-`"Description": "`请求缺少参数 `UserId"`
-
-```
-            }
-```
-
-]
+`"Description": "`请求缺少参数 `UserId"` `}` `]` `},`
 
 ```json
-    },
     "ApiId": "e77fd9257b1d436a806fe23c649300a0",
     "AuthType": "APP",
     "ResultType": "JSON",
@@ -2947,11 +3130,11 @@ API 网关
         "publicKey": "EB1837F8693CCED0BF750B3AD48467BEB569E780A14591CF92",
         "openIdApiType": "IDTOKEN",
         "publicKeyId": "88483727556929326703309904351185815489"
-    }
-}
 ```
 
-### 查询API服务文档
+`}` `}`
+
+### 9.8 查询API服务文档
 
 **描述**
 
@@ -2963,8 +3146,6 @@ API 网关
 |---|---|---|---|
 | Action | String | 是 | 操作接口名，系统规定参数，取值：DescribeApiDoc |
 | GroupId | String | 是 | 指定的分组编号 |
-
-API 网关
 
 | ApiId | String | 是 | 指定的API编号 |
 |---|---|---|---|
@@ -2999,7 +3180,7 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeApiDoc &GroupId=0009db9c828549768a200320714b8930 &ApiId=3b81fd160f5645e097cc8855d75a1cf6
 ```
 
-`&<`公共请求参数> API 网关
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3008,6 +3189,7 @@ XML格式
 ```xml
 <DescribeApiDocResponse>
     <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BZ014</RequestId>
+    <RegionId>cn-qingdao</RegionId>
     <GroupId>0009db9c828549768a200320714b8930</GroupId>
     <GroupName>myGroup2</GroupName>
     <StageName>RELEASE</StageName>
@@ -3019,6 +3201,8 @@ XML格式
     <ResultType>application/json</ResultType>
     <ResultSample></ResultSample>
     <FailResultSample></FailResultSample>
+    <ErrorCodeSamples>
+        <ErrorCodeSample>
             <Code>400</Code>
             <Message>Missing the parameter UserId</Message>
 ```
@@ -3026,11 +3210,17 @@ XML格式
 `<Description>`请求缺少参数 `UserId</Description>`
 
 ```xml
+        </ErrorCodeSample>
+    </ErrorCodeSamples>
+    <RequestConfig>
         <RequestProtocol>HTTP</RequestProtocol>
         <RequestHttpMethod>GET</RequestHttpMethod>
         <RequestPath>/mypath/creatobject</RequestPath>
         <BodyFormat>FORM</BodyFormat>
         <PostBodyDescription>对象</PostBodyDescription>
+    </RequestConfig>
+    <RequestParameters>
+        <RequestParameter>
             <ApiParameterName>RequestKey1</ApiParameterName>
             <Location>QUERY</Location>
             <ParameterType>String</ParameterType>
@@ -3047,12 +3237,12 @@ XML格式
             <DocShow>PUBLIC</DocShow>
             <DocOrder>1</DocOrder>
             <Description>Desc1</Description>
+        </RequestParameter>
+        <RequestParameter>
             <ApiParameterName>RequestKey2</ApiParameterName>
             <Location>QUERY</Location>
             <ParameterType>Number</ParameterType>
 ```
-
-API 网关
 
 ```xml
             <Required>OPTIONAL</Required>
@@ -3068,13 +3258,14 @@ API 网关
             <DocShow>PUBLIC</DocShow>
             <DocOrder>2</DocOrder>
             <Description>Desc2</Description>
+        </RequestParameter>
+    </RequestParameters>
 </DescribeApiDocResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ014",
     "RegionId": "cn-qingdao",
     "GroupId": "0009db9c828549768a200320714b8930",
@@ -3092,34 +3283,37 @@ JSON格式
     "ResultType": "application/json",
     "ResultSample": "200",
     "FailResultSample": "400",
-            {
+    "ErrorCodeSamples": {
+        "ErrorCodeSample": [
+```
+
+`{`
+
+```json
                 "Code": "400",
                 "Message": "Missing the parameter UserId",
 ```
 
-`"Description": "`请求缺少参数 `UserId"`
-
-```
-            }
-```
-
-]
+`"Description": "`请求缺少参数 `UserId"` `}` `]` `},`
 
 ```json
-    },
+    "RequestConfig": {
       "RequestProtocol": "HTTP",
       "RequestHttpMethod": "GET",
       "RequestPath": "/mypath/creatobject",
       "BodyFormat": "FORM",
       "PostBodyDescription": "对象"
-    },
-        {
+```
+
+`},`
+
+```json
+    "RequestParameters": {
+      "RequestParameter": [
           "ApiParameterName": "RequestKey1",
           "Location": "QUERY",
 "ParameterType":"String",
 ```
-
-API 网关
 
 ```json
           ParameterType: String,
@@ -3130,8 +3324,11 @@ API 网关
           "DocShow": "PUBLIC",
           "DocOrder": "1",
           "Description": "Desc1"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "ApiParameterName": "RequestKey2",
           "Location": "QUERY",
           "ParameterType": "Number",
@@ -3142,17 +3339,11 @@ API 网关
           "DocShow": "PUBLIC",
           "DocOrder": "2",
           "Description": "Desc2"
-        }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-  }
-```
-
-### 查询定义中的API列表
+### 9.9 查询定义中的API列表
 
 **描述**
 
@@ -3167,15 +3358,11 @@ API 网关
 | ApiId | String | 否 | 指定的API编号 |
 | ApiName | String | 否 | API名称（模糊匹配） |
 
-API 网关
-
 | PageSize | Integer | 否 | 指定分页查询时每页行数，最大值100，默认值为10 |
 |---|---|---|---|
 | PageNumber | Integer | 否 | 指定要查询的页码，默认是1，起始是1 |
 
-**说明**
-
-DescribeApis接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DescribeApis接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -3195,14 +3382,17 @@ DescribeApis接口调用时，您需要在调用代码的Header参数中设置x-
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeApis &ApiName=weather &pageSize=15 &pageNumber=3
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <DescribeApisResponse>
+    <ApiSummarys>
+        <ApiSummary>
+            <RegionId>cn-qingdao</RegionId>
             <GroupId>63be9002440b4778a61122f14c2b2bbb</GroupId>
             <GroupName>myGroup3</GroupName>
             <ApiId>c076144d7878437b8f82fb85890ce6a0</ApiId>
@@ -3219,6 +3409,9 @@ XML格式 API 网关
 ```xml
             <CreatedTime>2016-06-20T18:18:25Z</CreatedTime>
             <ModifiedTime>2016-07-23T08:28:48Z</ModifiedTime>
+        </ApiSummary>
+        <ApiSummary>
+            <RegionId>cn-qingdao</RegionId>
             <GroupId>1084f9034c744137901057206b39d2b6</GroupId>
             <GroupName>myGroup2</GroupName>
             <ApiId>5af418828f0344a3b588c0cc1331a3bc</ApiId>
@@ -3235,6 +3428,8 @@ XML格式 API 网关
 ```xml
             <CreatedTime>2016-05-20T18:18:25Z</CreatedTime>
             <ModifiedTime>2016-07-23T08:28:48Z</ModifiedTime>
+        </ApiSummary>
+    </ApiSummarys>
     <PageNumber>3</PageNumber>
     <PageSize>15</PageSize>
     <TotalCount>32</TotalCount>
@@ -3242,11 +3437,16 @@ XML格式 API 网关
 </DescribeApisResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
-        {
+    "ApiSummarys": {
+      "ApiSummary": [
+```
+
+`{`
+
+```json
           "RegionId": "cn-qingdao",
           "GroupId": "63be9002440b4778a61122f14c2b2bbb",
           "GroupName": "myGroup3",
@@ -3264,8 +3464,11 @@ JSON格式 API 网关
 ```json
           "CreatedTime": "2016-06-20T18:18:25Z",
           "ModifiedTime": "2016-07-23T08:28:48Z"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "RegionId": "cn-qingdao",
           "GroupId": "1084f9034c744137901057206b39d2b6",
           "GroupName": "myGroup2",
@@ -3283,21 +3486,20 @@ JSON格式 API 网关
 ```json
           "CreatedTime": "2016-05-20T18:18:25Z",
           "ModifiedTime": "2016-07-23T08:28:48Z"
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "PageNumber": "3",
     "PageSize": "15",
     "TotalCount": "32",
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ002"
-  }
 ```
 
-### 查询历史版本详情
+`}`
+
+### 9.10 查询历史版本详情
 
 **描述**
 
@@ -3312,8 +3514,6 @@ JSON格式 API 网关
 | Action | String | 是 | 操作接口名，系统规定参数，取值：DescribeApiHistory |
 | GroupId | String | 是 | 指定的分组编号 |
 | ApiId | String | 是 | 指定的API编号 |
-
-API 网关
 
 | StageName | String | 是 | 环境名称，可选值： RELEASE: 线上 TEST: 测试 |
 |---|---|---|---|
@@ -3343,8 +3543,6 @@ API 网关
 | RequestConfi g | RequestConfi g | 由 RequestConfig 组成的格式，返回API前端定义信息 |
 | ServiceConfig | ServiceConfi g | 由 ServiceConfig 组成的格式，返回API调用后端服务信息 |
 
-API 网关
-
 | SystemParam eters | SystemPara meter | 由 SystemParameter 组成的数组格式，返回API中调用后端服务时系统入参信息项 |
 |---|---|---|
 | ConstantPara meters | ConstantPara meter | 由 ConstantParameter 组成的数组格式，返回API中调用后端服务时常量入参信息项 |
@@ -3361,7 +3559,7 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeApiHistory &GroupId=0009db9c828549768a200320714b8930 &ApiId=3b81fd160f5645e097cc8855d75a1cf6 &StageName=RELEASE &HistoryVersion=20160314220059844
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3370,6 +3568,7 @@ XML格式
 ```xml
 <DescribeApiHistoryResponse>
     <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BZ004</RequestId>
+    <RegionId>cn-qingdao</RegionId>
     <GroupId>0009db9c828549768a200320714b8930</GroupId>
     <GroupName>myGroup2</GroupName>
     <StageName>RELEASE</StageName>
@@ -3384,26 +3583,33 @@ XML格式
     <ResultSample></ResultSample>
     <FailResultSample></FailResultSample>
     <DeployedTime>2016-07-23T08:28:48Z</DeployedTime>
+    <RequestConfig>
         <RequestProtocol>HTTP</RequestProtocol>
         <RequestHttpMethod>GET</RequestHttpMethod>
         <RequestPath>/mypath/creatobject</RequestPath>
         <BodyFormat>FORM</BodyFormat>
         <PostBodyDescription>对象</PostBodyDescription>
+</RequestConfig>
 ```
 
-API 网关
-
 ```xml
+    </RequestConfig>
+    <ServiceConfig>
         <ServiceProtocol>HTTP/HTTPS</ServiceProtocol>
         <ServiceAddress>http://api.a.com:8080</ServiceAddress>
         <ServiceHttpMethod>GET</ServiceHttpMethod>
         <ServicePath>/object/add</ServicePath>
         <ServiceTimeout>2000</ServiceTimeout>
+    </ServiceConfig>
+    <SystemParameters>
+        <SystemParameter>
             <ParameterName>CaRequestId</ParameterName>
             <ServiceParameterName>RequestId</ServiceParameterName>
             <Location>HEAD</Location>
             <DemoValue>0A964636-F7A3-4F1A-92D7-135584A6397F</DemoValue>
             <Description>请求编号</Description>
+        </SystemParameter>
+        <SystemParameter>
             <ParameterName>CaAppId</ParameterName>
             <ServiceParameterName>AppId</ServiceParameterName>
             <Location>QUERY</Location>
@@ -3413,10 +3619,18 @@ API 网关
 `<Description>`请求者应用编号`</Description>`
 
 ```xml
+        </SystemParameter>
+    </SystemParameters>
+    <ConstantParameters>
+        <ConstantParameter>
             <ServiceParameterName>ConstantKey1</ServiceParameterName>
             <ConstantValue>helloworld</ConstantValue>
             <Location>QUERY</Location>
             <Description>Desc</Description>
+        </ConstantParameter>
+    </ConstantParameters>
+    <RequestParameters>
+        <RequestParameter>
             <ApiParameterName>RequestKey1</ApiParameterName>
             <Location>QUERY</Location>
             <ParameterType>String</ParameterType>
@@ -3433,12 +3647,14 @@ API 网关
             <DocShow>PUBLIC</DocShow>
             <DocOrder>1</DocOrder>
             <Description>Desc1</Description>
+        </RequestParameter>
+        <RequestParameter>
             <ApiParameterName>RequestKey2</ApiParameterName>
             <Location>QUERY</Location>
             <ParameterType>Number</ParameterType>
 ```
 
-API 网关 `yp` / `yp`
+`yp` `/` `yp`
 
 ```xml
             <Required>OPTIONAL</Required>
@@ -3454,6 +3670,10 @@ API 网关 `yp` / `yp`
             <DocShow>PUBLIC</DocShow>
             <DocOrder>2</DocOrder>
             <Description>Desc2</Description>
+        </RequestParameter>
+    </RequestParameters>
+    <ErrorCodeSamples>
+        <ErrorCodeSample>
             <Code>400</Code>
             <Message>Missing the parameter UserId</Message>
 ```
@@ -3461,16 +3681,30 @@ API 网关 `yp` / `yp`
 `<Description>`请求缺少参数 `UserId</Description>`
 
 ```xml
+        </ErrorCodeSample>
+    </ErrorCodeSamples>
+    <ServiceParameters>
+        <ServiceParameter>
             <ServiceParameterName>ServiceKey1</ServiceParameterName>
             <Location>QUERY</Location>
             <ParameterType>String</ParameterType>
+        </ServiceParameter>
+        <ServiceParameter>
             <ServiceParameterName>ServiceKey2</ServiceParameterName>
             <Location>QUERY</Location>
             <ParameterType>Number</ParameterType>
+        </ServiceParameter>
+    </ServiceParameters>
+    <ServiceParametersMap>
+        <ServiceParameterMap>
             <ServiceParameterName>RequestKey1</ServiceParameterName>
             <RequestParameterName>ServiceKey1</RequestParameterName>
+        </ServiceParameterMap>
+        <ServiceParameterMap>
             <ServiceParameterName>RequestKey2</ServiceParameterName>
             <RequestParameterName>ServiceKey2</RequestParameterName>
+        </ServiceParameterMap>
+    </ServiceParametersMap>
     <OpenIdConnectConfig>
         <publicKey>EB1837F8693CCED0BF750B3AD48467BEB569E780A14591CF92</publicKey>
         <openIdApiType>IDTOKEN</openIdApiType>
@@ -3479,19 +3713,11 @@ API 网关 `yp` / `yp`
 </DescribeApiHistoryResponse>
 ```
 
-JSON格式
-
-```
-{
-```
-
-`"R`
+JSON格式 `"R`
 
 ```
 tId" "CEF72CEB54B64AE8B225F876FF7BZ004"
 ```
-
-API 网关
 
 ```json
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ004",
@@ -3514,59 +3740,71 @@ API 网关
     "ResultSample": "200",
     "FailResultSample": "400",
     "DeployedTime": "2016-07-23T08:28:48Z",
+    "RequestConfig": {
       "RequestProtocol": "HTTP",
       "RequestHttpMethod": "GET",
       "RequestPath": "/mypath/creatobject",
       "BodyFormat": "FORM",
       "PostBodyDescription": "对象"
-    },
+```
+
+`},`
+
+```json
+    "ServiceConfig": {
       "ServiceProtocol": "HTTP/HTTPS",
       "ServiceAddress": "http://api.a.com:8080",
       "ServiceHttpMethod": "GET",
       "ServicePath": "/object/add",
       "ServiceTimeout": "2000"
-    },
-        {
+```
+
+`},`
+
+```json
+    "SystemParameters": {
+      "SystemParameter": [
+```
+
+`{`
+
+```json
           "ParameterName": "CaRequestId",
           "ServiceParameterName": "RequestId",
           "Location": "HEAD",
           "DemoValue": "0A964636-F7A3-4F1A-92D7-135584A6397F",
 ```
 
-`"Description": "`请求编号"
+`"Description": "`请求编号`"` `},` `{`
 
 ```json
-        },
-        {
           "ParameterName": "CaAppId",
           "ServiceParameterName": "AppId",
           "Location": "QUERY",
           "DemoValue": "0A964636-F7A3-4F1A-92D7-135584A6398F",
 ```
 
-`"Description": "`请求者应用编号"
-
-```
-        }
-```
-
-]
+`"Description": "`请求者应用编号`"` `}` `]` `},`
 
 ```json
-    },
+    "ConstantParameters": {
+      "ConstantParameter": {
         "ServiceParameterName": "ConstantKey1",
         "ConstantValue": "helloworld",
         "Location": "QUERY",
         "Description": "Desc"
-}
 ```
 
-API 网关
+`},`
 
 ```json
-      }
-    },
-        {
+    "RequestParameters": {
+      "RequestParameter": [
+```
+
+`{`
+
+```json
           "ApiParameterName": "RequestKey1",
           "Location": "QUERY",
           "ParameterType": "String",
@@ -3577,8 +3815,11 @@ API 网关
           "DocShow": "PUBLIC",
           "DocOrder": "1",
           "Description": "Desc1"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "ApiParameterName": "RequestKey2",
           "Location": "QUERY",
           "ParameterType": "Number",
@@ -3589,71 +3830,79 @@ API 网关
           "DocShow": "PUBLIC",
           "DocOrder": "2",
           "Description": "Desc2"
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
-            {
+    "ErrorCodeSamples": {
+        "ErrorCodeSample": [
+```
+
+`{`
+
+```json
                 "Code": "400",
                 "Message": "Missing the parameter UserId",
 ```
 
-`"Description": "`请求缺少参数 `UserId"`
-
-```
-            }
-```
-
-]
+`"Description": "`请求缺少参数 `UserId"` `}` `]` `},`
 
 ```json
-    },
-        {
+    "ServiceParameters": {
+      "ServiceParameter": [
+```
+
+`{`
+
+```json
           "ServiceParameterName": "ServiceKey1",
           "Location": "QUERY",
           "ParameterType": "String"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "ServiceParameterName": "ServiceKey2",
           "Location": "QUERY",
           "ParameterType": "Number"
-        }
 ```
 
-]
+`}` `]` `},`
 
-```
-    },
+```json
+    "ServiceParametersMap": {
+      "ServiceParameterMap": [
 ```
 
-API 网关 `Se`
+`Se`
 
 ```json
 ceaaete ap:[
-        {
           "ServiceParameterName": "RequestKey1",
-        },
-        {
-          "ServiceParameterName": "RequestKey2",
-        }
+          "RequestParameterName": "ServiceKey1"
 ```
 
-]
+`},` `{`
 
 ```json
-    },
+          "ServiceParameterName": "RequestKey2",
+          "RequestParameterName": "ServiceKey2"
+```
+
+`}` `]` `},`
+
+```json
     "OpenIdConnectConfig": {
         "publicKey": "EB1837F8693CCED0BF750B3AD48467BEB569E780A14591CF92",
         "openIdApiType": "IDTOKEN",
         "publicKeyId": "88483727556929326703309904351185815489"
-    }
-}
 ```
 
-### 查询API历史版本列表
+`}` `}`
+
+### 9.11 查询API历史版本列表
 
 **描述**
 
@@ -3678,8 +3927,6 @@ ceaaete ap:[
 | RequestId | String | 本次请求编号 |
 | TotalCount | Integer | 返回结果的总条数 |
 
-API 网关
-
 | PageNumber | Integer | 返回指定的页码 |
 |---|---|---|
 | PageSize | Integer | 返回指定的每页条数 |
@@ -3693,7 +3940,7 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeApiHistories &ApiName=weather &pageSize=15 &pageNumber=3
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3701,6 +3948,9 @@ XML格式
 
 ```xml
 <DescribeApiHistoriesResponse>
+    <ApiHisItems>
+        <ApiHisItem>
+            <RegionId>cn-qingdao</RegionId>
             <GroupId>63be9002440b4778a61122f14c2b2bbb</GroupId>
             <GroupName>myGroup3</GroupName>
             <ApiId>c076144d7878437b8f82fb85890ce6a0</ApiId>
@@ -3718,6 +3968,9 @@ XML格式
 
 ```xml
             <DeployedTime>2016-07-23T08:28:48Z</DeployedTime>
+        </ApiHisItem>
+        <ApiHisItem>
+            <RegionId>cn-qingdao</RegionId>
             <GroupId>1084f9034c744137901057206b39d2b6</GroupId>
             <GroupName>myGroup2</GroupName>
             <ApiId>5af418828f0344a3b588c0cc1331a3bc</ApiId>
@@ -3735,6 +3988,8 @@ XML格式
 
 ```xml
             <DeployedTime>2016-07-20T08:28:48Z</DeployedTime>
+        </ApiHisItem>
+    </ApiHisItems>
     <PageNumber>3</PageNumber>
     <PageSize>15</PageSize>
     <TotalCount>32</TotalCount>
@@ -3742,11 +3997,16 @@ XML格式
 </DescribeApiHistoriesResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
-              {
+    "ApiHisItems": {
+        "ApiHisItem": [
+```
+
+`{`
+
+```json
                 "RegionId": "cn-qingdao",
                 "GroupId": "63be9002440b4778a61122f14c2b2bbb",
                 "GroupName": "myGroup3",
@@ -3765,8 +4025,11 @@ JSON格式 API 网关
 
 ```json
                 "DeployedTime": "2016-07-23T08:28:48Z"
-              },
-              {
+```
+
+`},` `{`
+
+```json
                 "RegionId": "cn-qingdao",
                 "GroupId": "1084f9034c744137901057206b39d2b6",
                 "GroupName": "myGroup2",
@@ -3785,21 +4048,20 @@ JSON格式 API 网关
 
 ```json
                 "DeployedTime": "2016-07-20T08:28:48Z"
-              }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-      },
     "PageNumber": 3,
       "PageSize": 15,
       "TotalCount": 32,
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ003"
-}
 ```
 
-### 查询已发布API的运行定义
+`}`
+
+### 9.12 查询已发布API的运行定义
 
 **描述**
 
@@ -3811,8 +4073,6 @@ JSON格式 API 网关
 |---|---|---|---|
 | Action | String | 是 | 操作接口名，系统规定参数，取值：DescribeDeployedApi |
 | GroupId | String | 是 | 指定的分组编号 |
-
-API 网关
 
 | ApiId | String | 是 | 指定的API编号 |
 |---|---|---|---|
@@ -3843,8 +4103,6 @@ API 网关
 | ConstantParameter s | ConstantParamete r | 由 ConstantParameter 组成的数组格式，返回API中调用后端服务时常量入参信息项 |
 | RequestParameter s | RequestParameter | 由 RequestParameter 组成的数组格式，返回API中前端入参信息项 |
 
-API 网关
-
 | ServiceParameters | ServiceParameter | 由 ServiceParameter 组成的数组格式，返回API中调用后端服务时常量入参信息项 |
 |---|---|---|
 | ServiceParameters Map | ServiceParameter Map | 由 ServiceParameterMap 组成的数组格式，返回API中前后端参数映射关系 |
@@ -3858,7 +4116,7 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeDeployedApi &GroupId=0009db9c828549768a200320714b8930 &ApiId=3b81fd160f5645e097cc8855d75a1cf6 &StageName=RELEASE
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -3867,6 +4125,7 @@ XML格式
 ```xml
 <DescribeDeployedApiResponse>
     <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BZ004</RequestId>
+    <RegionId>cn-qingdao</RegionId>
     <GroupId>0009db9c828549768a200320714b8930</GroupId>
     <GroupName>myGroup2</GroupName>
     <StageName>RELEASE</StageName>
@@ -3879,21 +4138,25 @@ XML格式
     <ResultSample></ResultSample>
     <FailResultSample></FailResultSample>
     <DeployedTime>2016-07-23T08:28:48Z</DeployedTime>
+    <RequestConfig>
         <RequestProtocol>HTTP</RequestProtocol>
         <RequestHttpMethod>GET</RequestHttpMethod>
         <RequestPath>/mypath/creatobject</RequestPath>
         <BodyFormat>FORM</BodyFormat>
         <PostBodyDescription>对象</PostBodyDescription>
+    </RequestConfig>
+    <ServiceConfig>
         <ServiceProtocol>HTTP/HTTPS</ServiceProtocol>
         <ServiceAddress>http://api.a.com:8080</ServiceAddress>
         <ServiceHttpMethod>GET</ServiceHttpMethod>
         <ServicePath>/object/add</ServicePath>
         <ServiceTimeout>2000</ServiceTimeout>
         <Mock>FALSE</Mock>
+    </ServiceConfig>
+    <SystemParameters>
+        <SystemParameter>
 <ParameterName>CaReqestId</ParameterName>
 ```
-
-API 网关
 
 ```xml
             <ParameterName>CaRequestId</ParameterName>
@@ -3901,6 +4164,8 @@ API 网关
             <Location>HEAD</Location>
             <DemoValue>0A964636-F7A3-4F1A-92D7-135584A6397F</DemoValue>
             <Description>请求编号</Description>
+        </SystemParameter>
+        <SystemParameter>
             <ParameterName>CaAppId</ParameterName>
             <ServiceParameterName>AppId</ServiceParameterName>
             <Location>QUERY</Location>
@@ -3910,10 +4175,18 @@ API 网关
 `<Description>`请求者应用编号`</Description>`
 
 ```xml
+        </SystemParameter>
+    </SystemParameters>
+    <ConstantParameters>
+        <ConstantParameter>
             <ServiceParameterName>ConstantKey1</ServiceParameterName>
             <ConstantValue>helloworld</ConstantValue>
             <Location>QUERY</Location>
             <Description>Desc</Description>
+        </ConstantParameter>
+    </ConstantParameters>
+    <RequestParameters>
+        <RequestParameter>
             <ApiParameterName>RequestKey1</ApiParameterName>
             <Location>QUERY</Location>
             <ParameterType>String</ParameterType>
@@ -3930,6 +4203,8 @@ API 网关
             <DocShow>PUBLIC</DocShow>
             <DocOrder>1</DocOrder>
             <Description>Desc1</Description>
+        </RequestParameter>
+        <RequestParameter>
             <ApiParameterName>RequestKey2</ApiParameterName>
             <Location>QUERY</Location>
             <ParameterType>Number</ParameterType>
@@ -3945,23 +4220,37 @@ API 网关
 <EnumValue></EnumValue>
 ```
 
-API 网关
-
 ```xml
             <EnumValue></EnumValue>
             <DocShow>PUBLIC</DocShow>
             <DocOrder>2</DocOrder>
             <Description>Desc2</Description>
+        </RequestParameter>
+    </RequestParameters>
+    <ServiceParameters>
+        <ServiceParameter>
             <ServiceParameterName>ServiceKey1</ServiceParameterName>
             <Location>QUERY</Location>
             <ParameterType>String</ParameterType>
+        </ServiceParameter>
+        <ServiceParameter>
             <ServiceParameterName>ServiceKey2</ServiceParameterName>
             <Location>QUERY</Location>
             <ParameterType>Number</ParameterType>
+        </ServiceParameter>
+    </ServiceParameters>
+    <ServiceParametersMap>
+        <ServiceParameterMap>
             <ServiceParameterName>RequestKey1</ServiceParameterName>
             <RequestParameterName>ServiceKey1</RequestParameterName>
+        </ServiceParameterMap>
+        <ServiceParameterMap>
             <ServiceParameterName>RequestKey2</ServiceParameterName>
             <RequestParameterName>ServiceKey2</RequestParameterName>
+        </ServiceParameterMap>
+    </ServiceParametersMap>
+    <ErrorCodeSamples>
+        <ErrorCodeSample>
             <Code>400</Code>
             <Message>Missing the parameter UserId</Message>
 ```
@@ -3969,6 +4258,8 @@ API 网关
 `<Description>`请求缺少参数 `UserId</Description>`
 
 ```xml
+        </ErrorCodeSample>
+    </ErrorCodeSamples>
     <OpenIdConnectConfig>
         <publicKey>EB1837F8693CCED0BF750B3AD48467BEB569E780A14591CF92</publicKey>
         <openIdApiType>IDTOKEN</openIdApiType>
@@ -3977,10 +4268,9 @@ API 网关
 </DescribeDeployedApiResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ004",
     "RegionId": "cn-qingdao",
     "GroupId": "0009db9c828549768a200320714b8930",
@@ -3997,59 +4287,75 @@ JSON格式
     "AuthType": "APP",
 ```
 
-API 网关
-
 ```json
     "ResultType": "application/json",
     "DeployedTime": "2016-07-23T08:28:48Z",
+    "RequestConfig": {
       "RequestProtocol": "HTTP",
       "RequestHttpMethod": "GET",
       "RequestPath": "/mypath/creatobject",
       "BodyFormat": "FORM",
       "PostBodyDescription": "对象"
-    },
+```
+
+`},`
+
+```json
+    "ServiceConfig": {
       "ServiceProtocol": "HTTP/HTTPS",
       "ServiceAddress": "http://api.a.com:8080",
       "ServiceHttpMethod": "GET",
       "ServicePath": "/object/add",
       "ServiceTimeout": "2000",
       "Mock": "FALSE"
-    },
-        {
+```
+
+`},`
+
+```json
+    "SystemParameters": {
+      "SystemParameter": [
+```
+
+`{`
+
+```json
           "ParameterName": "CaRequestId",
           "ServiceParameterName": "RequestId",
           "Location": "HEAD",
           "DemoValue": "0A964636-F7A3-4F1A-92D7-135584A6397F",
 ```
 
-`"Description": "`请求编号"
+`"Description": "`请求编号`"` `},` `{`
 
 ```json
-        },
-        {
           "ParameterName": "CaAppId",
           "ServiceParameterName": "AppId",
           "Location": "QUERY",
           "DemoValue": "0A964636-F7A3-4F1A-92D7-135584A6398F",
 ```
 
-`"Description": "`请求者应用编号"
-
-```
-        }
-```
-
-]
+`"Description": "`请求者应用编号`"` `}` `]` `},`
 
 ```json
-    },
+    "ConstantParameters": {
+      "ConstantParameter": {
         "ServiceParameterName": "ConstantKey1",
         "ConstantValue": "helloworld",
         "Location": "QUERY",
         "Description": "Desc"
-      }
-    },
-        {
+```
+
+`}` `},`
+
+```json
+    "RequestParameters": {
+      "RequestParameter": [
+```
+
+`{`
+
+```json
           "ApiParameterName": "RequestKey1",
           "Location": "QUERY",
           "ParameterType": "String",
@@ -4060,19 +4366,20 @@ API 网关
           "DocShow": "PUBLIC",
 ```
 
-`"D` Od "
+`"D` `O``d` `"`
 
 ```
 "1"
 ```
 
-API 网关
-
 ```json
           "DocOrder": "1",
           "Description": "Desc1"
-        },
-        {
+```
+
+`},`
+
+```json
           "ApiParameterName": "RequestKey2",
           "Location": "QUERY",
           "ParameterType": "Number",
@@ -4083,71 +4390,80 @@ API 网关
           "DocShow": "PUBLIC",
           "DocOrder": "2",
           "Description": "Desc2"
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
-        {
+    "ServiceParameters": {
+      "ServiceParameter": [
+```
+
+`{`
+
+```json
           "ServiceParameterName": "ServiceKey1",
           "Location": "QUERY",
           "ParameterType": "String"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "ServiceParameterName": "ServiceKey2",
           "Location": "QUERY",
           "ParameterType": "Number"
-        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
-        {
+    "ServiceParametersMap": {
+      "ServiceParameterMap": [
+```
+
+`{`
+
+```json
           "ServiceParameterName": "RequestKey1",
-        },
-        {
-          "ServiceParameterName": "RequestKey2",
-        }
+          "RequestParameterName": "ServiceKey1"
 ```
 
-]
+`},` `{`
 
 ```json
-    },
-            {
+          "ServiceParameterName": "RequestKey2",
+          "RequestParameterName": "ServiceKey2"
+```
+
+`}` `]` `},`
+
+```json
+    "ErrorCodeSamples": {
+        "ErrorCodeSample": [
+```
+
+`{`
+
+```json
                 "Code": "400",
                 "Message": "Missing the parameter UserId",
 ```
 
-`"Description": "`请求缺少参数 `UserId"`
-
-```
-            }
-```
-
-]
+`"Description": "`请求缺少参数 `UserId"` `}` `]` `},`
 
 ```json
-    },
     "OpenIdConnectConfig": {
         "publicKey": "EB1837F8693CCED0BF750B3AD48467BEB569E780A14591CF92",
 "openIdApiType":"IDTOKEN"
 ```
 
-API 网关
-
 ```json
         openIdApiType: IDTOKEN,
         "publicKeyId": "88483727556929326703309904351185815489"
-    }
-}
 ```
 
-### 查询已发布API列表
+### 9.13 查询已发布API列表
 
 **描述**
 
@@ -4179,13 +4495,11 @@ API 网关
 
 **请求示例**
 
-API 网关
-
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeDeployedApis &ApiName=weather &pageSize=15 &pageNumber=3
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -4194,6 +4508,8 @@ XML格式
 ```xml
 <DescribeDeployedApisResponse>
     <DeployedApis>
+        <DeployedApiItem>
+            <RegionId>cn-qingdao</RegionId>
             <GroupId>63be9002440b4778a61122f14c2b2bbb</GroupId>
             <GroupName>myGroup3</GroupName>
             <ApiId>c076144d7878437b8f82fb85890ce6a0</ApiId>
@@ -4210,6 +4526,9 @@ XML格式
 
 ```xml
             <DeployedTime>2016-07-23T08:28:48Z</DeployedTime>
+        </DeployedApiItem>
+        <DeployedApiItem>
+            <RegionId>cn-qingdao</RegionId>
             <GroupId>1084f9034c744137901057206b39d2b6</GroupId>
             <GroupName>myGroup2</GroupName>
             <ApiId>5af418828f0344a3b588c0cc1331a3bc</ApiId>
@@ -4226,6 +4545,7 @@ XML格式
 
 ```xml
             <DeployedTime>2016-07-20T08:28:48Z</DeployedTime>
+        </DeployedApiItem>
     </DeployedApis>
     <PageNumber>3</PageNumber>
     <PageSize>15</PageSize>
@@ -4234,12 +4554,16 @@ XML格式
 </DescribeDeployedApisResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "DeployedApis": {
-              {
+        "DeployedApiItem": [
+```
+
+`{`
+
+```json
                 "RegionId": "cn-qingdao",
                 "GroupId": "63be9002440b4778a61122f14c2b2bbb",
                 "GroupName": "myGroup3",
@@ -4257,8 +4581,11 @@ JSON格式 API 网关
 
 ```json
                 "DeployedTime": "2016-07-23T08:28:48Z"
-              },
-              {
+```
+
+`},` `{`
+
+```json
                 "RegionId": "cn-qingdao",
                 "GroupId": "1084f9034c744137901057206b39d2b6",
                 "GroupName": "myGroup2",
@@ -4276,21 +4603,20 @@ JSON格式 API 网关
 
 ```json
                 "DeployedTime": "2016-07-20T08:28:48Z"
-              }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-      },
     "PageNumber": 3,
       "PageSize": 15,
       "TotalCount": 32,
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ002"
-}
 ```
 
-### 通过 Swagger 创建 API
+`}`
+
+### 9.14 通过 Swagger 创建 API
 
 通过导入符合阿里云 Swagger 规范的文本内容创建 API。阿里云目前支持基于Swagger 2.0的扩展，只支持json/yaml格式的Swagger配置文件。
 
@@ -4303,8 +4629,6 @@ JSON格式 API 网关
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | Overwrite | Bool ean | Quer y | 是 | true | 是否覆盖现有API。 覆盖检测条件为：API的 HTTP请求类型+后端请求路径相同。 |
-
-API 网关
 
 | GlobalCon dition | Json | Quer y | 否 | {} | 全局条件。 |
 |---|---|---|---|---|---|
@@ -4323,8 +4647,6 @@ API 网关
 | -HttpMethod | String | post | 创建API时配置的http方法。 |
 | -ErrorMsg | String | api already exists : apiUid ===> 8e274ec61cf6468e 83b683719568**** | 创建API时返回的错误信息。 |
 
-API 网关
-
 | ModelFailed | Array | { "ModelName":"Reg ion", "ErrorMsg":"error msg", "GroupId":"36d4bcf aec1946e1870d90 b2d751****" } | 本次所有通过 swagger 导入失败的 Model 信息。 |
 |---|---|---|---|
 | -GroupId | String | 36d4bcfaec1946e1 870d90b2d751**** | API 分组 ID。 |
@@ -4334,8 +4656,6 @@ API 网关
 | -Path | String | /http/get/mapping | 创建API时配置的请求路径。 |
 | -HttpMethod | String | get | 创建API时配置的http方法。 |
 | -ApiUid | String | 8e274ec61cf6468e 83b683719568**** | 导入成功的API的UID。 |
-
-API 网关
 
 | -ApiOperation | String | CREATE | 该API是创建（CREATE）或修改（MODIFY）。 |
 |---|---|---|---|
@@ -4353,47 +4673,57 @@ API 网关
 http(s)://[Endpoint]/?Action=ImportSwagger &Overwrite=true &DataFormat=yaml &Data="A Swagger API definition in YAML" &GroupId=0009db9c828549768a200320714b****
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式 API 网关
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"647CEF05-404C-4125-B3D7-44792EB77392",
  "Failed":{
   "Path":"/http/get/mapping",
   "ErrorMsg":"api already exists : apiUid ===> 8e274ec61cf6468e83b683719568****",
   "HttpMethod":"post"
- },
+```
+
+`},`
+
+```json
  "ModelFailed":{
   "ModelName":"Region",
   "ErrorMsg":"error msg",
   "GroupId":"36d4bcfaec1946e1870d90b2d751****"
- },
+```
+
+`},`
+
+```json
  "Success":{
   "Path":"/http/get/mapping",
   "ApiUid":"8e274ec61cf6468e83b683719568****",
   "ApiOperation":"CREATE",
   "HttpMethod":"get"
- },
+```
+
+`},`
+
+```json
  "ModelSuccess":{
   "ModelUid":"d4bcfaec1946e1870d",
   "ModelOperation":null,
   "ModelName":"NewInstance",
   "GroupId":"b2d552ed90ca435b86f7bf8d4541****"
- }
-}
 ```
 
-API 网关
+`}` `}`
 
-## 插件相关接口
+## 10 插件相关接口
 
-### 创建插件
+### 10.1 创建插件
 
 API网关将流控管理，IP访问控制，等功能统一到插件体系中，未来还会增加更多功能的插件，如CORS(跨域资源访问)，Caching等。您可以通过该接口创建各种类型的插件。
 
 **插件使用规则**
 
-一个API只能绑定一个相同类型的插件。 插件策略和API分别是独立管理的，将插件绑定到API的指定环境后，插件策略才会对已绑定的API起作用。 插件的绑定、解绑、更新会实时生效，不需要重新发布API，对于风险比较高的API，请先在测试API上测试通过。 API的下线操作不影响插件的绑定关系，再次发布后仍然会带有下线前绑定的插件。 如果插件上有已发布或者发布过但未删除的API，则插件无法执行删除操作。
+一个API只能绑定一个相同类型的插件。 插件仅与Region相关，可以绑定至本Region的API。 插件策略和API分别是独立管理的，将插件绑定到API的指定环境后，插件策略才会对已绑定的API起作用。 必须要发布API后才可将插件绑定至API对应发布的环境。 插件的绑定、解绑、更新会实时生效，不需要重新发布API，对于风险比较高的API，请先在测试API上测试通过。 API的下线操作不影响插件的绑定关系，再次发布后仍然会带有下线前绑定的插件。 如果插件上有已发布或者发布过但未删除的API，则插件无法执行删除操作。
 
 **请求参数**
 
@@ -4405,11 +4735,7 @@ API网关将流控管理，IP访问控制，等功能统一到插件体系中，
 | PluginData | String | 是 | 插件定义语句，支持json、yaml，参考PluginData模板 |
 | Description | String | 否 | 描述，限200字以内 |
 
-API 网关
-
-**说明**
-
-CreatePlugin接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** CreatePlugin接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **PluginData模板**
 
@@ -4419,7 +4745,7 @@ CreatePlugin接口调用时，您需要在调用代码的Header参数中设置x-
 --unit: SECOND # 控制区间, 取值: SECOND, MINUTE, HOUR, DAY
 ```
 
-`apiDefault: 1000 #` 允许的总流量值 `userDefault: 30 # (`可选)每个用户的默认流量最大值`, 0`表示不进行限制, 不能大于总流量值 `appDefault: 30 # (`可选)每个`APP`允许的流量最大值`, 0`表示不进行限制, 不能大于总流量值
+`apiDefault: 1000 #` 允许的总流量值 `userDefault: 30 # (`可选`)`每个用户的默认流量最大值`, 0`表示不进行限制`,` 不能大于总流量值 `appDefault: 30 # (`可选`)`每个`APP`允许的流量最大值`, 0`表示不进行限制`,` 不能大于总流量值 `specials: # (`可选`)`特殊流控`,` 支持`"APP"`和`"USER"`两种特殊维度
     - `- type: "APP" #` 针对不同应用`(AK)`进行的流控
 
 ```
@@ -4427,13 +4753,13 @@ CreatePlugin接口调用时，您需要在调用代码的Header参数中设置x-
 ```
 
     - `- key: 10123123 # AppId, AppId`的取值请在`API`网关控制台`->`应用管理`->`应用详情处查看
-`value: 10 #` 特殊流控值, 不能大于总流量值
+`value: 10 #` 特殊流控值`,` 不能大于总流量值
 
 ```
       - key: 10123123  # AppId
 ```
 
-`value: 10 #` 特殊流控值, 不能大于总流量值 IP访问控制插件
+`value: 10 #` 特殊流控值`,` 不能大于总流量值 IP访问控制插件
 
 ```
 ---
@@ -4448,7 +4774,7 @@ items:
 
     - `- 78.11.12.2 #` 使用`IP`地址方式配置
     - `- 61.3.9.0/24 #` 使用`CIDR`方式配置
-`appId: 219810 # (`可选) 如果配置了`appId`则该条目仅对该`AppId`生效
+`appId: 219810 # (`可选`)` 如果配置了`appId`则该条目仅对该`AppId`生效
 
 ```
   - blocks:          # IP地址段
@@ -4461,23 +4787,22 @@ items:
 --type: APIGW_BACKEND key: SampleKey secret: SampleSecret
 ```
 
-JWT鉴权 API 网关
+JWT鉴权
 
 ```
 ---
 ```
 
-`parameter: X-Token #` 从指定的参数中获取`JWT,` 对应`API`的参数 `parameterLocation: header # API`为映射模式时可选`, API`为透传模式下必填, 用于指定`JWT`的读取位置, 仅支持`query`,`header` `claimParameters: # claims`参数转换, 网关会将`jwt claims`映射为后端参数
-    - `- claimName: aud # claim`名称,支持公共和私有
+`parameter: X-Token #` 从指定的参数中获取`JWT,` 对应`API`的参数 `parameterLocation: header # API`为映射模式时可选`, API`为透传模式下必填`,` 用于指定`JWT`的读取位置`,` 仅支持`query`,`header` `claimParameters: # claims`参数转换`,` 网关会将`jwt claims`映射为后端参数
+    - `- claimName: aud # claim`名称`,`支持公共和私有
 `parameterName: X-Aud #` 映射后参数名称
 
 ```
   location: header         # 映射后参数位置, 支持`query,header,path,formData`
 ```
 
-    - `- claimName: userId # claim`名称,支持公共和私有
-`parameterName: userId #` 映射后参数名称 `location: query #` 映射后的参数位置, 支持`query,header,path,formData` `preventJtiReplay: false #` 是否开启针对`jti`的防重放检查, 默认`: false`
-#
+    - `- claimName: userId # claim`名称`,`支持公共和私有
+`parameterName: userId #` 映射后参数名称 `location: query #` 映射后的参数位置`,` 支持`query,header,path,formData` `preventJtiReplay: false #` 是否开启针对`jti`的防重放检查`,` 默认`: false` `#`
 
 ```bash
 # `Json Web Key`的`Public Key`
@@ -4487,7 +4812,7 @@ jwk:
   use: sig
 ```
 
-`kid: O8fpdhrViq2zaaaBEWZITz #` 在只配置一个`JWK`时`,kid`是可选的,但如果中`JWT`包含了`kid,`网关会校验`kid`的一致性
+`kid: O8fpdhrViq2zaaaBEWZITz #` 在只配置一个`JWK`时`,kid`是可选的`,`但如果中`JWT`包含了`kid,`网关会校验`kid`的一致性
 
 ```
   alg: RS256
@@ -4507,17 +4832,17 @@ BqvT6w9SjxakeiyQpVmexxnDw5WZwpWenUAcYrfSPEoNU-0hAQwFYgqZwJQMN8ptxkd0170PFauwACOx
 allowMethods: "GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH" # 允许的方法 allowHeaders: "Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Ty pe,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-S ignature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-cadeviceid" exposeHeaders: "Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca- Error-Message" maxAge: 172800 allowCredentials: true # 是否允许Cookie
 ```
 
-缓存 API 网关
+缓存
 
 ```
 ---
 ```
 
-`varyByApp: false #` 是否按照访问方的`AppId`来区分缓存内容, 默认为`false` `varyByParameters: #` 按照不同的参数取值来区分缓存内容
+`varyByApp: false #` 是否按照访问方的`AppId`来区分缓存内容`,` 默认为`false` `varyByParameters: #` 按照不同的参数取值来区分缓存内容
     - `- userId #` 参数名称，如果后端参数映射为不同的名称，这里请填写映射后的参数名称
 `varyByHeaders: #` 是否按照不同的请求`Header`值来区分缓存内容
     - Accept # `Accept`表示按照不同的`Accept`头来区分缓存
-`clientCacheControl: #` 允许客户端通过`Cache-Control`头来影响缓存策略, 默认`off` `mode: "app" # off:` 拒绝所有端`, all:` 允许所有端`, apps:` 允许`appId`取值在`apps`列表中的端 `apps: #` 如果`mode`配置为`app`, 则允许`AppId`在以下列表中的取值
+`clientCacheControl: #` 允许客户端通过`Cache-Control`头来影响缓存策略`,` 默认`off` `mode: "app" # off:` 拒绝所有端`, all:` 允许所有端`, apps:` 允许`appId`取值在`apps`列表中的端 `apps: #` 如果`mode`配置为`app`, 则允许`AppId`在以下列表中的取值
     - `- 1992323 #` 消费者`AppId,` 注意不是`AppKey`
     - `- 1239922 #` 消费者`AppId,` 注意不是`AppKey`
 `cacheableHeaders: #` 允许缓存的后端`Headers,` 默认只缓存`Content-Type`和`Content-Length`
@@ -4528,7 +4853,7 @@ allowMethods: "GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH" # 允许的方法 allowHe
 --routes:
 ```
 
-# 针对太老的客户端, 返回不再支持的应答`, ClientVersion`是`API`中的自定义参数
+`#` 针对太老的客户端`,` 返回不再支持的应答`, ClientVersion`是`API`中的自定义参数
 
 ```
 - name: MockForOldClient
@@ -4539,7 +4864,7 @@ allowMethods: "GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH" # 允许的方法 allowHe
     mockBody: "This version is not supported!!!"
 ```
 
-# 蓝绿发布场景: 将5%的请求路由给蓝绿发布后端
+`#` 蓝绿发布场景`:` 将5%的请求路由给蓝绿发布后端
 
 ```
 - name: BlueGreenPercent05
@@ -4553,13 +4878,13 @@ allowMethods: "GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH" # 允许的方法 allowHe
     value: "route-blue-green"
 ```
 
-错误码映射 API 网关
+错误码映射
 
 ```
 ---
 ```
 
-# 参与映射的字段
+`#` 参与映射的字段
 
 ```
 parameters:
@@ -4568,19 +4893,19 @@ parameters:
   resultId: "BodyJsonField:$.req_msg_id"
 ```
 
-# 映射条件
+`#` 映射条件
 
 ```
 errorCondition: "$statusCode = 200 and $resultCode <> 'OK'"
 ```
 
-# 错误码字段
+`#` 错误码字段
 
 ```
 errorCode: "resultCode"
 ```
 
-# 映射项
+`#` 映射项
 
 ```
 mappings:
@@ -4592,7 +4917,7 @@ mappings:
     errorMessage: "Invalid Parameter, RequestId=${resultId}"
 ```
 
-# 默认映射
+`#` 默认映射
 
 ```
 defaultMapping:
@@ -4600,18 +4925,13 @@ defaultMapping:
   errorMessage: "Unknown Error, ${resultCode}, RequestId=${ResultId}"
 ```
 
-访问控制 API 网关
+访问控制
 
 ```
 ---
 ```
 
-#
-# 在这个例子中假设我们的`API`请求`Path`为`/{userId}/...`,
-# API使用`JWT`认证，`JWT`中有`userId`和`userType`两个`claim`
-# 我们这个插件的校验条件为
-# - 当`userType=admin`时，允许所有的路径，
-# - 当`userType=user`时，仅允许`/{userId}`路径一致的请求
+`#` `#` 在这个例子中假设我们的`API`请求`Path`为`/{userId}/...`, `# API`使用`JWT`认证，`JWT`中有`userId`和`userType`两个`claim` `#` 我们这个插件的校验条件为 `# -` 当`userType=admin`时，允许所有的路径， `# -` 当`userType=user`时，仅允许`/{userId}`路径一致的请求
 
 ```
 parameters:
@@ -4620,11 +4940,9 @@ parameters:
   pathUserId: "path:userId"
 ```
 
-#
-# 关于`Rules`的处理规则，依次演算条件，按照返回值为`true`或者`false`，处理`ifTrue`的逻辑或`ifFals
-e`的结果
+`#` `#` 关于`Rules`的处理规则，依次演算条件，按照返回值为`true`或者`false`，处理`ifTrue`的逻辑或`ifFals e`的结果
 # `ALLOW`会直接判断为成功，而`DENY`则会直接返回错误代码给客户端，
-# 如果没有触发`ALLOW`或`DENY`逻辑，则执行下一条
+`#` 如果没有触发`ALLOW`或`DENY`逻辑，则执行下一条
 
 ```xml
 rules:
@@ -4666,8 +4984,6 @@ rules:
 | RequestId | String | 本次请求编号 |
 | PluginId | String | 插件唯一ID |
 
-API 网关
-
 **示例**
 
 **请求示例**
@@ -4676,7 +4992,7 @@ API 网关
 http://apigateway.cn-qingdao.aliyuncs.com/?Action=CreatePlugin &PluginName=NewCors &PluginType=cors &PluginData="Plugin definition" &Description="createPlugin"
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -4689,16 +5005,16 @@ XML格式
 </CreatePluginResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"EF924FE4-2EDD-4CD3-89EC-34E4708574E7",
     "PluginId" :"1f3bde29b43d4d53989248327ff737f2"
- }
 ```
 
-### 修改插件
+`}`
+
+### 10.2 修改插件
 
 **描述**
 
@@ -4709,8 +5025,6 @@ JSON格式
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 | Action | Str ing | 是 | 操作接口名，系统规定参数，取值：ModifyPlugin |
-
-API 网关
 
 | PluginId | Str ing | 是 | 插件ID |
 |---|---|---|---|
@@ -4732,7 +5046,7 @@ API 网关
 http://apigateway.cn-qingdao.aliyuncs.com/?Action=ModifyPlugin &PluginId=a96926e82f994915a8da40a119374537 &PluginName=modifyCors &PluginData="Plugin definition" &Description="modify plugin first"
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -4744,19 +5058,17 @@ XML格式
 </ModifyPluginResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ004",
-}
 ```
 
-### 删除插件
+`}`
 
-**描述**
+### 10.3 删除插件
 
-API 网关删除指定的用户自定义插件，以及该策略包含的特殊流控策略此功能面向开放API的用户若该插件已经绑定了API，则需要先解除绑定才能操作删除，否则会报错
+删除指定的用户自定义插件，以及该策略包含的特殊流控策略此功能面向开放API的用户若该插件已经绑定了API，则需要先解除绑定才能操作删除，否则会报错
 
 **请求参数**
 
@@ -4765,9 +5077,7 @@ API 网关删除指定的用户自定义插件，以及该策略包含的特殊�
 | Action | String | 是 | 操作接口名，系统规定参数，取值：DeletePlugin |
 | PluginId | String | 是 | 插件ID |
 
-**说明**
-
-DeletePlugin接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DeletePlugin接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -4783,7 +5093,7 @@ DeletePlugin接口调用时，您需要在调用代码的Header参数中设置x-
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DeletePlugin &PluginId=9a3f1a5279434f2ba74ccd91c295af9f
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -4795,15 +5105,13 @@ XML格式
 </DeletePluginResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ004",
-}
 ```
 
-### 插件绑定API
+### 10.4 插件绑定API
 
 **描述**
 
@@ -4834,7 +5142,7 @@ http://apigateway.cn-qingdao.aliyuncs.com/Action=AttachPlugin &PluginId=9a3f1a52
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <AttachPluginResponse>
@@ -4842,15 +5150,15 @@ XML格式 API 网关
 </AttachPluginResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ004"
-}
 ```
 
-### 解除插件与API绑定
+`}`
+
+### 10.5 解除插件与API绑定
 
 **描述**
 
@@ -4875,13 +5183,11 @@ JSON格式
 
 **请求示例**
 
-API 网关
-
 ```
 http://apigateway.cn-qingdao.aliyuncs.com/?Action=DetachPlugin &PluginId=9a3f1a5279434f2ba74ccd91c295af9f &ApiId=8afff6c8c4c6447abb035812e4d66b65 &StageName=RELEASE
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -4893,15 +5199,15 @@ XML格式
 </DetachPluginResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BZ004"
-}
 ```
 
-### 查询插件下绑定的API
+`}`
+
+### 10.6 查询插件下绑定的API
 
 **描述**
 
@@ -4917,8 +5223,6 @@ JSON格式
 | PageNumber | Integer | 否 | 指定要查询的页码，默认是1，起始是1 |
 
 **返回参数**
-
-API 网关
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -4936,11 +5240,11 @@ API 网关
 http://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribePluginApis &PluginId=a96926e82f994915a8da40a119374537
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <DescribePluginApisResponse>
@@ -4948,23 +5252,29 @@ XML格式 API 网关
    <TotalCount>20</TotalCount>
    <PageSize>10</PageSize>
    <PageNumber>1</PageNumber>
+   <ApiSummarys>
+      <ApiPluginSummary>
           <ApiId>9a3f1a5279434f2ba74ccd91c295af9f</ApiId>
           <ApiName>firstAPI</ApiName>
+          <RegionId>cn-qingdao</RegionId>
           <StageName>RELEASE</StageName>
           <GroupId>46c79e78dfab4521a5f737faa805c4e1</GroupId>
           <GroupName>firstGroup</GroupName>
           <Description>描述</Description>
+      </ApiPluginSummary>
+   </ApiSummarys>
 </DescribePluginApisResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
    "RequestId": "2DF14872-77CE-43A4-AB47-C4F128E5AA31",
    "TotalCount": "1",
    "PageNumber": "1",
    "PageSize": "10",
+   "ApiSummarys": {
+        "ApiPluginSummary": [{
             "ApiId":"9a3f1a5279434f2ba74ccd91c295af9f",
             "ApiName":"firstAPI",
             "RegionId":"cn-qingdao",
@@ -4972,12 +5282,11 @@ JSON格式 API 网关
             "GroupId":"46c79e78dfab4521a5f737faa805c4e1",
             "GroupName": "firstGroup"，
             "Description":"描述"
-        }]
-    },
-}
 ```
 
-### 查询插件列表及详情
+`}]` `},` `}`
+
+### 10.7 查询插件列表及详情
 
 **描述**
 
@@ -4988,8 +5297,6 @@ JSON格式 API 网关
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
 
-API 网关
-
 | Action | String | 是 | 操作接口名，系统规定参数，取值：DescribePlugins |
 |---|---|---|---|
 | PluginId | String | 否 | 插件ID |
@@ -4998,9 +5305,7 @@ API 网关
 | PageSize | Integer | 否 | 指定分页查询时每页行数，最大值100，默认值为10 |
 | PageNumber | Integer | 否 | 指定要查询的页码，默认是1，起始是1 |
 
-**说明**
-
-DescribePlugins接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DescribePlugins接口调用时，您需要在调用代码的Header参数中设置x-acs-regionid、x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的地域、 资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -5014,13 +5319,13 @@ DescribePlugins接口调用时，您需要在调用代码的Header参数中设�
 
 **示例**
 
-请求示例 API 网关
+请求示例
 
 ```
 http://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribePlugins &PluginId=a96926e82f994915a8da40a119374537 &PluginName=testPlugin &PluginType=ipControl
 ```
 
-`&<`公共请求参数> 返回示例 XML格式
+`&<`公共请求参数`>` 返回示例 XML格式
 
 ```xml
 <DescribePluginsResponse>
@@ -5029,26 +5334,29 @@ http://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribePlugins &PluginId=a969
    <PageSize>10</PageSize>
    <PageNumber>1</PageNumber>
    <Plugins>
+      <PluginAttribute>
           <PluginId>9a3f1a5279434f2ba74ccd91c295af9f</PluginId>
           <PluginName>firstPlugin</PluginName>
+          <RegionId>cn-qingdao</RegionId>
           <PluginType>trafficControl</PluginType>
           <PluginData>{"unit":"MINUTE","apiDefault":20}</PluginData>
           <Description>流控</Description>
           <CreatedTime>2019-01-11T09:29:58Z</CreatedTime>
           <ModifiedTime>2019-01-11T09:29:58Z</ModifiedTime>
+      </PluginAttribute>
    </Plugins>
 </DescribePluginsResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
    "RequestId": "46373DC4-19F1-4DC8-8C31-1107289BB5E0",
    "TotalCount": "1",
    "PageNumber": "1",
    "PageSize": "10",
    "Plugins": {
+        "PluginAttribute": [{
             "PluginId":"9a3f1a5279434f2ba74ccd91c295af9f",
             "PluginName":"firstPlugin",
             "RegionId":"cn-qingdao",
@@ -5057,16 +5365,11 @@ JSON格式
             "Description": "流控"，
             "CreatedTime":"2019-01-11T09:29:58Z",
             "ModifiedTime":"2019-01-11T09:29:58Z"
-        }]
-    }
-}
 ```
 
-API 网关
+`}]` `}` `}`
 
-### 查询API上绑定的插件
-
-**描述**
+### 10.8 查询API上绑定的插件
 
 查询指定API已绑定的插件，该API必须已发布到该环境。 此功能面向开放API的用户用于查询指定环境上指定API已绑定的插件列表
 
@@ -5100,11 +5403,11 @@ http://apigateway.example.com/?Action=DescribePluginsByApi
  &StageName=RELEASE
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-API 网关 XML格式
+XML格式
 
 ```xml
 <DescribePluginsByApiResponse>
@@ -5113,26 +5416,29 @@ API 网关 XML格式
    <PageSize>10</PageSize>
    <PageNumber>1</PageNumber>
    <Plugins>
+      <PluginAttribute>
           <PluginId>9a3f1a5279434f2ba74ccd91c295af9f</PluginId>
           <PluginName>firstPlugin</PluginName>
+          <RegionId>cn-qingdao</RegionId>
           <PluginType>trafficControl</PluginType>
           <PluginData>{"unit":"MINUTE","apiDefault":20}</PluginData>
           <Description>流控</Description>
           <CreatedTime>2019-01-11T09:29:58Z</CreatedTime>
           <ModifiedTime>2019-01-11T09:29:58Z</ModifiedTime>
+      </PluginAttribute>
    </Plugins>
 </DescribePluginsByApiResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
    "RequestId": "46373DC4-19F1-4DC8-8C31-1107289BB5E0",
    "TotalCount": "1",
    "PageNumber": "1",
    "PageSize": "10",
    "Plugins": {
+        "PluginAttribute": [{
             "PluginId":"9a3f1a5279434f2ba74ccd91c295af9f",
             "PluginName":"firstPlugin",
             "RegionId":"cn-qingdao",
@@ -5141,16 +5447,13 @@ JSON格式 API 网关
             "Description": "流控"，
             "CreatedTime":"2019-01-11T09:29:58Z",
             "ModifiedTime":"2019-01-11T09:29:58Z"
-        }]
-    }
-}
 ```
 
-API 网关
+`}]` `}` `}`
 
-## 应用管理相关接口
+## 11 应用管理相关接口
 
-### 创建应用
+### 11.1 创建应用
 
 **描述**
 
@@ -5164,9 +5467,7 @@ API 网关
 | AppName | Strin g | 是 | APP的名称，全局唯一，命名时最好加上特定标识，避免重名。支持汉字、英文字母、数字、英文格式的下划线，且必须以字母或汉字开始，4~15个字符 |
 | Descriptio n | Strin g | 否 | APP描述信息，长度不超过180个字符 |
 
-**说明**
-
-CreateApp接口调用时，您需要在调用代码的Header参数中设置x-acs-organizationid、x-acsresourcegroupid、x-acs-instanceid等参数，用于指定资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** CreateApp接口调用时，您需要在调用代码的Header参数中设置x-acs-organizationid、x-acs- resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -5177,13 +5478,13 @@ CreateApp接口调用时，您需要在调用代码的Header参数中设置x-acs
 
 **示例**
 
-请求示例 API 网关
+请求示例
 
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=CreateApp &AppName=CreateAppTest &Description=test
 ```
 
-`&<`公共请求参数> 返回示例 XML格式
+`&<`公共请求参数`>` 返回示例 XML格式
 
 ```xml
 <CreateAppResponse>
@@ -5192,16 +5493,16 @@ https://apigateway.cn-qingdao.aliyuncs.com/?Action=CreateApp &AppName=CreateAppT
 </CreateAppResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "AppId":20112314518278,
     "RequestId":"BA20890E-75C7-41BC-9C8B-73276B58F550"
-}
 ```
 
-### 修改应用
+`}`
+
+### 11.2 修改应用
 
 **描述**
 
@@ -5226,13 +5527,11 @@ JSON格式
 
 **请求示例**
 
-API 网关
-
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=ModifyApp &AppId=20112314518278 &Description=modidyTest
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -5244,15 +5543,15 @@ XML格式
 </ModifyAppResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
-}
 ```
 
-### 重置APP密钥
+`}`
+
+### 11.3 重置APP密钥
 
 **描述**
 
@@ -5279,11 +5578,11 @@ JSON格式
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=ResetAppSecret &AppKey=60030986
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <ResetAppSecretResponse>
@@ -5291,19 +5590,19 @@ XML格式 API 网关
 </ResetAppSecretResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
-}
 ```
 
-### 查询APP列表
+`}`
+
+### 11.4 查询APP列表
 
 **描述**
 
-此功能面向调用API的用户 AppId选择性传入
+查询APP列表及基本信息此功能面向调用API的用户 AppId选择性传入
 
 **请求参数**
 
@@ -5314,9 +5613,7 @@ JSON格式
 | PageSize | Integer | 否 | 指定分页查询时每页行数，最大值100，默认值为10 |
 | PageNumber | Integer | 否 | 指定要查询的页码，默认是1，起始是1 |
 
-**说明**
-
-DescribeAppAttributes接口调用时，您需要在调用代码的Header参数中设置x-acsorganizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的组织、 资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
+> **说明：** DescribeAppAttributes接口调用时，您需要在调用代码的Header参数中设置x-acs- organizationid、x-acs-resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的组织、 资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -5324,8 +5621,6 @@ DescribeAppAttributes接口调用时，您需要在调用代码的Header参数�
 |---|---|---|
 | RequestId | String | 本次请求编号 |
 | TotalCount | Integer | 返回结果的总条数 |
-
-API 网关
 
 | PageNumber | Integer | 返回指定的页码 |
 |---|---|---|
@@ -5340,59 +5635,59 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeAppAttributes &AppId=20112314518278 &pageSize=10 &pageNumber=1
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
 XML格式
 
 ```xml
+<DescribeAppAttributesResponse>
     <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BZ015</RequestId>
       <TotalCount>1</TotalCount>
     <PageSize>10</PageSize>
     <PageNumber>1</PageNumber>
     <Apps>
+        <AppAttribute>
             <AppId>20112314518278</AppId>
             <AppName>CreateApptest</AppName>
             <Description>APP test</Description>
             <CreatedTime>2016-07-31T04:10:19Z</CreatedTime>
             <ModifiedTime>2016-07-31T04:10:19Z</ModifiedTime>
+        </AppAttribute>
     </Apps>
+</DescribeAppAttributesResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "TotalCount":1,
     "PageSize":10,
     "PageNumber":1,
     "RequestId":"8883AC74-259D-4C0B-99FC-0B7F9A588B2F",
     "Apps":
-    {
+```
+
+`{`
+
+```json
         "AppAttribute":
 ```
 
-[
+`[` `{`
 
 ```json
-            {
                 "AppId":20112314518278,
                 "AppName":"CreateApptest",
                 "Description":"APP test",
                 "CreatedTime":"2016-07-31T04:10:19Z",
                 "ModifiedTime":"2016-07-31T04:10:19Z"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-### 查询APP密钥
+### 11.5 查询APP密钥
 
 **描述**
 
@@ -5419,13 +5714,11 @@ JSON格式 API 网关
 
 **请求示例**
 
-API 网关
-
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeAppSecurity &AppId=20112314518278
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -5441,19 +5734,19 @@ XML格式
 </DescribeAppSecurityResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015",
     "AppKey":"60030986",
     "AppSecret":"c1ae97aaa7e45f21d10824bc44678fee",
     "CreatedTime":"2016-07-31T04:10:19Z",
     "ModifiedTime":"2016-07-31T04:10:19Z"
-}
 ```
 
-### 删除应用
+`}`
+
+### 11.6 删除应用
 
 **描述**
 
@@ -5466,9 +5759,7 @@ JSON格式
 | Action | String | 是 | 操作接口名，系统规定参数，取值：DeleteApp |
 | AppId | Long | 是 | APP唯一编号 |
 
-**说明**
-
-DeleteApp接口调用时，您需要在调用代码的Header参数中设置x-acs-organizationid、x-acsresourcegroupid、x-acs-instanceid等参数，用于指定资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。 API 网关
+> **说明：** DeleteApp接口调用时，您需要在调用代码的Header参数中设置x-acs-organizationid、x-acs- resourcegroupid、x-acs-instanceid等参数，用于指定资源所属的组织、资源所属的资源集以及资源实例ID（如果存在的话），否则调用会指向根组织和根资源集。
 
 **返回参数**
 
@@ -5484,7 +5775,7 @@ DeleteApp接口调用时，您需要在调用代码的Header参数中设置x-acs
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DeleteApp &AppId=20112314518278
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -5496,25 +5787,23 @@ XML格式
 </DeleteAppResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BZ015"
-}
 ```
 
-API 网关
+`}`
 
-## 授权相关接口
+## 12 授权相关接口
 
-### 查询待授权的APP
+### 12.1 查询待授权的APP
 
 查询可授权的APP列表（DescribeApps）。
 
 **描述**
 
-查询可授权的APP列表，为API开放者在操作授权时提取APP信息此功能面向开放API的用户 API开放者可通过AppId或者阿里云登录账号查询APP信息，进而操作授权
+查询可授权的APP列表，为API开放者在操作授权时提取APP信息此功能面向开放API的用户 API开放者可通过AppId或者阿里云登录账号查询APP信息，进而操作授权每个用户在每个Region每天调用次数上限为200次
 
 **请求参数**
 
@@ -5544,11 +5833,11 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeApps &AppId=20112314518278 &pageSize=10 &pageNumber=1
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
 <DescribeAppsResponse>
@@ -5557,43 +5846,42 @@ XML格式 API 网关
     <PageSize>10</PageSize>
     <PageNumber>1</PageNumber>
     <Apps>
+        <AppItem>
             <AppId>20112314518278</AppId>
             <AppName>CreateApptest</AppName>
             <Description>APP test</Description>
+        </AppItem>
     </Apps>
 </DescribeAppsResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "TotalCount":1,
     "PageSize":10,
     "PageNumber":1,
     "RequestId":"8883AC74-259D-4C0B-99FC-0B7F9A588B2F",
     "Apps":
-    {
+```
+
+`{`
+
+```json
         "AppItem":
 ```
 
-[
+`[` `{`
 
 ```json
-            {
                 "AppId":20112314518278,
                 "AppName":"CreateApptest",
                 "Description":"APP test"                    }
 ```
 
-]
+`]` `}` `}`
 
-```
-    }
-}
-```
-
-### 查询已授权APP的API
+### 12.2 查询已授权APP的API
 
 **描述**
 
@@ -5607,8 +5895,6 @@ JSON格式
 | AppId | Long | 是 | APP编号，系统生成，全局唯一 |
 | PageNumber | Integer | 否 | 指定要查询的页码，默认是1，起始是1 |
 | PageSize | Integer | 否 | 指定分页查询时每页行数，最大值100，默认值为10 |
-
-API 网关
 
 **返回参数**
 
@@ -5628,17 +5914,21 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DescribeAuthorizedApis &AppId＝2386789
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
+<DescribeAuthorizedApisResponse>
     <PageNumber>1</PageNumber>
     <TotalCount>2</TotalCount>
     <PageSize>10</PageSize>
     <RequestId>D6E46F10-F26C-4AA0-BB69-FE2743D9AE62</RequestId>
+    <AuthorizedApis>
+        <AuthorizedApi>
+            <RegionId>cn-hangzhou</RegionId>
             <GroupId>523e8dc7bbe04613b5b1d726c2a7889d</GroupId>
             <GroupName>Weather</GroupName>
             <StageName>RELEASE</StageName>
@@ -5652,6 +5942,9 @@ XML格式 API 网关
 
 ```xml
             <AuthorizedTime>2016-07-21T06:17:20Z</AuthorizedTime>
+        </AuthorizedApi>
+        <AuthorizedApi>
+            <RegionId>cn-hangzhou</RegionId>
             <GroupId>523e8dc7bbe04613b5b1d726c2a7889d</GroupId>
             <GroupName>Weather</GroupName>
             <StageName>RELEASE</StageName>
@@ -5661,13 +5954,21 @@ XML格式 API 网关
             <AuthorizationSource>API</AuthorizationSource>
             <Description>查询区域</Description>
             <AuthorizedTime>2016-07-21T06:17:20Z</AuthorizedTime>
+        </AuthorizedApi>
+    </AuthorizedApis>
+</DescribeAuthorizedApisResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{ "PageNumber": "1", "TotalCount": "2", "PageSize": "10", "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
-    {
+"PageNumber": "1", "TotalCount": "2", "PageSize": "10", "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62", "AuthorizedApis": {
+  "AuthorizedApi": [
+```
+
+`{`
+
+```json
       "RegionId": "cn-hangzhou",
       "GroupId": "523e8dc7bbe04613b5b1d726c2a7889d",
       "GroupName": "Weather",
@@ -5682,8 +5983,11 @@ JSON格式 API 网关
 
 ```json
       "AuthorizedTime": "2016-07-21T06:17:20Z"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "RegionId": "cn-hangzhou",
       "GroupId": "523e8dc7bbe04613b5b1d726c2a7889d",
       "GroupName": "Weather",
@@ -5698,16 +6002,11 @@ JSON格式 API 网关
 
 ```json
       "AuthorizedTime": "2016-07-21T06:17:20Z"
-    }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-} }
-```
-
-### 查询API授权记录
+### 12.3 查询API授权记录
 
 **描述**
 
@@ -5719,8 +6018,6 @@ JSON格式 API 网关
 |---|---|---|---|
 | Action | String | 是 | 接口名称，系统规定参数，取值：DescribeAuthorizedApps |
 | GroupId | String | 是 | API分组 ID，系统生成，全局唯一 |
-
-API 网关
 
 | ApiId | String | 是 | API编号，系统生成，全局唯一 |
 |---|---|---|---|
@@ -5746,17 +6043,20 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=DescribeAuthorizedApps &GroupId＝523e8dc7bbe04613b5b1d726c2a7889d &ApiId＝baacc592e63a4cb6a41920d9d3f91f38
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
+<DescribeAuthorizedAppsResponse>
     <TotalCount>2</TotalCount>
     <PageNumber>1</PageNumber>
     <PageSize>10</PageSize>
     <RequestId>D6E46F10-F26C-4AA0-BB69-FE2743D9AE62</RequestId>
+    <AuthorizedApps>
+        <AuthorizedApp>
             <StageName>RELEASE</StageName>
             <AppId>2386789</AppId>
             <AppName>天气APP</AppName>
@@ -5768,6 +6068,8 @@ XML格式 API 网关
 
 ```xml
             <AuthorizedTime>2016-07-21T06:17:20Z</AuthorizedTime>
+        </AuthorizedApp>
+        <AuthorizedApp>
             <StageName>TEST</StageName>
             <AppId>2386789</AppId>
             <AppName>天气APP</AppName>
@@ -5779,13 +6081,21 @@ XML格式 API 网关
 
 ```xml
             <AuthorizedTime>2016-07-21T06:17:20Z</AuthorizedTime>
+        </AuthorizedApp>
+    </AuthorizedApps>
+</DescribeAuthorizedAppsResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{ "TotalCount": "2", "PageNumber": "1", "PageSize": "10", "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
-    {
+"TotalCount": "2", "PageNumber": "1", "PageSize": "10", "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62", "AuthorizedApps": {
+  "AuthorizedApp": [
+```
+
+`{`
+
+```json
       "StageName": "RELEASE",
       "AppId": 2386789,
       "AppName": "天气APP",
@@ -5797,8 +6107,11 @@ JSON格式 API 网关
 
 ```json
       "AuthorizedTime": "2016-07-21T06:17:20Z"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "StageName": "TEST",
       "AppId": 2386789,
       "AppName": "天气APP",
@@ -5810,16 +6123,11 @@ JSON格式 API 网关
 
 ```json
       "AuthorizedTime": "2016-07-21T06:17:20Z"
-    }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-} }
-```
-
-### 将多个API授权给APP
+### 12.4 将多个API授权给APP
 
 **描述**
 
@@ -5833,8 +6141,6 @@ JSON格式 API 网关
 | GroupId | String | 是 | API分组 ID，系统生成，全局唯一 |
 | StageName | String | 是 | 环境名称，取值为： RELEASE: 线上 TEST: 测试 |
 | AppId | Long | 是 | 应用编号，系统生成，全局唯一 |
-
-API 网关
 
 | ApiIds | String | 否 | 指定要操作的API编号，支持输入多个，“,”分隔，最多支持 100个 |
 |---|---|---|---|
@@ -5854,7 +6160,7 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=SetApisAuthorities &GroupId＝523e8dc7bbe04613b5b1d726c2a7889d &StageName＝RELEASE &AppId＝2386789 &ApiIds＝baacc592e63a4cb6a41920d9d3f91f38,jkscc489e63a4cb6a41920d9d3f92d78
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -5866,15 +6172,15 @@ XML格式
 </SetApisAuthoritiesResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
- }
 ```
 
-### 将API授权给多个APP
+`}`
+
+### 12.5 将API授权给多个APP
 
 **描述**
 
@@ -5886,8 +6192,6 @@ JSON格式
 |---|---|---|---|
 | Action | String | 是 | 接口名称，系统规定参数，取值：SetAppsAuthorities |
 | GroupId | String | 是 | API分组 ID，系统生成，全局唯一 |
-
-API 网关
 
 | StageName | String | 是 | 环境名称，取值为： RELEASE: 线上 TEST: 测试 |
 |---|---|---|---|
@@ -5909,7 +6213,7 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=SetAppsAuthorities &GroupId＝523e8dc7bbe04613b5b1d726c2a7889d &StageName＝RELEASE &ApiId＝baacc592e63a4cb6a41920d9d3f91f38 &AppIds＝2386789,3389798
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -5921,23 +6225,21 @@ XML格式
 </SetAppsAuthoritiesResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
- }
 ```
 
-### 解除多个API与某APP的授权
+`}`
+
+### 12.6 解除多个API与某APP的授权
 
 **描述**
 
 用于撤销指定应用（APP）对多个API的访问权限此功能面向API提供者和API使用者撤销前请查看添加授权记录的授权者，API所有者只能撤销Provicder的授权，API使用者只能撤销 Consumer的授权
 
 **请求参数**
-
-API 网关
 
 | 名称 | 类型 | 是否必须 | 描述 |
 |---|---|---|---|
@@ -5961,7 +6263,7 @@ API 网关
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=RemoveApisAuthorities &GroupId＝523e8dc7bbe04613b5b1d726c2a7889d &StageName＝RELEASE &ApiId＝baacc592e63a4cb6a41920d9d3f91f38,jkscc489e63a4cb6a41920d9d3f92d78 &AppId＝2386789
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -5973,19 +6275,19 @@ XML格式
 </RemoveApisAuthoritiesResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
-{
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
- }
 ```
 
-### 解除API与多个APP的授权
+`}`
+
+### 12.7 解除API与多个APP的授权
 
 **描述**
 
-用于撤销多个APP对指定API的访问权限，多个APP一个API 此功能面向API提供者和API使用者撤销前请查看添加授权记录的授权者，API所有者只能撤销Provicder的授权，API使用者只能撤销 Consumer的授权 API 网关
+用于撤销多个APP对指定API的访问权限，多个APP一个API 此功能面向API提供者和API使用者撤销前请查看添加授权记录的授权者，API所有者只能撤销Provicder的授权，API使用者只能撤销 Consumer的授权
 
 **请求参数**
 
@@ -6011,7 +6313,7 @@ JSON格式
 http://apigateway.cn-hangzhou.aliyuncs.com?Action=RemoveAppsAuthorities &GroupId=523e8dc7bbe04613b5b1d726c2a7889d &StageName＝RELEASE &ApiId＝baacc592e63a4cb6a41920d9d3f91f38 &AppIds＝2386789,3286798
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
@@ -6023,23 +6325,21 @@ XML格式
 </RemoveAppsAuthoritiesResponse>
 ```
 
-JSON格式
+JSON格式 `{`
 
 ```json
- {
     "RequestId": "D6E46F10-F26C-4AA0-BB69-FE2743D9AE62",
- }
 ```
 
-API 网关
+`}`
 
-## 其他接口
+## 13 其他接口
 
-### 查询支持的区域
+### 13.1 查询支持的区域
 
 **描述**
 
-此功能面向开放API和调用API的用户。
+查询支持的区域列表。 此功能面向开放API和调用API的用户。
 
 **请求参数**
 
@@ -6062,75 +6362,79 @@ API 网关
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeRegions
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
+<DescribeRegionsResponse>
     <RequestId>36BBBAD4-1CFB-489F-841A-8CA52EEA787E</RequestId>
+    <Regions>
+        <Region>
+            <RegionId>cn-qingdao</RegionId>
             <EndPoint>apigateway.cn-qingdao.aliyuncs.com</EndPoint>
             <LocalName>华北 1 (青岛)</LocalName>
+        </Region>
+        <Region>
+            <RegionId>cn-hangzhou</RegionId>
             <EndPoint>apigateway.cn-hangzhou.aliyuncs.com</EndPoint>
             <LocalName>华东 1 (杭州)</LocalName>
+        </Region>
+        <Region>
+            <RegionId>cn-beijing</RegionId>
             <EndPoint>apigateway.cn-beijing.aliyuncs.com</EndPoint>
             <LocalName>华北 2 (北京)</LocalName>
+        </Region>
+        <Region>
+            <RegionId>cn-shenzhen</RegionId>
             <EndPoint>apigateway.cn-shenzhen.aliyuncs.com</EndPoint>
             <LocalName>华南 1 (深圳)</LocalName>
+        </Region>
+    </Regions>
+</DescribeRegionsResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "RequestId": "36BBBAD4-1CFB-489F-841A-8CA52EEA787E",
-            {
+    "Regions": {
+        "Region": [
+```
+
+`{`
+
+```json
                 "RegionId": "cn-qingdao",
                 "EndPoint": "apigateway.cn-qingdao.aliyuncs.com",
 ```
 
-`"LocalName": "`华北 `1 (`青岛`)"`
+`"LocalName": "`华北 `1 (`青岛`)"` `},` `{`
 
 ```json
-            },
-            {
                 "RegionId": "cn-hangzhou",
                 "EndPoint": "apigateway.cn-hangzhou.aliyuncs.com",
 ```
 
-`"LocalName": "`华东 `1 (`杭州`)"`
+`"LocalName": "`华东 `1 (`杭州`)"` `},` `{`
 
 ```json
-            },
-            {
                 "RegionId": "cn-beijing",
                 "EndPoint": "apigateway.cn-beijing.aliyuncs.com",
 ```
 
-`"LocalName": "`华北 `2 (`北京`)"`
+`"LocalName": "`华北 `2 (`北京`)"` `},` `{`
 
 ```json
-            },
-            {
                 "RegionId": "cn-shenzhen",
                 "EndPoint": "apigateway.cn-shenzhen.aliyuncs.com",
 ```
 
-`"LocalName": "`华南 `1 (`深圳`)"`
+`"LocalName": "`华南 `1 (`深圳`)"` `}` `]` `}` `}`
 
-```
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-### 查询可配置的系统参数
+### 13.2 查询可配置的系统参数
 
 **描述**
 
@@ -6151,30 +6455,35 @@ JSON格式 API 网关
 
 **示例**
 
-API 网关
-
 **请求示例**
 
 ```
 https://apigateway.cn-qingdao.aliyuncs.com/?Action=DescribeSystemParameters
 ```
 
-`&<`公共请求参数>
+`&<`公共请求参数`>`
 
 **返回示例**
 
-XML格式 API 网关
+XML格式
 
 ```xml
+<DescribeSystemParametersResponse>
     <RequestId>0CCDF65E-6050-412D-AD68-FA3D9196836C</RequestId>
+    <SystemParameters>
+        <SystemParameter>
             <Description>客户端IP</Description>
             <DemoValue>192.168.1.1</DemoValue>
             <ParamName>CaClientIp</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+        <SystemParameter>
             <Description>请求域名</Description>
             <DemoValue>api.aliyun.com</DemoValue>
             <ParamName>CaDomain</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+        <SystemParameter>
 ```
 
 `<Description>`请求时间（格林威治时间）`</Description>`
@@ -6183,95 +6492,113 @@ XML格式 API 网关
             <DemoValue>2016-01-30T03:53:16Z</DemoValue>
             <ParamName>CaRequestHandleTime</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+        <SystemParameter>
             <Description>ConsumerAppId</Description>
             <DemoValue>123456</DemoValue>
             <ParamName>CaAppId</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+        <SystemParameter>
             <Description>RequestId</Description>
             <DemoValue>7157EBD9-4684-4827-B3B0-9B32D186819B</DemoValue>
             <ParamName>CaRequestId</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+        <SystemParameter>
             <Description>Http Schema</Description>
             <DemoValue>https</DemoValue>
             <ParamName>CaHttpSchema</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+        <SystemParameter>
             <Description>代理</Description>
             <DemoValue>AliCloudApiGateway</DemoValue>
             <ParamName>CaProxy</ParamName>
             <ParamType>string</ParamType>
+        </SystemParameter>
+    </SystemParameters>
+</DescribeSystemParametersResponse>
 ```
 
-JSON格式 API 网关
+JSON格式
 
 ```json
-{
     "RequestId": "0CCDF65E-6050-412D-AD68-FA3D9196836C",
-            {
+    "SystemParameters": {
+        "SystemParameter": [
+```
+
+`{`
+
+```json
                 "Description": "客户端IP",
                 "DemoValue": "192.168.1.1",
                 "ParamName": "CaClientIp",
                 "ParamType": "string"
-            },
-            {
 ```
 
-`"Description": "`请求域名`",`
+`},` `{` `"Description": "`请求域名`",`
 
 ```json
                 "DemoValue": "api.aliyun.com",
                 "ParamName": "CaDomain",
                 "ParamType": "string"
-            },
-            {
 ```
 
-`"Description": "`请求时间（格林威治时间）`",`
+`},` `{` `"Description": "`请求时间（格林威治时间）`",`
 
 ```json
                 "DemoValue": "2016-01-30T03:53:16Z",
                 "ParamName": "CaRequestHandleTime",
                 "ParamType": "string"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Description": "ConsumerAppId",
                 "DemoValue": "123456",
                 "ParamName": "CaAppId",
                 "ParamType": "string"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Description": "RequestId",
                 "DemoValue": "7157EBD9-4684-4827-B3B0-9B32D186819B",
                 "ParamName": "CaRequestId",
                 "ParamType": "string"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Description": "Http Schema",
                 "DemoValue": "https",
                 "ParamName": "CaHttpSchema",
                 "ParamType": "string"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Description": "代理",
                 "DemoValue": "AliCloudApiGateway",
                 "ParamName": "CaProxy",
                 "ParamType": "string"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
+## 14 数据类型
 
-API 网关
-
-## 数据类型
-
-### ApiGroupAttribute
+### 14.1 ApiGroupAttribute
 
 **描述**
+
+API分组详情
 
 **节点名**
 
@@ -6290,7 +6617,7 @@ API 网关
 | BillingStatus | String | 计费状态，取值： NORMAL：正常 LOCKED：欠费锁定 |
 | IllegalStatus | String | 违法锁定，取值： NORMAL：正常 LOCKED：违法锁定 |
 
-### ApiHisItem
+### 14.2 ApiHisItem
 
 **描述**
 
@@ -6302,8 +6629,6 @@ API 网关
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-API 网关
 
 | RegionId | String | 所在的region |
 |---|---|---|
@@ -6317,7 +6642,7 @@ API 网关
 | Status | String | 对应版本的API是否生效，取值为：ONLINE、OFFLINE，分别表示有效、无效 |
 | DeployedTime | String | 发布时间（格林威治时间） |
 
-### ApiInfo
+### 14.3 ApiInfo
 
 **描述**
 
@@ -6337,13 +6662,11 @@ API 网关
 | ApiName | String | API名称 |
 | Description | String | API描述 |
 
-API 网关
-
 | Visibility | String | 可见性，枚举为： PUBLIC: 公开 PRIVATE: 私有 |
 |---|---|---|
 | BoundTime | String | 绑定时间 |
 
-### ApiPluginSummary
+### 14.4 ApiPluginSummary
 
 **描述**
 
@@ -6363,7 +6686,7 @@ API 网关
 | Description | String | API描述 |
 | StageName | String | Stage名称 |
 
-### ApiSummary
+### 14.5 ApiSummary
 
 **描述**
 
@@ -6380,8 +6703,6 @@ API概要信息项
 | GroupName | String | API分组名称 |
 | ApiId | String | API编号 |
 
-API 网关
-
 | ApiName | String | API名称 |
 |---|---|---|
 | Description | String | API描述 |
@@ -6389,7 +6710,7 @@ API 网关
 | CreatedTime | String | 创建时间（格林威治时间） |
 | ModifiedTime | String | 修改时间（格林威治时间） |
 
-### AppAttribute
+### 14.6 AppAttribute
 
 **描述**
 
@@ -6407,7 +6728,7 @@ API 网关
 | CreatedTime | String | 创建时间（格林威治时间） |
 | ModifiedTime | String | 修改时间（格林威治时间） |
 
-### AppItem
+### 14.7 AppItem
 
 **描述**
 
@@ -6423,11 +6744,7 @@ API 网关
 | AppName | String | APP名称 |
 | Description | String | APP描述信息 |
 
-API 网关
-
-### AuthorizedApi
-
-**描述**
+### 14.8 AuthorizedApi
 
 应用和API的对应关系
 
@@ -6448,7 +6765,7 @@ API 网关
 | Description | String | 授权说明 |
 | AuthorizedTime | String | 授权时间，格林威治时间 |
 
-### AuthorizedApp
+### 14.9 AuthorizedApp
 
 **描述**
 
@@ -6461,8 +6778,6 @@ API的应用授权信息
 | 名称 | 类型 | 描述 |
 |---|---|---|
 
-API 网关
-
 | StageName | String | 环境名称，取值： RELEASE TEST |
 |---|---|---|
 | AppId | Long | 编号，系统生成，全局唯一 |
@@ -6472,7 +6787,7 @@ API 网关
 | Description | String | 授权说明 |
 | AuthorizedTime | String | 授权时间，格林威治时间 |
 
-### ConstantParameter
+### 14.10 ConstantParameter
 
 **描述**
 
@@ -6489,7 +6804,7 @@ API 网关
 | Location | String | 参数位置，取值为：BODY、HEAD、QUERY、 PATH |
 | Description | String | 参数描述 |
 
-### CustomDomain
+### 14.11 CustomDomain
 
 **描述**
 
@@ -6499,8 +6814,6 @@ API 网关
 
 **子节点**
 
-API 网关
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | DomainName | String | 域名名称 |
@@ -6509,7 +6822,7 @@ API 网关
 | DomainCNAMEStatus | String | 域名解析情况，取值： RESOLVED：已解析 UNRESOLVED：未解析 |
 | DomainBindingStatus | String | 自定义域名绑定状态，取值： BINDING：正常 BOUND：未生效 |
 
-### DeployedApiItem
+### 14.12 DeployedApiItem
 
 **描述**
 
@@ -6531,11 +6844,7 @@ API 网关
 | Visibility | String | 可见性，可选值： PUBLIC: 公开 PRIVATE: 私有 |
 | DeployedTime | String | 发布时间（格林威治时间） |
 
-API 网关
-
-### DeployedInfo
-
-**描述**
+### 14.13 DeployedInfo
 
 API发布信息项的类型
 
@@ -6549,7 +6858,7 @@ API发布信息项的类型
 | EffectiveVersion | String | 有效的版本 |
 | DeployedStatus | String | 部署状态，取值为：DEPLOYED、NONDEPLOYED，分别表示已部署、未部署 |
 
-### DomainItem
+### 14.14 DomainItem
 
 **描述**
 
@@ -6563,7 +6872,7 @@ API的调用域名信息
 |---|---|---|
 | DomainName | String | API的调用域名 |
 
-### ErrorCodeSample
+### 14.15 ErrorCodeSample
 
 **描述**
 
@@ -6578,12 +6887,10 @@ API的调用域名信息
 | Code | String | 错误码 |
 | Message | String | 错误信息 |
 
-API 网关
-
 | Description | String | 描述 |
 |---|---|---|
 
-### MonitorItem
+### 14.16 MonitorItem
 
 **描述**
 
@@ -6598,7 +6905,7 @@ API 网关
 | ItemTime | String | 对应时间，按照ISO8601标准表示，并需要使用UTC时间。格式为： YYYY-MM-DDThh:mm:ssZ |
 | ItemValue | String | 对应值 |
 
-### PluginAttribute
+### 14.17 PluginAttribute
 
 **描述**
 
@@ -6619,11 +6926,9 @@ API 网关
 | CreatedTime | String | 创建时间，格林威治时间 |
 | ModifiedTime | String | 修改时间，格林威治时间 |
 
-### Region
+### 14.18 Region
 
-**描述**
-
-API 网关区域信息的类型
+区域信息的类型
 
 **节点名**
 
@@ -6635,7 +6940,7 @@ API 网关区域信息的类型
 | LocalName | String | 区域名称 |
 | EndPoint | String | 域名，例如：gateway.cn-hangzhou.aliyuncs.com |
 
-### RequestConfig
+### 14.19 RequestConfig
 
 **描述**
 
@@ -6653,7 +6958,7 @@ API 网关区域信息的类型
 | BodyFormat | String | POST/PUT请求时，表示数据已何种方式传递给服务器，取值为：FORM、 STREAM，分别表示表单形式(k-v对应)、字节流形式 |
 | PostBodyDescr iption | String | Body描述 |
 
-### RequestParameter
+### 14.20 RequestParameter
 
 **描述**
 
@@ -6662,8 +6967,6 @@ API 网关区域信息的类型
 **节点名**
 
 **子节点**
-
-API 网关
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
@@ -6684,7 +6987,7 @@ API 网关
 | DocOrder | Integer | 文档中顺序 |
 | Description | String | 参数描述 |
 
-### ServiceConfig
+### 14.21 ServiceConfig
 
 **描述**
 
@@ -6696,8 +6999,6 @@ API 网关
 
 | 名称 | 类型 | 描述 |
 |---|---|---|
-
-API 网关
 
 | ServiceProto col | String | 后端服务协议类型，目前只支持HTTP/HTTPS |
 |---|---|---|
@@ -6712,7 +7013,7 @@ API 网关
 | ServiceVpcE nable | Boolean | 是否启用VPC通道，目前可以取值： TRUE：启用VPC通道 FALSE：不启用 VPC |
 | VpcId | String | 当VPC通道时，后端服务所在VPC ID |
 
-### ServiceParameter
+### 14.22 ServiceParameter
 
 **描述**
 
@@ -6722,15 +7023,13 @@ API 网关
 
 **子节点**
 
-API 网关
-
 | 名称 | 类型 | 描述 |
 |---|---|---|
 | ServiceParameterName | String | 后端参数名称 |
 | Location | String | 参数位置，取值为：BODY、HEAD、QUERY、PATH |
 | ParameterType | String | 后端参数类型，取值为：STRING、NUMBER、 BOOLEAN，分别表示字符、数值、布尔 |
 
-### ServiceParameterMap
+### 14.23 ServiceParameterMap
 
 **描述**
 
@@ -6745,7 +7044,7 @@ API 网关
 | ServicePara meterName | String | 后端参数名称 |
 | RequestPara meterName | String | 对应前端入参名称。 这个值必须存在于RequestParametersObject中，匹配于 RequestParam.ApiParameterName |
 
-### Special
+### 14.24 Special
 
 **描述**
 
@@ -6760,11 +7059,9 @@ API 网关
 | SpecialKey | String | 根据 SpecialType 对应的AppId或者是用户账号 |
 | TrafficValue | Integer | 流控值 |
 
-### SpecialPolicy
+### 14.25 SpecialPolicy
 
-**描述**
-
-特殊流控策略信息项的类型 API 网关
+特殊流控策略信息项的类型
 
 **节点名**
 
@@ -6775,7 +7072,7 @@ API 网关
 | SpecialType | String | 特殊流控类型，可选值： APP: 应用 USER: 用户 |
 | Specials | Special | 由 Special 组成的数组格式，返回特殊流控策略数据项信息 |
 
-### StageInfo
+### 14.26 StageInfo
 
 **描述**
 
@@ -6791,7 +7088,7 @@ API 网关
 | StageName | String | 运行环境名称 |
 | Description | String | 运行环境描述 |
 
-### SystemParameter
+### 14.27 SystemParameter
 
 **描述**
 
@@ -6807,13 +7104,11 @@ API 网关
 | ServiceParamete rName | String | 对应后端参数名称 |
 | Location | String | 参数位置，取值为：BODY、HEAD、QUERY、PATH |
 
-API 网关
-
 | DemoValue | String | 示例 |
 |---|---|---|
 | Description | String | 参数描述 |
 
-### SystemParamItem
+### 14.28 SystemParamItem
 
 **描述**
 
@@ -6830,9 +7125,7 @@ API 网关
 | DemoValue | String | 示例 |
 | Description | String | 参数描述 |
 
-API 网关
-
-## 错误码参考
+## 15 错误码参考
 
 当您调用API网关开放的管控OpenAPI时，如CreateAPI、ModifyAPI、DeleteAPI等，您可能遇到以下错误码。
 
@@ -6859,7 +7152,7 @@ HttpCode为4xx，表示业务错误。一般为参数错误、权限限制、业
 | NotFound%s | Cannot find resource according to your specified %s. | 400 | 找不到资源 | 根据指定的参数%s 找不到资源，建议检查%s是否正确。 |
 | InvalidFormat%s | The specified parameter %s value is not well formatted. | 400 | 参数格式错误 | 建议根据实际返回提示，查看%s的格式要求，修改后重试。 |
 
-| PI 网关 |  |  | 开发 | 指南（旧）·错误码参考 |
+| PI 网关 |   |   | 开发 | 指南（旧）·错误码参考 |
 |---|---|---|---|---|
 
 | Duplicate%s | The specified parameter %s value is duplicate. | 400 | 参数重复 | 某请求参数不允许重复，建议检查修正后重试。 |
@@ -6874,8 +7167,6 @@ HttpCode为4xx，表示业务错误。一般为参数错误、权限限制、业
 | InvalidAppDefault | The AppDefault value must smaller than the UserDefault and ApiDefault. | 400 | AppDefault 的值不符合规则 | 该值需要小于 API 流控值和用户流控值。 |
 | InvalidUserDefaul t | The UserDefault value must bigger than the AppDefault and smaller than the ApiDefault. | 400 | UserDefault 的值不符合规则 | 该值需要小于 API 流控值并大于 APP 流控值。 |
 | InvalidParamMap ping | Parameters must be fully mapped. | 400 | 参数映射无效 | 创建 API 时，前后端参数映射需要是全映射。即每个入参都需要配置后端参数名称。 |
-
-API 网关
 
 | EqualSignature | The new signature is the same as the old. | 400 | 新密钥与旧的相等 | 修改后端签名密钥时，新设置的 Key 和 Secret 不能跟原来的一样。 |
 |---|---|---|---|---|
@@ -6896,8 +7187,6 @@ HttpCode为4xx，调用全阿里云产品的OpenAPI均可能遇到，表示业�
 | 用户时间和服务器时间超过15分钟。 | InvalidTimeStam p.Expired | Specified time stamp or date value is expired. | 400 | 检查时间戳。 |
 | SignatureNonce 重复 | SignatureNonceU sed | Specified signature nonce was used already. | 400 | 确认客户端调用时 SignatureNonce 是否重复 |
 | 返回值格式不正确。 | InvalidParameter. Format | Specified parameter format is not valid. | 400 | 仅支持 XML/JSON。 |
-
-API 网关
 
 | 参数值校验不通过。 | Invalid{Paramete rName} | Specified parameter {ParameterName } is not valid. | 400 | 请检查指定参数的值。 |
 |---|---|---|---|---|

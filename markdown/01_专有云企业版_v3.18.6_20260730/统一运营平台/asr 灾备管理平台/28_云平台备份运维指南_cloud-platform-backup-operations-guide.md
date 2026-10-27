@@ -5,36 +5,38 @@ doc_version: "20260729"
 pdf_pages: 12
 source_pdf: "28_云平台备份运维指南_cloud-platform-backup-operations-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/asr/zh/cloud-platform-backup-operations-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 灾备管理平台 云平台备份运维指南
 
-灾备管理中心
+## 目录
 
-## 目的
+- 2 常见运维处理
+  - 2.1 备份数据下载
 
-指导维护人员对云平台备份恢复进行预防维护，确保其能够稳定运行。维护人员可以根据本手册的指导，处理维护过程中发现的问题。如果根据本手册无法解决系统问题，请寻求阿里云工程师的技术支持。 灾备管理中心
+## 1 目的
 
-## 常见运维处理
+指导维护人员对云平台备份恢复进行预防维护，确保其能够稳定运行。维护人员可以根据本手册的指导，处理维护过程中发现的问题。如果根据本手册无法解决系统问题，请寻求阿里云工程师的技术支持。
 
-### 备份数据下载
+## 2 常见运维处理
+
+### 2.1 备份数据下载
 
 为了确保在任意的情况下（不依赖云平台）都可以管理和下载备份数据，我们会提供通用的工具方便使用者获取到当前的备份存储中的所有备份文件。
 
 **背景信息**
 
-| /cloud/app/ftpserver/FTPMaster#/ftpserver- |  |
+| /cloud/app/ftpserver/FTPMaster#/ftpserver- |   |
 |---|---|
 
 ```
 容器版本： /alidata/script/cloudbackuptool
 ```
 
-目录结构： cloudbackuptool->下载脚本可执行程序。 config.json->可执行程序用到的配置文件，包含数据库信息以及存储配置信息。 进入FTP服务所在的物理机/容器指定路径下获取cloudbackuptool 文件。 config.json: 配置文件默认初始化ftp配置过的存储信息
+目录结构： cloudbackuptool->下载脚本可执行程序。 config.json->可执行程序用到的配置文件，包含数据库信息以及存储配置信息。 进入FTP服务所在的物理机/容器指定路径下获取cloudbackuptool 文件。 config.json: 配置文件默认初始化ftp配置过的存储信息 `{`
 
 ```json
-{
   "storage": {
     "storageType": "",     #存储类型 OSS/S3
     "accessKeyId": "",     #存储的ak
@@ -44,11 +46,9 @@ converter: line-classifier (PyMuPDF)
     "ossBucket": "",       #存储的bucket
     "ossRegion": "",       #存储的region
     "useSsl" : false
-  }
-}
 ```
 
-灾备管理中心
+`}` `}`
 
 ```
 cloudbackuptool options:
@@ -80,7 +80,7 @@ cloudbackuptool options:
 
 **重要**
 
-当./cloudbackuptool连接失败的时候，需要手动修改config.json内容，配置存储相关的信息，执行 ./cloudbackuptool -c config.json 连接对应的存储。 对应的命令即为 ./cloudbackuptool -c config.json #根据指定的存储信息获取当前存储备份的所有产品列表 ./cloudbackuptool -c config.json -p MINIRDS #根据指定的产品信息获取当前存储备份的实例列表信息 ./cloudbackuptool -c config.json -p MINIRDS -i dbaas_db #根据指定的实例信息获取当前实例可下载的备份集列表 ./cloudbackuptool -c config.json -p MINIRDS -i dbaas_db -t 250918180328 #根据指定的备份集创建时间下载对应的备份集信息灾备管理中心灾备管理中心
+当./cloudbackuptool连接失败的时候，需要手动修改config.json内容，配置存储相关的信息，执行 ./cloudbackuptool -c config.json 连接对应的存储。 对应的命令即为 ./cloudbackuptool -c config.json #根据指定的存储信息获取当前存储备份的所有产品列表 ./cloudbackuptool -c config.json -p MINIRDS #根据指定的产品信息获取当前存储备份的实例列表信息 ./cloudbackuptool -c config.json -p MINIRDS -i dbaas_db #根据指定的实例信息获取当前实例可下载的备份集列表 ./cloudbackuptool -c config.json -p MINIRDS -i dbaas_db -t 250918180328 #根据指定的备份集创建时间下载对应的备份集信息
 
 **以opsdns为例**
 
@@ -98,7 +98,6 @@ cloudbackuptool options:
 ```
 
 3. 执行以下命令，获取可选的存储列表。
-灾备管理中心
 
 ```
 ./cloudbackuptool PyInstaller/loader/pyimod03_importers.py:495: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is depr ecated in cryptography. The next release of cryptography will remove support for Pyth on 3.6. +--------------------------------------+------------------+------------------+---------
@@ -108,7 +107,12 @@ cloudbackuptool options:
 
 ```
 | Storage Id                           | Storage Name     | Storage Type     |
-Protocol | +======================================+==================+==================+========= =+
+Protocol | +======================================+==================+==================+=========
+```
+
+`=+`
+
+```
 | aa1da887-7d4c-4e00-a7e8-1a85cc9c8489 | Built in storage | BUILT_IN_STORAGE | S3
 ```
 
@@ -157,7 +161,6 @@ Exception: The database is connected normally. Please specify - s storage when r
 ```
 
 5. 执行以下命令，选择要查看的产品 -p {product}，对应上一步的product Type。
-灾备管理中心
 
 ```
 ./cloudbackuptool -s aa1da887-7d4c-4e00-a7e8-1a85cc9c8489 -p {product} PyInstaller/loader/pyimod03_importers.py:495: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is depr ecated in cryptography. The next release of cryptography will remove support for Pyth on 3.6. +------------------------------------------------+
@@ -186,7 +189,6 @@ pangu_master/AnalyticdbOnPanguHybrid-A-20251125- 0160/251212115215/pangu_master_
 ```
 
 7. 执行以下命令，选择要下载的备份集进行下载 -t {time}，上一步备份集对应的创建时间Create Time。
-灾备管理中心
 
 ```
 ./cloudbackuptool -s aa1da887-7d4c-4e00-a7e8-1a85cc9c8489 -p PANGU_MASTER -i Analytic dbOnPanguHybrid-A-20251125-0160 -t {time}

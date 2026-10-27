@@ -5,7 +5,7 @@ doc_version: "20241025"
 pdf_pages: 22
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Elastic IP Address User Guide 20241025.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91IP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Elastic%20IP%20Address%20User%20Guide%2020241025.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Elastic IP Address User Guide 20241025
@@ -41,7 +41,14 @@ sole
 
 ## 1 Log on to the EIP console
 
-This topic describes how to log on to the Apsara Uni-manager Management Console to manage your elastic IP addresses (EIPs). The Google Chrome browser is used as an example. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+This topic describes how to log on to the Apsara Uni-manager Management Console to manage your elastic IP addresses (EIPs). The Google Chrome browser is used as an example.
+
+**Prerequisites**
+
+The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press
 the Enter key.
 2. Enter your username and password.
@@ -76,6 +83,8 @@ This topic describes how to create an elastic IP address (EIP) and associate the
 
 This topic describes how to apply for an elastic IP address (EIP). An EIP is a public IP address that you can create and use as an independent resource.
 
+**Procedure**
+
 ## 1 Log on to the EIP console.
 
 2. On the **Elastic IP Addresses** page, click **Create EIP**.
@@ -108,8 +117,15 @@ This topic describes how to apply for an elastic IP address (EIP). An EIP is a p
 
 **instance**
 
-This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet. An ECS instance is created. For more information, see the **Create an instance by using the**
+This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet.
+
+**Prerequisites**
+
+An ECS instance is created. For more information, see the **Create an instance by using the**
 **provided wizard** topic in the **Quick Start** chapter of **ECS User Guide**.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to manage, and click
 **Binding resource** in the **Operation** column.
@@ -129,6 +145,9 @@ parameters and click **OK**.
 **ECS instance**
 
 This topic describes how to disassociate an elastic IP address (EIP) from an Elastic Compute Service (ECS) instance. After the EIP is disassociated from the ECS instance, the ECS instance can no longer access the Internet by using the EIP.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to disassociate and click
 **Unbind** in the **Actions** column.
@@ -136,7 +155,14 @@ This topic describes how to disassociate an elastic IP address (EIP) from an Ela
 
 ### 2.5 Release an EIP
 
-This topic describes how to release an elastic IP address (EIP) that you no longer need. The EIP is not associated with a cloud resource. For more information, see Disassociate an EIP from a cloud resource.
+This topic describes how to release an elastic IP address (EIP) that you no longer need.
+
+**Prerequisites**
+
+The EIP is not associated with a cloud resource. For more information, see Disassociate an EIP from a cloud resource.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to release and click **Release**
 in the **Actions** column.
@@ -168,6 +194,9 @@ EIPs have the following benefits: Purchase and use as independent resources You 
 ### 4.1 Apply for an EIP
 
 This topic describes how to apply for an elastic IP address (EIP). An EIP is a public IP address that you can create and use as an independent resource.
+
+**Procedure**
+
 2. On the **Elastic IP Addresses** page, click **Create EIP**.
 3. On the **Create EIP** page, set the following parameters and click **Submit**.
 
@@ -198,7 +227,11 @@ This topic describes how to apply for an elastic IP address (EIP). An EIP is a p
 
 #### 4.2.1 Associate an EIP with an ECS instance
 
-This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet. An ECS instance is created. For more information, see the **Create an instance by using the**
+This topic describes how to associate an elastic IP address (EIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). After an ECS instance is associated with an EIP, the ECS instance can communicate with the Internet.
+
+**Prerequisites**
+
+An ECS instance is created. For more information, see the **Create an instance by using the**
 **provided wizard** topic in the **Quick Start** chapter of **ECS User Guide**.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to manage, and click
@@ -214,7 +247,14 @@ parameters and click **OK**.
 
 #### 4.2.2 Associate an EIP with an SLB instance
 
-This topic describes how to associate an elastic IP address (EIP) with a Server Load Balancer (SLB) instance. After you associate an EIP with an SLB instance, the SLB instance can forward requests from the Internet. An SLB instance is created. For more information, see the **Create an SLB instance** topic in the **Quick Start** chapter of **SLB User Guide**.
+This topic describes how to associate an elastic IP address (EIP) with a Server Load Balancer (SLB) instance. After you associate an EIP with an SLB instance, the SLB instance can forward requests from the Internet.
+
+**Prerequisites**
+
+An SLB instance is created. For more information, see the **Create an SLB instance** topic in the **Quick Start** chapter of **SLB User Guide**.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to manage and click **Bind**
 **Resource** in the **Actions** column.
@@ -228,7 +268,14 @@ This topic describes how to associate an elastic IP address (EIP) with a Server 
 
 #### 4.2.3 Associate an EIP with an HAVIP
 
-This topic describes how to associate an elastic IP address (EIP) with a high-availability virtual IP address (HAVIP) so that the HAVIP can communicate with the Internet. An HAVIP is created. For more information, see the **Create an HAVIP** topic in the **HAVIP** section of the **VPC User Guide**.
+This topic describes how to associate an elastic IP address (EIP) with a high-availability virtual IP address (HAVIP) so that the HAVIP can communicate with the Internet.
+
+**Prerequisites**
+
+An HAVIP is created. For more information, see the **Create an HAVIP** topic in the **HAVIP** section of the **VPC User Guide**.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to manage, and click
 **Binding resource** in the **Operation** column.
@@ -242,7 +289,11 @@ This topic describes how to associate an elastic IP address (EIP) with a high-av
 
 #### 4.2.4 Associate an EIP with a NAT gateway
 
-This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT or SNAT entries. A NAT gateway is created. For more information, see the **Create a NAT gateway** topic in the
+This topic describes how to associate an elastic IP address (EIP) with a NAT gateway. After you associate an EIP with a NAT gateway, you can specify the EIP in DNAT or SNAT entries.
+
+**Prerequisites**
+
+A NAT gateway is created. For more information, see the **Create a NAT gateway** topic in the
 **Quick Start** chapter of **NAT Gateway User Guide**.
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to manage and click **Bind**
@@ -283,6 +334,9 @@ This topic describes how to associate an elastic IP address (EIP) with a seconda
 The secondary ENI is not associated with an Elastic Compute Service (ECS) instance. If the secondary ENI is associated with an ECS instance, disassociate the secondary ENI from the ECS instance, associate the EIP with the secondary ENI in NAT mode, and then associate the secondary ENI with the ECS instance. For more information, see the **Disassociate a**
 **secondary ENI from an ECS instance** topic in the **Elastic Network Interface** chapter
 of **ECS User Guide**.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, find the EIP that you want to manage, and click
 **Binding resource** in the **Actions** column.
@@ -311,6 +365,9 @@ This topic describes how to upgrade the maximum bandwidth of an elastic IP addre
 **cloud resource**
 
 This topic describes how to disassociate an elastic IP address (EIP) from a cloud resource. After the EIP is disassociated from the cloud resource, the cloud resource can no longer access the Internet by using the EIP.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, disassociate an EIP from an instance or disassociate
 multiple EIPs from instances at a time. To disassociate an EIP from an instance, click **Disassociate** in the **Actions** column.
@@ -323,7 +380,14 @@ To disassociate multiple EIPs at a time, select the EIPs and click **Disassociat
 
 ### 4.5 Release an EIP
 
-This topic describes how to release an elastic IP address (EIP) that you no longer need. The EIP is not associated with a cloud resource. For more information, see Disassociate an EIP from a cloud resource.
+This topic describes how to release an elastic IP address (EIP) that you no longer need.
+
+**Prerequisites**
+
+The EIP is not associated with a cloud resource. For more information, see Disassociate an EIP from a cloud resource.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, release an EIP or multiple EIPs at a time based on the
 following information. To release an EIP, find the EIP and click **Release** in the **Actions** column. To release multiple EIPs at a time, select the EIPs and click **Release** at the bottom.
@@ -405,6 +469,9 @@ tags, and click **OK**.
 ### 5.2 View operation logs
 
 This topic describes how to view the operation logs of an elastic IP address (EIP) to track and analyze operations.
+
+**Procedure**
+
 2. In the top navigation bar, select the region where the EIP is deployed.
 3. On the **Elastic IP Addresses** page, click the ID of the EIP.
 4. On the Instance Details page, click the **Operation Logs** tab.

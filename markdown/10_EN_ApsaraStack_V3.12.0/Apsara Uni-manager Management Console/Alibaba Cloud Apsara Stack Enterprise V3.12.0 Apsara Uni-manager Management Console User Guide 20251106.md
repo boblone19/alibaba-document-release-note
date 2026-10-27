@@ -5,7 +5,7 @@ doc_version: "20251106"
 pdf_pages: 88
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Apsara Uni-manager Management Console User Guide 20251106.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.12.0/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Apsara%20Uni-manager%20Management%20Console%20User%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Apsara Uni-manager Management Console User Guide 20251106
@@ -199,6 +199,9 @@ This topic describes how to log on to the Apsara Stack Cloud Management (ASCM) c
 **Prerequisites**
 
 The domain name of the ASCM console is obtained from the deployment personnel before you log on to the ASCM console. A browser is available. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar, enter the URL used to log on to the ASCM console. Press the Enter key.
 2. Enter your username and password.
 Obtain the username and password used to log on to the console from the operations administrator.
@@ -263,6 +266,8 @@ The ASCM console uses charts to keep you up to date on the current usage of reso
 **Background information**
 
 > **Note:** The resource types displayed may vary by region type. See your dashboard for available resource types.
+
+**Procedure**
 
 1. Log on to the ASCM console.
 By default, the **workbench** page appears when you log on to the ASCM console. To return to the workbench page from other pages, click **Home** in the top navigation bar.
@@ -624,6 +629,9 @@ Table 17. Metrics for API Gateway
 #### 6.2.3 View monitoring charts
 
 You can view monitoring charts to obtain up-to-date information about each instance.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -638,6 +646,9 @@ On the Monitoring Charts page that appears, you can select a date and time to vi
 #### 6.3.1 View alarm overview
 
 On the **Overview** page in CloudMonitor, you can view the alarm status statistics and alarm logs.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Overview**.
@@ -651,6 +662,9 @@ You can choose whether to enable alert notification by SMS, email, or DingTalk.
 **Prerequisites**
 
 You must specify valid contact information when you create a user. If your contact information has changed, you must modify personal information. For more information, see Modify personal information.
+
+**Procedure**
+
 1. Log on to the ASCM console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click **User Information**.
@@ -694,6 +708,9 @@ After you create alert rules, you can view your alert rules on the Alarm Rules p
 **Background information**
 
 The system provides alert rules for ECS, ApsaraDB for RDS, SLB, OSS, KVStore for Redis, VPN Gateway, AnalyticDB for PostgreSQL, ApsaraDB for MongoDB, EIP, and API Gateway.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -717,6 +734,8 @@ For ECS instances, you must install a monitoring plug-in to collect metric data 
 **Install**.
 
 > **Note:** The monitoring chart displays monitoring data 5 to 10 minutes after the monitoring plug- in is installed.
+
+**Procedure**
 
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
@@ -760,6 +779,9 @@ Table 2. Parameters for adding an alarm rule
 ##### 6.3.4.3 Disable an alarm rule
 
 You can disable one or more alarm rules as needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -773,6 +795,9 @@ to the alarm rule to be disabled.
 ##### 6.3.4.4 Enable an alarm rule
 
 After an alarm rule is disabled, it can be re-enabled as needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 3. In the left-side navigation pane of the CloudMonitor page, click **Cloud Service**
@@ -786,6 +811,9 @@ After an alarm rule is disabled, it can be re-enabled as needed.
 ##### 6.3.4.5 Delete an alarm rule
 
 You can delete alarm rules that are no longer needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, choose **Products > Monitoring and O&M > CloudMonitor**.
 **·**Monitoring
@@ -805,6 +833,9 @@ You can delete alarm rules that are no longer needed.
 #### 7.1.1 Create an organization
 
 You can create organizations to store resource sets and their resources.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -816,6 +847,9 @@ organization, and click on the right.
 #### 7.1.2 Query an organization
 
 You can query an organization by name to view its resource sets, users, and user groups.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -825,6 +859,9 @@ to query information about the corresponding organization.
 #### 7.1.3 View organization information
 
 You can view information about an organization on the Organizations page.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -836,6 +873,9 @@ In the **Resource Sets** section, you can view information such as the name, cre
 #### 7.1.4 Modify the name of an organization
 
 Users with operation permissions on an organization can modify the name of the organization.
+
+**Procedure**
+
 1. Log on to the ASCM console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -856,6 +896,9 @@ Make sure that each organization under the target organization has a unique name
 **Background information**
 
 Users can change the ownership of an organization cross parent organizations. This way, the ownership of subordinate organizations, users, and resources are also changed in a cascading manner.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Change Ownership**.
@@ -874,6 +917,9 @@ An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The Acces
 **Prerequisites**
 
 Only operations administrators and level-1 organization administrators can obtain the AccessKey pair of an organization.
+
+**Procedure**
+
 1. Log on to the ASCM console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -890,6 +936,8 @@ Administrators can delete organizations that are no longer needed.
 
 > **Note:** Before deleting an organization, make sure that the organization does not contain any users, resource sets, or subordinate organizations. Otherwise, the organization cannot be deleted.
 
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -903,6 +951,9 @@ click on the right.
 #### 7.2.1 Create a resource set
 
 You must create a resource set before you apply for resources.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Resource Sets**.
@@ -914,6 +965,9 @@ You must create a resource set before you apply for resources.
 #### 7.2.2 View the details of a resource set
 
 When you want to use a cloud resource in your organization, you can view the details of the resource set that contains the resource, including all resource instances and users of the resource set.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Resource Sets**.
@@ -928,6 +982,9 @@ service. The list is automatically filtered and displayed based on the organizat
 #### 7.2.3 Modify the name of a resource set
 
 An administrator can modify the name of a resource set to keep it up-to-date.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Resource Sets**.
@@ -970,6 +1027,9 @@ A resource set is created. For more information, see Create a resource set. A us
 **Background information**
 
 User groups in a resource set have the permissions to use resources in the resource set. Deleting resources from a resource set does not affect user groups of the resource set. Similarly, deleting user groups from a resource set does not affect the resources in the resource set. You can delete a user group that is no longer in use in a resource set. After the user group is deleted, it will no longer be able to access the resource set.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Resource Sets**.
@@ -988,6 +1048,8 @@ Ensure that the resource set to be deleted does not contain resources, users, or
 
 > **Important:** A resource set cannot be deleted if it contains resources, users, or user groups.
 
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Resource Sets**.
@@ -1004,6 +1066,9 @@ You can add custom roles in the ASCM console to more efficiently grant permissio
 **Background information**
 
 A role is a set of access permissions. Each role has a range of permissions. A user can have multiple roles, which means that the user is granted all of the permissions defined for each role. A role can be used to grant the same set of permissions to a group of users. The total number of custom and default roles cannot exceed 20.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -1033,6 +1098,9 @@ down list. The associated users are granted the permissions of the role.
 #### 7.3.2 View the details of a role
 
 If you are not certain about the specific permissions of a role, go to the **Roles** page to view the role permissions.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -1064,6 +1132,9 @@ You can copy a preset role or a custom role to create a role with the same permi
 **Background information**
 
 Operations on the **Roles** page are the same as those for creating a custom role. You can add, modify, and remove the role permissions in the copied role. By default, if you do not modify the role permissions, the sharing scope, management permissions, application permissions, menu permissions, and associated users of the copied role are all the same as those of the source role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -1085,6 +1156,9 @@ down list. The associated users are granted the permissions of the role.
 #### 7.3.5 Disable a role
 
 When you disable a role, the permissions of the role are disabled.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -1094,6 +1168,9 @@ When you disable a role, the permissions of the role are disabled.
 #### 7.3.6 Enable a role
 
 When you enable a disabled role, the permissions of the role are restored.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -1107,6 +1184,9 @@ You can delete a custom role that is no longer needed.
 **Prerequisites**
 
 Default or preset roles cannot be deleted. To delete a role, you must unbind all user groups from the role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -1122,6 +1202,9 @@ Default or preset roles cannot be deleted. To delete a role, you must unbind all
 ##### 7.4.1.1 Create a user
 
 You can create a user and assign the user different roles as an administrator to meet different requirements for system access control.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. Use one of the following methods to open the Create User window:
@@ -1155,6 +1238,9 @@ In the left-side navigation pane of the **Enterprise** page, click **Users**. On
 ##### 7.4.1.2 Query a user
 
 You can view user information such as name, organization, mobile number, email address, role, logon time, and initial password.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -1166,6 +1252,9 @@ from the shortcut menu to view basic information about the user.
 ##### 7.4.1.3 Modify user information
 
 You can modify user information such as display name, mobile number, and email address to keep it up-to-date.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 **·**Enterprise
@@ -1210,6 +1299,9 @@ select the role to be added or removed from the **Assigned Roles** drop-down lis
 ##### 7.4.1.5 Modify the information of a user group
 
 On the Users page, you can view the user group information and modify the ownership of users in user groups.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 **·**Enterprise
@@ -1252,6 +1344,9 @@ After a user is created, the system automatically generates an initial password 
 **Background information**
 
 Organization administrators can view the initial passwords of all users in the organizations they manage.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -1270,6 +1365,9 @@ If users forget their logon passwords, the system administrator can reset the lo
 **Prerequisites**
 
 The logon password of a user can be reset by only the user and those who have the permissions to create resource sets for the user.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -1287,6 +1385,9 @@ You can disable a user to prevent the user from logging on to the Apsara Stack C
 **Background information**
 
 By default, users are enabled when they are created.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -1301,6 +1402,9 @@ Select a user whose Status is **Disabled**, click **More** in the **Actions** co
 ##### 7.4.1.10 Delete a user
 
 You can delete a specific user as an administrator.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. On the Enterprise page, use one of the following methods to delete a user:
@@ -1313,6 +1417,9 @@ In the left-side navigation pane of the **Enterprise** page, click **Users**. On
 ##### 7.4.2.1 Query historical users
 
 You can check whether a user has been deleted, or quickly find and restore the user.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -1327,6 +1434,9 @@ An administrator can restore a deleted user account from the **Historical Users*
 **Background information**
 
 The basic information such as logon password of a restored user will be the same as it was before the user was deleted, except for the organization and role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -1345,6 +1455,9 @@ To improve the security, you can create a logon policy as an administrator to co
 **Background information**
 
 Logon policies are used to control the time period and IP addresses for users to log on. After a user is bound to a logon policy, user logons will be restricted based on the logon time and IP addresses specified in the policy. A default policy without restrictions on the logon time and IP addresses is automatically generated in the ASCM console. The default policy cannot be deleted.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Logon Policies**.
@@ -1370,6 +1483,9 @@ When providing services, the Apsara Stack Cloud Management (ASCM) console automa
 **Background information**
 
 When providing services, the Apsara Stack Cloud Management (ASCM) console automatically generates a default policy without restrictions on the logon time and IP addresses.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Logon Policies**.
@@ -1391,6 +1507,9 @@ shortcut menu.
 #### 7.5.4 Disable a logon policy
 
 You can disable logon policies that are no longer needed.
+
+**Procedure**
+
 1. Log on to the ASCM console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Logon Policies**.
@@ -1400,6 +1519,9 @@ shortcut menu.
 #### 7.5.5 Enable a logon policy
 
 You can re-enable disabled logon policies.
+
+**Procedure**
+
 1. Log on to the ASCM console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Logon Policies**.
@@ -1413,6 +1535,8 @@ You can delete logon policies that are no longer needed.
 **Background information**
 
 > **Note:** The default policy cannot be deleted.
+
+**Procedure**
 
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
@@ -1435,6 +1559,9 @@ Before creating a user group, you must create an organization. For more informat
 **Background information**
 
 Relationship between user groups and users: A user group can contain zero or more users. You can add users to user groups as needed. You can add a user to multiple user groups. Relationship between user groups and organizations: A user group can only belong to a single organization. You can create multiple user groups in an organization. Relationship between user groups and roles: A user group can only be bound to a single role. A role can be associated with multiple user groups. When a role is associated with a user group, the role permissions are automatically granted to users in the user group. Relationship between user groups and resource sets: You can add zero or more user groups to a resource set. A user group can be added to multiple resource sets.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -1446,6 +1573,9 @@ Relationship between user groups and users: A user group can contain zero or mor
 #### 7.6.2 Add users to a user group
 
 You can add users to a user group.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -1457,6 +1587,9 @@ them to the right list.
 #### 7.6.3 Delete users from a user group
 
 You can delete users from a user group.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -1474,6 +1607,8 @@ You can add a role to a user group and assign the role to all users in the group
 
 > **Note:** You can add only one role to a user group.
 
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -1484,6 +1619,9 @@ You can add a role to a user group and assign the role to all users in the group
 #### 7.6.5 Delete a role
 
 You can delete existing roles.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -1507,6 +1645,9 @@ You can modify the names of user groups.
 #### 7.6.7 Delete a user group
 
 You can delete user groups that are no longer needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -1518,6 +1659,9 @@ You can delete user groups that are no longer needed.
 #### 7.7.1 Update associations
 
 The Apsara Stack Cloud Management (ASCM) console can be deployed in multiple regions. You can update the associations between organizations and regions.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Resource Pool**
@@ -1550,6 +1694,9 @@ resource set at a time. Single change: Click **Change Ownership** in the **Actio
 ### 8.1 Password policies
 
 You can configure password policies for user logons.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Password Policies**.
@@ -1561,6 +1708,9 @@ To restore to the default password policy, click **Reset**.
 #### 8.2.1 Create a menu
 
 You can create a menu and add its URL to the ASCM console for quick access.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Menu Settings**.
@@ -1592,6 +1742,9 @@ You can modify an existing menu, including the menu name, URL, icon, and menu or
 **Prerequisites**
 
 Default menus cannot be modified.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Menu Settings**.
@@ -1615,6 +1768,9 @@ Default menus cannot be deleted.
 #### 8.2.4 Display or hide menus
 
 You can display or hide menus as follows:
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Menu Settings**.
@@ -1774,6 +1930,9 @@ This topic describes the specification parameters of each resource type.
 #### 8.3.2 Create specifications
 
 You can customize specifications for each resource type.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -1787,6 +1946,9 @@ For more information about specification parameters, see Specification parameter
 #### 8.3.3 View specifications
 
 You can view the specifications of each resource type.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -1799,6 +1961,9 @@ quantity.
 #### 8.3.4 Disable specifications
 
 By default, the status of newly created specifications is Enabled.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -1809,6 +1974,9 @@ By default, the status of newly created specifications is Enabled.
 #### 8.3.5 Export specifications
 
 You can export specifications that you want to view and share.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Specifications**.
@@ -1839,6 +2007,9 @@ You can view the IDs and creation time of all internal messages, including unrea
 **Background information**
 
 When an instance is created in a resource, all users that have read and operation permissions on this resource will receive the message that the instance is created.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, move the pointer over the
 icon and click **More**.
@@ -1848,6 +2019,9 @@ scope. Choose **Internal Messages > All Messages** to view all messages, includi
 #### 8.4.2 Mark messages as read
 
 You can mark unread messages as read messages to facilitate message management.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, move the pointer over the
 icon and click **More**.
@@ -1865,6 +2039,9 @@ You can modify the maximum usage of each resource.
 If the physical inventory is unlimited, the logical inventory cannot be less than the used
 **·**Configurations
 inventory. If the physical inventory is limited, the logical inventory cannot be less than the used inventory or greater than the physical inventory.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **Resource Pool**
@@ -2013,6 +2190,9 @@ Administrators can adjust quotas for cloud resources based on organizational req
 **Background information**
 
 This topic describes how to modify quotas for ECS. You can modify quotas for other cloud resources in a similar manner.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane of the **Operations** page, click **Quotas**.
@@ -2031,6 +2211,9 @@ Administrators can reset quotas as needed.
 **Prerequisites**
 
 Before deleting a quota for an organization, make sure that no subordinate organizations have any quotas.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane of the **Operations** page, click **Quotas**.
@@ -2052,6 +2235,9 @@ The ASCM console displays statistics about the number of resource instances that
 **Background information**
 
 The cloud resources that can be metered include ECS, VPC, SLB, OSS, ApsaraDB RDS for MySQL, EIP, Apsara File Storage NAS, Tablestore, PolarDB-X, KVStore for Redis, AnalyticDB for MySQL, AnalyticDB for PostgreSQL, ApsaraDB for MongoDB, Message Queue, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server. This topic describes how to set quotas for ECS. You can set quotas for other cloud resources in a similar manner.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Operations**.
 3. In the left-side navigation pane of the **Operations** page, click **Usage Statistics**.
@@ -2070,6 +2256,9 @@ The exported file is named <Resource type name>.xls. Find the downloaded file fr
 ### 10.1 View operation logs
 
 You can view operation logs to obtain up-to-date information about various resources and functional modules in the Apsara Stack Cloud Management (ASCM) console. You can also export operation logs to your personal computer.
+
+**Procedure**
+
 1. Log on to the ASCM console as a security administrator.
 2. In the top navigation bar, click **Security**.
 3. You can filter logs by username, object, level, source IP address, details, start time, and end
@@ -2220,6 +2409,9 @@ Policies are stored in RAM as JSON documents. When you create or update a policy
 **role**
 
 You can view basic information about a RAM role, including its user groups and existing permission policies.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2230,6 +2422,9 @@ relevant information.
 #### 11.3.2 Create a RAM role
 
 To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role. This role contains the operations that the cloud service can perform on resources.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2257,6 +2452,9 @@ For more information about how to enter the policy content, see Permission polic
 **permission policy**
 
 You can modify the content of a RAM permission policy as needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2272,6 +2470,9 @@ and click **OK**. For more information about how to modify the policy content, s
 **policy**
 
 You can modify the name of a RAM permission policy as needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2289,6 +2490,9 @@ You can bind RAM roles to user groups as needed.
 **Prerequisites**
 
 You must create a user group before RAM roles can be added. If no user groups have been created, see Add a role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2302,6 +2506,9 @@ choose **Modify** from the shortcut menu to go to the **Roles** page.
 #### 11.3.7 Grant permissions to a RAM role
 
 When you grant permissions to a RAM role, all users in the user groups that are assigned this role will share the granted permissions.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2315,6 +2522,9 @@ If no RAM permission policies are available, see Add a permission policy.
 #### 11.3.8 Remove permissions from a RAM role
 
 You can remove permissions that are no longer needed from RAM roles.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2332,6 +2542,8 @@ Administrators can modify the names of RAM roles.
 
 > **Note:** The name of a preset role cannot be modified.
 
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2348,6 +2560,9 @@ This topic describes how to delete a RAM user.
 **Prerequisites**
 
 Before you delete a RAM role, make sure that no policies are attached to the RAM role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -2360,6 +2575,9 @@ choose **Delete** from the shortcut menu.
 #### 11.4.1 Create a RAM role
 
 You can create authorization policies and grant them to organizations as needed.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **RAM Roles**.
@@ -2370,6 +2588,9 @@ You can create authorization policies and grant them to organizations as needed.
 #### 11.4.2 View the details of a RAM role
 
 You can view the details of a RAM role, including its role name, creation time, description, and Alibaba Cloud Resource Name (ARN).
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **RAM Roles**.
@@ -2385,6 +2606,9 @@ You can view the details of a RAM authorization policy, including its policy nam
 **Prerequisites**
 
 A RAM authorization policy is created. For more information, see Create a RAM role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the top navigation bar, click **Configurations**.
 3. In the left-side navigation pane of the **Configurations** page, click **RAM Roles**.
@@ -2403,6 +2627,9 @@ nt
 ### 12.1 Modify personal information
 
 You can modify your personal information to keep it up-to-date.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the upper-right corner of the homepage, move the pointer over the user profile picture
 and choose **User Information** from the shortcut menu.
@@ -2414,6 +2641,9 @@ next to the item you want to modify.
 ### 12.2 Change your logon password
 
 To improve security, you must change your logon password in a timely manner.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the upper-right corner of the homepage, move the pointer over the user profile picture
 and choose **User Information** from the shortcut menu.
@@ -2426,6 +2656,9 @@ nt
 ### 12.3 Switch the current role
 
 You can switch the scope of your current role.
+
+**Procedure**
+
 1. Log on to the ASCM console as an administrator.
 2. In the upper-right corner of the homepage, move the pointer over the user profile picture
 and choose **User Information** from the shortcut menu.

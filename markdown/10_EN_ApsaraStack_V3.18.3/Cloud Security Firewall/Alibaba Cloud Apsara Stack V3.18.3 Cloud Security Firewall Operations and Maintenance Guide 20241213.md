@@ -5,7 +5,7 @@ doc_version: "20241213"
 pdf_pages: 8
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Firewall Operations and Maintenance Guide 20241213.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Security%20Firewall%20Operations%20and%20Maintenance%20Guide%2020241213.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Firewall Operations and Maintenance Guide 20241213

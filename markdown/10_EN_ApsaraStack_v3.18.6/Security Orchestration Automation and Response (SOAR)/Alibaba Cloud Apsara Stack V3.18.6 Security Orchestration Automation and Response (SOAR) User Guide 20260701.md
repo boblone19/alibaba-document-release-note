@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 49
 source_pdf: "693c8e03adad4fca_Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) User Guide "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Security Orchestration Automation and Response (SOAR) User Guide 20260701
@@ -1062,7 +1062,11 @@ After you import the update packages, you can view the update packages on the Fe
 
 **Online Automatic Import**
 
-If the Apsara Stack environment can connect to the Internet, you can select the automatic import method to import update packages and update the feature libraries or versions of Apsara Stack Security services. If you select online automatic import, take note of the following items:
+If the Apsara Stack environment can connect to the Internet, you can select the automatic import method to import update packages and update the feature libraries or versions of Apsara Stack Security services.
+
+**Note**
+
+If you select online automatic import, take note of the following items:
 1. Apsara Stack Security products and services must be able to access the Internet. 2.
 You must apply for an Alibaba Cloud account or use an existing account. The account is used as the identity to automatically obtain the update package online. We recommend that you do not use your personal account. 3. After you complete the configuration, the system automatically obtains and imports the latest update package of Apsara Stack Security and related rule libraries. After the update package is imported, you can view the update package on the Feature Library Upgrade and Version Upgrade tabs and perform the update. a. Set the Upgrade Package Import parameter to **Online Automatic Import** and configure the parameters. The following table describes the parameters.
 

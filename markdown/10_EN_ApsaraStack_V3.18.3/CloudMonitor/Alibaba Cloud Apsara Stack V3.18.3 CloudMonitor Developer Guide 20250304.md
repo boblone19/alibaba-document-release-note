@@ -5,7 +5,7 @@ doc_version: "20250304"
 pdf_pages: 431
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 CloudMonitor Developer Guide 20250304.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20CloudMonitor%20Developer%20Guide%2020250304.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 CloudMonitor Developer Guide 20250304

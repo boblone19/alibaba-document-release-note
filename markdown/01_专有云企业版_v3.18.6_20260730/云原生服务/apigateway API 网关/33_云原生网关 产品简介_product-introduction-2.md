@@ -5,18 +5,26 @@ doc_version: "20260729"
 pdf_pages: 11
 source_pdf: "33_云原生网关 产品简介_product-introduction-2.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/apigateway/zh/product-introduction-2.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 网关 云原生网关 产品简介
 
+## 目录
+
+- 1 什么是云原生网关
+- 2 产品详情
+- 3 产品价值
+- 4 功能特性
+- 5 应用场景
+
 关
 
-## 什么是云原生网关
+## 1 什么是云原生网关
 
 云原生网关是一款集成流量网关、微服务网关和安全网关的统一网关产品，基于开源 Istio 与 Envoy 构建，旨在为 Kubernetes 环境提供统一、高性能、易运维的入口网关解决方案。 作为云原生网关，具备以下核心特性： 三合一架构：实现了流量网关 + 微服务网关 + 安全网关三合一的高集成能力，简化架构、降低链路延迟与运维复杂度。 深度生态集成：原生支持 Dubbo、Nacos、Sentinel 等主流微服务组件，适用于复杂的云原生应用体系。 动态配置与可观测性：通过 Kubernetes CRD 实现声明式配置，支持热更新、实时监控与日志追踪，满足生产级稳定性要求。 高性能与可扩展：以 Envoy 为数据面，具备高并发、低延迟的处理能力，并可通过插件机制灵活扩展功能。
 
-## 产品详情
+## 2 产品详情
 
 云原生网关面向 K8s Ingress 和 Gateway API 提供流量代理能力，提供服务暴露及流量管控、应用流量入口与集成等能力，具有性能更强劲、稳定更可靠、多重安全防御、扩展性强等特性，是高性能、安全的 API 网关。
 
@@ -53,7 +61,7 @@ converter: line-classifier (PyMuPDF)
 | 来源管理 | 支持从Nacos发现并导入后端服务。 |
 | 插件与策略管理 | 支持多种插件和策略的配置。 |
 
-## 产品价值
+## 3 产品价值
 
 云原生网关深度融合了容器服务、微服务等云产品，实现了云产品资源的快速对外服务，为用户打造安全、 高效的云原生流量网关，助力企业无缝过渡至数字化时代。
 
@@ -73,7 +81,7 @@ converter: line-classifier (PyMuPDF)
 
 分布式部署，承载大规模访问，低延迟处理。 孵化于阿里巴巴内部产品，并且历经 2020 双 11 考验，每秒承载数十万笔请求，目前已经在支付宝、钉钉、淘宝、天猫、优酷、飞猪、口碑等阿里巴巴各业务系统中使用。
 
-## 功能特性
+## 4 功能特性
 
 云原生网关提供实例全生命周期管理、智能路由，支持插件市场与微服务集成，内置JWT/APIKEY鉴权等安全插件，并通过IP白名单、请求追踪和HTTPS加密保障服务高可用与安全性。本文主要介绍云原生网关的功能特性。
 
@@ -125,7 +133,7 @@ converter: line-classifier (PyMuPDF)
 | 链路追踪 | 支持启用分布式追踪功能，分析请求在整个系统中的流转过程。 |
 | API级别监控 | 支持查看特定REST API及其接口的性能指标和访问统计数据。 |
 
-## 应用场景
+## 5 应用场景
 
 本文介绍云原生网关的核心应用场景。
 

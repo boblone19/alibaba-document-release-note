@@ -5,7 +5,7 @@ doc_version: "20260828"
 pdf_pages: 151
 source_pdf: "c24fd30c328bcb80_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Developer Guide 20260828
@@ -291,7 +291,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 > <yourRoleArn>: Replace it with your RAM role.
 > <sts.aliyuns.com>: Replace it with the STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     Replace <AccessKeyId> and <AccessKeySecret> with your AccessKey ID and AccessKey secret.
@@ -310,6 +310,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpoint is sts-vpc.${glo
@@ -333,9 +338,15 @@ bal:region}.${global:internet-domain}.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the AccessKey ID, AccessKey secret, and security token assigned by STS to call an API operation. In this
 example, the Express Connect API operation `DescribePhysicalConnections` is called.
 
@@ -385,6 +396,8 @@ ccessSecret>");
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 2.5 Obtain Express Connect SDK
 
@@ -517,6 +530,8 @@ Default value: HTTP.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 3.2 Use SDK
 
 #### 3.2.1 Install SDK for Java
@@ -612,7 +627,7 @@ DescribePhysicalConnectionsResponse response; try {
     e.printStackTrace();
 ```
 
-In normal cases, all returned fields are deserialized into the response. You can directly use `response.getXXX()` to obtain the response fields.
+`}` In normal cases, all returned fields are deserialized into the response. You can directly use `response.getXXX()` to obtain the response fields.
 
 ```
 instanceStatus := response.getStatus()
@@ -653,7 +668,7 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-or SDK for Java
+`}` or SDK for Java
 
 #### 3.2.6 Use CommonRequest to call APIs
 
@@ -748,7 +763,7 @@ instance ID. This parameter is required when you want to delete, modify, or quer
             e.printStackTrace();
 ```
 
-or SDK for Python
+`}` `}` or SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -1073,6 +1088,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create an API request and set the request parameters.
     request := vpc.CreatDescribePhysicalConnectionsRequest()
     // Specify the endpoint of the service.
@@ -1084,9 +1104,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -1170,6 +1196,8 @@ response,err := vpcClient.DescribePhysicalConnections(request) if err != nil {
    err.Error()
 ```
 
+`}`
+
 **ClientError**
 
 If an error occurs in the SDK when you send a request and the error cannot be automatically handled, the SDK returns a `ClientError` . or SDK for Go The following code shows how to determine and obtain the information about the error in a `ClientError` :
@@ -1197,6 +1225,8 @@ response, err := vpcClient.DescribePhysicalConnections(request) if clientError, 
     clientError.OriginError()
 ```
 
+`}`
+
 **ServerError**
 
 The SDK wraps the error returned by the server into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response. The following code shows how to determine and obtain the error message in a ServerError and Response:
@@ -1223,6 +1253,8 @@ response, err := vpcClient.DescribePhysicalConnections(request) if serverError, 
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+`}`
 
 #### 5.2.5 Use CommonRequest to call APIs
 
@@ -1260,6 +1292,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace it with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<vpc.aliyuncs.com>" // Replace it with the endpoint of the service.
@@ -1296,8 +1333,15 @@ parameter is required if you want to modify, delete, or query the detailed infor
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 6 API Reference
 
@@ -1367,6 +1411,9 @@ http://Endpoint/?Action=xx&Parameters
 
 Where:
 **Endpoint**: The endpoint of the Express Connect API is `vpc.example.com` .
+
+**Note**
+
 `example.com` is a custom domain name of the project. For more information, see Obtain the endpoint of Express Connect.
 **Action**: The operation that you want to perform. For example, you can call CreateRouterInterface to create a
 router interface.
@@ -1583,6 +1630,8 @@ JSON format `{`
       /*Return Result Data*/
 ```
 
+`}`
+
 ### 6.5 Physical connections
 
 #### 6.5.1 CreatePhysicalConnection
@@ -1644,6 +1693,8 @@ Sample success responses `XML` format
         "RequestId": "8A6A5EC5-6F6C-4906-9689-56ACE58A13E0",
         "PhysicalConnectionId": "pc-bp12mw******"
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -1756,6 +1807,8 @@ Sample success responses `XML` format
         "PageNumber": 1
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -1808,6 +1861,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -1965,6 +2020,8 @@ Guangdong",
     "PageNumber": 10
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2030,6 +2087,8 @@ Sample success responses `XML` format
     "RequestId": "013EE132-A109-4247-91B0-099A8FF49AD7"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2094,6 +2153,8 @@ Sample success responses `XML` format
         "RequestId": "513E0A50-4F2D-4CBE-BF35-40559DF65D79"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2148,6 +2209,8 @@ Sample success responses `XML` format
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2197,6 +2260,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2262,6 +2327,8 @@ Sample success responses `XML` format
     "RequestId": "9B9300FE-11E2-4E3B-949C-BED3B44DD26D"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2325,6 +2392,8 @@ Sample success responses `XML` format
     "RequestId":"A47BD386-7FDE-42C4-8D22-C6223D18AA1C"
 ```
 
+`}`
+
 #### 6.5.11 CreatePhysicalConnectionSetupOrder
 
 Creates an order for initial installation of an Express Connect circuit.
@@ -2378,6 +2447,8 @@ Sample success responses `XML` format
     "OrderId": 202844382740728
 ```
 
+`}`
+
 #### 6.5.12 CompletePhysicalConnectionLOA
 
 Generates a report for an installed Express Connect circuit.
@@ -2422,6 +2493,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "F8983C74-E068-4509-B442-89BD82C8F43B"
 ```
+
+`}`
 
 #### 6.5.13 DescribePhysicalConnectionLOA
 
@@ -2524,7 +2597,7 @@ Sample success responses `XML` format
                 "pmName": "test"
 ```
 
-`],`
+`}` `],`
 
 ```json
         "si": "ctcu",
@@ -2538,6 +2611,8 @@ Sample success responses `XML` format
     "requestId": "318BB676-0A2B-43A0-9AD8-F1D34E93750F",
     "success": true
 ```
+
+`}`
 
 ### 6.6 VBR
 
@@ -2596,6 +2671,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "VbrHaId":"vbrha-sa1sxheuxtd98****",
  "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2659,6 +2736,8 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE"
 ```
 
+`}`
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
@@ -2714,6 +2793,8 @@ HTTP/1.1 200 OK Content-Type:application/json
 ```json
  "RequestId":"5BE01CD7-5A50-472D-AC14-CA181C5C03BE"
 ```
+
+`}`
 
 **Error codes**
 
@@ -2809,6 +2890,8 @@ Sample success responses `XML` format
     "VbrId": "vbr-bp1jcg5cmxjbl9xgc****"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -2884,6 +2967,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "F8BF7D24-F3EB-4E23-9208-B77C6EB78E75"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3126,6 +3211,8 @@ Sample success responses `XML` format
             "CenId": "cen-kojok19****"
 ```
 
+`}` `}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -3262,6 +3349,8 @@ Sample success responses `XML` format
         "PConnVbrBussinessStatus": "Available"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -3312,6 +3401,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3367,6 +3458,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3600,6 +3693,8 @@ Sample success responses `XML` format
     "RequestId": "980960B0-2969-40BF-8542-EBB34FD358AB"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -3666,6 +3761,8 @@ Sample success responses `XML` format
     "RequestId": "C1221A1F-2ACD-4592-8F27-474E02883159",
     "BgpGroupId": "bgpg-2zendnzngq9lkjkhv****"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3793,6 +3890,8 @@ Sample success responses `XML` format
         "BgpGroupId": "bgpg-wz9f62v4fbg2g****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -3850,6 +3949,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "8C3C6D7C-A1CE-4FD8-BC57-DC493A55F76F"
 ```
+
+`}`
 
 **Error codes**
 
@@ -3916,6 +4017,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "97E2E97F-968C-48AF-A310-AC4D068854DB"
 ```
+
+`}`
 
 **Error codes**
 
@@ -4144,6 +4247,8 @@ Sample success responses `XML` format
     "PageNumber": 1
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -4198,6 +4303,8 @@ Sample success responses `XML` format
     "RequestId": "D4B7649A-61BB-4C64-A586-1DFF1EDA6A42"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -4244,6 +4351,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "AEBB1EB6-3C15-4A35-B4CE-03485200C143"
 ```
+
+`}`
 
 **Error codes**
 
@@ -4311,6 +4420,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
+
+`}`
 
 **Error codes**
 
@@ -4404,6 +4515,8 @@ Sample success responses `XML` format
         "RouterId": "vbr-m5eadkqe6budw4sj****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -4455,6 +4568,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "22F4C006-D3BB-4F96-9FF9-4C8335276D70"
 ```
+
+`}`
 
 **Error codes**
 
@@ -4557,6 +4672,8 @@ Sample success responses `XML` format
     "RouterInterfaceId": "ri-2ze7fbuohm****"
 ```
 
+`}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -4582,7 +4699,11 @@ Sample success responses `XML` format
 
 #### 6.8.2 ConnectRouterInterface
 
-Initiates a connection from the initiator router interface to the acceptor. After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments.
+Initiates a connection from the initiator router interface to the acceptor.
+
+**Description**
+
+After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments.
 
 **Request parameters**
 
@@ -4623,6 +4744,8 @@ JSON format `{`
 ```json
    "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
+
+`}`
 
 #### 6.8.3 DeactivateRouterInterface
 
@@ -4667,6 +4790,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "BE7EB53A-99AB-4DA8-AEDE-75FA90D046A6"
 ```
+
+`}`
 
 **Error codes**
 
@@ -4782,6 +4907,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -4975,6 +5102,8 @@ Sample success responses `XML` format
         "RouterInterfaceId": "ri-2zenfgfpyu3v93koa****"
 ```
 
+`}` `}`
+
 **Error codes**
 
 | HttpCode | Error code | Error message | Description |
@@ -5025,6 +5154,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
+
+`}`
 
 **Error codes**
 
@@ -5089,6 +5220,8 @@ Sample success responses `XML` format
 ```json
     "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF"
 ```
+
+`}`
 
 **Error codes**
 
@@ -5215,6 +5348,8 @@ le.
             System.out.println(e.getErrMsg());
 ```
 
+`}` `}` `}`
+
 **Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
@@ -5258,6 +5393,8 @@ step.
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

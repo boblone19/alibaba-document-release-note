@@ -5,7 +5,7 @@ doc_version: "20240607"
 pdf_pages: 75
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.2 ApsaraDB for POLARDB User Guide (PolarDB-X) 20240607.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Polardbx/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.2%20ApsaraDB%20for%20POLARDB%20User%20Guide%20%28PolarDB-X%29%2020240607.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.2 ApsaraDB for POLARDB User Guide (PolarDB-X) 20240607
@@ -698,6 +698,8 @@ and security
 > After you click **Update Validity Period**, you must download the SSL certificate file and configure the SSL certificate again.
 
 **Change the protected endpoint for SSL encryption**
+
+**Note**
 
 After you apply for a public endpoint, you can set the public endpoint to a protected endpoint. For more information about how to apply for a public endpoint, see Apply for a public endpoint. and security
 

@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 25
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Object Storage Service User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Object%20Storage%20Service%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Object Storage Service User Guide 20220928
@@ -58,7 +58,7 @@ Before you use OSS, you must understand the following content: To allow other us
 
 ### 3.1 Log on to the OSS console
 
-This topic describes how to log on to the OSS console. Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. A browser is available. We recommend that you use the Google Chrome browser.
+This topic describes how to log on to the OSS console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL used to access the ASCM console. Press Enter.
 2. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
@@ -73,7 +73,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 
 ### 3.2 Create buckets
 
-Objects uploaded to OSS are stored in a bucket. Create a Bucket before you upload any objects to OSS. The attributes of a bucket include the region, ACL, and other metadata.
+Objects uploaded to OSS are stored in a bucket. Create a Bucket before you upload any objects to OSS. Context The attributes of a bucket include the region, ACL, and other metadata. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click Creat e Bucket if no buckets are available. In the Creat e OSS
 Bucket dialog box that appears, configure parameters.
@@ -101,7 +101,7 @@ The following table describes the parameters used to create a bucket. Parameters
 
 ### 3.3 Upload objects
 
-After you create a bucket, you can upload objects to it. A bucket is created. For more information about how to create a bucket, see Create buckets. You can upload an object of any format to a bucket. You can use the OSS console to upload an object up to 5 GB in size. To upload an object larger than 5 GB, use an SDK or call an API operation.
+After you create a bucket, you can upload objects to it. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context You can upload an object of any format to a bucket. You can use the OSS console to upload an object up to 5 GB in size. To upload an object larger than 5 GB, use an SDK or call an API operation. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket to which you want to upload objects
 to go to the bucket details page.
@@ -130,7 +130,7 @@ more objects to upload.
 
 ### 3.4 Obtain object URLs
 
-You can obtain the URL of an object uploaded to a bucket. This URL can be used to share or download the object. A bucket is created. For more information about how to create a bucket, see Create buckets. Objects are uploaded to the bucket. For more information about how to upload objects, see Upload objects.
+You can obtain the URL of an object uploaded to a bucket. This URL can be used to share or download the object. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Objects are uploaded to the bucket. For more information about how to upload objects, see Upload objects. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket that stores the target object to go
 to the bucket details page.
@@ -142,7 +142,7 @@ under the URL field. You can also choose More > Copy File URL in the Actions col
 
 ### 4.1 View bucket information
 
-You can view the details of created buckets in the OSS console. A bucket is created. For more information about how to create a bucket, see Create buckets.
+You can view the details of created buckets in the OSS console. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the target bucket.
 3. On the bucket details page that appears, click the Overview tab. View the bucket domain names
@@ -150,10 +150,11 @@ and basic settings.
 
 ### 4.2 Delete buckets
 
-You can delete buckets in the OSS console. All objects and parts stored in the bucket are deleted. For more information about how to delete objects and parts, see Delete objects and Manage parts.
+You can delete buckets in the OSS console. Prerequisites All objects and parts stored in the bucket are deleted. For more information about how to delete objects and parts, see Delete objects and Manage parts.
 
 > **Warning:** Deleted objects, parts, and buckets cannot be recovered. Exercise caution when you delete objects, parts, and buckets.
 
+Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of a bucket to go to the bucket details page.
 3. On the bucket details page that appears, click Delet e Bucket in the upper right corner. In the
@@ -161,10 +162,11 @@ message that appears, click OK.
 
 ### 4.3 Modify bucket ACLs
 
-You can modify the access control list (ACL) of a bucket in the OSS console to control access to the bucket. A bucket is created. For more information about how to create a bucket, see Create buckets. OSS provides ACL to control access to buckets. By default, the ACL of a bucket is private when you create the bucket. You can modify the ACL of a bucket after the bucket is created. OSS provides ACL for buckets. The following ACLs are available for a bucket: Private: Only the owner or authorized users of the bucket can read and write the object. Public read: Only the owner or authorized users of this bucket can write the object. Other users, including anonymous users can only read the object. Public read/write: Any users, including anonymous users can read and write the object. Fees incurred by such operations are paid by the owner of the bucket. Exercise caution when you configure this option.
+You can modify the access control list (ACL) of a bucket in the OSS console to control access to the bucket. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context OSS provides ACL to control access to buckets. By default, the ACL of a bucket is private when you create the bucket. You can modify the ACL of a bucket after the bucket is created. OSS provides ACL for buckets. The following ACLs are available for a bucket: Private: Only the owner or authorized users of the bucket can read and write the object. Public read: Only the owner or authorized users of this bucket can write the object. Other users, including anonymous users can only read the object. Public read/write: Any users, including anonymous users can read and write the object. Fees incurred by such operations are paid by the owner of the bucket. Exercise caution when you configure this option.
 
 > **Warning:** If you set ACL to public read or public read/write, other users can directly read the data in the bucket without authentication, resulting in security risks. For data security reasons, we recommend that you set the bucket ACL to private.
 
+Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket for which you want to modify ACL to
 go to the bucket details page.
@@ -175,7 +177,7 @@ section.
 
 ### 4.4 Configure static website hosting
 
-You can configure static website hosting in the OSS console so that users can access the static website by using the bucket domain name. A bucket is created. For more information about how to create a bucket, see Create buckets. Static website hosting is not enabled if the default pages are not specified. After the default homepage is configured, the default homepage is displayed if you access the root domain name of the static website or any URL that ends with a forward slash (/) under this domain name.
+You can configure static website hosting in the OSS console so that users can access the static website by using the bucket domain name. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context Static website hosting is not enabled if the default pages are not specified. After the default homepage is configured, the default homepage is displayed if you access the root domain name of the static website or any URL that ends with a forward slash (/) under this domain name. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of a bucket to go to the bucket details page.
 3. On the bucket details page, click the Basic Set t ings tab. Find the St at ic Pages section.
@@ -185,7 +187,7 @@ Def ault Homepage: Specify the name of the index document that links to the inde
 
 ### 4.5 Configure hotlink protection
 
-You can configure hotlink protection for a bucket in the OSS console to prevent unauthorized domain names from accessing the data in your bucket. A bucket is created. For more information about how to create a bucket, see Create buckets. OSS provides hotlink protection to prevent other domain names from accessing your data in OSS. You can configure the Referer field in the HTTP header to implement hotlink protection. You can configure a Referer whitelist for a bucket and configure whether to allow access requests that have an empty Referer field in the OSS console. For example, you can add `http://www.aliyun.com` to the Referer whitelist for a bucket named oss-example. Then, requests whose Referer field is set to `http://www.aliyun.com` can access the objects in the oss-example bucket.
+You can configure hotlink protection for a bucket in the OSS console to prevent unauthorized domain names from accessing the data in your bucket. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context OSS provides hotlink protection to prevent other domain names from accessing your data in OSS. You can configure the Referer field in the HTTP header to implement hotlink protection. You can configure a Referer whitelist for a bucket and configure whether to allow access requests that have an empty Referer field in the OSS console. For example, you can add `http://www.aliyun.com` to the Referer whitelist for a bucket named oss-example. Then, requests whose Referer field is set to `http://www.aliyun.com` can access the objects in the oss-example bucket. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket to go to the bucket details page.
 3. On the bucket details page, click the Basic Set t ings tab. Find the Hot link Prot ect ion section.
@@ -195,7 +197,7 @@ Ref erer Whit elist : Add URLs to the whitelist. Referers are typically in URL f
 
 ### 4.6 Configure logging
 
-You can enable or disable bucket logging in the OSS console. A bucket is created. For more information about how to create a bucket, see Create buckets. You can store access logs in the current bucket or in a new bucket.
+You can enable or disable bucket logging in the OSS console. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context You can store access logs in the current bucket or in a new bucket.
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket to go to the bucket details page.
 3. On the bucket details page that appears, click the Basic Set t ings tab. Find the Logging section.
@@ -205,7 +207,7 @@ Dest inat ion Bucket : Select the name of the bucket in which access logs are to
 
 ### 4.7 Configure CORS
 
-You can configure cross-origin resource sharing (CORS) in the OSS console to enable cross-origin access. A bucket is created. For more information about how to create a bucket, see Create buckets. OSS provides CORS over HTML5 to implement cross-origin access. When OSS receives a cross-origin request (or an OPTIONS request) for a bucket, OSS reads the CORS rules of the bucket and checks the relevant permissions. OSS matches the rules one by one. When OSS finds the first match, OSS returns a corresponding header. If no match is found, OSS does not include any CORS header in the response.
+You can configure cross-origin resource sharing (CORS) in the OSS console to enable cross-origin access. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context OSS provides CORS over HTML5 to implement cross-origin access. When OSS receives a cross-origin request (or an OPTIONS request) for a bucket, OSS reads the CORS rules of the bucket and checks the relevant permissions. OSS matches the rules one by one. When OSS finds the first match, OSS returns a corresponding header. If no match is found, OSS does not include any CORS header in the response. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket to go to the bucket details page.
 3. On the bucket details page, click the Basic Set t ings tab. Find the Cross-Origin Resource
@@ -230,12 +232,13 @@ parameters.
 
 ### 4.8 Manage lifecycle rules
 
-You can define and manage lifecycle rules for a bucket in the OSS console. A bucket is created. For more information about how to create a bucket, see Create buckets. You can define a rule for a full set or a subset by specifying the prefix keyword of objects in a bucket. A rule applies to all objects that match the rule. You can manage lifecycle rules to perform operations, such as object management and automatic part deletion.
+You can define and manage lifecycle rules for a bucket in the OSS console. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context You can define a rule for a full set or a subset by specifying the prefix keyword of objects in a bucket. A rule applies to all objects that match the rule. You can manage lifecycle rules to perform operations, such as object management and automatic part deletion.
 
 > Not ice
 > If an object matches a rule, data of the object is deleted within two days from the effective date.
 > Data that is deleted based on a lifecycle rule cannot be recovered. Configure a rule only when necessary.
 
+Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket to go to the bucket details page.
 3. Click the Basic Set t ings tab. Find the Lif ecycle section. Click Conf igure.
@@ -252,10 +255,11 @@ Pref ix: If you set Applied T o to Files wit h Specif ied Pref ix, you must ente
 
 ### 4.9 Configure storage quota
 
-You can specify the storage quota of a bucket in the OSS console to limit the bucket size. You can specify the storage quota of a bucket when you create the bucket. You can also configure the storage quota of a created bucket. This topic describes how to configure the storage quota of a created bucket. A bucket is created. For more information about how to create a bucket, see Create buckets. After a storage quota is configured for a bucket, if the bucket size exceeds the quota, write operations, including PutObject, MultipartUpload, CopyObject, PostObject, AppendObject, cannot be performed on the bucket. Before configuring the quota of a bucket, ensure that it does not affect your business.
+You can specify the storage quota of a bucket in the OSS console to limit the bucket size. You can specify the storage quota of a bucket when you create the bucket. You can also configure the storage quota of a created bucket. This topic describes how to configure the storage quota of a created bucket. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context After a storage quota is configured for a bucket, if the bucket size exceeds the quota, write operations, including PutObject, MultipartUpload, CopyObject, PostObject, AppendObject, cannot be performed on the bucket. Before configuring the quota of a bucket, ensure that it does not affect your business.
 
 > Not ice In general, OSS takes one hour to determine whether the bucket size exceeds the quota. In some cases, more than one hour is required for OSS to detect that the bucket size exceeds the quota.
 
+Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket for which you want to configure
 storage quota to go to the bucket details page.
@@ -266,7 +270,7 @@ Units: TB or GB. Valid values: -1 to 2000000 The default value is -1, indicating
 
 ### 4.10 Configure cluster-disaster recovery
 
-recovery In cluster-disaster recovery mode, buckets with the same name are replicated. Cluster-based disaster recovery is automatically enabled based on configurations made when the cluster is created. In other words, after a primary bucket is created, a secondary bucket with the same name is automatically created. Information stored in the primary bucket is automatically synchronized to the secondary bucket. By default, this function is enabled. A bucket is created. For more information about how to create a bucket, see Create buckets.
+recovery In cluster-disaster recovery mode, buckets with the same name are replicated. Cluster-based disaster recovery is automatically enabled based on configurations made when the cluster is created. In other words, after a primary bucket is created, a secondary bucket with the same name is automatically created. Information stored in the primary bucket is automatically synchronized to the secondary bucket. By default, this function is enabled. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of a bucket for which you want to configure
 cluster-disaster recovery to go to the bucket details page.
@@ -277,7 +281,7 @@ section.
 
 ### 4.11 Configure CRR
 
-Cross-region replication (CRR) enables the automatic and asynchronous (near real-time) replication of objects across buckets in different OSS regions. Operations such as the creation, overwriting, and deletion of objects can be synchronized from the source bucket to the destination bucket. The steps described in Create buckets are performed or a bucket is created in the region. This feature meets the requirements of geo-disaster recovery or data replication. Objects in the destination bucket are extra replicas of objects in the source bucket. They have the same object names, object content, and object metadata such as the creation time, owner, user metadata, and object ACL.
+Cross-region replication (CRR) enables the automatic and asynchronous (near real-time) replication of objects across buckets in different OSS regions. Operations such as the creation, overwriting, and deletion of objects can be synchronized from the source bucket to the destination bucket. Prerequisites The steps described in Create buckets are performed or a bucket is created in the region. Context This feature meets the requirements of geo-disaster recovery or data replication. Objects in the destination bucket are extra replicas of objects in the source bucket. They have the same object names, object content, and object metadata such as the creation time, owner, user metadata, and object ACL. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of a bucket for which you want to configure CRR to
 go to the bucket details page.
@@ -310,7 +314,7 @@ described in the following table.
 
 ### 4.12 Access OSS through custom domain names
 
-domain names You can bind a custom domain name to your bucket and add a CNAME record that points to the public endpoint of your bucket. After the CNAME record is added, you are directed to your bucket when you access the custom domain name. A bucket is created. For more information about how to create a bucket, see Create buckets. Step 1: Bind the custom domain name to the bucket You can use OSS SDK for Java to bind the custom name to the bucket. For the sample code, visit Bind custom domain name. Step 2: Configure the CNAME record The domain name of Alibaba Cloud is used as an example to show how to configure the CNAME record.
+domain names You can bind a custom domain name to your bucket and add a CNAME record that points to the public endpoint of your bucket. After the CNAME record is added, you are directed to your bucket when you access the custom domain name. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Step 1: Bind the custom domain name to the bucket You can use OSS SDK for Java to bind the custom name to the bucket. For the sample code, visit Bind custom domain name. Step 2: Configure the CNAME record The domain name of Alibaba Cloud is used as an example to show how to configure the CNAME record.
 1. Log on to the DNS console.
 2. On the Manage DNS page, click Conf igure in the Actions column corresponding to the target
 domain name.
@@ -338,7 +342,7 @@ Verify CNAME status After a CNAME record is configured, the period required for 
 
 ### 5.1 Search for objects
 
-You can search buckets or folders for objects whose names contain a specified prefix in the OSS console. A bucket is created. For more information about how to create a bucket, see Create buckets. Objects are uploaded to the bucket. For more information about how to upload objects, see Upload objects. When you search for objects based on a prefix, search strings are case-sensitive and cannot contain forward slashes (/). The search range is limited to the root directory of the current bucket or the objects in the current folder (excluding subfolders and the objects in them).
+You can search buckets or folders for objects whose names contain a specified prefix in the OSS console. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Objects are uploaded to the bucket. For more information about how to upload objects, see Upload objects. Context When you search for objects based on a prefix, search strings are case-sensitive and cannot contain forward slashes (/). The search range is limited to the root directory of the current bucket or the objects in the current folder (excluding subfolders and the objects in them). Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the bucket to go to the bucket details page.
 3. Click the Files tab.
@@ -349,7 +353,7 @@ click the search icon to search for related objects. The names of the objects an
 
 ### 5.2 Configure object ACL
 
-You can configure the ACL of an object in the OSS console to control access to the object. A bucket is created. For more information about how to create a bucket, see Create buckets. Objects are uploaded to the bucket. For more information about how to upload objects, see Upload objects.
+You can configure the ACL of an object in the OSS console to control access to the object. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Objects are uploaded to the bucket. For more information about how to upload objects, see Upload objects. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the target bucket to go to the bucket details
 page.
@@ -364,10 +368,11 @@ The ACLs that you can select are described as follows: Inherit ed f rom Bucket :
 
 ### 5.3 Create folders
 
-You can create a folder in a bucket in the OSS console. A bucket is created. For more information about how to create a bucket, see Create buckets. OSS does not use traditional folders. All elements are stored as objects. A folder is an object whose size is 0 and has a name that ends with a forward slash (/). A folder is used to sort objects of the same type and process them at a time. The OSS console displays objects that end with a forward slash (/) as folders. These objects can be uploaded and downloaded. You can use OSS folders in the OSS console the way you use folders in Windows.
+You can create a folder in a bucket in the OSS console. Prerequisites A bucket is created. For more information about how to create a bucket, see Create buckets. Context OSS does not use traditional folders. All elements are stored as objects. A folder is an object whose size is 0 and has a name that ends with a forward slash (/). A folder is used to sort objects of the same type and process them at a time. The OSS console displays objects that end with a forward slash (/) as folders. These objects can be uploaded and downloaded. You can use OSS folders in the OSS console the way you use folders in Windows.
 
 > Not e The OSS console displays any objects whose names end with a forward slash (/) as folders, regardless of whether these objects contain data. You can download these objects only by calling an API operation or by using an SDK.
 
+Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the target bucket to go to the bucket details
 page.
@@ -378,10 +383,11 @@ The folder name must comply with the following conventions: The name can contain
 
 ### 5.4 Delete objects
 
-You can delete uploaded objects in the OSS console. You can delete one or more objects at a time. A maximum of 100 objects can be deleted at a time. You can use SDKs or call an API operation to delete a specific object or more than 100 objects.
+You can delete uploaded objects in the OSS console. Context You can delete one or more objects at a time. A maximum of 100 objects can be deleted at a time. You can use SDKs or call an API operation to delete a specific object or more than 100 objects.
 
 > Not ice Deleted objects cannot be recovered. Exercise caution when you delete objects.
 
+Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the target bucket to go to the bucket details
 page.
@@ -392,7 +398,7 @@ Operat ion > Delet e. You can also choose More > Delet e in the Actions column c
 
 ### 5.5 Manage parts
 
-When you upload an object in multipart upload mode, the object is split into several smaller parts. After all of the parts are uploaded to the OSS server, you can call CompleteMultipartUpload to combine them into a complete object. We recommend that you delete unnecessary parts on a regular basis. Parts are generated in multipart upload tasks and cannot be read until they are combined into a complete object. To save storage space in the bucket, you can configure lifecycle rules to manage unnecessary parts that are generated when multipart upload tasks fail. For more information, see Manage lifecycle rules.
+When you upload an object in multipart upload mode, the object is split into several smaller parts. After all of the parts are uploaded to the OSS server, you can call CompleteMultipartUpload to combine them into a complete object. We recommend that you delete unnecessary parts on a regular basis. Context Parts are generated in multipart upload tasks and cannot be read until they are combined into a complete object. To save storage space in the bucket, you can configure lifecycle rules to manage unnecessary parts that are generated when multipart upload tasks fail. For more information, see Manage lifecycle rules. Procedure
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click the name of the target bucket to go to the bucket details
 page.

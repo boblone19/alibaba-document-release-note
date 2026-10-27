@@ -5,7 +5,7 @@ doc_version: "20260826"
 pdf_pages: 33
 source_pdf: "8282768aedd9008f_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Operations and Maintenance Guide 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Operations%20and%20Maintenance%20Guide%2020260826.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Operations and Maintenance Guide 20260826
@@ -78,6 +78,9 @@ Press the ENTER key.
 ### 4.1 Manage tasks
 
 This topic describes how to manage data migration, data synchronization, and change tracking tasks on the **Task List** page in the Data Transmission Service (DTS) O&M console. You can view the task details and status such as checkpoints, configure full and incremental data verification parameters, perform quick diagnostics, modify consumption time points and task configurations, and release tasks.
+
+**Procedure**
+
 1. Log in to the DTS O&M console.
 2. In the left-side navigation pane, choose **Task Management > All Tasks**.
 3. In the upper part of the page, you can enter a keyword in the search box and click **Query**
@@ -195,6 +198,9 @@ In the **Task Information** section, click **Update Subscription**. In the messa
 ### 4.2 Manage modules in a task
 
 A DTS task consists of multiple modules, such as schema migration, full data migration, and incremental data service. This topic describes how to view the status of each module and manage them in the DTS console.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the left-side navigation pane, click **Task Management > All Tasks** or **Task**
 **Management > Async Tasks**.
@@ -234,6 +240,9 @@ OOM or frequent full garbage collection (GC) errors occur in DStore, and you nee
 **Usage notes**
 
 After the memory is resized, you must restart the task for the new memory to take effect. We recommend that you perform this operation during off-peak hours.
+
+**Procedure**
+
 1. Log in to the DTS O&M console.
 2. In the left-side navigation pane, choose **Task Management > All Tasks**.
 3. In the upper part of the page, you can enter a keyword in the search box and click **Query**
@@ -256,6 +265,9 @@ Operation column.
 ### 5.1 Query tasks
 
 On the Task Query page, you can find tasks in the task engine using the task ID, business ID, sub-business ID, task creation time, or task type.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the navigation pane on the left, click **Task Engine > Task Query**.
 3. On the **Task Engine - Query** page, specify the filter conditions and click **Query**.
@@ -271,6 +283,9 @@ On the Task Query page, you can find tasks in the task engine using the task ID,
 **tasks**
 
 A full data migration task needs to read data from the source database and write data to the destination database. This topic describes how to view the monitoring information of full data migration tasks.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the navigation pane on the left, choose **Monitoring and Alerting > Full Data**
 **Monitoring**.
@@ -282,6 +297,9 @@ database type, and region, and then click **Query**. You can view the status of 
 ### 6.2 View dashboard data
 
 You can use the DTS O&M platform to view dashboards for full data migration, incremental data migration, and data synchronization tasks. This topic describes the procedure using the full data migration dashboard as an example.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the navigation pane on the left, click **Monitoring and Alerting > Full Data Migration**
 **Dashboard**.
@@ -302,6 +320,9 @@ Manage a single task In the **Operations** column, you can pause, restart, or sk
 ### 7.1 Manage clusters
 
 This topic describes how to manage clusters in the Data Transmission Service (DTS) O&M console.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Cluster Management > Clusters**.
 3. By default, the information about all clusters is displayed. You can find a cluster and click
@@ -312,6 +333,9 @@ the buttons in the **Actions** column to perform operations on the cluster based
 **in DStore Workbench**
 
 The DStore module is used to store incremental data. You can view the details of each functional module in Data Transmission Service (DTS) or restart multiple DStore tasks at a time in DStore Workbench.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Cluster Management > DStore Workbench**.
 3. On the **DStore Workbench** page, perform the following operations based on your business
@@ -326,6 +350,9 @@ View the details of a functional module Click a tab to view the details of speci
 ### 8.1 Manage DTS resources
 
 The DTS O&M platform lets you view, filter, and manage resources, batch-initialize machines, and classify resources into resource groups.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Resource Management > DTS Resources**.
 3. Perform the following actions.
@@ -355,6 +382,9 @@ Select one or more resources, click **Classify Resources into Resource Groups**,
 **servers**
 
 You can view the CIDR blocks of Data Transmission Service (DTS) servers of different regions and network types. This helps you troubleshoot DTS connectivity issues. For example, you can check whether the CIDR blocks of DTS servers of the corresponding region and network type are added to the IP address whitelist of a database instance or the firewall rules of a selfmanaged database.
+
+**Procedure**
+
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Resource Management > DTS CIDR Blocks**.
 By default, the CIDR blocks of all regions and all network types are displayed.
@@ -377,6 +407,8 @@ This topic describes how to globally modify the key runtime parameters of the Nu
 | Private cloud IP address whitelist | internet ip whit _ _ e list _ | Function: The IP address blocking policy used when a DTS proxy node accesses a self-managed source or destination database over the Internet. Only IP addresses or CIDR blocks in this whitelist are allowed to establish connections. Default behavior: If this parameter is not specified, all public IP connections are blocked by default. Format: A single IP address, multiple IP addresses, CIDR blocks, or domain names Separate multiple values with commas ( , ). Spaces are not allowed. Example: 192.168.1.100,10.0.0.0/8,example.com Applicable scenarios: Security hardening: In Apsara Stack, to meet strict security compliance requirements, DTS can only access the IP addresses of specific self-managed databases. Batch authorization: You can configure a single IP address, multiple IP addresses, or a CIDR block, such as 192.168.1.0/24. This method is applicable to scenarios where you need to allow the entire CIDR block or multiple discrete IP addresses. Allow all (use with caution): If you want to allow access from all IP addresses, set this parameter to 0.0.0.0/0 . If you want to allow access from all domain names, set this parameter to * . Note The evaluation logic for IP whitelists is independent of that for domain whitelists. Please configure them according to your actual access method (direct IP connection or domain name resolution). We recommend you set this parameter to this value only in test environments or when unrestricted access is necessary. |
 |---|---|---|
 
+**Procedure**
+
 1. Log in to the DTS O&M console.
 2. In the left-side navigation pane, choose **O & M Support > Operation and maintenance**
 **tools**.
@@ -389,6 +421,8 @@ as **Private cloud IP address whitelist**) in the upper-left corner and click **
 ### 10.1 View alerts
 
 On the **Alerts** page, you can search for alerts by product, alert ID, source, level, status, and time range. You can then perform O&M operations on a target alert.
+
+**Procedure**
 
 > **Note:** For more information about monitoring, alerts, and platform O&M operations, see the **Apsara Uni-manager Management Console O&M Guide** .
 

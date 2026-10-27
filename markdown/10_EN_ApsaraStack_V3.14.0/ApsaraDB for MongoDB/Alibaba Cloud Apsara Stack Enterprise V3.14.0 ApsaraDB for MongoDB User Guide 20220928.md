@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 80
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for MongoDB User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.14.0/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.14.0%20ApsaraDB%20for%20MongoDB%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.14.0 ApsaraDB for MongoDB User Guide 20220928
@@ -83,7 +83,7 @@ for MongoDB console
 
 ## 2 Log on to the ApsaraDB for MongoDB console
 
-MongoDB console This topic describes how to log on to the ApsaraDB for MongoDB console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+MongoDB console This topic describes how to log on to the ApsaraDB for MongoDB console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
 Enter key.
 2. Enter your username and password.
@@ -180,10 +180,12 @@ ApsaraDB for MongoDB instance This topic describes how to reset your password in
 
 > Not ice We recommend that you change your password on a regular basis to ensure data security.
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Account s.
 5. Click Reset Password in the Actions column and configure the parameters in the Reset Password
 panel. describes the parameters. Parameters for resetting a password
@@ -200,11 +202,12 @@ panel. describes the parameters. Parameters for resetting a password
 
 ### 3.4 Configure a whitelist for an ApsaraDB for MongoDB instance
 
-ApsaraDB for MongoDB instance This topic describes how to configure a whitelist for an ApsaraDB for MongoDB instance. Before you use an ApsaraDB for MongoDB instance, you must add the IP addresses or Classless Inter-Domain Routing (CIDR) blocks that you use for database access to a whitelist of this instance. This improves database security and stability. Proper configuration of whitelists can enhance access security of ApsaraDB for MongoDB. We recommend that you maintain the whitelists on a regular basis. Context The system creates a default whitelist for each instance. This whitelist can be modified or cleared, but it cannot be deleted. After an ApsaraDB for MongoDB instance is created, the system automatically adds the IP address 127.0.0.1 to the def ault whitelist of this instance. The IP address 0.0.0.0/0 indicates that all IP addresses are allowed to access this instance. You must add the IP addresses or CIDR blocks that you allow to access this ApsaraDB for MongoDB instance.
+ApsaraDB for MongoDB instance This topic describes how to configure a whitelist for an ApsaraDB for MongoDB instance. Before you use an ApsaraDB for MongoDB instance, you must add the IP addresses or Classless Inter-Domain Routing (CIDR) blocks that you use for database access to a whitelist of this instance. This improves database security and stability. Proper configuration of whitelists can enhance access security of ApsaraDB for MongoDB. We recommend that you maintain the whitelists on a regular basis. Context The system creates a default whitelist for each instance. This whitelist can be modified or cleared, but it cannot be deleted. After an ApsaraDB for MongoDB instance is created, the system automatically adds the IP address 127.0.0.1 to the def ault whitelist of this instance. The IP address 0.0.0.0/0 indicates that all IP addresses are allowed to access this instance. You must add the IP addresses or CIDR blocks that you allow to access this ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > Whit elist Set t ings.
 5. You can manually configure a whitelist or import ECS Internal IP addresses to the whitelist.
 Manually modif y a whit elist i. Find the whitelist you want to modify and choose
@@ -226,11 +229,12 @@ ii. From the displayed internal IP addresses of ECS instances that belong to the
 
 #### 3.5.1 Use DMS to log on to an ApsaraDB for MongoDB instance
 
-MongoDB instance You can use DMS to connect to an ApsaraDB for MongoDB instance. Prerequisites The IP address whitelist is configured. For more information about how to configure the IP address whitelist, see Configure a whitelist for an ApsaraDB for MongoDB instance.
+MongoDB instance You can use DMS to connect to an ApsaraDB for MongoDB instance. Prerequisites The IP address whitelist is configured. For more information about how to configure the IP address whitelist, see Configure a whitelist for an ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. Click Log On in the upper-right corner of the page.
 
 > Not e For a sharded cluster instance, you must also select the Mongos node.
@@ -252,11 +256,12 @@ Area, and Connect ion st ring address. If the information is correct, enter Dat 
 
 #### 3.5.2 Use the mongo shell to connect to an ApsaraDB for MongoDB instance
 
-ApsaraDB for MongoDB instance This topic describes how to use the mongo shell to connect to an ApsaraDB for MongoDB instance. The mongo shell is a database management tool provided by ApsaraDB for MongoDB. You can install it on your client or in an Elastic Compute Service (ECS) instance. Prerequisites The version of the mongo shell is the same as your ApsaraDB for MongoDB instance. This ensures successful authentication. For more information about the installation procedure, see Install MongoDB. Choose the version in the upper-left corner of the page based on your client version. The IP address of your client is added to a whitelist of the ApsaraDB for MongoDB instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance.
+ApsaraDB for MongoDB instance This topic describes how to use the mongo shell to connect to an ApsaraDB for MongoDB instance. The mongo shell is a database management tool provided by ApsaraDB for MongoDB. You can install it on your client or in an Elastic Compute Service (ECS) instance. Prerequisites The version of the mongo shell is the same as your ApsaraDB for MongoDB instance. This ensures successful authentication. For more information about the installation procedure, see Install MongoDB. Choose the version in the upper-left corner of the page based on your client version. The IP address of your client is added to a whitelist of the ApsaraDB for MongoDB instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions to view connection strings.
 
 > Not e
@@ -344,6 +349,7 @@ mongo "mongodb://root:****@s-**********.mongodb.rds.intra.env17e.shuguang.com:37
 
 ApsaraDB for MongoDB supports both connection strings and connection string URIs. You can use a connection string to connect to the primary or secondary node, and use a connection string URI to connect to both of them. For high availability, we recommend that you use connection string URIs to connect your application to both primary and secondary nodes. This topic provides an overview of replica set instance connections. Prerequisites A whitelist is configured for the instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance. View connection strings
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click the ID of an instance, or click
 in the Act ions column corresponding to the instance and select Manage.
 3. In the left-side navigation pane, click Dat abase Connect ions to view connection strings.
@@ -365,9 +371,10 @@ Related information Connect to a replica set instance by using the mongo shell
 
 connections ApsaraDB for MongoDB supports both connection strings and connection string URIs. You can use a connection string to connect to a single mongos node, and use a connection string URI to connect to multiple mongos nodes. For high availability, we recommend that you use connection string URIs to connect your application to multiple mongos nodes. This topic provides an overview of sharded cluster instance connections. View connection strings
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions to view connection strings.
 Description of connection strings
 
@@ -392,6 +399,7 @@ Use DMS to log on to a replica set instance of ApsaraDB for MongoDB Connect to a
 
 instance This topic describes how to create an instance in the ApsaraDB for MongoDB console. Prerequisites An account is obtained to log on to the ApsaraDB for MongoDB console. Create a replica set instance
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click Creat e Inst ance in the upper-left corner. On the
 Creat e ApsaraDB f or MongoDB Inst ance page, configure the parameters. The following table describes the required parameters. Parameters for creating a replica set instance
 
@@ -425,6 +433,7 @@ Creat e ApsaraDB f or MongoDB Inst ance page, configure the parameters. The foll
 3. Click Submit to create the instance.
 Create a sharded cluster instance
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. Click Creat e Inst ance in the upper-left corner to go to the Creat e MongoDB Inst ance page.
 Configure the parameters. The following table describes the required parameters. Parameters for creating a sharded cluster instance
@@ -465,8 +474,9 @@ Configure the parameters. The following table describes the required parameters.
 
 ### 4.2 View the details of an ApsaraDB for MongoDB instance
 
-for MongoDB instance This topic describes how to view the details of an ApsaraDB for MongoDB instance, such as the basic information, internal network connection information, status, and configurations. This topic describes how to view the details of an ApsaraDB for MongoDB instance.
+for MongoDB instance This topic describes how to view the details of an ApsaraDB for MongoDB instance, such as the basic information, internal network connection information, status, and configurations. This topic describes how to view the details of an ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. Go to the instance details page. Either of the following methods can be used:
 Find the instance and click its ID to go to the Basic Inf ormat ion page, where you can view the details of the instance. In the Operations column corresponding to the instance, choose
@@ -480,10 +490,12 @@ MongoDB instance You can manually restart an instance when the number of connect
 
 > Not e When an ApsaraDB for MongoDB instance is restarted, all its connections are terminated. Plan your operations in advance before you restart an ApsaraDB for MongoDB instance. Proceed with caution.
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the upper-right corner of the page, click Rest art Inst ance.
 
 > Not e You can also choose
@@ -496,6 +508,7 @@ in the Act ions column corresponding to the instance and select Manage.
 
 ApsaraDB for MongoDB instance This topic describes how to change the specifications of an ApsaraDB for MongoDB instance. You can upgrade or downgrade an ApsaraDB for MongoDB instance to meet your business needs. Prerequisites The instance must be an ApsaraDB for MongoDB replica set instance.
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click the ID of an instance, or click
 in the Act ions column corresponding to the instance and select Manage.
 3. Click Change Conf igurat ion in the upper right corner of the Specification Information section to
@@ -511,11 +524,12 @@ You can change values of the following parameters: Node T ype Node Specif icat i
 
 ### 4.5 Change the name of an ApsaraDB for MongoDB instance
 
-for MongoDB instance This topic describes how to change the name of an ApsaraDB for MongoDB instance for better management.
+for MongoDB instance This topic describes how to change the name of an ApsaraDB for MongoDB instance for better management. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. Click Edit next to Inst ance Name.
 
 > Not e
@@ -531,10 +545,12 @@ ApsaraDB for MongoDB instance This topic describes how to reset your password in
 
 > Not ice We recommend that you change your password on a regular basis to ensure data security.
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Account s.
 5. Click Reset Password in the Actions column and configure the parameters in the Reset Password
 panel. describes the parameters. Parameters for resetting a password
@@ -548,11 +564,12 @@ panel. describes the parameters. Parameters for resetting a password
 
 ### 4.7 Switch node roles
 
-You can switch the node roles of an ApsaraDB for MongoDB instance in the ApsaraDB for MongoDB console based on your business deployment. Typical scenario When an ECS instance and an ApsaraDB for MongoDB instance are in the same zone and connected over the internal network, the latency is minimal. If they are connected across different zones, the latency increases and the performance of ApsaraDB for MongoDB instances and your business will be affected. In this example, the ECS instance to which the application belongs is in Zone 2. If the primary node of the ApsaraDB for MongoDB instance is in Zone 1, the ECS instance needs to connect to the primary node across zones. To optimize the business deployment architecture, you can switch the roles of the primary and secondary nodes. In this example, you can change the role of the node in Zone 2 to primary and the role of the node in Zone 1 to secondary. Note that only the node roles are changed. ECS and ApsaraDB for MongoDB instances can be connected in the same zone without changing the actual zones and role IDs. Precautions Switching node roles will cause a transient disconnection of up to 30 seconds. Perform this operation during off-peak hours or ensure that your application has a reconnection mechanism. Switching node roles only changes the roles of nodes, but not the zones and role IDs of nodes.
+You can switch the node roles of an ApsaraDB for MongoDB instance in the ApsaraDB for MongoDB console based on your business deployment. Typical scenario When an ECS instance and an ApsaraDB for MongoDB instance are in the same zone and connected over the internal network, the latency is minimal. If they are connected across different zones, the latency increases and the performance of ApsaraDB for MongoDB instances and your business will be affected. In this example, the ECS instance to which the application belongs is in Zone 2. If the primary node of the ApsaraDB for MongoDB instance is in Zone 1, the ECS instance needs to connect to the primary node across zones. To optimize the business deployment architecture, you can switch the roles of the primary and secondary nodes. In this example, you can change the role of the node in Zone 2 to primary and the role of the node in Zone 1 to secondary. Note that only the node roles are changed. ECS and ApsaraDB for MongoDB instances can be connected in the same zone without changing the actual zones and role IDs. Precautions Switching node roles will cause a transient disconnection of up to 30 seconds. Perform this operation during off-peak hours or ensure that your application has a reconnection mechanism. Switching node roles only changes the roles of nodes, but not the zones and role IDs of nodes. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Service Availabilit y.
 5. Subsequent steps on the Service Availabilit y page vary depending on instance types.
 Replica set instance a. Click Swit ch Role in the upper-right corner of the page. b. In the Swit ch Role dialog box that appears, select the nodes. c. Click OK. Sharded cluster instance
@@ -563,11 +580,12 @@ a. In the upper-right corner of the Zone Dist ribut ion f or Shards or Zone Dist
 
 ### 4.8 Migrate an ApsaraDB for MongoDB instance across zones in the same region
 
-MongoDB instance across zones in the same region This topic describes how to migrate an ApsaraDB for MongoDB instance across zones in the same region. After instances are migrated to other zones, the attributes, specifications, and connection strings of the instances remain unchanged. Prerequisites The ApsaraDB for MongoDB instance is a replica set instance or sharded cluster instance that runs MongoDB 4.2 or later. Transparent data encryption (TDE) is not enabled for the ApsaraDB for MongoDB instance. The destination zone must be in the same region as the current zone of the instance. If the instance is in a VPC, make sure that a vSwitch is created in the destination zone before you start migration. For more information, see Create a VPC and Create a vSwitch in VPC User Guide. The instance does not have a public endpoint. If you have applied for a public endpoint, you must release it before migration. For more information, see Release a public connection string. Precautions If the instance is in a VPC, you cannot change the VPC when the instance is in the migration process. The time required varies based on factors such as the network conditions, task queue status, and data volume. We recommend that you migrate the instance across zones during off-peak hours. During the migration, a transient connection of 30 seconds occurs. Make sure that your application is configured to reconnect to the instance after it is disconnected. The virtual IP addresses (VIPs) of the instance, such as 172.16.88.60, are changed when the instance is migrated across zones. If your application uses the original VIP, the application cannot connect to the instance after the migration. We recommend that you use a connection string URI to connect to the instance, which ensures high availability. For more information, see Overview of replica set instance connections or Overview of sharded cluster instance connections.
+MongoDB instance across zones in the same region This topic describes how to migrate an ApsaraDB for MongoDB instance across zones in the same region. After instances are migrated to other zones, the attributes, specifications, and connection strings of the instances remain unchanged. Prerequisites The ApsaraDB for MongoDB instance is a replica set instance or sharded cluster instance that runs MongoDB 4.2 or later. Transparent data encryption (TDE) is not enabled for the ApsaraDB for MongoDB instance. The destination zone must be in the same region as the current zone of the instance. If the instance is in a VPC, make sure that a vSwitch is created in the destination zone before you start migration. For more information, see Create a VPC and Create a vSwitch in VPC User Guide. The instance does not have a public endpoint. If you have applied for a public endpoint, you must release it before migration. For more information, see Release a public connection string. Precautions If the instance is in a VPC, you cannot change the VPC when the instance is in the migration process. The time required varies based on factors such as the network conditions, task queue status, and data volume. We recommend that you migrate the instance across zones during off-peak hours. During the migration, a transient connection of 30 seconds occurs. Make sure that your application is configured to reconnect to the instance after it is disconnected. The virtual IP addresses (VIPs) of the instance, such as 172.16.88.60, are changed when the instance is migrated across zones. If your application uses the original VIP, the application cannot connect to the instance after the migration. Not e We recommend that you use a connection string URI to connect to the instance, which ensures high availability. For more information, see Overview of replica set instance connections or Overview of sharded cluster instance connections. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the Basic Inf ormat ion section, click Change Zone.
 5. In the Migrat e Inst ance t o Ot her Zone panel, configure parameters based on the network type
 of the instance. VPC
@@ -590,11 +608,12 @@ Classic network
 
 ### 4.9 Release an ApsaraDB for MongoDB instance
 
-MongoDB instance This topic describes how to manually release an ApsaraDB for MongoDB instance to meet your business needs. This topic describes how to manually release an ApsaraDB for MongoDB instance.
+MongoDB instance This topic describes how to manually release an ApsaraDB for MongoDB instance to meet your business needs. This topic describes how to manually release an ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the lower-right corner of the Basic Inf ormat ion section, click Release.
 
 > Not e You can also go to the Replica Set Instances page, find the instance, click the
@@ -615,7 +634,9 @@ replica set instance An ApsaraDB for MongoDB replica set instance consists of th
 > Each time you trigger a primary/secondary failover for an instance, the instance may have a transient connection error of about 30 seconds. Ensure that your applications can automatically re-establish a connection.
 > You can trigger a primary/secondary failover only for instances in the running state.
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click the ID of an instance, or click
 in the Act ions column corresponding to the instance and select Manage.
 3. In the Node List section, click Failover, as shown in the following figure.
@@ -633,7 +654,9 @@ sharded cluster instance Each shard or Configserver of a sharded cluster instanc
 > You can trigger a primary/secondary failover only for the shard or Configserve node in the running state.
 > Each time you trigger a primary/secondary failover for an instance, the instance may have a transient connection error of about 30 seconds. We recommend that you perform this operation during off-peak hours and ensure that your applications can automatically re- establish a connection.
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
 in the Act ions column corresponding to the instance and select Manage.
@@ -650,11 +673,12 @@ Actions column.
 
 ### 4.11 Monitoring
 
-This topic describes the performance metrics provided by ApsaraDB for MongoDB to check the status of ApsaraDB for MongoDB instances. You can view these performance metrics in the ApsaraDB for MongoDB console.
+This topic describes the performance metrics provided by ApsaraDB for MongoDB to check the status of ApsaraDB for MongoDB instances. You can view these performance metrics in the ApsaraDB for MongoDB console. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Monit oring Inf o.
 You can select a time range to query historical performance metrics. The following table describes metric details. Performance metrics
 
@@ -688,11 +712,12 @@ You can select a time range to query historical performance metrics. The followi
 
 ### 5.1 Configure automatic backup for an ApsaraDB for MongoDB instance
 
-an ApsaraDB for MongoDB instance This topic describes how to configure automatic backup for an ApsaraDB for MongoDB instance. ApsaraDB for MongoDB automatically backs up data based on the backup policy you specify.
+an ApsaraDB for MongoDB instance This topic describes how to configure automatic backup for an ApsaraDB for MongoDB instance. ApsaraDB for MongoDB automatically backs up data based on the backup policy you specify. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Backup and Recovery.
 5. In the upper-left corner of the page, click Backup Set t ings. Configure the parameters in the
 Backup Settings panel. The following table describes the parameters. Backup policy parameters
@@ -711,17 +736,18 @@ for MongoDB instance This topic describes how to manually back up an ApsaraDB fo
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the upper-right corner of the page, click Backup Inst ance.
 5. In the dialog box that appears, set Backup Met hod and click OK.
 
 ### 5.3 Download a backup file
 
-ApsaraDB for MongoDB allows you to download backup files that can be used to restore databases. This topic describes how to download a backup file in the ApsaraDB for MongoDB console.
+ApsaraDB for MongoDB allows you to download backup files that can be used to restore databases. This topic describes how to download a backup file in the ApsaraDB for MongoDB console. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Backup and Recovery.
 5. On the page that appears, click
 in the Act ions column corresponding to a backup file and select Download.
@@ -731,8 +757,9 @@ You can run the wget command, or paste the copied download URL into the address 
 
 ### 5.4 Restore data to the current ApsaraDB for MongoDB instance
 
-ApsaraDB for MongoDB instance This topic describes how to restore data to the current ApsaraDB for MongoDB instance. This helps minimize the data loss caused by incorrect operations. Prerequisites The instance is a replica set instance with three nodes. Background information The time required to restore data to your current instance varies depending on factors such as the data volume, task queue status, and network conditions. When the status of the instance changes to Running, the restoration is complete. If you restore data to your current instance, all existing data is overwritten and cannot be restored.
+ApsaraDB for MongoDB instance This topic describes how to restore data to the current ApsaraDB for MongoDB instance. This helps minimize the data loss caused by incorrect operations. Prerequisites The instance is a replica set instance with three nodes. Background information The time required to restore data to your current instance varies depending on factors such as the data volume, task queue status, and network conditions. When the status of the instance changes to Running, the restoration is complete. If you restore data to your current instance, all existing data is overwritten and cannot be restored. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click the ID of an instance, or click
 in the Act ions column corresponding to the instance and select Manage.
 3. In the left-side navigation pane, click Backup and Recovery.
@@ -758,10 +785,12 @@ endpoint of an ApsaraDB for MongoDB instance This topic describes how to modify 
 | Replica set instance | You can modify the public and internal endpoints of both primary and secondary nodes. |
 | Sharded cluster instance | You can modify only the public and internal endpoints of mongos nodes. |
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions.
 5. In the upper-right corner of the Int ernal Connect ions or Public Connect ions section, click
 Updat e Connect ion St ring.
@@ -777,11 +806,12 @@ What's next After you modify the public or internal endpoint, you must connect a
 
 ### 6.2 Use DMS to log on to an ApsaraDB for MongoDB instance
 
-ApsaraDB for MongoDB instance You can use DMS to connect to an ApsaraDB for MongoDB instance. Prerequisites The IP address whitelist is configured. For more information about how to configure the IP address whitelist, see Configure a whitelist for an ApsaraDB for MongoDB instance.
+ApsaraDB for MongoDB instance You can use DMS to connect to an ApsaraDB for MongoDB instance. Prerequisites The IP address whitelist is configured. For more information about how to configure the IP address whitelist, see Configure a whitelist for an ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. Click Log On in the upper-right corner of the page.
 
 > Not e For a sharded cluster instance, you must also select the Mongos node.
@@ -803,11 +833,12 @@ Area, and Connect ion st ring address. If the information is correct, enter Dat 
 
 ### 6.3 Use the mongo shell to connect to an ApsaraDB for MongoDB instance
 
-to an ApsaraDB for MongoDB instance This topic describes how to use the mongo shell to connect to an ApsaraDB for MongoDB instance. The mongo shell is a database management tool provided by ApsaraDB for MongoDB. You can install it on your client or in an Elastic Compute Service (ECS) instance. Prerequisites The version of the mongo shell is the same as your ApsaraDB for MongoDB instance. This ensures successful authentication. For more information about the installation procedure, see Install MongoDB. Choose the version in the upper-left corner of the page based on your client version. The IP address of your client is added to a whitelist of the ApsaraDB for MongoDB instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance.
+to an ApsaraDB for MongoDB instance This topic describes how to use the mongo shell to connect to an ApsaraDB for MongoDB instance. The mongo shell is a database management tool provided by ApsaraDB for MongoDB. You can install it on your client or in an Elastic Compute Service (ECS) instance. Prerequisites The version of the mongo shell is the same as your ApsaraDB for MongoDB instance. This ensures successful authentication. For more information about the installation procedure, see Install MongoDB. Choose the version in the upper-left corner of the page based on your client version. The IP address of your client is added to a whitelist of the ApsaraDB for MongoDB instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions to view connection strings.
 
 > Not e
@@ -901,6 +932,7 @@ ApsaraDB for MongoDB instance This topic describes how to apply for a public end
 
 Apply for a public endpoint for a replica set instance
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click the ID of an instance, or click
 in the Act ions column corresponding to the instance and select Manage.
 3. In the left-side navigation pane, click Dat abase Connect ions.
@@ -914,7 +946,7 @@ After the application is complete, the replica set instance generates new endpoi
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions.
 5. In the upper-right corner of the Public Connect ions section, click Apply f or Public Connect ion
 St ring.
@@ -936,6 +968,7 @@ To ensure data security, you can release a public endpoint that is no longer nee
 > Not e After the public endpoint of a replica set instance is released, the public endpoints of the primary and secondary nodes are released.
 
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. On the Replica Set Inst ances page, click the ID of an instance, or click
 in the Act ions column corresponding to the instance and select Manage.
 3. In the left-side navigation pane, click Dat abase Connect ions.
@@ -947,9 +980,10 @@ Release a public endpoint for a sharded cluster instance You can release one or 
 > Not e After the public endpoint of a shard or Configserver node is released, the public endpoints of the primary and secondary nodes are released.
 
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions.
 5. In the Public Connect ions section, find the mongos, shard, or Configserver node for which you
 want to release the public endpoint.
@@ -984,9 +1018,10 @@ Related information Connect to a replica set instance by using the mongo shell
 
 instance connections ApsaraDB for MongoDB supports both connection strings and connection string URIs. You can use a connection string to connect to a single mongos node, and use a connection string URI to connect to multiple mongos nodes. For high availability, we recommend that you use connection string URIs to connect your application to multiple mongos nodes. This topic provides an overview of sharded cluster instance connections. View connection strings
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, click Dat abase Connect ions to view connection strings.
 Description of connection strings
 
@@ -1009,11 +1044,12 @@ Use DMS to log on to a replica set instance of ApsaraDB for MongoDB Connect to a
 
 ### 7.1 Configure a whitelist for an ApsaraDB for MongoDB instance
 
-ApsaraDB for MongoDB instance This topic describes how to configure a whitelist for an ApsaraDB for MongoDB instance. Before you use an ApsaraDB for MongoDB instance, you must add the IP addresses or Classless Inter-Domain Routing (CIDR) blocks that you use for database access to a whitelist of this instance. This improves database security and stability. Proper configuration of whitelists can enhance access security of ApsaraDB for MongoDB. We recommend that you maintain the whitelists on a regular basis. Context The system creates a default whitelist for each instance. This whitelist can be modified or cleared, but it cannot be deleted. After an ApsaraDB for MongoDB instance is created, the system automatically adds the IP address 127.0.0.1 to the def ault whitelist of this instance. The IP address 0.0.0.0/0 indicates that all IP addresses are allowed to access this instance. You must add the IP addresses or CIDR blocks that you allow to access this ApsaraDB for MongoDB instance.
+ApsaraDB for MongoDB instance This topic describes how to configure a whitelist for an ApsaraDB for MongoDB instance. Before you use an ApsaraDB for MongoDB instance, you must add the IP addresses or Classless Inter-Domain Routing (CIDR) blocks that you use for database access to a whitelist of this instance. This improves database security and stability. Proper configuration of whitelists can enhance access security of ApsaraDB for MongoDB. We recommend that you maintain the whitelists on a regular basis. Context The system creates a default whitelist for each instance. This whitelist can be modified or cleared, but it cannot be deleted. After an ApsaraDB for MongoDB instance is created, the system automatically adds the IP address 127.0.0.1 to the def ault whitelist of this instance. The IP address 0.0.0.0/0 indicates that all IP addresses are allowed to access this instance. You must add the IP addresses or CIDR blocks that you allow to access this ApsaraDB for MongoDB instance. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > Whit elist Set t ings.
 5. You can manually configure a whitelist or import ECS Internal IP addresses to the whitelist.
 Manually modif y a whit elist i. Find the whitelist you want to modify and choose
@@ -1035,9 +1071,10 @@ ii. From the displayed internal IP addresses of ECS instances that belong to the
 
 This topic describes how to create or delete whitelists that consist of the IP addresses allowed to access specific databases. Context If your business involves multiple applications and you need to add a whitelist for each of them, you can sort the IP addresses into different whitelists. Create a whitelist
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > Whit elist Set t ings.
 5. Click Creat e Whit elist in the upper-left corner of the page.
 6. In the panel that appears, set Group Name and IP Whit e List and click OK.
@@ -1052,7 +1089,7 @@ Delete a whitelist
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > Whit elist Set t ings.
 5. Find the whitelist that you want to delete and choose
 > Delet e Whit elist Group in the
@@ -1069,10 +1106,12 @@ This topic describes audit logs provided in the ApsaraDB for MongoDB console. Yo
 
 > Not e Audit logs are stored for seven days, after which they are deleted.
 
+Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > Audit Logs.
 5. Click Enable Audit Log in the upper-left corner. In the Enable Audit message, click OK.
 Result On the Audit Log page, specify the time range, database name, database user, and keyword to query audit logs. You can also perform the following operations: Export File: exports an audit log file. File List : displays a list of audit logs. Disable Audit Log: stops the collection of information on database operations and deletes the saved audit logs.
@@ -1087,11 +1126,12 @@ Precautions You can download SSL CA certificate files only from the ApsaraDB for
 
 > Not e Internal network connections are more secure than Internet connections and do not need SSL encryption.
 
-After you enable SSL encryption for an instance, both SSL and non-SSL connections are supported.
+After you enable SSL encryption for an instance, both SSL and non-SSL connections are supported. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > SSL.
 5. Perform one of the following operations.
 
@@ -1114,11 +1154,12 @@ Notes When you enable TDE, your instance is restarted, and your application is d
 
 > Not e In special business scenarios, you can choose not to encrypt a collection when you create it. For more information, see Disable encryption for a specified collection.
 
-After you enable TDE, only new collections are encrypted. Existing collections are not encrypted. Key Management Service (KMS) generates and manages the keys used by TDE. ApsaraDB for MongoDB does not provide keys or certificates required for encryption.
+After you enable TDE, only new collections are encrypted. Existing collections are not encrypted. Key Management Service (KMS) generates and manages the keys used by TDE. ApsaraDB for MongoDB does not provide keys or certificates required for encryption. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose Dat a Securit y > T DE.
 5. Turn on T DE St at us to enable TDE.
 6. In the Rest art Inst ance dialog box, click OK.
@@ -1141,7 +1182,7 @@ db.createCollection("customer",{ storageEngine: { wiredTiger: { configString: "e
 
 ### 7.6 Use the mongo shell to connect to an ApsaraDB for MongoDB database in SSL encryption mode
 
-to an ApsaraDB for MongoDB database in SSL encryption mode This topic describes how to use the mongo shell to connect to an ApsaraDB for MongoDB database in Secure Sockets Layer (SSL) encryption mode. SSL encryption can encrypt network connections at the transport layer to improve data security and ensure data integrity. Prerequisites The instance is a replica set instance, and the database version of the instance is 3.4, 4.0, or 4.2. The mongo shell of the required version is installed on the local server or ECS instance from which you want to connect to the database. For more information about the installation procedure, visit MongoDB official documentation. SSL encryption is enabled for the instance. For more information, see Configure SSL encryption. The IP address of the local server or the ECS instance is added to a whitelist of the ApsaraDB for MongoDB instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance. Precautions After you enable SSL encryption for an instance, the CPU utilization of the instance is significantly increased. We recommend that you enable SSL encryption only when necessary. A local server with a Linux operating system is used in the following example.
+to an ApsaraDB for MongoDB database in SSL encryption mode This topic describes how to use the mongo shell to connect to an ApsaraDB for MongoDB database in Secure Sockets Layer (SSL) encryption mode. SSL encryption can encrypt network connections at the transport layer to improve data security and ensure data integrity. Prerequisites The instance is a replica set instance, and the database version of the instance is 3.4, 4.0, or 4.2. The mongo shell of the required version is installed on the local server or ECS instance from which you want to connect to the database. For more information about the installation procedure, visit MongoDB official documentation. SSL encryption is enabled for the instance. For more information, see Configure SSL encryption. The IP address of the local server or the ECS instance is added to a whitelist of the ApsaraDB for MongoDB instance. For more information, see Configure a whitelist for an ApsaraDB for MongoDB instance. Precautions After you enable SSL encryption for an instance, the CPU utilization of the instance is significantly increased. We recommend that you enable SSL encryption only when necessary. Procedure A local server with a Linux operating system is used in the following example.
 1. Download an SSL CA certificate package. For more information, see Configure SSL encryption.
 2. Decompress the package and upload the certificate files to the local server or the ECS instance
 where the mongo shell is installed.
@@ -1178,8 +1219,9 @@ If you forget the password of the root user, you can reset it. For more informat
 
 ### 8.1 Create a dual-zone replica set instance
 
-instance This topic describes how to create a dual-zone replica set instance. ApsaraDB for MongoDB provides a zone-disaster recovery solution to ensure the reliability and availability of your replica set instance. This solution deploys the three nodes of a replica set instance across two different zones within one region. The components in these zones exchange data over an internal network. When one of the two zones becomes unavailable due to unexpected events such as a power or network failure, the high-availability (HA) system switches services over to another zone. Deployment policies The primary, secondary, and hidden nodes of a replica set instance are deployed in two different zones within one region.
+instance This topic describes how to create a dual-zone replica set instance. ApsaraDB for MongoDB provides a zone-disaster recovery solution to ensure the reliability and availability of your replica set instance. This solution deploys the three nodes of a replica set instance across two different zones within one region. The components in these zones exchange data over an internal network. When one of the two zones becomes unavailable due to unexpected events such as a power or network failure, the high-availability (HA) system switches services over to another zone. Deployment policies The primary, secondary, and hidden nodes of a replica set instance are deployed in two different zones within one region. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances.
 3. On the Replica Set Inst ances page, click Creat e Inst ance.
 4. On the Creat e ApsaraDB f or MongoDB Inst ance page, configure parameters.
@@ -1192,8 +1234,9 @@ For more information, see Create a replica set instance.
 
 ### 8.2 Create a dual-zone sharded cluster instance
 
-cluster instance This topic describes how to create a dual-zone sharded cluster instance. ApsaraDB for MongoDB provides a zone-disaster recovery solution to ensure the reliability and availability of your sharded cluster instance. This solution deploys the components of a sharded cluster instance across two different zones within one region. The components in these zones exchange data over an internal network. When one zone becomes unavailable due to unexpected events such as a power or network failure, the high availability (HA) system automatically switches business over to the other zone. Deployment policies The components of a sharded cluster instance are deployed across two different zones within one region. Mongos nodes are evenly deployed across all data centers. At least two mongos nodes are deployed at a time, with each in one zone. Each new mongos node added later is deployed to one of the zones in turn. The primary, secondary, and hidden nodes in each shard node are not deployed to the two zones in sequence. The deployment of these nodes may change when manual switchover or HA failover between primary and secondary nodes is triggered.
+cluster instance This topic describes how to create a dual-zone sharded cluster instance. ApsaraDB for MongoDB provides a zone-disaster recovery solution to ensure the reliability and availability of your sharded cluster instance. This solution deploys the components of a sharded cluster instance across two different zones within one region. The components in these zones exchange data over an internal network. When one zone becomes unavailable due to unexpected events such as a power or network failure, the high availability (HA) system automatically switches business over to the other zone. Deployment policies The components of a sharded cluster instance are deployed across two different zones within one region. Mongos nodes are evenly deployed across all data centers. At least two mongos nodes are deployed at a time, with each in one zone. Each new mongos node added later is deployed to one of the zones in turn. The primary, secondary, and hidden nodes in each shard node are not deployed to the two zones in sequence. The deployment of these nodes may change when manual switchover or HA failover between primary and secondary nodes is triggered. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Sharded Clust er Inst ances.
 3. On the Sharded Clust er Inst ances page, click Creat e Inst ance.
 4. On the Creat e ApsaraDB f or MongoDB Sharded Clust er Inst ance page, configure parameters.
@@ -1210,27 +1253,29 @@ For more information, see Create a sharded cluster instance.
 
 This topic describes how to view performance trends in specific ranges, compare performance trends, and customize charts to view performance trends on your ApsaraDB for MongoDB instances. Go to the Performance page
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose CloudDBA > Perf ormance T rends.
 
 > Not e For more information about performance trends, see relevant topics in Database Autonomy Service (DAS) User Guide.
 
 ### 9.2 Real-time performance
 
-This topic describes how to view real-time monitoring statistics of your ApsaraDB for MongoDB instances, such as read/write latency, queries per second (QPS), operations, connections, and network traffic. Prerequisites Database Autonomy Service (DAS) is authorized to manage ApsaraDB for MongoDB instances.
+This topic describes how to view real-time monitoring statistics of your ApsaraDB for MongoDB instances, such as read/write latency, queries per second (QPS), operations, connections, and network traffic. Prerequisites Database Autonomy Service (DAS) is authorized to manage ApsaraDB for MongoDB instances. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose CloudDBA > Real-t ime Perf ormance.
 Overview of the Real-time Monitoring page On the Real-time Monitoring page, you can click the Real-time Charts or Mongostat tab to view monitoring statistics. When you refresh the Real-t ime Monit oring page, the information on the Realtime Charts and Mongostat tabs is refreshed, and Available Ref reshes is reset in the upper-right corner. Real-time charts By default, content on the Real-t ime Chart s tab is displayed when you go to the Real-time Monitoring page. Line charts on the tab are refreshed every 5 seconds.
 
 > Not e For more information about performance metrics, click the
 > icon above each chart.
 
-mongostat Click the Mongost at tab. On the tab, you can view Mongostat command outputs. A new line of monitoring data is added every 5 seconds. The tab can contain up to 999 lines of information. For more information about Mongostat command outputs, see MongoDB official documentation.
+mongostat Click the Mongost at tab. On the tab, you can view Mongostat command outputs. A new line of monitoring data is added every 5 seconds. The tab can contain up to 999 lines of information. Not e For more information about Mongostat command outputs, see MongoDB official documentation.
 
 ### 9.3 Instance sessions
 
@@ -1238,7 +1283,7 @@ This topic describes how to view real-time monitoring statistics of your ApsaraD
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose CloudDBA > Sessions.
 
 > Not e
@@ -1260,7 +1305,7 @@ This topic describes how to view information about the storage analysis feature,
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
-in the Act ions column corresponding to the instance and select Manage.
+click in the Act ions column corresponding to the instance and select Manage.
 4. In the left-side navigation pane, choose CloudDBA > St orage analysis.
 5. In the upper-right corner, click Re-analyze. Then, wait until the analysis is complete.
 6. On the St orage Overview or Dat a Space tab, view the analysis results.
@@ -1288,8 +1333,9 @@ Data Space The Data Space tab shows the total storage capacity and tablespace in
 
 ### 9.5 Slow query logs
 
-This topic describes how to view slow query logs of ApsaraDB for MongoDB instances. You can identify, analyze, diagnose, and track slow query logs to create indexes. This improves the utilization of the instance resources.
+This topic describes how to view slow query logs of ApsaraDB for MongoDB instances. You can identify, analyze, diagnose, and track slow query logs to create indexes. This improves the utilization of the instance resources. Procedure
 1. Log on to the ApsaraDB for MongoDB console. For more information about how to log on to the
+console, see Log on to the ApsaraDB for MongoDB console.
 2. In the left-side navigation pane, click Replica Set Inst ances or Sharded Clust er Inst ances.
 3. On the Replica Set Inst ances or Sharded Clust er Inst ances page, click the ID of an instance, or
 in the Act ions column corresponding to the instance and select Manage.

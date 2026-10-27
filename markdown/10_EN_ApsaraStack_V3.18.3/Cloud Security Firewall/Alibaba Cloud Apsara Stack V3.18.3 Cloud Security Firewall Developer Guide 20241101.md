@@ -5,7 +5,7 @@ doc_version: "20241101"
 pdf_pages: 108
 source_pdf: "Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Firewall Developer Guide 20241101.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/V3.18.3/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.3%20Cloud%20Security%20Firewall%20Developer%20Guide%2020241101.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack V3.18.3 Cloud Security Firewall Developer Guide 20241101
@@ -512,7 +512,11 @@ API responses use the HTTP response format: A 2xx status code indicates a succes
 
 #### 4.1.1 Request structure
 
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests.
+
+**Description**
+
+You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters

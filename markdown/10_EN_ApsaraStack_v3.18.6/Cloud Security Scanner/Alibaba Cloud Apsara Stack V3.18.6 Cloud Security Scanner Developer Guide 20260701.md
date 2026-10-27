@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 233
 source_pdf: "ca8d4b4a75b5cf54_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%EF%BC%88%E9%BB%98%E5%AE%89%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Scanner%20Developer%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Cloud Security Scanner Developer Guide 20260701
@@ -283,7 +283,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 > <yourRoleArn>: Replace this variable with the actual ARN of your RAM role.
 > "sts.aliyuns.com": Replace this variable with the actual endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -303,6 +303,11 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the actual endpoint of STS. The format of an STS
@@ -327,9 +332,15 @@ evious step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the access credential assigned by STS to call an API operation of a service. The
 following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
@@ -380,6 +391,8 @@ ned in the previous step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 2.5 Obtain an endpoint
 
@@ -531,9 +544,22 @@ package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "git
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- request
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err) fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
+
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
+
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 #### 3.2.2 User guide
 
@@ -581,6 +607,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<YOUR-ENDPOINT>"// The endpoint of the service.
     request.Version = "<API-version>"// The version of the API.
@@ -590,8 +621,15 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 4 Common parameters
 
@@ -696,8 +734,13 @@ https://[Endpoint]/?Action=TemplateAssetDetectionAdd&RegionId=cnhangzhou&alive_p
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
 ```
@@ -767,10 +810,20 @@ https://[Endpoint]/?Action=TemplateListGetByType&RegionId=cn-hangzhou&template_t
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "creator":"",
             "create_tm":"",
             "org_id":"",
@@ -781,10 +834,10 @@ Content-Type:application/json
             "org_full_id":""
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TemplateListGetByTypeResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateListGetByTypeResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <create_tm></create_tm>
@@ -853,16 +906,21 @@ https://[Endpoint]/?Action=TemplateRiskScanAdd&RegionId=cnhangzhou&advanced_scan
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TemplateRiskScanAddResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TemplateRiskScanAddResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
 </TemplateRiskScanAddResponse>
@@ -953,8 +1011,13 @@ https://[Endpoint]/?Action=TemplateAssetDetectionDetail&RegionId=cn-hangzhou&id=
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "alive_ports":"",
     "baseline_id":"",
@@ -987,7 +1050,7 @@ Content-Type:application/json
     "wait_timeout":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TemplateAssetDetectionDetailResponse>
@@ -1078,8 +1141,13 @@ https://[Endpoint]/?Action=GetAssetImportTaskInfo&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "group_id":1,
     "screen_shot":1,
@@ -1088,10 +1156,10 @@ Content-Type:application/json
     "template_id":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetAssetImportTaskInfoResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetAssetImportTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <asset_list>
         <asset_list></asset_list>
@@ -1160,8 +1228,13 @@ https://[Endpoint]/?Action=GetRiskScanTaskTemplate&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "advanced_scan":"",
     "basic_scan":"",
@@ -1170,10 +1243,10 @@ Content-Type:application/json
     "user_agent":"xxx"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetRiskScanTaskTemplateResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetRiskScanTaskTemplateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <advanced_scan></advanced_scan>
     <basic_scan></basic_scan>
@@ -1234,8 +1307,13 @@ https://[Endpoint]/?Action=TemplateDelete&RegionId=cn-hangzhou&ids=
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
@@ -1323,11 +1401,21 @@ https://[Endpoint]/?Action=TemplateList&RegionId=cn-hangzhou&end_time=2024-08-01
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "creator":"",
             "create_tm":"",
             "org_id":"",
@@ -1338,7 +1426,7 @@ Content-Type:application/json
             "org_full_id":""
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TemplateListResponse>
@@ -1410,8 +1498,13 @@ https://[Endpoint]/?Action=TemplateRiskScanDetail&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "advanced_scan":"",
     "basic_scan":"",
@@ -1420,7 +1513,7 @@ Content-Type:application/json
     "user_agent":"xxx"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TemplateRiskScanDetailResponse>
@@ -1485,8 +1578,13 @@ https://[Endpoint]/?Action=TemplateWebMonitorConf&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "default_crawl_depth":"",
     "default_monitor_cycle":"",
@@ -1495,7 +1593,7 @@ Content-Type:application/json
     "scan_param":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TemplateWebMonitorConfResponse>
@@ -1558,18 +1656,28 @@ https://[Endpoint]/?Action=BasicRiskOption&RegionId=cn-hangzhou&type=
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "define":"",
             "name":""
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <BasicRiskOptionResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <BasicRiskOptionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <define></define>
@@ -1639,18 +1747,28 @@ https://[Endpoint]/?Action=GetCommonVulnItemList&RegionId=cnhangzhou&general_typ
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "risk_count":"",
             "module_count":"",
             "name":"",
             "status":""
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <GetCommonVulnItemListResponse>
@@ -1732,18 +1850,28 @@ https://[Endpoint]/?Action=BatchStartTasks&RegionId=cn-hangzhou&end_time=2020-01
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <BatchStartTasksResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <BatchStartTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
@@ -1814,16 +1942,21 @@ https://[Endpoint]/?Action=TaskAssetScanCreate&RegionId=cnhangzhou&cycle=SPEC&en
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskAssetScanCreateResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetScanCreateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
 </TaskAssetScanCreateResponse>
@@ -1917,11 +2050,21 @@ https://[Endpoint]/?Action=TaskList&RegionId=cn-hangzhou&end_time=2020-01-01 00:
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":10,
     "results":[
+```
+
+`{`
+
+```json
             "cycle_count":10,
             "task_name":"Asset scan task-test",
             "creator":"admin",
@@ -1939,7 +2082,7 @@ Content-Type:application/json
             "status":"INIT"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskListResponse>
@@ -2033,16 +2176,21 @@ https://[Endpoint]/?Action=BatchStopTasks&RegionId=cn-hangzhou&end_time=2020-01-
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <BatchStopTasksResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <BatchStopTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
 </BatchStopTasksResponse>
@@ -2110,16 +2258,21 @@ https://[Endpoint]/?Action=BatchDeleteTasks&RegionId=cn-hangzhou&end_time=2020-0
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <BatchDeleteTasksResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <BatchDeleteTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
 </BatchDeleteTasksResponse>
@@ -2192,11 +2345,21 @@ https://[Endpoint]/?Action=TaskProcessV2&RegionId=cnhangzhou&all=True&insert_tm_
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "risk_addr":"http://1.1.1.1",
             "risk_level":"LOW",
             "risk_id":1,
@@ -2205,7 +2368,7 @@ Content-Type:application/json
             "risk_name":"xxx security vulnerability"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskProcessV2Response>
@@ -2275,15 +2438,25 @@ https://[Endpoint]/?Action=TaskStart&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskStartResponse>
@@ -2343,16 +2516,21 @@ https://[Endpoint]/?Action=TaskStop&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskStopResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskStopResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
 </TaskStopResponse>
@@ -2423,13 +2601,18 @@ https://[Endpoint]/?Action=BatchSuspendTasks&RegionId=cn-hangzhou&end_time=2020-
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <BatchSuspendTasksResponse>
@@ -2508,11 +2691,21 @@ https://[Endpoint]/?Action=TaskProcess&RegionId=cnhangzhou&all=True&insert_tm_or
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "risk_id":1,
             "is_deleted":0,
             "insert_tm":1620000000,
@@ -2521,10 +2714,10 @@ Content-Type:application/json
             "behavior":"Checking website: …"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskProcessResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskProcessResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2588,18 +2781,28 @@ https://[Endpoint]/?Action=TaskRestart&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskRestartResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRestartResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
@@ -2656,13 +2859,18 @@ https://[Endpoint]/?Action=TaskDelete&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskDeleteResponse>
@@ -2737,8 +2945,13 @@ https://[Endpoint]/?Action=TaskRiskScanDetail&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -2751,10 +2964,15 @@ Content-Type:application/json
     "start_tm":1600000000,
     "status":"RUNNING",
     "targets":[
+```
+
+`{`
+
+```json
             "type":"ALL"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "task_instance_id":1,
@@ -2762,7 +2980,7 @@ Content-Type:application/json
     "template_name":"xx risk scan template"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskRiskScanDetailResponse>
@@ -2854,8 +3072,13 @@ https://[Endpoint]/?Action=GetAssetScanTaskInfo&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":"SPEC",
     "end_tm":"24:00",
@@ -2869,7 +3092,7 @@ Content-Type:application/json
     "template_id":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <GetAssetScanTaskInfoResponse>
@@ -2962,11 +3185,21 @@ https://[Endpoint]/?Action=TaskAssetImportDetail&RegionId=cnhangzhou&asset_type=
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -2977,7 +3210,7 @@ Content-Type:application/json
             "id":1
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskAssetImportDetailResponse>
@@ -3071,8 +3304,13 @@ https://[Endpoint]/?Action=TaskAssetScanDetail&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -3086,10 +3324,15 @@ Content-Type:application/json
     "start_tm":1600000000,
     "status":"RUNNING",
     "targets":[
+```
+
+`{`
+
+```json
             "type":"ALL"
 ```
 
-`],`
+`}` `],`
 
 ```json
     "task_instance_id":1,
@@ -3097,7 +3340,7 @@ Content-Type:application/json
     "template_name":"xx asset scan template"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskAssetScanDetailResponse>
@@ -3187,10 +3430,20 @@ https://[Endpoint]/?Action=TaskAssetImportChildDetail&RegionId=cnhangzhou&asset_
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -3201,7 +3454,7 @@ Content-Type:application/json
             "id":1
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskAssetImportChildDetailResponse>
@@ -3263,15 +3516,20 @@ https://[Endpoint]/?Action=CycleTaskAssetStats&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <CycleTaskAssetStatsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CycleTaskAssetStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </CycleTaskAssetStatsResponse>
 ```
@@ -3317,15 +3575,20 @@ https://[Endpoint]/?Action=TaskAssetScanCycleRunning&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskAssetScanCycleRunningResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetScanCycleRunningResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </TaskAssetScanCycleRunningResponse>
 ```
@@ -3400,16 +3663,21 @@ https://[Endpoint]/?Action=TaskAssetImport&RegionId=cnhangzhou&asset_metadatas=&
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskAssetImportResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetImportResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
 </TaskAssetImportResponse>
@@ -3477,16 +3745,21 @@ https://[Endpoint]/?Action=TaskRiskScanCreate&RegionId=cnhangzhou&cycle=SPEC&end
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskRiskScanCreateResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRiskScanCreateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
 </TaskRiskScanCreateResponse>
@@ -3551,11 +3824,21 @@ https://[Endpoint]/?Action=TaskAssetImportDetailExists&RegionId=cnhangzhou&asset
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -3564,10 +3847,10 @@ Content-Type:application/json
             "id":1
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskAssetImportDetailExistsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskAssetImportDetailExistsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -3629,16 +3912,21 @@ https://[Endpoint]/?Action=TaskQueueTaskDetail&RegionId=cn-hangzhou&id=207_1_1_1
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "result":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskQueueTaskDetailResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <result></result>
 </TaskQueueTaskDetailResponse>
@@ -3717,8 +4005,13 @@ https://[Endpoint]/?Action=TaskAssetImportBaseInfo&RegionId=cnhangzhou&task_inst
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -3745,7 +4038,7 @@ Content-Type:application/json
     "vpc_id":"1"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskAssetImportBaseInfoResponse>
@@ -3817,15 +4110,20 @@ https://[Endpoint]/?Action=TaskRiskScanCycleRunning&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskRiskScanCycleRunningResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRiskScanCycleRunningResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </TaskRiskScanCycleRunningResponse>
 ```
@@ -3892,8 +4190,13 @@ https://[Endpoint]/?Action=GetAssetRiskScanTaskInfo&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":"SPEC",
     "end_tm":"24:00",
@@ -3907,10 +4210,10 @@ Content-Type:application/json
     "template_id":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <GetAssetRiskScanTaskInfoResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <GetAssetRiskScanTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>SPEC</cycle>
     <end_tm>24:00</end_tm>
@@ -3998,18 +4301,28 @@ https://[Endpoint]/?Action=BatchRestartTasks&RegionId=cn-hangzhou&end_time=2020-
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "task_instance_id":208,
             "task_id":173
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <BatchRestartTasksResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <BatchRestartTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
@@ -4072,20 +4385,30 @@ https://[Endpoint]/?Action=TaskQueueTaskList&RegionId=cnhangzhou&page=1&page_siz
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "list_type":"asset_list",
             "group_id":0,
             "id":"0_11_0"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskQueueTaskListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4161,11 +4484,21 @@ https://[Endpoint]/?Action=TaskQueueTaskInfo&RegionId=cnhangzhou&mode=1&page=1&p
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "task_name":"dd",
             "task_wait_num":2,
             "task_instance_id":206,
@@ -4176,7 +4509,7 @@ Content-Type:application/json
             "username":"admin"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskQueueTaskInfoResponse>
@@ -4239,18 +4572,28 @@ https://[Endpoint]/?Action=TaskStatusStats&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
+```
+
+`{`
+
+```json
             "count":10,
             "status":"RUNNING"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskStatusStatsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskStatusStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <count>10</count>
@@ -4321,11 +4664,21 @@ https://[Endpoint]/?Action=TaskQueueTaskListDetail&RegionId=cnhangzhou&list_name
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
+```
+
+`{`
+
+```json
             "list_type":"asset_monitor_task",
             "user_name":"admin",
             "name":"dd",
@@ -4333,7 +4686,7 @@ Content-Type:application/json
             "task_level":"high"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <TaskQueueTaskListDetailResponse>
@@ -4396,18 +4749,23 @@ https://[Endpoint]/?Action=TaskRunTypeStats&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":10,
     "immediately":10,
     "once":10
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskRunTypeStatsResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskRunTypeStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>10</cycle>
     <immediately>10</immediately>
@@ -4459,18 +4817,23 @@ https://[Endpoint]/?Action=TaskQueueTaskCount&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "await":7,
     "run":2,
     "task_queue":1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <TaskQueueTaskCountResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <TaskQueueTaskCountResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <await>7</await>
     <run>2</run>
@@ -4520,16 +4883,21 @@ https://[Endpoint]/?Action=SuspendStatus&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <SuspendStatusResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <SuspendStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data></data>
 </SuspendStatusResponse>
@@ -4643,8 +5011,13 @@ This operation uses common request headers and has no special request headers. F
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -4739,13 +5112,23 @@ POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Conte
   "update_tm_start": "2024-01-04 00:00:00"
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
+```
+
+`{`
+
+```json
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -4769,11 +5152,16 @@ Content-Type:application/json
 
 ```json
       "asset_tags": [
+```
+
+`{`
+
+```json
           "tag_id": 11,
           "tag_name": "EIP"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "staff": {},
@@ -4790,7 +5178,7 @@ Content-Type:application/json
       "update_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeHostAssetListResponse>
@@ -4940,8 +5328,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -5022,11 +5415,21 @@ POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Co
 
 Sample response `JSON` format
 
-```json
+```
 Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
+```
+
+`{`
+
+```json
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -5052,11 +5455,16 @@ Content-Type:application/json
 
 ```json
       "asset_tags": [
+```
+
+`{`
+
+```json
           "tag_id": 11,
           "tag_name": "EIP"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "staff": {},
@@ -5068,7 +5476,7 @@ Content-Type:application/json
       "update_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeWebsiteAssetListResponse>
@@ -5236,8 +5644,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -5302,10 +5715,10 @@ POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Con
   "update_tm_start": "2024-01-04 00:00:00"
 ```
 
-Sample responses `JSON` format
+`}` Sample responses `JSON` format
 
 ```json
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
 ```
 
@@ -5328,32 +5741,47 @@ Content-Type:application/json
       "parse_err": "Domain resolution timed out.",
       "cdn": "Alibaba Cloud",
       "asset_tags": [
+```
+
+`{`
+
+```json
           "tag_id": 11,
           "tag_name": "EIP"
 ```
 
-`],`
+`}` `],`
 
 ```json
       "staff": {},
       "domain_parsed": [
+```
+
+`{`
+
+```json
           "id": 123,
           "ip": "192.168.131.100",
           "insert_tm": 1774428275,
           "update_tm": 1774428275
 ```
 
-`],`
+`}` `],`
 
 ```json
       "parsed_history": [
+```
+
+`{`
+
+```json
           "id": 123,
           "ip": "192.168.131.100",
           "insert_tm": 1774428275,
           "update_tm": 1774428275
 ```
 
-`],`
+`}` `],`
 
 ```json
       "asset_source": "AUTO",
@@ -5363,7 +5791,7 @@ Content-Type:application/json
       "update_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```
 Content-Type:application/xml
@@ -5466,24 +5894,34 @@ This operation uses common request headers. For more information, see Common Req
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DeleteAsset&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "add_white": 1,
   "ids": [
     123,
 ```
 
-`]` Successful response example `JSON` format
+`]` `}` Successful response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteAssetResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteAssetResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 </DeleteAssetResponse>
 ```
@@ -5549,8 +5987,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "1",
   "template_id": 1,
   "group_id": 0,
@@ -5566,6 +6009,11 @@ POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Conte
   "is_immediately": 1,
   "is_public_asset": 1,
   "asset_metadatas": [
+```
+
+`{`
+
+```json
       "hostName": "xxlsk",
       "ip": "1.1.1.1",
       "instanceId": "xxx_ss",
@@ -5573,7 +6021,7 @@ POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Conte
       "osType": "linux"
 ```
 
-`],`
+`}` `],`
 
 ```json
   "not_alive_report": 1,
@@ -5581,18 +6029,23 @@ POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Conte
   "start_tm": "2020-01-01 00:00:00"
 ```
 
-Successful response example `JSON` format
+`}` Successful response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_instance_id": 1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <CreateAssetImportTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateAssetImportTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_instance_id>1</task_instance_id>
 </CreateAssetImportTaskResponse>
@@ -5660,15 +6113,25 @@ This operation uses only common request headers. For more information, see commo
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_instance_id": 1
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "vpc_id": "1",
   "id": 1,
@@ -5690,10 +6153,10 @@ Content-Type:application/json
   "start_time": 1774428275
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeAssetImportTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetImportTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <vpc_id>1</vpc_id>
     <id>1</id>
@@ -5774,8 +6237,13 @@ This operation uses common request headers and has no special request headers. F
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeAssetImportTaskResult&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_instance_id": 1,
   "asset_type": "IP",
   "is_new": 1,
@@ -5784,13 +6252,23 @@ POST https://[Endpoint]/?Action=DescribeAssetImportTaskResult&RegionId=cn-hangzh
   "search": "1.1.1.1"
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 100,
   "results": [
+```
+
+`{`
+
+```json
       "id": 1,
       "task_instance_id": 1,
       "asset_name": "1.1.1.1",
@@ -5800,7 +6278,7 @@ Content-Type:application/json
       "insert_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeAssetImportTaskResultResponse>
@@ -5873,8 +6351,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=CreateAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "1",
   "template_id": 1,
   "task_name": "Risk-Scan-Task-Test",
@@ -5882,18 +6365,23 @@ POST https://[Endpoint]/?Action=CreateAssetScanTask&RegionId=cn-hangzhou Content
   "screen_shot": 1
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_id": 1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <CreateAssetScanTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateAssetScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_id>1</task_id>
 </CreateAssetScanTaskResponse>
@@ -5955,15 +6443,25 @@ This operation uses only common request parameters. For more information, see co
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "id": 1
 ```
 
-Response example `JSON` format
+`}` Response example `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "id": 1,
   "task_instance_id": 1,
@@ -5972,11 +6470,16 @@ Content-Type:application/json
   "template_name": "Example asset scan template",
   "status": "RUNNING",
   "targets": [
+```
+
+`{`
+
+```json
       "type": "ALL",
       "target": [
 ```
 
-`""` `]` `],`
+`""` `]` `}` `],`
 
 ```json
   "cycle_count": 10,
@@ -5986,7 +6489,7 @@ Content-Type:application/json
   "start_tm": 1774428275
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeAssetScanTaskResponse>
@@ -6059,8 +6562,13 @@ This operation has no special request headers. For more information, see common 
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "template_id": 1,
   "vpc_ids": [
     "vpc_1",
@@ -6074,18 +6582,23 @@ POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-
   "targets": ""
 ```
 
-Successful response example `JSON` format
+`}` Successful response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_id": 1
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <CreateRiskScanTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <CreateRiskScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_id>1</task_id>
 </CreateRiskScanTaskResponse>
@@ -6148,15 +6661,25 @@ This operation uses only common request headers. For more information, see commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "id": 1
 ```
 
-Sample response `JSON` format
+`}` Sample response `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "id": 1,
   "task_instance_id": 1,
@@ -6165,11 +6688,16 @@ Content-Type:application/json
   "template_name": "xx risk scan template",
   "status": "RUNNING",
   "targets": [
+```
+
+`{`
+
+```json
       "type": "ALL",
       "target": [
 ```
 
-`""` `]` `],`
+`""` `]` `}` `],`
 
 ```json
   "cycle_count": 10,
@@ -6178,10 +6706,10 @@ Content-Type:application/json
   "start_tm": 1774428275
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <DescribeRiskScanTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeRiskScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <id>1</id>
     <task_instance_id>1</task_instance_id>
@@ -6260,8 +6788,13 @@ This operation uses only common request headers. For more information, see commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeRiskScanTaskResult&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_instance_id": 1,
   "risk_type": 2,
   "page": 1,
@@ -6269,13 +6802,23 @@ POST https://[Endpoint]/?Action=DescribeRiskScanTaskResult&RegionId=cn-hangzhou 
   "search": "1_1_1_1_1"
 ```
 
-Sample response `JSON` format
+`}` Sample response `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 100,
   "results": [
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "risk_name": "Example security vulnerability",
       "risk_type": 3,
@@ -6284,7 +6827,7 @@ Content-Type:application/json
       "insert_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeRiskScanTaskResultResponse>
@@ -6369,8 +6912,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "template_id": 1,
   "page": 1,
   "page_size": 10,
@@ -6401,12 +6949,22 @@ POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Ty
 
 Response example
 
-```json
+```
  JSON
-Content-Type:application/json
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
+```
+
+`{`
+
+```json
       "id": 1,
       "task_instance_id": 123,
       "task_name": "Asset Scan Task-Test",
@@ -6421,11 +6979,11 @@ Content-Type:application/json
       "insert_tm": 1774428275
 ```
 
-`]`
+`}` `]` `}`
 
 ```xml
  XML
-Content-Type:application/xml <DescribeTaskListResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeTaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -6492,25 +7050,40 @@ This operation uses only common request headers. For details, see common request
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=StartTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_ids": [
 ```
 
-`1,` `2,` `]` Sample success response `JSON` format
+`1,` `2,` `]` `}` Sample success response `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "data": [
+```
+
+`{`
+
+```json
       "task_instance_id": 208,
       "task_id": 173
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-Content-Type:application/xml <StartTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <StartTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <item>
@@ -6564,23 +7137,33 @@ This operation uses only common request headers. For more information, see Commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=StopTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_ids": [
 ```
 
-`1,` `2,` `]` Sample responses `JSON` format
+`1,` `2,` `]` `}` Sample responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <StopTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <StopTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
 </StopTaskResponse>
@@ -6627,23 +7210,33 @@ This operation uses only common request headers. For more information, see commo
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=SuspendTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_ids": [
 ```
 
-`1,` `2,` `]` Successful response example `JSON` format
+`1,` `2,` `]` `}` Successful response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <SuspendTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <SuspendTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
 </SuspendTaskResponse>
@@ -6692,23 +7285,33 @@ This operation uses only common request headers. For more information, see commo
 
 Request example
 
-```json
+```
 POST https://[Endpoint]/?Action=DeleteTask&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "task_ids": [
 ```
 
 `1,` `2,` `]` Successful response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <DeleteTaskResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <DeleteTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
 </DeleteTaskResponse>
@@ -6818,8 +7421,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "public_network_asset",
   "asset_id": 1,
   "group_ids": [
@@ -6886,13 +7494,23 @@ POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Ty
   "vuln_types": [
 ```
 
-`1,` `]` Sample success response Response in `JSON` format
+`1,` `]` `}` Sample success response Response in `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "asset_id": 1,
       "vuln_id": 1,
@@ -6915,7 +7533,7 @@ Content-Type:application/json
       "update_tm": 1774428275
 ```
 
-`]` Response in `XML` format
+`}` `]` `}` Response in `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeRiskListResponse>
@@ -7045,8 +7663,13 @@ This operation uses only common request headers. For more information, refer to 
 
 Example request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "public_network_asset",
   "group_ids": [
 ```
@@ -7103,13 +7726,23 @@ POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Co
   "update_tm_start": "2021-01-04 00:00:00"
 ```
 
-Example of a successful response `JSON` format
+`}` Example of a successful response `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "asset_id": 1,
       "rule_id": 1,
@@ -7128,7 +7761,7 @@ Content-Type:application/json
       "update_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeBaselineRiskListResponse>
@@ -7269,8 +7902,13 @@ This operation uses only common request headers. For more information, see Commo
 
 Sample request
 
-```json
+```
 POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou Content-Type: application/json
+```
+
+`{`
+
+```json
   "vpc_id": "public_network_asset",
   "asset_id": 1,
   "host_asset_id": 1,
@@ -7361,13 +7999,23 @@ POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou 
   "update_tm_start": "2021-01-04 00:00:00"
 ```
 
-Sample response `JSON` format
+`}` Sample response `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
+```
+
+`{`
+
+```json
       "risk_id": 1,
       "asset_id": 1,
       "risk_name": "foo",
@@ -7402,7 +8050,7 @@ Content-Type:application/json
       "update_tm": 1774428275
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <DescribeComplianceRiskListResponse>
@@ -7516,12 +8164,22 @@ https://[Endpoint]/?Action=GetData&RegionId=cnhangzhou&company_id=0&csv=1&end=17
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":150,
     "path":"http://oss.xxxx.xxxx/xxx/xx",
     "results":[
+```
+
+`{`
+
+```json
             "audit_event":"Import assets",
             "event_attr":"[rp] import",
             "module":"ASSET",
@@ -7532,7 +8190,7 @@ Content-Type:application/json
             "login_ip":"192.168.102.18"
 ```
 
-`]` `XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 Content-Type:application/xml <GetDataResponse>
@@ -7600,16 +8258,21 @@ https://[Endpoint]/?Action=LouauditCleanData&RegionId=cn-hangzhou&keep_time=1722
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-Content-Type:application/xml <LouauditCleanDataResponse>
+HTTP/1.1 200 OK Content-Type:application/xml <LouauditCleanDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
 </LouauditCleanDataResponse>

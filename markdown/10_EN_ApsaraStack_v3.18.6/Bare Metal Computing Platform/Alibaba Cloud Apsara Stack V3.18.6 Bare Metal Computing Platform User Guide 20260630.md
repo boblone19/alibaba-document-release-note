@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 121
 source_pdf: "122be9c619dcdbc2_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20User%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Bare Metal Computing Platform User Guide 20260630
@@ -206,6 +206,9 @@ computing clusters and ACK-intelligent computing clusters, including metrics rel
 ### 2.1 Work with BMCP
 
 This topic describes the procedure for getting started with Bare Metal Computing Platform (BMCP). To use the cluster service, make sure that you have created bare metal instances. You can log on to the BMCP Operations console to view your bare metal instances. Then, you can create bare metal-intelligent computing clusters, ACK-intelligent computing clusters, or bare metal-supercomputing clusters based on your business requirements. You can also scale out, scale in, or delete clusters and nodes to meet business requirements.
+
+**Procedure**
+
 **Create a cluster**: You can create a bare metal-intelligent computing cluster, ACK-
 intelligent computing cluster, or bare metal-supercomputing cluster. To create a cluster, specify the basic information, organization and resource set, network information, bare metal instances, Elastic Compute Service (ECS) instance types of the cluster, and build an installation image.
 **Scale out a cluster**: You can scale out an existing cluster. Make sure that you have bare
@@ -222,6 +225,9 @@ This topic describes how to log on to the Apsara Uni-manager Management Console 
 **Prerequisites**
 
 To log on to BMCP, you must first log on to the Apsara Uni-manager Management Console. Make sure that the endpoint of the Apsara Uni-manager Management Console is obtained. We recommend that you use the Google Chrome browser.
+
+**Procedure**
+
 1. In the address bar of the browser, enter the endpoint of the Apsara Uni-manager
 Management Console.
 2. Enter the username and password.
@@ -267,6 +273,9 @@ This topic describes how to create a bare metal - intelligent computing cluster.
 **Prerequisites**
 
 You have registered a Bare Metal Computing Platform (BMCP) instance in the BMCP Operations Console. Bare metal nodes run normally.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click **Create Cluster**.
@@ -332,6 +341,9 @@ For more information about service management, see the **Service management** se
 **cluster**
 
 This topic describes how to create a ACK - intelligent computing cluster.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click **Create Cluster**.
@@ -456,6 +468,9 @@ The bare metal - supercomputing cluster uses cluster-based management to enable 
 **Prerequisites**
 
 You have registered a Bare Metal Computing Platform (BMCP) instance in the BMCP Operations Console. Bare metal nodes are running normally.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click **Create Cluster**.
@@ -560,6 +575,9 @@ When a cluster lacks sufficient bare metal instances or ECS instances, scale out
 **Prerequisites**
 
 The cluster you want to scale out is in **Running** state. The resource pool contains bare metal instances that are in **Running** state.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click **Scale Out** in the **Actions** column of the target cluster.
@@ -602,6 +620,9 @@ Clusters after Enable high-performance storage have node quantity limits after s
 **Warning**
 
 Scaling in bare metal nodes in a cluster carries certain risks. Proceed with caution!
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click **Scale In** in the **Actions** column of the target cluster.
@@ -676,6 +697,9 @@ You have created a cluster. For more information, see Create a cluster.
 **Cluster instance type**: Clusters whose instance type is **high-bandwidth network**
 **instance** or **computing-optimized training & inference instance** support enabling
 high-performance storage. The minimum number of BMCP nodes depends on the storage type: CPFS: The minimum number of nodes is 3. APFS: The minimum number of nodes is 1. You must deploy the corresponding high-performance storage.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. On the **Cluster Management** page, select **ACK - Intelligent Computing Cluster** for
@@ -691,6 +715,8 @@ The system supports CPFS and APFS.
 
 > **Important:** By default, the disable operation unmounts all high-performance storage file systems mounted under the current client cluster. We recommend that you unmount file systems before disabling high-performance storage.
 
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Locate the target cluster and click
@@ -703,6 +729,9 @@ in the **Actions** column.
 **Prerequisites**
 
 You have Enable high-performance storage.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Locate the target cluster and click
@@ -729,6 +758,8 @@ in the **Actions** column.
 
 > **Important:** When you unmount a file system, the system teminates all processes that are using this file system in the current cluster. This may cause data loss or service interruption. Proceed with caution.
 
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Find the row that contains the target cluster and click
@@ -752,6 +783,9 @@ Only **ACK - intelligent computing clusters** whose **cluster instance type** is
 The cluster must have the cluster O&M service enabled and the ack-fluid component installed. If not installed, see the **Kubernetes cluster > Components > Component**
 **introduction > ack-fluid** section in **Container Service for Kubernetes User Guide**.
 LVM must be configured on BMCP nodes in the cluster.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluste and Node > Cluster Management**.
 3. In the cluster list, select **ACK - Intelligent Computing Cluster** for **Cluster Type**, and
@@ -787,6 +821,9 @@ This topic describes how to jump to the ACK console for a ACK - intelligent comp
 **Prerequisites**
 
 You have Create a ACK - intelligent computing cluster.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. On the **Cluster Management** page, select **ACK - Intelligent Computing Cluster** for
@@ -795,7 +832,11 @@ You have Create a ACK - intelligent computing cluster.
 in the **Actions** column.
 5. In the drop-down menu that appears, click **Go to ACK Console**.
 6. On the redirected **Container Service** page, select **Organization** and **Region**. Then,
-choose either **Access with Authorized Role** or **Access as Administrator** to access the ACK console. Access with authorized role: Jump to the console using the current user role (high security, recommended). Access as administrator: Jump to the console using the cloud product administrator account.
+choose either **Access with Authorized Role** or **Access as Administrator** to access the ACK console.
+
+**Note**
+
+Access with authorized role: Jump to the console using the current user role (high security, recommended). Access as administrator: Jump to the console using the cloud product administrator account.
 
 #### 4.1.9 Connection information
 
@@ -808,6 +849,9 @@ To connect to a cluster by using kubectl, you must first obtain the KubeConfig o
 **Prerequisites**
 
 Determine the client machine on which you want to install kubectl and install kubectl based on the runtime environment and cluster version.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click the ID of the target cluster or click **Details** in the **Actions** column.
@@ -848,6 +892,8 @@ NAME STATUS AGE default Active 4h39m kube-node-lease Active 4h39m kube-public Ac
 
 In common multi-tenant scenarios, Container Service issues KubeConfig credentials embedded with identity information to users of different roles for connecting to clusters. When an internal employee leaves the company or a KubeConfig credential is suspected of being compromised, revoking the KubeConfig for that cluster effectively secures the cluster. This topic describes how to revoke your own KubeConfig credential in Container Service.
 
+**Procedure**
+
 > **Important:** After revoking the KubeConfig, you cannot use the original KubeConfig to connect to the cluster. Proceed with caution.
 
 1. Log in to BMCP.
@@ -868,6 +914,9 @@ This topic describes how to view details of software instances for an ACK - inte
 **Prerequisites**
 
 You have Create a ACK - intelligent computing cluster.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, select **Cluster and Node > Cluster Management**.
 3. On the **Cluster Management** page, select **ACK - Intelligent Computing Cluster** for
@@ -931,6 +980,9 @@ monitoring data for resources such as instances, GPUs, and RDMA.
 > **Note:** The displayed monitoring metrics are subject to those shown in the Bare Metal Computing Platform (BMCP) console of your actual deployment environment.
 
 Monitoring metric data comes from the Cloud Monitor Service (CMS) platform.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Cluster Management**.
 3. Click the ID of the target cluster or click **Details** in the **Actions** column.
@@ -960,6 +1012,9 @@ Deleting a cluster involves certain risks. Proceed with caution!
 
 The cluster to delete must be in a stable status (Running, Creation Failed, Scale-out Failed, or Scale-in Failed). If the cluster to delete is an **ACK - intelligent computing cluster**, first turn off the
 **Deletion Protection** switch in the upper-right corner of the cluster details page.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, select **Cluster and Node > Cluster Management**.
 3. Click **Delete** in the **Actions** column for the target cluster, or click
@@ -987,6 +1042,8 @@ Nodes (or computing nodes) are the smallest units defined in the resource specif
 
 #### 4.2.1 View the details of a node
 
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Cluster and Node > Node Management**.
 3. On the Node Management page, find the node that you want to manage and click **Manage**
@@ -1008,6 +1065,9 @@ You can start, restart, or stop a node. This topic describes how to manage the s
 **Prerequisites**
 
 A bare metal-intelligent computing cluster, an ACK-intelligent computing cluster, or a bare metal-supercomputing cluster is created. For more information, see Create a cluster below Bare metal-intelligent computing clusters, Create a cluster below ACK-intelligent computing clusters, and Create a cluster below Bare metal-supercomputing clusters. The cluster contains bare metal nodes.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Cluster and Node > Node Management**.
 3. Click **Node Status** in the Actions column of a node.
@@ -1022,6 +1082,9 @@ Bare Metal Computing Platform (BMCP) provides a feature that allows you to mount
 
 A bare metal-intelligent computing cluster, an ACK-intelligent computing cluster, or a bare metal-supercomputing cluster is created. For more information, see Create a cluster below Bare metal-intelligent computing clusters, Create a cluster below ACK-intelligent computing clusters, and Create a cluster below Bare metal-supercomputing clusters. The cluster contains bare metal nodes. You can mount storage to nodes of the **Managed by Intelligent Computing** and **Basic**
 **Intelligent Computing** types.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, choose **Cluster and Node > Node Management**.
 3. Click a node in the **Node ID/Name** column or click **Manage** in the Actions column to go to
@@ -1056,6 +1119,9 @@ configure other parameters.
 #### 4.2.4 View operation records
 
 This topic describes how to view operation records for a node, including aggregation logs and operation logs.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Cluster and Node > Node Management**.
 3. Click **Node ID/Name** or **Manage** to go to the **Node Details** page.
@@ -1090,6 +1156,9 @@ b. Click **Operation Details** for a target operation record to view detailed in
 #### 4.2.5 View the monitoring data of a node
 
 The node management module provides the node monitoring feature, which allows you to view the basic, GPU, and RDMA monitoring data of nodes.
+
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Cluster and Node > Node Management**.
 3. On the Node Management page, find the node that you want to manage and click **Manage**
@@ -1112,6 +1181,9 @@ RDMA monitoring data.
 **Prerequisites**
 
 A bare metal-intelligent computing cluster, an ACK-intelligent computing cluster, or a bare metal-supercomputing cluster is created. For more information, see Create a cluster below Bare metal-intelligent computing clusters, Create a cluster below ACK-intelligent computing clusters, and Create a cluster below Bare metal-supercomputing clusters. The cluster contains bare metal nodes.
+
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Cluster and Node > Node Management**.
 3. On the page that appears, find the node that you want to log in and click **Remote Login** in
@@ -1137,6 +1209,8 @@ The system currently supports GPU virtualization only for the following GPUs.
 Before you enable hardware virtualization, make sure no tasks are running on the GPU. Otherwise, enabling fails. A single node supports only one virtualization policy at a time. For example, after enabling the hardware virtualization policy, you cannot enable the kernel mode virtualization or user mode virtualization.
 
 **Enable GPU virtualization**
+
+**Procedure**
 
 2. In the left-side navigation pane, click **Cluster and Node > Node Management**.
 3. Click the target **Node ID/Name** to go to the node details page.
@@ -1209,6 +1283,9 @@ Application services are AI-related Platform as a Service (PaaS) and Model as a 
 ### 6.1 Image center
 
 The image center provides secure, stable, and high-performance AI container images for Alibaba Cloud customers and AI-related cloud services. Bare Metal Computing Platform (BMCP) integrates Container Service for Kubernetes (ACK) on Apsara Uni-manager Management Console so that you can manage the lifecycle of container images requested by your ACK clusters.
+
+**Procedure**
+
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Application Services > Image Center**.
 3. On the **Image Center** page, you can view all images, **training images**, **inference**
@@ -1225,6 +1302,9 @@ You can click **Container Registry** on the **Image Center** page to log on to t
 #### 6.1.1 Verify image signatures
 
 The image signature verification feature ensures the integrity and security of container images that you use in AI training and inference scenarios. All officially released container images can be verified by using image signatures. Before you pull and run an image, you can verify the image signature to prevent the image from being tampered with or replaced. This topic describes how to verify an image signature.
+
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Application Service > Image Center**.
 3. On the Image Center page, click **Download Signature Verification Tool and Key**.
@@ -1299,6 +1379,9 @@ This topic describes value-added services for training and inference optimizatio
 #### 6.2.1 Image acceleration
 
 This topic describes how to create an image conversion task.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Application Services > Data Acceleration**.
 3. On the **Image Acceleration** tab, you can search images by URL in fuzzy match mode.
@@ -1364,6 +1447,9 @@ You can create an application to use the cache acceleration service or submit ma
 **Usage notes**
 
 The cache you create must belong to the same organization, resource set, region, zone, cluster, and namespace as the pod.
+
+**Procedure**
+
 1. Create a file named app.yaml based on the following YAML template:
 
 ```
@@ -1525,6 +1611,9 @@ This topic describes the prerequisites and procedure for creating a data distrib
 **Prerequisites**
 
 You have integrated multiple NVMe solid-state drives (SSDs) into one or more logical volumes by referring to the related KB document. To obtain the detailed KB document, contact Alibaba Cloud technical support engineers. The P2P distribution suite for Object Storage Service (OSS) data is installed in the cluster. For more information, see P2P distribution suite for OSS data.
+
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Application Service > Data Distribution**.
 3. Click **Create Data Distribution Task** .
@@ -1551,6 +1640,9 @@ After the task is created, you can view the task on the Data Distribution page. 
 #### 6.3.2 Delete a data distribution task
 
 You can delete a data distribution task at any time if it is no longer needed, to avoid unnecessary management overhead. This topic describes how to delete a data distribution task.
+
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Application Service > Data Distribution**.
 3. On the Data Distribution page, find the data distribution task that you want to delete and
@@ -1717,6 +1809,9 @@ aspeed: Includes deeply optimized components such as ASpeed inference service co
 #### 6.4.1 Install a component
 
 This topic describes how to install a component for an intelligent computing cluster.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Application Service > Application Center** to go to
 the **All Applications** tab.
@@ -1736,6 +1831,9 @@ to **Running**, the component is successfully installed.
 #### 6.4.2 Add a custom component
 
 Add a custom component when existing components do not meet your business requirements.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, click **Application Service > Application Center** to go to
 the **All Applications** tab.
@@ -1832,6 +1930,9 @@ By default, KGPU provides dual isolation capabilities for GPU memory and computi
 | 3 | GPU memory and computing power isolation |
 
 You can modify the value of shareModel in the ConfigMap based on your actual needs and restart the DaemonSet of kgpu to make the configuration take effect. This example demonstrates how to change the isolation mode from GPU memory isolation only to GPU memory and computing power isolation.
+
+**Procedure**
+
 1. Run the command to check whether kgpu-dp has been created.
 
 ```bash
@@ -1903,6 +2004,8 @@ KGPU divides resource scheduling into two phases: node scheduling and device sch
 
 | spread | Prefer nodes or devices with lower resource utilization to achieve load balancing and avoid single-point overload. Suitable for high- availability or performance-sensitive tasks. |
 |---|---|
+
+**Procedure**
 
 1. Run the command to check whether the kgpu-scheduler component exists.
 
@@ -2005,6 +2108,9 @@ This topic describes how to query models and view model details.
 **Prerequisites**
 
 A model is added in the BMCP Operations Console.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Node Model**.
 3. On the **Node Model** page, enter a model name or architecture to search for models.
@@ -2018,6 +2124,9 @@ This topic describes how to modify the configuration of a model.
 **Prerequisites**
 
 A model is added.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Node Model.**
 3. On the **Node Model** page, find the model to be modified and click **Modify** in the **Actions**
@@ -2041,6 +2150,9 @@ You can delete a model with the specified name. If the model is referenced by Ba
 **Warning**
 
 This operation is a high-risk operation and is irreversible. Proceed with caution.
+
+**Procedure**
+
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Models & Images > Node Model.**
 3. On the **Node Model** page, find the model that you want to delete and click **Delete** in the
@@ -2062,6 +2174,9 @@ A TGZ or QCOW2 custom image file that meets the specifications is stored in the 
 **Background information**
 
 You can upload TGZ or QCOW2 custom image files based on your business requirements.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 
@@ -2074,6 +2189,9 @@ You can upload TGZ or QCOW2 custom image files based on your business requiremen
 5. Click **Select File** below **Upload Image** and select the TGZ or QCOW2 image file that is
 saved on your computer. After the image file is uploaded, the **image name** is automatically generated.
 6. Click **OK** to upload the image file.
+
+**Note**
+
 The environment certificate affects image uploading. If the image fails to be uploaded, click **click here** to trust the certificate.
 
 **Troubleshooting**
@@ -2097,6 +2215,9 @@ A public image is saved in the environment to which you have logged on.
 **Background information**
 
 Bare Metal Computing Platform (BMCP) supports public images in the TGZ and QCOW2 formats. By default, BMCP provides some adapted public images. If no image is displayed on the Public Image tab or the status of the public images on the tab is not "Available", contact the developer. When a public image is **disabled**, it is not displayed in the Configure Image and Node Name fields. In this case, you need to enable the public image on the Public Image tab first. Some public images are only used to migrate products that are compatible with earlier versions. You cannot export these images.
+
+**Procedure**
+
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
@@ -2110,6 +2231,9 @@ This topic describes how to query custom images and view the details of custom i
 **Prerequisites**
 
 A custom image is created. For more information, see Upload a custom image.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
@@ -2128,6 +2252,8 @@ A custom image is created. For more information, see Upload a custom image.
 
 > **Note:** You can delete only custom images. Public images cannot be deleted.
 
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
@@ -2145,7 +2271,11 @@ A public image is created, or a custom image is uploaded. The image whose status
 
 **Background information**
 
-You can change the status of an image. After you change the status of an image to Disabled, the image cannot be referenced. If the image has been referenced, you cannot change the status of the image to Disabled. Disable an image i. Log on to Bare Metal Computing Platform (BMCP). ii. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
+You can change the status of an image. After you change the status of an image to Disabled, the image cannot be referenced. If the image has been referenced, you cannot change the status of the image to Disabled.
+
+**Procedure**
+
+Disable an image i. Log on to Bare Metal Computing Platform (BMCP). ii. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
 iii. On the **Bare Metal Instance Image** page, find the image that you want to manage and choose **Status > Disable Image** in the **Actions** column. iv. Then, the image is disabled. After the image is disabled, the status of the image changes from **Available** to
 **Unavailable. In addition, its status also changes from Enabled** to **Disabled**.
@@ -2159,6 +2289,9 @@ This topic describes how to export an image. You can export public images and cu
 **Prerequisites**
 
 A public image or custom image is created. For more information, see Upload a custom image.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
@@ -2169,6 +2302,9 @@ A public image or custom image is created. For more information, see Upload a cu
 #### 7.2.7 Verify the integrity of public images
 
 Bare Metal Computing Platform (BMCP) allows you to verify the integrity of public images in case the images are tampered with. This topic describes how to verify the integrity of public images.
+
+**Procedure**
+
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Models & Images > Bare Metal Instance**
 **Image**.
@@ -2190,6 +2326,8 @@ Bare Metal Computing Platform (BMCP) allows you to verify the integrity of publi
 ## 8 Network and security
 
 ### 8.1 VPC
+
+**Procedure**
 
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Network and Security > VPC** to redirect to the
@@ -2261,6 +2399,8 @@ This topic describes how to query communication libraries, download communicatio
 
 **Query communication libraries**
 
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Network and Security > EPVC Management**.
 3. Click the **Communication Library Management** tab.
@@ -2269,12 +2409,16 @@ match mode.
 
 **Copy the URLs of communication libraries**
 
+**Procedure**
+
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Network and Security > EPVC Management**.
 3. Click the **Communication Library Management** tab.
 4. Click **Copy File URL** in the Actions column of a communication library.
 
 **Download communication libraries**
+
+**Procedure**
 
 1. Log on to BMCP.
 2. In the left-side navigation pane, choose **Network and Security > EPVC Management**.
@@ -2566,6 +2710,9 @@ The Bare Metal Network page allows you to manage the associations between vSwitc
 **Usage notes**
 
 A vSwitch cannot be used in both cross-stack and de-stacking network environments. If a vSwitch is used by a machine connected to a host switch (HSW) or computing host switch (CHSW) stack, the vSwitch cannot be bound to an Express Connect router (ECR). If a vSwitch is bound to an ECR, machines connected to an HSW or CHSW stack cannot use the vSwitch. A vSwitch can be bound to only one ECR. A vSwitch cannot be used in both HSW and CHSW network environments. If a vSwitch is bound to an ECR of the HSW type, machines connected to CHSWs cannot use the vSwitch. If a vSwitch is bound to an ECR of the CHSW type, machines connected to HSWs cannot use the vSwitch.
+
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Network and Security > Bare Metal Instance**
 **Network**.
@@ -2588,6 +2735,8 @@ Retry binding an ECR: Find the ECR that failed to be bound and click **Retry Bin
 
 #### 8.6.2 Unbind an ECR
 
+**Procedure**
+
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Network and Security > Bare Metal Instance**
 **Network**.
@@ -2608,6 +2757,9 @@ Bare Metal Computing Platform (BMCP) integrates the tag management module of the
 ### 9.1 Query tags
 
 Each tag consists of a tag key and a tag value. On the Tag Management page, you can view all tag keys and values, as well as the information about the resources to which the tags are added.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, click **Tag Management**.
 3. After you are redirected to the **Tags** page, click a tag key in the **Tag Key** list on the left.
@@ -2623,6 +2775,9 @@ icon. In the **Filter**
 **to resources**
 
 This topic describes how to create a tag and add the tag to resources.
+
+**Procedure**
+
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, click **Tag Management**.
 3. Then, you are redirected to the **Tags** page. In the **Tag Key** list on the left, click
@@ -2646,6 +2801,9 @@ Bare Metal Computing Platform (BMCP) integrates the metering management module o
 ### 10.1 View metering data
 
 Bare Metal Computing Platform (BMCP) integrates the metering management module of the Apsara Uni-manager Management Console to help you manage the metering data of resources. You can view the number of instances on BMCP from the time, organization, resource set, or region dimension and export the statistics.
+
+**Procedure**
+
 1. Log on to BMCP.
 2. In the left-side navigation pane, click **Billing Data** to redirect to the **Metering Details**
 page.
@@ -2672,6 +2830,8 @@ such as instances, GPUs, and RDMA.
 Monitoring metrics data comes from the Cloud Monitor Service (CMS) platform.
 
 **View cluster monitoring**
+
+**Procedure**
 
 1. Log in to BMCP.
 2. In the left-side navigation pane, select **O&M Management** to go to the **Cluster**
@@ -2852,6 +3012,8 @@ This module can inspect clusters in various scenarios to ensure the health of Ba
 
 **Important**
 
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, choose **O&M Management > One-Click Diagnosis**.
 3. In the upper-left part of the **Quick Diagnostics** page, click **Quick Diagnostics**.
@@ -2870,6 +3032,9 @@ Performance evaluation measures cluster computing power utilization and accelera
 **Prerequisites**
 
 The system currently supports only **ACK - intelligent computing cluster** for NVIDIA and APG cards, and the cluster must have installed the **Container O&M Service**. If not installed, install it under the **Software Instance** tab of the **Cluster Details** page.
+
+**Procedure**
+
 1. Log in to BMCP.
 2. In the left-side navigation pane, select **Performance Evaluation**.
 3. Click **Create Evaluation Task** above the performance evaluation task list.
@@ -2899,6 +3064,8 @@ The system currently supports only **ACK - intelligent computing cluster** for N
 6. Click **Submit**.
 
 #### 11.4.2 View the details of an evaluation task
+
+**Procedure**
 
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, click **Performance Benchmark**.
